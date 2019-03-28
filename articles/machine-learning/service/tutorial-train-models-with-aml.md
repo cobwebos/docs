@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 01/28/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc0631052fa915ae946e791c907e405d70713ad2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e7617aec2739daa4f84bcecab060ae0f8e28fabe
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860546"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361585"
 ---
 # <a name="tutorial-train-an-image-classification-model-with-azure-machine-learning-service"></a>教程：使用 Azure 机器学习服务定型图像分类模型
 
@@ -65,9 +65,11 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 
 ### <a name="server"></a>使用自己的 Jupyter Notebook 服务器
 
-执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成步骤后，运行 **tutorials/img-classification-part1-training.ipynb** Notebook。
+执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。 
 
 [!INCLUDE [aml-your-server](../../../includes/aml-your-server.md)]
+
+ 完成步骤后，运行 **tutorials/img-classification-part1-training.ipynb** Notebook。
 
 ## <a name="start"></a>设置开发环境
 

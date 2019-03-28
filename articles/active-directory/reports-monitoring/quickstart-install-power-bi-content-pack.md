@@ -3,7 +3,7 @@ title: 安装 Azure AD Power BI 内容包 | Microsoft Docs
 description: 了解如何安装 Azure AD Power BI 内容包
 services: active-directory
 documentationcenter: ''
-author: priyamohanram
+author: MarkusVi
 manager: daveba
 ms.assetid: fd5604eb-1334-4bd8-bfb5-41280883e2b5
 ms.service: active-directory
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/13/2018
-ms.author: priyamo
+ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 981360793179faa4e79f6c7b77951c0e74a2fc67
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 69a69732d8cb42c248fa954ef9047e5876f40837
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171021"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58437418"
 ---
 # <a name="quickstart-install-azure-active-directory-power-bi-content-pack"></a>快速入门：安装 Azure Active Directory Power BI 内容包
 

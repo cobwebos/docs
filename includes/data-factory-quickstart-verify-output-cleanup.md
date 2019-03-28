@@ -4,12 +4,12 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 831a72fff0931d116a669060b160f51fde6e1d3e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
+ms.openlocfilehash: 309ef92b33d5bbdf8e8aed6b162ed9428a669c87
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571849"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58505825"
 ---
 ## <a name="verify-the-output"></a>验证输出
 该管道自动在 adftutorial Blob 容器中创建 output 文件夹， 然后将 emp.txt 文件从 input 文件夹复制到 output 文件夹。 
@@ -27,7 +27,7 @@ ms.locfileid: "51571849"
 
 删除资源组时会删除所有资源，包括其中的数据工厂。 运行以下命令可以删除整个资源组： 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
+Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 请注意：删除资源组可能需要一些时间。 请耐心等待此过程完成
@@ -35,5 +35,5 @@ Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 如果只需删除数据工厂，不需删除整个资源组，请运行以下命令： 
 
 ```powershell
-Remove-AzureRmDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
+Remove-AzDataFactoryV2 -Name $dataFactoryName -ResourceGroupName $resourceGroupName
 ```

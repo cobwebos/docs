@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2af3981e05482a5f59b19cfaa2e400ae47295763
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: d78f46d2d62ca9db9400e0f436a8c0358734a54e
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588833"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540510"
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-maps"></a>使用 Azure Maps 查找不同出行模式的路线
 
@@ -42,11 +42,11 @@ ms.locfileid: "57588833"
     <html>
     <head>
         <title>Map Route</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css" />
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
@@ -79,21 +79,21 @@ ms.locfileid: "57588833"
     </body>
     </html>
     ```
-    
+
     请注意，HTML 标头包含 Azure 地图控件库托管的 CSS 和 JavaScript 资源文件。 请注意页面正文中的 `onload` 事件。当页面正文加载时，此事件会调用 `GetMap` 函数。 此函数会包含用于访问 Azure Maps API 的内联 JavaScript 代码。
 
 3. 将以下 JavaScript 代码添加到 `GetMap` 函数。 使用从 Maps 帐户复制的主键替换字符串 **\<Your Azure Maps Key\>**。
 
     ```JavaScript
-   //Instantiate a map object
-   var map = new atlas.Map("myMap", {
-       //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
-       authOptions: {
-        authType: 'subscriptionKey',
-        subscriptionKey: '<Your Azure Maps Key>'
-       }
-   });
-   ```
+    //Instantiate a map object
+    var map = new atlas.Map("myMap", {
+        //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+        authOptions: {
+            authType: 'subscriptionKey',
+            subscriptionKey: '<Your Azure Maps Key>'
+        }
+    });
+    ```
 
     Atlas.Map 提供一个可视和交互式的 Web 地图控件，它是 Azure Map Control API 的一个组件。
 
@@ -113,8 +113,8 @@ ms.locfileid: "57588833"
         });
     });
     ```
-    
-     将会向地图添加一个加载事件。当地图资源完全加载以后，该事件会触发。 在地图加载事件处理程序中，地图上的交通流设置已设置为 `relative`，这是相对于自由流动的道路速度。 此外，还可以将其设置为道路的 `absolute` 速度或 `relative-delay`，它会显示与自由流动不同的相对速度。
+
+    将会向地图添加一个加载事件。当地图资源完全加载以后，该事件会触发。 在地图加载事件处理程序中，地图上的交通流设置已设置为 `relative`，这是相对于自由流动的道路速度。 此外，还可以将其设置为道路的 `absolute` 速度或 `relative-delay`，它会显示与自由流动不同的相对速度。
 
 2. 保存“MapTruckRoute.html”文件并刷新浏览器中的页。 如果与地图交互并放大“洛杉矶”地图，应会看到街道和当前交通数据。
 
@@ -157,7 +157,7 @@ ms.locfileid: "57588833"
     ```
 
     将会向地图添加一个加载事件。当地图资源完全加载以后，该事件会触发。 在地图加载事件处理程序中，将会创建一个数据源来存储路线以及起点和终点。 将会创建一个路线层并将其附加到数据源，以便定义路线的呈现方式。 使用表达式从路线功能的属性中检索路线宽度和颜色。 将会添加一个筛选器，确保此层仅呈现 GeoJSON LineString 数据。 向地图添加此层时，会传递另一个值为 `'labels'` 的参数，指定在地图标签下呈现此层。 这样可确保路线不覆盖道路标签。 将会创建一个符号层并将其附加到数据源。 此层指定起点和终点的呈现方式。此示例中添加了表达式，用于从每个点对象的属性中检索图标图像和文本标签信息。
-    
+
 2. 本教程将起点设为西雅图一家名为 Fabrikam 的虚构公司，终点设为 Microsoft 总部的某个建筑物。 在地图加载事件处理程序中，请添加以下代码。
 
     ```JavaScript
@@ -166,13 +166,13 @@ ms.locfileid: "57588833"
         title: 'Fabrikam, Inc.',
         icon: 'pin-blue'
     });
-    
+
     var endPoint = new atlas.data.Feature(new atlas.data.Point([-122.201164, 47.616940]), {
         title: 'Microsoft - Lincoln Square',
         icon: 'pin-round-blue'
     });
     ```
-    
+
     此代码创建两个 [GeoJSON 对象](https://en.wikipedia.org/wiki/GeoJSON)来表示路线的起点和终点。 将会向每个点添加 `title` 和 `icon` 属性。
 
 3. 接下来，添加以下 JavaScript 代码，将起点和终点的图钉添加到地图中：
@@ -187,6 +187,7 @@ ms.locfileid: "57588833"
         padding: 100
     });
     ```
+
     起点和终点会添加到数据源。 起点和终点的边框使用 `atlas.data.BoundingBox.fromData` 函数计算。 此边框用于通过 `map.setCamera` 函数设置基于整个路线的地图相机视图。 将会添加一个衬距来弥补符号图标的像素尺寸。
 
 4. 保存文件并刷新浏览器以查看地图上显示的图钉。 现在，地图的中心为西雅图，可以看到标记起点的圆形蓝色图钉和标记终点的蓝色图钉。
@@ -201,7 +202,7 @@ ms.locfileid: "57588833"
 
 1. 在 GetMap 函数中，将以下内容添加到 JavaScript 代码。
 
-    ```Javascript
+    ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
     var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
 
@@ -211,6 +212,7 @@ ms.locfileid: "57588833"
     // Construct the RouteURL object
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
+
    **SubscriptionKeyCredential** 创建一个 **SubscriptionKeyCredentialPolicy**，用于通过订阅密钥向 Azure Maps 验证 HTTP 请求。 **atlas.service.MapsURL.newPipeline()** 采用 **SubscriptionKeyCredential** 策略创建一个 [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) 实例。 **routeURL** 表示 Azure Maps [Route](https://docs.microsoft.com/rest/api/maps/route) 操作的 URL。
 
 2. 设置凭据和 URL 后，添加以下 JavaScript 代码，为运输 USHazmatClass2 类货物的卡车构造从起点到终点的路线，并显示结果。
@@ -227,35 +229,36 @@ ms.locfileid: "57588833"
         vehicleLength: 5,
         vehicleLoadType: 'USHazmatClass2'
     }).then((directions) => {
-          //Get data features from response
-          var data = directions.geojson.getFeatures();
-        
-          //Get the route line and add some style properties to it.  
-          var routeLine = data.features[0];
-          routeLine.properties.strokeColor = '#2272B9';
-          routeLine.properties.strokeWidth = 9;
-          
-          //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.
-          datasource.add(routeLine, 0);
-        });
+        //Get data features from response
+        var data = directions.geojson.getFeatures();
+
+        //Get the route line and add some style properties to it.  
+        var routeLine = data.features[0];
+        routeLine.properties.strokeColor = '#2272B9';
+        routeLine.properties.strokeWidth = 9;
+
+        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.
+        datasource.add(routeLine, 0);
+    });
     ```
+
     上述代码片段通过 [getRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.models.routedirectionsrequestbody?view=azure-iot-typescript-latest) 方法查询 Azure Maps 路线服务。 然后，从使用 **geojson.getFeatures()** 方法提取的响应中的 GeoJSON 特征集合提取路线行。 该路线行随后将添加到数据源。 它还会添加索引 0，以确保在数据源中的其他任何行之前呈现该路线行。 之所以这样做，是因为卡车路线的计算通常会慢于汽车路线的计算，如果卡车路线在汽车路线之后添加到数据源，则会在其上进行呈现。 将会向卡车路线添加两个属性，一个是蓝色的描边色，另一个是 9 像素的描边宽度。
 
 3. 添加以下 JavaScript 代码，以构造车辆路线并显示结果。
 
     ```JavaScript
-     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
-      
-      //Get data features from response
-      var data = directions.geojson.getFeatures();
+    routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
 
-      //Get the route line and add some style properties to it.  
-      var routeLine = data.features[0];
-      routeLine.properties.strokeColor = '#B76DAB';
-      routeLine.properties.strokeWidth = 5;
-      
-      //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
-      datasource.add(routeLine);
+        //Get data features from response
+        var data = directions.geojson.getFeatures();
+
+        //Get the route line and add some style properties to it.  
+        var routeLine = data.features[0];
+        routeLine.properties.strokeColor = '#B76DAB';
+        routeLine.properties.strokeWidth = 5;
+
+        //Add the route line to the data source. We want this to render below the car route which will likely be added to the data source faster, so insert it at index 0.  
+        datasource.add(routeLine);
     });
     ```
 

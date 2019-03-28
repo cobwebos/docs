@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: d5e1e5989f9902d9ab8dcc3e6c2b9d2a71f12df9
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 7a2c3f8d2eb4dbbcaf1290593115f3a60918a0be
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224373"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484061"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>教程：在 ASP.NET Core 应用中使用动态配置
 
@@ -54,9 +54,9 @@ ASP.NET Core 有可插拔的配置系统，可以从各种源读取配置数据�
             {
                 var settings = config.Build();
                 config.AddAzureAppConfiguration(o => o.Connect(settings["ConnectionStrings:AppConfig"])
-                    .Watch("TestApp:Settings:BackgroundColor", TimeSpan.FromSeconds(1))
-                    .Watch("TestApp:Settings:FontColor", TimeSpan.FromSeconds(1))
-                    .Watch("TestApp:Settings:Message", TimeSpan.FromSeconds(1)));
+                    .Watch("TestApp:Settings:BackgroundColor")
+                    .Watch("TestApp:Settings:FontColor")
+                    .Watch("TestApp:Settings:Message"));
             })
             .UseStartup<Startup>();
     ```

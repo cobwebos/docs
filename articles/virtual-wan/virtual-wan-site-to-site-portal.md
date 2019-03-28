@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my local site to my VNets using Virtual WAN and I don't want to go through a Virtual WAN partner.
-ms.openlocfilehash: ca18042985669899247c3a0a16b41a98c5c6d1ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4b44eec5557d2083c38fe2714d93800f79b21b0f
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075162"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338439"
 ---
 # <a name="tutorial-create-a-site-to-site-connection-using-azure-virtual-wan"></a>教程：使用 Azure 虚拟 WAN 创建站点到站点连接
 
@@ -43,8 +43,6 @@ ms.locfileid: "58075162"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 [!INCLUDE [Before you begin](../../includes/virtual-wan-tutorial-vwan-before-include.md)]
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="vnet"></a>1.创建虚拟网络
 
@@ -76,7 +74,7 @@ ms.locfileid: "58075162"
 
 ## <a name="hub"></a>4.创建中心
 
-[!INCLUDE [Create a virtual WAN](../../includes/virtual-wan-tutorial-hub-include.md)]
+[!INCLUDE [Create a hub](../../includes/virtual-wan-tutorial-hub-include.md)]
 
 ## <a name="associate"></a>5.将站点与中心相关联
 

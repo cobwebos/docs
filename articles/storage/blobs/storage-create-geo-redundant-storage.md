@@ -9,12 +9,12 @@ ms.date: 01/03/2019
 ms.author: tamram
 ms.custom: mvc
 ms.subservice: blobs
-ms.openlocfilehash: f00f11e66d33c37ff2107cbb8282b49994fe0d3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c8796c300b5163f23ad1156650f6e74b61ccdfa6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013586"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486659"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>教程：使用 Blob 存储构建高度可用的应用程序
 
@@ -139,7 +139,7 @@ export storageconnectionstring=<yourconnectionstring>
 ```
 ### <a name="windows"></a>Windows
 
-```PowerShell
+```powershell
 setx storageconnectionstring "<yourconnectionstring>"
 ```
 
@@ -157,7 +157,7 @@ export accountkey=<youraccountkey>
 ```
 ### <a name="windows"></a>Windows
 
-```PowerShell
+```powershell
 setx accountname "<youraccountname>"
 setx accountkey "<youraccountkey>"
 ```

@@ -11,12 +11,12 @@ ms.date: 11/06/2018
 ms.topic: quickstart
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 8bb035a02b8ab684bc1efb7accd785518cb151c2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a30f9c1a61044c0911a5afc27ad95fc758b4c83e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107604"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449094"
 ---
 # <a name="configure-a-linux-virtual-machine-with-desired-state-configuration"></a>使用 Desired State Configuration 配置 Linux 虚拟机
 
@@ -143,6 +143,6 @@ configuration LAMPServer {
 > [通过 DSC 和 Chocolatey 持续部署到 VM](./automation-dsc-cd-chocolatey.md)
 
 * 若要详细了解 PowerShell Desired State Configuration，请参阅 [PowerShell Desired State Configuration 概述](https://docs.microsoft.com/powershell/dsc/overview)。
-* 若要详细了解如何通过 PowerShell 管理自动化 DSC，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/?view=azurermps-5.0.0)。
+* 若要详细了解如何通过 PowerShell 管理自动化 DSC，请参阅 [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.automation/)。
 * 要了解如何将 DSC 报告转发到 Azure Monitor 日志以进行报告和警报，请参阅[将 DSC 报告转发到 Azure Monitor 日志](https://docs.microsoft.com/azure/automation/automation-dsc-diagnostics) 
 

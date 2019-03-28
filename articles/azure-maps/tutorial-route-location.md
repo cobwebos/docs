@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b17a9660e16a1cb05c088e97d4ad18dd20fd4216
-ms.sourcegitcommit: 89b5e63945d0c325c1bf9e70ba3d9be6888da681
+ms.openlocfilehash: 5c5465562c1af3dbd3fcaff2031149e510a43cfd
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/08/2019
-ms.locfileid: "57588783"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540731"
 ---
 # <a name="route-to-a-point-of-interest-using-azure-maps"></a>使用 Azure Maps 查找前往兴趣点的路线
 
@@ -43,11 +43,11 @@ ms.locfileid: "57588783"
     <html>
     <head>
         <title>Map Route</title>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css" />
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
         <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
@@ -88,11 +88,11 @@ ms.locfileid: "57588783"
     ```JavaScript
    //Instantiate a map object
    var map = new atlas.Map("myMap", {
-       //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
-       authOptions: {
-        authType: 'subscriptionKey',
-        subscriptionKey: '<Your Azure Maps Key>'
-       }
+        //Add your Azure Maps subscription key to the map SDK. Get an Azure Maps key at https://azure.com/maps
+        authOptions: {
+           authType: 'subscriptionKey',
+           subscriptionKey: '<Your Azure Maps Key>'
+        }
    });
    ```
 
@@ -110,7 +110,7 @@ ms.locfileid: "57588783"
 
     ```JavaScript
     //Wait until the map resources have fully loaded.
-    map.events.add('load', function () {
+    map.events.add('load', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -158,7 +158,7 @@ ms.locfileid: "57588783"
 
     //Add the data to the data source.
     datasource.add([startPoint, endPoint]);
-    
+
     map.setCamera({
         bounds: atlas.data.BoundingBox.fromData([startPoint, endPoint]),
         padding: 80
@@ -179,7 +179,7 @@ ms.locfileid: "57588783"
 
 1. 在 GetMap 函数中，将以下内容添加到 JavaScript 代码。
 
-    ```Javascript
+    ```JavaScript
     // Use SubscriptionKeyCredential with a subscription key
     var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(atlas.getSubscriptionKey());
 
@@ -189,7 +189,8 @@ ms.locfileid: "57588783"
     // Construct the RouteURL object
     var routeURL = new atlas.service.RouteURL(pipeline);
     ```
-   **SubscriptionKeyCredential** 创建一个 **SubscriptionKeyCredentialPolicy**，用于通过订阅密钥向 Azure Maps 验证 HTTP 请求。 **atlas.service.MapsURL.newPipeline()** 采用 **SubscriptionKeyCredential** 策略创建一个[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 **routeURL** 表示 Azure Maps [路线](https://docs.microsoft.com/rest/api/maps/route)操作的 URL。
+
+   **SubscriptionKeyCredential** 创建一个 **SubscriptionKeyCredentialPolicy**，用于通过订阅密钥向 Azure Maps 验证 HTTP 请求。 **atlas.service.MapsURL.newPipeline()** 采用 **SubscriptionKeyCredential** 策略创建一个 [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) 实例。 **routeURL** 表示 Azure Maps [路线](https://docs.microsoft.com/rest/api/maps/route)操作的 URL。
 
 2. 在设置凭据和 URL 以后，请添加以下 JavaScript 代码，以便构建从起点到终点的路线。 **routeURL** 会请求 Azure Maps 路线服务计算路线走向。 然后，系统会使用 **geojson.getFeatures()** 方法从响应中提取 GeoJSON 特性集合，并将其添加到数据源。
 
@@ -199,9 +200,9 @@ ms.locfileid: "57588783"
 
     //Make a search route request
     routeURL.calculateRouteDirections(atlas.service.Aborter.timeout(10000), coordinates).then((directions) => {
-      //Get data features from response
-      var data = directions.geojson.getFeatures(); 
-      datasource.add(data);
+        //Get data features from response
+        var data = directions.geojson.getFeatures();
+        datasource.add(data);
     });
     ```
 

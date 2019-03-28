@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: v-doglov
-ms.openlocfilehash: a0707ad356e51a9e4d4f73c54085fe9736bb0752
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: c598c5e238458c010500579c5371622b85e71de0
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56884465"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58540799"
 ---
 # <a name="troubleshoot-vcenter-discovery-failures"></a>排查 vCenter 发现故障
 
@@ -46,8 +46,8 @@ vCenter 发现遵循通过系统用户配置的系统默认代理设置。 DRA �
 
 遇到此问题时，可能发生以下情况：
 
-- VCenter 服务器<vCenter>由于错误不可访问：远程服务器返回错误：不可用 (503) 服务器
-- VCenter 服务器<vCenter>由于错误不可访问：远程服务器返回错误：无法连接到远程服务器。
+- VCenter 服务器\<vCenter > 由于出现错误不可访问：远程服务器返回了错误：不可用 (503) 服务器
+- VCenter 服务器\<vCenter > 由于出现错误不可访问：远程服务器返回了错误：无法连接到远程服务器。
 - 无法连接到 vCenter/ESXi 服务器。
 
 若要解决问题，请执行以下操作：

@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 04da80cd5c30d0556dc681b7bff412391aa2bcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107723"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541224"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -32,7 +32,7 @@ ms.locfileid: "58107723"
 
 备份数据库并具备还原到任意时间点（例如，在某人删除关键数据之前的时间点）的能力，可以尽可能地还原到发生中断之前所处的状态。
 
-为获得最佳效果，必须执行两种类型的备份：
+为获得最佳结果，必须执行两种类型的备份：
 
 - 数据库备份：完整备份、增量备份或差异备份
 - 事务日志备份
@@ -120,7 +120,7 @@ Azure 上的 SAP HANA（大型实例）为 SAP HANA 数据卷和日志卷使用�
 如果对一个 HANA 大型实例单元上的多个 SAP HANA 实例运行 [MCOD 场景](https://launchpad.support.sap.com/#/notes/1681092)，将获得为每个 SAP HANA 实例预配的单独存储卷。 在当前版本的自助服务快照自动化中，无法针对每个 HANA 实例系统 ID (SID) 启动单独的快照。 该功能在配置文件（参阅下文）中为服务器的注册 SAP HANA 实例提供检查，并对单元上注册的所有实例的卷执行同时快照。
  
 
-### <a name="step-1-install-the-sap-hana-hdb-client"></a>步骤 1：安装 SAP HANA HDB 客户端
+### <a name="step-1-install-the-sap-hana-hdb-client"></a>步骤 1:安装 SAP HANA HDB 客户端
 
 Azure 上的 SAP HANA（大型实例）上安装的 Linux 操作系统包含所需的文件夹和脚本用于针对备份和灾难恢复目的执行 SAP HANA 存储快照。 在 [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) 中查找最新版本。 最新发布的脚本版本为 3.x。 相同的主要版本中，不同的脚本可能具有不同的次要发行版本。
 
@@ -307,7 +307,7 @@ testHANAConnection.pl
 如果脚本成功获取 HANA 实例的状态，会显示 HANA 连接成功的消息。
 
 
-下一测试步骤是基于放入 *HANABackupCustomerDetails.txt* 配置文件的数据检查与存储的连接，并执行测试快照。 在执行 `azure_hana_backup.pl` 脚本之前，必须先运行此测试。 如果某个卷不包含任何快照，就无法确定该卷是否为空，或者在获取快照详细信息时是否发生了 SSH 失败。 因此，脚本将执行两个步骤：
+下一测试步骤是基于放入 *HANABackupCustomerDetails.txt* 配置文件的数据检查与存储的连接，并执行测试快照。 在执行 `azure_hana_backup.pl` 脚本之前，必须先运行此测试。 如果某个卷不包含任何快照，就无法确定该卷是否为空，或者在获取快照详细信息时是否发生了 SSH 失败。 因此，脚本执行两个步骤：
 
 - 它验证要执行快照的脚本有权访问租户的存储虚拟机和接口。
 - 根据 HANA 实例为每个卷创建一个测试或虚构快照。
@@ -416,10 +416,10 @@ For snapshot of the volume storing the boot LUN
 参数详细信息如下： 
 
 - 第一个参数确定相应快照备份类型的特征。 允许的值为 **hana**、**logs** 和 **boot**。 
-- 参数 <HANA Large Instance Type> 仅对于启动卷备份是必须的。 有两个有效的值“TypeI”或“TypeII”，具体取决于 HANA 大型实例单元。 若要了解单元的类型，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。  
-- <snapshot_prefix> 参数是一个快照，或该快照类型的备份标签。 它有两个用途：第一个用途是指定快照的名称，以便知道这些快照的作用。 第二个用途是让脚本 *azure\_hana\_backup.pl* 确定该特定标签下保留的存储快照数。 如果计划两个具有相同类型（例如 **hana**）、不同标签的存储快照备份，并定义要对每个备份保留 30 个快照，则最终会有 60 个受影响的存储卷快照。 仅允许字母数字（“A-Z、a-z、0-9”）、下划线（“_”）和破折号（“-”）字符。 
-- 参数 <snapshot_frequency>  保留供未来发展使用，无任何影响。 执行 **log** 类型的备份时，请将其设置为“3 分钟”，并在执行其他备份类型时将其设为“15 分钟”。
-- 参数 **<number of snapshots retained>** 通过定义要保留的快照数（拥有相同快照前缀/标签）间接定义快照的保留期。 对于通过 cron 制定的执行计划，此参数十分重要。 如果拥有相同快照前缀的快照数将超出此参数提供的编号，在执行新的存储快照之前，将删除时间最早的快照。
+- 将参数 **\<HANA 大型实例类型 >** 是所必需的启动卷备份。 有两个有效的值“TypeI”或“TypeII”，具体取决于 HANA 大型实例单元。 若要了解单元的类型，请参阅 [Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)。  
+- 将参数**\<快照前缀 >** 是快照发布或快照的类型的备份标签。 它有两个用途：第一个用途是指定快照的名称，以便知道这些快照的作用。 第二个用途是让脚本 *azure\_hana\_backup.pl* 确定该特定标签下保留的存储快照数。 如果计划两个具有相同类型（例如 **hana**）、不同标签的存储快照备份，并定义要对每个备份保留 30 个快照，则最终会有 60 个受影响的存储卷快照。 仅允许字母数字（“A-Z、a-z、0-9”）、下划线（“_”）和破折号（“-”）字符。 
+- 将参数 **\<snapshot_frequency >** 是保留供未来发展和不产生任何影响。 执行 **log** 类型的备份时，请将其设置为“3 分钟”，并在执行其他备份类型时将其设为“15 分钟”。
+- 将参数**\<的保留的快照数 >** 通过定义拥有相同快照前缀 （标签） 的快照数间接定义快照的保留期。 对于通过 cron 制定的执行计划，此参数十分重要。 如果拥有相同快照前缀的快照数将超出此参数提供的编号，在执行新的存储快照之前，将删除时间最早的快照。
 
 对于横向扩展，该脚本会执行附加检查，确保可以访问所有 HANA 服务器。 该脚本还会在创建 SAP HANA 快照之前，检查所有 HANA 实例是否返回实例的相应状态。 执行 SAP HANA 快照之后，执行存储快照。
 
@@ -495,7 +495,7 @@ SAP HANA 对 /hana/log 卷执行常规写入，将提交的更改记录到数据
 
 如果从未备份过数据库，则最后一步是执行基于文件的数据库备份，以创建必须在备份目录中存在的单个备份项。 否则，SAP HANA 无法启动指定的日志备份。
 
-![创建基于文件的备份以创建单个备份项](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
+![创建基于文件的备份用于创建单个备份项](./media/hana-overview-high-availability-disaster-recovery/image6-make-backup.png)
 
 
 成功执行第一个存储快照后，可删除在步骤 6 中执行的测试快照。 为此，请运行脚本 `removeTestStorageSnapshot.pl`：
@@ -587,7 +587,7 @@ HANA Backup ID:
 ./azure_hana_backup.pl hana dailyhana 15min 28
 ```
 
-在上面的示例中，快照标签为“dailyhana”，要保留的带有此标签的快照数为 28。 对磁盘空间消耗量做出响应时，可能想要减少存储的快照数。 例如，如果希望将快照数减少至 15，实现此操作的简单方法是将脚本的最后一个参数设置为 **15** 并运行该脚本：
+在上面的示例中，快照标签为“dailyhana”，要保留的带有此标签的快照数为 28。 对磁盘空间消耗量做出响应时，你可能想要减少存储的快照数。 例如，如果希望将快照数减少至 15，实现此操作的简单方法是将脚本的最后一个参数设置为 **15** 并运行该脚本：
 
 ```
 ./azure_hana_backup.pl hana dailyhana 15min 15
@@ -643,7 +643,7 @@ HANA Backup ID:
 
    ![关闭 HANA 实例](./media/hana-overview-high-availability-disaster-recovery/image7-shutdown-hana.png)
 
-1. 卸载每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
+1. 每个 HANA 数据库节点上的数据卷。 如果仍将数据卷载入操作系统，快照还原会失败。
    ![卸载每个 HANA 数据库节点上的数据卷](./media/hana-overview-high-availability-disaster-recovery/image8-unmount-data-volumes.png)
 
 1. 提出 Azure 支持请求，并包含有关如何还原特定快照的说明。
@@ -749,7 +749,7 @@ Snapshot created successfully.
 Deleting the HANA snapshot with command: "./hdbsql -n localhost -i 01 -U SCADMIN01 "backup data drop snapshot"" ...
 HANA snapshot deletion successfully.
 ```
-从此示例中可以看到脚本如何记录 HANA 快照的创建过程。 在横向扩展部署中，此过程在主节点上启动。 主节点在每个辅助角色节点上启动 SAP HANA 快照的同步创建。 然后创建存储快照。 成功执行存储快照后，HANA 快照会被删除。 HANA 快照的删除从主节点发起。
+从此示例中可以看到脚本如何记录 HANA 快照的创建过程。 在横向扩展部署中，此过程在主节点上启动。 主节点在每个辅助角色节点上启动 SAP HANA 快照的同步创建。 然后创建存储快照。 成功执行存储快照后，会删除 HANA 快照。 HANA 快照的删除从主节点发起。
 
 
 **后续步骤**

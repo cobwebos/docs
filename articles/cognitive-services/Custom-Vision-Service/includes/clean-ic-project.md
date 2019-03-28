@@ -3,16 +3,17 @@ author: PatrickFarley
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: include
-ms.date: 02/07/2019
+ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 44e38d2ea7c45b75cd1f59761a214c52f64497f8
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 4d4c37a31a279fab9af0f3d84575641d10ff09ce
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56323413"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352198"
 ---
 ## <a name="clean-up-resources"></a>清理资源
+
 如果你希望实现自己的图像分类项目（或改为尝试[对象检测](../csharp-tutorial-od.md)项目），可能希望从此示例中删除树识别项目。 免费试用版允许存在两个自定义视觉项目。
 
 在[自定义视觉网站](https://customvision.ai)上，导航到“项目”，然后在“我的新项目”下选择垃圾桶。

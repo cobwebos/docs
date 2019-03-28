@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: fdda53172bef9fb7a4a09cbacfdc5fa4ec4c7509
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6470a358fd3127c93e2e2248b42f79690f4e8b55
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122346"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58449355"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -37,7 +37,7 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 
 ## <a name="prerequisites"></a>先决条件
 
-Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将在 Azure Cloud Shell 中使用 PowerShell。 如果不熟悉 PowerShell，请按以下入门说明操作：[Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-5.0.0)。
+Azure 专用 HSM 目前在 Azure 门户中不可用，因此与该服务的所有交互将通过命令行或 PowerShell 进行。 本教程将在 Azure Cloud Shell 中使用 PowerShell。 如果不熟悉 PowerShell，请按以下入门说明操作：[Azure PowerShell 入门](https://docs.microsoft.com/powershell/azure/get-started-azureps)。
 
 假设：
 

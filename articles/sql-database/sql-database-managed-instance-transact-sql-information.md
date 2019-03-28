@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 8654899e0a6dfce8f25855eba6c5f4a88af78665
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b044a7c2b3122fcbce44ae2e45198f57f6a87260
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903124"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541275"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -59,7 +59,7 @@ ms.locfileid: "57903124"
   - 不支持磁带选项 `REWIND`、`NOREWIND`、`UNLOAD` 和 `NOUNLOAD`
   - 不支持日志特定的选项 `NORECOVERY`、`STANDBY` 和 `NO_TRUNCATE`
 
-限制：  
+的限制：  
 
 - 使用托管实例，可以将实例数据库备份到最多包含 32 个带区的备份（如果使用备份压缩，这种方法对不超过 4TB 的数据库够用）。
 - 最大备份条带大小使用`BACKUP`托管实例中的命令为 195 GB （最大 blob 大小）。 在 backup 命令中增加条带数目可以减小单个条带的大小，并保持在此限制范围内。
@@ -75,7 +75,7 @@ ms.locfileid: "57903124"
 
 有关使用 T-SQL 进行备份的信息，请参阅 [BACKUP](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql)。
 
-## <a name="security"></a>安全
+## <a name="security"></a>安全性
 
 ### <a name="auditing"></a>审核
 
@@ -192,7 +192,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 不支持[缓冲池扩展](https://docs.microsoft.com/sql/database-engine/configure-windows/buffer-pool-extension)。
 - 不支持 `ALTER SERVER CONFIGURATION SET BUFFER POOL EXTENSION`。 请参阅 [ALTER SERVER CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-server-configuration-transact-sql)。
 
-### <a name="collation"></a>Collation
+### <a name="collation"></a>排序规则
 
 默认实例排序规则为 `SQL_Latin1_General_CP1_CI_AS` 并可以被指定为创建参数。 请参阅[排序规则](https://docs.microsoft.com/sql/t-sql/statements/collations)。
 
@@ -217,7 +217,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 - 不支持多个日志文件。
 - 常规用途服务层不支持内存中对象。  
-- 每个实例限制为 280 个文件，这意味着，每个数据库最多只能有 280 个文件。 数据文件和日志文件都会计入此限制。  
+- 没有 280 个文件每个常规用途实例，这意味着每个数据库的最大 280 文件限制。 数据和日志文件通常层都将计入此限制的目的。 [业务关键层支持每个数据库的 32,767 文件](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 - 数据库中不能有包含文件流数据的文件组。  如果 .bak 包含 `FILESTREAM` 数据，则还原将会失败。  
 - 每个文件都被放置在 Azure Blob 存储中。 每个文件的 IO 和吞吐量取决于每个单独文件的大小。  
 
@@ -276,7 +276,7 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="sql-server-agent"></a>SQL Server 代理
 
 - SQL 代理设置为只读。 托管实例不支持过程 `sp_set_agent_properties`。  
-- 作业
+- 工作
   - 支持 T-SQL 作业步骤。
   - 支持以下复制作业：
     - 事务日志读取器
@@ -427,7 +427,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 任何现有的内存优化文件组将重命名为 XTP  
 - `SINGLE_USER` 和 `RESTRICTED_USER` 选项将转换为 `MULTI_USER`
 
-限制：  
+的限制：  
 
 - 无法还原包含多个备份集的 `.BAK` 文件。
 - 无法还原包含多个日志文件的 `.BAK` 文件。
@@ -485,9 +485,9 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
-每个托管实例都为 Azure 高级磁盘空间保留了高达 35 TB 的存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
+35 TB 的存储为 Azure 高级磁盘空间保留的每个常规用途托管实例会带来高达并每个数据库文件放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
-例如，托管实例可以将一个大小为 1.2 TB 的文件放在 4 TB 磁盘上，将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
+例如，常规用途托管实例可以将一个文件中 4 TB 磁盘放置的大小和 248 放置在单独的 128 GB 磁盘的文件 (每个 1 GB 的大小) 1.2 TB。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
@@ -495,6 +495,8 @@ WITH PRIVATE KEY (<private_key_options>)
 这说明在某些情况下，由于文件分布很具体，托管实例可能会出乎意料地达到为附加的 Azure 高级磁盘预留的 35 TB。
 
 在此示例中，只要未添加新文件，现有数据库就会继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
+
+你可以[确定剩余的文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)使用系统视图。 如果您达到此限制尝试[的空和删除一些较小的文件使用 DBCC SHRINKFILE 语句](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)或到 shitch[不的业务关键层都有此限制](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
 

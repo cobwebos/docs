@@ -3,7 +3,7 @@ title: 为托管域配置混合 Azure Active Directory 加入 | Microsoft Docs
 description: 了解如何为托管域配置混合 Azure Active Directory 加入。
 services: active-directory
 documentationcenter: ''
-author: MarkusVi
+author: MicrosoftGuyJFlo
 manager: daveba
 editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/08/2019
-ms.author: markvi
+ms.date: 03/20/2019
+ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce91fc5418de2e93027a8cb3abf1dcc670be64a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 81a9726b73226cd940a55e316ae434aeaad6ff4d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166974"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519079"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-join-for-managed-domains"></a>教程：为托管域配置混合 Azure Active Directory 加入
 
@@ -220,5 +220,5 @@ ms.locfileid: "58166974"
 
 > [!div class="nextstepaction"]
 > [为联盟域配置混合 Azure Active Directory 联接](hybrid-azuread-join-federated-domains.md)
-> [手动配置混合 Azure Active Directory 联接](hybrid-azuread-join-manual-steps.md)
+> [手动配置混合 Azure Active Directory 联接](hybrid-azuread-join-manual.md)
 

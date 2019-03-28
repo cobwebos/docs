@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
-ms.openlocfilehash: 994612f390cb6c6dcb3b4c2acaaec839ef461d2c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 07a488556bc899efa80d67ceb984b60f461b9742
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999565"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541020"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -31,11 +31,11 @@ ms.locfileid: "57999565"
 
 **问：** 可在规模集中包含多少个 VM？
 
-**答：** 一个规模集可包含 0 到 1,000 个基于平台映像的 VM，或者 0 到 600 个基于自定义映像的 VM。
+**A.** 一个规模集可包含 0 到 1,000 个基于平台映像的 VM，或者 0 到 600 个基于自定义映像的 VM。
 
 **问：** 规模集是否支持数据磁盘？
 
-**答：** 是的。 规模集可以定义适用于集中所有 VM 的附加数据磁盘配置。 有关详细信息，请参阅 [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md)（Azure 规模集和附加的数据磁盘）。 可用于存储数据的其他选项包括：
+**A.** 可以。 规模集可以定义适用于集中所有 VM 的附加数据磁盘配置。 有关详细信息，请参阅 [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md)（Azure 规模集和附加的数据磁盘）。 可用于存储数据的其他选项包括：
 
 * Azure 文件（SMB 共享驱动器）
 * OS 驱动器
@@ -45,34 +45,34 @@ ms.locfileid: "57999565"
 
 **问：** 哪些 Azure 区域支持规模集？
 
-**答：** 所有区域都支持规模集。
+**A.** 所有区域都支持规模集。
 
 **问：** 如何使用自定义映像创建规模集？
 
-**答：** 创建并捕获 VM 映像，然后将其用作规模集的源。 有关如何创建和使用自定义 VM 映像的教程，你可以使用 [Azure CLI](tutorial-use-custom-image-cli.md) 或 [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+**A.** 创建并捕获 VM 映像，然后将其用作规模集的源。 有关如何创建和使用自定义 VM 映像的教程，你可以使用 [Azure CLI](tutorial-use-custom-image-cli.md) 或 [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 **问：** 如果我将规模集容量从 20 减少到 15，将删除哪些 VM？
 
-**答：** 将从跨更新域和容错域的规模集中均匀地删除虚拟机，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
+**A.** 将从跨更新域和容错域的规模集中均匀地删除虚拟机，以最大限度地提高可用性。 首先删除 ID 最大的 VM。
 
 **问：** 如果将容量从 15 增加到 18，会发生什么情况？
 
-**答：** 如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 容错域与和更新域中的 VM 是均衡的。
+**A.** 如果将容量增加到 18，则创建 3 个新 VM。 每增加容量一次，VM 实例 ID 就会从以前的最高值（例如 20、21、22）递增。 容错域与和更新域中的 VM 是均衡的。
 
 **问：** 在一个规模集中使用多个扩展时，是否可以强制规定执行序列？
 
-**答：** 是的，可以使用规模集[扩展序列化](virtual-machine-scale-sets-extension-sequencing.md)。
+**A.** 是的，可以使用规模集[扩展序列化](virtual-machine-scale-sets-extension-sequencing.md)。
 
 **问：** 规模集是否适用于 Azure 可用性集？
 
-**答：** 地区（非区域性）规模集使用*放置组*，放置组充当具有五个容错域和五个更新域的隐式可用性集。 VM 多于 100 个的规模集跨多个放置组。 有关放置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
+**A.** 地区（非区域性）规模集使用*放置组*，放置组充当具有五个容错域和五个更新域的隐式可用性集。 VM 多于 100 个的规模集跨多个放置组。 有关位置组的详细信息，请参阅[使用大型虚拟机规模集](virtual-machine-scale-sets-placement-groups.md)。 由 VM 组成的可用性集可以与由 VM 组成的规模集位于相同的虚拟网络中。 常见的配置是将控件节点 VM（经常需要独特的配置）放在可用性集中，将数据节点放在规模集中。
 
 **问：** 规模集是否可以与 Azure 可用性区域配合使用？
 
-**答：**  能！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
+**A.** 可以！ 有关详细信息，请参阅[规模集区域文档](./virtual-machine-scale-sets-use-availability-zones.md)。
 
 
-## <a name="autoscale"></a>自动缩放
+## <a name="autoscale"></a>自动扩展
 
 ### <a name="what-are-best-practices-for-azure-autoscale"></a>Azure 自动缩放的最佳做法是什么？
 
@@ -84,7 +84,7 @@ ms.locfileid: "57999565"
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>基于 Azure 服务总线主题和队列长度的自动缩放是否有任何示例可供参考？
 
-是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+可以。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
 
 对于服务总线队列，请使用以下 JSON：
 
@@ -134,7 +134,7 @@ ms.locfileid: "57999565"
 
 ### <a name="if-i-have-stopped-deallocated-a-vm-is-that-vm-started-as-part-of-an-autoscale-operation"></a>如果我已停止（解除分配）VM，该 VM 是否作为自动缩放操作的一部分启动？
 
-不是。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
+不。 如果自动缩放规则要求将其他 VM 实例作为规模集的一部分，则会创建新的 VM 实例。 停止（解除分配）的 VM 实例不会作为自动缩放事件的一部分启动。 但是，那些已停止（解除分配）的 VM 可能会作为可缩小实例数的自动缩放事件的一部分删除，这与基于 VM 实例 ID 的顺序可以删除任何 VM 实例的方式相同。
 
 
 
@@ -144,7 +144,7 @@ ms.locfileid: "57999565"
 
 为了将证书安全地传送到 VM，可以将客户证书从客户的密钥保管库直接安装到 Windows 证书存储中。
 
-使用以下 JSON：
+使用以下值 JSON：
 
 ```json
 "secrets": [
@@ -180,7 +180,7 @@ az sf cluster create -h
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？
 
-是的。 用于 **osProfile** 的 REST API 类似于标准 VM REST API。
+可以。 用于 **osProfile** 的 REST API 类似于标准 VM REST API。
 
 在模板中包括 **osProfile**：
 
@@ -210,11 +210,11 @@ az sf cluster create -h
 
 ### <a name="how-do-i-remove-deprecated-certificates"></a>如何删除已弃用的证书？
 
-若要删除已弃用的证书，请从保管库证书列表中删除旧证书。 在列表中留下想要在计算机上保留的所有证书。 这不会从所有虚拟机中删除此证书。 也不会向虚拟机规模集中创建的新 VM 添加证书。
+若要删除已弃用的证书，请从保管库证书列表中删除旧证书。 在列表中留下想要在计算机上保留的所有证书。 这不会删除所有虚拟机中的证书。 也不会向虚拟机规模集中创建的新 VM 添加证书。
 
 若要从现有 VM 中删除证书，需要编写一个自定义脚本扩展，从证书存储中手动删除证书。
 
-### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning-i-want-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-use-them-in-my-resource-manager-template"></a>如何在预配期间将现有的 SSH 公钥注入到虚拟机规模集 SSH 层？ 我想要将 SSH 公钥值存储在 Azure Key Vault 中，然后在 Resource Manager 模板中使用这些值。
+### <a name="how-do-i-inject-an-existing-ssh-public-key-into-the-virtual-machine-scale-set-ssh-layer-during-provisioning-i-want-to-store-the-ssh-public-key-values-in-azure-key-vault-and-then-use-them-in-my-resource-manager-template"></a>如何在预配期间将现有的 SSH 公钥注入到虚拟机规模集 SSH 层？ 我想要将 SSH 公钥值存储在 Azure Key Vault 中，并在 Resource Manager 模板中使用这些值。
 
 如果仅向 VM 提供 SSH 公钥，则不需要将公钥放在 Key Vault 中。 公钥不是机密。
 
@@ -233,7 +233,7 @@ az sf cluster create -h
 }
 ```
 
-linuxConfiguration 元素名称 | 需要 | Type | 描述
+linuxConfiguration 元素名称 | 需要 | 类型 | 描述
 --- | --- | --- | --- 
 ssh | 否 | 集合 | 指定 Linux OS 的 SSH 密钥配置
 路径 | 是 | String | 指定 SSH 密钥或证书应放置到的 Linux 文件路径
@@ -243,13 +243,13 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 
 ### <a name="when-i-run-update-azvmss-after-adding-more-than-one-certificate-from-the-same-key-vault-i-see-the-following-message"></a>添加同一个密钥保管库中的多个证书后，运行 `Update-AzVmss` 时看到以下消息：
 
->Update-AzVmss：列表机密包含 /subscriptions/<my-subscription-id>/resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev 的重复实例，这是不允许的。
+>Update-AzVmss：列表机密包含的重复的实例\<我的订阅 id > / resourceGroups/internal-rg-dev/providers/Microsoft.KeyVault/vaults/internal-keyvault-dev，这不允许。
 
-如果尝试重新添加同一保管库，而不是对现有源保管库使用新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令将无法正常运行。
+如果尝试重新添加同一保管库，而不是使用现有源保管库的新保管库证书，可能会看到此消息。 如果要添加其他机密，`Add-AzVmssSecret` 命令将无法正常运行。
 
 若要添加同一密钥保管库中的其他机密，请更新 $vmss.properties.osProfile.secrets[0].vaultCertificates 列表。
 
-关于预期的输入结构，请参阅[创建或更新虚拟机集](https://msdn.microsoft.com/library/azure/mt589035.aspx)。
+对于预期的输入结构，请参阅[创建或更新虚拟机集](https://msdn.microsoft.com/library/azure/mt589035.aspx)。
 
 在密钥保管库中的虚拟机规模集对象中找到该机密。 然后，将证书引用（URL 以及机密存储名称）添加到与保管库关联的列表中。
 
@@ -257,11 +257,11 @@ keyData | 是 | String | 指定 base64 编码的 SSH 公钥
 > 目前，不能通过使用虚拟机规模集 API 删除 VM 中的证书。
 >
 
-新的 VM 将不具有旧证书。 但是，具有证书的 VM 和已部署的 VM 将具有旧证书。
+新的 VM 不具有旧证书。 但是，具有证书的 VM 和已部署的 VM 将具有旧证书。
 
 ### <a name="can-i-push-certificates-to-the-virtual-machine-scale-set-without-providing-the-password-when-the-certificate-is-in-the-secret-store"></a>如果证书位于机密存储中，是否可以在不提供密码的情况下将证书推送到虚拟机规模集？
 
-不需要在脚本中对密码进行硬编码。 可以使用运行部署脚本的权限来动态检索密码。 如果某个脚本可移动机密存储密钥保管库的证书，机密存储 `get certificate` 命令也会输出 pfx 文件的密码。
+不需要对脚本中的密码进行硬编码。 可以使用运行部署脚本的权限来动态检索密码。 如果某个脚本可移动机密存储密钥保管库的证书，机密存储 `get certificate` 命令也会输出 pfx 文件的密码。
 
 ### <a name="how-does-the-secrets-property-of-virtualmachineprofileosprofile-for-a-virtual-machine-scale-set-work-why-do-i-need-the-sourcevault-value-when-i-have-to-specify-the-absolute-uri-for-a-certificate-by-using-the-certificateurl-property"></a>虚拟机规模集的 virtualMachineProfile.osProfile 的 Secrets 属性的工作原理是什么？ 使用 certificateUrl 属性指定证书的绝对 URI 时，为什么需要 sourceVault 值？
 
@@ -269,15 +269,15 @@ Windows 远程管理 (WinRM) 证书引用必须在 OS 配置文件的 Secrets �
 
 指示源保管库的目的在于强制实施访问控制列表 (ACL) 策略，该策略存在于用户的 Azure 云服务模型中。 如果源保管库未指定，无权在密钥保管库中部署或访问机密的用户可以通过计算资源提供程序 (CRP) 实现此目的。 即使是不存在的资源，它们也有 ACL。
 
-如果提供错误的源保管库 ID 但提供有效的密钥保管库 URL，轮询操作时系统会报告错误。
+如果提供错误的源保管库 ID 但提供有效的保管库 URL，轮询操作时系统会报告错误。
 
 ### <a name="if-i-add-secrets-to-an-existing-virtual-machine-scale-set-are-the-secrets-injected-into-existing-vms-or-only-into-new-ones"></a>如果将机密添加到现有虚拟机规模集，机密会注入到现有 VM 中，还是仅注入到新 VM 中？
 
-证书将添加到所有 VM，包括现有的 VM。 如果虚拟机规模集的 upgradePolicy 属性设置为“手动”，对 VM 执行手动更新时，证书将添加到该 VM。
+证书将添加到所有 VM，包括现有的 VM。 如果虚拟机规模集的 upgradePolicy 属性设置为“手动”，对 VM 执行手动更新时，证书会添加到该 VM。
 
 ### <a name="where-do-i-put-certificates-for-linux-vms"></a>在 Linux VM 上，证书放在哪个位置？
 
-要了解如何部署 Linux VM 的证书，请参阅 [Deploy certificates to VMs from a customer-managed key vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/)（将证书从客户管理的密钥保管库部署到 VM）。
+若要了解如何部署 Linux VM 的证书，请参阅[将证书从客户管理的 Key Vault 部署到 VM](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/)。
 
 ### <a name="how-do-i-add-a-new-vault-certificate-to-a-new-certificate-object"></a>如何将新的保管库证书添加到新的证书对象？
 
@@ -303,7 +303,7 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 
 扩大时不会遇到此问题，因为（单 Fabric 租户模型中的）Azure Service Fabric 中存在机密的缓存副本。
 
-### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>为什么必须如 [Service Fabric 群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)中所示，指定证书 URL 的准确位置 (https://<name of the vault>.vault.azure.net:443/secrets/<exact location>)？
+### <a name="why-do-i-have-to-specify-the-exact-location-for-the-certificate-url-httpsname-of-the-vaultvaultazurenet443secretsexact-location-as-indicated-in-service-fabric-cluster-security-scenarioshttpsazuremicrosoftcomdocumentationarticlesservice-fabric-cluster-security"></a>为什么我是否需要指定证书 URL 的准确位置 (https:\/\/\<的保管库名称 >.vault.azure.net:443/secrets/\<的确切位置 >) 中所示， [Service Fabric群集安全方案](https://azure.microsoft.com/documentation/articles/service-fabric-cluster-security/)？
 
 根据 Azure Key Vault 文档，在未指定版本的情况下，Get Secret REST API 应返回最新版本的机密。
 
@@ -311,7 +311,7 @@ CRP 组件不会持久保留客户机密。 如果对虚拟机规模集中的所
 --- | ---
 GET | <https://mykeyvault.vault.azure.net/secrets/{secret-name}/{secret-version}?api-version={api-version}>
 
-请将 {secret-name} 替换为具体名称，将 {secret-version} 替换为要检索的机密的版本。 机密版本可能被排除。 在这种情况下，将检索当前的版本。
+请将 {*secret-name*} 替换为该名称，将 {*secret-version*} 替换为要检索的机密的版本。 机密版本可能被排除。 在这种情况下，将检索当前的版本。
 
 ### <a name="why-do-i-have-to-specify-the-certificate-version-when-i-use-key-vault"></a>使用 Key Vault 时，为什么需要指定证书版本？
 
@@ -319,7 +319,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 如果创建了 VM，并更新了密钥保管库中的机密，则新证书不会下载到 VM。 但是，VM 看上去像是引用了该证书，并且新 VM 将获取新机密。 要避免此问题，需要引用机密的版本。
 
-### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>本团队正在开发几个证书，到时以 .cer 公钥的形式分发给大家使用。 将这些证书部署到虚拟机规模集的建议方法有哪些？
+### <a name="my-team-works-with-several-certificates-that-are-distributed-to-us-as-cer-public-keys-what-is-the-recommended-approach-for-deploying-these-certificates-to-a-virtual-machine-scale-set"></a>本团队正在开发几个证书，到时将以 .cer 公钥的形式分发给大家使用。 将这些证书部署到虚拟机规模集的建议方法有哪些？
 
 要将 .cer 公钥部署到虚拟机规模集，可以生成仅包含 .cer 文件的 .pfx 文件。 为此，请使用 `X509ContentType = Pfx`。 例如，将 .cer 文件作为 x509Certificate2 对象加载到 C# 或 PowerShell 中，然后调用该方法。
 
@@ -355,10 +355,10 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)用于虚拟机规模集？
 
-是的。 可在 Azure 快速入门模板中查看一些示例 MSI 模板。 Linux：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
+可以。 可在 Azure 快速入门模板中查看一些示例 MSI 模板。 Linux：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
 
 
-## <a name="extensions"></a>扩展
+## <a name="extensions"></a>扩展名
 
 ### <a name="how-do-i-delete-a-virtual-machine-scale-set-extension"></a>如何删除虚拟机规模集扩展？
 
@@ -380,11 +380,11 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 ### <a name="extensions-seem-to-run-in-parallel-on-virtual-machine-scale-sets-this-causes-my-custom-script-extension-to-fail-what-can-i-do-to-fix-this"></a>扩展似乎在虚拟机规模集上并行运行。 这导致我的自定义脚本扩展失败。 如何进行修复？
 
-若要了解虚拟机规模集中的扩展排序，请参阅 [Extension sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展排序）。
+若要了解虚拟机规模集中的扩展序列，请参阅 [Extension sequencing in Azure virtual machine scale sets](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)（Azure 虚拟机规模集中的扩展序列）。
 
 ### <a name="how-do-i-reset-the-password-for-vms-in-my-virtual-machine-scale-set"></a>如何对虚拟机规模集中的 VM 重置密码？
 
-更改规模集中 VM 密码的方式主要有两种。
+可采用两种主要方法为规模集中的 VM 更改密码。
 
 - 直接更改虚拟机规模集模型。 适用于 Compute API 2017-12-01 及更高版本。
 
@@ -411,7 +411,7 @@ Update-AzVmss -ResourceGroupName "resource_group_name" -VMScaleSetName "vmssName
 
 如果更新策略设置为**自动**，使用新扩展属性重新部署模板可更新所有 VM。
 
-如果更新策略设置为“手动”，先更新扩展，然后手动更新 VM 中的所有实例。
+如果更新策略设置为“手动”，先更新扩展，并手动更新 VM 中的所有实例。
 
 ### <a name="if-the-extensions-associated-with-an-existing-virtual-machine-scale-set-are-updated-are-existing-vms-affected-that-is-will-the-vms-not-match-the-virtual-machine-scale-set-model-or-are-they-ignored-when-an-existing-machine-is-service-healed-or-reimaged-are-the-scripts-that-are-currently-configured-on-the-virtual-machine-scale-set-executed-or-are-the-scripts-that-were-configured-when-the-vm-was-first-created-used"></a>如果更新与现有虚拟机规模集关联的扩展，是否会影响现有的 VM？ （即，VM 是否会不匹配虚拟机规模集模型？）或者，是否会忽略 VM？ 如果对现有计算机执行服务修复或重置映像操作，是否会执行当前在虚拟机规模集上配置的脚本，或者，是否会使用最初创建 VM 时配置的脚本？
 
@@ -477,11 +477,11 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 若要执行在私有存储帐户中托管的自定义脚本，请通过存储帐户密钥和名称来设置受保护的设置。 有关详细信息，请参阅[适用于 Windows 的自定义脚本扩展](https://azure.microsoft.com/documentation/articles/virtual-machines-windows-extensions-customscript/#template-example-for-a-windows-vm-with-protected-settings)。
 
-## <a name="networking"></a>网络
+## <a name="networking"></a>联网
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
 
-是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
+可以。 网络安全组可以直接应用于规模集，方法是在网络配置文件的 networkInterfaceConfigurations 部分引用该组。 示例：
 
 ```json
 "networkProfile": {
@@ -521,17 +521,17 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>如何针对同一订阅和同一区域中的虚拟机规模集执行 VIP 交换？
 
-如果有两个包含 Azure 负载均衡器前端的虚拟机规模集，并且它们处于同一订阅和区域中，可以解除分配它们的公共 IP 地址，并将公共 IP 地址分配给其他资源。 有关示例，请参阅 [VIP 交换：Azure 资源管理器中的蓝绿部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。 但这确实意味着延迟，因为要在网络一级解除分配/分配资源。 更快的做法是将 Azure 应用程序网关与两个后端池和路由规则结合使用。 也可以使用支持快速切换暂存槽和生产槽的 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)托管应用程序。
+如果有两个包含 Azure 负载均衡器前端的虚拟机规模集，并且它们位于同一订阅和区域中，可以解除分配它们的公共 IP 地址，并将公共 IP 地址分配给其他资源。 有关示例，请参阅 [VIP 交换：Azure 资源管理器中的蓝绿部署](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)。 但这确实意味着延迟，因为要在网络级别解除分配/分配资源。 更快的做法是将 Azure 应用程序网关与两个后端池和路由规则结合使用。 也可以使用支持快速切换暂存槽和生产槽的 [Azure 应用服务](https://azure.microsoft.com/services/app-service/)托管应用程序。
 
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>如何为静态专用 IP 地址分配指定专用 IP 地址范围？
 
 IP 地址是从指定的子网中选择的。
 
-虚拟机规模集 IP 地址的分配方法始终为“动态”，但这并不意味着可以更改这些 IP 地址。 在这种情况下，“动态”仅意味不在 PUT 请求中指定 IP 地址。 使用子网设置静态集。
+虚拟机规模集 IP 地址的分配方法始终为“动态”，但这并不意味着可以更改这些 IP 地址。 在这种情况下，“动态”仅意味不在 PUT 请求中指定 IP 地址。 通过使用子网设置静态集。
 
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>如何将虚拟机规模集部署到现有的 Azure 虚拟网络？
 
-要将虚拟机规模集部署到现有的 Azure 虚拟网络，请参阅[将虚拟机规模集部署到现有的 Azure 虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet)。
+若要将虚拟机规模集部署到现有的 Azure 虚拟网络，请参阅[将虚拟机规模集部署到现有的 Azure 虚拟网络](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-existing-vnet)。
 
 ### <a name="how-do-i-add-the-ip-address-of-the-first-vm-in-a-virtual-machine-scale-set-to-the-output-of-a-template"></a>如何将虚拟机规模集中第一个 VM 的 IP 地址添加到模板的输出中？
 
@@ -539,7 +539,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
-是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
+可以。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -556,7 +556,7 @@ IP 地址是从指定的子网中选择的。
 }
 ```
 
-### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何才能配置规模集使用的 DNS 服务器？
+### <a name="how-can-i-configure-the-dns-servers-used-by-a-scale-set"></a>如何配置规模集使用的 DNS 服务器？
 
 若要创建具有自定义 DNS 配置的虚拟机规模集，请将 dnsSettings JSON 数据包添加到规模集的 networkInterfaceConfigurations 部分中。 示例：
 ```json
@@ -565,7 +565,7 @@ IP 地址是从指定的子网中选择的。
     }
 ```
 
-### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何才能将规模集配置为向每个 VM 分配公共 IP 地址？
+### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>如何将规模集配置为向每个 VM 分配公共 IP 地址？
 
 要创建向每个 VM 分配公共 IP 地址的虚拟机规模集，请确保 Microsoft.Compute/virtualMachineScaleSets 资源的 API 版本为 2017-03-30，并将 publicipaddressconfiguration JSON 数据包添加到规模集的 ipConfigurations 部分中。 示例：
 
@@ -580,15 +580,15 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>能否配置与多个应用程序网关配合使用的规模集？
 
-是的。 可以将多个应用程序网关后端地址池的资源 ID 添加到规模集网络配置文件的 ipConfigurations 部分的 applicationGatewayBackendAddressPools 列表中。
+可以。 可以将多个应用程序网关后端地址池的资源 ID 添加到规模集网络配置文件的 ipConfigurations 部分的 applicationGatewayBackendAddressPools 列表中。
 
-## <a name="scale"></a>缩放
+## <a name="scale"></a>扩展
 
 ### <a name="in-what-case-would-i-create-a-virtual-machine-scale-set-with-fewer-than-two-vms"></a>在哪些情况下我会创建包含少于两个 VM 的虚拟机规模集？
 
 创建包含少于两个 VM 的虚拟机规模集的原因之一为需要使用虚拟机规模集的弹性属性。 例如，可以部署不包含任何 VM 的虚拟机规模集来定义基础结构，这样就无需支付 VM 运行费。 然后，在准备好部署 VM 后，将虚拟机规模集的“容量”提高到生产实例计数。
 
-创建包含少于两个 VM 的虚拟机规模集的另一个原因可能是，相比于使用离散 VM 的可用性集，不必担心可用性的问题。 此外，可以借助虚拟机规模集来使用可替代的无差别计算单元。 这种均一性是虚拟机规模集与可用性集的一项重要差别。 许多无状态工作负载不跟踪单个单元。 如果工作负载下降，可以减少到一个计算单元，如果工作负载上升，可以增加到多个计算单元。
+创建包含少于两个 VM 的虚拟机规模集的另一个原因可能是，相比于使用离散 VM 的可用性集，不必担心可用性的问题。 此外，可以借助虚拟机规模集来使用可替代的无差别计算单元。 这种一致性是虚拟机规模集相比可用性集存在的一项重要优势。 许多无状态工作负载不跟踪单个单元。 如果工作负载下降，可以减少到一个计算单元，如果工作负载上升，可以增加到多个计算单元。
 
 ### <a name="how-do-i-change-the-number-of-vms-in-a-virtual-machine-scale-set"></a>如何更改虚拟机规模集中的 VM 数目？
 
@@ -642,7 +642,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-do-i-create-a-scale-set-in-an-existing-resource-group"></a>如何在现有资源组中创建规模集？
 
-尚不能通过 Azure 门户在现有资源组中创建规模集，但从 Azure 资源管理器模板部署规模集时，可以指定现有资源组。 也可以在使用 Azure PowerShell 或 CLI 创建规模集时指定现有资源组。
+尚不能通过 Azure 门户在现有资源组中创建规模集，但从 Azure Resource Manager 模板部署规模集时，可以指定现有资源组。 也可以在使用 Azure PowerShell 或 CLI 创建规模集时指定现有资源组。
 
 ### <a name="can-we-move-a-scale-set-to-another-resource-group"></a>可以将规模集移至另一个资源组吗？
 
@@ -650,7 +650,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="how-to-i-update-my-virtual-machine-scale-set-to-a-new-image-how-do-i-manage-patching"></a>如何将虚拟机规模集更新为新映像？ 如何管理修补？
 
-要将虚拟机规模集更新为新映像，或管理修补，请参阅[升级虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)。
+若要将虚拟机规模集更新为新映像，或管理修补，请参阅[升级虚拟机规模集](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set)。
 
 ### <a name="can-i-use-the-reimage-operation-to-reset-a-vm-without-changing-the-image-that-is-i-want-reset-a-vm-to-factory-settings-rather-than-to-a-new-image"></a>是否可以在不更改映像的情况下，使用重置映像操作来重置 VM？ （也就是说，将 VM 重置为出厂设置而不是重置为新映像）
 
@@ -686,7 +686,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 }
 ```
 
-创建新 VM 时，VM 的 InstanceView 属性会显示屏幕截图的详细信息等等。 下面是一个示例：
+创建新 VM 时，VM 的 InstanceView 属性显示屏幕截图的详细信息等等。 下面是一个示例：
 
 ```json
 "bootDiagnostics": {
@@ -697,7 +697,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 ## <a name="virtual-machine-properties"></a>虚拟机属性
 
-### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>如何在不发出多个调用的情况下获取每个 VM 的属性信息？ 例如，对于虚拟机规模集中的 100 个 VM，如何获取每个 VM 的容错域？
+### <a name="how-do-i-get-property-information-for-each-vm-without-making-multiple-calls-for-example-how-would-i-get-the-fault-domain-for-each-of-the-100-vms-in-my-virtual-machine-scale-set"></a>如何在不发出多个调用的情况下获取每个 VM 的属性信息？ 例如，对于虚拟机规模集中的 100 个 VM，如何获取每个 VM 的的容错域？
 
 若要在不发出多个调用的情况下获取每个 VM 的属性信息，通过在以下资源 URI 上执行 REST API `GET`调用 `ListVMInstanceViews`：
 
@@ -705,7 +705,7 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 ### <a name="can-i-pass-different-extension-arguments-to-different-vms-in-a-virtual-machine-scale-set"></a>是否可将不同的扩展参数传递给虚拟机规模集中的不同 VM？
 
-不可以将不同的扩展参数传递给虚拟机规模集中的不同 VM。 但是，扩展可以根据运行它们的 VM 的唯一属性（例如计算机名）运行。 扩展还可以在 http://169.254.169.254 上查询实例元数据来获取更多关于 VM 的信息。
+不可以将不同的扩展参数传递给虚拟机规模集中的不同 VM。 但是，扩展可以根据它们运行所在的 VM 的唯一属性（例如计算机名）运行。 扩展还可以在 http://169.254.169.254 上查询实例元数据来获取更多关于 VM 的信息。
 
 ### <a name="why-are-there-gaps-between-my-virtual-machine-scale-set-vm-machine-names-and-vm-ids-for-example-0-1-3"></a>虚拟机规模集 VM 计算机名和 VM ID 为什么不是连续的？ 例如：0, 1, 3...
 
@@ -715,12 +715,12 @@ az vmss extension set --name MicrosoftMonitoringAgent --publisher Microsoft.Ente
 
 ### <a name="what-is-the-difference-between-deleting-a-vm-in-a-virtual-machine-scale-set-and-deallocating-the-vm-when-should-i-choose-one-over-the-other"></a>删除虚拟机规模集中的 VM 与解除分配 VM 有什么区别？ 如何在这两种做法之间做出选择？
 
-删除虚拟机规模集中的 VM 与解除分配 VM 的主要区别在于 `deallocate` 不会删除虚拟硬盘 (VHD)。 运行 `stop deallocate` 会产生存储费用。 基于以下某种原因，可能会采用其中一种做法：
+删除虚拟机规模集中的 VM 与解除分配 VM 的主要区别在于 `deallocate` 不会删除虚拟硬盘 (VHD)。 运行 `stop deallocate` 会产生存储费用。 采用其中一种做法可能是由于以下原因之一：
 
 - 不再想要支付计算费用，但要保留 VM 的磁盘状态。
 - 想要更快速地启动一组 VM，而不是扩大虚拟机规模集。
   - 出于这种方案，可能创建了自己的自动缩放引擎，并希望以更快的速度完成端到端缩放。
-- 虚拟机规模集未均匀分布在容错域或更新域。 这可能是由于有选择地删除了 VM，或者因为过度预配后，VM 被删除。 在虚拟机规模集上先运行 `stop deallocate`，然后运行 `start`，可以将 VM 均匀地分布到容错域或更新域。
+- 虚拟机规模集未均匀分布在容错域或更新域。 这可能是由于有选择地删除了 VM，或者因为过度预配后，VM 被删除。 在虚拟机规模集上先运行 `stop deallocate`，并运行 `start`，可将 VM 均匀地分布到容错域或更新域。
 
 ### <a name="how-do-i-take-a-snapshot-of-a-vmss-instance"></a>如何取得 VMSS 实例的快照？
 VMSS 的实例中创建快照。

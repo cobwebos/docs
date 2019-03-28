@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 24dfc9602f7329b4ea56db2257f29f5711510d22
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 43a5f3be9b176cf25e643d6a5231669922300b98
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55977790"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485928"
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>快速入门：使用 Azure PowerShell 创建 SQL Server Windows 虚拟机
 
@@ -44,7 +44,7 @@ ms.locfileid: "55977790"
 
 1. 打开 PowerShell，通过运行 **Connect-AzAccount** 命令建立对 Azure 帐户的访问。
 
-   ```PowerShell
+   ```powershell
    Connect-AzAccount
    ```
 
@@ -54,19 +54,19 @@ ms.locfileid: "55977790"
 
 1. 使用唯一的资源组名称定义一个变量。 为了简化本快速入门的其余部分，其余命令将此名称作为基础用于其他资源名称。
 
-   ```PowerShell
+   ```powershell
    $ResourceGroupName = "sqlvm1"
    ```
 
 1. 为所有 VM 资源定义目标 Azure 区域的位置。
 
-   ```PowerShell
+   ```powershell
    $Location = "East US"
    ```
 
 1. 创建资源组。
 
-   ```PowerShell
+   ```powershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Location
    ```
 
@@ -93,7 +93,7 @@ ms.locfileid: "55977790"
 
 1. 创建网络安全组。 配置允许远程桌面 (RDP) 和 SQL Server 连接的规则。
 
-   ```PowerShell
+   ```powershell
    # Rule to allow remote desktop (RDP)
    $NsgRuleRDP = New-AzNetworkSecurityRuleConfig -Name "RDPRule" -Protocol Tcp `
       -Direction Inbound -Priority 1000 -SourceAddressPrefix * -SourcePortRange * `
@@ -113,7 +113,7 @@ ms.locfileid: "55977790"
 
 1. 创建网络接口。
 
-   ```PowerShell
+   ```powershell
    $InterfaceName = $ResourceGroupName + "int"
    $Interface = New-AzNetworkInterface -Name $InterfaceName `
       -ResourceGroupName $ResourceGroupName -Location $Location `
@@ -134,7 +134,7 @@ ms.locfileid: "55977790"
 
 1. 创建虚拟机配置对象，然后创建 VM。 以下命令创建基于 Windows Server 2016 的 SQL Server 2017 Developer Edition VM。
 
-   ```PowerShell
+   ```powershell
    # Create a virtual machine configuration
    $VMName = $ResourceGroupName + "VM"
    $VMConfig = New-AzVMConfig -VMName $VMName -VMSize Standard_DS13_V2 | `
@@ -153,7 +153,7 @@ ms.locfileid: "55977790"
 
 若要获取门户集成和 SQL VM 功能，必须安装 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 若要在新 VM 上安装该代理，请在创建 VM 后运行以下命令。
 
-   ```PowerShell
+   ```powershell
    Set-AzVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
    ```
 
@@ -161,7 +161,7 @@ ms.locfileid: "55977790"
 
 1. 使用以下命令检索新 VM 的公共 IP 地址。
 
-   ```PowerShell
+   ```powershell
    Get-AzPublicIpAddress -ResourceGroupName $ResourceGroupName | Select IpAddress
    ```
 
@@ -185,7 +185,7 @@ ms.locfileid: "55977790"
 
 如果不需要让 VM 继续运行，可以在不使用它时将它停止，以免产生不必要的费用。 以下命令可停止 VM，但保留它供将来使用。
 
-```PowerShell
+```powershell
 Stop-AzVM -Name $VMName -ResourceGroupName $ResourceGroupName
 ```
 

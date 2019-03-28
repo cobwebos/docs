@@ -6,17 +6,17 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/10/2017
+ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f1d557396f17357afd6f9e5d701e946668fcee65
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861037"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541207"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
+# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实施分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
 
  ![Azure 搜索作业门户演示][1]
@@ -34,11 +34,11 @@ ms.locfileid: "57861037"
 ## <a name="sample-code-and-demo"></a>代码示例和演示
 本文使用作业搜索门户作为示例。 该示例作为 ASP.NET MVC 应用程序实现。
 
--   请参阅并测试 [Azure 搜索作业门户演示](https://azjobsdemo.azurewebsites.net/)中的在线实践演示。
+-   请参阅并测试 [Azure 搜索作业门户演示](http://azjobsdemo.azurewebsites.net/)中的在线实践演示。
 
 -   从 [GitHub 上的 Azure 示例存储库](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)中下载代码。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 如果不熟悉搜索开发，对分面导航定义的最佳理解是它显示了自定向搜索的可能性。 它是一种基于预定义筛选的深化搜索体验，用于通过点击操作快速缩小搜索结果范围。 
 
 ### <a name="interaction-model"></a>交互模型
@@ -364,7 +364,7 @@ Azure 搜索中有两个地理空间函数：**geo.distance** 和 **geo.intersec
 * **geo.distance** 函数返回两点之间的距离（以千米为单位）。 一个点是字段，另一个点是作为筛选器一部分传递的常量。 
 * 如果给定的点位于给定的多边形范围内，**geo.intersects** 函数将返回 true。 该点是字段，多边形指定为作为筛选器一部分传递的坐标常量列表。
 
-可以在 [OData 表达式语法（Azure 搜索）](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)中查找筛选器示例。
+可以在 [OData 表达式语法（Azure 搜索）](query-odata-filter-orderby-syntax.md)中查找筛选器示例。
 
 <a name="tryitout"></a>
 
@@ -395,7 +395,7 @@ Azure 搜索作业门户演示包含本文中参考的示例。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="learn-more"></a>了解更多
 观看 [Azure 搜索深入研究](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：

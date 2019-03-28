@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand what Data Box Disk is and how it works so I can use it to import on-premises data into Azure.
-ms.openlocfilehash: c39931ab5d391020e0e7b5ad26ebfa41806fc4ba
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 96ff843ada9d9043d2c10f479d488617ae56da41
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404665"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497714"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -107,7 +107,7 @@ Data Box 磁盘旨在将大量数据移到 Azure，且不影响网络。 该解�
 
 ## <a name="pricing"></a>定价
 
-有关定价的信息，请访问[定价页](https://azure.microsoft.com/pricing/details/storage/databox/disk/)。
+有关定价的信息，请访问[定价页](https://azure.microsoft.com/pricing/details/databox/disk/)。
 
 ## <a name="next-steps"></a>后续步骤
 

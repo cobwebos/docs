@@ -8,12 +8,12 @@ ms.date: 11/15/2017
 author: wmengmsft
 ms.author: wmeng
 ms.reviewer: sngun
-ms.openlocfilehash: 31072be9ae73791e6458b0aee4490ac90df44d94
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 1570417cb1c3aa9ec32d12d9209d4c712b50511d
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957957"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58522292"
 ---
 # <a name="developing-with-azure-cosmos-db-table-api-and-azure-table-storage"></a>使用 Azure 表存储 API 和 Azure Cosmos DB 进行开发
 
@@ -44,7 +44,7 @@ Azure 表存储的以下 SDK 可用于开发：
 - [Python SDK](table-sdk-python.md)。 用于 Python 的 Azure Cosmos DB 表 SDK 也支持存储表服务。
 - [用于 Java 的 Azure 存储 SDK](https://github.com/azure/azure-storage-java)。 此 Azure 存储 SDK 提供了一个 Java 客户端库来使用 Azure 表存储。
 - [Node.js SDK](table-sdk-nodejs.md)。 此 SDK 提供了一个 Node.js 包和一个浏览器兼容的 JavaScript 客户端库来使用存储表服务。
-- [AzureRmStorageTable PowerShell 模块](https://www.powershellgallery.com/packages/AzureRmStorageTable/1.0.0.7)。 此 PowerShell 模块包含 cmdlet 以使用存储表。
+- [AzureRmStorageTable PowerShell 模块](https://www.powershellgallery.com/packages/AzureRmStorageTable)。 此 PowerShell 模块包含 cmdlet 以使用存储表。
 - [适用于 C++ 的 Azure 存储客户端库](https://github.com/Azure/azure-storage-cpp/)。 此库使你能够针对 Azure 存储构建应用程序。
 - [适用于 Ruby 的 Azure 存储表客户端库](https://github.com/azure/azure-storage-ruby/tree/master/table)。 此项目提供了一个 Ruby 包，使用该包可轻松访问 Azure 存储表服务。
 - [Azure 存储表 PHP 客户端库](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table)。 此项目提供了一个 PHP 客户端库，使用该库可轻松访问 Azure 存储表服务。

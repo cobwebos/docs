@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: ceaabdd9aa15e5979d8ab163a9b64986a03c8332
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.openlocfilehash: 2d816ab2f14be8574f77491807d4dbd071487f42
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54023069"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483059"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>教程：使用 Visual Studio 创建数据工厂
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -60,6 +60,9 @@ ms.locfileid: "54023069"
 5. 发布后，请使用 Azure 门户边栏选项卡以及监视和管理应用来监视管道。 
   
 ### <a name="prerequisites"></a>先决条件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 1. 阅读 [教程概述](data-factory-build-your-first-pipeline.md) ，完成 **先决条件** 步骤。 也可在顶部的下拉列表中选择“概述与先决条件”选项，以便切换到该文章。 完成先决条件以后，在下拉列表中选择“Visual Studio”选项即可切换回本文。
 2. 只有订阅/资源组级别的 [数据工厂参与者](../../role-based-access-control/built-in-roles.md#data-factory-contributor) 角色成员才能创建数据工厂实例。  
 3. 必须在计算机上安装了以下软件：
@@ -119,7 +122,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    属性 | Description
+    属性 | 说明
     -------- | ----------- 
     ClusterSize | 指定 HDInsight Hadoop 群集的大小。
     TimeToLive | 指定 HDInsight 群集在被删除之前的空闲时间。
@@ -128,7 +131,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     > [!IMPORTANT]
     > HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     > 
-    > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+    > 随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf<yourdatafactoryname>-<linkedservicename>-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 
     有关 JSON 属性的详细信息，请参阅[计算链接服务](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service)一文。 
 4. 保存 **HDInsightOnDemandLinkedService1.json** 文件。
@@ -168,7 +171,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
     下表提供了代码片段中使用的 JSON 属性的描述：
 
-    属性 | Description |
+    属性 | 说明 |
     -------- | ----------- |
     type |type 属性设置为 **AzureBlob**，因为数据驻留在 Azure Blob 存储中。
     linkedServiceName | 表示前面创建的 AzureStorageLinkedService1。
@@ -311,8 +314,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
    5. 为数据工厂选择 **区域** 。
    6. 单击“下一步”切换到“发布项”页。 （如果“下一步”按钮已禁用，请按 **TAB** 移出“名称”字段）。
 
-    > [!IMPORTANT]
-    > 如果在发布时收到错误：“数据工厂名称 ‘DataFactoryUsingVS’ 不可用”，请更改名称（例如 yournameDataFactoryUsingVS）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。   
+      > [!IMPORTANT]
+      > 如果在发布时收到错误：“数据工厂名称 ‘DataFactoryUsingVS’ 不可用”，请更改名称（例如 yournameDataFactoryUsingVS）。 有关数据工厂项目命名规则，请参阅 [Data Factory - Naming Rules](data-factory-naming-rules.md) （数据工厂 - 命名规则）主题。   
 1. 在“发布项”页上，确保已选择所有数据工厂实体，并单击“下一步”切换到“摘要”页。
 
     ![发布项页](media/data-factory-build-your-first-pipeline-using-vs/publish-items-page.png)     
@@ -325,13 +328,13 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 - 如果收到错误：“该订阅未注册，无法使用命名空间 Microsoft.DataFactory”，请执行下列操作之一，再尝试重新发布：
     - 在 Azure PowerShell 中运行以下命令，注册数据工厂提供程序。
-        ```PowerShell   
-        Register-AzureRmResourceProvider -ProviderNamespace Microsoft.DataFactory
+        ```powershell   
+        Register-AzResourceProvider -ProviderNamespace Microsoft.DataFactory
         ```
         可通过运行以下命令来确认数据工厂提供程序是否已注册。
 
-        ```PowerShell
-        Get-AzureRmResourceProvider
+        ```powershell
+        Get-AzResourceProvider
         ```
     - 使用 Azure 订阅登录到 [Azure 门户](https://portal.azure.com) ，并导航到“数据工厂”边栏选项卡，或在 Azure 门户中创建数据工厂。 此操作会自动注册提供程序。
 - 数据工厂名称可能在将来被注册为 DNS 名称，因此将公开可见。
@@ -412,7 +415,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 -  数据工厂使用前面的 JSON 创建**基于 Linux** 的 HDInsight 群集。 有关详细信息，请参阅 [On-demand HDInsight Linked Service](data-factory-compute-linked-services.md#azure-hdinsight-on-demand-linked-service) （按需 HDInsight 链接服务）。
 - HDInsight 群集在 Blob 存储 (linkedServiceName) 中创建**默认容器**，该存储是你在 JSON 中指定的。 HDInsight 不会在删除群集时删除此容器。 这是设计的行为。 使用按需 HDInsight 链接服务时，除非存在现有的实时群集 (timeToLive)，否则每次处理切片时，都会创建 HDInsight 群集。 处理完成后会自动删除该群集。
     
-    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](http://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
+    随着处理的切片越来越多，Azure Blob 存储中会出现大量的容器。 如果不需要使用它们对作业进行故障排除，则可能需要删除它们以降低存储成本。 这些容器的名称遵循 `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp` 模式。 使用 [Microsoft 存储资源管理器](https://storageexplorer.com/) 等工具删除 Azure Blob 存储中的容器。
 - 当前，输出数据集驱动计划，因此即使活动并未生成任何输出，也必须创建输出数据集。 如果活动没有任何输入，可以跳过创建输入数据集。 
 - 本教程不介绍如何通过 Azure 数据工厂复制数据。 有关如何使用 Azure 数据工厂复制数据的教程，请参阅[教程：将数据从 Blob 存储复制到 SQL 数据库](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)。
 
@@ -478,7 +481,7 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
     }
     ```
 
-    此示例配置 Azure 存储链接服务和 Azure SQL 链接服务的 connectionString 属性。 请注意，指定名称的语法是 [JsonPath](http://goessner.net/articles/JsonPath/)。   
+    此示例配置 Azure 存储链接服务和 Azure SQL 链接服务的 connectionString 属性。 请注意，指定名称的语法是 [JsonPath](https://goessner.net/articles/JsonPath/)。   
 
     如果 JSON 具有属性，该属性将包含以下代码所示的值数组：  
 
@@ -562,7 +565,8 @@ Azure 存储链接服务通过提供连接信息将 Azure 存储帐户链接到�
 
 
 ## <a name="see-also"></a>另请参阅
-| 主题 | Description |
+
+| 主题 | 说明 |
 |:--- |:--- |
 | [管道](data-factory-create-pipelines.md) |帮助你了解 Azure 数据工厂中的管道和活动，以及如何利用它们为方案或业务构造数据驱动工作流。 |
 | [数据集](data-factory-create-datasets.md) |还有助于了解 Azure 数据工厂中的数据集。 |

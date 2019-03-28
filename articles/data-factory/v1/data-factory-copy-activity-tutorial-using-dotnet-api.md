@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 647b2ae5f23ef6f94e3a56eb777053a7eb3e0097
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8b96492c44d7a8cd8c0f1bb8fbcea8e78fc11c30
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090434"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484298"
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>教程：使用 .NET API 创建包含复制活动的管道
 > [!div class="op_single_selector"]
@@ -60,17 +60,17 @@ ms.locfileid: "58090434"
 1. 启动 **PowerShell**。
 2. 运行以下命令并输入用于登录 Azure 门户的用户名和密码。
 
-    ```PowerShell
+    ```powershell
     Connect-AzAccount
     ```
 3. 运行以下命令查看此帐户的所有订阅。
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription
     ```
 4. 运行以下命令选择要使用的订阅。 将 **&lt;NameOfAzureSubscription**&gt; 替换为 Azure 订阅的名称。
 
-    ```PowerShell
+    ```powershell
     Get-AzSubscription -SubscriptionName <NameOfAzureSubscription> | Set-AzContext
     ```
 
@@ -79,7 +79,7 @@ ms.locfileid: "58090434"
 
 5. 在 PowerShell 中运行以下命令，创建名为 **ADFTutorialResourceGroup** 的 Azure 资源组。
 
-    ```PowerShell
+    ```powershell
     New-AzResourceGroup -Name ADFTutorialResourceGroup  -Location "West US"
     ```
 
@@ -88,28 +88,28 @@ ms.locfileid: "58090434"
     如果使用不同的资源组，需使用该资源组的名称取代本教程中的 ADFTutorialResourceGroup。
 6. 创建 Azure Active Directory 应用程序。
 
-    ```PowerShell
+    ```powershell
     $azureAdApplication = New-AzADApplication -DisplayName "ADFCopyTutotiralApp" -HomePage "https://www.contoso.org" -IdentifierUris "https://www.adfcopytutorialapp.org/example" -Password "Pass@word1"
     ```
 
     如果看到以下错误，请指定不同的 URL，并再次运行该命令。
     
-    ```PowerShell
+    ```powershell
     Another object with the same value for property identifierUris already exists.
     ```
 7. 创建 AD 服务主体。
 
-    ```PowerShell
+    ```powershell
     New-AzADServicePrincipal -ApplicationId $azureAdApplication.ApplicationId
     ```
 8. 将服务主体添加到 **数据工厂参与者** 角色。
 
-    ```PowerShell
+    ```powershell
     New-AzRoleAssignment -RoleDefinitionName "Data Factory Contributor" -ServicePrincipalName $azureAdApplication.ApplicationId.Guid
     ```
 9. 获取应用程序 ID。
 
-    ```PowerShell
+    ```powershell
     $azureAdApplication 
     ```
     记下输出中的应用程序 ID (applicationID)。

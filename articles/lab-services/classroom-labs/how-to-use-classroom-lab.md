@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 7c4a73c86245067a07dc253041c43ae6c17f7172
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8e20f612bc54433091036377d51a7e59e3abec51
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096973"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402144"
 ---
 # <a name="how-to-access-a-classroom-lab-in-azure-lab-services"></a>如何访问 Azure 实验室服务中的课堂实验室
 本文介绍如何访问课堂实验室、连接到实验室中的 VM 以及停止 VM。 
@@ -49,7 +49,8 @@ ms.locfileid: "58096973"
 3. 执行以下步骤中的一个： 
    1. 对于 Windows 虚拟机，将 RDP 文件保存到硬盘上。 打开要连接到虚拟机的 RDP 文件。 使用从教师/教授处获得的用户名和密码登录到计算机。 
    3. 对于 Linux 虚拟机，复制和保存“连接到虚拟机”对话框上的 SSH 连接字符串。 从 SSH 终端使用此连接字符串（如 [Putty](https://www.putty.org/)）连接到虚拟机。
-      ## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>停止课堂实验室中的虚拟机
+
+## <a name="stop-the-virtual-machine-in-a-classroom-lab"></a>停止课堂实验室中的虚拟机
 
 若要停止 VM，请选择磁贴上的“停止”。 当 VM 停止后，启用磁贴上的“启动”按钮。 
 

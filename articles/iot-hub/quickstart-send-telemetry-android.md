@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/05/2018
+ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: 8f30918a73e1e7012ad3be151e778eb073627b84
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 63e1f6a6779cf2689a7cbffad06447d272a413d7
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726679"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516920"
 ---
 # <a name="quickstart-send-iot-telemetry-from-an-android-device"></a>快速入门：从 Android 设备发送 IoT 遥测数据
 

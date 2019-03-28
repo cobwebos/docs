@@ -3,18 +3,18 @@ title: Azure Service Fabric 网格概述 | Microsoft Docs
 description: 了解 Azure Service Fabric 网格。 使用 Service Fabric 网格可以部署和缩放应用程序，而无需考虑应用程序的基础结构需求。
 services: service-fabric-mesh
 keywords: ''
-author: rwike77
-ms.author: ryanwi
+author: dkkapur
+ms.author: dekapur
 ms.date: 10/1/2018
 ms.topic: overview
 ms.service: service-fabric-mesh
 manager: timlt
-ms.openlocfilehash: da5370e274aa1904f803227d8c85912a7d26c533
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.openlocfilehash: 44c58e09c478c9dba9143b10d150babc553f4695
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000664"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58337674"
 ---
 # <a name="what-is-service-fabric-mesh"></a>什么是 Service Fabric 网格？
 

@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 11/30/2018
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: c4fcdcb8b20fdfb6f2314fc277ded4fdc52c2b99
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: dd84f9b3b68d7a34903241caed7f1f93e685fb57
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751424"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482516"
 ---
 # <a name="tutorial-secure-azure-sql-database-connection-from-app-service-using-a-managed-identity"></a>教程：使用托管标识确保从应用服务进行的 Azure SQL 数据库连接的安全
 
@@ -97,7 +97,7 @@ az webapp config connection-string set --resource-group myResourceGroup --name <
 
 在 Visual Studio 中，打开包管理器控制台，并添加 NuGet 包 [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication)：
 
-```PowerShell
+```powershell
 Install-Package Microsoft.Azure.Services.AppAuthentication -Version 1.1.0-preview
 ```
 

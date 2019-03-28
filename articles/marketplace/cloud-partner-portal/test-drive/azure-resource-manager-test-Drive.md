@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 615005e265f199cd6950123aa2af8b26f4fa4637
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2fe1a1fc1ff82415a5c2f88c72ae707b12cd5283
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57457242"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58541156"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure 资源管理器体验版
 
@@ -51,7 +51,7 @@ Azure 资源管理器 (Resource Manager) 模板是你的解决方案将其设计
 
 构建 Azure 资源管理器体验版的最重要环节是定义要让客户体验的方案。 这是一款防火墙产品吗？你是要演示它处理脚本注入攻击的功能多么强大吗？ 这是一款存储产品吗？你是要演示此解决方案压缩文件的功能是多么快速简捷吗？
 
-请务必花时间充分评估展示产品的最佳方式。 特别是围绕所需的所有资源必须，因为它可打包资源管理器模板充分更容易。
+请务必花费足够的时间评估展示您的产品的最佳方法什么。 特别是围绕所需的所有资源必须，因为它可打包资源管理器模板充分更容易。
 
 要具备以下体系结构才能继续进行防火墙示例：需要一个公共 IP URL 供服务使用，及另外一个公共 IP URL 供防火墙所保护的网站使用。 每个 IP 都部署在虚拟机上，并通过网络安全组和网络接口连接在一起。
 
@@ -61,7 +61,7 @@ Azure 资源管理器 (Resource Manager) 模板是你的解决方案将其设计
 
 体验版使用完全自动化模式运行部署，因此，体验版模板具有以下限制。
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>参数
 
 大多数模板都有一组参数。 参数定义了资源名称、资源大小（例如存储帐户类型或虚拟机大小）、用户名及密码、DNS 名称等。 使用 Azure 门户部署解决方案时，可以手动填充所有的这些参数、选择可用的 DNS 名称或存储帐户名称等。
 
@@ -95,7 +95,7 @@ Azure 资源管理器 (Resource Manager) 模板是你的解决方案将其设计
 | **password**    | 安全字符串    | 随机的新密码 | Lp!ACS\^2kh     |
 | 会话 ID   | 字符串          | 唯一的体验版会话 ID (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
-#### <a name="username"></a>username
+#### <a name="username"></a>用户名
 
 体验版使用部署包的基 URI 初始化此参数，因此，可以使用此参数构造包含到包内的任意文件的 URI。
 
@@ -122,7 +122,7 @@ Azure 资源管理器 (Resource Manager) 模板是你的解决方案将其设计
 }
 ```
 
-#### <a name="username"></a>username
+#### <a name="username"></a>用户名
 
 体验版使用随机的新用户名初始化此参数：
 
@@ -146,7 +146,7 @@ Azure 资源管理器 (Resource Manager) 模板是你的解决方案将其设计
 
 可以将随机的或恒定的用户名用于解决方案。
 
-#### <a name="password"></a>password
+#### <a name="password"></a>密码
 
 体验版使用随机的新密码初始化此参数：
 
@@ -263,7 +263,7 @@ Azure 资源管理器 (Resource Manager) 模板是你的解决方案将其设计
 
 需确保允许订阅在所选的各个区域中部署想要部署的所有资源。 同时，还需确保虚拟机映像在将要启用的所有区域中可用，否则，部署模板将不适用于某些区域。
 
-### <a name="outputs"></a>Outputs
+### <a name="outputs"></a>输出
 
 通常情况下，在使用资源管理器模板时，无需生成任何输出即可进行部署。 因为你知道用于填充模板参数的所有值，并且始终可以手动检查任意资源的属性。
 
@@ -415,7 +415,7 @@ Azure AD 应用 ID - 必填。下一步是创建并注册新应用程序。 我�
 1. 将角色设置为“参与者”。
 1. 键入 Azure AD 应用程序的名称，并选择要向其分配该角色的应用程序。
     ![添加权限](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. 单击“ **保存**”。
+1. 单击“保存” 。
 
 Azure AD 应用密钥 - 必填。最终的字段将会生成身份验证密钥。 在密钥下添加密钥说明，将持续时间设置为永不过期，然后选择“保存”。 必须避免使用已过期的密钥，否则，在生产环境中体验版将会中断。 复制此值，并将其粘贴到所需的体验版字段中。
 

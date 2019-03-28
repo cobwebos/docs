@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: tutorial
-ms.date: 10/16/2018
+ms.date: 03/21/2019
 ms.author: larryfr
-ms.openlocfilehash: 7f123187ea869931b0701fd9d68372deb0b272e1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: af1b96b4ab47053a6737893832b484372ed37e99
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55879065"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58351858"
 ---
 # <a name="tutorial-use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>教程：结合使用自定义视觉服务 ONNX 模型和 Windows ML（预览版）
 
@@ -51,7 +51,7 @@ ms.locfileid: "55879065"
 
 1. 按 `F5` 键，通过 Visual Studio 启动应用。 系统可能会提示启用“开发人员模式”。 有关详细信息，请参阅[启用设备以用于开发](https://docs.microsoft.com/windows/uwp/get-started/enable-your-device-for-development)文档。
 
-2. 当应用程序启动时，请使用相关按钮来选择要评分的图像。
+1. 当应用程序启动时，请使用相关按钮来选择要评分的图像。
 
 ## <a name="use-your-own-model"></a>使用自己的模型
 
@@ -65,8 +65,8 @@ ms.locfileid: "55879065"
 
 1. 在解决方案资源管理器中，右键单击 Assets 文件夹，然后选择“添加现有项”。 选择 ONNX 文件。
 
-1. 在解决方案资源管理器中，从 Assets 文件夹选择 ONNX 文件。 更改文件的以下属性： 
-    
+1. 在解决方案资源管理器中，从 Assets 文件夹选择 ONNX 文件。 更改文件的以下属性：
+
     * __生成操作__ -> __内容__
     * __复制到输出目录__ -> __如果较新则复制__
 

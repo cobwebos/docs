@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 02/14/2019
 ms.author: rogarana
-ms.openlocfilehash: c3a85a668a398047e7daef8a2e07be261ff644c5
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.openlocfilehash: 464f3db86c2b6dc4cfe51c74b224a8da4d512103
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447474"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485588"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-by-using-azure-powershell"></a>快速入门：使用 Azure PowerShell 上传、下载和列出 Blob
 
@@ -98,7 +98,7 @@ Get-AzStorageblobcontent -Blob "Image002.png" `
 
 在以下快速示例中，AzCopy 命令用于将名为 myfile.txt 的文件从 PowerShell 窗口上传到 mystoragecontainer 容器 。
 
-```PowerShell
+```powershell
 ./AzCopy `
     /Source:C:\myfolder `
     /Dest:https://mystorageaccount.blob.core.windows.net/mystoragecontainer `

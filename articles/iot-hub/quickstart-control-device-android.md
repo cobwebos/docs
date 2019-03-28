@@ -8,14 +8,14 @@ services: iot-hub
 ms.devlang: java
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 11/19/2018
+ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: a9e5b00ad84a57f49303f2e6f9389b4791fd0f60
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b7a46fab296fa8d585f1ae70dcf278e6686cca64
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58166940"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520592"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -119,7 +119,7 @@ az iot hub show-connection-string --name YourIoTHubName --output table
    > [!NOTE]
    > 如果项目同步失败，可能是由于以下某个原因：
    >
-   > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于你的 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
+   > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
    > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
 
 
@@ -174,7 +174,7 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
    > [!NOTE]
    > 如果项目同步失败，可能是由于以下某个原因：
    >
-   > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于你的 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
+   > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
    > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
 
 
