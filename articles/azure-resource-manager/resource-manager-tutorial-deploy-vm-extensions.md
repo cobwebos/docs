@@ -63,7 +63,7 @@ Install-WindowsFeature -name Web-Server -IncludeManagementTools
 Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 本教程中使用的模板称为[部署简单的 Windows VM](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/)。
 
 1. 在 Visual Studio Code 中，选择“文件” > “打开文件”。
-1. 在“文件名”框中粘贴以下 URL：https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json
+1. 在“文件名”框中粘贴以下 URL： https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-simple-windows/azuredeploy.json 
 
 1. 若要打开该文件，请选择“打开”。  
     该模板定义五个资源：
