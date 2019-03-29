@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/20/2018
 ms.author: monhaber
-ms.openlocfilehash: 2ce3a94b7ea4745ec3727e508cd10bb580a74c98
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cabd3d58c3b6bf76b294e1edf1cf94aad5d30f2f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401036"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578945"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
 安全中心从 Azure 虚拟机 (Vm)、 虚拟机规模集、 IaaS 容器和监视安全漏洞和威胁 （包括在本地） 非 Azure 计算机收集数据。 数据是使用 Microsoft Monitoring Agent 收集的，它从计算机中读取各种安全相关的配置和事件日志，然后将数据复制到工作区以进行分析。 此类数据的示例包括：操作系统类型和版本、操作系统日志（Windows 事件日志）、正在运行的进程、计算机名称、IP 地址和已登录的用户。 Microsoft Monitoring Agent 代理还将故障转储文件复制到你的工作区。
@@ -286,7 +286,7 @@ ms.locfileid: "58401036"
    3. 在公共配置和专用配置中填充以下值：
      
            $PublicConf = '{
-               "workspaceId": "WorkspaceID value",
+               "workspaceId": "WorkspaceID value"
            }' 
  
            $PrivateConf = '{

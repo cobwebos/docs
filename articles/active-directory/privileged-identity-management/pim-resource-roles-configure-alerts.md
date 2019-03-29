@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中为 Azure 资源角色配置安全警报 | Microsoft Docs
+title: 在 PIM 的 Azure Active Directory 中配置的 Azure 资源角色的安全警报 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure 资源角色配置安全警报。
 services: active-directory
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 538661df85ca0960992cb40a53b0e149c3b566b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 09e04e6b61d3387cb8c50c2af4eef2cfb4bec196
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56189525"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575551"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-pim"></a>在 PIM 中为 Azure 资源角色配置安全警报
-如果环境中有可疑活动或不安全活动，Azure 资源的 Privileged Identity Management (PIM) 会生成警报。 当警报触发时，它将显示在“警报”页上。 
+你的环境中存在可疑活动或不安全活动时，azure Active Directory (Azure AD) Privileged Identity Management (PIM) 将生成警报。 当警报触发时，它将显示在“警报”页上。 
 
 ![“警报”页](media/azure-pim-resource-rbac/RBAC-alerts-home.png)
 

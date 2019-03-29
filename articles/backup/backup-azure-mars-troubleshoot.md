@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
-ms.openlocfilehash: a9a445208c151a537c35fa7afafa48b19486828f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58008154"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621611"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -60,7 +60,7 @@ ms.locfileid: "58008154"
 ## <a name="backups-dont-run-according-to-the-schedule"></a>备份未按计划运行
 如果计划的备份未自动触发，而手动备份却能正常进行，请尝试以下操作：
 
-- 确保 Windows Server 备份计划与 Azure 文件和文件夹备份计划不冲突。
+- 请确保 Windows Server 备份计划不与 Azure 文件和文件夹备份计划冲突。
 - 转到“控制面板” > “管理工具” > “任务计划程序”。 展开“Microsoft”并选择“联机备份”。 双击“Microsoft-OnlineBackup”，然后转到“触发器”选项卡。确保状态设置为“已启用”。 如果不是，请选择“编辑”，并选中“已启用”复选框，然后单击“确定”。 在“常规”选项卡上，转到“安全选项”，并确保为运行任务而选择的用户帐户是服务器上的 **SYSTEM** 或**本地管理员组**。
 
 - 查看服务器上是否已安装 PowerShell 3.0 或更高版本。 若要检查 PowerShell 版本，请运行以下命令，并确认 *Major* 版本号是等于或大于 3。

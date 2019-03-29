@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中配置 Azure 资源角色设置 | Microsoft Docs
+title: 在 PIM 的 Azure Active Directory 中配置 Azure 资源角色设置 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure 资源角色设置。
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b8f793ee22796497b96a1acbd998397dbe2ac40d
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: f9db39e67cf3ee67b7990f227dbad7e3210cd14b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162129"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577146"
 ---
 # <a name="configure-azure-resource-role-settings-in-pim"></a>在 PIM 中配置 Azure 资源角色设置
 
-配置 Azure 资源角色设置时，可定义应用于 Azure AD Privileged Identity Management (PIM) 中的 Azure 资源角色分配的默认设置。 使用以下步骤配置审批工作流并指定谁可以批准或拒绝请求。
+在配置 Azure 资源角色设置时，定义应用于 Azure 资源角色分配，在 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 的默认设置。 使用以下步骤配置审批工作流并指定谁可以批准或拒绝请求。
 
 ## <a name="open-role-settings"></a>打开角色设置
 

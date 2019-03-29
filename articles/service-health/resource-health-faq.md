@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
-ms.openlocfilehash: c0de42935c1e46fd51e82a58083f85f6cee83ce3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884529"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579557"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -50,7 +50,7 @@ ms.locfileid: "55884529"
 在门户中，用户启动的操作用蓝色通知图标显示，而计划内和计划外事件则用红色警告图标显示。 [资源运行状况概述](Resource-health-overview.md)中提供了更多详细信息。  
 
 ## <a name="can-i-integrate-resource-health-with-my-monitoring-tools"></a>能否将资源运行状况与监视工具集成？
-资源运行状况是一项服务，旨在帮助你诊断和减轻影响资源的 Azure 服务问题。 虽然可以使用资源运行状况 API 来程序性地获取运行状态，但建议使用指标来监视资源。 一旦检测到问题，资源运行状况就可以帮助确定根本原因，指导完成解决问题所需的操作。 请访问 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/)，详细了解如何使用指标来检查资源。
+资源运行状况已[的预览支持](resource-health-alert-arm-template-guide.md)的基于活动日志警报。 使用的活动日志警报[操作组](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/action-groups)通知用户已触发警报。 操作组支持各种各样的通知通道，如电子邮件、 短信、 webhook 和 ITSM 操作。
 
 ## <a name="where-do-i-find-resource-health"></a>在何处查找资源运行状况？
 登录 Azure 门户以后，即可通过多种方式访问资源运行状况：
@@ -67,13 +67,7 @@ ms.locfileid: "55884529"
 检查资源的运行状况时，可直接在运行状态下单击“报告不正确的运行状态”。 在提交报告之前，可以选择提供更多详细信息，说明为什么你认为当前的运行状态不正确。
 
 ## <a name="is-resource-health-available-for-all-azure-regions"></a>资源运行状况是否适用于所有 Azure 区域？ 
-资源运行状况适用于除以下区域之外的所有 Azure 地理区域：
-- 美国政府弗吉尼亚州
-- US Gov 爱荷华州
-- 美国 DoD 东部
-- 美国 DoD 中部
-- 德国中部
-- 德国东北部
+资源运行状况是在所有 Azure 地理区域提供。
 
 ## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>资源运行状况与 Azure 状态或服务运行状况仪表板有何不同？
 资源运行状况提供的信息比 Azure 状态或服务运行状况仪表板提供的更具体。

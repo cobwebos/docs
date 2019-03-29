@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 61ebebaf61d1cbbc72f3e12b5ff516924cc9b8c7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b951da73006731b38b265dc3a2f542e670f9fbf6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317742"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621730"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -79,12 +79,14 @@ ms.locfileid: "58317742"
 与 v2 API 相比，v3 API 存在以下功能差距。 我们正在弥补这些差距。
 
 * [Premium Encoder](../previous/media-services-premium-workflow-encoder-formats.md) 和旧版[媒体分析处理器](../previous/media-services-analytics-overview.md)（Azure 媒体服务索引器 2 预览版、Face Redactor 等）不可通过 v3 访问。<br/>想要从媒体索引器 1 或 2 预览版迁移的客户可以立即使用 v3 API 中的 AudioAnalyzer 预设。  此新预设包含的功能比旧版媒体索引器 1 或 2 更多。 
-* 在 v2 API 中，Media Encoder Standard 的许多高级功能目前在 v3 中不可用，例如：
+* 许多[Media Encoder Standard v2 中的高级功能](../previous/media-services-advanced-encoding-with-mes.md)Api 目前不可在 v3，如：
     * 剪辑（适用于按需和实时方案）
     * 资产拼接
     * 叠加
     * 裁剪
     * 缩略图子画面
+    * 插入静音曲目时输入不包含音频
+    * 插入时输入的视频轨道不包含视频
 * 包含转码的实时事件目前不支持静态图像插入中间流，以及通过 API 调用执行的广告标记插入。 
 
 > [!NOTE]

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 370fb17e9f00d64db847e49c48c6f03cb329612d
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: ea2986ea2b2f561288773a7d187101f90f3e9fa9
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472933"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622121"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -48,9 +48,7 @@ Azure 机器学习 SDK 提供多种方式可以将部署训练的模型。 本�
 
 ## <a name="prerequisites"></a>必备组件
 
-- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
-
-- 已安装 Azure 机器学习服务工作区，以及适用于 Python 的 Azure 机器学习 SDK。 了解如何使用这些系统必备组件[创建 Azure 机器学习服务工作区](setup-create-workspace.md)。
+[!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 
 - 定型的模型。 如果没有已训练的模型，请使用[训练模型](tutorial-train-models-with-aml.md)教程中的步骤训练一个模型，并将其注册到 Azure 机器学习服务。
 

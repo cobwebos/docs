@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 3/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 31939b3b09fb36ac59efa1d7d7e302ac5f65a51c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d3ecfed766f8a1ba558e0b0cd4fe6a27c33e441
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117177"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579625"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接外部解决方案是使用通用事件格式
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以使用外部解决方案，可用于将日志文件保存在 Syslog 连接 Azure Sentinel。 如果你的设备，可将日志保存为 Syslog 通用事件格式 (CEF)，与 Azure Sentinel 的集成，可轻松地跨数据运行分析和查询。
@@ -48,13 +48,13 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 
 ## <a name="step-1-connect-to-your-cef-appliance-via-dedicated-azure-vm"></a>步骤 1：连接到专用 Azure VM 通过将 CEF 设备
 
-需要专用的 Linux 计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 你可以自动或手动部署代理。 自动部署基于资源管理器模板，并可以在仅当在专用的 Linux 计算机为要在 Azure 中创建新的 VM。
+需要专用的 Linux 计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 可以自动或手动部署代理。 自动部署基于资源管理器模板，并可以在仅当在专用的 Linux 计算机为要在 Azure 中创建新的 VM。
 
- ![在 Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
+ ![Azure 中的 CEF](./media/connect-cef/cef-syslog-azure.png)
 
-或者，你可以部署在另一个云中的 VM 上的现有的 Azure VM 上手动或在本地计算机上的代理。 
+或者，可以在现有的 Azure VM 上、在其他云中的 VM 上或者在本地计算机上手动部署代理。 
 
- ![在本地 CEF](./media/connect-cef/cef-syslog-onprem.png)
+ ![本地 CEF](./media/connect-cef/cef-syslog-onprem.png)
 
 ### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理
 
@@ -123,12 +123,12 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 3. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog `类型。
 1. 若要检查是否有错误或日志不会到达，查找范围 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
-
+6. 若要使用 CEF 事件相关的架构在 Log Analytics 中，搜索**CommonSecurityLog**。
 
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 CEF 设备连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 CEF 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 

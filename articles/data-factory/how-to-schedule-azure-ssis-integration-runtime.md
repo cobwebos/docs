@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 0b84f02d11e278950e4e44874e7b1af9da58f83f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54d7979f9fbe23e9372aa2702b46e42ca64496d2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092440"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621628"
 ---
 # <a name="how-to-start-and-stop-azure-ssis-integration-runtime-on-a-schedule"></a>如何按计划启动和停止 Azure-SSIS Integration Runtime
 本文介绍如何使用 Azure 数据工厂 (ADF) 计划 Azure-SSIS Integration Runtime (IR) 的启动和停止。 Azure-SSIS IR 是专用于执行 SQL Server Integration Services (SSIS) 包的 ADF 计算资源。 运行 Azure-SSIS IR 会产生相关成本。 因此，通常只有在需要在 Azure 中运行 SSIS 包时才运行 IR，而不再需要该包时则停止 IR。 可以使用 ADF 用户界面 (UI)/应用或 Azure PowerShell [手动启动或停止 IR](manage-azure-ssis-integration-runtime.md)。
@@ -94,7 +94,7 @@ ms.locfileid: "58092440"
   
     2. 对于“方法”，请选择“POST”。 
     3. 对于“正文”，请输入 `{"message":"Start my IR"}`。 
-    4. 有关**身份验证**，选择**MSI**若要使用在 ADF 托管的标识，请参阅[托管标识的数据工厂](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)一文，了解详细信息。
+    4. 有关**身份验证**，选择**MSI**若要使用在 ADF 托管的标识，请参阅[用于数据工厂托管标识](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity)一文，了解详细信息。
     5. 对于“资源”，请输入 `https://management.azure.com/`。
     
        ![ADFWeb 活动计划 SSIS IR](./media/how-to-schedule-azure-ssis-integration-runtime/adf-web-activity-schedule-ssis-ir.png)
@@ -348,7 +348,7 @@ ms.locfileid: "58092440"
 
 ## <a name="create-schedules-for-your-runbook-to-startstop-azure-ssis-ir"></a>为 Runbook 创建计划来启动/停止 Azure SSIS IR
 
-在上一部分，已创建了一个可以启动或停止 Azure SSIS IR 的 Azure 自动化 Runbook。 在本部分，将为 Runbook 创建两个计划。 配置第一个计划时，为“操作”指定“启动”。 类似地，在配置第二个计划时，请为“操作”指定“停止”。 有关创建计划的详细步骤，请参阅[创建计划](../automation/automation-schedules.md#creating-a-schedule)一文。
+在上一部分，已创建了一个可以启动或停止 Azure SSIS IR 的 Azure 自动化 Runbook。 在本部分，将为 Runbook 创建两个计划。 配置第一个计划时，为“操作”指定“启动”。 类似地，在配置第二个计划时，请为“操作”指定“停止”。 有关创建计划的详细步骤，请参阅[创建计划](../automation/shared-resources/schedules.md#creating-a-schedule)一文。
 
 1. 在“Runbook”窗口中选择“计划”，然后在工具栏上选择“+ 添加计划”。 
 

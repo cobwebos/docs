@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 03/28/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 08fdc20df70e4a97dd0cb99468354ef2b5c51f2b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e72400a759b976b1a2a6864b2fa7d7d91e16c62f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447037"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619282"
 ---
 # <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory"></a>访问 Azure blob 和队列使用 Azure Active Directory 进行身份验证
 
@@ -33,9 +33,9 @@ Azure CLI 和 PowerShell 现在支持使用 Azure AD 标识创建日志记录。
 
 ## <a name="rbac-roles-for-blobs-and-queues"></a>Blob 和队列的 RBAC 角色
 
-Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义了一组内置的 RBAC 角色，它们包含用于访问容器或队列的通用权限集。 
+Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义包含常见的用来访问 blob 和队列数据的权限集的内置 RBAC 角色的一组。 此外可以对 blob 和队列数据定义自定义角色进行访问。
 
-RBAC 角色分配到 Azure AD 安全主体，Azure 授予访问这些资源时为该安全主体。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可能是用户、 组、 应用程序服务主体，或[管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可能是用户、 组、 应用程序服务主体，或[管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 [!INCLUDE [storage-auth-rbac-roles-include](../../../includes/storage-auth-rbac-roles-include.md)]
 
@@ -45,12 +45,17 @@ RBAC 角色分配到 Azure AD 安全主体，Azure 授予访问这些资源时�
 - [授予对 Azure blob 和队列数据与使用 Azure CLI 的 RBAC 访问权限](storage-auth-aad-rbac-cli.md)
 - [授予对 Azure blob 和队列数据与使用 PowerShell 的 RBAC 访问权限](storage-auth-aad-rbac-powershell.md)
 
-### <a name="access-permissions-granted-by-rbac-roles"></a>通过 RBAC 角色授予访问权限 
+### <a name="access-permissions-granted-by-rbac-roles"></a>通过 RBAC 角色授予的访问权限 
 
 有关调用 Azure 存储操作所需的权限的详细信息，请参阅[用于调用 REST 操作的权限](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-rest-operations)。
 
+## <a name="resource-scope"></a>资源作用域
+
+[!INCLUDE [storage-auth-resource-scope-include](../../../includes/storage-auth-resource-scope-include.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
+- [Azure Active Directory 的 azure 存储支持基于访问控制已正式发布](https://azure.microsoft.com/blog/azure-storage-support-for-azure-ad-based-access-control-now-generally-available/)
 - [从应用程序中使用 Azure Active Directory 进行身份验证以访问 blob 和队列](storage-auth-aad-app.md)
 - [进行对 blob 和队列管理的标识访问 Azure 资源的身份验证](storage-auth-aad-msi.md)
 - Azure 文件仅支持使用 Azure AD 通过 SMB 进行身份验证，以用于加入域的 VM（预览版）。 若要了解有关在 Azure 文件中通过 SMB 使用 Azure AD 的信息，请参阅[通过 SMB 对 Azure 文件进行 Azure Active Directory身份验证概述（预览版）](../files/storage-files-active-directory-overview.md)。

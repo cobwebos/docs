@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 03/28/2019
 ms.author: juliako
-ms.openlocfilehash: cda029dd11e8cb4cb07e9fce7eef95d6d4d78d7e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 96c3a3eb5e4c07ad9cad8ea5060a27c0c33eec5f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960203"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621292"
 ---
 # <a name="cloud-upload-and-storage"></a>云上传和存储
 
@@ -40,6 +40,18 @@ ms.locfileid: "56960203"
 > [!Note]
 > 在不使用媒体服务 API 的情况下，不应该试更改媒体服务 SDK 生成的 BLOB 容器内容。
  
+## <a name="storage-side-encryption"></a>存储端加密
+
+若要保护静态资产，应通过存储端加密对资产进行加密。 下表显示了存储端加密在媒体服务 v3 中的工作方式：
+
+|加密选项|描述|媒体服务 v3|
+|---|---|---|
+|媒体服务存储加密| AES-256 加密，媒体服务管理的密钥|不支持<sup>(1)</sup>|
+|[静态数据的存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)|由 Azure 存储提供的服务器端加密，由 Azure 或客户管理的密钥|支持|
+|[存储客户端加密](https://docs.microsoft.com/azure/storage/common/storage-client-side-encryption)|由 Azure 存储提供的客户端加密，由 Key Vault 中的客户管理的密钥|不支持|
+
+<sup>1</sup> 在媒体服务 v3 中，仅当资产是使用媒体服务 v2 创建的时才支持存储加密（AES-256 加密）以实现向后兼容性。 这意味着 v3 会处理现有的存储加密资产，但不会允许创建新资产。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何将存储帐户附加到媒体服务帐户，请参阅[创建帐户](create-account-cli-quickstart.md)。

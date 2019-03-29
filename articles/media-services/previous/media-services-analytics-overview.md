@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: 0c090499ee6ae2aaaa14af18c3c38db28ecb2f3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aac9719f8d74c4b7bc283745ee2b8e01365a81f0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884721"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619996"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>媒体服务平台上的媒体分析 
 
@@ -40,8 +40,6 @@ ms.locfileid: "57884721"
 
 ### <a name="indexer"></a>索引器
 借助 Azure Media Indexer 可使内容可搜索并生成隐藏式字幕跟踪。 与以前的版本相比，Azure Media Indexer 2 预览版编制索引的速度更快，并且语言支持更广泛。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文、葡萄牙语和阿拉伯语。 有关详细信息和示例，请参阅[使用 Azure Media Indexer 2 处理视频](media-services-process-content-with-indexer2.md)。
-### <a name="hyperlapse"></a>Hyperlapse
-Microsoft Hyperlapse 结合了视频稳定化和慢镜头功能，可从长格式内容创建快速可用的视频。 除了创建慢镜头视频，还可以使用 Hyperlapse 将通过手机和摄影机拍摄的不稳定视频创建稳定的视频。 有关详细信息和示例，请参阅[使用 Azure Media Hyperlapse 创建 Hyperlapse 媒体文件](media-services-hyperlapse-content.md)。
 ### <a name="motion-detector"></a>动作检测器
 可以使用移动探测器来检测背景平稳的视频中的动作。 这样，便可以检查监控摄像机所检测到的动作事件是否存在误报。 有关详细信息和示例，请参阅 [Azure 媒体分析的动作检测](media-services-motion-detection.md)。
 ### <a name="face-detector"></a>面部检测器

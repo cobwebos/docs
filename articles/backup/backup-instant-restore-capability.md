@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 20f934ae418b0a5e37d3e619fabadc5cb6e23642
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 21aa01ec8382341de34cca743b9e088598872659
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285541"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578894"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -67,6 +67,8 @@ ms.locfileid: "58285541"
 在 Azure 门户中，您可以看到在中添加字段**VM 备份策略**边栏选项卡下的**即时还原**部分。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
+
+若要配置快照保留使用 Powershell，请参阅[本文档](backup-azure-vms-automation.md#configuring-instant-restore-snapshot-retention)。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
+ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6d9c5b080c491d3a6f35f591c69d4c39989b22a8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4ed0be3178f9d5d014e9e50c11d555b586ced765
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58099791"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579319"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
@@ -31,12 +31,12 @@ Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protecti
 - Endpoint Protection 运行状况：
 
   - 签名过期 - 已在 VM 和计算机上安装反恶意软件解决方案，但解决方案没有最新的反恶意软件签名。
-  - 无实时保护 - 已在 VM 和计算机上安装反恶意软件解决方案，但未配置实时保护。   可能是因为服务被禁用，也可能是因为安全中心由于解决方案不受支持而无法获取状态。 有关受支持的解决方案列表，请参阅[合作伙伴集成](security-center-partner-integration.md)。
+  - 无实时保护 - 已在 VM 和计算机上安装反恶意软件解决方案，但未配置实时保护。   可能是因为服务被禁用，也可能是因为安全中心由于解决方案不受支持而无法获取状态。 有关受支持的解决方案列表，请参阅[合作伙伴集成](security-center-os-coverage.md#supported-endpoint-protection-solutions)。
   - 未报告 - 已安装反恶意软件解决方案，但其不报告数据。
   - 未知 - 已安装反恶意软件解决方案，但其状态未知或报告未知错误。
 
     > [!NOTE]
-    > 请参阅[集成安全解决方案](security-center-partner-integration.md#integrated-azure-security-solutions)以获取与安全中心集成的终结点保护安全解决方案列表。
+    > 请参阅[集成安全解决方案](security-center-os-coverage.md#supported-endpoint-protection-solutions)以获取与安全中心集成的终结点保护安全解决方案列表。
     >
     >
 

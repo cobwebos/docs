@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 8973558e0841bfd0d6651a08d39da96b544156c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 223eff79d809a78d531d86d315fff80282cd29bb
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842441"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620149"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>成为云市场发布者
 
@@ -44,6 +44,8 @@ ms.locfileid: "57842441"
 注册后，请记下组织的 Microsoft 合作伙伴网络 ID。 在步骤 3 提交市场注册表时，将需要此 ID。
 *   了解 [Microsoft 合作伙伴网络](https://partner.microsoft.com/commercial)的优势
 *   如果组织已有成员资格，则可在注册过程中加入组织。 如果使用[合作伙伴中心](https://partnercenter.microsoft.com/partner/home)，则可在合作伙伴中心帐户中看到此 ID。 如果使用 [Partner Membership Center (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx)，则可在 Partner Membership Center 帐户中看到此 ID。 
+
+与 Microsoft 开具票证[合作伙伴支持](https://partner.microsoft.com/support)MPN 注册的问题。
 
 ---
 

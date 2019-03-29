@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中批准或拒绝 Azure AD 目录角色的请求 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中批准或拒绝 Azure AD 目录角色的请求。
+title: 批准或拒绝请求的 Azure AD PIM-Azure Active Directory 中的角色 |Microsoft Docs
+description: 了解如何批准或拒绝在 Azure AD Privileged Identity Management (PIM) 中的 Azure AD 角色的请求。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,32 +16,32 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68b0dba0280ce7875e797634a5dc2254cb889ad7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 125a9864eaf53ecdf035247ba23d7c95a8daf131
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244975"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576788"
 ---
-# <a name="approve-or-deny-requests-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure AD 目录角色的请求
+# <a name="approve-or-deny-requests-for-azure-ad-roles-in-pim"></a>批准或拒绝在 PIM 中的 Azure AD 角色的请求
 
-利用 Azure AD Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时审批时间范围不可配置。
+使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以配置要用于激活、 需要批准的角色并选择一个或多个用户或组作为委派的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时的审批时间范围不可供配置。
 
-按照本文中的步骤，审批或拒绝有关 Azure AD 目录角色的请求。
+按照这篇文章来批准或拒绝的 Azure AD 角色的请求中的步骤。
 
 ## <a name="view-pending-requests"></a>查看待处理请求
 
-有 Azure AD 目录角色请求等待审批时，委派的审批者将收到电子邮件通知。 可在 PIM 中查看这些待处理的请求。
+作为委派的审批者，您将获得电子邮件通知，当 Azure AD 角色请求正在等待你审批。 可在 PIM 中查看这些待处理的请求。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. 单击“Azure AD 目录角色”。
+1. 单击“Azure AD 角色”。
 
 1. 单击“审批请求”。
 
-    ![PIM Azure AD 目录角色 - 角色](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
+    ![PIM Azure AD 角色的角色](./media/azure-ad-pim-approval-workflow/pim-directory-roles-approve-requests.png)
 
     将看到待审批的请求列表。
 

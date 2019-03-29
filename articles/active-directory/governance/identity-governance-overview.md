@@ -1,6 +1,6 @@
 ---
-title: Azure AD 标识监管 | Microsoft Docs
-description: Azure AD 标识监管可以在组织的安全性和员工工作效率与适当的流程和可见性需求之间实现平衡。
+title: 标识管理的 Azure Active Directory |Microsoft Docs
+description: Azure Active Directory 标识管理可平衡的正确过程和可见性的安全和员工工作效率的组织的需要。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 304399905e9dfd37557a342248c829c1f940452b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56167562"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579710"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD 标识监管？
 
@@ -77,7 +77,7 @@ Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azur
 - [什么是访问评审？](access-reviews-overview.md)
 - [使用访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
 - [使用访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
-- [开始目录角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
+- [启动 Azure AD 角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>使用条款
 

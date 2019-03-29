@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中扩展或续订 Azure 资源角色分配 | Microsoft Docs
+title: 延期或续订 PIM-Azure Active Directory 中的 Azure 资源角色分配 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中扩展或续订 Azure 资源角色分配。
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79549c1b8ed578319e43fc1c4354c7cd76f71589
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8aef7d4ac37109233af4ffb364b6f3e4c9b291ac
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004224"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578384"
 ---
 # <a name="extend-or-renew-azure-resource-role-assignments-in-pim"></a>在 PIM 中扩展或续订 Azure 资源角色分配
 
-Azure 资源的 Privileged Identity Management (PIM) 引入了新控件用于管理 Azure 资源的访问和分配生命周期。 管理员可以使用开始和结束日期时间属性分配成员身份。 当分配结束时间即将到来时，PIM 会向受影响的用户或组发送电子邮件通知。 此外，它还向资源管理员发送电子邮件通知，确保能够保持相应的访问权限。 即使访问权限未延期，分配也可以续订，并在长达 30 天内以过期状态保持可见。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 引入了新控件用于管理 Azure 资源的访问和分配生命周期。 管理员可以使用开始和结束日期时间属性分配成员身份。 当分配结束时间即将到来时，PIM 会向受影响的用户或组发送电子邮件通知。 此外，它还向资源管理员发送电子邮件通知，确保能够保持相应的访问权限。 即使访问权限未延期，分配也可以续订，并在长达 30 天内以过期状态保持可见。
 
 ## <a name="who-can-extend-and-renew"></a>谁可以延期和续订？
 

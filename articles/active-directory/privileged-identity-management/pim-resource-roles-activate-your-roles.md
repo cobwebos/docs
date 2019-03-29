@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中激活 Azure 资源角色 | Microsoft Docs
+title: 激活我在 PIM 的 Azure Active Directory 中的 Azure 资源角色 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中激活 Azure 资源角色。
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 03/05/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b574e538c407040518f3905f8fbd9fa91d5dd067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 23fcba94a8f29d0f1bc458dd4779e5a2f0c06f38
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002052"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575496"
 ---
 # <a name="activate-my-azure-resource-roles-in-pim"></a>在 PIM 中激活 Azure 资源角色
 
-使用 Azure AD Privileged Identity Management (PIM)，Azure 资源的合格角色成员可以计划在将来的日期和时间激活。 他们还可选择特定激活持续时间，但不能超过最长持续时间（由管理员配置）。
+使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，Azure 资源的符合条件的角色成员可以计划在将来的日期和时间。 他们还可选择特定激活持续时间，但不能超过最长持续时间（由管理员配置）。
 
 本文面向需要在 PIM 中激活其 Azure 资源角色的成员。
 
@@ -38,7 +38,7 @@ ms.locfileid: "58002052"
 
 1. 单击“我的角色”。
 
-    ![Azure AD 目录角色和 Azure 资源角色 - 我的角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
+    ![Azure AD 角色和 Azure 资源角色-我的角色](./media/pim-resource-roles-activate-your-roles/resources-my-roles.png)
 
 1. 单击**Azure 资源角色**若要查看符合条件的 Azure 资源角色的列表。
 
@@ -84,7 +84,7 @@ ms.locfileid: "58002052"
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“我的角色”，查看你有资格获取的 Azure AD 目录角色和 Azure 资源角色列表。
+1. 单击**我的角色**，列出你有资格接受 Azure AD 角色和 Azure 资源角色。
 
 1. 单击**Azure 资源角色**。
 
@@ -100,9 +100,9 @@ ms.locfileid: "58002052"
 
 1. 打开 Azure AD Privileged Identity Management。
 
-1. 单击“我的请求”，查看你的 Azure AD 目录角色和 Azure 资源角色请求列表。
+1. 单击**我的请求**，列出你的 Azure AD 角色和 Azure 资源角色的请求。
 
-    ![Azure AD 目录角色和 Azure 资源角色 - 我的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
+    ![Azure AD 角色和 Azure 资源角色-我的请求](./media/pim-resource-roles-activate-your-roles/resources-my-requests.png)
 
 1. 向右滚动以查看“请求状态”列。
 
@@ -138,4 +138,4 @@ ms.locfileid: "58002052"
 ## <a name="next-steps"></a>后续步骤
 
 - [在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)
-- [在 PIM 中激活 Azure AD 目录角色](pim-how-to-activate-role.md)
+- [激活我在 PIM 中的 Azure AD 角色](pim-how-to-activate-role.md)

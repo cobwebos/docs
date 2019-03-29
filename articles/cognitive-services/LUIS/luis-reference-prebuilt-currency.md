@@ -1,5 +1,5 @@
 ---
-title: 货币预生成实体
+title: 货币预建的实体
 titleSuffix: Azure
 description: 本文包含了语言理解 (LUIS) 中的货币预构建实体信息。
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 76531e3ebba5519d9ddab7733abb2890003cbcd5
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 9efaaa6bdd0f2b51efca398464dbf08de56d831d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339906"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579268"
 ---
 # <a name="currency-prebuilt-entity-for-a-luis-app"></a>LUIS 应用的货币预生成实体
 预构建货币实体检测许多国家/地区中许多面额的货币，无论 LUIS 应用语言区域是怎样的。 此实体已定型，因此不需要将包含货币的陈述示例添加到应用程序意向中。 [许多语言区域](luis-reference-prebuilt-entities.md)都支持货币实体。 

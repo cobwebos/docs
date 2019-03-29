@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: ec35e383a182cf783c253b9242e6abb73e39385d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361092"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577316"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -46,11 +46,13 @@ ms.locfileid: "58361092"
 
 将模型注册到工作区。 使用已注册模型和评分脚本创建映像。 然后，可将映像部署到 Azure 容器实例、Azure Kubernetes 服务中或部署到现场可编程门阵列 (FPGA) 作为基于 REST 的 HTTP 终结点。 还可以将映像作为模块部署到 Azure IoT Edge 设备。
 
-你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，通过向用户分配以下角色来控制对该工作区的访问：
+你可以创建多个工作区，并且每个工作区可由多个用户共享。 共享工作区时，可以通过将用户分配到以下角色来控制访问权限：
 
 * 所有者
 * 参与者
 * 读取器
+
+有关这些角色的详细信息，请参阅[访问管理对 Azure 机器学习工作区](how-to-assign-roles.md)一文。
 
 创建新工作区时，它会自动创建工作区使用的几个 Azure 资源：
 

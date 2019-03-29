@@ -1,5 +1,5 @@
 ---
-title: PIM 中的电子邮件通知 - Azure | Microsoft Docs
+title: 电子邮件在 PIM 的 Azure Active Directory 中的通知 |Microsoft Docs
 description: 介绍 Azure AD Privileged Identity Management (PIM) 中的电子邮件通知。
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.author: rolyon
 ms.reviewer: hanki
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f2e5674413cb4057187b7573fde0bcd8899caab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9aa9da83a7a6e97f5b721dad550831fe2645ffd3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905165"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576941"
 ---
 # <a name="email-notifications-in-pim"></a>PIM 中的电子邮件通知
 
-可以通过 Azure AD Privileged Identity Management (PIM) 了解重要事件何时发生，例如何时分配或激活角色。 PIM 向你和其他参与者发送电子邮件通知，以便随时了解状况。 这些电子邮件可能还包含指向相关任务的链接，比如激活或续订角色。 本文介绍了这些电子邮件的外观、何时发送电子邮件，以及接收人员。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以了解重要的事件发生时，如分配或激活角色时。 PIM 向你和其他参与者发送电子邮件通知，以便随时了解状况。 这些电子邮件可能还包含指向相关任务的链接，比如激活或续订角色。 本文介绍了这些电子邮件的外观、何时发送电子邮件，以及接收人员。
 
 ## <a name="sender-email-address-and-subject-line"></a>发件人电子邮件地址和主题行
 
@@ -101,5 +101,5 @@ Azure AD 角色的 PIM 摘要电子邮件将发送给启用了 PIM 的特权角�
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
-- [在 PIM 中批准或拒绝 Azure AD 目录角色的请求](azure-ad-pim-approval-workflow.md)
+- [在 PIM 中配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)
+- [批准或拒绝在 PIM 中的 Azure AD 角色的请求](azure-ad-pim-approval-workflow.md)

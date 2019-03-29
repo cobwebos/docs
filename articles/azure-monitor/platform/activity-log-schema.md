@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
-ms.openlocfilehash: 63c649f0850c4ffc60ce2087e91f3f69917e4837
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56868538"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622206"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./diagnostic-logs-schema.md)的映射。
@@ -358,6 +358,7 @@ ms.locfileid: "56868538"
 | correlationId | 字符串格式的 GUID。 |
 | description |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
+| category | 始终"警报" |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称（如果是指标警报）。 对于其他警报类型，它是包含警报本身的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称（如果是指标警报）。 对于其他警报类型，它是警报本身的资源提供程序的名称。 |
@@ -556,6 +557,7 @@ ms.locfileid: "56868538"
 | description |安全事件的静态文本说明。 |
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
+| category | 始终"安全性" |
 | id |安全事件的唯一资源标识符。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | resourceGroupName |资源的资源组名称。 |

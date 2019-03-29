@@ -1,6 +1,6 @@
 ---
-title: 管理用户访问使用 Azure AD 访问评审 |Microsoft Docs
-description: 了解如何为成员身份的组或分配到应用程序使用 Azure Active Directory 访问评审管理用户的访问权限
+title: 管理使用访问评审的 Azure Active Directory 用户访问权限 |Microsoft Docs
+description: 了解如何使用 Azure Active Directory 访问评审管理（以组成员身份）用户访问权限或对应用程序的分配
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 656a1d387a345d9ffcc549c19a131de758e18c35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f8dee430b0ae1bf0c8cd7151272045467ce51c57
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57879984"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575056"
 ---
-# <a name="manage-user-access-with-azure-ad-access-reviews"></a>管理使用 Azure AD 访问评审的用户访问权限
+# <a name="manage-user-access-with-azure-ad-access-reviews"></a>使用 Azure AD 访问评审管理用户访问权限
 
 使用 Azure Active Directory (Azure AD) 可以轻松确保用户有适当的访问权限。 为此，可让用户本人或决策人参与访问评审，鉴定（或“证明”）用户的访问权限。 审阅者可基于 Azure AD 的建议，针对每个用户就继续访问的需求提供意见。 访问评审完成后，即可进行更改，并删除不再需要访问权限的用户的访问权限。
 

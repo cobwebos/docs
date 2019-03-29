@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 03/26/2019
 ms.author: tulasim
-ms.openlocfilehash: 0e9e8456bb493ad4591c0f2a22d28bdf342f09e1
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8fcc3ea8340a8645a1983eebb4a619904f884a19
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433104"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578622"
 ---
 # <a name="data-sources-for-qna-maker-content"></a>QnA Maker 内容的数据源
 
@@ -32,7 +32,11 @@ QnA Maker 从半结构化内容（例如常见问题解答、产品手册、指�
 
 ## <a name="data-source-locations"></a>数据源位置
 
-只有公共 URL 对所有数据源才有效。 请勿提交要求进行身份验证的数据源。 可从经过身份验证的站点下载该文件，然后使用文件上传选项来提取问题和答案。
+大多数数据源位置需要提供公共 Url 或文件，不需要身份验证。 
+
+[Sharepoint 数据源位置](../How-to/add-sharepoint-datasources.md)允许提供经过身份验证的文件。 Sharepoint 资源必须是文件，而非 web 页数。 
+
+如果必须经过身份验证的文件或 URL，一种替代做法是将文件从已经过身份验证的站点下载到本地计算机，然后将文件从本地计算机添加到知识库。 
 
 ## <a name="faq-urls"></a>常见问题解答 URL
 

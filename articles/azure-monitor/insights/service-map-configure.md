@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
-ms.openlocfilehash: 4d3de1d0b242017f7026873ccaeba547f85981fc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a152d9242c4d272800e2e159603c2554f1d89092
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482084"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622036"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 借助它，你可以按照自己的想法，将服务器作为提供重要服务的互连系统。 服务映射显示任何 TCP 连接的体系结构中服务器、进程和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -57,13 +57,11 @@ ms.locfileid: "58482084"
 - Windows 7
 
 ## <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
-以下部分列出了Red Hat Enterprise Linux、CentOS Linux 和 Oracle Linux（具有 RHEL 内核）上 Dependency Agent 支持的操作系统。  
+以下部分列出了 Linux 上的依赖关系代理支持的操作系统。  
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
 - 任何 Linux 分发版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
 - 不支持自定义内核（包括标准内核的重新编译）。
-- 支持 CentOSPlus 内核。
-- 本文后面部分会介绍 Oracle Unbreakable Enterprise Kernel (UEK)。
 
 ### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 

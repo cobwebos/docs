@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/06/2018
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: f292ad5802af6765ec26df7de1aa271e1214e0e9
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: a31380c8581503a340c55c374afc02c6e1fa290b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983007"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577163"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>用于容器的 Azure Monitor 概述
 
@@ -31,9 +31,12 @@ ms.locfileid: "56983007"
 用于容器的 Azure Monitor 包含几个预定义的视图，这些视图显示驻留的容器工作负载，以及影响受监视的 Kubernetes 群集性能运行状况的因素，以便你可以：  
 
 * 确定节点上运行的 AKS 容器及其平均处理器和内存利用率。 此信息可帮助标识资源瓶颈。
-* 确定 Azure 容器实例中托管的容器组及其容器的处理器和内存利用率。  * 确定容器在控制器或 Pod 中的驻留位置。 此信息可帮助了解控制器或 Pod 的整体性能。
+* 确定 Azure 容器实例中托管的容器组及其容器的处理器和内存利用率。  
+* 确定容器在控制器或 Pod 中的驻留位置。 此信息可帮助了解控制器或 Pod 的整体性能。
 * 查看在主机上运行的与支持 Pod 的标准过程无关的工作负荷的资源利用率。
 * 了解群集在平均负载和最重负载下的行为。 此信息有助于了解容量需求及确定群集可承受的最大负载。 
+
+此外可以配置警报以主动通知你，或在节点或容器上的 CPU 和内存使用率超过阈值时对其进行记录。  
 
 ## <a name="how-do-i-access-this-feature"></a>如何访问此功能？
 可以通过两种方式访问用于容器的 Azure Monitor：从 Azure Monitor 访问或直接从所选 AKS 群集访问。 在 Azure Monitor 中可以从全局角度查看已部署的所有容器（受到监视的容器和未受监视的容器），从而可以跨订阅和资源组进行搜索和筛选，然后从所选容器向下钻取到用于容器的 Azure Monitor。  否则，可以简单地直接从 AKS 页上选定的 AKS 容器访问该功能。  

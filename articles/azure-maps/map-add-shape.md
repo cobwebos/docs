@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 7598bbc879351752580247e46bc986ee84fa0d56
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2582b277238bbfbda29156c857e7bd91cf6fe059
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497238"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579285"
 ---
 # <a name="add-a-shape-to-a-map"></a>向地图添加形状
 
@@ -32,6 +32,16 @@ ms.locfileid: "58497238"
 在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 将创建 [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) 对象并将其添加到数据源。
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 呈现 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的线条对象。 最后一个代码块创建一个线条层并将其添加到地图。 请参阅 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和线条层并将其添加到地图，以确保完全加载地图后显示该线条。
+
+## <a name="add-symbols-along-a-line"></a>添加沿着一条线的符号
+
+此示例演示如何在地图上添加沿着一条线的箭头图标。 当使用符号层设置为"行"的"放置"选项时，这将呈现直线符号并旋转图标 (0 度 = right)。
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="显示行沿箭头" src="//codepen.io/azuremaps/embed/drBJwX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅笔<a href='https://codepen.io/azuremaps/pen/drBJwX/'>沿行显示箭头</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+</iframe>
 
 ## <a name="customize-a-line-layer"></a>自定义线条层
 
@@ -84,6 +94,16 @@ ms.locfileid: "58497238"
 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 是一系列线条。 请参阅 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。 第三个代码块创建多边形和线条层。
 
 最后一个代码块将多边形和线条层添加到地图。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和层并将其添加到地图，以确保完全加载地图后显示该多边形。
+
+## <a name="fill-a-polygon-with-a-pattern"></a>用图案填充多边形
+
+除了使用一种颜色填充多边形还可以使用映像模式。 加载到地图图像子画面资源映像模式，然后引用此映像`fillPattern`多边形层属性。
+
+<br/>
+
+<iframe height="500" style="width: 100%;" scrolling="no" title="多边形填充模式" src="//codepen.io/azuremaps/embed/JzQpYX/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅笔<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多边形填充图案</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+</iframe>
 
 ## <a name="customize-a-polygon-layer"></a>自定义多边形层
 

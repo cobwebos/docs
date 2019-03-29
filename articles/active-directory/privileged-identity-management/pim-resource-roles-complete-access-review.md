@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中完成 Azure 资源角色的访问评审 | Microsoft Docs
+title: 完成在 PIM 的 Azure Active Directory 中的 Azure 资源角色的访问评审 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中完成 Azure 资源角色的访问评审。
 services: active-directory
 documentationcenter: ''
@@ -15,15 +15,15 @@ ms.date: 04/02/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d81dc65274600359c3d886203b067b3a90b60cf
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 837be3ccdbd133f6bf372779dadff4d3c574a2e8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56160786"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578231"
 ---
 # <a name="complete-an-access-review-for-azure-resource-roles-in-pim"></a>在 PIM 中完成 Azure 资源角色的访问评审
-[访问评审开始](pim-resource-roles-start-access-review.md)后，特权角色管理员可以评审特权访问。 Azure 资源的 Privileged Identity Management (PIM) 会自动发送一封电子邮件来提示用户审阅其访问。 如果用户未收到电子邮件，可以向他们发送[如何执行访问评审](pim-resource-roles-perform-access-review.md)的相关说明。
+[访问评审开始](pim-resource-roles-start-access-review.md)后，特权角色管理员可以评审特权访问。 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 会自动发送一封电子邮件，提示用户审阅其访问权限。 如果用户未收到电子邮件，可以向他们发送[如何执行访问评审](pim-resource-roles-perform-access-review.md)的相关说明。
 
 访问评审期限结束，或者所有用户已完成其自评审后，请按照本文中的步骤管理评审并查看结果。
 

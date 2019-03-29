@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: 2995c08b2dc92f36061c6ba29be68b402b2d3ec0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d2fcdd4aa28a7d3b1a8e50629e5be1d88046a12b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876470"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621203"
 ---
 # <a name="integrate-other-services-with-sql-data-warehouse"></a>使用 SQL 数据仓库集成其他服务
 除了本身的核心功能以外，SQL 数据仓库还允许用户集成 Azure 中的其他许多服务。 这些服务包括：
@@ -58,6 +58,4 @@ Azure 流分析是复杂、完全托管的基础结构，用于处理和使用�
 
 有关详细信息，请参阅[与 Azure 流分析集成](sql-data-warehouse-integrate-azure-stream-analytics.md)。
 
-## <a name="next-steps"></a>后续步骤
-要与 Azure SQL 数据库集成，请参阅[配置 SQL 数据库弹性查询](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 

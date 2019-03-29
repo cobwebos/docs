@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c5be8af71fcbdf6f38f878c70180f38227070245
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: bb45062697b113b676f85381f0653c14ac8c0c67
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499319"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621223"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -46,7 +46,7 @@ ms.locfileid: "58499319"
 - Azure Monitor REST API
 - Azure 资源管理器模板
 
-当你启用指标和诊断日志记录时，需要指定收集诊断遥测数据的 Azure 资源目标。 可用选项包括：
+启用指标和诊断日志记录时，需要指定收集诊断遥测数据的 Azure 资源目标。 可用选项包括：
 
 - Azure SQL 分析
 - Azure 事件中心
@@ -72,11 +72,11 @@ ms.locfileid: "58499319"
 | [SQLInsights](#intelligent-insights-dataset)：包含性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 > [!IMPORTANT]
-> 弹性池和托管的实例都有其自己单独的诊断遥测数据从它们所包含的数据库。 这一点需要注意，即为每种资源，单独配置诊断遥测数据按如下所述。
+> 弹性池和托管的实例都有其自己单独的诊断遥测数据从它们所包含的数据库。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
 
 ## <a name="azure-portal"></a>Azure 门户
 
-可以使用**诊断设置**菜单为每个单一汇集在一起，或实例在 Azure 门户中配置的诊断遥测数据的流式处理的数据库。 此外，诊断遥测数据还可以配置单独的数据库的容器： 弹性池和托管的实例。 您可以设置要流式传输诊断遥测的以下目标：Azure 存储、 Azure 事件中心和 Azure Monitor 日志。
+可以使用**诊断设置**菜单为每个单一汇集在一起，或实例在 Azure 门户中配置的诊断遥测数据的流式处理的数据库。 此外，诊断遥测数据还可以配置单独的数据库的容器： 弹性池和托管的实例。 可设置以下目标来流式传输诊断遥测数据：Azure 存储、 Azure 事件中心和 Azure Monitor 日志。
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-elastic-pools"></a>配置弹性池的诊断遥测流
 
@@ -112,7 +112,7 @@ ms.locfileid: "58499319"
 1. 此外，配置想要在下一节中所述的以下步骤来监视弹性池内每个数据库的诊断遥测数据的流式处理。
 
 > [!IMPORTANT]
-> 除了配置弹性池的诊断遥测数据，您还需要配置诊断遥测的每个数据库在弹性池中，按如下所述。 
+> 除了为弹性池配置诊断遥测数据，还需为弹性池中的每个数据库配置诊断遥测数据，如下所述。 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>配置的一个数据库或弹性池中数据库的诊断遥测数据的流式处理
 
@@ -148,7 +148,7 @@ ms.locfileid: "58499319"
 
 | 资源 | 监视遥测数据 |
 | :------------------- | ------------------- |
-| **托管实例** | ResourceUsageStats 包含 Vcore 计数、 平均 CPU 百分比、 IO 请求数、 字节读取/写入、 保留存储空间，并使用存储空间。 |
+| **托管实例** | [ResourceUsageStats](#resource-usage-stats-for-managed-instance) 包含 vCore 计数、平均 CPU 百分比、IO 请求数、读取/写入的字节数、保留的存储空间和已使用的存储空间。 |
 
 若要配置的托管的实例和数据库实例的诊断遥测数据的流式处理，您将需要单独配置**同时**以下值：
 
@@ -261,7 +261,7 @@ ms.locfileid: "58499319"
 可以使用 Azure CLI 启用指标和诊断日志记录。
 
 > [!NOTE]
-> Azure CLI v1.0 支持脚本以启用诊断日志记录。 请注意这一次 CLI 2.0 版不受支持。
+> Azure CLI v1.0 支持通过脚本来启用诊断日志记录。 请注意，目前不支持 CLI v2.0。
 
 - 若要启用在存储帐户中存储诊断日志，请使用以下命令：
 
@@ -422,7 +422,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ## <a name="all-logs"></a>所有日志
 
-在下表中被公开的遥测数据可用于所有日志的详细信息。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
+适用于所有日志的遥测数据详见下面的表。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>托管实例的资源使用情况统计信息
 

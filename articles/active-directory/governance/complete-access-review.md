@@ -1,6 +1,6 @@
 ---
-title: 完成访问评审的组或 Azure AD 访问评审中的应用程序 |Microsoft Docs
-description: 了解如何完成访问评审的组成员或在 Azure AD 访问评审中的应用程序访问。
+title: 完成的组或应用程序-Azure Active Directory 访问评审 |Microsoft Docs
+description: 了解如何完成访问评审的组成员或在 Azure Active Directory 访问评审中的应用程序访问。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 05/02/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc5dbee47bd6a621b14b39858132ce229663481b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 4265a7e08eab079e55ce91b27142ec3e55b3f3e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729604"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579591"
 ---
-# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>完成访问评审的组或 Azure AD 访问评审中的应用程序
+# <a name="complete-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>完成访问评审的组或 Azure AD 中的应用程序访问评审
 
 管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。 Azure AD 会自动向评审者发送一封电子邮件，提示他们评审访问权限。 如果用户未收到一封电子邮件，您可以向他们发送说明[评审为组或应用程序的访问权限](perform-access-review.md)。 （注意，被指定为评审者但尚未接受邀请的来宾不会收到来自访问评审的电子邮件，因为他们在评审前必须先接受邀请。）访问评审期限结束后，或者管理员停止了访问评审后，请遵循本文中的步骤查看并应用结果。
 

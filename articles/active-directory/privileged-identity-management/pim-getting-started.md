@@ -1,5 +1,5 @@
 ---
-title: 开始使用 PIM - Azure |Microsoft Docs
+title: 开始使用 PIM 的 Azure Active Directory |Microsoft Docs
 description: 了解如何启用并开始在 Azure 门户中使用 Azure AD Privileged Identity Management (PIM)。
 services: active-directory
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26e94c9b56ba65e3a7c51c1a85e97f7521377bae
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 00a93b23b5967e8b6b881f5d1fe6adcd89b0f77b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57546851"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576735"
 ---
 # <a name="start-using-pim"></a>开始使用 PIM
 
@@ -38,7 +38,7 @@ ms.locfileid: "57546851"
 
 ## <a name="first-person-to-use-pim"></a>要使用 PIM 的第一个人
 
-如果你是第一个要在目录中使用 PIM 的人，系统会自动在目录中为你分配[安全管理员](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)和[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色。 只有特权角色管理员才能管理用户的 Azure AD Directory 角色分配。 另外，还可以选择运行[安全向导](pim-security-wizard.md)，该向导会引导你完成初始发现和分配体验。
+如果你是第一个要在目录中使用 PIM 的人，系统会自动在目录中为你分配[安全管理员](../users-groups-roles/directory-assign-admin-roles.md#security-administrator)和[特权角色管理员](../users-groups-roles/directory-assign-admin-roles.md#privileged-role-administrator)角色。 只有特权的角色管理员可以管理用户的 Azure AD 角色分配。 另外，还可以选择运行[安全向导](pim-security-wizard.md)，该向导会引导你完成初始发现和分配体验。
 
 ## <a name="enable-pim"></a>启用 PIM
 
@@ -108,7 +108,7 @@ ms.locfileid: "57546851"
 | **我的请求** | 显示要激活符合条件的角色分配的挂起的请求。 |
 | **审批请求** | 按用户显示你的目录中指定由你进行审批的要激活符合条件的角色的请求列表。 |
 | **审阅访问权限** | 列出指定要由你完成的活动访问审阅（无论你是审阅自己还是审阅其他人的访问权限）。 |
-| **Azure AD 角色** | 为特权角色管理员显示用来管理 Azure AD 目录角色分配的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
+| **Azure AD 角色** | 显示仪表板和特权的角色管理员用于管理 Azure AD 角色分配的设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
 | **Azure 资源** | 为特权角色管理员显示用来管理 Azure 资源角色分配的仪表板和设置。 此仪表板对非特权角色管理员禁用。 这些用户可以访问标题为“我的视图”的特殊仪表板。 “我的视图”仪表板仅显示正在访问此仪表板的用户的相关信息，而非整个租户的相关信息。 |
 
 ## <a name="add-a-pim-tile-to-the-dashboard"></a>将 PIM 磁贴添加到仪表板
@@ -133,5 +133,5 @@ ms.locfileid: "57546851"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)
+- [将 Azure AD PIM 中的角色分配](pim-how-to-add-role-to-user.md)
 - [在 PIM 中发现要管理的 Azure 资源](pim-resource-roles-discover-resources.md)

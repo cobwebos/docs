@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: c4b6b416d6a36938948573da7b9c3f5cac04bdcf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 591f7ed52a64d1005f1bb52e54eb3359da0e30a2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904893"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579642"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>将 Cisco ASA 设备连接 
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以为任何 Cisco ASA 设备连接 Azure Sentinel。 Cisco ASA 本机与集成 Azure Sentinel 来引入数据，以便即使 Cisco 设备不会保存为 CEF 日志，Azure Sentinel 引入它们处理 CEF 日志的方式相同。 与 Azure Sentinel 的集成，可轻松分析和查询所有日志文件数据从运行 Cisco ASA。 
@@ -34,9 +34,9 @@ ms.locfileid: "57904893"
 
 ## <a name="step-1-connect-your-cisco-asa-appliance-using-an-agent"></a>步骤 1：将 Cisco ASA 设备使用一个代理连接
 
-若要将 Cisco ASA 设备连接到 Azure Sentinel，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 你可以自动或手动部署代理。 仅在专用的计算机是否在 Azure 中创建新的 VM 提供了自动部署。 
+若要将 Cisco ASA 设备连接到 Azure Sentinel，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 可以自动或手动部署代理。 仅当专用计算机是在 Azure 中创建的新 VM 时，才能进行自动部署。 
 
-或者，你可以部署在另一个云中的 VM 上的现有的 Azure VM 上手动或在本地计算机上的代理。
+或者，可以在现有的 Azure VM 上、在其他云中的 VM 上或者在本地计算机上手动部署代理。
 
 若要查看网络图的这两个选项，请参阅[数据源连接](connect-data-sources.md)。
 
@@ -116,12 +116,13 @@ ms.locfileid: "57904893"
 3. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog `类型。
 1. 若要检查是否有错误或日志不会到达，查找范围 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
+6. 若要使用 Log Analytics 中的 Cisco 事件相关的架构，搜索**CommonSecurityLog**。
 
 
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Cisco ASA 设备连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 Cisco ASA 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 

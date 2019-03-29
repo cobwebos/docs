@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 23bc4d0df1c8124ec225ac31239c7acb3f1ab546
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541807"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577794"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法 
 
@@ -41,10 +41,12 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 
  - **模块**身份验证模式<br>
    独立于设备孪生，该模块进行身份验证。
-   此类型的身份验证由 Authentication.config 文件中定义所需的信息C#和 c。 LocalConfiguration.json
+   如果你想要使用通过安全模块 （仅适用于对称密钥） 的专用身份验证方法的安全代理，请使用此身份验证类型。
         
  - **设备**身份验证模式<br>
-    在此方法中，安全代理首先进行身份验证针对该设备。 初始身份验证后，ASC 为 IoT 代理执行**Rest**到 IoT 中心使用设备的身份验证数据的 Rest API 调用。 ASC 为 IoT 代理然后请求安全模块身份验证方法和数据从 IoT 中心。 在最后一步中，IoT 代理 ASC IoT 模块执行针对 ASC 的身份验证。    
+    在此方法中，安全代理首先进行身份验证使用的设备标识。 初始身份验证后，ASC 为 IoT 代理执行**REST**到 IoT 中心使用设备的身份验证数据的 REST API 调用。 ASC 为 IoT 代理然后请求安全模块身份验证方法和数据从 IoT 中心。 在最后一步中，IoT 代理 ASC IoT 模块执行针对 ASC 的身份验证。
+    
+    如果你想要重复使用现有的设备身份验证方法 （自签名证书或对称密钥） 的安全代理，请使用此身份验证类型。 
 
 请参阅[安全代理的安装参数](#security-agent-installation-parameters)若要了解如何配置。
                                 
@@ -55,14 +57,14 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 
 ## <a name="security-agent-installation-parameters"></a>安全代理的安装参数
 
-当[部署安全代理](select-deploy-agent.md)，必须作为参数提供身份验证详细信息。
+当[部署安全代理](how-to-deploy-agent.md)，必须作为参数提供身份验证详细信息。
 下表中记录了这些参数。
 
 
 |参数|描述|选项|
 |---------|---------------|---------------|
 |**identity**|身份验证模式| **模块**或**设备**|
-|**类型**|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
+|type|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
 |**filePath**|包含的证书或对称密钥的文件的绝对完整路径| |
 |**gatewayHostname**|IoT 中心的 FQDN|示例：ContosoIotHub.azure-devices.net|
 |**deviceId**|设备 ID|示例：MyDevice1|
@@ -111,5 +113,5 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 
 ## <a name="see-also"></a>另请参阅
 - [安全代理概述](security-agent-architecture.md)
-- [部署安全代理](select-deploy-agent.md)
+- [部署安全代理](how-to-deploy-agent.md)
 - [访问原始安全数据](how-to-security-data-access.md)

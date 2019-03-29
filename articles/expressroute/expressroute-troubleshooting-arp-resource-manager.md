@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: ganesr
 ms.custom: seodec18
-ms.openlocfilehash: 01eac27b63f9eaaf62e863cd023201c3eab4b74e
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 76e242adb07f4e6176bbdc6c03c75950e3732c2b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57432135"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622070"
 ---
 # <a name="getting-arp-tables-in-the-resource-manager-deployment-model"></a>在 Resource Manager 部署模型中获取 ARP 表
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ ARP 表示例：
 * 用于配置对等互连（Azure 专用、Azure 公共和 Microsoft）的 IP 地址范围。 查看 [ExpressRoute 路由要求页](expressroute-routing.md)中的 IP 地址分配示例，了解如何将 IP 地址映射到所在的一侧和 ExpressRoute 侧的接口。 可通过查看 [ExpressRoute 对等互连配置页](expressroute-howto-routing-arm.md)了解对等互连配置。
 * 网络团队/连接提供商提供的有关接口（用于这些 IP 地址）的 MAC 地址的信息。
 * 必须安装 Azure 的最新 PowerShell 模块（1.50 或更高版本）。
+
+> [!NOTE]
+> 如果服务提供商提供第 3 层且 ARP 表为空门户/下面的输出中，刷新线路配置在门户上使用刷新按钮。 此操作会将正确的线路配置应用到你的线路。 
+>
+>
 
 ## <a name="getting-the-arp-tables-for-your-expressroute-circuit"></a>获取 ExpressRoute 线路的 ARP 表
 本部分说明了如何使用 PowerShell 根据对等互连来查看 ARP 表。 你或连接提供商必须在执行下一步之前配置好对等互连。 每个线路有两个路径（主路径和辅助路径）。 可以独立地检查每个路径的 ARP 表。
@@ -143,7 +148,7 @@ ARP 表示例：
           0 Microsoft         65.0.0.2   aaaa.bbbb.cccc
 
 ### <a name="arp-table-when-on-premises--connectivity-provider-side-has-problems"></a>当本地端/连接提供商端出现问题时的 ARP 表
-如果问题与在本地或连接提供商可能会看到只有一个条目会出现在 ARP 表或在本地 MAC 地址会显示不完整。 此时会显示在 Microsoft 端使用的 MAC 地址与 IP 地址之间的映射。 
+如果本地或连接提供商有问题，则可能会看到只有一个条目出现在 ARP 表中，或者本地 MAC 地址会显示不完整。 此时会显示在 Microsoft 端使用的 MAC 地址与 IP 地址之间的映射。 
   
        Age InterfaceProperty IpAddress  MacAddress    
        --- ----------------- ---------  ----------    

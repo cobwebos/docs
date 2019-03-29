@@ -10,12 +10,12 @@ ms.reviewer: divswa, LADocs
 ms.topic: article
 tags: connectors
 ms.date: 01/15/2019
-ms.openlocfilehash: e196a7a0b1ad29462aa7e2fb60fcb5d07c57eea7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 660d785baf12052bddf5206d8641116c9ac606aa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886654"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575090"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>使用 SSH 和 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -27,10 +27,16 @@ ms.locfileid: "57886654"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-与 [SFTP 连接器](../connectors/connectors-create-api-sftp.md)相比，SFTP-SSH 连接器可以通过管理 50 MB 为一批的数据来读取或写入最大 *1 GB* 的文件。 对于大于 1 GB 的文件，操作可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 有关其他差异，请查看本文稍后的 [SFTP-SSH 与 SFTP 的比较](#comparison)。
-
 可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
+
+## <a name="limits"></a>限制
+
+* SFTP-SSH 操作可以读取或写入的文件*1 GB 或更小*的数据作为管理*50 MB 幅*，不 1 GB 部分。
+
+* 文件*超过 1 GB*，可以使用操作[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，SFTP-SSH 触发器不支持分块。
+
+有关更多的区别，查看[比较 SFTP-SSH 和 SFTP](#comparison)下一节中更高版本。
 
 <a name="comparison"></a>
 
@@ -38,23 +44,23 @@ ms.locfileid: "57886654"
 
 下面是 SFTP-SSH 连接器与 SFTP 连接器（SFTP-SSH 连接器具有其功能）之间的其他重要差异：
 
-* 使用 <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET**</a> 库，该库是支持 .NET 的开源安全外壳 (SSH) 库。 
+* 使用 <a href="https://github.com/sshnet/SSH.NET" target="_blank">**SSH.NET**</a> 库，该库是支持 .NET 的开源安全外壳 (SSH) 库。
 
   > [!NOTE]
   >
   > SFTP-SSH 连接器仅支持以下私钥、格式、算法和指纹：
-  > 
+  >
   > * **私钥格式**：采用 OpenSSH 和 ssh.com 格式的 RSA (Rivest Shamir Adleman) 和 DSA（数字签名算法）密钥
   > * **加密算法**：DES-EDE3-CBC、DES-EDE3-CFB、DES-CBC、AES-128-CBC、AES-192-CBC 和 AES-256-CBC
   > * **指纹**：MD5
 
-* 可读取或写入最大 1 GB 的文件，而 SFTP 连接器则不可以，但以 50 MB（而非 1 GB）为一批处理该数据。 对于大于 1 GB 的文件，操作也可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，触发器不支持分块。
+* 操作可以读取或写入文件*达 1 GB*相比 SFTP 连接器，而 50 MB 分块，而不是 1 GB 的句柄数据片段。 对于大于 1 GB 的文件，操作也可以使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，SFTP-SSH 触发器不支持分块。
 
 * 提供“创建文件夹”操作，用于在 SFTP 服务器上的指定路径中创建文件夹。
 
 * 提供“重命名文件”操作，用于在 SFTP 服务器上重命名文件。
 
-* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> 属性。 
+* 将 SFTP 服务器连接缓存最长 1 小时，这可以提高性能，并减少服务器的连接尝试次数。 若要设置此缓存行为的持续时间，请在 SFTP 服务器上编辑 SSH 配置中的 <a href="https://man.openbsd.org/sshd_config#ClientAliveInterval" target="_blank">**ClientAliveInterval**</a> 属性。
 
 ## <a name="prerequisites"></a>必备组件
 

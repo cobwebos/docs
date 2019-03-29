@@ -19,18 +19,18 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8eb762e8a18ea5de25413681894f692628493a2f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a15078c953c1fab40ad521eff079a623c93b9d9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842849"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577537"
 ---
 # <a name="add-custom-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加自定义分析器
 
 自定义分析器是[文本分析器](search-analyzers.md)的一种特定类型，包含现有 tokenizer 和可选筛选器的用户定义组合。 通过以新方式组合 tokenizer 和筛选器，可以在搜索引擎中自定义文本处理以得到特定结果。 例如，可以使用*字符筛选器*创建自定义分析器，以在标记文本输入之前删除 HTML 标记。
 
- 可以定义多个自定义分析器来改变筛选器组合，但每个字段只能使用一个分析器进行索引分析，一个分析器进行搜索分析。 有关自定义分析器外观的说明，请参见[自定义分析器示例](search-analyzers.md#Example1)。
+ 可以定义多个自定义分析器来改变筛选器组合，但每个字段只能使用一个分析器进行索引分析，一个分析器进行搜索分析。 有关自定义分析器外观的说明，请参见[自定义分析器示例](search-analyzers.md#Custom-analyzer-example)。
 
 ## <a name="overview"></a>概述
 

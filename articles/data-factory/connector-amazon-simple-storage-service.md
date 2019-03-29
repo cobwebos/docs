@@ -8,14 +8,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 03/28/2019
 ms.author: jingwang
-ms.openlocfilehash: 5a3da4d890cd5bdffa5373d2e1319009609283f2
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 6f531a814255b9171ff1767ede379bbd4f4a19b3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541632"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578163"
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>使用 Azure 数据工厂从 Amazon 简单存储服务复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -28,7 +28,7 @@ ms.locfileid: "57541632"
 
 可将数据从 Amazon S3 复制到任何支持的接收器数据存储。 有关复制活动支持作为源或接收器的数据存储列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)表。
 
-具体而言，此 Amazon S3 连接器支持按原样复制文件，或者使用[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。
+具体而言，此 Amazon S3 连接器支持按原样复制文件，或者使用[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md)分析文件。 它使用[AWS 签名版本 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html)到 S3 的请求进行身份验证。
 
 >[!TIP]
 >可以使用此 Amazon S3 连接器从**任何兼容 S3 的存储提供程序**（例如 [Google 云存储](connector-google-cloud-storage.md)）复制数据。 在链接的服务配置中指定相应的服务 URL。

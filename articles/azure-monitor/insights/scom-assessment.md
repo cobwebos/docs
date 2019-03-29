@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 5b4da39d56b86f79727590076ac60b87541643e1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 27b55af74a713c51655891df8c852ff44cd3744a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082834"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621764"
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>使用 System Center Operations Manager 运行状况检查（预览版）解决方案优化环境
 
@@ -297,7 +297,7 @@ System Center Operations Manager 运行状况检查解决方案的管理包中�
 
 *仅显示前 10 条建议的原因* 我们不会提供名目繁多的详尽任务列表，只是建议先按优先级着重实施建议的方法。 在解决这些建议后，其他建议将变为可用。 如果想要查看详细的列表，可以使用日志搜索查看所有建议。
 
-*有没有方法来忽略建议？* 是的，请参阅[忽略建议](#Ignore-recommendations)。
+*有没有方法来忽略建议？* 是的，请参阅[忽略建议](#ignore-recommendations)。
 
 
 ## <a name="next-steps"></a>后续步骤

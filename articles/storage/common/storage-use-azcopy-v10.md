@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/24/2019
 ms.author: artemuwka
 ms.subservice: common
-ms.openlocfilehash: ffc4a0c57681e877250c7be82f5160174178892a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3e96af95d952956af02acfd87d6d317bc29ed0
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486013"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574971"
 ---
 # <a name="transfer-data-with-azcopy-v10-preview"></a>使用 AzCopy v10 传输数据 （预览版）
 
@@ -65,7 +65,7 @@ AzCopy v10 不需要进行安装。 打开首选的命令行应用程序，并�
 > [Azure 存储资源管理器](https://azure.microsoft.com/features/storage-explorer/)，简化了管理的 Azure 存储数据的桌面客户端现在使用 AzCopy 来加速数据传输和传出 Azure 存储。
 >
 > 启用在存储资源管理器下的 AzCopy**预览版**菜单。
-> ![为 Azure 存储资源管理器中的传输引擎启用 AzCopy](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
+> ![在 Azure 存储资源管理器中启用 AzCopy 作为传输引擎](media/storage-use-azcopy-v10/enable-azcopy-storage-explorer.jpg)
 
 AzCopy v10 具有自有案可稽的语法。 当已登录到 Azure Active Directory 时，常规语法看起来如下所示：
 
@@ -175,8 +175,8 @@ AzCopy v10 具有自有案可稽的语法。 当已登录到 Azure Active Direct
 
 > [!NOTE] 
 > 使用`--delete-destination`时要注意的标志。 启用[软删除](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete)功能之前启用保持同步，以防止意外删除你的帐户中的删除行为。 
-
-> 当`--delete-destination`设置为 true，AzCopy 将删除中没有任何提示的目标用户的源中不存在的文件。 如果你想要系统提示确认，则使用`--delete-destination=prompt`。
+>
+> 将 `--delete-destination` 设置为 true 时，AzCopy 会在不提示用户的情况下，从目标中删除源中不存在的文件。 如果你想要系统提示确认，则使用`--delete-destination=prompt`。
 
 若要将本地文件系统同步到存储帐户，请使用以下命令：
 

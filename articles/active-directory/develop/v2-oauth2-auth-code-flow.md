@@ -13,17 +13,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/5/2019
+ms.date: 03/24/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02183abb60fe24b9ee9c769f7af696355966ab24
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 698dc61d42adb398376161480cf4d32180846c48
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551052"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577588"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 - OAuth 2.0 授权代码流
 
@@ -67,7 +67,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数    | 必需/可选 | 描述 |
 |--------------|-------------|--------------|
 | `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id`   | 必填    | 注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) 或 Azure 门户中的“应用注册(预览)”体验分配给应用的应用程序（客户端）ID。  |
+| `client_id`   | 必填    | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。  |
 | `response_type` | 必填    | 必须包括授权代码流的 `code` 。       |
 | `redirect_uri`  | 建议 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.microsoftonline.com/common/oauth2/nativeclient`。   |
 | `scope`  | 必填    | 希望用户同意的 [范围](v2-permissions-and-consent.md) 的空格分隔列表。 |
@@ -154,7 +154,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数  | 必需/可选 | 描述     |
 |------------|-------------------|----------------|
 | `tenant`   | 必填   | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
-| `client_id` | 必填  | 注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) 分配给应用的应用程序 ID。 |
+| `client_id` | 必填  | 应用程序 （客户端） ID [Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页分配给您的应用程序。 |
 | `grant_type` | 必填   | 必须是授权代码流的 `authorization_code`。   |
 | `scope`      | 必填   | 范围的空格分隔列表。 在此阶段中请求的范围必须相当于或为第一个阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，v2.0 终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `code`          | 必填  | 在流的第一个阶段中获取的 authorization_code。 |
@@ -267,11 +267,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | 参数     |                | 描述        |
 |---------------|----------------|--------------------|
 | `tenant`        | 必填     | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。   |
-| `client_id`     | 必填    | 应用注册门户 ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) 或 Azure 门户中的“应用注册(预览)”体验已分配给应用的**应用程序（客户端）ID**。  |
+| `client_id`     | 必填    | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。 |
 | `grant_type`    | 必填    | 必须是授权代码流的此阶段的 `refresh_token`。 |
 | `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于或者为原始 authorization_code 请求阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，v2.0 终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
-| `redirect_uri`  | 必填    |  一个`redirect_uri`客户端应用程序上注册。 |
+| `redirect_uri`  | 必填    |  一个在客户端应用程序上注册的 `redirect_uri`。 |
 | `client_secret` | Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 其不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。                                                                                                                                                    |
 
 #### <a name="successful-response"></a>成功的响应

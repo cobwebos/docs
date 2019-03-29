@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: ad005ff879ef5e4c0fb2fb72ce3062a5dd25d99a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486778"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621543"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>对于 Azure SQL 数据库中的托管实例的连接体系结构 
 
@@ -107,7 +107,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点是该
 
 | 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |80、443、12000|TCP     |任意              |Internet   |允许 |
+|管理  |80、443、12000|TCP     |任意              |AzureCloud  |允许 |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |允许 |
 
 > 请确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 如果入站和输出规则单独配置为每个端口，托管实例预配通过 ARM 部署可能会失败。 

@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 9ca55a1c977b887e8d1ea51186068e57627e78f1
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 46107797acad52e3df82d341750c52f99c81d63e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58542017"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578809"
 ---
-# <a name="introducing-asc-for-iot"></a>适用于 IoT 简介 ASC 
+# <a name="introducing-asc-for-iot"></a>适用于 IoT 简介 ASC
 
 > [!IMPORTANT]
 > Iot ASC 目前处于公共预览状态。
@@ -45,7 +45,7 @@ ms.locfileid: "58542017"
 
 ### <a name="adaptive-threat-prevention"></a>自适应威胁防护
 
-使用适用于 IoT 的 ASC 持续监控计算机、 网络和 Azure 服务，包括 Azure IoT 解决方案从边缘设备对应用程序的安全性。 您可以选择使用来自数百个内置安全评估或创建自己的 IoT 中心仪表板中心 ASC 中。 优化您的安全设置，并提高虚拟机、 网络、 应用和数据安全分数与可行的建议。 使用新添加的 IoT 功能，现在可以为你的 Azure IoT 解决方案减少受攻击面并可被利用前修复问题。 
+使用适用于 IoT 的 ASC 持续监控计算机、 网络和 Azure 服务，包括 Azure IoT 解决方案从边缘设备对应用程序的安全性。 您可以选择使用来自数百个内置安全评估或创建自己的 IoT 中心仪表板中心 ASC 中。 优化您的安全设置，并提高虚拟机、 网络、 应用和数据安全分数与可行的建议。 使用新添加的 IoT 功能，现在可以为你的 Azure IoT 解决方案减少受攻击面并可被利用前修复问题。
 
 ### <a name="intelligent-threat-detection-and-response"></a>智能威胁检测和响应
 

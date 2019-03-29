@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4c3c936a3d547389de3681b4f82f329c4978742d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: cf1d36458bab867e35fa23ae702a6f6f45d8dc60
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886615"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620574"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>在 Azure 自动化中启动 Runbook
 
@@ -39,7 +39,7 @@ ms.locfileid: "56886615"
 1. 在 Azure 门户中，选择“自动化”，并单击自动化帐户的名称。
 2. 在“中心”菜单中选择“Runbook”。
 3. 在“Runbook”页上，选择 Runbook 并单击“启动”。
-4. 如果 Runbook 包含参数，则系统会提示在文本框中提供每个参数的值。 有关参数的详细信息，请参阅 [Runbook 参数](#Runbook-parameters)。
+4. 如果 Runbook 包含参数，则系统会提示在文本框中提供每个参数的值。 有关参数的详细信息，请参阅 [Runbook 参数](#runbook-parameters)。
 5. 在“作业”页上，可以查看 runbook 作业的状态。
 
 ## <a name="start-a-runbook-with-powershell"></a>使用 PowerShell 启动 Runbook
@@ -69,7 +69,7 @@ While ($doLoop) {
 Get-AzureRmAutomationJobOutput –AutomationAccountName $AutomationAcct -Id $job.JobId -ResourceGroupName $ResourceGroup –Stream Output
 ```
 
-如果 Runbook 需要参数，则必须以[哈希表](https://technet.microsoft.com/library/hh847780.aspx)的形式提供参数。 哈希表的键必须与参数名称匹配，且值为参数值。 以下示例演示如何启动包含两个名称分别为 FirstName 和 LastName 的字符串参数、一个名为 RepeatCount 的整数和一个名为 Show 的布尔参数的 Runbook。 有关参数的其他信息，请参阅下面的 [Runbook 参数](#Runbook-parameters)。
+如果 Runbook 需要参数，则必须以[哈希表](https://technet.microsoft.com/library/hh847780.aspx)的形式提供参数。 哈希表的键必须与参数名称匹配，且值为参数值。 以下示例演示如何启动包含两个名称分别为 FirstName 和 LastName 的字符串参数、一个名为 RepeatCount 的整数和一个名为 Show 的布尔参数的 Runbook。 有关参数的其他信息，请参阅下面的 [Runbook 参数](#runbook-parameters)。
 
 ```azurepowershell-interactive
 $params = @{"FirstName"="Joe";"LastName"="Smith";"RepeatCount"=2;"Show"=$true}

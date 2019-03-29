@@ -7,23 +7,20 @@ manager: vijayts
 keywords: 还原备份; 如何还原; 恢复点;
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/28/2019
 ms.author: geg
-ms.openlocfilehash: 2253e729daedc3b130919913c1616449245f9cc1
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3b32418361b992b91aa96579a0cf1f84d8b9d312
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315379"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620404"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
 
 本文介绍如何从 [Azure 备份](backup-overview.md)恢复服务保管库中存储的恢复点还原 Azure VM 数据。
 
-若要还原 VM 请确保已创建所需[RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)权限。
 
-> [!NOTE]
-> 如果还没有[RBAC](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)你可以执行的权限[还原磁盘](backup-azure-arm-restore-vms.md#create-new-restore-disks)，并创建 VM 使用[部署模板](backup-azure-arm-restore-vms.md#use-templates-to-customize-a-restored-vm)功能。
 
 ### <a name="restore-options"></a>还原选项
 
@@ -39,6 +36,13 @@ Azure 备份提供多种方法用于还原 VM。
 > 还可以恢复 Azure VM 上的特定文件和文件夹。 [了解详细信息](backup-azure-restore-files-from-vm.md)。
 >
 > 如果运行[最新版本](backup-instant-restore-capability.md)的适用于 Azure VM 的 Azure 备份（称为“即时还原”），则快照最长将保留 7 天；在将备份数据发送到保管库之前，可以从快照还原 VM。 若要从过去 7 天的备份还原 VM，更快的做法是从快照而不是从保管库还原。
+
+## <a name="before-you-start"></a>开始之前
+
+若要还原的 VM （创建新的 VM） 请确保具有正确的基于角色的访问控制 (RBAC)[权限](backup-rbac-rs-vault.md#mapping-backup-built-in-roles-to-backup-management-actions)还原 VM 操作。
+
+如果你没有权限，则可以[还原磁盘](#restore-disks)，然后还原磁盘后，你可以[使用的模板](#use-templates-to-customize-a-restored-vm)生成作为要创建新的 VM 的还原操作的一部分。
+
 
 
 ## <a name="select-a-restore-point"></a>选择还原点
@@ -61,7 +65,7 @@ Azure 备份提供多种方法用于还原 VM。
 
 2. 为选定的还原选项指定设置。
 
-## <a name="create-new-create-a-vm"></a>新建 - 创建 VM
+## <a name="create-a-vm"></a>创建 VM
 
 作为[还原选项](#restore-options)之一，你可以使用基本的设置从还原点快速创建 VM。
 
@@ -76,7 +80,7 @@ Azure 备份提供多种方法用于还原 VM。
 6. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
 
 
-## <a name="create-new-restore-disks"></a>新建 - 还原磁盘
+## <a name="restore-disks"></a>还原磁盘
 
 作为[还原选项](#restore-options)之一，你可以从还原点快速创建磁盘。 然后可以使用该磁盘执行以下操作之一：
 
@@ -132,11 +136,11 @@ Azure 备份提供多种方法用于还原 VM。
 --- | ---
 **通过混合使用权益还原 VM** | 如果 Windows VM 使用[混合使用权益 (HUB) 许可](../virtual-machines/windows/hybrid-use-benefit-licensing.md)，请还原磁盘，并使用提供的模板（将“许可证类型”设置为“Windows_Server”）或 PowerShell 创建新的 VM。  创建 VM 后也可以应用此设置。
 **在发生 Azure 数据中心灾难期间还原 VM** | 如果保管库使用 GRS 并且 VM 的主数据中心出现故障，Azure 备份支持将已备份的 VM 还原到配对的数据中心。 在配对的数据中心选择一个存储帐户，然后像平时一样进行还原。 Azure 备份使用配对位置中的计算服务来创建已还原的 VM。 [详细了解](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)数据中心复原能力。
-**还原单个域中的单个域控制器 VM** | 像还原其他任何 VM 一样还原该 VM。 请注意：<br/><br/> 从 Active Directory 的角度来看，Azure VM 与任何其他 VM 类似。<br/><br/> 还可使用目录服务还原模式 (DSRM)，因此所有 Active Directory 恢复方案都是可行的。 [详细了解](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v)虚拟化域控制器的备份和还原注意事项。
-**还原单一域中的多个域控制器 VM** | 如果可以通过网络访问同一个域中的其他域控制器，则可以像还原任何 VM 一样还原域控制器。 对于域中剩余的最后一个域控制器，或者在隔离的网络中执行恢复，请使用[林恢复](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
+**还原单个域中的单个域控制器 VM** | 像还原其他任何 VM 一样还原该 VM。 请注意：<br/><br/> 从 Active Directory 的角度看，Azure VM 就像任何其他 VM。<br/><br/> 还可使用目录服务还原模式 (DSRM)，因此所有 Active Directory 恢复方案都是可行的。 [详细了解](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/virtualized-domain-controllers-hyper-v)虚拟化域控制器的备份和还原注意事项。
+**还原单一域中的多个域控制器 VM** | 如果在同一个域中的其他域控制器可以通过网络访问，可以与任何 VM 一样还原域控制器。 对于域中剩余的最后一个域控制器，或者在隔离的网络中执行恢复，请使用[林恢复](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **还原一个林中的多个域** | 建议使用[林恢复](https://docs.microsoft.com/windows-server/identity/ad-ds/manage/ad-forest-recovery-single-domain-in-multidomain-recovery)。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
-**还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#create-new-restore-disks)还原这些 VM。 此选项可以的 Vhd 复制到指定的存储帐户，并可以创建的 VM[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)负载均衡器，[多个 NIC](../virtual-machines/windows/multiple-nics.md)，或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)，根据你的配置。
+**还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项可以的 Vhd 复制到指定的存储帐户，并可以创建的 VM[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)负载均衡器，[多个 NIC](../virtual-machines/windows/multiple-nics.md)，或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)，根据你的配置。
 **NIC/子网的网络安全组 (NSG)** | Azure VM 备份支持备份和还原的 NSG 在 vnet、 子网和 NIC 级别的信息。
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作

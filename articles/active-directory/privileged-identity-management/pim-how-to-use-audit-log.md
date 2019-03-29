@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中查看 Azure AD 目录角色的审核历史记录 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中查看 Azure AD 目录角色的审核历史记录。
+title: 在 PIM 的 Azure Active Directory 中查看的 Azure AD 角色审核历史记录 |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中查看 Azure AD 角色审核历史记录。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 02/14/2017
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3b91e2c15e86cdda4daab27892fa7a2b6ed0c0e0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58008904"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576133"
 ---
-# <a name="view-audit-history-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中查看 Azure AD 目录角色的审核历史记录
-可以使用 Privileged Identity Management (PIM) 审核历史记录查看给定时间段内所有特权角色的所有用户分配和激活。 如果想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](../reports-monitoring/overview-reports.md)
+# <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中的 Azure AD 角色查看审核历史记录
+可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 审核历史记录以查看所有特权角色的在给定的时间段内的所有用户分配和激活。 如果想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](../reports-monitoring/overview-reports.md)
 
 ## <a name="navigate-to-audit-history"></a>导航到审核历史记录
 从 [Azure 门户](https://portal.azure.com)仪表板中，选择“Azure AD Privileged Identity Management”应用。 在此处，通过在 PIM 仪表板中依次单击“管理特权角色” > “审核历史记录”访问审核历史记录。

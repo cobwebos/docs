@@ -4,17 +4,17 @@ description: 将分析器分配到索引中的可搜索文本字段，以将默�
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 03/27/2019
 ms.author: heidist
 manager: cgronlun
 author: HeidiSteen
 ms.custom: seodec2018
-ms.openlocfilehash: 7306258b6a7eee66df0961b2b993d0bcc9de94b9
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 3e6f0a2b9b935df9b12cf9146ebf05f1b1c84855
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56343266"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578750"
 ---
 # <a name="analyzers-for-text-processing-in-azure-search"></a>用于 Azure 搜索中文本处理的分析器
 
@@ -40,7 +40,7 @@ Azure 搜索默认使用 [Apache Lucene 标准分析器 (standard lucene)](https
 
 下表描述了 Azure 搜索中可用的分析器。
 
-| 类别 | 说明 |
+| 类别 | 描述 |
 |----------|-------------|
 | [标准 Lucene 分析器](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | 默认。 无需任何规范或配置。 这种通用分析器适用于大多数语言和方案。|
 | 预定义分析器 | 以成品的形式提供，旨在按原样使用。 <br/>有两种类型：专用和语言特定。 之所以称作“预定义”分析器，是因为它们按名称引用，不需要进行额外的配置或自定义。 <br/><br/>需要对文本输入进行专业处理或最小处理时，请使用[专业（不区分语言）分析器](index-add-custom-analyzers.md#AnalyzerTable)。 非语言预定义分析器包括 Asciifolding、Keyword、Pattern、Simple、Stop 和 Whitespace。<br/><br/>当需要为各种语言提供丰富的语言支持时，请使用[语言分析器](index-add-language-analyzers.md)。 Azure 搜索支持 35 种 Lucene 语言分析器和 50 种 Microsoft 自然语言处理分析器。 |
@@ -97,16 +97,18 @@ Azure 搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字�
 
 [搜索分析器演示](https://alice.unearth.ai/)是第三方演示应用，它演示了对标准 Lucene 分析器、Lucene 英语分析器和 Microsoft 英语自然语言处理器的并排比较。 索引是固定的；它包含常见情景中的文本。 对于提供的每个搜索输入，每个分析器的结果将显示在相邻窗格中，使你了解每个分析器是如何处理同一个字符串的。 
 
-## <a name="examples"></a>示例
+<a name="examples"></a>
+
+## <a name="rest-examples"></a>REST 示例
 
 下方示例演示了几个主要方案的分析器定义。
 
-+ [自定义分析器示例](#Example1)
-+ [将分析器分配到字段的示例](#Example2)
-+ [混合用于索引和搜索操作的分析器](#Example3)
-+ [语言分析器示例](#Example4)
++ [自定义分析器示例](#Custom-analyzer-example)
++ [将分析器分配到字段的示例](#Per-field-analyzer-assignment-example)
++ [混合用于索引和搜索操作的分析器](#Mixing-analyzers-for-indexing-and-search-operations)
++ [语言分析器示例](#Language-analyzer-example)
 
-<a name="Example1"></a>
+<a name="Custom-analyzer-example"></a>
 
 ### <a name="custom-analyzer-example"></a>自定义分析器示例
 
@@ -180,7 +182,7 @@ Azure 搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字�
   }
 ~~~~
 
-<a name="Example2"></a>
+<a name="Per-field-analyzer-assignment-example"></a>
 
 ### <a name="per-field-analyzer-assignment-example"></a>每个字段的分析器分配示例
 
@@ -213,7 +215,7 @@ Azure 搜索允许通过附加的 **indexAnalyzer** 和 **searchAnalyzer** 字�
   }
 ~~~~
 
-<a name="Example3"></a>
+<a name="Mixing-analyzers-for-indexing-and-search-operations"></a>
 
 ### <a name="mixing-analyzers-for-indexing-and-search-operations"></a>混合用于索引和搜索操作的分析器
 
@@ -241,7 +243,7 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
   }
 ~~~~
 
-<a name="Example4"></a>
+<a name="Language-analyzer-example"></a>
 
 ### <a name="language-analyzer-example"></a>语言分析器示例
 
@@ -273,6 +275,69 @@ API 包括为索引和搜索指定不同分析器的其他索引属性。 必须
      ],
   }
 ~~~~
+
+## <a name="c-examples"></a>C#示例
+
+如果使用.NET SDK 代码示例，可以将附加这些示例以使用或配置分析器。
+
++ [分配内置分析器](#Assign-a-language-analyzer)
++ [配置分析器](#Define-a-custom-analyzer)
+
+<a name="Assign-a-language-analyzer"></a>
+
+### <a name="assign-a-language-analyzer"></a>将指定语言分析器
+
+用作任何分析器的是，而无需配置，为字段定义中指定。 不没有用于创建分析器构造任何要求。 
+
+此示例将 Microsoft 英语和法语分析器分配到描述字段。 它是从更大的 hotels 索引，创建的 hotels.cs 文件中使用酒店类定义的代码段[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)示例。
+
+调用[分析器](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzer?view=azure-dotnet)，并指定[AnalyzerName 类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername?view=azure-dotnet)，它提供所有支持 Azure 搜索中的文本分析器。
+
+```csharp
+    public partial class Hotel
+    {
+       . . . 
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.EnMicrosoft)]
+        [JsonProperty("description")]
+        public string Description { get; set; }
+
+        [IsSearchable]
+        [Analyzer(AnalyzerName.AsString.FrLucene)]
+        [JsonProperty("description_fr")]
+        public string DescriptionFr { get; set; }
+
+      . . .
+    }
+```
+<a name="Define-a-custom-analyzer"></a>
+
+### <a name="define-a-custom-analyzer"></a>定义自定义分析器
+
+当需要自定义或配置时，需要将分析器构造添加到索引。 你如何定义，您可以将它添加的字段定义中前面的示例所示。
+
+使用[CustomAnalyzer](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.customanalyzer?view=azure-dotnet)来创建对象。 有关更多示例，请参阅[CustomAnalyzerTests.cs](https://github.com/Azure/azure-sdk-for-net/blob/master/src/SDKs/Search/DataPlane/Search.Tests/Tests/CustomAnalyzerTests.cs)。
+
+```csharp
+{
+   var definition = new Index()
+   {
+         Name = "hotels",
+         Fields = FieldBuilder.BuildForType<Hotel>(),
+         Analyzers = new[]
+            {
+               new CustomAnalyzer()
+               {
+                     Name = "url-analyze",
+                     Tokenizer = TokenizerName.UaxUrlEmail,
+                     TokenFilters = new[] { TokenFilterName.Lowercase }
+               }
+            },
+   };
+
+   serviceClient.Indexes.Create(definition);
+```
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中配置 Azure AD 目录角色设置 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure AD 目录角色设置。
+title: 在 PIM 的 Azure Active Directory 中配置 Azure AD 角色设置 |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure AD 角色设置。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,34 +14,34 @@ ms.date: 11/30/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 761bb31ca51f29547f594af99f779665a255c0be
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b14cf76ec7b8b905c41792f4dc9a56e97dc0f7ba
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162537"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576856"
 ---
-# <a name="configure-azure-ad-directory-role-settings-in-pim"></a>在 PIM 中配置 Azure AD 目录角色设置
+# <a name="configure-azure-ad-role-settings-in-pim"></a>在 PIM 中配置 Azure AD 角色设置
 
-特权角色管理员可以自定义其组织中的 Azure AD Privileged Identity Management (PIM)，包括更改激活合格角色分配的用户的体验。
+特权的角色管理员可以自定义 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 在其组织中，包括更改激活合格角色分配的用户体验。
 
 ## <a name="open-role-settings"></a>打开角色设置
 
-遵循以下步骤可打开 Azure AD 目录角色的设置。
+请按照下列步骤以打开 Azure AD 角色的设置。
 
 1. 打开“Azure AD Privileged Identity Management”。
 
-1. 单击“Azure AD 目录角色”。
+1. 单击“Azure AD 角色”。
 
 1. 单击“设置”。
 
-    ![Azure AD 目录角色 - 设置](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
+    ![Azure AD 角色的设置](./media/pim-how-to-change-default-settings/pim-directory-roles-settings.png)
 
 1. 单击“角色”。
 
 1. 单击要配置其设置的角色。
 
-    ![Azure AD 目录角色 - 设置角色](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
+    ![Azure AD 角色的设置角色](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-role.png)
 
     在每个角色的设置页上，有多个可以配置的设置。 这些设置只影响作为**合格**分配（不是**永久**分配）的用户。
 
@@ -98,13 +98,13 @@ ms.locfileid: "56162537"
 
 1. 将“要求批准”设置为“启用”。 该窗格扩展选项以选择审批者。
 
-    ![Azure AD 目录角色 - 设置 - 需要审批](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
+    ![Azure AD 角色-设置-需要批准](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval.png)
 
     如果**没有**指定任何审批者，则特权角色管理员将成为默认审批者。 审批此角色的**所有**激活请求时都需要特权角色管理员。
 
 1. 若要指定审批者，请单击“选择审批者”。
 
-    ![Azure AD 目录角色 - 设置 - 需要审批](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
+    ![Azure AD 角色-设置-需要批准](./media/pim-how-to-change-default-settings/pim-directory-roles-settings-require-approval-select-approvers.png)
 
 1. 选择一个或多个审批者，然后单击“选择”。 可以选择用户或组。 建议至少选择 2 个审批者。 不允许自审批。
 
@@ -117,5 +117,5 @@ ms.locfileid: "56162537"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)
-- [在 PIM 中为 Azure AD 目录角色配置安全警报](pim-how-to-configure-security-alerts.md)
+- [将 Azure AD PIM 中的角色分配](pim-how-to-add-role-to-user.md)
+- [在 PIM 中配置 Azure AD 角色的安全警报](pim-how-to-configure-security-alerts.md)

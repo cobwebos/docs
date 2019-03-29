@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 1eba32683883e60ae48f4d6fec9c434c27ce55da
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541927"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575141"
 ---
 # <a name="asc-for-iot-frequently-asked-questions"></a>适用于 IoT 的 ASC 方面的常见问题  
 
@@ -51,7 +51,7 @@ Iot ASC 集成在 Azure IoT 中心安全性并提供对日常业务解决方案�
 
 ## <a name="do-i-have-to-be-an-azure-iot-customer"></a>我是否必须是 Azure IoT 客户？
 
-可以。 适用于 IoT 的 ASC 依赖于 Azure IoT 连接和基础结构。
+是的。 适用于 IoT 的 ASC 依赖于 Azure IoT 连接和基础结构。
 
 ## <a name="do-i-have-to-install-an-agent"></a>我是否需要安装代理？
 
@@ -77,7 +77,7 @@ IoT 安全代理 ASC 是开放源代码并在 GitHub 上在 32 位和 64 位 Win
 
 ## <a name="what-are-the-dependencies-and-prerequisites-of-the-agent"></a>依赖项和代理的先决条件是什么？
 
-适用于 IoT 的 ASC 支持各种不同的平台。 请参阅[受支持设备平台](select-deploy-agent.md)来验证对特定设备的支持。 
+适用于 IoT 的 ASC 支持各种不同的平台。 请参阅[受支持设备平台](how-to-deploy-agent.md)来验证对特定设备的支持。 
 
 ## <a name="which-data-is-collected-by-the-agent"></a>由代理收集哪些数据？
 
@@ -93,13 +93,13 @@ ASC 为 IoT 提供了可配置的代理，扫描、 数据缓冲区和创建自�
 
 ## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>是否会从 IoT 中心的配额使用代理消息？
 
-可以。 代理传输的数据以你的 IoT 中心配额计数。 
+是的。 代理传输的数据以你的 IoT 中心配额计数。 
 
-## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>接下来执行什么操作? 我已安装代理，并且看不到任何活动或日志
+## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>接下来要做什么？ 我已安装代理，并且看不到任何活动或日志
 
-1. 检查[代理类型适合你的设备的指定的操作系统平台](select-deploy-agent.md)
+1. 检查[代理类型适合你的设备的指定的操作系统平台](how-to-deploy-agent.md)
 
-1. 确认[在设备上运行代理](concept-agent-configuration.md)。
+1. 确认[在设备上运行代理](how-to-agent-configuration.md)。
 
 2. 检查[服务已成功启用](quickstart-onboard-iot-hub.md)到**安全**在 IoT 中心。 
 
@@ -129,7 +129,7 @@ ASC 为 IoT 提供了可配置的代理，扫描、 数据缓冲区和创建自�
 
 ## <a name="can-i-create-my-own-alerts"></a>可以创建我自己的警报？
 
-可以。 可以在组预先确定的行为，例如 IP 地址和打开的端口上设置自定义的警报。 请参阅[创建自定义警报](quickstart-create-custom-alerts.md)若要了解有关自定义警报以及如何使它们的详细信息。 
+是的。 可以在组预先确定的行为，例如 IP 地址和打开的端口上设置自定义的警报。 请参阅[创建自定义警报](quickstart-create-custom-alerts.md)若要了解有关自定义警报以及如何使它们的详细信息。 
 
 ## <a name="where-can-i-see-logs-can-i-customize-logs"></a>在何处可以查看日志？ 可以自定义日志？
 

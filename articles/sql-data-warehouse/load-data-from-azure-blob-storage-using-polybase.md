@@ -2,20 +2,20 @@
 title: 教程：将纽约出租车数据加载到 Azure SQL 数据仓库 | Microsoft Docs
 description: 教程使用 Azure 门户和 SQL Server Management Studio 将纽约市出租车数据从公共 Azure Blob 加载到 Azure SQL 数据仓库。
 services: sql-data-warehouse
-author: ckarst
+author: mlee3gsd
 manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 09/12/2018
-ms.author: cakarst
+ms.date: 03/27/2019
+ms.author: mlee3gsd
 ms.reviewer: igorstan
-ms.openlocfilehash: 979488009f7afa2ccae3993d756e92e1ae15d5a0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 57ca749aec2a72379e92c46764eb9b6558653e29
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55466519"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620183"
 ---
 # <a name="tutorial-load-new-york-taxicab-data-to-azure-sql-data-warehouse"></a>教程：将纽约出租车数据加载到 Azure SQL 数据仓库
 
@@ -60,7 +60,7 @@ ms.locfileid: "55466519"
    | ------- | --------------- | ----------- | 
    | **数据库名称** | mySampleDataWarehouse | 如需有效的数据库名称，请参阅 [Database Identifiers](/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 | 
    | **订阅** | 你的订阅  | 有关订阅的详细信息，请参阅[订阅](https://account.windowsazure.com/Subscriptions)。 |
-   | **资源组** | myResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
+   | **资源组** | MyResourceGroup | 如需有效的资源组名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
    | **选择源** | 空白数据库 | 指定创建空白数据库。 请注意，数据仓库是一种数据库。|
 
     ![创建数据仓库](media/load-data-from-azure-blob-storage-using-polybase/create-data-warehouse.png)
@@ -80,7 +80,7 @@ ms.locfileid: "55466519"
 
 6. 单击“性能级别”，指定数据仓库是 Gen1 还是 Gen2，以及数据仓库单位的数量。 
 
-7. 针对本教程，请选择 SQL 数据仓库的“Gen1”。 滑块默认设置为“DW1000c”。  请尝试上下移动滑块，以查看其工作原理。 
+7. 对于本教程中，选择**第 2 代**的 SQL 数据仓库。 滑块设置为**DW1000c**默认情况下。  请尝试上下移动滑块，以查看其工作原理。 
 
     ![配置性能](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
@@ -150,7 +150,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     | ------------ | --------------- | ----------- | 
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
     | 服务器名称 | 完全限定的服务器名称 | 该名称应类似于 mynewserver-20180430.database.windows.net。 |
-    | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+    | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
     | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 

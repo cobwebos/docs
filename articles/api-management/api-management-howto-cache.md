@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: 39284805d9b9b5c10f5e211dc7d4c461d15cc6bc
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a0459eb67b5a79219e556cb03473a5ddf691b49d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763531"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577010"
 ---
 # <a name="add-caching-to-improve-performance-in-azure-api-management"></a>添加缓存以提高 Azure API 管理中的性能
 
 API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减少 API 延迟、带宽消耗和不经常更改数据的 web 服务负载。
- 
+
 若要更详细地了解缓存，请参阅 [API 管理缓存策略](api-management-caching-policies.md)和 [Azure API 管理中的自定义缓存](api-management-sample-cache-by-key.md)。
 
 ![缓存策略](media/api-management-howto-cache/cache-policies.png)
@@ -59,7 +59,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
 6. 选择屏幕顶部的“设计”选项卡。
 7. 在“入站处理”部分中，单击 **</>** 图标。
 
-    ![代码编辑器](media/api-management-howto-cache/code-editor.png) 
+    ![代码编辑器](media/api-management-howto-cache/code-editor.png)
 
 8. 在 **inbound** 元素中添加以下策略：
 
@@ -76,7 +76,7 @@ API 管理中的操作可以配置为响应缓存。 响应缓存可以显著减
     **持续时间** 指定缓存响应的过期时间间隔。 此示例中的时间间隔为 **20** 秒。
 
 > [!TIP]
-> 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `cache-preference` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
+> 如果使用的是外部缓存，如[在 Azure API 管理中使用外部 Azure Redis 缓存](api-management-howto-cache-external.md)中所述，可能需要指定缓存策略的 `caching-type` 属性。 有关更多详细信息，请参阅 [API 管理缓存策略](api-management-caching-policies.md)。
 
 ## <a name="test-operation"> </a>调用操作和测试缓存
 若要查看作用的缓存，请从开发人员门户调用操作。

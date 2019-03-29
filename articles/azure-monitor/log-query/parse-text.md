@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/04/2018
 ms.author: bwren
-ms.openlocfilehash: 9897fbb3f5efe1f5255992e4894ea22041595263
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: ad4839a1b9e951a2bb206518254826a066330000
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268186"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620853"
 ---
 # <a name="parse-text-data-in-azure-monitor-logs"></a>分析 Azure Monitor 日志中的文本数据
 Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息。 将此数据分析为多个属性可以更轻松地在查询中进行使用。 一个常见示例是收集在单个属性中包含多个值的整个日志项目的[自定义日志](../../log-analytics/log-analytics-data-sources-custom-logs.md)。 通过为不同值创建单独属性，可以对每个值进行搜索和聚合。
@@ -55,7 +55,7 @@ Azure Monitor 收集的某些日志数据会在单个属性中包括多条信息
  
 此方法的缺点包括以下这些：
 
-- 需要更复杂的查询。 这可以通过使用[函数模拟表](#Use-function-to-simulate-a-table)来进行缓解。
+- 需要更复杂的查询。 这可以通过使用[函数模拟表](#use-function-to-simulate-a-table)来进行缓解。
 - 必须在多个查询中复制分析逻辑。 可以通过函数共享某些逻辑。
 - 在对非常大的记录集（数十亿个记录）运行复杂逻辑时可能会形成开销。
 

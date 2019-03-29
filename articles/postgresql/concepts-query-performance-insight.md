@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/26/2019
-ms.openlocfilehash: 69963f34cb49482cc7eae25320a6a3a5f176f8dd
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 03/28/2019
+ms.openlocfilehash: 56abdd819e78312e64209078c3966826385df7bc
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486573"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620727"
 ---
 # <a name="query-performance-insight"></a>查询性能见解 
 
@@ -28,11 +28,11 @@ Query Performance Insight 可帮助你快速确定运行时间最长的查询、
 ## <a name="viewing-performance-insights"></a>查看性能见解
 Azure 门户中的 [Query Performance Insight](concepts-query-performance-insight.md) 视图将显示来自查询存储的关键信息的可视化效果。 
 
-在 Azure Database for PostgreSQL 服务器的门户页面中，选择菜单栏的“支持 + 疑难解答”部分下的“Query Performance Insight”。
+在 Azure Database for PostgreSQL 服务器的门户页上，选择**查询性能见解**下**智能性能**菜单条形的一部分。
 
 ![Query Performance Insight 长时间运行的查询](./media/concepts-query-performance-insight/query-performance-insight-landing-page.png)
 
-“长时间运行查询”选项卡按平均每次执行持续时间显示前 5 个查询，每隔 15 分钟聚合一次。 可以通过从“查询数量”下拉列表中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
+**长时间运行的查询**选项卡按每次执行，平均持续时间显示前五个查询在 15 分钟的时间间隔中聚合。 可以通过从“查询数量”下拉列表中进行选择来查看更多查询。 执行此操作时，特定查询 ID 的图表颜色可能会更改。
 
 可以在图表中单击并拖动以缩小到特定的时间窗口。 或者，使用放大和缩小图标分别查看更短或更长的时间段。
 
@@ -40,7 +40,7 @@ Azure 门户中的 [Query Performance Insight](concepts-query-performance-insigh
 
 选择“等待统计信息”选项卡以查看服务器中等待次数的相应可视化效果。
 
-![Query Performance Insight 等待统计信息](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
+![查询性能见解等待统计信息](./media/concepts-query-performance-insight/query-performance-insight-wait-statistics.png)
 
 ## <a name="next-steps"></a>后续步骤
 - 了解有关如何在 Azure Database for PostgreSQL 中进行[监视和优化](concepts-monitoring.md)的详细信息。

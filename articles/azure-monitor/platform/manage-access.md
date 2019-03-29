@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 6990bed4065183ecabb502ea90b5ddf26db563b4
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500179"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577240"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理日志数据和 Azure Monitor 中的工作区
 Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问，需要对工作区执行各种管理任务。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
@@ -300,10 +300,10 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 ```
     "Actions":  [
-        "Microsoft.OperationalInsights/workspaces/query/*/read"
+        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
     ],
     "NotActions":  [
-        "Microsoft.OperationalInsights/workspaces/query/SecurityBaseline/read"
+        "Microsoft.OperationalInsights/workspaces/query/*/read"
     ],
 ```
 

@@ -1,5 +1,5 @@
 ---
-title: 使用 PIM 所要满足的许可证要求 - Azure | Microsoft Docs
+title: 许可证要求要使用 Azure Active Directory 的 PIM-|Microsoft Docs
 description: 介绍使用 Azure AD Privileged Identity Management (PIM) 所要满足的许可要求。
 services: active-directory
 documentationcenter: ''
@@ -17,18 +17,18 @@ ms.date: 01/16/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7b7aa010b3001045566bc55fb440a2171145881
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 40e16209a185623b6e15650f70141edd6394e337
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177240"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576142"
 ---
 # <a name="license-requirements-to-use-pim"></a>使用 PIM 所要满足的许可证要求
 
 若要使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，目录必须具有有效的许可证。 此外，必须将许可证分配给管理员和相关用户。 本文介绍使用 PIM 所要满足的许可证要求。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用 PIM，目录必须具有以下付费或试用许可证之一：
 
@@ -45,7 +45,7 @@ ms.locfileid: "56177240"
 - 其 Azure AD 角色由 PIM 管理的管理员
 - 其 Azure 资源角色由 PIM 管理的管理员
 - 已分配到“特权角色管理员”角色的管理员
-- 已分配到由 PIM 管理的目录角色的合格用户
+- 使用 PIM 管理 Azure AD 角色的合格分配用户
 - 能够在 PIM 中批准/拒绝请求的用户
 - 已通过实时或直接（基于时间）分配方法分配到 Azure 资源角色的用户  
 - 已分配到访问评审的用户

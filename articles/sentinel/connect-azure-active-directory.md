@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/30/2019
 ms.author: rkarlin
-ms.openlocfilehash: 315b18feb74862bbeca6ff8265ee003fbad48595
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242303"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575124"
 ---
 # <a name="collect-data-from-azure-active-directory"></a>从 Azure Active Directory 中收集数据
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Azure Sentinel，可从中收集数据[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)和其流式处理到 Azure Sentinel。 你可以选择流[登录日志](../active-directory/reports-monitoring/concept-sign-ins.md)并[审核日志](../active-directory/reports-monitoring/concept-audit-logs.md)。
@@ -42,12 +42,12 @@ Azure Sentinel，可从中收集数据[Azure Active Directory](../active-directo
 
 2. 你想要流式传输到 Azure Sentinel 的日志，旁边单击**Connect**。
 
-
+6. 若要使用 Log Analytics 中的 Azure AD 警报相关的架构，搜索**SigninLogs**并**AuditLogs**。
 
 
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Azure AD 连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 Azure AD 连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。

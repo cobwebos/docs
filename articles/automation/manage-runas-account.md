@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/12/2018
+ms.date: 03/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b3c9f2f8671d5a7aa313a9f49e07230a4f9b6220
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af67109fb7f55f365cd71714a3eefab2336b636a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109335"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578605"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>管理 Azure 自动化运行方式帐户
 
@@ -30,8 +30,10 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
   * 在指定的自动化帐户中创建名为 *AzureRunAsConnection* 的自动化连接资产。 该连接资产保存 applicationId、tenantId、subscriptionId 和证书指纹。
 
 * **Azure 经典运行方式帐户** - 此帐户用于经典部署模型资源。
+  * 在订阅中创建管理证书
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsCertificate* 的自动化证书资产。 该证书资产保存管理证书使用的证书私钥。
   * 在指定的自动化帐户中创建名为 *AzureClassicRunAsConnection* 的自动化连接资产。 该连接资产保存订阅名称、subscriptionId 和证书资产名称。
+  * 必须创建或续订订阅的共同管理员
   
   > [!NOTE]
   > Azure 云解决方案提供商 (Azure CSP) 订阅仅支持 Azure 资源管理器模型，因此非 Azure 资源管理器服务在计划中不可用。 使用 CSP 订阅时，不会创建 Azure 经典运行方式帐户。 仍会创建 Azure 运行方式帐户。 若要了解有关 CSP 订阅的详细信息，请参阅 [CSP 订阅中可用的服务](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)。
@@ -52,6 +54,10 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 <sup>1</sup> Azure AD 租户中的非管理员用户可以[注册 AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)，前提是 Azure AD 租户的“用户设置”页中的“用户可以注册应用程序”选项已设置为“是”。 如果“应用注册设置”设置为“否”，则执行此操作的用户必须是 Azure AD 中的全局管理员。
 
 如果你在被添加到订阅的全局管理员/共同管理员角色之前不是订阅的 Active Directory 实例的成员，则会将你添加为来宾。 在这种情况下，“添加自动化帐户”页上会显示 `You do not have permissions to create…` 警告。 可以先从订阅的 Active Directory 实例中删除已添加到全局管理员/共同管理员角色的用户，然后重新添加，使其成为 Active Directory 中的完整用户。 若要验证这种情况，可在 Azure 门户的“Azure Active Directory”窗格中选择“用户和组”，选择“所有用户”，在选择特定的用户后再选择“配置文件”。 用户配置文件下的“用户类型”属性值不应等于“来宾”。
+
+## <a name="permissions-classic"></a>配置经典运行方式帐户的权限
+
+若要配置或续订经典运行方式帐户，必须具有**协同管理员**在订阅级别的角色。 若要了解有关经典权限的详细信息，请参阅[Azure 经典订阅管理员](../role-based-access-control/classic-administrators.md#add-a-co-administrator)。
 
 ## <a name="create-a-run-as-account-in-the-portal"></a>在门户中创建运行方式帐户
 
@@ -197,10 +203,10 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
         return
     }
 
-    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous two lines to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
+    # To use the new Az modules to create your Run As accounts please uncomment the following lines and ensure you comment out the previous 8 lines that import the AzureRM modules to avoid any issues. To learn about about using Az modules in your Automation Account see https://docs.microsoft.com/azure/automation/az-modules
 
     # Import-Module Az.Automation
-    # Enable-AzureRmAlias 
+    # Enable-AzureRmAlias
 
 
     Connect-AzureRmAccount -Environment $EnvironmentName 
@@ -357,7 +363,7 @@ Azure 自动化中的运行方式帐户用于提供身份验证，以使用 Azur
 
     ![续订运行方式帐户的证书](media/manage-runas-account/automation-account-renew-runas-certificate.png)
 
-1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。 
+1. 证书续订过程中，可以在菜单的“通知”下面跟踪进度。
 
 ## <a name="limiting-run-as-account-permissions"></a>限制运行方式帐户权限
 
@@ -394,4 +400,3 @@ The Run As account is incomplete. Either one of these was deleted or not created
 
 * 有关服务主体的详细信息，请参阅 [Application Objects and Service Principal Objects](../active-directory/develop/app-objects-and-service-principals.md)（应用程序对象和服务主体对象）。
 * 有关证书和 Azure 服务的详细信息，请参阅 [Azure 云服务证书概述](../cloud-services/cloud-services-certs-create.md)。
-

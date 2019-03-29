@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: e394f6025f7898aad7dde7b1acefd9f95029a554
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d81a8973772879f4f4b143701a1f4be3ecad95d9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541987"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576633"
 ---
 # <a name="access-your-security-data"></a>访问安全数据 
 
@@ -39,20 +39,20 @@ ms.locfileid: "58541987"
 
 若要完成配置后访问你的 Log Analytics 工作区：
 
-1. 在 ASC 中选择一个警报，对 IoT。 
+1. 选择警报或建议在 ASC 中对 IoT 上。 
 2. 单击**进一步调查**，然后单击**若要查看哪些设备具有此警报，请单击此处，查看 DeviceId 列**。
 
 从 Log Analytics 查询数据的详细信息，请参阅[开始使用 Log Analytics 中查询](https://docs.microsoft.com//azure/log-analytics/query-language/get-started-queries)。
 
 ## <a name="security-alerts"></a>安全警报
 
-安全警报存储在**ASCforIoT.SecurityAlert**已配置的 Log Analytics 工作区中的表。
+安全警报存储在_AzureSecurityOfThings.SecurityAlert_配置为 ASC 为 IoT 解决方案的 Log Analytics 工作区中的表。
 
-使用以下基本 kql 查询来开始探索安全警报。
+我们已提供多个有用的查询，以帮助您开始探索安全警报。
 
-### <a name="sample-records-query"></a>示例记录查询
+### <a name="sample-records"></a>示例记录
 
-随机选择几个记录： 
+选择几个随机记录
 
 ```
 // Select a few random records
@@ -69,17 +69,15 @@ SecurityAlert
 | take 3
 ```
 
-#### <a name="sample-query-results"></a>示例查询结果 
-
-| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | 显示名称                           | 描述                                             | ExtendedProperties                                                                                                                                                             |
+| TimeGenerated           | IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | 描述                                             | ExtendedProperties                                                                                                                                                             |
 |-------------------------|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|---------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 2018-11-18T18:10:29.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 成功的暴力破解攻击           | 在设备上的暴力破解攻击已成功        |    { "Full Source Address": "[\"10.165.12.18:\"]", "User Names": "[\"\"]", "DeviceId":"IoT-Device-Linux" }                                                                       |
 | 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 成功在设备上的本地登录名      | 检测到成功的本地登录到设备     | { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id":"28207", "User Name": "attacker", "DeviceId":"IoT-Device-Linux" } |
 | 2018-11-19T12:40:31.000 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 在设备上的本地登录尝试失败  | 检测到对设备的本地登录失败的尝试 |  { "Remote Address": "?", "Remote Port": "", "Local Port": "", "Login Shell": "/bin/su", "Login Process Id":"22644", "User Name": "attacker", "DeviceId":"IoT-Device-Linux" } |
 
-### <a name="device-summary-query"></a>设备摘要查询
+### <a name="device-summary"></a>设备摘要
 
-若要选择多个不同的安全警报此 kql 查询检测到的 IoT 中心、 设备、 警报严重性、 警报类型的最后一周的使用。
+选择不同的安全警报由 IoT 中心、 设备、 警报严重性、 警报类型检测到过去一周数。
 
 ```
 // Select number of distinct security alerts detected last week by 
@@ -94,19 +92,16 @@ SecurityAlert
     DisplayName
 ```
 
-#### <a name="device-summary-query-results"></a>设备摘要查询结果
-
-| IoTHubId | DeviceId| AlertSeverity| 显示名称 | 计数 |
-|----------|---------|------------------|---------|---------|
-|/subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 成功的暴力破解攻击           | 9   |    
+| IoTHubId                                                                                                       | DeviceId      | AlertSeverity | DisplayName                           | Count |
+|----------------------------------------------------------------------------------------------------------------|---------------|---------------|---------------------------------------|-----|
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 成功的暴力破解攻击           | 9   |   
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型        | 在设备上的本地登录尝试失败  | 242 |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 成功在设备上的本地登录名      | 31  |
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型        | 加密硬币 Miner                     | 4   |
-|
 
 ### <a name="iot-hub-summary"></a>IoT 中心摘要
 
-使用此 kql 查询来选择多个不同的设备的警报在最后一周内，通过 IoT 中心、 警报严重性、 警报类型：
+选择多个非重复过去一周，通过 IoT 中心、 警报严重性、 警报类型都有过警报的设备
 
 ```
 // Select number of distinct devices which had alerts in the last week, by 
@@ -121,15 +116,65 @@ SecurityAlert
     DisplayName
 ```
 
-#### <a name="iot-hub-summary-query-results"></a>IoT 中心汇总查询结果
-
-| IoTHubId                                                                                                       | AlertSeverity | 显示名称                           | CntDevices |
+| IoTHubId                                                                                                       | AlertSeverity | DisplayName                           | CntDevices |
 |----------------------------------------------------------------------------------------------------------------|---------------|---------------------------------------|------------|
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 高          | 成功的暴力破解攻击           | 第          |    
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 中型        | 在设备上的本地登录尝试失败  | 第          | 
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 高          | 成功在设备上的本地登录名      | 第          |
 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | 中型        | 加密硬币 Miner                     | 第          |
 
+## <a name="security-recommendations"></a>安全建议
+
+中存储的安全建议_AzureSecurityOfThings.SecurityRecommendation_配置为 ASC 为 IoT 解决方案的 Log Analytics 工作区中的表。
+
+我们提供了多个有用的查询，以帮助您开始探索安全建议。
+
+### <a name="sample-records"></a>示例记录
+
+选择几个随机记录
+
+```
+// Select a few random records
+//
+SecurityRecommendation
+| project 
+    TimeGenerated, 
+    IoTHubId=AssessedResourceId, 
+    DeviceId,
+    RecommendationSeverity,
+    RecommendationState,
+    RecommendationDisplayName,
+    Description,
+    RecommendationAdditionalData
+| take 2
+```
+    
+| TimeGenerated | IoTHubId | DeviceId | RecommendationSeverity | RecommendationState | RecommendationDisplayName | 描述 | RecommendationAdditionalData |
+|---------------|----------|----------|------------------------|---------------------|---------------------------|-------------|------------------------------|
+| 2019-03-22T10:21:06.060 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的宽松的防火墙规则 | 在防火墙中找到了包含适用于各种 IP 地址或端口的宽容模式的规则 | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+| 2019-03-22T10:50:27.237 | /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型 | 活动 | 找到输入链中的宽松的防火墙规则 | 在防火墙中找到了包含适用于各种 IP 地址或端口的宽容模式的规则 | {"Rules":"[{\"SourceAddress\":\"\",\"SourcePort\":\"\",\"DestinationAddress\":\"\",\"DestinationPort\":\"1337\"}]"} |
+
+### <a name="device-summary"></a>设备摘要
+
+选择通过 IoT 中心、 设备、 建议严重性和类型的不同活动的安全建议。
+
+```
+// Select number of distinct active security recommendations by 
+//   IoT hub, device, recommendation severity and type
+//
+SecurityRecommendation
+| extend IoTHubId=AssessedResourceId
+| summarize CurrentState=arg_max(RecommendationState, DiscoveredTimeUTC) by IoTHubId, DeviceId, RecommendationSeverity, RecommendationDisplayName
+| where CurrentState == "Active"
+| summarize Cnt=count() by IoTHubId, DeviceId, RecommendationSeverity
+```
+
+| IoTHubId                                                                                                       | DeviceId      | RecommendationSeverity | Count |
+|----------------------------------------------------------------------------------------------------------------|---------------|------------------------|-----|
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 2   |    
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型        | 第 |  
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 高          | 第  |
+| /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.Devices/IotHubs/<iot_hub> | <device_name> | 中型        | 4   |
 
 
 ## <a name="next-steps"></a>后续步骤
@@ -137,3 +182,4 @@ SecurityAlert
 - 适用于 IoT 读取 ASC[概述](overview.md)
 - 了解适用于 IoT ASC[体系结构](architecture.md)
 - 了解和探索[ASC 为 IoT 警报](concept-security-alerts.md)
+- 了解和探索[ASC 为 IoT 建议](concept-recommendations.md)

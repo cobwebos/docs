@@ -11,18 +11,32 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/30/2018
+ms.date: 03/27/2018
 ms.author: magoedte
-ms.openlocfilehash: abf833cc054bfac0581506f75259e357f0ab1b38
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: db4b468c03d93b073067083f4fae1ec86c70dde8
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985744"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577029"
 ---
 # <a name="troubleshooting-azure-monitor-for-containers"></a>对用于容器的 Azure Monitor 进行故障排除
 
 使用用于容器的 Azure Monitor 配置 Azure Kubernetes 服务 (AKS) 群集的监视时，可能会遇到阻止数据收集或报告状态的问题。 本文详细介绍了一些常见问题及其排查步骤。
+
+## <a name="authorization-error-during-onboarding-or-update-operation"></a>在载入或更新操作期间的授权错误
+在启用用于容器的 Azure Monitor 或更新群集，以支持收集指标时，可能会收到错误类似于以下命令：*客户端 < 用户的标识 > 使用对象 id < 用户的 objectId > 不会授权来执行操作 ' Microsoft.Authorization/roleAssignments/write 对作用域*
+
+在载入或更新过程中，授予**监视指标发布服务器**上群集资源尝试角色分配。 若要启用的容器或更新 Azure Monitor 支持的指标收集用户启动过程必须有权**Microsoft.Authorization/roleAssignments/write** AKS 群集上的权限资源作用域。 只有的成员**所有者**并**用户访问管理员**内置角色授予此权限的访问权限。 如果你的安全策略需要分配粒度级别的权限，我们建议你查看[自定义角色](../../role-based-access-control/custom-roles.md)并将其分配给需要它的用户。 
+
+手动可以从 Azure 门户授予此角色，通过执行以下步骤：
+
+1. 登录到 [Azure 门户](https://portal.azure.com)。 
+2. 在 Azure 门户中，单击左上角的“所有服务”。 在资源列表中，键入**Kubernetes**。 开始键入时，会根据输入筛选该列表。 选择**Azure Kubernetes**。
+3. 在 Kubernetes 群集的列表中，选择列表中的一个。
+2. 从左侧菜单中，单击**访问控制 (IAM)**。
+3. 选择 **+ 添加**若要添加的角色分配，然后选择**监视指标发布者**角色并在**选择**框中，键入**AKS**到结果只是在群集上的服务主体在订阅中定义的筛选器。 选择从特定于该群集的列表。
+4. 选择“保存”完成角色分配。 
 
 ## <a name="azure-monitor-for-containers-is-enabled-but-not-reporting-any-information"></a>用于容器的 Azure Monitor 已启用，但未报告任何信息
 如果容器的 Azure Monitor 成功启用和配置，但不能查看状态信息或来自一个日志查询不返回任何结果，您将诊断问题，通过执行以下步骤： 

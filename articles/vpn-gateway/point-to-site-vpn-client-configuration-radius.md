@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.openlocfilehash: 34d8eb976a2a1e173f234be214799832dae7e9ca
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
+ms.lasthandoff: 03/28/2019
 ms.locfileid: "58079599"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>创建并安装适用于 P2S RADIUS 身份验证的 VPN 客户端配置文件
@@ -48,16 +48,16 @@ P2S RADIUS 身份验证的配置工作流如下：
 
 ### <a name="usernamefiles"></a> 1.生成 VPN 客户端配置文件
 
-使用 Azure 门户中，或使用 Azure PowerShell，可以生成 VPN 客户端配置文件。
+可使用 Azure 门户或 PowerShell 生成 VPN 客户端配置文件。
 
 #### <a name="azure-portal"></a>Azure 门户
 
-1. 导航到虚拟网络网关。
-2. 单击**点到站点配置**。
-3. 单击**下载 VPN 客户端**。
-4. 选择客户端，并填写请求的任何信息。
-5. 单击**下载**生成的.zip 文件。
-6. 该.zip 文件将下载，通常到 Downloads 文件夹。
+1. 导航到虚拟网关。
+2. 单击“点到站点配置”。
+3. 单击“下载 VPN 客户端”。
+4. 选择客户端，并填充请求的任何信息。
+5. 单击“下载”，生成 .zip 文件。
+6. .zip 文件通常下载到 Downloads 文件夹。
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 

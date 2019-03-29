@@ -19,29 +19,29 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 5a46575f6e8a0b05b65dbf49c70bddb570b514b2
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497427"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577099"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>将建议器添加到 Azure 搜索中的 typeahead 的索引
 
-一个**建议器**是在构造[Azure 搜索索引](search-what-is-an-index.md)支持"搜索---键入时"体验。 它包含你想要启用 typeahead 查询输入的字段的列表。 有两个 typeahead 变体：*记忆式键入功能*字词或短语键入内容时，完成*建议*提供结果的短列表。 
+一个**建议器**是在构造[Azure 搜索索引](search-what-is-an-index.md)支持"搜索---键入时"体验。 它包含你想要启用 typeahead 查询输入的字段的列表。 一个索引中的同一个建议器支持一个或两个这些两个 typeahead 变体：*记忆式键入功能*字词或短语键入内容时，完成*建议*提供结果的短列表。 
 
-在此 Xbox 搜索页中，记忆式键入功能项转到新的搜索结果页为该查询，而建议值是转到针对特定游戏页面的实际结果。 您可以限制记忆式键入到搜索栏中的一项或提供如下所示类似的列表。 有关建议，可能会出现最能确切描述结果文档的任何部分。
+以下屏幕截图演示了这两种 typeahead 功能。 在此 Xbox 搜索页中，记忆式键入功能项转到新的搜索结果页为该查询，而建议值是转到针对特定游戏页面的实际结果。 您可以限制记忆式键入到搜索栏中的一项或提供如下所示类似的列表。 有关建议，可能会出现最能确切描述结果文档的任何部分。
 
 ![记忆式键入功能和建议的查询的直观的比较](./media/index-add-suggesters/visual-comparison-suggest-complete.png "Visual 记忆式键入功能和建议的查询的比较")
 
 若要在 Azure 搜索中实现这些行为，没有索引和查询组件。 
 
-+ 在索引中，添加建议器。 可以使用门户、 REST API 或.NET SDK 来创建建议器。 
++ 索引组件是建议器。 可以使用门户、 REST API 或.NET SDK 来创建建议器。 
 
-+ 指定在上一个查询，建议或 sutocomplete 操作。 
++ 查询组件是查询请求 （建议或自动完成操作） 中指定的操作。 
 
 > [!Important]
-> 记忆式键入功能目前以预览版提供，可在预览版 REST Api 和.NET SDK，并且不支持用于生产应用程序。 
+> 记忆式键入功能目前以预览版提供，可在预览版 REST Api 和.NET SDK。 它不适合生产应用程序。 
 
 在每个字段的基础上启用搜索---键入时支持。 如果你想体验类似于屏幕截图所示，您可以实现相同的搜索解决方案中这两种 typeahead 行为。 这两个请求目标*文档*后用户已提供的至少三个字符的输入的字符串，将返回的特定索引和响应的集合。
 
@@ -77,7 +77,7 @@ ms.locfileid: "58497427"
 
 ### <a name="use-the-net-sdk"></a>使用 .NET SDK
 
-在C#，定义[建议器类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 建议器是一个集合，但该方法仅采用一个项。
+在C#，定义[建议器类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 建议器是一个集合，其中只能包含一个项。 请务必添加`using System.Collections.Generic;`，以便您可以创建的对象的列表。 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)
@@ -137,4 +137,4 @@ private static void CreateHotelsIndex(SearchServiceClient serviceClient)
 我们建议下面的示例，若要查看请求进行公式化表示。
 
 > [!div class="nextstepaction"]
-> [自动完成查询示例 （预览版）](search-autocomplete-tutorial.md) 
+> [建议和记忆式键入功能示例](search-autocomplete-tutorial.md) 

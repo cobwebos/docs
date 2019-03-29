@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 453af401f3b6120345cbe489fbfc323eca464ade
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b4d1830e705e1813c8448787e587d720eaf5ddbd
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58092270"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574712"
 ---
 # <a name="connect-your-barracuda-appliance"></a>连接 Barracuda 设备 
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 Barracuda Web 应用程序防火墙 (WAF) 连接器，可轻松地连接到 Barracuda 日志在 Azure Sentinel，若要查看的仪表板、 创建自定义警报和改进的调查。 这为您提供了更详细地了解您组织的网络，并提高你的安全操作功能。 利用之间的本机集成 azure Sentinel **Barracuda**和 Microsoft Azure OMS 提供无缝集成。 
@@ -42,6 +42,7 @@ Barracuda Web 应用程序防火墙可以集成并导出到 [ASI] 直接通过 A
 2. 在 Azure Sentinel 门户中，转到在其部署 Azure Sentinel 工作区并选择省略号 （...） 末尾的行并选择**高级设置**。 
 1. 选择**数据**，然后**Syslog**。
 1. 请确保在 Barracuda 中设置的功能存在并设置严重性，然后单击**保存**。
+6. 若要使用 Log Analytics 中为 Barracuda 事件相关的架构，搜索**CommonSecurityLog**。
 
 
 ## <a name="validate-connectivity"></a>验证连接
@@ -51,7 +52,7 @@ Barracuda Web 应用程序防火墙可以集成并导出到 [ASI] 直接通过 A
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何连接到 Azure Sentinel Barracuda 设备。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何连接到 Azure Sentinel Barracuda 设备。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 

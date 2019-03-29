@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: a78eeda814b21d489eb957d44202b17c61d836d5
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 1186b362cf8f59f24020ae9afa3526e2e27b1794
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541882"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575209"
 ---
 # <a name="get-started-with-azure-security-center-asc-for-iot"></a>开始使用 Azure 安全中心 (ASC) 适用于 IoT 
 
@@ -67,7 +67,7 @@ ms.locfileid: "58541882"
 1. 如果你的 IoT 中心都不有任何已注册的设备[注册新设备](https://docs.microsoft.com/azure/iot-accelerators/quickstart-device-simulation-deploy)。
 1. [创建 azureiotsecurity 安全模块](quickstart-create-security-twin.md)为你的设备。
 1. 若要在 Azure 而不是实际的设备上安装模拟设备上安装代理[数值调节钮向上新 Azure 虚拟机 (VM)](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)可用区域中。 
-1. [部署 IoT 安全代理 ASC](tutorial-deploy-linux-cs.md) IoT 设备或新的 VM 上。
+1. [部署 IoT 安全代理 ASC](how-to-deploy-linux-cs.md) IoT 设备或新的 VM 上。
 1. 按照说明[trigger_events](https://aka.ms/iot-security-github-trigger-events)运行模拟无害的攻击。
 1. IoT 中的警报响应模拟攻击上, 一步骤中验证 ASC。 
     - 开始验证 5 分钟后运行脚本。
@@ -79,4 +79,4 @@ ms.locfileid: "58541882"
 - 配置你[解决方案](quickstart-configure-your-solution.md)
 - [创建安全模块](quickstart-create-security-twin.md)
 - 配置[自定义警报](quickstart-create-custom-alerts.md)
-- [部署安全代理](select-deploy-agent.md)
+- [部署安全代理](how-to-deploy-agent.md)

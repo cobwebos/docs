@@ -1,6 +1,6 @@
 ---
-title: 邀请外部来宾和分配 Azure AD 管理员角色的 Privileged Identity Management |Microsoft Docs
-description: 了解如何可以邀请来宾用户，并将在 Azure AD Privileged Identity Management 中的 Azure Active Directory 管理员角色分配。
+title: 邀请来宾并将 PIM 的 Azure Active Directory 中的 Azure 资源角色分配 |Microsoft Docs
+description: 了解如何邀请外部来宾用户并将在 Azure AD Privileged Identity Management (PIM) 中的 Azure 资源角色分配。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,14 +15,14 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 68e76a4513d94cceb8e856c94ad6eae2bdab9c46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68c5e5e2ed0d3ec767a239439476a98bac73bcb4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853250"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576873"
 ---
-# <a name="invite-guest-users-and-assign-azure-resource-access-in-pim"></a>邀请来宾用户并分配在 PIM 中的 Azure 资源访问权限
+# <a name="invite-guest-users-and-assign-azure-resource-roles-in-pim"></a>邀请来宾用户并分配在 PIM 中的 Azure 资源角色
 
 Azure Active Directory (Azure AD) 企业到企业 (B2B) 是使组织进行协作与外部来宾用户 （来宾） 和供应商使用任何帐户的 Azure AD 中的一组功能。 将 B2B 与 Azure AD Privileged Identity Management (PIM) 时，可以继续应用于来宾法规遵从性和监管要求。 例如，您可以使用这些 PIM 功能的 Azure 标识任务与来宾：
 

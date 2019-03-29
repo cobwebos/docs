@@ -1,5 +1,5 @@
 ---
-title: 评审访问权限给组或 Azure AD 访问评审中的应用程序 |Microsoft Docs
+title: 评审访问权限给组或访问评审的 Azure Active Directory 中的应用程序 |Microsoft Docs
 description: 了解如何查看组成员的访问或应用程序访问 Azure Active Directory 访问评审中。
 services: active-directory
 author: rolyon
@@ -15,16 +15,16 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 097d230e919e6d4b56e6c677364610bda6630f75
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728380"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579676"
 ---
-# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>评审访问权限给组或 Azure AD 访问评审中的应用程序
+# <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看对组的访问或 Azure AD 中的应用程序访问评审
 
-Azure Active Directory (Azure AD) 简化了企业如何在 Azure AD 中管理访问组和应用程序和其他 Microsoft Online Services 的功能调用 Azure AD 访问评审。
+Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组和应用程序和名为 Azure AD 访问的功能与其他 Microsoft Online Services 评审的方式。
 
 本文介绍如何指定审阅者成员的组或用户有权访问应用程序的执行访问评审。
 
@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 简化了企业如何在 Azure AD 中管理访
 
     ![MyApps 门户](./media/perform-access-review/myapps-access-panel.png)
 
-1. 在页面的右上角，单击用户符号，其中显示名称和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
+1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
 
 1. 在页面的右侧，单击**访问评审**磁贴以查看未完成的访问评审的列表。
 

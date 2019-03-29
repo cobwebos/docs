@@ -4,17 +4,17 @@ description: 了解如何载入包含属于 Azure 自动化的“更新管理”
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 70d9957ae5f0ec43269d371c96e3722e52edb26d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: bf81b862f978d4baab0907dc9002564062ec5228
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57837756"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619716"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions-from-an-azure-virtual-machine"></a>从 Azure 虚拟机载入“更新管理”、“更改跟踪”和“清单”解决方案
 
@@ -26,7 +26,7 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 ## <a name="enable-the-solutions"></a>启用解决方案
 
-转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。 虚拟机可以位于任何区域，无论你的自动化帐户的位置。
+转到现有虚拟机。 在“操作”下，选择“更新管理”、“清单”或“更改跟踪”。 虚拟机可以位于任何区域，无论你的自动化帐户的位置。 当载入的 vm 的解决方案需要能够`Microsoft.OperationalInsights/workspaces/read`确定 VM 是否加入工作区的权限。 若要了解有关在一般情况下需其他权限，请参阅[来载入计算机所需权限](automation-role-based-access-control.md#onboarding)。
 
 若要仅为 VM 启用解决方案，请确保已选择“为此 VM 启用”。 若要将多台计算机加入到解决方案中，请选择“为此订阅中的 VM 启用”，然后选择“单击以选择要启用的计算机”。 若要了解如何一次加入多台计算机，请参阅[载入“更新管理”、“更改跟踪”和“清单”解决方案](automation-onboard-solutions-from-automation-account.md)。
 
@@ -85,13 +85,13 @@ Azure 自动化提供了解决方案来帮助管理操作系统安全更新、�
 
 1. 从 Azure 门户中打开自动化帐户，并在“自动化帐户”页左侧的“相关资源”部分下，选择“链接工作区”。
 
-1. 在“取消链接工作区”页上，单击“取消链接工作区”。
+2. 在“取消链接工作区”页上，单击“取消链接工作区”。
 
    ![“取消链接工作区”页](media/automation-onboard-solutions-from-vm/automation-unlink-workspace-blade.png).
 
    系统会提示用户确认是否要继续。
 
-1. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
+3. 当 Azure 自动化尝试从 Log Analytics 工作区中取消链接该帐户时，可以在菜单中的“通知”下跟踪进度。
 
 如果使用了“更新管理”解决方案，可能会选择要删除在删除该解决方案后不再需要的以下项。
 

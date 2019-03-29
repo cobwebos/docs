@@ -1,6 +1,6 @@
 ---
-title: 检索对组或 Azure AD 访问评审中的应用程序的访问评审结果 |Microsoft Docs
-description: 了解如何检索的组成员或在 Azure AD 访问评审中的应用程序访问权限的访问评审结果。
+title: 检索组或应用程序中访问评审的 Azure Active Directory 访问评审结果 |Microsoft Docs
+description: 了解如何检索的组成员或在 Azure Active Directory 访问评审中的应用程序访问权限的访问评审结果。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2516e61b6b86c3d2cee164cfcb80a1f938922908
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eae4bafb3eefcee2785c784030d7be8dde66988e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839638"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578692"
 ---
-# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>检索对组或 Azure AD 访问评审中的应用程序的访问评审结果
+# <a name="retrieve-access-review-results-for-groups-or-applications-in-azure-ad-access-reviews"></a>检索访问评审结果以组或 Azure AD 中的应用程序访问评审
 
 管理员可以使用 Azure Active Directory (Azure AD) 对已分配到应用程序的组成员或用户[创建访问评审](create-access-review.md)。  中的用户**全局管理员**，**用户管理员**，**安全管理员**或者**安全读者**角色还可以读取的访问评审结果。  若要将用户分配到这些角色之一，特权的角色管理员可以使用 Azure AD PIM 为使用户可激活该角色，或全局管理员可以永久[将用户分配到角色](../fundamentals/active-directory-users-assign-role-azure-portal.md)。
 

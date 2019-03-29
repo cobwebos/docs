@@ -53,6 +53,14 @@ items:
       href: event-hubs-node-get-started-receive.md
     - name: Apache Storm
       href: event-hubs-storm-getstarted-receive.md
+  - name: 捕获事件
+    items:
+    - name: 使用 Azure 门户启用事件中心捕获
+      href: event-hubs-capture-enable-through-portal.md
+    - name: 使用资源管理器模板启用事件中心捕获
+      href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
+    - name: 使用 Python 捕获事件中心数据
+      href: event-hubs-capture-python.md
   - name: 流式传输到用于 Apache Kafka 的事件中心
     href: event-hubs-quickstart-kafka-enabled-event-hubs.md
   expanded: true
@@ -116,14 +124,6 @@ items:
       href: event-hubs-create-kafka-enabled.md
     - name: 使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件
       href: event-hubs-kafka-stream-analytics.md
-  - name: 捕获事件
-    items:
-    - name: 使用 Azure 门户启用事件中心捕获
-      href: event-hubs-capture-enable-through-portal.md
-    - name: 使用资源管理器模板启用事件中心捕获
-      href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
-    - name: 使用 Python 捕获事件中心数据
-      href: event-hubs-capture-python.md
   - name: 管理
     items:
     - name: 使用 Azure 监视来监视事件中心
@@ -199,9 +199,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-eventhub
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=event-hubs
-ms.openlocfilehash: f565b8c743d8ed29b1fea4480f798dd522fcd045
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 21aafbeff9aa06d890afb6282fdf10e1feac739e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285967"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577274"

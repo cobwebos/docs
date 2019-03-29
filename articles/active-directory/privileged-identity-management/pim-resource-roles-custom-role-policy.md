@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中为 Azure 资源使用自定义角色 | Microsoft Docs
+title: 在 PIM 的 Azure Active Directory 中的 Azure 资源使用自定义角色 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure 资源使用自定义角色。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.subservice: pim
 ms.date: 03/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f2767d817d6f15d38aeef4c669b2b11c3d8a8a6b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 13aef9b180a671a9b42bbc6319c487be36652093
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168011"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574869"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-pim"></a>在 PIM 中为 Azure 资源使用自定义角色
 
-有时可能需要向某个角色的某些成员应用严格的 Privileged Identity Management (PIM) 设置，同时为其他人提供更大的自主权。 假设你的组织招聘了几名合同工来帮助开发将在 Azure 订阅中运行的应用程序。
+您可能需要将严格的 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 设置应用于一个角色，一些成员，同时为其他人提供更大的自主权。 假设你的组织招聘了几名合同工来帮助开发将在 Azure 订阅中运行的应用程序。
 
 作为资源管理员，你希望正式员工可以在不需要审批的情况下获得合格访问权。 但所有合同工在请求访问组织资源时必须接受审批。
 

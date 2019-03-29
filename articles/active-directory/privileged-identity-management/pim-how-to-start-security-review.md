@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中启动 Azure AD 目录角色的访问评审 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中启动 Azure AD 目录角色的访问评审。
+title: 在 PIM 的 Azure Active Directory 中启动 Azure AD 角色的访问评审 |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中启动 Azure AD 角色的访问评审。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,15 +14,15 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 33f2e3249d1b7ad0efc16dd0b9ced26379c3cae7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: e5cbf96c165d79c26985663ef5a9d64bbf8f9892
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56174463"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574988"
 ---
-# <a name="start-an-access-review-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中启动 Azure AD 目录角色的访问评审
-当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员或全局管理员应定期创建访问评审来让管理员审阅用户的已分配角色。 本文档包含在 Azure AD Privileged Identity Management (PIM) 中开始访问审阅的相关步骤。
+# <a name="start-an-access-review-for-azure-ad-roles-in-pim"></a>在 PIM 中启动 Azure AD 角色的访问评审
+当用户有不再需要的特权访问时，角色分配将变为“过时”。 为了降低与这些过时角色分配相关联的风险，特权角色管理员或全局管理员应定期创建访问评审来让管理员审阅用户的已分配角色。 本文档介绍用于启动访问评审在 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 的步骤。
 
 ## <a name="start-an-access-review"></a>开始访问审阅
 > [!NOTE]
@@ -80,6 +80,6 @@ ms.locfileid: "56174463"
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中完成 Azure AD 目录角色的访问评审](pim-how-to-complete-review.md)
-- [在 PIM 中对 Azure AD 目录角色执行访问评审](pim-how-to-perform-security-review.md)
+- [完成访问评审在 PIM 中的 Azure AD 角色](pim-how-to-complete-review.md)
+- [在 PIM 中执行我的 Azure AD 角色的访问评审](pim-how-to-perform-security-review.md)
 - [在 PIM 中启动 Azure 资源角色的访问评审](pim-resource-roles-start-access-review.md)

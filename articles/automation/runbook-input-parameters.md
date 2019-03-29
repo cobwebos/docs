@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 969e0c2582ce8f72592059fbf1d58e3ebe9faa5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5f190d60a059108b9763f35e2ee8cf99ae77b694
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117194"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578146"
 ---
 # <a name="runbook-input-parameters"></a>Runbook 输入参数
 
@@ -30,10 +30,10 @@ Azure 自动化中的 PowerShell 和 PowerShell 工作流 Runbook 支持通过�
 
 | **属性** | **说明** |
 |:--- |:--- |
-| Type |必需。 参数值所需的数据类型。 任何 .NET 类型均有效。 |
-| 名称 |必需。 参数的名称。 在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。 必须以字母开头。 |
-| 必需 |可选。 指定是否必须为该参数提供值。 如果将此项设置为 \$true，则启动 Runbook 时必须提供一个值。 如果将此项设置为 \$false，则值是可选的。 |
-| 默认值 |可选。 指定在启动 Runbook 时未传入值的情况下要用于参数的值。 可为任何参数设置默认值，此值将使参数自动成为可选，而不管 Mandatory 设置为何。 |
+| `Type` |必需。 参数值所需的数据类型。 任何 .NET 类型均有效。 |
+| `Name` |必需。 参数的名称。 在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。 必须以字母开头。 |
+| `Mandatory` |可选。 指定是否必须为该参数提供值。 如果将此项设置为 \$true，则启动 Runbook 时必须提供一个值。 如果将此项设置为 \$false，则值是可选的。 |
+| `Default value` |可选。 指定在启动 Runbook 时未传入值的情况下要用于参数的值。 可为任何参数设置默认值，此值将使参数自动成为可选，而不管 Mandatory 设置为何。 |
 
 Windows PowerShell 支持的输入参数属性比此处所列的多，例如验证、别名和参数集。 但是，Azure 自动化目前仅支持上述输入参数。
 
@@ -94,11 +94,11 @@ Param
 
    | **属性** | **说明** |
    |:--- |:--- |
-   | 名称 |必需。 参数的名称。 在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。 必须以字母开头。 |
-   | 描述 |可选。 有关输入参数用途的说明。 |
-   | Type |可选。 参数值的预期数据类型。 支持的参数类型包括 **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime** 和 **Object**。 如果未选择数据类型，将默认为 **String**。 |
-   | 必需 |可选。 指定是否必须为该参数提供值。 如果选择“是”，则启动 Runbook 时必须提供一个值。 如果选择“否”，则启动 Runbook 时不需要提供值，并且可以设置一个默认值。 |
-   | 默认值 |可选。 指定在启动 Runbook 时未传入值的情况下要用于参数的值。 对于不是必需的参数，可以设置默认值。 若要设置默认值，请选择“自定义”。 除非在 Runbook 启动时提供了其他值，否则将使用此值。 如果不想提供任何默认值，请选择“无”。 |
+   | `Name` |必需。 参数的名称。 在 Runbook 中必须唯一，并且只能包含字母、数字或下划线字符。 必须以字母开头。 |
+   | `Description` |可选。 有关输入参数用途的说明。 |
+   | `Type` |可选。 参数值的预期数据类型。 支持的参数类型包括 **String**、**Int32**、**Int64**、**Decimal**、**Boolean**、**DateTime** 和 **Object**。 如果未选择数据类型，将默认为 **String**。 |
+   | `Mandatory` |可选。 指定是否必须为该参数提供值。 如果选择“是”，则启动 Runbook 时必须提供一个值。 如果选择“否”，则启动 Runbook 时不需要提供值，并且可以设置一个默认值。 |
+   | `Default Value` |可选。 指定在启动 Runbook 时未传入值的情况下要用于参数的值。 对于不是必需的参数，可以设置默认值。 若要设置默认值，请选择“自定义”。 除非在 Runbook 启动时提供了其他值，否则将使用此值。 如果不想提供任何默认值，请选择“无”。 |
 
     ![添加新输入](media/automation-runbook-input-parameters/automation-runbook-input-parameter-new.png)
 4. 使用以下属性，创建 Get-AzureRmVm 活动使用的两个参数：

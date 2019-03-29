@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 777bf38fbc8a90335af79bbd0fb2ce74310bd991
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58006803"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622104"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -199,11 +199,12 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 
 3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
 
-4. 确认 [cloud_RoleName](app-map.md#set-cloudrolename) 已正确配置。
+4. 确认 [cloud_RoleName](#set-cloud_rolename) 已正确配置。
 
 5. 如果缺少某个依赖项，请确保它在[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)列表中。 如果不在其中，也可以使用某个[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
 
 ## <a name="portal-feedback"></a>门户反馈
+
 若要提供反馈，请使用反馈选项。
 
 ![MapLink-1 图](./media/app-map/14-updated.png)

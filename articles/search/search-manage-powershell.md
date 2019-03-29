@@ -7,34 +7,34 @@ services: search
 ms.service: search
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 03/11/2019
+ms.date: 03/28/2019
 ms.author: heidist
-ms.openlocfilehash: 7a91ad691089ac816b31ebe1fce202110e580f71
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8f07468ccff4431e1afdf66aedc72599ddc0c25b
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520558"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620591"
 ---
 # <a name="manage-your-azure-search-service-with-powershell"></a>使用 PowerShell 管理 Azure 搜索服务
 > [!div class="op_single_selector"]
-> * [Portal](search-manage.md)
+> * [门户](search-manage.md)
 > * [PowerShell](search-manage-powershell.md)
 > * [REST API](https://docs.microsoft.com/rest/api/searchmanagement/)
 > * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.search)
 > * [Python](https://pypi.python.org/pypi/azure-mgmt-search/0.1.0)> 
 
-您可以在 Windows，Linux，或在运行 PowerShell cmdlet 和脚本[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)创建和配置[Azure 搜索](https://docs.microsoft.com/azure/search/)。 [ **Az.Search** ](https://docs.microsoft.com/powershell/module/az.search/?view=azps-1.4.0#search)模块扩展[Azure PowerShell](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.4.0)具有到完整奇偶校验[Azure 搜索管理 REST Api](https://docs.microsoft.com/rest/api/searchmanagement)。 使用 Azure PowerShell 并**Az.Search**，可以执行以下任务：
+您可以在 Windows，Linux，或在运行 PowerShell cmdlet 和脚本[Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)创建和配置 Azure 搜索。 **Az.Search**模块来扩展 Azure PowerShell] 具有到完整奇偶校验[Azure 搜索管理 REST Api](https://docs.microsoft.com/rest/api/searchmanagement)。 使用 Azure PowerShell 并**Az.Search**，可以执行以下任务：
 
 > [!div class="checklist"]
 > * [列出所有订阅中的搜索服务](#list-search-services)
 > * [获取有关特定的搜索服务的信息](#get-search-service-information)
 > * [创建或删除服务](#create-or-delete-a-service)
-> * 重新生成管理员 API 密钥
+> * [重新生成管理员 API 密钥](#regenerate-admin-keys)
 > * [创建或删除查询 api 密钥](#create-or-delete-query-keys)
 > * [通过增加或减少副本和分区缩放服务](#scale-replicas-and-partitions)
 
-无法使用 PowerShell，若要更改名称、 区域或你的服务层。 创建服务时，将分配专用的资源。 更改基础硬件 （位置或节点类型） 需要新的服务。 没有任何工具或 Api 来传输内容。 所有内容管理是通过[REST](https://docs.microsoft.com/rest/api/searchservice/)或[.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) Api，并且如果你想要移动的索引，则需要重新创建，并重新加载这些新的服务上。 
+无法使用 PowerShell，若要更改名称、 区域或你的服务层。 创建服务时，将分配专用的资源。 更改基础硬件 （位置或节点类型） 需要新的服务。 没有任何工具或 Api 将内容从一个服务传输到另一个。 所有内容管理是通过[REST](https://docs.microsoft.com/rest/api/searchservice/)或[.NET](https://docs.microsoft.com/dotnet/api/?term=microsoft.azure.search) Api，并且如果你想要移动的索引，则需要重新创建，并重新加载这些新的服务上。 
 
 尽管有关内容管理无专用的 PowerShell 命令，可以编写 PowerShell 脚本中调用 REST 或.NET 创建和加载索引。 **Az.Search**模块本身不提供这些操作。
 

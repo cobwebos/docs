@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b307a497e69bd6c2dcc7b415b2d94335459f7fd3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b929182ce1c89e7508aeae91a95b5c9b0d599774
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544972"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621373"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
 
@@ -231,6 +231,9 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |加入状态检查 - 读取解决方案      | Microsoft.OperationalInsights/workspaces/intelligencepacks/read          | 解决方案         |
 |加入状态检查 - 读取 VM      | Microsoft.Compute/virtualMachines/read         | 虚拟机         |
 |加入状态检查 - 读取帐户      | Microsoft.Automation/automationAccounts/read  |  自动化帐户   |
+| 加入工作区中检查 vm<sup>1</sup>       | Microsoft.OperationalInsights/workspaces/read         | 订阅         |
+
+<sup>1</sup>载入通过虚拟机门户体验需要此权限。
 
 ### <a name="onboarding-from-automation-account"></a>从自动化帐户加入
 

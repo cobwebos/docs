@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: c35352c47edb4f34100501ac791c84108fa9ac17
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 07221e5d93c004a2542adfc3a5374fd75ca34b31
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762834"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621399"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的字符串函数
 
@@ -731,7 +731,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 当需要以全局唯一标识符格式创建值时，此功能十分有用。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。
 
-返回的值不是随机字符串，而不是对参数的哈希函数的结果。 返回的值长度为 36 个字符。 并非全局唯一。 若要创建新的 GUID 不基于参数的该哈希值，请使用[newGuid](#newguid)函数。
+返回的值不是随机字符串，而是参数中哈希函数的结果。 返回的值长度为 36 个字符。 并非全局唯一。 若要创建不是基于该参数哈希值的新 GUID，请使用 [newGuid](#newguid) 函数。
 
 以下示例演示如何使用 guid 创建常用级别唯一值。
 
@@ -1022,19 +1022,19 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 `newGuid()`
 
-返回一个值的格式为全局唯一标识符。 **此函数仅可在默认值为参数。**
+以全局唯一标识符的格式返回一个值。 **此函数只能在参数的默认值中使用。**
 
 ### <a name="remarks"></a>备注
 
-您只能使用表达式中的此函数的参数的默认值。 使用此模板中的其他任何位置的函数将返回错误。 因为每次调用它，它返回不同的值，该函数不允许对模板的其他部分。 部署使用相同的参数相同的模板不会可靠地生成相同的结果。
+只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
 
-NewGuid 函数不同于[guid](#guid)函数，因为并不需要任何参数。 当调用具有相同参数的 guid 时，它返回相同的标识符每次。 当您需要可靠地生成特定环境的相同的 GUID 时，请使用 guid。 如果需要其他标识符，每个时间，如将资源部署到测试环境，请使用 newGuid。
+newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。 每次结合相同的参数调用 guid 都会返回相同的标识符。 需要为特定的环境可靠地生成相同的 GUID 时，请使用 guid。 如果每次需要不同的标识符（例如，将资源部署到测试环境），请使用 newGuid。
 
-如果您使用[选项来重新部署应用之前的成功部署](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)，而且以前的部署包括使用 newGuid 的参数，则该参数不重新计算。 相反，以前的部署中的参数值会自动回滚部署中重复使用。
+如果[使用相应的选项来重新部署以前已成功的部署](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)，而以前的部署包含一个使用 newGuid 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
 
-在测试环境中，您可能需要重复部署的资源仅在短时间。 而不是构造的唯一名称，可以使用与 newGuid [uniqueString](#uniquestring)创建唯一的名称。
+在测试环境中，可能需要重复部署生存期较短的资源。 无需构造唯一的名称，可以结合 [uniqueString](#uniquestring) 使用 newGuid 来创建唯一的名称。
 
-谨慎重新部署依赖于默认值为 newGuid 函数的模板。 在重新部署并不为参数提供一个值，该函数将被重新计算。 如果你想要更新现有资源，而不是创建一个新，传递从以前的部署中的参数值。
+重新部署依赖于 newGuid 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
 
 ### <a name="return-value"></a>返回值
 
@@ -1042,7 +1042,7 @@ NewGuid 函数不同于[guid](#guid)函数，因为并不需要任何参数。 �
 
 ### <a name="examples"></a>示例
 
-下面的示例模板演示具有一个新的标识符的参数。
+以下示例模板演示一个带有新标识符的参数。
 
 ```json
 {
@@ -1065,13 +1065,13 @@ NewGuid 函数不同于[guid](#guid)函数，因为并不需要任何参数。 �
 }
 ```
 
-从前面的示例输出对于每个部署各不相同，但将类似于：
+上述示例的输出根据每个部署的不同而异，但类似于：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
 | guidOutput | 字符串 | b76a51fc-bd72-4a77-b9a2-3c29e7d2e551 |
 
-以下示例使用 newGuid 函数来创建存储帐户的唯一名称。 此模板可能适用于测试环境，其中的存储帐户在短时间存在并且不重新部署。
+以下示例使用 newGuid 函数创建存储帐户的唯一名称。 此模板可能适用于其中的存储帐户生存期较短且未重新部署的测试环境。
 
 ```json
 {
@@ -1108,7 +1108,7 @@ NewGuid 函数不同于[guid](#guid)函数，因为并不需要任何参数。 �
 }
 ```
 
-从前面的示例输出对于每个部署各不相同，但将类似于：
+上述示例的输出根据每个部署的不同而异，但类似于：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
@@ -1809,7 +1809,7 @@ NewGuid 函数不同于[guid](#guid)函数，因为并不需要任何参数。 �
     ...
 ```
 
-如果您需要创建新的唯一名称每次部署模板，并不希望更新的资源，可以使用[utcNow](#utcnow)使用 uniqueString 函数。 可以在测试环境中使用此方法。 有关示例，请参阅[utcNow](#utcNow)。
+如果每次部署模板都需要创建新的唯一名称并且不希望更新资源，可以结合 uniqueString 使用 [utcNow](#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](#utcnow)。
 
 ### <a name="return-value"></a>返回值
 
@@ -2015,21 +2015,21 @@ URI 编码值的解码字符串。
 
 `utcNow(format)`
 
-返回当前的 (UTC) 日期时间值中指定的格式。 如果不提供任何格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数仅可在默认值为参数。**
+以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
 
 ### <a name="parameters"></a>parameters
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| 格式 |否 |字符串 |要转换为字符串的 URI 编码值。 可以使用两种[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
+| 格式 |否 |字符串 |要转换为字符串的 URI 编码值。 使用[标准格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings)或[自定义格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)。 |
 
 ### <a name="remarks"></a>备注
 
-您只能使用表达式中的此函数的参数的默认值。 使用此模板中的其他任何位置的函数将返回错误。 因为每次调用它，它返回不同的值，该函数不允许对模板的其他部分。 部署使用相同的参数相同的模板不会可靠地生成相同的结果。
+只能在表达式中对参数的默认值使用此函数。 在模板中的其他任何位置使用此函数都会返回错误。 不允许在模板的其他部分使用该函数，因为每次调用该函数，都会返回不同的值。 使用相同的参数部署同一模板不能可靠地生成相同的结果。
 
-如果您使用[选项来重新部署应用之前的成功部署](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)，而且以前的部署包括使用 utcNow 的参数，则该参数不重新计算。 相反，以前的部署中的参数值会自动回滚部署中重复使用。
+如果[使用相应的选项来重新部署以前已成功的部署](resource-group-template-deploy-rest.md#redeploy-when-deployment-fails)，而以前的部署包含一个使用 utcNow 的参数，则不会重新评估该参数， 而是在回滚部署中自动重复使用以前部署中的参数值。
 
-谨慎重新部署依赖于默认值的 utcNow 函数模板。 在重新部署并不为参数提供一个值，该函数将被重新计算。 如果你想要更新现有资源，而不是创建一个新，传递从以前的部署中的参数值。
+重新部署依赖于 utcNow 函数提供默认值的模板时请保持谨慎。 如果重新部署且不提供参数的值，则会重新评估该函数。 若要更新现有的资源而不是新建资源，请传入以前部署中的参数值。
 
 ### <a name="return-value"></a>返回值
 
@@ -2037,7 +2037,7 @@ URI 编码值的解码字符串。
 
 ### <a name="examples"></a>示例
 
-下面的示例模板演示不同的日期时间值的格式。
+以下示例模板演示日期时间值的不同格式。
 
 ```json
 {
@@ -2076,7 +2076,7 @@ URI 编码值的解码字符串。
 }
 ```
 
-从前面的示例输出对于每个部署各不相同，但将类似于：
+上述示例的输出根据每个部署的不同而异，但类似于：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
@@ -2084,7 +2084,7 @@ URI 编码值的解码字符串。
 | utcShortOutput | 字符串 | 03/05/2019 |
 | utcCustomOutput | 字符串 | 3 5 |
 
-下一个示例演示如何设置标记值时使用该函数中的值。
+以下示例演示在设置标记值时如何使用函数中的值。
 
 ```json
 {

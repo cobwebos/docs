@@ -1,21 +1,21 @@
 ---
-title: 连接到 FTP 服务器 - Azure 逻辑应用 | Microsoft Docs
+title: 连接到 FTP 服务器-Azure 逻辑应用
 description: 使用 Azure 逻辑应用创建、监视和管理 FTP 服务器上的文件
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 author: ecfan
 ms.author: estfan
-ms.reviewer: klam, LADocs
+ms.reviewer: divswa, LADocs
 ms.topic: article
 ms.date: 10/15/2018
 tags: connectors
-ms.openlocfilehash: 1e649f21758adedb069b38f64f083ccb85df874d
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: e5aeaa707c7a839483484c524e982204d6fe055c
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913353"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576320"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用创建、监视和管理 FTP 文件
 
@@ -28,12 +28,13 @@ ms.locfileid: "54913353"
 
 可以使用触发器从 FTP 服务器获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的运行操作对 FTP 服务器上的文件进行管理。 还可以让其他操作使用来自 FTP 操作的输出。 例如，如果你定期从 FTP 服务器获取文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-> [!NOTE]
-> 除非[在操作中使用消息分块](../logic-apps/logic-apps-handle-large-messages.md)，否则 FTP 连接器仅支持 50 MB 或更小的文件。 目前，不能对触发器使用分块。
->
-> 此外，FTP 连接器仅支持显式 FTP over SSL (FTPS)，与隐式 FTPS 不兼容。 
+## <a name="limits"></a>限制
 
-## <a name="prerequisites"></a>先决条件
+* FTP 操作支持的唯一文件*50 MB 或更小*除非你使用[消息分块](../logic-apps/logic-apps-handle-large-messages.md)，您可以通过超过此限制。 目前，FTP 触发器不支持分块。
+
+* FTP 连接器支持仅显式 FTP over SSL (FTPS)，并且与隐式 FTPS 不兼容。
+
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -51,7 +52,7 @@ ms.locfileid: "54913353"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，在逻辑应用设计器中打开逻辑应用（如果尚未打开）。
 
-1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表下，选择所需的触发器。 
+1. 对于空白逻辑应用，请在搜索框中输入“ftp”作为筛选器。 在触发器列表下，选择所需的触发器。
 
    -或-
 
@@ -82,7 +83,7 @@ ms.locfileid: "54913353"
 
 **企业示例**：可以使用此触发器监视 FTP 文件夹中描述客户订单的新文件。 然后，可以使用“获取文件内容”等 FTP 操作来获取订单内容以做进一步处理，并将该订单存储在订单数据库中。
 
-请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+在请求文件内容时，触发器不能获取文件大小超过 50 MB。 若要获取大于 50 MB 的文件，请遵循以下模式： 
 
 * 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
 
@@ -121,7 +122,7 @@ ms.locfileid: "54913353"
 
 添加或更新文件时，此操作将通过 FTP 服务器获取该文件的内容。 例如，可通过前面的示例添加触发器，然后添加操作，用于在添加或编辑文件后获取该文件内容。 
 
-请求文件内容时，触发器不会获取大于 50 MB 的文件。 若要获取大于 50 MB 的文件，请遵循以下模式： 
+在请求文件内容时，触发器不能获取文件大小超过 50 MB。 若要获取大于 50 MB 的文件，请遵循以下模式： 
 
 * 使用可返回文件属性的触发器，如“添加或修改文件时(仅属性)”。
 
@@ -151,7 +152,7 @@ ms.locfileid: "54913353"
 
 ## <a name="connector-reference"></a>连接器参考
 
-有关触发器、操作和限制（请参阅连接器的 OpenAPI（以前称为 Swagger）说明）的技术详细信息，请查看连接器的[参考页](/connectors/ftpconnector/)。
+有关触发器、 操作和限制的技术详细信息，其中描述了连接器的 OpenAPI (以前称为 Swagger) 说明，请查看[连接器的参考页](/connectors/ftpconnector/)。
 
 ## <a name="get-support"></a>获取支持
 

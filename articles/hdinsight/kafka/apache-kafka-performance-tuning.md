@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: 903cd8921801ffb47dd73f48e507f30aa0b6dccc
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 3f15f45e0543c582d70463fb9ddc7ac569ff57bc
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58373145"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576752"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight 群集的性能优化
 
@@ -66,7 +66,7 @@ Kafka 生成者可以配置为压缩的消息发送到代理程序之前。 `com
 
 ### <a name="number-of-topics-and-partitions"></a>主题和分区的数量
 
-Kafka 生成者将写入到主题。 Kafka 使用者从主题读取。 本主题是一个日志，是在磁盘上的数据结构与相关联。 Kafka 将记录从 producer(s) 主题日志的结尾追加。 主题日志都包含分散到多个文件的多个分区。 这些文件，反过来，分布在多个 Kafka 群集节点。 使用者从其节奏的 Kafka 主题读取和，并且可选择主题日志中的位置 （偏移量）。
+Kafka 生成者将写入到主题。 Kafka 使用者从主题读取。 本主题是一个日志，是在磁盘上的数据结构与相关联。 Kafka 将记录从 producer(s) 主题日志的结尾追加。 主题日志都包含分散到多个文件的多个分区。 这些文件，反过来，分布在多个 Kafka 群集节点。 使用者从其节奏的 Kafka 主题读取，并且可选择主题日志中的位置 （偏移量）。
 
 每个 Kafka 分区是在系统上，日志文件和制造者线程可以同时写入多个日志。 同样，由于每个使用者线程从一个分区中读取消息，从多个分区使用被处理并行也。
 

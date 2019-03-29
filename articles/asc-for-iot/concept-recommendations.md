@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 1e4582d93d1e3380ecdabdb241f27839d4da4565
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: dc37404e45e4efd0697b0f3b19c4927813ab56fa
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541852"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576185"
 ---
 # <a name="security-recommendations"></a>安全建议
 
@@ -27,12 +27,13 @@ ms.locfileid: "58541852"
 > Iot ASC 目前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-根据正在进行解决方案分析，ASC 为 IoT 提供了以下建议时，能够帮助您提高和保护你的设备、 操作状态和整体 IoT 中心环境。 
+适用于 IoT 的 ASC 扫描你的 Azure 资源和 IoT 设备，并提供安全建议来减少攻击面。 是可操作的安全建议和旨在帮助客户遵循安全最佳方案。
 
+在本文中，您将发现的建议可以在 IoT 中心和/或 IoT 设备上触发的列表。
 
-## <a name="device-recommendations"></a>设备的建议
+## <a name="recommendations-for-iot-devices"></a>建议为 IoT 设备的
 
-设备建议提供见解和建议来提高设备安全设置和行为。 
+设备建议提供见解和建议以提高设备安全状态。 
 
 | 严重性 | 名称                                                      | 数据源 | 描述                                                                                                                                                                                           |
 |----------|-----------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -42,9 +43,9 @@ ms.locfileid: "58541852"
 | 中型   | 找到输出链中的宽松的防火墙规则    | 代理       | 找到在防火墙中的规则，其中包含的 IP 地址或端口范围广泛的宽松的模式。                                                                                   |
 | 中型   | 操作系统基线验证失败           | 代理       | 设备不符合[CIS Linux 基准](https://www.cisecurity.org/cis-benchmarks/)                                                                                                         |
 
-### <a name="operational-recommendation"></a>操作的建议
+### <a name="operational-recommendations-for-iot-devices"></a>IoT 设备的的操作建议
 
-操作建议提供见解和建议来提高代理配置。
+操作建议提供见解和建议以提高安全代理配置。
 
 | 严重性 | 名称                                    | 数据源 | 描述                                                                       |
 |----------|-----------------------------------------|-------------|-----------------------------------------------------------------------------------|
@@ -53,7 +54,7 @@ ms.locfileid: "58541852"
 | 低      | 安全孪生配置冲突    | 代理       | 在安全孪生配置中发现冲突。                           |
 
 
-## <a name="iot-hub-recommendations"></a>IoT 中心的建议
+## <a name="recommendations-for-iot-hub"></a>有关 IoT 中心的建议
 
 建议的警报提供见解和建议的操作来提高您的环境的安全状况。  
 

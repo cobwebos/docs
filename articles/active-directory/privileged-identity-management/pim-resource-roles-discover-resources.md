@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中发现要管理的 Azure 资源 | Microsoft Docs
+title: 发现要管理 PIM-Azure Active Directory 中的 Azure 资源 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中发现要管理的 Azure 资源。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.subservice: pim
 ms.date: 01/23/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a90bd76470f5c06eb0e73615a358312b46d8be4a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 717cec41f152f0ebe3120b25db76cd684f39cbe3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56195390"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575005"
 ---
 # <a name="discover-azure-resources-to-manage-in-pim"></a>在 PIM 中发现要管理的 Azure 资源
 
-使用 Azure AD Privileged Identity Management (PIM)，可加强对 Azure 资源的保护。 这对于已使用 PIM 保护 Azure AD 目录角色的组织、对于管理组以及希望保护生产资源的订阅所有者非常有用。
+使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以提高 Azure 资源的保护。 这非常有用的组织已使用 PIM 保护 Azure AD 角色，并想要保护生产资源的管理组和订阅所有者。
 
 首次为 Azure 资源设置 PIM 时，需要发现并选择要使用 PIM 保护的资源。 可使用 PIM 管理的资源数量没有限制。 但是，我们建议从最重要的（生产）资源开始。
 

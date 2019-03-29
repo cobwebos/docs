@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 3/26/2019
 ms.author: rkarlin
-ms.openlocfilehash: 154af3988084792331db082b99cae0ae06126f1b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242167"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574937"
 ---
 # <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>收集的数据从 Azure 高级威胁防护 (ATP)
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
@@ -46,9 +46,10 @@ ms.locfileid: "57242167"
 
 2. 单击“连接”。
 
+6. 若要使用 Log Analytics 中的 Azure ATP 警报相关的架构，搜索**SecurityAlert**。
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Azure 高级威胁防护连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 Azure 高级威胁防护连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 

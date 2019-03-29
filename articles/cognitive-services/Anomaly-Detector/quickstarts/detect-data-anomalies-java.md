@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 2a6d356bcf65cdb59e84b34cf2a7478de796e61a
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473141"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619505"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>快速入门：使用异常检测器 REST API 和 Java 时序数据中检测异常
 
@@ -91,7 +91,7 @@ ms.locfileid: "58473141"
 
 2. 创建`CloseableHttpClient`可以向 API 发送请求的对象。 将请求发送到`HttpPost`通过合并你的终结点和异常情况检测程序 URL 的请求对象。
 
-3. 使用请求的`setHeader()`函数来设置`Content-Type`标头到`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
+3. 使用请求的`setHeader()`函数来设置`Content-Type`标头`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
 
 4. 使用请求的`setEntity()`要发送的数据的函数。   
 

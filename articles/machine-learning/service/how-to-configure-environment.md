@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1d4144a2a6cf41d594ee096d8802ccc5b29009a5
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c4bdeb4e00a59d6ba2b415801c0689d77ed9a825
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361789"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577554"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -315,7 +315,9 @@ Azure Databricks 的工作原理与 Azure 机器学习服务：
    1. 在“库”选项卡上，选择“重启”。
       
    另请考虑：
-   + 某些包，如`psutil`，可以在安装过程中导致 Databricks 冲突。 若要避免此类错误，安装包由死机 lib 版本，如`pstuil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0`。 
+   + 在 Automl 的配置来说，当使用 Azure Databricks 请添加以下参数：
+    1. ```max_concurrent_iterations``` 基于群集中的辅助角色节点数。 
+    2. ```spark_context=sc``` #databricks/spark 的默认 spark 上下文。 
    + 或者，如果有旧的 SDK 版本，取消选中此选项从群集的已安装库，然后移到回收站。 安装新的 SDK 版本并重启群集。 如果完成此操作后出现问题，请分离并重新附加群集。
 
 如果安装成功，导入的库应如下所示其中之一：

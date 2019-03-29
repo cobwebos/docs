@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: f09d18759478c6c07aa0aea82f8bd1707595aa63
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ea5a6a70372571daf82e7639fc31c125d69fa44f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499074"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621424"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure 媒体服务发行说明
 
@@ -42,13 +42,12 @@ ms.locfileid: "58499074"
 | 某些客户端可能会在平滑流式处理清单中碰到重复标记问题。 |有关详细信息，请参阅[此部分](media-services-deliver-content-overview.md#known-issues)。 |
 | 媒体服务 .NET SDK 对象无法序列化，因此无法与 Azure Redis 缓存配合使用。 |如果尝试对 SDK AssetCollection 对象进行序列化以将其添加到 Azure Redis 缓存，则会引发异常。 |
 
-
 ## <a name="a-idrestversionhistoryrest-api-version-history"></a><a id="rest_version_history"/>REST API 版本历史记录
 有关媒体服务 REST API 版本历史记录的信息，请参阅 [Azure 媒体服务 REST API 参考]。
 
 ## <a name="december-2018"></a>2018 年 12 月
 
-Azure 媒体服务的 [Media Hyperlapse 预览](media-services-hyperlapse-content.md)功能即将停用。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
+很快将停用 Azure 媒体服务的媒体 Hyperlapse 预览功能。 从 2018 年 12 月 19 日起，媒体服务不再对 Media Hyperlapse 进行更改或改进。 在 2019 年 3 月 29 日，它将停用并不再可用。
 
 ## <a name="october-2018"></a>2018 年 10 月
 
@@ -260,7 +259,6 @@ Azure SDK 团队已发布新版 [Azure SDK for PHP](https://github.com/Azure/azu
 
 * [使用媒体服务进行实时编码的预览](media-services-manage-live-encoder-enabled-channels.md)
 * [动态清单](media-services-dynamic-manifest-overview.md)
-* [Azure Media Hyperlapse 媒体处理器预览](https://azure.microsoft.com/blog/?p=286281&preview=1&_ppp=61e1a0b3db)
 
 ## <a id="april_changes_15"></a>2015 年 4 月版本
 ### <a name="general-media-services-updates"></a>媒体服务一般更新

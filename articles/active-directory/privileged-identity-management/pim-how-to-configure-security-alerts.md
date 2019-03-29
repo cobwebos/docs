@@ -1,6 +1,6 @@
 ---
-title: 在 PIM 中为 Azure AD 目录角色配置安全警报 | Microsoft Docs
-description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中为 Azure AD 目录角色配置安全警报。
+title: 在 PIM 的 Azure Active Directory 中配置 Azure AD 角色的安全警报 |Microsoft Docs
+description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中配置 Azure AD 角色的安全警报。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,22 +14,22 @@ ms.date: 01/04/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2cb78d048559a011756362b58848c5e91ca40dd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 1cd391af4e4b4722e433e9bf25f0d584fba2321e
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56172376"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577223"
 ---
-# <a name="configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>在 PIM 中为 Azure AD 目录角色配置安全警报
+# <a name="configure-security-alerts-for-azure-ad-roles-in-pim"></a>在 PIM 中配置 Azure AD 角色的安全警报
 
-如果环境中有可疑活动或不安全的活动，Azure AD Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
+你的环境中存在可疑活动或不安全活动时，azure Active Directory (Azure AD) Privileged Identity Management (PIM) 将生成警报。 触发警报时，它显示在 PIM 仪表板上。 选择警报以查看列出了已触发该警报的用户或角色的报告。
 
 ![PIM 安全警报 - 屏幕截图](./media/pim-how-to-configure-security-alerts/pim-directory-alerts.png)
 
 ## <a name="security-alerts"></a>安全警报
 
-本部分列出目录角色的所有安全警报，以及如何修复和防止这些警报。 严重性的含义如下：
+本部分列出了 Azure AD 角色，以及如何修复错误和如何阻止的所有安全警报。 严重性的含义如下：
 
 * **高**：因策略违反需要立即采取措施。
 * **中**：不需要立即采取措施但指示潜在的策略违反。
@@ -130,4 +130,4 @@ ms.locfileid: "56172376"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中配置 Azure AD 目录角色设置](pim-how-to-change-default-settings.md)
+- [在 PIM 中配置 Azure AD 角色设置](pim-how-to-change-default-settings.md)

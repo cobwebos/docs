@@ -11,12 +11,12 @@ ms.assetid: 697eb8b0-4a66-40c7-be7b-6aa6b131c7ad
 ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
-ms.openlocfilehash: 5d328164ac8ad99db15a12d850327615a9ffd809
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910278"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578367"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 SFTP 文件
 
@@ -27,12 +27,20 @@ ms.locfileid: "54910278"
 * 获取文件内容和元数据。
 * 将存档提取到文件夹。
 
-与 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)相比，SFTP 连接器可以读取或写入最大 50 MB 的文件，除非你[在操作中使用消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 目前，不能对触发器使用分块。 对于大至 1 GB 的文件，请使用 [SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)。 对于大于 1 GB 的文件，可以结合使用 SFTP-SSH 连接器以及[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。 
-
 可以使用触发器来监视 SFTP 服务器上的事件，并使输出可用于其他操作。 可以使用操作针对 SFTP 服务器执行各种任务。 还可以让逻辑应用中的其他操作使用 SFTP 操作的输出。 例如，如果你定期从 SFTP 服务器检索文件，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送有关这些文件及其内容的电子邮件警报。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="limits"></a>限制
+
+* SFTP 操作可以读取或写入的文件*50 MB 或更小*除非你使用[消息分块在操作](../logic-apps/logic-apps-handle-large-messages.md)，您可以通过超过此限制。 目前，SFTP 触发器不支持分块。
+
+* 文件*达 1 GB*，使用[SFTP-SSH 连接器](../connectors/connectors-sftp-ssh.md)。
+
+* 文件*超过 1 GB*，使用 SFTP-SSH 连接器加号[消息分块](../logic-apps/logic-apps-handle-large-messages.md)。
+
+有关其他 SFTP 连接器和 SFTP-SSH 连接器之间的差异，查看[比较 SFTP-SSH 和 SFTP](../connectors/connectors-sftp-ssh.md#comparison) SFTP-SSH 文章中。
+
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

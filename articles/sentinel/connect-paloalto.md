@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/6/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6145d77e6485a33ea3a9f9d66a4356587966bc5f
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: bcab43869b488eed1cc6693a2970b6ea4bb2e7c1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403555"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576337"
 ---
 # <a name="connect-your-palo-alto-networks-appliance"></a>将 Palo Alto Networks 设备连接
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 您可以连接 Azure Sentinel 到任何 Palo Alto Networks 设备通过将日志文件保存为 Syslog CEF。 与 Azure Sentinel 的集成，可轻松地运行分析和查询在日志文件数据之间的 Palo Alto Networks。 有关如何 Azure Sentinel 引入 CEF 数据的详细信息，请参阅[连接 CEF 设备](connect-common-event-format.md)。
@@ -34,9 +34,9 @@ ms.locfileid: "58403555"
 
 ## <a name="step-1-connect-your-palo-alto-networks-appliance-using-an-agent"></a>步骤 1：将 Palo Alto Networks 设备使用一个代理连接
 
-若要连接到 Azure Sentinel Palo Alto Networks 设备，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 你可以自动或手动部署代理。 仅在专用的计算机是否在 Azure 中创建新的 VM 提供了自动部署。 
+若要连接到 Azure Sentinel Palo Alto Networks 设备，需要专用的计算机上部署代理 (VM 或本地) 以支持设备和 Azure Sentinel 之间的通信。 可以自动或手动部署代理。 仅当专用计算机是在 Azure 中创建的新 VM 时，才能进行自动部署。 
 
-或者，你可以部署在另一个云中的 VM 上的现有的 Azure VM 上手动或在本地计算机上的代理。
+或者，可以在现有的 Azure VM 上、在其他云中的 VM 上或者在本地计算机上手动部署代理。
 
 若要查看网络图的这两个选项，请参阅[数据源连接](connect-data-sources.md#agent-options)。
 
@@ -122,6 +122,7 @@ ms.locfileid: "58403555"
 3. 如果这两个这些命令提供成功的结果，请检查 Log Analytics，请参阅正在传入到你的日志。 从这些设备流式传输的所有事件都显示在下的 Log Analytics 中的原始格式`CommonSecurityLog `类型。
 1. 若要检查是否有错误或日志不会到达，查找范围 `tail /var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
 4. 请确保你 Syslog 消息的默认大小限制为 2048 个字节 (2 KB)。 如果日志太长，更新 security_events.conf 使用以下命令： `message_length_limit 4096`
+6. 若要使用 Log Analytics 中的 Palo Alto Networks 事件相关的架构，搜索**CommonSecurityLog**。
 
 
 
@@ -130,7 +131,7 @@ ms.locfileid: "58403555"
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Palo Alto Networks 设备连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 Palo Alto Networks 设备连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 

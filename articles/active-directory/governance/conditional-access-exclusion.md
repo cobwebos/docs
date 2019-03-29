@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure AD 访问评审管理用户从条件性访问策略中排除 |Microsoft Docs
+title: 使用访问评审管理用户从条件性访问策略-Azure Active Directory 中排除 |Microsoft Docs
 description: 了解如何使用 Azure Active Directory (Azure AD) 访问评审管理用户已从条件性访问策略中排除
 services: active-directory
 documentationcenter: ''
@@ -16,16 +16,16 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a197a6c27b337d7aa97667dc07b1059e82050549
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892706"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577113"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理用户从条件性访问策略中排除
 
-在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 本指南介绍了排除项可能需要一些示例和如何您作为 IT 管理员，可以管理此任务，避免监督策略例外情况，并审核员提供使用 Azure 定期查看这些异常的概念Active Directory (Azure AD) 访问评审。
+在理想情况下，所有用户都会遵循访问策略来保护对组织资源的访问。 但是，有时，某些业务案例要求例外处理。 本文介绍可能需要创建排除项的某些示例，以及 IT 管理员如何管理此任务，以避免监督策略例外项，并向审核员证明已使用 Azure Active Directory (Azure AD) 定期评审这些例外项。
 
 > [!NOTE]
 > 使用 Azure AD 访问评审需要有效的 Azure AD Premium P2、企业移动性 + 安全性 E5 付费版或试用版许可证。 有关详细信息，请参阅 [Azure Active Directory 版本](../fundamentals/active-directory-whatis.md)。
@@ -44,7 +44,7 @@ ms.locfileid: "57892706"
 
 ## <a name="why-are-exclusions-challenging"></a>为何排除项会带来挑战？
 
-在 Azure AD 中，可将条件访问策略限定为一组用户。 还可以通过选择目录角色、单个用户或用户来宾来排除其中的某些用户。 请务必记住，配置这些排除项时，不能针对这些用户强制实施策略意图。 如果将这些排除项配置为包含各个用户的列表，或通过旧式本地安全组进行配置，则此策略会限制此排除列表的可见性（用户可能不知道它的存在），以及 IT 管理员对它的控制力（用户可能会加入安全组以绕过策略）。 此外，在某个时间符合排除条件的用户可能不再需要它或者后来不符合条件。
+在 Azure AD 中，可将条件访问策略限定为一组用户。 你还可以通过选择 Azure AD 角色、 单个用户或来宾用户排除这些用户的一些。 请务必记住，配置这些排除项时，不能针对这些用户强制实施策略意图。 如果将这些排除项配置为包含各个用户的列表，或通过旧式本地安全组进行配置，则此策略会限制此排除列表的可见性（用户可能不知道它的存在），以及 IT 管理员对它的控制力（用户可能会加入安全组以绕过策略）。 此外，在某个时间符合排除条件的用户可能不再需要它或者后来不符合条件。
 
 排除项的开头包含跳过策略的用户的简短列表。 随着排除的用户越来越多，该列表会不断增大。 在某些时候，需要审查该列表，并确认是否仍然应该排除其中的每个用户。 从技术角度讲，管理列表可能相对容易，但谁是业务决策人，以及如何确保该列表完全可审核？
 

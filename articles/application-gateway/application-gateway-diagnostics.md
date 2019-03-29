@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 1/11/2019
+ms.date: 3/28/2019
 ms.author: amitsriva
-ms.openlocfilehash: 14b99f648bb1d7e1926aa9d5dd9926e267ba9709
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 367da8a1948b9feb42bc82d85762ae314fe165a0
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309122"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620870"
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>应用程序网关的后端运行状况、诊断日志和指标
 
@@ -131,7 +131,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 ### <a name="enable-logging-through-the-azure-portal"></a>通过 Azure 门户启用日志记录
 
-1. 在 Azure 门户中找到资源，然后单击“诊断日志”。
+1. 在 Azure 门户中找到资源，然后选择**诊断设置**。
 
    对于应用程序网关，提供 3 种日志：
 
@@ -139,21 +139,15 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
    * 性能日志
    * 防火墙日志
 
-2. 若要开始收集数据，请单击“启用诊断” 。
+2. 若要开始收集数据，请选择**启用诊断**。
 
    ![启用诊断][1]
 
-3. “诊断设置”边栏选项卡提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 单击“Log Analytics”下的“配置”来配置工作区。 也可使用事件中心和存储帐户保存诊断日志。
+3. “诊断设置”页提供用于诊断日志的设置。 本示例使用 Log Analytics 存储日志。 也可使用事件中心和存储帐户保存诊断日志。
 
    ![启动配置过程][2]
 
-4. 选择现有的 Log Analytics 工作区，或新建一个工作区。 本示例使用现有工作区。
-
-   ![Log Analytics 工作区的选项][3]
-
-5. 确认设置并单击“保存”。
-
-   ![带有选项的诊断设置边栏选项卡][4]
+5. 为设置键入一个名称，确认设置，然后选择**保存**。
 
 ### <a name="activity-log"></a>活动日志
 
@@ -334,7 +328,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    可以按每个后端池进行筛选来显示特定后端池中正常的/不正常的主机数。
 
-浏览到应用程序网关，并在“监视”下单击“指标”。 若要查看可用值，请选择“指标”下拉列表。
+浏览到应用程序网关下,**监视**选择**指标**。 若要查看可用值，请选择“指标”下拉列表。
 
 在下图中可以看到过去 30 分钟显示的三个指标的示例：
 
@@ -348,11 +342,11 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
 以下示例指导创建警报规则，以在吞吐量违反阈值时给管理员发送电子邮件：
 
-1. 单击“添加指标警报”，打开“添加规则”边栏选项卡。 还可从指标边栏选项卡访问此边栏选项卡。
+1. 选择**添加指标警报**以打开**添加规则**页。 也可以访问此页上，从指标页。
 
    ![“添加指标警报”按钮][6]
 
-2. 在“添加规则”边栏选项卡中，填写名称、条件和通知部分，然后单击“确定”。
+2. 上**添加规则**页上，填写名称、 条件和通知部分，然后选择**确定**。
 
    * 在“条件”选择器中，选择以下四个值之一：**大于**、**大于或等于**、**小于**、**小于或等于**。
 
@@ -360,7 +354,7 @@ az network application-gateway show-backend-health --resource-group AdatumAppGat
 
    * 如果选择“电子邮件所有者、参与者和读者”，则电子邮件将基于有权访问该资源的用户动态发送。 否则，可以在“其他管理员电子邮件”框中提供用户名单并以逗号分隔。
 
-   ![“添加规则”边栏选项卡][7]
+   ![添加规则页][7]
 
 如果违反阈值，用户将收到类似下图内容的电子邮件：
 
