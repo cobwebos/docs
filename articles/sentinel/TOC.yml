@@ -41,6 +41,8 @@ items:
         href: connect-azure-atp.md
       - name: 连接 Azure 安全中心
         href: connect-azure-security-center.md
+      - name: 连接 Microsoft Web 应用程序防火墙
+        href: connect-microsoft-waf.md
       - name: 连接 Windows 防火墙
         href: connect-windows-firewall.md
       - name: 连接 Windows 安全事件
@@ -65,8 +67,6 @@ items:
         href: connect-cisco.md
     - name: 连接威胁智能
       href: connect-threat-intelligence.md
-  - name: 用户分析
-    href: user-analytics.md
   - name: 搜寻
     href: hunting.md
     items:
@@ -86,9 +86,9 @@ items:
     href: https://blogs.msdn.com/b/azuresecurity/
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 44a779cd9d4c32288470ebdcde0a206934783abe
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ea4ece58615b35debf083f6d888067ae9e07d809
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399959"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574903"

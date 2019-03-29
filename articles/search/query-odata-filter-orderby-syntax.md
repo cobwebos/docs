@@ -1,7 +1,7 @@
 ---
 title: 适用于筛选器和 order-by 子句的 OData 表达式语法 - Azure 搜索
 description: 适用于 Azure 搜索查询的筛选器和 order-by 表达式 OData 语法。
-ms.date: 01/31/2019
+ms.date: 03/27/2019
 services: search
 ms.service: search
 ms.topic: conceptual
@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f0fd93af7cba3057ad4c2224aa1298a221505645
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541029"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578401"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Azure 搜索中适用于筛选器和 order-by 子句的 OData 表达式语法
 
@@ -207,7 +207,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-查找名称等于“Roach motel”或“Budget hotel”的所有酒店：  
+查找所有酒店名称等于 Roach motel 或预算酒店）。 短语包含空格，这是默认分隔符。 若要指定的分隔符替代，请用单引号作为筛选器表达式的一部分的新分隔符：  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -223,6 +223,12 @@ $filter=search.in(name, 'Roach motel|Budget hotel', '|')
 
 ```
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
+```
+
+找到多个标记、 加热总是随身携带毛巾机架或 hairdryer 包含上的匹配项。 请记住默认空间分隔符为处于无法工作时指定备用分隔符。 
+
+```
+$filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))
 ```
 
 查找没有“motel”或“cabin”标签的所有酒店：  

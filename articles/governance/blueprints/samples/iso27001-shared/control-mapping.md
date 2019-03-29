@@ -8,24 +8,24 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f655db8643a16e6818f5becf25c8761fb4c9093b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 34cda2f09392513b0d3f76cc5f77ea0064109410
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008002"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576099"
 ---
 # <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Azure 蓝图 ISO 27001 蓝图示例的控件映射
 
 以下文章详细介绍了如何 Azure 蓝图 ISO 27001 共享服务蓝图示例映射到 ISO 27001 控件。 有关控件的详细信息，请参阅[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 
-以下映射到所**ISO 27001: 2013**控件。 使用右侧导航直接跳转到特定的控件映射。 许多映射控件都与实现[Azure 策略](../../../policy/overview.md)计划。 若要查看完整的计划，请打开**策略**在 Azure 门户并选择**定义**页。 然后，找到并选择**[预览]审核 ISO 27001: 2013 控制和部署特定的 VM 扩展以支持审核要求**内置策略计划。
+以下映射到所**ISO 27001: 2013**控件。 使用右侧导航直接跳转到特定的控件映射。 许多映射控件都与实现[Azure 策略](../../../policy/overview.md)计划。 若要查看完整的计划，请打开**策略**在 Azure 门户并选择**定义**页。 然后，找到并选择**[预览版]审核 ISO 27001: 2013 控制和部署特定的 VM 扩展以支持审核要求**内置策略计划。
 
 ## <a name="a612-segregation-of-duties"></a>A.6.1.2 责任分离
 
 具有只有一个 Azure 订阅所有者不允许管理冗余。 相反，具有 Azure 订阅的所有者过多会增加通过遭到入侵的所有者帐户受到破坏的可能性。 此蓝图可帮助您通过将分配两个维护适当数量的 Azure 订阅所有者[Azure 策略](../../../policy/overview.md)审核的 Azure 订阅的所有者数量的定义。 管理订阅所有者权限可以帮助您实现相应职责分离。
 
-- [预览]: Audit minimum number of owners for subscription
+- [预览版]: Audit minimum number of owners for subscription
 - [预览]: Audit maximum number of owners for a subscription
 
 ## <a name="a912-access-to-networks-and-network-services"></a>A.9.1.2 访问网络和网络服务
@@ -122,12 +122,12 @@ Azure 实现[基于角色的访问控制](../../../../role-based-access-control/
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 事件日志记录
 
-此蓝图可帮助你确保系统事件记录通过分配七[Azure 策略](../../../policy/overview.md)定义的审核日志在 Azure 资源上的设置。 如果虚拟机不会将日志发送到指定的 log analytics 工作区还审核具有分配的策略。
+此蓝图可帮助你确保系统事件记录通过分配七[Azure 策略](../../../policy/overview.md)审核日志设置 Azure 资源上的定义。 如果虚拟机不会将日志发送到指定的 log analytics 工作区还审核具有分配的策略。
 
-- [预览]：审核依赖项代理部署的 VM 映像 (OS) 未列出
-- [预览]：审核在 VMSS 的 VM 映像 (OS) 未列出的依赖项代理部署
-- [预览]：审核日志分析代理部署的 VM 映像 (OS) 未列出
-- [预览]：VMSS 的 VM 映像 (OS) 未列出中的审核日志分析代理部署
+- [预览版]：审核依赖项代理部署的 VM 映像 (OS) 未列出
+- [预览版]：审核在 VMSS 的 VM 映像 (OS) 未列出的依赖项代理部署
+- [预览版]：审核日志分析代理部署的 VM 映像 (OS) 未列出
+- [预览版]：VMSS 的 VM 映像 (OS) 未列出中的审核日志分析代理部署
 - [预览]: Monitor unaudited SQL database in Azure Security Center
 - 审核诊断设置
 - 审核 SQL 服务器级别审核设置
@@ -187,10 +187,10 @@ Azure 实现[基于角色的访问控制](../../../../role-based-access-control/
 > [ISO 27001 共享服务蓝图-概述](./index.md)
 > [ISO 27001 共享服务蓝图-部署步骤](./deploy.md)
 
-添加有关蓝图和如何使用这些文章：
+有关蓝图和如何使用这些蓝图的更多文章：
 
-- 了解如何[蓝图生命周期](../../concepts/lifecycle.md)。
+- 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。
-- 了解如何自定义[蓝图先后顺序](../../concepts/sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](../../concepts/resource-locking.md)。
+- 了解如何自定义[蓝图排序顺序](../../concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](../../concepts/resource-locking.md)。
 - 了解如何[更新现有分配](../../how-to/update-existing-assignments.md)。

@@ -18,6 +18,8 @@ ms.author: carolz
 
 了解如何使用媒体服务（一个可缩放的云平台）流式传输广播质量的视频。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
 
+**注意：** 不会向媒体服务 v2 添加任何新特性或新功能。 查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 另请参阅[从 v2 到 v3 的迁移指南](../latest/migrate-from-v2-to-v3.md)。
+
 <ul class="panelContent cardsFTitle">
      <li>
         <a href="/azure/media-services/media-services-overview">
@@ -66,7 +68,7 @@ ms.author: carolz
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>通过 Azure 门户开始使用 Azure 媒体服务</h3>
+                        <h3>Azure 媒体服务入门（使用 Azure 门户）</h3>
                     </div>
                 </div>
             </div>
@@ -84,7 +86,7 @@ ms.author: carolz
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Azure 门户创建 Azure 媒体服务帐户</h3>
+                        <h3>利用 Azure 门户创建 Azure 媒体服务帐户</h3>
                     </div>
                 </div>
             </div>
@@ -102,7 +104,7 @@ ms.author: carolz
                         </div>
                     </div>
                     <div class="cardText">
-                        <h3>使用 Azure 门户开始传送内容</h3>
+                        <h3>内容传送入门（使用 Azure 门户）</h3>
                     </div>
                 </div>
             </div>

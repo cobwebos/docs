@@ -8,12 +8,12 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: d487ce81babc2d1d6a35e3bdb1c13e1a24f8d1ca
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: c062759938652518ac3cafff64973050554ca19d
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58014196"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579693"
 ---
 # <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Azure 蓝图 ISO 27001 蓝图示例的控件映射
 
@@ -40,7 +40,7 @@ Azure 实现[基于角色的访问控制](../../../../role-based-access-control/
 - [预览]: Audit Linux VM allowing remote connections from accounts with no passwords
 - 审核经典存储帐户的使用
 - 审核经典虚拟机的使用
-- 审核不使用托管的磁盘的 Vm
+- 审核未使用托管磁盘的 VM
 
 ## <a name="a922-user-access-provisioning"></a>A.9.2.2 用户访问的预配
 
@@ -122,7 +122,7 @@ Azure 实现[基于角色的访问控制](../../../../role-based-access-control/
 
 ## <a name="a1241-event-logging"></a>A.12.4.1 事件日志记录
 
-此蓝图可帮助你确保系统事件记录通过分配七[Azure 策略](../../../policy/overview.md)定义的审核日志在 Azure 资源上的设置。 如果虚拟机不会将日志发送到指定的 log analytics 工作区还审核具有分配的策略。
+此蓝图可帮助你确保系统事件记录通过分配七[Azure 策略](../../../policy/overview.md)审核日志设置 Azure 资源上的定义。 如果虚拟机不会将日志发送到指定的 log analytics 工作区还审核具有分配的策略。
 
 - [预览版]：审核依赖项代理部署的 VM 映像 (OS) 未列出
 - [预览版]：审核在 VMSS 的 VM 映像 (OS) 未列出的依赖项代理部署
@@ -187,10 +187,10 @@ Azure 实现[基于角色的访问控制](../../../../role-based-access-control/
 > [ISO 27001 应用服务环境 / SQL 数据库工作负荷蓝图-概述](./index.md)
 > [ISO 27001 应用服务环境 / SQL 数据库工作负荷蓝图-部署步骤](./deploy.md)
 
-添加有关蓝图和如何使用这些文章：
+有关蓝图和如何使用这些蓝图的更多文章：
 
-- 了解如何[蓝图生命周期](../../concepts/lifecycle.md)。
+- 了解[蓝图生命周期](../../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../../concepts/parameters.md)。
-- 了解如何自定义[蓝图先后顺序](../../concepts/sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](../../concepts/resource-locking.md)。
+- 了解如何自定义[蓝图排序顺序](../../concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](../../concepts/resource-locking.md)。
 - 了解如何[更新现有分配](../../how-to/update-existing-assignments.md)。

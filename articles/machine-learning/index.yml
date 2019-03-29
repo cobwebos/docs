@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4581173f142170248a48d99683804bdb67f1703e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250668"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58519913"
 abstract:
   description: 了解如何使用这些 Azure 机器学习产品在应用和网站中构建智能算法。  教程、快速入门、API 参考和示例演示了操作方法。
 documentType: LandingData
@@ -38,8 +38,8 @@ sections:
   - text: <b>快速入门：</b>
     type: paragraph
   - items:
-    - html: <a href="service/quickstart-create-workspace-with-python">使用 Python 入门</a>
-    - html: <a href="service/quickstart-get-started">使用 Azure 门户入门</a>
+    - html: <a href="service/quickstart-run-cloud-notebook">在云中运行试验</a>（不需要进行安装）
+    - html: <a href="service/quickstart-run-local-notebook">使用本地 Notebook 服务器运行试验</a>（本地 SDK 安装）
     style: unordered
     type: list
   - text: <b>MNIST 数据的图像分类教程：</b>

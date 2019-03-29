@@ -1,5 +1,5 @@
 ---
-title: PIM 中无法管理的角色 - Azure | Microsoft Docs
+title: 无法管理 PIM-Azure Active Directory 中的角色 |Microsoft Docs
 description: 介绍 Azure AD Privileged Identity Management (PIM) 中无法管理的角色。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 01/18/2019
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 666b534c3ab07be2b1e2335015fc4723782a1249
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: aa5fb632ee5fd9c18bde7443e81fe2ef6e5335e4
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181569"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58579540"
 ---
 # <a name="roles-you-cannot-manage-in-pim"></a>PIM 中无法管理的角色
 
-使用 Azure AD Privileged Identity Management (PIM) 可以管理所有 [Azure AD 目录角色](../users-groups-roles/directory-assign-admin-roles.md)和所有 [Azure 资源角色](../../role-based-access-control/built-in-roles.md)。 这些角色还包括附加到管理组、订阅、资源组和资源的自定义角色。 然而，有极少角色无法管理。 本文介绍 PIM 中无法管理的角色。
+Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 使你能够管理所有[Azure AD 角色](../users-groups-roles/directory-assign-admin-roles.md)和全部[Azure 资源角色](../../role-based-access-control/built-in-roles.md)。 这些角色还包括附加到管理组、订阅、资源组和资源的自定义角色。 然而，有极少角色无法管理。 本文介绍 PIM 中无法管理的角色。
 
 ## <a name="classic-subscription-administrator-roles"></a>经典订阅管理员角色
 
@@ -44,5 +44,5 @@ Exchange Online 或 SharePoint Online 中的角色（Exchange 管理员和 Share
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)
+- [将 Azure AD PIM 中的角色分配](pim-how-to-add-role-to-user.md)
 - [在 PIM 中分配 Azure 资源角色](pim-resource-roles-assign-roles.md)

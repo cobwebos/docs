@@ -1,5 +1,5 @@
 ---
-title: 在 PIM 中批准或拒绝 Azure 资源角色的请求 | Microsoft Docs
+title: 批准或拒绝对 PIM 的 Azure Active Directory 中的 Azure 资源角色请求 |Microsoft Docs
 description: 了解如何在 Azure AD Privileged Identity Management (PIM) 中批准或拒绝 Azure 资源角色的请求。
 services: active-directory
 documentationcenter: ''
@@ -15,16 +15,16 @@ ms.date: 02/08/2019
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a458f62ec38503e401b3fb810dc7edc8059a7715
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 5ecb55dd2798241ca0ae1754ecf95a79f8aeb134
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245569"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575107"
 ---
 # <a name="approve-or-deny-requests-for-azure-resource-roles-in-pim"></a>在 PIM 中批准或拒绝 Azure 资源角色的请求
 
-利用 Azure AD Privileged Identity Management (PIM)，可以将角色配置为需要审批才可激活，还可选择一个或多个用户或组作为委派的审批者。 委托的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时的审批时间范围不可供配置。
+使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM)，可以配置要用于激活、 需要批准的角色并选择一个或多个用户或组作为委派的审批者。 委派的审批者有 24 小时可以审批请求。 如果请求未在 24 小时内获得审批，则符合条件的用户必须重新提交新请求。 24 小时的审批时间范围不可供配置。
 
 按照本文中的步骤，审批或拒绝 Azure 资源角色的请求。
 
@@ -84,4 +84,4 @@ ms.locfileid: "56245569"
 
 - [在 PIM 中扩展或续订 Azure 资源角色](pim-resource-roles-renew-extend.md)
 - [PIM 中的电子邮件通知](pim-email-notifications.md)
-- [在 PIM 中批准或拒绝 Azure AD 目录角色的请求](azure-ad-pim-approval-workflow.md)
+- [批准或拒绝在 PIM 中的 Azure AD 角色的请求](azure-ad-pim-approval-workflow.md)

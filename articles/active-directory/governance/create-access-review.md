@@ -1,6 +1,6 @@
 ---
-title: 在 Azure AD 访问评审中创建的组或应用程序访问评审 |Microsoft Docs
-description: 了解如何在 Azure AD 访问评审中创建访问评审的组成员或应用程序访问。
+title: 创建的组或应用程序-Azure Active Directory 访问评审 |Microsoft Docs
+description: 了解如何在 Azure Active Directory 访问评审中创建访问评审的组成员或应用程序访问。
 services: active-directory
 author: rolyon
 manager: mtillman
@@ -15,14 +15,14 @@ ms.date: 02/20/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c17078ea14a254f64a41751f2efffc16e2a1e821
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847376"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576186"
 ---
-# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>在 Azure AD 访问评审中创建组或应用程序访问的评审
+# <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>创建访问评审的组或 Azure AD 中的应用程序访问评审
 
 员工和来宾对组和应用程序的访问权限会不断变化。 为了降低与过期访问权限分配相关的风险，管理员可以使用 Azure Active Directory (Azure AD) 针对组成员或应用程序访问权限创建访问评审。 如果需要定期评审访问权限，则还可以创建定期访问评审。 有关这些方案的详细信息，请参阅[管理用户访问权限](manage-user-access-with-access-reviews.md)和[管理来宾访问权限](manage-guest-access-with-access-reviews.md)。
 
@@ -35,7 +35,7 @@ ms.locfileid: "57847376"
 
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
-1. 登录到 Azure 门户并打开[“访问评审”页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+1. 登录到 Azure 门户并打开[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
 1. 单击“控制”。
 
@@ -120,7 +120,7 @@ ms.locfileid: "57847376"
 
 ## <a name="manage-the-access-review"></a>管理访问审阅
 
-当评审者在 Azure AD 仪表板中完成其评审时，可以在“访问评审”部分中跟踪进度。 在[评审完成](complete-access-review.md)之前，目录中的任何访问权限都不会更改。
+当审阅者完成其审阅的 Azure AD 仪表板中，你可以跟踪进度**访问评审**部分。 在[评审完成](complete-access-review.md)之前，目录中的任何访问权限都不会更改。
 
 如果这是一次性的评审，然后访问评审期限结束后，或者管理员停止访问评审后请按照中的步骤[完成组或应用程序的访问评审](complete-access-review.md)查看并应用结果。  
 
@@ -130,7 +130,7 @@ ms.locfileid: "57847376"
 
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 
-也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅 [Azure AD 访问评审 API 参考](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 有关代码示例，请参阅[通过 Microsoft Graph 检索 Azure AD 访问评审的示例](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
+也可以使用 API 创建访问评审。 在 Azure 门户中管理组和应用程序用户的访问评审的方法也可以使用 Microsoft Graph API 来实现。 有关详细信息，请参阅[API 参考的 Azure AD 访问评审](https://docs.microsoft.com/graph/api/resources/accessreviews-root?view=graph-rest-beta)。 代码示例，请参阅[检索 Azure AD 访问的示例通过 Microsoft Graph 评审](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/m-p/236096)。
 
 ## <a name="next-steps"></a>后续步骤
 

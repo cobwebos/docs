@@ -1,35 +1,58 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7372c3010f31a43dc91a33de08f059a5a60d5ba4
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.openlocfilehash: 45c8f83ce814d5fa8b6d9cde29e59e4628534522
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55987994"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58521986"
 documentType: LandingData
 title: 视频索引器文档
 metadata:
   document_id: 
   title: 视频索引器文档 | Microsoft Docs
-  meta.description: Learn how about Video Indexer.
+  meta.description: Learn about Video Indexer.
   services: media-services
-  author: Juliako
+  author: juliako
   manager: femila
   ms.service: media-services
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/10/2019
+  ms.date: 03/11/2019
   ms.author: juliako
 abstract:
-  description: 视频索引器整合了媒体 AI 技术，以便用户更加轻松地从视频中提取见解。
+  description: Azure 视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务（例如人脸 API、Microsoft Translator、计算机视觉 API 和自定义语音服务）生成的云应用程序。 有了视频索引器，就可以使用视频索引器视频和音频模型从视频中提取见解。<br/>如需了解何时要使用视频索引器与媒体服务分析器预设，请查看<a href="/azure/media-services/video-indexer/compare-video-indexer-with-media-services-presets">比较文档</a>。
 sections:
 - items:
   - type: list
     style: cards
     className: cardsM
-    columns: 3
+    columns: 2
+    items:
+    - href: video-indexer-overview.md
+      html: <p>视频索引器整合了媒体 AI 技术，以便用户更加轻松地从视频中提取见解。</p>
+      image:
+        src: media/index/AMSIcons-media_servicesV3.svg
+      title: 什么是视频索引器？
+- title: 5 分钟快速入门
+  items:
+  - type: paragraph
+    text: 登录视频索引器网站并上传你的第一个视频：
+  - type: list
+    style: icon48
     items:
     - image:
-        src: 
-      text: 什么是视频索引器？
-      href: video-indexer-overview.md
+        src: media/index/AMSIcons-media_analytics.svg
+      text: 提取见解
+      href: /azure/media-services/video-indexer/video-indexer-get-started
+- title: 分步教程
+  items:
+  - type: paragraph
+    text: 了解如何使用视频索引器 API 从视频中提取见解：
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: media/index/AMSIcons-media_analytics.svg
+      text: 提取见解
+      href: /azure/media-services/video-indexer/video-indexer-use-apis

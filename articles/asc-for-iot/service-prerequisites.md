@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 213e6a95484b5f6953f8423474953125f8739015
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541822"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58574736"
 ---
 # <a name="asc-for-iot-prerequisites"></a>ASC IoT 系统必备组件
 
@@ -46,7 +46,7 @@ ms.locfileid: "58541822"
 以下 Azure 区域中的 IoT 中心目前支持适用于 IoT 的 ASC:
   - 美国中部
   - 欧洲北部
-  - 亚洲东南部
+  - 东南亚
 
 ## <a name="wheres-my-iot-hub"></a>我的 IoT 中心位于何处？
 
@@ -59,7 +59,7 @@ ms.locfileid: "58541822"
 
 ## <a name="supported-platforms-for-agents"></a>代理支持的平台 
 
-ASC 为 IoT 代理支持越来越多的设备和平台。 请参阅[支持的平台列表](select-deploy-agent.md)来检查您现有或计划的设备库。  
+ASC 为 IoT 代理支持越来越多的设备和平台。 请参阅[支持的平台列表](how-to-deploy-agent.md)来检查您现有或计划的设备库。  
 
 ## <a name="next-steps"></a>后续步骤
 - [概述](overview.md)

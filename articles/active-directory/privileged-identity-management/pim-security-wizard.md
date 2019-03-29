@@ -1,5 +1,5 @@
 ---
-title: PIM 中的 Azure AD 角色安全向导 | Microsoft Docs
+title: 在 PIM 的 Azure Active Directory 中的 azure AD 角色安全向导 |Microsoft Docs
 description: 介绍了可以用来使用 Azure AD Privileged Identity Management (PIM) 将永久特权 Azure AD 角色分配转换为符合条件的分配的安全向导。
 services: active-directory
 documentationcenter: ''
@@ -14,16 +14,16 @@ ms.date: 11/09/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b66dcc834ab089f28e6bb47c2905e6a2a3907091
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 226c00dfdf651580a58a9409bc7cd22658415a56
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208752"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576354"
 ---
 # <a name="azure-ad-roles-security-wizard-in-pim"></a>PIM 中的 Azure AD 角色安全向导
 
-如果你是第一个在组织中运行 Azure AD Privileged Identity Management (PIM) 的人，就会看到一个向导。 该向导可帮助你了解特权标识的安全风险，以及如何使用 PIM 来降低这些风险。 如果希望以后再对现有的角色分配进行任何更改，则暂时不需要在向导中进行这些更改。
+如果您是运行 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 为你的组织的第一个人，则将显示一个向导。 该向导可帮助你了解特权标识的安全风险，以及如何使用 PIM 来降低这些风险。 如果希望以后再对现有的角色分配进行任何更改，则暂时不需要在向导中进行这些更改。
 
 ## <a name="wizard-overview"></a>向导概述
 
@@ -65,9 +65,9 @@ ms.locfileid: "56208752"
 
     ![通知](./media/pim-security-wizard/notification-completion.png)
 
-如果需要将其他特权角色分配转换为符合条件的，可以再次运行向导。 如果希望使用 PIM 界面而非向导，请参阅[在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)。
+如果需要将其他特权角色分配转换为符合条件的，可以再次运行向导。 如果你想要使用 PIM 接口而不是该向导，请参阅[分配 Azure AD PIM 中的角色](pim-how-to-add-role-to-user.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 PIM 中分配 Azure AD 目录角色](pim-how-to-add-role-to-user.md)
+- [将 Azure AD PIM 中的角色分配](pim-how-to-add-role-to-user.md)
 - [授予其他管理员访问权限以管理 PIM](pim-how-to-give-access-to-pim.md)

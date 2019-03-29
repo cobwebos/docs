@@ -203,11 +203,6 @@ items:
     - name: 示例（简单语法）
       href: search-query-simple-examples.md
     - name: 示例（完整 Lucene）
-      href: search-query-lucene-examples.md
-  - name: 处理结果
-    items:
-    - name: 与页相关的功能
-      href: search-pagination-page-layout.md
   - name: 对数据进行筛选和排序
     items:
     - name: 筛选器概述
@@ -216,8 +211,12 @@ items:
       href: search-filters-facets.md
     - name: 添加分面导航
       href: search-faceted-navigation.md
-    - name: Filter 和 OrderBy 表达式语法
-      href: query-odata-filter-orderby-syntax.md
+    - name: Filter 和 OrderBy 表达式语法和示例
+      href: search-query-lucene-examples.md
+  - name: 处理结果
+    items:
+    - name: 与页相关的功能
+      href: search-pagination-page-layout.md
   - name: 相关性优化
     items:
     - name: 添加评分配置文件
@@ -307,9 +306,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: 74d4c29b7a4c70116531ef242929571eee3e4d90
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d0e692407a89e01806f425bedb302160ec8c672b
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500485"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576814"

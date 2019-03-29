@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: ff3f1e405dc7a1e69c3b1d1d20936ca78b97fcda
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ca54ae11390b388c3158bd220ee5c7829172a5c3
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855089"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620472"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>使用自动数据库备份恢复 Azure SQL 数据库
 
@@ -175,7 +175,7 @@ ms.locfileid: "57855089"
 ### <a name="azure-cli"></a>Azure CLI
 
 - 若要使用 Azure CLI 还原单一数据库或入池数据库，请参阅 [az sql db restore](/cli/azure/sql/db#az-sql-db-restore)。
-- 若要还原使用 Azure CLI 的托管的实例，请参阅[az sql midb 还原](/cli/azure/sql/db)
+- 若要还原使用 Azure CLI 的托管的实例，请参阅[az sql midb 还原](/cli/azure/sql/midb#az-sql-midb-restore)
 
 ## <a name="summary"></a>摘要
 

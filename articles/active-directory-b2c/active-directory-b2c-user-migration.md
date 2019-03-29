@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4ebe77d26360776140db8e2a4b0209475d9d6367
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 09b219fe173be9ba2fd515facce9964b5edc67af
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484706"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621309"
 ---
 # <a name="azure-active-directory-b2c-user-migration"></a>Azure Active Directory B2C：用户迁移
 将标识提供者迁移到 Azure Active Directory B2C (Azure AD B2C)C 时，可能还需要迁移用户帐户。 本文介绍如何将现有用户帐户从任何标识提供者迁移到 Azure AD B2C。 本文并未阐述约定俗成的内容，而只是介绍了几种方案。 开发人员负责判断每种方法是否适用。
@@ -257,7 +257,7 @@ Get-AzureADDirectoryRoleMember -ObjectId $role.ObjectId
 ### <a name="41-update-your-application-setting"></a>4.1：更新应用程序设置
 1. 若要测试 RESTful API 演示，请在 Visual Studio 中打开 `AADB2C.UserMigration.sln`。
 
-1. 在 `AADB2C.UserMigration.API` 项目中，打开 appsettings.json 文件。 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：
+1. 在中`AADB2C.UserMigration.API`项目中，打开*Web.config*文件。 将设置替换为[步骤 2.2](#step-22-configure-the-application-settings) 中配置的设置：
 
     ```json
     {

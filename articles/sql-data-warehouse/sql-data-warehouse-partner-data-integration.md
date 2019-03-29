@@ -7,133 +7,94 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: consume
-ms.date: 04/17/2018
+ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 0e82c1887cb096c7c95ad7e1cbbc1d76962f7831
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74449f7319f800e8008c5d457351fa49ae1af59a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000442"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621696"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
-要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍其数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
+要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍的正式数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
 
 ## <a name="data-integration-partners"></a>数据集成合作伙伴
-| 合作伙伴 | 描述 | 链接 | 视频 |
-| --- | --- | --- | --- |
-| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[市场][alteryx_marketplace]<br>[网站][alteryx_designer_website]<br>[白皮书][alteryx_whitepaper]<br>[数据表][alteryx_designer_datasheet]<br>[Twitter][alteryx_designer_twitter]<br>[YouTube][alteryx_designer_youtube] |[![Alteryx 视频](./media/sql-data-warehouse-partner-data-integration/alteryx_designer_video.jpg)](https://www.youtube.com/watch?v=CdqSDPyNDKc) |
-| ![Attunity][2] |**Attunity**<br>Attunity CloudBeam 提供自动化且经过优化的解决方案，用于将数据加载到 SQL 数据仓库。 该解决方案采用“单击即加载”设计，可以简化并加速批量加载，并支持从许多异构数据库（包括 SQL Server、Oracle、DB2、Sybase 和 mySQL）进行递增复制。 |[市场][attunity_marketplace]<br>[快速入门][attunity_quickstart]<br>[网站][attunity_cloudbeam_website]<br>[数据表][attunity_cloudbeam_datasheet]<br>[Twitter][attunity_cloudbeam_twitter]<br>[YouTube][attunity_cloudbeam_youtube] |[![Attunity 视频](./media/sql-data-warehouse-partner-data-integration/attunity_video.jpg)](https://www.youtube.com/watch?v=w14zuSjMlok) |
-| ![Bryte Systems][3] |**Bryte Systems**<br>Bryte Systems 将各种数据库与源到 SQL 数据仓库的数据传输自动化。 Bryte Systems 擅长数据移动及集成技术。 他们构建基于云的数据仓库和 Data Lake 来发现见解。 |[网站][bryte_systems_azure_website] | |
-| ![Informatica][4] |**适用于 Azure 的 Informatica 云服务 – 即用即付**<br> 使用“适用于 Azure 的 Informatica 云服务 – 即用即付”优化 Azure 服务的价值，并从所有混合数据集提取可操作见解。 Informatica 云为数据集成、云分析、应用程序集成和数据管理提供同类最佳的解决方案。 使用自助服务数据迁移、 集成和管理功能，客户可以快速可靠地导入、 导出、 同步，和安排千万亿字节的数据迁移到不同的 SaaS 应用程序，基于 Hadoop 的 data lake 等源的 Azure 和其他本地数据源 （Oracle、 SAP）。 适用于 Azure 的 Informatica 云服务为 Azure SQL 数据仓库、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能本机连接。 |[市场][informatica_Cloud_Services_marketplace]<br>[免费试用][informatica_cloud_free_trial]<br>[配置指南][informatica_cloud_services_config]<br>[网站][informatica_Cloud_Services_website]<br>[Twitter][informatica_cloud_twitter]<br>[YouTube][informatica_cloud_youtube] | |
-| ![Informatica][4] |**Informatica PowerCenter**<br>Informatica 是全球最知名的独立数据集成软件提供商之一。 PowerCenter 是用户所有数据集成计划的基石。 可以将 PowerCenter 用于分析、数据仓库、应用程序迁移、整合或数据管理。 |[市场][informatica_PowerCenter_byol]<br>[网站][informatica_PowerCenter_website]<br>[数据表][informatica_powercenter_datasheet]<br>[Twitter][informatica_powercenter_twitter]<br>[YouTube][informatica_powercenter_youtube] | |
-| ![Redgate][5] |**Redgate Data Platform Studio（预览版）**<br>Redgate 的 Data Platform Studio 可通过简单而可靠的方式将本地 SQL 数据库迁移到 Azure SQL 数据仓库。 它经过专门的设计，可以让你在实施完全自动化迁移时进行明智的决策，并且可以免费用来进行一次性迁移。 |[网站][redgate_website]<br>[Twitter][redgate_twitter]<br>[YouTube][redgate_youtube] |[![Redgate 视频](./media/sql-data-warehouse-partner-data-integration/redgate_video.jpg)](https://www.youtube.com/watch?v=IR9HNvnU46s) |
-| ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 集成平台即服务 (iPaaS) 可让客户在 Microsoft Azure SQL 数据仓库中快速传入和传出数据。 SnapLogic 可以让用户在一个解决方案中集成数百个应用程序、服务和 IoT 方案。 使用 SnapLogic 可以在云模式、本地模式或混合模式下对数据进行快速有效的分析！ |[市场][snaplogic_marketplace]<br>[网站][snaplogic_website]<br>[数据表][snaplogic_datasheet]<br>[Twitter][snaplogic_twitter]<br>[YouTube][snaplogic_youtube] |[![Snaplogic 视频](./media/sql-data-warehouse-partner-data-integration/snaplogic_video.jpg)](https://www.youtube.com/watch?v=YiJCwObOh5Y) |
+| 合作伙伴 | 描述 | 网站/产品链接 |
+| ------- | ----------- | -------------------- |
+| ![Alooma][7] |**Alooma**<br> Alooma 是，数据团队可以集成、 丰富，和流式处理来自各种数据接收器到 SQL 数据仓库的真实时间中的所有数据，以及一个 ETL 解决方案。 |[产品页][alooma_website] |
+| ![Alteryx][1] |**Alteryx**<br> Alteryx Designer 通过可重复的工作流进行自助性数据分析，在数小时内即可获得深入的见解，这与传统方法动辄需数周的时间形成鲜明的对比！ Alteryx Designer 使用同一种直观的用户界面将数据准备、数据混合和分析组合在一起，有助于数据分析师进行预测、统计和空间分析。 |[产品页][alteryx_designer_website]<br>[Azure Marketplace][alteryx_marketplace]<br>|
+| ![Attunity][2] |**Attunity (CloudBeam)**<br>Attunity CloudBeam 提供自动化的解决方案，用于将数据加载到 SQL 数据仓库。 它简化了加载的批处理和增量复制的数据，许多源-SQL Server、 Oracle、 DB2、 Sybase、 MySQL、 和的详细信息。 |[产品页][attunity_cloudbeam_website]<br>[Azure Marketplace][attunity_marketplace]<br> |
+| ![Denodo][3] |**Denodo**<br>Denodo 提供跨组织的各种数据源的实时访问数据。 它跨多个源而无需复制使用 bridge 数据到数据虚拟化。 它提供了广泛访问驻留在企业、 大数据和实时和批处理中的云源中的结构化和非结构化数据。|[产品页][denodo_website]<br>[Azure Marketplace][denodo_marketplace]<br> |
+| ![Fivetran][8] |**Fivetran**<br>Fivetran 可帮助您集中处理来自不同源的数据。 其特点是不需要维护，为零的配置数据管道具有越来越多的内置连接器对所有常用的数据源的产品。 安装程序需要五分钟后对数据源和目标数据仓库进行身份验证。|[产品页][fivetran_website]<br> |
+| ![Informatica][4] |**1.Azure 的 Informatica 云服务**<br> Informatica 云提供自助服务数据迁移、 集成和管理功能的同类最佳的解决方案。 客户可以快速和可靠地导入，请从各种源将千万亿字节的数据导出到 Azure。 适用于 Azure 的 Informatica 云服务为 Azure SQL 数据仓库、SQL 数据库、Blob 存储、Data Lake Store 和 Azure Cosmos DB 提供大容量的高性能本机连接。 <br><br> **2.Informatica PowerCenter** PowerCenter 是该电网的元数据驱动的数据集成平台，并以比手动手工编码更快地为企业提供数据加速数据集成项目。 它作为你的数据集成投资的基础 |**Azure 的 Informatica 云服务**<br>[产品页][informatica_Cloud_Services_website]<br>[Azure Marketplace][informatica_Cloud_Services_marketplace]<br><br> **Informatica PowerCenter**<br>[产品页][informatica_PowerCenter_website]<br> [Azure Marketplace][informatica_PowerCenter_byol]<br>|
+| ![信息构建者][5] |**信息构建者 （Omni 代数据管理）**<br>信息生成器 Omni 代数据管理平台提供的数据集成、 数据质量和主数据管理解决方案。 它可以轻松地访问、 移动和所有数据而不考虑格式、 位置、 卷或延迟。|[产品页][omnifocus_website]<br> [Azure Marketplace][omnigen_marketplace] |
+| ![Qubole][9] |**Qubole**<br>Qubole 提供了一个云原生平台，使用户能执行 ETL、 分析和 AI/ML 工作负荷。 它支持各种开源引擎-Apache Spark、 TensorFlow、 Presto、 气流、 Hadoop、 Hive 和的详细信息。 它提供了易于使用最终用户工具的 SQL 查询工具，从笔记本，和利用功能强大的开源引擎的仪表板的数据处理。|[产品页][qubole_website]<br> [Azure Marketplace][qubole_marketplace] |
+| ![段][10] |**段**<br>段是数据管理和分析解决方案，可帮助你从各种源的客户数据的有意义。 它可以将你的数据连接到超过 200 个工具来创建更好的决策、 产品和体验。 段将转换和加载到仓库的多个数据源，为你使用其内置数据连接器|[产品页][segment_website]<br> |
+| ![Skyvia][11] |**Skyvia （数据集成）**<br>Skyvia 数据集成提供了一个向导，可自动执行数据导入。 此向导允许您以不同的源的 Crm、 应用程序数据库、 CSV 文件，和的详细信息之间迁移数据。 |[产品页][segment_website]<br> |
+| ![SnapLogic][6] |**SnapLogic**<br>SnapLogic 平台可让客户能够快速将数据传入和传出 Microsoft Azure SQL 数据仓库。 它提供了集成数百个应用程序、 服务和一个解决方案中的 IoT 方案的功能。|[产品页][snaplogic_website]<br>[Azure Marketplace][snaplogic_marketplace]<br> |
+| ![Talend][12] |**Talend 云**<br>Talend 云是一个 interprise 数据集成平台，可连接、 访问，以及跨云或本地转换任何数据。 它是提供广泛的连接性、 内置的数据质量，以及本机支持的最新的大数据和云技术的集成平台的一种即服务 (iPaaS) 产品/服务 |[产品页][talend_website]<br> [Azure Marketplace][talend_marketplace] |
+| ![Trifacta][13] |**Trifacta Wrangler**<br> Trifacta 可帮助个人和组织探索，并将联接在一起以进行分析的各种数据。 Trifacta Wrangler 旨在处理需要支持规模和大量的最终用户的数据的数据整理工作负荷。|[产品页][trifacta_website]<br> [Azure Marketplace][trifacta_marketplace] |
+| ![WhereScape][14] |**Wherescape 红色**<br> WhereScape 红色是为团队提供了自动化工具来简化 ETL 工作流的 IDE。 IDE 提供了最佳做法是，适用于常用的数据目标的优化本机代码。 使用 WhereScape RED 剪切开发、 部署和操作数据基础结构的时间。|[产品页][wherescape_website]<br> [Azure Marketplace][wherescape_marketplace] |
+
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解其他合作伙伴，请参阅[商业智能合作伙伴][bi_partners]和[数据管理合作伙伴][dm_partners]。
 
+<!--Article links-->
+
+[bi_partners]: ./sql-data-warehouse-partner-business-intelligence.md
+[di_partners]: ./sql-data-warehouse-partner-data-integration.md
+[dm_partners]: ./sql-data-warehouse-partner-data-management.md
+
+
 <!--Image references-->
 [1]: ./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png
 [2]: ./media/sql-data-warehouse-partner-data-integration/attunity_logo.png
-[3]: ./media/sql-data-warehouse-partner-data-integration/bryte_systems_logo.png
+[3]: ./media/sql-data-warehouse-partner-data-integration/denodo_logo.png
 [4]: ./media/sql-data-warehouse-partner-data-integration/informatica_logo.png
-[5]: ./media/sql-data-warehouse-partner-data-integration/redgate_logo.png
+[5]: ./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png
 [6]: ./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png
+[7]: ./media/sql-data-warehouse-partner-data-integration/alooma_logo.png
+[8]: ./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png
+[9]: ./media/sql-data-warehouse-partner-data-integration/qubole_logo.png
+[10]: ./media/sql-data-warehouse-partner-data-integration/segment_logo.png
+[11]: ./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png
+[12]: ./media/sql-data-warehouse-partner-data-integration/talend_logo.png
+[13]: ./media/sql-data-warehouse-partner-data-integration/trifacta_logo.png
+[14]: ./media/sql-data-warehouse-partner-data-integration/wherescape_logo.png
 
-
-<!--Article links-->
-[bi_partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[dm_partners]: ./sql-data-warehouse-partner-data-management.md
-[di_partners]: ./sql-data-warehouse-partner-data-integration.md
-
-<!--ebook Links-->
-
-<!--Configuration Guides-->
-[informatica_cloud_services_config]:https://kb.informatica.com/proddocs/Product%20Documentation/6/IC_Spring2017_MicrosoftAzure[SQL]DataWarehouseConnectorGuide_en.pdf
-
-<!--Datasheet Links-->
-[alteryx_designer_datasheet]:https://www.alteryx.com/sites/default/files/resources/files/alt-designer-ds.pdf
-[attunity_cloudbeam_datasheet]:http://www.attunity.com/sites/default/files/content/attunity-azure-solution-sheet.pdf
-
-<!--[bryte_systems_azure_datasheet]:-->
-
-<!--[informatica_cloud_datasheet]:https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/data-sheet/cloud-integration-platform_data-sheet_2711.pdf-->
-
-[informatica_powercenter_datasheet]:https://www.informatica.com/content/dam/informatica-com/global/amer/us/collateral/brochure/powercenter_brochure_6659.pdf
-[snaplogic_datasheet]:https://campaigns.snaplogic.com/rs/055-FYJ-916/images/SnapLogic-for-Microsoft-Cortana.pdf
-
-<!--Free Trial-->
-[informatica_cloud_free_trial]:https://www.informatica.com/products/cloud-integration/connectivity/microsoft-azure-connector.html
 
 <!--Website Links -->
+
+[alooma_website]:https://www.alooma.com/
 [alteryx_designer_website]:https://www.alteryx.com/partners/microsoft/
 [attunity_cloudbeam_website]:http://www.attunity.com/attunity-cloudbeam-for-azure/
 [bryte_systems_azure_website]:https://www.bryteflow.com/
 [informatica_Cloud_Services_website]:https://www.informatica.com/products/cloud-integration.html
 [informatica_PowerCenter_website]:https://www.informatica.com/products/data-integration/powercenter.html
-[redgate_website]:http://dataplatformstudio.com/
-[snaplogic_website]:https://www.snaplogic.com/solutions/microsoft-cortana-analytics-integration/
+[snaplogic_website]:https://www.snaplogic.com/
+[denodo_website]:https://www.denodo.com/en
+[fivetran_website]:https://fivetran.com/
+[omnifocus_website]:https://www.informationbuilders.com/3i-platform
+[qubole_website]:https://www.qubole.com/
+[segment_website]:https://segment.com/
+[skyvia_website]:https://skyvia.com/
+[talend_website]:https://www.talend.com/
+[trifacta_website]:https://www.trifacta.com/
+[wherescape_website]:https://www.wherescape.com/
 
 <!--Marketplace Links -->
+
 [alteryx_marketplace]:https://azure.microsoft.com/marketplace/partners/alteryx/alteryx-designer/
 [attunity_marketplace]:https://azure.microsoft.com/marketplace/partners/attunity-cloudbeam/cloudbeam-dw-byol/ 
-
-<!--[bryte_systems_marketplace]:https://azure.microsoft.com/marketplace/partners/bryte/bryteflow-cdc-free-trial/--> 
-
+[denodo_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0
 [informatica_Cloud_Services_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.ics-byol
-
-<!--[informatica_PowerCenter_std_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-standard-10-0pc-std-10-0-windows/
-[informatica_PowerCenter_adv_marketplace]:https://azure.microsoft.com/marketplace/partners/informatica/informatica-powercenter-advanced-10-0pc-adv-10-0-ubuntu/-->
-
-[informatica_PowerCenter_byol]:https://azuremarketplace.microsoft.com/en-us/marketplace/apps/informatica.powercenter/
-
-<!--[redgate_marketplace]:-->
-
+[informatica_PowerCenter_byol]:https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/
 [snaplogic_marketplace]:https://azure.microsoft.com/marketplace/partners/snaplogic/snaplogic-elastic-integration-windows/ 
-
-<!--Quickstart_links-->
-
-[attunity_quickstart]:https://www.attunity.com/products/cloudbeam/solutions-attunity-cloudbeam-azure-data-analytic-services/
-
-<!--PressRelease_links-->
-
-[alteryx_designer_press]:https://www.alteryx.com/press-releases/alteryx-now-enables-data-analysts-to-perform-in-database-blending-in-microsoft-azure 
-[attunity_cloudbeam_press]:http://www.attunity.com/news/attunity-launches-cloud-data-warehouse-solutions-microsoft-azure
-[bryte_systems_azure_press]:https://medianet.com.au/releases/release-details?id=837667
-
-<!--[informatica_Cloud_Services_press]:-->
-<!--[informatica_PowerCenter_press]:-->
-
-<!--[redgate_press]:-->
-
-[snaplogic_press]:https://www.snaplogic.com/press-releases/snaplogic-introduces-support-for-microsoft-azure-sql-data-warehouse
-
-<!--YouTube-->
-
-[alteryx_designer_youtube]:https://www.youtube.com/user/alteryx
-[attunity_cloudbeam_youtube]:https://www.youtube.com/user/Attunity
-
-<!--[bryte_systems_azure_youtube]:-->
-
-[informatica_Cloud_youtube]:https://www.youtube.com/user/InformaticaOnDemand
-[informatica_PowerCenter_youtube]:https://www.youtube.com/user/InformaticaCorp
-[redgate_youtube]:https://www.youtube.com/user/RedGateVideos
-[snaplogic_youtube]:https://www.youtube.com/user/snapLogicInc
-
-<!--Twitter-->
-
-[alteryx_designer_twitter]:https://twitter.com/alteryx
-[attunity_cloudbeam_twitter]:https://twitter.com/attunity
-
-<!--[bryte_systems_azure_twitter]:-->
-
-[informatica_cloud_twitter]:https://twitter.com/infacloud
-[informatica_powercenter_twitter]:https://twitter.com/Informatica
-[redgate_twitter]:https://twitter.com/RedgateDPS
-[snaplogic_twitter]:https://twitter.com/snaplogic
-
-<!--WhitePaper-->
-
-[alteryx_whitepaper]:https://pages.alteryx.com/Microsoft-Azure-InDB-WP?lsm=microsoft
+[omnigen_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm
+[qubole_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview
+[talend_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview
+[trifacta_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/trifacta.tr01?source=datamarket&tab=Overview
+[wherescape_marketplace]:https://azuremarketplace.microsoft.com/marketplace/apps/wherescapesoftware.wherescape-red?source=datamarket&tab=Overview

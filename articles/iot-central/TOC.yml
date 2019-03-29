@@ -70,6 +70,8 @@ items:
       href: howto-create-analytics.md
   - name: 操作和扩展性
     items:
+    - name: 在规则中组合多个操作
+      href: howto-use-action-groups.md
     - name: 创建要在触发规则时执行的 webhook 操作
       href: howto-create-webhooks.md
     - name: 在 Microsoft Flow 中构建工作流
@@ -142,9 +144,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: 支持的浏览器
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: e1ff69dd8b8956ddfc9225f6a1d36ee8f7b511c7
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 09145448edd42e03b77abde46a120ade1631d6bf
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371479"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58520728"

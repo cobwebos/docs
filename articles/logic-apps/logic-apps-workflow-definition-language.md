@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 04/30/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 3c17ec2133e278b17475e4988e1e9766b1349ba4
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734634"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620830"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用
 
@@ -38,10 +38,10 @@ ms.locfileid: "55734634"
 }
 ```
 
-| 元素 | 必选 | 说明 |
+| 元素 | 需要 | 描述 |
 |---------|----------|-------------|
 | 定义 | 是 | 工作流定义的起始元素 |
-| $schema | 仅当在外部引用工作流定义时才使用 | 描述工作流定义语言版本的 JSON 架构文件的位置。可在以下位置找到该文件： <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`</p> |
+| $schema | 仅当在外部引用工作流定义时才使用 | 描述工作流定义语言版本的 JSON 架构文件的位置。可在以下位置找到该文件： <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json`</p> |
 | contentVersion | 否 | 工作流定义的版本号，默认为“1.0.0.0”。 为了帮助在部署工作流时识别并确认正确的定义，请指定要使用的值。 |
 | parameters | 否 | 用于将数据传入工作流的一个或多个参数的定义 <p><p>参数数量上限：50 |
 | 触发器 | 否 | 用于实例化工作流的一个或多个触发器的定义 可以定义多个触发器，但只能使用工作流定义语言来定义，而不能通过逻辑应用设计器以可视方式进行定义。 <p><p>触发器数量上限：10 |
@@ -70,10 +70,10 @@ ms.locfileid: "55734634"
 },
 ```
 
-| 元素 | 必选 | Type | 说明 |
+| 元素 | 需要 | Type | 描述 |
 |---------|----------|------|-------------|
-| type | 是 | int、float、string、securestring、bool、array、JSON 对象、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 和 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 | 参数的类型 |
-| defaultValue | 否 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值 |
+| type | 是 | int、float、string、securestring、bool、array、JSON 对象、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 和 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | 参数的类型 |
+| defaultValue | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值 |
 | allowedValues | 否 | 与 `type` 相同 | 包含参数可接受的值的数组 |
 | metadata | 否 | JSON 对象 | 其他任何参数详细信息，例如，逻辑应用的名称或可读说明，或者 Visual Studio 或其他工具使用的设计时数据 |
 ||||
@@ -100,7 +100,7 @@ ms.locfileid: "55734634"
 }
 ```
 
-| 元素 | 必选 | Type | 说明 |
+| 元素 | 需要 | Type | 描述 |
 |---------|----------|------|-------------|
 | <*key-name*> | 是 | String | 输出返回值的密钥名称 |
 | type | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |

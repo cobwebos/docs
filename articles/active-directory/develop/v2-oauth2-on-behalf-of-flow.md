@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cc9b2b38ae0ba97e5a29d58d1605e5452224e4b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5d933eaf99258a3f3322a915b418b52fad6e459f
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445749"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58576924"
 ---
 # <a name="azure-active-directory-v20-and-oauth-20-on-behalf-of-flow"></a>Azure Active Directory v2.0 和 OAuth 2.0 代理流
 
@@ -72,8 +72,8 @@ https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
 | 参数 |  | 描述 |
 | --- | --- | --- |
 | `grant_type` | 需要 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 需要 | [应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)或新的[应用注册(预览版)门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)已分配给应用的应用程序（客户端）ID。 |
-| `client_secret` | 需要 | 在用于注册应用的门户中为应用生成的应用程序机密。 |
+| `client_id` | 需要 | 应用程序 （客户端） ID [Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页已分配给您的应用程序。 |
+| `client_secret` | 需要 | 为 Azure 门户-应用注册页中的应用生成客户端密码。 |
 | `assertion` | 需要 | 请求中使用的令牌值。 |
 | `scope` | 需要 | 空格分隔的令牌请求范围的列表。 有关详细信息，请参阅[作用域](v2-permissions-and-consent.md)。 |
 | `requested_token_use` | 需要 | 指定应如何处理请求。 在 OBO 流中，该值必须设置为 `on_behalf_of`。 |
@@ -104,7 +104,7 @@ grant_type=urn:ietf:params:oauth:grant-type:jwt-bearer
 | 参数 |  | 描述 |
 | --- | --- | --- |
 | `grant_type` | 需要 | 令牌请求的类型。 对于使用 JWT 的请求，该值必须为 `urn:ietf:params:oauth:grant-type:jwt-bearer`。 |
-| `client_id` | 需要 | [应用程序注册门户](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)或新的[应用注册(预览版)门户](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview)已分配给应用的应用程序（客户端）ID。 |
+| `client_id` | 需要 |  应用程序 （客户端） ID [Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页已分配给您的应用程序。 |
 | `client_assertion_type` | 需要 | 值必须是 `urn:ietf:params:oauth:client-assertion-type:jwt-bearer`。 |
 | `client_assertion` | 需要 | 断言（JSON Web 令牌），需使用作为应用程序凭据注册的证书进行创建和签名。 若要了解如何注册证书以及断言的格式，请参阅[证书凭据](active-directory-certificate-credentials.md)。 |
 | `assertion` | 需要 | 请求中使用的令牌值。 |
@@ -205,7 +205,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 #### <a name="pre-authorized-applications"></a>预授权应用程序
 
-预览应用程序门户的一项新功能是“预授权应用程序”。 通过这种方式，资源可以指示给定应用程序始终具有接收某些范围的权限。 这主要用于使前端客户端和后端资源之间的连接更顺畅。 一个资源可以声明多个预授权应用程序 - 任何此类应用程序都可以在 OBO 流中请求这些权限，并在未经用户同意的情况下接收这些权限。
+应用程序门户中的功能是"预授权应用程序"。 通过这种方式，资源可以指示给定应用程序始终具有接收某些范围的权限。 这主要用于使前端客户端和后端资源之间的连接更顺畅。 一个资源可以声明多个预授权应用程序 - 任何此类应用程序都可以在 OBO 流中请求这些权限，并在未经用户同意的情况下接收这些权限。
 
 #### <a name="admin-consent"></a>管理员同意
 

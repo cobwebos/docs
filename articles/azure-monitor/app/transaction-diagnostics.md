@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: ba72f273724bb45418b104b1245648419ababbf0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c6c44525018e2115f1df8ed2d3f15432b95490c6
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903617"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58619826"
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>统一的跨组件事务诊断
 
@@ -32,7 +32,7 @@ ms.locfileid: "57903617"
 * 组件可以是单独的 Application Insights 检测密钥（即使订阅并不相同），或是向单个 Application Insights 检测密钥报告的不同角色。 新体验显示了所有组件的详细信息，而不论其设置方式。
 
 > [!NOTE]
-> * **缺少相关的项链接？** 所有相关的遥测都位于左侧的[顶部](#cross-component-transaction-chart)和[底部](#all-telemetry-with-this-Operation-Id)部分。 
+> * **缺少相关的项链接？** 所有相关的遥测都位于左侧的[顶部](#cross-component-transaction-chart)和[底部](#all-telemetry-with-this-operation-id)部分。 
 
 ## <a name="transaction-diagnostics-experience"></a>事务诊断体验
 此视图有四个关键部分：结果列表、跨组件事务图、与此操作相关的所有遥测的时序列表，以及左侧的详细信息窗格（显示任何选定遥测项的详细信息）。

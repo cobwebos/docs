@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: 83947571ed835c53c6cf8da6e73deb8dceabdd62
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf73120e462b740de5d2245f8a647896ac61f2c8
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58168769"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621815"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-the-azure-portal"></a>请 Azure Database for PostgreSQL 服务器使用 Azure 门户重新启动
 本主题介绍如何重启 Azure Database for PostgreSQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
@@ -22,7 +22,7 @@ ms.locfileid: "58168769"
 
 ## <a name="prerequisites"></a>必备组件
 若要完成本操作指南，需要：
-- [Azure Database for PostgreSQL 服务器和数据库](quickstart-create-server-database-portal.md)
+- [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)
 
 ## <a name="perform-server-restart"></a>执行服务器重启
 

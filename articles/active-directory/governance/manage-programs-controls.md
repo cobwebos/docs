@@ -1,6 +1,6 @@
 ---
-title: 管理 Azure AD 访问评审的程序和控件 |Microsoft Docs
-description: 了解如何在您的组织收集和组织，Azure Active Directory 访问评审，作为控件中创建其他计划，以便每个监管、 风险管理和符合性方案。
+title: 管理程序的访问评审的 Azure Active Directory 的控件 |Microsoft Docs
+description: 了解如何在您的组织收集和组织，Azure Active Directory 访问评审作为控件中创建其他计划，以便每个监管、 风险管理和符合性方案。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -16,14 +16,14 @@ ms.date: 06/21/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3056976ada6c0a0287eec608dbad230e8dbb2625
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 43c0f1c041bfed1b041a9926efd869d167c6f1e9
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895163"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58577257"
 ---
-# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>管理 Azure AD 访问评审的程序和控件
+# <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>管理程序和控件的 Azure AD 访问评审
 
 Azure Active Directory (Azure AD) 包括组成员和应用程序访问权限的访问评审。 这些示例控件可确保对有权访问组织的组成员资格和应用程序的用户进行有效监督。 组织可以使用这些控件有效地解决其监管、风险管理和合规性要求。
 

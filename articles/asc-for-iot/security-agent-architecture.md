@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 7c8f256cf91a479c45f21b933efdb6a5e0212796
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7de4307f7eef95a637dc828ac1738bd0ed39c7c7
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541867"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578452"
 ---
 # <a name="security-agent-reference-architecture"></a>安全代理参考体系结构
 
@@ -32,15 +32,15 @@ ASC 为 IoT 提供参考体系结构的安全代理，记录、 处理、 聚合
 
 安全代理用于处理在受约束 IoT 环境中，并且高度可自定义方面时与他们使用的资源相比，它们提供的值。
 
-安全代理支持以下 IoT 解决方案功能：
+安全代理支持以下功能：
 
-- 从基础 OS （Linux、 Windows） 收集原始安全事件。 若要了解有关可用的安全数据收集器的详细信息，请参阅[ASC IoT 代理配置为](concept-agent-configuration.md)。
+- 从基础操作系统 （Linux、 Windows） 收集原始安全事件。 若要了解有关可用的安全数据收集器的详细信息，请参阅[ASC IoT 代理配置为](how-to-agent-configuration.md)。
 
 - 聚合成通过 IoT 中心发送消息的原始安全事件。
 
 - 使用现有的设备标识或专用的模块标识进行身份验证。 请参阅[安全代理身份验证方法](concept-security-agent-authentication-methods.md)若要了解详细信息。
 
-- 通过使用远程配置**ascforiot**模块孪生。 若要了解详细信息，请参阅[配置 IoT 代理 ASC](concept-agent-configuration.md)。
+- 通过使用远程配置**azureiotsecurity**模块孪生。 若要了解详细信息，请参阅[配置 IoT 代理 ASC](how-to-agent-configuration.md)。
 
 IoT 安全代理的 ASC 作为开放源代码项目开发的可从 GitHub: 
 
@@ -62,10 +62,8 @@ ASC 为 IoT 提供了不同的安装程序的 32 位和 64 位 Windows，代理�
 
 若要继续开始使用 ASC 为 IoT 部署，请使用以下文章：
 
-
+- 了解[安全代理身份验证方法](concept-security-agent-authentication-methods.md)
+- 选择并将其部署[安全代理](how-to-deploy-agent.md)
 - 查看 IoT ASC[服务先决条件](service-prerequisites.md)
 - 了解如何[启用 ASC 中 IoT 中心的 IoT 服务](quickstart-onboard-iot-hub.md)
-- 使用到快速入门，[配置你的解决方案](quickstart-configure-your-solution.md)
-- 了解[安全代理身份验证方法](concept-security-agent-authentication-methods.md)
-- 选择并将其部署[安全代理](select-deploy-agent.md)
 - 要详细了解从服务[ASC 为 IoT 常见问题](resources-frequently-asked-questions.md)
