@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 用户身份验证
+title: Azure Active Directory 用户身份验证 - Azure Active Directory
 description: 作为 Azure AD 管理员，如何保护用户身份验证，同时降低对最终用户造成的影响？
 services: active-directory
 ms.service: active-directory
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b054dd8c78968ffb65b92ab7ee4fe1b21501b0d3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 38bc2f138a8e56fc56b48ccdaf0636a93138f95d
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192504"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58314648"
 ---
 # <a name="what-methods-are-available-for-authentication"></a>有哪些方法可用来进行身份验证？
 

@@ -3,27 +3,27 @@ title: 在 Azure Front Door 服务的域中的地区筛选 | Microsoft Docs
 description: 本文介绍 Azure Front Door 服务的地区筛选策略
 services: frontdoor
 documentationcenter: ''
-author: sharad4u
+author: KumudD
 editor: ''
 ms.service: frontdoor
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/09/2018
-ms.author: sharadag
-ms.openlocfilehash: a2ba0fb34dd34129a134aa2639d06816f3523408
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
+ms.date: 03/21/2019
+ms.author: kumud;tyao
+ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
+ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52865499"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58407634"
 ---
-# <a name="geo-filtering-geographic-based-access-control-to-azure-front-door-service-frontends"></a>地区筛选：针对 Azure Front Door 服务前端的基于地理的访问控制
+# <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什么是 Azure Front Door 的域中的地区筛选？
 
-默认情况下，无论发出请求的用户位于哪里，Azure Front Door 服务都会响应用户请求。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 使用 Azure Front Door 的应用程序层安全性，可以通过自定义保护规则为终结点上的特定路径定义一个策略，以便允许或阻止从指定国家/地区进行的访问。 
+默认情况下，无论发出请求的用户位于哪里，Azure Front Door 服务都会响应用户请求。 但是，在某些情况下，可能需要按国家/地区限制对 Web 应用程序的访问。 Front Door 上的 Web 应用程序防火墙 (WAF) 服务使你可以使用终结点上特定路径的自定义访问规则来定义策略，以允许或阻止来自指定国家/地区的访问。 
 
-应用程序安全策略通常包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。  就地区筛选规则来说，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为感兴趣的双字母国家/地区代码。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
+WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和优先级组成。 在匹配条件中，请定义匹配变量、运算符和匹配值。  就地区筛选规则来说，匹配变量为 REMOTE_ADDR，运算符为 GeoMatch，值为感兴趣的双字母国家/地区代码。 可以将 GeoMatch 条件与 REQUEST_URI 字符串匹配条件组合在一起，创建一个基于路径的地区筛选规则。
 
 可以通过 [Azure PowerShell](front-door-tutorial-geo-filtering.md) 或[快速入门模板](https://github.com/Azure/azure-quickstart-templates/tree/master/101-front-door-geo-filtering)为 Front Door 配置地区筛选策略。
 
@@ -193,7 +193,7 @@ ms.locfileid: "52865499"
 | TN | 突尼斯|
 | TR | 土耳其|
 | TT | 特立尼达和多巴哥|
-| TW | 中国台湾|
+| TW | 台湾|
 | TZ | 坦桑尼亚联合共和国|
 | UA | 乌克兰|
 | UG | 乌干达|

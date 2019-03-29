@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 02/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ca49cb65331373832b00b8489d731d51e8a8e004
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0ee49299dbbe8095ef98be51dc8619c28891abc5
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182908"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361381"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
@@ -58,7 +58,7 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 
 执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成这些步骤后，运行 **tutorials/regression-part1-data-prep.ipynb** Notebook。
 
-1. 完成 [Azure 机器学习 Python 快速入门](quickstart-create-workspace-with-python.md)来创建 Miniconda 环境。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
+1. 完成 [[Azure 机器学习 Python 快速入门](quickstart-run-local-notebook.md) ](setup-create-workspace.md#python)中的安装步骤来创建 Miniconda 环境。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
 1. 使用 `pip install azureml-dataprep` 在你的环境中安装数据准备 SDK。
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 
@@ -70,17 +70,18 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 
     ```shell
     jupyter notebook
+    ```
 
-## <a name="start"></a>Set up your development environment
+## <a name="start"></a>设置开发环境
 
-All the setup for your development work can be accomplished in a Python notebook. Setup includes the following actions:
+开发工作的所有设置都可以在 Python Notebook 中完成。 安装包括以下操作：
 
-* Install the SDK
-* Import Python packages
+* 安装 SDK
+* 导入 Python 包
 
-### Install and import packages
+### <a name="install-and-import-packages"></a>安装并导入包
 
-Use the following to install necessary packages if you don't already have them.
+使用以下命令安装必要的包（如果尚未安装）。
 
 ```shell
 pip install azureml-dataprep

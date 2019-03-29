@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/31/2019
 ms.author: aljo
 ms.custom: mvc
-ms.openlocfilehash: 05f8c1898e565e145aedbfdc13e0a88ad09486dc
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 0d4689e35cd308478ae0c0154761534dd834f146
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804634"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482328"
 ---
 # <a name="quickstart-deploy-windows-containers-to-service-fabric"></a>快速入门：将 Windows 容器部署到 Service Fabric
 
@@ -105,7 +105,7 @@ Microsoft 为不同版本的 Windows Server 上生成的 IIS 版本发布不同�
 
 运行脚本并创建群集后，在输出中查找 `ClusterEndpoint`。 例如：
 
-```PowerShell
+```powershell
 ...
 ClusterEndpoint : https://southcentralus.servicefabric.azure.com/runtime/clusters/b76e757d-0b97-4037-a184-9046a7c818c0
 ```
@@ -149,7 +149,7 @@ Thumbprint                                Subject
 
 群集中的每个应用程序都必须具有唯一名称。 如果存在名称冲突，请重命名 Visual Studio 项目并重新部署。
 
-打开浏览器，并导航到在前一步骤中输入“连接终结点”字段的地址。 可以选择性地在 URL 的前面添加方案标识符 `http://`，并在后面追加端口 `:80`。 例如， http://mysfcluster.SouthCentralUS.cloudapp.azure.com:80。
+打开浏览器，并导航到在前一步骤中输入“连接终结点”字段的地址。 可以选择性地在 URL 的前面添加方案标识符 `http://`，并在后面追加端口 `:80`。 例如，http:\//mysfcluster.SouthCentralUS.cloudapp.azure.com:80。
 
  此时会看到 IIS 默认网页：![IIS 默认网页][iis-default]
 

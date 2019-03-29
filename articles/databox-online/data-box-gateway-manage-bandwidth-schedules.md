@@ -1,28 +1,25 @@
 ---
-title: 在 Azure Data Box Gateway 中管理用户 | Microsoft Docs
+title: 管理 Azure Data Box Gateway 上的带宽计划 | Microsoft Docs
 description: 介绍如何使用 Azure 门户管理 Azure Data Box Gateway 上的带宽计划。
 services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: aefbe4265cb97a003b908c5631e1f9ed4e0192cc
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 15d560698ca47c0be39e0533f264bfef211a33d0
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102094"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500400"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的带宽计划  
 
 本文介绍如何在 Azure Data Box Gateway 中管理用户。 使用带宽计划可以根据多个日期时间计划配置网络带宽用量。 可将这些计划应用到在设备与云之间执行的上传和下载操作。 
 
 可以通过 Azure 门户添加、修改或删除 Data Box Gateway 的带宽计划。
-
-> [!IMPORTANT]
-> - Data Box Gateway 为预览版。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在本文中，学习如何：
 

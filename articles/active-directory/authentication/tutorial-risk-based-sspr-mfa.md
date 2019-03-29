@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e71247c9a6527bc7372af1a902028aae72bf4a73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 35039dc05103ac6528f668fd76e1372ed7cc0708
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162690"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370544"
 ---
 # <a name="tutorial-use-risk-events-to-trigger-multi-factor-authentication-and-password-changes"></a>教程：使用风险事件触发多重身份验证和密码更改
 
@@ -61,7 +61,7 @@ Azure AD Identity Protection 包括一个默认策略，该策略可以让用户
    1. 设置此策略会要求所有用户注册那些准备供多重身份验证使用的方法。
 1. 单击“ **保存**”。
 
-   ![要求用户在使用 Azure AD Identity Protection 登录时注册 MFA](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
+   ![要求用户在登录时注册 MFA](./media/tutorial-risk-based-sspr-mfa/risk-based-require-mfa-registration.png)
 
 ### <a name="enable-risk-based-password-changes"></a>启用基于风险的密码更改
 

@@ -11,12 +11,12 @@ author: garyericson
 ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 2f55ca6d0dae8ca1eaba1f409bd6a9faa75baf9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9f8e13ad089fd40cde22bb76587b171a1c52c7b
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849204"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58361880"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
 
@@ -87,7 +87,7 @@ Azure 机器学习服务还可以自动训练模型和自动优化模型。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 Azure 门户](quickstart-get-started.md)（无安装方法）或[通过 Python](quickstart-create-workspace-with-python.md)（SDK 安装方法）创建机器学习服务工作区以开始入门学习。
+- [创建机器学习服务工作区](setup-create-workspace.md)以开始使用。
 
 - 按照完整的教程进行操作： 
   + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md) 

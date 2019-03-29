@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 938d8efeaa88cc5bebbf33e525132a030f1b3c7c
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 689207339db0250d42fc64c33f43c42c18317d41
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37112497"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312999"
 ---
 # <a name="tutorial-monitor-your-service-fabric-applications-using-elk"></a>教程：使用 ELK 监视 Service Fabric 应用程序
 
@@ -109,7 +109,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     logstash-plugin install logstash-input-azureeventhub
     ```
 
-4. 创建或修改现有 Logstash 配置文件并在其中包含以下内容：如果是创建文件并在 Azure 中使用 ELK Bitnami 映像，则必须在 ```/opt/bitnami/logstash/conf/access-log.conf``` 位置创建该文件。
+4. 使用以下内容创建或修改现有 Logstash 配置文件：如果是创建该文件并在 Azure 中使用 ELK Bitnami 映像，则必须在 ```/opt/bitnami/logstash/conf/access-log.conf``` 处创建该文件。
 
     ```json
     input
@@ -149,13 +149,13 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
     curl 'localhost:9200/_cat/indices?v'
     ```
 
-8. 通过 **http://SERVER-IP** 访问 Kibana 仪表板，并输入 Kibana 的用户名和密码。 如果在 Azure 中使用了 ELK 映像，则默认用户名为“user”，密码是在“启动诊断”中获取的密码。
+8. 通过 **http:\//SERVER-IP** 访问 Kibana 仪表板，并输入 Kibana 的用户名和密码。 如果在 Azure 中使用了 ELK 映像，则默认用户名为“user”，密码是在“启动诊断”中获取的密码。
 
     ![Kibana](./media/service-fabric-tutorial-java-elk/kibana.png)
 
 ## <a name="next-steps"></a>后续步骤
 
-本教程介绍了以下操作：
+本教程介绍了如何：
 
 > [!div class="checklist"]
 > * 在 Azure 中启动并运行 ELK 服务器

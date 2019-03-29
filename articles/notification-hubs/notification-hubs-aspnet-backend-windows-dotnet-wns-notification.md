@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 9fde3befb147aeeab9419e08602552a970368cfe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 32714b3e5a5ed859716faef2ca660f8b2c90b089
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844978"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402502"
 ---
 # <a name="tutorial-send-notifications-to-specific-users-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向特定用户发送通知
 
@@ -53,13 +53,13 @@ ms.locfileid: "57844978"
 
 [!INCLUDE [notification-hubs-aspnet-backend-notifyusers](../../includes/notification-hubs-aspnet-backend-notifyusers.md)]
 
-## <a name="update-the-code-for-the-client-project"></a>更新客户端项目的代码
+## <a name="update-the-code-for-the-uwp-client"></a>更新 UWP 客户端的代码
 
 在本部分，将更新你在[教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)教程中完成的项目中的代码。 该项目应该已经与 Windows 应用商店相关联， 并且也应该已经配置为使用通知中心。 在本部分，请添加相关代码，以便调用新的 WebAPI 后端并使用该后端来注册和发送通知。
 
 1. 在 Visual Studio 中，打开为[教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)创建的解决方案。
-2. 在“解决方案资源管理器”中，右键单击“WindowsApp”项目，然后单击“管理 NuGet 包”。
-3. 在左侧单击“**联机**”。
+2. 在解决方案资源管理器中，右键单击“通用 Windows 平台(UWP)”项目，然后单击“管理 NuGet 包”。
+3. 在左侧选择“浏览”。
 4. 在“**搜索**”框中键入 **Http 客户端**。
 5. 在结果列表中单击“System.Net.Http”，然后单击“安装”。 完成安装。
 6. 返回到 NuGet“**搜索**”框，键入 **Json.net**。 安装 **Newtonsoft.json** 包，然后关闭“NuGet 包管理器”窗口。

@@ -6,22 +6,18 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: overview
-ms.date: 10/09/2018
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: fd58bf9582663e64e1aefd8193d48d92f51dcd0e
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.openlocfilehash: 105996cf72e2a96a06a4478518e68765d3d158f5
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165653"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58516886"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>使用 Azure 门户管理 Azure Data Box Gateway 上的共享 
 
 本文介绍如何管理 Azure Data Box Gateway 上的共享。 可以通过 Azure 门户或本地 Web UI 管理 Azure Data Box Gateway。 使用 Azure 门户可以添加、删除和刷新共享，或者同步与共享相关联的存储帐户的存储密钥。
-
-> [!IMPORTANT]
-> - Data Box Gateway 为预览版。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
-
 
 ## <a name="about-shares"></a>关于共享
 
@@ -88,6 +84,9 @@ ms.locfileid: "49165653"
 
 使用刷新功能可以刷新本地共享的内容。 刷新共享时，将启动搜索，以查找自上次刷新以来添加到云中的所有 Azure 对象，包括 Blob 和文件。 然后，这些附加的文件将用于刷新设备上本地共享的内容。 
 
+> [!NOTE]
+> 权限和访问控制列表 (ACL) 不会通过刷新操作保存。 
+
 在 Azure 门户中执行以下步骤，以刷新共享。
 
 1.  在 Azure 门户中转到“共享”。 选择并单击要刷新的共享。
@@ -111,7 +110,7 @@ ms.locfileid: "49165653"
 失败时会引发警报。 警报中详细描述了原因，以及问题的建议解决方法。 警报中还会提供某个文件的链接，该文件包含失败的完整摘要，其中指出了无法更新或删除哪些文件。
 
 >[!IMPORTANT]
-> 在此预览版中，一次不能刷新多个共享。
+> 在此版本中，不要一次刷新多个共享。
 
 ## <a name="sync-storage-keys"></a>同步存储密钥
 

@@ -8,31 +8,33 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: quickstart
-ms.date: 10/31/2018
+ms.date: 03/21/2019
 ms.author: areddish
-ms.openlocfilehash: f6695e1c141d329b3f3d4defe9f01d3a05355908
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 01052e218d2c7017ca6f29126f7232aeee16705a
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880302"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479540"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-sdk-for-java"></a>快速入门：使用适用于 Java 的自定义视觉 SDK 创建图像分类项目
 
 本文提供信息和示例代码，以帮助你开始使用自定义视觉 Java SDK 来构建图像分类模型。 创建该项目后，可以添加标记、上传图像、定型项目、获取项目的默认预测终结点 URL 并使用终结点以编程方式测试图像。 使用此示例作为构建自己的 Java 应用程序的模板。 若要在不使用代码的情况下了解生成和使用分类模型的过程，请改为查看[基于浏览器的指南](getting-started-build-a-classifier.md)。
 
 ## <a name="prerequisites"></a>先决条件
+
 - 所选 Java IDE
 - 已安装 [JDK 7 或 8](https://aka.ms/azure-jdks)。
 - 已安装 Maven
 
-
 ## <a name="get-the-custom-vision-sdk-and-sample-code"></a>获取自定义视觉 SDK 和示例代码
+
 若要编写使用自定义视觉的 Java 应用，需要自定义视觉 maven 包。 这些都包括在要下载的示例项目中，但你可以在此处逐个访问它们。
 
 可从 maven 中央存储库安装自定义影像 SDK：
-* [定型 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
-* [预测 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
+
+- [定型 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-training)
+- [预测 SDK](https://mvnrepository.com/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-customvision-prediction)
 
 克隆或下载[认知服务 Java SDK 示例](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master)项目。 导航到 **Vision/CustomVision/** 文件夹。
 
@@ -42,14 +44,14 @@ ms.locfileid: "55880302"
 
 程序已经过配置，可以将密钥数据存储为环境变量。 导航到 PowerShell 中的 **Vision/CustomVision** 文件夹，设置这些变量。 然后输入命令：
 
-```PowerShell
+```powershell
 $env:AZURE_CUSTOMVISION_TRAINING_API_KEY ="<your training api key>"
 $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 ```
 
 ## <a name="understand-the-code"></a>了解代码
 
-在 Java IDE 中加载 `Vision/CustomVision` 项目，打开 _CustomVisionSamples.java_ 文件。 找到 **runSample** 方法，注释掉 **ObjectDetection_Sample** 方法调用&mdash;这会执行本指南中不介绍的对象检测方案。 **ImageClassification_Sample** 方法实现本示例的主要功能；请导航到其定义并检查代码。 
+在 Java IDE 中加载 `Vision/CustomVision` 项目，打开 _CustomVisionSamples.java_ 文件。 找到 **runSample** 方法，注释掉 **ObjectDetection_Sample** 方法调用&mdash;这会执行本指南中不介绍的对象检测方案。 **ImageClassification_Sample** 方法实现本示例的主要功能；请导航到其定义并检查代码。
 
 ### <a name="create-a-custom-vision-service-project"></a>创建自定义影像服务项目
 
@@ -71,9 +73,9 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=277-314)]
 
-### <a name="train-the-classifier"></a>训练分类器
+### <a name="train-the-classifier-and-publish"></a>训练分类器和发布
 
-此代码在项目中创建第一个迭代，并将其标记为默认迭代。 默认迭代反映了将响应预测请求的模型版本。 每次重新训练模型时都应更新此版本。
+此代码在项目中创建第一个迭代，然后将该迭代发布到预测终结点。 为发布的迭代起的名称可用于发送预测请求。 在发布迭代之前，迭代在预测终结点中不可用。
 
 [!code-java[](~/cognitive-services-java-sdk-samples/Vision/CustomVision/src/main/java/com/microsoft/azure/cognitiveservices/vision/customvision/samples/CustomVisionSamples.java?range=89-99)]
 
@@ -87,13 +89,13 @@ $env:AZURE_CUSTOMVISION_PREDICTION_API_KEY ="<your prediction api key>"
 
 若要使用 maven 来编译和运行解决方案，请在 PowerShell 的项目目录中运行以下命令：
 
-```PowerShell
+```powershell
 mvn compile exec:java
 ```
 
 应用程序的控制台输出看起来应类似于以下文本：
 
-```
+```console
 Creating project...
 Adding images...
 Adding image: hemlock_1.jpg

@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-windows
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 01/04/2019
+ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 8e583ac1c8ac4b6f32c2fa9f8b7ed07c2e7033e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9cfe5f490ef4063e02d9407f23130c1a216961ed
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889992"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402450"
 ---
 # <a name="tutorial-push-notifications-to-specific-windows-devices-running-universal-windows-platform-applications"></a>教程：向运行通用 Windows 平台应用程序的特定 Windows 设备推送通知
 
@@ -222,30 +222,28 @@ ms.locfileid: "57889992"
 
 应用现已完成。 它可以在设备的本地存储中存储一组类别，当用户更改类别选择时，使用它向通知中心注册。 下一部分将定义一个后端，该后端可将类别通知发送到此应用。
 
-## <a name="send-tagged-notifications"></a>发送带标记的通知
-
-[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
-
-## <a name="run-the-app-and-generate-notifications"></a>运行应用并生成通知
-
+## <a name="run-the-uwp-app"></a>运行 UWP 应用 
 1. 在 Visual Studio 中，选择 F5 编译并启动应用。 应用 UI 提供了一组开关，可以使用它们选择要订阅的类别。
 
-    ![突发新闻应用][1]
+    ![突发新闻应用](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png)
 
 2. 启用一个或多个类别切换，然后单击“订阅”。
 
     应用程序将所选类别转换为标签并针对所选标签从通知中心请求注册新设备。 返回注册的类别并显示在对话框中。
 
-    ![类别切换和订阅按钮][19]
+    ![类别切换和订阅按钮](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png)
 
-3. 使用以下方式之一从后端发送新通知：
+## <a name="create-a-console-app-to-send-tagged-notifications"></a>创建一个控制台应用以发送带标记的通知
 
-   * **控制台应用**：启动控制台应用。
-   * **Java/PHP**：运行应用或脚本。
+[!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-     所选类别的通知作为 toast 通知显示。
+## <a name="run-the-console-app-to-send-tagged-notifications"></a>运行控制台应用以发送带标记的通知
 
-     ![Toast 通知][14]
+1. 运行上一部分中创建的应用。
+2. 所选类别的通知作为 toast 通知显示。 如果选择通知，则会看到第一个 UWP 应用窗口。 
+
+     ![Toast 通知](./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png)
+
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -260,11 +258,6 @@ ms.locfileid: "57889992"
 [Send notifications from your back-end]: #send
 [Run the app and generate notifications]: #test-app
 [Next Steps]: #next-steps
-
-<!-- Images. -->
-[1]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-breakingnews-win1.png
-[14]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-toast-2.png
-[19]: ./media/notification-hubs-windows-store-dotnet-send-breaking-news/notification-hub-windows-reg-2.png
 
 <!-- URLs.-->
 [get-started]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md

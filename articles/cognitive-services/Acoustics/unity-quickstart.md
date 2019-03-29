@@ -8,21 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: quickstart
-ms.date: 03/14/2019
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: b4eedabbc47738eb2f5797ffd67a3e3ebc9529ca
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 468c5584d21c226d6ffce55ff3981e629d872c56
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136202"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58317181"
 ---
 # <a name="project-acoustics-unity-quickstart"></a>项目音响效果 Unity 快速入门
 使用 Unity 的项目音响效果示例内容来试验模拟支持的设计控件。
 
 所需软件：
 * 用于 Windows 的 [Unity 2018.2 及更高版本](http://unity3d.com)
-* [项目音响效果示例内容包](https://www.microsoft.com/en-us/download/details.aspx?id=57346)
+* [项目音响效果示例内容包](https://www.microsoft.com/download/details.aspx?id=57346)
 
 示例包中包括什么？
 * 具有几何、声源和游戏控件的 Unity 场景
@@ -33,7 +33,7 @@ ms.locfileid: "58136202"
 将示例包导入到新的 Unity 项目。 
 * 在 Unity 中，转到“资产”>“导入包”>“自定义包...”
 
-    ![导入包](media/import-package.png)  
+    ![Unity 导入包选项的屏幕截图](media/import-package.png)  
 
 * 选择 ProjectAcoustics.unitypackage
 
@@ -44,23 +44,23 @@ ms.locfileid: "58136202"
 
 可以通过打开“播放器设置”来验证此设置是否生效：
 
-![播放器设置](media/player-settings.png)
+![Unity 播放器设置面板的屏幕截图](media/player-settings.png)
 
-![.NET 4.5](media/net45.png)
+![选中了 .NET 4.5 的 Unity 播放器设置面板的屏幕截图](media/net45.png)
 
 ## <a name="experiment-with-design-controls"></a>试验设计控件
 打开 ProjectAcousticsSample 文件夹中的示例场景，然后单击 Unity 编辑器中的“播放”按钮。 使用 W、A、S、D 和鼠标进行移动。 若要比较有音响效果和没有音响效果的场景声音，请按下 **R** 按钮，直到覆盖文本变成红色，并显示“音响效果:已禁用”。 若要查看更多控件的键盘快捷方式，请按 **F1**。 通过右键单击以选择要执行的操作，然后左键单击以执行操作，也可以使用控件。
 
 脚本 AcousticsAdjust 附加到示例场景中的声音源，这会启用基于源的设计参数。 
 
-![AcousticsAdjust](media/acoustics-adjust.png)
+![Unity AcousticsAdjust 脚本的屏幕截图](media/acoustics-adjust.png)
 
 以下介绍一些可以使用提供的控件生成的效果。 有关每个控件的详细信息，请参阅[项目音响效果 Unity 设计教程](unreal-workflow.md)。
 
 ### <a name="modify-distance-based-attenuation"></a>修改基于距离的衰减
 项目音响效果 Unity 空间音响插件提供的音频 DSP 遵守内置于 Unity 编辑器的基于距离的按源衰减。 针对基于距离的衰减的控件位于“三维声音设置”下的声源“检查器”面板的“音频源”组件中：
 
-![距离衰减](media/distance-attenuation.png)
+![Unity 距离衰减选项面板的屏幕截图](media/distance-attenuation.png)
 
 项目音响效果在以播放器位置为中心的“模拟区域”框中执行计算。 由于示例包中的音效资产烘焙的模拟区域尺寸为播放器周围 45 米，因此声音衰减应设计为在约 45 米处降至 0。
 

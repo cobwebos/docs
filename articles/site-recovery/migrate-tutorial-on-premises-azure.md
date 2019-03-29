@@ -2,17 +2,18 @@
 title: 使用 Azure Site Recovery 将本地计算机迁移到 Azure | Microsoft 文档
 description: 本文将介绍如何使用 Azure Site Recovery 将本地计算机迁移到 Azure。
 author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/27/2018
+ms.date: 03/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: d5b229d96c0f63e27e36fb95122b36d3d8c128ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110301"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360361"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
@@ -37,7 +38,7 @@ ms.locfileid: "58110301"
 在开始之前，查看用于灾难恢复的 [VMware](vmware-azure-architecture.md) 或 [Hyper-V](hyper-v-azure-architecture.md) 体系结构会有所帮助。
 
 > [!TIP]
-> 正在寻找将 VMware VM 迁移到 Azure 的无代理方式？ 请[单击此处](https://aka.ms/migrateVMs-signup)
+> 想要参与我们将 VMware VM 迁移到 Azure 的全新无代理体验吗？ [了解更多信息](https://aka.ms/migrateVMs-signup)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -113,7 +114,7 @@ ms.locfileid: "58110301"
 5. 检查 Azure VM 是否在 Azure 中按预期显示。
 6. 在“复制的项”中，右键单击 VM >“完成迁移”。 这样会执行以下操作：
 
-   - 完成迁移过程，停止 AWS VM 复制，并停止 VM 的 Site Recovery 计费。
+   - 完成迁移过程，停止本地 VM 的复制，并停止 VM 的 Site Recovery 计费。
    - 此步骤清除复制数据。 它不删除迁移的 VM。
 
      ![完成迁移](./media/migrate-tutorial-on-premises-azure/complete-migration.png)
@@ -128,7 +129,7 @@ ms.locfileid: "58110301"
 
 计算机迁移到 Azure 后，有多个应完成的步骤。
 
-在迁移过程中，某些步骤可以使用[恢复计划]( https://docs.microsoft.com/azure/site-recovery/site-recovery-runbook-automation)中的内置自动化脚本功能自动完成   
+在迁移过程中，某些步骤可以使用[恢复计划](site-recovery-runbook-automation.md)中的内置自动化脚本功能自动完成   
 
 
 ### <a name="post-migration-steps-in-azure"></a>Azure 中的迁移后步骤
@@ -139,7 +140,7 @@ ms.locfileid: "58110301"
     - 如果要迁移 VMware 机和物理服务器，移动服务安装程序会在 Windows 计算机上安装可用的 Azure VM 代理。 在 Linux VM 上，我们建议在故障转移后安装代理。
     - 如果要将 Azure VM 迁移到次要区域，则在迁移之前必须在 VM 上预配 Azure VM 代理。
     - 如果要将 Hyper-V VM 迁移到 Azure，请在迁移后在 Azure VM 上安装 Azure VM 代理。
-- 从 VM 中手动删除任何 Site Recovery 提供程序/代理。 如果要迁移 VMware VM 或物理服务器，请从 Azure VM 中[卸载移动服务][vmware-azure-install-mobility-service.md#uninstall-mobility-service-on-a-windows-server-computer]。
+- 从 VM 中手动删除任何 Site Recovery 提供程序/代理。 如果迁移 VMware VM 或物理服务器，请从 VM 中卸载移动服务。
 - 为提高恢复能力，请执行以下操作：
     - 使用 Azure 备份服务备份 Azure VM 以保证数据安全。 [了解详细信息]( https://docs.microsoft.com/azure/backup/quick-backup-vm-portal)。
     - 使用 Site Recovery 将 Azure VM 复制到次要区域以保证工作负荷运行且持续可用。 [了解详细信息](azure-to-azure-quickstart.md)。

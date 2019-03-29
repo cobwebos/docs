@@ -10,12 +10,12 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: 27db3327e296dafea3af2180eeaadd0ff4680b8d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.openlocfilehash: da6c9bb6cbd94ab5078641f25e42ad2203ff7a53
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341943"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402348"
 ---
 # <a name="azure-managed-applications-overview"></a>Azure 托管应用程序概述
 
@@ -32,6 +32,8 @@ ms.locfileid: "56341943"
 尽管客户将这些托管应用程序部署在他们自己的订阅中，但不需要维护、更新或修复这些应用程序。 可以确保所有客户均使用批准的版本。 客户不需要培养应用程序特定的域方面的知识就能管理这些应用程序。 客户可以自动获取应用程序更新，而无需担心如何排查和诊断应用程序问题。 
 
 IT 团队可以使用托管应用程序为组织中的用户提供预先批准的解决方案。 你知道这些解决方案符合组织标准。
+
+托管应用程序当前不支持 [Azure 资源的托管标识](../active-directory/managed-identities-azure-resources/overview.md)。
 
 ## <a name="types-of-managed-applications"></a>托管应用程序的类型
 

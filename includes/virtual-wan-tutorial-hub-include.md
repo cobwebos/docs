@@ -8,20 +8,21 @@ ms.topic: include
 ms.date: 02/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 1d59c90b4f4ac7213a4bd2769a9c22cace25e9cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a81d8c97b916fd15e7be5fde05e9ea25ba1151d
+ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124537"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58352465"
 ---
 中心包含网关。 创建中心后，即使你没有附加任何站点，也会对该中心收取费用。 创建中心和网关需要 30 分钟。
 
 1. 找到创建的虚拟 WAN。 在虚拟 WAN 页的“虚拟 WAN 体系结构”部分，单击“中心”。
-2. 在“中心”页上，单击“+新建中心”打开“虚拟 WAN 中心”页。
-3. 在“虚拟 WAN 中心”页上，请填写以下字段：
+2. 在“中心”页上，单击“+新建中心”打开“创建虚拟中心”页。
+3. 在“创建虚拟中心”页上，请填写以下字段：
 
    * 位置
    * Name
    * 中心专用地址空间
-4. 单击“确认”以创建中心。 单击“刷新”以在“中心”页上查看该中心。
+
+单击“确认”以创建中心。 单击“刷新”以在“中心”页上查看该中心。

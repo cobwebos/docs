@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: 9d18b1382bdb421afcc8aee92fd99b7ef0d09e32
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53540140"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58312200"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -50,11 +50,11 @@ ms.locfileid: "53540140"
 
 1. 在“创建”页中，填写必需的参数：
    
-   参数|Description
+   参数|说明
    ---|---
    **名称** | 提供一个有意义的注册名称。  
    **应用程序类型** | 由于生成的是 SPA Web 应用程序，因此请将其保留为“Web 应用/API”。
-   **登录 URL** | 输入应用程序的主页/登录页的 URL。 由于应用程序会在以后托管在 Azure 应用服务中，因此必须使用“https://azurewebsites.net”域中的 URL。 在本示例中，名称基于注册名称。
+   **登录 URL** | 输入应用程序的主页/登录页的 URL。 由于应用程序会在以后托管在 Azure 应用服务中，因此必须使用“https:\//azurewebsites.net”域中的 URL。 在本示例中，名称基于注册名称。
 
    完成后请单击“创建”，创建新的应用程序注册。
 
@@ -104,7 +104,7 @@ ms.locfileid: "53540140"
 
 1. 发布应用程序之前，需在 **index.html** 中更新 JavaScript 代码的多个部分： 
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 首先，在 `<head>` 元素中更改 JavaScript 和样式表文件引用的路径。 打开 Visual Studio 解决方案中的 **index.html** 文件，找到以下 JavaScript 代码行。 取消注释“PROD RESOURCE LINKS”下的三行，注释掉“DEV RESOURCE LINKS”下的三行：
+   a. 首先，在 `<head>` 元素中更改 JavaScript 和样式表文件引用的路径。 打开 Visual Studio 解决方案中的 **index.html** 文件，找到以下 JavaScript 代码行。 取消注释“PROD RESOURCE LINKS”下的三行，注释掉“DEV RESOURCE LINKS”下的三行：
    
       [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=2-20&highlight=10-13,15-18)]
 
@@ -140,7 +140,7 @@ ms.locfileid: "53540140"
    > [!NOTE]
    > 以下对话框中的多个字段填充的是 Azure 订阅中的数据。 因此，在继续操作之前，可能需要等待数秒钟，确保每个对话框加载完毕。  
 
-   a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 右键单击“解决方案资源管理器”中的网站项目节点，然后选择“发布 Web 应用”：  
+   a. 右键单击“解决方案资源管理器”中的网站项目节点，然后选择“发布 Web 应用”：  
 
       ![VS - 解决方案资源管理器的“发布 Web 应用”](media/tutorial-create-tsi-sample-spa/vs-solution-explorer-publish-web-app.png)
 
@@ -154,7 +154,7 @@ ms.locfileid: "53540140"
 
    d. 给“创建应用服务”对话框几秒钟时间来加载所有字段，然后修改以下字段：
    
-      字段 | Description
+      字段 | 说明
       ---|---
       **应用名称** | 更改为在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 3 中使用的 Azure AD 应用程序注册名称。 
       **资源组** | 使用“新建...”按钮，通过更改来匹配“应用名称”字段。
@@ -176,7 +176,7 @@ ms.locfileid: "53540140"
 
 ## <a name="troubleshooting"></a>故障排除  
 
-错误代码/条件 | Description
+错误代码/条件 | 说明
 ---------------------| -----------
 AADSTS50011：未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”属性。 转到 Azure AD 应用程序注册的“设置” / “回复 URL”页。 验证在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 3 中指定的**登录** URL 是否存在。 
 AADSTS50011：在请求中指定的回复 URL 与为应用程序“<Application ID GUID>”配置的回复 URL 不匹配。 | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 4.b 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置” / “回复 URL”属性下指定的值匹配。 另外，请确保将“目标 URL”更改为使用 `https`，详见 [生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 5.e 中的说明。

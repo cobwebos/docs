@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 01/02/2019
 ms.author: assafi
-ms.openlocfilehash: bc4553df239dbb8b62a31414539b10998cd74f02
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: e960f662fda4272bbc9763eb04fdb739c4776af8
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189642"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58371326"
 ---
 # <a name="quickstart-using-c-to-call-the-text-analytics-cognitive-service"></a>快速入门：使用 C# 调用文本分析认知服务
 <a name="HOLTop"></a>
@@ -35,7 +35,7 @@ ms.locfileid: "58189642"
 1. 右键单击解决方案，然后单击“管理解决方案的 NuGet 包”
 1. 选中“包括预发行版”复选框。
 1. 选择“浏览”选项卡，然后搜索“Microsoft.Azure.CognitiveServices.Language.TextAnalytics”
-1. 选择 NuGet 包并安装它。 当前可能需要 v2.8.0 (3-18-2019) 而不是 v3.0.0，直到软件中的 bug 修复为止。
+1. 选择 NuGet 包并安装它。 你可能需要暂时降级到 v2.8.0（从 2019 年 3 月 18 日开始），直到示例代码更新到 v3.0.0。
 
 > [!Tip]
 >  虽然可以直接从 C# 调用 [HTTP 终结点](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)，但使用 Microsoft.Azure.CognitiveServices.Language SDK 可以更轻松地调用服务，而不必担心 JSON 的序列化和反序列化。

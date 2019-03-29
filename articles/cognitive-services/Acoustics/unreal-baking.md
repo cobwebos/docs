@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 03/13/2019
+ms.date: 03/20/2019
 ms.author: michem
-ms.openlocfilehash: afe4421bea27ff029bd4a1a7808241a54027a6ac
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: 544de5a3ac48c12d75f05a1c9adb56f48bb540f4
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136558"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58311542"
 ---
 # <a name="project-acoustics-unreal-bake-tutorial"></a>项目音响效果 Unreal 烘焙教程
 本文档介绍使用 Unreal 编辑器扩展提交音效烘培的过程。
@@ -32,7 +32,7 @@ ms.locfileid: "58136558"
 
 将项目音响效果插件包导入项目。 有关此操作的帮助，请参阅 [Unreal 集成](unreal-integration.md)主题。 该插件集成后，可通过单击新的音效模式图标来打开音效 UI。
 
-![打开音效模式](media/acoustics-mode.png)
+![Unreal 编辑器音效模式选项的屏幕截图](media/acoustics-mode.png)
 
 ## <a name="tag-actors-for-acoustics"></a>标记音效的执行组件
 
@@ -42,7 +42,7 @@ ms.locfileid: "58136558"
 
 ### <a name="for-reference-the-objects-tab-parts"></a>供参考：“对象”选项卡部件
 
-![Unreal“对象”选项卡详细信息](media/unreal-objects-tab-details.png)
+![Unreal 中“音效对象”选项卡的屏幕截图](media/unreal-objects-tab-details.png)
 
 1. 选项卡选择按钮（已选择“对象”选项卡）。 使用这些按钮可从上到下演示进行音效烘培的各个步骤。
 2. 有关使用此页面需要执行的操作的简短说明。
@@ -75,11 +75,11 @@ ms.locfileid: "58136558"
 
 房间中给定材料的混响时间与其吸收系数成反比，并且大多数材料的吸收系数值介于 0.01 到 0.20 之间。 如果材料的吸收系数高于此范围，则其吸收性很强。 例如，如果房间回音过大，请将墙壁、地板或天花板的声学材料更改为吸收率更高的某种材料。 音效材料分配适用于所有使用该场景材料的执行组件。
 
-![混响时间关系图](media/reverb-time-graph.png)
+![此图显示混响时间与吸收系数的负相关性](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>供参考：“材料”选项卡的控件部件
 
-![Unreal“对象”选项卡详细信息](media/unreal-materials-tab-details.png)
+![Unreal 中“音效对象”选项卡的屏幕截图](media/unreal-materials-tab-details.png)
 
 1. “材料”选项卡按钮，用于打开此页面。
 2. 有关使用此页面需要执行的操作的简短说明。
@@ -94,7 +94,7 @@ ms.locfileid: "58136558"
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>供参考：“探测”选项卡的控件部件
 
-![“探测”选项卡详细信息](media/unreal-probes-tab-details.png)
+![Unreal 中“音效探测”选项卡的屏幕截图](media/unreal-probes-tab-details.png)
 
 1. “探测”选项卡按钮，用于打开此页面
 2. 有关需要使用此页面执行的操作的简短说明
@@ -124,11 +124,11 @@ ms.locfileid: "58136558"
 
 完成探测计算之后，新执行组件会出现在世界大纲中，名为 AcousticsDebugRenderer。 选中“呈现探测”和“呈现体素”复选框会在编辑器视区内启用调试显示。
 
-![音效调试呈现器](media/acoustics-debug-renderer.png)
+![显示 Unreal 编辑器中音效调试呈现器执行组件的屏幕截图](media/acoustics-debug-renderer.png)
 
 如果在你所处级别上未看到覆盖任何体素或探测，请确保在视区中启用了实时呈现。
 
-![启用实时呈现](media/unreal-real-time-rendering.png)
+![Unreal 中实时呈现选项的屏幕截图](media/unreal-real-time-rendering.png)
 
 ### <a name="voxels"></a>体素
 
@@ -137,7 +137,7 @@ ms.locfileid: "58136558"
 
 如果比较所创建的体素在低分辨率和高分辨率下的效果，你将看到低分辨率的体素是高分辨率的两倍大。
 
-![体素预览](media/unreal-voxel-preview.png)
+![Unreal 编辑器中音效体素预览的屏幕截图](media/unreal-voxel-preview.png)
 
 ### <a name="probe-points"></a>探测点
 
@@ -145,7 +145,7 @@ ms.locfileid: "58136558"
 
 请务必检查在期望播放机在场景中移动的任何位置处是否都存在探测点。 探测点由项目音响效果引擎放置在导航网格上，无法进行移动或编辑，因此请通过检查探测点来确保导航网格涵盖所有可能的播放机位置。
 
-![探测预览](media/unreal-probes-preview.png)
+![Unreal 中音效探测预览的屏幕截图](media/unreal-probes-preview.png)
 
 ### <a name="Coarse-vs-Fine-Resolution"></a>粗糙与精细分辨率
 
@@ -159,9 +159,9 @@ ms.locfileid: "58136558"
 * 无法在“已填充”体素内找到声源，因为该体素包含几何体，这将导致没有声音。 定位声源更困难，因此它们不在比使用精细设置更大的粗糙设置的体素中。
 * 如下所示，更大的体素将更多地挤入门户。 第一张图像是使用低分辨率创建的，而第二张是使用高分辨率的同一门口。 如红色标记所示，更少体素挤入使用高分辨率设置的门口。 蓝色线条是几何体定义的门廊，而红色线条是体素大小定义的有效声学门户。 这种侵入如何在给定的情况下播放出来完全取决于体素与门户几何体的一致程度，后者由场景中对象的大小和位置决定。
 
-![粗糙门廊](media/unreal-coarse-bake.png)
+![Unreal 中填充门廊的低分辨率体素的屏幕截图](media/unreal-coarse-bake.png)
 
-![精细门廊](media/unreal-fine-bake.png)
+![Unreal 的门廊中高分辨率体素的屏幕截图](media/unreal-fine-bake.png)
 
 ## <a name="bake-your-level-using-azure-batch"></a>使用 Azure Batch 烘焙级别
 
@@ -169,7 +169,7 @@ ms.locfileid: "58136558"
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>供参考：“制作”选项卡的控件部件
 
-![“制作”选项卡详细信息](media/unreal-bake-tab-details.png)
+![Unreal 中“音效烘焙”选项卡的屏幕截图](media/unreal-bake-tab-details.png)
 
 1. “制作”选项卡，按钮用于打开此页面。
 2. 有关要在此页上所执行操作的简短说明。

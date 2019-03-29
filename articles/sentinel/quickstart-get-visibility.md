@@ -13,14 +13,14 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/4/2019
+ms.date: 3/20/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1d54ac521fb8b81ed5fa135f68af420bda261661
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: a80c4db1b81dd2bc0b223a2781e28ccb1f5ba68e
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246944"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58402875"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel-preview"></a>快速入门：Azure Sentinel 预览版入门
 
@@ -118,7 +118,22 @@ ms.locfileid: "57246944"
 
 可以基于用户的角色创建不同的仪表板，以查看该用户的数据并了解其正在查找哪些信息。 例如，可以针对网络管理员创建包含防火墙数据的仪表板。 此外，可以根据数据的查找频率创建仪表板，不管这些数据是每日都要查看的数据，还是每隔一小时检查一次的其他项（例如，你可能想要每隔一小时查看自己的 Azure AD 登录，以搜索异常）。 
 
+## <a name="create-new-detections"></a>创建新的检测
 
+在[连接到 Azure Sentinel 的数据源](connect-data-sources.md)上生成检测，以调查组织中的威胁。
+
+创建新的检测时，请利用 Microsoft 安全研究人员为你连接的数据源量身定制的内置检测。
+
+1. [在 GitHub 社区中](https://github.com/Azure/Azure-Sentinel/tree/master/Detections)，转到“检测”文件夹并选择相关文件夹。
+   ![相关文件夹](./media/qs-get-visibility/detection-folders.png)
+ 
+3.  转到“Analytics”选项卡并选择“添加”。
+   ![在 Log Analytics 中创建规则](./media/qs-get-visibility/query-params.png)
+
+3.  将所有参数复制到规则，然后单击“创建”。
+   ![创建警报规则](./media/qs-get-visibility/create-alert-rule.png)
+
+ 
 ## <a name="next-steps"></a>后续步骤
 本快速入门介绍了如何开始使用 Azure Sentinel。 请继续学习有关[如何检测威胁](tutorial-detect-threats.md)的教程。
 > [!div class="nextstepaction"]

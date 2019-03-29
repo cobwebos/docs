@@ -2,17 +2,16 @@
 title: 什么是 Azure DNS？
 description: Microsoft Azure 上的 DNS 托管服务概述。 在 Microsoft Azure 上托管域。
 author: vhorne
-manager: jeconnoc
 ms.service: dns
 ms.topic: overview
-ms.date: 9/24/2018
+ms.date: 3/21/2019
 ms.author: victorh
-ms.openlocfilehash: 62043128b6415a064e35adca6be4d60ccfcae308
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: cea19ad2ba03d3e71df32912a1d7ee9e6171689a
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294308"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58339444"
 ---
 # <a name="what-is-azure-dns"></a>什么是 Azure DNS？
 
@@ -39,6 +38,7 @@ Azure DNS 中的 DNS 域托管在 DNS 名称服务器的 Azure 全球网络上�
 有关详细信息，请参阅[如何保护 DNS 区域和记录](dns-protect-zones-recordsets.md)。 
 
 ## <a name="dnssec"></a>DNSSEC
+
 Azure DNS 当前不支持 DNSSEC。 在大多数情况下，可以通过在应用程序中始终使用 HTTPS/TLS 来减少对 DNSSEC 的需求。 如果 DNSSEC 是 DNS 区域的关键要求，则可以使用第三方 DNS 托管提供者托管这些区域。
 
 ## <a name="ease-of-use"></a>易于使用
@@ -57,12 +57,11 @@ Azure DNS 还支持专用 DNS 域，其使用的功能当前为公共预览版�
 
 ## <a name="alias-records"></a>别名记录
 
-Azure DNS 支持别名记录集。 可以使用别名记录集来引用 Azure 资源，比如 Azure 公共 IP 地址或 Azure 流量管理器配置文件。 如果基础资源的 IP 地址发生更改，别名记录集将在 DNS 解析过程中无缝更新。 别名记录集指向服务实例，而服务实例与 IP 地址相关联。 
+Azure DNS 支持别名记录集。 可以使用别名记录集来引用 Azure 资源，例如 Azure 公共 IP 地址、Azure 流量管理器配置文件或 Azure 内容分发网络 (CDN) 终结点。 如果基础资源的 IP 地址发生更改，别名记录集将在 DNS 解析过程中无缝更新。 别名记录集指向服务实例，而服务实例与 IP 地址相关联。
 
-另外，现在可以使用别名记录将顶点或裸域指向流量管理器配置文件。 例如 contoso.com。
+另外，现在可以使用别名记录将顶点或裸域指向流量管理器配置文件或 CDN 终结点。 例如 contoso.com。
 
 有关详细信息，请参阅 [Azure DNS 别名记录概述](dns-alias.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 

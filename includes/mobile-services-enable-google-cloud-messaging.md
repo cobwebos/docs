@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 04/06/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ae84b5fd5647ef6c54006c0411e334b14173392e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a7d0a899b4a2ef86153e82a4e3f04e7ec430a1bc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33836431"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58488036"
 ---
 1. 导航到[“Google Cloud Console”](https://console.developers.google.com/cloud-resource-manager)，然后使用 Google 帐户凭据登录。 
 2. 在工具栏中选择“创建项目”。 
    
     ![创建新项目](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
 3. 在“项目名称”中，输入项目名称，然后单击“创建”。
-4. 选择工具栏上的“警报”按钮，然后在列表中选择项目。 随即显示项目的仪表板。 也可以通过使用以下 URL 直接导航到仪表板：https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+4. 选择工具栏上的“警报”按钮，然后在列表中选择项目。 随即显示项目的仪表板。 也可以通过使用以下 URL 直接导航到仪表板：`https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 
     ![在警报中选择项目](./media/mobile-services-enable-google-cloud-messaging/alert-new-project.png)
 5. 记下仪表板中“项目信息”磁贴中的“项目编号”。 
@@ -51,5 +51,5 @@ ms.locfileid: "33836431"
 
     ![复制 API 密钥](./media/mobile-services-enable-google-cloud-messaging/copy-api-key.png)
    
-    接下来，将使用此 API 密钥值，让 Azure 对 GCM 进行身份验证并代表应用程序发送推送通知。 若要导航回项目仪表板，请使用以下 URL：https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>
+    接下来，将使用此 API 密钥值，让 Azure 对 GCM 进行身份验证并代表应用程序发送推送通知。 若要导航回项目仪表板，请使用以下 URL：`https://console.developers.google.com/home/dashboard?project=<YOUR PROJECT NAME>`
 

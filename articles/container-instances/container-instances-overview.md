@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 11/30/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 8362ae5e9647c023ff950a363f9ba7bfde37fdb6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91cf0986241a40c48430d8305849c12864d645fb
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863315"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499550"
 ---
 # <a name="what-is-azure-container-instances"></a>什么是 Azure 容器实例？
 
@@ -52,10 +52,11 @@ Azure 容器实例可以使用同一 API 来计划 Windows 和 Linux 容器。 �
 
 * 每个容器组多个容器
 * 卷装载（[Azure 文件存储](container-instances-volume-azure-files.md)、[emptyDir](container-instances-volume-emptydir.md)、[GitRepo](container-instances-volume-gitrepo.md)、[机密](container-instances-volume-secret.md)）
+* Azure Monitor 的[资源使用情况指标](container-instances-monitor.md)
 * [虚拟网络部署](container-instances-vnet.md)（预览版）
 * [GPU 资源](container-instances-gpu.md)（预览版）
 
-Azure 容器实例支持基于长期服务渠道 (LTSC) 版本的 Windows Server 2016 映像。 不支持 Windows 半年频道 (SAC) 发行版，例如 1709 和 1803。
+Azure 容器实例目前支持基于长期服务渠道 (LTSC) 版本的 Windows Server 2016 映像。 不支持 Windows 半年频道 (SAC) 发行版，例如 1709 和 1803。
 
 ## <a name="co-scheduled-groups"></a>共同计划组
 

@@ -7,13 +7,13 @@ ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/17/2019
-ms.openlocfilehash: d861eba6ce905ccaf0d08a08cdd9998a199889da
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/25/2019
+ms.openlocfilehash: c2a11422398b3cdb99c9f71accddfcd78237c64c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287348"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58417898"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-c"></a>使用 C# 创建 Azure 数据资源管理器群集和数据库
 
@@ -25,20 +25,19 @@ ms.locfileid: "58287348"
 > * [Python](create-cluster-database-python.md)
 >  
 
-
-该快速入门介绍了如何使用 C# 创建 Azure 数据资源管理器群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将使用 C# 创建群集和数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
-- 如果尚未安装 Visual Studio 2017，可以下载并使用免费的 [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
+* 如果尚未安装 Visual Studio 2017，可以下载并使用**免费的** [Visual Studio 2017 Community Edition](https://www.visualstudio.com/downloads/)。 在安装 Visual Studio 的过程中，请确保启用“Azure 开发”。
 
-- 若要完成本快速入门，需要一个 Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
+* 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="install-c-nuget"></a>安装 C# nuget
 
-- 需要对 Azure 数据资源管理器 (Kusto) 使用 nuget 包；Nuget 位于此处： https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/
-- 你还需要使用 nuget Microsoft.IdentityModel.Clients.ActiveDirectory 进行身份验证 https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/
+1. 安装 [Azure 数据资源管理器 (Kusto) nuget 包](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/)。
 
+1. 安装 [Microsoft.IdentityModel.Clients.ActiveDirectory nuget 包](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/)以进行身份验证。
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>创建 Azure 数据资源管理器群集
 
@@ -72,10 +71,10 @@ ms.locfileid: "58287348"
    | resourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
 
     可以使用其他可选参数，例如群集的容量。
-    
-    对凭据设置“credentials”（有关详细信息，请参阅 https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet）
 
-2. 运行以下命令，检查群集是否已成功创建：
+1. 设置[凭据](https://docs.microsoft.com/dotnet/azure/dotnet-sdk-azure-authenticate?view=azure-dotnet)
+
+1. 运行以下命令，检查群集是否已成功创建：
 
     ```C#-interactive
     KustoManagementClient.Clusters.Get(resourceGroupName, clusterName);

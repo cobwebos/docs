@@ -1,5 +1,5 @@
 ---
-title: 快速入门：使用 CLI 创建 Azure 数据资源管理器群集和数据库
+title: 快速入门：使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 services: data-explorer
 author: radennis
@@ -7,15 +7,15 @@ ms.author: radennis
 ms.reviewer: orspod
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 2/4/2019
-ms.openlocfilehash: ca4ffce1ae966d2bb8fb187c9b04938330969641
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 3/25/2019
+ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286323"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418646"
 ---
-# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-the-cli"></a>使用 CLI 创建 Azure 数据资源管理器群集和数据库
+# <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 
 > [!div class="op_single_selector"]
 > * [门户](create-cluster-database-portal.md)
@@ -23,9 +23,9 @@ ms.locfileid: "58286323"
 > * [PowerShell](create-cluster-database-powershell.md)
 > * [C#](create-cluster-database-csharp.md)
 > * [Python](create-cluster-database-python.md)
->  
+>
 
-本快速入门介绍如何使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库。
+Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 若要使用 Azure 数据资源管理器，请先创建群集，再在该群集中创建一个或多个数据库。 然后将数据引入（加载）到数据库，以便对其运行查询。 在本快速入门中，你将使用 Azure CLI 创建群集和数据库。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ ms.locfileid: "58286323"
     az login
     ```
 
-2. 设置将在其中创建群集的订阅。 将 `MyAzureSub` 替换为要使用的 Azure 订阅的名称：
+1. 设置将在其中创建群集的订阅。 将 `MyAzureSub` 替换为要使用的 Azure 订阅的名称：
 
     ```azurecli-interactive
     az account set --subscription MyAzureSub
@@ -67,7 +67,7 @@ ms.locfileid: "58286323"
 
     可以使用其他可选参数，例如群集的容量。
 
-2. 运行以下命令，检查群集是否已成功创建：
+1. 运行以下命令，检查群集是否已成功创建：
 
     ```azurecli-interactive
     az kusto cluster show --name azureclitest --resource-group testrg
@@ -91,7 +91,7 @@ ms.locfileid: "58286323"
    | soft-delete-period | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
    | hot-cache-period | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
 
-2. 若要查看已创建的数据库，请运行以下命令：
+1. 若要查看已创建的数据库，请运行以下命令：
 
     ```azurecli-interactive
     az kusto database show --name clidatabase --resource-group testrg --cluster-name azureclitest

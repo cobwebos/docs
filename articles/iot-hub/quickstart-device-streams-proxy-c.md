@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 59a84190386b554716472b4cb46c94030a66a4cb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 539357c9dcfaaffa551b4be08427a51d9e92475f
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077099"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484763"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-application-preview"></a>快速入门：使用 C 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
@@ -49,7 +49,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 ## <a name="prerequisites"></a>先决条件
 
-* 目前仅支持在以下区域中创建的 IoT 中心的设备流预览：
+* 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
   * 美国中部
   * **美国中部 EUAP**
@@ -61,9 +61,11 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 针对本快速入门，你将使用[适用于 C 的 Azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)。准备一个用于从 GitHub 克隆和生成 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 的开发环境。 GitHub 上的 SDK 包括在本快速入门中使用的示例代码。 
 
-1. 下载 3.13.4 版的 [CMake 生成系统](https://cmake.org/download/)。 使用相应的加密哈希值验证下载的二进制文件。 以下示例使用了 Windows PowerShell 来验证 x64 MSI 发行版本 3.13.4 的加密哈希：
+1. 下载 [CMake 生成系统](https://cmake.org/download/)。 使用与下载版本相对应的加密哈希值验证下载的二进制文件。 加密哈希值也可以从已提供的 CMake 下载链接中找到。
 
-    ```PowerShell
+    以下示例使用了 Windows PowerShell 来验证 x64 MSI 发行版本 3.13.4 的加密哈希：
+
+    ```powershell
     PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
     PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
     True
@@ -77,7 +79,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
     64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
     ```
 
-    在进行 `CMake` 安装之前，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 必备组件到位并验证下载内容后，安装 CMake 生成系统。
+    在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
 2. 打开命令提示符或 Git Bash shell。 执行以下命令克隆 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) GitHub 存储库：
     
@@ -103,7 +105,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
       make -j
       ```
 
-   * 在 Windows 中，请在 Visual Studio 2015 或 2017 的开发人员命令提示符下运行以下命令。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。
+   * 在 Windows 中，请在 Visual Studio 2015 或 2017 的开发人员命令提示下运行以下命令。 将在 `cmake` 目录中生成模拟设备的 Visual Studio 解决方案。
 
       ```cmd
       rem For VS2015

@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9134f939e771f92453b184aad643d41089623e19
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
+ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201460"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58439256"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>快速入门：从 iOS 本机应用将用户登录并调用 Microsoft Graph API
 
@@ -44,9 +44,9 @@ ms.locfileid: "58201460"
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-your-application"></a>步骤 1：配置应用程序
-> 为使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 `msal<AppId>://auth`（其中，msal<AppId> 是此应用程序 ID）。
+> 为使此快速入门中的代码示例正常运行，需要将答复 URL 添加为 `msal<AppId>://auth`（其中，msal\<AppId> 是此应用程序 ID）。
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
-> > [为我执行此更改]()
+> > [执行此更改]()
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![已配置](media/quickstart-v2-ios/green-check.png) 应用程序已使用此属性进行配置
@@ -168,7 +168,7 @@ applicationContext.acquireToken(forScopes: self.kScopes) { (result, error) in /*
 
 > |其中：||
 > |---------|---------|
-> | `forScopes` | 包含所请求的作用域（即，[ "user.read" ]` for Microsoft Graph or `[ "<Application ID URL>/scope" ]` for custom Web APIs (i.e. `api://<Application ID>/access_as_user`)） |
+> | `forScopes` | 包含所请求的作用域（即针对 Microsoft Graph 的 `[ "user.read" ]` 或针对自定义 Web API 的 `[ "<Application ID URL>/scope" ]`（即 `api://<Application ID>/access_as_user`）） |
 
 #### <a name="getting-an-access-token-silently"></a>以无提示方式获取访问令牌
 

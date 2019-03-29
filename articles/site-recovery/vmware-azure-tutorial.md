@@ -6,22 +6,28 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/3/2019
+ms.date: 3/18/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ccd62c0b0832622bbc74542674c1d09f59ea301b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848824"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58310585"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
 [Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
 
 
-本教程介绍如何使用 Azure Site Recovery 设置并启用从 VMware VM 到 Azure 的复制。 教程旨在演示如何使用基本设置来部署 Site Recovery。 这些教程使用最简单的路径，且未显示所有选项。 本教程介绍如何执行下列操作：
+本教程演示如何使用基本设置部署 Site Recovery，而无需自定义。 有关更复杂的选项，请查看“操作方法”下的文章。
+
+    - 设置[复制源](vmware-azure-set-up-source.md)和[配置服务器](vmware-azure-deploy-configuration-server.md)。
+    - 设置[复制目标](vmware-azure-set-up-target.md)。
+    - 配置[复制策略](vmware-azure-set-up-replication.md)并[启用复制](vmware-azure-enable-replication.md)。
+
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 输入复制源和目标。
@@ -37,10 +43,6 @@ ms.locfileid: "57848824"
 - 若要更详细地了解如何设置 VMware VM 的灾难恢复，请查看并使用以下资源：
     - [了解有关 VMware 灾难恢复的常见问题](vmware-azure-common-questions.md)。
     - [了解](vmware-physical-azure-support-matrix.md) VMware 的支持功能和要求。
--  阅读**操作方法指南**，详细了解 VMware 的所有部署选项：
-    - 设置[复制源](vmware-azure-set-up-source.md)和[配置服务器](vmware-azure-deploy-configuration-server.md)。
-    - 设置[复制目标](vmware-azure-set-up-target.md)。
-    - 配置[复制策略](vmware-azure-set-up-replication.md)并[启用复制](vmware-azure-enable-replication.md)。
 - 在本教程中，我们介绍如何复制单个 VM。 如果部署多个 VM，则应使用[部署规划器工具](https://aka.ms/asr-deployment-planner)来计划部署。 [详细了解](site-recovery-deployment-planner.md)此工具。
 
 查看以下提示：

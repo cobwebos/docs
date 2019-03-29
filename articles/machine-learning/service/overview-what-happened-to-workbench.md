@@ -11,12 +11,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 01/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5ff065816e287e0d4e37cdea9a7770c9ff806520
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 22615d07e69d707c90e3ff9bda83bfa6f0852996
+ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890740"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58360278"
 ---
 # <a name="what-happened-to-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench 有何遭遇？
 
@@ -40,7 +40,7 @@ ms.locfileid: "57890740"
 + 更全面的全新 Python <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>。
 + 已扩充的全新 [Azure CLI 扩展](reference-azure-machine-learning-cli.md)，用于机器学习。
 
-重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)即可。 可以在 [Azure 门户](quickstart-get-started.md)中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
+重新设计的[架构](concept-azure-machine-learning-architecture.md)，易于使用。 无需使用多个 Azure 资源和帐户，只需使用 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md#workspace)即可。 可以在 [Azure 门户]((setup-create-workspace.md#portal) 中快速创建工作区。 通过使用工作区，多个用户可以存储定型和部署计算目标、模型试验、Docker 映像、已部署模型等。
 
 虽然当前版本中有新的已改进的 CLI 和 SDK 客户端，但桌面工作台应用程序本身已经停用。 可以在 [Azure 门户的工作区仪表板](how-to-track-experiments.md#view-the-experiment-in-the-azure-portal)中管理试验。 借助仪表板，可以获取试验历史记录、管理附加到工作区的计算目标、管理模型和 Docker 映像，甚至还能部署 Web 服务。
 
@@ -50,7 +50,7 @@ ms.locfileid: "57890740"
 
 于 2019 年 1 月 9 日，对 Machine Learning Workbench、Azure 机器学习试验和模型管理帐户及其相关 SDK 和 CLI 的支持已经结束。 
 
-通过此 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](quickstart-get-started.md)即可使用所有最新功能。
+通过此 <a href="https://aka.ms/aml-sdk" target="_blank">SDK</a>、[CLI](reference-azure-machine-learning-cli.md) 和[门户](setup-create-workspace.md#portal)即可使用所有最新功能。
 
 ## <a name="what-about-run-histories"></a>运行历史记录又如何？
 
@@ -81,7 +81,7 @@ ms.locfileid: "57890740"
 run = exp.submit(source_directory = script_folder, script = 'train.py', run_config = run_config_system_managed)
 ```
 
-了解如何开始[在 Python 中使用主 SDK](quickstart-create-workspace-with-python.md) 或使用 [Azure 门户](quickstart-get-started.md)。
+[创建工作区](setup-create-workspace.md#portal)以开始使用。
 
 ## <a name="what-about-my-registered-models-and-images"></a>我注册的模型和映像又如何？
 
@@ -121,6 +121,6 @@ run = exp.submit(source_directory = script_folder, script = 'train.py', run_conf
 
 有关该服务的概述，请阅读[什么是 Azure 机器学习服务？](overview-what-is-azure-ml.md)
 
-有关说明如何创建工作区、创建项目、运行脚本以及使用最新版本的 Azure 机器学习服务探索脚本的运行历史记录的快速入门，请尝试 [Azure 机器学习服务入门](quickstart-get-started.md)。
+有关说明如何运行脚本以及使用最新版本的 Azure 机器学习服务探索脚本的运行历史记录的快速入门，请尝试 [Azure 机器学习服务入门](quickstart-run-cloud-notebook.md)。
 
 有关此工作流的更深入体验，请参阅[完整教程](tutorial-train-models-with-aml.md)，其中包含使用 Azure 机器学习服务训练和部署模型的详细步骤。 

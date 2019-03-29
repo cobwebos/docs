@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: tutorial
 ms.date: 01/10/2019
 ms.author: pafarley
-ms.openlocfilehash: 5c4d2320ffd54054eb8a5bb26ef14c8e99dabb33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 900ad8b7f676eb67f9ac0fc808600779f832a102
+ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855948"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58539490"
 ---
 # <a name="tutorial-moderate-e-commerce-product-images-with-azure-content-moderator"></a>教程：使用 Azure 内容审查器审查电子商务产品图像
 
@@ -61,7 +61,7 @@ GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftConten
 
 ## <a name="define-api-keys-and-endpoints"></a>定义 API 密钥和终结点
 
-如前所述，本教程将使用三个认知服务；因此，需要三个对应的密钥和 API 终结点。 查看 **Program** 类中的以下字段： 
+如前所述，本教程将使用三个认知服务；因此，需要三个对应的密钥和 API 终结点。 查看 **Program** 类中的以下字段：
 
 [!code-csharp[define API keys and endpoint URIs](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=21-29)]
 
@@ -79,19 +79,19 @@ GitHub 上的[电子商务目录审查示例](https://github.com/MicrosoftConten
 
 [!code-csharp[define EvaluateAdultRacy method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=73-113)]
 
-## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags 方法
+## <a name="evaluatecomputervisiontags-method"></a>EvaluateComputerVisionTags 方法
 
-下一个方法采用图像 URL 和计算机视觉订阅信息，并分析图像中是否存在名人。 如果找到一个或多个名人，则将 **ReviewTags** 数组中的相应值设置为 **True**。 
+下一个方法采用图像 URL 和计算机视觉订阅信息，并分析图像中是否存在名人。 如果找到一个或多个名人，则将 **ReviewTags** 数组中的相应值设置为 **True**。
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=115-146)]
 
 ## <a name="evaluatecustomvisiontags-method"></a>EvaluateCustomVisionTags 方法
 
-接下来查看 **EvaluateCustomVisionTags** 方法。该方法分类实际产品 &mdash; 在本例中为国旗、玩具和笔。 遵照[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)指南中的说明生成自己的自定义图像分类器，以检测图像中是否存在国旗、玩具和笔（或选作自定义标记的任何内容）。
+接下来查看 **EvaluateCustomVisionTags** 方法。该方法分类实际产品 &mdash; 在本例中为国旗、玩具和笔。 遵照[如何生成分类器](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier)指南中的说明生成自己的自定义图像分类器，以检测图像中是否存在国旗、玩具和笔（或选作自定义标记的任何内容）。 可以使用 [GitHub 存储库](https://github.com/MicrosoftContentModerator/samples-eCommerceCatalogModeration)的 **sample-images** 文件夹中的图像快速训练此示例中的某些类别。
 
 ![包含笔、玩具和国旗训练图像的自定义视觉网页](images/tutorial-ecommerce-custom-vision.PNG)
 
-训练分类器后，获取预测密钥和预测终结点 URL（检索这些信息时如需帮助，请参阅[获取 URL 和预测密钥](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)），并将这些值分别分配到 `CustomVisionKey` 和 `CustomVisionUri` 字段。 该方法使用这些值来查询分类器。 如果分类器在图像中找到一个或多个自定义标记，此方法会将 **ReviewTags** 数组中的相应值设置为 **True**。 
+训练分类器后，获取预测密钥和预测终结点 URL（检索这些信息时如需帮助，请参阅[获取 URL 和预测密钥](https://docs.microsoft.com/azure/cognitive-services/custom-vision-service/use-prediction-api#get-the-url-and-prediction-key)），并将这些值分别分配到 `CustomVisionKey` 和 `CustomVisionUri` 字段。 该方法使用这些值来查询分类器。 如果分类器在图像中找到一个或多个自定义标记，此方法会将 **ReviewTags** 数组中的相应值设置为 **True**。
 
 [!code-csharp[define EvaluateCustomVisionTags method](~/samples-eCommerceCatalogModeration/Fusion/Program.cs?range=148-171)]
 

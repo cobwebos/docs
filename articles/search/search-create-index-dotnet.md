@@ -1,6 +1,6 @@
 ---
-title: 使用 .NET API 在代码中创建索引 - Azure 搜索
-description: 了解如何使用 Azure 搜索 .NET SDK 和 C# 示例代码创建全文可搜索索引。
+title: 使用 C# 创建索引 - Azure 搜索
+description: 了解如何通过 Azure 搜索 .NET SDK 使用 C# 创建全文可搜索索引。
 author: heidisteen
 manager: cgronlun
 ms.author: heidist
@@ -9,13 +9,13 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/20/2019
-ms.openlocfilehash: dbaac1478fdbf1b42fc6b597c3a5c541e007e413
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.date: 03/22/2019
+ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
+ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287139"
+ms.lasthandoff: 03/22/2019
+ms.locfileid: "58370578"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>快速入门：1 - 使用 C# 创建 Azure 搜索索引
 
@@ -23,7 +23,7 @@ ms.locfileid: "58287139"
 
 > [!div class="checklist"]
 > * 创建 [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) 对象以连接到搜索服务。
-> * 创建 [`Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 对象作为 `Indexes.Create` 上的参数传递。
+> * 创建 [`Index`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index?view=azure-dotnet) 对象以将其作为参数传递给 `Indexes.Create`。
 > * 调用 `SearchServiceClient` 上的 `Indexes.Create` 方法，将 `Index` 发送给服务。
 
 ## <a name="prerequisites"></a>先决条件
@@ -32,7 +32,7 @@ ms.locfileid: "58287139"
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
-搜索服务的 URL 终结点和管理员 API 密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+获取搜索服务的 URL 终结点和管理员 API 密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
   1. 在 Azure 门户中的搜索服务“概述”页上，获取该 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
@@ -200,7 +200,9 @@ serviceClient.Indexes.Delete("hotels");
 > 
 
 ## <a name="next-steps"></a>后续步骤
-在本快速入门中，根据定义字段数据类型和行为的架构创建了空的 Azure 搜索索引。 本系列的下一个快速入门将介绍如何使用可搜索的内容加载索引。
+在本快速入门中，根据定义字段数据类型和行为的架构创建了空的 Azure 搜索索引。 该索引是一个“基本功能”索引，由一个名称和一个属性字段集合组成。 更实际的索引将包括其他元素，例如[计分概要文件](index-add-scoring-profiles.md)、[建议器](index-add-suggesters.md)（用于提前键入支持）、[同义词](search-synonyms.md)，可能还有[自定义分析器](index-add-custom-analyzers.md)。 我们建议你在了解基本工作流之后重新访问这些功能。
+
+本系列的下一个快速入门将介绍如何使用可搜索的内容加载索引。
 
 > [!div class="nextstepaction"]
 > [使用 C# 将数据加载到 Azure 搜索索引](search-import-data-dotnet.md)

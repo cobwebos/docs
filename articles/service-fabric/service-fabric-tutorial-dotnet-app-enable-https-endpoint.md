@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 01/17/2019
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 5308fc024a53fdbbef12b409622cc35adaea1e2e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7ba28014dfb2be4550407c20b4885feda3921f98
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857702"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58316885"
 ---
 # <a name="tutorial-add-an-https-endpoint-to-an-aspnet-core-web-api-front-end-service-using-kestrel"></a>教程：使用 Kestrel 向 ASP.NET Core Web API 前端服务添加 HTTPS 终结点
 
@@ -341,9 +341,9 @@ if ($cert -eq $null)
 
 ## <a name="run-the-application-locally"></a>在本地运行应用程序
 
-在“解决方案资源管理器”中，选择 **Voting** 应用程序并将“应用程序 URL”属性设置为 “ <https://localhost:443> ” 。
+在“解决方案资源管理器”中，选择 **Voting** 应用程序并将“应用程序 URL”属性设置为“https:\//localhost:443”。
 
-保存所有文件并按 F5，以便在本地运行应用程序。  在应用程序部署完以后，Web 浏览器会打开到 [https://localhost:443](https://localhost:443)。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
+保存所有文件并按 F5，以便在本地运行应用程序。  在应用程序部署完以后，Web 浏览器会打开到 https:\//localhost:443。 如果使用自签名证书，则会看到一个警告，指出电脑不信任此网站的安全性。  转到该网页。
 
 ![Voting 应用程序][image2]
 

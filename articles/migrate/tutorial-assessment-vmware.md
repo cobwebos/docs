@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: dc2fb3faddc8af30edd66b926259c05580d9872a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cdd852e56cf966371cda62f89cee62956551f5c0
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104516"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58313101"
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>发现和评估要迁移到 Azure 的本地 VMware VM
 
@@ -185,7 +185,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
    - 如果 VM 通过代理访问 Internet，请单击“代理设置”，并指定代理地址和侦听端口。 如果代理需要身份验证，请指定凭据。 [详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector#collector-prerequisites) Internet 连接要求和收集器访问的 [URL 列表](https://docs.microsoft.com/azure/migrate/concepts-collector)。
 
      > [!NOTE]
-     > 需以 <http://ProxyIPAddress> 或 <http://ProxyFQDN> 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。
+     > 需以 http:\//ProxyIPAddress 或 http:\//ProxyFQDN 的形式输入代理地址。 仅支持 HTTP 代理。 如果有拦截代理，则如果没有导入代理证书，Internet 连接一开始可能会失败；[详细了解](https://docs.microsoft.com/azure/migrate/concepts-collector)如何在收集器 VM 上将代理证书作为受信任的证书导入，以便修复此问题。
 
    - 收集器将检查 collectorservice 是否正在运行。 该服务默认安装在收集器 VM 上。
    - 下载并安装 VMware PowerCLI。
