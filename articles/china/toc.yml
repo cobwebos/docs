@@ -1,0 +1,49 @@
+items:
+- name: Azure 中国文档
+  href: index.md
+- name: 概述
+  items:
+  - name: Azure 中国世纪互联是什么？
+    href: china-welcome.md
+  - name: 中国与全球 Azure 中的 Azure 运营
+    href: china-overview-operations.md
+  - name: 信任云原则
+    href: china-overview-trust-cloud.md
+  - name: 中国云政策和法规
+    href: china-overview-policies.md
+  - name: 中国的网站服务托管
+    href: china-overview-service-hosting.md
+  - name: 常见问题解答
+    href: china-overview-faq.md
+- name: 入门
+  items:
+  - name: 规划 Azure 部署
+    href: china-get-started-plan.md
+  - name: 开发人员指南
+    href: china-get-started-developer-guide.md
+  - name: Azure 服务可用性
+    href: https://azure.microsoft.com/en-us/global-infrastructure/services/?regions=china-non-regional,china-east,china-east-2,china-north,china-north-2&products=all
+  - name: Azure 内容分发网络
+    href: china-get-started-service-cdn.md
+  - name: 管理和连接到订阅
+    href: china-get-started-service-manage-and-connect.md
+- name: 如何
+  items:
+  - name: 重构应用程序并将其迁移到 Azure
+    href: china-how-to-refactor.md
+  - name: 将应用程序重新托管和迁移到 Azure
+    href: china-how-to-rehost.md
+  - name: 管理性能和连接
+    href: china-how-to-manage-performance.md
+- name: 资源
+  items:
+  - name: 支持
+    href: china-resources-support.md
+  - name: 合作伙伴
+    href: china-resources-partners.md
+ms.openlocfilehash: aa7d9cdafb8ac52de0be907b764867c206ccafd9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58340597"
