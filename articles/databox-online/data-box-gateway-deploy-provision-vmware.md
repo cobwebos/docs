@@ -6,16 +6,16 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 01/28/2019
+ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 604f135cc3dffdb9ac6533826eff6926ad5467df
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 85992224edd10c0a0f233de9f6274cc77e109b22
+ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117742"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58517771"
 ---
-# <a name="tutorial-provision-azure-data-box-gateway-in-vmware-preview"></a>教程：在 VMware（预览版）中预配 Azure Data Box Gateway
+# <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>教程：在 VMware 中预配 Azure Data Box Gateway
 
 ## <a name="overview"></a>概述
 
@@ -32,8 +32,6 @@ ms.locfileid: "56117742"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-> [!IMPORTANT]
-> - Data Box Gateway 为预览版。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -75,7 +73,7 @@ ms.locfileid: "56117742"
 
 * 有权访问运行 VMware ESXi Server 6.0、6.5 或 6.7 的主机系统。 主机系统能够将以下资源专用于虚拟设备：
  
-  * 至少 4 个核心。
+  * 至少 4 个虚拟处理器。
   * 至少 8 GB 的 RAM。 
   * 一个连接到网络的网络接口，可以将流量路由到 Internet。
   * 一个 250 GB 的 OS 磁盘。
@@ -91,7 +89,7 @@ ms.locfileid: "56117742"
 
 2. 在浏览器中通过以下 URL 登录到 ESXi 服务器：`https://<IP address of the ESXi server>`。 需要有管理员权限才能创建虚拟机。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image1.png)
+   ![登录页](./media/data-box-gateway-deploy-provision-vmware/image1.png)
   
 3. 将 VMDK 上传到 ESXi 服务器。 在“导航器”窗格中，选择“存储”。
 
@@ -104,67 +102,67 @@ ms.locfileid: "56117742"
    
 5. 右键单击，并选择“浏览数据存储”。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image3.png)
+   ![浏览数据存储](./media/data-box-gateway-deploy-provision-vmware/image3.png)
 
 6. 此时会显示“数据存储浏览器”窗口。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image4.png)
+   ![数据存储浏览器](./media/data-box-gateway-deploy-provision-vmware/image4.png)
 
 7. 在工具栏中，单击“创建目录”图标创建新的文件夹。 指定文件夹名称，将其记录下来。 稍后创建虚拟机时需用到此文件夹名称（建议的最佳做法）。 单击“创建目录”。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image5.png)
+   ![创建目录](./media/data-box-gateway-deploy-provision-vmware/image5.png)
 
 8. 新文件夹会显示在“数据存储浏览器”的左窗格中。 单击“上传”图标，然后选择“上传文件”。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image6.png)
+    ![上传文件](./media/data-box-gateway-deploy-provision-vmware/image6.png)
 
 9. 浏览并指向已下载的 VMDK 文件。 有两个文件。 选择要上传的文件。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image7.png)
+    ![选择要上传的文件](./media/data-box-gateway-deploy-provision-vmware/image7.png)
 
 10. 单击“打开”。 此时会开始将 VMDK 文件上传到指定的数据存储。 上传文件可能需要数分钟的时间。
 11. 上传完成后，可以在数据存储的已创建文件夹中看到该文件。 现在将第二个 VMDK 文件上传到同一数据存储。 两个文件在上传后会合并成单个文件。 然后会在目录中看到一个文件。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image8.png)
+    ![两个 VMDK 文件合并为单个文件](./media/data-box-gateway-deploy-provision-vmware/image8.png)
 
 12. 返回到 vSphere 客户端窗口。 在“导航器”窗格中，选择“虚拟机”。 在右窗格上，单击“创建/注册 VM”。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image9.png)
+    ![创建或注册 VM](./media/data-box-gateway-deploy-provision-vmware/image9.png)
 
 13. 此时会显示“新建虚拟机”。 在“选择创建类型”下选择“新建虚拟机”，然后单击“下一步”。
-    ![](./media/data-box-gateway-deploy-provision-vmware/image10.png)
+    ![“选择创建类型”页](./media/data-box-gateway-deploy-provision-vmware/image10.png)
 
 14. 在“选择名称以及 OS 名称和位置”页上，指定虚拟机的“名称”。 该名称应与此前在步骤 7 中指定的文件夹名称配置（建议的最佳做法）。 选择“Windows”作为“来宾 OS 系列”，选择“Microsoft Windows Server 2016 (64 位)”作为“来宾 OS 版本”。 单击“下一步”。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image11.png)
+    ![“选择名称以及 OS 名称和位置”页](./media/data-box-gateway-deploy-provision-vmware/image11.png)
 
 15. 在“选择存储”页上，选择要用于预配 VM 的数据存储。 单击“下一步”。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image12.png)
-16. 在“自定义设置”页上，将“CPU”设置为 4，将“内存”设置为 8192 MB（或更高），将“硬盘 1”设置为 2 TB（或更高）。 选择要添加的 **SCSI 硬盘**。 本例中为“LSI 逻辑 SAS”。 **静态 IDE 磁盘不受支持。** “硬盘 1”为虚拟数据磁盘。 请注意，不能压缩已预配的磁盘。
+    ![“选择存储”页](./media/data-box-gateway-deploy-provision-vmware/image12.png)
+16. 在“自定义设置”页上，将“CPU”设置为 4，将“内存”设置为 8192 MB（或更高），将“硬盘 1”设置为 2 TB（或更高）。 选择要添加的 **SCSI 硬盘**。 本例中为“LSI 逻辑 SAS”。 **静态 IDE 磁盘不受支持。** “硬盘 1”为虚拟数据磁盘。 请注意，不能压缩已预配的磁盘。 尝试收缩磁盘会导致设备上的所有本地数据丢失。 
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image13.png)
+    ![“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image13.png)
 
     在同一页上单击“添加硬盘”，然后选择“现有硬盘”。 在数据存储中选择 VMDK 文件。 这将添加 OS 磁盘。 
 
-     ![](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     !“自定义设置”页[](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     向下滚动，直到看到“新建硬盘”，然后将其展开以查看设置。 将“虚拟设备节点”设置为“IDE 控制器 0”。
 
-     ![](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. （可选）只有在运行 VMware ESXi Server 6.7 的情况下，才执行此步骤。 在“自定义设置”页中，单击“VM 选项”。 转到“启动选项”>“固件”，将其更改为“BIOS”。 默认情况下，该值设置为 EFI。 单击“下一步”。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
+    ![如果运行 VMware ESXi Server 6.7，则为“自定义设置”页](./media/data-box-gateway-deploy-provision-vmware/image15a.png)
 
 18. 在“准备完成”页上，查看与新虚拟机关联的所有设置。 验证 CPU 是否为 4，内存是否为 8192 MB，网络接口是否为 1，以及硬盘 2 是否有 IDE 控制器 0。 单击“完成”。
    
-    ![](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-    ![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+    ![“准备完成”页](./media/data-box-gateway-deploy-provision-vmware/image16.png)
+    ![“准备完成”页](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 虚拟机现已预配好。 此时会看到指示此内容的通知，而新虚拟机则会添加到 VM 列表中。
 
-![](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+![添加到 VM 列表中的新虚拟机](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 下一步是启用该 VM 并获取 IP 地址。
 
@@ -178,23 +176,23 @@ ms.locfileid: "56117742"
 #### <a name="to-start-the-virtual-device"></a>启动虚拟设备
 1. 启动虚拟设备。 在右窗格的 VM 列表中选择设备，然后右键单击以显示上下文菜单。 选择“电源”，并选择“启动”。 此时会启动虚拟机。 可以在 Web 客户端的底部窗格中查看状态。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image19.png)
+    ![虚拟设备上的电源](./media/data-box-gateway-deploy-provision-vmware/image19.png)
 
 2. 请再一次选择 VM。 右键单击并选择“控制台”，然后选择“在新窗口中打开”。
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image20.png)
+    ![打开虚拟设备控制台](./media/data-box-gateway-deploy-provision-vmware/image20.png)
 
 3. 此时虚拟机控制台会在新窗口中打开。 
 
-    ![](./media/data-box-gateway-deploy-provision-vmware/image21.png)
+    ![虚拟设备控制台](./media/data-box-gateway-deploy-provision-vmware/image21.png)
 
 4. 设备运行以后，请在控制台窗口的中上部分指向并单击选项卡上的光标。 选择“来宾 OS”>“发送密钥”>“Ctrl+Alt+Del”。 这样会解锁 VM。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image22.png)
+   ![解锁虚拟设备](./media/data-box-gateway-deploy-provision-vmware/image22.png)
 
-5. 提供用于登录计算机的密码。 默认密码为 Password1。
+5. 提供用于登录计算机的密码。 默认密码为 *Password1*。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image23.png)
+   ![输入虚拟设备密码](./media/data-box-gateway-deploy-provision-vmware/image23.png)
 
 6. 步骤 5-7 仅适用于在非 DHCP 环境中启动的情况。 如果是在 DHCP 环境中，则请跳过这些步骤，转到步骤 8。 如果已在非 DHCP 环境中启动设备，则会看到指示此内容的消息：**使用 Set-HcsIPAddress cmdlet 可配置网络**。 
    
@@ -206,14 +204,14 @@ ms.locfileid: "56117742"
 
 9. 完成初始设置并启动设备以后，会显示设备横幅文本。 记下显示在横幅文本中的 IP 地址和 URL，以便管理设备。 将使用该 IP 地址连接到虚拟设备的 Web UI 并完成本地设置和激活。
 
-   ![](./media/data-box-gateway-deploy-provision-vmware/image24.png)
+   ![虚拟设备的横幅文本和连接 URL](./media/data-box-gateway-deploy-provision-vmware/image24.png)
 
 如果设备不符合最低配置要求，则会在横幅文本中显示错误（如下所示）。 需修改设备配置，使之有足够的资源来满足最低要求。 然后即可重新启动设备并与之进行连接。 请参阅[检查主机系统是否满足最小虚拟设备要求](#check-the-host-system)中的最低配置要求。
 
-<!---If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
+若在使用本地 Web UI 进行初始配置期间遇到其他错误，请参阅以下工作流：
 
-* Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
-* [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
+- [运行诊断测试，排除 Web UI 设置故障](data-box-gateway-troubleshoot.md#run-diagnostics)。
+- [生成日志包并查看日志文件](data-box-gateway-troubleshoot.md#collect-support-package)。
 
 ## <a name="next-steps"></a>后续步骤
 

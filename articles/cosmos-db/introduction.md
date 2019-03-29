@@ -54,7 +54,7 @@ Cosmos DB 采用透明的水平分区和多主数据库复制设计，在全球�
 
 对于全局分布的应用来说，让数据库架构和索引与应用程序架构保持同步尤其不便。 借助 Cosmos DB，则无需处理架构或索引管理。 数据库引擎完全与架构无关。  由于不需要架构和索引管理，因此迁移架构时也不必担心应用程序故障时间。 Cosmos DB [自动为所有数据编制索引](index-policy.md)，并可快速提供查询服务。
 
-### <a name="battle-tested-database-service"></a>不断创新的测试数据库服务
+### <a name="battle-tested-database-service"></a>久经考验的数据库服务
 
 Cosmos DB 是 Azure 中的一项基本服务。 近十年来，Microsoft 的许多产品已将 Cosmos DB 用于全球范围的任务关键型应用程序，包括 Skype、Xbox、Office 365、Azure 等。 如今，Cosmos DB 是 Azure 上发展最快的服务之一，许多需要弹性缩放、统包全球分发、多主数据库复制的外部客户和任务关键型应用程序都在使用这项服务，以实现读写操作的低延迟和高可用性。
 
@@ -72,7 +72,7 @@ Cosmos DB 已通过[各种符合性标准](compliance.md)认证。 此外，Cosm
 
 ### <a name="industry-leading-comprehensive-slas"></a>业界领先的复合型 SLA
 
-Cosmos DB 是第一个也是唯一一个提供[业界领先复合型 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 的服务，实现了 99.999% 高可用性、第 99 个百分位的延迟、可靠吞吐量和一致性。
+Cosmos DB 是第一个也是唯一一个提供[业界领先复合型 SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) 的服务，实现了 99.999% 高可用性、第 99 个百分位的读写延迟、可靠吞吐量和一致性。
 
 ### <a name="globally-distributed-operational-analytics-with-spark"></a>使用 Spark 的全球分布式运营分析
 

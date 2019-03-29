@@ -68,8 +68,8 @@ Azure 存储支持三种类型的 Blob：
 - Azure 存储数据移动库是一个 .NET 库，用于在 Azure 存储服务之间移动数据。 AzCopy 实用程序是使用数据移动库生成的。 有关详细信息，请参阅数据移动库的[参考文档](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement)。 
 - Azure 数据工厂支持使用 Azure 资源身份验证的帐户密钥、共享访问签名、服务主体或托管标识向/从 Blob 存储复制数据。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure Blob 存储复制数据](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 
 - Blobfuse 是 Azure Blob 存储的虚拟文件系统驱动程序。 可以使用 Blobfuse 通过 Linux 文件系统访问存储帐户中的现有块 Blob 数据。 有关详细信息，请参阅[如何使用 Blobfuse 将 Blob 存储装载为文件系统](storage-how-to-mount-container-linux.md)。
-- Azure Data Box Disk 是一项服务，用于大型数据集或网络限制导致通过网络上传数据不可行时，将本地数据传输到 Blob 存储。 可以使用 [Azure Data Box Disk](../../databox/data-box-disk-overview.md) 从 Microsoft 请求固态磁盘 (SSD)。 然后，你可以将数据复制到这些磁盘中，将磁盘寄回 Microsoft，我们就会将数据上传到 Blob 存储中。
-- Azure 导入/导出服务提供了一种方法，可将大量数据从存储帐户导出到提供的硬盘，然后 Microsoft 会将数据返回给你。 有关详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../common/storage-import-export-service.md)。
+- Azure Data Box Disk 是一项服务，如果大型数据集或网络限制导致通过网络上传数据不可行，此服务可将本地数据传输到 Blob 存储。 可以使用 [Azure Data Box Disk](../../databox/data-box-disk-overview.md) 从 Microsoft 请求固态磁盘 (SSD)。 然后，你可以将数据复制到这些磁盘中，将磁盘寄回 Microsoft，我们就会将数据上传到 Blob 存储中。
+- Azure 导入/导出服务提供了一种方法，可将大量数据从存储帐户导出到你提供的硬盘，然后 Microsoft 会将数据寄回给你。 有关详细信息，请参阅[使用 Microsoft Azure 导入/导出服务将数据传输到 Blob 存储中](../common/storage-import-export-service.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
