@@ -8,17 +8,17 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: sogup
-ms.openlocfilehash: 21aa01ec8382341de34cca743b9e088598872659
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1f96c47e993e9b3d123972aba8eefc54b1d5cdfa
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578894"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652665"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
 > [!NOTE]
-> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。
+> 根据用户的反馈，我们正在将“VM 备份堆栈 V2”重命名为“即时还原”，以减少与 Azure Stack 功能的混淆。<br/><br/> 所有 Azure 备份用户现在已升级到**即时还原**。
 
 即时还原的新模型提供以下功能增强：
 
@@ -60,15 +60,25 @@ ms.locfileid: "58578894"
 >[!NOTE]
 > 快照保留期固定为 5 天的每周的策略。
 
-## <a name="configure-snapshot-retention-using-the-azure-portal"></a>配置使用 Azure 门户的快照保留期
+## <a name="configure-snapshot-retention"></a>配置快照保留期
 
-**所有 Azure 备份用户现在已升级到即时还原**。
+### <a name="using-azure-portal"></a>使用 Azure 门户
 
 在 Azure 门户中，您可以看到在中添加字段**VM 备份策略**边栏选项卡下的**即时还原**部分。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 
-若要配置快照保留使用 Powershell，请参阅[本文档](backup-azure-vms-automation.md#configuring-instant-restore-snapshot-retention)。
+### <a name="using-powershell"></a>使用 PowerShell
+
+>[!NOTE]
+> 从 Az PowerShell 1.6.0 版本及更高版本，可以更新策略使用 PowerShell 中的即时还原快照保留期
+
+```powershell
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+$bkpPol.SnapshotRetentionInDays=5
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+```
+每个策略的默认快照保留期设置为 2 天。 用户可以将值更改为最小为 1，最大为 5 天。 对于每周的策略，快照保留期固定为 5 天。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 

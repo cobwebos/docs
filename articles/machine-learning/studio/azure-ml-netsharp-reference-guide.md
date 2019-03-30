@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: d667dadeb2e7c9d0005ab8d1a565017973038aaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 891b2988d04a3cf2f7c6676a837bc1ee199f4d16
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57905148"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651484"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
@@ -63,9 +63,9 @@ Net# 支持各种类型的连接捆绑，可自定义映射到隐藏层和映射
 + 定义特殊的连接结构，如卷积和权重共享捆绑。
 + 指定不同的激活函数。
 
-有关规范语言语法的详细信息，请参阅 [结构规范](#Structure-specifications)。
+有关规范语言语法的详细信息，请参阅 [结构规范](#structure-specifications)。
 
-有关为某些常见机器学习任务定义神经网络的示例（从单一到复杂），请参阅[示例](#Examples-of-Net#-usage)。
+有关为某些常见机器学习任务定义神经网络的示例（从单一到复杂），请参阅[示例](#examples-of-net-usage)。
 
 ## <a name="general-requirements"></a>一般要求
 

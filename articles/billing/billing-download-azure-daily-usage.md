@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 20404cea2aca984ef35472fa94d37c04eb8080e4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 520d3f6a45b44ba2023dee34642f796689f48221
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57872631"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648840"
 ---
 # <a name="view-and-download-your-azure-usage-and-charges"></a>查看和下载 Azure 使用情况和费用
 
@@ -28,7 +28,7 @@ ms.locfileid: "57872631"
 
 只有特定角色有权获得 Azure 使用情况信息，如帐户管理员或企业管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。
 
-如果有[Microsoft 客户协议](#Check-your-access-to-a-Microsoft-Customer-Agreement)，您必须是账单资料所有者、 参与者、 读取器，或发票管理器来查看你的 Azure 使用情况和费用。 若要了解 Microsoft 客户协议计费角色的详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
+如果有[Microsoft 客户协议](#check-your-access-to-a-microsoft-customer-agreement)，您必须是账单资料所有者、 参与者、 读取器，或发票管理器来查看你的 Azure 使用情况和费用。 若要了解 Microsoft 客户协议计费角色的详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 ## <a name="download-usage-from-the-account-center-csv"></a>从帐户中心下载使用情况 (.csv)
 

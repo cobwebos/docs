@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 9057245c108e4a1b9af2549bc87f98258da50535
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57240161"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648813"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>检测和排查 Azure IoT 中心的连接断开问题
 
@@ -32,7 +32,7 @@ ms.locfileid: "57240161"
 1. 选择“诊断设置”。
 1. 选择“启用诊断”。
 1. 启用要收集的“连接”日志。
-1. 为便于分析，应启用“发送到 Log Analytics”（[参阅定价](https://azure.microsoft.com/pricing/details/log-analytics/)）。 请参阅[解决连接错误](#Resolve-connectivity-errors)下的示例。
+1. 为便于分析，应启用“发送到 Log Analytics”（[参阅定价](https://azure.microsoft.com/pricing/details/log-analytics/)）。 请参阅[解决连接错误](#resolve-connectivity-errors)下的示例。
 
    ![建议的设置][2]
 
@@ -40,21 +40,20 @@ ms.locfileid: "57240161"
 
 ### <a name="set-up-alerts-for-the-connected-devices-count-metric"></a>针对“联网设备”计数指标设置警报
 
-若要在设备断开连接时获取警报，请针对“联网设备”指标配置警报。
+若要获取警报，当设备断开连接时，请在配置警报**连接的设备 （预览版）** 指标。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 1. 浏览到 IoT 中心。
-1. 选择“警报(经典)”。
-1. 选择“添加指标警报(经典)”。
-1. 填写表单，然后选择“确定”。
-
-   ![建议的指标警报][3]
+1. 选择“**警报**”。
+1. 选择**新的警报规则**。
+1. 选择**添加条件**，然后选择"连接的设备 （预览）"。
+1. 完成设置所需阈值和警报选项按以下提示操作。
 
 有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/platform/alerts-overview.md)。
 
 ## <a name="resolve-connectivity-errors"></a>解决连接错误
 
-为联网设备启用诊断日志和警报后，如果出错，则会收到警报。 本部分介绍如何在收到警报时解决常见问题。 以下步骤假设已设置为将诊断日志的 Azure Monitor 日志。
+为联网设备启用诊断日志和警报后，如果出错，则会收到警报。 本部分介绍如何在收到警报时解决常见问题。 以下步骤假设已经在 Azure Monitor 日志中设置了诊断日志。
 
 1. 在 Azure 门户中转到 Log Analytics 的工作区。
 1. 选择 **“日志搜索”**。

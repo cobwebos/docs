@@ -4,7 +4,7 @@ description: 升级运行 Service Fabric 群集的 Service Fabric 代码和/或�
 services: service-fabric
 documentationcenter: .net
 author: aljo-microsoft
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 15190ace-31ed-491f-a54b-b5ff61e718db
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/12/2018
 ms.author: aljo
-ms.openlocfilehash: 3e71199c19fffae0bb7dfa6a59245f1d43cd5065
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: HT
+ms.openlocfilehash: 234bff5049babf0c4b1d036b40201720b2736228
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51857792"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58661626"
 ---
 # <a name="upgrade-the-service-fabric-version-of-a-cluster"></a>升级群集的 Service Fabric 版本
 
@@ -34,7 +34,7 @@ ms.locfileid: "51857792"
 > 
 > 
 
-群集运行的版本到期之前的 14 天内，生成运行状况事件，将群集置于警告运行状况状态。 群集将继续处于警告状态，直至升级至支持的结构版本。
+群集运行的版本过期前 14 天，系统会生成运行状况事件，使群集进入警告运行状况状态。 群集将继续处于警告状态，直至升级至支持的结构版本。
 
 ## <a name="set-the-upgrade-mode-in-the-azure-portal"></a>在 Azure 门户中设置升级模式
 创建群集时可以将群集设置为自动或手动模式。
@@ -58,7 +58,7 @@ ms.locfileid: "51857792"
 ![ARMUpgradeMode][ARMUpgradeMode]
 
 ### <a name="upgrading-to-a-new-version-on-a-cluster-that-is-set-to-manual-mode-via-a-resource-manager-template"></a>在已通过 Resource Manager 模板设置为手动模式的群集上升级至新版本。
-当群集处于手动模式时，要升级到新版本，则可将“clusterCodeVersion”更改为支持的版本并部署此版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
+当群集处于手动模式时，要升级到新版本，请将“clusterCodeVersion”更改为支持的版本，然后部署该版本。 模板的部署启动了结构升级自动被启动。 在升级期间，将遵守群集运行状况策略（节点运行状况和所有在群集中运行的应用程序的运行状况的组合）。
 
 如果不符合现行的群集运行状况策略，则回滚升级。  
 
@@ -75,7 +75,7 @@ ms.locfileid: "51857792"
 ## <a name="list-all-available-versions-for-all-environments-for-a-given-subscription"></a>列出适用于指定订阅所有环境的所有可用版本
 运行以下命令，应会获得类似于此的输出。
 
-“supportExpiryUtc”告知指定版本的过期日期。 最新版本没有有效日期 - 它有一个值为“9999-12-31T23:59:59.9999999”，这表示尚未设置其到期日期。
+“supportExpiryUtc”告知给定的版本何时即将到期或已过期。 最新版本没有有效日期 - 它有一个值为“9999-12-31T23:59:59.9999999”，这表示尚未设置其到期日期。
 
 ```REST
 GET https://<endpoint>/subscriptions/{{subscriptionId}}/providers/Microsoft.ServiceFabric/locations/{{location}}/clusterVersions?api-version=2016-09-01

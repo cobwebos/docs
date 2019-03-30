@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: f1fa68b7ee51d66987800a1236466cf820afdc4c
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: a673f02af9d92b7135e47961f13e0899a1f0e02f
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751632"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632075"
 ---
-如果未设置的访问令牌，必须处理 TokenRequired 事件，或在委托协议实现 tokenRequired 方法。
+如果未设置的访问令牌，则必须处理`TokenRequired`事件或实现`tokenRequired`委托协议方法。
 
 可以通过将属性设置为事件自变量上以同步方式处理事件。

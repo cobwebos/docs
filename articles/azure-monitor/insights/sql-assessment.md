@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Log Analytics 优化 SQL Server 环境 | Microsoft 文档
-description: 借助 Azure Log Analytics，可以使用 SQL 运行状况检查解决方案定期评估环境的风险和运行状况。
+title: 优化 SQL Server 环境与 Azure Monitor |Microsoft Docs
+description: 与 Azure Monitor，可以使用 SQL 运行状况检查解决方案定期评估的风险和你环境的运行状况。
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -11,16 +11,16 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 01/19/2018
+ms.date: 03/28/2019
 ms.author: magoedte
-ms.openlocfilehash: e8c06f0a3a33133c7b1595db52204d15b03d6aab
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 94b23bc29c3c986e6a0cd74e0805b5d47ce35849
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372465"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629121"
 ---
-# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>使用 Log Analytics 中的 SQL Server 运行状况检查解决方案优化 SQL 环境
+# <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-azure-monitor"></a>优化 SQL 环境与 Azure Monitor 中的 SQL Server 运行状况检查解决方案
 
 ![SQL 运行状况检查符号](./media/sql-assessment/sql-assessment-symbol.png)
 
@@ -40,24 +40,24 @@ ms.locfileid: "58372465"
 
 ## <a name="prerequisites"></a>必备组件
 
-* SQL 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Log Analytics 服务使用。  
+* SQL 运行状况检查解决方案要求在每台装有 Microsoft Monitoring Agent (MMA) 的计算机上安装受支持版本的 .NET Framework 4。  MMA 代理由 System Center 2016 - Operations Manager 和 Operations Manager 2012 R2 以及 Azure Monitor 使用。  
 * 该解决方案支持 SQL Server 版本 2012、2014 和 2016。
 * 一个 Log Analytics 工作区，用于在 Azure 门户中通过 Azure 市场添加 SQL 运行状况检查解决方案。  只有 Azure 订阅中的管理员或参与者才能安装该解决方案。
 
   > [!NOTE]
-  > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Log Analytics 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。
+  > 添加该解决方案后，AdvisorAssessment.exe 文件会随代理添加到服务器中。 读取配置数据，然后将其发送到云中的 Azure Monitor 进行处理。 逻辑应用于接收的数据，云服务则记录数据。
   >
   >
 
-若要针对 SQL Server 服务器执行运行状况检查，这些域控制器需要一个代理，并使用以下受支持的方法之一与 Log Analytics 建立连接：
+若要对其执行运行状况检查 SQL Server 服务器，它们需要一个代理，并连接到 Azure Monitor，使用以下受支持的方法之一：
 
 1. 如果该服务器尚不受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视，请安装 [Microsoft Monitoring Agent (MMA)](../../azure-monitor/platform/agent-windows.md)。
-2. 如果该服务器受 System Center 2016 - Operations Manager 或 Operations Manager 2012 R2 的监视并且管理组未与 Log Analytics 服务集成，则它可与 Log Analytics 共用多个宿主，以收集数据并将其转发到服务，同时仍可由 Operations Manager 监视。  
+2. 如果使用 System Center 2016-Operations Manager 或 Operations Manager 2012 R2 监视和管理组未与 Azure Monitor 集成，服务器可以是使用 Log Analytics 以收集数据并转发到该服务，且仍是多宿主由 Operations Manager 监视。  
 3. 否则，如果 Operations Manager 管理组已与服务集成，则在工作区中启用解决方案后，需要遵循[添加代理管理的计算机](../../azure-monitor/platform/om-agents.md#connecting-operations-manager-to-azure-monitor)中的步骤，为数据收集服务添加域控制器。  
 
-SQL Server 上的代理向 Operations Manager 管理组报告、收集数据、将数据转发到为其分配的管理服务器，然后将数据从管理服务器直接发送到 Log Analytics 服务。  数据不会写入 Operations Manager 数据库。  
+报告到 Operations Manager 管理组，收集数据，SQL Server 上的代理将转发到其分配的管理服务器，以及然后发送直接从管理服务器到 Azure Monitor。  数据不会写入 Operations Manager 数据库。  
 
-如果 SQL Server 受 Operations Manager 的监视，则需要配置 Operations Manager 运行方式帐户。 有关详细信息，请参阅下面的 [Log Analytics 的 Operations Manager 运行方式帐户](#operations-manager-run-as-accounts-for-log-analytics)。
+如果 SQL Server 受 Operations Manager 的监视，则需要配置 Operations Manager 运行方式帐户。 请参阅[Operations Manager 运行方式帐户的 Azure Monitor](#operations-manager-run-as-accounts-for-log-analytics)下面有关详细信息。
 
 ## <a name="sql-health-check-data-collection-details"></a>SQL 运行状况检查数据集合详细信息
 SQL 运行状况检查使用已启用的代理收集以下来源的数据：
@@ -157,43 +157,37 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 每项建议都会提供有关该建议为何重要的指导。 考虑到 IT 服务的性质和组织的业务需求，应使用本指导来评估实施建议对你是否适用。
 
 ## <a name="use-health-check-focus-area-recommendations"></a>使用运行状况检查重点区域建议
-在 Log Analytics 中使用评估解决方案之前，必须先安装该解决方案。  安装该服务后，可以使用 Azure 门户中的解决方案页上的“SQL 运行状况检查”磁贴查看建议摘要。
+在 Azure Monitor 中使用评估解决方案之前，必须安装该解决方案。  安装后，可以通过使用 SQL 运行状况检查磁贴上查看建议摘要**概述**在 Azure 门户中的 Azure Monitor 页。
 
 查看概述的针对基础结构的合规性评估，并深入分析建议。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>查看针对重点区域的建议并采取纠正措施
-1. 通过 [https://portal.azure.com](https://portal.azure.com) 登录到 Azure 门户。
-2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”。
-3. 在 Log Analytics 订阅窗格中选择一个工作区，再单击“概述”磁贴。  
+1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
+2. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“监视器”。 开始键入时，会根据输入筛选该列表。 选择“监视器”。
+3. 在中**Insights**部分中的菜单中选择**详细**。  
 4. 在“概述”页上，单击“SQL 运行状况检查”磁贴。
 5. 在“运行状况检查”页上，查看某个重点区域边栏选项卡中的摘要信息，并单击其中一个查看针对该重点区域的建议。
 6. 在任何重点区域页上，均可以查看针对环境所做的优先级建议。 单击“**受影响的对象**”下的建议，以查看有关为何给出此建议的详细信息。<br><br> ![SQL 运行状况检查建议图像](./media/sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. 可以采取“建议的操作”中建议的纠正操作。 解决该项后，以后的评估将记录已执行的建议操作，并且将提高合规性分数。 已更正的项会显示为“通过的对象”。
 
 ## <a name="ignore-recommendations"></a>忽略建议
-如果有要忽略的建议，可以创建 Log Analytics 用来防止建议出现在评估结果中的文本文件。
+如果有要忽略的建议，可以创建 Azure Monitor 用来防止建议出现在评估结果中的文本文件。
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>确定要忽略的建议
-1. 在 Azure 门户中所选工作区对应的 Log Analytics 工作区页上，单击“日志搜索”磁贴。
+1. 在 Azure Monitor 菜单中，单击**日志**。
 2. 使用以下查询列出对于环境中计算机失败的建议。
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../../azure-monitor/log-query/log-query-overview.md)，则上述查询会更改为如下所示。
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
-    下面是显示日志搜索查询的屏幕截图：<br><br> ![失败的建议](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
+    下面是显示日志查询的屏幕截图：<br><br> ![失败的建议](./media/sql-assessment/sql-assess-failed-recommendations.png)<br>
 
 3. 选择要忽略的建议。 将 RecommendationId 的值用于接下来的过程。
 
 ### <a name="to-create-and-use-an-ignorerecommendationstxt-text-file"></a>创建和使用 IgnoreRecommendations.txt 文本文件
 1. 创建一个名为 IgnoreRecommendations.txt 的文件。
-2. 在单独的行上粘贴或键入要 Log Analytics 忽略的每个建议的 RecommendationId，保存并关闭该文件。
-3. 将以下文件夹中的文件置于每台要让 Log Analytics 忽略建议的计算机上。
+2. 在单独的行上粘贴或键入希望 Azure Monitor 忽略的每个建议的 RecommendationId，保存并关闭该文件。
+3. 将以下文件夹中的文件置于每台要让 Azure Monitor 忽略建议的计算机上。
    * 在具有 Microsoft Monitoring Agent（直接连接或通过 Operations Manager 连接）的计算机上 - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
    * 在 Operations Manager 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * 在 Operations Manager 2016 管理服务器上 - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
@@ -203,14 +197,8 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 2. 可以使用以下日志搜索查询列出所有已忽略的建议。
 
     ```
-    Type=SQLAssessmentRecommendation RecommendationResult=Ignored | select Computer, RecommendationId, Recommendation | sort Computer
+    SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-
-    >[!NOTE]
-    > 如果工作区已升级到[新 Log Analytics 查询语言](../../azure-monitor/log-query/log-query-overview.md)，则上述查询会更改为如下所示。
-    >
-    > `SQLAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
 3. 如果以后决定想要查看已忽略的建议，请删除任何 IgnoreRecommendations.txt 文件，或者可以从中删除 RecommendationID。
 
 ## <a name="sql-health-check-solution-faq"></a>SQL 运行状况检查解决方案常见问题解答
@@ -263,4 +251,4 @@ Log Analytics 使用 Operations Manager 代理和管理组来收集数据并将�
 * 有的，请参阅上面的 [忽略建议](#ignore-recommendations) 部分。
 
 ## <a name="next-steps"></a>后续步骤
-* [搜索日志](../../azure-monitor/log-query/log-query-overview.md)以了解如何分析详细的 SQL 运行状况检查数据和建议。
+* [记录的查询](../log-query/log-query-overview.md)若要了解如何分析详细的 SQL 运行状况检查数据和建议。

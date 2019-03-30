@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: 8dc3dcbe3a84a0c35c1e3fc6e367c63393bebb70
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003134"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650736"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -99,15 +99,15 @@ ms.locfileid: "58003134"
 
     |  错误 |  建议 |
     |---|---|
-    |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termService-service-is-stopped-because-of-an-access-denied-problem)。 |
-    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termService-service-is-disabled)。  |  
-    |1058 - ERROR_SERVICE_DISABLED  |请参阅 [TermService 服务崩溃或挂起](#termService-service-crashes-or-hangs)。  |
+    |5- 访问被拒绝 |请参阅 [TermService 服务由于访问被拒绝错误而停止](#termservice-service-is-stopped-because-of-an-access-denied-problem)。 |
+    |1053 - ERROR_SERVICE_REQUEST_TIMEOUT  |请参阅 [TermService 服务已禁用](#termservice-service-is-disabled)。  |  
+    |1058 - ERROR_SERVICE_DISABLED  |请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。  |
     |1059 - ERROR_CIRCULAR_DEPENDENCY |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
-    |1067 - ERROR_PROCESS_ABORTED  |请参阅 [TermService 服务崩溃或挂起](#termService-service-crashes-or-hangs)。  |
+    |1067 - ERROR_PROCESS_ABORTED  |请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。  |
     |1068 - ERROR_SERVICE_DEPENDENCY_FAIL|请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。|
-    |1069 - ERROR_SERVICE_LOGON_FAILED  |请参阅 [TermService 服务由于登录失败而失败](#termService-service-fails-because-of-logon-failure) |
-    |1070 - ERROR_SERVICE_START_HANG   | 请参阅 [TermService 服务崩溃或挂起](#termService-service-crashes-or-hangs)。 |
-    |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅 [TermService 服务已禁用](#termService-service-is-disabled)。  |
+    |1069 - ERROR_SERVICE_LOGON_FAILED  |请参阅 [TermService 服务由于登录失败而失败](#termservice-service-fails-because-of-logon-failure) |
+    |1070 - ERROR_SERVICE_START_HANG   | 请参阅 [TermService 服务崩溃或挂起](#termservice-service-crashes-or-hangs)。 |
+    |1077 - ERROR_SERVICE_NEVER_STARTED   | 请参阅 [TermService 服务已禁用](#termservice-service-is-disabled)。  |
     |1079 - ERROR_DIFERENCE_SERVICE_ACCOUNT   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。 |
     |1753   |请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。   |
     

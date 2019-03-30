@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: a629a022e332eae5c8a58e9ffc0f760f96bc24dd
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: a8bc86c2d3511fa04e595b8b2988d9a98bf084b2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577099"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650455"
 ---
 # <a name="add-suggesters-to-an-index-for-typeahead-in-azure-search"></a>将建议器添加到 Azure 搜索中的 typeahead 的索引
 
@@ -77,7 +77,7 @@ ms.locfileid: "58577099"
 
 ### <a name="use-the-net-sdk"></a>使用 .NET SDK
 
-在C#，定义[建议器类](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 建议器是一个集合，其中只能包含一个项。 请务必添加`using System.Collections.Generic;`，以便您可以创建的对象的列表。 
+在C#，定义[建议器对象](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.suggester?view=azure-dotnet)。 `Suggesters` 是一个集合，但该方法仅采用一个项。 
 
 ```csharp
 private static void CreateHotelsIndex(SearchServiceClient serviceClient)

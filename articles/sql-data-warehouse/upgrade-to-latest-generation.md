@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 02/19/2019
 ms.author: martinle
 ms.reviewer: jrasnick
-ms.openlocfilehash: 8ec6ffaba8056eacf44d8e1bd911eb1f22daad84
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 522f1f2f24e8c8c3f68a42569d4057a7694754d1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314834"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651067"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>通过升级 SQL 数据仓库优化性能
 
@@ -34,8 +34,8 @@ ms.locfileid: "57314834"
 ## <a name="before-you-begin"></a>开始之前
 
 1. 检查你的[区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)是否支持从第 1 代到第 2 代迁移。 请注意自动迁移日期。 为了避免与自动化流程发生冲突，请在自动化流程开始日期之前计划手动迁移。
-2. 如果你所在的区域尚不受支持，请继续检查你的区域是否已添加到受支持的区域中，或者[使用还原来升级](#Upgrade-from-an-Azure-geographical-region-using-restore-through-the-Azure-portal)到受支持的区域。
-3. 如果你的区域受支持，请[通过 Azure 门户进行升级](#Upgrade-in-a-supported-region-using-the-Azure-portal)
+2. 如果你所在的区域尚不受支持，请继续检查你的区域是否已添加到受支持的区域中，或者[使用还原来升级](#upgrade-from-an-azure-geographical-region-using-restore-through-the-azure-portal)到受支持的区域。
+3. 如果你的区域受支持，请[通过 Azure 门户进行升级](#upgrade-in-a-supported-region-using-the-azure-portal)
 4. 使用以下映射根据你的“弹性优化第 1 代”层级数据仓库的当前性能级别为数据仓库**选择建议的性能级别**：
 
    | “计算优化第 1 代”层级 | “计算优化第 2 代”层级 |

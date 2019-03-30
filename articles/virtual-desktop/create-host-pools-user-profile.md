@@ -7,18 +7,18 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: c9c2ca2cc27c5fa757b8ff6846e0a6a8f7087875
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403708"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628988"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
 
 Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案 FSLogix 配置文件的容器。 我们不建议使用用户配置文件磁盘 (UPD) 解决方案，并将 Windows 虚拟桌面的未来版本中弃用。
 
-本部分将介绍如何设置主机池 FSLogix 配置文件容器共享。
+本部分将介绍如何设置主机池 FSLogix 配置文件容器共享。 有关 FSLogix 的常规文档，请参阅[FSLogix 站点](https://docs.fslogix.com/)。
 
 ## <a name="create-a-new-virtual-machine-that-will-act-as-a-file-share"></a>创建新的虚拟机将充当文件共享
 
@@ -48,14 +48,14 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 6. 搜索安全组添加会话主机虚拟机，则请确保该组具有**完全控制**。
 7. 添加后的安全组，右键单击该文件夹中，选择**属性**，选择**共享**，然后向下复制**网络路径**以供稍后使用。
 
-有关权限的最佳实践，请参阅以下[FSLogix 文档](https://support.fslogix.com/index.php/forum-main/faqs/84-best-practices#120)。
+有关权限的详细信息，请参阅[FSLogix 文档](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers)。
 
 ## <a name="configure-the-fslogix-profile-container"></a>配置 FSLogix 配置文件容器
 
 若要配置 FSLogix software 虚拟机，请执行以下操作注册到主机池每台计算机上：
 
 1. [连接到虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)时创建虚拟机时提供的凭据。
-2. 启动 internet 浏览器并导航到以下[链接](https://go.microsoft.com/fwlink/?linkid=2084562)下载 FSLogix 代理。 作为 Windows 虚拟桌面公共预览版的一部分，你将获得许可证密钥以激活 FSLogix 软件。 该密钥是 FSLogix 代理.zip 文件中包含的 LicenseKey.txt 文件。
+2. 启动 internet 浏览器并导航到[此链接](https://go.microsoft.com/fwlink/?linkid=2084562)下载 FSLogix 代理。 作为 Windows 虚拟桌面公共预览版的一部分，你将获得许可证密钥以激活 FSLogix 软件。 该密钥是 FSLogix 代理.zip 文件中包含的 LicenseKey.txt 文件。
 3. 安装 FSLogix 代理。
 4. 导航到**Program Files** > **FSLogix** > **应用**以确认安装了代理。
 5. 从开始菜单中，运行**RegEdit**以管理员身份。 导航到**计算机\\HKEY_LOCAL_MACHINE\\软件\\FSLogix\\配置文件**

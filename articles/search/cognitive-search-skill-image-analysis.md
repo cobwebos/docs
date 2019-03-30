@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/22/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 4fb14b49e573770aaef13d6b5d47c265337c408c
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 5e2c92c22f98913da0e3668ceb84b212cc48396a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568917"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650974"
 ---
 #   <a name="image-analysis-cognitive-skill"></a>图像分析认知技能
 
@@ -37,8 +37,8 @@ Microsoft.Skills.Vision.ImageAnalysisSkill
 | 参数名称     | 描述 |
 |--------------------|-------------|
 | defaultLanguageCode   |  表示要返回的语言的字符串。 该服务以指定的语言返回识别结果。 如果未指定此参数，则默认值为“en”。 <br/><br/>支持的语言为： <br/>en - 英语（默认） <br/> zh - 简体中文|
-|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>Description - 用完整的英文句子描述图像内容。</li><li>Faces - 检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> *ImageType* -检测图像是否为剪贴画或线条绘图。</li><li>  Color - 确定主题色、主色以及图像是否为黑白。</li><li>Adult - 检测图片是否具有色情性质（描绘裸体或性行为）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
-| 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>Celebrities - 识别在图像中检测到的名人。</li><li>Landmarks - 识别在图像中检测到的地标。</li></ul>
+|visualFeatures |   表示要返回的可视特征类型的一组字符串。 有效的可视特征类型包括：  <ul><li> categories - 根据认知服务[文档](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)中定义的分类对图像内容进行分类。</li><li> tags - 使用与图像内容相关字词的详细列表来标记图像。</li><li>*说明*-描述映像内容具有完整的英语句子。</li><li>*人脸*-检测人脸是否存在。 如果存在，则生成位置、性别和年龄。</li><li> *ImageType* -检测图像是否为剪贴画或线条绘图。</li><li>  *颜色*-确定强调文字颜色、 主色图像是否为黑色和白色。</li><li>*成人*-检测到的映像是色情在本质上 （描绘了裸体或性别采取措施）。 也检测性暗示内容。</li></ul> 可视特征的名称区分大小写。|
+| 详细信息   | 表示要返回的特定于域的详细信息的一组字符串。 有效的可视特征类型包括： <ul><li>*名人*-如果在图像中检测到标识名人。</li><li>*特征点*-如果在图像中检测到标识特征点。</li></ul>
  |
 
 ## <a name="skill-inputs"></a>技能输入

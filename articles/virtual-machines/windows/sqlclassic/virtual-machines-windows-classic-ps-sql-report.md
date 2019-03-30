@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
-ms.openlocfilehash: c8b32e1d52768ea8450a2256d92d8cdb09f9fe8b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445630"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650268"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -130,7 +130,7 @@ ms.locfileid: "57445630"
    4. 选择要管理的“本地计算机”，并单击“完成”。
    5. 单击“确定”，并展开“证书 – 个人”节点，最后单击“证书”。 证书以 VM 的 DNS 名称命名，并以 **cloudapp.net**.结尾。 右键单击证书名称，并单击“复制”。
    6. 展开“受信任的根证书颁发机构”节点，并右键单击“证书”，最后单击“粘贴”。
-   7. 若要验证，请双击“受信任的根证书颁发机构”下的证书名称，并确认不存在错误并且能看到自己的证书。 如果要使用本主题中随附的 HTTPS 脚本配置报表服务器，则需要证书**指纹**的值作为脚本参数。 **若要获取该指纹值**，请完成下列操作。 [使用脚本来配置报表服务器和 HTTPS](#use-script-to-configure-the-report-server-and-HTTPS) 部分中还有一个 PowerShell 示例用于检索指纹。
+   7. 若要验证，请双击“受信任的根证书颁发机构”下的证书名称，并确认不存在错误并且能看到自己的证书。 如果要使用本主题中随附的 HTTPS 脚本配置报表服务器，则需要证书**指纹**的值作为脚本参数。 **若要获取该指纹值**，请完成下列操作。 [使用脚本来配置报表服务器和 HTTPS](#use-script-to-configure-the-report-server-and-https) 部分中还有一个 PowerShell 示例用于检索指纹。
       
       1. 双击证书名称，例如 ssrsnativecloud.cloudapp.net。
       2. 单击“详细信息”选项卡。

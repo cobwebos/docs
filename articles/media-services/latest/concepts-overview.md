@@ -12,19 +12,19 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: d8790eac93b288d5d5254f188fe5c901b5d5df14
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351484"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630557"
 ---
 # <a name="media-services-concepts"></a>媒体服务概念
 
 本主题简要概述了 Azure 媒体服务概念，并使用媒体服务 v3 概念和功能的深入说明提供文章的链接。 在开始开发之前，应该复习这些主题中所述的基本概念。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](developers-guide.md) 之一。
 
 ## <a name="cloud-upload-and-storage"></a>云上传和存储
 
@@ -102,6 +102,11 @@ ms.locfileid: "58351484"
 
 - [处理事件网格事件](reacting-to-media-services-events.md)
 - [架构](media-services-event-schemas.md)
+
+### <a name="azure-monitor"></a>Azure Monitor
+
+监视指标和诊断日志，帮助您了解如何使用 Azure 监视器执行您的应用程序。
+
 - [指标和诊断日志](media-services-metrics-diagnostic-logs.md)
 - [诊断日志架构](media-services-diagnostic-logs-schema.md)
 
@@ -113,4 +118,9 @@ ms.locfileid: "58351484"
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用媒体服务上传、编码和流式传输](stream-files-tutorial-with-api.md)
+* [远程文件和流视频 – REST 进行编码](stream-files-tutorial-with-rest.md)
+* [编码上传的文件和流视频-.NET](stream-files-tutorial-with-api.md)
+* [Stream 实时-.NET](stream-live-tutorial-with-api.md)
+* [分析视频-.NET](analyze-videos-tutorial-with-api.md)
+* [AES-128 动态加密-.NET](protect-with-aes128.md)
+* [使用多重 DRM 的.NET 动态加密](protect-with-drm.md) 

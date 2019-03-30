@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: quickstarts
 ms.date: 2/20/2019
 ms.author: b-juche
-ms.openlocfilehash: 363589116cc7b936358ce0b16cbaba9a42c66234
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2b9b3cdcb712fcf6c415f574dc687e80ae9ee3b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078068"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660504"
 ---
 # <a name="set-up-azure-netapp-files-and-create-a-volume"></a>设置 Azure NetApp 文件并创建卷 
 
@@ -105,9 +105,9 @@ ms.locfileid: "58078068"
    4. 对于配额使用默认值。 
    5. 在虚拟网络中，单击**新建**若要创建新的 Azure 虚拟网络 (Vnet)。  然后填写以下信息：
        * 输入**myvnet1**作为 Vnet 名称。
-       * 指定的地址空间，例如，10.7.0.0/16。
+       * 指定为您的设置，例如，10.7.0.0/16 的地址空间
        * 输入**myANFsubnet**作为子网名称。
-       * 指定子网地址范围，例如，10.7.0.0/24。
+       * 指定子网地址范围，例如，10.7.0.0/24。 请注意，不能与其他资源共享的专用子网。
        * 选择**Microsoft.NetApp/volumes**为子网委派。
        * 单击**确定**以创建该 Vnet。
    6. 在子网中，选择新创建的 Vnet (**myvnet1**) 作为委托子网。

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/03/2018
 ms.author: banders
-ms.openlocfilehash: a66547ed4bf089bb618dc8b98da7f260b6b5536a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bf18d845b7128c8d6f740555f1a0f791767240ae
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904297"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650217"
 ---
-# <a name="view-reservations-for-azure-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 预留
+# <a name="view-azure-reservations-in-the-azure-portal"></a>在 Azure 门户中查看 Azure 保留项
 
-根据你的订阅类型和权限，有多种方法可用来查看 Azure 资源的预留。
+根据你的订阅类型和权限，有两种方法查看 Azure 的保留项。
 
 ## <a name="view-reservations-as-owner-or-reader"></a>以所有者或读者身份查看预留
 
@@ -62,15 +62,26 @@ ms.locfileid: "57904297"
 
 若要了解有关 Azure 预留的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留？](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
+- [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
+
+购买服务计划：
+
 - [为 Cosmos DB 预留容量预付费](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理 Azure 预留](billing-manage-reserved-vm-instance.md)
+
+购买的软件计划：
+
+- [预付款购买的 Red Hat 软件计划从 Azure 保留项](../virtual-machines/linux/prepay-rhel-software-charges.md)
+- [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
+
+了解使用情况：
+
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [了解 CSP 订阅的预留使用情况](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

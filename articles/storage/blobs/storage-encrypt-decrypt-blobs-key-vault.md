@@ -8,15 +8,16 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4552249e7d7dd79edbe885b3d615f5071aa694ee
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: c7a185e1c7f271cdca0c688ce7838f6390594da5
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116093"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650404"
 ---
 # <a name="tutorial-encrypt-and-decrypt-blobs-in-microsoft-azure-storage-using-azure-key-vault"></a>教程：在 Microsoft Azure 存储中使用 Azure Key Vault 加密和解密 Blob
-## <a name="introduction"></a>介绍
+
+## <a name="introduction"></a>简介
 本教程介绍如何结合使用客户端存储加密与 Azure 密钥保管库。 其中将引导完成如何在控制台应用程序中使用这些技术加密和解密 blob。
 
 **估计完成时间：** 20 分钟
@@ -25,14 +26,16 @@ ms.locfileid: "56116093"
 
 有关 Azure 存储的客户端加密概述信息，请参阅 [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。
 
-## <a name="prerequisites"></a>先决条件
-要完成本教程，必须准备好以下各项：
+## <a name="prerequisites"></a>必备组件
+
+若要完成本教程，必须具备以下项目：
 
 * Azure 存储帐户
 * Visual Studio 2013 或更高版本
 * Azure PowerShell
 
 ## <a name="overview-of-client-side-encryption"></a>客户端加密概述
+
 有关 Azure 存储的客户端加密概述，请参阅 [Microsoft Azure 存储的客户端加密和 Azure 密钥保管库](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 下面是客户端加密的工作原理的简要说明：
@@ -43,6 +46,7 @@ ms.locfileid: "56116093"
 4. 然后，将已加密的数据上传到 Azure 存储服务。
 
 ## <a name="set-up-your-azure-key-vault"></a>设置 Azure 密钥保管库
+
 若要继续本教程，请执行教程[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)中所述的以下步骤：
 
 * 创建密钥保管库。
@@ -55,11 +59,12 @@ ms.locfileid: "56116093"
 在密钥保管库中创建这两个密钥。 我们在本教程的其余部分假定使用了以下名称：ContosoKeyVault 和 TestRSAKey1。
 
 ## <a name="create-a-console-application-with-packages-and-appsettings"></a>使用程序包和 AppSettings 创建控制台应用程序
+
 在 Visual Studio 中创建新的控制台应用程序。
 
 在 Package Manager Console 中添加必要的 Nuget 包。
 
-```
+```powershell
 Install-Package WindowsAzure.Storage
 Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
 
@@ -93,6 +98,7 @@ using System.IO;
 ```
 
 ## <a name="add-a-method-to-get-a-token-to-your-console-application"></a>添加方法以便为控制台应用程序获取令牌
+
 以下方法由密钥保管库类使用，这些类需要进行身份验证才能访问密钥保管库。
 
 ```csharp
@@ -112,6 +118,7 @@ private async static Task<string> GetToken(string authority, string resource, st
 ```
 
 ## <a name="access-storage-and-key-vault-in-your-program"></a>在程序中访问存储和密钥保管库
+
 在 Main 函数中，添加以下代码。
 
 ```csharp
@@ -141,6 +148,7 @@ KeyVaultKeyResolver cloudResolver = new KeyVaultKeyResolver(GetToken);
 > 
 
 ## <a name="encrypt-blob-and-upload"></a>加密 blob 和上传
+
 添加以下代码以加密 blob 并将其上传到 Azure 存储帐户。 使用的 **ResolveKeyAsync** 方法会返回 IKey。
 
 ```csharp
@@ -167,9 +175,10 @@ using (var stream = System.IO.File.OpenRead(@"C:\data\MyFile.txt"))
 > 
 
 ## <a name="decrypt-blob-and-download"></a>解密 blob 并下载
+
 当使用解析程序类有意义时，实际上就是解密。 用于加密的密钥的 ID 与其元数据中的 Blob 相关联，因此，没有理由检索该密钥，请记住密钥与 blob 之间的关联关系。 只需确保该密钥保留在密钥保管库中。   
 
-RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 blob 元数据的加密密钥将发送到密钥保管库进行解密。
+RSA 密钥的私钥则保留在密钥保管库中，因此，为了进行解密，来自包含 CEK 的 Blob 元数据的加密密钥会发送到密钥保管库进行解密。
 
 添加以下代码以解密刚刚上传的 blob。
 
@@ -189,6 +198,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 > 
 
 ## <a name="use-key-vault-secrets"></a>使用密钥保管库密码
+
 将密码用于客户端加密的方式是通过 SymmetricKey 类，因为密码实际上是一种对称密钥。 但是，如上所述，密钥保管库中的密码不会完全映射到 SymmetricKey。 这里要注意几个问题：
 
 * SymmetricKey 中的密钥必须是固定长度：128、192、256、384 或 512 位。
@@ -196,7 +206,7 @@ using (var np = File.Open(@"C:\data\MyFileDecrypted.txt", FileMode.Create))
 * 用作 SymmetricKey 的密钥保管库密钥需要在密钥保管库中具有“application/octet-stream”内容类型。
 
 以下是使用 PowerShell 在密钥保管库中创建可用作 SymmetricKey 的密钥的示例。
-请注意，硬编码值 $key 仅用于演示目的。 在自己的代码中需要生成此密钥。
+请注意，硬编码值 $key 仅用于演示目的。 请在自己的代码中生成此密钥。
 
 ```csharp
 // Here we are making a 128-bit key so we have 16 characters.
@@ -221,7 +231,8 @@ SymmetricKey sec = (SymmetricKey) cloudResolver.ResolveKeyAsync(
 就这么简单。 请尽情享受其中的乐趣！
 
 ## <a name="next-steps"></a>后续步骤
-要深入了解如何将 Microsoft Azure 存储与 C# 配合使用，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
+
+若要深入了解如何将 Microsoft Azure 存储与 C# 配合使用，请参阅[用于 .NET 的 Microsoft Azure 存储客户端库](https://msdn.microsoft.com/library/azure/dn261237.aspx)。
 
 有关 Blob REST API 的详细信息，请参阅 [Blob Service REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Blob 服务 REST API）。
 

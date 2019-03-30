@@ -1,5 +1,5 @@
 ---
-title: Log Analytics 中的 Azure SQL Analytics 解决方案 | Microsoft 文档
+title: Azure Monitor 中的 azure SQL Analytics 解决方案 |Microsoft Docs
 description: Azure SQL Analytics 解决方案可帮助你管理 Azure SQL 数据库
 services: log-analytics
 ms.service: log-analytics
@@ -10,12 +10,12 @@ ms.author: danil
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 12/17/2018
-ms.openlocfilehash: 66ab1fa9779aa378c4153adc0da81b3d172e1320
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c68c278b2a7afa8287845c452e3bec5380cf05c0
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58170218"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629969"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>使用 Azure SQL Analytics（预览版）监视 Azure SQL 数据库
 
@@ -23,7 +23,7 @@ ms.locfileid: "58170218"
 
 Azure SQL Analytics 是一种高级云监视解决方案，用于通过单一虚拟管理平台跨多个订阅大规模监视 Azure SQL 数据库、弹性池和托管实例的性能。 它通过内置智能来收集和直观显示重要的 Azure SQL 数据库性能指标，以便进行性能故障排除。
 
-使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 该解决方案可以帮助你确定应用程序堆栈的每个层的问题。 它使用 Azure 诊断指标和 Log Analytics 视图，在单个 Log Analytics 工作区中呈现有关所有 Azure SQL 数据库和弹性池和托管实例中的数据库的数据。 Log Analytics 可帮助用户收集、关联和可视化结构化和非结构化数据。
+使用解决方案收集指标后，即可利用这些指标创建自定义监视规则和警报。 该解决方案可以帮助你确定应用程序堆栈的每个层的问题。 它使用 Azure 诊断指标以及 Azure Monitor 视图以在单个 Log Analytics 工作区中的托管实例呈现有关所有 Azure SQL 数据库、 弹性池和数据库的数据。 Azure 监视器可帮助你收集、 关联和可视化结构化和非结构化数据。
 
 有关使用 Azure SQL Analytics 解决方案的实践概述和典型使用方案，请观看嵌入视频：
 
@@ -32,29 +32,18 @@ Azure SQL Analytics 是一种高级云监视解决方案，用于通过单一虚
 
 ## <a name="connected-sources"></a>连接的源
 
-Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一的、池化的和托管的实例数据库）的诊断遥测数据。 由于该解决方案不使用代理连接到 Log Analytics 服务，因此它不支持监视本地或 VM 中托管的 SQL Server，具体请参阅下面的兼容性表。
+Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一的、池化的和托管的实例数据库）的诊断遥测数据。 因为该解决方案不使用代理连接到 Azure Monitor，该解决方案不支持监视的托管的 SQL Server 的本地或在 Vm 中，请参阅下面的兼容性表。
 
 | 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
-| [Azure 诊断](../platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Log Analytics。 |
-| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Log Analytics 不从存储帐户中读取数据。 |
+| [Azure 诊断](../platform/collect-azure-metrics-logs.md) | **是** | Azure 指标和日志数据由 Azure 直接发送到 Azure Monitor 日志中。 |
+| [Azure 存储帐户](../platform/collect-azure-metrics-logs.md) | 否 | Azure 监视器不会从存储帐户读取数据。 |
 | [Windows 代理](../platform/agent-windows.md) | 否 | 该解决方案不使用直接 Windows 代理。 |
 | [Linux 代理](../learn/quick-collect-linux-computer.md) | 否 | 该解决方案不使用直接Linux 代理。 |
-| [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | 此解决方案不使用从 Operations Manager 代理到 Log Analytics 的直接连接。 |
+| [System Center Operations Manager 管理组](../platform/om-agents.md) | 否 | 该解决方案不使用从 Operations Manager 代理直接连接到 Azure Monitor。 |
 
 ## <a name="configuration"></a>配置
-
-执行以下步骤，将 Azure SQL Analytics 解决方案添加到 Azure 仪表板。
-
-1. 从 [Azure 市场](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview)将 Azure SQL Analytics 解决方案添加到你的工作区。
-2. 在 Azure 门户中，单击“+ 创建资源”，然后搜索 **Azure SQL Analytics**。  
-    ![监视 + 管理](./media/azure-sql/monitoring-management.png)
-3. 从列表中选择“Azure SQL Analytics (预览版)”
-4. 在“Azure SQL Analytics (预览版)”区域中，单击“创建”。  
-    ![创建](./media/azure-sql/portal-create.png)
-5. 在“创建新的解决方案”区域中，创建新工作区或选择要向其添加解决方案的现有工作区，并单击“创建”。
-
-    ![添加到工作区](./media/azure-sql/add-to-workspace.png)
+使用中所述的过程[从解决方案库中的添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)，将 Azure SQL Analytics （预览版） 解决方案添加到 Log Analytics 工作区。
 
 ### <a name="configure-azure-sql-databases-elastic-pools-and-managed-instances-to-stream-diagnostics-telemetry"></a>配置 Azure SQL 数据库、弹性池和托管实例以流式传输诊断遥测数据
 
@@ -80,9 +69,9 @@ Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输
 
 ### <a name="viewing-azure-sql-analytics-data"></a>查看 Azure SQL Analytics 数据
 
-该仪表板包含通过不同透视监视的所有数据库的概览。 要使不同透视起效，必须允许将有关 SQL 资源的适当指标或日志流式传输到 Azure Log Analytics 工作区。
+该仪表板包含通过不同透视监视的所有数据库的概览。 若要运行的不同透视起效，必须对 SQL 资源流式传输到 Log Analytics 工作区中启用适当指标或日志。
 
-请注意，如果某些指标或日志未流式传输到 Azure Log Analytics，则解决方案中的磁贴不会填充监视信息。
+请注意，是否某些指标或日志未传输到 Azure Monitor 中，解决方案中的磁贴都未填入监视信息。
 
 ### <a name="azure-sql-database-and-elastic-pool-view"></a>Azure SQL 数据库和弹性池视图
 
@@ -302,6 +291,6 @@ AzureDiagnostics
 
 ## <a name="next-steps"></a>后续步骤
 
-- 使用 Log Analytics 中的[日志搜索](../log-query/log-query-overview.md)查看 Azure SQL 的详细数据。
+- 使用[记录查询](../log-query/log-query-overview.md)在 Azure 监视器中查看详细的 Azure SQL 数据。
 - [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示 Azure SQL 数据。
 - 发生特定 Azure SQL 事件时[创建警报](../platform/alerts-overview.md)。

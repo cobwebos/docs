@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
-ms.openlocfilehash: e42b0e7bd1bce40b7c58d75cb07f5a3f8afa5836
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49385032"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649962"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -35,7 +35,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 
 ### <a name="differences-between-kubernetes-versions"></a>Kubernetes 版本之间的差异
 
-若要迁移到较新版本的 Kubernetes（例如，从 1.7.x 迁移到 1.9.x），需要关注 k8s API 发生的几处更改。
+如果要迁移到更高版本的 Kubernetes（例如：1.7.x 到 1.9.x），需要注意对 k8s API 的一些更改。
 
 * [将 ThirdPartyResource 迁移到 CustomResourceDefinition](https://kubernetes.io/docs/tasks/access-kubernetes-api/migrate-third-party-resource/)
 * [版本 1.8 和 1.9 中的工作负荷 API 更改](https://kubernetes.io/docs/reference/workloads-18-19/)。
@@ -51,7 +51,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 | 名称 | Count | VM 大小 | 操作系统 |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 1 | Standard_D2_v2 | Windows |
+| agentpool1 | 第 | Standard_D2_v2 | Windows |
 
 由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可以查看 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)来了解详细信息。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择 `Usage + quotas`。
 
@@ -91,7 +91,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 7. 验证
 8. 将流量指向 AKS 群集
 
-> **重要说明**：如果不暂停写入，则需要将数据复制到新部署，因为自创建磁盘快照后写入的数据将会丢失
+> **重要说明**：如果选择不暂停写入，则需要将数据复制到新部署，因为你将丢失自创建磁盘快照以来写入的数据
 
 可以借助一些开源工具来创建托管磁盘，并在 Kubernetes 群集之间迁移卷。
 
@@ -144,7 +144,7 @@ kubectl get deployment -o=yaml --export > deployments.yaml
 
 ### <a name="3-optional-migrate-volumes"></a>3.（可选）迁移卷
 
-将卷从 ACS 群集迁移到 AKS 群集。 在[迁移永久性卷](#Migrating-Persistent-Volumes)部分可以找到更多详细信息。
+将卷从 ACS 群集迁移到 AKS 群集。 在[迁移永久性卷](#migrating-persistent-volumes)部分可以找到更多详细信息。
 
 ### <a name="4-deploy-applications"></a>4.部署应用程序
 

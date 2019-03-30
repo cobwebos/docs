@@ -16,12 +16,12 @@ ms.date: 07/12/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1a40399ab0e27be5ba9dd01f2647bd5b8ccf10e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202498"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650659"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -51,19 +51,20 @@ ms.locfileid: "56202498"
 **mvbin**、**mvstr** 和 **mvref** 类型的函数只适用于多值属性。 **bin**、**str** 和 **ref** 类型的函数只适用于单值和多值属性。
 
 ## <a name="functions-reference"></a>函数引用
+
 | 函数列表 |  |  |  |  |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | --- | --- | --- |
 | **证书** | | | | |
 | [CertExtensionOids](#certextensionoids) |[CertFormat](#certformat) |[CertFriendlyName](#certfriendlyname) |[CertHashString](#certhashstring) | |
 | [CertIssuer](#certissuer) |[CertIssuerDN](#certissuerdn) |[CertIssuerOid](#certissueroid) |[CertKeyAlgorithm](#certkeyalgorithm) | |
 | [CertKeyAlgorithmParams](#certkeyalgorithmparams) |[CertNameInfo](#certnameinfo) |[CertNotAfter](#certnotafter) |[CertNotBefore](#certnotbefore) | |
 | [CertPublicKeyOid](#certpublickeyoid) |[CertPublicKeyParametersOid](#certpublickeyparametersoid) |[CertSerialNumber](#certserialnumber) |[CertSignatureAlgorithmOid](#certsignaturealgorithmoid) | |
 | [CertSubject](#certsubject) |[CertSubjectNameDN](#certsubjectnamedn) |[CertSubjectNameOid](#certsubjectnameoid) |[CertThumbprint](#certthumbprint) | |
-[ CertVersion](#certversion) |[IsCert](#iscert) | | | |
+[CertVersion](#certversion) |[IsCert](#iscert) | | | |
 | **Conversion** | | | | |
 | [CBool](#cbool) |[CDate](#cdate) |[CGuid](#cguid) |[ConvertFromBase64](#convertfrombase64) | |
 | [ConvertToBase64](#converttobase64) |[ConvertFromUTF8Hex](#convertfromutf8hex) |[ConvertToUTF8Hex](#converttoutf8hex) |[CNum](#cnum) | |
-| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#StringFromGuid) |[StringFromSid](#stringfromsid) | |
+| [CRef](#cref) |[CStr](#cstr) |[StringFromGuid](#stringfromguid) |[StringFromSid](#stringfromsid) | |
 | **Date / Time** | | | | |
 | [DateAdd](#dateadd) |[DateFromNum](#datefromnum) |[FormatDateTime](#formatdatetime) |[Now](#now) | |
 | [NumFromDate](#numfromdate) | | | | |
@@ -378,7 +379,7 @@ Contains 函数查找多值属性内的字符串
 返回找到字符串的多值属性中的索引。 如果未找到字符串，则返回 0。
 
 **备注：**  
-对于多值字符串属性，搜索会在值中查找子字符串。  
+对于多值字符串属性，搜索在值中查找子字符串。  
 对于引用属性，搜索的字符串必须与视为匹配的值完全匹配。
 
 **示例：**  
@@ -1071,7 +1072,7 @@ RemoveDuplicates 函数使用多值字符串，并确保每个值都是唯一值
 返回净化的 proxyAddress 属性，其中所有重复值已被删除。
 
 - - -
-### <a name="replace"></a>将
+### <a name="replace"></a>Replace
 **说明：**  
 Replace 函数将所有出现的某一字符串替换为另一个字符串。
 
@@ -1210,7 +1211,7 @@ StringFromGuid 函数使用二进制 GUID，并将其转换为字符串
 - - -
 ### <a name="stringfromsid"></a>StringFromSid
 **说明：**  
-StringFromSid 函数将包含安全标识符的字节数组转换为字符串。
+StringFromSid 函数包含安全标识符的字节数组转换为字符串。
 
 **语法：**  
 `str StringFromSid(bin ObjectSID)`  
@@ -1231,14 +1232,14 @@ Switch 函数参数列表包含表达式和值对。 表达式从左到右计算
 
 例如，如果 expr1 为 True，则 Switch 返回 value1。 如果 expr-1 为 False，但 expr-2 为 True，则 Switch 返回 value-2，依此类推。
 
-如果满足以下条件，Switch 将返回 Nothing：
+如果满足以下条件，Switch 返回 Nothing：
 
 * 没有任何表达式求值为 True。
 * 第一个 True 表达式的相应值为 Null。
 
 Switch 对所有表达式求值，即使它只返回其中一个结果。 为此，应监视非预期的负面影响。 例如，如果任何表达式的计算结果导致除数为零的错误，则会出现错误。
 
-值还可以是将返回自定义字符串的错误函数。
+值还可以是返回自定义字符串的错误函数。
 
 **示例：**  
 `Switch([city] = "London", "English", [city] = "Rome", "Italian", [city] = "Paris", "French", True, Error("Unknown city"))`  

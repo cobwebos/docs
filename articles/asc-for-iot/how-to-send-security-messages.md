@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7e1229ceaa2ae7113c95cfb202a84c56a3e53d61
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d8eefff5a5ea03237eea60a63b63d70f605f10b3
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620128"
+ms.locfileid: "58650149"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
@@ -92,7 +92,7 @@ ms.locfileid: "58620128"
 
 若要从供处理 asc 的 IoT 设备发送设备数据，使用以下 Api 之一标记的正确路由到 ASC IoT 处理管道的消息。 将处理这种方式发送的消息，并将其 iot 在这两个 IoT 中心或 Azure 安全中心中显示为 ASC 中的安全见解。 
 
-即使使用正确的标头，标记发送的所有数据也必须都符合[ASC 为 IoT 消息架构](https://github.com/Azure/ASC-for-IoT-Schemas)。 
+即使使用正确的标头，标记发送的所有数据也必须都符合[ASC 为 IoT 消息架构](https://aka.ms/iot-security-schemas)。 
 
 ### <a name="send-security-message-api"></a>发送安全消息 API
 

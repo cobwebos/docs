@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: geg
-ms.openlocfilehash: 3b32418361b992b91aa96579a0cf1f84d8b9d312
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: b0408aa296dcbff0c73f2c192e24c290d51fec5f
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620404"
+ms.locfileid: "58650710"
 ---
 # <a name="restore-azure-vms"></a>还原 Azure VM
 
@@ -29,8 +29,8 @@ Azure 备份提供多种方法用于还原 VM。
 **还原选项** | **详细信息**
 --- | ---
 **创建新 VM** | 从还原点快速创建并正常运行一个基本的 VM。<br/><br/> 可以指定 VM 的名称、选择要将此 VM 放入到的资源组和虚拟网络 (VNet)，以及指定存储类型。
-**还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br/> 此选项将 VHD 复制到所指定的存储帐户。 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> - 存储帐户应与保管库位于同一位置。 创建存储帐户（如果没有）。<br/><br/> 将显示存储帐户复制类型。 不支持区域冗余存储 (ZRS)。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
-**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 若已删除 VM，则无法使用该选项。<br/><br/> 在替换磁盘之前，Azure 备份会创建现有 VM 的快照。 快照存储在指定的暂存位置。 然后，使用选定的还原点替换已连接到 VM 的现有磁盘。 创建的快照将复制到保管库，并根据指定的保留策略进行保留。<br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。
+**还原磁盘** | 还原某个 VM 磁盘，然后使用它来创建新的 VM。<br/><br/> Azure 备份提供一个模板来帮助你自定义和创建 VM。 <br/><br/> 此选项将 VHD 复制到所指定的存储帐户。 还原作业会生成一个模板，可以下载该模板，并使用它来指定自定义的 VM 设置和创建 VM。<br/><br/> 存储帐户应与保管库相同的位置。 创建存储帐户（如果没有）。<br/><br/> 将显示存储帐户复制类型。 不支持区域冗余存储 (ZRS)。<br/><br/> 或者，可将磁盘附加到现有 VM，或使用 PowerShell 创建新的 VM。<br/><br/> 若要自定义 VM、添加在备份时不存在的配置设置，或添加必须使用模板或 PowerShell 配置的设置，则此选项非常有用。
+**替换现有** | 可以还原某个磁盘，并使用它来替换现有 VM 上的磁盘。<br/><br/> 必须存在当前 VM。 若已删除 VM，则无法使用该选项。<br/><br/> 在替换磁盘之前，Azure 备份会创建现有 VM 的快照。 快照存储在指定的暂存位置。 然后，使用选定的还原点替换已连接到 VM 的现有磁盘。<br/><br/> 创建的快照将复制到保管库，并根据指定的保留策略进行保留。 <br/><br/> 未加密的托管 VM 支持替换现有。 非托管磁盘、[通用 VM](https://docs.microsoft.com/azure/virtual-machines/windows/capture-image-resource) 或[使用自定义映像创建的 VM](https://azure.microsoft.com/resources/videos/create-a-custom-virtual-machine-image-in-azure-resource-manager-with-powershell/) 不支持此选项。<br/><br/> 如果还原点中的磁盘数多于或少于当前 VM 中的磁盘数，则还原点中的磁盘数只反映 VM 配置。<br/><br/>
 
 > [!NOTE]
 > 还可以恢复 Azure VM 上的特定文件和文件夹。 [了解详细信息](backup-azure-restore-files-from-vm.md)。
@@ -58,7 +58,7 @@ Azure 备份提供多种方法用于还原 VM。
 ## <a name="choose-a-vm-restore-configuration"></a>选择 VM 还原配置
 
 1. 在“还原配置”中选择一个还原选项：
-    - **新建**。 若要创建新的 VM，请使用此选项。 可以使用简单的设置创建 VM，或还原某个磁盘并创建自定义的 VM。
+    - **新建**：若要创建新的 VM，请使用此选项。 可以使用简单的设置创建 VM，或还原某个磁盘并创建自定义的 VM。
     - **替换现有项**：若要替换现有 VM 上的磁盘，请使用此选项。
 
         ![还原配置向导](./media/backup-azure-arm-restore-vms/restore-configuration.png)
@@ -95,6 +95,8 @@ Azure 备份提供多种方法用于还原 VM。
     ![已完成恢复配置](./media/backup-azure-arm-restore-vms/trigger-restore-operation1.png)
 
 4. 在“还原配置”中，选择“确定”。 在“还原”中，单击“还原”以触发还原操作。
+
+VM 在还原期间，Azure 备份不会使用存储帐户。 但的情况下**还原磁盘**并**即时还原**，存储帐户用于存储模板。
 
 ### <a name="use-templates-to-customize-a-restored-vm"></a>使用模板自定义还原 VM
 
@@ -142,6 +144,7 @@ Azure 备份提供多种方法用于还原 VM。
 **裸机还原** | Azure VM 与本地虚拟机监控程序之间的主要差别是 Azure 中不提供 VM 控制台。 某些方案（如使用裸机恢复 (BMR) 类型备份进行恢复）需要控制台。 但是，通过保管库进行 VM 还原完全取代了 BMR。
 **还原采用特殊网络配置的 VM** | 特殊网络配置包括使用内部或外部负载均衡、使用多个 NIC 或多个保留 IP 地址的 VM。 可使用[还原磁盘选项](#restore-disks)还原这些 VM。 此选项可以的 Vhd 复制到指定的存储帐户，并可以创建的 VM[内部](https://azure.microsoft.com/documentation/articles/load-balancer-internal-getstarted/)或[外部](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/)负载均衡器，[多个 NIC](../virtual-machines/windows/multiple-nics.md)，或[多个保留 IP 地址](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md)，根据你的配置。
 **NIC/子网的网络安全组 (NSG)** | Azure VM 备份支持备份和还原的 NSG 在 vnet、 子网和 NIC 级别的信息。
+**区域固定的虚拟机** | Azure 备份支持备份和还原的分区已固定的虚拟机。 [了解详细信息](https://azure.microsoft.com/global-infrastructure/availability-zones/)
 
 ## <a name="track-the-restore-operation"></a>跟踪还原操作
 触发还原操作后，备份服务会创建一个作业用于跟踪。 Azure 备份在门户中显示有关作业的通知。 如果未显示通知，单击“通知”符号即可显示。
@@ -174,7 +177,6 @@ Azure 备份提供多种方法用于还原 VM。
 
 - 如果将 VM 还原到了与最初备份 VM 时所在的资源组同名的资源组，则还原之后，会继续备份该 VM。
 - 如果将 VM 还原到了其他资源组或者为还原的 VM 指定了其他名称，则需要为还原的 VM 设置备份。
-
 
 ## <a name="next-steps"></a>后续步骤
 

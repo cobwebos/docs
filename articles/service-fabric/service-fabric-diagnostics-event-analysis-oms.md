@@ -4,7 +4,7 @@ description: 了解如何可视化和分析事件用于监视和诊断 Azure Ser
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
-ms.openlocfilehash: 2f3106b33ab0cbea95efe2ac42c05a8543719190
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246910"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662153"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>使用 Azure Monitor 日志事件分析和可视化
- Azure Monitor 日志收集和分析来自应用程序和服务在云中托管的遥测数据并提供有助于最大程度提高其可用性和性能分析工具。 本文概述了如何在 Azure Monitor 日志以获取见解并排查群集中发生的情况中运行查询。 本文解决以下常见问题：
+ Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测，并提供分析工具以帮助最大限度地提高其可用性和性能。 本文概述了如何在 Azure Monitor 日志以获取见解并排查群集中发生的情况中运行查询。 本文解决以下常见问题：
 
 * 如何排查运行状况事件问题？
 * 如何知道节点已关闭？
@@ -49,7 +49,7 @@ Azure Monitor 日志收到数据后，Azure 会提供多*监视解决方案*而�
 
 ![Service Fabric 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_summary.PNG)
 
-下图显示了 Service Fabric 分析解决方案的主页。 此主页提供了群集中发生的情况的快照视图。
+下图是 Service Fabric 分析解决方案的主页。 此主页提供了群集中正在发生的事件的快照视图。
 
 ![Service Fabric 解决方案](media/service-fabric-diagnostics-event-analysis-oms/oms_service_fabric_solution.PNG)
 
@@ -114,5 +114,5 @@ Kusto 查询语言非常强大。 可以运行另一个有用查询来找出哪�
 * 若要启用基础结构监视（即性能计数器），请转到[添加 Log Analytics 代理](service-fabric-diagnostics-oms-agent.md)。 该代理将收集性能计数器，并将其添加到现有工作区。
 * 对于在本地群集，Azure Monitor 日志提供可用于将数据发送到 Azure Monitor 日志的网关 （HTTP 转发代理）。 了解更多信息，请参阅[将无法访问 Internet 的计算机连接到使用 Log Analytics 网关的 Azure Monitor 日志](../azure-monitor/platform/gateway.md)。
 * 配置[自动警报](../log-analytics/log-analytics-alerts.md)来帮助进行检测和诊断。
-* 掌握[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)作为 Azure Monitor 日志的一部分提供的功能。
+* 掌握 Azure Monitor 日志中提供的[日志搜索和查询](../log-analytics/log-analytics-log-searches.md)功能。
 * 获取 Azure Monitor 日志和它所提供的更详细的概述，读取[什么是 Azure Monitor 日志？](../operations-management-suite/operations-management-suite-overview.md)。

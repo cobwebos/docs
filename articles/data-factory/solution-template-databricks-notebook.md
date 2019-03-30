@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: 54b440ee76fe36a83284b8ce769bb31012781a35
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295753"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630813"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Databricks 转换数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "58295753"
 
 2.  确保已拥有“Azure Databricks 工作区”或创建一个新工作区。
 
-1.  导入用于 ETL 的笔记本。 将下面的转换笔记本导入 Databricks 工作区。 （它不必位于如下所示的相同位置，请记住你选择的路径供稍后使用。）在 URL 字段中输入此 URL，从以下 URL 导入笔记本：`https://DataFactorylabstaging1.blob.core.windows.net/share/Transformations.html`。 选择“导入”。
+1.  导入用于 ETL 的笔记本。 将下面的转换笔记本导入 Databricks 工作区。 （它不必位于如下所示的相同位置，请记住你选择的路径供稍后使用。）在 URL 字段中输入此 URL，从以下 URL 导入笔记本：`https://adflabstaging1.blob.core.windows.net/share/Transformations.html`。 选择“导入”。
 
     ![2](media/solution-template-Databricks-notebook/Databricks-tutorial-image02.png)
 

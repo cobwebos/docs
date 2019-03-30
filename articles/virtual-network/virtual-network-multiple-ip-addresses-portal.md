@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: annahar
-ms.openlocfilehash: 0f36ab9ab7703dd9677b6c2989eddb91593af79f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b1873b770a6b4280b7098c68ecb75cc1411fe453
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105101"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650558"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>使用 Azure 门户将多个 IP 地址分配给虚拟机
 
@@ -36,7 +36,7 @@ ms.locfileid: "58105101"
 
 ## <a name="add"></a>将 IP 地址添加到 VM
 
-完成以下步骤可将专用和公共 IP 地址添加到 Azure 网络接口。 以下部分中的示例假定你的 VM 已具备[方案](#Scenario)中所属的三个 IP 配置（但此要求不是必备要求）。
+完成以下步骤可将专用和公共 IP 地址添加到 Azure 网络接口。 以下部分中的示例假定你的 VM 已具备[方案](#scenario)中所属的三个 IP 配置（但此要求不是必备要求）。
 
 ### <a name="coreadd"></a>核心步骤
 

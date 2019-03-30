@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/08/2019
+ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: 0aaee4b0582f8acb9302c75463c0bc52698acaeb
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403459"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629140"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>教程：连接、 设置，并激活 Azure 数据框边缘 
 
@@ -75,7 +75,7 @@ ms.locfileid: "58403459"
     ![本地 web UI"设备名称"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. （可选）在左窗格中选择“网络设置”，然后配置设置。  
-    在物理设备上是六个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3，4 端口、 端口 5 和端口 6 是还可以充当 10 Gbps 网络接口的所有 25 Gbps 网络接口。 系统自动将端口 1 配置为仅用于管理的端口，而端口 2 到端口 6 都是数据端口。 **网络设置**页是如下所示。
+    在你的物理设备有 6 个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3，4 端口、 端口 5 和端口 6 是还可以充当 10 Gbps 网络接口的所有 25 Gbps 网络接口。 系统自动将端口 1 配置为仅用于管理的端口，而端口 2 到端口 6 都是数据端口。 **网络设置**页是如下所示。
     
     ![本地 web UI"网络设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
@@ -119,7 +119,14 @@ ms.locfileid: "58403459"
 
         ![本地 web UI"时间设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. 在左窗格中选择“云设置”，然后通过 Azure 门户中的 Data Box Edge 服务激活设备。
+5. （可选）在左窗格中，选择**存储设置**你设备上配置存储复原能力。 此功能目前处于预览状态。 默认情况下，存储在设备上的可复原并不在设备上的数据磁盘时不会丢失数据。 启用时可复原的选项，将重新配置在设备上的存储和设备可以承受一个数据磁盘，而无数据丢失的故障。 配置为具有弹性的存储将减少你的设备的可用容量。
+
+    > [!IMPORTANT] 
+    > 在激活该设备之前，可以仅配置复原能力。 
+
+    ![本地 web UI"存储设置"页](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+
+6. 在左窗格中选择“云设置”，然后通过 Azure 门户中的 Data Box Edge 服务激活设备。
     
     1. 在“激活密钥”框中，为 Data Box Edge 输入你在[获取激活密钥](data-box-edge-deploy-prep.md#get-the-activation-key)中获取的激活密钥。
     2. 选择“应用”。

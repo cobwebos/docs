@@ -9,17 +9,14 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: c0eedc32ee96c94b8b3621afc0ee211ed2ff19f5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314869"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650066"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>探讨 v2 API 生成的视频索引器输出
-
-> [!Note]
-> 视频索引器 V1 API 已于 2018 年 8 月 1 日弃用。 从现在起，应该使用视频索引器 v2 API。 <br/>若要使用视频索引器 v2 API 进行开发，请参阅[此处](https://api-portal.videoindexer.ai/)的说明。 
 
 调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 见解包括脚本、ocr、人脸、主题、块等维度。维度包含视频中出现每个维度时显示的时间范围实例。  
 
@@ -163,7 +160,7 @@ ms.locfileid: "58314869"
 |标签|[labels](#labels) 维度。|
 |截图|[shots](#shots) 维度。|
 |brands|[brands](#brands) 维度。|
-|audioEffects|[audioEffects](#audioEffects) 维度。|
+|audioEffects|[audioEffects](#audioeffects) 维度。|
 |情绪|[sentiments](#sentiments) 维度。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 维度。|
 |textualContentModeration|[textualConentModeration](#textualcontentmoderation) 维度。|
@@ -550,7 +547,7 @@ instances|此块的时间范围列表。|
 |SpeakerLongestMonolog|发言人的最长独白。 如果发言人在独白中有沉默，则会将沉默期包含在内。 删除独白开头和结尾的沉默期。| 
 |SpeakerTalkToListenRatio|计算方式为将发言人的独白时间（开头和结尾之间没有沉默期）除以视频总时间。 时间将四舍五入为三位小数。|
 
-#### <a name="audioeffects"></a>audioEffects
+#### <a name="a-idaudioeffectsaudioeffects"></a><a id="audioEffects"/>audioEffects
 
 |名称|描述|
 |---|---|

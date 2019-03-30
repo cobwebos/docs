@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: 4f6d94c7090c2bbb0335d46b60be320b2fc19375
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55962819"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651117"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以按照以下文章中的步骤将其他用户添加到“实验室创建者”角色：[将用户添加到“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
@@ -37,9 +37,9 @@ ms.locfileid: "55962819"
 
         ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. 在“选择虚拟机规范”页上执行以下步骤：
-    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 
+    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，**小型**， **medium**，**大型**，以及**GPU**允许大小。
     2. 选择要在其中创建 VM 的**区域**。 
-    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 
+    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，您会看到一个选项以启用远程桌面连接它。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
     4. 选择“**下一步**”。
 
         ![指定 VM 规范](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ ms.locfileid: "55962819"
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. 在本教程中，以下步骤是可选步骤： 
     1. 选择“启动”来启动模板 VM。
-    2. 选择“连接”以连接到模板 VM。 
+    2. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，你选择是否想要使用 SSH 或 rdp 连接 （如果启用了 RDP） 连接。
     3. 在模板 VM 上安装并配置软件。 
     4. **停止** VM。  
     5. 输入模板的**说明**

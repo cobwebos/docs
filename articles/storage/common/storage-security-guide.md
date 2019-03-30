@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e0c8d4883bb9183f866450477df972fc66c960c5
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 329782a436924355dbdfbb5db260e88795394697
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369737"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650115"
 ---
 # <a name="azure-storage-security-guide"></a>Azure 存储安全指南
 
@@ -46,7 +46,7 @@ Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助�
 * 使用[存储分析](#storage-analytics)审核 Azure 存储的访问
 
   此部分介绍如何在存储分析日志中查找某个请求的相关信息。 我们将查看实际的分析记录数据，并了解如何分辨请求是否是利用存储帐户密钥、共享访问签名还是匿名方式发出的，以及该请求是成功还是失败。
-* [使用 CORS 启用基于浏览器的客户端](#Cross-Origin-Resource-Sharing-CORS)
+* [使用 CORS 启用基于浏览器的客户端](#cross-origin-resource-sharing-cors)
 
   此部分介绍如何允许跨域资源共享 (CORS)。 我们将讨论跨域访问，以及如何使用 Azure 存储内置的 CORS 功能来处理这种访问。
 

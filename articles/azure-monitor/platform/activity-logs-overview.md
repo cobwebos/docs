@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: fb3ed970b7f92e1cc06a9d1023e01f5888915e94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 94465e95dbf5f2eb381c124349bf8fda6622a6c2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088666"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58650285"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -35,7 +35,6 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 > [!NOTE]
 > [新型警报](../../azure-monitor/platform/alerts-overview.md)在创建和管理活动日志警报规则时提供了增强的体验。  [了解详细信息](../../azure-monitor/platform/alerts-activity-log.md)。
 
-
 ## <a name="categories-in-the-activity-log"></a>活动日志中的类别
 活动日志包含多个数据类别。 有关这些类别的架构的完整详细信息，请参阅[此文章](../../azure-monitor/platform/activity-log-schema.md)。 其中包括：
 * 管理 - 此类别包含通过资源管理器执行的所有创建、更新、删除和行动操作的记录。 此类别中的事件类型的示例包括“创建虚拟机”和“删除网络安全组”。用户或应用程序通过资源管理器所进行的每一个操作都会作为特定资源类型上的操作建模。 如果操作类型为“写入”、“删除”或“操作”，则该操作的开始、成功或失败记录都会记录在管理类别中。 管理类别还包括任何对订阅中基于角色的访问控制进行的更改。
@@ -48,9 +47,11 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * **Policy** - 此类别包含 Azure Policy 执行的所有效果操作的记录。 在此类别中看到的事件类型示例包括“审核”和“拒绝”。 Policy 执行的每个操作建模为对资源执行的操作。
 
 ## <a name="event-schema-per-category"></a>每个类别的事件架构
+
 [请参阅此文章，了解每个类别的活动日志事件架构。](../../azure-monitor/platform/activity-log-schema.md)
 
 ## <a name="what-you-can-do-with-the-activity-log"></a>可以对活动日志执行的操作
+
 可以对活动日志执行的部分操作如下：
 
 ![Azure 活动日志](./media/activity-logs-overview/Activity_Log_Overview_v3.png)
@@ -58,12 +59,13 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 * 在 **Azure 门户**中查询和查看活动日志。
 * [根据活动日志事件创建警报](../../azure-monitor/platform/activity-log-alerts.md)。
-* [将活动日志流式传输到**事件中心**](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)，方便第三方服务或自定义分析解决方案（例如 PowerBI）引入。
-* 在 PowerBI 中使用 [PowerBI 内容包](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)分析活动日志。
+* [到 Stream**事件中心**](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) ，方便第三方服务或 Power BI 等自定义分析解决方案引入。
+* 在 Power BI 使用数据进行分析[ **Power BI 内容包**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)。
 * [将活动日志保存到**存储帐户**进行存档或手动检查](../../azure-monitor/platform/archive-activity-log.md)。 可以使用“日志配置文件”指定保留时间（天）。
 * 通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>在 Azure 门户中查询活动日志
+
 在 Azure 门户中，可在多个位置查看活动日志：
 * 可通过在左侧导航窗格中的“所有服务”下搜索活动日志进行访问的“活动日志”。
 * 默认情况下在左侧导航窗格中显示的“监视”。 活动日志是 Azure Monitor 的一部分。
@@ -86,6 +88,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 若要获得更强大的功能，可以单击“日志”图标，这会在[收集和分析活动日志解决方案](../../azure-monitor/platform/collect-activity-logs.md)中显示活动日志数据。 “活动日志”边栏选项卡提供对日志的基础筛选/浏览体验，但 Azure Monitor 日志功能能够以更强大的方式对数据进行透视、查询和可视化。
 
 ## <a name="export-the-activity-log-with-a-log-profile"></a>使用日志配置文件导出活动日志
+
 **日志配置文件**控制如何导出活动日志。 可以使用日志配置文件配置：
 
 * 应将活动日志发送到何处：存储帐户或事件中心
@@ -102,13 +105,14 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 >  当前无法将数据存档到受保护虚拟网络后面的存储帐户。
 
 > [!WARNING]
-> 存储帐户中日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> 存储帐户中日志数据的格式已在 2018 年 11 月 1 日更改为 JSON Lines。 [请参阅此文章来了解此影响，以及如何通过更新工具来处理新格式。](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 这些设置可以通过门户中活动日志边栏选项卡上的“导出”选项进行配置。 也可以[使用 Azure 监视器 REST API](https://msdn.microsoft.com/library/azure/dn931927.aspx)、PowerShell cmdlet 或 CLI 以编程方式对其进行配置。 一个订阅只能有一个日志配置文件。
 
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>通过 Azure 门户配置日志配置文件
+
 可以在 Azure 门户中使用“导出到事件中心”选项将活动日志流式传输到事件中心，或者将其存储在存储帐户中。
 
 1. 使用门户左侧的菜单导航到“活动日志”。
@@ -117,7 +121,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 2. 单击边栏选项卡顶部的“导出到事件中心”按钮。
 
     ![门户中的“导出”按钮](./media/activity-logs-overview/activity-logs-portal-export-v2.png)
-3. 在显示的边栏选项卡中，可以选择：  
+3. 在显示的边栏选项卡中，可以选择：
    * 要导出事件的区域
    * 要保存事件的存储帐户
    * 要在存储中保留这些事件的天数。 设置为 0 天将永久保留日志。
@@ -132,13 +136,13 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 #### <a name="get-existing-log-profile"></a>获取现有的日志配置文件
 
-```
+```powershell
 Get-AzLogProfile
 ```
 
 #### <a name="add-a-log-profile"></a>添加日志配置文件
 
-```
+```powershell
 Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Location global,westus,eastus -RetentionInDays 90 -Category Write,Delete,Action
 ```
 
@@ -152,7 +156,8 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | 类别 |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
 #### <a name="remove-a-log-profile"></a>删除日志配置文件
-```
+
+```powershell
 Remove-AzLogProfile -name my_log_profile
 ```
 
@@ -185,6 +190,6 @@ az monitor log-profiles delete --name <profile name>
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 * [详细了解活动日志（以前称为审核日志）](../../azure-resource-manager/resource-group-audit.md)
 * [将 Azure 活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)
-

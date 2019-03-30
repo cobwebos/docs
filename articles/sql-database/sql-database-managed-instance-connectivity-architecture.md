@@ -4,7 +4,7 @@ description: 了解 Azure SQL 数据库托管实例的通信和连接体系结�
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
+ms.custom: fasttrack-edit
 ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: c7587b6cb2b4b30e265657b9d3792c9d4acd4428
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621543"
+ms.locfileid: "58651306"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>对于 Azure SQL 数据库中的托管实例的连接体系结构 
 
@@ -110,7 +110,8 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点是该
 |管理  |80、443、12000|TCP     |任意              |AzureCloud  |允许 |
 |mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |允许 |
 
-> 请确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 如果入站和输出规则单独配置为每个端口，托管实例预配通过 ARM 部署可能会失败。 
+> [!IMPORTANT]
+> 确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 如果为每个端口分别配置入站和输出的规则，托管实例预配通过 ARM 部署将失败。 如果这些端口是在单独的规则，则部署将失败，错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI 子网是指在窗体 10.x.x.x/y 中的子网的 IP 地址范围。 您可以在 Azure 门户中，子网属性中找到此信息。
 

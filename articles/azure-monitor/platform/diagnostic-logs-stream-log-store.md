@@ -1,6 +1,6 @@
 ---
-title: 将 Azure 诊断日志流式传输到 Log Analytics
-description: 了解如何将 Azure 诊断日志流式传输到 Log Analytics 工作区。
+title: Stream Azure 诊断日志到 Azure Monitor 中的 Log Analytics 工作区
+description: 了解如何为 Azure Monitor 中的 Log Analytics 工作区的 Azure 诊断日志流式传输。
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,27 +8,26 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: bd760fca20a602127e7d33913547dcb2c6bc95f6
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351537"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630788"
 ---
-# <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>将 Azure 诊断日志流式传输到 Log Analytics
+# <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Stream Azure 诊断日志到 Azure Monitor 中的 Log Analytics 工作区
 
-可以使用门户、PowerShell cmdlet 或 Azure CLI 将 [Azure 诊断日志](diagnostic-logs-overview.md)近实时地流式传输到 Azure Log Analytics。
+**[Azure 诊断日志](diagnostic-logs-overview.md)** 可以以到 Log Analytics 工作区，使用门户、 PowerShell cmdlet 或 Azure CLI 的 Azure Monitor 中的近实时方式流式传输。
 
-## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>可以对 Log Analytics 中的诊断日志执行的操作
+## <a name="what-you-can-do-with-diagnostics-logs-in-a-log-analytics-workspace"></a>在 Log Analytics 工作区中如何使用诊断日志
 
-Azure Log Analytics 是一种灵活的日志搜索和分析工具，利用该工具，可以深入了解从 Azure 资源生成的原始日志数据。 其中一些功能包括：
+Azure Monitor 提供一个灵活的日志查询和分析工具，使您能够深入了解从 Azure 资源生成的原始日志数据。 其中一些功能包括：
 
-* **日志搜索** - 对日志数据编写高级查询、关联来自各种源的日志，甚至生成可以固定到 Azure 仪表板的图表。
-* **警报** - 当检测到一个或多个事件与特定查询匹配时，通过电子邮件或 webhook 调用进行通知。
-* **解决方案** - 使用预生成的视图和仪表板，立即了解日志数据。
+* **日志查询**-写转移日志数据，将日志从各种源，并生成图表的高级的查询可固定到 Azure 仪表板。
+* **警报**-当一个或多个事件与特定查询匹配，并发出通知与使用 Azure 监视器将发出警报的电子邮件或 webhook 调用时进行检测。
 * **高级分析** - 应用机器学习和模式匹配算法，确定日志揭示的可能问题。
 
-## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics"></a>启用诊断日志到 Log Analytics 的流式传输
+## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>启用诊断日志到 Log Analytics 工作区的流式传输
 
 可以通过门户或使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 以编程方式启用诊断日志的流式传输。 无论采用哪种方式，都可以创建一个诊断设置并在其中指定 Log Analytics 工作区，以及要发送到该工作区的日志类别和指标。 诊断日志类别是一类可由资源提供的日志。
 
@@ -42,9 +41,8 @@ Azure Log Analytics 是一种灵活的日志搜索和分析工具，利用该工
 >
 
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>使用门户流式传输诊断日志
-1. 在门户中，导航到 Azure Monitor 并单击“诊断设置”
+1. 在门户中，导航到 Azure Monitor 并单击**诊断设置**中**设置**菜单。
 
-    ![Azure Monitor 的“监视”部分](media/diagnostic-logs-stream-log-store/diagnostic-settings-blade.png)
 
 2. （可选）按资源组或资源类型筛选列表，并单击要为其设置诊断设置的资源。
 
@@ -97,9 +95,9 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 仅当 `--workspace` 不是对象 ID 时，才需要 `--resource-group` 参数。
 
-## <a name="how-do-i-query-the-data-in-log-analytics"></a>如何在 Log Analytics 中查询数据？
+## <a name="how-do-i-query-the-data-from-a-log-analytics-workspace"></a>如何查询 Log Analytics 工作区中的数据？
 
-在门户的“日志搜索”边栏选项卡中或作为 Log Analytics 的一部分的高级分析体验中，可以查询诊断日志作为 AzureDiagnostics 表下日志管理解决方案的一部分。 此外，还可以安装 [Azure 资源的多个解决方案](../../azure-monitor/insights/solutions.md)，以立即深入了解发送到 Log Analytics 的日志数据。
+在 Azure Monitor 门户的日志边栏选项卡，您可以查询诊断日志作为 AzureDiagnostics 表下日志管理解决方案的一部分。 此外，还有[的 Azure 资源的多个监视解决方案](../../azure-monitor/insights/solutions.md)可以安装以立即深入到 Azure Monitor 发送的日志数据。
 
 ### <a name="known-limitation-column-limit-in-azurediagnostics"></a>已知的限制： AzureDiagnostics 列限制
 因为许多资源发送的数据类型发送到同一个表 (_AzureDiagnostics_)，此表的架构是超级一组的收集的所有不同的数据类型的架构。 例如，如果创建了以下数据类型的集合的诊断设置后，所有正在发送到同一个工作区：

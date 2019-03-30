@@ -4,17 +4,21 @@ description: 介绍 Azure Migrate 收集器设备升级。
 author: musa-57
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 03/29/2019
 ms.author: hamusa
 services: azure-migrate
-ms.openlocfilehash: f9f2ef25a2054d92cdcc3ab33ea9234883e352d6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7cd44318716200d665ece9ffecc45225bdfb85eb
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484502"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648667"
 ---
 # <a name="collector-appliance-updates"></a>收集器设备更新
+
+本文总结了 [Azure Migrate](migrate-overview.md) 中的收集器设备的升级信息。
+
+Azure Migrate 收集器是一种轻量级设备，用于在迁移到 Azure 之前发现本地 vCenter 环境，以便进行评估。 [了解详细信息](concepts-collector.md)。
 
 ## <a name="how-to-upgrade-the-appliance"></a>如何升级设备
 
@@ -33,11 +37,19 @@ ms.locfileid: "58484502"
 
 ## <a name="collector-update-release-history"></a>收集器更新版本历史记录
 
-本文总结了 [Azure Migrate](migrate-overview.md) 中的收集器设备的升级信息。
-
-Azure Migrate 收集器是一种轻量级设备，用于在迁移到 Azure 之前发现本地 vCenter 环境，以便进行评估。 [了解详细信息](concepts-collector.md)。
-
 ### <a name="continuous-discovery-upgrade-versions"></a>持续发现：升级版本
+
+#### <a name="version-101014-released-on-03292019"></a>版本 1.0.10.14 （03/29/2019年上发布）
+
+包含几个 UI 增强功能。
+
+哈希值，用于升级[打包 1.0.10.14](https://aka.ms/migrate/col/upgrade_10_14)
+
+**算法** | **哈希值**
+--- | ---
+MD5 | 846b1eb29ef2806bcf388d10519d78e6
+SHA1 | 6243239fa49c6b3f5305f77e9fd4426a392d33a0
+SHA256 | fb058205c945a83cc4a31842b9377428ff79b08247f3fb8bb4ff30c125aa47ad
 
 #### <a name="version-101012-released-on-03132019"></a>版本 1.0.10.12 （03/13/2019年上发布）
 

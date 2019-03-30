@@ -1,9 +1,9 @@
 ---
-ms.openlocfilehash: 0bab537bad291c0a1ed352c86ad77de3f35a75f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d94e43d649608297a97a4392d44f789ba384e14
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58015471"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631988"
 ---
-若要正确地清除会话后，调用 dispose （）。
+若要正确地清除会话后，调用`Dispose()`。
