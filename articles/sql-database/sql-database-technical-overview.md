@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: 711e51a075ce25ef3aa3c9c7e8784c914c8d0581
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.date: 03/29/2019
+ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982261"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670829"
 ---
 # <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -95,13 +95,21 @@ SQL 数据库提供以下两种购买模型：
 
 - **Azure 存储**：用于低价存档大量遥测
 - **Azure 事件中心**：用于将 SQL 数据库遥测与自定义监视解决方案或热门管道集成
-- **Azure Log Analytics**：用于具有报告、警报和缓解功能的内置监视解决方案。
+- **Azure Monitor 日志**：用于具有报告、警报和缓解功能的内置监视解决方案。
 
     ![体系结构](./media/sql-database-metrics-diag-logging/architecture.png)
 
 ## <a name="availability-capabilities"></a>可用性功能
 
-Azure 行业领先的 99.99% 可用性服务级别协议 [(SLA)](https://azure.microsoft.com/support/legal/sla/)（由 Microsoft 管理的数据中心的全球网络提供支持），有助于保持应用全天候运行。 Azure 平台完全管理每个数据库，并保证不会丢失数据并实现高百分比数据可用性。 Azure 会自动处理修补、备份、复制、故障检测；基础的潜在硬件、软件或网络故障；部署 bug 修复、故障转移、数据库升级和其他维护任务。 标准可用性是通过将计算层与存储层相隔离来实现的。 高级可用性的实现方式是将计算和存储层集成到单个节点以提高性能，然后藉此实施类似于 Always On 可用性组的技术。 有关 Azure SQL 数据库的高可用性功能的完整讨论，请参阅 [SQL 数据库可用性](sql-database-high-availability.md)。 此外，SQL 数据库还提供内置[业务连续性和全局可伸缩性](sql-database-business-continuity.md)功能，包括：
+在传统 SQL Server 环境中，通常必须 （至少） 2 的计算机本地使用设置的数据 （使用功能，如 AlwaysOn 可用性组或故障转移群集实例） 的完全相同 （以同步方式维护） 副本来防范单个计算机/组件故障。  这可提供高可用性，但不能防止破坏您的数据中心的自然灾难。
+ 
+灾难恢复假定灾难性事件，都将是地理位置上本地化足够远具有另一计算机/组的计算机与你的数据的副本。  在 SQL Server，您可以使用 Always On 可用性组在异步模式下运行以获取此功能。  浅问题的速度通常意味着用户不想等待复制之前提交事务，因此没有数据丢失的执行计划外故障转移时远而发生的。
+
+高级和业务关键服务中的数据库层已[执行类似](sql-database-high-availability.md#premium-and-business-critical-service-tier-availability)到可用性组的同步。 较低服务层中的数据库提供了通过使用存储冗余[不同，但等效机制](sql-database-high-availability.md#basic-standard-and-general-purpose-service-tier-availability)。 没有针对单计算机故障提供保护的逻辑。  活动异地复制功能使你能够防范灾难其中整个区域被销毁。
+
+Azure 可用性区域是高可用性问题上的播放。  它将尝试以防范构建在单个区域中的单个数据中心服务中断。  因此，它想要防止断电情况或生成的网络。 在 SQL Azure，这将使用通过将不同的副本放在不同的可用性区域中 (不同建筑物，有效地)，否则像以前一样工作。 
+
+事实上，Azure 的业界领先的 99.99%可用性服务级别协议[(SLA)](https://azure.microsoft.com/support/legal/sla/)，由 Microsoft 托管数据中心的全球网络提供支持，有助于保持应用全天候运行。 Azure 平台完全管理每个数据库，并保证不会丢失数据并实现高百分比数据可用性。 Azure 会自动处理修补、备份、复制、故障检测；基础的潜在硬件、软件或网络故障；部署 bug 修复、故障转移、数据库升级和其他维护任务。 标准可用性是通过将计算层与存储层相隔离来实现的。 高级可用性的实现方式是将计算和存储层集成到单个节点以提高性能，然后藉此实施类似于 Always On 可用性组的技术。 有关 Azure SQL 数据库的高可用性功能的完整讨论，请参阅 [SQL 数据库可用性](sql-database-high-availability.md)。 此外，SQL 数据库还提供内置[业务连续性和全局可伸缩性](sql-database-business-continuity.md)功能，包括：
 
 - **[自动备份](sql-database-automated-backups.md)**：
 
@@ -141,11 +149,14 @@ SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库�
 
 ### <a name="adaptive-query-processing"></a>自适应查询处理
 
-我们还将向 SQL 数据库添加[自适应查询处理](/sql/relational-databases/performance/adaptive-query-processing)系列功能，包括交错执行多语句表值函数，批处理模式内存授予反馈和批处理模式自适应联接。 每个自适应查询处理功能均应用类似的“学习和适应”技巧，帮助进一步解决与历史上棘手的查询优化问题相关的性能问题。
+我们还将向 SQL 数据库添加[自适应查询处理](/sql/relational-databases/performance/intelligent-query-processing)系列功能，包括交错执行多语句表值函数，批处理模式内存授予反馈和批处理模式自适应联接。 每个自适应查询处理功能均应用类似的“学习和适应”技巧，帮助进一步解决与历史上棘手的查询优化问题相关的性能问题。
 
 ## <a name="advanced-security-and-compliance"></a>高级安全性和符合性
 
 SQL 数据库提供一系列[内置安全性和符合性功能](sql-database-security-overview.md)，帮助应用程序满足各种安全性和符合性要求。
+
+> [!IMPORTANT]
+> Azure SQL 数据库 （所有部署选项），已通过许多法规标准认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，可以从中找到 [SQL 数据库法规认证](https://www.microsoft.com/trustcenter/compliance/complianceofferings)的最新列表。
 
 ### <a name="advance-threat-protection"></a>高级威胁防护
 
@@ -234,7 +245,7 @@ SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的
 ## <a name="engage-with-the-sql-server-engineering-team"></a>与 SQL Server 工程团队合作
 
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server)：询问数据库管理问题
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server)：询问开发问题
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/sql-server)：询问开发问题
 - [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?category=sqlserver)：询问技术问题
 - [反馈](https://aka.ms/sqlfeedback)：报告 Bug 和请求功能
 - [Reddit](https://www.reddit.com/r/SQLServer/)：讨论 SQL Server

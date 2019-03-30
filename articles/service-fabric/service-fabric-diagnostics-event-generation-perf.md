@@ -4,7 +4,7 @@ description: 了解用于监视和诊断 Azure Service Fabric 群集的性能计
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 114d71227e3cf3d0f235fc63135534b1030d4adc
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: ee1608c40801f568b38ace4670b0d5ea7f73003c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55188332"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663071"
 ---
 # <a name="performance-metrics"></a>性能指标
 
@@ -32,7 +32,7 @@ ms.locfileid: "55188332"
 | 计数器类别 | 计数器名称 |
 | --- | --- |
 | 逻辑磁盘 | 逻辑磁盘可用空间 |
-| PhysicalDisk(per Disk) | 平均磁盘读取队列长度 |
+| PhysicalDisk(per Disk) | 平均值磁盘读取队列长度 |
 | PhysicalDisk(per Disk) | 平均磁盘写入队列长度 |
 | PhysicalDisk(per Disk) | 平均磁盘秒数/读取 |
 | PhysicalDisk(per Disk) | 平均磁盘秒数/写入 |

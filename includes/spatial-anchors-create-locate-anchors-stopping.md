@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: 8e02067b32d9404a5bbdf7362b2cc32712b96250
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6d6886996d926ce778600dfa1d69caaa1c7ac004
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57907620"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632078"
 ---
 ## <a name="pause-reset-or-stop-the-session"></a>暂停、 重置，或停止会话
 
-若要停止该会话，可以调用 stop （）。 执行此操作将停止任何观察程序和环境处理，即使调用 ProcessFrame()。 然后可以调用 start （） 恢复处理。 当恢复时，维护该会话已捕获的环境数据。
+若要停止会话暂时，你可以调用`Stop()`。 执行此操作将停止任何观察程序和环境处理，即使调用 ProcessFrame()。 然后可以调用`Start()`恢复处理。 当恢复时，维护该会话已捕获的环境数据。

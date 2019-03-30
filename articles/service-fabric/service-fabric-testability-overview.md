@@ -4,7 +4,7 @@ description: 本文介绍 Service Fabric 中用于针对服务引入故障和运
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: 1f064276-293a-4989-a513-e0d0b9fdf703
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: a4ddfc17a81a6816bc797bab4c3b5a8b2fc4334e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 3581550779b2387515b4f300d211b4e0a894edc7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425232"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662347"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>故障分析服务介绍
 故障分析服务是在 Microsoft Azure Service Fabric 基础上专为测试服务构建的。 借助故障分析服务，可以引入有意义的故障，并对应用程序运行完整的测试方案。 这些故障和方案将执行并验证服务在整个生命周期内要经历的大量状态和转换，所有一切都以受控、安全且一致的方式进行。
@@ -46,9 +46,9 @@ ms.locfileid: "39425232"
 ## <a name="testing-distributed-systems"></a>测试分布式系统
 Service Fabric 让编写和管理分布式可扩展应用程序的工作变得更加轻松。 故障分析服务使得测试分布式应用程序变得更加容易。 在测试时有三个需要解决的主要问题：
 
-1. 模拟/生成在现实世界中可能发生的故障：Service Fabric 的一个重要方面是它允许分布式应用程序从各种故障中恢复。 然而，为了测试应用程序能够从这些故障中恢复过来，我们需要一种机制，在受控的测试环境中模拟/生成这些现实故障。
-1. 生成相关故障的能力：系统中的基本故障（例如网络故障、计算机故障）可轻松地单独生成。 生成可能在真实环境中由于这些个体故障的相互作用而发生的大量应用场景是一种非凡的能力。
-1. 跨各种开发和部署级别的统一体验：有很多能够执行各种故障的故障注入系统。 然而，当从单机开发人员方案转到在大型测试环境中运行相同的测试以在生产测试中使用它们时，在所有这些系统中的体验就很不理想。
+1. 在现实世界中可能发生的模拟/生成失败：Service Fabric 的重要方面之一是它允许分布式应用程序从各种故障中恢复。 然而，为了测试应用程序能够从这些故障中恢复过来，我们需要一种机制，在受控的测试环境中模拟/生成这些现实故障。
+1. 生成相关的故障的功能：可轻松地单独生成系统，例如网络故障、 计算机故障中的基本故障。 生成可能在真实环境中由于这些个体故障的相互作用而发生的大量应用场景是一种非凡的能力。
+1. 跨各种开发和部署级别的统一的体验：有许多可以执行各种类型的故障的故障注入系统。 然而，当从单机开发人员方案转到在大型测试环境中运行相同的测试以在生产测试中使用它们时，在所有这些系统中的体验就很不理想。
 
 尽管有很多用于解决上述问题的机制，仍然缺少一种能够保证完成相同任务的系统 - 从单机开发人员环境以各种方式转到生产群集测试。 故障分析服务可帮助应用程序开发人员专注于测试他们的业务逻辑。 故障分析服务可提供对服务与底层分布式系统的交互进行测试所需的所有能力。
 
@@ -62,7 +62,7 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
    
     b. 如果找到该节点，则它应该仅返回节点是否关闭。
 
-从测试角度看，为了验证故障，需要知道当引入故障时，故障实际发生的情况。 Service Fabric 提供的保证是当命令抵达节点时，该节点要么即将关闭，要么已经关闭。 在任何一种情况下，测试都应能够正确推断状态，并且在其验证中正确得出成功或失败的结论。 未采用 Service Fabric 来实现的提供相同故障的系统会遇到大量的网络、硬件和软件问题，这些问题会妨碍其提供上述保证。 在出现上述问题时，Service Fabric 将重新配置群集状态以解决问题，因此，故障分析服务仍然能够提供正确的保证。
+从测试角度看，为了验证故障，需要知道当引入故障时，故障实际发生的情况。 Service Fabric 提供的保证是当命令抵达节点时，该节点要么即将关闭，要么已经关闭。 在任何一种情况下，测试都应能够正确推断状态，并且在其验证中正确得出成功或失败的结论。 未采用 Service Fabric 来实现的提供相同故障的系统会遇到大量的网络、硬件和软件问题，这些问题会妨碍其提供上述保证。 在出现上述问题时，Service Fabric 会重新配置群集状态以解决问题，因此，故障分析服务仍然能够提供正确的保证。
 
 ### <a name="generating-required-events-and-scenarios"></a>生成需要的事件和方案
 尽管以一致的方式模拟真实故障开始就很难，但生成相关的故障则难上加难。 例如在发生以下情况时，在有状态持久化服务中出现数据丢失：
@@ -94,12 +94,12 @@ Service Fabric 让编写和管理分布式可扩展应用程序的工作变得�
 
 **PowerShell**
 
-若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块会自动加载以供使用。
+若要使用 PowerShell，必须安装 Service Fabric SDK。 安装 SDK 后，ServiceFabric PowerShell 模块自动加载以供使用。
 
 ## <a name="next-steps"></a>后续步骤
 若要创建真正的云级服务，必须确保在部署之前和之后，服务能够承受现实的故障。 在当今的服务世界中，能够快速创新以及将代码投入生产环境非常重要。 故障分析服务能够帮助服务开发人员确切实现该目的。
 
-使用内置[测试方案](service-fabric-testability-scenarios.md)测试应用程序和服务，或使用由故障分析服务提供的[故障操作](service-fabric-testability-actions.md)编写自己的测试方案。
+使用内置[测试方案](service-fabric-testability-scenarios.md)开始测试应用程序和服务，或使用由故障分析服务提供的[故障操作](service-fabric-testability-actions.md)编写自己的测试方案。
 
 <!--Image references-->
 [0]: ./media/service-fabric-testability-overview/faultanalysisservice.png

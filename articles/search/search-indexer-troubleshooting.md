@@ -10,20 +10,20 @@ ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: magottei
 ms.custom: seodec2018
-ms.openlocfilehash: 5ce27f16268c7a640b15fb0e95aed019b186e389
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: b527b759eb9c76ab6289e909001c5f7820f34ef4
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307898"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652410"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-search"></a>排查 Azure 搜索中的常见索引器问题
 
 在将数据索引到 Azure 搜索中时，索引器可能会遇到许多问题。 故障的主要类别包括：
 
-* [连接到数据源](#Data-Source-Connection-Errors)
-* [文档处理](#Document-Processing-Errors)
-* [目标为索引的文档引入](#Index-Errors)
+* [连接到数据源](#data-source-connection-errors)
+* [文档处理](#document-processing-errors)
+* [目标为索引的文档引入](#index-errors)
 
 ## <a name="data-source-connection-errors"></a>数据源连接错误
 

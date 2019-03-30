@@ -4,7 +4,7 @@ description: 介绍与升级 Service Fabric 应用程序相关的参数，包括
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: a4170ac6-192e-44a8-b93d-7e39c92a347e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2018
 ms.author: subramar
-ms.openlocfilehash: 73b48525566f9bf0107ba3b029c516ca294ca141
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 9a93c0993ee45e72b11b023982dfbbe8c6528272
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099186"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670611"
 ---
 # <a name="application-upgrade-parameters"></a>应用程序升级参数
 本文介绍 Azure Service Fabric 应用程序升级期间应用的各种参数。 应用程序升级参数控制升级期间应用的超时和运行状况检查，并指定在升级失败时必须应用的策略。 应用程序参数使用以下项应用于升级：
@@ -44,7 +44,7 @@ Visual Studio Service Fabric 应用程序升级参数通过“Visual Studio 升�
 ### <a name="required-parameters"></a>必需的参数
 （PS=PowerShell，VS=Visual Studio）
 
-| 参数 | 应用于 | 说明 |
+| 参数 | 应用于 | 描述 |
 | --- | --- | --- |
 ApplicationName |PS| 正在升级的应用程序的名称。 示例：fabric:/VisualObjects、fabric:/ClusterMonitor。 |
 ApplicationTypeVersion|PS|作为升级目标的应用程序类型版本。 |
@@ -62,7 +62,7 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 
 （PS=PowerShell，VS=Visual Studio）
 
-| 参数 | 应用于 | 说明 |
+| 参数 | 应用于 | 描述 |
 | --- | --- | --- |
 | ApplicationParameter |PS、VS| 指定应用程序参数的替代。<br>PowerShell 应用程序参数指定为哈希表名称/值对。 例如，@{ "VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1" }。<br>Visual Studio 应用程序参数可以在“发布 Service Fabric 应用程序”对话框的“应用程序参数文件”字段中指定。
 | 确认 |PS| 允许的值为 **True** 和 **False**。 提示你在运行 cmdlet 之前进行确认。 |
@@ -72,7 +72,7 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 | ForceRestart |PS、VS |如果更新配置或数据包而不更新服务代码，则仅当 ForceRestart 属性设置为 **True** 时，服务才会重启。 更新完成后，Service Fabric 将通知服务新的配置包或数据包可用。 该服务负责应用所做的更改。 如有必要，该服务可进行重启。 |
 | HealthCheckRetryTimeoutSec |PS、VS |声明升级失败之前，Service Fabric 继续执行运行状况评估的持续时间（以秒为单位）。 默认为 600 秒。 此持续时间在 *HealthCheckWaitDurationSec* 秒后开始。 在此 *HealthCheckRetryTimeout* 期间，Service Fabric 可能会对应用程序执行多次运行状况检查。 默认值为 10 分钟，应该针对应用程序相应地自定义该值。 |
 | HealthCheckStableDurationSec |PS、VS |在转到下一个升级域或完成升级之前，为了验证应用程序是否稳定而要等待的持续时间（以秒为单位）。 此等待持续时间用于防止在执行了运行状况检查后，未检测到运行状况更改。 默认值为 120 秒，应该针对应用程序相应地自定义该值。 |
-| HealthCheckWaitDurationSec |PS、VS | 完成升级域的升级后，在 Service Fabric 评估应用程序的运行状况之前需要等待的时间（以秒为单位）。 也可将此持续时间视为应用程序应先运行多长时间才可被视为正常运行。 如果运行状况检查通过，升级过程将转到下一个升级域。  如果运行状况检查失败，则在再次重试运行状况检查之前，Service Fabric 会等待 [UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) 秒的时间，直到 *HealthCheckRetryTimeoutSec* 秒的时间用完。 建议的默认值为 0 秒。 |
+| HealthCheckWaitDurationSec |PS、VS | 完成升级域的升级后，在 Service Fabric 评估应用程序的运行状况之前需要等待的时间（以秒为单位）。 也可将此持续时间视为应用程序在被认为正常运行之前应运行的时间。 如果运行状况检查通过，升级过程将转到下一个升级域。  如果运行状况检查失败，则在再次重试运行状况检查之前，Service Fabric 会等待 [UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) 秒的时间，直到 *HealthCheckRetryTimeoutSec* 秒的时间用完。 建议的默认值为 0 秒。 |
 | MaxPercentUnhealthyDeployedApplications|PS、VS |建议的默认值为 0。 指定在将应用程序视为不正常和升级失败之前，可以不正常的最大已部署应用程序数（请参阅[运行状况部分](service-fabric-health-introduction.md)）。 此参数在节点上定义应用程序运行状况，可帮助检查升级过程中的问题。 通常，应用程序的副本将与另一个节点负载均衡，使应用程序看上去运行正常，从而使升级继续。 通过指定严格的 *MaxPercentUnhealthyDeployedApplications* 运行状况，Service Fabric 可以快速检测应用程序包的问题，这样就产生了一种采用快速失败机制的升级。 |
 | MaxPercentUnhealthyServices |PS、VS |*DefaultServiceTypeHealthPolicy* 和 *ServiceTypeHealthPolicyMap* 的参数。 建议的默认值为 0。 指定在将应用程序视为不正常和升级失败之前，应用程序实例中可以不正常的最大服务数。 |
 | MaxPercentUnhealthyPartitionsPerService|PS、VS |*DefaultServiceTypeHealthPolicy* 和 *ServiceTypeHealthPolicyMap* 的参数。 建议的默认值为 0。 指定在将服务视为不正常之前，服务中可以不正常的最大分区数。 |
@@ -92,14 +92,15 @@ UnmonitoredManual | PS | 指示升级模式为“不受监视的手动”。 Ser
 
 ### <a name="required-parameters"></a>必需的参数
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 | --- | --- |
-| application-id  |要升级的应用程序的 ID。 <br> 这通常是不带“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“~”字符隔开。 例如，如果应用程序名称为“fabric:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp~app1”，在以前的版本中为“myapp/app1”。|
+| application-id  |要升级的应用程序的 ID。 <br> 这通常是不带“fabric:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为 fabric: / myapp/app1，应用程序标识为 myapp\~app1 6.0 + 和 myapp/app1 在以前版本中。|
 application-version |作为升级目标的应用程序类型版本。|
 parameters  |升级应用程序时应用的应用程序参数替代的 JSON 编码列表。|
 
 ### <a name="optional-parameters"></a>可选参数
-| 参数 | 说明 |
+
+| 参数 | 描述 |
 | --- | --- |
 default-service-health-policy | 默认使用的健康策略的 [JSON](https://docs.microsoft.com/rest/api/servicefabric/sfclient-model-servicetypehealthpolicy) 编码规范，用于评估服务类型的运行状况。 映射默认为空。 |
 failure-action | 允许的值为 **Rollback**、**Manual** 和 **Invalid**。 *Monitored* 升级遇到违反监视策略或运行状况策略的情况时需执行的补救操作。 <br>**Rollback** 指定将升级自动回退到升级前的版本。 <br>**Manual** 指示将升级切换到 *UnmonitoredManual* 升级模式。 <br>**Invalid** 指示故障操作无效。|

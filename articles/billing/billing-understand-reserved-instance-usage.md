@@ -1,5 +1,5 @@
 ---
-title: 了解即用即付订阅的 Azure 预留使用情况 | Microsoft Docs
+title: 了解即用即付订阅的 Azure 预订使用情况 |Microsoft Docs
 description: 了解如何读取使用情况，以了解如何应用即用即付订阅的 Azure 预留。
 services: billing
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: a3bacdb19dfe16a63cf1f89ef6fb162d08cb4d32
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57883774"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652529"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>了解即用即付订阅的 Azure 预留使用情况
 
@@ -64,7 +64,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL 数据库和 Cosmos DB 保留容量预留的使用情况
 
-以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。 
+以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。
 
 假设在美国东部地区运行 SQL 数据库第 4 代，你的预留信息将类似于下表所示：
 
@@ -93,6 +93,10 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 2. **ConsumptionMeter** 是 SQL 数据库资源的计量 ID。
 3. “计量 ID”是预留计量。 此计量的成本是 0 美元。 任何符合预留折扣条件的 SQL 数据库资源将在 CSV 文件中显示此计量 ID。
 
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如有任何疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
@@ -104,9 +108,3 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
-
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
-
-

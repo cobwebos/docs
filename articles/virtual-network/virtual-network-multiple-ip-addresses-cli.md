@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: jimdial
-ms.openlocfilehash: 5606fb2f01a79a517279809d6da21ec865ee8b0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b693500e785d41b2ad3339e26dd9fd3505891bc0
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110131"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648327"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli"></a>使用 Azure CLI 将多个 IP 地址分配给虚拟机
 
@@ -165,7 +165,7 @@ az vm create \
 
 ## <a name="add"></a>将 IP 地址添加到 VM
 
-完成以下步骤可将其他专用和公共 IP 地址添加到现有 Azure 网络接口。 这些示例是基于本文中所述的[方案](#Scenario)制作的。
+完成以下步骤可将其他专用和公共 IP 地址添加到现有 Azure 网络接口。 这些示例是基于本文中所述的[方案](#scenario)制作的。
 
 1. 打开命令行界面，然后在单个会话中完成本部分中的剩余步骤。 如果尚未安装并配置 Azure CLI，请完成 [Azure CLI 安装](/cli/azure/install-az-cli2?toc=%2fazure%2fvirtual-network%2ftoc.json)一文中的步骤，并使用 `az-login` 命令登录到 Azure 帐户。
 

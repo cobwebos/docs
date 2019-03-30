@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/12/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fa448975a5275e5aab4dc82b75433d188422e507
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ee987448f9f6d95e6f97317bec2f696e734cba20
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553332"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632929"
 ---
 #### <a name="expressroute-limits"></a>ExpressRoute 限制
 以下限制适用于每个订阅的 Azure ExpressRoute 资源。
@@ -24,6 +24,7 @@ ms.locfileid: "57553332"
 | 每个区域每个订阅，使用 Azure 资源管理器中的 ExpressRoute 线路 |10 |
 | Azure 专用对等互连具有 ExpressRoute Standard 的路由的最大数目 |4,000 |
 | Azure 专用对等互连的 ExpressRoute 高级版外接程序的路由的最大数目 |10,000 |
+| Azure 专用对等互连的 ExpressRoute 连接的 VNet 地址空间中的路由的最大数目 |200 | 
 | 具有 ExpressRoute Standard 的 Microsoft Azure 对等互连的路由的最大数目 |200 |
 | 最大数量的 Microsoft Azure ExpressRoute 高级版外接程序与对等互连的路由 |200 |
 | 链接到不同对等互连位置中相同虚拟网络的最大 ExpressRoute 线路数 |4 |

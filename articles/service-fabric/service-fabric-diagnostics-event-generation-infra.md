@@ -4,7 +4,7 @@ description: 了解用于监视和诊断 Azure Service Fabric 群集的平台级
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: 90ec06b01b11b5cbe119f41483eaf794af4e991b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: cbdbedf32e8a3dad85262f287b27a03df780d95a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243085"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662510"
 ---
 # <a name="monitoring-the-cluster"></a>监视群集
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/07/2019
 ms.author: robb
 ms.custom: include file
-ms.openlocfilehash: 4360196a33381d1a9c8316430339b9a80cb0dba3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4700573d3f5319599a6437d092e20d8013d2f7fb
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58016480"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58633035"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -33,4 +33,4 @@ ms.locfileid: "58016480"
 | Runbook | 一个操作组中的 10 个 runbook 操作。 | 致电支持人员。 |
 | SMS | 一个操作组中的 10 个短信操作。 另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
 | 语音 | 一个操作组中的 10 个语音操作。 另请参阅[速率限制信息](../articles/azure-monitor/platform/alerts-rate-limiting.md)。 | 致电支持人员。 |
-| Webhook | 一个操作组中的 10 个 webhook 操作。 其他限制目前[特定于操作的信息](../articles/azure-monitor/platform/action-groups.md#action-specific-information)。  | 致电支持人员。 |
+| Webhook | 一个操作组中的 10 个 webhook 操作。  Webhook 调用最大数量为 1500 每分钟每个订阅。 其他限制目前[特定于操作的信息](../articles/azure-monitor/platform/action-groups.md#action-specific-information)。  | 致电支持人员。 |

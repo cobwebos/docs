@@ -10,19 +10,19 @@ ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 02/09/2019
-ms.openlocfilehash: 8f24bab531143cad1974663eb71b173a20b6f51a
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 575b6384d910abac1c0a1184aef4aa72f686538c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287173"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648567"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
 
 Microsoft 帮助降低运行数据仓库的入门级的成本。  降低计算层能够处理非常高的查询现可用于 Azure SQL 数据仓库。 阅读完整公告[较低计算层支持第 2 代](https://azure.microsoft.com/blog/azure-sql-data-warehouse-gen2-now-supports-lower-compute-tiers/)。 下表中所述的区域中提供了新产品/服务。 对于支持的区域，现有的 Gen1 数据仓库可以通过以下任一方式升级到 Gen2：
 
 - **自动升级过程：** 一旦服务可用的区域中，不要开始自动升级。  当自动升级在特定区域启动时，将在你选择的维护计划期间进行单独的 DW 升级。
-- [**自升级到第 2 代：**](#Self-upgrade-to-Gen2)您可以控制何时升级通过执行自升级到第 2 代。 如果尚不支持你的区域，您可以从还原点还原直接到受支持的区域中的第 2 代实例。
+- [**自升级到第 2 代：**](#self-upgrade-to-gen2)您可以控制何时升级通过执行自升级到第 2 代。 如果尚不支持你的区域，您可以从还原点还原直接到受支持的区域中的第 2 代实例。
 
 ## <a name="automated-schedule-and-region-availability-table"></a>自动计划和区域可用性表
 

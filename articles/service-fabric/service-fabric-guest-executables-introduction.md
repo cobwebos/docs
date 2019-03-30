@@ -3,8 +3,8 @@ title: 将现有可执行文件部署到 Azure Service Fabric | Microsoft 文档
 description: 了解如何将现有应用程序打包为来宾可执行文件，以便部署到 Service Fabric 群集。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: aljo-microsoft
+manager: chackdan
 editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/15/2018
-ms.author: mfussell
-ms.openlocfilehash: cdaf3dae12c2c9da1f6bcbebbff560b98e62bade
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.author: aljo
+ms.openlocfilehash: b7efeb1b4d83f6a6b372f73a7c0a5ca9bffdc052
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212834"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670587"
 ---
 # <a name="deploy-an-existing-executable-to-service-fabric"></a>将现有可执行文件部署到 Service Fabric
 可以在 Azure Service Fabric 中运行任何类型的代码（如 Node.js、Java 或 C++）作为服务。 Service Fabric 将这些类型的服务称为来宾可执行文件。
@@ -33,7 +33,7 @@ ms.locfileid: "34212834"
 * 运行状况监视。 Service Fabric 运行状况监视功能可检测应用程序是否正在运行，并在出现故障时提供诊断信息。   
 * 应用程序生命周期管理。 除了提供无需停机的升级，Service Fabric 还可以在升级过程中报告坏健康事件时自动回滚到先前的版本。    
 * 密度。 可以在群集中运行多个应用程序，这样便无需使每个应用程序在自己的硬件上运行。
-* 可发现性：使用 REST，可以调用要在群集中查找其他服务的 Service Fabric 命名服务。 
+* 可发现性：使用 REST 可以调用要在群集中查找其他服务的 Service Fabric 命名服务。 
 
 ## <a name="samples"></a>示例
 * [打包和部署来宾可执行文件的示例](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
@@ -44,8 +44,8 @@ ms.locfileid: "34212834"
 
 * **应用程序清单**：应用程序清单用于描述应用程序。 其中会列出应用程序所包含的服务，以及用于定义应如何部署一个或多个服务的其他参数（如实例数）。
 
-  在 Service Fabric 中，应用程序就是一个部署和升级单元。 应用程序可以作为单一单元进行升级，从中可以管控潜在失败和可能的回滚。 Service Fabric 可保证要么升级成功，要么即使升级失败，也不会让应用程序处于未知或不稳定状态。
-* **服务清单**：服务清单描述服务的组件。 其中包括数据（如服务的名称和类型）及其代码和配置。 服务清单还包含一些可以用于在部署之后配置服务的其他参数。
+  在 Service Fabric 中，应用程序就是一个部署和升级单元。 可将应用程序作为一个单位进行升级，其中潜在的失败和潜在回滚受到管理。 Service Fabric 可保证要么升级成功，要么即使升级失败，也不会让应用程序处于未知或不稳定状态。
+* **服务清单** 服务清单描述服务的组件。 其中包括数据（如服务的名称和类型）及其代码和配置。 服务清单还包含一些可以用于在部署之后配置服务的其他参数。
 
 ## <a name="application-package-file-structure"></a>应用程序包文件结构
 应用程序应遵循预定义的目录结构，才能将应用程序部署到 Service Fabric。 下面的示例展示了此结构。

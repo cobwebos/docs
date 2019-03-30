@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 8445ab2c8797226b08519e2f186350a31416f049
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ab98c3be75fb59603be66ee84e0d288de56cdc91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578401"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648497"
 ---
 # <a name="odata-expression-syntax-for-filters-and-order-by-clauses-in-azure-search"></a>Azure 搜索中适用于筛选器和 order-by 子句的 OData 表达式语法
 
@@ -84,9 +84,11 @@ POST /indexes/hotels/docs/search?api-version=2017-11-11
 
 - `search.in` 函数测试给定字符串字段是否等于给定的值列表之一。 它还可以用于 any 或 all，以便将字符串集合字段的单个值与给定的值列表进行比较。 字段与列表中每个值之间的相等性以区分大小写的方式进行确定，这与 `eq` 运算符的方式相同。 因此，`search.in(myfield, 'a, b, c')` 等表达式相当于 `myfield eq 'a' or myfield eq 'b' or myfield eq 'c'`，但 `search.in` 的表现会好得多。 
 
-  `search.in` 函数的第一个参数是字符串字段引用（在 `any` 或 `all` 表达式中使用 `search.in` 的情况下，则为字符串集合字段中的范围变量）。 第二个参数是包含值列表的字符串，由空格和/或逗号分隔。 如果因为值包含空格和逗号而需要使用这些字符以外的分隔符，可以将可选的第三个参数指定为 `search.in`。 
-
-  第三个参数是字符串，当分析第二个参数中的值列表时，此字符串的每个字符或此字符串的子集将被视为分隔符。
+   `search.in` 函数的第一个参数是字符串字段引用（在 `any` 或 `all` 表达式中使用 `search.in` 的情况下，则为字符串集合字段中的范围变量）。 
+  
+   第二个参数是包含值列表的字符串，由空格和/或逗号分隔。 
+  
+   第三个参数是字符串的一个字符串，其中每个字符或此字符串的一部分被视为一个分隔符分析中的第二个参数的值列表时。 如果因为值包含空格和逗号而需要使用这些字符以外的分隔符，可以将可选的第三个参数指定为 `search.in`。 
 
   > [!NOTE]   
   > 某些方案需要将字段与大量常量值进行比较。 例如，使用筛选器实现安全剪裁可能需要将文档 ID 字段与请求用户被授予读取访问权限的 ID 列表进行比较。 在此类方案中，我们强烈建议使用 `search.in` 函数，而不要使用更复杂的相等表达式析取。 例如，使用 `search.in(Id, '123, 456, ...')` 而不是 `Id eq 123 or Id eq 456 or ....`。 
@@ -207,7 +209,7 @@ $filter=geo.intersects(location, geography'POLYGON((-122.031577 47.578581, -122.
 $filter=description eq null
 ```
 
-查找所有酒店名称等于 Roach motel 或预算酒店）。 短语包含空格，这是默认分隔符。 若要指定的分隔符替代，请用单引号作为筛选器表达式的一部分的新分隔符：  
+查找所有酒店名称等于 Roach motel 或预算酒店）。 短语包含空格，这是默认分隔符。 可以将 specicfy 在单引号中的一个替代分隔符作为第三个字符串参数：  
 
 ```
 $filter=search.in(name, 'Roach motel,Budget hotel', ',')
@@ -225,7 +227,7 @@ $filter=search.in(name, 'Roach motel|Budget hotel', '|')
 $filter=tags/any(t: search.in(t, 'wifi, pool'))
 ```
 
-找到多个标记、 加热总是随身携带毛巾机架或 hairdryer 包含上的匹配项。 请记住默认空间分隔符为处于无法工作时指定备用分隔符。 
+在标记中找到在集合中，如加热总是随身携带毛巾机架或 hairdryer 包含短语的匹配的项。 
 
 ```
 $filter=tags/any(t: search.in(t, 'heated towel racks,hairdryer included', ','))

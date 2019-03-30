@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e8017049218bed5a1b1bd86b68dc4342b4044723
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f0880ad2ab02fad574f5204741b0fa03e4ef0338
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109774"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648057"
 ---
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理为发布的应用设置自定义主页
 
@@ -69,9 +69,10 @@ ms.locfileid: "58109774"
 
 1. 打开标准 PowerShell 窗口，并运行以下命令：
 
-    ```
+    ```powershell
      Install-Module -Name AzureAD
     ```
+
     如果以非管理员身份运行该命令，请使用 `-scope currentuser` 选项。
 2. 在安装期间，请选择“Y”安装来自 Nuget.org 的两个包。这两个包是必需的。 
 
@@ -81,20 +82,22 @@ ms.locfileid: "58109774"
 
 1. 在同一 PowerShell 窗口中，导入 Azure AD 模块。
 
-    ```
+    ```powershell
     Import-Module AzureAD
     ```
 
 2. 以租户管理员身份登录到 Azure AD 模块。
 
-    ```
+    ```powershell
     Connect-AzureAD
     ```
+
 3. 基于其主页 URL 查找应用。 可以通过在门户中转到“Azure Active Directory” > “企业应用程序” > “所有应用程序”找到 URL。 此示例使用 *sharepoint-iddemo*。
 
+    ```powershell
+    Get-AzureADApplication | Where-Object { $_.Homepage -like "sharepoint-iddemo" } | Format-List DisplayName, Homepage, ObjectID
     ```
-    Get-AzureADApplication | where { $_.Homepage -like "sharepoint-iddemo" } | fl DisplayName, Homepage, ObjectID
-    ```
+
 4. 随后应会返回如下所示的结果。 复制 ObjectID GUID，以便在下一部分中使用。
 
     ```
@@ -109,7 +112,7 @@ ms.locfileid: "58109774"
 
 1. 确认应用程序是否正确，再将 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 替换为在上一部分中复制的 ObjectID。
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4.
     ```
 
@@ -117,23 +120,25 @@ ms.locfileid: "58109774"
 
 2. 创建一个空白应用程序对象用于保存想要做出的更改。 此变量包含你想要更新的值。 在此步骤中没有创建任何内容。
 
-    ```
+    ```powershell
     $appnew = New-Object "Microsoft.Open.AzureAD.Model.Application"
     ```
 
 3. 将主页 URL 设置为所需的值。 该值必须是已发布应用的子域路径。 例如，如果将主页 URL 从 `https://sharepoint-iddemo.msappproxy.net/` 更改为 `https://sharepoint-iddemo.msappproxy.net/hybrid/`，则应用用户将直接转到自定义主页。
 
-    ```
+    ```powershell
     $homepage = "https://sharepoint-iddemo.msappproxy.net/hybrid/"
     ```
+
 4. 使用在“步骤 1：查找应用的 ObjectID”中复制的 GUID (ObjectID) 进行更新。
 
-    ```
+    ```powershell
     Set-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4 -Homepage $homepage
     ```
+
 5. 若要确认更改是否成功，请重新启动应用。
 
-    ```
+    ```powershell
     Get-AzureADApplication -ObjectId 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 

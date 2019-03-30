@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
-ms.openlocfilehash: eaa285318a868d0ccee07d830e1cc1be18f457a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 533770d98b146dea01e91e1249115c4b5c074b3c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181548"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648429"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建虚拟机 
 
@@ -30,7 +30,7 @@ ms.locfileid: "58181548"
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="multi-vm-vs-single-vm-resource-manager-templates"></a>多 VM 和单 VM 的 Resource Manager 模板比较
-可通过两种方法使用 Resource Manager 模板在开发测试实验室中创建 VM：预配 Microsoft.DevTestLab/labs/virtualmachines 资源或预配 Microsoft.Commpute/virtualmachines 资源。 这两种资源适用于不同的方案，并且需要不同的权限。
+有两种方法在使用 Resource Manager 模板的开发测试实验室中创建 Vm： 预配 Microsoft.DevTestLab/labs/virtualmachines 资源或预配 microsoft.compute/virtualmachines 资源。 这两种资源适用于不同的方案，并且需要不同的权限。
 
 - 使用 Microsoft.DevTestLab/labs/virtualmachines 资源类型（在模板中的“资源”属性中声明）的 Resource Manager 模板可以预配单个实验室 VM。 在开发测试实验室虚拟机列表中，每个 VM 显示为单个项：
 

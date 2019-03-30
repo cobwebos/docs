@@ -10,23 +10,24 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.date: 10/15/2017
-ms.openlocfilehash: 5a1cae376ab9db2b0c4b5e0e5514bf7745593433
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8ad70c5d22ca73258fa9e6501d03d5409a4e45d8
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894574"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652478"
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建和部署逻辑应用
 
-使用 Azure 逻辑应用提供的 Azure 资源管理器模板，不仅可以创建用于自动处理工作流的逻辑应用，还可以定义对部署使用的资源和参数。 可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。 详细了解[逻辑应用的资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)和 [Azure 资源管理器模板结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。 有关 JSON 语法和属性，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
+使用 Azure 逻辑应用提供的 Azure 资源管理器模板，不仅可以创建用于自动处理工作流的逻辑应用，还可以定义对部署使用的资源和参数。
+可以将此模板用于自己的业务方案，也可以根据需要自定义此模板。 详细了解[逻辑应用的资源管理器模板](https://github.com/Azure/azure-quickstart-templates/blob/master/101-logic-app-create/azuredeploy.json)和 [Azure 资源管理器模板结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)。 有关 JSON 语法和属性，请参阅 [Microsoft.Logic 资源类型](/azure/templates/microsoft.logic/allversions)。
 
 ## <a name="define-the-logic-app"></a>定义逻辑应用
-
 此示例逻辑应用定义每小时运行一次，并对 `testUri` 参数中指定的位置执行 ping 命令。
-模板使用逻辑应用名称参数值 (```logicAppName```)，以及要对其执行 ping 命令以供测试 (```testUri```) 的位置参数值。 详细了解[如何在模板中定义这些参数](#define-parameters)。 模板还将逻辑应用的位置设置为 Azure 资源组所在的位置。 
+模板使用逻辑应用名称参数值 (```logicAppName```)，以及要对其执行 ping 命令以供测试 (```testUri```) 的位置参数值。 详细了解[如何在模板中定义这些参数](#define-parameters)。
+模板还将逻辑应用的位置设置为 Azure 资源组所在的位置。
 
-``` json
+```json
 {
    "type": "Microsoft.Logic/workflows",
    "apiVersion": "2016-06-01",
@@ -69,7 +70,7 @@ ms.locfileid: "57894574"
       "parameters": {}
    }
 }
-``` 
+```
 
 <a name="define-parameters"></a>
 
@@ -79,10 +80,10 @@ ms.locfileid: "57894574"
 
 下面介绍了模板中的参数：
 
-| 参数 | 描述 | JSON 定义示例 | 
-| --------- | ----------- | ----------------------- | 
+| 参数 | 描述 | JSON 定义示例 |
+| --------- | ----------- | ----------------------- |
 | `logicAppName` | 定义模板创建的逻辑应用名称。 | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
-| `testUri` | 定义要对其执行 ping 命令以供测试的位置。 | "testUri": { "type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} | 
+| `testUri` | 定义要对其执行 ping 命令以供测试的位置。 | "testUri": { "type": "string", "defaultValue": "https://azure.microsoft.com/status/feed/"} |
 ||||
 
 详细了解[逻辑应用工作流定义和属性的 REST API](https://docs.microsoft.com/rest/api/logic/workflows)，以及[如何使用 JSON 生成逻辑应用定义](logic-apps-author-definitions.md)。
@@ -93,7 +94,8 @@ ms.locfileid: "57894574"
 
 [![部署到 Azure](./media/logic-apps-create-deploy-azure-resource-manager-templates/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-logic-app-create%2Fazuredeploy.json)
 
-执行此操作可以登录 Azure 门户。在此门户中，可以提供逻辑应用的详细信息，并能对模板或参数进行任何更改。 例如，Azure 门户提示输入以下详细信息：
+执行此操作可以登录 Azure 门户。在此门户中，可以提供逻辑应用的详细信息，并能对模板或参数进行任何更改。
+例如，Azure 门户提示输入以下详细信息：
 
 * Azure 订阅名称
 * 要使用的资源组
@@ -110,13 +112,13 @@ ms.locfileid: "57894574"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-```
+```powershell
 New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -ResourceGroupName ExampleDeployGroup
-``` 
+```
 
 ### <a name="azure-cli"></a>Azure CLI
 
-```
+```azurecli
 azure group deployment create --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json -g ExampleDeployGroup
 ```
 

@@ -4,7 +4,7 @@ description: 了解如何设置 Azure Monitor 日志来可视化和分析事件�
 services: service-fabric
 documentationcenter: .net
 author: srrengar
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2019
 ms.author: srrengar
-ms.openlocfilehash: ca5dd4a7c12a68a549f081ad62db1736c9c68837
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 3523a2df413740f644151c548e403c39c9be1f03
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483159"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670500"
 ---
 # <a name="set-up-azure-monitor-logs-for-a-cluster"></a>设置群集的 Azure Monitor 日志
 
-Azure Monitor 日志是我们建议要监视群集级别的事件。 可以通过 Azure 资源管理器、PowerShell 或 Azure 市场设置 Log Analytics 工作区。 如果要保留供将来使用你的部署已更新的资源管理器模板，使用同一个模板来设置 Azure Monitor 日志环境。 如果部署的群集已启用诊断，则通过市场部署更方便。 如果你在要部署到的帐户中没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
+要监视群集级别的事件，建议使用 Azure Monitor 日志。 可以通过 Azure 资源管理器、PowerShell 或 Azure 市场设置 Log Analytics 工作区。 如果要保留供将来使用你的部署已更新的资源管理器模板，使用同一个模板来设置 Azure Monitor 日志环境。 如果部署的群集已启用诊断，则通过市场部署更方便。 如果你在要部署到的帐户中没有订阅级别访问权限，请通过 PowerShell 或资源管理器模板进行部署。
 
 > [!NOTE]
-> 若要设置 Azure Monitor 日志来监视群集，需要以监视群集级别或平台级别事件的启用了诊断。 有关详细信息，请参阅[如何在 Windows 群集中设置诊断](service-fabric-diagnostics-event-aggregation-wad.md)和[如何在 Linux 群集中设置诊断](service-fabric-diagnostics-event-aggregation-lad.md)
+> 若要设置 Azure Monitor 日志来监视群集，需要以监视群集级别或平台级别事件的启用了诊断。 有关详细信息，请参阅[如何在 Windows 群集中设置诊断](service-fabric-diagnostics-event-aggregation-wad.md)和[如何在 Linux 群集中设置诊断](service-fabric-diagnostics-oms-syslog.md)
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -49,7 +49,7 @@ Azure Monitor 日志是我们建议要监视群集级别的事件。 可以通�
 如果使用的 Windows，继续以下步骤以连接 Azure Monitor 日志到存储帐户存储群集事件的位置。 
 
 >[!NOTE]
->尚不可对 Linux 群集启用此体验。 
+>Windows 群集仅支持 Service Fabric 分析解决方案。 对于 Linux 群集，请查看我们的文章上[如何设置 Linux 群集的 Azure Monitor 日志](service-fabric-diagnostics-oms-syslog.md)。  
 
 ### <a name="connect-the-log-analytics-workspace-to-your-cluster"></a>将 Log Analytics 工作区连接到群集 
 

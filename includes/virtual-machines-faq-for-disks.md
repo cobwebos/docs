@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/30/2018
+ms.date: 03/28/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 233834bd040362e27ffadc3d0003a87827012352
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 61f65340c3b683674be195f1d30788494b6855a7
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407982"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58671898"
 ---
 # <a name="frequently-asked-questions-about-azure-iaas-vm-disks-and-managed-and-unmanaged-premium-disks"></a>有关 Azure IaaS VM 磁盘以及托管和非托管高级磁盘的常见问题解答
 
@@ -219,7 +219,7 @@ Azure 标准 SSD 盘是什么？
 
 迁移是否影响 Azure Site Recovery 通过 Azure 到 Azure 复制保护的 Azure VM？
 
-是的。 目前，对包含托管磁盘的 VM 的 Azure Site Recovery Azure 到 Azure 保护仅以公共预览版服务的形式提供。
+是的。 目前，Azure 站点恢复 Azure 到 Azure 保护的 Vm 使用托管磁盘现推出 GA 服务。
 
 是否可以迁移位于存储帐户中现在或以前已加密的 VM 的非托管磁盘迁移到托管磁盘？
 
@@ -339,7 +339,7 @@ Azure 支持的最大页 blob 大小是 8 TiB (8,191 GiB)。 附加到 VM 作为
 
 **什么是 Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小？**
 
-Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB。
+Azure 备份和 Azure Site Recovery 服务支持的最大磁盘大小为 4 TiB。 将很快增加对多达 32 TiB 更大的磁盘支持。
 
 **什么是建议的 VM 大小更大的磁盘大小 (> 4 TiB) 标准 SSD 和 HDD 标准磁盘，以实现优化磁盘 IOPS 和带宽？**
 

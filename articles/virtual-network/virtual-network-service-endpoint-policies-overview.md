@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 619b9b68a5c4e897642e1f84c25c2822d8291400
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104482"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652580"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>虚拟网络服务终结点策略（预览版）
 
@@ -145,7 +145,7 @@ __Azure 存储__：WestCentralUS、WestUS2。
 - **对等互连、互连或多个虚拟网络**：若要筛选对等互连虚拟网络中的流量，应该单独对这些虚拟网络应用终结点策略。
 - **使用网络设备或 Azure 防火墙筛选 Internet 流量**：通过终结点使用策略筛选 Azure 服务流量，并通过设备或 Azure 防火墙筛选剩余的 Internet 或 Azure 流量。 
 - **基于部署到虚拟网络中的 Azure 服务筛选流量**：在预览期间，虚拟网络中部署的任何 Azure 托管服务不支持服务终结点策略。 
- 有关特定的服务，请参阅[限制](#Limitations)。
+ 有关特定的服务，请参阅[限制](#limitations)。
 - **筛选从本地发往 Azure 服务的流量**：服务终结点策略只会应用到与这些策略关联的子网发出的流量。 若要允许从本地访问特定的 Azure 服务资源，应使用网络虚拟设备或防火墙筛选流量。
 
 ## <a name="logging-and-troubleshooting"></a>日志记录和故障排除

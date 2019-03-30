@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: raynew
-ms.openlocfilehash: 94d66e28f8edbda6c41dcceaf427d7d7d869c90f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 23e98fd7ea3decc478fc359cec457c70b8fc99dc
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620111"
+ms.locfileid: "58652207"
 ---
 # <a name="delete-a-recovery-services-vault"></a>删除恢复服务保管库
 
@@ -108,7 +108,7 @@ ms.locfileid: "58620111"
 
 
 3. 在中**停止备份** > **选择一个选项**，选择**删除备份数据**。
-4. 键入项的名称，然后单击**停止备份**。 
+4. 键入项的名称，然后单击**停止备份**。
    - 这将验证你想要删除的项。
    - **停止备份**在验证后，按钮会激活。
    - 如果保留并不删除数据，您将无法删除保管库。
@@ -126,7 +126,7 @@ ms.locfileid: "58620111"
 ### <a name="remove-backup-infrastructure-servers"></a>删除备份基础结构服务器
 
 1. 在保管库仪表板菜单中，单击**备份基础结构**。
-2. 单击**备份管理服务器**若要查看的服务器。 
+2. 单击**备份管理服务器**若要查看的服务器。
 
     ![选择保管库，以打开它的仪表板](./media/backup-azure-delete-vault/delete-backup-management-servers.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "58620111"
     ![选择备份类型](./media/backup-azure-delete-vault/azure-storage-selected-list.png)
 
 3. . 在中**停止备份** > **选择一个选项**，选择**删除备份数据**。
-4. 键入项的名称，然后单击**停止备份**。 
+4. 键入项的名称，然后单击**停止备份**。
    - 这将验证你想要删除的项。
    - **停止备份**在验证后，按钮会激活。
    - 如果保留并不删除数据，您将无法删除保管库。

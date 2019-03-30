@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: 6b82c0d2d4a5e22094bf0a408d6a42f17bb3bea4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 82755f01cc881703eeefb6415b2e8e87e50fba60
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839808"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652376"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
 
@@ -28,7 +28,7 @@ ms.locfileid: "57839808"
 
 只有特定角色有权查看发票，如帐户管理员或企业管理员。 若要详细了解如何获取计费信息，请参阅[使用角色管理对 Azure 计费的访问](billing-manage-access.md)。
 
-如果有[Microsoft 客户协议](#Check-your-access-to-a-Microsoft-Customer-Agreement)，您必须是账单资料所有者、 参与者、 读取器，或发票管理器以获取您的发票。 若要了解 Microsoft 客户协议计费角色的详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
+如果有[Microsoft 客户协议](#check-your-access-to-a-microsoft-customer-agreement)，您必须是账单资料所有者、 参与者、 读取器，或发票管理器以获取您的发票。 若要了解 Microsoft 客户协议计费角色的详细信息，请参阅[计费的配置文件角色和任务](billing-understand-mca-roles.md#billing-profile-roles-and-tasks)。
 
 ## <a name="download-your-azure-invoices-pdf"></a>下载您 Azure 发票 (.pdf)
 

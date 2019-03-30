@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 35befe7122f493998d0d91c2721e6013e057fed3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: a4e0432260cfb9ee11ed318305fb967d160de835
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540595"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652546"
 ---
 # <a name="use-azure-blob-storage-for-iis-and-azure-table-storage-for-events-with-azure-monitor"></a>使用 Azure blob 存储事件的 Azure Monitor 的 IIS 和 Azure 表存储
 
@@ -54,9 +54,11 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
 对于虚拟机，可以选择将 [Log Analytics 代理](../../azure-monitor/learn/quick-collect-azurevm.md)安装到虚拟机来支持其他见解。 除了能够分析 IIS 日志和事件日志之外，还可以执行其他分析，包括配置更改跟踪、SQL 评估和更新评估。
 
 ## <a name="enable-azure-diagnostics-in-a-virtual-machine-for-event-log-and-iis-log-collection"></a>在虚拟机中为事件日志和 IIS 日志收集启用 Azure 诊断
+
 通过以下过程，使用 Microsoft Azure 门户在虚拟机中为事件日志和 IIS 日志收集启用 Azure 诊断。
 
 ### <a name="to-enable-azure-diagnostics-in-a-virtual-machine-with-the-azure-portal"></a>使用 Azure 门户在虚拟机中启用 Azure 诊断
+
 1. 创建虚拟机时安装 VM 代理。 如果虚拟机已存在，请验证 VM 代理是否已安装。
 
    * 在 Azure 门户中，导航到虚拟机、选择“可选配置”、选择“诊断”，然后将“状态”设置为“开”。
@@ -69,9 +71,10 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
    3. 单击“诊断”。
    4. 将“状态”设置为“开”。
    5. 选择想要收集的每个诊断日志。
-   6. 单击 **“确定”**。
+   6. 单击“确定”。
 
 ## <a name="enable-azure-diagnostics-in-a-web-role-for-iis-log-and-event-collection"></a>在 Web 角色中为 IIS 日志和事件收集启用 Azure 诊断
+
 有关启用 Azure 诊断的常规步骤，请参阅[如何在云服务中启用诊断](../../cloud-services/cloud-services-dotnet-diagnostics.md)。 下面的说明使用此信息并进行自定义以用于 Log Analytics。
 
 在 Azure 诊断已启用的情况下：
@@ -80,11 +83,12 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
 * 默认情况下，不会传输 Windows 事件日志。
 
 ### <a name="to-enable-diagnostics"></a>启用诊断
+
 若要启用 Windows 事件日志，或要更改 scheduledTransferPeriod，可使用 XML 配置文件 (diagnostics.wadcfg) 配置 Azure 诊断，如[步骤 4：创建诊断配置文件并安装扩展](../../cloud-services/cloud-services-dotnet-diagnostics.md)中所示
 
 以下示例配置文件从应用程序日志和系统日志中收集 IIS 日志和所有事件：
 
-```
+```xml
     <?xml version="1.0" encoding="utf-8" ?>
     <DiagnosticMonitorConfiguration xmlns="http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration"
           configurationChangePollInterval="PT1M"
@@ -108,7 +112,7 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
 
 确保 ConfigurationSettings 指定了存储帐户，如以下示例中所示：
 
-```
+```xml
     <ConfigurationSettings>
        <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="DefaultEndpointsProtocol=https;AccountName=<AccountName>;AccountKey=<AccountKey>"/>
     </ConfigurationSettings>
@@ -119,6 +123,7 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
 一旦更新诊断配置应用到你的云服务，且它将诊断写入 Azure 存储空间，你已做好配置 Log Analytics 工作区。
 
 ## <a name="use-the-azure-portal-to-collect-logs-from-azure-storage"></a>使用 Azure 门户从 Azure 存储中收集日志
+
 可以使用 Azure 门户在 Azure Monitor 收集以下 Azure 服务日志中配置 Log Analytics 工作区：
 
 * Service Fabric 群集
@@ -161,7 +166,7 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
 
 查看以下脚本示例、复制它、根据需要修改它、将该示例保存为 PowerShell 脚本文件，然后运行该脚本。
 
-```
+```powershell
     #Connect to Azure
     Add-AzureAccount
 
@@ -194,6 +199,7 @@ Azure 监视器来收集这些 Azure 诊断日志，日志必须位于以下位�
 
 
 ## <a name="next-steps"></a>后续步骤
+
 * 针对支持的 Azure 服务[收集 Azure 服务的日志和指标](collect-azure-metrics-logs.md)。
 * [启用解决方案](../../azure-monitor/insights/solutions.md)深入分析数据。
 * [使用搜索查询](../../azure-monitor/log-query/log-query-overview.md)分析数据。

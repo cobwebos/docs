@@ -1,5 +1,5 @@
 ---
-title: 了解企业的 Azure 预订使用情况 | Microsoft Docs
+title: 了解 Azure 保留项的企业的使用情况 |Microsoft Docs
 description: 了解如何读取使用情况，以了解如何应用适用于企业合约的 Azure 预留。
 services: billing
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 03/13/2019
 ms.author: banders
-ms.openlocfilehash: 66fd42e5aa110b4c9ef686b1d66429ff7dbaf550
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857685"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648293"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>了解适用于企业合约的 Azure 预留使用情况
 
@@ -53,7 +53,7 @@ ms.locfileid: "57857685"
 
 ## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>SQL 数据库和 Cosmos DB 保留容量预留的使用情况
 
-以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。 
+以下部分将以 Azure SQL 数据库为例来描述使用情况报表。 也可以使用相同的步骤来获取 Azure Cosmos DB 的使用情况。
 
 假设在美国东部地区运行 SQL 数据库第 4 代，你的预留信息将类似于下表所示：
 
@@ -64,7 +64,7 @@ ms.locfileid: "57857685"
 |产品| SQL 数据库第 4 代（双核）|
 |区域 | eastus |
 
-### <a name="usage-in-csv-file"></a>CSV 文件中的使用情况 
+### <a name="usage-in-csv-file"></a>CSV 文件中的使用情况
 
 筛选“其他信息”并键入你的“预留 ID”，然后选择所需“测定仪类别”- Azure SQL 数据库或 Azure Cosmos DB。 以下屏幕截图显示了与预订相关的字段。
 
@@ -81,19 +81,20 @@ Azure 预留使用情况也会出现在企业门户的使用情况摘要部分�
 1. 不会收取 VM 的硬件组件费用，因为它已被预留涵盖。 对于 SQL 数据库预留，则会看到“服务名称”为“Azure SQL 数据库预留容量使用情况”的一行。
 2. 在此示例中，你没有 Azure 混合权益，因此会对你收取在 VM 中使用的 Windows 软件的费用。
 
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+
+如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
+
+
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
 
 - [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md) 
+- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
 - [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
 - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
-
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
-
-如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。
 
