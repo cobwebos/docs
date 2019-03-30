@@ -40,7 +40,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_B1s | 第 |
+| Standard_B1s | 1 |
 |Standard_B2s|4|
 
 有关详细信息，请参阅 [B 系列可突增虚拟机大小](../articles/virtual-machines/windows/b-series-burstable.md)。
@@ -49,7 +49,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_B1ms |第|
+| Standard_B1ms |1|
 |Standard_B2ms|4|
 |Standard_B4ms|8|
 |Standard_B8ms|16|
@@ -60,7 +60,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_D1|第|
+| Standard_D1|1|
 |Standard_D2|2|
 |Standard_D3|4|
 |Standard_D4|8|
@@ -71,7 +71,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_D11|第|
+| Standard_D11|1|
 |Standard_D12|2|
 |Standard_D13|4|
 |Standard_D14|8|
@@ -82,7 +82,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_DS1|第|
+|Standard_DS1|1|
 |Standard_DS2|2|
 |Standard_DS3|4|
 |Standard_DS4|8|
@@ -93,7 +93,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_DS11|第|
+|Standard_DS11|1|
 |Standard_DS12|2|
 |Standard_DS13|4|
 |Standard_DS14|8|
@@ -104,7 +104,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_DS1_v2|第|
+|Standard_DS1_v2|1|
 |Standard_DS2_v2|2|
 |Standard_DS3_v2|4|
 |Standard_DS4_v2|8|
@@ -116,8 +116,8 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_DS11_v2|第|
-|Standard_DS11-1_v2|第|
+|Standard_DS11_v2|1|
+|Standard_DS11-1_v2|1|
 |Standard_DS12_v2|2|
 |Standard_DS12-1_v2|2|
 |Standard_DS12-2_v2|2|
@@ -135,7 +135,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_D2s_v3|第|
+|Standard_D2s_v3|1|
 |Standard_D4s_v3|2|
 |Standard_D8s_v3|4|
 |Standard_D16s_v3|8|
@@ -148,7 +148,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_D1_v2|第|
+|Standard_D1_v2|1|
 |Standard_D2_v2|2|
 |Standard_D3_v2|4|
 |Standard_D4_v2|8|
@@ -160,7 +160,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_D11_v2|第|
+|Standard_D11_v2|1|
 |Standard_D12_v2|2|
 |Standard_D13_v2|4|
 |Standard_D14_v2|8|
@@ -172,7 +172,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_D2_v3|第|
+| Standard_D2_v3|1|
 |Standard_D4_v3|2|
 |Standard_D8_v3|4|
 |Standard_D16_v3|8|
@@ -185,7 +185,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-|Standard_E2s_v3|第|
+|Standard_E2s_v3|1|
 |Standard_E4s_v3|2|
 |Standard_E4-2s_v3|2|
 |Standard_E8s_v3|4|
@@ -208,7 +208,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_E2_v3|第|
+| Standard_E2_v3|1|
 |Standard_E4_v3|2|
 |Standard_E8_v3|4|
 |Standard_E16_v3|8|
@@ -222,7 +222,7 @@ ms.locfileid: "58113984"
 
 | 大小 | 比率|
 |---|---|
-| Standard_F1|第|
+| Standard_F1|1|
 |Standard_F2|2|
 |Standard_F4|4|
 |Standard_F8|8|
@@ -234,7 +234,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_F1s|第|
+| Standard_F1s|1|
 |Standard_F2s|2|
 |Standard_F4s|4|
 |Standard_F8s|8|
@@ -246,7 +246,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-|Standard_F2s_v2|第|
+|Standard_F2s_v2|1|
 |Standard_F4s_v2|2|
 |Standard_F8s_v2|4|
 |Standard_F16s_v2|8|
@@ -260,7 +260,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_H8|第|
+| Standard_H8|1|
 |Standard_H16|2|
 
 有关详细信息，请参阅[高性能计算 VM 大小](../articles/virtual-machines/windows/sizes-hpc.md)。
@@ -269,7 +269,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_H8m|第|
+| Standard_H8m|1|
 |Standard_H16m|2|
 
 有关详细信息，请参阅[高性能计算 VM 大小](../articles/virtual-machines/windows/sizes-hpc.md)。
@@ -278,7 +278,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_L4s|第|
+| Standard_L4s|1|
 |Standard_L8s|2|
 |Standard_L16s|4|
 |Standard_L32s|8|
@@ -289,7 +289,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_M64s|第|
+| Standard_M64s|1|
 |Standard_M128s|2|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
@@ -298,7 +298,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_M16s|第|
+| Standard_M16s|1|
 |Standard_M32s|2|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
@@ -307,9 +307,9 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-|Standard_M8ms|第|
-|Standard_M8-2ms|第|
-|Standard_M8-4ms|第|
+|Standard_M8ms|1|
+|Standard_M8-2ms|1|
+|Standard_M8-4ms|1|
 |Standard_M16ms|2|
 |Standard_M16-4ms|2|
 |Standard_M16-8ms|2|
@@ -323,7 +323,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_M32ls|第|
+| Standard_M32ls|1|
 |Standard_M64ls|2|
 
 有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#m-series)。
@@ -332,9 +332,9 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_M64ms|第|
-|Standard_M64-16ms|第|
-|Standard_M64-32ms|第|
+| Standard_M64ms|1|
+|Standard_M64-16ms|1|
+|Standard_M64-32ms|1|
 |Standard_M128ms|2|
 |Standard_M128-32ms|2|
 |Standard_M128-64ms|2|
@@ -345,7 +345,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_NC6|第|
+| Standard_NC6|1|
 |Standard_NC12|2|
 |Standard_NC24|4|
 
@@ -355,7 +355,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_NC6s_v2|第|
+| Standard_NC6s_v2|1|
 |Standard_NC12s_v2|2|
 |Standard_NC24s_v2|4|
 
@@ -365,7 +365,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_NC6s_v3|第|
+| Standard_NC6s_v3|1|
 |Standard_NC12s_v3|2|
 |Standard_NC24s_v3|4|
 
@@ -375,7 +375,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_ND6s|第|
+| Standard_ND6s|1|
 |Standard_ND12s|2|
 |Standard_ND24s|4|
 
@@ -385,7 +385,7 @@ Standard_F16|16|
 
 | 大小 | 比率|
 |---|---|
-| Standard_NV6|第|
+| Standard_NV6|1|
 |Standard_NV12|2|
 |Standard_NV24|4|
 
