@@ -203,6 +203,7 @@ items:
     - name: 示例（简单语法）
       href: search-query-simple-examples.md
     - name: 示例（完整 Lucene）
+      href: search-query-lucene-examples.md
   - name: 对数据进行筛选和排序
     items:
     - name: 筛选器概述
@@ -212,7 +213,7 @@ items:
     - name: 添加分面导航
       href: search-faceted-navigation.md
     - name: Filter 和 OrderBy 表达式语法和示例
-      href: search-query-lucene-examples.md
+      href: query-odata-filter-orderby-syntax.md
   - name: 处理结果
     items:
     - name: 与页相关的功能
@@ -306,9 +307,9 @@ items:
     href: https://azure.microsoft.com/pricing/details/search/
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=search
-ms.openlocfilehash: d0e692407a89e01806f425bedb302160ec8c672b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ec82dc9f36f7fb4be24d3d1e833a951f72b48f5a
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576814"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651458"

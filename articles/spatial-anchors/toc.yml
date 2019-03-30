@@ -29,27 +29,29 @@ items:
     href: tutorials/tutorial-share-anchors-across-devices.md
   - name: 使用 Azure Cosmos DB 在 Unity 中共享
     href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+- name: 操作说明
+  items:
+  - name: 创建并找到定位点
+    href: create-locate-anchors-overview.md
+    items:
+    - name: 在 Unity 中
+      href: how-tos/create-locate-anchors-unity.md
+    - name: 在 Objective-C 中
+      href: how-tos/create-locate-anchors-objc.md
+    - name: 在 Swift 中
+      href: how-tos/create-locate-anchors-swift.md
+    - name: 在 Java 中
+      href: how-tos/create-locate-anchors-java.md
+    - name: 在 C ++/NDK 中
+      href: how-tos/create-locate-anchors-cpp-ndk.md
+    - name: 在 C++/WinRT 中
+      href: how-tos/create-locate-anchors-cpp-winrt.md
 - name: 示例
   items:
   - name: Azure 空间定位点示例 (GitHub)
     href: https://github.com/Azure/azure-spatial-anchors-samples
 - name: 概念
   items:
-  - name: 创建并找到定位点
-    href: create-locate-anchors-overview.md
-    items:
-    - name: 在 Unity 中
-      href: concepts/create-locate-anchors-unity.md
-    - name: 在 Objective-C 中
-      href: concepts/create-locate-anchors-objc.md
-    - name: 在 Swift 中
-      href: concepts/create-locate-anchors-swift.md
-    - name: 在 Java 中
-      href: concepts/create-locate-anchors-java.md
-    - name: 在 C ++/NDK 中
-      href: concepts/create-locate-anchors-cpp-ndk.md
-    - name: 在 C++/WinRT 中
-      href: concepts/create-locate-anchors-cpp-winrt.md
   - name: 定位点关系
     href: concepts/anchor-relationships-way-finding.md
   - name: 体验指南
@@ -78,9 +80,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-spatial-anchors
   - name: 支持
     href: spatial-anchor-support.md
-ms.openlocfilehash: c3d27c3c8f13d97fd416b37fc153e8c81e81d866
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.openlocfilehash: 9723bcbe3605907ddd1c40f0c680dc931e6e96b1
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753355"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629799"
