@@ -3,8 +3,8 @@ title: 打包 Azure Service Fabric 应用 | Microsoft Docs
 description: 如何打包 Service Fabric 应用程序后将其部署到群集。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: mani-ramaswamy
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
-ms.author: ryanwi
-ms.openlocfilehash: 24cb1fd0666b404d92dfb803f55c850226ff59b6
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.author: atsenthi
+ms.openlocfilehash: d32d593fcc93ec2e27676b1bb174940c12c24193
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205804"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667644"
 ---
 # <a name="package-an-application"></a>打包应用程序
 本文介绍如何打包 Service Fabric 应用程序并为部署做好准备。
@@ -123,7 +123,7 @@ PS D:\temp>
 与上传未压缩的包相比，对于压缩的应用程序包，[上传应用程序包](service-fabric-deploy-remove-applications.md#upload-the-application-package)可能要花费更长的时间，尤其是当压缩是在复制过程中执行的时。 使用压缩，[注册](service-fabric-deploy-remove-applications.md#register-the-application-package)和[注销应用程序类型](service-fabric-deploy-remove-applications.md#unregister-an-application-type)时速度会更快。
 
 压缩包和未压缩包的部署机制相同。 如果为压缩包，则存储在群集映像存储等位置，并且在应用程序运行前在节点上解压缩。
-压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩将不会产生任何更改。
+压缩会将有效的 Service Fabric 包替换为已压缩版本。 文件夹必须允许写入操作。 对已压缩的包运行压缩不会产生任何更改。
 
 可以通过使用 `CompressPackage` 开关运行 Powershell 命令 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) 来压缩包。 可以通过使用 `UncompressPackage` 开关运行同一命令来解压缩包。
 
@@ -211,7 +211,7 @@ ZipFile.CreateFromDirectory(appPackageDirectoryPath, sfpkgFilePath);
 
 [管理多个环境的应用程序参数][11]介绍如何配置不同应用程序实例的参数和环境变量。
 
-[配置应用程序的安全策略][12]介绍如何在安全策略下运行服务，从而对访问进行限制。
+[配置应用程序的安全策略][12] 介绍如何根据安全策略运行服务，从而限制访问。
 
 <!--Image references-->
 [vs-package-command]: ./media/service-fabric-package-apps/vs-package-command.png

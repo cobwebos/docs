@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 78d6ac0a4ecde8d60a0ef3aa22515c7ce1ea4e07
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 61b877c322fcd58472990c328beea2e309502bce
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309531"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652342"
 ---
 # <a name="define-account-filters-and-asset-filters"></a>定义帐户筛选器和资产筛选器  
 
@@ -58,7 +58,7 @@ ms.locfileid: "58309531"
 |名称|描述|
 |---|---|
 |firstQuality|筛选器的第一个质量比特率。|
-|presentationTimeRange|呈现时间范围。 此属性用于筛选清单起点/终点、呈现窗口长度和直播起始位置。 <br/>有关详细信息，请参阅 [PresentationTimeRange](#PresentationTimeRange)。|
+|presentationTimeRange|呈现时间范围。 此属性用于筛选清单起点/终点、呈现窗口长度和直播起始位置。 <br/>有关详细信息，请参阅 [PresentationTimeRange](#presentationtimerange)。|
 |tracks|轨迹选择条件。 有关详细信息，请参阅[轨迹](#tracks)|
 
 ### <a name="presentationtimerange"></a>presentationTimeRange

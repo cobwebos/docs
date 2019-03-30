@@ -4,7 +4,7 @@ description: Service Fabric Reliable Actors 编程模型简介。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7fdad07f-f2d6-4c74-804d-e0d56131f060
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 363cba145ed4d5bcf138cf3f7130763891c51e8b
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 5a237e23dffed76e6122e17b59c85d20ca7e1baf
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51258055"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668664"
 ---
 # <a name="introduction-to-service-fabric-reliable-actors"></a>Service Fabric Reliable Actors 简介
 Reliable Actors 是基于[虚拟执行组件](https://research.microsoft.com/en-us/projects/orleans/)模式的 Service Fabric 应用程序框架。 Reliable Actors API 提供单一线程编程模型，该模型是基于 Service Fabric 所提供的可扩展性和可靠性保证构建的。
@@ -28,27 +28,27 @@ Reliable Actors 是基于[虚拟执行组件](https://research.microsoft.com/en-
 执行组件是一个使用单线程执行的计算和状态的独立单元。 [执行组件模式](https://en.wikipedia.org/wiki/Actor_model)是并发或分布式系统的计算模型。在此类系统中，大量执行组件可同时相互独立地运行。 执行组件可相互进行通信，并且它们可以创建更多执行组件。
 
 ### <a name="when-to-use-reliable-actors"></a>何时使用 Reliable Actors
-Service Fabric Reliable Actors 是执行组件设计模式的实现。 与任何软件设计模式一样，决定是否使用特定的模式取决于遇到的软件设计问题是否适合用该模式解决。
+Service Fabric Reliable Actors 是执行组件设计模式的实现。 与任何软件设计模式一样，是否使用特定模式取决于该模式能否解决相关软件设计问题。
 
-虽然执行组件设计模式可以很好的适应很多分布式系统问题和场景的需求，但是仍有必要仔细考虑该模式以及实现该模式的框架的限制。 通常对于以下情况，请考虑使用执行组件模式来对问题或场景进行建模：
+虽然执行组件设计模式可以很好的适应很多分布式系统问题和场景的需求，但是仍有必要仔细考虑该模式以及实现该模式的框架的限制。 对于以下情况，通常应考虑使用执行组件模式对问题或场景进行建模：
 
 * 问题空间包含大量（几千或更多）小型、独立的状态和逻辑单元。
-* 想要使用单线程对象，这些对象无需外部组件的明显交互，包括查询一组执行组件的状态。
-* 执行组件实例不会通过发出 I/O 操作来使用不可预测的延迟阻止调用方。
+* 要处理不要求与外部组件进行大量交互的单线程对象，包括查询一组执行组件的状态。
+* 执行组件实例不会通过发出 I/O 操作，用不可预测的延迟阻止调用方。
 
 ## <a name="actors-in-service-fabric"></a>Service Fabric 中的执行组件
-在 Service Fabric 中，执行组件在 Reliable Actors 框架中实现：在 [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md) 基础上构建的基于执行组件模式的应用程序框架。 编写的每个 Reliable Actor 服务实际上都是一个已分区、有状态的 Reliable Service。
+在 Service Fabric 中，执行组件在 Reliable Actors 框架中实现：此应用程序框架以执行组件模式为依据，在 [Service Fabric Reliable Services](service-fabric-reliable-services-introduction.md) 的基础之上构建而成。 编写的每个 Reliable Actor 服务实际上都是一个已分区、有状态的 Reliable Service。
 
-每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，可能有用于实现计算器功能的执行组件类型，并可能有很多在群集中各个节点分布的该类型的执行组件。 每个此类执行组件都通过执行组件 ID 进行唯一标识。
+每个执行组件都定义为执行组件类型的一个实例，类似于 .NET 对象是 .NET 类型的一个实例。 例如，可能有用于实现计算器功能的执行组件类型，并可能有很多在群集中各个节点分布的该类型的执行组件。 每个此类执行组件都由执行组件 ID 唯一标识。
 
 ## <a name="actor-lifetime"></a>执行组件生存期
 Service Fabric 执行组件是虚拟的，这表示其生存期不依赖于其内存中表示形式。 因此，它们不需要显式创建或销毁。 Reliable Actors 运行时会在它第一次接收到执行组件 ID 的请求时自动激活此执行组件。 如果一段时间未使用某个执行组件，则 Reliable Actors 运行时会回收此内存对象。 它还将掌握此执行组件的存在信息，以便将来重新激活。 如需了解更多详情，请参阅[执行组件生命周期和垃圾回收](service-fabric-reliable-actors-lifecycle.md)。
 
 虚拟执行组件生命周期抽象因虚拟执行组件模型而产生一些注意事项，实际上 Reliable Actors 实现有时会偏离此模型。
 
-* 当第一次将消息发送到执行组件的执行组件 ID 时会自动激活此执行组件，并由此构造执行组件对象。 在一段时间之后，将回收此执行组件对象。 将来可以再次使用此执行组件 ID 来构造新的执行组件对象。 在状态管理器中存储时，执行组件的状态的生命周期比此对象的生命周期长。
+* 当第一次将消息发送到执行组件的执行组件 ID 时将自动激活此执行组件，并由此构造执行组件对象。 在一段时间之后，将回收此执行组件对象。 将来可以再次使用此执行组件 ID 来构造新的执行组件对象。 在状态管理器中存储时，执行组件的状态的生命周期比此对象的生命周期长。
 * 针对某个执行组件 ID 调用任何执行组件方法可激活此执行组件。 出于此原因，执行组件类型允许运行时隐式调用其构造函数。 因此，虽然可通过服务将参数传递给执行组件的构造函数，但是客户端代码无法将参数传递给执行组件类型的构造函数。 结果是如果执行组件需要客户端的初始化参数，则在对其调用其他方法时在部分初始化状态下构造执行组件。 从客户端激活执行组件不存在单一的入口点。
-* 虽然 Reliable Actors 隐式创建执行组件对象，仍然能够显示删除执行组件及其状态。
+* 虽然 Reliable Actors 隐式创建执行组件对象，但仍可显示删除执行组件及其状态。
 
 ## <a name="distribution-and-failover"></a>分布和故障转移
 要提供伸缩性和可靠性，Service Fabric 在整个群集中分布执行组件，并根据需要自动将其从故障节点迁移到正常节点中。 这是对[已分区的有状态 Reliable Service](service-fabric-concepts-partitioning.md) 进行抽象。 由于执行组件在名为*执行组件服务*的有状态 Reliable Service 内部运行，因此分布、可伸缩性、可靠性和自动故障转移全都可提供。
@@ -59,9 +59,9 @@ Service Fabric 执行组件是虚拟的，这表示其生存期不依赖于其�
 
 ![Reliable Actors 分布][2]
 
-执行组件框架管理分区方案和键范围设置。 这可以简化一些选择，但同时也要注意以下情况：
+执行组件框架用于管理分区方案和键范围设置。 这可以简化一些选择，但同时也要注意以下情况：
 
-* Reliable Services 允许选择分区方案、键范围（当使用范围分区方案时）和分区计数。 Reliable Actors 仅限于使用范围分区方案（统一 Int64 方案），要求使用完整的 Int64 键范围。
+* Reliable Services 允许选择分区方案、键范围（当使用范围分区方案时）和分区计数。 Reliable Actors 仅限于使用范围分区方案（统一 Int64 方案），要求用户使用完整的 Int64 键范围。
 * 默认情况下，执行组件被随机放到分区中，因此而形成统一分布。
 * 因为执行组件是随机分布的，所以预计执行组件的操作将始终需要网络通信，包括对方法调用数据的序列化和反序列化，这会产生延迟和开销。
 * 在高级方案中，可使用映射到特定分区的 Int64 执行组件 ID 控制执行组件分区放置。 但是，这样做会导致分区间的执行组件的分布不平衡。

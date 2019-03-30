@@ -4,7 +4,7 @@ description: 介绍 Service Fabric CLI sfctl application 命令。
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0f608dc89d3a9bc8914fc9be142c442246ce13b5
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: d4fec5d8131d269d3df229360066452c37a92430
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278536"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665536"
 ---
 # <a name="sfctl-application"></a>sfctl application
 创建、删除和管理应用程序及应用程序类型。
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | create | 使用指定说明创建 Service Fabric 应用程序。 |
 | delete | 删除现有 Service Fabric 应用程序。 |
@@ -54,7 +54,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --app-name [必需] | 应用程序名称，包括“fabric\:”URI 方案。 |
 | --app-type [必需] | 在应用程序清单中找到的应用程序类型名称。 |
@@ -67,7 +67,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -82,7 +82,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --force-remove | 强制删除 Service Fabric 应用程序或服务，跳过正常关闭序列。 若因服务代码中的问题而无法正常关闭副本，导致删除应用程序或服务操作超时，可使用此参数强制删除该应用程序或服务。 |
@@ -90,7 +90,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -105,7 +105,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
@@ -114,7 +114,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -129,7 +129,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
@@ -140,7 +140,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -155,7 +155,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name [必需] | 节点的名称。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
@@ -165,7 +165,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -180,7 +180,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --deployed-applications-health-state-filter | 用于根据运行状况筛选应用程序运行状况查询结果中返回的已部署应用程序运行状况对象。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的已部署应用程序。 所有已部署应用程序都用于评估聚合运行状况。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的已部署应用程序的运行状况。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
@@ -191,7 +191,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -206,7 +206,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --exclude-application-parameters | 该标志指定应用程序参数是否排除在结果之外。 |
@@ -214,7 +214,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -229,7 +229,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-definition-kind-filter | 用来筛选 ApplicationDefinitionKind，它是用来定义 Service Fabric 应用程序的机制。  <br> - Default - 默认值，它执行与选择“所有”时相同的功能。 值为 0。  <br> - All - 与任何 ApplicationDefinitionKind 值输入匹配的筛选器。 值为 65535。  <br> - ServiceFabricApplicationDescription - 与 ApplicationDefinitionKind 值 ServiceFabricApplicationDescription 输入匹配的筛选器。 值为 1。  <br> - Compose - 与 ApplicationDefinitionKind 值 Compose 输入匹配的筛选器。 值为 2。 |
 | --application-type-name | 用于筛选要查询的应用程序的应用程序类型名称。 此值不应包含应用程序类型版本。 |
@@ -240,7 +240,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -255,14 +255,14 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -277,7 +277,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-name    [必需] | 应用程序类型的名称。 |
 | --application-type-version [必需] | 应用程序类型的版本。 |
@@ -285,7 +285,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -300,7 +300,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-package-download-uri | “.sfpkg”应用程序包的路径，可使用 HTTP 或 HTTPS 协议从该处下载应用程序包。 <br><br> 仅适用于预配种类的外部存储。 应用程序包可以存储在外部存储中，该存储提供 GET 操作来下载文件。 支持的协议为 HTTP 和 HTTPS，并且路径必须允许读取访问权限。 |
 | --application-type-build-path | 仅适用于预配种类的映像存储。 应用程序包在先前的上传操作中指定的映像存储中的相对路径。 |
@@ -312,7 +312,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -327,7 +327,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
@@ -342,7 +342,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -357,7 +357,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-name [必需] | 应用程序类型的名称。 |
 | --application-type-version | 应用程序类型的版本。 |
@@ -368,7 +368,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -383,7 +383,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-definition-kind-filter | 用来筛选 ApplicationTypeDefinitionKind，它是用来定义 Service Fabric 应用程序类型的机制。  <br> - Default - 默认值，它执行与选择“所有”时相同的功能。 值为 0。  <br> - All - 与任何 ApplicationTypeDefinitionKind 值输入匹配的筛选器。 值为 65535。  <br> - ServiceFabricApplicationPackage - 将输入与 ApplicationTypeDefinitionKind 值 ServiceFabricApplicationPackage 进行匹配的筛选器。 值为 1。  <br> - Compose - 与 ApplicationTypeDefinitionKind 值 Compose 输入匹配的筛选器。 值为 2。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
@@ -393,7 +393,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -408,7 +408,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-type-name    [必需] | 应用程序类型的名称。 |
 | --application-type-version [必需] | 应用程序清单中定义的应用程序类型的版本。 |
@@ -417,7 +417,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -432,7 +432,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 <br><br> 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --application-version [必需] | 应用程序升级的目标应用程序类型版本（在应用程序清单中找到）。 |
@@ -454,7 +454,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -469,7 +469,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --upgrade-domain-name [必需] | 要恢复升级的升级域的名称。 |
@@ -477,7 +477,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -492,14 +492,14 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -514,14 +514,14 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -536,7 +536,7 @@ ms.locfileid: "53278536"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --path [必需] | 本地应用程序包的路径。 |
 | --imagestore-string | 应用程序包上传到的目标映像存储区。  默认值\: fabric\:ImageStore。 |
@@ -544,7 +544,7 @@ ms.locfileid: "53278536"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/13/2018
 ms.author: genli
-ms.openlocfilehash: 5842c5edd0402d61f564ab15e34e8f69c0e718d7
-ms.sourcegitcommit: e7312c5653693041f3cbfda5d784f034a7a1a8f1
-ms.translationtype: HT
+ms.openlocfilehash: daddb859c6bfc6309ef833c6c6c3ea43c70f1889
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54213444"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652274"
 ---
 #  <a name="cannot-rdp-to-azure-virtual-machines-because-the-dhcp-client-service-is-disabled"></a>由于 DHCP 客户端服务被禁用，因此无法对 Azure 虚拟机进行 RDP
 
@@ -27,7 +27,6 @@ ms.locfileid: "54213444"
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 ## <a name="symptoms"></a>症状
-
 无法在 Azure 中与 VM 建立 RDP 连接，因为 DHCP 客户端服务在 VM 中被禁用。 在 Azure 门户中的[“启动诊断”](../troubleshooting/boot-diagnostics.md)中检查屏幕截图时，你看到 VM 正常启动并且在登录屏幕中等待凭据。 在使用事件查看器远程查看 VM 中的事件日志时， 发现 DHCP 客户端服务未启动或无法启动。 下面是示例日志：
 
 **日志名称**：系统 </br>
@@ -98,7 +97,7 @@ DHCP 客户端服务未在 VM 上运行。
 1. 连接到[串行控制台](serial-console-windows.md)并打开 PowerShell 实例。
 2. 运行以下脚本下载进程监视器工具：
 
-   ```
+   ```powershell
    remove-module psreadline
    $source = "https://download.sysinternals.com/files/ProcessMonitor.zip"
    $destination = "c:\temp\ProcessMonitor.zip"
@@ -167,6 +166,7 @@ DHCP 客户端服务未在 VM 上运行。
 3. 尝试使用远程桌面连接到 VM。
 
 #### <a name="dhcp-client-service-crashes-or-hangs"></a>DHCP 客户端服务崩溃或挂起
+
 1. 如果服务状态卡在“正在启动”或“正在停止”状态，请尝试停止服务：
 
         sc stop DHCP
@@ -205,5 +205,3 @@ DHCP 客户端服务未在 VM 上运行。
 ## <a name="next-steps"></a>后续步骤
 
 如果仍需帮助，请[联系支持人员](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)以快速解决问题。
-
-

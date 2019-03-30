@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 80c35d8417fefa2873cbef9886f56ccfa3920624
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0e0d1cd98f27ef40681e37a55f7021bf102fda21
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409459"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664262"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>使用 Azure Cosmos DB 预留容量优化成本
 
@@ -20,7 +20,7 @@ Azure Cosmos DB 预留容量有助于通过预付为期一年或三年的 Azure 
 
 Azure Cosmos DB 预留容量可以大幅降低 Cosmos DB 成本，相比正常价格最多可以降低 65%，前提是提前承诺使用一年或三年的服务。 预留容量提供一种计费折扣，并且不会影响 Azure Cosmos DB 资源的运行时状态。
 
-Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。 购买预留后，不再像即用即付资费一样收取与预留属性相应的吞吐量费用。 预留相关详细信息，请参阅 [Azure 预留](../billing/billing-save-compute-costs-reservations.md)一文。 
+Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它不涵盖存储和网络费用。 购买预留后，不再像即用即付资费一样收取与预留属性相应的吞吐量费用。 预留相关详细信息，请参阅 [Azure 预留](../billing/billing-save-compute-costs-reservations.md)一文。
 
 可从 [Azure 门户](https://portal.azure.com)购买 Azure Cosmos DB 预留容量。 购买预留容量：
 
@@ -48,7 +48,7 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 4. 填写必填字段，如下表所示：
 
-   ![填写预留容量表](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png) 
+   ![填写预留容量表](./media/cosmos-db-reserved-capacity/fill_reserved_capacity_form.png)
 
    |字段  |描述  |
    |---------|---------|
@@ -61,17 +61,17 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 
 5. 在“费用”部分查看预留的折扣或价格。 此预留价格适用于使用跨所有区域预配的吞吐量的 Azure Cosmos DB 资源。  
 
-6. 选择“购买”。 购买成功后，会看到如下页面所示内容： 
+6. 选择“购买”。 购买成功后，会看到如下页面所示内容：
 
-   ![填写预留容量表](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png) 
+   ![填写预留容量表](./media/cosmos-db-reserved-capacity/reserved_capacity_successful.png)
 
-购买预留后，它立即应用到与预留期相符的所有现有 Azure Cosmos DB 资源。 如果还没有 Azure Cosmos DB 资源，则将在你部署符合预留期的新 Cosmos DB 实例时应用预留。 这两种情况的预留期均于成功购买后立即开始。 
+购买预留后，它立即应用到与预留期相符的所有现有 Azure Cosmos DB 资源。 如果还没有 Azure Cosmos DB 资源，则将在你部署符合预留期的新 Cosmos DB 实例时应用预留。 这两种情况的预留期均于成功购买后立即开始。
 
 预留到期时，Azure Cosmos DB 实例会继续运行，按正常即用即付资费计费。
 
 ## <a name="cancellation-and-exchanges"></a>取消和交换
 
-标识权限保留的容量的帮助，请参阅[了解如何将预订折扣应用到 Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md)。 事件中，您需要取消或 exchange 的 Azure Cosmos DB 保留，请联系 Azure Cosmos DB 团队`AskCosmosDB@microsoft.com`。
+标识权限保留的容量的帮助，请参阅[了解如何将预订折扣应用到 Azure Cosmos DB](../billing/billing-understand-cosmosdb-reservation-charges.md)。 如果需要取消或 exchange 的 Azure Cosmos DB 保留，请参阅[保留交换和退款](../billing/billing-azure-reservations-self-service-exchange-and-refund.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -90,4 +90,3 @@ Azure Cosmos DB 预留容量涵盖为资源预配的吞吐量的费用。 但它
 ## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
 
 如有任何疑问或需要帮助，请[创建支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。
-

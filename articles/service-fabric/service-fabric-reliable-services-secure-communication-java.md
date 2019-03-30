@@ -4,7 +4,7 @@ description: 了解如何保护 Azure Service Fabric 群集中运行的 Java 可
 services: service-fabric
 documentationcenter: java
 author: PavanKunapareddyMSFT
-manager: timlt
+manager: chackdan
 ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: java
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 06/30/2017
 ms.author: pakunapa
-ms.openlocfilehash: cbefb3ede6d0d1fe21065b49c84db9f4db5dd39c
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: HT
+ms.openlocfilehash: b465ab602a14285f8cf40b24ce1dfa9c763fecb8
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020807"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666983"
 ---
 # <a name="secure-service-remoting-communications-in-a-java-service"></a>保护 Java 服务的服务远程处理通信
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ ms.locfileid: "37020807"
     ```
 2. 添加侦听器设置和安全凭据。
 
-    确保要用来帮助保护服务通信的证书安装在群集中的所有节点上。 对于在 Linux 上运行的服务，证书必须以 PEM 格式的文件提供，要么是包含证书和私钥的 `.pem` 文件，要么是包含证书的 `.crt` 文件和包含私钥的 `.key` 文件。 若要了解详细信息，请参阅 [Linux 节点上的 X.509 证书的位置和格式](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)。
+    确保要用来帮助保护服务通信的证书安装在群集中的所有节点上。 对于在 Linux 上运行的服务，证书必须以 PEM 格式的文件提供，要么是包含证书和私钥的 `.pem` 文件，要么是包含证书的 `.crt` 文件和包含私钥的 `.key` 文件。 有关详细信息，请参阅 [Linux 节点上的 X.509 证书的位置和格式](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)。
     
     有两种方式可用于提供侦听器设置和安全凭据：
 
@@ -88,7 +88,7 @@ ms.locfileid: "37020807"
         }
        ```
 
-        如果将在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，则 `FabricTransportListenerSettings` 将按默认加载此节中的所有设置。
+        如果要在 settings.xml 中添加 `TransportSettings` 节而不添加任何前缀，`FabricTransportListenerSettings` 将默认加载此节中的所有设置。
 
         ```xml
         <!--"TransportSettings" section without any prefix.-->

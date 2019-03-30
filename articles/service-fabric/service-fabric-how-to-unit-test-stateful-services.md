@@ -3,8 +3,8 @@ title: 为 Azure Service Fabric 中的有状态服务开发单元测试 | Micros
 description: 了解如何为 Service Fabric 有状态服务开发单元测试。
 services: service-fabric
 documentationcenter: .net
-author: charleszipp
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: vturecek
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/04/2018
-ms.author: ryanwi
-ms.openlocfilehash: 65fccada665743cf293b4ee4bb8f786a4c01c58a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: atsenthi
+ms.openlocfilehash: b066296ca52d3067f8985245161eb4fa7b484a07
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093899"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669106"
 ---
 # <a name="create-unit-tests-for-stateful-services"></a>为有状态服务创建单元测试
 对 Service Fabric 有状态服务进行单元测试可发现传统应用程序或特定于域的单元测试不一定会捕获的常见错误。 在为有状态服务开发单元测试时，应牢记一些特殊注意事项。

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 72cbf71077a8df2b81b366d9f29ae006100da471
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310534"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58669327"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -84,7 +84,7 @@ ms.locfileid: "58310534"
 - 服务终结点在虚拟网络中的子网上配置。 终结点可以处理该子网中运行的任何类型的计算实例。
 - 可以针对子网中的所有受支持 Azure 服务（例如 Azure 存储或 Azure SQL 数据库）配置多个服务终结点。
 - 对于 Azure SQL 数据库，虚拟网络必须与 Azure 服务资源位于同一区域。 如果使用 GRS 和 RA-GRS Azure 存储帐户，则主帐户必须与虚拟网络位于同一区域。 对于所有其他服务，可在任何区域的虚拟网络中保护 Azure 服务资源。 
-- 配置了终结点的虚拟网络可与 Azure 服务资源位于相同或不同的订阅中。 有关设置终结点和保护 Azure 服务时所需的权限的详细信息，请参阅[预配](#Provisioning)。
+- 配置了终结点的虚拟网络可与 Azure 服务资源位于相同或不同的订阅中。 有关设置终结点和保护 Azure 服务时所需的权限的详细信息，请参阅[预配](#provisioning)。
 - 对于受支持的服务，可以使用服务终结点在虚拟网络中保护新的或现有的资源。
 
 ### <a name="considerations"></a>注意事项
@@ -132,7 +132,7 @@ ms.locfileid: "58310534"
 
 虚拟网络中的服务终结点总数没有限制。
 
-对于 Azure 服务资源（例如 Azure 存储帐户），服务可能会对用于保护资源的子网数目施加限制。 有关详细信息，请参阅[后续步骤](#next-steps)中所述的各种服务的文档。
+某些 Azure 服务，例如 Azure 存储帐户，可能会强制实施用于保护资源的子网的数量限制。 有关详细信息，请参阅[后续步骤](#next-steps)中所述的各种服务的文档。
 
 ## <a name="virtual-network-service-endpoint-policies"></a>虚拟网络服务终结点策略 
 

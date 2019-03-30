@@ -4,7 +4,7 @@ description: Service Fabric Reliable Services 通知的概念文档
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
-manager: timlt
+manager: chackdan
 editor: masnider,vturecek
 ms.assetid: cdc918dd-5e81-49c8-a03d-7ddcd12a9a76
 ms.service: service-fabric
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: a13e5d74390b82888f51cfd225c54e29550354e9
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: a3df5f28475b03f1799dc1e245c3a7e904b49cb3
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433508"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662663"
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services 通知
-通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*和*可靠字典*。
+通知可让客户端跟踪对它们感兴趣的对象所进行的更改。 两种类型的对象支持通知：*可靠状态管理器*并*可靠字典*。
 
 使用通知的常见原因如下：
 
@@ -46,9 +46,9 @@ ms.locfileid: "47433508"
 可靠状态管理器会维护可靠状态的集合，例如可靠字典和可靠队列。 可靠状态管理器会在此集合更改时触发通知：添加或删除可靠状态，或者重新生成整个集合时。
 可靠状态管理器集合会在以下三种情况下重新生成：
 
-* 恢复：当副本启动时，它会从磁盘恢复其先前的状态。 恢复结束时，它会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组已恢复的可靠状态。
-* 完整副本：必须先生成副本，它才能加入配置集。 有时，这需要将主要副本中可靠状态管理器状态的完整副本应用到空闲的次要副本。 次要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从主要副本获取的可靠状态。
-* 还原：在灾难恢复方案中，副本的状态可通过 **RestoreAsync** 从备份还原。 在这种情况下，主要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从备份还原的可靠状态。
+* 恢复：当副本启动时，它会从磁盘恢复其以前的状态。 恢复结束时，它会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组已恢复的可靠状态。
+* 完整副本：副本联接配置集之前，它必须生成。 有时，这需要将主要副本中可靠状态管理器状态的完整副本应用到空闲的次要副本。 次要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从主要副本获取的可靠状态。
+* 还原：在灾难恢复方案中，副本的状态可以从备份中还原通过**RestoreAsync**。 在这种情况下，主要副本上的可靠状态管理器会使用 **NotifyStateManagerChangedEventArgs** 触发事件，其中包含一组它从备份还原的可靠状态。
 
 若要注册事务通知和/或状态管理器通知，需要在可靠状态管理器上注册 **TransactionChanged** 或 **StateManagerChanged** 事件。 注册这些事件处理程序的常见位置是有状态服务的构造函数。 在构造函数上注册时，也不会错过 **IReliableStateManager** 生存期内的更改所导致的任何通知。
 
@@ -84,11 +84,11 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 ```
 
 **StateManagerChanged** 事件处理程序使用 **NotifyStateManagerChangedEventArgs** 来提供有关事件的详细信息。
-**NotifyStateManagerChangedEventArgs** 有两个子类：**NotifyStateManagerRebuildEventArgs** 和 **NotifyStateManagerSingleEntityChangedEventArgs**。
+**NotifyStateManagerChangedEventArgs**有两个子类：**NotifyStateManagerRebuildEventArgs**并**NotifyStateManagerSingleEntityChangedEventArgs**。
 使用 **NotifyStateManagerChangedEventArgs** 中的操作属性将 **NotifyStateManagerChangedEventArgs** 转换为正确的子类：
 
-* **NotifyStateManagerChangedAction.Rebuild**：**NotifyStateManagerRebuildEventArgs**
-* **NotifyStateManagerChangedAction.Add** 和 **NotifyStateManagerChangedAction.Remove**：**NotifyStateManagerSingleEntityChangedEventArgs**
+* **NotifyStateManagerChangedAction.Rebuild**:**NotifyStateManagerRebuildEventArgs**
+* **NotifyStateManagerChangedAction.Add**并**NotifyStateManagerChangedAction.Remove**:**NotifyStateManagerSingleEntityChangedEventArgs**
 
 以下是 **StateManagerChanged** 通知处理程序示例。
 
@@ -109,11 +109,11 @@ public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChange
 ## <a name="reliable-dictionary-notifications"></a>可靠字典通知
 可靠字典为以下事件提供通知：
 
-* 重新生成：在 **ReliableDictionary** 从过去恢复或复制的本地状态或备份恢复其状态后调用。
-* 清除：在通过 **ClearAsync** 方法清除 **ReliableDictionary** 的状态后调用。
-* 添加：在向 **ReliableDictionary** 添加项之后调用。
-* 更新：在更新 **IReliableDictionary** 中的项之后调用。
-* 删除：在删除 **IReliableDictionary** 中的项之后调用。
+* 重新生成：时调用**ReliableDictionary**已从恢复或复制的本地状态或备份中恢复其状态。
+* 清除：时调用的状态**ReliableDictionary**已通过清除**无法恢复的 ClearAsync**方法。
+* 添加：当已为添加的项时调用**ReliableDictionary**。
+* 更新:中的项时调用**IReliableDictionary**已更新。
+* 删除：中的项时调用**IReliableDictionary**已被删除。
 
 若要获取可靠字典通知，需在 **DictionaryChanged** 上注册 **IReliableDictionary** 事件处理程序。 注册这些事件处理程序的常见位置是在 **ReliableStateManager.StateManagerChanged** 添加通知中。
 在将 **IReliableDictionary** 添加到 **IReliableStateManager** 时注册，可确保不会错过任何通知。
@@ -165,11 +165,11 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 **DictionaryChanged** 事件处理程序使用 **NotifyDictionaryChangedEventArgs** 来提供有关事件的详细信息。
 **NotifyDictionaryChangedEventArgs** 有五个子类。 使用 **NotifyDictionaryChangedEventArgs** 中的操作属性将 **NotifyDictionaryChangedEventArgs** 转换为正确的子类：
 
-* **NotifyDictionaryChangedAction.Rebuild**：**NotifyDictionaryRebuildEventArgs**
-* **NotifyDictionaryChangedAction.Clear**：**NotifyDictionaryClearEventArgs**
-* **NotifyDictionaryChangedAction.Add** 和 **NotifyDictionaryChangedAction.Remove**：**NotifyDictionaryItemAddedEventArgs**
-* **NotifyDictionaryChangedAction.Update**：**NotifyDictionaryItemUpdatedEventArgs**
-* **NotifyDictionaryChangedAction.Remove**：**NotifyDictionaryItemRemovedEventArgs**
+* **NotifyDictionaryChangedAction.Rebuild**:**NotifyDictionaryRebuildEventArgs**
+* **NotifyDictionaryChangedAction.Clear**:**NotifyDictionaryClearEventArgs**
+* **NotifyDictionaryChangedAction.Add**并**NotifyDictionaryChangedAction.Remove**:**NotifyDictionaryItemAddedEventArgs**
+* **NotifyDictionaryChangedAction.Update**:**NotifyDictionaryItemUpdatedEventArgs**
+* **NotifyDictionaryChangedAction.Remove**:**NotifyDictionaryItemRemovedEventArgs**
 
 ```csharp
 public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEventArgs<TKey, TValue> e)
@@ -212,8 +212,8 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * 通知会在执行操作的过程中触发。 例如，在还原操作的最后一个步骤触发还原通知。 处理通知事件之前，不会完成还原。
 * 由于通知会在应用操作的过程中触发，因此，客户端只会看见本地提交操作的通知。 而且因为操作只保证会在本地提交（亦即记录），所以它们不一定可在未来恢复。
 * 在恢复路径上，会针对每个应用的操作触发单个通知。 这表示，如果事务 T1 包含 Create(X)、Delete(X) 和 Create(X)，将依次收到一个针对 X 创建的通知，一个针对删除的通知，然后再收到一个针对创建的通知。
-* 对于包含多个操作的事务，操作将按用户在主要副本上收到它们的顺序应用。
-* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，会看到一条针对 Delete(X) 的通知。
+* 对于包含多个操作的事务，操作按用户在主要副本上收到它们的顺序应用。
+* 在处理错误进度的过程中，某些操作可能会恢复。 通知会针对这类恢复操作加以触发，将副本状态回滚到稳定的时间点。 恢复通知的一个重要区别，是具有重复键的事件会聚合在一起。 例如，如果恢复事务 T1，可以看到一条针对 Delete(X) 的通知。
 
 ## <a name="next-steps"></a>后续步骤
 * [Reliable Collections](service-fabric-work-with-reliable-collections.md)

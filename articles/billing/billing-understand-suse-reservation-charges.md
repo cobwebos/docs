@@ -1,5 +1,5 @@
 ---
-title: 了解 SUSE 计划折扣和使用情况 - Azure 预订 |Microsoft Docs
+title: 了解 SUSE 预留计划折扣和使用情况-Azure |Microsoft Docs
 description: 了解 SUSE 计划折扣是如何应用于虚拟机上的 SUSE 软件。
 services: billing
 documentationcenter: ''
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: a9f784d7e7ed21a5a10a2f5e16125d60e7b9667f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863468"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649250"
 ---
-# <a name="understand-how-the-suse-linux-enterprise-software-plan-discount-is-applied"></a>了解 SUSE Linux Enterprise 软件计划折扣是如何应用的
+# <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解如何为 Azure 应用 SUSE Linux Enterprise 软件预订计划折扣
 
 购买 SUSE Linux 计划后，折扣将自动应用于与预订匹配的已部署的 SUSE 虚拟机 (VM)。 一个 SUSE Linux 计划涵盖了在 Azure VM 上运行 SUSE 软件的成本。
 
 若要购买正确的 SUSE Linux 计划，需要了解所运行的 SUSE VM 以及这些 VM 上的 vCPU 数量。 使用下列各节来帮助通过使用情况 CSV 文件来识别要购买的计划。
 
-## <a name="discount-applies-to-different-vm-sizes-with-instance-size-flexibility"></a>折扣适用于具有实例大小灵活性的不同的 VM 大小
+## <a name="discount-applies-to-different-vm-sizes"></a>折扣适用于不同的 VM 大小
 
 与预订的 VM 实例一样，SUSE 计划的购买也提供了实例大小灵活性。 这意味着即使在部署 vCPU 计数不同的 VM 时，折扣也适用。 折扣适用于软件计划内不同的 VM 大小。
 
@@ -40,7 +40,7 @@ ms.locfileid: "57863468"
 
 对于 5 个或更多的 vCPU，此比率为 2.6。 因此，对于具有 5 个或更多 vCPU 的 VM 的 SUSE 预订仅涵盖了软件成本的一部分，即约 77%。
 
-## <a name="understand-your-suse-vm-usage-before-buying-a-suse-linux-plan"></a>购买 SUSE Linux 计划前了解 SUSE VM 的使用情况
+## <a name="understand-suse-vm-usage-before-you-buy"></a>在购买前了解 SUSE VM 使用情况
 
 下表显示可为其购买预订的软件计划、其相关的使用情况计量和每个计划的比率。
 
@@ -133,6 +133,6 @@ Azure 门户商城名称：
 - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

@@ -4,7 +4,7 @@ description: 介绍 Service Fabric CLI sfctl compose 命令。
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: d71b0c020fb9ceb305b56216d466bacb42ad21e8
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: 4b5cbb4a24b61de7e64a52ef950deedab3eec263
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278145"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667485"
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 创建、删除和管理 Docker Compose 应用程序。
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | create | 创建 Service Fabric compose 部署。 |
 | list | 获取在 Service Fabric 群集中创建的 compose 部署列表。 |
@@ -41,7 +41,7 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path       [必需] | 目标 Docker Compose 文件的路径。 |
@@ -52,7 +52,7 @@ ms.locfileid: "53278145"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -67,7 +67,7 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
 | --max-results | 作为分页查询的一部分返回的最大结果数。 此参数定义返回结果数的上限。 如果根据配置中定义的最大消息大小限制，无法将这些结果容纳到消息中，则返回的结果数可能小于指定的最大结果数。 如果此参数为零或者未指定，则分页查询包含返回消息中最多可容纳的结果数。 |
@@ -75,7 +75,7 @@ ms.locfileid: "53278145"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -90,14 +90,14 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -112,14 +112,14 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -134,7 +134,7 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --deployment-name [必需] | 部署的名称。 |
 | --file-path        [必需] | 目标 Docker compose 文件的路径。 |
@@ -159,7 +159,7 @@ ms.locfileid: "53278145"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -174,14 +174,14 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -196,14 +196,14 @@ ms.locfileid: "53278145"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --deployment-name [必需] | 部署的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

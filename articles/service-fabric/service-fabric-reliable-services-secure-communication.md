@@ -4,7 +4,7 @@ description: 了解如何保护 Azure Service Fabric 群集中运行的 C# Relia
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
-manager: timlt
+manager: chackdan
 editor: vturecek
 ms.assetid: fc129c1a-fbe4-4339-83ae-0e69a41654e0
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: be5dab7b9714f13a4bd30e6ab33a5a0e2016212d
-ms.sourcegitcommit: 0fa8b4622322b3d3003e760f364992f7f7e5d6a9
-ms.translationtype: HT
+ms.openlocfilehash: b6d4a44a53ba553ab4fd514c81867156192b69f5
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37020013"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662527"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
 > [!div class="op_single_selector"]
@@ -60,7 +60,7 @@ ms.locfileid: "37020013"
     确保要用来帮助保护服务通信的证书安装在群集中的所有节点上。 
     
     > [!NOTE]
-    > 在 Linux 节点上，该证书必须以 PEM 格式的文件形式存在于 */var/lib/sfcerts* 目录中。 若要了解详细信息，请参阅 [Linux 节点上的 X.509 证书的位置和格式](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)。 
+    > 在 Linux 节点上，该证书必须以 PEM 格式的文件形式存在于 */var/lib/sfcerts* 目录中。 有关详细信息，请参阅 [Linux 节点上的 X.509 证书的位置和格式](./service-fabric-configure-certificates-linux.md#location-and-format-of-x509-certificates-on-linux-nodes)。 
 
     有两种方式可用于提供侦听器设置和安全凭据：
 

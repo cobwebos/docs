@@ -4,7 +4,7 @@ description: 介绍如何创建具有无状态服务和有状态服务的 Micros
 services: service-fabric
 documentationcenter: java
 author: suhuruli
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 7831886f-7ec4-4aef-95c5-b2469a5b7b5d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 0b044b15b41e2d74f08c4bc989e22b6a19949445
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 6bf8c632a7513d018745bc74aa0a1db95a39af8b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170918"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663176"
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 入门
 > [!div class="op_single_selector"]
@@ -124,7 +124,7 @@ protected List<ServiceInstanceListener> createServiceInstanceListeners() {
 * 应用程序或系统升级。
 * 基础硬件遇到中断。
 
-Service Fabric 将管理此业务流程，以便保持服务的高度可用和适当均衡。
+Service Fabric 会管理此业务流程，以便保持服务的高度可用和适当均衡。
 
 `runAsync()` 不应阻止同步。 runAsync 的实现应返回一个 CompletableFuture，以允许运行时继续执行。 如果工作负荷需要实现一个应该在 CompletableFuture 内完成的、长期运行的任务。
 
@@ -192,7 +192,7 @@ protected CompletableFuture<?> runAsync(CancellationToken cancellationToken) {
 ```
 
 ### <a name="runasync"></a>RunAsync
-`RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表你执行额外的工作，然后再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
+`RunAsync()` 在有状态服务和无状态服务中的运行方式类似。 只不过在有状态服务中，平台将先代表用户执行额外的工作，再执行 `RunAsync()`。 这项工作可能包括确保可靠状态管理器和可靠集合随时可供使用。
 
 ### <a name="reliable-collections-and-the-reliable-state-manager"></a>可靠集合与可靠状态管理器
 ```java

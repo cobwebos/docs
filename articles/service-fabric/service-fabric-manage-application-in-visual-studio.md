@@ -4,7 +4,7 @@ description: 使用 Visual Studio 来创建、开发、打包、部署和调试 
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
 ms.service: service-fabric
@@ -15,12 +15,12 @@ ms.custom: vs-azure
 ms.workload: azure-vs
 ms.date: 03/26/2018
 ms.author: mikhegn
-ms.openlocfilehash: b90c39416a522b42932dd82214316e586ba4293a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 4744858869e10094389be58ddd3960cb8cc2773a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55192547"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664839"
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>使用 Visual Studio 简化 Service Fabric 应用程序的编写和管理
 可以通过 Visual Studio 管理 Azure Service Fabric 应用程序和服务。 [设置开发环境](service-fabric-get-started.md)之后，可以使用 Visual Studio 创建 Service Fabric 应用程序、添加服务，或在本地开发群集中打包、注册和部署应用程序。
@@ -55,11 +55,11 @@ Visual Studio 提供一个名为“应用程序调试模式”的属性，它控
 对于自动升级，数据是通过应用 Service Fabric 的应用程序升级功能予以保留。 若要详细了解如何升级应用程序，以及如何在真实环境中执行升级，请参阅 [Service Fabric 应用程序升级](service-fabric-application-upgrade.md)。
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>向 Service Fabric 应用程序添加服务
-可以向应用程序中添加新的服务来扩展其功能。 为了确保应用程序包中包含服务，请通过“**新建 Fabric 服务...**”菜单项添加服务。
+可以向应用程序中添加新服务以扩展其功能。 为了确保应用程序包中包含服务，请通过“**新建 Fabric 服务...**”菜单项添加服务。
 
 ![添加新的 Service Fabric 服务][newservice]
 
-选择要添加到应用程序的 Service Fabric 项目类型，并指定服务的名称。  请参阅[为服务选择框架](service-fabric-choose-framework.md)，这篇文章有助于确定要使用的服务类型。
+选择要添加到应用程序的 Service Fabric 项目类型，并指定服务的名称。  请参阅[为服务选择框架](service-fabric-choose-framework.md)，这篇文章有助于你确定要使用的服务类型。
 
 ![选择要添加到应用程序的 Service Fabric 服务项目类型][addserviceproject]
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 50cd5969ce02ee5eea0637c950069d684d67b5d3
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 7ef3cfe1df792721db3fe3657c08f58ca82e3c91
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361449"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652308"
 ---
 # <a name="log-metrics-during-training-runs-in-azure-machine-learning"></a>在 Azure 机器学习中运行在定型期间日志指标
 
@@ -351,7 +351,7 @@ az ml run cancel -r <run_id> -p <project_path>
 对于使用 Azure 机器学习的自动化机器学习功能生成的每个分类模型，可以查看以下图表： 
 + [混淆矩阵](#confusion-matrix)
 + [精度-召回率图表](#precision-recall-chart)
-+ [接收方操作特征 (ROC)](#ROC)
++ [接收方操作特征 (ROC)](#roc)
 + [提升曲线](#lift-curve)
 + [增益曲线](#gains-curve)
 + [校准图](#calibration-plot)

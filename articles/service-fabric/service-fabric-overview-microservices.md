@@ -3,8 +3,8 @@ title: Azure 上的微服务简介 | Microsoft Docs
 description: 概述为何使用微服务方法构建云应用程序对于开发现代应用程序非常重要，以及 Azure Service Fabric 如何提供一个平台用于实现此目的。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: fae2be85-0ab4-4cd3-9d1f-e0d95fe1959b
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
-ms.author: msfussell
-ms.openlocfilehash: 39034d069c0c0feb2ac81437e34c7206d7fe6c4c
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.author: atsenthi
+ms.openlocfilehash: 1e02e4fdf0dbe04d8756fc6355c6a9e414b27d2b
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55102810"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665587"
 ---
 # <a name="why-a-microservices-approach-to-building-applications"></a>为什么通过微服务的方法构建应用程序？
 
@@ -33,7 +33,7 @@ ms.locfileid: "55102810"
 
 这些业务要求影响我们*如何*构建应用程序。
 
-有关 Azure 实现微服务的方法的详细信息，请阅读[微服务：由云驱动的应用程序革命](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
+有关 Azure 实现微服务的方法的详细信息，请阅读[微服务：由云支持的应用程序变革](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)。
 
 ## <a name="monolithic-vs-microservice-design-approach"></a>单一式设计方法与微服务设计方法
 

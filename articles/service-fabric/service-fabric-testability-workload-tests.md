@@ -4,7 +4,7 @@ description: 如何针对常规/非常规故障强化服务。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 44af01f0-ed73-4c31-8ac0-d9d65b4ad2d6
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: anmola
-ms.openlocfilehash: 3c075ac9642c7d050fc45ce6164071c9c733326e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.openlocfilehash: ceb6ad1a6a1182d78c473b8b0387c365eb660065
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051908"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667202"
 ---
 # <a name="simulate-failures-during-service-workloads"></a>在服务工作负荷期间模拟故障
 Azure Service Fabric 中的可测试性方案可让开发人员不用再担心如何处理单个故障。 然而也存在一些方案，可能需要客户端工作负荷与故障有明显的交错。 客户端工作负荷与故障的交错确保在发生故障时，服务实际在执行某些操作。 考虑到可测试性功能提供的控制等级，这些交错应该在精确的工作负荷执行点进行。 这种在应用程序的不同状态下引入故障可以找出 bug 并提高质量。
@@ -27,12 +27,12 @@ Azure Service Fabric 中的可测试性方案可让开发人员不用再担心�
 ## <a name="sample-custom-scenario"></a>自定义方案示例
 此测试显示一种方案，其中业务工作负荷与[常规故障和非常规故障](service-fabric-testability-actions.md#graceful-vs-ungraceful-fault-actions)交错出现。 为了获得最佳结果，故障应在服务操作或计算的中间引入。
 
-让我们来了解一个显示了四个工作负荷 A、B、C、D 的服务示例。每个负荷对应一组工作流程，可以是计算、存储或者二者的混合。 为简单起见，我们将对示例中的工作负荷进行抽象化。 本示例中执行的不同故障为：
+让我们演练一下公开四个工作负荷的服务的示例：A、 B、 C 和 d。每个对应于一组工作流程，可以是计算、 存储，或者混用。 为简单起见，我们将对示例中的工作负荷进行抽象化。 本示例中执行的不同故障为：
 
-* RestartNode：用于模拟计算机重启操作的非正常故障。
-* RestartDeployedCodePackage：用于模拟服务主机进程崩溃的非正常故障。
-* RemoveReplica：用于模拟副本删除操作的正常故障。
-* MovePrimary：用于模拟 Service Fabric 负载均衡器触发的副本移动操作的正常故障。
+* RestartNode:用于模拟计算机重启的非常规故障。
+* RestartDeployedCodePackage:非常规故障来模拟服务主机进程崩溃。
+* RemoveReplica:常规故障，用于模拟副本删除。
+* MovePrimary:用于模拟 Service Fabric 负载均衡器触发的副本移动的正常故障。
 
 ```csharp
 // Add a reference to System.Fabric.Testability.dll and System.Fabric.dll.

@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a29da9e87c09ad157babf1e1a391fb967859d73
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210503"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665043"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>管理双重验证设置
 本文解答了有关如何更新双重验证或多重身份验证设置的问题。 如果在登录帐户时遇到问题，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)获取疑难解答帮助。
@@ -50,7 +50,7 @@ ms.locfileid: "56210503"
     ![验证](./media/multi-factor-authentication-end-user-manage-settings/proofup.png)
 
 ## <a name="i-want-to-change-my-phone-number-or-add-a-secondary-number"></a>我要更改电话号码，或添加辅助号码
-必须配置辅助身份验证电话号码。  由于主要电话号码和移动应用可能在同一部手机上，因此，当手机丢失或被盗时，只能通过辅助电话号码访问帐户。
+必须配置辅助身份验证电话号码。  因为你的主电话号码和移动应用程序可能是同一手机上，辅助电话号码是您将能够取回到你的帐户，如果你的电话丢失或被盗时的最快方法。
 
 > [!NOTE]
 > 如果无权使用主电话号码，并需要获得进入帐户的帮助，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)一文以获得更多帮助。  
@@ -75,7 +75,7 @@ ms.locfileid: "56210503"
 2. 下次登录任何设备时，会提示执行双重验证。
 
 ## <a name="how-do-i-clean-up-microsoft-authenticator-from-my-old-device-and-move-to-a-new-one"></a>如何从旧设备清除 Microsoft Authenticator 并将其迁移到新设备？
-从设备上卸载应用或者重置设备时，不会在后端删除激活信息。 有关详细信息，请参阅 [Microsoft Authenticator](user-help-auth-app-download-install.md)。
+从设备上卸载该应用或重置设备时，不会删除应用在后端的激活。 有关详细信息，请参阅 [Microsoft Authenticator](user-help-auth-app-download-install.md)。
 
 ## <a name="next-steps"></a>后续步骤
 * 在[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)中获得疑难解答提示和帮助

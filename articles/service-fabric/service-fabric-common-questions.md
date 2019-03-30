@@ -4,7 +4,7 @@ description: 下面是有关 Service Fabric 的一些常见问题及其解答：
 services: service-fabric
 documentationcenter: .net
 author: chackdan
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: aa287111a9880911c7807734b566bf60f42db85e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447790"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665315"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 

@@ -11,14 +11,15 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 849f944235cf1ab4408aeab336310028d6e754f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57855863"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652087"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
+
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](v1/data-factory-use-custom-activities.md)
 > * [当前版本](transform-data-using-dotnet-custom-activity.md)
@@ -39,6 +40,7 @@ ms.locfileid: "57855863"
 * [新 AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) cmdlet 来创建 Azure Batch 池。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch 链接服务
+
 下面的 JSON 定义了一个示例 Azure Batch 链接服务。 有关详细信息，请参阅 [Azure 数据工厂支持的计算环境](compute-linked-services.md)
 
 ```json
@@ -114,7 +116,7 @@ ms.locfileid: "57855863"
 &#42; 属性 `resourceLinkedService` 和 `folderPath` 必须同时指定或同时省略。
 
 > [!NOTE]
-> 如果要在自定义活动的 referenceObjects 作为传递链接的服务，它是良好的安全做法将 Azure 密钥保管库启用链接的服务 （因为它不包含任何安全字符串） 和 fetch 使用直接与密钥的机密名称的凭据保管库的代码。 您可以找到示例[此处](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)引用 AKV 启用链接的服务，从 Key Vault 中，将检索凭据，然后访问代码中的存储。  
+> 如果要在自定义活动的 referenceObjects 作为传递链接的服务，它是良好的安全做法将 Azure 密钥保管库启用链接的服务 （因为它不包含任何安全字符串） 和 fetch 使用直接与密钥的机密名称的凭据保管库的代码。 您可以找到示例[此处](https://github.com/nabhishek/customactivity_sample/tree/linkedservice)引用 AKV 启用链接的服务，从 Key Vault 中，将检索凭据，然后访问代码中的存储。
 
 ## <a name="custom-activity-permissions"></a>自定义活动权限
 
@@ -147,7 +149,6 @@ ms.locfileid: "57855863"
 ## <a name="passing-objects-and-properties"></a>传递对象和属性
 
 此示例展示了如何使用 referenceObjects 和 extendedProperties 将数据工厂对象和用户定义的属性传递到自定义应用程序。
-
 
 ```json
 {
@@ -191,15 +192,15 @@ ms.locfileid: "57855863"
 
 执行活动时，referenceObjects 和 extendedProperties 存储在以下文件中，这些文件部署到 SampleApp.exe 所在的同一执行文件夹中：
 
-- activity.json
+- `activity.json`
 
   存储自定义活动的 extendedProperties 和属性。
 
-- linkedServices.json
+- `linkedServices.json`
 
   存储 referenceObjects 属性中定义的链接服务的数组。
 
-- datasets.json
+- `datasets.json`
 
   存储 referenceObjects 属性中定义的数据集的数组。
 
@@ -232,12 +233,13 @@ namespace SampleApp
 
 可以使用以下 PowerShell 命令启动管道运行：
 
-```.powershell
+```powershell
 $runId = Invoke-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
 ```
+
 管道运行时，可以使用以下命令查看执行输出：
 
-```.powershell
+```powershell
 while ($True) {
     $result = Get-AzDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
@@ -265,7 +267,7 @@ $result.Error -join "`r`n"
 
 自定义应用程序的 **stdout** 和 **stderr** 保存到在使用任务的 GUID 创建 Azure Batch 链接服务时定义的 Azure 存储链接服务中的 **adfjobs** 容器。 可以从活动运行输出中获取详细路径，如以下代码片段中所示：
 
-```shell
+```
 Pipeline ' MyCustomActivity' run finished. Result:
 
 ResourceGroupName : resourcegroupname
@@ -295,11 +297,12 @@ Activity Error section:
 "failureType": ""
 "target": "MyCustomActivity"
 ```
+
 如果要在下游活动中使用 stdout.txt 的内容，则可以在表达式“\@activity('MyCustomActivity').output.outputs[0]”中获取 stdout.txt 文件的路径。
 
-  > [!IMPORTANT]
-  > - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/”路径中。 必要时需要单独清理它们。
-  > - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。
+> [!IMPORTANT]
+> - activity.json、linkedServices.json 和 datasets.json 存储在 Batch 任务的 runtime 文件夹中。 在此示例中，activity.json、linkedServices.json 和 datasets.json 存储在“https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/”路径中。 必要时需要单独清理它们。
+> - 对于使用自承载集成运行时的链接服务，将通过自承载集成运行时对敏感信息（例如密钥或密码）进行加密，以确保凭据保留在客户定义的专用网络环境中。 以此方式在自定义应用程序代码中进行引用时，可能会丢掉一些敏感字段。 如果需要，请在 extendedProperties 中使用 SecureString 而非使用链接服务引用。
 
 ## <a name="pass-outputs-to-another-activity"></a>将输出传递给另一个活动
 
@@ -311,10 +314,10 @@ Activity Error section:
 
 ```json
 "extendedProperties": {
-    "connectionString": {
-        "type": "SecureString",
-        "value": "aSampleSecureString"
-    }
+  "connectionString": {
+    "type": "SecureString",
+    "value": "aSampleSecureString"
+  }
 }
 ```
 
@@ -334,7 +337,6 @@ Activity Error section:
 
 下表介绍数据工厂 V2 自定义活动和数据工厂版本 1（自定义）DotNet 活动之间的差异：
 
-
 |差异      | 自定义活动      | 版本 1（自定义）DotNet 活动      |
 | ---- | ---- | ---- |
 |如何定义自定义逻辑      |通过提供可执行文件      |通过实施.NET DLL      |
@@ -344,7 +346,6 @@ Activity Error section:
 |将信息从活动传递到自定义逻辑      |通过 ReferenceObjects（LinkedServices 和数据集）与 ExtendedProperties（自定义属性）      |通过 ExtendedProperties（自定义属性）、输入和输出数据集      |
 |在自定义逻辑中检索信息      |分析可执行文件所在文件夹中存储的 activity.json、linkedServices.json 和 datasets.json      |通过.NET SDK (.NET Frame 4.5.2)      |
 |日志记录      |直接写入到 STDOUT      |在.NET DLL 中实施记录器      |
-
 
 如果你有针对版本 1 （自定义） DotNet 活动编写的现有.NET 代码，您需要修改代码，使其可用于自定义活动的当前版本。 按照以下高级准则更新代码：
 
@@ -358,6 +359,7 @@ Activity Error section:
 有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写为数据工厂自定义活动的完整示例，请参阅[数据工厂自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
+
 还可以使用**自动缩放**功能创建 Azure Batch 池。 例如，可以根据挂起任务的数量不使用专用 VM 但使用自动缩放公式创建 Azure 批处理池。
 
 此处的示例公式可实现以下行为：最初创建池之后，它开始时包含 1 个 VM。 $PendingTasks 度量值定义处于正在运行状态和活动（已排队）状态中的任务数。 该公式查找过去 180 秒内的平均挂起任务数，并相应地设置 TargetDedicated。 它可确保 TargetDedicated 永不超过 25 个 VM。 因此，随着新任务的提交，池会自动增长；随着任务的完成，VM 会逐个释放，并且自动缩放功能会收缩这些 VM。 可根据自己的需要调整 startingNumberOfVMs 和 maxNumberofVMs。

@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
-ms.openlocfilehash: 67c07169b3ff66d99ee52a0e078e0e463a42702e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482906"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652631"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -102,7 +102,7 @@ Azure Migrate 持续配置文件的本地环境收集的本地 Vm 的性能数�
    - 单击“文件”>“部署 OVF 模板”>“浏览到 OVA”，并完成部署
 4. 如果部署仍然失败，请联系 Azure Migrate 支持部门。
 
-### <a name="unable-to-select-the-azure-cloud-in-the-appliance"></a>无法选择 Azure 云设备中
+### <a name="unable-to-select-the-azure-cloud-in-the-appliance-fails-with-error-azure-cloud-selection-failed"></a>无法选择 Azure 云设备，失败，显示错误中"Azure 云选择失败"
 
 这是一个已知的问题和解决方法是针对此问题提供。 请下载[最新升级位](https://docs.microsoft.com/azure/migrate/concepts-collector-upgrade#continuous-discovery-upgrade-versions)设备和更新的设备，可应用此修补程序。
 

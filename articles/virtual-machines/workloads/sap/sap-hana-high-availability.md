@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/15/2019
 ms.author: sedusch
-ms.openlocfilehash: f0bac9d50e73ed703905545261e86796ede214e2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2121cd661f5f1c2c14dc32eb2a4cbf717c966c67
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180834"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668951"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server 上 Azure VM 中 SAP HANA 的高可用性
 
@@ -111,7 +111,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
     - **数据库类型**：选择“HANA”。
     - **SAP 系统大小**：输入新系统将提供的 SAPS 数量。 如果不确定系统需要多少 SAPS，请咨询 SAP 技术合作伙伴或系统集成商。
     - **系统可用性**：选择“HA”。
-    - **管理员用户名和管理员密码**：创建可用于登录计算机的新用户。
+    - **管理员用户名和管理员密码**：创建一个新用户，可用于登录到计算机。
     - **新子网或现有子网**：确定是要创建新的虚拟网络和子网，还是使用现有子网。 如果已有连接到本地网络的虚拟网络，请选择“现有”。
     - **子网 ID**：如果要将 VM 部署到现有 VNet 中，并且该 VNet 中已定义了 VM 应分配到的子网，请指定该特定子网的 ID。 ID 通常如下所示：**/subscriptions/\<订阅 ID>/resourceGroups/\<资源组名称>/providers/Microsoft.Network/virtualNetworks/\<虚拟网络名称>/subnets/\<子网名称>**。
 
@@ -195,7 +195,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 > [!IMPORTANT]
 > 不要启用 TCP 放置在 Azure 负载均衡器之后的 Azure Vm 上的时间戳。 启用 TCP 时间戳将导致运行状况探测失败。 将参数设置**net.ipv4.tcp_timestamps**到**0**。 有关详细信息，请参阅[负载均衡器运行状况探测](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-custom-probe-overview)。
-> SAP 说明[2382421](https://launchpad.support.sap.com/#/notes/2382421)当前包含有冲突的语句，通知你将 net.ipv4.tcp_timestamps 设置为 1。 对于 Azure 虚拟机放置在 Azure 负载均衡器后面，将参数设置**net.ipv4.tcp_timestamps**到**0**。 
+> 另请参阅 SAP 注释[2382421](https://launchpad.support.sap.com/#/notes/2382421)。 
 
 ## <a name="create-a-pacemaker-cluster"></a>创建 Pacemaker 群集
 
@@ -364,14 +364,14 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
    如果使用的是 SAP HANA 2.0 或 MDC，请为 SAP NetWeaver 系统创建一个租户数据库。 将 **NW1** 替换为 SAP 系统的 SID。
 
-   以 \<hanasid>adm 身份登录并执行以下命令：
+   执行以下命令为 < hanasid\>adm:
 
    <pre><code>hdbsql -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> -d SYSTEMDB 'CREATE DATABASE <b>NW1</b> SYSTEM USER PASSWORD "<b>passwd</b>"'
    </code></pre>
 
 1. **[1]** 在第一个节点上配置系统复制：
 
-   以 \<hanasid>adm 身份登录并备份数据库：
+   备份数据库作为 < hanasid\>adm:
 
    <pre><code>hdbsql -d SYSTEMDB -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupSYS</b>')"
    hdbsql -d <b>HN1</b> -u SYSTEM -p "<b>passwd</b>" -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackupHN1</b>')"
@@ -391,7 +391,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[2]** 在第二个节点上配置系统复制：
     
-   注册第二个节点以启动系统复制。 以 \<hanasid>adm 身份登录并运行以下命令：
+   注册第二个节点以启动系统复制。 运行以下命令的访问权限 < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -407,7 +407,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 创建所需的用户。
 
-   以 root 身份登录并运行以下命令。 确保将粗体字符串（HANA 系统 ID **HN1** 和实例编号 **03**）替换为 SAP HANA 安装的值。
+   以 root 身份运行以下命令。 确保将粗体字符串（HANA 系统 ID **HN1** 和实例编号 **03**）替换为 SAP HANA 安装的值。
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -u system -i <b>03</b> 'CREATE USER <b>hdb</b>hasync PASSWORD "<b>passwd</b>"'
@@ -417,7 +417,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[A]** 创建密钥存储条目。
 
-   以 root 身份登录并运行以下命令来创建新的密钥存储条目：
+   若要创建新的密钥存储条目的根以运行以下命令：
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbuserstore SET <b>hdb</b>haloc localhost:3<b>03</b>15 <b>hdb</b>hasync <b>passwd</b>
@@ -425,7 +425,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 备份数据库。
 
-   以 root 身份登录并备份数据库：
+   将数据库备份以 root 身份：
 
    <pre><code>PATH="$PATH:/usr/sap/<b>HN1</b>/HDB<b>03</b>/exe"
    hdbsql -d SYSTEMDB -u system -i <b>03</b> "BACKUP DATA USING FILE ('<b>initialbackup</b>')"
@@ -438,7 +438,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[1]** 在第一个节点上配置系统复制。
 
-   以 \<hanasid>adm 身份登录并创建主站点：
+   创建主站点作为 < hanasid\>adm:
 
    <pre><code>su - <b>hdb</b>adm
    hdbnsutil -sr_enable –-name=<b>SITE1</b>
@@ -446,7 +446,7 @@ Azure 市场中包含适用于 SUSE Linux Enterprise Server for SAP Applications
 
 1. **[2]** 在第二个节点上配置系统复制。
 
-   以 \<hanasid>adm 身份登录并注册辅助站点：
+   注册辅助站点作为 < hanasid\>adm:
 
    <pre><code>sapcontrol -nr <b>03</b> -function StopWait 600 10
    hdbnsutil -sr_register --remoteHost=<b>hn1-db-0</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE2</b> 
@@ -709,7 +709,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1-db-0 上，以 \<hanasid>adm 的身份运行以下命令：
+   运行以下命令，< hanasid\>adm 节点 hn1-db-0 上：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -750,7 +750,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   在节点 hn1-db-1 上，以 \<hanasid>adm 的身份运行以下命令：
+   运行以下命令，< hanasid\>adm 节点 hn1-db-1 上：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -791,7 +791,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1-db-0 上，以 \<hanasid>adm 的身份运行以下命令：
+   运行以下命令，< hanasid\>adm 节点 hn1-db-0 上：
 
    <pre><code>hn1adm@hn1-db-0:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -832,7 +832,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-1
    </code></pre>
 
-   在节点 hn1-db-1 上，以 \<hanasid>adm 的身份运行以下命令：
+   运行以下命令，< hanasid\>adm 节点 hn1-db-1 上：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>
@@ -975,7 +975,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1-db-1 上，以 \<hanasid>adm 的身份运行以下命令：
+   运行以下命令，< hanasid\>adm 节点 hn1-db-1 上：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
@@ -1012,7 +1012,7 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
       rsc_nc_HN1_HDB03   (ocf::heartbeat:anything):      Started hn1-db-0
    </code></pre>
 
-   在节点 hn1-db-1 上，以 \<hanasid>adm 的身份运行以下命令：
+   运行以下命令，< hanasid\>adm 节点 hn1-db-1 上：
 
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB kill-9
    </code></pre>

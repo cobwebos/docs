@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/09/2018
 ms.author: elsung
-ms.openlocfilehash: 557f331136726110db2a19e20b9d2f5f971ad384
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 362129b4ccd0e46b6ffc682e7232c62c196ef334
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57772902"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652123"
 ---
 # <a name="virtual-network-integration-for-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的虚拟网络集成
 
@@ -75,7 +75,7 @@ ms.locfileid: "57772902"
 
 - 在 Data Lake Storage Gen1 虚拟网络集成功能推出之前创建的 HDInsight 群集必须重新创建，否则不支持这项新功能。
  
-- 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。 然后，在最终重新启用虚拟网络规则或取消选择**允许来自所有网络和服务的访问**之前，创建 HDInsight 群集。 有关详细信息，请参阅[例外](##Exceptions)部分。
+- 如果创建新的 HDInsight 群集且选择的 Data Lake Storage Gen1 帐户已启用虚拟网络集成功能，则此过程会失败。 首先，请禁用虚拟网络规则。 也可以在 Data Lake Storage 帐户的“防火墙和虚拟网络”边栏选项卡上选择“允许从所有网络和服务进行访问”。 然后，在最终重新启用虚拟网络规则或取消选择**允许来自所有网络和服务的访问**之前，创建 HDInsight 群集。 有关详细信息，请参阅[例外](#exceptions)部分。
 
 - Data Lake Storage Gen1 虚拟网络集成不适用于 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)。
   

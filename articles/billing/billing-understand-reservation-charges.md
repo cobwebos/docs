@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure 预留折扣 | Microsoft Docs
-description: 了解如何对运行中的 SQL 数据库应用预留折扣。
+title: 了解 Azure SQL 数据库的保留折扣 |Microsoft Docs
+description: 了解如何将预订折扣应用到正在运行的 Azure SQL 数据库。
 services: billing
 documentationcenter: ''
 author: yashesvi
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: banders
-ms.openlocfilehash: ff31b9be0e927cca7d272e5deaa5ecf48a52580d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: aa4fc43efab8c168fd5351ec60def7a3d0eefada
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845445"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649435"
 ---
-# <a name="understand-how-an-azure-reservation-discount-is-applied-to-sql-databases"></a>了解如何对 SQL 数据库应用 Azure 预留折扣
+# <a name="understand-how-a-reservation-discount-is-applied-to-azure-sql-databases"></a>了解如何将预订折扣应用到 Azure SQL 数据库
 
 购买 Azure SQL 数据库预留容量后，预留折扣会自动应用到与预留属性和数量匹配的 SQL 数据库。 预留涵盖 SQL 数据库的计算成本。 将按标准费率收取软件、存储和网络费用。 可以通过 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来包含 SQL 数据库的许可成本。
 
@@ -54,6 +54,6 @@ ms.locfileid: "57845445"
 - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 - [了解 CSP 订阅的预留使用情况](https://docs.microsoft.com/partner-center/azure-reservations)
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 
 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

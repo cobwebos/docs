@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: monhaber
-ms.openlocfilehash: 276b2815b36f05aa49183681b6c9e622155938e9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 79faab0dcf2dd4c5592fe0543fa63f2538facf36
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401134"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58664006"
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure 安全中心常见问题 (FAQ)
 此 FAQ 解答有关 Azure 安全中心的问题。Azure 安全中心可帮助预防、检测和响应威胁，同时增加 Microsoft Azure 资源的可见性和安全方面的可控性。
@@ -43,6 +43,9 @@ Azure 安全中心通过 Microsoft Azure 订阅启用，可从 [Azure 门户](ht
 免费层提供 Azure 资源、基本安全策略、安全建议以及与合作伙伴安全产品和服务的集成的安全状态。
 
 标准层增添了高级威胁检测功能，包括威胁情报、行为分析、异常检测、安全事件和威胁归属报告。 您可以开始标准层免费试用版。 若要升级，请选择安全策略中的[定价层](https://docs.microsoft.com/azure/security-center/security-center-pricing)。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+
+### <a name="how-can-i-track-who-in-my-organization-performed-pricing-tier-changes-in-azure-security-center"></a>如何跟踪我的组织中执行在 Azure 安全中心的定价层更改
+因为 Azure 订阅可能具有多个管理员有权更改定价层，用户可能想要知道谁执行了定价层更改。 若要使用的可以使用 Azure 活动日志。 请查看更多说明[此处](https://techcommunity.microsoft.com/t5/Security-Identity/Tracking-Changes-in-the-Pricing-Tier-for-Azure-Security-Center/td-p/390832)
 
 ## <a name="permissions"></a>权限
 Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md) 提供可在 Azure 中分配给用户、组和服务的[内置角色](../role-based-access-control/built-in-roles.md)。
@@ -116,22 +119,22 @@ Windows 或 Linux IaaS VM 的合格条件如下：
    - 选择“取消”，以取消该操作。
 
 ### 如果已作为扩展在 VM 上安装 Microsoft Monitoring Agent？<a name="mmaextensioninstalled"></a>
-作为扩展安装监视代理时，扩展配置允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心将在已连接的工作区中存储 VM 的安全数据，前提是已安装在其上的"安全性"或"securityFree"解决方案。 安全中心可以升级到此过程中的最新版本的扩展版本。
+作为扩展安装监视代理时，扩展配置允许向单个工作区报告。 安全中心不会覆盖用户工作区的现有连接。 安全中心将在已连接的工作区中存储 VM 的安全数据，前提是已在其上安装"安全性"或"SecurityCenterFree"解决方案。 安全中心可以升级到此过程中的最新版本的扩展版本。
 
 有关详细信息，请参阅[在代理安装的预先存在的情况下自动预配](security-center-enable-data-collection.md#preexisting)。
 
 
-### 如果我必须直接安装在计算机上，但不是作为扩展 （直接代理） Microsoft Monitoring Agent？<a name="directagentinstalled"></a>
+### 如果我有 Microsoft Monitoring Agent 是直接安装在计算机上，但不是作为扩展 （直接代理）？<a name="directagentinstalled"></a>
 如果直接 （而不是作为 Azure 扩展） 在 VM 上安装 Microsoft Monitoring Agent，则安全中心将安装 Microsoft Monitoring Agent 扩展，并可以升级到最新版本的 Microsoft Monitoring agent。
 安装的代理将继续向其已配置的工作区，报告，此外将报告到安全中心中配置的工作区 （支持的多宿主功能）。
-如果配置的工作区是用户工作区 （不安全中心的默认工作区），你将需要安装"安全 /"securityFree"解决方案，它为安全中心从虚拟机和计算机启动处理事件到该工作区报告。
+如果配置的工作区是用户工作区 （不安全中心的默认工作区），你将需要安装"安全 /"SecurityCenterFree"解决方案，它为安全中心从虚拟机和计算机启动处理事件报告到的工作区。
 
 为现有机上订阅载入到安全中心之前 2019年-03-17，当将检测到现有代理，将不会安装 Microsoft Monitoring Agent 扩展并在计算机不会受到影响。 这些计算机，请参阅"解决监视你的计算机上的代理运行状况问题"建议，若要解决在这些计算机上的代理安装问题
 
  有关详细信息，请参阅下一部分[如果已在 VM 上安装 SCOM 或 OMS 直接代理，会发生什么情况？](#scomomsinstalled)
 
-### 如果已在 VM 上安装 SCOM 代理，会发生什么情况？<a name="scomomsinstalled"></a>
-安全中心会安装到现有 SCOM 的 Microsoft Monitoring Agent 扩展的并排方案。 现有 SCOM 代理将继续正常报告与 SCOM 服务器。 请注意，SCOM 代理和 Microsoft Monitoring Agent 共享常见的运行时库，将在此处理期间更新到最新版本。
+### 如果我的 VM 上已安装 System Center Operations Manager (SCOM) 代理，会发生什么情况？<a name="scomomsinstalled"></a>
+安全中心会安装到现有的 System Center Operations Manager 代理的 Microsoft Monitoring Agent 扩展的并排方案。 现有 SCOM 代理将继续正常情况下报告到 System Center Operations Manager 服务器。 请注意，System Center Operations Manager 代理和 Microsoft Monitoring Agent 共享常见的运行时库，将在此处理期间更新到最新版本。 请注意-如果 System Center Operations Manager 安装代理版本 2012年，则不要启用自动预配上 （在 System Center Operations Manager 服务器也是 2012年时，可管理性功能可能会丢失）。
 
 ### <a name="what-is-the-impact-of-removing-these-extensions"></a>删除这些扩展会有什么影响？
 删除 Microsoft 监视扩展后，安全中心无法从 VM 收集安全数据，因此无法提供某些安全建议和提示。 安全中心会在 24 小时内确定 VM 缺少扩展并重新安装扩展。
@@ -156,7 +159,7 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 如果存在以下情况，可以选择禁用自动预配：
 
 - 安全中心执行的自动代理安装应用到整个订阅。  无法将自动安装应用到一部分 VM。 如果使用 Microsoft Monitoring Agent 无法安装某些关键 VM，则应选择禁用自动预配。
-- 安装 Microsoft Monitoring Agent 扩展会更新代理的版本。 这适用于直接代理和 SCOM 代理。 如果已安装的 SCOM 代理版本为 2012 并已将其升级，则当 SCOM 服务器的版本也是 2012 时，可能会丢失管理功能。 如果已安装的 SCOM 代理版本为 2012，则应考虑选择禁用自动预配。
+- Microsoft Monitoring Agent (MMA) 扩展的安装会更新代理的版本。 这适用于直接代理和 SCOM 代理 （在后者中，SCOM 和 MMA 共享常见的运行时库-将更新过程中）。 如果已安装的 SCOM 代理版本为 2012 并已将其升级，则当 SCOM 服务器的版本也是 2012 时，可能会丢失管理功能。 如果已安装的 SCOM 代理版本为 2012，则应考虑选择禁用自动预配。
 - 如果自定义工作区在订阅的外部（集中式工作区），则应选择禁用自动预配。 可以手动安装 Microsoft Monitoring Agent 扩展并将其连接到工作区，无需安全中心覆盖连接。
 - 如果想要避免为每个订阅创建多个工作区，并且订阅中包含自己的自定义工作区，则可以采取以下两种做法：
 
@@ -224,9 +227,9 @@ Windows 或 Linux IaaS VM 的合格条件如下：
 ## 现有的 Azure Monitor 日志客户<a name="existingloganalyticscust"></a>
 
 ### <a name="does-security-center-override-any-existing-connections-between-vms-and-workspaces"></a>安全中心是否会覆盖 VM 和工作区之间的任何现有连接？
-如果 VM 已将 Microsoft Monitoring Agent 作为 Azure 扩展进行安装，则安全中心不会覆盖现有工作区连接。 相反，安全中心会使用现有工作区。
+如果 VM 已将 Microsoft Monitoring Agent 作为 Azure 扩展进行安装，则安全中心不会覆盖现有工作区连接。 相反，安全中心会使用现有工作区。 将受保护 VM，前提是它报告的工作区上已安装"安全性"或"SecurityCenterFree"解决方案。 
 
-如果没有安全中心解决方案，则会在工作区安装，并且此解决方案仅适用于相关的 VM。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)可用于限定解决方案的范围。
+安全中心解决方案在数据收集屏幕中选择工作区安装如果没有，并且该解决方案仅应用于相关的 Vm。 添加解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)可用于限定解决方案的范围。
 
 如果 Microsoft Monitoring Agent 是直接安装到 VM 上（而不是作为 Azure 扩展进行安装），那么安全中心不会安装 Microsoft Monitoring Agent，并且安全监视也会受限。
 

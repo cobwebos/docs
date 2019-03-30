@@ -11,12 +11,12 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 1b1583731f9b95bea7fe64efe628b05bb7b9a476
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 44ff2a5b723c086604acf39e9f975deb53759ae1
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118027"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648103"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>从 Azure AI 库中查看和删除产品内用户数据
 
@@ -80,7 +80,7 @@ ms.locfileid: "58118027"
 
 目录 API 将有关已发布实体的信息存储到 Azure AI 库中，你也可以直接在 [AI 库网站](https://gallery.azure.ai/)上查看该库。 
 
-若要查看已发布的实体，请访问以下 URL，并将 `[AuthorId]` 替换为在上面的[获取作者 ID](#get-an-author-ID) 中获取的作者 ID。
+若要查看已发布的实体，请访问以下 URL，并将 `[AuthorId]` 替换为在上面的[获取作者 ID](#get-an-author-id) 中获取的作者 ID。
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 

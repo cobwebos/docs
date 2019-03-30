@@ -3,8 +3,8 @@ title: Service Fabric 项目创建后续步骤 | Microsoft 文档
 description: 了解刚才在 Visual Studio 中创建的应用程序项目。  了解如何使用教程生成服务以及有关开发 Service Fabric 服务的详细信息。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
-ms.author: rwike77
-ms.openlocfilehash: 4d5e74b9ecffbf8f1161cf6c5ef948cd154d993f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.author: atsenthi
+ms.openlocfilehash: e5371cd3ea9de1993f0f824325f6cbf1e25343d4
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233150"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667921"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric 应用程序和后续步骤
 已创建 Azure Service Fabric 应用程序。 本文介绍了一些试验教程、项目的组成、你可能感兴趣的其他信息以及有可能执行的后续步骤。

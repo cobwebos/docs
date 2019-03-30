@@ -3,17 +3,17 @@ title: Azure Service Fabric CLI 入门
 description: 了解如何使用 Azure Service Fabric CLI。 了解如何连接到群集以及如何管理应用程序。
 services: service-fabric
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 ms.service: service-fabric
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 579df1c8412ae626ced6776a98e054a13e4a3e64
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: d5b6f183a59e3f47aa5867b5e09e06541a6a67db
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53273079"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662646"
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -21,7 +21,7 @@ Azure Service Fabric 命令行接口 (CLI) 是一个命令行实用程序，用�
 
 [!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在安装之前，请确保环境中已安装 Python 和 pip。 有关详细信息，请参阅 [pip 快速入门文档](https://pip.pypa.io/en/latest/quickstart/)和官方的 [Python 安装文档](https://wiki.python.org/moin/BeginnersGuide/Download)。
 

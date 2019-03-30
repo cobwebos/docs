@@ -4,7 +4,7 @@ description: 了解如何升级运行独立 Service Fabric 群集的配置。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: 66296cc6-9524-4c6a-b0a6-57c253bdf67e
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2018
 ms.author: dekapur
-ms.openlocfilehash: 88846845f1f8ffc71fb193e134a18ec38f619141
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: HT
+ms.openlocfilehash: f99c1ebb64bf881bcd42f15e13bb81b96ccfa064
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51857872"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665593"
 ---
 # <a name="upgrade-the-configuration-of-a-standalone-cluster"></a>升级独立群集的配置 
 
@@ -73,18 +73,18 @@ Start-ServiceFabricClusterConfigurationUpgrade -ClusterConfigPath <Path to Confi
 
 支持四个选项：  
 
-* 单个证书升级：升级路径为“证书 A（主证书）-> 证书 B（主证书）-> 证书 C（主证书）-> ...”。
+* 单证书升级：升级路径为“证书 A（主证书）-> 证书 B（主证书）-> 证书 C（主证书）->....”
 
-* 双证书升级：升级路径为“证书 A（主证书）-> 证书 A（主证书）和证书 B（辅助证书）-> 证书 B（主证书）-> 证书 B（主证书）和证书 C（辅助证书）-> 证书 C（主证书）-> ...”。
+* 双证书升级：升级路径为“证书 A（主证书）-> 证书 A（主证书）和证书 B（辅助证书）-> 证书 B（主证书）-> 证书 B（主证书）和证书 C（辅助证书）-> 证书 C（主证书）-> ...”
 
-* 证书类型升级：“基于指纹的证书配置 <-> 基于 CommonName 的证书配置”。 例如，“证书指纹 A（主证书）和指纹 B（辅助证书）-> 证书 CommonName C”。
+* 证书类型升级：基于指纹的证书配置 <-> 基于 CommonName 的证书配置。 例如，“证书指纹 A（主证书）和指纹 B（辅助证书）-> 证书 CommonName C”。
 
 * 证书颁发者指纹升级：升级路径为“Certificate CN=A,IssuerThumbprint=IT1 (Primary) -> Certificate CN=A,IssuerThumbprint=IT1,IT2 (Primary) -> Certificate CN=A,IssuerThumbprint=IT2 (Primary)”。
 
 
 ## <a name="next-steps"></a>后续步骤
 * 了解如何自定义某些 [Service Fabric 群集设置](service-fabric-cluster-fabric-settings.md)。
-* 了解如何[扩展和缩减群集](service-fabric-cluster-scale-up-down.md)。
+* 了解如何[扩大和缩小群集](service-fabric-cluster-scale-up-down.md)。
 * 了解[应用程序升级](service-fabric-application-upgrade.md)。
 
 <!--Image references-->

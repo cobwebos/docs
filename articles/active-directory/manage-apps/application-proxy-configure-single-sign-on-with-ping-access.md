@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4df8f329a135683ea68896605a0a1c6f3ee45984
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 319791c2436395c00dafc744fb6fcb1ff18b0750
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084075"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652325"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
 
@@ -43,7 +43,7 @@ PingAccess for Azure Active Directory 是一种 PingAccess 产品/服务，能�
 
 ## <a name="publish-your-application-in-azure"></a>在 Azure 中发布应用程序
 
-本文面向首次使用此方案发布应用的人员。 其中逐步讲解了应用程序和 PingAccess 的入门方法以及发布步骤。 如果已配置这两个服务，但只是想要重温发布步骤，则可以跳过连接器安装，转到[使用应用程序代理将应用添加到 Azure AD](#add-your-app-to-Azure-AD-with-Application-Proxy)。
+本文面向首次使用此方案发布应用的人员。 其中逐步讲解了应用程序和 PingAccess 的入门方法以及发布步骤。 如果已配置这两个服务，但只是想要重温发布步骤，则可以跳过连接器安装，转到[使用应用程序代理将应用添加到 Azure AD](#add-your-app-to-azure-ad-with-application-proxy)。
 
 >[!NOTE]
 >由于本方案是 Azure AD 与 PingAccess 之间的合作成果，某些说明已在 Ping Identity 站点上提供。

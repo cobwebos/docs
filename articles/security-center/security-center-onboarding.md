@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 19/02/2019
 ms.author: monhaber
-ms.openlocfilehash: d9c9a079198a8ff263c729b8e90c1fc8d0e64cd0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef6b476e2c85715e86ef4c1cfe1194bb25cade28
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100064"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58665485"
 ---
 # <a name="onboarding-to-azure-security-center-standard-for-enhanced-security"></a>载入到 Azure 安全中心标准层以增强安全性
 升级到安全中心标准层后，可以将增强的安全管理和威胁防护功能用于混合云工作负载。  可以免费试用标准层。 请参阅安全中心[定价页](https://azure.microsoft.com/pricing/details/security-center/)了解详细信息。
@@ -33,7 +33,7 @@ ms.locfileid: "58100064"
 ## <a name="detecting-unprotected-resources"></a>检测未受保护的资源     
 安全中心将自动检测未启用安全中心标准层的所有 Azure 订阅或工作区。 其中包括使用安全中心免费层的 Azure 订阅和未启用安全解决方案的工作区。
 
-可以将整个 Azure 订阅升级到标准层，这样此订阅中的所有资源均将继承此层，或者可以定义唯一的策略来仅升级特定的资源组。 如果该资源组的策略设置是唯一的，则将订阅升级到标准层时安全中心不会重写定价策略。 将标准层应用到订阅层适用于订阅中所有受支持的资源。 将标准层应用到工作区层适用于向工作区报告的所有资源。
+您可以升级到标准层中，这样的订阅中所有受支持的资源继承此将整个 Azure 订阅。 将标准层应用到工作区层适用于向工作区报告的所有资源。
 
 > [!NOTE]
 > 你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。 [解决方案目标](../operations-management-suite/operations-management-suite-solution-targeting.md)使用户可以向解决方案应用一个范围，并可将目标设定为工作区中的一个计算机子集。  如果使用解决方案目标功能，安全中心会将工作区列为没有解决方案。

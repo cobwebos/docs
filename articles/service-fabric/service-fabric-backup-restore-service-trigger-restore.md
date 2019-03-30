@@ -4,7 +4,7 @@ description: 使用 Service Fabric 中的定期备份和还原功能从应用程
 services: service-fabric
 documentationcenter: .net
 author: aagup
-manager: timlt
+manager: chackdan
 editor: aagup
 ms.assetid: 802F55B6-6575-4AE1-8A8E-C9B03512FF88
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/30/2018
 ms.author: aagup
-ms.openlocfilehash: 66df926eaaf771fdde4d2eb59772b9d38a87edf0
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: a82004fdd6bbb4eda0842670f210f846f9446384
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313222"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58667168"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>在 Azure Service Fabric 中还原备份
 
@@ -32,7 +32,7 @@ ms.locfileid: "56313222"
 - **数据丢失案例**：服务被意外删除或损坏。 例如，管理员错误地删除了服务。
 - **数据损坏案例**：服务中的 Bug 导致数据损坏。 例如，当某个服务代码升级程序将错误数据写入到可靠集合时，可能会发生数据损坏。 在此情况下，可能需要将代码和数据都还原到先前的状态。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 若要触发还原，必须为群集启用故障分析服务 (FAS)
 - 备份还原服务 (BRS) 已创建备份。

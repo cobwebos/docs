@@ -16,12 +16,12 @@ ms.date: 07/11/2017
 ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3525436c61038d9cdda3a1b1da8e226ab153134f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d7ad6eeba09c81de33b92722992c6762a4b4327c
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098247"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649333"
 ---
 # <a name="problems-signing-in-to-an-application-using-a-deeplink"></a>使用深层链接登录应用程序时出现的问题
 
@@ -113,7 +113,7 @@ ms.locfileid: "58098247"
 
 若要从 Azure AD 库配置应用程序，必须：
 
--   [从 Azure AD 库添加应用程序](#add-an-application-from-the-Azure-AD-gallery)
+-   [从 Azure AD 库添加应用程序](#add-an-application-from-the-azure-ad-gallery)
 
 -   [将应用程序配置为密码单一登录](#configure-the-application-for-password-single-sign-on)
 

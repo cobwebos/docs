@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 3ce6744a3a7d71f358dccb3dc29c470f3a376240
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580698"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649367"
 ---
 # <a name="tutorial-configure-security-agents"></a>教程：配置安全代理
 
@@ -42,7 +42,7 @@ ASC IoT 的安全代理孪生配置对象是一个.json 格式对象。 配置�
 
 这些配置可帮助您自定义适用于每个方案所需的代理。 例如，自动排除某些事件，或保持最低级别的功率消耗是可以通过配置这些属性。  
 
-IoT 安全代理配置为使用 ASC[架构](https://github.com/azure/asc-for-iot-schemas/security/module/twin)进行更改。  
+IoT 安全代理配置为使用 ASC[架构](https://aka.ms/iot-security-github-module-schema)进行更改。  
 
 ## <a name="configuration-objects"></a>配置对象 
 
@@ -64,7 +64,7 @@ IoT 安全代理每个 ASC 相关属性位于所需的属性部分中的代理�
 
 ## <a name="configuration-schema-and-validation"></a>配置架构和验证 
 
-请确保用于验证对此代理配置[架构](https://github.com/Azure/asc-for-iot/schema/security_module_twin)。 如果配置对象与架构不匹配，将不会启动代理。
+请确保用于验证对此代理配置[架构](https://aka.ms/iot-security-github-module-schema)。 如果配置对象与架构不匹配，将不会启动代理。
 
  
 如果在运行时代理，配置对象更改为非有效的配置 （配置与架构不匹配），该代理将忽略无效的配置，并将继续使用当前配置。 

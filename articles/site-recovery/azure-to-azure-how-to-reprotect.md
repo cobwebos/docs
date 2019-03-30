@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: b1676f53125694eeff3a39adf51dc854c197d756
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bd65b1479ace1a51087836eb8032f16fd10dc119
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110488"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648896"
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>重新保护已故障转移到主要区域的 Azure VM
 
@@ -22,10 +22,6 @@ ms.locfileid: "58110488"
 
 - 在次要区域中重新保护 VM，以便这些 VM 开始复制到主要区域。
 - 重新保护完成并且 VM 开始复制后，可将 VM 从次要区域故障转移到主要区域。
-
-> [!WARNING]
-> 如果是将计算机从主要区域[迁移](migrate-overview.md#what-do-we-mean-by-migration)到了次要区域、将 VM 转移到了另一个资源组，或者删除了 Azure VM，则无法重新保护或故障回复 VM。
-
 
 ## <a name="prerequisites"></a>必备组件
 1. 必须提交将 VM 从主要区域故障转移到次要区域的操作。

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: pbutlerm
-ms.openlocfilehash: e97e79ef3077431d8fc627cd634a67b0a01b6f8e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57993096"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649027"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS 应用程序“体验版”选项卡
 
@@ -53,7 +53,7 @@ ms.locfileid: "57993096"
 |     Azure 资源管理器               |    Azure 资源管理器体验版是一个部署模板，其中包含了组成由发布者构建的解决方案的所有 Azure 资源。 适合此类体验版的产品是仅使用 Azure 资源的产品。               |       [Azure 资源管理器体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/azure-resource-manager-test-drive)            |
 |       已托管             |       托管体验版消除了 Microsoft 托管设置以及用于执行体验版用户预配和取消预配的服务的维护工作的复杂性。             |         [托管的体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      逻辑应用              |       逻辑应用体验版是一个部署模板，用来包含所有复杂的解决方案体系结构。 所有 Dynamics 应用程序或自定义产品都应当使用此类型的体验版。            |      [逻辑应用体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
-|       Power BI             |         Power BI 体验版包含一个嵌入式链接，指向某个定制的仪表板。 希望演示交互式 Power BI 视觉对象的任何产品都应使用此类型的体验版。 只需上传你的嵌入式 Power BI URL。          |        [Power BI 体验版](#Power-BI-test-drive)           |
+|       Power BI             |         Power BI 体验版包含一个嵌入式链接，指向某个定制的仪表板。 希望演示交互式 Power BI 视觉对象的任何产品都应使用此类型的体验版。 只需上传你的嵌入式 Power BI URL。          |        [Power BI 体验版](#power-bi-test-drive)           |
 
 ### <a name="power-bi-test-drive"></a>Power BI 体验版
 

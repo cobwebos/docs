@@ -4,7 +4,7 @@ description: 介绍 Service Fabric CLI sfctl partition 命令。
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: c2bb1c0147d38b4286e2cdfb2d161eaa0704e393
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: f7c9bcc51757100cb1fc957dee12213bc8bf2eec
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271481"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666760"
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 查询和管理任何服务的分区。
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | data-loss | 此 API 会造成指定的分区发生数据丢失。 |
 | data-loss-status | 获取使用 StartDataLoss API 启动的分区数据丢失操作的进度。 |
@@ -54,7 +54,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --data-loss-mode [必需] | 此枚举会传递到 StartDataLoss API，表示会导致哪种类型的数据丢失。 |
 | --operation-id   [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
@@ -64,7 +64,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -79,7 +79,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -88,7 +88,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -103,7 +103,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id      [必需] | 分区的标识。 |
 | --events-health-state-filter | 用于根据运行状况筛选返回的 HealthEvent 对象集合。 此参数的可能值包括以下运行状态之一的整数值。 仅返回与筛选器匹配的事件。 所有事件用于评估聚合运行状态。 如果未指定，则返回所有项。 状态值为基于标志的枚举，因此该值可以是使用按位“OR”运算符获取的值的组合。 例如，如果提供的值为 6，则返回 HealthState 值为 OK (2) 和 Warning (4) 的所有事件。  <br> - Default - 默认值。 匹配任何 HealthState。 值为 0。  <br> - None - 不与任何 HealthState 值匹配的筛选器。 未返回有关给定状态集合的结果时使用。 值为 1。  <br> - Ok - 与 HealthState 值为 OK 的输入匹配的筛选器。 值为 2。  <br> - Warning - 与 HealthState 值为 Warning 的输入匹配的筛选器。 值为 4。  <br> - Error - 与 HealthState 值为 Error 的输入匹配的筛选器。 值为 8。  <br> - All - 与具有任意 HealthState 值的输入匹配的筛选器。 值为 65535。 |
@@ -113,7 +113,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -128,14 +128,14 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -150,7 +150,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --service-id [必需] | 服务的标识。 此 ID 通常是不带“fabric\:”URI 方案的服务全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果服务名称为“fabric\:/myapp/app1/svc1”，则 6.0 及更高版本中的服务标识为“myapp\~app1\~svc1”，在以前的版本中为“myapp/app1/svc1”。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
@@ -158,7 +158,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -173,14 +173,14 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -195,14 +195,14 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -217,7 +217,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --operation-id         [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id         [必需] | 分区的标识。 |
@@ -228,7 +228,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -243,7 +243,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -252,7 +252,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -267,14 +267,14 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -289,13 +289,13 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -310,7 +310,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -325,7 +325,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -340,7 +340,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --operation-id           [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id           [必需] | 分区的标识。 |
@@ -350,7 +350,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -365,7 +365,7 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --operation-id [必需] | 用于标识此 API 的调用的 GUID。  需将此参数传入相应的 GetProgress API。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -374,7 +374,7 @@ ms.locfileid: "53271481"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -389,14 +389,14 @@ ms.locfileid: "53271481"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: manayar
-ms.openlocfilehash: c27d92a330d82cb8638a970602f2a8d0ce2e79c2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3821f6a2bad56b46bccbcca8830be09ad1e44c7
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579744"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648259"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>使用虚拟机规模集垂直自动缩放
 
@@ -98,6 +98,7 @@ ms.locfileid: "58579744"
 * [Authenticate Runbooks with Azure Run As account（使用 Azure 运行方式帐户进行 Runbook 身份验证）](../automation/automation-sec-configure-azure-runas-account.md)
 
 ## <a name="import-azure-automation-vertical-scale-runbooks-into-your-subscription"></a>将 Azure 自动化垂直缩放 Runbook 导入到订阅中
+
 垂直缩放虚拟机规模集所需的 Runbook 已在 Azure 自动化 Runbook 库中发布。 要将其导入到订阅中，请按照这篇文章中的步骤进行操作：
 
 * [Azure 自动化的 Runbook 和模块库](../automation/automation-runbook-gallery.md)
@@ -111,6 +112,7 @@ ms.locfileid: "58579744"
 ![Runbook 库][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>将 Webhook 添加到 Runbook
+
 导入 runbook 后，将 webhook 添加到 runbook，以便虚拟机规模集中的警报可以触发它。 本文对有关如何为 Runbook 创建 Webhook 的详细信息进行了描述：
 
 * [Azure 自动化 Webhook](../automation/automation-webhooks.md)
@@ -121,9 +123,10 @@ ms.locfileid: "58579744"
 > 
 
 ## <a name="add-an-alert-to-your-virtual-machine-scale-set"></a>将警报添加到虚拟机规模集
+
 下面是 PowerShell 脚本，演示如何将警报添加到虚拟机规模集。 请参阅以下文章以获取可触发警报的指标名称：[Azure Monitor 自动缩放常用指标](../azure-monitor/platform/autoscale-common-metrics.md)。
 
-```
+```powershell
 $actionEmail = New-AzAlertRuleEmail -CustomEmail user@contoso.com
 $actionWebhook = New-AzAlertRuleWebhook -ServiceUri <uri-of-the-webhook>
 $threshold = <value-of-the-threshold>
@@ -160,6 +163,7 @@ Add-AzMetricAlertRule  -Name  $alertName `
 * [Azure Monitor 跨平台 CLI 快速入门示例](../azure-monitor/platform/cli-samples.md)
 
 ## <a name="summary"></a>摘要
+
 本文对简单的垂直缩放示例进行了介绍。 借助这些构建基块 - 自动化帐户、Runbook、Webhook、警报，可以使用一组自定义操作连接各种事件。
 
 [runbooks]: ./media/virtual-machine-scale-sets-vertical-scale-reprovision/runbooks.png

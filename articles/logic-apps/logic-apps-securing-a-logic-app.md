@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 9fab1050-cfbc-4a8b-b1b3-5531bee92856
 ms.topic: article
 ms.date: 02/05/2019
-ms.openlocfilehash: 6baeb27855381ca03862f2632d31c628a088af39
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 31b18e2dfbad1f572b5c9b0ae59f5e076db7cde2
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620608"
+ms.locfileid: "58649282"
 ---
 # <a name="secure-access-in-azure-logic-apps"></a>保护 Azure 逻辑应用中的访问
 
@@ -156,8 +156,9 @@ POST
 
 要仅允许特定用户或组在逻辑应用上运行操作，可以限制对管理、编辑和查看等任务的访问权限。 逻辑应用支持 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/role-assignments-portal.md)，你可以为订阅中的成员自定义或分配内置角色，例如：
 
-* **逻辑应用参与者**：用户可以查看、编辑和更新逻辑应用。 该角色无法删除逻辑应用或运行管理员操作。
-* **逻辑应用操作员**：用户可以查看逻辑应用和运行历史记录，并启用或禁用逻辑应用。 该角色无法编辑或更新逻辑应用。
+* [逻辑应用参与者](../role-based-access-control/built-in-roles.md#logic-app-contributor)：用户可以查看、编辑和更新逻辑应用。 
+
+* [逻辑应用操作员](../role-based-access-control/built-in-roles.md#logic-app-operator)：用户可以查看逻辑应用和运行历史记录，并启用或禁用逻辑应用。 该角色无法编辑或更新逻辑应用。
 
 要防止他人更改或删除逻辑应用，可以使用 [Azure 资源锁](../azure-resource-manager/resource-group-lock-resources.md)。 此功能可以帮助防止他人更改或删除生产资源。
 

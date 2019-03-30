@@ -3,8 +3,8 @@ title: Azure Service Fabric 服务启动时运行脚本 | Microsoft Docs
 description: 了解如何为 Service Fabric 服务安装程序入口点配置策略并在服务启动时运行脚本。
 services: service-fabric
 documentationcenter: .net
-author: msfussell
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/21/2018
-ms.author: mfussell
-ms.openlocfilehash: 3ae43f7427996f8be15b22fec4406bbdfe8aa4fe
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: atsenthi
+ms.openlocfilehash: 76be814e0dd4c054fc3a873716dbfe395eeeb2dc
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838436"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58660385"
 ---
 # <a name="run-a-service-startup-script-as-a-local-user-or-system-account"></a>以本地用户或系统帐户身份运行服务启动脚本
 在启动 Service Fabric 服务可执行文件之前，可能需要进行某种配置或设置工作。  例如，配置环境变量。 可以在服务的服务清单中指定要在服务可执行文件启动前运行的脚本。 通过为服务安装程序入口点配置 RunAs 策略，可以更改在其下运行安装程序可执行文件的帐户。  使用单独的安装程序入口点，可在短时间内运行高权限配置，因此服务主机可执行文件不需要长时间使用高权限运行。

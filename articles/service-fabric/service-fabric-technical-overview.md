@@ -4,7 +4,7 @@ description: Service Fabric 的术语概述。 讨论本文档其余部分所用
 services: service-fabric
 documentationcenter: .net
 author: masnider
-manager: timlt
+manager: chackdan
 editor: chackdan;subramar
 ms.assetid: 3a970679-e19e-43b3-9be8-71773f307c57
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: d9012ff37693b406d4e91560c880d6bed66c051b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 085d5e560eec090ab76c263f8f93140786f2d734
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498292"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668428"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric 术语概述
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  可以[在任何位置托管 Service Fabric 群集](service-fabric-deploy-anywhere.md)：Azure、本地数据中心或任何云提供程序。  Service Fabric 是支持 [Azure Service Fabric 网格](/azure/service-fabric-mesh)的业务流程协调程序。 可以使用任何框架编写服务，并从多个环境选项中选择运行应用程序的位置。 本文详细介绍 Service Fabric 所使用的术语，帮助了解文档中使用的术语。

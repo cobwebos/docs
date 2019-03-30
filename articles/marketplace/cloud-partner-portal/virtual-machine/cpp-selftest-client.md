@@ -14,17 +14,16 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 8dc0a003a12eb0aca28c6a3238e2119dc449d661
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309412"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649080"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
 
 本文可用作创建使用自测试 API 的客户端服务的指南。 可使用自测试 API 来预验证虚拟机 (VM)，以确保其满足最新的 Azure 市场发布要求。 此客户端服务使你可以在提交 Microsoft 认证的产品/服务之前测试 VM。
-
 
 ## <a name="development-and-testing-overview"></a>开发和测试概述
 
@@ -41,13 +40,11 @@ ms.locfileid: "58309412"
 
 创建客户端后，可以针对 VM 进行测试。
 
-
 ### <a name="self-test-client-authorization"></a>自测试客户端授权
 
 下图显示了授权如何使用客户端凭据（共享密钥或证书）为服务调用服务。
 
 ![客户端授权过程](./media/stclient-dev-process.png)
-
 
 ## <a name="the-self-test-client-api"></a>自测试客户端 API
 
@@ -67,7 +64,6 @@ Request body:    The Request body parameters should use the following JSON forma
                    "PortNo":"22",
                    "CompanyName":"ABCD",
                  }
-
 ```
 
 下表描述了 API 各字段。
@@ -83,11 +79,9 @@ Request body:    The Request body parameters should use the following JSON forma
 |  PortNo            |  用于连接到 VM 的开放端口号。 通常，对于 Linux，端口号为 `22`，对于 Windows，端口号为 `5986`。          |
 |  |  |
 
-
 ## <a name="consuming-the-api"></a>使用 API
 
 可通过 PowerShell 或 cURL 使用自测试 API。
-
 
 ### <a name="use-powershell-to-consume-the-api-on-the-linux-os"></a>通过 PowerShell 使用 Linux OS 上的 API
 
@@ -112,7 +106,7 @@ $Body = @{
     "CompanyName" = "ABCD"
 
 } | ConvertTo-Json
-$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers; 
+$res = Invoke-WebRequest -Method "Post" -Uri $uri -Body $Body -ContentType "application/json" –Headers $headers;
 $Content = $res | ConvertFrom-Json
 ```
 以下屏幕截图显示了在 PowerShell 中调用 API 的示例。
@@ -128,7 +122,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -186,7 +180,7 @@ $testresult = ConvertFrom-Json –InputObject (ConvertFrom-Json –InputObject $
   Write-Host "OSVersion: $($testresult.OSVersion)"
   Write-Host "Overall Test Result: $($testresult.TestResult)"
 
-For ($i=0; $i -lt $testresult.Tests.Length; $i++) 
+For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 {
     Write-Host "TestID: $($testresult.Tests[$i].TestID)"
     Write-Host "TestCaseName: $($testresult.Tests[$i].TestCaseName)"
@@ -213,12 +207,12 @@ For ($i=0; $i -lt $testresult.Tests.Length; $i++)
 2. 方法是 Post，内容类型是 JSON，如以下代码片段示例所示。
 
 ```
-CURL POST -H "Content-Type:application/json" 
+CURL POST -H "Content-Type:application/json"
 -H "Authorization: Bearer XXXXXX-Token-XXXXXXXX”
-https://isvapp.azurewebsites.net/selftest-vm 
+https://isvapp.azurewebsites.net/selftest-vm
 -d '{ "DNSName":"XXXX.westus.cloudapp.azure.com", "User":"XXX", "Password":"XXXX@123456", "OS":"Linux", "PortNo":"22", "CompanyName":"ABCD"}'
-
 ```
+
 以下屏幕显示使用 curl 调用 API 的示例。
 
 ![使用 curl 命令调用 API](./media/stclient-consume-api-curl.png)
@@ -242,7 +236,7 @@ https://isvapp.azurewebsites.net/selftest-vm
    在以下步骤中，可能需要提供租户名称（或目录名称）或租户 ID（或目录 ID）。
 
    **获取租户信息：**
-  
+
    在“Azure Active Directory”概述中，搜索“属性”，然后选择“属性”。 使用以下屏幕截图为例：
 
    - **名称** - 租户名称或目录名称
@@ -284,7 +278,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 14. 单击“选择”。
 15. 选择“完成”。
 16. 在“设置”下，选择“属性”。
-17. 在“属性”下，向下滚动到“多租户”。 请选择“是”。  
+17. 在“属性”下，向下滚动到“多租户”。 请选择“是”。
 
     ![为应用配置多租户](./media/stclient-yes-multitenant.png)
 
@@ -319,6 +313,7 @@ https://isvapp.azurewebsites.net/selftest-vm
 Method Type : POST
 Base Url: https://login.microsoftonline.com/common/oauth2/token
 ```
+
 在请求正文中传递以下参数：
 
 ```
@@ -364,7 +359,7 @@ Response:
 
 要向 Auth0 请求任何授权的应用程序的令牌，请使用以下格式的有效负载对 [https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) 终结点执行 POST 操作：
 
-```
+```csharp
 string clientId = "Your Application Id";
 string clientSecret = "Your Application Secret";
 string audience = "https://management.core.windows.net";
@@ -387,7 +382,7 @@ var token = JObject.Parse(content)["access_token"];
 
 要向 Auth0 请求任何授权的应用程序的令牌，请使用以下格式的有效负载对 [https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) 终结点执行 POST 操作：
 
-```
+```powershell
 $clientId = "Application Id of AD Client APP";
 $clientSecret = "Secret Key of AD Client APP “
 $audience = "https://management.core.windows.net";
@@ -402,14 +397,13 @@ resp = Invoke-WebRequest -Method Post -Uri $authority -Headers $headers -Content
 
 $token = $resp.Content | ConvertFrom-Json
 $token.AccessToken
-
 ```
 
 ## <a name="pass-the-client-app-token-to-the-api"></a>将客户端应用令牌传递给 API
 
 使用授权标头中的以下代码将令牌传递给自测试 API：
 
-```
+```powershell
 $redirectUri = ‘https://isvapp.azurewebsites.net/selftest-vm’
 $accesstoken = ‘place your token here’
 
@@ -426,9 +420,8 @@ $Body =
 
 $result=Invoke-WebRequest -Method Post -Uri $redirectUri -Headers $headers -ContentType 'application/json' -Body $Body
 $result
-echo 'Test Results:'
+Write-Output 'Test Results:'
 $result.Content
-
 ```
 
 ## <a name="test-your-self-test-client"></a>测试自测试客户端
@@ -445,7 +438,7 @@ $result.Content
 
 **Windows VM 的测试结果：**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",
@@ -484,7 +477,7 @@ $result.Content
 
 **Linux VM 的测试结果：**
 
-```
+```json
 {
   "SchemaVersion": 1,
   "AppCertificationCategory": "Microsoft Single VM Certification",

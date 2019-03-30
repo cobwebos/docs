@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aecb2850f80f0991c7466b388147ab4b21c4780
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170694"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652393"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>教程：Azure Active Directory 与 IriusRisk 集成
 
@@ -89,7 +89,7 @@ ms.locfileid: "58170694"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 IriusRisk 测试用户](#create-a-iriusrisk-test-user)** -Britta Simon 的对应在 IriusRisk 链接到用户的 Azure AD 表示形式。
+1. **[创建 IriusRisk 测试用户](#create-an-iriusrisk-test-user)** -Britta Simon 的对应在 IriusRisk 链接到用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 

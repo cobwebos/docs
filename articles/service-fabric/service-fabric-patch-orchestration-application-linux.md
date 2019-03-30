@@ -4,7 +4,7 @@ description: 用于在 Linux Service Fabric 群集中自动修补操作系统的
 services: service-fabric
 documentationcenter: .net
 author: novino
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 27650605601a24e11d63e56343535c35c8b72f5d
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
-ms.translationtype: HT
+ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52285146"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668188"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Linux 操作系统
 
@@ -41,10 +41,10 @@ ms.locfileid: "52285146"
 
 修补业务流程应用由以下子组件组成：
 
-- 协调器服务：此有状态服务负责：
+- **协调器服务**：此有状态服务负责：
     - 协调整个群集上的 OS 更新作业。
     - 存储已完成的 OS 更新操作的结果。
-- 节点代理服务：此无状态服务在所有 Service Fabric 群集节点上运行。 该服务负责：
+- **节点代理服务**：此无状态服务在所有 Service Fabric 群集节点上运行。 该服务负责：
     - 在 Linux 上启动节点代理守护程序。
     - 监视守护程序服务。
 - **节点代理守护程序**：此 Linux 守护程序服务以更高级别的特权 (root) 运行。 相比之下，节点代理服务和协调器服务以较低级别的特权运行。 该服务负责在所有群集节点上执行以下更新作业：
@@ -57,7 +57,7 @@ ms.locfileid: "52285146"
 > [!NOTE]
 > 修补业务流程应用使用 Service Fabric“修复管理器系统服务”来禁用/启用节点和执行运行状况检查。 修补业务流程应用创建的修复任务跟踪每个节点的更新进度。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="ensure-that-your-azure-vms-are-running-ubuntu-1604"></a>确保 Azure VM 正在运行 Ubuntu 16.04
 截至编写本文档时，Ubuntu 16.04 (`Xenial Xerus`) 是唯一受支持的版本。
@@ -131,9 +131,9 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 |:-|-|-|
 |MaxResultsToCache    |Long                              | 应缓存的更新结果数上限。 <br>在假定以下情况时，默认值为 3000： <br> - 节点数为 20。 <br> - 节点上每月发生的更新次数为 5。 <br> - 每个操作的结果数可为 10。 <br> - 过去三个月的结果应已存储。 |
 |TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装更新。 （在最大程度情况下，属于升级域的所有节点都可进行更新。）
-| UpdateOperationTimeOutInMinutes | int <br>（默认值：180）                   | 指示任何更新操作（下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
-| RescheduleCount      | int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 OS 更新的最大次数。          |
-| RescheduleTimeInMinutes  | int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 OS 更新的间隔。 |
+| UpdateOperationTimeOutInMinutes | Int <br>（默认值：180）                   | 指示任何更新操作（下载或安装）的超时。 在指定的超时内未完成的操作会被中止。       |
+| RescheduleCount      | Int <br> （默认值：5）                  | 在操作持续失败的情况下，服务重新计划 OS 更新的最大次数。          |
+| RescheduleTimeInMinutes  | Int <br>（默认值：30） | 在持续失败的情况下，服务重新计划 OS 更新的间隔。 |
 | UpdateFrequency           | 逗号分隔的字符串（默认值："Weekly, Wednesday, 7:00:00"）     | 在群集上安装 OS 更新的频率。 其格式和可能的值包括： <br>-   Monthly, DD, HH:MM:SS，例如：Monthly, 5,12:22:32。 <br> -   Weekly, DAY, HH:MM:SS，例如：Weekly, Tuesday, 12:22:32。  <br> -   Daily, HH:MM:SS，例如：Daily, 12:22:32。  <br> - None 表示不应执行更新。  <br><br> 所有时间采用 UTC 格式。|
 | UpdateClassification | 逗号分隔的字符串（默认值：“securityupdates”） | 应在群集节点上安装的更新类型。 可接受的值为 securityupdates、all。 <br> -  securityupdates - 只安装安全更新 <br> -  all - 安装 apt 中的所有可用更新。|
 | ApprovedPatches | 逗号分隔的字符串（默认值：""） | 这是应在群集节点上安装的已批准更新列表。 逗号分隔的列表包含已批准的包和可选的所需目标版本。<br> 例如："apt-utils = 1.2.10ubuntu1, python3-jwt, apt-transport-https < 1.2.194, libsystemd0 >= 229-4ubuntu16" <br> 上述代码会安装 <br> - 包含版本 1.2.10ubuntu1 的 apt-utils（如果 apt-cache 中已提供）。 如果未提供该特定版本，则不执行任何操作。 <br> - python3-jwt 升级到最新可用版本。 如果该包不存在，则不执行任何操作。 <br> - apt-transport-https 升级到低于 1.2.194 的最高版本。 如果该版本不存在，则不执行任何操作。 <br> - libsystemd0 升级到大于等于 229-4ubuntu16 的最高版本。 如果此类版本不存在，则不执行任何操作。|
@@ -305,7 +305,7 @@ A. 修补业务流程应用所需的时长主要取决于以下因素：
 
 问： **修补业务流程应用如何判断哪些更新是安全更新？**
 
-A. 修补业务流程应用使用特定于分发版的逻辑来确定可用更新中的哪些更新是安全更新。 例如，在 ubuntu 中，应用会搜索存档 $RELEASE-security、$RELEASE-updates 中的更新（$RELEASE 为 Xenial 或 Linux 标准基础发行版）。 
+A. 修补业务流程应用使用特定于分发版的逻辑来确定可用更新中的哪些更新是安全更新。 例如：在 ubuntu 中，应用会搜索存档 $RELEASE-security、$RELEASE-updates 中的更新（$RELEASE 为 Xenial 或 Linux 标准基础发行版）。 
 
  
 问： **如何锁定为特定的包版本？**
