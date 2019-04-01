@@ -243,6 +243,8 @@ items:
     items:
     - name: 为 VM 预付费 - Azure 预留项
       href: prepay-reserved-vm-instances.md
+    - name: 为 RedHat 软件预付费
+      href: prepay-rhel-software-charges.md
     - name: 为 SUSE 软件预付费
       href: prepay-suse-software-charges.md
     - name: 什么是 Azure 预留？
@@ -565,9 +567,9 @@ items:
     href: faq.md
 - name: 故障排除
   href: ../troubleshooting/index.md
-ms.openlocfilehash: a6563c71032c5b96217189648871f91817781392
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: f7503998b2dd5149f2e12fe5e8f6891b0b33d386
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225019"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649895"

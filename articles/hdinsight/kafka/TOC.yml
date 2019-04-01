@@ -32,6 +32,9 @@ items:
     href: apache-kafka-producer-consumer-api.md
   - name: 4 - 使用 Apache Kafka 流 API 开发应用
     href: apache-kafka-streams-api.md
+  - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
+    href: ../hdinsight-cluster-availability.md
+    maintainContext: true
 - name: 概念
   items:
   - name: 容量计划
@@ -268,9 +271,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 48769b08c69bb5ee397ac61ffba09e3b8a324ca1
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1bc035c80492c283364e5216184d2e943bacc3aa
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442711"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668137"

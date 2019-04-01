@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d4e80fd18de40c7df806f0a72612cec7bb71e2d2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 9408134fa020a143a1b32d5b3600f6e19de7008e
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339175"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663633"
 documentType: LandingData
 title: Azure 媒体服务 v3 文档
 metadata:
@@ -21,24 +21,18 @@ metadata:
   ms.date: 03/20/2019
   ms.author: juliako
 abstract:
-  description: 了解如何使用媒体服务 v3 进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。 <br/> 这些 SDK 基于<a href="https://aka.ms/ams-v3-rest-sdk">媒体服务 v3 OpenAPI 规范 (Swagger)</a>。
+  description: 了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。 <br/> 这些 SDK 基于<a href="https://aka.ms/ams-v3-rest-sdk">媒体服务 v3 OpenAPI 规范 (Swagger)</a>。
 sections:
-- items:
+- title: 
+  items:
   - type: list
     style: cards
-    className: cardsM
-    columns: 2
+    className: cardsD
     items:
-    - image:
-        src: 
-      html: <p>了解媒体服务的基本概念。</p>
-      href: /azure/media-services/latest/concepts-overview/
-      title: 了解概念
-    - image:
-        src: 
-      html: <p>目前，无法使用 Azure 门户来管理 v3 资源。 请使用 REST API、CLI 或支持的 SDK 之一。</p>
-      href: /azure/media-services/latest/developers-guide/
-      title: 使用 v3 API 进行开发
+    - title: 了解概念
+      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/storage-account-concept">云上传和存储</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/encoding-concept">编码</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/analyzing-video-audio-files-concept">媒体分析</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/dynamic-packaging-overview">打包</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/content-protection-overview">保护</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/live-streaming-overview">实时流式处理</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/use-azure-media-player">播放器客户端</a></p>
+    - title: 使用 v3 API 进行开发
+      html: <p><a href="https://docs.microsoft.com/azure/media-services/latest/developers-guide">开始使用 SDK 进行开发</a></p><p><a href="https://docs.microsoft.com/azure/media-services/latest/media-rest-apis-with-postman">使用 REST 进行开发</a></p>
 - title: 5 分钟快速入门
   items:
   - type: paragraph
@@ -47,32 +41,60 @@ sections:
     style: icon48
     items:
     - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: 流式处理视频文件
+        src: media/index/dotnet.svg
+      text: 使用 .NET 进行编码和流式处理
       href: /azure/media-services/latest/stream-files-dotnet-quickstart
+    - image:
+        src: media/index/cli.svg
+      text: 使用 CLI 进行编码和流式处理
+      href: /azure/media-services/latest/stream-files-cli-quickstart
+    - image:
+        src: media/index/logo_nodejs.svg
+      text: 使用 Node.js 进行编码和流式处理
+      href: /azure/media-services/latest/stream-files-nodejs-quickstart
 - title: 分步教程
   items:
   - type: paragraph
     text: 了解如何使用媒体服务 v3 进行文件按需流式处理、实时广播和视频分析：
   - type: list
-    style: icon48
+    style: cards
+    className: cardsM
+    columns: 1
     items:
     - image:
-        src: media/index/AMSIcons-encoding.svg
-      text: 对视频进行上传、编码和流式处理
+        src: media/index/dotnet.svg
+      html: <p>本教程上传本地视频文件、对文件进行编码，并对编码的内容进行流式传输。<p/>
       href: /azure/media-services/latest/stream-files-tutorial-with-api
+      title: 对上传的文件和流视频进行编码
     - image:
-        src: media/index/AMSIcons-live.svg
-      text: 实时广播
+        src: media/index/dotnet.svg
+      html: <p>本教程介绍如何针对直播事件进行设置， 以及如何使用 .NET 创建直通类型的直播事件。</p>
       href: /azure/media-services/latest/stream-live-tutorial-with-api
+      title: 实时广播
     - image:
-        src: media/index/AMSIcons-media_analytics.svg
-      text: 分析视频
+        src: media/index/dotnet.svg
+      html: <p>本教程介绍如何使用 Azure 媒体服务 API 分析视频。</p>
       href: /azure/media-services/latest/analyze-videos-tutorial-with-api
+      title: 分析视频
+    - image:
+        src: media/index/dotnet.svg
+      html: <p>了解如何配置和使用媒体服务 API，以便通过 AES-128 来动态加密内容。</p>
+      href: /azure/media-services/latest/protect-with-aes128
+      title: 通过 AES-128 进行动态加密
+    - image:
+        src: media/index/dotnet.svg
+      html: <p>了解如何配置和使用媒体服务 API，以便通过多重 DRM（PlayReady、Widevine 和 FairPlay）来动态加密内容。</p>
+      href: /azure/media-services/latest/protect-with-drm
+      title: 通过多重 DRM 进行动态加密
+    - image:
+        src: media/index/rest.svg
+      html: <p>本教程介绍如何基于 URL 对远程文件进行编码并流式传输视频。</p>
+      href: /azure/media-services/latest/stream-files-tutorial-with-rest
+      title: 对远程文件进行编码并流式传输视频
 - title: 示例
   items:
   - type: paragraph
-    text: 演示如何使用 API 通过媒体服务 v3 进行视频流式处理、实时广播和视频分析的示例：
+    text: 以下 GitHub 示例演示如何使用 API 通过媒体服务 v3 进行视频流式处理、实时广播和视频分析：
   - type: list
     style: icon48
     items:

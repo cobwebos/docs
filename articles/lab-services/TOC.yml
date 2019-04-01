@@ -77,6 +77,12 @@ items:
       href: classroom-labs/how-to-create-schedules.md
     - name: 创建带有模板 VM 内的多个 VM 的环境
       href: classroom-labs/how-to-enable-multi-vm-environment.md
+    - name: 将实验室连接到对等虚拟网络
+      href: classroom-labs/how-to-connect-peer-virtual-network.md
+    - name: 附加和使用共享映像库
+      href: classroom-labs/how-to-use-shared-image-gallery.md
+    - name: 启用适用于 Linux 的远程桌面连接
+      href: classroom-labs/how-to-enable-remote-desktop-linux.md
   - name: 开发测试实验室
     items:
     - name: 为实验室虚拟机指定资源组
@@ -94,7 +100,7 @@ items:
     - name: 创建映像工厂
       href: image-factory-create.md
       items:
-      - name: 从 AzureDevOps 运行映像工厂
+      - name: 从 Azure DevOps 运行映像工厂
         href: image-factory-set-up-devops-lab.md
       - name: 保存自定义映像并分发到多个实验室
         href: image-factory-save-distribute-custom-images.md
@@ -265,9 +271,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: 常见问题
       href: devtest-lab-faq.md
-ms.openlocfilehash: c2e32a28253e0fc38fbfa215599654a3cf751d36
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 4c96945c5e7a0aed52d3148c7dbf084a8d8b9f29
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448872"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651159"

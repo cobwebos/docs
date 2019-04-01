@@ -36,6 +36,8 @@ items:
     href: apache-spark-ipython-notebook-machine-learning.md
   - name: 在 IntelliJ 中创建 Apache Spark 应用
     href: apache-spark-create-standalone-application.md
+  - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
+    href: ../hdinsight-cluster-availability.md
 - name: 如何
   items:
   - name: 使用群集存储
@@ -440,9 +442,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: f2a818ce9777cd28b844f584cb272ab01bce2753
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9775c1da15b5ac5e675e84487006339b1c9701ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448794"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58670164"

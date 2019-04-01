@@ -28,7 +28,7 @@ items:
     href: ecommerce-retail-catalog-moderation.md
   - name: 审查 Facebook 内容
     href: facebook-post-moderation.md
-  - name: 视频和脚本审核
+  - name: 视频和脚本审查
     href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
@@ -38,80 +38,60 @@ items:
     href: text-moderation-api.md
   - name: 视频审查
     href: video-moderation-human-review.md
-  - name: 作业和审阅
+  - name: 审阅工具
+    href: Review-Tool-User-Guide/human-in-the-loop.md
+  - name: 审阅、工作流和作业
     href: review-api.md
-  - name: 工作流
-    href: workflow-api.md
 - name: 操作指南
   items:
-  - name: 使用审查服务
+  - name: 审查内容
     items:
-    - name: 审查 API
+    - name: REST API
       items:
-      - name: 使用 .NET SDK
-        items:
-        - name: 检查视频内容
-          href: video-moderation-api.md
-        - name: 针对自定义列表检查图像
-          href: image-lists-quickstart-dotnet.md
-        - name: 针对自定义字词检查文本
-          href: term-lists-quickstart-dotnet.md
-      - name: 使用 REST API
-        items:
-        - name: 图像 - API 控制台
-          href: try-image-api.md
-        - name: 自定义图像 - API 控制台
-          href: try-image-list-api.md
-        - name: 文本 - API 控制台
-          href: try-text-api.md
-        - name: 自定义术语 - API 控制台
-          href: try-terms-list-api.md
-  - name: 使用审阅工具
+      - name: 图像 - API 控制台
+        href: try-image-api.md
+      - name: 自定义图像 - API 控制台
+        href: try-image-list-api.md
+      - name: 文本 - API 控制台
+        href: try-text-api.md
+      - name: 自定义术语 - API 控制台
+        href: try-terms-list-api.md
+    - name: .NET SDK
+      items:
+      - name: 检查视频内容
+        href: video-moderation-api.md
+      - name: 针对自定义列表检查图像
+        href: image-lists-quickstart-dotnet.md
+      - name: 针对自定义字词检查文本
+        href: term-lists-quickstart-dotnet.md
+  - name: 定义和使用审阅
     items:
-    - name: 查看 API
-      items:
-      - name: 使用 .NET SDK
-        items:
-        - name: 作业 - .NET
-          href: moderation-jobs-quickstart-dotnet.md
-        - name: 审阅 - .NET
-          href: moderation-reviews-quickstart-dotnet.md
-        - name: 视频审阅 - .NET
-          href: video-reviews-quickstart-dotnet.md
-        - name: 视频脚本审阅 - .NET
-          href: video-transcript-reviews-quickstart-dotnet.md
-      - name: 使用 REST API
-        items:
-        - name: 作业 - API 控制台
-          href: try-review-api-job.md
-        - name: 审阅 - API 控制台
-          href: try-review-api-review.md
-        - name: 工作流 - API 控制台
-          href: try-review-api-workflow.md
-    - name: “审阅”工具概述
-      href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: “审阅”工具设置
-      href: Review-Tool-User-Guide/Configure.md
-    - name: 管理团队
-      href: Review-Tool-User-Guide/SubTeams.md
-    - name: 使用标记
-      href: Review-Tool-User-Guide/Tags.md
-    - name: 审阅图像
+    - name: 审阅工具（浏览器）
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: 审阅文本
-      href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: 管理凭据
-      href: Review-Tool-User-Guide/Credentials.md
-    - name: 使用连接器
-      href: Review-Tool-User-Guide/Connectors.md
-    - name: 使用工作流
+    - name: REST API
+      href: try-review-api-review.md
+    - name: .NET SDK
+      href: moderation-reviews-quickstart-dotnet.md
+    - name: 视频审阅 (.NET)
+      href: video-reviews-quickstart-dotnet.md
+    - name: 视频脚本审阅 (.NET)
+      href: video-transcript-reviews-quickstart-dotnet.md
+  - name: 定义和使用工作流
+    items:
+    - name: 审阅工具（浏览器）
       href: Review-Tool-User-Guide/Workflows.md
-    - name: 查看仪表板
-      href: Review-Tool-User-Guide/View-Dashboard.md
+    - name: REST API
+      href: try-review-api-workflow.md
+  - name: 定义和使用作业
+    items:
+    - name: REST API
+      href: try-review-api-job.md
+    - name: .NET SDK
+      href: moderation-jobs-quickstart-dotnet.md
+  - name: 配置审阅工具
+    href: Review-Tool-User-Guide/Configure.md
   - name: 导出或删除帐户数据
     href: ./export-delete-data.md
-  - name: Azure 网络研讨会系列
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
 - name: 引用
   items:
   - name: 内容审查器 API
@@ -142,6 +122,8 @@ items:
       href: samples-rest.md
     - name: 其他 Azure 示例
       href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
+  - name: Azure 网络研讨会系列
+    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
   - name: 常见问题解答
     href: FAQs.md
   - name: 定价和限制
@@ -158,9 +140,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Azure 路线图
     href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: cee9e6c585dfa65ccee5c0f4631b5efc81dde760
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8948caa31d1fa464f13295a4dd4c1174b88543f5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900703"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758147"

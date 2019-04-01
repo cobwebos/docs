@@ -90,7 +90,7 @@ items:
           href: widevine-license-template-overview.md
         - name: FairPlay 许可证要求
           href: fairplay-license-overview.md
-    - name: 流式处理终结点
+    - name: 流式处理终结点/源
       displayName: origins, cdn
       href: streaming-endpoint-concept.md
     - name: 流式处理定位符
@@ -131,10 +131,8 @@ items:
     items:
     - name: Azure Media Player
       href: use-azure-media-player.md
-  - name: 媒体服务实体
-    items:
-    - name: 对实体进行排序、筛选、分页
-      href: entities-overview.md
+  - name: 使用 v3 API 进行开发
+    href: entities-overview.md
   - name: 从 v2 到 v3 的迁移指南
     href: migrate-from-v2-to-v3.md
 - name: 操作指南
@@ -147,10 +145,17 @@ items:
       href: access-api-cli-how-to.md
     - name: 缩放媒体保留单位 - CLI
       href: media-reserved-units-cli-how-to.md
-    - name: 开始开发
+    - name: 使用 REST 进行开发
+      items:
+      - name: 使用 Postman 进行连接
+        href: media-rest-apis-with-postman.md
+    - name: 使用 SDK 进行开发
       href: developers-guide.md
-    - name: 配置 Postman
-      href: media-rest-apis-with-postman.md
+      items:
+      - name: 使用 .NET 进行连接
+        href: configure-connect-dotnet-howto.md
+      - name: 使用 Node.js 进行连接
+        href: configure-connect-nodejs-howto.md
   - name: 上传内容
     items:
     - name: 从 HTTPS - .NET
@@ -260,9 +265,9 @@ items:
     href: frequently-asked-questions.md
   - name: Azure 云和区域
     href: azure-clouds-regions.md
-ms.openlocfilehash: 6b4d60510fa285290d92d7e9d6a7c5c2166bcd3f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 4f40fc3241dd0df881c7777d3e47a8976a364dc5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578691"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755429"
