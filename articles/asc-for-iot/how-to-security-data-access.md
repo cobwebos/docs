@@ -1,6 +1,6 @@
 ---
-title: 访问数据的 IoT 预览版使用 ASC |Microsoft Docs
-description: 了解有关如何对 IoT 使用 ASC 时访问你的安全警报和建议数据。
+title: 访问数据的 IoT 预览版使用 Azure 安全中心 |Microsoft Docs
+description: 了解有关如何对 IoT 使用 Azure 安全中心时访问你的安全警报和建议数据。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81a8973772879f4f4b143701a1f4be3ecad95d9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 510ee9bdefe87c1fab40e58bb715f2a8cce936b7
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576633"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758526"
 ---
 # <a name="access-your-security-data"></a>访问安全数据 
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-适用于 IoT 的 ASC 将存储的安全警报、 建议和原始安全数据 （如果您选择将其保存） 在 Log Analytics 工作区中。
+适用于 IoT 的 azure 安全中心 (ASC) 存储的安全警报、 建议和原始安全数据 （如果您选择将其保存） 在 Log Analytics 工作区中。
 
 ## <a name="log-analytics"></a>Log Analytics
 

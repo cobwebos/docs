@@ -4,17 +4,17 @@ description: 了解部署清单如何声明要部署的模块、如何部署这�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/28/2018
+ms.date: 03/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 0b221274923a6270e980d027aadc58154c7054b9
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53099964"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758088"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -58,14 +58,14 @@ ms.locfileid: "53099964"
                 // includes the routing information between modules, and to IoT Hub
             }
         },
-        "{module1}": {  // optional
+        "module1": {  // optional
             "properties.desired": {
-                // desired properties of {module1}
+                // desired properties of module1
             }
         },
-        "{module2}": {  // optional
+        "module2": {  // optional
             "properties.desired": {
-                // desired properties of {module2}
+                // desired properties of module2
             }
         },
         ...
@@ -75,9 +75,9 @@ ms.locfileid: "53099964"
 
 ## <a name="configure-modules"></a>配置模块
 
-定义 IoT Edge 运行时如何在部署中安装模块。 IoT Edge 代理是管理 IoT Edge 设备的安装、更新和状态报告的运行时组件。 因此，$edgeAgent 模块孪生需要所有模块的配置和管理信息。 此信息包括 Edge 代理本身的配置参数。 
+定义 IoT Edge 运行时如何在部署中安装模块。 IoT Edge 代理是管理 IoT Edge 设备的安装、更新和状态报告的运行时组件。 因此，$edgeAgent 模块孪生需要所有模块的配置和管理信息。 此信息包括 IoT Edge 代理本身的配置参数。 
 
-有关可以或必须包含的属性的完整列表，请参阅 [Edge 代理和 Edge 中心的属性](module-edgeagent-edgehub.md)。
+有关可以或必须包含的属性的完整列表，请参阅[IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 $edgeAgent 属性遵循此结构：
 
@@ -101,10 +101,10 @@ $edgeAgent 属性遵循此结构：
             }
         },
         "modules": {
-            "{module1}": { // optional
+            "module1": { // optional
                 // configuration and management details
             },
-            "{module2}": { // optional
+            "module2": { // optional
                 // configuration and management details
             }
         }
@@ -122,8 +122,8 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 "$edgeHub": {
     "properties.desired": {
         "routes": {
-            "{route1}": "FROM <source> WHERE <condition> INTO <sink>",
-            "{route2}": "FROM <source> WHERE <condition> INTO <sink>"
+            "route1": "FROM <source> WHERE <condition> INTO <sink>",
+            "route2": "FROM <source> WHERE <condition> INTO <sink>"
         },
     }
 }
@@ -138,15 +138,15 @@ IoT Edge 中心管理模块、IoT 中心与所有叶设备之间的通信。 因
 
 源属性可采用以下任何值：
 
-| 源 | Description |
+| 源 | 描述 |
 | ------ | ----------- |
 | `/*` | 所有设备到云的消息，或者来自任何模块或叶设备的孪生更改通知 |
 | `/twinChangeNotifications` | 来自任何模块或叶设备的任何孪生更改（报告属性） |
 | `/messages/*` | 由模块或叶设备通过某种输出或不通过任何输出发送的任何设备到云的消息 |
 | `/messages/modules/*` | 由带部分输出或不带输出的模块发送的任何设备到云的消息 |
-| `/messages/modules/{moduleId}/*` | 由特定模块通过某种输出或不通过任何输出发送的任何设备到云的消息 |
-| `/messages/modules/{moduleId}/outputs/*` | 由特定模块通过某种输出发送的任何设备到云的消息 |
-| `/messages/modules/{moduleId}/outputs/{output}` | 由特定模块通过特定输出发送的任何设备到云的消息 |
+| `/messages/modules/<moduleId>/*` | 由特定模块通过某种输出或不通过任何输出发送的任何设备到云的消息 |
+| `/messages/modules/<moduleId>/outputs/*` | 由特定模块通过某种输出发送的任何设备到云的消息 |
+| `/messages/modules/<moduleId>/outputs/<output>` | 由特定模块通过特定输出发送的任何设备到云的消息 |
 
 ### <a name="condition"></a>条件
 条件在路由声明中是可选的。 若要将所有消息从接收器传递到源，完全省略 **WHERE** 子句即可。 或者，可以使用 [IoT 中心查询语言](../iot-hub/iot-hub-devguide-routing-query-syntax.md)来筛选满足条件的特定消息或消息类型。 IoT Edge 路由不支持基于孪生标记或属性筛选消息。 
@@ -172,14 +172,14 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 
 接收器属性可采用以下任何值：
 
-| 接收器 | Description |
+| 接收器 | 描述 |
 | ---- | ----------- |
 | `$upstream` | 将消息发送到 IoT 中心 |
-| `BrokeredEndpoint("/modules/{moduleId}/inputs/{input}")` | 将消息发送到特定模块的特定输入 |
+| `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 将消息发送到特定模块的特定输入 |
 
-IoT Edge 提供至少一次保证。 Edge 中心在本地存储消息，以防路由无法将消息传送到其接收器。 例如，如果 Edge 中心无法连接到 IoT 中心，或者目标模块未连接。
+IoT Edge 提供至少一次保证。 IoT Edge 中心将消息存储本地以防路由不能将消息传送到其接收器。 例如，如果 IoT Edge 中心无法连接到 IoT 中心或目标模块未连接。
 
-Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 属性中指定的时间。
+IoT Edge 中心会一直存储消息，直到中指定的时间达到`storeAndForwardConfiguration.timeToLiveSecs`的属性[IoT Edge 中心所需属性](module-edgeagent-edgehub.md)。
 
 ## <a name="define-or-update-desired-properties"></a>定义或更新所需属性 
 
@@ -207,7 +207,7 @@ Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](mod
             "registryCredentials": {
               "ContosoRegistry": {
                 "username": "myacr",
-                "password": "{password}",
+                "password": "<password>",
                 "address": "myacr.azurecr.io"
               }
             }
@@ -273,6 +273,6 @@ Edge 中心会一直存储消息，直到达到在 [Edge 中心所需属性](mod
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关在 $edgeAgent 和 $edgeHub 中可以或必须包含的属性的完整列表，请参阅 [Edge 代理和 Edge 中心的属性](module-edgeagent-edgehub.md)。
+* 有关可以或必须包含在 $edgeAgent 和 $edgeHub 属性的完整列表，请参阅[IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 * 至此，你已了解如何使用 IoT Edge 模块，接下来请继续[了解开发 IoT Edge 模块的要求和工具](module-development.md)。

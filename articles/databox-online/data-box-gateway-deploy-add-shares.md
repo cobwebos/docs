@@ -6,23 +6,23 @@ author: alkohli
 ms.service: databox
 ms.subservice: gateway
 ms.topic: tutorial
-ms.date: 02/21/2019
+ms.date: 03/08/2019
 ms.author: alkohli
-ms.openlocfilehash: f36e13ccf91c983c54897dcff7e1c02689fb055c
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.openlocfilehash: d930b1db48e3a5c4bda96f0b7d80a9c9f24d53d9
+ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56592649"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58400645"
 ---
-# <a name="tutorial-transfer-data-with-azure-data-box-gateway-preview"></a>教程：使用 Azure Data Box Gateway（预览版）传输数据
+# <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>教程：使用 Azure Data Box Gateway 传输数据
 
 
 ## <a name="introduction"></a>介绍
 
-本文介绍如何在 Data Box Gateway 上添加共享并与其连接。 添加共享以后，Data Box Gateway 设备就可以将数据传输到 Azure。
+本文介绍如何在 Data Box Gateway 上添加共享并与其连接。 添加共享后，Data Box Gateway 设备可将数据传输到 Azure。
 
-此过程可能需要大约 10 分钟来完成。 
+此过程可能需要大约 10 分钟来完成。
 
 本教程介绍如何执行下列操作：
 
@@ -30,62 +30,63 @@ ms.locfileid: "56592649"
 > * 添加共享
 > * 连接到共享
 
-> [!IMPORTANT]
-> - Data Box Gateway 为预览版。 在订购和部署此解决方案之前，请查看 [Azure 预览版服务的条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 
- 
+
 ## <a name="prerequisites"></a>先决条件
 
 在向 Data Box Gateway 添加共享之前，请确保：
 
-* 已根据[在 Hyper-V 中预配 Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md) 或[在 VMware 中预配 Data Box Gateway](data-box-gateway-deploy-provision-vmware.md) 中的详细说明预配和连接虚拟设备。 
+- 已根据[在 Hyper-V 中预配 Data Box Gateway](data-box-gateway-deploy-provision-hyperv.md) 或[在 VMware 中预配 Data Box Gateway](data-box-gateway-deploy-provision-vmware.md) 中的详细说明预配和连接虚拟设备。
 
-    虚拟设备已根据[连接和激活 Azure Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md) 中的详细说明激活，可供用户创建共享和传输数据。
+- 已根据[连接和激活 Azure Data Box Gateway](data-box-gateway-deploy-connect-setup-activate.md) 中所述激活虚拟设备。
 
+- 设备已准备就绪，可在其上创建共享和传输数据。
 
 ## <a name="add-a-share"></a>添加共享
 
-在 [Azure 门户](https://portal.azure.com/)中执行以下步骤，以创建共享。
+若要创建共享，请执行以下过程：
 
-1. 返回到 Azure 门户。 转到“所有资源”，搜索 Data Box Gateway 资源。
-    
-2. 在资源的筛选列表中选择 Data Box Gateway 资源，然后导航到“概览”。 在设备命令栏中，单击“+ 添加共享”。
+1. 在 [Azure 门户](https://portal.azure.com/)中，选择自己的 Data Box Gateway 资源，然后转到“概览”。 设备应为“联机”状态。 在设备命令栏中，选择“+ 添加共享”。
    
    ![添加共享](./media/data-box-gateway-deploy-add-shares/click-add-share.png)
 
-4. 在“添加共享”中指定共享设置。 提供共享的唯一名称。 
+4. 在“添加共享”中，执行以下过程：
 
-   共享名称只能包含数字、小写字母和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
+    1. 提供共享的唯一名称。 共享名称只能包含小写字母、数字和连字符。 共享名称必须为 3 到 63 个字符长，并且必须以字母或数字开头。 每个连字符的前后必须为非连字符字符。
     
-5. 选择共享的**类型**。 类型可以是 SMB 或 NFS，默认为 SMB。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。 
+    2. 选择共享的**类型**。 类型可以是 SMB 或 NFS，默认为 SMB。 SMB 是 Windows 客户端的标准，NFS 用于 Linux 客户端。 根据你选择 SMB 共享还是 NFS 共享，显示的选项略有不同。
 
-6. 必须提供一个可供共享驻留在其中的存储帐户。 如果还没有容器，则使用共享名称在存储帐户中创建一个容器。 如果该容器已存在，则使用现有容器。 
+    3. 提供一个可供共享驻留在其中的存储帐户。 如果容器尚不存在，系统会使用新创建的共享名称在存储帐户中创建一个容器。 如果容器已存在，则使用该容器。
     
-7. 从块 Blob、页 Blob 或文件中选择“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 请注意，VHDX 始终按 512 字节对齐。
+    4. 从块 Blob、页 Blob 或文件中选择“存储服务”。 所选服务的类型取决于数据需要以何种格式驻留在 Azure 中。 例如，在此实例中，我们希望数据以 Blob 块的形式驻留在 Azure 中，因此选择“块 Blob”。 如果选择“页 Blob”，必须确保数据按 512 字节对齐。 例如，VHDX 始终按 512 字节对齐。
    
-8. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。 
+    5. 此步骤取决于你是创建 SMB 共享还是 NFS 共享。
      
-    - **如果创建 SMB 共享** - 在“所有特权本地用户”字段中，选择“新建”或“使用现有”。 如果创建新的本地用户，请提供**用户名**、**密码**和**确认密码**。 这样就会为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
+    - **SMB 共享** - 在“所有特权本地用户”下选择“新建”或“使用现有”。 如果创建新的本地用户，请输入用户名和密码，然后确认密码。 此操作为本地用户分配权限。 在此处分配权限以后，即可使用文件资源管理器修改这些权限。
     
         ![添加 SMB 共享](./media/data-box-gateway-deploy-add-shares/add-share-smb-1.png)
         
-        如果针对此共享数据勾选“仅允许读取操作”，则可指定只读用户。
+        如果针对此共享数据选中“仅允许读取操作”复选框，则可以指定只读用户。
         
-    - **如果创建 NFS 共享** - 需提供允许的客户端（能够访问共享）的 IP 地址。
+    - **NFS 共享** - 输入允许访问共享的客户端的 IP 地址。
 
         ![添加 NFS 共享](./media/data-box-gateway-deploy-add-shares/add-share-nfs-1.png)
    
-9. 单击“创建”以创建共享。 
+9. 选择“创建”以创建共享。
     
-    将通知你“正在创建共享”。 使用指定的设置创建共享后，“共享”边栏选项卡会更新以反映新共享。 
+    系统会通知你正在创建共享。 使用指定的设置创建共享后，“共享”磁贴会更新以反映新共享。
     
-    ![更新的共享列表](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
+    ![“更新的共享”磁贴](./media/data-box-gateway-deploy-add-shares/updated-list-of-shares.png) 
 
 ## <a name="connect-to-the-share"></a>连接到共享
 
-在连接到 Data Box Gateway 的 Windows Server 客户端上执行这些步骤，以便连接到共享。
+现在可以连接到在上一步创建的一个或多个共享。 根据使用的是 SMB 还是 NFS 共享，步骤可能有所不同。
+
+### <a name="connect-to-an-smb-share"></a>连接到 SMB 共享
+
+在连接到 Data Box Gateway 的 Windows Server 客户端上输入以下命令，以便连接到 SMB 共享：
 
 
-1. 打开命令窗口。 在命令提示符处，键入：
+1. 在命令窗口中键入以下命令：
 
     `net use \\<IP address of the device>\<share name>  /u:<user name for the share>`
 
@@ -93,17 +94,18 @@ ms.locfileid: "56592649"
 
     ```powershell
     Microsoft Windows [Version 18.8.16299.192) 
-    (c) 2817 microsoft Corporation. All rights reserved . 
+    (c) 2017 microsoft Corporation. All rights reserved . 
     
     C: \Users\GatewayUser>net use \\10.10.10.60\newtestuser /u:Tota11yNewUser 
-    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60' • 
+    Enter the password for 'TotallyNewUser' to connect to '10.10.10.60'  
     The command completed successfully. 
     
     C: \Users\GatewayUser>
     ```   
 
 
-2. 按 Windows+R。在“运行”窗口中指定 `\\<device IP address>`。 单击“确定”。 此时会打开文件资源管理器。 此时应能看到作为文件夹创建的共享。 选择并双击要查看其内容的共享（文件夹）。
+2. 在键盘上选择“Windows + R”。 
+3. 在“运行”窗口中指定 `\\<device IP address>`，然后选择“确定”。 此时会打开文件资源管理器。 此时应该能够查看作为文件夹创建的共享。 在文件资源管理器中，双击要查看其内容的共享（文件夹）。
  
     ![连接到 SMB 共享](./media/data-box-gateway-deploy-add-shares/connect-to-share2.png)-->
 
@@ -111,9 +113,9 @@ ms.locfileid: "56592649"
 
 ### <a name="connect-to-an-nfs-share"></a>连接到 NFS 共享
 
-在连接到 Data Box Edge 的 Linux 客户端上执行这些步骤。
+在连接到 Data Box Edge 设备的 Linux 客户端上，执行以下过程：
 
-1. 确保客户端已安装 NFSv4 客户端。 若要安装 NFS 客户端，请使用以下命令：
+1. 确保此客户端已安装 NFSv4 客户端。 若要安装 NFS 客户端，请使用以下命令：
 
    `sudo apt-get install nfs-common`
 
@@ -130,8 +132,8 @@ ms.locfileid: "56592649"
     `sudo mount -t nfs -o sec=sys,resvport 10.10.10.60:/mylinuxshare2 /home/databoxubuntuhost/gateway`
 
 > [!NOTE] 
-> 以下注意事项适用于预览版：
-> - 在共享中创建文件以后，不允许重命名文件。 
+> 以下注意事项适用于此版本：
+> - 在共享中创建文件以后，不允许重命名文件。
 > - 从共享中删除文件并不删除存储帐户中的条目。
 > - 如果使用 `rsync` 复制数据，则不支持 `rsync -a` 选项。
 

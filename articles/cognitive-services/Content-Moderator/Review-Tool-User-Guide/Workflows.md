@@ -1,90 +1,86 @@
 ---
-title: 定义和使用内容审核工作流 - 内容审查器
+title: 定义和使用通过审阅工具-内容审查器内容工作流
 titlesuffix: Azure Cognitive Services
-description: 使用 Azure 内容审查器工作流设计器和 API，可以根据内容策略来定义自定义工作流和阈值。
+description: Azure 内容审查器工作流设计器可用于定义自定义工作流和基于内容策略阈值。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8fe380e3015e5b6929aebcb898eef44d6f6bceda
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 76990fb3b6ed1815ada724f28f8276bac1cf28d4
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55213270"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757401"
 ---
-# <a name="define-test-and-use-workflows"></a>定义、测试和使用工作流
+# <a name="define-and-use-moderation-workflows"></a>定义和使用审查工作流
 
-使用 Azure 内容审查器工作流设计器和 API，可以根据内容策略来定义自定义工作流和阈值。
+在本指南中，您将了解如何设置和使用[工作流](../review-api.md#workflows)上[审阅工具](https://contentmoderator.cognitive.microsoft.com)网站。 工作流是基于云的自定义筛选器可用来更有效地处理内容。 工作流可以连接到各种服务来以不同方式筛选内容，然后采取相应的措施。 本指南演示如何使用内容审查器连接器 （它包含默认情况下） 来筛选内容和设置在典型审查方案的人工审阅。
 
-工作流通过连接器“连接”到内容审查器 API。 可使用其他 API，前提是有此 API 对应的连接器。 本文中的示例使用默认包含的内容审查器连接器。
+## <a name="create-a-new-workflow"></a>创建新的工作流
 
-## <a name="browse-to-the-workflows-section"></a>转到“工作流”部分
+转到[内容审查器评审工具](https://contentmoderator.cognitive.microsoft.com/)并登录。 在“设置”选项卡中，选择“工作流”。
 
-在“设置”选项卡中，选择“工作流”。
+![“工作流”设置](images/2-workflows-0.png)
 
-  ![“工作流”设置](images/2-workflows-0.png)
+在下一个屏幕上，选择**添加工作流**。
 
-## <a name="start-a-new-workflow"></a>启动新工作流
+![添加工作流](images/2-workflows-1.png)
 
-选择“添加工作流”。
+### <a name="assign-a-name-and-description"></a>指定名称和说明
 
-  ![添加工作流](images/2-workflows-1.png)
+命名您的工作流，输入描述，然后选择是否在工作流将处理图像或文本。
 
-## <a name="assign-a-name-and-description"></a>指定名称和说明
+![工作流名称和说明](images/image-workflow-create.PNG)
 
-命名工作流，输入说明，并选择工作流处理的是图像还是文本。
+### <a name="define-evaluation-criteria"></a>定义评估条件
 
-  ![工作流名称和说明](images/ocr-workflow-step-1.PNG)
+在下一个屏幕上转到**如果**部分。 在顶部的下拉列表菜单中，选择**条件**。 这将允许你配置工作流将在其执行操作的条件。 如果你想要使用多个条件，请选择**组合**相反。 
 
-## <a name="define-the-evaluation-criteria-condition"></a>定义评估标准（“条件”）
+接下来，选择一个连接器。 本示例使用“内容审查器”。 具体取决于您选择的连接器，你将获得不同的数据输出选项。 请参阅[连接器](./configure.md#connectors)评审工具设置指南，了解如何设置其他连接器的部分。
 
-下面的屏幕截图展示了需要为工作流定义的字段和 If-Then-Else 选择。 选择连接器。 本示例使用“内容审查器”。 可用的输出更改选项具体视选择的连接器而定。
+![选择工作流连接器](images/image-workflow-connect-to.PNG)
 
-  ![定义工作流条件](images/ocr-workflow-step-2-condition.PNG)
+选择所需的输出使用并将设置要检查与之相对的条件。
 
-选择所需的连接器及其输出后，选择运算符和条件值。
+![定义工作流条件](images/image-workflow-condition.PNG)
 
-## <a name="define-the-action-to-take"></a>定义要执行的操作
+### <a name="define-the-action"></a>定义操作
 
-选择要执行的操作和要满足的条件。 下面的示例展示了如何创建图像审阅，分配标记 `a`，并突出显示满足所示条件的图像。 还可以结合使用多个条件来获取所需结果。 根据需要，添加备用 (Else) 路径。
+转到**然后**部分中，选择一项操作的位置。 以下示例创建图像审查，并将分配一个标记。 （可选） 你可以添加一种替代 (Else) 方案和也设置为该操作。
 
-  ![定义工作流操作](images/ocr-workflow-step-3-action.PNG)
+![定义工作流操作](images/image-workflow-action.PNG)
 
-## <a name="save-your-workflow"></a>保存工作流
+### <a name="save-the-workflow"></a>保存工作流
 
-最后，保存工作流，并记录工作流名称。 必须有名称，才能使用审阅 API 启动审查。
+记下的工作流名称;您需要使用工作流 API （见下文） 启动审查作业的名称。 最后，保存工作流使用**保存**在页面顶部的按钮。
 
 ## <a name="test-the-workflow"></a>测试工作流
 
-现已定义自定义工作流，是时候使用示例内容测试它了。
+现在，已经定义自定义工作流，它带有示例内容进行测试。 转到**工作流**，然后选择相应**执行工作流**按钮。
 
-选择相应的“执行工作流”按钮。
+![工作流测试](images/image-workflow-execute.PNG)
 
-  ![工作流测试](images/ocr-workflow-step-6-list.PNG)
+将此文件保存[示例图像](https://moderatorsampleimages.blob.core.windows.net/samples/sample3.png)到本地驱动器。 然后选择**选择文件**将映像上载到工作流。
 
-### <a name="upload-a-file"></a>上传文件
+![一位女士在 bathing 花色](images/sample-racy.PNG)
 
-将[示例图像](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png)保存到本地驱动器。 若要测试工作流，请选择“选择一个或多个文件”，并上传图像。
+### <a name="track-progress"></a>跟踪进度
 
-  ![上传图像文件](images/ocr-workflow-step-7-upload.PNG)
+可以在下一步的弹出窗口中查看工作流的进度。
 
-### <a name="track-the-workflow"></a>跟踪工作流
+![跟踪工作流的执行情况](images/image-workflow-job.PNG)
 
-跟踪工作流的执行情况。
+### <a name="verify-workflow-action"></a>验证工作流操作
 
-  ![跟踪工作流的执行情况](images/ocr-workflow-step-4-test.PNG)
+转到**图像**选项卡上的**查看**并验证是否存在新创建的图像审查。
 
-### <a name="review-any-images-flagged-for-human-moderation"></a>审阅已标记为人工审查的任何图像
+![审阅图像](images/image-workflow-review.PNG)
 
-若要执行图像审阅，请转到“审阅”下的“图像”选项卡。
+## <a name="next-steps"></a>后续步骤
 
-  ![审阅图像](images/ocr-sample-image-workflow1.PNG)
-
-## <a name="next-steps"></a>后续步骤 
-
-若要通过代码调用工作流，请在使用自定义工作流时，参阅 [`Job`API 控制台快速入门](../try-review-api-job.md)和 [.NET SDK 快速入门](../moderation-jobs-quickstart-dotnet.md)。
+在本指南中，您学习了如何设置和使用内容审查器审查工作流[审阅工具](https://contentmoderator.cognitive.microsoft.com)。 接下来，请参阅[REST API 指南](../try-review-api-workflow.md)若要了解如何以编程方式创建工作流。

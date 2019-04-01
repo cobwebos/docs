@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: f615a07352faccc8096752e5ba60360144834907
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dfe23baa67c87b04a65630611ef71758beda268d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338235"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754907"
 ---
 # <a name="use-versions-to-edit-and-test-without-impacting-staging-or-production-apps"></a>使用版本进行编辑和测试，而不会影响暂存应用或生产应用
 
@@ -59,7 +59,7 @@ ms.locfileid: "58338235"
 
 ### <a name="import-errors"></a>导入错误
 
-* 标记器错误：如果收到**标记器错误**导入时，你尝试导入使用不同的版本[标记器](luis-language-support.md#custom-tokenizer-versions)不是应用程序当前使用。 若要解决此问题，您有两种选择。 请参阅[标记器版本之间迁移](luis-language-support.md#migrating-between-tokenizer-versions)有关详细信息。
+* 标记器错误：如果收到**标记器错误**导入时，你尝试导入使用不同的版本[标记器](luis-language-support.md#custom-tokenizer-versions)不是应用程序当前使用。 若要解决此问题，请参阅[标记器版本之间迁移](luis-language-support.md#migrating-between-tokenizer-versions)。
 
 <a name = "export-version"></a>
 

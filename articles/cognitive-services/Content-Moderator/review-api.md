@@ -1,186 +1,76 @@
 ---
-title: 审查作业和人在回路评审 - 内容审查器
+title: 评审会议中，工作流和作业概念-内容审查器
 titlesuffix: Azure Cognitive Services
-description: 为了获得最佳业务结果，请使用 Azure 内容审查器的审阅 API，将计算机辅助审查与人机回环功能相结合。
+description: 了解如何评审、 工作流，以及作业
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 21d71110853c5f18b0b5f0b51d30110eb45ff54a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: c1d4ef640e2ae072dacba7a665b6689e3224c55c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55862694"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756298"
 ---
-# <a name="content-moderation-jobs-and-reviews"></a>内容审查作业和审阅
+# <a name="content-moderation-reviews-workflows-and-jobs"></a>内容审核评审、 工作流和作业
 
-为了获得最佳业务结果，请使用 Azure 内容审查器的[审阅 API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5)，将计算机辅助审查与人机回环功能相结合。
+内容审查器结合了机器辅助审查与人类的循环功能，可以创建一个最佳的审查过程，用于实际方案。 这是通过基于云的[审阅工具](https://contentmoderator.cognitive.microsoft.com)。 在本指南中，您将学习如何评审工具的核心概念： 评审、 工作流和作业。
 
-使用审阅 API，可以通过下列方法，在内容审查流程中引入人工监督：
+## <a name="reviews"></a>审阅
 
-* `Job` 操作用于在一步中启动计算机辅助审查和人工审阅创建。
-* `Review` 操作用于分开执行人工审阅创建和审查步骤。
-* `Workflow` 操作用于管理自动执行扫描的工作流（含审阅创建阈值）。
+在审阅中，内容上传到审阅工具，并显示在**查看**选项卡。从此处，用户可以更改标签应用和应用根据其自己自定义标记。 当用户提交评审时，将结果发送到指定的回调终结点，并从站点中删除的内容。
 
-`Job` 和 `Review` 操作接受用于接收状态和结果的回叫终结点。
+![在评审选项卡上的浏览器中打开评审工具网站](./Review-Tool-user-Guide/images/image-workflow-review.png)
 
-本文介绍了 `Job` 和 `Review` 操作。 若要了解如何创建、编辑和获取工作流定义，请阅读[工作流概述](workflow-api.md)。
+请参阅[评审工具指南](./review-tool-user-guide/review-moderated-images.md)以开始创建评论，或者查看[REST API 指南](./try-review-api-review.md)若要了解如何以编程方式执行此操作。
 
-## <a name="job-operations"></a>作业操作
+## <a name="workflows"></a>工作流
 
-### <a name="start-a-job"></a>启动作业
-`Job.Create` 操作可用于启动审查和人工审阅创建作业。 内容审查器扫描内容，并评估指定的工作流。 根据工作流结果，内容审查器要么创建审阅，要么跳过这一步。 它还向回叫终结点提交审查后和审阅后标记。
+工作流是基于云的自定义筛选器的内容。 工作流可以连接到各种服务来以不同方式筛选内容，然后采取相应的措施。 使用内容审查器连接器，工作流可以自动将审查标记应用，并使用已提交的内容创建评审。
 
-输入内容包含以下信息：
+### <a name="view-workflows"></a>查看工作流
 
-- 审阅团队 ID。
-- 要审查的内容。
-- 工作流名称。 （默认名称为“默认”工作流。）
-- 用于通知的 API 回叫点。
- 
-下面的响应展示了已启动作业的标识符。 作业标识符可用于获取作业状态，并接收详细信息。
+若要查看现有的工作流，请转到[审阅工具](https://contentmoderator.cognitive.microsoft.com/)，然后选择**设置** > **工作流**。
 
-    {
-        "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
-    }
+![默认工作流](images/default-workflow-listed.PNG)
 
-### <a name="get-job-status"></a>获取作业状态
+工作流可以被完全描述为 JSON 字符串，这使它们以编程方式访问。 如果选择**编辑**工作流的选项，然后选择**JSON**选项卡上，你将看到如下所示的 JSON 表达式：
 
-使用 `Job.Get` 操作和作业标识符可以获取正在运行或已完成作业的详细信息。 此操作返回以异步方式运行的审查作业的结果。 结果通过回叫终结点返回。
-
-输入内容包含以下信息：
-
-- 审阅团队 ID：上一操作返回的作业标识符
-
-响应包含以下信息：
-
-- 已创建审阅的标识符。 （此 ID 可用于获取最终审阅结果。）
-- 作业的状态（已完成或正在进行）：已分配的审查标记（键值对）。
-- 作业执行报告。
- 
- 
-        {
-            "Id": "2018014caceddebfe9446fab29056fd8d31ffe",
-            "TeamName": "some team name",
-            "Status": "Complete",
-            "WorkflowId": "OCR",
-            "Type": "Image",
-            "CallBackEndpoint": "",
-            "ReviewId": "201801i28fc0f7cbf424447846e509af853ea54",
-            "ResultMetaData":[
-            {
-            "Key": "hasText",
-            "Value": "True"
-            },
-            {
-            "Key": "ocrText",
-            "Value": "IF WE DID \r\nALL \r\nTHE THINGS \r\nWE ARE \r\nCAPABLE \r\nOF DOING, \r\nWE WOULD \r\nLITERALLY \r\nASTOUND \r\nOURSELVE \r\n"
-            }
-            ],
-            "JobExecutionReport": [
-            {
-                "Ts": "2018-01-07T00:38:29.3238715",
-                "Msg": "Posted results to the Callbackendpoint: https://requestb.in/vxke1mvx"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.2928416",
-                "Msg": "Job marked completed and job content has been removed"
-                },
-                {
-                "Ts": "2018-01-07T00:38:29.0856472",
-                "Msg": "Execution Complete"
-                },
-            {
-                "Ts": "2018-01-07T00:38:26.7714671",
-                "Msg": "Successfully got hasText response from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:26.4181346",
-                "Msg": "Getting hasText from Moderator"
-                },
-                {
-                "Ts": "2018-01-07T00:38:25.5122828",
-                "Msg": "Starting Execution - Try 1"
-                }
-            ]
-        }
- 
-![供人工审查方审阅的图像](images/ocr-sample-image.PNG)
-
-## <a name="review-operations"></a>审阅操作
-
-### <a name="create-reviews"></a>创建审阅
-
-`Review.Create` 操作可用于创建人工审阅。 要么在其他地方审查它们，要么使用自定义逻辑分配审查标记。
-
-此操作的输入内容包括：
-
-- 要审阅的内容。
-- 供人工审查方审阅的已分配标记（键值对）。
-
-下面的响应展示了审阅标识符：
-
-    [
-        "201712i46950138c61a4740b118a43cac33f434",
-    ]
-
-
-### <a name="get-review-status"></a>获取审阅状态
-`Review.Get` 操作可用于在完成人工审阅已审查的图像后获取结果。 通知通过所提供的回叫终结点返回。 
-
-此操作返回两组标记： 
-
-* 审查服务分配的标记
-* 人工审阅完成后的标记
-
-输入内容至少包括：
-
-- 审阅团队名称
-- 上一操作返回的审阅标识符
-
-响应包含以下信息：
-
-- 审阅状态
-- 人工审阅者确认的标记（键值对）
-- 审查服务分配的标记（键值对）
-
-下面的示例响应包含审阅者分配的标记（“reviewerResultTags”）和初始标记（“metadata”）：
-
-    {
-        "reviewId": "201712i46950138c61a4740b118a43cac33f434",
-        "subTeam": "public",
-        "status": "Complete",
-        "reviewerResultTags": [
-        {
-            "key": "a",
-            "value": "False"
+```json
+{
+    "Type": "Logic",
+    "If": {
+        "ConnectorName": "moderator",
+        "OutputName": "isAdult",
+        "Operator": "eq",
+        "Value": "true",
+        "Type": "Condition"
         },
-        {
-            "key": "r",
-            "value": "True"
-        },
-        {
-            "key": "sc",
-            "value": "True"
-        }
-        ],
-        "createdBy": "{teamname}",
-        "metadata": [
-        {
-            "key": "sc",
-            "value": "true"
-        }
-        ],
-        "type": "Image",
-        "content": "https://reviewcontentprod.blob.core.windows.net/{teamname}/IMG_201712i46950138c61a4740b118a43cac33f434",
-        "contentId": "0",
-        "callbackEndpoint": "{callbackUrl}"
+    "Then": {
+    "Perform": [
+    {
+        "Name": "createreview",
+        "CallbackEndpoint": null,
+        "Tags": []
     }
+    ],
+    "Type": "Actions"
+    }
+}
+```
+
+请参阅[评审工具指南](./review-tool-user-guide/workflows.md)若要开始创建和使用工作流，或查看[REST API 指南](./try-review-api-workflow.md)若要了解如何以编程方式执行此操作。
+
+## <a name="jobs"></a>作业
+
+审查作业可作为一种类型的包装器的功能的内容审查、 工作流和评审。 作业扫描你使用内容审查器图像审查 API 或文本审查 API 的内容，然后检查其针对指定工作流。 基于工作流结果，可能会或可能不会创建中的内容审查[审阅工具](./review-tool-user-guide/human-in-the-loop.md)。 评审和工作流可以创建并配置了其各自的 Api，而作业 API，可获取详细的报告的整个过程 （它可发送到指定的回调终结点）。
+
+请参阅[REST API 指南](./try-review-api-job.md)若要开始使用作业。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,21 +7,18 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: fd680b00feb8a75dfec952d7211554100fca00d8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075060"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758116"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
 本文介绍如何将视频索引器小组件嵌入应用程序。 视频索引器支持将两类小组件嵌入应用程序：**认知见解**和**播放器**。 
-
-> [!NOTE]
-> 从 2018 年 2 月 1 日开始，**认知见解**小组件的版本 1 将被弃用。 嵌入 URL 版本将默认为 `version=2`。
 
 从版本 2 开始，小组件的基 URL 将包含帐户所属的区域。 例如，美国西部区域中的帐户将生成：`https://wus2.videoindexer.ai/embed/insights/...`。
 
@@ -34,7 +31,6 @@ ms.locfileid: "58075060"
 |名称|定义|描述|
 |---|---|---|
 |widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 如果使用 **version=2**，则不支持 **widgets** URL 参数。 |
-|版本|**认知见解**小组件的版本|若要获取最新的见解小组件更新，请将 `?version=2` 查询参数添加到嵌入 URL。 例如： `https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?version=2` <br/> 若要获取旧版本，只需从 URL 中删除 `version=2`。
 
 ### <a name="player-widget"></a>播放器小组件
 

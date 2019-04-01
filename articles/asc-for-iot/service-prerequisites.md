@@ -1,6 +1,6 @@
 ---
-title: IoT 系统必备组件预览 ASC |Microsoft Docs
-description: 若要开始使用 ASC IoT 服务系统必备组件所需的所有内容的详细信息。
+title: Azure 安全中心的 IoT 先决条件预览 |Microsoft Docs
+description: 若要开始使用 Azure 安全中心的 IoT 服务先决条件所需的所有内容的详细信息。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 0188dace0e666d4abfe31ac1c6c14d63c947c566
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 5293fe6a8d4a8a44a89890af1c259e2b4b2b7827
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574736"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755098"
 ---
-# <a name="asc-for-iot-prerequisites"></a>ASC IoT 系统必备组件
+# <a name="azure-security-center-for-iot-prerequisites"></a>Azure 安全中心，IoT 系统必备组件
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文提供了不同的构建基块的 ASC 为 IoT 服务，您需要开始，基本概念以帮助您了解该服务的说明。 
+本文提供了不同的构造块的 Azure 安全中心 (ASC) 的 IoT 服务，您需要开始，基本概念以帮助您了解该服务的说明。 
 
 ## <a name="minimum-requirements"></a>最低要求
 

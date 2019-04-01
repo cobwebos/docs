@@ -1,68 +1,195 @@
 ---
-title: 通过 API 控制台使用人工评审来审查内容 - 内容审查器
+title: 创建使用 REST API 控制台-内容审查器审查评论
 titlesuffix: Azure Cognitive Services
-description: 使用评审 API 的审查操作为人工审查创建图像或文本审查。
+description: 使用 Azure 内容审查器评审 Api 创建人工审查的图像或文本审阅。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/18/2019
 ms.author: sajagtap
-ms.openlocfilehash: 2e40165bde7f3ce2eabd91b55c5bbc8139282b60
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: beadbfc09526f738ba90252787b5b0910a2f7163
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101459"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755363"
 ---
-# <a name="create-reviews-from-the-api-console"></a>从 API 控制台中创建审查
+# <a name="create-human-reviews-rest"></a>创建人工审阅 (REST)
 
-使用评审 API 的[审查操作](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)为人工审查创建图像或文本审查。 人工审查器使用审查工具审查内容。 基于审查后业务逻辑执行此操作。 通过使用任何内容审查器图像或文本 API 或其他认知服务 API 扫描内容后使用它。 
+[评审](./review-api.md#reviews)存储和显示审阅人，若要评估的内容。 当用户完成评审时，结果将发送到指定的回调终结点。 在本指南中，将了解如何设置以使用通过 API 控制台的 REST Api 查看评论。 一旦您了解的 Api 结构，您可以轻松地移植到任何 REST 兼容平台这些调用。
 
-在人工审查器审查自动分配的标记和预测数据并提交了最终审核决定后，评审 API 会将所有信息提交到 API 终结点。
+## <a name="prerequisites"></a>必备组件
 
-## <a name="use-the-api-console"></a>使用 API 控制台
-若要使用联机控制台试用 API，需要在控制台中输入下面一些值：
+- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
 
-- **teamName**：在设置审查工具帐户时创建的团队名称。 
-- **ContentId**：此字符串将传递给 API，并通过回调返回。 ContentId 在关联内部标识符或元数据与审查作业结果时十分有用。
-- **元数据**：回叫期间返回到 API 终结点的自定义键值对。 如果此键是审查工具中定义的短代码，则显示为标记。
-- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
+## <a name="create-a-review"></a>创建评审
 
-从“凭据”窗口访问是访问测试工作台的最简单的方法。
+若要创建评审，请转到**[查看-创建](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)** API 引用页，选择密钥中你所在区域的按钮 (您可以在中找到此终结点 URL 上**凭据**页[审阅工具](https://contentmoderator.cognitive.microsoft.com/))。 这将启动 API 控制台中，您可以轻松地构建和运行的 REST API 调用。
 
-1. 在“凭据”窗口中，选择[审查 API 参考](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c4)。
+![复习-Get 区域选择](images/test-drive-region.png)
 
-   “审查 - 创建”页面打开。
+### <a name="enter-rest-call-parameters"></a>输入 REST 调用参数
 
-2. 若要打开 API 测试控制台，选择最贴切地描述你所在位置的区域。
+输入值**teamName**，并**Ocp Apim 订阅密钥**:
 
-   ![审查 - 创建页面区域选择](images/test-drive-region.png)
+- **teamName**：您设置时创建的团队 ID 你[审阅工具](https://contentmoderator.cognitive.microsoft.com/)帐户 (在中找到**Id**评审工具的凭据屏幕上的字段)。
+- **Ocp-Apim-Subscription-Key**：你的内容审查器密钥。 您可以在上找到此**设置**选项卡[审阅工具](https://contentmoderator.cognitive.microsoft.com)。
 
-   “审查 - 创建”API 控制台打开。
+### <a name="enter-a-review-definition"></a>输入评审定义
+
+编辑**请求正文**框中输入 JSON 请求包含以下字段：
+
+- **元数据**：若要返回到你的回调终结点的自定义键 / 值对。 如果该键中定义的短代码[审阅工具](https://contentmoderator.cognitive.microsoft.com)，它将显示为一个标记。
+- **内容**:对于图像和视频内容，这是指向内容的 URL 字符串。 对于文本内容，这是实际的文本字符串。
+- **ContentId**：一个自定义的标识符的字符串。 此字符串将传递给 API，并通过回调返回。 它可用于将与审查作业的结果相关联的内部标识符或元数据。
+- **CallbackEndpoint**:（可选）要评审完成时接收回调信息的 URL。
+
+默认请求正文演示了的评审可以创建不同类型的示例：
+
+```json
+[Image]
+[
+  {
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      }
+    ],
+    "Type": "Image",
+    "Content": "<Content Url>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>"
+  }
+]
+[Text]
+[
+  {
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      }
+    ],
+    "Type": "Text",
+    "Content": "<Your Text Content>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>"
+  }
+]
+[Video]
+[
+  {
+    "VideoFrames":[
+      {
+          "Id": "<Frame Id>",
+          "Timestamp": "<Frame Timestamp",
+          "FrameImage":"<Frame Image URL",
+          "Metadata": [
+            {
+              "Key": "<Key>",
+              "Value": "<Value"
+            }
+          ],
+          "ReviewerResultTags": [
+          ]
+    ], 
+    "Metadata": [
+      {
+        "Key": "string",
+        "Value": "string"
+      },
+      //For encrypted Videos
+        {
+          "Key": "protectedType",
+          "Value": "AES or FairPlay or Widevine or Playready"
+        },
+        {
+          "Key": "authenticationToken",
+          "Value": "your viewtoken(In case of Video Indexer AES encryption type, this value is viewtoken from breakdown json)"
+        },
+      //For FairPlay encrypted type video include certificateUrl as well
+        {
+          "Key": "certificateUrl",
+          "Value": "your certificate url"
+        }
+    ],
+    "Type": "Video",
+    "Content": "<Stream Url>",
+    "ContentId": "<Your identifier for this content>",
+    "CallbackEndpoint": "<Url where you would receive callbacks>",
+    [Optional]
+    "Timescale": "<Timescale of the video>
+  }
+]
+```
+
+### <a name="submit-your-request"></a>提交请求
   
-3. 为需要的查询参数、内容类型和订阅密钥输入值。 在“请求正文”框中，指定内容（例如图像位置）、元数据以及与内容关联的其他信息。
+选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示为评审 ID。 复制此 ID，然后在以下步骤中使用它。
 
-   ![审查 - 创建控制台查询参数、标头和请求正文框](images/test-drive-review-1.PNG)
+![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-review-2.PNG)
+
+### <a name="examine-the-new-review"></a>检查新评审
+
+在中[审阅工具](https://contentmoderator.cognitive.microsoft.com)，选择**评审** > **映像**/**文本**/ **视频**（使用具体取决于哪些内容）。 应显示已上传的内容，准备好进行人工审阅。
+
+![足球的审查工具图像](images/test-drive-review-5.PNG)
+
+## <a name="get-review-details"></a>获取查看详细信息
+
+若要检索有关现有评审的详细信息，请转到[查看-获取](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c2)API 引用页，选择你所在区域的按钮 （在其中管理你的密钥的区域）。
+
+![“工作流 - 获取”区域选择](images/test-drive-region.png)
+
+输入 REST 调用参数，如在上面的部分。 此步骤中，对于**reviewId**收到创建评审时的唯一 ID 字符串。
+
+![审查 - 创建控制台获取结果](images/test-drive-review-3.PNG)
   
-4. 选择“发送”。 创建审查 ID。 复制此 ID，然后在以下步骤中使用它。
+选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框将显示 JSON 格式中的查看详细信息如下所示：
 
-   ![审查 - 创建控制台响应内容框显示审查 ID](images/test-drive-review-2.PNG)
-  
-5. 选择“获取”，然后通过选择匹配区域的按钮打开 API。 在结果页面上，为“teamName”、“ReviewID”和“订阅密钥”输入值。 选择页面上的“发送”按钮。 
+```json
+{  
+  "reviewId":"201712i46950138c61a4740b118a43cac33f434",
+  "subTeam":"public",
+  "status":"Complete",
+  "reviewerResultTags":[  
+    {  
+      "key":"a",
+      "value":"False"
+    },
+    {  
+      "key":"r",
+      "value":"True"
+    },
+    {  
+      "key":"sc",
+      "value":"True"
+    }
+  ],
+  "createdBy":"<teamname>",
+  "metadata":[  
+    {  
+      "key":"sc",
+      "value":"true"
+    }
+  ],
+  "type":"Image",
+  "content":"https://reviewcontentprod.blob.core.windows.net/<teamname>/IMG_201712i46950138c61a4740b118a43cac33f434",
+  "contentId":"0",
+  "callbackEndpoint":"<callbackUrl>"
+}
+```
 
-   ![审查 - 创建控制台获取结果](images/test-drive-review-3.PNG)
-  
-6. 会看到扫描的结果。
+记下响应中的以下字段：
 
-   ![审查 - 创建控制台响应内容框](images/test-drive-review-4.PNG)
-  
-7. 在内容审查器仪表板上，选择“审查” > “图像”。 出现已扫描图像，可供人工审查。
-
-   ![足球的审查工具图像](images/test-drive-review-5.PNG)
+- **status**
+- **Reviewerresulttag**:这会显示任何标记已手动添加由人工审阅团队 (所示**createdBy**字段)。
+- **metadata**：这将显示在查看之前的人工审阅团队所做更改最初添加的标记。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要与你的应用程序集成，请在代码中使用 REST API，或者从[审查 .NET 快速入门](moderation-reviews-quickstart-dotnet.md)开始。
+在本指南中，您学习了如何创建使用 REST API 的内容审查评论。 接下来，将集成评审到一种端到端的适度性方案，如[电子商务审查](./ecommerce-retail-catalog-moderation.md)教程。

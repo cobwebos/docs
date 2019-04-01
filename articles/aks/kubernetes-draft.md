@@ -2,17 +2,17 @@
 title: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 description: 结合使用 Draft 与 AKS 和 Azure 容器注册表
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 08/15/2018
-ms.author: iainfou
-ms.openlocfilehash: 5169b8856155df5e62b1e85d291ce6c1b54c8a87
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: zarhoads
+ms.openlocfilehash: 462cfd6ec0a6b25f85dda0245dd4f5feed7cb712
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011941"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755667"
 ---
 # <a name="use-draft-with-azure-kubernetes-service-aks"></a>结合使用 Draft 与 Azure Kubernetes 服务 (AKS)
 

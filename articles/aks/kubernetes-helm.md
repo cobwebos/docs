@@ -2,17 +2,17 @@
 title: 使用 Helm 在 Kubernetes on Azure 中部署容器
 description: 了解如何使用 Helm 打包工具来部署 Azure Kubernetes 服务 (AKS) 群集中的容器
 services: container-service
-author: iainfoulds
+author: zr-msft
 ms.service: container-service
 ms.topic: article
 ms.date: 03/06/2019
-ms.author: iainfou
-ms.openlocfilehash: ccd98f5bf859673ae69b80dfcd0e5020ba289682
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.author: zarhoads
+ms.openlocfilehash: 0ebf317bf29a378f8cbbed647d3d3e07d2aa6bab
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768546"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757165"
 ---
 # <a name="install-applications-with-helm-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中使用 Helm 安装应用程序
 

@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.custom: seodec18
-ms.openlocfilehash: 3c6b5094613ee482b0fd3f63e3d9d69dfe4d40f4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 85d5bb822bc9b89c68c70633a22a1bed74118f49
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094848"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758189"
 ---
 # <a name="provision-and-manage-azure-time-series-insights-preview"></a>预配和管理 Azure 时序见解预览版
 
@@ -33,7 +33,7 @@ Azure 时序见解预览版环境是即用即付 (PAYG) 环境。
 了解[如何规划环境](./time-series-insights-update-plan.md)。
 
 >[!IMPORTANT]
-> 如果使用 v2 帐户，请不要在要使用的存储帐户上启用冷/存档属性。
+> 对于预览版，请确保你使用的 Azure 存储常规用途 v1 (GPv1) 帐户。  将在不久的将来添加支持 GPv2 和更高版本。  
 
 可选择将每个 Azure 时序见解预览版环境与一个事件源关联。 有关详细信息，请阅读[添加事件中心源](./time-series-insights-how-to-add-an-event-source-eventhub.md)和[添加 IoT 中心源](./time-series-insights-how-to-add-an-event-source-iothub.md)。 需要在此步骤提供一个时间戳 ID 属性和一个唯一使用者组。 这样做可确保环境能够访问相应的事件。
 

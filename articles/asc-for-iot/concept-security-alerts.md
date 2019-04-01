@@ -1,6 +1,6 @@
 ---
-title: 有关 IoT 预览版 ASC 安全警报指南 |Microsoft Docs
-description: 了解有关安全警报和建议的补救措施使用 ASC 适用于 IoT 功能和服务。
+title: 有关 IoT 预览版的 Azure 安全中心安全警报指南 |Microsoft Docs
+description: 了解有关安全警报和建议的补救措施利用 Azure 安全中心进行 IoT 功能和服务。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 23af0d9e2d7c4033a2457676b29b5e4b2f8c15ea
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 987bfa0da190bd2bd29634b46b5f06ff4dc1cc19
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579438"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755106"
 ---
-# <a name="asc-for-iot-security-alerts"></a>ASC 为 IoT 安全警报的
+# <a name="azure-security-center-for-iot-security-alerts"></a>IoT 安全警报的 azure 安全中心
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-适用于 IoT 的 ASC 会持续分析 IoT 解决方案是使用高级的分析和威胁智能用以提醒恶意活动。
+适用于 IoT 的 azure 安全中心 (ASC) 会持续分析 IoT 解决方案是使用高级的分析和威胁智能用以提醒恶意活动。
 此外，您可以创建自定义警报根据预期的设备行为的了解。
 警报充当一个指示器 comprise，并应调查和修正。
 

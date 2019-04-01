@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/13/2019
+ms.date: 03/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 8128afa7078c396156d2cbffb47effeb7de68a0b
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: f2416bd3393ae05a74665fe7e11bd1c8c04c91d7
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58002073"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499024"
 ---
 # <a name="manage-compute-on-your-azure-data-box-edge"></a>在 Azure Data Box Edge 中管理计算
 
@@ -32,7 +32,7 @@ ms.locfileid: "58002073"
 
 ## <a name="manage-triggers"></a>管理触发器
 
-事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器是对这些事件的响应。 每当激发事件时，触发器可以帮助执行某个函数。 对于 Data Box Edge，触发器可用于响应文件事件或计划。
+事件是在云环境中或者在设备上发生的、可能需要采取措施的情况。 例如，在共享中创建文件就是一个事件。 触发器引发这些事件。 对于 Data Box Edge，触发器可用于响应文件事件或计划。
 
 - **文件**：这些触发器可用于响应文件创建、文件修改等文件事件。
 - **Scheduled**：这些触发器可用于响应某个计划，对于该计划，可以定义开始日期、开始时间和重复间隔。
@@ -132,6 +132,23 @@ ms.locfileid: "58002073"
      ![出现提示时选择“是”](media/data-box-edge-manage-compute/refresh-configuration-2.png)
 
 3. 同步完成后，请退出对话框。
+
+## <a name="enable-a-network-interface-for-compute"></a>启用计算网络接口
+
+可能需要访问在 Data Box Edge 设备上运行的模块。 若要从外部访问模块，需为设备上的网络接口分配 IP 地址。 可以从本地 Web UI 管理这些计算设置。
+
+在本地 Web UI 上执行下述步骤，以便配置计算设置。
+
+1. 在本地 Web UI 中，转到“配置”>“计算设置”。  
+
+2. **启用**需用来连接到设备上的计算模块的网络接口。 
+
+    - 如果使用静态 IP 地址，请为网络接口输入一个 IP 地址。
+    - 如果使用 DHCP，则会自动分配 IP 地址。
+
+3. 选择“应用”以应用设置。
+
+    ![启用计算设置](media/data-box-edge-manage-compute/compute-settings-1.png)
 
 
 ## <a name="next-steps"></a>后续步骤

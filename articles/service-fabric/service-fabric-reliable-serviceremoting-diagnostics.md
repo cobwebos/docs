@@ -4,7 +4,7 @@ description: 本文描述了 Service Fabric Reliable ServiceRemoting 运行时�
 services: service-fabric
 documentationcenter: .net
 author: suchiagicha
-manager: timlt
+manager: chackdan
 editor: suchiagicha
 ms.assetid: 1c229923-670a-4634-ad59-468ff781ad18
 ms.service: service-fabric
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
-ms.openlocfilehash: e1dec182f09eccebfe03ab9727018dbf34128acd
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
+ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275242"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666148"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的诊断和性能监视
 Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解 ServiceRemoting 的运行状况以及进行故障排除和性能监视。
@@ -28,7 +28,7 @@ Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft
 ## <a name="performance-counters"></a>性能计数器
 Reliable ServiceRemoting 运行时定义以下性能计数器类别：
 
-| 类别 | Description |
+| 类别 | 描述 |
 | --- | --- |
 | Service Fabric 服务 |特定于 Azure Service Fabric Service Remoting 的计数器，例如，处理请求所需的平均时间 |
 | Service Fabric 服务方法 |特定于 Service Fabric Remoting Service 所实现方法的计数器，例如，调用服务方法的频率 |
@@ -83,7 +83,7 @@ ServiceRuntimeInternalID 是由 Fabric 服务运行时生成的供内部使用�
 
 Reliable Service 运行时发布与执行服务方法相关的下列性能计数器。
 
-| 类别名称 | 计数器名称 | Description |
+| 类别名称 | 计数器名称 | 描述 |
 | --- | --- | --- |
 | Service Fabric 服务方法 |调用/秒 |每秒调用服务方法的次数 |
 | Service Fabric 服务方法 |每次调用的平均毫秒数 |执行服务方法所用的时间（以毫秒为单位） |
@@ -92,7 +92,7 @@ Reliable Service 运行时发布与执行服务方法相关的下列性能计数
 ### <a name="service-request-processing-performance-counters"></a>服务请求处理的性能计数器
 客户端通过服务代理对象调用方法时，会通过网络向远程服务发送请求消息。 该服务处理此请求消息并向客户端返回响应。 Reliable ServiceRemoting 运行时发布以下与服务请求处理相关的性能计数器。
 
-| 类别名称 | 计数器名称 | Description |
+| 类别名称 | 计数器名称 | 描述 |
 | --- | --- | --- |
 | Service Fabric 服务 |未完成的请求数 |正在服务中处理的请求数 |
 | Service Fabric 服务 |每个请求的平均毫秒数 |服务处理请求所用时间（以毫秒为单位） |

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: diberry
-ms.openlocfilehash: 735835d16eb14c3847f36ecb6f46c08c0a8928ef
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 10fe5d90e7a7a59a1b543209a37b998376fdda1e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339510"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757655"
 ---
 # <a name="language-and-region-support-for-luis"></a>LUIS 的语言和区域支持
 
@@ -105,10 +105,10 @@ LUIS 理解以下语言：
 |德语<br>`de-de`|1.0.1|基于字词的拆分在空间上进行标记。<br> 如果用户输入`Ich fahre einen krankenwagen`作为查询文本，它将保持的单个标记。 因此`krankenwagen`标记作为单个实体。 |
 
 ### <a name="migrating-between-tokenizer-versions"></a>标记器版本之间进行迁移
+<!--
+Your first choice is to change the tokenizer version in the app file, then import the version. This action changes how the utterances are tokenized but allows you to keep the same app ID. 
 
-在第一个选择是要更改的标记器版本在应用程序文件中，然后导入版本。 此操作将更改查询文本时如何标记，但可以保留相同的应用程序 id。 
-
-标记器 JSON 1.0.0。 请注意，属性值`tokenizerVersion`。 
+Tokenizer JSON for 1.0.0. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -157,7 +157,7 @@ LUIS 理解以下语言：
 }
 ```
 
-标记器 JSON 版本 1.0.1。 请注意，属性值`tokenizerVersion`。 
+Tokenizer JSON for version 1.0.1. Notice the property value for  `tokenizerVersion`. 
 
 ```JSON
 {
@@ -205,5 +205,8 @@ LUIS 理解以下语言：
     "settings": []
 }
 ```
+-->
 
-第二个选项是[导入该文件作为新的应用程序](luis-how-to-start-new-app.md#import-an-app-from-file)，而不是版本。 此操作的含义，新应用程序具有不同的应用 ID，但使用的文件中指定的标记器版本。 
+在应用级别发生词汇切分。 没有支持的版本级别词汇切分。 
+
+[导入该文件作为新的应用程序](luis-how-to-start-new-app.md#import-an-app-from-file)，而不是版本。 此操作的含义，新应用程序具有不同的应用 ID，但使用的文件中指定的标记器版本。 

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 17e4d576d4c524321fd19c589868a323f97c48a1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9f1df23d1f0f24787bb9267064ffd647eda2cb74
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079702"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756050"
 ---
 # <a name="learn-image-moderation-concepts"></a>了解图像审查概念
 
@@ -66,7 +66,7 @@ ms.locfileid: "58079702"
 
 ## <a name="detecting-faces"></a>检测人脸
 
-检测人脸有助于检测个人身份信息 (PII)，例如图像中的人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
+检测人脸有助于检测图像中的个人数据，例如人脸。 可以检测每个图像中的潜在人脸和潜在人脸的数量。
 
 响应包括以下信息：
 

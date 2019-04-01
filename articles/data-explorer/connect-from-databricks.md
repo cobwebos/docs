@@ -3,23 +3,23 @@ title: 使用 Python 从 Azure Databricks 连接到 Azure 数据资源管理器
 description: 本主题介绍了如何使用两个身份验证方法中的一个，通过 Azure Databricks 中的 Python 库访问 Azure 数据资源管理器中的数据。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 1101a89fd4ddb0e020d0bac237e6119b137fa978
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: 7e91aa0707b1ae8ac4b9b6ddd9ee7142a04a0f37
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017491"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756922"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>使用 Python 从 Azure Databricks 连接到 Azure 数据资源管理器
 
 [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/what-is-azure-databricks) 是基于 Apache Spark 的分析平台，针对 Microsoft Azure 平台进行了优化。 本文介绍了如何通过 Azure Databricks 中的 Python 库访问 Azure 数据资源管理器中的数据。 可以使用 Azure 数据资源管理器通过多种方法进行身份验证，其中包括设备登录和 Azure Active Directory (Azure AD) 应用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - [创建 Azure 数据资源管理器群集和数据库](/azure/data-explorer/create-cluster-database-portal)。
 - [创建 Azure Databricks 工作区](/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)。 在“Azure Databricks 服务”下的“定价层”下拉列表中，选择“高级”。 选择此项可以使用 Azure Databricks 机密来存储凭据并在笔记本和作业中引用它们。

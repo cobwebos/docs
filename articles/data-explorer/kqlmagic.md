@@ -3,17 +3,17 @@ title: 使用 Jupyter Notebook 和 Kqlmagic 分析数据
 description: 本主题将介绍如何使用 Jupyter Notebook 和 KQLmagic 分析数据
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 0e1eedf497ea5fd4a8a9551996102a8aa72847fc
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 0e7d6148297dd4208374d9900e10564ac4052c67
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961561"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756217"
 ---
 # <a name="analyze-data-using-jupyter-notebook-and-kql-magic"></a>使用 Jupyter Notebook 和 KQL magic 分析数据
 

@@ -1,6 +1,6 @@
 ---
-title: 了解 ASC 的 IoT 安全模块的 IoT Edge |Microsoft Docs
-description: 了解 IoT Edge 体系结构和 ASC 的 IoT 安全模块的功能。
+title: 了解 Azure 安全中心的 IoT 安全 IoT Edge 模块 |Microsoft Docs
+description: 了解 IoT Edge 体系结构和 Azure 安全中心的 IoT 安全模块的功能。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 68117370e21c7b667bde5447cef510a4e7c77df0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 11eadc70f6da20fdc9b837dfad45705278dd2d27
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580758"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756697"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge 安全模块
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
+> IoT 的 azure 安全中心当前处于公共预览状态。
 > 此预览版本没有附带服务级别协议提供，不建议用于生产 worklo§1ads。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 [Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/)提供了强大的功能来管理和执行在边缘的业务工作流。
 IoT Edge 在 IoT 环境中扮演的关键部分使其成为尤其吸引人恶意执行组件。
 
-IoT 安全模块的 ASC IoT edge 设备提供了全面的安全解决方案。
+IoT 安全模块的 azure 安全中心 (ASC) 提供了 IoT Edge 设备的全面的安全解决方案。
 ASC 为 IoT 模块收集、 聚合和分析来自你的操作系统和容器系统的原始安全数据到切实可行的安全建议和警报。
 
 与 ASC 为 IoT 设备的 IoT 安全代理类似，ASC 为 IoT Edge 模块是通过其模块孪生高度可自定义。

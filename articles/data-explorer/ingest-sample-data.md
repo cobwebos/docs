@@ -3,17 +3,17 @@ title: 将示例数据引入 Azure 数据资源管理器
 description: 了解如何将与天气相关的示例数据引入（加载）到 Azure 数据资源管理器。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: ebe362b89eb6ffcde006ff824fbee40b1a9175d3
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 2ebbe3434f032b38c33ec7b82e445532836f78c9
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733393"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758475"
 ---
 # <a name="ingest-sample-data-into-azure-data-explorer"></a>将示例数据引入 Azure 数据资源管理器
 
@@ -22,7 +22,7 @@ ms.locfileid: "55733393"
 > [!NOTE]
 > 如果你完成了[快速入门：使用 Azure 数据资源管理器 Python 库引入数据](python-ingest-data.md)，则已拥有此数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [测试群集和数据库](create-cluster-database-portal.md)
 

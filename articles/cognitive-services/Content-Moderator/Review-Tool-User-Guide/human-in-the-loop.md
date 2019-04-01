@@ -1,36 +1,52 @@
 ---
-title: 将人工评审纳入内容审核 - 内容审查器
+title: 了解评审工具概念-内容审查器
 titlesuffix: Azure Cognitive Services
-description: 人机如何协同为内容审核提供最佳结果
+description: 了解内容审查器审查工具，可以协调组合的 AI 和人工审阅审查工作的网站。
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
-ms.date: 01/10/2019
+ms.date: 03/15/2019
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.author: sajagtap
-ms.openlocfilehash: 4a8f27a94c5e14c34c2a6500dc555c4281d0ecd7
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: b7ec997fd3e9bfe294050893d80fd57a96a47aae
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55224524"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755880"
 ---
-# <a name="learn-about-the-review-tool"></a>了解评审工具
+# <a name="content-moderator-review-tool"></a>内容审查器评审工具
 
-当人机协作进行内容审核时，你将获得最佳结果。 计算机可以有效地增强人工评审，在现实世界环境中，必须辅助或调节预测置信度。 其结果是，相比人工或计算机单独工作的效果，一个混合内容审核过程的效果更佳。
+Azure 内容审查器提供的服务可将机器学习内容审查与人工审阅并[审阅工具](https://contentmoderator.cognitive.microsoft.com)网站是可详细的访问这些服务的用户友好前端。
+
+![在浏览器中查看工具仪表板](./images/0-dashboard.png)
 
 ## <a name="what-it-does"></a>作用
 
-当与计算机辅助的审核 API 一起使用时，通过人工评审工具可以完成与内容审核生命周期相关的重要任务。
+[审阅工具](https://contentmoderator.cognitive.microsoft.com)，当与计算机辅助下审查 Api，结合使用，可完成内容审核过程中的以下任务：
 
-1. 从基础审核 API 结果中自动创建人工评审
-2. 使用一个工具（评审工具和 API）来审核多种格式（文本、图像和视频）
-3. 将内容评审分配给或呈报给根据内容类别或经验级别组织的多个评审团队。
-4. 使用默认工作流，或者使用灵活规则定义自定义工作流，并且不需要编写任何代码。
-5. 通过简单地构建连接器，即可将人工评审添加到任何 API 或业务流程中。
-6. 使用默认连接器评审来自 Microsoft PhotoDNA、文本分析和人脸 API 的结果。
-7. 在内容审核过程中获得关键性能指标。
+- 使用一的组工具审查以多种格式 （文本、 图像和视频） 的内容。
+- 自动创建 human[评审](../review-api.md#reviews)审查 API 时结果附带中。
+- 分配或升级到多个评审团队，按内容类别或体验级别的内容审查。
+- 使用默认或自定义逻辑筛选器 ([工作流](../review-api.md#workflows)) 进行排序和跟踪的内容，而无需编写任何代码。
+- 使用[连接器](./configure.md#connectors)来处理通过 Microsoft PhotoDNA、 文本分析和人脸 Api 除了内容审查器 Api 的内容。
+- 生成你自己的连接器来创建工作流的任何 API 或业务流程。
+- 在内容审核过程中获得关键性能指标。
 
-![内容审查器评审工具](../images/video-review-default-view.png)
+## <a name="review-tool-dashboard"></a>评审工具仪表板
+
+上**仪表板**选项卡上，可以查看的内容在该工具中完成的评审的关键指标。 请参阅数占总时间，完成的和挂起的图像、 文本和视频内容的审阅。 此外可以查看的用户和团队已完成审阅，以及已应用的审查标记的明细。
+
+![查看仪表板](images/0-dashboard.png)
+
+## <a name="review-tool-credentials"></a>查看工具凭据
+
+当你注册具有[审阅工具](https://contentmoderator.cognitive.microsoft.com)，系统将提示你选择 Azure 区域，为你的帐户。 这是因为[审阅工具](https://contentmoderator.cognitive.microsoft.com)生成 Azure 内容审查器服务; 一个免费试用版密钥将需要此密钥才能从客户端 SDK 或 REST 调用访问的任何服务。 选择可查看你的密钥和 API 终结点 URL**设置** > **凭据**。
+
+![内容审查器“凭据”设置](images/settings-6-credentials.png)
+
+## <a name="next-steps"></a>后续步骤
+
+请参阅[配置审阅工具](./configure.md)若要了解如何访问评审工具资源和更改设置。

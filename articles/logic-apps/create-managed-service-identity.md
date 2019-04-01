@@ -8,19 +8,21 @@ services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
 ms.topic: article
-ms.date: 01/22/2019
-ms.openlocfilehash: 046aed64d3551d5c0b6ddae44b925452c01c297a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.date: 03/29/2019
+ms.openlocfilehash: c5fabf37ecc97f8edea437f1628949e45aefde77
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337573"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755711"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
 
 若要在不登录的情况下访问其他 Azure Active Directory (Azure AD) 租户中的资源并对你的标识进行身份验证，逻辑应用可以使用[托管标识](../active-directory/managed-identities-azure-resources/overview.md)（以前称为托管服务标识或 MSI），而非使用凭据或机密。 由于无需提供或轮换机密，因此 Azure 会为你管理此标识，并且会帮助保护凭据。 本文介绍如何为逻辑应用设置和使用系统分配的托管标识。 有关托管标识的详细信息，请参阅[什么是 Azure 资源的托管标识？](../active-directory/managed-identities-azure-resources/overview.md)
 
 > [!NOTE]
+> 逻辑应用可将仅用于支持管理的标识的连接器管理的标识。 目前，仅 HTTP 连接器支持托管的标识。
+>
 > 当前，每个 Azure 订阅中最多可以有 10 个具有系统分配的托管标识的逻辑应用工作流。
 
 ## <a name="prerequisites"></a>必备组件
@@ -148,7 +150,7 @@ ms.locfileid: "58337573"
 
 为逻辑应用设置系统分配的托管标识并为该标识分配对资源的所需权限后，现在可以使用该标识进行身份验证。 例如，可以使用一个 HTTP 操作，以便逻辑应用可以向该资源发送 HTTP 请求或调用。 
 
-1. 在逻辑应用中，添加“HTTP”操作。 
+1. 在逻辑应用中，添加“HTTP”操作。
 
 1. 为该操作提供必要的详细信息，例如要调用的资源的请求“方法”和“URI”位置。
 
@@ -158,7 +160,7 @@ ms.locfileid: "58337573"
 
    `https://management.azure.com/subscriptions/<Azure-subscription-ID>?api-version-2016-06-01`
 
-1. 在 HTTP 操作中，选择“显示高级选项”。 
+1. 在 HTTP 操作中，选择“显示高级选项”。
 
 1. 从“身份验证”列表选择“托管标识”。 选择此身份验证后，“访问群体”属性将随默认资源 ID 值显示：
 
@@ -176,7 +178,7 @@ ms.locfileid: "58337573"
 
 ## <a name="remove-managed-identity"></a>删除托管标识
 
-若要禁用逻辑应用上的系统分配托管标识，可以按照与通过 Azure 门户、Azure 资源管理器部署模板或 Azure PowerShell 设置标识类似的步骤进行操作。 
+若要禁用逻辑应用上的系统分配托管标识，可以按照与通过 Azure 门户、Azure 资源管理器部署模板或 Azure PowerShell 设置标识类似的步骤进行操作。
 
 删除逻辑应用时，Azure 会自动从 Azure AD 中删除系统分配的逻辑应用标识。
 
@@ -194,7 +196,7 @@ ms.locfileid: "58337573"
 
 ### <a name="deployment-template"></a>部署模板
 
-如果使用 Azure 资源管理器部署模板创建了逻辑应用的系统分配的托管标识，请将 `"identity"` 元素的 `"type"` 属性设置为 `"None"`。 此操作还会从 Azure AD 中删除主体 ID。 
+如果使用 Azure 资源管理器部署模板创建了逻辑应用的系统分配的托管标识，请将 `"identity"` 元素的 `"type"` 属性设置为 `"None"`。 此操作还会从 Azure AD 中删除主体 ID。
 
 ```json
 "identity": {

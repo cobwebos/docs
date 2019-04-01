@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: cca234340526b732067adac3c6725f8aa5acc47c
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983366"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757968"
 ---
-#  <a name="agent-health-solution-in-azure"></a>Azure 中的代理运行状况解决方案
-在 Azure 中的代理运行状况解决方案可帮助你了解所有的报告的代理直接向 Log Analytics 工作区或 System Center Operations Manager 管理组连接到 Azure Monitor，没有响应和提交操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
+#  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
+在 Azure 中的代理运行状况解决方案可帮助你了解所有直接向 Azure Monitor 中的 Log Analytics 工作区报告的代理或 System Center Operations Manager 管理组连接到 Azure Monitor，哪些不响应和正在提交操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
 ## <a name="prerequisites"></a>必备组件
 在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../../log-analytics/log-analytics-windows-agent.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)报告。
@@ -62,7 +62,7 @@ ms.locfileid: "56983366"
 | 按 OS 类型进行的分布 | 对环境中存在的 Windows 代理和 Linux 代理进行数目上的细分。|
 | 按代理版本进行的分布 | 对安装在环境中的不同代理版本进行细分，并对每个版本计数。|
 | 按代理类别进行的分布 | 对发送检测信号事件的不同类别的代理进行细分：直接代理、OpsMgr 代理或 OpsMgr 管理服务器。|
-| 按管理组进行的分布 | 对环境中的不同 SCOM 管理组进行细分。|
+| 按管理组进行的分布 | 在您的环境中不同的 Operations Manager 管理组中的一个分区。|
 | 代理的地理位置 | 对代理所在的不同国家/地区进行细分，并对安装在每个国家/地区的代理进行总计。|
 | 已安装网关的计数 | 已安装 Log Analytics 网关的服务器数，以及这些服务器的列表。|
 
@@ -117,4 +117,4 @@ ms.locfileid: "56983366"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[Azure Monitor 中的警报](../platform/alerts-overview.md)有关从 Log Analytics 生成警报的详细信息。 
+* 了解如何[Azure Monitor 中的警报](../platform/alerts-overview.md)有关从日志查询中生成警报的详细信息。 

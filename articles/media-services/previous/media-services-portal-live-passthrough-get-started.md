@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 门户中使用本地编码器实时传送流 | Microsoft Docs
+title: 使用 Azure 门户的本地编码器实时传送流 |Microsoft Docs
 description: 本教程指导完成相关步骤，以便创建经配置后可以进行直通传递的“通道”。
 services: media-services
 documentationcenter: ''
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: juliako
-ms.openlocfilehash: d86151b436ec3cc5ea3d4b687f5c8692b2ca4efa
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 48906a12cd113ef613151bb802e757f218bce425
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258694"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758503"
 ---
-# <a name="how-to-perform-live-streaming-with-on-premises-encoders-using-the-azure-portal"></a>如何通过 Azure 门户使用本地编码器执行实时流式处理
+# <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 门户中使用的本地编码器实时传送视频
 > [!div class="op_single_selector"]
 > * [门户](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
@@ -45,29 +45,31 @@ ms.locfileid: "58258694"
 * [使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>常见实时流式处理方案
+
 以下步骤说明了在创建常用的实时传送视频流应用程序时涉及的任务，这些应用程序使用的通道经配置后可以进行直通传递。 本教程说明了如何创建和管理直通通道和实时事件。
 
->[!NOTE]
->确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
+> [!NOTE]
+> 确保要从中流式传输内容的流式处理终结点处于“正在运行”状态。 
     
-1. 将视频摄像机连接到计算机。 启动并配置输出多比特率 RTMP 或分段 MP4 流的本地实时编码器接收实时输入流。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。
+1. 将视频摄像机连接到计算机。 <br/>有关设置建议，请查看[简单且可移植的事件视频设备设置]( https://link.medium.com/KNTtiN6IeT)。
+1. 启动并配置输出多比特率 RTMP 或分段 MP4 流的本地实时编码器接收实时输入流。 有关详细信息，请参阅 [Azure 媒体服务 RTMP 支持和实时编码器](https://go.microsoft.com/fwlink/?LinkId=532824)。<br/>另外，请查看以下博客：[采用 OBS 的实时传送视频流生产](https://link.medium.com/ttuwHpaJeT)。
    
     此步骤也可以在创建频道后执行。
-2. 创建并启动直通通道。
-3. 检索频道引入 URL。 
+1. 创建并启动直通通道。
+1. 检索频道引入 URL。 
    
     实时编码器使用引入 URL 将流发送到频道。
-4. 检索频道预览 URL。 
+1. 检索频道预览 URL。 
    
     使用此 URL 来验证频道是否正常接收实时流。
-5. 创建实时事件/节目。 
+1. 创建实时事件/节目。 
    
     使用 Azure 门户时，创建实时事件的同时还会创建资产。 
 
-6. 在准备好开始流式传输和存档时，启动事件/节目。
-7. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
-8. 在要停止对事件进行流式传输和存档时，停止事件/节目。
-9. 删除事件/节目（并选择性地删除资产）。     
+1. 在准备好开始流式传输和存档时，启动事件/节目。
+1. （可选）可以向实时编码器发信号，以启动广告。 将广告插入到输出流中。
+1. 在要停止对事件进行流式传输和存档时，停止事件/节目。
+1. 删除事件/节目（并选择性地删除资产）。     
 
 > [!IMPORTANT]
 > 请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)，了解与实时传送视频流（使用本地编码器和直通通道）相关的概念和注意事项。

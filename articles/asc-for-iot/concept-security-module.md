@@ -1,6 +1,6 @@
 ---
-title: 了解 IoT 安全模块孪生预览 ASC |Microsoft Docs
-description: 了解有关安全模块孪生以及如何使用它们在 ASC 中对 IoT 的概念。
+title: 了解 Azure 安全中心的 IoT 安全模块孪生预览 |Microsoft Docs
+description: 了解有关安全模块孪生以及如何使用它们在 Azure 安全中心对 IoT 的概念。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: d766b17c9d49792d2e8192a952e8e6e559a8acd3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 56bc93973bd2c080b13b97f1344cc165f742e757
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579370"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758411"
 ---
 # <a name="security-module"></a>安全模块
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
+> IoT 的 azure 安全中心当前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍了如何 ASC iot 使用设备孪生和模块。 
+本文介绍了 iot 的 Azure 安全中心 (ASC) 如何使用设备孪生和模块。 
 
 ## <a name="device-twins"></a>设备克隆
 
-对于在 Azure 中构建的 IoT 解决方案，设备孪生播放设备管理和流程自动化中的关键角色。  
+对于在 Azure 中生成的 IoT 解决方案，设备孪生在设备管理和流程自动化方面发挥着关键作用。  
 
-ASC 为 IoT 提供了完全集成与你现有的 IoT 设备管理平台，使您能够管理你设备的安全状态以及进行使用的现有设备控制功能。 通过使用与 IoT 中心的集成机制的克隆。  
+ASC for IoT 可与现有的 IoT 设备管理平台完全集成，使你能够管理设备的安全状态，以及利用现有的设备控制功能。 通过使用与 IoT 中心的集成机制的克隆。  
 
 了解有关这一概念的详细信息[设备孪生](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-device-twins)Azure IoT 中心内。 
 

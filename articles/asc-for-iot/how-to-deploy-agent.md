@@ -1,6 +1,6 @@
 ---
-title: 选择和部署 IoT 代理预览版 ASC |Microsoft Docs
-description: 了解有关如何选择并将 ASC 部署为 IoT 设备上的 IoT 安全代理。
+title: 选择并将其部署为 IoT 代理预览版的 Azure 安全中心 |Microsoft Docs
+description: 了解有关如何选择并将其部署为 IoT 设备上的 IoT 安全代理的 Azure 安全中心。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: 208f7cdbc9d610713d73c5af1e02de5faf11474c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d3a7c3b1b08ab4f0fecd854b969ac18bf9a73ccf
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580788"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755296"
 ---
 # <a name="select-and-deploy-a-security-agent-on-your-iot-device"></a>选择并部署 IoT 设备上的安全代理
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
+> IoT 的 azure 安全中心当前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-ASC 为 IoT 提供参考体系结构的安全代理，监视和从 IoT 设备收集数据。
+适用于 IoT 的 azure 安全中心 (ASC) 提供参考体系结构的安全代理，监视和从 IoT 设备收集数据。
 请参阅[安全代理参考体系结构](security-agent-architecture.md)若要了解详细信息。
 
 代理作为开放源代码项目开发的有两种类型： <br> [C](https://aka.ms/iot-security-github-c)，并[ C# ](https://aka.ms/iot-security-github-cs)。

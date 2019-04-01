@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: a04dbd42e09ad8ec352af74950b6d71425a84a9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 841e00825b243d883303121022918efd51397f04
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177664"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757423"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>预览-创建和配置使用虚拟节点上使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -47,9 +47,9 @@ Microsoft.ContainerInstance  Registered
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="preview-limitations"></a>预览版限制
+## <a name="regional-availability-limitations"></a>区域可用性的限制
 
-虽然此功能处于预览状态，但以下区域支持部署：
+虚拟节点部署支持以下区域：
 
 * 澳大利亚东部 (australiaeast)
 * 美国东部 (eastus)
@@ -331,6 +331,8 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 
 - [使用 Kubernetes 水平 Pod 自动缩放程序][aks-hpa]
 - [使用 Kubernetes 群集自动缩放程序][aks-cluster-autoscaler]
+- [查看虚拟节点的自动缩放示例][virtual-node-autoscale]
+- [了解有关在 Virtual Kubelet 开放源代码库的更多信息][virtual-kubelet-repo]
 
 <!-- LINKS - external -->
 [kubectl-get]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#get
@@ -338,6 +340,8 @@ az network vnet subnet update --resource-group $RES_GROUP --vnet-name myVnet --n
 [node-selector]:https://kubernetes.io/docs/concepts/configuration/assign-pod-node/
 [toleration]: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
 [aks-github]: https://github.com/azure/aks/issues]
+[virtual-node-autoscale]: https://github.com/Azure-Samples/virtual-node-autoscale
+[virtual-kubelet-repo]: https://github.com/virtual-kubelet/virtual-kubelet
 
 <!-- LINKS - internal -->
 [azure-cli-install]: /cli/azure/install-azure-cli

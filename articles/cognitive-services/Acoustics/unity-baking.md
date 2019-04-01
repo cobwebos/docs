@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: acoustics
 ms.topic: tutorial
-ms.date: 08/17/2018
+ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: cb5ad8e4ff3d5a28fa38c7e8972e7e3e69d2762d
-ms.sourcegitcommit: f68b0e128f0478444740172f54e92b453df696be
+ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
+ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58136904"
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58309634"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>项目音响效果 Unity 烘焙教程
 本教程介绍了在 Unity 中使用项目音响效果进行音效烘焙。
@@ -28,7 +28,7 @@ ms.locfileid: "58136904"
 ## <a name="open-the-project-acoustics-bake-window"></a>打开项目音响效果烘焙窗口
 选择“Window”，再从 Unity 菜单中选择“音效”：
 
-![打开“音效”窗口](media/window-acoustics.png)
+![Unity 编辑器的屏幕截图，突出显示了“音效”窗口菜单选项](media/window-acoustics.png)
 
 ## <a name="create-a-navigation-mesh"></a>创建导航网格
 项目音响效果使用一个导航网格来放置用于模拟的侦听器探测点。 你可使用 Unity 的[导航网格工作流](https://docs.unity3d.com/Manual/nav-BuildingNavMesh.html)，或使用其他 3D 模型包来自行设计网格。 
@@ -68,15 +68,15 @@ ms.locfileid: "58136904"
 
 如果场景中未选择任何内容，则“对象”选项卡将如下图所示：
 
-![“对象”选项卡 无选定内容](media/objects-tab-no-selection-detail.png)
+![“音效对象”选项卡的屏幕截图，没有选择任何项](media/objects-tab-no-selection-detail.png)
 
 如果选择了场景或层次结构窗口中的某些对象，将如下图所示：
 
-![“对象”选项卡 无选定内容](media/objects-tab-selection-detail.png)
+![“音效对象”选项卡的屏幕截图，显示了所选项](media/objects-tab-selection-detail.png)
 
 如果部分对象已标记，部分未标记，相应的复选框则显示“混合”值：
 
-![混合值复选框](media/mixed-object-selection-detail.png)
+![“音效对象”选项卡的屏幕截图，突出显示了混合选择图标](media/mixed-object-selection-detail.png)
 
 单击复选框可强制标记所有对象，再次单击可取消标记所有对象。
 
@@ -89,10 +89,10 @@ ms.locfileid: "58136904"
 
 房间中给定材料的混响时间与其吸收系数成反比，并且大多数材料的吸收系数值介于 0.01 到 0.20 之间。 如果材料的吸收系数超出此范围，则其吸收性很强。
 
-![混响时间关系图](media/reverb-time-graph.png)
+![此图显示混响时间与吸收系数的负相关性](media/reverb-time-graph.png)
 
 ### <a name="for-reference-parts-of-the-materials-tab"></a>供参考：“材料”选项卡的控件部件
-![“材料”选项卡详细信息](media/materials-tab-detail.png)
+![Unity 中“音效材料”选项卡的屏幕截图](media/materials-tab-detail.png)
 
 1. “材料”选项卡按钮，用于打开此页面。
 2. 有关使用此页面需要执行的操作的简短说明。
@@ -117,23 +117,23 @@ ms.locfileid: "58136904"
 ### <a name="review-voxel-and-probe-placement"></a>检查体素和探针布置情况
 预览体素数据和探测点位置，确保已准备好烘焙场景。 如果导航网格不完整或者音效几何体缺乏或多余，则通常很快就能在预览中呈现。 可使用 Gizmos 菜单启用或禁用体素和探测定位：
 
-![Gizmos 菜单](media/gizmos-menu.png)
+![Unity 中 Gizmos 菜单的屏幕截图](media/gizmos-menu.png)
 
 包含音效几何体的体素显示为绿色立方体。 请探索你的场景并验证应为几何体的所有内容是否都有体素。 场景照相机必须在对象 5 米范围内，以便体素显示。
 
 如果比较所创建的体素在低分辨率和高分辨率下的效果，你将看到低分辨率的体素是高分辨率的两倍大。
 
-![体素预览](media/voxel-cubes-preview.png)
+![Unity 编辑器中低分辨率体素预览的屏幕截图](media/voxel-cubes-preview.png)
 
 在运行时，模拟结果插入到侦听器探测点位置之间。 请检查播放器应在场景中遍历的任何位置附近是否有探测点。
 
-![探测预览](media/probes-preview.png)
+![Unity 编辑器中探测预览的屏幕截图](media/probes-preview.png)
 
 ### <a name="take-care-with-scene-renames"></a>场景重命名时要小心
 场景名称用于连接场景和存储探测点放置和体素化的文件。 如果在计算探测点后重命名场景，材料的分配和放置数据将丢失，应重新运行。
 
 ### <a name="for-reference-parts-of-the-probes-tab"></a>供参考：“探测”选项卡的控件部件
-![“探测”选项卡详细信息](media/probes-tab-detail.png)
+![Unity 中“音效探测”选项卡的屏幕截图](media/probes-tab-detail.png)
 
 1. “探测”选项卡按钮，用于打开此页面
 2. 有关需要使用此页面执行的操作的简短说明
@@ -152,22 +152,22 @@ ms.locfileid: "58136904"
 
 * 低分辨率的波长是高分辨率的两倍，因此体素是后者的两倍大。
 * 模拟时间与体素大小直接相关，因此低分辨率烘焙的速度约为高分辨率烘焙的 16 倍。
-* 不能模拟小于体素大小的传送门（例如门或窗户）。 低分辨率设置可能导致不模拟其中一些较小的传送门，因此它们在运行时不传播声音。 通过查看体素可确定是否发生该情况。
+* 不能模拟小于体素大小的门户（例如门或窗户）。 低分辨率设置可能导致不模拟其中一些较小的传送门，因此它们在运行时不传播声音。 通过查看体素可确定是否发生该情况。
 * 更低的模拟频率将减少角和边周围的衍射。
 * 无法在“已填充”体素内找到声源，因为该体素包含几何体，这将导致没有声音。 而且，更难找到声源，因此它们不存在于与使用高分辨率设置时相比更大的低分辨率体素中。
-* 如下所示，更大的体素将更多地挤入传送门。 第一张图像是使用低分辨率创建的，而第二张是使用高分辨率的同一门口。 如红色标记所示，更少体素挤入使用高分辨率设置的门口。 蓝色线条是几何体定义的门廊，而红色线条是体素大小定义的有效声学传送门。 这种侵入如何在给定的情况下播放出来完全取决于体素与传送门几何体的一致程度，后者由场景中对象的大小和位置决定。
+* 如下所示，更大的体素将更多地挤入门户。 第一张图像是使用低分辨率创建的，而第二张是使用高分辨率的同一门口。 如红色标记所示，更少体素挤入使用高分辨率设置的门口。 蓝色线条是几何体定义的门廊，而红色线条是体素大小定义的有效声学门户。 这种侵入如何在给定的情况下播放出来完全取决于体素与门户几何体的一致程度，后者由场景中对象的大小和位置决定。
 
-![低分辨率门口](media/coarse-voxel-doorway.png)
+![门廊中低分辨率体素的屏幕截图](media/coarse-voxel-doorway.png)
 
-![高分辨率门口](media/fine-voxel-doorway.png)
+![门廊中高分辨率体素的屏幕截图](media/fine-voxel-doorway.png)
 
 ## <a name="bake-your-scene-using-azure-batch"></a>使用 Azure Batch 烘焙场景
 可借助 Azure Batch 服务使用云端计算群集来烘焙场景。 项目音响效果 Unity 插件会直接连接到 Azure Batch，为每个烘焙实例化、管理和关闭一个 Azure Batch 群集。 在“烘焙”选项卡上，输入你的 Azure 凭据，选择群集计算机类型和大小，然后单击“烘焙”。
 
 ### <a name="for-reference-parts-of-the-bake-tab"></a>供参考：“烘焙”选项卡的部件
-![“烘焙”选项卡详细信息](media/bake-tab-details.png)
+![Unity 中“音效烘焙”选项卡的屏幕截图](media/bake-tab-details.png)
 
-1. “烘焙”选项卡，按钮用于打开此页面。
+1. “制作”选项卡，按钮用于打开此页面。
 2. 有关要在此页上所执行操作的简短说明。
 3. 创建 Azure 帐户后，用于输入 Azure 凭据的字段。 有关详细信息，请参阅[创建 Azure Batch 帐户](create-azure-account.md)。
 4. 音效工具集的 Docker 图像标记。
@@ -209,8 +209,8 @@ Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关�
 ### <a name="setup-docker"></a>安装 Docker
 在电脑上安装并配置 Docker 将处理模拟 -
 1. 安装 [Docker 工具集](https://www.docker.com/products/docker-desktop)。
-2. 启动 Docker 设置、导航到“高级”选项，再将资源配置为至少具有 8 GB RAM。 可向 Docker 分配的 CPU 越多，制作完成的速度就越快。 ![示例 Docker 设置](media/docker-settings.png)
-3. 导航到“共享驱动器”并启用用于处理的驱动器共享。![DockerDriveSharing](media/docker-shared-drives.png)
+2. 启动 Docker 设置、导航到“高级”选项，再将资源配置为至少具有 8 GB RAM。 可向 Docker 分配的 CPU 越多，制作完成的速度就越快。 ![示例 Docker 设置的屏幕截图](media/docker-settings.png)
+3. 导航到“共享驱动器”并启用用于处理的驱动器共享。![Docker 共享驱动器选项的屏幕截图](media/docker-shared-drives.png)
 
 ### <a name="run-local-bake"></a>运行本地制作
 1. 单击“烘焙”选项卡上的“准备本地烘焙”按钮，再选择要保存输入文件和执行脚本的文件夹。 然后，通过将该文件夹复制到该计算机，即可在任何计算机上运行制作，只要该计算机满足最低硬件要求并安装了 Docker。
@@ -234,11 +234,11 @@ Azure 凭据安全地存储在本地计算机上，并与 Unity 编辑器相关�
 ## <a name="set-up-the-acoustics-lookup-table"></a>设置音效查找表
 将项目音响效果预制件从项目面板拖放到场景中：
 
-![音效预设](media/acoustics-prefab.png)
+![Unity 中音效预设的屏幕截图](media/acoustics-prefab.png)
 
 单击 ProjectAcoustics 游戏对象，然后转到其检查器面板。 通过将制做结果拖放到音效管理器脚本或单击文本框旁边的圆形按钮，指定制作结果的位置（Assets/AcousticsData 中的 .ACE 文件）。
 
-![音效管理器](media/acoustics-manager.png)  
+![Unity 中音效管理器预设的屏幕截图](media/acoustics-manager.png)  
 
 ## <a name="next-steps"></a>后续步骤
 * 了解 [Unity 设计控件](unity-workflow.md)

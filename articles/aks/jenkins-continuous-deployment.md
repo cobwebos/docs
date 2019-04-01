@@ -3,16 +3,16 @@ title: 教程 - 使用 Jenkins 从 GitHub 部署到 Azure Kubernetes 服务 (AKS
 description: 设置 Jenkins 以便从 GitHub 持续集成 (CI) 和持续部署 (CD) 到适用于 Java Web 应用的 Azure Kubernetes 服务 (AKS)
 services: container-service
 ms.service: container-service
-author: iainfoulds
-ms.author: iainfou
+author: zr-msft
+ms.author: zarhoads
 ms.topic: article
 ms.date: 01/09/2019
-ms.openlocfilehash: 470ba6df76741dd5c9e9eed055cd7848d341082f
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: 703aa081c8acf41f9206e2b0ccff45571367d2e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54188447"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756080"
 ---
 # <a name="tutorial-deploy-from-github-to-azure-kubernetes-service-aks-with-jenkins-continuous-integration-and-deployment"></a>教程：使用 Jenkins 持续集成和部署从 GitHub 部署到 Azure Kubernetes 服务 (AKS)
 
@@ -27,7 +27,7 @@ ms.locfileid: "54188447"
 > * 创建用于自动执行生成操作的 Jenkins 生成作业和 GitHub Webhook。
 > * 测试 CI/CD 管道，基于 GitHub 代码提交来更新 AKS 中的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本教程，需要准备好以下各项：
 
@@ -227,15 +227,15 @@ az role assignment create --assignee 626dd8ea-042d-4043-a8df-4ef56273670f --role
 在 Jenkins 门户主页的左侧，选择“新建项”：
 
 1. 输入“azure-vote”作为作业名称。 依次选择“自由风格项目”和“确定”
-1. 在“常规”部分下面，选择“GitHub”项目并输入分叉的存储库的 URL，例如 *https://github.com/\<your-github-account\>/azure-voting-app-redis*
-1. 在“源代码管理”部分下面，选择“Git”并输入分叉的存储库 *.git* 的 URL，例如 *https://github.com/\<your-github-account\>/azure-voting-app-redis.git*
+1. 下**常规**部分中，选择**GitHub 项目**并输入分叉的存储库的 URL，如*https:\//github.com/\<-github-帐户\>/azure-voting-app-redis*
+1. 下**源代码管理**部分中，选择**Git**，输入分叉的存储库 *.git* URL，如*https:\//github.com/\<your github 帐户\>/azure-voting-app-redis.git*
 
 1. 在“生成触发器”部分下面，选择“用于 GITscm 轮询的 GitHub 挂钩触发器”
 1. 在“生成环境”下，选择“使用机密文本或文件”
 1. 在“绑定”下，依次选择“添加” > “用户名和密码(已分隔)”
-    - 在“用户名变量”中输入 `ACR_ID`，并在“密码变量”中输入 `ACR_PASSWORD`
+   - 在“用户名变量”中输入 `ACR_ID`，并在“密码变量”中输入 `ACR_PASSWORD`
 
-    ![Jenkins 绑定](media/aks-jenkins/bindings.png)
+     ![Jenkins 绑定](media/aks-jenkins/bindings.png)
 
 1. 选择添加类型为“执行 shell”的“生成步骤”，并使用以下文本。 此脚本将生成新的容器映像，并将其推送到 ACR 注册表。
 

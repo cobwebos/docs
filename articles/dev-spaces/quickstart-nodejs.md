@@ -1,191 +1,213 @@
 ---
-title: 在云中创建 Kubernetes 开发空间
+title: 使用 Azure Dev Spaces 在 Kubernetes 上进行 Node.js 开发
 titleSuffix: Azure Dev Spaces
 author: zr-msft
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
+ms.subservice: azds-kubernetes
 ms.author: zarhoads
-ms.date: 09/26/2018
+ms.date: 03/22/2019
 ms.topic: quickstart
-description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
-keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 8da401b450438e1640901f26be88620ae8506860
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+description: 在 Azure 中使用容器、微服务和 Node.js 快速进行 Kubernetes 开发
+keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
+manager: jeconnoc
+ms.openlocfilehash: b95090cf59f0ee84e3a81bf87631df54826c050e
+ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903277"
+ms.lasthandoff: 03/25/2019
+ms.locfileid: "58418561"
 ---
-# <a name="quickstart-create-a-kubernetes-dev-space-with-azure-dev-spaces-nodejs"></a>快速入门：使用 Azure Dev Spaces (Node.js) 创建 Kubernetes dev 空间
+# <a name="quickstart-develop-with-nodejs-on-kubernetes-using-azure-dev-spaces"></a>快速入门：使用 Azure Dev Spaces 在 Kubernetes 上进行 Node.js 开发
 
 本指南介绍如何：
 
 - 使用 Azure 中的托管 Kubernetes 群集设置 Azure Dev Spaces。
-- 在容器中使用 VS Code 和命令行以迭代方式开发代码。
-- 调试群集中运行的代码。
-
-> [!Note]
-> **如果你在任何时候遇到问题**，请参见[故障排除](troubleshooting.md)部分，或在此页上发表评论。 也可以试着学习更详细的[教程](get-started-nodejs.md)。
+- 在容器中使用 Visual Studio Code 和命令行以迭代方式开发代码。
+- 通过 Visual Studio Code 调试开发空间中的代码。
 
 ## <a name="prerequisites"></a>先决条件
 
 - Azure 订阅。 如果没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free)。
-- [Visual Studio Code](https://code.visualstudio.com/download)。
-- [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) 版本 2.0.43 或更高版本。
-- 在 EastUS、EastUS2、CentralUS、WestUS2、WestEurope、SoutheastAsia、CanadaCentral 或 CanadaEast 区域中运行 Kubernetes 1.9.6 或更高版本的 Kubernetes 群集。
+- [已安装 Visual Studio Code](https://code.visualstudio.com/download)。
+- 已安装适用于 Visual Studio Code 的 [Azure Dev Spaces](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) 扩展。
+- [已安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
-    ```cmd
-    az group create --name MyResourceGroup --location <region>
-    az aks create -g MyResourceGroup -n myAKS --location <region> --generate-ssh-keys
-    ```
+## <a name="create-an-azure-kubernetes-service-cluster"></a>创建 Azure Kubernetes 服务群集
 
-## <a name="set-up-azure-dev-spaces"></a>设置 Azure Dev Spaces
+需要在[支持的区域](https://docs.microsoft.com/azure/dev-spaces/#a-rapid,-iterative-kubernetes-development-experience-for-teams)中创建 AKS 群集。 以下命令创建名为 *MyResourceGroup* 的资源组，以及名为 *MyAKS* 的 AKS 群集。
 
-Azure CLI 和 Azure Dev Spaces 扩展可以在 Windows、Mac 或 Linux 计算机上安装并运行。 对于 Linux，支持以下发行版：Ubuntu（18.04、16.04 和 14.04）、Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2 和 SLES 12。
+```cmd
+az group create --name MyResourceGroup --location eastus
+az aks create -g MyResourceGroup -n MyAKS --location eastus --node-count 1 --generate-ssh-keys
+```
 
-请按以下步骤设置 Azure Dev Spaces：
+## <a name="enable-azure-dev-spaces-on-your-aks-cluster"></a>在 AKS 群集上启用 Azure Dev Spaces
 
-1. 在 AKS 群集上设置 Dev Spaces：`az aks use-dev-spaces -g MyResourceGroup -n MyAKS`
-1. 下载适用于 VS Code 的 [Azure Dev Spaces 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 在扩展的“市场”页上单击“安装”一次，然后再在 VS Code 中单击一次。
+使用 `use-dev-spaces` 命令在 AKS 群集上启用 Dev Spaces，然后按提示操作。 以下命令在 *MyResourceGroup* 组中的 *MyAKS* 群集上启用 Dev Spaces，并创建一个默认开发空间。
+
+```cmd
+$ az aks use-dev-spaces -g MyResourceGroup -n MyAKS
+
+'An Azure Dev Spaces Controller' will be created that targets resource 'MyAKS' in resource group 'MyResourceGroup'. Continue? (y/N): y
+
+Creating and selecting Azure Dev Spaces Controller 'MyAKS' in resource group 'MyResourceGroup' that targets resource 'MyAKS' in resource group 'MyResourceGroup'...2m 24s
+
+Select a dev space or Kubernetes namespace to use as a dev space.
+ [1] default
+Type a number or a new name: 1
+
+Kubernetes namespace 'default' will be configured as a dev space. This will enable Azure Dev Spaces instrumentation for new workloads in the namespace. Continue? (Y/n): Y
+
+Configuring and selecting dev space 'default'...3s
+
+Managed Kubernetes cluster 'MyAKS' in resource group 'MyResourceGroup' is ready for development in dev space 'default'. Type `azds prep` to prepare a source directory for use with Azure Dev Spaces and `azds up` to run.
+```
+
+## <a name="get-sample-application-code"></a>获取示例应用程序代码
+
+本文使用 [Azure Dev Spaces 示例应用程序](https://github.com/Azure/dev-spaces)来演示 Azure Dev Spaces 的用法。
+
+克隆 GitHub 中的应用程序，并导航到 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录：
+
+```cmd
+git clone https://github.com/Azure/dev-spaces
+cd dev-spaces/samples/nodejs/getting-started/webfrontend
+```
+
+## <a name="prepare-the-application"></a>准备应用程序
+
+使用 `azds prep` 命令生成 Docker 和 Helm 图表资产，以便在 Kubernetes 中运行应用程序：
+
+```cmd
+azds prep --public
+```
+
+必须在 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录下运行 `prep` 命令才能正确生成 Docker 和 Helm 图表资产。
 
 ## <a name="build-and-run-code-in-kubernetes"></a>在 Kubernetes 中生成并运行代码
 
-1. 从 GitHub 下载示例代码：[https://github.com/Azure/dev-spaces](https://github.com/Azure/dev-spaces) 
-1. 将目录切换到 webfrontend 文件夹：`cd dev-spaces/samples/nodejs/getting-started/webfrontend`
-1. 生成 Docker 和 Helm 图表资产：`azds prep --public`
-1. 在 AKS 中生成并运行代码。 在终端窗口中，从 **webfrontend 文件夹**中运行以下命令：`azds up`
-1. 扫描控制台输出以获取有关由 `up` 命令创建的 URL 的信息。 它的形式如下： 
+使用 `azds up` 命令在 AKS 中生成并运行代码：
 
-   ```output
-   (pending registration) Service 'webfrontend' port 'http' will be available at <url>
-   Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
-   ```
+```cmd
+$ azds up
+Using dev space 'default' with target 'MyAKS'
+Synchronizing files...2s
+Installing Helm chart...2s
+Waiting for container image build...2m 25s
+Building container image...
+Step 1/8 : FROM node
+Step 2/8 : ENV PORT 80
+Step 3/8 : EXPOSE 80
+Step 4/8 : WORKDIR /app
+Step 5/8 : COPY package.json .
+Step 6/8 : RUN npm install
+Step 7/8 : COPY . .
+Step 8/8 : CMD ["npm", "start"]
+Built container image in 6m 17s
+Waiting for container...13s
+Service 'webfrontend' port 'http' is available at http://webfrontend.1234567890abcdef1234.eus.azds.io/
+Service 'webfrontend' port 80 (http) is available at http://localhost:54256
+...
+```
 
-   在浏览器窗口中打开此 URL，你应看到 Web 应用加载。 在容器执行时，`stdout` 和 `stderr` 输出将流式传输到终端窗口。
-   
-   > [!Note]
-   > 首次运行时，公共 DNS 可能要花费几分钟时间才能准备就绪。 如果公共 URL 无法解析，可以使用控制台输出中显示的替代 `http://localhost:<portnumber>` URL。 如果使用该 localhost URL，则容器看起来是在本地运行，但实际上是在 AKS 中运行。 为方便操作以及便于与本地计算机中的服务交互，Azure Dev Spaces 将与 Azure 中运行的容器建立临时的 SSH 隧道。 你可以返回，稍后在 DNS 记录准备就绪时再尝试公共 URL。
+打开 `azds up` 命令输出中显示的公共 URL，可以看到服务正在运行。 在此示例中，公共 URL 为 *http://webfrontend.1234567890abcdef1234.eus.azds.io/*。
 
-### <a name="update-a-content-file"></a>更新内容文件
-Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可以用来快速地以迭代方式查看所做的代码更改在云的 Kubernetes 环境中的效果。
+如果使用 *Ctrl+C* 停止 `azds up` 命令，服务将继续在 AKS 中运行，并且公共 URL 仍然可用。
 
-1. 找到 `./public/index.html` 文件，对 HTML 进行编辑。 例如，将页面的背景色更改为蓝色：
+## <a name="update-code"></a>更新代码
 
-    ```html
-    <body style="background-color: #95B9C7; margin-left:10px; margin-right:10px;">
-    ```
+若要部署服务的更新版本，可以更新项目中的任何文件，然后重新运行 `azds up` 命令。 例如：
 
-1. 保存文件。 稍后会在终端窗口中看到一条消息，指出正在运行的容器中的文件已更新。
-1. 转到浏览器并刷新页面。 此时会看到颜色更新。
-
-发生了什么情况？ 对内容文件（例如 HTML 和 CSS）所做的编辑不需要 Node.js 进程重启，因此活动的 `azds up` 命令会自动将任何修改的内容文件直接同步到 Azure 中正在运行的容器，方便你快速查看所做的内容编辑。
-
-### <a name="test-from-a-mobile-device"></a>从移动设备进行测试
-使用 webfrontend 的公共 URL 在移动设备上打开该 Web 应用。 你可能希望将该 URL 从桌面复制并发送到设备，以避免输入长长的地址。 当该 Web 应用在移动设备中加载时，你会注意到 UI 在小型设备上不能正确显示。
-
-若要修复此问题，可添加一个 `viewport` META 标记：
-1. 打开 `./public/index.html` 文件
-1. 在现有的 `head` 元素中添加 `viewport` META 标记：
-
-    ```html
-    <head>
-        <!-- Add this line -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-    </head>
-    ```
-
-1. 保存文件。
-1. 刷新设备的浏览器。 此时会看到 Web 应用正确地呈现。 
-
-此示例说明了某些问题只有在使用相应应用的设备上进行测试才会被发现。 使用 Azure Dev Spaces 可以快速迭代代码，并在目标设备上验证任何更改。
-
-### <a name="update-a-code-file"></a>更新代码文件
-更新服务器端代码文件需要的工作多一些，因为 Node.js 应用需重启。
-
-1. 在终端窗口中按 `Ctrl+C`（用于停止 `azds up`）。
-1. 打开名为 `server.js` 的代码文件，编辑服务的 hello 消息： 
-
+1. 如果 `azds up` 仍在运行，请按 *Ctrl+C*。
+1. 将 [`server.js`中的第 10 行](https://github.com/Azure/dev-spaces/blob/master/samples/nodejs/getting-started/webfrontend/server.js#L10)更新为：
+    
     ```javascript
-    res.send('Hello from webfrontend running in Azure!');
+        res.send('Hello from webfrontend in Azure');
     ```
 
-3. 保存文件。
-1. 在终端窗口中运行 `azds up`。 
+1. 保存所做更改。
+1. 重新运行 `azds up` 命令：
 
-这样会重新生成容器映像并重新部署 Helm 图表。 重新加载浏览器页面即可查看代码更改的效果。
+    ```cmd
+    $ azds up
+    Using dev space 'default' with target 'MyAKS'
+    Synchronizing files...1s
+    Installing Helm chart...3s
+    Waiting for container image build...
+    ...    
+    ```
 
-不过，还有一种更快的开发代码的方法，该方法在下一部分介绍。 
+1. 导航到正在运行的服务并观察所做的更改。
+1. 按 *Ctrl+C* 停止 `azds up` 命令。
 
-## <a name="debug-a-container-in-kubernetes"></a>在 Kubernetes 中调试容器
+## <a name="initialize-code-for-debugging-in-kubernetes-with-visual-studio-code"></a>使用 Visual Studio Code 初始化用于在 Kubernetes 中进行调试的代码
 
-在本部分中，将使用 VS Code 直接调试在 Azure 中运行的容器。 你还将学习如何实现更快的“编辑-运行-测试”循环。
+打开 Visual Studio Code，依次单击“文件”、“打开...”，导航到 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录，然后单击“打开”。
 
-![](./media/common/edit-refresh-see.png)
+现在，Visual Studio Code 中会打开 *webfrontend* 项目，这是使用 `azds up` 命令运行的同一个服务。 若要使用 Visual Studio Code 而不是直接使用 `azds up` 在 AKS 中调试此服务，需要准备好此项目，以使用 Visual Studio Code 来与开发空间通信。
 
-### <a name="initialize-debug-assets-with-the-vs-code-extension"></a>使用 VS Code 扩展初始化调试资产
-首先需要配置代码项目，以便 VS Code 与 Azure 中的开发空间进行通信。 Azure Dev Spaces 的 VS Code 扩展提供了一个帮助程序命令来设置调试配置。 
-
-打开**命令面板**（使用“视图”|“命令面板”菜单），并使用“自动完成”来键入并选择此命令：`Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
-
-这将在 `.vscode` 文件夹下为 Azure Dev Spaces 添加调试配置。 此命令不应与 `azds prep` 命令混淆，后者配置部署的项目。
+若要在 Visual Studio Code 中打开命令面板，请依次单击“视图”、“命令面板”。 开始键入 `Azure Dev Spaces` 并单击 `Azure Dev Spaces: Prepare configuration files for Azure Dev Spaces`。
 
 ![](./media/common/command-palette.png)
 
-### <a name="select-the-azds-debug-configuration"></a>选择 AZDS 调试配置
-1. 若要打开“调试”视图，请单击 VS Code 侧**活动栏**中的“调试”图标。
-1. 选择“启动程序(AZDS)”作为活动的调试配置。
+此命令会准备好项目，使之直接通过 Visual Studio Code 在 Azure Dev Spaces 中运行。 它还会在项目的根目录下生成包含调试配置的 *.vscode* 目录。
 
-![](media/get-started-node/debug-configuration-nodejs2.png)
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>通过 Visual Studio Code 在 Kubernetes 中生成并运行代码
+
+单击左侧的“调试”图标，然后单击顶部的“启动服务器(AZDS)”。
+
+![](media/get-started-node/debug-configuration-nodejs.png)
+
+此命令会以调试模式在 Azure Dev Spaces 中生成并运行服务。 底部的“终端”窗口会显示运行 Azure Dev Spaces 的服务的生成输出和 URL。 “调试控制台”会显示日志输出。
 
 > [!Note]
-> 如果在命令面板中看不到任何 Azure Dev Spaces 命令，请确保已安装 Azure Dev Spaces 的 VS Code 扩展。
+> 如果在“命令面板”中看不到任何 Azure Dev Spaces 命令，请确保已安装[适用于 Azure Dev Spaces 的 Visual Studio Code 扩展](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds)。 另请确认是否在 Visual Studio Code 中打开了 *dev-spaces/samples/nodejs/getting-started/webfrontend* 目录。
 
-### <a name="debug-the-container-in-kubernetes"></a>在 Kubernetes 中调试容器
-按 **F5** 在 Kubernetes 中调试代码！
+依次单击“调试”、“停止调试”以停止调试器。
 
-与 `up` 命令类似，代码会在开始调试后同步到开发空间，而容器则会在生成后部署到 Kubernetes。 这次调试器会附加到远程容器。
+## <a name="setting-and-using-breakpoints-for-debugging"></a>设置并使用用于调试的断点
 
-> [!Tip]
-> VS Code 状态栏会显示一个可点击的 URL。
+使用“启动服务器(AZDS)”启动服务。
 
-在服务器端的代码文件中设置一个断点，例如，在 `server.js` 的 `app.get('/api'...` 中设置断点。 刷新浏览器页面，或者按“再说一遍”按钮，然后即可按断点对代码进行单步调试。
+依次单击“视图”、“资源管理器”，导航回到“资源管理器”视图。 打开 `server.js` 并单击第 10 行中的某个位置，以将光标置于此处。 若要设置断点，请按 *F9*，或者依次单击“调试”、“切换断点”。
 
-可以不受限制地访问调试信息（例如调用堆栈、本地变量、异常信息等），就像在本地执行代码一样。
+在浏览器中打开服务，你会发现未显示任何消息。 返回 Visual Studio Code，将会看到，第 10 行已突出显示。 设置的断点在第 10 行处暂停了服务。 若要恢复服务，请按 *F5*，或者依次单击“调试”、“继续”。 返回浏览器，你会发现，现在显示了消息。
 
-### <a name="edit-code-and-refresh-the-debug-session"></a>编辑代码并刷新调试会话
-在调试器处于活动状态的情况下进行代码编辑，例如再次修改 hello 消息：
+在附加调试器的情况下在 Kubernetes 中运行服务时，你对调试信息（例如调用堆栈、局部变量和异常信息）拥有完全访问权限。
 
+将光标置于 `server.js` 中的第 10 行并按 *F9* 以删除断点。
+
+依次单击“调试”、“停止调试”以停止调试器。
+
+## <a name="update-code-from-visual-studio-code"></a>在 Visual Studio Code 中更新代码
+
+将调试模式更改为“附加到服务器(AZDS)”并启动服务：
+
+![](media/get-started-node/attach-nodejs.png)
+
+此命令在 Azure Dev Spaces 中生成并运行你的服务。 此外，它还会在服务的容器中启动 [nodemon](https://nodemon.io) 进程，并将 VS Code 附加到该进程。 如果源代码发生了更改，*nodemon* 进程允许自动重启，这样可以加速内部循环的开发，就如同在本地计算机上进行开发一样。
+
+启动服务后，使用浏览器导航到该服务并与之交互。
+
+服务正在运行时，请返回 VS Code 并更新 `server.js` 中的第 10 行。 例如：
 ```javascript
-app.get('/api', function (req, res) {
-    res.send('**** Hello from webfrontend running in Azure! ****');
-});
+    res.send('Hello from webfrontend in Azure while debugging!');
 ```
 
-保存文件，然后在“调试操作”窗格中单击“刷新”按钮。 
+保存文件并在浏览器中返回到你的服务。 与服务交互，你会发现已显示更新的消息。
 
-![](media/get-started-node/debug-action-refresh-nodejs.png)
+运行 *nodemon* 时，一旦检测到任何代码更改，Node 进程就会自动重启。 此自动重启进程类似于在本地计算机上编辑和重启服务，可以提供内部循环开发体验。
 
-Azure Dev Spaces 不会在每次进行代码编辑时都重新生成和重新部署新的容器映像（这通常需要很长时间），而是在两次调试会话期间重启 Node.js 进程，加快编辑/调试循环速度。
+## <a name="clean-up-your-azure-resources"></a>清理 Azure 资源
 
-刷新浏览器中的 Web 应用，或者按“再说一遍”按钮。 此时会看到自定义消息显示在 UI 中。
-
-### <a name="use-nodemon-to-develop-even-faster"></a>使用 NodeMon 加快开发速度
-
-示例 `webfrontend` 项目已配置为使用 [nodemon](https://nodemon.io/)，这是一种流行的工具，用于加速与 Azure Dev Spaces 完全兼容的 Node.js 开发。
-
-请尝试以下步骤：
-1. 停止 VS Code 调试器。
-1. 单击 VS Code 侧**活动栏**中的“调试”图标。 
-1. 选择“附加(AZDS)”作为活动的调试配置。
-1. 按 F5。
-
-在此配置中，容器配置为启动 *nodemon*。 进行服务器代码编辑时，*nodemon* 会自动重启 Node 进程，就像在本地开发一样。 
-1. 在 `server.js` 中再次编辑 hello 消息，然后保存文件。
-1. 刷新浏览器或单击“再说一遍”按钮即可看到更改生效！
-
-**现在，我们已掌握了一种快速迭代代码并直接在 Kubernetes 中进行调试的方法！**
+```cmd
+az group delete --name MyResourceGroup --yes --no-wait
+```
 
 ## <a name="next-steps"></a>后续步骤
+
+了解 Azure Dev Spaces 如何帮助开发跨多个容器的更复杂应用程序，以及如何通过在不同的空间中使用不同的代码版本或分支来简化协作式开发。
 
 > [!div class="nextstepaction"]
 > [使用多个容器和团队开发](multi-service-nodejs.md)

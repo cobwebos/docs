@@ -3,17 +3,17 @@ title: Azure 数据资源管理器数据引入
 description: 了解在 Azure 数据资源管理器中引入（加载）数据的不同方式
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 2/18/2019
-ms.openlocfilehash: c4db658db3d32905368390826e5531ca31525486
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e2dd67b7b8e7eaac1b823c044fe3d345ce7e8c7b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133121"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755778"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 

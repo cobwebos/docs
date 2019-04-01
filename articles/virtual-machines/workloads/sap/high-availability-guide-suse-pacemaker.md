@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: a2e03a548b403262dca7e7a76b84cc99661242c6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 51db372b288ce388f58ca0e7fdcb2e1b97e511de
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487358"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755724"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -84,7 +84,7 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
 
 在所有 **iSCSI 目标虚拟机**上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
 
-**nfs** 用于标识 NFS 群集，**ascsnw1** 用于标识 **NW1** 的 ASCS 群集，**dbnw1** 用于标识 **NW1** 的数据库群集，**nfs-0** 和 **nfs-1** 是 NFS 群集节点的主机名，**nw1-xscs-0** 和 **nw1-xscs-1** 是 **NW1** ASCS 群集节点的主机名，**nw1-db-0** 和 **nw1-db-1** 是数据库群集节点的主机名。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
+**` nfs`** 用于标识 NFS 群集**ascsnw1**用来标识的 ASCS 群集**NW1**， **dbnw1**用来标识的数据库群集**NW1**， **nfs 0**并**nfs 1** NFS 群集节点的主机名**nw1 xscs 0**和**nw1 xscs 1**的主机名**NW1** ASCS 群集节点，并**nw1-db-0**并**nw1-db-1**是群集节点的主机名的数据库。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ o- / ...........................................................................
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   创建 softdog 配置文件
+   创建` softdog`配置文件
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>
@@ -346,6 +346,18 @@ o- / ...........................................................................
    # Change/set the following settings
    vm.dirty_bytes = 629145600
    vm.dirty_background_bytes = 314572800
+   </code></pre>
+
+1. **[A]** Configure cloud-netconfig-azure for HA Cluster
+
+   若要防止云网络插件删除 （Pacemaker 必须控制 VIP 分配） 的虚拟 IP 地址如下所示更改网络接口的配置文件。 有关详细信息请参阅[SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633)。 
+
+   <pre><code># Edit the configuration file
+   sudo vi /etc/sysconfig/network/ifcfg-eth0 
+   
+   # Change CLOUD_NETCONFIG_MANAGE
+   # CLOUD_NETCONFIG_MANAGE="yes"
+   CLOUD_NETCONFIG_MANAGE="no"
    </code></pre>
 
 1. [1] 启用 SSH 访问

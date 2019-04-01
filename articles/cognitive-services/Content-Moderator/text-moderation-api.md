@@ -9,12 +9,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: sajagtap
-ms.openlocfilehash: 8ca6c73d6ccdab3acb4ebb18af9b4aa82683e026
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5a1007f2408b48c96f5eeaf585b94c8caa7ceb45
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864292"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757760"
 ---
 # <a name="learn-text-moderation-concepts"></a>了解文本审查概念
 
@@ -26,7 +26,7 @@ ms.locfileid: "55864292"
 
 - 不敬词：根据多种语言的内置不敬字词列表执行基于字词的匹配
 - 分类：在机器的辅助下分类成三个类别
-- 个人身份信息 (PII)
+- 个人数据
 - 自动更正的文本
 - 原始文本
 - 语言
@@ -75,7 +75,7 @@ ms.locfileid: "55864292"
 - `Score` 介于 0 和 1 之间。 评分越高，模型预测类别可能适用的可能性越高。 此功能依赖于统计模型，而不是人工编码结果。 我们建议你对自己的内容进行测试，以确定每个类别是否符合要求。
 - `ReviewRecommended` 为 true 或 false，具体情况取决于内部评分阈值。 客户应评估是使用该值，还是根据他们的内容策略确定自定义阈值。
 
-## <a name="personally-identifiable-information-pii"></a>个人身份信息 (PII)
+## <a name="personal-data"></a>个人数据
 
 PII 功能检测可能存在以下信息：
 

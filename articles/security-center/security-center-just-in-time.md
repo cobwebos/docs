@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/18/2019
+ms.date: 3/28/2019
 ms.author: monhaber
-ms.openlocfilehash: c7cc5784caf8a83a50536a8edc69ea76ea8589d8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 66a7171aff7b9bab5f320df1d71e9cab4ce0477d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199828"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758302"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>使用实时功能管理虚拟机访问
 
@@ -162,9 +162,13 @@ ms.locfileid: "58199828"
 
   ![jit 提示](./media/security-center-just-in-time/jit-prompt.png)
 
-- 如果在 VM 上配置了 JIT 策略，则可以单击“请求访问”，以便根据 VM 的 JIT 策略集进行访问。
+- 如果在 VM 上配置了 JIT 策略，则可以单击“请求访问”，以便根据 VM 的 JIT 策略集进行访问。 使用以下默认参数请求访问：
+    - **源 IP**:Any （*） （不能更改）
+    - **时间范围**:3 个小时 （不能更改）
+    - **端口号**RDP 端口 3389 的 Windows / Linux 的端口 22 (您可以更改中的端口号**连接到虚拟机**对话框。)
 
-  ![jit 请求访问](./media/security-center-just-in-time/jit-request-access.png)
+
+  >![jit 请求访问](./media/security-center-just-in-time/jit-request-access.png)
 
 ## <a name="auditing-jit-access-activity"></a>审核 JIT 访问活动
 

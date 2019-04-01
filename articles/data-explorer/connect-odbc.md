@@ -3,17 +3,17 @@ title: 连接到 Azure 数据资源管理器中使用 ODBC
 description: 在本操作指南，您将学习如何设置 ODBC 连接到 Azure 数据资源管理器，然后使用该连接以使用 Tableau 直观显示数据。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
-ms.openlocfilehash: ad00ad247b047d4acf97eb5d0e96229949181ecf
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0ec1c2f4fc412ca6c81e179d0ad22f781b896357
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740173"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757624"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>连接到 Azure 数据资源管理器中使用 ODBC
 

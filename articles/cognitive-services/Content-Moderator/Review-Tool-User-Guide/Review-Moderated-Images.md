@@ -1,5 +1,5 @@
 ---
-title: 审阅带标记的图像 - 内容审查器
+title: 使用内容通过审阅工具-内容审查器评审
 titlesuffix: Azure Cognitive Services
 description: 了解“审阅”工具如何允许人工审查者审阅 Web 门户中的图像。
 services: cognitive-services
@@ -8,39 +8,52 @@ manager: mikemcca
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 03/15/2019
 ms.author: sajagtap
-ms.openlocfilehash: e096e65e3016f33361f772a75ab8f71603970a5f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a482ecf4a0d321525ab7e392695d2c4c0eebeadc
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096599"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758490"
 ---
-# <a name="let-human-reviewers-review-images"></a>允许人工审阅者审阅图像
+# <a name="create-human-reviews"></a>创建人工审阅
 
-注册内容审核并获得订阅密钥后，你可以尝试使用图像审阅功能。
+在本指南中，您将了解如何设置[评审](../review-api.md#reviews)评审工具网站上。 评审存储和显示审阅人，若要评估的内容。 版主可以更改标签应用和应用根据其自己自定义标记。 当用户完成评审时，将结果发送到指定的回调终结点，并从站点中删除的内容。
 
-1. 打开[人工审阅工具](https://contentmoderator.cognitive.microsoft.com/)并登录。 
-2. 单击“试用”选项卡，然后上传一些图像以进行审阅。
-3. 单击“审阅”选项卡，然后选择“图像”。
+## <a name="prerequisites"></a>必备组件
 
-   ![显示审阅工具的 Chrome 浏览器，其中突出显示了“审阅图像”选项](images/review-images-1.png)
+- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
 
-   图像通过由审阅工具分配的任何标签显示。 查看这些图片时，团队中的其他审阅者无法使用这些图像。
+## <a name="image-reviews"></a>图像评审
 
-4. 移动“要显示的审阅图像”滑块 (1) 以调整屏幕上显示的图像数量。 单击已标记或未标记的按钮 (2) 以相应地对图像进行排序。 单击标记 (3) 以打开或关闭它。
+1. 转到[审阅工具](https://contentmoderator.cognitive.microsoft.com/)，选择**尝试**选项卡，并上传一些图像以查看。
+1. 一旦已上传的图像已完成处理，请转到**评审**选项卡并选择**映像**。
 
-   ![Chrome 浏览器显示带有标记图片的审阅工具以供审阅](images/review-images-2.png)
- 
-5. 要查看有关图像的详细信息，请单击缩略图上的省略号，然后单击“查看详细信息”选项。 要将图像分配给子团队，请选择“移至”选项。
- 
-   ![突出显示“查看详细信息”选项的图像](images/review-images-3.png)
+    ![显示审阅工具的 Chrome 浏览器，其中突出显示了“审阅图像”选项](images/review-images-1.png)
 
-6. 浏览详细信息页面上的图像审阅信息。
+    图像显示与已分配由自动审查过程任何标签。 通过审阅工具已提交的映像不向其他审阅者可见。
 
-   ![在单独窗格中列出审阅详细信息的图像](images/review-images-4.png)
- 
-7. 根据需要审核并更新标记分配后，单击“下一步”即可提交评论。
+1. （可选） 移动**评审可显示**滑块 (1)，可以调整在屏幕显示的图像数量。 单击**标记**或**未标记**要相应地进行排序的图像的按钮 (2)。 单击标记面板 (3) 来切换打开或关闭它。
 
-提交后，你有大约五秒的时间来单击“上一步”按钮返回上一屏幕并再次查看图像。 之后，图像不再位于“提交”队列中，并且“上一步”按钮不再可用。
+    ![Chrome 浏览器显示带有标记图片的审阅工具以供审阅](images/review-images-2.png)
+
+1. 若要查看有关映像的详细信息，请单击缩略图，然后选择省略号**查看详细信息**。 可以将图像分配给具有子**转为**选项 (请参阅[团队](./configure.md#manage-team-and-subteams)部分，了解有关子团队的详细信息)。
+
+    ![突出显示“查看详细信息”选项的图像](images/review-images-3.png)
+
+1. 浏览详细信息页面上的图像审阅信息。
+
+    ![在单独窗格中列出审阅详细信息的图像](images/review-images-4.png)
+
+1. 根据需要审核并更新标记分配后，单击“下一步”即可提交评论。 提交后，你有大约五秒的时间来单击“上一步”按钮返回上一屏幕并再次查看图像。 之后，图像不再位于“提交”队列中，并且“上一步”按钮不再可用。
+
+## <a name="text-reviews"></a>文本评审
+
+文本评审类似于图像评审。 而不是上传内容，您只需编写或粘贴文本 （最多 1024 个字符）。 然后，内容审查器分析文本，并应用 （除了其他审核信息，例如猥亵语言和个人数据） 的标记。 文本审查中您可以切换应用的标记和/或之前提交评审应用自定义标记。
+
+![评审工具的屏幕截图，显示 Chrome 浏览器窗口中的已标记文字](../images/reviewresults_text.png)
+
+## <a name="next-steps"></a>后续步骤
+
+在本指南中，您学习了如何设置和使用从内容审查器评审[审阅工具](https://contentmoderator.cognitive.microsoft.com)。 接下来，请参阅[REST API 指南](../try-review-api-review.md)或[.NET SDK 指南](../moderation-reviews-quickstart-dotnet.md)若要了解如何以编程方式创建评审。

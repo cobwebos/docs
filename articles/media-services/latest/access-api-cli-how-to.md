@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 01/28/2019
 ms.author: juliako
-ms.openlocfilehash: 43f9443e4b5cd700500bd9803f2737ed9e0aa633
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.openlocfilehash: 257fe51cae245708816cd9a7bb0c33b6edf5aa05
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55223151"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756005"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>使用 Azure CLI 访问 Azure 媒体服务 API
  
@@ -30,7 +30,7 @@ ms.locfileid: "55223151"
 
 本文介绍如何使用 Azure CLI 创建 Azure AD 应用程序和服务主体，以及获取访问 Azure 媒体服务资源所需的值。
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 [创建媒体服务帐户](create-account-cli-how-to.md)。
 
@@ -40,10 +40,19 @@ ms.locfileid: "55223151"
 
 [!INCLUDE [media-services-v3-cli-access-api-include](../../../includes/media-services-v3-cli-access-api-include.md)]
 
-## <a name="next-steps"></a>后续步骤
-
-[流式传输文件](stream-files-dotnet-quickstart.md)
-
 ## <a name="see-also"></a>另请参阅
+
+- [缩放媒体保留单位 - CLI](media-reserved-units-cli-how-to.md)
+- [创建媒体服务帐户 - CLI](./scripts/cli-create-account.md) 
+- [重置帐户凭据 - CLI](./scripts/cli-reset-account-credentials.md)
+- [创建资产 - CLI](./scripts/cli-create-asset.md)
+- [上传文件 - CLI](./scripts/cli-upload-file-asset.md)
+- [创建转换 - CLI](./scripts/cli-create-transform.md)
+- [创建作业 - CLI](./scripts/cli-create-jobs.md)
+- [创建 EventGrid - CLI](./scripts/cli-create-event-grid.md)
+- [发布资产 - CLI](./scripts/cli-publish-asset.md)
+- [筛选器 - CLI](filters-dynamic-manifest-cli-howto.md)
+
+## <a name="next-steps"></a>后续步骤
 
 [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)

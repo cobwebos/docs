@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
-ms.openlocfilehash: 5fe66634d4f95ba84d13a3d355f28afbedf0f7f0
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: a9de15530981e14e664df605cb3274c9e754ef0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58012652"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755484"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-rest"></a>如何使用 REST 编码自定义转换
+# <a name="how-to-encode-with-a-custom-transform---rest"></a>如何使用自定义转换的其余部分进行编码
 
 使用 Azure 媒体服务编码时，你可以快速入门中所示基于行业最佳实践，建议使用内置预设之一[文件进行流式处理](stream-files-tutorial-with-rest.md#create-a-transform)教程。 此外可以构建自定义预设，以满足特定的方案或设备要求。
 

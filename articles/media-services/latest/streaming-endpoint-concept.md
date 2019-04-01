@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: eb7f368100269c4e47076bb6b78bafc23e7a6089
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845597"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757182"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
@@ -33,14 +33,34 @@ ms.locfileid: "57845597"
 
 ## <a name="types"></a>类型  
 
-有两个**流式处理终结点**类型：标准和高级。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
+有两种类型的**流式处理终结点**：标准和高级。 类型由用户为流式处理终结点分配的缩放单元（`scaleUnits`）数定义。 
 
 下表描述了类型：  
 
 |Type|缩放单元|描述|
 |--------|--------|--------|  
-|**标准流式处理终结点**（推荐）|0|标准类型是适用于几乎所有流式处理环境和受众规模的推荐选项。 标准类型会自动缩放出站带宽。 <br/>媒体服务提供具有极其苛刻的要求的客户**高级**流式处理终结点，可以使用横向扩展的最大的 internet 访问者的容量。 如果您希望大型受众需求和并发查看器，请联系我们在 amsstreaming\@有关指导您是否需要将移动到 microsoft.com**高级**类型。 |
+|**标准流式处理终结点**（推荐）|0|默认的流式处理终结点是**标准**类型，但可以更改为高级类型。<br/> 标准类型是几乎所有流式处理方案和受众规模的建议的选项。 标准类型会自动缩放出站带宽。 从这种流式处理终结点的吞吐量为最多 600 Mbps。 在 CDN 中缓存的视频片段不使用流式处理终结点的带宽。<br/>对于要求极高的客户，媒体服务提供高级流式处理终结点，可用于横向扩展适用于最大规模的 Internet 受众的容量。 如果您希望大型受众需求和并发查看器，请联系我们在 amsstreaming\@有关指导您是否需要将移动到 microsoft.com**高级**类型。 |
 |**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
+ 
+## <a name="comparing-streaming-types"></a>比较流式处理类型
+
+### <a name="features"></a>功能
+
+Feature|标准|高级
+---|---|---
+前 15 天免费| 是 |否
+Throughput |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU) 200 Mbps。 使用 CDN 进行缩放。
+SLA | 99.9|99.9（每个 SU 200 Mbps）。
+CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
+按比例计费| 每日|每日
+动态加密|是|是
+动态打包|是|是
+缩放|自动增加到目标吞吐量。|额外流单元
+IP 筛选/G20/自定义主机<sup>1</sup>|是|是
+渐进式下载|是|是
+建议的用法 |建议用于绝大多数的流式处理方案。|专业用法。<br/>如果认为需求可能会超出标准。 如果预计并发受众大小大于 50,000 个查看者，请与我们联系 (amsstreaming@microsoft.com)。
+
+<sup>1</sup> CDN 终结点上未启用时才使用直接在流式处理终结点上。
 
 ## <a name="working-with-cdn"></a>配合 CDN 使用
 
@@ -70,7 +90,7 @@ ms.locfileid: "57845597"
     如果出现此错误，则数据中心不支持 Azure CDN 集成。 你应该尝试其他数据中心。
 - `cdnProfile` -当`cdnEnabled`设置为 true，你还可以传递`cdnProfile`值。 `cdnProfile` 是将在其中创建 CDN 终结点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，新的配置文件会自动创建。
 - `cdnProvider` -启用 CDN 后，你还可以传递`cdnProvider`值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未不提供任何值和`cdnEnabled`为 true，"StandardVerizon"使用 （这是默认值）。
-- `crossSiteAccessPolicies` -用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。
+- `crossSiteAccessPolicies` -用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。<br/>设置仅适用于平滑流式处理。
 - `customHostNames` -用于配置流式处理终结点以接受定向到自定义主机名的流量。  此属性适用于标准和高级流式处理终结点和时可以设置`cdnEnabled`: false。
     
     通过媒体服务，必须确认域名的所有权。 媒体服务通过要求验证域名所有权`CName`作为组件添加到使用中的域中包含的媒体服务帐户 ID 的记录。 例如，要将“sports.contoso.com”用作流式处理终结点的自定义主机名，则必须将 `<accountId>.contoso.com` 的记录配置为指向其中一个媒体服务验证主机名。 验证主机名由 verifydns.\<mediaservices-dns-zone> 组成。 

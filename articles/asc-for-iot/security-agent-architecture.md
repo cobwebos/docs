@@ -1,6 +1,6 @@
 ---
-title: IoT 安全代理体系结构预览版了解 ASC |Microsoft Docs
-description: 在 ASC 中用于 IoT 服务的代理了解安全代理体系结构。
+title: 了解 Azure 安全中心的 IoT 安全代理体系结构预览 |Microsoft Docs
+description: 了解用于在 Azure 安全中心的 IoT 服务使用的代理安全代理体系结构。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: d81054e95b9f712262fe5fa46453749b54a7ac24
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 83ac2fd1d322dc3fb3c04cdf44d560c392320f91
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651391"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754179"
 ---
 # <a name="security-agent-reference-architecture"></a>安全代理参考体系结构
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 
-ASC 为 IoT 提供参考体系结构的安全代理，记录、 处理、 聚合和发送通过 IoT 中心的安全数据。
+Azure 安全中心 (ASC) 适用于 IoT 的安全代理，记录、 处理、 聚合和发送通过 IoT 中心的安全数据提供参考体系结构。
 
 安全代理用于处理在受约束 IoT 环境中，并且高度可自定义方面时与他们使用的资源相比，它们提供的值。
 

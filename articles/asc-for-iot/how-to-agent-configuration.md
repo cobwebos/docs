@@ -1,6 +1,6 @@
 ---
-title: 配置 IoT 代理预览版 ASC |Microsoft Docs
-description: 了解如何配置使用的代理与 ASC 的 IoT。
+title: Azure 安全中心配置适用于 IoT 代理预览 |Microsoft Docs
+description: 了解如何为 IoT 与 Azure 安全中心配置为使用代理。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 8bb9f0bc57e03ae0897e77acaa30ec85a3541646
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 27b548459bd1fee3c6596cce624b00d052e608fe
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649367"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757385"
 ---
 # <a name="tutorial-configure-security-agents"></a>教程：配置安全代理
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍 ASC IoT 安全代理，如何更改它们 ASC 为 IoT 安全代理配置。
+本文介绍 Azure 安全中心 (ASC) 的 IoT 安全代理，如何更改它们 ASC 为 IoT 安全代理配置。
 
 > [!div class="checklist"]
 > * 配置安全代理

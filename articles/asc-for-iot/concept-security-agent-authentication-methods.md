@@ -1,6 +1,6 @@
 ---
-title: ASC IoT 预览版的身份验证方法 |Microsoft Docs
-description: 使用 ASC 的 IoT 服务时，了解有关可用的不同的身份验证方法。
+title: IoT 预览版的 Azure 安全中心的身份验证方法 |Microsoft Docs
+description: 使用 Azure 安全中心的 IoT 服务时，了解有关可用的不同的身份验证方法。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2ace8ffd82efe70251b48e20593906986173cbb0
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577794"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758384"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法 
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文介绍可用于向 AzureIoTSecurity 代理使用 IoT 中心进行身份验证的不同身份验证方法。
 
-对于每个设备登记到 ASC iot 在 IoT 中心，安全模块需要。 若要对设备进行身份验证，iot ASC 可以使用两种方法之一。 选择最适合于您现有的 IoT 解决方案的方法。 
+对于每个设备上架到 Azure 安全中心 (ASC) iot 在 IoT 中心，安全模块需要。 若要对设备进行身份验证，iot ASC 可以使用两种方法之一。 选择最适合于您现有的 IoT 解决方案的方法。 
 
 > [!div class="checklist"]
 > * 安全模块选项

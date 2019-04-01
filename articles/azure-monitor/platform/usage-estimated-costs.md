@@ -9,18 +9,18 @@ ms.date: 08/11/2018
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 7911bd398b6760fb4f83382868f040382b86cd1f
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 2e59699b667215d4b09e4d87c1776431631348e8
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480529"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754251"
 ---
-# <a name="monitoring-usage-and-estimated-costs"></a>监视使用情况和预估成本
+# <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>在 Azure Monitor 中监视使用情况和预估成本
 
 > [!NOTE]
 > 本文介绍如何针对不同的定价模型查看多个 Azure 监视功能的使用情况和估算成本。  相关信息请参阅以下文章。
-> - [通过在 Log Analytics 中控制数据量和保留期管理成本](../../azure-monitor/platform/manage-cost-storage.md)介绍如何通过更改数据保留期来控制成本。
+> - [通过在 Log Analytics 中控制数据量和保留期管理成本](manage-cost-storage.md)介绍如何通过更改数据保留期来控制成本。
 > - [在 Log Analytics 中分析数据使用情况](../../azure-monitor/platform/data-usage.md)介绍了如何根据数据使用情况进行分析和警告。
 > - [在 Application Insights 中管理定价和数据量](../../azure-monitor/app/pricing.md)介绍如何在 Application Insights 中分析数据使用情况。
 
@@ -184,7 +184,7 @@ Invoke-AzResourceAction `
 如果你希望迁移位于同一租户下的多个订阅，则可以使用以下脚本的片段创建你自己的脚本变体：
 
 ```powershell
-#Query tenant and create an array comprised of all of your tenants subscription ids
+#Query tenant and create an array comprised of all of your tenants subscription IDs
 $TenantId = <Your-tenant-id>
 $Tenant =Get-AzSubscription -TenantId $TenantId
 $Subscriptions = $Tenant.Id
@@ -204,7 +204,7 @@ Invoke-AzResourceAction `
 }
 ```
 
-可以通过创建生成三个数组的脚本进一步对脚本进行优化。 一个数组将包含 ```isGrandFatherableSubscription``` 设置为 True 且 optedInDate 当前没有值的所有订阅 ID。 第二个数组包含当前采用新定价模型的任何订阅。 第三个数组仅填充有租户中没有资格使用新定价模型的订阅 ID：
+可以通过创建生成三个数组的脚本进一步对脚本进行优化。 一个数组将包含的所有订阅 Id 的具有```isGrandFatherableSubscription```设置为 True 并且 optedInDate 当前不具有值。 第二个数组包含当前采用新定价模型的任何订阅。 和仅使用你的租户中的订阅 Id 填充的第三个数组的不符合条件的新定价模型：
 
 ```powershell
 [System.Collections.ArrayList]$Eligible= @{}

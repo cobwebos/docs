@@ -1,5 +1,5 @@
 ---
-title: 导出或删除数据 - 内容审查器
+title: 导出或删除用户数据-内容审查器
 titlesuffix: Azure Cognitive Services
 description: 了解如何在内容审查器中导出或删除数据。
 services: cognitive-services
@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: pafarley
-ms.openlocfilehash: 15a59bbdc4c93202f8906689100c24ba713ee487
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 1cd70bee22e56e2580b322b93e0f121261d97a94
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311250"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758095"
 ---
 # <a name="export-or-delete-user-data-in-content-moderator"></a>在内容审查器中导出或删除用数据
 

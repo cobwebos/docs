@@ -8,6 +8,8 @@ items:
     href: architecture.md
   - name: 安全代理
     href: security-agent-architecture.md
+  - name: Edge 安全模块
+    href: security-edge-architecture.md
   - name: 服务先决条件
     href: service-prerequisites.md
   - name: 适用于 IoT 的 ASC 入门
@@ -23,26 +25,8 @@ items:
   - name: 创建自定义安全警报
     href: quickstart-create-custom-alerts.md
   expanded: true
-- name: 教程
-  items:
-  - name: 部署安全代理
-    items:
-    - name: 在 Windows 设备上部署基于 C# 的安全代理
-      href: tutorial-deploy-windows-cs.md
-    - name: 在 Linux 设备上部署基于 C# 的安全代理
-      href: tutorial-deploy-linux-cs.md
-    - name: 在 Linux 设备上部署基于 C 的安全代理
-      href: tutorial-deploy-linux-c.md
-  - name: 调查设备
-    href: tutorial-investigate-device.md
-  - name: 发送自己的安全消息
-    href: tutorial-send-security-messages.md
 - name: 概念
   items:
-  - name: 我应该部署哪个代理？
-    href: select-deploy-agent.md
-  - name: 配置安全代理
-    href: concept-agent-configuration.md
   - name: 安全代理身份验证
     href: concept-security-agent-authentication-methods.md
   - name: 安全模块
@@ -51,12 +35,30 @@ items:
     href: concept-security-alerts.md
   - name: 安全建议
     href: concept-recommendations.md
+  - name: 定价和关联的成本
+    href: concept-pricing.md
 - name: 操作指南
   items:
+  - name: 我应该部署哪个代理？
+    items:
+    - name: 选择要部署的代理
+      href: how-to-deploy-agent.md
+    - name: 在 Windows 设备上部署基于 C# 的安全代理
+      href: how-to-deploy-windows-cs.md
+    - name: 在 Linux 设备上部署基于 C# 的安全代理
+      href: how-to-deploy-linux-cs.md
+    - name: 在 Linux 设备上部署基于 C 的安全代理
+      href: how-to-deploy-linux-c.md
+  - name: 部署 Edge 安全模块
+    href: how-to-deploy-edge.md
+  - name: 配置安全代理
+    href: how-to-agent-configuration.md
+  - name: 发送自己的安全消息
+    href: how-to-send-security-messages.md
   - name: 访问原始安全数据
     href: how-to-security-data-access.md
-  - name: 修改安全模块孪生
-    href: how-to-modify-security-module-twin.md
+  - name: 调查设备
+    href: how-to-investigate-device.md
 - name: 资源
   items:
   - name: 常见问题
@@ -67,9 +69,9 @@ items:
     href: http://blogs.msdn.com/b/azuresecurity/
   - name: 区域可用性
     href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 6789b87deb5c502df3541a10e9a8e4eece21a351
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 17508e05a8de52e12487bf35fd3e063761abcbe2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541310"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575158"

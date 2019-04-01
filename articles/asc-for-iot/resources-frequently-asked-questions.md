@@ -1,6 +1,6 @@
 ---
-title: 方面的常见问题为 ASC IoT 预览版 |Microsoft Docs
-description: 找到解答有关常见问题 ASC IoT 功能和服务。
+title: 常见 IoT 预览版 Azure 安全中心的问题 |Microsoft Docs
+description: 找到解答有关常见问题 Azure 安全中心的 IoT 功能和服务。
 services: ASCforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 8940d629d2f4827ee724c813a40394378dde5a4c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: dab30a03ff73664fde4e5377794d3ae00625af93
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575141"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755330"
 ---
-# <a name="asc-for-iot-frequently-asked-questions"></a>适用于 IoT 的 ASC 方面的常见问题  
+# <a name="azure-security-center-for-iot-frequently-asked-questions"></a>适用于 IoT 的 azure 安全中心常见问题  
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文提供有关 IoT ASC 有关的常见问题和解答列表。 
+本文提供适用于 IoT 的一些常见问题和解答有关 Azure 安全中心 (ASC) 列表。 
 
 ## <a name="does-azure-provide-support-for-iot-security"></a>Azure 是否为保障 IoT 的安全提供支持？
 

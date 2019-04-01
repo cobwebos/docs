@@ -1,6 +1,6 @@
 ---
-title: 了解 IoT 解决方案体系结构预览 ASC |Microsoft Docs
-description: 了解有关 IoT 服务 ASC 中信息的流。
+title: 了解 Azure 安全中心的 IoT 解决方案体系结构预览 |Microsoft Docs
+description: 了解有关流的 IoT 服务在 Azure 安全中心中的信息。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: ee81d9543525ba1187fc6c078391559929b9bf96
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d70be919fa829401b4a415db626a3cee0713753b
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541897"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754984"
 ---
-# <a name="asc-for-iot-architecture"></a>ASC 为 IoT 体系结构的
+# <a name="azure-security-center-for-iot-architecture"></a>Azure 安全中心的 IoT 体系结构
 
-本文介绍 Azure 安全中心的 IoT 解决方案的功能的系统体系结构。 
+本文介绍了功能的系统体系结构有关的 IoT 解决方案的 Azure 安全中心 (ASC)。 
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
-> 此预览版本没有附带服务级别协议提供，不建议用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
+> IoT 的 azure 安全中心当前处于公共预览状态。
+> 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="asc-for-iot-components"></a>ASC 为 IoT 组件的
 
@@ -57,7 +57,7 @@ ASC 为 IoT 建议和警报 （分析管道输出） 写入到 Log Analytics 工
 
 - [服务的先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
-- [配置你的解决方案](quickstart-configure-your-solution.md)
+- [配置解决方案](quickstart-configure-your-solution.md)
 - [启用 IoT 中心内的安全性](quickstart-onboard-iot-hub.md)
 - [ASC iot 常见问题](resources-frequently-asked-questions.md)
 - [ASC 为 IoT 安全警报的](concept-security-alerts.md)

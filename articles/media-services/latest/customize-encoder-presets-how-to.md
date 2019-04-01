@@ -12,14 +12,14 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
-ms.openlocfilehash: 848da2996b71b137c6112225c9bef7e93b457c7d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ed2ae50aa9d7a26ed6e0569264ee981f7be35525
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57837229"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754560"
 ---
-# <a name="how-to-encode-with-a-custom-transform-by-using-net"></a>如何使用.NET 编码自定义转换
+# <a name="how-to-encode-with-a-custom-transform---net"></a>如何使用自定义转换的.NET 进行编码
 
 使用 Azure 媒体服务编码时，你可以快速开始使用基于行业最佳实践，如中所示的建议内置预设之一[文件进行流式处理](stream-files-tutorial-with-api.md)教程。 此外可以构建自定义预设，以满足特定的方案或设备要求。
 

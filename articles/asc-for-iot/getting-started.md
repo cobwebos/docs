@@ -1,6 +1,6 @@
 ---
 title: 开始使用针对 IoT 预览版的 Azure 安全中心 (ASC) |Microsoft Docs
-description: 立即开始了解的基本工作流的 ASC IoT 功能和服务。
+description: 立即开始了解的基本工作流的 Azure 安全中心 IoT 功能和服务。
 services: ascforiot
 documentationcenter: na
 author: mlottner
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 37815c1f1afe3e4c99e2fe171b21857a2018f709
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 23b15b92c844af85f2e1279e531c38ac7d517423
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648310"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755130"
 ---
-# <a name="get-started-with-azure-security-center-asc-for-iot"></a>开始使用 Azure 安全中心 (ASC) 适用于 IoT 
+# <a name="get-started-with-azure-security-center-for-iot"></a>开始使用 Azure 安全中心的 IoT 
 
 > [!IMPORTANT]
-> Iot ASC 目前处于公共预览状态。
+> IoT 的 azure 安全中心当前处于公共预览状态。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍不同的构建基块的 ASC IoT 服务，并说明如何开始使用[启用服务](quickstart-onboard-iot-hub.md)。 
+本文为 IoT 服务提供不同的构造块的 Azure 安全中心 (ASC) 的说明，并说明如何开始使用[启用服务](quickstart-onboard-iot-hub.md)。 
 
 适用于 IoT 的 ASC 可以无缝集成到 IoT 中心提供安全分析 IoT 中心配置、 设备标识和中心设备的通信模式。
 增强的安全性功能，对于 ASC 为 IoT 提供了基于代理从 IoT 设备的安全数据集合。

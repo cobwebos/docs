@@ -1,207 +1,142 @@
 ---
-title: API 控制台中的内容审查工作流 - 内容审查器
+title: 定义与 REST API 控制台-内容审查器审查工作流
 titlesuffix: Azure Cognitive Services
-description: 在 Azure 内容审查器中使用审阅 API 的 workflow 操作，可以创建或更新工作流，也可以获取工作流详细信息。
+description: Azure 内容审查器评审 Api 可用于定义自定义工作流和基于内容策略阈值。
 services: cognitive-services
 author: sanjeev3
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
-ms.topic: conceptual
-ms.date: 01/10/2019
+ms.topic: article
+ms.date: 03/14/2019
 ms.author: sajagtap
-ms.openlocfilehash: 1c18544a0fd135eb546660c442b865bf1249dfe5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: e150b1321f2fbd348e737222c752203281503643
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883077"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756587"
 ---
-# <a name="workflows-from-the-api-console"></a>API 控制台中的工作流
+# <a name="define-and-use-moderation-workflows-rest"></a>定义和使用审查工作流 (REST)
 
-在 Azure 内容审查器中使用审阅 API 的 [workflow 操作](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)，可以创建或更新工作流，也可以获取工作流详细信息。 使用此 API，可以为工作流定义简单、复杂和嵌套的表达式。 工作流显示在“审阅”工具中，以供团队使用。 工作流还可供审阅 API 的 Job 操作使用。
+工作流是基于云的自定义筛选器可用来更有效地处理内容。 工作流可以连接到各种服务来以不同方式筛选内容，然后采取相应的措施。 本指南演示如何使用 API 控制台中，通过工作流 REST Api 创建和使用工作流。 一旦您了解的 Api 结构，您可以轻松地移植到任何 REST 兼容平台这些调用。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-1. 转到[“审阅”工具](https://contentmoderator.cognitive.microsoft.com/)。 如果尚未注册，请先注册。 
-2. 在“审阅”工具中，选择“设置”下的“工作流”选项卡，如“审阅”工具的[工作流教程](Review-Tool-User-Guide/Workflows.md)中所示。
-
-### <a name="browse-to-the-workflows-screen"></a>转到“工作流”屏幕
-
-在内容审查器仪表板上，依次选择“审阅” > “设置” > “工作流”。 此时，默认工作流显示。
-
-  ![默认工作流](images/default-workflow-listed.PNG)
-
-### <a name="get-the-json-definition-of-the-default-workflow"></a>获取默认工作流的 JSON 定义
-
-依次选择工作流的“编辑”选项和“JSON”选项卡。此时，以下 JSON 表达式显示：
-
-    {
-        "Type": "Logic",
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isAdult",
-            "Operator": "eq",
-            "Value": "true",
-            "Type": "Condition"
-            },
-        "Then": {
-        "Perform": [
-        {
-            "Name": "createreview",
-            "CallbackEndpoint": null,
-            "Tags": []
-        }
-        ],
-        "Type": "Actions"
-        }
-    }
-
-## <a name="get-workflow-details"></a>获取工作流详细信息
-
-“工作流 - 获取”操作可用于获取现有默认工作流的详细信息。
-
-在“审阅”工具中，转到[“凭据”](Review-Tool-User-Guide/credentials.md#the-review-tool)部分。
-
-### <a name="browse-to-the-api-reference"></a>转到“API 参考”
-
-1. 在“凭据”视图中，选择[“API 参考”](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)。 
-2. 当“工作流 - 创建或更新”页打开时，转到[“工作流 - 获取”](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)参考。
-
-### <a name="select-your-region"></a>选择区域
-
-对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
-
-  ![“工作流 - 获取”区域选择](images/test-drive-region.png)
-
-  此时，“工作流 - 获取”API 控制台打开。
-
-### <a name="enter-parameters"></a>输入参数
-
-输入“team”、“workflowname”和“Ocp-Apim-Subscription-Key”（订阅密钥）的值：
-
-- **team**：设置[评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)时创建的团队 ID。 
-- **workflowname**：工作流的名称。 使用 `default`。
-- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
-
-  ![“获取”查询参数和请求头](images/workflow-get-default.PNG)
-
-### <a name="submit-your-request"></a>提交请求
-  
-选择“发送”。 如果操作成功，“响应状态”为“`200 OK`”，且“响应内容”框显示以下 JSON 工作流：
-
-    {
-        "Name": "default",
-        "Description": "Default",
-        "Type": "Image",
-        "Expression": {
-        "If": {
-            "ConnectorName": "moderator",
-            "OutputName": "isadult",
-            "Operator": "eq",
-            "Value": "true",
-            "AlternateInput": null,
-            "Type": "Condition"
-            },
-        "Then": {
-            "Perform": [{
-                "Name": "createreview",
-                "Subteam": null,
-                "CallbackEndpoint": null,
-                "Tags": []
-            }],
-            "Type": "Actions"
-            },
-            "Else": null,
-            "Type": "Logic"
-            }
-    }
-
+- 登录或在内容审查器上创建一个帐户[审阅工具](https://contentmoderator.cognitive.microsoft.com/)站点。
 
 ## <a name="create-a-workflow"></a>创建工作流
 
-在“审阅”工具中，转到[“凭据”](Review-Tool-User-Guide/credentials.md#the-review-tool)部分。
+若要创建或更新的工作流，请转到**[工作流-创建或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)** API 引用页，选择密钥中你所在区域的按钮 (您可以在中找到此终结点 URL 上**凭据**页的[审阅工具](https://contentmoderator.cognitive.microsoft.com/))。 这将启动 API 控制台中，您可以轻松地构建和运行的 REST API 调用。
 
-### <a name="browse-to-the-api-reference"></a>转到“API 参考”
+![“工作流 - 创建或更新”页上的区域选择](images/test-drive-region.png)
 
-在“凭据”视图中，选择[“API 参考”](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)。 此时，“工作流 - 创建或更新”页打开。
+### <a name="enter-rest-call-parameters"></a>输入 REST 调用参数
 
-### <a name="select-your-region"></a>选择区域
+输入值**团队**， **workflowname**，并**Ocp Apim 订阅密钥**:
 
-对于“开放 API 测试控制台”，选择与所在位置最相关的区域。
+- **team**：您设置时创建的团队 ID 你[审阅工具](https://contentmoderator.cognitive.microsoft.com/)帐户 (在中找到**Id**评审工具的凭据屏幕上的字段)。
+- **workflowname**：要添加的新工作流 （或现有的名称，如果你想要更新现有工作流） 的名称。
+- **Ocp-Apim-Subscription-Key**：你的内容审查器密钥。 您可以在上找到此**设置**选项卡[审阅工具](https://contentmoderator.cognitive.microsoft.com)。
 
-  ![“工作流 - 创建或更新”页上的区域选择](images/test-drive-region.png)
+![“工作流 - 创建或更新”控制台查询参数和请求头](images/workflow-console-parameters.PNG)
 
-  此时，“工作流 - 创建或更新”API 控制台打开。
+### <a name="enter-a-workflow-definition"></a>输入工作流定义
 
-### <a name="enter-parameters"></a>输入参数
+1. 编辑**请求正文**框中输入的详细信息的 JSON 请求**说明**并**类型**(或者`Image`或`Text`)。
+2. 有关**表达式**，复制 JSON 表达式的默认工作流。 最终的 JSON 字符串应如下所示：
 
-输入“team”、“workflowname”和“Ocp-Apim-Subscription-Key”（订阅密钥）的值：
-
-- **team**：设置[评审工具帐户](https://contentmoderator.cognitive.microsoft.com/)时创建的团队 ID。 
-- **workflowname**：新工作流的名称。
-- **Ocp-Apim-Subscription-Key**：位于“设置”选项卡中。有关详细信息，请参阅[概述](overview.md)。
-
-  ![“工作流 - 创建或更新”控制台查询参数和请求头](images/workflow-console-parameters.PNG)
-
-### <a name="enter-the-workflow-definition"></a>输入工作流定义
-
-1. 编辑“请求正文”框，以输入 JSON 请求，以及“说明”和“类型”（“图像”或“文本”）的详细信息。 
-2. 对于“表达式”，复制上一部分中的默认工作流表达式，如下所示：
-
+```json
+{
+  "Description":"<A description for the Workflow>",
+  "Type":"Text",
+  "Expression":{
+    "Type":"Logic",
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isAdult",
+      "Operator":"eq",
+      "Value":"true",
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
         {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": 
-                // Copy the default workflow expression from the preceding section
-        }
+          "Name":"createreview",
+          "CallbackEndpoint":null,
+          "Tags":[
 
-    请求正文如下面的 JSON 请求所示：
-
-        {
-            "Description": "Default workflow from API console",
-            "Type": "Image",
-            "Expression": {
-                "Type": "Logic",
-                "If": {
-                    "ConnectorName": "moderator",
-                    "OutputName": "isAdult",
-                    "Operator": "eq",
-                    "Value": "true",
-                    "Type": "Condition"
-                    },
-                "Then": {
-                "Perform": [
-                {
-                    "Name": "createreview",
-                    "CallbackEndpoint": null,
-                    "Tags": [ ]
-                }
-                ],
-                "Type": "Actions"
-                }
-            }
+          ]
         }
- 
+      ],
+      "Type":"Actions"
+    }
+  }
+}
+```
+
+> [!NOTE]
+> 可以为使用此 API 工作流定义简单而甚至嵌套的复杂的表达式。 [工作流-创建或更新](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59)文档中有更复杂的逻辑的示例。
+
 ### <a name="submit-your-request"></a>提交请求
   
 选择“发送”。 如果操作成功，“响应状态”为“`200 OK`”，且“响应内容”框显示“`true`”。
 
-### <a name="check-out-the-new-workflow"></a>检查新工作流
+### <a name="examine-the-new-workflow"></a>检查新的工作流
 
-在“审阅”工具中，依次选择“审阅” > “设置” > “工作流”。 此时，新建的工作流显示，可供使用。
+在中[审阅工具](https://contentmoderator.cognitive.microsoft.com/)，选择**设置** > **工作流**。 新工作流应显示在列表中。
 
-  ![“审阅”工具的工作流列表](images/workflow-console-new-workflow.PNG)
-  
-### <a name="review-your-new-workflow-details"></a>查看新工作流的详细信息
+![“审阅”工具的工作流列表](images/workflow-console-new-workflow.PNG)
 
-1. 依次选择工作流的“编辑”选项、“设计器”和“JSON”选项卡。
+选择**编辑**工作流选项并转到**设计器**选项卡。这里，您可以看到 JSON 逻辑的直观表示形式。
 
-   ![选定工作流的“设计器”选项卡](images/workflow-console-new-workflow-designer.PNG)
+![选定工作流的“设计器”选项卡](images/workflow-console-new-workflow-designer.PNG)
 
-2. 若要查看工作流的 JSON 视图，请选择“JSON”选项卡。
+## <a name="get-workflow-details"></a>获取工作流详细信息
+
+若要检索有关现有工作流的详细信息，请转到**[工作流-Get](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b44b3f9b0711b43c4c58)**  API 引用页，选择你所在区域的按钮 （在其中管理你的密钥的区域）。
+
+![“工作流 - 获取”区域选择](images/test-drive-region.png)
+
+输入 REST 调用参数，如在上面的部分。 请确保此时间**workflowname**是现有工作流的名称。
+
+![“获取”查询参数和请求头](images/workflow-get-default.PNG)
+
+选择“发送”。 如果操作成功，**响应状态**是`200 OK`，和**响应内容**框显示在工作流以 JSON 格式，如下所示：
+
+```json
+{
+  "Name":"default",
+  "Description":"Default",
+  "Type":"Image",
+  "Expression":{
+    "If":{
+      "ConnectorName":"moderator",
+      "OutputName":"isadult",
+      "Operator":"eq",
+      "Value":"true",
+      "AlternateInput":null,
+      "Type":"Condition"
+    },
+    "Then":{
+      "Perform":[
+        {
+          "Name":"createreview",
+          "Subteam":null,
+          "CallbackEndpoint":null,
+          "Tags":[
+
+          ]
+        }
+      ],
+      "Type":"Actions"
+    },
+    "Else":null,
+    "Type":"Logic"
+  }
+}
+```
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关更多复杂工作流示例，请参阅[工作流概述](workflow-api.md)。
-* 了解如何结合使用工作流和[内容审查作业](try-review-api-job.md)。
+- 了解如何结合使用工作流和[内容审查作业](try-review-api-job.md)。
