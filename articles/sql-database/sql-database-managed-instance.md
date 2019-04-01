@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
-ms.date: 02/20/2019
-ms.openlocfilehash: d19dabb4e74e7a108ae769f55cd65ef108019fdc
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.date: 03/29/2019
+ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56454735"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668481"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>使用具有虚拟网络和近 100% 兼容性的 SQL 数据库高级数据安全性
 
@@ -41,7 +41,7 @@ ms.locfileid: "56454735"
 托管实例结合了 Azure SQL 数据库和 SQL Server 数据库引擎提供的最佳功能。
 
 > [!IMPORTANT]
-> 托管实例使用最新版 SQL Server 的所有功能（包括联机操作、自动计划更正和其他企业性能增强功能）运行。 [功能比较：Azure SQL 数据库与 SQL Server](sql-database-features.md)中对可用功能进行了比较。
+> 托管实例使用最新版 SQL Server 的所有功能（包括联机操作、自动计划更正和其他企业性能增强功能）运行。 [功能比较：Azure SQL 数据库与 SQL Server中对可用功能进行了比较。
 
 | **PaaS 优势** | **业务连续性** |
 | --- | --- |
@@ -49,9 +49,12 @@ ms.locfileid: "56454735"
 |**安全性和符合性** | **管理**|
 |隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>（公开预览版） <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[威胁检测](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
+> [!IMPORTANT]
+> Azure SQL 数据库 （所有部署选项），已通过许多法规标准认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，可以从中找到 [SQL 数据库法规认证](https://www.microsoft.com/trustcenter/compliance/complianceofferings)的最新列表。
+
 下表显示托管实例的主要功能：
 
-|Feature | 说明|
+|Feature | 描述|
 |---|---|
 | SQL Server 版本/内部版本 | SQL Server 数据库引擎（最新稳定版） |
 | 受管理的自动备份 | 是 |
@@ -59,7 +62,7 @@ ms.locfileid: "56454735"
 | 自动软件修补 | 是 |
 | 最新的数据库引擎功能 | 是 |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 |
-| 每个数据库的日志文件 (LOG) 数目 | 1 |
+| 每个数据库的日志文件 (LOG) 数目 | 第 |
 | VNet - Azure 资源管理器部署 | 是 |
 | VNet - 经典部署模型 | 否 |
 | 门户支持 | 是|

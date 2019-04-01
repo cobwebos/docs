@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: barclayn
-ms.openlocfilehash: 49bc3c22eecf804e6930899478fe3be189677382
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 71931194c88412467252d16c5333d7a77338378c
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56985897"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630610"
 ---
 # <a name="how-to-generate-and-transfer-hsm-protected-keys-for-azure-key-vault"></a>如何为 Azure 密钥保管库生成和传输受 HSM 保护的密钥
 
@@ -534,4 +534,4 @@ KeyVault-BYOK-Tools-UnitedKingdom.zip
 
 ## <a name="next-steps"></a>后续步骤
 
-现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅 [Azure 密钥保管库入门](key-vault-overview.md)中的**如果要使用硬件安全模块 (HSM)** 部分。
+现在可以在密钥保管库中使用此受 HSM 保护的密钥。 有关详细信息，请参阅此价格和功能[比较](https://azure.microsoft.com/pricing/details/key-vault/)。

@@ -4,7 +4,7 @@ description: 介绍 Service Fabric CLI sfctl standalone cluster 命令。
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: ce10e2c24e89140357df3fa6b724a1f89f389a50
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: a652439729e538b3ce2545ab3b09284e6645ce9d
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53275476"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668511"
 ---
 # <a name="sfctl-sa-cluster"></a>sfctl sa-cluster
 管理独立 Service Fabric 群集。
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | config | 获取 Service Fabric 独立群集配置。 |
 | config-upgrade | 开始升级 Service Fabric 独立群集的配置。 |
@@ -39,14 +39,14 @@ ms.locfileid: "53275476"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --configuration-api-version [必需] | 独立群集 json 配置的 API 版本。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -61,7 +61,7 @@ ms.locfileid: "53275476"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --cluster-config            [必需] | 群集配置。 |
 | --application-health-policies | 应用程序类型名称对的 JSON 编码字典以及引发错误之前的最大不正常百分比。 |
@@ -78,7 +78,7 @@ ms.locfileid: "53275476"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -102,13 +102,13 @@ policies "{"fabric:/System":{"ConsiderWarningAsError":true}}"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |

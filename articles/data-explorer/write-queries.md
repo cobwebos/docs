@@ -3,23 +3,23 @@ title: Azure 数据资源管理器的编写查询
 description: 在本操作说明中，你将学习如何针对 Azure 数据资源管理器执行基本查询和更高级的查询。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 0a2b56164662a13d8254d8956712077e5f8a83a9
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 8afb829f806ab55a069ded9cb7198f66368e8720
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961514"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758691"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 数据资源管理器的编写查询
 
 在本文中，你将了解如何在 Azure 数据资源管理器中使用查询语言通过最常见的运算符来执行基本查询。 此外，还可以接触到一些更高级的语言功能。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 可以通过以下两种方式之一运行本文中的查询：
 

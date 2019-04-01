@@ -4,7 +4,7 @@ description: 介绍 Service Fabric CLI sfctl replica 命令。
 services: service-fabric
 documentationcenter: na
 author: Christina-Kang
-manager: timlt
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/06/2018
 ms.author: bikang
-ms.openlocfilehash: 0000e5d8bfa7da6ebe1b6702649e56262c9d9cab
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.openlocfilehash: d0a7199ff0e9cb17c3fbc179a9b37a6620f521f9
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53277363"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666811"
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 管理属于服务分区的副本。
 
 ## <a name="commands"></a>命令
 
-|命令|Description|
+|命令|描述|
 | --- | --- |
 | deployed | 获取部署在 Service Fabric 节点上的副本的详细信息。 |
 | deployed-list | 获取部署在 Service Fabric 节点上的副本的列表。 |
@@ -44,7 +44,7 @@ ms.locfileid: "53277363"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -53,7 +53,7 @@ ms.locfileid: "53277363"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -68,7 +68,7 @@ ms.locfileid: "53277363"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --application-id [必需] | 应用程序的标识。 这通常是不带“fabric\:”URI 方案的应用程序全名。 从版本 6.0 开始，分层名称以“\~”字符隔开。 例如，如果应用程序名称为“fabric\:/myapp/app1”，则 6.0 及更高版本中的应用程序标识为“myapp\~app1”，在以前的版本中为“myapp/app1”。 |
 | --node-name [必需] | 节点的名称。 |
@@ -78,7 +78,7 @@ ms.locfileid: "53277363"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -93,7 +93,7 @@ ms.locfileid: "53277363"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id    [必需] | 分区的标识。 |
 | --replica-id      [必需] | 副本的标识符。 |
@@ -102,7 +102,7 @@ ms.locfileid: "53277363"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -117,7 +117,7 @@ ms.locfileid: "53277363"
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --replica-id   [必需] | 副本的标识符。 |
@@ -125,7 +125,7 @@ ms.locfileid: "53277363"
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -140,7 +140,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --partition-id [必需] | 分区的标识。 |
 | --continuation-token | 继续标记参数用于获取下一组结果。 如果单个响应无法容纳来自系统的结果，则 API 响应中包括含有非空值的继续标记。 当此值传递到下一个 API 调用时，API 返回下一组结果。 如果没有更多结果，则该继续标记不包含值。 不应将此参数的值进行 URL 编码。 |
@@ -148,7 +148,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -163,7 +163,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -173,7 +173,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -188,7 +188,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --health-property [必需] | 运行状况信息的属性。 <br><br> 一个实体可以有不同属性的运行状况报告。 该属性是一个字符串，不是固定的枚举，因此可使报告器灵活地对触发报告的状态条件进行分类。 例如，SourceId 为“LocalWatchdog”的报告器可以监视节点上的可用磁盘的状态，因此它可以报告该节点的“AvailableDisk”属性。 同一报告器可以监视节点连接，因此它可以报告同一节点的“Connectivity”属性。 在运行状况存储中，这些报告均被视为指定节点的单独运行状况事件。 与 SourceId 一起，该属性唯一地标识运行状况信息。 |
 | --health-state    [必需] | 可能的值包括\:“Invalid”、“Ok”、“Warning”、“Error”、“Unknown”。 |
@@ -199,13 +199,13 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 | --immediate | 一个用于指示是否应立即发送报告的标志。 <br><br> 运行状况报告将发送到 Service Fabric 网关应用程序，后者会将其转发到运行状况存储。 如果 Immediate 设置为 true，则报告将立即从 HTTP 网关发送至运行状况存储，而无论 HTTP 网关应用程序使用的 Fabric 客户端设置如何。 这对于应尽快发送的关键报告十分有用。 由于计时和其他情况，发送报告可能仍会失败，例如，在 HTTP 网关已关闭或消息无法到达网关的情况下。 如果 Immediate 设置为 false，则报告将基于来自 HTTP 网关的运行状况客户端设置发送。 因此，系统将根据 HealthReportSendInterval 配置对其进行批处理。 这是建议的设置，因为它可让运行状况客户端优化发往运行状况存储的运行状况报告消息以及运行状况报告处理。 默认情况下，报告不立即发送。 |
 | --remove-when-expired | 该值指示是否在报告过期时从运行状况存储删除该报告。 <br><br> 如果设置为 true，报告在过期后将从运行状况存储中删除。 如果设置为 false，报告在过期时将被视为错误。 此属性的值在默认情况下为 false。 当客户端定期报告时，它们应将 RemoveWhenExpired 设置为 false（默认值）。 这样，如果报告器有问题（例如死锁）并且无法报告，那么在运行状况报告过期时该实体就会被评估为处于错误状态。 这会将该实体标记为处于“Error”运行状况状态。 |
 | --sequence-number | 此运行状况报告的序列号（采用数字字符串形式）。 <br><br> 报告序列号由运行状况存储用来检测过时的报告。 如果未指定，序列号将在报告被添加时由运行状况客户端自动生成。 |
-| --service-kind | 为其报告运行状况的服务副本的类型（无状态或有状态）。 以下是可能的值：“Stateless”、“Stateful”。  默认值：Stateful。 |
+| --service-kind | 为其报告运行状况的服务副本的类型（无状态或有状态）。 以下是可能的值：“Stateless”、“Stateful”。  默认值\: Stateful。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 | --ttl | 此运行状况报告保持有效的持续时间。 此字段将 ISO8601 格式用于指定该持续时间。 <br><br> 当客户端定期报告时，它们应以高于生存时间的频率发送报告。 如果客户端以非定期的方式报告，它们可以将生存时间设置为无限。 生存时间过期时，包含运行状况信息的运行状况事件将从运行状况存储中删除（如果 RemoveWhenExpired 为 true），或者将会评估为处于错误状态（如果 RemoveWhenExpired 为 false）。 如果未指定，生存时间将默认为无限值。 |
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
@@ -220,7 +220,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="arguments"></a>参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --node-name    [必需] | 节点的名称。 |
 | --partition-id [必需] | 分区的标识。 |
@@ -229,7 +229,7 @@ GetReplicas 终结点返回有关指定分区的副本的信息。 响应包括 
 
 ### <a name="global-arguments"></a>全局参数
 
-|参数|Description|
+|参数|描述|
 | --- | --- |
 | --debug | 提高日志记录详细程度，以显示所有调试日志。 |
 | --help -h | 显示此帮助消息并退出。 |
