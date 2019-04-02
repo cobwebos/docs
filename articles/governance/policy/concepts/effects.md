@@ -4,17 +4,17 @@ description: Azure Policy 定义具有各种效果，可确定管理和报告符
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/01/2019
+ms.date: 03/29/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 6c6fbde8ff803a053f8c34765ce95d3981a57c52
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ae9c9c5ed8b951760ddac3034c617a13ebe35006
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551189"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802629"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -27,7 +27,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - AuditIfNotExists
 - 拒绝
 - DeployIfNotExists
-- 已禁用
+- 禁用
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
@@ -40,7 +40,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 资源提供程序返回成功代码后，将会评估 **AuditIfNotExists** 和 **DeployIfNotExists** 以确定是否需要其他合规性日志记录或操作。
 
-## <a name="disabled"></a>已禁用
+## <a name="disabled"></a>禁用
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
 
@@ -60,7 +60,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例 1：单个**字段/值**对附加一个标记。
+示例 1：使用单个字段/值对追加一个标记。
 
 ```json
 "then": {
@@ -136,7 +136,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="deny-example"></a>“拒绝”示例
 
-示例：使用“拒绝”效果。
+示例:使用“拒绝”效果。
 
 ```json
 "then": {
@@ -158,7 +158,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="audit-example"></a>“审核”示例
 
-示例：使用“审核”效果。
+示例:使用“审核”效果。
 
 ```json
 "then": {
@@ -180,9 +180,10 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 - **Type** [必选]
   - 指定要匹配的相关资源的类型。
-  - 首先尝试提取 if 条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
+  - 如果**details.type**是一种资源类型下方**如果**条件的资源，该策略中查询此资源**类型**计算资源的范围内。 否则为策略查询作为计算资源在同一资源组中。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
+  - 当条件值**if.field.type**和**then.details.type**匹配，然后**名称**变得_必需_，并且必须`[field('name')]`. 但是，[审核](#audit)应改为考虑效果。
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -203,7 +204,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists 示例
 
-示例：评估虚拟机以确定是否存在反恶意软件扩展，然后在缺失时进行审核。
+示例:评估虚拟机以确定是否存在反恶意软件扩展，然后在缺失时进行审核。
 
 ```json
 {
@@ -253,6 +254,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
   - 首先尝试提取 if 条件资源下的资源，然后在与 if 条件资源相同的资源组中进行查询。
 - **Name**（可选）
   - 指定要匹配的资源的确切名称，并使策略提取一个特定资源，而不是指定类型的所有资源。
+  - 当条件值**if.field.type**和**then.details.type**匹配，然后**名称**变得_必需_，并且必须`[field('name')]`.
 - **ResourceGroupName**（可选）
   - 允许相关资源的匹配来自不同的资源组。
   - 如果 **type** 是 **if** 条件资源下的一个资源，则不适用。
@@ -286,7 +288,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists 示例
 
-示例：评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
+示例:评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
 
 ```json
 "if": {

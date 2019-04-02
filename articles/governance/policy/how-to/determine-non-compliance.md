@@ -8,12 +8,12 @@ ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: dba8d9413229a0fa236b082e2e11dbd1a9fe5a5f
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314120"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802739"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -46,7 +46,7 @@ ms.locfileid: "57314120"
 
 1. **符合性详细信息**窗格将显示当前的策略分配到最新的计算资源的信息。 在此示例中，字段**Microsoft.Sql/servers/version**发现_12.0_时预期的策略定义_14.0_。 如果资源是出于多种原因不符合标准，每个将列在此窗格。
 
-   ![符合性详细信息窗格](../media/determine-non-compliance/compliance-details-pane.png)
+   ![符合性详细信息窗格中，针对非符合性的原因](../media/determine-non-compliance/compliance-details-pane.png)
 
    有关**auditIfNotExists**或**deployIfNotExists**策略定义的详细信息包括**details.type**属性和任何可选属性。 有关列表，请参阅[auditIfNotExists 属性](../concepts/effects.md#auditifnotexists-properties)并[deployIfNotExists 属性](../concepts/effects.md#deployifnotexists-properties)。 **上次评估资源**是一种相关的资源从**详细信息**定义部分。
 
@@ -91,7 +91,7 @@ ms.locfileid: "57314120"
 |当前值必须包含目标值作为键。 |containsKey 或**不**notContainsKey |
 |当前值必须包含目标值。 |包含或**不**notContains |
 |当前值必须等于目标值。 |等于或**不**notEquals |
-|必须存在当前值。 |exists |
+|必须存在当前值。 |存在 |
 |当前值必须在目标值的范围内。 |在中或**不**notIn |
 |当前值必须与目标值类似。 |如或**不**notLike |
 |当前值必须与目标值匹配(区分大小写)。 |匹配或**不**notMatch |
@@ -118,11 +118,11 @@ ms.locfileid: "57314120"
 
 1. 选择“资源符合性”页上的“更改历史记录(预览版)”选项卡。 此时会显示检测到的更改的列表（如果存在）。
 
-   ![策略更改历史记录 - 选项卡](../media/determine-non-compliance/change-history-tab.png)
+   ![策略更改历史记录页选项卡上资源符合性](../media/determine-non-compliance/change-history-tab.png)
 
 1. 选择其中一个检测到的更改。 _Visual diff_的资源显示在**更改历史记录**页。
 
-   ![策略更改历史记录 - 视觉差异](../media/determine-non-compliance/change-history-visual-diff.png)
+   ![更改历史记录页上的策略更改历史记录可视化差异](../media/determine-non-compliance/change-history-visual-diff.png)
 
 _视觉差异_可帮助识别资源的更改。 检测到的更改不可能与该资源的当前符合性状态。
 

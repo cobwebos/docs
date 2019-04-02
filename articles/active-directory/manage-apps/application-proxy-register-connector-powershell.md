@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/17/2018
 ms.author: celested
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ee35fbfff676e8618a4e5ae02086193c503f482
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bb193119186c2cf9e758f8c74f99f18c5fb389b8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170816"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792512"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>为 Azure AD 应用程序代理连接器创建无人参与安装脚本
 
@@ -34,7 +34,7 @@ ms.locfileid: "56170816"
 * 将连接器安装与注册集成为另一个过程的一部分。
 * 创建包含连接器代码但未注册的标准服务器映像。
 
-要使[应用程序代理连接器](application-proxy-connectors.md)工作，必须使用全局管理员和密码将其注册到 Azure AD 目录。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
+有关[应用程序代理连接器](application-proxy-connectors.md)工作，它必须注册到 Azure AD 目录使用的应用程序管理员和密码。 通常在连接器安装期间出现弹出窗口对话框时输入此信息，但是可改为使用 PowerShell 自动执行此过程。
 
 无人参与安装包括两个步骤。 第一步，安装连接器。 第二步，向 Azure AD 注册连接器。 
 

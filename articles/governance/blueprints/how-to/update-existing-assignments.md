@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 572a962e98332fc70c276346f497ed2e67e3c329
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 78b2f98b61306c22eaba59b9be7259b3a24d7bbe
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999848"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805748"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -32,17 +32,17 @@ ms.locfileid: "57999848"
 
 1. 在蓝图列表中，左键单击蓝图分配。 然后单击**更新分配**按钮，或右键单击蓝图分配并选择**更新分配**。
 
-   ![更新分配](../media/update-existing-assignments/update-assignment.png)
+   ![更新现有的蓝图分配](../media/update-existing-assignments/update-assignment.png)
 
 1. **分配蓝图**页将加载预先填入从原始分配的所有值。 可以更改“蓝图定义版本”、“锁定分配”状态，以及蓝图定义上存在的任何动态参数。 完成更改时，单击“分配”。
 
 1. 在更新后的分配详细信息页上，查看新状态。 在此示例中，我们向分配添加了“锁定”。
 
-   ![更新的分配 - 已锁定](../media/update-existing-assignments/updated-assignment.png)
+   ![更新现有的蓝图分配的锁模式发生更改](../media/update-existing-assignments/updated-assignment.png)
 
 1. 了解有关其他详细信息**赋值运算**使用下拉列表。 表**托管资源**按选择的分配操作的更新。
 
-   ![分配操作](../media/update-existing-assignments/assignment-operations.png)
+   ![赋值运算的蓝图分配](../media/update-existing-assignments/assignment-operations.png)
 
 ## <a name="rules-for-updating-assignments"></a>更新分配规则
 
@@ -50,11 +50,11 @@ ms.locfileid: "57999848"
 
 - 角色分配
   - 如果角色或角色代理人（用户、组或应用程序）发生更改，则创建新的角色分配。 以前部署的角色分配将会保留。
-- 策略分配
+- 策略分配数
   - 如果策略分配的参数已发生更改，则更新现有分配。
   - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。 以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。
-- Azure 资源管理器模板
+- Azure Resource Manager 模板
   - 该模板通过资源管理器作为 PUT 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误
@@ -69,8 +69,8 @@ ms.locfileid: "57999848"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[蓝图生命周期](../concepts/lifecycle.md)。
+- 了解[蓝图生命周期](../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../concepts/parameters.md)。
-- 了解如何自定义[蓝图先后顺序](../concepts/sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](../concepts/resource-locking.md)。
-- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。
+- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](../concepts/resource-locking.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

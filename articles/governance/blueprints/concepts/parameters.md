@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 42a70f7ea21a58f40f7786d6c6f1a51093923f83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838011"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805561"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -67,11 +67,11 @@ ms.locfileid: "57838011"
 
 1. 添加到蓝图中的项目（具有参数选项）会在“参数”列中显示“填充了 X 个参数，共 Y 个参数”。 单击项目行，编辑项目参数。
 
-   ![蓝图参数](../media/parameters/parameter-column.png)
+   ![蓝图参数上蓝图定义](../media/parameters/parameter-column.png)
 
 1. “编辑项目”页会显示适用于所单击项目的值选项。 项目上的每个参数具有标题、值框和复选框。 将框设置为未选中状态，使其称为“静态参数”。 在以下示例中，只有“位置”是“静态参数”，因为它处于未选中状态，同时“资源组名称”已选中。
 
-   ![蓝图静态参数](../media/parameters/static-parameter.png)
+   ![蓝图静态参数蓝图项目](../media/parameters/static-parameter.png)
 
 #### <a name="setting-static-parameters-from-rest-api"></a>从 REST API 设置静态参数
 
@@ -182,7 +182,7 @@ ms.locfileid: "57838011"
 
 1. 上**分配蓝图**页上，找到**项目参数**部分。 具有至少一个“动态参数”的每个项目会显示项目和配置选项。 分配蓝图前，请向参数提供所需值。 在以下示例中，“名称”是“动态参数”，必须对其定义以完成蓝图分配。
 
-   ![蓝图动态参数](../media/parameters/dynamic-parameter.png)
+   ![蓝图期间蓝图分配的动态参数](../media/parameters/dynamic-parameter.png)
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>从 REST API 设置动态参数
 
@@ -241,8 +241,8 @@ ms.locfileid: "57838011"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[蓝图生命周期](lifecycle.md)。
-- 了解如何自定义[蓝图先后顺序](sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](resource-locking.md)。
+- 了解[蓝图生命周期](lifecycle.md)。
+- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](resource-locking.md)。
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
-- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

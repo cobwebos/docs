@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2019
 ms.author: bwren
-ms.openlocfilehash: 6a13988af7a46ff6fafe352e850ee238cda79c08
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: da9e322f74433df7066ec574db7a49123f96d76b
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996716"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794013"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Azure 中的 Office 365 管理解决方案（预览版）
 
@@ -33,7 +33,8 @@ ms.locfileid: "57996716"
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
+
 需要以下各项才能安装和配置此解决方案。
 
 - 组织的 Office 365 订阅。
@@ -42,12 +43,16 @@ ms.locfileid: "57996716"
  
 
 ## <a name="management-packs"></a>管理包
+
 此解决方案不会在[连接的管理组](../platform/om-agents.md)中安装任何管理包。
   
+
 ## <a name="install-and-configure"></a>安装和配置
+
 首先，[将 Office 365 解决方案添加到你的订阅](solutions.md#install-a-monitoring-solution)。 添加后，必须执行本部分中的配置步骤来向其授予对你的 Office 365 订阅的访问权限。
 
 ### <a name="required-information"></a>必需的信息
+
 在开始此过程之前，收集以下信息。
 
 从 Log Analytics 工作区中：
@@ -58,12 +63,13 @@ ms.locfileid: "57996716"
 
 从 Office 365 订阅中：
 
-- 用户名：管理帐户的电子邮件地址。
+- 用户名:管理帐户的电子邮件地址。
 - 租户 ID：Office 365 订阅的唯一 ID。
 - 客户端 ID：一个 16 字符的字符串，表示 Office 365 客户端。
 - 客户端密码：进行身份验证所需的已加密字符串。
 
 ### <a name="create-an-office-365-application-in-azure-active-directory"></a>在 Azure Active Directory 中创建一个 Office 365 应用程序
+
 第一步是在 Azure Active Directory 中创建管理解决方案将用来访问 Office 365 解决方案的应用程序。
 
 1. 通过 [https://portal.azure.com](https://portal.azure.com/) 登录到 Azure 门户。
@@ -111,11 +117,12 @@ ms.locfileid: "57996716"
     ![密钥](media/solution-office-365/keys.png)
 
 ### <a name="add-admin-consent"></a>添加管理员同意
+
 若要首次启用管理帐户，必须为应用程序提供管理同意。 可以使用 PowerShell 脚本执行此操作。 
 
 1. 将以下脚本保存为 office365_consent.ps1。
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,     
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -161,10 +168,12 @@ ms.locfileid: "57996716"
     ```
 
 2. 使用以下命令运行该脚本。 系统将提示你两次输入凭据。 首先提供 Log Analytics 工作区的凭据，然后提供 Office 365 租户的全局管理员凭据。
+
     ```
     .\office365_consent.ps1 -WorkspaceName <Workspace name> -ResourceGroupName <Resource group name> -SubscriptionId <Subscription ID>
     ```
-    示例：
+
+    示例:
 
     ```
     .\office365_consent.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631- yyyyyyyyyyyy'
@@ -175,11 +184,12 @@ ms.locfileid: "57996716"
     ![管理员同意](media/solution-office-365/admin-consent.png)
 
 ### <a name="subscribe-to-log-analytics-workspace"></a>订阅 Log Analytics 工作区
+
 最后一步是让应用程序订阅 Log Analytics 工作区。 也是使用 PowerShell 脚本执行此操作。
 
 1. 将以下脚本保存为 office365_subscription.ps1。
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -342,20 +352,22 @@ ms.locfileid: "57996716"
     ```
 
 2. 使用以下命令运行该脚本：
+
     ```
     .\office365_subscription.ps1 -WorkspaceName <Log Analytics workspace name> -ResourceGroupName <Resource Group name> -SubscriptionId <Subscription ID> -OfficeUsername <OfficeUsername> -OfficeTennantID <Tenant ID> -OfficeClientId <Client ID> -OfficeClientSecret <Client secret>
     ```
+
     示例：
 
-    ```
+    ```powershell
     .\office365_subscription.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeUsername 'admin@contoso.com' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx' -OfficeClientId 'f8f14c50-5438-4c51-8956-zzzzzzzzzzzz' -OfficeClientSecret 'y5Lrwthu6n5QgLOWlqhvKqtVUZXX0exrA2KRHmtHgQb='
     ```
 
-### <a name="troubleshooting"></a>故障排除
+### <a name="troubleshooting"></a>疑难解答
 
 如果应用程序已订阅此工作区或者此租户已订阅另一个工作区，则可能会看到以下错误。
 
-```
+```Output
 Invoke-WebRequest : {"Message":"An error has occurred."}
 At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 + $officeresponse = Invoke-WebRequest @Officeparams
@@ -366,7 +378,7 @@ At C:\Users\v-tanmah\Desktop\ps scripts\office365_subscription.ps1:161 char:19
 
 如果提供了无效的参数值，则会出现以下错误。
 
-```
+```Output
 Select-AzSubscription : Please provide a valid tenant or a valid subscription.
 At line:12 char:18
 + ... cription = (Select-AzSubscription -SubscriptionId $($Subscriptio ...
@@ -377,11 +389,12 @@ At line:12 char:18
 ```
 
 ## <a name="uninstall"></a>卸载
+
 可以使用[删除管理解决方案](solutions.md#remove-a-monitoring-solution)中的过程删除 Office 365 管理解决方案。 但是，这不会停止将数据从 Office 365 收集到 Azure Monitor 中。 请按照下面的过程来取消订阅 Office 365 并停止收集数据。
 
 1. 将以下脚本保存为 office365_unsubscribe.ps1。
 
-    ```
+    ```powershell
     param (
         [Parameter(Mandatory=$True)][string]$WorkspaceName,
         [Parameter(Mandatory=$True)][string]$ResourceGroupName,
@@ -472,15 +485,18 @@ At line:12 char:18
 
     示例：
 
-    ```
+    ```powershell
     .\office365_unsubscribe.ps1 -WorkspaceName MyWorkspace -ResourceGroupName MyResourceGroup -SubscriptionId '60b79d74-f4e4-4867-b631-yyyyyyyyyyyy' -OfficeTennantID 'ce4464f8-a172-4dcf-b675-xxxxxxxxxxxx'
     ```
 
 ## <a name="data-collection"></a>数据收集
+
 ### <a name="supported-agents"></a>支持的代理
+
 Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-data-sources.md)中检索数据。  而直接从 Office 365 检索数据。
 
 ### <a name="collection-frequency"></a>收集频率
+
 初次收集数据可能需要几个小时。 在开始收集后，每次创建记录时，Office 365 都会向 Azure Monitor 发送带详细数据的 [webhook 通知](https://msdn.microsoft.com/office-365/office-365-management-activity-api-reference#receiving-notifications)。 在收到此记录几分钟后，此记录将出现在 Azure Monitor 中。
 
 ## <a name="using-the-solution"></a>使用解决方案
@@ -511,6 +527,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 对于 Office 365 解决方案在 Azure Monitor 中的 Log Analytics 工作区中创建的所有记录，其类型都是 **OfficeActivity**。  OfficeWorkload 属性确定记录所指的 Office 365 服务 - Exchange、AzureActiveDirectory、SharePoint 或 OneDrive。  RecordType 属性指定操作的类型。  每种操作类型的属性都不同，详情请见下表。
 
 ### <a name="common-properties"></a>通用属性
+
 以下属性对于所有 Office 365 记录通用。
 
 | 属性 | 说明 |
@@ -528,6 +545,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 
 ### <a name="azure-active-directory-base"></a>Azure Active Directory Base
+
 以下属性对于所有 Azure Active Directory 记录通用。
 
 | 属性 | 说明 |
@@ -539,6 +557,7 @@ Office 365 解决方案不会从任何 [Log Analytics 代理](../platform/agent-
 
 
 ### <a name="azure-active-directory-account-logon"></a>Azure Active Directory 帐户登录
+
 Active Directory 用户尝试登录时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -552,6 +571,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
+
 更改 Azure Active Directory 对象或向其添加内容时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -569,6 +589,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="data-center-security"></a>数据中心安全
+
 基于数据中心安全审核数据创建这些记录。  
 
 | 属性 | 说明 |
@@ -584,6 +605,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="exchange-admin"></a>Exchange 管理员
+
 更改 Exchange 配置时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -598,6 +620,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="exchange-mailbox"></a>Exchange 邮箱
+
 更改 Exchange 邮箱或向其添加内容时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -620,6 +643,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="exchange-mailbox-audit"></a>Exchange 邮箱审核
+
 创建邮箱审核项时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -634,6 +658,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="exchange-mailbox-audit-group"></a>Exchange 邮箱审核组
+
 更改 Exchange 组或向其添加内容时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -652,6 +677,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="sharepoint-base"></a>SharePoint Base
+
 这些属性对于所有 SharePoint 记录通用。
 
 | 属性 | 说明 |
@@ -668,6 +694,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="sharepoint-schema"></a>SharePoint 架构
+
 对 SharePoint 进行配置更改时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -680,6 +707,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ### <a name="sharepoint-file-operations"></a>SharePoint 文件操作
+
 响应 SharePoint 中的文件操作时，将创建这些记录。
 
 | 属性 | 说明 |
@@ -700,6 +728,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="sample-log-searches"></a>示例日志搜索
+
 下表提供了此解决方案收集的更新记录的示例日志搜索。
 
 | 查询 | 说明 |
@@ -713,6 +742,7 @@ Active Directory 用户尝试登录时，将创建这些记录。
 
 
 ## <a name="next-steps"></a>后续步骤
+
 * 使用 [Azure Monitor 中的日志查询](../log-query/log-query-overview.md)查看详细的更新数据。
 * [创建自己的仪表板](../learn/tutorial-logs-dashboards.md)，显示最喜欢的 Office 365 搜索查询。
 * [创建警报](../platform/alerts-overview.md)，主动接收重要的 Office 365 活动通知。  

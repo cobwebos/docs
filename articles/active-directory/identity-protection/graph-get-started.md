@@ -18,12 +18,12 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f748e10ffa8b1c8a7f4ee3dc3d151f7413179ab
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 3357cfd5e845346534f263c768b5cf6b6a38ea4e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517447"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793979"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>Azure Active Directory Identity Protection 和 Microsoft Graph 入门
 
@@ -153,6 +153,7 @@ Microsoft Graph 是 Microsoft 的统一 API 终结点，并且是 [Azure Active 
    > 
 
 ## <a name="authenticate-to-microsoft-graph-and-query-the-identity-risk-events-api"></a>在 Microsoft Graph 中进行身份验证并查询标识风险事件 API
+
 现在应已获得：
 
 - 租户域的名称
@@ -239,6 +240,7 @@ GET https://graph.microsoft.com/beta/riskyUsers?$filter=riskDetail eq 'userPasse
 ### <a name="get-all-the-risky-sign-ins-for-a-specific-user-signin-api"></a>获取特定用户的所有有风险的登录 (signIn API)
 
 当你认为某个用户可能已受到威胁时，可以通过检索其所有有风险的登录来更好地了解其风险状态。 
+
 ```
 https://graph.microsoft.com/beta/identityRiskEvents?`$filter=userID eq '<userID>' and riskState eq 'atRisk'
 ```

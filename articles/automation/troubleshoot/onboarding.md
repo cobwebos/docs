@@ -4,16 +4,16 @@ description: 了解如何排查更新管理、更改跟踪和库存解决方案�
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/25/2019
+ms.date: 03/20/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: ac11b1a2b625d1fc7b62130580d1f188ead21051
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342722"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802025"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>排查加入解决方案时发生的错误
 
@@ -25,19 +25,23 @@ ms.locfileid: "56342722"
 
 #### <a name="issue"></a>问题
 
-尝试将虚拟机加入解决方案时，你会收到以下消息：
+您尝试载入虚拟机到解决方案时收到以下消息之一：
 
-```
+```error
 The solution cannot be enabled due to missing permissions for the virtual machine or deployments
+```
+
+```error
+The solution cannot be enabled on this VM because the permission to read the workspace is missing
 ```
 
 #### <a name="cause"></a>原因
 
-此错误是由于虚拟机或用户的权限不正确或丢失造成的。
+在虚拟机，工作区中，或用户的不正确或缺少权限导致此错误。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
-请确保你有加入虚拟机所需的权限。 查看[加入计算机所需的权限](../automation-role-based-access-control.md#onboarding)并尝试重新加入解决方案。
+请确保你有加入虚拟机所需的权限。 查看[加入计算机所需的权限](../automation-role-based-access-control.md#onboarding)并尝试重新加入解决方案。 如果收到错误`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，确保您具有`Microsoft.OperationalInsights/workspaces/read`能够找到 VM 是否加入工作区的权限。
 
 ### <a name="computer-group-query-format-error"></a>场景：ComputerGroupQueryFormatError
 
@@ -49,7 +53,7 @@ The solution cannot be enabled due to missing permissions for the virtual machin
 
 你可能已更改了该查询，或者系统可能已更改了该查询。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 可以删除对此解决方案的查询，重新载入解决方案，这会重新创建查询。 可以在你的工作区内找到此查询，它位于“保存的搜索”下。 查询名称是 **MicrosoftDefaultComputerGroup**，查询类别是与此查询关联的解决方案的名称。 如果启用了多个解决方案，则 **MicrosoftDefaultComputerGroup** 会在“保存的搜索”下显示多次。
 
@@ -63,7 +67,7 @@ The solution cannot be enabled due to missing permissions for the virtual machin
 
 实施的某个策略正在阻止操作完成。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 为了成功部署解决方案，需要考虑更改指示的策略。 由于可以定义许多不同类型的策略，因此所需的特定更改取决于所违反的策略。 例如，如果在某个资源组上定义了一个拒绝更改该资源组中某些类型的资源内容的权限的策略，则可以（例如）执行以下任一操作：
 
@@ -73,17 +77,17 @@ The solution cannot be enabled due to missing permissions for the virtual machin
   * 将策略重定位到特定资源（例如，特定自动化帐户）。
   * 修改该策略已配置为拒绝的资源集。
 
-检查 Azure 门户右上角的通知或导航到包含自动化帐户的资源组，然后选择“设置”下的“部署”以查看失败部署。 若要了解有关 Azure Policy 的详细信息，请访问：[Azure Policy 概述](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
+检查 Azure 门户的右上角的通知或导航到包含你的自动化帐户和选择的资源组**部署**下**设置**若要查看失败部署。 若要了解有关 Azure Policy 的详细信息，请访问：[Azure Policy 概述](../../governance/policy/overview.md?toc=%2fazure%2fautomation%2ftoc.json)。
 
 ## <a name="mma-extension-failures"></a>MMA 扩展失败
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-部署解决方案时，会部署各种相关资源。 其中一个资源是 Microsoft Monitoring Agent 扩展或 Log Analytics Linux 代理。 这些虚拟机扩展由虚拟机的来宾代理安装，该代理负责与配置的 Log Analytics 工作区通信，目的是在所要加入的解决方案开始执行后，协调该解决方案所依赖的二进制文件和其他文件的下载。
+部署解决方案时，会部署各种相关资源。 其中一个资源是 Microsoft Monitoring Agent 扩展或 Log Analytics Linux 代理。 这些是由负责与配置的 Log Analytics 工作区，用于更高版本协调的二进制文件的下载进行通信的虚拟机的来宾代理已安装的虚拟机扩展和其他文件，你是解决方案载入依赖于后开始执行。
 通常，通知中心显示的通知首先会指出发生了 MMA 或 Log Analytics Linux 代理安装失败。 单击该通知可以获取有关特定失败问题的更多信息。 依次导航到“资源组”资源和“部署”元素，其中也提供了发生的部署失败问题的详细信息。
 MMA 或 Log Analytics Linux 代理安装可能会出于各种原因而失败，这些失败问题的解决步骤根据问题的不同而异。 具体的故障排除步骤如下。
 
-以下部分描述了在加入过程中可能会遇到的、导致 MMA 扩展部署失败的各种问题。
+以下部分介绍当载入的 MMA 扩展部署中导致失败时可以遇到的各种问题。
 
 ### <a name="webclient-exception"></a>场景：在 WebClient 请求期间发生异常
 
@@ -105,17 +109,17 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 此错误的部分潜在原因包括：
 
-* VM 中配置了一个只允许使用特定端口的代理。
+* 没有配置中的 VM，只允许特定端口的代理。
 
 * 某个防火墙设置已阻止访问所需的端口和地址。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 确保已打开正确的端口和地址用于通信。 有关端口和地址的列表，请参阅[规划网络](../automation-hybrid-runbook-worker.md#network-planning)。
 
-### <a name="transient-environment-issue"></a>场景：暂时性的环境问题导致安装失败
+### <a name="transient-environment-issue"></a>场景：安装失败，因为临时环境问题
 
-在部署期间安装 Microsoft Monitoring Agent 扩展失败，因为另一项安装或操作阻止了此项安装
+安装 Microsoft Monitoring Agent 扩展在由于另一安装或阻止安装操作在部署过程失败
 
 #### <a name="issue"></a>问题
 
@@ -138,19 +142,19 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 此错误的部分潜在原因包括：
 
 * 另一项安装正在进行
-* 在部署模板期间，已触发系统重新启动
+* 系统会触发将模板部署期间重新启动
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 此错误是暂时性的。 请重试部署，以安装该扩展。
 
 ### <a name="installation-timeout"></a>场景：安装超时
 
-由于超时，MMA 扩展的安装未完成。
+安装了 MMA 扩展因超时而未完成。
 
 #### <a name="issue"></a>问题
 
-下面是可能返回的错误消息示例：
+下面的示例是可能返回的错误消息：
 
 ```error
 Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent, version 1.0.11081.4) with exception Command C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\1.0.11081.4\MMAExtensionInstall.exe of Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent has exited with Exit code: 15614
@@ -158,9 +162,9 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 #### <a name="cause"></a>原因
 
-发生此错误的原因是安装期间虚拟机承受了较重的负载。
+此错误是因为在安装过程中要在高负载下的虚拟机。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 请尝试在 VM 的负载降低时安装 MMA 扩展。
 
@@ -170,4 +174,4 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

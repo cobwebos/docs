@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 16ec3428138361726d69eb9b45943b20129e32ed
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630719"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762423"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -27,12 +27,12 @@ ms.locfileid: "58630719"
 
 蓝图分配中由项目创建的资源具有四种状态：“未锁定”、“只读”、“无法编辑/删除”或“无法删除”。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
 
-|Mode|项目资源类型|状态|描述|
+|模式|项目资源类型|州/省/自治区/直辖市|描述|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 |只读|非资源组|只读|以任何方式都无法更改资源 -- 无更改且无法将其删除。|
-|不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
+|请勿删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 
 ## <a name="overriding-locking-states"></a>重写锁定状态
 
@@ -52,6 +52,8 @@ ms.locfileid: "58630719"
 ## <a name="how-blueprint-locks-work"></a>蓝图锁定的工作原理
 
 如果蓝图分配选择了“只读”或“不要删除”选项，则会在分配期间将 RBAC [拒绝分配](../../../role-based-access-control/deny-assignments.md)拒绝操作应用于项目资源。 该拒绝操作由蓝图分配的托管标识添加，并且只能通过同一托管标识从项目资源中删除。 此安全措施将强制实施锁定机制，并防止在蓝图外部删除蓝图锁定。
+
+![蓝图拒绝对资源组的分配](../media/resource-locking/blueprint-deny-assignment.png)
 
 > [!IMPORTANT]
 > Azure 资源管理器可以将角色分配详细信息缓存最多 30 分钟。 因此，蓝图资源上的拒绝分配拒绝操作可能不会立即完全生效。 在此时间段内，可能无法删除将由蓝图锁保护的资源。

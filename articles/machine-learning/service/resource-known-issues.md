@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd518ad8c5ea13c4eeaa017417332744cecd328e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: d7542909df336555e17aea9b0e680879b25dc17f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661218"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791739"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
 
@@ -59,7 +59,7 @@ Databricks 和 Azure 机器学习问题。
 
 ### <a name="failure-when-installing-packages"></a>安装包时失败
 
-安装多个包时，azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免出现安装错误，请通过冻结的库版本安装包。 此问题与到 Databricks 而不适用于 Azure 机器学习服务 SDK。 您也可能会遇到其他库，这一问题。 示例：
+安装多个包时，azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免出现安装错误，请通过冻结的库版本安装包。 此问题与到 Databricks 而不适用于 Azure 机器学习服务 SDK。 您也可能会遇到其他库，这一问题。 示例:
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -104,8 +104,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
-如果在请求帮助时可以提供诊断信息，有时会很有帮助。
-下面是日志文件所在的位置：
+如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 门户](https://portal.azure.com)并转到你的工作区然后选择**工作区 > 试验 > 运行 > 日志**。
 
 ## <a name="resource-quotas"></a>资源配额
 

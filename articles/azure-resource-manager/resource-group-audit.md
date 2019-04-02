@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: tomfitz
-ms.openlocfilehash: e7bcfce4e9d23839c623be3b54e97d931e6454cb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: 8348099d778a9ec65e907bb3d21ae995041b9fb6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268288"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802281"
 ---
-# <a name="view-activity-logs-to-audit-actions-on-resources"></a>查看活动日志以审核对资源的操作
+# <a name="view-activity-logs-to-audit-actions-on-resources"></a>查看活动日志，以便审核对资源的操作
 
 通过活动日志，可以确定：
 
@@ -37,7 +37,7 @@ ms.locfileid: "56268288"
 
 ## <a name="the-azure-portal"></a>Azure 门户
 
-1. 若要通过门户查看活动日志，请选择“监视”。
+1. 若要通过门户查看活动日志，请选择“监视” 。
 
     ![选择“监视”](./media/resource-group-audit/select-monitor.png)
 
@@ -167,12 +167,12 @@ ms.locfileid: "56268288"
 
 ## <a name="rest-api"></a>REST API
 
-用于处理活动日志的 REST 操作是 [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx) 的一部分。 若要检索活动日志事件，请参阅[列出订阅中的管理事件](https://msdn.microsoft.com/library/azure/dn931934.aspx)。
+用于处理活动日志的 REST 操作是 [Insights REST API](/rest/api/monitor/)的一部分。 若要检索活动日志事件，请参阅 [列出订阅中的管理事件](/rest/api/monitor/activitylogs)。
 
 ## <a name="next-steps"></a>后续步骤
 
 * Azure 活动日志可以与 Power BI 一起使用，以便更深入地了解在订阅中执行的操作。 请参阅 [View and analyze Azure Activity Logs in Power BI and more](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)（在 Power BI 和其他组件中查看和分析 Azure 活动日志）。
 * 若要了解如何设置安全策略，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
-* 若要了解查看部署操作的命令，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
-* 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure 资源管理器锁定资源](resource-group-lock-resources.md)。
+* 若要了解用于查看部署操作的命令，请参阅[查看部署操作](resource-manager-deployment-operations.md)。
+* 若要了解如何防止对所有用户的资源执行删除操作，请参阅[使用 Azure Resource Manager 锁定资源](resource-group-lock-resources.md)。
 * 若要查看可用于各 Microsoft Azure 资源管理器提供程序的操作的列表，请参阅 [Azure 资源管理器资源提供程序操作](../role-based-access-control/resource-provider-operations.md)

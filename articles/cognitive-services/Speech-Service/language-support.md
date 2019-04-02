@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 3188b5acc00f7f0463ae1154346447bee463e09c
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 0a82c2ba8bdf3d01041aa06f55eaaecab29817b2
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225427"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803096"
 ---
 # <a name="language-and-region-support-for-the-speech-services"></a>语音服务的语言和区域支持
 
@@ -37,7 +37,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  en-GB | 英语(英国) | 否 | 是 | 是
  en-IN | 英语(印度) | 是 | 是 | 是
  en-NZ | 英语(新西兰) | 否 | 是 | 是  
- en-US | 英语(美国) | 是 | 是 | 是
+ zh-CN | 英语(美国) | 是 | 是 | 是
  es-ES | 西班牙语(西班牙) | 是 | 是 | 否
  es-MX | 西班牙语(墨西哥) | 否 | 是 | 否
  fi-FI | 芬兰语(芬兰) | 否 | 否 | 否
@@ -46,7 +46,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  hi-IN | 印地语(印度) | 否 | 是 | 否
  it-IT | 意大利语(意大利) | 是 | 是 | 否
  ja-JP | 日语(日本) | 否 | 是 | 否
- ko-KR | 韩语(韩国) | 否 | 是 | 否
+ ko-KR | 朝鲜语(韩国) | 否 | 是 | 否
  nb-NO | 书面挪威语(挪威) | 否 | 否 | 否
  nl-NL | 荷兰语(荷兰) | 否 | 是 | 否
  pl-PL | 波兰语(波兰) | 否 | 否 | 否
@@ -55,7 +55,7 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
  ru-RU | 俄语(俄罗斯) | 是 | 是 | 否
  sv-SE | 瑞典语(瑞典) | 否 | 否 | 否
  zh-CN | 中文(普通话，简体) | 是 | 是 | 否
- zh-HK | 中文(普通话，繁体) | 否 | 是 | 否
+ zh-HK | 中文 （粤语，传统） | 否 | 是 | 否
  zh-TW | 中文(台湾普通话) | 否 | 是 | 否
  th-TH | 泰语(泰国) | 否 | 否 | 否
 
@@ -78,8 +78,8 @@ Microsoft 语音识别 API 支持以下语言。 每种语言都有不同级别�
 | 区域设置 | 语言 | 性别 | 服务名称映射|
 |--------|----------|--------|---------------------|
 | de-DE | 德语(德国) | 女 | "Microsoft Server 语音文本到语音语音 (DE-DE KatjaNeural)" |
-| en-US | 英语(美国) | 男 | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）” |
-| en-US | 英语(美国) | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaNeural）” |
+| zh-CN | 英语(美国) | 男 | “Microsoft 服务器语音的文本转语音（en-US，GuyNeural）” |
+| zh-CN | 英语(美国) | 女 | “Microsoft 服务器语音的文本转语音（en-US，JessaNeural）” |
 | it-IT | 意大利语(意大利) | 女 | "Microsoft Server 语音文本到语音语音 (it IT，ElsaNeural)" |
 | zh-CN | 中文 | 女 | “Microsoft 服务器语音的文本转语音（zh-CN，XiaoxiaoNeural）” |
 
@@ -118,7 +118,7 @@ en-IE | 英语(爱尔兰) |男 | “Microsoft 服务器语音的文本转语音�
 en-IN | 英语(印度) | 女 | “Microsoft 服务器语音的文本转语音（en-IN，Heera，Apollo）”
 | | |女 | “Microsoft 服务器语音的文本转语音（en-IN，PriyaRUS）”
 | | |男 | “Microsoft 服务器语音的文本转语音（en-IN，Ravi，Apollo）”
-en-US | 英语(美国) |女 | “Microsoft 服务器语音的文本转语音（en-US，ZiraRUS）”
+zh-CN | 英语(美国) |女 | “Microsoft 服务器语音的文本转语音（en-US，ZiraRUS）”
 | | |女 | “Microsoft 服务器语音的文本转语音（en-US，JessaRUS）”
 | | |男 | “Microsoft 服务器语音的文本转语音（en-US，BenjaminRUS）”
 | | |女 | “Microsoft 服务器语音的文本转语音（en-US，Jessa24kRUS）”
@@ -147,7 +147,7 @@ it-IT | 意大利语 |男 | “Microsoft 服务器语音的文本转语音（it-
 ja-JP | 日语 |女 | “Microsoft 服务器语音的文本转语音（ja-JP，Ayumi，Apollo）”
 | | |男 | “Microsoft 服务器语音的文本转语音（ja-JP，Ichiro，Apollo）”
 | | |女 | “Microsoft 服务器语音的文本转语音（ja-JP，HarukaRUS）”
-ko-KR | 韩语 |女 | “Microsoft 服务器语音的文本转语音（ko-KR，HeamiRUS）”
+ko-KR | 朝鲜语 |女 | “Microsoft 服务器语音的文本转语音（ko-KR，HeamiRUS）”
 ms-MY | 马来语 | 男 | “Microsoft 服务器语音的文本转语音（ms-MY，Rizwan）”
 nb-NO | 挪威语 | 女 | “Microsoft 服务器语音的文本转语音（nb-NO，HuldaRUS）”
 nl-NL | 荷兰语 | 女 | “Microsoft 服务器语音的文本转语音（nl-NL，HannaRUS）”
@@ -170,10 +170,10 @@ vi-VN | 越南语|男 | “Microsoft 服务器语音的文本转语音（vi-VN�
 zh-CN | 中文(中国)|女 | “Microsoft 服务器语音的文本转语音（zh-CN，HuihuiRUS）”
 | | |女 | “Microsoft 服务器语音的文本转语音（zh-CN，Yaoyao，Apollo）”
 | | |男 | “Microsoft 服务器语音的文本转语音（zh-CN，Kangkang，Apollo）”
-zh-HK | 中文(香港特别行政区)|女 | “Microsoft 服务器语音的文本转语音（zh-HK，Tracy，Apollo）”
+zh-HK | 中文(香港)|女 | “Microsoft 服务器语音的文本转语音（zh-HK，Tracy，Apollo）”
 | | |女 | “Microsoft 服务器语音的文本转语音（zh-HK，TracyRUS）”
 | || 男 | “Microsoft 服务器语音的文本转语音（zh-HK，Danny，Apollo）”
-zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语音（zh-TW，Yating，Apollo）”
+zh-TW | 中文(台湾)|女 | “Microsoft 服务器语音的文本转语音（zh-TW，Yating，Apollo）”
 | || 女 | “Microsoft 服务器语音的文本转语音（zh-TW，HanHanRUS）”
 | || 男 | “Microsoft 服务器语音的文本转语音（zh-TW，Zhiwei，Apollo）”
 
@@ -196,13 +196,13 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 |:----------- |:-------------:|
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
-| Bangla      | `bn`          |
-| 波斯尼亚语(拉丁语系)      | `bs`          |
+| 孟加拉语      | `bn`          |
+| 波斯尼亚语(拉丁语)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 粤语(繁体)      | `yue`          |
 | 加泰罗尼亚语      | `ca`          |
-| 中文(简体)      | `zh-Hans`          |
-| 中文(繁体)      | `zh-Hant`          |
+| 简体中文      | `zh-Hans`          |
+| 繁体中文      | `zh-Hant`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -226,10 +226,10 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 | 斯瓦希里语      | `sw`          |
 | 克林贡语      | `tlh`          |
 | 克林贡语(plqaD)      | `tlh-Qaak`          |
-| 韩语      | `ko`          |
+| 朝鲜语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
-| 马达加斯加语      | `mg`          |
+| 马拉加斯语      | `mg`          |
 | 马来语      | `ms`          |
 | 马耳他语      | `mt`          |
 | 挪威语      | `nb`          |
@@ -240,8 +240,8 @@ zh-TW | 中文(中国台湾)|女 | “Microsoft 服务器语音的文本转语�
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
 | 萨摩亚语      | `sm`          |
-| 塞尔维亚语(西里尔文)      | `sr-Cyrl`          |
-| 塞尔维亚语(拉丁语系)      | `sr-Latn`          |
+| 塞尔维亚语(西里尔语)      | `sr-Cyrl`          |
+| 塞尔维亚语(拉丁文)      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |

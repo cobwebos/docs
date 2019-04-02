@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: b06bc6b41081f05a7067f82f46affc37d21f50b1
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 8ea17e5615c0256c084b0745a392fb49f8873f99
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57213290"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805357"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>创建具有加速网络的 Linux 虚拟机
 
@@ -42,13 +42,16 @@ ms.locfileid: "57213290"
 
 ## <a name="supported-operating-systems"></a>支持的操作系统
 从 Azure 库即可支持以下分发： 
-* **Ubuntu 16.04+** 
-* **SLES 12 SP3** 
-* **RHEL 7.4**
-* **CentOS 7.4**
+* **在 linux azure 内核的 Ubuntu 14.04**
+* **Ubuntu 16.04 或更高版本** 
+* **SLES12 SP3 或更高版本** 
+* **RHEL 7.4 或更高版本**
+* **CentOS 7.4 或更高版本**
 * **CoreOS Linux**
 * **Debian“Stretch”（backport 内核）**
-* **Oracle Linux 7.4**
+* **Oracle Linux 7.4 及更高版本与 Red Hat 兼容内核 (RHCK)**
+* **Oracle Linux 7.5 和更高版本具有 UEK 版本 5**
+* **FreeBSD 10.4、 11.1 和 12.0**
 
 ## <a name="limitations-and-constraints"></a>限制和约束
 
@@ -81,7 +84,7 @@ removed per issue https://github.com/MicrosoftDocs/azure-docs/issues/9772 -->
 ## <a name="cli-creation"></a>CLI 创建
 ### <a name="create-a-virtual-network"></a>创建虚拟网络
 
-安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换为自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
+安装最新的 [Azure CLI](/cli/azure/install-azure-cli) 并使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。 在以下示例中，请将示例参数名称替换成自己的值。 参数名称示例包括 myResourceGroup、myNic 和 myVm。
 
 使用 [az group create](/cli/azure/group) 创建资源组。 以下示例在 centralus 位置创建名为 myResourceGroup 的资源组：
 

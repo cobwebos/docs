@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 01/24/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 520d417abe27887fad03257c52521c25602009eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4ba866ddf79a9970ef3f5c4ff3b7085242a1cdcd
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096004"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802790"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
 
 此清单适用于将 SAP NetWeaver、S/4HANA 和 Hybris 应用程序迁移到 Azure 基础结构即服务的客户。  在项目进行期间，客户和/或 SAP 合作伙伴应审核此清单。 注意，许多检查都在项目开始时和规划阶段进行。 部署完成后，已部署的 Azure 基础结构或 SAP 软件版本的基本更改可能会变得复杂。 在整个项目的重要节点查看此清单。  在小问题变严重之前可以将其检测出来，并且有足够的时间来重新设计和测试任何必要的更改。 该清单从未声称完整。 根据自己的具体情况，可能需要执行更多检查。 
 
-收集的清单不包括独立于 Azure 的任务。  示例：SAP 应用程序接口在迁移到 Azure 公共云或托管提供程序期间发生更改。    
+收集的清单不包括独立于 Azure 的任务。  示例:SAP 应用程序接口在迁移到 Azure 公共云或托管提供程序期间发生更改。    
 
 此清单还可用于已部署的系统。 自部署以来，可能就已添加了写入加速器、可用性区域和新 VM 类型等新功能。  因此，定期查看清单以确保了解 Azure 平台中的新功能非常有用。 
 
@@ -77,7 +77,7 @@ ms.locfileid: "58096004"
 5.  Microsoft 顶级支持协定 - 确定 MS 技术部客户经理 (TAM)。 有关 SAP 的支持要求，请阅读 SAP 支持说明 [#2015553](https://launchpad.support.sap.com/#/notes/2015553) 
 6.  定义 Azure 订阅数和不同订阅的核心配额。 根据需要[打开支持请求以增加 Azure 订阅的配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 
 7.  用于将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的指南。 SAP 发布了有关在 SAP ERP 系统中进行数据管理的[见解深刻的指南](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF)。 但是，某些内容通常适用于 NetWeaver 和 S/4HANA 系统。
-8.  定义并确定自动部署方法。 对于 Azure 上基础结构部署，其自动化目标是以确定性的方式进行部署，并获得确定性的结果。 许多客户都使用基于 Powershell 或 CLI 的脚本。 不过各种开源技术均可用于为 SAP 部署 Azure 基础结构，甚至可以安装 SAP 软件。 可以在 github 中找到示例：
+8.  定义并确定自动部署方法。 对于 Azure 上基础结构部署，其自动化目标是以确定性的方式进行部署，并获得确定性的结果。 许多客户都使用基于 Powershell 或 CLI 的脚本。 不过各种开源技术均可用于为 SAP 部署 Azure 基础结构，甚至可以安装 SAP 软件。 可以在 GitHub 中找到示例：
     1.  [Azure 云中的自动 SAP 部署](https://github.com/Azure/sap-hana)
     2.  [SAP HANA 安装](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  定义客户、系统集成商、Microsoft 和其他相关各方之间的常规设计和部署评审节奏
@@ -88,19 +88,21 @@ ms.locfileid: "58096004"
 试点阶段可以在项目规划和准备阶段之前运行，也可以并行运行。 该阶段还可用于测试规划和准备阶段确定的方法和设计。 试点阶段可以延伸到实际的概念证明。 建议在试点部署期间设置和验证完整的 HA/DR 解决方案和安全设计。 在某些客户案例中，可伸缩性测试也可以在此阶段进行。 另一些客户则将 SAP 沙盒系统的部署用作试点阶段。 因此，我们假设你确定了一个要迁移到 Azure 以便运行试点的系统。
 
 1. 优化将数据传输到 Azure 的过程。 如果快速线路有足够的带宽，那么通过 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 从本地进行传输的速度最快（主要取决于客户案例）。 对于其他客户来说，上网速度更快
-2. 在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://blogs.msdn.microsoft.com/saponsqlserver/2017/05/08/sap-osdb-migration-to-sql-server-faq-v6-2-april-2017/)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP03 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2631152) 中所述）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
+2. 在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP03 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2631152) 中所述）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
    1.  导出到源、导出上传到 Azure 的文件和导入性能。  使导出和导入之间的重叠最大化
    2.  评估目标和目标平台之间的数据库容量，以反映到基础结构的大小调整中    
    3.  验证并优化执行时间 
 3. 技术验证 
    1. VM 类型
       1.  再次验证 SAP 支持说明、SAP HANA 硬件目录和 SAP PAM 上的资源，以确保支持的 Azure VM、这些 VM 类型支持的 OS 版本以及支持的 SAP 和 DBMS 版本没有发生更改
-      2.  再次验证 Azure 上部署的应用程序和基础结构的大小。 如果要移动现有应用程序，通常可以从使用的基础结构和 [SAP 基准网页](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)中获取必要的 SAPS，并将其与 SAP 支持说明 [#1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 SAPS 编号进行比较。 另请注意[这篇文章](https://blogs.msdn.microsoft.com/saponsqlserver/2018/11/04/saps-ratings-on-azure-vms-where-to-look-and-where-you-can-get-confused/)
+      2.  再次验证 Azure 上部署的应用程序和基础结构的大小。 如果要移动现有应用程序，通常可以从使用的基础结构和 [SAP 基准网页](https://www.sap.com/dmc/exp/2018-benchmark-directory/#/sd)中获取必要的 SAPS，并将其与 SAP 支持说明 [#1928533](https://launchpad.support.sap.com/#/notes/1928533) 中列出的 SAPS 编号进行比较。 另请注意[这篇文章](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAPS-ratings-on-Azure-VMs-8211-where-to-look-and-where-you-can/ba-p/368208)
       3.  评估和测试 Azure VM 的大小，了解在规划阶段选择的不同 VM 类型的最大存储吞吐量和网络吞吐量。 数据可在以下位置找到：
           1.  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
           2.  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)：重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
-   2. 存储
-      1.  对于数据库 VM，请使用 Azure 高级存储
+   2. 存储空间
+      1.  使用[Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)代表 SAP 应用程序层 Vm 和非性能敏感的 DBMS 部署最小
+      2.  我们建议不应使用[Azure 标准 HDD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)一般情况下
+      2.  使用[Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)对于任何远程是性能敏感的 DBMS Vm
       2.  使用 [Azure 托管磁盘](https://azure.microsoft.com/services/managed-disks/)
       3.  对于使用 M 系列的 DBMS 日志驱动器，请使用 Azure 写入加速器。 请注意[写入加速器](https://docs.microsoft.com/azure/virtual-machines/linux/how-to-enable-write-accelerator)中提供的写入加速器限制和使用情况
       4.  对于不同的 DBMS 类型，请查看[与 SAP 相关的 DBMS 通用文档](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)以及通用文档指向的特定于 DBMS 的文档
@@ -124,6 +126,7 @@ ms.locfileid: "58096004"
               4.  Oracle Linux 7.5。 使用 RHCKL 内核时，版本需为 3.10.0-862.13.1.el7。 使用 Oracle UEK 内核时，需要版本 5
           4.   根据 SAP 支持说明 [#500235](https://launchpad.support.sap.com/#/notes/500235) 和 SAP 支持说明 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 测试和评估 SAP 应用层 VM 和 DBMS VM 之间的网络延迟。 根据 SAP 支持说明 [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E) 评估网络延迟的结果。 网络延迟应该在中等且较好的范围内。 例外情况为 VM 和 HANA 大型实例单元之间的流量（如[此处](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-network-architecture#networking-architecture-for-hana-large-instance)所述）
           5.   确保 ILB 部署设置为使用直接服务器返回。 如果将 Azure ILB 用于 DBMS 层上的高可用性配置，此设置将减少延迟
+          6.   如果与 Linux 来宾操作系统检查 Linux 网络参数结合使用 Azure 负载均衡器**net.ipv4.tcp_timestamps**设置为**0**。 针对较旧版本的 SAP 中的建议，请注意[#2382421](https://launchpad.support.sap.com/#/notes/2382421)。 SAP 说明同时会更新以反映这一事实，该参数必须设置为 0，以与 Azure 负载均衡器配合工作。
    4. 高可用性和灾难恢复部署。 
       1. 如果在未定义特定 Azure 可用性区域的情况下部署 SAP 应用层，请确保在[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)中部署所有运行 SAP 对话框实例或运行单个 SAP 系统的中间件实例的 VM。 
          1.   如果不需要 SAP 中心服务和 DBMS 的高可用性，则可以将这些 VM 部署到与 SAP 应用层相同的可用性集中

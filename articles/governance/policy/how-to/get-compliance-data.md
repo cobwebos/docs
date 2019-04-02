@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: df5b6268a2ecd7062969aac9d663ee751eeab130
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535198"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802942"
 ---
-# <a name="getting-compliance-data"></a>获取符合性数据
+# <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
 Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../../management-groups/overview.md)中的资源提供的见解和控制度。 可通过许多不同的方式运用这种控制，例如，防止在错误的位置创建资源、强制实施常见且一致的标记用法，或者审核相应配置和设置的现有资源。 在所有情况下，数据都由策略生成，使你能够了解环境的符合性状态。
 
@@ -93,10 +93,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 | 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合 |
-| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
-| 新建 | Audit、AuditIfNotExist\* | True | 不符合 |
-| 新建 | Audit、AuditIfNotExist\* | False | 符合 |
+| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | TRUE | 不符合 |
+| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | FALSE | 符合 |
+| 新建 | Audit、AuditIfNotExist\* | TRUE | 不符合 |
+| 新建 | Audit、AuditIfNotExist\* | FALSE | 符合 |
 
 \*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
@@ -120,27 +120,27 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 符合百分比是合规资源与总资源之比。
 根据定义，总资源是指合规资源、不合规资源和冲突资源的总和。 整体符合性是不同合规资源的总和除以所有唯一资源。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。 因此，资源的整体符合性为 95%（19/20）。
 
-![简单的符合性示例](../media/getting-compliance-data/simple-compliance.png)
+![从合规性页面的策略符合性的示例](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>门户
 
 Azure 门户展示了一个图形体验用于可视化和了解环境中的符合性状态。 在“策略”页上，“概述”选项提供了策略和计划符合性的可用范围的详细信息。 除了符合性状态和每个分配的计数以外，该页还包含一个图表，显示过去七天的符合性。
 “符合性”页包含上述大量相同信息（图表除外），但提供附加的筛选和排序选项。
 
-![策略符合性页](../media/getting-compliance-data/compliance-page.png)
+![策略符合性页的示例](../media/getting-compliance-data/compliance-page.png)
 
 由于策略或计划可分配到不同的范围，因此表中包含每个分配的范围，以及分配的定义类型。 还提供每个分配项中不合规资源和不合规策略的数量。 单击表中的某个策略或计划可以更深入地了解该特定分配的符合性。
 
-![策略符合性详细信息](../media/getting-compliance-data/compliance-details.png)
+![策略符合性详细信息页示例](../media/getting-compliance-data/compliance-details.png)
 
 “资源符合性”选项卡上的资源列表显示当前分配的现有资源的评估状态。 此选项卡默认为“不符合”，但是可以进行筛选。
 创建资源的请求所触发的事件（追加、审核、拒绝、部署）显示在“事件”选项卡下。
 
-![策略符合性事件](../media/getting-compliance-data/compliance-events.png)
+![策略符合性事件的示例](../media/getting-compliance-data/compliance-events.png)
 
 右键单击要收集其更多详细信息的事件所在的行，然后选择“显示活动日志”。 活动日志页将会打开，其中的搜索结果经过预先筛选，显示分配和事件的详细信息。 活动日志提供有关这些事件的其他上下文和信息。
 
-![策略符合性活动日志](../media/getting-compliance-data/compliance-activitylog.png)
+![策略符合性活动日志的示例](../media/getting-compliance-data/compliance-activitylog.png)
 
 ### <a name="understand-non-compliance"></a>了解非符合性
 
@@ -316,7 +316,7 @@ Connect-AzAccount
 - `Start-AzPolicyRemediation`
 - `Stop-AzPolicyRemediation`
 
-示例：获取不符合资源数最多的、最前面的已分配策略的状态摘要。
+示例:获取不合规资源数最多的、最前面的已分配策略的状态摘要。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyStateSummary -Top 1
@@ -327,7 +327,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
                         oft.authorization/policyassignments/37ce239ae4304622914f0c77}
 ```
 
-示例：获取最近评估的资源的状态记录（默认按时间戳的降序排序）。
+示例:获取最近评估的资源的状态记录（默认按时间戳的降序排序）。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Top 1
@@ -353,7 +353,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-示例：获取所有不符合虚拟网络资源的详细信息。
+示例:获取所有不合规虚拟网络资源的详细信息。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
@@ -379,7 +379,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-示例：获取在特定日期后发生的、与不符合虚拟网络资源相关的事件。
+示例:获取在特定日期后发生的、与不合规虚拟网络资源相关的事件。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'

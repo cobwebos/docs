@@ -6,14 +6,14 @@ author: alkohli
 ms.service: storage
 ms.subservice: blobs
 ms.topic: article
-ms.date: 12/07/2018
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: d3326713b0fbae070d04fa0fe7ead712fbcacf84
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 8dd55032c933cdc31b848addfdac991550376dcf
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496887"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805566"
 ---
 # <a name="data-transfer-for-large-datasets-with-moderate-to-high-network-bandwidth"></a>具有中高速网络带宽的大型数据集的数据传输
  
@@ -62,9 +62,9 @@ ms.locfileid: "58496887"
 
 如果使用脱机数据传输，请通过下表了解主要功能之间的差异。
 
-|                                     |    Data Box Disk（预览版）    |    Data Box                                      |    Data Box Heavy（预览版）              |    导入/导出                       |
+|                                     |    Data Box Disk      |    Data Box                                      |    Data Box Heavy            |    导入/导出                       |
 |-------------------------------------|---------------------------------|--------------------------------------------------|------------------------------------------|----------------------------------------|
-|    数据大小                        |    最多为 35 TB                 |    每个设备最多 80 TB                       |    每个设备最多 800 TB               |    变量                            |
+|    数据大小                        |    最多为 35 TB                 |    每个设备最多 80 TB                       |    每个设备最多 800 TB               |    Variable                            |
 |    数据类型                        |    Azure Blob                  |    Azure Blob<br>Azure 文件                    |    Azure Blob<br>Azure 文件            |    Azure Blob<br>Azure 文件          |
 |    外形规格                      |    每笔订单 5 个 SSD             |    每笔订单 1 X 50 磅 桌面大小的设备    |    每笔订单 1 X ~500 磅 大型设备    |    每笔订单最多 10 个 HDD/SSD        |
 |    初始设置时间               |    低 <br>（15 分钟）            |    低等到中等 <br> （<30 分钟）               |    中等<br>（1-2 小时）               |    中等到困难<br>（不定） |
@@ -74,16 +74,16 @@ ms.locfileid: "58496887"
 |    硬件                         |     Microsoft 提供          |    Microsoft 提供                            |    Microsoft 提供                    |    客户提供                   |
 |    网络接口                |    USB 3.1/SATA                 |    RJ 45，SFP+                                   |    RJ45，QSFP+                           |    SATA II/SATA III                    |
 |    合作伙伴集成              |    部分                         |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                          |    [高](https://azuremarketplace.microsoft.com/campaigns/databox/azure-data-box)                                  |    部分                                |
-|    寄送                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
+|    正在装运                         |    Microsoft 托管            |    Microsoft 托管                             |    Microsoft 托管                     |    由客户管理                    |
 | 数据移动时使用         |在商务区域内|在商务区域内|在商务区域内|跨地理区域，例如美国到欧洲|
-|    定价                          |    [定价](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [价格](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [价格](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [定价](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
+|    定价                          |    [价格](https://azure.microsoft.com/pricing/details/databox/disk/)                    |   [价格](https://azure.microsoft.com/pricing/details/storage/databox/)                                      |  [价格](https://azure.microsoft.com/pricing/details/storage/databox/heavy/)                               |   [价格](https://azure.microsoft.com/pricing/details/storage-import-export/)                            |
 
 
 如果使用在线数据传输，请使用以下部分中的表格获得高速网络带宽。
 
 ### <a name="high-network-bandwidth"></a>高速网络带宽
 
-|                                     |    Tools AzCopy， <br>Azure PowerShell， <br>Azure CLI             |    Azure 存储 REST API，SDK                   |    Data Box Gateway 或 Data Box Edge（预览版）           |    Azure 数据工厂                                            |
+|                                     |    Tools AzCopy， <br>Azure PowerShell， <br>Azure CLI             |    Azure 存储 REST API，SDK                   |    数据框网关或数据框边缘          |    Azure 数据工厂                                            |
 |-------------------------------------|------------------------------------|----------------------------------------------|----------------------------------|-----------------------------------------------------------------------|
 |    数据类型                  |    Azure Blob、Azure 文件、Azure 表    |    Azure Blob、Azure 文件、Azure 表    |    Azure Blob、Azure 文件                           |   支持 70 多个用于数据存储和格式的数据连接器    |
 |    外形规格                |    命令行工具                        |    编程接口                    |    Microsoft 提供虚拟 <br>或物理设备     |    Azure 门户中的服务                                            |
@@ -91,7 +91,7 @@ ms.locfileid: "58496887"
 |    数据预处理              |    否                                        |    否                                        |    是（使用 Edge 计算）                               |    是                                                                |
 |    从其他云传输       |    否                                        |    否                                        |    否                                                    |    是                                                                |
 |    用户类型                        |    IT 专家或开发人员                                       |    Dev                                       |    IT 专家                                                |    IT 专家                                                             |
-|    定价                          |    免费，收取数据出口费用         |    免费，收取数据出口费用         |    [定价](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [定价](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
+|    定价                          |    免费，收取数据出口费用         |    免费，收取数据出口费用         |    [价格](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                                               |    [价格](https://azure.microsoft.com/pricing/details/data-factory/)                                                            |
 
 ## <a name="next-steps"></a>后续步骤
 

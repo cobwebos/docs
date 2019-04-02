@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9c7b1f737d0331ecd40ab318cec0c082a3f7ddd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9311c1060b953e87f163cb482db14cdd43f50d3d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56181331"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58791536"
 ---
 # <a name="user-privacy-and-azure-ad-seamless-single-sign-on"></a>用户隐私和 Azure AD 无缝单一登录
 
@@ -50,7 +50,7 @@ Azure AD 无缝 SSO 创建可包含个人数据的以下日志类型：
 
 可使用 Windows 资源管理器查看和删除这些跟踪日志文件，也可使用以下 PowerShell 脚本执行必要的操作：
 
-```
+```powershell
 $Files = ((Get-Item -Path "$env:programdata\aadconnect\trace-*.log").VersionInfo).FileName 
  
 Foreach ($file in $Files) { 
@@ -67,6 +67,7 @@ Foreach ($file in $Files) {
 如果启用了审核日志，此产品可能会为域控制器生成安全日志。 若要了解有关配置审核策略的详细信息，请阅读[此文](https://technet.microsoft.com/library/dd277403.aspx)。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [查看信任中心上的 Microsoft 隐私策略](https://www.microsoft.com/trustcenter)
-  - [故障排除](tshoot-connect-sso.md) - 了解如何解决使用此功能时遇到的常见问题。
-  - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于填写新功能请求。
+  - [故障排除](tshoot-connect-sso.md) - 了解如何解决此功能的常见问题。
+  - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 用于提出新的功能请求。

@@ -11,28 +11,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: c446a71a363a9a81eeb7d0dddcdbd90ccee08b7d
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1d28701dd35b9d80fd52a1f102c53f2d59d63b09
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189353"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762348"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
-使用 Azure 媒体服务可将实时事件传送到 Azure 云中的客户。 若要在媒体服务 v3 中配置实时传送视频流事件，需了解本文中讨论的概念：
+使用 Azure 媒体服务可将实时事件传送到 Azure 云中的客户。 若要配置媒体服务 v3 中的实时流式处理事件，您需要了解本文中讨论的概念。 <br/>在页面的右侧列出的部分列表。
 
-* [实时事件](#live-events)
-* 实时事件类型
-* 实时事件类型比较
-* [实时事件创建选项](#live-event-creation-options)
-* [实时事件引入 URL](#live-event-ingest-urls)
-* [实时事件预览 URL](#live-event-preview-url)
-* [实时输出](#live-outputs)。
-
-## <a name="live-events"></a>实时事件
+## <a name="live-events"></a>直播事件
 
 [实时事件](https://docs.microsoft.com/rest/api/media/liveevents)负责引入和处理实时视频源。 创建实时事件时，会创建一个输入终结点，可以使用它来从远程编码器发送实时信号。 远程实时编码器使用 [RTMP](https://www.adobe.com/devnet/rtmp.html) 或[平滑流式处理](https://msdn.microsoft.com/library/ff469518.aspx)（分段 MP4）协议将贡献源发送到该输入终结点。 对于平滑流式处理引入协议，支持的 URL 方案为 `http://` 或 `https://`。 对于 RTMP 引入协议，支持的 URL 方案为 `rtmp://` 或 `rtmps://`。 
 
@@ -49,7 +41,7 @@ ms.locfileid: "58189353"
 发送的贡献源的最高分辨率可为 4K，帧速率可为 60 帧/秒，采用 H.264/AVC 或 H.265/HEVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。  有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
 
 > [!NOTE]
-> 当需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，则可使用直通这种最经济的方法来实时传送视频流。 请参阅 [定价](https://azure.microsoft.com/pricing/details/media-services/) 详细信息。
+> 需要长时间处理多个事件，并且已经在本地编码器上进行了投入时，可以使用直通这种最经济的方法来实时传送视频流。 请参阅[定价](https://azure.microsoft.com/pricing/details/media-services/)详细信息。
 > 
 
 请参阅 [MediaV3LiveApp](https://github.com/Azure-Samples/media-services-v3-dotnet-core-tutorials/blob/master/NETCore/Live/MediaV3LiveApp/Program.cs#L126) 中的 .NET 代码示例。
@@ -62,17 +54,17 @@ ms.locfileid: "58189353"
 
 发送的贡献源的最高分辨率可为 1080p，帧速率可为 30 帧/秒，采用 H.264/AVC 视频编解码器，以及 AAC（AAC-LC、HE-AACv1 或 HE-AACv2）音频编解码器。 有关详细信息，请参阅[实时事件类型比较](live-event-types-comparison.md)一文。
 
-使用实时编码时 (实时事件设置为**标准**)，编码预设定义如何将传入流编码为多个比特率或图层。 有关信息，请参阅[系统预设](live-event-types-comparison.md#system-presets)。
+使用实时编码（实时事件设置为**标准**）时，编码预设定义了如何将传入的流编码为多个比特率或图层。 有关信息，请参阅[系统预设](live-event-types-comparison.md#system-presets)。
 
 > [!NOTE]
-> 目前，唯一允许的预设的值的实时事件的标准类型为*Default720p*。 如果您需要使用自定义的实时编码预设，请联系amshelp@microsoft.com。 您应指定所需的表的分辨率和比特率。 不要验证只有一个图层 720p 和最多 6 层。
+> 当前，实时事件的标准类型唯一允许的预设值为 *Default720p*。 如果你需要使用自定义的实时编码预设，请联系 amshelp@microsoft.com。 你应当指定所需的分辨率和比特率的表。 请确认只有一个 720p 的图层，最多有 6 个图层。
 
 ## <a name="live-event-creation-options"></a>实时事件创建选项
 
 创建实时事件时，可以指定以下选项：
 
 * 实时事件的流式处理协议（目前支持 RTMP 和平滑流式处理协议）。<br/>运行实时事件或其关联的实时输出时，无法更改协议选项。 如果需要其他协议，应当为每个流式处理协议创建单独的实时事件。  
-* 对引入和预览的 IP 限制。 可定义允许向该实时事件引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建一个规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
+* 对引入和预览的 IP 限制。 可定义允许向该实时事件引入视频的 IP 地址。 允许的 IP 地址可以指定为单个 IP 地址（例如“10.0.0.1”）、使用一个 IP 地址和 CIDR 子网掩码的 IP 范围（例如“10.0.0.1/22”）或使用一个 IP 地址和点分十进制子网掩码的 IP 范围（例如“10.0.0.1(255.255.252.0)”）。<br/>如果未指定 IP 地址并且没有规则定义，则不会允许任何 IP 地址。 若要允许任何 IP 地址，请创建规则并设置 0.0.0.0/0。<br/>IP 地址必须采用以下格式之一：具有 4 个数字、CIDR 地址范围的 IpV4 地址。
 * 创建事件时，可以将其启动方式指定为自动启动。 <br/>如果将 autostart 设置为 true，则实时事件会在创建后启动。 只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 或者，可以在准备好开始流式传输后，启动事件。 
 
     有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
@@ -107,7 +99,7 @@ ms.locfileid: "58189353"
 `rtmps://<random 128bit hex string>.channel.media.azure.net:2935/<access token>`
 `rtmps://<random 128bit hex string>.channel.media.azure.net:2936/<access token>`
 
-##### <a name="smooth-streaming"></a>平滑流
+##### <a name="smooth-streaming"></a>平滑流式处理
 
 `http://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
 `https://<random 128bit hex string>.channel.media.azure.net/<access token>/ingest.isml`
@@ -121,7 +113,7 @@ ms.locfileid: "58189353"
 `rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2935/<access token>`
 `rtmps://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net:2936/<access token>`
 
-##### <a name="smooth-streaming"></a>平滑流
+##### <a name="smooth-streaming"></a>平滑流式处理
 
 `http://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
 `https://<live event name>-<ams account name>-<region abbrev name>.channel.media.azure.net/<access token>/ingest.isml`
@@ -132,6 +124,10 @@ ms.locfileid: "58189353"
 
 > [!IMPORTANT]
 > 确保视频流向预览 URL，然后再继续操作！
+
+## <a name="live-event-long-running-operations"></a>实时事件长时间运行的操作
+
+有关详细信息，请参阅[长时间运行的操作](entities-overview.md#long-running-operations)
 
 ## <a name="live-outputs"></a>实时输出
 

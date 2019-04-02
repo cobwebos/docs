@@ -13,16 +13,30 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 2/13/2019
-ms.openlocfilehash: d5c003b2588813f8e8a1dfc2923b9d4c8d8c6cc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: c46e2d4e2aa79d1d62d0361763911660349cfbb0
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820427"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762305"
 ---
 # <a name="sql-server-on-azure-virtual-machine-release-notes"></a>Azure 虚拟机上的 SQL Server 发行说明
 
 Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总了 [Azure 虚拟机上的 SQL Server](https://azure.microsoft.com/services/virtual-machines/sql-server/) 的最新版本中的新功能和改进。 本文还列出了不与此版本直接相关但在同一时间范围内发布的值得注意的内容更新。 有关对其他 Azure 服务的改进，请参阅[服务更新](https://azure.microsoft.com/updates)
+
+## <a name="march-2019"></a>2019 年 3 月
+
+### <a name="service-improvements"></a>服务改进
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+| **自定义映像可支持性** | 现在可以安装[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)为自定义 OS 和 SQL 映像提供了有限的功能[灵活的许可](virtual-machines-windows-sql-ahb.md)。 当向 SQL 资源提供程序，注册自定义映像指定许可证类型为 AHUB 作为否则注册将失败。 对于自定义映像不支持通过 Azure 门户中的 SQL 配置边栏选项卡可管理性。   | 
+| **命名的实例可支持性** | 现可利用[SQL IaaS 扩展](virtual-machines-windows-sql-server-agent-extension.md#installation)使用命名实例，如果已正确卸载默认实例。 | 
+| &nbsp; | &nbsp; |
+
+### <a name="documentation-improvements"></a>文档改进
+
+无
 
 
 ## <a name="february-2019"></a>2019 年 2 月
@@ -32,15 +46,9 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 | 服务改进 | 详细信息 |
 | --- | --- |
 | **门户改进** | 现可从即用即付自带的自己的许可证使用 SQL Server VM 的更改的许可模式[Azure 门户](virtual-machines-windows-sql-ahb.md#with-the-azure-portal-1)。|
-|**可用性组部署简化使用 Azure SQL VM CLI** | 它是现在比以往要请将可用性组部署到 Azure 中的 SQL Server VM。 Azure SQL VM CLI，可从命令行中，所有和记录时间中创建了 WSFC，ILB 和 AG 侦听器 ！ 有关详细信息，请参阅[使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-cli.md)。 | 
+|**可用性组部署简化使用 Azure SQL VM CLI** | 它是现在比以往要请将可用性组部署到 Azure 中的 SQL Server VM。 [Azure SQL VM CLI](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid) ，可从命令行中，所有和记录时间中创建了 WSFC，ILB 和 AG 侦听器 ！ 有关详细信息，请参阅[使用 Azure SQL VM CLI 为 Azure VM 上的 SQL Server 中配置 Always On 可用性组](virtual-machines-windows-sql-availability-group-cli.md)。 | 
 | &nbsp; | &nbsp; |
 
-### <a name="documentation-improvements"></a>文档改进
-
-| 文档改进 | 详细信息 |
-| --- | --- |
-|无 | |
-| | |
 
 ## <a name="december-2018"></a>2018 年 12 月
 
@@ -69,8 +77,8 @@ Azure 允许你使用内置的 SQL Server 映像部署虚拟机。 本文汇总�
 * [设置 SQL Server Windows VM](virtual-machines-windows-portal-sql-server-provision.md)
 * [将数据库迁移到 Azure VM 上的 SQL Server](virtual-machines-windows-migrate-sql.md)
 * [Azure 虚拟机中 SQL Server 的高可用性和灾难恢复](virtual-machines-windows-sql-high-availability-dr.md)
-* [Azure 虚拟机中 SQL Server 的性能最佳实践](virtual-machines-windows-sql-performance.md)
-* [Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
+* [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)
+* [Azure 虚拟机中 SQL Server 的应用程序模式和开发策略](virtual-machines-windows-sql-server-app-patterns-dev-strategies.md)
 
 **Linux VM**：
 

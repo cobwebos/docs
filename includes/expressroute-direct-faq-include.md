@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: eb807082443da495cd89e1dd624058c89d3ee65b
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6a0d84a2aaf4b52c7fb0163231574eaea63c18c3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56825448"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807418"
 ---
 ### <a name="what-is-expressroute-direct"></a>什么是 ExpressRoute Direct？
 
@@ -32,7 +32,7 @@ ms.locfileid: "56825448"
 * 芝加哥
 * 华盛顿特区
 * 达拉斯 
-* 香港特别行政区
+* 香港
 * 洛杉矶
 * New York City
 * 巴黎
@@ -52,6 +52,6 @@ ExpressRoute Direct 为客户提供到 Microsoft 全球主干线中的直接 100
 
 ExpressRoute Direct 将针对端口对按固定金额计费。 标准线路将包含在内（不含额外的小时），高级线路将稍加一些附加费用。 流出量将基于对等互连位置的区域按每条线路进行计费。
 
-### <a name="when-does-billing-state-for-the-expressroute-direct-port-pairs"></a>ExpressRoute Direct 端口对何时进入计费状态？
+### <a name="when-does-billing-start-for-the-expressroute-direct-port-pairs"></a>何时开始计费的？ ExpressRoute 直接端口对
 
 创建 ExpressRoute Direct 资源 45 天后，或启用了一个或两个链接时，ExpressRoute Direct 端口对开始计费，以先到者为准。 我们提供 45 天的宽限期，让客户能够完成与主机托管提供程序的交叉连接过程。

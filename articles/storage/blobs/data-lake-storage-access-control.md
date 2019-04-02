@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
-ms.openlocfilehash: a102216a6a2a7dec471678e14f7050cb4ef41d77
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370102"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802943"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
 
@@ -27,9 +27,9 @@ Azure 基于角色的访问控制 (RBAC) 使用角色分配对用户、组和 Az
 
 Azure 存储为 Blob 存储提供三个内置的 RBAC 角色： 
 
-- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview)
-- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)
-- [存储 Blob 数据读者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview)
+- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner)
+- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)
+- [存储 Blob 数据读者](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader)
 
 通过上述三个内置角色之一或某个自定义角色授予用户或服务主体 RBAC 数据权限后，在授权请求时首先评估这些权限。 如果请求的操作由调用方的 RBAC 分配授权，则立即解析授权，不执行额外的 ACL 检查。 或者，如果调用方没有 RBAC 分配或请求的操作与分配的权限不匹配，则通过执行 ACL 检查来确定调用方是否有权执行请求的操作。
 
@@ -60,7 +60,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和目录使用这些权限：
 
-|            |    文件     |   Directory |
+|            |    文件     |   目录 |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出目录内容 |
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在目录中创建子项 |
@@ -85,7 +85,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 下表列出了一些常见方案，可帮助你了解对 Data Lake Storage Gen2 帐户执行特定操作所需的权限。
 
-|    Operation             |    /    | Oregon/ | Portland/ | Data.txt     |
+|    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -245,7 +245,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不是。 只要开启了分层命名空间 (HNS) 功能，Data Lake Storage Gen2 帐户就能通过 ACL 进行访问控制。
+否。 只要开启了分层命名空间 (HNS) 功能，Data Lake Storage Gen2 帐户就能通过 ACL 进行访问控制。
 
 即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 
@@ -285,7 +285,7 @@ def set_default_acls_for_new_child(parent, child):
 
 对于服务主体定义 Acl，时，一定要使用的对象 ID (OID)*服务主体*创建应用注册。 务必要注意，已注册的应用具有单独的服务主体中特定于 Azure AD 租户。 已注册的应用具有 OID，是在 Azure 门户中可见，但*服务主体*具有另一个 （不同） 的 OID。
 
-若要获取服务主体的对应于应用程序注册的 OID，可以使用`az ad sp show`命令。 指定应用程序 ID 作为参数。 下面是一个示例对应于应用程序 Id 的应用注册的服务主体获取 OID = 18218b12-1895年-43e9-ad80-6e8fc1ea88ce。 在 Azure CLI 中运行以下命令：
+若要获取其 OID 对应的应用注册的服务主体，可以使用`az ad sp show`命令。 指定应用程序 ID 作为参数。 下面是一个示例对应于应用程序 Id 的应用注册的服务主体获取 OID = 18218b12-1895年-43e9-ad80-6e8fc1ea88ce。 在 Azure CLI 中运行以下命令：
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`

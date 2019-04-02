@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: f0c05ddbc53d08334aded48ccb3a3ece547b4143
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56816551"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802552"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -139,11 +139,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
 
-   ![搜索策略](../media/remediate-resources/search-policy.png)
+   ![搜索所有服务中的策略](../media/remediate-resources/search-policy.png)
 
 1. 选择“Azure Policy”页左侧的“修正”。
 
-   ![选择修正](../media/remediate-resources/select-remediation.png)
+   ![在策略页上选择修正](../media/remediate-resources/select-remediation.png)
 
 1. 所有带不符合资源的 deployIfNotExists 策略分配均包含在“要修正的策略”选项卡和一个数据表上。 单击其中一个具有不符合资源的策略。 “新修正任务”页随即打开。
 
@@ -152,11 +152,11 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在“新修正任务”页上，通过使用“范围”省略号从分配策略的位置选取子资源（包括下面的单个资源对象）来筛选要修正的资源。 此外，使用“位置”下拉列表来进一步筛选资源。 仅对表中列出的资源进行修正。
 
-   ![修正 - 选择资源](../media/remediate-resources/select-resources.png)
+   ![修正-选择要修正的资源](../media/remediate-resources/select-resources.png)
 
 1. 筛选资源后，通过单击“修正”来启动修正任务。 “策略符合性”页将打开到“修正任务”选项卡，以显示任务进度的状态。
 
-   ![修正 - 任务进度](../media/remediate-resources/task-progress.png)
+   ![修正-修正任务的进度](../media/remediate-resources/task-progress.png)
 
 1. 单击“策略符合性”页中的“修正任务”以获取有关进度的详细信息。 任务所使用的筛选与正在修正的资源列表一同显示。
 

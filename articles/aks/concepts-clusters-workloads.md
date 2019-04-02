@@ -18,7 +18,7 @@ ms.locfileid: "58181344"
 
 当应用程序开发向基于容器的开发转变时，资源的安排和管理就变得非常重要。 Kubernetes 是一个可用于可靠地规划和调度容错的应用程序工作负载的领先平台。 Azure Kubernetes 服务 (AKS) 是一种托管的 Kubernetes 服务，可进一步简化基于容器的应用程序的部署和管理。
 
-本文介绍了核心 Kubernetes 基础结构组件，例如集群主机、节点和节点池。 还介绍了 Pod、部署和集等工作负荷资源，以及如何将资源分组到命名空间。
+本文介绍了核心 Kubernetes 基础结构组件，例如群集主机、节点和节点池。 还介绍了 Pod、部署和集等工作负荷资源，以及如何将资源分组到命名空间。
 
 ## <a name="what-is-kubernetes"></a>什么是 Kubernetes？
 
@@ -28,7 +28,7 @@ Kubernetes 是一个快速发展的平台，用于管理基于容器的应用程
 
 作为开放平台，Kubernetes 可使用首选的编程语言、OS、库或消息总线生成应用程序。 现有的持续集成和持续交付 (CI/CD) 工具可以与 Kubernetes 集成，以计划和部署版本。
 
-Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 基于开源 Azure Kubernetes 服务引擎 ([aks 引擎][aks-engine])。
+Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 基于开放源代码 Azure Kubernetes 服务引擎 ([aks 引擎][aks-engine])。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes 群集体系结构
 
@@ -52,11 +52,11 @@ Kubernetes 群集分为两个组件：
 
 AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你来定义节点的数量和大小，Azure 平台配置群集主机与节点之间的安全通信。 通过 Kubernetes API（例如 `kubectl` 或 Kubernetes 仪表板）实现与群集主机之间的交互。
 
-此托管的群集主机意味着无需配置某些组件，如高度可用的 etcd 存储区，但也意味着不能直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主日志。
+此托管的群集主意味着您无需配置的组件，如高可用性*etcd*存储区，但它也意味着您不能直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，后者先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主日志。
 
 如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 
-有关相关的最佳做法，请参阅[AKS 中的安全性和升级最佳做法][operator-best-practices-cluster-security]。
+关联的最佳做法，请参阅[的群集的安全性和在 AKS 中的升级最佳做法][operator-best-practices-cluster-security]。
 
 ## <a name="nodes-and-node-pools"></a>节点和节点池
 
@@ -70,7 +70,7 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
 
 节点的 Azure VM 大小定义了 CPU 数量、内存大小以及可用存储的大小和类型（如高性能 SSD 或常规 HDD）。 如果预计需要使用大量 CPU 和内存或高性能存储的应用程序，则相应地规划节点大小。 还可以纵向扩展 AKS 群集中的节点数以满足需求。
 
-在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。无需任何手动配置。
+在 AKS 中，群集中节点的 VM 映像当前基于 Ubuntu Linux。 创建 AKS 群集或纵向扩展节点数时，Azure 平台会创建所请求数量的 VM 并对其进行配置。 无需任何手动配置。
 
 如果需要使用不同的主机 OS、容器运行时或包含自定义程序包，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。 上游 `aks-engine` 会发布功能并提供配置选项，且这一操作会在 AKS 群集中支持这些操作和选项之前实施。 例如，如果想要使用 Windows 容器或容器运行时而不是 Moby，可以使用`aks-engine`配置和部署满足当前需求的 Kubernetes 群集。
 
@@ -119,7 +119,7 @@ Pod 是逻辑资源，但容器是应用程序工作负荷的运行位置。 Pod
 
 可以更新部署以更改 Pod 的配置、使用的容器映像或附加存储。 Deployment 控制器耗尽并终止给定数量的副本，从新部署定义创建副本，并继续该过程，直至部署中的所有副本都已更新。
 
-AKS 中的大多数无状态应用程序应使用部署模型，而不是计划单个 Pod。 Kubernetes 可以监视部署的运行状况和状态，以确保在群集中运行所需数量的副本。如果仅计划单独的 pod，如果他们遇到问题，则不会重新启动 pod，并且如果其当前节点遇到问题，则不会在正常的节点上重新计划 pod。
+AKS 中的大多数无状态应用程序应使用部署模型，而不是计划单个 Pod。 Kubernetes 可以监视部署的运行状况和状态，以确保在群集中运行所需数量的副本。 如果仅计划单独的 pod，如果他们遇到问题，则不会重新启动 pod，并且如果其当前节点遇到问题，则不会在正常的节点上重新计划 pod。
 
 如果应用程序需要一定数量的实例才能做出管理决策，你不希望更新进程来中断该功能。 Pod 中断预算可用于定义在更新或节点升级期间部署中可以删除的副本数。 例如，如果部署中有 5 个副本，则可以定义 4 个 Pod 中断，以便一次只允许删除/重新计划一个副本。 与 Pod 资源限制一样，最佳做法是在需要始终存在最少数量副本的应用程序上定义 Pod 中断预算。
 
@@ -207,7 +207,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 
 - default - 不提供任何命名空间时，默认情况下在此命名空间中创建 Pod 和部署。 在小型环境中，可以将应用程序直接部署到默认命名空间，而无需创建其他逻辑分隔。 与 Kubernetes API（例如 `kubectl get pods`）交互时，如果未指定命名空间，则使用默认值。
 - kube-system - 此命名空间是核心资源的所在位置，例如 DNS 和代理等网络功能或 Kubernetes 仪表板。 通常不会将应用程序部署到此命名空间中。
-- kube-public - 通常不使用此命名空间，但可以用于让资源在整个群集中可见，并可供任何用户查看。
+- kube-public - 通常不使用此命名空间，但可以用于在整个群集中可见的资源，并且可供任何用户查看。
 
 有关详细信息，请参阅 [Kubernetes 命名空间][kubernetes-namespaces]。
 
