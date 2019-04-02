@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: a2adb0dbbacbec28f241ae89d1b9f763e0f00b90
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 42a7ae0e6ca5239aa83d20655817973e8f185d02
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447596"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805391"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -84,11 +84,11 @@ ms.locfileid: "58447596"
 |操作系统  |说明  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。        |
-|Windows Server 2016 Nano Server     | 不支持。       |
+|Windows Server 2016 Nano Server     | 不受支持。       |
 
 ### <a name="client-requirements"></a>客户端要求
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>窗口
 
 Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Microsoft 更新。 可以将更新管理与 System Center Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果加入 Azure 虚拟机，则会自动安装此代理。
 
@@ -145,14 +145,14 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 #### <a name="linux"></a>Linux
 
-```
+```loganalytics
 Heartbeat
 | where OSType == "Linux" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-#### <a name="windows"></a>Windows
+#### <a name="windows"></a>窗口
 
-```
+```loganalytics
 Heartbeat
 | where OSType == "Windows" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
@@ -180,7 +180,7 @@ Heartbeat
 
 下表介绍了该解决方案支持的连接的源：
 
-| 连接的源 | 支持 | 描述 |
+| 连接的源 | 受支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -223,7 +223,7 @@ Heartbeat
 
 | 属性 | 描述 |
 | --- | --- |
-| 名称 |用于标识更新部署的唯一名称。 |
+| 姓名 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 要更新的组（预览）|定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
@@ -267,7 +267,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 下表列出了更新管理中的更新分类，以及每个分类的定义。
 
-### <a name="windows"></a>Windows
+### <a name="windows"></a>窗口
 
 |分类  |描述  |
 |---------|---------|
@@ -275,7 +275,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 |安全更新     | 产品特定、安全相关问题的更新。        |
 |更新汇总     | 一起打包以便于部署的一组累积修补程序。        |
 |功能包     | 在产品版本以外发布的新产品功能。        |
-|服务包     | 应用于应用程序的一组累积修补程序。        |
+|Service Pack     | 应用于应用程序的一组累积修补程序。        |
 |定义更新     | 对病毒或其他定义文件的更新。        |
 |工具     | 可帮助完成一个或多个任务的实用工具或功能。        |
 |更新     | 对当前已安装的应用程序或文件的更新。        |
@@ -340,7 +340,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
 
-|Azure Public  |Azure Government   |
+|Azure Public  |Azure 政府  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -355,8 +355,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择“Log Analytics”。 此时将打开“日志搜索”窗格。
 
-还可访问 Log Analytics 搜索 API 文档，[了解如何自定义查询或从不同客户端使用查询等](
-https://dev.loganalytics.io/)。
+还可访问 [Log Analytics 搜索 API 文档](
+https://dev.loganalytics.io/)，了解如何自定义查询或从不同客户端使用查询等。
 
 ### <a name="sample-queries"></a>示例查询
 

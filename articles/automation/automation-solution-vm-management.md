@@ -6,19 +6,22 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/26/2019
+ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6b5ef0f165433e2dd0685aa0e4f64bd04bf5c823
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57902240"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762933"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
 在解决方案启动和停止 Azure 虚拟机用户定义的计划、 通过 Azure Monitor 日志，提供见解和通过使用发送可选电子邮件的空闲时间启动/停止 Vm[操作组](../azure-monitor/platform/action-groups.md)。 它在大多数情况下都支持 Azure 资源管理器和经典 VM。
+
+> [!NOTE]
+> 在解决方案中进行了测试导入到自动化帐户部署解决方案时的 Azure 模块的非工作时间启动/停止 Vm。 该解决方案当前不适用于较新版本的 Azure 模块。 这仅会影响用于运行在非工作时间启动/停止 Vm 的自动化帐户。 您可以仍使用较新版本的 Azure 模块中其他自动化帐户，如中所述[如何更新 Azure 自动化中的 Azure PowerShell 模块](automation-update-azure-modules.md)
 
 对于想要优化 VM 成本的用户，此解决方案提供分散式的低成本自动化选项。 使用此解决方案可以：
 
@@ -38,7 +41,7 @@ ms.locfileid: "57902240"
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 此解决方案的 Runbook 使用 [Azure 运行方式帐户](automation-create-runas-account.md)。 运行方式帐户是首选的身份验证方法，因为它使用证书身份验证，而不是可能会过期或经常更改的密码。
 
@@ -67,7 +70,7 @@ ms.locfileid: "57902240"
    - 如果选择的默认值不合适，请从下拉列表中选择要链接到的**订阅**。
    - 对于“资源组”，可以创建新资源组，或选择现有的资源组。
    - 选择“位置” 。 目前可用的位置仅为：澳大利亚东南部、加拿大中部、印度中部、美国东部、日本东部、东南亚、英国南部、西欧和美国西部 2。
-   - 选择“定价层”。 选择“每 GB (独立)”选项。 Azure Monitor 日志已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)和每 GB 层是唯一的选项。
+   - 选择 **定价层**。 选择“每 GB (独立)”选项。 Azure Monitor 日志已更新[定价](https://azure.microsoft.com/pricing/details/log-analytics/)和每 GB 层是唯一的选项。
 
 5. 在“Log Analytics 工作区”页上提供所需信息后，单击“创建”。 可以在菜单中的“通知”下面跟踪操作进度，完成后将返回到“添加解决方案”页面。
 6. 在“添加解决方案”页面中，选择“自动化帐户”。 如果要创建新的 Log Analytics 工作区，可以创建与它关联的新自动化帐户，或选择尚未链接到 Log Analytics 工作区的现有自动化帐户。 选择现有的自动化帐户，或者单击“创建自动化帐户”，并在“添加自动化帐户”页上提供以下信息：
@@ -189,7 +192,7 @@ ms.locfileid: "57902240"
 
 所有父 Runbook 都包含 _WhatIf_ 参数。 设置为 **True** 时，_WhatIf_ 支持详细说明在无 _WhatIf_ 参数的情况下运行时 Runbook 的确切行为，并验证是否以正确 VM 为目标。 仅当 _WhatIf_ 参数设置为 **False** 时，Runbook 才执行其定义的操作。
 
-|Runbook | parameters | 描述|
+|Runbook | 参数 | 描述|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | 从父 runbook 调用。 此 runbook 为 AutoStop 方案按每个资源创建警报。|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf：是或否  | 在目标订阅或资源组中的 VM 上创建或更新 Azure 警报规则。 <br> VMList：以逗号分隔的 VM 列表。 例如“vm1, vm2, vm3”。<br> *WhatIf* 对 runbook 逻辑进行验证但不执行。|
@@ -204,7 +207,7 @@ ms.locfileid: "57902240"
 
 下表列出了在自动化帐户中创建的变量。 仅修改以 External 为前缀的变量。 修改以 **Internal** 为前缀的变量将导致不利影响。
 
-|变量 | 描述|
+|Variable | 描述|
 |---------|------------|
 |External_AutoStop_Condition | 在触发警报之前配置条件时所需的条件运算符。 可接受的值包括：**GreaterThan**、**GreaterThanOrEqual**、**LessThan** 和 **LessThanOrEqual**。|
 |External_AutoStop_Description | CPU 百分比超过阈值时停止 VM 的警报。|
@@ -250,7 +253,7 @@ ms.locfileid: "57902240"
 |CorrelationId | 用作 Runbook 作业相关性 ID 的 GUID。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
-|resourceId | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
+|ResourceId | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
 |resourceGroup | 指定 Runbook 作业的资源组名称。|
 |ResourceProvider | 指定  Azure 服务，它提供可部署和管理的资源。 对于自动化，该值为 Azure Automation。|
 |ResourceType | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
@@ -258,8 +261,8 @@ ms.locfileid: "57902240"
 |resultDescription | 描述 Runbook 作业结果状态。 可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成|
 |RunbookName | 指定 Runbook 的名称。|
 |SourceSystem | 指定所提交数据的源系统。 对于自动化，值为 OpsManager|
-|StreamType | 指定事件的类型。 可能的值包括：<br>- Verbose（详细）<br>- Output（输出）<br>- Error（错误）<br>- Warning（警告）|
-|SubscriptionId | 指定作业的订阅 ID。
+|StreamType | 指定事件的类型。 可能的值包括：<br>- Verbose<br>- Output（输出）<br>- Error（错误）<br>- Warning|
+|订阅 ID | 指定作业的订阅 ID。
 |时间 | 执行 Runbook 作业的日期和时间。|
 
 ### <a name="job-streams"></a>作业流
@@ -270,15 +273,15 @@ ms.locfileid: "57902240"
 |类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。|
 |JobId | 用作 Runbook 作业 ID 的 GUID。|
 |operationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。|
-|resourceGroup | 指定 Runbook 作业的资源组名称。|
-|resourceId | 指定 Azure 中的资源 ID。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
+|资源组 | 指定 Runbook 作业的资源组名称。|
+|ResourceId | 指定 Azure 中的资源 ID。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
 |ResourceProvider | 指定  Azure 服务，它提供可部署和管理的资源。 对于自动化，该值为 Azure Automation。|
 |ResourceType | 指定 Azure 中的资源类型。 对于自动化，该值是与 Runbook 关联的自动化帐户。|
 |resultType | 生成事件时 Runbook 作业的结果。 可能的值为：<br>- InProgress|
 |resultDescription | 包括来自 Runbook 的输出流。|
 |RunbookName | Runbook 的名称。|
 |SourceSystem | 指定所提交数据的源系统。 对于自动化，值为 OpsManager。|
-|StreamType | 作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose（详细）|
+|StreamType | 作业流的类型。 可能的值包括：<br>- Progress（进度）<br>- Output（输出）<br>- Warning（警告）<br>- Error（错误）<br>- Debug（调试）<br>- Verbose|
 |时间 | 执行 Runbook 作业的日期和时间。|
 
 如果执行的日志搜索返回 **JobLogs** 或 **JobStreams** 类别的记录时，可以选择 **JobLogs** 或 **JobStreams** 视图，其中显示了一组汇总搜索所返回的更新的磁贴。
@@ -287,7 +290,7 @@ ms.locfileid: "57902240"
 
 下表提供了此解决方案收集的作业记录的示例日志搜索。
 
-|Query | 描述|
+|查询 | 描述|
 |----------|----------|
 |查找已成功完成 Runbook ScheduledStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "ScheduledStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" )  <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc</code>|
 |查找已成功完成 Runbook SequencedStartStop_Parent 的作业 | <code>search Category == "JobLogs" <br>&#124;  where ( RunbookName_s == "SequencedStartStop_Parent" ) <br>&#124;  where ( ResultType == "Completed" ) <br>&#124;  summarize <br>&#124; AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) <br>&#124;  sort by TimeGenerated desc```|
@@ -349,7 +352,7 @@ ms.locfileid: "57902240"
 2. 针对要关闭 VM 的时间创建你自己的计划。
 3. 导航到 **ScheduledStartStop_Parent** runbook，然后单击“计划”。 这允许你选择在上一步中创建的计划。
 4. 选择“参数和运行设置”并将 ACTION 参数设置为“Stop”。
-5. 单击“确定”  保存更改。
+5.  单击“确定”以保存你的更改。
 
 ## <a name="update-the-solution"></a>更新解决方案
 
@@ -364,7 +367,7 @@ ms.locfileid: "57902240"
 1. 从自动化帐户中，从左侧页面中选择“工作区”。
 1. 在“解决方案”页中，请选择解决方案 Start-Stop-VM[Workspace]。 在“VMManagementSolution[Workspace]”页上，从菜单中选择“删除”。<br><br> ![删除 VM 管理解决方案](media/automation-solution-vm-management/vm-management-solution-delete.png)
 1. 在“删除解决方案”窗口中，确认要删除该解决方案。
-1. 在验证信息和删除解决方案期间，可以在菜单中的“通知”下面跟踪操作进度。 删除解决方案的进程启动后，系统会返回“解决方案”页。
+1. 在验证信息和删除解决方案期间，可以在菜单中的“通知”  下面跟踪操作进度。 删除解决方案的进程启动后，系统会返回“解决方案”页。
 
 此进程不会删除自动化帐户和 Log Analytics 工作区。 如果不想保留 Log Analytics 工作区，则需要手动删除。 可以通过 Azure 门户完成此操作。
 
@@ -377,5 +380,5 @@ ms.locfileid: "57902240"
 ## <a name="next-steps"></a>后续步骤
 
 - 若要了解有关如何构造不同的搜索查询和查看自动化作业日志，使用 Azure Monitor 日志的详细信息，请参阅[Azure Monitor 日志中的日志搜索](../log-analytics/log-analytics-log-searches.md)。
-- 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
+- 若要详细了解 Runbook 执行、Runbook 作业监视方式和其他技术细节，请参阅 [跟踪 Runbook 作业](automation-runbook-execution.md)。
 - 若要了解有关 Azure Monitor 日志和数据收集源的详细信息，请参阅[Azure Monitor 中的收集 Azure 存储数据日志概述](../azure-monitor/platform/collect-azure-metrics-logs.md)。

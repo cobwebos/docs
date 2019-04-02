@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/7/2019
 ms.author: borisb
-ms.openlocfilehash: 7d5c0a2a05bbdb19681641f53fb4e1cfcf30f6ca
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 018ad851b223caa4017d544ca12e2a6397654205
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519963"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793903"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>用于 Azure 中按需 Red Hat Enterprise Linux VM 的 Red Hat 更新基础结构
  [Red Hat 更新基础结构](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) 允许云提供程序（如 Azure）镜像 Red Hat 托管的存储库内容，创建包含 Azure 特定内容的自定义存储库，并将其提供给最终用户 VM 使用。
@@ -89,6 +89,8 @@ ms.locfileid: "58519963"
 
 # Azure US Government
 13.72.186.193
+13.72.14.155
+52.244.249.194
 
 # Azure Germany
 51.5.243.77
