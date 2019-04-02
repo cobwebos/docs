@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 12/20/2018
 ms.author: absha
-ms.openlocfilehash: 67603e326583400e8fc250ea6120297e7a94d101
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e89fe10768331f5b4099ce9a9e2204dd72aa0bff
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520915"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793458"
 ---
 # <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
 
@@ -96,7 +96,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 | -------------------------- | :----------------------------------------------------------- |
 | ciphers_supported          | 返回客户端支持的加密列表          |
 | ciphers_used               | 返回用于已建立的 SSL 连接的加密字符串 |
-| client_ip                  | 从其应用程序网关接收请求的客户端的 IP 地址。 如果然后在应用程序网关和原始客户端之前, 的反向代理*client_ip*将返回反向代理 IP 地址。 tjsi 变量是在客户要重写的 X-转发-对于标头设置应用程序网关，以便标头包含的 IP 地址将不带端口信息的方案中特别有用。 |
+| client_ip                  | 从其应用程序网关接收请求的客户端的 IP 地址。 如果然后在应用程序网关和原始客户端之前, 的反向代理*client_ip*将返回反向代理 IP 地址。 此变量是在客户要重写的 X-转发-对于标头设置应用程序网关，以便标头包含的 IP 地址将不带端口信息的方案中特别有用。 |
 | client_port                | 客户端端口                                                  |
 | client_tcp_rtt             | 关于客户端 TCP 连接的信息；在支持 TCP_INFO 套接字选项的系统上可用 |
 | client_user                | 使用 HTTP 身份验证时，为身份验证提供的用户名 |
@@ -127,7 +127,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 
 - 标头名称可以包含任何字母数字字符和 [RFC 7230](https://tools.ietf.org/html/rfc7230#page-27) 中定义的特定符号。 但是，目前不支持标头名称中的“下划线”(\_) 特殊字符。 
 
-## <a name="need-help"></a>需要帮助？
+## <a name="need-help"></a>需要帮助?
 
 如果需要关于此功能的任何帮助，请通过 [AGHeaderRewriteHelp@microsoft.com](mailto:AGHeaderRewriteHelp@microsoft.com) 与我们联系。
 

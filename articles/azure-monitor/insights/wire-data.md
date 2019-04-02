@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 5a4ba784402774750d4d7770652589b598ee00d8
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad5869a2a79d41245b731409e9e4fe4c5a460b19
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485571"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793214"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 wire Data 2.0 （预览版） 解决方案
 
@@ -80,7 +80,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 如果在 Windows 或 Linux 计算机不能直接连接到服务，你需要配置 Log Analytics 代理来连接到 Azure Monitor 使用 Log Analytics 网关。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
@@ -188,7 +188,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 | **文件** | **OS** | **版本** | **SHA-256** |
 | --- | --- | --- | --- |
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | 窗口 | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
 
 
@@ -291,7 +291,7 @@ sh InstallDependencyAgent-Linux64.bin -s
 
 若通过 Desired State Configuration 部署依赖关系代理，可使用 xPSDesiredStateConfiguration 模块和少量代码进行操作，如下所示：
 
-```
+```powershell
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
 $DAPackageLocalPath = "C:\InstallDependencyAgent-Windows.exe"
@@ -341,6 +341,7 @@ Node $NodeName
 }
 
 ```
+
 ### <a name="uninstall-the-dependency-agent"></a>卸载依赖关系代理
 
 可使用以下部分来帮助删除依赖关系代理。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: d2ecebf47c77baa81193939b64c27348541f7686
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 2768a23c217052a342538b67ec59868e25fd4914
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403402"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793809"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -40,7 +40,8 @@ ms.locfileid: "58403402"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关详细信息和有关如何配置 Operations Manager 管理组以通过 Azure Monitor 的 Log Analytics 网关进行通信的步骤，请参阅[将计算机连接到使用 Log Analytics 网关的 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>必备组件 
+## <a name="prerequisites"></a>系统必备 
+
 在开始之前，请查看以下要求。
 
 * Azure Monitor 仅支持 System Center Operations Manager 2016 或更高版本，Operations Manager 2012 SP1 UR6 或更高版本，以及 Operations Manager 2012 R2 UR2 或更高版本。 Operations Manager 2012 SP1 UR7 和 Operations Manager 2012 R2 UR3 中添加了代理服务器支持。
@@ -60,6 +61,7 @@ ms.locfileid: "58403402"
 >此管理包更新不适用于 System Center Operations Manager 1807，后者是版本 1801 的更新版本，而不是产品的完整版本。   
 
 ### <a name="network"></a>网络
+
 下面列出所需的 Operations Manager 代理、 管理服务器和操作控制台与 Azure Monitor 进行通信的代理和防火墙配置信息的信息。 从每个组件的流量是从网络传出到 Azure Monitor。   
 
 |资源 | 端口号| 绕过 HTTP 检查|  
@@ -87,9 +89,11 @@ ms.locfileid: "58403402"
 |docs.loganalytics.io| 80 和 443||  
 
 ### <a name="tls-12-protocol"></a>TLS 1.2 协议
+
 为了确保传输到 Azure Monitor 中的数据的安全性，我们强烈建议你配置代理和管理组至少使用传输层安全 (TLS) 1.2。 我们发现旧版 TLS/安全套接字层 (SSL) 容易受到攻击，尽管目前出于向后兼容，这些协议仍可正常工作，但我们**不建议使用**。 有关其他信息，请查看[使用 TLS 1.2 安全地发送数据](../../azure-monitor/platform/data-security.md#sending-data-securely-using-tls-12)。 
 
 ## <a name="connecting-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
+
 执行以下一系列步骤，将 Operations Manager 管理组配置为连接到你的一个 Log Analytics 工作区。
 
 首次向 Log Analytics 工作区注册 Operations Manager 管理组期间，为管理组指定代理配置的选项在操作控制台中不可用。  必须成功向服务注册管理组后，此选项才可用。  若要解决此问题，需使用 Netsh，对运行操作控制台以配置集成的系统，以及管理组中的所有管理服务器进行系统代理配置的更新。  
@@ -121,6 +125,7 @@ ms.locfileid: "58403402"
 1. 在“Operations Management Suite 载入向导:完成”页上，单击“关闭”。
 
 ### <a name="add-agent-managed-computers"></a>添加代理管理的计算机
+
 配置与 Log Analytics 工作区的集成后，只是建立了与服务的连接，不会从向管理组报告的代理中收集任何数据。 在配置的特定代理管理计算机的 Azure Monitor 收集日志数据之后，这就不会发生之前。 可以单独选择计算机对象，或者选择一个包含 Windows 计算机对象的组。 不能选择包含另一个类实例的组，如逻辑磁盘或 SQL 数据库。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
@@ -131,6 +136,7 @@ ms.locfileid: "58403402"
 可以在 Operations 控制台“**管理**”工作区中的 Operations Management Suite 下，查看配置为从“受管理计算机”节点收集数据的计算机和组。 在此处，可根据需要添加或移除计算机和组。
 
 ### <a name="configure-proxy-settings-in-the-operations-console"></a>在操作控制台中配置代理设置
+
 如果内部代理服务器之间的管理组和 Azure Monitor，请执行以下步骤。 这些设置集中从管理组管理和分发到代理管理系统包含在要为 Azure Monitor 收集日志数据的作用域中。  当某些解决方案绕过管理服务器并将数据直接发送到服务时，这很有用。
 
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
@@ -156,6 +162,7 @@ ms.locfileid: "58403402"
 * 选择的要在管理组中收集数据的代理和组将添加到 **Microsoft System Center Advisor Monitoring Server Group**。
 
 ## <a name="management-pack-updates"></a>管理包更新
+
 配置完成后，Operations Manager 管理组建立与 Azure Monitor 的连接。 管理服务器将与 Web 服务同步，针对与 Operations Manager 集成的已启用解决方案，以管理包的形式接收更新的配置信息。 Operations Manager 会自动检查这些管理包的更新，并在更新可用时下载和导入。 特别是，有两个控制此行为的规则：
 
 * **Microsoft.SystemCenter.Advisor.MPUpdate** -更新基本的 Azure 监视管理包。 默认情况下，每 12 小时运行一次。
@@ -166,6 +173,7 @@ ms.locfileid: "58403402"
 若要继续按照现有更改控制过程控制生产管理组中的管理包版本，可以禁用规则并在允许更新的特定时间段内将其启用。 如果环境中有开发或 QA 管理组，并且该组已连接到 Internet，则通过 Log Analytics 工作区配置该管理组，使之支持此方案。 这样，您可以查看和发布到生产管理组之前先评估其迭代版本的 Azure 监视管理包。
 
 ## <a name="switch-an-operations-manager-group-to-a-new-log-analytics-workspace"></a>将 Operations Manager 组切换到新的 Log Analytics 工作区
+
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
 1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics”，然后创建一个工作区。  
 1. 使用属于 Operations Manager 管理员角色成员的帐户打开 Operations Manager 控制台，并选择“**管理**”工作区。
@@ -179,9 +187,11 @@ ms.locfileid: "58403402"
    > 
 
 ## <a name="validate-operations-manager-integration-with-azure-monitor"></a>验证 Operations Manager 与 Azure Monitor 集成
+
 有多种不同的方式可以验证 Azure 监视器与 Operations Manager 集成成功。
 
 ### <a name="to-confirm-integration-from-the-azure-portal"></a>通过 Azure 门户确认集成
+
 1. 在 Azure 门户中，单击左下角的“更多服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。
 1. 在 Log Analytics 工作区列表中，选择相应的工作区。  
 1. 依次选择“高级设置”、“连接的源”、“System Center”。 
@@ -190,6 +200,7 @@ ms.locfileid: "58403402"
    ![oms-settings-connectedsources](./media/om-agents/oms-settings-connectedsources.png)
 
 ### <a name="to-confirm-integration-from-the-operations-console"></a>通过 Operations 控制台确认集成
+
 1. 打开 Operations Manager 控制台并选择“**管理**”工作区。
 1. 选择“**管理包**”，并在“**查找:**”文本框中键入 “**Advisor**”或“**Intelligence**”。
 1. 相应的管理包会在搜索结果中列出，具体取决于已启用的解决方案。  例如，如果已启用警报管理解决方案，管理包 Microsoft System Center Advisor 警报管理会在表中列出。
@@ -198,6 +209,7 @@ ms.locfileid: "58403402"
    ![oms-opsmgr-mg-authsvcuri-property-ms](./media/om-agents/oms-opsmgr-mg-authsvcuri-property-ms.png)
 
 ## <a name="remove-integration-with-azure-monitor"></a>删除与 Azure Monitor 集成
+
 当不再需要 Operations Manager 管理组和 Log Analytics 工作区之间的集成时，正确移除管理组中的连接和配置需要几个步骤。 以下过程包含您通过删除管理组的引用更新你的 Log Analytics 工作区中，删除 Azure Monitor 连接器，然后再删除支持与服务集成的管理包。  
 
 针对解决方案，管理包已启用的与 Operations Manager 集成和支持与 Azure Monitor 的集成所需的管理包不能轻松从管理组删除。 这是因为某些 Azure 监视管理包依赖于其他相关的管理包。 若要删除与其他管理包具有依赖关系的管理包，请从 TechNet 脚本中心下载脚本 [remove a management pack with dependencies](https://gallery.technet.microsoft.com/scriptcenter/Script-to-remove-a-84f6873e)（删除具有依赖关系的管理包）。  
@@ -244,7 +256,7 @@ ms.locfileid: "58403402"
 > 
 > 
 
-```
+```powershell
     param(
     [String] $connectorName,
     [String] $msName="localhost"
@@ -336,6 +348,5 @@ ms.locfileid: "58403402"
 * 适用于管理组的最新更新汇总。 Operations Manager 2012 的源文件夹为` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
 
 ## <a name="next-steps"></a>后续步骤
+
 若要添加的功能并收集数据，请参阅[从解决方案库中的添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)。
-
-

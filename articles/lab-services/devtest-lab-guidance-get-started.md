@@ -1,6 +1,6 @@
 ---
 title: 开始使用 Azure 开发测试实验室
-description: 本文提供了使用 Azure 开发测试实验室的主要场景以及开始在你的组织中使用该服务的两条常规路径。
+description: 本文提供有关使用 Azure 开发测试实验室和两个常规路径以开始使用你的组织中的服务的主要方案。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -10,57 +10,80 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 21837265a963829539f12cf7911191a61be43fbc
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243035"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803791"
 ---
 # <a name="get-started-with-using-azure-devtest-labs"></a>开始使用 Azure 开发测试实验室
-在你决定探究开发测试实验室后，可以沿两条常规路径继续前进 – 概念验证与按比例部署。 
-
-**规模化部署**包括数周/数月的审查和规划，其目的是将开发测试实验室部署到具有数百或数千个开发人员的整个企业。 
-
-**概念验证部署**专注于集中单个团队的力量来实现组织价值。 虽然想想规模化部署比较诱人，但是该方法通常比概念验证选项更容易失败。 因此，我们建议从小型部署开始，从第一个团队那里学习经验，对两到三个另外的团队重复相同的方法，然后根据所获得的知识规划规模化部署。 为实现成功的概念验证，我们建议你挑选一两个团队，识别其方案（开发环境与测试环境），记录其当前的使用案例，并部署开发测试实验室。 
-
-## <a name="scenarios"></a>方案
-开发测试实验室实现有三种主要方案： 
+具体取决于企业的需求，可以配置开发测试实验室，以满足不同的要求。  本文讨论了常用方案。 每个方案介绍如何通过使用开发测试实验室和资源来用于实现这些方案带来的好处。  
 
 - 开发人员桌面
 - 测试环境
-- 实验室/培训/黑客松
+- 培训课程、 动手实验和编程马拉松
+- 沙盒调查
+- 教室实验室
 
 ## <a name="developer-desktops"></a>开发人员桌面
-开发人员针对不同的项目对开发计算机有不同的要求。 使用开发测试实验室，开发人员可以访问预先配置的按需 VM 来满足他们最常用的方案。 开发测试实验室具有以下优点：
+开发人员针对不同的项目对开发计算机有不同的要求。 使用开发测试实验室，开发人员可以按需虚拟机配置以满足其最常见的方案的访问权限。 开发测试实验室具有以下优点：
 
-- 组织可以提供在各个团队之间确保一致性的常用开发和测试环境
-- 开发人员可以快速按需预配其开发计算机
-- 开发人员能够以自助方式预配资源，不需要具有订阅级权限
-- IT 或管理员可以预先定义网络拓扑，并且开发人员能够直接以简单直观的方式利用它，不需要任何特殊访问
-- 开发人员可以根据需要轻松自定义其开发计算机
+- 组织可以提供跨团队确保一致性的常见开发计算机。
+- 开发人员可以快速预配按需其开发计算机或[声明现有预配置的计算机](devtest-lab-add-claimable-vm.md)。
+- 开发人员可以预配资源的自助服务方式而无需订阅级别的权限。
+- IT 或管理员可以[预定义的网络拓扑](devtest-lab-configure-vnet.md)和开发人员可以直接使用它简单且直观的方式而无需任何特殊的访问权限。
+- 开发人员可以轻松地[自定义](devtest-lab-add-vm.md#add-an-existing-artifact-to-a-vm)其开发计算机根据需要。
 - 管理员可以控制成本，只需确保：
-    - 开发人员可获取的 VM 数量不能超过开发所需的 VM 数量
-    - VM 在不使用时关闭
-    - 仅允许为特定的工作负荷使用一部分 VM 实例大小
+    - 开发人员[无法获取更多 Vm](devtest-lab-set-lab-policy.md#set-virtual-machines-per-user)比开发所需的
+    - [关闭 Vm](devtest-lab-set-lab-policy.md#set-auto-shutdown)在未使用时
+    - 仅[允许的 VM 实例大小的子集](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes)面向特定实验室
+    - [管理成本目标和通知](devtest-lab-configure-cost-management.md)每个实验室。
+
+有关其他参考资料，请参阅[面向开发人员使用 Azure 开发测试实验室](devtest-lab-developer-lab.md)。 
 
 ## <a name="test-environments"></a>测试环境
-在整个企业中创建和管理测试环境可能需要做大量工作。 使用开发测试实验室，可以轻松创建、更新或复制测试环境，这使得团队在需要时可以访问完全配置的环境。 在此方案中，开发测试实验室具有以下优势：
+在整个企业中创建和管理测试环境可能需要做大量工作。 使用开发测试实验室测试环境可以轻松地创建、 更新，或重复。 它使团队可以在需要时访问的完全配置的环境。 在此方案中，开发测试实验室具有以下优势：
 
-- 测试人员可使用可重用模板和项目快速预配 Windows 和 Linux 环境，从而测试最新版应用程序。
-- 测试人员可以预配多个测试代理，从而纵向扩展负载测试。
-- 管理员可以将实验室连接到 Azure DevOps 来实现 DevOps 方案
-- 管理员可以控制成本，只需确保：
-    - 测试人员可获取的 VM 数量不能超过所需数量
-    - VM 在不使用时关闭
-    - 仅允许为特定的工作负荷使用一部分 VM 实例大小
+- 组织可以提供跨团队确保一致性的常见测试环境。
+- 测试人员可以通过快速预配 Windows 和 Linux 环境，通过使用可重用模板来测试其应用程序的最新版本。
+- 管理员可以将实验室连接到 Azure DevOps，以启用 DevOps 方案
+- 实验室所有者可以通过确保控制成本：
+    - [在环境中的 Vm 会关闭](devtest-lab-set-lab-policy.md#set-auto-shutdown)在未使用时
+    - 仅[允许的 VM 实例大小的子集](devtest-lab-set-lab-policy.md#set-allowed-virtual-machine-sizes)特定实验室
+    - [管理成本目标和通知](devtest-lab-configure-cost-management.md)每个实验室。
 
-## <a name="labs-workshops-trainings-and-hackathons"></a>实验室、研讨会、培训和黑客松  
-Azure 开发测试实验室中的实验室是很棒的容器，用于容纳暂时性的活动，例如研讨会、动手实验室、培训和黑客松。 此服务允许你创建实验室，可在其中提供自定义模板，每个学员都可使用该模板创建相同和隔绝的培训环境。 可应用策略以确保为每个学员提供培训环境（需要时）并包含培训所需的足够资源（例如虚拟机）。 最后，可轻松与学员共享实验室（学员通过单击即可访问）。 在课程结束后，可以轻松删除实验室和所有相关的资源。
+有关详细信息，请参阅[使用 Azure 开发测试实验室用于 VM 和 PaaS 测试环境](devtest-lab-test-env.md)。
 
+## <a name="sandboxed-investigations"></a>沙盒调查
+开发人员通常调查不同的技术或基础结构设计。 默认情况下，使用开发测试实验室中创建的所有环境会都创建其自己的资源组中。 开发测试实验室用户获取对这些资源只能读取访问。 但是，对于开发人员需要更多控制，实验室范围的设置可以进行更新以使[参与者权限](https://azure.microsoft.com/updates/azure-devtest-labs-view-and-set-access-rights-to-an-environment-rg/)到原始的开发测试实验室用户为他们创建的每个环境。  使用开发测试实验室，开发人员可以提供自动向它们在实验室中创建的环境的参与者权限。  这种情况下允许开发人员能够添加和/或更改 Azure 资源，在需要为其开发或测试环境。 [的资源费用](devtest-lab-configure-cost-management.md#view-cost-by-resource)页，使实验室所有者能够跟踪用于调查每个环境的成本。
+
+有关详细信息，请参阅[环境资源组的组访问权限](https://aka.ms/dtl-sandbox)。
+
+## <a name="trainings-hands-on-labs-and-hackathons"></a>培训、 动手实验和编程马拉松 
+Azure 开发测试实验室的实验室中充当的很好的容器，如研讨会、 动手实验室、 培训或编程马拉松的暂时性活动。  此服务允许你创建实验室，可在其中提供自定义模板，每个学员都可使用该模板创建相同和隔绝的培训环境。 在此方案中，开发测试实验室具有以下优势：
+
+- [策略](devtest-lab-set-lab-policy.md)确保学员仅获取资源，例如所需的虚拟机数。
+- 预配置和创建计算机[索取](devtest-lab-add-claimable-vm.md)与从学员的单个操作。
+- 通过访问与学员共享实验室[实验室 URL](devtest-lab-faq.md#how-do-i-share-a-direct-link-to-my-lab)。
+- [到期日期](devtest-lab-add-vm.md#steps-to-add-a-vm-to-a-lab-in-azure-devtest-labs)虚拟机上确保后不再需要将删除计算机。
+- 它很容易[删除实验室](devtest-lab-delete-lab-vm.md#delete-a-lab)和全部[相关的资源](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab)培训时通过。
+
+有关详细信息，请参阅[使用 Azure 开发测试实验室进行培训](devtest-lab-training-lab.md)。  
+
+## <a name="proof-of-concept-vs-scaled-deployment"></a>与扩展部署的概念证明
+一旦决定探索开发测试实验室，有两个常规路径前滚：概念证明概念 vs 按比例缩放部署。  
+
+**规模化部署**包括数周/数月的审查和规划，其目的是将开发测试实验室部署到具有数百或数千个开发人员的整个企业。
+
+一个**概念证明**部署重点介绍从一个团队集中精力来建立组织的值。 虽然想想规模化部署比较诱人，但是该方法通常比概念验证选项更容易失败。 因此，我们建议从小型部署开始，从第一个团队那里学习经验，对两到三个另外的团队重复相同的方法，然后根据所获得的知识规划规模化部署。 为实现成功的概念验证，我们建议你挑选一两个团队，识别其方案（开发环境与测试环境），记录其当前的使用案例，并部署开发测试实验室。
 
 ## <a name="next-steps"></a>后续步骤
-请参阅本系列的下一篇文章：[纵向扩展开发测试实验室部署](devtest-lab-guidance-scale.md)
+请阅读以下文章：
+
+- [开发测试实验室概念](devtest-lab-concepts.md)
+- [开发测试实验室常见问题解答](devtest-lab-faq.md)
+

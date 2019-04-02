@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 4ca42e34dcf215fe45d1f25adb9509034c6144d2
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335838"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803509"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -49,7 +49,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 提供 SSH 连接到运行您的应用程序的 Linux 环境。 请参阅 [Linux 上的 Azure 应用服务的 SSH 支持](/azure/app-service/containers/app-service-linux-ssh-support)，获取有关通过 Web 浏览器或本地终端连接到 Linux 系统的完整说明。
 
-### <a name="streaming-logs"></a>流式传输日志
+### <a name="streaming-logs"></a>流式处理日志
 
 若要快速进行调试和故障排除，可以使用 Azure CLI 将日志流式传输到控制台。 使用 `az webapp log config` 配置 CLI 以启用日志记录：
 
@@ -154,6 +154,14 @@ Spring Boot 开发人员可以使用 [Azure Active Directory Spring Boot Starter
 ### <a name="configure-tlsssl"></a>配置 TLS/SSL
 
 遵照[绑定现有的自定义 SSL 证书](/azure/app-service/app-service-web-tutorial-custom-ssl)中的说明上传现有的 SSL 证书，并将其绑定到应用程序的域名。 默认情况下，应用程序仍允许 HTTP 连接 - 请遵循教程中的具体步骤来强制实施 SSL 和 TLS。
+
+### <a name="use-keyvault-references"></a>使用密钥保管库的引用
+
+[Azure 密钥保管库](../../key-vault/key-vault-overview.md)提供与访问策略和审核历史记录的集中式密钥管理。 可以在密钥保管库中存储机密 （如密码或连接字符串），并通过环境变量在应用程序中访问这些机密。
+
+首先，按照说明[授予应用访问 Key Vault](../app-service-key-vault-references.md#granting-your-app-access-to-key-vault)并[在应用程序设置中进行对你的密码的密钥保管库引用](../app-service-key-vault-references.md#reference-syntax)。 您可以验证解析为机密的引用的远程访问应用服务终端时打印环境变量。
+
+若要将注入 Spring 或 Tomcat 配置文件中的这些机密，使用环境变量注入语法 (`${MY_ENV_VAR}`)。 对于 Spring 配置文件，请参阅本文档中有关[外部化配置](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-external-config.html)。
 
 ## <a name="data-sources"></a>数据源
 

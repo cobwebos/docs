@@ -9,26 +9,27 @@ ms.reviewer: jasonwhowell
 ms.assetid: 8a4e901e-9656-4a60-90d0-d78ff2f00656
 ms.topic: conceptual
 ms.date: 05/04/2017
-ms.openlocfilehash: f74ebb4e36f9648b2f78e968877a9ef861888af8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ad0a8ea4d06b5085179d4fd3c162114c00518ce1
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58133435"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58792529"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Analytics
+
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
 了解如何使用 Azure PowerShell 创建 Azure Data Lake Analytics 帐户，并提交并运行 U-SQL 作业。 有关 Data Lake Analytics 的详细信息，请参阅 [Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 开始学习本教程之前，必须做好以下准备：
 
 * **一个 Azure Data Lake Analytics 帐户**。 请参阅 [Data Lake Analytics 入门](https://docs.microsoft.com/azure/data-lake-analytics/data-lake-analytics-get-started-portal)。
-* **配备 Azure PowerShell 的工作站**。 请参阅 [如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+* **配备 Azure PowerShell 的工作站**。 请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
@@ -36,13 +37,13 @@ ms.locfileid: "58133435"
 
 使用订阅名称登录：
 
-```
+```powershell
 Connect-AzAccount -SubscriptionName "ContosoSubscription"
 ```
 
 除订阅名称外，还可使用订阅 ID 登录：
 
-```
+```powershell
 Connect-AzAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
@@ -61,7 +62,7 @@ CurrentStorageAccount :
 
 本教程中的 PowerShell 代码片段使用上述变量来存储该信息：
 
-```
+```powershell
 $rg = "<ResourceGroupName>"
 $adls = "<DataLakeStoreAccountName>"
 $adla = "<DataLakeAnalyticsAccountName>"
@@ -70,7 +71,7 @@ $location = "East US 2"
 
 ## <a name="get-information-about-a-data-lake-analytics-account"></a>获取有关 Data Lake Analytics 帐户的信息
 
-```
+```powershell
 Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla  
 ```
 
@@ -78,7 +79,7 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla
 
 创建一个 PowerShell 变量以保存 U-SQL 脚本。
 
-```
+```powershell
 $script = @"
 @a  = 
     SELECT * FROM 
@@ -96,13 +97,13 @@ OUTPUT @a
 
 使用 `Submit-AdlJob` cmdlet 和 `-Script` 参数提交脚本文本。
 
-```
+```powershell
 $job = Submit-AdlJob -Account $adla -Name "My Job" -Script $script
 ```
 
 作为替代方法，可以使用 `-ScriptPath` 参数提交脚本文件：
 
-```
+```powershell
 $filename = "d:\test.usql"
 $script | out-File $filename
 $job = Submit-AdlJob -Account $adla -Name "My Job" -ScriptPath $filename
@@ -110,23 +111,24 @@ $job = Submit-AdlJob -Account $adla -Name "My Job" -ScriptPath $filename
 
 使用 `Get-AdlJob` 获取作业的状态。 
 
-```
+```powershell
 $job = Get-AdlJob -Account $adla -JobId $job.JobId
 ```
 
 可以使用 `Wait-AdlJob` cmdlet，而不必反复调用 Get-AdlJob 直至作业完成。
 
-```
+```powershell
 Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
 使用 `Export-AdlStoreItem` 下载输出文件。
 
-```
+```powershell
 Export-AdlStoreItem -Account $adls -Path "/data.csv" -Destination "C:\data.csv"
 ```
 
 ## <a name="see-also"></a>另请参阅
+
 * 若要了解使用其他工具来完成此教程，请单击页面顶部的选项卡选择器。
 * 若要了解 U-SQL，请参阅 [Azure Data Lake Analytics U-SQL 语言入门](data-lake-analytics-u-sql-get-started.md)。
 * 有关管理任务，请参阅[使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)。

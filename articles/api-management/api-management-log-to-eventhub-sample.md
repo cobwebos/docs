@@ -14,15 +14,15 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: cdaaf5323543377d9c2b603ad7377d088710cde8
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: c52a1942bda9881f8f782a227c81feaa4813722d
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447733"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793622"
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-moesif"></a>使用 Azure API 管理、事件中心和 Moesif 监视 API
-[API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后，将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
+[API 管理服务](api-management-key-concepts.md)提供许多功能来增强发送到 HTTP API 的 HTTP 请求的处理。 但是，请求和响应都是暂时性存在的。 在请求发出后，将通过 API 管理服务流送到后端 API。 API 将处理该请求，然后将响应返回给 API 使用者。 API 管理服务保留要在 Azure 门户仪表板中显示的有关 API 的一些重要统计信息，但除此之外不显示详细信息。
 
 在 API 管理服务中使用 log-to-eventhub 策略，可将请求和响应的详细信息发送到 [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)。 想要从发送到 API 的 HTTP 消息生成事件的原因包罗万象。 示例包括更新审核线索、使用情况分析、异常警报和第三方集成。
 
@@ -47,7 +47,7 @@ Azure 事件中心旨在引入大量数据，它能够处理的事件数目远�
 
 另一个做法是使用 HTTP 规范 [RFC 7230](https://tools.ietf.org/html/rfc7230) 中所述的 `application/http` 媒体类型。 此媒体类型使用的格式与用于通过网络实际发送 HTTP 消息的格式完全相同，但整个消息可以放在另一个 HTTP 请求的正文中。 在本例中，我们将使用该正文作为消息发送到事件中心。 [Microsoft ASP .NET Web API 2.2 客户端](https://www.nuget.org/packages/Microsoft.AspNet.WebApi.Client/)库中有一个分析器可以分析此格式并将其转换为本机 `HttpRequestMessage` 和 `HttpResponseMessage` 对象，相当方便。
 
-若要创建此消息，需要在 Azure API 管理中使用基于 C# 的[策略表达式](https://msdn.microsoft.com/library/azure/dn910913.aspx)。 下面是可将 HTTP 请求消息发送到 Azure 事件中心的策略。
+若要创建此消息，需要在 Azure API 管理中使用基于 C# 的[策略表达式](/azure/api-management/api-management-policy-expressions)。 下面是可将 HTTP 请求消息发送到 Azure 事件中心的策略。
 
 ```xml
 <log-to-eventhub logger-id="conferencelogger" partition-id="0">
@@ -159,7 +159,7 @@ HTTP 标头可以转换为采用简单键/值对格式的消息格式。 我们�
 `set-variable` 策略创建一个可供 `<inbound>` 节和 `<outbound>` 节中的 `log-to-eventhub` 策略访问的值。
 
 ## <a name="receiving-events-from-event-hubs"></a>从事件中心接收事件
-使用 [AMQP 协议](https://www.amqp.org/)可从 Azure 事件中心接收事件。 Microsoft 服务总线团队提供了客户端库来方便使用事件。 支持两种不同的方法：一种是成为*直接使用者*，另一种是使用 `EventProcessorHost` 类。 在[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)中可以找到这两种方法的示例。 简而言之，两者的差别在于：`Direct Consumer` 提供给完全控制权，而 `EventProcessorHost` 可以自动完成一些繁琐的工作，但在如何处理这些事件上做出了假设。
+使用 [AMQP 协议](https://www.amqp.org/)可从 Azure 事件中心接收事件。 Microsoft 服务总线团队提供了客户端库来方便使用事件。 支持两种不同的方法：一种是成为直接使用者，另一种是使用 `EventProcessorHost` 类。 在[事件中心编程指南](../event-hubs/event-hubs-programming-guide.md)中可以找到这两种方法的示例。 简而言之，两者的差别在于：`Direct Consumer` 提供给完全控制权，而 `EventProcessorHost` 可以自动完成一些繁琐的工作，但在如何处理这些事件上做出了假设。
 
 ### <a name="eventprocessorhost"></a>EventProcessorHost
 为方便起见，本示例将使用 `EventProcessorHost`，但这不一定是此特定方案的最佳选择。 `EventProcessorHost` 努力确保用户无需担心特定事件处理器类中发生线程问题。 但是，在我们的方案中，只需将消息转换为另一种格式，并使用异步方法将它传递到另一个服务。 不需要更新共享状态，因此没有线程问题的风险。 在大多数情况下，`EventProcessorHost` 可能是最佳选择，当然也是更方便的选项。
@@ -315,4 +315,4 @@ Azure API 管理服务提供了一个理想位置用于捕获 API 的双向 HTTP
 * 了解有关 API 管理和事件中心集成的详细信息
   * [如何在 Azure API 管理中将事件记录到 Azure 事件中心](api-management-howto-log-event-hubs.md)
   * [记录器实体引用](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-logger-entity)
-  * [log-to-eventhub 策略引用](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub)
+  * [log-to-eventhub 策略引用](/azure/api-management/api-management-advanced-policies#log-to-eventhub)

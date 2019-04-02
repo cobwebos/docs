@@ -13,18 +13,18 @@ ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e154a53dc32aea0b3fbe093526546b080b02ceff
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: c5d80381815524658d91067ee880eba47c394058
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56188454"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793571"
 ---
 # <a name="azure-active-directory-application-proxy-and-tableau"></a>Azure Active Directory 应用程序代理和 Tableau 
 
 Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保你可以轻松使用应用程序代理为 Tableau 部署提供远程访问。 本文介绍如何配置此方案。  
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>系统必备 
 
 本文中的方案假定你：
 
@@ -50,7 +50,7 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 **要发布应用程序**： 
 
 
-1. 以全局管理员身份登录到 [Azure 门户](https://portal.azure.com)。 
+1. 登录到[Azure 门户](https://portal.azure.com)作为应用程序管理员。 
 
 2. 选择“Azure Active Directory”>“企业应用程序”。 
 
@@ -70,11 +70,11 @@ Azure Active Directory 应用程序代理和 Tableau 已展开合作，以确保
 
 8. 选择“分配”，保存测试用户分配。 
 
-9. （可选）在应用管理页面中选择“单一登录”。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段。 选择“保存”。 
+9. （可选）在应用管理页面中选择“单一登录”。 从下拉菜单中选择“集成 Windows 身份验证”，然后根据 Tableau 配置填写必填字段。 选择“其他安全性验证” 。 
 
  
 
-## <a name="testing"></a>测试 
+## <a name="testing"></a>正在测试 
 
 现在已准备好测试应用程序。 访问用来发布 Tableau 的外部 URL，并以分配到两个应用程序的用户身份登录。
 

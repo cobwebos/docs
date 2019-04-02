@@ -7,12 +7,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 13ea4acb5a3b5b3e7ac6d53013193fddbfcbf9b7
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759355"
+ms.locfileid: "58762916"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
 
@@ -22,7 +22,7 @@ ms.locfileid: "58759355"
 
 Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类型系统的操作中起作用。 下表总结了这些节点类型和群集中的其角色。
 
-| Type | 描述 |
+| 类型 | 描述 |
 | --- | --- |
 | 头节点 |  除了 Apache Storm 的所有群集类型，头节点都托管的管理的分布式应用程序执行的进程。 头节点是还可以通过 ssh 连接到的节点，并执行应用程序，然后进行协调以运行跨群集资源。 头节点的数目被固定的两个用于所有群集类型。 |
 | ZooKeeper 节点 | Zookeeper 协调执行数据处理的节点之间的任务。 它还 does 头节点、 群首选举并跟踪哪个头节点正在运行特定的主服务。 ZooKeeper 节点数被固定的两个。 |
@@ -31,8 +31,6 @@ Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类
 | 区域节点 | 对于 HBase 群集类型，区域服务器在运行 （也称为数据节点） 的区域节点。 区域服务器提供服务和管理 HBase 管理的数据的一部分。 可以添加或从要缩放的计算能力和管理成本的群集删除区域节点。|
 | Nimbus 节点 | 对于 Storm 群集类型，Nimbus 节点提供类似于头节点的功能。 Nimbus 节点将任务分配给通过 Zookeeper，协调的 Storm 拓扑运行的群集中的其他节点。 |
 | 监督器节点 | 对于 Storm 群集类型，在监督器节点执行到执行所需的处理的 Nimbus 节点提供的说明。 |
-
-* = Apache Hadoop、 Apache Hive、 Apache Kafka、 Apache Spark、 Apache HBase 和 R Server 群集类型
 
 ## <a name="basic-virtual-network-resources"></a>基本虚拟网络资源
 
@@ -55,7 +53,7 @@ HDInsight 部署到 Azure 虚拟网络时存在的默认资源包括上表中，
 
 | 网络资源 | 数量 | 详细信息 |
 | --- | --- | --- |
-|负载均衡 | three | |
+|负载平衡器 | three | |
 |网络接口 | 9 | 此值基于标准群集，其中每个节点都有其自己的网络接口。 在两个头节点、 三个 zookeeper 节点、 两个辅助角色节点，和上一个表中提到的两个网关节点是九个接口。 |
 |公共 IP 地址 | two |    |
 

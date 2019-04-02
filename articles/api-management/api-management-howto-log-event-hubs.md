@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 028b36cc442ccef8af4aa401846cbacdaaab35bf
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: 14f84b5380a1c106114cdab425de7f69f4e19825
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428476"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793554"
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>如何在 Azure API 管理中将事件记录到 Azure 事件中心
-Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以引入数百万的事件，从而使你能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
+事件中心是一个高度可缩放的引入服务，每秒可以引入数百万的事件，使用户能够处理和分析连接设备和应用程序生成的海量数据。 事件中心充当事件管道的“前门”，将数据收集到事件中心后，可以使用任何实时分析提供程序或批处理/存储适配器来转换和存储这些数据。 事件中心可将事件流的生成与这些事件的使用分离开来，因此，事件使用者可以根据自己的计划访问事件。
 
 本文是[将 Azure API 管理与事件中心集成](https://azure.microsoft.com/documentation/videos/integrate-azure-api-management-with-event-hubs/)视频的配套内容，介绍了如何使用 Azure 事件中心记录 API 管理事件。
 
@@ -40,11 +40,11 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
 `https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * 将 `{your service}` 替换为 API 管理服务实例的名称。
-* 将 `{new logger name}` 替换为新记录器的所需名称。 配置 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) 策略时，将引用此名称
+* 将 `{new logger name}` 替换为新记录器的所需名称。 配置 [log-to-eventhub](/azure/api-management/api-management-advanced-policies#log-to-eventhub) 策略时，将引用此名称
 
 将以下标头添加到请求：
 
-* 内容类型：应用程序/json
+* 内容类型：application/json
 * 授权：SharedAccessSignature 58...
   * 有关生成 `SharedAccessSignature` 的说明，请参阅 [Azure API 管理 REST API 身份验证](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-authentication)。
 
@@ -62,7 +62,7 @@ Azure 事件中心是一个高度可缩放的数据引入服务，每秒可以�
 ```
 
 * `loggerType` 必须设置为 `AzureEventHub`。
-* `description` 提供记录器的可选说明，并且可在需要时为零长度。
+* `description` 提供记录器的可选说明，并且可在需要时为零长度字符串。
 * `credentials` 包含 Azure 事件中心的 `name` 和 `connectionString`。
 
 发出请求时，如果创建记录器，则返回 `201 Created` 的状态代码。 基于上面示例请求的示例响应，如下所示。

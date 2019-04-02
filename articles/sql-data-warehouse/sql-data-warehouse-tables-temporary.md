@@ -7,21 +7,21 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
+ms.date: 04/01/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: c989e53113557219e13dd730ac43621d3824baac
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57434753"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793095"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。
 
 ## <a name="what-are-temporary-tables"></a>什么是临时表？
-临时表在处理数据时非常有用 - 尤其是在具有暂时性中间结果的转换期间。 临时表位于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。  Azure SQL 数据仓库中的临时表与 Azure SQL 数据库中的临时表略有不同，它们可以从会话内的任何位置进行访问，包括存储过程内部和外部。
+临时表在处理数据时非常有用 - 尤其是在具有暂时性中间结果的转换期间。 临时表位于 SQL 数据仓库中的会话级别。  它们仅对创建它们的会话可见，并在该会话注销时被自动删除。  临时表可以提高性能，因为其结果将写入到本地而不是远程存储。
 
 ## <a name="create-a-temporary-table"></a>创建临时表
 只需为表名添加 `#` 前缀，即可创建临时表。  例如：
@@ -193,7 +193,7 @@ FROM    t1
 GO
 ```
 
-在此阶段，已发生的唯一操作是生成临时表 #stats_ddl，是使用 DDL 语句的存储过程的创建。  如果此存储过程在会话中运行了不止一次，它会删除已存在的 #stats_ddl，以确保它不会失败。  但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  在 SQL 数据仓库中，与其他 SQL Server 数据库不同，有可能在创建临时表的过程外部使用该临时表。  可以在会话中的**任何位置**使用 SQL 数据仓库临时表。 这样可提高代码的模块化程度与易管理性，如以下示例所示：
+在此阶段发生的唯一操作是创建存储过程，该存储过程使用 DDL 语句生成临时表 #stats_ddl。  如果此存储过程在会话中运行了不止一次，它会删除已存在的 #stats_ddl，以确保它不会失败。  但是，由于存储过程的末尾没有 `DROP TABLE`，当存储过程完成后，它将保留创建的表，以便能够在存储过程之外进行读取。  在 SQL 数据仓库中，与其他 SQL Server 数据库不同，有可能在创建临时表的过程外部使用该临时表。  可以在会话中的 **任何位置** 使用 SQL 数据仓库临时表。 这样可提高代码的模块化程度与易管理性，如以下示例所示：
 
 ```sql
 EXEC [dbo].[prc_sqldw_update_stats] @update_type = 1, @sample_pct = NULL;
@@ -215,7 +215,7 @@ DROP TABLE #stats_ddl;
 ```
 
 ## <a name="temporary-table-limitations"></a>临时表的限制
-SQL 数据仓库在实现临时表时确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  此外，不能在临时表上创建视图。
+SQL 数据仓库在实现临时表时确实会施加一些限制。  目前，仅支持会话范围的临时表。  不支持全局临时表。  此外，不能在临时表上创建视图。  临时表只能创建哈希或轮循机制分布。  不支持复制的临时表分布。 
 
 ## <a name="next-steps"></a>后续步骤
 若要详细了解如何开发表，请参阅[表概述](sql-data-warehouse-tables-overview.md)。

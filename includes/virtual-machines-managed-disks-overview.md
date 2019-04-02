@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 287ae3b8122dd2a1e43c31055ac0ea5b04dddb07
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190636"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58807443"
 ---
-## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
+## <a name="benefits-of-managed-disks"></a>托管磁盘的优势
 
 接下来让我们看一下使用托管磁盘可以获得的一些好处。
 
@@ -41,9 +41,9 @@ ms.locfileid: "58190636"
 
 ## <a name="disk-roles"></a>磁盘角色
 
-### <a name="data-disks"></a>数据磁盘数
+### <a name="data-disks"></a>数据磁盘
 
-数据磁盘是附加到虚拟机的托管磁盘，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 4,095 GB (GiB)。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
+数据磁盘是附加到虚拟机的托管磁盘，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 32,767 gibibyte 计算的 (GiB)。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
 
 ### <a name="os-disks"></a>OS 磁盘
 
@@ -53,11 +53,11 @@ ms.locfileid: "58190636"
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 临时磁盘上的数据可能会丢失期间[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)事件，或者当您[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。 在 VM 成功标准重启期间，临时驱动器上的数据将保留。 
+每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 临时磁盘上的数据可能会丢失期间[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)事件，或者当您[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。 在 VM 成功标准重启期间，临时驱动器上的数据将保留。
 
 ## <a name="managed-disk-snapshots"></a>托管磁盘快照
 
-托管磁盘快照是托管磁盘的只读完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照，可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 基于已使用大小对这些快照进行计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。  
+托管磁盘快照是托管磁盘的只读完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 基于已使用大小对这些快照进行计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。  
 
 若要了解有关如何使用托管磁盘创建快照的详细信息，请查看下列资源：
 

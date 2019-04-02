@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: d4c3ab7e33d3d4bd8d5d5ee15c8264d1d41c858e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ac4351bd2e125c922cb3044c1d06298b3ad6de97
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58081060"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805051"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -58,48 +58,55 @@ Azure 虚拟网络提供 NSG 流日志，其中提供了传入和传出与单个
 * 加拿大中部
 * 美国中西部
 * 美国东部
-* 美国东部 2
+* 美国东部 2 (弗吉尼亚)
 * 美国中北部
 * 美国中南部
 * 美国中部
 * 美国西部
 * 美国西部 2
-* 西欧
-* 北欧
+* 法国中部
+* 欧洲西部
+* 欧洲北部
 * 巴西南部
 * 英国西部
 * 英国南部
 * 澳大利亚东部
 * 澳大利亚东南部
-* 东南亚
+* 亚洲东部
+* 亚洲东南部
+* 韩国中部
 * 印度中部
 * 印度南部
 * 日本东部 
-* 美国政府弗吉尼亚州
+* 日本西部
+* 中国东部
 
 Log Analytics 工作区必须存在于以下区域中：
 * 加拿大中部
 * 美国中西部
+* 美国西部 2
 * 美国东部
-* 西欧
+* 法国中部
+* 欧洲西部
 * 英国南部
 * 澳大利亚东南部
-* 东南亚
+* 亚洲东南部
+* 韩国中部
 * 印度中部
 * 日本东部
-* 美国政府弗吉尼亚州
+* 中国东部
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 ### <a name="user-access-requirements"></a>用户访问要求
 
 帐户必须是以下 Azure [内置角色](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)之一的成员：
 
-|部署模型   | 角色                   |
+|部署模型   | 职位                   |
 |---------          |---------               |
 |资源管理器   | 所有者                  |
 |                   | 参与者            |
-|                   | 读取器                 |
+|                   | 读者                 |
 |                   | 网络参与者    |
 
 如果未将帐户分配给内置角色之一，则必须在订阅级别将其分配给分配有以下操作的[自定义角色](../role-based-access-control/custom-roles.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)：
@@ -169,13 +176,13 @@ New-AzureRmStorageAccount `
 5. 选择现有的 Log Analytics 工作区，或选择**创建新的工作区**若要创建一个新。 流量分析使用 Log Analytics 工作区来存储聚合数据和索引数据，然后，这些数据用于生成分析。 如果选择现有的工作区，该工作区必须位于某个受支持区域，并且已升级为新查询语言。 如果不希望升级现有工作区，或者受支持区域中没有工作区，请创建一个新工作区。 有关查询语言的详细信息，请参阅[Azure Monitor 记录升级到新的日志搜索](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)。
 
     托管流量分析解决方案和 Nsg 的 Log Analytics 工作区就不必位于同一区域。 例如，可将流量分析部署在西欧区域的某个工作区中，同时将 NSG 部署在美国东部和美国西部。 可在同一工作区中配置多个 NSG。
-6. 选择“保存”。
+6. 选择“其他安全性验证” 。
 
     ![选择存储帐户和 Log Analytics 工作区并启用流量分析](./media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
 
 针对想要为其启用流量分析的其他任何 NSG 重复前面的步骤。 流日志中的数据将发送到工作区，因此，请确保所在国家/地区的当地法律和法规允许将数据存储在工作区所在的区域。
 
-还可以使用 AzureRm PowerShell 模块 6.2.1 版或更高版本中的 [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable AzureRM` 来查找已安装的版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/azurerm/install-azurerm-ps)。
+还可以使用 AzureRm PowerShell 模块 6.2.1 版或更高版本中的 [Set-AzureRmNetworkWatcherConfigFlowLog](/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog) PowerShell cmdlet 来配置流量分析。 运行 `Get-Module -ListAvailable AzureRM` 来查找已安装的版本。 如果需要进行升级，请参阅 [Install Azure PowerShell module](/powershell/azure/azurerm/install-azurerm-ps)（安装 Azure PowerShell 模块）。
 
 ## <a name="view-traffic-analytics"></a>查看流量分析
 

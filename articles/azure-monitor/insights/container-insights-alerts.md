@@ -11,26 +11,28 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: magoedte
-ms.openlocfilehash: e6fdb0d57a44578647c1f16dc76c557296f20ddb
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 5bb0a727adcfb35b5d840a063b6fdb478d150953
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886754"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804814"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何为 Azure Monitor 中的容器的性能问题设置警报
 用于容器的 Azure Monitor 可监视部署到 Azure 容器实例或 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 
 
 本文介绍如何启用针对以下情况下发出警报：
 
-* 当 CPU 和内存利用率在节点上的群集或超过你定义的阈值。
+* 当 CPU 或内存在节点上的群集利用率超过定义的阈值。
 * 当任何控制器中的容器上的 CPU 或内存使用率超出了与相应的资源设置的限制相比你定义的阈值。
+* **NotReady**状态节点计数
+* Pod 阶段计数**失败**，**挂起**，**未知**，**运行**，或**成功**
 
-要发出警报 CPU 或内存使用率较高的群集或控制器时，您创建一个基于在提供的日志查询的指标度量警报规则。 查询比较到使用现在运算符最新的日期时间，并可回溯一小时。 用于容器的 Azure Monitor 存储的所有日期均采用 UTC 格式。
+发出警报时 CPU 或内存使用率较高的群集节点上，则可以创建指标警报或使用提供的日志查询的指标度量警报规则。 指标警报有以上的日志警报的延迟更低，而日志警报提供了高级查询和比指标警报的复杂性。 用于日志警报查询比较到使用现在运算符最新的日期时间，并可回溯一小时。 用于容器的 Azure Monitor 存储的所有日期均采用 UTC 格式。
 
-在开始之前，如果你不熟悉 Azure Monitor 中的警报，请参阅 [Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要详细了解使用日志查询的警报，请参阅 [Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)
+在开始之前，如果您不熟悉 Azure Monitor 中的警报，请参阅[Microsoft Azure 中的警报概述](../platform/alerts-overview.md)。 若要了解有关使用日志查询警报的详细信息，请参阅[Azure Monitor 中的日志警报](../platform/alerts-unified-log.md)。 若要了解有关指标警报的详细信息，请参阅[指标警报 Azure Monitor 中的](../platform/alerts-metric-overview.md)。
 
 ## <a name="resource-utilization-log-search-queries"></a>资源使用率的日志搜索查询
 在本部分中的查询提供以支持每个警报的方案。 查询所需的步骤 7 下[创建警报](#create-alert-rule)下面一节。  
@@ -187,6 +189,72 @@ KubePodInventory
 | project Computer, ContainerName, TimeGenerated, UsagePercent = UsageValue * 100.0 / LimitValue
 | summarize AggregatedValue = avg(UsagePercent) by bin(TimeGenerated, trendBinSize) , ContainerName
 ```
+
+下面的查询返回所有节点和状态的计数**准备好**并**NotReady**。
+
+```kusto
+let endDateTime = now();
+let startDateTime = ago(1h);
+let trendBinSize = 1m;
+let clusterName = '<your-cluster-name>';
+KubeNodeInventory
+| where TimeGenerated < endDateTime
+| where TimeGenerated >= startDateTime
+| distinct ClusterName, Computer, TimeGenerated
+| summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName, Computer
+| join hint.strategy=broadcast kind=inner (
+    KubeNodeInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | summarize TotalCount = count(), ReadyCount = sumif(1, Status contains ('Ready'))
+                by ClusterName, Computer,  bin(TimeGenerated, trendBinSize)
+    | extend NotReadyCount = TotalCount - ReadyCount
+) on ClusterName, Computer, TimeGenerated
+| project   TimeGenerated,
+            ClusterName,
+            Computer,
+            ReadyCount = todouble(ReadyCount) / ClusterSnapshotCount,
+            NotReadyCount = todouble(NotReadyCount) / ClusterSnapshotCount
+| order by ClusterName asc, Computer asc, TimeGenerated desc
+```
+下面的查询返回 pod 阶段计数基于所有阶段-**失败**，**挂起**，**未知**，**运行**，或**成功**。  
+
+```kusto
+let endDateTime = now();
+    let startDateTime = ago(1h);
+    let trendBinSize = 1m;
+    let clusterName = '<your-cluster-name>';
+    KubePodInventory
+    | where TimeGenerated < endDateTime
+    | where TimeGenerated >= startDateTime
+    | where ClusterName == clusterName
+    | distinct ClusterName, TimeGenerated
+    | summarize ClusterSnapshotCount = count() by bin(TimeGenerated, trendBinSize), ClusterName
+    | join hint.strategy=broadcast (
+        KubePodInventory
+        | where TimeGenerated < endDateTime
+        | where TimeGenerated >= startDateTime
+        | distinct ClusterName, Computer, PodUid, TimeGenerated, PodStatus
+        | summarize TotalCount = count(),
+                    PendingCount = sumif(1, PodStatus =~ 'Pending'),
+                    RunningCount = sumif(1, PodStatus =~ 'Running'),
+                    SucceededCount = sumif(1, PodStatus =~ 'Succeeded'),
+                    FailedCount = sumif(1, PodStatus =~ 'Failed')
+                 by ClusterName, bin(TimeGenerated, trendBinSize)
+    ) on ClusterName, TimeGenerated
+    | extend UnknownCount = TotalCount - PendingCount - RunningCount - SucceededCount - FailedCount
+    | project TimeGenerated,
+              TotalCount = todouble(TotalCount) / ClusterSnapshotCount,
+              PendingCount = todouble(PendingCount) / ClusterSnapshotCount,
+              RunningCount = todouble(RunningCount) / ClusterSnapshotCount,
+              SucceededCount = todouble(SucceededCount) / ClusterSnapshotCount,
+              FailedCount = todouble(FailedCount) / ClusterSnapshotCount,
+              UnknownCount = todouble(UnknownCount) / ClusterSnapshotCount
+| summarize AggregatedValue = avg(PendingCount) by bin(TimeGenerated, trendBinSize)
+```
+
+>[!NOTE]
+>若要对特定 pod 阶段如发出警报**挂起**， **Failed**，或**未知**，您需要修改查询的最后一行。 有关示例与上的警报*FailedCount* `| summarize AggregatedValue = avg(FailedCount) by bin(TimeGenerated, trendBinSize)`。  
 
 ## <a name="create-alert-rule"></a>创建警报规则
 执行以下步骤来使用先前提供的日志搜索规则之一在 Azure Monitor 中创建日志警报。  

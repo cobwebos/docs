@@ -14,15 +14,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 03/015/2019
+ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91228074e13453ce53c0b4a7606479d45e8a90ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40ed06bef45948068e3845e728d9c1d63ed62e71
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182772"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762797"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>使用 Azure 承载和运行 SAP 工作负荷方案
 
@@ -36,14 +36,16 @@ Azure for SAP HANA 的独特性在于它是使 Azure 在竞争中脱颖而出的
 
 ## <a name="latest-changes"></a>最新的更改
 
+新版[Azure HANA 大型实例控制通过 Azure 门户](hana-li-portal.md)
+
+新版[使用 Azure NetApp 文件的 SAP 应用程序的 SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 的高可用性](high-availability-guide-suse-netapp-files.md)
+
+Clarification on 澄清**Linux OS 参数 net.ipv4.tcp_timestamps**设置与 Azure 结合使用负载均衡器
+
 发布[使用 Azure 可用性区域的 SAP 工作负荷配置](sap-ha-availability-zones.md)
 
 发布 [SAP 工作负荷规划和部署清单](sap-deployment-checklist.md)
 
-关于 [Azure 网络虚拟设备](https://azure.microsoft.com/solutions/network-appliances/)在 SAP 系统的延迟关键通信路径中的使用和配置的说明可在以下文章中找到：
-
-- [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
-- [Azure 上的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-vm-operations)
 
 
 
@@ -58,7 +60,7 @@ Azure for SAP HANA 的独特性在于它是使 Azure 在竞争中脱颖而出的
 - [Azure 上的 SAP HANA（大型实例）的高可用性和灾难恢复](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery)
 - [Azure 上的 SAP HANA（大型实例）的故障排除与监视](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 
-后续步骤：
+后续步骤:
 
 - 阅读[Azure 上的 SAP HANA（大型实例）概述和体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)
 

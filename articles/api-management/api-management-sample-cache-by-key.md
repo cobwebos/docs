@@ -1,6 +1,6 @@
 ---
 title: Azure API 管理中的自定义缓存
-description: 了解如何在 Azure API 管理中根据键缓存项
+description: 了解如何在 Azure API 管理中根据键来缓存项
 services: api-management
 documentationcenter: ''
 author: vladvino
@@ -14,21 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 838850d38c9df51fabcf620831371bed401e9492
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
+ms.openlocfilehash: 922ab731ccd76e6a1336d61abe4b0251e358beb7
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29376025"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793537"
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API 管理中的自定义缓存
-Azure API 管理服务使用资源 URL 作为键，提供对 [HTTP 响应缓存](api-management-howto-cache.md)的内置支持。 可以使用 `vary-by` 属性根据请求标头修改键。 这种做法适合用于缓存整个 HTTP 响应（也称为“表示形式”），但有时也适合用于只缓存一部分表示形式。 使用新的 [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) 和 [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) 策略可以存储和检索策略定义中的任意数据。 此功能使得以前推出的 [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) 策略更有作用，因为现在可以缓存来自外部服务的响应。
+Azure API 管理服务使用资源 URL 作为键，提供对 [HTTP 响应缓存](api-management-howto-cache.md)的内置支持。 可以使用 `vary-by` 属性根据请求标头修改键。 这种做法适合用于缓存整个 HTTP 响应（也称为“表示形式”），但有时也适合用于只缓存一部分表示形式。 使用新的 [cache-lookup-value](/azure/api-management/api-management-caching-policies#GetFromCacheByKey) 和 [cache-store-value](/azure/api-management/api-management-caching-policies#StoreToCacheByKey) 策略可以存储和检索策略定义中的任意数据。 此功能使得以前推出的 [send-request](/azure/api-management/api-management-advanced-policies#SendRequest) 策略更有作用，因为现在可以缓存来自外部服务的响应。
 
 ## <a name="architecture"></a>体系结构
-API 管理服务使用基于租户的共享数据缓存，因此，在增加到多个单位后，仍可以访问相同的缓存数据。 但是，使用多区域部署时，每个区域内有独立的缓存。 不得将缓存视为数据存储，因为数据存储是某些信息片段的唯一源。 如果这样做，后来又决定利用多区域部署，则具有移动工作人员的客户可能会失去该缓存数据的访问权限。
+API 管理服务使用基于租户的共享数据缓存，因此，在增加到多个单位后，仍可以访问相同的缓存数据。 但是，使用多区域部署时，每个区域内有独立的缓存。 不得将缓存视为数据存储，因为数据存储是某些信息片段的唯一源。 如果这样做，后来又决定利用多区域部署，则具有移动工作人员的客户可能会失去对该缓存数据的访问权限。
 
 ## <a name="fragment-caching"></a>分段缓存
-在某些情况下，返回的响应中包含的某些数据部分不但非常重要，而且还保留一段合理的时间。 以航空公司构建的、提供航班预订、航班状态等信息的服务为例。如果用户是航空公司积分计划的会员，则他们也会获得其当前状态和累积里程的相关信息。 这些用户的相关信息可能存储在不同的系统中，但也可能需要包含在航班状态和预订相关的返回响应中。 可以使用名为“分段缓存”的过程实现此目的。 可以从源服务器返回主要表示形式，使用某种令牌来指明要将用户相关的信息插入到何处。 
+在某些情况下，返回的响应中包含的某些数据部分不但非常重要，而且还保留一段合理的时间。 航空公司构建的、提供航班预订、航班状态等信息的服务就是一个示例。如果用户是航空公司积分计划的会员，则他们也会获得其当前状态和累积里程的相关信息。 这些用户的相关信息可能存储在不同的系统中，但也可能需要包含在与航班状态和预订相关的返回响应中。 可以使用名为“分段缓存”的过程实现此目的。 可以从源服务器返回主要表示形式，使用某种令牌来指明要将用户相关的信息插入到何处。 
 
 假设后端 API 返回了以下 JSON 响应。
 
@@ -57,7 +57,7 @@ API 管理服务使用基于租户的共享数据缓存，因此，在增加到�
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-API 管理将 `enduserid` 值存储在上下文变量中供稍后使用。 下一步是确定前面的请求是否已检索用户信息并将其存储在缓存中。 为此，API 管理使用 `cache-lookup-value` 策略。
+API 管理将 `enduserid` 值存储在上下文变量中供稍后使用。 下一步是确定前面的请求是否已检索了用户信息并将其存储在缓存中。 为此，API 管理使用 `cache-lookup-value` 策略。
 
 ```xml
 <cache-lookup-value
@@ -186,7 +186,7 @@ API 管理使用最初尝试检索值时使用的同一个键，将值存储在�
 
 其中一种方法是将使用者目前想要使用的 API 版本存储在使用者的配置文件数据中，并调用适当的后端 URL，客户端开发人员无需将 URL 从 `/v1/customers` 更改为 `/v2/customers`。 为了确定特定客户端要调用的正确后端 URL，必须查询某些配置数据。 通过缓存此配置数据，API 管理可以最大程度地减少执行此查找所造成的不利性能影响。
 
-第一步是确定用于配置所需版本的标识符。 本示例选择将版本关联到产品订阅密钥。 
+第一步是确定用于配置所需版本的标识符。 在本示例中，我选择将版本关联到产品订阅密钥。 
 
 ```xml
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
@@ -228,7 +228,7 @@ variable-name="clientversion" />
       value="@(((IResponse)context.Variables["clientconfiguresponse"]).Body.As<string>())" />
 ```
 
-将它存回到缓存供日后使用。
+将它存回到缓存供将来使用。
 
 ```xml
 <cache-store-value

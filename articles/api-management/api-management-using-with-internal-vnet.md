@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: d8cea95fbfb76f1dd1891045309a35aa1d0a8ab0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da27c772a0650a923068b3c519ef39494573f96a
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099478"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793112"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -36,7 +36,7 @@ ms.locfileid: "58099478"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -57,9 +57,9 @@ ms.locfileid: "58099478"
 
     ![用于在内部虚拟网络中设置 Azure API 管理的菜单][api-management-using-internal-vnet-menu]
 
-4. 选择“保存”。
+4. 选择“其他安全性验证” 。
 
-部署成功，应会看到后**私有**虚拟 IP 地址和**公共**API 管理服务的概述边栏选项卡上的虚拟 IP 地址。 **私有**虚拟 IP 地址是负载均衡从 API 管理中的 IP 地址对其委派子网`gateway`， `portal`，`management`和`scm`终结点可以访问。 **公共**使用虚拟 IP 地址**仅**用于控制平面流量发往`management`终结点通过端口 3443 和可以向下锁定[ApiManagement] [ServiceTags] servicetag。
+部署成功后，应该可以在概览边栏选项卡上看到 API 管理服务的**专用**虚拟 IP 地址和**公共**虚拟 IP 地址。 **专用**虚拟 IP 地址是 API 管理委托的子网中经负载均衡的 IP 地址，可以通过该子网访问 `gateway`、`portal`、`management` 和 `scm` 终结点。 **公共**使用虚拟 IP 地址**仅**用于控制平面流量发往`management`终结点通过端口 3443 和可以向下锁定[ApiManagement] [ServiceTags] servicetag。
 
 ![包含已配置的内部虚拟网络的 Azure API 管理仪表板][api-management-internal-vnet-dashboard]
 
@@ -74,7 +74,7 @@ ms.locfileid: "58099478"
 
 * 在虚拟网络中创建 API 管理服务：使用 cmdlet [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) 在虚拟网络中创建 Azure API 管理服务，并将其配置为使用内部虚拟网络类型。
 
-* 更新 API 管理服务的虚拟网络中的现有部署：使用 cmdlet[更新 AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion)将现有 API 管理服务移到虚拟网络中的并将其配置为使用内部虚拟网络类型。
+* 在虚拟网络中更新 API 管理服务的现有部署：使用 cmdlet [Update-AzApiManagementRegion](/powershell/module/az.apimanagement/update-azapimanagementregion) 将现有 API 管理服务移到虚拟网络内，并将其配置为使用内部虚拟网络类型。
 
 ## <a name="apim-dns-configuration"></a>DNS 配置
 如果 API 管理采用外部虚拟网络模式，则 DNS 由 Azure 管理。 使用内部虚拟网络模式时，必须管理自己的路由。
@@ -83,17 +83,17 @@ ms.locfileid: "58099478"
 > API 管理服务不会侦听来自 IP 地址的请求， 它只响应到发往其服务终结点上配置的主机名的请求。 这些终结点包括网关、Azure 门户和开发人员门户、直接管理终结点和 Git。
 
 ### <a name="access-on-default-host-names"></a>基于默认主机名的访问权限
-创建 API 管理服务，例如，名为"contosointernalvnet"时默认情况下配置以下服务终结点：
+创建 API 管理服务（例如“contosointernalvnet”）时，将默认配置以下服务终结点：
 
-   * 网关或代理： contosointernalvnet.azure-api.net
+   * 网关或代理：contosointernalvnet.azure-api.net
 
-   * 在 Azure 门户和开发人员门户： contosointernalvnet.portal.azure-api.net
+   * Azure 门户和开发人员门户：contosointernalvnet.portal.azure-api.net
 
-   * 直接管理终结点： contosointernalvnet.management.azure-api.net
+   * 直接管理终结点：contosointernalvnet.management.azure-api.net
 
-   * Git: contosointernalvnet.scm.azure-api.net
+   * Git：contosointernalvnet.scm.azure-api.net
 
-若要访问这些 API 管理服务终结点，可以在连接到虚拟网络（其中部署了 API 管理）的子网中创建虚拟机。 假设你的服务的内部虚拟 IP 地址 10.1.0.5，可以按如下所示映射 hosts 文件中，%systemdrive%\drivers\etc\hosts:
+若要访问这些 API 管理服务终结点，可以在连接到虚拟网络（其中部署了 API 管理）的子网中创建虚拟机。 假设服务的内部虚拟 IP 地址为 10.1.0.5，则可映射 hosts 文件 (%SystemDrive%\drivers\etc\hosts)，如下所示：
 
    * 10.1.0.5     contosointernalvnet.azure-api.net
 
@@ -120,11 +120,11 @@ ms.locfileid: "58099478"
 + 子网 IP 范围中的 IP 地址 (DIP) 将用于访问 vnet 中的资源，公共 IP 地址 (VIP) 将用于访问 vnet 外部的资源。
 + 负载均衡公共和专用 IP 地址可以在 Azure 门户的“概述/概要”边栏选项卡上找到。
 
-## <a name="related-content"></a>相关内容
-若要了解更多信息，请参阅下列文章：
+## <a name="related-content"> </a>相关内容
+要了解更多信息，请参阅下列文章：
 * [在虚拟网络中设置 Azure API 管理时的常见网络配置问题][Common network configuration problems]
 * [虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)
-* [在 DNS 中创建记录](https://msdn.microsoft.com/library/bb727018.aspx)
+* [在 DNS 中创建记录](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))
 
 [api-management-using-internal-vnet-menu]: ./media/api-management-using-with-internal-vnet/api-management-using-with-internal-vnet.png
 [api-management-internal-vnet-dashboard]: ./media/api-management-using-with-internal-vnet/api-management-internal-vnet-dashboard.png

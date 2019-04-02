@@ -1,6 +1,6 @@
 ---
-title: 在 Azure 自动化中管理 Python 2 包
-description: 本文介绍如何在 Azure 自动化中管理 Python 2 包。
+title: 管理 Azure 自动化中的 Python 2 程序包
+description: 本文介绍了如何管理 Azure 自动化中的 Python 2 程序包。
 services: automation
 ms.service: automation
 ms.subservice: process-automation
@@ -9,44 +9,44 @@ ms.author: gwallace
 ms.date: 02/25/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81ce9cb2667ce9f21d7c18a92e417e47768d7efb
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: b53e07d6086f2a02fd1bbd158ffc09dc95b0c377
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407925"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801277"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>在 Azure 自动化中管理 Python 2 包
 
-通过 Azure 自动化，可以在 Azure 和 Linux 混合 Runbook 辅助角色上运行 Python 2 runbook。 为了帮助简化 runbook，可以使用 Python 包导入所需的模块。 本文介绍如何在 Azure 自动化中管理和使用 Python 包。
+通过 Azure 自动化，可以在 Azure 和 Linux 混合 Runbook 辅助角色上运行 Python 2 runbook。 为了帮助简化 runbook，可以使用 Python 包导入所需的模块。 本文介绍了如何在 Azure 自动化中管理和使用 Python 程序包。
 
-## <a name="import-packages"></a>导入包
+## <a name="import-packages"></a>导入程序包
 
-在自动化帐户中，选择“共享资源”下的“Python 2 包”。 单击“+ 添加 Python 2 包”。
+在自动化帐户中，在“共享资源”下选择“Python 2 程序包”。 单击“+ 添加 Python 2 程序包”。
 
-![添加 Python 包](media/python-packages/add-python-package.png)
+![添加 Python 程序包](media/python-packages/add-python-package.png)
 
-在“添加 Python 包”页中，选择要上传的本地包。 包可以是 `.whl` 文件或 `.tar.gz` 文件。 选择后，单击“确定”以上传包。
+在“添加 Python 2 程序包”页面上，选择要上传的本地程序包。 该程序包可以是 `.whl` 文件或 `.tar.gz` 文件。 在选择后，单击“确定”以上传程序包。
 
-![添加 Python 包](media/python-packages/upload-package.png)
+![添加 Python 程序包](media/python-packages/upload-package.png)
 
-一旦导入包之后，它将列出在**Python 2 包**在自动化帐户中的页。 如果需要删除包，请选择包，然后在包页面中选择“删除”。
+导入包之后，该包将在自动化帐户中的“Python 2 包”页中列出。 如果需要删除某个程序包，请在程序包页面上选择该程序包并选择“删除”。
 
-![包列表](media/python-packages/package-list.png)
+![程序包列表](media/python-packages/package-list.png)
 
-## <a name="import-packages-with-dependencies"></a>导入具有依赖项包
+## <a name="import-packages-with-dependencies"></a>导入带依赖项的包
 
-Azure 自动化不能导入过程解决 python 包的依赖项。 有两种方法及其所有依赖项包导入。 以下步骤之一，需要使用将包导入到自动化帐户。
+Azure 自动化不在导入过程中解析 Python 包的依赖项。 可以通过两种方式导入包及其所有依赖项。 只需使用下述步骤之一将包导入自动化帐户中。
 
 ### <a name="manually-download"></a>手动下载
 
-与计算机上 Windows 64 位[下，python2.7](https://www.python.org/downloads/release/latest/python2)并[pip](https://pip.pypa.io/en/stable/)安装，运行以下命令以下载程序包和所有依赖项：
+在安装了 [python2.7](https://www.python.org/downloads/release/latest/python2) 和 [pip](https://pip.pypa.io/en/stable/) 的 Windows 64 位计算机上运行以下命令，以便下载包及其所有依赖项：
 
-```
+```cmd
 C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 ```
 
-一旦下载的程序包，您可以将它们导入自动化帐户。
+等到这些包下载以后，即可将其导入自动化帐户中。
 
 ### <a name="runbook"></a>Runbook
 
@@ -57,15 +57,15 @@ C:\Python27\Scripts\pip2.7.exe download -d <output dir> <package name>
 * -a \<automationAccount\>
 * -m \<modulePackage\>
 
-![包列表](media/python-packages/import-python-runbook.png)
+![程序包列表](media/python-packages/import-python-runbook.png)
 
 Runbook 可以指定哪个包下载，例如， `Azure` （第四个参数） 将下载所有 Azure 模块和所有依赖项，即大约 105。
 
 在 runbook 完成后可以检查**Python 2 包**页**共享资源**在自动化帐户来验证这些包已正确导入。
 
-## <a name="use-a-package-in-a-runbook"></a>在 runbook 中使用包
+## <a name="use-a-package-in-a-runbook"></a>在 runbook 中使用程序包
 
-一旦您已导入包，您现在可以使用它在 runbook 中。 下面的示例使用 [Azure 自动化实用工具包](https://github.com/azureautomation/azure_automation_utility)。 使用此包，可以轻松地通过 Azure 自动化使用 Python。 若要使用包，请按照 GitHub 存储库中的说明操作，并使用 `from azure_automation_utility import get_automation_runas_credential` 将其添加到 runbook，例如导入用于检索运行方式帐户的函数。
+导入包之后，即可在 Runbook 中使用它。 下面的示例使用了 [ Azure 自动化实用工具程序包](https://github.com/azureautomation/azure_automation_utility)。 有了此程序包，可以更轻松地通过 Azure 自动化使用 Python。 若要使用此程序包，请遵循 GitHub 存储库中的说明并将其添加到 runbook，例如，使用 `from azure_automation_utility import get_automation_runas_credential` 导入用于检索运行方式帐户的函数。
 
 ```python
 import azure.mgmt.resource
@@ -87,10 +87,10 @@ for group in groups:
     print group.name
 ```
 
-## <a name="develop-and-test-runbooks-offline"></a>脱机开发并测试 runbook
+## <a name="develop-and-test-runbooks-offline"></a>脱机开发和测试 runbook
 
-若要脱机开发并测试 Python 2 runbook，可使用 GitHub 上的[Azure Automation python emulated assets](https://github.com/azureautomation/python_emulated_assets)（Azure 自动化 python 模拟资产）模块。 此模块使你能够引用凭据、变量、连接和证书等共享资源。
+若要脱机开发和测试 Python 2 runbook，可以使用 GitHub 上的 [Azure 自动化 python 模拟资产](https://github.com/azureautomation/python_emulated_assets)模块。 此模块允许你引用共享资源，例如凭据、变量、连接和证书。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要开始使用 Python 2 Runbook，请参阅[第一个 Python 2 Runbook](automation-first-runbook-textual-python2.md)
+若要开始使用 Python 2 runbook，请参阅[我的第一个 Python 2 runbook](automation-first-runbook-textual-python2.md)。

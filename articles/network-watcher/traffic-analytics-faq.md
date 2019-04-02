@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fee22561bb0c341ed5c6e4dc49a8d7f8aa8efaf2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445201"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803199"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -66,36 +66,43 @@ ms.locfileid: "58445201"
 - 加拿大中部
 - 美国中西部
 - 美国东部
-- 美国东部 2
+- 美国东部 2 (弗吉尼亚)
 - 美国中北部
 - 美国中南部
 - 美国中部
 - 美国西部
 - 美国西部 2
-- 西欧
-- 北欧
+- 法国中部
+- 欧洲西部
+- 欧洲北部
 - 巴西南部
 - 英国西部
 - 英国南部
 - 澳大利亚东部
 - 澳大利亚东南部 
-- 东南亚
+- 亚洲东部
+- 亚洲东南部
+- 韩国中部
 - 印度中部
 - 印度南部
 - 日本东部
-- 美国政府弗吉尼亚州
+- 日本西部
+- 中国东部
 
 Log Analytics 工作区必须存在于以下区域中：
 - 加拿大中部
 - 美国中西部
+- 美国西部 2
 - 美国东部
-- 西欧
+- 法国中部
+- 欧洲西部
 - 英国南部
 - 澳大利亚东南部
-- 东南亚 
+- 亚洲东南部 
+- 韩国中部
 - 印度中部
 - 日本东部
-- 美国政府弗吉尼亚州
+- 中国东部
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
@@ -115,7 +122,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-不是。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
+否。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 

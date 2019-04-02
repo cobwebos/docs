@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 2e8fc3e2cf85fb06d37347870e3b2b9c82f1aa96
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: be17c5bb4d09e0868af0c6fd9b31f7653b614735
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754787"
+ms.locfileid: "58762763"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 
@@ -88,7 +88,7 @@ ms.locfileid: "58754787"
 
 ## <a name="send-security-messages"></a>发送安全消息 
 
-发送安全消息，而无需使用 IoT 代理使用 ASC [Azure IoTC#设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp)或[的 Azure IoT C 设备 SDK](https://github.com/Azure/azure-iot-sdk-c)。
+发送安全消息，而无需使用 IoT 代理使用 ASC [Azure IoTC#设备 SDK](https://github.com/Azure/azure-iot-sdk-csharp/tree/preview)或[的 Azure IoT C 设备 SDK](https://github.com/Azure/azure-iot-sdk-c/tree/public-preview)。
 
 若要从设备发送设备消息以供 ASC for IoT 处理，请使用以下 API 之一来标记消息，以正确路由到 ASC for IoT 处理管道。 以这种方式发送的消息将会得到处理，并以安全见解的形式显示在 IoT 中心或 Azure 安全中心的 ASC for IoT 内。 
 

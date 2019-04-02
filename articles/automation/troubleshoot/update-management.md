@@ -8,12 +8,12 @@ ms.date: 12/05/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 166ffea9cbeb3f343d70737de9049ee721fa9a98
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: b92ce1d5fb0e0b2b043b1bbfcb78dbaf3dde2e23
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448688"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804456"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -29,7 +29,7 @@ ms.locfileid: "58448688"
 
 在加入 15 分钟后继续在虚拟机上看到以下消息：
 
-```
+```error
 The components for the 'Update Management' solution have been enabled, and now this virtual machine is being configured. Please be patient, as this can sometimes take up to 15 minutes.
 ```
 
@@ -40,14 +40,14 @@ The components for the 'Update Management' solution have been enabled, and now t
 1. 返回到自动化帐户的通信被阻止。
 2. 正在加入的 VM 可能来自未在安装 Microsoft Monitoring Agent 的情况下进行系统准备的克隆计算机。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
 2. 如果使用的是克隆的映像：
    1. 在 Log Analytics 工作区中，从已保存的搜索作用域配置为删除 VM`MicrosoftDefaultScopeConfig-Updates`如果它所示。 已保存的搜索位于工作区的“常规”下。
    2. 运行 `Remove-Item -Path "HKLM:\software\microsoft\hybridrunbookworker" -Recurse -Force`
    3. 运行 `Restart-Service HealthService` 重新启动 `HealthService`。 这将重新创建密钥，并生成新的 UUID。
-   4. 如果此操作无效，请首先对映像进行系统准备，然后在事后安装 MMA 代理。
+   4. 如果这不起作用，对映像进行 sysprep 第一个并在这一事实后安装 MMA 代理。
 
 ### <a name="multi-tenant"></a>场景：在为另一个 Azure 租户中的计算机创建更新部署时收到链接订阅错误。
 
@@ -55,7 +55,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 
 尝试为另一个 Azure 租户中的计算机创建更新部署时收到以下错误：
 
-```
+```error
 The client has permission to perform action 'Microsoft.Compute/virtualMachines/write' on scope '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/Microsoft.Automation/automationAccounts/automationAccountName/softwareUpdateConfigurations/updateDeploymentName', however the current tenant '00000000-0000-0000-0000-000000000000' is not authorized to access linked subscription '00000000-0000-0000-0000-000000000000'.
 ```
 
@@ -63,7 +63,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 当创建的更新部署包含另一个租户中的 Azure 虚拟机时会发生此错误。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 你需要使用以下解决方法来进行安排。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
@@ -88,11 +88,11 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 混合 Runbook 辅助角色可能需要重新注册并重新安装。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 安装混合辅助角色，或者遵循[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤为 Linux 进行安装。
 
-## <a name="windows"></a>Windows
+## <a name="windows"></a>窗口
 
 如果在尝试在虚拟机上载入解决方案时遇到问题，请查看本地计算机“应用程序和服务日志”下的“Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。
 
@@ -104,7 +104,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 看到以下错误消息：
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.InvalidOperationException: {"Message":"Machine is already registered to a different account."}
 ```
 
@@ -112,7 +112,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 计算机已载入到其他进行更新管理的工作区。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 通过[删除混合 runbook 组](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)对计算机上的旧项目进行清理，然后重试。
 
@@ -122,15 +122,15 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 收到以下错误消息之一：
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception System.Net.Http.HttpRequestException: An error occurred while sending the request. ---> System.Net.WebException: The underlying connection was closed: An unexpected error occurred on a receive. ---> System.ComponentModel.Win32Exception: The client and server can't communicate, because they do not possess a common algorithm
 ```
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value.
 ```
 
-```
+```error
 The certificate presented by the service <wsid>.oms.opinsights.azure.com was not issued by a certificate authority used for Microsoft services. Contact your network administrator to see if they are running a proxy that intercepts TLS/SSL communication.
 ```
 
@@ -138,7 +138,7 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 可能是因为代理、网关或防火墙阻止了网络通信。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 检查网络并确保允许适当的端口和地址。 有关更新管理和混合 Runbook 辅助角色所需的端口和地址列表，请参阅[网络要求](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -148,7 +148,7 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 收到以下错误消息之一：
 
-```
+```error
 Unable to Register Machine for Patch Management, Registration Failed with Exception AgentService.HybridRegistration. PowerShell.Certificates.CertificateCreationException: Failed to create a self-signed certificate. ---> System.UnauthorizedAccessException: Access is denied.
 ```
 
@@ -156,7 +156,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 混合 Runbook 辅助角色无法生成自签名证书
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
 
@@ -170,7 +170,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 计算机中的 Windows 更新或 WSUS 配置不正确。 更新管理依赖于 Windows 更新或 WSUS 来提供所需的更新、修补程序的状态，以及所部署的修补程序的结果。 如果没有该信息，则更新管理无法正确报告所需的或已安装的修补程序。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 双击显示为红色的异常，查看完整的异常消息。 查看下表，了解可能采取的解决方案或措施：
 
@@ -199,11 +199,11 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Linux 混合辅助角色运行状况不正常。
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 请创建以下日志文件的副本并保留它以用于故障排除：
 
-```
+```bash
 /var/opt/microsoft/omsagent/run/automationworker/worker.log
 ```
 
@@ -221,7 +221,7 @@ Linux 混合辅助角色运行状况不正常。
 * 特定包可能干扰了基于云的修补
 * 其他原因
 
-#### <a name="resolution"></a>解决方法
+#### <a name="resolution"></a>解析
 
 如果更新运行在 Linux 上成功启动后又失败，请检查运行中受影响的计算机的作业输出。 可以从计算机的包管理器查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。 更新管理要求包管理器正常运行才能成功进行更新部署。
 
@@ -229,7 +229,7 @@ Linux 混合辅助角色运行状况不正常。
 
 如果无法解决修补问题，请在下次更新部署启动之前创建以下日志文件的副本，并保留它以用于故障排除：
 
-```
+```bash
 /var/opt/microsoft/omsagent/run/automationworker/omsupdatemgmt.log
 ```
 
@@ -239,4 +239,4 @@ Linux 混合辅助角色运行状况不正常。
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5a4426b665c58dd2c0bf7f5b5b41ebfca158e782
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 3a0d10f373b045058c6df242c4d98f78d04c4490
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444726"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801113"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户来访问 blob 或队列数据
 
@@ -47,11 +47,11 @@ ms.locfileid: "58444726"
 
 支持对 blob 或队列数据的访问的内置角色包括：
 
-- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner-preview):对于 POSIX 访问控制的 Azure 数据湖存储第 2 代 （预览版）。
-- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview):Blob 的读取/写入/删除权限。
-- [存储 Blob 数据读取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader-preview):Blob 的只读权限。
-- [存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor-preview):队列的读取/写入/删除权限。
-- [存储队列数据读取器](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader-preview):队列的只读权限。
+- [存储 Blob 数据所有者](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner):对于 POSIX 访问控制的 Azure 数据湖存储第 2 代 （预览版）。
+- [存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor):Blob 的读取/写入/删除权限。
+- [存储 Blob 数据读取器](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader):Blob 的只读权限。
+- [存储队列数据参与者](../../role-based-access-control/built-in-roles.md#storage-queue-data-contributor):队列的读取/写入/删除权限。
+- [存储队列数据读取器](../../role-based-access-control/built-in-roles.md#storage-queue-data-reader):队列的只读权限。
     
 自定义角色可以支持相同的权限提供的内置角色的不同组合。 有关创建自定义 RBAC 角色的详细信息，请参阅[Azure 资源的自定义角色](../../role-based-access-control/custom-roles.md)并[了解有关 Azure 资源的角色定义](../../role-based-access-control/role-definitions.md)。
 

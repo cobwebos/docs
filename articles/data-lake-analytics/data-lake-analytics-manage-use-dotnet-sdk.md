@@ -9,19 +9,20 @@ ms.assetid: 811d172d-9873-4ce9-a6d5-c1a26b374c79
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/18/2017
-ms.openlocfilehash: 3827c9e0b3e51a7a179a7db7fac0152d799a63f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a10af73d754596e9b5bb34b2974d7f1647d06f8
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835809"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793282"
 ---
 # <a name="manage-azure-data-lake-analytics-a-net-app"></a>通过 .NET 应用管理 Azure Data Lake Analytics
+
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
 本文介绍如何通过使用 Azure .NET SDK 编写的应用管理 Azure Data Lake Analytics 帐户、数据源、用户和作业。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 * **Visual Studio 2015、Visual Studio 2013 Update 4 或安装有 Visual C++ 的 Visual Studio 2012**。
 * **用于 .NET 的 Microsoft Azure SDK 2.5 或更高版本**。  可以使用 [Web 平台安装程序](https://www.microsoft.com/web/downloads/platform.aspx)安装它。
@@ -39,7 +40,7 @@ ms.locfileid: "57835809"
 
 可以使用以下命令安装通过 NuGet 命令行安装这些包：
 
-```
+```powershell
 Install-Package -Id Microsoft.Rest.ClientRuntime.Azure.Authentication  -Version 2.3.1
 Install-Package -Id Microsoft.Azure.Management.DataLake.Analytics  -Version 3.0.0
 Install-Package -Id Microsoft.Azure.Management.DataLake.Store  -Version 2.2.0
@@ -49,14 +50,14 @@ Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 
 ## <a name="common-variables"></a>常见变量
 
-``` csharp
+```csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
 string tenantid = "<Tenant ID>"; // AAD tenant ID or domain. For example, "contoso.onmicrosoft.com"
 string rg == "<value>"; // Resource  group name
 string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (this will work, but you should pick your own)
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>认证
 
 可以通过多种方法登录到 Azure Data Lake Analytics。 下面的代码片段显示使用弹出窗口通过交互用户身份验证进行身份验证的示例。
 
@@ -130,6 +131,7 @@ graphClient.TenantID = domain;
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
+
 有关详细信息，请参阅 Azure 资源组和 Data Lake Analytics。
 
 ### <a name="create-a-data-lake-store-account"></a>创建 Data Lake Store 帐户
@@ -260,6 +262,7 @@ if (adls_accounts != null)
 ```
 
 ### <a name="upload-and-download-folders-and-files"></a>上传和下载文件夹和文件
+
 可以通过以下方法使用 Data Lake Store 文件系统客户端管理对象从 Azure 将单个文件或文件夹上传和下载到本地计算机：
 
 - UploadFolder
@@ -293,6 +296,7 @@ using (var memstream = new MemoryStream())
 ```
 
 ### <a name="verify-azure-storage-account-paths"></a>验证 Azure 存储帐户路径
+
 以下代码检查某个 Data Lake Analytics 帐户 (analyticsAccountName) 中是否存在某个 Azure 存储帐户 (storageAccntName)，以及该 Azure 存储帐户中是否存在某个容器 (containerName)。
 
 ``` csharp
@@ -303,9 +307,11 @@ bool containerExists = adlaClient.Account.StorageContainerExists(rg, adla, stora
 ```
 
 ## <a name="manage-catalog-and-jobs"></a>管理目录和作业
+
 DataLakeAnalyticsCatalogManagementClient 对象提供用于管理 SQL 数据库（为每个 Azure Data Lake Analytics 帐户提供）的方法。 DataLakeAnalyticsJobManagementClient 提供使用 U-SQL 脚本来提交和管理数据库中运行的作业的方法。
 
 ### <a name="list-databases-and-schemas"></a>列出数据库和架构
+
 在可以列出的多种对象中，最常见的对象是数据库及其架构。 以下代码获取数据库的集合，并枚举每个数据库的架构。
 
 ``` csharp
@@ -323,9 +329,10 @@ foreach (var db in databases)
 ```
 
 ### <a name="list-table-columns"></a>列出表列
+
 以下代码演示如何使用 Data Lake Analytics 目录管理客户端访问数据库，以列出指定表中的列。
 
-``` csharp
+```csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
 IEnumerable<USqlTableColumn> columns = tbl.ColumnList;
 
@@ -336,7 +343,9 @@ foreach (USqlTableColumn utc in columns)
 ```
 
 ### <a name="submit-a-u-sql-job"></a>提交 U-SQL 作业
+
 以下代码演示如何使用 Data Lake Analytics 作业管理客户端提交作业。
+
 ``` csharp
 string scriptPath = "/Samples/Scripts/SearchResults_Wikipedia_Script.txt";
 Stream scriptStrm = adlsFileSystemClient.FileSystem.Open(_adlsAccountName, scriptPath);
@@ -355,9 +364,10 @@ Console.WriteLine($"Job {jobName} submitted.");
 ```
 
 ### <a name="list-failed-jobs"></a>列出失败的作业
+
 以下代码列出有关失败的作业的信息。
 
-``` csharp
+```csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
 var jobs = adlaJobClient.Job.List(adla, odq);
 foreach (var j in jobs)
@@ -367,6 +377,7 @@ foreach (var j in jobs)
 ```
 
 ### <a name="list-pipelines"></a>列出管道
+
 下面的代码列出有关提交给帐户的作业的每个管道的信息。
 
 ``` csharp
@@ -378,6 +389,7 @@ foreach (var p in pipelines)
 ```
 
 ### <a name="list-recurrences"></a>列出重复周期
+
 下面的代码列出有关提交给帐户的作业的每个重复周期的信息。
 
 ``` csharp
@@ -404,9 +416,11 @@ Console.WriteLine( userinfo.ObjectId )
 ```
 
 ## <a name="manage-compute-policies"></a>管理计算策略
+
 DataLakeAnalyticsAccountManagementClient 对象提供用于为 Data Lake Analytics 帐户管理计算策略的方法。
 
 ### <a name="list-compute-policies"></a>列出计算策略
+
 下面的代码检索 Data Lake Analytics 帐户的计算策略列表。
 
 ``` csharp
@@ -418,6 +432,7 @@ foreach (var p in policies)
 ```
 
 ### <a name="create-a-new-compute-policy"></a>创建新计算策略
+
 下面的代码为 Data Lake Analytics 帐户创建新的计算策略，将对指定用户可用的最大 AU 设置为 50，并将最小作业优先级设置为 250。
 
 ``` csharp
@@ -427,6 +442,7 @@ adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPo
 ```
 
 ## <a name="next-steps"></a>后续步骤
+
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
 * [使用 Azure 门户管理 Azure Data Lake Analytics](data-lake-analytics-manage-use-portal.md)
 * [使用 Azure 门户监视 Azure Data Lake Analytics 作业以及对其进行故障排除](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)

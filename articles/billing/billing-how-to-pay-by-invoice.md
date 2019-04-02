@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/11/2018
+ms.date: 04/01/2019
 ms.author: banders
-ms.openlocfilehash: 1fb5ad056c1b8a331034cab12fa3420ba310bb95
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a17821cc69900c7f24375cbf06a61811bbd52d1
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852332"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762236"
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>提交用发票为 Azure 订阅付款的请求
 
@@ -36,20 +36,42 @@ ms.locfileid: "57852332"
 
     ![“帮助和支持”按钮](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
 
-1. 选择“计费”作为问题类型，选择要用发票付款的订阅，选择支持计划，并选择“下一步”。
+2. 选择“计费”作为问题类型，选择要用发票付款的订阅，选择支持计划，并选择“下一步”。
 
-1. 在“问题类型”框中选择“通过发票付款”。
+3. 在“问题类型”框中选择“通过发票付款”。
 
-1. 在“详细信息”框中输入以下信息，并选择“下一步”。
+ 4. 在“详细信息”框中输入以下信息，并选择“下一步”。
 
-    * 公司名称
-    * 帐单地址
-    * [帐户管理员的电子邮件地址](../role-based-access-control/classic-administrators.md#view-the-account-administrator)
+         New or existing customer:
+         If existing, current payment method:
+         Order ID (requesting for invoice option): 
+         Account Admins Live ID (or Org ID) (should be company domain):
+         Commerce Account ID: 
+         Company Name (as registered under VAT or Government Website): 
+         Company Address (as registered under VAT or Government Website): 
+         Company Website:
+         Country: 
+         TAX ID/ VAT ID:
+         Company Established on (Year):
+         Any prior business with Microsoft: 
+         Contact Name:
+         Contact Phone:
+         Contact Email:
+         Justification on why you prefer Invoice option over credit card: 
+    
+        For cores increase, provide the following additional information:
+    
+         (Old quota) Existing Cores:
+         (New quota) Requested cores:
+         Specific region & series of Subscription: 
+ 
+    - **公司名称**并**公司地址**应与提供的 Azure 帐户的信息匹配。  若要查看或更新的信息，请参阅[更改你的 Azure 帐户个人资料信息](billing-how-to-change-azure-account-profile.md)。
+    - 可以批准信用额度之前，必须在 Azure 门户中添加计算联系人。 应与公司的 Accounts Payable 或财务部门相关的联系人详细信息。 若要更新计费联系人，请转到[Azure 帐户中心](https://account.azure.com/Profile)。
 
-1. 验证联系人信息和首选联系方法，并单击“创建”。
+5. 验证联系人信息和首选联系方法，并单击“创建”。
 
 如果由于所需的信用额度，我们需要运行信用检查，我们会发送给你信用检查应用程序。 提交该应用程序后，信用应用程序可能需要 5-7 天的时间进行处理。
 
-## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。
+## <a name="need-help-contact-us"></a>需要帮助? 请联系我们。
 
 如果有疑问或需要帮助，请[创建支持请求](https://go.microsoft.com/fwlink/?linkid=2083458)。

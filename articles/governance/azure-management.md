@@ -7,14 +7,14 @@ ms.service: governance
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: dacoulte
-ms.openlocfilehash: c38d19b8528399ae09d92e48ed7dfc17c18938b7
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: f94cec7919edc6cf6ebb6618d38b8591feb1278b
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56338064"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804133"
 ---
-# <a name="management-in-azure"></a>Azure 中的管理
+# <a name="overview-of-management-services-in-azure"></a>在 Azure 中管理服务概述
 
 Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure 中部署和维护资源的不同管理领域。
 
@@ -22,7 +22,7 @@ Azure 中的监管是 Azure 管理的一个方面。 本文介绍了在 Azure �
 
 下图说明了维护任何应用程序或资源所需的不同管理方面。 可将这些不同的区域视为一个生命周期。 每个区域都需要在资源的整个生存期内保持连续。 此资源生命周期始于其初始部署，贯穿其持续操作，在其停用时结束。
 
-![管理规则](../monitoring/media/management-overview/management-capabilities.png)
+![在 Azure 中的管理方面的](../monitoring/media/management-overview/management-capabilities.png)
 
 没有一个 Azure 服务完全满足特定管理区域的要求。 但搭配多个服务就能实现这一点。 某些服务（如 Application Insight）可为 Web 应用程序提供有针对性的监视功能。 其他服务（例如 Azure Monitor 日志）可为其他服务存储管理数据。 可使用此功能分析由不同服务收集的不同类型的数据。
 

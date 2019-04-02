@@ -16,12 +16,12 @@ ms.date: 03/27/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ae5b58fb87aaa94e081f9cb60d063c70e5d0359
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540952"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803147"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -39,17 +39,17 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 下载 | [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 >[!NOTE]
->并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
+>发布新版本的 Azure AD Connect 是一个需要多个质量控制步骤，以确保该服务的操作功能的过程，尽管我们完成此过程将更新的新版本，以及发布状态的版本号以反映最新状态。
+我们完成此过程，而发布的版本编号将显示中数字的次版本的位置，如下所示"1.3.X.0"-"x"这表示在本文档中的发行说明适用于所有版本"1.3"。 从。 只要我们已完成发布过程的发行版本号会更新到最近发布的版本和发布状态将更新为"下载和自动升级已发布"。
+并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
 
-## <a name="13100"></a>1.3.10.0 
+## <a name="13x0"></a>1.3.X.0 
 
 ### <a name="release-status"></a>版本状态 
 
-3/25/2019:尚未发布 
+3/25/2019:待定
  
 ### <a name="new-features-and-improvements"></a>新增功能和改进 
-
-
 
 - 添加对域刷新的支持 
 - Exchange 邮件公用文件夹功能公开上市 
@@ -387,7 +387,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 *   删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。 我们希望在处理 SELF 时默认权限保持不变。
 *   分配以下特定权限：
 
-类型     | 名称                          | 访问               | 应用于
+类型     | 姓名                          | 访问               | 应用于
 ---------|-------------------------------|----------------------|--------------|
 允许    | SYSTEM                        | 完全控制         | 此对象  |
 允许    | 企业管理员             | 完全控制         | 此对象  |
@@ -412,7 +412,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 ```
 
-其中 
+Where 
 
 **$ObjectDN** = 需要收紧其权限的 Active Directory 帐户。
 
@@ -421,7 +421,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN <$ObjectDN> -Credential <$Credential>
 >[!NOTE] 
 >$credential.UserName 应采用“FQDN\用户名”格式。 示例：contoso.com\admin 
 
-##### <a name="example"></a>示例：
+##### <a name="example"></a>示例:
 
 ```powershell
 Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbackdc,DC=com" -Credential $credential 
@@ -487,7 +487,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect Sync
 > [!NOTE]
-> 注意：同步服务提供一个 WMI 接口让客户开发自己的自定义计划程序。 此接口现已弃用，并会从 2018 年 6 月 30 日之后交付的后续 Azure AD Connect 版本中删除。 想要自定义同步计划的客户应使用 [内置计划程序 (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)。
+> 请注意:同步服务提供一个 WMI 接口让客户开发自己的自定义计划程序。 此接口现已弃用，并会从 2018 年 6 月 30 日之后交付的后续 Azure AD Connect 版本中删除。 想要自定义同步计划的客户应使用 [内置计划程序 (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler)。
 
 #### <a name="fixed-issues"></a>修复的问题
 * 当 Azure AD Connect 向导创建从本地 Active Directory 同步更改所需的 AD 连接器帐户时，不会正确地向该帐户分配读取 PublicFolder 对象所需的权限。 此问题会影响“快速”安装和“自定义”安装。 此项更改修复了该问题。
@@ -737,7 +737,7 @@ CBool(
 * 引入了以下架构更改，使客户能够创建自定义同步规则来传送组对象的 sAMAccountName、domainNetBios 和 domainFQDN，以及用户对象的 distinguishedName：
 
   * 已将以下属性添加到 MV 架构：
-    * 组：帐户名
+    * 组：AccountName
     * 组：domainNetBios
     * 组：domainFQDN
     * 用户：distinguishedName
@@ -811,7 +811,7 @@ Azure AD Connect 同步
 * Azure AD Connect 现在支持将启用邮件的公共文件夹对象从本地 AD 同步到 Azure AD。 可以使用 Azure AD Connect 向导中的“可选功能”启用该功能。 若要了解有关此功能的详细信息，请参阅[基于 Office 365 目录的边缘阻止对启用邮件的本地公共文件夹的支持](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders)一文。
 * Azure AD Connect 要求从本地 AD 同步 AD DS 帐户。 以前，如果使用“快速”模式安装了 Azure AD Connect，则可以提供企业管理员帐户的凭据，Azure AD Connect 会创建所需的 AD DS 帐户。 但是，对于自定义安装以及要将林添加到现有部署的情况，必须提供 AD DS 帐户。 现在，还可以在自定义安装过程中选择提供企业管理员帐户的凭据，并让 Azure AD Connect 创建所需的 AD DS 帐户。
 * Azure AD Connect 现在支持 SQL AOA。 安装 Azure AD Connect 之前，必须启用 SQL AOA。 在安装期间，Azure AD Connect 会检测是否已为提供的 SQL 实例启用 SQL AOA。 如果启用了 SQL AOA，Azure AD Connect 进一步指出如果 SQL AOA 配置为使用同步复制或异步复制。 设置可用性组侦听器时，我们建议将 RegisterAllProvidersIP 属性设置为 0。 之所以提供此建议是因为，Azure AD Connect 当前使用 SQL Native Client 连接到 SQL，并且 SQL Native Client 不支持使用 MultiSubNetFailover 属性。
-* 如果将 LocalDB 用作 Azure AD Connect 的数据库并且已达到该数据库的 10-GB 限制，同步服务不再启动。 以前，需要对 LocalDB 执行 ShrinkDatabase 操作，以回收足够的数据库空间来启动同步服务。 后来，可以使用 Synchronization Service Manager 来删除运行历史记录，以回收更多的数据库空间。 现在，可以使用 Start-ADSyncPurgeRunHistory cmdlet 从 LocalDB 中清除运行历史记录数据，以回收数据库空间。 此外，此 cmdlet 支持脱机模式（通过指定 -offline 参数），同步服务未运行时可以使用该模式。 注意：仅当同步服务未运行，并且使用的数据库为 LocalDB 时，才能使用脱机模式。
+* 如果将 LocalDB 用作 Azure AD Connect 的数据库并且已达到该数据库的 10-GB 限制，同步服务不再启动。 以前，需要对 LocalDB 执行 ShrinkDatabase 操作，以回收足够的数据库空间来启动同步服务。 后来，可以使用 Synchronization Service Manager 来删除运行历史记录，以回收更多的数据库空间。 现在，可以使用 Start-ADSyncPurgeRunHistory cmdlet 从 LocalDB 中清除运行历史记录数据，以回收数据库空间。 此外，此 cmdlet 支持脱机模式（通过指定 -offline 参数），同步服务未运行时可以使用该模式。 请注意:仅当同步服务未运行，并且使用的数据库为 LocalDB 时，才能使用脱机模式。
 * 为了减少所需的存储空间量，Azure AD Connect 现在会先压缩同步错误详细信息，并将它们存储在 LocalDB/SQL 数据库中。 从旧版 Azure AD Connect 升级到此版本时，Azure AD Connect 会针对现有的同步错误详细信息执行一次性压缩。
 * 以前，在更新 OU 筛选配置后，必须手动运行完全导入才能确保在目录同步中正确包含/排除现有对象。 现在，Azure AD Connect 会在下一个同步周期自动触发完全导入。 此外，完全导入仅应用到受更新影响的 AD 连接器。 注意：此项改进仅适用于使用 Azure AD Connect 向导所做的 OU 筛选更新， 而不适用于使用 Synchronization Service Manager 所做的 OU 筛选更新。
 * 以前，基于组的筛选仅支持用户、组和联系人对象。 现在，基于组的筛选还支持计算机对象。

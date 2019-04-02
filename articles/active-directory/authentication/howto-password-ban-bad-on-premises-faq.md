@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30ed127d6be6966baba7d6f862624ef7bca16f40
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 50ab4d3c9134e94b60c4dd3eeb5603f450b036c3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309549"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58794030"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
@@ -34,7 +34,7 @@ ms.locfileid: "58309549"
 
 **问：如何将 Azure AD 密码保护权益应用到我的一部分本地用户？**
 
-不支持。 部署并启用后，Azure AD 密码保护不会区分对待 - 所有用户都会获得均等的安全权益。
+不受支持。 部署并启用后，Azure AD 密码保护不会区分对待 - 所有用户都会获得均等的安全权益。
 
 **问：密码更改和密码设置 （或重置） 之间的区别是什么？**
 
@@ -50,11 +50,11 @@ ms.locfileid: "58309549"
 
 **问：在不使用 Azure 的情况下，如何在 Active Directory 环境中部署和配置 Azure AD 密码保护？**
 
-不支持。 Azure AD 密码保护是旨在扩展到本地 Active Directory 环境中的一项 Azure 功能。
+不受支持。 Azure AD 密码保护是旨在扩展到本地 Active Directory 环境中的一项 Azure 功能。
 
 **问：如何在 Active Directory 级别修改策略的内容？**
 
-不支持。 只能使用 Azure AD 管理门户管理策略。 另请参阅前面的问题。
+不受支持。 只能使用 Azure AD 管理门户管理策略。 另请参阅前面的问题。
 
 **问：为何需要使用 DFSR 进行 sysvol 复制？**
 
@@ -76,7 +76,7 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：是否有任何方法可将 DC 代理配置为使用特定的代理服务器？**
 
-不是。 由于代理服务器是无状态的，具体使用哪种代理服务器并不重要。
+否。 由于代理服务器是无状态的，具体使用哪种代理服务器并不重要。
 
 **问：是否可与其他服务（例如 Azure AD Connect）一起部署 Azure AD 密码保护代理服务？**
 
@@ -96,19 +96,23 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 **问：我只想在域中的少量 DC 上测试 Azure AD 密码保护。是否可以强制用户密码更改使用这些特定的 DC？**
 
-不是。 当用户更改其密码时，Windows 客户端 OS 会控制要使用的域控制器。 域控制器是根据 Active Directory 站点和子网分配、特定于环境的网络配置等因素选择的。Azure AD 密码保护不会控制这些因素，也不能对选择用来更改用户密码的域控制器施加影响。
+否。 当用户更改其密码时，Windows 客户端 OS 会控制要使用的域控制器。 域控制器是根据 Active Directory 站点和子网分配、特定于环境的网络配置等因素选择的。Azure AD 密码保护不会控制这些因素，也不能对选择用来更改用户密码的域控制器施加影响。
 
 在一定程度上实现此目标的方法之一是在给定 Active Directory 站点中的所有域控制器上部署 Azure AD 密码保护。 这种方法能够合理覆盖分配到该站点的 Windows 客户端，因此，也会合理覆盖登录到这些客户端并更改其密码的用户。
 
 **问：如果只在主域控制器 (PDC) 上安装 Azure AD 密码保护 DC 代理服务，该域中的其他所有域控制器是否也会受到保护？**
 
-不是。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
+否。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
 
 总而言之，在 PDC 上部署 Azure AD 密码保护 DC 代理服务需要对整个跨中的功能实现 100% 的安全覆盖。 仅在 PDC 上部署该功能不能为域中的其他任何 DC 提供 Azure AD 密码保护安全优势。
 
 **问：System Center Operations Manager 管理包是否适用于 Azure AD 密码保护？**
 
-不是。
+否。
+
+**问：为什么 Azure 仍拒绝弱密码即使我已配置为审核模式的策略？**
+
+在本地 Active Directory 环境中仅支持审核模式。 Azure 是隐式始终在"强制实施"模式下评估密码时。
 
 ## <a name="additional-content"></a>其他内容
 

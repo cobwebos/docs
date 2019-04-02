@@ -12,18 +12,18 @@ ms.author: ronmat
 ms.reviewer: vanto, carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 4e853b9edbd000d8b61b5e05f3ae65c07258d73f
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 60839fa06d8436d3d2202d1d97735c42c5768e9e
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56002150"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793748"
 ---
 # <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>针对单一数据库或入池数据库的 Azure SQL 数据库威胁检测
 
-针对单一数据库或入池数据库的[威胁检测](sql-database-threat-detection-overview.md)可以检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 威胁检测可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力攻击 SQL 凭据** - 请在[威胁检测警报](sql-database-threat-detection-overview.md#threat-detection-alerts)中查看更多详细信息。
+针对单一数据库或入池数据库的[威胁检测](sql-database-threat-detection-overview.md)可以检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 威胁检测可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力攻击 SQL 凭据** - 请在[威胁检测警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中查看更多详细信息。
 
-你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-threat-detection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
+你可以通过[电子邮件通知](sql-database-threat-detection-overview.md#explore-anomalous-database-activities-upon-detection-of-a-suspicious-event)或 [Azure 门户](sql-database-threat-detection-overview.md#explore-advanced-threat-protection-alerts-for-your-database-in-the-azure-portal)接收有关检测到的威胁的通知
 
 [威胁检测](sql-database-threat-detection-overview.md)是[高级数据安全](sql-database-advanced-data-security.md) (ADS) 产品/服务（它是高级 SQL 安全功能的一个统一包）的一部分。 可通过中心 SQL ADS 门户访问和管理威胁检测。 高级数据安全包按每个逻辑服务器 15 美元/月来计费，前 30 天免费。
 

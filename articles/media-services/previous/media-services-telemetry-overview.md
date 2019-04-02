@@ -12,28 +12,32 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 5f33249496c9a4fc8a094e64f15c8d95da69194b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 8e8b493881662483e66dd835d1cc68a471b18454
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294869"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803288"
 ---
 # <a name="azure-media-services-telemetry"></a>Azure 媒体服务遥测  
 
-通过 Azure 媒体服务 (AMS) 可访问其服务的遥测/指标数据。 通过当前版本的 AMS，可收集活动 **Channel**、**StreamingEndpoint** 和 **Archive** 实体的遥测数据。 
+
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+
+通过 Azure 媒体服务 (AMS) 可访问其服务的遥测/指标数据。 通过当前版本的 AMS，可收集活动 Channel、StreamingEndpoint 和 Archive 实体的遥测数据。 
 
 遥测将写入指定 Azure 存储帐户的存储表中，通常情况下，应使用与 AMS 帐户关联的存储帐户。 
 
-遥测系统不会管理数据保留。 通过删除存储表，可移除旧的遥测数据。
+遥测系统不会管理数据保留。 可通过删除存储表来移除旧的遥测数据。
 
 本主题讨论如何配置和使用 AMS 遥测。
 
 ## <a name="configuring-telemetry"></a>配置遥测
 
-可按组件级的粒度配置遥测。 有两种详细级别：“正常”和“详细”。 目前，这两种级别会返回相同的信息。 建议使用“正常”。 
+可按组件级的粒度来配置遥测。 有两种详细级别：“正常”和“详细”。 目前，这两种级别会返回相同的信息。 建议使用“正常”。 
 
 以下主题说明如何启用遥测：
 
@@ -47,11 +51,11 @@ ms.locfileid: "58294869"
 
 可通过以下方式之一使用遥测数据：
 
-- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅[此](https://msdn.microsoft.com/library/mt742089.aspx)主题中的**使用遥测信息**。
+- 直接从 Azure 表存储中读取数据（例如使用存储 SDK）。 有关遥测存储表的说明，请参阅 **此主题** 中的 [使用遥测信息](https://msdn.microsoft.com/library/mt742089.aspx) 。
 
 或
 
-- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据，如[此](media-services-dotnet-telemetry.md)主题中所述。 
+- 使用媒体服务 .NET SDK 中支持的内容来读取存储数据，如[本主题](media-services-dotnet-telemetry.md)中所述。 
 
 
 下述遥测架构的设计目的是在 Azure 表存储限制内提供良好性能：
@@ -68,15 +72,15 @@ ms.locfileid: "58294869"
 
 ### <a name="telemetry-table-storage-output-schema"></a>遥测表存储输出架构
 
-遥测数据汇总存储在表“TelemetryMetrics20160321”中，其中“20160321”是创建表的日期。 遥测系统为每个新日期（基于 00:00 UTC）单独创建一个表。 该表用于存储重复值，如给定时间范围内的引入比特率、发送的字节数等。 
+遥测数据汇总存储在表“TelemetryMetrics20160321”中，其中是“20160321”创建表的日期。 遥测系统为每个新日期（基于 00:00 UTC）单独创建一个表。 该表用于存储重复值，如给定时间范围内的引入比特率、发送的字节数等。 
 
 属性|值|示例/说明
 ---|---|---
 PartitionKey|{account ID}_{entity ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>帐户 ID 包括在分区键中，可简化将多个媒体服务帐户写入同一存储帐户的工作流。
-RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[此](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)文章。 
-Timestamp|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
-Type|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是字符串值。
-名称|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
+RowKey|{seconds to midnight}_{random value}|01688_00199<br/><br/>行键以距午夜的秒数开头，可允许分区内的前 n 个样式查询。 有关详细信息，请参阅[本文](../../cosmos-db/table-storage-design-guide.md#log-tail-pattern)。 
+时间戳|日期/时间|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
+类型|提供遥测数据的实体类型|Channel/StreamingEndpoint/Archive<br/><br/>事件类型只是一个字符串值。
+姓名|遥测事件的名称|ChannelHeartbeat/StreamingEndpointRequestLog
 ObservedTime|发生遥测事件的时间 (UTC)|2016-09-09T22:42:36.924Z<br/><br/>观察时间由发送遥测的实体（例如通道）提供。 组件之间可能存在时间同步问题，因此此值为近似值
 ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 特定于实体的属性|由事件定义|StreamName: stream1, Bitrate 10123, …<br/><br/>其余属性针对给定时间类型定义。 Azure 表内容是键值对。  （即，表中的不同行具有不同的属性集）。
@@ -95,9 +99,9 @@ ServiceID|{service ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
-Type|Type|StreamingEndpoint
-名称|名称|StreamingEndpointRequestLog
+时间戳|时间戳|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
+类型|类型|StreamingEndpoint
+姓名|姓名|StreamingEndpointRequestLog
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 HostName|终结点的主机名|builddemoserver.origin.mediaservices.windows.net
@@ -114,9 +118,9 @@ E2ELatency|平均端到端延迟|250
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
-Type|Type|频道
-名称|名称|ChannelHeartbeat
+时间戳|时间戳|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
+类型|类型|频道
+姓名|姓名|ChannelHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 TrackType|轨道视频/音频/文本的类型|视频/音频
@@ -128,28 +132,28 @@ OverlapCount|引入中的重叠|0
 DiscontinuityCount|轨道的中断|0
 LastTimestamp|上次引入数据的时间戳|1800488800
 NonincreasingCount|由于非递增时间戳而丢弃的片段计数|2
-UnalignedKeyFrames|是否收到关键帧不一致的片段（跨音质级别） |True
+UnalignedKeyFrames|是否收到关键帧不一致的片段（跨音质级别） |TRUE
 UnalignedPresentationTime|是否收到演示时间不一致的片段（跨音质级别/轨道）|True
-UnexpectedBitrate|如果音频/视频轨道的计算/实际比特率 > 40,000 bps 且 IncomingBitrate == 0，或者 IncomingBitrate 和 actualBitrate 相差 50%，则为 true |True
-Healthy|如果满足以下条件，则为 true： <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> 都为 0|True<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
+UnexpectedBitrate|如果音频/视频轨道的计算/实际比特率 > 40,000 bps 且 IncomingBitrate == 0，或者 IncomingBitrate 和 actualBitrate 相差 50%，则为 true |TRUE
+Healthy|如果 <br/>overlapCount、 <br/>DiscontinuityCount、 <br/>NonIncreasingCount、 <br/>UnalignedKeyFrames、 <br/>UnalignedPresentationTime、 <br/>UnexpectedBitrate<br/> 全部为 0，则为 true|TRUE<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- OverlapCount > 0<br/>- DiscontinuityCount > 0<br/>- NonincreasingCount > 0<br/>- UnalignedKeyFrames == True<br/>- UnalignedPresentationTime == True<br/>- UnexpectedBitrate == True
 
-**实时存档**
+**直播存档**
 
 属性|值|示例/说明
 ---|---|---
 PartitionKey|PartitionKey|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66
 RowKey|RowKey|01688_00199
-Timestamp|Timestamp|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
-Type|Type|Archive
-名称|名称|ArchiveHeartbeat
+时间戳|时间戳|Azure 表中的自动时间戳 2016-09-09T22:43:42.241Z
+类型|类型|Archive
+姓名|姓名|ArchiveHeartbeat
 ObservedTime|ObservedTime|2016-09-09T22:42:36.924Z
 ServiceID|服务 ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
-ManifestName|节目 URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
+ManifestName|程序 URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|轨道名称|audio_1
 TrackType|轨道类型|音频/视频
 CustomAttribute|十六进制字符串，用于区分具有相同名称和比特率的不同轨道（多摄像机角度）|
 比特率|轨道比特率|785000
-Healthy|如果 FragmentDiscardedCount == 0 且 ArchiveAcquisitionError == False，则为 true|True（这两个值不存在于指标中，但存在于源事件中）<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
+运行状况良好|如果 FragmentDiscardedCount == 0 且 ArchiveAcquisitionError == False，则为 true|True（这两个值不存在于指标中，但存在于源事件中）<br/><br/>Healthy 是一个复合函数，满足以下任何条件时返回 false：<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
 
 ## <a name="general-qa"></a>常见问答
 
@@ -206,11 +210,11 @@ Healthy|如果 FragmentDiscardedCount == 0 且 ArchiveAcquisitionError == False�
 - Application Insights
 - Azure Monitor（以前称为 Shoebox）
 - AMS 实时仪表板
-- Azure 门户（尚未发行）
+- Azure 门户（等待发布）
 
 ### <a name="how-to-manage-data-retention"></a>如何管理数据保留？
 
-遥测系统不提供数据保留管理，也不会自动删除旧记录。 因此，需要手动管理和删除存储表中的旧记录。 可参阅存储 SDK 以了解如何执行此操作。
+遥测系统不提供数据保留期管理，也不会自动删除旧记录。 因此，请在存储表中手动管理和删除旧记录。 可参阅存储 SDK 以了解如何执行此操作。
 
 ## <a name="next-steps"></a>后续步骤
 

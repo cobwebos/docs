@@ -1,19 +1,19 @@
 ---
 title: 使用 Azure Cosmos DB 帐户
 description: 本文介绍如何创建和使用 Azure Cosmos DB 帐户
-author: dharmas-cosmos
+author: rimman
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 11/08/2018
-ms.author: dharmas
+ms.date: 03/31/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: e40b763aa2a36e3afd85a82b66e393ac78d3afaa
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da55807d4ca803adf63a1dd2dfe3ce3794cdd509
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839570"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762593"
 ---
 # <a name="work-with-azure-cosmos-account"></a>使用 Azure Cosmos 帐户
 
@@ -21,7 +21,7 @@ Azure Cosmos DB 是完全托管的平台即服务 (PaaS)。 若要开始使用 A
 
 Azure Cosmos 帐户是全局分配和高可用性的基本单元。 要在多个 Azure 区域之间全局分配数据和吞吐量，随时可在 Azure Cosmos 帐户中添加和删除 Azure 区域。 可将 Azure Cosmos 帐户配置为使用一个或多个写入区域。 有关详细信息，请参阅[如何在 Azure Cosmos 帐户中添加和删除 Azure 区域](how-to-manage-database-account.md)。 可以在 Azure Cosmos 帐户中配置[默认一致性](consistency-levels.md)级别。 Azure Cosmos DB 提供综合性的 SLA，涵盖了吞吐量、99% 时间内的延迟、一致性和高可用性。 有关详细信息，请参阅 [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)。
 
-若要安全管理对 Azure Cosmos 帐户中所有数据的访问，可以使用与帐户关联的主密钥。 若要进一步保护对数据的访问，可在 Azure Cosmos 帐户中配置 VNET 服务终结点和 IP 防火墙。 
+若要安全地管理对 Azure Cosmos 帐户中的所有数据的访问，可以使用[主密钥](secure-access-to-data.md)与你的帐户相关联。 若要进一步保护对数据的访问，可以配置[VNET 服务终结点](vnet-service-endpoint.md)并[IP 防火墙](firewall-support.md)上你的 Azure Cosmos 帐户。 
 
 ## <a name="elements-in-an-azure-cosmos-account"></a>Azure Cosmos 帐户中的元素
 
@@ -33,7 +33,7 @@ Azure Cosmos DB 容器是基本的缩放单元。 容器可以提供几乎无限
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，可以继续了解如何管理 Azure Cosmos 帐户，或参阅与 Azure Cosmos DB 相关的其他概念：
+了解如何管理 Azure Cosmos 帐户和其他概念：
 
 * [如何管理 Azure Cosmos 帐户](how-to-manage-database-account.md)
 * [全局分发](distribute-data-globally.md)

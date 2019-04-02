@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ef408022174bc53300626b71f28bafe0561dc343
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 07865b2120aa91381d3711688e1a5c8e3187fab3
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486234"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793368"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
 
@@ -27,12 +27,14 @@ ms.locfileid: "58486234"
 
 有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
+
 完成[在 Azure AD B2C 用户旅程中集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)一文中所述的步骤。
 
-## <a name="step-1-add-authentication-support"></a>步骤 1：添加身份验证支持
+## <a name="step-1-add-authentication-support"></a>步骤 1:添加身份验证支持
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>步骤 1.1：将应用程序设置添加到项目的 web.config 文件
+
 1. 打开先前创建的 Visual Studio 项目。
 
 2. 将以下应用程序设置添加到 web.config 文件中的 `appSettings` 元素下面：
@@ -55,15 +57,17 @@ ms.locfileid: "58486234"
     ```
 
 ### <a name="step-12-install-owin-libraries"></a>步骤 1.2：安装 OWIN 库
+
 首先，使用 Visual Studio 包管理器控制台将 OWIN 中间件 NuGet 包添加到项目：
 
-```
+```powershell
 PM> Install-Package Microsoft.Owin
 PM> Install-Package Owin
 PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ```
 
 ### <a name="step-13-add-an-authentication-middleware-class"></a>步骤 1.3：添加身份验证中间件类
+
 在 *App_Start* 文件夹下添加 `ClientAuthMiddleware.cs` 类。 为此，请执行以下操作：
 
 1. 右键单击“App_Start”文件夹，依次选择“添加”、“类”。
@@ -187,8 +191,9 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
 ### <a name="step-14-add-an-owin-startup-class"></a>步骤 1.4：添加 OWIN 启动类
+
 将名为 `Startup.cs` 的 OWIN 启动类添加到 API。 为此，请执行以下操作：
-1. 右键单击项目，选择“添加” > “新建项”，并搜索“OWIN”。
+1. 右键单击项目，选择“添加” > “新建项”，然后搜索“OWIN”。
 
    ![添加 OWIN 启动类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
@@ -212,23 +217,27 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
     ```
 
 ### <a name="step-15-protect-the-identity-api-class"></a>步骤 1.5：保护标识 API 类
+
 打开 Controllers\IdentityController.cs，将 `[Authorize]` 标记添加到控制器类。 此标记将控制器的访问权限限制给符合授权要求的用户。
 
 ![将 Authorize 标记添加到控制器](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>步骤 2：发布到 Azure
+## <a name="step-2-publish-to-azure"></a>步骤 2:发布到 Azure
+
 若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
 
 ## <a name="step-3-add-the-restful-services-app-id-and-app-secret-to-azure-ad-b2c"></a>步骤 3：将 RESTful 服务应用 ID 和应用机密添加到 Azure AD B2C
+
 RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭据存储在 Azure AD B2C 租户中。 自定义策略在调用 RESTful 服务时会提供凭据。
 
 ### <a name="step-31-add-a-restful-services-client-id"></a>步骤 3.1：添加 RESTful 服务客户端 ID
+
 1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
 
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
-3. 选择 **添加** 。
+3. 选择“设置” （应用程序对象和服务主体对象）。
 
 4. 对于“选项”，请选择“手动”。
 
@@ -239,16 +248,17 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择“创建”。
+8. 选择“创建” 。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
 ### <a name="step-32-add-a-restful-services-client-secret"></a>步骤 3.2：添加 RESTful 服务客户端机密
+
 1. 在 Azure AD B2C 租户中，选择“B2C 设置” > “标识体验框架”。
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
-3. 选择 **添加** 。
+3. 选择“设置” （应用程序对象和服务主体对象）。
 
 4. 对于“选项”，请选择“手动”。
 
@@ -259,11 +269,12 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择“创建”。
+8. 选择“创建” 。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 
 ## <a name="step-4-change-the-technical-profile-to-support-basic-authentication-in-your-extension-policy"></a>步骤 4：更改技术配置文件以支持扩展策略中的基本身份验证
+
 1. 在工作目录中，打开扩展策略文件 (TrustFrameworkExtensions.xml)。
 
 2. 搜索包含 `Id="REST-API-SignUp"` 的 `<TechnicalProfile>` 节点。
@@ -271,6 +282,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 3. 找到 `<Metadata>` 元素。
 
 4. 将 *AuthenticationType* 更改为 *Basic*，如下所示：
+
     ```xml
     <Item Key="AuthenticationType">Basic</Item>
     ```
@@ -283,6 +295,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
         <Key Id="BasicAuthenticationPassword" StorageReferenceId="B2C_1A_B2cRestClientSecret" />
     </CryptographicKeys>
     ```
+
     添加该片段后，技术配置文件应类似于以下 XML 代码：
     
     ![添加基本身份验证 XML 元素](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-add-1.png)
@@ -302,6 +315,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 6. 上传 *TrustFrameworkExtensions.xml* 文件，并确保它能够通过验证。
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>步骤 6：使用“立即运行”测试自定义策略
+
 1. 打开“Azure AD B2C 设置”，选择“标识体验框架”。
 
     >[!NOTE]
@@ -339,9 +353,10 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
     ```
 
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>（可选）下载完整的策略文件和代码
+
 * 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)演练后，我们建议你使用自己的自定义策略文件来构建方案。 我们已提供[示例策略文件](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)用于参考。
 * 可以从 [Visual Studio 解决方案参考示例](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)下载完整代码。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 
+* [使用客户端证书保护 RESTful API](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)

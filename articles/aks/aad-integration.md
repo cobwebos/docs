@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/09/2018
 ms.author: iainfou
-ms.openlocfilehash: 0cf83180647c142c9db2a1229674de96fec6a6bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c2ed053479b11bada4cfc0ec808ad148f024dee6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087527"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803211"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
@@ -68,7 +68,7 @@ ms.locfileid: "58087527"
 
    ![设置应用程序 Graph 权限](media/aad-integration/delegated-permissions.png)
 
-   选择“完成”。
+   选择“完成” 。
 
 7. 从 API 列表中选择“Microsoft Graph”，然后选择“授予权限”。 如果当前帐户不是租户管理员，此步骤将会失败。
 
@@ -149,7 +149,15 @@ az aks create \
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster --admin
 ```
 
-接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 此示例向该帐户授予对群集所有命名空间的完全访问权限。 创建一个文件（例如 *rbac-aad-user.yaml*），然后粘贴以下内容。 将用户名更新为 Azure AD 租户中的某个用户名：
+接下来，使用以下清单为 Azure AD 帐户创建 ClusterRoleBinding。 此示例向该帐户授予对群集所有命名空间的完全访问权限。 
+
+获取*objectId*的所需的用户帐户使用[az ad 用户显示][ az-ad-user-show]命令。 提供所需的帐户的用户主体名称 (UPN):
+
+```azurecli-interactive
+az ad user show --upn-or-object-id user@contoso.com --query objectId -o tsv
+```
+
+创建一个文件（例如 *rbac-aad-user.yaml*），然后粘贴以下内容。 使用你在上一步中获得的 Azure AD 中的用户帐户的对象 ID 更新用户名称：
 
 ```yaml
 apiVersion: rbac.authorization.k8s.io/v1
@@ -163,7 +171,7 @@ roleRef:
 subjects:
 - apiGroup: rbac.authorization.k8s.io
   kind: User
-  name: "user@contoso.com"
+  name: "947026ec-9463-4193-c08d-4c516e1f9f52"
 ```
 
 使用 [kubectl apply][kubectl-apply] 命令应用绑定，如以下示例所示：
@@ -242,3 +250,4 @@ error: You must be logged in to the server (Unauthorized)
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [az-group-create]: /cli/azure/group#az-group-create
 [open-id-connect]:../active-directory/develop/v1-protocols-openid-connect-code.md
+[az-ad-user-show]: /cli/azure/ad/user#az-ad-user-show

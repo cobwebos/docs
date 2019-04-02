@@ -11,18 +11,19 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 610d81912ac0244f25bc39c41690ab7e7ea8897c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17b472b647dd27306ca95345e49dfeb3aee60665
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58111304"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793369"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B 协作 API 和自定义
 
 已经有许多客户和我们说他们想要以最适合其组织的方式自定义邀请过程。 使用我们的 API，便可以实现该想法。 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation)
 
 ## <a name="capabilities-of-the-invitation-api"></a>邀请 API 的功能
+
 该 API 提供以下功能：
 
 1. 使用*任何*电子邮件地址邀请外部用户。
@@ -68,21 +69,25 @@ ms.locfileid: "58111304"
 
 
 ## <a name="authorization-model"></a>授权模型
+
 可以在以下授权模式下运行 API：
 
 ### <a name="app--user-mode"></a>“应用 + 用户”模式
+
 在此模式下，任何使用 API 的用户都需要有创建 B2B 邀请的权限。
 
 ### <a name="app-only-mode"></a>“仅应用”模式
+
 在仅应用上下文中，应用需要 User.Invite.All 作用域才能使邀请成功。
 
 有关详细信息，请参阅 https://developer.microsoft.com/graph/docs/authorization/permission_scopes
 
 
 ## <a name="powershell"></a>PowerShell
+
 可使用 PowerShell 轻松地将外部用户添加并邀请到组织。 使用 cmdlet 创建邀请：
 
-```
+```powershell
 New-AzureADMSInvitation
 ```
 
@@ -102,7 +107,8 @@ New-AzureADMSInvitation
 
 可使用“筛选器”选项按 UserState 筛选结果。 以下示例显示了如何筛选结果以仅显示具有待处理邀请的用户。 该示例还显示了 Format-List 选项，借助该选项可以指定要显示的属性。 
  
-```
+
+```powershell
 Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Property DisplayName,UserPrincipalName,UserState,UserStateChangedOn
 ```
 
@@ -119,4 +125,3 @@ Get-AzureADUser -Filter "UserState eq 'PendingAcceptance'" | Format-List -Proper
 - [B2B 协作邀请电子邮件的元素](invitation-email-elements.md)
 - [B2B 协作邀请兑换](redemption-experience.md)
 - [在没有邀请的情况下添加 B2B 协作用户](add-user-without-invite.md)
-

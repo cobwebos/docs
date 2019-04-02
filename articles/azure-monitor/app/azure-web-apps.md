@@ -1,110 +1,134 @@
 ---
 title: 监视 Azure 应用服务性能 | Microsoft Docs
-description: Azure 应用服务的应用程序性能监视。 对负载和响应时间、依赖项信息绘制图表，并对性能设置警报。
+description: Azure 应用服务的应用程序性能监视。 图表加载和响应时间、 依赖关系信息，并对性能设置警报。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
 manager: carmonm
-ms.assetid: 0b2deb30-6ea8-4bc4-8ed0-26765b85149f
 ms.service: application-insights
-ms.workload: na
-ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 92a7c1a45655f8804aa1f81b1a77ebf7cd5197e8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7386f6bd92143cf3fb7b37725900425f99371cd0
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122159"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804986"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
-在 [Azure 门户](https://portal.azure.com)中，可以为 [Azure 应用服务](../../app-service/overview.md)中的 Web 应用、移动后端和 API 应用设置应用程序性能监视。 [Azure Application Insights](../../azure-monitor/app/app-insights-overview.md) 将检测应用，将其活动的相关遥测数据发送到 Application Insights 服务，以便在其中存储和分析。 此处的指标图表和搜索工具可用于帮助诊断问题、改善性能以及评估使用情况。
 
-## <a name="runtime-or-build-time"></a>运行时或生成时间
-可以使用以下两种方法之一来配置通过检测应用进行监视：
+启用监视.NET 和.NET Core 上运行 Azure 应用服务上的基于的 web 应用程序是现在比以往更容易。 以前需要手动安装站点扩展，而最新扩展代理现已内置到应用服务映像默认情况下。 本文将引导你完成启用 Application Insights 监视，以及提供用于自动执行大规模部署过程的初步指导。
 
-* **运行时**-可以选择的性能监视扩展你的应用服务已激活。 无需重建或重装应用。 获取一组标准包用于监视响应时间、成功率、异常、依赖项等。
+> [!NOTE]
+> 手动添加 Application Insights 站点扩展通过**开发工具** > **扩展**已弃用。 该扩展的最新稳定版本现已[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)作为应用服务映像的一部分。 文件位于`d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`，并使用每个稳定版本自动更新。 如果您遵循的基于代理的说明进行操作，以启用监视下面，它会自动将为您删除不推荐使用的扩展。
 
-* **生成时** - 在开发期间，可以在应用中安装一个包。 此选项更灵活。 除了安装相同的标准包以外，还可以编写代码来自定义遥测，或发送自己的遥测数据。 可以根据应用域的语义记录特定的活动或记录事件。 这还使您能够测试 Application Insights SDK 的最新版本，如你可选择要评估测试版 Sdk，而运行时监视仅限于最新稳定版本。
+## <a name="enable-application-insights"></a>启用 Application Insights
 
-## <a name="runtime-instrumentation-with-application-insights"></a>使用 Application Insights 的运行时检测
-如果您当前在 Azure 中运行的应用服务，你已经获得了一些监视： 默认情况下请求和错误率。 添加 Application Insights 可获得更多功能，例如响应时间、 监视调用依赖项，智能检测，以及对功能强大的 Kusto 查询语言访问权限。 
+有两种方法来启用应用程序监视的托管的 Azure 应用服务应用程序：
+
+* **基于代理的应用程序监视**(ApplicationInsightsAgent)。  
+    * 此方法是最容易启用，并不需要任何高级的配置。 它通常称为"运行时"监视。 适用于 Azure 应用服务，我们建议启用此级别的监视，至少，然后根据您可以评估是否需要通过手动检测的更高级监视的特定方案。
+
+* **手动检测应用程序通过代码**通过安装 Application Insights SDK。
+
+    * 这种方法是更可自定义，但它需要[上的 Application Insights SDK NuGet 包添加的依赖项](https://docs.microsoft.com/azure/azure-monitor/app/asp-net)。 此方法还意味着您必须自行管理包的最新版本的更新。
+
+    * 如果需要进行自定义 API 调用的基于代理的监视与默认情况下不捕获跟踪事件/依赖项，您需要使用此方法。 请查看[API 的自定义事件和指标文章](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics)若要了解详细信息。
+
+> [!NOTE]
+> 如果基于代理的监视和手动 SDK 基于检测是检测到仅手动检测设置将起作用。 这是为了防止重复的数据从发送。 若要详细了解此签出[故障排除部分](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)下面。
+
+## <a name="enable-agent-based-monitoring-net"></a>启用基于代理的监视.NET
 
 1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
 
-    ![在“设置”下选择“Application Insights”](./media/azure-web-apps/settings-app-insights.png)
+    ![在“设置”下选择“Application Insights”](./media/azure-web-apps/settings-app-insights-01.png)
 
    * 除非已为此应用设置了 Application Insights 资源，否则请选择创建新资源。 
 
      > [!NOTE]
      > 当单击“确定”来创建新资源时，将提示你**应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会**触发应用服务的重新启动**。 
 
-     ![检测 Web 应用](./media/azure-web-apps/create-resource.png)
+     ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
 
 2. 指定要使用哪些资源后，可以选择 Application Insights 根据平台为应用程序收集数据的方式。 ASP.NET 应用程序监视是上： 默认情况下具有两个不同级别的集合。
 
     ![根据平台选择选项](./media/azure-web-apps/choose-options-new.png)
 
    * .NET 基本集合级别提供基本的单实例 APM 功能。
-    
+
    * .NET 建议集合级别：
        * 添加 CPU、内存和 I/O 使用情况趋势。
        * 跨请求/依赖关系边界关联微服务。
        * 收集使用情况趋势，并启用从可用性结果到事务的关联。
        * 收集未经主机进程处理的异常。
        * 提高使用采样时，负载下的 APM 指标准确性。
-    
-     提供了.NET core**建议集合**或**禁用**.NET Core 2.0 和 2.1。
 
-3. 安装 Application Insights 后，可以**检测应用服务**。
+3. 若要配置的设置，例如采样，可以通过 applicationinsights.config 文件以前控制可以现在与通过应用程序设置相应的前缀的那些相同的设置。 
 
-   为页面视图和用户遥测启用客户端监视。
+    * 例如，若要更改初始采样百分比，可以创建的应用程序设置：`MicrosoftAppInsights_AdaptiveSamplingTelemetryProcessor_InitialSamplingPercentage`并将值`100`。
 
-    （对于使用建议集合的 .NET Core 应用，这在默认情况下会启用，无论是否存在应用设置“APPINSIGHTS_JAVASCRIPT_ENABLED”。 用于禁用客户端监视的基于精细 UI 的支持当前不可用于 .NET Core。）
-    
-   * 选择“设置”>“应用程序设置”
-   * 在“应用设置”下添加新的键/值对：
+    * 有关受支持的自适应采样遥测处理器设置的列表，您可以参阅[代码](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/master/src/ServerTelemetryChannel/AdaptiveSamplingTelemetryProcessor.cs)并[相关联的文档](https://docs.microsoft.com/azure/azure-monitor/app/sampling)。
 
-     键：`APPINSIGHTS_JAVASCRIPT_ENABLED`
+## <a name="enable-agent-based-monitoring-net-core"></a>启用基于代理的监视的.NET Core
 
-     值： `true`
+支持以下版本的.NET Core:ASP.NET Core 2.0, ASP.NET Core 2.1, ASP.NET Core 2.2
+
+目标的完整框架，.NET Core、 独立的部署和 ASP.NET Core 3.0 目前**不支持**使用基于代理/扩展监视。 ([手动检测](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core)通过代码将在所有前面的方案中工作。)
+
+1. 在应用服务的 Azure 控制面板中，选择“Application Insights”。
+
+    ![在“设置”下选择“Application Insights”](./media/azure-web-apps/settings-app-insights-01.png)
+
+   * 除非已为此应用设置了 Application Insights 资源，否则请选择创建新资源。 
+
+     > [!NOTE]
+     > 当单击“确定”来创建新资源时，将提示你**应用监视设置**。 选择“继续”会将新的 Application Insights 资源链接到你的应用服务，这样做还会**触发应用服务的重新启动**。 
+
+     ![检测 Web 应用](./media/azure-web-apps/create-resource-01.png)
+
+2. 指定后要使用哪些资源，可以选择 Application Insights 收集每个平台的应用程序数据的方式。 提供了.NET core**建议集合**或**禁用**适用于.NET Core 2.0、 2.1 和 2.2。
+
+    ![根据平台选择选项](./media/azure-web-apps/choose-options-new-net-core.png)
+
+## <a name="enable-client-side-monitoring-net"></a>启用客户端监视.NET
+
+客户端监视是参加 asp.net。 若要启用客户端监视：
+
+* 选择**设置**> * * * * 应用程序设置 * * *
+   * 在应用程序设置下添加一个新**应用设置名称**并**值**:
+
+     名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
+
+     值：`true`
+
    * **保存**设置并**重新启动**应用。
 
-4. 通过选择“设置” > “Application Insights” > “在 Application Insights 中查看更多”来浏览你的应用的监视数据。
+![应用程序的屏幕截图设置 UI](./media/azure-web-apps/appinsights-javascript-enabled.png)
 
-以后，可以根据需要使用 Application Insights 生成应用。
+若要禁用客户端监视从应用程序设置的关联的键值对的删除或将值设置为 false。
 
-*如何删除 Application Insights 或改为发送到另一个资源？*
+## <a name="enable-client-side-monitoring-net-core"></a>启用客户端监视的.NET Core
 
-* 在 Azure 中，打开 Web 应用控制边栏选项卡，并在“设置”下打开“Application Insights”。 可单击顶部的“禁用”关闭 Application Insights，或在“更改资源”部分中选择新资源。
+客户端监视是**默认情况下启用**有关使用.NET Core 应用**建议集合**，无论是否存在的应用设置 APPINSIGHTS_JAVASCRIPT_ENABLED。
 
-## <a name="build-the-app-with-application-insights"></a>使用 Application Insights 生成应用
-Application Insights 可以通过将 SDK 安装到应用中来提供更详细的遥测。 具体而言，可以收集跟踪日志，[编写自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)，以及获取更详细的异常报告。
+如果出于某种原因，你想要禁用客户端监视：
 
-1. **在 Visual Studio 中**（2013 Update 2 或更高版本），为项目配置 Application Insights。
+* 选择**设置** > **应用程序设置**
+   * 在应用程序设置下添加一个新**应用设置名称**并**值**:
 
-    右键单击 Web 项目，并选择“添加”>“Application Insights”或“项目” > “Application Insights” > “配置 Application Insights”。
+     名称： `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-    ![右键单击 Web 项目，并选择“添加或配置 Application Insights”](./media/azure-web-apps/03-add.png)
+     值：`false`
 
-    如果系统提示登录，请使用 Azure 帐户的凭据。
+   * **保存**设置并**重新启动**应用。
 
-    该操作会产生两种效果：
-
-   1. 在 Azure 中创建 Application Insights 资源，这是存储、分析和显示遥测数据的位置。
-   2. 将 Application Insights NuGet 包添加到代码（如果该包尚不存在），并将该包配置为向 Azure 资源发送遥测数据。
-2. 可以通过在开发计算机上运行应用来**测试遥测** (F5)。
-3. 以普通的方式**将应用发布**到 Azure。 
-
-*如何改为向不同的 Application Insights 资源发送数据？*
-
-* 在 Visual Studio 中右键单击项目，选择“配置 Application Insights”，并选择所需的资源。 可以使用相应的选项来创建新资源。 重新生成并重新部署。
+![应用程序的屏幕截图设置 UI](./media/azure-web-apps/appinsights-javascript-disabled.png)
 
 ## <a name="automate-monitoring"></a>自动监视
 
-若要启用使用 Application Insights 的遥测数据收集需要设置仅应用程序设置：
+若要启用使用 Application Insights 的遥测数据收集，需要设置仅应用程序设置：
 
    ![应用服务应用程序设置的 Application Insights 的可用设置](./media/azure-web-apps/application-settings.png)
 
@@ -115,7 +139,7 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 |ApplicationInsightsAgent_EXTENSION_VERSION | 主扩展，它控制运行时监视。 | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  在默认模式仅、 基本功能的支持是为了确保获得最佳性能。 | `default` 或`recommended`。 |
 |InstrumentationEngine_EXTENSION_VERSION | 控制是否二进制重写引擎`InstrumentationEngine`将打开。 此设置会影响性能，并且会影响冷启动/启动时间。 | `~1` |
-|XDT_MicrosoftApplicationInsights_BaseExtensions | 如果 SQL 和 Azure 表的文本的控件将与依赖项调用一起捕获。 性能警告： 这需要`InstrumentationEngine`。 | `~1` |
+|XDT_MicrosoftApplicationInsights_BaseExtensions | 如果 SQL 和 Azure 表的文本的控件将与依赖项调用一起捕获。 性能警告： 此设置要求`InstrumentationEngine`。 | `~1` |
 
 ### <a name="app-service-application-settings-with-azure-resource-manager"></a>应用服务应用程序设置使用 Azure 资源管理器
 
@@ -144,7 +168,7 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 
 ```
 
-有关示例的 Azure 资源管理器模板使用应用程序设置配置了 Application Insights 的此[模板](https://github.com/Andrew-MSFT/BasicImageGallery)会非常有用，特别是在开始节[行 238](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238)。
+有关示例应用程序设置为 Application Insights 中，配置与 Azure 资源管理器模板的这[模板](https://github.com/Andrew-MSFT/BasicImageGallery)会非常有用，特别是在开始节[行 238](https://github.com/Andrew-MSFT/BasicImageGallery/blob/c55ada54519e13ce2559823c16ca4f97ddc5c7a4/CoreImageGallery/Deploy/CoreImageGalleryARM/azuredeploy.json#L238)。
 
 ### <a name="automate-the-creation-of-an-application-insights-resource-and-link-to-your-newly-created-app-service"></a>自动创建 Application Insights 资源并链接到新创建的应用服务。
 
@@ -154,57 +178,185 @@ Application Insights 可以通过将 SDK 安装到应用中来提供更详细的
 
    ![应用服务 web 应用创建菜单](./media/azure-web-apps/create-web-app.png)
 
-这将生成的最新的 Azure 资源管理器模板配置的所有必需设置。
+此选项可生成最新的 Azure 资源管理器模板配置的所有必需设置。
 
   ![应用服务 web 应用模板](./media/azure-web-apps/arm-template.png)
+
+下面是一个示例的所有实例替换都为`AppMonitoredSite`与你的站点名称：
+
+```json
+{
+    "resources": [
+        {
+            "name": "[parameters('name')]",
+            "type": "Microsoft.Web/sites",
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [
+                        {
+                            "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                            "value": "[reference('microsoft.insights/components/AppMonitoredSite', '2015-05-01').InstrumentationKey]"
+                        },
+                        {
+                            "name": "ApplicationInsightsAgent_EXTENSION_VERSION",
+                            "value": "~2"
+                        }
+                    ]
+                },
+                "name": "[parameters('name')]",
+                "serverFarmId": "[concat('/subscriptions/', parameters('subscriptionId'),'/resourcegroups/', parameters('serverFarmResourceGroup'), '/providers/Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "hostingEnvironment": "[parameters('hostingEnvironment')]"
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', parameters('hostingPlanName'))]",
+                "microsoft.insights/components/AppMonitoredSite"
+            ],
+            "apiVersion": "2016-03-01",
+            "location": "[parameters('location')]"
+        },
+        {
+            "apiVersion": "2016-09-01",
+            "name": "[parameters('hostingPlanName')]",
+            "type": "Microsoft.Web/serverfarms",
+            "location": "[parameters('location')]",
+            "properties": {
+                "name": "[parameters('hostingPlanName')]",
+                "workerSizeId": "[parameters('workerSize')]",
+                "numberOfWorkers": "1",
+                "hostingEnvironment": "[parameters('hostingEnvironment')]"
+            },
+            "sku": {
+                "Tier": "[parameters('sku')]",
+                "Name": "[parameters('skuCode')]"
+            }
+        },
+        {
+            "apiVersion": "2015-05-01",
+            "name": "AppMonitoredSite",
+            "type": "microsoft.insights/components",
+            "location": "West US 2",
+            "properties": {
+                "ApplicationId": "[parameters('name')]",
+                "Request_Source": "IbizaWebAppExtensionCreate"
+            }
+        }
+    ],
+    "parameters": {
+        "name": {
+            "type": "string"
+        },
+        "hostingPlanName": {
+            "type": "string"
+        },
+        "hostingEnvironment": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string"
+        },
+        "sku": {
+            "type": "string"
+        },
+        "skuCode": {
+            "type": "string"
+        },
+        "workerSize": {
+            "type": "string"
+        },
+        "serverFarmResourceGroup": {
+            "type": "string"
+        },
+        "subscriptionId": {
+            "type": "string"
+        }
+    },
+    "$schema": "http://schema.management.azure.com/schemas/2014-04-01-preview/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0"
+}
+```
 
 > [!NOTE]
 > 在"默认"模式下，该模板将生成应用程序设置。 此模式下是性能优化，尽管可以修改模板以激活任何您喜欢的功能。
 
-## <a name="more-telemetry"></a>其他遥测数据
+### <a name="enabling-through-powershell"></a>通过 PowerShell 启用
 
-* [网页加载数据](../../azure-monitor/app/javascript.md)
-* [自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)
+若要启用通过 PowerShell 监视的应用程序，只是基础的应用程序设置需要进行更改。 下面是一个示例，从而使应用程序监视的网站中的资源组"AppMonitoredRG"调用"AppMonitoredSite"，并配置数据发送到"012345678-abcd-ef01-2345年-6789abcd"检测密钥。
 
-## <a name="troubleshooting"></a>故障排除
+```powershell
+$app = Get-AzureRmWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
+$newAppSettings = @{} # case-insensitive hash map
+$app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
+$newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
+$newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
+$app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
+```
 
-### <a name="do-i-still-need-to-go-to-extensions---add---application-insights-extension-for-new-app-service-apps"></a>是否仍需要转到扩展-添加-新的应用服务应用的 Application Insights 扩展？
+## <a name="upgrade-monitoring-extensionagent"></a>升级每个代理监视扩展
 
-不，您不再需要手动添加该扩展。 通过设置边栏选项卡中启用 Application Insights 将添加所有所需应用程序设置来启用监视。 这是现在，因为以前添加的扩展插件的文件现[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)作为应用服务映像的一部分。 文件位于`d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`。
+### <a name="upgrading-from-versions-289-and-up"></a>升级从版本 2.8.9 和更高
 
-### <a name="if-runtime-and-build-time-monitoring-are-both-enabled-do-i-end-up-with-duplicate-data"></a>如果运行时和生成时间监视同时启用了我的最终重复的数据？
+从版本 2.8.9 升级会自动发生，无需任何其他操作。 监视的新位传递到目标应用服务，在后台，并在应用程序重新启动它们拾取。
 
-否，默认情况下如果检测到生成时间监视，则运行时监视通过扩展将停止发送数据并将遵循的监视配置的生成时间。 确定是否禁用运行时监视基于检测的任何这三个文件：
+若要检查哪些版本的扩展正在运行，请访问 `http://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
-* Microsoft.ApplicationInsights dll
-* Microsoft.ASP.NET.TelemetryCorrelation dll
-* System.Diagnostics.DiagnosticSource dll
+![Url 路径的屏幕截图 http://yoursitename.scm.azurewebsites.net/ApplicationInsights](./media/azure-web-apps/extension-version.png)
 
-请务必记住，在许多版本的 Visual Studio 中，部分或全部这些文件会默认添加到 ASP.NET 和 ASP.NET Core Visual Studio 模板文件。 如果你的项目创建基于模板之一，即使尚未显式启用了 Application Insights，文件依赖项存在会阻止运行时监视激活。
+### <a name="upgrade-from-versions-100---265"></a>从版本 1.0.0-2.6.5 升级
 
-### <a name="appinsightsjavascriptenabled-causes-incomplete-html-response-in-net-core-web-applications"></a>APPINSIGHTS_JAVASCRIPT_ENABLED 导致 NET CORE Web 应用程序中出现不完整的 HTML 响应。
+从版本 2.8.9 开始使用预安装的站点扩展。 如果你是早期版本，您可以通过两种方式之一进行更新：
 
-通过应用服务启用 Javascript 可能会导致 html 响应被截断。
+* [通过启用通过门户升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)。 (即使你有 Azure 应用服务安装 Application Insights 扩展，UI 会显示仅**启用**按钮。 在后台，旧的专用站点扩展将被删除。）
 
-* 解决方法 1：将 APPINSIGHTS_JAVASCRIPT_ENABLED 应用程序设置设为 false 或者完全将其删除并重启
-* 解决方法 2： 将 sdk 通过代码添加和删除扩展 （Profiler 和快照调试器不会使用此配置）
+* [通过 PowerShell 升级](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell):
 
-若要跟踪此问题，请转到[导致不完整的 HTML 响应的 Azure 扩展](https://github.com/Microsoft/ApplicationInsights-Home/issues/277)。
+    1. 设置应用程序设置来启用预安装的站点扩展 ApplicationInsightsAgent。 请参阅[通过 powershell 启用](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enabling-through-powershell)。
+    2. 手动删除名为 Azure 应用服务的 Application Insights 扩展的专用站点扩展。
 
-对于 .NET Core，当前不支持以下内容：
+如果升级已完成从 2.5.1 版之前的版本，请检查 ApplicationInsigths dll 已从应用程序 bin 文件夹[请参阅故障排除步骤](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
 
-* 独立部署。
-* 面向 .NET Framework 的应用。
-* .NET Core 2.2 应用程序。
+## <a name="troubleshooting"></a>疑难解答
+
+下面是我们用于扩展/代理基于监视适用于.NET 的分步故障排除指南和基于.NET Core 的 Azure 应用服务上运行的应用程序。
 
 > [!NOTE]
-> 支持 .NET Core 2.0 和 .NET Core 2.1。 添加 .NET Core 2.2 支持时，会更新本文。
+> Java 和 Node.js 应用程序通过手动 SDK 基于检测仅支持在 Azure 应用服务上，因此下面的步骤不适用于这些方案。
+
+1. 通过监视应用程序的检查`ApplicationInsightsAgent`。
+    * 检查 ApplicationInsightsAgent_EXTENSION_AGENT 应用设置设置为"~ 2"的值。
+2. 请确保该应用程序满足要监视的要求。
+    * 浏览到 `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
+
+    ![屏幕截图 https://yoursitename.scm.azurewebsites/applicationinsights结果页](./media/azure-web-apps/app-insights-sdk-status.png)
+
+    * 确认`Application Insights Extension Status`是 `Pre-Installed Site Extension, version 2.8.12.1527, is running.`
+        * 如果未运行，请按照[启用 Application Insights 监视的说明](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#enable-application-insights)
+
+    * 确认状态源存在并如下所示： `Status source D:\home\LogFiles\ApplicationInsights\status\status_RD0003FF0317B6_4248_1.json`
+        * 如果一个相近的值不存在，则意味着该应用程序当前未运行或不受支持。 若要确保应用程序正在运行，请尝试手动访问应用程序 url/应用程序终结点，这将允许运行时信息变得可用。
+
+    * 确认`IKeyExists`是 `true`
+        * 如果为 false，将添加 APPINSIGHTS_INSTRUMENTATIONKEY 与你 ikey guid 传递给应用程序设置。
+
+    * 确认没有任何条目`AppAlreadyInstrumented`， `AppContainsDiagnosticSourceAssembly`，和`AppContainsAspNetTelemetryCorrelationAssembly`。
+        * 如果存在任何这些条目，从你的应用程序中删除以下包： `Microsoft.ApplicationInsights`， `System.Diagnostics.DiagnosticSource`，和`Microsoft.AspNet.TelemetryCorrelation`。
+
+下表提供了这些值的含义的更详细的说明，其基础导致，以及建议的修补程序：
+
+|问题值|解释|解决方法
+|---- |----|---|
+| `AppAlreadyInstrumented:true` | 此值指示，该扩展检测到 SDK 的某些方面已经存在于应用程序，并将回退。 它可能是由于对的引用`System.Diagnostics.DiagnosticSource`， `Microsoft.AspNet.TelemetryCorrelation`，或 `Microsoft.ApplicationInsights`  | 删除的引用。 从特定 Visual Studio 模板，添加默认情况下某些这些引用和较旧版本的 Visual Studio 可能会将引用添加到`Microsoft.ApplicationInsights`。
+|`AppAlreadyInstrumented:true` | 此值还可能引起从以前的部署的应用程序文件夹中的上述 dll 存在。 | 清除要确保删除这些 dll 的应用程序文件夹。|
+|`AppContainsAspNetTelemetryCorrelationAssembly: true` | 此值指示扩展检测到对引用`Microsoft.AspNet.TelemetryCorrelation`在应用程序，并将回退。 | 删除的引用。
+|`AppContainsDiagnosticSourceAssembly**:true`|此值指示扩展检测到对引用`System.Diagnostics.DiagnosticSource`在应用程序，并将回退。| 删除的引用。
+|`IKeyExists:false`|此值指示的检测密钥不存在 AppSetting 中`APPINSIGHTS_INSTRUMENTATIONKEY`。 可能的原因：值可能已被意外删除，忘记了在自动化脚本等设置的值。 | 请确保该设置位于应用服务应用程序设置。
+
+有关 Application Insights 代理/扩展的最新信息，请参阅[发行说明](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 * [在实时应用上运行探查器](../../azure-monitor/app/profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
 * [将 Azure 诊断配置为](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
 * [监视服务运行状况指标](../../azure-monitor/platform/data-collection.md)以确保服务可用且做出快速响应。
-* 每当操作事件发生或指标超过阈值时[接收警报通知](../../azure-monitor/platform/alerts-overview.md)。
-* 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](../../azure-monitor/app/javascript.md)。
+* [接收警报通知](../../azure-monitor/platform/alerts-overview.md) 。
 * [设置可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)，以便在站点关闭时发出警报。

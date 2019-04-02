@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.topic: article
 ms.date: 03/25/2019
-ms.openlocfilehash: 4e5b63642b5090b50d29d6d3adc49ea683b90faa
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 7e1868dd5ce62c28c9a8aac724862c58a5e0e1da
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437707"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805159"
 ---
 # <a name="pricing-model-for-azure-logic-apps"></a>Azure 逻辑应用的定价模型
 
@@ -38,12 +38,12 @@ Azure 逻辑应用会计量逻辑应用中运行的所有操作。 了解有关�
 
 ## <a name="fixed-pricing-model"></a>固定定价模型
 
-为内部运行的新逻辑应用[*集成服务环境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)，固定每月价格支付内置操作和标准连接器。 ISE 提供了一种方法，用于创建和运行可访问 Azure 虚拟网络中资源的独立逻辑应用。
+[*集成服务环境*(ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)提供了可创建并运行逻辑应用可以访问 Azure 虚拟网络中的资源的专用、 隔离和专用方法。 对于在 ISE 中运行的新逻辑应用，以及内置的操作和标准连接器支付固定月费。 在 ISE 还包括一个免费企业连接器，其中包括所需的任意多个连接。 使用情况的其他企业连接器基于企业消耗价格进行收费。 
+
+在 ISE 基本单位具有固定容量，因此如果需要更大的吞吐量，你可以[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，可以在创建期间或之后。
 
 > [!NOTE]
 > 在 ISE 处于[*公共预览版*](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。 有关具体的定价信息，请参阅[Azure 逻辑应用定价](https://azure.microsoft.com/pricing/details/logic-apps)。
-
-在 ISE 基本单位具有固定容量，因此如果需要更大的吞吐量，你可以[添加更多缩放单位](../logic-apps/connect-virtual-network-vnet-isolated-environment.md#add-capacity)，可以在创建期间或之后。 ISE 包含一个免费的企业连接器，其中包括任意连接数量。 使用情况的其他企业连接器基于企业消耗价格进行收费。
 
 <a name="connectors"></a>
 

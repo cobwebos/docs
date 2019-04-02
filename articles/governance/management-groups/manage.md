@@ -1,17 +1,17 @@
 ---
-title: 如何在 Azure 中更改、删除或管理管理组 - Azure 治理
+title: 如何更改、 删除或管理管理组-Azure 监管
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 author: rthorn17
 ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 801a37496b36be1f98408c46807f5b10db2b0282
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622053"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801755"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -37,13 +37,13 @@ ms.locfileid: "58622053"
 
 1. 选择页面顶部的“重命名组”选项。
 
-   ![“重命名组”选项](./media/detail_action_small.png)
+   ![在管理组页上的重命名组选项](./media/detail_action_small.png)
 
 1. 菜单打开后，请输入要显示的新名称。
 
-   ![“重命名组”窗格](./media/rename_context.png)
+   ![重命名组窗格中重命名管理组](./media/rename_context.png)
 
-1. 选择“保存”。
+1. 选择“其他安全性验证” 。
 
 ### <a name="change-the-name-in-powershell"></a>在 PowerShell 中更改名称
 
@@ -223,7 +223,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中选择具有正确 ID 的订阅。
 
-   ![子级](./media/add_context_sub.png)
+   ![可用的订阅将添加到管理组](./media/add_context_sub.png)
 
 1. 选择“保存”。
 
@@ -237,15 +237,15 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中，选择要移动的订阅所在行末尾的椭圆。
 
-   ![“移动”选项](./media/move_small.png)
+   ![在管理组上的 move 选项](./media/move_small.png)
 
 1. 选择“移动”。
 
 1. 在打开的菜单中，选择“父管理组”。
 
-   ![“移动”窗格](./media/move_small_context.png)
+   ![将窗格以更改父组移动](./media/move_small_context.png)
 
-1. 选择“保存”。
+1. 选择“其他安全性验证” 。
 
 ### <a name="move-subscriptions-in-powershell"></a>在 PowerShell 中移动订阅
 
@@ -294,9 +294,9 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 选择新管理组将创建一个新管理组。
    - 选择现有管理组将显示所有管理组的下拉列表，这些管理组可移动到此管理组。  
 
-   ![移动](./media/add_context_MG.png)
+   ![将管理组移到新的或现有组](./media/add_context_MG.png)
 
-1. 选择“保存”。
+1. 选择“其他安全性验证” 。
 
 ### <a name="move-management-groups-in-powershell"></a>在 PowerShell 中移动管理组
 
@@ -318,7 +318,7 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)支持管理组。 可以查询与其他 Azure 资源相同的中心位置中的管理组发生的所有事件。  例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
-![将活动日志与管理组配合使用](media/al-mg.png)
+![使用管理组的活动日志](media/al-mg.png)
 
 如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示：**"/providers/Microsoft.Management/managementGroups/{yourMgID}"**。
 

@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/24/2015
 ms.author: MicrosoftHelp@twilio.com
-ms.openlocfilehash: 254128d212dec3e6f51a98dc4435894e08377eb0
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.openlocfilehash: 3b8b21de9664a969e8b1ce5699034aa9ab41d0f1
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52955218"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762882"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-from-azure"></a>如何在 Azure 中使用 Twilio 实现语音和短信功能
 本指南演示如何在 Azure 中使用 Twilio API 服务执行常见编程任务。 所涉及的任务包括发起电话呼叫和发送短信服务 (SMS) 消息。 有关 Twilio 以及在应用程序中使用语音和短信的详细信息，请参阅[后续步骤](#NextSteps)部分。
@@ -30,7 +30,7 @@ Twilio 为将来的商业沟通提供强大支持，并使开发人员能够将�
 利用 **Twilio 语音**，应用程序可以发起和接收电话呼叫。 **Twilio SMS** 使应用程序能够发送和接收 SMS 消息。 利用 **Twilio 客户端**，可以从任何手机、平板电脑或浏览器发起 VoIP 呼叫并支持 WebRTC。
 
 ## <a id="Pricing"></a>Twilio 定价和特别优惠
-Azure 客户在升级 Twilio 帐户后即可获得[特别优惠](https://www.twilio.com/azure)：10 美元的 Twilio 信用额度。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 Twilio 信用额度并从 [ahoy.twilio.com/azure](https://ahoy.twilio.com/azure) 开始。
+Azure 客户在升级 Twilio 帐户后即可获得[特别优惠](https://www.twilio.com/azure)：10 美元的 Twilio 信用额度。 此 Twilio 信用可应用于任何 Twilio 使用（10 美元信用等价于发送多达 1,000 条 SMS 消息或接收长达 1000 分钟的入站语音，具体取决电话号码和消息或呼叫目标的位置）。 兑换此 Twilio 信用额度并开始在[twilio.com/azure](https://twilio.com/azure)。
 
 Twilio 是一种现用现付服务。 没有设置费用，并且可以随时关闭帐户。 可以在 [Twilio 定价](https://www.twilio.com/voice/pricing)中找到更多详细信息。
 
@@ -85,7 +85,7 @@ Twilio 提供了一系列可包装 Twilio 各个方面的 .NET 帮助程序库�
 
 Twilio 为 .NET 开发人员提供了 5 个库：
 
-| 库 | Description |
+| 库 | 描述 |
 | --- | --- |
 | Twilio.API | 可在友好的 .NET 库中包装 Twilio REST API 的核心 Twilio 库。 此库可用于 .NET、Silverlight 和 Windows Phone 7。 |
 | Twilio.TwiML | 可提供一种 .NET 友好方式来生成 TwiML 标记。 |

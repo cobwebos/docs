@@ -16,12 +16,12 @@ ms.date: 05/21/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 645ba6e8306b063892babe25fde41d8dd3144fee
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 87d828e596c42b786d1c54a7158e1151f374c560
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444275"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793033"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>安装应用程序代理程序连接器时出现问题
 
@@ -64,13 +64,13 @@ Microsoft AAD 应用程序代理连接器是一个内部域组件，该组件使
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>验证“admin”是否可用于安装连接器
 
-**目的：** 验证尝试安装连接器的用户是否是具有正确凭据的管理员。 目前，用户必须是应用程序管理员或全局管理员安装成功。
+**目的：** 验证尝试安装连接器的用户是否是具有正确凭据的管理员。 目前，用户必须安装至少一个应用程序管理员才能成功。
 
 **若要验证凭据是否正确：**
 
 连接到 <https://login.microsoftonline.com> 并使用相同的凭据。 确保登录成功。 可以通过转到“Azure Active Directory” -&gt;“用户和组” -&gt;“所有用户”来检查用户角色。 
 
-选择用户帐户，并在生成的菜单中选择“目录角色”。 验证所选角色是否为“应用程序管理员”或“全局管理员”。 如果按这些步骤操作无法访问任何页，则表示你不具有所需的角色。
+选择用户帐户，并在生成的菜单中选择“目录角色”。 验证所选的角色为"应用程序管理员"。 如果按这些步骤操作无法访问任何页，则表示你不具有所需的角色。
 
 ## <a name="next-steps"></a>后续步骤
 [了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)

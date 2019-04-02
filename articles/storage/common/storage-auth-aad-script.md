@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: d1fdafaaecd448fd09fc40cf5f6173ce600ac4f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a0972beff48e07b6ce8afdcec10581300f59ed41
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483199"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803572"
 ---
 # <a name="use-an-azure-ad-identity-to-access-blob-and-queue-data-with-cli-or-powershell"></a>使用 CLI 或 PowerShell 使用 Azure AD 标识来访问 blob 和队列数据
 
@@ -61,7 +61,7 @@ Azure CLI 支持`--auth-mode`blob 和队列数据操作的参数：
         --encryption-services blob
     ```
     
-1. 在创建容器之前，将分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac.md)。
+1. 在创建容器之前，将分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
     > RBAC 角色分配可能需要几分钟来传播。
@@ -114,7 +114,7 @@ Azure CLI 支持`--auth-mode`blob 和队列数据操作的参数：
     $ctx = New-AzStorageContext -StorageAccountName "<storage-account>" -UseConnectedAccount
     ```
 
-1. 在创建容器之前，将分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor-preview)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac.md)。
+1. 在创建容器之前，将分配[存储 Blob 数据参与者](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor)给自己的角色。 即使你是帐户所有者，你将需要显式权限才能执行针对存储帐户的数据操作。 有关分配 RBAC 角色的详细信息，请参阅[授予对 Azure blob 和队列数据使用 RBAC 在 Azure 门户中访问](storage-auth-aad-rbac.md)。
 
     > [!IMPORTANT]
     > RBAC 角色分配可能需要几分钟来传播。

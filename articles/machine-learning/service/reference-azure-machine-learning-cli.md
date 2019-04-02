@@ -11,12 +11,12 @@ ms.author: jordane
 author: jpe316
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 4b7cd15b1746bac6f61ef46108ade6cf1fb3b7ff
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2504ca9cb785529a9eab321c2521db46390632b7
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894642"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793197"
 ---
 # <a name="use-the-cli-extension-for-azure-machine-learning-service"></a>将 CLI 扩展用于 Azure 机器学习服务
 
@@ -40,7 +40,7 @@ CLI 不能取代 Azure 机器学习 SDK。 它是一个经过优化的补充工�
 
 * 服务部署
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>系统必备
 
 
 * 若要使用 CLI，必须拥有 Azure 订阅。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
@@ -192,7 +192,7 @@ environment:
 # Set True to perform this run inside a Docker container.
     enabled: true
 # Base image used for Docker-based runs.
-    baseImage: mcr.microsoft.com/azureml/base:0.2.1
+    baseImage: mcr.microsoft.com/azureml/base:0.2.4
 # Set False if necessary to work around shared volume bugs.
     sharedVolumes: true
 # Run with NVidia Docker extension to support GPUs.

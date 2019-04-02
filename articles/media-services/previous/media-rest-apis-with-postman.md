@@ -11,22 +11,25 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: da52827107fcf1672047644d2d5ac5ed2e6beed5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5d0b5a57f3fe587a06a102c958b17dbf2a73225c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007748"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805136"
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>配置 Postman 以便进行媒体服务 REST API 调用  
 
-本教程演示如何配置 **Postman**，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。 本教程说明如何将环境和集合文件导入到 **Postman**。 集合包含调用 Azure 媒体服务 (AMS) REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-此环境和集合在演示如何使用 Azure 媒体服务 REST API 实现各种任务的文章中使用。
+本教程介绍如何配置 **Postman**，以便可以使用它调用 Azure 媒体服务 (AMS) REST API。 本教程介绍如何将环境和集合文件导入到 **Postman**。 集合包含调用 Azure 媒体服务 (AMS) REST API 的 HTTP 请求的分组定义。 环境文件包含集合使用的变量。
 
-## <a name="prerequisites"></a>必备组件
+在介绍如何使用 Azure 媒体服务 REST API 实现各种任务的文章中使用了此环境和集合。
+
+## <a name="prerequisites"></a>系统必备
 
 - 安装 [Postman](https://www.getpostman.com/) REST 客户端，以便执行一些 AMS REST 教程中所示的 REST API。 
 

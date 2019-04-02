@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9f2eae4160dbef164ec70e8fa4d7b3a83706ae96
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880120"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803487"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表格模型的兼容性级别
 
@@ -27,7 +27,11 @@ Azure Analysis Services 支持 1200 和 1400 兼容性级别的表格模型。 �
 *  表和列名称，以及其中数据的对象级别安全性。
 *  不规则层次结构的增强支持。
 *  性能和监视改进。
- 
+
+> [!NOTE]
+> Azure Analysis Services 支持 1465年兼容级别的导入的 Power BI Desktop 文件。 但是，从 Power BI Desktop 功能，那总是让人一项预览功能，导入已停止使用并且在 2019 年 3 月从服务中删除。 1465 兼容性级别的现有模型仍然受支持。  
+
+
 ## <a name="set-compatibility-level"></a>设置兼容性级别
 
  在 SSDT 中创建新的表格模型项目时，可以在“表格模型设计器”对话框中指定兼容性级别。 
@@ -47,6 +51,9 @@ Azure Analysis Services 支持 1200 和 1400 兼容性级别的表格模型。 �
  在 SSMS 中，右键单击服务器名称 >“属性” > “支持的兼容性级别”。  
   
  此属性指定在服务器上运行的数据库的最高兼容性级别（包括预览版）。 不可更改支持的兼容性级别。  
+
+> [!NOTE]
+> 在 SSMS 中，当连接到 Azure Analysis Services 服务器**支持的兼容级别**属性将显示**1200年**。 这是一个已知的问题，会在即将发布的 SSMS 中解决更新。 解析时，此属性将显示最高支持的兼容级别。
 
 ## <a name="next-steps"></a>后续步骤
 

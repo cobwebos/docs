@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: c500725508d2bf9f09279e665871ab286d9e495a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: be0c1611856a1fa68d20696c32b5fadcd8572004
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34652063"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793605"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
@@ -44,13 +44,13 @@ ms.locfileid: "34652063"
 
 1. 以管理员身份运行 Windows PowerShell。
 
-2. 登录 Azure。
+2. 登录到 Azure。
 
     `Connect-AzureRmAccount`
 
 3. 在计算机上将读者角色导出为 JSON 模板。
 
-    ```
+    ```powershell
     Get-AzureRMRoleDefinition -Name "Reader"
 
     Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
@@ -72,7 +72,7 @@ ms.locfileid: "34652063"
 
     编辑文件，同时记住上述注意事项。
 
-    ```
+    ```json
     {
         "Name":  "StorSimple Infrastructure Admin",
         "Id":  "<guid>",
@@ -113,18 +113,24 @@ ms.locfileid: "34652063"
 
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>通过 PowerShell 创建自定义角色的示例输出
 
+```powershell
+Connect-AzureRmAccount
 ```
-PS C:\WINDOWS\system32> Connect-AzureRmAccount
 
+```Output
 Environment           : AzureCloud
 Account               : john.doe@contoso.com
 TenantId              : <tenant_ID>
 SubscriptionId        : <subscription_ID>
 SubscriptionName      : Internal Consumption
 CurrentStorageAccount :
+```
 
-PS C:\WINDOWS\system32> Get-AzureRMRoleDefinition -Name "Reader"
+```powershell
+Get-AzureRMRoleDefinition -Name "Reader"
+```
 
+```Output
 Name             : Reader
 Id               : <guid>
 IsCustom         : False
@@ -132,11 +138,14 @@ Description      : Lets you view everything, but not make any changes.
 Actions          : {*/read}
 NotActions       : {}
 AssignableScopes : {/}
+```
 
-PS C:\WINDOWS\system32> Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+```powershell
+Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
+```
 
-PS C:\WINDOWS\system32> New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
-
+```Output
 Name             : StorSimple Infrastructure Admin
 Id               : <tenant_ID>
 IsCustom         : True
@@ -148,13 +157,11 @@ Actions          : {Microsoft.StorSimple/managers/alerts/read,
                    Microsoft.StorSimple/managers/devices/alertSettings/read...}
 NotActions       : {}
 AssignableScopes : {/subscriptions/<subscription_ID>/}
-
-PS C:\WINDOWS\system32>
 ```
 
 ## <a name="add-users-to-the-custom-role"></a>将用户添加到自定义角色
 
-授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
+从资源、资源组或在该角色分配范围内的订阅中授予访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
 
 1. 请转到“访问控制(IAM)”。 在“访问控制”边栏选项卡上单击“+ 添加”。
 
@@ -188,4 +195,3 @@ PS C:\WINDOWS\system32>
 ## <a name="next-steps"></a>后续步骤
 
 了解如何[为内部用户和外部用户分配自定义角色](../role-based-access-control/role-assignments-external-users.md)。
-

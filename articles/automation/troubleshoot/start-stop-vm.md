@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/13/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1894fc1823772c27f37829b9b27ec515dcb841b7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f503d890dcc8ba90a8a4d8bafc09d5fd8b2856e6
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861054"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804847"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
@@ -24,23 +24,23 @@ ms.locfileid: "57861054"
 
 部署[空闲时间启动/停止 VM 解决方案](../automation-solution-vm-management.md)时，收到以下错误之一：
 
-```
+```error
 Account already exists in another resourcegroup in a subscription. ResourceGroupName: [MyResourceGroup].
 ```
 
-```
+```error
 Resource 'StartStop_VM_Notification' was disallowed by policy. Policy identifiers: '[{\\\"policyAssignment\\\":{\\\"name\\\":\\\"[MyPolicyName]”.
 ```
 
-```
+```error
 The subscription is not registered to use namespace 'Microsoft.OperationsManagement'.
 ```
 
-```
+```error
 The subscription is not registered to use namespace 'Microsoft.Insights'.
 ```
 
-```
+```error
 The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView' cannot perform write operation because following scope(s) are locked: '/subscriptions/000000000000-0000-0000-0000-00000000/resourceGroups/<ResourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<WorkspaceName>/views/StartStopVMView'. Please remove the lock and try again
 ```
 
@@ -53,7 +53,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 3. `Microsoft.OperationsManagement`、`Microsoft.Insights` 或 `Microsoft.Automation` 资源类型未注册。
 4. Log Analytics 工作区对其进行锁定。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
@@ -82,7 +82,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 3. runbook 可能遇到错误
 4. 可能已排除 VM
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
@@ -123,7 +123,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 3. RunAs 帐户对 VM 的权限可能不足
 4. 可能有一些 VM 设置阻止它启动或停止
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 请查看以下可能问题解决方案列表或要检查的地方：
 
@@ -153,7 +153,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 导致此故障出现的原因可能有很多种。 在 Azure 门户中，转到“自动化帐户”，并选择“流程自动化”下的“作业”。 在“作业”页上，查找 runbook 中的作业，以确定是否有任何失败的作业。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 建议使用[“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md)，在 Azure 自动化中启动和停止 VM。 此解决方案由 Microsoft 创作。 Microsoft 不支持自定义 runbook。 若要查找适用于自定义 runbook 的解决方案，可以参阅 [runbook 故障排除](runbooks.md)一文。 这篇文章介绍了所有类型 runbook 的一般指导和故障排除。
 
@@ -167,7 +167,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 这是由于 VM 上的标记不正确所致。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 请按照以下步骤操作，以确保正确配置解决方案。
 
@@ -187,7 +187,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 此问题可能是由于 RunAs 帐户未正确配置或已过期所致。 也可能是因为自动化帐户 RunAs 帐户对 VM 资源的权限不足。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 若要检查 RunAs 帐户是否已正确配置，请在 Azure 门户中转到“自动化帐户”，并选择“帐户设置”下的“RunAs 帐户”。 其中显示 RunAs 帐户的状态，如果 RunAs 帐户未正确配置或已过期，状态会体现出这一点。
 
@@ -207,7 +207,7 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 很多时候，错误可能是由于使用的解决方案过旧和过时所致。
 
-### <a name="resolution"></a>解决方法
+### <a name="resolution"></a>解析
 
 若要修复许多错误，建议删除并更新解决方案。 若要了解如何更新解决方案，请参阅[更新“在空闲时间启动/停止 VM”解决方案](../automation-solution-vm-management.md#update-the-solution)。
 
@@ -217,4 +217,4 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

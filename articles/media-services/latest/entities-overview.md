@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 03/30/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9a02030cb2b785b027bb78bad5ef636dff9dd8f3
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6bf0efd6994315d56e7b1b2447ffed9154cf5ee5
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758536"
+ms.locfileid: "58804864"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>使用媒体服务 v3 Api 进行开发
 
@@ -43,6 +43,30 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 
 
 请参阅[获取内容密钥策略 - .NET](get-content-key-policy-dotnet-howto.md) 示例。
 
+## <a name="long-running-operations"></a>长时间运行的操作
+
+操作标记为与`x-ms-long-running-operation`在 Azure 媒体服务[swagger 文件](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/stable/2018-07-01/streamingservice.json)是长时间运行的操作。 
+
+有关如何跟踪异步 Azure 操作的详细信息，请参阅[异步操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations#monitor-status-of-operation)
+
+媒体服务具有以下长时间运行的操作：
+
+* 创建 LiveEvent
+* 更新 LiveEvent
+* 删除 LiveEvent
+* Start LiveEvent
+* 停止 LiveEvent
+* 重置 LiveEvent
+* 创建 LiveOutput
+* Delete LiveOutput
+* 创建 StreamingEndpoint
+* 更新 StreamingEndpoint
+* 删除 StreamingEndpoint
+* 启动 StreamingEndpoint
+* 停止 StreamingEndpoint
+* 缩放 StreamingEndpoint
+
+
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
 媒体服务支持适用于媒体服务 v3 实体的以下 OData 查询选项： 
@@ -65,7 +89,7 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 
 
 ### <a name="page-results"></a>页面结果
 
-如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可用于逐页浏览整个结果集。 无法配置页面大小。 页面大小因实体类型而异，请参阅以下各个部分，了解详细信息。
+如果查询响应包含许多项，则服务将返回一个“\@odata.nextLink”属性来获取下一页结果。 这可以用来逐页浏览整个结果集。 无法配置页面大小。 页面大小因实体类型而异，请参阅以下各个部分，了解详细信息。
 
 如果在逐页浏览集合时创建或删除实体，则会在返回的结果中反映此更改（如果这些更改位于集合中尚未下载的部分）。 
 
@@ -78,10 +102,10 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 
 
 下表显示了如何将筛选和排序选项应用于[资产](https://docs.microsoft.com/rest/api/media/assets)属性： 
 
-|名称|筛选器|顺序|
+|姓名|筛选|订单|
 |---|---|---|
-|id|||
-|名称|eq、gt、lt| 升序和降序|
+|ID|||
+|name|eq、gt、lt| 升序和降序|
 |properties.alternateId |eq||
 |properties.assetId |eq||
 |properties.container |||
@@ -90,9 +114,9 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 
 |properties.lastModified |||
 |properties.storageAccountName |||
 |properties.storageEncryptionFormat | ||
-|type|||
+|类型|||
 
-以下 C# 示例按创建日期筛选：
+下面的 C# 示例根据创建日期进行筛选：
 
 ```csharp
 var odataQuery = new ODataQuery<Asset>("properties/created lt 2018-05-11T17:39:08.387Z");
@@ -101,11 +125,11 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 #### <a name="pagination"></a>分页 
 
-已启用的四个排序顺序均支持分页。 页面大小当前为 1000。
+四种已启用的排序顺序每种都支持分页。 页面大小当前为 1000。
 
 ##### <a name="c-example"></a>C# 示例
 
-以下 C# 示例显示如何枚举帐户中的所有资产。
+下面的 C# 示例展示了如何枚举帐户中的所有资产。
 
 ```csharp
 var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGroup, CustomerAccountName);
@@ -165,20 +189,20 @@ https://management.azure.com/subscriptions/00000000-3761-485c-81bb-c50b291ce214/
 
 下表显示了如何将这些选项应用于[内容密钥策略](https://docs.microsoft.com/rest/api/media/contentkeypolicies)属性： 
 
-|名称|筛选器|顺序|
+|姓名|筛选|订单|
 |---|---|---|
-|id|||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
+|ID|||
+|name|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.created |eq、ne、ge、le、gt、lt|升序和降序|
 |properties.description |eq、ne、ge、le、gt、lt||
 |properties.lastModified|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.options |||
 |properties.policyId|eq、ne||
-|type|||
+|类型|||
 
 #### <a name="pagination"></a>分页
 
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
+四种已启用的排序顺序每种都支持分页。 当前，页面大小为 10。
 
 以下 C# 示例演示如何通过帐户中的所有内容密钥策略进行枚举。
 
@@ -194,15 +218,15 @@ while (currentPage.NextPageLink != null)
 
 有关 REST 示例，请参阅[内容密钥策略 - 列表](https://docs.microsoft.com/rest/api/media/contentkeypolicies/list)
 
-### <a name="jobs"></a>作业
+### <a name="jobs"></a>作业(Job)
 
 #### <a name="filteringordering"></a>筛选/排序
 
 下表显示了如何将这些选项应用于[作业](https://docs.microsoft.com/rest/api/media/jobs)属性： 
 
-| 名称    | 筛选器                        | 顺序 |
+| 姓名    | 筛选                        | 订单 |
 |---------|-------------------------------|-------|
-| 名称                    | eq            | 升序和降序|
+| name                    | eq            | 升序和降序|
 | properties.state        | eq、ne        |                         |
 | properties.created      | gt、ge、lt、le| 升序和降序|
 | properties.lastModified | gt、ge、lt、le | 升序和降序| 
@@ -248,10 +272,10 @@ while (!exit);
 
 下表显示这些选项如何应用于 StreamingLocator 属性： 
 
-|名称|筛选器|顺序|
+|姓名|筛选|订单|
 |---|---|---|
-|id |||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
+|ID |||
+|name|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.alternativeMediaId  |||
 |properties.assetName   |||
 |properties.contentKeys |||
@@ -261,11 +285,11 @@ while (!exit);
 |properties.startTime   |||
 |properties.streamingLocatorId  |||
 |properties.streamingPolicyName |||
-|type   |||
+|类型   |||
 
 #### <a name="pagination"></a>分页
 
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
+四种已启用的排序顺序每种都支持分页。 当前，页面大小为 10。
 
 以下 C# 示例显示如何枚举帐户中的所有 StreamingLocator。
 
@@ -287,21 +311,21 @@ while (currentPage.NextPageLink != null)
 
 下表显示了可以如何将这些选项应用于 StreamingPolicy 属性： 
 
-|名称|筛选器|顺序|
+|姓名|筛选|订单|
 |---|---|---|
-|id|||
-|名称|eq、ne、ge、le、gt、lt|升序和降序|
+|ID|||
+|name|eq、ne、ge、le、gt、lt|升序和降序|
 |properties.commonEncryptionCbcs|||
 |properties.commonEncryptionCenc|||
 |properties.created |eq、ne、ge、le、gt、lt|升序和降序|
 |properties.defaultContentKeyPolicyName |||
 |properties.envelopeEncryption|||
 |properties.noEncryption|||
-|type|||
+|类型|||
 
 #### <a name="pagination"></a>分页
 
-已启用的四个排序顺序均支持分页。 当前，页面大小为 10。
+四种已启用的排序顺序每种都支持分页。 当前，页面大小为 10。
 
 以下 C# 示例显示如何枚举帐户中的所有 StreamingPolicies。
 
@@ -324,9 +348,9 @@ while (currentPage.NextPageLink != null)
 
 下表显示了如何将这些选项应用于[转换](https://docs.microsoft.com/rest/api/media/transforms)属性： 
 
-| 名称    | 筛选器                        | 顺序 |
+| 姓名    | 筛选                        | 订单 |
 |---------|-------------------------------|-------|
-| 名称                    | eq            | 升序和降序|
+| name                    | eq            | 升序和降序|
 | properties.created      | gt、ge、lt、le| 升序和降序|
 | properties.lastModified | gt、ge、lt、le | 升序和降序|
 

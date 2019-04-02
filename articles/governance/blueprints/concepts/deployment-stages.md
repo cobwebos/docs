@@ -1,6 +1,6 @@
 ---
-title: 蓝图部署阶段
-description: 了解蓝图服务在部署过程中将经历的步骤。
+title: 蓝图部署的阶段
+description: 了解 Azure Blueprint 服务在部署过程中将经历的步骤。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: a3ab5589cd327b73f2e66540da5c49343c4449cd
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ced8c8ab2e65fb1d3f8a976f122a387fe9161750
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57997623"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801958"
 ---
-# <a name="stages-of-a-blueprint-deployment"></a>蓝图部署阶段
+# <a name="stages-of-a-blueprint-deployment"></a>蓝图部署的阶段
 
 获取部署蓝图，一系列操作均由 Azure 蓝图服务部署蓝图中定义的资源。 本文提供了有关每个步骤涉及的详细信息。
 
@@ -62,7 +62,7 @@ Azure 蓝图服务主体授予对已分配的订阅或订阅的所有者权限�
 ## <a name="next-steps"></a>后续步骤
 
 - 了解如何使用[静态和动态参数](parameters.md)。
-- 了解如何自定义[蓝图先后顺序](sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](resource-locking.md)。
+- 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](resource-locking.md)。
 - 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
-- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。
