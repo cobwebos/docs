@@ -1,6 +1,6 @@
 ---
-title: 示例-ISO 27001 蓝图-控件映射
-description: ISO 27001 蓝图示例控件映射。
+title: 示例-ISO 27001 ASE/SQL 工作负荷蓝图-控件映射
+description: 控件映射到 Azure 策略和 RBAC 的 ISO 27001 应用服务环境 / SQL 数据库工作负荷蓝图示例。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -8,14 +8,14 @@ ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: c062759938652518ac3cafff64973050554ca19d
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: fb251d71ca9aa20ed06d0a917394097b36322b3c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579693"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802705"
 ---
-# <a name="control-mapping-of-the-azure-blueprints-iso-27001-blueprint-sample"></a>Azure 蓝图 ISO 27001 蓝图示例的控件映射
+# <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>ISO 27001 ASE/SQL 工作负荷蓝图示例控件映射
 
 以下文章详细介绍了如何将 Azure 蓝图 ISO 27001 ASE/SQL 工作负荷蓝图示例映射到 ISO 27001 控件。 有关控件的详细信息，请参阅[ISO 27001](https://www.iso.org/isoiec-27001-information-security.html)。
 

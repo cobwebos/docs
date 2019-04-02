@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b79f900c9d1fa78c131b132975f9352c4696b201
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 4e2515e8976976184b720ad1a612f96bff3eeaba
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726900"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58803403"
 documentType: LandingData
-title: Azure Resource Graph 文档
+title: Azure Resource Graph 服务文档
 metadata:
   title: Azure Resource Graph 文档 - 教程和 API 参考
   description: Azure Resource Graph 是一项 Azure 服务，可实现对资源的大规模复杂查询。

@@ -1,5 +1,5 @@
 ---
-title: 示例 - ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图 - 概述
+title: 示例 - ISO 27001 ASE/SQL 工作负荷蓝图 - 概述
 description: ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述和体系结构。
 services: blueprints
 author: DCtheGeek
@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Azure 蓝图 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述
+# <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例的概述
 
 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例为 [ISO 27001 共享服务](../iso27001-shared/index.md)蓝图示例提供了其他基础结构。
 此蓝图帮助客户部署基于云的体系结构，以便为有认证或符合性要求的方案提供解决方案。
@@ -23,7 +23,7 @@ ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例为 [ISO 27001
 
 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例部署一个基于平台即服务的 Web 环境。 该环境可以用来托管多个遵循 ISO 27001 标准的 Web 应用程序、Web API 和 SQL 数据库实例。 此蓝图示例依赖于 [ISO 27001 共享服务](../iso27001-shared/index.md)蓝图示例。
 
-![ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例设计](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
+![ISO 27001 ASE/SQL 工作负荷蓝图示例设计](../../media/sample-iso27001-ase-sql-workload/iso27001-ase-sql-workload-blueprint-sample-design.png)
 
 此环境包括多项 Azure 服务，这些服务用于根据 ISO 27001 标准提供安全的、全面受监视的、面向企业的工作负荷基础结构。 此环境包括：
 

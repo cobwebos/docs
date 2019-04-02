@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/28/2018
+ms.date: 04/01/2019
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab71b8d3af573f62e69c02564c237ad433962ff9
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 69417551c1c8d410f75e74a8164c8b8a223ab835
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541224"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805323"
 ---
 # <a name="backup-and-restore"></a>备份和还原
 
@@ -58,7 +58,7 @@ Azure 上的 SAP HANA（大型实例）的底层存储基础结构支持卷的�
 - 当触发对 /hana/data、和 /hana/shared（包括 /usr/sap）卷的快照时，快照技术将在执行存储快照前启动 SAP HANA 快照。 在恢复存储快照后，此 SAP HANA 快照是最终日志还原的设置点。 为使 HANA 快照成功，需要活跃的 HANA 实例。  在 HSR 方案中，不能执行 HANA 快照的当前辅助节点不支持存储快照。
 - 成功执行存储快照后，将删除 SAP HANA 快照。
 - 事务日志备份需频繁创建，并存储在 /hana/logbackups 卷或 Azure 中。 可以单独触发包含事务日志备份的 /hana/logbackups 卷来创建快照。 在这种情况下，不需要执行 HANA 快照。
-- 如果必须将数据库还原到某个特定的时间点，可请求 Microsoft Azure 支持（会造成生产中断）或 Azure 上的 SAP HANA 服务管理部门还原到特定的存储快照。 一个例子就是按计划将沙盒系统还原到其原始状态。
+- 如果您必须将数据库还原到的某一点时间，请求的 Microsoft Azure 支持 （会造成生产中断） 或 SAP HANA Azure 还原到特定的存储快照。 一个例子就是按计划将沙盒系统还原到其原始状态。
 - 存储快照中包含的 SAP HANA 快照是创建存储快照后，应用执行并存储的事务日志备份偏移点。
 - 创建这些事务日志备份是为了将数据库还原到某个时间点。
 
@@ -129,7 +129,7 @@ Azure 上的 SAP HANA（大型实例）上安装的 Linux 操作系统包含所�
 
 客户需要负责在安装 SAP HANA 时在 HANA 大型实例单元上安装 SAP HANA HDB 客户端。
 
-### <a name="step-2-change-the-etcsshsshconfig"></a>步骤 2：更改 /etc/ssh/ssh\_config
+### <a name="step-2-change-the-etcsshsshconfig"></a>步骤 2:更改 /etc/ssh/ssh\_config
 
 按如下所示更改 `/etc/ssh/ssh_config`，添加 _MACs hmac-sha1_ 代码行：
 ```
@@ -167,15 +167,16 @@ MACs hmac-sha1
 
 为能够访问 HANA 大型实例租户的存储快照接口，需要通过公钥建立登录过程。 在租户中的第一台 Azure 上的 SAP HANA（大型实例）服务器上，创建一个公钥用于访问存储基础结构。 公钥可以确保无需使用密码登录到存储快照接口。 创建公钥也意味着不需要保留密码凭据。 在 SAP HANA 大型实例服务器上的 Linux 中，执行以下命令生成公钥：
 ```
-  ssh-keygen –t dsa –b 1024
+  ssh-keygen -t rsa –b 5120 -C ""
 ```
-新位置为 **_/root/.ssh/id\_dsa.pub**。 请不要输入实际密码，否则，每次登录时都需要输入密码。 应该按 **Enter** 两次，从而避免登录时出现“输入密码”请求。
+
+新位置是 **_/root/.ssh/id\_rsa.pub**。 请不要输入实际密码，否则，每次登录时都需要输入密码。 应该按 **Enter** 两次，从而避免登录时出现“输入密码”请求。
 
 确保公钥按预期方式正常工作，方法是将文件夹切换到 **/root/.ssh/**，然后执行 `ls` 命令。 如果密钥存在，请运行以下命令复制公钥：
 
 ![运行此命令复制公钥](./media/hana-overview-high-availability-disaster-recovery/image2-public-key.png)
 
-此时，请联系 Azure 的 SAP HANA 服务管理部门并向其提供公钥。 服务代表会使用该公钥将 SAP HANA 注册到为 HANA 大型实例租户划分的底层存储基础结构中。
+此时，请联系 Azure 上的 SAP HANA，并向他们提供的公钥。 服务代表会使用该公钥将 SAP HANA 注册到为 HANA 大型实例租户划分的底层存储基础结构中。
 
 ### <a name="step-4-create-an-sap-hana-user-account"></a>步骤 4：创建 SAP HANA 用户帐户
 
@@ -262,7 +263,7 @@ HANABackupCustomerDetails.txt
 - **removeTestStorageSnapshot.pl**：此脚本删除通过 testStorageSnapshotConnection.pl 脚本创建的测试快照。
 - **azure\_hana\_dr\_failover.pl**：此脚本将 DR 故障转移加入到另一个区域。 该脚本需要在 DR 区域中的 HANA 大型实例单元中执行，或者在希望故障转移到的单元上执行。 此脚本可停止从主端到辅助端的存储复制，还原 DR 卷上最新的快照，并为 DR 卷提供装载点
 - **azure\_hana\_test\_dr\_failover.pl**：此脚本将测试故障转移执行到 DR 站点。 与 azure_hana_dr_failover.pl 脚本不同，此执行不会中断从主端到辅助端的存储复制。 而会在 DR 端创建复制的存储卷的克隆，并提供克隆卷的装载点。 
-- **HANABackupCustomerDetails.txt**：此文件是可修改的配置文件，需要将其进行修改以适应 SAP HANA 配置。 *HANABackupCustomerDetails.txt* 文件是脚本的控制与配置文件，用于运行存储快照。 根据用途和设置调整该文件。 在部署实例后，应会收到 Azure 上的 SAP HANA 服务管理部门提供的**存储备份名称**和**存储 IP 地址**。 不能修改此文件中任何变量的顺序、排序或空格。 否则脚本无法正常运行。 此外，还会收到 Azure 上的 SAP HANA 服务管理部门提供的纵向扩展节点或主节点（如果是横向扩展）的 IP 地址。 还会知道在安装 SAP HANA 期间获取的 HANA 实例编号。 现在，需要将备份名称添加到配置文件。
+- **HANABackupCustomerDetails.txt**：此文件是可修改的配置文件，需要将其进行修改以适应 SAP HANA 配置。 *HANABackupCustomerDetails.txt* 文件是脚本的控制与配置文件，用于运行存储快照。 根据用途和设置调整该文件。 你收到**存储备份名称**并**存储 IP 地址**部署实例后的 Azure 上的 SAP HANA。 不能修改此文件中任何变量的顺序、排序或空格。 否则脚本无法正常运行。 此外，您收到纵向扩展节点或主节点的 IP 的地址 （如果是横向扩展） 从在 Azure 上的 SAP HANA。 还会知道在安装 SAP HANA 期间获取的 HANA 实例编号。 现在，需要将备份名称添加到配置文件。
 
 对于纵向扩展或横向扩展部署，在填写 HANA 大型实例单元的服务器名称和服务器的 IP 地址后，配置文件如以下示例所示。 填写想要备份或恢复的每个 SAP HANA SID 的所有必填字段。
 
@@ -628,9 +629,9 @@ HANA Backup ID:
 
 如果遇到生产中断的情况，可向 Microsoft Azure 支持发起客户事件，启动从存储快照恢复的过程。 这是由于在生产系统中删除了数据造成的高度紧急问题，这时，检索数据的唯一办法就是还原生产数据库。
 
-在不同的情况下，时间点恢复可能不太紧急，因此可以提前几天规划。 可与 Azure 上的 SAP HANA 服务管理部门合作规划这种恢复，而不要提出高优先级标志。 例如，计划通过应用新的增强包升级 SAP 软件。 然后又需要还原到升级增强包之前的快照状态。
+在不同的情况下，时间点恢复可能不太紧急，因此可以提前几天规划。 可以在 Azure 上规划与 SAP HANA 此恢复，而不要提出高优先级标志。 例如，计划通过应用新的增强包升级 SAP 软件。 然后又需要还原到升级增强包之前的快照状态。
 
-发送请求之前，需要做好准备。 然后，Azure 上的 SAP HANA 服务管理团队便可以处理请求，提供还原的卷。 接下来，需要基于快照还原 HANA 数据库。 
+发送请求之前，需要做好准备。 然后，Azure 团队上的 SAP HANA 可以处理该请求，并提供已还原的卷。 接下来，需要基于快照还原 HANA 数据库。 
 
 下面说明如何做好请求准备：
 
@@ -648,9 +649,9 @@ HANA Backup ID:
 
 1. 提出 Azure 支持请求，并包含有关如何还原特定快照的说明。
 
-   - 还原期间：Azure 上的 SAP HANA 服务管理部门可能要求用户参加电话会议以进行协调、验证并确认还原的是正确的存储快照。 
+   - 还原期间：在 Azure 上的 SAP HANA 可能会要求用户参加电话会议以协调、 验证和确认还原正确的存储快照。 
 
-   - 还原后：Azure 上的 SAP HANA 服务管理部门会告知存储快照已还原。
+   - 还原后：Azure 服务上的 SAP HANA 会通知你已还原存储快照。
 
 1. 完成还原过程后，请重新装载所有数据卷。
 
@@ -752,5 +753,5 @@ HANA snapshot deletion successfully.
 从此示例中可以看到脚本如何记录 HANA 快照的创建过程。 在横向扩展部署中，此过程在主节点上启动。 主节点在每个辅助角色节点上启动 SAP HANA 快照的同步创建。 然后创建存储快照。 成功执行存储快照后，会删除 HANA 快照。 HANA 快照的删除从主节点发起。
 
 
-**后续步骤**
+## <a name="next-steps"></a>后续步骤
 - 请参阅[灾难恢复原则和准备](hana-concept-preparation.md)。

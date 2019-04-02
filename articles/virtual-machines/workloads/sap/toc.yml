@@ -69,6 +69,8 @@ items:
       href: hana-monitor-troubleshoot.md
   - name: 如何
     items:
+    - name: 通过 Azure 门户控制 Azure HANA 大型实例
+      href: hana-li-portal.md
     - name: 使用 STONITH 进行 HA 设置
       href: ha-setup-with-stonith.md
     - name: 类型 II SKU 的 OS 备份
@@ -227,9 +229,9 @@ items:
   items:
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 6b72c8e10d54035e69e802db14c1a2fb97a89408
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e366d205b3d903ad79b26798a82ee05752ac5622
+ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341452"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58762950"

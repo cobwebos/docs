@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e389eb01faff93c0e45c66cded41e94ac3730715
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: cf5eeff9aa56a2c3366c57ddef47f4020e73c161
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226022"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804643"
 documentType: LandingData
-title: Azure Policy 文档
+title: Azure Policy 服务文档
 metadata:
   title: Azure Policy 文档 - 教程和 API 参考
   description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。

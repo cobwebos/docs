@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ---
-# <a name="overview-of-the-azure-blueprints-iso-27001-shared-services-blueprint-sample"></a>Azure 蓝图 ISO 27001 共享服务蓝图示例的概述
+# <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
 ISO 27001 共享服务蓝图示例提供了一组符合标准的基础结构模式和策略防护机制，以便帮助通过 ISO 27001 认证。 此蓝图帮助客户部署基于云的体系结构，以便为有认证或符合性要求的方案提供解决方案。
 
