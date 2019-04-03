@@ -3,7 +3,7 @@ title: 保护 Azure 安全中心的网络资源 | Microsoft Docs
 description: 本文档介绍 Azure 安全中心中的建议，以帮助你保护 Azure 网络资源并保持符合安全策略。
 services: security-center
 documentationcenter: na
-author: rkarlin
+author: monhaber
 manager: barbkess
 editor: ''
 ms.assetid: 96c55a02-afd6-478b-9c1f-039528f3dea0
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/28/2018
-ms.author: rkarlin
-ms.openlocfilehash: 55318f40918833688e0c516924642c781141438c
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.date: 04/02/2019
+ms.author: monhaber
+ms.openlocfilehash: cca1962e5146300cc376fab4bcb1bf0876acec6c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56117997"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863145"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>保护 Azure 安全中心的网络资源
 Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安全最佳做法。 在安全中心识别出潜在的安全漏洞时，它会创建一些建议，指导完成配置所需控件以强化和保护资源的过程。
@@ -30,10 +30,9 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 > 借助“网络”页，可从网络角度深入了解 Azure 资源运行状况。 网络映射和自适应网络控制仅适用于 Azure 安全中心标准层。 [如果使用免费层，则可以单击按钮查看旧网络并接收网络资源建议](#legacy-networking)。
 >
 
-“网络”页概述了可以深入了解的部分，以获取有关网络资源运行状况的详细信息：
+**网络**边栏选项卡中概述的深度可以的部分深入，若要获取有关运行状况的网络资源的详细信息：
 
 - 网络映射（仅限 Azure 安全中心标准层）
-- NSG 强化（即将推出。 注册预览版）
 - 网络安全建议。
 - 旧版“网络”边栏选项卡（以前的网络边栏选项卡） 
  
@@ -49,7 +48,8 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
  
 拓扑图的默认视图显示：
 - 在 Azure 中选择的订阅。 该图支持多个订阅。
-- 资源管理器资源类型的 VM、子网和 Vnet（不支持经典 Azure 资源）
+- Vm、 子网和 Vnet 的资源管理器资源类型 (不支持资源的经典 Azure)
+- 对等互连的 Vnet
 - 仅限具有高或中等严重性的[网络建议](security-center-recommendations.md)的资源  
 - 面向 Internet 的资源
 - 该映射针对在 Azure 中选择的订阅进行了优化。 如果修改了选择，则会根据新设置重新计算并重新优化映射。  
@@ -98,9 +98,9 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 向下钻取资源：
 1. 在映射上选择特定资源时，右侧窗格将打开，并提供有关资源、连接的安全解决方案（如果有）以及与资源相关的建议的常规信息。 对于选择的每种资源，它都是相同类型的行为。 
-2. 单击“流量”以查看资源上可能的出站和入站流量列表 - 这是一个全面的列表，列出谁可以与资源进行通信、可以与谁通信以及通过哪些协议和端口进行通信。
+2. 单击“流量”以查看资源上可能的出站和入站流量列表 - 这是一个全面的列表，列出谁可以与资源进行通信、可以与谁通信以及通过哪些协议和端口进行通信。 例如，当您选择显示 VM，它可以与进行通信的所有 Vm，而它们可以与进行通信的所有子网时选择的子网，将显示。
 
-此数据基于对网络安全组的分析以及分析多个规则以了解其交叉和交互的高级机器学习算法。 
+**此数据基于分析的网络安全组以及高级的机器学习算法分析多个规则，以了解其 crossovers 和交互。** 
 
 ![网络流量映射](./media/security-center-network-recommendations/network-map-traffic.png)
 
@@ -128,7 +128,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 
 ## <a name="network-recommendations"></a>网络建议
 
-|资源类型|安全功能分数|建议|说明|
+|资源类型|安全功能分数|建议|描述|
 |----|----|----|----|
 |计算机|40|在虚拟机上启用网络安全组|启用网络安全组以控制虚拟机的网络访问。|
 |子网|35|在子网上启用网络安全组 |启用网络安全组以控制子网中部署的资源的网络访问。|
