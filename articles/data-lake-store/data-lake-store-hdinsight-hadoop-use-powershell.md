@@ -2,29 +2,29 @@
 title: PowerShell：将 Azure Data Lake Store Gen1 用作附加存储的 Azure HDInsight 群集 | Microsoft Docs
 services: data-lake-store,hdinsight
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 164ada5a-222e-4be2-bd32-e51dbe993bc0
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 4187557ef9a38f55465547f83d7bc4c3bcad9ba7
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: f78ad8d58bb1bc760a31b792b44a4a39ed25e1f3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56236923"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880094"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>使用 Azure PowerShell 创建将 Azure Data Lake Storage Gen1 用作额外存储的 HDInsight 群集
 
 > [!div class="op_single_selector"]
 > * [使用门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-> * [使用 PowerShell（对于其他存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
-> * [使用 Resource Manager](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+> * [使用 PowerShell （对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [使用 PowerShell （对于附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
 
@@ -49,7 +49,7 @@ ms.locfileid: "56236923"
 * 创建具有 Data Lake Storage Gen1 身份验证的 HDInsight 群集
 * 在此群集上运行作业
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -271,7 +271,7 @@ ms.locfileid: "56236923"
 
 ## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [门户：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [门户：创建 HDInsight 群集以使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

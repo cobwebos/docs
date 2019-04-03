@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 8cd6a68f6593a5b746a19e42e4835deb05e112b6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757182"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881012"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
@@ -24,12 +24,14 @@ ms.locfileid: "58757182"
 
 > [!NOTE]
 > 若要开始流式处理视频，需启动要从中流式处理视频的**流式处理终结点**。 
+>  
+> 仅当流式处理终结点处于运行状态时才进行计费。
 
 ## <a name="naming-convention"></a>命名约定
 
-对于默认终结点：`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+默认终结点： `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
 
-对于任何其他终结点：`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+对于任何其他终结点： `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
 
 ## <a name="types"></a>类型  
 
@@ -40,7 +42,7 @@ ms.locfileid: "58757182"
 |Type|缩放单元|描述|
 |--------|--------|--------|  
 |**标准流式处理终结点**（推荐）|0|默认的流式处理终结点是**标准**类型，但可以更改为高级类型。<br/> 标准类型是几乎所有流式处理方案和受众规模的建议的选项。 标准类型会自动缩放出站带宽。 从这种流式处理终结点的吞吐量为最多 600 Mbps。 在 CDN 中缓存的视频片段不使用流式处理终结点的带宽。<br/>对于要求极高的客户，媒体服务提供高级流式处理终结点，可用于横向扩展适用于最大规模的 Internet 受众的容量。 如果您希望大型受众需求和并发查看器，请联系我们在 amsstreaming\@有关指导您是否需要将移动到 microsoft.com**高级**类型。 |
-|**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
+|**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
  
 ## <a name="comparing-streaming-types"></a>比较流式处理类型
 
@@ -62,24 +64,11 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
 <sup>1</sup> CDN 终结点上未启用时才使用直接在流式处理终结点上。
 
-## <a name="working-with-cdn"></a>配合 CDN 使用
-
-在大多数情况下，应该启用 CDN。 但是，如果预计最大并发低于 500 个查看者，则建议禁用 CDN，因为 CDN 最适用于随并发缩放。
-
-> [!NOTE]
-> 无论你是否启用 CDN，流式处理终结点 `hostname` 和流式处理 URL 都保持不变。
-
-### <a name="detailed-explanation-of-how-caching-works"></a>有关缓存工作原理的详细说明
-
-添加 CDN 时没有特定的带宽值，因为启用 CDN 的流式处理终结点所需的带宽量会有所不同。 很大程度上取决于内容的类型，它的受欢迎程度、比特率和协议。 CDN 仅缓存所请求的内容。 这意味着，只要缓存了视频片段，就会直接从 CDN 提供受欢迎的内容。 可能会缓存实时内容，因为通常会有很多人观看完全相同的内容。 按需内容可能有点棘手，因为你可能会有一些受欢迎的内容，也有一些不受欢迎的内容。 如果你有数百万的视频资产，其中没有一个是受欢迎的（每周只有 1 或 2 个查看者），但有成千上万的人观看所有不同的视频，CDN 的效果会大打折扣。 如果此缓存失误，则会增加流式处理终结点的负载。
- 
-还需要考虑自适应流式处理的工作原理。 每个单独的视频片段都作为自己的实体进行缓存。 例如，如果第一次观看某个视频，此人在此处仅仅观看几秒钟就跳过，那么只有与此人观看内容相关联的视频片段会被缓存在 CDN 中。 使用自适应流式处理，你通常会有 5 到 7 种不同的视频比特率。 如果一个人正在观看一种比特率并且另一个人在观看不同的比特率，则它们会在 CDN 中单独缓存。 即使两个人在观看相同的比特率，他们也可以通过不同的协议进行流式处理。 每个协议（HLS、MPEG-DASH、平滑流式处理）都是单独缓存的。 因此，会单独缓存每个比特率和协议，并且仅缓存已请求的视频片段。
- 
 ## <a name="properties"></a>属性 
 
 本部分提供有关的某些流式处理终结点的属性的详细信息。 有关如何创建新流式处理终结点和所有属性描述的示例，请参阅[流式处理终结点](https://docs.microsoft.com/rest/api/media/streamingendpoints/create)。 
 
-- `accessControl` -用于配置此流式处理终结点的以下安全设置：Akamai 签名标头身份验证密钥和允许连接到此终结点的 IP 地址。<br />此属性时可以设置`cdnEnabled`设置为 false。
+- `accessControl` -用于配置此流式处理终结点的以下安全设置：Akamai 签名标头身份验证密钥和允许连接到此终结点的 IP 地址。<br />时，才可以设置此属性`cdnEnabled`设置为 false。
 - `cdnEnabled` -指示此流式处理终结点的 Azure CDN 集成已启用 （默认情况下禁用）。 如果将 `cdnEnabled` 设置为 true，则会禁用以下配置：`customHostNames` 和 `accessControl`。
   
     并非所有数据中心都支持 Azure CDN 集成。 若要检查你的数据中心有可用的 Azure CDN 集成，请执行以下操作：
@@ -88,7 +77,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
   - 检查返回的结果为`HTTP Error Code 412`(PreconditionFailed) 的消息的"流式处理终结点 CdnEnabled 属性不能设置为 true，因为 CDN 功能在当前区域中不可用。" 
 
     如果出现此错误，则数据中心不支持 Azure CDN 集成。 你应该尝试其他数据中心。
-- `cdnProfile` -当`cdnEnabled`设置为 true，你还可以传递`cdnProfile`值。 `cdnProfile` 是将在其中创建 CDN 终结点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，新的配置文件会自动创建。
+- `cdnProfile` -当`cdnEnabled`设置为 true，你还可以传递`cdnProfile`值。 `cdnProfile` 是在其中创建的 CDN 终结点的点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，新的配置文件会自动创建。
 - `cdnProvider` -启用 CDN 后，你还可以传递`cdnProvider`值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未不提供任何值和`cdnEnabled`为 true，"StandardVerizon"使用 （这是默认值）。
 - `crossSiteAccessPolicies` -用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。<br/>设置仅适用于平滑流式处理。
 - `customHostNames` -用于配置流式处理终结点以接受定向到自定义主机名的流量。  此属性适用于标准和高级流式处理终结点和时可以设置`cdnEnabled`: false。
@@ -128,7 +117,39 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
     - 停止-正在过渡到停止状态
     - Deleting-正在删除
     
-- `scaleUnits ` -为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 如果需要转到高级类型，请调整 `scaleUnits`。
+- `scaleUnits` -为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 如果需要转到高级类型，请调整 `scaleUnits`。
+
+## <a name="working-with-cdn"></a>配合 CDN 使用
+
+在大多数情况下，应该启用 CDN。 但是，如果预计最大并发低于 500 个查看者，则建议禁用 CDN，因为 CDN 最适用于随并发缩放。
+
+### <a name="considerations"></a>注意事项
+
+* 无论你是否启用 CDN，流式处理终结点 `hostname` 和流式处理 URL 都保持不变。
+* 如果需要使用或不使用 CDN 测试内容的功能，可以创建另一个流式处理终结点，不启用 CDN。
+
+### <a name="detailed-explanation-of-how-caching-works"></a>有关缓存工作原理的详细说明
+
+添加 CDN 时没有特定的带宽值，因为启用 CDN 的流式处理终结点所需的带宽量会有所不同。 很大程度上取决于内容的类型，它的受欢迎程度、比特率和协议。 CDN 仅缓存所请求的内容。 这意味着，只要缓存了视频片段，就会直接从 CDN 提供受欢迎的内容。 可能会缓存实时内容，因为通常会有很多人观看完全相同的内容。 按需内容可能有点棘手，因为你可能会有一些受欢迎的内容，也有一些不受欢迎的内容。 如果你有数百万的视频资产，其中没有一个是受欢迎的（每周只有 1 或 2 个查看者），但有成千上万的人观看所有不同的视频，CDN 的效果会大打折扣。 如果此缓存失误，则会增加流式处理终结点的负载。
+ 
+还需要考虑自适应流式处理的工作原理。 每个单独的视频片段都作为自己的实体进行缓存。 例如，如果第一次观看某个视频，此人在此处仅仅观看几秒钟就跳过，那么只有与此人观看内容相关联的视频片段会被缓存在 CDN 中。 使用自适应流式处理，你通常会有 5 到 7 种不同的视频比特率。 如果一个人正在观看一种比特率并且另一个人在观看不同的比特率，则它们会在 CDN 中单独缓存。 即使两个人在观看相同的比特率，他们也可以通过不同的协议进行流式处理。 每个协议（HLS、MPEG-DASH、平滑流式处理）都是单独缓存的。 因此，会单独缓存每个比特率和协议，并且仅缓存已请求的视频片段。
+
+### <a name="enable-azure-cdn-integration"></a>启用 Azure CDN 集成
+
+流式处理终结点都预配有启用 CDN 后使用媒体服务上定义的等待时间进行 DNS 更新流式处理终结点映射到 CDN 终结点之前。
+
+如果以后想要禁用/启用 CDN，流式处理终结点必须处于“已停止”状态。 可能需要长达两小时才能启用 Azure CDN 集成并使更改在所有 CDN POP 中生效。 但是，可以启动流式处理终结点和流，而不会被流式处理终结点中断，集成完成后，将从 CDN 传送流。 在预配期间，流式处理终结点的状态为“正在启动”，可能会观测到性能降低。
+
+创建标准流式处理终结点时，它是默认情况下，与标准 Verizon 配置。 你可以配置使用 REST Api 的高级 Verizon 或 Akamai 标准提供程序。 
+
+将在所有 Azure 数据中心启用 CDN 集成，但中国区域和联邦政府区域除外。
+
+> [!IMPORTANT]
+> 标准流式处理终结点可在 **Verizon 提供的 Azure CDN** 上实现 Azure 媒体服务与 Azure CDN 的集成。 可以使用所有 **Azure CDN 定价层和提供程序**配置高级流式处理终结点。 有关 Azure CDN 功能的详细信息，请参阅 [CDN 概述](../../cdn/cdn-overview.md)。
+
+### <a name="determine-if-dns-change-has-been-made"></a>确定是否已进行 DNS 更改
+
+可以通过确定是否已流式处理终结点 （流量将被定向到 Azure CDN） 上进行 DNS 更改 https://www.digwebinterface.com。 如果结果包含在结果中 azureedge.net 域名称，流量现在指向 CDN。
 
 ## <a name="next-steps"></a>后续步骤
 

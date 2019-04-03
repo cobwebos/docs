@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
-ms.openlocfilehash: b4a35cb853326aa3e54c7b261eaa72f15929a84c
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 325cd0d2f52405ae1cbf463f6335c8738317ea1f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483958"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878700"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
 
@@ -22,7 +22,7 @@ ms.locfileid: "58483958"
 
 此表汇总了用于部署本地配置服务器计算机的先决条件。
 
-| 组件 | 要求 |
+| **组件** | **要求** |
 | --- |---|
 | CPU 核心数| 8 |
 | RAM | 16 GB|
@@ -174,7 +174,7 @@ ProxyPassword="Password"
 3. 单击“保管库注册”选项卡。
 4. 从门户下载新的注册文件，并将其作为输入提供给该工具。
       ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-5. 提供代理服务器的详细信息，并单击“注册”按钮。  
+5. 提供代理服务器的详细信息，并单击“注册”按钮  。  
 6. 打开管理员 PowerShell 命令窗口。
 7. 运行以下命令
 
@@ -283,7 +283,7 @@ ProxyPassword="Password"
     `$Fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
 6. 删除配置服务器
 
-    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force] `
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $Fabric [-Force]`
 
 > [!NOTE]
 > Remove-AzureRmSiteRecoveryFabric 中的 -Force 选项可用于强制执行删除配置服务器。

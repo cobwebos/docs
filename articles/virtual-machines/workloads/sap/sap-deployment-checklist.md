@@ -16,18 +16,18 @@ ms.workload: infrastructure
 ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ba866ddf79a9970ef3f5c4ff3b7085242a1cdcd
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802790"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878717"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
 
 此清单适用于将 SAP NetWeaver、S/4HANA 和 Hybris 应用程序迁移到 Azure 基础结构即服务的客户。  在项目进行期间，客户和/或 SAP 合作伙伴应审核此清单。 注意，许多检查都在项目开始时和规划阶段进行。 部署完成后，已部署的 Azure 基础结构或 SAP 软件版本的基本更改可能会变得复杂。 在整个项目的重要节点查看此清单。  在小问题变严重之前可以将其检测出来，并且有足够的时间来重新设计和测试任何必要的更改。 该清单从未声称完整。 根据自己的具体情况，可能需要执行更多检查。 
 
-收集的清单不包括独立于 Azure 的任务。  示例:SAP 应用程序接口在迁移到 Azure 公共云或托管提供程序期间发生更改。    
+收集的清单不包括独立于 Azure 的任务。  示例：SAP 应用程序接口在迁移到 Azure 公共云或托管提供程序期间发生更改。    
 
 此清单还可用于已部署的系统。 自部署以来，可能就已添加了写入加速器、可用性区域和新 VM 类型等新功能。  因此，定期查看清单以确保了解 Azure 平台中的新功能非常有用。 
 
@@ -39,7 +39,7 @@ ms.locfileid: "58802790"
     2. 创建和处理责任分配矩阵 (RACI)。RACI 用于定义不同参与方的职责和任务分配。 从较高的层面开始，逐渐提高粒度级，以规划好吞吐量和首批部署
     2. 高级解决方案体系结构
     3. 关于部署到 Azure 区域的决定。 有关 Azure 区域的列表，请查看 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)。 有关每个 Azure 区域中可用的服务，请查看[每个区域可用的产品](https://azure.microsoft.com/global-infrastructure/services/)一文
-    4. 用于从本地连接到 Azure 的网络体系结构。 开始熟悉 [Azure 的虚拟数据中心蓝图](https://docs.microsoft.com/azure/architecture/vdc/)
+    4. 网络体系结构，以从本地连接到 Azure。 开始熟悉 [Azure 的虚拟数据中心蓝图](https://docs.microsoft.com/azure/architecture/vdc/)
     5. 在 Azure 中运行业务影响较高的数据的安全原则。 相关阅读材料，请参阅 [Azure 安全文档](https://docs.microsoft.com/azure/security/)
 2.  技术设计文档 - 包含：
     1.  解决方案块状图 
@@ -60,7 +60,7 @@ ms.locfileid: "58802790"
         2.  对于同一区域内的高可用性，请查看 Azure 中所需的 DBMS。 大多数 DBMS 提供同步热备用服务器的同步方法，我们建议将其用于生产系统。 另请查看不同数据库的 SAP 相关文档，从[部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)开始
             1.  对于 DBMS 层，**不**支持使用采用共享磁盘配置的 Windows 故障转移群集服务，如[此处](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)的 SQL Server 文档所述。 替代的解决方案包括：
                 1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
-                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                2.  [Oracle 数据防护](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  对于跨不同 Azure 区域的灾难恢复，请查看不同 DBMS 供应商提供的可能方案。 其中大部分都支持异步复制或日志传送
         4.  对于 SAP 应用层，请定义是否在同一 Azure 区域或 DR 区域中运行业务回归测试系统（理想情况下为生产部署的副本）。 在后一种情况下，你可以将该业务回归系统作为生产的 DR 目标
@@ -78,7 +78,7 @@ ms.locfileid: "58802790"
 6.  定义 Azure 订阅数和不同订阅的核心配额。 根据需要[打开支持请求以增加 Azure 订阅的配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 
 7.  用于将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的指南。 SAP 发布了有关在 SAP ERP 系统中进行数据管理的[见解深刻的指南](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF)。 但是，某些内容通常适用于 NetWeaver 和 S/4HANA 系统。
 8.  定义并确定自动部署方法。 对于 Azure 上基础结构部署，其自动化目标是以确定性的方式进行部署，并获得确定性的结果。 许多客户都使用基于 Powershell 或 CLI 的脚本。 不过各种开源技术均可用于为 SAP 部署 Azure 基础结构，甚至可以安装 SAP 软件。 可以在 GitHub 中找到示例：
-    1.  [Azure 云中的自动 SAP 部署](https://github.com/Azure/sap-hana)
+    1.  [在 Azure 云自动化的 SAP 部署](https://github.com/Azure/sap-hana)
     2.  [SAP HANA 安装](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  定义客户、系统集成商、Microsoft 和其他相关各方之间的常规设计和部署评审节奏
 
@@ -87,7 +87,7 @@ ms.locfileid: "58802790"
  
 试点阶段可以在项目规划和准备阶段之前运行，也可以并行运行。 该阶段还可用于测试规划和准备阶段确定的方法和设计。 试点阶段可以延伸到实际的概念证明。 建议在试点部署期间设置和验证完整的 HA/DR 解决方案和安全设计。 在某些客户案例中，可伸缩性测试也可以在此阶段进行。 另一些客户则将 SAP 沙盒系统的部署用作试点阶段。 因此，我们假设你确定了一个要迁移到 Azure 以便运行试点的系统。
 
-1. 优化将数据传输到 Azure 的过程。 如果快速线路有足够的带宽，那么通过 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 从本地进行传输的速度最快（主要取决于客户案例）。 对于其他客户来说，上网速度更快
+1. 优化将数据传输到 Azure 的过程。 高度依赖于通过客户情况下传输[Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/)从本地是最快如果快速线路有足够的带宽。 对于其他客户来说，上网速度更快
 2. 在 SAP 异构平台迁移的情况下，这涉及到数据库数据的导出和导入、测试以及优化导出和导入阶段。 对于涉及 SQL Server 作为目标平台的大型迁移，可以在[此处](https://techcommunity.microsoft.com/t5/Running-SAP-Applications-on-the/SAP-OS-DB-Migration-to-SQL-Server-8211-FAQ-v6-2-April-2017/ba-p/368070)找到建议。 在合并迁移和 SAP 版本升级并实现某些源和目标 DBMS 平台组合（如 [SUM 2.0 SP03 的数据库迁移选项 (DMO)](https://launchpad.support.sap.com/#/notes/2631152) 中所述）时，如果不需要合并的版本升级或 [SAP DMO](https://blogs.sap.com/2013/11/29/database-migration-option-dmo-of-sum-introduction/) 过程，你可以采用迁移监视器/SWPM 的方法。 
    1.  导出到源、导出上传到 Azure 的文件和导入性能。  使导出和导入之间的重叠最大化
    2.  评估目标和目标平台之间的数据库容量，以反映到基础结构的大小调整中    
@@ -99,7 +99,7 @@ ms.locfileid: "58802790"
       3.  评估和测试 Azure VM 的大小，了解在规划阶段选择的不同 VM 类型的最大存储吞吐量和网络吞吐量。 数据可在以下位置找到：
           1.  [Azure 中 Windows 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)。 重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
           2.  [Azure 中 Linux 虚拟机的大小](https://docs.microsoft.com/azure/virtual-machines/linux/sizes?toc=%2fazure%2fvirtual-network%2ftoc.json)：重要的是在调整大小时要考虑“最大非缓存磁盘吞吐量”
-   2. 存储空间
+   2. 存储
       1.  使用[Azure 标准 SSD 存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-ssd)代表 SAP 应用程序层 Vm 和非性能敏感的 DBMS 部署最小
       2.  我们建议不应使用[Azure 标准 HDD 磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#standard-hdd)一般情况下
       2.  使用[Azure 高级存储](https://docs.microsoft.com/azure/virtual-machines/windows/disks-types#premium-ssd)对于任何远程是性能敏感的 DBMS Vm
@@ -159,7 +159,7 @@ ms.locfileid: "58802790"
 6. 性能测试
    1.  在基于 SAP 跟踪和测量的 SAP 中，将前 10 个在线报告与当前的实现进行比较（如适用） 
    2.  在基于 SAP 跟踪和测量的 SAP 中，将前 10 个批处理作业与当前的实现进行比较（如适用） 
-   3.  在基于 SAP 跟踪和测量的 SAP 中，比较通过接口传输到 SAP 系统的数据。 关注已知正在不同位置之间（例如从本地到 Azure）传输数据的接口 
+   3.  在基于 SAP 跟踪和测量的 SAP 中，比较通过接口传输到 SAP 系统的数据。 专注于您知道，传输现在将不同的位置，如从本地转移到 Azure 之间的接口 
 
 
 ## <a name="non-production-phase"></a>非生产阶段 
@@ -271,6 +271,6 @@ ms.locfileid: "58802790"
 查阅文档：
 
 - [SAP NetWeaver 的 Azure 虚拟机规划和实施指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [适用于 SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 

@@ -3,19 +3,19 @@ title: Azure Data Lake Storage Gen1 概述 | Microsoft Docs
 description: 了解什么是 Data Lake Storage Gen1（以前称为 Azure Data Lake Store），及其与其他数据存储相比它有哪些优势
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: b733a0bec20c7abae5df41acd74284bdf75bca2c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 438eab091fac103b66f0789beca0098b87ee44cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124127"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885649"
 ---
 # <a name="overview-of-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 概述
 
@@ -45,7 +45,7 @@ Data Lake Storage Gen1 提供无限存储空间，适合用于存储各种分析
 ### <a name="performance-tuned-for-big-data-analytics"></a>针对大数据分析优化了性能
 Data Lake Storage Gen1 旨在运行需要利用超大吞吐量查询和分析海量数据的大规模分析系统。 Data Lake 将文件的各个部分散在大量独立的存储服务器中。 这可改善执行数据分析时并行读取文件的吞吐量。
 
-### <a name="enterprise-ready-highly-available-and-secure"></a>随时可供企业使用：高度可用且安全
+### <a name="enterprise-ready-highly-available-and-secure"></a>企业就绪：高度可用且安全
 Data Lake Storage Gen1 提供符合行业标准的可用性和可靠性。 数据资产可通过创建冗余副本来长期存储，防范任何意外的故障。 企业可以在其解决方案中使用 Data Lake Storage Gen1 作为现有数据平台的重要组成部分。
 
 Data Lake Storage Gen1 还为存储的数据提供企业级安全性。 有关详细信息，请参阅 [保护 Azure Data Lake Storage Gen1 中的数据](#DataLakeStoreSecurity)。
@@ -58,9 +58,9 @@ Data Lake Storage Gen1 的数据容器本质上是文件夹和文件。 可以�
 ## <a name="DataLakeStoreSecurity"></a>保护 Data Lake Storage Gen1 中的数据
 Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证，使用访问控制列表 (ACL) 管理对数据的访问。
 
-| 功能 | Description |
+| Feature | 描述 |
 | --- | --- |
-| 身份验证 |Data Lake Storage Gen1 与 Azure Active Directory (AAD) 集成，可对 Data Lake Storage Gen1 中存储的所有数据进行标识与访问管理。 因为这种集成，Data Lake Storage Gen1 可受益于所有 AAD 功能，包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报等。Data Lake Storage Gen1 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 请参阅 [Data Lake Storage Gen1 身份验证](data-lakes-store-authentication-using-azure-active-directory.md)|
+| Authentication |Data Lake Storage Gen1 与 Azure Active Directory (AAD) 集成，可对 Data Lake Storage Gen1 中存储的所有数据进行标识与访问管理。 因为这种集成，Data Lake Storage Gen1 可受益于所有 AAD 功能，包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报等。Data Lake Storage Gen1 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 请参阅 [Data Lake Storage Gen1 身份验证](data-lakes-store-authentication-using-azure-active-directory.md)|
 | 访问控制 |Data Lake Storage Gen1 通过支持 WebHDFS 协议公开的 POSIX 样式权限来提供访问控制。 可对根文件夹、子文件夹和单个文件启用 ACL。 有关 ACL 在 Data Lake Storage Gen1 上下文中的工作原理的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)。 |
 | 加密 |Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 创建 Data Lake Storage Gen1 帐户时可以指定加密设置。 可以选择加密或不加密数据。 有关详细信息，请参阅 [Data Lake Storage Gen1 中的加密](data-lake-store-encryption.md)。 有关如何提供加密相关配置的说明，请参阅[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。 |
 
@@ -83,6 +83,6 @@ Data Lake Storage Gen1 与 Hadoop 生态系统中的大多数开源组件兼容�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [通过 Azure 门户开始使用 Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
-* [通过 .NET SDK 实现 Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-net-sdk.md)
-* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [开始使用数据湖存储 Gen1 使用 Azure 门户](data-lake-store-get-started-portal.md)
+* [开始使用 Azure 数据湖存储 Gen1 使用.NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

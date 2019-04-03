@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
-ms.openlocfilehash: 966518f17392e6158089cb5b6df96f41674fed41
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996148"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878734"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
 
@@ -32,7 +32,7 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 - 将文件从 URL 复制到 Blob 存储。
 - 从 Blob 存储复制到 Blob 存储。
 
-**准备工作：**
+**你的需要：**
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * 一个 [Azure 存储帐户](storage-quickstart-create-account.md)
@@ -49,12 +49,12 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 3. 在 Visual Studio Code 中打开此目录。 通过在 Windows 中命令行上键入 `code .` 可快速完成此步骤。
 4. 从 Visual Studio Code Marketplace 安装 [C# 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。 重新启动 Visual Studio Code。
 5. 此时，应会出现两条提示。 其中一条提示指出要“添加所需的资产用于生成和调试。” 请单击“是”。 另一条提示指出要还原未解析的依赖项。 请单击“还原”。
-6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 ` "console": "externalTerminal"`
+6. 修改 `.vscode` 下的 `launch.json`，将外部终端用作控制台。 此设置应为 `"console": "externalTerminal"`
 7. 可以使用 Visual Studio Code 调试 .NET Core 应用程序。 点击 `F5` 运行应用程序，并验证设置是否正常运行。 应会看到“Hello World!” 列显在控制台上。
 
 ## <a name="add-data-movement-library-to-your-project"></a>将数据移动库添加到项目
 
-1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在撰写本文时，此版本将为 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 此时应会显示一条提示，指出要还原项目。 请单击“还原”按钮。 也可以从命令行还原项目，在项目的根目录中键入 `dotnet restore` 命令即可。
 
 修改 `<project-name>.csproj`：

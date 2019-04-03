@@ -12,12 +12,12 @@ ms.author: bonova
 ms.reviewer: carlrab, vanto
 manager: craigg
 ms.date: 03/29/2019
-ms.openlocfilehash: b5417787472b332e38db002067920153d554fdb0
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 5c9e11572bc142637066214e1a807a80ce711c48
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668481"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877680"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>使用具有虚拟网络和近 100% 兼容性的 SQL 数据库高级数据安全性
 
@@ -43,10 +43,10 @@ ms.locfileid: "58668481"
 > [!IMPORTANT]
 > 托管实例使用最新版 SQL Server 的所有功能（包括联机操作、自动计划更正和其他企业性能增强功能）运行。 [功能比较：Azure SQL 数据库与 SQL Server中对可用功能进行了比较。
 
-| **PaaS 优势** | **业务连续性** |
+| **PaaS 的优势** | **业务连续性** |
 | --- | --- |
 |无需采购和管理硬件 <br>不产生底层基础结构的管理开销 <br>快速预配和服务缩放 <br>自动修补和版本升级 <br>与其他 PaaS 数据服务集成 |99.99% 的运行时间 SLA  <br>内置[高可用性](sql-database-high-availability.md) <br>使用[自动备份](sql-database-automated-backups.md)保护数据 <br>客户可配置的备份保留期 <br>用户发起的[备份](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[数据库时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)功能 |
-|**安全性和符合性** | **管理**|
+|**安全和符合性** | **管理**|
 |隔离的环境（[VNet 集成](sql-database-managed-instance-connectivity-architecture.md)、单租户服务、专用的计算和存储资源） <br>[透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure AD 身份验证](sql-database-aad-authentication.md)、单一登录支持 <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD 服务器主体（登录名）</a>（公开预览版） <br>符合 Azure SQL 数据库遵循的相同法规标准 <br>[SQL 审核](sql-database-managed-instance-auditing.md) <br>[威胁检测](sql-database-managed-instance-threat-detection.md) |用于自动预配和缩放服务的 Azure 资源管理器 API <br>用于手动预配和缩放服务的 Azure 门户功能 <br>数据迁移服务
 
 > [!IMPORTANT]
@@ -62,7 +62,7 @@ ms.locfileid: "58668481"
 | 自动软件修补 | 是 |
 | 最新的数据库引擎功能 | 是 |
 | 每个数据库的数据文件 (ROWS) 数目 | 多个 |
-| 每个数据库的日志文件 (LOG) 数目 | 第 |
+| 每个数据库的日志文件 (LOG) 数目 | 1 |
 | VNet - Azure 资源管理器部署 | 是 |
 | VNet - 经典部署模型 | 否 |
 | 门户支持 | 是|
@@ -149,7 +149,7 @@ Azure SQL 数据库提供一组可用于保护数据的高级安全功能。
 - 使用[行级别安全性](/sql/relational-databases/security/row-level-security)可以根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 行级别安全性 (RLS) 简化了应用程序中的安全性设计和编程。 使用 RLS 可针对数据行访问实施限制。 例如，确保工作人员只能访问与其部门相关的数据行，或者将可访问的数据限制为相关的数据。
 - [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 可以加密托管实例数据文件，称为静态数据加密。 TDE 针对数据和日志文件执行实时 I/O 加密和解密。 加密使用数据库加密密钥 (DEK)，它存储在数据库引导记录中，可在恢复时使用。 可使用透明数据加密保护托管实例中的所有数据库。 TDE 是 SQL Server 经验证的静态加密技术，许多符合性标准都需要它来防止存储介质被盗。
 
-通过 Azure 数据库迁移服务 (DMS) 或本机还原，支持将加密数据库迁移到托管实例。 如果打算使用本机还原迁移加密数据库，则必须将现有 TDE 证书从本地 SQL Server 或虚拟机中的 SQL Server 迁移到托管实例。 有关迁移选项的详细信息，请参阅[将 SQL Server 实例迁移到托管实例](sql-database-managed-instance-migrate.md)。
+通过 Azure 数据库迁移服务 (DMS) 或本机还原，支持将加密数据库迁移到托管实例。 如果你打算迁移使用本机还原加密的数据库，迁移现有 TDE 证书从本地 SQL Server 或 SQL Server 的虚拟机中的托管实例是必需的步骤。 有关迁移选项的详细信息，请参阅[将 SQL Server 实例迁移到托管实例](sql-database-managed-instance-migrate.md)。
 
 ## <a name="azure-active-directory-integration"></a>Azure Active Directory 集成
 
@@ -231,7 +231,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|
 |`SERVERPROPERTY('EngineEdition')`|8|此值唯一标识托管实例。|
-|`@@SERVERNAME`、`SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中，`<instanceName>` 是客户提供的名称，`<dnsPrefix>` 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`， `SERVERPROPERTY ('ServerName')`|采用以下格式的完整实例 DNS 名称：`<instanceName>`.`<dnsPrefix>`.database.windows.net，其中，`<instanceName>` 是客户提供的名称，`<dnsPrefix>` 是自动生成的名称部分，保证 DNS 名称的全局唯一性（例如“wcus17662feb9ce98”）|示例：my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>后续步骤
 

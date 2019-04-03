@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 12/19/2018
 ms.author: martincoetzer
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3c7a61d8c1b9ec15327836f7d31e9e299c57cb21
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 6e1fa72f8c7edf76ec46663fd62ee40a3a16e8cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316331"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886074"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>使用 Azure Active Directory 创建可复原的访问控制管理策略
 
@@ -75,7 +75,7 @@ ms.locfileid: "58316331"
 以下示例介绍了在为用户提供可复原的访问控制来访问其应用和资源时所必须创建的策略。 在此示例中，你需要一个安全组 **AppUsers**（包含你要授予其访问权限的目标用户），一个名为 **CoreAdmins** 的组（包含核心管理员），以及一个名为 **EmergencyAccess** 的组（包含紧急访问帐户）。
 此示例策略集将在 **AppUsers** 中的选定用户从受信任的设备进行连接时向其授予对选定应用的访问权限，或提供强身份验证（例如 MFA）。 它将紧急帐户和核心管理员排除在外。
 
-**CA 缓解策略集：**
+**CA 缓解策略设置：**
 
 * 策略 1：阻止目标组外部的人员进行访问
   * 用户和组：包括所有用户。 排除 AppUsers、CoreAdmins 和 EmergencyAccess
@@ -131,13 +131,13 @@ ms.locfileid: "58316331"
   
 应变策略的此命名标准如下： 
 
-`
+```
 EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions]
-`
+```
 
 以下示例：**示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略**是一种典型的公司应急策略。 在此场景中，组织通常要求对所有 Exchange Online 和 SharePoint Online 访问执行 MFA，此示例中的中断是指客户的 MFA 提供程序发生中断（无论是 Azure MFA、本地 MFA 提供程序还是第三方 MFA）。 此策略仅在特定目标用户从受信任的公司网络访问应用时才允许其从受信任的 Windows 设备访问这些应用，从而缓解此中断带来的影响。 它还将紧急帐户和核心管理员排除在这些限制之外。 然后，目标用户将会获取 Exchange Online 和 SharePoint Online 的访问权限，而其他用户仍由于服务中断而无法访问应用。 此示例需要一个名为 **CorpNetwork** 的网络位置和一个包含目标用户的安全组 **ContingencyAccess**，一个包含核心管理员的名为 **CoreAdmins** 的组，以及一个包含紧急访问帐户的名为 **EmergencyAccess** 的组。 该应急策略需要四个策略来提供所需的访问权限。 
 
-**示例 A - 用于恢复对任务关键型协作应用的访问权限的应急 CA 策略：**
+**示例 A-应变 CA 策略，以还原对关键任务协作应用程序的访问：**
 
 * 策略 1：要求从已加入域的设备访问 Exchange 和 SharePoint
   * 姓名：EM001 - 在紧急情况下启用：MFA 中断 [1/4] - Exchange SharePoint - 要求执行混合 Azure AD 加入
@@ -179,7 +179,7 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 
 在下一个示例（**示例 B - 允许移动设备访问 Salesforce 的应急 CA 策略**）中，将恢复业务应用的访问权限。 在此场景中，客户通常要求使用移动设备访问 Salesforce（配置为使用 Azure AD 进行单一登录）的销售员工只能使用合规的设备进行访问。 此示例中的中断是指评估设备符合性时出现问题，在销售团队需要访问 Salesforce 以完成交易的敏感时间发生中断。 这些应急策略将授权关键用户从移动设备访问 Salesforce，以便他们可以继续完成交易而不会中断业务。 在此示例中，**SalesforceContingency** 包含需要保留访问权限的所有销售员工，**SalesAdmins** 包含必要的 Salesforce 管理员。
 
-**示例 B - 应急 CA 策略：**
+**示例 B-应变 CA 策略：**
 
 * 策略 1：阻止不属于 SalesContingency 团队的所有人员
   * 姓名：EM001 - 在紧急情况下启用：设备合规性中断 [1/2] - Salesforce - 阻止除 SalesforceContingency 以外的所有用户
@@ -262,11 +262,11 @@ EMnnn - ENABLE IN EMERGENCY: [Disruption][i/n] - [Apps] - [Controls] [Conditions
 ## <a name="learn-more"></a>了解详细信息
 
 * [Azure AD 身份验证文档](https://docs.microsoft.com/azure/active-directory/authentication/howto-mfaserver-iis)
-* [在 Azure AD 中管理紧急访问管理账户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
+* [在 Azure AD 中管理紧急访问管理帐户](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-emergency-access)
 * [在 Azure Active Directory 中配置命名位置](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations)
   * [Set-MsolDomainFederationSettings](https://docs.microsoft.com/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
 * [如何配置联接到混合 Azure Active Directory 的设备](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan)
 * [Windows Hello for Business 部署指南](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
-  * [密码指南 - Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
+  * [密码指南-Microsoft Research。](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)
 * [Azure Active Directory 条件访问中的条件是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions)
 * [Azure Active Directory 条件访问中的访问控制是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/controls)

@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 698dc61d42adb398376161480cf4d32180846c48
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 0350db37e13101d315937840fdcf3d9900e214d5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577588"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880259"
 ---
 # <a name="v20-protocols---oauth-20-authorization-code-flow"></a>v2.0 协议 - OAuth 2.0 授权代码流
 
@@ -60,7 +60,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 > [!TIP]
 > 单击下面的链接以执行此请求！ 登录之后，浏览器应重定向至地址栏中具有 `code` 的 `https://localhost/myapp/`。
-> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize...</a>
+> <a href="https://login.microsoftonline.com/common/oauth2/v2.0/authorize?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&response_type=code&redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F&response_mode=query&scope=openid%20offline_access%20https%3A%2F%2Fgraph.microsoft.com%2Fuser.read&state=12345" target="_blank">https://login.microsoftonline.com/common/oauth2/v2.0/authorize..。</a>
 > 
 > 
 
@@ -69,9 +69,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `tenant`    | 必填    | 请求路径中的 `{tenant}` 值可用于控制哪些用户可以登录应用程序。 可以使用的值包括 `common`、`organizations`、`consumers` 和租户标识符。 有关更多详细信息，请参阅[协议基础知识](active-directory-v2-protocols.md#endpoints)。  |
 | `client_id`   | 必填    | **应用程序 （客户端） ID**的[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)分配给您的应用程序的体验。  |
 | `response_type` | 必填    | 必须包括授权代码流的 `code` 。       |
-| `redirect_uri`  | 建议 | 应用的 redirect_uri，应用可向其发送及从其接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.microsoftonline.com/common/oauth2/nativeclient`。   |
+| `redirect_uri`  | 建议 | 应用程序的 redirect_uri，应用程序可在此发送及接收身份验证响应。 其必须完全符合在门户中注册的其中一个 redirect_uris，否则必须是编码的 url。 对于本机和移动应用，应使用默认值 `https://login.microsoftonline.com/common/oauth2/nativeclient`。   |
 | `scope`  | 必填    | 希望用户同意的 [范围](v2-permissions-and-consent.md) 的空格分隔列表。 |
-| `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序所应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 在重定向 URI 上提供代码作为查询字符串参数。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 对重定向 URI 执行包含代码的 POST。 有关详细信息，请参阅 [OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
+| `response_mode`   | 建议 | 指定将生成的令牌送回到应用程序所应该使用的方法。 可以是以下值之一：<br/><br/>- `query`<br/>- `fragment`<br/>- `form_post`<br/><br/>`query` 作为在你重定向 URI 的查询字符串参数提供的代码。 如果要使用隐式流请求 ID 令牌，则不能使用 [OpenID 规范](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations)中指定的 `query`。如果只是请求代码，则可以使用 `query`、`fragment` 或 `form_post`。 `form_post` 执行包含重定向 URI 的代码的帖子。 有关详细信息，请参阅 [OpenID Connect 协议](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-openid-connect-code)。  |
 | `state`                 | 建议 | 同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 在发出身份验证请求出现之前，此值对有关用户在应用中的状态的信息（例如前面所在的页面或视图）进行编码。 |
 | `prompt`  | 可选    | 表示需要的用户交互类型。 此时唯一有效值为 `login``none` 和 `consent`。<br/><br/>- `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。<br/>- `prompt=none` 完全相反，它将确保无论如何都不会向用户显示任何交互提示。 如果请求无法通过单一登录静默完成，该 v2.0 终结点将返回 `interaction_required` 错误。<br/>- `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | `login_hint`  | 可选    | 如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。   |
@@ -181,7 +181,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |---------------|------------------------------|
 | `access_token`  | 请求的访问令牌。 应用可以使用此令牌验证受保护的资源，例如 Web API。  |
 | `token_type`    | 指示令牌类型值。 Azure AD 唯一支持的类型是 Bearer |
-|` expires_in`    | 访问令牌的有效期（以秒为单位）。 |
+| `expires_in`    | 访问令牌的有效期（以秒为单位）。 |
 | `scope`         | access_token 有效的范围。 |
 | `refresh_token` | OAuth 2.0 刷新令牌。 应用程序可以使用此令牌，在当前的访问令牌过期之后获取其他访问令牌。 Refresh_tokens 的生存期很长，而且可以用于延长保留资源访问权限的时间。 有关刷新访问令牌的详细信息，请参阅[以下部分](#refresh-the-access-token)。 <br> **注意：** 仅当已请求 `offline_access` 作用域时提供。 |
 | `id_token`      | JSON Web 令牌 (JWT)。 应用可以解码此令牌的段，以请求已登录用户的相关信息。 应用可以缓存并显示值，但不应依赖于这些值获取任何授权或安全边界。 有关 id_tokens 的详细信息，请参阅 [`id_token reference`](id-tokens.md)。 <br> **注意：** 仅当已请求 `openid` 作用域时提供。 |
@@ -272,7 +272,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `scope`         | 必填    | 范围的空格分隔列表。 在此阶段请求的范围必须等效于或者为原始 authorization_code 请求阶段中所请求的范围子集。 如果这个请求中指定的范围遍及多个资源服务器，v2.0 终结点将返回第一个范围内所指定资源的令牌。 有关范围的更加详细的说明，请参阅[权限、许可和范围](v2-permissions-and-consent.md)。 |
 | `refresh_token` | 必填    | 在流的第二个阶段获取的 refresh_token。 |
 | `redirect_uri`  | 必填    |  一个在客户端应用程序上注册的 `redirect_uri`。 |
-| `client_secret` | Web 应用所需 | 在应用注册门户中为应用创建的应用程序机密。 其不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。                                                                                                                                                    |
+| `client_secret` | Web 应用所需 | 在应用程序注册门户中为应用程序创建的应用程序机密。 其不应用于本机应用，因为设备无法可靠地存储 client_secrets。 Web 应用和 Web API 都需要应用程序机密，能够将 client_secret 安全地存储在服务器端。                                                                                                                                                    |
 
 #### <a name="successful-response"></a>成功的响应
 

@@ -3,21 +3,21 @@ title: Java SDK：对 Azure Data Lake Storage Gen1 执行的文件系统操作 |
 description: 使用 Azure Data Lake Storage Gen1 Java SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹等。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: e84e84aac3aca0458dea4f30f6b0e222aafd9d44
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: bc6e0718cdc4ccb18480dc760279da9c177db4cb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530290"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883541"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-java-sdk"></a>使用 Java SDK 对 Azure Data Lake Storage Gen1 执行的文件系统操作
 > [!div class="op_single_selector"]
@@ -209,7 +209,7 @@ ms.locfileid: "57530290"
 2. 若要生成一个可从命令行运行的独立 jar，请使用 [Maven 程序集插件](https://maven.apache.org/plugins/maven-assembly-plugin/usage.html)生成包含所有依赖项的 jar。 [GitHub 上的示例源代码](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml)中的 pom.xml 列举了相关示例。
 
 ## <a name="next-steps"></a>后续步骤
-* [探索用于 Java SDK 的 JavaDoc](https://azure.github.io/azure-data-lake-store-java/javadoc/)
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [探索用于 Java 的 JavaDoc SDK](https://azure.github.io/azure-data-lake-store-java/javadoc/)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
 
 

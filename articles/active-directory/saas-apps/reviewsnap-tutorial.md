@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 09fd6c94fe32d683e61aacba5300b130fa6f416a
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 24f4983f2ba1567241a6dfc6231a4925805947cd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56187400"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878428"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reviewsnap"></a>教程：Azure Active Directory 与 Reviewsnap 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56187400"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Reviewsnap 的集成，需要以下项：
 
@@ -51,7 +51,7 @@ ms.locfileid: "56187400"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Reviewsnap
 1. 配置和测试 Azure AD 单一登录
@@ -59,7 +59,7 @@ ms.locfileid: "56187400"
 ## <a name="adding-reviewsnap-from-the-gallery"></a>从库中添加 Reviewsnap
 若要配置 Reviewsnap 与 Azure AD 的集成，需要从库中将 Reviewsnap 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Reviewsnap，请执行以下步骤：**
+**若要从库中添加 Reviewsnap，执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -95,7 +95,7 @@ ms.locfileid: "56187400"
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Reviewsnap 应用程序中配置单一登录。
 
-**若要配置 Reviewsnap 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Azure AD 单一登录 Reviewsnap，请执行以下步骤：**
 
 1. 在 Azure 门户中的 **Reviewsnap** 应用程序集成页上，单击“单一登录”。
 
@@ -109,16 +109,15 @@ ms.locfileid: "56187400"
 
     ![Reviewsnap 域和 URL 单一登录信息](./media/reviewsnap-tutorial/tutorial_reviewsnap_url.png)
 
-    a. 在“标识符”文本框中，键入一个 URL：`https://app.reviewsnap.com`
+    a. 在“标识符”文本框中，键入一个 URL： `https://app.reviewsnap.com`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>
-`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://app.reviewsnap.com/auth/saml/callback?namespace=<CUSTOMER_NAMESPACE>`
 
 1. 如果要在 SP 发起的模式下配置应用程序，请选中“显示高级 URL 设置”，并执行以下步骤：
 
     ![Reviewsnap 域和 URL 单一登录信息](./media/reviewsnap-tutorial/tutorial_reviewsnap_url1.png)
 
-    在“登录 URL”文本框中，键入 URL `https://app.reviewsnap.com/login`
+    在“登录 URL”文本框中，键入 URL： `https://app.reviewsnap.com/login`
      
     > [!NOTE] 
     > 答复 URL 值不是真实值。 请使用实际回复 URL 更新此值。 请联系 [Reviewsnap 客户端支持团队](mailto:support@reviewsnap.com)获取该值。 
@@ -143,7 +142,7 @@ ms.locfileid: "56187400"
 
    ![创建 Azure AD 测试用户][100]
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+**若要在 Azure AD 中创建的测试用户，请执行以下步骤：**
 
 1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
 
@@ -179,7 +178,7 @@ ms.locfileid: "56187400"
 
 ![分配用户角色][200] 
 
-**若要将 Britta Simon 分配到 Reviewsnap，请执行以下步骤：**
+**若要将 Britta Simon 分配到 Reviewsnap，执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

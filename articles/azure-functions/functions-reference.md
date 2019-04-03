@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 01fce9813299465767bdaed7f3c2939813cfab87
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "56339477"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
@@ -106,6 +106,6 @@ Azure Functions 代码为开放源，位于 GitHub 存储库：
 
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 * [在本地对 Azure Functions 进行编码和测试](./functions-develop-local.md)
-* [Azure Functions 最佳实践](functions-best-practices.md)
-* [Azure Functions C# 开发人员参考](functions-reference-csharp.md)
-* [Azure Functions NodeJS 开发人员参考](functions-reference-node.md)
+* [Azure Functions 最佳做法](functions-best-practices.md)
+* [Azure Functions C# developer reference（Azure Functions C# 开发人员参考）](functions-reference-csharp.md)
+* [Azure Functions NodeJS developer reference（Azure Functions NodeJS 开发人员参考）](functions-reference-node.md)

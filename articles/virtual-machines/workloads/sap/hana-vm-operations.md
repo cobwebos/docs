@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b1ed79e04bcca05dcb5308b844622e4dd413ce
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 6f60fdced25fdc594c28972f555bb28a9c629f21
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57410292"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878649"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文档提供有关配置 Azure 基础结构以及操作 Azure 本机虚拟机 (VM) 上部署的 SAP HANA 系统的指导。 本文档还包含有关 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文档并不旨在取代标准 SAP 文档，后者包括以下内容：
@@ -206,7 +206,7 @@ Azure 写入加速器在每个 VM 中支持的 Azure 高级存储 VHD 数目有�
 >
 >
 
-但是，对于持久性部署，需要在 Azure 中创建虚拟数据中心网络体系结构。 此体系结构建议在独立的 Azure VNet 中隔离连接到本地的 Azure VNet 网关。 此独立 VNet 应托管发往本地或 Internet 的所有流量。 使用此方法可以部署软件用于审核和记录进入此独立中心 VNet 中 Azure 虚拟数据中心的流量。 因此，有一个 VNet 托管传入和传出 Azure 部署的流量相关的所有软件和配置。
+但是，对于持久性部署，需要在 Azure 中创建虚拟数据中心网络体系结构。 此体系结构建议的分离到单独的 Azure VNet 连接的本地到 Azure VNet 网关。 此单独的 VNet 应承载会保留在本地或到 internet 的所有流量。 使用此方法可以部署软件用于审核和记录进入此独立中心 VNet 中 Azure 虚拟数据中心的流量。 因此，有一个 VNet 托管传入和传出 Azure 部署的流量相关的所有软件和配置。
 
 文章 [Azure 虚拟数据中心：网络透视图](https://docs.microsoft.com/azure/architecture/vdc/networking-virtual-datacenter)和 [Azure 虚拟数据中心和企业控制平面](https://docs.microsoft.com/azure/architecture/vdc/)提供了有关虚拟数据中心方法和相关 Azure VNet 设计的详细信息。
 
@@ -441,10 +441,10 @@ SAP HANA 认证的 M 系列 VM 与受支持的 DT 2.0 VM（M64-32ms 和 E32sv3�
 
 ### <a name="links-to-dt-20-documentation"></a>DT 2.0 文档的链接 
 
-- [SAP HANA Dynamic Tiering 安装和更新指南](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
-- [SAP HANA Dynamic Tiering 教程和资源](https://help.sap.com/viewer/fb9c3779f9d1412b8de6dd0788fa167b/2.0.03/en-US)
-- [SAP HANA Dynamic Tiering PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
-- [SAP HANA 2.0 SPS 02 Dynamic Tiering 增强功能](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
+- [SAP HANA 动态分层的安装和更新指南](https://help.sap.com/viewer/88f82e0d010e4da1bc8963f18346f46e/2.0.03/en-US)
+- [SAP HANA 动态分层教程和资源](https://help.sap.com/viewer/fb9c3779f9d1412b8de6dd0788fa167b/2.0.03/en-US)
+- [SAP HANA 动态分层 PoC](https://blogs.sap.com/2017/12/08/sap-hana-dynamic-tiering-delivering-on-low-tco-with-impressive-performance/)
+- [SAP HANA 2.0 SPS 02 动态分层增强功能](https://blogs.sap.com/2017/07/31/sap-hana-2.0-sps-02-dynamic-tiering-enhancements/)
 
 
 

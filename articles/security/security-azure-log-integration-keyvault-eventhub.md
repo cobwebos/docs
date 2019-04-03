@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: c199adb9ee1d9e5fbc879441da7395efa16f0d40
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7e70920e806b3d9838d693ff1fc74a3e9371319d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094654"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883903"
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure 日志集成教程：使用事件中心处理 Azure Key Vault 事件
 
@@ -43,7 +43,7 @@ ms.locfileid: "58094654"
 
 有关本教程提到的服务的详细信息，请参阅： 
 
-- [Azure Key Vault](../key-vault/key-vault-whatis.md)
+- [Azure 密钥保管库](../key-vault/key-vault-whatis.md)
 - [Azure 事件中心](../event-hubs/event-hubs-what-is-event-hubs.md)
 - [Azure 日志集成](security-azure-log-integration-overview.md)
 
@@ -89,13 +89,13 @@ ms.locfileid: "58094654"
 1. 身份验证成功后在登录。 请记下订阅 ID 和订阅名称，因为将需要使用它们完成后面的步骤。
 
 1. 创建变量来存储后面将使用的值。 输入以下每个 PowerShell 行。 可能需要调整值来匹配你的环境。
-    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'```（你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
-    - ```$location = 'West US'```（此变量将用来传递应当在其中创建资源的位置。 可以将此变量更改为你选择的任何位置。）
+    - ```$subscriptionName = 'Visual Studio Ultimate with MSDN'``` （你的订阅名称可能不同。 可以在前面命令的输出中看到该名称。）
+    - ```$location = 'West US'``` （此变量将用于传递应在其中创建资源的位置。 可以将此变量更改为你选择的任何位置。）
     - ```$random = Get-Random```
-    - ``` $name = 'azlogtest' + $random```（名称可以是任何内容，但应当仅包含 小写字母和数字。）
-    - ``` $storageName = $name```（此变量将用于存储帐户名称。）
-    - ```$rgname = $name ```（此变量将用于资源组名称。）
-    - ``` $eventHubNameSpaceName = $name```（这是事件中心命名空间的名称。）
+    - ```$name = 'azlogtest' + $random``` （名称可以是任何内容，但它应包含小写字母和数字。）
+    - ```$storageName = $name``` （此变量将使用的存储帐户名称。）
+    - ```$rgname = $name``` （此变量将用于资源组名称。）
+    - ```$eventHubNameSpaceName = $name``` （这是事件中心命名空间的名称）。
 1. 指定要使用的订阅：
     
     ```Select-AzSubscription -SubscriptionName $subscriptionName```
@@ -114,7 +114,7 @@ ms.locfileid: "58094654"
     ```$eventHubNameSpace = New-AzEventHubNamespace -ResourceGroupName $rgname -NamespaceName $eventHubnamespaceName -Location $location```
 1. 获取将用于见解提供程序的规则 ID：
     
-    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
+    ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey'```
 1. 获取所有可能的 Azure 位置并将名称添加到可以在后面的步骤中使用的变量：
     
     a. ```$locationObjects = Get-AzLocation```    
@@ -128,7 +128,7 @@ ms.locfileid: "58094654"
     有关 Azure 日志配置文件的详细信息，请参阅 [Azure 活动日志概述](../azure-monitor/platform/activity-logs-overview.md)。
 
 > [!NOTE]
-> 尝试创建日志配置文件时可能会收到错误消息。 然后可以查看 Get AzLogProfile 和删除 AzLogProfile 的文档。 如果您运行 Get AzLogProfile，你将看到有关日志配置文件信息。 可以通过输入 ```Remove-AzLogProfile -name 'Log Profile Name' ``` 命令来删除现有的日志配置文件。
+> 尝试创建日志配置文件时可能会收到错误消息。 然后可以查看 Get AzLogProfile 和删除 AzLogProfile 的文档。 如果您运行 Get AzLogProfile，你将看到有关日志配置文件信息。 可以通过输入 ```Remove-AzLogProfile -name 'Log Profile Name'``` 命令来删除现有的日志配置文件。
 >
 >![Resource Manager 配置文件错误](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
@@ -136,11 +136,11 @@ ms.locfileid: "58094654"
 
 1. 创建 key vault：
 
-   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location ```
+   ```$kv = New-AzKeyVault -VaultName $name -ResourceGroupName $rgname -Location $location```
 
 1. 配置 key vault 的日志记录：
 
-   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true ```
+   ```Set-AzDiagnosticSetting -ResourceId $kv.ResourceId -ServiceBusRuleId $sbruleid -Enabled $true```
 
 ## <a name="generate-log-activity"></a>生成日志活动
 
@@ -157,7 +157,8 @@ ms.locfileid: "58094654"
    ```Get-AzStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 1. 设置并读取机密来生成其他日志条目：
     
-   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```
+   b. ```(Get-AzKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返回的机密](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -169,7 +170,7 @@ ms.locfileid: "58094654"
 1. ```$storage = Get-AzStorageAccount -ResourceGroupName $rgname -Name $storagename```
 1. ```$eventHubKey = Get-AzEventHubNamespaceKey -ResourceGroupName $rgname -NamespaceName $eventHubNamespace.name -AuthorizationRuleName RootManageSharedAccessKey```
 1. ```$storagekeys = Get-AzStorageAccountKey -ResourceGroupName $rgname -Name $storagename```
-1. ``` $storagekey = $storagekeys[0].Value```
+1. ```$storagekey = $storagekeys[0].Value```
 
 针对每个事件中心运行 AzLog 命令：
 
@@ -182,4 +183,4 @@ ms.locfileid: "58094654"
 
 - [Azure 日志集成常见问题解答](security-azure-log-integration-faq.md)
 - [Azure 日志集成入门](security-azure-log-integration-get-started.md)
-- [将来自 Azure 资源的日志集成到 SIEM 系统](security-azure-log-integration-overview.md)
+- [将日志从 Azure 资源集成到 SIEM 系统](security-azure-log-integration-overview.md)

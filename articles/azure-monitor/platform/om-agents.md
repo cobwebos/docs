@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: magoedte
-ms.openlocfilehash: 2768a23c217052a342538b67ec59868e25fd4914
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 19ae3322d26447cf7c7dd94d06f073ccf013738e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793809"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878344"
 ---
 # <a name="connect-operations-manager-to-azure-monitor"></a>将 Operations Manager 连接到 Azure Monitor
 
@@ -40,7 +40,7 @@ ms.locfileid: "58793809"
 
 如果 IT 安全策略不允许网络上的计算机连接到 Internet，可将管理服务器配置为连接到 Log Analytics 网关，以根据启用的解决方案接收配置信息并发送收集的数据。 有关详细信息和有关如何配置 Operations Manager 管理组以通过 Azure Monitor 的 Log Analytics 网关进行通信的步骤，请参阅[将计算机连接到使用 Log Analytics 网关的 Azure Monitor](../../azure-monitor/platform/gateway.md)。  
 
-## <a name="prerequisites"></a>系统必备 
+## <a name="prerequisites"></a>必备组件 
 
 在开始之前，请查看以下要求。
 
@@ -220,8 +220,8 @@ ms.locfileid: "58793809"
     > 继续操作之前，确认所有自定义管理包的名称中均没有 Advisor 或 IntelligencePack 字样，否则，以下步骤会将它们从管理组中删除。
     > 
 
-1. 在命令外壳提示下，键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
-1. 接着键入 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. 在命令 shell 提示符下键入 `Get-SCOMManagementPack -name "*Advisor*" | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
+1. 下一步类型 `Get-SCOMManagementPack -name “*IntelligencePack*” | Remove-SCOMManagementPack -ErrorAction SilentlyContinue`
 1. 若要删除与其他 System Center Advisor 管理包具有依赖关系的剩余管理包，请使用之前从 TechNet 脚本中心下载的脚本  *RecursiveRemove.ps1*。  
  
     > [!NOTE]
@@ -345,7 +345,7 @@ ms.locfileid: "58793809"
 以后如果打算将管理组重新连接到 Log Analytics 工作区，需重新导入 `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理包文件。 可在以下位置找到此文件，具体取决于部署在环境中的 System Center Operations Manager 的版本：
 
 * System Center 2016 的 `\ManagementPacks` 文件夹下的源媒体 - Operations Manager 及更高版本。
-* 适用于管理组的最新更新汇总。 Operations Manager 2012 的源文件夹为` %ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`，而 2012 R2 的源文件夹则位于 `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` 中。
+* 适用于管理组的最新更新汇总。 对于 Operations Manager 2012 的源文件夹是`%ProgramFiles%\Microsoft System Center 2012\Operations Manager\Server\Management Packs for Update Rollups`和 2012 R2 中，为该文件位于`System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups`。
 
 ## <a name="next-steps"></a>后续步骤
 

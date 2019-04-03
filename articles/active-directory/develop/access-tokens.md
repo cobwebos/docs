@@ -15,14 +15,14 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: celested
 ms.reviewer: hirsin
-ms.custom: aaddev
+ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e960e06cc51cc4540a8360cefe90ce68fc7e1f17
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58009922"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878411"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
@@ -80,7 +80,7 @@ JWT 拆分成三个部分：
 | `nonce` | String | 用于防范令牌重放攻击的唯一标识符。 资源可以记录此值以防范重放攻击。 |
 | `alg` | String | 指示用于对令牌进行签名的算法，例如“RS256” |
 | `kid` | String | 指定用于对此令牌进行签名的公钥的指纹。 在 v1.0 和 v2.0 访问令牌中已发出。 |
-| `x5t` | String | 功能与 `kid` 相同（在用法和值方面）。 `x5t` 是在 v1.0 访问令牌中仅出于兼容目的而发出的旧式声明。 |
+| `x5t` | String | 功能与 `kid` 相同（在用法和值方面）。 `x5t` 旧的声明，将仅在兼容性问题的 1.0 版访问令牌中发出。 |
 
 ### <a name="payload-claims"></a>有效负载声明
 
@@ -107,7 +107,7 @@ JWT 拆分成三个部分：
 | `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 还可以使用它安全地执行授权检查，并将它用作数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
 | `rh` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
 | `scp` | 字符串，范围的空格分隔列表 | 应用程序公开的、客户端应用程序已请求（和接收）其许可的范围集。 应用应该验证这些范围是否为应用公开的有效范围，并根据这些范围的值做出授权决策。 仅为[用户令牌](#user-and-application-tokens)包含此值。 |
-| `roles` | 字符串，权限的空格分隔列表 | 应用程序公开的、请求方应用程序有权调用的权限集。 在执行[客户端凭据](v1-oauth2-client-creds-grant-flow.md)流期间，将使用此值来取代用户范围；此值只会在[应用程序令牌](#user-and-application-tokens)中提供。 |
+| `roles` | 字符串数组，权限的列表 | 应用程序公开的、请求方应用程序有权调用的权限集。 有关[应用程序令牌](#user-and-application-tokens)，此过程中使用[客户端凭据](v1-oauth2-client-creds-grant-flow.md)代替用户作用域的流。  有关[的用户令牌](#user-and-application-tokens)这填充的用户分配到目标应用程序的角色。 |
 | `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查（例如，使用令牌访问资源时），并可将它用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 但是，使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
 | `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 范围才能接收此声明。 |
 | `unique_name` | String | 仅在 v1.0 令牌中提供。 提供了一个用户可读值，用于标识令牌使用者。 不保证此值在租户中唯一，只应该用于显示目的。 |

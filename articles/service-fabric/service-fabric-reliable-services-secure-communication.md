@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.openlocfilehash: b6d4a44a53ba553ab4fd514c81867156192b69f5
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662527"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886261"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
 > [!div class="op_single_selector"]
-> * [Windows 上的 C#](service-fabric-reliable-services-secure-communication.md)
+> * [C#在 Windows 上](service-fabric-reliable-services-secure-communication.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
@@ -129,7 +129,7 @@ ms.locfileid: "58662527"
        }
        ```
 
-        如果在 settings.xml 文件中添加 `TransportSettings` 节，则 `FabricTransportRemotingListenerSettings ` 将按默认加载此节中的所有设置。
+        如果在 settings.xml 文件中添加 `TransportSettings` 节，则 `FabricTransportRemotingListenerSettings` 将按默认加载此节中的所有设置。
 
         ```xml
         <!--"TransportSettings" section .-->
@@ -150,7 +150,7 @@ ms.locfileid: "58662527"
             };
         }
         ```
-3. 在安全服务上使用远程堆栈而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
+3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
 
     ```csharp
 

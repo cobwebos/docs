@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 360fd8e7ab0f7a85dbeed2bdbc7da379cbcfe91a
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 0dfe6553778092c33f9e1bd55ac7a7ae65137a6e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737019"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880995"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predicates 和 PredicateValidations
 
@@ -194,7 +194,7 @@ PredicateReference 元素包含以下属性：
 - Lowercase 使用 `IncludesCharacters` 方法，验证密码包含一个小写字母。
 - Uppercase 使用 `IncludesCharacters` 方法，验证密码包含一个大写字母。
 - Number 使用 `IncludesCharacters` 方法，验证密码包含一个数字。
-- Symbol 使用 `IncludesCharacters` 方法，验证密码包含以下符号之一 `@#$%^&*\-_+=[]{}|\:',?/~"();!`
+- **符号**使用`IncludesCharacters`方法，验证该密码包含以下符号之一 `@#$%^&*\-_+=[]{}|\:',?/~"();!`
 - PIN 使用 `MatchesRegex` 方法，验证密码仅包含数字。
 - AllowedAADCharacters 使用 `MatchesRegex` 方法，验证提供了仅限密码的无效字符。
 - DisallowedWhitespace 使用 `MatchesRegex` 方法，验证密码不以空格字符开头或结尾。
@@ -356,7 +356,8 @@ PredicateReference 元素包含以下属性：
 
 ```XML
 <Predicates>
-  <Predicate Id="DateRange" Method="IsDateRange" HelpText="The date must be between 01-01-1980 and today.">
+  <Predicate Id="DateRange" Method="IsDateRange">
+    <UserHelpText>The date must be between 01-01-1980 and today.</UserHelpText>
     <Parameters>
       <Parameter Id="Minimum">1980-01-01</Parameter>
       <Parameter Id="Maximum">Today</Parameter>

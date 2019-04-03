@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 023395126a587992c1b5648bd9b8a993d9fa9ced
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.openlocfilehash: d80581aae56fc9d65d6f24d21f2c582cb74b3f2d
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55564232"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863196"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>查找并应用性能建议
 
@@ -25,7 +25,7 @@ ms.locfileid: "55564232"
 
 ## <a name="viewing-recommendations"></a>查看建议
 
-若要查看和应用性能建议，需要 Azure 中相应的[基于角色的访问控制](../role-based-access-control/overview.md)权限。 查看建议需要“读者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。
+若要查看和应用性能建议，需要 Azure 中相应的[基于角色的访问控制](../role-based-access-control/overview.md)权限。 查看建议需要“读取者”、“SQL DB 参与者”权限，执行任何操作（如创建或删除索引、取消创建索引）需要“所有者”、“SQL DB 参与者”权限。
 
 使用以下步骤在 Azure 门户上查找性能建议：
 
@@ -39,7 +39,7 @@ ms.locfileid: "55564232"
 
 按其对性能的潜在影响将建议分为以下几个类别：
 
-| 影响 | 说明 |
+| 影响 | 描述 |
 |:--- |:--- |
 | 高 |高影响建议应提供最重要的性能影响。 |
 | 中型 |中等影响建议应提高性能，但提升程度不大。 |
@@ -63,7 +63,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 * 启用自动优化以自动应用建议。
 * 若要手动实施建议，请针对数据库运行建议的 T-SQL 脚本。
 
-选择要查看其详细信息的建议，并单击“查看脚本”查看具体详细信息，了解如何创建建议。
+选择要查看其详细信息的建议，然后单击“查看脚本”查看具体详细信息，了解如何创建建议。
 
 在应用建议时数据库将保持联机状态，使用性能建议或者自动优化不会使数据库脱机。
 
@@ -78,6 +78,7 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 所选的建议将在数据库上应用。
 
 ### <a name="removing-recommendations-from-the-list"></a>从列表中删除建议
+
 如果你的建议列表包含你想要从列表中删除的项，则可以放弃该建议：
 
 1. 选择“建议”列表中的某个建议以打开详细信息。
@@ -110,21 +111,24 @@ Azure SQL 数据库允许通过以下三个选项之一完全控制建议的启�
 
 选择所需配置后，单击“应用”。
 
-### <a name="manually-run-the-recommended-t-sql-script"></a>手动运行建议的 T-SQL 脚本
+### <a name="manually-apply-recommendations-through-t-sql"></a>手动应用建议通过 T-SQL
+
 选择任意建议，并单击“查看脚本”。 针对数据库运行此脚本以手动应用建议。
 
-不通过该服务监视和验证手动执行的索引的性能影响，因此建议在创建后监视这些索引以验证它们是否提供性能提升，并在必要时调整或删除它们。 有关创建索引的详细信息，请参阅[创建索引 (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)。
+不通过该服务监视和验证手动执行的索引的性能影响，因此建议在创建后监视这些索引以验证它们是否提供性能提升，并在必要时调整或删除它们。 有关创建索引的详细信息，请参阅[创建索引 (Transact-SQL)](https://msdn.microsoft.com/library/ms188783.aspx)。 此外，手动应用的建议将保持活动状态且在建议列表中所示 24-48 小时。 之前在系统中自动提取它们。 如果你想要删除的建议更快地，您可以手动放弃它。
 
 ### <a name="canceling-recommendations"></a>取消建议
+
 可以取消处于“待定”、“正在验证”或“成功”状态的建议。 不能取消状态为“正在执行”的建议。
 
 1. 在“优化历史记录”区域中选择建议，打开“建议详细信息”页。
 2. 单击“取消”可中止应用建议的过程。
 
 ## <a name="monitoring-operations"></a>监视操作
+
 可能不会立刻应用建议。 该门户提供了有关建议状态的详细信息。 以下是索引可能处于的状态：
 
-| 状态 | 说明 |
+| 状态 | 描述 |
 |:--- |:--- |
 | 挂起 |已经接收应用建议命令并计划执行。 |
 | 执行 |正在应用建议。 |
@@ -163,6 +167,6 @@ Azure SQL 数据库提供了提高 SQL 数据库性能的建议。 通过提供 
 
 ## <a name="additional-resources"></a>其他资源
 * [查询存储](https://msdn.microsoft.com/library/dn817826.aspx)
-* [创建索引](https://msdn.microsoft.com/library/ms188783.aspx)
+* [CREATE INDEX](https://msdn.microsoft.com/library/ms188783.aspx)
 * [基于角色的访问控制](../role-based-access-control/overview.md)
 

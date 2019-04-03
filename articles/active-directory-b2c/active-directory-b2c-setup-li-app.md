@@ -7,15 +7,15 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6c340d6b410a289f8beca156f85472cb729b786a
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: de58f960842e0a4f8e9b964774ce62b3e2772113
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56427813"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863163"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-linkedin-account-using-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 设置通过 LinkedIn 帐户注册与登录
 
@@ -41,3 +41,6 @@ ms.locfileid: "56427813"
 7. 选择“设置此标识提供者”，然后输入你之前记录为“客户端 ID” 的客户端 ID，并输入你记录为之前创建的 LinkedIn 帐户应用程序的“客户端密码”的客户端密码。
 8. 单击“确定”，然后单击“创建”以保存 LinkedIn 帐户配置。
 
+## <a name="migration-from-v10-to-v20"></a>从 1.0 版到 2.0 版的迁移
+
+LinkedIn 最近[更新其 API 的从 1.0 版到 2.0 版](https://engineering.linkedin.com/blog/2018/12/developer-program-updates)。 作为迁移的一部分，Azure AD B2C 才能够在注册期间获取的 LinkedIn 用户的完整名称。 如果电子邮件地址是收集的属性之一期间注册，用户必须手动输入的电子邮件地址，并对其进行验证。

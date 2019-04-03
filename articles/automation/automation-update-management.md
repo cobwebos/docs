@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/15/2019
+ms.date: 04/02/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 42a7ae0e6ca5239aa83d20655817973e8f185d02
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 1af2117b1d12c98182434705181462fd7c9bebf4
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805391"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862941"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -52,9 +52,9 @@ ms.locfileid: "58805391"
 > [!NOTE]
 > 若要正确地向服务进行报告，更新管理要求启用某些 URL 和端口。 若要了解有关这些要求的详细信息，请参阅[混合辅助角色的网络规划](automation-hybrid-runbook-worker.md#network-planning)。
 
-可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。 
+可以通过创建计划的部署，在需要更新的计算机上部署和安装软件更新。 归类为“可选”的更新不包括在 Windows 计算机的部署范围内。 只有必需的更新会包括在部署范围内。
 
-计划的部署会通过显式指定计算机或通过根据特定的一组计算机的日志搜索结果来选择[计算机组](../azure-monitor/platform/computer-groups.md)，来定义哪些目标计算机接收适用更新。 也可以指定一个计划来批准并设置可以安装更新的一个时段。
+计划的部署会通过显式指定计算机或通过根据特定的一组计算机的日志搜索结果来选择[计算机组](../azure-monitor/platform/computer-groups.md)，来定义哪些目标计算机接收适用更新。 也可以指定一个计划来批准并设置可以安装更新的一个时段。 这段时间称为维护时段。 如果需要重新启动，并且选择了适当的重启的选项，将为重新启动后保留十分钟的维护时段。 如果修补所花时间超过预期并且维护时段中有十分钟内，不会发生重新启动。
 
 通过 Azure 自动化中的 runbook 安装更新。 你无法查看这些 runbook，它们不需要任何配置。 创建更新部署时，更新部署会创建一个计划，该计划在指定的时间为所包括的计算机启动主更新 Runbook。 此主 Runbook 会在每个代理上启动一个子 Runbook 来安装必需的更新。
 
@@ -84,11 +84,11 @@ ms.locfileid: "58805391"
 |操作系统  |说明  |
 |---------|---------|
 |Windows 客户端     | 不支持客户端操作系统（例如 Windows 7 和 Windows 10）。        |
-|Windows Server 2016 Nano Server     | 不受支持。       |
+|Windows Server 2016 Nano Server     | 不支持。       |
 
 ### <a name="client-requirements"></a>客户端要求
 
-#### <a name="windows"></a>窗口
+#### <a name="windows"></a>Windows
 
 Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Microsoft 更新。 可以将更新管理与 System Center Configuration Manager 配合使用。 若要了解有关集成方案的详细信息，请参阅[将 System Center Configuration Manager 与更新管理集成](oms-solution-updatemgmt-sccmintegration.md#configuration)。 需要 [Windows 代理](../azure-monitor/platform/agent-windows.md)。 如果加入 Azure 虚拟机，则会自动安装此代理。
 
@@ -134,9 +134,9 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 要开始修补系统，需要启用更新管理解决方案。 可使用多种方法将计算机加入到更新管理。 以下是推荐和支持的方法，可用于加入此解决方案：
 
-* [通过虚拟机](automation-onboard-solutions-from-vm.md)
-* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
-* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
+* [从虚拟机](automation-onboard-solutions-from-vm.md)
+* [从浏览多个计算机](automation-onboard-solutions-from-browse.md)
+* [从自动化帐户](automation-onboard-solutions-from-automation-account.md)
 * [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
   
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
@@ -150,7 +150,7 @@ Heartbeat
 | where OSType == "Linux" | summarize arg_max(TimeGenerated, *) by SourceComputerId | top 500000 by Computer asc | render table
 ```
 
-#### <a name="windows"></a>窗口
+#### <a name="windows"></a>Windows
 
 ```loganalytics
 Heartbeat
@@ -180,7 +180,7 @@ Heartbeat
 
 下表介绍了该解决方案支持的连接的源：
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 |是 |该解决方案从 Windows 代理收集有关系统更新的信息，然后开始安装必需的更新。 |
 | Linux 代理 |是 |该解决方案从 Linux 代理收集有关系统更新的信息，然后开始在受支持的发行版上安装必需的更新。 |
@@ -223,7 +223,7 @@ Heartbeat
 
 | 属性 | 描述 |
 | --- | --- |
-| 姓名 |用于标识更新部署的唯一名称。 |
+| 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 要更新的组（预览）|定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
@@ -267,7 +267,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 下表列出了更新管理中的更新分类，以及每个分类的定义。
 
-### <a name="windows"></a>窗口
+### <a name="windows"></a>Windows
 
 |分类  |描述  |
 |---------|---------|
@@ -275,7 +275,7 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 |安全更新     | 产品特定、安全相关问题的更新。        |
 |更新汇总     | 一起打包以便于部署的一组累积修补程序。        |
 |功能包     | 在产品版本以外发布的新产品功能。        |
-|Service Pack     | 应用于应用程序的一组累积修补程序。        |
+|服务包     | 应用于应用程序的一组累积修补程序。        |
 |定义更新     | 对病毒或其他定义文件的更新。        |
 |工具     | 可帮助完成一个或多个任务的实用工具或功能。        |
 |更新     | 对当前已安装的应用程序或文件的更新。        |
@@ -340,7 +340,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 更新管理特别需要以下地址。 与以下地址的通信通过端口 443 进行。
 
-|Azure Public  |Azure 政府  |
+|Azure Public  |Azure Government   |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*.ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *.oms.opinsights.azure.us        |
@@ -355,8 +355,7 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择“Log Analytics”。 此时将打开“日志搜索”窗格。
 
-还可访问 [Log Analytics 搜索 API 文档](
-https://dev.loganalytics.io/)，了解如何自定义查询或从不同客户端使用查询等。
+还可访问 Log Analytics 搜索 API 文档，了解如何自定义查询或从不同客户端使用查询等。
 
 ### <a name="sample-queries"></a>示例查询
 

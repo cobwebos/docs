@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ee74c5caed04d2626fea27d3419d0b0d685d675
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dc492142200c7fd028360d01c2602904531550dc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840335"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884476"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>教程：Azure Active Directory 与 Insignia SAML SSO 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "57840335"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Insignia SAML SSO
 1. 配置和测试 Azure AD 单一登录
@@ -59,7 +59,7 @@ ms.locfileid: "57840335"
 ## <a name="adding-insignia-saml-sso-from-the-gallery"></a>从库添加 Insignia SAML SSO
 若要配置 Insignia SAML SSO 与 Azure AD 的集成，需要从库中将 Insignia SAML SSO 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Insignia SAML SSO，请执行以下步骤：**
+**若要从库添加 Insignia SAML SSO，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "57840335"
 
 本部分的内容是在 Azure 门户中启用 Azure AD 单一登录并在 Insignia SAML SSO 应用程序中配置单一登录。
 
-**若要配置 Insignia SAML SSO 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Azure AD 单一登录 Insignia SAML SSO，请执行以下步骤：**
 
 1. 在 Azure 门户中的“Insignia SAML SSO”应用程序集成页上，单击“单一登录”。
 
@@ -117,9 +117,9 @@ ms.locfileid: "57840335"
     |--|
     | `https://<customername>.insigniails.com/ils` |
     | `https://<customername>.insigniails.com/` |
-    | `https://<customername>.insigniailsusa.com/ ` |
+    | `https://<customername>.insigniailsusa.com/` |
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customername>.insigniailsusa.com/<uniqueid>`
+    b. 在“标识符”文本框中，使用以下模式键入 URL： `https://<customername>.insigniailsusa.com/<uniqueid>`
 
     > [!NOTE] 
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Insignia SAML SSO 客户端支持团队](https://www.insigniasoftware.com/insignia/Techsupport.aspx)获取这些值。 
@@ -149,7 +149,7 @@ ms.locfileid: "57840335"
 
    ![创建 Azure AD 测试用户][100]
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+**若要在 Azure AD 中创建的测试用户，请执行以下步骤：**
 
 1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
 

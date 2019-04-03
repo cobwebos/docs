@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: edd035bc95cd2e694a7cfac39e447c63fce0f7d3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520144"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884561"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -24,15 +24,15 @@ ms.locfileid: "58520144"
 
 以下视频演示如何使用此容器。
 
-[![认知服务的容器演示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![C认知服务的 ontainer 演示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必备组件
 
 若要运行 LUIS 容器，必须具有以下各项： 
 
-|需要|用途|
+|需要|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
@@ -46,7 +46,7 @@ ms.locfileid: "58520144"
 
 此容器支持设置的最小值和建议值：
 
-|容器| 最小值 | 推荐 | TPS<br>（最低配置，最大值）|
+|容器| 最小值 | 建议 | TPS<br>（最低配置，最大值）|
 |-----------|---------|-------------|--|
 |LUIS|单核，2 GB 内存|单核，4 GB 内存|20,40|
 
@@ -101,7 +101,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 
 |包类型|查询终结点 API|查询可用性|包文件名格式|
 |--|--|--|--|
-|训练完成|获取、发布|仅容器|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
+|训练结束|获取、发布|仅容器|`{APPLICATION_ID}_v{APPLICATION_VERSION}.gz`|
 |过渡|获取、发布|Azure 和容器|`{APPLICATION_ID}_STAGING.gz`|
 |生产|获取、发布|Azure 和容器|`{APPLICATION_ID}_PRODUCTION.gz`|
 
@@ -166,7 +166,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | 已发布 LUIS 应用的应用程序 ID。 |
 |{APPLICATION_ENVIRONMENT} | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>```PRODUCTION```<br/>```STAGING``` |
 |{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。 |
-|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` - 美国西部<br/>```westeurope``` - 西欧<br/>```australiaeast``` - 澳大利亚东部 |
+|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` -美国西部<br/>```westeurope``` -西欧<br/>```australiaeast``` -澳大利亚东部 |
 
 使用以下 CURL 命令下载已发布的包，用你自己的值进行替换：
 
@@ -194,7 +194,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | 已训练 LUIS 应用程序的应用程序 ID。 |
 |{APPLICATION_VERSION} | 已训练 LUIS 应用程序的应用程序版本。 |
 |{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。  |
-|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` - 美国西部<br/>```westeurope``` - 西欧<br/>```australiaeast``` - 澳大利亚东部 |
+|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` -美国西部<br/>```westeurope``` -西欧<br/>```australiaeast``` -澳大利亚东部 |
 
 使用以下 CURL 命令下载已训练的包：
 
@@ -258,17 +258,17 @@ ApiKey={ENDPOINT_KEY}
 |包类型|方法|路由|查询参数|
 |--|--|--|--|
 |已发布|[获取](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee78)、[发布](https://westus.dev.cognitive.microsoft.com/docs/services/5819c76f40a6350ce09de1ac/operations/5819c77140a63516d81aee79)|/luis/v2.0/apps/{appId}?|q={q}<br>&staging<br>[&timezoneOffset]<br>[&verbose]<br>[&log]<br>|
-|训练完成|获取、发布|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
+|训练结束|获取、发布|/luis/v2.0/apps/{appId}/versions/{versionId}?|q={q}<br>[&timezoneOffset]<br>[&verbose]<br>[&log]|
 
 查询参数配置查询响应的返回方式以及返回内容：
 
-|查询参数|类型|用途|
+|查询参数|Type|目的|
 |--|--|--|
 |`q`|字符串|用户的话语。|
-|`timezoneOffset`|号|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
-|`verbose`|布尔|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
-|`staging`|布尔|设置为 true 时，返回过渡环境结果中的查询。 |
-|`log`|布尔|记录查询，可供以后[主动学习](luis-how-to-review-endoint-utt.md)。 默认值为 true。|
+|`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
+|`verbose`|布尔值|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
+|`staging`|布尔值|设置为 true 时，返回过渡环境结果中的查询。 |
+|`log`|布尔值|记录查询，可供以后[主动学习](luis-how-to-review-endoint-utt.md)。 默认值为 true。|
 
 ### <a name="query-published-app"></a>查询已发布的应用
 
@@ -299,9 +299,9 @@ curl -X GET \
 如果为 LUIS 容器指定了输出装入点，则应用查询日志文件将保存在输出目录中，其中 {INSTANCE_ID} 是容器 ID。 应用查询日志包含提交到 LUIS 容器的每个预测查询的查询、响应和时间戳。 
 
 以下位置显示了容器的日志文件的嵌套目录结构。
-`
+```
 /output/luis/{INSTANCE_ID}/
-`
+```
  
 从 LUIS 门户中选择应用，然后选择“导入终结点日志”以上传这些日志。 
 
@@ -341,7 +341,7 @@ LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信�
 |所有区域性不支持的实体|所有区域性的 [KeyPhrase](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-keyphrase) 预生成实体|
 |英语 (EN-US) 区域性不支持的实体|[GeographyV2](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-prebuilt-geographyv2) 预生成实体|
 |语音启动|容器中不支持外部依赖项。|
-|观点分析|容器中不支持外部依赖项。|
+|情绪分析|容器中不支持外部依赖项。|
 |必应拼写检查|容器中不支持外部依赖项。|
 
 ## <a name="summary"></a>摘要

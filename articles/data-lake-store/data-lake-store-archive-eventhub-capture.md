@@ -3,26 +3,26 @@ title: 将事件中心的数据捕获到 Azure Data Lake Storage Gen1 中 | Micr
 description: 使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: a921a717445df93c83518c89970050e63a51ddf3
-ms.sourcegitcommit: 96527c150e33a1d630836e72561a5f7d529521b7
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: bb67c1769510710b368bef4dc0b501f939b3427e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51345192"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884494"
 ---
 # <a name="use-azure-data-lake-storage-gen1-to-capture-data-from-event-hubs"></a>使用 Azure Data Lake Storage Gen1 捕获事件中心的数据
 
 了解如何使用 Azure Data Lake Storage Gen1 捕获 Azure 事件中心收到的数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
@@ -45,7 +45,7 @@ ms.locfileid: "51345192"
 
 1. 分配 Data Lake Storage Gen1 根目录的权限。 
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”。
+    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户的根目录，然后单击“访问”。
 
     ![分配 Data Lake Storage Gen1 根目录的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "分配 Data Lake Storage Gen1 根目录的权限")
 
@@ -66,7 +66,7 @@ ms.locfileid: "51345192"
 
 1. 为 Data Lake Storage Gen1 帐户下要在其中捕获数据的文件夹分配权限。
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”。
+    a. 单击“数据资源管理器”，选择 Data Lake Storage Gen1 帐户中的文件夹，然后单击“访问”。
 
     ![分配 Data Lake Storage Gen1 文件夹的权限](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "分配 Data Lake Storage Gen1 文件夹的权限")
 
@@ -94,7 +94,7 @@ ms.locfileid: "51345192"
 
     ![创建事件中心](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "Create Event Hub")
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 为事件中心提供一个名称。
+    a. 为事件中心提供一个名称。
     
     b. 本教程将“分区计数”和“消息保留期”均设为默认值。
     
@@ -123,5 +123,5 @@ ms.locfileid: "51345192"
   
 
 ## <a name="see-also"></a>另请参阅
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
+* [将数据从 Azure 存储 Blob 复制到数据湖存储 Gen1](data-lake-store-copy-data-azure-storage-blob.md)

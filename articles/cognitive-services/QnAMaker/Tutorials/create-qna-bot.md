@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 01/24/2019
+ms.date: 04/02/2019
 ms.author: tulasim
-ms.openlocfilehash: b948835b1a15eee391c6902d18229ec4926b66ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 218103f2c75ec1016a997c259767ccd011191fab
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58095205"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879602"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v3"></a>教程：使用 Azure 机器人服务 v3 创建 QnA 机器人
 
@@ -105,6 +105,12 @@ ms.locfileid: "58095205"
 
 QnA 机器人通过知识库给出答案。
 
+## <a name="related-to-qna-maker-bots"></a>与相关的 QnA Maker 智能机器人
+
+* QnA Maker 帮助机器人，QnA Maker 门户中使用是可用作[智能机器人应用程序示例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)。
+    ![QnA Maker 帮助智能机器人应用程序图标是红色的机器人](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
+* [医疗保健机器人](https://docs.microsoft.com/HealthBot/qna_model_howto)QnA Maker 使用作为其中一个其[语言模型](https://docs.microsoft.com/HealthBot/qna_model_howto)。
+
 ## <a name="clean-up-resources"></a>清理资源
 
 完成本教程中的机器人后，在 Azure 门户中删除机器人。 机器人服务包括：
@@ -118,9 +124,9 @@ QnA 机器人通过知识库给出答案。
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [概念：知识库](../concepts/knowledge-base.md)
+> [概念： 知识库](../concepts/knowledge-base.md)
 
 ## <a name="see-also"></a>另请参阅
 
 - [管理知识库](https://qnamaker.ai)
-- [在不同频道启用机器人](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)
+- [启用智能机器人中不同的通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)

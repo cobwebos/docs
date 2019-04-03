@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: gokuma
-ms.openlocfilehash: 883e1c11e3485c0bf3441a67a3a191563ea3aed4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 586f37ff972a6102da351794365f719a185857fc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57990783"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877408"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>数据科学虚拟机支持的语言 
 
@@ -145,7 +145,7 @@ DSVM 上的默认 Python 环境是所有用户均可访问的全局环境。 但
 | ------------- | ------------- |
 | 支持的语言版本 | Microsoft R Open 3.x（与 CRAN-R 完全兼容<br /> Microsoft R Server 9.x 开发人员版（一个可扩展的企业就绪型 R 平台）|
 | 支持的 DSVM 版本      | Linux、Windows     |
-| 如何在 DSVM 上配置/安装它？  | Windows：`C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux：` /usr/lib64/microsoft-r/3.3/lib64/R`    |
+| 如何在 DSVM 上配置/安装它？  | Windows: `C:\Program Files\Microsoft\ML Server\R_SERVER` <br />Linux： `/usr/lib64/microsoft-r/3.3/lib64/R`    |
 | 示例链接      | 适用于 R 的示例 Jupyter 笔记本包括在内     |
 | DSVM 上的相关工具      | SparkR、Python、Julia      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
@@ -193,7 +193,7 @@ R 安装在所有用户均可访问的全局环境中的 DSVM 上。 但只有�
 | ------------- | ------------- |
 | 支持的语言版本 | 0.6 |
 | 支持的 DSVM 版本      | Linux、Windows     |
-| 如何在 DSVM 上配置/安装它？  | Windows:已安装到 `C:\JuliaPro-VERSION`<br /> Linux：已安装到 `/opt/JuliaPro-VERSION`    |
+| 如何在 DSVM 上配置/安装它？  | Windows:安装在 `C:\JuliaPro-VERSION`<br /> Linux：安装在 `/opt/JuliaPro-VERSION`    |
 | 示例链接      | 适用于 Julia 的示例 Jupyter 笔记本包括在内     |
 | DSVM 上的相关工具      | Python、R      |
 ### <a name="how-to-use--run-it"></a>如何使用/运行它？    
@@ -209,7 +209,7 @@ Windows：
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以选择 `Julia VERSION` 作为内核类型 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，可以选择作为内核类型 `Julia VERSION` 
 
 * 安装 Julia 程序包
 
@@ -226,7 +226,7 @@ Linux：
 
 * 在 Jupyter 中使用
 
-打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，你可以选择 `Julia VERSION` 作为内核类型 
+打开 Jupyter，然后单击 `New` 按钮以创建新的笔记本。 此时，可以选择作为内核类型 `Julia VERSION` 
 
 * 安装 Julia 程序包
 

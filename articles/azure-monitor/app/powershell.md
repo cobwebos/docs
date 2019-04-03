@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
-ms.openlocfilehash: ea4bc61dec59308b2c2311e8300e44aae78fc041
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313508"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883405"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
 
@@ -168,9 +168,9 @@ ms.locfileid: "57313508"
 
     ``` 
    
-   * `-ResourceGroupName` 是要创建新资源的组。
+   * `-ResourceGroupName` 是你想要创建新资源组。
    * `-TemplateFile` 必须在自定义参数前出现。
-   * `-appName` 是要创建的资源的名称。
+   * `-appName` 要创建的资源的名称。
 
 可添加其他参数，并且可在模板的参数部分找到说明。
 
@@ -200,7 +200,7 @@ ms.locfileid: "57313508"
 
 |价格代码|计划|
 |---|---|
-|第|基本|
+|1|基本|
 |2|Enterprise|
 
 * 如果仅想使用默认的基本价格计划，可在模板中省略 CurrentBillingFeatures 资源。
@@ -422,14 +422,14 @@ ms.locfileid: "57313508"
 
 | 查找项 | 替换项 |
 | --- | --- |
-| `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>` resourceId('microsoft.insights/components',` <br/> ` parameters('appName')))]"` |
+| `"hidden-link:/subscriptions/.../../components/MyAppName"` |`"[concat('hidden-link:',`<br/>`resourceId('microsoft.insights/components',` <br/> `parameters('appName')))]"` |
 | `"/subscriptions/.../../alertrules/myAlertName-myAppName-subsId",` |`"[resourceId('Microsoft.Insights/alertrules', variables('alertRuleName'))]",` |
 | `"/subscriptions/.../../webtests/myTestName-myAppName",` |`"[resourceId('Microsoft.Insights/webtests', parameters('webTestName'))]",` |
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`（小写） |`"[toLower(parameters('appName'))]"` |
-| `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>删除 GUID 和 ID。 |
+| `"myappname"` （小写） |`"[toLower(parameters('appName'))]"` |
+| `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>删除 GUID 和 ID。 |
 
 ### <a name="set-dependencies-between-the-resources"></a>设置资源之间的依赖关系
 Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置开始前完成，则添加依赖关系行：
@@ -448,8 +448,8 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 
 * [创建 Application Insights 资源](powershell-script-create-resource.md) - 不使用模板的快速方法。
 * [设置警报](powershell-alerts.md)
-* [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
+* [创建 web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
 * [从 GitHub 部署到 Azure](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
-* [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [创建版本批注](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

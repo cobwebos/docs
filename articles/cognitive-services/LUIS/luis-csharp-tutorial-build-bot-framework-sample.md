@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: ca4cd1aa074353914f5187e353c233f8b45140eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f23cf78bfca48b3a78e234520d645abdb354038f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091675"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878462"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>使用 Bot Framework 3.x 和 Azure Web 应用机器人的 C# 中的 LUIS 机器人
 
@@ -111,19 +111,19 @@ ms.locfileid: "58091675"
 
    [!code-csharp[Dependencies](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=4-5&dedent=8 "dependencies")]
 
-3. 添加常数以管理 `BasicLuisDialog ` 类顶部的字符串：
+3. 添加常数以管理 `BasicLuisDialog` 类顶部的字符串：
 
    [!code-csharp[Add Intent and Entity Constants](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=23-32&dedent=8 "Add Intent and Entity Constants")]
 
-4. 添加 `BasicLuisDialog ` 类中的新意向 `HomeAutomation.TurnOn` 和 `HomeAutomation.TurnOff` 的代码：
+4. 添加 `BasicLuisDialog` 类中的新意向 `HomeAutomation.TurnOn` 和 `HomeAutomation.TurnOff` 的代码：
 
    [!code-csharp[Add Intents](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=61-71&dedent=8 "Add Intents")]
 
-5. 添加该代码以获取 `BasicLuisDialog ` 类中 LUIS 所找到的任何实体：
+5. 添加该代码以获取 `BasicLuisDialog` 类中 LUIS 所找到的任何实体：
 
    [!code-csharp[Collect entities](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=34-53&dedent=8 "Collect entities")]
 
-6. 更改 `BasicLuisDialog ` 类中的 ShowLuisResult 方法，以便在聊天机器人中将分数四舍五入、收集实体并显示响应消息：
+6. 更改 `BasicLuisDialog` 类中的 ShowLuisResult 方法，以便在聊天机器人中将分数四舍五入、收集实体并显示响应消息：
 
    [!code-csharp[Display message in chatbot](~/samples-luis/documentation-samples/tutorial-web-app-bot/csharp/BasicLuisDialog.cs?range=73-83&dedent=8 "Display message in chatbot")]
 
@@ -145,7 +145,7 @@ ms.locfileid: "58091675"
 
 ## <a name="test-the-bot"></a>测试机器人
 
-在 Azure 门户中，选择“通过网上聊天执行测试”以测试机器人。 键入“开灯”和“关掉暖气”以调用添加到其中的意向。
+在 Azure 门户中，选择“通过网页聊天执行测试”以测试机器人。 键入“开灯”和“关掉暖气”以调用添加到其中的意向。
 
    ![通过网上聊天测试 HomeAutomation 机器人](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 

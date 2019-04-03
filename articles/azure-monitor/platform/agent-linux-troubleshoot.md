@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
-ms.openlocfilehash: 1c9d5b214d0c79f84372ba679db1cbd4a7ad9858
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: b79f8a44f0fc38dd7e5f9ae7e3ac1fe6e9f6b7b8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372584"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884170"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>如何排查 Log Analytics Linux 代理的问题 
 
@@ -36,7 +36,7 @@ ms.locfileid: "58372584"
 
  文件 | 路径
  ---- | -----
- Log Analytics Linux 代理日志文件 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log `
+ Log Analytics Linux 代理日志文件 | `/var/opt/microsoft/omsagent/<workspace id>/log/omsagent.log`
  Log Analytics 代理配置日志文件 | `/var/opt/microsoft/omsconfig/omsconfig.log`
 
  我们建议你在进行故障排除或提交 GitHub 问题之前使用我们的日志收集器工具来检索重要日志。 你可以点击[此处](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/tools/LogCollector/OMS_Linux_Agent_Log_Collector.md)了解有关该工具的详细信息以及如何运行该工具。
@@ -45,7 +45,7 @@ ms.locfileid: "58372584"
 
  类别 | 文件位置
  ----- | -----
- Syslog | `/etc/syslog-ng/syslog-ng.conf` 或 `/etc/rsyslog.conf` 或 `/etc/rsyslog.d/95-omsagent.conf`
+ Syslog | `/etc/syslog-ng/syslog-ng.conf` 或`/etc/rsyslog.conf`或 `/etc/rsyslog.d/95-omsagent.conf`
  性能、Nagios、Zabbix、Log Analytics 输出和常规代理 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`
  其他配置 | `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/*.conf`
 
@@ -117,7 +117,7 @@ ms.locfileid: "58372584"
 
 调试日志记录，可查看批量上传到 Azure Monitor 按类型、 数据项和发送所花的时间数：
 
-*启用调试日志的示例︰*
+*启用调试日志的示例：*
 
 ```
 Success sending oms.nagios x 1 in 0.14s
@@ -380,13 +380,13 @@ Success sending oms.syslog.authpriv.info x 1 in 0.91s
 
 **背景：** Log Analytics Linux 代理不是以具有特权的用户 `root` 身份运行，而是以 `omsagent` 用户身份运行。 在大多数情况下，必须为此用户授予显式权限以便读取某些文件。 要为 `omsagent` 用户授予权限，请运行以下命令︰
 
-1. 将 `omsagent` 用户添加到特定组 `sudo usermod -a -G <GROUPNAME> <USERNAME>`
-2. 授予对所需文件 `sudo chmod -R ugo+rx <FILE DIRECTORY>` 的通用读取权限
+1. 添加`omsagent`用户到特定组 `sudo usermod -a -G <GROUPNAME> <USERNAME>`
+2. 授予对所需文件的通用读取权限 `sudo chmod -R ugo+rx <FILE DIRECTORY>`
 
 这是 1.1.0-217 之前的 Log Analytics Linux 代理版本中已知的争用条件问题。 更新到最新的代理后，运行以下命令以获取最新版本的输出插件：`sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`。
 
 ## <a name="issue-you-are-trying-to-reonboard-to-a-new-workspace"></a>问题：你正尝试重新载入到新的工作区
-当你尝试将代理重新载入新的工作区时，载入之前需要清理 Log Analytics 代理配置。 若要清理代理中的旧配置，请使用 `--purge` 运行shell 捆绑包
+当你尝试将代理重新载入新的工作区时，载入之前需要清理 Log Analytics 代理配置。 若要清理来自代理的旧配置，请运行与 shell 捆绑包 `--purge`
 
 ```
 sudo sh ./omsagent-*.universal.x64.sh --purge

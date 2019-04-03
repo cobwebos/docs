@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e18c58aafd4aa56a27f5e4a97c9dcc9dcd0fdbd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 9167a5ed72e6fec2ca03cc97d1d41dd6cd4aaba6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56199776"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885836"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-secret-server-on-premises"></a>教程：Azure Active Directory 与 Secret Server (On-Premises) 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56199776"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Secret Server (On-Premises) 的集成，需要准备好以下各项：
 
@@ -51,7 +51,7 @@ ms.locfileid: "56199776"
 - 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Secret Server (On-Premises)
 1. 配置和测试 Azure AD 单一登录
@@ -59,7 +59,7 @@ ms.locfileid: "56199776"
 ## <a name="adding-secret-server-on-premises-from-the-gallery"></a>从库中添加 Secret Server (On-Premises)
 若要配置 Secret Server (On-Premises) 与 Azure AD 的集成，需要从库中将 Secret Server (On-Premises) 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Secret Server (On-Premises)，请执行以下步骤：**
+**若要从库中添加 Secret Server (On-premises)，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -95,7 +95,7 @@ ms.locfileid: "56199776"
 
 在本部分，我们将在 Azure 门户中启用 Azure AD 单一登录，并在 Secret Server (On-Premises) 应用程序中配置单一登录。
 
-**若要配置 Secret Server (On-Premises) 的 Azure AD 单一登录，请执行以下步骤：**
+**若要与 Secret Server (On-premises) 配置 Azure AD 单一登录，请执行以下步骤：**
 
 1. 在 Azure 门户中的“Secret Server (On-Premises)”应用程序集成页上，单击“单一登录”。
 
@@ -109,9 +109,9 @@ ms.locfileid: "56199776"
 
     ![Secret Server (On-Premises) 域和 URL 单一登录信息](./media/secretserver-on-premises-tutorial/tutorial_secretserver_url.png)
 
-    a. 在“标识符”文本框中，输入用户选择的值，例如：`https://secretserveronpremises.azure`
+    a. 在中**标识符**文本框中，输入用户选择的值，例如： `https://secretserveronpremises.azure`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<SecretServerURL>/SAML/AssertionConsumerService.aspx `
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<SecretServerURL>/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > 上面所示的“实体 ID”只是一个示例。可以任意选择用于在 Azure AD 中标识 Secret Server 实例的唯一值。 需要将此“实体 ID”发送到 [Secret Server (On-Premises) 客户端支持团队](https://thycotic.force.com/support/s/)，让他们在其一端进行配置。 有关详细信息，请阅读[此文](https://thycotic.force.com/support/s/article/Configuring-SAML-in-Secret-Server)。
@@ -149,7 +149,7 @@ ms.locfileid: "56199776"
 
    ![创建 Azure AD 测试用户][100]
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+**若要在 Azure AD 中创建的测试用户，请执行以下步骤：**
 
 1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
 
@@ -185,7 +185,7 @@ ms.locfileid: "56199776"
 
 ![分配用户角色][200]
 
-**若要将 Britta Simon 分配到 Secret Server (On-Premises)，请执行以下步骤：**
+**若要将 Britta Simon 分配到 Secret Server (On-premises)，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

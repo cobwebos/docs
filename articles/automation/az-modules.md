@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 02/08/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c3f46e40dfaf0d1ba2ab393b593cdd479c48c45d
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: a076c924d57aadfae477a5df0d128aad8e67af60
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585056"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862720"
 ---
 # <a name="az-module-support-in-azure-automation"></a>Azure 自动化中的 Az 模块支持
 

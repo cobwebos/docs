@@ -3,20 +3,20 @@ title: 最终用户身份验证：通过 Azure Active Directory 将 Python 与 A
 description: 了解如何通过 Python 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2e8859667e3a69f51ae23bab0487bf15d9eeeab6
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 8b72604d7e736230911d0a0987b88d372be4ddf3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537178"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881267"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-python"></a>通过 Python 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -118,6 +118,6 @@ pip install azure-datalake-store
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何使用 Python 通过最终用户身份验证进行 Azure Data Lake Storage Gen1 身份验证。 接下来，可以查看以下介绍如何使用 Python 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 Python 在 Data Lake Storage Gen1 中进行的帐户管理操作](data-lake-store-get-started-python.md)
-* [使用 Python 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-python.md)
+* [数据在数据湖存储 Gen1 帐户管理操作使用 Python](data-lake-store-get-started-python.md)
+* [使用 Python 的数据操作上的数据湖存储 Gen1](data-lake-store-data-operations-python.md)
 

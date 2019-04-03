@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: c344e8c2d0ad62b394792201ab52bb37413012f8
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 40e2baaeaae933e8ff6a88eff2e2d86f645ad37b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259901"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881029"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>有关 Azure Cosmos DB 中不同 API 的常见问题
 
@@ -201,7 +201,7 @@ SQL API 通过 JavaScript 存储过程和触发器支持语言集成式事务。
 
 ### <a name="why-are-long-floating-point-values-in-a-document-rounded-when-viewed-from-data-explorer-in-the-portal"></a>当从门户中的数据资源管理器查看时，为何会对文档中的长浮点值进行舍入？
 
-这是 JavaScript 的限制。 JavaScript 根据 IEEE 754 中的规定使用双精度浮点格式的数字，并且只能安全地保存 -(253 - 1) 和 253-1（即 9007199254740991）之间的数字。
+这是 JavaScript 的限制。 JavaScript 使用 IEEE 754 中指定的双精度浮点格式的数字，它可以安全地存放之间的数字 (2<sup>53</sup> -1） 和 2<sup>53</sup>-1 (即，9007199254740991) 仅。
 
 ### <a name="where-are-permissions-allowed-in-the-object-hierarchy"></a>在对象层次结构中的何处启用权限？
 
@@ -292,7 +292,7 @@ Azure Cosmos DB 强制实施严格的安全要求和标准。 Azure Cosmos DB �
 
 可以通过以下任一方式分享反馈：
 
-* [User Voice](https://feedback.azure.com/forums/263030-azure-cosmos-db)
+* [用户之声](https://feedback.azure.com/forums/263030-azure-cosmos-db)
 * [MSDN 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecosmosdb)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-cosmosdb)。 Stack Overflow 适合编程问题。 请确保提问[切中主题](https://stackoverflow.com/help/on-topic)并[尽可能提供较多的详细信息，使问题清楚明了，便于回答](https://stackoverflow.com/help/how-to-ask)。
 

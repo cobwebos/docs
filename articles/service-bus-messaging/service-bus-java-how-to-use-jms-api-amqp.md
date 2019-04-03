@@ -1,5 +1,5 @@
 ---
-title: 如何将 AMQP 1.0 用于 Java 服务总线 API | Microsoft 文档
+title: 如何将 AMQP 1.0 用于 Java JMS 服务总线 API |Microsoft Docs
 description: 了解如何将 Java 消息服务 (JMS) 用于 Azure 服务总线和高级消息队列协议 (AMQP) 1.0。
 services: service-bus-messaging
 documentationcenter: java
@@ -14,12 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
-ms.openlocfilehash: 2cba3744180a257638aca202d44fa433a5e1a2bc
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57453399"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885547"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>如何将 Java 消息服务 (JMS) API 用于服务总线和 AMQP 1.0
 高级消息队列协议 (AMQP) 1.0 是一个高效、可靠的线级消息传送协议，可用于构建可靠的跨平台消息传送应用程序。
@@ -382,7 +382,7 @@ JMS 主题发布程序端与服务总线兼容所示在此示例中，但动态�
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 服务总线中的 AMQP 1.0 支持](service-bus-amqp-overview.md)
-* [如何将 AMQP 1.0 与服务总线 .NET API 配合使用](service-bus-dotnet-advanced-message-queuing.md)
+* [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](service-bus-dotnet-advanced-message-queuing.md)
 * [服务总线 AMQP 1.0 开发人员指南](service-bus-amqp-dotnet.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [Java 开发中心](https://azure.microsoft.com/develop/java/)

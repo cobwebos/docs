@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: f1eba2da1404f5b47d137b3c4f7b4cb9ceab43ea
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 64a688df3b6ed8602bb440d72e7f061c5f5893d1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438047"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885598"
 ---
 # <a name="lucene-query-syntax-in-azure-search"></a>Azure 搜索中的 Lucene 查询语法
 可以基于用于专用查询窗体的丰富 [Lucene 查询分析](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)语法写入针对 Azure 搜索的查询：通配符、模糊搜索、邻近搜索、正则表达式等。 除了通过 `$filter` 表达式在 Azure 搜索中构造的“范围搜索”之外，大部分 Lucene 查询分析器语法都[在 Azure 搜索中完整实现](search-lucene-query-architecture.md)。 
@@ -85,7 +85,7 @@ POST /indexes/hotels/docs/search?api-version=2015-02-28
 
  请确保对 URL 中的所有不安全和保留字符进行编码。 例如，“#”是不安全字符，因为它是 URL 中的片段/定位标识符。 如果用于 URL，则该字符必须编码为 `%23`。 由于“&”和“=”在 Azure 搜索中分隔参数并指定值，因而是保留字符的示例。 请参阅 [RFC1738：统一资源定位器 (URL)](https://www.ietf.org/rfc/rfc1738.txt) 获取更多详细信息。
 
- 不安全字符为 ``" ` < > # % { } | \ ^ ~ [ ] ``。 保留字符为 `; / ? : @ = + &`。
+ 不安全字符为 ``" ` < > # % { } | \ ^ ~ [ ]``。 保留字符为 `; / ? : @ = + &`。
 
 ### <a name="precedence-operators-grouping-and-field-grouping"></a>优先运算符：分组和字段分组  
  可以使用圆括号创建子查询，其包括附加说明语句中的运算符。 例如，`motel+(wifi||luxury)` 将搜索包含“motel”术语以及“wifi”或“luxury”（或两者）的文档。
@@ -168,5 +168,5 @@ NOT 运算符为感叹号或减号。 例如：`wifi !luxury` 将搜索包含“
 ## <a name="see-also"></a>另请参阅  
 
 + [搜索文档](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)
-+ [用于筛选器和排序的 OData 表达式语法](query-odata-filter-orderby-syntax.md)   
++ [筛选器和排序的 OData 表达式语法](query-odata-filter-orderby-syntax.md)   
 + [Azure 搜索中的简单查询语法](query-simple-syntax.md)   

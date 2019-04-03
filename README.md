@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 2b1d75b4b32ebfffbddfaddf45b0c08fb1132995
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d4e9e26f2c6764cc179826266891d861514e23f6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168547"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882202"
 ---
 # <a name="microsoft-azure-documentation"></a>Microsoft Azure 文档
 
@@ -12,7 +12,7 @@ ms.locfileid: "58168547"
 
 ## <a name="getting-started"></a>入门
 
-参与开源不仅仅是提供更新，它也让我们知道何时出现问题。 阅读我们的[供稿指南](.github/CONTRIBUTING.md)以了解详细信息。
+参与开源不仅仅是提供更新，它也让我们知道何时出现问题。 阅读我们的[供稿指南](CONTRIBUTING.md)以了解详细信息。
 
 ### <a name="prerequisites"></a>先决条件
 

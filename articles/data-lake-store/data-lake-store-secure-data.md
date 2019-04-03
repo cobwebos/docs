@@ -3,21 +3,21 @@ title: 保护 Azure Data Lake Storage Gen1 中存储的数据 | Microsoft Docs
 description: 了解如何使用组和访问控制列表保护 Azure Data Lake Storage Gen1 中的数据
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ca35e65f-3986-4f1b-bf93-9af6066bb716
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: 15ef1e1b96a0da24714b4ddbda6b24f1f6f33ae0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296730"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885666"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保护 Azure Data Lake Storage Gen1 中存储的数据
 保护 Azure Data Lake Storage Gen1 中的数据包含三个步骤。  必须同时设置基于角色的访问控制 (RBAC) 和访问控制列表 (ACL) 才能为用户和安全组完全启用对数据的访问权限。
@@ -29,10 +29,10 @@ ms.locfileid: "46296730"
 
 本文提供有关如何使用 Azure 门户执行以上任务的说明。 如需深入了解 Data Lake Storage Gen1 如何实现帐户和数据级别安全，请参阅 [Azure Data Lake Storage Gen1](data-lake-store-security-overview.md)。 如需深入了解关于 Data Lake Storage Gen1 中如何实现 ACL 的信息，请参阅 [Data Lake Storage Gen1 中的访问控制概述](data-lake-store-access-control.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始阅读本教程前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
 
 ## <a name="create-security-groups-in-azure-active-directory"></a>在 Azure Active Directory 中创建安全组
@@ -149,10 +149,10 @@ Data Lake Storage Gen1 允许进一步在网络级别锁定访问权限。 可�
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
-* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [将数据从 Azure 存储 Blob 复制到数据湖存储 Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [通过 PowerShell 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-powershell.md)
-* [通过 .NET SDK 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-net-sdk.md)
-* [访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)
+* [开始使用数据湖存储 Gen1 使用.NET SDK](data-lake-store-get-started-net-sdk.md)
+* [数据湖存储 Gen1 访问诊断日志](data-lake-store-diagnostic-logs.md)
 

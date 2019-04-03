@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f622be53297a9d091a62a1239f022bbd4fb71347
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 3f1dbd4b6635d615cc7bed4cf5cc38234ec0c3f1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311758"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885989"
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>配置 Azure 多重身份验证设置
 
@@ -34,7 +34,7 @@ ms.locfileid: "58311758"
 | ------- | ----------- |
 | 帐户锁定 | 如果连续有过多的身份验证尝试遭到拒绝，则将暂时在多重身份验证服务中锁定帐户。 此功能仅适用于输入 PIN 进行身份验证的用户。 （MFA 服务器） |
 | [阻止/解除阻止用户](#block-and-unblock-users) | 用于阻止 MFA 服务器（本地）上的特定用户，使之无法接收多重身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 |
-| [欺诈警报](#fraud-alert) | 配置的设置与用户能否通过 MFA 服务器报告欺诈验证请求相关。 |
+| [欺诈警报](#fraud-alert) | 配置与报告欺诈性验证请求的用户功能相关的设置 |
 | 通知 | 允许通过 MFA 服务器来通知事件。 |
 | [OATH 令牌](concept-authentication-methods.md#oath-hardware-tokens-public-preview) | 用在基于云的 Azure MFA 环境中，为用户托管 OATH 令牌。 |
 | [电话呼叫设置](#phone-call-settings) | 为云和本地环境配置与电话呼叫和问候语相关的设置。 |
@@ -57,7 +57,7 @@ ms.locfileid: "58311758"
 
 ## <a name="block-and-unblock-users"></a>阻止和解除阻止用户
 
-使用阻止和解除阻止用户功能，可防止用户收到身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。 此功能特定于 MFA 服务器（本地）。
+使用阻止和解除阻止用户功能，可防止用户收到身份验证请求。 自动拒绝任何针对受阻止用户的身份验证尝试。 用户将在阻止日起 90 天内受到阻止。
 
 ### <a name="block-a-user"></a>阻止用户
 
@@ -77,7 +77,7 @@ ms.locfileid: "58311758"
 
 ## <a name="fraud-alert"></a>欺诈警报
 
-配置欺诈警报，以便用户举报企图访问其资源的欺诈行为。 用户可以通过移动应用或电话来举报欺诈行为。 此功能特定于 MFA 服务器（本地）。
+配置欺诈警报，以便用户举报企图访问其资源的欺诈行为。 用户可以通过移动应用或电话来举报欺诈行为。
 
 ### <a name="turn-on-fraud-alerts"></a>打开欺诈警报
 

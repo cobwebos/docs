@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: reference
-ms.date: 10/29/2018
+ms.date: 04/02/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 860a059f57578965045ff8e7f404c3b072df03a1
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293815"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877357"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -48,7 +48,7 @@ ms.locfileid: "58293815"
 某家组织想要添加 B2B 协作用户，根据需要将这些用户预配到应用程序中，然后发送邀请。 可以使用 B2B 协作邀请 API 自定义载入工作流。
 
 ### <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但你可以使用 Azure Active Directory PowerShell 使其可见。 请参阅 [Office 365 组中的来宾访问权限](https://support.office.com/article/guest-access-in-office-365-groups-bfc7a840-868f-4fd6-a390-f347bf51aff6#PickTab=FAQ)中的**能否在全局地址列表中显示来宾用户？**。
+是的。 默认情况下，贵组织的全局地址列表 (GAL) 中看不到来宾对象，但可以使用 Azure Active Directory PowerShell 以使其可见。 请参阅[使来宾对象可见全局地址列表中？](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups#can-i-make-guest-objects-visible-in-the-global-address-list)
 
 ### <a name="can-i-make-a-guest-user-a-limited-administrator"></a>是否可将来宾用户指定为受限制的管理员？
 绝对是。 有关详细信息，请参阅[将来宾用户添加到角色](add-guest-to-role.md)。

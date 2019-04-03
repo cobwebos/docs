@@ -4,18 +4,18 @@ description: 了解与使用 Azure Data Lake Storage Gen 1（以前称为 Azure 
 services: data-lake-store
 documentationcenter: ''
 author: sachinsbigdata
-manager: jhubbard
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2018
 ms.author: sachins
-ms.openlocfilehash: 53af7ff840f9d04f0e09010b72e9eefc32a8eadd
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 7e120980ed1379fb4ea18bca9f1e84938964cac5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56961884"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882812"
 ---
 # <a name="best-practices-for-using-azure-data-lake-storage-gen1"></a>使用 Azure Data Lake Storage Gen1 的最佳做法
 
@@ -182,10 +182,10 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [Azure Data Lake Storage Gen1 中的访问控制](data-lake-store-access-control.md)
+* [Azure 数据湖存储 Gen1 中的访问控制](data-lake-store-access-control.md)
 * [Azure Data Lake Storage Gen1 中的安全性](data-lake-store-security-overview.md)
 * [优化 Azure Data Lake Storage Gen1 性能](data-lake-store-performance-tuning-guidance.md)
-* [将 HDInsight Spark 与 Azure Data Lake Storage Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-spark.md)
-* [将 HDInsight Hive 与 Azure Data Lake Storage Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-hive.md)
-* [使用 Azure 数据工厂协调 Azure Data Lake Storage Gen1 的数据](https://mix.office.com/watch/1oa7le7t2u4ka)
-* [使用 Data Lake Storage Gen1 创建 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [性能优化指南使用 HDInsight Spark 和 Azure 数据湖存储 Gen1](data-lake-store-performance-tuning-spark.md)
+* [性能优化指南 HDInsight Hive 与 Azure 数据湖存储 Gen1 配合使用](data-lake-store-performance-tuning-hive.md)
+* [使用 Azure 数据工厂的 Azure 数据湖存储 Gen1 数据业务流程](https://mix.office.com/watch/1oa7le7t2u4ka)
+* [使用数据湖存储 Gen1 创建 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)

@@ -3,20 +3,20 @@ title: 最终用户身份验证：使用 Azure Active Directory 将 Java 与 Azu
 description: 了解如何通过 Java 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: d2c0cc277b2115f50455a1caa825306cc173d94c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 8b558fca964f33d47d331e007329d1bae2626877
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57538980"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881250"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>通过 Java 使用 Azure Data Lake Storage Gen1 进行最终用户身份验证
 > [!div class="op_single_selector"]
@@ -78,6 +78,6 @@ Data Lake Storage Gen1 SDK 可让用户使用便利的方法管理所需的安�
 ## <a name="next-steps"></a>后续步骤
 本文介绍如何使用 Java SDK 通过最终用户身份验证进行 Azure Data Lake Storage Gen1 身份验证。 现可查看以下介绍如何使用 Java SDK 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 Java SDK 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-get-started-java-sdk.md)
+* [使用 Java SDK 对数据湖存储 Gen1 的数据操作](data-lake-store-get-started-java-sdk.md)
 
 

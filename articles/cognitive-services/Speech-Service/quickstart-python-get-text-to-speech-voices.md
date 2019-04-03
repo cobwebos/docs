@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: erhopf
-ms.openlocfilehash: 16c8444bdf91caf9da6f9625485090d09058ba52
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 66bda68b1313a7c172e273671bc3a03503d08e0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522817"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876574"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-python"></a>快速入门：获取文本到语音转换使用 Python 的语音的列表
 
@@ -82,7 +82,7 @@ def get_token(self):
 
 此处要生成请求并保存返回语音的列表。 首先需要设置 `base_url` 和 `path`。 此示例假设使用“美国西部”终结点。 如果已将资源注册到其他区域，请务必更新 `base_url`。 有关详细信息，请参阅[语音服务区域](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech)。
 
-接下来，添加所需的请求标头。 最后，向服务发出请求。 如果该请求成功，则会返回 200 状态代码，语音响应将写入到带时间戳的文件。
+接下来，添加所需的请求标头。 最后，向服务发出请求。 如果该请求成功，并返回 200 状态代码，写入响应文件。
 
 将以下代码复制到 `GetVoices` 类中：
 
@@ -131,7 +131,7 @@ python get-voices.py
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [浏览 GitHub 上的 Python 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
+> [在 GitHub 上浏览 Python 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/Python)
 
 ## <a name="see-also"></a>另请参阅
 

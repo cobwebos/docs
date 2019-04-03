@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/27/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb0eacd90c3b748920e5f43bf669a36df7a3f17c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 6f76fef3d5e6515e9d546c709ace0a4a533c0a45
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447017"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881165"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-powershell"></a>使用 PowerShell 在 Azure VM 上配置 Azure 资源的托管标识
 
@@ -54,8 +54,8 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     $vmConfig = New-AzVMConfig -VMName myVM -AssignIdentity:$SystemAssigned ...
     ```
 
-   - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
-   - [使用 PowerShell 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
+   - [创建使用 PowerShell 在 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
+   - [创建使用 PowerShell 在 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
 
 > [!NOTE]
 > 可以选择性地预配 Azure 资源 VM 扩展的托管的标识，但将很快被弃用。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
@@ -147,14 +147,14 @@ Update-AzVm -ResourceGroupName myResourceGroup -VM $vm -IdentityType None
 
 1. 请参阅以下 Azure VM 快速入门之一，完成必要部分 （"登录到 Azure"，"创建资源组"，"创建网络组"，"创建 VM"）。 
   
-    转到“创建 VM”部分时，需要对 [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet 语法稍做修改。 添加 `-IdentityType UserAssigned` 和 `-IdentityID ` 参数，为 VM 预配用户分配的标识。  将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 替换为自己的值。  例如：
+    转到“创建 VM”部分时，需要对 [`New-AzVMConfig`](/powershell/module/az.compute/new-azvm) cmdlet 语法稍做修改。 添加 `-IdentityType UserAssigned` 和 `-IdentityID` 参数，为 VM 预配用户分配的标识。  将 `<VM NAME>`、`<SUBSCRIPTION ID>`、`<RESROURCE GROUP>` 和 `<USER ASSIGNED IDENTITY NAME>` 替换为自己的值。  例如：
     
     ```powershell 
     $vmConfig = New-AzVMConfig -VMName <VM NAME> -IdentityType UserAssigned -IdentityID "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESROURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<USER ASSIGNED IDENTITY NAME>..."
     ```
     
-    - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
-    - [使用 PowerShell 创建 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
+    - [创建使用 PowerShell 在 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md)
+    - [创建使用 PowerShell 在 Linux 虚拟机](../../virtual-machines/linux/quick-create-powershell.md)
 
 > [!NOTE]
 > 可以选择性地预配 Azure 资源 VM 扩展的托管的标识，但将很快被弃用。 我们建议使用 Azure 实例元数据标识终结点进行身份验证。 有关详细信息，请参阅[从 VM 扩展迁移到 Azure IMDS 终结点进行身份验证](howto-migrate-vm-extension.md)。
@@ -215,7 +215,7 @@ Update-AzVm -ResourceGroupName myResourceGroup -VirtualMachine $vm -IdentityType
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Azure 资源的托管标识概述](overview.md)
+- [有关 Azure 资源概述管理的标识](overview.md)
 - 有关完整的 Azure VM 创建快速入门，请参阅：
   
   - [使用 PowerShell 创建 Windows 虚拟机](../../virtual-machines/windows/quick-create-powershell.md) 

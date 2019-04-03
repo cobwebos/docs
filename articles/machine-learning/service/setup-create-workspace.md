@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: e55c898cdbb45dc7ff3466c61e968e3ae52be0cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521000"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879278"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>创建 Azure 机器学习服务工作区
 
@@ -37,11 +37,11 @@ ms.locfileid: "58521000"
 - [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->与其他 Azure 服务一样，机器学习也有相关的限制和配额。 [了解配额以及如何请求提高配额。](how-to-manage-quotas.md)
+>与其他 Azure 服务一样，机器学习也有相关的限制和配额。 [了解有关配额和如何请求的详细信息。](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>必备组件
-必须有 Azure 订阅，才能创建工作区。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](http://aka.ms/AMLFree)。
+必须有 Azure 订阅，才能创建工作区。 如果还没有 Azure 订阅，请在开始前创建免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
 ## <a name="portal"></a> Azure 门户
 
@@ -139,7 +139,7 @@ ms.locfileid: "58521000"
 
    [!code-python[](~/aml-sdk-samples/ignore/doc-qa/quickstart-create-workspace-with-python/quickstart.py?name=import)]
 
-1. 在 [Azure 门户中的订阅列表](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)内找到 `<azure-subscription-id>` 参数的值。 使用你在其中充当所有者或参与者角色的任何订阅。
+1. 在 [Azure 门户中的订阅列表](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)内找到 `<azure-subscription-id>` 参数的值。 使用你在其中充当所有者或参与者角色的任何订阅。 有关角色的详细信息，请参阅[访问管理对 Azure 机器学习工作区](how-to-assign-roles.md)一文。
 
    ```python
    from azureml.core import Workspace

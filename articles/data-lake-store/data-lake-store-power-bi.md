@@ -3,29 +3,29 @@ title: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据 | Micros
 description: 使用 Power BI 分析 Azure Data Lake Storage Gen1 中存储的数据
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 57d19d27-e135-49d9-a7ea-46c48ef4e3bd
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5db9d18a31af4d6b407fcd9172ac80fc6f93f085
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: b873d90dbc33aff27cd2fc3b5099b08eacf929b6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297173"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880060"
 ---
 # <a name="analyze-data-in-azure-data-lake-storage-gen1-by-using-power-bi"></a>使用 Power BI 分析 Azure Data Lake Storage Gen1 中的数据
 本文介绍如何使用 Power BI Desktop 分析和可视化 Azure Data Lake Storage Gen1 中存储的数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始阅读本教程前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Data Lake Storage Gen1 帐户**。 请遵循[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md) 中的说明进行操作。 本文假定已创建名为“myadlsg1”的 Data Lake Storage Gen1 帐户，且已向其上传了示例数据文件 (Drivers.txt)。 可从 [Azure Data Lake Git Repository](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/Drivers.txt)（Azure Data Lake Git 存储库）下载此示例文件。
 * **Power BI Desktop**。 可从 [Microsoft 下载中心](https://www.microsoft.com/en-us/download/details.aspx?id=45331) 进行下载。 
 
@@ -97,5 +97,5 @@ ms.locfileid: "46297173"
 在 Power BI Desktop 中创建可视化后，可将其发布到 Power BI 服务中与他人共享。 有关如何发布的说明，请参阅[从 Power BI Desktop 发布](https://powerbi.microsoft.com/documentation/powerbi-desktop-upload-desktop-files/)。
 
 ## <a name="see-also"></a>另请参阅
-* [使用 Data Lake Analytics 分析 Data Lake Storage Gen1 中的数据](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [使用分析数据中的数据湖存储 Gen1 Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 

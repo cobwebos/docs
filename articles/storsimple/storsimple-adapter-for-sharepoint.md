@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: v-sharos
-ms.openlocfilehash: 2e1b231a5cf13d2655ff66c7e48752729c580f48
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38232861"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885581"
 ---
 # <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>安装和配置 StorSimple Adapter for SharePoint
 ## <a name="overview"></a>概述
@@ -224,11 +224,11 @@ StorSimple 设备是一个块设备，因此需要一个可以托管数据的文
 2. 打开“SharePoint 管理中心”页，浏览到“系统设置”。
 3. 在“Azure StorSimple”下面，单击“配置 StorSimple Adapter”。
 4. 在“配置 StorSimple Adapter”页上，单击每个要从外部 BLOB 存储中删除的内容数据库下面的“禁用”按钮。 
-5. 从 SharePoint 中删除对象，然后将其重新上传。
+5. 从 SharePoint 中删除对象，并将其重新上载。
 
-也可以使用 SharePoint 随附的 Microsoft` RBS Migrate()` PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
+或者，可以使用 Microsoft `RBS Migrate()` SharePoint 附带的 PowerShell cmdlet。 有关详细信息，请参阅[将内容移入或移出 RBS](https://technet.microsoft.com/library/ff628255.aspx)。
 
-将 BLOB 移回内容数据库后，请转到下一步：[卸载适配器](#uninstall-the-adapter)。
+你将 Blob 移回内容数据库后，请转到下一步：[卸载适配器](#uninstall-the-adapter)。
 
 ### <a name="uninstall-the-adapter"></a>卸载适配器
 将 BLOB 移回 SQL Server 内容数据库后，请使用以下选项之一卸载 StorSimple Adapter for SharePoint。

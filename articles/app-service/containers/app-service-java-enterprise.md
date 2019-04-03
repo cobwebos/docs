@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 98e00eb382962d2364adda93b1a5b24fdef832eb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8db65fd9a1f271aea4ceb345f4d9dfbb6b9ff8a6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101765"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877374"
 ---
 # <a name="java-enterprise-guide-for-app-service-on-linux"></a>Linux 上应用服务的 Java 企业指南
 
@@ -119,4 +119,5 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 
 -   通过单击左侧导航窗格中的“诊断日志”启用日志记录。 单击“文件系统”，设置存储配额和保持期，然后保存更改。 可在 `/home/LogFiles/` 下找到这些日志。
 -   [使用 SSH 连接到应用程序实例](app-service-linux-ssh-support.md)，查看所运行应用程序的日志。
--   检查门户“诊断日志”窗格中的诊断日志，或使用 Azure CLI 命令：` az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group> `
+-   检查诊断日志放**诊断日志**面板门户，或使用 Azure CLI 命令：
+`az webapp log tail --name <your-app-name> --resource-group <your-apps-resource-group>`

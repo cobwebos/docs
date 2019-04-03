@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 84f74392b93212558851f89dab924ae3db5620ed
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57995112"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883711"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
 
@@ -184,7 +184,7 @@ ms.locfileid: "57995112"
  
 3. 单击“添加流输入”并选择“事件中心”。 然后使用以下信息填充“新建输入”页：
 
-   |**设置**  |**建议的值**  |**说明**  |
+   |**设置**  |**建议的值**  |**描述**  |
    |---------|---------|---------|
    |输入别名  |  CallStream   |  输入一个名称，用于标识作业的输入。   |
    |订阅   |  用户的订阅\<\> |  选择包含创建的事件中心的 Azure 订阅。   |
@@ -292,7 +292,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
     投影包括 `System.Timestamp`，后者将返回每个窗口结束时的时间戳。 
 
-    若要指定想要使用翻转窗口，请在 `GROUP BY ` 子句中使用 [TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx) 函数。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每隔 5 秒的呼叫计数。
+    若要指定你想要使用翻转窗口，请使用[TUMBLINGWINDOW](https://msdn.microsoft.com/library/dn835055.aspx)函数，在`GROUP BY`子句。 在函数中，可以指定时间单位（从微秒到一天的任意时间）和窗口大小（单位数）。 在此示例中，翻转窗口由 5 秒时间间隔组成，因此你会收到按国家/地区的每隔 5 秒的呼叫计数。
 
 2. 再次单击“测试”。 在结果中，请注意“WindowEnd”下的时间戳以 5 秒为增量。
 
@@ -354,7 +354,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 4. 在“输出”窗格中，单击“添加”，然后选择“BIob 存储”。 使用以下信息填写“新建输出”页：
 
-   |**设置**  |**建议的值**  |**说明**  |
+   |**设置**  |**建议的值**  |**描述**  |
    |---------|---------|---------|
    |输出别名  |  CallStream-FraudulentCalls   |  输入一个名称，用于标识作业的输出。   |
    |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
@@ -416,6 +416,6 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 有关常规流分析的详细信息，请查看以下文章：
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [缩放 Azure Stream Analytics 作业](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics 查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

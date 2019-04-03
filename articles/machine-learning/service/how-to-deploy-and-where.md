@@ -1,5 +1,5 @@
 ---
-title: 将模型部署为 Web 服务
+title: 如何以及在何处部署模型
 titleSuffix: Azure Machine Learning service
 description: 了解如何以及在何处部署 Azure 机器学习服务模型，包括：Azure 容器实例、Azure Kubernetes 服务、Azure IoT Edge 和现场可编程门阵列。
 services: machine-learning
@@ -9,20 +9,22 @@ ms.topic: conceptual
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
-ms.date: 12/07/2018
-ms.custom: seodec18
-ms.openlocfilehash: ea2986ea2b2f561288773a7d187101f90f3e9fa9
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622121"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878292"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
-Azure 机器学习 SDK 提供多种方式可以将部署训练的模型。 本文档介绍了如何将模型作为 Web 服务部署在 Azure 云或 IoT Edge 设备中。
+本文档介绍了如何将模型作为 Web 服务部署在 Azure 云或 IoT Edge 设备中。 
 
-可以将模型部署到以下计算目标：
+## <a name="compute-targets-for-deployment"></a>计算目标的部署
+
+使用 Azure 机器学习 SDK 将训练的模型部署到以下位置：
 
 | 计算目标 | 部署类型 | 描述 |
 | ----- | ----- | ----- |
@@ -31,6 +33,8 @@ Azure 机器学习 SDK 提供多种方式可以将部署训练的模型。 本�
 | [Azure 容器实例 (ACI)](#aci) | 测试 | 适用于开发或测试。 **不适用于生产工作负荷。** |
 | [Azure IoT Edge](#iotedge) | （预览版）IoT 模块 | 在 IoT 设备上部署模型。 推断在设备上进行。 |
 | [现场可编程门阵列 (FPGA)](#fpga) | （预览版）Web 服务 | 以超低的延迟进行实时推断。 |
+
+## <a name="deployment-workflow"></a>部署工作流
 
 为所有计算目标部署模型的过程类似：
 
@@ -46,7 +50,7 @@ Azure 机器学习 SDK 提供多种方式可以将部署训练的模型。 本�
 
 有关部署工作流涉及的概念的详细信息，请参阅[使用 Azure 机器学习服务管理、部署和监视模型](concept-model-management-and-deployment.md)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites-for-deployment"></a>部署的先决条件
 
 [!INCLUDE [aml-prereq](../../../includes/aml-prereq.md)]
 
@@ -115,9 +119,9 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
 
 脚本包含两个函数，加载和运行模型：
 
-* `init()`：此函数通常将模型载入全局对象。 此函数只能在 Docker 容器启动时运行一次。
+* `init()`:此函数通常将模型载入全局对象。 此函数只能在 Docker 容器启动时运行一次。
 
-* `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以在将数据发送到模型之前或者返回给客户端之前转换数据。
+* `run(input_data)`:此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以在将数据发送到模型之前或者返回给客户端之前转换数据。
 
 #### <a name="working-with-json-data"></a>处理 JSON 数据
 
@@ -609,11 +613,11 @@ Azure IoT Edge 模块将从容器注册表部署到设备。 从模型创建映�
 
 * [部署故障排除](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
-* [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
-* [如何运行批量预测](how-to-run-batch-predictions.md)
+* [使用机器学习模型部署为 web 服务](how-to-consume-web-service.md)
+* [如何运行批预测](how-to-run-batch-predictions.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [Azure 机器学习服务 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
-* [有关构建建议系统的最佳实践](https://github.com/Microsoft/Recommenders)
+* [Azure 虚拟网络中使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [用于构建推荐系统的最佳实践](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上生成实时建议 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

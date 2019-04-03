@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2018
+ms.date: 03/28/2019
 ms.author: celested
-ms.reviewer: paulgarn, hirsin, jeedes
+ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: af00c311b406a0bae285a00f0d537ce9bae3aa7e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102092"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884071"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -52,142 +52,142 @@ ms.locfileid: "58102092"
 
 ### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1：JSON Web 令牌 (JWT) 受限制声明集
 
-|声明类型（名称）|
+| 声明类型（名称） |
 | ----- |
-|_claim_names|
-|_claim_sources|
-|access_token|
-|account_type|
-|acr|
-|actor|
-|actortoken|
-|aio|
-|altsecid|
-|amr|
-|app_chain|
-|app_displayname|
-|app_res|
-|appctx|
-|appctxsender|
-|appid|
-|appidacr|
-|assertion|
-|at_hash|
-|aud|
-|auth_data|
-|auth_time|
-|authorization_code|
-|azp|
-|azpacr|
-|c_hash|
-|ca_enf|
-|cc|
-|cert_token_use|
-|client_id|
-|cloud_graph_host_name|
-|cloud_instance_name|
-|cnf|
-|代码|
-|controls|
-|credential_keys|
-|csr|
-|csr_type|
-|deviceid|
-|dns_names|
-|domain_dns_name|
-|domain_netbios_name|
-|e_exp|
-|电子邮件|
-|endpoint|
-|enfpolids|
-|exp|
-|expires_on|
-|grant_type|
-|graph|
-|group_sids|
-|groups|
-|hasgroups|
-|hash_alg|
-|home_oid|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
-|`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier`|
-|iat|
-|identityprovider|
-|idp|
-|in_corp|
-|instance|
-|ipaddr|
-|isbrowserhostedapp|
-|iss|
-|jwk|
-|key_id|
-|key_type|
-|mam_compliance_url|
-|mam_enrollment_url|
-|mam_terms_of_use_url|
-|mdm_compliance_url|
-|mdm_enrollment_url|
-|mdm_terms_of_use_url|
-|nameid|
-|nbf|
-|netbios_name|
-|nonce|
-|oid|
-|on_prem_id|
-|onprem_sam_account_name|
-|onprem_sid|
-|openid2_id|
-|password|
-|platf|
-|polids|
-|pop_jwk|
-|preferred_username|
-|previous_refresh_token|
-|primary_sid|
-|puid|
-|pwd_exp|
-|pwd_url|
-|redirect_uri|
-|refresh_token|
-|refreshtoken|
-|request_nonce|
-|resource|
-|role|
-|角色|
-|作用域|
-|scp|
-|sid|
-|signature|
-|signin_state|
-|src1|
-|src2|
-|sub|
-|tbid|
-|tenant_display_name|
-|tenant_region_scope|
-|thumbnail_photo|
-|tid|
-|tokenAutologonEnabled|
-|trustedfordelegation|
-|unique_name|
-|upn|
-|user_setting_sync_url|
-|username|
-|uti|
-|ver|
-|verified_primary_email|
-|verified_secondary_email|
-|wids|
-|win_ver|
+| _claim_names |
+| _claim_sources |
+| access_token |
+| account_type |
+| acr |
+| actor |
+| actortoken |
+| aio |
+| altsecid |
+| amr |
+| app_chain |
+| app_displayname |
+| app_res |
+| appctx |
+| appctxsender |
+| appid |
+| appidacr |
+| assertion |
+| at_hash |
+| aud |
+| auth_data |
+| auth_time |
+| authorization_code |
+| azp |
+| azpacr |
+| c_hash |
+| ca_enf |
+| cc |
+| cert_token_use |
+| client_id |
+| cloud_graph_host_name |
+| cloud_instance_name |
+| cnf |
+| 代码 |
+| controls |
+| credential_keys |
+| csr |
+| csr_type |
+| deviceid |
+| dns_names |
+| domain_dns_name |
+| domain_netbios_name |
+| e_exp |
+| 电子邮件 |
+| endpoint |
+| enfpolids |
+| exp |
+| expires_on |
+| grant_type |
+| graph |
+| group_sids |
+| groups |
+| hasgroups |
+| hash_alg |
+| home_oid |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration` |
+| `http://schemas.microsoft.com/ws/2008/06/identity/claims/expired` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name` |
+| `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` |
+| iat |
+| identityprovider |
+| idp |
+| in_corp |
+| instance |
+| ipaddr |
+| isbrowserhostedapp |
+| iss |
+| jwk |
+| key_id |
+| key_type |
+| mam_compliance_url |
+| mam_enrollment_url |
+| mam_terms_of_use_url |
+| mdm_compliance_url |
+| mdm_enrollment_url |
+| mdm_terms_of_use_url |
+| nameid |
+| nbf |
+| netbios_name |
+| nonce |
+| oid |
+| on_prem_id |
+| onprem_sam_account_name |
+| onprem_sid |
+| openid2_id |
+| password |
+| platf |
+| polids |
+| pop_jwk |
+| preferred_username |
+| previous_refresh_token |
+| primary_sid |
+| puid |
+| pwd_exp |
+| pwd_url |
+| redirect_uri |
+| refresh_token |
+| refreshtoken |
+| request_nonce |
+| resource |
+| role |
+| 角色 |
+| 作用域 |
+| scp |
+| sid |
+| signature |
+| signin_state |
+| src1 |
+| src2 |
+| sub |
+| tbid |
+| tenant_display_name |
+| tenant_region_scope |
+| thumbnail_photo |
+| tid |
+| tokenAutologonEnabled |
+| trustedfordelegation |
+| unique_name |
+| upn |
+| user_setting_sync_url |
+| username |
+| uti |
+| ver |
+| verified_primary_email |
+| verified_secondary_email |
+| wids |
+| win_ver |
 
 ### <a name="table-2-saml-restricted-claim-set"></a>表 2：SAML 受限制声明集
 
-|声明类型 (URI)|
+| 声明类型 (URI) |
 | ----- |
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/expired`|
@@ -196,7 +196,7 @@ ms.locfileid: "58102092"
 |`http://schemas.microsoft.com/identity/claims/identityprovider`|
 |`http://schemas.microsoft.com/identity/claims/objectidentifier`|
 |`http://schemas.microsoft.com/identity/claims/puid`|
-|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1] `|
+|`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier [MR1]`|
 |`http://schemas.microsoft.com/identity/claims/tenantid`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationinstant`|
 |`http://schemas.microsoft.com/ws/2008/06/identity/claims/authenticationmethod`|
@@ -246,7 +246,7 @@ ms.locfileid: "58102092"
 
 **数据类型：** 布尔值（True 或 False）
 
-**摘要：** 此属性确定是否在受此策略影响的令牌中包含基本声明集。 
+**摘要：** 此属性确定是否在受此策略影响的令牌中包含基本声明集。
 
 - 如果设置为 True，则在受此策略的令牌中发出基本声明集中的所有声明。 
 - 如果设置为 False，基本声明集中的声明不包含在令牌中，除非在相同策略的声明架构属性中单独添加它们。
@@ -284,51 +284,51 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 #### <a name="table-3-valid-id-values-per-source"></a>表 3：每个 Source 的有效 ID 值
 
-|源|ID|描述|
+| 源 | ID | 描述 |
 |-----|-----|-----|
-|用户|surname|姓氏|
-|用户|givenname|名字|
-|用户|displayname|显示名称|
-|用户|objectid|ObjectID|
-|用户|mail|电子邮件地址|
-|用户|userprincipalname|用户主体名称|
-|用户|department|系|
-|用户|onpremisessamaccountname|本地 Sam 帐户名称|
-|用户|netbiosname|NetBios 名称|
-|用户|dnsdomainname|Dns 域名|
-|用户|onpremisesecurityidentifier|本地安全标识符|
-|用户|companyname|组织名称|
-|用户|streetaddress|街道地址|
-|用户|postalcode|邮政编码|
-|用户|preferredlanguange|首选语言|
-|用户|onpremisesuserprincipalname|本地 UPN|
-|用户|mailnickname|邮件别名|
-|用户|extensionattribute1|扩展属性 1|
-|用户|extensionattribute2|扩展属性 2|
-|用户|extensionattribute3|扩展属性 3|
-|用户|extensionattribute4|扩展属性 4|
-|用户|extensionattribute5|扩展属性 5|
-|用户|extensionattribute6|扩展属性 6|
-|用户|extensionattribute7|扩展属性 7|
-|用户|extensionattribute8|扩展属性 8|
-|用户|extensionattribute9|扩展属性 9|
-|用户|extensionattribute10|扩展属性 10|
-|用户|extensionattribute11|扩展属性 11|
-|用户|extensionattribute12|扩展属性 12|
-|用户|extensionattribute13|扩展属性 13|
-|用户|extensionattribute14|扩展属性 14|
-|用户|extensionattribute15|扩展属性 15|
-|用户|othermail|其他邮件|
-|用户|country|国家/地区|
-|用户|city|城市|
-|用户|state|状态|
-|用户|jobtitle|职务|
-|用户|employeeid|员工 ID|
-|用户|facsimiletelephonenumber|传真电话号码|
-|application、resource、audience|displayname|显示名称|
-|application、resource、audience|objected|ObjectID|
-|application、resource、audience|标记|服务主体标记|
-|公司|tenantcountry|租户的国家/地区|
+| 用户 | surname | 姓氏 |
+| 用户 | givenname | 名字 |
+| 用户 | displayname | 显示名称 |
+| 用户 | objectid | ObjectID |
+| 用户 | mail | 电子邮件地址 |
+| 用户 | userprincipalname | 用户主体名称 |
+| 用户 | department|系|
+| 用户 | onpremisessamaccountname | 在本地 SAM 帐户名称 |
+| 用户 | netbiosname| NetBios 名称 |
+| 用户 | dnsdomainname | DNS 域名 |
+| 用户 | onpremisesecurityidentifier | 在本地安全标识符 |
+| 用户 | companyname| 组织名称 |
+| 用户 | streetaddress | 街道地址 |
+| 用户 | postalcode | 邮政编码 |
+| 用户 | preferredlanguange | 首选语言 |
+| 用户 | onpremisesuserprincipalname | 本地 UPN |
+| 用户 | mailnickname | 邮件别名 |
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
+| 用户 | othermail | 其他邮件 |
+| 用户 | country | 国家/地区 |
+| 用户 | city | 城市 |
+| 用户 | state | 状态 |
+| 用户 | jobtitle | 职务 |
+| 用户 | employeeid | 员工 ID |
+| 用户 | facsimiletelephonenumber | 传真电话号码 |
+| application、resource、audience | displayname | 显示名称 |
+| application、resource、audience | objected | ObjectID |
+| application、resource、audience | 标记 | 服务主体标记 |
+| 公司 | tenantcountry | 租户的国家/地区 |
 
 **TransformationID：** 仅当 Source 元素设置为“transformation”时，才必须提供 TransformationID 元素。
 
@@ -386,32 +386,32 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 |源|ID|描述|
 |-----|-----|-----|
-|用户|mail|电子邮件地址|
-|用户|userprincipalname|用户主体名称|
-|用户|onpremisessamaccountname|本地 Sam 帐户名称|
-|用户|employeeid|员工 ID|
-|用户|extensionattribute1|扩展属性 1|
-|用户|extensionattribute2|扩展属性 2|
-|用户|extensionattribute3|扩展属性 3|
-|用户|extensionattribute4|扩展属性 4|
-|用户|extensionattribute5|扩展属性 5|
-|用户|extensionattribute6|扩展属性 6|
-|用户|extensionattribute7|扩展属性 7|
-|用户|extensionattribute8|扩展属性 8|
-|用户|extensionattribute9|扩展属性 9|
-|用户|extensionattribute10|扩展属性 10|
-|用户|extensionattribute11|扩展属性 11|
-|用户|extensionattribute12|扩展属性 12|
-|用户|extensionattribute13|扩展属性 13|
-|用户|extensionattribute14|扩展属性 14|
-|用户|extensionattribute15|扩展属性 15|
+| 用户 | mail|电子邮件地址|
+| 用户 | userprincipalname|用户主体名称|
+| 用户 | onpremisessamaccountname|本地 Sam 帐户名称|
+| 用户 | employeeid|员工 ID|
+| 用户 | extensionattribute1 | 扩展属性 1 |
+| 用户 | extensionattribute2 | 扩展属性 2 |
+| 用户 | extensionattribute3 | 扩展属性 3 |
+| 用户 | extensionattribute4 | 扩展属性 4 |
+| 用户 | extensionattribute5 | 扩展属性 5 |
+| 用户 | extensionattribute6 | 扩展属性 6 |
+| 用户 | extensionattribute7 | 扩展属性 7 |
+| 用户 | extensionattribute8 | 扩展属性 8 |
+| 用户 | extensionattribute9 | 扩展属性 9 |
+| 用户 | extensionattribute10 | 扩展属性 10 |
+| 用户 | extensionattribute11 | 扩展属性 11 |
+| 用户 | extensionattribute12 | 扩展属性 12 |
+| 用户 | extensionattribute13 | 扩展属性 13 |
+| 用户 | extensionattribute14 | 扩展属性 14 |
+| 用户 | extensionattribute15 | 扩展属性 15 |
 
 #### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6：允许用于 SAML NameID 的转换方法
 
-|TransformationMethod|限制|
+| TransformationMethod | 限制 |
 | ----- | ----- |
-|ExtractMailPrefix|无|
-|Join|所联接的后缀必须是资源租户的已验证域。|
+| ExtractMailPrefix | 无 |
+| Join | 所联接的后缀必须是资源租户的已验证域。 |
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
@@ -437,19 +437,19 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 1. 首先请下载最新的 [Azure AD PowerShell 模块公共预览版](https://www.powershellgallery.com/packages/AzureADPreview)。
 1. 运行 Connect 命令登录到你的 Azure AD 管理员帐户。 每次启动新会话都需要运行此命令。
-    
-     ``` powershell
-    Connect-AzureAD -Confirm
-    
-    ```
+
+   ``` powershell
+   Connect-AzureAD -Confirm
+   ```
 1. 若要查看组织中创建的所有策略，请运行以下命令。 在以下方案中，建议在大多数操作之后运行此命令，以检查是否按预期创建策略。
-   
-    ``` powershell
-        Get-AzureADPolicy
-    
-    ```
-   #### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>示例：创建并分配一个策略，以从颁发给服务主体的令牌中省略基本声明。
-   在此示例中创建一个策略，它会从颁发给链接的服务主体的令牌中删除基本声明集。
+
+   ``` powershell
+   Get-AzureADPolicy
+   ```
+
+#### <a name="example-create-and-assign-a-policy-to-omit-the-basic-claims-from-tokens-issued-to-a-service-principal"></a>示例：创建并分配一个策略来省略基本声明从颁发给服务主体的令牌
+
+在此示例中创建一个策略，它会从颁发给链接的服务主体的令牌中删除基本声明集。
 
 1. 创建声明映射策略。 此策略（链接到特定服务主体）会从令牌中删除基本声明集。
    1. 若要创建该策略，请运行以下命令： 
@@ -462,7 +462,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
       ``` powershell
       Get-AzureADPolicy
       ```
-1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。 
+1. 将策略分配到服务主体。 还需要获取服务主体的 ObjectId。
    1. 若要查看组织的所有服务主体，可以查询 Microsoft Graph。 或者，在 Azure AD Graph Explorer 中登录到你的 Azure AD 帐户。
    2. 获取服务主体的 ObjectId 后，运行以下命令：  
      
@@ -499,10 +499,10 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 在此示例中创建一个策略，它会向颁发给链接的服务主体的 JWT 发出自定义声明“JoinedData”。 此声明包含通过将用户对象的 extensionattribute1 属性中存储的数据与“.sandbox”联接所创建的值。 在此示例中，我们在令牌中排除基本声明集。
 
 1. 创建声明映射策略。 此策略（链接到特定服务主体）向令牌添加 EmployeeID 和 TenantCountry 声明。
-   1. 若要创建该策略，请运行以下命令： 
+   1. 若要创建该策略，请运行以下命令：
      
       ``` powershell
-      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy" 
+      New-AzureADPolicy -Definition @('{"ClaimsMappingPolicy":{"Version":1,"IncludeBasicClaimSet":"true", "ClaimsSchema":[{"Source":"user","ID":"extensionattribute1"},{"Source":"transformation","ID":"DataJoin","TransformationId":"JoinTheData","JwtClaimType":"JoinedData"}],"ClaimsTransformations":[{"ID":"JoinTheData","TransformationMethod":"Join","InputClaims":[{"ClaimTypeReferenceId":"extensionattribute1","TransformationClaimType":"string1"}], "InputParameters": [{"ID":"string2","Value":"sandbox"},{"ID":"separator","Value":"."}],"OutputClaims":[{"ClaimTypeReferenceId":"DataJoin","TransformationClaimType":"outputClaim"}]}]}}') -DisplayName "TransformClaimsExample" -Type "ClaimsMappingPolicy"
       ```
     
    2. 若要查看新策略并获取策略 ObjectId，请运行以下命令： 
@@ -517,3 +517,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
       ``` powershell
       Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
       ```
+
+## <a name="see-also"></a>另请参阅
+
+若要了解如何自定义通过 Azure 门户在 SAML 令牌中颁发的声明，请参阅[如何：自定义的企业应用程序的 SAML 令牌中颁发的声明](active-directory-saml-claims-customization.md)

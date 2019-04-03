@@ -11,16 +11,19 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2019
+ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 46df2d6828cd60aee3c64128197579eb6f51a11a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 1a4bfae22477e345176971bd40b0afa91c8867fb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56340325"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885819"
 ---
 # <a name="deploy-azure-monitor-for-vms-preview"></a>部署用于 VM 的 Azure Monitor（预览版）
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 本文介绍如何设置用于 VM 的 Azure Monitor。 该服务监视 Azure 虚拟机 (VM)、虚拟机规模集和环境中的虚拟机的操作系统运行状况。 此监视包括发现和映射可能在其上托管的应用程序依赖关系。 
 
 可使用以下方法之一启用用于 VM 的 Azure Monitor：
@@ -31,15 +34,17 @@ ms.locfileid: "56340325"
 
 本文稍后介绍有关每个方法的其他信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始之前，请确保理解以下部分中的信息。
 
 ### <a name="log-analytics"></a>Log Analytics
 
-以下区域目前支持 Log Analytics 工作区：
+适用于 Vm 的 azure Monitor 支持在以下区域中的 Log Analytics 工作区：
 
 - 美国中西部
 - 美国东部
+- 加拿大中部<sup>1</sup>
+- 英国南部<sup>1</sup>
 - 西欧
 - 东南亚<sup>1</sup>
 
@@ -70,19 +75,17 @@ ms.locfileid: "56340325"
 
 |OS 版本 |性能 |地图 |运行状况 |
 |-----------|------------|-----|-------|
-|Windows Server 2019 | X | X |  |
+|Windows Server 2019 | X | X | |
 |Windows Server 2016 1803 | X | X | X |
 |Windows Server 2016 | X | X | X |
 |Windows Server 2012 R2 | X | X | |
 |Windows Server 2012 | X | X | |
 |Windows Server 2008 R2 | X | X| |
-|Red Hat Enterprise Linux (RHEL) 7、6| X | X| X |
-|Ubuntu 18.04、16.04、14.04 | X | X | X |
-|CentOS Linux 7、6 | X | X | X |
-|SUSE Linux Enterprise Server (SLES) 12 | X | X | X |
-|Oracle Linux 7 | X<sup>1</sup> | | X |
-|Oracle Linux 6 | X | X | X |
-|Debian 9.4、8 | X<sup>1</sup> | | X |
+|Red Hat Enterprise Linux (RHEL) 6 7| X | X| X |
+|Ubuntu 14.04、 16.04、 18.04 | X | X | X |
+|CentOS Linux 6、 7 | X | X | X |
+|SUSE Linux Enterprise Server (SLES) 11、 12 | X | X | X |
+|Debian 8、 9.4 | X<sup>1</sup> | | X |
 
 <sup>1</sup> 用于 VM 的 Azure Monitor 的“性能”功能仅在 Azure Monitor 中可用。 直接从 Azure VM 的左窗格进行访问时不会提供此功能。
 
@@ -91,16 +94,12 @@ ms.locfileid: "56340325"
 > - 仅默认版本和 SMP Linux 内核版本受支持。
 > - 任何 Linux 发行版都不支持非标准内核版本（例如物理地址扩展 [PAE] 和 Xen）。 例如，不支持版本字符串为 *2.6.16.21-0.8-xen* 的系统。
 > - 不支持自定义内核（包括标准内核的重新编译）。
-> - 不支持 CentOSPlus 内核。
+> - 支持 CentOSPlus 内核。
 
 #### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
 | OS 版本 | 内核版本 |
 |:--|:--|
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
 | 7.4 | 3.10.0-693 |
 | 7.5 | 3.10.0-862 |
 | 7.6 | 3.10.0-957 |
@@ -109,17 +108,14 @@ ms.locfileid: "56340325"
 
 | OS 版本 | 内核版本 |
 |:--|:--|
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4 | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
 | 6.9 | 2.6.32-696 |
 | 6.10 | 2.6.32-754 |
+
+### <a name="centosplus"></a>CentOSPlus
+| OS 版本 | 内核版本 |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
 #### <a name="ubuntu-server"></a>Ubuntu Server
 
@@ -130,21 +126,11 @@ ms.locfileid: "56340325"
 | 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
 | 14.04 | 3.13.\*<br>4.4.\* |
 
-#### <a name="oracle-enterprise-linux-6-with-unbreakable-enterprise-kernel"></a>具有 Unbreakable Enterprise Kernel 的 Oracle Enterprise Linux 6
-| OS 版本 | 内核版本
-|:--|:--|
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4 | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
-
-#### <a name="oracle-enterprise-linux-5-with-unbreakable-enterprise-kernel"></a>具有 Unbreakable Enterprise Kernel 的 Oracle Enterprise Linux 5
+#### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
 | OS 版本 | 内核版本
 |:--|:--|
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+|11 SP4 | 3.0.* |
 
 #### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
@@ -162,7 +148,7 @@ ms.locfileid: "56340325"
 
 下表描述了映射功能在混合环境中支持的连接源。
 
-| 连接的源 | 支持 | 说明 |
+| 连接的源 | 支持 | 描述 |
 |:--|:--|:--|
 | Windows 代理 | 是 | 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
 | Linux 代理 | 是 | 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关操作系统版本的完整列表，请参阅[支持的操作系统](#supported-operating-systems)。 |
@@ -313,7 +299,7 @@ ms.locfileid: "56340325"
     * 请在包含模板的文件夹中使用以下 PowerShell 命令：
 
         ```powershell
-        New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+        New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName <ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
         ```
 
         配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
@@ -389,11 +375,11 @@ With this initial release, you can create the policy assignment only in the Azur
     
 1. In the **Log Analytics workspace** drop-down list for the supported region, select a workspace.
 
-    >[!NOTE]
-    >If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... `
-    >To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
-    >  
-    The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
+   > [!NOTE]
+   > If the workspace is beyond the scope of the assignment, grant *Log Analytics Contributor* permissions to the policy assignment's Principal ID. If you don't do this, you might see a deployment failure such as: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ...`
+   > To grant access, review [how to manually configure the managed identity](../../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity).
+   > 
+   >  The **Managed Identity** check box is selected, because the initiative being assigned includes a policy with the *deployIfNotExists* effect.
     
 1. In the **Manage Identity location** drop-down list, select the appropriate region.
 
@@ -426,7 +412,7 @@ Based on the results of the policies included with the initiative, VMs are repor
 ### Enable with PowerShell
 To enable Azure Monitor for VMs for multiple VMs or virtual machine scale sets, you can use the PowerShell script [Install-VMInsights.ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0), available from the Azure PowerShell Gallery. This script iterates through every virtual machine and virtual machine scale set in your subscription, in the scoped resource group that's specified by *ResourceGroup*, or to a single VM or virtual machine scale set that's specified by *Name*. For each VM or virtual machine scale set, the script verifies whether the VM extension is already installed. If the VM extension is not installed, the script tries to reinstall it. If the VM extension is installed, the script installs the Log Analytics and Dependency agent VM extensions.
 
-This script requires Azure PowerShell module version 5.7.0 or later. Run `Get-Module -ListAvailable AzureRM` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps). If you're running PowerShell locally, you also need to run `Connect-AzureRmAccount` to create a connection with Azure.
+This script requires Azure PowerShell module Az version 1.0.0 or later. Run `Get-Module -ListAvailable Az` to find the version. If you need to upgrade, see [Install Azure PowerShell module](https://docs.microsoft.com/powershell/azure/install-az-ps). If you're running PowerShell locally, you also need to run `Connect-AzAccount` to create a connection with Azure.
 
 To get a list of the script's argument details and example usage, run `Get-Help`.
 
@@ -606,7 +592,7 @@ Failed: (0)
 
 下表突出显示了通过命令行安装代理时支持的参数。
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:--|:--|
 | /? | 返回命令行选项的列表。 |
 | /S | 执行无需用户交互的无提示安装。 |
@@ -622,7 +608,7 @@ Failed: (0)
 > 需要根目录访问才能安装或配置代理。
 >
 
-| 参数 | 说明 |
+| 参数 | 描述 |
 |:--|:--|
 | -help | 获取命令行选项列表。 |
 | -s | 执行无提示安装，无用户提示。 |
@@ -731,7 +717,7 @@ Dependency Agent 的文件放置在以下目录中：
 1. 现在，可以使用以下 PowerShell 命令部署此模板：
 
     ```powershell
-    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    New-AzResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
     ```
 
     配置更改可能需要几分钟才能完成。 完成后，系统会显示包含结果的消息，如下所示：
@@ -739,7 +725,7 @@ Dependency Agent 的文件放置在以下目录中：
     ```powershell
     provisioningState       : Succeeded
     ```
-启用监视后，可能需要约 10 分钟才能查看混合计算机的运行状况和指标。
+   启用监视后，可能需要约 10 分钟才能查看混合计算机的运行状况和指标。
 
 ## <a name="performance-counters-enabled"></a>已启用性能计数器
 用于 VM 的 Azure Monitor 将配置 Log Analytics 工作区，以收集解决方案使用的性能计数器。 下表列出了解决方案配置的、每隔 60 秒收集一次的对象和计数器。

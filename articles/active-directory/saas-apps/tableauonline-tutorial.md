@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee7adb7c4c0efc8a455d8dc74bc723644d006f3
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: bd5e3087c21908600be9cd369a15f3036e5acb2f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56169014"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884697"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>教程：Azure Active Directory 与 Tableau Online 集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56169014"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Tableau Online 的集成，需要以下项：
 
@@ -50,7 +50,7 @@ ms.locfileid: "56169014"
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Tableau Online
 1. 配置和测试 Azure AD 单一登录
@@ -99,7 +99,7 @@ ms.locfileid: "56169014"
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录，并在 Tableau Online 应用程序中配置单一登录。
 
-**若要配置 Tableau Online 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Azure AD 单一登录 Tableau Online，请执行以下步骤：**
 
 1. 在 Azure 门户中的“Tableau Online”应用程序集成页上，单击“单一登录”。
 
@@ -113,9 +113,9 @@ ms.locfileid: "56169014"
 
     ![配置单一登录](./media/tableauonline-tutorial/tutorial_tableauonline_url.png)
     
-    a. 在“登录 URL”文本框中，键入 URL：`https://sso.online.tableau.com`
+    a. 在“登录 URL”文本框中，键入 URL： `https://sso.online.tableau.com`
 
-    b. 在“标识符”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid> `
+    b. 在“标识符”文本框中，键入 URL： `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
 1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
 
@@ -169,7 +169,7 @@ ms.locfileid: "56169014"
 
 ![创建 Azure AD 用户][100]
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+**若要在 Azure AD 中创建的测试用户，请执行以下步骤：**
 
 1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
@@ -213,7 +213,7 @@ ms.locfileid: "56169014"
 
 ![分配用户][200] 
 
-**要将 Britta Simon 分配到 Tableau Online，请执行以下步骤：**
+**若要将 Britta Simon 分配到 Tableau Online，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

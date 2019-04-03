@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: 891b2988d04a3cf2f7c6676a837bc1ee199f4d16
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: c352100392a5bf7b590b27b9448f7f37fb105fbe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651484"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886091"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning-studio"></a>有关 Azure 机器学习工作室的 Net# 神经网络规范语言的指南
 
@@ -149,7 +149,7 @@ output Result auto from Hidden all;
 
 当前支持五种类型的连接捆绑：
 
-+ **完整**捆绑，由关键字 `all` 指示
++ **完整**捆绑，由关键字 `all`
 + **经筛选的**捆绑，由后跟谓词表达式的关键字 `where` 指示
 + **卷积**捆绑，由后跟卷积属性的关键字 `convolve` 指示
 + **池**捆绑，由关键字 **max pool** 或 **mean pool** 指示
@@ -450,14 +450,15 @@ output Digit [10] from Hid3 all;
 + 关键字 `convolve` 指示名为 `Conv1` 和 `Conv2` 的层是卷积层。 每个这些层声明都后跟一个卷积属性列表。
 + Net 具有第三个隐藏层 `Hid3`，该层完全连接到第二个隐藏层 `Conv2`。
 + 输出层 `Digit` 仅连接到第三个隐藏层 `Hid3`。 关键字 `all` 指示输出层完全连接到 `Hid3`。
-+ 卷积的实参数量为 3：元组 `InputShape`、`KernelShape`、`Stride, and ` 的长度。
++ 卷积的实参数量为 3: 元组的长度`InputShape`， `KernelShape`， `Stride`，和`Sharing`。
 + 每个内核的权重数为 `1 + KernelShape\[0] * KernelShape\[1] * KernelShape\[2] = 1 + 1 * 5 * 5 = 26` 或 `26 * 50 = 1300`。
 + 可以计算每个隐藏层中的节点，如下所示：
 
-    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5` `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
+    `NodeCount\[0] = (5 - 1) / 1 + 1 = 5`
+    `NodeCount\[1] = (13 - 5) / 2 + 1 = 5`
     `NodeCount\[2] = (13 - 5) / 2 + 1 = 5`
 
-+ 可通过使用层的声明维数 [50, 5, 5] 来计算节点总数，如下所示：`MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
++ 总节点数可以通过使用层的声明的维数 [50，5，5]，如下所示： `MapCount * NodeCount\[0] * NodeCount\[1] * NodeCount\[2] = 10 * 5 * 5 * 5`
 + 因为只有 `d == 0` 时 `Sharing[d]` 为 False，因此内核数为 `MapCount * NodeCount\[0] = 10 * 5 = 50`。
 
 ## <a name="acknowledgements"></a>致谢

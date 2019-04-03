@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: fa5dfabeae829d52475d2e3cd6ccb123d8308c7c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bc78dade345c9f9c72cf936136d9969b79bc1398
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013573"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878581"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>使用 Azure 存储模拟器进行开发和测试
 
@@ -139,9 +139,9 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 存储模拟器的服务终结点是：
 
-* Blob 服务：`http://127.0.0.1:10000/<account-name>/<resource-path>`
-* 队列服务：`http://127.0.0.1:10001/<account-name>/<resource-path>`
-* 表服务：`http://127.0.0.1:10002/<account-name>/<resource-path>`
+* Blob 服务： `http://127.0.0.1:10000/<account-name>/<resource-path>`
+* 队列服务： `http://127.0.0.1:10001/<account-name>/<resource-path>`
+* 表服务： `http://127.0.0.1:10002/<account-name>/<resource-path>`
 
 ### <a name="addressing-the-account-secondary-with-ra-grs"></a>使用 RA-GRS 对帐户辅助副本进行寻址
 存储模拟器从 3.1 版开始，支持读取访问地域冗余复制 (RA-GRS)。 对于同时位于云中和本地模拟器中的存储资源，可以通过在帐户名称后面追加 -secondary 来访问辅助位置。 例如，以下地址可用于访问使用存储模拟器中的只读辅助副本的 blob：
@@ -169,10 +169,10 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 | 选项 | 描述 | 命令 | 参数 |
 | --- | --- | --- | --- |
-| **启动** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动仿真器，而不是创建新的进程。 |
-| **Stop** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
-| **Status** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
-| **Clear** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]                                                    ` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
+| **开始** |启动存储模拟器。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*：在当前进程中启动仿真器，而不是创建新的进程。 |
+| **停止** |停止存储模拟器。 |`AzureStorageEmulator.exe stop` | |
+| **状态** |打印存储模拟器的状态。 |`AzureStorageEmulator.exe status` | |
+| **清除** |清除命令行上指定的所有服务中的数据。 |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*：清除 blob 数据。 <br/>*queue*：清除队列数据。 <br/>*table*：清除表数据。 <br/>*all*：清除所有服务中的所有数据。 |
 | **Init** |执行一次性初始化以设置模拟器。 |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*：指定托管 SQL 实例的服务器。 <br/>*-sqlinstance instanceName*：指定要在默认服务器实例中使用的 SQL 实例的名称。 <br/>*-forcecreate*：强制创建 SQL 数据库，即使它已存在。 <br/>*-skipcreate*：跳过创建 SQL 数据库的步骤。 此命令优先于 -forcecreate。<br/>*-reserveports*：尝试保留与服务关联的 HTTP 端口。<br/>*-unreserveports*：尝试取消保留与服务关联的 HTTP 端口。 此命令优先于 -reserveports。<br/>*-inprocess*：在当前进程中执行初始化，而不是生成新的进程。 如果更改端口保留设置，必须使用提升的权限启动当前进程。 |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>存储模拟器与 Azure 存储之间的差异
@@ -180,8 +180,8 @@ http://127.0.0.1:10000/devstoreaccount1/sascontainer?sv=2012-02-12&se=2015-07-08
 
 * 存储模拟器只支持单一固定的帐户和众所周知的身份验证密钥。
 * 存储模拟器不是可扩展的存储服务，并且不支持大量并发客户端。
-* 如 [对存储模拟器中的资源进行寻址](#addressing-resources-in-the-storage-emulator)中所述，存储模拟器与 Azure 存储帐户中的资源以不同方式寻址。 存在这种差异是因为在云中可进行域名解析，但在本地计算机上不提供域名解析。
-* 存储模拟器帐户从 3.1 版开始，支持读取访问地域冗余复制 (RA-GRS)。 在模拟器中，所有帐户都已启用 RA-GRS，在主要和次要副本之间不会有任何延迟。 获取 Blob 服务统计信息、获取队列服务统计信息和获取表服务统计信息操作在帐户辅助上受支持，并且将始终根据基础 SQL 数据库返回 `LastSyncTime` 响应元素的值作为当前时间。
+* 如[对存储模拟器中的资源进行寻址](#addressing-resources-in-the-storage-emulator)中所述，存储模拟器与 Azure 存储帐户中的资源以不同方式寻址。 存在这种差异是因为在云中可进行域名解析，但在本地计算机上不提供域名解析。
+* 存储模拟器从 3.1 版开始，支持读取访问地域冗余复制 (RA-GRS)。 在模拟器中，所有帐户都已启用 RA-GRS，在主要和次要副本之间不会有任何延迟。 获取 Blob 服务统计信息、获取队列服务统计信息和获取表服务统计信息操作在帐户辅助上受支持，并且将始终根据基础 SQL 数据库返回 `LastSyncTime` 响应元素的值作为当前时间。
 * 文件服务和 SMB 协议服务终结点当前在存储模拟器中不受支持。
 * 如果使用模拟器尚不支持的存储服务版本，则存储模拟器将返回 VersionNotSupportedByEmulator 错误（HTTP 状态代码 400 - 错误请求）。
 

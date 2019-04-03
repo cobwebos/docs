@@ -12,17 +12,14 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3cab94744a2ab87dce0a145665e957e1fed0dd2f
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.openlocfilehash: 123a24eb13de584d8e3b70d0d8b1173f583867c1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167539"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881420"
 ---
-# <a name="create-your-first-function-with-java-and-eclipse-preview"></a>使用 Java 和 Eclipse 创建第一个函数（预览版）
-
-> [!NOTE] 
-> 用于 Azure Functions 的 Java 当前为预览版。
+# <a name="create-your-first-function-with-java-and-eclipse"></a>使用 Java 和 Eclipse 中创建第一个函数 
 
 本文介绍如何使用 Eclipse IDE 和 Apache Maven 创建[无服务器](https://azure.microsoft.com/solutions/serverless/)函数项目、对其进行测试和调试，然后将其部署到 Azure Functions。 
 
@@ -52,7 +49,7 @@ ms.locfileid: "49167539"
 1. 选择“添加原型”，并为 [azure-functions-archetype](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype) 添加条目。
     - 原型组 ID：com.microsoft.azure
     - 原型项目 ID：azure-functions-archetype
-    - 版本：使用[中心存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)中的最新版本
+    - 版本:从使用最新版本[中央存储库](https://mvnrepository.com/artifact/com.microsoft.azure/azure-functions-archetype)
     ![Eclipse Maven 创建](media/functions-create-first-java-eclipse/functions-create-eclipse.png)  
 1. 单击“确定”并输入当前项目的详细信息，最后单击“完成”。
 

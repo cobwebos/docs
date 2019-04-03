@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 81519a9452bf578c2640b547b2102b8e162e2878
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8f4f13a8b03f3ddba91fb4c4b69f550e1e88a491
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369779"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885071"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
 
@@ -75,7 +75,7 @@ ms.locfileid: "58369779"
 | 用户在验证其电话号码时看到了一个错误。 | 当输入的电话号码与文件上的电话号码不匹配时，将发生此错误。 当尝试使用基于电话的方法进行密码重置时，请确保用户输入了完整的电话号码（包括区域和国家/地区代码）。 |
 | 处理请求时出错。 | 许多问题都可能会导致此错误，但此错误通常是由服务中断或者配置问题导致的。 如果看到了此错误并且它影响了业务，请与 Microsoft 支持人员联系，以获得更多的帮助。 |
 | 本地策略冲突 | 该密码不符合本地 Active Directory 密码策略。 |
-| 密码不符合模糊策略 | 已使用的密码显示在禁止密码列表中，且可能无法使用。 |
+| 密码不符合模糊策略 | 已使用的密码将出现在[受禁密码列表](https://docs.microsoft.com/azure/active-directory/authentication/concept-password-ban-bad#how-are-passwords-evaluated)和不能使用。 |
 
 ## <a name="troubleshoot-password-writeback"></a>排查密码写回问题
 
@@ -266,7 +266,7 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * **支持代码**：用户看到该错误时生成了哪个支持代码？
    * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
 
-   ![在屏幕底部查找支持代码][Support code]
+   ![找到屏幕底部的支持代码][Support code]
 
   * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
 * **日期、时间和时区**：包含发生错误时的确切日期和时间及“时区”。
@@ -285,14 +285,14 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何完成成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
-* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
-* [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
+* [SSPR 使用哪些数据以及哪些数据应填充为你的用户？](howto-sspr-authenticationdata.md)
+* [向用户提供的身份验证方法？](concept-sspr-howitworks.md#authentication-methods)
+* [使用 SSPR 策略选项有哪些？](concept-sspr-policy.md)
+* [什么是密码写回，为什么我关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+* [什么是所有 SSPR 中的选项以及执行哪些操作它们的含义是？](concept-sspr-howitworks.md)
+* [我有了别处未涵盖的问题](active-directory-passwords-faq.md)

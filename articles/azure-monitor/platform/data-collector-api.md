@@ -11,14 +11,14 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/02/2019
 ms.author: bwren
-ms.openlocfilehash: 7942b4eb5788357a807911d3eb89d1054a92c3eb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f3ee9b7aa595ae07bb97a8513bc0b751e94d7cc9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449353"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883932"
 ---
 # <a name="send-log-data-to-azure-monitor-with-the-http-data-collector-api-public-preview"></a>使用 HTTP 数据收集器 API（公共预览版）将日志数据发送到 Azure Monitor
 本文介绍如何使用 HTTP 数据收集器 API 从 REST API 客户端将日志数据发送到 Azure Monitor。  其中说明了对于脚本或应用程序收集的数据，如何设置其格式、将其包含在请求中，并由 Azure Monitor 授权该请求。  将针对 PowerShell、C# 和 Python 提供示例。
@@ -166,6 +166,11 @@ Azure Monitor 对每个属性所使用的数据类型取决于新记录的记录
 如果提交了后续条目，在记录类型创建前，Azure Monitor 将创建具有以下三个属性的记录：**number_s**、**boolean_s** 和 **string_s**。 在此条目中，每个初始值都采用字符串的格式：
 
 ![示例记录 4](media/data-collector-api/record-04.png)
+
+## <a name="reserved-properties"></a>保留的属性
+以下属性已保留，并且不应在自定义记录类型中使用。 如果您的有效负载包括以下任何属性名称，将收到错误。
+
+- tenant
 
 ## <a name="data-limits"></a>数据限制
 发布到 Azure Monitor 数据收集 API 的数据有一些限制。

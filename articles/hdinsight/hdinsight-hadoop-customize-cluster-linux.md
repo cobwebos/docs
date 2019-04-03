@@ -1,33 +1,24 @@
 ---
-title: 使用脚本操作自定义 HDInsight 群集 - Azure
+title: 使用脚本操作自定义 Azure HDInsight 群集
 description: 使用脚本操作将自定义组件添加到基于 Linux 的 HDInsight 群集。 脚本操作是 Bash 脚本，可用于自定义群集配置，或者添加 Hue、Solr 或 R 等其他服务和实用工具。
-services: hdinsight
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 11/06/2018
-ms.author: hrasheed
-ms.openlocfilehash: 80c2d25fa24acff92a462f0289259792f217fbfd
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/02/2019
+ms.openlocfilehash: fe0fec082ace997a3bd66ca7c7575ce8dce3be1a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361687"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885564"
 ---
-# <a name="customize-linux-based-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义基于 Linux 的 HDInsight 群集
+# <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>使用脚本操作自定义 Azure HDInsight 群集
 
 Azure HDInsight 提供一个称为“脚本操作”的配置方法，该方法可以调用自定义脚本来自定义群集。 这些脚本用于安装附加组件和更改配置设置。 可以在创建群集期间或创建群集后使用脚本操作。
 
-> [!IMPORTANT]  
-> 只有基于 Linux 的 HDInsight 群集能够在运行中的群集上使用脚本操作。
->
-> Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight Windows 停用](hdinsight-component-versioning.md#hdinsight-windows-retirement)。
-
 还可以将脚本操作作为 HDInsight 应用程序发布到 Azure 市场。 有关 HDInsight 应用程序的详细信息，请参阅[在 Azure 市场中发布 HDInsight 应用程序](hdinsight-apps-publish-applications.md)。
-
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="permissions"></a>权限
 
@@ -156,12 +147,12 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 | 名称 | 脚本 |
 | --- | --- |
-| 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`。 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
-| 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`。 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
-| 安装 Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`。 请参阅 [在基于 Hadoop 的 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md). |
-| 安装 Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`。 请参阅[在 HDInsight Hadoop 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
-| 预加载 Hive 库 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`。 请参阅[创建 HDInsight 群集时添加自定义 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
-| 安装或更新 Mono | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`。  请参阅 [在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md). |
+| 添加 Azure 存储帐户 |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh`. 请参阅[将其他存储帐户添加到 HDInsight](hdinsight-hadoop-add-storage.md)。 |
+| 安装 Hue |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh`. 请参阅[在 HDInsight Hadoop 群集上安装并使用 Hue](hdinsight-hadoop-hue-linux.md)。 |
+| 安装 Presto |`https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh`. 请参阅 [在基于 Hadoop 的 HDInsight 群集上安装并使用 Presto](hdinsight-hadoop-install-presto.md). |
+| 安装 Giraph |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh`. 请参阅[在 HDInsight Hadoop 群集上安装 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)。 |
+| 预加载 Hive 库 |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`. 请参阅[创建 HDInsight 群集时添加自定义 Apache Hive 库](hdinsight-hadoop-add-hive-libraries.md)。 |
+| 安装或更新 Mono | `https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash`.  请参阅 [在 HDInsight 上安装或更新 Mono](hdinsight-hadoop-install-mono.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>在创建群集期间使用脚本操作
 
@@ -225,7 +216,9 @@ HDInsight 提供了脚本用于在 HDInsight 群集上安装以下组件：
 
 ### <a name="use-a-script-action-during-cluster-creation-from-azure-powershell"></a>在创建群集期间从 Azure PowerShell 使用脚本操作
 
-在本部分中，你使用[添加 AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) cmdlet 来调用脚本，以自定义群集。 开始之前，请确保安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install)。
+在本部分中，你使用[添加 AzHDInsightScriptAction](https://docs.microsoft.com/powershell/module/az.hdinsight/add-azhdinsightscriptaction) cmdlet 来调用脚本，以自定义群集。 开始之前，请确保安装并配置 Azure PowerShell。 若要使用这些 PowerShell 命令，你需要[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 以下脚本演示如何在使用 PowerShell 创建群集时应用脚本操作：
 
@@ -277,7 +270,7 @@ HDInsight .NET SDK 提供客户端库，以方便从 .NET 应用程序使用 HDI
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-azure-powershell"></a>从 Azure PowerShell 将脚本操作应用到正在运行的群集
 
-开始之前，请确保安装并配置 Azure PowerShell。 有关配置工作站以运行 HDInsight PowerShell cmdlet 的信息，请参阅 [Azure PowerShell 概述](https://docs.microsoft.com/powershell/azure/overview?view=azps-1.1.0#run-or-install)。
+若要使用这些 PowerShell 命令，你需要[AZ 模块](https://docs.microsoft.com/powershell/azure/overview)。
 
 以下示例演示如何将脚本操作应用于正在运行的群集：
 
@@ -464,11 +457,11 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
     在此目录下，日志分别针对**头节点**、**工作节点**和 **Zookeeper 节点**进行组织。 请看以下示例：
 
-    * **头节点**：`<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
+    * **头节点**: `<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
 
-    * **工作节点**：`<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
+    * **辅助角色节点**: `<uniqueidentifier>AmbariDb-wn0-<generated_value>.cloudapp.net`
 
-    * **Zookeeper 节点**：`<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
+    * **Zookeeper 节点**: `<uniqueidentifier>AmbariDb-zk0-<generated_value>.cloudapp.net`
 
 * 相应主机的所有 **stdout** 和 **stderr** 将上传到存储帐户。 每个脚本操作各有一个 **output-\*.txt** 和 **errors-\*.txt**。 **output-*.txt** 文件包含有关在主机上运行的脚本的 URI 信息。 以下文本是此信息的示例：
 
@@ -525,7 +518,7 @@ sudo pip install azure-storage==0.20.0
 ## <a name="next-steps"></a>后续步骤
 
 * [为 HDInsight 开发脚本操作脚本](hdinsight-hadoop-script-actions-linux.md)
-* [在 HDInsight 群集上安装并使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-* [将其他存储添加到 HDInsight 群集中](hdinsight-hadoop-add-storage.md)
+* [安装并在 HDInsight 群集上使用 Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
+* [将其他存储添加到 HDInsight 群集](hdinsight-hadoop-add-storage.md)
 
-[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建过程中的阶段"
+[img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/HDI-Cluster-state.png "群集创建期间的阶段"

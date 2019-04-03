@@ -3,27 +3,31 @@ title: 发行说明 - 人脸 API 服务
 titleSuffix: Azure Cognitive Services
 description: 人脸 API 服务的发行说明包括各种版本的发布更改历史记录。
 services: cognitive-services
-author: SteveMSFT
+author: yluiu
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 1af699a4b28309e7b004ed1eedf339e142065e50
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.date: 03/29/2019
+ms.author: yluiu
+ms.openlocfilehash: 02e4e73bbbc7f843a3483bab4791484b89f97dd7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55878453"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862023"
 ---
 # <a name="face-api-release-notes"></a>人脸 API 发行说明
 
 本文适用于人脸 API 服务 1.0 版。
 
+### <a name="release-changes-in-march-2019"></a>2019 年 3 月版本更改
+
+* 添加新的人脸识别模型更加准确。 使用它通过[人脸-检测](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)， [FaceList-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)，[大型人脸列表-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a157b68d2de3616c086f2cc)， [person Group-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244)和[大型人物组-创建](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599acdee6ac60f11b48b5a9d)通过指定新的人脸识别模型名称`recognition_02`中`recognitionModel`参数。 中的更多详细信息[如何指定一个认证模型](Face-API-How-to-Topics/specify-recognition-model.md)。
+
 ### <a name="release-changes-in-january-2019"></a>2019 年 1 月的发布更改
 
-* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot)。
+* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot)。 中的更多详细信息[如何将人脸数据迁移到不同的人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 ### <a name="release-changes-in-october-2018"></a>2018 年 10 月的发布更改
 

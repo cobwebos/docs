@@ -14,19 +14,19 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 08/27/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 5643b7c80307cea36f60bcc116c82ea7b31171f9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 04a1741bbe4e60567a22445c5674ec03b232640c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096565"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883664"
 ---
 # <a name="create-an-azure-compatible-vhd"></a>创建与 Azure 兼容的 VHD
 
 本文详细介绍为 Azure 市场中的虚拟机 (VM) 套餐创建虚拟硬盘 (VHD) 所要执行的步骤。  此外，还包含各项操作的最佳做法，例如，使用远程桌面协议 (RDP)、选择 VM 大小、安装最新的 Windows 更新，以及通用化 VHD 映像。  以下部分侧重于基于 Windows 的 VHD；有关创建基于 Linux 的 VHD 的详细信息，请参阅 [Azure 认可的 Linux 分发版](../../../virtual-machines/linux/endorsed-distros.md)。 
 
 > [!WARNING]
-> 强烈建议遵照本主题中的指导，使用 Azure 创建包含预配置的认可操作系统的 VM。  如果此内容不符合你的解决方案，可以使用批准的操作系统来创建并配置本地 VM。  然后可以根据[准备好要上传到 Azure 的 Windows VHD 或 VHDX](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，对此 VM 进行配置并准备好上传。
+> 强烈建议遵照本主题中的指导，使用 Azure 创建包含预配置的认可操作系统的 VM。  如果这不符合你的解决方案，然后就可以创建和配置使用已批准的操作系统的本地 VM。  然后可以根据[准备好要上传到 Azure 的 Windows VHD 或 VHDX](https://docs.microsoft.com/azure/virtual-machines/windows/prepare-for-upload-vhd-image) 中所述，对此 VM 进行配置并准备好上传。
 
 
 ## <a name="select-an-approved-base"></a>选择批准的基础映像

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: d1188b40021fbb221bc19af6d4a5397f7ba8f800
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439866"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877578"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
 本文说明在 Centos 6.6 主机服务器上配置多路径 IO (MPIO) 所要执行的步骤。 主机服务器已连接到 Microsoft Azure StorSimple 设备，以通过 iSCSI 发起程序获得高可用性。 本文详细描述多路径设备的自动发现，以及仅适用于 StorSimple 卷的特定设置。
@@ -35,15 +35,15 @@ ms.locfileid: "39439866"
 
 多路径有双重目的：
 
-* **高可用性**：如果 I/O 路径的任何要素（例如电缆、交换机、网络接口或控制器）发生故障，多路径可提供替代路径。
-* **负载均衡**：根据存储设备的配置，多路径可通过检测 I/O 路径上的负载以及动态重新均衡这些负载来改善性能。
+* **高可用性**：如果失败的 I/O 路径 （例如电缆、 交换机、 网络接口或控制器） 的任何元素，它提供备用路径。
+* **负载均衡**:根据你的存储设备的配置，它可以通过检测 I/O 路径上的负载以及动态重新均衡这些负载来提高性能。
 
 ### <a name="about-multipathing-components"></a>关于多路径组件
 Linux 中的多路径由内核组件和以下用户空间组件构成。
 
-* **内核**：主要组件是 *device-mapper*，可重新路由 I/O，支持路径和路径组的故障转移。
+* **内核**:主要组件是*设备映射程序*的网络 I/O 和支持的路径和路径组的故障转移。
 
-* **用户空间**：这些组件是 *multipath-tools*，可通过向 device-mapper 多路径模块发出工作指令来管理多路径设备。 这些工具包括：
+* **用户空间**:这些是*多路径工具*用于管理多路径设备通过指示设备映射器多路径模块要执行的操作。 这些工具包括：
    
    * **Multipath**：列出和配置多路径设备。
    * **Multipathd**：执行多路径和监视路径的后台程序。
@@ -56,18 +56,18 @@ Linux 中的多路径由内核组件和以下用户空间组件构成。
 
 multipath.conf 包括五个节：
 
-- **系统级默认值** *(defaults)*：可以覆盖系统级默认值。
-- **列入方块列表的设备** *(blacklist)*：可以指定不应受 device-mapper 控制的设备列表。
-- **方块列表异常** *(blacklist_exceptions)*：可以识别要被视为多路径设备的特定设备，即使这些设备已列入方块列表。
-- **存储控制器特定的设置** *(devices)*：可以指定要应用到设备的配置设置（包含供应商和产品信息）。
-- **设备特定的设置** *(multipaths)*：可以使用此节微调单个 LUN 的配置设置。
+- **系统级默认值** *（默认值）*:您可以覆盖系统级默认值。
+- **设备已列入黑名单** *(blacklist)*:可以指定不应由设备映射程序控制的设备的列表。
+- **方块列表异常** *(blacklist_exceptions)*:您可以标识特定的设备被视为多路径设备，即使列入方块列表。
+- **存储控制器特定的设置** *（设备）*:您可以指定将应用于具有供应商和产品信息的设备的配置设置。
+- **设备特定的设置** *(multipaths)*:此部分用于微调单个 Lun 的配置设置。
 
 ## <a name="configure-multipathing-on-storsimple-connected-to-linux-host"></a>在连接到 Linux 主机的 StorSimple 上配置多路径
 可以配置连接到 Linux 主机的 StorSimple 设备，以实现高可用性和负载均衡。 例如，如果 Linux 主机有两个连接到 SAN 的接口，设备有两个连接到 SAN 的接口，并且这些接口位于同一子网中，则有 4 个路径可用。 但是，如果设备和主机接口上的每个 DATA 接口位于不同的 IP 子网中（且不可路由），则只有 2 个路径可用。 可以配置多路径，以便自动发现所有可用路径、选择这些路径的负载均衡算法、应用仅限 StorSimple 卷的特定配置设置，并启用和验证多路径。
 
 以下过程描述当有两个网络接口的 StorSimple 设备连接到有两个网络接口的主机时，如何配置多路径。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本部分详细说明 CentOS 服务器和 StorSimple 设备的配置先决条件。
 
 ### <a name="on-centos-host"></a>在 CentOS 主机上
@@ -298,7 +298,7 @@ StorSimple 设备应该：
 
     如果此处只显示了一个主机接口和两个路径，则需要在主机上为这两个接口启用 iSCSI。 可以遵循 [Linux 文档中的详细说明](https://access.redhat.com/documentation/Red_Hat_Enterprise_Linux/5/html/Online_Storage_Reconfiguration_Guide/iscsioffloadmain.html)。
 
-1. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6：创建卷](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)（通过 StorSimple 设备上的 Azure 门户）。
+1. 卷通过 StorSimple 设备向 CentOS 服务器公开。 有关详细信息，请参阅[步骤 6:创建卷](storsimple-8000-deployment-walkthrough-u2.md#step-6-create-a-volume)通过 Azure 门户在 StorSimple 设备上。
 
 1. 验证可用路径。 键入：
 
@@ -351,7 +351,7 @@ A. 通常，看不到任何多路径的路径即表示多路径后台程序有�
 
 * 使用以下命令重新扫描 SCSI 总线：
   
-    `$ rescan-scsi-bus.sh `（sg3_utils 包的一部分）
+    `$ rescan-scsi-bus.sh` （sg3_utils 包的一部分）
 * 键入以下命令：
   
     `$ dmesg | grep sd*`
@@ -420,7 +420,7 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 有关详细信息，请转到 [use troubleshooting interactive command for multipathing](http://www.centos.org/docs/5/html/5.1/DM_Multipath/multipath_config_confirm.html)（对多路径使用故障排除交互式命令）。
 
 ## <a name="list-of-useful-commands"></a>有用命令列表
-| Type | 命令 | Description |
+| Type | 命令 | 描述 |
 | --- | --- | --- |
 | **iSCSI** |`service iscsid start` |启动 iSCSI 服务 |
 | &nbsp; |`service iscsid stop` |停止 iSCSI 服务 |
@@ -438,12 +438,12 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 | &nbsp; |`chkconfig multipathd on` </br> 或 </br> `mpathconf –with_chkconfig y` |使多路径后台程序在引导时启动 |
 | &nbsp; |`multipathd –k` |启动交互式控制台进行故障排除 |
 | &nbsp; |`multipath –l` |列出多路径连接和设备 |
-| &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` 中创建示例 mulitpath.conf 文件 |
+| &nbsp; |`mpathconf --enable` |创建示例 mulitpath.conf 文件中 `/etc/mulitpath.conf` |
 |  | | |
 
 ## <a name="next-steps"></a>后续步骤
 在 Linux 主机上配置 MPIO 时，可能还需要参考以下 CentoS 6.6 文档：
 
-* [Setting up MPIO on CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)（在 CentOS 上设置 MPIO）
-* [Linux Training Guide](http://linux-training.be/linuxsys.pdf)（Linux 培训指南）
+* [CentOS 上的 MPIO 设置](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
+* [Linux 培训指南](http://linux-training.be/linuxsys.pdf)
 

@@ -3,20 +3,20 @@ title: Azure Data Lake Storage Gen1 灾难恢复指南 | Microsoft Docs
 description: Azure Data Lake Storage Gen1 灾难恢复指南
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
-ms.author: nitinme
-ms.openlocfilehash: 44c1dc3e3f6c2c9af52a6e9c9320d4a8ba63b4d0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127102"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878105"
 ---
 # <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 数据灾难恢复指南
 
@@ -25,7 +25,7 @@ Azure Data Lake Storage Gen1 提供本地冗余存储 (LRS)。 所以从现在�
 ## <a name="disaster-recovery-guidance"></a>灾难恢复指南
 每个客户都应准备好自己的灾难恢复计划，这很重要。 阅读本文中的信息以生成你的灾难恢复计划。 下面是可以帮助自行创建计划的一些资源。
 
-* [Azure 应用程序的灾难恢复和高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [灾难恢复和 Azure 应用程序的高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure 复原技术指南](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>最佳做法
@@ -42,6 +42,6 @@ Azure Data Lake Storage Gen1 提供本地冗余存储 (LRS)。 所以从现在�
 组织还可针对 Data Lake Storage Gen1 帐户启用[诊断日志记录](data-lake-store-diagnostic-logs.md)来收集数据访问审核跟踪，提供有关谁删除或更新了文件的信息。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [开始使用 Azure 数据湖存储 Gen1](data-lake-store-get-started-portal.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
 

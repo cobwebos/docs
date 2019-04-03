@@ -3,20 +3,20 @@ title: 最终用户身份验证：使用 Azure Active Directory 将 REST API 与
 description: 了解如何通过 REST API 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: d5603bb6bbb56d1aebb719902c60de631a4f14f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: twooley
+ms.openlocfilehash: 0ef65c23ee1bf4f064695779b71c8616427da204
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108182"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881437"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>通过 REST API 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -86,6 +86,6 @@ ms.locfileid: "58108182"
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何通过 REST API 使用服务到服务身份验证进行 Azure Data Lake Storage Gen1 身份验证。 现可查看以下介绍如何使用 REST API 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
-* [使用 REST API 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-rest-api.md)
+* [数据在数据湖存储 Gen1 帐户管理操作使用 REST API](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 对数据湖存储 Gen1 的数据操作](data-lake-store-data-operations-rest-api.md)
 

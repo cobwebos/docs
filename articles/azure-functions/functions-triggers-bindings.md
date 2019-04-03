@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
 ms.openlocfilehash: 3865f748a9ca2fe09660d6454542d64f73a8e3c1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: MT
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
+ms.lasthandoff: 04/03/2019
 ms.locfileid: "56736951"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions 触发器和绑定概念
@@ -33,10 +33,10 @@ ms.locfileid: "56736951"
 
 | 示例方案 | 触发器 | 输入绑定 | 输出绑定 |
 |-------------|---------|---------------|----------------|
-| 新的队列消息抵达，此时会运行一个函数来写入到另一个队列。 | 队列<sup>*</sup> | 无 | 队列<sup>*</sup> |
+| 新的队列消息抵达，此时会运行一个函数来写入到另一个队列。 | 队列<sup>*</sup> | *无* | 队列<sup>*</sup> |
 |计划的作业读取 Blob 存储内容，并创建新的 Cosmos DB 文档。 | 计时器 | Blob 存储 | Cosmos DB |
 |事件网格用于读取 Blob 存储中的映像以及 Cosmos DB 中的文档，以发送电子邮件。 | 事件网格 | Blob 存储和 Cosmos DB | SendGrid |
-| 一个 Webhook，它使用 Microsoft Graph 来更新 Excel 工作表。 | HTTP | 无 | Microsoft Graph |
+| 一个 Webhook，它使用 Microsoft Graph 来更新 Excel 工作表。 | HTTP | *无* | Microsoft Graph |
 
 <sup>\*</sup> 表示不同的队列
 
@@ -73,7 +73,7 @@ ms.locfileid: "56736951"
 所有触发器和绑定在 [function.json](./functions-reference.md) 文件中都有一个 `direction` 属性：
 
 - 对于触发器，方向始终为 `in`
-- 输入和输出绑定使用 `in` 和 `out`
+- 输入和输出绑定使用`in`和 `out`
 - 某些绑定支持特殊方向 `inout`。 如果使用 `inout`，则只能通过门户中的“集成”选项卡使用“高级编辑器”。
 
 使用[类库中的特性](functions-dotnet-class-library.md)来配置触发器和绑定时，方向在特性构造函数中提供或推断自参数类型。

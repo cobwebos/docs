@@ -3,21 +3,21 @@ title: 将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1 | M
 description: 使用 AdlCopy 工具将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: dc273ef8-96ef-47a6-b831-98e8a777a5c1
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 5049e280b65a9f223ea577ee4fde973657682b4c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: be66fd51b37c0e62b2b757a88ee1db9319b2093a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544626"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879805"
 ---
 # <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-storage-gen1"></a>将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 > [!div class="op_single_selector"]
@@ -57,7 +57,7 @@ Azure Data Lake Storage Gen1 提供的命令行工具 [AdlCopy](https://aka.ms/d
 | 源 |指定 Azure 存储 blob 中源数据的位置。 源可以是 Blob 容器、Blob 或另一 Data Lake Storage Gen1 帐户。 |
 | 目标 |指定要复制到的 Data Lake Storage Gen1 目标。 |
 | SourceKey |指定 Azure 存储 blob 源的存储访问密钥。 仅在源是 blob 容器或 blob 时必选此项。 |
-| 帐户 |**可选**。 如要使用 Azure Data Lake Analytics 帐户运行复制作业，请使用此选项。 如果在语法中使用 /Account 选项但不指定 Data Lake Analytics 帐户，AdlCopy 会使用默认帐户来运行作业。 此外，如果使用此选项，必须添加源（Azure 存储 Blob）和目标 (Azure Data Lake Storage Gen1)，将其作为 Data Lake Analytics 帐户的数据源。 |
+| 帐户 |可选。 如要使用 Azure Data Lake Analytics 帐户运行复制作业，请使用此选项。 如果在语法中使用 /Account 选项但不指定 Data Lake Analytics 帐户，AdlCopy 会使用默认帐户来运行作业。 此外，如果使用此选项，必须添加源（Azure 存储 Blob）和目标 (Azure Data Lake Storage Gen1)，将其作为 Data Lake Analytics 帐户的数据源。 |
 | 单位 |指定要用于复制作业的 Data Lake Analytics 单位的数量。 如果使用“/Account”选项指定 Data Lake Analytics 帐户，此选项为必选。 |
 | 模式 |指定 regex 模式，它指示要复制哪些 blob 或文件。 AdlCopy 使用区分大小写匹配。 未指定模式时，使用的默认模式会复制所有项。 不支持指定多个文件模式。 |
 
@@ -179,6 +179,6 @@ AdlCopy 支持复制包含上千个文件和文件夹的数据。 但是，如�
 * 1.0.13 - 如果通过多个 adlcopy 命令将数据复制到同一 Azure Data Lake Storage Gen1 帐户，则不再需要在每次运行时重新输入凭据。 现在，Adlcopy 会在多次运行之间缓存该信息。
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
+* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

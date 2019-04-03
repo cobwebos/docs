@@ -16,17 +16,18 @@ ms.date: 10/05/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
+ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 687b25ea5d792edf2f582c9929a0ae5f0c2426db
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: b00dd8de47422cf849d97e66698be3300b96ff83
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442067"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884544"
 ---
 # <a name="id-tokens"></a>ID 令牌
 
-`id_tokens` 是在 [OpenID Connect](v1-protocols-openid-connect-code.md) 流中发送到客户端应用程序的。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
+`id_tokens` 发送到客户端应用程序的一部分[OpenID Connect](v1-protocols-openid-connect-code.md)流。 它们可以一起发送来代替访问令牌，可供客户端用来对用户进行身份验证。
 
 ## <a name="using-the-idtoken"></a>使用 id_token
 
@@ -34,7 +35,7 @@ ID 令牌应该用来验证某个用户是否符合其声称的身份，以及�
 
 ## <a name="claims-in-an-idtoken"></a>id_token 中的声明
 
-Microsoft 标识的 `id_tokens` 为 [JWT](https://tools.ietf.org/html/rfc7519)，这意味着它们由标头、有效负载和签名部分组成。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有声明均出现在 v1.0 和 v2.0 令牌中。
+`id_tokens` microsoft 标识都[Jwt](https://tools.ietf.org/html/rfc7519)，这意味着它们包含的标头、 有效负载和签名的一部分。 可以使用标头和签名来验证令牌的真实性，而有效负载则包含客户端请求的用户信息。 除非另有说明，否则此处列出的所有声明均出现在 v1.0 和 v2.0 令牌中。
 
 ### <a name="v10"></a>v1.0
 
@@ -79,6 +80,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IjFMVE16YWtpaGlSbGFfOHoyQkVKVlhlV01x
 |`name` | String | 此 `name` 声明提供了标识令牌使用者的用户可读值。 此值不一定唯一，它是可变的，旨在仅用于显示目的。 需要 `profile` 范围才能接收此声明。 |
 |`nonce`| String | nonce 与发送给 IDP 的原始 /authorize 请求中包含的参数匹配。 如果不匹配，应用程序会拒绝此令牌。 |
 |`oid` | 字符串，GUID | 在 Microsoft 标识系统中，对象的不可变标识符在这种情况下是用户帐户。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为 `oid` 允许多个应用关联用户，需要 `profile` 作用域才能收到此声明。 请注意，如果单个用户存在于多个租户中，该用户将包含每个租户中的不同对象 ID - 它们将视为不同帐户，即使用户使用相同的凭据登录到每个帐户，也是如此。 |
+|`roles`| 字符串数组 | 角色分配给在登录的用户组。 |
 |`rh` | 不透明字符串 |Azure 用来重新验证令牌的内部声明。 应忽略。 |
 |`sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 使用者是成对标识符 - 它对特定应用程序 ID 是唯一的。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
 |`tid` | 字符串，GUID | 表示用户所属 Azure AD 租户的 GUID。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 需要 `profile` 范围才能接收此声明。 |

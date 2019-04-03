@@ -10,12 +10,12 @@ ms.subservice: implement
 ms.date: 03/19/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: 031abcb9133663f39375560a06b0770c89eafb27
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: acea42f7f4ab986e9828000ab7cfc9e302ed92a3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259561"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885445"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用复制表的设计指南
 本文提供在 SQL 数据仓库架构中设计复制表的建议。 使用这些建议，可减少数据移动并降低查询复杂性，从而提高查询性能。
@@ -59,7 +59,7 @@ ms.locfileid: "58259561"
 
 在工作分布在所有计算节点上时，CPU 密集型查询的效果最好。 例如，对于在表的每一行上运行计算的查询，针对分布式表进行查询比针对复制表进行查询效果更好。 由于复制表完整存储在每个计算节点上，因此对复制表的 CPU 密集型查询会针对每个计算节点上的整个表运行。 额外的计算可能会降低查询性能。
 
-例如，此查询包含一个复制谓词。  它运行速度更快，而不是复制表的分布式表的数据时。 在此示例中，数据可以是轮循机制分布。
+例如，此查询包含一个复制谓词。  当数据位于分布式表而非复制的表中时，它运行更快。 在此示例中，数据可以是循环分布式的。
 
 ```sql
 
@@ -70,7 +70,7 @@ WHERE EnglishDescription LIKE '%frame%comfortable%'
 ```
 
 ## <a name="convert-existing-round-robin-tables-to-replicated-tables"></a>将现有轮循表转换为复制表
-如果已有轮循机制表，我们建议将它们转换为复制的表中，如果它们符合本文中所述的条件。 复制表提高了轮循表的性能，因为前者不需要移动数据。  循环表的联接总是需要移动数据。 
+如果已经具有循环表，如果它们满足本文中列出的条件，建议将其转换为复制的表。 复制表提高了轮循表的性能，因为前者不需要移动数据。  循环表的联接总是需要移动数据。 
 
 下面的示例使用 [CTAS](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) 将 DimSalesTerritory 表更改为复制表。 无论 DimSalesTerritory 是哈希分布表还是轮询表，此示例都适用。
 
@@ -95,8 +95,8 @@ DROP TABLE [dbo].[DimSalesTerritory_old];
 
 复制表的联接不需要移动数据，因为整个表都存在于每个计算节点上。 如果维度表是轮循分布表，则联接会将维度表完整复制到每个计算节点上。 为了移动数据，查询计划包含一个名为 BroadcastMoveOperation 的操作。 此类数据移动操作会降低查询性能，可通过使用复制表避免此问题。 要查看查询计划步骤，请使用 [sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql) 系统目录视图。 
 
-例如，在针对 AdventureWorks 架构的以下查询中，` FactInternetSales` 表是哈希分布表。 `DimDate` 和 `DimSalesTerritory` 表是较小的维度表。 此查询将返回 2004 财年北美地区的销售总额：
- 
+例如，在针对 AdventureWorks 架构的以下查询中，`FactInternetSales` 表是哈希分布表。 `DimDate` 和 `DimSalesTerritory` 表是较小的维度表。 此查询将返回 2004 财年北美地区的销售总额：
+
 ```sql
 SELECT [TotalSalesAmount] = SUM(SalesAmount)
 FROM dbo.FactInternetSales s
@@ -181,8 +181,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>后续步骤 
 若要创建复制表，请使用以下语句之一：
 
-- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
-- [CREATE TABLE AS SELECT（Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE （Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT （Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 有关分布式表的概述，请参阅[分布式表](sql-data-warehouse-tables-distribute.md)。
 

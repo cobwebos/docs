@@ -17,12 +17,12 @@ ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed2164fc122621a4ba2aeb4bb0797db02b10a4bf
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 5f9fd062d445fb738842667cab0c24332c0e4cc8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57449132"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879237"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>如何：从 Azure 访问控制服务迁移
 
@@ -103,7 +103,7 @@ https://<mynamespace>.accesscontrol.windows.net
 
 1. 使用上一步中的命名空间并转到 `https://<namespace>.accesscontrol.windows.net`
 
-    例如，如果某个命名空间是 contoso-test，请转到 `https://contoso-test.accesscontrol.windows.net`
+    例如，如果某个命名空间是 contoso 测试，请转到 `https://contoso-test.accesscontrol.windows.net`
 
 1. 在“信任关系”下，选择“信赖方应用”以查看将受 ACS 停用影响的应用列表。
 1. 对于你拥有的任何其他 ACS 命名空间，重复步骤 1-2。
@@ -131,11 +131,11 @@ https://<mynamespace>.accesscontrol.windows.net
 
 | 服务 | 指南 |
 | ------- | -------- |
-| Azure 服务总线 | [迁移到共享访问签名](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
-| Azure 服务总线中继 | [迁移到共享访问签名](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
-| Azure 托管缓存 | [迁移到用于 Redis 的 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
-| Azure DataMarket | [迁移到认知服务 API](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
-| BizTalk 服务 | [迁移到 Azure 应用服务的逻辑应用功能](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| Azure 服务总线 | [迁移到共享的访问签名](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-migrate-acs-sas) |
+| Azure 服务总线中继 | [迁移到共享的访问签名](https://docs.microsoft.com/azure/service-bus-relay/relay-migrate-acs-sas) |
+| Azure 托管缓存 | [为 Redis 将迁移到 Azure 缓存](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#which-azure-cache-offering-is-right-for-me) |
+| Azure DataMarket | [迁移到认知服务 Api](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
+| BizTalk 服务 | [将迁移到 Azure 应用服务的逻辑应用功能](https://docs.microsoft.com/azure/machine-learning/studio/datamarket-deprecation) |
 | Azure 媒体服务 | [迁移到 Azure AD 身份验证](https://azure.microsoft.com/blog/azure-media-service-aad-auth-and-acs-deprecation/) |
 | Azure 备份 | [升级 Azure 备份代理](https://docs.microsoft.com/azure/backup/backup-azure-file-folder-backup-faq) |
 
@@ -152,9 +152,9 @@ SharePoint 2013、 2016年和 SharePoint Online 客户都在云中、 在本地�
 
 | Feature | 指南 |
 | ------- | -------- |
-| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，可以[使用 Azure AD 应用库 SharePoint 本地应用](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)将 SharePoint 直接连接到 Azure AD。 |
+| 从 Azure AD 对用户进行身份验证 | 以前，Azure AD 不支持 SharePoint 进行身份验证所需的 SAML 1.1 令牌，并将 ACS 用作中介，使 SharePoint 能够与 Azure AD 令牌格式兼容。 现在，你可以[SharePoint 直接连接到 Azure AD 中使用 Azure AD 应用库 SharePoint 内部部署应用程序上](https://docs.microsoft.com/azure/active-directory/saas-apps/sharepoint-on-premises-tutorial)。 |
 | [应用身份验证和在本地 SharePoint 中的服务器到服务器身份验证](https://technet.microsoft.com/library/jj219571(v=office.16).aspx) | 不受 ACS 停用的影响；无需更改。 | 
-| [SharePoint 加载项的低信任授权（提供程序托管和 SharePoint 托管）](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
+| [SharePoint 加载项 （承载提供程序和 SharePoint 托管） 的低信任授权](https://docs.microsoft.com/sharepoint/dev/sp-add-ins/three-authorization-systems-for-sharepoint-add-ins) | 不受 ACS 停用的影响；无需更改。 |
 | [SharePoint 云混合搜索](https://blogs.msdn.microsoft.com/spses/2015/09/15/cloud-hybrid-search-service-application/) | 不受 ACS 停用的影响；无需更改。 |
 
 ### <a name="web-applications-that-use-passive-authentication"></a>使用被动身份验证的 Web 应用程序
@@ -191,7 +191,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 | 功能 | 访问控制支持 | Azure AD 支持 |
 | ---------- | ----------- | ---------------- |
-| **帐户类型** | | |
+| **类型的帐户** | | |
 | Microsoft 工作或学校帐户 | 支持 | 支持 |
 | Windows Server Active Directory 和 ADFS 帐户 |- 支持（通过与 Azure AD 租户联合） <br />- 支持（通过与 AD FS 直接联合） | 支持（只通过与 Azure AD 租户联合） | 
 | 其他企业标识管理系统帐户 |- 可能支持（通过与 Azure AD 租户联合） <br />- 支持（通过直接联合） | 支持（通过与 Azure AD 租户联合） |
@@ -207,7 +207,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | SAML 1.1 | 支持 | 预览 |
 | SAML 2.0 | 支持 | 支持 |
 | SWT | 支持 | 不支持 |
-| **自定义** | | |
+| **自定义项** | | |
 | 可自定义的主页领域发现/帐户选取 UI | 可以合并到应用的可下载代码 | 不支持 |
 | 上传自定义令牌签名证书 | 支持 | 支持 |
 | 自定义令牌中的声明 |- 传递标识提供者提供的输入声明<br />- 以声明形式获取标识提供者提供的访问令牌<br />- 根据输入声明值颁发输出声明<br />- 颁发含常数值的输出声明 |- 无法传递联合标识提供者提供的声明<br />- 无法以声明形式获取标识提供者提供的访问令牌<br />- 无法根据输入声明值颁发输出声明<br />- 可以颁发含常数值的输出声明<br />- 可以根据同步到 Azure AD 的用户属性颁发输出声明 |
@@ -242,7 +242,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 
 | 功能 | 访问控制支持 | Azure AD B2C 支持 |
 | ---------- | ----------- | ---------------- |
-| **帐户类型** | | |
+| **类型的帐户** | | |
 | Microsoft 工作或学校帐户 | 支持 | 支持（通过自定义策略）  |
 | Windows Server Active Directory 和 ADFS 帐户 | 支持（通过使用 AD FS 进行直接联合） | 支持（通过使用自定义策略实现 SAML 联合） |
 | 其他企业标识管理系统帐户 | 支持（通过使用 WS 联合身份验证进行直接联合） | 支持（通过使用自定义策略实现 SAML 联合） |
@@ -258,7 +258,7 @@ Azure AD 也未必支持与访问控制完全相同的身份验证协议。 例�
 | SAML 1.1 | 支持 | 不支持 |
 | SAML 2.0 | 支持 | 不支持 |
 | SWT | 支持 | 不支持 |
-| **自定义** | | |
+| **自定义项** | | |
 | 可自定义的主页领域发现/帐户选取 UI | 可以合并到应用的可下载代码 | 完全可自定义 UI（通过自定义 CSS） |
 | 上传自定义令牌签名证书 | 支持 | 自定义签名密钥（而不是证书），支持（通过自定义策略） |
 | 自定义令牌中的声明 |- 传递标识提供者提供的输入声明<br />- 以声明形式获取标识提供者提供的访问令牌<br />- 根据输入声明值颁发输出声明<br />- 颁发含常数值的输出声明 |- 可传递标识提供者提供的声明；某些声明要求自定义政策<br />- 无法以声明形式获取标识提供者提供的访问令牌<br />- 可以通过自定义策略根据输入声明值颁发输出声明<br />- 可以通过自定义策略颁发含常数值的输出声明 |
@@ -332,8 +332,8 @@ Other IDPs: use Auth0? https://auth0.com/docs/integrations/sharepoint.
 若要了解如何实现服务器间方案，请参阅以下资源：
 
 - [Azure AD 开发人员指南](https://aka.ms/aaddev)的服务间部分
-- [使用简单密码客户端凭据的守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
-- [使用证书客户端凭据的守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
+- [通过使用简单密码客户端凭据的守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon)
+- [通过使用证书客户端凭据的守护程序代码示例](https://github.com/Azure-Samples/active-directory-dotnet-daemon-certificate-credential)
 
 #### <a name="migrate-to-ping-identity-or-auth0"></a>迁移到 Ping 标识或 Auth0
 

@@ -4,7 +4,7 @@ description: 从 Azure VNET 连接到 Azure Data Lake Storage Gen1
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: esung22
-manager: jhubbard
+manager: mtillman
 editor: cgronlun
 ms.assetid: 683fcfdc-cf93-46c3-b2d2-5cb79f5e9ea5
 ms.service: data-lake-store
@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: a2367eff3095df82662f7b56571ecdbd966609fd
-ms.sourcegitcommit: 022cf0f3f6a227e09ea1120b09a7f4638c78b3e2
-ms.translationtype: HT
+ms.openlocfilehash: c8d028a981d7811ed2c864db5750afc83ab93b2b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52284006"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878049"
 ---
 # <a name="access-azure-data-lake-storage-gen1-from-vms-within-an-azure-vnet"></a>从 Azure VNET 中的 VM 访问 Azure Data Lake Storage Gen1
 Azure Data Lake Storage Gen1 是一种在公共 Internet IP 地址上运行的 PaaS 服务。 可以连接到公共 Internet 的服务器通常也可连接到 Azure Data Lake Storage Gen1 终结点。 默认情况下，Azure VNET 中的所有 VM 都可以访问 Internet，因此可以访问 Azure Data Lake Storage Gen1。 但是，可以将 VNET 中的 VM 配置为无法访问 Internet。 对于此类 VM，对 Azure Data Lake Storage Gen1 的访问也受到限制。 可以使用以下任何方法在 Azure VNET 中阻止 VM 的公共 Internet 访问：

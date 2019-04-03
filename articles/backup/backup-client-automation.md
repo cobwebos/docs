@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: 1025f358df5e19d7be22b3a26d671ded9f2393b9
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c2f6d8262d47a537667ef7b25333a3beff425bbe
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802620"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878683"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -26,7 +26,7 @@ ms.locfileid: "58802620"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-以下步骤引导用户创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
+以下步骤引导创建恢复服务保管库。 恢复服务保管库不同于备份保管库。
 
 1. 首次使用 Azure 备份时，必须使用 **Register-AzResourceProvider** cmdlet 将 Azure 恢复服务提供程序注册到订阅。
 
@@ -88,7 +88,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 或者，使用 PowerShell 获取下载程序：
  
  ```powershell
- $MarsAURL = 'Http://Aka.Ms/Azurebackup_Agent'
+ $MarsAURL = 'https://aka.ms/Azurebackup_Agent'
  $WC = New-Object System.Net.WebClient
  $WC.DownloadFile($MarsAURL,'C:\downloads\MARSAgentInstaller.EXE')
  C:\Downloads\MARSAgentInstaller.EXE /q
@@ -100,7 +100,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 MARSAgentInstaller.exe /q
 ```
 
-这会以所有默认选项安装代理。 安装在几分钟内在后台完成。 如果没有指定 /nu 选项，则安装结束时，会打开“Windows 更新”窗口，检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
+这以所有默认选项安装代理。 将在后台执行安装几分钟。 如果没有指定 */nu* 选项，则安装结束时，会打开“**Windows Update**”窗口，以检查是否有任何更新。 安装之后，代理会显示在已安装程序列表中。
 
 若要查看已安装的程序列表，请转到“**控制面板**”“ > **程序** > ”“**程序和功能**”。
 
@@ -108,7 +108,7 @@ MARSAgentInstaller.exe /q
 
 ### <a name="installation-options"></a>安装选项
 
-若要查看可通过命令行运行的所有选项，请使用以下命令：
+若要查看所有可通过命令行运行的所有选项，请使用以下命令：
 
 ```powershell
 MARSAgentInstaller.exe /?
@@ -116,7 +116,7 @@ MARSAgentInstaller.exe /?
 
 可用选项包括：
 
-| 选项 | 详细信息 | 默认值 |
+| 选项 | 详细信息 | 默认 |
 | --- | --- | --- |
 | /q |静默安装 |- |
 | /p:"location" |Azure 备份代理的安装文件夹路径。 |C:\Program Files\Microsoft Azure Recovery Services Agent |
@@ -174,7 +174,7 @@ Machine registration succeeded.
 
 ## <a name="networking-settings"></a>网络设置
 
-如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们会显式清除任何与代理相关的信息。
+如果 Windows 计算机通过代理服务器连接到 Internet，则也可以向代理提供代理设置。 此示例未使用代理服务器，因此我们要显式清除任何代理相关的信息。
 
 也可以针对给定的一组星期日期，使用 `work hour bandwidth` 和 `non-work hour bandwidth` 选项控制带宽使用。
 
@@ -218,11 +218,11 @@ Server properties updated successfully
 
 从 Windows Server 和客户端到 Azure 备份的所有备份由策略控制。 策略由三个部分组成：
 
-1. **备份计划** ，用于指定需要备份并与服务保持同步的时间。
+1. 一个**备份计划**，指定何时需要备份以及与服务同步。
 2. **保留计划** ，用于指定要在 Azure 中保留恢复点的时长。
-3. **文件包含/排除规范** ，用于指示应备份的内容。
+3. 一个**文件包含/排除规范**，指示应备份哪些内容。
 
-在本文档中，由于自动备份，因此假设尚未配置任何选项。 首先，使用 [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) cmdlet 创建新的备份策略。
+在本文档中，由于我们要自动备份，因此假设尚未配置任何选项。 首先，我们使用 [New-OBPolicy](https://technet.microsoft.com/library/hh770416.aspx) cmdlet 创建新的备份策略。
 
 ```powershell
 $NewPolicy = New-OBPolicy
@@ -234,8 +234,8 @@ $NewPolicy = New-OBPolicy
 
 在策略的 3 个组成部分中，第 1 个部分是备份计划，它是使用 [New-OBSchedule](https://technet.microsoft.com/library/hh770401) cmdlet 创建的。 备份计划将定义何时需要备份。 创建计划时，需要指定两个输入参数：
 
-* 应运行备份的“星期日期”。 可以只选一天或选择一周的每天运行备份作业，或选择星期日期的任意组合。
-* **日期时间** 。 最多可以定义一天的 3 个不同日期时间来触发备份
+* 应运行备份的**星期日期**。 可以只选一天或选择一周的每天运行备份作业，或选择星期日期的任意组合。
+* 应运行备份的**日期时间**。 最多可以定义一天的 3 个不同日期时间来触发备份
 
 例如，可以配置在每个星期六和星期日下午 4 点运行备份策略。
 
@@ -296,7 +296,7 @@ PolicyState     : Valid
 
 可以在 New-OBFileSpec 命令中使用 -NonRecursive 标志来完成后一种指定。
 
-在以下示例中，备份卷 C: 和 D:，并排除 Windows 文件夹和任何临时文件夹中的操作系统二进制文件。 为此，我们将使用 [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) cmdlet 创建两个文件规范 - 一个用于包含，一个用于排除。 创建文件规范后，使用 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) cmdlet 将它们与策略相关联。
+在以下示例中，我们要备份卷 C: 和 D:，并排除 Windows 文件夹和任何临时文件夹中的操作系统二进制文件。 为此，我们将使用 [New-OBFileSpec](https://technet.microsoft.com/library/hh770408) cmdlet 创建两个文件规范 - 一个用于包含，一个用于排除。 创建文件规范后，使用 [Add-OBFileSpec](https://technet.microsoft.com/library/hh770424) cmdlet 将它们与策略相关联。
 
 ```powershell
 $Inclusions = New-OBFileSpec -FileSpec @("C:\", "D:\")
@@ -402,7 +402,7 @@ Get-OBPolicy | Remove-OBPolicy
 Microsoft Azure Backup Are you sure you want to remove this backup policy? This will delete all the backed up data. [Y] Yes [A] Yes to All [N] No [L] No to All [S] Suspend [?] Help (default is "Y"):
 ```
 
-使用 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 可以提交策略对象。 这也会提示用户确认。 若要跳过确认，请在 cmdlet 中请使用 `-Confirm:$false` 标志。
+使用 [Set-OBPolicy](https://technet.microsoft.com/library/hh770421) cmdlet 可以提交策略对象。 系统会提示确认。 若要跳过确认，请在 cmdlet 中请使用 `-Confirm:$false` 标志。
 
 ```powershell
 Set-OBPolicy -Policy $NewPolicy
@@ -535,7 +535,7 @@ The backup operation completed successfully.
 
 ### <a name="picking-the-source-volume"></a>选取源卷
 
-若要从 Azure 备份还原某个项，需要先识别该项的源。 由于我们要在 Windows Server 或 Windows 客户端的上下文中执行命令，因此已识别了计算机。 识别源的下一步是识别它所在的卷。 运行 [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) cmdlet 可以检索正在从此计算机备份的卷或源的列表。 此命令返回从此服务器/客户端备份的所有源的数组。
+若要从 Azure 备份还原某个项，需要先识别该项的源。 由于我们要在 Windows Server 或 Windows 客户端的上下文中执行命令，因此已识别了计算机。 识别源的下一步是识别它所在的卷。 运行 [Get-OBRecoverableSource](https://technet.microsoft.com/library/hh770410) cmdlet 可以检索正在从此计算机备份的卷或源的列表。 此命令将返回从此服务器/客户端备份的所有源的数组。
 
 ```powershell
 $Source = Get-OBRecoverableSource
@@ -554,7 +554,7 @@ ServerName : myserver.microsoft.com
 
 ### <a name="choosing-a-backup-point-from-which-to-restore"></a>选择要从中还原的备份点
 
-结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们选择源卷 *D:* 的最新备份点，并使用它还原特定的文件。
+结合适当的参数运行 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet 可检索备份点列表。 在本示例中，我们将选择源卷 *D:* 的最新备份点，并使用它来恢复特定的文件。
 
 ```powershell
 $Rps = Get-OBRecoverableItem -Source $Source[1]
@@ -588,9 +588,9 @@ ItemLastModifiedTime :
 
 ### <a name="choosing-an-item-to-restore"></a>选择要还原的项
 
-为了识别要还原的确切文件或文件夹，请以递归方式使用 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet。 这样，只需使用 `Get-OBRecoverableItem`便可浏览文件夹层次结构。
+为了识别要还原的确切文件或文件夹，请以递归方式使用 [Get-OBRecoverableItem](https://technet.microsoft.com/library/hh770399.aspx) cmdlet。 这样，只需使用 `Get-OBRecoverableItem` 便可浏览文件夹层次结构。
 
-在本示例中，如果我们要还原文件 finances.xls，可以使用对象 `$FilesFolders[1]` 引用该文件。
+在本示例中，如果我们要还原文件 *finances.xls*，可以使用对象 `$FilesFolders[1]` 来引用该文件。
 
 ```powershell
 $FilesFolders = Get-OBRecoverableItem $Rps[0]
@@ -639,7 +639,7 @@ ItemSize : 96256
 ItemLastModifiedTime : 21-Jun-14 6:43:02 AM
 ```
 
-也可以使用 ```Get-OBRecoverableItem``` cmdlet 来搜索要还原的项。 在本示例中，为了搜索 *finances.xls* ，我们可以运行以下命令来获取该文件上的句柄：
+也可以使用 ```Get-OBRecoverableItem``` cmdlet 来搜索要还原的项。 在本示例中，为了搜索 *finances.xls*，我们可以运行以下命令来获取该文件上的句柄：
 
 ```powershell
 $Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -SearchString "finance*"
@@ -647,7 +647,7 @@ $Item = Get-OBRecoverableItem -RecoveryPoint $Rps[0] -Location "D:\MyData" -Sear
 
 ### <a name="triggering-the-restore-process"></a>触发还原过程
 
-为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 C:\temp。此外，我们假设要跳过目标文件夹 C:\temp 中已存在的文件。若要创建此类恢复选项，请使用以下命令：
+为了触发还原过程，首先需要指定恢复选项。 这可以使用 [New-OBRecoveryOption](https://technet.microsoft.com/library/hh770417.aspx) cmdlet 来完成。 在本示例中，我们假设要将文件还原到 *C:\temp*。此外，我们假设要跳过目标文件夹 *C:\temp* 中已存在的文件。若要创建此类恢复选项，请使用以下命令：
 
 ```powershell
 $RecoveryOption = New-OBRecoveryOption -DestinationPath "C:\temp" -OverwriteType Skip
@@ -679,7 +679,7 @@ The recovery operation completed successfully.
 若要从计算机中卸载代理二进制文件，请注意以下部分后果：
 
 * 这会从计算机中删除文件筛选器，并停止跟踪更改。
-* 所有的策略信息将从计算机中删除，但服务中会继续存储这些策略信息。
+* 将从计算机中删除所有策略信息，但服务中会继续存储这些策略信息。
 * 将删除所有备份计划，且不会进一步创建备份。
 
 不过，Azure 中存储的数据会根据你设置的保留策略继续保留。 较旧的恢复点会自动过时。
@@ -688,7 +688,7 @@ The recovery operation completed successfully.
 
 围绕 Azure 备份代理、策略和数据源的所有管理工作都可通过 Azure PowerShell 远程完成。 要远程管理的计算机需要经过适当的准备。
 
-默认情况下，WinRM 服务已配置为手动启动。 必须将启动类型设置为“自动”，并且应该启动该服务。 若要确认 WinRM 服务正在运行，“状态”属性的值应该是“正在运行” 。
+默认情况下，WinRM 服务已配置为手动启动。 必须将启动类型设置为“自动”，并且应该启动该服务。 若要确认 WinRM 服务正在运行，“状态”属性的值应该是“*正在运行*”。
 
 ```powershell
 Get-Service -Name WinRM
@@ -733,4 +733,4 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 有关适用于 Windows Server/客户端的 Azure 备份的详细信息，请参阅
 
 * [Azure 备份简介](backup-introduction-to-azure-backup.md)
-* [备份 Windows Server](backup-configure-vault.md)
+* [备份 Windows 服务器](backup-configure-vault.md)

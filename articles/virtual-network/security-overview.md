@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: 了解网络和应用程序安全组。 安全组可以帮助你筛选 Azure 资源之间的网络流量。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: malopMSFT
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
-ms.author: jdial
-ms.openlocfilehash: b90087221de71ca7f627b9ea1717b423cfcf457b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: malop;kumud
+ms.openlocfilehash: 9d45f3a7d20545ac7b66d27505078f21f06adddc
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535710"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881845"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -210,7 +210,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 可以通过查看网络接口的[有效安全规则](virtual-network-network-interface.md#view-effective-security-rules)，轻松查看已应用到网络接口的聚合规则。 还可以使用 Azure 网络观察程序中的 [IP 流验证](../network-watcher/diagnose-vm-network-traffic-filtering-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json)功能来确定是否允许发往或发自网络接口的通信。 IP 流验证会告知你系统是允许还是拒绝通信，以及哪条网络安全规则允许或拒绝该流量。
 
 > [!NOTE]
-> 网络安全组关联到子网或关联到部署在经典部署模型中的虚拟机和云服务，而不是关联到资源管理器部署模型中的网络接口。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+> 网络安全组是关联到子网或虚拟机和云服务部署在经典部署模型和子网或 Resource Manager 部署模型中的网络接口。 若要详细了解 Azure 部署模型，请参阅[了解 Azure 部署模型](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 > [!TIP]
 > 建议将网络安全组关联到子网或网络接口，但不要二者都关联，除非你有特定的理由来这样做。 由于关联到子网的网络安全组中的规则可能与关联到网络接口的网络安全组中的规则冲突，因此可能会出现意外的必须进行故障排除的通信问题。
