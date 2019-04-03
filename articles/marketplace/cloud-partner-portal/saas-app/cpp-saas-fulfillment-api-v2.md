@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 81213d1f7cfeb7ea10cdadfb124047ecb76aa7d4
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58352079"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878020"
 ---
 # <a name="saas-fulfillment-api"></a>SaaS 执行 API
 
@@ -61,7 +61,7 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 
 ![API 调用时由 SaaS 服务启动更新。](./media/saas-update-api-v2-calls-from-saas-service-a.png) 
 
-#### <a name="suspended"></a>Suspended
+#### <a name="suspended"></a>已挂起
 
 此状态表明尚未收到的客户的付款。 通过策略，我们将提供客户之前 unfulfilling 订阅的宽限期。 当订阅处于此状态： 
 
@@ -648,7 +648,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 |                    |                   |
 |  ---------------   |  ---------------  |
-|  Content-Type      |  ` application/json`   |
+|  Content-Type      |  `application/json`   |
 |  x-ms-requestid    |   唯一的字符串值，用于跟踪来自客户端的请求，最好是 GUID。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     | JSON Web 令牌 (JWT) 持有者令牌。  |

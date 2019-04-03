@@ -1,25 +1,25 @@
 ---
 title: IoT 预览版的 Azure 安全中心的身份验证方法 |Microsoft Docs
 description: 使用 Azure 安全中心的 IoT 服务时，了解有关可用的不同的身份验证方法。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 10b38f20-b755-48cc-8a88-69828c17a108
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: ec87c2b65728d8ac29daa90de36271e24cd85c0e
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d1f9d77d1f87e8d201e2cb034401bb3cae14f41b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758384"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862907"
 ---
 # <a name="security-agent-authentication-methods"></a>安全代理身份验证方法 
 
@@ -64,7 +64,7 @@ AzureIoTSecurity 代理来执行身份验证这两种方法：
 |参数|描述|选项|
 |---------|---------------|---------------|
 |**identity**|身份验证模式| **模块**或**设备**|
-|type|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
+|**type**|身份验证类型|**SymmetricKey**或**SelfSignedCertificate**|
 |**filePath**|包含的证书或对称密钥的文件的绝对完整路径| |
 |**gatewayHostname**|IoT 中心的 FQDN|示例：ContosoIotHub.azure-devices.net|
 |**deviceId**|设备 ID|示例：MyDevice1|

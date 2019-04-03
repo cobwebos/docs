@@ -1,16 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b03a95c4a603ecf59aaaa8c831842117425ebf0a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448459"
 documentType: LandingData
 title: 流量管理器
 metadata:
-  document_id: 
+  document_id: null
   title: 流量管理器
-  meta.description: Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.
+  meta.description: 'Learn how to use Traffic Manager to route incoming traffic for optimal application performance and reliability. Quickstarts, tutorials, samples, and more, show how to manage traffic to Azure or external service endpoints.'
   services: traffic-manager
   author: KumudD
   manager: twooley
@@ -24,74 +18,74 @@ metadata:
 abstract:
   description: 了解如何使用 Azure 流量管理器。 快速入门、教程、示例等内容说明了如何管理传入流量以实现最佳应用程序性能，以及如何将流量分配到 Azure 或外部服务终结点。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何使用流量管理器管理传送到服务终结点的 Web 流量。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure 门户
-      href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_powershell.svg
-      text: Azure PowerShell
-      href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何基于流量管理器中提供的不同路由方法路由流量。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用流量管理器管理传送到服务终结点的 Web 流量。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure 门户
+            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_powershell.svg'
+            text: Azure PowerShell
+            href: /azure/traffic-manager/quickstart-create-traffic-manager-profile-powershell
+  - title: 分步教程
     items:
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">根据终结点的地理位置路由流量</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">路由流量以降低延迟</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">将流量分配到一组终结点</a>
-    - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">将流量路由到优先终结点</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">使用加权的终结点控制流量</a>
-    - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">根据用户的子网路由流量</a>
-- title: 免费 Pluralsight 视频培训
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 了解如何基于流量管理器中提供的不同路由方法路由流量。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-geographic-routing-method">根据终结点的地理位置路由流量</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-improve-website-response">路由流量以降低延迟</a>
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-weighted-routing-method">将流量分配到一组终结点</a>
+          - html: <a href="/azure/traffic-manager/traffic-manager-configure-priority-routing-method">将流量路由到优先终结点</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-weighted-endpoint-routing">使用加权的终结点控制流量</a>
+          - html: <a href="/azure/traffic-manager/tutorial-traffic-manager-subnet-routing">根据用户的子网路由流量</a>
+  - title: 免费 Pluralsight 视频培训
     items:
-    - title: Azure 管理员
-      href: https://go.microsoft.com/fwlink/?linkid=2012827
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012827
-    - title: Azure 解决方案架构师
-      href: https://go.microsoft.com/fwlink/?linkid=2012824
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://go.microsoft.com/fwlink/?linkid=2012824
-    - title: 面向 AWS 管理员的 Azure 管理
-      href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents
-- title: 示例
-  items:
-  - type: paragraph
-    text: 常见任务的脚本示例。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 管理员
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012827'
+          - title: Azure 解决方案架构师
+            href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://go.microsoft.com/fwlink/?linkid=2012824'
+          - title: 面向 AWS 管理员的 Azure 管理
+            href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/azure-administration-aws-administrators/table-of-contents'
+  - title: 示例
     items:
-    - html: <a href="/azure/traffic-manager/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/traffic-manager/powershell-samples">PowerShell</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 常见任务的脚本示例。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/traffic-manager/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/traffic-manager/powershell-samples">PowerShell</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="https://docs.microsoft.com/powershell/module/azurerm.trafficmanager/#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/trafficmanager/">REST API 参考</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.trafficmanager/#traffic_manager">PowerShell</a></p><p><a href="/cli/azure/network/traffic-manager">Azure CLI</a></p>'
+          - title: Languages
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/virtual-network?view=azure-dotnet">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.trafficmanager">Java</a></p><p><a href="https://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/overview/azure/traffic-manager">Python</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/trafficmanager/">REST API 参考</a></p>
