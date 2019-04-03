@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: 841e00825b243d883303121022918efd51397f04
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 54c8e44685bb69e845c819b0c2846b188a771d71
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757423"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878224"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>预览-创建和配置使用虚拟节点上使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集
 
@@ -21,7 +21,7 @@ ms.locfileid: "58757423"
 > [!IMPORTANT]
 > AKS 预览版功能是自助服务和选择中。 预览版提供从我们的社区收集反馈和 bug。 但是，它们不受 Azure 技术支持。 如果创建群集，或将这些功能添加到现有群集，该群集是不受支持，直到此功能不再处于预览状态，为公开上市 (GA) 发布。
 >
-> 如果遇到问题的预览功能[打开在 AKS GitHub 存储库问题][ aks-github] bug 标题中的预览功能的名称。
+> 如果遇到问题的预览功能[打开在 AKS GitHub 存储库问题][aks-github] bug 标题中的预览功能的名称。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -47,7 +47,7 @@ Microsoft.ContainerInstance  Registered
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability-limitations"></a>区域可用性的限制
+## <a name="regional-availability"></a>区域可用性
 
 虚拟节点部署支持以下区域：
 
@@ -162,13 +162,7 @@ az aks create \
 
 几分钟后，该命令完成并返回有关群集的 JSON 格式信息。
 
-## <a name="enable-virtual-nodes"></a>启用虚拟节点
-
-若要提供其他功能，虚拟节点连接器将使用 Azure CLI 扩展。 在可以启用虚拟节点连接器之前，请先使用 [az extension add][az-extension-add] 命令安装扩展：
-
-```azurecli-interactive
-az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
-```
+## <a name="enable-virtual-nodes-addon"></a>启用虚拟节点外接程序
 
 若要启用虚拟节点，现在使用 [az aks enable-addons][az-aks-enable-addons] 命令。 以下示例使用上一步中创建的名为 myVirtualNodeSubnet  的子网：
 
@@ -179,6 +173,11 @@ az aks enable-addons \
     --addons virtual-node \
     --subnet-name myVirtualNodeSubnet
 ```
+> [!NOTE]
+> 如果你收到了有关虚拟找不到节点的错误，可能需要安装其 CLI 扩展 
+> ```azurecli-interactive
+> az extension add --source https://aksvnodeextension.blob.core.windows.net/aks-virtual-node/aks_virtual_node-0.2.0-py2.py3-none-any.whl
+> ```
 
 ## <a name="connect-to-the-cluster"></a>连接至群集
 
