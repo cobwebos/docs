@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: eded5b2b8715d6a09f7c1a50012b262cec17bfb1
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: bc3e2955049188b0794367d5391762f5eb50b1c0
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762746"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850191"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>如何在 Azure 中更改 SQL Server 虚拟机的许可模型
 本文介绍如何在 Azure 中使用新的 SQL VM 资源提供程序 **Microsoft.SqlVirtualMachine** 来更改 SQL Server 虚拟机的许可模型。 有两个许可模型为虚拟机 (VM) 托管 SQL Server 的即用即付，并自带许可 (BYOL)。 现在可以通过 PowerShell 或 Azure CLI 对 SQL Server VM 使用哪个许可模型进行修改。 
@@ -31,6 +31,7 @@ ms.locfileid: "58762746"
 
 在两个许可证模型之间进行切换不会导致停机，不会重启 VM，不会增加费用（事实上，激活 AHB 会降低费用），并且会立即生效。 
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="remarks"></a>备注
 
@@ -39,7 +40,7 @@ ms.locfileid: "58762746"
  - 当前仅对公有云安装启用此功能。
  - 当注册资源提供程序的自定义 SQL Server VM 映像，指定许可证类型 = AHUB。 将保留该许可证类型为空白，也可指定 PAYG 将导致注册失败。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 使用 SQL VM 资源提供程序需要安装 SQL IaaS 扩展。 因此，若要继续利用 SQL VM 提供程序，需要：
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)。 
@@ -101,9 +102,9 @@ az sql vm create -n <VMName> -g <ResourceGroupName> -l <VMLocation>
 
 ```powershell
 # Register your existing SQL Server VM with the new resource provider
-# example: $vm=Get-AzureRmVm -ResourceGroupName AHBTest -Name AHBTest
-$vm=Get-AzureRmVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
-New-AzureRmResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
+# example: $vm=Get-AzVm -ResourceGroupName AHBTest -Name AHBTest
+$vm=Get-AzVm -ResourceGroupName <ResourceGroupName> -Name <VMName>
+New-AzResource -ResourceName $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location -ResourceType Microsoft.SqlVirtualMachine/sqlVirtualMachines -Properties @{virtualMachineResourceId=$vm.Id}
 ```
 
 ## <a name="change-licensing-model"></a>更改授权模型

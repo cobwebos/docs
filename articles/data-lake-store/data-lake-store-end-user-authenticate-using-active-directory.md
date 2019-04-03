@@ -1,22 +1,22 @@
 ---
-title: 使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证 | Microsoft Docs
+title: 最终用户身份验证：使用 Azure Active Directory 的 azure 数据湖存储 Gen1 |Microsoft Docs
 description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 6f7b812f32eda0c671b1ad1101b13a1290df0482
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: c0fe63e395ee08cb65e9bbbadc4ce1f03032ce95
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49954748"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880077"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终身份验证
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 * 设置委派权限
 
 
-## <a name="step-1-create-an-active-directory-native-application"></a>步骤 1：创建 Active Directory 本机应用程序
+## <a name="step-1-create-an-active-directory-native-application"></a>步骤 1：创建一个 Active Directory 本机应用程序
 
 创建并配置 Azure AD 本机应用程序，用于使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证。 有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -118,8 +118,8 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 ## <a name="next-steps"></a>后续步骤
 在本文中，创建了一个 Azure AD 本机应用程序，并使用 .NET SDK、Java SDK 和 REST API 等在创作的客户端应用程序中收集了所需的信息。现在可以转到以下文章，它们讨论了如何使用 Azure AD Web 应用程序先进行 Data Lake Storage Gen1 身份验证，再在存储中执行其他操作。
 
-* [使用 Java SDK 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-java-sdk.md)
-* [使用 .NET SDK 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)
-* [使用 Python 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-python.md)
-* [使用 REST API 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-rest-api.md)
+* [最终用户身份使用数据湖存储 Gen1 使用 Java SDK](data-lake-store-end-user-authenticate-java-sdk.md)
+* [使用数据湖存储 Gen1 的最终用户身份验证使用.NET SDK](data-lake-store-end-user-authenticate-net-sdk.md)
+* [最终用户身份验证数据湖存储 Gen1 使用 Python](data-lake-store-end-user-authenticate-python.md)
+* [使用数据湖存储 Gen1 的最终用户身份验证使用 REST API](data-lake-store-end-user-authenticate-rest-api.md)
 

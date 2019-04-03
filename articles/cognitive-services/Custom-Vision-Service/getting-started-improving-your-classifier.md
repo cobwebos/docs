@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
-ms.openlocfilehash: 13c0346324ae8e3cf3485985a9014f9999230630
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 35f83832b0ceb7507b39095e9cc974d82a480c69
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351433"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883067"
 ---
 # <a name="how-to-improve-your-classifier"></a>如何改进分类器
 
@@ -72,6 +72,15 @@ ms.locfileid: "58351433"
 * __样式：__ 提供类相同、样式不同的图像（例如，不同品种的同一种水果）。 但是，如果对象的样式有很大的差异（例如，“米老鼠”与现实的老鼠），我们建议将它们标记为单独的类，以更好地表示其独特特征。
 
     ![样式图像示例](./media/getting-started-improving-your-classifier/style.png)
+
+## <a name="negative-images"></a>底片图像
+
+在项目中，有时可能需要添加负示例来使分类器更准确。 负示例是与任何其他标记不匹配的示例。 上传这些图像时，请向其添加特殊的负标签。
+
+> [!NOTE]
+> 自定义影像服务支持某些自动负片图像处理。 例如，如果要生成葡萄与香蕉的分类器并提交一张鞋子图像用于预测，则分类器对于该图像的葡萄与香蕉评分均应接近 0%。
+> 
+> 另一方面，如果负片图像仅仅是定型中使用的图像的变量，由于相似性很大，模型很可能将负片图像分类为标记类。 例如，如果具有一个橙子与葡萄柚分类器，并且输入克莱门氏小柑橘的图像，则它可能将克莱门氏小柑橘分类为橙子，因为克莱门氏的许多特征类似于橙子。 如果负片图像具有这种性质，建议在训练期间创建一个或多个单独的标签（例如，“其他”）并使用此标签标记负片图像，使模型更好地区分这些类。
 
 ## <a name="use-prediction-images-for-further-training"></a>使用预测图像进一步训练
 

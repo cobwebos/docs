@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: jdial
-ms.openlocfilehash: e32bc2f4697b5ac32993a5da66e5c38cb7add03f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200576"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880417"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -92,7 +92,7 @@ VNet 对等互连和全局 VNet 对等互连 （预览版） 支持网关传输�
 
 利用虚拟网络对等互连的入口和出口流量会产生少许费用。 有关 VNet 对等互连和全局 VNet 对等互连定价的详细信息，请参阅[定价页面](https://azure.microsoft.com/pricing/details/virtual-network)。
 
-网关传输是一种对等互连属性，可以让一个虚拟网络利用对等互连的虚拟网络中的 VPN 网关进行跨界连接或 VNet 到 VNet 连接。 在此场景中通过远程网关传递的流量遵守 [VPN 网关费用](https://azure.microsoft.com/pricing/details/vpn-gateway/)并且不会导致 [VNet 对等互连费用](https://azure.microsoft.com/pricing/details/virtual-network)。 例如，如果 VNetA 具有用于本地连接的 VPN 网关，并且 VNetB 对等互连到配置了合适属性的 VNetA，则从 VNetB 发送到本地的流量将按 VPN 网关定价仅收取出口费用。 不会产生 VNet 对等互连费用。 了解如何[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+网关传输是一种对等互连属性，可以让一个虚拟网络利用对等互连的虚拟网络中的 VPN 网关进行跨界连接或 VNet 到 VNet 连接。 在此场景中通过远程网关传递的流量遵守 [VPN 网关费用](https://azure.microsoft.com/pricing/details/vpn-gateway/)并且不会导致 [VNet 对等互连费用](https://azure.microsoft.com/pricing/details/virtual-network)。 例如，如果 VNetA 具有本地连接的 VPN 网关，并且 VNetB 对等互连到 VNetA 与配置的相应属性，从 VNetB 到的本地流量仅收取每个 VPN 网关定价出口。 不会产生 VNet 对等互连费用。 了解如何[针对虚拟网络对等互连配置 VPN 网关传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="next-steps"></a>后续步骤
 

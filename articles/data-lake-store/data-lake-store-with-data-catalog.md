@@ -3,21 +3,21 @@ title: 在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据 | 
 description: 在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
 services: data-lake-store,data-catalog
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 3294d91e-a723-41b5-9eca-ace0ee408a4b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: bc9d6f8f078860000d7a2a38bf4aa1ce00ff450e
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533436"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877878"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
 本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。
@@ -74,10 +74,10 @@ ms.locfileid: "57533436"
      ![在目录中搜索数据](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "在目录中搜索数据")
 1. 现在可以执行向数据添加批注和文档等操作。 有关详细信息，请参阅以下链接。
 
-    * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
-    * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
+    * [批注数据目录中的数据源](../data-catalog/data-catalog-how-to-annotate.md)
+    * [数据目录中的文档数据源](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>另请参阅
-* [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
-* [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
-* [将 Data Lake Storage Gen1 与其他 Azure 服务集成](data-lake-store-integrate-with-other-services.md)
+* [批注数据目录中的数据源](../data-catalog/data-catalog-how-to-annotate.md)
+* [数据目录中的文档数据源](../data-catalog/data-catalog-how-to-documentation.md)
+* [与其他 Azure 服务集成数据湖存储 Gen1](data-lake-store-integrate-with-other-services.md)

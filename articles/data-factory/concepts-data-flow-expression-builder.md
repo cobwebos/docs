@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 9267360394568f0f9259a3c818b21f4e585fd958
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7e80455a2b83c034bea2fbdf774e5a175aed51a4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543723"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885734"
 ---
 # <a name="mapping-data-flow-expression-builder"></a>映射数据流表达式生成器
 
@@ -51,7 +51,7 @@ Azure 数据工厂映射数据流中提供了表达式框，可在其中输入�
 
 ## <a name="regular-expressions"></a>正则表达式
 
-Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器会尝试将反斜杠 (\) 解释为转义字符序列。 在正则表达式中使用反斜杠时，请将整个正则表达式括在居中圆点符号 ` ` 中，或使用双反斜杠。
+Azure 数据工厂数据流表达式语言（[此处提供了完整参考文档](https://aka.ms/dataflowexpressions)）支持包含正则表达式语法的函数。 使用正则表达式函数时，表达式生成器将尝试解释反斜杠 (\\) 作为转义字符序列。 当正则表达式中使用反斜杠，可以将整个正则表达式以计时周期 (\`) 或使用双反斜杠。
 
 使用居中圆点符号的示例
 

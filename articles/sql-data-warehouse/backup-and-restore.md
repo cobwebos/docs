@@ -10,16 +10,16 @@ ms.subservice: manage
 ms.date: 03/01/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 55874d261ac453d559975f25b2272319cdc6a7db
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 14e7d8cfdaa9ac59a5a43881283fac6e2c9ee08f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448011"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846994"
 ---
 # <a name="backup-and-restore-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中的备份和还原
 
-了解如何使用备份和还原 Azure SQL 数据仓库中。 使用数据仓库还原点来恢复或复制数据仓库到主要区域中的之前的状态。 使用数据仓库异地冗余备份可还原到不同的地理区域。
+了解如何在 Azure SQL 数据仓库中使用备份和还原。 使用数据仓库还原点来恢复或复制数据仓库到主要区域中的之前的状态。 使用数据仓库异地冗余备份可还原到不同的地理区域。
 
 ## <a name="what-is-a-data-warehouse-snapshot"></a>什么是数据仓库快照
 
@@ -29,7 +29,7 @@ ms.locfileid: "58448011"
 
 ## <a name="automatic-restore-points"></a>自动还原点
 
-快照是服务的创建的内置功能的还原点。 不需要启用此功能。 目前用户无法删除自动还原点，因为服务使用这些还原点来维持恢复 SLA。
+快照是创建还原点的服务的内置功能。 不需要启用此功能。 目前用户无法删除自动还原点，因为服务使用这些还原点来维持恢复 SLA。
 
 SQL 数据仓库为数据仓库创建全天快照，并创建可用 7 天的还原点。 无法更改此保留期。 SQL 数据仓库支持八小时恢复点目标 (RPO)。 可从过去 7 天创建的任一快照还原主要区域中的数据仓库。
 
@@ -44,14 +44,14 @@ order by run_id desc
 
 ## <a name="user-defined-restore-points"></a>用户定义的还原点
 
-此功能，可以手动触发器快照之前和之后大型修改创建数据仓库的还原点。 此功能可确保还原点是逻辑上保持一致，这提供了额外的数据保护发生的任何工作负荷中断或用户错误时快速恢复时间。 用户定义的还原点可用 7 天，7 天后系统会自动将其删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前[删除](https://go.microsoft.com/fwlink/?linkid=875299)。 可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqldatabaserestorepoint#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
+使用此功能，可以在大型修改之前和之后手动触发快照，以便创建数据仓库的还原点。 此功能可确保在出现工作负荷中断或用户错误的情况下，还原点在逻辑上是一致的，这样可以提供额外的数据保护，缩短恢复时间。 用户定义的还原点可用 7 天，7 天后系统会自动将其删除。 无法更改用户定义的还原点的保留期。 无论在任何时间点，均会保证 **42 个用户定义的还原点**，因此，它们必须在创建另一个还原点之前[删除](https://go.microsoft.com/fwlink/?linkid=875299)。 可以通过 [PowerShell](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaserestorepoint#examples) 或 Azure 门户触发快照来创建用户定义的还原点。
 
 > [!NOTE]
 > 如需将还原点保留 7 天以上，请在[此处](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/35114410-user-defined-retention-periods-for-restore-points)为此功能投票。 此外，可以创建用户定义的还原点，然后从新建的还原点还原到新数据仓库。 还原后，数据仓库将会联机，可以无限期将其暂停，以节省计算成本。 暂停的数据库按 Azure 高级存储费率收取存储费用。 如需已还原数据仓库的活动副本，可以执行恢复，只需花费几分钟时间。
 
 ### <a name="restore-point-retention"></a>还原点保留期
 
-还原点保留期以下列表详细信息：
+下面列出了还原点保留期的详细信息：
 
 1. SQL 数据仓库会在达到 7 天保留期**并且**总共至少有 42 个还原点（包括用户定义的还原点和自动还原点）时删除还原点
 2. 数据仓库暂停时不会创建快照

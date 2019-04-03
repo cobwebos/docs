@@ -14,12 +14,12 @@ ms.date: 07/13/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b5eb46b845bebbb81dce6aadb9d97af08955df3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096939"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878088"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
 
@@ -209,15 +209,18 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 
 
 1. 以租户管理员身份连接到 Azure AD Directory：Connect-MsolService。
-2.  创建新用户主体：` New-MsolUser
-        -UserPrincipalName elwoodf1@contoso.com
-        -ImmutableId ABCDEFG1234567890
-        -DisplayName "Elwood Folk"
-        -FirstName Elwood 
-        -LastName Folk 
-        -AlternateEmailAddresses "Elwood.Folk@contoso.com" 
-        -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
-        -UsageLocation "US" ` 
+2.  创建新用户主体：
+    ```powershell
+    New-MsolUser
+      -UserPrincipalName elwoodf1@contoso.com
+      -ImmutableId ABCDEFG1234567890
+      -DisplayName "Elwood Folk"
+      -FirstName Elwood 
+      -LastName Folk 
+      -AlternateEmailAddresses "Elwood.Folk@contoso.com" 
+      -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
+      -UsageLocation "US" 
+    ```
 
 有关“New-MsolUser”签出的详细信息，请参阅：[https://technet.microsoft.com/library/dn194096.aspx](https://technet.microsoft.com/library/dn194096.aspx)
 
@@ -277,4 +280,4 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 
 - [使用 Azure AD Connect 进行 Active Directory 联合身份验证服务的管理和自定义](how-to-connect-fed-management.md)
 - [Azure AD 联合身份验证兼容性列表](how-to-connect-fed-compatibility.md)
-- [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)
+- [Azure AD Connect 自定义安装](how-to-connect-install-custom.md)

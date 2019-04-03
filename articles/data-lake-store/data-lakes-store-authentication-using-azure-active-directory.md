@@ -3,24 +3,24 @@ title: 使用 Azure Active Directory 在 Azure Data Lake Storage Gen1 中进行�
 description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: b74696be433b00a5afb3416295b6317975aa6873
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: f83cf183bee930dd07c707b0eb49125cecd70b84
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967653"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884629"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证
 
-Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。 编写用于 Data Lake Storage Gen1 的应用程序之前，必须首先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。
+Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。 编写用于 Data Lake Storage Gen1 的应用程序之前，必须先决定使用 Azure Active Directory (Azure AD) 对应用程序进行身份验证的方式。
 
 ## <a name="authentication-options"></a>身份验证选项
 
@@ -42,8 +42,8 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 |服务到服务（使用客户端密钥）         |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-client-secret)** |    **[✔*](data-lake-store-service-to-service-authenticate-java.md)**    |    ✔      |       ✔      |    **[✔*](data-lake-store-service-to-service-authenticate-python.md#service-to-service-authentication-with-client-secret-for-account-management)**     |    **[✔*](data-lake-store-service-to-service-authenticate-rest-api.md)**    |
 |服务到服务（使用客户端证书） |    **[✔*](data-lake-store-service-to-service-authenticate-net-sdk.md#service-to-service-authentication-with-certificate)**        |    ✔    |    ✔      |       ✔      |    ✔     |    ✔    |
 
-<i>* 单击 <b>✔\*</b> 符号。它是一个链接。</i><br>
-<i>** MFA 代表多重身份验证</i>
+<i>* 单击<b>✔\* </b>符号。 它是一个链接。</i><br>
+<i>* * MFA 代表多重身份验证</i>
 
 有关如何使用 Azure Active Directory 进行身份验证的详细信息，请参阅 [Authentication Scenarios for Azure Active Directory](../active-directory/develop/authentication-scenarios.md)（Azure Active Directory 的身份验证方案）。
 

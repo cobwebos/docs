@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: 77cbc73c6c6aef40c482b0cfe456dcbd4b7e85d0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58435306"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886448"
 ---
 # <a name="dynamic-packaging"></a>动态打包
 
@@ -26,7 +26,7 @@ Microsoft Azure 媒体服务可用于向多种客户端技术（例如，iOS 和
 
 [流式处理终结点](streaming-endpoint-concept.md)是用于向客户端播放器提供媒体内容的媒体服务中的动态打包服务。 动态打包是一项功能提供对所有的标准**流式处理终结点**（标准或高级）。 
 
-若要充分利用**动态打包**，你需要准备**资产**具有一组自适应比特率 MP4 文件和所需的 Media Services 动态打包的流式处理配置文件。 若要获取的文件的一种方法是使用媒体服务将夹层 （源） 文件编码。 若要使视频编码资产中播放的客户端，您必须创建**流式处理定位符**和生成流 Url。 然后，根据流式处理客户端清单 （HLS、 DASH 或平滑流） 中指定的格式，具有选定的协议接收流。
+若要充分利用**动态打包**，你需要准备**资产**具有一组自适应比特率 MP4 文件和所需的 Media Services 动态打包的流式处理配置文件。 获取这些文件的一种方式是使用媒体服务对夹层（源）文件进行编码。 若要使视频编码资产中播放的客户端，您必须创建**流式处理定位符**和生成流 Url。 然后，根据流式处理客户端清单 （HLS、 DASH 或平滑流） 中指定的格式，具有选定的协议接收流。
 
 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。 
 
@@ -60,7 +60,7 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 下面是实时传送视频流工作流的步骤：
 
 1. 创建[实时事件](live-events-outputs-concept.md)。
-1. 获取引入 URL 并配置本地编码器以使用 URL 发送贡献源。
+1. 获取的引入 URL，并配置本地编码器使用的 URL 发送贡献源。
 1. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 1. 创建一个新**资产**。
 1. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
@@ -196,9 +196,9 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 使用动态筛选来控制跟踪、 格式、 比特率和演示文稿时间窗口，发送到参与方的数目。 有关详细信息，请参阅[筛选器和动态清单](filters-dynamic-manifest-overview.md)。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
 
 ## <a name="next-steps"></a>后续步骤
 
-[上传、编码、流式处理视频](stream-files-tutorial-with-api.md)
+[上传、 编码、 流视频](stream-files-tutorial-with-api.md)
 

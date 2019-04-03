@@ -12,22 +12,22 @@ ms.author: danil
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 12/19/2018
-ms.openlocfilehash: 348183e1a164dd0a0f5f9672346423b95c27eba4
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 3ac55ef4159ab97c909fc5dfc084889bc58a7b7c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793667"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846666"
 ---
 # <a name="performance-recommendations-for-sql-database"></a>SQL 数据库性能建议
 
 Azure SQL 数据库与应用程序一起自行学习和进行适应性调整。 它提供可最大限度提高 SQL 数据库性能的自定义建议。 SQL 数据库持续评估并分析 SQL 数据库的使用情况历史记录。 提供的建议以数据库唯一工作负载模式为依据，有助于提升性能。
 
 > [!TIP]
-> [自动优化](sql-database-automatic-tuning.md)是自动优化一些最常见的数据库性能问题的建议方法。 [查询性能见解](sql-database-query-performance.md)是基本 Azure SQL 数据库性能监控需求的推荐方法。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) 是针对大规模高级数据库性能监控的推荐方法，具有内置智能功能，可自动执行性能故障排除。
+> [自动调整](sql-database-automatic-tuning.md)是自动调整一些最常见的数据库性能问题的推荐方法。 [查询性能见解](sql-database-query-performance.md)是基本 Azure SQL 数据库性能监控需求的推荐方法。 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md) 是针对大规模高级数据库性能监控的推荐方法，具有内置智能功能，可自动执行性能故障排除。
 >
 
-## <a name="create-index-recommendations"></a>创建索引建议
+## <a name="create-index-recommendations"></a>“创建索引”建议
 SQL 数据库持续监视正在运行的查询，并发现可以提升性能的索引。 确信缺少特定索引后，便会新建“创建索引”建议。
 
  Azure SQL 数据库通过估计索引在一段时间内带来的性能提升，确信是否有必要创建索引。 根据估计的性能提升高低，将性能建议分为高、中或低三类。 
@@ -44,16 +44,16 @@ SQL 数据库持续监视正在运行的查询，并发现可以提升性能的�
 
 此过程不断重复，直到没有足够的可用存储来创建索引或不再认为索引有益。
 
-## <a name="drop-index-recommendations"></a>删除索引建议
-除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在两种情况下会建议删除索引：
+## <a name="drop-index-recommendations"></a>“删除索引”建议
+除了检测缺少的索引外，SQL 数据库还会持续分析现有索引的性能。 Azure SQL 数据库会建议删除未使用的索引。 在以下两种情况下，建议删除索引：
 * 索引是另一索引的副本（已编入索引且包含的列、分区架构和筛选器都相同）。
 * 长时间（93 天）未使用索引。
 
-删除索引建议在实现后也要进行验证。 如果性能得到提升，则会生成影响力报表。 如果性能下降，则会还原建议。
+也会验证已实现的“删除索引”建议。 如果性能得到提升，则会生成影响力报表。 如果性能下降，则会还原建议。
 
 
 ## <a name="parameterize-queries-recommendations"></a>参数化查询建议
-*参数化查询* 建议。 这种状态提供了一个应用强制参数化的机会。 而强制参数化允许缓存并在将来重复使用查询计划，从而改善性能和减少资源使用。 
+当具有一个或多个正在持续被重新编译但都以相同的查询执行计划结束的查询时，就会出现*参数化查询*建议。 这种状态提供了一个应用强制参数化的机会。 而强制参数化允许缓存并在将来重复使用查询计划，从而改善性能和减少资源使用。 
 
 对 SQL Server 发出的每个查询一开始需要进行编译，生成执行计划。 每个生成的计划添加到计划缓存中。 相同查询的后续执行可以重复使用该缓存中的此计划，而无需进一步编译。 
 
@@ -77,18 +77,18 @@ SQL 数据库持续监视正在运行的查询，并发现可以提升性能的�
 
 当 Azure SQL 数据库服务发现 SQL 数据库上架构相关 SQL 错误的数量发生异常时，就会出现“修复架构问题”建议。 下表显示与架构问题相关的错误：
 
-| SQL 错误代码 | Message |
+| SQL 错误代码 | 消息 |
 | --- | --- |
 | 201 |过程或函数“*”需要参数“*”，但未提供该参数。 |
 | 207 |列名称“*”无效。 |
 | 208 |对象名“*”无效。 |
-| 213 |列名称或所提供值的数目与表定义不匹配。 |
+| 213 |列名或所提供值的数目与表定义不匹配。 |
 | 2812 |找不到存储过程“*”。 |
 | 8144 |为过程或函数 * 指定了过多的参数。 |
 
 ## <a name="custom-applications"></a>自定义应用程序
 
-开发人员可能会考虑开发自定义应用程序使用 Azure SQL 数据库的性能建议。 可以通过访问数据库，在门户中列出所有建议[Get AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) API。
+开发人员可能会考虑开发自定义应用程序使用 Azure SQL 数据库的性能建议。 可以通过访问数据库，在门户中列出所有建议[Get AzSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzSqlDatabaseRecommendedAction) API。
 
 ## <a name="next-steps"></a>后续步骤
 监视建议并继续应用它们以优化性能。 数据库工作负荷是动态的，并且不断地更改。 SQL 数据库顾问继续监视和提供可能提高数据库性能的建议。 

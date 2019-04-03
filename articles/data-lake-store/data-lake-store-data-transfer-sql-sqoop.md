@@ -3,21 +3,21 @@ title: 使用 Sqoop 在 Azure Data Lake Storage Gen1 和 Azure SQL 数据库之�
 description: 使用 Sqoop 在 Azure SQL 数据库和 Azure Data Lake Storage Gen1 之间复制数据
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 3f914b2a-83cc-4950-b3f7-69c921851683
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 958171a8d1091254588aef250406b968009eb968
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 7d3283b03d15278d1f7fd42a72b154dab1a442b4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391736"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878514"
 ---
 # <a name="copy-data-between-azure-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>使用 Sqoop 在 Azure Data Lake Storage Gen1 和 Azure SQL 数据库之间复制数据
 了解如何使用 Apache Sqoop 在 Azure SQL 数据库和 Azure Data Lake Storage Gen1 之间导入和导出数据。
@@ -27,12 +27,12 @@ ms.locfileid: "44391736"
 
 [Apache Sqoop](https://sqoop.apache.org/docs/1.4.4/SqoopUserGuide.html) 是一种用于在关系数据库和大数据存储库（例如 Data Lake Storage Gen1）之间传输数据的工具。 可使用该工具将数据从关系数据库管理系统 (RDBMS)（例如 Azure SQL 数据库）中导入到 Data Lake Storage Gen1。 之后，可使用大数据工作负荷转换和分析数据，然后将此数据返回导出到 RDBMS。 在本教程中，将 Azure SQL 数据库用作要向（从）其导入/导出的关系数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始阅读本文前，必须具有：
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **Azure Data Lake Storage Gen1 帐户**。 有关如何创建帐户的说明，请参阅 [Azure Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* 具有 Data Lake Storage Gen1 帐户访问权限的 **Azure HDInsight 群集**。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 本文假定用户的群集是具有 Data Lake Storage Gen1 访问权限的 HDInsight Linux 群集。
+* 具有 Data Lake Storage Gen1 帐户访问权限的 Azure HDInsight 群集。 请参阅[创建包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)。 本文假定用户的群集是具有 Data Lake Storage Gen1 访问权限的 HDInsight Linux 群集。
 * **Azure SQL 数据库**。 有关如何创建 Azure SQL 数据库的说明，请参阅[创建 Azure SQL 数据库](../sql-database/sql-database-get-started.md)
 
 ## <a name="do-you-learn-fast-with-videos"></a>通过视频学得更快？
@@ -92,7 +92,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 
     例如，
 
 
-        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
+        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
 1. 验证数据是否已经传输到 Data Lake Storage Gen1 帐户。 运行以下命令：
 
@@ -118,7 +118,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 
     例如，
 
 
-        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=nitinme@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
+        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
 1. 验证数据是否已经上传到 SQL 数据库表。 使用 [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) 或 Visual Studio 连接到 Azure SQL 数据库，并运行以下查询。
 
@@ -138,7 +138,7 @@ HDInsight 群集已经具有可用的 Sqoop 包。 如果已经配置 HDInsight 
 若要了解为将数据复制到 Data Lake Storage Gen1 而对 Sqoop 作业进行的性能优化，请参阅 [Sqoop 性能文档](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)。
 
 ## <a name="see-also"></a>另请参阅
-* [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [将数据从 Azure 存储 Blob 复制到数据湖存储 Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
+* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

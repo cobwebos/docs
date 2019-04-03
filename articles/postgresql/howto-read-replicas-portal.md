@@ -5,46 +5,46 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 24a37775298d6c6b40ec49f34158fcb77f26a379
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/01/2019
+ms.openlocfilehash: bf1fb1c1343173949ecb6348284cb537282b277b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113208"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846966"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-portal"></a>在 Azure 门户中创建和管理只读副本
 
 本文介绍如何使用 Azure 门户在 Azure Database for PostgreSQL 中创建和管理只读副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
 
-> [!IMPORTANT]
-> 只读副本功能目前以公共预览版提供。
 
 ## <a name="prerequisites"></a>必备组件
 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-database-portal.md)。
 
 ## <a name="prepare-the-master-server"></a>准备主服务器
-必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。
-
-主服务器上的 `azure.replication_support` 参数必须设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。
+必须使用以下步骤在“常规用途”和“内存优化”层中准备主服务器。 主服务器通过 azure.replication_support 参数设置为复制准备。 复制参数更改时，重新启动服务器是必需的更改才能生效。 在 Azure 门户中，这两个步骤都封装由一个按钮**启用复制支持**。
 
 1. 在 Azure 门户中，选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。
 
-2. 在左侧菜单中选择“服务器参数”。
+2. 在服务器边栏中下,**设置**，选择**复制**。
 
-3. 搜索 `azure.replication_support` 参数。
+3. 选择**启用复制支持**。 
 
-   ![搜索 azure.replication_support 参数](./media/howto-read-replicas-portal/azure-replication-parameter.png)
+   ![启用复制的支持](./media/howto-read-replicas-portal/enable-replication-support.png)
 
-4. 将 `azure.replication_support` 参数值设置为 **REPLICA**。 选择“保存”以保留更改。
+4. 确认你想要启用复制的支持。 此操作将重新启动主服务器。 
 
-   ![将参数设置为 REPLICA 并保存更改](./media/howto-read-replicas-portal/save-parameter-replica.png)
+   ![确认启用复制支持](./media/howto-read-replicas-portal/confirm-enable-replication.png)
+   
+5. 一旦完成该操作后，您将收到两个 Azure 门户通知。 没有用于更新服务器参数为一个通知。 没有立即遵循的服务器重新启动的另一条通知。
 
-5. 保存更改后，将收到通知：
+   ![成功通知-启用](./media/howto-read-replicas-portal/success-notifications-enable.png)
 
-   ![保存通知](./media/howto-read-replicas-portal/parameter-save-notification.png)
+6. 刷新 Azure 门户页以更新复制工具栏。 现在可以创建为此服务器的只读的副本。
 
-6. 重启服务器以应用所做的更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
+   ![已更新的工具栏](./media/howto-read-replicas-portal/updated-toolbar.png)
+   
+启用复制的支持是每个主服务器是一次性操作。 一个**禁用复制支持**按钮提供为方便起见。 我们不建议禁用复制支持，除非你确信您永远不会将此主服务器上创建副本。 无法在主服务器具有现有的副本时禁用复制支持。
 
 
 ## <a name="create-a-read-replica"></a>创建只读副本
@@ -52,9 +52,7 @@ ms.locfileid: "58113208"
 
 1. 选择用作主服务器的现有 Azure Database for PostgreSQL 服务器。 
 
-2. 在服务器菜单中的“设置”下，选择“复制”。
-
-   如果尚未在“常规用途”或“内存优化”主服务器上将 `azure.replication_support` 参数设置为 **REPLICA** 并重启服务器，将会收到通知。 请在创建副本之前完成这些步骤。
+2. 在服务器边栏中下,**设置**，选择**复制**。
 
 3. 选择“添加副本”。
 

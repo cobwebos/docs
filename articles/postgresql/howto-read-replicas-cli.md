@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/29/2019
-ms.openlocfilehash: 4c8502aad40662766b038205eb19dd3302f601b7
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.date: 04/01/2019
+ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58631996"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847754"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>创建和管理从 Azure CLI 的只读的副本
 
 在本文中，您将学习如何创建和管理用于从 Azure CLI 的 PostgreSQL 的 Azure 数据库中的只读的副本。 若要详细了解只读副本，请参阅[概述](concepts-read-replicas.md)。
-
-> [!IMPORTANT]
-> 只读副本功能目前以公共预览版提供。
 
 ## <a name="prerequisites"></a>必备组件
 - 用作主服务器的 [Azure Database for PostgreSQL 服务器](quickstart-create-server-up-azure-cli.md)。
@@ -49,9 +46,9 @@ ms.locfileid: "58631996"
 
 `az mysql server replica create` 命令需要以下参数：
 
-| 设置 | 示例值 | 描述  |
+| 设置 | 示例值 | 描述  |
 | --- | --- | --- |
-| resource-group | myresourcegroup |  资源组将在其中创建副本服务器。  |
+| resource-group | myresourcegroup |  资源组将在其中创建副本服务器。  |
 | 名称 | mydemoserver-replica | 所创建的新副本服务器的名称。 |
 | source-server | mydemoserver | 名称或资源 ID 的现有的主服务器将从复制。 |
 

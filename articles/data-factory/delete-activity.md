@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/25/2019
-ms.openlocfilehash: 64829cad24d7f436b8539659dc1f0c6ef6ed4da4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 00658b650cdc0b1752bb9f2f205420018c1d6edd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404759"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881777"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Delete 活动
 
-可以使用 Azure 数据工厂中的 Delete 活动从“本地存储”库或“云存储”库中删除文件或文件夹。 不再需要文件时，使用此活动来清理或存档文件。
+可以使用 Azure 数据工厂中删除活动中删除文件或文件夹的本地存储中存储或云存储存储。 不再需要文件时，使用此活动来清理或存档文件。
 
 > [!WARNING]
 > 无法还原已删除的文件或文件夹。 使用 Delete 活动删除文件或文件夹时务必谨慎。

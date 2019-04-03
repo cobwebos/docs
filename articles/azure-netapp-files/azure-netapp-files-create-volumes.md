@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to-article
 ms.date: 3/17/2019
 ms.author: b-juche
-ms.openlocfilehash: b45879adca58f60e5c16829a7fd2fffab33eee46
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: c2dd8b636223e0484e36eed9fcc616dc6f19cf3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400852"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877969"
 ---
 # <a name="create-a-volume-for-azure-netapp-files"></a>为 Azure NetApp 文件创建卷
 
@@ -49,7 +49,7 @@ ms.locfileid: "58400852"
     * **容量池**  
         指定想要创建的卷的容量池。
 
-    * **配额**  
+    * **Quota**  
         指定分配给卷的逻辑存储量。  
 
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
@@ -57,7 +57,7 @@ ms.locfileid: "58400852"
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
 
-        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以从本地网络通过 Express Route 来访问卷。   
+        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 此外可以从本地网络通过 Expressroute 访问该卷。   
 
     * **子网**  
         指定要用于卷的子网。  
@@ -96,7 +96,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
 
 2. 在加入 Active Directory 窗口中，提供以下信息：
 
-    * **主 DNS**   
+    * **主要 DNS**   
         这是首选 Active Directory 域服务用于与 Azure NetApp 文件的域控制器 IP 地址。 
     * **辅助 DNS**  
         这是辅助 Active Directory 域服务用于与 Azure NetApp 文件的域控制器 IP 地址。 
@@ -144,7 +144,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
     * **容量池**  
         指定想要创建的卷的容量池。
 
-    * **配额**  
+    * **Quota**  
         指定分配给卷的逻辑存储量。  
 
         “可用配额”字段显示了所选容量池中可以用来创建新卷的未使用空间量。 新卷的大小不能超过可用配额。  
@@ -152,7 +152,7 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
     * **虚拟网络**  
         指定要从中访问卷的 Azure 虚拟网络 (Vnet)。  
 
-        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 还可以从本地网络通过 Express Route 来访问卷。   
+        你指定的 Vnet 必须已将子网委托给 Azure NetApp 文件。 只能从同一 Vnet 或者从与卷位于同一区域的 Vnet 通过 Vnet 对等互连来访问 Azure NetApp 文件服务。 此外可以从本地网络通过 Expressroute 访问该卷。   
 
     * **子网**  
         指定要用于卷的子网。  
@@ -179,6 +179,6 @@ Azure 的 NetApp 文件支持 SMBv3 卷。 您需要添加的 SMB 卷之前创�
 
 ## <a name="next-steps"></a>后续步骤  
 
-* [装载或卸载 Windows 或 Linux 虚拟机的卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
-* [配置导出策略的 NFS 卷](azure-netapp-files-configure-export-policy.md)
-* [了解 Azure 服务的虚拟网络集成](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)
+* [为 Windows 或 Linux 虚拟机装载或卸载卷](azure-netapp-files-mount-unmount-volumes-for-virtual-machines.md)
+* [为 NFS 卷配置导出策略](azure-netapp-files-configure-export-policy.md)
+* [了解有关 Azure 服务的虚拟网络集成](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services)

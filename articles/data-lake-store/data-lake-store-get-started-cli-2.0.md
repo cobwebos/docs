@@ -3,19 +3,19 @@ title: 通过 Azure CLI 开始使用 Azure Data Lake Storage Gen1 | Microsoft Do
 description: 使用 Azure CLI 创建 Data Lake Storage Gen1 帐户并执行基本操作
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: c3e3c456da122e33a67b2ee3377bc15cb684b896
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 9431cc7fa12b86371ce6b2325aca8e13d264442e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864853"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880570"
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Azure Data Lake Store 入门（使用 Azure CLI）
 
@@ -33,7 +33,7 @@ ms.locfileid: "55864853"
 Azure CLI 是 Azure 的命令行体验，用于管理 Azure 资源。 它可以在 macOS、Linux 和 Windows 上使用。 有关详细信息，请参阅 [Azure CLI 概述](https://docs.microsoft.com/cli/azure)。 也可查看 [Azure Data Lake Storage Gen1 CLI 参考](https://docs.microsoft.com/cli/azure/dls)，获取命令和语法的完整列表。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始阅读本文前，必须具有：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -233,7 +233,7 @@ az dls account delete --account mydatalakestoragegen1
 出现提示时，输入 **Y** 删除帐户。
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用 Azure 数据湖存储 Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
+* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

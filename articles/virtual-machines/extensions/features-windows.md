@@ -16,18 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c07f01acb95523171f0297f7e2fd531713f1facf
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: ce13f053c2adee6a9a347a4162b60cc6d6b40eda
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550150"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849763"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>适用于 Windows 的虚拟机扩展和功能
 
 Azure 虚拟机 (VM) 扩展是小型应用程序，可在 Azure VM 上提供部署后配置和自动化任务。 例如，如果某个虚拟机需要安装软件、防病毒保护或运行脚本，便可以使用 VM 扩展。 可以使用 Azure CLI、PowerShell、Azure 资源管理器模板和 Azure 门户运行 Azure VM 扩展。 扩展可与新 VM 部署捆绑在一起，也可以针对任何现有系统运行。
 
 本文提供 VM 扩展的概述、使用 Azure VM 扩展的先决条件，以及有关如何检测、管理和删除 VM 扩展的指导。 本文提供的是概况信息，因为有许多 VM 扩展可用，每个扩展可能具有独特的配置。 可以在各个扩展特定的各个文档中找到扩展特定的详细信息。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="use-cases-and-samples"></a>用例和示例
 
@@ -94,27 +96,27 @@ Azure VM 扩展在现有 VM 上运行，需要在已部署的 VM 上进行配置
 存在多个用于运行单个扩展的 PowerShell 命令。 若要查看列表，请使用 [Get-Command](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/get-command) 并根据“扩展”筛选：
 
 ```powershell
-Get-Command Set-Az*Extension* -Module AzureRM.Compute
+Get-Command Set-Az*Extension* -Module Az.Compute
 ```
 
 这会提供类似以下内容的输出：
 
 ```powershell
-CommandType     Name                                               Version    Source
------------     ----                                               -------    ------
-Cmdlet          Set-AzVMAccessExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMADDomainExtension                     4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMAEMExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMBackupExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMBginfoExtension                       4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMChefExtension                         4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMDscExtension                          4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMExtension                             4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      AzureRM.Compute
-Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      AzureRM.Compute
+CommandType     Name                                          Version    Source
+-----------     ----                                          -------    ------
+Cmdlet          Set-AzVMAccessExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMADDomainExtension                     4.5.0      Az.Compute
+Cmdlet          Set-AzVMAEMExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMBackupExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMBginfoExtension                       4.5.0      Az.Compute
+Cmdlet          Set-AzVMChefExtension                         4.5.0      Az.Compute
+Cmdlet          Set-AzVMCustomScriptExtension                 4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiagnosticsExtension                  4.5.0      Az.Compute
+Cmdlet          Set-AzVMDiskEncryptionExtension               4.5.0      Az.Compute
+Cmdlet          Set-AzVMDscExtension                          4.5.0      Az.Compute
+Cmdlet          Set-AzVMExtension                             4.5.0      Az.Compute
+Cmdlet          Set-AzVMSqlServerExtension                    4.5.0      Az.Compute
+Cmdlet          Set-AzVmssDiskEncryptionExtension             4.5.0      Az.Compute
 ```
 
 以下示例使用自定义脚本扩展从 GitHub 存储库将脚本下载到目标虚拟机上，然后运行该脚本。 有关 VM 访问扩展的详细信息，请参阅[自定义脚本扩展概述](custom-script-windows.md)。

@@ -3,21 +3,21 @@ title: Azure Data Lake Storage Gen1 中的安全性概述 | Microsoft Docs
 description: 了解 Azure Data Lake Storage Gen1 是更安全的大数据存储的原因
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ebd5b2ac-c5cc-46d4-9cfd-1a1ee70024c2
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
-ms.author: nitinme
-ms.openlocfilehash: a310851819f70d138a4980b1ab61891fb0b2c311
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.author: twooley
+ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56959606"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883287"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
 许多企业都开始利用大数据分析获取业务见解，以帮助他们做出明智的决策。 组织的环境可能复杂、规范化，不同的用户越来越多。 确保更安全地存储关键业务数据并向个人用户授予访问权限的正确级别，这一点对企业来说至关重要。 Azure Data Lake Storage Gen1 旨在帮助企业实现这些安全要求。 在本文中，了解 Data Lake Storage Gen1 的安全功能，包括：
@@ -111,6 +111,6 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [开始使用数据湖存储 Gen1](data-lake-store-get-started-portal.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
 

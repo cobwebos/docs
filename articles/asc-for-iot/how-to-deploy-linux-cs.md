@@ -1,25 +1,25 @@
 ---
 title: 安装和部署 Linux 指南C#代理的 IoT 预览版的 Azure 安全中心 |Microsoft Docs
 description: 了解如何在 32 位和 64 位 Linux 上安装 IoT 代理在 Azure 安全中心。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: b0982203-c3c8-4a0b-8717-5b5ac4038d8c
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
-ms.openlocfilehash: be4c663d3a1e99ef67cbbbc2f39b315f1080125c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4a53bcf77696d3aa53a4a404bfacd6f6d468885b
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758329"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862091"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 IoT 部署 Azure 安全中心C#-基于 Linux 的安全代理
 
@@ -52,7 +52,7 @@ ms.locfileid: "58758329"
 
 1. 提取包的内容，并导航到 _/Install_ 文件夹。
 
-1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本** 
+1. 正在运行将权限添加到**InstallSecurityAgent 脚本**通过运行 `chmod +x InstallSecurityAgent.sh` 
 
 1. 然后运行： 
 
@@ -75,7 +75,7 @@ ms.locfileid: "58758329"
 - 使用提供的身份验证参数配置代理。
 
 
-如需更多帮助，请结合 -help 参数运行该脚本：`./InstallSecurityAgent.sh --help`
+如需更多帮助，请结合 -help 参数运行该脚本： `./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>卸载代理
 
@@ -118,7 +118,7 @@ ms.locfileid: "58758329"
 
    1. 查看日志文件，了解有关故障的详细信息。  
 
-       日志文件位置为：`/var/ASCIoTAgent/IotAgentLog.log`
+       日志文件的位置是： `/var/ASCIoTAgent/IotAgentLog.log`
 
        根据你在步骤 2 中为 **logFilePath** 选择的名称，更改文件位置路径。 
 

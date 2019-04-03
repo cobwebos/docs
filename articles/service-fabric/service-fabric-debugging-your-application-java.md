@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
-ms.openlocfilehash: 8f0470b10589ecbbc9e2c98e8d3445435e7f8ed4
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668817"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880282"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>使用 Eclipse 调试 Java Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -27,14 +27,14 @@ ms.locfileid: "58668817"
 > * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. 按 [设置 Service Fabric 开发环境](service-fabric-get-started-linux.md)中的步骤创建本地开发群集。
+1. 按照[设置 Service Fabric 开发环境](service-fabric-get-started-linux.md)中的步骤启动本地开发群集。
 
-2. 更新要调试的服务的 entryPoint.sh，以便使用远程调试参数启动 java 进程。 可以在以下位置找到此文件：``ApplicationName\ServiceNamePkg\Code\entrypoint.sh``。 在此示例中调试时，设置端口 8001。
+2. 更新要调试的服务的 entryPoint.sh，以便使用远程调试参数启动 java 进程。 可以在以下位置找到此文件：`ApplicationName\ServiceNamePkg\Code\entrypoint.sh`。 在此示例中调试时，设置端口 8001。
 
     ```sh
     java -Xdebug -Xrunjdwp:transport=dt_socket,address=8001,server=y,suspend=n -Djava.library.path=$LD_LIBRARY_PATH -jar myapp.jar
     ```
-3. 通过将要调试的服务的实例计数或副本计数设置为 1 来更新应用程序清单。 此设置可避免用于调试的端口出现冲突。 例如，对于无状态服务，设置 ``InstanceCount="1"``；对于有状态服务，将目标和最小副本集大小设置为 1，如下所示：`` TargetReplicaSetSize="1" MinReplicaSetSize="1"``。
+3. 通过将要调试的服务的实例计数或副本计数设置为 1 来更新应用程序清单。 此设置可避免用于调试的端口出现冲突。 例如，对于无状态服务，设置 `InstanceCount="1"`；对于有状态服务，将目标和最小副本集大小设置为 1，如下所示：`TargetReplicaSetSize="1" MinReplicaSetSize="1"`。
 
 4. 部署应用程序。
 
@@ -46,7 +46,7 @@ ms.locfileid: "58668817"
    ```
 6.  在所需的位置设置断点并调试应用程序。
 
-如果应用程序崩溃，可能还想要启用 coredumps。 在 shell 中执行 ``ulimit -c``，如果它返回 0，则未启用 coredumps。 若要启用不受限制的 coredumps，请执行以下命令：``ulimit -c unlimited``。 还可以使用命令 ``ulimit -a`` 验证状态。  如果要更新 coredump 生成路径，请执行 ``echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern``。 
+如果应用程序崩溃，可能还想要启用 coredumps。 在 shell 中执行 `ulimit -c`，如果它返回 0，则未启用 coredumps。 若要启用不受限制的 coredumps，请执行以下命令：`ulimit -c unlimited`。 还可以使用命令 `ulimit -a` 验证状态。  如果要更新 coredump 生成路径，请执行 `echo '/tmp/core_%e.%p' | sudo tee /proc/sys/kernel/core_pattern`。 
 
 ### <a name="next-steps"></a>后续步骤
 

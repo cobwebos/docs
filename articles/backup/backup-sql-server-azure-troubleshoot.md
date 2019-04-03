@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
-ms.openlocfilehash: e5565e257e511203043c84e499712cc6a0a78c3f
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d8cbae679552cce8df29410ad8a477801abd4ff1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286006"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847457"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
 
@@ -98,12 +98,18 @@ ms.locfileid: "58286006"
 |---|---|---|
 | 由于无法将数据库脱机，还原失败。 | 执行还原时，需将目标数据库脱机。 Azure 备份无法将此数据脱机。 | 使用 Azure 门户上错误菜单中的其他详细信息缩小根本原因的范围。 有关详细信息，请参阅 [SQL 文档](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms)。 |
 
-
 ###  <a name="usererrorcannotfindservercertificatewiththumbprint"></a>UserErrorCannotFindServerCertificateWithThumbprint
 
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 在目标上找不到包含指纹的服务器证书。 | 目标实例上的 Master 数据库没有有效的加密指纹。 | 将源实例上使用的有效证书指纹导入目标实例。 |
+
+### <a name="usererrorrestorenotpossiblebecauselogbackupcontainsbulkloggedchanges"></a>UserErrorRestoreNotPossibleBecauseLogBackupContainsBulkLoggedChanges
+
+| 错误消息 | 可能的原因 | 建议的操作 |
+|---|---|---|
+| 用于恢复的日志备份包含大容量日志更改。 它不能用于在任意点根据 SQL 指导原则时间停止。 | 如果数据库是在大容量日志的恢复模式下，大容量日志事务和下一个日志事务之间的数据无法恢复。 | 请中的时间进行恢复，选择一个不同点。 [了解详细信息](https://docs.microsoft.com/previous-versions/sql/sql-server-2008-r2/ms186229(v=sql.105))
+
 
 ## <a name="registration-failures"></a>注册失败
 

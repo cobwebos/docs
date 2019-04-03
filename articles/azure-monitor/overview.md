@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/26/2019
 ms.author: bwren
-ms.openlocfilehash: d0902c0e0b4c669f3918155f8416f064485abbea
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 0485f8e3b377ce94ec23a4a1a94eb7e189b0232b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56874896"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850830"
 ---
 # <a name="azure-monitor-overview"></a>Azure Monitor 概述
 
@@ -26,7 +26,7 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
 ## <a name="overview"></a>概述
-下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-collection.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
+下图提供了 Azure Monitor 的概要视图。 示意图的中心是用于存储指标和日志（Azure Monitor 使用的两种基本类型的数据）的数据存储。 左侧是用于填充这些[数据存储](platform/data-platform.md)的[监视数据源](platform/data-sources.md)。 右侧是 Azure Monitor 针对这些收集的数据执行的不同功能，例如分析、警报和流式传输到外部系统。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -34,7 +34,7 @@ Azure Monitor 提供用于收集、分析和处理来自云与本地环境的遥
 
 
 ## <a name="monitoring-data-platform"></a>监视数据平台
-Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指标和日志](platform/data-collection.md)。 [指标](platform/data-collection.md#metrics)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是轻型数据，可以支持近实时方案。 [日志](platform/data-collection.md#logs)包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 与性能数据一样，事件和跟踪等遥测数据也作为日志存储，因此，可将它们合并以进行分析。
+Azure Monitor 收集的所有数据属于以下两种基本类型之一：[指标和日志](platform/data-platform.md)。 [指标](platform/data-platform-metrics.md)是数字值，用于描述系统某些方面在特定时间点的情况。 指标是轻型数据，可以支持近实时方案。 [日志](platform/data-platform-logs.md)包含不同类型的已经整理成记录的数据，每种类型都有不同的属性集。 与性能数据一样，事件和跟踪等遥测数据也作为日志存储，因此，可将它们合并以进行分析。
 
 Azure 门户中的“概述”页会直接显示 Azure Monitor 针对许多 Azure 资源收集的数据。 例如，在查看任一虚拟机时，多个图表会显示性能指标。 单击任一图形会在 Azure 门户上的[指标资源管理器](platform/metrics-charts.md)中打开数据，可在其中绘制多个指标在不同时间段的值的图表。  可以通过交互方式查看图表，也可以将其固定到某个仪表板，与其他可视化效果一起查看。
 
@@ -55,7 +55,7 @@ Azure Monitor 可从各种源收集数据。 可将应用程序的监视数据�
 - **Azure 订阅监视数据**：有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 
 - **Azure 租户监视数据**：有关租户级 Azure 服务（例如 Azure Active Directory）操作的数据。
 
-在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](platform/data-collection.md)告知资源的性能如何，以及该资源消耗的资源。 
+在创建 Azure 订阅并开始添加虚拟机和 Web 应用等资源后，Azure Monitor 会立即开始收集数据。  [活动日志](platform/activity-logs-overview.md)记录创建或修改资源的时间。 [指标](platform/data-platform.md)告知资源的性能如何，以及该资源消耗的资源。 
 
 通过[启用诊断](platform/diagnostic-logs-overview.md)并[将代理添加](platform/agent-windows.md)到计算资源，将数据收集范围扩展到资源的实际操作。 这会收集资源内部操作的遥测数据，并可让你配置不同的[数据源](platform/agent-data-sources.md)用于从 Windows 和 Linux 来宾操作系统收集日志与指标。 
 
@@ -143,6 +143,6 @@ Azure Monitor 中的警报规则使用[操作组](platform/action-groups.md)，�
 ## <a name="next-steps"></a>后续步骤
 了解有关以下方面的详细信息：
 
-* [指标和日志](platform/data-collection.md)，了解由 Azure Monitor 收集的数据。
+* [指标和日志](platform/data-platform.md)，了解由 Azure Monitor 收集的数据。
 * [数据源](platform/data-sources.md)，了解应用程序的不同组件如何发送遥测数据。
 * [日志查询](log-query/log-query-overview.md)，以便分析所收集的数据。

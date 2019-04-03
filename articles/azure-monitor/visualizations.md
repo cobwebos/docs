@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/24/2018
 ms.author: bwren
-ms.openlocfilehash: 55aed5d1133756789c3ed8979f0a9599f465e5d9
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 4e9bb9bd86e22efa5dd514e742481911b09c5e17
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315089"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848777"
 ---
 # <a name="visualizing-data-from-azure-monitor"></a>可视化 Azure Monitor 中的数据
 本文概述了将 Azure Monitor 中存储的日志和指标数据可视化时可使用的方法。
@@ -137,7 +137,7 @@ ms.locfileid: "57315089"
 
 
 ## <a name="next-steps"></a>后续步骤
-- 了解[由 Azure Monitor 收集的数据](platform/data-collection.md)。
+- 了解[由 Azure Monitor 收集的数据](platform/data-platform.md)。
 - 了解 [Azure 仪表板](../azure-portal/azure-portal-dashboards.md)。
 - 了解 [Azure Monitor 中的视图](platform/view-designer.md)。
 - 了解如何[工作簿](../azure-monitor/app/usage-workbooks.md)。

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: ad5869a2a79d41245b731409e9e4fe4c5a460b19
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793214"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882066"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 wire Data 2.0 （预览版） 解决方案
 
@@ -33,7 +33,7 @@ ms.locfileid: "58793214"
 >[!NOTE]
 >如果已部署服务映射中，或正在考虑使用服务映射或[Vm 的 Azure Monitor](../../azure-monitor/insights/vminsights-overview.md)，没有新连接度量值的数据集收集并存储在 Azure Monitor 提供与传输数据的可比较的信息。
 
-默认情况下，Azure Monitor 的 CPU、 内存、 磁盘和网络的 Windows 和 Linux 中内置的计数器，以及可以指定其他性能计数器的性能数据记录数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  只要有一方关闭连接，该连接就会被标记为“已断开连接”。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
+默认情况下，Azure Monitor 的 CPU、 内存、 磁盘和网络的 Windows 和 Linux 中内置的计数器，以及可以指定其他性能计数器的性能数据记录数据。 网络以及其他数据的收集针对每个代理实时执行，包括正在由计算机使用的子网和应用程序级协议。  Wire Data 查看应用程序层（而不是 TCP 传输层）的数据。  该解决方案不会查看单个 ACK 和 SYN。  完成握手后，该连接将被视作实时连接，并被标记为“已连接”。 只要双方同意开启套接字，并且数据可以在彼此之间来回传递，该实时连接就将保持不变。  当任一端关闭连接时，它被标记为已断开连接。  因此，它只对已成功完成数据包的带宽计数，而不会对重新发送或失败的数据包进行报告。
 
 如果使用过 [sFlow](http://www.sflow.org/) 或其他包含 [Cisco 的 NetFlow 协议](https://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)的软件，则不会对来自线路数据的统计信息和数据感到陌生。
 
@@ -52,13 +52,13 @@ ms.locfileid: "58793214"
 
 在使用线路数据搜索时，可以筛选数据并将其分组，以查看有关最突出的代理和协议的信息。 还可以查看某些计算机（IP 地址/MAC 地址）彼此之间何时进行了通信、通信持续了多长时间，以及发送了多少数据。基本上，可以基于搜索查看有关网络流量的元数据。
 
-不过，因为查看的是元数据，因此这不一定适用于深入的故障排除。 Azure Monitor 中的线路数据不完整捕获的网络数据。  因此，它不能用来进行数据包级别的深度故障排除。 与其他收集方法相比，使用代理的优点是不需要安装设备、重新配置网络交换机或执行复杂的配置。 线路数据完全基于代理，将代理安装在一台计算机上，它就会监视自己的网络流量。 另一个优点体现在想要监视在云提供商、主机托管服务提供商或 Microsoft Azure 中运行的工作负荷时。在这种情况下，用户本身不必拥有结构层。
+不过，因为查看的是元数据，因此这不一定适用于深入的故障排除。 Azure Monitor 中的线路数据不完整捕获的网络数据。  因此，它不能用来进行数据包级别的深度故障排除。 使用代理，与其他收集方法，相比的优点是无需安装设备、 重新配置网络交换机，或执行复杂的配置。 线路数据完全基于代理，将代理安装在一台计算机上，它就会监视自己的网络流量。 另一个优点体现在想要监视在云提供商、主机托管服务提供商或 Microsoft Azure 中运行的工作负荷时。在这种情况下，用户本身不必拥有结构层。
 
 ## <a name="connected-sources"></a>连接的源
 
 Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖于 Log Analytics 代理连接到 Azure Monitor。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。 下表介绍了 Wire Data 解决方案支持的连接的源。
 
-| **连接的源** | **支持** | **说明** |
+| **连接的源** | **支持** | **描述** |
 | --- | --- | --- |
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)。 |
 | Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)。 |
@@ -75,12 +75,12 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 如果您是 System Center Operations Manager 用户与连接到 Azure Monitor 的管理组：
 
-- System Center Operations Manager 代理可以访问 Internet 来连接到 Azure Monitor，不不需要任何其他配置。
-- 需要配置要使用 System Center Operations Manager，System Center Operations Manager 代理无法通过 Internet 访问 Azure Monitor 的 Log Analytics 网关。
+- System Center Operations Manager 代理可以访问 internet 来连接到 Azure Monitor，不不需要任何其他配置。
+- 需要配置要使用 System Center Operations Manager，System Center Operations Manager 代理无法通过 internet 访问 Azure Monitor 的 Log Analytics 网关。
 
 如果在 Windows 或 Linux 计算机不能直接连接到服务，你需要配置 Log Analytics 代理来连接到 Azure Monitor 使用 Log Analytics 网关。 可以从 [Microsoft 下载中心](https://www.microsoft.com/download/details.aspx?id=52666)下载 Log Analytics 网关。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 - 需要 [Insight and Analytics](https://www.microsoft.com/cloud-platform/operations-management-suite-pricing) 解决方案产品/服务。
 - 如果正在使用以前版本的 Wire Data 解决方案，必须首先将其删除。 不过，通过原始 Wire Data 解决方案捕获的所有数据在 Wire Data 2.0 和日志搜索中仍然可用。
@@ -93,6 +93,8 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 #### <a name="windows-server"></a>Windows Server
 
+- Windows Server 2019
+- Windows Server 2016 1803
 - Windows Server 2016
 - Windows Server 2012 R2
 - Windows Server 2012
@@ -100,96 +102,68 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 #### <a name="windows-desktop"></a>Windows 桌面
 
+- Windows 10 1803
 - Windows 10
 - Windows 8.1
 - Windows 8
 - Windows 7
 
-#### <a name="red-hat-enterprise-linux-centos-linux-and-oracle-linux-with-rhel-kernel"></a>Red Hat Enterprise Linux、CentOS Linux 和 Oracle Linux（具有 RHEL 内核）
+#### <a name="supported-linux-operating-systems"></a>受支持的 Linux 操作系统
+以下各节列出了 Linux 上的依赖关系代理支持的操作系统。  
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
-- 任何 Linux 发行版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为 _2.6.16.21-0.8-xen_ 的系统。
+- 任何 Linux 发行版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
 - 不支持自定义内核（包括标准内核的重新编译）。
-- 不支持 CentOSPlus 内核。
-- 本文后面部分会介绍 Oracle Unbreakable Enterprise Kernel (UEK)。
 
-#### <a name="red-hat-linux-7"></a>Red Hat Linux 7
+##### <a name="red-hat-linux-7"></a>Red Hat Linux 7
 
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 7.0 | 3.10.0-123 |
-| 7.1 | 3.10.0-229 |
-| 7.2 | 3.10.0-327 |
-| 7.3 | 3.10.0-514 |
+| OS 版本 | 内核版本 |
+|:--|:--|
+| 7.4 | 3.10.0-693 |
+| 7.5 | 3.10.0-862 |
+| 7.6 | 3.10.0-957 |
 
-#### <a name="red-hat-linux-6"></a>Red Hat Linux 6
+##### <a name="red-hat-linux-6"></a>Red Hat Linux 6
 
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 6.0 | 2.6.32-71 |
-| 6.1 | 2.6.32-131 |
-| 6.2 | 2.6.32-220 |
-| 6.3 | 2.6.32-279 |
-| 6.4 | 2.6.32-358 |
-| 6.5 | 2.6.32-431 |
-| 6.6 | 2.6.32-504 |
-| 6.7 | 2.6.32-573 |
-| 6.8 | 2.6.32-642 |
+| OS 版本 | 内核版本 |
+|:--|:--|
+| 6.9 | 2.6.32-696 |
+| 6.10 | 2.6.32-754 |
 
-#### <a name="red-hat-linux-5"></a>Red Hat Linux 5
+##### <a name="centosplus"></a>CentOSPlus
+| OS 版本 | 内核版本 |
+|:--|:--|
+| 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
+| 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 5.8 | 2.6.18-308 |
-| 5.9 | 2.6.18-348 |
-| 5.10 | 2.6.18-371 |
-| 5.11 | 2.6.18-398 <br> 2.6.18-400 <br>2.6.18-402 <br>2.6.18-404 <br>2.6.18-406 <br> 2.6.18-407 <br> 2.6.18-408 <br> 2.6.18-409 <br> 2.6.18-410 <br> 2.6.18-411 <br> 2.6.18-412 <br> 2.6.18-416 <br> 2.6.18-417 <br> 2.6.18-419 |
+##### <a name="ubuntu-server"></a>Ubuntu Server
 
-#### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>具有 Unbreakable Enterprise Kernel (UEK) 的 Oracle Enterprise Linux
+| OS 版本 | 内核版本 |
+|:--|:--|
+| Ubuntu 18.04 | kernel 4.15.\*<br>4.18* |
+| Ubuntu 16.04.3 | 内核 4.15.* |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
 
-#### <a name="oracle-linux-6"></a>Oracle Linux 6
+##### <a name="suse-linux-11-enterprise-server"></a>SUSE Linux 11 Enterprise Server
 
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 6.2 | Oracle 2.6.32-300 (UEK R1) |
-| 6.3 | Oracle 2.6.39-200 (UEK R2) |
-| 6.4 | Oracle 2.6.39-400 (UEK R2) |
-| 6.5 | Oracle 2.6.39-400 (UEK R2 i386) |
-| 6.6 | Oracle 2.6.39-400 (UEK R2 i386) |
+| OS 版本 | 内核版本
+|:--|:--|
+| 11 SP4 | 3.0.* |
 
-#### <a name="oracle-linux-5"></a>Oracle Linux 5
+##### <a name="suse-linux-12-enterprise-server"></a>SUSE Linux 12 Enterprise Server
 
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 5.8 | Oracle 2.6.32-300 (UEK R1) |
-| 5.9 | Oracle 2.6.39-300 (UEK R2) |
-| 5.10 | Oracle 2.6.39-400 (UEK R2) |
-| 5.11 | Oracle 2.6.39-400 (UEK R2) |
+| OS 版本 | 内核版本
+|:--|:--|
+| 12 SP2 | 4.4.* |
+| 12 SP3 | 4.4.* |
 
-#### <a name="suse-linux-enterprise-server"></a>SUSE Linux Enterprise Server
+### <a name="dependency-agent-downloads"></a>Dependency Agent 下载
 
-#### <a name="suse-linux-11"></a>SUSE Linux 11
-
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 11 | 2.6.27 |
-| 11 SP1 | 2.6.32 |
-| 11 SP2 | 3.0.13 |
-| 11 SP3 | 3.0.76 |
-| 11 SP4 | 3.0.101 |
-
-#### <a name="suse-linux-10"></a>SUSE Linux 10
-
-| **OS 版本** | **内核版本** |
-| --- | --- |
-| 10 SP4 | 2.6.16.60 |
-
-#### <a name="dependency-agent-downloads"></a>依赖关系代理下载
-
-| **文件** | **OS** | **版本** | **SHA-256** |
-| --- | --- | --- | --- |
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | 窗口 | 9.0.5 | 73B3F6A2A76A08D58F72A550947FF839B588591C48E6EDDD6DDF73AA3FD82B43 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.0.5 | A1BAD0B36EBF79F2B69113A07FCF48C68D90BD169C722689F9C83C69FC032371 |
+| 文件 | 操作系统 | 版本 | SHA-256 |
+|:--|:--|:--|:--|
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 
 
@@ -197,13 +171,14 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 执行以下步骤，为工作区配置 Wire Data 解决方案。
 
-1. 启用从 Activity Log Analytics 解决方案[Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或通过使用过程中所述[从解决方案库中添加 mnitoring 解决方案](../../azure-monitor/insights/solutions.md)。
+1. 启用从 Activity Log Analytics 解决方案[Azure 应用商店](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview)或通过使用过程中所述[监视解决方案从解决方案库添加](../../azure-monitor/insights/solutions.md)。
 2. 在希望从中获取数据的每台计算机上安装依赖关系代理。 依赖关系代理可以监视与直接邻居之间的连接，因此不需要在每台计算机上都具有代理。
 
 > [!NOTE]
 > 不能将以前版本的 Wire Data 解决方案添加到新工作区。 如果已启用了原始的 Wire Data 解决方案，则可以继续使用该解决方案。 不过，若要使用 Wire Data 2.0，必须首先删除原始版本。
 > 
-> ### <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖关系代理
+ 
+### <a name="install-the-dependency-agent-on-windows"></a>在 Windows 上安装依赖关系代理
 
 需要管理员特权才能安装或卸载代理。
 
@@ -212,7 +187,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 使用以下步骤在运行 Windows 的每台计算机上安装依赖关系代理：
 
 1. 遵循[从托管在环境中的 Windows 计算机收集数据](../../azure-monitor/platform/agent-windows.md)所述步骤安装 Log Analytics 代理。
-2. 使用上一部分中的链接下载 Windows 依赖项代理，然后使用以下命令运行该代理：`InstallDependencyAgent-Windows.exe`
+2. 下载 Windows 依赖关系代理使用上一节中的链接，并运行通过使用以下命令： `InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
 4. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
 
@@ -222,7 +197,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 InstallDependencyAgent-Windows.exe /?
 
-| **标志** | **说明** |
+| **标志** | **描述** |
 | --- | --- |
 | <code>/?</code> | 获取命令行选项列表。 |
 | <code>/S</code> | 执行无提示安装，无用户提示。 |
@@ -247,7 +222,7 @@ InstallDependencyAgent-Windows.exe /?
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **标志** | **说明** |
+| **标志** | **描述** |
 | --- | --- |
 | <code>-help</code> | 获取命令行选项列表。 |
 | <code>-s</code> | 执行无提示安装，无用户提示。 |
@@ -368,8 +343,6 @@ rpm -e dependency-agent dependency-agent-connector
 
 ## <a name="using-the-solution"></a>使用解决方案
 
-**安装和配置解决方案**
-
 使用以下信息安装和配置解决方案。
 
 - Wire Data 解决方案从运行 Windows Server 2012 R2、Windows 8.1 和更高版本操作系统的计算机获取数据。
@@ -385,7 +358,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
-| **边栏选项卡** | **说明** |
+| **边栏选项卡** | **描述** |
 | --- | --- |
 | 正在捕获网络流量的代理 | 显示正在捕获网络流量的代理数，并列出正在捕获流量的排名前 10 的计算机。 单击数字可以针对 <code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code> 运行日志搜索。 单击列表中的某台计算机可运行日志搜索，将返回已捕获的总字节数。 |
 | 本地子网 | 显示代理已发现的本地子网数。  单击数字可以针对 <code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code> 运行日志搜索，这将列出所有子网以及通过每个子网发送的字节数。 单击列表中的某个子网可运行日志搜索，将返回通过该子网发送的总字节数。 |

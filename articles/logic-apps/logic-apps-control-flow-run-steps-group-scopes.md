@@ -10,12 +10,12 @@ manager: jeconnoc
 ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
-ms.openlocfilehash: d73a43aedde9a88e009ddca1f0363dbcd92e1379
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080448"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882406"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>基于组状态，在 Azure 逻辑应用中的范围内运行操作
 
@@ -79,14 +79,14 @@ ms.locfileid: "58080448"
 
       | 设置 | 值 | 描述 |
       | ------- | ----- | ----------- |
-      | **路标 1** | <*起点*> | 输入路线的起点。 | 
-      | **路标 2** | <*终点*> | 输入路线的目的地。 | 
+      | **Waypoint 1** | <*起点*> | 输入路线的起点。 | 
+      | **Waypoint 2** | <*终点*> | 输入路线的目的地。 | 
       | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
       | **优化** | timeWithTraffic | 选择一个参数来优化路线，例如距离、时间（在使用当前交通信息的情况下），等等。 此示例使用以下值：timeWithTraffic | 
       | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值："英里" | 
       | **旅行模式** | 驾车 | 输入路线的旅行模式。 此示例使用以下值：Driving | 
-      | **运输日期/时间** | 无 | 仅适用于运输模式。 | 
-      | **运输日期/时间类型** | 无 | 仅适用于运输模式。 | 
+      | **运输日期 / 时间** | 无 | 仅适用于运输模式。 | 
+      | **传输日期 / 时间类型** | 无 | 仅适用于运输模式。 | 
       ||||  
 
 1. [添加条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，检查当前交通状况下的旅行时间是否超出了指定时间。 
@@ -119,7 +119,7 @@ ms.locfileid: "58080448"
 
    1. 在“正文”字段中，输入带尾随空格的以下文本： 
 
-      ```Travel time: ```
+      ```Travel time:```
 
       当光标出现在“正文”字段中时，动态内容列表将保持打开状态，以便你可以选择此时可用的任何参数。
 
@@ -146,11 +146,13 @@ ms.locfileid: "58080448"
 
    1. 完成后，选择“确定”。
 
+   <!-- markdownlint-disable MD038 -->
    1. 表达式求值后，添加带有前导空格的以下文本： ``` minutes```
   
        “正文”字段现在如下例所示：
 
        ![完成的“正文”字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+   <!-- markdownlint-enable MD038 -->
 
 1. 保存逻辑应用。
 
@@ -174,7 +176,7 @@ ms.locfileid: "58080448"
 
 1. 现在，添加要在作用域内运行的步骤，或拖动要在作用域内运行的现有步骤。 对于本例，请将以下操作拖动到作用域中：
       
-   * **获取路线**
+   * **获取路由**
    * 交通时间是否超过指定时间，包括“true”和“false”分支
 
    现在，逻辑应用如下例所示：
@@ -395,7 +397,7 @@ ms.locfileid: "58080448"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [基于条件运行步骤（条件语句）](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [基于不同的值运行步骤（switch 语句）](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [运行并重复执行步骤（循环）](../logic-apps/logic-apps-control-flow-loops.md)
-* [运行或合并并行步骤（分支）](../logic-apps/logic-apps-control-flow-branches.md)
+* [基于 （条件语句） 的条件运行步骤](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [基于不同的值 （switch 语句） 运行步骤](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [运行并重复步骤 （循环）](../logic-apps/logic-apps-control-flow-loops.md)
+* [运行或合并并行步骤 （分支）](../logic-apps/logic-apps-control-flow-branches.md)

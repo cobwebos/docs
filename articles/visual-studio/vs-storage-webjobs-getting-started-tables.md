@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
-ms.openlocfilehash: c708c396911badb7c7ce5df2497aaba47cb7defe
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: a9a4475465fefb01ec53e6e0eb814f9b8f192a1b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51243754"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850213"
 ---
 # <a name="getting-started-with-azure-storage-azure-webjob-projects"></a>Azure 存储入门（Azure WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -25,12 +25,12 @@ ms.locfileid: "51243754"
 ## <a name="overview"></a>概述
 本文章提供了 C# 代码示例，用于演示如何在 Azure 表存储服务中使用 Azure WebJobs SDK 版本 1.x。 这些代码示例使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 版本 1.x。
 
-Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。  有关详细信息，请参阅 [Get started with Azure Table storage using .NET](../cosmos-db/table-storage-how-to-use-dotnet.md#create-a-table)（通过 .NET 开始使用 Azure 表存储）。
+Azure 表存储服务使用户可以存储大量结构化数据。 该服务是一个 NoSQL 数据存储，接受来自 Azure 云内部和外部的通过验证的呼叫。 Azure 表最适合存储结构化非关系型数据。  有关详细信息，请参阅 [Get started with Azure Table storage using .NET](../cosmos-db/tutorial-develop-table-dotnet.md#create-a-table)（通过 .NET 开始使用 Azure 表存储）。
 
 一些代码段显示了手动调用（即：不是使用触发器属性之一调用）的函数中使用的 **Table** 属性。
 
 ## <a name="how-to-add-entities-to-a-table"></a>如何向表中添加实体
-要将实体添加到表中，请将 **Table** 属性与 **ICollector<T>** 或 **IAsyncCollector<T>** 参数一起使用，其中 **T** 指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
+若要将实体添加到表中，请将 Table 属性与 ICollector<T> 或 IAsyncCollector<T> 参数一起使用，其中 T 指定想要添加的实体的架构。 属性构造函数使用指定表名称的字符串参数。
 
 下面的代码示例将 **Person** 实体添加到名为 *Ingress* 的表。
 
@@ -66,7 +66,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 如果想要直接使用 Azure 存储 API，则可以向方法签名添加 **CloudStorageAccount** 参数。
 
 ## <a name="real-time-monitoring"></a>实时监视
-因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分将指示函数是否仍在运行。
+因为数据入口函数通常处理大量数据，WebJobs SDK 仪表板提供了实时监视的数据。 “调用日志”部分告诉你函数是否仍在运行。
 
 ![Ingress 函数正在运行](./media/vs-storage-webjobs-getting-started-tables/ingressrunning.png)
 
@@ -79,7 +79,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 ![Ingress 函数已完成](./media/vs-storage-webjobs-getting-started-tables/ingresssuccess.png)
 
 ## <a name="how-to-read-multiple-entities-from-a-table"></a>如何从表中读取多个实体
-要读取表，请将 **Table** 属性与 **IQueryable<T>** 参数一起使用，其中 **T** 派生自 **TableEntity** 或者用于实现 **ITableEntity**。
+要读取表，请将 Table 属性与 IQueryable**<T>** 参数一起使用，其中 T 派生自 TableEntity 或者用于实现 ITableEntity。
 
 下面的代码示例读取并记录 **Ingress** 表中的所有行：
 
@@ -121,7 +121,7 @@ Azure 表存储服务使用户可以存储大量结构化数据。 该服务是�
 此示例中的 **Person** 类并非必须实现 **ITableEntity**。
 
 ## <a name="how-to-use-the-net-storage-api-directly-to-work-with-a-table"></a>如何直接使用 .NET 存储 API 处理表
-还可以将 **Table** 属性和 **CloudTable** 对象一起使用，以便更灵活地处理表。
+还可以将 Table 属性和 CloudTable 对象一起使用，更灵活地处理表。
 
 下面的代码示例使用 **CloudTable** 对象将单个实体添加到 *Ingress* 表中。
 

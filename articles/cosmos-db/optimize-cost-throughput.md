@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
-ms.openlocfilehash: e4d4d15ebb8200f16be8953e955b2e793be03c3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 63adb354d51caa8f01df8bf05c85257c75b5fe41
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452176"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877820"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
 
@@ -33,19 +33,19 @@ ms.locfileid: "57452176"
 
 1. 有几十个 Azure Cosmos 容器，并想要在部分或所有容器之间共享吞吐量。 
 
-2. 从专用于在 IaaS 托管的 VM 上运行或本地运行的单租户数据库（例如，NoSQL 数据库或关系数据库）迁移到 Azure Cosmos DB。 有许多集合/表/图形，并且不想要对数据模型进行任何更改。 请注意，如果在从本地数据库迁移时不更新数据模型，可能需要牺牲 Azure Cosmos DB 提供的一些优势。 建议始终重新访问数据模型，以获得最大性能并优化成本。 
+2. 从专用于在 IaaS 托管的 VM 上运行或本地运行的单租户数据库（例如，NoSQL 数据库或关系数据库）迁移到 Azure Cosmos DB。 有许多集合/表/图形，并且不想要对数据模型进行任何更改。 请注意，可能需要破坏一些如果从本地数据库迁移时不要更新你的数据模型提供 Azure Cosmos DB 的优势。 建议始终重新访问数据模型，以获得最大性能并优化成本。 
 
 3. 想要在数据库级别利用入池吞吐量，来缓解容易出现意外高峰的工作负荷中的计划外高峰。 
 
 4. 不针对单个容器设置特定的吞吐量，而是考虑如何在数据库中的一组容器之间获得聚合吞吐量。
 
-**对于以下情况，考虑针对单个容器预配吞吐量：**
+**如果设置为单个容器的吞吐量，请考虑：**
 
 1. Azure Cosmos 容器较少。 由于 Azure Cosmos DB 不区分架构，容器可以包含采用异构架构的项，无需客户创建多个容器类型 - 为每个实体各创建一个。 如果将 10 到 20 个容器划分到单个容器有利，则始终适合考虑这种做法。 如果容器的最低吞吐量为 400 RU，则将所有 10 到 20 个容器组建成一个池可能更具成本效益。 
 
 2. 想要控制特定容器的吞吐量，并使给定的容器获得有保证的、且有 SLA 作为保障的吞吐量。
 
-**考虑混合上面两种策略：**
+**请考虑混合上面的两种策略：**
 
 1. 如前所述，Azure Cosmos DB 允许混合搭配上述两种策略，因此，现在可以在 Azure Cosmos 数据库中创建一些容器（它们可以共享针对数据库预配的吞吐量），并可以在同一数据库中创建一些容器（它们可以获得专用的预配吞吐量）。 
 
@@ -113,7 +113,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 ## <a name="optimize-by-changing-indexing-policy"></a>通过更改索引策略进行优化 
 
-默认情况下，Azure Cosmos DB 自动为每条记录的每个属性编制索引。 这是为了简化开发，并确保跨许多不同类型的即席查询的优异的性能。 如果你的大型记录包含数千个属性，购买吞吐量来为每个属性编制索引的做法可能并不有效，尤其是只针对其中的 10 个或 20 个属性运行查询时。 在接近于能够控制特定的工作负荷时，我们的指导原则是优化索引策略。 在[此处](indexing-policies.md)可以找到有关 Azure Cosmos DB 索引策略的完整详细信息。 
+默认情况下，Azure Cosmos DB 自动为每条记录的每个属性编制索引。 这是为了简化开发，并确保跨许多不同类型的即席查询具有优异的性能。 如果你的大型记录包含数千个属性，购买吞吐量来为每个属性编制索引的做法可能并不有效，尤其是只针对其中的 10 个或 20 个属性运行查询时。 在接近于能够控制特定的工作负荷时，我们的指导原则是优化索引策略。 在[此处](indexing-policies.md)可以找到有关 Azure Cosmos DB 索引策略的完整详细信息。 
 
 ## <a name="monitoring-provisioned-and-consumed-throughput"></a>监视预配的吞吐量和消耗的吞吐量 
 
@@ -159,7 +159,7 @@ connectionPolicy.RetryOptions.MaxRetryWaitTimeInSeconds = 60;
 
 2. 有一种方法可以估算应用程序所需的预留吞吐量：在针对应用程序所用的代表性 Azure Cosmos 容器或数据库运行典型操作时，记录与之相关的请求单位 (RU) 费用，然后估算预计每秒会执行的操作数目。 同时请务必测量并包含典型查询及其用量。 若要了解如何以编程方式或使用门户估算查询的 RU 成本，请参阅[优化查询成本](online-backup-and-restore.md)。 
 
-3. 另一种方法来获取 Ru 中的操作以及它们的成本是通过启用 Azure Monitor 日志，这将为你提供的操作/持续时间和请求费用细目。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
+3. 获取操作及其 RU 成本的另一种方法是启用 Azure Monitor 日志，它会提供操作/持续时间的细目以及请求费用。 Azure Cosmos DB 提供每个操作的请求费用，因此，可以存储响应中的每笔操作费用，然后将其用于分析。 
 
 4. 可按需弹性扩展和缩减预配的吞吐量，以适应工作负荷的需要。 
 

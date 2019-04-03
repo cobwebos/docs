@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 8c9fba14bd3f7d3b55a245f8e647f0eae1f8ef83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9603c45443c6339a127f977600eeff2ba57a283f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118419"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884153"
 ---
 # <a name="configure-application-insights-profiler"></a>配置 Application Insights Profiler
 
@@ -39,6 +39,9 @@ ms.locfileid: "58118419"
 根据 Azure 应用服务环境的配置方式，可能会阻止检查代理状态的调用。 即使代理正在运行，窗格可能会显示消息称代理没有运行。 为了确保确实如此，请检查应用程序上的 Web 作业。 如果所有应用设置值都正确并且应用程序上安装了 Application Insights 站点扩展，则 Profiler 正在运行。 如果应用程序正在接收足够的流量，则最近的分析会话应显示在列表中。
 
 ## <a id="profileondemand"></a> 手动触发 Profiler
+
+### <a name="minimum-requirements"></a>最低要求 
+若要手动触发探查器会话的用户他们需要最小值"写入"访问 Application Insights 组件及其角色。 在大多数情况下，可获得此自动和所需任何额外工作。 如果遇到问题，要添加的订阅作用域角色将是"Application Insights 组件参与者"角色。 [查看更多有关角色的访问控制与 Azure Monitor](https://docs.microsoft.com/en-us/azure/azure-monitor/app/resources-roles-access-control)。
 
 只需单击一下，即可手动触发 Profiler。 假设要运行 Web 性能测试。 你将需要跟踪来帮助了解 Web 应用在负载下的性能如何。 控制何时捕获跟踪至关重要，因为知道负载测试何时将运行。 但是随机采样间隔可能会错过捕获。
 
@@ -122,7 +125,7 @@ ms.locfileid: "58118419"
     ![检查是否有扩展更新][check-for-extension-update]
 
 ## <a name="next-steps"></a>后续步骤
-[启用 Profiler 并查看跟踪](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
+[启用 Profiler 和查看跟踪](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png
 [configure-profiler-entry]: ./media/profiler-settings/configure-profiler-entry.png

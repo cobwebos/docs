@@ -5,11 +5,11 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 01/02/2019
 ms.openlocfilehash: 03ec8740a4cf36bf3d09dade8a24b155c09d1299
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740985"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58887183"
 ---
 容器的设置是分层的，主计算机上的所有容器都使用共享层次结构。
 
@@ -22,7 +22,7 @@ ms.locfileid: "56740985"
 
 |优先级|正在设置位置|
 |--|--|
-|第|环境变量| 
+|1|环境变量| 
 |2|命令行|
 |3|容器映像默认值|
 

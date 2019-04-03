@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/11/2019
 ms.author: alkohli
-ms.openlocfilehash: becf48320b346feea82944ed2f7e752125795d40
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a6bea2b5447435930cb0e1f80073a11007e80415
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999501"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876830"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple 虚拟阵列系统要求
 ## <a name="overview"></a>概述
@@ -48,12 +48,12 @@ ms.locfileid: "57999501"
 > 不要将 VMware 工具安装在 StorSimple 虚拟阵列上，这将导致不支持的配置。
 
 ### <a name="virtual-device-requirements"></a>虚拟设备要求
-| 组件 | 要求 |
+| **组件** | **要求** |
 | --- | --- |
 | 虚拟处理器的最小数目（核） |4 |
 | 最小内存 (RAM) |8 GB <br> 对于文件服务器，小于 200 万个文件时为 8 GB，200 万 - 400 万个文件时为 16 GB|
 | 磁盘空间<sup>1</sup> |OS 磁盘 - 80 GB <br></br>数据磁盘 - 500 GB 到 8 TB |
-| 网络接口的最小数目 |第 |
+| 网络接口的最小数目 |1 |
 | Internet 带宽 2<sup></sup> |所需最小带宽：5 Mbps <br> 建议带宽：100 Mbps <br> 数据传输速度与 Internet 带宽成正比。 例如，100 GB 的数据以 5 Mbps 的速度传输 2 天可能导致备份失败，因为每日备份无法在一天内完成。 带宽为 100 Mbps 时，可以在 2.5 小时内传输 100 GB 的数据。   |
 
 <sup>1</sup> - 精简预配
@@ -61,7 +61,7 @@ ms.locfileid: "57999501"
 <sup>2</sup> - 网络要求可能会根据每日数据更改频率而有所不同。 例如，如果设备在一天中需要备份 10 GB 或更多更改，则通过 5 Mbps 连接进行的每日备份可能耗时长达 4.25 小时（如果无法压缩数据或删除重复数据）。
 
 ### <a name="supported-web-browsers"></a>受支持的 Web 浏览器
-| 组件 | **版本** | **其他要求/说明** |
+| **组件** | **版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Microsoft Edge |最新版本 | |
 | Internet Explorer |最新版本 |使用 Internet Explorer 11 测试 |
@@ -70,7 +70,7 @@ ms.locfileid: "57999501"
 ### <a name="supported-storage-clients"></a>受支持的存储客户端
 以下软件要求适用于访问 StorSimple Virtual Array（配置为 iSCSI 服务器）的 iSCSI 发起程序。
 
-| **受支持的操作系统** | **所需版本** | **其他要求/说明** |
+| **支持的操作系统** | **所需版本** | **其他要求/说明** |
 | --- | --- | --- |
 | Windows Server |2008R2 SP1、2012 和 2012R2 |StorSimple 可以创建既精简预配和完全预配的卷。 但无法创建部分预配的卷。 以下各项只支持 StorSimple iSCSI 卷： <ul><li>Windows 基本磁盘上的简单卷。</li><li>用于格式化卷的 Windows NTFS。</li> |
 
@@ -90,9 +90,9 @@ ms.locfileid: "57999501"
 仅支持 Azure 块 blob 存储。 页 blob 不受支持。 请查阅[有关块 blob 和页 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 的更多信息。
 
 ## <a name="networking-requirements"></a>网络要求
-下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*指传入客户端请求访问设备的方向。 *出*或*出站*指 StorSimple 设备越过部署向外部发送数据的方向：例如，到 Internet 的出站。
+下表列出了需要在防火墙中打开以允许 iSCSI、SMB、云或管理流量的端口。 在此表中，*入*或*入站*指传入客户端请求访问设备的方向。 *出*或*出站*表示 StorSimple 设备从外部（超出部署范围）发送数据的方向：例如，到 Internet 的出站。
 
-| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **必需** | **说明** |
+| **端口号<sup>1</sup>** | **入或出** | **端口范围** | **需要** | **说明** |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP) |出 |WAN |否 |出站端口用于 Internet 访问以检索更新。 <br></br>出站 Web 代理可由用户配置。 |
 | TCP 443 (HTTPS) |出 |WAN |是 |出站端口用于访问云中的数据。 <br></br>用户可配置出站 Web 代理。 |
@@ -130,7 +130,7 @@ ms.locfileid: "57999501"
 | `https://*.windowsupdate.microsoft.com`<br>`https://*.windowsupdate.microsoft.com`<br>`https://*.update.microsoft.com`<br> `https://*.update.microsoft.com`<br>`http://*.windowsupdate.com`<br>`https://download.microsoft.com`<br>`http://wustat.windows.com`<br>`https://ntservicepack.microsoft.com` |Microsoft 更新服务器<br> |
 | `http://*.deploy.akamaitechnologies.com` |Akamai CDN |
 | `https://*.partners.extranet.microsoft.com/*` |支持包 |
-| `https://*.data.microsoft.com ` |Windows 中的遥测服务，请参阅[update for customer experience and diagnostic telemetry](https://support.microsoft.com/en-us/kb/3068708)（客户体验和诊断遥测的更新） |
+| `https://*.data.microsoft.com` |Windows 中的遥测服务，请参阅[update for customer experience and diagnostic telemetry](https://support.microsoft.com/en-us/kb/3068708)（客户体验和诊断遥测的更新） |
 
 ## <a name="next-steps"></a>后续步骤
-* [Prepare the portal to deploy your StorSimple Virtual Array](storsimple-virtual-array-deploy1-portal-prep.md)（准备门户以部署 StorSimple Virtual Array）
+* [准备门户以部署 StorSimple 虚拟阵列](storsimple-virtual-array-deploy1-portal-prep.md)

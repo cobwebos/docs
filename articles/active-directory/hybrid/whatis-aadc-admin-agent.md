@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/03/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17b99b7b03898ad72b4d9c7cc2ba9154855475ef
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 49234472481e30cf74efa3e72ac0e4f31466fada
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488220"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884884"
 ---
 # <a name="what-is-the-azure-ad-connect-admin-agent"></a>什么是 Azure AD Connect 管理员代理？ 
 Azure AD Connect 管理代理是一个新的 Azure Active Directory Connect 在 Azure Active Directory Connect 的服务器上安装的组件。 它用于从 Active Directory 环境，可帮助 Microsoft 支持工程师来解决问题，当您打开一个支持案例时收集特定数据。
@@ -39,7 +39,7 @@ Microsoft 支持工程师不能更改系统中的任何数据和不可以看到�
 
 ## <a name="what-if-i-dont-want-the-microsoft-support-engineer-to-access-my-data"></a>我不希望 Microsoft 支持工程师来访问我的数据怎么办？ 
  
-如果不希望在门户中的调用 Microsoft 服务工程师访问拨打支持电话，您可以指示这一点时打开支持你的数据： 
+如果不希望访问你的数据支持调用的 Microsoft 服务工程师可以禁用此通过修改服务配置文件，如下所述： 
 
   1.    打开**C:\Program Files\Microsoft Azure AD Connect 管理 Agent\AzureADConnectAdministrationAgentService.exe.config**在记事本中。
   2.    禁用**UserDataEnabled**设置，如下所示。 如果**UserDataEnabled**设置存在，并且设置为 true，然后将其设置为 false。 如果设置不存在，则添加设置，如下所示。    

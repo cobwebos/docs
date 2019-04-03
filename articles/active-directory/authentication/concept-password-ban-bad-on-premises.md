@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e6623e18fa319066f121dced551dcada133ebd5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479523"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862881"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
@@ -83,16 +83,6 @@ Azure AD 密码保护并不是实时的策略应用程序引擎。 可以在 Azu
 在 Active Directory 林中的 Azure AD 密码保护的部署需要该林与 Azure AD 的注册。 此外必须与 Azure AD 注册部署每个代理服务。 这些林和代理注册相关联的特定 Azure AD 租户，在注册过程中使用的凭据由隐式标识。
 
 Active Directory 林和在林中的所有已部署的代理服务必须使用相同的租户注册。 不支持具有 Active Directory 林或任何代理服务，因为林中要注册到不同的 Azure AD 租户。 部署配置错误的症状包括无法下载的密码策略。
-
-## <a name="license-requirements"></a>许可要求
-
-全局受禁的密码列表的优点适用于 Azure AD 的所有用户。
-
-自定义受禁密码列表需要 Azure AD Basic 许可证。
-
-Windows Server Active Directory 的 Azure AD 密码保护需要 Azure AD Premium 许可证。
-
-有关许可的其他信息，请参阅[Azure Active Directory 定价](https://azure.microsoft.com/pricing/details/active-directory/)。
 
 ## <a name="download"></a>下载
 

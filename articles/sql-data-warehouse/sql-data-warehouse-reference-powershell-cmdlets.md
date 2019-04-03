@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 10ba16fc06a4678c7bd70cbb7e6797b8d9be8ff4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e62f12123ae9af4f5e09d19622ba1558c2f43184
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485113"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846427"
 ---
 # <a name="powershell-cmdlets-and-rest-apis-for-sql-data-warehouse"></a>适用于 SQL 数据仓库的 PowerShell cmdlet 和 REST API
 可以使用 Azure PowerShell cmdlet 或 REST API 来管理许多 SQL 数据仓库管理任务。  下面是如何使用 PowerShell 命令自动执行 SQL 数据仓库中的常见任务的一些示例。  如需一些典型的 REST 示例，请参阅[使用 REST 管理可伸缩性][Manage scalability with REST]一文。
@@ -38,7 +38,7 @@ ms.locfileid: "58485113"
 ```Powershell
 Suspend-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
 ```
-一种变体，该示例将传输到检索到的对象[挂起 AzSqlDatabase][Suspend-AzSqlDatabase]。  因此会暂停该数据库。 最后一个命令显示结果。
+作为一种变体，此示例可通过管道将检索到的对象传递给 [Suspend-AzSqlDatabase][Suspend-AzSqlDatabase]。  因此会暂停该数据库。 最后一个命令显示结果。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -53,7 +53,7 @@ $resultDatabase
 Resume-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" -DatabaseName "Database02"
 ```
 
-作为一种变体，此示例可从“ResourceGroup1”资源组包含的“Server01”服务器中检索“Database02”数据库。 它通过管道传递到检索到的对象[Resume AzSqlDatabase][Resume-AzSqlDatabase]。
+作为一种变体，此示例可从“ResourceGroup1”资源组包含的“Server01”服务器中检索“Database02”数据库。 它通过管道将检索到的对象传递给 [Resume-AzSqlDatabase][Resume-AzSqlDatabase]。
 
 ```Powershell
 $database = Get-AzSqlDatabase –ResourceGroupName "ResourceGroup1" –ServerName "Server01" –DatabaseName "Database02"
@@ -96,7 +96,7 @@ Azure SQL 数据仓库支持以下 PowerShell cmdlet。
 [Manage scalability with REST]: ./sql-data-warehouse-manage-compute-rest-api.md
 
 <!--MSDN references-->
-[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/azurerm.sql
+[Azure SQL Database Cmdlets]: https://docs.microsoft.com/powershell/module/az.sql
 [Operations for Azure SQL Database]: https://msdn.microsoft.com/library/azure/dn505719.aspx
 [Get-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabase
 [Get-AzSqlDeletedDatabaseBackup]: https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup

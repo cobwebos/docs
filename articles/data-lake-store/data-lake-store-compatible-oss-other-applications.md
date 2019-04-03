@@ -3,19 +3,19 @@ title: 与 Data Lake Storage Gen1 兼容的大数据应用程序 | Microsoft Doc
 description: 用于 Azure Data Lake Storage Gen1（以前称为 Azure Data Lake Store）的开源应用程序列表
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 2960e8f438480f3e0ba2dcc26f5fc82e69f55427
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 37bf26db5f7ae08734410d36a892aaeb2380bd9f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541870"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880276"
 ---
 # <a name="open-source-big-data-applications-that-work-with-azure-data-lake-storage-gen1"></a>用于 Azure Data Lake Storage Gen1 的开源大数据应用程序
 

@@ -3,20 +3,20 @@ title: .NET SDK：对 Azure Data Lake Storage Gen1 执行的文件系统操作 |
 description: 使用 Azure Data Lake Storage Gen1 .NET SDK 在 Data Lake Storage Gen1 上执行文件系统操作，例如创建文件夹等。
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 0a6cfc5ca9a0b788075f4472649a6e1bcdf87637
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.author: twooley
+ms.openlocfilehash: 02091f1b650e3e9932f9924bf36a5841861d3b1e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119490"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876949"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的文件系统操作
 > [!div class="op_single_selector"]
@@ -59,8 +59,8 @@ ms.locfileid: "58119490"
    2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
    3. 搜索并安装以下 NuGet 包：
 
-      * `Microsoft.Azure.DataLake.Store` - 本教程使用 v1.0.0。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.3.1。
+      * `Microsoft.Azure.DataLake.Store` -本教程使用 v1.0.0 的要求。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -本教程使用 v2.3.1。
     
       关闭“NuGet 包管理器”。
 
@@ -174,12 +174,12 @@ ms.locfileid: "58119490"
 
 ## <a name="samples"></a>示例
 下面是一些示例，介绍了如何使用 Data Lake Storage Gen1 Filesystem SDK。
-* [Github 上的基本示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
-* [Github 上的高级示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
+* [GitHub 上的基本示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-get-started/tree/master/AdlsSDKGettingStarted)
+* [GitHub 上的高级的示例](https://github.com/Azure-Samples/data-lake-store-adls-dot-net-samples)
 
 ## <a name="see-also"></a>另请参阅
-* [使用 .NET SDK 对 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [数据在数据湖存储 Gen1 帐户管理操作使用.NET SDK](data-lake-store-get-started-net-sdk.md)
+* [数据湖存储 Gen1.NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)

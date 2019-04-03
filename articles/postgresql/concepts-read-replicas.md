@@ -5,20 +5,17 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 02/19/2019
-ms.openlocfilehash: 40b31f166ea97cfce67d3cc386062e32338ffd45
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.date: 04/01/2019
+ms.openlocfilehash: f340f1e42b6993a1f834ab05570c669d4241222b
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56455511"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847184"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的只读副本
 
 使用只读副本功能可将数据从 Azure Database for PostgreSQL 服务器复制到只读服务器。 可将主服务器中的数据复制到同一 Azure 区域中的最多 5 个副本。 副本是使用 PostgreSQL 引擎的本机复制技术以异步方式更新的。
-
-> [!IMPORTANT]
-> 只读副本功能目前以公共预览版提供。
 
 副本是新的服务器，可以像管理普通的 Azure Database for PostgreSQL 服务器一样对其进行管理。 每个只读副本按照预配计算资源的 vCore 数量以及每月 GB 存储量计费。
 
@@ -106,7 +103,7 @@ AS total_log_delay_in_bytes from pg_stat_replication;
 
 本部分汇总了有关只读副本功能的注意事项。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 创建只读副本之前，必须将主服务器上的 `azure.replication_support` 参数设置为 **REPLICA**。 更改此参数后，需要重启服务器才能使更改生效。 `azure.replication_support` 参数仅适用于“常规用途”和“内存优化”层。
 
 ### <a name="new-replicas"></a>新副本

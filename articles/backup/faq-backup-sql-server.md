@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 48a0400a471e06f65c1d548b7c1c419a1cb198bd
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58284572"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876422"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关在 Azure VM 备份运行的 SQL Server 数据库的常见问题解答
 
@@ -42,7 +42,7 @@ ms.locfileid: "58284572"
 是的。 可以限制备份策略的运行速率，以尽量减少对 SQL Server 实例的影响。 若要更改设置，请执行以下操作：
 1. 在 SQL Server 实例中*C:\Program Files\Azure 工作负荷 Backup\bin*文件夹中，创建*ExtensionSettingsOverrides.json*文件。
 2. 在中*ExtensionSettingsOverrides.json*文件中，将**DefaultBackupTasksThreshold**将设置为较低的值 (例如，5)。 <br>
-  ` {"DefaultBackupTasksThreshold": 5}`
+  `{"DefaultBackupTasksThreshold": 5}`
 
 3. 保存所做的更改并关闭该文件。
 4. 在 SQL Server 实例上，打开“任务管理器”。 重启 **AzureWLBackupCoordinatorSvc** 服务。
@@ -57,7 +57,7 @@ ms.locfileid: "58284572"
 不是。 Azure 备份来保护在 Azure 中运行的 SQL Server 数据库。 如果某一可用性组 (AG) 跨 Azure 和本地计算机之间，仅当主副本运行在 Azure 中，可以保护可用性组。 此外，Azure 备份会保护仅在恢复服务保管库所在的同一 Azure 区域中运行的节点。
 
 ## <a name="can-i-protect-availability-groups-across-regions"></a>可以跨区域保护可用性组？
-Azure 备份恢复服务保管库可以检测并保护在与保管库位于同一区域中的所有节点。 如果 SQL Server Always On 可用性组跨多个 Azure 区域，将备份从主节点的区域设置。 Azure 备份可以检测并保护备份首选项根据可用性组中的所有数据库。 当不满足您的备份首选项时，备份将失败，并获取故障警报。
+Azure 备份恢复服务保管库可以检测并保护在与保管库位于同一区域中的所有节点。 如果 SQL Server Always On 可用性组跨多个 Azure 区域，将备份从主节点的区域设置。 Azure 备份可根据备份首选项检测并保护可用性组中的所有数据库。 当不满足您的备份首选项时，备份将失败，并获取故障警报。
 
 ## <a name="do-successful-backup-jobs-create-alerts"></a>成功的备份作业是否会创建警报？
 不是。 成功的备份作业不会生成警报。 仅针对失败的备份作业发送警报。 记录有关门户警报的详细的行为[此处](backup-azure-monitoring-built-in-monitor.md)。 但是，感兴趣的情况下是否有警报甚至对于成功的作业，你可以使用[使用 Azure Monitor 监视](backup-azure-monitoring-use-azuremonitor.md)。

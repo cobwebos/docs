@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 6ffe051c019184d5ce1a32af50dbf3e7faa06675
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55490305"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881182"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
 
@@ -64,7 +64,7 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>配置 VPN 网关为主动-主动以进行连接复原
 
-在主动-主动配置中，VPN 网关的两个实例将建立连接本地 VPN 设备的 S2S VPN 隧道。 当一个网关实例上发生计划内维护事件或计划外事件时，流量将自动切换到其他活动 IPsec 隧道。 Azure 顾问将识别未配置为主动-主动的 VPN 网关并建议将它们配置为高可用性。
+在主动-主动配置中，VPN 网关的两个实例将建立 S2S VPN 隧道与本地 VPN 设备。 当一个网关实例上发生计划内维护事件或计划外事件时，流量将自动切换到其他活动 IPsec 隧道。 Azure 顾问将识别未配置为主动-主动的 VPN 网关并建议将它们配置为高可用性。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 

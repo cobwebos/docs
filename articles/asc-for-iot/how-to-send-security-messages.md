@@ -1,25 +1,25 @@
 ---
 title: 将你的安全消息发送到 Azure 安全中心，IoT 预览版 |Microsoft Docs
 description: 了解如何将 iot 使用 Azure 安全中心安全消息发送。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: c611bb5c-b503-487f-bef4-25d8a243803d
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: be17c5bb4d09e0868af0c6fd9b31f7653b614735
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: a9974fd15ae9c8c420992c3ae1084feebae0f57d
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762763"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862397"
 ---
 # <a name="send-security-messages-sdk"></a>发送安全消息 SDK
 

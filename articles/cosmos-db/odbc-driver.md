@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: 95811459ff51b71153fb5ceef804a64c8b6a9be6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55816622"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851057"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -80,7 +80,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 ## <a id="#collection-mapping"></a>步骤 3：使用集合映射方法创建架构定义
 
-可以使用两种类型的采样方法：**集合映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个集合只能使用特定的采样方法。 以下步骤使用集合映射方法为一个或多个集合中的数据创建架构。 此采样方法将检索集合页面中的数据，以确定数据的结构。 它会将集合转置到 ODBC 端的某个表。 如果集合中的数据是同构的，此采样方法将十分快速高效。 如果集合包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为这是确定集合中数据结构的更可靠采样方法。 
+可以使用两种类型的采样方法：**集合映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个集合只能使用特定的采样方法。 以下步骤使用集合映射方法为一个或多个集合中的数据创建架构。 此采样方法将检索集合页面中的数据，以确定数据的结构。 它会将集合转置到 ODBC 端的某个表。 如果集合中的数据是同构的，此采样方法十分快速高效。 如果集合包含异构类型的数据，我们建议使用[表分隔符映射方法](#table-mapping)，因为这是确定集合中数据结构的更可靠采样方法。 
 
 1. 完成[连接到 Azure Cosmos DB 数据库](#connect)中的步骤 1-4 后，请在“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口中单击“架构编辑器”。
 
@@ -97,13 +97,13 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 1. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。
 
-    以后如果想要配合 DSN 使用此架构，请通过“ODBC 数据源管理器”打开“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口，单击“高级选项”，并在“架构文件”框中导航到保存的架构。 将架构文件保存到现有 DSN 会将 DSN 连接范围修改为架构定义的数据和结构。
+1. 若要配合 DSN 使用此架构，请打开**Azure Cosmos DB ODBC 驱动程序 DSN 设置窗口**（通过 ODBC 数据源管理器），单击**高级选项**，然后在**架构文件**框中，导航到保存的架构。 将架构文件保存到现有 DSN 会将 DSN 连接范围修改为架构定义的数据和结构。
 
 ## <a id="table-mapping"></a>步骤 4：使用表分隔符映射方法创建架构定义
 
 可以使用两种类型的采样方法：**集合映射**或**表分隔符**。 采样会话可以利用这两种采样方法，但每个集合只能使用特定的采样方法。 
 
-以下步骤使用**表分隔符**映射方法为一个或多个集合中的数据创建架构。 如果集合包含异构类型的数据，我们建议使用此采样方法。 可以使用此方法将采样范围限定为一组属性及其相应值。 例如，如果某个文档包含“Type”属性，可将采样范围限定为此属性的值。 采样的最终结果是针对每个指定的 Type 值返回一组表。 例如，Type = Car 将生成 Car 表，Type = Plane 将生成 Plane 表。
+以下步骤使用**表分隔符**映射方法为一个或多个集合中的数据创建架构。 如果集合包含异构类型的数据，我们建议使用此采样方法。 可以使用此方法将采样范围限定为一组属性及其相应值。 例如，如果某个文档包含“Type”属性，可将采样范围限定为此属性的值。 采样的最终结果为针对每个指定 Type 的值返回的一组表。 例如，Type = Car 将生成 Car 表，Type = Plane 将生成 Plane 表。
 
 1. 完成[连接到 Azure Cosmos DB 数据库](#connect)中的步骤 1-4 后，请在“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口中单击“架构编辑器”。
 
@@ -219,7 +219,7 @@ Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server
 
 1. 在“使用 ODBC 驱动程序访问数据源”窗口中，选择“默认或自定义”，并单击“连接”。 不需要包括“凭据连接字符串属性”。
 
-1. 在“导航器”窗口的左窗格中，展开数据库和架构，并选择表。 结果窗格包含使用创建的架构的数据。
+1. 在“导航器”  窗口的左窗格中，展开数据库和架构，并选择表。 结果窗格包含使用创建的架构的数据。
 
     ![在 Power BI“获取数据”中选择表](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
 

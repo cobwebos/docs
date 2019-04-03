@@ -1,6 +1,6 @@
 ---
 title: 数据库迁移方案状态 | Microsoft Docs
-description: 详细了解 Azure 数据库迁移服务支持的迁移方案的状态。
+description: 了解有关 Azure 数据库迁移服务支持的迁移方案的状态信息。
 services: database-migration
 author: HJToland3
 ms.author: jtoland
@@ -10,67 +10,70 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: b07f36055f9c0690450e8d4ab5abacb8c84d9bf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/03/2019
+ms.openlocfilehash: 7017566092530dce2359d45314ac00dca63b8ad0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182534"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886227"
 ---
-# <a name="status-of-migration-scenarios-supported-by-the-azure-database-migration-service"></a>Azure 数据库迁移服务支持的迁移方案的状态
-Azure 数据库迁移服务旨在支持脱机（一次性）和联机（连续同步）迁移的各种迁移方案（源/目标对）。 随着时间的推移，Azure 数据库迁移服务提供的方案范围也在不断扩大。 将定期添加新的方案。 这篇文章介绍了 Azure 数据库迁移服务当前支持的迁移方案和状态（个人[或有限]预览版、公共预览版或正式发布版）或每个方案。
+# <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>迁移方案支持的 Azure 数据库迁移服务的状态
+Azure 数据库迁移服务旨在支持不同迁移方案 （源/目标对） 同时脱机 （一次性） 和联机 （连续同步） 迁移。 随着时间的推移，Azure 数据库迁移服务提供的方案范围也在不断扩大。 将定期添加新的方案。 此项目用于标识当前支持的 Azure 数据库迁移服务和每个方案的状态 （个人预览版中，公共预览版中，或已公开发布） 的迁移方案。
 
 ## <a name="offline-versus-online-migrations"></a>脱机和联机迁移
-使用 Azure 数据库迁移服务将数据库迁移到 Azure 时，可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始。 对于“联机”迁移，停机时间仅限于迁移完成时切换到新环境所需的时间。 建议对脱机迁移进行测试，以便确定其停机时间是否可以接受；如果不能接受，请执行联机迁移。
+使用 Azure 数据库迁移服务，您可以执行脱机或联机迁移。 通过“脱机”迁移，应用程序停机时间在迁移开始的同时开始。 若要限制到所需切换到新环境中完成迁移后的时间的停机时间，请使用*online*迁移。 我们建议将测试以确定是否可接受; 停机时间的脱机迁移否则，请执行联机迁移。
 
 ## <a name="migration-scenario-status"></a>迁移方案状态
-Azure 数据库迁移服务支持的每种迁移方案的状态随时间而变化。 通常，方案首先在“个人预览版”中发布，并且利用该功能要求客户通过 [DMS 预览站点](https://aka.ms/dms-preview)提交提名。 个人预览版完成后，方案状态将更改为“公共预览版”。 所有 Azure 数据库迁移服务用户都可以利用公共预览版中提供的迁移方案。 但是，迁移方案可能并非在所有区域都可用，并且功能可能会在最终发布之前进行其他更改。 迁移方案变为“正式发布版”时（最终的已发布状态），该功能即已完成，并且可供所有 Azure 数据库迁移服务用户使用。 
+随着时间而变化的迁移方案支持的 Azure 数据库迁移服务的状态。 通常情况下，在首次发布方案**个人预览版**。 参与个人预览版要求客户提交通过提名[DMS 预览站点](https://aka.ms/dms-preview)。 在个人预览版后方案状态将变为**公共预览版**。 Azure 数据库迁移服务用户可以尝试直接从用户界面的公共预览版中的迁移方案。 不注册是必需的。  但是，在公共预览版中的迁移方案在所有区域中可能不可用，并且还可能进行其他更改之前最终版本。 公开预览版后，方案状态将变为**正式**。 推出 (GA）) 通常是最终版本状态和功能完成并可供所有用户访问。 
 
 ## <a name="migration-scenario-support"></a>迁移方案支持
-
-下表显示使用 Azure 数据库迁移服务时支持的迁移方案。
+下表显示了使用 Azure 数据库迁移服务时，受支持的迁移方案。
 
 > [!NOTE]
 > 如果下面列出的支持方案未出现在用户界面中，请联系[数据迁移团队](mailto:datamigrationteam@microsoft.com)获取详细信息。
 
-### <a name="offline-one-time-migration-support"></a>脱机（一次性）迁移支持
-下表显示了 Azure 数据库迁移服务对脱机迁移的支持。
+> [!IMPORTANT]
+> 若要查看在个人预览版的 Azure 数据库迁移服务目前支持的方案，请参阅[DMS 预览站点](https://aka.ms/dms-preview)。
 
-| 目标  | 源 | 支持 |
-| ------------- | ------------- | :-------------: |
-| **Azure SQL DB**  | SQL Server | ✔ |
-|   | RDS SQL  |  ✔ |
-|   | Oracle  |   |
-| **Azure SQL DB MI**  | SQL Server  | ✔ |
-|   | RDS SQL  | ✔ |
-|   | Oracle  | ✔  |
-| **Azure SQL VM**  | SQL Server | ✔ |
-|   | Oracle  |   |
-| **Azure Cosmos DB**  | MongoDB | ✔ |
-| **Azure DB for MySQL**  | MySQL |  |
-|   | RDS MySQL  |  |
-| **用于 PostgreSQL 的 Azure DB**  | PostgreSQL |  |
-|  | RDS PostgreSQL  |  |
+### <a name="offline-one-time-migration-support"></a>脱机（一次性）迁移支持
+下表显示了用于对脱机迁移的 Azure 数据库迁移服务的支持。
+
+| 目标  | 源 | 支持 | 状态 |
+| ------------- | ------------- | :-------------: | :-------------: |
+| **Azure SQL 数据库** | SQL Server | ✔ | GA |
+|   | RDS SQL |  |  |
+|   | Oracle |  |  |
+| **Azure SQL DB MI** | SQL Server | ✔ | GA |
+|   | RDS SQL |  |  |
+|   | Oracle |  |   |
+| **Azure SQL VM** | SQL Server | ✔ | GA |
+|   | Oracle |   |   |
+| **Azure Cosmos DB** | MongoDB | ✔ | 公共预览版 |
+| **用于 MySQL 的 Azure DB** | MySQL |   |   |
+|   | RDS MySQL |   |   |
+| **用于 PostgreSQL 的 Azure DB** | PostgreSQL |  |
+|  | RDS PostgreSQL |   |   |
 
 ### <a name="online-continuous-sync-migration-support"></a>联机（连续同步）迁移支持
-下表显示了 Azure 数据库迁移服务对联机迁移的支持。
+下表显示了 Azure 数据库迁移服务，公共预览版或已公开发布，针对联机迁移支持。
 
-| 目标  | 源 | 支持 |
-| ------------- | ------------- | :-------------: |
-| **Azure SQL DB**  | SQL Server | ✔ |
-|   | RDS SQL  |   |
-|   | Oracle  |  ✔ |
-| **Azure SQL DB MI**  | SQL Server  | ✔ |
-|   | RDS SQL  |  |
-|   | Oracle  | ✔  |
-| **Azure SQL VM**  | SQL Server  |   |
-|   | Oracle  | ✔  |
-| **Azure Cosmos DB**  | MongoDB  | ✔ |
-| **Azure DB for MySQL**  | MySQL | ✔ |
-|   | RDS MySQL  | ✔ |
-| **用于 PostgreSQL 的 Azure DB**  | PostgreSQL | ✔ |
-|  | RDS PostgreSQL  | ✔ |
+| 目标  | 源 | 支持 | 状态 |
+| ------------- | ------------- | :-------------: | :-------------: |
+| **Azure SQL 数据库** | SQL Server | ✔ | GA |
+|   | RDS SQL | ✔ | GA |
+|   | Oracle |  |  |
+| **Azure SQL DB MI** | SQL Server | ✔ | GA |
+|   | RDS SQL | ✔ | GA |
+|   | Oracle | ✔ | 个人预览版 |
+| **Azure SQL VM** | SQL Server |   |   |
+|   | Oracle  |  |  |
+| **Azure Cosmos DB** | MongoDB | ✔ | 公共预览版 |
+| **用于 MySQL 的 Azure DB** | MySQL | ✔ | GA |
+|   | RDS MySQL | ✔ | GA |
+| **用于 PostgreSQL 的 Azure DB** | PostgreSQL | ✔ | GA |
+|   | RDS PostgreSQL | ✔ | GA |
+|   | Oracle | ✔ | 个人预览版 |
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据库迁移服务和区域可用性的概述，请参阅[什么是 Azure 数据库迁移服务](dms-overview.md)一文。 
+Azure 数据库迁移服务和区域可用性的概述，请参阅文章[什么是 Azure 数据库迁移服务](dms-overview.md)。

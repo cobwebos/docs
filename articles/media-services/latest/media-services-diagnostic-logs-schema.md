@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
-ms.openlocfilehash: 225bc4368d2a87fa5fef3f74624fd10f42dc7c97
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556359"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850630"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
 [Azure 监视器](../../azure-monitor/overview.md)允许你监视指标和诊断日志，帮助您理解如何执行你的应用程序。 您可以监视媒体服务诊断日志，并创建警报和通知收集的指标和日志。 您可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，流式传输到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第三方服务。
 
-有关详细信息，请参阅[Azure Monitor 指标](../../azure-monitor/platform/data-collection.md)并[Azure Monitor 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)。
+有关详细信息，请参阅[Azure Monitor 指标](../../azure-monitor/platform/data-platform.md)并[Azure Monitor 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)。
 
 本文介绍媒体服务诊断日志架构。
 

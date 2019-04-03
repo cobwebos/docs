@@ -14,40 +14,41 @@ ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: zhiweiw
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16794dfdcdc6ed9c2effe412237d2681fca4f394
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 3ffd783ec41b1b0c4a11ee426648c1e36fbbbf75
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803283"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883694"
 ---
 # <a name="health-service-data-is-not-up-to-date-alert"></a>“运行状况服务数据不是最新的”警报
 
 ## <a name="overview"></a>概述
-Azure AD Connect Health 监视的本地计算机上的代理会定期将数据上载到 Azure AD Connect Health 服务。 如果服务未从代理接收数据，则门户中显示的信息将过时。 要突出显示该问题，该服务将显示“运行状况服务数据不是最新的”警报。 生成服务在过去的两个小时内未收到已完成的数据时。  
 
-* **警告**触发状态警报，如果运行状况服务已收到仅**分部**过去的两个小时内从服务器发送的数据类型。 警告状态的警报不会触发向已配置的收件人的电子邮件通知。 
-* **错误**如果运行状况服务未收到任何数据类型从服务器中过去两小时触发状态警报。 错误状态触发警报电子邮件通知发送给配置的收件人。
+Azure AD Connect Health 监视定期的本地计算机上的代理将数据上传到 Azure AD 连接运行状况服务。 如果服务未收到来自代理的数据，门户会显示的信息将会过时。 若要突出显示此问题，该服务将引发**运行状况服务数据不是最新**警报。 该服务在过去两小时内未收到完整的数据时，将生成此警报。  
 
-该服务在本地计算机运行的代理中获取的数据。 根据服务类型中下, 表列出了它们以及由服务生成的数据类型所执行的操作在计算机运行的代理。 在某些情况下，有多个服务所涉及的过程中，因此其中任何一个可能是问题所在。 
+- **警告**触发状态警报，如果运行状况服务已收到仅**分部**在过去两小时后从服务器发送的数据类型。 警告状态警报不会触发向已配置的收件人的电子邮件通知。 
+- **错误**如果运行状况服务未收到任何数据类型从服务器在过去两小时内触发状态警报。 错误状态在警报触发器发送到配置的收件人电子邮件通知。
+
+该服务获取的数据从本地计算机，具体取决于服务类型运行的代理。 下表列出了在计算机、 其功能和服务生成的数据类型运行的代理。 在某些情况下，有多个服务所涉及的过程中，因此其中任何一个可能是问题所在。 
 
 ## <a name="understanding-the-alert"></a>了解警报
-警报详细信息边栏选项卡指示引发并且上一次检测到警报的时间。 此警报是生成/重新-evaluated 由后台进程运行每隔两小时。 在下面的示例中，初始引发警报的 03/10 在上午 9:59。 它逐渐甚至在 03/12 存在 10:00 AM 重新评估警报。
-在边栏选项卡还详细介绍了上一次运行状况服务接收特定的数据类型的时间。 
+
+**Alert Details**边栏选项卡显示警报发生的时间和上次检测到。 每两小时运行的后台进程生成并重新评估警报。 在以下示例中，初始警报发生 03/10 上午 9:59。 警报仍 03/12 上时存在 10:00 AM 重新评估警报。 在边栏选项卡还详细介绍了运行状况服务上一次接收到特定的数据类型的时间。 
  
  ![Azure AD Connect Health 警报详细信息](./media/how-to-connect-health-data-freshness/data-freshness-details.png)
  
-下面是服务类型和相应的所需的数据类型的映射。
+下表将服务类型映射到相应的所需的数据类型：
 
 | 服务类型 | 代理 （Windows 服务名称） | 目的 | 生成的数据类型  |
 | --- | --- | --- | --- |  
-| Azure AD Connect （同步） | Azure AD Connect Health Sync Insights 服务 | 收集 AAD Connect 特定信息 （连接器，同步规则等。） | - AadSyncService-SynchronizationRules <br />  - AadSyncService-Connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
-|  | Azure AD Connect Health Sync 监视服务 | 收集 (AAD Connect 特定) 性能计数器，ETW 跟踪文件 | 性能计数器 |
+| Azure AD Connect （同步） | Azure AD Connect Health Sync Insights 服务 | 收集特定于 AAD Connect 的信息 （连接器，同步规则，等等。） | - AadSyncService-SynchronizationRules <br />  - AadSyncService-Connectors <br /> - AadSyncService-GlobalConfigurations  <br />  - AadSyncService-RunProfileResults <br /> - AadSyncService-ServiceConfigurations <br /> - AadSyncService-ServiceStatus   |
+|  | Azure AD Connect Health Sync 监视服务 | 收集特定于 AAD Connect 的性能计数器，ETW 跟踪，文件 | 性能计数器 |
 | AD DS | Azure AD Connect Health AD DS Insights 服务 | 执行综合测试、 收集拓扑信息，复制元数据 |  - Adds-TopologyInfo-Json <br /> 常见的 TestData-Json （创建测试结果）   | 
-|  | Azure AD Connect Health AD DS 监视服务 | 收集 （特定于 ADDS 的） 性能计数器，ETW 跟踪文件 | 性能计数器  <br /> 常见的 TestData-Json （上传测试结果）  |
+|  | Azure AD Connect Health AD DS 监视服务 | 收集特定于 ADDS 的性能计数器，ETW 跟踪，文件 | 性能计数器  <br /> 常见的 TestData-Json （上传测试结果）  |
 | AD FS | Azure AD Connect Health AD FS Diagnostics 服务 | 执行综合测试 | TestResult （创建测试结果） | 
 | | Azure AD Connect Health AD FS Insights 服务  | 收集 ADFS 使用情况指标 | Adfs-UsageMetrics |
-| | Azure AD Connect Health AD FS Monitoring 服务 | 收集 （特定于 ADFS 的） 性能计数器，ETW 跟踪文件 | TestResult （上传测试结果） |
+| | Azure AD Connect Health AD FS Monitoring 服务 | 收集特定于 ADFS 的性能计数器，ETW 跟踪，文件 | TestResult （上传测试结果） |
 
 ## <a name="troubleshooting-steps"></a>疑难解答步骤 
 

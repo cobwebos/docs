@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: 4252b0f26ef3c02216a41dde5d2e1cb5ea0efd6a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 23c87ae92a0f22b4a1a31c054df730af2efc07d1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57556389"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848057"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs"></a>监视媒体服务指标和诊断日志
 
 [Azure 监视器](../../azure-monitor/overview.md)允许你监视指标和诊断日志，帮助您理解如何执行你的应用程序。 通过 Azure Monitor 收集的所有数据都适合指标和日志的两种基本类型之一。 您可以监视媒体服务诊断日志，并创建警报和通知收集的指标和日志。 你可以可视化和分析使用指标数据[指标资源管理器](../../azure-monitor/platform/metrics-getting-started.md)。 您可以将日志发送到[Azure 存储](https://azure.microsoft.com/services/storage/)，流式传输到[Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，并将其导出到[Log Analytics](https://azure.microsoft.com/services/log-analytics/)，或使用第三方服务。
 
-有关详细的概述，请参阅[Azure Monitor 指标](../../azure-monitor/platform/data-collection.md)并[Azure Monitor 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)。
+有关详细的概述，请参阅[Azure Monitor 指标](../../azure-monitor/platform/data-platform.md)并[Azure Monitor 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)。
 
 本主题讨论了当前可用[媒体服务度量值](#media-services-metrics)并[Media Services 诊断日志](#media-services-diagnostic-logs)。
 

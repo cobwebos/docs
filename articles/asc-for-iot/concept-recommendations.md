@@ -1,25 +1,25 @@
 ---
 title: 了解 Azure 安全中心的 IoT 安全建议预览 |Microsoft Docs
 description: 了解安全建议以及如何使用它们在 Azure 安全中心对 IoT 的概念。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 02ced504-d3aa-4770-9d10-b79f80af366c
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
-ms.openlocfilehash: 9204bf864ca915baaf6d107ef3586bcd02ed9fef
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 3364ff6bcf824e5f7d925fdb6d0826d5c3c32369
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754820"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862244"
 ---
 # <a name="security-recommendations"></a>安全建议
 

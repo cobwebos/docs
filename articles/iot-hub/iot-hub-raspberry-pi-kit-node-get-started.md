@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: ebdc90dc35f891ea1811ce81c5bdc1b937c58a5c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0db28fb8016176bdd66e5406a6f1c0a18cc5c3e8
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57529235"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847594"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -24,7 +24,6 @@ ms.locfileid: "57529235"
 在本教程中，用户首先将学习使用运行 Raspbian 的 Raspberry Pi 的基础知识。 然后将学习如何使用 [Azure IoT 中心](about-iot-hub.md)将设备无缝连接到云。 有关 Windows 10 IoT Core 的示例，请访问 [Windows 开发人员中心](https://www.windowsondevices.com/)。
 
 还没有工具包？ 请尝试 [Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)。 或在[此处](https://azure.microsoft.com/develop/iot/starter-kits)购买新工具包。
-
 
 ## <a name="what-you-do"></a>准备工作
 
@@ -87,7 +86,7 @@ ms.locfileid: "57529235"
 
    > [!WARNING]
    > 请使用上面的链接来下载 `raspbian-2017-07-5` zip 映像。 Raspbian 映像的最新版本具有与接线 Pi 节点相关的已知问题，这可能会导致在接下来的步骤中发生故障。
- 
+
    b. 将 Raspbian 映像提取到计算机上的一个文件夹中。
 
 2. 将 Raspbian 安装到 microSD 卡。
@@ -160,26 +159,26 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>克隆示例应用程序，并安装必备组件包
 
 1. 从主计算机使用以下 SSH 客户端之一连接到 Raspberry Pi：
-   
+
    **Windows 用户**
   
    a. 下载并安装 [PuTTY](https://www.putty.org/) for Windows。 
 
    b. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
-   
+
    ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
-   
+
    **Mac 和 Ubuntu 用户**
-   
+
    使用 Ubuntu 或 macOS 上的内置 SSH 客户端。 可能需要运行 `ssh pi@<ip address of pi>`，以通过 SSH 连接 Pi。
 
    > [!NOTE] 
    > 默认用户名是 `pi`，密码是 `raspberry`。
 
 2. 将 Node.js 和 NPM 安装到 Pi。
-   
+
    首先检查 Node.js 版本。 
-   
+
    ```bash
    node -v
    ```
@@ -203,6 +202,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    cd iot-hub-node-raspberrypi-client-app
    sudo npm install
    ```
+
    > [!NOTE] 
    >完成此安装过程可能需要几分钟，具体取决于网络连接情况。
 
@@ -238,8 +238,14 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
 ![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+
+若要监视 IoT 中心从设备收到的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+
+有关更多方法来处理设备发送的数据，继续学习下一节。
+
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。 若要查看 Raspberry Pi 已发送到 IoT 中心的消息或向 Raspberry Pi 发送消息，请参阅[使用用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+此时已运行示例应用程序，收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

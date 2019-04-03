@@ -16,12 +16,12 @@ ms.date: 10/20/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae036a0860ddb5ee2776f7ed4734492741907f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d98a1aabef2de505e66b2127226b9e89cd791e20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58177715"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883439"
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>续订 Office 365 和 Azure Active Directory 的联合身份验证证书
 ## <a name="overview"></a>概述
@@ -114,11 +114,11 @@ Azure AD 将尝试监视联合元数据，并按照此元数据的指示更新�
 
 **1.AD FS 属性 AutoCertificateRollover 必须设置为 True。** 这表示 AD FS 会在旧证书到期之前，自动生成新的令牌签名证书和令牌解密证书。
 
-**2.可公开访问 AD FS 联盟元数据。** 从公共 Internet（企业网络之外）上的计算机导航到以下 URL，查看你的联合元数据是否可以公开访问：
+**2.AD FS 联合身份验证元数据是可公开访问。** 从公共 Internet（企业网络之外）上的计算机导航到以下 URL，查看联合身份验证元数据是否可以公开访问：
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-其中，`(your_FS_name) `将替换成组织使用的联合身份验证服务主机名，例如 fs.contoso.com。  如果能够成功验证这两项设置，则无需执行任何其他操作。  
+其中`(your_FS_name)`将替换为你的组织使用，例如 fs.contoso.com 的联合身份验证服务主机名。  如果能够成功验证这两项设置，则无需执行任何其他操作。  
 
 示例： https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 ## 手动续订令牌签名证书 <a name="manualrenew"></a>
@@ -132,9 +132,9 @@ https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 ### <a name="step-1-ensure-that-ad-fs-has-new-token-signing-certificates"></a>步骤 1：确保 AD FS 具有新的令牌签名证书
 **非默认配置**
 
-若使用 AD FS 的非默认配置（即 **AutoCertificateRollover** 设置为 **False**），则很有可能你使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
+若使用 AD FS 的非默认配置（其中 **AutoCertificateRollover** 设置为 **False**），则很可能使用的是自定义证书（非自签名）。 有关如何续订 AD FS 令牌签名证书的详细信息，请阅读 [Guidance for customers not using AD FS self-signed certificates](https://msdn.microsoft.com/library/azure/JJ933264.aspx#BKMK_NotADFSCert)（针对未使用 AD FS 自签名证书的客户的指南）。
 
-**无法公开获取联合元数据**
+**联合身份验证元数据不是公开发布**
 
 另一方面，如果 **AutoCertificateRollover** 设置为 **True**，但无法公开访问联合元数据，请先确保 AD FS 已生成新的令牌签名证书。 执行以下步骤，确认有新的令牌签名证书：
 

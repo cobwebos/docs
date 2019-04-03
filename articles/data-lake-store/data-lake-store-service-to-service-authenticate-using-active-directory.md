@@ -1,22 +1,22 @@
 ---
-title: 服务到服务身份验证：使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 验证 | Microsoft Docs
+title: 服务到服务身份验证：使用 Azure Active Directory 的 azure 数据湖存储 Gen1 |Microsoft Docs
 description: 了解如何使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ec5d469ba0708288881be3d905b492aa8aa4da6
-ms.sourcegitcommit: 5c00e98c0d825f7005cb0f07d62052aff0bc0ca8
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: a7fdcf396f586a65efa17e489d002f1c8847a193
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/24/2018
-ms.locfileid: "49956602"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884986"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
 > [!div class="op_single_selector"]
@@ -34,10 +34,10 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 本文讨论如何为服务到服务身份验证创建 Azure AD Web 应用程序。 有关最终用户身份验证的 Azure AD 应用程序配置的说明，请参阅[使用 Azure Active Directory 进行 Data Lake Storage Gen1 最终用户身份验证](data-lake-store-end-user-authenticate-using-active-directory.md)。
 
-## <a name="prerequisites"></a>先决条件
-* Azure 订阅。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+## <a name="prerequisites"></a>必备组件
+* Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
-## <a name="step-1-create-an-active-directory-web-application"></a>步骤 1：创建 Active Directory Web 应用程序
+## <a name="step-1-create-an-active-directory-web-application"></a>步骤 1：创建 Active Directory web 应用程序
 
 使用 Azure Active Directory，针对通过 Azure Data Lake Storage Gen1 进行的服务到服务身份验证创建和配置 Azure AD Web 应用程序。 有关说明，请参阅[创建 Azure AD 应用程序](../active-directory/develop/howto-create-service-principal-portal.md)。
 
@@ -45,14 +45,14 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 
 ![创建 Web 应用](./media/data-lake-store-authenticate-using-active-directory/azure-active-directory-create-web-app.png "创建 Web 应用")
 
-## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>步骤 2：获取应用程序 ID、身份验证密钥和租户 ID
+## <a name="step-2-get-application-id-authentication-key-and-tenant-id"></a>步骤 2：获取应用程序 ID、 身份验证密钥和租户 ID
 以编程方式登录时，需要应用程序的 ID。 如果应用程序在其自己的凭据下运行，则还需要身份验证密钥。
 
 * 若要了解如何检索应用程序的应用程序 ID 和身份验证密钥（也称为客户端密码），请参阅[获取应用程序 ID 和身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 
 * 有关如何检索租户 ID 的说明，请参阅[获取租户 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-id)。
 
-## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>步骤 3：将 Azure AD 应用程序分配给 Azure Data Lake Storage Gen1 帐户文件或文件夹
+## <a name="step-3-assign-the-azure-ad-application-to-the-azure-data-lake-storage-gen1-account-file-or-folder"></a>步骤 3：分配给 Azure 数据湖存储 Gen1 帐户文件或文件夹的 Azure AD 应用程序
 
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。 打开要与之前创建的 Azure Active Directory 应用程序相关联的 Data Lake Storage Gen1 帐户。
@@ -85,7 +85,7 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 > 
 >
 
-## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>步骤 4：获取 OAuth 2.0 令牌终结点（仅适用于基于 Java 的应用程序）
+## <a name="step-4-get-the-oauth-20-token-endpoint-only-for-java-based-applications"></a>步骤 4：获取 OAuth 2.0 令牌终结点 （仅适用于基于 Java 的应用程序）
 
 1. 登录 [Azure 门户](https://portal.azure.com)，在左侧窗格中单击“Active Directory”。
 
@@ -102,9 +102,9 @@ Azure Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证。
 ## <a name="next-steps"></a>后续步骤
 本文创建了一个 Azure AD Web 应用程序，并使用 .NET SDK、Java、Python、REST API 等在创作的客户端应用程序中收集了所需的信息。现可转到以下文章，这些文章介绍如何使用 Azure AD 本机应用程序先进行 Data Lake Storage Gen1 身份验证，再在存储中执行其他操作。
 
-* [使用 Java 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-java.md)
-* [使用 .NET SDK 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)
-* [使用 Python 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-python.md)
-* [使用 REST API 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-rest-api.md)
+* [使用数据湖存储 Gen1 进行服务到服务身份验证使用 Java](data-lake-store-service-to-service-authenticate-java.md)
+* [使用数据湖存储 Gen1 进行服务到服务身份验证使用.NET SDK](data-lake-store-service-to-service-authenticate-net-sdk.md)
+* [使用数据湖存储 Gen1 进行服务到服务身份验证使用 Python](data-lake-store-service-to-service-authenticate-python.md)
+* [使用数据湖存储 Gen1 进行服务到服务身份验证使用 REST API](data-lake-store-service-to-service-authenticate-rest-api.md)
 
 

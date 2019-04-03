@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: b8aba410cd447f14fcce89fee93c5f6a253a34ce
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 3d4c58cd9e7ee0674f42d776c8df6e96faba1ab1
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56101775"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886856"
 ---
 ## <a name="supported-distributions-and-drivers"></a>支持的分发和驱动程序
 
@@ -26,7 +26,7 @@ ms.locfileid: "56101775"
 
 | 分发 | 驱动程序 |
 | --- | -- | 
-| Ubuntu 16.04 LTS、18.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3、7.4、7.5、7.6<br/><br/> 基于 CentOS 的 7.3、7.4、7.5、7.6、基于 CentOS 的 7.4 HPC | NVIDIA CUDA 10.0，驱动程序分支为 R410 |
+| Ubuntu 16.04 LTS、18.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3、7.4、7.5、7.6<br/><br/> 基于 CentOS 的 7.3、7.4、7.5、7.6、基于 CentOS 的 7.4 HPC | NVIDIA CUDA 10.1，驱动程序分支 R418 |
 
 ### <a name="nvidia-grid-drivers"></a>NVIDIA GRID 驱动程序
 

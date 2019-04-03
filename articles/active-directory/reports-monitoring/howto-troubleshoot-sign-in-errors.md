@@ -14,12 +14,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26a3594b00f19c2790e9dfd5f09fbdc7d73d478f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: db68ad2a29dcaa53d219b679b9e0f24a50a6f576
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434885"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877051"
 ---
 # <a name="how-to-troubleshoot-sign-in-errors-using-azure-active-directory-reports"></a>如何：使用 Azure Active Directory 报告对登录错误进行故障排除
 
@@ -55,7 +55,7 @@ ms.locfileid: "58434885"
 
     ![故障排除和支持](./media/howto-troubleshoot-sign-in-errors/troubleshooting-and-support.png)
 
-6. 失败原因是对错误的描述。 例如，在上面的方案中，失败原因是“无效的用户名或密码，或无效的本地用户名或密码”。 解决方法是使用正确的用户名和密码再次登录。
+6. 失败原因是对错误的描述。 例如，在上述情况中，失败原因是**用户名或密码或无效的本地用户名或密码无效**。 解决方法是使用正确的用户名和密码再次登录。
 
 7. 在此示例中，可在[登录错误代码参考](reference-sign-ins-error-codes.md)中搜索错误代码 50126 获取其他信息，包括补救方法。 
 
@@ -63,5 +63,5 @@ ms.locfileid: "58434885"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [登录错误代码参考](reference-sign-ins-error-codes.md)
+* [登录错误代码引用](reference-sign-ins-error-codes.md)
 * [登录报告概述](concept-sign-ins.md)

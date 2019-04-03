@@ -14,12 +14,12 @@ ms.tgt_pltfrm: cache
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 5e4fc40a9b6cfc945670bcd497d4b13af61f2f2f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 6bf42406c97ccb67251a14a7a963d3da2e01dbb4
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817756"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849964"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>如何配置 Azure Redis 缓存
 本主题介绍可用于 Azure Redis 缓存实例的配置。 本主题还介绍了适用于 Azure Redis 缓存实例的默认 Redis 服务器配置。
@@ -356,10 +356,10 @@ Redis 密钥空间通知是在“高级设置”边栏选项卡上配置的。 �
 
 ### <a name="diagnostics"></a>诊断
 
-默认情况下，Azure Monitor 中的缓存指标会[存储 30 天](../azure-monitor/platform/data-collection.md#metrics)，之后将被删除。 若要将缓存指标保留超过 30 天，请单击“诊断”，[配置存储帐户](cache-how-to-monitor.md#export-cache-metrics)以用于存储缓存诊断。
+默认情况下，Azure Monitor 中的缓存指标会[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，之后将被删除。 若要将缓存指标保留超过 30 天，请单击“诊断”，[配置存储帐户](cache-how-to-monitor.md#export-cache-metrics)以用于存储缓存诊断。
 
 >[!NOTE]
->除了存档到存储缓存指标，还可以[流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
+>除了将缓存指标存档到存储中外，还可以[将其流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)。
 >
 >
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: f41c14f664df8db809ad4c29c57d37c1124a0ff3
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 32d0fb2ba17d322c0a273ebaf0a21d2b3ca0668f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56818538"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849569"
 ---
 # <a name="how-to-monitor-azure-cache-for-redis"></a>如何监视用于 Redis 的 Azure 缓存
 用于 Redis 的 Azure 缓存使用 [Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/) 提供用于监视缓存实例的几个选项。 可以查看度量值、将度量值图表固定到启动面板、自定义监视图表的日期和时间范围、在图表中添加和删除度量值，以及设置符合特定条件时发出的警报。 借助这些工具，可以监视 Azure Redis 缓存实例的运行状况，以及管理缓存应用程序。
@@ -61,7 +61,7 @@ ms.locfileid: "56818538"
 <a name="how-to-view-metrics-and-customize-chart"></a>
 <a name="enable-cache-diagnostics"></a>
 ## <a name="export-cache-metrics"></a>导出缓存指标
-默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../azure-monitor/platform/data-collection.md#metrics)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
+默认情况下，Azure Monitor 中的缓存指标将被[存储 30 天](../azure-monitor/platform/data-platform-metrics.md)，然后将被删除。 若要延长缓存指标的保存时间，使其超过 30 天，可以为缓存指标[指定存储帐户](../azure-monitor/platform/archive-diagnostic-logs.md)，并指定“保留期（天）”策略。 
 
 若要配置缓存指标的存储帐户：
 
@@ -75,7 +75,7 @@ ms.locfileid: "56818538"
 ![Redis 诊断](./media/cache-how-to-monitor/redis-cache-diagnostics.png)
 
 >[!NOTE]
->除了存档到存储缓存指标，还可以[流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)。
+>除了将缓存指标存档到存储中外，还可以[将其流式传输到事件中心或将其发送到 Azure Monitor 日志](../azure-monitor/platform/rest-api-walkthrough.md#retrieve-metric-values)。
 >
 >
 

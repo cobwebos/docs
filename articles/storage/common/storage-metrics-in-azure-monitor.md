@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.subservice: common
-ms.openlocfilehash: a5ebd50b3a5fe3b611bae28db98979eee40f9490
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4be52fbc6d9fb01ac3cd3c0954042c35b45bbf23
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57899020"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884357"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 存储指标
 
@@ -284,9 +284,9 @@ Azure Monitor 提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Ma
 
 资源 ID 是资源在 Azure 中的唯一标识符。 使用 Azure Monitor REST API 读取指标定义或值时，必须使用要对其执行操作的资源的资源 ID。 资源 ID 模板遵循以下格式：
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}
-`
+```
 
 存储通过 Azure Monitor 提供存储帐户级别和服务级别的指标。 例如，可以仅检索 Blob 存储的指标。 每个级别有其自身的资源 ID，用于仅检索该级别的指标。
 
@@ -294,34 +294,38 @@ Azure Monitor 提供[.NET SDK](https://www.nuget.org/packages/Microsoft.Azure.Ma
 
 下面显示了指定存储帐户的资源 ID 时所用的格式。
 
-`
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}
-`
+```
 
 ### <a name="resource-id-for-the-storage-services"></a>存储服务的资源 ID
 
 下面显示了指定每个存储服务的资源 ID 时所用的格式。
 
-* Blob 服务资源 ID `
+* Blob 服务资源 ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/blobServices/default
-`
-* 表服务资源 ID `
+```
+* 表服务资源 ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/tableServices/default
-`
-* 队列服务资源 ID `
+```
+* 队列服务资源 ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
-`
-* 文件服务资源 ID `
+```
+* 文件服务资源 ID
+```
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
-`
+```
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Azure Monitor REST API 中的资源 ID
 
 下面显示了调用 Azure Monitor REST API 时所用的模式。
 
-`
+```
 GET {resourceId}/providers/microsoft.insights/metrics?{parameters}
-`
+```
 
 ## <a name="capacity-metrics"></a>容量度量值
 容量指标每隔一小时发送到 Azure Monitor。 值每日刷新。 时间粒度定义呈现指标值的时间间隔。 所有容量指标的受支持时间粒度为一小时 (PT1H)。
@@ -406,11 +410,11 @@ Azure 存储支持对 Azure Monitor 中的指标使用以下维度。
 
 否，Azure Monitor 中的新指标仅支持 Azure 资源管理器存储帐户。 如果要使用存储帐户上的指标，则需要迁移到 Azure 资源管理器存储帐户。 请参阅[迁移到 Azure 资源管理器](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-overview)。
 
-**Azure 存储是否支持托管磁盘或非托管磁盘的指标？**
+**Azure 存储是否为托管磁盘或非托管磁盘支持度量值？**
 
 否，Azure 计算支持磁盘上的指标。 有关详细信息，请参阅此[文章](https://azure.microsoft.com/blog/per-disk-metrics-managed-disks/)。
 
-**如何使用新指标映射和迁移经典指标？**
+**如何将映射和迁移经典指标与新指标？**
 
 可以在 [Azure 存储指标迁移](./storage-metrics-migration.md)中找到经典指标与新指标之间的详细映射。
 

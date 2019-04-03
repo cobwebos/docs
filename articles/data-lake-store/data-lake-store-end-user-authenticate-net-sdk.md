@@ -3,20 +3,20 @@ title: 最终用户身份验证：对 Azure Data Lake Storage Gen1 结合使用 
 description: 了解如何结合使用 .NET SDK 和 Azure Active Directory 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
+author: twooley
 manager: cgronlun
 editor: cgronlun
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 62b7e293468a8b92f22ee1a5fd5b38cd15cfafbf
-ms.sourcegitcommit: 1c1f258c6f32d6280677f899c4bb90b73eac3f2e
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 78a290d8136f8804e853d36a9bc95571625ed89c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/11/2018
-ms.locfileid: "53261528"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876762"
 ---
 # <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "53261528"
 
 本文介绍了如何使用 .NET SDK 进行 Azure Data Lake Storage Gen1 最终用户身份验证。 有关使用 .NET SDK 的 Data Lake Storage Gen1 服务到服务身份验证，请参阅[使用 .NET SDK 进行 Data Lake Storage Gen1 服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -55,8 +55,8 @@ ms.locfileid: "53261528"
    2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
    3. 搜索并安装以下 NuGet 包：
 
-      * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v2.1.3-预览版。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.12。
+      * `Microsoft.Azure.Management.DataLake.Store` -本教程使用 v2.1.3-预览版。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -本教程使用 v2.2.12。
 
         ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器”。
@@ -112,6 +112,6 @@ ms.locfileid: "53261528"
 ## <a name="next-steps"></a>后续步骤
 本文介绍如何使用 .NET SDK 通过最终用户身份验证进行 Azure Data Lake Storage Gen1 身份验证。 接下来，可以查看以下介绍如何使用 .NET SDK 在 Azure Data Lake Storage Gen1 中执行操作的文章。
 
-* [使用 .NET SDK 对 Data Lake Storage Gen1 上的帐户管理操作](data-lake-store-get-started-net-sdk.md)
-* [使用 NET SDK 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-net-sdk.md)
+* [数据在数据湖存储 Gen1 帐户管理操作使用.NET SDK](data-lake-store-get-started-net-sdk.md)
+* [使用.NET SDK 在数据湖存储 Gen1 的数据操作](data-lake-store-data-operations-net-sdk.md)
 

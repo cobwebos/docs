@@ -3,28 +3,28 @@ title: 使用脱机方法将大量数据上传到 Azure Data Lake Storage Gen1 |
 description: 使用 AdlCopy 工具将数据从 Azure 存储 Blob 复制到 Azure Data Lake Storage Gen1
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 45321f6a-179f-4ee4-b8aa-efa7745b8eb6
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 98cad0873c4ba687948dc404abc19655319bdc36
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 4a8126d658f227d9eed372cd51cf06f8f12c99f9
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232261"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885513"
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-azure-data-lake-storage-gen1"></a>使用 Azure 导入/导出服务将数据脱机复制到 Azure Data Lake Storage Gen1
 本文介绍如何使用脱机复制方法（例如 [Azure 导入/导出服务](../storage/common/storage-import-export-service.md)）将大型数据集 (>200 GB) 复制到 Azure Data Lake Storage Gen1。 具体而言，本文中用作示例的文件大小为 339,420,860,416 字节，即约 319GB 磁盘空间。 命名此文件为 319GB.tsv。
 
 使用 Azure 导入/导出服务，可以将硬盘驱动器传送到 Azure 数据中心，从而安全地将大量数据传输到 Azure Blob 存储。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始之前，必须满足以下条件：
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
@@ -211,6 +211,6 @@ Join-AzDataLakeStoreItem -AccountName "<adlsg1_account_name" -Paths "/importedda
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
+* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)

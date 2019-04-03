@@ -1,25 +1,25 @@
 ---
 title: 了解 Azure 安全中心的 IoT 安全 IoT Edge 模块 |Microsoft Docs
 description: 了解 IoT Edge 体系结构和 Azure 安全中心的 IoT 安全模块的功能。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: e78523ae-d70a-456a-818d-f8b1b025d7cb
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 11eadc70f6da20fdc9b837dfad45705278dd2d27
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: c6ac3d9dbbb16caed51243fea852adea541b9f04
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756697"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862227"
 ---
 # <a name="azure-iot-edge-security-module"></a>Azure IoT Edge 安全模块
 

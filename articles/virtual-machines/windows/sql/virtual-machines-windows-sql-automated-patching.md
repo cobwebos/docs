@@ -16,12 +16,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: a7c6bea1c45cfe704bcff9ad2d4e47a30a9780cb
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439615"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848255"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
@@ -105,11 +105,11 @@ ms.locfileid: "57439615"
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
 预配 SQL VM 后，使用 PowerShell 配置自动修补。
 
-以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig 命令将为自动更新配置新的维护时段。
+以下示例使用 PowerShell 在现有的 SQL Server VM 上配置自动修补。 **新建 AzVMSqlServerAutoPatchingConfig**命令将配置为自动更新新的维护时段。
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
-    $aps = AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
+    $aps = New-AzVMSqlServerAutoPatchingConfig -Enable -DayOfWeek "Thursday" -MaintenanceWindowStartingHour 11 -MaintenanceWindowDuration 120  -PatchCategory "Important"
 
     Set-AzVMSqlServerExtension -AutoPatchingSettings $aps -VMName $vmname -ResourceGroupName $resourcegroupname
 
@@ -127,7 +127,7 @@ ms.locfileid: "57439615"
 
 可能需要花费几分钟来安装和配置 SQL Server IaaS 代理。
 
-若要禁用自动修补，请运行 AzureRM.Compute\New-AzVMSqlServerAutoPatchingConfig 不带 -Enable 参数的同一脚本。 缺少 **-Enable** 参数将向该命令发出指示以禁用此功能。
+若要禁用自动修补，请运行同一个脚本而无需 **-启用**参数**新建 AzVMSqlServerAutoPatchingConfig**。 缺少 **-Enable** 参数将向该命令发出指示以禁用此功能。
 
 ## <a name="next-steps"></a>后续步骤
 有关其他可用自动化任务的信息，请参阅 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。

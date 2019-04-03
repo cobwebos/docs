@@ -9,12 +9,12 @@ ms.date: 11/06/2017
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
-ms.openlocfilehash: 64a7a52d39fcac87bdc49b9d36e80d453557bc5b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002274"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850690"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
 你现在可以使用 [Azure Monitor 数据源插件](https://grafana.com/plugins/grafana-azure-monitor-datasource)从 [Grafana](https://grafana.com/) 监控 Azure 服务和应用程序。 该插件收集 Azure Monitor 所收集的应用程序性能数据，包括各种日志和指标。 随后，可以在 Grafana 仪表板上显示此数据。
@@ -47,13 +47,13 @@ ms.locfileid: "58002274"
 
 7. 获取 Grafana 服务器的公共 IP 地址 - 返回到资源列表，然后选择“公共 IP 地址”。
 
-## <a name="log-in-to-grafana"></a>登录到 Grafana
+## <a name="sign-in-to-grafana"></a>登录到 Grafana
 
 1. 使用服务器的 IP 地址在浏览器中打开登录页 http://\<IP 地址\>:3000 或 \<DNSName>\:3000。 尽管默认端口为 3000，但请注意可能在设置期间选择了其他端口。 你应看到生成的 Grafana 服务器登录页。
 
     ![Grafana 登录屏幕](./media/grafana-plugin/grafana-login-screen.png)
 
-2. 使用用户名 admin 和之前创建的 Grafana 服务器管理员密码登录。 如果使用本地安装程序，默认密码将为 admin，并要求你在首次登陆时更改密码。
+2. 使用用户名登录*管理员*和之前创建的 Grafana 服务器管理员密码。 如果使用本地安装程序，默认密码将为 admin，并要求你在首次登陆时更改密码。
 
 ## <a name="configure-data-source-plugin"></a>配置数据源插件
 
@@ -167,5 +167,5 @@ Usage
 2. 在资源组页上，单击“删除”，在文本框中键入“Grafana”，然后单击“删除”。
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure Monitor 指标概述](../../azure-monitor/platform/data-collection.md)
+* [Azure Monitor 指标概述](data-platform.md)
 

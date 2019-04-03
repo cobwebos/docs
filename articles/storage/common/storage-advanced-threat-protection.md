@@ -1,21 +1,21 @@
 ---
-title: Azure 存储的高级的威胁防护
+title: Azure 存储的高级威胁防护
 description: 配置 Azure 存储高级威胁防护以检测帐户活动中的异常情况，并通知用户可能有害的访问帐户尝试。
 services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/02/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: b2e51b11e2d79d7f35d6b24df4ba5492ecf9a5c4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 48fdf277f47b1e4abc8e3d7f7222d5b99a248b55
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58133223"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850724"
 ---
-# <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级的威胁防护
+# <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
 Azure 存储的高级的威胁防护提供的附加安全智能层，用于检测异常和潜在有害尝试访问或使用存储帐户。 借助此保护层，用户无需成为安全专家，也无需管理安全监视系统便可以解决威胁。 
 
@@ -51,6 +51,24 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 使用 Azure 资源管理器模板部署具有高级威胁防护的 Azure 存储帐户已启用。
 有关详细信息，请参阅[存储帐户的高级威胁防护](https://azure.microsoft.com/resources/templates/201-storage-advanced-threat-protection-create/)。
+
+### <a name="using-azure-policy"></a>使用 Azure 策略
+
+使用 Azure 策略以在特定订阅或资源组下的存储帐户启用高级威胁防护。
+
+1. 再 Azure**策略-定义**页。
+
+1. 搜索**存储帐户上部署高级威胁防护**策略。
+
+     ![搜索策略](./media/storage-advanced-threat-protection/storage-atp-policy-definitions.png)
+  
+1. 选择 Azure 订阅或资源组。
+
+    ![选择订阅或组](./media/storage-advanced-threat-protection/storage-atp-policy2.png)
+
+1. 将策略分配。
+
+    ![策略定义页面](./media/storage-advanced-threat-protection/storage-atp-policy1.png)
 
 ### <a name="using-rest-api"></a>使用 REST API
 使用 Rest API 命令来创建、 更新或获取特定的存储帐户的高级威胁防护设置。

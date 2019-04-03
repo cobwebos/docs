@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 549ec74514ff03e06ff25893d3fa865f179470e9
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56870680"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850072"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 
@@ -70,10 +70,10 @@ Azure 订阅监视数据可以在 [Azure 活动日志](./../../azure-monitor/pla
 ## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure 资源指标和诊断日志
 
 Azure 资源将发出两种类型的监视数据：
-1. [资源诊断日志](./../../azure-monitor/platform/diagnostic-logs-overview.md)
-2. [指标](../../azure-monitor/platform/data-collection.md)
+1. [资源诊断日志](diagnostic-logs-overview.md)
+2. [指标](data-platform.md)
 
-使用资源诊断设置将两种类型的数据发送到事件中心。 [按照本指南](./../../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)在特定资源上设置资源诊断设置。 在要从其收集日志的每个资源上设置资源诊断设置。
+使用资源诊断设置将两种类型的数据发送到事件中心。 [按照本指南](diagnostic-logs-stream-event-hubs.md)在特定资源上设置资源诊断设置。 在要从其收集日志的每个资源上设置资源诊断设置。
 
 > [!TIP]
 > 可使用 Azure Policy，[在策略规则中使用 DeployIfNotExists 效果](../../governance/policy/concepts/definition-structure.md#policy-rule)，确保特定范围内的每个资源始终设置了诊断设置。

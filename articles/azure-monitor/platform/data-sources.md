@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2018
 ms.author: bwren
-ms.openlocfilehash: 4ae8ae43d8c245270b64611bed0ac4930aa0ecc3
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 6d03c219025c8cd39214bd8ab6807125709f9742
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763413"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849675"
 ---
 # <a name="sources-of-data-in-azure-monitor"></a>Azure Monitor 中的数据的来源
-本文介绍了由 Azure Monitor 收集的用于监视资源及其上运行的应用程序的运行状况和性能的数据的来源。 这些资源可能在 Azure 中，在其他云中或在本地。  有关此数据如何存储以及如何查看它的详细信息，请参阅 [Azure Monitor 收集的数据](data-collection.md)。
+本文介绍了由 Azure Monitor 收集的用于监视资源及其上运行的应用程序的运行状况和性能的数据的来源。 这些资源可能在 Azure 中，在其他云中或在本地。  有关此数据如何存储以及如何查看它的详细信息，请参阅 [Azure Monitor 收集的数据](data-platform.md)。
 
 Azure 中的监视数据来自各种来源，这些来源可以组织为层，最高的层是你的应用程序和任何操作系统，较低的层是 Azure 平台的组件。 下图对此进行了描述，每个层在以下各部分详细说明。
 
@@ -59,7 +59,7 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 
 
 ### <a name="metrics"></a>度量值
-大多数 Azure 服务会生成反映其性能和运行的[平台指标](data-collection.md#metrics)。 具体[指标因资源类型而异](metrics-supported.md)。  这些指标可以在指标分析中访问，并且可以复制到日志中以使用 Log Analytics 进行趋势推断和其他分析。
+大多数 Azure 服务会生成反映其性能和运行的[平台指标](data-platform-metrics.md)。 具体[指标因资源类型而异](metrics-supported.md)。  这些指标可以在指标分析中访问，并且可以复制到日志中以使用 Log Analytics 进行趋势推断和其他分析。
 
 
 ### <a name="resource-diagnostic-logs"></a>资源诊断日志
@@ -116,4 +116,4 @@ Azure Monitor 可以使用[数据收集器 API](../../azure-monitor/platform/dat
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解 [Azure Monitor 收集的监视数据的类型](data-collection.md)以及如何查看和分析此数据。
+- 详细了解 [Azure Monitor 收集的监视数据的类型](data-platform.md)以及如何查看和分析此数据。

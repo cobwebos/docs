@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/30/2019
 ms.author: juliako
-ms.openlocfilehash: 7cb02a0793a4c96c98b4932b6046839f004461bc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d775fff16380ebe08159123aa9e6084055a5be8d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758116"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877561"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -92,7 +92,7 @@ ms.locfileid: "58758116"
 
 本部分介绍如何在两个视频索引器小组件之间实现交互，这样当某个用户单击应用程序中的见解控件时，播放器就会跳到相关的时刻。
 
-`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script> `
+`<script src="https://breakdown.blob.core.windows.net/public/vb.widgets.mediator.js"></script>`
 
 1. 复制**播放器**小组件嵌入代码。
 2. 复制**认知见解**嵌入代码。

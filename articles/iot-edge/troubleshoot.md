@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 92294700ac9a491bfdbfa3b3d3f781eb18d5339e
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 83595bf045de412954c176028babc4f94fcb21e1
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437095"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847543"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge 的常见问题和解决方法
 
@@ -346,7 +346,10 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 默认情况下，IoT Edge 在其自己的独立的容器网络启动模块。 设备可能遇到此专用网络中的 DNS 名称解析问题。
 
 ### <a name="resolution"></a>解决方法
-在容器引擎设置中指定你的环境的 DNS 服务器。 创建名为`daemon.json`指定要使用的 DNS 服务器。 例如：
+
+**选项 1：引擎设置容器中设置 DNS 服务器**
+
+指定 DNS 服务器为您的环境中，将应用于由引擎启动的所有容器模块的容器引擎设置。 创建名为`daemon.json`指定要使用的 DNS 服务器。 例如：
 
 ```
 {
@@ -371,6 +374,22 @@ IoT Edge 提供增强的配置来保护 Azure IoT Edge 运行时和已部署的�
 | --------- | -------- |
 | Linux | `sudo systemctl restart docker` |
 | Windows (管理员 Powershell) | `Restart-Service iotedge-moby -Force` |
+
+**选项 2：将 DNS 服务器设置为每个模块的 IoT Edge 部署**
+
+您可以将 DNS 服务器设置为每个模块*createOptions* IoT Edge 部署中。 例如：
+
+```
+"createOptions": {
+  "HostConfig": {
+    "Dns": [
+      "x.x.x.x"
+    ]
+  }
+}
+```
+
+请务必设置此窗*edgeAgent*并*edgeHub*模块。 
 
 ## <a name="next-steps"></a>后续步骤
 认为在 IoT Edge 平台中发现了 bug？ [提交问题](https://github.com/Azure/iotedge/issues)，以便我们可以持续改进。 

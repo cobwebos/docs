@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 89f5294d6ac01a6fa377e8d0763e77f8034ab44a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449549"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58851187"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
@@ -1608,7 +1608,6 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |MemoryPercentage|内存百分比|百分比|平均值|内存百分比|实例|
 
 ## <a name="next-steps"></a>后续步骤
-
-* [了解 Azure Monitor 中的指标](../../azure-monitor/platform/data-collection.md)
-* [针对指标创建警报](../../azure-monitor/platform/alerts-overview.md)
-* [将指标导出到存储、事件中心或 Log Analytics](../../azure-monitor/platform/diagnostic-logs-overview.md)
+* [了解 Azure Monitor 中的指标](data-platform.md)
+* [针对指标创建警报](alerts-overview.md)
+* [将指标导出到存储、事件中心或 Log Analytics](diagnostic-logs-overview.md)

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b9a1bb630c14ef504cb60a6847643a60f1cc90a1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 60ce66b079942944176540826c7f3e7a91b070d2
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368641"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861856"
 ---
 # <a name="azure-ad-password-protection-agent-version-history"></a>Azure AD 密码保护代理版本历史记录
 
@@ -26,6 +26,9 @@ ms.locfileid: "58368641"
 
 * 在事件日志消息中修复次要拼写错误的错误
 * 更新的 EULA 协议为最终正式发布版
+
+> [!NOTE]
+> 生成 1.2.125.0 是正式发布版本。 感谢您参与再次对每个人都有产品上提供反馈 ！
 
 ## <a name="121160"></a>1.2.116.0
 

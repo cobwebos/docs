@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: c230787b739b964998202180efaba20ad8233611
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: c7bfa8351a2599ff8616364a093cd6154e90830c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757795"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850875"
 ---
 # <a name="perform-live-streaming-using-media-services-to-create-multi-bitrate-streams-with-azure-portal"></a>使用媒体服务以使用 Azure 门户创建多比特率流实时传送视频  
 > [!div class="op_single_selector"]
@@ -27,14 +27,13 @@ ms.locfileid: "58757795"
 > * [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
 > * [REST API](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
-> 
-
-本教程介绍了创建**通道**的步骤，该通道接收单比特率实时流，并将其编码为多比特率流。
 
 > [!NOTE]
-> 有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
-> 
-> 
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+
+本教程指导完成创建 **频道** 的步骤，该频道接收单比特率实时流，并将其编码为多比特率流。
+
+有关为实时编码启用的通道的更多相关概念信息，请参阅 [使用 Azure 媒体服务执行实时流式处理以创建多比特率流](media-services-manage-live-encoder-enabled-channels.md)。
 
 ## <a name="common-live-streaming-scenario"></a>常见的实时流方案
 以下是创建常见的实时流应用程序时涉及的常规步骤。

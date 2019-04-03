@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/23/2017
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 76892e22e940476ca26cde7a91bfe928b47f22ba
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 695fdfba1573ff97b05f8e8b50a05bef9dbf48de
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522258"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846161"
 ---
 # <a name="how-to-filter-by-language-in-azure-search"></a>如何在 Azure 搜索中按语言筛选 
 
@@ -23,7 +23,7 @@ ms.locfileid: "58522258"
 
 请求中的查询参数用于限定搜索操作的范围，同时修剪无法提供与所需搜索体验兼容的内容的任何字段的结果。
 
-| 参数 | 用途 |
+| parameters | 目的 |
 |-----------|--------------|
 | **searchFields** | 将全文搜索限制为命名字段的列表。 |
 | **$select** | 修剪响应，以便只包含指定的字段。 默认情况下，会返回所有可检索字段。 使用 **$Select** 参数可以选择要返回哪些字段。 |
@@ -39,7 +39,7 @@ ms.locfileid: "58522258"
   ![](./media/search-filters-language/lang-fields.png)
 
 > [!Note]
-> 有关通过语言分析器显示字段定义的代码示例，请参阅[定义索引 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) 和[定义索引 (REST)](https://docs.microsoft.com/azure/search/search-create-index-rest-api-using-well-formed-json)。
+> 有关通过语言分析器显示字段定义的代码示例，请参阅[定义索引 (.NET)](https://docs.microsoft.com/azure/search/search-create-index-dotnet) 和[定义索引 (REST)](search-create-index-rest-api.md)。
 
 ## <a name="build-and-load-an-index"></a>生成和加载索引
 

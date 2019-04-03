@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
-ms.openlocfilehash: e5dc8ac0716e194dd0949e2e270346ee338a792a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839723"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883003"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>了解有关 Microsoft 客户协议发票的术语
 
@@ -49,7 +49,7 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 | P.O. 数字 |可选采购订单号，由你分配用于跟踪 |
 | 发票号 |用于跟踪用途唯一的、 由 Microsoft 生成发票编号 |
 | 发票日期 |生成发票，通常在计费周期结束后的 5 到 12 天的日期。 您可以检查你的发票日期计费的配置文件属性中。|
-| 付款条款 |如何支付你的 Microsoft 帐单。 *Net 30 天*意味着在您付款通过支票或电汇发票日期的 30 天内。 |
+| 付款条款 |如何支付你的 Microsoft 帐单。 *Net 30 天*意味着在发票日期的 30 天内需要付费。 |
 
 ### <a name="billing-summary"></a>计费摘要
 
@@ -110,6 +110,6 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 ## <a name="next-steps"></a>后续步骤
 
 - [了解计费配置文件的发票费用](billing-mca-understand-your-bill.md)
-- [如何获取 Azure 计费发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)
+- [如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)
 - [查看你组织的 Azure 定价](billing-ea-pricing.md)
 - [你计费的配置文件的的视图税务文档](billing-mca-download-tax-document.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: johnkem
 ms.subservice: ''
-ms.openlocfilehash: 02b4b2efb447e3ba8c45caa378268ec402b5c3e7
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: c703f735f59a8425c2a14641781f482a6e2d1c78
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001952"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848537"
 ---
 # <a name="consume-monitoring-data-from-azure"></a>使用 Azure 中的监视数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "56001952"
 | 活动日志 | 活动 | 所有 Azure 服务 | <ul><li>**REST API：**[Azure Monitor 事件 API](https://docs.microsoft.com/rest/api/monitor/eventcategories)</li><li>**存储 blob 或事件中心：**[日志配置文件](activity-logs-overview.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | Azure Monitor 诊断日志 | 活动 | [查看此处的列表](diagnostic-logs-schema.md) | <ul><li>**存储 blob 或事件中心：**[诊断设置](diagnostic-logs-overview.md#diagnostic-settings)</li></ul> |
 | 计算来宾 OS 日志（例如 IIS、ETW、syslog） | 活动 | [Windows](/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines) 和 Linux 虚拟机 (v2)、[云服务](../../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**存储表或 blob：**[Windows 或 Linux Azure 诊断](diagnostics-extension-to-storage.md)</li><li>**事件中心：**[Windows Azure 诊断](diagnostics-extension-stream-event-hubs.md)</li></ul> |
-| 应用服务日志 | 活动 | 应用程序服务 | <ul><li>**文件、表或 blob 存储：**[Web 应用诊断](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
+| 应用服务日志 | 事件 | 应用程序服务 | <ul><li>**文件、表或 blob 存储：**[Web 应用诊断](../../app-service/troubleshoot-diagnostic-logs.md)</li></ul> |
 | 存储日志 | 活动 | Azure 存储 | <ul><li>**存储表：**[存储分析](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | 安全中心警报 | 活动 | Azure 安全中心 | <ul><li>**REST API：**[安全警报](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
 | Active Directory 报告 | 活动 | Azure Active Directory | <ul><li>**REST API：**[Azure Active Directory 图形 API](../../active-directory/reports-monitoring/concept-reporting-api.md)</li></ul> |
@@ -48,7 +48,7 @@ ms.locfileid: "56001952"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 深入了解 [Azure Monitor 指标](data-collection.md)
+- 深入了解 [Azure Monitor 指标](data-platform.md)
 - 深入了解 [Azure 活动日志](activity-logs-overview.md)
 - 深入了解 [Azure 诊断日志](diagnostic-logs-overview.md)
 

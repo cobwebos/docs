@@ -8,12 +8,12 @@ ms.devlang: c
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: rangv
-ms.openlocfilehash: 4f092f2d290138e48068141113b184d8e856bee7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2b23725a4bccf753bbe7231202133771e5aaa614
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103207"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847194"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (C)
 
@@ -205,8 +205,14 @@ BME280 传感器可收集温度和湿度数据。 如果设备和云之间有通
 
 ![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-c-get-started/8_run-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+
+若要监视 IoT 中心从设备收到的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+
+有关更多方法来处理设备发送的数据，继续学习下一节。
+
 ## <a name="next-steps"></a>后续步骤
 
-此时已运行示例应用程序，以收集传感器数据并将其发送到 IoT 中心。 若要查看 Raspberry Pi 已发送到 IoT 中心的消息或向 Raspberry Pi 发送消息，请参阅[使用用于 Visual Studio Code 的 Azure IoT 工具在设备和 IoT 中心之间发送和接收消息](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+此时已运行示例应用程序，收集传感器数据并将其发送到 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

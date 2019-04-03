@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/15/2019
+ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 7c5e979f399a487d29138b57d1fc4ee2c77622ff
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: c3e2102b5794fb3770b1c77e241320fa7d2222c7
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445489"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850787"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
 
@@ -219,7 +219,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2018
     "resourceGroupName": "myrg",
     "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
     "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -296,7 +296,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
     "resourceGroupName": "myrg",
     "sku": "5-6",
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
     "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
@@ -514,12 +514,33 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/azEnviro
 AZUREPUBLICCLOUD
 ```
 
+### <a name="getting-the-tags-for-the-vm"></a>正在获取 VM 标记
+
+你可能已标记分配到 Azure Vm 以逻辑方式将它们组织到一个分类。 可以通过使用下面的请求检索分配给 VM 的标记。
+
+**请求**
+
+```bash
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/tags?api-version=2018-10-01&format=text"
+```
+
+**响应**
+
+```text
+Department:IT;Environment:Test;Role:WebRole
+```
+
+> [!NOTE]
+> 标记是以分号分隔。 如果分析器编写以编程方式提取标记，标记名称和值不应包含分号分析器才能正常工作的顺序。
+
 ### <a name="validating-that-the-vm-is-running-in-azure"></a>验证 VM 是否在 Azure 中运行
 
  市场供应商希望确保其软件仅获许在 Azure 中运行。 如果有人将 VHD 复制到本地，则应当有办法检测到这一情况。 通过调用实例元数据服务，市场供应商可以获得签名数据，以保证响应仅来自 Azure。
- **请求**
+
  > [!NOTE]
 > 需要安装 jq。
+
+ **请求**
 
  ```bash
   # Get the signature

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
-ms.openlocfilehash: 922e01c26a2cfe24c8b8a32bb8037d9b3b3384c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 246c5256f56fd0b891d4e7d642c421b1e340fc6d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109114"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879329"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>流量分析中的架构和数据聚合
 
@@ -50,7 +50,7 @@ ms.locfileid: "58109114"
 |:---   |:---    |:---  |
 | TableName | AzureNetworkAnalytics_CL | 流量 Anlaytics 数据的表
 | SubType_s | FlowLog | 流日志的子类型 |
-| FASchemaVersion_s |   第   | 列名版本。 不会反映 NSG 流日志版本 |
+| FASchemaVersion_s |   1   | 列名版本。 不会反映 NSG 流日志版本 |
 | TimeProcessed_t   | 日期和时间 UTC  | 流量分析处理从存储帐户的原始流日志时间 |
 | FlowIntervalStartTime_t | 日期和时间 UTC |  流日志处理间隔的开始时间。 这是从其测量流间隔时间 |
 | FlowIntervalEndTime_t | 日期和时间 UTC | 流日志处理间隔的结束时间 |
@@ -120,7 +120,7 @@ ms.locfileid: "58109114"
 1. 到 Azure 虚拟网络的 IP 地址之一所属 ExternalPublic-公共 IP 不在 Azure 中的其他 IP 地址时，不会报告为恶意流量分析处理间隔之间使用 ASC 源中"FlowIntervalStartTime_t"和"FlowIntervalEndTime_t"。 
 1. MaliciousFlow-的一个 IP 地址属于 azure 虚拟网络的其他 IP 地址时，不是在 Azure 中并被报告为恶意流量分析处理间隔之间使用 ASC 源中的公共 IP"FlowIntervalStartTime_t"和"FlowIntervalEndTime_t"。 
 1. UnknownPrivate-的一个 IP 地址属于 Azure 虚拟网络时的其他 IP 地址属于专用 IP 范围，如在 RFC 1918 中定义和不可以映射到客户拥有的站点或 Azure 虚拟网络流量分析。
-1. 未知-无法映射 Azure 中的客户拓扑与在流中的 IP 地址之一，以及在本地 （站点）。
+1. 未知-无法映射的一个 IP 地址与在 Azure 中的客户拓扑在流中，以及本地 （站点）。
 
 ### <a name="next-steps"></a>后续步骤
 若要获取常见问题的解答，请参阅[流量分析常见问题解答](traffic-analytics-faq.md)若要查看有关功能的详细信息，请参阅[流量分析文档](traffic-analytics.md)

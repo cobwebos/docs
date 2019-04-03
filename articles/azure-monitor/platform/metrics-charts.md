@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 576a7948d4df7957d934fb4c8888712fa94cb202
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337068"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848860"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
@@ -21,7 +21,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
-[Azure Monitor 中的指标](data-collection.md#metrics)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而由应用程序通过发送到 Azure 的自定义指标[自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure监视 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
+[Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而由应用程序通过发送到 Azure 的自定义指标[自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure监视 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
 
 ## <a name="create-a-new-chart"></a>创建新图表
 

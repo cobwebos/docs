@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/25/2019
 ms.author: srrengar
-ms.openlocfilehash: 1b0b369f0021580d3add583f001bad04c70b03fd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: facbcd6def7451ca83bdf00fe9b7c7cac2c74945
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661745"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879941"
 ---
 # <a name="query-eventstore-apis-for-cluster-events"></a>查询群集事件的 EventStore API
 
@@ -29,28 +29,28 @@ ms.locfileid: "58661745"
 >自 Service Fabric 版本 6.4 起，EventStore API 是 GA（仅限在 Azure 上运行的 Windows 群集）。
 
 可以通过 REST 终结点或以编程方式直接访问 EventStore API。 需要几个参数才能收集正确的数据，具体取决于查询。 这些参数通常包括：
-* `api-version`：正在使用的 EventStore API 版本
-* `StartTimeUtc`：定义要查找的开始时段
-* `EndTimeUtc`：结束时段
+* `api-version`： 正在使用的 EventStore api 版本
+* `StartTimeUtc`： 定义你感兴趣查看的段的开始
+* `EndTimeUtc`： 结束的时间段
 
 除了这些参数之外，还有一些可选参数，例如：
-* `timeout`：替代默认的 60 秒超时，以执行请求操作
-* `eventstypesfilter`：支持选择筛选特定事件类型
-* `ExcludeAnalysisEvents`：不返回“分析”事件。 默认情况下，EventStore 查询将在可能的情况下返回“分析”事件。 分析事件是更丰富的操作通道事件，包括超出常规 Service Fabric 事件范围的其他上下文或信息并且更为深入。
-* `SkipCorrelationLookup`：不在群集中查找潜在的关联事件。 默认情况下，EventStore 将尝试在群集中关联事件，并在可能的情况下将事件链接到一起。 
+* `timeout`： 重写默认值 60 第二个执行的超时时间的请求操作
+* `eventstypesfilter`： 这样，您将无法筛选出特定事件类型
+* `ExcludeAnalysisEvents`： 不会返回分析事件。 默认情况下，EventStore 查询将在可能的情况下返回“分析”事件。 分析事件是更丰富的操作通道事件，包括超出常规 Service Fabric 事件范围的其他上下文或信息并且更为深入。
+* `SkipCorrelationLookup`： 没有考虑到群集中的潜在相关事件。 默认情况下，EventStore 将尝试在群集中关联事件，并在可能的情况下将事件链接到一起。 
 
 可以查询群集中所有实体的事件。 还可以查询特定类型的所有实体的事件。 例如，可以查询特定节点的事件或群集中所有节点的事件。 当前可以查询的事件实体集（以及查询的结构）为：
-* 群集：`/EventsStore/Cluster/Events`
-* 多个节点：`/EventsStore/Nodes/Events`
-* 一个节点：`/EventsStore/Nodes/<NodeName>/$/Events`
-* 多个应用程序：`/EventsStore/Applications/Events`
-* 一个应用程序：`/EventsStore/Applications/<AppName>/$/Events`
-* 多个服务：`/EventsStore/Services/Events`
-* 一个服务：`/EventsStore/Services/<ServiceName>/$/Events`
-* 多个分区：`/EventsStore/Partitions/Events`
-* 一个分区：`/EventsStore/Partitions/<PartitionID>/$/Events`
-* 多个副本：`/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
-* 一个副本：`/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
+* 群集: `/EventsStore/Cluster/Events`
+* 节点： `/EventsStore/Nodes/Events`
+* 节点： `/EventsStore/Nodes/<NodeName>/$/Events`
+* 应用程序： `/EventsStore/Applications/Events`
+* 应用程序: `/EventsStore/Applications/<AppName>/$/Events`
+* 服务： `/EventsStore/Services/Events`
+* 服务： `/EventsStore/Services/<ServiceName>/$/Events`
+* 分区: `/EventsStore/Partitions/Events`
+* 分区： `/EventsStore/Partitions/<PartitionID>/$/Events`
+* 副本： `/EventsStore/Partitions/<PartitionID>/$/Replicas/Events`
+* 副本： `/EventsStore/Partitions/<PartitionID>/$/Replicas/<ReplicaID>/$/Events`
 
 >[!NOTE]
 >引用应用程序或服务名称时，查询不需要包括“fabric:/”前缀。 另外，如果应用程序或服务名称中包含“/”，请将其转换为“~”，以使查询正常工作。 例如，如果应用程序显示为“fabric:/App1/FrontendApp”，则应用特定查询的结构应为 `/EventsStore/Applications/App1~FrontendApp/$/Events`。
@@ -121,7 +121,8 @@ Body:
 
 还可以通过 [Service Fabric 客户端库](https://docs.microsoft.com/dotnet/api/overview/azure/service-fabric?view=azure-dotnet#client-library)以编程方式查询 EventStore。
 
-设置好 Service Fabric 客户端后，可以通过访问 EventStore（如 ` sfhttpClient.EventStore.<request>`）来查询事件
+Service Fabric 客户端设置后，您可以通过访问此类 EventStore 查询事件：
+`sfhttpClient.EventStore.<request>`
 
 以下是通过 `GetClusterEventListAsync` 函数请求 `2018-04-03T18:00:00Z` 和 `2018-04-04T18:00:00Z` 之间的所有群集事件的示例。
 
@@ -178,35 +179,42 @@ var clstrEvents = sfhttpClient.EventsStore.GetClusterEventListAsync(
 
 以下是说明如何通过调用事件存储 REST API 来了解群集状态的几个示例。
 
-群集升级：
+*群集升级：*
 
-若要查看上周群集最后一次成功或尝试升级的情况，可以通过查询 EventStore 中的“ClusterUpgradeCompleted”事件来查询 API 以查看群集最近完成的升级：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
+若要查看你的群集已成功或尝试升级过去一周的最后一个时间，可以在群集中查询最近已完成的升级的 Api，通过查询 EventStore 中的"ClusterUpgradeCompleted"事件：
+`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ClusterUpgradeCompleted`
 
-群集升级问题：
+*群集升级问题：*
 
-同样，如果最新的群集升级出现问题，则可以查询群集实体的所有事件。 将会看到各种事件，包括升级启动和成功完成升级的每个 UD。 还将看到回滚开始时的事件和相应的运行状况事件。 以下查询可用于此种情况：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+同样，如果最新的群集升级出现问题，则可以查询群集实体的所有事件。 将会看到各种事件，包括升级启动和成功完成升级的每个 UD。 还将看到回滚开始时的事件和相应的运行状况事件。 以下是为此，将使用的查询：
+`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-节点状态更改：
+*节点状态更改：*
 
-若要查看过去几天的节点状态更改情况 - 节点上升或下降的时间，或者是处于激活或停用状态（由平台、混沌服务或用户输入导致）的时间 - 请使用以下查询：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+若要查看节点状态更改在最近几天-当节点出现向上或向下或已激活或停用 （由平台，混沌测试服务，或从用户输入）-使用以下查询：
+`https://mycluster.cloudapp.azure.com:19080/EventsStore/Nodes/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-应用程序事件：
+*应用程序事件：*
 
-还可以跟踪最近的应用程序部署和升级。 使用以下查询，查看与群集中的所有应用程序事件：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
+还可以跟踪最近的应用程序部署和升级。 使用以下查询以查看在群集中的所有应用程序事件：
+`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z`
 
-应用程序的运行状况历史记录：
+*应用程序的历史运行状况：*
 
 除了仅查看应用程序的生命周期事件，你可能还想查看特定应用程序运行状况的历史记录数据。 可通过指定想收集其数据的应用程序名称来执行此操作。 使用此查询获取所有应用程序历史记录事件：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Applications/myApp/$/Events?api-version=6.4&starttimeutc=2018-03-24T17:01:51Z&endtimeutc=2018-03-29T17:02:51Z&EventsTypesFilter=ApplicationNewHealthReport`。 如果要包括可能已过期的历史记录事件（已过保留时间 (TTL)），请将 `,ApplicationHealthReportExpired` 添加到查询末尾以筛选两种类型的事件。
 
-“myApp”中所有服务的历史记录运行状况：
+*"MyApp"中的所有服务的历史运行状况：*
 
-目前，服务的运行状况报告事件在相应的应用程序实体下方显示为 `DeployedServicePackageNewHealthReport` 事件。 若要查看服务如何对“App1”执行操作，请使用以下查询：`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
+目前，服务的运行状况报告事件在相应的应用程序实体下方显示为 `DeployedServicePackageNewHealthReport` 事件。 若要查看如何执行"App1"为你的服务，请使用以下查询：
+`https://winlrc-staging-10.southcentralus.cloudapp.azure.com:19080/EventsStore/Applications/myapp/$/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=DeployedServicePackageNewHealthReport`
 
-分区重新配置：
+*分区重新配置：*
 
-若要查看在群集中发生的所有分区移动，请查询 `PartitionReconfigured` 事件。 这有助于在诊断群集中的问题时，找出在特定时间内哪些工作负载在哪些节点上运行。 这是可执行此操作的示例查询：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
+若要查看在群集中发生的所有分区移动，请查询 `PartitionReconfigured` 事件。 这有助于在诊断群集中的问题时，找出在特定时间内哪些工作负载在哪些节点上运行。 下面是示例查询可以做到这一点：
+`https://mycluster.cloudapp.azure.com:19080/EventsStore/Partitions/Events?api-version=6.4&starttimeutc=2018-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=PartitionReconfigured`
 
-混沌服务：
+*混沌测试服务：*
 
-当混沌服务开始或停止时，群集级别会公开一个事件。 若要查看最近一次使用混沌服务的情况，请使用以下查询：`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
+当混沌服务开始或停止时，群集级别会公开一个事件。 若要查看你最近使用混沌测试服务，请使用以下查询：
+`https://mycluster.cloudapp.azure.com:19080/EventsStore/Cluster/Events?api-version=6.4&starttimeutc=2017-04-22T17:01:51Z&endtimeutc=2018-04-29T17:02:51Z&EventsTypesFilter=ChaosStarted,ChaosStopped`
 

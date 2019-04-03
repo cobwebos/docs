@@ -3,21 +3,21 @@ title: REST API：帐户管理操作在 Azure 数据湖存储 Gen1 |Microsoft Do
 description: 使用 Azure Data Lake Storage Gen1 和 WebHDFS REST API 在 Data Lake Storage Gen1 中执行帐户管理操作
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: 57ac6501-cb71-4f75-82c2-acc07c562889
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: b2c4d38462cf617d8417b269d47a8c1bb0c266c3
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: twooley
+ms.openlocfilehash: 97fe33309f36cd7545f8c9d6c2d34671641caa1f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530108"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880162"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 在 Azure Data Lake Storage Gen1 上执行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -75,6 +75,6 @@ ms.locfileid: "57530108"
 * [使用 REST API 对 Data Lake Storage Gen1 执行的文件系统操作](data-lake-store-data-operations-rest-api.md)。
 
 ## <a name="see-also"></a>另请参阅
-* [Azure Data Lake Storage Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
-* [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake 存储 Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
+* [打开源大数据应用程序与 Azure 数据湖存储 Gen1 兼容](data-lake-store-compatible-oss-other-applications.md)
 

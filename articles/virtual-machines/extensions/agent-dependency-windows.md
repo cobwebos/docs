@@ -15,18 +15,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 2bae96c1c87a4bbb44c006ed628ee8019ab2635c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cd10c503c6e65f68d063deb5f8a537fc9f3c9f0f
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671153"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58846322"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 azure 监视器依赖关系的虚拟机扩展
 
 用于 VM 的 Azure Monitor 映射功能从 Microsoft Dependency Agent 获取其数据。 发布和受 Microsoft Windows 的 Azure VM 依赖关系代理虚拟机扩展。 扩展 Azure 虚拟机上安装依赖关系代理。 本文档详细介绍了支持的平台、 配置和 Windows 的 Azure VM 依赖关系代理虚拟机扩展的部署选项。
 
 ## <a name="prerequisites"></a>必备组件
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ### <a name="operating-system"></a>操作系统
 
@@ -130,11 +132,11 @@ ms.locfileid: "58671153"
 
 ## <a name="powershell-deployment"></a>PowerShell 部署
 
-`Set-AzureRmVMExtension`命令可用于将依赖关系代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
+`Set-AzVMExtension`命令可用于将依赖关系代理虚拟机扩展部署到现有的虚拟机。 运行命令之前，需将公共和专用配置存储在 PowerShell 哈希表中。 
 
 ```powershell
 
-Set-AzureRmVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
+Set-AzVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgent" `
     -ResourceGroupName "myResourceGroup" `
     -VMName "myVM" `
     -Publisher "Microsoft.Azure.Monitoring.DependencyAgent" `
@@ -150,7 +152,7 @@ Set-AzureRmVMExtension -ExtensionName "Microsoft.Azure.Monitoring.DependencyAgen
 有关扩展部署状态的数据可以从 Azure 门户和使用 Azure PowerShell 模块进行检索。 若要查看给定 VM 的扩展部署状态，请使用 Azure PowerShell 模块运行以下命令。
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
+Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtensionName
 ```
 
 扩展执行输出记录到在以下目录中发现的文件：

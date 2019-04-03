@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: sogup
-ms.openlocfilehash: ef46c37fec3e5438aeb4f9309201d45365a96fdc
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402059"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885258"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见的问题-备份 Azure Vm
 
@@ -68,7 +68,7 @@ ms.locfileid: "58402059"
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>可以取消正在进行的备份作业吗？
 是的。 可在“拍摄快照”状态中取消备份作业。 如果此作业正在从快照传输数据，则无法取消。
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie--azurebackuprggeonumber-will-my-backups-continue-to-work"></a>启用了由 Azure 备份服务 （即，创建资源组上的锁 ` AzureBackupRG_<geo>_<number>`)，我的备份仍将正常运行？
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>启用了由 Azure 备份服务 （即，创建资源组上的锁 `AzureBackupRG_<geo>_<number>`)，我的备份仍将正常运行？
 如果锁定由 Azure 备份服务创建的资源组，将开始备份失败，因为没有 18 个还原点的最大限制。
 
 用户需要删除锁，然后清除该资源组中的还原点集合以使将来的备份成功，[请按照下列步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)删除还原点集合。
@@ -88,7 +88,7 @@ Azure 备份支持[标准 SSD 托管磁盘](https://azure.microsoft.com/blog/ann
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>我有一个安装了写入加速器 (WA) 磁盘和 SAP HANA 的 VM。 我该如何备份？
 Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排除。 但是，备份不会提供数据库一致性，因为未备份已启用 WA 的磁盘上的信息。 如果需要备份操作系统磁盘和备份未启用 WA 的磁盘，则可以使用此配置备份磁盘。
 
-我们正在与 15 分钟 RPO 运行 SAP HANA 备份的专用预览版。 它以与 SQL 数据库备份类似的方式构建，并将 backInt 接口用于 SAP HANA 认证的第三方解决方案。 如果您感兴趣，发送电子邮件至` AskAzureBackupTeam@microsoft.com `与该主题**注册的 Azure Vm 中的 SAP HANA 备份的专用预览版**。
+我们正在与 15 分钟 RPO 运行 SAP HANA 备份的专用预览版。 它以与 SQL 数据库备份类似的方式构建，并将 backInt 接口用于 SAP HANA 认证的第三方解决方案。 如果您感兴趣，发送电子邮件至`AskAzureBackupTeam@microsoft.com`与该主题**注册的 Azure Vm 中的 SAP HANA 备份的专用预览版**。
 
 
 ## <a name="restore"></a>还原

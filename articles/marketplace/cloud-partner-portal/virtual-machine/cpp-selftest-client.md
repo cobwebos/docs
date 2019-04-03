@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 6cfe9b61d9bbb088e827386b2195bba21333937e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ae01b0fb088035240e670c16d4d457d8abda1bfa
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649080"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848926"
 ---
 # <a name="create-a-self-test-client-to-pre-validate-an-azure-virtual-machine-image"></a>创建用来预验证 Azure 虚拟机映像的自测试客户端
 
@@ -51,7 +51,7 @@ ms.locfileid: "58649080"
 自测试 API 包含仅支持 POST 方法的单个终结点。  它具有以下结构。
 
 ```
-Uri:             https:\//isvapp.azurewebsites.net/selftest-vm
+Uri:             https://isvapp.azurewebsites.net/selftest-vm
 Method:          Post
 Request Header:  Content-Type: “application/json”
 Authorization:   “Bearer xxxx-xxxx-xxxx-xxxxx”
@@ -357,7 +357,7 @@ Response:
 
 ### <a name="to-create-and-get-a-token-using-c35"></a>使用 C&#35;创建和获取令牌
 
-要向 Auth0 请求任何授权的应用程序的令牌，请使用以下格式的有效负载对 [https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) 终结点执行 POST 操作：
+若要要求 Auth0 提供任何授权的应用程序的令牌，请执行 POST 操作到 https:\//soamtenant.auth0.com/oauth/token 终结点采用以下格式的有效负载：
 
 ```csharp
 string clientId = "Your Application Id";
@@ -380,7 +380,7 @@ var token = JObject.Parse(content)["access_token"];
 
 ### <a name="to-create-and-get-a-token-using-powershell"></a>使用 PowerShell 创建和获取令牌
 
-要向 Auth0 请求任何授权的应用程序的令牌，请使用以下格式的有效负载对 [https://soamtenant.auth0.com/oauth/token ](https://soamtenant.auth0.com/oauth/token) 终结点执行 POST 操作：
+若要要求 Auth0 提供任何授权的应用程序的令牌，请执行 POST 操作到 https:\//soamtenant.auth0.com/oauth/token 终结点采用以下格式的有效负载：
 
 ```powershell
 $clientId = "Application Id of AD Client APP";

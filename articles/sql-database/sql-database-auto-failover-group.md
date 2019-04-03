@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 203d81f3d4872b249103429dde3fcac365fa5753
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483380"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58848385"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -343,11 +343,11 @@ ms.locfileid: "58483380"
 
 | API | 描述 |
 | --- | --- |
-| New-AzSqlDatabaseInstanceFailoverGroup |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
-| Set-AzSqlDatabaseInstanceFailoverGroup |修改故障转移组的配置|
-| Get-AzSqlDatabaseInstanceFailoverGroup |检索故障转移组配置|
-| Switch-AzSqlDatabaseInstanceFailoverGroup |触发故障转移组到辅助服务器的故障转移|
-| Remove-AzSqlDatabaseInstanceFailoverGroup | 删除故障转移组|
+| New-AzureRmSqlDatabaseInstanceFailoverGroup |此命令会创建故障转移组，并将其同时注册到主服务器和辅助服务器|
+| Set-AzureRmSqlDatabaseInstanceFailoverGroup |修改故障转移组的配置|
+| Get-AzureRmSqlDatabaseInstanceFailoverGroup |检索故障转移组配置|
+| Switch-AzureRmSqlDatabaseInstanceFailoverGroup |触发故障转移组到辅助服务器的故障转移|
+| Remove-AzureRmSqlDatabaseInstanceFailoverGroup | 删除故障转移组|
 
 ### <a name="rest-api-manage-sql-database-failover-groups-with-single-and-pooled-databases"></a>REST API：使用单个数据库和入池数据库管理 SQL 数据库故障转移组
 

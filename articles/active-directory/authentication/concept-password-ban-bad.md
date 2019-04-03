@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 795abcadb1cee7599665f7bc3b8e0d3e08a3da05
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: cc2c125df2e3455b0e90919dbca92fe497a4b1b7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369065"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884340"
 ---
 # <a name="eliminate-bad-passwords-in-your-organization"></a>消除你的组织中的错误密码
 
@@ -100,14 +100,17 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 [contoso] + [blank] + [f] + [9] + [!] = 5 分，由于此密码至少为 5 分，因此被接受。
 
    > [!IMPORTANT]
-   > 请注意，根据持续的安全性分析和研究，禁止密码算法以及全局列表可以并且会随时在 Azure 中进行更改。 对于本地 DC 代理服务，只有在重新安装 DC 代理软件后，更新的算法才能生效。
+   > 请注意，根据持续的安全性分析和研究，禁止密码算法以及全局列表可以并且会随时在 Azure 中进行更改。 对于本地 DC 代理服务，更新的算法才会生效后的 DC 代理软件重新安装。
 
 ## <a name="license-requirements"></a>许可要求
 
 |   | 带有全局禁止密码列表的 Azure AD 密码保护 | 带有自定义禁止密码列表的 Azure AD 密码保护|
 | --- | --- | --- |
-| 仅限云的用户 | Azure AD Free | Azure AD Basic |
+| 仅限云的用户 | Azure AD Free | Azure AD Premium P1 或 P2 |
 | 从本地 Windows Server Active Directory 同步的用户 | Azure AD Premium P1 或 P2 | Azure AD Premium P1 或 P2 |
+
+> [!NOTE]
+> 不会同步到 Azure Active Directory 的本地 Windows Server Active Directory 用户还利用基于现有的许可为同步的用户的 Azure AD 密码保护的优点。
 
 可以在 [Azure Active Directory 定价站点](https://azure.microsoft.com/pricing/details/active-directory/)上找到包括成本在内的其他许可信息。
 
@@ -119,5 +122,5 @@ Microsoft 一直在努力，力求比网络罪犯先行一步。 因此，Azure 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置自定义的禁止密码列表](howto-password-ban-bad.md)
-* [启用本地 Azure AD 密码保护代理](howto-password-ban-bad-on-premises-deploy.md)
+* [配置自定义禁止密码列表](howto-password-ban-bad.md)
+* [启用 Azure AD 密码保护代理的本地](howto-password-ban-bad-on-premises-deploy.md)

@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 0167665684bc4fc8b29dce70c53033dcbb007555
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3f8fbf571efafe22d7d0c5ccfd71dded381ba6fb
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58115793"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847217"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 联机模拟器连接到 Azure IoT 中心 (Node.js)
 
@@ -96,6 +96,11 @@ Web 模拟器中有三个区域。
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](media/iot-hub-raspberry-pi-web-simulator/2_run_application.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+
+若要监视从模拟设备在 IoT 中心接收的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+
+有关更多方法来处理设备发送的数据，继续学习下一节。
 
 ## <a name="next-steps"></a>后续步骤
 

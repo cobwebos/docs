@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 31a800e851eb8a2f533cc8170856b16cd43c21cf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850711"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878003"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure 表的潜在客户管理说明
 
@@ -34,7 +34,7 @@ ms.locfileid: "57850711"
 
     ![创建 Azure 存储帐户的步骤](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragecreate.png)
 
-4.  复制密钥的存储帐户连接字符串并将其粘贴到云合作伙伴门户的“存储帐户连接字符串”字段。 连接字符串的一个示例是 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net `
+4.  复制密钥的存储帐户连接字符串并将其粘贴到云合作伙伴门户的“存储帐户连接字符串”字段。 连接字符串的一个示例是 `DefaultEndpointsProtocol=https;AccountName=myAccountName;AccountKey=myAccountKey;EndpointSuffix=core.windows.net`
     
     ![Azure 存储密钥](./media/cloud-partner-portal-lead-management-instructions-azure-table/azurestoragekeys.png)
 
@@ -90,7 +90,7 @@ ms.locfileid: "57850711"
 
      ![为 Azure 表名选择自定义值](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - 筛选查询 - 单击此字段，弹出窗口中将显示“获取过去时间”图标。 选择“过去时间”，将其用作时间戳以筛选查询。 此外，也可以将此功能粘贴到以下字段：`gt datetime'@{body('Get_past_time')}'`
+   - 筛选查询 - 单击此字段，弹出窗口中将显示“获取过去时间”图标。 选择“过去时间”，将其用作时间戳以筛选查询。 或者，您可以将此函数粘贴到该字段： `gt datetime'@{body('Get_past_time')}'`
 
      ![设置筛选查询功能](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -148,4 +148,4 @@ ms.locfileid: "57850711"
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置潜在客户](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)
+[配置潜在顾客](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)

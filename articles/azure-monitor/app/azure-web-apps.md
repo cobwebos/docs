@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 7386f6bd92143cf3fb7b37725900425f99371cd0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9d121146924eb153227e35d608a3c6c33aae31a1
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804986"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862601"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -99,9 +99,9 @@ ms.locfileid: "58804986"
 * 选择**设置**> * * * * 应用程序设置 * * *
    * 在应用程序设置下添加一个新**应用设置名称**并**值**:
 
-     名称：`APPINSIGHTS_JAVASCRIPT_ENABLED`
+     姓名： `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     值：`true`
+     值： `true`
 
    * **保存**设置并**重新启动**应用。
 
@@ -118,9 +118,9 @@ ms.locfileid: "58804986"
 * 选择**设置** > **应用程序设置**
    * 在应用程序设置下添加一个新**应用设置名称**并**值**:
 
-     名称： `APPINSIGHTS_JAVASCRIPT_ENABLED`
+     name： `APPINSIGHTS_JAVASCRIPT_ENABLED`
 
-     值：`false`
+     值： `false`
 
    * **保存**设置并**重新启动**应用。
 
@@ -314,7 +314,7 @@ $app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Re
 
 如果升级已完成从 2.5.1 版之前的版本，请检查 ApplicationInsigths dll 已从应用程序 bin 文件夹[请参阅故障排除步骤](https://docs.microsoft.com/azure/azure-monitor/app/azure-web-apps#troubleshooting)。
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 下面是我们用于扩展/代理基于监视适用于.NET 的分步故障排除指南和基于.NET Core 的 Azure 应用服务上运行的应用程序。
 
@@ -322,7 +322,7 @@ $app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Re
 > Java 和 Node.js 应用程序通过手动 SDK 基于检测仅支持在 Azure 应用服务上，因此下面的步骤不适用于这些方案。
 
 1. 通过监视应用程序的检查`ApplicationInsightsAgent`。
-    * 检查 ApplicationInsightsAgent_EXTENSION_AGENT 应用设置设置为"~ 2"的值。
+    * 检查`ApplicationInsightsAgent_EXTENSION_VERSION`应用设置设置为"~ 2"的值。
 2. 请确保该应用程序满足要监视的要求。
     * 浏览到 `https://yoursitename.scm.azurewebsites.net/ApplicationInsights`
 
@@ -342,7 +342,7 @@ $app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Re
 
 下表提供了这些值的含义的更详细的说明，其基础导致，以及建议的修补程序：
 
-|问题值|解释|解决方法
+|问题值|说明|解决方法
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值指示，该扩展检测到 SDK 的某些方面已经存在于应用程序，并将回退。 它可能是由于对的引用`System.Diagnostics.DiagnosticSource`， `Microsoft.AspNet.TelemetryCorrelation`，或 `Microsoft.ApplicationInsights`  | 删除的引用。 从特定 Visual Studio 模板，添加默认情况下某些这些引用和较旧版本的 Visual Studio 可能会将引用添加到`Microsoft.ApplicationInsights`。
 |`AppAlreadyInstrumented:true` | 此值还可能引起从以前的部署的应用程序文件夹中的上述 dll 存在。 | 清除要确保删除这些 dll 的应用程序文件夹。|
@@ -353,10 +353,10 @@ $app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Re
 有关 Application Insights 代理/扩展的最新信息，请参阅[发行说明](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md)。
 
 ## <a name="next-steps"></a>后续步骤
-
-* [在实时应用上运行探查器](../../azure-monitor/app/profiler.md)。
+* [在实时应用上运行探查器](../app/profiler.md)。
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) - 使用 Application Insights 监视 Azure Functions
-* [将 Azure 诊断配置为](../../azure-monitor/platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
-* [监视服务运行状况指标](../../azure-monitor/platform/data-collection.md)以确保服务可用且做出快速响应。
-* [接收警报通知](../../azure-monitor/platform/alerts-overview.md) 。
-* [设置可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)，以便在站点关闭时发出警报。
+* [将 Azure 诊断配置为](../platform/diagnostics-extension-to-application-insights.md)向 Application Insights 发送数据。
+* [监视服务运行状况指标](../platform/data-platform.md)以确保服务可用且做出快速响应。
+* 每当操作事件发生或指标超过阈值时[接收警报通知](../platform/alerts-overview.md)。
+* 若要从访问网页的浏览器获取客户端遥测数据，请使用[适用于 JavaScript 应用和网页的 Application Insights](javascript.md)。
+* [设置可用性 Web 测试](monitor-web-app-availability.md)，以便在站点关闭时发出警报。

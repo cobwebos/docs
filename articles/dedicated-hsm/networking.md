@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: barclayn
-ms.openlocfilehash: aed0eb6ba4cdaa57d282ac4484e0c27c0697afb5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d6672827a87fbb949237d51310f1a9febc192ff2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58083124"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58886331"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Azure 专用 HSM 网络
 
@@ -60,7 +60,7 @@ Azure 专用 HSM 需要高度安全的网络环境。 无论是要 Azure 云连�
 
 ### <a name="site-to-site-vpn"></a>站点到站点 VPN
 
-使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 进行安全通信的原因之一是为本地 HSM 提供备份设施，并在两者之间建立连接以运行备份。
+使用站点到站点虚拟专用网络可在基于 Azure 的专用 HSM 与本地 IT 之间实现安全通信。 若要执行此操作的原因让一个备份工具，以便在 HSM 内部应用程序和需要两个用于运行备份之间的连接。
 
 ## <a name="connecting-virtual-networks"></a>连接虚拟网络
 

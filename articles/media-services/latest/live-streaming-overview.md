@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: b8725dfcb2a337750c6e2a78ba7571114b8e3cd3
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ab8d4fb9b46573d58fd93fc5121a4fc1918cc69d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407177"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879380"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
 
@@ -31,7 +31,7 @@ ms.locfileid: "58407177"
 本文提供了概述和指南的实时传送视频流媒体服务和其他相关文章的链接。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
 
 ## <a name="dynamic-packaging"></a>动态打包
 
@@ -73,7 +73,7 @@ ms.locfileid: "58407177"
 
 1. 在媒体服务帐户中，确保“流式处理终结点”正在运行。 
 2. 创建[实时事件](live-events-outputs-concept.md)。 <br/>创建事件时，可以将其启动方式指定为自动启动。 或者，可以在准备好开始流式传输后，启动事件。<br/> 如果将 autostart 设置为 true，则实时事件会在创建后立即启动。 只要实时事件开始运行，就会开始计费。 必须显式对实时事件资源调用停止操作才能停止进一步计费。 有关详细信息，请参阅[实时事件状态和计费](live-event-states-billing.md)。
-3. 获取引入 URL 并配置本地编码器以使用 URL 发送贡献源。<br/>请参阅[推荐的实时编码器](recommended-on-premises-live-encoders.md)。
+3. 获取的引入 URL，并配置本地编码器使用的 URL 发送贡献源。<br/>请参阅[推荐的实时编码器](recommended-on-premises-live-encoders.md)。
 4. 获取预览 URL 并使用它验证来自编码器的输入是否实际接收。
 5. 创建新的**资产**对象。
 6. 创建**实时输出**并使用创建的资产名称。<br/>**实时输出**会将流存档到**资产**中。
@@ -87,11 +87,11 @@ ms.locfileid: "58407177"
 
 - [推荐的实时编码器](recommended-on-premises-live-encoders.md)
 - [使用云 DVR](live-event-cloud-dvr.md)
-- [实时事件类型功能比较](live-event-types-comparison.md)
+- [实时事件类型的功能比较](live-event-types-comparison.md)
 - [状态和计费](live-event-states-billing.md)
-- [延迟](live-event-latency.md)
+- [Latency](live-event-latency.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [实时传送视频流教程](stream-live-tutorial-with-api.md)
+* [实时流式处理的教程](stream-live-tutorial-with-api.md)
 * [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)

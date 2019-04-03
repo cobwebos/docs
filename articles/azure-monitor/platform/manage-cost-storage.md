@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
-ms.openlocfilehash: 599b1d3f522a0f287736808cce88163f1ef7f28f
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755799"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878139"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>管理的 Azure Monitor 中的 Log Analytics 使用情况和成本
 
@@ -92,7 +92,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
  
 1. 在工作区的左窗格中，选择“使用情况和预估成本”。
 2. 在“使用情况和预估成本”页面顶部，单击“数据量管理”。
-5. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。<br><br> ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
+5. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。<br><br> ![更改工作区数据保留期设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="legacy-pricing-tiers"></a>旧版定价层
 
@@ -122,7 +122,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 ## <a name="troubleshooting-why-log-analytics-is-no-longer-collecting-data"></a>排查 Log Analytics 不再收集数据的原因
 如果采用的是旧版免费定价层并且某天已发送的数据超过 500 MB，则该天的剩余时间会停止数据收集。 达到每日限制是 Log Analytics 停止数据收集或者看起来缺少数据的常见原因。  在数据收集启动和停止时，Log Analytics 会创建一个类型为“操作”的事件。 请在搜索中运行以下查询来检查是否已达到每日限制并缺少数据： 
 
-`Operation | where OperationCategory == 'Data Collection Status' `
+`Operation | where OperationCategory == 'Data Collection Status'`
 
 当数据收集停止时，OperationStatus 为 Warning。 当数据收集启动时，OperationStatus 为 Succeeded。 下表描述了数据收集停止的原因以及用于恢复数据收集的建议操作：  
 
@@ -186,9 +186,11 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 若要查看**大小**的可计费事件引入每台计算机，使用`_BilledSize`属性 ([日志标准属性 #_billedsize.md](learn more)) 提供以字节为单位的大小：
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
+```
 
 `_IsBillable`属性指定引入的数据是否会产生费用 ([日志标准 properties.md #_isbillable](Learn more)。)
 
@@ -205,26 +207,32 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 若要查看向特定计算机发送数据的计费数据类型计数，请使用：
 
-`union withsource = tt *
+```
+union withsource = tt *
 | where Computer == "computer name"
 | where _IsBillable == true 
-| summarize count() by tt | sort by count_ nulls last `
+| summarize count() by tt | sort by count_ nulls last
+```
 
 ### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>通过 Azure 资源、 资源组或订阅的数据量
 
 对于在 Azure 中托管的节点中的数据可以获取**大小**的可计费事件引入__每台计算机__，使用`_ResourceId`属性提供对资源的完整路径 ([日志标准 properties.md #_resourceid](learn more)):
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
-| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
+```
 
 对于在 Azure 中托管的节点中的数据可以获取**大小**的可计费事件引入__每个 Azure 订阅__，分析`_ResourceId`属性设置为：
 
-`union withsource = tt * 
+```
+union withsource = tt * 
 | where _IsBillable == true 
 | parse tolower(_ResourceId) with "/subscriptions/" subscriptionId "/resourcegroups/" 
     resourceGroup "/providers/" provider "/" resourceType "/" resourceName   
-| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last `
+| summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
+```
 
 更改`subscriptionId`到`resourceGroup`将显示按 Azure resouurce 组列出的可计费引入的数据量。 
 
@@ -295,7 +303,8 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 若要查看不同自动化节点的数目，请使用以下查询：
 
-` ConfigurationData 
+```
+ ConfigurationData 
  | where (ConfigDataType == "WindowsServices" or ConfigDataType == "Software" or ConfigDataType =="Daemons") 
  | extend lowComputer = tolower(Computer) | summarize by lowComputer 
  | join (
@@ -303,7 +312,8 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
        | where SCAgentChannel == "Direct"
        | extend lowComputer = tolower(Computer) | summarize by lowComputer, ComputerEnvironment
  ) on lowComputer
- | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc`
+ | summarize count() by ComputerEnvironment | sort by ComputerEnvironment asc
+```
 
 ## <a name="create-an-alert-when-data-collection-is-higher-than-expected"></a>当数据收集量高于预期时创建警报
 
@@ -330,7 +340,7 @@ Azure 警报支持使用搜索查询的[日志警报](alerts-unified-log.md)。
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - **搜索查询**到 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
@@ -344,7 +354,7 @@ Azure 警报支持使用搜索查询的[日志警报](alerts-unified-log.md)。
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - **搜索查询**到 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：

@@ -1,6 +1,6 @@
 ---
-title: Azure Front Door 服务 - 指标和日志记录 | Microsoft Docs
-description: 本文有助于了解 Azure Front Door 服务支持的不同指标和访问日志
+title: 监视指标和 Azure 第一道防线服务中的日志 |Microsoft Docs
+description: 本主题介绍不同的指标和 Azure 第一道防线服务支持的访问日志
 services: frontdoor
 documentationcenter: ''
 author: sharad4u
@@ -11,30 +11,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 3097f4a1716718df5d67769e234562a234623cfe
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407022"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862096"
 ---
-# <a name="monitoring-metrics-and-logs-for-front-door"></a>监视指标和日志中的第一道防线
+# <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>监视指标和 Azure 第一道防线服务中的日志
 
 通过使用 Azure 第一道防线服务，可以按下列方式监视资源：
 
-* [指标](#metrics)：应用程序网关当前有七个指标可用来查看性能计数器。
-* [日志](#diagnostic-logging)：通过日志记录，可出于监视目的从资源保存或使用性能、访问及其他数据。
+- **指标** 应用程序网关当前有七个指标可用来查看性能计数器。
+- **日志**。 活动日志和诊断日志允许性能、 访问和其他数据来保存或出于监视目的从资源使用。
 
-## <a name="metrics"></a>度量值
+### <a name="metrics"></a>度量值
 
-指标是某些 Azure 资源的一项功能，可在此查看门户中的性能计数器。 对于 Front Door，提供以下指标：
+指标是某些 Azure 资源，可用于在门户中查看性能计数器的功能。 以下是可用的第一道防线指标：
 
 | 指标 | 指标显示名称 | 单位 | 维度 | 描述 |
 | --- | --- | --- | --- | --- |
 | RequestCount | 请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | Front Door 服务的客户端请求数。  |
 | RequestSize | 请求大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以请求的形式从客户端发送到 Front Door 的字节数。 |
 | ResponseSize | 响应大小 | 字节 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 以响应的形式从 Front Door 发送到客户端的字节数。 |
-| TotalLatency | 总延迟 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 自 Front Door 接收到客户端请求起，直至客户端确认来自 Front Door 的最后一个响应字节为止，所计算的时间。 |
+| TotalLatency | 总延迟 | 毫秒 | HttpStatus</br>HttpStatusGroup</br>ClientRegion</br>ClientCountry | 从客户端请求接收的第一道防线，直到客户端确认从第一道防线的最后一个响应字节计算的时间。 |
 | BackendRequestCount | 后端请求计数 | Count | HttpStatus</br>HttpStatusGroup</br>后端 | 从 Front Door 发送到后端的请求数。 |
 | BackendRequestLatency | 后端请求延迟 | 毫秒 | 后端 | 自 Front Door 向后端发送请求起，直至 Front Door 接收到来自后端的最后一个响应字节为止，所计算的时间。 |
 | BackendHealthPercentage | 后端运行状况百分比 | 百分比 | 后端</br>BackendPool | 从 Front Door 到后端，成功运行状况探测的百分比。 |
@@ -42,35 +42,36 @@ ms.locfileid: "58407022"
 
 ## <a name="activity-log"></a>活动日志
 
-活动日志提供了解您指定的地址执行的操作。 使用活动日志，您可以确定"什么，谁，以及何时"的任何写入操作 (PUT、 POST、 DELETE) 执行在第一道防线。
+活动日志提供有关操作的第一道防线服务上完成。 它们还决定了什么，谁，以及何时为任何写入第一道防线服务采取的操作 （put、 post 或 delete）。
 
-> [!NOTE]
-> 活动日志不包括读取 (GET) 操作或者通过 Azure 门户或原始管理 API 执行的操作。
+>[!NOTE]
+>活动日志不包括读取 (get) 操作。 它们还不包括使用 Azure 门户或原始管理 API 执行的操作。
 
-您可以访问活动日志中在第一道防线，或访问 Azure Monitor 中的所有 Azure 资源的日志。 
-
-查看活动日志：
+在你的第一道防线服务或 Azure 资源在 Azure Monitor 中的所有日志中的访问活动日志。 查看活动日志：
 
 1. 选择你的第一道防线实例。
-2. 单击“活动日志”。
+2. 选择**活动日志**。
 
     ![活动日志](./media/front-door-diagnostics/activity-log.png)
 
-3. 选择所需的筛选范围，然后单击“应用”。
+3. 选择筛选的作用域，然后选择**应用**。
 
 ## <a name="diagnostic-logging"></a>诊断日志
-诊断日志提供大量有关操作和错误的信息，这些信息对审核和故障排除非常重要。 诊断日志不同于活动日志。 活动日志提供针对 Azure 资源执行的操作的详细信息。 诊断日志提供资源执行的操作的深入信息。 详细了解如何[Azure Monitor 诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)。 
+诊断日志提供有关操作和错误对于审核和疑难解答很重要的丰富信息。 诊断日志不同于活动日志。
 
-若要在第一道防线配置诊断日志：
+活动日志提供 Azure 资源上执行的操作的见解。 诊断日志提供针对资源执行的操作详细信息。 有关详细信息，请参阅[Azure Monitor 诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)。
 
-1. 选择 APIM 服务实例。
-2. 单击“诊断设置”。
+![诊断日志](./media/front-door-diagnostics/diagnostic-log.png)
 
-    ![诊断日志](./media/front-door-diagnostics/diagnostic-log.png)
+若要配置你的第一道防线服务诊断日志：
 
-3. 单击“启用诊断”。 可以将诊断日志与指标一起存档到存储帐户，将其流式传输到事件中心，或者将其发送到 Azure Monitor 日志。 
+1. 选择你的 Azure API 管理服务。
 
-第一道防线的 azure 服务目前提供诊断日志 （每小时进行批处理），有关单个 API 请求其中每个条目具有以下架构：
+2. 选择**诊断设置**。
+
+3. 选择“启用诊断”。 存档到存储帐户的指标和诊断日志、 流式传输到事件中心，或将其发送到 Azure Monitor 日志。
+
+第一道防线服务目前提供诊断日志 （每小时进行批处理）。 诊断日志提供单个 API 请求，其中每个条目具有以下架构：
 
 | 属性  | 描述 |
 | ------------- | ------------- |
@@ -91,5 +92,5 @@ ms.locfileid: "58407022"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[创建 Front Door](quickstart-create-front-door.md)。
-- 了解 [Front Door 的工作原理](front-door-routing-architecture.md)。
+- [创建 Front Door 配置文件](quickstart-create-front-door.md)
+- [第一道防线的工作原理](front-door-routing-architecture.md)

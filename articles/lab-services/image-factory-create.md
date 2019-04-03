@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: c7923282396481dcfd6aa19b75d110fa03e50931
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439784"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879142"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建自定义映像工厂
 本文介绍如何使用示例脚本中可用设置的自定义映像工厂[Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory)。
@@ -27,7 +27,7 @@ ms.locfileid: "58439784"
 
 若要获取开发人员桌面到开发测试实验室中处于就绪状态的重要加速器使用自定义映像。 自定义映像的缺点是，没有额外要保留在实验室中的内容。 例如，随着时间的推移过期产品的试用版 （或者） 不会应用新发布的安全更新，这迫使我们对定期刷新自定义映像。 使用映像工厂，必须签入源代码管理，并让自动化的过程生成基于定义的自定义映像的映像的定义。
 
-该解决方案可从自定义映像创建虚拟机，同时消除其他日常维护成本的速度。 使用此解决方案中，可以自动创建自定义映像、 将它们分发给其他开发测试实验室，并停用旧的映像。 在以下视频中，您了解映像工厂，以及它与开发测试实验室的实现方式。  所有 Azure Powershell 脚本都是自由地可用且位于此处： [ http://aka.ms/dtlimagefactory ](http://aka.ms/dtlimagefactory)。
+该解决方案可从自定义映像创建虚拟机，同时消除其他日常维护成本的速度。 使用此解决方案中，可以自动创建自定义映像、 将它们分发给其他开发测试实验室，并停用旧的映像。 在以下视频中，您了解映像工厂，以及它与开发测试实验室的实现方式。  所有 Azure Powershell 脚本都是自由地可用且位于此处： [ https://aka.ms/dtlimagefactory ](https://aka.ms/dtlimagefactory)。
 
 <br/>
 

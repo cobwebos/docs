@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: d8344177fc5895451cf876f5aa581baa1fed52e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 614f9a44f7c699be38906ac00e12f523490ce112
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58001855"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884289"
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>在 Application Insights 中浏览 Java 跟踪日志
 如果使用 Logback 或 Log4J（v1.2 或 v2.0）进行跟踪，可将跟踪日志自动发送到 Application Insights，以便在其中发现和搜索日志。
@@ -27,7 +27,7 @@ ms.locfileid: "58001855"
 按照说明安装[适用于 Java 的 Application Insights SDK][java]（如果尚未安装）。
 
 ## <a name="add-logging-libraries-to-your-project"></a>将日志记录库添加到项目
-*为项目选择适当的方式。*
+*选择适当的方式为你的项目。*
 
 #### <a name="if-youre-using-maven"></a>如果使用 Maven...
 如果项目已设置为使用 Maven 进行生成，请将以下代码片段之一合并到 pom.xml 文件。
@@ -116,6 +116,7 @@ ms.locfileid: "58001855"
 
     <appender name="aiAppender" 
       class="com.microsoft.applicationinsights.logback.ApplicationInsightsAppender">
+        <instrumentationKey>[APPLICATION_INSIGHTS_KEY]</instrumentationKey>
     </appender>
     <root level="trace">
       <appender-ref ref="aiAppender" />
@@ -128,7 +129,7 @@ ms.locfileid: "58001855"
 
     <Configuration packages="com.microsoft.applicationinsights.log4j.v2">
       <Appenders>
-        <ApplicationInsightsAppender name="aiAppender" />
+        <ApplicationInsightsAppender name="aiAppender" instrumentationKey="[APPLICATION_INSIGHTS_KEY]" />
       </Appenders>
       <Loggers>
         <Root level="trace">
@@ -144,6 +145,7 @@ ms.locfileid: "58001855"
 
     <appender name="aiAppender" 
          class="com.microsoft.applicationinsights.log4j.v1_2.ApplicationInsightsAppender">
+        <param name="instrumentationKey" value="[APPLICATION_INSIGHTS_KEY]" />
     </appender>
     <root>
       <priority value ="trace" />

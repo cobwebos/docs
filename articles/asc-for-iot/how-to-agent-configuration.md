@@ -1,25 +1,25 @@
 ---
 title: Azure 安全中心配置适用于 IoT 代理预览 |Microsoft Docs
 description: 了解如何为 IoT 与 Azure 安全中心配置为使用代理。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: f95c445a-4f0d-4198-9c6c-d01446473bd0
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 27b548459bd1fee3c6596cce624b00d052e608fe
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 1e212e752309fd8347836d462a3394da2fca4a15
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757385"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862771"
 ---
 # <a name="tutorial-configure-security-agents"></a>教程：配置安全代理
 

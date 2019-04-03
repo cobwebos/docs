@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41eed6bc878bff4c9d847f9a449ca693274bf234
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 1cadf61d7ce6ed48ea2d42b299dede860a505f0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195500"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877425"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>在 Windows 中排查 Azure 文件问题
 
@@ -100,10 +100,10 @@ Azure 文件同步可以将你的本地 Windows Server 转换为 Azure 文件共
 )从 Windows 访问 Azure 文件。
 
 #### <a name="solution-3---unblock-port-445-with-help-of-your-ispit-admin"></a>解决方案 3-取消阻止端口 445 帮助您的 ISP / IT 管理员
-使用你的 IT 部门或打开端口 445(tcp 出站到 ISP [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。
+与 IT 部门或 ISP 配合，向 [Azure IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)开放端口 445 出站通信。
 
 #### <a name="solution-4---use-rest-api-based-tools-like-storage-explorerpowershell"></a>解决方案 4-使用 REST API 基于存储资源管理器/Powershell 等工具
-Azure 文件也支持除 SMB 以外的其余部分。 通过端口 443 (标准 tcp) 适用的 REST 访问。 有各种工具编写使用 REST API 启用丰富的 UI 体验。 [存储资源管理器](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer/)并连接到 Azure 文件支持的文件共享。 此外可以使用[PowerShell](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell)这还用户 REST API。
+除了 SMB，Azure 文件存储还支持 REST。 REST 访问可以通过端口 443 进行（标准 tcp）。 有许多工具是用 REST API 编写的，可以给用户带来丰富的 UI 体验。 [存储资源管理器](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer?tabs=windows)是其中之一。 [下载并安装存储资源管理器](https://azure.microsoft.com/en-us/features/storage-explorer/)，然后将其连接到 Azure 文件存储支持的文件共享。 也可使用 [PowerShell](https://docs.microsoft.com/en-us/azure/storage/files/storage-how-to-use-files-powershell)，此工具也使用 REST API。
 
 
 ### <a name="cause-2-ntlmv1-is-enabled"></a>原因 2：NTLMv1 已启用
@@ -205,7 +205,7 @@ net use 命令会将正斜杠 (/) 解释为命令行选项。 如果用户帐户
 
 - 运行以下 PowerShell 命令：
 
-  `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc" `
+  `New-SmbMapping -LocalPath y: -RemotePath \\server\share -UserName accountName -Password "password can contain / and \ etc"`
 
   在批处理文件中，可以按如下方式运行命令：
 

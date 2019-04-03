@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
-ms.openlocfilehash: 8638b788762a56813c622c0abffe2a8eae3c70c2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437099"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882423"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
 
@@ -133,11 +133,11 @@ ms.locfileid: "57437099"
 
 ### <a name="property-value-details"></a>属性值详细信息
 
-* `fileUris`：（可选，字符串数组）脚本的 URI 列表
-* `enableInternalDNSCheck`：（可选，布尔型）默认为 True，设置为 False 可禁用 DNS 检查。
-* `commandToExecute`：（可选，字符串）要执行的入口点脚本
-* `storageAccountName`：（可选，字符串）存储帐户的名称
-* `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
+* `fileUris`: （可选，字符串数组) 的脚本的 uri 列表
+* `enableInternalDNSCheck`: (可选，bool) 默认值为 True，设置为 False 可禁用 DNS 检查。
+* `commandToExecute`: （可选，字符串) 要执行的入口点脚本
+* `storageAccountName`: （可选，字符串) 存储帐户的名称
+* `storageAccountKey`: （可选，字符串) 存储帐户的访问密钥
 
 可以在公共设置或受保护设置中设置以下值，但不得同时在公共设置和受保护设置中设置以下值。
 
@@ -149,7 +149,7 @@ ms.locfileid: "57437099"
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。
+可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。
 
 ```json
 {
@@ -296,8 +296,7 @@ az vm extension set
 
 1. Enable 表示该命令何时开始运行。
 1. Download 涉及下载 Azure 中的 CustomScript 扩展包，而非 fileUris 中指定的脚本文件。
-1. 还可查看其写出到的日志文件 `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log
-`
+1. 您还可以查看写出到的日志文件 `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 下一步是查看以下格式的日志文件：
 

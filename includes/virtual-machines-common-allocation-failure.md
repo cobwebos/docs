@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 04/14/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 136c7e497b24db99b230884514d4a286bbeb64be
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8afaeaea3c8ceb0de33147e70e00f3f57c857ca7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58114295"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883152"
 ---
 创建虚拟机 (VM)、重新启动已停止（解除分配）的 VM 和重设 VM 大小时，Microsoft Azure 会为订阅分配计算资源。 我们会不断投入其他基础结构和功能，确保始终提供可用于支持客户需求的所有 VM 类型。 但是，偶尔可能因特定区域中前所未有的 Azure 服务需求增长而遇到资源分配失败的情况。 当尝试在区域中创建或启动 VM，同时 VM 显示以下错误代码和消息时，会出现此问题：
 
 **错误代码**：AllocationFailed 或 ZonalAllocationFailed
 
-**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 http://aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
+**错误消息**：“分配失败。 对于此区域中请求的 VM 大小，我们的容量不够。 在 https://aka.ms/allocation-guidance 阅读有关提高分配成功可能性的详细信息”
 
 本文说明一些常见分配故障的原因，并建议可能的补救方法。
 

@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/06/2019
-ms.openlocfilehash: e872c29712c3fadca676ec87870bcc5c4eb58565
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: 028c69294d693202b626044cb903dc3124b5d7b7
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57727393"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863213"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL 数据库中的自动优化
 
@@ -50,7 +50,7 @@ Azure SQL 数据库自动优化与 SQL Server 自动优化引擎共享其核心�
 
 ## <a name="use-automatic-tuning"></a>使用自动优化
 
-需在订阅上手动启用自动优化。 若要使用 Azure 门户启用自动优化，请参阅[启用自动优化](sql-database-automatic-tuning-enable.md)。
+需要在你的订阅上启用自动优化。 若要使用 Azure 门户启用自动优化，请参阅[启用自动优化](sql-database-automatic-tuning-enable.md)。
 
 自动优化可通过自动应用优化建议（包括性能提升的自动验证）自主操作。 
 
@@ -74,7 +74,9 @@ Azure SQL 数据库中可用的自动优化选项包括：
 
 自动优化确定可以优化数据库性能的“创建索引”、“删除索引”和“强制执行上一个卓越计划”建议，在 [Azure 门户](sql-database-advisor-portal.md)中显示它们，并通过 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 和 [REST API](https://docs.microsoft.com/rest/api/sql/serverautomatictuning) 公开它们。 
 
-可以使用门户手动应用优化建议，也可以让“自动优化”自主为你应用优化建议。 让系统自主为你应用优化建议的好处是，它会自动验证对工作负荷性能是否有正向提升，如果检测不到显著的性能改进，它会自动还原优化建议。 请注意，按照设计，如果受优化建议影响的查询不是频繁执行，则验证阶段可能要花费长达 72 小时。 如果是手动应用优化建议，则自动性能验证和回退机制不可用。
+可以使用门户手动应用优化建议，也可以让“自动优化”自主为你应用优化建议。 让系统自主为你应用优化建议的好处是，它会自动验证对工作负荷性能是否有正向提升，如果检测不到显著的性能改进，它会自动还原优化建议。 请注意，按照设计，如果受优化建议影响的查询不是频繁执行，则验证阶段可能要花费长达 72 小时。
+
+如果是手动应用优化建议，则自动性能验证和回退机制不可用。 此外，手动应用的建议将保持活动状态且在建议列表中所示 24-48 小时。 之前在系统中自动提取它们。 如果你想要删除的建议更快地，您可以手动放弃它。
 
 每个数据库都可以独立启用或禁用自动优化选项，也可以在 SQL 数据库服务器上配置这些选项，并将其应用于从服务器继承设置的每个数据库。 SQL 数据库服务器可继承 Azure 默认值，用于自动调整设置。 目前 Azure 默认值设为启用 FORCE_LAST_GOOD_PLAN 和 CREATE_INDEX，禁用 DROP_INDEX。
 

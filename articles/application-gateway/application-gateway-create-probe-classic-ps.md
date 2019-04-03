@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
-ms.openlocfilehash: 17893a37bbaf67014c9b34dd446af204b907ff24
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 01c1768f60da98206f0dfd041745428256f545fc
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004985"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861873"
 ---
 # <a name="create-a-custom-probe-for-azure-application-gateway-classic-by-using-powershell"></a>使用 PowerShell 创建 Azure 应用程序网关（经典）的自定义探测
 
 > [!div class="op_single_selector"]
 > * [Azure 门户](application-gateway-create-probe-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-probe-ps.md)
+> * [Azure Resource Manager PowerShell](application-gateway-create-probe-ps.md)
 > * [Azure 经典 PowerShell](application-gateway-create-probe-classic-ps.md)
 
 在本文中，将使用 PowerShell 向现有应用程序网关添加自定义探测。 如果应用程序包含特定运行状况检查页面。或者未在默认 Web 应用程序上提供成功的响应，那么它们非常适合使用自定义探测。
@@ -151,11 +151,11 @@ Get-AzureApplicationGateway AppGwTest
 |参数|描述|
 |---|---|
 |**名称** |自定义探测的引用名称。 |
-| 协议 | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
-| Host 和 Path | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果网站为 http://contoso.com/ ， 则可以为“ http://contoso.com/path/custompath.htm ”配置自定义探测，使探测检查能够获得成功的 HTTP 响应。|
-| 间隔 | 配置探测检查间隔，以秒为单位。|
+| **协议** | 使用的协议（可能的值为 HTTP 或 HTTPS）。|
+| Host 和 Path | 应用程序网关为了确定实例运行状况而调用的完整 URL 路径。 例如，如果有网站 http:\//contoso.com/，然后自定义探测可配置为"http:\//contoso.com/path/custompath.htm"探测检查能够获得成功的 HTTP 响应。|
+| **时间间隔** | 配置探测检查间隔，以秒为单位。|
 | **超时** | 定义 HTTP 响应检查的探测超时。|
-| UnhealthyThreshold | 将后端实例标记为“不正常”所需的失败 HTTP 响应数目。|
+| **UnhealthyThreshold** | 将后端实例标记为不正常所需的失败 HTTP 响应数目。|
 
 \<BackendHttpSettings\> 配置中会引用探测名称，以分配使用自定义探测设置的后端池。
 

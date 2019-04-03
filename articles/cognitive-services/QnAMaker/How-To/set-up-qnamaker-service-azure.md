@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/02/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 94e4d945593c2387b61011b0e7d4056f4af33e01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 90e7abf229e0ee1ca396150fee0c1f0970d257aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437350"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876395"
 ---
 # <a name="create-a-qna-maker-service"></a>创建 QnA Maker 服务
 
@@ -62,6 +62,10 @@ ms.locfileid: "58437350"
 1. 部署完成后，你将看到订阅中创建的以下资源。
 
     ![新建 QnA Maker 服务资源](../media/qnamaker-how-to-setup-service/resources-created.png)
+
+## <a name="region-of-management-service"></a>管理服务的区域
+
+QnA Maker，仅使用为门户和进行初始的数据处理的管理服务是仅在美国西部中可用。 任何客户数据不存储在此美国西部服务。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: raynew
-ms.openlocfilehash: 420c81f6206c777efc303924d81763f5984aba4c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0981f4d5d9d5fcb243fc7ead6f4b529c096935d0
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993387"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885870"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure 备份 - 常见问题
 本文回答有关 Azure 备份服务的常见问题。
@@ -40,7 +40,7 @@ ms.locfileid: "57993387"
 
 ### <a name="can-i-do-an-item-level-restore-ilr-for-vms-backed-up-to-a-recovery-services-vault"></a>是否可以对备份到恢复服务保管库的 VM 执行项级别还原 (ILR)？
 - 由 Azure VM 备份支持的 Azure VM 支持 ILR。 有关详细信息，请参见[文章](backup-azure-restore-files-from-vm.md)
-- Azure 备份服务器或 System Center DPM 备份的本地 VM 的联机恢复点不支持 ILR。
+- ILR 不由 Azure 备份服务器或 System Center DPM 备份的在线恢复点的本地 Vm 的支持。
 
 
 ## <a name="azure-backup-agent"></a>Azure 备份代理
@@ -93,7 +93,7 @@ ms.locfileid: "57993387"
 ### <a name="what-operating-systems-are-supported-for-backup"></a>支持哪些操作系统进行备份？
 Azure 备份支持操作系统对文件和文件夹以及使用 Azure 备份服务器和 DPM 保护的工作负载应用程序进行备份。
 
-**OS** | **SKU** | **详细信息**
+**操作系统** | **SKU** | **详细信息**
 --- | --- | ---
 工作站 | |
 Windows 10 64 位 | Enterprise、Pro、Home | 计算机应运行最新服务包和更新。

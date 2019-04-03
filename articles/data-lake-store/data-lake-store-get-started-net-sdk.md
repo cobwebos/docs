@@ -1,23 +1,23 @@
 ---
-title: .NET SDK：Azure Data Lake Storage Gen1 上的帐户管理选项 | Microsoft Docs
+title: .NET SDK：帐户管理操作在 Azure 数据湖存储 Gen1 |Microsoft Docs
 description: 使用 Azure Data Lake Storage Gen1 .NET SDK 在 Data Lake Storage Gen1 中执行帐户管理操作
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 editor: cgronlun
 ms.assetid: ea57d5a9-2929-4473-9d30-08227912aba7
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
-ms.author: nitinme
-ms.openlocfilehash: 2ed9f534c0eb27601243428f8e4b9d95db5d16b0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 8ab051d49e7ed67e642ef656dfb382ed07763ed2
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123906"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879703"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-net-sdk"></a>使用 .NET SDK 对 Azure Data Lake Storage Gen1 进行的帐户管理操作
 > [!div class="op_single_selector"]
@@ -31,10 +31,10 @@ ms.locfileid: "46123906"
 
 若要了解如何使用 .NET SDK 在 Data Lake Storage Gen1 上执行数据管理操作，请参阅[在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * **Visual Studio 2013、2015 或 2017**。 以下说明使用的是 Visual Studio 2017。
 
-* **一个 Azure 订阅**。 请参阅 [获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-net-application"></a>创建 .NET 应用程序
 1. 打开 Visual Studio，创建一个控制台应用程序。
@@ -53,8 +53,8 @@ ms.locfileid: "46123906"
    2. 在“NuGet 包管理器”选项卡上，确保“包源”设置为“nuget.org”，“包含预发行版”复选框处于选中状态。
    3. 搜索并安装以下 NuGet 包：
 
-      * `Microsoft.Azure.Management.DataLake.Store` - 本教程使用 v2.1.3-预览版。
-      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` - 本教程使用 v2.2.12。
+      * `Microsoft.Azure.Management.DataLake.Store` -本教程使用 v2.1.3-预览版。
+      * `Microsoft.Rest.ClientRuntime.Azure.Authentication` -本教程使用 v2.2.12。
 
         ![添加 Nuget 源](./media/data-lake-store-get-started-net-sdk/data-lake-store-install-nuget-package.png "创建新的 Azure Data Lake 帐户")
    4. 关闭“NuGet 包管理器”。
@@ -99,7 +99,7 @@ ms.locfileid: "46123906"
 
 本文的剩余部分介绍如何使用现有的 .NET 方法来执行操作，例如身份验证和文件上传等。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 * 若要了解应用程序的最终用户身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行最终用户身份验证](data-lake-store-end-user-authenticate-net-sdk.md)。
 * 若要了解应用程序的服务到服务身份验证，请参阅[使用 .NET SDK 通过 Data Lake Storage Gen1 进行服务到服务身份验证](data-lake-store-service-to-service-authenticate-net-sdk.md)。
@@ -142,8 +142,8 @@ ms.locfileid: "46123906"
     _adlsClient.Account.Delete(_resourceGroupName, _adlsAccountName);
 
 ## <a name="see-also"></a>另请参阅
-* [在 Data Lake Storage Gen1 上使用 .NET SDK 进行的文件系统操作](data-lake-store-data-operations-net-sdk.md)
-* [Data Lake Storage Gen1 .NET SDK 引用](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
+* [使用.NET SDK 数据湖存储 Gen1 的文件系统操作](data-lake-store-data-operations-net-sdk.md)
+* [数据湖存储 Gen1.NET SDK 参考](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 
 ## <a name="next-steps"></a>后续步骤
-* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)

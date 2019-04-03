@@ -10,23 +10,23 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f5c7696e711db7c128317f7ed17dc051e8fd18a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: d98922937781fd169d34881fa67a6b5746d06df7
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803105"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882458"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
 文本翻译 API 支持对以下语言进行文本到文本翻译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准，当神经系统可用时，其可使用文本翻译 API 的 V3 版作为默认值。
 
-[详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
+[了解有关机器翻译的工作原理的详细信息](https://www.microsoft.com/translator/mt.aspx)
 
 **V2 Translator API**
 
 > [!NOTE]
-> V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日停用。
+> V2 已于 2018 年 4 月 30 日弃用，并将在 2019 年 4 月 30 日彻底淘汰。
 
 * 仅统计：没有可用于该语言的神经系统。
 * 神经可用：神经系统可用。 使用参数 `category=generalnn` 可访问神经系统。
@@ -39,13 +39,13 @@ ms.locfileid: "58803105"
 |:-----|:-----:|:-----|:-----|
 |南非荷兰语| `af`    |仅统计|  神经|
 |阿拉伯语|    `ar`    |神经可用|  神经|
-|孟加拉语|    `bn`    |神经可用|  神经|
-|波斯尼亚语(拉丁语)|   `bs`    |神经可用|  神经|
+|Bangla|    `bn`    |神经可用|  神经|
+|波斯尼亚语(拉丁语系)|   `bs`    |神经可用|  神经|
 |保加利亚语| `bg`    |神经可用|  神经|
 |粤语(繁体)|   `yue`   |仅统计|  统计|
 |加泰罗尼亚语|   `ca`    |仅统计|  统计|
-|简体中文|    `zh-Hans`   |神经默认 |神经|
-|繁体中文|   `zh-Hant`   |神经默认 |神经|
+|中文(简体)|    `zh-Hans`   |神经默认 |神经|
+|中文(繁体)|   `zh-Hant`   |神经默认 |神经|
 |克罗地亚语|  `hr`    |神经可用|  神经|
 |捷克语| `cs`    |神经可用|  神经|
 |丹麦语|    `da`    |神经可用   |神经|
@@ -70,10 +70,10 @@ ms.locfileid: "58803105"
 |斯瓦希里语| `sw`    |仅统计|  统计|
 |克林贡语|   `tlh`   |仅统计|  统计|
 |克林贡语(plqaD)|   `tlh-Qaak`  |仅统计|  统计|
-|朝鲜语 |`ko`   |神经可用|  神经|
+|韩语 |`ko`   |神经可用|  神经|
 |拉脱维亚语|   `lv`    |神经可用|  神经|
 |立陶宛语|    `lt`    |神经可用|  神经|
-|马拉加斯语|  `mg`    |仅统计|  统计|
+|马达加斯加语|  `mg`    |仅统计|  统计|
 |马来语| `ms`    |仅统计   |统计|
 |马耳他语|   `mt`    |仅统计|  统计|
 |挪威语| `nb`    |神经可用|  神经|
@@ -84,8 +84,8 @@ ms.locfileid: "58803105"
 |罗马尼亚语|  `ro`    |神经可用|  神经|
 |俄语|   `ru`    |神经可用|  神经|
 |萨摩亚语|    `sm`    |仅统计|  统计|
-|塞尔维亚语(西里尔语)|    `sr-Cyrl`   |仅统计|  统计|
-|塞尔维亚语(拉丁文)|   `sr-Latn`   |仅统计   |统计|
+|塞尔维亚语(西里尔文)|    `sr-Cyrl`   |仅统计|  统计|
+|塞尔维亚语(拉丁语系)|   `sr-Latn`   |仅统计   |统计|
 |斯洛伐克语|    `sk`    |神经可用|  神经|
 |斯洛文尼亚语| `sl`    |神经可用|  神经|
 |西班牙语|   `es`    |神经可用|  神经|
@@ -109,11 +109,11 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 语言    | 语言代码 | 脚本 | 音译方向 | 脚本|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
-|孟加拉语  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
-| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
-| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
-| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
-| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
+|Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 中文(简体) `Hans`| <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 中文(简体) `Hans`| <--> | 中文(繁体) `Hant`|
+| 中文(繁体) | `zh-Hant` | 中文(繁体) `Hant`| <--> | 拉丁语 `Latn` |
+| 中文(繁体) | `zh-Hant` | 中文(繁体) `Hant`| <--> | 中文(简体) `Hans` |
 | 古吉拉特语 | `gu`  | 古吉拉特语 `Gujr` | --> | 拉丁语 `Latn` |
 | 希伯来语 | `he` | 希伯来语 `Hebr` | <--> | 拉丁语 `Latn` |
 | 印地语 | `hi` | 梵语 `Deva` | <--> | 拉丁语 `Latn` |
@@ -123,8 +123,8 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 马拉地语 | `mr` | 梵语 `Deva` | --> | 拉丁语 `Latn` |
 | 奥里雅语 | `or` | 奥里雅语 `Orya` | <--> | 拉丁语 `Latn` |
 | 旁遮普语 | `pa` | 果鲁穆奇语 `Guru`  | <--> | 拉丁语 `Latn`  |
-| 塞尔维亚语(西里尔语) | `sr-Cyrl` | 西里尔语 `Cyrl`  | --> | 拉丁语 `Latn` |
-| 塞尔维亚语(拉丁文) | `sr-Latn` | 拉丁语 `Latn` | --> | 西里尔语 `Cyrl`|
+| 塞尔维亚语(西里尔文) | `sr-Cyrl` | 西里尔语 `Cyrl`  | --> | 拉丁语 `Latn` |
+| 塞尔维亚语(拉丁语系) | `sr-Latn` | 拉丁语 `Latn` | --> | 西里尔语 `Cyrl`|
 | 泰米尔语 | `ta` | 泰米尔语 `Taml` | --> | 拉丁语 `Latn` |
 | 泰卢固语 | `te` | 泰卢固语 `Telu` | --> | 拉丁语 `Latn` |
 | 泰语 | `th` | 泰语 `Thai` | <--> | 拉丁语 `Latn` |
@@ -137,11 +137,11 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |:----------- |:-------------:|
 | 南非荷兰语      | `af`          |
 | 阿拉伯语       | `ar`          |
-| 孟加拉语      | `bn`          |
-| 波斯尼亚语(拉丁语)      | `bs`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
 | 加泰罗尼亚语      | `ca`          |
-| 简体中文      | `zh-Hans`          |
+| 中文(简体)      | `zh-Hans`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -162,7 +162,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 日语      | `ja`          |
 | 斯瓦希里语      | `sw`          |
 | 克林贡语      | `tlh`          |
-| 朝鲜语      | `ko`          |
+| 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 马来语      | `ms`          |
@@ -173,7 +173,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 葡萄牙语      | `pt`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
-| 塞尔维亚语(拉丁文)      | `sr-Latn`          |
+| 塞尔维亚语(拉丁语系)      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |
@@ -186,7 +186,7 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 | 越南语      | `vi`          |
 | 威尔士语      | `cy`          |
 
-## <a name="detect"></a>检测
+## <a name="detect"></a>Detect
 
 Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator 无法翻译的语言。
 
@@ -223,7 +223,7 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 | 爱尔兰语 |
 | 意大利语 |
 | 日语 |
-| 朝鲜语 |
+| 韩语 |
 | 库尔德语(阿拉伯语) |
 | 库尔德语(拉丁语) |
 | 拉丁语 |
@@ -240,8 +240,8 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 | 葡萄牙语 |
 | 罗马尼亚语 |
 | 俄语 |
-| 塞尔维亚语(西里尔语) |
-| 塞尔维亚语(拉丁文) |
+| 塞尔维亚语(西里尔文) |
+| 塞尔维亚语(拉丁语系) |
 | 斯洛伐克语 |
 | 斯洛文尼亚语 |
 | 索马里语 |
@@ -254,8 +254,8 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 | 土耳其语 |
 | 乌克兰语 |
 | 乌尔都语 |
-| 乌兹别克(西里尔语) |
-| 乌兹别克(拉丁语) |
+| 乌兹别克语(西里尔文) |
+| 乌兹别克语(拉丁语) |
 | 越南语 |
 | 威尔士语 |
 | 意第绪语 |
@@ -268,15 +268,15 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 
 ## <a name="customization"></a>自定义
 
-以下语言版本是可自定义英语使用进出[自定义转换器](http://aka.ms/CustomTranslator)。
+以下语言版本是可自定义英语使用进出[自定义转换器](https://aka.ms/CustomTranslator)。
 
 | 语言    | 语言代码 |
 |:----------- |:-------------:|
 | 阿拉伯语       | `ar`          |
-| 孟加拉语      | `bn`          |
-| 波斯尼亚语(拉丁语)      | `bs`          |
+| Bangla      | `bn`          |
+| 波斯尼亚语(拉丁语系)      | `bs`          |
 | 保加利亚语      | `bg`          |
-| 简体中文      | `zh-Hans`          |
+| 中文(简体)      | `zh-Hans`          |
 | 克罗地亚语      | `hr`          |
 | 捷克语      | `cs`          |
 | 丹麦语      | `da`          |
@@ -293,7 +293,7 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 | 冰岛语 | `is` |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
-| 朝鲜语      | `ko`          |
+| 韩语      | `ko`          |
 | 拉脱维亚语      | `lv`          |
 | 立陶宛语      | `lt`          |
 | 挪威语      | `nb`          |
@@ -301,7 +301,7 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 | 葡萄牙语      | `pt`          |
 | 罗马尼亚语      | `ro`          |
 | 俄语      | `ru`          |
-| 塞尔维亚语(拉丁文)      | `sr-Latn`          |
+| 塞尔维亚语(拉丁语系)      | `sr-Latn`          |
 | 斯洛伐克语     | `sk`          |
 | 斯洛文尼亚语      | `sl`          |
 | 西班牙语      | `es`          |
@@ -314,6 +314,6 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>访问 Microsoft Translator 网站上的列表
 
-若要快速查看语言，Microsoft Translator 网站上显示了 文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
+若要快速查看语言，Microsoft Translator 网站上显示了文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
-[查看语言列表](https://www.microsoft.com/translator/languages.aspx)
+[请参阅语言的列表](https://www.microsoft.com/translator/languages.aspx)

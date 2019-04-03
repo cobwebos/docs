@@ -10,12 +10,12 @@ ms.reviewer: plarsen, LADocs
 ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
-ms.openlocfilehash: c46fd1791751ebf912670875f9c8e18e8b0c5c40
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311299"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878394"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM DB2 资源
 
@@ -109,7 +109,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
 | **连接名称** | 是 | 连接的名称，例如“MyLogicApp-DB2-connection” | 
 | **服务器** | 是 | DB2 服务器的地址或冒号分隔的别名端口号，例如“myDB2server:50000” <p><p>**注意**：此值是一个字符串，表示 TCP/IP 地址或别名，或者以 IPv4 或 IPv6 格式后, 跟一个冒号和 TCP/IP 端口号。 |
 | **数据库** | 是 | 数据库的名称 <p><p>**注意**：此值是表示 DRDA 相关数据库名称 (RDBNAM) 的字符串： <p>- DB2 for z/OS 接受 16 字节字符串，其中的数据库称为“IBM DB2 for z/OS”位置。 <br>- DB2 for i 接受 18 字节字符串，其中的数据库称为“IBM DB2 for i”关系数据库。 <br>- DB2 for LUW 接受 8 字节字符串。 |
-| **身份验证** | 是 | 连接的身份验证类型，例如“Basic” <p><p>**注意**：从列表中，其中包括 Basic 或 Windows (Kerberos) 选择此值。 |
+| **Authentication** | 是 | 连接的身份验证类型，例如“Basic” <p><p>**注意**：从列表中，其中包括 Basic 或 Windows (Kerberos) 选择此值。 |
 | **用户名** | 是 | 数据库的用户名 <p><p>**注意**：此值是对特定数据库基于其长度的字符串： <p><p>- DB2 for z/OS 接受 8 字节字符串。 <br>- DB2 for i 接受 10 字节字符串。 <br>- DB2 for Linux/UNIX 接受 8 字节字符串。 <br>- DB2 for Windows 接受 30 字节字符串。 |
 | **密码** | 是 | 数据库的密码 |
 | **网关** | 是 | 安装的本地数据网关的名称 <p><p>**注意**：从列表中，其中包括所有已安装的数据网关在 Azure 订阅和资源组中选择此值。 |
@@ -157,7 +157,7 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
    | 属性 | 需要 | 描述 |
    |----------|----------|-------------|
    | **表名称** | 是 | 包含所需记录的表，在本示例中为“AREA” |
-   | **地区 ID** | 是 | 所需记录的 ID，在本示例中为“99999” |
+   | **区域 ID** | 是 | 所需记录的 ID，在本示例中为“99999” |
    ||||
 
    ![选择表](./media/connectors-create-api-db2/db2-get-row-action-select-table.png)
@@ -237,8 +237,8 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
    | 属性 | 需要 | 描述 |
    |----------|----------|-------------|
    | **表名称** | 是 | 要将记录添加到的表，例如“AREA” |
-   | **地区 ID** | 是 | 要添加的地区的 ID，例如“99999” |
-   | **地区说明** | 是 | 要添加的地区的说明，例如“地区 99999” |
+   | **区域 ID** | 是 | 要添加的地区的 ID，例如“99999” |
+   | **区域说明** | 是 | 要添加的地区的说明，例如“地区 99999” |
    | **区域 ID** | 是 | 要添加的区域的 ID，例如“102” |
    |||| 
 
@@ -285,8 +285,8 @@ IBM DB2 连接器支持以下数据库操作，这些操作映射到连接器中
    |----------|----------|-------------|
    | **表名称** | 是 | 要在其中更新记录的表，例如“AREA” |
    | **行 ID** | 是 | 要更新的记录的 ID，例如“99999” |
-   | **地区 ID** | 是 | 新地区 ID，例如“99999” |
-   | **地区说明** | 是 | 新地区说明，例如“已更新 99999” |
+   | **区域 ID** | 是 | 新地区 ID，例如“99999” |
+   | **区域说明** | 是 | 新地区说明，例如“已更新 99999” |
    | **区域 ID** | 是 | 新区域 ID，例如“102” |
    ||||
 

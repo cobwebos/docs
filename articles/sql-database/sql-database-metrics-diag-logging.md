@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: bb45062697b113b676f85381f0653c14ac8c0c67
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621223"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863128"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -69,10 +69,15 @@ ms.locfileid: "58621223"
 | [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
 | [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
 | [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
+| [死锁](#deadlocks-dataset):包含有关死锁事件在数据库上的信息。 | 是 | 否 |
+| [AutomaticTuning](#automatic-tuning-dataset):包含有关自动优化建议对数据库的信息。 | 是 | 否 |
 | [SQLInsights](#intelligent-insights-dataset)：包含性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 > [!IMPORTANT]
 > 弹性池和托管的实例都有其自己单独的诊断遥测数据从它们所包含的数据库。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。
+
+> [!NOTE]
+> 不能从数据库诊断设置来启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -107,7 +112,7 @@ ms.locfileid: "58621223"
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或选择现有的工作区。
 1. 选中弹性池诊断遥测对应的复选框：**AllMetrics**。
-   ![弹性池的配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+   ![为弹性池配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. 选择“保存”。
 1. 此外，配置想要在下一节中所述的以下步骤来监视弹性池内每个数据库的诊断遥测数据的流式处理。
 
@@ -131,12 +136,12 @@ ms.locfileid: "58621223"
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。
 1. 对于高级的一分钟间隔监视体验，请选中“AllMetrics”对应的复选框。
-   ![单个配置诊断、 共用，或实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![为单一数据库、入池数据库或实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. 选择“保存”。
 1. 为你想要监视每个数据库重复这些步骤。
 
 > [!NOTE]
-> 无法从数据库诊断设置启用安全审核日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
+> 不能从数据库诊断设置来启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://blogs.msdn.microsoft.com/sqlsecurity/2018/09/13/sql-audit-logs-in-azure-log-analytics-and-azure-event-hubs/)。
 > [!TIP]
 > 针对要监视的每个 Azure SQL 数据库重复上述步骤。
 
@@ -169,7 +174,7 @@ ms.locfileid: "58621223"
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或使用现有的工作区。
 1. 选中实例诊断遥测对应的复选框：**ResourceUsageStats**。
-   ![托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+   ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. 选择“保存”。
 1. 此外，配置的每个实例数据库中你想要监视执行以下步骤在下一节中所述的托管实例的诊断遥测数据的流式处理。
 
@@ -193,7 +198,7 @@ ms.locfileid: "58621223"
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
-   ![配置诊断实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![为实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 1. 选择“保存”。
 1. 为你想要监视每个实例数据库重复这些步骤。
 
@@ -410,13 +415,13 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="all-metrics-for-elastic-pools"></a>弹性池的所有指标
 
-|**资源**|**指标**|
+|**资源**|**度量值**|
 |---|---|
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
 
 ### <a name="all-metrics-for-azure-sql-databases"></a>Azure SQL 数据库的所有指标
 
-|**资源**|**指标**|
+|**资源**|**度量值**|
 |---|---|
 |Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 

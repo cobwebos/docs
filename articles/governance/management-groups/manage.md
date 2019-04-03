@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.date: 02/20/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f9e9bf51d50863f2e37a2f579c2db0edcfeca634
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801755"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881035"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -43,7 +43,7 @@ ms.locfileid: "58801755"
 
    ![重命名组窗格中重命名管理组](./media/rename_context.png)
 
-1. 选择“其他安全性验证” 。
+1. 选择“保存”。
 
 ### <a name="change-the-name-in-powershell"></a>在 PowerShell 中更改名称
 
@@ -245,7 +245,7 @@ az account management-group show --name 'Contoso' -e -r
 
    ![将窗格以更改父组移动](./media/move_small_context.png)
 
-1. 选择“其他安全性验证” 。
+1. 选择“保存”。
 
 ### <a name="move-subscriptions-in-powershell"></a>在 PowerShell 中移动订阅
 
@@ -296,7 +296,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
 
    ![将管理组移到新的或现有组](./media/add_context_MG.png)
 
-1. 选择“其他安全性验证” 。
+1. 选择“保存”。
 
 ### <a name="move-management-groups-in-powershell"></a>在 PowerShell 中移动管理组
 
@@ -330,7 +330,7 @@ az account management-group update --name 'Contoso' --parent-id '/providers/Micr
 
 例如，在将新角色分配到 PowerShell 中的管理组时，使用此路径
 
-```powershell-interactive
+```azurepowershell-interactive
 New-AzRoleAssignment -Scope "/providers/Microsoft.Management/managementGroups/Contoso"
 ```
 
@@ -344,8 +344,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建管理组来组织 Azure 资源](create.md)
-- [如何更改、删除或管理管理组](manage.md)
-- [在 Azure PowerShell 资源模块中查看管理组](/powershell/module/az.resources#resources)
-- [在 REST API 中查看管理组](/rest/api/resources/managementgroups)
-- [在 Azure CLI 中查看管理组](/cli/azure/account/management-group)
+- [创建用于整理 Azure 资源的管理组](create.md)
+- [如何更改、 删除或管理管理组](manage.md)
+- [查看 Azure PowerShell 资源模块中的管理组](/powershell/module/az.resources#resources)
+- [查看 REST API 中的管理组](/rest/api/resources/managementgroups)
+- [查看 Azure CLI 中的管理组](/cli/azure/account/management-group)

@@ -12,16 +12,16 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
-ms.openlocfilehash: 4041bee71a41cee06243d53de128bcceecda5618
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: ac937ddb1bcaed6813a0de4d631f820eff01e26f
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58001824"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877731"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>启用快照调试程序，以便在 Azure Service Fabric、 云服务和虚拟机中的.NET 应用程序
 
-如果您的 ASP.NET 或 ASP.NET core 应用程序运行 Azure 应用服务中的，还可以使用下面的说明。 除非您的应用程序需要的自定义的快照调试程序配置，强烈建议对[通过 Application Insights 门户页启用 Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 如果在 Azure Service Fabric、 云服务、 虚拟机或本地计算机上运行你的应用程序，应使用以下说明。 
+如果您的 ASP.NET 或 ASP.NET core 应用程序运行 Azure 应用服务中的，还可以使用下面的说明。 除非您的应用程序需要的自定义的快照调试程序配置，强烈建议对[通过 Application Insights 门户页启用 Snapshot Debugger](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json)。 如果你的应用程序在 Azure Service Fabric、 云服务、 虚拟机中运行或本地计算机，则应使用以下说明。 
     
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>为 ASP.NET 应用程序配置快照集合
 
@@ -77,7 +77,7 @@ ms.locfileid: "58001824"
 
 3. 修改应用程序的 `Startup` 类，添加并配置快照收集器的遥测处理器。
 
-    将以下 using 语句添加到 `Startup.cs`
+    添加以下 using 语句 `Startup.cs`
 
    ```csharp
    using Microsoft.ApplicationInsights.SnapshotCollector;

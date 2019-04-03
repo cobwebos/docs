@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: rangv
-ms.openlocfilehash: 65f9b392f3ae57c1eaad7454434b4870954f36f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 82e31c498c6148454a5790a6eb4b82e3a2300a92
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085093"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847064"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
 
@@ -168,10 +168,10 @@ ms.locfileid: "58085093"
 
 9. 在“用户设置”窗口，在文件末尾复制并粘贴以下内容
 
-   ```
+   ```json
    "arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"
    ```
-   
+
    ![在 VS Code 中配置 Arduino 包 URL](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
 
 10. 保存文件并关闭“用户设置”选项卡。
@@ -213,7 +213,7 @@ ms.locfileid: "58085093"
    ```c
    define SIMULATED_DATA true
    ```
-   
+
    ![将示例应用程序配置为使用模拟数据](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
 3. 保存文件。
@@ -251,8 +251,14 @@ ms.locfileid: "58085093"
 
 ![Arduino IDE 中的最终输出](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
+## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
+
+若要监视 IoT 中心从设备收到的消息的一种方法是使用用于 Visual Studio Code 的 Azure IoT 工具。 若要了解详细信息，请参阅[使用针对 Visual Studio Code 进行发送和接收消息在设备与 IoT 中心之间的 Azure IoT 工具](iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)。
+
+有关更多方法来处理设备发送的数据，继续学习下一节。
+
 ## <a name="next-steps"></a>后续步骤
 
-现已成功将 Feather HUZZAH ESP8266 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。 
+现已成功将 Feather HUZZAH ESP8266 连接到 IoT 中心，并将捕获的传感器数据发送到了 IoT 中心。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

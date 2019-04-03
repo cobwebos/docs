@@ -12,12 +12,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 823eebeddb64c15ef20d103f2f9290c800753f1a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 0f8aafce4c4feeed742504db84664e4dfd472ca6
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404750"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884136"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Azure Key Vault 限制指南
 
@@ -34,7 +34,7 @@ Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault �
 
 ## <a name="how-to-throttle-your-app-in-response-to-service-limits"></a>如何针对服务限制来限制应用
 
-以下是限制应用的最佳做法：
+以下是**最佳做法**应实现你的服务受到限制时：
 - 减少每个请求的操作数。
 - 减少请求频率。
 - 避免立即重试。 
@@ -115,7 +115,7 @@ Key Vault 中的服务限制用于防止资源滥用，确保所有 Key Vault �
 ```
 
 
-在客户端 C\# 应用程序（另一个 Web API 客户端微服务、ASP.NET MVC 应用程序，甚至是 C\# Xamarin 应用程序）中使用此代码很简单。 下面的示例演示使用 HttpClient 类的方法。
+在客户端 C 中使用此代码\#应用程序非常简单。 下面的示例演示使用 HttpClient 类的方法。
 
 ```csharp
 public async Task<Cart> GetCartItems(int page)

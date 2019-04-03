@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: 2d296281f6865030bcdfec33d8c69cc313a358a5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c93bca14d9385eaf9f79f69d76e9e704796da7a9
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011907"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850894"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 Azure 虚拟机部署
 
@@ -178,7 +178,7 @@ ms.locfileid: "58011907"
 [Logo_Linux]:media/virtual-machines-shared-sap-shared/Linux.png
 [Logo_Windows]:media/virtual-machines-shared-sap-shared/Windows.png
 
-[msdn-set-azurermvmaemextension]:https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmaemextension
+[msdn-set-Azvmaemextension]:https://docs.microsoft.com/powershell/module/az.compute/set-azvmaemextension
 
 [planning-guide]:planning-guide.md (适用于 SAP 的 Azure 虚拟机规划和实施)
 [planning-guide-1.2]:planning-guide.md#e55d1e22-c2c8-460b-9897-64622a34fdff (资源)
@@ -234,7 +234,6 @@ ms.locfileid: "58011907"
 [planning-guide-microsoft-azure-networking]:planning-guide.md#61678387-8868-435d-9f8c-450b2424f5bd (Microsoft Azure 网络)
 [planning-guide-storage-microsoft-azure-storage-and-data-disks]:planning-guide.md#a72afa26-4bf4-4a25-8cf7-855d6032157f (存储：Microsoft Azure 存储和数据磁盘)
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../networking/network-overview.md
@@ -262,7 +261,7 @@ ms.locfileid: "58011907"
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
 [virtual-machines-linux-attach-disk-portal]:../../linux/attach-disk-portal.md
 [virtual-machines-azure-resource-manager-architecture]:../../../resource-manager-deployment-model.md
-[virtual-machines-azurerm-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
+[virtual-machines-Az-versus-azuresm]:virtual-machines-linux-compare-deployment-models.md
 [virtual-machines-windows-classic-configure-oracle-data-guard]:../../virtual-machines-windows-classic-configure-oracle-data-guard.md
 [virtual-machines-linux-cli-deploy-templates]:../../linux/cli-deploy-templates.md (使用 Azure 资源管理器模板和 Azure CLI 部署和管理虚拟机)
 [virtual-machines-deploy-rmtemplates-powershell]:../../virtual-machines-windows-ps-manage.md (使用 Azure Resource Manager 和 PowerShell 管理虚拟机)
@@ -318,6 +317,8 @@ ms.locfileid: "58011907"
 本文介绍在 Azure 中的虚拟机 (VM) 上部署 SAP 应用程序的步骤，包括备用部署选项和故障排除。 本文基于[适用于 SAP NetWeaver 的 Azure 虚拟机规划和实施][planning-guide]中的信息。 它还对 SAP 安装文档和 SAP 说明（指导安装和部署 SAP 软件的主要资源）进行了补充。
 
 ## <a name="prerequisites"></a>必备组件
+
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 为 SAP 软件部署设置 Azure 虚拟机涉及多个步骤和资源。 在开始之前，请确保满足在 Azure 中虚拟机上安装 SAP 软件的先决条件。
 
@@ -786,7 +787,7 @@ ms.locfileid: "58011907"
 
 要检查计算机上安装的 Azure PowerShell cmdlet 的版本，请运行以下 PowerShell 命令：
 ```powershell
-(Get-Module AzureRm.Compute).Version
+(Get-Module Az.Compute).Version
 ```
 结果如下所示：
 
@@ -937,22 +938,22 @@ azure --version
 
 1. 确保已安装最新版本的 Azure PowerShell cmdlet。 有关详细信息，请参阅[部署 Azure PowerShell cmdlet][deployment-guide-4.1]。  
 1. 运行以下 Azure PowerShell cmdlet。
-    若要获得可用环境的列表，请运行 `commandlet Get-AzureRmEnvironment`。 如果想要使用全局 Azure，则环境是 **AzureCloud**。 对于中国区 Azure，请选择 **AzureChinaCloud**。
+    若要获得可用环境的列表，请运行 `commandlet Get-AzEnvironment`。 如果想要使用全局 Azure，则环境是 **AzureCloud**。 对于中国区 Azure，请选择 **AzureChinaCloud**。
 
     ```powershell
-    $env = Get-AzureRmEnvironment -Name <name of the environment>
-    Connect-AzureRmAccount -Environment $env
-    Set-AzureRmContext -SubscriptionName <subscription name>
+    $env = Get-AzEnvironment -Name <name of the environment>
+    Connect-AzAccount -Environment $env
+    Set-AzContext -SubscriptionName <subscription name>
 
-    Set-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+    Set-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
     ```
 
 在输入帐户数据并标识 Azure 虚拟机名，该脚本将部署所需的扩展，并启用所需的功能。 这可能需要几分钟。
-有关 `Set-AzureRmVMAEMExtension` 的详细信息，请参阅 [Set-AzureRmVMAEMExtension][msdn-set-azurermvmaemextension]。
+有关详细信息`Set-AzVMAEMExtension`，请参阅[集 AzVMAEMExtension][msdn-set-Azvmaemextension]。
 
-![成功执行了特定于 SAP 的 Azure cmdlet Set-AzureRmVMAEMExtension][deployment-guide-figure-900]
+![成功执行特定于 SAP 的 Azure cmdlet 集 AzVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzureRmVMAEMExtension` 配置会执行所有步骤来为 SAP 配置主机监视。
+`Set-AzVMAEMExtension` 配置会执行所有步骤来为 SAP 配置主机监视。
 
 脚本输出包括以下信息：
 
@@ -1129,15 +1130,15 @@ Azperflib.exe 输出会显示针对 SAP 的所有已填充的 Azure 性能计数
 
 ### <a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Azure 监视基础结构配置的运行状况检查
 
-如果[适用于 SAP 的 Azure 增强型监视的就绪状态检查][deployment-guide-5.1]中所述的测试指出未正确提供某些监视数据，请运行 `Test-AzureRmVMAEMExtension` cmdlet 来检查是否正确配置了适用于 SAP 的 Azure 监视基础结构和监视扩展。
+如果[适用于 SAP 的 Azure 增强型监视的就绪状态检查][deployment-guide-5.1]中所述的测试指出未正确提供某些监视数据，请运行 `Test-AzVMAEMExtension` cmdlet 来检查是否正确配置了适用于 SAP 的 Azure 监视基础结构和监视扩展。
 
 1. 确保已根据[部署 Azure PowerShell cmdlet][deployment-guide-4.1] 中所述安装了最新版本的 Azure PowerShell cmdlet。
-1. 运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzureRmEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于中国区 Azure，请选择 **AzureChinaCloud**。
+1. 运行以下 Azure PowerShell cmdlet。 若要获得可用环境的列表，请运行 cmdlet `Get-AzEnvironment`。 若要使用全局 Azure，请选择 **AzureCloud** 环境。 对于中国区 Azure，请选择 **AzureChinaCloud**。
    ```powershell
-   $env = Get-AzureRmEnvironment -Name <name of the environment>
-   Connect-AzureRmAccount -Environment $env
-   Set-AzureRmContext -SubscriptionName <subscription name>
-   Test-AzureRmVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
+   $env = Get-AzEnvironment -Name <name of the environment>
+   Connect-AzAccount -Environment $env
+   Set-AzContext -SubscriptionName <subscription name>
+   Test-AzVMAEMExtension -ResourceGroupName <resource group name> -VMName <virtual machine name>
    ```
 
 1. 输入帐户数据并标识 Azure 虚拟机。
@@ -1168,7 +1169,7 @@ AzureEnhancedMonitoring Windows 服务在 Azure 中收集性能度量值。 如�
 
 ###### <a name="solution"></a>解决方案
 
-未安装该扩展。 确定这是否为代理问题（如前文所述）。 可能需要重新启动计算机或重新运行 `Set-AzureRmVMAEMExtension` 配置脚本。
+未安装该扩展。 确定这是否为代理问题（如前文所述）。 可能需要重新启动计算机或重新运行 `Set-AzVMAEMExtension` 配置脚本。
 
 ##### <a name="service-for-azure-enhanced-monitoring-does-not-exist"></a>增强型监视的服务不存在
 
@@ -1201,7 +1202,7 @@ Windows 服务 AzureEnhancedMonitoring 存在并已启用，但无法启动。 �
 
 AzureEnhancedMonitoring Windows 服务在 Azure 中收集性能指标。 该服务从多个来源获取数据。 某些配置数据是从本地收集的，某些性能指标是从 Azure 诊断读取的。 存储计数器通过日志记录在存储订阅级别使用。
 
-如果使用 SAP 说明 [1999351] 进行故障排除没有解决问题，请重新运行 `Set-AzureRmVMAEMExtension` 配置脚本。 可能必须要等待一小时，因为在启用存储分析或诊断计数器后可能不会立即创建这些计数器。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。
+如果使用 SAP 说明 [1999351] 进行故障排除没有解决问题，请重新运行 `Set-AzVMAEMExtension` 配置脚本。 可能必须要等待一小时，因为在启用存储分析或诊断计数器后可能不会立即创建这些计数器。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。
 
 #### <a name="linuxlogolinux-azure-performance-counters-do-not-show-up-at-all"></a>![Linux][Logo_Linux] Azure 性能计数器根本未显示
 
@@ -1215,13 +1216,13 @@ Azure 中的性能度量值是由某个守护程序收集的。 如果该守护�
 
 ###### <a name="solution"></a>解决方案
 
-未安装该扩展。 确定这是否为代理问题（如前所述）。 可能需要重新启动计算机并/或重新运行 `Set-AzureRmVMAEMExtension` 配置脚本。
+未安装该扩展。 确定这是否为代理问题（如前所述）。 可能需要重新启动计算机并/或重新运行 `Set-AzVMAEMExtension` 配置脚本。
 
-##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>执行 Set-AzureRmVMAEMExtension 和 Test-AzureRmVMAEMExtension 时显示了警告消息，指出不支持标准托管磁盘
+##### <a name="the-execution-of-set-azvmaemextension-and-test-azvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>执行组 AzVMAEMExtension 和测试 AzVMAEMExtension 显示警告消息，指出不支持标准托管磁盘
 
 ###### <a name="issue"></a>问题
 
-执行 Set-AzureRmVMAEMExtension 或 Test-AzureRmVMAEMExtension 时显示了如下所示的消息：
+正在执行集 AzVMAEMExtension 或测试 AzVMAEMExtension 类似这样的消息时所示：
 
 <pre><code>
 WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
@@ -1242,4 +1243,4 @@ Azure 中的性能度量值是由某个守护程序收集的，该守护程序�
 
 有关已知问题的完整最新列表，请参阅 SAP 说明 [1999351]，其中包含有关适用于 SAP 的增强型 Azure 监视的其他故障排除信息。
 
-如果使用 SAP 说明 [1999351] 进行故障排除没有解决问题，请根据[配置适用于 SAP 的 Azure 增强型监视扩展][deployment-guide-4.5]中所述重新运行 `Set-AzureRmVMAEMExtension` 配置脚本。 可能必须要等待一小时，因为在启用存储分析或诊断计数器后可能不会立即创建这些计数器。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。
+如果使用 SAP 说明 [1999351] 进行故障排除没有解决问题，请根据[配置适用于 SAP 的 Azure 增强型监视扩展][deployment-guide-4.5]中所述重新运行 `Set-AzVMAEMExtension` 配置脚本。 可能必须要等待一小时，因为在启用存储分析或诊断计数器后可能不会立即创建这些计数器。 如果问题依然存在，请为 Windows 虚拟机组件 BC-OP-NT-AZR 或 Linux 虚拟机组件 BC-OP-LNX-AZR 创建一条 SAP 客户支持消息。

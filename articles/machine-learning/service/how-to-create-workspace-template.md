@@ -1,5 +1,5 @@
 ---
-title: 使用模板创建工作区
+title: 使用 Azure 资源管理器模板来创建工作区
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 资源管理器模板创建新的 Azure 机器学习服务工作区。
 services: machine-learning
@@ -8,17 +8,18 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 02/11/2019
-ms.openlocfilehash: 2b5ee1b5079f22985b03aaafac30c11a10a3c8f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/02/2019
+ms.custom: seoapril2019
+ms.openlocfilehash: 7349998325e56d5ebb78de5ca30c0127f09102aa
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850071"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883184"
 ---
-# <a name="create-an-azure-machine-learning-service-workspace-by-using-a-template"></a>使用模板创建 Azure 机器学习服务工作区
+# <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning-service"></a>使用 Azure 资源管理器模板来创建用于 Azure 机器学习服务的工作区
 
-本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习服务工作区的方法。 
+本文介绍几种使用 Azure 资源管理器模板创建 Azure 机器学习服务工作区的方法。 使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
 
 有关详细信息，请参阅[使用 Azure 资源管理器模板部署应用程序](../../azure-resource-manager/resource-group-template-deploy.md)。
 
@@ -30,9 +31,7 @@ ms.locfileid: "57850071"
 
 ## <a name="resource-manager-template"></a>资源管理器模板
 
-使用资源管理器模板可以轻松地通过单个协调操作创建资源。 模板是一个 JSON 文档，定义部署所需的资源。 它还可以指定部署参数。 使用模板时，参数用于提供输入值。
-
-可使用以下模板创建 Azure 机器学习服务工作区和关联的 Azure 资源：
+可以使用以下资源管理器模板创建 Azure 机器学习服务工作区和关联的 Azure 资源：
 
 ```json
 {

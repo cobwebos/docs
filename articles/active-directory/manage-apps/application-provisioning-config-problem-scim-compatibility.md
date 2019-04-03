@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fc326c1ba529bc394a5ce5a059e3fe91baa7a9a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124060"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880145"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
 
@@ -35,7 +35,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 合规性问题和状态
 
-| **SCIM 2.0 合规性问题** |  **是否已修复？** | **修复日期**  |  
+| **SCIM 2.0 合规性问题** |  **修复了？** | **解决日期**  |  
 |---|---|---|
 | Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 
 | 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 
@@ -82,13 +82,13 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 10. 运行以下命令，创建具有最新服务修补程序的新预配作业。
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs `
-    `{   templateId: "scim"   } `
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs`
+ `{   templateId: "scim"   }`
    
 11. 在最后一步的结果中，复制以“scim”开头的完整“ID”字符串。 可选择运行以下命令，将 [new-job-id] 替换为刚才复制的新作业 ID，并输入第七步的 JSON 输出作为请求正文来重新应用旧属性映射。
 
-    `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema `
-    `{   <your-schema-json-here>   }`
+ `POST https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[new-job-id]/schema`
+ `{   <your-schema-json-here>   }`
 
 12. 返回第一个 Web 浏览器窗口，选择应用程序的“预配”选项卡。
 13. 验证配置，然后启动预配作业。 
@@ -112,5 +112,5 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 
 ## <a name="next-steps"></a>后续步骤
-[了解关于 SaaS 应用程序预配和取消预配的详细信息](user-provisioning.md)
+[了解有关预配和取消预配到 SaaS 应用程序的详细信息](user-provisioning.md)
 

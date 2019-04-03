@@ -1,25 +1,25 @@
 ---
 title: Azure 安全中心的 IoT 先决条件预览 |Microsoft Docs
 description: 若要开始使用 Azure 安全中心的 IoT 服务先决条件所需的所有内容的详细信息。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 790cbcb7-1340-4cc1-9509-7b262e7c3181
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 5293fe6a8d4a8a44a89890af1c259e2b4b2b7827
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755098"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861683"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure 安全中心，IoT 系统必备组件
 

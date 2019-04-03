@@ -1,25 +1,25 @@
 ---
 title: 什么是 IoT 预览版的 Azure 安全中心 |Microsoft Docs
 description: 了解 Azure 安全中心针对 IoT 功能和服务。
-services: ascforiot
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 2cf6a49b-5d35-491f-abc3-63ec24eb4bc2
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 21737017c5087d25e36aec9701d3b4c5ddcb54e8
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757593"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58863026"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure 安全中心简介 iot
 
@@ -56,7 +56,7 @@ ms.locfileid: "58757593"
 在此概述中，您学习了有关功能和服务的 ASC 对 IoT。 若要详细了解 ASC 的 IoT 体系结构，系统必备组件，并了解如何开始，请参阅以下文章：
 
 - [体系结构](architecture.md)
-- [服务的先决条件](service-prerequisites.md)
+- [服务先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
 - [定义你的解决方案](quickstart-configure-your-solution.md)
 - [ASC iot 常见问题](resources-frequently-asked-questions.md)

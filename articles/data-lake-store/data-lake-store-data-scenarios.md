@@ -3,19 +3,19 @@ title: 涉及 Data Lake Storage Gen1 的数据方案 | Microsoft Docs
 description: 了解可在 Data Lake Storage Gen1（以前称为 Azure Data Lake Store）中进行数据引入、处理、下载和可视化的不同方案和工具
 services: data-lake-store
 documentationcenter: ''
-author: nitinme
-manager: jhubbard
+author: twooley
+manager: mtillman
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.author: nitinme
-ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.author: twooley
+ms.openlocfilehash: 0b16154edbda4bedfd4e9b680ba4311e7a235212
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984273"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878751"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>使用 Azure Data Lake Storage Gen1 满足大数据要求
 
@@ -40,8 +40,8 @@ ms.locfileid: "46984273"
 
 | 数据源 | 引入方式 |
 | --- | --- |
-| 本地计算机 |<ul> <li>[Azure 门户](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[使用适用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
-| Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
+| 本地计算机 |<ul> <li>[Azure 门户](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li> <li>[用于 Visual Studio 的 Data Lake 工具](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Azure 存储 Blob |<ul> <li>[Azure 数据工厂](../data-factory/connector-azure-data-lake-store.md)</li> <li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[在 HDInsight 群集上运行的 DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>流数据
 这表示可由应用程序、设备、传感器等多种源生成的数据。此数据可通过各种工具引入 Data Lake Storage Gen1。 这些工具通常实时逐事件捕获和处理数据，并随后批量将事件写入 Data Lake Storage Gen1，以便这些事件可以得到进一步处理。
@@ -81,8 +81,8 @@ ms.locfileid: "46984273"
 | 方法 | 详细信息 | 优点 | 注意事项 |
 | --- | --- | --- | --- |
 | 使用 Azure 数据工厂 (ADF) 直接将数据从 Hadoop 群集复制到 Azure Data Lake Storage Gen1 |[ADF 支持将 HDFS 作为数据源](../data-factory/connector-hdfs.md) |ADF 提供 HDFS 开箱即用支持和一流的端到端管理和监视 |要求在本地或 IaaS 群集中部署数据管理网关 |
-| 从 Hadoop 将数据以文件形式导出。 然后使用适当机制将文件复制到 Azure Data Lake Storage Gen1。 |可使用如下应用将文件复制到 Azure Data Lake Storage Gen1： <ul><li>[适用于 Windows 操作系统的 Azure PowerShell](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>使用任何 Data Lake Storage Gen1 SDK 自定义应用</li></ul> |快速入门。 可执行自定义上传 |涉及多种技术的多步处理。 由于工具的自定义性质，随着时间推移，管理和监视会逐渐变得具有挑战性 |
-| 使用 Distcp 将数据从 Hadoop 复制到 Azure 存储。 然后使用适当机制将数据从 Azure 存储复制到 Data Lake Storage Gen1。 |可使用以下工具将数据从 Azure 存储复制到 Data Lake Storage Gen1： <ul><li>[Azure 数据工厂](../data-factory/copy-activity-overview.md)</li><li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[HDInsight 群集上运行的 Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |可使用开放源代码工具。 |涉及多种技术的多步处理 |
+| 从 Hadoop 将数据以文件形式导出。 然后使用适当机制将文件复制到 Azure Data Lake Storage Gen1。 |可使用如下应用将文件复制到 Azure Data Lake Storage Gen1： <ul><li>[适用于 Windows OS 的 azure PowerShell](data-lake-store-get-started-powershell.md)</li><li>[Azure CLI](data-lake-store-get-started-cli-2.0.md)</li><li>使用任何 Data Lake Storage Gen1 SDK 自定义应用</li></ul> |快速入门。 可执行自定义上传 |涉及多种技术的多步处理。 由于工具的自定义性质，随着时间推移，管理和监视会逐渐变得具有挑战性 |
+| 使用 Distcp 将数据从 Hadoop 复制到 Azure 存储。 然后使用适当机制将数据从 Azure 存储复制到 Data Lake Storage Gen1。 |可使用以下工具将数据从 Azure 存储复制到 Data Lake Storage Gen1： <ul><li>[Azure 数据工厂](../data-factory/copy-activity-overview.md)</li><li>[AdlCopy 工具](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[在 HDInsight 群集上运行的 Apache DistCp](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |可使用开放源代码工具。 |涉及多种技术的多步处理 |
 
 ### <a name="really-large-datasets"></a>大型数据集
 对于上传兆兆字节范围内的数据集，使用上述方法可能有时速度慢且成本高。 这种情况下，可使用以下选项。
@@ -102,8 +102,8 @@ ms.locfileid: "46984273"
 
 可查看以下示例。
 
-* [创建包含 Data Lake Storage Gen1 作为存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [使用数据湖存储 Gen1 作为存储创建 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 
 ## <a name="download-data-from-data-lake-storage-gen1"></a>从 Data Lake Storage Gen1 下载数据
 用户可能还希望为一些方案从 Azure Data Lake Storage Gen1 下载或移动数据，例如：
