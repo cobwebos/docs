@@ -1,21 +1,21 @@
 ---
-title: Azure Active Directory B2C 中的自定义策略入门 | Microsoft Docs
-description: Azure Active Directory B2C 自定义策略入门方法。
+title: 开始使用自定义策略-Azure Active Directory B2C |Microsoft Docs
+description: 了解如何开始使用 Azure Active Directory B2C 中的自定义策略。
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 04/03/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d4105aab80add8556bcbe79c9c6e8dd7743b25b7
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: b414529d7756812f1e1e16d2d0184c8472c0c55f
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55298732"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916744"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -23,14 +23,15 @@ ms.locfileid: "55298732"
 
 [自定义策略](active-directory-b2c-overview-custom.md)是定义 Azure Active Directory (Azure AD) B2C 租户行为的配置文件。 本文将介绍如何创建支持使用电子邮件地址和密码进行本地帐户注册或登录的自定义策略。 你还要准备好环境以添加标识提供者。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-如果没有租户，则需要[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
+- 如果没有租户，则需要[创建链接到 Azure 订阅的 Azure AD B2C 租户](tutorial-create-tenant.md)。
+- [注册应用程序](tutorial-register-applications.md)创建，以便它能够与 Azure AD B2C 租户中。
 
 ## <a name="add-signing-and-encryption-keys"></a>添加签名和加密密钥
 
 1. 以 Azure AD B2C 租户的全局管理员身份登录 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。 
+2. 请确保使用包含 Azure AD B2C 租户的目录。 单击**目录和订阅筛选器**顶部的菜单，然后选择包含你的租户的目录中。 
 3. 选择 Azure 门户左上角的“所有服务”，搜索并选择 **Azure AD B2C**。
 4. 在“概述”页上，选择“标识体验框架 - 预览”。
 
@@ -59,11 +60,11 @@ ms.locfileid: "55298732"
 1. 选择“策略密钥”，然后选择“添加”。
 2. 对于“选项”，请选择 `Manual`。
 3. 对于“名称”，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
-4. 在“机密”中，输入 developers.facebook.com 提供的 Facebook 机密，或输入 `0` 作为占位符。 这是机密，不是应用程序 ID。
+4. 在“机密”中，输入 developers.facebook.com 提供的 Facebook 机密，或输入 `0` 作为占位符。 此值是密码，而不是应用程序 id。
 5. 对于“密钥用法”，请选择“签名”。
 6. 单击“创建”。
 
-## <a name="register-applications"></a>注册应用程序
+## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
 
 Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：IdentityExperienceFramework（Web 应用），以及具有 IdentityExperienceFramework 应用委派权限的 ProxyIdentityExperienceFramework（本机应用）。 本地帐户只在租户中存在。 你的用户使用唯一的“电子邮件地址/密码”组合登录，以访问租户注册的应用程序。
 
@@ -85,8 +86,7 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 4. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
 5. 单击“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 6. 在“设置”页上，选择“所需权限”，然后选择“添加”。
-7. 选择“选择 API”。
-8. 搜索并选择 IdentityExperienceFramework，然后单击“选择”。
+7. 选择**选择 API**，搜索并选择**IdentityExperienceFramework**，然后单击**选择**。
 9. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。
 10. 选择“授予权限”，然后选择“是”进行确认。
 
@@ -131,12 +131,11 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 
 ## <a name="test-the-custom-policy"></a>测试自定义策略
 
-1. 在“自定义策略”页上，选择“B2C_1A_signup_signin”。 
-2. 选择“立即运行”。
-
-3. 现在，应该可以使用电子邮件地址注册。
-
-4. 使用相同的帐户登录，以确认配置正确。
+1. 在“自定义策略”页上，选择“B2C_1A_signup_signin”。
+2. 有关**选择应用程序**在自定义策略的概述页上，选择名为 web 应用程序*webapp1*以前注册的。 请确保**回复 URL**是`https://jwt.ms`。
+3. 选择“立即运行”。
+4. 现在，应该可以使用电子邮件地址注册。
+5. 使用相同的帐户登录，以确认配置正确。
 
 ## <a name="add-facebook-as-an-identity-provider"></a>将 Facebook 添加为标识提供者
 

@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: d775fff16380ebe08159123aa9e6084055a5be8d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877561"
+ms.locfileid: "58891577"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "58877561"
 
 |名称|定义|描述|
 |---|---|---|
-|widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 如果使用 **version=2**，则不支持 **widgets** URL 参数。 |
+|widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 在版本 2 中不支持小组件 URL 参数。 |
 
 ### <a name="player-widget"></a>播放器小组件
 
@@ -254,4 +254,4 @@ iframe 窗口的标题也可自定义，只需为 iframe URL 提供 `&title=<You
 
 若要了解如何查看和编辑视频索引器见解，请参阅[此](video-indexer-view-edit.md)文。
 
-另外，请查看[视频索引器 codepen](https://codepen.io/videoindexer/pen/eGxebZ)。
+此外，请查看[视频索引器 CodePen](https://codepen.io/videoindexer/pen/eGxebZ)。

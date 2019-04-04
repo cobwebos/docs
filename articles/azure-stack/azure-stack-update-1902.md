@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2019
+ms.date: 04/03/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: fbf9f4aa79af32cf0e73f4e383130c565de16f53
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.lastreviewed: 04/03/2019
+ms.openlocfilehash: 5971692b3e6447bc790b2e34cf84eae66979f7f5
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372363"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862074"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新
 
-*适用于：Azure Stack 集成系统*
+*适用于Azure Stack 集成系统*
 
 本文介绍 1902 更新包的内容。 该更新包含此版 Azure Stack 的改进、修复和新功能。 本文还描述了此版本中的已知问题，并包含一个用于下载该更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
@@ -57,12 +57,12 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 ## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-> - 在更新到 1902 之前，请先安装 1901 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。
+> 可以直接从安装 1902年[1.1901.0.95 或 1.1901.0.99](azure-stack-update-1901.md#build-reference)释放时，不首先安装任何 1901年修补程序。 但是，如果你已安装较旧**1901.2.103**修补程序，必须安装较新[1901.3.105 修补程序](https://support.microsoft.com/help/4495662)到 1902年继续。
 
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。
 
-    ```PowerShell
-    Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
+    ```powershell
+    Test-AzureStack -Include AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
 - 当 Azure Stack 管理由 System Center Operations Manager (SCOM) 时，请确保更新[适用于 Microsoft Azure Stack 管理包](https://www.microsoft.com/download/details.aspx?id=55184)到版本 1.0.3.11 应用 1902年之前。
@@ -77,6 +77,9 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 1902 版本在 Azure Stack 管理员门户上引入了新的用户界面用于创建计划、套餐、配额和附加计划。 有关详细信息（包括屏幕截图），请参阅[创建计划、套餐和配额](azure-stack-create-plan.md)。
 
+<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
+- 改进了添加节点期间缩放单元状态从“正在扩展存储”切换为运行状态时的容量扩展可靠性。
+
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
 1399240 3322580: [PNU] Optimize the DSC resource execution on the Host  PNU
@@ -84,26 +87,24 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 1398818 3685138, 3734779: ECE exception logging, VirtualMachine ConfigurePending should take node name from execution context   PNU
 1381018 [1902] 3610787 - Infra VM creation should fail if the ClusterGroup already exists   PNU
 -->
-- 若要提高包的完整性和安全性和进行脱机引入更轻松地管理，Microsoft 已更改的更新包的格式从.exe 和.bin 文件到一个.zip 文件。 新的格式向有时，可能会导致更新的准备，以停止正在解包过程的更多的可靠性。 相同的包格式也适用于更新您的 OEM 中的包。
-
-- 若要运行时，提高 Azure Stack 运营商体验**Test-azurestack**，现在只需使用运算符`Test-AzureStack -Group UpdateReadiness`而不是传递后的十个其他参数`include`语句。 例如：
+- 若要提高包的完整性和安全性，以及用于脱机引入更轻松地管理，Microsoft 已更改的更新包的格式从.exe 和.bin 文件到一个.zip 文件。 新的格式添加其他有时，可能会导致更新的准备，以停止正在解包过程的可靠性。 相同的包格式也适用于来自 OEM 的更新包。
+- 若要提高 Azure Stack 运营商体验运行 Test-azurestack 时，运算符现在只需使用，"Test-azurestack-组 UpdateReadiness"而不是将十个附加参数传递后一个 Include 语句。
 
   ```powershell
-  Test-AzureStack -Group UpdateReadiness  
-  ```
-
-- 若要在更新过程期间改进的整体可靠性和核心基础结构服务的可用性，本机更新资源提供程序将检测并根据需要调用自动全局修正更新操作计划的一部分。 全局修正"修复"工作流包括：
-
-  - 检查处于非最佳状态并尝试修复所需对它们的基础结构虚拟机。
-  - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复所需对它们。
-  - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试根据需要修复它们。
-  - 检查网络控制器 (NC) 服务的状态并尝试根据需要修复它。
-  - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们。
-  - 检查 XRP service fabric 节点的状态并根据需要修复它们。
-  - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们。
+    Test-AzureStack -Group UpdateReadiness  
+  ```  
+  
+- 若要在更新过程中改进的整体可靠性和可用性的核心基础结构服务，作为更新操作计划的一部分的本机更新资源提供程序将检测并调用根据需要自动全局修正。 全局补救“修复”工作流包括：
+    - 检查处于非最佳状态并尝试修复它们所需的基础结构虚拟机 
+    - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复它们根据需要
+    - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试修复它们根据需要
+    - 检查网络控制器 (NC) 服务的状态并尝试修复它根据需要
+    - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们
+    - 检查 XRP service fabric 节点的状态并根据需要修复它们
+    - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- 改进的可靠性的容量扩展期间添加节点时切换到正在运行的状态从"扩展存储"的缩放单元状态。    
+- 改进了添加节点期间缩放单元状态从“正在扩展存储”切换为运行状态时的容量扩展可靠性。    
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -112,18 +113,18 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 1436561 Bug 3949187: [Bug Fix] Remove AzsStorageSvcsSummary test from SecretRotationReadiness Test-AzureStack flag  Diagnostics
 1404512 3849946: Get-AzureStackLog should collect all child folders from c:\Windows\Debug   Diagnostics 
 -->
-- 改进 Azure stack 诊断工具来提高日志集合可靠性和性能。 有关网络和标识服务的其他日志记录。 
+- 改进了 Azure Stack 诊断工具，以提高日志收集可靠性和性能。 增加了网络和标识服务的日志记录功能。 
 
 <!-- 1384958    Adding a Test-AzureStack group for Secret Rotation  Diagnostics -->
-- 改进的可靠性**Test-azurestack**机密轮换准备情况测试。
+- 改进的可靠性的 Test-azurestack 机密轮换准备情况测试。
 
 <!-- 1404751    3617292: Graph: Remove dependency on ADWS.  Identity -->
-- 以与客户的 Active Directory 环境进行通信时提高 AD Graph 的可靠性的改进。
+- 以与客户的 Active Directory 环境进行通信时提高 AD Graph 的可靠性的改进
 
 <!-- 1391444    [ISE] Telemetry for Hardware Inventory - Fill gap for hardware inventory info   System info -->
-- 改进的硬件清单中的集合**Get AzureStackStampInformation**。
+- 在 Get AzureStackStampInformation 改进硬件清单收集。
 
-- 若要提高 ERCS 基础结构上运行的操作的可靠性，为每个 ERCS 实例的内存将增加从 8 GB 到 12 GB。 在 Azure Stack 集成系统安装中，这会导致 12 GB 增加总体。
+- 为了改进 ERCS 基础结构上运行的操作的可靠性，每个 ERCS 实例的内存已从 8 GB 增加到 12 GB。 在 Azure Stack 集成系统安装中，这会导致内存总量增大 12 GB。
 
 > [!IMPORTANT]
 > 为了确保修补升级过程尽可能地减少租户停机时间，请在“容量”边栏选项卡中确认 Azure Stack 阵列是否可提供 12 GB 以上的可用空间。 成功安装更新后，“容量”边栏选项卡中会反映内存增大。
@@ -220,25 +221,12 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 如果使用创建时已启用 SSH 授权的 Ubuntu 18.04 VM，则无法使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
 
-- 如果还没有硬件生命周期主机 (HLH):在之前生成 1902年，您必须将组策略设置**计算机配置 \windows 设置 \ 安全设置 \ 本地策略 \ 安全选项**到**发送 LM 和 NTLM – 如果协商使用NTLMv2会话安全**. 自生成 1902年，必须将其作为**未定义**或将其设置为**仅发送 NTLMv2 响应**（这是默认值）。 否则为不能建立的 PowerShell 远程会话，会收到**访问被拒绝**错误：
-
-   ```shell
-   PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
-   New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
-   about_Remote_Troubleshooting Help topic.
-   At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
-   +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-      + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
-      + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed
-   ```
-
 ### <a name="networking"></a>网络  
 
 <!-- 3239127 - IS, ASDK -->
 - 在 Azure Stack 门户中，对于已附加到 VM 实例的网络适配器，在更改与其绑定的 IP 配置的静态 IP 地址时，会看到一条警告消息，其中指出 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
 
     可以放心忽略此消息；即使 VM 实例未重启，IP 地址也会更改。
 
@@ -254,7 +242,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - 网络安全组 (NSG) 无法像在全球 Azure 中一样在 Azure Stack 中运行。 在 Azure 中，可以在一个 NSG 规则中设置多个端口（使用门户、PowerShell 和资源管理器模板）。 但是，在 Azure Stack 中，无法通过门户在一个 NSG 规则中设置多个端口。 若要解决此问题，请使用资源管理器模板或 PowerShell 设置这些附加的规则。
 
 <!-- 3203799 - IS, ASDK -->
-- Azure Stack 不支持 4 个以上的网络接口 (Nic) 现在，附加到 VM 实例而不考虑实例的大小。
+- 目前，无论实例大小是什么，Azure Stack 都不支持将 4 个以上的网络接口 (NIC) 附加到 VM 实例。
 
 <!-- ### SQL and MySQL-->
 

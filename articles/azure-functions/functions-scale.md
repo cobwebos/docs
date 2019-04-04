@@ -1,31 +1,31 @@
 ---
 title: Azure Functions 的缩放和托管 | Microsoft Docs
-description: 了解如何在 Azure Functions 消耗量计划和应用服务计划之间进行选择。
+description: 了解如何在 Azure Functions 消耗计划和高级计划之间进行选择。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: jeconnoc
-keywords: Azure Functions, Functions, 消耗量计划, 应用服务计划, 事件处理, webhook, 动态计算, 无服务体系结构
+keywords: azure 函数、 函数、 消耗计划、 高级版计划，事件处理，webhook，动态计算，无服务器体系结构
 ms.assetid: 5b63649c-ec7f-4564-b168-e0a74cb7e0f3
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 02/28/2019
+ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 17df4415166c71f49c6b2534289b2c1f79cb6174
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58117245"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893582"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
-Azure Functions 以两种不同的模式运行：消耗计划和 Azure 应用服务计划。 消耗量计划在代码运行时自动分配计算能力。 应用在需要处理负载时会扩展，在代码未运行时会缩小。 无需为空闲的 VM 付费或提前保留容量。
+Azure Functions 在两个不同的计划中运行：消耗量计划和高级计划 （公共预览版）。 运行你的代码时，消耗计划会自动添加的计算能力。 您的应用程序是以处理负载，根据需要向外扩展和缩减代码停止运行时。 无需为空闲的 VM 付费或提前保留容量。  高级计划还会自动将缩放和运行你的代码时将添加更多计算能力。  高级计划提供了其他功能，例如高级计算实例、 使实例保存无限期，热和 VNet 连接。  如果你有现有的应用服务计划，还可以运行函数应用中。
 
 > [!NOTE]  
-> 适用于 Linux 的消耗计划[现在以公共预览版提供](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)。
+> 这两[高级版计划](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/)并[适用于 Linux 的消耗计划](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)目前处于预览状态。
 
 如果不熟悉 Azure Functions，请参阅 [Azure Functions 概述](functions-overview.md)。
 
@@ -33,15 +33,14 @@ Azure Functions 以两种不同的模式运行：消耗计划和 Azure 应用服
 
 * 主机实例的扩展方式。
 * 可供每个主机使用的资源。
+* 实例功能，如 VNet 连接。
 
-> [!IMPORTANT]
-> 创建函数应用时必须选择托管计划的类型。 之后不能再进行更改。
-
-在应用服务计划中，可在不同的层之间进行缩放，从而分配不同数量的资源。 对于消耗计划，Azure Functions 会自动处理所有资源分配。 
+> [!NOTE]
+> 您可以通过更改计划属性的函数应用资源消耗和高级计划之间进行切换。
 
 ## <a name="consumption-plan"></a>消耗量计划
 
-使用消耗计划时，会根据传入事件数自动添加和删除 Azure Functions 主机实例。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。
+当您使用消耗计划时，Azure Functions 主机的实例动态添加和删除根据传入事件数。 这个无服务器计划会自动缩放，仅在函数运行时，才会产生计算资源费用。 在消费计划中，函数执行在可配置的时间段后超时。
 
 账单将基于执行数量、执行时间和所用内存。 账单是基于函数应用内的所有函数聚合而生成的。 有关详细信息，请参阅 [Azure Functions 定价页]。
 
@@ -50,28 +49,49 @@ Azure Functions 以两种不同的模式运行：消耗计划和 Azure 应用服
 * 仅当函数运行时才产生费用。
 * 即使是在负载较高期间也可自动扩展。
 
-## <a name="app-service-plan"></a>应用服务计划
+## <a name="premium-plan-public-preview"></a>高级计划 （公共预览版）
 
-在专用的应用服务计划中，函数应用在基本、标准、高级或独立 SKU 中的专用 VM 上运行，这与其他应用服务应用相同。 会向函数应用分配专用 VM，这意味着函数主机可[始终运行](#always-on)。 应用服务计划支持 Linux。
+当您使用的高级计划时，Azure Functions 主机的实例快速添加和删除基于消耗计划一样的传入事件的数目。  但是，高级计划还提供：
 
-对于以下情况，可以考虑使用应用服务计划：
+* 始终暖实例，以避免任何冷启动。
+* VNet 连接。
+* 不受限制的执行持续时间。
+* 高级实例大小 （一项核心、 两个核心和 4 个核心实例）。
+* 可预测定价选项。
+* 高密度应用于包含多个函数应用计划的分配。
 
-* 具有已运行其他应用服务实例的、未充分利用的现成 VM。
+如何配置这些选项的信息可在[Azure Functions 高级计划](functions-premium-plan.md)。
+
+而不是每个执行和内存消耗的计费，计费基于核心秒和每 GB 秒数计需和保留实例使用的数量。  需要为热根本时间，因此有固定每月每个处于活动状态 （而不考虑执行数） 的计划成本至少一个实例。
+
+Azure Functions 高级计划在以下情况下，请考虑：
 * 函数应用持续或几乎持续运行。 在这种情况下，应用服务计划可能更经济高效。
 * 所需 CPU 或内存选项超出消耗计划提供的选项。
 * 你的代码需要运行时间超过[允许的最长执行时间](#timeout)基于消耗计划。
 * 需要仅对应用服务计划可用的功能，例如应用服务环境支持、VNET/VPN 连接性和更大的 VM。
+
+> [!NOTE]
+> 高级计划预览版目前支持通过 Windows 基础结构在.NET、 节点或 Java 中运行的函数。
+
+当在高级版计划上运行 JavaScript 函数，应选择具有较少 Vcpu 的实例。 有关详细信息，请参阅[选择单核心高级计划](functions-reference-node.md#considerations-for-javascript-functions)。  
+
+## <a name="app-service-plan"></a>应用服务计划
+
+函数应用还可以作为其他应用服务应用 （基本、 标准、 高级版和独立 Sku） 相同的专用 Vm 上运行。 应用服务计划支持 Linux。
+
+对于以下情况，可以考虑使用应用服务计划：
+
+* 具有已运行其他应用服务实例的、未充分利用的现成 VM。
 * 想要在 Linux 上运行函数应用，或者想要提供要在其上运行函数的自定义映像。
 
-VM 使得成本不再取决于执行数量、执行时间和所用内存。 因此，支付的费用不会超过分配的 VM 实例的费用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。 
+您支付相同应用服务计划中的 function app 就像对于其他应用服务资源，例如 web 应用。 如需详细了解如何使用应用服务计划，请参阅 [Azure 应用服务计划深入概述](../app-service/overview-hosting-plans.md)。 
 
 借助应用服务计划，可通过添加更多 VM 实例手动进行扩展，也可启用自动缩放。 有关详细信息，请参阅[手动或自动缩放实例计数](../azure-monitor/platform/autoscale-get-started.md?toc=%2fazure%2fapp-service%2ftoc.json)。 还可以通过选择不同的应用服务计划来进行增加。 有关详细信息，请参阅[增加 Azure 中的应用](../app-service/web-sites-scale.md)。 
 
-在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。  
-
+在应用服务计划上运行 JavaScript 函数时，应选择具有较少 vCPU 的计划。 有关详细信息，请参阅[选择单核应用服务计划](functions-reference-node.md#choose-single-vcpu-app-service-plans)。 
 <!-- Note: the portal links to this section via fwlink https://go.microsoft.com/fwlink/?linkid=830855 --> 
 
-### <a name="always-on"></a> 始终可用
+### <a name="always-on"></a> Always On
 
 如果在应用服务计划上运行，应启用 AlwaysOn 设置，使函数应用能正常运行。 在应用服务计划中，如果函数运行时处于不活动状态，几分钟后就会进入空闲状态，因此只有 HTTP 触发器才能“唤醒”函数。 只能对应用服务计划使用始终可用。 在消耗计划中，平台会自动激活函数应用。
 
@@ -90,26 +110,26 @@ appServicePlanId=$(az functionapp show --name <my_function_app_name> --resource-
 az appservice plan list --query "[?id=='$appServicePlanId'].sku.tier" --output tsv
 ```  
 
-此命令的输出为 `dynamic` 时，函数应用采用消耗量计划。 所有其他值均表示应用服务计划的层。
+此命令的输出为 `dynamic` 时，函数应用采用消耗量计划。 当此命令的输出是`ElasticPremium`，function app 是高级版计划中。  所有其他值均表示应用服务计划的层。
 
 即使启用了 AlwaysOn，各函数的执行超时也由 [host.json](functions-host-json.md#functiontimeout) 项目文件中的 `functionTimeout` 设置控制。
 
 ## <a name="storage-account-requirements"></a>存储帐户要求
 
-无论是采用消耗量计划还是应用服务计划中，函数应用都需要一个常规 Azure 存储帐户，该帐户支持 Azure Blob、队列、文件和表存储。 这是因为 Functions 依赖 Azure 存储来执行管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉。
+在任何计划中，函数应用都需要支持 Azure Blob、 队列、 文件和表存储的常规 Azure 存储帐户。 这是因为函数依赖于 Azure 存储提供管理触发器和记录函数执行等操作，但某些存储帐户不支持队列和表。 这些帐户包括仅限 blob 的存储帐户（包括高级存储）和使用区域冗余存储空间复制的常规用途存储帐户，已在创建函数应用时将从现有的“存储帐户”选项中过滤掉。
 
 <!-- JH: Does using a Premium Storage account improve perf? -->
 
 若要了解有关存储帐户类型的详细信息，请参阅 [Azure 存储服务简介](../storage/common/storage-introduction.md#azure-storage-services)。
 
-## <a name="how-the-consumption-plan-works"></a>如何使用消耗量计划
+## <a name="how-the-consumption-and-premium-plans-work"></a>消耗计划和高级计划的工作原理
 
-在消耗计划中，缩放控制器通过根据触发函数的事件数添加额外的 Functions 主机实例来自动缩放 CPU 和内存资源。 Functions 主机的每个实例的上限为 1.5 GB 内存。  主机实例是函数应用，这意味着函数应用中的所有函数共享某个实例中的资源并同时缩放。 共享同一消耗计划的函数应用单独缩放。  
+在消耗和高级版计划中，缩放控制器自动通过添加其他基于触发函数的事件数的 Functions 主机实例来缩放 CPU 和内存资源。 Functions 主机在消耗计划中的每个实例都限制为 1.5 GB 内存和 1 的 CPU。  主机的实例是整个函数应用，即在同一时间内的实例和规模的函数应用共享资源中的所有函数。 函数应用都共享相同的消耗计划是独立缩放。  在高级版计划中，你的计划大小将确定可用内存和 CPU 的所有应用在该实例上的该计划中。  
 
-使用消耗托管计划时，函数代码文件存储在函数的主存储帐户的 Azure 文件共享上。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
+函数代码文件存储在 Azure 文件共享上函数的主存储帐户。 删除函数应用的主存储帐户时，函数代码文件将被删除并且无法恢复。
 
 > [!NOTE]
-> 在消耗量计划中使用 blob 触发器时，处理新的 blob 可能会出现长达 10 分钟的延迟。 函数应用处于空闲时会发生这种延迟。 函数应用运行后，就会立即处理 Blob。 要避免这种冷启动延迟，请在启用了 AlwaysOn 的情况下使用应用服务计划或使用事件网格触发器。 有关详细信息，请参阅 [blob 触发器绑定参考文章](functions-bindings-storage-blob.md#trigger)。
+> 在消耗量计划中使用 blob 触发器时，处理新的 blob 可能会出现长达 10 分钟的延迟。 函数应用处于空闲时会发生这种延迟。 函数应用运行后，就会立即处理 Blob。 若要避免此冷启动延迟，请使用高级计划，或使用[事件网格触发器](functions-bindings-event-grid.md)。 有关详细信息，请参阅 [blob 触发器绑定参考文章](functions-bindings-storage-blob.md#trigger)。
 
 ### <a name="runtime-scaling"></a>运行时缩放
 
@@ -141,5 +161,7 @@ Azure Functions 使用名为“缩放控制器”的组件来监视事件率以�
 
 * 以千兆字节/秒 (GB-s) 计量的资源消耗量。 根据内存大小和函数应用中所有函数的执行时间组合计算得出。 
 * **执行**。 每次为响应事件触发而执行函数时记为一次。
+
+可以找到有用的查询和如何了解消耗帐单信息[计费常见问题](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ)。
 
 [Azure Functions 定价页]: https://azure.microsoft.com/pricing/details/functions

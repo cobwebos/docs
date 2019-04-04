@@ -5,30 +5,29 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 2641e1653e14a7c101d95b02b8a5af71ceb9fdc6
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
-ms.translationtype: HT
+ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398168"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916574"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>设置和检索属性与元数据
 
 Azure 存储中的对象支持系统属性和用户定义的元数据，除了该数据以外，它们还包含： 本文介绍如何使用[适用于 .NET 的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)管理系统属性和用户定义元数据。
 
-* **系统属性**：系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库将保留这些属性。
+* **系统属性**:系统属性存在于每个存储资源上。 其中一些属性是可以读取或设置的，而另一些属性是只读的。 事实上，有些系统属性与某些标准 HTTP 标头对应。 Azure 存储客户端库将保留这些属性。
 
-* **用户定义的元数据**：用户定义元数据包含一个或多个你为 Azure 存储资源指定的名称/值对对。 可以使用元数据存储资源的其他值。 元数据值仅用于你自己的目的，不会影响资源的行为方式。
+* **用户定义的元数据**:用户定义元数据包含一个或多个指定的 Azure 存储资源的名称-值对。 可以使用元数据存储资源的其他值。 元数据值仅用于你自己的目的，不会影响资源的行为方式。
 
 检索资源的属性和元数据值的过程分为两步。 必须先通过调用 FetchAttributes 或 FetchAttributesAsync 方法显式提取这些值，然后才能读取。 对资源调用 Exists 或 ExistsAsync 方法是例外情况。 调用以上一种方法时，Azure 存储将在调用 Exists 方法时以隐藏方式调用相应的 FetchAttributes 方法。
 
 > [!IMPORTANT]
 > 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法。
 >
-> 元数据名称/值对仅可包含 ASCII 字符。 元数据名称/值对是有效的 HTTP 标头，因此必须遵循控制 HTTP 标头的所有限制。 对于包含非 ASCII 字符的名称和值，建议使用 URL 编码或 Base64 编码。
->
+> 元数据名称/值对是有效的 HTTP 标头，且因此应遵循控制 HTTP 标头的所有限制。 元数据名称必须是有效的 HTTP 标头名称、 可能只能包含 ASCII 字符，并且应被视为区分大小写。 包含非 ASCII 字符的元数据值应为 Base64 编码或 URL 编码。
 
 ## <a name="setting-and-retrieving-properties"></a>设置和检索属性
 要检索属性值，请对 blob 或容器调用 FetchAttributesAsync 方法来填充这些属性，然后读取它们的值。
@@ -100,5 +99,5 @@ public static async Task ListContainerMetadataAsync(CloudBlobContainer container
 ```
 
 ## <a name="next-steps"></a>后续步骤
-* [适用于 .NET 的 Azure 存储客户端库参考](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
-* [适用于 .NET NuGet 包的 Azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [Azure 存储客户端库.NET 参考](/dotnet/api/?term=Microsoft.WindowsAzure.Storage)
+* [适用于.NET NuGet 包的 azure 存储客户端库](https://www.nuget.org/packages/WindowsAzure.Storage/)

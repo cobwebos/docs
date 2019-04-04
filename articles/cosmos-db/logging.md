@@ -7,18 +7,21 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: d75eb87bff812589e4d3a3a14079ddaaf368a588
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 8839d7ea93bcb205b1900e63d3ab98394e72cd75
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259765"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904859"
 ---
 # <a name="diagnostic-logging-in-azure-cosmos-db"></a>Azure Cosmos DB 中的诊断日志记录 
 
 开始使用一个或多个 Azure Cosmos DB 数据库后，可能需要监视数据库的访问方式和时间。 本文概述了 Azure 平台上提供的日志。 其中介绍了如何启用监视用的诊断日志记录，以便将日志发送到 [Azure 存储](https://azure.microsoft.com/services/storage/)，将日志流式传输到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)，以及如何将日志导出到 [Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="logs-available-in-azure"></a>在 Azure 中可用的日志
 
@@ -132,7 +135,7 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
 启动 Azure PowerShell 会话，并使用以下命令登录 Azure 帐户：  
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 在弹出的浏览器窗口中，输入 Azure 帐户用户名和密码。 Azure PowerShell 会获取与此帐户关联的所有订阅，并按默认使用第一个订阅。
@@ -140,13 +143,13 @@ Connect-AzureRmAccount
 如果有多个订阅，可能需要指定用来创建 Azure Key Vault 的特定订阅。 若要查看帐户的订阅，请键入以下命令：
 
 ```powershell
-Get-AzureRmSubscription
+Get-AzSubscription
 ```
 
 若要指定与要记录的 Azure Cosmos DB 帐户关联的订阅，请键入以下命令：
 
 ```powershell
-Set-AzureRmContext -SubscriptionId <subscription ID>
+Set-AzContext -SubscriptionId <subscription ID>
 ```
 
 > [!NOTE]
@@ -162,7 +165,7 @@ Set-AzureRmContext -SubscriptionId <subscription ID>
 为进一步简化管理，我们在本教程中使用包含 Azure Cosmos DB 数据库的同一资源组。 将 **ContosoResourceGroup**、**contosocosmosdblogs** 和 **North Central US** 参数替换为自己的值（如适用）：
 
 ```powershell
-$sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
+$sa = New-AzStorageAccount -ResourceGroupName ContosoResourceGroup `
 -Name contosocosmosdblogs -Type Standard_LRS -Location 'North Central US'
 ```
 
@@ -175,15 +178,15 @@ $sa = New-AzureRmStorageAccount -ResourceGroupName ContosoResourceGroup `
 将 Azure Cosmos DB 帐户名称设置为名为 **account** 的变量，其中 **ResourceName** 是 Azure Cosmos DB 帐户的名称。
 
 ```powershell
-$account = Get-AzureRmResource -ResourceGroupName ContosoResourceGroup `
+$account = Get-AzResource -ResourceGroupName ContosoResourceGroup `
 -ResourceName contosocosmosdb -ResourceType "Microsoft.DocumentDb/databaseAccounts"
 ```
 
 ### <a id="enable"></a>启用日志记录
-若要启用针对 Azure Cosmos DB 的日志记录，请使用 `Set-AzureRmDiagnosticSetting` cmdlet，同时使用新存储帐户、Azure Cosmos DB 帐户和要为其启用日志的类别的变量。 运行以下命令，并将 **-Enabled** 标志设置为 **$true**：
+若要启用针对 Azure Cosmos DB 的日志记录，请使用 `Set-AzDiagnosticSetting` cmdlet，同时使用新存储帐户、Azure Cosmos DB 帐户和要为其启用日志的类别的变量。 运行以下命令，并将 **-Enabled** 标志设置为 **$true**：
 
 ```powershell
-Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
+Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests
 ```
 
 该命令的输出应如以下示例所示：
@@ -221,7 +224,7 @@ Set-AzureRmDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId 
 还可以选择性地为日志设置保留期策略，以便自动删除较旧的日志。 例如，将 **-RetentionEnabled** 标志设置为 **$true**，以设置保留策略。 将 **-RetentionInDays** 参数设置为 **90**，以便自动删除超过 90 天的日志。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
+Set-AzDiagnosticSetting -ResourceId $account.ResourceId`
  -StorageAccountId $sa.Id -Enabled $true -Categories DataPlaneRequests`
   -RetentionEnabled $true -RetentionInDays 90
 ```
@@ -238,7 +241,7 @@ Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 若要列出此容器中的所有 Blob，请键入：
 
 ```powershell
-Get-AzureStorageBlob -Container $container -Context $sa.Context
+Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
 该命令的输出应如以下示例所示：
@@ -257,7 +260,7 @@ Name              : resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/C
 /MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/CONTOSOCOSMOSDB/y=2017/m=09/d=28/h=19/m=00/PT1H.json
 ```
 
-可从此输出中看出，blob 遵循以下命名约定：`resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
+您可以从此输出中看到，blob 遵循以下命名约定： `resourceId=/SUBSCRIPTIONS/<subscription-ID>/RESOURCEGROUPS/<resource group name>/PROVIDERS/MICROSOFT.DOCUMENTDB/DATABASEACCOUNTS/<Database Account Name>/y=<year>/m=<month>/d=<day of month>/h=<hour>/m=<minute>/filename.json`
 
 日期和时间值使用 UTC。
 
@@ -273,13 +276,13 @@ New-Item -Path 'C:\Users\username\ContosoCosmosDBLogs'`
 然后获取所有 Blob 的列表：  
 
 ```powershell
-$blobs = Get-AzureStorageBlob -Container $container -Context $sa.Context
+$blobs = Get-AzStorageBlob -Container $container -Context $sa.Context
 ```
 
-通过 `Get-AzureStorageBlobContent` 命令以管道传送此列表，将 Blob 下载到目标文件夹：
+通过 `Get-AzStorageBlobContent` 命令以管道传送此列表，将 Blob 下载到目标文件夹：
 
 ```powershell
-$blobs | Get-AzureStorageBlobContent `
+$blobs | Get-AzStorageBlobContent `
  -Destination 'C:\Users\username\ContosoCosmosDBLogs'
 ```
 
@@ -290,27 +293,27 @@ $blobs | Get-AzureStorageBlobContent `
 * 如果有多个数据库，且只想下载名为 **CONTOSOCOSMOSDB3** 的数据库的日志，请使用以下命令：
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/DATABASEACCOUNTS/CONTOSOCOSMOSDB3
     ```
 
 * 如果有多个资源组，并只想要下载其中某个资源组的日志，请使用命令 `-Blob '*/RESOURCEGROUPS/<resource group name>/*'`：
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
     -Context $sa.Context -Blob '*/RESOURCEGROUPS/CONTOSORESOURCEGROUP3/*'
     ```
 * 如果要下载 2017 年 7 月的所有日志，请使用命令 `-Blob '*/year=2017/m=07/*'`：
 
     ```powershell
-    Get-AzureStorageBlob -Container $container `
+    Get-AzStorageBlob -Container $container `
      -Context $sa.Context -Blob '*/year=2017/m=07/*'
     ```
 
 也可以运行以下命令：
 
-* 若要查询数据库资源的诊断设置状态，请使用命令 `Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`。
-* 若要禁用数据库帐户资源的 **DataPlaneRequests** 类别的日志记录，请使用命令 `Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`。
+* 若要查询数据库资源的诊断设置状态，请使用命令 `Get-AzDiagnosticSetting -ResourceId $account.ResourceId`。
+* 若要禁用数据库帐户资源的 **DataPlaneRequests** 类别的日志记录，请使用命令 `Set-AzDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`。
 
 
 在其中每个查询中返回的 Blob 存储为文本，采用 JSON Blob 格式，如以下代码中所示：
@@ -441,7 +444,7 @@ $blobs | Get-AzureStorageBlobContent `
 | **resourceId** | **资源** | 为其启用日志的 Azure Cosmos DB 帐户。|
 | **category** | **类别** | 对于 Azure Cosmos DB 日志，**DataPlaneRequests** 是唯一可用的值。 |
 | **operationName** | **OperationName** | 操作的名称。 此值可以是以下任意操作：创建、更新、读取、ReadFeed、删除、替换、执行、SqlQuery、查询、JSQuery、Head、HeadFeed 或 Upsert。   |
-| **properties** | 不适用 | 下面的行中描述了此字段的内容。 |
+| **属性** | 不适用 | 下面的行中描述了此字段的内容。 |
 | **activityId** | **activityId_g** | 日志记录操作的唯一 GUID。 |
 | **userAgent** | **userAgent_s** | 一个字符串，指定执行请求的客户端用户代理。 格式为 {用户代理名}/{版本}。|
 | **requestResourceType** | **requestResourceType_s** | 所访问资源的类型。 此值可以是以下任意资源类型：数据库、容器、文档、附件、用户、权限、StoredProcedure、触发器、UserDefinedFunction 或产品/服务。 |

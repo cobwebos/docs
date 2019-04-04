@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: magoedte
-ms.openlocfilehash: 4e91e193b3980901e7778a8826989e729517a29a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: aa1bb62e762925dcb5a0ee37b71602094e768137
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481750"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905692"
 ---
 # <a name="application-insights-connector-management-solution-deprecated"></a>Application Insights 连接器管理解决方案（已弃用）
 
@@ -41,6 +41,9 @@ ms.locfileid: "58481750"
 - 将基础结构数据与应用程序数据相关联
 - 在日志搜索中使用透视图可视化应用程序数据
 - 在 Log Analytics 和 Azure 门户中通过 Log Analytics 数据透视 Application Insights 应用
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="connected-sources"></a>连接的源
 
@@ -94,11 +97,11 @@ ms.locfileid: "58481750"
 该仪表板包含下表中所示的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题时，可运行返回所有记录的日志搜索。
 
 
-| **列** | **说明** |
+| **列** | **描述** |
 | --- | --- |
-| 应用程序数 - 应用程序的数目 | 显示应用程序资源中的应用程序数目。 此外，还会列出应用程序名称，以及每个应用程序名称的应用程序记录数。 单击数字可以针对 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> 运行日志搜索 <br><br>  单击应用程序名称可以针对该应用程序运行日志搜索，显示每台主机的应用程序记录、按遥测类型列出的记录，以及按类型列出的所有数据（基于前一天）。 |
-| 数据量 – 发送数据的主机数 | 显示发送数据的计算机主机数。 此外，还列出计算机主机数以及每台主机的记录数。 单击数字可以针对 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> 运行日志搜索 <br><br> 单击计算机名称可以针对该主机运行日志搜索，显示每台主机的应用程序记录、按遥测类型列出的记录，以及按类型列出的所有数据（基于前一天）。 |
-| 可用性 – Web 测试结果 | 显示 Web 测试结果的圆环图，指示测试是通过还是失败。 单击该图表可以针对 <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> 运行日志搜索 <br><br> 结果显示所有测试的通过和失败结果数目。 它会显示最近一分钟产生了流量的所有 Web 应用。 单击应用程序名称可以查看显示已失败 Web 测试详细信息的日志搜索。 |
+| 应用程序数 - 应用程序的数目 | 显示应用程序资源中的应用程序数目。 此外，还会列出应用程序名称，以及每个应用程序名称的应用程序记录数。 单击要运行日志搜索的数字 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName</code> <br><br>  单击应用程序名称可以针对该应用程序运行日志搜索，显示每台主机的应用程序记录、按遥测类型列出的记录，以及按类型列出的所有数据（基于前一天）。 |
+| 数据量 – 发送数据的主机数 | 显示发送数据的计算机主机数。 此外，还列出计算机主机数以及每台主机的记录数。 单击要运行日志搜索的数字 <code>ApplicationInsights &#124; summarize AggregatedValue = sum(SampledCount) by Host</code> <br><br> 单击计算机名称可以针对该主机运行日志搜索，显示每台主机的应用程序记录、按遥测类型列出的记录，以及按类型列出的所有数据（基于前一天）。 |
+| 可用性 – Web 测试结果 | 显示 Web 测试结果的圆环图，指示测试是通过还是失败。 单击图表以运行日志搜索 <code>ApplicationInsights &#124; where TelemetryType == "Availability" &#124; summarize AggregatedValue = sum(SampledCount) by AvailabilityResult</code> <br><br> 结果显示所有测试的通过和失败结果数目。 它会显示最近一分钟产生了流量的所有 Web 应用。 单击应用程序名称可以查看显示已失败 Web 测试详细信息的日志搜索。 |
 | 服务器请求数 – 每小时请求数 | 显示各个应用程序每小时服务器请求数的折线图。 将鼠标悬停在图表中的某个线条上可以查看在特定的时间点，接收请求数最多的 3 个应用程序。 此外，还显示在选定时间段内，接收请求的应用程序列表以及请求数目。 <br><br>单击图形可以针对 <code>ApplicationInsights &#124; where TelemetryType == "Request" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> 运行日志搜索，显示各个应用程序每小时的服务器请求数的更详细折线图。 <br><br> 单击列表中的某个应用程序可以针对 <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> 运行日志搜索，显示请求列表、不同时间的请求数图表、请求持续时间以及请求响应代码列表。   |
 | 失败 – 每小时的失败请求数 | 显示每小时失败的应用程序请求数的折线图。 将鼠标悬停在该图表上可以查看在特定的时间点请求失败次数最多的 3 个应用程序。 此外，还显示应用程序列表以及每个应用程序的失败请求数目。 单击该图表可以针对 <code>ApplicationInsights &#124; where TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> 运行日志搜索，显示失败应用程序请求数的更详细折线图。 <br><br>单击列表中的某个项可以针对 <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Request" and iff(isnotnull(toint(RequestSuccess)), RequestSuccess == false, RequestSuccess == "false") == true</code> 运行日志搜索，显示失败的请求数、不同时间的失败请求数图表、请求持续时间以及失败请求的响应代码列表。 |
 | 异常 - 每小时异常数 | 显示每小时异常数的折线图。 将鼠标悬停在该图表上可以查看在特定的时间点发生异常次数最多的 3 个应用程序。 此外，还显示应用程序列表以及每个应用程序的异常数目。 单击该图表可以针对 <code>ApplicationInsights &#124; where TelemetryType == "Exception" &#124; summarize AggregatedValue = sum(SampledCount) by ApplicationName, bin(TimeGenerated, 1h)</code> 运行日志搜索，显示异常数的更详细折线图。 <br><br>单击列表中的某个项可以针对 <code>ApplicationInsights &#124; where ApplicationName == "yourapplicationname" and TelemetryType == "Exception"</code> 运行日志搜索，显示异常数列表、不同时间的异常数图表、失败的请求数，以及异常类型列表。  |
@@ -280,25 +283,25 @@ $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 
-Connect-AzureRmAccount
-Set-AzureRmContext -SubscriptionId $Subscription_app
-$AIApp = Get-AzureRmApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-Remove-AzureRmOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
+Connect-AzAccount
+Set-AzContext -SubscriptionId $Subscription_app
+$AIApp = Get-AzApplicationInsights -ResourceGroupName $ResourceGroup_app -Name $Application 
+Set-AzContext -SubscriptionId $Subscription_workspace
+Remove-AzOperationalInsightsDataSource -WorkspaceName $Workspace -ResourceGroupName $ResourceGroup_workspace -Name $AIApp.Id
 ```
 
 你可以使用以下可调用 REST API 调用的 PowerShell 脚本来检索应用程序列表。 
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 $Tenant = "TenantId"
 $Subscription_workspace = "Workspace Subscription Name"
 $ResourceGroup_workspace = "Workspace ResourceGroup"
 $Workspace = "Workspace Name"
 $AccessToken = "AAD Authentication Token" 
 
-Set-AzureRmContext -SubscriptionId $Subscription_workspace
-$LAWorkspace = Get-AzureRmOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
+Set-AzContext -SubscriptionId $Subscription_workspace
+$LAWorkspace = Get-AzOperationalInsightsWorkspace -ResourceGroupName $ResourceGroup_workspace -Name $Workspace
 
 $Headers = @{
     "Authorization" = "Bearer $($AccessToken)"

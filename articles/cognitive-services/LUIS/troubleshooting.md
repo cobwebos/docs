@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: aed7d4fedd4781eac8c127744e5fe93fb054b99d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 672c9d43007f954d870f8195bcad63d9cee69523
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369711"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894451"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>语言理解常见问题解答 (FAQ)
 
@@ -88,7 +88,7 @@ Cortana 预构建应用已于 2017 年弃用。 它们不再受支持。
 
 意外的查询预测结果基于已发布模型的状态。 若要更正模型，可能需要更改模型、进行训练，然后重新发布。 
 
-更正模型从[主动学习](luis-how-to-review-endoint-utt.md)开始。
+更正模型从[主动学习](luis-how-to-review-endpoint-utterances.md)开始。
 
 可以通过更新[应用程序版本设置 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) 来删除非确定性训练，以便使用所有训练数据。
 
@@ -240,7 +240,7 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 #### <a name="resolve-issue-in-luis"></a>在 LUIS 中解决问题
 从 [LUIS 终结点](luis-get-started-create-app.md#query-the-endpoint-with-a-different-utterance)传递相同的言语到 LUIS。 如果收到错误，请在 LUIS 中解决该问题直到不再返回错误。 常见错误包括：
 
-* `Out of call volume quota. Quota will be replenished in <time>.` - 此问题表明需要从创作密钥更改为[终结点密钥](luis-how-to-azure-subscription.md)，或者需要更改[服务层](luis-how-to-azure-subscription.md#change-pricing-tier)。 
+* `Out of call volume quota. Quota will be replenished in <time>.` -此问题指示需要更改从创作关键[终结点密钥](luis-how-to-azure-subscription.md)或者需要更改[服务层](luis-how-to-azure-subscription.md#change-pricing-tier)。 
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>在 Azure 机器人服务中解决问题
 
@@ -296,10 +296,10 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 此外还包括其他创作 [API 路由](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/authoring-routes.md)。
 
 视频：
-* [Build 2018 中的 Azure Friday：认知服务 - 语言 (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
-* [Build 2018 AI Show - What’s New with Language Understanding Service](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)（Build 2018 AI 演示 - 语言理解服务的新增功能）
-* [Build 2018 会议 - 机器人智能、语音功能和 NLU 最佳做法](https://channel9.msdn.com/events/Build/2018/BRK3208)
-* [Build 2018 - LUIS Updates](https://channel9.msdn.com/events/Build/2018/THR3118/player)（Build 2018 - LUIS 更新）
+* [Azure Friday 生成 2018:认知服务-语言 (LUIS)](https://channel9.msdn.com/Shows/Azure-Friday/At-Build-2018-Cognitive-Services-Language-LUIS/player)
+* [生成 2018 AI 显示-语言理解服务有哪些新增](https://channel9.msdn.com/Shows/AI-Show/Whats-New-with-Language-Understanding-Service-LUIS/player)
+* [生成 2018年会话的智能机器人应用程序智能、 语音功能和 NLU 最佳做法](https://channel9.msdn.com/events/Build/2018/BRK3208)
+* [生成 2018-LUIS 更新](https://channel9.msdn.com/events/Build/2018/THR3118/player)
 
 项目：
 * [Contoso 咖啡店机器人](https://github.com/botbuilderbuild2018/build2018demo)演示 - GitHub 上的源代码
@@ -307,5 +307,5 @@ Get-AzCognitiveServicesAccountUsage -ResourceGroupName <your-resource-group> -Na
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关 LUIS 的详细信息，请参阅以下资源：
-* [标记了 LUIS 的 Stack Overflow 问题](https://stackoverflow.com/questions/tagged/luis)
+* [标记使用 LUIS 的堆栈溢出问题](https://stackoverflow.com/questions/tagged/luis)
 * [MSDN 语言理解智能服务 (LUIS) 论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=LUIS)

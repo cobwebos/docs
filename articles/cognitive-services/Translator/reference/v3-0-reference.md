@@ -3,19 +3,19 @@ title: 文本翻译 API V3.0 参考
 titlesuffix: Azure Cognitive Services
 description: 文本翻译 API v3.0 参考文档。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 0260ecbf23e0240b836f6d6004959a9604085fc1
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 4a5bed67252c3b87233c8d2e677e3c620adb8a17
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194956"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918801"
 ---
 # <a name="translator-text-api-v30"></a>文本翻译 API v3.0
 
@@ -58,7 +58,7 @@ Microsoft Translator 位于多个数据中心位置之外。 目前位于 6 个 
 |标头|说明|
 |:----|:----|
 |Ocp-Apim-Subscription-Key|如果要传递密钥，请与认知服务订阅一起使用。<br/>该值是文本翻译 API 订阅的 Azure 密钥。|
-|授权|如果要传递身份验证令牌，请与认知服务订阅一起使用。<br/>该值是持有者令牌：`Bearer <token>`。|
+|授权|*使用认知服务订阅，如果要传递身份验证令牌。*<br/>该值是持有者令牌：`Bearer <token>`。|
 |Ocp-Apim-Subscription-Region|*使用认知服务多服务订阅，如果要传递多服务的机密密钥。*<br/>值是多服务订阅的区域。 不使用多服务订阅时，此值是可选的。|
 
 ###  <a name="secret-key"></a>密钥
@@ -110,9 +110,9 @@ Authorization: Bearer <Base64-access_token>
 
 标准错误响应是具有名为 `error` 的名称/值对的 JSON 对象。 该值也是具有以下属性的 JSON 对象：
 
-  * `code`：服务器定义的错误代码。
+  * `code`:服务器定义的错误代码。
 
-  * `message`：一个提供人类可读的错误表示形式的字符串。
+  * `message`:一个提供人类可读的错误表示形式的字符串。
 
 例如，拥有免费试用版订阅的客户会在免费配额用尽后收到以下错误：
 

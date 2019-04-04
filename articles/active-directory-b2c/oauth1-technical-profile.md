@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth1 技术配置文件 | Microsoft Docs
-description: 在 Azure Active Directory B2C 的自定义策略中定义 OAuth1 技术配置文件。
+title: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth1 技术配置文件 |Microsoft Docs
+description: 在 Azure Active Directory B2C 中的自定义策略中定义 OAuth1 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 08fb0baf85b09b4804c83617dbae9ae9c69f0224
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55162729"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915776"
 ---
-# <a name="define-a-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
+# <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -67,7 +67,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | ProviderName | 否 | 标识提供者的名称。 |
@@ -81,7 +81,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。   | 
 
@@ -93,7 +93,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 示例：
 
-- [使用自定义策略添加 Twitter 作为 OAuth1 标识提供者](active-directory-b2c-custom-setup-twitter-idp.md)
+- [添加 Twitter 作为 OAuth1 标识提供程序使用自定义策略](active-directory-b2c-custom-setup-twitter-idp.md)
 
 
 

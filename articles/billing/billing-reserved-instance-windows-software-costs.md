@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
-ms.openlocfilehash: d500e26f5701e59dacfd5f09f6eaf88c5ced74e6
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648514"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918716"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
 
-如果你对虚拟机预留实例没有 Azure 混合使用权益，则会针对以下部分中列出的软件计量向你收取费用。
+如果没有 Azure 混合权益保留的虚拟机实例上，你进行计费的下一节中列出的软件计量。
 
 ## <a name="windows-software-meters-not-included-in-reservation-cost"></a>预留成本中未包括的 Windows 软件计量
 
@@ -66,7 +66,7 @@ ms.locfileid: "58648514"
 
 ## <a name="rates-for-azure-meters"></a>Azure 计量的费率
 
-可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](https://msdn.microsoft.com/library/azure/mt219004)。
+可以通过 Azure RateCard API 来获取上述每个计量的成本。 有关如何获取 azure 计量的费率的信息，请参阅[获取 Azure 订阅中使用的资源的价格和元数据信息](/previous-versions/azure/reference/mt219004(v=azure.100))。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关 Azure 的保留项的详细信息，请参阅以下文章：
@@ -74,9 +74,9 @@ ms.locfileid: "58648514"
 - [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
-- [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
-- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [了解如何应用预订折扣](billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

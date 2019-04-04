@@ -14,17 +14,17 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
-ms.openlocfilehash: aa62db0948ffa036b37736477b872d694d14836b
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57762582"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917470"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
 
 ## <a name="overview"></a>概述
-本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](https://msdn.microsoft.com/library/azure/ee336279)、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
+本教程演示如何使用 ASP.NET MVC 前端创建多层.NET 应用程序，并将其部署到 [Azure 云服务](cloud-services-choose-me.md)。 应用程序使用 [Azure SQL 数据库](/previous-versions/azure/ee336279(v=azure.100))、[Azure Blob 服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/unstructured-blob-storage)和 [Azure 队列服务](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/queue-centric-work-pattern)。 可以从 MSDN 代码库 [下载 Visual Studio 项目](https://code.msdn.microsoft.com/Simple-Azure-Cloud-Service-e01df2e4)。
 
 本教程介绍如何在本地生成并运行应用程序、如何将其部署到 Azure 并在云中运行，以及如何从头构建。 可以从头构建并进行测试，之后根据喜好部署步骤。
 
@@ -81,7 +81,7 @@ ms.locfileid: "57762582"
 6. 如果使用 Visual Studio 2015 或更高版本，请在 ContosoAdsWeb 项目的应用程序 *Web.config* 文件以及 ContosoAdsCloudService 项目的 *ServiceConfiguration.Local.cscfg* 文件中，更改 SQL Server 连接字符串。 对于每种情况，请将“(localdb)\v11.0”更改为“(localdb)\MSSQLLocalDB”。
 7. 按 Ctrl+F5 运行应用程序。
 
-    在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。 计算仿真程序使用计算机资源，以模拟 web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](https://msdn.microsoft.com/library/hh510202.aspx) 数据库模拟 Azure 云存储。
+    在本地运行云服务项目时，Visual Studio 会自动调用 Azure *计算模拟器*和 Azure *存储模拟器*。 计算仿真程序使用计算机资源，以模拟 web 角色和辅助角色环境。 存储模拟器使用 [SQL Server Express LocalDB](/sql/database-engine/configure-windows/sql-server-2016-express-localdb) 数据库模拟 Azure 云存储。
 
     首次运行云服务项目时，模拟器会花费大约一分钟来启动。 模拟器完成启动后，默认浏览器中会打开应用程序的主页。
 
@@ -178,7 +178,7 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
 
     当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且需要为数据中心外的带宽付费。 数据中心内的带宽是免费的。
 
-    Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。 本教程不使用地缘组。 有关详细信息，请参阅 [如何在 Azure 中创建地缘组](https://msdn.microsoft.com/library/azure/gg715317.aspx)。
+    Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。 本教程不使用地缘组。 有关详细信息，请参阅 [如何在 Azure 中创建地缘组](/previous-versions/azure/reference/gg715317(v=azure.100))。
 7. 单击“创建”。
 
     ![新的存储帐户](./media/cloud-services-dotnet-get-started/newstorage.png)
@@ -549,7 +549,7 @@ queueClient.DefaultRequestOptions.RetryPolicy = new LinearRetry(TimeSpan.FromSec
 imagesQueue = queueClient.GetQueueReference("images");
 ```
 
-大部分控制器代码通常用于使用 DbContext 类的实体框架数据模型。 例外情况是 HttpPost `Create` 方法，它上传文件并将其保存在 Blob 存储中。 模型联编程序为该方法提供一个 [HttpPostedFileBase](https://msdn.microsoft.com/library/system.web.httppostedfilebase.aspx) 对象。
+大部分控制器代码通常用于使用 DbContext 类的实体框架数据模型。 例外情况是 HttpPost `Create` 方法，它上传文件并将其保存在 Blob 存储中。 模型联编程序为该方法提供一个 [HttpPostedFileBase](/dotnet/api/system.web.httppostedfilebase) 对象。
 
 ```csharp
 [HttpPost]
@@ -703,7 +703,7 @@ public override void Run()
 
 有时队列消息的内容会在处理过程中导致错误。 这称为 *有害消息*，并且如果只记录了一个错误并重启循环，则可能无休止地尝试处理该消息。  因此，捕获块包括 if 语句检查应用程序尝试处理当前消息的次数，如果已超过 5 次，将从队列中删除该消息。
 
-`ProcessQueueMessage` 。
+`ProcessQueueMessage` 找到队列消息时调用。
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)

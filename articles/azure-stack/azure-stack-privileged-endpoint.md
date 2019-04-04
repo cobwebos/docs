@@ -15,18 +15,18 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9eb2e8ddde13783eabf3d82173e6a2fa75ec2b06
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ef75b161bcdb9e1b9658612b783dff46d1fa2502
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082664"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484332"
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>使用 Azure Stack 中的特权终结点
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-Azure Stack 操作员应使用管理员门户、PowerShell 或 Azure 资源管理器 API 来完成大多数日常管理任务。 但是，对于非常规操作，需要使用特权终结点 (PEP)。 PEP 是预配置的远程 PowerShell 控制台，可提供恰到好处的功能来帮助执行所需的任务。 该终结点使用 [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview)，只公开一组受限的 cmdlet。 若要访问 PEP 并调用一组受限的 cmdlet，可以使用低特权帐户。 无需管理员帐户。 为了提高安全性，不允许使用脚本。
+作为 Azure Stack 操作员，你应当使用管理员门户、PowerShell 或 Azure 资源管理器 API 执行大多数日常管理任务。 但是，对于非常规操作，需要使用特权终结点 (PEP)。 PEP 是预配置的远程 PowerShell 控制台，可提供恰到好处的功能来帮助执行所需的任务。 该终结点使用 [PowerShell JEA (Just Enough Administration)](https://docs.microsoft.com/powershell/jea/overview)，只公开一组受限的 cmdlet。 若要访问 PEP 并调用一组受限的 cmdlet，可以使用低特权帐户。 无需管理员帐户。 为了提高安全性，不允许使用脚本。
 
 使用 PEP 可以执行如下所述的任务：
 
@@ -53,7 +53,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
     - 在集成系统中，从权限提升的 Windows PowerShell 会话运行以下命令，将 PEP 添加为硬件生命周期主机或特权访问工作站上运行的强化虚拟机的受信任主机。
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - 如果运行的是 ASDK，请登录到开发工具包主机。
@@ -61,7 +61,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
    - 在集成系统上：
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -70,7 +70,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
      `ComputerName` 参数可以是托管 PEP 的某个虚拟机的 IP 地址或 DNS 名称。 
    - 如果运行的是 ASDK：
      
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        Enter-PSSession -ComputerName azs-ercs01 `
@@ -113,7 +113,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
 例如，若要获取特定 cmdlet 的参数列表，需运行以下命令：
 
-```PowerShell
+```powershell
     Get-Command <cmdlet_name> -Syntax
 ```
 
@@ -125,7 +125,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 
     在集成系统中，从权限提升的 Windows PowerShell 会话运行以下命令，将 PEP 添加为硬件生命周期主机或特权访问工作站上运行的强化虚拟机的受信任主机。
 
-      ```PowerShell
+      ```powershell
         winrm s winrm/config/client '@{TrustedHosts="<IP Address of Privileged Endpoint>"}'
       ```
     - 如果运行的是 ASDK，请登录到开发工具包主机。
@@ -133,7 +133,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
 2. 在硬件生命周期主机或特权工作站上运行的强化虚拟机中，打开 Windows PowerShell 会话。 运行以下命令，在托管 PEP 的虚拟机上建立远程会话：
  
    - 在集成系统上：
-     ```PowerShell
+     ```powershell
        $cred = Get-Credential
 
        $session = New-PSSession -ComputerName <IP_address_of_ERCS> `
@@ -142,7 +142,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
      `ComputerName` 参数可以是托管 PEP 的某个虚拟机的 IP 地址或 DNS 名称。 
    - 如果运行的是 ASDK：
      
-     ```PowerShell
+     ```powershell
       $cred = Get-Credential
 
       $session = New-PSSession -ComputerName azs-ercs01 `
@@ -154,7 +154,7 @@ PEP 记录你在 PowerShell 会话中执行的每项操作（及其相应的输�
      - **密码**：输入安装 AzureStackAdmin 域管理员帐户期间提供的相同密码。
 
 3. 将 PEP 会话导入本地计算机
-    ```PowerShell 
+    ```powershell 
         Import-PSSession $session
     ```
 4. 现在，可以在本地 PowerShell 会话中，配合 PEP 的所有函数和 cmdlet 如常使用 Tab 键补全和执行脚本操作，而无需降低 Azure Stack 的安全级别。 请尽情享受其中的乐趣！

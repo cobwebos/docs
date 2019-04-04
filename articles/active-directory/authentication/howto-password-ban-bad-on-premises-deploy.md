@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3be702d1f75b0a96e22ea03602c924be580b0968
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: f1c24ec49652cfe9105aa66fd1d5e26c81afcd14
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499244"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904621"
 ---
 # <a name="deploy-azure-ad-password-protection"></a>部署 Azure AD 密码保护
 
@@ -37,6 +37,7 @@ ms.locfileid: "58499244"
 ## <a name="deployment-requirements"></a>部署要求
 
 * 获取 DC 代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 或更高版本的所有域控制器。 此要求并不表示，Active Directory 域或林还必须在 Windows Server 2012 域或林功能级别。 如中所述[设计原则](concept-password-ban-bad-on-premises.md#design-principles)，没有最小 DFL 或 FFL 所需的 DC 代理或代理软件运行。
+* 安装 DC 代理服务的所有计算机都必须安装了.NET 4.5。
 * 获取代理服务的 Azure AD 密码保护安装必须运行 Windows Server 2012 R2 或更高版本的所有计算机。
 * 将安装 Azure AD 密码保护代理服务的所有计算机都必须安装的.NET 4.7。
   应已完全更新的 Windows Server 上安装.NET 4.7。 如果这不是这种情况，下载并运行安装程序，请参阅[Windows.NET Framework 4.7 脱机安装程序](https://support.microsoft.com/en-us/help/3186497/the-net-framework-4-7-offline-installer-for-windows)。
@@ -44,7 +45,7 @@ ms.locfileid: "58499244"
 * 网络连接之间必须存在的每个域中至少一个域控制器和至少一台服务器承载密码保护代理服务。 此连接必须允许域控制器访问 RPC 终结点映射器端口 135 和代理服务上的 RPC 服务器端口。 默认情况下，RPC 服务器端口是动态的 RPC 端口，但可以配置[使用静态端口](#static)。
 * 承载代理服务的所有计算机必须都具有网络访问以下终结点：
 
-    |**终结点**|**用途**|
+    |**终结点**|**目的**|
     | --- | --- |
     |`https://login.microsoftonline.com`|身份验证请求|
     |`https://enterpriseregistration.windows.net`|Azure AD 密码保护功能|
@@ -91,7 +92,7 @@ ms.locfileid: "58499244"
 
    * 若要检查服务正在运行，请使用以下 PowerShell 命令：
 
-      `Get-Service AzureADPasswordProtectionProxy | fl`。
+      `Get-Service AzureADPasswordProtectionProxy | fl`.
 
      结果应显示**状态**为"Running"。
 
@@ -109,6 +110,7 @@ ms.locfileid: "58499244"
         ```powershell
         Register-AzureADPasswordProtectionProxy -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
+
         > [!NOTE]
         > 在 Server Core 操作系统，此模式下不起作用。 相反，使用以下身份验证模式之一。 此外，如果启用了 Internet Explorer 增强安全配置在此模式可能会失败。 解决方法是先禁用该配置，注册代理，然后重新启用它。
 
@@ -133,7 +135,6 @@ ms.locfileid: "58499244"
 
        当前不需要指定 *-ForestCredential*参数，保留供将来提供的功能。
 
-   
    针对密码保护代理服务的注册是必需的一次只能在服务的生命周期中。 之后，代理服务将自动执行任何其他必要的维护。
 
    > [!TIP]
@@ -149,6 +150,7 @@ ms.locfileid: "58499244"
         ```powershell
         Register-AzureADPasswordProtectionForest -AccountUpn 'yourglobaladmin@yourtenant.onmicrosoft.com'
         ```
+
         > [!NOTE]
         > 此模式下无法在 Server Core 操作系统上运行。 而是使用以下两种身份验证模式之一。 此外，如果启用了 Internet Explorer 增强安全配置在此模式可能会失败。 解决方法是先禁用该配置，注册代理，然后重新启用它。  
 
@@ -162,6 +164,7 @@ ms.locfileid: "58499244"
         然后，按照以下不同的设备上显示的说明完成身份验证。
 
      * 无提示（基于密码）身份验证模式：
+
         ```powershell
         $globalAdminCredentials = Get-Credential
         Register-AzureADPasswordProtectionForest -AzureCredential $globalAdminCredentials
@@ -174,7 +177,7 @@ ms.locfileid: "58499244"
 
    > [!NOTE]
    > 如果在环境中安装了多个代理服务器，它并不重要用于注册在林中的代理服务器。
-
+   >
    > [!TIP]
    > 可能在完成第一次为特定的 Azure 租户中运行此 cmdlet 之前有明显的延迟。 除非将报告失败，不必担心这种延迟。
 
@@ -220,7 +223,8 @@ ms.locfileid: "58499244"
 
 1. 可选：配置密码保护，以侦听特定端口的代理服务。
    * 在域控制器上的密码保护的 DC 代理软件通过 TCP 使用 RPC 与代理服务进行通信。 默认情况下，代理服务在任何可用的动态 RPC 终结点上进行侦听。 但您可以将服务配置为侦听特定 TCP 端口，如果这是必要由于网络拓扑或您的环境中的防火墙要求。
-      * <a id="static" /></a>若要配置静态端口下运行的服务，请使用`Set-AzureADPasswordProtectionProxyConfiguration`cmdlet。
+      * <a id="static" /></a>若要将服务配置为在静态端口下运行，请使用 `Set-AzureADPasswordProtectionProxyConfiguration` cmdlet。
+
          ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort <portnumber>
          ```
@@ -229,6 +233,7 @@ ms.locfileid: "58499244"
          > 必须停止并重启服务，才能让这些更改生效。
 
       * 若要配置动态端口下运行的服务，使用相同的过程，但设置*StaticPort*为零：
+
          ```powershell
          Set-AzureADPasswordProtectionProxyConfiguration –StaticPort 0
          ```

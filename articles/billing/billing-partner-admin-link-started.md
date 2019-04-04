@@ -11,16 +11,18 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 5a03805fc055583f1f965854d4da3ae6b0c90e20
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 9fb689a2a6e2c1c309d22836e88a63662fed9832
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444894"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904825"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
 
 作为合作伙伴，可以在客户互动中跟踪影响。 可以将合作伙伴 ID 链接到用于管理客户资源的帐户。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="get-access-from-your-customer"></a>从客户获取访问权限
 
@@ -57,9 +59,8 @@ ms.locfileid: "58444894"
 2. 使用用户帐户或服务主体登录到客户的租户。 有关详细信息，请参阅[使用 PowerShell 登录](https://docs.microsoft.com/powershell/azure/authenticate-azureps)。
  
    ```azurepowershell-interactive
-    C:\> Connect-AzureRmAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
+    C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX 
    ```
-
 
 3. 链接到新合作伙伴 ID。 合作伙伴 ID 是组织的 [Microsoft 合作伙伴网络](https://partner.microsoft.com/) ID。
 
@@ -125,15 +126,15 @@ C:\ az managementpartner delete --partner-id 12345
 
 合作伙伴组织中管理客户的 Azure 资源的任何用户都可将合作伙伴 ID 链接到帐户。
 
-**链接合作伙伴 ID 后，是否可以更改？**
+**它链接后，可以更改合作伙伴 ID？**
 
 是的。 可以更改、添加或删除已链接的合作伙伴 ID。
 
-**如果某个用户在多个客户租户中具有帐户怎么办？**
+**如果用户具有多个客户租户中的帐户？**
 
 合作伙伴 ID 与帐户之间的链接是针对每个客户租户执行的。 链接每个客户租户中的合作伙伴 ID。
 
-**其他合作伙伴或客户是否可以编辑或删除合作伙伴 ID 的链接？**
+**可以其他合作伙伴或客户编辑或删除合作伙伴 ID 的链接？**
 
 该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。 
 

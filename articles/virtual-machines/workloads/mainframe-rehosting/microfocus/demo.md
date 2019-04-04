@@ -1,21 +1,18 @@
 ---
-title: 为在 Azure 中的微焦点企业开发人员 4.0 设置 Micro 焦点 CICS BankDemo |Microsoft Docs
-description: 若要了解如何使用微焦点企业服务器和企业开发人员在 Azure 上运行 Micro 焦点 BankDemo 应用程序。
-services: virtual-machines-linux
-documentationcenter: ''
-author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 733649c2b7f27ec5e80cb77adba708a158fb2c22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+title: 为 Micro 焦点企业开发人员 4.0 Azure 虚拟机上设置 Micro 焦点 CICS BankDemo
+description: 运行 Micro 焦点 BankDemo 应用程序在 Azure 虚拟机 (Vm) 来了解如何使用微焦点企业服务器和企业开发人员。
+author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099461"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892477"
 ---
-# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-in-azure"></a>为在 Azure 中的微焦点企业开发人员 4.0 设置 Micro 焦点 CICS BankDemo
+# <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上微焦点企业开发人员 4.0 设置 Micro 焦点 CICS BankDemo
 
 如果设置了 Micro 焦点 Enterprise Server 4.0 和在 Azure 上的企业开发人员 4.0 时，你可以测试 IBM z/OS 的工作负荷的部署。 本文介绍如何设置 CICS BankDemo，附带了企业级开发版的示例应用程序。
 
@@ -23,7 +20,7 @@ CICs 代表客户信息控制系统，事务平台由许多联机大型机应用
 
 ## <a name="prerequisites"></a>必备组件
 
-- 使用的 VM[企业级开发版](set-up-micro-focus-on-azure.md)。 请记住企业开发人员有一个企业服务器上的完成实例用于开发和测试目的。 这是用于演示企业服务器的实例。
+- 使用的 VM[企业级开发版](set-up-micro-focus-azure.md)。 请记住企业开发人员有一个企业服务器上的完成实例用于开发和测试目的。 这是用于演示企业服务器的实例。
 
 - [SQL Server 2017 Express edition](https://www.microsoft.com/sql-server/sql-server-editions-express)。 下载并安装在企业开发人员 VM 上。 企业服务器必须具有数据库的 CICS 区域管理和 BankDemo 应用程序还使用名为 BANKDEMO 的 SQL Server 数据库。 此演示假设您为这两个数据库使用 SQL Server Express。 安装时，选择基本安装。
 
@@ -81,7 +78,7 @@ CICs 代表客户信息控制系统，事务平台由许多联机大型机应用
 
     - **NetTcpPortSharing**
     - **Net.Pipe Listener Adapter**
-    - **Net.tcp 侦听器适配器**
+    - **Net.tcp Listener Adapter**
 
 10. 若要配置 IIS 和 WAS 支持，从菜单中找到**Micro 焦点企业开发人员命令提示 （64 位）** 运行**管理员**。
 
@@ -269,9 +266,10 @@ CICs 代表客户信息控制系统，事务平台由许多联机大型机应用
 
 祝贺你！ 您当前正在运行的 CICS 应用程序在 Azure 中使用微焦点企业服务器。
 
-## <a name="learn-more"></a>了解详细信息
+## <a name="next-steps"></a>后续步骤
 
+- [Azure 上的 Docker 容器中运行企业服务器](run-enterprise-server-container.md)
 - [大型机迁移-门户](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [揭秘大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [有关将大型机迁移到 Azure 的介绍](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

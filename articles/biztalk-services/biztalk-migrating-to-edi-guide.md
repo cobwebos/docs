@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 5543fd5ee2b86a57414a384df9d808e87b297a5e
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: e6f0b11c99cbe8778b51024c418ffba70da61a77
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983024"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917373"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>将 BizTalk Server EDI 解决方案迁移到 BizTalk 服务：技术指南
 
@@ -32,7 +32,7 @@ ms.locfileid: "56983024"
 
 虽然部分客户将 BizTalk 服务视为新 EDI 解决方案的“新领域”平台，但许多客户拥有当前的 BizTalk Server EDI 解决方案，他们可能希望将其迁移到 Azure。 由于 BizTalk 服务 EDI 是基于与 BizTalk Server EDI 架构（贸易合作伙伴、实体、协议）相同的关键实体构建的，因此可将 BizTalk Server EDI 项目迁移到 BizTalk 服务。
 
-本文档讨论了将 BizTalk Server EDI 项目迁移到 BizTalk 服务所涉及的一些差异。 本文档假定了一种 BizTalk Server EDI 处理和贸易合作伙伴协议的应用知识。 有关 BizTalk Server EDI 的详细信息，请参阅[使用 BizTalk Server 进行贸易合作伙伴管理](https://msdn.microsoft.com/library/bb259970.aspx)。
+本文档讨论了将 BizTalk Server EDI 项目迁移到 BizTalk 服务所涉及的一些差异。 本文档假定了一种 BizTalk Server EDI 处理和贸易合作伙伴协议的应用知识。 有关 BizTalk Server EDI 的详细信息，请参阅[使用 BizTalk Server 进行贸易合作伙伴管理](/biztalk/core/trading-partner-management-using-biztalk-server)。
 
 ## <a name="which-version-of-biztalk-server-edi-artifacts-can-be-migrated-to-biztalk-services"></a>哪个版本的 BizTalk Server EDI 项目可迁移到 BizTalk 服务？
 BizTalk Server EDI 模块针对 BizTalk Server 2010 实现了显著增强，重新建模时纳入了合作伙伴、配置文件和协议。 BizTalk 服务利用同一模型整理贸易合作伙伴以及这些伙伴中的业务部门。 因此，可更为直接地将 EDI 项目从 BizTalk Server 2010 及更高版本迁移到 BizTalk 服务。 要迁移与 BizTalk Server 2010 之前的版本关联的 EDI 项目，必须先升级到 BizTalk Server 2010，然后将 EDI 项目迁移到 BizTalk 服务。
@@ -65,10 +65,10 @@ BizTalk 服务提供了一种易于使用的配置体验，可在不配置任何
 本文档进一步提供了概念性指导，介绍了如何将一些不同的 BizTalk Server EDI 项目迁移到 BizTalk 服务。
 
 ## <a name="sendreceive-ports-to-trading-partners"></a>到贸易合作伙伴的发送/接收端口
-在 BizTalk Server 中，设置接收位置和接收端口以便从贸易合作伙伴接收 EDI/XML 消息，设置发送端口以便向贸易合作伙伴发送 EDI/XML 消息。 然后，使用 BizTalk Server 管理控制台将这些端口绑定到贸易合作伙伴协议。 在 BizTalk 服务中，BizTalk 服务门户用于从贸易合作伙伴接收消息和向贸易合作伙伴发送消息的位置配置为贸易合作伙伴协议本身的一部分（作为“传输设置”的一部分）。  因此在 BizTalk 服务中，本身并不具有“发送端口”和“接收位置”的概念。 有关详细信息，请参阅[创建协议](https://msdn.microsoft.com/library/windowsazure/hh689908.aspx)。
+在 BizTalk Server 中，设置接收位置和接收端口以便从贸易合作伙伴接收 EDI/XML 消息，设置发送端口以便向贸易合作伙伴发送 EDI/XML 消息。 然后，使用 BizTalk Server 管理控制台将这些端口绑定到贸易合作伙伴协议。 在 BizTalk 服务中，BizTalk 服务门户用于从贸易合作伙伴接收消息和向贸易合作伙伴发送消息的位置配置为贸易合作伙伴协议本身的一部分（作为“传输设置”的一部分）。  因此在 BizTalk 服务中，本身并不具有“发送端口”和“接收位置”的概念。 有关详细信息，请参阅[创建协议](/previous-versions/azure/hh689908(v=azure.100))。
 
 ## <a name="pipelines-bridges"></a>管道（网桥）
-在 BizTalk Server EDI 中，管道是消息处理实体，它还可包括应用程序所需的用于特定处理功能的自定义逻辑。 对于 BizTalk 服务，其等效于 EDI 网桥。 然而在 BizTalk 服务中，EDI 网桥目前处于“关闭”状态。  也就是说，无法将自己的自定义活动添加到 EDI 网桥。 任何自定义处理都必须在应用程序中的 EDI 网桥外执行，在消息进入配置为交易合作伙伴协议的一部分的网桥之前或之后完成。 EAI 网桥可执行自定义处理。 如要进行自定义处理，可在 EDI 网桥处理消息之前或之后使用 EAI 网桥。 有关详细信息，请参阅[如何在桥中包含自定义代码](https://msdn.microsoft.com/library/azure/dn232389.aspx)。
+在 BizTalk Server EDI 中，管道是消息处理实体，它还可包括应用程序所需的用于特定处理功能的自定义逻辑。 对于 BizTalk 服务，其等效于 EDI 网桥。 然而在 BizTalk 服务中，EDI 网桥目前处于“关闭”状态。  也就是说，无法将自己的自定义活动添加到 EDI 网桥。 任何自定义处理都必须在应用程序中的 EDI 网桥外执行，在消息进入配置为交易合作伙伴协议的一部分的网桥之前或之后完成。 EAI 网桥可执行自定义处理。 如要进行自定义处理，可在 EDI 网桥处理消息之前或之后使用 EAI 网桥。 有关详细信息，请参阅[如何在桥中包含自定义代码](/previous-versions/azure/dn232389(v=azure.100))。
 
 可在贸易合作伙伴协议收到消息之前，或在协议处理消息并将其路由到服务总线终结点后，使用自定义代码和/或服务总线消息队列及主题插入发布/订阅流。
 
@@ -93,7 +93,7 @@ BizTalk 服务转换中的另一个新功能示例是**循环操作**。  很难
 再例如 **If-Then-Else** 表达式映射操作。  可在 BizTalk 映射器中执行 if-then-else 操作，但需要多个 functoid 才可完成看似简单的任务。
 
 ### <a name="migrating-biztalk-server-maps"></a>迁移 BizTalk Server 映射
-Microsoft Azure BizTalk 服务提供了将 BizTalk Server 映射迁移到 BizTalk 服务转换的工具。 **BTMMigrationTool** 随附**工具**包提供，可通过 [BizTalk 服务 SDK 下载](https://go.microsoft.com/fwlink/p/?LinkId=235057)获取。 有关该工具的详细信息，请参阅[将 BizTalk 映射转换为 BizTalk 服务转换](https://msdn.microsoft.com/library/windowsazure/hh949812.aspx)。
+Microsoft Azure BizTalk 服务提供了将 BizTalk Server 映射迁移到 BizTalk 服务转换的工具。 **BTMMigrationTool** 随附**工具**包提供，可通过 [BizTalk 服务 SDK 下载](https://go.microsoft.com/fwlink/p/?LinkId=235057)获取。 有关该工具的详细信息，请参阅[将 BizTalk 映射转换为 BizTalk 服务转换](/previous-versions/azure/hh949812(v=azure.100))。
 
 还可查看 Sandro Pereira (BizTalk MVP) 提供的示例，了解如何 [migrate BizTalk Server maps to BizTalk Services transforms](https://social.technet.microsoft.com/wiki/contents/articles/23220.migrating-biztalk-server-maps-to-windows-azure-biztalk-services-wabs-maps.aspx)（将 BizTalk Server 映射迁移到 BizTalk 服务转换）。
 
@@ -103,18 +103,18 @@ Microsoft Azure BizTalk 服务提供了将 BizTalk Server 映射迁移到 BizTal
 * [如何将 WCF 工作流服务与服务总线队列和主题集成](https://blogs.msdn.microsoft.com/paolos/2013/04/09/how-to-integrate-a-wcf-workflow-service-with-service-bus-queues-and-topics/)（Paolo Salvatori 编写）。 
 * [使用 Windows Workflow Foundation 和 Azure 构建应用会议](https://go.microsoft.com/fwlink/p/?LinkId=237314)（来自 Build 2011 大会）。
 * [*Windows Workflow Foundation 开发人员中心*](https://docs.microsoft.com/previous-versions/dotnet/articles/ee342461(v=msdn.10))。
-* [Windows Workflow Foundation 4 (WF4) 文档](https://msdn.microsoft.com/library/dd489441.aspx)（参见 MSDN）。
+* [Windows Workflow Foundation 4 (WF4) 文档](/dotnet/framework/windows-workflow-foundation/index)（参见 MSDN）。
 
 ## <a name="other-considerations"></a>其他注意事项
 以下是使用 BizTalk 服务时必须注意的一些事项。
 
 ### <a name="fallback-agreements"></a>后备协议
-BizTalk Server EDI 处理具有“后备协议”概念。  到目前为止，BizTalk 服务**尚无**后备协议概念。  若要了解如何在 BizTalk Server 中使用后备协议，请参阅 BizTalk 文档主题[协议在 EDI 处理中的角色](https://go.microsoft.com/fwlink/p/?LinkId=237317)和[配置全局或后备协议属性](https://msdn.microsoft.com/library/bb245981.aspx)。
+BizTalk Server EDI 处理具有“后备协议”概念。  到目前为止，BizTalk 服务**尚无**后备协议概念。  若要了解如何在 BizTalk Server 中使用后备协议，请参阅 BizTalk 文档主题[协议在 EDI 处理中的角色](https://go.microsoft.com/fwlink/p/?LinkId=237317)和[配置全局或后备协议属性](/biztalk/core/configuring-global-or-fallback-agreement-properties)。
 
 ### <a name="routing-to-multiple-destinations"></a>路由到多个目标
 BizTalk 服务桥在当前状态下不支持使用发布订阅模型将邮件路由到多个目标。 相反，可将消息从 BizTalk 服务桥路由到服务总线主题，该主题中随后可包含多个订阅以接收多个终结点处的消息。
 
 ## <a name="see-also"></a>另请参阅
-[Azure 中的 LOB 解决方案](https://azure.microsoft.com/solutions/lob-applications)
+[在 Azure 中的 LOB 解决方案](https://azure.microsoft.com/solutions/lob-applications)
 
 [EDImessageflow]: ./media/biztalk-migrating-to-edi-guide/IC719455.png

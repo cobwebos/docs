@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/17/2019
 ms.author: monhaber
-ms.openlocfilehash: 680e39b291cbaa1012cd972e188ab4e5f7aef694
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 27acda2496adea39321e498868aebcc2f824df3c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449005"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905284"
 ---
 # <a name="upgrade-to-security-centers-standard-tier-for-enhanced-security"></a>升级到安全中心的标准层以增强安全性
 Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供统一的安全管理和高级威胁防护功能。 它可以提供针对混合云工作负载的可见性和可控性、可减小在威胁下的曝光面的积极防御功能以及有助于随时响应快速演变的网络攻击的智能检测功能。
@@ -46,7 +46,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 4. 选择“标准层”以进行升级。
 5. 单击“ **保存**”。
 
-![安全中心定价](./media/security-center-pricing/get-standard.png)
+（图中的价格是例如目的。）![安全中心定价](./media/security-center-pricing/get-standard.png)
 
 > [!NOTE]
 > 若要启用安全中心的所有功能，必须将应用标准定价层为包含适用虚拟机的订阅。 为工作区配置定价层不会为 Azure 资源启用实时 VM 访问、自适应应用程序控件和网络检测功能。
@@ -65,7 +65,7 @@ Azure 安全中心为 Azure、本地和其他云中运行的工作负载提供�
 本文介绍了安全中心定价。 若要详细了解标准层增强的安全性和高级威胁防护功能，请参阅：
 
 - [高级威胁检测](security-center-threat-report.md)
-- [实时 VM 访问控制](security-center-just-in-time.md)
+- [恰时 VM 访问控制](security-center-just-in-time.md)
 
 <!--Image references-->
 [1]: ./media/security-center-pricing/get-standard.png

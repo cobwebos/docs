@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: cbrooks
 ms.subservice: common
-ms.openlocfilehash: c475fc4d958044413ae7566c027c0e796f1d699a
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 27ba1a1b5fbc0c7533da3634ec8a435468704c33
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486387"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906083"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>配置 Azure 存储防火墙和虚拟网络
 
@@ -241,7 +241,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 若要使用 IP 网络规则授予本地网络访问存储帐户的权限，则必须标识网络所用的面向 Internet 的 IP 地址。 若要获得帮助，请联系网络管理员。
 
-可以使用 [ExpressRoute](/azure/expressroute/expressroute-introduction) 将网络连接到 Azure 网络。 此时，每条线路都配有两个公共 IP 地址。 可在 Microsoft Edge 找到它们并使用 [Azure 公共对等互连](/azure/expressroute/expressroute-circuit-peerings)连接到 Azure 存储等 Microsoft 服务。 若要允许与 Azure 存储通信，请为线路的公共 IP 地址创建 IP 网络规则。 若要查找 ExpressRoute 线路的公共 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。
+如果是在本地使用 [ExpressRoute](/azure/expressroute/expressroute-introduction)，则在进行公共对等互连或 Microsoft 对等互连时，需标识所用的 NAT IP 地址。 进行公共对等互连时，每条 ExpressRoute 线路默认情况下会使用两个 NAT IP 地址。当流量进入 Microsoft Azure 网络主干时，会向 Azure 服务流量应用这些地址。 进行 Microsoft 对等互连时，所用 NAT IP 地址由客户或服务提供商提供。 若要允许访问服务资源，必须在资源 IP 防火墙设置中允许这些公共 IP 地址。 若要查找公共对等互连 ExpressRoute 线路 IP 地址，请通过 Azure 门户[开具 ExpressRoute 支持票证](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)。 详细了解[适用于 ExpressRoute 公共对等互连和 Microsoft 对等互连的 NAT](/azure/expressroute/expressroute-nat#nat-requirements-for-azure-public-peering)。
 
 ### <a name="managing-ip-network-rules"></a>管理 IP 网络规则
 
@@ -361,7 +361,7 @@ IP 网络规则仅适用于**公共 Internet** IP 地址。 IP 规则不允许�
 
 ### <a name="storage-analytics-data-access"></a>存储分析数据访问
 
-在某些情况下，需要从网络边界外访问读取诊断日志和指标。 可以授予网络规则例外来允许对存储帐户日志文件和/或指标表进行读取访问。 [详细了解如何使用存储分析。](/azure/storage/storage-analytics)
+在某些情况下，需要从网络边界外访问读取诊断日志和指标。 可以授予网络规则例外来允许对存储帐户日志文件和/或指标表进行读取访问。 [了解有关如何使用存储分析的详细信息。](/azure/storage/storage-analytics)
 
 ### <a name="managing-exceptions"></a>管理例外
 

@@ -6,12 +6,12 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
-ms.openlocfilehash: b1259d8f15ac719db833bef5ae37a7c2e665b2fb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480628"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905438"
 ---
 # <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理经典指标警报
 
@@ -89,7 +89,7 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 本部分展示了如何使用 PowerShell 命令创建、查看和管理经典指标警报。本文中的示例展示了如何将 Azure Monitor cmdlet 用于经典指标警报。
 
-1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.insights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
+1. 如果尚未安装，请在计算机上安装要运行的 PowerShell。 有关详细信息，请参阅[如何安装和配置 PowerShell](/powershell/azure/overview)。 还可以在 [Azure 监视器 (Insights) Cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights) 上查看 Azure 监视器 PowerShell cmdlet 的完整列表。
 
 2. 首先，登录到 Azure 订阅。
 

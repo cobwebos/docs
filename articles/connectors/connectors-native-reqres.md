@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 2479db2abcb578eb380655346582392770606b39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0f6ee8729cbed9cb8baf3668f7b1a332bc5eddc1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552174"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892817"
 ---
 # <a name="get-started-with-the-request-and-response-components"></a>请求和响应组件入门
 借助逻辑应用中的请求和响应组件，可以实时响应事件。
@@ -34,9 +34,10 @@ ms.locfileid: "57552174"
 若要开始在逻辑应用中使用请求和响应操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-the-http-request-trigger"></a>使用 HTTP 请求触发器
-触发器是可用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。
+触发器是可用于启动在逻辑应用中定义的工作流的事件。 
+[了解有关触发器的详细信息](../connectors/apis-list.md)。
 
-下面是如何在逻辑应用设计器中设置 HTTP 请求的示例序列。
+下面是如何设置 HTTP 请求在逻辑应用设计器中的示例序列。
 
 1. 在逻辑应用中添加触发器“请求 - 收到 HTTP 请求时”。 可以选择为请求正文提供 JSON 架构（通过使用 [JSONSchema.net](https://jsonschema.net) 之类的工具）。 这允许设计器为 HTTP 请求中的属性生成令牌。
 2. 添加另一个操作，以便保存逻辑应用。

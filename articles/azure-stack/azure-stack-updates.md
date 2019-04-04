@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 6cddb513249b424ef0df2ed2d1b5609de17c0744
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894030"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487509"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>在 Azure Stack 中管理更新概述
 
@@ -29,7 +29,7 @@ Azure Stack 集成系统的 Microsoft 更新包通常大约在每月的第四个
 
 每次发布的 Microsoft 软件更新均打包为单个更新包。 Azure Stack 操作员可以从管理员门户导入和安装这些更新包，并监视这些更新包的安装进度。 
 
-原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 虽然这些更新是由 OEM 硬件供应商作为单独的包提供的，但它们采用与来自 Microsoft 更新的更新包相同的方式进行导入、安装和管理。
+原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 虽然这些更新是由你的 OEM 硬件供应商作为单独的程序包提供的，但导入、安装和管理它们的方式与来自 Microsoft 更新程序包的更新程序包完全相同。
 
 若要保持系统受支持，必须始终将 Azure Stack 更新为特定版本级别。 请务必查看 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。
 
@@ -48,7 +48,7 @@ Azure Stack 包含协调 Microsoft 软件更新应用的更新资源提供程序
 
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
 
-  ```PowerShell
+  ```powershell
   Test-AzureStack -Group UpdateReadiness
   ``` 
 
@@ -56,7 +56,7 @@ Azure Stack 包含协调 Microsoft 软件更新应用的更新资源提供程序
 从管理员门户中管理更新。 Azure Stack 操作员可以使用仪表板中的“更新”磁贴执行以下操作：
 
 - 查看重要信息，例如当前版本。
-- 安装更新并监视进度。
+- 安装更新，并监视进度。
 - 查看以前安装的更新的更新历史记录。
  
 ## <a name="determine-the-current-version"></a>确定当前版本

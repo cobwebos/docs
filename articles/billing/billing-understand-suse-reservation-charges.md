@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
-ms.openlocfilehash: 04b456cbaeeb4ba285fd874f7b21abffcc714653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649250"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917781"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解如何为 Azure 应用 SUSE Linux Enterprise 软件预订计划折扣
 
@@ -38,7 +38,7 @@ ms.locfileid: "58649250"
 - 1 台具有 3 或 4 个 vCPU 的已部署 VM，
 - 或为具有 5 个或更多 vCPU 的 VM 的 0.77 或约 77%。
 
-对于 5 个或更多的 vCPU，此比率为 2.6。 因此，对于具有 5 个或更多 vCPU 的 VM 的 SUSE 预订仅涵盖了软件成本的一部分，即约 77%。
+对于 5 个或更多的 vCPU，此比率为 2.6。 因此对于 SUSE 具有 5 个或更多 Vcpu 的 VM 与预订涵盖软件成本，大约 77%具有唯一的部分。
 
 ## <a name="understand-suse-vm-usage-before-you-buy"></a>在购买前了解 SUSE VM 使用情况
 
@@ -52,7 +52,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID| 比率| 示例 VM 大小|
 | -------| ------------------------| --- |--- |
-|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|第|D2s_v3|
+|SLES for HPC 1-2 个 vCPU|e275a668-ce79-44e2-a659-f43443265e98|1|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|e531e1c0-09c9-4d83-b7d0-a2c6741faa22|2|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU|4edcd5a5-8510-49a8-a9fc-c9721f501913|2.6|D8s_v3|
 
@@ -64,7 +64,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- | --- | ------------------------| --- |
-|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|第|D2s_v3|
+|SLES for HPC 1-2 个 vCPU |8c94ad45-b93b-4772-aab1-ff92fcec6610|1|D2s_v3|
 |SLES for HPC 3-4 个 vCPU|4ed70d2d-e2bb-4dcd-b6fa-42da71861a1c|1.92308|D4s_v3|
 |SLES for HPC 5个及以上的 vCPU |907a85de-024f-4dd6-969c-347d47a1bdff|2.92308|D8s_v3|
 
@@ -78,7 +78,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- | --- |
-|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|第|D2s_v3|
+|SLES for SAP Priority 1-2 个 vCPU|497fe0b6-fa3c-4e3d-a66b-836097244142|1|D2s_v3|
 |SLES for SAP Priority 3-4 个 vCPU |847887de-68ce-4adc-8a33-7a3f4133312f|2|D4s_v3|
 |SLES for SAP Priority 5 个及以上的 vCPU |18ae79cd-dfce-48c9-897b-ebd3053c6058|2.41176|D8s_v3|
 
@@ -92,7 +92,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|第|B1ms|
+|SLES 1 vCPU|462cd632-ec6b-4663-b79f-39715f4e8b38|1|B1ms|
 |SLES 2-4 个 vCPU |924bee71-5eb8-424f-83ed-a58823c33908|2|D4s_v3|
 |SLES 2-4 个 vCPU |60b3ae9d-e77a-46b2-9cdf-92fa87407969|2|D4s_v3|
 |SLES 6 个 vCPU |e8862232-6131-4dbe-bde4-e2ae383afc6f|3||
@@ -118,7 +118,7 @@ Azure 门户商城名称：
 
 |SUSE VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|第|D2s_v3|
+|SLES 1-2 核 vCPU |4b2fecfc-b110-4312-8f9d-807db1cb79ae|1|D2s_v3|
 |SLES 3-4 核 vCPU |0c3ebb4c-db7d-4125-b45a-0534764d4bda|1.92308|D4s_v3|
 |SLES 5 个及以上的 vCPU |7b349b65-d906-42e5-833f-b2af38513468|2.30769| D8s_v3|
 
@@ -126,12 +126,12 @@ Azure 门户商城名称：
 
 若要了解有关预留的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
-- [通过 Azure 预订为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
+- [什么是 Azure 预留项？](billing-save-compute-costs-reservations.md)
+- [预付 Azure 预订 SUSE 软件计划](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
-- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [管理 Azure 保留项](billing-manage-reserved-vm-instance.md)
+- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

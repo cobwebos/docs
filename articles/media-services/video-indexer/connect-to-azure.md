@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: juliako
-ms.openlocfilehash: 55828ea2235e42920a5179846d81711b1ada5dc2
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: affa6f9a808543401b7d57812c7d2bef4324a83c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763667"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894200"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>创建连接到 Azure 的视频索引器帐户
 
@@ -60,7 +60,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
 1. 浏览到[视频索引器](https://www.videoindexer.ai/)网站并登录。
 
-2. 单击“连接到 Azure”按钮：
+2. 单击**创建新帐户**按钮：
 
     ![连接到 Azure](./media/create-account/connect-to-azure.png)
 
@@ -90,9 +90,7 @@ Azure AD 域中的用户和成员。 将视频索引器帐户连接到 Azure 时
 
     ![新帐户](./media/create-account/new-account.png)
 
-7. 浏览到新帐户：
-
-    ![视频索引器帐户](./media/create-account/vi-account.png)
+7. 浏览到新帐户
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>手动连接到 Azure（高级选项）
 

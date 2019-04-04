@@ -1,6 +1,6 @@
 ---
-title: 排查 Kubernetes 部署到 Azure Stack |Microsoft Docs
-description: 了解如何排查 Kubernetes 部署到 Azure Stack。
+title: Azure Stack 上的 Kubernetes 部署故障排除 |Microsoft Docs
+description: 了解如何排查 Azure Stack 上的 Kubernetes 部署。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,30 +11,30 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.author: mabrigg
-ms.date: 03/20/2019
+ms.date: 04/02/2019
 ms.reviewer: waltero
 ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: 9af4b7a622bfb47d44c3da0edcece8c9528b08c4
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 2a9eccfa109292b7d142092f69f4a664b0ff8f20
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361534"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878122"
 ---
-# <a name="troubleshoot-your-kubernetes-deployment-to-azure-stack"></a>排查 Kubernetes 部署到 Azure Stack
+# <a name="troubleshoot-kubernetes-deployment-to-azure-stack"></a>Kubernetes 部署到 Azure Stack 故障排除
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
 > Azure Stack 上的 Kubernetes 现为预览版。 在预览目前不支持 azure Stack 离线的场景中。
 
 以下文章讨论了如何排查 Kubernetes 群集问题。 可以按部署所需的元素查看部署警报以及部署的状态。 可能需要从 Azure Stack 或托管 Kubernetes 的 Linux VM 收集部署日志。 此外，可能还需要与 Azure Stack 管理员联系，以从管理终结点检索日志。
 
-## <a name="overview-of-deployment"></a>部署概述
+## <a name="overview-of-kubernetes-deployment"></a>Kubernetes 部署概述
 
 开始排查群集问题之前，可能需要查看 Azure Stack Kubernetes 群集部署过程。 该部署使用 Azure 资源管理器解决方案模板来为群集创建 VM 并安装 ACS 引擎。
 
-### <a name="deployment-workflow"></a>部署工作流
+### <a name="kubernetes-deployment-workflow"></a>Kubernetes 部署工作流
 
 下图显示了用于部署群集的一般过程。
 
@@ -85,7 +85,7 @@ ms.locfileid: "58361534"
 
 可以在支持 Kubernetes 群集的 VM 上收集日志。 还可以查看部署日志。 可能还需要与 Azure Stack 管理员联系，以便验证你需要使用的 Azure Stack 版本并从与部署相关的 Azure Stack 获取日志。
 
-1. 从 Kubernetes 群集中的主节点查看[部署状态](#review-deployment-status)并[检索日志](#get-logs-from-a-vm)。
+1. 审阅[部署状态](#review-deployment-status)和从主节点在 Kubernetes 群集中检索日志。
 2. 确保使用最新版本的 Azure Stack。 如果不确定使用的是哪个版本，请与 Azure Stack 管理员联系。
 3.  查看 VM 创建文件。 可能遇到了以下问题：  
     - 公钥可能无效。 查看创建的密钥。  
@@ -170,6 +170,6 @@ ms.locfileid: "58361534"
 
 [将 Kubernetes 部署到 Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)
 
-[将 Kubernetes 群集添加到市场（面向 Azure Stack 操作员）](../azure-stack-solution-template-kubernetes-cluster-add.md)
+[（适用于 Azure Stack 操作员） 添加到 Marketplace 的 Kubernetes 群集](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
-[在 Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

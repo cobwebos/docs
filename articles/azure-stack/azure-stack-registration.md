@@ -16,16 +16,16 @@ ms.date: 03/21/2019
 ms.author: jeffgilb
 ms.reviewer: brbartle
 ms.lastreviewed: 03/04/2019
-ms.openlocfilehash: ab5679f374753d6620b6a0eccca12ac9f162f199
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 70408f11c8656fb62c8613777d1837d934f67074
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58337919"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487560"
 ---
 # <a name="register-azure-stack-with-azure"></a>将 Azure Stack 注册到 Azure
 
-将 Azure Stack 注册到 Azure 即可从 Azure 下载市场项，并设置向 Microsoft 报告商业数据的功能。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的 Azure 计费订阅 ID 下查看它。
+将 Azure Stack 注册到 Azure 允许从 Azure 下载市场项并设置报告回 Microsoft 的商业数据。 注册 Azure Stack 之后，使用情况会报告给 Azure 商业组件，然后你就可以在用于注册的 Azure 计费订阅 ID 下查看它。
 
 本文中的信息介绍了向 Azure 注册 Azure Stack 集成系统。 有关向 Azure 注册 ASDK 的信息，请参阅 ASDK 文档中的 [Azure Stack 注册](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-register)。
 
@@ -70,7 +70,7 @@ ms.locfileid: "58337919"
 
 若要成功注册 Azure Stack，必须将 PowerShell 语言模式设置为 **FullLanguageMode**。  若要验证当前的语言模式是否设置为 Full，请打开权限提升的 PowerShell 窗口，并运行以下 PowerShell cmdlet：
 
-```PowerShell  
+```powershell  
 $ExecutionContext.SessionState.LanguageMode
 ```
 
@@ -127,7 +127,7 @@ Run: Get-AzureStackStampInformation
 
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
-   ```PowerShell
+   ```powershell
    Add-AzureRmAccount -EnvironmentName "<environment name>"
    ```
 
@@ -137,25 +137,25 @@ Run: Get-AzureStackStampInformation
 
 3. 如果有多个订阅，请运行以下命令，选择要使用的那个订阅：  
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
 4. 运行以下命令，在 Azure 订阅中注册 Azure Stack 资源提供程序：
 
-   ```PowerShell  
+   ```powershell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
 5. 以管理员身份启动 PowerShell ISE，并导航到下载 Azure Stack 工具时所创建的 **AzureStack-Tools-master** 目录中的 **Registration** 文件夹。 使用 PowerShell 导入 **RegisterWithAzure.psm1** 模块：
 
-   ```PowerShell  
+   ```powershell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
 6. 接下来，在同一个 PowerShell 会话中，确保已登录到正确的 Azure PowerShell 上下文。 这是前面在注册 Azure Stack 资源提供程序时所用的 Azure 帐户。 要运行的 Powershell：
 
-   ```PowerShell  
+   ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
@@ -165,7 +165,7 @@ Run: Get-AzureStackStampInformation
 
 7. 在同一个 PowerShell 会话中运行 **Set-AzsRegistration** cmdlet。 要运行的 PowerShell：  
 
-   ```PowerShell  
+   ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
    $RegistrationName = "<unique-registration-name>"
    Set-AzsRegistration `
@@ -191,7 +191,7 @@ Run: Get-AzureStackStampInformation
 
 2. 添加用于注册 Azure Stack 的 Azure 帐户。 若要添加该帐户，请运行 **Add-AzureRmAccount** cmdlet。 系统会提示输入 Azure 帐户凭据。可能必须使用双重身份验证，具体取决于帐户的配置。
 
-   ```PowerShell  
+   ```powershell  
    Connect-AzureRmAccount -Environment "<environment name>"
    ```
 
@@ -201,19 +201,19 @@ Run: Get-AzureStackStampInformation
 
 3. 如果有多个订阅，请运行以下命令，选择要使用的那个订阅：  
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    ```
 
 4. 运行以下命令，在 Azure 订阅中注册 Azure Stack 资源提供程序：
 
-   ```PowerShell  
+   ```powershell  
    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
    ```
 
 5. 以管理员身份启动 PowerShell ISE，并导航到下载 Azure Stack 工具时所创建的 **AzureStack-Tools-master** 目录中的 **Registration** 文件夹。 使用 PowerShell 导入 **RegisterWithAzure.psm1** 模块：
 
-   ```PowerShell  
+   ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
    $RegistrationName = "<unique-registration-name>"
    Set-AzsRegistration `
@@ -236,7 +236,7 @@ Run: Get-AzureStackStampInformation
 
 1. 以管理员身份启动 PowerShell ISE，并导航到下载 Azure Stack 工具时所创建的 **AzureStack-Tools-master** 目录中的 **Registration** 文件夹。 导入 **RegisterWithAzure.psm1** 模块：  
 
-   ```PowerShell  
+   ```powershell  
    Import-Module .\RegisterWithAzure.psm1
    ```
 
@@ -257,7 +257,7 @@ Run: Get-AzureStackStampInformation
 
 在连接到 Internet 的计算机上，执行相同的步骤以导入 RegisterWithAzure.psm1 模块，并登录到正确的 Azure Powershell 上下文。 然后调用 Register-AzsEnvironment。 指定可注册到 Azure 的注册令牌。 如果使用同一 Azure 订阅 ID 注册多个 Azure Stack 实例，请指定唯一的注册名称。 运行以下 cmdlet：
 
-  ```PowerShell  
+  ```powershell  
   $RegistrationToken = "<Your Registration Token>"
   $RegistrationName = "<unique-registration-name>"
   Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
@@ -265,7 +265,7 @@ Run: Get-AzureStackStampInformation
 
 （可选）可以使用 Get-Content cmdlet，使之指向包含注册令牌的文件：
 
-  ```PowerShell  
+  ```powershell  
   $RegistrationToken = Get-Content -Path '<Path>\<Registration Token File>'
   Register-AzsEnvironment -RegistrationToken $RegistrationToken -RegistrationName $RegistrationName
   ```
@@ -347,7 +347,7 @@ Run: Get-AzureStackStampInformation
 
 若要更改使用的订阅，必须先运行 **Remove-AzsRegistration** cmdlet，然后确保已登录到正确的 Azure PowerShell 上下文，最后使用任何已更改的参数（包括\<计费模型\>）来运行 **Set-AzsRegistration**：
 
-  ```PowerShell  
+  ```powershell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
@@ -357,7 +357,7 @@ Run: Get-AzureStackStampInformation
 
 若要更改安装的计费模型或功能提供方式，可以调用注册函数来设置新值。 不需要先删除当前注册：
 
-  ```PowerShell  
+  ```powershell  
   Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
@@ -405,7 +405,7 @@ Run: Get-AzureStackStampInformation
 
 #### <a name="with-a-connected-azure-stack"></a>使用连接的 Azure Stack
 
-   ```PowerShell  
+   ```powershell  
    $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
    $RegistrationName = "<unique-registration-name>"
    Set-AzsRegistration `
@@ -443,7 +443,7 @@ Run: Get-AzureStackStampInformation
 - 任何类型的全球 Azure 订阅。
 - 此外还必须在登录到 Azure PowerShell 时，使用其身份为该订阅的所有者或参与者的帐户。
 
-```PowerShell
+```powershell
 Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String> [[-AzureContext]
     <PSObject>] [[-ResourceGroupName] <String>] [[-ResourceGroupLocation] <String>] [[-BillingModel] <String>]
     [-MarketplaceSyndicationEnabled] [-UsageReportingEnabled] [[-AgreementNumber] <String>] [[-RegistrationName]
@@ -467,7 +467,7 @@ Set-AzsRegistration [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedE
 
 Get-AzsRegistrationToken 根据输入参数生成注册令牌。
 
-```PowerShell  
+```powershell  
 Get-AzsRegistrationToken [-PrivilegedEndpointCredential] <PSCredential> [-PrivilegedEndpoint] <String>
     [-BillingModel] <String> [[-TokenOutputFilePath] <String>] [-UsageReportingEnabled] [[-AgreementNumber] <String>]
     [<CommonParameters>]

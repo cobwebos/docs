@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 68e8bfa16c56b8c864ac99cdf6c19243bc7e881c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8cffcc938a247a2b08ff53b128560e1ab5e1653a
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101867"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499771"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>为 MySQL 资源提供程序添加托管服务器
 
@@ -90,16 +90,19 @@ ms.locfileid: "58101867"
 
 无法将 SKU 分配到特定的用户或组。
 
-SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
+若要编辑某个 SKU，请转到“所有服务” > “MySQL 适配器” > “SKU”。 选择要修改的 SKU，进行任何必要的更改，然后单击“保存”以保存更改。 
 
-若要编辑某个 SKU，请转到“所有服务” > “MySQL 适配器” > “SKU”。 选择要修改的 SKU，进行任何必要的更改，然后单击“保存”以保存更改。 若要删除不再需要的 SKU，请转到“所有服务” > “MySQL 适配器” > “SKU”。 右键单击 SKU 名称，然后选择“删除”将其删除。
+若要删除不再需要的 SKU，请转到“所有服务” > “MySQL 适配器” > “SKU”。 右键单击 SKU 名称，然后选择“删除”将其删除。
 
-> [!TIP]
-> 可以在同一位置中编辑或删除 MySQL 资源提供程序配额。
+> [!IMPORTANT]
+> 它可能需要一小时新 Sku，以便在用户门户中提供的时间。
 
 ## <a name="make-mysql-database-servers-available-to-your-users"></a>将 MySQL 数据库服务器提供给用户使用
 
 创建计划和套餐，使用户能够使用 MySQL 数据库服务器。 将 Microsoft.MySqlAdapter 服务添加到计划，并创建新配额。 MySQL 不允许限制数据库的大小。
+
+> [!IMPORTANT]
+> 可能需要新的配额，可在用户门户中或之前已更改的配额强制执行最多两个小时。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 01/22/2019
 ms.author: mabrigg
 ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: 4fb2a398baa306cf9303284526bb43cd7f778441
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: a66217641c833061d4626b7d393fd3cdd0fd56cc
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734619"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483593"
 ---
 # <a name="replace-a-physical-disk-in-azure-stack"></a>更换 Azure Stack 中的物理磁盘
 
@@ -55,20 +55,20 @@ ms.locfileid: "56734619"
  更换磁盘后，可以使用特权终结点监视虚拟磁盘运行状况和修复作业进度。 从任何可以通过网络连接到特权终结点的计算机，按照下列步骤进行操作。
 
 1. 打开 Windows PowerShell 会话并连接到特权终结点。
-    ```PowerShell
+    ```powershell
         $cred = Get-Credential
         Enter-PSSession -ComputerName <IP_address_of_ERCS>`
           -ConfigurationName PrivilegedEndpoint -Credential $cred
     ``` 
   
 2. 运行以下命令以查看虚拟磁盘运行状况：
-    ```PowerShell
+    ```powershell
         Get-VirtualDisk -CimSession s-cluster
     ```
    ![Get-VirtualDisk 命令的 Powershell 输出](media/azure-stack-replace-disk/GetVirtualDiskOutput.png)
 
 3. 运行以下命令以查看当前的存储作业状态：
-    ```PowerShell
+    ```powershell
         Get-VirtualDisk -CimSession s-cluster | Get-StorageJob
     ```
       ![Get-StorageJob 命令的 Powershell 输出](media/azure-stack-replace-disk/GetStorageJobOutput.png)
@@ -76,6 +76,6 @@ ms.locfileid: "56734619"
 ## <a name="troubleshoot-virtual-disk-repair"></a>针对虚拟磁盘修复问题进行故障排除
 
 如果虚拟磁盘修复作业出现停滞，请运行以下命令来重新启动作业：
-  ```PowerShell
+  ```powershell
         Get-VirtualDisk -CimSession s-cluster | Repair-VirtualDisk
   ``` 

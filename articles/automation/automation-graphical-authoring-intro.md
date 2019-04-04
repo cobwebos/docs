@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6d637436721ff464f58e41069bb00746fcd82410
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.openlocfilehash: ae732ab5c73dbec4a2aef6521b9edb490079112e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54427230"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918138"
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure 自动化中的图形创作
 
@@ -36,7 +36,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 ### <a name="canvas"></a>画布
 
-画布是设计 Runbook 的地方。 可以将库控件中节点的活动添加到 Runbook，并将其通过链接进行连接，以便定义 Runbook 的逻辑。
+画布是设计 Runbook 的地方。 用户可以将库控件中节点的活动添加到 Runbook，并将其通过链接进行连接，以便定义 Runbook 的逻辑。
 
 可以使用画布底部的控件来放大和缩小。
 
@@ -44,11 +44,11 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 库控件是你选择要添加到 Runbook 的[活动](#activities)的地方。 可以将活动添加到画布，再将它们连接到其他活动。 它包括下表中描述的四个部分：
 
-| 部分 | 说明 |
+| 部分 | 描述 |
 |:--- |:--- |
 | Cmdlet |包括可以在 Runbook 中使用的所有 cmdlet。 Cmdlet 按模块组织。 所有安装在自动化帐户中的模块都可用。 |
 | Runbook |包括你自动化帐户中的 Runbook。 这些 Runbook 可以添加到画布中用作子 Runbook。 仅显示核心类型与所编辑 Runbook 相同的 Runbook；对于图形 Runbook，仅显示基于 PowerShell 的 Runbook，而对于图形 PowerShell 工作流 Runbook，则仅显示基于 PowerShell 工作流的 Runbook。 |
-| 资产 |包括自动化帐户中能够在 Runbook 中使用的[自动化资产](https://msdn.microsoft.com/library/dn939988.aspx)。 将资产添加到 Runbook 中时，它会添加一个可以获取所选资产的工作流活动。 在使用变量资产的情况下，可以选择是否添加用于获取变量或设置变量的活动。 |
+| 资产 |包括自动化帐户中能够在 Runbook 中使用的[自动化资产](/previous-versions/azure/dn939988(v=azure.100))。 将资产添加到 Runbook 中时，它会添加一个可以获取所选资产的工作流活动。 在使用变量资产的情况下，可以选择是否添加用于获取变量或设置变量的活动。 |
 | Runbook 控件 |包括可以在当前 Runbook 中使用的 Runbook 控件活动。 *交接点*采用多个输入，并会等到所有输入完成后才会继续执行工作流。 *Code* 活动运行一行或多行 PowerShell 或 PowerShell 工作流代码，具体取决于图形 Runbook 类型。 可以将此活动用于自定义代码或通过其他活动难以实现的功能。 |
 
 ### <a name="configuration-control"></a>配置控件
@@ -57,7 +57,7 @@ Azure 自动化中的所有 Runbook 都是 Windows PowerShell 工作流。 图�
 
 ### <a name="test-control"></a>测试控件
 
-首次启动图形编辑器时，不显示测试控件。 它会在以交互方式[测试图形 Runbook](#graphical-runbook-procedures) 时打开。
+首次启动图形编辑器时，不显示测试控件。 它会在以交互方式 [测试图形 Runbook](#graphical-runbook-procedures)时打开。
 
 ## <a name="graphical-runbook-procedures"></a>图形 Runbook 过程
 
@@ -101,7 +101,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 参数集用于定义会接受特定 cmdlet 的值的必需参数和可选参数。 所有 cmdlet 都有至少一个参数集，一些 cmdlet 会有多个参数集。 如果某个 cmdlet 有多个参数集，则必须选择要使用的那个参数集，才能配置参数。 能够配置的参数将取决于所选择的参数集。 可以更改某个活动使用的参数集，只需选中“参数集”，然后选择另一参数集即可。 在这种情况下，配置的任何参数值都将丢失。
 
-在下面的示例中，Get-AzureRmVM cmdlet 有三个参数集。 在选择其中一个参数集之前，将无法配置参数值。 ListVirtualMachineInResourceGroupParamSet 参数集用于返回资源组中的所有虚拟机，有一个可选参数。 **GetVirtualMachineInResourceGroupParamSet** 用于指定要返回的虚拟机，有两个必需参数和一个可选参数。
+在下面的示例中，Get-AzureRmVM cmdlet 有三个参数集。 在选择其中一个参数集之前，你无法配置参数值。 ListVirtualMachineInResourceGroupParamSet 参数集用于返回资源组中的所有虚拟机，有一个可选参数。 **GetVirtualMachineInResourceGroupParamSet** 用于指定要返回的虚拟机，有两个必需参数和一个可选参数。
 
 ![参数集](media/automation-graphical-authoring-intro/get-azurermvm-parameter-sets.png)
 
@@ -109,7 +109,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 指定某个参数的值时，可以选择一个数据源，以便确定如何指定该值。 可用于特定参数的数据源将取决于该参数的有效值。 例如，对于不允许 Null 值的参数，Null 不会是可用选项。
 
-| 数据源 | 说明 |
+| 数据源 | 描述 |
 |:--- |:--- |
 | 常量值 |键入参数的值。 此参数仅适用于以下数据类型：Int32、Int64、String、Boolean、DateTime、Switch。 |
 | 活动输出 |工作流中某个位于当前活动前面的活动的输出。 将列出所有有效的活动。 只选择要将其输出用于参数值的活动。 如果该活动输出的对象具有多个属性，可以在选择活动之后键入属性的名称。 |
@@ -139,7 +139,7 @@ Azure 自动化中的每个 Runbook 都有草稿版和已发布版。 只有已�
 
 重试条件可以使用名为 $RetryData 的变量提供活动重试相关信息的访问权限。 此变量具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | NumberOfAttempts |活动已运行的次数。 |
 | 输出 |活动上次运行的输出。 |
@@ -163,7 +163,7 @@ $RetryData.Output.Count -ge 1
 $RetryData.TotalDuration.TotalMinutes -ge 2
 ```
 
-配置活动的重试条件以后，该活动将包含两个用于提醒可视提示。 一个提示出现在活动中，另一个提示在查看活动的配置时出现。
+配置活动的重试条件以后，该活动包含两个用于提醒你的可视提示。 一个提示出现在活动中，另一个提示在查看活动的配置时出现。
 
 ![活动重试可视指示符](media/automation-graphical-authoring-intro/runbook-activity-retry-visual-cue.png)
 
@@ -191,7 +191,7 @@ $DateTimeStart
 
 选择可在“配置”边栏选项卡中配置其属性的链接。 这种情况下，会包括下表中描述的链接类型。
 
-| 链接类型 | 说明 |
+| 链接类型 | 描述 |
 |:--- |:--- |
 | 管道 |对于源活动中的每个对象输出，目标活动都将运行一次。 如果源活动没有生成任何输出，目标活动将不会运行。 源活动的输出可用作对象。 |
 | 序列 |目标活动只运行一次。 它会接收来自源活动的对象数组。 源活动的输出可用作对象数组。 |
@@ -322,12 +322,12 @@ Runbook 可能会要求用户提供输入（如果该用户是通过 Azure 门�
 
 按下表中的属性定义每个输入参数：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | 名称 |参数的唯一名称。 此项只能包含字母数字字符，不能包含空格。 |
-| 说明 |针对输入参数的可选说明。 |
-| 类型 |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
-| 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，将无法启动 Runbook。 |
+| 描述 |针对输入参数的可选说明。 |
+| Type |参数值应有的数据类型。 提示输入时，Azure 门户将针对每个参数的数据类型提供相应的控件。 |
+| 必需 |指定是否必须为该参数提供值。 如果没有为每个没有定义默认值的必需参数提供值，则无法启动 Runbook。 |
 | 默认值 |指定在未提供值的情况下，对参数使用什么值。 此项可以为 Null 或特定值。 |
 
 ### <a name="runbook-output"></a>Runbook 输出
@@ -422,7 +422,7 @@ $ActivityOutput["Get-AzureVM"].PowerState –ne "Stopped"
 @{ <name> = <value>; [<name> = <value> ] ...}
 ```
 
-例如，以下表达式创建要在活动参数的数据源中使用的哈希表，此哈希表的值用于 Internet 搜索。
+例如，以下表达式创建要在活动参数的数据源中使用的哈希表，此哈希表的值会用于 Internet 搜索。
 
 ```powershell-interactive
 $query = "Azure Automation"

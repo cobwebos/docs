@@ -10,30 +10,30 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/16/2016
 ms.author: garye
-ms.openlocfilehash: d055b6775c9c788ecbb3a868055fa2402a537a83
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.openlocfilehash: 6b80e73dec7d0e03823a8aa2867ee91bfb68f560
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54231166"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893626"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-demand-forecast-in-energy"></a>用于能源需求预测的 Cortana Intelligence 解决方案模板技术指南
-## <a name="overview"></a>**概述**
+## **<a name="overview"></a>概述**
 解决方案模板可加速在 Cortana Intelligence Suite 上构建 E2E 演示的过程。 已部署的模板使用所需的 Cortana Intelligence 组件预配订阅，并在两者之间建立关系。 它还在数据管道中植入从数据模拟应用程序生成的示例数据。 从提供的链接下载数据模拟器并将它安装在本地计算机上；有关使用模拟器的说明，请参阅 readme.txt 文件。 模拟器生成的数据将生成数据管道，并开始生成机器学习预测，然后可在 Power BI 仪表板上将其可视化。
 
 可在[此处](https://gallery.cortanaintelligence.com/SolutionTemplate/Demand-Forecasting-for-Energy-1)找到解决方案模板
 
 部署过程会逐步引导用户完成设置解决方案凭据的多个步骤。 请务必记下这些凭据，例如在部署期间提供的解决方案名称、用户名和密码。
 
-本文档旨在说明参考体系结构以及随此解决方案模板预配在订阅中的不同组件。 本文档还将演示如何使用自己的实际数据来替换示例数据，以便看到自己的数据的见解/预测。 此外，本文档将说明如果想要以自己的数据自定义解决方案，需要修改的解决方案模板部分。 最后提供有关构建此解决方案模板的 Power BI 仪表板的说明。
+本文档旨在说明参考体系结构以及随此解决方案模板预配在订阅中的不同组件。 本文档还会讨论如何使用自己的真实数据来替换示例数据，以便看到自己数据中的见解/预测。 此外，本文档说明如果想要以自己的数据自定义解决方案，需要修改解决方案模板的哪些部分。 最后提供有关构建此解决方案模板的 Power BI 仪表板的说明。
 
-## <a name="details"></a>**详细信息**
+## **<a name="details"></a>详细信息**
 ![](media/cortana-analytics-technical-guide-demand-forecast/ca-topologies-energy-forecasting.png)
 
 ### <a name="architecture-explained"></a>体系结构说明
 部署解决方案时，会激活 Cortana Analytics Suite 中的各种 Azure 服务（例如事件中心、流分析、HDInsight、数据工厂、机器学习，等等）。 体系结构图全面展示了如何从端到端构造能源需求预测解决方案模板。 可以调查这些服务，单击随解决方案部署创建的解决方案模板图表即可。 以下部分将对每个片段进行说明。
 
-## <a name="data-source-and-ingestion"></a>**数据源和引入**
+## **<a name="data-source-and-ingestion"></a>数据源和引入**
 ### <a name="synthetic-data-source"></a>综合数据源
 对于此模板，使用的数据源是从桌面应用程序生成的，将下载应用程序并于部署成功后在本地运行。 在解决方案模板图表上选择名为“能源预测数据模拟器”的第一个节点时，可以在属性列中找到下载及安装此应用程序的说明。 此应用程序会在解决方案流的余下部分使用的数据点或事件送入 [Azure 事件中心](#azure-event-hub)服务。
 
@@ -42,7 +42,7 @@ ms.locfileid: "54231166"
 ### <a name="azure-event-hub"></a>Azure 事件中心
 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)服务是所述综合数据源提供的输入接收者。
 
-## <a name="data-preparation-and-analysis"></a>**数据准备和分析**
+## **<a name="data-preparation-and-analysis"></a>数据准备和分析**
 ### <a name="azure-stream-analytics"></a>Azure 流分析
 使用 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)服务可为来自 [Azure 事件中心](#azure-event-hub)服务的输入流提供近乎实时的分析，将结果发布到 [Power BI](https://powerbi.microsoft.com) 仪表板，在 [Azure 存储](https://azure.microsoft.com/services/storage/)服务中存档所有原始传入事件，供 [Azure 数据工厂](https://azure.microsoft.com/documentation/services/data-factory/)服务做后续处理。
 
@@ -52,15 +52,15 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务（由 Azure 数据工厂协调）预测特定区域（提供收到的输入数据）的将来用电量。
 
-## <a name="data-publishing"></a>**数据发布**
+## **<a name="data-publishing"></a>数据发布**
 ### <a name="azure-sql-database-service"></a>Azure SQL 数据库服务
 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)服务用于存储（由 Azure 数据工厂管理）将 [Power BI](https://powerbi.microsoft.com) 仪表板使用的 Azure 机器学习服务收到的预测数据。
 
-## <a name="data-consumption"></a>**数据使用**
+## **<a name="data-consumption"></a>数据使用**
 ### <a name="power-bi"></a>Power BI
 [Power BI](https://powerbi.microsoft.com) 服务用于显示仪表板，其中包含 [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)服务提供的聚合，以及 [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)中存储的、使用 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)服务生成的需求预测结果。 有关如何构建此解决方案模板的 Power BI 仪表板的说明，请参阅以下部分。
 
-## <a name="how-to-bring-in-your-own-data"></a>**如何输入自己的数据**
+## **<a name="how-to-bring-in-your-own-data"></a>如何输入自己的数据**
 本部分说明如何将自己的数据输入 Azure，以及对于放入此体系结构的数据，需要更改哪些方面。
 
 放入的任何数据集不太可能符合用于此解决方案模板的数据集。 了解数据与需求对于如何修改此模板以配合自己的数据非常重要。 如果不太熟悉 Azure 机器学习服务，可以使用[如何创建第一个试验](machine-learning/studio/create-experiment.md)中的示例来获取简介。
@@ -106,40 +106,40 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
 
 类似于 [Azure 流分析查询](#azure-stream-analytics-1)，[Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本的对传入的数据格式有隐含了解，需要根据数据格式和[特征设计](machine-learning/team-data-science-process/create-features.md)要求更改这些查询。
 
-#### <a name="aggregatedemanddatato1hrpipeline"></a>*AggregateDemandDataTo1HrPipeline*
-此[管道](data-factory/concepts-pipelines-activities.md)包含一个活动 - 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，通过 Azure 流分析作业将变电站级别每隔 10 秒流式传输的需求数据聚合成每小时区域级别，然后放入 [Azure 存储](https://azure.microsoft.com/services/storage/)中。
+#### *<a name="aggregatedemanddatato1hrpipeline"></a>AggregateDemandDataTo1HrPipeline*
+此[管道](data-factory/concepts-pipelines-activities.md)包含一个活动 - 使用 [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本，通过 Azure 流分析作业将变电站级别每隔 10 秒流式传输的需求数据聚合成每小时区域级别，然后放入 [Azure 存储](https://azure.microsoft.com/services/storage/)中。
 
 此分区任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateDemandRegion1Hr.hql***
 
-#### <a name="loadhistorydemanddatapipeline"></a>*LoadHistoryDemandDataPipeline*
+#### *<a name="loadhistorydemanddatapipeline"></a>LoadHistoryDemandDataPipeline*
 此[管道](data-factory/concepts-pipelines-activities.md)包含两个活动：
 
-* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 Hive 脚本，在 Azure 流分析作业期间将变电站级别的每小时历史需求数据聚合成每小时区域级别，然后放入 Azure 存储中
-* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将聚合数据从 Azure 存储 Blob 移到解决方案模板安装期间预配的 Azure SQL 数据库中。
+* 使用 [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) 的 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动，它运行 Hive 脚本，在 Azure 流分析作业期间将变电站级别的每小时历史需求数据聚合成每小时区域级别，然后放入 Azure 存储中
+* [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动，将聚合数据从 Azure 存储 Blob 移到解决方案模板安装期间预配的 Azure SQL 数据库中。
 
 此任务的 [Hive](https://blogs.msdn.com/b/bigdatasupport/archive/2013/11/11/get-started-with-hive-on-hdinsight.aspx) 脚本为 ***AggregateDemandHistoryRegion.hql***。
 
-#### <a name="mlscoringregionxpipeline"></a>*MLScoringRegionXPipeline*
+#### *<a name="mlscoringregionxpipeline"></a>MLScoringRegionXPipeline*
 这些[管道](data-factory/concepts-pipelines-activities.md)包含多个活动，其最终结果为来自与此解决方案模板关联的 Azure 机器学习试验评分的预测。 这些管道几乎完全相同，差别在于它们各自只处理不同的区域（由传入 ADF 管道的不同 RegionID 完成）以及每个区域的 hive 脚本。  
 此管道包含的活动为：
 
-* 使用 [HDInsightLinkedService](https://msdn.microsoft.com/library/azure/dn893526.aspx) 的[HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动运行 Hive 脚本来执行 Azure 机器学习试验所需的聚合及特征设计。 此任务的 Hive 脚本为相应的 ***PrepareMLInputRegionX.hql***。
-* [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动将来自 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动访问的单个 Azure 存储 Blob。
-* 调用 Azure 机器学习试验的 [AzureMLBatchScoring](https://msdn.microsoft.com/library/azure/dn894009.aspx) 活动会导致将结果放入单个 Azure 存储 Blob。
+* 使用 [HDInsightLinkedService](/previous-versions/azure/dn893526(v=azure.100)) 的[HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动运行 Hive 脚本来执行 Azure 机器学习试验所需的聚合及特征设计。 此任务的 Hive 脚本为相应的 ***PrepareMLInputRegionX.hql***。
+* [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动将来自 [HDInsightHive](data-factory/transform-data-using-hadoop-hive.md) 活动的结果移到可供 [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) 活动访问的单个 Azure 存储 Blob。
+* 调用 Azure 机器学习试验的 [AzureMLBatchScoring](/previous-versions/azure/dn894009(v=azure.100)) 活动会导致将结果放入单个 Azure 存储 Blob。
 
-#### <a name="copyscoredresultregionxpipeline"></a>*CopyScoredResultRegionXPipeline*
-此[管道](data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将 Azure 机器学习试验的结果从相应 ***MLScoringRegionXPipeline*** 移到随解决方案模板安装一起预配的 Azure SQL 数据库。
+#### *<a name="copyscoredresultregionxpipeline"></a>CopyScoredResultRegionXPipeline*
+此[管道](data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动，将 Azure 机器学习试验的结果从相应 ***MLScoringRegionXPipeline*** 移到随解决方案模板安装一起预配的 Azure SQL 数据库。
 
-#### <a name="copyaggdemandpipeline"></a>*CopyAggDemandPipeline*
-此[管道](data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将聚合的持续需求数据从 ***LoadHistoryDemandDataPipeline*** 移到随解决方案模板安装一起预配的 Azure SQL 数据库。
+#### *<a name="copyaggdemandpipeline"></a>CopyAggDemandPipeline*
+此[管道](data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动，将聚合的持续需求数据从 ***LoadHistoryDemandDataPipeline*** 移到随解决方案模板安装一起预配的 Azure SQL 数据库。
 
-#### <a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>*CopyRegionDataPipeline、CopySubstationDataPipeline、CopyTopologyDataPipeline*
-此[管道](data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](https://msdn.microsoft.com/library/azure/dn835035.aspx) 活动，将安装解决方案模板时上传到 Azure 存储 Blob 的区域/变电站/拓扑参考数据移到安装解决方案模板过程中预配的 Azure SQL 数据库。
+#### *<a name="copyregiondatapipeline-copysubstationdatapipeline-copytopologydatapipeline"></a>CopyRegionDataPipeline、 CopySubstationDataPipeline、 CopyTopologyDataPipeline*
+此[管道](data-factory/concepts-pipelines-activities.md)包含单个活动 - [Copy](/previous-versions/azure/dn835035(v=azure.100)) 活动，将安装解决方案模板时上传到 Azure 存储 Blob 的区域/变电站/拓扑参考数据移到安装解决方案模板过程中预配的 Azure SQL 数据库。
 
 ### <a name="azure-machine-learning"></a>Azure 机器学习
 用于此解决方案模板的 [Azure 机器学习](https://azure.microsoft.com/services/machine-learning/)试验提供区域需求预测。 该试验因使用的数据集而有所不同，需要专门针对引入的数据进行修改或替换。
 
-## <a name="monitor-progress"></a>**监视进度**
+## **<a name="monitor-progress"></a>监视进度**
 启动数据生成器后，管道将开始合成，解决方案的不同组件遵循数据工厂发出的命令开始操作。 可通过两种方式监视管道。
 
 1. 检查 Azure Blob 存储中的数据。
@@ -154,7 +154,7 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
 
     可以设置 Power BI 的热路径仪表板，监视原始传入数据。 请遵循“Power BI 仪表板”部分中的说明。
 
-## <a name="power-bi-dashboard"></a>**Power BI 仪表板**
+## **<a name="power-bi-dashboard"></a>Power BI 仪表板**
 ### <a name="overview"></a>概述
 本部分介绍如何设置 Power BI 仪表板，可视化来自 Azure 流分析（热路径）的实时数据，以及来自 Azure 机器学习（冷路径）的预测结果。
 
@@ -179,7 +179,7 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
    * 单击顶部的“保存”，将报告命名为“EnergyStreamDataReport”。 名为“EnergyStreamDataReport”的报告随即显示在左侧“导航”窗格的“报告”部分中。
    * 单击此折线图右上角的“固定视觉对象”![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic6.png) 图标，“固定到仪表板”窗口随即出现，可在其中选择仪表板。 选择“EnergyStreamDataReport”，并单击“固定”。
    * 在仪表板上将鼠标悬停在此磁贴中，单击右上角的“编辑”图标，将其标题更改为“按时间戳列出的需求”
-4. 根据相应的数据集创建其他仪表板磁贴。 最终的仪表板视图：![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
+4. 根据相应的数据集创建其他仪表板磁贴。 最终的仪表板视图中： ![](media/cortana-analytics-technical-guide-demand-forecast/PBIFullScreen.png)
 
 ### <a name="setup-cold-path-dashboard"></a>设置冷路径仪表板
 在冷路径数据管道中，基本目标是获取每个区域的需求预测。 Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。
@@ -222,16 +222,16 @@ Azure HDInsight 服务用于运行 [Hive](https://blogs.msdn.com/b/bigdatasuppor
 
      ![](media/cortana-analytics-technical-guide-demand-forecast/PowerBIpic4.png)
    * 展开“计划刷新”部分。 打开“保持数据最新”。
-   * 根据需要计划刷新。 若要查找详细信息，请参阅 [Data refresh in Power BI](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)（Power BI 中的数据刷新）。
+   * 根据需要计划刷新。 若要查找详细信息，请参阅 [Power BI 中的数据刷新](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)。
 
-## <a name="how-to-delete-your-solution"></a>**如何删除解决方案**
+## **<a name="how-to-delete-your-solution"></a>如何删除你的解决方案**
 在不经常使用解决方案的情况下，请务必停止数据生成器，因为运行数据生成器会产生较高的费用。 如果不使用解决方案，请将其删除。 删除解决方案会删除部署该解决方案时在订阅中预配的所有组件。 要删除解决方案，请在解决方案模板左侧面板中单击该解决方案的名称，并单击“删除”。
 
-## <a name="cost-estimation-tools"></a>**成本估算工具**
+## **<a name="cost-estimation-tools"></a>成本估算工具**
 以下两个工具可帮助进一步了解在订阅中运行能源需求预测解决方案模板产生的总成本：
 
-* [Microsoft Azure Cost Estimator Tool (online)](https://azure.microsoft.com/pricing/calculator/)
-* [Microsoft Azure Cost Estimator Tool (desktop)](https://www.microsoft.com/download/details.aspx?id=43376)
+* [Microsoft Azure 成本估算器工具 （联机）](https://azure.microsoft.com/pricing/calculator/)
+* [Microsoft Azure 成本估算器工具 （桌面版）](https://www.microsoft.com/download/details.aspx?id=43376)
 
-## <a name="acknowledgements"></a>**致谢**
+## **<a name="acknowledgements"></a>致谢**
 本文由 Microsoft 数据科研人员 Yijing Chen 与软件工程师 Qiu Min 共同撰写。

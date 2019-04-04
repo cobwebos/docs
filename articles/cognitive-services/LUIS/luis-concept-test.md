@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 55284318a627186b7a20d6d36dff1953e80d5020
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: c9f1cf80cd3a781e878daca2048f7c5dc9095a7c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958552"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893213"
 ---
 # <a name="testing-example-utterances-in-luis"></a>在 LUIS 中测试示例话语
 
@@ -48,7 +48,7 @@ ms.locfileid: "56958552"
 ## <a name="where-to-find-utterances"></a>在哪里可以找到话语
 LUIS 将记录的所有话语存储在查询日志中，可在 [LUIS](luis-reference-regions.md) 网站的“应用”列表页，以及 LUIS [创作 API](https://aka.ms/luis-authoring-apis) 上下载。 
 
-[LUIS](luis-reference-regions.md) 网站的[“查看终结点话语”](luis-how-to-review-endoint-utt.md)页列出了 LUIS 不确定的所有话语。 
+[LUIS](luis-reference-regions.md) 网站的[“查看终结点话语”](luis-how-to-review-endpoint-utterances.md)页列出了 LUIS 不确定的所有话语。 
 
 ![查看终结点话语](./media/luis-concept-test/review-endpoint-utterances.png)
  

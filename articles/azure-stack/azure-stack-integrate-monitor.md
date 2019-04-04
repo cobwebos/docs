@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 64a31e0c8a36b7ea8b60f65caefba9ba15b91777
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258728"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903992"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
@@ -81,8 +81,8 @@ Nagios 监视插件开发与合作伙伴 Cloudbase 解决方案一起宽松免�
 
 | 参数 | 描述 | 示例 |
 |---------|---------|---------|
-| *arm_endpoint* | Azure 资源管理器（管理员）终结点 |https:\//adminmanagement.local.azurestack.external |
-| *api_endpoint* | Azure 资源管理器（管理员）终结点  | https:\//adminmanagement.local.azurestack.external |
+| *arm_endpoint* | Azure 资源管理器（管理员）终结点 | https://adminmanagement.local.azurestack.external |
+| *api_endpoint* | Azure 资源管理器（管理员）终结点  | https://adminmanagement.local.azurestack.external |
 | *Tenant_id* | 管理员订阅 ID | 通过管理员门户或 PowerShell 检索 |
 | *User_name* | 操作员订阅用户名 | operator@myazuredirectory.onmicrosoft.com |
 | *User_password* | 操作员订阅密码 | mypassword |
@@ -96,35 +96,36 @@ Nagios 监视插件开发与合作伙伴 Cloudbase 解决方案一起宽松免�
 
 如果不使用 Operations Manager、Nagios 或基于 Nagios 的解决方案，可以使用 PowerShell 来启用广泛的监视解决方案，以便与 Azure Stack 集成。
 
-1. 若要使用 PowerShell，请确保已针对 Azure Stack 操作员环境[安装并配置 PowerShell](azure-stack-powershell-configure-quickstart.md)。 可以访问资源管理器 （管理员） 终结点的本地计算机上安装 PowerShell (https:\//adminmanagement。 [区域]。[External_FQDN])。
+1. 若要使用 PowerShell，请确保已针对 Azure Stack 操作员环境[安装并配置 PowerShell](azure-stack-powershell-configure-quickstart.md)。 在可以访问资源管理器（管理员）终结点 (https://adminmanagement.[region].[External_FQDN]) 的本地计算机上安装 PowerShell。
 
 2. 以 Azure Stack 操作员身份运行以下命令，以连接到 Azure Stack 环境：
 
-   ```PowerShell  
-    Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https:\//adminmanagement.[Region].[External_FQDN]
+   ```powershell
+   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint https://adminmanagement.[Region].[External_FQDN]
 
    Add-AzureRmAccount -EnvironmentName "AzureStackAdmin"
    ```
 
 3. 使用如下所示的命令来处理警报：
-   ```PowerShell
+   ```powershell
     #Retrieve all alerts
-    Get-AzsAlert
+    $Alerts = Get-AzsAlert
+    $Alerts
 
     #Filter for active alerts
-    $Active=Get-AzsAlert | Where {$_.State -eq "active"}
+    $Active = $Alerts | Where-Object { $_.State -eq "active" }
     $Active
 
     #Close alert
     Close-AzsAlert -AlertID "ID"
 
     #Retrieve resource provider health
-    Get-AzsRPHealth
+    $RPHealth = Get-AzsRPHealth
+    $RPHealth
 
     #Retrieve infrastructure role instance health
-    $FRPID=Get-AzsRPHealth|Where-Object {$_.DisplayName -eq "Capacity"}
+    $FRPID = $RPHealth | Where-Object { $_.DisplayName -eq "Capacity" }
     Get-AzsRegistrationHealth -ServiceRegistrationId $FRPID.RegistrationId
-
     ```
 
 ## <a name="learn-more"></a>了解详细信息

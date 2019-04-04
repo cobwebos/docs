@@ -3,19 +3,19 @@ title: 语言支持 - 文本翻译 API
 titleSuffix: Azure Cognitive Services
 description: 文本翻译 API 支持的自然语言列表。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: d98922937781fd169d34881fa67a6b5746d06df7
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882458"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918036"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -314,6 +314,6 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 
 ## <a name="access-the-list-on-the-microsoft-translator-website"></a>访问 Microsoft Translator 网站上的列表
 
-若要快速查看语言，Microsoft Translator 网站上显示了文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
+若要快速查看语言，Microsoft Translator 网站上显示了 文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
 [请参阅语言的列表](https://www.microsoft.com/translator/languages.aspx)

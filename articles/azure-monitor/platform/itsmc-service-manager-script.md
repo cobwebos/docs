@@ -13,16 +13,14 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: 651ae8ae8640a23ecaac734670e97678fe20c64c
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 64769ebb1bd9a5fb0f051cc6eca4e59cd41fccc9
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57314273"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903091"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 使用以下脚本创建用于 Service Manager 实例的 Web 应用。 有关 Service Manager 连接的更多信息，请访问：[Service Manager Web 应用](../../azure-monitor/platform/itsmc-connections.md#create-and-deploy-service-manager-web-app-service)
 
@@ -38,6 +36,8 @@ ms.locfileid: "57314273"
 该脚本将使用指定的名称（以及使该名称保持唯一的其他几个字符串）创建 Web 应用。 它将生成 **Web 应用 URL**、**客户端 ID** 和**客户端密码**。
 
 请保存这些值，因为在使用 IT 服务管理连接器创建连接时将需要这些值。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -96,19 +96,19 @@ if(!(Get-PackageProvider -Name NuGet))
    Write-Host "Installing NuGet Package Provider..."
    Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Scope CurrentUser -Force -WarningAction SilentlyContinue
 }
-$module = Get-Module -ListAvailable -Name AzureRM
+$module = Get-Module -ListAvailable -Name Az
 
-if(!$module -or ($module[0].Version.Major -lt 4))
+if(!$module -or ($module[0].Version.Major -lt 1))
 {
-    Write-Host "Installing AzureRm Module..."  
+    Write-Host "Installing Az Module..."  
     try
     {
         # In case of Win 10 Anniversary update
-        Install-Module AzureRM -MinimumVersion 4.1.0 -Scope CurrentUser -Force -WarningAction SilentlyContinue -AllowClobber
+        Install-Module Az -MinimumVersion 1.0 -Scope CurrentUser -Force -WarningAction SilentlyContinue -AllowClobber
     }
     catch
     {
-        Install-Module AzureRM -MinimumVersion 4.1.0 -Scope CurrentUser -Force -WarningAction SilentlyContinue
+        Install-Module Az -MinimumVersion 1.0 -Scope CurrentUser -Force -WarningAction SilentlyContinue
     }
 
 }

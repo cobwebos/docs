@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/14/2018
+ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5217f21449efeb2086770f040fb781765ea819eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083931"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896119"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：技术深入了解
 
@@ -39,15 +39,12 @@ ms.locfileid: "58083931"
 
 可使用 Azure AD Connect 启用无缝 SSO，如[此处](how-to-connect-sso-quick-start.md)所示。 启用该功能时，请执行以下步骤：
 
-- 在每个 AD 林的本地 Active Directory (AD) 中创建一个名为 `AZUREADSSOACC` 的计算机帐户（表示 Azure AD）。
-- 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，则每个林都有其自己的 Kerberos 解密密钥。
-- 此外，创建两个 Kerberos 服务主体名称 (SPN) 来表示 Azure AD 登录期间使用的两个 URL。
-
->[!NOTE]
-> 在与 Azure AD 同步（使用 Azure AD Connect）且要为其用户启用无缝 SSO 的每个 AD 林中创建计算机帐户和 Kerberos SPN。 将 `AZUREADSSOACC` 计算机帐户移动到在其中存储其他计算机帐户的组织单位 (OU)，确保以相同的方式对该帐户进行管理，并确保它不会被删除。
+- 计算机帐户 (`AZUREADSSOACC`) 在你的本地同步到 Azure AD 中 （使用 Azure AD Connect） 每个 AD 林中的 Active Directory (AD) 中创建。
+- 此外，大量的 Kerberos 服务主体名称 (Spn) 创建要在 Azure AD 单一登录过程中使用。
+- 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，每个计算机帐户将具有其自己唯一的 Kerberos 解密密钥。
 
 >[!IMPORTANT]
->我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
+> `AZUREADSSOACC`需要出于安全原因强保护的计算机帐户。 只有域管理员应该能够管理的计算机帐户。 请确保已禁用对计算机帐户的 Kerberos 委派。 存储的计算机帐户的组织单位 (OU) 中它们是安全不被意外删除。 在计算机帐户上的 Kerberos 解密密钥还应处理为敏感。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
 
 完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录方式相同。
 

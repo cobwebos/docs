@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
-ms.openlocfilehash: d2dc8ad1e4b7e429dc758a96e49aa4825ae108e5
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49091311"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918359"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -49,9 +49,9 @@ ms.locfileid: "49091311"
    > [!TIP]
    > 开始输入文本后，会出现更多“内容路径”文本框，以允许生成多个资产的列表。 若要从列表中删除资产，请选择省略号 (...) 按钮，然后选择“删除”。
    > 
-   > 每个内容路径必须是符合以下[正则表达式](https://msdn.microsoft.com/library/az24scfc.aspx)的相对 URL：  
-   > - 加载单个文件路径：`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - 加载包含查询字符串的单个文件：`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > 每个内容路径必须是符合以下[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相对 URL：  
+   > - 加载单个文件路径： `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - 加载包含查询字符串的单个文件： `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > 由于每个资产都必须有其自己的路径，因此预加载资产没有通配符功能。
    > 
@@ -69,5 +69,5 @@ ms.locfileid: "49091311"
 ## <a name="see-also"></a>另请参阅
 * [清除 Azure CDN 终结点](cdn-purge-endpoint.md)
 * [Azure CDN REST API 参考：预加载终结点上的内容](https://docs.microsoft.com/rest/api/cdn/endpoints/loadcontent)
-* [Azure CDN REST API 参考：清除终结点上的内容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
+* [Azure CDN REST API 参考：从终结点清除内容](https://docs.microsoft.com/rest/api/cdn/endpoints/purgecontent)
 

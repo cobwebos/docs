@@ -17,12 +17,12 @@ ms.date: 02/12/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 11/05/2018
-ms.openlocfilehash: 77942e24af847f7c8f9680ca793dacf8ba0be55f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 284e1ce3c3b9a63f3c25e85891b1d2688726183e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112579"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879975"
 ---
 # <a name="redeploy-the-asdk"></a>重新部署 ASDK
 本文介绍如何在非生产环境中重新部署 Azure Stack 开发工具包 (ASDK)。 由于不支持 ASDK 升级，因此若要改用较新的版本，需彻底地进行重新部署。 也可随时根据需要从头开始重新部署 ASDK。
@@ -61,10 +61,11 @@ ms.locfileid: "58112579"
 3. 当脚本运行时，系统会提示你登录 Azure 订阅和本地 ASDK 安装。
 4. 脚本完成后，会看到与以下示例类似的消息：
 
-    ` De-Activating Azure Stack (this may take up to 10 minutes to complete).` ` Your environment is now unable to syndicate items and is no longer reporting usage data.`
-    ` Remove registration resource from Azure...`
-    ` "Deleting the resource..." on target "/subscriptions/<subscription information>"`
-    ` ********** End Log: Remove-AzsRegistration ********* `
+    `De-Activating Azure Stack (this may take up to 10 minutes to complete).`
+    `Your environment is now unable to syndicate items and is no longer reporting usage data.`
+    `Remove registration resource from Azure...`
+    `"Deleting the resource..." on target "/subscriptions/<subscription information>"`
+    `********** End Log: Remove-AzsRegistration *********`
 
 
 

@@ -16,12 +16,12 @@ ms.date: 02/14/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/10/2018
-ms.openlocfilehash: 2f51ab51cc352c5f3d95ac1a35a1cbf918899753
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9bf261918bdbdf3ee06ad28a037d5bb8a3631a20
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768393"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487628"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>将市场项从 Azure 下载到 Azure Stack
 
@@ -59,7 +59,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
     门户将显示可从 Azure 市场下载的项的列表。 可以单击每个项查看其说明和附加信息，包括其下载大小。 
 
-    [![Marketplace 列表](media/azure-stack-download-azure-marketplace-item/image03sm.png "Marketplace 列表")](media/azure-stack-download-azure-marketplace-item/image03.png#lightbox)
+    [![市场列表](media/azure-stack-download-azure-marketplace-item/image03sm.png "市场列表")](media/azure-stack-download-azure-marketplace-item/image03.png#lightbox)
 
 4. 选择所需的项，然后选择“下载”。 下载时间会有差异。
 
@@ -101,14 +101,14 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 3. 如果有多个订阅，请运行以下命令，选择已经用于注册的那个订阅：  
 
-   ```PowerShell  
+   ```powershell  
    Get-AzureRmSubscription -SubscriptionID '<Your Azure Subscription GUID>' | Select-AzureRmSubscription
    $AzureContext = Get-AzureRmContext
    ```
 
 4. 使用以下脚本下载最新版本的市场联合工具：  
 
-   ```PowerShell
+   ```powershell
    # Download the tools archive.
    [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
    invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
@@ -126,7 +126,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 5. 通过运行以下命令导入联合模块并启动工具。 请将 `Destination folder path` 替换为从 Azure 市场下载的文件的存储位置。   
 
-   ```PowerShell  
+   ```powershell  
    Import-Module .\Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Export-AzSOfflineMarketplaceItem -Destination "Destination folder path in quotes" 
@@ -134,7 +134,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 6. 运行工具后，应会看到下图所示的屏幕，其中列出了可用的市场项：
 
-   [![Azure Marketplace 项弹出窗口](media/azure-stack-download-azure-marketplace-item/image05.png "Azure Marketplace 项")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
+   [![Azure 市场项弹出窗口](media/azure-stack-download-azure-marketplace-item/image05.png "Azure 市场项")](media/azure-stack-download-azure-marketplace-item/image05.png#lightbox)
 
 7. 选择要下载的项，并记下版本。 可以按住 *Ctrl* 键选择多个映像。 在下一过程中导入项时，将要引用该版本。 
    
@@ -158,13 +158,13 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
    下图显示了文件夹结构示例。 `D:\downloadfolder` 包含所有已下载的市场项。 每个子文件夹是一个市场项（例如 `microsoft.custom-script-linux-arm-2.0.3`），按产品 ID 命名。 每个子文件夹包含市场项的下载内容。
 
-   [![Marketplace 下载目录结构](media/azure-stack-download-azure-marketplace-item/mp1sm.png "Marketplace 下载目录结构")](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
+   [![市场下载目录结构](media/azure-stack-download-azure-marketplace-item/mp1sm.png "市场下载目录结构")](media/azure-stack-download-azure-marketplace-item/mp1.png#lightbox)
 
 2. 遵照[此文](azure-stack-powershell-configure-admin.md)中的说明配置 Azure Stack 操作员 PowerShell 会话。 
 
 3. 导入联合模块，然后运行以下脚本来启动市场联合工具：
 
-   ```PowerShell
+   ```powershell
    $credential = Get-Credential -Message "Enter the azure stack operator credential:"
    Import-AzSOfflineMarketplaceItem -origin "marketplace content folder" -AzsCredential $credential
    ```
@@ -191,7 +191,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
       [![Blob 服务](media/azure-stack-download-azure-marketplace-item/blob-service.png "Blob 服务")](media/azure-stack-download-azure-marketplace-item/blob-service.png#lightbox)  
    
    3. 选择要使用的容器，然后选择“上传”打开“上传 Blob”窗格。  
-      [![Container](media/azure-stack-download-azure-marketplace-item/container.png "Container")](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
+      [![容器](media/azure-stack-download-azure-marketplace-item/container.png "容器")](media/azure-stack-download-azure-marketplace-item/container.png#lightbox)  
    
    4. 在“上传 Blob”窗格中，浏览到要加载到存储中的包和磁盘文件，然后选择“上传”：[![上传](media/azure-stack-download-azure-marketplace-item/uploadsm.png "上传")](media/azure-stack-download-azure-marketplace-item/upload.png#lightbox)  
 
@@ -206,7 +206,7 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
    除了使用此脚本以外，还可以使用[此文中所述的过程](azure-stack-add-vm-image.md#add-a-vm-image-through-the-portal)通过 Azure 门户导入 .VHD 映像。
 
-   ```PowerShell  
+   ```powershell  
    Add-AzsPlatformimage `
     -publisher "MicrosoftWindowsServer" `
     -offer "WindowsServer" `
@@ -229,17 +229,17 @@ Azure Stack 部署必须已建立 Internet 连接，并且[已注册到 Azure](a
 
 
 4.  在 PowerShell 中使用 **Add-AzsGalleryItem** cmdlet 将市场项发布到 Azure Stack。 例如：  
-    ```PowerShell  
+    ```powershell  
     Add-AzsGalleryItem `
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
 5. 发布库项后，它现已可使用。 若要确认发布库项，请转到“所有服务”，然后在“常规”类别下，选择“市场”。  如果下载内容是解决方案模板，请确保为该解决方案模板添加任何依赖的 VHD 映像。  
-  [![查看 marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "视图 marketplace")](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  
+  [![查看市场](media/azure-stack-download-azure-marketplace-item/view-marketplacesm.png "查看市场")](media/azure-stack-download-azure-marketplace-item/view-marketplace.png#lightbox)  
 
 现在，可以使用 Azure Stack PowerShell 1.3.0 版添加虚拟机扩展。 例如：
 
-```PowerShell
+```powershell
 Add-AzsVMExtension -Publisher "Microsoft" -Type "MicroExtension" -Version "0.1.0" -ComputeRole "IaaS" -SourceBlob "https://github.com/Microsoft/PowerShell-DSC-for-Linux/archive/v1.1.1-294.zip" -SupportMultipleExtensions -VmOsType "Linux"
 ```
 

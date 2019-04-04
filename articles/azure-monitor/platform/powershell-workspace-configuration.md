@@ -8,18 +8,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: richrund
-ms.openlocfilehash: f37c8290defa5e7c9baa3b705393aba376936fd8
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5c348adea0847929b37d1b61f024859b1d634fe7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539371"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903397"
 ---
 # <a name="manage-log-analytics-workspace-in-azure-monitor-using-powershell"></a>管理 Log Analytics 工作区中使用 PowerShell 的 Azure Monitor
 
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
-
-可以使用[Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/)的 Log Analytics 工作区 Azure Monitor 中从命令行或脚本的一部分执行各种功能。  可使用 PowerShell 执行的任务示例包括：
+可以使用[Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/)的 Log Analytics 工作区 Azure Monitor 中从命令行或脚本的一部分执行各种功能。  可使用 PowerShell 执行的任务示例包括：
 
 * 创建工作区
 * 添加或删除解决方案
@@ -33,10 +31,12 @@ ms.locfileid: "58539371"
 * 将日志分析代理添加到 Azure 虚拟机
 * 将日志分析配置为索引使用 Azure 诊断收集的数据
 
-本文提供两个代码示例，用于演示一些可从 PowerShell 执行的函数。  有关其他函数，可以参阅 [Log Analytics PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/)。
+本文提供两个代码示例，用于演示一些可从 PowerShell 执行的函数。  有关其他函数，可以参阅 [Log Analytics PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/az.operationalinsights/)。
 
 > [!NOTE]
 > Log Analytics 之前称为 Operational Insights，这就是在 cmdlet 中使用此名称的原因。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>必备组件
 与版本 1.0.0 或更高版本的 Az.OperationalInsights 模块，这些示例工作。
@@ -201,14 +201,14 @@ New-AzOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGroup -
 | --- | --- | --- |
 | 应用程序网关    | 是 | 是 |
 | 自动化帐户     | 是 | |
-| Batch 帐户          | 是 | 是 |
+| 批处理帐户          | 是 | 是 |
 | Data Lake Analytics     | 是 | |
 | Data Lake Store         | 是 | |
 | SQL 弹性池        |     | 是 |
 | 事件中心命名空间     |     | 是 |
 | IoT 中心                |     | 是 |
 | Key Vault               | 是 | |
-| 负载平衡器          | 是 | |
+| 负载均衡器          | 是 | |
 | 逻辑应用              | 是 | 是 |
 | 网络安全组 | 是 | |
 | 用于 Redis 的 Azure 缓存             |     | 是 |
@@ -272,5 +272,5 @@ Remove-AzOperationalInsightsStorageInsight -ResourceGroupName $workspace.Resourc
 
 
 ## <a name="next-steps"></a>后续步骤
-* 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/)。
+* 有关使用 Log Analytics 的 PowerShell 配置的其他信息，请[查看 Log Analytics PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights/)。
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: e08e6ca4f6413b475bd8a0e5ff30b74921c2f0e6
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.openlocfilehash: beece95164f0d82b1aa7f22d56f4dce02f4bb38c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50227233"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890877"
 ---
 可以通过 Azure CLI 在 macOS、Linux 和 Windows 上创建和管理 Azure 资源。 本文详述了一些最常用于创建和管理虚拟机 (VM) 的命令。
 
@@ -46,7 +46,7 @@ ms.locfileid: "50227233"
 ## <a name="disks-and-images"></a>磁盘和映像
 | 任务 | Azure CLI 命令 |
 | --- | --- |
-| 将数据磁盘添加到 VM | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
+| 将数据磁盘添加到 VM | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new` |
 | 从 VM 中删除数据磁盘 | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
 | 调整磁盘大小 | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
 | 拍摄磁盘快照 | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |

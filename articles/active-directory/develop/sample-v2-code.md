@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b518235efa4cd236afd8f79cb70cf30696931fdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1aca8eb16e9474f8ec834178748c27682372f7b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086762"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905386"
 ---
 # <a name="azure-active-directory-code-samples-v20-endpoint"></a>Azure Active Directory 代码示例（v2.0 终结点）
 
@@ -48,8 +48,8 @@ ms.locfileid: "58086762"
 这些示例展示了如何编写受 Azure AD 保护的单页应用程序。 这些示例使用下列种类的 MSAL.js 之一：
 
 * [适用于 JavaScript 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core)
-* [适用于 Angular 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)
-* [适用于 AngularJS 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)
+* [Microsoft 身份验证库的 Angular](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular)
+* [AngularJS 的 Microsoft 身份验证库](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angularjs)
 
   平台 |  调用 Microsoft Graph
   -------- |  ---------------------
@@ -74,7 +74,7 @@ ms.locfileid: "58086762"
 
 客户端应用程序 | 平台 | 流/授权 | 调用 Microsoft Graph | 调用 ASP.NET Core 2.0 Web API
 ------------------ | -------- |  ----------| ---------- | -------------------------
-桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 交互式 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2)
+桌面 (WPF)      | ![.NET/C#](media/sample-v2-code/logo_NET.png) | 交互式 | [dotnet-desktop-msgraph-v2](https://github.com/azure-samples/active-directory-dotnet-desktop-msgraph-v2) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi)
 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NET.png) | Windows 集成身份验证 |[dotnet-iwa-v2](https://github.com/azure-samples/active-directory-dotnet-iwa-v2)
 桌面（控制台）   | ![.NET/C#（桌面）](media/sample-v2-code/logo_NETcore.png) | 用户名/密码 |[dotnetcore-up-v2](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)
 移动 (UWP)   | ![.NET/C# (UWP)](media/sample-v2-code/logo_windows.png) | 交互式 |[dotnet-native-uwp-v2](https://github.com/azure-samples/active-directory-dotnet-native-uwp-v2) |
@@ -101,11 +101,11 @@ Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 
 
 ## <a name="web-apis"></a>Web API
 
-以下示例展示了如何使用 Azure AD v2.0 终结点保护 Web API。 此 API 由 WPF 应用程序执行，但可以由任何应用程序调用。
+以下示例展示了如何使用 Azure AD v2.0 终结点保护 Web API。 此 API 由 WPF 应用程序执行，但可以由任何应用程序调用。 Web API 还会调用 Microsoft Graph。
 
 平台 | 示例
  -------- | -------------------
-![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://github.com/azure-samples/active-directory-dotnet-native-aspnetcore-v2) 的 WebAPI（服务）
+![.NET/C#](media/sample-v2-code/logo_NET.png) | [dotnet-native-aspnetcore-v2](https://aka.ms/msidentity-aspnetcore-webapi-calls-msgraph) 的 WebAPI（服务）
 
 ## <a name="other-microsoft-graph-samples"></a>其他 Microsoft Graph 示例
 
@@ -115,6 +115,6 @@ Web 应用 | ![ASP.NET](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET 
 
 [Azure Active Directory 开发人员指南](v1-overview.md)
 
-[Azure AD 图形 API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
+[Azure AD Graph API 概念和参考](https://msdn.microsoft.com/library/azure/hh974476.aspx)
 
-[Azure AD 图形 API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)
+[Azure AD Graph API 帮助程序库](https://www.nuget.org/packages/Microsoft.Azure.ActiveDirectory.GraphClient)

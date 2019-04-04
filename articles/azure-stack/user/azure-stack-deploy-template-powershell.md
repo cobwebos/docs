@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 7af06347dd1ca5a3e7e27e5db4849b5540b106b9
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: d71df99096e58b3ac7adc920b91891b9a50cd6f7
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55250004"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58479575"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>使用 PowerShell 将模板部署到 Azure Stack
 
@@ -31,16 +31,16 @@ ms.locfileid: "55250004"
 
 ## <a name="run-azurerm-powershell-cmdlets"></a>运行 AzureRM PowerShell cmdlet
 
-此示例使用**AzureRM** PowerShell cmdlet 和模板存储在 GitHub 上。 此模板创建 Windows Server 2012 R2 Datacenter 虚拟机。
+此示例使用 **AzureRM** PowerShell cmdlet 和存储在 GitHub 上的模板。 此模板创建 Windows Server 2012 R2 Datacenter 虚拟机。
 
 >[!NOTE]
 >在尝试此示例之前，请确保已为 Azure Stack 用户[配置了 PowerShell](azure-stack-powershell-configure-user.md)。
 
-1. 转到 [https://aka.ms/AzureStackGitHub](https://aka.ms/AzureStackGitHub) 并找到 **101-simple-windows-vm** 模板。 将模板保存到此位置： `C:\templates\azuredeploy-101-simple-windows-vm.json`。
+1. 转到 [https://aka.ms/AzureStackGitHub](https://aka.ms/AzureStackGitHub) 并找到 **101-simple-windows-vm** 模板。 将模板保存到此位置：`C:\templates\azuredeploy-101-simple-windows-vm.json`。
 2. 打开权限提升的 PowerShell 命令提示符。
-3. 替换`username`和`password`将用户名和密码，然后运行该脚本将以下脚本中：
+3. 将以下脚本中的 `username` 和 `password` 替换为你的用户名和密码，然后运行脚本：
 
-    ```PowerShell
+    ```powershell
     # Set deployment variables
     $myNum = "001" # Modify this per deployment
     $RGName = "myRG$myNum"

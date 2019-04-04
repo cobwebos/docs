@@ -14,12 +14,12 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 519046081a7f9778fb430daa0cd418cf9863a2b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975621"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58487577"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
@@ -95,13 +95,13 @@ az --version
 
 2. 升级 PIP。 PIP 是适用于 Python 的包管理器。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
 
-    ```PowerShell  
+    ```powershell  
     python -m pip install --upgrade pip
     ```
 
 3. 安装 **certifi** 模块。 [Certifi](https://pypi.org/project/certifi/) 是根证书的集合模块，可以在验证 TLS 主机的身份时验证 SSL 证书的可信度。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
 
-    ```PowerShell
+    ```powershell
     pip install certifi
     ```
 
@@ -151,13 +151,13 @@ az --version
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用集成系统执行此操作。
+如果使用的是 ASDK，则需要信任远程计算机上的 CA 根证书。 不需要对集成系统进行此操作。
 
 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
 
-    ```PowerShell  
+    ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 
@@ -273,11 +273,11 @@ az group create -n MyResourceGroup -l local
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用集成系统执行此操作。
+如果使用的是 ASDK，则需要信任远程计算机上的 CA 根证书。 不需要对集成系统进行此操作。
 
 1. 在计算机上找到证书位置。 该位置根据 Python 的安装位置而异。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
 
-    ```PowerShell  
+    ```powershell  
       python -c "import certifi; print(certifi.where())"
     ```
 
@@ -404,7 +404,7 @@ az group create -n MyResourceGroup -l local
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用集成系统执行此操作。
+如果使用的是 ASDK，则需要信任远程计算机上的 CA 根证书。 不需要对集成系统进行此操作。
 
 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 
@@ -515,7 +515,7 @@ az group create -n MyResourceGroup -l local
 
 ### <a name="trust-the-azure-stack-ca-root-certificate"></a>信任 Azure Stack CA 根证书
 
-如果使用 ASDK，您将需要信任远程计算机上的 CA 根证书。 不需要使用集成系统执行此操作。
+如果使用的是 ASDK，则需要信任远程计算机上的 CA 根证书。 不需要对集成系统进行此操作。
 
 若要信任 Azure Stack CA 根书，请将它附加到现有的 Python 证书。
 

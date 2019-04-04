@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: a82035bfbed109d6521131d8c730bef04030c94f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 92fc8e9edfc745ae89c2b4d44e193566292d4f08
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093535"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918869"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk 服务发行说明
 
@@ -30,7 +30,7 @@ ms.locfileid: "58093535"
 Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 
 ## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>BizTalk 服务 11 月更新版中的新增功能
-* 可在 BizTalk 服务门户中启用静态加密。 请参阅[在 BizTalk 服务门户中启用静态加密](https://msdn.microsoft.com/library/azure/dn874052.aspx)。
+* 可在 BizTalk 服务门户中启用静态加密。 请参阅[在 BizTalk 服务门户中启用静态加密](/previous-versions/azure/dn874052(v=azure.100))。
 
 ## <a name="update-history"></a>更新历史记录
 ### <a name="october-update"></a>10 月更新
@@ -39,14 +39,14 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
   * **场景**：使用 Azure Active Directory 中的组织帐户（如 user@fabrikam.com 或 user@contoso.com）注册 BizTalk 服务部署。 在此方案中，仅同一组织内的 Azure Active Directory 用户可使用 BizTalk 服务门户管理 BizTalk 服务。 不可使用 Microsoft 帐户。  
 * 创建 BizTalk 服务时，会在 BizTalk 服务门户中自动注册。
   * **场景**：首次登录 Azure、创建 BizTalk 服务，然后选择“管理”。 BizTalk 服务门户打开时，BizTalk 服务会自动注册并可供部署。  
-    请参阅[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](https://msdn.microsoft.com/library/azure/hh689837.aspx)。  
+    请参阅[在 BizTalk 服务门户中注册和更新 BizTalk 服务部署](/previous-versions/azure/hh689837(v=azure.100))。  
 
 ### <a name="august-14-update"></a>8 月 14 日更新
-* 协议和网桥分离 - 现已在 BizTalk 服务门户中分离贸易合作伙伴协议和网桥。 可单独创建协议和网桥，网桥在运行时基于 EDI 消息中的值解析为协议。 请参阅[在 Azure BizTalk 服务中创建协议](https://msdn.microsoft.com/library/azure/hh689908.aspx)、[使用 BizTalk 服务门户创建 EDI 桥](https://msdn.microsoft.com/library/azure/dn793986.aspx)、[使用 BizTalk 服务门户创建 AS2 桥](https://msdn.microsoft.com/library/azure/dn793993.aspx)和[桥在运行时如何解析协议？](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+* 协议和网桥分离 - 现已在 BizTalk 服务门户中分离贸易合作伙伴协议和网桥。 可单独创建协议和网桥，网桥在运行时基于 EDI 消息中的值解析为协议。 请参阅[在 Azure BizTalk 服务中创建协议](/previous-versions/azure/hh689908(v=azure.100))、[使用 BizTalk 服务门户创建 EDI 桥](/previous-versions/azure/dn793986(v=azure.100))、[使用 BizTalk 服务门户创建 AS2 桥](/previous-versions/azure/dn793993(v=azure.100))和[桥在运行时如何解析协议？](/previous-versions/azure/dn794001(v=azure.100))  
 * 不可再为协议创建模板。  
-* 对于发送端协议，现可为每个架构指定不同的分隔符集。 可在发送端协议的协议设置下指定此配置。 有关详细信息，请参阅[在 Azure BizTalk 服务中创建 X12 协议](https://msdn.microsoft.com/library/azure/hh689847.aspx)和[在 Azure BizTalk 服务中创建 EDIFACT 协议](https://msdn.microsoft.com/library/azure/dn606267.aspx)。 出于相同目的，还向 TPM OM API 添加了两个新实体。 请参阅 [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) 和 [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx)。  
-* 现支持标准 XSD 构造，包括派生类型。 请参阅[在映射中使用标准 XSD 构造](https://msdn.microsoft.com/library/azure/dn793987.aspx)和[在映射方案和示例中使用派生类型](https://msdn.microsoft.com/library/azure/dn793997.aspx)。  
-* AS2 支持用于消息签名的新 MIC 算法和新加密算法。 请参阅[在 Azure BizTalk 服务中创建 AS2 协议](https://msdn.microsoft.com/library/azure/hh689890.aspx)。  
+* 对于发送端协议，现可为每个架构指定不同的分隔符集。 可在发送端协议的协议设置下指定此配置。 有关详细信息，请参阅[在 Azure BizTalk 服务中创建 X12 协议](/previous-versions/azure/hh689847(v=azure.100))和[在 Azure BizTalk 服务中创建 EDIFACT 协议](/previous-versions/azure/dn606267(v=azure.100))。 出于相同目的，还向 TPM OM API 添加了两个新实体。 请参阅 [X12DelimiterOverrides](/previous-versions/azure/dn798749(v=azure.100)) 和 [EDIFACTDelimiterOverride](/previous-versions/azure/dn798748(v=azure.100))。  
+* 现支持标准 XSD 构造，包括派生类型。 请参阅[在映射中使用标准 XSD 构造](/previous-versions/azure/dn793987(v=azure.100))和[在映射方案和示例中使用派生类型](/previous-versions/azure/)。  
+* AS2 支持用于消息签名的新 MIC 算法和新加密算法。 请参阅[在 Azure BizTalk 服务中创建 AS2 协议](/previous-versions/azure/hh689890(v=azure.100))。  
 
 ## <a name="known-issues"></a>已知问题
 
@@ -85,7 +85,7 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 
 ### <a name="tracking-in-biztalk-services-portal"></a>在 BizTalk 服务门户中跟踪
 在 EDI 消息处理和任何关联中捕获跟踪事件。 如果消息处理在“协议”阶段之外失败，“跟踪”会显示为处理成功。 此情况下，请参阅“跟踪”中“详细信息”列下面的“日志”部分，了解错误详细信息。
-有关协议阶段的相关信息，请参阅 X12 接收和发送设置（[在 Azure BizTalk 服务中创建 X12 协议](https://msdn.microsoft.com/library/azure/hh689847.aspx)）。  
+有关协议阶段的相关信息，请参阅 X12 接收和发送设置（[在 Azure BizTalk 服务中创建 X12 协议](/previous-versions/azure/hh689847(v=azure.100))）。  
 
 ### <a name="update-agreement"></a>更新协议
 配置协议时，可使用 BizTalk 服务门户修改标识限定符。 这可能导致属性不一致。 例如，有协议使用 ZZ:1234567 和 ZZ:7654321 作为限定符。 在 BizTalk 服务门户配置文件设置中，将 ZZ:1234567 更改为 01:ChangedValue。 打开协议时，显示 01:ChangedValue 而不是 ZZ:1234567。
@@ -109,7 +109,8 @@ Microsoft Azure BizTalk 服务发行说明包含此版本中的已知问题。
 * 关闭 .bcs 文件（在 Visual Studio 中关闭相应选项卡）且不保存更改。  
 * 从解决方案资源管理器中再次打开该 .bcs 文件。  
   将注意到，尽管关联的 .bridgeconfig 文件使用指定的新名称，但设计图面上的实体名仍是旧名称。 如果尝试通过双击网桥组件打开网桥配置，会出现以下错误：  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` 为避免出现此情况，请确保在 BizTalk 服务项目中重命名实体后保存更改。  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist`
+  若要避免出现这种情况，请确保在重命名 BizTalk 服务项目中的实体后保存更改。  
   
 ### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>即使从 Visual Studio 项目中排除某项目，BizTalk 服务项目仍可成功生成
 请考虑此方案：先将项目（如 XSD 文件）添加到 BizTalk 服务项目，再将该项目包含在网桥配置中（例如通过将其指定为“请求”消息类型），然后从 Visual Studio 项目中排除它。 在此情况下，只要已删除项目在将其包含到 Visual Studio 项目时所在的同一磁盘位置中存在，生成项目时就不会发出任何错误。
@@ -176,12 +177,12 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 ### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>即使某证书已在项目存储中更新，网桥也不使用更新后的证书
 请考虑以下方案：  
 
-**场景 1：使用基于指纹的证书保护从网桥到服务终结点的消息传输**  
+**方案 1：使用基于指纹的证书用于保护从桥到服务终结点的消息传输**  
 请考虑在 BizTalk 服务项目中使用基于指纹的证书的方案。 在 BizTalk 服务门户中使用相同名称但不同指纹更新了证书，但未更新相应的 BizTalk 服务项目。 在此情况下，网桥可能继续处理消息，因为旧证书数据可能仍在通道缓存中。 随后，消息处理失败。  
 
 **解决方法**：更新 BizTalk 服务项目中的证书，并重新部署该项目。  
 
-**场景 2：使用基于名称的行为识别用于保护从网桥到服务终结点的消息传输的证书**
+**方案 2：使用基于名称的行为来识别用于保护从桥到服务终结点的消息传输的证书**
 
 请考虑在 BizTalk 服务项目中使用基于名称的行为来识别证书的方案。 在 BizTalk 服务门户中更新了证书，但未更新相应 BizTalk 服务项目。 在此情况下，网桥可能继续处理消息，因为旧证书数据可能仍在通道缓存中。 随后，消息处理失败。  
 
@@ -224,5 +225,5 @@ Visual Studio 中不显示**测试映射**属性。 如果“属性”窗口和�
 在整篇文档中，术语“管道”和“网桥”可换用。 两者的含义基本相同，都表示 BizTalk 服务上部署的消息处理单元。  
 
 ### <a name="concepts"></a>概念
-[BizTalk 服务](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
+[BizTalk 服务](/previous-versions/azure/hh689864(v=azure.100))   
 

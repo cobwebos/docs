@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 51dce1680be5f5f4387c2ba02827195bcdbe9b48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e20161147aa16456e31aff2bd3cc6337c3690e89
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "22998322"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917849"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Microsoft Azure CDN 中的实时警报
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -65,7 +65,7 @@ ms.locfileid: "22998322"
    > 
 8. 通过选择“**指标**”、“**运算符**”和“**触发值**”，创建一个**表达式**来进行监视。
    
-   * 对于”**指标**”，请选择要监视的条件类型。  “**带宽 Mbps**”是每秒兆位的带宽使用量。  “**总连接数**”是边缘服务器的并发 HTTP 连接数。  有关各种缓存状态和状态代码的定义，请参阅 [Azure CDN 缓存状态代码](https://msdn.microsoft.com/library/mt759237.aspx)和 [Azure CDN HTTP 状态代码](https://msdn.microsoft.com/library/mt759238.aspx)
+   * 对于”**指标**”，请选择要监视的条件类型。  “**带宽 Mbps**”是每秒兆位的带宽使用量。  “**总连接数**”是边缘服务器的并发 HTTP 连接数。  有关各种缓存状态和状态代码的定义，请参阅 [Azure CDN 缓存状态代码](/previous-versions/azure/mt759237(v=azure.100))和 [Azure CDN HTTP 状态代码](/previous-versions/azure/mt759238(v=azure.100))
    * “**运算符**”是在指标和触发值之间建立关系的数学运算符。
    * “触发值”是发送通知之前必须满足的阈值。
      

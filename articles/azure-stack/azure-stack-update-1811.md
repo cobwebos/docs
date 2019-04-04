@@ -16,12 +16,12 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: ddcf3428f32698c9825f13975929bc4677139acf
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081043"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481240"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
@@ -61,7 +61,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。  
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -220,9 +220,9 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
-- <!-- 2468613 - IS --> 此更新的安装期间，可能会看到警报标题`Error – Template for FaultType UserAccounts.New is missing.`可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
+- <!-- 2468613 - IS --> 在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
-- <!-- 3139614 | IS --> 如果已从您的 OEM，对 Azure Stack 应用更新**可用更新**通知可能不会显示在 Azure Stack 管理员门户中。 若要安装 Microsoft 更新，请遵照[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)中的说明手动下载并导入该更新。
+- <!-- 3139614 | IS --> 如果已从 OEM 应用 Azure Stack 更新，则“有可用的更新”通知可能不会显示在 Azure Stack 管理员门户中。 若要安装 Microsoft 更新，请遵照[在 Azure Stack 中应用更新](azure-stack-apply-updates.md)中的说明手动下载并导入该更新。
 
 ## <a name="post-update-steps"></a>更新后步骤
 

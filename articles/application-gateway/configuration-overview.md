@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 371d15f59c091f7ac38d36bfe3de5f4b31e4482c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629638"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906117"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -21,6 +21,9 @@ Azure 应用程序网关包含多个组件，您可以配置以各种方式对�
 ![应用程序网关组件流图表](./media/configuration-overview/configuration-overview1.png)
 
 此图阐释了具有三个侦听器的应用程序。 前两个多站点侦听器`http://acme.com/*`和`http://fabrikam.com/*`分别。 同时在端口 80 上侦听。 第三个是具有端到端安全套接字层 (SSL) 终止的基本侦听器。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -136,11 +139,11 @@ V2 sku，基本侦听器之前处理多站点侦听器。
 HTTP/2 协议支持可供连接到应用程序网关侦听器的客户端。 通过 HTTP/1.1 到后端服务器池的通信。 默认情况下，HTTP/2 支持处于禁用状态。 以下 Azure PowerShell 代码片段演示如何启用此功能：
 
 ```azurepowershell
-$gw = Get-AzureRmApplicationGateway -Name test -ResourceGroupName hm
+$gw = Get-AzApplicationGateway -Name test -ResourceGroupName hm
 
 $gw.EnableHttp2 = $true
 
-Set-AzureRmApplicationGateway -ApplicationGateway $gw
+Set-AzApplicationGateway -ApplicationGateway $gw
 ```
 
 #### <a name="websocket-support"></a>WebSocket 支持

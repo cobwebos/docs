@@ -9,16 +9,19 @@ ms.topic: conceptual
 ms.date: 12/26/2018
 ms.author: lyrana
 ms.custom: seodec18
-ms.openlocfilehash: 725f95797de0a4d4e6240be4d42cf8a196d94889
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 72155799971760e9ddc93746dceafb1ea554d88b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54118585"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905301"
 ---
 # <a name="create-and-manage-role-assignments-in-azure-digital-twins"></a>在 Azure 数字孪生中创建和管理角色分配
 
 Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-based-access-control.md)) 来管理对资源的访问权限。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="role-assignments-overview"></a>角色分配概述
 
@@ -36,7 +39,7 @@ Azure 数字孪生使用基于角色的访问控制 ([RBAC](./security-role-base
 
 下表描述了每个属性：
 
-| 属性 | 名称 | 必选 | 类型 | Description |
+| 属性 | 名称 | 需要 | Type | 描述 |
 | --- | --- | --- | --- | --- |
 | roleId | 角色定义标识符 | 是 | String | 所需角色分配的唯一 ID。 通过查询系统 API 或查看下表查找角色定义及其标识符。 |
 | objectId | 对象标识符 | 是 | String | Azure Active Directory ID、服务主体对象 ID 或域名。 该角色分配要分配到哪个对象。 必须根据其关联类型设置角色分配的格式。 对于 `DomainName` objectIdType，objectId 必须以 `“@”` 字符开头。 |
@@ -83,8 +86,8 @@ Azure 数字孪生支持对角色分配执行完整的 *CREATE*、*READ* 和 *DE
 获取应用程序 ID 后，执行以下 PowerShell 命令：
 
 ```shell
-Login-AzureRmAccount
-Get-AzureRmADServicePrincipal -ApplicationId  <ApplicationId>
+Login-AzAccount
+Get-AzADServicePrincipal -ApplicationId  <ApplicationId>
 ```
 
 然后，具有“管理员”角色的用户可以通过向以下 URL 发出经过身份验证的 HTTP POST 请求，将“空间管理员”角色分配给用户：
@@ -160,7 +163,7 @@ YOUR_MANAGEMENT_API_URL/system/roles
 YOUR_MANAGEMENT_API_URL/roleassignments/check?userId=YOUR_USER_ID&path=YOUR_PATH&accessType=YOUR_ACCESS_TYPE&resourceType=YOUR_RESOURCE_TYPE
 ```
 
-| **参数值** | **必需** |  类型 |  **说明** |
+| **参数值** | **需要** |  **Type** |  **描述** |
 | --- | --- | --- | --- |
 | YOUR_USER_ID |  True | String |   UserId objectIdType 的 objectId。 |
 | YOUR_PATH | True | String |   要检查访问权限的所选路径。 |

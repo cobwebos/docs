@@ -9,16 +9,16 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 05de1640fbee7799da0a14bba262ef9724686878
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 552c3fa81a213d0be32c5498cde5a50fb44291d0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650066"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892569"
 ---
-# <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>探讨 v2 API 生成的视频索引器输出
+# <a name="examine-the-video-indexer-output-produced-by-api"></a>检查视频索引器输出中生成的 API
 
-调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 见解包括脚本、ocr、人脸、主题、块等维度。维度包含视频中出现每个维度时显示的时间范围实例。  
+调用“获取视频索引”API 时，如果响应状态为 OK，则你会获得详细的 JSON 输出（响应内容）。 JSON 内容包含指定的视频见解的详细信息。 Insights 包括如维度： 脚本，Ocr，人脸，主题、 块等。维度包含视频中出现每个维度时显示的时间范围实例。  
 
 此外，可以通过在[视频索引器](https://www.videoindexer.ai/)网站中的视频上按“播放”按钮，来直观检查视频的汇总见解。 有关详细信息，请参阅[查看和编辑视频见解](video-indexer-view-edit.md)。
 
@@ -83,7 +83,7 @@ ms.locfileid: "58650066"
 |人脸|可以包含零个或多个人脸。 有关更详细的信息，请参阅 [faces](#faces)。|
 |关键字|可以包含零个或多个关键字。 有关更详细的信息，请参阅 [keywords](#keywords)。|
 |情绪|可以包含零个或多个情绪。 有关更详细的信息，请参阅 [sentiments](#sentiments)。|
-|audioEffects| 可以包含零个或多个音效。 有关更详细的信息，请参阅 [audioEffects](#audioeffects)。|
+|audioEffects| 可以包含零个或多个音效。 有关更详细的信息，请参阅 [audioEffects](#audioEffects)。|
 |标签| 可以包含零个或多个标签。 有关更详细的信息，请参阅 [labels](#labels)。|
 |brands| 可以包含零个或多个品牌。 有关更详细的信息，请参阅 [brands](#brands)。|
 |statistics | 有关更详细的信息，请参阅 [statistics](#statistics)。|
@@ -153,14 +153,14 @@ ms.locfileid: "58650066"
 |sourceLanguage|视频的源语言（采用一种主要语言）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
 |语言|见解语言（从源语言翻译）。 格式为 [BCP-47](https://tools.ietf.org/html/bcp47) 字符串。|
 |脚本|[transcript](#transcript) 维度。|
-|ocr|[ocr](#ocr) 维度。|
+|ocr|[OCR](#ocr)维度。|
 |关键字|[keywords](#keywords) 维度。|
 |blocks|可以包含一个或多个[块](#blocks)|
 |人脸|[faces](#faces) 维度。|
 |标签|[labels](#labels) 维度。|
 |截图|[shots](#shots) 维度。|
 |brands|[brands](#brands) 维度。|
-|audioEffects|[audioEffects](#audioeffects) 维度。|
+|audioEffects|[audioEffects](#audioEffects) 维度。|
 |情绪|[sentiments](#sentiments) 维度。|
 |visualContentModeration|[visualContentModeration](#visualcontentmoderation) 维度。|
 |textualContentModeration|[textualConentModeration](#textualcontentmoderation) 维度。|
@@ -419,61 +419,85 @@ instances|此块的时间范围列表。|
   ] 
 ```
 
+#### <a name="scenes"></a>scenes
+
+|名称|描述|
+|---|---|
+|id|场景 ID。|
+|instances|此场景 （一个场景可以只有 1 个实例） 的时间范围的列表。|
+
+```json
+"scenes":[  
+    {  
+      "id":0,
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
+      ]
+    },
+    {  
+      "id":1,
+      "instances":[  
+          {  
+            "start":"0:00:06.34",
+            "end":"0:00:47.047",
+            "duration":"0:00:40.707"
+          }
+      ]
+    },
+
+]
+```
+
 #### <a name="shots"></a>截图
 
 |名称|描述|
 |---|---|
 |id|截图 ID。|
-|keyFrames|截图内的关键帧列表（每个关键帧都有一个 ID 和实例时间范围列表）。 关键帧实例具有一个 thumbnailId 字段，该字段包含关键帧的缩略图 ID。|
-|instances|此截图的时间范围列表（截图仅有 1 个实例）。|
+|keyFrames|（每个具有一个 ID 和实例时间范围的列表） 的截图中的关键帧的列表。 每个关键帧实例都包含关键帧的缩略图的 thumbnailId 字段 id。|
+|instances|此快照 （快照只能有 1 个实例） 的时间范围的列表。|
 
 ```json
-"Shots": [
-    {
-      "id": 0,
-      "keyFrames": [
-        {
-          "id": 0,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",
-              "start": "00: 00: 00.1670000",
-              "end": "00: 00: 00.2000000"
-            }
-          ]
-        }
+"shots":[  
+    {  
+      "id":0,
+      "keyFrames":[  
+          {  
+            "id":0,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:00.209",
+                  "end":"0:00:00.251",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          },
+          {  
+            "id":1,
+            "instances":[  
+                {  
+                  "thumbnailId":"00000000-0000-0000-0000-000000000000",
+                  "start":"0:00:04.755",
+                  "end":"0:00:04.797",
+                  "duration":"0:00:00.042"
+                }
+            ]
+          }
       ],
-      "instances": [
-        {
-            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
-          "start": "00: 00: 00.2000000",
-          "end": "00: 00: 05.0330000"
-        }
+      "instances":[  
+          {  
+            "start":"0:00:00",
+            "end":"0:00:06.34",
+            "duration":"0:00:06.34"
+          }
       ]
     },
-    {
-      "id": 1,
-      "keyFrames": [
-        {
-          "id": 1,
-          "instances": [
-            {
-                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
-              "start": "00: 00: 05.2670000",
-              "end": "00: 00: 05.3000000"
-            }
-          ]
-        }
-      ],
-      "instances": [
-        {
-      "thumbnailId": "00000000-0000-0000-0000-000000000000",
-          "start": "00: 00: 05.2670000",
-          "end": "00: 00: 10.3000000"
-        }
-      ]
-    }
-  ]
+
+]
 ```
 
 #### <a name="brands"></a>brands

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: ae3a2788a0d5451736433a6338a71eda3d0ad9ca
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 2fd3416824189007bfdbe55d30907d9cb56f87ca
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55984352"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895116"
 ---
 # <a name="understand-what-good-utterances-are-for-your-luis-app"></a>了解哪些良好的话语适用于你的 LUIS 应用
 
@@ -72,7 +72,7 @@ ms.locfileid: "55984352"
 
 LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 添加太多话语是没有价值的，因为它会引起混乱。  
 
-最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endoint-utt.md)以进行正确的意向预测和实体提取。
+最好先从几个陈述开始，然后[审查终结点陈述](luis-how-to-review-endpoint-utterances.md)以进行正确的意向预测和实体提取。
 
 ## <a name="punctuation-marks"></a>标点符号
 
@@ -88,11 +88,11 @@ LUIS 使用由 LUIS 模型作者精心挑选的话语构建有效的模型。 �
 
 ## <a name="testing-utterances"></a>测试陈述 
 
-开发人员应通过向[预测终结点](luis-how-to-azure-subscription.md) URL 发送话语来开始使用实际流量测试其 LUIS 应用程序。 这些陈述用于通过[审查陈述](luis-how-to-review-endoint-utt.md)来改善意向和实体的表现。 使用 LUIS 网站测试窗格提交的测试不会通过终结点发送，因此不会对主动学习有所帮助。 
+开发人员应通过向[预测终结点](luis-how-to-azure-subscription.md) URL 发送话语来开始使用实际流量测试其 LUIS 应用程序。 这些陈述用于通过[审查陈述](luis-how-to-review-endpoint-utterances.md)来改善意向和实体的表现。 使用 LUIS 网站测试窗格提交的测试不会通过终结点发送，因此不会对主动学习有所帮助。 
 
 ## <a name="review-utterances"></a>审查陈述
 
-在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请[审查 LUIS 建议的陈述](luis-how-to-review-endoint-utt.md)。 LUIS 会选择意向或实体得分较低的终结点陈述。 
+在模型经过训练、发布并接收[终结点](luis-glossary.md#endpoint)查询后，请[审查 LUIS 建议的陈述](luis-how-to-review-endpoint-utterances.md)。 LUIS 会选择意向或实体得分较低的终结点陈述。 
 
 ## <a name="best-practices"></a>最佳做法
 

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: eda6f7b8ec61f2c3472b00c76467c1379bc2ff1b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 232a235cdbf9dc3934bdac14f9612d6865718823
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082103"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892409"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# 脚本 (.csx) 开发人员参考
 
@@ -217,8 +217,8 @@ public class Order
 可以使用相对路径与 `#load` 指令：
 
 * `#load "mylogger.csx"` 加载函数文件夹中的文件。
-* `#load "loadedfiles\mylogger.csx"` 加载文件函数文件夹中的文件夹。
-* `#load "..\shared\mylogger.csx"` 在同一级别（即 *wwwroot* 的正下方）加载文件夹中的文件，使其成为函数文件夹。
+* `#load "loadedfiles\mylogger.csx"` 加载函数文件夹中的文件夹中的文件。
+* `#load "..\shared\mylogger.csx"` 加载在其成为函数文件夹，即，同一级别的文件夹中的文件下方*wwwroot*。
 
 `#load` 指令仅适用于 *.csx* 文件，不适用于 *.cs* 文件。
 
@@ -274,7 +274,7 @@ public async static Task ProcessQueueMessageAsync(
 
 ## <a name="cancellation-tokens"></a>取消令牌
 
-函数可以接受 [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
+函数可以接受 [CancellationToken](/dotnet/api/system.threading.cancellationtoken) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
 
 下面的示例演示了如何检查即将发生的函数终止。
 
@@ -376,7 +376,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 自动监视包含函数脚本文件的目录的程序集更改。 若要监视其他目录中的程序集更改，请将其添加到 [host.json](functions-host-json.md) 中的 `watchDirectories` 列表中。
 
 ## <a name="using-nuget-packages"></a>使用 NuGet 包
-若要在 2.x 中使用 NuGet 包C#函数中上, 传*function.proj*到函数应用的文件系统中的函数的文件夹的文件。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
+若要在 2.x C# 函数中使用 NuGet 包，请将 *function.proj* 文件上传到函数应用的文件系统中的函数文件夹。 下面是示例 *function.proj* 文件，它添加了对 Microsoft.ProjectOxford.Face 1.1.0 版的引用：
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -393,9 +393,9 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 若要使用自定义 NuGet 源，请在 Function App 根中指定“Nuget.Config”文件中的源。 有关详细信息，请参阅[配置 NuGet 行为](/nuget/consume-packages/configuring-nuget-behavior)。 
 
 > [!NOTE]
-> 在 1.xC#函数，使用引用 NuGet 包*project.json*文件而不是*function.proj*文件。
+> 在 1.x C# 函数中，NuGet 包是通过 *project.json* 文件而非 *function.proj* 文件引用的。
 
-对于 1.x 函数使用*project.json*改为文件。 下面是一个示例*project.json*文件： 
+对于 1.x 函数，请改用 *project.json* 文件。 下面是 *project.json* 文件示例： 
 
 ```json
 {
@@ -412,8 +412,8 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, ILogger log)
 ### <a name="using-a-functionproj-file"></a>使用 function.proj 文件
 
 1. 在 Azure 门户中打开函数。 日志选项卡显示包安装输出。
-2. 若要上传*function.proj*文件，请使用中所述的方法之一[如何更新 function app 文件](functions-reference.md#fileupdate)中 Azure Functions 开发人员参考主题。
-3. 之后*function.proj*文件上传、 查看流式日志的输出如以下示例在函数中：
+2. 若要上传 *function.proj* 文件，请使用 Azure Functions 开发人员参考主题中[如何更新函数应用文件](functions-reference.md#fileupdate)部分描述的方法之一。
+3. 上传完 *function.proj* 文件后，将在函数的流日志中看到类似以下示例的输出：
 
 ```
 2018-12-14T22:00:48.658 [Information] Restoring packages.
@@ -465,7 +465,7 @@ using (var output = await binder.BindAsync<T>(new BindingTypeAttribute(...)))
 }
 ```
 
-`BindingTypeAttribute` 是定义了绑定的 .NET 属性，`T` 是该绑定类型所支持的输入或输出类型。 `T` 不能是 `out` 参数类型（例如 `out JObject`）。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，可仅使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
+`BindingTypeAttribute` 是定义了绑定的.NET 属性和`T`是该绑定类型所支持的输入或输出类型。 `T` 不能`out`参数类型 (如`out JObject`)。 例如，移动应用表输出绑定支持 [6 种输出类型](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs#L17-L22)，但对于 `T`，可仅使用 [ICollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 或 [IAsyncCollector<T>](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs)。
 
 ### <a name="single-attribute-example"></a>单属性示例
 
@@ -484,7 +484,7 @@ public static async Task Run(string input, Binder binder)
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) 是支持的输出绑定类型。
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
 
 ### <a name="multiple-attribute-example"></a>多属性示例
 
@@ -527,7 +527,7 @@ public static async Task Run(string input, Binder binder)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解触发器和绑定](functions-triggers-bindings.md)
+> [了解有关触发器和绑定的详细信息](functions-triggers-bindings.md)
 
 > [!div class="nextstepaction"]
-> [详细了解有关 Azure Functions 的最佳做法](functions-best-practices.md)
+> [有关最佳实践的详细了解 Azure functions](functions-best-practices.md)

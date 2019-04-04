@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: fc873f68be3e7aad67980ec2e8ee0b2e473777ec
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53537895"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918529"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
 
@@ -89,7 +89,7 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * 此示例性 expand 字符串指定列表中的每个项都应返回统计信息：`stats`。
 
 > [!NOTE]
-> 构造这三种查询字符串类型（filter、select 和 expand）中的任意一种类型时，必须确保属性名称和大小写与其 REST API 元素的对应项相匹配。 例如，在使用 .NET [CloudTask](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask) 类时，必须指定 **state** 而非 **State**，即使 .NET 属性为 [CloudTask.State](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.state)。 请参阅下表中 .NET 和 REST API 之间的属性映射。
+> 构造这三种查询字符串类型（filter、select 和 expand）中的任意一种类型时，必须确保属性名称和大小写与其 REST API 元素的对应项相匹配。 例如，在使用 .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask) 类时，必须指定 **state** 而非 **State**，即使 .NET 属性为 [CloudTask.State](/dotnet/api/microsoft.azure.batch.cloudtask#microsoft_azure_batch_cloudtask.state)。 请参阅下表中 .NET 和 REST API 之间的属性映射。
 > 
 > 
 
@@ -98,8 +98,8 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * 所有属性名称均区分大小写，但属性值不区分大小写。
 * 日期/时间字符串可以采用两种格式中的一种，并且必须在前面加上 `DateTime`。
   
-  * W3C-DTF 格式示例：`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 格式示例：`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  * W3C-DTF 格式示例： `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 格式示例： `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 * 布尔值字符串为 `true` 或 `false`。
 * 如果指定了无效的属性或运算符，则会导致 `400 (Bad Request)` 错误。
 
@@ -110,7 +110,7 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * [ODATADetailLevel][odata] [SelectClause][odata_select]：指定随每个项返回的属性值。
 * [ODATADetailLevel][odata].[ExpandClause][odata_expand]：通过单个 API 调用检索所有项的数据，不必针对每个项分别进行调用。
 
-以下代码段使用 Batch .NET API 对 Batch 服务进行有效的查询，查询其中是否存在特定池集的统计信息。 在此方案中，Batch 用户既有测试池又有生产池。 测试池 ID 具有“test”前缀，生产池 ID 具有“prod”前缀。 在代码片段中，*myBatchClient* 是正确初始化的 [BatchClient](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient) 类实例。
+以下代码段使用 Batch .NET API 对 Batch 服务进行有效的查询，查询其中是否存在特定池集的统计信息。 在此方案中，Batch 用户既有测试池又有生产池。 测试池 ID 具有“test”前缀，生产池 ID 具有“prod”前缀。 在代码片段中，*myBatchClient* 是正确初始化的 [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient#microsoft_azure_batch_batchclient) 类实例。
 
 ```csharp
 // First we need an ODATADetailLevel instance on which to set the filter, select,
@@ -139,7 +139,7 @@ List<CloudPool> testPools =
 ```
 
 > [!TIP]
-> 使用 Select 和 Expand 子句配置的 [ODATADetailLevel][odata] 实例也可以传递给相应的 Get 方法（例如 [PoolOperations.GetPool](https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.getpool.aspx)），以便限制返回的数据量。
+> 使用 Select 和 Expand 子句配置的 [ODATADetailLevel][odata] 实例也可以传递给相应的 Get 方法（例如 [PoolOperations.GetPool](/dotnet/api/microsoft.azure.batch.pooloperations#Microsoft_Azure_Batch_PoolOperations_GetPool_System_String_Microsoft_Azure_Batch_DetailLevel_System_Collections_Generic_IEnumerable_Microsoft_Azure_Batch_BatchClientBehavior__)），以便限制返回的数据量。
 > 
 > 
 
@@ -179,7 +179,7 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 ## <a name="example-construct-a-filter-string"></a>示例：构造 filter 字符串
 针对 [ODATADetailLevel.FilterClause][odata_filter] 构造 filter 字符串时，请查阅上表，在“filter 字符串的映射”下找到与所希望执行的列表操作相对应的 REST API 文档页。 会在该页第一个多行表中找到可筛选属性及其支持的运算符。 例如，如果希望检索其退出代码不为零的所有任务，则可查看[列出与作业相关联的任务][rest_list_tasks]上的此行，此行指定了相应的属性字符串以及允许的运算符：
 
-| 属性 | 允许的操作 | 类型 |
+| 属性 | 允许的操作 | Type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -190,7 +190,7 @@ filter、select 和 expand 字符串中的属性名称*必须*反映其 REST API
 ## <a name="example-construct-a-select-string"></a>示例：构造 select 字符串
 若要构造 [ODATADetailLevel.SelectClause][odata_select]，请查阅上表，在“select 字符串的映射”下导航到与所列实体类型相对应的 REST API 页。 会在该页第一个多行表中找到可选择属性及其支持的运算符。 例如，如果希望仅检索列表中每个任务的 ID 和命令行，则可在[获取有关任务的信息][rest_get_task]的相应表中找到这些行：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 说明 |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -246,7 +246,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 [通过并发节点任务最大限度提高 Azure Batch 计算资源的使用率](batch-parallel-node-tasks.md)是另一篇与批处理应用程序性能相关的文章。 在数量较少但规模更大的计算节点上执行并行任务适合某些类型的工作负荷。 若需详细了解此类方案，请查看文章中的[示例方案](batch-parallel-node-tasks.md#example-scenario)。
 
 
-[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch?view=azure-dotnet
+[api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch
 [api_net_listjobs]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.joboperations.listjobs.aspx
 [api_rest]: https://docs.microsoft.com/rest/api/batchservice/
 [batch_metrics]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchMetrics

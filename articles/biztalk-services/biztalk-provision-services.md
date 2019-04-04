@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 05327c05594d38caf5e3d54f8a13eaaaac3588ec
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f5ffd1a9d0e7ff515b0819bb678bf0263f53e0d2
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097434"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918767"
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>使用 Azure 门户创建 BizTalk 服务
 
@@ -59,7 +59,7 @@ ms.locfileid: "58097434"
 Access Control 值可用于任何应用程序。 创建 Azure BizTalk 服务时，此 Access Control 命名空间将控制向 BizTalk 服务部署进行的身份验证。 如果要更改订阅或管理命名空间，则在左侧导航窗格中选择“Active Directory”，然后选择命名空间。 任务栏列出了选项。
 
 单击“管理”  会打开访问控制管理门户。 在访问控制管理门户中，BizTalk 服务使用“服务标识”：  
-![访问控制管理门户中的 ACS 服务标识][ACSServiceIdentities]
+![ACS 服务标识访问控制管理门户][ACSServiceIdentities]
 
 Access Control 服务标识是一组凭据，这些凭据允许应用程序或客户端使用 Access Control 直接进行身份验证并接收令牌。
 
@@ -68,7 +68,7 @@ Access Control 服务标识是一组凭据，这些凭据允许应用程序或�
 > 
 > 
 
-[管理 ACS 命名空间](https://msdn.microsoft.com/library/azure/hh674478.aspx) 列出了一些指导和建议。
+[管理 ACS 命名空间](/previous-versions/azure/azure-services/hh674478(v=azure.100)) 列出了一些指导和建议。
 
 ## <a name="requirements-explained"></a>要求说明
 下列要求不适用于免费版。
@@ -93,7 +93,7 @@ Azure 帐户可以有多个订阅，只要使用者获得许可，就可以管�
 <br/><br/>
 在创建 BizTalk 服务时，可以使用现有的 Azure SQL Server 和 Azure SQL 数据库，也可以自动创建新的 Azure SQL Server 或 Azure SQL 数据库。
 <br/><br/>
-自动配置 SQL 数据库规模。 通常，默认的规模就足以满足 BizTalk 服务的需要。 更改规模会影响定价。 请参阅 <a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">Accounts and Billing in Azure SQL Database</a>（Azure SQL 数据库中的帐户和计费）
+自动配置 SQL 数据库规模。 通常，默认的规模就足以满足 BizTalk 服务的需要。 更改规模会影响定价。 请参阅<a HREF="https://go.microsoft.com/fwlink/p/?LinkID=234930">帐户和 Azure SQL Database 中的计费</a>
 <br/><br/>
 <strong>说明</strong>
 <br/>

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
-ms.openlocfilehash: a73559e233f647d5bf0812a5acdf5e19f05b0858
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51255415"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918410"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。
@@ -75,8 +75,8 @@ DLL 或程序集缺失的症状可能为：
 现在，导航到网站将返回更明确的错误消息：
 
 * '/' 应用程序中出现服务器错误。
-* 说明：执行当前 Web 请求期间，出现未处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
-* 异常详细信息：System.IO.FIleNotFoundException：未能加载文件或程序集“Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35”或它的某一个依赖项。 系统找不到指定的文件。
+* 说明:当前 web 请求的执行期间出现未经处理的异常。 请检查堆栈跟踪信息，以了解有关该错误以及代码中导致错误的出处的详细信息。
+* 异常详细信息：System.IO.FIleNotFoundException:无法加载文件或程序集 Microsoft.WindowsAzure.StorageClient，版本 = 1.1.0.0，区域性 = 中性，PublicKeyToken = 31bf856ad364e35 或其某个依赖项。 系统找不到指定的文件。
 
 例如：
 
@@ -96,7 +96,7 @@ DLL 或程序集缺失的症状可能为：
 7. 角色启动后，会在 Internet Explorer 中看到详细的错误信息。 还可使用标准的 Windows 故障排除工具来进一步诊断问题。
 
 ## <a name="diagnose-issues-by-using-intellitrace"></a>使用 IntelliTrace 诊断问题
-对于使用 .NET Framework 4 的辅助角色和 Web 角色，可以使用 Microsoft Visual Studio Enterprise 中提供的 [IntelliTrace](https://msdn.microsoft.com/library/dd264915.aspx)。
+对于使用 .NET Framework 4 的辅助角色和 Web 角色，可以使用 Microsoft Visual Studio Enterprise 中提供的 [IntelliTrace](/visualstudio/debugger/intellitrace)。
 
 请按照以下步骤操作来部署启用了 IntelliTrace 的服务：
 
@@ -117,7 +117,7 @@ DLL 或程序集缺失的症状可能为：
 1. 在 Visual Studio 中打开解决方案。
 2. 在“**解决方案资源管理器**”中，打开 **References** 文件夹。
 3. 单击错误中标识的程序集。
-4. 在“**属性**”窗格中，找到“**复制本地属性**”并将值设置为 **True**。
+4. 在“属性”窗格中，找到“复制本地属性”并将值设置为“True”。
 5. 重新部署云服务。
 
 确认所有错误均已更正后，可以在不选中“**为 .NET 4 角色启用 IntelliTrace**”复选框的情况下部署服务。

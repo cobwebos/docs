@@ -5,15 +5,15 @@ services: storage
 author: rmatchoro
 ms.service: storage
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
-ms.openlocfilehash: 48fdf277f47b1e4abc8e3d7f7222d5b99a248b55
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850724"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904111"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
@@ -22,8 +22,8 @@ Azure 存储的高级的威胁防护提供的附加安全智能层，用于检�
 出现在活动中的异常情况时触发安全警报。  这些安全警报集成在一起[Azure 安全中心](https://azure.microsoft.com/services/security-center/)，还将发送通过电子邮件到订阅管理员，具有可疑活动和如何调查和修正的威胁的建议的详细信息。
 
 > [!NOTE]
-> * 目前仅适用于 Blob 存储的 Azure 存储高级的威胁防护。 
-> * 有关新的定价详细信息现已推出[Azure 安全中心](https://docs.microsoft.com/azure/security-center/security-center-pricing)定价页上，包括在试用期期间不收费的前 30 天的选项。 
+> * 目前仅适用于 Blob 存储的 Azure 存储高级的威胁防护。
+> * 有关定价详细信息，包括 30 天免费试用版，请参阅[Azure 安全中心定价页]( https://azure.microsoft.com/en-us/pricing/details/security-center/)。
 > * Azure 存储功能的 ATP 目前不在 Azure 政府版和主权云区域中可用。
 
 Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删除 Blob 存储进行威胁检测到的请求。 若要调查的警报从高级威胁防护，可以查看相关的存储活动使用存储分析日志记录。 有关详细信息，请参阅如何[配置存储分析日志记录](storage-monitor-storage-account.md#configure-logging)。
@@ -80,7 +80,7 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 使用以下 PowerShell cmdlet:
 
-  * [启用高级的威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [启用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
   * [获取高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
   * [禁用高级的威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 

@@ -7,14 +7,14 @@ ms.author: mamccrea
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 4/2/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9d5a0cf9fa4f9ad8b5a673cd2420416f92edda91
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.openlocfilehash: 4ecea8864a565997b8df119d870e7efee8448143
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53994974"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892222"
 ---
 # <a name="azure-stream-analytics-on-iot-edge"></a>Azure IoT Edge 流分析
  
@@ -44,12 +44,14 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 
 ### <a name="installation-instructions"></a>安装说明
 下表描述了高级步骤： 下面的部分将进行详细说明。
+
 |      |步骤   | 说明   |
 | ---   | ---   |  ---      |
-| 1   | 创建存储容器   | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
-| 2   | 创建 ASA 边缘作业   |  创建新的作业，选择“Edge”作为“宿主环境”。 <br> 这些作业从云创建/管理，并在你自己的 IoT Edge 设备上运行。     |
-| 3   | **在设备上设置 IoT Edge 环境**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 说明。          |
-| 4   | 在 IoT Edge 设备上部署 ASA   |  ASA 作业定义被导出到之前创建的存储容器。       |
+| 1   | **创建存储容器**   | 存储容器用于保存作业定义，IoT 设备可在其中进行访问它们。 <br>  你可以重用任何现有的存储容器。     |
+| 2   | **创建 ASA edge 作业**   |  创建新的作业，选择“Edge”作为“宿主环境”。 <br> 这些作业从云创建/管理，并在你自己的 IoT Edge 设备上运行。     |
+| 3   | **设置在设备上的 IoT Edge 环境**   | [Windows](https://docs.microsoft.com/azure/iot-edge/quickstart) 或 [Linux](https://docs.microsoft.com/azure/iot-edge/quickstart-linux) 说明。          |
+| 4   | **在 IoT Edge 设备上部署 ASA**   |  ASA 作业定义被导出到之前创建的存储容器。       |
+
 你可以按照[本分步教程](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)在 IoT Edge 上部署你的第一个 ASA 作业。 下面的视频可帮助你了解在 IoT Edge 设备上运行流分析作业的过程：  
 
 
@@ -104,7 +106,7 @@ ASA 使用 IoT 中心将 Edge 作业部署到设备。 [可在此处查看有关
 - 在 Azure 门户中，打开 IoT 中心，导航到 **IoT Edge**，并单击要用于此部署的设备。
 - 选择“设置模块”，然后依次选择“+ 添加”、“Azure 流分析模块”。
 - 选择订阅和你创建的 ASA Edge 作业。 单击“保存”。
-![在部署中添加 ASA 模块](media/stream-analytics-edge/add-stream-analytics-module.png)
+![在你的部署中添加 ASA 模块](media/stream-analytics-edge/add-stream-analytics-module.png)
 
 
 > [!Note]
@@ -123,16 +125,16 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 
 ```json
 {
-"routes": {                                              
-    "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
-    "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream", 
-    "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")" 
+    "routes": {
+        "sensorToAsa":   "FROM /messages/modules/tempSensor/* INTO BrokeredEndpoint(\"/modules/ASA/inputs/temperature\")",
+        "alertsToCloud": "FROM /messages/modules/ASA/* INTO $upstream",
+        "alertsToReset": "FROM /messages/modules/ASA/* INTO BrokeredEndpoint(\"/modules/tempSensor/inputs/control\")"
+    }
 }
-}   
 
 ```
 此示例演示下图中所述的方案的路由。 它包含名为“ASA”的边缘作业，以及名为“temperature”的输入和和名为“alert”的输出。
-![消息路由关系图示例](media/stream-analytics-edge/edge-message-routing-example.png)
+![图示例中的消息路由](media/stream-analytics-edge/edge-message-routing-example.png)
 
 以下示例定义了以下路由：
 - 来自 tempSensor 的每个消息均发送到名为 ASA 的模块，再到名为“temperature”的输入，
@@ -142,7 +144,7 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 
 ## <a name="technical-information"></a>技术信息
 ### <a name="current-limitations-for-iot-edge-jobs-compared-to-cloud-jobs"></a>与云作业相比，IoT Edge 作业当前受限制
-目标是在 IoT Edge 作业和云作业之间进行平衡。 已支持大多数 SQL 查询语言功能。
+目标是在 IoT Edge 作业和云作业之间进行平衡。 支持大多数 SQL 查询语言功能，启用云和 IoT Edge 上运行相同的逻辑。
 但是，以下功能尚不支持 Edge 作业：
 * JavaScript 中的用户定义函数 (UDF)。 [用于 IoT Edge 作业的 C#](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf)（预览版）中提供了 UDF。
 * 用户定义聚合 (UDA)。
@@ -150,14 +152,6 @@ IoT Edge 提供了一种在模块之间，以及模块和 IoT 中心之间以声
 * 在单个步骤中使用超过 14 个聚合。
 * 用于输入/输出的 AVRO 格式。 目前仅支持 CSV 和 JSON。
 * 以下 SQL 运算符：
-    * 地理空间运算符：
-        * CreatePoint
-        * CreatePolygon
-        * CreateLineString
-        * ST_DISTANCE
-        * ST_WITHIN
-        * ST_OVERLAPS
-        * ST_INTERSECTS
     * 分区依据
     * GetMetadataPropertyValue
 
@@ -215,8 +209,8 @@ IoT Edge 上的参考数据更新将由部署触发。 在触发后，ASA 模块
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure IoT Edge 的详细信息](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
-* [IoT Edge 教程上的 ASA ](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
+* [Azure Iot Edge 的详细信息](https://docs.microsoft.com/azure/iot-edge/how-iot-edge-works)
+* [IoT Edge 教程上的 ASA](https://docs.microsoft.com/azure/iot-edge/tutorial-deploy-stream-analytics)
 * [使用 Visual Studio 工具开发流分析 Edge 作业](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-edge-jobs)
 * [使用 API 实现流分析的 CI/CD](stream-analytics-cicd-api.md)
 

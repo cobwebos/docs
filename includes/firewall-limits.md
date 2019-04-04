@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 3/25/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 368a7cf1d372d79f062affe9b206d070afe5c2f7
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 0467359cd9d6a067e519a62532f00459bc5f68cb
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505757"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890867"
 ---
 | 资源 | 默认限制 |
 | --- | --- |
@@ -21,6 +21,6 @@ ms.locfileid: "58505757"
 |规则|10000，所有规则类型组合。|
 |最小 AzureFirewallSubnet 大小 |/26|
 |网络和应用程序规则的端口范围|0-64,000。 目前正在努力放宽此限制。|
-|路由表|默认情况下，AzureFirewallSubnet 0.0.0.0/0 路由的 NextHopType 值设置为**Internet**。<br><br>如果启用强制隧道连接到本地通过 ExpressRoute 或 VPN 网关，可能需要显式配置为 Internet 设置的 NextHopType 值 0.0.0.0/0 用户定义的路由 (UDR) 并将其与你 AzureFirewallSubnet 关联。 此设置将替代的潜在默认网关返回到你的本地网络的 BGP 播发。 如果你的组织要求 Azure 防火墙，以将返回到你的本地网络的默认网关通信的强制隧道，请联系支持。 我们可以维护你的订阅以确保所需的 Internet 连接防火墙的白名单。|
+|路由表|默认情况下，AzureFirewallSubnet 0.0.0.0/0 路由的 NextHopType 值设置为**Internet**。<br><br>如果启用强制隧道连接到本地通过 ExpressRoute 或 VPN 网关，可能需要显式配置为 Internet 设置的 NextHopType 值 0.0.0.0/0 用户定义的路由 (UDR) 并将其与你 AzureFirewallSubnet 关联。 此设置将替代的潜在默认网关返回到你的本地网络的 BGP 播发。 如果你的组织要求 Azure 防火墙，以将你的本地网络上返回到默认网关通信的强制隧道，请联系支持。 我们可以维护你的订阅以确保所需的 Internet 连接防火墙的白名单。|
 
 <sup>1</sup>如果需要增加这些限制，请联系 Azure 支持部门。

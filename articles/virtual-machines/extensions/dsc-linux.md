@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
-ms.openlocfilehash: 01c3e9c82959629dc3e43fb6b0833d4dbb05e0aa
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 67f72c5b396bc935f7bec34bc8a52f63131649b1
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823002"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904468"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>适用于 Linux 的 DSC 扩展 (Microsoft.OSTCExtensions.DSCForLinux)
 
@@ -57,27 +57,27 @@ DSCForLinux 扩展要求目标虚拟机已连接到 Internet。 例如，Registe
 
 下面是所有支持的公共配置参数：
 
-* `FileUri`：（可选，字符串）MOF 文件/元 MOF 文件/自定义资源 ZIP 文件的 URI。
-* `ResourceName`：（可选，字符串）自定义资源模块的名称
-* `ExtensionAction`：（可选，字符串）指定扩展的功能。 有效值：Register、Push、Pull、Install、Remove。 如果未指定，则默认将值视为推送操作。
-* `NodeConfigurationName`：（可选，字符串）要应用的节点配置的名称。
-* `RefreshFrequencyMins`：（可选，整数）指定 DSC 尝试从提取服务器获取配置的频率（以分钟为单位）。 
+* `FileUri`: （可选，字符串) 的 MOF 文件/元 MOF 文件/自定义资源 ZIP 文件 uri。
+* `ResourceName`: （可选，字符串) 的自定义资源模块的名称
+* `ExtensionAction`: （可选，字符串) 指定扩展的作用。 有效值：Register、Push、Pull、Install、Remove。 如果未指定，则默认将值视为推送操作。
+* `NodeConfigurationName`: （可选，字符串) 要应用的节点配置的名称。
+* `RefreshFrequencyMins`: (可选，int) 指定频率 （以分钟为单位），DSC 将尝试从请求服务器获取配置。 
        如果提取服务器上的配置不同于目标节点上的当前配置，则会将前者复制到挂起的存储并应用。
-* `ConfigurationMode`：（可选，字符串）指定 DSC 如何应用配置。 有效值是：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
-* `ConfigurationModeFrequencyMins`：（可选，整数）指定 DSC 确保配置处于所需状态的频率（以分钟为单位）。
+* `ConfigurationMode`: （可选，字符串) 指定 DSC 应将配置的应用。 有效值是：ApplyOnly、ApplyAndMonitor 和 ApplyAndAutoCorrect。
+* `ConfigurationModeFrequencyMins`: (可选，int) 指定频率 （以分钟为单位），DSC 将确保配置处于所需的状态。
 
 > [!NOTE]
-> 如果使用的版本小于 2.3，则 mode 参数与 ExtensionAction 相同。 Mode（模式）看上去像是一个重载的术语。 因此，为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
+> 如果使用的版本小于 2.3，则 mode 参数与 ExtensionAction 相同。 模式似乎是一个重载的术语。 因此，为了避免混淆，从版本 2.3 开始使用了 ExtensionAction。 为了向后兼容，扩展支持 mode 和 ExtensionAction。 
 >
 
 ### <a name="12-protected-configuration"></a>1.2 受保护的配置
 
 下面是所有支持的受保护配置参数：
 
-* `StorageAccountName`：（可选，字符串）包含文件的存储帐户的名称
-* `StorageAccountKey`：（可选，字符串）包含文件的存储帐户的密钥
-* `RegistrationUrl`：（可选，字符串）Azure 自动化帐户的 URL
-* `RegistrationKey`：（可选，字符串）Azure 自动化帐户的访问密钥
+* `StorageAccountName`: （可选，字符串) 的包含文件的存储帐户名称
+* `StorageAccountKey`: （可选，字符串) 的包含文件的存储帐户密钥
+* `RegistrationUrl`: （可选，字符串) 的 Azure 自动化帐户的 URL
+* `RegistrationKey`: （可选，字符串) 的 Azure 自动化帐户的访问密钥
 
 
 ## <a name="scenarios"></a>方案

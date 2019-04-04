@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 3/26/2019
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: c632989ea85033c6cbdd4188351d34345e919c49
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: b8842ab4bcaf16b7345b25fa9ac4998981d9c458
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500655"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890866"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -131,7 +131,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 Azure 防火墙必须具有直接 Internet 连接。 默认情况下，AzureFirewallSubnet 0.0.0.0/0 路由的 NextHopType 值设置为**Internet**。
 
-如果启用强制隧道连接到本地通过 ExpressRoute 或 VPN 网关，可能需要显式配置为 Internet 设置的 NextHopType 值 0.0.0.0/0 用户定义的路由 (UDR) 并将其与你 AzureFirewallSubnet 关联。 此设置将替代的潜在默认网关返回到你的本地网络的 BGP 播发。 如果你的组织要求 Azure 防火墙，以将返回到你的本地网络的默认网关通信的强制隧道，请联系支持。 我们可以维护你的订阅以确保所需的 Internet 连接防火墙的白名单。
+如果启用强制隧道连接到本地通过 ExpressRoute 或 VPN 网关，可能需要显式配置为 Internet 设置的 NextHopType 值 0.0.0.0/0 用户定义的路由 (UDR) 并将其与你 AzureFirewallSubnet 关联。 此设置将替代的潜在默认网关返回到你的本地网络的 BGP 播发。 如果你的组织要求 Azure 防火墙，以将你的本地网络上返回到默认网关通信的强制隧道，请联系支持。 我们可以维护你的订阅以确保所需的 Internet 连接防火墙的白名单。
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 

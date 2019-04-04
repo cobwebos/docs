@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: govindk
 ms.reviewer: sngun
-ms.openlocfilehash: 4e609bf6d96fa9cc3f2dc179157ecd27178608f9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 672c62c440708f8e949d67d545bee2179c6066b2
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860344"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894929"
 ---
 # <a name="access-azure-cosmos-db-from-virtual-networks-vnet"></a>从虚拟网络 (VNet) 访问 Azure Cosmos DB
 
@@ -55,9 +55,12 @@ NSG 规则用于限制与虚拟网络中子网之间的连接。 将 Azure Cosmo
 ### <a name="are-service-endpoints-available-for-all-vnets"></a>服务终结点是否适用于所有 VNet？
 否，只能为 Azure 资源管理器虚拟网络启用服务终结点。 经典虚拟网络不支持服务终结点。
 
+### <a name="can-i-accept-connections-from-within-public-azure-datacenters-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>为 Azure Cosmos DB 启用了服务终结点访问时，我能否“接受从公用 Azure 数据中心内连接”？  
+仅当你希望自己的 Azure Cosmos DB 帐户可供其他 Azure 第一方服务（例如 Azure 数据工厂和 Azure 搜索）或给定 Azure 区域中部署的任何服务访问时，才需要这样做。
+
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何限制 Azure Cosmos 帐户访问虚拟网络中的子网](how-to-configure-vnet-service-endpoint.md)
-* [如何为 Azure Cosmos 帐户配置 IP 防火墙](how-to-configure-firewall.md)
+* [如何限制对虚拟网络中的子网的 Azure Cosmos 帐户访问](how-to-configure-vnet-service-endpoint.md)
+* [如何配置你的 Azure Cosmos 帐户的 IP 防火墙](how-to-configure-firewall.md)
 

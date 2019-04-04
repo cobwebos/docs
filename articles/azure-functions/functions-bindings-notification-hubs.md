@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 8ab1ae5d1f6db563caef5b6c27ccd4fcbbd2e255
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9f80f1a8d02352daa663ee5ea4fa9287e0e8580e
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777628"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893786"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>适用于 Azure Functions 的 通知中心输出绑定
 
@@ -42,10 +42,10 @@ ms.locfileid: "57777628"
 
 参阅语言特定的示例：
 
-* [C# 脚本 - out 参数](#c-script-template-example---out-parameter)
-* [C# 脚本 - 异步](#c-script-template-example---asynchronous)
-* [C# 脚本 - JSON](#c-script-template-example---json)
-* [C# 脚本 - 库类型](#c-script-template-example---library-types)
+* [C#脚本-out 参数](#c-script-template-example---out-parameter)
+* [C#脚本-异步](#c-script-template-example---asynchronous)
+* [C#脚本-JSON](#c-script-template-example---json)
+* [C#脚本-库类型](#c-script-template-example---library-types)
 * [F#](#f-template-example)
 * [JavaScript](#javascript-template-example)
 
@@ -281,15 +281,15 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 
 下表解释了在 *function.json* 文件和 `NotificationHub` 特性中设置的绑定配置属性：
 
-|function.json 属性 | Attribute 属性 |说明|
+|function.json 属性 | Attribute 属性 |描述|
 |---------|---------|----------------------|
-|类型 |不适用| 必须设置为“notificationHub”。 |
-|direction |不适用| 必须设置为“out”。 | 
-|name |不适用| 在通知中心消息的函数代码中使用的变量名。 |
+|**type** |不适用| 必须设置为“notificationHub”。 |
+|**direction** |不适用| 必须设置为“out”。 | 
+|**名称** |不适用| 在通知中心消息的函数代码中使用的变量名。 |
 |**tagExpression** |**TagExpression** | 标记表达式允许指定将通知传递到一组已注册接收通知的与标记表达式匹配的设备。  有关详细信息，请参阅[路由和标记表达式](../notification-hubs/notification-hubs-tags-segment-push-message.md)。 |
 |**hubName** | **HubName** | 在 Azure 门户中通知中心资源的名称。 |
 |**连接** | **ConnectionStringSetting** | 包含通知中心连接字符串的应用设置的名称。  连接字符串必须设置为通知中心的 *DefaultFullSharedAccessSignature* 值。 请参阅本文稍后的[连接字符串设置](#connection-string-setup)部分。|
-|**platform** | 平台 | 平台属性指示通知面向的客户端平台。 默认情况下，如果从输出绑定中省略平台属性，则模板通知可用于面向 Azure 通知中心上配置的任何平台。 有关一般情况下使用模板通过 Azure 通知中心发送跨平台通知的详细信息，请参阅[模板](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 进行设置时，platform 必须是以下值之一： <ul><li><code>apns</code>&mdash;Apple Push Notification 服务。 有关配置 APNS 的通知中心和在客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心向 iOS 发送推送通知](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 有关配置 ADM 的通知中心和在 Kindle 应用中接收通知的详细信息，请参阅[通知中心入门（Kindle 应用）](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>gcm</code>&mdash;[Google Cloud Messaging](https://developers.google.com/cloud-messaging/)。 同样支持 Firebase Cloud Messaging 这一新版本的 GCM。 有关详细信息，请参阅[通过 Azure 通知中心向 Android 发送推送通知](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)。</li><li><code>wns</code>&mdash;面向 Windows 平台的 [Windows 推送通知服务](https://msdn.microsoft.com/windows/uwp/controls-and-patterns/tiles-and-notifications-windows-push-notification-services--wns--overview)。 WNS 也支持 Windows Phone 8.1 及更高版本。 有关详细信息，请参阅[适用于 Windows 通用平台应用的通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推送通知服务](https://msdn.microsoft.com/library/windows/apps/ff402558.aspx)。 此平台支持 Windows Phone 8 和早期版本的 Windows Phone 平台。 有关详细信息，请参阅[在 Windows Phone 上借助 Azure 通知中心发送推送通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
+|**平台** | **平台** | 平台属性指示通知面向的客户端平台。 默认情况下，如果从输出绑定中省略平台属性，则模板通知可用于面向 Azure 通知中心上配置的任何平台。 有关一般情况下使用模板通过 Azure 通知中心发送跨平台通知的详细信息，请参阅[模板](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md)。 进行设置时，platform 必须是以下值之一： <ul><li><code>apns</code>&mdash;Apple Push Notification 服务。 有关配置 APNS 的通知中心和在客户端应用中接收通知的详细信息，请参阅[通过 Azure 通知中心向 iOS 发送推送通知](../notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started.md)。</li><li><code>adm</code>&mdash;[Amazon Device Messaging](https://developer.amazon.com/device-messaging)。 有关配置 ADM 的通知中心和在 Kindle 应用中接收通知的详细信息，请参阅[通知中心入门（Kindle 应用）](../notification-hubs/notification-hubs-kindle-amazon-adm-push-notification.md)。</li><li><code>gcm</code>&mdash;[Google 云消息传送](https://developers.google.com/cloud-messaging/)。 同样支持 Firebase Cloud Messaging 这一新版本的 GCM。 有关详细信息，请参阅[通过 Azure 通知中心向 Android 发送推送通知](../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md)。</li><li><code>wns</code>&mdash;[Windows 推送通知服务](/windows/uwp/design/shell/tiles-and-notifications/windows-push-notification-services--wns--overview)面向 Windows 平台。 WNS 也支持 Windows Phone 8.1 及更高版本。 有关详细信息，请参阅[适用于 Windows 通用平台应用的通知中心入门](../notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。</li><li><code>mpns</code>&mdash;[Microsoft 推送通知服务](/previous-versions/windows/apps/ff402558(v=vs.105))。 此平台支持 Windows Phone 8 和早期版本的 Windows Phone 平台。 有关详细信息，请参阅[在 Windows Phone 上借助 Azure 通知中心发送推送通知](../notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns.md)。</li></ul> |
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -337,5 +337,5 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [详细了解 Azure Functions 触发器和绑定](functions-triggers-bindings.md)
+> [了解有关 Azure functions 触发器和绑定的详细信息](functions-triggers-bindings.md)
 

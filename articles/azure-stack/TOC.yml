@@ -4,21 +4,21 @@ items:
 - name: 概述
   items:
   - name: 什么是 Azure Stack？
-    href: azure-stack-poc.md
-  - name: 重要功能和概念
-    href: azure-stack-key-features.md
+    href: azure-stack-overview.md
+  - name: 比较 Azure 生态系统
+    href: compare-azure-azure-stack.md
   - name: 发行说明
     items:
     - name: 最新更新
       href: azure-stack-servicing-policy.md
+    - name: 1903 更新
+      href: azure-stack-update-1903.md
     - name: 1902 更新
       href: azure-stack-update-1902.md
     - name: 1901 更新
       href: azure-stack-update-1901.md
     - name: 1811 更新
       href: azure-stack-update-1811.md
-    - name: 1809 更新
-      href: azure-stack-update-1809.md
 - name: 快速入门
   items:
   - name: 使用管理门户
@@ -115,12 +115,12 @@ items:
         href: azure-stack-integrate-security.md
       - name: 设备审核
         href: azure-stack-integrate-physical-device-auditing.md
-  - name: 管理基础知识
-    href: azure-stack-manage-basics.md
 - name: 操作指南
   items:
   - name: 管理 Azure Stack
     items:
+    - name: 管理基础知识
+      href: azure-stack-manage-basics.md
     - name: 配置遥测数据的收集
       href: azure-stack-telemetry.md
     - name: 注册 Azure Stack
@@ -233,6 +233,8 @@ items:
       href: azure-stack-redhat-create-upload-vhd.md
     - name: 提供 Kubernetes 群集
       href: azure-stack-solution-template-kubernetes-cluster-add.md
+    - name: 创建站点到站点 VPN 连接
+      href: azure-stack-create-vpn-connection-one-node.md
   - name: 提供服务
     href: azure-stack-offer-services-overview.md
   - name: 提供 SQL 作为 PaaS
@@ -298,7 +300,7 @@ items:
       href: azure-stack-app-service-add-worker-roles.md
     - name: 配置部署源
       href: azure-stack-app-service-configure-deployment-sources.md
-    - name: 备份应用程序服务
+    - name: 备份应用服务
       href: app-service-back-up.md
     - name: 恢复应用服务
       href: app-service-recover.md
@@ -403,9 +405,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-stack
   - name: 培训和认证
     href: https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert
-ms.openlocfilehash: f2ea6b4ae7ff49d3263805460a30e5d407f7c0e6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: a0c5682428d740bd109411333f13849c0e74d88e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338354"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906304"

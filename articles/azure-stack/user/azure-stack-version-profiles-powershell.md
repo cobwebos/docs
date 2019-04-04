@@ -16,12 +16,12 @@ ms.date: 01/05/2019
 ms.author: sethm
 ms.reviewer: sijuman
 ms.lastreviewed: 01/05/2019
-ms.openlocfilehash: c6bee5c66661f59a6287d624bf5a55428ebbe56e
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: 6bad40b840d6bd511ad0526c47e8a43f692a5cc2
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238109"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58483570"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>在 Azure Stack 中使用 PowerShell 的 API 版本配置文件
 
@@ -33,7 +33,7 @@ API 版本配置文件提供一种管理 Azure 与 Azure Stack 之间版本差�
 
 可通过 PowerShell 库获得的 **AzureRM.Bootstrapper** 模块会提供使用 API 版本配置文件所需的 PowerShell cmdlet。 使用以下 cmdlet 安装 **AzureRM.Bootstrapper** 模块：
 
-```PowerShell
+```powershell
 Install-Module -Name AzureRm.BootStrapper
 ```
 
@@ -55,19 +55,19 @@ Install-Module -Name AzureRm.BootStrapper
 
 使用 **Install-AzureRmProfile** cmdlet 搭配 **2018-03-01-hybrid** API 版本配置文件，安装 Azure Stack 所需的 AzureRM 模块。 Azure Stack 操作员模块并不会随此 API 版本配置文件一起安装。 应该根据[安装适用于 Azure Stack 的 PowerShell](../azure-stack-powershell-install.md) 一文的“步骤 3”中所述，单独安装这些模块。
 
-```PowerShell
+```powershell
 Install-AzureRMProfile -Profile 2018-03-01-hybrid
 ```
 
 ## <a name="install-and-import-modules-in-a-profile"></a>安装并导入配置文件中的模块
 
-使用 **Use-AzureRmProfile** cmdlet 安装并导入与 API 版本配置文件关联的模块。 在一个 PowerShell 会话中只能导入一个 API 版本配置文件。 若要导入不同的 API 版本配置文件，必须打开新的 PowerShell 会话。 **Use-azurermprofile** cmdlet 将执行以下任务：
+使用 **Use-AzureRmProfile** cmdlet 安装并导入与 API 版本配置文件关联的模块。 在一个 PowerShell 会话中只能导入一个 API 版本配置文件。 若要导入不同的 API 版本配置文件，必须打开新的 PowerShell 会话。 **Use-AzureRMProfile** cmdlet 执行以下任务：
 
 1. 检查当前范围中是否已安装与所指定 API 版本配置文件关联的 PowerShell 模块。  
 2. 下载并安装这些模块（如果尚未安装）。
 3. 将模块导入到当前的 PowerShell 会话中。
 
-```PowerShell
+```powershell
 # Installs and imports the specified API version profile into the current PowerShell session.
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser
 
@@ -77,7 +77,7 @@ Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser -Force
 
 若要从某个 API 版本配置文件安装并导入选定的 AzureRM 模块，请搭配 **Module** 参数运行 **Use-AzureRMProfile** cmdlet：
 
-```PowerShell
+```powershell
 # Installs and imports the compute, storage and network modules from the specified API version profile into your current PowerShell session.
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
@@ -86,7 +86,7 @@ Use-AzureRmProfile -Profile 2018-03-01-hybrid -Module AzureRM.Compute, AzureRM.S
 
 使用 **Get-AzureRmProfile** cmdlet 获取可用的 API 版本配置文件列表：
 
-```PowerShell
+```powershell
 # lists all API version profiles provided by the AzureRM.BootStrapper module.
 Get-AzureRmProfile -ListAvailable
 
@@ -96,19 +96,19 @@ Get-AzureRmProfile
 
 ## <a name="update-profiles"></a>更新配置文件
 
-使用 **Update-AzureRmProfile** cmdlet 将 API 版本配置文件中的模块更新为 PSGallery 中可用的最新版模块。 建议始终运行**Update-azurermprofile**以避免冲突，导入模块时的新 PowerShell 会话中的 cmdlet。 **Update-AzureRmProfile** cmdlet 会运行以下任务：
+使用 **Update-AzureRmProfile** cmdlet 将 API 版本配置文件中的模块更新为 PSGallery 中可用的最新版模块。 建议在导入模块时，始终在新的 PowerShell 会话中运行 **Update-AzureRmProfile** cmdlet，以避免发生冲突。 **Update-AzureRmProfile** cmdlet 会运行以下任务：
 
 1. 检查当前范围的给定 API 版本配置文件中是否已安装最新版模块。  
 2. 提示安装这些模块（如果尚未安装）。  
 3. 将已更新的模块安装并导入到当前的 PowerShell 会话中。  
 
-```PowerShell
+```powershell
 Update-AzureRmProfile -Profile 2018-03-01-hybrid
 ```
 
 <!-- To remove the previously installed versions of the modules before updating to the latest available version, use the Update-AzureRmProfile cmdlet along with the **-RemovePreviousVersions** parameter:
 
-```PowerShell 
+```powershell 
 Update-AzureRmProfile -Profile 2018-03-01-hybrid -RemovePreviousVersions
 ``` -->
 
@@ -116,14 +116,14 @@ Update-AzureRmProfile -Profile 2018-03-01-hybrid -RemovePreviousVersions
 
 1. 检查当前范围的给定 API 版本配置文件中是否已安装最新版模块。  
 2. 从当前的 API 版本配置文件和当前 PowerShell 会话中删除旧版模块。  
-3. 将提示您安装最新版本。  
+3. 提示安装最新版本。  
 4. 将已更新的模块安装并导入到当前的 PowerShell 会话中。  
 
 ## <a name="uninstall-profiles"></a>卸载配置文件
 
 使用 **Uninstall-AzureRmProfile** cmdlet 卸载指定的 API 版本配置文件。
 
-```PowerShell
+```powershell
 Uninstall-AzureRmProfile -Profile  2018-03-01-hybrid
 ```
 

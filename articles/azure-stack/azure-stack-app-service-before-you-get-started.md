@@ -16,12 +16,12 @@ ms.date: 03/11/2019
 ms.author: anwestg
 ms.reviewer: anwestg
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 58be7b6dc9eeeadd69fe82f1dc03d959aa94f9c8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb2c01052b8dc5fe346196a64e3fcbf7d1b69c2b
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58088428"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58485744"
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>在 Azure Stack 上开始使用应用服务之前
 
@@ -30,7 +30,7 @@ ms.locfileid: "58088428"
 在 Azure Stack 上部署 Azure 应用服务之前，必须完成本文中的先决条件步骤。
 
 > [!IMPORTANT]
-> 将 1901年更新应用于 Azure Stack 集成系统，或在部署 Azure 应用服务 1.5 之前部署最新 Azure Stack 开发工具包 (ASDK)。
+> 请将 1901 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包 (ASDK)，然后部署 Azure 应用服务 1.5。
 
 ## <a name="download-the-installer-and-helper-scripts"></a>下载安装程序与帮助器脚本
 
@@ -49,7 +49,7 @@ ms.locfileid: "58088428"
 
 ## <a name="syndicate-the-custom-script-extension-from-the-marketplace"></a>从市场合成自定义脚本扩展版本
 
-Azure Stack 上的 azure 应用服务需要自定义脚本扩展 v1.9.1。  开始部署或升级 Azure Stack 上的 Azure 应用服务之前，必须先[从市场合成](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)该扩展
+Azure Stack 上的 Azure 应用服务需要自定义脚本扩展 v1.9.1。  开始部署或升级 Azure Stack 上的 Azure 应用服务之前，必须先[从市场合成](https://docs.microsoft.com/azure/azure-stack/azure-stack-download-azure-marketplace-item)该扩展
 
 ## <a name="get-certificates"></a>获取证书
 
@@ -61,7 +61,7 @@ Azure Stack 上的 azure 应用服务需要自定义脚本扩展 v1.9.1。  开�
 
 运行以下 PowerShell 命令时，必须为 AzureStack\CloudAdmin 提供特权终结点和凭据。
 
-```PowerShell
+```powershell
     Get-AzureStackRootCert.ps1
 ```
 
@@ -353,7 +353,7 @@ GO
 13. 选择“设置”。
 14. 选择“所需的权限” > “授予权限” > “是”。
 
-```PowerShell
+```powershell
     Create-AADIdentityApp.ps1
 ```
 
@@ -389,7 +389,7 @@ GO
 5. 在“凭据”窗口中，输入 AD FS 云管理帐户和密码。 选择“确定”。
 6. 提供[前面创建的证书](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-before-you-get-started)的证书文件路径和证书密码。 默认情况下值，为此步骤创建的证书是 **sso.appservice.local.azurestack.external.pfx**。
 
-```PowerShell
+```powershell
     Create-ADFSIdentityApp.ps1
 ```
 

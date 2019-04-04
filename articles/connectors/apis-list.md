@@ -1,5 +1,5 @@
 ---
-title: Azure 逻辑应用的连接器 | Microsoft Docs
+title: Azure 逻辑应用的连接器
 description: 使用 Azure 逻辑应用的连接器（包括内置、托管、本地集成帐户和企业连接器）自动执行工作流
 services: logic-apps
 ms.service: logic-apps
@@ -9,25 +9,27 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: b320696a56855baaa4af10177d25dfe9973ee73a
-ms.sourcegitcommit: c8088371d1786d016f785c437a7b4f9c64e57af0
-ms.translationtype: HT
+ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52635435"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895877"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
-使用 Azure 逻辑应用创建自动化工作流时，连接器的作用不可或缺。 使用逻辑应用中连接器，可以扩展本地和云应用的功能，以便对创建的数据和现有的数据执行任务。 
+连接器提供的快速访问从 Azure 逻辑应用到事件、 数据和操作跨其他应用程序、 服务、 系统、 协议和平台。 通过逻辑应用中使用连接器，您可以展开在本地和云应用程序使用的数据，创建并已执行任务的功能。
 
-虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 连接器以内置操作或托管连接器的形式提供。 
+虽然逻辑应用提供[约 200 多个连接器](https://docs.microsoft.com/connectors)，但本文只介绍一些流行的和较常用的连接器，数千个应用和数百万次执行已成功使用这些连接器来处理数据与信息。 若要查找的连接器和每个连接器的参考信息的完整列表，例如触发器、 操作和限制，查看连接器引用下的页面[连接器概述](https://docs.microsoft.com/connectors)。 此外，详细了解如何[触发器和操作](#triggers-actions)。
 
 > [!NOTE]
-> 有关连接器的完整列表以及每个连接器的参考信息（例如操作、任何触发器和限制），可以在[连接器概述](https://docs.microsoft.com/connectors)下找到完整列表。
+> 若要使用的服务或没有连接器的 API 集成，您可以直接通过 HTTP 等协议调用服务或创建[自定义连接器](#custom)。
 
-* [**内置操作**](#built-ins)：这些内置操作和触发器可帮助创建按自定义计划运行的逻辑应用、与其他终结点通信、接收和响应请求，以及调用 Azure 函数、Azure API 应用（Web 应用）、通过 Azure API 管理进行管理和发布的自有 API，和可以接收请求的嵌套逻辑应用。 还可以使用内置操作来帮助组织和控制逻辑应用工作流及处理数据。
+为内置的触发器和操作或托管连接器，连接器不可用：
 
-* **托管的连接器**：这些连接器提供触发器和操作用于访问其他服务与系统。 某些连接器要求首先创建由 Azure 逻辑应用管理的连接。 托管的连接器组织成以下组：
+* [**内置操作**](#built-ins)：这些内置的操作和触发器是"本机"到 Azure 逻辑应用，帮助您创建逻辑应用的自定义计划上运行，与其他终结点进行通信、 接收和响应的请求，并调用 Azure functions、 Azure API 应用 （Web 应用），你自己的 Api托管和使用已发布 Azure API 管理，以及嵌套的逻辑应用可以接收请求。 还可以使用内置操作来帮助组织和控制逻辑应用工作流及处理数据。
+
+* **托管连接器**：部署和由 Microsoft 管理，这些连接器提供触发器和用于访问其他服务和 Office 365、 Azure Blob 存储、 SQL Server、 Salesforce 等系统的操作。 某些连接器需要首先创建连接，由 Azure 逻辑应用管理。 托管的连接器组织成以下组：
 
   |   |   |
   |---|---|
@@ -40,7 +42,7 @@ ms.locfileid: "52635435"
   例如，如果你使用 Microsoft BizTalk Server，则逻辑应用可以使用 [BizTalk Server 连接器](#on-premises-connectors)连接到 BizTalk Server 并与其通信。 
   然后，可以使用[集成帐户连接器](#integration-account-connectors)在逻辑应用中扩展或执行类似于 BizTalk 的操作。 
 
-> [!NOTE] 
+> [!NOTE]
 > 有关连接器的完整列表以及每个连接器的参考信息（例如由 Swagger 说明定义的操作和任何触发器以及任何限制），可以在[连接器概述](/connectors/)下找到完整列表。 有关定价信息，请参阅[逻辑应用定价详细信息](https://azure.microsoft.com/pricing/details/logic-apps/)和[逻辑应用定价模型](../logic-apps/logic-apps-pricing.md)。 
 
 <a name="built-ins"></a>
@@ -74,8 +76,8 @@ ms.locfileid: "52635435"
 
 |   |   | 
 |---|---| 
-| [![“内置”图标][data-operations-icon]<br/>**数据操作**][data-operations-doc] | 对数据执行操作： <p>- **组合**：基于具有不同类型的多个输入创建单个输出。 <br>- **创建 CSV 表**：基于包含 JSON 对象的数组创建逗号分隔值 (CSV) 表。 <br>- **创建 HTML 表**：基于包含 JSON 对象的数组创建一个 HTML 表。 <br>- **筛选数组**：基于符合条件的另一个数组中的项创建一个数组。 <br>- **联接**：基于数组中的所有项创建一个字符串，并使用指定的分隔符分隔这些项。 <br>- **分析 JSON**：基于 JSON 内容中的属性及其值创建用户友好的令牌，以便可以在工作流中使用这些属性。 <br>- **选择**：通过转换另一数组中的项或值并将这些项映射到指定的属性，创建包含 JSON 对象的数组。 | 
-| ![内置操作图标][date-time-icon]<br/>**日期时间** | 对时间戳执行操作： <p>- **添加到时间**：将指定的单位数添加到时间戳。 <br>- **转换时区**：将时间戳从源时区转换为目标时区。 <br>- **当前时间**：返回字符串形式的当前时间戳。 <br>- **获取将来的时间**：返回当前时间戳加上指定的时间单位。 <br>- **获取过去的时间**：返回当前时间戳减去指定的时间单位。 <br>- **从时间减去**：从时间戳中减去一定数目的时间单位。 |
+| [![“内置”图标][data-operations-icon]<br/>**数据操作**][data-operations-doc] | 对数据执行操作： <p>- **撰写**：基于具有不同类型的多个输入创建单个输出。 <br>- **创建 CSV 表**：基于包含 JSON 对象的数组创建逗号分隔值 (CSV) 表。 <br>- **创建 HTML 表**：基于包含 JSON 对象的数组创建一个 HTML 表。 <br>- **筛选数组**：基于符合条件的另一个数组中的项创建一个数组。 <br>- **联接**：基于数组中的所有项创建一个字符串，并使用指定的分隔符分隔这些项。 <br>- **分析 JSON**：基于 JSON 内容中的属性及其值创建用户友好的令牌，以便可以在工作流中使用这些属性。 <br>- **选择**：通过转换另一数组中的项或值并将这些项映射到指定的属性，创建包含 JSON 对象的数组。 | 
+| ![内置图标][date-time-icon]<br/>**DateTime** | 对时间戳执行操作： <p>- **添加到时间**：将指定的单位数添加到时间戳。 <br>- **转换时区**：将时间戳从源时区转换为目标时区。 <br>- **当前时间**：返回字符串形式的当前时间戳。 <br>- **获取将来的时间**：返回当前时间戳加上指定的时间单位。 <br>- **获取过去的时间**：返回当前时间戳减去指定的时间单位。 <br>- **从时间中减去**：从时间戳中减去一定数目的时间单位。 |
 | [![内置操作图标][variables-icon]<br/>**变量**][variables-doc] | 对变量执行操作： <p>- **追加到数组变量**：插入一个值，作为变量存储的数组中的最后一个项。 <br>- **追加到字符串变量**：插入一个值，作为变量存储的字符串中的最后一个字符。 <br>- **递减变量**：按常量值减小变量。 <br>- **递增变量**：按常量值增大变量。 <br>- **初始化变量**：创建一个变量并声明其数据类型和初始值。 <br>- **设置变量**：将不同的值分配给现有变量。 |
 |  |  | 
 
@@ -131,25 +133,36 @@ ms.locfileid: "52635435"
 | [![API 图标][ibm-mq-icon]<br/>**IBM MQ**][ibm-mq-doc] | [![API 图标][sap-icon]<br/>**SAP**][sap-connector-doc] |
 ||| 
 
-## <a name="more-about-triggers-and-actions"></a>有关触发器和操作的详细信息
+<a name="triggers-actions"></a>
 
-某些连接器提供触发器，在发生特定事件时通知逻辑应用。 因此，在发生这些事件时，触发器将创建并运行逻辑应用的实例。 例如，FTP 连接器提供“添加或修改文件时”触发器，用于在更新文件时启动逻辑应用。 
+## <a name="triggers-and-actions---more-info"></a>触发器和操作的详细信息
 
-逻辑应用提供以下类型的触发器：  
+连接器可以提供*触发器*，*操作*，和 / 或。 一个*触发器*任何逻辑应用，通常用于指定事件的激发触发器并开始运行逻辑应用中的第一步。 例如，FTP 连接器提供触发器启动逻辑应用"时添加或修改文件"。 某些触发器定期检查指定的事件或数据，并触发时检测到指定的事件或数据。 其他触发器需要等待，但可在特定事件发生时立即或新数据可用时触发。 触发器还传递到逻辑应用所需的任何数据。 逻辑应用可以读取和使用该数据在工作流。
+例如，Twitter 连接器具有触发器，"新推文发布时"，传递推文的内容划分为逻辑应用的工作流。 
 
-* 轮询触发器：这些触发器以指定的频率轮询服务和检查新数据。 
+触发器触发时后，Azure 逻辑应用创建的逻辑应用实例并开始运行*操作*逻辑应用的工作流中。 操作是遵循该触发器并在逻辑应用的工作流中执行任务的步骤。 例如，可以创建一个逻辑应用，获取 SQL 数据库中的客户数据和处理更高版本的操作中的数据。 
 
-  有新数据可用时，将创建逻辑应用的新实例，并使用作为输入传递的数据运行该实例。 
+下面是一般类型的 Azure 逻辑应用提供的触发器：
 
-* 推送触发器：这些触发器侦听终结点上的新数据或要发生的事件，然后创建并运行逻辑应用的新实例。
+* 重复周期触发器：此触发器按指定计划运行，并不与特定服务或系统紧密关联。
 
-* *重复周期触发器*：此触发器根据指定的计划创建并运行逻辑应用的实例。
+* *轮询触发器*:此触发器定期轮询的特定服务或基于指定的计划，检查新数据或是否发生特定事件的系统。 如果新数据可用，或在特定事件发生，触发器将创建并运行逻辑应用，现在可以使用作为输入传递的数据的新实例。
 
-连接器还提供可在逻辑应用工作流中执行任务的操作。 例如，逻辑应用可以读取数据，并在逻辑应用的后续步骤中使用此数据。 更具体地说，逻辑应用可以查找 SQL 数据库中的客户数据，然后在逻辑应用的工作流中处理此数据。 
+* *推送触发器*:此触发器等待并侦听的新数据或要发生的事件。 当新数据可用时或者事件发生时，触发器将创建并运行逻辑应用，现在可以使用作为输入传递的数据的新实例。
 
-有关触发器和操作的详细信息，请参阅[连接器概述](connectors-overview.md)。 
+<a name="custom"></a>
 
-## <a name="custom-apis-and-connectors"></a>自定义 API 和连接器 
+## <a name="connector-configuration"></a>连接器配置
+
+每个连接器的触发器和操作提供可用于配置其自己的属性。 多个连接器还要求您首先创建*连接*向目标服务或系统，并提供身份验证凭据或其他配置详细信息，然后才能在逻辑应用中使用触发器或操作。 例如，必须先授权到 Twitter 帐户用于访问数据，或者你的名义发布的连接。 
+
+对于使用 OAuth 的连接器，创建连接意味着登录该服务，例如 Office 365、 Salesforce 或 GitHub，其中你的访问令牌加密，并安全地存储在 Azure 机密存储中。 其他连接器，如 FTP 和 SQL，需要具有配置的详细信息，例如服务器地址、 用户名和密码的连接。 此连接配置详细信息同样加密并安全地存储。 
+
+只要该服务或系统允许，连接可以访问目标服务或系统。 使用 Azure Active Directory (AD) OAuth 连接，例如 Office 365 和 Dynamics 的服务的 Azure 逻辑应用将无限期地刷新访问令牌。 其他服务可能在多长时间，Azure 逻辑应用可以刷新的情况下使用令牌进行限制。 通常情况下，某些操作会使所有访问令牌，例如，更改你的密码都无效。
+
+<a name="custom"></a>
+
+## <a name="custom-apis-and-connectors"></a>自定义 API 和连接器
 
 若要调用运行自定义代码或者无法作为连接器使用的 API，可以通过[创建自定义 API 应用](../logic-apps/logic-apps-create-api-app.md)来扩展逻辑应用平台。 还可以针对任何基于 REST 或 SOAP 的 API [创建自定义连接器](../logic-apps/custom-connector-overview.md)，使这些 API 可供 Azure 订阅中的任何逻辑应用使用。
 若要使自定义 API 应用或连接器可供任何人在 Azure 中使用，可以[提交连接器进行 Microsoft 认证](../logic-apps/custom-connector-submit-certification.md)。
@@ -160,13 +173,11 @@ ms.locfileid: "52635435"
 
 * 若要提交或投票有关 Azure 逻辑应用和连接器的想法，请访问[逻辑应用用户反馈站点](https://aka.ms/logicapps-wish)。
 
-* 文档中是否缺少你认为很重要的文章或详细信息？ 如果是，你可以在现有文章中补充内容或编写自己的文章。 我们的文档是开源的，托管在 GitHub 上。 使用 Azure 文档的 [GitHub 存储库](https://github.com/Microsoft/azure-docs)入门。 
-
 ## <a name="next-steps"></a>后续步骤
 
 * 查找[连接器的完整列表](https://docs.microsoft.com/connectors)
 * [创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
-* [为逻辑应用创建自定义连接器](https://docs.microsoft.com/connectors/custom-connectors/)
+* [创建逻辑应用的自定义连接器](https://docs.microsoft.com/connectors/custom-connectors/)
 * [为逻辑应用创建自定义 API](../logic-apps/logic-apps-create-api-app.md)
 
 <!--Misc doc links-->

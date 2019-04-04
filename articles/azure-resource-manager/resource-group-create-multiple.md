@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/15/2019
 ms.author: tomfitz
-ms.openlocfilehash: c60983dbbe72515fd8f0f4860e169ce1ba69ed45
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 84f2d82ba6103382d7f9ff850bb6f1930ebbeb9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407079"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904587"
 ---
 # <a name="deploy-more-than-one-instance-of-a-resource-or-property-in-azure-resource-manager-templates"></a>在 Azure 资源管理器模板中部署资源或属性的多个实例
 
 本文介绍了如何在 Azure 资源管理器模板中进行迭代操作，以创建多个资源实例。 如需指定究竟是否部署资源，请参阅 [condition 元素](resource-group-authoring-templates.md#condition)。
 
 有关教程，请参阅[教程：使用资源管理器模板创建多个资源实例](./resource-manager-tutorial-create-multiple-instances.md)。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-iteration"></a>资源迭代
 
@@ -56,7 +59,7 @@ ms.locfileid: "57407079"
 }
 ```
 
-请注意，每个资源的名称都包括 `copyIndex()` 函数，用于返回循环中的当前迭代。 `copyIndex()` 从零开始。 因此，以下示例：
+请注意，每个资源的名称都包括 `copyIndex()` 函数，用于返回循环中的当前迭代。 `copyIndex()` 是从零开始。 因此，以下示例：
 
 ```json
 "name": "[concat('storage', copyIndex())]",
@@ -272,7 +275,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 
 若要创建变量的多个实例，请在变量部分中使用 `copy` 属性。 可以创建一个由 `input` 属性中的值构造的元素数组。 可以在变量中使用 `copy` 属性，或在变量部分的顶层使用该属性。 在变量迭代中使用 `copyIndex` 时，必须提供迭代的名称。
 
-创建一个字符串值数组的简单示例，请参阅[副本的数组模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)。
+如需通过简单示例来了解如何创建字符串值的数组，请参阅[复制数组模板](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json)。
 
 以下示例演示了使用动态构造的元素创建数组变量的多种不同方法。 它演示如何在变量中使用副本来创建对象和字符串的数组。 它还演示如何在顶层使用副本来创建对象、字符串和整数的数组。
 
@@ -348,7 +351,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 }
 ```
 
-获取创建的变量的类型取决于输入对象。 例如，名为的变量**顶级的等级等级的对象的数组**在前面的示例返回：
+创建的变量的类型取决于输入对象。 例如，在上一示例中名为 **top-level-object-array** 的变量返回：
 
 ```json
 [
@@ -380,7 +383,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 ]
 ```
 
-和命名的变量**顶级的等级等级-字符串-数组**返回：
+名为 **top-level-string-array** 的变量返回：
 
 ```json
 [
@@ -490,7 +493,7 @@ copy 元素是一个数组，因此，可以为资源指定多个属性。 为�
 |[复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystorage.json) |部署名称中带索引号的多个存储帐户。 |
 |[串行的复制存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/serialcopystorage.json) |一次部署多个存储帐户。 名称中包含索引号。 |
 |[复制具有数组的存储](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copystoragewitharray.json) |部署多个存储帐户。 名称中包含数组中的值。 |
-|[部署数据磁盘数量不定的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
+|[使用数目可变的数据磁盘的 VM 部署](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-windows-copy-datadisks) |通过虚拟机部署多个数据磁盘。 |
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) |演示对变量进行迭代的不同方法。 |
 |[多个安全规则](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |将多个安全规则部署到网络安全组。 这会从参数构造安全规则。 有关参数，请参阅[多个 NSG 参数文件](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json)。 |
 

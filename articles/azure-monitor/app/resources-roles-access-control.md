@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 36b49002a5e947f2803e00974f242e49eb26d45b
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309244"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905675"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
@@ -25,6 +25,9 @@ ms.locfileid: "56309244"
 
 > [!IMPORTANT]
 > 将访问权限分配给应用程序资源所属**资源组或订阅**中的用户（并非资源本身）。 分配 **Application Insights 组件参与者**角色。 这可确保对 Web 测试和警报及应用程序资源的访问实现统一控制。 [了解详细信息](#access)。
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="resources-groups-and-subscriptions"></a>资源、组和订阅
 
@@ -83,7 +86,7 @@ ms.locfileid: "56309244"
 | [所有者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) |可以更改任何内容，包括用户访问权限。 |
 | [参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) |可以编辑任何内容，包括所有资源。 |
 | [Application Insights 组件参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-component-contributor) |可以编辑 Application Insights 资源、Web 测试和警报。 |
-| [读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
+| [读取器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) |可以查看但无法更改任何内容。 |
 | [Application Insights 快照调试器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#application-insights-snapshot-debugger) | 授予用户使用 Application Insights 快照调试器功能的权限。 请注意，此角色既不包含在所有者角色中，也不包含在参与者角色中。 |
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
 | [数据清除程序](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)。   |
@@ -112,7 +115,7 @@ ms.locfileid: "56309244"
 
 ## <a name="related-content"></a>相关内容
 
-* [Azure 中基于角色的访问控制](../../role-based-access-control/role-assignments-portal.md)
+* [基于角色的访问控制在 Azure 中](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="powershell-query-to-determine-role-membership"></a>PowerShell 查询确定角色成员身份
 
@@ -121,7 +124,7 @@ ms.locfileid: "56309244"
 ### <a name="query-entire-subscription-for-admin-roles--contributor-roles"></a>为管理员角色 + 参与者角色查询整个订阅
 
 ```powershell
-(Get-AzureRmRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -IncludeClassicAdministrators | Where-Object {$_.RoleDefinitionName -in @('ServiceAdministrator', 'CoAdministrator', 'Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-application-insights-resource-for-owners-and-contributors"></a>在所有者和参与者的特定 Application Insights 资源的上下文中进行查询
@@ -130,14 +133,14 @@ ms.locfileid: "56309244"
 $resourceGroup = “RGNAME”
 $resourceName = “AppInsightsName”
 $resourceType = “microsoft.insights/components”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup -ResourceType $resourceType -ResourceName $resourceName | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 ### <a name="query-within-the-context-of-a-specific-resource-group-for-owners-and-contributors"></a>在所有者和参与者的特定资源组的上下文中进行查询
 
 ```powershell
 $resourceGroup = “RGNAME”
-(Get-AzureRmRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
+(Get-AzRoleAssignment -ResourceGroup $resourceGroup | Where-Object {$_.RoleDefinitionName -in @('Owner', 'Contributor') } | Select -ExpandProperty SignInName | Sort-Object -Unique) -Join ", "
 ```
 
 <!--Link references-->

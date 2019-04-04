@@ -85,6 +85,10 @@ items:
       href: delete-data.md
     - name: 处理重复数据
       href: dealing-with-duplicates.md
+  - name: 监视
+    items:
+    - name: 使用指标来监视群集运行状况
+      href: using-metrics.md
   - name: 与其他工具配合使用
     items:
     - name: 使用 Python 从 Databricks 连接
@@ -135,9 +139,9 @@ items:
     href: https://aka.ms/adecostestimator
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: f3be712f345e603f3959c753ad3c81faaa1e00cf
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 7b525558fd22b2d2f61f3cc901938c449f53fb72
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402654"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847077"

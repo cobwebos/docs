@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 3c9227a34c1b7208210b84b5b7d64ecdc8654a83
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: e6ae4cc527ae0828f530ab7f3904d2b3c64c910b
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286374"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895743"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Durable Functions 中的性能和缩放 (Azure Functions)
 
@@ -56,7 +56,7 @@ Durable task 扩展实现了随机指数退让算法，以降低空闲队列轮�
 是通过可配置的最大轮询延迟`maxQueuePollingInterval`中的属性[host.json 文件](../functions-host-json.md#durabletask)。 此值设置为较高的值可能导致更高版本的消息处理延迟。 在处于非活动状态的时间段后才应在更高的延迟。 此值设置为较低的值可能导致由于更高的存储事务的存储成本较高。
 
 > [!NOTE]
-> Azure Functions 消耗计划和高级计划，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-plan-works)将轮询每个控件和工作项队列一次每隔 10 秒。 此附加的轮询有必要确定何时激活函数应用实例并做出缩放决策。 在撰写本文时，此 10 的第二个间隔保持不变，并且无法进行配置。
+> Azure Functions 消耗计划和高级计划，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)将轮询每个控件和工作项队列一次每隔 10 秒。 此附加的轮询有必要确定何时激活函数应用实例并做出缩放决策。 在撰写本文时，此 10 的第二个间隔保持不变，并且无法进行配置。
 
 ## <a name="storage-account-selection"></a>存储帐户的选择
 
@@ -244,4 +244,4 @@ Azure Functions 支持在单个应用实例中并发执行多个函数。 这种
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [使用 C# 创建第一个 Durable Function](durable-functions-create-first-csharp.md)
+> [创建第一个持久函数中C#](durable-functions-create-first-csharp.md)

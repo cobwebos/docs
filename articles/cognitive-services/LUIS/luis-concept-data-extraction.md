@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: diberry
-ms.openlocfilehash: 3d9c2a694562977c2a012d9faa9c282c6b8fff9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099825"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893973"
 ---
 # <a name="data-extraction-from-intents-and-entities"></a>从意向和实体中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
@@ -432,13 +432,13 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 [PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 实体在某些[语言区域性](luis-reference-prebuilt-entities.md)中可用。 
 
 ### <a name="names-of-people"></a>人的姓名
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用分层实体将姓氏和名字作为子级，或者使用简单实体将姓氏和名字作为角色。 请确保给出的示例在陈述的不同部分、在不同长度的陈述中以及在所有意向（包括“None”意向）的陈述中使用姓氏和名字。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用分层实体将姓氏和名字作为子级，或者使用简单实体将姓氏和名字作为角色。 请确保给出的示例在陈述的不同部分、在不同长度的陈述中以及在所有意向（包括“None”意向）的陈述中使用姓氏和名字。 定期[查看](luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
 
 ### <a name="names-of-places"></a>地名
-地名是固定且已知的，例如市、县、州、省和国家/地区。 如果应用采用已知的地名集合，请考虑使用列表实体。 如果需要找到所有地名，请创建一个简单实体，并提供各种示例。 添加地名短语列表，以使地名在应用中更易认出。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+地名是固定且已知的，例如市、县、州、省和国家/地区。 如果应用采用已知的地名集合，请考虑使用列表实体。 如果需要找到所有地名，请创建一个简单实体，并提供各种示例。 添加地名短语列表，以使地名在应用中更易认出。 定期[查看](luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 首先从简单实体开始，添加一个短语列表。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 首先从简单实体开始，添加一个短语列表。 定期[查看](luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。

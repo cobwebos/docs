@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
-ms.openlocfilehash: 81401d95b9c40f16a6e593d61b79f5c2d647c0c5
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518824"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895201"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
 
@@ -80,7 +80,7 @@ static void Main(string[] args)
 
 | 属性 | 开发设置 |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`：最大化日志输出。 |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` 若要最大化日志输出。 |
 | `Queues.MaxPollingInterval`  | 使用较小的值可确保立即触发队列方法。  |
 | `Singleton.ListenerLockPeriod` | 使用 15 秒值有助于实现快速迭代开发。 |
 
@@ -130,7 +130,7 @@ static void Main()
 
 在版本 3.*x* 中，连接限制默认为无限次连接。 如果出于某种原因需要更改此限制，则可以使用[ `MaxConnectionsPerServer` ](/dotnet/api/system.net.http.winhttphandler.maxconnectionsperserver)的属性[ `WinHttpHandler` ](/dotnet/api/system.net.http.winhttphandler)类。
 
-在版本 2.*x* 中，使用 [ServicePointManager.DefaultConnectionLimit](https://msdn.microsoft.com/library/system.net.servicepointmanager.defaultconnectionlimit) API 控制主机的并发连接数。 在 2.*x* 中，应在启动 WebJobs 主机之前，在默认值 2 的基础上增大此值。
+在版本 2.*x* 中，使用 [ServicePointManager.DefaultConnectionLimit](/dotnet/api/system.net.servicepointmanager.defaultconnectionlimit#System_Net_ServicePointManager_DefaultConnectionLimit) API 控制主机的并发连接数。 在 2.*x* 中，应在启动 WebJobs 主机之前，在默认值 2 的基础上增大此值。
 
 使用 `HttpClient` 从某个函数发出的所有传出 HTTP 请求都会流经 `ServicePointManager`。 达到 `DefaultConnectionLimit` 中设置的值后，`ServicePointManager` 会开始将请求排队，然后再发送请求。 假设 `DefaultConnectionLimit` 设置为 2，并且代码发出了 1,000 个 HTTP 请求。 最初，只允许 2 个请求传入 OS。 其他 998 个请求将会排队，直到有可用的空间。 这意味着 `HttpClient` 可能会超时，因为它似乎已发出请求，但是，OS 从未将此请求发送到目标服务器。 因此，可能会出现看似不合理的行为：本地 `HttpClient` 花费了 10 秒来完成请求，但服务在 200 毫秒内就返回了每个请求。 
 
@@ -672,7 +672,7 @@ Azure Functions 实现 `INameResolver` 以从应用设置中获取值，如以�
 
 如果需要在使用 `Queue`、`Blob` 或 `Table` 等绑定特性之前在函数中执行某项操作，可以使用 `IBinder` 接口。
 
-下面的示例采用一个输入队列消息，并在输出队列中创建具有相同内容的新消息。 输出队列名称由函数正文中的代码设置。
+下述示例使用输入队列消息，并在输出队列中创建具有相同内容的新消息。 输出队列名称由函数正文中的代码设置。
 
 ```cs
 public static void CreateQueueMessage(
@@ -696,7 +696,7 @@ Azure Functions 文档中提供了有关每个绑定类型的参考信息。 每
 * [示例](../azure-functions/functions-bindings-storage-queue.md#trigger---example)。 代码示例。 C# 类库示例适用于 WebJobs SDK。 只需省略 `FunctionName` 特性。
 * [特性](../azure-functions/functions-bindings-storage-queue.md#trigger---attributes)。 用于绑定类型的特性。
 * [配置](../azure-functions/functions-bindings-storage-queue.md#trigger---configuration)。 特性属性和构造函数参数的解释。
-* [使用情况](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
+* [用法](../azure-functions/functions-bindings-storage-queue.md#trigger---usage)。 可绑定到哪些类型，以及有关绑定工作原理的信息。 例如：轮询算法、有害队列处理。
   
 有关绑定参考文章的列表，请参阅 Azure Functions [触发器和绑定](../azure-functions/functions-triggers-bindings.md#supported-bindings)一文中的“支持的绑定”。 在该列表中，HTTP、Webhook 和事件网格绑定仅受 Azure Functions 的支持，而不受 WebJobs SDK 的支持。
 
@@ -836,11 +836,11 @@ WebJobs SDK 在幕后使用 [Azure Blob 租约](../storage/common/storage-concur
 |LogLevel    |代码|
 |------------|---|
 |跟踪       | 0 |
-|调试       | 第 |
+|调试       | 1 |
 |信息 | 2 |
 |警告     | 3 |
 |错误       | 4 |
-|关键    | 5 |
+|严重    | 5 |
 |无        | 6 |
 
 您可以独立地筛选到特定的每个类别[ `LogLevel` ](/dotnet/api/microsoft.extensions.logging.loglevel)。 例如，你可能想要查看有关 Blob 触发器处理的所有日志，但对于其他任何操作，只想查看 `Error` 和更高级别的日志。
@@ -1006,13 +1006,13 @@ config.LoggerFactory = new LoggerFactory()
     .AddApplicationInsights(clientFactory);
 ```
 
-## <a id="nextsteps"></a> 后续步骤
+## <a id="nextsteps"></a>后续步骤
 
 本文提供的代码片段演示了如何处理 WebJobs SDK 的常用方案。 有关完整示例，请参阅 [azure-webjobs-sdk-samples](https://github.com/Azure/azure-webjobs-sdk-samples)。
 
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
 [`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[ITelemetryInitializer]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
 [`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
 [`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

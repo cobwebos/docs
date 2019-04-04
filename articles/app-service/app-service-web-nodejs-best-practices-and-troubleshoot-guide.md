@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: ranjithr
 ms.custom: seodec18
-ms.openlocfilehash: 323de505bc1bfa9747f372033392a9fd6e08462c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 321dbf891c77007952f01b32bb509a15c2ac3e6f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898850"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895777"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Azure 应用服务 Windows 版上节点应用程序的最佳做法和故障排除指南
 
@@ -98,7 +98,7 @@ IIS 的默认行为是在刷新之前或直到响应结束时（以较早出现�
 
 ### <a name="idlepageouttimeperiod"></a>idlePageOutTimePeriod
 
-默认值为 0，表示已禁用此功能。 如果设置为大于 0 的值，iisnode 会每隔“idlePageOutTimePeriod”毫秒将其所有子进程移出分页。 若要了解移出分页的含义，请参考[文档](https://msdn.microsoft.com/library/windows/desktop/ms682606.aspx)。 对于消耗大量内存并且偶尔想要将内存页出至磁盘以释放 RAM 的应用程序，此设置很有用。
+默认值为 0，表示已禁用此功能。 如果设置为大于 0 的值，iisnode 会每隔“idlePageOutTimePeriod”毫秒将其所有子进程移出分页。 若要了解移出分页的含义，请参考[文档](/windows/desktop/api/psapi/nf-psapi-emptyworkingset)。 对于消耗大量内存并且偶尔想要将内存页出至磁盘以释放 RAM 的应用程序，此设置很有用。
 
 > [!WARNING]
 > 在生产应用程序上启用以下配置设置时，请格外小心。 建议不要在实际生产应用程序上启用它们。
@@ -173,7 +173,7 @@ http.createServer(function (req, res) {
 }).listen(process.env.PORT);
 ```
 
-转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole`。
+转到调试控制台站点 `https://yoursite.scm.azurewebsites.net/DebugConsole`
 
 进入 site/wwwroot 目录。 将会看到一个命令提示符，如以下示例所示：
 
@@ -274,15 +274,15 @@ node.exe 随机关闭的原因有多种：
 | 503 |1002 |检查 win32 错误代码的实际原因 – 无法将请求分派到 node.exe。 |
 | 503 |1003 |命名管道太忙 – 验证 node.exe 是否正在消耗过多的 CPU |
 
-NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应用服务中，此值设置为 5000。 这表示 node.exe 在命名管道上一次可以接受 5000 个请求。 此值应足以满足 Azure 应用服务中运行的大多数 node 应用程序。 Azure 应用服务中不应出现 503.1003，因为 `NODE_PENDING_PIPE_INSTANCES` 的值较高
+NODE.exe 具有名为 `NODE_PENDING_PIPE_INSTANCES` 的设置。 在 Azure 应用服务中，此值设置为 5000。 这表示 node.exe 在命名管道上一次可以接受 5000 个请求。 此值应足以满足 Azure 应用服务中运行的大多数 node 应用程序。 您应不出现 503.1003，因为 Azure 应用服务上的高值 `NODE_PENDING_PIPE_INSTANCES`
 
 ## <a name="more-resources"></a>更多资源
 
 请访问以下链接，了解有关 Azure 应用服务上的 node.js 应用程序的详细信息。
 
-* [Azure 应用服务中的 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
+* [在 Azure 应用服务中 Node.js Web 应用入门](app-service-web-get-started-nodejs.md)
 * [如何在 Azure 应用服务中调试 Node.js Web 应用](app-service-web-tutorial-nodejs-mongodb-app.md)
 * [将 Node.js 模块与 Azure 应用程序一起使用](../nodejs-use-node-modules-azure-apps.md)
 * [Azure 应用服务 Web 应用：Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js 开发人员中心](../nodejs-use-node-modules-azure-apps.md)
-* [Kudu 调试控制台探秘](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
+* [浏览探秘 Kudu 调试控制台](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)

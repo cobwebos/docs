@@ -7,16 +7,19 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: bcfb50a2d7d5221abaa15a5b286163cf63b7a875
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 0c1c466149b4992d99e18cfb1fd5d8416834df35
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446680"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904519"
 ---
 # <a name="troubleshoot-azure-application-gateway-session-affinity-issues"></a>排查 Azure 应用程序网关会话相关性问题
 
 了解如何诊断和解决 Azure 应用程序网关的会话相关性问题。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
 
@@ -50,7 +53,7 @@ ms.locfileid: "58446680"
 
 也可以使用以下方法之一，检查“backendHttpSettingsCollection”下的“CookieBasedAffinity”值是否设置为“Enabled”：
 
-- 在 PowerShell 中运行 [Get-AzureRmApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermapplicationgatewaybackendhttpsettings)
+- 运行[Get AzApplicationGatewayBackendHttpSettings](https://docs.microsoft.com/powershell/module/az.network/get-azapplicationgatewaybackendhttpsettings)在 PowerShell 中
 - 使用 Azure 资源管理器模板通查 JSON 文件
 
 ```

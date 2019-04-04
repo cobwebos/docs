@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: magattus
-ms.openlocfilehash: a3777533fc967e1974b99375496dd3777fa9fb3a
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: 76e7817be81a97c8d1a0b9ca2fea8378c3c733e1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093844"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916473"
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>清除 Azure CDN 终结点
 ## <a name="overview"></a>概述
@@ -52,12 +52,12 @@ ms.locfileid: "49093844"
    > 
    > 
 4. 选择要从边缘节点清除的资产。  如果想清除所有资产，单击“**全部清除**”复选框。  否则，请在“路径”文本框中输入要清除的每个资产的路径。 路径支持以下格式。
-    1. **单个 URL 清除**：通过指定完整 URL 清除单个资产（包含或不包含文件扩展名，例如 `/pictures/strasbourg.png`；`/pictures/strasbourg`）
+    1. **单个 URL 清除**：通过使用或不带文件扩展名，例如，指定的完整 URL 清除单个资产`/pictures/strasbourg.png`; `/pictures/strasbourg`
     2. **通配符清除**：星号 (\*) 可用作通配符。 清除路径中含 `/*` 的终结点下的所有文件夹、子文件夹和文件，或通过指定后跟 `/*`（例如 `/pictures/*`）的文件夹来清除特定文件夹下的所有子文件夹和文件。  请注意，目前来自 Akamai 的 Azure CDN 不支持通配符清除。 
     3. **根域清除**：清除路径中具有“/”的终结点的根。
    
    > [!TIP]
-   > 必须指定用于清除的路径，且路径必须是符合以下[正则表达式](https://msdn.microsoft.com/library/az24scfc.aspx)的相对 URL。 目前**来自 Akamai 的 Azure CDN** 不支持**清除所有**和**通配符清除**。
+   > 必须指定用于清除的路径，且路径必须是符合以下[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相对 URL。 目前**来自 Akamai 的 Azure CDN** 不支持**清除所有**和**通配符清除**。
    > > 单个 URL 清除 `@"^\/(?>(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/?)*)$";`  
    > > 查询字符串 `@"^(?:\?[-\@_a-zA-Z0-9\/%:;=!,.\+'&\(\)\u0020]*)?$";`  
    > > 通配符清除 `@"^\/(?:[a-zA-Z0-9-_.%=\(\)\u0020]+\/)*\*$";`。 
@@ -75,5 +75,5 @@ ms.locfileid: "49093844"
 
 ## <a name="see-also"></a>另请参阅
 * [在 Azure CDN 终结点上预加载资产](cdn-preload-endpoint.md)
-* [Azure CDN REST API 参考 - 清除或预加载终结点](https://msdn.microsoft.com/library/mt634451.aspx)
+* [Azure CDN REST API 参考-清除或预加载终结点](/rest/api/cdn/endpoints)
 

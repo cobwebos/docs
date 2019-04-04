@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0ec3aa6f3d6e7037e2ed59baeb0657fbdabcf3ec
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 2fb9de7781fae51792e2802002a3cf68974dec83
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154603"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894850"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户访问
 
@@ -46,7 +46,7 @@ ms.locfileid: "55154603"
 
 下面是收集家长同意的用户流示例：
 
-1. [Azure Active Directory 图形 API](https://msdn.microsoft.com/library/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
+1. [Azure Active Directory 图形 API](/previous-versions/azure/ad/graph/api/api-catalog) 操作将用户识别为未成年人，并将用户数据以未签名 JSON 令牌的形式返回给应用程序。
 
 2. 应用程序处理 JSON 令牌，并向未成年人显示一个屏幕，告知他（她）需要家长同意，并请求家长在线同意。 
 

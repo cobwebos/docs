@@ -12,22 +12,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/07/2018
-ms.openlocfilehash: 3d9376ba5945c97d18f6cf68c242d5217beee679
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 848b2a0c912a00a2185d7e4b7b8d8446bc1f6aca
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349699"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58497170"
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack 中的配额类型
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-[配额](azure-stack-plan-offer-quota-overview.md#plans)定义用户订阅可以预配或使用的资源限制。 例如，配额可能允许用户最多创建五个 VM。 每个资源都可以有自已的配额类型。
+[配额](azure-stack-plan-offer-quota-overview.md#plans)定义用户订阅可以预配或使用的资源限制。 例如，配额可能允许用户最多创建五个 VM。 每个资源可以有其自己的配额类型。
+
+> [!IMPORTANT]
+> 可能需要新的配额，可在用户门户中或之前已更改的配额强制执行最多两个小时。
 
 ## <a name="compute-quota-types"></a>计算配额类型
 
@@ -41,9 +44,9 @@ ms.locfileid: "58349699"
 | 高级托管磁盘的最大容量 (GB) | 2048 | 可以在此位置中创建的高级托管磁盘的最大容量。 |
 
 > [!NOTE]  
-> 非托管磁盘 (页 blob) 的最大容量是独立于托管的磁盘配额，它应在存储配额设置。
+> 非托管磁盘 (页 blob) 的最大容量是分开的托管的磁盘配额。 可以将此值设置**存储配额**。
 
-## <a name="storage-quota-types"></a>存储配额类型 
+## <a name="storage-quota-types"></a>存储配额类型
 
 | **Item** | **默认值** | **说明** |
 | --- | --- | --- |
@@ -51,15 +54,15 @@ ms.locfileid: "58349699"
 | 存储帐户的总数 |20 |订阅可以在此位置创建的存储帐户数目上限。 |
 
 > [!NOTE]  
-> 强制实施存储配额最多可能需要两个小时。 托管磁盘的最大容量是独立于总存储配额，它应在计算配额设置。
+> 托管磁盘的最大容量是分开的总存储配额。 可以将此值设置**计算配额**。
 
 ## <a name="network-quota-types"></a>网络配额类型
 
 | **Item** | **默认值** | **说明** |
 | --- | --- | --- |
-| 公共 IP 数目上限 |50 |订阅可以在此位置创建的公共 IP 数目上限。 |
+| 公共 IP 数目上限 |50 |订阅可以在此位置创建的公共 IP 地址的数目上限。 |
 | 虚拟网络数目上限 |50 |订阅可以在此位置创建的虚拟网络数目上限。 |
-| 虚拟网络网关数目上限 |第 |订阅可以在此位置创建的虚拟网络网关（VPN 网关）数目上限。 |
+| 虚拟网络网关数目上限 |1 |虚拟网络网关 （VPN 网关） 的订阅可以在此位置创建最大数目。 |
 | 网络连接数目上限 |2 |订阅可以在此位置跨所有虚拟网络网关创建的网络连接（点到点或站点到站点）数目上限。 |
 | 负载均衡器数目上限 |50 |订阅可以在此位置创建的负载均衡器数目上限。 |
 | NIC 数目上限 |100 |订阅可以在此位置创建的网络接口数目上限。 |

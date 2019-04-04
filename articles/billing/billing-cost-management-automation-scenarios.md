@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 6/13/2018
 ms.author: erikre
-ms.openlocfilehash: 8b42361e7b94bf017dde4eaec882f9fed4d42ed6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d2b0f2d3fad318ac0152d92fe92614d8dadda1e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861989"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918512"
 ---
 # <a name="automation-scenarios-for-billing-and-cost-management"></a>计费和成本管理自动化方案
 
@@ -80,9 +80,9 @@ ms.locfileid: "57861989"
 
 -   [使用情况详细信息 API](https://docs.microsoft.com/rest/api/consumption/usagedetails)：从 Microsoft 获取所有 Azure 资源的费用和使用情况信息。 信息采用使用情况详细信息记录的形式，这些记录目前会每天按计量发出。 使用此信息，可以计算所有资源的费用总和，也可以调查特定资源的费用/使用情况。
 
--   [RateCard API](https://msdn.microsoft.com/library/azure/mt219005.aspx)：如果你是 Web 直连客户，可获取计量费率。 然后，可以结合使用返回的信息和资源使用情况信息，手动计算预期帐单。 
+-   [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100))：如果你是 Web 直连客户，可获取计量费率。 然后，可以结合使用返回的信息和资源使用情况信息，手动计算预期帐单。 
 
--   [未计费的使用情况 API](https://msdn.microsoft.com/library/azure/mt219003.aspx)：获取在 Azure 进行任何计量/计费前的原始使用情况信息。
+-   [未计费的使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100))：获取在 Azure 进行任何计量/计费前的原始使用情况信息。
 
 ### <a name="billing"></a>计费
 -   [计费周期 API](https://docs.microsoft.com/rest/api/billing/billingperiods)：确定要分析的计费周期，以及此周期的发票 ID。 可以将发票 ID 与发票 API 结合使用。
@@ -121,7 +121,7 @@ ms.locfileid: "57861989"
    - 用于预付货币承诺款项的帐户的更改
    - Azure 发现的用量差异帐户的更改
 
-- [使用情况 API](https://msdn.microsoft.com/library/Mt219003.aspx) 提供通过 Azure 成本计量系统传递前的原始 Azure 使用情况信息。 此数据可能与通过 Azure 成本计量系统传递后显示的使用情况或费用金额没有任何关联。
+- [使用情况 API](/previous-versions/azure/reference/mt219003(v=azure.100)) 提供通过 Azure 成本计量系统传递前的原始 Azure 使用情况信息。 此数据可能与通过 Azure 成本计量系统传递后显示的使用情况或费用金额没有任何关联。
 
 ### <a name="whats-the-difference-between-the-invoice-api-and-the-usage-details-api"></a>发票 API 与使用情况详细信息 API 有何区别？
 这些 API 提供包含相同数据的不同视图：
@@ -135,7 +135,7 @@ ms.locfileid: "57861989"
 
 - [价目表 API](https://docs.microsoft.com/rest/api/consumption/pricesheet) 提供与企业客户协商好的自定义定价。
 
-- [RateCard API](https://msdn.microsoft.com/library/mt219005.aspx) 提供适用于 Web 直连客户的面向公众的定价。
+- [RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) 提供适用于 Web 直连客户的面向公众的定价。
 
 ## <a name="next-steps"></a>后续步骤
 

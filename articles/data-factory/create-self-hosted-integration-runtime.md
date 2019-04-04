@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 37e3dbb5f69d7319e0b56a5d209e0487e0562e00
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6ab5ee923cc439901149a26d7af4b57f9933ee19
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838793"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905879"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -53,7 +53,7 @@ ms.locfileid: "57838793"
 ![综合概述](media/create-self-hosted-integration-runtime/high-level-overview.png)
 
 1. 数据开发者使用 PowerShell cmdlet 在 Azure 数据工厂中创建了自承载集成运行时。 目前，Azure 门户不支持此功能。
-2. 数据开发者通过指定应用于连接数据存储的自承载集成运行时实例，为本地数据存储创建了链接服务。 作为设置链接服务的一部分，数据开发者使用凭据管理器应用程序（当前不受支持）来设置身份验证类型和凭据。 凭据管理器应用程序与数据存储进行通信，以测试连接和自承载集成运行时，从而保存凭据。
+2. 数据开发者通过指定应用于连接数据存储的自承载集成运行时实例，为本地数据存储创建了链接服务。
 3. 自承载集成运行时节点使用 Windows 数据保护应用程序编程接口 (DPAPI) 加密凭据，并将凭据保存在本地。 如果设置多个节点以实现高可用性，则凭据将跨其他节点进一步同步。 每个节点使用 DPAPI 加密凭据并将其存储在本地。 凭据同步对数据开发者透明并由自承载 IR 处理。    
 4. 数据工厂服务与自承载集成运行时通信，以通过使用共享 Azure 服务总线队列的*控制通道*调度和管理作业。 当需要运行活动作业时，数据工厂会将请求与任何凭据信息一起加入队列（以防凭证尚未存储在自承载集成运行时）。 自承载集成运行时轮询队列后启动该作业。
 5. 自承载集成运行时将数据从本地存储复制到云存储，反之亦然，具体取决于数据管道中复制活动的配置方式。 对于此步骤，自承载集成运行时直接通过安全 (HTTPS) 通道与基于云的存储服务（如 Azure Blob 存储）通信。
@@ -182,13 +182,13 @@ ms.locfileid: "57838793"
 
 ### <a name="monitoring"></a>监视 
 
-- **共享 IR**
+- **共享红外线 （ir)**
 
   ![用于查找共享集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
   ![监视选项卡](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
-- **链接 IR**
+- **链接红外线 （ir)**
 
   ![用于查找链接集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
@@ -329,7 +329,7 @@ download.microsoft.com | 443 | 用于下载更新
     ```
 
 ### <a name="enabling-remote-access-from-an-intranet"></a>从 Intranet 启用远程访问  
-如果使用 PowerShell 或凭据管理器应用程序加密网络中未安装自承载集成运行时的另一台计算机上的凭据，则可以启用“从 Intranet 进行远程访问”选项。 如果运行 PowerShell 或凭据管理器应用程序来加密已安装自承载集成运行时的同一台计算机上的凭据，则无法启用“从 Intranet 进行远程访问”选项。
+如果使用 PowerShell 从 （网络） 中安装自承载的集成运行时以外的另一台计算机的凭据进行加密，则可以启用**从 Intranet 进行远程访问**选项。 如果您运行 PowerShell 来加密凭据的同一计算机上安装自承载的集成运行时，不能启用**从 Intranet 进行远程访问**。
 
 在添加另一个节点以实现高可用性和可伸缩性之前，应启用“从 Intranet 进行远程访问”。  
 
@@ -339,9 +339,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ```
 msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
-```
-> [!NOTE]
-> 凭据管理器应用程序目前不可用于加密 Azure 数据工厂 V2 中的凭据。  
+``` 
 
 如果选择不打开自承载集成运行时计算机上的端口 8060，请使用除“设置凭据”应用程序以外的机制来配置数据存储凭据。 例如，可以使用**新建 AzDataFactoryV2LinkedServiceEncryptCredential** PowerShell cmdlet。
 

@@ -4,12 +4,12 @@ ms.service: app-service-mobile
 ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
-ms.openlocfilehash: b5368123d6d96e6a58a6926539d6ef22ec68c28b
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.openlocfilehash: d71d52257b6e8cfa243207c9bfdb5c7de7d3dd37
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52439983"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890861"
 ---
 1. 在 MainPage.xaml.cs 项目文件中，添加以下 **using** 语句：
    
@@ -50,7 +50,7 @@ ms.locfileid: "52439983"
                 App.MobileService.CurrentUser = user;
    
                 // Consider adding a check to determine if the token is 
-                // expired, as shown in this post: http://aka.ms/jww5vp.
+                // expired, as shown in this post: https://aka.ms/jww5vp.
    
                 success = true;
                 message = string.Format("Cached credentials for user - {0}", user.UserId);
@@ -92,5 +92,5 @@ ms.locfileid: "52439983"
    > 
 3. 两次重新启动此应用。
    
-    请注意，在第一次启动时，再次需要使用此提供商进行登录。 但是，在第二次重新启动时，将使用缓存的凭证，而绕过登录。 
+    请注意，在第一次启动时，再次需要使用此提供商进行登录。 但是，在第二次重新启动时，将使用缓存的凭据，而绕过登录。 
 

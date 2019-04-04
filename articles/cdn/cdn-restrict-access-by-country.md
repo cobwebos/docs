@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: 471a7e3704f10674c8a1d9bdf26df5f0aaf8519b
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093300"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917747"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>按国家/地区限制 Azure CDN 内容
 
@@ -47,16 +47,16 @@ ms.locfileid: "49093300"
 例如，以下所有目录路径筛选器都是有效的：   
 */*                                 
 */Photos/*     
-*/Photos/Strasbourg/*     
+*/Photos/则 /*     
 */Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>定义操作的类型
 
 从“操作”列表中，选择 **“允许”** 或 **“阻止”**： 
 
-- **允许：** 仅允许来自指定国家/地区的用户通过该递归路径访问所请求的资产。
+- **允许**:只有来自指定国家/地区的用户允许访问通过递归路径请求的资产。
 
-- **阻止：** 拒绝来自指定国家/地区的用户通过该递归路径访问所请求的资产。 如果没有针对该位置配置其他国家/地区筛选选项，则所有其他用户都允许进行访问。
+- **块**:资产的请求通过递归路径访问拒绝来自指定国家/地区的用户。 如果没有针对该位置配置其他国家/地区筛选选项，则所有其他用户都允许进行访问。
 
 例如，用于阻止路径 */Photos/Strasbourg/* 的地区筛选规则将筛选以下文件：     
 *http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
@@ -110,5 +110,5 @@ ms.locfileid: "49093300"
 
 * 只能对相同相对路径应用一个规则。 也就是说，无法创建多个指向相同相对路径的国家/地区筛选器。 不过，因为国家/地区筛选器是递归的，所以一个文件夹可以有多个国家/地区筛选器。 换言之，即使某个文件夹此前已配置过，也可以向该文件夹的子文件夹分配其他国家/地区筛选器。
 
-* 地区筛选功能使用国家/地区代码来为受保护的目录定义将在其中允许或阻止请求的国家/地区。 虽然 Akamai 和 Verizon 配置文件支持的大多数国家/地区代码相同，但还是有一些差别。 有关详细信息，请参阅 [Azure CDN 国家/地区代码](https://msdn.microsoft.com/library/mt761717.aspx)。 
+* 地区筛选功能使用国家/地区代码来为受保护的目录定义将在其中允许或阻止请求的国家/地区。 虽然 Akamai 和 Verizon 配置文件支持的大多数国家/地区代码相同，但还是有一些差别。 有关详细信息，请参阅 [Azure CDN 国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))。 
 

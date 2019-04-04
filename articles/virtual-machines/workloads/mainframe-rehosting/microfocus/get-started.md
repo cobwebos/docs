@@ -1,19 +1,17 @@
 ---
 title: 在 Azure 上的微焦点开发/测试环境 |Microsoft Docs
 description: 重新托管在 Azure 虚拟机 (Vm) 上使用 Micro Focus 解决方案在 IBM z/OS 大型机工作负荷。
-services: virtual-machines-linux
-documentationcenter: ''
 author: njray
-manager: edprice
-editor: edprice
-tags: ''
-keywords: ''
-ms.openlocfilehash: 23a650698f8484e3ed8f033331693484c2e02fac
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.author: sread
+ms.date: 04/02/2019
+ms.topic: article
+ms.service: multiple
+ms.openlocfilehash: d83b4c89d0f37e2217974d6d1ed32ac73d8fa4df
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740041"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893769"
 ---
 # <a name="micro-focus-devtest-environments-on-azure"></a>在 Azure 上的微焦点开发/测试环境
 
@@ -25,5 +23,6 @@ Micro 焦点提供重新承载的开发和测试重新承载解决方案来扩�
 
 **后续步骤**
 
-- [在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0](./set-up-micro-focus-on-azure.md)
+- [在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0](./set-up-micro-focus-azure.md)
 - [为在 Azure 中的微焦点企业开发人员 4.0 设置 Micro 焦点 CICS BankDemo](./demo.md)
+- [Azure 上的 Docker 容器中运行企业服务器](./run-enterprise-server-container.md)

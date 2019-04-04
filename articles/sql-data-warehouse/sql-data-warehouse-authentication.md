@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: security
-ms.date: 04/12/2018
+ms.date: 04/02/2019
 ms.author: kavithaj
 ms.reviewer: igorstan
-ms.openlocfilehash: ab439566da38a537534fc10e70058ab57005ce22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a3bed9df5b62ce7f2f3df7046357dc4f2458575c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183792"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917900"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>向 Azure SQL 数据仓库进行身份验证
 了解如何使用 Azure Active Directory (AAD) 或 SQL Server 身份验证向 Azure SQL 数据仓库进行身份验证。
@@ -56,7 +56,7 @@ Azure Active Directory 的优点包括：
 * 通过启用集成的 Windows 身份验证和 Azure Active Directory 支持的其他形式的身份验证来消除存储密码。
 * 使用包含的数据库用户在数据库级别对标识进行身份验证。
 * 支持对连接到 SQL 数据仓库的应用程序进行基于令牌的身份验证。
-* 支持通过用于 SQL Server Management Studio 的 Active Directory 通用身份验证进行多重身份验证。 如需多重身份验证的说明，请参阅 [SQL 数据库和 SQL 数据仓库针对 Azure AD MFA 的 SSMS 支持](../sql-database/sql-database-ssms-mfa-authentication.md)。
+* 通过 Active Directory 通用身份验证的各种工具包括支持多重身份验证[SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md)并[SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json)。
 
 > [!NOTE]
 > Azure Active Directory 仍然相对较新，具有某些限制。 若要确保 Azure Active Directory 适用于当前环境，请参阅 [Azure AD 功能和限制][Azure AD features and limitations]，尤其是那些需要额外考虑的内容。

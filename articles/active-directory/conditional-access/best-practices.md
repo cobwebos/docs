@@ -18,14 +18,14 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d0e20e9c8e248b446b7b938ae4180ffb546d823
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517585"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895556"
 ---
-# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件访问的最佳做法
+# <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
 
 使用 [Azure Active Directory (Azure AD) 条件访问](../active-directory-conditional-access-azure-portal.md)，可以控制授权用户访问云应用程序的方式。 本文提供以下事项的信息：
 
@@ -46,11 +46,11 @@ ms.locfileid: "58517585"
 若要使策略发挥作用，必须进行下列配置：
 
 
-|内容           | 方式                                  | 原因|
-|:--            | :--                                  | :-- |
-|云应用 |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
-| 用户和组 | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
-| 访问控制 | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。|
+| 对象           | 方式                                  | Why |
+| :--            | :--                                  | :-- |
+| **云应用** |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
+| **用户和组** | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
+| **访问控制** | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
 
 
@@ -111,6 +111,13 @@ ms.locfileid: "58517585"
 
 适用，可以在条件访问策略中使用 Exchange ActiveSync。
 
+### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>要如何与 Office 365 应用配置条件性访问？
+
+由于 Office 365 应用的互连，我们建议创建策略时通常分配一起使用的应用。
+
+常见的互连应用程序包括 Microsoft Flow、 Microsoft Planner、 Microsoft Teams、 Office 365 Exchange Online、 Office 365 SharePoint Online 和 Office 365 Yammer。
+
+非常重要的策略的访问控制会话或任务的开始处时需要用户交互，如多重身份验证。 如果不这样做，用户将无法完成应用程序的一些任务。 例如，如果您需要多重身份验证在非托管的设备访问 SharePoint 上，但不适用于电子邮件，用户使用其电子邮件将无法将 SharePoint 文件附加到一条消息。 可在本文中，找到更多信息[什么是 Azure Active Directory 条件访问中的服务依赖项？](service-dependencies.md)。
 
 
 
@@ -123,7 +130,7 @@ ms.locfileid: "58517585"
 在环境中，应避免以下配置：
 
 
-**对于所有用户、所有云应用：**
+**对于所有用户、 所有云应用：**
 
 - **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
 
@@ -132,7 +139,7 @@ ms.locfileid: "58517585"
 - **需要加入域** - 如果不具有加入域的设备，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。
 
 
-**对于所有用户、所有云应用、所有设备平台：**
+**对于所有用户、 所有云应用，所有设备平台：**
 
 - **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
 

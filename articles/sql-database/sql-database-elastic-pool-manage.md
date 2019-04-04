@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 45769a2285965395d113f026f0ffc171873a5a99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e3f3a2260ba877c94262c12f5a999c6b7bdf5cd1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842594"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892392"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
 
@@ -74,7 +74,7 @@ ms.locfileid: "57842594"
 
 | Cmdlet | 描述 |
 | --- | --- |
-|[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|创建弹性池。|
+|[az sql 弹性池创建](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|创建弹性池。|
 |[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|返回服务器中弹性池的列表。|
 |[az sql elastic-pool list-dbs](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|返回弹性池中数据库的列表。|
 |[az sql elastic-pool list-editions](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|还包括可用的池 DTU 设置、存储限制和每数据库设置。 为了降低冗长，默认情况下会隐藏附加的存储限制以及每数据库设置。|
@@ -91,11 +91,11 @@ ms.locfileid: "57842594"
 
 | 命令 | 描述 |
 | --- | --- |
-|[CREATE DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|在现有池中创建新数据库或将其创建为单一数据库。 必须连接到 master 数据库，才能新建数据库。|
-| [ALTER DATABASE（Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |将数据库移入、移出弹性池或在其之间移动。|
+|[CREATE DATABASE （Azure SQL 数据库）](/sql/t-sql/statements/create-database-azure-sql-database)|在现有池中创建新数据库或将其创建为单一数据库。 必须连接到 master 数据库，才能新建数据库。|
+| [ALTER DATABASE （Azure SQL 数据库）](/sql/t-sql/statements/alter-database-azure-sql-database) |将数据库移入、移出弹性池或在其之间移动。|
 |[DROP DATABASE (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|删除数据库。|
-|[sys.elastic_pool_resource_stats（Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|返回 SQL 数据库服务器中所有弹性池的资源使用率统计信息。 对于每个弹性池，报告窗口每 15 秒就会提供一行（每分钟四行）。 这包括池中所有数据库的 CPU、IO、日志和存储消耗以及并发的请求/会话利用率。|
-|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层）、服务目标（定价层）和弹性池名称（若有）。 如果已登录 Azure SQL 数据库服务器中的 master 数据库，返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
+|[sys.elastic_pool_resource_stats （Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|返回 SQL 数据库服务器中所有弹性池的资源使用率统计信息。 对于每个弹性池，报告窗口每 15 秒就会提供一行（每分钟四行）。 这包括池中所有数据库的 CPU、IO、日志和存储消耗以及并发的请求/会话利用率。|
+|[sys.database_service_objectives （Azure SQL 数据库）](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|返回 Azure SQL 数据库或 Azure SQL 数据仓库的版本（服务层）、服务目标（定价层）和弹性池名称（若有）。 如果已登录 Azure SQL 数据库服务器中的 master 数据库，返回所有数据库的相关信息。 对于 Azure SQL 数据仓库，必须连接到 master 数据库。|
 
 ## <a name="rest-api-manage-elastic-pools-and-pooled-databases"></a>REST API：管理弹性池和共用数据库
 
@@ -103,21 +103,20 @@ ms.locfileid: "57842594"
 
 | 命令 | 描述 |
 | --- | --- |
-|[弹性池 - 创建或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|创建新弹性池或更新现有的弹性池。|
-|[弹性池 - 删除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|删除弹性池。|
-|[弹性池 - 获取](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|获取弹性池。|
-|[弹性池 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|返回服务器中弹性池的列表。|
-|[弹性池 - 更新](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|更新现有的弹性池。|
+|[弹性池-创建或更新](https://docs.microsoft.com/rest/api/sql/elasticpools/createorupdate)|创建新弹性池或更新现有的弹性池。|
+|[弹性池-删除](https://docs.microsoft.com/rest/api/sql/elasticpools/delete)|删除弹性池。|
+|[弹性池-获取](https://docs.microsoft.com/rest/api/sql/elasticpools/get)|获取弹性池。|
+|[弹性池-按服务器列出](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|返回服务器中弹性池的列表。|
+|[弹性池-更新](https://docs.microsoft.com/rest/api/sql/elasticpools/listbyserver)|更新现有的弹性池。|
 |[弹性池活动](https://docs.microsoft.com/rest/api/sql/elasticpoolactivities)|返回弹性池活动。|
 |[弹性池数据库活动](https://docs.microsoft.com/rest/api/sql/elasticpooldatabaseactivities)|返回弹性池内数据库上的活动。|
-|[数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
-|[数据库 - 获取](https://docs.microsoft.com/rest/api/sql/databases/get)|获取数据库。|
-|[数据库 - 按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
-|[数据库 - 按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
-|[数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
+|[数据库-创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)|创建新数据库或更新现有数据库。|
+|[数据库-获取](https://docs.microsoft.com/rest/api/sql/databases/get)|获取数据库。|
+|[数据库-按弹性池列出](https://docs.microsoft.com/rest/api/sql/databases/listbyelasticpool)|返回弹性池中数据库的列表。|
+|[数据库-按服务器列出](https://docs.microsoft.com/rest/api/sql/databases/listbyserver)|返回服务器中的数据库列表。|
+|[数据库-更新](https://docs.microsoft.com/rest/api/sql/databases/update)|更新现有的数据库。|
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关视频，请参阅[有关 Azure SQL 数据库弹性功能的 Microsoft 虚拟大学视频课程](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)
 * 若要深入了解如何通过弹性池设计 SaaS 应用程序的模式，请参阅 [具有 Azure SQL 数据库的多租户 SaaS 应用程序的设计模式](sql-database-design-patterns-multi-tenancy-saas-applications.md)。
 * 有关使用弹性池的 SaaS 教程，请参阅 [Wingtip SaaS 应用程序简介](sql-database-wtp-overview.md)。

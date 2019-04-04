@@ -14,16 +14,16 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: 4e92f2aeec21ccef5a6a553b17e099d54de7266a
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4385e982b2a1da52ae55acf50c601108863c452a
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774331"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905947"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>使用 Azure Stack 存储的数据传输工具
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 Microsoft Azure Stack 提供一组存储服务，适用于磁盘、 blob、 表、 队列和帐户管理功能。 如果需要通过 Azure Stack 存储管理或移动数据，可以使用一组 Azure 存储工具。 本文概述了可用的工具。
 
@@ -59,7 +59,7 @@ AzCopy 是一个命令行实用工具，用于向 / 从简单的命令使用具�
 
 有两个版本的 AzCopy 实用程序：Windows 上的 AzCopy 和 Linux 上的 AzCopy。
 
- - **Windows 上的 AzCopy**
+ - **AzCopy on Windows**
     - 下载 Azure Stack 支持的 AzCopy 版本。 可以采用与 Azure 一样的方式在 Azure Stack 上安装和使用 AzCopy。 有关详细信息，请参阅 [Windows 上的 AzCopy](../../storage/common/storage-use-azcopy.md)。
         - 对于 1811 更新或更高版本，请[下载 AzCopy 7.3.0](https://aka.ms/azcopyforazurestack20171109)。
         - 对于以前的版本（1802 到 1809 更新），请[下载 AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417)。
@@ -71,7 +71,7 @@ AzCopy 是一个命令行实用工具，用于向 / 从简单的命令使用具�
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>针对数据传输的 AzCopy 命令示例
 
-以下示例展示了将数据复制到 Azure Stack Blob 以及从这些位置复制数据的典型方案。 若要了解详细信息，请参阅 [Windows 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux) 和 [Linux 上的 AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux)。
+以下示例展示了将数据复制到 Azure Stack Blob 以及从这些位置复制数据的典型方案。 若要了解详细信息，请参阅 [Windows 上的 AzCopy](../../storage/common/storage-use-azcopy.md) 和 [Linux 上的 AzCopy](../../storage/common/storage-use-azcopy-linux.md)。
 
 ### <a name="download-all-blobs-to-a-local-disk"></a>将所有 Blob 下载到本地磁盘
 
@@ -156,7 +156,7 @@ Azure PowerShell 是一个模块，它提供的 cmdlet 用于管理 Azure 和 Az
    > [!NOTE]
    > 此脚本必须在 **AzureStack_Tools** 的根目录中运行。
 
-```PowerShell  
+```powershell  
 # begin
 
 $ARMEvnName = "AzureStackUser" # set AzureStackUser as your Azure Stack environment name
@@ -263,8 +263,8 @@ Azure Stack 需要 Azure CLI 2.0 版或更高版本。 若要详细了解如何�
 1. 打开最喜欢的文本编辑器，然后将前面的脚本复制并粘贴到编辑器中。
 2. 更新脚本的变量，使之反映配置设置。
 3. 更新所需的变量后，保存脚本并退出编辑器。 后续步骤假定已将脚本命名为 **my_storage_sample.sh**。
-4. 如有必要，将脚本标记为可执行文件：`chmod +x my_storage_sample.sh`
-5. 执行脚本。 例如，在 Bash 中：`./my_storage_sample.sh`
+4. 如有必要，将标记为可执行文件，该脚本： `chmod +x my_storage_sample.sh`
+5. 执行脚本。 例如，在 Bash 中执行以下代码： `./my_storage_sample.sh`
 
 ```azurecli
 #!/bin/bash
@@ -336,7 +336,7 @@ blobEndpoint myaccount.blob.local.azurestack.external
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将存储资源管理器连接到 Azure Stack 订阅](azure-stack-storage-connect-se.md)
-* [存储资源管理器入门](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [与 Azure 一致的存储：差异和注意事项](azure-stack-acs-differences.md)
+* [存储资源管理器连接到 Azure Stack 订阅](azure-stack-storage-connect-se.md)
+* [开始使用存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure 一致的存储： 差异和注意事项](azure-stack-acs-differences.md)
 * [Microsoft Azure 存储简介](../../storage/common/storage-introduction.md)

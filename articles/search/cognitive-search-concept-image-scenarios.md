@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 9e4b9d8cf3300f977824f95aeb14a614d8897abd
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56430261"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916965"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
 
@@ -32,9 +32,9 @@ ms.locfileid: "56430261"
 
 无法关闭图像规范化功能。 循环访问图像的技术需要规范化的图像。
 
-| 配置参数 | 说明 |
+| 配置参数 | 描述 |
 |--------------------|-------------|
-| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为“generateNormalizedImagePerPage”，以生成一系列规范化的图像，对于数据源中的 PDF 文件，每一页呈现为一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 |
+| imageAction   | 如果在遇到嵌入图像或图像文件时无需执行任何操作，请将此项设置为 "none"。 <br/>设置为 "generateNormalizedImages" 会在文档破解过程中生成一系列规范化的图像。<br/>设置为“generateNormalizedImagePerPage”，以生成一系列规范化的图像，对于数据源中的 PDF 文件，每一页呈现为一个输出图像。  对于非 PDF 文件类型，该功能与“generateNormalizedImages”相同。<br/>对于任何不是“none”的选项，这些图像会在 *normalized_images* 字段中公开。 <br/>默认为 "none"。 将 "dataToExtract" 设置为 "contentAndMetadata" 时，此配置仅与 Blob 数据源相关。 <br/>将从给定文档中提取最多 1000年映像。 如果在文档中有超过 1000 个映像，将提取前 1000 个，并将生成警告。 |
 |  normalizedImageMaxWidth | 生成的规范化图像的最大宽度（以像素为单位）。 默认为 2000。|
 |  normalizedImageMaxHeight | 生成的规范化图像的最大高度（以像素为单位）。 默认为 2000。|
 
@@ -64,7 +64,7 @@ ms.locfileid: "56430261"
 
 将 *imageAction* 设置为“none”以外的值后，新的 *normalized_images* 字段会包含一系列图像。 每个图像都是一个包含以下成员的复杂类型：
 
-| 图像成员       | 说明                             |
+| 图像成员       | 描述                             |
 |--------------------|-----------------------------------------|
 | 数据               | JPEG 格式的规范化图像的 BASE64 编码字符串。   |
 | width              | 规范化图像的宽度（以像素为单位）。 |
@@ -219,8 +219,8 @@ ms.locfileid: "56430261"
 
 ## <a name="see-also"></a>另请参阅
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [分析图像技术](cognitive-search-skill-image-analysis.md)
++ [分析图像技能](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
-+ [文本合并技术](cognitive-search-skill-textmerger.md)
-+ [如何定义技术集](cognitive-search-defining-skillset.md)
-+ [如何映射扩充的字段](cognitive-search-output-field-mapping.md)
++ [文本合并技能](cognitive-search-skill-textmerger.md)
++ [如何定义技能组合](cognitive-search-defining-skillset.md)
++ [如何将丰富的字段映射](cognitive-search-output-field-mapping.md)

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2016
 ms.author: jehollan
-ms.openlocfilehash: 6cde5b8ba8d770a07199816286b666e952394de1
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
-ms.translationtype: HT
+ms.openlocfilehash: 15e581454b60319ab734f2fa5faf0d90e0a7c8bf
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27963666"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893718"
 ---
 # <a name="get-started-with-the-delay-and-delay-until-actions"></a>延迟和延迟到操作入门
 通过使用延迟和“延迟到”操作，可以完成各种工作流方案。
@@ -33,7 +33,9 @@ ms.locfileid: "27963666"
 若要开始在逻辑应用中使用延迟操作，请参阅[创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
 ## <a name="use-the-delay-actions"></a>使用延迟操作
-操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息](connectors-overview.md)。
+
+操作是由在逻辑应用中定义的工作流执行的操作。 
+[了解有关操作的详细信息](../connectors/apis-list.md)。
 
 下面是如何在逻辑应用中使用延迟步骤的示例序列：
 
@@ -53,10 +55,10 @@ ms.locfileid: "27963666"
 此操作使运行延迟特定时间间隔。
 * 表示它是必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 计数* |计数 |要延迟的时间单位数 |
-| 单位* |单位 |时间单位：`Second`、`Minute`、`Hour` 或 `Day` |
+| 单位* |单位 |时间单位： `Second`， `Minute`， `Hour`，或 `Day` |
 
 <br>
 
@@ -64,7 +66,7 @@ ms.locfileid: "27963666"
 此操作将运行延迟到指定日期/时间。
 * 表示它是必填字段。
 
-| 显示名称 | 属性名称 | 说明 |
+| 显示名称 | 属性名称 | 描述 |
 | --- | --- | --- |
 | 年* |timestamp |要延迟到的年 (GMT) |
 | 月* |timestamp |要延迟到的月 (GMT) |

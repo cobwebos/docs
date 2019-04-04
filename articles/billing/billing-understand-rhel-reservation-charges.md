@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2019
 ms.author: cwatson
-ms.openlocfilehash: 9eba59bcdc9974519fc1ed37078a205eff28f116
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652939"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917050"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解如何为 Azure 应用 Red Hat Linux Enterprise 软件预订计划折扣
 
@@ -38,7 +38,7 @@ ms.locfileid: "58652939"
 - 1 台具有 3 或 4 个 vCPU 的已部署 VM，
 - 或为具有 5 个或更多 vCPU 的 VM 的 0.77 或约 77%。
 
-对于 5 个或更多的 vCPU，此比率为 2.6。 因此与具有 5 个或更多 Vcpu 的 VM 的 Red hat 预订涵盖软件成本，大约 77%唯一的部分。
+对于 5 个或更多的 vCPU，此比率为 2.6。 因此与具有 5 个或更多 Vcpu 的 VM 的 Red hat 预订涵盖软件成本，大约 77%具有唯一的部分。
 
 ## <a name="understand-red-hat-vm-usage-before-you-buy"></a>了解 Red Hat VM 使用情况，在购买前
 
@@ -61,9 +61,9 @@ Azure 门户商城名称：
 
 |Red Hat VM | 计量 ID| 比率| 示例 VM 大小|
 | -------| ------------------------| --- |--- |
-|1-4 vCPU VM 许可证|077a07bb-20f8-4bc6-b596-ab7211a1e247|第|D4s_v3|
-|1-4 vCPU VM 许可证|2f96d035-3bac-46d6-b2bc-c6daa0938536|第|D4s_v3|
-|1-4 vCPU VM 许可证|4831a7b4-bdd4-48a2-8e95-18d053971ede|第|D4s_v3|
+|1-4 vCPU VM 许可证|077a07bb-20f8-4bc6-b596-ab7211a1e247|1|D4s_v3|
+|1-4 vCPU VM 许可证|2f96d035-3bac-46d6-b2bc-c6daa0938536|1|D4s_v3|
+|1-4 vCPU VM 许可证|4831a7b4-bdd4-48a2-8e95-18d053971ede|1|D4s_v3|
 |5 + vCPU VM 许可证|291b2cbc-6c34-4e2b-a4e4-1ff8c106f672|2.166666667|D8s_v3|
 |5 + vCPU VM 许可证|3b6661c4-03dd-45e7-88c9-512fcb7906d5|2.166666667|D8s_v3|
 |5 + vCPU VM 许可证|037eddc0-fedd-4d73-b5d8-92fba9edb831|2.166666667|D8s_v3|
@@ -85,7 +85,7 @@ Azure 门户商城名称：
 
 |Red Hat VM | 计量 ID | 比率|示例 VM 大小|
 | ------- | --- | ------------------------| --- | --- |
-|1-4 vCPU VM 许可证 |4d902611-eed7-4060-a33e-3c7fdbac6406|第|D4s_v3|
+|1-4 vCPU VM 许可证 |4d902611-eed7-4060-a33e-3c7fdbac6406|1|D4s_v3|
 |5 + vCPU VM 许可证|6dfb482b-23ea-487f-810c-e66360f025de|2.333333333|D8s_v3|
 
 ### <a name="red-hat-enterprise-linux-with-ha"></a>Red Hat Enterprise Linux（带 HA）
@@ -94,7 +94,7 @@ Azure 门户商城名称：
 
 |Red Hat VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- | --- |
-|1-4 vCPU VM 许可证|e9711132-d9d9-450c-8203-25cfc4bce8de|第|D4s_v3|
+|1-4 vCPU VM 许可证|e9711132-d9d9-450c-8203-25cfc4bce8de|1|D4s_v3|
 |5 + vCPU VM 许可证|93954aa4-b55f-4b7b-844d-a119d6bf3c4e|2|D8s_v3|
 
 ### <a name="rhel-for-sap-business-applications"></a>RHEL for SAP Business Applications
@@ -108,9 +108,9 @@ Azure 门户商城名称：
 
 |Red Hat VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|1 个 vCPU VM 许可证|25889e91-c740-42ac-bc52-6b8f73b98575|第|D2s_v3|
-|2 个 vCPU VM 许可证|2a0c92c8-23a7-4dc9-a39c-c4a73a85b5da|第|D2s_v3|
-|4 个 vCPU VM 许可证|875898d3-3639-423c-82c1-38846281b7e8|第|D4s_v3|
+|1 个 vCPU VM 许可证|25889e91-c740-42ac-bc52-6b8f73b98575|1|D2s_v3|
+|2 个 vCPU VM 许可证|2a0c92c8-23a7-4dc9-a39c-c4a73a85b5da|1|D2s_v3|
+|4 个 vCPU VM 许可证|875898d3-3639-423c-82c1-38846281b7e8|1|D4s_v3|
 |6 vCPU VM 许可证|69a140fa-e08e-415c-85f2-48158e4c73a0|2.166666667||
 |8 个 vCPU VM 许可证|777a5a74-22d6-48c9-9705-ac38fe05a278|2.166666667|D8s_v3|
 |12 个 vCPU VM 许可证|d6b8917a-5127-497a-9f48-1e959df98812|2.166666667||
@@ -136,9 +136,9 @@ Azure 门户商城名称：
 
 |Red Hat VM | 计量 ID | 比率|示例 VM 大小|
 | ------- |------------------------| --- |--- |
-|1 个 vCPU VM 许可证|be0a59d1-eed7-47ec-becd-453267753793|第|D2s_v3|
-|2 个 vCPU VM 许可证|3b97c9f5-f5d5-4fd3-a421-b78fca32a656|第|D2s_v3|
-|4 个 vCPU VM 许可证|b39feb58-57bf-40f2-8193-f4fe9ac3dda3|第|D4s_v3|
+|1 个 vCPU VM 许可证|be0a59d1-eed7-47ec-becd-453267753793|1|D2s_v3|
+|2 个 vCPU VM 许可证|3b97c9f5-f5d5-4fd3-a421-b78fca32a656|1|D2s_v3|
+|4 个 vCPU VM 许可证|b39feb58-57bf-40f2-8193-f4fe9ac3dda3|1|D4s_v3|
 |6 vCPU VM 许可证|a5963812-0f5a-4053-8ace-2b5babd15ed8|2.166666667||
 |8 个 vCPU VM 许可证|5460ab4d-ce9a-46af-8ad5-ca5e53d715b5|2.166666667|D8s_v3|
 |12 个 vCPU VM 许可证|0e3bc72d-a888-4bcf-8437-119f763a3215|2.166666667||
@@ -158,12 +158,12 @@ Azure 门户商城名称：
 
 若要了解有关预留的详细信息，请参阅以下文章：
 
-- [什么是适用于 Azure 的预留](billing-save-compute-costs-reservations.md)
+- [什么是 Azure 的保留项](billing-save-compute-costs-reservations.md)
 - [预付款购买的 Red Hat 软件计划的 Azure 预订](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
-- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

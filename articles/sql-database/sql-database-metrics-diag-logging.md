@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 785948c78b2b8205c4bebe2d68b62f6de7254d94
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 3004f073100b45de25655fc6dee6a96c90612c46
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863128"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905197"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -64,14 +64,14 @@ ms.locfileid: "58863128"
 | :------------------- | ----- | ----- |
 | [所有指标](#all-metrics)：包含 DTU/CPU 百分比、DTU/CPU 限制、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比和 XTP 存储百分比。 | 是 | 否 |
 | [QueryStoreRuntimeStatistics](#query-store-runtime-statistics)：包含有关查询运行时统计信息的信息，例如 CPU 使用率、查询持续时间统计信息。 | 是 | 是 |
-| [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息的信息（查询正在等待什么），例如 CPU、日志和锁定。 | 是 | 是 |
-| [Errors](#errors-dataset):包含有关数据库发生的 SQL 错误的信息。 | 是 | 是 |
-| [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含有关数据库针对不同等待类型花费多少时间等待的信息。 | 是 | 否 |
-| [Timeouts](#time-outs-dataset)：包含有关数据库发生的超时的信息。 | 是 | 否 |
-| [Blocks](#blockings-dataset)：包含有关数据库发生的阻塞事件的信息。 | 是 | 否 |
+| [QueryStoreWaitStatistics](#query-store-wait-statistics)：包含有关查询等待统计信息 （内容查询等待） 此类是 CPU、 日志和锁定。 | 是 | 是 |
+| [Errors](#errors-dataset):包含在数据库上的 SQL 错误有关的信息。 | 是 | 是 |
+| [DatabaseWaitStatistics](#database-wait-statistics-dataset)：包含数据库所用不同等待类型上等待多长时间有关的信息。 | 是 | 否 |
+| [Timeouts](#time-outs-dataset)：包含有关超时的数据库上的信息。 | 是 | 否 |
+| [Blocks](#blockings-dataset)：包含有关阻止在数据库上的事件的信息。 | 是 | 否 |
 | [死锁](#deadlocks-dataset):包含有关死锁事件在数据库上的信息。 | 是 | 否 |
-| [AutomaticTuning](#automatic-tuning-dataset):包含有关自动优化建议对数据库的信息。 | 是 | 否 |
-| [SQLInsights](#intelligent-insights-dataset)：包含性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
+| [AutomaticTuning](#automatic-tuning-dataset):包含有关为数据库自动优化建议的信息。 | 是 | 否 |
+| [SQLInsights](#intelligent-insights-dataset)：包含的数据库性能的智能见解。 有关详细信息，请参阅[智能见解](sql-database-intelligent-insights.md)。 | 是 | 是 |
 
 > [!IMPORTANT]
 > 弹性池和托管的实例都有其自己单独的诊断遥测数据从它们所包含的数据库。 这是必须注意的，因为诊断遥测数据是为每个这样的资源单独配置的，如下所述。

@@ -3,19 +3,19 @@ title: 文本翻译 API Transliterate 方法
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API Transliterate 方法。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a0fcd7159be075f0e311e9a242d389dca62f4a37
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 97a2318b7aa3591193108a8a061a15ec5692fac5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859601"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918614"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
@@ -58,9 +58,9 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
-    <td>一个授权<br/>标头</td>
+    <td>_一个授权_<br/>_标头的值开始缓存响应_</td>
     <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
   </tr>
   <tr>
@@ -98,9 +98,9 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个元素。 结果对象包括以下属性：
 
-  * `text`：一个字符串，它是将输入字符串转换为输出脚本的结果。
+  * `text`:一个字符串，它是将输入字符串转换为输出脚本的结果。
   
-  * `script`：一个字符串，指定输出中使用的脚本。
+  * `script`:一个字符串，指定输出中使用的脚本。
 
 示例 JSON 响应如下：
 
@@ -115,7 +115,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -128,7 +128,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -165,7 +165,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 以下示例显示如何将两个日语字符串转换为用罗马字母拼写的日语。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 此示例中请求的 JSON 有效负载：
 

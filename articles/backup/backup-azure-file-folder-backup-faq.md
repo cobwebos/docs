@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
-ms.openlocfilehash: f5695da01752d701e1b688700580982f2d2e6154
-ms.sourcegitcommit: 98645e63f657ffa2cc42f52fea911b1cdcd56453
-ms.translationtype: HT
+ms.openlocfilehash: acf71ae6f37ab6ea32d9cdd0ac06f297b00fba2e
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54827408"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918563"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>有关 Azure 备份代理的问题
 本文提供常见问题的解答，有助于快速了解 Azure 备份代理组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -52,7 +52,7 @@ ms.locfileid: "54827408"
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-already-backed-by-the-azure-backup-service-using-the-vm-extension-br"></a>可以在已由 Azure 备份服务备份的 Azure VM 上使用 VM 扩展来安装 Azure 备份代理吗？ <br/>
 绝对是。 Azure 备份使用 VM 扩展为 Azure VM 提供 VM 级别备份。 若要保护来宾 OS 上的文件和文件夹，请在来宾 Windows OS 上安装 Azure 备份代理。
 
-### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>可以在 Azure VM 上安装 Azure 备份代理来备份 Azure VM 提供的临时存储中存在的文件和文件夹吗？ <br/>
+### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>是否可以在 Azure VM 上安装 Azure 备份代理来备份 Azure VM 提供的临时存储中存在的文件和文件夹？ <br/>
 是的。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 擦除临时存储数据后，备份作业会失败。此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>针对缓存文件夹的最小大小要求是什么？ <br/>
@@ -81,8 +81,8 @@ ms.locfileid: "54827408"
 
     | 注册表路径 | 注册表项 | 值 |
     | --- | --- | --- |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新缓存文件夹位置* |
-    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新缓存文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config` |ScratchLocation |*新的缓存文件夹位置* |
+    | `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider` |ScratchLocation |*新的缓存文件夹位置* |
 
 4. 通过在提升的命令提示符下执行以下命令来重新启动备份引擎：
 
@@ -113,13 +113,13 @@ ms.locfileid: "54827408"
 
 ## <a name="manage-backups"></a>管理备份
 ### <a name="what-happens-if-i-rename-a-windows-server-that-is-backing-up-data-to-azurebr"></a>如果重命名了用于将数据备份到 Azure 的 Windows 服务器，会发生什么情况？<br/>
-重命名服务器时，所有当前配置的备份都将停止。 将向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的[**其他服务器**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)选项。
+重命名服务器时，所有当前配置的备份都将停止。 需要向备份保管库注册服务器的新名称。 向保管库注册新名称时，第一个备份操作是*完全*备份。 如果需要恢复备份到采用旧服务器名称的保管库的数据，可以使用“恢复数据”向导中的[**其他服务器**](backup-azure-restore-windows-server.md#use-instant-restore-to-restore-data-to-an-alternate-machine)选项。
 
 ### <a name="what-is-the-maximum-file-path-length-that-can-be-specified-in-backup-policy-using-azure-backup-agent-br"></a>可以使用 Azure 备份代理在备份策略中指定的文件路径的最大长度是多少？ <br/>
-Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限于 Windows API](https://msdn.microsoft.com/library/aa365247.aspx#fully_qualified_vs._relative_paths)。 如果要保护的文件的文件路径超过 Windows API 允许的长度，可以备份父文件夹或磁盘驱动器。  
+Azure 备份代理依赖于 NTFS。 [可以指定的文件路径的长度受限于 Windows API](/windows/desktop/FileIO/naming-a-file#fully_qualified_vs._relative_paths)。 如果要保护的文件的文件路径超过 Windows API 允许的长度，可以备份父文件夹或磁盘驱动器。  
 
 ### <a name="what-characters-are-allowed-in-file-path-of-azure-backup-policy-using-azure-backup-agent-br"></a>使用 Azure 备份代理的 Azure 备份策略的文件路径中允许哪些字符？ <br>
- Azure 备份代理依赖于 NTFS。 允许使用 [NTFS 支持的字符](https://msdn.microsoft.com/library/aa365247.aspx#naming_conventions) 作为文件规范的一部分。 
+ Azure 备份代理依赖于 NTFS。 允许使用 [NTFS 支持的字符](/windows/desktop/FileIO/naming-a-file#naming_conventions) 作为文件规范的一部分。 
  
 ### <a name="i-receive-the-warning-azure-backups-have-not-been-configured-for-this-server-even-though-i-configured-a-backup-policy-br"></a>即使配置了备份策略，仍会显示警告“尚未为此服务器配置 Azure 备份” <br/>
 在本地服务器上存储的备份计划设置与备份保管库中存储的设置不同时，可能会出现此警告。 服务器或设置恢复为已知良好状态后，备份计划可能会失去同步。 如果收到此警告，请 [重新配置备份策略](backup-azure-manage-windows-server.md) ，并 **立即运行备份** ，以便将本地服务器与 Azure 重新同步。

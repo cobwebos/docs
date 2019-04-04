@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
-ms.openlocfilehash: 67bf0499b6dcf4257380f601c802723b2993a092
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771474"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893344"
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "57771474"
 若要完成本教程，需要具备以下先决条件：
 
 * 有效的 Azure 帐户。 如果没有帐户，可以注册 Azure 试用版并获取多达 10 个免费的移动应用。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。
-* Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](https://msdn.microsoft.com/library/mt613162.aspx) 。
+* Visual Studio with Xamarin。 有关说明，请参阅 [设置和安装 Visual Studio 和 Xamarin](/visualstudio/cross-platform/setup-and-install) 。
 
 ## <a name="create-an-azure-mobile-app-backend"></a>创建 Azure 移动应用后端
 按照这些步骤创建移动应用后端。
@@ -72,7 +72,7 @@ ms.locfileid: "57771474"
 
 ## <a name="next-steps"></a>后续步骤
 * [向应用添加脱机同步](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [向应用添加身份验证](app-service-mobile-xamarin-android-get-started-users.md)
+* [向应用程序添加身份验证](app-service-mobile-xamarin-android-get-started-users.md)
 * [向 Xamarin.Android 应用添加推送通知](app-service-mobile-xamarin-android-get-started-push.md)
 * [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md)
 

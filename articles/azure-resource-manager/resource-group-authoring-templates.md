@@ -12,18 +12,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2019
 ms.author: tomfitz
-ms.openlocfilehash: 5c8ec54df0d578c6d12524a4128b9cc54e6464a0
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: f79518b26752d581d6360a3b770e8a5cba293fd7
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781895"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904927"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
 
 本文介绍 Azure 资源管理器模板的结构。 演示了模板的不同部分，以及可在相应部分使用的属性。 模板中包含可用于为部署构造值的 JSON 和表达式。
 
-本文适用于具有一定熟悉资源管理器模板的用户。 它提供的结构和模板语法的详细的信息。 如果你想创建模板的简介，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
+本文面向对资源管理器模板有一定了解的用户， 其中提供了有关模板结构和语法的详细信息。 有关创建模板的简介，请参阅[创建第一个 Azure 资源管理器模板](resource-manager-create-first-template.md)。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="template-format"></a>模板格式
 
@@ -44,20 +47,20 @@ ms.locfileid: "57781895"
 
 | 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
-| $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 对于资源组部署，请使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 资源组部署，请使用： `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>为订阅部署，请使用： `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
-| apiProfile |否 | 用作集合的资源类型的 API 版本的 API 版本。 使用此值可以避免不得不在模板中指定的每个资源的 API 版本。 如果指定的 API 配置文件版本，并且未指定资源类型的 API 版本，资源管理器配置文件中定义该资源类型使用的 API 版本。<br><br>到不同的环境，例如 Azure Stack 和全球 Azure 部署模板时，将 API 配置文件属性将非常有用。 使用 API 配置文件版本以确保你的模板会自动使用这两个环境中支持的版本。 当前 API 的配置文件版本和 API 版本配置文件中定义的资源的列表，请参阅[API 配置文件](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>有关详细信息，请参阅[跟踪使用 API 配置文件的版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
+| apiProfile |否 | 用作资源类型 API 版本集合的 API 版本。 使用此值可以避免为模板中的每个资源指定 API 版本。 如果你指定 API 配置文件版本但不指定资源类型的 API 版本，则资源管理器将使用配置文件中为该资源类型定义的 API 版本。<br><br>将模板部署到不同的环境（例如 Azure Stack 和全球 Azure）时，API 配置文件属性非常有用。 使用 API 配置文件版本可确保模板自动使用两个环境均支持的版本。 有关最新 API 配置文件版本以及配置文件中定义的资源 API 版本的列表，请参阅 [API 配置文件](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>有关详细信息，请参阅[使用 API 配置文件跟踪版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
 | [parameters](#parameters) |否 |执行部署以自定义资源部署时提供的值。 |
 | [variables](#variables) |否 |在模板中用作 JSON 片段以简化模板语言表达式的值。 |
 | [functions](#functions) |否 |可在模板中使用的用户定义函数。 |
-| [resources](#resources) |是 |已在资源组或订阅中部署/更新的资源类型。 |
+| [资源](#resources) |是 |已在资源组或订阅中部署/更新的资源类型。 |
 | [outputs](#outputs) |否 |部署后返回的值。 |
 
 每个元素均有可设置的属性。 本文稍后将更详细地介绍模板的各个节。
 
 ## <a name="syntax"></a>语法
 
-模板的基本语法为 JSON。 但是，可以使用表达式来扩展可用模板中的 JSON 值。  表达式开头和结尾的括号：`[`和`]`分别。 部署模板时会计算表达式的值。 表达式可以返回字符串、 整数、 布尔值、 数组或对象。 下面的示例演示一个表达式中参数的默认值：
+模板的基本语法为 JSON。 但是，可以使用表达式来扩展模板中可用的 JSON 值。  表达式分别以方括号 `[` 与 `]` 开头和结尾。 部署模板时会计算表达式的值。 表达式可以返回字符串、整数、布尔值、数组或对象。 以下示例演示了参数默认值中的表达式：
 
 ```json
 "parameters": {
@@ -68,19 +71,19 @@ ms.locfileid: "57781895"
 },
 ```
 
-在表达式中，语法`resourceGroup()`调用资源管理器提供一个模板中使用的函数之一。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 语法`.location`从该函数返回的对象中检索一个属性。
+在该表达式中，语法 `resourceGroup()` 调用资源管理器提供的、在模板中使用的某个函数。 如同在 JavaScript 中一样，函数调用的格式为 `functionName(arg1,arg2,arg3)`。 语法 `.location` 从该函数返回的对象中检索一个属性。
 
 模板函数及其参数不区分大小写。 例如，Resource Manager 将 **variables('var1')** 和 **VARIABLES('VAR1')** 视为相同。 在求值时，除非函数明确修改大小写（例如，使用 toUpper 或 toLower 进行修改），否则函数将保留大小写。 某些资源类型可能会提出大小写要求，而不考虑函数求值方式。
 
 要使用一个括号 `[` 在开头括住文本字符串但不将其解释为表达式，请额外添加一个括号，使字符串以 `[[` 开头。
 
-若要将一个字符串值作为参数传递给函数，使用单引号。
+若要将字符串值作为参数传递给函数，请使用单引号。
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]"
 ```
 
-若要转义的表达式，例如，在模板中，添加一个 JSON 对象中的双引号内使用反斜杠。
+若要转义表达式中的双引号（例如，在模板中添加 JSON 对象），请使用反斜杠。
 
 ```json
 "tags": {
@@ -100,7 +103,7 @@ ms.locfileid: "57781895"
 
 ### <a name="available-properties"></a>可用属性
 
-为参数的可用属性有：
+参数的可用属性为：
 
 ```json
 "parameters": {
@@ -261,13 +264,13 @@ ms.locfileid: "57781895"
 ]
 ```
 
-### <a name="parameter-example-templates"></a>参数的示例模板
+### <a name="parameter-example-templates"></a>参数示例模板
 
 这些示例模板演示了使用参数的一些方案。 请部署这些模板来测试在不同方案中参数是如何处理的。
 
 |模板  |描述  |
 |---------|---------|
-|[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
+|[使用默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 |[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 
 ## <a name="variables"></a>变量
@@ -276,7 +279,7 @@ ms.locfileid: "57781895"
 
 ### <a name="available-definitions"></a>可用定义
 
-下面的示例显示了可用于定义变量的选项：
+以下示例演示了可用于定义变量的选项：
 
 ```json
 "variables": {
@@ -303,11 +306,11 @@ ms.locfileid: "57781895"
 }
 ```
 
-有关使用信息`copy`若要创建多个值的变量，请参阅[变量迭代](resource-group-create-multiple.md#variable-iteration)。
+有关使用 `copy` 为变量创建多个值的信息，请参阅[变量迭代](resource-group-create-multiple.md#variable-iteration)。
 
 ### <a name="define-and-use-a-variable"></a>定义和使用变量
 
-以下示例介绍了变量定义。 它为存储帐户名称创建字符串值。 它使用多个模板函数来获取参数值，并将其连接到的唯一字符串。
+以下示例介绍了变量定义。 它为存储帐户名称创建字符串值。 它使用多个模板函数来获取参数值，并将其连接到唯一字符串。
 
 ```json
 "variables": {
@@ -364,7 +367,7 @@ ms.locfileid: "57781895"
 "[variables('environmentSettings')[parameters('environmentName')].instanceSize]"
 ```
 
-### <a name="variable-example-templates"></a>变量的示例模板
+### <a name="variable-example-templates"></a>变量示例模板
 
 这些示例模板演示了一些使用变量的情况。 部署这些模板，测试在不同情况下如何处理变量。 
 
@@ -382,7 +385,7 @@ ms.locfileid: "57781895"
 定义用户函数时，存在一些限制：
 
 * 该函数不能访问变量。
-* 函数仅可使用函数中定义的参数。 当你使用[parameters 函数](resource-group-template-functions-deployment.md#parameters)中用户定义的函数，你被限制到该函数的参数。
+* 函数仅可使用函数中定义的参数。 如果在用户定义的函数中使用[参数函数](resource-group-template-functions-deployment.md#parameters)，则只能使用该函数的参数。
 * 该函数不能调用其他用户定义的函数。
 * 该函数不能使用[引用函数](resource-group-template-functions-resource.md#reference)。
 * 该函数的参数不能具有默认值。
@@ -494,15 +497,15 @@ ms.locfileid: "57781895"
 | 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
 | 条件 | 否 | 布尔值，该值指示在此部署期间是否将预配资源。 为 `true` 时，在部署期间创建资源。 为 `false` 时，此部署将跳过资源。 |
-| apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用的值，请参阅[模板引用](/azure/templates/)。 |
-| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用的值，请参阅[模板引用](/azure/templates/)。 |
+| apiVersion |是 |用于创建资源的 REST API 版本。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
+| type |是 |资源的类型。 此值是资源提供程序的命名空间和资源类型（例如 **Microsoft.Storage/storageAccounts**）的组合。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | 名称 |是 |资源的名称。 该名称必须遵循 RFC3986 中定义的 URI 构成部分限制。 此外，向第三方公开资源名称的 Azure 服务会验证名称，以确保它不会尝试窃取另一身份。 |
 | 位置 |多种多样 |提供的资源支持的地理位置。 可以选择任何可用位置，但通常最好选取一个接近用户的位置。 通常，在同一区域放置彼此交互的资源也很有用。 大多数资源类型需要一个位置，但某些类型（如角色分配）不需要位置。 |
 | 标记 |否 |与资源关联的标记。 应用标签以跨订阅按逻辑对资源进行组织。 |
 | 注释 |否 |用于描述模板中资源的注释。 有关详细信息，请参阅[模板中的注释](resource-group-authoring-templates.md#comments)。 |
 | 复制 |否 |需要多个实例时应创建的资源数。 默认模式为并行。 若不想同时部署所有资源，请指定为串行模式。 有关详细信息，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)。 |
 | dependsOn |否 |必须在部署此资源前部署的资源。 Resource Manager 评估资源之间的依赖关系，并根据正确顺序进行部署。 如果资源互不依赖，则会并行部署资源。 该值可以是资源名称或资源唯一标识符的逗号分隔列表。 仅列出在此模板中部署的资源。 未在此模板中定义的资源必须是已存在的资源。 避免添加不必要的依赖项，因为这些依赖项可能会降低部署速度并创建循环依赖项。 有关设置依赖项的指导，请参阅[在 Azure 资源管理器模板中定义依赖项](resource-group-define-dependencies.md)。 |
-| 属性 |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 若要确定可用的值，请参阅[模板引用](/azure/templates/)。 |
+| 属性 |否 |特定于资源的配置设置。 properties 的值与创建资源时，在 REST API 操作（PUT 方法）的请求正文中提供的值相同。 还可以指定副本数组，为一个属性创建多个实例。 若要确定可用值，请参阅[模板参考](/azure/templates/)。 |
 | sku | 否 | 某些资源接受定义了要部署的 SKU 的值。 例如，可以为存储帐户指定冗余类型。 |
 | kind | 否 | 某些资源接受定义了你部署的资源类型的值。 例如，可以指定要创建的 Cosmos DB 的类型。 |
 | 计划 | 否 | 某些资源接受定义了要部署的计划的值。 例如，可以为虚拟机指定市场映像。 | 
@@ -539,7 +542,7 @@ ms.locfileid: "57781895"
 * 不一定是唯一的资源名称，不过，可以选择提供可帮助识别资源的名称。
 * 通用的资源名称。
 
-提供**唯一资源名称**的任何资源类型，具有数据访问的终结点。 需要唯一名称的一些常见资源类型包括：
+对于具有数据访问终结点的任何资源类型，请提供**唯一的资源名称**。 需要唯一名称的一些常见资源类型包括：
 
 * Azure 存储<sup>1</sup> 
 * Azure 应用服务的 Web 应用功能
@@ -561,7 +564,7 @@ ms.locfileid: "57781895"
 }
 ```
 
-对于某些资源类型，你可能想要提供**名称用于标识**，但名称不一定是唯一的。 对于这些资源类型，提供使用或特征描述它的名称。
+对于某些资源类型，可能需要提供**标识名称**，但该名称并非一定是唯一的。 对于这些资源类型，请提供一个可以描述其用途或特征的名称。
 
 ```json
 "parameters": {
@@ -575,7 +578,7 @@ ms.locfileid: "57781895"
 }
 ```
 
-有关资源类型，您的主要是通过不同资源的访问权限，可以使用**通用名称**这就是在模板中硬编码。 例如，可为 SQL Server 上的防火墙规则设置一个标准的通用名称：
+对于主要通过其他资源访问的资源类型，可以在模板中使用硬编码的**通用名称**。 例如，可为 SQL Server 上的防火墙规则设置一个标准的通用名称：
 
 ```json
 {
@@ -667,9 +670,9 @@ ms.locfileid: "57781895"
 
 当嵌套时，类型会设置为 `databases`，但其完整资源类型是 `Microsoft.Sql/servers/databases`。 可不提供 `Microsoft.Sql/servers/`，因为假设它继承父资源类型。 子资源名称设置为 `exampledatabase`，但完整名称包括父名称。 可不提供 `exampleserver`，因为假设它继承父资源。
 
-子资源类型的格式为：`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+子资源类型的格式为： `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-子资源名称的格式为：`{parent-resource-name}/{child-resource-name}`
+子资源名称的格式为： `{parent-resource-name}/{child-resource-name}`
 
 但是，无需在服务器内定义数据库。 可以定义顶级子资源。 如果父资源未部署在同一模板中，或者想要使用 `copy` 创建多个子资源，可以使用此方法。 使用此方法时，必须提供完整的资源类型，并在子资源名称中包括父资源名称。
 
@@ -698,11 +701,11 @@ ms.locfileid: "57781895"
 
 例如：
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`不正确
 
 ## <a name="outputs"></a>Outputs
 
-在 Outputs 节中，可以指定从部署返回的值。 通常情况下，你可以从已部署资源返回的值。
+在 Outputs 节中，可以指定从部署返回的值。 一般情况下，将从已部署的资源返回值。
 
 ### <a name="available-properties"></a>可用属性
 
@@ -768,7 +771,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 
 从链接模板获取输出属性时，属性名称不能包含短划线。
 
-下面的示例演示如何设置负载均衡器上的 IP 地址，通过从链接模板中检索一个值。
+以下示例演示如何通过从链接模板检索值，在负载均衡器上设置 IP 地址。
 
 ```json
 "publicIPAddress": {
@@ -778,13 +781,13 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 
 不能在[嵌套模板](resource-group-linked-templates.md#link-or-nest-a-template)的 outputs 节中使用 `reference` 函数。 若要返回嵌套模板中部署的资源的值，请将嵌套模板转换为链接模板。
 
-### <a name="output-example-templates"></a>输出的示例模板
+### <a name="output-example-templates"></a>输出示例模板
 
 |模板  |描述  |
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |
-|[负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载均衡器时，请使用输出中的资源 ID。 |
+|[负载均衡](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载均衡器时，请使用输出中的资源 ID。 |
 
 
 <a id="comments" />

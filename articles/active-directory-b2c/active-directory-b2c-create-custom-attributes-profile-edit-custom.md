@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/04/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6be2a2d6febfe927cadbdeb12dc91b0e103d6ac4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 41c3db1c9a7295d939aa34a36f86c0dfa9fecd91
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094620"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891440"
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C：在自定义配置文件编辑策略中使用自定义属性
 
@@ -296,7 +296,7 @@ Azure AD B2C 扩展存储在每个用户帐户中的属性集。 还可以使用
 
 ## <a name="reference"></a>参考
 
-有关扩展属性的详细信息，请参阅文章[目录架构扩展| 图形 API 概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)。
+有关扩展属性的详细信息，请参阅文章[目录架构扩展| 图形 API 概念](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-directory-schema-extensions)。
 
 > [!NOTE]
 > * TechnicalProfile 是一种元素类型或函数，用于定义终结点的名称、元数据和协议。 TechnicalProfile 详细说明了“标识体验框架”执行的声明交换。 在业务流程步骤中或者通过另一 TechnicalProfile 调用此函数时，调用方以参数形式提供 InputClaims 和 OutputClaims。  

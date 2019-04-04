@@ -14,16 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: damaerte
-ms.openlocfilehash: ad389cfaa92ad487fad8b7ecb6feac40324572f0
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: eb7deacc068661ca9a4f473ee2d36b7d4464c81c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100561"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905505"
 ---
 # <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell 的故障排除和限制
 
 排查 Azure Cloud Shell 中问题的已知解决方案包括：
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-troubleshooting"></a>常规故障排除
 
@@ -39,7 +41,7 @@ ms.locfileid: "56100561"
 
 ### <a name="storage-dialog---error-403-requestdisallowedbypolicy"></a>存储对话框 - 错误：403 RequestDisallowedByPolicy
 
-- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure Policy 而失败。错误消息将包括：`The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
+- **详细信息**：通过 Cloud Shell 创建存储帐户时，由于管理员设置的 Azure Policy 而失败。错误消息将包括： `The resource action 'Microsoft.Storage/storageAccounts/write' is disallowed by one or more policies.`
 - **解决方法**：与 Azure 管理员联系，让其删除或更新拒绝存储创建的 Azure Policy。
 
 ### <a name="storage-dialog---error-400-disallowedoperation"></a>存储对话框 - 错误：400 DisallowedOperation
@@ -74,7 +76,7 @@ ms.locfileid: "56100561"
 > Azure VM 必须具有面向公众的 IP 地址。
 
 - **详细信息**：由于 WinRM 的默认 Windows 防火墙设置，用户可能会看到以下错误：`Ensure the WinRM service is running. Remote Desktop into the VM for the first time and ensure it can be discovered.`
-- **解决方法**：运行 `Enable-AzureRmVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
+- **解决方法**：运行 `Enable-AzVMPSRemoting` 以启用目标计算机上 PowerShell 远程处理的所有方面。
 
 ### <a name="dir-does-not-update-the-result-in-azure-drive"></a>`dir` 不会更新 Azure 驱动器中的结果
 

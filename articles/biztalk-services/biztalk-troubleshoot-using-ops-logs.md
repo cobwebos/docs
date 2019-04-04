@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: e58a62761284e0671c0083d41f5dde4c13b32fe2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 35c30ec97d4c033a687204b926d2f686c52be069
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108250"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916013"
 ---
 # <a name="biztalk-services-troubleshoot-using-operation-logs"></a>BizTalk 服务：使用操作日志进行故障排除
 
@@ -31,8 +31,8 @@ ms.locfileid: "58108250"
 操作日志是一项管理服务功能，可让你查看针对 Azure 服务（包括 BizTalk 服务）执行的操作的历史日志。 这允许查看与 BizTalk 服务订阅的管理操作相关的历史数据，时间可以追溯到 180 天前。
 
 > [!NOTE]
-> 此功能只捕获 BizTalk 服务的管理操作的日志，例如服务的启动时间、备份时间等。 可使用 [BizTalk 服务 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) 跟踪此类操作。 有关使用管理服务跟踪的操作的完整列表，请参阅[使用 Azure 管理服务跟踪的操作](#bizops)。<br/><br/>
-> 此功能不会捕获与 BizTalk 服务运行时相关的活动（例如桥处理的消息等）的日志。 若要查看这些日志，请使用 BizTalk 服务门户中的“跟踪”视图。 有关详细信息，请参阅[跟踪消息](https://msdn.microsoft.com/library/azure/hh949805.aspx)。
+> 此功能只捕获 BizTalk 服务的管理操作的日志，例如服务的启动时间、备份时间等。 可使用 [BizTalk 服务 REST API](/previous-versions/azure/reference/dn232347(v=azure.100)) 跟踪此类操作。 有关使用管理服务跟踪的操作的完整列表，请参阅[使用 Azure 管理服务跟踪的操作](#bizops)。<br/><br/>
+> 此功能不会捕获与 BizTalk 服务运行时相关的活动（例如桥处理的消息等）的日志。 若要查看这些日志，请使用 BizTalk 服务门户中的“跟踪”视图。 有关详细信息，请参阅[跟踪消息](/previous-versions/azure/hh949805(v=azure.100))。
 > 
 > 
 
@@ -64,12 +64,12 @@ ms.locfileid: "58108250"
 | PurgeBackupBizTalkService |用于清除超过保留期的 BizTalk 服务备份的操作 |
 
 ## <a name="see-also"></a>另请参阅
-* [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)（备份 BizTalk 服务）
+* [备份 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [从备份还原 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=325582)
 * [BizTalk 服务：开发人员、 基本、 标准和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk 服务：设置](https://go.microsoft.com/fwlink/p/?LinkID=302280)
 * [BizTalk 服务：设置状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [BizTalk 服务：仪表板、 监视和缩放选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk 服务：限制](https://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk 服务：颁发者名称和颁发者密钥](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)

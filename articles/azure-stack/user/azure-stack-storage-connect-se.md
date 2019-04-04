@@ -10,16 +10,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/06/2019
+ms.date: 03/14/2019
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: 1c59f092957704c44b5cda012aa7c471fdaa3275
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.lastreviewed: 03/14/2019
+ms.openlocfilehash: 314304e75ce0f2586f41b71a889fa0185501b845
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57763361"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622002"
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription-or-a-storage-account"></a>将存储资源管理器连接到 Azure Stack 订阅或存储帐户
 
@@ -49,25 +49,27 @@ ms.locfileid: "57763361"
 
 1. 在 Azure Stack 主机或已与 Azure Stack 建立 VPN 连接的本地计算机上打开 `mmc.exe`。 
 
-2. 在“文件”中选择“添加/删除管理单元”，并添加“证书”以管理“我的用户帐户”。
+2. 在中**文件**，选择**添加/删除管理单元中**。 选择**证书**中可用的管理单元。 
 
-3.  在 **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 下。 找到 **AzureStackSelfSignedRootCert**。
+3. 选择“计算机帐户”，然后选择“下一步”。 选择**本地计算机**，然后选择**完成**。
+
+4.  在 **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** 下。 找到 **AzureStackSelfSignedRootCert**。
 
     ![通过 mmc.exe 加载 Azure Stack 根证书](./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png)
 
-4. 右键单击该证书，选择“所有任务” > “导出”，并按说明导出 **Base-64 编码 X.509 (.CER)** 证书。
+5. 右键单击该证书，选择“所有任务” > “导出”，并按说明导出 **Base-64 编码 X.509 (.CER)** 证书。
 
     导出的证书会在下一步使用。
 
-5. 启动存储资源管理器，如果看到“连接到 Azure 存储”对话框，请将其取消。
+6. 启动存储资源管理器，如果看到“连接到 Azure 存储”对话框，请将其取消。
 
-6. 在“编辑”菜单上，指向“SSL 证书”，然后选择“导入证书”。 通过文件选取器对话框找到并打开在上一步导出的证书。
+7. 在“编辑”菜单上，指向“SSL 证书”，然后选择“导入证书”。 通过文件选取器对话框找到并打开在上一步导出的证书。
 
     导入证书后，系统会提示重启存储资源管理器。
 
     ![将证书导入到存储资源管理器](./media/azure-stack-storage-connect-se/import-azure-stack-cert-storage-explorer.png)
 
-7. 在存储资源管理器重新启动后，选择“编辑”菜单，并检查是否选择了“目标 Azure Stack”。 如果没有，请选择“目标 Azure Stack”，然后重启存储资源管理器，使更改生效。 此配置是必需的，否则无法与 Azure Stack 环境兼容。
+8. 存储资源管理器重新启动后，选择**编辑**菜单，然后检查是否**目标 Azure Stack Api**处于选中状态。 如果没有，请选择“目标 Azure Stack”，然后重启存储资源管理器，使更改生效。 此配置是必需的，否则无法与 Azure Stack 环境兼容。
 
     ![确保选中“目标 Azure Stack”](./media/azure-stack-storage-connect-se/target-azure-stack.png)
 
@@ -82,7 +84,7 @@ ms.locfileid: "57763361"
 
     ![添加 Azure Stack 帐户](./media/azure-stack-storage-connect-se/add-azure-stack-account.png)
 
-3. 在“连接到 Azure 存储”对话框中的“Azure 环境”下，选择“Azure”或“Azure 中国”（取决于所用的 Azure Stack 帐户），然后选择“登录”，以登录到至少与一个活动 Azure Stack 订阅关联的 Azure Stack 帐户。
+3. 在连接到 Azure 存储对话框下**Azure 环境**，选择**Azure**， **Azure 中国区**， **Azure Germany**， **Azure 美国政府**，或**添加新环境**，这取决于正在使用的 Azure Stack 帐户。 选择**登录**使用与至少一个活动 Azure Stack 订阅关联的 Azure Stack 帐户登录。
 
     ![连接到 Azure 存储](./media/azure-stack-storage-connect-se/azure-stack-connect-to-storage.png)
 

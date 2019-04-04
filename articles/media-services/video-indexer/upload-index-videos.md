@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: f9bf23094f47f5c200f7a02f81a8e185f469c580
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516954"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893446"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -22,7 +22,7 @@ ms.locfileid: "58516954"
 
 * 从 URL 上传视频（首选），
 * 作为请求正文中的字节数组发送视频文件。
-* 提供[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept)，以便使用现有的 Azure 媒体服务资产（仅付费帐户支持此功能）。
+* 通过提供使用现有的 Azure 媒体服务资产[资产 ID](https://docs.microsoft.com/azure/media-services/latest/assets-concept) （仅限付费帐户支持）。
 
 本文介绍如何基于 URL 使用[上传视频](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API 来上传视频和编制视频索引。 本文中的代码示例包括注释掉的代码，该代码显示了如何上传字节数组。 <br/>本文还介绍可以在 API 上设置的用于更改 API 过程和输出的某些参数。
 
@@ -57,12 +57,12 @@ ms.locfileid: "58516954"
 一个 URL，用于通知客户（使用 POST 请求）以下事件：
 
 - 索引状态更改： 
-    - 属性:    
+    - 属性：    
     
         |名称|描述|
         |---|---|
         |id|视频 ID|
-        |省/自治区/直辖市|视频状态|  
+        |state|视频状态|  
     - 示例： https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed
 - 在视频中标识的人：
   - 属性
@@ -85,13 +85,13 @@ ms.locfileid: "58516954"
 
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
 
-- `Default` - 使用音频和视频编制见解的索引和提取见解
-- `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
-- `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
+- `Default` – 索引并提取使用音频和视频的见解
+- `AudioOnly` – 索引并提取见解使用音频唯一 （忽略视频）
+- `DefaultWithNoiseReduction` – 编制索引并应用在音频流上的干扰降低算法时从音频和视频中，提取见解
 
 价格取决于所选索引编制选项。  
 
-### <a name="priority"></a>优先级
+### <a name="priority"></a>priority
 
 视频由视频索引器根据优先级进行索引。 使用 **priority** 参数指定索引优先级。 以下为有效值：低、正常（默认值）和高。
 
@@ -175,7 +175,7 @@ public async Task Sample()
     var uploadRequestResult = await client.PostAsync($"{apiUrl}/{accountInfo.Location}/Accounts/{accountInfo.Id}/Videos?{queryParams}", content);
     var uploadResult = await uploadRequestResult.Content.ReadAsStringAsync();
 
-    // get the video id from the upload result
+    // get the video ID from the upload result
     string videoId = JsonConvert.DeserializeObject<dynamic>(uploadResult)["id"];
     Debug.WriteLine("Uploaded");
     Debug.WriteLine("Video ID:");
@@ -290,4 +290,4 @@ public class AccountContractSlim
 
 ## <a name="next-steps"></a>后续步骤
 
-[探讨 v2 API 生成的 Azure 视频索引器输出](video-indexer-output-json-v2.md)
+[检查 Azure 视频索引器输出中生成的 API](video-indexer-output-json-v2.md)

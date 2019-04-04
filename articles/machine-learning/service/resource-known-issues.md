@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7542909df336555e17aea9b0e680879b25dc17f
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: db0eccb542cb4253e6e891fa9fa51e60fb7951a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791739"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892732"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Azure 机器学习服务的已知问题和故障排除
 
@@ -24,7 +24,7 @@ ms.locfileid: "58791739"
 
 ## <a name="sdk-installation-issues"></a>SDK 安装问题
 
-**错误消息：无法卸载 'PyYAML'**
+**错误消息：无法卸载 PyYAML**
 
 适用于 Python 的 Azure 机器学习 SDK：PyYAML 是 distutils 安装的项目。 因此，在部分卸载的情况下，我们无法准确确定哪些文件属于它。 若要在忽略此错误的同时继续安装 SDK，请使用：
 
@@ -50,7 +50,7 @@ pip install --upgrade azureml-sdk[notebooks,automl] --ignore-installed PyYAML
 
 ## <a name="automated-machine-learning"></a>自动化机器学习
 
-Tensor Flow 自动执行机器学习当前不支持 tensor flow 版本 1.13。 安装这将导致包依赖项停止工作。 我们正在努力解决此问题在将来的版本。 
+Tensor Flow 自动执行机器学习当前不支持 tensor flow 版本 1.13。 安装此版本将导致包依赖项停止工作。 我们正在努力在将来的版本中修复此问题。 
 
 
 ## <a name="databricks"></a>Databricks
@@ -59,7 +59,7 @@ Databricks 和 Azure 机器学习问题。
 
 ### <a name="failure-when-installing-packages"></a>安装包时失败
 
-安装多个包时，azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免出现安装错误，请通过冻结的库版本安装包。 此问题与到 Databricks 而不适用于 Azure 机器学习服务 SDK。 您也可能会遇到其他库，这一问题。 示例:
+安装多个包时，azure 机器学习 SDK 安装在 Azure Databricks 上失败。 某些包（如 `psutil`）可能会导致冲突。 若要避免出现安装错误，请通过冻结的库版本安装包。 此问题与到 Databricks 而不适用于 Azure 机器学习服务 SDK。 您也可能会遇到其他库，这一问题。 示例：
 
 ```python
 psutil cryptography==1.5 pyopenssl==16.0.0 ipython==2.2.0
@@ -96,7 +96,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 1. 分离并重新附加到你的 notebook 群集。 
 
-如果这不能解决此问题，请尝试重新启动群集。
+如果以上步骤无法解决此问题，请尝试重新启动群集。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -104,7 +104,7 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
-如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 门户](https://portal.azure.com)并转到你的工作区然后选择**工作区 > 试验 > 运行 > 日志**。
+如果在请求帮助时可以提供诊断信息，有时会很有帮助。 若要查看某些日志，请访问[Azure 门户](https://portal.azure.com)并转到工作区并选择**工作区 > 试验 > 运行 > 日志**。
 
 ## <a name="resource-quotas"></a>资源配额
 
@@ -123,7 +123,3 @@ displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.g
 ```
 
 例如，如果尝试通过一个为实施远程执行操作而提交的机器学习管道创建或附加计算目标，会收到错误。
-
-## <a name="get-more-support"></a>获取更多支持
-
-可以通过技术支持、论坛等提交支持请求并获取帮助。 [了解详细信息...](support-for-aml-services.md)

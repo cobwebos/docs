@@ -11,20 +11,20 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: c5fadf5c445310534ab3001371e1b73b1f502f15
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 04/03/2019
+ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661780"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918597"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
 本文介绍 Azure SQL 数据库和 SQL 数据仓库连接体系结构，以及如何使用不同的组件将流量定向到 Azure SQL 实例。 借助这些连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。
 
 > [!IMPORTANT]
-> **[即将发生的更改] 对于到 Azure SQL Server 的服务终结点连接，`Default` 连接行为会更改为`Redirect`。**
+> **[即将发生的更改]为服务终结点连接到 Azure SQL 服务器`Default`的连接行为更改`Redirect`。**
 > 建议客户创建新的服务器，并将现有服务器的连接类型显式设置为“重定向”（首选）或“代理”，具体取决于服务器的连接体系结构。
 >
 > 为了防止在进行此更改时在现有环境中通过服务终结点进行的连接中断，我们使用遥测执行以下操作：
@@ -35,9 +35,9 @@ ms.locfileid: "58661780"
 > 在以下方案中，服务终结点用户可能仍会受影响：
 >
 > - 应用程序不常连接到现有的服务器，因此我们的遥测不捕获有关这些应用程序的信息。
-> - 自动部署逻辑创建 SQL 数据库服务器（假设服务终结点连接的默认行为是 `Proxy`）
+> - 自动的部署逻辑创建假定服务终结点连接的默认行为一个 SQL 数据库服务器 `Proxy`
 >
-> 如果不能建立到 Azure SQL Server 的服务终结点连接，而你怀疑自己受此更改的影响，请验证是否已将连接类型显式设置为 `Redirect`。 如果是这种情况，则必须对区域中属于端口 11000-12000 的 Sql [服务标记](../virtual-network/security-overview.md#service-tags)的所有 Azure IP 地址启用 VM 防火墙规则和网络安全组 (NSG)。 如果这不是适合自己的选项，请将服务器显式切换为 `Proxy`。
+> 如果不能建立到 Azure SQL Server 的服务终结点连接，而你怀疑自己受此更改的影响，请验证是否已将连接类型显式设置为 `Redirect`。 如果这种情况，则必须打开 VM 的防火墙和网络安全组 (NSG) 到区域中属于 Sql 的所有 Azure IP 地址[服务标记](../virtual-network/security-overview.md#service-tags)为 11000-11999 的端口。 如果这不是适合自己的选项，请将服务器显式切换为 `Proxy`。
 > [!NOTE]
 > 本主题适用于承载单一数据库和弹性池，SQL 数据仓库数据库、 Azure Database for MySQL、 Azure Database for MariaDB 和 Azure Database for PostgreSQL 的 Azure SQL 数据库服务器。 为简单起见，引用到 SQL 数据库、 SQL 数据仓库、 Azure Database for MySQL、 MariaDB 的 Azure 数据库和 Azure Database for PostgreSQL 时，则使用 SQL 数据库。
 
@@ -57,7 +57,7 @@ ms.locfileid: "58661780"
 
 Azure SQL 数据库支持 SQL 数据库服务器连接策略设置的以下三个选项：
 
-- **重定向（建议）：** 客户端直接与托管数据库的节点建立连接。 若要启用连接，客户端必须允许对区域中端口 11000-12000 的所有 Azure IP 地址而不仅仅是端口 1433 上的 Azure SQL 数据库网关 IP 地址应用出站防火墙规则，并结合[服务标记](../virtual-network/security-overview.md#service-tags)使用网络安全组 (NSG)。 由于数据包会直接发往数据库，因此延迟、吞吐量和性能都会得到改善。
+- **重定向（建议）：** 客户端直接与托管数据库的节点建立连接。 若要启用连接，客户端必须允许到使用网络安全组 (NSG)，其中包含区域中的所有 Azure IP 地址的出站防火墙规则[服务标记](../virtual-network/security-overview.md#service-tags)) 端口 11000-11999，而不仅仅是 Azure SQL 数据库网关 IP端口 1433年上的地址。 由于数据包会直接发往数据库，因此延迟、吞吐量和性能都会得到改善。
 - **代理：** 在此模式下，所有连接都是通过 Azure SQL 数据库网关代理的。 若要启用连接，客户端必须包含只允许 Azure SQL 数据库网关 IP 地址（通常每个区域有两个 IP 地址）的出站防火墙规则。 选择此模式可能导致延迟增大、吞吐量降低，具体取决于工作负荷的性质。 我们强烈建议使用 `Redirect` 连接策略而不要使用 `Proxy` 连接策略，以最大程度地降低延迟和提高吞吐量。
 - **默认：** 除非显式将连接策略更改为 `Proxy` 或 `Redirect`，否则，在创建后，此连接策略将在所有服务器上生效。 有效策略取决于连接是源自 Azure 内部（`Redirect`）还是外部（`Proxy`）。
 

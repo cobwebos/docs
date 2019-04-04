@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: a3fd85d1dbcba769f47e537e0231f63110752492
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093674"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916812"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
-本文介绍现有 CDN 配置文件中用于创建 [Azure 内容分发网络 (CDN)](cdn-overview.md) 终结点的所有设置。 创建配置文件和终结点以后，即可将内容交付给客户。 有关如何创建配置文件和终结点的快速入门，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
+本文介绍现有 CDN 配置文件中用于创建 [Azure 内容分发网络 (CDN)](cdn-overview.md) 终结点的所有设置。 创建配置文件和终结点以后，即可将内容交付给客户。 快速入门中创建配置文件和终结点，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在创建 CDN 终结点之前，必须已创建至少一个 CDN 配置文件，其中可能包含一个或多个 CDN 终结点。 若要通过 Internet 域、Web 应用程序或某些其他条件来组织 CDN 终结点，可以使用多个配置文件。 由于 CDN 定价是在 CDN 配置文件级别应用的，因此如果需要使用混合的 Azure CDN 定价层，则必须创建多个 CDN 配置文件。 若要创建 CDN 配置文件，请参阅[创建新的 CDN 配置文件](cdn-create-new-endpoint.md#create-a-new-cdn-profile)。
 
 ## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
@@ -67,7 +67,7 @@ ms.locfileid: "49093674"
    > [!NOTE]
    > “源服务器端口”值只决定终结点用来从源服务器检索信息的端口。 终结点自身仅可用于默认 HTTP 和 HTTPS 端口（80 和 443）上的最终客户端，不管“源服务器端口”值如何。  
    > 
-   > **来自 Akamai 的 Azure CDN** 配置文件中的终结点不允许适用于源服务器端口的完整 TCP 端口范围。 有关不被允许的原点端口列表，请参阅 [来自 Akamai 的 Azure CDN 受允许原点端口](https://msdn.microsoft.com/library/mt757337.aspx)。  
+   > **来自 Akamai 的 Azure CDN** 配置文件中的终结点不允许适用于源服务器端口的完整 TCP 端口范围。 有关不被允许的原点端口列表，请参阅 [来自 Akamai 的 Azure CDN 受允许原点端口](/previous-versions/azure/mt757337(v=azure.100))。  
    > 
    > Azure CDN 自定义域的 HTTPS 支持在 **Akamai 的 Azure CDN** 产品上不受支持。 有关详细信息，请参阅[在 Azure CDN 自定义域上配置 HTTPS](cdn-custom-ssl.md)。
     
@@ -75,16 +75,16 @@ ms.locfileid: "49093674"
 
     将根据配置文件类型为以下优化类型设置提供支持：
     - **Microsoft 的 Azure CDN 标准版**配置文件：
-       - [**常规 Web 分发**](cdn-optimization-overview.md#general-web-delivery)
+       - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
 
     - **Verizon 的 Azure CDN 标准版**和 **Verizon 的 Azure CDN 高级版**配置文件：
-       - [**常规 Web 分发**](cdn-optimization-overview.md#general-web-delivery)
+       - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Akamai 的 Azure CDN 标准版**配置文件：
-       - [**常规 Web 分发**](cdn-optimization-overview.md#general-web-delivery)
+       - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
        - [**常规媒体流式处理**](cdn-optimization-overview.md#general-media-streaming)
-       - [**点播视频媒体流式处理**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**点播视频流媒体**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**大文件下载**](cdn-optimization-overview.md#large-file-download)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 

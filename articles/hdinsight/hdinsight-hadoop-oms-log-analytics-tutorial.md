@@ -9,16 +9,16 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: hrasheed
-ms.openlocfilehash: b7e0dba70d7f3a201c5f3491f0bc906977fbf229
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 399a6bcb6e0bfd0edaddca471ba2c8e0802d3394
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886445"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904774"
 ---
 # <a name="use-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>使用 Azure Monitor 日志来监视 HDInsight 群集
 
-了解如何启用 Azure Monitor 日志以监视在 HDInsight，Hadoop 群集操作以及如何添加 HDInisght 监视解决方案。
+了解如何启用 Azure Monitor 日志以监视在 HDInsight，Hadoop 群集操作以及如何添加 HDInsight 监视解决方案。
 
 [Azure Monitor 日志](../log-analytics/log-analytics-overview.md)是一项服务在 Azure Monitor，用于监视你的云并在本地环境，以保持其可用性和性能。 它可以收集云和本地环境中的资源生成的数据以及其他监视工具的数据，针对多个源提供分析。
 

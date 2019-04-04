@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 584b9d67808e75222d832f045e5d3f93fbb326ae
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9d659262195fef0cc6871bac409dd5914b70f401
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105084"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916101"
 ---
 # <a name="create-and-manage-hybrid-connections"></a>创建和管理混合连接
 
@@ -41,16 +41,16 @@ ms.locfileid: "58105084"
 > 
 > 例如（伪代码），将 **10.4.5.6** 定义为本地主机：
 > 
-> **以下方案可以运行：**  
+> **以下方案适用于：**  
 > `Application code -> GetHostByName("10.4.5.6") -> Resolves to 127.0.0.3 -> Connect("127.0.0.3") -> Hybrid Connection -> on premises host`
 > 
-> **以下方案无法运行：**  
+> **以下方案中不起作用：**  
 > `Application code -> Connect("10.4.5.6") -> ?? -> No route to host`
 > 
 > 
 
 ## <a name="CreateHybridConnection"></a>创建混合连接
-可以在 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)**中创建混合连接或**使用 [BizTalk 服务 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx) 创建。 
+可以在 [Azure 应用服务混合连接](../app-service/app-service-hybrid-connections.md)**中创建混合连接或**使用 [BizTalk 服务 REST API](/previous-versions/azure/reference/dn232347(v=azure.100)) 创建。 
 
 <!-- **To create Hybrid Connections using Web Apps**, see [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md). You can also install the Hybrid Connection Manager (HCM) from your web app, which is the preferred method.  -->
 
@@ -118,10 +118,10 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [混合连接概述](integration-hybrid-connection-overview.md)
 
 ## <a name="see-also"></a>另请参阅
-[用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[用于管理 Microsoft Azure 上的 BizTalk 服务 REST API](/previous-versions/azure/reference/dn232347(v=azure.100))  
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)  
 [创建 BizTalk 服务](biztalk-provision-services.md)  
-[BizTalk 服务：仪表板、 监视和缩放选项卡](biztalk-dashboard-monitor-scale-tabs.md)
+[BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)
 
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png

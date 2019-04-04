@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: be0b930c99bb14c34e395efce494e8d7372719b0
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55998125"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918682"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义语言模型
 
@@ -117,6 +117,34 @@ ms.locfileid: "55998125"
 
 此操作会从帐户中彻底删除该语言模型。 使用已删除语言模型的视频会保留相同的索引，直至你为该视频重新编制索引。 如果重新为视频编制索引，则可为视频分配新的语言模型。 否则，视频索引器会使用其默认模型重新为视频编制索引。 
 
+## <a name="customize-language-models-by-correcting-transcripts"></a>通过更正的学习记录自定义语言模型
+
+视频索引器支持语言对其视频的转录基于实际更正用户模型进行自动自的定义。
+
+1. 若要使对脚本的更正，打开你要从帐户视频编辑的视频。 选择**时间线**选项卡。
+
+    ![自定义语言模型](./media/customize-language-model/timeline.png)
+1. 单击铅笔图标以编辑您的脚本的脚本。 
+
+    ![自定义语言模型](./media/customize-language-model/edits.png)
+
+    视频索引器会捕获所有行，更正由你时，在你的视频的脚本并将其自动添加到名为"发件人脚本编辑"的文本文件。 这些编辑用于重新训练用于编制索引该视频的特定语言模型。 
+    
+    如果此视频中的索引时未指定语言模型，所有编辑均对此视频将都存储在名为帐户适应中检测到的语言的视频的默认语言模型。 
+    
+    如果对同一行进行多次编辑，仅在更正后的行的最后一个版本将用于更新语言模型。  
+    
+    > [!NOTE]
+    > 仅限文本更正用于自定义项。 这意味着，不涉及实际单词 （例如，标点符号标记或空格） 的修正不包括。 
+    
+1. 您将看到显示在内容模型自定义页的语言选项卡中的脚本更正。
+
+    ![自定义语言模型](./media/customize-language-model/customize.png)
+
+   若要查看"发件人脚本编辑"文件为每个语言模型，单击它以打开它。 
+
+    ![来自脚本编辑](./media/customize-language-model/from-transcript-edits.png)
+
 ## <a name="next-steps"></a>后续步骤
 
-[使用 API 自定义语言模型](customize-language-model-with-api.md)
+[自定义使用 Api 的语言模型](customize-language-model-with-api.md)

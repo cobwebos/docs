@@ -12,13 +12,15 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.subservice: hybrid
 ms.author: billmath
+search.appverid:
+- MET150
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0506cc086cbc0c9ea30e199fd0bf18da3b8af545
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 146fdc3ca2af708a96e6b9a604493eb63c2e6530
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863077"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916370"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步实现密码哈希同步
 本文提供将用户密码从本地 Active Directory 实例同步到基于云的 Azure Active Directory (Azure AD) 实例时所需的信息。

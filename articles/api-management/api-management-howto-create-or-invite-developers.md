@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
-ms.openlocfilehash: d56e2da00e60b9daa44e040db6796215dd03436b
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 6a4ad827c39ec106acdc7b52a5b769ab6e7febf8
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793078"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893939"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>如何在 Azure API 管理中管理用户帐户
 
-在 API 管理中，开发人员是使用 API 管理公开的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity)文档。
+在 API 管理（预览版）中，开发人员是公开使用 API 管理的 API 的用户。 本指南演示如何创建和邀请开发人员使用通过 API 管理实例向其提供的 API 和产品。 有关以编程方式管理用户帐户的信息，请参阅 [API 管理 REST](/rest/api/apimanagement/)参考中的[用户实体](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)文档。
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 完成此文中的任务：[创建一个 Azure API 管理实例](get-started-create-service-instance.md)。
 
@@ -43,7 +43,7 @@ ms.locfileid: "58793078"
 
     ![添加新用户](./media/api-management-howto-create-or-invite-developers/api-management-create-developer.png)
 
-默认情况下，新创建的开发人员帐户处于“活动”状态，并且与“开发人员”组相关联。 处于“活动”状态的开发人员帐户可用于访问他们具有订阅的所有 API。 要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
+默认情况下，新创建的开发人员帐户处于“活动”状态，并且与“开发人员”组相关联。 处于“活动”状态的开发人员帐户可用于访问它们具有订阅的所有 API。 要将新创建的开发人员与其他组相关联，请参阅[如何将组与开发人员关联][How to associate groups with developers]。
 
 ## <a name="invite-developer"> </a>邀请开发人员
 若要邀请开发人员，请执行本部分中的步骤：
@@ -51,15 +51,15 @@ ms.locfileid: "58793078"
 1. 选择屏幕左侧的“用户”选项卡。
 2. 按“+邀请”。
 
-将显示一条确认消息，但新受邀请的开发人员不会出现在列表中，直到他们接受邀请。 
+将显示一条确认消息，但新受邀请的开发人员之后不会出现在列表中，直到他们接受邀请。 
 
-邀请开发人员时，会向其发送一封电子邮件。 此电子邮件使用模板生成并可自定义。 有关详细信息，请参阅[配置电子邮件模板][Configure email templates]。
+当邀请一名开发人员时，会将一封电子邮件发送给开发人员。 此电子邮件使用模板生成并可自定义。 有关详细信息，请参阅[配置电子邮件模板][Configure email templates]。
 
 一旦接受邀请，该帐户将变为活动状态。
 
 ## <a name="block-developer"> </a> 停用或重新激活开发人员帐户
 
-默认情况下，新创建或受邀请的开发人员帐户处于“活动”状态。 若要停用开发人员帐户，请单击“阻止”。 若要重新激活阻止的开发人员帐户，请单击“激活”。 阻止的开发人员帐户不能访问开发人员门户或调用任何 API。 若要删除用户帐户，请单击“删除”。
+默认情况下，新创建的或受邀请的开发人员帐户处于“活动”状态。 若要停用开发人员帐户，请单击“阻止”。 若要重新激活阻止的开发人员帐户，请单击“激活”。 阻止的开发人员帐户不能访问开发人员门户或调用任何 API。 若要删除用户帐户，请单击“删除”。
 
 若要阻止用户，请执行以下步骤。
 
@@ -69,10 +69,10 @@ ms.locfileid: "58793078"
 
 ## <a name="reset-a-user-password"></a>重置用户密码
 
-若要以编程方式处理用户帐户，请参阅 [API 管理 REST](/rest/api/apimanagement/) 参考中的[用户实体](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity)文档。 要将用户帐户密码重置为特定值，可使用[更新用户](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser)操作并指定所需密码。
+若要以编程方式处理用户帐户，请参阅 [API 管理 REST](/rest/api/apimanagement/) 参考中的[用户实体](https://docs.microsoft.com/en-us/rest/api/apimanagement/user)文档。 要将用户帐户密码重置为特定值，可使用[更新用户](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser)操作并指定所需密码。
 
 ## <a name="next-steps"></a>后续步骤
-创建开发人员帐户后，可以将其与角色相关联，并为其订阅产品和 API。 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
+创建开发人员帐户后，可以将其与角色相关联，并订阅产品和 API。 有关详细信息，请参阅[如何创建和使用组][How to create and use groups]。
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png
 [api-management-add-new-user]: ./media/api-management-howto-create-or-invite-developers/api-management-add-new-user.png

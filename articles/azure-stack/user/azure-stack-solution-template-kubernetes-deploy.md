@@ -1,6 +1,6 @@
 ---
-title: 将 Kubernetes 部署到 Azure Stack | Microsoft Docs
-description: 了解如何将 Kubernetes 部署到 Azure Stack。
+title: 若要使用 Azure Stack 容器的 Kubernetes 部署 |Microsoft Docs
+description: 了解如何部署 Kubernetes Azure Stack 中使用容器。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -15,19 +15,19 @@ ms.date: 02/27/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 01/16/2019
-ms.openlocfilehash: 6b00f63fac0110a8964270b9cbcad5330ac44645
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 77275ec274a9c76918874007cfe564eea09e6de5
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56986237"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877187"
 ---
-# <a name="deploy-kubernetes-to-azure-stack"></a>将 Kubernetes 部署到 Azure Stack
+# <a name="deploy-kubernetes-to-use-containers-with-azure-stack"></a>部署 Kubernetes Azure Stack 中使用容器
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 > [!Note]  
-> Azure Stack 上的 Kubernetes 现为预览版。 在预览目前不支持 azure Stack 离线的场景中。
+> Azure Stack 上的 Kubernetes 现为预览版。 在预览目前不支持 Azure Stack 离线的场景。
 
 可以按照这篇文章来部署和在单个协调的操作中设置 Kubernetes 资源中的步骤。 步骤使用 Azure 资源管理器解决方案模板。 你将需要有关 Azure Stack 安装，收集所需的信息生成模板，并随后部署到你的云。 Azure Stack 模板不使用全球 Azure 中提供的相同托管的 AKS 服务。
 
@@ -43,7 +43,7 @@ ms.locfileid: "56986237"
 
 你将为所需的支持你的群集节点的计算使用情况付费。 有关详细信息，请参阅 [Azure Stack 中的使用量和计费](https://docs.microsoft.com/azure/azure-stack/azure-stack-billing-and-chargeback)。
 
-## <a name="deploy-kubernetes"></a>部署 Kubernetes
+## <a name="deploy-kubernetes-to-use-containers"></a>部署用于容器的 Kubernetes
 
 部署 Azure Stack 上的 Kubernetes 群集的步骤将取决于你的标识管理服务。 验证由您安装的 Azure Stack 的标识管理解决方案。 与 Azure Stack 管理员联系以验证你的标识管理服务。
 
@@ -63,10 +63,10 @@ ms.locfileid: "56986237"
 
 [启用 Kubernetes 仪表板](azure-stack-solution-template-kubernetes-dashboard.md)
 
-[向市场添加 Kubernetes（适用于 Azure Stack 操作员）](../azure-stack-solution-template-kubernetes-cluster-add.md)
+[将 Kubernetes （适用于 Azure Stack 操作员） 添加到 Marketplace](../azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [将 Kubernetes 部署到 Azure Stack 使用 Azure Active Directory (Azure AD)](azure-stack-solution-template-kubernetes-azuread.md)
 
 [将 Kubernetes 部署到 Azure Stack 使用 Active Directory 联合身份验证服务 (AD FS)](azure-stack-solution-template-kubernetes-adfs.md)
 
-[在 Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)
+[Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.openlocfilehash: 2fd74262d9c1b4a751df5d836f98bf89d31dbdc2
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 48fb09b73a6169da392443f5fbf4f005e9640c3e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540425"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905981"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 中的 Log Analytics 工作区中的 Azure 活动日志
 
@@ -50,7 +50,7 @@ Log Analytics 工作区收集活动日志免费的并将日志存储 90 天免�
 
 与大多数其他 Azure Monitor 的解决方案，数据不会收集活动日志代理。 该解决方案使用的全部数据都直接来自于 Azure。
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
 | [Windows 代理](../../azure-monitor/platform/agent-windows.md) | 否 | 解决方案不会从 Windows 代理收集信息。 |
 | [Linux 代理](../../azure-monitor/learn/quick-collect-linux-computer.md) | 否 | 解决方案不会从 Linux 代理收集信息。 |

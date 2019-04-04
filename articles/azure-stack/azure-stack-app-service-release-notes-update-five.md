@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 上的应用服务 update 5 发行说明 |Microsoft Docs
-description: 了解有关新增功能更新中五个 Azure Stack 上的应用服务、 已知的问题和下载更新的位置。
+title: Azure Stack 上的应用服务 Update 5 发行说明 | Microsoft Docs
+description: 了解 Azure Stack 上的应用服务 Update 5 的功能、已知问题和更新下载位置。
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -12,29 +12,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 0a0eb9586e78442947138831dd774298906aaf9c
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993319"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58500196"
 ---
-# <a name="app-service-on-azure-stack-update-5-release-notes"></a>应用服务在 Azure Stack update 5 发行说明
+# <a name="app-service-on-azure-stack-update-5-release-notes"></a>基于 Azure Stack 的应用服务 Update 5 发行说明
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-这些发行说明介绍了改进和修补程序在 Azure 应用服务中的 Azure Stack Update 5 和任何已知的问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
+本发行说明介绍 Azure Stack 上的 Azure 应用服务 Update 5 中的改进和修复，以及任何已知问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
 > [!IMPORTANT]
-> 适用于 Azure Stack 集成系统的 1901年更新或部署 Azure 应用服务 1.5 之前部署最新的 Azure Stack 开发工具包。
+> 请将 1901 更新应用于 Azure Stack 集成系统，或部署最新的 Azure Stack 开发工具包，然后部署 Azure 应用服务 1.5。
 
 
 ## <a name="build-reference"></a>内部版本参考
 
-Azure Stack Update 5 生成号上的应用服务是**80.0.2.15**
+Azure Stack 上的应用服务 Update 5 的内部版本号为 **80.0.2.15**
 
 ### <a name="prerequisites"></a>必备组件
 
@@ -51,34 +51,37 @@ Azure Stack Update 5 生成号上的应用服务是**80.0.2.15**
 
 - 备份租户应用内容文件共享
 
-- 联合**自定义脚本扩展**版本**1.9.1**从 Marketplace
+- 同步发布市场的**自定义脚本扩展**版本 **1.9.1**
 
 ### <a name="new-features-and-fixes"></a>新功能和修复
 
-Azure Stack Update 5 上的 azure 应用服务包括以下改进和修补程序：
+Azure Stack 上的 Azure 应用服务 Update 5 包含以下改进和修复：
 
 - 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
 
-- 更新到**Kudu 工具**能够解决问题的样式设置和功能的操作系统的客户**断开连接**Azure Stack。 
+- 更新**Azure Functions 运行时**到**v1.0.12205**。
+
+- 更新到 **Kudu 工具**即可解决操作**断开连接的** Azure Stack 的客户的样式设置和功能方面的问题。 
 
 - 针对核心服务的更新，用于提高可靠性和错误消息传递，以便更轻松地诊断常见问题。
 
 - **针对以下应用程序框架和工具的更新**：
-  - 添加了的 NodeJS 10.14.1
-  - 添加了的 NPM 6.4.1
-  - 已更新到 79.20129.3767 Kudu
+  - 添加了的 ASP.NET Core 2.1.6 及 2.2.0
+  - 增加了 NodeJS 10.14.1
+  - 增加了 NPM 6.4.1
+  - 已将 Kudu 更新到 79.20129.3767
   
 - **对所有角色的基础操作系统的更新**：
-  - [2019-02 适用于 Windows Server 2016 的基于 x64 的系统 (KB4487006) 的累积更新](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
+  - [适用于 x64 系统的 Windows Server 2016 的 2019-02 累积更新 (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
 ### <a name="post-deployment-steps"></a>部署后步骤
 
 > [!IMPORTANT]  
-> 如果提供了使用 SQL Alwayson 实例应用服务 RP 必须[appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)和同步数据库以防止服务中的任何损失数据库故障转移事件。
+> 如果已经为应用服务 RP 提供 SQL Always On 实例，则必须[将 appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)并同步数据库，以免在进行数据库故障转移时丢失服务。
 
 ### <a name="post-update-steps"></a>更新后步骤
 
-对于希望在 Azure Stack 部署的现有 Azure App service 迁移为包含的数据库的客户，Azure 应用服务在 Azure Stack 1.5 更新完成后执行这些步骤：
+对于希望为基于 Azure Stack 的现有 Azure 应用服务部署迁移到包含的数据库的客户，请在完成基于 Azure Stack 的 Azure 应用服务 1.5 更新后执行以下步骤：
 
 > [!IMPORTANT]
 > 迁移过程大约需要花费 5-10 分钟。  该过程涉及终止现有的数据库登录会话。  计划停机时间来进行迁移，并在迁移后验证 Azure Stack 上的 Azure 应用服务。  如果在更新到 Azure Stack 上的 Azure 应用服务 1.3 之后已完成这些步骤，则无需再次执行这些步骤。

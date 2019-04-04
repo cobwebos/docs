@@ -11,16 +11,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/04/2019
 ms.author: sethm
 ms.reviewer: misainat
-ms.lastreviewed: 03/18/2019
-ms.openlocfilehash: 33f1ccf3f1c7bc657cc66efe7c5025356c954ad6
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.lastreviewed: 04/04/2019
+ms.openlocfilehash: ee98aee0873796c2a06db73d3365e3ff9ef87ccf
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58187755"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915877"
 ---
 # <a name="asdk-release-notes"></a>ASDK 发行说明
 
@@ -28,13 +28,17 @@ ms.locfileid: "58187755"
 
 请订阅 [![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [源](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#)，随时了解 ASDK 的新增功能。
 
-## <a name="build-11902069"></a>生成 1.1902.0.69
+## <a name="build-1903"></a>生成 1903
+
+1903 有效负载不包括 ASDK 发行。
+
+## <a name="build-11902069"></a>内部版本 1.1902.0.69
 
 ### <a name="new-features"></a>新增功能
 
 - 1902 版本在 Azure Stack 管理员门户上引入了新的用户界面用于创建计划、套餐、配额和附加计划。 有关详细信息（包括屏幕截图），请参阅[创建计划、套餐和配额](../azure-stack-create-plan.md)。
 
-- 此版本中的其他更改和改进的列表，请参阅[本节](../azure-stack-update-1902.md#improvements)Azure Stack 中发行说明。
+- 有关此版本中其他更改和改进的列表，请参阅 Azure Stack 发行说明的[此部分](../azure-stack-update-1902.md#improvements)。
 
 <!-- ### New features
 
@@ -47,10 +51,10 @@ ms.locfileid: "58187755"
 
 ### <a name="known-issues"></a>已知问题
 
-- 我们已识别到以下问题：发往内部负载均衡器 (ILB) 的超过 1450 字节的数据包将被丢弃。 该问题的原因是主机上的 MTU 设置过小，无法容纳遍历角色的 VXLAN 封装数据包，自版本 1901 开始，该角色已移到主机。 有至少两个方案，可能会遇到我们曾经表现此问题：
+- 我们已识别到以下问题：发往内部负载均衡器 (ILB) 的超过 1450 字节的数据包将被丢弃。 该问题的原因是主机上的 MTU 设置过小，无法容纳遍历角色的 VXLAN 封装数据包，自版本 1901 开始，该角色已移到主机。 在你可能遇到的至少两种情况中，我们已发现此问题会自行显现：
 
   - SQL 查询发往内部负载均衡器 (ILB) 后面的 SQL Always On，并且超过 660 字节。
-  - 如果尝试启用多个主节点，Kubernetes 部署失败。  
+  - 如果尝试启用多个主机，Kubernetes 部署将失败。  
 
   在同一虚拟网络但不同子网中的 VM 与 ILB 之间进行通信时，将发生此问题。 在 ASDK 主机上权限提升的命令提示符下运行以下命令即可解决此问题：
 
@@ -61,7 +65,7 @@ ms.locfileid: "58187755"
 
 ## <a name="build-11901095"></a>内部版本 1.1901.0.95
 
-请参阅[Azure Stack 发行说明中的重要的生成信息](../azure-stack-update-1901.md#build-reference)。
+请参阅 [Azure Stack 发行说明中的重要版本信息](../azure-stack-update-1901.md#build-reference)。
 
 ### <a name="changes"></a>更改
 

@@ -1,6 +1,6 @@
 ---
 title: 在 Azure 上安装 IBM zD & T 开发/测试环境 |Microsoft Docs
-description: Ddeploy IBM Z 开发和测试环境 (zD & T) 在 Azure 虚拟机 (VM) 基础结构即服务 (IaaS)。
+description: 即服务 (IaaS) 在 Azure 虚拟机 (VM) 基础结构上部署 IBM Z 开发和测试环境 (zD & T)。
 services: virtual-machines-linux
 documentationcenter: ''
 author: njray
@@ -8,12 +8,12 @@ manager: edprice
 editor: edprice
 tags: ''
 keywords: ''
-ms.openlocfilehash: fa3bf2b513ce7c5a0ea0210c66a9123ceaf1de37
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2f5520213e7d8792c89f5445d470987323173dc3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015279"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894519"
 ---
 # <a name="install-ibm-zdt-devtest-environment-on-azure"></a>在 Azure 上安装 IBM zD & T 开发/测试环境
 

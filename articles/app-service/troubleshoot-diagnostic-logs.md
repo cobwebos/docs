@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 023d12764e3dcfcf2f5471cb431528a14fbc1fed
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 37455c278d665d05636ec120ca91b76153e53d16
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339629"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894912"
 ---
 # <a name="enable-diagnostics-logging-for-apps-in-azure-app-service"></a>为 Azure 应用服务中的应用启用诊断日志记录
 ## <a name="overview"></a>概述
@@ -36,10 +36,10 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 
 * **详细错误日志记录** - 任何会生成 HTTP 状态代码 400（或更大数字）的请求的详细信息。 其中可能包含有助于确定服务器返回错误代码的原因的信息。 会为应用的文件系统中的每个错误生成一个 HTML 文件，并可保留最多 50 个错误（文件）。 当 HTML 文件的数目超出 50 时，最旧的 26 个文件会自动删除。
 * **失败请求跟踪** - 有关失败请求的详细信息，包括对用于处理请求的 IIS 组件和每个组件所用的时间的跟踪。 如果要提高站点性能或隔离特定的 HTTP 错误，这将非常有用。 会在应用的文件系统中为每个错误生成一个文件夹。 文件保留策略与上述详细错误日志记录的相同。
-* **Web 服务器日志记录** - 使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)的 HTTP 事务信息。 这在确定整体站点指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
+* **Web 服务器日志记录** - 使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)的 HTTP 事务信息。 这在确定整体站点指标（如处理的请求数量或来自特定 IP 地址的请求数）时非常有用。
 
 ### <a name="application-diagnostics"></a>应用程序诊断
-应用程序诊断可以捕获由 Web 应用程序产生的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](https://msdn.microsoft.com/library/36hhw2t6.aspx) 类将信息记录到应用程序诊断日志。 例如：
+应用程序诊断可以捕获由 Web 应用程序产生的信息。 ASP.NET 应用程序可使用 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) 类将信息记录到应用程序诊断日志。 例如：
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -101,7 +101,7 @@ Azure 提供内置诊断功能，可帮助调试[应用服务应用](https://go.
 * **应用程序日志** - /LogFiles/Application/。 此文件夹包含一个或多个包含应用程序日志记录生成的信息的文本文件。
 * **失败请求跟踪** - /LogFiles/W3SVC#########/。 此文件夹包含一个 XSL 文件和一个或多个 XML 文件。 请确保将 XSL 文件下载到 XML 文件所在的目录，因为 XSL 文件可提供格式化和筛选这些文件的内容的功能（在 Internet Explorer 中查看 XML 文件时）。
 * **详细错误日志** - /LogFiles/DetailedErrors/。 此文件夹包含一个或多个 .htm 文件，这些文件可提供大量有关所有已出现 HTTP 错误的信息。
-* **Web 服务器日志** - /LogFiles/http/RawLogs。 此文件夹包含使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)进行格式化的一个或多个文本文件。
+* **Web 服务器日志** - /LogFiles/http/RawLogs。 此文件夹包含使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)进行格式化的一个或多个文本文件。
 * **部署日志** - /LogFiles/Git。 此文件夹包含由 Azure 应用服务所用的内部部署过程生成的日志和 Git 部署的日志。 此外，还可在 D:\home\site\deployments 下找到部署日志。
 
 ### <a name="ftp"></a>FTP
@@ -222,7 +222,7 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 详细的错误日志是 HTML 文档，可提供有关发生的 HTTP 错误的详细信息。 由于它们只是 HTML 文档，所以可以使用 Web 浏览器查看。
 
 ### <a name="web-server-logs"></a>Web 服务器日志
-可使用 [W3C 扩展日志文件格式](https://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)格式化 Web 服务器日志。 可使用文本编辑器读取此信息，或使用诸如[日志分析程序](https://go.microsoft.com/fwlink/?LinkId=246619)等实用工具进行解析。
+可使用 [W3C 扩展日志文件格式](/windows/desktop/Http/w3c-logging)格式化 Web 服务器日志。 可使用文本编辑器读取此信息，或使用诸如[日志分析程序](https://go.microsoft.com/fwlink/?LinkId=246619)等实用工具进行解析。
 
 > [!NOTE]
 > Azure 应用服务生成的日志不支持 **s-computername**、**s-ip** 或 **cs-version** 字段。
@@ -231,5 +231,5 @@ Visual Studio Application Insights 可提供用于筛选和搜索日志的工具
 
 ## <a name="nextsteps"></a>后续步骤
 * [如何监视 Azure 应用服务](web-sites-monitor.md)
-* [在 Visual Studio 中对 Azure 应用服务进行故障排除](troubleshoot-dotnet-visual-studio.md)
-* [在 HDInsight 中分析应用日志](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
+* [在 Visual Studio 中的故障排除 Azure 应用服务](troubleshoot-dotnet-visual-studio.md)
+* [分析 HDInsight 中的应用程序日志](https://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: d627c3c4419affa0d71cdb23df945c96d9fd7585
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: bd4285a2d0f882b8c766563f2304031f1f6e2898
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652427"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904791"
 ---
 # <a name="glossary"></a>术语表
 
@@ -233,13 +233,13 @@ LargePersonGroup ID 是用户提供的字符串，用作 [LargePersonGroup](#lar
 
 #### <a name="persistedface"></a>PersistedFace
 
-PersistedFace 是 Face API 中的数据结构。 PersistedFace 包含 PersistedFace ID 和其他属性（例如，姓名和用户数据）。
+PersistedFace 是 Face API 中的数据结构。 附带了 PersistedFace [PersistedFace ID](#persisted-face-id)和其他属性，如名称和用户数据。
 
 有关详细信息，请参阅参考文档：[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargePersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)、[PersonGroup 人人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)。
 
-#### <a name="person-id"></a>人员 ID
+#### <a name="persisted-face-id"></a>持久化的人脸 ID
 
-成功创建 [PersistedFace](#persistedface)时会生成人员 ID。 会创建一个字符串来表示 [人脸 API](#face-api) 中的此人脸。
+保存人脸 ID 时生成[PersistedFace](#persistedface)已成功创建。 会创建一个字符串来表示 [人脸 API](#face-api) 中的此人脸。
 
 有关详细信息，请参阅参考文档：[LargeFaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/5a158c10d2de3616c086f2d3)、[FaceList - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395250)、[LargePersonGroup 人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/599adf2a3a7b9412a4d53f42)、[PersonGroup 人人员 - 添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)。
 

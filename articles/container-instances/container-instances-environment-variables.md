@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: danlep
-ms.openlocfilehash: 3e7e292f36296ce09af89f03e8b154b57e18b55c
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ea85b2b04600708381423e16408ba34b1e27566
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369968"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904893"
 ---
 # <a name="set-environment-variables"></a>设置环境变量。
 
@@ -25,6 +25,8 @@ ms.locfileid: "58369968"
 *MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
 
 如果需要以环境变量的形式传递机密，Azure 容器实例支持 Windows 和 Linux 容器的[安全值](#secure-values)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="azure-cli-example"></a>Azure CLI 示例
 
@@ -141,7 +143,7 @@ Azure:\
 
 在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“配置”页中指定它们。
 
-使用门户进行部署时，目前仅限使用三个变量，并且必须以 `"variableName":"value"` 格式输入它们
+时使用门户进行部署，您目前仅限于三个变量，并必须按以下格式输入它们： `"variableName":"value"`
 
 若要查看示例，请启动[aci wordcount] [ aci-wordcount]容器*NumWords*并*MinLength*变量。
 
@@ -255,6 +257,6 @@ my-secret-value
 [az-container-show]: /cli/azure/container#az-container-show
 [azure-cli-install]: /cli/azure/
 [azure-instance-log]: /powershell/module/az.containerinstance/get-azcontainerinstancelog
-[azure-powershell-install]: /powershell/azure/azurerm/install-Az-ps
+[azure-powershell-install]: /powershell/azure/install-Az-ps
 [new-Azcontainergroup]: /powershell/module/az.containerinstance/new-azcontainergroup
 [portal]: https://portal.azure.com

@@ -13,14 +13,14 @@ ms.workload: na
 ms.date: 12/18/2018
 ms.author: sethm
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 3c36bca12a16a796a964c4447b47265eecd756be
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 0f5a4dc76830740d69547a01ce40b5e10cf4a74b
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55809242"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499402"
 ---
-# <a name="provide-applications-access-to-azure-stack"></a>提供对 Azure Stack 的应用程序访问权限
+# <a name="provide-applications-access-to-azure-stack"></a>向应用程序提供 Azure Stack 的访问权限
 
 *适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
 
@@ -32,16 +32,16 @@ ms.locfileid: "55809242"
 
  - 可以向服务主体分配不同于自己的帐户权限的权限。 通常情况下，这些权限仅限于应用需执行的操作。
  - 职责变化时，无需更改应用的凭据。
- - 执行无人参与的脚本时，可以使用证书自动执行身份验证。  
+ - 执行无人参与的脚本时，可使用证书自动进行身份验证。  
 
-## <a name="getting-started"></a>开始使用
+## <a name="getting-started"></a>入门
 
 根据部署 Azure Stack 的方式，可以首先创建服务主体。 本文档介绍如何为以下对象创建服务主体：
 
 - Azure Active Directory (Azure AD)。 Azure AD 是基于云的多租户目录和标识管理服务。 可将 Azure AD 与联网 Azure Stack 配合使用。
 - Active Directory 联合身份验证服务 (AD FS)。 AD FS 提供简化、安全的标识联合与 Web 单一登录 (SSO) 功能。 可将 AD FS 与联网和离线 Azure Stack 实例配合使用。
 
-创建服务主体后, 一系列常见到 AD FS 和 Azure Active Directory 的步骤用于委派到的角色的权限。
+创建服务主体后，将使用普遍适用于 AD FS 和 Azure Active Directory 的一组步骤向角色委派权限。
 
 ## <a name="manage-service-principal-for-azure-ad"></a>管理 Azure AD 的服务主体
 
@@ -63,37 +63,37 @@ ms.locfileid: "55809242"
 
 1. 从 Active Directory 中的“应用注册”，选择应用程序。
 
-2. 复制“应用程序 ID”并将其存储在应用程序代码中。 示例应用程序的部分中的应用程序引用此值作为客户端 id。
+2. 复制“应用程序 ID”并将其存储在应用程序代码中。 “示例应用程序”部分的应用程序引用此值作为客户端 ID。
 
      ![客户端 ID](./media/azure-stack-create-service-principal/image12.png)
 3. 若要为 Web 应用/API 生成身份验证密钥，请选择“设置” > “密钥”。 
 
-4. 提供密钥说明和密钥持续时间。 完成后，选择“保存” 。
+4. 提供密钥说明和密钥持续时间。 完成后，选择“保存”。
 
-保存密钥后，密钥的值显示。 将此值复制到记事本或其他某个临时位置，因为以后无法检索该密钥。 提供密钥值及应用程序 ID 登录为该应用程序。 将密钥值存储在应用程序可检索的位置。
+保存密钥后, 会显示密钥的值。 将此值复制到记事本或其他某个临时位置，因为以后无法检索该密钥。 提供密钥值及应用程序 ID 登录为该应用程序。 将密钥值存储在应用程序可检索的位置。
 
 ![保存的密钥](./media/azure-stack-create-service-principal/image15.png)
 
-完成后，可以将角色分配应用程序。
+完成后，可为应用程序分配角色。
 
 ## <a name="manage-service-principal-for-ad-fs"></a>管理 AD FS 的服务主体
 
 如果在使用 Active Directory 联合身份验证服务 (AD FS) 作为标识管理服务的情况下部署了 Azure Stack，请使用 PowerShell 创建服务主体，分配用于进行访问的角色，然后使用该标识登录。
 
-可以使用两种方法之一通过 AD FS 创建服务主体。 可以:
+可以使用两种方法之一通过 AD FS 创建服务主体。 可以：
  - [使用证书创建服务主体](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate)
  - [使用客户端机密创建服务主体](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret)
 
 用于管理 AD FS 服务主体的任务。
 
-| 类型 | 操作 |
+| Type | 操作 |
 | --- | --- |
 | AD FS 证书 | [创建](azure-stack-create-service-principals.md#create-a-service-principal-using-a-certificate) |
-| AD FS 证书 | [更新](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-AD-FS) |
-| AD FS 证书 | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-AD-FS) |
+| AD FS 证书 | [更新](azure-stack-create-service-principals.md#update-certificate-for-service-principal-for-ad-fs) |
+| AD FS 证书 | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 | AD FS 客户端机密 | [创建](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
 | AD FS 客户端机密 | [更新](azure-stack-create-service-principals.md#create-a-service-principal-using-a-client-secret) |
-| AD FS 客户端机密 | [Remove](azure-stack-create-service-principals.md##remove-a-service-principal-for-AD-FS) |
+| AD FS 客户端机密 | [Remove](azure-stack-create-service-principals.md#remove-a-service-principal-for-ad-fs) |
 
 ### <a name="create-a-service-principal-using-a-certificate"></a>使用证书创建服务主体
 
@@ -110,13 +110,13 @@ ms.locfileid: "55809242"
  - 对于生产环境，证书必须由内部证书颁发机构或公共证书颁发机构颁发。 如果你使用公共证书颁发机构，则必须将基础操作系统映像中的颁发机构包括为 Microsoft 信任根颁发机构计划的一部分。 可以在 [Microsoft 信任根证书计划：参与者](https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca)中找到完整列表。
  - Azure Stack 基础结构必须能够通过网络访问证书中发布的证书颁发机构的证书吊销列表 (CRL) 位置。 此 CRL 必须是一个 HTTP 终结点。
 
-#### <a name="parameters"></a>参数
+#### <a name="parameters"></a>parameters
 
 以下信息是作为自动化参数的输入所必需的：
 
 |参数|描述|示例|
 |---------|---------|---------|
-|姓名|SPN 帐户的名称|MyAPP|
+|名称|SPN 帐户的名称|MyAPP|
 |ClientCertificates|证书对象的数组|X509 证书|
 |ClientRedirectUris<br>(可选)|应用程序重定向 URI|-|
 
@@ -124,7 +124,7 @@ ms.locfileid: "55809242"
 
 1. 打开权限提升的 Windows PowerShell 会话，并运行以下 cmdlet：
 
-   ```PowerShell  
+   ```powershell  
     # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
     $Creds = Get-Credential
 
@@ -173,14 +173,14 @@ ms.locfileid: "55809242"
    > [!Note]  
    > 出于验证目的，可以使用以下示例创建一个自签名证书：
 
-   ```PowerShell  
+   ```powershell  
    $Cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=<yourappname>" -KeySpec KeyExchange
    ```
 
 
 2. 自动化完成后，它将显示使用该 SPN 所需的详细信息。 建议存储该输出以供稍后使用。
 
-   例如:
+   例如：
 
    ```shell
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -197,13 +197,13 @@ ms.locfileid: "55809242"
 
 从 ERCS 虚拟机上的特权终结点运行脚本。
 
-#### <a name="parameters"></a>参数
+#### <a name="parameters"></a>parameters
 
 以下信息是作为自动化参数的输入所必需的：
 
 |参数|描述|示例|
 |---------|---------|---------|
-|姓名|SPN 帐户的名称|MyAPP|
+|名称|SPN 帐户的名称|MyAPP|
 |ApplicationIdentifier|唯一标识符|S-1-5-21-1634563105-1224503876-2692824315-2119|
 |ClientCertificate|证书对象的数组|X509 证书|
 
@@ -241,20 +241,20 @@ ms.locfileid: "55809242"
 
 从 ERCS 虚拟机上的特权终结点运行这些脚本。 有关特权终结点的详细信息，请参阅[使用 Azure Stack 中的特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)。
 
-#### <a name="parameters"></a>参数
+#### <a name="parameters"></a>parameters
 
 以下信息是作为自动化参数的输入所必需的：
 
 | 参数 | 描述 | 示例 |
 |----------------------|--------------------------|---------|
-| 姓名 | SPN 帐户的名称 | MyAPP |
+| 名称 | SPN 帐户的名称 | MyAPP |
 | GenerateClientSecret | 创建机密 |  |
 
 #### <a name="use-the-ercs-privilegedendpoint-to-create-the-service-principal"></a>使用 ERCS PrivilegedEndpoint 创建服务主体
 
 1. 打开权限提升的 Windows PowerShell 会话，并运行以下 cmdlet：
 
-     ```PowerShell  
+     ```powershell  
       # Credential for accessing the ERCS PrivilegedEndpoint, typically domain\cloudadmin
      $Creds = Get-Credential
 
@@ -272,7 +272,7 @@ ms.locfileid: "55809242"
 
 2. 运行 cmdlet 后，shell 会显示使用 SPN 所需的详细信息。 请务必存储客户端机密。
 
-     ```PowerShell  
+     ```powershell  
      ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2623
      ClientId              : 8e0ffd12-26c8-4178-a74b-f26bd28db601
      Thumbprint            : 
@@ -288,7 +288,7 @@ ms.locfileid: "55809242"
 
 从 ERCS 虚拟机上的特权终结点运行脚本。
 
-##### <a name="parameters"></a>参数
+##### <a name="parameters"></a>parameters
 
 以下信息是作为自动化参数的输入所必需的：
 
@@ -300,11 +300,11 @@ ms.locfileid: "55809242"
 
 ##### <a name="example-of-updating-a-client-secret-for-ad-fs"></a>更新 AD FS 客户端机密的示例
 
-该示例使用**ResetClientSecret**参数，这会立即更改客户端机密。
+该示例使用 **ResetClientSecret** 参数，该参数可立即更改客户端密码。
 
 1. 打开权限提升的 Windows PowerShell 会话，并运行以下 cmdlet：
 
-     ```PowerShell  
+     ```powershell  
           # Creating a PSSession to the ERCS PrivilegedEndpoint
           $Session = New-PSSession -ComputerName <ERCS IP> -ConfigurationName PrivilegedEndpoint -Credential $Creds
 
@@ -318,7 +318,7 @@ ms.locfileid: "55809242"
 
 2. 自动化完成之后，会显示 SPN 身份验证所需的新生成机密。 请务必存储新的客户端机密。
 
-     ```PowerShell  
+     ```powershell  
           ApplicationIdentifier : S-1-5-21-1634563105-1224503876-2692824315-2120
           ClientId              :  
           Thumbprint            : 
@@ -333,7 +333,7 @@ ms.locfileid: "55809242"
 
 从 ERCS 虚拟机上的特权终结点运行脚本。
 
-#### <a name="parameters"></a>参数
+#### <a name="parameters"></a>parameters
 
 以下信息是作为自动化参数的输入所必需的：
 
@@ -363,15 +363,15 @@ ms.locfileid: "55809242"
 
 要访问订阅中的资源，必须将应用程序分配到角色。 决定哪个角色表示应用程序的相应权限。 若要了解有关可用角色的信息，请参阅 [RBAC：内置角色](../role-based-access-control/built-in-roles.md)。
 
-可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域会继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
+可将作用域设置为订阅、资源组或资源级别。 较低级别的作用域将继承权限。 例如，将某个应用程序添加到资源组的“读取者”角色意味着该应用程序可以读取该资源组及其包含的所有资源。
 
-1. 在 Azure Stack 门户中，导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，选择“订阅” 。 可改为选择资源组或资源。
+1. 在 Azure Stack 门户中，导航到要将应用程序分配到的作用域级别。 例如，若要在订阅范围内分配角色，选择“订阅”。 可改为选择资源组或资源。
 
-2. 选择要将应用程序分配到的特定订阅（资源组或资源）。
+2. 选择特定订阅（资源组或资源），向其中分配应用程序。
 
      ![选择要分配的订阅](./media/azure-stack-create-service-principal/image16.png)
 
-3. 选择“访问控制(IAM)”。
+3. 选择“访问控制 (IAM)”。
 
      ![选择访问权限](./media/azure-stack-create-service-principal/image17.png)
 
@@ -379,9 +379,9 @@ ms.locfileid: "55809242"
 
 5. 选择要分配到应用程序的角色。
 
-6. 搜索用户的应用程序，并选择它。
+6. 搜索你的应用程序，并选择它。
 
-7. 选择“确定”  完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
+7. 选择“确定”完成角色分配。 该应用程序会显示在分配到该范围角色的用户列表中。
 
 既然已创建服务主体并已分配角色，可以开始在应用程序中使用此服务主体访问 Azure Stack 资源。  
 

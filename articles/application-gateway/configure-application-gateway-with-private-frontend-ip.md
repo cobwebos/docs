@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
-ms.openlocfilehash: 4755eeda6a254389f0e0fbceec602fef718a9c45
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58100166"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905531"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
 
@@ -25,13 +25,16 @@ ms.locfileid: "58100166"
 - 为应用程序网关创建专用前端 IP 配置
 - 使用专用前端 IP 配置创建应用程序网关
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-在 <https://portal.azure.com> 登录 Azure 门户
+登录到 Azure 门户 <https://portal.azure.com>
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
-Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，或者使用现有的虚拟网络。 本示例将创建新的虚拟网络。 可以在创建应用程序网关的同时创建虚拟网络。 在独立的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
+Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创建新的虚拟网络，也可以使用现有的虚拟网络。 本示例将创建新的虚拟网络。 可以在创建应用程序网关的同时创建虚拟网络。 在不同的子网中创建应用程序网关实例。 在本示例中创建两个子网：一个用于应用程序网关，另一个用于后端服务器。
 
 1. 单击 Azure 门户左上角的“新建”。
 2. 选择“网络”，然后在“特别推荐”列表中选择“应用程序网关”。
@@ -54,10 +57,10 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 
 ## <a name="add-backend-pool"></a>添加后端池
 
-后端池用于将请求路由到为请求提供服务的后端服务器。 后端可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 本示例使用虚拟机作为目标后端。 我们可以使用现有的虚拟机，或者创建新的虚拟机。 本示例将创建两个虚拟机，供 Azure 用作应用程序网关的后端服务器。 为此，我们将会：
+后端池用于将请求路由到将为请求提供服务的后端服务器。 后端可以包含 NIC、虚拟机规模集、公共 IP、内部 IP、完全限定的域名 (FQDN) 和多租户后端（例如 Azure 应用服务）。 本示例使用虚拟机作为目标后端。 可以使用现有的虚拟机，或创建新的虚拟机。 本示例创建两台虚拟机，供 Azure 用作应用程序网关的后端服务器。 为此，我们将会：
 
 1. 创建两个新的 VM *myVM* 和 *myVM2*，用作后端服务器。
-2. 在虚拟机上安装 IIS，以验证是否成功创建了应用程序网关。
+2. 可以在虚拟机上安装 IIS，以验证是否已成功创建了应用程序网关。
 3. 将后端服务器添加到后端池。
 
 ### <a name="create-a-virtual-machine"></a>创建虚拟机
@@ -66,8 +69,8 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 2. 单击“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。
 3. 为虚拟机输入以下值：
    - *myVM* - 作为虚拟机的名称。
-   - *azureuser* - 作为管理员用户名。
-   - *Azure123456!* - 密码。
+   - *azureuser* - 管理员用户名。
+   - *Azure123456!* 密码。
    - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
 4. 单击“确定”。
 5. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。
@@ -82,7 +85,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 2. 运行以下命令以在虚拟机上安装 IIS：
 
    ```azurepowershell
-   Set-AzureRmVMExtension `
+   Set-AzVMExtension `
    
      -ResourceGroupName myResourceGroupAG `
    
@@ -100,7 +103,7 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 
 
 
-3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzureRmVMExtension.
+3. Create a second virtual machine and install IIS using the steps that you just finished. Enter myVM2 for its name and for VMName in Set-AzVMExtension.
 
 ### Add backend servers to backend pool
 

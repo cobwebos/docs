@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.openlocfilehash: 6dc3fb97c912aa9ac66e3d40a8a0318a6938905c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: ee86b9aa2d920668cf036f3e8f8634e9289e8913
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51230285"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916863"
 ---
 # <a name="biztalk-services-backup-and-restore"></a>BizTalk 服务：备份和还原
 
@@ -34,7 +34,7 @@ Azure BizTalk 服务包括备份和还原功能。
 
 
 ## <a name="before-you-begin"></a>开始之前
-* 备份和还原可能不适用于所有版本。 请参阅 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)。
+* 备份和还原可能不适用于所有版本。 请参阅[BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)。
 * 备份内容可以还原到同一个 BizTalk 服务或者新的 BizTalk 服务。 若要使用相同名称还原 BizTalk 服务，必须删除现有 BizTalk 服务，且名称必须可用。 删除 BizTalk 服务后，可能需要长于预期的时间才能使用此相同名称。 如果无法等到此名称可用，请还原到新的 BizTalk 服务。
 * BizTalk 服务可以还原到相同版本或更高版本。 不支持从执行备份时还原到更低版本的 BizTalk 服务。
   
@@ -42,14 +42,14 @@ Azure BizTalk 服务包括备份和还原功能。
 * 对 EDI 控制编号进行备份以便保持控制编号的连续性。 如果消息是在最后的备份后处理的，则还原此备份内容可能会导致重复的控制编号。
 * 如果批次含有活动消息，请在运行备份**之前**处理该批次。 在创建备份（根据需要或计划）时，永远不会存储批中的消息。 
   
-    **如果对某一批次中的活动消息执行备份，不会备份这些消息，因此这些消息将丢失。**
+    **如果对一批中的活动消息执行备份，这些消息不会备份，因此丢失。**
 * 可选：在 BizTalk 服务门户中，停止任何管理操作。
 
 ## <a name="create-a-backup"></a>创建备份
-备份可以随时进行并由你完全控制。 若要创建备份，请使用[用于在 Azure 上管理 BizTalk 服务的 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)。
+备份可以随时进行并由你完全控制。 若要创建备份，请使用[用于在 Azure 上管理 BizTalk 服务的 REST API](/previous-versions/azure/reference/dn232347(v=azure.100))。
 
 ## <a name="restore"></a>还原
-若要还原备份，请使用[用于在 Azure 上管理 BizTalk 服务的 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)。
+若要还原备份，请使用[用于在 Azure 上管理 BizTalk 服务的 REST API](/previous-versions/azure/reference/dn232347(v=azure.100))。
 
 ### <a name="postrestore"></a>还原备份后
 BizTalk 服务始终在“挂起”状态中还原。 在此状态下，可在新环境正常运行前进行任何配置更改，其中包括：
@@ -132,15 +132,15 @@ BizTalk 服务始终在“挂起”状态中还原。 在此状态下，可在�
 </table>
 
 ## <a name="next"></a>下一步
-若要创建 Azure BizTalk 服务，请转到 [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
+若要创建 Azure BizTalk 服务，请转到[BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)。 若要开始创建应用程序，请转到 [Azure BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=235197)。
 
 ## <a name="see-also"></a>另请参阅
-* [Backup BizTalk Service](https://go.microsoft.com/fwlink/p/?LinkID=325584)（备份 BizTalk 服务）
+* [备份 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=325584)
 * [从备份还原 BizTalk 服务](https://go.microsoft.com/fwlink/p/?LinkID=325582)
-* [BizTalk 服务：开发人员版、基本版、标准版和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)
-* [BizTalk 服务：预配](https://go.microsoft.com/fwlink/p/?LinkID=302280)
-* [BizTalk 服务：预配状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)
-* [Biztalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
+* [BizTalk 服务：开发人员、 基本、 标准和高级版图表](https://go.microsoft.com/fwlink/p/?LinkID=302279)
+* [BizTalk 服务：设置](https://go.microsoft.com/fwlink/p/?LinkID=302280)
+* [BizTalk 服务：设置状态图表](https://go.microsoft.com/fwlink/p/?LinkID=329870)
+* [BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡](https://go.microsoft.com/fwlink/p/?LinkID=302281)
 * [BizTalk 服务：限制](https://go.microsoft.com/fwlink/p/?LinkID=302282)
 * [BizTalk 服务：颁发者名称和颁发者密钥](https://go.microsoft.com/fwlink/p/?LinkID=303941)
 * [如何开始使用 Azure BizTalk 服务 SDK](https://go.microsoft.com/fwlink/p/?LinkID=302335)

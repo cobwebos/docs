@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a516f99af05ba3f3bb7ab98d3def123a488e0d9d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075895"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895048"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
 
 >[!NOTE]
-> 必须使用 [Azure AD Graph API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-operations-overview?f=255&MSPPError=-2147217396) 管理 Azure AD B2C 目录中的用户。 这不同于 Microsoft 图形 API。 在[此处](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)了解更多信息。
+> 必须使用 [Azure AD Graph API](/previous-versions/azure/ad/graph/howto/azure-ad-graph-api-operations-overview) 管理 Azure AD B2C 目录中的用户。 这不同于 Microsoft 图形 API。 在[此处](https://blogs.msdn.microsoft.com/aadgraphteam/2016/07/08/microsoft-graph-or-azure-ad-graph/)了解更多信息。
 
 Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着许多常见的租户管理任务需要以编程方式执行。 用户管理是一个主要示例。 可能需要将现有用户存储迁移到 B2C 租户。 可能想要在自己的页面上托管用户注册，并在 Azure AD B2C 目录后台创建用户帐户。 这些类型的任务需要能够创建、读取、更新和删除用户帐户。 可以通过使用 Azure AD 图形 API 来执行这些任务。
 
@@ -126,7 +126,7 @@ B2C Help
 此操作会显示每个命令的简要说明。 每次调用其中一个命令时，`B2CGraphClient` 都会向 Azure AD 图形 API 发出请求。
 
 ### <a name="get-an-access-token"></a>获取访问令牌
-对图形 API 的任何请求都需要访问令牌来进行身份验证。 `B2CGraphClient` 使用开放源 Active Directory Authentication Library (ADAL) 来帮助获取访问令牌。 通过提供简单的 API 并处理某些重要细节（如缓存访问令牌），ADAL 使令牌获取变得更容易。 不过，不必非得使用 ADAL 获得令牌。 也可以通过制作 HTTP 请求获取令牌。
+对图形 API 的任何请求都需要访问令牌来进行身份验证。 `B2CGraphClient` 使用开放源 Active Directory 身份验证库 (ADAL) 帮助获取访问令牌。 通过提供简单的 API 并处理某些重要细节（如缓存访问令牌），ADAL 使令牌获取变得更容易。 不过，不必非得使用 ADAL 获得令牌。 也可以通过制作 HTTP 请求获取令牌。
 
 > [!NOTE]
 > 此代码示例使用 ADAL v2 以便与图形 API 进行通信。  必须使用 ADAL v2 或 v3，获取可配合 Azure AD 图形 API 使用的访问令牌。
@@ -239,7 +239,7 @@ Content-Length: 338
 }
 ```
 
-此请求中的大多数属性都是创建使用者用户所必需的。 若要了解详细信息，请单击[此处](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)。 请注意，已包含 `//` 注释用于说明。 不要将它们包含在实际请求中。
+此请求中的大多数属性都是创建使用者用户所必需的。 若要了解详细信息，请单击[此处](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)。 请注意，已包含 `//` 注释用于说明。 不要将它们包含在实际请求中。
 
 若要查看请求，请运行以下命令之一：
 
@@ -248,7 +248,7 @@ B2C Create-User ..\..\..\usertemplate-email.json
 B2C Create-User ..\..\..\usertemplate-username.json
 ```
 
-`Create-User` 命令将 .json 文件用作输入参数。 这包含用户对象的 JSON 表示形式。 示例代码中有两个示例 .json 文件：`usertemplate-email.json` 和 `usertemplate-username.json`。 可以修改这些文件以满足个人需要。 除了上述必填字段外，这些文件中还包含一些可以使用的可选字段。 有关可选字段的详细信息，请参阅 [Azure AD 图形 API 实体引用](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#user-entity)。
+`Create-User` 命令将 .json 文件用作输入参数。 这包含用户对象的 JSON 表示形式。 示例代码中有两个示例 .json 文件：`usertemplate-email.json` 和 `usertemplate-username.json`。 可以修改这些文件以满足个人需要。 除了上述必填字段外，这些文件中还包含一些可以使用的可选字段。 有关可选字段的详细信息，请参阅 [Azure AD 图形 API 实体引用](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity)。
 
 会看到如何在 `B2CGraphClient.SendGraphPostRequest(...)` 中构造 POST 请求。
 
@@ -257,7 +257,7 @@ B2C Create-User ..\..\..\usertemplate-username.json
 * 它会将 JSON 用户对象包含在请求的正文中。
 
 > [!NOTE]
-> 如果要从现有用户存储迁移的帐户的密码强度低于 [Azure AD B2C 强制实施的强密码强度](https://msdn.microsoft.com/library/azure/jj943764.aspx)，可以使用 `passwordPolicies` 属性中的 `DisableStrongPassword` 值禁用强密码要求。 例如，可以修改上面提供的创建用户请求，如下所示：`"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`。
+> 如果要从现有用户存储迁移的帐户的密码强度低于 [Azure AD B2C 强制实施的强密码强度](/previous-versions/azure/jj943764(v=azure.100))，可以使用 `passwordPolicies` 属性中的 `DisableStrongPassword` 值禁用强密码要求。 例如，可以修改上面提供的创建用户请求，如下所示：`"passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"`。
 > 
 > 
 
@@ -317,7 +317,7 @@ B2C Delete-User <object-id-of-user>
 
 有关如何发送此请求的详细信息，请检查 `B2CGraphClient.SendGraphDeleteRequest(...)` 方法。
 
-除了用户管理之外，还可以使用 Azure AD 图形 API 执行许多其他操作。 [Azure AD 图形 API 参考](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)提供了每个操作的详细信息以及示例请求。
+除了用户管理之外，还可以使用 Azure AD 图形 API 执行许多其他操作。 [Azure AD 图形 API 参考](/previous-versions/azure/ad/graph/api/api-catalog)提供了每个操作的详细信息以及示例请求。
 
 ## <a name="use-custom-attributes"></a>使用自定义属性
 大多数使用者应用程序需要存储某些类型的自定义用户配置文件信息。 一种方法是在 B2C 租户中定义自定义属性。 然后，可按照处理用户对象上的任何其他属性的方式一样来处理该属性。 可以更新属性、删除属性、按属性查询、发送属性等，如登录令牌中的声明一样。
@@ -355,7 +355,7 @@ B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-通过使用 `B2CGraphClient`，可以有一个能以编程方式管理 B2C 租户用户的服务应用程序。 `B2CGraphClient` 使用自己的应用程序标识，向 Azure AD 图形 API 进行验证。 它还会通过使用客户端密码获取令牌。 将此功能并入应用程序时，请记住 B2C 应用的几个要点：
+通过使用 `B2CGraphClient`，可以有一个能以编程方式管理 B2C 租户用户的服务应用程序。 `B2CGraphClient` 使用其自己的应用程序标识对 Azure AD 图形 API 进行身份验证。 它还会通过使用客户端密码获取令牌。 将此功能并入应用程序时，请记住 B2C 应用的几个要点：
 
 * 需要将租户中的适当权限授予应用程序。
 * 现在，需要使用 ADAL（而非 MSAL）获取访问令牌。 （也可以直接发送协议消息，而不使用库。）

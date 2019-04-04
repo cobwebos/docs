@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 3c8fab85d71f5f81bbf81bc3dd7a22d6c0b7f11b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551834"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917764"
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
 ## <a name="what-is-cors"></a>什么是 CORS？
@@ -85,7 +85,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 ![带正则表达式的规则示例](./media/cdn-cors/cdn-cors-regex.png)
 
 #### <a name="request-header-rule-for-each-origin"></a>为每个源请求标头规则。
-与其使用正则表达式，不如用 **Request Header Wildcard** [匹配条件](https://msdn.microsoft.com/library/mt757336.aspx#Anchor_1).为每个要允许的源创建单独的规则。 与正则表达式方法一样，规则引擎单独设置 CORS 标头。 
+与其使用正则表达式，不如用 **Request Header Wildcard** [匹配条件](/previous-versions/azure/mt757336(v=azure.100)#Anchor_1).为每个要允许的源创建单独的规则。 与正则表达式方法一样，规则引擎单独设置 CORS 标头。 
 
 ![没有正则表达式的规则示例](./media/cdn-cors/cdn-cors-no-regex.png)
 

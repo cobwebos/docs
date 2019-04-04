@@ -11,12 +11,12 @@ ms.assetid: 71775384-6c3a-482c-a484-6624cbe4fcc7
 ms.topic: article
 tags: connectors
 ms.date: 07/21/2016
-ms.openlocfilehash: c0985df445ae34795d5287144d4664755cc006da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c3047000843e054e71ec1a80313118a25e7c4905
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58182109"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895573"
 ---
 # <a name="create-event-based-workflows-or-actions-by-using-webhooks-and-azure-logic-apps"></a>使用 Webhook 和 Azure 逻辑应用创建基于事件的工作流或操作
 
@@ -29,11 +29,11 @@ ms.locfileid: "58182109"
 
 ## <a name="use-the-webhook-trigger"></a>使用 Webhook 触发器
 
-[触发器](connectors-overview.md)是一个会启动逻辑应用工作流的事件。 Webhook 触发器是基于事件的这不依赖于轮询新项目。 当使用 webhook 触发器保存逻辑应用或逻辑应用从禁用到更改时启用 webhook 触发器*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 然后，该触发器使用该 URL 来根据需要运行逻辑应用。 像[请求触发器](connectors-native-reqres.md)，立即预期的事件发生时，会触发逻辑应用。 触发器*取消订阅*如果删除的触发器并保存逻辑应用，或者当您更改为已禁用已启用从逻辑应用。
+[触发器](../connectors/apis-list.md)是一个会启动逻辑应用工作流的事件。 Webhook 触发器是基于事件的这不依赖于轮询新项目。 当使用 webhook 触发器保存逻辑应用或逻辑应用从禁用到更改时启用 webhook 触发器*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 然后，该触发器使用该 URL 来根据需要运行逻辑应用。 像[请求触发器](connectors-native-reqres.md)，立即预期的事件发生时，会触发逻辑应用。 触发器*取消订阅*如果删除的触发器并保存逻辑应用，或者当您更改为已禁用已启用从逻辑应用。
 
 以下示例演示如何在逻辑应用设计器中设置 HTTP 触发器。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-triggers)的 API。 
 
-**添加 Webhook 触发器**
+**若要添加 webhook 触发器**
 
 1. 作为逻辑应用中的第一步，添加 **HTTP Webhook** 触发器。
 2. 为 webhook 订阅和取消订阅调用填写参数。
@@ -48,7 +48,7 @@ ms.locfileid: "58182109"
 
 ## <a name="use-the-webhook-action"></a>使用 Webhook 操作
 
-[*操作*](connectors-overview.md)是一种定义操作和逻辑应用的工作流运行。 逻辑应用的 webhook 操作，该操作的运行时*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 Webhook 操作然后等待，直到服务调用逻辑应用继续运行之前的 URL。 逻辑应用从服务或终结点在这些情况下取消订阅： 
+[*操作*](../connectors/apis-list.md)是一种定义操作和逻辑应用的工作流运行。 逻辑应用的 webhook 操作，该操作的运行时*订阅*到指定的服务或通过注册的终结点*回调 URL*与该服务或终结点。 Webhook 操作然后等待，直到服务调用逻辑应用继续运行之前的 URL。 逻辑应用从服务或终结点在这些情况下取消订阅： 
 
 * Webhook 操作成功完成
 * 如果等待响应时取消逻辑应用运行
@@ -58,7 +58,7 @@ ms.locfileid: "58182109"
 
 以下示例演示如何在逻辑应用设计器中设置 webhook 操作。 这些步骤假设之前已部署或正在访问遵循[逻辑应用中使用的 webhook 订阅和取消订阅模式](../logic-apps/logic-apps-create-api-app.md#webhook-actions)的 API。 
 
-**添加 webhook 操作**
+**若要添加 webhook 操作**
 
 1. 选择“新步骤” > “添加操作”。
 

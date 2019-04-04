@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Active Directory B2C 的自定义策略中定义 OpenId Connect 技术配置文件 | Microsoft Docs
-description: 在 Azure Active Directory B2C 的自定义策略中定义 OpenId Connect 技术配置文件。
+title: 在 Azure Active Directory B2C 中的自定义策略中定义的 OpenId Connect 的技术配置文件 |Microsoft Docs
+description: 在 Azure Active Directory B2C 中的自定义策略中定义的 OpenId Connect 的技术配置文件。
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 730d32fd5b9451c2b4edfe0fb1e50c06c2156815
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159465"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916761"
 ---
-# <a name="define-a-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OpenId Connect 技术配置文件
+# <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OpenId Connect 的技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -73,7 +73,7 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/20
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | client_id | 是 | 标识提供者的应用程序标识符。 |
 | IdTokenAudience | 否 | id_token 的受众。 在指定此项的情况下，Azure AD B2C 会检查令牌是否位于标识提供者返回的声明中，以及是否与指定的令牌相同。 |
@@ -92,7 +92,7 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/20
 
 **CryptographicKeys** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | client_secret | 是 | 标识提供者应用程序的客户端机密。 只有在将 **response_types** 元数据设置为 `code` 的情况下，才需要加密密钥。 在这种情况下，Azure AD B2C 会再次进行调用，以便用授权代码来交换访问令牌。 如果元数据已设置为 `id_token`，则可省略加密密钥。  |  
 
@@ -104,9 +104,9 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/20
 
 示例：
 
-- [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](active-directory-b2c-custom-setup-msa-idp.md)
+- [将 Microsoft 帐户 (MSA) 添加为标识提供程序使用自定义策略](active-directory-b2c-custom-setup-msa-idp.md)
 - [使用 Azure AD 帐户登录](active-directory-b2c-setup-aad-custom.md)
-- [让用户使用自定义策略登录到多租户 Azure AD 标识提供者](active-directory-b2c-setup-commonaad-custom.md)
+- [允许用户在登录到使用自定义策略的多租户 Azure AD 标识提供者](active-directory-b2c-setup-commonaad-custom.md)
 
  
 

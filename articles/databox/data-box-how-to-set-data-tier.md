@@ -8,18 +8,21 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
-ms.openlocfilehash: bb1d6c5bd51fcfe35127c2f6d8dd6a80b727c45f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 44fa81ddf6b0892c6d900fd065589b3d6ac5a0bd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517141"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905556"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 将数据发送到合适的 Azure 存储 Blob 层
 
 Azure Data Box 通过向你发送专有存储设备来将大量数据移动到 Azure。 使用数据填充设备并将其返回。 Data Box 中的数据会上传到和存储帐户有关的默认层级。 然后便可以将数据移到另一个存储层。
 
 本文介绍可如何将 Data Box 上传的数据移动到热、冷或存档 Blob 层。  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="choose-the-correct-storage-tier-for-your-data"></a>为数据选择适当的存储层
 
@@ -52,13 +55,13 @@ Data Box 中的数据上传到默认层后，可能需要将数据移到非默�
 
 以下步骤介绍如何使用 Azure PowerShell 脚本将 Blob 层设置为存档存储层。
 
-1. 打开已提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 类型：
+1. 打开已提升的 Windows PowerShell 会话。 请确保运行的是 PowerShell 5.0 或更高版本。 键入：
 
    `$PSVersionTable.PSVersion`     
 
 2. 登录到 Azure PowerShell。 
 
-   `Login-AzureRmAccount`  
+   `Login-AzAccount`  
 
 3. 定义用于存储帐户、访问密钥、容器和存储上下文的变量。
 
@@ -66,12 +69,12 @@ Data Box 中的数据上传到默认层后，可能需要将数据移到非默�
     $StorageAccountName = "<enter account name>"
     $StorageAccountKey = "<enter account key>"
     $ContainerName = "<enter container name>"
-    $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+    $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
     ```
 
 4. 获取容器中的所有 Blob。
 
-    `$blobs = Get-AzureStorageBlob -Container "<enter container name>" -Context $ctx`
+    `$blobs = Get-AzStorageBlob -Container "<enter container name>" -Context $ctx`
  
 5. 将容器中所有 Blob 的层级设置为存档存储层。
 
@@ -91,7 +94,7 @@ Data Box 中的数据上传到默认层后，可能需要将数据移到非默�
     Major  Minor  Build  Revision
     -----  -----  -----  --------
     5      1      17763  134
-    PS C:\WINDOWS\system32> Login-AzureRmAccount
+    PS C:\WINDOWS\system32> Login-AzAccount
 
     Account          : gus@contoso.com
     SubscriptionName : MySubscription
@@ -102,8 +105,8 @@ Data Box 中的数据上传到默认层后，可能需要将数据移到非默�
     PS C:\WINDOWS\system32> $StorageAccountName = "mygpv2storacct"
     PS C:\WINDOWS\system32> $StorageAccountKey = "mystorageacctkey"
     PS C:\WINDOWS\system32> $ContainerName = "test"
-    PS C:\WINDOWS\system32> $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
-    PS C:\WINDOWS\system32> $blobs = Get-AzureStorageBlob -Container "test" -Context $ctx
+    PS C:\WINDOWS\system32> $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+    PS C:\WINDOWS\system32> $blobs = Get-AzStorageBlob -Container "test" -Context $ctx
     PS C:\WINDOWS\system32> Foreach ($blob in $blobs) {
     >> $blob.ICloudBlob.SetStandardBlobTier("Archive")
     >> }

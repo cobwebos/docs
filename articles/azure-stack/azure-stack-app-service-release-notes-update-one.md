@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: sethm
 ms.lastreviewed: 03/20/2018
-ms.openlocfilehash: 99b4134f8f2d6ed2f521a7f488c33e06c0f436bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d75467da01f0672bb735e01cbd6d7634cdf843e
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58165822"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445244"
 ---
 # <a name="app-service-on-azure-stack-update-1-release-notes"></a>基于 Azure Stack 的应用服务 Update 1 发行说明
 
@@ -56,6 +56,8 @@ ms.locfileid: "58165822"
 - **在现有的虚拟网络中进行部署** - 客户现在可以在现有的虚拟网络中部署基于 Azure Stack 的应用服务。 在现有的虚拟网络中进行部署以后，客户就可以通过专用端口连接到 Azure 应用服务所需的 SQL Server 和文件服务器。 在部署过程中，客户可以选择在现有的虚拟网络中进行部署，但在部署之前，[必须创建供应用服务使用的子网](azure-stack-app-service-before-you-get-started.md#virtual-network)。
 
 - 针对**应用服务租户、管理员、函数门户和 Kudu 工具**的更新。 与 Azure Stack 门户 SDK 版本一致。
+
+- 更新**Azure Functions 运行时**到**v1.0.11388**。
 
 - **针对以下应用程序框架和工具的更新**：
     - 添加 **.NET Core 2.0**支持

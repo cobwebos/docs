@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.openlocfilehash: 18e65fc51f99aa19162daa3f6e5b9b7012214f64
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 347ea75673336574f7517f2f7d0c802b0ed16560
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57765537"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918291"
 ---
 # <a name="hybrid-connections-overview"></a>混合连接概述
 
@@ -91,12 +91,12 @@ ms.locfileid: "57765537"
 | 80、443 |这些端口用于对 Azure 进行一些数据请求。 此外，如果端口 9352 和 5671 不可用，*则*将端口 80 和 443 作为用于数据传输和通道控制的回退端口。<br/><br/>允许到这些端口的出站连接。 <br/><br/>**注意**：不建议使用这些回退端口代替其他的 TCP 端口。 HTTP/WebSocket 用作数据通道的协议，而不是本机 TCP。 它可能会导致性能降低。 |
 
 ## <a name="next-steps"></a>后续步骤
-[Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)
+[创建和管理混合连接](integration-hybrid-connection-create-manage.md)
 
 ## <a name="see-also"></a>另请参阅
-[用于在 Microsoft Azure 上管理 BizTalk 服务的 REST API](https://msdn.microsoft.com/library/azure/dn232347.aspx)  
+[用于管理 Microsoft Azure 上的 BizTalk 服务 REST API](/previous-versions/azure/reference/dn232347(v=azure.100))  
 [BizTalk 服务：版本图表](biztalk-editions-feature-chart.md)  
 [创建 BizTalk 服务](biztalk-provision-services.md)  
-[BizTalk 服务：仪表板、 监视和缩放选项卡](biztalk-dashboard-monitor-scale-tabs.md)  
+[BizTalk 服务：“仪表板”、“监视”和“缩放”选项卡](biztalk-dashboard-monitor-scale-tabs.md)  
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a1ecc4de9475e735cd17286826c1d8cea05904ab
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089346"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894895"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
 计划将标识提供者迁移到 Azure AD B2C 时，可能还需要迁移具有社交标识的用户。 本文介绍如何将现有社交标识帐户（例如：Facebook、LinkedIn、Microsoft 和 Google 帐户）迁移到 Azure AD B2C。 本文也适用于联合标识，但这种迁移不太常见。
@@ -29,11 +29,11 @@ ms.locfileid: "58089346"
 
 * **社交帐户**的标识存储在 `userIdentities` 集合中。 该条目指定 `issuer`（标识提供者名称，例如 facebook.com 和 `issuerUserId`），是颁发者的唯一用户标识符。 `userIdentities` 属性包含一个或多个 UserIdentity 记录，这些记录指定社交标识提供者中的社交帐户类型和唯一用户标识符。
 
-* **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames` 用于本地帐户，`userIdentities` 用于社交帐户。 单个 Azure AD B2C 帐户可以只是本地帐户、只是社交帐户，也可以在一条用户记录中结合本地帐户和社交标识。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
+* **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames` 是用于本地帐户，而`userIdentities`适用于社交帐户。 单个 Azure AD B2C 帐户可以只是本地帐户、只是社交帐户，也可以在一条用户记录中结合本地帐户和社交标识。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
 
-* `UserIdentity` 类型 - 包含 Azure AD B2C 租户中社交帐户用户的标识信息：
-  * `issuer` - 颁发用户标识符的标识提供者的字符串表示形式，例如 facebook.com。
-  * `issuerUserId` - 社交标识提供者使用的唯一用户标识符，采用 base64 格式。
+* `UserIdentity` 类型-包含有关标识的 Azure AD B2C 租户中的社交帐户用户的信息：
+  * `issuer` 标识提供程序颁发用户标识符，例如 facebook.com 字符串表示形式。
+  * `issuerUserId` 使用 base64 格式中的社交标识提供程序的唯一用户标识符。
 
     ```JSON
     "userIdentities": [{
@@ -63,7 +63,7 @@ ms.locfileid: "58089346"
 * **userIdentities** - 一个或多个 UserIdentity 记录，这些记录指定社交标识提供者中的社交帐户类型和唯一用户标识符。
 * [可选] **otherMails** - 仅适用于社交帐户，表示用户的电子邮件地址 
 
-有关详细信息，请参阅：[图形 API 参考](https://msdn.microsoft.com/library/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
+有关详细信息，请参阅：[图形 API 参考](/previous-versions/azure/ad/graph/api/users-operations#CreateLocalAccountUser)
 
 ## <a name="migrate-social-account-only"></a>仅迁移社交帐户
 只创建社交帐户，而不创建本地帐户凭据。 将 HTTPS POST 请求发送到图形 API。 请求正文包含要创建的社交帐户用户的属性。 最起码要指定必需的属性。 

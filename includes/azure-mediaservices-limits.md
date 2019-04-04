@@ -4,12 +4,12 @@ ms.service: billing
 ms.topic: include
 ms.date: 11/09/2018
 ms.author: jroth
-ms.openlocfilehash: e7243c1f0c0bc26b2e77a060b5def6e204835235
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: b275a86f8fd35c43865fd920d1bfc9994a796a9c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57553337"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919159"
 ---
 >[!NOTE]
 >对于不固定的资源，请打开支持票证以请求增加配额中。 不尝试获取更高的限制中创建更多 Azure 媒体服务帐户。
@@ -39,7 +39,7 @@ ms.locfileid: "57553337"
 
 截至 2017 年 4 月 1 日，任何在你的帐户 90 天以前是自动删除作业记录，及其关联的任务记录。 即使记录总数低于最大配额，则自动删除。 要存档的作业和任务的信息，请使用代码中所述[使用媒体服务.NET SDK 管理资产](../articles/media-services/previous/media-services-dotnet-manage-entities.md)。
 
-<sup>3</sup>请求列表作业实体时，每个请求返回 1,000 个作业最多。 若要跟踪的所有已提交的作业，请使用顶部或跳过的查询中所述[OData 系统查询选项](https://msdn.microsoft.com/library/gg309461.aspx)。
+<sup>3</sup>请求列表作业实体时，每个请求返回 1,000 个作业最多。 若要跟踪的所有已提交的作业，请使用顶部或跳过的查询中所述[OData 系统查询选项](/previous-versions/dynamicscrm-2015/developers-guide/gg309461(v=crm.7))。
 
 <sup>4</sup>定位符不用于管理每个用户的访问控制。 若要提供给单个用户的不同访问权限，使用数字版权管理 (DRM) 解决方案。 有关详细信息，请参阅[使用 Azure 媒体服务保护内容](../articles/media-services/previous/media-services-content-protection-overview.md)。
 

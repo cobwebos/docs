@@ -15,12 +15,12 @@ ms.date: 02/15/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 11/16/2018
-ms.openlocfilehash: 277af6f139e815f46894f5b8df82a1d92ef573d1
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c957812271d2ddd6639672d862026b30cfd19661
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537127"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804507"
 ---
 # <a name="add-linux-images-to-azure-stack"></a>将 Linux 映像添加到 Azure Stack
 
@@ -38,7 +38,7 @@ ms.locfileid: "57537127"
 
 只要有可能，请下载通过市场管理提供的映像，这些映像已针对 Azure Stack 进行了准备和测试。
 
-Azure Linux 代理（通常称为 `WALinuxAgent` 或 `walinuxagent`）是必需的，并非所有代理版本都可以在 Azure Stack 上正常工作。 如果创建你自己的映像，则应使用 WALA 的最新版本或版本 2.2.20。 请注意，Azure Stack 上不起作用 2.2.20 和 2.2.35.1 （独占） 之间的版本。 请注意，目前 Azure Stack 不支持 [cloud-init](https://cloud-init.io/)。
+Azure Linux 代理（通常称为 `WALinuxAgent` 或 `walinuxagent`）是必需的，并非所有代理版本都可以在 Azure Stack 上正常工作。 如果创建自己的映像，则应该使用最新版本的 WALA 或版本 2.2.20。 请注意，2.2.20 和 2.2.35.1（不含）之间的版本不能在 Azure Stack 上使用。 若要使用 2.2.20 和 2.2.35.1 之间的代理版本，请应用 1901年修补程序/1902年修补程序或更新 Azure Stack，到 1903年版本 （或更高版本）。 请注意，目前 Azure Stack 不支持 [cloud-init](https://cloud-init.io/)。
 
 可以按照以下说明准备自己的 Linux 映像：
 

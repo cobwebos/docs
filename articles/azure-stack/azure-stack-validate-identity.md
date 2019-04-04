@@ -16,12 +16,12 @@ ms.date: 03/23/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 03/23/2019
-ms.openlocfilehash: 3dfb87e5f6c231831cd9c007b19ad001e1fce326
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b6a859f1104be8650b95ac789f3da606fb1b70f6
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403181"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486676"
 ---
 # <a name="validate-azure-identity"></a>验证 Azure 标识
 
@@ -85,7 +85,7 @@ ms.locfileid: "58403181"
 
 4. 运行该工具后，查看输出。 对于安装要求，确认状态为“正常”。 成功的验证如下图所示：
 
-   ```shell
+   ```powershell
    Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
    Starting Azure Identity Validation
 
@@ -119,7 +119,7 @@ ms.locfileid: "58403181"
 
 ### <a name="expired-or-temporary-password"></a>过期的或临时密码
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -145,9 +145,9 @@ Login-AzureRMAccount
 
 或者，登录到[Azure 门户](https://portal.azure.com)根据帐户所有者和用户会被强制更改密码。
 
-### <a name="unknown-user-type"></a>未知用户类型
-
-```shell
+### <a name="unknown-user-type"></a>未知用户类型 
+ 
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 
@@ -173,7 +173,7 @@ Login-AzureRmAccount –EnvironmentName AzureChinaCloud
 
 ### <a name="account-is-not-an-administrator"></a>帐户不是管理员
 
-```shell
+```powershell
 Invoke-AzsAzureIdentityValidation v1.1809.1005.1 started.
 Starting Azure Identity Validation
 

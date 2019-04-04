@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3e217e0e3367c6e1200567f589749fec9e626da8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817450"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916829"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
@@ -39,23 +39,23 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 
 保留策略应用于所有用户并且当前无法自定义。
 
-但是，如果你需要将数据保留更长一段时间，可以转发 runbook 作业的日志传输到 Azure Monitor 日志。  有关详细信息，查看[将 Azure Monitor 日志到 Azure 自动化作业数据转发](automation-manage-send-joblogs-log-analytics.md)。   
+但是，如果需要将数据保留更长一段时间，可以将 Runbook 作业日志转发到 Azure Monitor 日志。  有关详细信息，请参阅[将 Azure 自动化作业数据转发到 Azure Monitor 日志](automation-manage-send-joblogs-log-analytics.md)。   
 
 ## <a name="backing-up-azure-automation"></a>备份 Azure 自动化
 删除 Microsoft Azure 中的某个自动化帐户时，该帐户中的所有对象都会被删除，包括 Runbook、模块、配置、设置、作业和资产。 在删除帐户后，这些对象不可恢复。  在删除自动化帐户之前，可以参考以下信息来备份该帐户的内容。 
 
 ### <a name="runbooks"></a>Runbook
-可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。  可以根据[创建或导入 Runbook](https://msdn.microsoft.com/library/dn643637.aspx) 中所述，将这些脚本文件导入另一个自动化帐户。
+可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。  可以根据[创建或导入 Runbook](/previous-versions/azure/dn643637(v=azure.100)) 中所述，将这些脚本文件导入另一个自动化帐户。
 
 ### <a name="integration-modules"></a>集成模块
 无法从 Azure 自动化导出集成模块。  必须确保这些模块可在自动化帐户外部使用。
 
 ### <a name="assets"></a>资产
-不能从 Azure 自动化导出[资产](https://msdn.microsoft.com/library/dn939988.aspx)。  使用 Azure 门户时，必须记下变量、凭据、证书、连接和计划的详细信息。  然后，必须手动创建导入到另一个自动化中的 Runbook 使用的任何资产。
+不能从 Azure 自动化导出[资产](/previous-versions/azure/dn939988(v=azure.100))。  使用 Azure 门户时，必须记下变量、凭据、证书、连接和计划的详细信息。  然后，必须手动创建导入到另一个自动化中的 Runbook 使用的任何资产。
 
 但可以使用 [Azure cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation#automation) 检索未加密资产的详细信息，然后保存这些资产供将来参考，或在另一个自动化帐户中创建等效的资产。
 
-无法使用 cmdlet 检索已加密变量或凭据密码字段的值。  如果不知道这些值，可以使用 [Get-AutomationVariable](https://msdn.microsoft.com/library/dn940012.aspx) 和 [Get-AutomationPSCredential](https://msdn.microsoft.com/library/dn940015.aspx) 活动从 Runbook 中检索这些值。
+无法使用 cmdlet 检索已加密变量或凭据密码字段的值。  如果不知道这些值，可以使用 [Get-AutomationVariable](/previous-versions/azure/dn940012(v=azure.100)) 和 [Get-AutomationPSCredential](/previous-versions/azure/dn940015(v=azure.100)) 活动从 Runbook 中检索这些值。
 
 无法从 Azure 自动化导出证书。  必须确保所有证书在 Azure 外部可用。
 

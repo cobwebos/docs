@@ -2,19 +2,19 @@
 title: 数据筛选 - 自定义翻译器
 titleSuffix: Azure Cognitive Services
 description: 提交用于训练自定义系统的文档时，这些文档需要经历一系列的处理和筛选步骤，为训练做准备。
-author: jann-skotdal
+author: v-pawal
 manager: christw
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
-ms.openlocfilehash: 195c39562e36000597d04bb760741ec7f40203c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57844667"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916099"
 ---
 # <a name="data-filtering"></a>数据筛选
 
@@ -49,9 +49,9 @@ ms.locfileid: "57844667"
 
 ## <a name="unescaped-xml-tags"></a>非转义的 XML 标记
 筛选会将非转义的标记转换为转义的标记：
-* `&lt;` 变为 `&amp;lt;`
-* `&gt;` 变为 `&amp;gt;`
-* `&amp;` 变为 `&amp;amp;`
+* `&lt;` 将成为 `&amp;lt;`
+* `&gt;` 将成为 `&amp;gt;`
+* `&amp;` 将成为 `&amp;amp;`
 
 ## <a name="invalid-characters"></a>无效字符
 自定义翻译器会删除包含 Unicode 字符 U+FFFD 的句子。 字符 U+FFFD 表示编码转换失败。

@@ -1,6 +1,6 @@
 ---
-title: Durable Functions 模式和在 Azure Functions 中的技术概念
-description: 了解如何在 Azure Functions 的 Durable Functions 扩展使有状态的代码执行在云中的优势。
+title: Azure Functions 中的 Durable Functions 模式和技术概念
+description: 了解 Azure Functions 中的 Durable Functions 扩展如何在云中提供有状态代码执行优势。
 services: functions
 author: kashimiz
 manager: jeconnoc
@@ -10,33 +10,33 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e5be81efcd655f1f0361d8c00d978a81c3e6caa5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443413"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892749"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions 模式和技术概念 (Azure Functions)
 
-Durable Functions 是的扩展[Azure Functions](../functions-overview.md)并[Azure web 作业](../../app-service/web-sites-create-web-jobs.md)。 您可以使用 Durable Functions 无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。 
+Durable Functions 是 [Azure Functions](../functions-overview.md) 和 [Azure WebJobs](../../app-service/web-sites-create-web-jobs.md) 的扩展。 可以使用 Durable Functions 在无服务器环境中编写有状态函数。 该扩展可用于管理状态、检查点和重启。 
 
-此文章提供详细的行为的信息的 Durable Functions 扩展的 Azure Functions 和常见实现模式。 信息可以帮助您确定如何使用 Durable Functions 可以帮助解决开发难题。
+本文提供有关 Azure Functions 的 Durable Functions 扩展的行为和常用实现模式的详细信息。 这些信息可帮助你确定如何使用 Durable Functions 来解决开发难题。
 
 > [!NOTE]
-> Durable Functions 是不是适用于所有应用程序的 Azure Functions 的高级的扩展。 本文假定你具有中的概念非常熟悉[Azure Functions](../functions-overview.md)和无服务器应用程序开发中涉及的挑战。
+> Durable Functions 是 Azure Functions 的高级扩展，并不适用于所有应用程序。 本文假设读者非常熟悉 [Azure Functions](../functions-overview.md) 中的概念，以及无服务器应用程序开发的难题。
 
 ## <a name="patterns"></a>模式
 
-本部分介绍一些常见的应用程序模式，Durable Functions 可能非常有用。
+本部分介绍一些可以使用 Durable Functions 的常见应用程序模式。
 
 ### <a name="chaining"></a>模式 #1：函数链
 
-在函数中链接模式，一系列函数按特定顺序执行。 在此模式下，一个函数的输出应用到另一个函数的输入。
+在函数链模式中，会按特定的顺序执行一系列函数。 在此模式中，一个函数的输出将应用到另一函数的输入。
 
-![函数链模式的关系图](./media/durable-functions-concepts/function-chaining.png)
+![函数链模式的示意图](./media/durable-functions-concepts/function-chaining.png)
 
-Durable Functions 可用于实现函数链接模式用于简明地，在下面的示例所示：
+可以使用 Durable Functions 精简实现函数链模式，如以下示例所示：
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -58,7 +58,7 @@ public static async Task<object> Run(DurableOrchestrationContext context)
 ```
 
 > [!NOTE]
-> 有细微差异中编写预编译的持久函数C#中编写预编译的持久函数和C#示例中所示的脚本。 在C#预编译的函数，持久参数必须使用各自的属性进行修饰。 例如，`[OrchestrationTrigger]`属性`DurableOrchestrationContext`参数。 在C#预编译的持久函数，如果参数不正确进行修饰，运行时不能将变量注入到函数，并出现错误。 有关更多示例，请参阅[GitHub 上的 azure functions durable 扩展示例](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)。
+> 使用 C# 编写预编译的持久函数，与使用本示例中所示的 C# 脚本编写预编译的持久函数存在细微的差别。 在 C# 预编译函数中，必须使用相应的属性来修饰持久参数。 例如，使用 `[OrchestrationTrigger]` 属性修饰 `DurableOrchestrationContext` 参数。 在 C# 预编译持久函数中，如果未正确修饰参数，则运行时无法将变量注入该函数，并且会出现错误。 有关更多示例，请参阅 [GitHub 上的 azure-functions-durable-extension 示例](https://github.com/Azure/azure-functions-durable-extension/blob/master/samples)。
 
 #### <a name="javascript-functions-2x-only"></a>JavaScript（仅限 Functions 2.x）
 
@@ -73,22 +73,22 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-在此示例中，值`F1`， `F2`， `F3`，和`F4`是函数应用中的其他函数的名称。 可以通过使用常规命令性编码构造实现控制流。 向下，从顶部执行代码。 代码可能涉及现有语言控制流的语义，如条件语句和循环。 可以包含错误处理中的逻辑`try` / `catch` / `finally`块。
+在此示例中，值 `F1`、`F2`、`F3` 和 `F4` 是函数应用中其他函数的名称。 可以使用一般命令性编码构造来实现控制流。 代码按从上到下的顺序执行。 代码可能涉及现有的语言控制流语义，例如条件语句和循环语句。 可在 `try`/`catch`/`finally` 块中包含错误处理逻辑。
 
-可以使用`context`参数[DurableOrchestrationContext] \(.NET\)和`context.df`要按名称调用其他函数、 传递参数，并返回函数的对象 (JavaScript)输出。 每次该代码调用`await`(C#) 或`yield`(JavaScript)，Durable Functions 框架检查点的当前函数实例的进度。 如果 VM 的进程回收在执行中途，函数实例恢复从前面`await`或`yield`调用。 有关详细信息，请参阅下一部分中，模式 #2:风扇出/扇入。
+可以使用 `context` 参数 [DurableOrchestrationContext] \(.NET\) 和 `context.df` 对象 (JavaScript) 按名称调用其他函数、传递参数并返回函数输出。 每当代码调用 `await` (C#) 或 `yield` (JavaScript) 时，Durable Functions 框架都会对当前函数实例的进度执行检查点操作。 如果在执行中途回收进程或 VM，则函数实例从上一个 `await` 或 `yield` 调用继续执行。 有关详细信息，请参阅下一部分“模式 #2：扇出/扇入”。
 
 > [!NOTE]
-> `context`中 JavaScript 对象表示整个[函数上下文](../functions-reference-node.md#context-object)，不仅[DurableOrchestrationContext]参数。
+> JavaScript 中的 `context` 对象表示整个[函数上下文](../functions-reference-node.md#context-object)，而不仅仅表示 [DurableOrchestrationContext] 参数。
 
-### <a name="fan-in-out"></a>模式 #2：风扇出/扇入
+### <a name="fan-in-out"></a>模式 #2：扇出/扇入
 
-在风扇出/扇入模式，并行执行多个函数，然后等待所有的函数完成。 通常情况下，从函数返回的结果完成一些聚合操作。
+在扇出/扇入模式中，可以并行执行多个函数，然后等待所有函数完成。 通常会对这些函数返回的结果执行一些聚合操作。
 
-![风扇的关系图扩展/风扇模式](./media/durable-functions-concepts/fan-out-fan-in.png)
+![扇出/扇入模式的示意图](./media/durable-functions-concepts/fan-out-fan-in.png)
 
-对于普通函数，您可以分散通过使函数向队列发送多条消息。 扇入回来则困难得多。 若要在中，展开在普通函数中，您编写代码来跟踪时队列触发的函数结束时，以及然后存储函数输出。 
+对于一般函数，可通过使函数向某个队列发送多条消息来完成扇出。 扇入回来的难度要大得多。 若要扇入，可在一般函数中编写代码，以跟踪队列触发的函数何时结束，然后存储函数输出。 
 
-Durable Functions 扩展处理相对简单的代码使用此模式：
+Durable Functions 扩展使用相对简单的代码处理此模式：
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -135,19 +135,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-扇出操作会分发到多个实例`F2`函数。 通过使用动态任务列表跟踪工作。 .NET `Task.WhenAll` API 或 JavaScript `context.df.Task.all` API 调用时，要等待的所有调用的函数来完成。 然后，将`F2`函数输出从动态任务列表聚合和传递给`F3`函数。
+扇出操作将分散到 `F2` 函数的多个实例。 使用动态任务列表跟踪这些操作。 调用 .NET `Task.WhenAll` API 或 JavaScript `context.df.Task.all` API 等待所有调用的函数完成。 然后，从动态任务列表聚合 `F2` 函数输出，并将这些输出传递给 `F3` 函数。
 
-在进行自动检查点`await`或`yield`上调用`Task.WhenAll`或`context.df.Task.all`确保潜在正好崩溃或重新启动不需要重启已完成的任务。
+在针对 `Task.WhenAll` 或 `context.df.Task.all` 调用 `await` 或 `yield` 时自动执行的检查点操作确保中途可能出现的任何崩溃或重新启动无需重启已完成的任务。
 
 ### <a name="async-http"></a>模式 #3：异步 HTTP API
 
-异步 HTTP Api 模式解决了的协调与外部客户端长时间运行操作的状态的问题。 若要实现此模式的常用方法是通过 HTTP 调用触发长时间运行操作。 然后，将客户端重定向到的客户端轮询若要了解完成该操作后状态终结点。
+异步 HTTP API 模式可解决使用外部客户端协调长时间运行的操作状态时出现的问题。 实现此模式的一种常用方式是让 HTTP 调用触发长时间运行的操作。 然后，将客户端重定向到某个状态终结点，客户端可轮询该终结点，以了解操作是何时完成的。
 
-![HTTP API 模式的关系图](./media/durable-functions-concepts/async-http-api.png)
+![HTTP API 模式的示意图](./media/durable-functions-concepts/async-http-api.png)
 
-Durable Functions 提供内置 Api，可简化为与长时间运行的函数执行进行交互而编写的代码。 Durable Functions 快速入门示例 ([ C# ](durable-functions-create-first-csharp.md)并[JavaScript](quickstart-js-vscode.md)) 显示可用于启动新业务流程协调程序函数实例的简单 REST 命令。 实例启动后，扩展会公开 webhook HTTP Api，查询业务流程协调程序函数状态。 
+Durable Functions 提供内置 API，用于简化为与长时间运行的函数执行进行交互而编写的代码。 Durable Functions 快速入门示例（[C#](durable-functions-create-first-csharp.md) 和 [JavaScript](quickstart-js-vscode.md)）演示了可用于启动新业务流程协调程序函数实例的简单 REST 命令。 启动实例后，该扩展会公开 Webhook HTTP API 用于查询业务流程协调程序函数的状态。 
 
-下面的示例显示了 REST 命令启动业务流程协调程序和查询其状态。 为清楚起见，实例中省略了某些细节。
+以下示例演示用于启动业务流程协调程序和查询其状态的 REST 命令。 为清楚起见，实例中省略了某些细节。
 
 ```
 > curl -X POST https://myfunc.azurewebsites.net/orchestrators/DoWork -H "Content-Length: 0" -i
@@ -172,11 +172,11 @@ Content-Type: application/json
 {"runtimeStatus":"Completed","lastUpdatedTime":"2017-03-16T21:20:57Z", ...}
 ```
 
-由于 Durable Functions 运行时管理状态，不需要实现自己的状态跟踪机制。
+因为 Durable Functions 运行时会管理状态，因此你无需实现自己的状态跟踪机制。
 
-Durable Functions 扩展拥有内置管理长时间运行的业务流程的 webhook。 通过使用你自己的函数触发器 （如 HTTP、 队列或 Azure 事件中心） 实现此模式和`orchestrationClient`绑定。 例如，可能会使用队列消息触发终止。 或者，可能会使用受 Azure Active Directory 身份验证策略而不是使用生成的密钥进行身份验证的内置 webhook 的 HTTP 触发器。
+Durable Functions 扩展提供内置的 Webhook 用于管理长时间运行的业务流程。 你可以使用自己的函数触发器（例如 HTTP、队列或 Azure 事件中心）和 `orchestrationClient` 绑定来自行实现此模式。 例如，可以使用队列消息触发终止。 或者，可以使用受 Azure Active Directory 身份验证策略保护的 HTTP 触发器，而不是使用利用生成的密钥进行身份验证的内置 Webhook。
 
-下面是如何使用 HTTP API 模式的一些示例：
+以下示例演示如何使用 HTTP API 模式：
 
 #### <a name="c"></a>C#
 
@@ -220,23 +220,23 @@ module.exports = async function (context, req) {
 ```
 
 > [!WARNING]
-> 当你在本地开发在 JavaScript 中，若要使用方法`DurableOrchestrationClient`，您必须设置环境变量`WEBSITE_HOSTNAME`到`localhost:<port>`(例如， `localhost:7071`)。 有关此要求的详细信息，请参阅[GitHub 问题 28](https://github.com/Azure/azure-functions-durable-js/issues/28)。
+> 在 JavaScript 中进行本地开发时，若要使用 `DurableOrchestrationClient` 中的方法，必须将环境变量 `WEBSITE_HOSTNAME` 设置为 `localhost:<port>`（例如 `localhost:7071`）。 有关此项要求的详细信息，请参阅 [GitHub 问题 28](https://github.com/Azure/azure-functions-durable-js/issues/28)。
 
-在 .NET 中，[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 在 JavaScript 中，此对象是通过调用 `df.getClient(context)` 返回的。 这些对象提供了可用于启动、 发送到事件、 终止和查询新的或现有业务流程协调程序函数实例的方法。
+在 .NET 中，[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter` 参数是 `orchestrationClient` 输出绑定中的值，该绑定是 Durable Functions 扩展的一部分。 在 JavaScript 中，此对象是通过调用 `df.getClient(context)` 返回的。 这些对象提供了可用于启动、向其发送事件、终止和查询新的或现有的业务流程协调程序函数实例的方法。
 
-在上述示例中，HTTP 触发的函数采用`functionName`从传入 URL 的值，并传递到[StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 [CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_)然后绑定 API 返回响应，其中包含`Location`标头和有关实例的其他信息。 若要查找已启动实例的状态或终止该实例，可以更高版本使用的信息。
+在前面的示例中，HTTP 触发的函数采用传入的 URL 中的 `functionName` 值，并将该值传递给 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_)。 然后，[CreateCheckStatusResponse](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_CreateCheckStatusResponse_System_Net_Http_HttpRequestMessage_System_String_) 绑定 API 返回包含 `Location` 标头和有关实例的其他信息的响应。 稍后可以使用这些信息来查找已启动实例的状态或终止实例。
 
 ### <a name="monitoring"></a>模式 #4：监视
 
-监视模式是一个灵活、 重复的过程，在工作流中。 示例轮询，直到满足特定条件。 可以使用正则表达式[计时器触发器](../functions-bindings-timer.md)解决基本方案，例如，定期清理作业，但其时间间隔是静态的管理实例生存期会变得复杂。 Durable Functions 可用于创建灵活的重复间隔、 任务生存期管理和从单个业务流程创建多个监视器进程。
+监视模式是指工作流中某个灵活的重复性过程。 例如，不断轮询，直到满足特定的条件为止。 可以使用常规[计时器触发器](../functions-bindings-timer.md)解决简单方案（例如定期清理作业），但该方案的间隔是静态的，并且管理实例生存期会变得复杂。 可以使用 Durable Functions 创建灵活的重复间隔、管理任务生存期，以及从单个业务流程创建多个监视过程。
 
-监视模式的示例是反向早期异步 HTTP API 方案。 而不是公开外部客户端监视长时间运行操作的终结点，长时间运行的监视器使用外部终结点，并随后等待状态更改。
+监视模式的一个例子是反转前面所述的异步 HTTP API 方案。 监视模式不会公开终结点供外部客户端监视长时间运行的操作，而是让长时间运行的监视器使用外部终结点，然后等待某个状态发生更改。
 
-![监视模式的关系图](./media/durable-functions-concepts/monitor.png)
+![监视模式的示意图](./media/durable-functions-concepts/monitor.png)
 
-在几行代码，您可以使用 Durable Functions 创建观察任意终结点的多个监视器。 监视器可以结束执行时满足条件，或[DurableOrchestrationClient](durable-functions-instance-management.md)可以终止监视器。 您可以更改监视器的`wait`间隔基于特定条件 （例如，指数退避算法。） 
+只需编写少量的代码行，即可使用 Durable Functions 创建多个监视器来观察任意终结点。 满足某个条件时，监视器可以结束执行；或者，[DurableOrchestrationClient](durable-functions-instance-management.md) 可以终止监视器。 可以根据特定的条件（例如指数退避）更改监视器的 `wait` 间隔。 
 
-下面的代码实现基本的监视器：
+以下代码实现一个基本的监视器：
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -294,19 +294,19 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器控件轮询间隔。 然后，可以执行更多的工作，或者可以结束业务流程。 当`context.CurrentUtcDateTime`(.NET) 或`context.df.currentUtcDateTime`(JavaScript) 超出了`expiryTime`值，监视结束。
+收到请求时，会为该作业 ID 创建新的业务流程实例。 该实例会一直轮询状态，直到满足条件退出循环。 持久计时器控制轮询间隔。 然后可以执行其他操作，或者可以结束业务流程。 当 `context.CurrentUtcDateTime` (.NET) 或 `context.df.currentUtcDateTime` (JavaScript) 超出 `expiryTime` 值时，监视器将会终止。
 
 ### <a name="human"></a>模式 #5：人机交互
 
-许多自动化的过程均涉及某种类型的人机交互。 让自动化过程中的人是比较棘手，因为人们不是为高可用和云服务一样的响应速度。 自动化的过程可能会允许为此，通过使用超时和补偿逻辑。
+许多自动化过程涉及到某种人机交互。 自动化过程中涉及的人机交互非常棘手，因为人的可用性和响应能力不如云服务那样高。 自动化过程可以使用超时和补偿逻辑来实现此目的。
 
-审批流程是业务流程涉及人机交互的示例。 经理进行审批可能需要超过特定金额的费用报表。 如果该管理器 （也许 manager 去度假） 的 72 小时内未批准费用报表，则上报过程启动若要从其他人 （可能是经理的经理） 获取的批准。
+审批过程就是涉及到人机交互的业务过程的一个例子。 经理进行审批可能需要超过特定金额的费用报表。 如果经理未在 72 小时内审批该开支报表（经理可能正在度假），则会启动上报过程，让其他某人（可能是经理的经理）审批。
 
-![人机交互模式的关系图](./media/durable-functions-concepts/approval.png)
+![人机交互模式的示意图](./media/durable-functions-concepts/approval.png)
 
-通过使用业务流程协调程序函数，可以在此示例中实现该模式。 使用业务流程协调程序[持久计时器](durable-functions-timers.md)到审批请求。 如果发生超时，他们会上报业务流程协调程序。 业务流程协调程序等待[外部事件](durable-functions-external-events.md)，如生成的人机交互的通知。
+在此示例中，可以使用业务流程协调程序函数实现该模式。 业务流程协调程序使用[持久计时器](durable-functions-timers.md)请求审批。 如果发生超时，业务流程协调程序会将事务上报。 业务流程协调程序等待发生某个[外部事件](durable-functions-external-events.md)，例如，人机交互生成的通知。
 
-这些示例创建一个审批过程进行演示的人机交互模式：
+这些示例创建一个审批过程来演示人机交互模式：
 
 #### <a name="c-script"></a>C# 脚本
 
@@ -355,9 +355,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-若要创建持久计时器，请调用`context.CreateTimer`(.NET) 或`context.df.createTimer`(JavaScript)。 通知由 `context.WaitForExternalEvent` (.NET) 或 `context.df.waitForExternalEvent` (JavaScript) 接收。 然后， `Task.WhenAny` (.NET) 或`context.df.Task.any`(JavaScript) 调用以确定是上报 （首先发生超时） 还是处理审批 （超时前收到审批）。
+若要创建持久计时器，请调用 `context.CreateTimer` (.NET) 或 `context.df.createTimer` (JavaScript)。 通知由 `context.WaitForExternalEvent` (.NET) 或 `context.df.waitForExternalEvent` (JavaScript) 接收。 然后，调用 `Task.WhenAny` (.NET) 或 `context.df.Task.any` (JavaScript) 来确定是上报（首先发生超时）还是处理审批（超时前收到审批）。
 
-外部客户端可以将事件通知传递到等待业务流程协调程序函数通过使用[内置 HTTP Api](durable-functions-http-api.md#raise-event)或使用[DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_)中的 API另一个函数：
+外部客户端可以使用[内置 HTTP API](durable-functions-http-api.md#raise-event) 或通过另一个函数使用 [DurableOrchestrationClient.RaiseEventAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_RaiseEventAsync_System_String_System_String_System_Object_) API 将事件通知传递给正在等待的业务流程协调程序函数：
 
 ```csharp
 public static async Task Run(string instanceId, DurableOrchestrationClient client)
@@ -379,23 +379,23 @@ module.exports = async function (context) {
 
 ## <a name="the-technology"></a>技术
 
-在后台，Durable Functions 扩展构建的[Durable Task Framework](https://github.com/Azure/durabletask)，用于生成持久任务业务流程的 GitHub 上的开放源代码库。 Azure Functions 是 Azure WebJobs 的无服务器演进，Durable Functions 也是 Durable Task Framework 的无服务器演进。 Microsoft 和其他组织使用 Durable Task Framework 大量自动执行关键任务的过程。 它天生就很适合无服务器 Azure Functions 环境。
+在幕后，Durable Functions 扩展构建在 [Durable Task Framework](https://github.com/Azure/durabletask)（GitHub 上的用于生成持久任务业务流程的开源库）的基础之上。 如同 Azure Functions 是 Azure WebJobs 的无服务器演进一样，Durable Functions 是 Durable Task Framework 的无服务器演进。 Microsoft 和其他组织广泛使用 Durable Task Framework 来自动处理任务关键型过程。 它天生就很适合无服务器 Azure Functions 环境。
 
 ### <a name="event-sourcing-checkpointing-and-replay"></a>事件溯源、检查点和重播
 
-业务流程协调程序函数通过使用可靠地维护其执行状态[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)设计模式。 而不是直接存储业务流程的当前状态，Durable Functions 扩展使用只追加存储来记录函数业务流程获取的操作的完整系列。 仅限追加存储具有与"转储"完整的运行时状态相比的诸多优点。 优点包括更高的性能、 可伸缩性和响应能力。 您还获得最终一致性事务数据和完整审核记录和历史记录。 审核跟踪支持可靠的补偿操作。
+业务流程协调程序函数通过使用可靠地维护其执行状态[事件溯源](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing)设计模式。 Durable Functions 扩展使用仅限追加的存储来记录函数业务流程执行的一系列完整操作，而不是直接存储业务流程的当前状态。 与“转储”完整的运行时状态相比，仅限追加的存储具有诸多优势。 优势包括提升性能、可伸缩性和响应能力。 此外，还可以确保事务数据的最终一致性，保持完整的审核线索和历史记录。 审核线索支持可靠的补偿操作。
 
-Durable Functions 使用事件溯源以透明方式。 在后台`await`(C#) 或`yield`中的业务流程协调程序函数 (JavaScript) 运算符将业务流程协调程序线程的控制权返还给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作将追加到业务流程实例的执行历史记录。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 
+Durable Functions 以透明方式使用事件溯源。 在幕后，业务流程协调程序函数中的 `await` (C#) 或 `yield` (JavaScript) 运算符将对业务流程协调程序线程的控制权让回给 Durable Task Framework 调度程序。 然后，该调度程序向存储提交业务流程协调程序函数计划的任何新操作（如调用一个或多个子函数或计划持久计时器）。 透明的提交操作会追加到业务流程实例的执行历史记录中。 历史记录存储在存储表中。 然后，提交操作向队列添加消息，以计划实际工作。 此时，可从内存中卸载业务流程协调程序函数。 
 
 如果使用 Azure Functions 消耗计划会停止业务流程协调程序函数的计费。 当没有更多工作要做，函数会重新启动，并且其状态并重新构造。
 
-业务流程函数时提供更多工作要做 （例如，接收到响应消息或持久计时器已过期），业务流程协调程序唤醒并重新执行整个函数从开始到重新生成本地状态。 
+如果业务流程函数需要执行其他工作（例如，收到响应消息或持久计时器过期），业务流程协调程序将唤醒并从头开始重新执行整个函数，以重新生成本地状态。 
 
-重播，如果该代码尝试调用的函数 (或执行任何其他异步工作)，Durable Task Framework 会查询当前业务流程的执行历史记录。 如果它发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并生成一个结果，则它将重播该函数的结果和业务流程协调程序代码继续运行。 重播将继续完成函数代码或等到计划新的异步工作。
+在重放期间，如果代码尝试调用某个函数（或执行任何其他异步工作），Durable Task Framework 会查询当前业务流程的执行历史记录。 如果该扩展发现[活动函数](durable-functions-types-features-overview.md#activity-functions)已执行并已生成某种结果，则会重放该函数的结果，并且业务流程协调程序代码会继续运行。 在函数代码完成或计划了新的异步工作之前，重放会一直继续。
 
 ### <a name="orchestrator-code-constraints"></a>业务流程协调程序代码约束
 
-业务流程协调程序代码的重播行为创建约束的类型可以在业务流程协调程序函数中编写的代码。 例如，业务流程协调程序代码必须具有确定性因为它将被重播多次，并且它必须每次生成相同的结果。 有关约束的完整列表，请参阅[业务流程协调程序代码约束](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)。
+业务流程协调程序代码的重放行为针对可在业务流程协调程序函数中编写的代码类型创建约束。 例如，业务流程协调程序代码必须具有确定性，因为该代码将重放多次，每次必须生成相同的结果。 有关约束的完整列表，请参阅[业务流程协调程序代码约束](durable-functions-checkpointing-and-replay.md#orchestrator-code-constraints)。
 
 ## <a name="monitoring-and-diagnostics"></a>监视和诊断
 
@@ -413,30 +413,30 @@ Durable Functions 扩展可自动生成为结构化的跟踪数据[Application I
 
 ## <a name="storage-and-scalability"></a>存储和可伸缩性
 
-Durable Functions 扩展使用队列、 表和 blob 在 Azure 存储中保存执行历史记录状态和触发函数执行。 可用于 function app 的默认存储帐户，或者可以配置单独的存储帐户。 您可能希望基于存储吞吐量限制的单独帐户。 您编写的业务流程协调程序代码不会与这些存储帐户中的实体进行交互。 Durable Task Framework 直接作为实现详细信息，用于管理实体。
+Durable Functions 扩展使用 Azure 存储中的队列、表和 Blob 来持久保存执行历史记录状态和触发函数执行。 可以使用函数应用的默认存储帐户，也可以配置单独的存储帐户。 由于存储吞吐量存在限制，你可能需要配置单独的帐户。 编写的业务流程协调程序代码不会与这些存储帐户中的实体进行交互。 Durable Task Framework 直接将实体作为实现详细信息进行管理。
 
-业务流程协调程序函数通过内部队列消息计划活动函数和接收这些函数的响应。 当函数应用在 Azure Functions 消耗计划中，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-plan-works)监视这些队列。 根据需要添加了新的计算实例。 如果扩大到多个 Vm，业务流程协调程序函数可能运行在一个 VM，同时业务流程协调程序函数调用可能在许多不同的 Vm 运行的活动函数上。 Durable Functions 的缩放行为的详细信息，请参阅[性能和规模](durable-functions-perf-and-scale.md)。
+业务流程协调程序函数通过内部队列消息计划活动函数和接收这些函数的响应。 当函数应用在 Azure Functions 消耗计划中，在运行时[Azure Functions 缩放控制器](../functions-scale.md#how-the-consumption-and-premium-plans-work)监视这些队列。 根据需要添加了新的计算实例。 横向扩展到多个 VM 后，业务流程协调程序函数可在一个 VM 上运行，它调用的活动函数可在多个不同的 VM 上运行。 有关 Durable Functions 的缩放行为的详细信息，请参阅[性能和缩放](durable-functions-perf-and-scale.md)。
 
-业务流程协调程序帐户的执行历史记录存储在表存储。 只要在特定 VM 上解除冻结实例，业务流程协调程序会从表存储中提取的执行历史记录以便它可以重新生成其本地状态。 历史记录表存储中提供的方便方面是，可以使用像这样的工具[Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)若要查看您的业务流程的历史记录。
+业务流程协调程序帐户的执行历史记录存储在表存储中。 每当某个实例在特定的 VM 上解冻时，业务流程协调程序会从表存储中获取该实例的执行历史记录，以便可以重新生成其本地状态。 在表存储中获取历史记录所带来的一项便利是，可以使用 [Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)等工具查看业务流程的历史记录。
 
-存储 blob 主要用作租用机制来协调跨多个 Vm 的业务流程实例的扩展。 存储 blob 保存数据的大无法直接在表或队列中存储的消息。
+存储 Blob 主要用作一种租用机制，用于协调跨多个 VM 的业务流程实例的横向扩展。 存储 Blob 可以保存无法直接存储在表或队列中的大型消息的数据。
 
 ![Azure 存储资源管理器的屏幕截图](./media/durable-functions-concepts/storage-explorer.png)
 
 > [!WARNING]
-> 虽然很简单且方便地查看表存储中的执行历史记录，但不要对此表进行任何依赖项。 随着 Durable Functions 扩展的发展，可能会更改的表。
+> 尽管可以在表存储中轻松查看执行历史记录，但请不要对此表有任何依赖。 该表可能会随着 Durable Functions 扩展的演变而发生变化。
 
 ## <a name="known-issues"></a>已知问题
 
-应在 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues)列表中跟踪所有已知问题。 如果遇到问题，并在 GitHub 中找不到此问题，请打开一个新问题。 包含问题的详细的说明。
+应在 [GitHub 问题](https://github.com/Azure/azure-functions-durable-extension/issues)列表中跟踪所有已知问题。 如果遇到 GitHub 中未列出的问题，请提出新的问题。 请详细描述问题。
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Durable Functions 的详细信息，请参阅[Durable Functions 函数类型和功能](durable-functions-types-features-overview.md)。 
+若要详细了解 Durable Functions，请参阅 [Durable Functions 函数类型和功能](durable-functions-types-features-overview.md)。 
 
 开始操作：
 
 > [!div class="nextstepaction"]
-> [创建第一个 Durable Function](durable-functions-create-first-csharp.md)
+> [创建第一个持久函数](durable-functions-create-first-csharp.md)
 
 [DurableOrchestrationContext]: https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html

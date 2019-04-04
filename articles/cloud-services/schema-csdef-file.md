@@ -13,15 +13,15 @@ caps.latest.revision: 42
 author: jpconnock
 ms.author: jeconnoc
 manager: timlt
-ms.openlocfilehash: 5f1084090561d3233d0587cf426581ab6ef0ab94
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532994"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918495"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure 云服务定义架构（.csdef 文件）
-服务定义文件定义应用程序的服务模型。 该文件包含可供云服务使用的角色的定义，指定服务终结点，并建立服务的配置设置。 配置设置值是在服务配置文件中设置的，如[云服务（经典）配置架构](https://msdn.microsoft.com/library/b1ae68cd-cc95-48cb-a4a4-da91dc708a35)所述。
+服务定义文件定义应用程序的服务模型。 该文件包含可供云服务使用的角色的定义，指定服务终结点，并建立服务的配置设置。 配置设置值是在服务配置文件中设置的，如[云服务（经典）配置架构](/previous-versions/azure/reference/ee758710(v=azure.100))所述。
 
 默认情况下，Azure 诊断配置架构文件将安装到 `C:\Program Files\Microsoft SDKs\Windows Azure\.NET SDK\<version>\schemas` 目录。 将 `<version>` 替换为 [Azure SDK](https://www.windowsazure.com/develop/downloads/) 的已安装版本。
 
@@ -59,7 +59,7 @@ ms.locfileid: "57532994"
 
 - [LoadBalancerProbe 架构](schema-csdef-loadbalancerprobe.md)
 - [WebRole 架构](schema-csdef-webrole.md)
-- [WebRole 架构](schema-csdef-workerrole.md)
+- [WorkerRole 架构](schema-csdef-workerrole.md)
 - [NetworkTrafficRules 架构](schema-csdef-networktrafficrules.md)
 
 ##  <a name="ServiceDefinition"></a> ServiceDefinition 元素

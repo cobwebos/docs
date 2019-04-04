@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: ec3952f2bb0b4180f5c72d948d1835a903152f0d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a2e2a3d817140a6ab15dab0093b4025a3bfd76c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181820"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916645"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>常见的云服务启动任务
 本文提供了一些可能需要在云服务中执行的常见启动任务示例。 在角色启动之前，可以使用启动任务执行操作。 可能需要执行的操作包括安装组件、注册 COM 组件、设置注册表项或启动长时间运行的进程。 
@@ -68,12 +68,12 @@ ms.locfileid: "58181820"
 
 比较明智的做法通常是在调用 AppCmd.exe 之后检查 **errorlevel**，如果使用 .cmd 文件包装对 AppCmd.exe 的调用，则很容易做到这一点。 如果检测到已知的 **errorlevel** 响应，可以将其忽略，否则将其返回。
 
-*AppCmd.exe* 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](https://msdn.microsoft.com/library/windows/desktop/ms681382.aspx) 上看到。
+*AppCmd.exe* 返回的 errorlevel 在 winerror.h 文件中列出，并且还可以在 [MSDN](/windows/desktop/Debug/system-error-codes--0-499-) 上看到。
 
 ### <a name="example-of-managing-the-error-level"></a>管理错误级别的示例
 此示例将 JSON 的压缩节和压缩条目添加到 Web.config 文件，其中包含错误处理和日志记录。
 
-此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](https://msdn.microsoft.com/library/azure/gg557552.aspx#Task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 *Web.config* 文件中的设置：
+此处显示了 [ServiceDefinition.csdef] 文件的相关节，其中包括将 [executionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#Task) 属性设为 `elevated` 以为 AppCmd.exe 提供足够的权限来更改 *Web.config* 文件中的设置：
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -293,7 +293,7 @@ REM   Exit the batch file with ERRORLEVEL 0.
 EXIT /b 0
 ```
 
-可以从 Azure SDK 中使用 [GetLocalResource](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getlocalresource.aspx) 方法访问本地存储文件夹。
+可以从 Azure SDK 中使用 [GetLocalResource](/previous-versions/azure/reference/ee772845(v=azure.100)) 方法访问本地存储文件夹。
 
 ```csharp
 string localStoragePath = Microsoft.WindowsAzure.ServiceRuntime.RoleEnvironment.GetLocalResource("StartupLocalStorage").RootPath;
@@ -401,7 +401,7 @@ ServiceDefinition.cmd：
 </Startup>
 ```
 
-**logwrap.cmd：**
+**logwrap.cmd:**
 
 ```cmd
 @ECHO OFF
@@ -435,7 +435,7 @@ IF %ERRORLEVEL% EQU 0 (
 )
 ```
 
-**Startup2.cmd：**
+**Startup2.cmd:**
 
 ```cmd
 @ECHO OFF
@@ -514,7 +514,7 @@ EXIT %ERRORLEVEL%
 [变量]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx
-[EndPoints]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
+[终结点]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Endpoints
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue

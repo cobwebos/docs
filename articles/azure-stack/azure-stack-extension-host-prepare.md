@@ -11,12 +11,12 @@ ms.service: azure-stack
 ms.reviewer: thoroet
 manager: femila
 ms.lastreviewed: 03/07/2019
-ms.openlocfilehash: 47cc7d9f09b7fb22cf99ad010f1dc75e6388c314
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 23cc0f03c41801de944eb9938d4cd15896d1745e
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731924"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482175"
 ---
 # <a name="prepare-for-extension-host-for-azure-stack"></a>为 Azure Stack 准备扩展主机
 
@@ -47,13 +47,13 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 1. 使用提升的权限在硬件生命周期主机或 Azure Stack 管理工作站上打开 PowerShell。
 2. 运行以下 cmdlet 来安装 Azure Stack 就绪性检查器工具。
 
-    ```PowerShell  
+    ```powershell  
     Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
 3. 运行以下脚本来创建必需的文件夹结构：
 
-    ```PowerShell  
+    ```powershell  
     New-Item C:\Certificates -ItemType Directory
 
     $directories = 'ACSBlob','ACSQueue','ACSTable','Admin Portal','ARM Admin','ARM Public','KeyVault','KeyVaultInternal','Public Portal', 'Admin extension host', 'Public extension host'
@@ -69,7 +69,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 4. 将当前使用 Azure Stack 中，现有证书放在相应的目录。 例如，将放**管理员 ARM**中的证书`Arm Admin`文件夹。 然后将新创建的托管证书放`Admin extension host`和`Public extension host`目录。
 5. 运行以下 cmdlet，以启动证书检查：
 
-    ```PowerShell  
+    ```powershell  
     $pfxPassword = Read-Host -Prompt "Enter PFX Password" -AsSecureString 
 
     Start-AzsReadinessChecker -CertificatePath c:\certificates -pfxPassword $pfxPassword -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
@@ -86,7 +86,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 2. 打开 PowerShell ISE 以执行接下来的脚本块
 3. 导入用于管理托管终结点的证书。
 
-    ```PowerShell  
+    ```powershell  
 
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
@@ -104,7 +104,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
     }
     ```
 4. 导入用于托管终结点的证书。
-    ```PowerShell  
+    ```powershell  
     $CertPassword = read-host -AsSecureString -prompt "Certificate Password"
 
     $CloudAdminCred = Get-Credential -UserName <Privileged endpoint credentials> -Message "Enter the cloud domain credentials to access the privileged endpoint."
@@ -142,7 +142,7 @@ Azure Stack 就绪性检查器工具能够为两个新的必需 SSL 证书创建
 
 需要通过防火墙发布两个新的终结点。 可以使用下面的代码必须从 Azure Stack 运行检索从公共 VIP 池已分配的 Ip[环境的特权终结点](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint)。
 
-```PowerShell
+```powershell
 # Create a PEP Session
 winrm s winrm/config/client '@{TrustedHosts= "<IpOfERCSMachine>"}'
 $PEPCreds = Get-Credential
@@ -173,7 +173,7 @@ Remove-PSSession -Session $PEPSession
 
 #### <a name="sample-output"></a>示例输出
 
-```PowerShell
+```powershell
 Can access AZS DNS
 The IP for the Admin Extension Host is: *.adminhosting.\<region>.\<fqdn> - is: xxx.xxx.xxx.xxx
 The Record to be added in the DNS zone: Type A, Name: *.adminhosting.\<region>.\<fqdn>, Value: xxx.xxx.xxx.xxx

@@ -15,12 +15,12 @@ ms.date: 03/15/2019
 ms.author: mabrigg
 ms.reviewer: thoroet
 ms.lastreviewed: 01/24/2019
-ms.openlocfilehash: a0411e3aa8f4df1039a129fd73ebdad5a58c5a0c
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: daf30098888a0d7779ccff4d4c6c2ce6390511fe
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257578"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486217"
 ---
 # <a name="connect-to-azure-stack-with-powershell-as-an-operator"></a>以操作员身份使用 PowerShell 连接到 Azure Stack
 
@@ -39,7 +39,7 @@ ms.locfileid: "58257578"
 
 使用 PowerShell 配置 Azure Stack 操作员环境。 运行以下脚本之一：将 Azure Active Directory (Azure AD) tenantName 和 Azure 资源管理器终结点值替换为你自己的环境配置。 <!-- GraphAudience endpoint -->
 
-```PowerShell  
+```powershell  
     # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
 Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
@@ -59,7 +59,7 @@ Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanage
 
 <!-- GraphAudience endpoint -->
 
-  ```PowerShell  
+  ```powershell  
   # Register an Azure Resource Manager environment that targets your Azure Stack instance. Get your Azure Resource Manager endpoint value from your service provider.
   Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanagement.local.azurestack.external"
 
@@ -74,7 +74,7 @@ Add-AzureRMEnvironment -Name "AzureStackAdmin" -ArmEndpoint "https://adminmanage
 
 完成所有设置后，请使用 PowerShell 在 Azure Stack 中创建资源。 例如，可以为应用程序创建资源组并添加虚拟机。 使用以下命令创建名为“MyResourceGroup”的资源组。
 
-```PowerShell  
+```powershell  
 New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ```
 

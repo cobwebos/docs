@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/02/2019
 ms.author: alkohli
-ms.openlocfilehash: 43de22f7e56178559df4fc45980d064962580d2b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: de737f20147e8208dd18388eedcac11583c8cb97
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403385"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891797"
 ---
 # <a name="data-box-edge-security-and-data-protection"></a>数据框边缘安全和数据保护
 
@@ -35,6 +35,7 @@ Azure 数据框边缘解决方案包含四个彼此交互的主要组件：
 
 - 访问数据框边缘/数据框网关服务需要你的组织拥有企业协议 (EA) 或云解决方案提供商 (CSP) 订阅。 有关详细信息，请转到[注册 Azure 订阅](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)！
 - 在 Azure 中托管你的管理服务，因为它受 Azure 安全功能。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
+- 对于 SDK 管理操作，加密密钥是可用于在数据框边缘 / 下的数据框网关资源**设备属性**。 仅当拥有资源的图形 API 的权限，可以查看加密密钥。
 
 ## <a name="data-box-edge-device-protection"></a>数据框边缘设备保护
 
@@ -44,7 +45,8 @@ Azure 数据框边缘解决方案包含四个彼此交互的主要组件：
 - 是始终受到保护的设备密码。
 - 是锁定的设备。 设备 BMC 和 BIOS 是有关 BIOS 的有限用户访问受密码保护。
 - 已启用安全启动。
-- 在运行 Windows Defender Device Guard。 Device Guard，可运行仅受信任的应用程序在你的代码完整性策略中定义。 
+- 在运行 Windows Defender Device Guard。 Device Guard，可运行仅受信任的应用程序在你的代码完整性策略中定义。
+- 有一个键内封面可以用来锁定设备。 我们建议在配置设备之后, 打开封面。 找到项，，然后锁定覆盖到的数据磁盘位于前面设备防止任何未经授权的访问。
 
 ### <a name="protect-the-device-via-activation-key"></a>保护设备通过激活密钥
 

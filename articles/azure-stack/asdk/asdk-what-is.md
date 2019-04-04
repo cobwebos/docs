@@ -17,12 +17,12 @@ ms.date: 02/08/2019
 ms.author: jeffgilb
 ms.reviewer: misainat
 ms.lastreviewed: 02/08/2019
-ms.openlocfilehash: 489ef2c472cb9622e83a04428ec9c5958e5a5003
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
+ms.openlocfilehash: 54eb2ff43a5f36999294b8d0c580bc425ab65b28
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55983366"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629067"
 ---
 # <a name="what-is-the-azure-stack-development-kit"></a>什么是 Azure Stack 开发工具包？
 [Microsoft Azure Stack 集成系统](../azure-stack-poc.md)范围从 4 到 16 节点的大小，由硬件合作伙伴和 Microsoft 共同提供支持。 使用 Azure Stack集成系统为自己的生产工作负荷实现新方案。 如果你是 Azure Stack 操作员，想要管理集成系统基础结构并提供服务，请参阅[操作员文档](https://docs.microsoft.com/azure/azure-stack)。
@@ -49,8 +49,8 @@ ASDK 旨在为以下人员提供 Azure 一致性混合云体验：
 |描述|ASDK|多节点 Azure Stack|
 |-----|-----|-----|
 |**缩放**|所有组件都安装在一个单节点服务器计算机上。|大小范围为 4-16 节点。|
-|**复原能力**|单节点配置不提供高可用性|[高可用性](../azure-stack-key-features.md#high-availability-for-azure-stack)支持功能。|
-|**网络**|ASDK 主机路由所有 ASDK 网络流量。 无其他切换要求。|更复杂[网络路由基础结构](../azure-stack-network.md#network-infrastructure)在多节点部署是必要包括顶部柜顶式 (TOR)、 基板管理控制器 (BMC) 和边界 （数据中心网络） 交换机。|
+|**复原能力**|单节点配置不提供高可用性|支持[高可用性](../azure-stack-overview.md#providing-high-availability)功能。|
+|**网络**|ASDK 主机路由所有 ASDK 网络流量。 无其他切换要求。|需要在多节点部署中使用更复杂的[网络路由基础架构](../azure-stack-network.md#network-infrastructure)，包括架顶 (TOR)、基板管理控制器 (BMC) 和边界（数据中心网络）交换机。|
 |**修补和更新过程**|若要改用新版 ASDK，必须在开发工具包主机上重新部署 ASDK。|[修补和更新](../azure-stack-updates.md)过程用于更新已安装的 Azure Stack 版本。|
 |**支持**|MSDN Azure Stack 论坛。 Microsoft 客户服务和支持 (CSS) 支持不适用于非生产环境。|[MSDN Azure Stack 论坛](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack)和完整的 CSS 支持。|
 | | |

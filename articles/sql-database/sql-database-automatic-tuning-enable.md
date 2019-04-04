@@ -12,24 +12,24 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 30a16c2a8b82ff4b32b95b14937166b94aba06b5
-ms.sourcegitcommit: 235cd1c4f003a7f8459b9761a623f000dd9e50ef
+ms.openlocfilehash: f94d731fd7b9a9fa85ae42d22949c7ca4024aabe
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57726951"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904349"
 ---
 # <a name="enable-automatic-tuning-to-monitor-queries-and-improve-workload-performance"></a>启用自动优化以监视查询并提高工作负荷性能
 
 Azure SQL 数据库是自动托管的数据服务，可持续监视查询并识别可为改善工作负荷性能执行的操作。 可查看建议并手动应用，或让 Azure SQL 数据库自动应用正确的操作 - 这称为“自动优化模式”。
 
-可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](sql-database-automatic-tuning-enable.md#t-sql) 命令在服务器或数据库级别启用自动优化。
+可以通过 [Azure 门户](sql-database-automatic-tuning-enable.md#azure-portal)、[REST API](sql-database-automatic-tuning-enable.md#rest-api) 调用和 [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current) 命令在服务器或数据库级别启用自动优化。
 
 > [!NOTE]
-> 对于托管实例，可以通过配置受支持的选项 FORCE_LAST_GOOD_PLAN [T-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current)仅。 基于配置门户和本文中所述的自动索引优化选项不适用于托管实例。
+> 对于托管实例，可以通过配置受支持的选项 FORCE_LAST_GOOD_PLAN [T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management)仅。 基于配置门户和本文中所述的自动索引优化选项不适用于托管实例。
 
 > [!NOTE]
-> 目前不支持配置通过 ARM （Azure 资源管理器） 模板的自动优化选项。
+> 目前不支持通过 ARM（Azure 资源管理器）模板配置自动优化选项。
 
 ## <a name="enable-automatic-tuning-on-server"></a>对服务器启用自动优化
 

@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 55b4cf6e621bc1e5bd3d8ba4718e5714ea652c27
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 71ba1266c3a6a1f063f1af4ab37a5f29752c62f0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58111474"
+ms.locfileid: "58896153"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference（Azure Functions C# 开发人员参考）
 
@@ -131,7 +131,7 @@ public static class BindingExpressionsExample
 
 生成过程会在生成文件中的一个函数文件夹中创建一个 *function.json* 文件。 如前所述，此文件不应直接编辑。 无法通过编辑此文件来更改绑定配置或禁用函数。 
 
-此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-plan-works)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
+此文件的用途是向缩放控制器提供用于[对消耗计划做出缩放决策](functions-scale.md#how-the-consumption-and-premium-plans-work)的信息。 因此，此文件仅包含触发器信息，不包含输入或输出绑定。
 
 生成的 *function.json* 文件包括一个 `configurationSource` 属性，该属性告诉运行时使用 .NET 属性进行绑定，而不是使用 *function.json* 配置。 下面是一个示例：
 
@@ -274,7 +274,7 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>取消令牌
 
-函数可以接受 [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
+函数可以接受 [CancellationToken](/dotnet/api/system.threading.cancellationtoken) 参数，以使操作系统能够在函数即将终止时通知代码。 可以使用此通知来确保该函数不会意外终止，导致数据处于不一致状态。
 
 下面的示例演示了如何检查即将发生的函数终止。
 
@@ -369,7 +369,7 @@ public static class IBinderExample
 }
 ```
 
-[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) 是支持的输出绑定类型。
+[BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) 定义[存储 blob](functions-bindings-storage-blob.md) 输入或输出绑定，[TextWriter](/dotnet/api/system.io.textwriter) 是支持的输出绑定类型。
 
 ### <a name="multiple-attribute-example"></a>多属性示例
 

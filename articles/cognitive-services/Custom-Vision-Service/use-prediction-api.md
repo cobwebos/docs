@@ -1,5 +1,5 @@
 ---
-title: 示例：使用分类器和预测终结点以编程的方式测试图像 - 自定义视觉
+title: 使用分类器和预测终结点以编程的方式测试图像 - 自定义视觉
 titlesuffix: Azure Cognitive Services
 description: 了解如何借助自定义影像服务分类器使用 API 以编程方式测试图像。
 services: cognitive-services
@@ -8,62 +8,52 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 715fa526c83608c9922315e3a0d89b67b31e0d16
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 78ca1d7ceb9086e0d589f904b24b967d36b079a0
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472713"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895607"
 ---
-#  <a name="use-your-model-with-the-prediction-api"></a>您的模型使用预测 API
+# <a name="use-your-model-with-the-prediction-api"></a>您的模型使用预测 API
 
-训练模型后，可以通过将图像提交到预测 API 来以编程方式测试这些图像。
+已训练模型后，可以通过将它们提交到预测 API 终结点以编程方式测试映像。
 
 > [!NOTE]
-> 本文档演示如何使用 C# 将图像提交到预测 API。 有关 API 用法的详细信息和示例，请参阅[预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
+> 本文档演示如何使用 C# 将图像提交到预测 API。 有关详细信息和示例，请参阅[预测 API 参考](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Prediction_3.0/operations/5c82db60bf6a2b11a8247c15)。
 
 ## <a name="publish-your-trained-iteration"></a>发布已训练的迭代
 
 从[自定义影像服务网页](https://customvision.ai)，选择你的项目，然后选择“性能”选项卡。
 
-若要提交映像分发到预测 API，你将首先需要发布用于预测，这可以通过选择迭代__发布__和指定的名称的已发布的迭代。 这将使您的模型可以预测 api 自定义视觉 Azure 资源的访问。 
+若要提交映像分发到预测 API，你将首先需要发布用于预测，这可以通过选择迭代__发布__和指定的名称的已发布的迭代。 这将使您的模型可以预测 API 自定义视觉 Azure 资源的访问。
 
 ![用红色矩形围绕发布按钮，显示性能选项卡。](./media/use-prediction-api/unpublished-iteration.png)
 
-已成功发布您的模型之后, 你将看到显示在左侧边栏中，以及小版本的说明中已发布的迭代名称迭代旁边的"已发布"标签。
+您的模型已成功发布后，您将看到显示在左侧边栏中，迭代旁边的"已发布"标签且其名称将显示在小版本的说明。
 
 ![显示性能选项卡，用红色矩形围绕的已发布的标签和已发布的迭代的名称。](./media/use-prediction-api/published-iteration.png)
 
 ## <a name="get-the-url-and-prediction-key"></a>获取 URL 和预测密钥
 
-一旦已发布您的模型，可以检索有关使用预测 API，通过选择信息__预测 URL__。 这会打开一个对话框，类似如下所示使用预测 API 的信息包括__预测 URL__并__预测密钥__。
+一旦已发布您的模型，可以通过选择检索所需的信息__预测 URL__。 这会打开一个对话框，其中使用预测 API 的信息包括__预测 URL__并__预测密钥__。
 
 ![性能选项卡显示一个红色矩形围绕预测 URL 按钮。](./media/use-prediction-api/published-iteration-prediction-url.png)
 
 ![性能选项卡显示一个红色矩形周围使用的图像文件和预测密钥值的预测 URL 值。](./media/use-prediction-api/prediction-api-info.png)
 
 > [!TIP]
-> 你__预测键__还可在[Azure 门户](https://portal.azure.com)页上自定义视觉 Azure 资源关联到你的项目，在__密钥__。 
+> 你__预测键__还可在[Azure 门户](https://portal.azure.com)页上自定义视觉 Azure 资源与你的项目，在关联__密钥__边栏选项卡。
 
-从对话框中，应用程序中的复制使用的以下信息：
-
-* __预测 URL__是用于__映像文件__。
-* __预测密钥__值。
+在本指南中，您将使用本地映像，因此，请复制下的 URL**如果您有一个图像文件**到临时位置。 复制相应__预测密钥__值。
 
 ## <a name="create-the-application"></a>创建应用程序
 
-1. 在 Visual Studio 中创建新的 C# 控制台应用程序。
+1. 在 Visual Studio 中，创建一个新C#控制台应用程序。
 
 1. 使用以下代码作为“Program.cs”文件的主体。
-
-    > [!IMPORTANT]
-    > 更改以下信息：
-    >
-    > * 将“命名空间”设置为项目名称。
-    > * 设置__预测键__数值前面的开头的行检索`client.DefaultRequestHeaders.Add("Prediction-Key",`。
-    > * 设置__预测 URL__数值前面的开头的行检索`string url =`。
 
     ```csharp
     using System;
@@ -92,10 +82,10 @@ ms.locfileid: "58472713"
                 var client = new HttpClient();
 
                 // Request headers - replace this example key with your valid Prediction-Key.
-                client.DefaultRequestHeaders.Add("Prediction-Key", "3b9dde6d1ae1453a86bfeb1d945300f2");
+                client.DefaultRequestHeaders.Add("Prediction-Key", "<Your prediction key>");
 
                 // Prediction URL - replace this example URL with your valid Prediction URL.
-                string url = "https://southcentralus.api.cognitive.microsoft.com/customvision/v3.0/Prediction/8622c779-471c-4b6e-842c-67a11deffd7b/classify/iterations/Cats%20vs.%20Dogs%20-%20Published%20Iteration%203/image";
+                string url = "<Your prediction URL>";
 
                 HttpResponseMessage response;
 
@@ -120,9 +110,14 @@ ms.locfileid: "58472713"
     }
     ```
 
-## <a name="use-the-application"></a>使用应用程序
+1. 更改以下信息：
+   * 设置`namespace`字段为你的项目的名称。
+   * 将占位符为`<Your prediction key>`具有前面检索到密钥值。
+   * 将占位符为`<Your prediction URL>`前面检索到的 url。
 
-运行程序时，你将在控制台中的图像文件中输入的路径。 图像提交到预测 API 和预测结果返回为 JSON 文档。 以下 JSON 是响应的示例。
+## <a name="run-the-application"></a>运行应用程序
+
+在运行该应用程序时，系统会提示输入到控制台中的图像文件的路径。 该图像然后提交给预测 API，并预测结果返回为 JSON 格式的字符串。 下面是示例响应。
 
 ```json
 {
@@ -139,14 +134,10 @@ ms.locfileid: "58472713"
 
 ## <a name="next-steps"></a>后续步骤
 
-[导出模型供移动设备使用](export-your-model.md)
+在本指南中，您学习了如何提交映像分发到您的自定义图像分类器/检测器和接收响应时以编程方式使用C#SDK。 接下来，了解如何完成端到端方案使用C#，或开始使用不同的语言 SDK。
 
-[开始使用.NET Sdk](csharp-tutorial.md)
-
-[开始使用 Python Sdk](python-tutorial.md)
-
-[开始使用 Java Sdk](java-tutorial.md)
-
-[开始使用 Node Sdk](node-tutorial.md)
-
-[开始使用 Go Sdk](go-tutorial.md)
+* [快速入门：.NET SDK](csharp-tutorial.md)
+* [快速入门：Python SDK](python-tutorial.md)
+* [快速入门：Java SDK](java-tutorial.md)
+* [快速入门：Node SDK](node-tutorial.md)
+* [快速入门：Go SDK](go-tutorial.md)

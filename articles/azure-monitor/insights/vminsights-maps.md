@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/25/2018
 ms.author: magoedte
-ms.openlocfilehash: 0bf7c335f552fee103118e57239bcd872e880edb
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 34e6ce7f3b38dfd583aa557d2f1d7340ea444da9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984843"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916727"
 ---
 # <a name="using-azure-monitor-for-vms-preview-map-to-understand-application-components"></a>使用用于 VM 的 Azure Monitor（预览版）映射了解应用程序组件
 查看在 Azure 中运行的 Windows 和 Linux 虚拟机上发现的应用程序组件，并且可使用适用于 VM 的 Azure Monitor 通过两种方式观察环境，直接从虚拟机中观察或通过 VM 组在 Azure Monitor 中观察。 
@@ -43,7 +43,7 @@ ms.locfileid: "56984843"
 
 ![“属性面板”窗格中的日志搜索列表](./media/vminsights-maps/properties-pane-logs-01.png)
 
-关闭“日志”*并返回“属性面板”窗格，然后选择“警报”，以查看根据运行状况条件针对 VM 引发的警报。 映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。 
+关闭**日志**并返回到**属性**窗格，然后选择**警报**以查看警报，警报引发从运行状况条件的 VM。 映射与 Azure 警报集成，可显示所选时间范围内所选服务器触发的警报。 如果当前有警报，服务器会显示一个图标，且“计算机警报”窗格会列出警报。 
 
 ![“属性面板”窗格中的计算机警报](./media/vminsights-maps/properties-pane-alerts-01.png)
 

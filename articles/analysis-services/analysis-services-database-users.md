@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: d7ba922d66bf97dbd8173b0d5466a7e55a41f6b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 462625ce61f4538aa0769667648e07cc6307cbb3
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993192"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58891678"
 ---
 # <a name="manage-database-roles-and-users"></a>管理数据库角色和用户
 
@@ -26,7 +26,7 @@ ms.locfileid: "57993192"
 *  进程 - 用户可以连接到数据库并对其执行处理操作，分析模型数据库数据。
 *  读取 - 用户可以使用客户端应用程序连接到模型数据库数据并进行分析。
 
-如果创建表格模型项目，请使用 SSDT 中的角色管理器创建角色并向这些角色添加用户或组。 如果向服务器部署，请使用 SSMS、[Analysis Services PowerShell cmdlet](https://msdn.microsoft.com/library/hh758425.aspx) 或 [表格模型脚本语言](https://msdn.microsoft.com/library/mt614797.aspx) \(TMSL) 添加或删除角色和用户成员。
+如果创建表格模型项目，请使用 SSDT 中的角色管理器创建角色并向这些角色添加用户或组。 如果向服务器部署，请使用 SSMS、[Analysis Services PowerShell cmdlet](/sql/analysis-services/powershell/analysis-services-powershell-reference) 或 [表格模型脚本语言](https://msdn.microsoft.com/library/mt614797.aspx) \(TMSL) 添加或删除角色和用户成员。
 
 > [!NOTE]
 > 安全组必须已将 `MailEnabled` 属性设为 `True`。
@@ -47,9 +47,9 @@ ms.locfileid: "57993192"
     |----------------|-----------------|  
     |**无**|成员无法修改模型架构，也无法查询数据。|  
     |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
-    |读取和处理|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
-    |**处理**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
-    |管理员|成员可以修改模型架构并查询所有数据。|   
+    |**读取和处理**|成员可以（基于行级筛选器）查询数据并运行“处理”和“全部处理”操作，但无法修改模型架构。|  
+    |**进程**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
+    |**管理员**|成员可以修改模型架构并查询所有数据。|   
   
 5.  如果正在创建的角色具有“读取”或“读取和处理”权限，可以使用 DAX 公式添加行筛选器。 单击“行筛选器”选项卡，选择表，再单击“DAX 筛选器”字段，然后键入一个 DAX 公式。
   
@@ -74,8 +74,8 @@ ms.locfileid: "57993192"
 
    |权限|描述|  
    |----------------|-----------------|  
-   |完全控制（管理员）|成员可以修改模型架构，处理并查询所有数据。| 
-   |处理数据库|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
+   |**完全控制 （管理员）**|成员可以修改模型架构，处理并查询所有数据。| 
+   |**处理数据库**|成员可以运行“处理”和“全部处理”操作。 无法修改模型架构，也无法查询数据。|  
    |**读取**|成员可以（基于行筛选器）查询数据，但无法修改模型架构。|  
   
 4. 单击“成员资格”，然后按电子邮件地址在租户 Azure AD 中输入用户或组。
@@ -120,13 +120,13 @@ ms.locfileid: "57993192"
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>使用 PowerShell 添加角色和用户
 
-[SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
+[SqlServer](/sql/analysis-services/powershell/analysis-services-powershell-reference) 模块提供任务特定的数据库管理 cmdlet，以及接受表格模型脚本语言 (TMSL) 查询或脚本的通用 Invoke-ASCmd cmdlet。 以下 cmdlet 用于管理数据库角色和用户。
   
 |Cmdlet|描述|
 |------------|-----------------| 
-|[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|向数据库角色添加成员。| 
-|[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|从数据库角色删除成员。|   
-|[Invoke-ASCmd](https://msdn.microsoft.com/library/hh479579.aspx)|执行 TMSL 脚本。|
+|[Add-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|向数据库角色添加成员。| 
+|[Remove-RoleMember](/sql/analysis-services/powershell/analysis-services-powershell-reference)|从数据库角色删除成员。|   
+|[Invoke-ASCmd](/sql/analysis-services/powershell/analysis-services-powershell-reference)|执行 TMSL 脚本。|
 
 ## <a name="row-filters"></a>行筛选器  
 

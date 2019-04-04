@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: anroth
-ms.openlocfilehash: cf8a36145ebf5d5dabf8c539d4f245e1d4b209f0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886431"
+ms.locfileid: "58891474"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>如何使用自定义影像服务生成分类器
 
@@ -125,9 +125,7 @@ ms.locfileid: "58886431"
 
 ## <a name="manage-training-iterations"></a>管理训练迭代
 
-每次训练分类器时，都会创建一个新的迭代，其中包含自己更新的性能指标。 可以在“性能”选项卡的左窗格中查看所有迭代。选择其中一个时，可以选择通过单击顶部的“设为默认”按钮使其作为默认迭代。 默认迭代是在通过预测 API（例如来自应用）查询时默认使用的模型。 如果拒绝更新默认迭代，则可以继续训练模型，而不会影响应用的当前行为；然后，对改进的模型感到满意后，就可以更新默认迭代。
-
-在左侧窗格中，还可以找到“删除”按钮，如果迭代已过时，可以使用该按钮删除迭代。 删除迭代时，会删除唯一与其关联的所有图像。
+每次训练分类器时，都会创建一个新的迭代，其中包含自己更新的性能指标。 可以在“性能”选项卡的左窗格中查看所有迭代。在左侧窗格中，还可以找到“删除”按钮，如果迭代已过时，可以使用该按钮删除迭代。 删除迭代时，会删除唯一与其关联的所有图像。
 
 ## <a name="next-steps"></a>后续步骤
 

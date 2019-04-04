@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 034beeaaebb86786106f7884fc147ff15167538e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480713"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918631"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -172,7 +172,7 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 **代理版本 5.0.2.0**   
 Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。
 
-**Windows Server 2012 R2 或之前的代理版本**  
+**Windows Server 2012 R2 或旧代理版本**  
 对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
@@ -278,6 +278,8 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 | 东亚           | 东南亚     |
 | 美国东部             | 美国西部            |
 | 美国东部 2           | 美国中部         |
+| 韩国中部       | 韩国南部        |
+| 韩国南部         | 韩国中部      |
 | 北欧        | 西欧        |
 | 美国中北部    | 美国中南部   |
 | 印度南部         | 印度中部      |
@@ -291,7 +293,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* [考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)
+* [请考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)
 * [规划 Azure 文件部署](storage-files-planning.md)
 * [部署 Azure 文件](storage-files-deployment-guide.md)
 * [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)

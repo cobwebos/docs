@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: 973a82e97bc9770c30e791512b13e4c57a4c5bca
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 4d29602581531e9e42edbf4e00eca810757a8a99
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116892"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895726"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -100,7 +100,7 @@ ms.locfileid: "56116892"
 
 如果测试表明 LUIS 应用未正确识别意向和实体，则可以通过标记更多陈述或添加功能来提高 LUIS 应用的性能。 
 
-* [使用 LUIS 标记建议的陈述](luis-how-to-review-endoint-utt.md) 
+* [建议使用 LUIS 的语音样本添加标签](luis-how-to-review-endpoint-utterances.md) 
 * [使用相关功能来改进 LUIS 应用的性能](luis-how-to-add-features.md) 
-* [通过本教程了解批处理测试](luis-tutorial-batch-testing.md)
+* [了解本教程中使用测试批处理](luis-tutorial-batch-testing.md)
 * [了解批处理测试概念](luis-concept-batch-test.md)。

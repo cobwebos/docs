@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2018
 ms.author: damaerte
-ms.openlocfilehash: 5b4f9715e47483fa64840c521620bec79f3041cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1fc9883e0ea35c384c3bfc83e76b8eded48cbcba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106400"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905063"
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell"></a>Azure Cloud Shell 中的 PowerShell 快速入门
 
@@ -36,7 +36,7 @@ ms.locfileid: "58106400"
 
    ![](media/quickstart-powershell/shell-icon.png)
 
-2. 在下拉列表中选择 PowerShell 环境，随后会进入 Azure 驱动器 `(Azure:)`
+2. 从下拉列表中选择 PowerShell 环境，您将在 Azure 驱动器中 `(Azure:)`
 
    ![](media/quickstart-powershell/environment-ps.png)
 
@@ -68,7 +68,7 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
     PS Azure:\> dir
     ```
 
- 2. 运行 `cd` 可切换到首选的订阅
+ 2. `cd` 到首选的订阅
 
     ```azurepowershell-interactive
     PS Azure:\> cd MySubscriptionName
@@ -267,7 +267,7 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 
 ### <a name="using-ssh"></a>使用 SSH
 
-按照[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)的说明使用 AzureRM cmdlet 创建新的 VM 配置。
+按照说明进行操作[此处](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)若要创建新的 VM 配置使用 Azure PowerShell cmdlet。
 在调用 `New-AzVM` 以启动部署之前，请将 SSH 公钥添加到 VM 配置。
 新创建的 VM 将包含 `~\.ssh\authorized_keys` 位置中的公钥，从而允许通过无凭据的 SSH 会话连接到 VM。
 
@@ -292,7 +292,7 @@ ssh azureuser@MyVM.Domain.Com
 
 在 `Azure` 驱动器下，键入 `Get-AzCommand` 可获取特定于上下文的 Azure 命令。
 
-或者，始终可以使用 `Get-Command *azurerm* -Module AzureRM.*` 找出可用的 Azure 命令。
+或者，始终可以使用 `Get-Command *az* -Module Az.*` 找出可用的 Azure 命令。
 
 ## <a name="install-custom-modules"></a>安装自定义模块
 

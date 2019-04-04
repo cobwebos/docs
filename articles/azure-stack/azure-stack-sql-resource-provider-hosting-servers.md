@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 03/26/2019
 ms.author: jeffgilb
 ms.reviewer: quying
 ms.lastreviewed: 10/16/2018
-ms.openlocfilehash: 1cef0010464671982109b8dc4bc94e6925eaf825
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 1b9c7f00c8ec8408547620111634470d455334c8
+ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210520"
+ms.lasthandoff: 03/27/2019
+ms.locfileid: "58499227"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>为 SQL 资源提供程序添加托管服务器
 
-可以在创建宿主服务器的虚拟机 (VM) 上的 SQL Server 数据库[Azure Stack](azure-stack-poc.md)，或外部 Azure Stack 环境，只要 SQL 资源提供程序可以连接到的实例的 VM 上。
+可以在 [Azure Stack](azure-stack-poc.md) 中的虚拟机 (VM) 上或者在 Azure Stack 环境外部的 VM 上创建 SQL Server 数据库宿主服务器，前提是 SQL 资源提供程序能够连接到该实例。
 
 > [!NOTE]
 > SQL 资源提供程序应在默认提供程序订阅中创建，而 SQL 托管服务器则应在可计费用户订阅中创建。 资源提供程序服务器不应用于托管用户数据库。
@@ -186,14 +186,19 @@ ms.locfileid: "56210520"
 
 SKU 最长可能需要在一小时后才显示在门户中。 在完全创建 SKU 之前，用户无法创建数据库。
 
-若要编辑某个 SKU，请转到“所有服务” > “SQL 适配器” > “SKU”。 选择要修改的 SKU，进行任何必要的更改，然后单击“保存”以保存更改。 若要删除不再需要的 SKU，请转到“所有服务” > “SQL 适配器” > “SKU”。 右键单击 SKU 名称，然后选择“删除”将其删除。
+若要编辑某个 SKU，请转到“所有服务” > “SQL 适配器” > “SKU”。 选择要修改的 SKU，进行任何必要的更改，然后单击“保存”以保存更改。 
 
-> [!TIP]
-> 可以在同一位置中编辑或删除 SQL 资源提供程序配额。
+若要删除不再需要的 SKU，请转到“所有服务” > “SQL 适配器” > “SKU”。 右键单击 SKU 名称，然后选择“删除”将其删除。
+
+> [!IMPORTANT]
+> 它可能需要一小时新 Sku，以便在用户门户中提供的时间。
 
 ## <a name="make-sql-databases-available-to-users"></a>将 SQL 数据库提供给用户使用
 
 创建计划和套餐，使用户能够使用 SQL 数据库。 将 **Microsoft.SqlAdapter** 服务添加到计划，并创建新配额。
+
+> [!IMPORTANT]
+> 可能需要新的配额，可在用户门户中或之前已更改的配额强制执行最多两个小时。
 
 ## <a name="next-steps"></a>后续步骤
 

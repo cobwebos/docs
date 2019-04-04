@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: d168d543bc862e267f72bdf39cc44f9cc2a9fa13
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: aec6282daadc61b4e1bcf6bbaf1266d9bc98cdac
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "58114189"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895794"
 ---
 <!--save a copy of this file to your local repo. It's important that you follow the naming conventions by starting with the service name, and use lowercase only for the file name. See "file-names-and-locations.md" under the "contributor-guide" folder in your repo.
 
@@ -105,5 +105,5 @@ $FriendlyName"<Describe value>"
     [link text](https://azure.microsoft.com/pricing/details/virtual-machines/)-->
 
 <!--use this for URLs outside of ACOM. Be sure to locale, and if you're linking to the Azure library on MSDN, include the '/azure/' part of the URL-->
-[虚拟机文档](https://msdn.microsoft.com/library/azure/jj156003.aspx)
+[虚拟机文档](/previous-versions/azure/jj156003(v=azure.100))
 

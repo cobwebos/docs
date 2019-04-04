@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7f9a4ce4f1e16f69a1d8998e24c1bfe955d17d92
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 39ed9ee9dab7f2ec97d2fb6a0148db333648b227
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767101"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481461"
 ---
 # <a name="automate-azure-stack-validation-with-powershell"></a>自动执行使用 PowerShell 的 Azure Stack 验证
 
@@ -43,7 +43,7 @@ ms.locfileid: "57767101"
 
 2. 运行以下脚本来下载自动化脚本：
 
-    ```PowerShell
+    ```powershell
     New-Item -ItemType Directory -Path <VaaSLaunchDirectory>
     Set-Location <VaaSLaunchDirectory>
     Invoke-WebRequest -Uri https://storage.azurestackvalidation.com/packages/Microsoft.VaaS.Scripts.latest.nupkg -OutFile "LaunchVaaS.zip"
@@ -52,7 +52,7 @@ ms.locfileid: "57767101"
 
 3. 使用适当的参数值运行以下脚本：
 
-    ```PowerShell
+    ```powershell
     $VaaSAccountCreds = New-Object System.Management.Automation.PSCredential "<VaaSUserId>", (ConvertTo-SecureString "<VaaSUserPassword>" -AsPlainText -Force)
     .\LaunchVaaSTests.ps1 -VaaSAccountCreds $VaaSAccountCreds `
                           -VaaSAccountTenantId <VaaSAccountTenantId> `

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 3f0d3c5748afaac2544232fc1ff84316d9eb7347
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: 0dcfa4e7cd792f61d1620a57330f87c5c86e6c9f
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351059"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915677"
 ---
 # <a name="scaling-media-processing"></a>缩放媒体处理能力
 
@@ -47,7 +47,7 @@ ms.locfileid: "58351059"
 > [!NOTE]
 > 对于由媒体服务 v3 或视频索引器触发的音频分析和视频分析作业，强烈建议为你的帐户预配 10 S3 MRU。 如果需要超过 10 S3 MRU 的数量，请使用 [Azure 门户](https://portal.azure.com/)打开一个支持票证。
 >
-> 目前，无法使用 Azure 门户来管理其他 v3 的资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
+> 目前，无法使用 Azure 门户来管理其他 v3 的资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
 
 ## <a name="prerequisites"></a>必备组件 
 
@@ -67,7 +67,7 @@ az account set mru -n amsaccount -g amsResourceGroup --count 10 --type S3
 
 ## <a name="billing"></a>计费
 
-将根据在你的帐户中预配的 MRU 的数量、类型和时间量向你收费。 无论是否运行任何作业，都会收费。 有关详细说明，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页的“常见问题”部分。   
+根据你进行收费的媒体保留单位预配的分钟数上您的帐户中。 发生这种情况独立于是否有任何在你的帐户中运行的作业。 有关详细说明，请参阅[媒体服务定价](https://azure.microsoft.com/pricing/details/media-services/)页的“常见问题”部分。   
 
 ## <a name="next-step"></a>后续步骤
 

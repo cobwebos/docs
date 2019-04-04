@@ -15,12 +15,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.custom: mvc
 ms.lastreviewed: 12/03/2018
-ms.openlocfilehash: e6afea414ed632dead97a4b9adc7c623e48bd7ef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 5e93a8fbcd603e5c52141a2a883bd7371ee50221
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766693"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58445372"
 ---
 # <a name="quickstart-create-a-linux-server-virtual-machine-by-using-powershell-in-azure-stack"></a>快速入门：在 Azure Stack 中使用 PowerShell 创建 Linux 服务器虚拟机
 
@@ -384,7 +384,7 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>连接到虚拟机
 
-部署虚拟机后，为虚拟机配置一个 SSH 连接。 使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1) 命令返回虚拟机的公共 IP 地址。
+部署虚拟机后，为虚拟机配置一个 SSH 连接。 使用 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) 命令返回虚拟机的公共 IP 地址。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
@@ -420,7 +420,7 @@ apt-get -y install nginx
 
 ## <a name="clean-up-resources"></a>清理资源
 
-清理不再需要的资源。 可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup?view=azurermps-4.3.1) 命令删除这些资源。 若要删除资源组及其所有资源，请运行以下命令：
+清理不再需要的资源。 可以使用 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) 命令删除这些资源。 若要删除资源组及其所有资源，请运行以下命令：
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup

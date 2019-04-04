@@ -11,29 +11,29 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/11/2019
+ms.date: 03/29/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/11/2019
-ms.openlocfilehash: f38d27c6f82533265705ff5483bfe835c81c9ce6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 976c05449704b0ecbc48ee5bd4799f300fcac0aa
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817285"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58651679"
 ---
 # <a name="update-the-mysql-resource-provider"></a>更新 MySQL 资源提供程序 
 
 *适用于：Azure Stack 集成系统。*
 
-新的 MySQL，Azure Stack 构建系统时，可能会释放资源提供程序适配器进行更新。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。 
+更新 Azure Stack 内部版本时，可能会发布新的 MySQL 资源提供程序适配器。 虽然现有的适配器可以继续使用，但仍建议尽快更新到最新的内部版本。 
 
-从 MySQL 资源提供程序版本 1.1.33.0 发行版开始，更新是累积的并且不需要在其中发布; 的顺序安装只要您从版本 1.1.24.0 或更高版本。 例如，如果正在运行的 MySQL 资源提供程序版本 1.1.24.0，则可以升级到版本 1.1.33.0 或更高版本而无需首先安装版本 1.1.30.0。 若要查看可用的资源提供程序版本和 Azure Stack 支持的版本，请参阅中的版本列表[部署的资源提供程序先决条件](./azure-stack-mysql-resource-provider-deploy.md#prerequisites)。
+从 MySQL 资源提供程序发行版 1.1.33.0 开始，更新是累积性的，不需按发布顺序进行安装，前提是你从 1.1.24.0 或更高版本开始。 例如，如果运行 1.1.24.0 版 MySQL 资源提供程序，则可升级到 1.1.33.0 或更高版本，不需先安装版本 1.1.30.0。 若要查看可用的资源提供程序版本，以及支持它们的 Azure Stack 版本，请参阅[部署资源提供程序的先决条件](./azure-stack-mysql-resource-provider-deploy.md#prerequisites)中的版本列表。
 
-若要更新资源提供程序，请使用 **UpdateMySQLProvider.ps1** 脚本。 该过程是类似于用于安装资源提供程序，如中所述部署资源提供程序部分中的这篇文章的过程。 资源提供程序的下载包中提供此脚本。 
+若要更新资源提供程序，请使用 **UpdateMySQLProvider.ps1** 脚本。 此过程类似于安装资源提供程序时所使用的过程，如本文的“部署资源提供程序”部分所述。 资源提供程序的下载包中提供此脚本。 
 
  > [!IMPORTANT]
- > 在升级前的资源提供程序，查看发行说明以了解有关新功能、 修复和可能会影响你的部署任何已知的问题的信息。
+ > 在升级资源提供程序之前，请查看发行说明，了解新功能、修补程序以及任何可能影响部署的已知问题。
 
 ## <a name="update-script-processes"></a>更新脚本过程
 
@@ -46,7 +46,7 @@ ms.locfileid: "55817285"
 
 
 ## <a name="update-script-parameters"></a>更新脚本参数 
-在运行时，可以指定以下参数从命令行**UpdateMySQLProvider.ps1** PowerShell 脚本。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。 
+运行 **UpdateMySQLProvider.ps1** PowerShell 脚本时，可在命令行中指定以下参数。 如果未指定参数或任何参数验证失败，系统会提示提供所需的参数。 
 
 | 参数名称 | 描述 | 注释或默认值 | 
 | --- | --- | --- | 
@@ -59,21 +59,22 @@ ms.locfileid: "55817285"
 | **DefaultSSLCertificatePassword** | .pfx 证书的密码。 | _必需_ | 
 | **MaxRetryCount** | 操作失败时，想要重试每个操作的次数。| 2 | 
 | **RetryDuration** | 每两次重试的超时间隔（秒）。 | 120 | 
-| **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | “否” | 
-| **DebugMode** | 防止在失败时自动清除。 | “否” | 
+| **卸载** | 删除资源提供程序和所有关联的资源（请参阅下面的注释）。 | 否 | 
+| **DebugMode** | 防止在失败时自动清除。 | 否 | 
 | **AcceptLicense** | 跳过接受 GPL 许可条款的提示。  (https://www.gnu.org/licenses/old-licenses/gpl-2.0.html) | | 
 
 ## <a name="update-script-example"></a>更新脚本示例
-下面是使用的示例*UpdateMySQLProvider.ps1*可以从提升的 PowerShell 控制台运行的脚本。 请务必根据需要更改变量的信息和密码：  
+下面是可以通过权限提升的 PowerShell 控制台运行的 *UpdateMySQLProvider.ps1* 脚本的用法示例。 请务必根据需要更改变量信息和密码：  
 
 > [!NOTE] 
 > 此更新过程仅适用于集成系统。 
 
 ```powershell 
 # Install the AzureRM.Bootstrapper module, set the profile and install the AzureStack module
+# Note that this might not be the most currently available version of Azure Stack PowerShell.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2018-03-01-hybrid -Force
-Install-Module -Name AzureStack -RequiredVersion 1.5.0
+Install-Module -Name AzureStack -RequiredVersion 1.6.0
 
 # Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time. 
 $domain = "AzureStack" 

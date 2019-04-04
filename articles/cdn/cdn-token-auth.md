@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mezha
-ms.openlocfilehash: 6ff7b018cea8bedd93d3c9aef3b3250ecf5251b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75d6fb063a6cb5336a4d9945bf6a79a65ed25d40
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58123719"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918886"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>使用令牌身份验证保护 Azure CDN 资产
 
@@ -33,7 +33,7 @@ ms.locfileid: "58123719"
 
 令牌身份验证会验证请求是否由受信任的站点通过要求请求包含令牌值（该值包含关于请求者的编码信息）而生成。 内容只会在编码信息满足要求时提供给请求者，否则请求会被拒绝。 可使用以下一个或多个参数来设置需求：
 
-- 国家/地区:允许或拒绝源自指定国家/地区的请求其[国家/地区代码](https://msdn.microsoft.com/library/mt761717.aspx)。
+- 国家/地区:允许或拒绝源自指定国家/地区的请求其[国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))。
 - URL：允许与指定的资产或路径相匹配的请求。
 - 主机：允许或拒绝在请求标头中使用指定的主机的请求。
 - 引用网站：允许或拒绝来自指定引用网站的请求。
@@ -120,7 +120,7 @@ ms.locfileid: "58123719"
       > </tr>
       > <tr>
       >    <td><b>ec_country_allow</b></td> 
-      >    <td>仅允许从一个或多个指定国家/地区发出的请求。 源自所有其他国家/地区的请求会被拒绝。 为每个国家/地区使用双字母 [ISO 3166 国家/地区代码](https://msdn.microsoft.com/library/mt761717.aspx)，并用逗号分隔；请勿添加空格。 例如，如果仅允许来自美国和法国的访问，请输入 `US,FR`。</td>
+      >    <td>仅允许从一个或多个指定国家/地区发出的请求。 源自所有其他国家/地区的请求会被拒绝。 为每个国家/地区使用双字母 [ISO 3166 国家/地区代码](/previous-versions/azure/mt761717(v=azure.100))，并用逗号分隔；请勿添加空格。 例如，如果仅允许来自美国和法国的访问，请输入 `US,FR`。</td>
       > </tr>
       > <tr>
       >    <td><b>ec_country_deny</b></td> 

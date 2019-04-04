@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 02/10/2019
+ms.date: 04/02/2019
 ms.author: juliako
-ms.openlocfilehash: c1b26b8a59ac0306fc06bf90f01642d4585a45be
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 8c1e50064491032d78e467496f0c53300dd6acd1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55991560"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892783"
 ---
 # <a name="view-and-edit-video-indexer-insights"></a>查看和编辑视频索引器见解
 
@@ -33,12 +33,6 @@ ms.locfileid: "55991560"
     汇总见解显示聚合视图形式的数据：人脸、关键字、情绪。 例如，可以看到人脸和每个人脸出现的时间范围，以及显示人脸的时间百分比。
 
     播放器和见解是同步的。 例如，如果单击某个关键字或脚本行，播放器会将你带到视频中的相应时刻。 可以在应用程序中获得播放器/见解视图和同步。 有关详细信息，请参阅[将 Azure 索引器小组件嵌入应用程序](video-indexer-embed-widgets.md)。 
-
-3. 编辑视频索引器见解。
-
-    按视频下的“编辑”。 此时会显示一个页面，其中会显示视频的所有明细。 明细会分成块。 有了块，就可以更轻松地浏览数据。 例如，可以在发言人换人或中断时间长时将块细分。 可以创建你自己的播放列表，其中只包含所需的行。 若要只显示源视频的特定部分，可以按主题/关键字、情绪、人物、发言人进行筛选。 可以选择只查看视频的脚本或 OCR。  
-
-    ![洞察力](./media/video-indexer-view-edit/video-indexer-create-new-playlist.png)
 
 ## <a name="next-steps"></a>后续步骤
 

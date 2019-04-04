@@ -11,12 +11,12 @@ ms.date: 11/26/2018
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 1c02a30800e86c7b32524fb9cdba7dacf3bba9c7
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: ea409d6705d0146e9cb32ba11e6b785cf527739c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652087"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904570"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>在 Azure 数据工厂管道中使用自定义活动
 
@@ -356,7 +356,7 @@ Activity Error section:
   - 不再需要 Microsoft.Azure.Management.DataFactories NuGet 包。
   - 编译代码，将可执行文件及其依赖项上传到 Azure 存储，并在 `folderPath` 属性中定义路径。
 
-有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写为数据工厂自定义活动的完整示例，请参阅[数据工厂自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)。
+有关端到端 DLL 和数据工厂版本 1 文章[在 Azure 数据工厂管道中使用自定义活动](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)中所述的管道示例如何重写为数据工厂自定义活动的完整示例，请参阅[数据工厂自定义活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample)。
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch 的自动缩放
 
@@ -382,10 +382,10 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 参阅以下文章了解如何以其他方式转换数据：
 
 * [U-SQL 活动](transform-data-using-data-lake-analytics.md)
-* [Hive 活动](transform-data-using-hadoop-hive.md)
+* [配置单元活动](transform-data-using-hadoop-hive.md)
 * [Pig 活动](transform-data-using-hadoop-pig.md)
 * [MapReduce 活动](transform-data-using-hadoop-map-reduce.md)
 * [Hadoop 流式处理活动](transform-data-using-hadoop-streaming.md)
 * [Spark 活动](transform-data-using-spark.md)
-* [机器学习“批处理执行”活动](transform-data-using-machine-learning.md)
+* [机器学习批处理执行活动](transform-data-using-machine-learning.md)
 * [存储过程活动](transform-data-using-stored-procedure.md)

@@ -15,12 +15,12 @@ ms.date: 01/14/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 3df5bd177dfd88e74a8dbc72dd1966a18a61d0f8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2c2b0d022c81dffe5e98932c22b9707eb10b7e63
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860578"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481716"
 ---
 # <a name="tutorial-create-a-geo-distributed-app-solution-with-azure-and-azure-stack"></a>教程：使用 Azure 和 Azure Stack 创建异地分布式应用解决方案
 
@@ -135,7 +135,7 @@ ms.locfileid: "57860578"
 
 1. **登录到 Azure Pipelines** 以确认能够创建生成定义。
 
-2. 添加 **-r win10-x64** 代码。 这是触发使用.NET Core 的独立的部署所必需的。
+2. 添加 **-r win10-x64** 代码。 使用 .NET Core 触发独立部署时需要此代码。
 
     ![Alt text](media/azure-stack-solution-geo-distributed/image4.png)
 
@@ -472,7 +472,7 @@ Azure DevOps 和 Azure DevOps Server 提供高度可配置、可管理的管道�
 
 私钥文件是通过 OpenSSL 创建的。 若要将证书导出为 PFX，请运行以下命令（将占位符 *<private-key-file>* 和 *<merged-certificate-file>* 分别替换为私钥路径与合并的证书文件）。
 
-```PowerShell
+```powershell
 openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-certificate-file>
 ```
 
@@ -533,7 +533,7 @@ openssl pkcs12 -export -out myserver.pfx -inkey <private-key-file> -in <merged-c
 
 #### <a name="test-https"></a>测试 HTTPS
 
-在各种浏览器，浏览到 https://<your.custom.domain>to 确保 web 应用提供服务。
+在不同的浏览器中浏览到 https://<your.custom.domain>，以确保可以访问 Web 应用。
 
 ![Alt text](media/azure-stack-solution-geo-distributed/image42.png)
 

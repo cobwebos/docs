@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: sogup
-ms.openlocfilehash: 0bc1ab0586d1a591464711fb0652f81fb082e6c3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 7745f986c6e9ba22258f51f9329444b8232762e1
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199238"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905749"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups-limited-public-preview"></a>跨 Azure 订阅和资源组移动恢复服务保管库（受限公共预览版）
 
@@ -21,6 +21,8 @@ ms.locfileid: "58199238"
 
 > [!NOTE]
 > 要将恢复服务保管库及其关联的资源移到不同的资源组，您应首先[注册源订阅](#register-the-source-subscription-to-move-your-recovery-services-vault)。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites-for-moving-a-vault"></a>移动保管库的先决条件
 
@@ -50,24 +52,24 @@ ms.locfileid: "58199238"
 1. 登录到 Azure 帐户
 
    ```
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
 2. 选择要注册的订阅
 
    ```
-   Get-AzureRmSubscription –SubscriptionName "Subscription Name" | Select-AzureRmSubscription
+   Get-AzSubscription –SubscriptionName "Subscription Name" | Select-AzSubscription
    ```
 3. 注册此订阅
 
    ```
-   Register-AzureRmProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
+   Register-AzProviderFeature -ProviderNamespace Microsoft.RecoveryServices -FeatureName RecoveryServicesResourceMove
    ```
 
 4. 运行命令
 
    ```
-   Register-AzureRmResourceProvider -ProviderNamespace Microsoft.RecoveryServices
+   Register-AzResourceProvider -ProviderNamespace Microsoft.RecoveryServices
    ```
 
 等待 30 分钟以将订阅加入允许列表，然后开始使用 Azure 门户或 PowerShell 执行移动操作。
@@ -137,18 +139,18 @@ ms.locfileid: "58199238"
 
 ## <a name="use-powershell-to-move-a-vault"></a>使用 PowerShell 移动保管库
 
-若要将恢复服务保管库移到另一个资源组，请使用 `Move-AzureRMResource` cmdlet。 `Move-AzureRMResource` 需要资源名称和资源类型。 可以通过 `Get-AzureRmRecoveryServicesVault` cmdlet 获取这两项信息。
+若要将恢复服务保管库移到另一个资源组，请使用 `Move-AzResource` cmdlet。 `Move-AzResource` 需要的资源名称和资源的类型。 可以通过 `Get-AzRecoveryServicesVault` cmdlet 获取这两项信息。
 
 ```
 $destinationRG = "<destinationResourceGroupName>"
-$vault = Get-AzureRmRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
-Move-AzureRmResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+$vault = Get-AzRecoveryServicesVault -Name <vaultname> -ResourceGroupName <vaultRGname>
+Move-AzResource -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 若要将资源移到不同的订阅，请包含 `-DestinationSubscriptionId` 参数。
 
 ```
-Move-AzureRmResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
+Move-AzResource -DestinationSubscriptionId "<destinationSubscriptionID>" -DestinationResourceGroupName $destinationRG -ResourceId $vault.ID
 ```
 
 执行上述 cmdlet 后，系统会要求你确认是否要移动指定的资源。 键入 **Y** 确认。 验证成功后，资源将会移动。

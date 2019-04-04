@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: 1b2009b54c7f436667c316b7ca002314bc966a1b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57531923"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916795"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
 > [!div class="op_single_selector"]
@@ -59,7 +59,7 @@ ms.locfileid: "57531923"
    ![CDN 缓存页](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**使用全局缓存规则设置 Blob 存储服务的 Cache-Control 标头：**
+**若要使用全局缓存规则设置 Blob 存储服务的缓存控制标头：**
 
 1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
       
@@ -71,7 +71,7 @@ ms.locfileid: "57531923"
 
 3. 选择“保存”。
  
-**使用自定义缓存规则设置 Blob 文件的 Cache-Control 标头：**
+**若要使用自定义缓存规则设置 blob 文件的缓存控制标头：**
 
 1. 在“自定义缓存规则”下，创建两个匹配条件：
 
@@ -114,7 +114,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>使用 .NET 设置 Cache-Control 标头
-要使用 .NET 代码指定 Blob 的 `Cache-Control` 标头，请使用[适用于 .NET 的 Azure 存储客户端库](../storage/blobs/storage-dotnet-how-to-use-blobs.md)来设置 [CloudBlob.Properties.CacheControl](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol.aspx) 属性。
+要使用 .NET 代码指定 Blob 的 `Cache-Control` 标头，请使用[适用于 .NET 的 Azure 存储客户端库](../storage/blobs/storage-dotnet-how-to-use-blobs.md)来设置 [CloudBlob.Properties.CacheControl](/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties.cachecontrol#Microsoft_WindowsAzure_Storage_Blob_BlobProperties_CacheControl) 属性。
 
 例如：
 
@@ -163,18 +163,18 @@ class Program
 ![Azure 存储资源管理器属性](./media/cdn-manage-expiration-of-blob-content/cdn-storage-explorer-properties.png)
 
 ### <a name="azure-command-line-interface"></a>Azure 命令行接口
-使用 [Azure 命令行接口](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) (CLI)，可以从命令行管理 Azure blob 资源。 若要在使用 Azure CLI 上传 Blob 时设置 cache-control 标头，可使用 `-p` 开关设置 *cacheControl* 属性。 以下示例说明如何将 TTL 设置为 1 小时（3600 秒）：
+使用 [Azure 命令行接口](https://docs.microsoft.com/cli/azure) (CLI)，可以从命令行管理 Azure blob 资源。 若要在使用 Azure CLI 上传 Blob 时设置 cache-control 标头，可使用 `-p` 开关设置 *cacheControl* 属性。 以下示例说明如何将 TTL 设置为 1 小时（3600 秒）：
   
 ```azurecli
 azure storage blob upload -c <connectionstring> -p cacheControl="max-age=3600" .\<blob name> <container name> <blob name>
 ```
 
 ### <a name="azure-storage-services-rest-api"></a>Azure 存储空间服务 REST API
-通过对请求执行以下操作，可以使用 [Azure 存储服务 REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) 来显式设置 *x-ms-blob-cache-control* 属性：
+通过对请求执行以下操作，可以使用 [Azure 存储服务 REST API](/rest/api/storageservices/) 来显式设置 *x-ms-blob-cache-control* 属性：
   
-   - [放置 Blob](https://msdn.microsoft.com/library/azure/dd179451.aspx)
-   - [放置块列表](https://msdn.microsoft.com/library/azure/dd179467.aspx)
-   - [设置 Blob 属性](https://msdn.microsoft.com/library/azure/ee691966.aspx)
+   - [放置 Blob](/rest/api/storageservices/Put-Blob)
+   - [放置块列表](/rest/api/storageservices/Put-Block-List)
+   - [设置 Blob 属性](/rest/api/storageservices/Set-Blob-Properties)
 
 ## <a name="testing-the-cache-control-header"></a>测试 Cache-Control 标头
 可以轻松验证 Blob 的 TTL 设置。 使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，测试 Blob 是否包含 `Cache-Control` 响应标头。 还可使用 [Wget](https://www.gnu.org/software/wget/)、[Postman](https://www.getpostman.com/) 或 [Fiddler](https://www.telerik.com/fiddler) 等工具检查响应标头。

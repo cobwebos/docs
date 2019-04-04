@@ -3,7 +3,7 @@ title: 创建并上传 Red Hat Enterprise Linux VHD，以供在 Azure Stack 中�
 description: 了解如何创建和上传包含 Red Hat Linux 操作系统的 Azure 虚拟硬盘 (VHD)。
 services: azure-stack
 documentationcenter: ''
-author: JeffGoldner
+author: mattbriggs
 manager: BradleyB
 editor: ''
 tags: ''
@@ -13,21 +13,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
-ms.author: jeffgo
+ms.date: 03/28/2019
+ms.author: mabrigg
+ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: ad0419cee3fc5c838d6d81adf9040432b9feaf07
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55242223"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58883106"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>为 Azure Stack 准备基于 Red Hat 的虚拟机
 
 在本文中，将了解如何准备 Red Hat Enterprise Linux (RHEL) 虚拟机，以供在 Azure Stack 中使用。 本文介绍的 RHEL 版本为 7.1+。 本文所述的用于准备工作的虚拟机监控程序为 Hyper-V、基于内核的虚拟机 (KVM) 和 VMware。
 
-有关 Red Hat Enterprise Linux 支持信息，请参阅[Red Hat 和 Azure Stack:常见问题解答](https://access.redhat.com/articles/3413531)。
+有关 Red Hat Enterprise Linux 支持信息，请参阅 [Red Hat 和 Azure Stack：常见问题解答](https://access.redhat.com/articles/3413531)。
 
 ## <a name="prepare-a-red-hat-based-virtual-machine-from-hyper-v-manager"></a>从 Hyper-V 管理器准备基于 Red Hat 的虚拟机
 
@@ -57,7 +58,7 @@ ms.locfileid: "55242223"
     HOSTNAME=localhost.localdomain
     ```
 
-1. 创建或编辑`/etc/sysconfig/network-scripts/ifcfg-eth0`文件，并根据需要添加以下文本：
+1. 创建或编辑 `/etc/sysconfig/network-scripts/ifcfg-eth0` 文件，并根据需要添加以下文本：
 
     ```sh
     DEVICE=eth0
@@ -100,6 +101,13 @@ ms.locfileid: "55242223"
 
     ```bash
     sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+    ```
+
+1. 停止并卸载 cloud-init:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. 请确保 SSH 服务器已安装且已配置为在引导时启动（默认采用此配置）。 修改 `/etc/ssh/sshd_config` 以包含以下行：
@@ -212,7 +220,7 @@ ms.locfileid: "55242223"
     subscription-manager register --auto-attach --username=XXX --password=XXX
     ```
 
-1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此配置，请打开`/etc/default/grub`在文本编辑器中，并修改`GRUB_CMDLINE_LINUX`参数。 例如：
+1. 在 grub 配置中修改内核引导行，以使其包含 Azure 的其他内核参数。 若要执行此配置，请在文本编辑器中打开 `/etc/default/grub` 并修改 `GRUB_CMDLINE_LINUX` 参数。 例如：
 
     ```sh
     GRUB_CMDLINE_LINUX="rootdelay=300 console=ttyS0 earlyprintk=ttyS0 net.ifnames=0"
@@ -246,15 +254,17 @@ ms.locfileid: "55242223"
     dracut -f -v
     ```
 
-1. 卸载 cloud-init：
+1. 停止并卸载 cloud-init:
 
     ```bash
+    systemctl stop cloud-init
     yum remove cloud-init
     ```
 
 1. 确保已安装 SSH 服务器且已将其配置为在引导时启动。
 
     ```bash
+    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -265,22 +275,55 @@ ms.locfileid: "55242223"
     ClientAliveInterval 180
     ```
 
-1. WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
+1. 当为 Azure Stack 中创建自定义 vhd，请记住，2.2.20 和 2.2.35.1 （这两个不含） 之间的 WALinuxAgent 版本无法正常工作之前 1903年运行生成的 Azure Stack 环境。 若要解决此问题，应用 1901年/1902年修补程序或按照说明进行操作的此部分的第二部分。 
+
+如果运行的 Azure Stack 内部版本 1903年 （或更高） 或 1901年/1902年修补程序，从 Redhat extras 存储库下载 WALinuxAgent 包如下所示：
+    
+   WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
 
     ```bash
     subscription-manager repos --enable=rhel-7-server-extras-rpms
     ```
 
-1. 通过运行以下命令来安装 Azure Linux 代理：
+   通过运行以下命令来安装 Azure Linux 代理：
 
     ```bash
     yum install WALinuxAgent
     ```
 
-    启用 waagent 服务：
+   启用 waagent 服务：
 
     ```bash
     systemctl enable waagent.service
+    ```
+    
+    
+如果之前 1903年运行 Azure Stack 内部版本，并且尚未应用 1901年/1902年修补程序，然后按照以下说明下载 WALinuxAgent:
+    
+   a.   下载 setuptools
+    ```bash
+    wget https://pypi.python.org/packages/source/s/setuptools/setuptools-7.0.tar.gz --no-check-certificate
+    tar xzf setuptools-7.0.tar.gz
+    cd setuptools-7.0
+    ```
+   b. 下载并解压缩 github 代理的最新版本。 这是一个示例我们在其中下载"2.2.36"从 github 存储库的版本。
+    ```bash
+    wget https://github.com/Azure/WALinuxAgent/archive/v2.2.36.zip
+    unzip v2.2.36.zip
+    cd WALinuxAgent-2.2.36
+    ```
+    c. Install setup.py
+    ```bash
+    sudo python setup.py install
+    ```
+    d. Restart waagent
+    ```bash
+    sudo systemctl restart waagent
+    ```
+    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    
+    ```bash
+    waagent -version
     ```
 
 1. 不要在操作系统磁盘上创建交换空间。
@@ -420,6 +463,13 @@ ms.locfileid: "55242223"
 
     ```bash
     dracut -f -v
+    ```
+
+1. 停止并卸载 cloud-init:
+
+    ```bash
+    systemctl stop cloud-init
+    yum remove cloud-init
     ```
 
 1. 请确保已安装 SSH 服务器且已将其配置为在引导时启动。 此设置通常是默认设置。 修改 `/etc/ssh/sshd_config` 以包含以下行：
@@ -581,6 +631,10 @@ ms.locfileid: "55242223"
     Install latest repo update
     yum update -y
 
+    Stop and Uninstall cloud-init
+    systemctl stop cloud-init
+    yum remove cloud-init
+    
     Enable extras repo
     subscription-manager repos --enable=rhel-7-server-extras-rpms
 
@@ -657,20 +711,20 @@ ms.locfileid: "55242223"
 
 编辑 `/etc/dracut.conf` 并添加以下内容：
 
-    ```sh
-    add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
-    ```
+```sh
+add_drivers+="hv_vmbus hv_netvsc hv_storvsc"
+```
 
 重新生成 initramfs：
 
-    ```bash
-    dracut -f -v
-    ```
+```bash
+dracut -f -v
+```
 
 有关详细信息，请参阅[重新生成 initramfs](https://access.redhat.com/solutions/1958)。
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure Stack 中创建新的虚拟机。 如果第一次，在将 VHD 文件上载到 Azure Stack，请参阅[创建和发布 Marketplace 项](azure-stack-create-and-publish-marketplace-item.md)。
+现在，可以使用 Red Hat Enterprise Linux 虚拟硬盘在 Azure Stack 中创建新的虚拟机。 如果这是你第一次将 VHD 文件上传到 Azure Stack，请参阅[创建和发布市场项](azure-stack-create-and-publish-marketplace-item.md)。
 
 有关经认证可运行 Red Hat Enterprise Linux 的虚拟机监控程序的详细信息，请参阅 [Red Hat 网站](https://access.redhat.com/certified-hypervisors)。

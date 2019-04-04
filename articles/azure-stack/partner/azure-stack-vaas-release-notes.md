@@ -14,12 +14,12 @@ ms.date: 03/11/2019
 ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
-ms.openlocfilehash: 96325d7c21ccf7d93deaafbad974009004030157
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eefd39c751bdbd9ed9c8f3b9112fee1ddbffb9a0
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091981"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486931"
 ---
 # <a name="release-notes-for-validation-as-a-service"></a>作为一项服务验证的发行说明
 
@@ -61,7 +61,7 @@ ms.locfileid: "58091981"
 
     `Install-VaaSPrerequisites` 不再需要云管理员凭据。 如果运行此 cmdlet 的最新版本，请参阅[下载并安装代理](azure-stack-vaas-local-agent.md#download-and-install-the-agent)安装系统必备组件的修订后的命令。 命令如下：
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -78,7 +78,7 @@ ms.locfileid: "58091981"
 
     `Install-VaaSPrerequisites` 现在需要云管理员凭据来在包验证过程中解决问题。 在文档[下载并安装代理](azure-stack-vaas-local-agent.md#download-and-install-the-agent)已使用以下更新：
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     $CloudAdminCreds = New-Object System.Management.Automation.PSCredential "<cloudAdminDomain\username>", (ConvertTo-SecureString "<cloudAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force

@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: d0d725a57c27fe30215d77a596f6fb3b8c8720d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8041e7e02b117b8938f0f7c18da2d57c31dddb34
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098002"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482258"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -61,7 +61,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 > [!TIP]  
 > 要成功运行该脚本，必须有某个公共产品/服务包含计算、网络、存储和 KeyVault 的服务。 
 
-  ```PowerShell
+  ```powershell
     function Get-ThumbprintFromPfx($PfxFilePath, $Password) 
         {
             return New-Object System.Security.Cryptography.X509Certificates.X509Certificate2($PfxFilePath, $Password)
@@ -211,7 +211,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 
 1. 更改环境变量的顺序后，重启 PowerShell，然后运行以下 PowerShell 脚本获取 Service Fabric 群集的访问权限：
 
-   ```PowerShell  
+   ```powershell  
     Connect-ServiceFabricCluster -ConnectionEndpoint "\[Service Fabric
     CLUSTER FQDN\]:19000" \`
 

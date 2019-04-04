@@ -11,12 +11,12 @@ ms.author: patricka
 ms.reviewer: fiseraci
 ms.lastreviewed: 01/28/2019
 keywords: ''
-ms.openlocfilehash: a47b38acc372e6c1d215c7440657486b5babf3bb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3694425ac72d3b75d66d870e3746bc1738ba0138
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009477"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481903"
 ---
 # <a name="azure-stack-datacenter-integration---syslog-forwarding"></a>Azure Stack 数据中心集成 - Syslog 转发
 
@@ -185,13 +185,13 @@ Set-SyslogServer -ServerName <FQDN or ip address of syslog server> -ServerPort <
 
 **从客户端删除 Syslog 服务器配置**
 
-```PowerShell  
+```powershell  
 Set-SyslogServer -Remove
 ```
 
 **从客户端删除客户端证书**
 
-```PowerShell  
+```powershell  
 Set-SyslogClient -RemoveCertificate
 ```
 
@@ -201,13 +201,13 @@ Set-SyslogClient -RemoveCertificate
 
 **验证 Syslog 客户端中的服务器配置**
 
-```PowerShell  
+```powershell  
 Get-SyslogServer
 ```
 
 **验证 Syslog 客户端中的证书设置**
 
-```PowerShell  
+```powershell  
 Get-SyslogClient
 ```
 
@@ -335,7 +335,7 @@ Azure Stack 中 Windows 事件的自定义扩展表：
 |MasKeywords |0x8000000000000000|
 |MasKeywordName |审核成功|
 |MasLevel |4|
-|MasOpcode |第|
+|MasOpcode |1|
 |MasOpcodeName |info|
 |MasProviderEventSourceName ||
 |MasProviderGuid |AEA1B4FA-97D1-45F2-A64C-4D69FFFD92C9|

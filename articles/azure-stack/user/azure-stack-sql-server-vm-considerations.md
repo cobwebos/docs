@@ -1,6 +1,6 @@
 ---
-title: Azure Stack 虚拟机中 SQL Server 的性能最佳做法
-description: 提供有关优化 Microsoft Azure Stack 虚拟机中的 SQL Server 性能最佳实践。
+title: 使用 SQL Server 最佳实践，并增加 Azure Stack 虚拟机中的性能 |Microsoft Docs
+description: 本文提供了 SQL server 最佳实践来帮助提高性能和优化 Azure Stack Vm 中的 SQL Server。
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,20 +12,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/14/2019
+ms.date: 04/02/2019
 ms.author: mabrigg
 ms.reviewer: anajod
 ms.lastreviewed: 01/14/2019
-ms.openlocfilehash: 7981df6aa1e08688bdbe3b18629450b996f7609e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 03a354a7d670033fa86ebbb094710a836b6219c4
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123396"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879058"
 ---
-# <a name="optimize-sql-server-performance"></a>优化 SQL Server 性能
+# <a name="sql-server-best-practices-to-optimize-performance-in-azure-stack"></a>SQL server 最佳做法来优化 Azure Stack 中的性能
 
-本文提供了有关优化 Microsoft Azure Stack 虚拟机中的 SQL Server 性能的指南。 在 Azure Stack 虚拟机中运行 SQL Server 时，请使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 关系数据库在 Azure Stack 云中的性能取决于许多因素， 其中包括虚拟机的系列大小和数据磁盘的配置。
+本文提供了 SQL server 最佳实践以优化 SQL Server 并改进 Microsoft Azure Stack 虚拟机中的性能。 在 Azure Stack 虚拟机中运行 SQL Server 时，请使用适用于本地服务器环境中的 SQL Server 的相同数据库性能优化选项。 关系数据库在 Azure Stack 云中的性能取决于许多因素， 其中包括虚拟机的系列大小和数据磁盘的配置。
 
 创建 SQL Server 映像时，[请考虑在 Azure Stack 门户中预配虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision)。 在 Azure Stack 管理门户中下载来自市场管理的 SQL IaaS 扩展，并下载所选的 SQL 虚拟机虚拟硬盘驱动器 (VHD)。 其中包括 SQL2014SP2、SQL2016SP1 和 SQL2017。
 
@@ -37,7 +37,8 @@ ms.locfileid: "58123396"
 > [!NOTE]  
 > 如需 Azure 虚拟机中 SQL Server 的性能指南，请参阅[此文](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-performance)。
 
-## <a name="before-you-begin"></a>开始之前
+## <a name="checklist-for-sql-server-best-practices"></a>针对 SQL server 最佳实践的核对清单
+
 以下清单适合优化 Azure Stack 虚拟机中 SQL Server 的性能：
 
 
@@ -112,7 +113,7 @@ Azure Stack 虚拟机上有三种主要磁盘类型：
 
        例如，以下 PowerShell 创建新的存储池时将交错大小设为 64 KB，将列数设为 2：
 
-       ```PowerShell  
+       ```powershell  
        $PoolCount = Get-PhysicalDisk -CanPool $True
        $PhysicalDisks = Get-PhysicalDisk | Where-Object {$_.FriendlyName -like "*2" -or $_.FriendlyName -like "*3"}
 
@@ -161,4 +162,4 @@ Azure Stack 虚拟机上有三种主要磁盘类型：
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 Azure Stack 的服务或开发适用于 Azure Stack 的应用](azure-stack-considerations.md)
+[使用 Azure Stack 的服务或开发 Azure Stack 的应用](azure-stack-considerations.md)

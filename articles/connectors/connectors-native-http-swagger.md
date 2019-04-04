@@ -11,12 +11,12 @@ ms.assetid: eccfd87c-c5fe-4cf7-b564-9752775fd667
 tags: connectors
 ms.topic: article
 ms.date: 07/18/2016
-ms.openlocfilehash: de61443da41f1015b2890e9052f38e25d3bed86a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9408b66f74391b080ef46c758b07850b2ae8de57
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551962"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893375"
 ---
 # <a name="call-rest-endpoints-with-http--swagger-connector-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 HTTP + Swagger 连接器调用 REST 终结点
 
@@ -28,7 +28,7 @@ ms.locfileid: "57551962"
 
 HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功能相同，但通过公开来自 [Swagger 元数据](https://swagger.io)的 API 结构和输出，在逻辑应用设计器中提供更好的体验。 HTTP + Swagger 连接器还可用作触发器。 如果要实现轮询触发器，请遵循[创建用于调用逻辑应用的其他 API、服务和系统的自定义 API](../logic-apps/logic-apps-create-api-app.md#polling-triggers) 中所述的轮询模式。
 
-深入了解[逻辑应用触发器和操作](connectors-overview.md)。
+深入了解[逻辑应用触发器和操作](../connectors/apis-list.md)。
 
 以下示例演示如何在逻辑应用中将 HTTP + Swagger 操作用作工作流中的操作。
 
@@ -72,14 +72,14 @@ HTTP + Swagger 触发器和操作与 [HTTP 操作](connectors-native-http.md)功
 下面是此 HTTP + Swagger 连接器支持的触发器和操作的详细信息。
 
 ## <a name="http--swagger-triggers"></a>HTTP + Swagger 触发器
-触发器是用于启动在逻辑应用中定义的工作流的事件。 [了解有关触发器的详细信息](connectors-overview.md)。 HTTP + Swagger 连接器具有一个触发器。
+触发器是用于启动在逻辑应用中定义的工作流的事件。 HTTP + Swagger 连接器具有一个触发器。 [了解有关触发器的详细信息](../connectors/apis-list.md)。
 
 | 触发器 | 描述 |
 | --- | --- |
 | HTTP + Swagger |进行 HTTP 调用并返回响应内容 |
 
 ## <a name="http--swagger-actions"></a>HTTP + Swagger 操作
-操作是由在逻辑应用中定义的工作流执行的操作。 [了解有关操作的详细信息。](connectors-overview.md) HTTP + Swagger 连接器具有一个可能的操作。
+操作是由在逻辑应用中定义的工作流执行的操作。 HTTP + Swagger 连接器具有一个可能的操作。 [了解有关操作的详细信息](../connectors/apis-list.md)。
 
 | 操作 | 描述 |
 | --- | --- |
@@ -123,7 +123,6 @@ HTTP 响应
 | 404 |未找到 |
 | 500 |内部服务器错误。 发生未知错误。 |
 
-- - -
 ## <a name="next-steps"></a>后续步骤
 
 * [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)

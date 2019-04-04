@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/02/2019
 ms.author: diberry
-ms.openlocfilehash: 7496142b1c762ce0a7afa96a1a94dd3026351cc9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9eb73db6f641d3a5f5bb82901bd12ea291eada58
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58087918"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894075"
 ---
 # <a name="api-v1-to-v2-migration-guide-for-luis-apps"></a>LUIS 应用的 API v1 到 v2 迁移指南
 第 1 版[终结点](https://aka.ms/v1-endpoint-api-docs)和[创作](https://aka.ms/v1-authoring-api-docs) API 已弃用。 使用此指南学习如何迁移至第 2 版[终结点](https://aka.ms/luis-endpoint-apis)和[创作](https://aka.ms/luis-authoring-apis) API。 
@@ -30,7 +30,7 @@ LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 提�
 
 | 版本 | 路由 |
 |--|--|
-|第|/luis/v1.0/prog/apps|
+|1|/luis/v1.0/prog/apps|
 |2|/luis/api/v2.0/apps|
 
 
@@ -39,7 +39,7 @@ LUIS 为 LUIS API 提供新的[区域](https://aka.ms/LUIS-regions)。 LUIS 提�
 
 | 版本 | GET 路由 |
 |--|--|
-|第|/luis/v1/application?ID={appId}&q={q}|
+|1|/luis/v1/application?ID={appId}&q={q}|
 |2|/luis/v2.0/apps/{appId}?q={q}[&timezoneOffset][&verbose][&spellCheck][&staging][&bing-spell-check-subscription-key][&log]|
 
 
@@ -109,8 +109,8 @@ v2 终结点成功响应：
 
 | 版本 | 路由 |
 |--|--|
-|第|/luis/v1.0/prog/subscriptions|
-|第|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
+|1|/luis/v1.0/prog/subscriptions|
+|1|/luis/v1.0/prog/subscriptions/{subscriptionKey}|
 
 在 Azure 门户中生成了 Azure [终结点密钥](luis-how-to-azure-subscription.md)。 可在[发布](luis-how-to-azure-subscription.md)页上将密钥分配至 LUIS 应用。 不需要知道实际的密钥值。 LUIS 使用订阅名称来进行分配。 
 
@@ -119,7 +119,7 @@ v2 终结点成功响应：
 
 | 版本 | 路由 |
 |--|--|
-|第|/luis/v1.0/prog/apps/{appId}/entities|
+|1|/luis/v1.0/prog/apps/{appId}/entities|
 |2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities|
 
 ## <a name="metadata-renamed"></a>重命名元数据
@@ -134,12 +134,12 @@ v2 终结点成功响应：
 
 
 ## <a name="sample-renamed-to-suggest"></a>“示例”已重命名为“建议”
-LUIS 会从现有[终结点话语](luis-how-to-review-endoint-utt.md)中推荐能增强模型的话语。 在前一版本中，此功能名为“样本”。 在新版本中，其名称从“样本”改为“建议”。 在 LUIS 网站上名为[查看终结点话语](luis-how-to-review-endoint-utt.md)。
+LUIS 会从现有[终结点话语](luis-how-to-review-endpoint-utterances.md)中推荐能增强模型的话语。 在前一版本中，此功能名为“样本”。 在新版本中，其名称从“样本”改为“建议”。 在 LUIS 网站上名为[查看终结点话语](luis-how-to-review-endpoint-utterances.md)。
 
 | 版本 | 路由 |
 |--|--|
-|第|/luis/v1.0/prog/apps/{appId}/entities/{entityId}/sample|
-|第|/luis/v1.0/prog/apps/{appId}/intents/{intentId}/sample|
+|1|/luis/v1.0/prog/apps/{appId}/entities/{entityId}/sample|
+|1|/luis/v1.0/prog/apps/{appId}/intents/{intentId}/sample|
 |2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/entities/{entityId}/suggest|
 |2|/luis/api/v2.0/apps/{appId}/versions/{versionId}/intents/{intentId}/suggest|
 

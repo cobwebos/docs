@@ -16,18 +16,18 @@ ms.date: 01/09/2019
 ms.author: jeffgilb
 ms.reviewer: jiahan
 ms.lastreviewed: 01/09/2019
-ms.openlocfilehash: 7f44e8c2c4587ecfdb3bd5eb4304789674da96f3
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.openlocfilehash: e0101aebadcaef71f35c72b54f9126e69cff0f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55251995"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882829"
 ---
 # <a name="mysql-resource-provider-11330--release-notes"></a>MySQL 资源提供程序 1.1.33.0 发行说明
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-这些发行说明介绍了改进和 MySQL 资源提供程序版本 1.1.33.0 中的已知的问题。
+本发行说明描述 MySQL 资源提供程序 1.1.33.0 版中的改进和已知问题。
 
 ## <a name="build-reference"></a>内部版本参考
 下载 MySQL 资源提供程序二进制文件，然后运行自解压程序，将内容解压缩到一个临时目录。 资源提供程序有一个相应的 Azure Stack 最低内部版本。 下面列出了安装此 MySQL 资源提供程序版本所需的最低 Azure Stack 发行版：
@@ -44,13 +44,14 @@ ms.locfileid: "55251995"
 此 Azure Stack MySQL 资源提供程序版本包含以下改进和修复：
 
 ### <a name="fixes"></a>修复项
-- **MySQL 资源提供程序门户扩展可能会选择错误的订阅**。 MySQL 资源提供程序使用 Azure 资源管理器调用以确定第一个服务管理员订阅来使用，这可能不是*默认提供商订阅*。 如果发生这种情况，MySQL 资源提供程序不会不正常工作。 
+- **MySQL 资源提供程序门户扩展可能选择了错误的订阅**。 MySQL 资源提供程序使用 Azure 资源管理器调用来确定要使用的第一个服务管理员订阅，该订阅可能不是默认的提供程序订阅。 如果发生这种情况，则表明 MySQL 资源提供程序运行不正常。 
 
-- **MySQL 宿主服务器不会列出托管数据库。** 在查看租户资源的 MySQL 宿主服务器时，可能不会列出用户创建的数据库。
+- **MySQL 宿主服务器不会列出托管数据库。** 查看 MySQL 宿主服务器的租户资源时，可能会发现用户创建的数据库未列出。
 
-- **以前的 MySQL 资源提供程序 (1.1.30.0) 部署可能会失败，如果未启用 TLS 1.2**。 更新 MySQL 资源提供程序 1.1.33.0 部署资源提供程序，更新资源提供程序，或轮换机密时启用 TLS 1.2。 
+- **如果 TLS 1.2 未启用，以前的 MySQL 资源提供程序 (1.1.30.0) 部署可能会失败**。 更新了 MySQL 资源提供程序 1.1.33.0，可以在部署资源提供程序、更新资源提供程序或轮换机密时启用 TLS 1.2。 
 
-- **MySQL 资源提供程序机密轮换失败**。 轮换机密时导致以下错误代码修复的问题： ` New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
+- **MySQL 资源提供程序机密轮换失败**。 轮换机密时导致以下错误代码修复的问题：
+`New-AzureRmResourceGroupDeployment - Error: Code=InvalidDeploymentParameterValue; Message=The value of deployment parameter 'StorageAccountBlobUri' is null.`
 
 ## <a name="known-issues"></a>已知问题 
 
@@ -62,7 +63,7 @@ ms.locfileid: "55251995"
 
     **解决方法**：在同一订阅下创建新登录名时使用不同的用户名，或者在不同订阅下使用相同的用户名创建登录名。
 
-- **共享的 MySQL 登录名会导致数据不一致**。 如果在同一订阅下的多个 MySQL 数据库的共享 MySQL 登录名，则更改登录密码将导致数据不一致。
+- **共享的 MySQL 登录名导致数据不一致**。 如果在同一订阅下为多个 MySQL 数据库共享某个 MySQL 登录名，则更改登录密码会导致数据不一致。
 
     **解决方法**：在同一订阅下始终对不同的数据库使用不同的登录名。
 

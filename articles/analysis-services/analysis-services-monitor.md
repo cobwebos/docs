@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 6f686ff40805050b6da05a1971aeabb367da96d7
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.openlocfilehash: cdffa8e138062a91bd1876ac6e44728c47d9cdd7
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190806"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893174"
 ---
 # <a name="monitor-server-metrics"></a>监视服务器指标
 
@@ -38,7 +38,7 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
 
 使用此表可确定哪些指标最适用于监视方案。 在同一图表上只能显示相同单位的指标。
 
-|指标|指标显示名称|单位|聚合类型|Description|
+|指标|指标显示名称|单位|聚合类型|描述|
 |---|---|---|---|---|
 |CommandPoolJobQueueLength|命令池作业队列长度|Count|平均值|命令线程池队列中的作业数。|
 |CurrentConnections|连接: 当前连接数|Count|平均值|当前已建立的客户端连接的数量。|
@@ -87,4 +87,4 @@ Analysis Services 提供的指标可帮助你监视服务器的性能和运行�
 ## <a name="next-steps"></a>后续步骤
 [Microsoft Azure 中的监视](../monitoring-and-diagnostics/monitoring-overview.md)   
 [Microsoft Azure 中的指标](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)   
-[Azure Monitor REST API 中的指标](https://msdn.microsoft.com/library/azure/dn931930.aspx)
+[Azure Monitor REST API 中的指标](/rest/api/monitor/metrics)

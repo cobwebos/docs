@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: c5d4f67e9c1e4e983133675c440b8c5b64183227
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 664c8b659152a370d7fb31907b6cdbcd414dce31
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851712"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905086"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP 的性能优化 Azure Vm
 
@@ -128,7 +128,7 @@ Azure 目前的建议是设置 TCP MSS 钳位到 1350 字节和隧道接口 MTU 
 
 #### <a name="latency-and-round-trip-time"></a>延迟和往返时间
 
-网络延迟受光速纤程光纤网络上。 实际情况是，TCP 的网络吞吐量也是有效地控制 （实际最大值） 由于往返时间 (RTT) 的两个网络设备之间。
+网络延迟受光速纤程光纤网络上。 实际情况是，TCP 的网络吞吐量也是有效地控制 （实际最大值） 由于往返时间 (RTT) 两个网络设备之间。
 
 | | | | |
 |-|-|-|-|
@@ -343,7 +343,7 @@ NTttcp 是一种工具，用于测试的 Linux 或 Windows VM 的 TCP 性能。 
 
 - [Expressroute 网络性能故障排除](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 
-- [如何验证虚拟网络的 VPN 吞吐量](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [如何验证到达虚拟网络的 VPN 吞吐量](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>检测低效 TCP 行为
 

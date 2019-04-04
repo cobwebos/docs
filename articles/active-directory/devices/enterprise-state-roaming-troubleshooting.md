@@ -19,16 +19,18 @@ ms.author: joflore
 ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 728a67513bd66b6c39d1f366789172ee2963f6cc
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517464"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904247"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
 
 本主题介绍了如何排查和诊断企业状态漫游问题，并提供已知问题的列表。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="preliminary-steps-for-troubleshooting"></a>故障排除预备步骤 
 
@@ -40,10 +42,10 @@ ms.locfileid: "58517464"
 1. 必须已经为用户分配了 Azure Active Directory Premium 许可证。  
 1. 必须重启设备，并且用户必须重新登录才能访问企业状态漫游功能。
 
-## <a name="information-to-include-when-you-need-help"></a>需要帮助时应提供的信息
+## <a name="information-to-include-when-you-need-help"></a>需要帮助时应包含的信息
 如果根据以下指导仍然无法解决问题，请联系我们的支持工程师。 在联系支持工程师时，请提供以下信息：
 
-* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述你所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
+* **错误的一般说明**：用户是否看到了错误消息？ 如果没有任何错误消息，请详细描述所发现的意外行为。 为同步启用了哪些功能，用户可同步哪些内容？ 多个功能是否不能同步，或者说只能同步一个功能？
 * **受影响的用户** – 同步的成功/失败是针对一个用户还是多个用户？ 每个用户涉及到多少台设备？ 这些设备是否全都不能同步，或者只是同步其中的一部分？
 * **关于用户的信息** - 用户登录到设备时使用的是哪个标识？ 用户如何登录到设备？ 他们是否属于可同步的选定安全组？ 
 * **关于设备的信息** – 此设备是否已加入 Azure AD 或已加入域？ 设备位于哪个内部版本中？ 有哪些最新的更新？
@@ -162,8 +164,8 @@ ms.locfileid: "58517464"
 用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到“设置” > “系统” > “关于”使设备脱离，再选择“从工作或学校管理或断开”。 清理以下文件，Azure AD 将通过以下方式再次联接设备：转到“设置” > “系统” > “关于”，并选择“连接到工作或学校”。 继续将设备加入到 Azure Active Directory 并完成该流。
 
 在清理步骤中，清除以下文件：
-- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 中的 settings.dat
-- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account` 文件夹下的所有文件
+- 中的 Settings.dat `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
+- 在文件夹下的所有文件 `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
 
 ---
 
@@ -176,7 +178,7 @@ ms.locfileid: "58517464"
 
 ---
 
-### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098：错误:0xCAA5001C 令牌代理操作失败  
+### <a name="event-id-1098-error-0xcaa5001c-token-broker-operation-failed"></a>事件 ID 1098：错误：0xCAA5001C 令牌代理操作失败  
 
 在事件查看器中，在 AAD/Operational 日志下，可能会看到事件 ID 为 1104 的以下错误：AAD 云 AP 插件调用“获取令牌”返回了错误：0xC000005F。 如果缺少权限或所有权属性，将出现此问题。  
 

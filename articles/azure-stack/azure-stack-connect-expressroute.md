@@ -14,12 +14,12 @@ ms.date: 03/22/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 10/22/2018
-ms.openlocfilehash: 0ebd17eca363d7fc02daeb851bb24b8d1d307efc
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: bd5e5a3b6fa72698f04969219b1db3cdb0bde3a5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339595"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58486693"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>使用 Azure ExpressRoute 将 Azure Stack 连接到 Azure
 
@@ -232,7 +232,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 1. 使用管理员帐户登录到 Azure Stack 主机。
 1. 复制并编辑以下 PowerShell 脚本。 将 `your administrator password` 替换为自己的管理员密码，然后在权限提升的 PowerShell ISE 中运行此脚本。 此脚本返回**外部 BGPNAT 地址**。
 
-   ```PowerShell
+   ```powershell
    cd \AzureStack-Tools-master\connect
    Import-Module .\AzureStack.Connect.psm1
    $Password = ConvertTo-SecureString "your administrator password" `
@@ -250,7 +250,7 @@ Azure Stack 开发工具包是自主性的，与部署物理主机的网络相�
 
    在权限提升的 PowerShell ISE 中运行以下脚本：
 
-   ```PowerShell
+   ```powershell
    $ExtBgpNat = 'External BGPNAT address'
    $IntBgpNat = 'Internal IP address'
 
@@ -599,7 +599,7 @@ route-map VNET-ONLY permit 10
 
 默认情况下，Windows Server 2016 不允许通过防火墙传入 ICMP 数据包。 对于用于 ping 测试的每个虚拟机，必须允许传入 ICMP 数据包。 若要为 ICMP 创建防火墙规则，请在权限提升的 PowerShell 窗口中运行以下 cmdlet：
 
-```PowerShell
+```powershell
 # Create ICMP firewall rule.
 New-NetFirewallRule `
   –DisplayName “Allow ICMPv4-In” `

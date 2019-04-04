@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 09b8556a83dec286ce8d67fa5fd6d27e027325bf
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: cfea454b20b010148eba063ec724e55134944ac3
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769210"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58482923"
 ---
 # <a name="deploy-the-local-agent"></a>部署本地代理
 
@@ -57,7 +57,7 @@ ms.locfileid: "57769210"
 1. 在将要用来运行测试的计算机的提升权限的提示符窗口中打开 Windows PowerShell。
 2. 运行以下命令来下载本地代理：
 
-    ```PowerShell
+    ```powershell
     Invoke-WebRequest -Uri "https://storage.azurestackvalidation.com/packages/Microsoft.VaaSOnPrem.TaskEngineHost.latest.nupkg" -outfile "OnPremAgent.zip"
     Expand-Archive -Path ".\OnPremAgent.zip" -DestinationPath VaaSOnPremAgent -Force
     Set-Location VaaSOnPremAgent\lib\net46
@@ -65,7 +65,7 @@ ms.locfileid: "57769210"
 
 3. 运行以下命令安装本地代理依赖项：
 
-    ```PowerShell
+    ```powershell
     $ServiceAdminCreds = New-Object System.Management.Automation.PSCredential "<aadServiceAdminUser>", (ConvertTo-SecureString "<aadServiceAdminPassword>" -AsPlainText -Force)
     Import-Module .\VaaSPreReqs.psm1 -Force
     Install-VaaSPrerequisites -AadTenantId $AadTenantId `
@@ -113,14 +113,15 @@ ms.locfileid: "57769210"
 
 2. 运行以下命令：
 
-    ```PowerShell
+    ```powershell
     .\Microsoft.VaaSOnPrem.TaskEngineHost.exe -u <VaaSUserId> -t <VaaSTenantId>
     ```
 
       **参数**  
+
     | 参数 | 描述 |
     | --- | --- |
-    | VaaSUserId | 用于登录到 VaaS 门户的用户 ID（例如 UserName@Contoso.com） |
+    | VaaSUserId | 使用用户 ID 登录到 VaaS 门户 (例如，用户名\@Contoso.com) |
     | VaaSTenantId | 注册到验证即服务的 Azure 帐户的 Azure AD 租户 ID。 |
 
     > [!Note]  

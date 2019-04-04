@@ -15,18 +15,21 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: c316176094f6d9b8b45b812acaad04ad37f4bce2
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449128"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905811"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
 本文列出了为 Azure 应用服务中的 Web 应用配置域或 SSL 证书时可能遇到的常见问题。 此外，还描述了这些问题的可能原因和解决方法。
 
 如果对本文中的任何内容需要更多帮助，可以联系 [MSDN 和 Stack Overflow 论坛](https://azure.microsoft.com/support/forums/)上的 Azure 专家。 或者，你也可以提出 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="certificate-problems"></a>证书问题
 
@@ -112,7 +115,7 @@ ms.locfileid: "58449128"
 
 配置的自定义域缺少 CNAME 或 A 记录。 
 
-**原因 1 的解决方法**
+**原因 1 的解决方案**
 
 - 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
 - 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
@@ -122,7 +125,7 @@ ms.locfileid: "58449128"
 
 Internet 浏览器可能仍在缓存域的旧 IP 地址。 
 
-**原因 2 的解决方法**
+**原因 2 的解决方案**
 
 清除浏览器缓存。 对于 Windows 设备，可以运行命令 `ipconfig /flushdns`。 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 
 
@@ -284,7 +287,7 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 应用服务域使用 GoDaddy 域注册和 Azure DNS 来托管域。 
 
-**我有自动续订已启用，但仍收到通过电子邮件向我的域一份续订通知。我该怎样做？**
+**我有自动续订已启用，但仍收到通过电子邮件向我的域一份续订通知。 我该怎么办？**
 
 如果有自动续订已启用，你不需要执行任何操作。 请注意，电子邮件提供以通知您域是即将到期，并手动续订，如果自动续订未启用。
 
@@ -292,7 +295,7 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 域购买的初始成本适用于仅域注册。 除了注册成本，还有免费的 Azure DNS 根据使用情况。 有关详细信息，请参阅[Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)的更多详细信息。
 
-**我购买我前面在 Azure 门户中的域，并且想要将从 GoDaddy 托管到 Azure DNS 托管移。如何执行此操作？**
+**我购买我前面在 Azure 门户中的域，并且想要将从 GoDaddy 托管到 Azure DNS 托管移。 如何执行此操作？**
 
 不一定要迁移到 Azure DNS 托管。 如果确实想要有关迁移到 Azure DNS 中，在 Azure 门户中的域管理体验提供了到 Azure DNS 所需的步骤信息。 如果域通过应用服务购买的从 GoDaddy 托管到 Azure DNS 的迁移是相对无缝的过程。
 
@@ -314,7 +317,7 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
 
 **可以将传输域从一个订阅到另一个订阅？**
 
-可以将一个域移到另一个订阅/资源组使用[Move-azurermresource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Move-AzureRmResource) PowerShell cmdlet。
+可以将一个域移到另一个订阅/资源组使用[移动 AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet。
 
 **如果当前没有对 Azure 应用服务应用程序如何管理我的自定义域？**
 

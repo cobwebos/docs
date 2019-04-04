@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
-ms.openlocfilehash: 40e91b4ba7ee62976b49975769bd1d1e656525f2
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54328862"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918461"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>使用 Azure 自动化管理 Azure 云服务
 本指南介绍 Azure 自动化服务，以及如何使用它来简化 Azure 云服务的管理。
@@ -32,16 +32,16 @@ Azure 自动化能够提供高度可靠且长期可用的工作流执行引擎�
 通过将云管理任务改为由 Azure 自动化自动运行，可以降低运营开销，解放 IT/开发运营人员，让他们将精力集中在增加企业价值的工作上。
 
 ## <a name="how-can-azure-automation-help-manage-azure-cloud-services"></a>Azure 自动化如何帮助管理 Azure 云服务？
-可以使用 [Azure PowerShell 工具](https://msdn.microsoft.com/library/azure/jj156055.aspx)中提供的 PowerShell cmdlet 在 Azure 自动化中管理 Azure 云服务。 Azure 自动化现成地提供了这些云服务 PowerShell cmdlet，因此，可以在该服务中执行所有云服务管理任务。 还可以将 Azure 自动化中的 cmdlet 与其他 Azure 服务的 cmdlet 搭配使用，以自动完成跨 Azure 服务和第三方系统的复杂任务。
+可以使用 [Azure PowerShell 工具](/powershell/)中提供的 PowerShell cmdlet 在 Azure 自动化中管理 Azure 云服务。 Azure 自动化现成地提供了这些云服务 PowerShell cmdlet，因此，可以在该服务中执行所有云服务管理任务。 还可以将 Azure 自动化中的 cmdlet 与其他 Azure 服务的 cmdlet 搭配使用，以自动完成跨 Azure 服务和第三方系统的复杂任务。
 
 使用 Azure 自动化管理 Azure 云服务的部分示例包括：
 
-* [每当在 Azure Blob 存储中更新了 cscfg 或 cspkg 时持续部署云服务](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
-* [并行重启云服务实例，每次重启一个升级域](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
+* [云服务每次在 Azure Blob 存储中更新 cscfg 或 cspkg 时持续部署](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
+* [重新启动并行，一次一个升级域中的云服务实例](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
 ## <a name="next-steps"></a>后续步骤
 了解 Azure 自动化以及如何使用它来管理 Azure 云服务的基础知识后，请点击以下链接了解有关 Azure 自动化的更多信息。
 
 * [Azure 自动化概述](../automation/automation-intro.md)
-* [第一个 Runbook](../automation/automation-first-runbook-graphical.md)
+* [我的第一个 Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure 自动化学习路线图](https://azure.microsoft.com/documentation/learning-paths/automation/)

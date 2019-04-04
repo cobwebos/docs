@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: article
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: b7788cc6854b477e8aab9e9df82ed2b54a3bdfe2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: HT
+ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884561"
+ms.locfileid: "58894672"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
@@ -81,7 +81,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/luis:latest
 1. 使用所需的输入装入点和计费设置[运行容器](##run-the-container-with-docker-run)。 提供 `docker run` 命令的多个[示例](luis-container-configuration.md#example-docker-run-commands)。 
 1. [查询容器的预测终结点](#query-the-containers-prediction-endpoint)。 
 1. 使用完此容器后，从 LUIS 门户的输出装入点[导入终结点日志](#import-the-endpoint-logs-for-active-learning)并[停止](#stop-the-container)容器。
-1. 在“查看终结点话语”页上使用 LUIS 门户的[主动学习](luis-how-to-review-endoint-utt.md)改进应用。
+1. 在“查看终结点话语”页上使用 LUIS 门户的[主动学习](luis-how-to-review-endpoint-utterances.md)改进应用。
 
 无法更改正在容器中运行的应用。 若要更改容器中的应用，必须使用 [LUIS](https://www.luis.ai) 门户或使用 LUIS [创作 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 更改 LUIS 服务中的应用。 然后进行训练和/或发布，下载新包并再次运行该容器。
 
@@ -268,7 +268,7 @@ ApiKey={ENDPOINT_KEY}
 |`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
 |`verbose`|布尔值|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
 |`staging`|布尔值|设置为 true 时，返回过渡环境结果中的查询。 |
-|`log`|布尔值|记录查询，可供以后[主动学习](luis-how-to-review-endoint-utt.md)。 默认值为 true。|
+|`log`|布尔值|记录查询，可供以后[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
 
 ### <a name="query-published-app"></a>查询已发布的应用
 

@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: 720f4433c1e7b0d271e5729236f439c92a84687e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884646"
+ms.locfileid: "58905233"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure 数据框边缘系统要求
 
@@ -80,15 +80,23 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 
 ### <a name="url-patterns-for-compute-feature"></a>计算功能的 URL 模式
 
-| URL 模式                      | 组件或功能                     |   |
-|----------------------------------|---------------------------------------------|---|
-| `https://mcr.microsoft.com`<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |   |
-| https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） |   |
-| https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             |   |
+| URL 模式                      | 组件或功能                     |   
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.io | Microsoft 容器注册表（必填）               |
+| https://\*.azurecr.io                     | 个人和第三方容器注册表（可选） | 
+| https://\*.azure-devices.net              | Iot 中心访问权限（必填）                             | 
 
-### <a name="url-patterns-for-azure-government"></a>Azure 政府版的 URL 模式
+### <a name="url-patterns-for-gateway-for-azure-government"></a>Azure government 的网关的 URL 模式
 
 [!INCLUDE [Azure Government URL patterns for firewall](../../includes/data-box-edge-gateway-gov-url-patterns-firewall.md)]
+
+### <a name="url-patterns-for-compute-for-azure-government"></a>Azure 政府版计算的 URL 模式
+
+| URL 模式                      | 组件或功能                     |  
+|----------------------------------|---------------------------------------------|
+| https://mcr.microsoft.com<br></br>https://\*.cdn.mscr.com | Microsoft 容器注册表（必填）               |
+| https://\*.azure-devices.us              | Iot 中心访问权限（必填）           |
+| https://\*.azurecr.us                    | 个人和第三方容器注册表（可选） | 
 
 ## <a name="internet-bandwidth"></a>Internet 带宽
 

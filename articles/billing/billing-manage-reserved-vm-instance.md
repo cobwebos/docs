@@ -13,18 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/22/2019
 ms.author: banders
-ms.openlocfilehash: 0f6e0f3795e0e6d25f7443473c5911995597ca14
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648633"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904435"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
 有关 Azure 购买预订后，你可能需要将预订应用到其他订阅，更改谁可以管理预订，或更改预订的范围。 还可以将预留拆分为两个预留，以将购买的一些实例应用于另一个订阅。
 
 如果购买了 Azure 虚拟机预留实例，则可以更改预留的优化设置。 预留折扣可以应用于同一系列中的 VM，也可以为特定的 VM 大小保留数据中心容量。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="change-the-scope-for-a-reservation"></a>更改预订范围
 
@@ -70,25 +73,25 @@ ms.locfileid: "58648633"
 
     ```powershell
     # Get the reservation orders you have access to
-    Get-AzureRmReservationOrder
+    Get-AzReservationOrder
     ```
 
 2. 获取预订的详细信息：
 
     ```powershell
-    Get-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a
+    Get-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a
     ```
 
 3. 将该预订拆分为两个预订并分配实例：
 
     ```powershell
     # Split the reservation. The sum of the reservations, the quantity, must equal the total number of instances in the reservation that you're splitting.
-    Split-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
+    Split-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId b8be062a-fb0a-46c1-808a-5a844714965a -Quantity 3,2
     ```
 4. 可运行以下命令更新范围：
 
     ```powershell
-    Update-AzureRmReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
+    Update-AzReservation -ReservationOrderId a08160d4-ce6b-4295-bf52-b90a5d4c96a0 -ReservationId 5257501b-d3e8-449d-a1ab-4879b1863aca -AppliedScopeType Single -AppliedScope /subscriptions/15bb3be0-76d5-491c-8078-61fe3468d414
     ```
 
 ## <a name="cancellations-and-exchanges"></a>取消和更换
@@ -97,7 +100,7 @@ ms.locfileid: "58648633"
 
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+- [通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>更改预留 VM 实例的优化设置
 
@@ -127,18 +130,18 @@ ms.locfileid: "58648633"
 
 购买服务计划：
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
-- [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../cosmos-db/cosmos-db-reserved-capacity.md)
+- [通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
+- [预付款购买的 Azure Cosmos DB 资源与 Azure Cosmos DB 保留容量](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 购买的软件计划：
 - [预付款购买的 Red Hat 软件计划从 Azure 保留项](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
 
 了解折扣和使用情况：
-- [了解 VM 预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
+- [了解如何应用 VM 预订折扣](billing-understand-vm-reservation-charges.md)
 - [了解如何应用 Red Hat Enterprise Linux 软件计划折扣](../billing/billing-understand-rhel-reservation-charges.md)
-- [了解如何应用 SUSE Linux Enterprise 软件计划折扣](../billing/billing-understand-suse-reservation-charges.md)
-- [了解如何应用其他预留折扣](billing-understand-reservation-charges.md)
-- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
-- [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [了解 SUSE Linux Enterprise 软件计划折扣是如何应用的](../billing/billing-understand-suse-reservation-charges.md)
+- [了解如何应用其他预订折扣](billing-understand-reservation-charges.md)
+- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [未包含的保留项的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)

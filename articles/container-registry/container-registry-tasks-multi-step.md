@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/15/2018
+ms.date: 03/28/2019
 ms.author: danlep
-ms.openlocfilehash: b2b6da1739aa97f69f5744905564f638309a587f
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
-ms.translationtype: HT
+ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854316"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895439"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
 
@@ -32,8 +32,6 @@ ms.locfileid: "51854316"
 
 所有步骤在 Azure 中执行，可将工作卸载到 Azure 的计算资源，并消除基础结构的管理工作。 除了 Azure 容器注册表费用以外，只需为所用的资源付费。 有关定价信息，请参阅 [Azure 容器注册表定价][pricing]中的“容器生成”部分。
 
-> [!IMPORTANT]
-> 此功能目前处于预览状态。 需同意[补充使用条款][terms-of-use]才可使用预览版。 在正式版 (GA) 推出之前，此功能的某些方面可能会有所更改。
 
 ## <a name="common-task-scenarios"></a>常见任务方案
 
@@ -49,14 +47,14 @@ ms.locfileid: "51854316"
 
 ACR 任务中的多步骤任务定义为 YAML 文件中的一系列步骤。 每个步骤可以指定对成功完成前面一个或多个步骤的依赖性。 可使用以下任务步骤类型：
 
-* [`build`](container-registry-tasks-reference-yaml.md#build)：使用熟悉的 `docker build` 语法以串行或并行方式生成一个或多个容器映像。
-* [`push`](container-registry-tasks-reference-yaml.md#push)：将生成的映像推送到容器注册表。 支持 Azure 容器注册表等专用注册表，并支持公共 Docker 中心。
-* [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：运行容器，使其可以在所运行任务的上下文中作为函数运行。 可将参数传递到容器的 `[ENTRYPOINT]`，并指定 env、detach 等属性，以及其他熟悉的 `docker run` 参数。 `cmd` 步骤类型可以实现单元测试和功能测试，并支持并发容器执行。
+* [`build`](container-registry-tasks-reference-yaml.md#build)：生成使用熟悉的一个或多个容器映像`docker build`语法中的，按系列或并行。
+* [`push`](container-registry-tasks-reference-yaml.md#push)：将构建的映像推送到容器注册表。 支持 Azure 容器注册表等专用注册表，并支持公共 Docker 中心。
+* [`cmd`](container-registry-tasks-reference-yaml.md#cmd)：运行一个容器，以便它可以为正在运行的任务的上下文中的函数进行操作。 可将参数传递到容器的 `[ENTRYPOINT]`，并指定 env、detach 等属性，以及其他熟悉的 `docker run` 参数。 `cmd` 步骤类型可以实现单元测试和功能测试，并支持并发容器执行。
 
 以下代码片段演示如何组合使用这些任务步骤类型。 多步骤任务使用类似于以下内容的 YAML 文件可以像从 Dockerfile 构建单个映像并推送到注册表一样简单：
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
   - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
@@ -64,8 +62,8 @@ steps:
 
 或更复杂，例如以下虚构的多步骤定义，其中包括用于生成、测试 helm 包和 helm 部署的步骤（未显示容器注册表和 Helm 存储库配置）：
 
-```yaml
-version: 1.0-preview-1
+```yml
+version: v1.0.0
 steps:
   - id: build-web
     build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}} .
@@ -150,14 +148,6 @@ Run ID: yd14 was successful after 19s
 ```
 
 有关提交 Git 或更新基础映像时的自动生成的详细信息，请参阅[自动映像生成](container-registry-tutorial-build-task.md)和[基础映像更新生成](container-registry-tutorial-base-image-update.md)教程文章。
-
-## <a name="preview-feedback"></a>预览功能反馈
-
-在 ACR 任务的多步骤任务功能预览期，我们邀请各位提供反馈。 可以使用多个反馈渠道：
-
-* [问题](https://aka.ms/acr/issues) - 查看现有 bug 和问题，以及记录新问题
-* [UserVoice](https://aka.ms/acr/uservoice) - 对现有功能请求投票，或创建新请求
-* [讨论](https://aka.ms/acr/feedback) - 在 Stack Overflow 社区参与 Azure 容器注册表的讨论
 
 ## <a name="next-steps"></a>后续步骤
 

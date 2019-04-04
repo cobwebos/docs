@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 177d74a54e4ab4de698cbb63091656cc8b584e2b
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: 1f9c30f1c914f6c8d42967e014d967ba0d5b85cc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010678"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893837"
 ---
 # <a name="manage-azure-analysis-services-with-powershell"></a>使用 PowerShell 管理 Azure Analysis Services
 
@@ -27,11 +27,11 @@ ms.locfileid: "57010678"
 
 大多数 PowerShell 任务要求用户在所管理的 Analysis Services 服务器上具有管理员权限。 已计划的 PowerShell 任务是无人参与操作。 运行计划程序的帐户或服务主体必须具有对 Analysis Services 服务器的管理权限。 
 
-对于使用 Azure PowerShell cmdlet 的服务器操作，你的帐户或运行计划程序的帐户还必须属于中的资源的所有者角色[azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 
+对于使用 Azure PowerShell cmdlet 的服务器操作，你的帐户或运行计划程序的帐户还必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的所有者角色。 
 
 ## <a name="resource-management-operations"></a>资源管理操作 
 
-Module - [Az.AnalysisServices](/powershell/module/az.analysisservices)
+模块 - [Az.AnalysisServices](/powershell/module/az.analysisservices)
 
 |Cmdlet|描述| 
 |------------|-----------------| 
@@ -52,9 +52,9 @@ Module - [Az.AnalysisServices](/powershell/module/az.analysisservices)
 |Cmdlet|描述| 
 |------------|-----------------| 
 |[Add-AzAnalysisServicesAccount](/powershell/module/az.analysisservices/add-AzAnalysisServicesaccount)|添加一个经身份验证的帐户，以用于 Azure Analysis Services 服务器 cmdlet 请求。| 
-|[Export-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/export-AzAnalysisServicesinstancelog)|将日志导出从 Analysis Services 服务器中当前登录的环境添加 AzAnalysisServicesAccount 命令中指定的实例|  
-|[Restart-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|当前已登录的环境中; 在重新启动 Analysis Services 服务器的实例添加 AzAnalysisServicesAccount 命令中指定。|  
-|[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|同步 Analysis Services 服务器中当前登录的环境添加 AzAnalysisServicesAccount 命令中指定的所有查询横向扩展实例的指定实例上指定的数据库|  
+|[Export-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/export-AzAnalysisServicesinstancelog)|在 Add-AzAnalysisServicesAccount 命令指定的当前登录环境中，从 Analysis Services 服务器实例中导出日志|  
+|[Restart-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|在当前登录的环境中重新启动 Analysis Services 服务器的实例；在 Add-AzAnalysisServicesAccount 命令中指定。|  
+|[Sync-AzAnalysisServicesInstance](/powershell/module/az.analysisservices/restart-AzAnalysisServicesinstance)|在 Add-AzAnalysisServicesAccount 命令指定的当前登录环境中，将指定的 Analysis Services 服务器实例上的指定数据库同步到所有查询横向扩展实例|  
 
 ## <a name="database-operations"></a>数据库操作
 
@@ -72,7 +72,7 @@ SqlServer 模块提供任务特定的数据库管理 cmdlet，以及接受表格
 |[Invoke-ProcessASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processasdatabase)|处理数据库。|  
 |[Invoke-ProcessPartition](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processpartition)|处理分区。| 
 |[Invoke-ProcessTable](https://docs.microsoft.com/powershell/module/sqlserver/invoke-processtable)|处理表。|  
-|[Merge-Partition](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|合并分区。|  
+|[合并分区](https://docs.microsoft.com/powershell/module/sqlserver/merge-partition)|合并分区。|  
 |[Restore-ASDatabase](https://docs.microsoft.com/powershell/module/sqlserver/restore-asdatabase)|还原 Analysis Services 数据库。| 
   
 
@@ -81,4 +81,4 @@ SqlServer 模块提供任务特定的数据库管理 cmdlet，以及接受表格
 * [下载 SQL Server PowerShell 模块](https://docs.microsoft.com/sql/ssms/download-sql-server-ps-module)   
 * [下载 SSMS](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)   
 * [PowerShell 库中的 SqlServer 模块](https://www.powershellgallery.com/packages/SqlServer)    
-* [Tabular Model Programming for Compatibility Level 1200 and higher](https://msdn.microsoft.com/library/mt712541.aspx)（适用于兼容级别 1200 或更高级别的表格模型编程）
+* [表格模型编程兼容级别 1200年及更高版本](/sql/analysis-services/tabular-model-programming-compatibility-level-1200/tabular-model-programming-for-compatibility-level-1200)

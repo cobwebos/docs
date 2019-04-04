@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 03/20/2019
-ms.openlocfilehash: e02a09bdc8bd80b93f7fa33632c32a75c1d705bd
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.lastreviewed: 03/27/2019
+ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226855"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649399"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
@@ -56,18 +56,20 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 ### <a name="azure-stack-hotfixes"></a>Azure Stack 修补程序
 
+如果已有 1901年和尚未安装任何修补程序，你可以[直接安装 1902年](azure-stack-update-1902.md)，而不必首先安装 1901年修补程序。
+
 - **1809**：[KB 4481548 – Azure Stack 修补程序 1.1809.12.114](https://support.microsoft.com/help/4481548/)
 - **1811**：当前没有修补程序可用。
-- **1901**：[KB 4481548 – Azure Stack 修补程序 1.1901.2.103](https://support.microsoft.com/help/4494720)
+- **1901**：[KB 4495662 – Azure Stack 修补程序 1.1901.3.105](https://support.microsoft.com/help/4495662)
 
 ## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
-> - 在更新到 1901 之前，请先安装 1811 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。
+> 在更新到 1901 之前，请先安装 1811 的[最新 Azure Stack 修补程序](#azure-stack-hotfixes)（如果有）。 如果你已有 1901年并且你尚未安装任何修补程序，您可以直接安装 1902年不首先安装 1901年修补程序。
 
 - 在开始安装此更新之前，请使用以下参数运行 [Test-AzureStack](azure-stack-diagnostic-test.md)，以验证 Azure Stack 的状态并解决发现的所有操作问题，包括所有警告和故障。 另外，请查看活动警报，并解决所有需要采取措施的警报。
 
-    ```PowerShell
+    ```powershell
     Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary, AzsHostingServiceCertificates
     ```
 
@@ -93,7 +95,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
    * **AzureRm.Insights**  
          AzureRm 汇总模块现在包含已发布的 5.1.5 版，支持适用于指标、指标定义资源类型的 **api-version 2018-01-01**。
 
-- **AzureStack 1.7.0** 这是一个有中断性变更的版本。 有关中断性变更的详细信息，请参阅 https://aka.ms/azspshmigration170
+- **AzureStack 1.7.1**这一项重大更改的释放。 有关中断性变更的详细信息，请参阅 https://aka.ms/azspshmigration171
    * **Azs.Backup.Admin 模块**  
          重大更改：备份对基于证书的加密模式的更改。 已弃用对对称密钥的支持。  
    * **Azs.Fabric.Admin 模块**  
@@ -117,9 +119,6 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - <!-- 3235634 – IS, ASDK -->
   修复了以下问题：部署其大小包含 **v2** 后缀的 VM（例如 **Standard_A2_v2**）时，需要将后缀指定为 **Standard_A2_v2**（小写 v）。 使用全球 Azure 时，现在可以使用 **Standard_A2_V2**（大写 V）。
-
-<!-- 2869209 – IS, ASDK --> 
-- 修复了以下问题：使用 [Add-AzsPlatformImage cmdlet](/powershell/module/azs.compute.admin/add-azsplatformimage) 时必须使用 **-OsUri** 参数作为存储帐户 URI（磁盘将上传到该存储帐户）。 现在还可以使用磁盘的本地路径。
 
 <!--  2795678 – IS, ASDK --> 
 - 修复了以下问题：使用门户创建高级 VM 大小（DS、Ds_v2、FS、FSv2）的虚拟机 (VM) 时生成警告。 VM 是在标准存储帐户中创建的。 尽管这不会影响功能、IOPs 或计费，但我们依然修复了警告。
