@@ -4,16 +4,16 @@ description: 本快速入门介绍如何将数据从 Logstash 引入（加载）
 services: data-explorer
 author: tamirkamara
 ms.author: takamara
-ms.reviewer: orspod
+ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 1/14/2019
-ms.openlocfilehash: 01115524ae3890c1d6a0220bcf89e86090d148cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5b4917e0d73378b908739a8fc8c0744c70dd1e9
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078867"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58754665"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>快速入门：将数据从 Logstash 引入 Azure 数据资源管理器
 

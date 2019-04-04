@@ -3,17 +3,17 @@ title: 什么是 Azure 数据资源管理器？
 description: Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: 33169448b5b1e4496f42d157cb77134b90804fa6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e3a669c547b33e5f13da43bc3ce851a2f24783f5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57433172"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755986"
 ---
 # <a name="what-is-azure-data-explorer"></a>什么是 Azure 数据资源管理器？
 

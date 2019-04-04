@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 10/31/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 4c2f2ebca40ee3e4b5a9a32767783694af52944b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee1150dd146be1f022134ffe6df3ca2fbf84f867
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106638"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58652144"
 ---
 # <a name="tutorial-unpack-connect-and-unlock-azure-data-box-disk"></a>教程：打开包装、连接和解锁 Azure Data Box Disk
 
@@ -90,7 +90,7 @@ ms.locfileid: "58106638"
     PS C:\DataBoxDiskUnlockTool\DiskUnlock>
     ``` 
 
-6. 运行 `DataBoxDiskUnlock.exe`，并提供在[连接到磁盘并获取支持密钥](#Connect-to-disks-and-get-the-passkey)中获取的支持密钥。 此时会显示分配给磁盘的驱动器号。 下面显示了示例输出。
+6. 运行 `DataBoxDiskUnlock.exe`，并提供在[连接到磁盘并获取支持密钥](#connect-to-disks-and-get-the-passkey)中获取的支持密钥。 此时会显示分配给磁盘的驱动器号。 下面显示了示例输出。
 
     ```powershell
     PS C:\WINDOWS\system32> cd C:\DataBoxDiskUnlockTool\DiskUnlock
@@ -204,7 +204,7 @@ ms.locfileid: "58106638"
      OpenSSL is already installed.
      ```
 
-6. 运行 Data Box Disk 解锁工具。 在 Azure 门户中提供在[连接到磁盘并获取支持密钥](#Connect-to-disks-and-get-the-passkey)中获取的支持密钥。 （可选）指定要解锁 BitLocker 加密卷列表。 应在单引号中指定支持密钥和卷列表。 
+6. 运行 Data Box Disk 解锁工具。 在 Azure 门户中提供在[连接到磁盘并获取支持密钥](#connect-to-disks-and-get-the-passkey)中获取的支持密钥。 （可选）指定要解锁 BitLocker 加密卷列表。 应在单引号中指定支持密钥和卷列表。 
 
     键入以下命令。
  

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: b3ab3552ad1b9bdd14a3d07cd426f8c0bc9dc865
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: a23bbf224b0a8803a24d5d2e775a5efcc7e7d2da
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759230"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877136"
 ---
 # <a name="run-your-first-resource-graph-query-using-azure-powershell"></a>使用 Azure PowerShell 运行首个 Resource Graph 查询
 
@@ -95,7 +95,7 @@ Azure Resource Graph 模块需要以下软件：
 
 若希望从 Azure PowerShell 环境中删除 Resource Graph 模块，可使用以下命令：
 
-```powershell
+```azurepowershell-interactive
 # Remove the Resource Graph module from the Azure PowerShell environment
 Remove-Module -Name 'Az.ResourceGraph'
 ```

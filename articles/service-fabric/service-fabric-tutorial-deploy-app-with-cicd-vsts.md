@@ -3,8 +3,8 @@ title: 在 Azure 中部署具有持续集成功能和 Azure Pipelines 的 Servic
 description: 本教程介绍了如何使用 Azure Pipelines 为 Service Fabric 应用程序设置持续集成和部署。
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 ms.assetid: ''
 ms.service: service-fabric
@@ -13,14 +13,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/02/2018
-ms.author: ryanwi
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 766c0c780807ff7627ae9fb96aca4a896918f9c6
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.openlocfilehash: c805d2bc03ad07635b01a5e978822ecab2425457
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53094944"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58668834"
 ---
 # <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>教程：将具有 CI/CD 的应用程序部署到 Service Fabric 群集
 
@@ -30,8 +30,8 @@ ms.locfileid: "53094944"
 
 > [!div class="checklist"]
 > * 向项目中添加源代码管理
-> * 在 Azure Pipelines 中创建生成管道
-> * 在 Azure Pipelines 中创建发布管道
+> * 在 Azure 管道中创建生成管道
+> * 在 Azure 管道中创建发布管道
 > * 自动部署和升级应用程序
 
 在此系列教程中，你会学习如何：

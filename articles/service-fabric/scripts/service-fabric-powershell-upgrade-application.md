@@ -3,8 +3,8 @@ title: Azure PowerShell 脚本示例 - 升级 Service Fabric 应用程序 | Micr
 description: Azure PowerShell 脚本示例 - 升级 Service Fabric 应用程序。
 services: service-fabric
 documentationcenter: ''
-author: rwike77
-manager: timlt
+author: athinanthny
+manager: chackdan
 editor: ''
 tags: azure-service-management
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
 ms.date: 01/18/2018
-ms.author: ryanwi
+ms.author: atsenthi
 ms.custom: mvc
-ms.openlocfilehash: 889e1bbb71f6eaa1871556b3b9a7da1c28cf16ee
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 8a291e49272c47035f73ad70534ac5393060940a
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27927907"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58663547"
 ---
 # <a name="upgrade-a-service-fabric-application"></a>升级 Service Fabric 应用程序
 

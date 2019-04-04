@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 24a35b387a8b47d44f742303ddde0a0e8fb47fe6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2451922f0eb49a5ccee036db72eb046760287dca
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57833792"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58628861"
 ---
 # <a name="azure-spatial-anchors-overview"></a>Azure 空间定位点概述
 
@@ -30,7 +30,7 @@ ms.locfileid: "57833792"
 
 - [方法查找](concepts/anchor-relationships-way-finding.md)。 开发人员还可以将空间定位点连接在一起，在它们之间创建关系。 例如，应用可以包括具有两个或更多个兴趣点的体验，用户必须与其交互以完成任务。 这些兴趣点可以通过连接的方式创建。 稍后，当用户完成多步骤任务时，应用可以请求当前定位点附近的定位点将用户指向任务中的下一步骤。
 
-- [在现实世界中保留虚拟内容](concepts/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor)。 通过该应用，用户可在会议室墙上放置虚拟日历，人们可以使用手机应用或 HoloLens 设备查看该日历。 在工业环境中，用户可以通过将支持的设备照相机指向机器来接收关于机器的上下文信息。
+- [在现实世界中保留虚拟内容](how-tos/create-locate-anchors-unity.md#create-a-cloud-spatial-anchor)。 通过该应用，用户可在会议室墙上放置虚拟日历，人们可以使用手机应用或 HoloLens 设备查看该日历。 在工业环境中，用户可以通过将支持的设备照相机指向机器来接收关于机器的上下文信息。
 
 Azure 空间定位点由受支持的设备平台的托管服务和客户端 SDK 组成。 以下部分提供有关使用 Azure 空间定位点开始构建应用的信息。
 
