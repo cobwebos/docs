@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 990aad4df05a9cc765baa965da2293d51a19e705
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58851715"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904145"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 
@@ -46,7 +46,7 @@ Azure Monitor 中的日志包含不同类型的数据组织到具有不同的每
 | 分析 | 使用[Log Analytics](../log-query/get-started-portal.md)在 Azure 门户中编写[记录查询](../log-query/log-query-overview.md)以交互方式使用和分析日志数据的功能强大的数据资源管理器中分析引擎。<br>使用[Application Insights analytics 控制台](../app/analytics.md)编写日志查询并以交互方式分析从 Application Insights 的日志数据在 Azure 门户中。 |
 | 可视化 | 将查询结果呈现为表或图表固定[Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建[工作簿](../app/usage-workbooks.md)来组合和多个的交互式报表中的数据集。 <br>将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>导出到查询的结果[Grafana](grafana-plugin.md)利用其仪表板建设并结合其他数据源。|
 | 警报 | 配置[日志警报规则](alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](action-groups.md)。<br>配置[指标预警规则](alerts-metric-logs.md)上某些日志数据日志提取为指标。 |
-| 检索 | 从命令行使用访问日志查询结果[Azure CLI](/azure/ext/log-analytics/monitor/log-analytics)。<br>从命令行使用访问日志查询结果[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1)。<br>从自定义应用程序使用访问日志查询结果[REST API](https://dev.loganalytics.io/)。 |
+| 检索 | 从命令行使用访问日志查询结果[Azure CLI](/azure/ext/log-analytics/monitor/log-analytics)。<br>从命令行使用访问日志查询结果[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights)。<br>从自定义应用程序使用访问日志查询结果[REST API](https://dev.loganalytics.io/)。 |
 | 导出 | 生成要检索日志数据，并将其复制到外部位置使用的工作流[逻辑应用](~/articles/logic-apps/index.yml)。 |
 
 

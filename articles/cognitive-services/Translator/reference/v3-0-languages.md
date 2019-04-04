@@ -3,19 +3,19 @@ title: 文本翻译 API 语言方法
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API 语言方法。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 45baf915ffbc2723d3ed5b4c4dcd96b583a12802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1713a05590f389a6de70d72e8d62237c7521d808
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122397"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915758"
 ---
 # <a name="translator-text-api-30-languages"></a>文本翻译 API 3.0：Languages
 
@@ -67,11 +67,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 客户端使用 `scope` 查询参数来定义它关注的语言组。
 
-* `scope=translation` 提供支持将文本从一种语言翻译成另一种语言的语言；
+* `scope=translation` 提供了支持将文本从一种语言到另一种语言; 翻译的语言
 
-* `scope=transliteration` 提供将一种语言的文本从一个脚本转换为另一个脚本的功能；
+* `scope=transliteration` 用于从一个脚本的一种语言中的文本转换为另一个脚本; 提供的功能
 
-* `scope=dictionary` 提供语言对，`Dictionary` 操作针对这些语言对返回数据。
+* `scope=dictionary` 为其提供语言对`Dictionary`操作返回的数据。
 
 客户端可以通过指定逗号分隔的名称列表同时检索多个组。 例如，`scope=translation,transliteration,dictionary` 将返回所有组支持的语言。
 
@@ -97,11 +97,11 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `translation` 属性的值是 (键, 值) 对的字典。 每个键是一个 BCP 47 语言标记。 键标识文本的翻译目标语言或源语言。 与键关联的值是一个 JSON 对象，其中包含描述语言的属性：
 
-  * `name`：通过 `Accept-Language` 标头请求的区域设置中语言的显示名称。
+  * `name`:通过 `Accept-Language` 标头请求的区域设置中语言的显示名称。
 
-  * `nativeName`：此语言的当地区域设置中的语言的显示名称。
+  * `nativeName`:此语言的当地区域设置中的语言的显示名称。
 
-  * `dir`：方向性，`rtl` 表示语言从右向左，`ltr` 表示语言从左到右。
+  * `dir`:方向性，`ltr` 表示语言从右向左， 表示语言从左到右。
 
   示例如下：
           
@@ -123,21 +123,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `transliteration` 属性的值是 (键, 值) 对的字典。 每个键是一个 BCP 47 语言标记。 键标识某种语言，该语言的文本可以从一个脚本转换为另一个脚本。 与键关联的值是一个 JSON 对象，其中包含描述语言及其支持的脚本的属性：
 
-  * `name`：通过 `Accept-Language` 标头请求的区域设置中语言的显示名称。
+  * `name`:通过 `Accept-Language` 标头请求的区域设置中语言的显示名称。
 
-  * `nativeName`：此语言的当地区域设置中的语言的显示名称。
+  * `nativeName`:此语言的当地区域设置中的语言的显示名称。
 
-  * `scripts`：要转换的源脚本列表。 `scripts` 列表中的每个元素具有属性：
+  * `scripts`:要转换的源脚本列表。 `scripts` 列表中的每个元素具有属性：
 
-    * `code`：标识脚本的代码。
+    * `code`:标识脚本的代码。
 
-    * `name`：通过 `Accept-Language` 标头请求的区域设置中脚本的显示名称。
+    * `name`:通过 `Accept-Language` 标头请求的区域设置中脚本的显示名称。
 
-    * `nativeName`：语言的当地区域设置中的语言的显示名称。
+    * `nativeName`:语言的当地区域设置中的语言的显示名称。
 
-    * `dir`：方向性，`rtl` 表示语言从右向左，`ltr` 表示语言从左到右。
+    * `dir`:方向性，`ltr` 表示语言从右向左， 表示语言从左到右。
 
-    * `toScripts`：文本可转换到的目标脚本列表。 `toScripts` 列表的每个元素具有前面所述的属性 `code`、`name`、`nativeName` 和 `dir`。
+    * `toScripts`:文本可转换到的目标脚本列表。 `toScripts` 列表的每个元素具有前面所述的属性 `code`、`name`、`nativeName` 和 `dir`。
 
   示例如下：
 
@@ -188,21 +188,21 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
   `dictionary` 属性的值是 (键, 值) 对的字典。 每个键是一个 BCP 47 语言标记。 键标识支持替代翻译和回译的语言。 值是一个 JSON 对象，描述提供可用翻译的源语言和目标语言：
 
-  * `name`：通过 `Accept-Language` 标头请求的区域设置中源语言的显示名称。
+  * `name`:通过 `Accept-Language` 标头请求的区域设置中源语言的显示名称。
 
-  * `nativeName`：此语言的当地区域设置中的语言的显示名称。
+  * `nativeName`:此语言的当地区域设置中的语言的显示名称。
 
-  * `dir`：方向性，`rtl` 表示语言从右向左，`ltr` 表示语言从左到右。
+  * `dir`:方向性，`ltr` 表示语言从右向左， 表示语言从左到右。
 
-  * `translations`：提供替代翻译以及为源语言中表达的查询提供示例的语言列表。 `translations` 列表中的每个元素具有属性：
+  * `translations`:提供替代翻译以及为源语言中表达的查询提供示例的语言列表。 `translations` 列表中的每个元素具有属性：
 
-    * `name`：通过 `Accept-Language` 标头请求的区域设置中目标语言的显示名称。
+    * `name`:通过 `Accept-Language` 标头请求的区域设置中目标语言的显示名称。
 
-    * `nativeName`：目标语言的当地区域设置中的目标语言的显示名称。
+    * `nativeName`:目标语言的当地区域设置中的目标语言的显示名称。
 
-    * `dir`：方向性，`rtl` 表示语言从右向左，`ltr` 表示语言从左到右。
+    * `dir`:方向性，`ltr` 表示语言从右向左， 表示语言从左到右。
     
-    * `code`：标识目标语言的语言代码。
+    * `code`:标识目标语言的语言代码。
 
   示例如下：
 
@@ -281,7 +281,7 @@ https://api.cognitive.microsofttranslator.com/languages?api-version=3.0
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl "https://api.cognitive.microsofttranslator.com/languages?api-version=3.0&scope=translation"

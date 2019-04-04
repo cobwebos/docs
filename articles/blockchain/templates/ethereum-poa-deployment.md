@@ -10,14 +10,16 @@ ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 50d24fd41a0a933d9cfec37477773463a918ca0a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549062"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905913"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>概述
 [此解决方案](https://portal.azure.com/?pub_source=email&pub_status=success#create/microsoft-azure-blockchain.azure-blockchain-ethereumethereum-poa-consortium)旨在利用最少的 Azure 和 Ethereum 知识使部署、配置和管理多成员联盟权威证明 Ethereum 网络变得更加轻松。
@@ -218,7 +220,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 资源组|部署联盟网络的资源组。||NA
 位置|资源组的 Azure 区域。||NA
 
-示例部署如下所示：![基本边栏选项卡](./media/ethereum-poa-deployment/basic-blade.png)
+如下所示的示例部署：![基本边栏选项卡](./media/ethereum-poa-deployment/basic-blade.png)
 
 #### <a name="deployment-regions"></a>部署区域
 
@@ -228,14 +230,14 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 
   参数名称|描述|允许的值|默认值
   ---|---|---|---
-  区域数量|部署联盟网络的区域数量|1、2、3、4、5|第
+  区域数量|部署联盟网络的区域数量|1、2、3、4、5|1
   第一个区域|部署联盟网络的第一个区域|所有允许的 Azure 区域|NA
   第二个区域|部署联盟网络的第二个区域（仅在选择的区域数量为 2 时可见）|所有允许的 Azure 区域|NA
   第三个区域|部署联盟网络的第三个区域（仅在选择的区域数量为 3 时可见）|所有允许的 Azure 区域|NA
   第四个区域|部署联盟网络的第四个区域（仅在选择的区域数量为 4 时可见）|所有允许的 Azure 区域|NA
   第五个区域|部署联盟网络的第五个区域（仅在选择的区域数量为 5 时可见）|所有允许的 Azure 区域|NA
 
-示例部署如下所示：![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
+如下所示的示例部署：![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
 
 #### <a name="network-size-and-performance"></a>网络规模和性能
 
@@ -262,7 +264,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
   D2_v3|标准 SSD|中|中|中
   F16s|高级·SSD|高|高|低
 
-示例部署如下所示：![网络大小和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
+如下所示的示例部署：![网络大小和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
 #### <a name="ethereum-settings"></a>Ethereum 设置
 
@@ -281,7 +283,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 区块重新封装时间段（秒）|网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。|任意数字|15
 事务权限协定（高级选项 = 启用）|事务权限协定的字节码。 将智能协定部署和执行的允许列表的以太坊帐户的限制。|协定字节码|NA
 
-示例部署如下所示：![ethereum 设置](./media/ethereum-poa-deployment/ethereum-settings.png)
+如下所示的示例部署：![以太坊设置](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>监视
 
@@ -298,7 +300,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 现有 log analytics 主要密钥 (连接到现有的 Azure Monitor 日志 = 加入现有)|用于连接到现有的 Azure Monitor 日志实例的主要密钥||NA
 
 
-示例部署如下所示：![azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
+如下所示的示例部署： ![azure 监视器](./media/ethereum-poa-deployment/azure-monitor.png)
 
 #### <a name="summary"></a>摘要
 
@@ -395,7 +397,7 @@ $MyGatewayName = $splitValue[8]
 
 ## $otherGatewayResourceid tells me what the subscription and VNet GatewayName are
 $OtherGatewayName = $OtherGatewayResourceId.Split('/')[8]
-$Subscription=Select-AzureRmSubscription -SubscriptionId $MySubscriptionid
+$Subscription=Select-AzSubscription -SubscriptionId $MySubscriptionid
 
 ## create a PSVirtualNetworkGateway instance for the gateway I want to connect to
 $OtherGateway=New-Object Microsoft.Azure.Commands.Network.Models.PSVirtualNetworkGateway
@@ -405,10 +407,10 @@ $OtherGateway.GatewayType = "Vpn"
 $OtherGateway.VpnType = "RouteBased"
 
 ## get a PSVirtualNetworkGateway instance for my gateway
-$MyGateway = Get-AzureRmVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
+$MyGateway = Get-AzVirtualNetworkGateway -Name $MyGatewayName -ResourceGroupName $MyResourceGroup
 
 ## create the connection
-New-AzureRmVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
+New-AzVirtualNetworkGatewayConnection -Name $ConnectionName -ResourceGroupName $MyResourceGroup -VirtualNetworkGateway1 $MyGateway -VirtualNetworkGateway2 $OtherGateway -Location $MyGateway.Location -ConnectionType Vnet2Vnet -SharedKey $SharedKey -EnableBgp $True
 ```
 
 ### <a name="service-monitoring"></a>服务监视

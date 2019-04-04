@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 38236cba6af46df2701bb0128fe9d78e95aa6ec7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076813"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918937"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>使用用于 VM 的 Azure Monitor（预览版）了解 Azure 虚拟机的运行状况
 Azure 包含的多个服务可在监视空间中单独执行特定的角色或任务，但无法针对 Azure 虚拟机上托管的操作系统提供深入的运行状况透视图。  虽然可以使用 Azure Monitor 的不同情况进行监视，它并不旨在模型和表示核心组件的运行状况或虚拟机的总体运行状况。  用于 VM 的 Azure Monitor 运行状况功能可以使用一个代表核心组件及其关系的模型、指定如何度量这些组件的运行状况的条件，来主动监视 Windows 或 Linux 来宾 OS 的可用性和性能，并在检测到不正常状况时发出警报。  
@@ -28,23 +28,6 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 本文将帮助你了解如何快速评估、调查和解决检测到的运行状况问题。
 
 有关配置用于 VM 的 Azure Monitor 的信息，请参阅[启用用于 VM 的 Azure Monitor](vminsights-onboard.md)。
-
-> [!NOTE]
-> 从 2019 年 2 月 11 日起，我们会开始将你从用于 VM 的 Azure Monitor 运行状况功能中的当前运行状况模型迁移到新版本的运行状况模型（在今天的运行状况诊断体验中可以看到）。 此更新改进了运行状况汇总处理的性能，并包括了运行状况诊断视图中显示的改进的运行状况模型。 
-> 
-> 使用新的运行状况模型，将子运行状况条件汇总到父/实体级运行状况条件的速度将更快，因此，父运行状况状态更新到所需或目标状态的延迟更少。 与以前基于选项卡的方法不同，仍然可以在“性能”和“可用性”类别下筛选运行状况条件，以在视图中选择任一类别。
-> 
-> 有关运行状况诊断体验的更多详细信息，请参阅本文中的运行状况诊断[部分](#health-diagnostics)。 
-> 
-> 此更新将改善以下方面： 
-> 
-> - 运行状况汇总处理延迟减少  
-> - 更快地对运行状况状态改变发出警报 
-> - 更快地更新所有 VM 聚合虚拟机视图中的运行状况状态 
-> 
-> 在用于 VM 的 Azure Monitor 的运行状况功能中，目前交付的任何功能都没有回归。
-> 
-> 由于此更改，运行状况诊断中的两种体验受到影响 - 状态更改历史记录将被重置，以前的运行状况条件状态改变将无法在“运行状况诊断”页的“状态更改”列中进行查看。 如果你对任何任务关键型 VM 的历史数据感兴趣，可以截取运行状况条件数据和相应状态改变的屏幕截图，以供参考。 
 
 ## <a name="monitoring-configuration-details"></a>监视配置详细信息
 本部分概述为了监视 Azure Windows 和 Linux 虚拟机而定义的默认运行状况条件。 所有运行状况条件均预配置为在满足不正常条件时发出警报。 
@@ -70,7 +53,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 - 使用的带宽百分比总计
 - 写入使用的带宽百分比
 - 使用的已提交内存百分比
-- 物理磁盘空闲时间百分比
+- 磁盘空闲时间百分比
 - DHCP 客户端服务运行状况
 - DNS 客户端服务运行状况
 - RPC 服务运行状况
@@ -89,10 +72,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 - 逻辑磁盘可用空间百分比
 - 逻辑磁盘可用 Inode 百分比
 - 网络适配器运行状况
-- 处理器 DPC 时间百分比
-- 处理器时间百分比
 - 处理器时间百分比总计
-- DPC 时间百分比总计
 - 操作系统可用内存 (MB)
 
 ## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
