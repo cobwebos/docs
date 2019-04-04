@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1306b97ce7fcf2cd429be31bc99d022de53805d6
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 602c7385b252daa7db22bd47f43afec3ad072263
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259850"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904196"
 ---
 # <a name="set-up-a-device-template-new-ui-design"></a>创建设备模板（新 UI 设计）
 
@@ -117,7 +117,7 @@ ms.locfileid: "58259850"
 
 | 显示名称 | 字段名称    |  值 1   | 显示名称 | 值 2    |显示名称  | 
 | -------------| ------------- |----------- | -------------| -----------| -------------|
-| 风扇模式     | fanmode       |  第         | 正在运行    |     0      | 已停止      |
+| 风扇模式     | fanmode       |  1         | 正在运行    |     0      | 已停止      |
 
 ![带有风扇模式详细信息的“编辑状态”窗体](./media/howto-set-up-template/statemeasurementsform.png)
 
@@ -197,8 +197,8 @@ ms.locfileid: "58259850"
    ![带有位置详细信息的“配置位置”窗体](./media/howto-set-up-template/locationcloudproperty2.png)
 
    有两种支持的格式可以添加位置：
-   - **作为地址的位置**
-   - **作为坐标的位置**
+   - **为地址的位置**
+   - **与坐标的位置**
 
 4. 选择“保存”。 操作员可以在“Device Explorer”中更新位置值。
 
@@ -280,4 +280,6 @@ ms.locfileid: "58259850"
 了解如何在 Azure IoT Central 应用程序中使用设备模板后，你可以：
 
 > [!div class="nextstepaction"]
-> [创建新设备模板版本](howto-version-devicetemplate.md)
+> [创建新的设备模板版本](howto-version-devicetemplate.md)
+> [MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)
+> [常规客户端应用程序连接到 AzureIoT Central 应用程序 (Node.js)](howto-connect-nodejs.md)

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
-ms.openlocfilehash: 5eb9740bdd0543556265f54a1a37b632f79ac861
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7093be36e34785d4153c257d411128efe463dee1
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550116"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918954"
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>教程：使用 Azure BizTalk 服务处理 EDIFACT 发票
 
@@ -55,9 +55,9 @@ ms.locfileid: "57550116"
 为完成该方案，我们使用服务总线队列将发票从 Contoso 发送到 Northwind 或接收来自 Northwind 的回单。 可使用客户端应用程序创建这些队列，此应用程序可供下载且包含在作为本教程一部分的示例包中。  
 
 ## <a name="prerequisites"></a>必备组件
-* 必须具有一个服务总线命名空间。 有关创建命名空间的说明，请参阅[How To:创建或修改服务总线服务 Namespace](https://msdn.microsoft.com/library/azure/hh674478.aspx)。 假定已预配服务总线命名空间，名为 **edifactbts**。
+* 必须具有一个服务总线命名空间。 有关创建命名空间的说明，请参阅[How To:创建或修改服务总线服务 Namespace](/previous-versions/azure/azure-services/hh674478(v=azure.100))。 假定已预配服务总线命名空间，名为 **edifactbts**。
 * 必须具有 BizTalk 服务订阅。 本教程假定用户已拥有 BizTalk 服务订阅，名为 **contosowabs**。
-* 在 BizTalk 服务门户中注册 BizTalk 服务订阅。 有关说明，请参阅[在 BizTalk 服务门户中注册 BizTalk 服务部署](https://msdn.microsoft.com/library/hh689837.aspx)
+* 在 BizTalk 服务门户中注册 BizTalk 服务订阅。 有关说明，请参阅[在 BizTalk 服务门户中注册 BizTalk 服务部署](/previous-versions/azure/hh689837(v=azure.100))
 * 必须安装 Visual Studio。
 * 必须安装 BizTalk 服务 SDK。 可以从 [https://go.microsoft.com/fwlink/?LinkId=235057](https://go.microsoft.com/fwlink/?LinkId=235057) 下载 SDK  
 

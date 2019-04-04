@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
-ms.openlocfilehash: bf5143c3c0c75bc37f6981c6d995339e41baa4c4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112092"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895677"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
 
@@ -116,7 +116,7 @@ ms.locfileid: "56112092"
 **选项 1**：[通过更改用户状态启用多重身份验证](../active-directory/authentication/howto-mfa-userstates.md)。   
 **优势**：这是要求进行双重验证的传统方法。 它适用于[云中的 Azure 多重身份验证和 Azure 多重身份验证服务器](../active-directory/authentication/concept-mfa-whichversion.md)。 使用此方法要求用户每次登录时都执行双重验证并重写条件访问策略。
 
-**选项 2**：[通过条件访问策略启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md#enable-multi-factor-authentication-with-conditional-access)。   
+**选项 2**：[通过条件访问策略启用多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
 **优势**：此选项允许使用[条件访问](../active-directory/active-directory-conditional-access-azure-portal.md)在特定条件下提示进行双重验证。 特定条件可以是用户从不同位置、不受信任的设备或你认为存在风险的应用程序登录。 定义要求双重验证的特定条件可以避免不断提示用户这种令人不快的用户体验。
 
 这是为用户启用双重验证最灵活的方式。 启用条件访问策略仅适用于云中的 Azure 多重身份验证，并且是 Azure AD 的高级功能。 有关此方法的详细信息，请参阅[部署基于云的 Azure 多重身份验证](../active-directory/authentication/howto-mfa-getstarted.md)。
@@ -183,11 +183,11 @@ ms.locfileid: "56112092"
 
 [对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
 
-[确保最近更改过管理帐户的密码](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[请确保管理帐户的密码最近已更改](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
 [启用密码哈希同步](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
 
-[要求对所有特权角色用户和公开的用户进行多重身份验证](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[为所有特权角色中的用户，以及公开的用户需要多重身份验证](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [获取 Office 365 安全功能分数（如果使用 Office 365）](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
 
@@ -197,7 +197,7 @@ ms.locfileid: "56112092"
 
 [确定事件/紧急情况响应计划所有者](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
 
-[保护本地特权管理帐户](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[安全的本地特权管理帐户](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
 
 如果不保护特权访问，你可能会拥有过多高特权角色用户，并且更易受到攻击。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，通过凭据窃取获得敏感数据和系统的访问权限。
 

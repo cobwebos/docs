@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: diberry
-ms.openlocfilehash: efe50533a03551a673583265e107263d79cff90a
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418680"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895539"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
@@ -88,15 +88,15 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 
 |机器学习|可以标记|教程|示例<br>响应|实体类型|目的|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**复合**](#composite-entity)|实体的分组，不考虑实体类型。|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**分层**](#hierarchical-entity)|简单实体的分组。|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**列表**](#list-entity)|使用文本完全匹配法提取的项列表及其同义词。|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**复合实体**](#composite-entity)|实体的分组，不考虑实体类型。|
+|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**分层实体**](#hierarchical-entity)|简单实体的分组。|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**列出**](#list-entity)|使用文本完全匹配法提取的项列表及其同义词。|
 |混合||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|难以确定末尾部分的实体。|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**预生成**](#prebuilt-entity)|已经过训练，可以提取各种类型的数据。|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**正则表达式**](#regular-expression-entity)|使用正则表达式来匹配文本。|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**简单**](#simple-entity)|包含单词或短语中的单个概念。|
 
-对于每个意向，只需在示例话语中标记机器学习到的实体。 机器学习到的实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endoint-utt.md)进行测试。 
+对于每个意向，只需在示例话语中标记机器学习到的实体。 机器学习到的实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endpoint-utterances.md)进行测试。 
 
 需要在[模式](luis-how-to-model-intent-pattern.md)模板示例而不是意向用户示例中标记 Pattern.any 实体。 
 
@@ -117,7 +117,7 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 ![复合实体](./media/luis-concept-entities/composite-entity.png)
 
 [教程](luis-tutorial-composite-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#composite-entity-data)<br>
+[实体的示例 JSON 响应](luis-concept-data-extraction.md#composite-entity-data)<br>
 
 ## <a name="hierarchical-entity"></a>分层实体
 
@@ -139,7 +139,7 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 ![分层实体](./media/luis-concept-entities/hierarchical-entity.png)
 
 [教程](luis-quickstart-intent-and-hier-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
+[实体的示例 JSON 响应](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
 
 ### <a name="roles-versus-hierarchical-entities"></a>角色与分层实体
 
@@ -158,7 +158,7 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
 [教程](luis-quickstart-intent-and-list-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#list-entity-data)
+[实体的示例 JSON 响应](luis-concept-data-extraction.md#list-entity-data)
 
 ## <a name="patternany-entity"></a>Pattern.any 实体
 
@@ -168,7 +168,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 * 实体的末尾可能与话语的其余文本相混淆。 
 [教程](luis-tutorial-pattern.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#patternany-entity-data)
+[实体的示例 JSON 响应](luis-concept-data-extraction.md#patternany-entity-data)
 
 **示例**  
 假设某个客户端应用程序需要基于标题搜索书籍，则 pattern.any 会提取完整的标题。 一个使用 pattern.any 进行这种书籍搜索的模板话语是 `Was {BookTitle} written by an American this year[?]`。 
@@ -195,7 +195,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ![编号预生成实体](./media/luis-concept-entities/number-entity.png)
 
 [教程](luis-tutorial-prebuilt-intents-entities.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#prebuilt-entity-data)
+[实体的示例 JSON 响应](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。 
 
@@ -243,7 +243,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ![正则表达式实体](./media/luis-concept-entities/regex-entity.png)
 
 [教程](luis-quickstart-intents-regex-entity.md)<br>
-[实体的 JSON 响应示例](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+[实体的示例 JSON 响应](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
 
 ## <a name="simple-entity"></a>简单实体 
 
@@ -256,7 +256,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ![简单实体](./media/luis-concept-entities/simple-entity.png)
 
 [教程](luis-quickstart-primary-and-secondary-data.md)<br/>
-[实体响应示例](luis-concept-data-extraction.md#simple-entity-data)<br/>
+[实体的示例响应](luis-concept-data-extraction.md#simple-entity-data)<br/>
 
 ## <a name="entity-limits"></a>实体限制
 

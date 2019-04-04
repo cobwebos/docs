@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: b52e7c0de2d834c793bb30fa35bd53b45aaebe5d
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848860"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916336"
 ---
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
 
@@ -76,11 +76,33 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 5. 可以重复步骤 1-4 将多个筛选器应用到同一个图表。
 
+## <a name="multiple-metrics-and-charts"></a>多个指标和图表
+
+此外可以创建图表的绘制多个度量值或同时显示多个指标的图表。 此功能可以：
+
+- 与另一个相关上相同的图形，以查看如何一个值相关联的相关度量值
+- 显示具有不同的邻近的度量单位的指标
+- 以可视方式聚合和比较来自多个资源的指标
+
+例如，如果你有 5 个存储帐户，并且你想要知道它们之间使用总空间量，可以创建 （堆积） 面积图显示的个人和所有值的总和中特定点的时间。
+
+### <a name="multiple-metrics-on-a-chart"></a>图表上的多个指标
+
+首先，[创建新图表](#create-a-new-chart)。 单击**添加指标**，重复步骤以在同一图表中添加另一个度量值。
+
+### <a name="multiple-charts"></a>多个图表
+
+单击**添加图表**，并使用不同的指标创建另一个图表。
+
+### <a name="order-or-delete-multiple-charts"></a>排序或删除多个图表
+
+若要排序或删除多个图表，请单击省略号 ( **...** ) 要打开图表菜单，然后选择相应的菜单项的符号**向上移动**，**向下移动**，或**删除**。
+
 ## <a name="apply-splitting-to-a-chart"></a>将应用到图表拆分
 
-可以按维度拆分指标，以直观地显示指标不同部分之间的差异，并标识出某个维度的边远部分。 
+可以按维度拆分指标，以直观地显示指标不同部分之间的差异，并标识出某个维度的边远部分。
 
-### <a name="to-apply-splitting"></a>若要将应用拆分
+### <a name="apply-splitting"></a>应用拆分
 
 1. 单击图表上方的“应用拆分”。
  
@@ -141,7 +163,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 ## <a name="troubleshooting"></a>故障排除
 
-*图表中未显示任何数据。*
+*在我的图表上，我看不到任何数据。*
 
 * 筛选器将应用到窗格中的所有图表。 将焦点放在某个图表上时，请确保未在其他图表上设置会排除所有数据的筛选器。
 

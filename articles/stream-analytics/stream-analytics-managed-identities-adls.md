@@ -8,18 +8,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.custom: seodec18
-ms.openlocfilehash: 43947413f061ec8b366392b676e848ebf5e6484e
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 994ccf292a4215624d4222fe13ca9ac25c863368
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570107"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895860"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>使用托管标识在 Azure Data Lake Storage Gen1 中对流分析进行身份验证（预览）
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics 到 Azure 数据湖存储 Gen1 使用管理的标识进行身份验证
 
 Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托管标识身份验证。 标识是 Azure Active Directory 中注册的表示给定流分析作业的托管应用程序，可用于对目标资源进行身份验证。 托管标识消除了基于用户的身份验证方法的如下限制：发生密码更改或用户令牌过期（每隔 90 天过期）时需要重新进行身份验证。 此外，托管标识有助于将输出到 Azure Data Lake Storage Gen1 的流分析作业部署自动化。
-
-请访问 [Eight new features in Azure Stream Analytics](https://azure.microsoft.com/blog/eight-new-features-in-azure-stream-analytics/)（Azure 流分析中的八项新功能）博客文章来注册此预览版并详细了解新功能。
 
 本文将介绍下面三种方法，用于为输出到 Azure Data Lake Storage Gen1 的 Azure 流分析作业启用托管标识：通过 Azure 门户、Azure 资源管理器模板部署以及适用于 Visual Studio 的 Azure 流分析工具。
 
@@ -27,11 +25,11 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 ## <a name="azure-portal"></a>Azure 门户
 
-1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 在屏幕左侧的菜单栏中，选择“配置”下面的“托管标识(预览版)”。
+1. 首先创建新的流分析作业，或在 Azure 门户中打开现有的作业。 从菜单栏位于屏幕左侧，选择**托管标识**位于**配置**。
 
-   ![配置流分析托管标识预览版](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
+   ![配置管理 Stream Analytics 标识](./media/stream-analytics-managed-identities-adls/stream-analytics-managed-identity-preview.png)
 
-2. 在右侧显示的窗口中选择“使用系统分配的托管标识(预览版)”。 单击**保存**到 Stream Analytics 作业在 Azure Active Directory 中的标识的服务主体。 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
+2. 选择**使用系统分配的托管标识**从右侧出现的窗口。 单击**保存**到 Stream Analytics 作业在 Azure Active Directory 中的标识的服务主体。 新建标识的生命周期将由 Azure 管理。 删除流分析作业时，Azure 会自动删除关联的标识（即服务主体）。
 
    保存配置后，服务主体的对象 ID (OID) 将列为主体 ID，如下所示：
 
@@ -39,7 +37,7 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
  
    服务主体与流分析作业同名。 例如，如果作业的名称是 **MyASAJob**，则创建的服务主体的名称也是 **MyASAJob**。
 
-3. 在 ADLS Gen1 输出接收器的输出属性窗口中，单击“身份验证模式”下拉列表并选择“托管标识(预览版)”。
+3. 在 ADLS Gen1 输出接收器的输出属性窗口中，单击身份验证模式下拉列表中，选择 * * 托管标识 * *。
 
 4. 填写其余的属性。 若要详细了解如何创建 ADLS 输出，请参阅[使用流分析创建 Data Lake Store 输出](../data-lake-store/data-lake-store-stream-analytics.md)。 完成后，单击“保存”。
 
@@ -183,6 +181,6 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用流分析创建 Data Lake Store 输出](../data-lake-store/data-lake-store-stream-analytics.md)
+* [使用流分析创建 Data lake Store 输出](../data-lake-store/data-lake-store-stream-analytics.md)
 * [使用 Visual Studio 在本地测试流分析查询](stream-analytics-vs-tools-local-run.md)
-* [使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据](stream-analytics-live-data-local-testing.md) 
+* [测试本地使用 Azure Stream Analytics tools for Visual Studio 的实时数据](stream-analytics-live-data-local-testing.md) 

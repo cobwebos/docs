@@ -14,21 +14,21 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 9d358c021f795172e7ced0ba2a2f309a0a0dab6e
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: e0556eb5cc3d0f140067a4e3b4a9054a47b91417
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649721"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58481479"
 ---
 # <a name="azure-stack-certificates-signing-request-generation"></a>Azure Stack 证书签名请求生成
 
-Azure Stack 就绪性检查器工具可用于创建证书签名请求 (Csr) 适用于 Azure Stack 部署。 应该花费足够的时间来请求、生成并验证证书，以便在部署之前进行测试。 您可以获得工具[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)。
+可以使用 Azure Stack 就绪性检查器工具创建适合于 Azure Stack 部署的证书签名请求 (CSR)。 应该花费足够的时间来请求、生成并验证证书，以便在部署之前进行测试。 可以[从 PowerShell 库](https://aka.ms/AzsReadinessChecker)获取工具。
 
-Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以下证书：
+可以使用 Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 请求以下证书：
 
-- **标准证书申请**根据[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)。
-- **平台即服务**:可以请求 [Azure Stack 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中指定的证书的平台即服务 (PaaS) 名称。
+- 按照[为 Azure Stack 部署生成 PKI 证书](azure-stack-get-pki-certs.md)**请求标准证书**。
+- **平台即服务**：可以请求 [Azure Stack 公钥基础结构证书要求 - 可选的 PaaS 证书](azure-stack-pki-certs.md#optional-paas-certificates)中指定的证书的平台即服务 (PaaS) 名称。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -50,13 +50,13 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以
 
 1. 在 PowerShell 提示符（5.1 或更高版本）下，运行以下 cmdlet 安装 AzsReadinessChecker：
 
-    ```PowerShell  
+    ```powershell  
         Install-Module Microsoft.AzureStack.ReadinessChecker
     ```
 
 2. 将**使用者**声明为有序字典。 例如：
 
-    ```PowerShell  
+    ```powershell  
     $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
     ```
 
@@ -65,7 +65,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以
 
 3. 声明已存在的输出目录。 例如：
 
-    ```PowerShell  
+    ```powershell  
     $outputDirectory = "$ENV:USERPROFILE\Documents\AzureStackCSR"
     ```
 
@@ -73,19 +73,19 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以
 
     Azure Active Directory
 
-    ```PowerShell
+    ```powershell
     $IdentitySystem = "AAD"
     ```
 
     Active Directory 联合身份验证服务
 
-    ```PowerShell
+    ```powershell
     $IdentitySystem = "ADFS"
     ```
 
 5. 声明用于 Azure Stack 部署的**区域名称**和**外部 FQDN**。
 
-    ```PowerShell
+    ```powershell
     $regionName = 'east'
     $externalFQDN = 'azurestack.contoso.com'
     ```
@@ -95,7 +95,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以
 
 6. 若要为每个 DNS 名称生成证书签名请求，请执行以下命令：
 
-    ```PowerShell  
+    ```powershell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
@@ -103,7 +103,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以
 
 7. 另外，对于开发/测试环境，若要生成具有多个使用者可选名称的单个证书请求，请添加 **-RequestType SingleCSR** 参数和值（**不**建议用于生产环境）：
 
-    ```PowerShell  
+    ```powershell  
     New-AzsCertificateSigningRequest -RegionName $regionName -FQDN $externalFQDN -subject $subjectHash -RequestType SingleCSR -OutputRequestPath $OutputDirectory -IdentitySystem $IdentitySystem
     ```
 
@@ -111,7 +111,7 @@ Azure Stack 就绪性检查器工具 (AzsReadinessChecker) 可用于请求的以
 
 8. 查看输出：
 
-    ```PowerShell  
+    ```powershell  
     New-AzsCertificateSigningRequest v1.1809.1005.1 started.
 
     CSR generating for following SAN(s): dns=*.east.azurestack.contoso.com&dns=*.blob.east.azurestack.contoso.com&dns=*.queue.east.azurestack.contoso.com&dns=*.table.east.azurestack.cont

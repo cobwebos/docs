@@ -3,19 +3,19 @@ title: 文本翻译 API BreakSentence 方法
 titlesuffix: Azure Cognitive Services
 description: 使用文本翻译 API BreakSentence 方法。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 8aa726d8a00e76c1b4311140a433e6c7e476dc50
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 3a9c2ae0eee3e282dddff812da2fed07787328b7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884896"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916285"
 ---
 # <a name="translator-text-api-30-breaksentence"></a>文本翻译 API 3.0：BreakSentence
 
@@ -54,9 +54,9 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
-    <td>一个授权<br/>标头</td>
+    <td>_一个授权_<br/>_标头的值开始缓存响应_</td>
     <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
   </tr>
   <tr>
@@ -94,13 +94,13 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `sentLen`：一组整数，表示文本元素中各个句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。 
+  * `sentLen`:一组整数，表示文本元素中各个句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。 
 
-  * `detectedLanguage`：一个对象，它通过以下属性描述检测到的语言：
+  * `detectedLanguage`:一个对象，它通过以下属性描述检测到的语言：
 
-     * `language`：已检测语言的代码。
+     * `language`:已检测语言的代码。
 
-     * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
+     * `score`:一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
      
     请注意，当请求了语言自动检测时，`detectedLanguage` 属性仅存在于结果对象中。
 
@@ -122,7 +122,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>X-RequestId</td>
     <td>服务生成的用于标识请求的值。 它用于故障排除目的。</td>
@@ -135,7 +135,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 <table width="100%">
   <th width="20%">状态代码</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
     <td>200</td>
     <td>成功。</td>
@@ -172,7 +172,7 @@ https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0
 
 下面的示例展示了如何获取单个句子的句子边界。 服务会自动检测句子的语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/breaksentence?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'How are you? I am fine. What did you do today?'}]"

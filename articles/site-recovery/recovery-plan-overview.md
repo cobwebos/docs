@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: raynew
-ms.openlocfilehash: 1824c0a4c129fa5612c990447a13aef6b230e71f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 520f30b5fabebf299b5407a502b76d7d30850bfd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310160"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904876"
 ---
 # <a name="about-recovery-plans"></a>关于恢复计划
 
@@ -84,7 +84,7 @@ ms.locfileid: "58310160"
 
 ## <a name="watch-the-video"></a>观看视频
 
-观看一个快速示例视频，其中展示了如何通过点击来对一个两层 WordPress 应用进行故障转移。
+观看演示两层 WordPress 应用的上单击故障转移的快速示例视频。
     
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 

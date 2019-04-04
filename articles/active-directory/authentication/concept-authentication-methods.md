@@ -11,18 +11,18 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3e21f7a67b11caf0180959de68d698f0ff4a1af1
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371853"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894587"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
-Azure AD 自助密码重置 (SSPR) 和多重身份验证 (MFA) 可能要求提供附加的信息（称为身份验证方法或安全信息），以便在你使用关联的功能时证明自己的身份。
+管理员选择身份验证方法为 Azure 多重身份验证和自助服务密码重置 (SSPR) 建议您要求用户注册多个身份验证方法。 无法为用户提供身份验证方法时，他们可以选择使用另一种方法进行身份验证。
 
-管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。
+管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。 有关配置详细信息为你的策略，请参阅文章[如何成功推出自助服务密码重置](howto-sspr-deployment.md)和[规划基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)
 
 Microsoft 强烈建议管理员允许用户选择超过最小所需数量的身份验证方法，以防他们无法使用其中的某个方法。
 
@@ -233,9 +233,9 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 ## <a name="next-steps"></a>后续步骤
 
-[为组织启用自助密码重置](quickstart-sspr.md)
+[启用自助服务密码重置为你的组织](quickstart-sspr.md)
 
-[为组织启用 Azure 多重身份验证](howto-mfa-getstarted.md)
+[为你的组织中启用 Azure 多重身份验证](howto-mfa-getstarted.md)
 
 [启用你的租户中的组合的注册](howto-registration-mfa-sspr-combined.md)
 

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: diberry
-ms.openlocfilehash: d0c5ba41bc636479407e7580fa686fe1bba91612
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 9d54cff81f39f41b60800e9b33f3b4da1a735d85
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873183"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893418"
 ---
 # <a name="plan-your-luis-app-with-subject-domain-intents-and-entities"></a>使用主题域、意向和实体规划 LUIS 应用
 
@@ -49,7 +49,7 @@ LUIS 应用以特定域的主题为中心。  例如，可能有一个用于预�
 
 ## <a name="next-steps"></a>后续步骤
 
-应用经过培训、发布并获得终结点陈述后，计划通过[主动学习](luis-how-to-review-endoint-utt.md)、[短语列表](luis-concept-feature.md)和[模式](luis-concept-patterns.md)来实现预测改进。 
+应用经过培训、发布并获得终结点陈述后，计划通过[主动学习](luis-how-to-review-endpoint-utterances.md)、[短语列表](luis-concept-feature.md)和[模式](luis-concept-patterns.md)来实现预测改进。 
 
 
 * 有关如何创建 LUIS 应用的快速演练，请参阅[创建首个语言理解智能服务 (LUIS) 应用](luis-get-started-create-app.md)。

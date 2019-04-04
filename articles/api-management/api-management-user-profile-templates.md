@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 77b704e9359e582664bad8e08e9389cfac8eaca7
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.openlocfilehash: 9d74cd3bd466578c61f8f12bf9b6e862c046e9bc
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121390"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903754"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Azure API 管理中的用户配置文件模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -104,19 +104,19 @@ ms.locfileid: "54121390"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
-|firstName|字符串|当前用户的名字。|  
-|lastName|字符串|当前用户的姓氏。|  
-|companyName|字符串|当前用户所在公司的名称。|  
-|addresserEmail|字符串|当前用户的电子邮件地址。|  
-|developersUsageStatisticsLinkk|字符串|相对 URL，用于查看当前用户的分析。|  
-|subscriptions|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
-|服务|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|changePasswordUrl|字符串|相对 URL，用于更改当前用户的密码。|  
-|changeNameOrEmailUrl|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|canChangePassword|布尔值|当前用户是否可更改其密码。|  
-|isSystemUser|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
+|`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
+|`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
+|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -325,19 +325,19 @@ ms.locfileid: "54121390"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
-|firstName|字符串|当前用户的名字。|  
-|lastName|字符串|当前用户的姓氏。|  
-|companyName|字符串|当前用户所在公司的名称。|  
-|addresserEmail|字符串|当前用户的电子邮件地址。|  
-|developersUsageStatisticsLinkk|字符串|相对 URL，用于查看当前用户的分析。|  
-|subscriptions|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
-|服务|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|changePasswordUrl|字符串|相对 URL，用于更改当前用户的密码。|  
-|changeNameOrEmailUrl|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|canChangePassword|布尔值|当前用户是否可更改其密码。|  
-|isSystemUser|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
+|`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
+|`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
+|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -488,19 +488,19 @@ ms.locfileid: "54121390"
 > [!NOTE]
 >  [配置文件](#Profile)、[应用程序](#Applications)和[订阅](#Subscriptions)模板共享相同的数据模型，并接收相同的模板数据。  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
-|firstName|字符串|当前用户的名字。|  
-|lastName|字符串|当前用户的姓氏。|  
-|companyName|字符串|当前用户所在公司的名称。|  
-|addresserEmail|字符串|当前用户的电子邮件地址。|  
-|developersUsageStatisticsLinkk|字符串|相对 URL，用于查看当前用户的分析。|  
-|subscriptions|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
-|服务|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
-|changePasswordUrl|字符串|相对 URL，用于更改当前用户的密码。|  
-|changeNameOrEmailUrl|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
-|canChangePassword|布尔值|当前用户是否可更改其密码。|  
-|isSystemUser|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
+|`firstName`|字符串|当前用户的名字。|  
+|`lastName`|字符串|当前用户的姓氏。|  
+|`companyName`|字符串|当前用户所在公司的名称。|  
+|`addresserEmail`|字符串|当前用户的电子邮件地址。|  
+|`developersUsageStatisticsLink`|字符串|相对 URL，用于查看当前用户的分析。|  
+|`subscriptions`|[订阅](api-management-template-data-model-reference.md#Subscription)实体的集合。|当前用户的订阅。|  
+|`applications`|[应用程序](api-management-template-data-model-reference.md#Application)实体的集合。|当前用户的应用程序。|  
+|`changePasswordUrl`|字符串|相对 URL，用于更改当前用户的密码。|  
+|`changeNameOrEmailUrl`|字符串|相对 URL，用于更改当前用户的名称和电子邮件。|  
+|`canChangePassword`|布尔值|当前用户是否可更改其密码。|  
+|`isSystemUser`|布尔值|当前用户是否为某个内置[组](api-management-key-concepts.md#groups)的成员。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

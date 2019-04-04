@@ -15,12 +15,12 @@ ms.author: mabrigg
 ms.reviewer: johnhas
 ms.lastreviewed: 03/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: f66f57799e1e6b6d0e27624e3dc08b4de5d09cac
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 9513b552ce6bfd525077270b90d3d10e31c015c5
+ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766193"
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58484956"
 ---
 # <a name="workflow-common-parameters-for-azure-stack-validation-as-a-service"></a>工作流通用参数作为服务的 Azure Stack 验证
 
@@ -43,7 +43,7 @@ ms.locfileid: "57766193"
 1. 登录到此 DVM 或有权访问 Azure Stack 环境的任何计算机。
 2. 在提升的 PowerShell 窗口中运行以下命令：
 
-    ```PowerShell  
+    ```powershell  
     $CloudAdminUser = "<cloud admin username>"
     $CloudAdminPassword = ConvertTo-SecureString "<cloud admin password>" -AsPlainText -Force
     $stampInfoCreds = New-Object System.Management.Automation.PSCredential($CloudAdminUser, $CloudAdminPassword)

@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 3f87a4c520327f1a13a48c70502b6737c0aa9b3a
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53630965"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58896017"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
 本地数据网关提供本地数据源与云中的 Azure Analysis Services 服务器之间的安全数据传输。 除了在同一区域中使用多个 Azure Analysis Services 服务器，最新版本的网关也适用于 Azure 逻辑应用、Power BI、Power Apps 和 Microsoft Flow。 可以将同一订阅和同一区域中的多个服务与单个网关进行关联。 
 
 首次设置网关的过程分为四个部分：
 
-- 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
+- 下载并运行安装程序 - 这一步会在你组织的计算机上安装网关服务。 还在[租户的](/previous-versions/azure/azure-services/jj573650(v=azure.100)#BKMK_WhatIsAnAzureADTenant) Azure AD 中使用帐户登录到 Azure。 不支持 Azure B2B（来宾）帐户。
 
 - **注册网关** - 在这一步中，指定网关的名称和恢复密钥，然后选择区域，在网关云服务中注册你的网关。 网关资源可以注册在任何区域中，但我们建议处于与 Analysis Services 服务器位于同一区域。 
 
@@ -37,7 +37,7 @@ ms.locfileid: "53630965"
 
 查询和数据流：
 
-1. 查询是通过使用本地数据源的加密凭据进行创建的。 然后，它将发送到网关队列进行处理。
+1. 查询是通过使用本地数据源的加密凭据进行创建的。 查询随后会发送到队列让网关处理。
 2. 网关云服务分析该查询，并将请求推送到 [Azure 服务总线](https://azure.microsoft.com/documentation/services/service-bus/)。
 3. 本地数据网关会针对挂起的请求轮询 Azure 服务总线。
 4. 网关获取查询，对凭据进行解密，并使用这些凭据连接到数据源。
@@ -61,7 +61,7 @@ ms.locfileid: "53630965"
 
 以下是该网关所用的完全限定域名。
 
-| 域名 | 出站端口 | Description |
+| 域名 | 出站端口 | 描述 |
 | --- | --- | --- |
 | *.powerbi.com |80 |用于下载该安装程序的 HTTP。 |
 | *.powerbi.com |443 |HTTPS |
@@ -76,7 +76,7 @@ ms.locfileid: "53630965"
 | *.microsoftonline-p.com |443 |用于根据配置进行身份验证。 |
 
 ### <a name="force-https"></a>强制与 Azure 服务总线进行 HTTPS 通信
-可以强制网关使用 HTTPS 而非直接 TCP 与 Azure 服务总线进行通信，但此操作可能会显著降低性能。 若要修改 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件，可将值从 `AutoDetect` 更改为 `Https`。 通常情况下，此文件位于 *C:\Program Files\On-premises data gateway*。
+可以强制网关使用 HTTPS 而非直接 TCP 与 Azure 服务总线进行通信，但此操作可能会显著降低性能。 若要修改 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* 文件，可将值从 `AutoDetect` 更改为 `Https`。 通常情况下，此文件位于 *C:\Program Files\On-premises data gateway*。
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -185,7 +185,7 @@ ms.locfileid: "53630965"
 ## <a name="telemetry"></a>遥测
 遥测可用于监视和排错。 默认情况下
 
-**启用遥测**
+**若要启用遥测**
 
 1.  查看计算机上的本地数据网关客户端目录。 通常为 %systemdrive%\Program Files\On-premises data gateway。 或者，可打开“服务”控制台并查看可执行文件的“路径”：“本地数据网关服务”的属性。
 2.  在客户端目录的 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件中， 将 SendTelemetry 设置更改为 true。

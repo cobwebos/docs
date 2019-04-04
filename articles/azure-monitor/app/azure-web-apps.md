@@ -9,12 +9,12 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 9d121146924eb153227e35d608a3c6c33aae31a1
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 0c6be20bfb2a6f15335564a1aa98dc0ac88e3507
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862601"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58905828"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
@@ -22,6 +22,9 @@ ms.locfileid: "58862601"
 
 > [!NOTE]
 > 手动添加 Application Insights 站点扩展通过**开发工具** > **扩展**已弃用。 该扩展的最新稳定版本现已[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)作为应用服务映像的一部分。 文件位于`d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`，并使用每个稳定版本自动更新。 如果您遵循的基于代理的说明进行操作，以启用监视下面，它会自动将为您删除不推荐使用的扩展。
+
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -283,12 +286,12 @@ ms.locfileid: "58862601"
 若要启用通过 PowerShell 监视的应用程序，只是基础的应用程序设置需要进行更改。 下面是一个示例，从而使应用程序监视的网站中的资源组"AppMonitoredRG"调用"AppMonitoredSite"，并配置数据发送到"012345678-abcd-ef01-2345年-6789abcd"检测密钥。
 
 ```powershell
-$app = Get-AzureRmWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
+$app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
 $app.SiteConfig.AppSettings | %{$newAppSettings[$_.Name] = $_.Value} #preserve non Application Insights Application settings.
 $newAppSettings["APPINSIGHTS_INSTRUMENTATIONKEY"] = "012345678-abcd-ef01-2345-6789abcd"; # enable the ApplicationInsightsAgent
 $newAppSettings["ApplicationInsightsAgent_EXTENSION_VERSION"] = "~2"; # enable the ApplicationInsightsAgent
-$app = Set-AzureRmWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
+$app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.ResourceGroup -Name $app.Name -ErrorAction Stop
 ```
 
 ## <a name="upgrade-monitoring-extensionagent"></a>升级每个代理监视扩展

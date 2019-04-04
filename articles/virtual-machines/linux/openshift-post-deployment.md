@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
-ms.openlocfilehash: bc7a49aa143400387afcd59d5b9307d82a028486
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098655"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903669"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -147,31 +147,31 @@ oauthConfig:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-确保 identityProviders 下的文本正确对齐。 使用以下 CLI 命令查找租户 ID：```az account show```
+确保 identityProviders 下的文本正确对齐。 使用以下 CLI 命令查找租户 ID： ```az account show```
 
 在所有主节点上重启 OpenShift 主机服务：
 
-**包含多个主节点的 OpenShift 容器平台 (OCP)**
+**具有多主机的 OpenShift 容器平台 (OCP)**
 
 ```bash
 sudo systemctl restart atomic-openshift-master-api
 sudo systemctl restart atomic-openshift-master-controllers
 ```
 
-**包含单个主节点的 OpenShift 容器平台**
+**具有单个主机的 OpenShift 容器平台**
 
 ```bash
 sudo systemctl restart atomic-openshift-master
 ```
 
-**包含多个主节点的 OKD**
+**具有多主机 OKD**
 
 ```bash
 sudo systemctl restart origin-master-api
 sudo systemctl restart origin-master-controllers
 ```
 
-**包含单个主节点的 OKD**
+**具有单个主机 OKD**
 
 ```bash
 sudo systemctl restart origin-master
@@ -251,7 +251,7 @@ OpenShift 容器平台市场套餐还提供一个选项用于在安装群集期�
 
 使用部署期间提供的凭据，通过 SSH 连接到守护节点或第一个主节点（取决于所用的模板和分支）。 发出以下命令：
 
-**OpenShift 容器平台 3.7 和更低版本**
+**OpenShift 容器平台 3.7 及更早版本**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -275,7 +275,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-**OKD 3.7 和更低版本**
+**OKD 3.7 及更早版本**
 
 ```bash
 ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -304,7 +304,7 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 使用部署期间提供的凭据，通过 SSH 连接到守护节点或第一个主节点（取决于所用的模板和分支）。 发出以下命令：
 
 
-**OpenShift 容器平台 3.7 和更低版本**
+**OpenShift 容器平台 3.7 及更早版本**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -324,7 +324,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-**OKD 3.7 和更低版本**
+**OKD 3.7 及更早版本**
 
 ```bash
 ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -352,4 +352,4 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 ## <a name="next-steps"></a>后续步骤
 
 - [OpenShift 容器平台入门](https://docs.openshift.com/container-platform)
-- [OKD 入门](https://docs.okd.io/latest)
+- [开始使用 OKD](https://docs.okd.io/latest)

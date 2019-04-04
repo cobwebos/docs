@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/05/2019
+ms.date: 04/02/2019
 ms.author: magoedte
-ms.openlocfilehash: 677fec21b7491398da5e4958441e5405e0c10e0e
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.openlocfilehash: 5fdee4edce0301a5a4524725879f599b0a2e3532
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745667"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58916682"
 ---
 # <a name="known-issues-with-azure-monitor-for-vms-preview"></a>用于 VM 的 Azure Monitor（预览版）的已知问题
 
@@ -31,7 +31,6 @@ ms.locfileid: "55745667"
 - 如果删除了某个 Azure VM，该 VM 会在 VM 列表视图中显示一段时间。 此外，单击已删除 VM 的状态会打开“运行状况诊断”视图，然后启动加载循环。 选择已删除 VM 的名称会打开一个窗格，其中显示一条指出该 VM 已被删除的消息。
 - 即使门户或工作负荷监视器 API 可以立即更新，但配置更改（例如更新阈值）最长需要 30 分钟才会生效。 
 - 运行状况诊断体验的更新速度比其他视图更快。 在它们之间切换时，信息可能会延迟。 
-- 关闭 VM 会将一些运行状况条件更新为“关键”，将另一些运行状况条件更新为“正常”。 网络 VM 状态显示为“关键”。
 - 对于 Linux VM，列出单个 VM 视图的运行状况条件的页标题包含 VM 的整个域名，而不是用户定义的 VM 名称。 
 - 使用支持的方法之一对 VM 禁用监视功能后，再次尝试部署该 VM 时，应将它部署在同一个工作区中。 如果选择了另一个工作区并尝试查看该 VM 的运行状况，则它可能会显示不一致的行为。
 - Windows 的“总 CPU 使用率”运行状况标准显示了不等于 **4** 的阈值，意味着 CPU 使用率高于 95%，并且系统队列长度大于 15。 在此预览版中，此运行状况标准不可配置。  

@@ -8,12 +8,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: lyrana
-ms.openlocfilehash: 2d437f3fd96c38bebac52d6bb9dacf2c01b20a3c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bfc73a71a0ccda5c135e6a740d6f63bd37522a9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443680"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904264"
 ---
 # <a name="role-based-access-control-in-azure-digital-twins"></a>Azure 数字孪生中基于角色的访问控制
 
@@ -67,7 +67,7 @@ RBAC 具有唯一性，原因在于权限沿着空间图继承。
 以下参考文档介绍了：
 
 - 如何[查询用户的对象 ID](https://docs.microsoft.com/powershell/module/azuread/get-azureaduser?view=azureadps-2.0)。
-- 如何[获取服务主体的对象 ID](https://docs.microsoft.com/powershell/module/azurerm.resources/get-azurermadserviceprincipal)。
+- 如何[获取服务主体的对象 ID](https://docs.microsoft.com/powershell/module/az.resources/get-azadserviceprincipal)。
 - 如何[检索 Azure AD 租户的对象 ID](../active-directory/develop/quickstart-create-new-tenant.md)。
 
 ## <a name="role-assignments"></a>角色分配

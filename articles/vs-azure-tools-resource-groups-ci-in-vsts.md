@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: d7859572b090913db13fe9bb7f3ed67619fe5521
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456340"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894143"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Azure DevOps Services 中持续集成
 若要部署 Azure 模板，您可以在各个阶段中执行任务：生成、 测试、 复制到 Azure （也称为"暂存"），并部署模板。 可通过两种不同的方法将模板部署到 Azure DevOps Services。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -37,7 +37,7 @@ ms.locfileid: "57456340"
 * 应用程序二进制文件
 
 ### <a name="nested-templates-and-configuration-scripts"></a>嵌套模板和配置脚本
-当你使用 Visual Studio 提供的模板（或以 Visual Studio 代码段生成的模板）时，PowerShell 脚本不但会暂存项目，而且会参数化用于不同部署的资源的 URI。 脚本会将项目复制到 Azure 中的安全容器，为该容器创建 SaS 令牌，然后将该信息传递到模板部署。 若要了解有关嵌套模板的详细信息，请参阅[创建模板部署](https://msdn.microsoft.com/library/azure/dn790564.aspx)。  在 Azure DevOps Services 中使用任务时，必须为模板部署选择相应任务，并在必要时将暂存步骤中的参数值传递到模板部署。
+当你使用 Visual Studio 提供的模板（或以 Visual Studio 代码段生成的模板）时，PowerShell 脚本不但会暂存项目，而且会参数化用于不同部署的资源的 URI。 脚本会将项目复制到 Azure 中的安全容器，为该容器创建 SaS 令牌，然后将该信息传递到模板部署。 若要了解有关嵌套模板的详细信息，请参阅[创建模板部署](/previous-versions/azure/reference/dn790564(v=azure.100))。  在 Azure DevOps Services 中使用任务时，必须为模板部署选择相应任务，并在必要时将暂存步骤中的参数值传递到模板部署。
 
 ## <a name="set-up-continuous-deployment-in-azure-pipelines"></a>在 Azure Pipelines 中设置持续部署
 若要在 Azure Pipelines 中调用 PowerShell 脚本，需更新生成管道。 简而言之，请执行以下步骤： 

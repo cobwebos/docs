@@ -3,19 +3,19 @@ title: 文本翻译 API 翻译方法
 titleSuffix: Azure Cognitive Services
 description: 使用文本翻译 API 翻译方法。
 services: cognitive-services
-author: Jann-Skotdal
+author: v-pawal
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 4f6c420ab76462818fb17308d062cc9d881af7df
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8533a5b2a974af3bd426e9b70ba298534b0365f7
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091029"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917509"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
 
@@ -86,7 +86,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>allowFallback</td>
-    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定翻译应仅使用针对由此请求指定的 <code>category</code> 而训练的系统。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定当自定义系统不存在时允许服务回退到一个常规系统。
+    <td>可选参数。<br/>指定当自定义系统不存在时允许服务回退到一个常规系统。 可能的值为 <code>true</code>（默认）<code>false</code>。<br/><br/><code>allowFallback=false</code> 指定转换应仅使用系统进行培训，以便<code>category</code>指定的请求。 如果将语言 X 翻译成语言 Y 需要通过枢轴语言 E 进行链接，那么此链中的所有系统（X->E 和 E->Y）将需要进行自定义并且具有相同的类别。 如果未通过特定类别找到任何系统，此请求将返回 400 状态代码。 <code>allowFallback=true</code> 指定自定义系统不存在时回退到常规系统允许的服务。
 </td>
   </tr>
 </table> 
@@ -95,9 +95,9 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 <table width="100%">
   <th width="20%">标头</th>
-  <th>说明</th>
+  <th>描述</th>
   <tr>
-    <td>一个授权<br/>标头</td>
+    <td>_一个授权_<br/>_标头的值开始缓存响应_</td>
     <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
   </tr>
   <tr>
@@ -133,39 +133,39 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `detectedLanguage`：一个对象，它通过以下属性描述检测到的语言：
+  * `detectedLanguage`:一个对象，它通过以下属性描述检测到的语言：
 
-      * `language`：一个字符串，表示检测到的语言的代码。
+      * `language`:一个字符串，表示检测到的语言的代码。
 
-      * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
+      * `score`:一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
 
     当请求了语言自动检测时，`detectedLanguage` 属性仅存在于结果对象中。
 
-  * `translations`：翻译结果的数组。 数组的大小与通过 `to` 查询参数指定的目标语言的数目匹配。 数组中的每个元素包括：
+  * `translations`:翻译结果的数组。 数组的大小与通过 `to` 查询参数指定的目标语言的数目匹配。 数组中的每个元素包括：
 
-    * `to`：一个字符串，表示目标语言的语言代码。
+    * `to`:一个字符串，表示目标语言的语言代码。
 
-    * `text`：一个字符串，提供翻译的文本。
+    * `text`:一个字符串，提供翻译的文本。
 
-    * `transliteration`：一个对象，在 `toScript` 参数指定的脚本中提供翻译的文本。
+    * `transliteration`:一个对象，在 `toScript` 参数指定的脚本中提供翻译的文本。
 
-      * `script`：一个字符串，指定目标脚本。   
+      * `script`:一个字符串，指定目标脚本。   
 
-      * `text`：一个字符串，在目标脚本中提供翻译的文本。
+      * `text`:一个字符串，在目标脚本中提供翻译的文本。
 
     如果不进行音译，则不包括 `transliteration` 对象。
 
-    * `alignment`：一个对象，包含的名为 `proj` 的单个字符串属性可以将输入文本映射到翻译文本。 只有在请求参数 `includeAlignment` 为 `true` 时，才提供比对信息。 将以 `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` 格式的字符串值返回比对内容。  冒号分隔开始和结束索引，连字符分隔语言，空格分隔单词。 一个单词可能与另一种语言中的 0 个、1 个或多个单词比对，而比对的词可能是不连续的。 当没有可用的比对信息时，Alignment 元素会为空。 请参阅[获取比对信息](#obtain-alignment-information)，了解示例和限制。
+    * `alignment`:一个对象，包含的名为 `proj` 的单个字符串属性可以将输入文本映射到翻译文本。 只有在请求参数 `includeAlignment` 为 `true` 时，才提供比对信息。 将以 `[[SourceTextStartIndex]:[SourceTextEndIndex]–[TgtTextStartIndex]:[TgtTextEndIndex]]` 格式的字符串值返回比对内容。  冒号分隔开始和结束索引，连字符分隔语言，空格分隔单词。 一个单词可能与另一种语言中的 0 个、1 个或多个单词比对，而比对的词可能是不连续的。 当没有可用的比对信息时，Alignment 元素会为空。 请参阅[获取比对信息](#obtain-alignment-information)，了解示例和限制。
 
-    * `sentLen`：一个对象，返回输入和输出文本中的句子边界。
+    * `sentLen`:一个对象，返回输入和输出文本中的句子边界。
 
-      * `srcSentLen`：一个整数数组，表示输入文本中句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。
+      * `srcSentLen`:一个整数数组，表示输入文本中句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。
 
-      * `transSentLen`：一个整数数组，表示翻译文本中句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。
+      * `transSentLen`:一个整数数组，表示翻译文本中句子的长度。 数组的长度是句子的数量，而各个值是每个句子的长度。
 
     只有在请求参数 `includeSentenceLength` 为 `true` 时，才包括句子边界。
 
-  * `sourceText`：一个对象，包含的名为 `text` 的单个字符串属性在源语言的默认脚本中提供输入文本。 `sourceText` 属性存在的前提是，表述输入时采用的脚本不是该语言的通用脚本。 例如，如果输入是采用拉丁语脚本编写的阿拉伯语，则 `sourceText.text` 就是转换为阿拉伯脚本的同一阿拉伯文本。
+  * `sourceText`:一个对象，包含的名为 `text` 的单个字符串属性在源语言的默认脚本中提供输入文本。 `sourceText` 属性是仅在输入以不是语言的常用脚本的脚本时才可用。 例如，如果输入是采用拉丁语脚本编写的阿拉伯语，则 `sourceText.text` 就是转换为阿拉伯脚本的同一阿拉伯文本。
 
 [示例](#examples)部分提供了 JSON 响应的示例。
 
@@ -233,7 +233,7 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
 
 以下示例演示了如何将单个句子从英文翻译为简体中文。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -259,7 +259,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 以下示例演示了如何将单个句子从英文翻译为简体中文。 请求未指定输入语言， 而是使用自动检测源语言的功能。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -285,7 +285,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 让我们添加音译，对上一示例进行扩展。 以下请求要求提供以拉丁字母拼写的中文翻译。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&to=zh-Hans&toScript=Latn" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -316,7 +316,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 一次翻译多个字符串时，只需在请求正文中指定一个字符串数组即可。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}, {'Text':'I am fine, thank you.'}]"
@@ -345,7 +345,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 以下示例演示如何在一个请求中将同一输入翻译为多种语言。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&to=de" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'Hello, what is your name?'}]"
@@ -403,7 +403,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 例如：
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -425,7 +425,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 与以下示例比较：
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=de&profanityAction=Marked&profanityMarker=Tag" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'This is a fucking good idea.'}]"
@@ -456,7 +456,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 下面是用于演示的示例请求。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=zh-Hans&textType=html" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'<div class=\"notranslate\">This will not be translated.</div><div>This will be translated.</div>'}]"
@@ -480,7 +480,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 若要接收比对信息，请在查询字符串中指定 `includeAlignment=true`。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeAlignment=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation.'}]"
@@ -518,7 +518,7 @@ curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-versio
 
 若要接收源文本和翻译文本中句子长度的相关信息，请在查询字符串中指定 `includeSentenceLength=true`。
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# [<a name="curl"></a>curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/translate?api-version=3.0&from=en&to=fr&includeSentenceLength=true" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'The answer lies in machine translation. The best machine translation technology cannot always provide translations tailored to a site or users like a human. Simply copy and paste a code snippet anywhere.'}]"

@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 4adc6ef6e7dd445eea3fd567072a995e3ac07dda
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539626"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918155"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
 云服务角色通过内部和外部连接进行通信。 外部连接称为**输入终结点**，内部连接称为**内部终结点**。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。
 
 ## <a name="input-endpoint"></a>输入终结点
-想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](https://msdn.microsoft.com/library/azure/gg557552.aspx#InputEndpoint) 属性为终结点指定不同的内部端口。
+想要向外部公开某个端口时，使用输入终结点。 可以指定该终结点的协议类型和端口，这些指定值将同时应用到该终结点的外部和内部端口。 如果需要，用户可以使用 [localPort](/previous-versions/azure/reference/gg557552(v=azure.100)#InputEndpoint) 属性为终结点指定不同的内部端口。
 
 输入终结点可以使用以下协议：**http、https、tcp、udp**。
 
@@ -96,7 +96,7 @@ Azure 托管库提供了角色实例在运行时用来通信的方法。 可以�
 > 
 > 
 
-可以使用 [Instances](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.role.instances.aspx) 属性检索角色的实例。 首先，使用 [CurrentRoleInstance](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.currentroleinstance.aspx) 返回对当前角色实例的引用，并使用 [Role](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.role.aspx) 属性返回对角色本身的引用。
+可以使用 [Instances](/previous-versions/azure/reference/ee741904(v=azure.100)) 属性检索角色的实例。 首先，使用 [CurrentRoleInstance](/previous-versions/azure/reference/ee741907(v=azure.100)) 返回对当前角色实例的引用，然后使用 [Role](/previous-versions/azure/reference/ee741918(v=azure.100)) 属性返回对角色本身的引用。
 
 通过 .NET SDK 以编程方式连接到角色实例时，可以相对较容易地访问终结点信息。 例如，在连接到特定的角色环境后，可以使用以下代码获取特定终结点的端口：
 
@@ -111,7 +111,7 @@ Instances 属性将返回一个 RoleInstance 对象集合。 此集合始终包�
 > 
 > 
 
-要确定角色实例上的内部终结点的端口号，可以使用 [InstanceEndpoints](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstance.instanceendpoints.aspx) 属性来返回 Dictionary 对象，该对象中包含终结点名称及其对应的 IP 地址和端口。 [IPEndpoint](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleinstanceendpoint.ipendpoint.aspx) 属性返回指定终结点的 IP 地址和端口。 **PublicIPEndpoint** 属性返回负载均衡终结点的端口。 不使用 **PublicIPEndpoint** 属性的 IP 地址部分。
+要确定角色实例上的内部终结点的端口号，可以使用 [InstanceEndpoints](/previous-versions/azure/reference/ee741917(v=azure.100)) 属性来返回 Dictionary 对象，该对象中包含终结点名称及其对应的 IP 地址和端口。 [IPEndpoint](/previous-versions/azure/reference/ee741919(v=azure.100)) 属性返回指定终结点的 IP 地址和端口。 **PublicIPEndpoint** 属性返回负载均衡终结点的端口。 不使用 **PublicIPEndpoint** 属性的 IP 地址部分。
 
 下面是一个循环访问角色实例的示例。
 
@@ -368,7 +368,7 @@ namespace WorkerRole1
 </ServiceDefinition>
 ```
 
-可在[此处](https://msdn.microsoft.com/library/azure/gg557551.aspx)找到上面所用元素的 XML 架构参考。
+可在[此处](/previous-versions/azure/reference/gg557551(v=azure.100))找到上面所用元素的 XML 架构参考。
 
 ## <a name="next-steps"></a>后续步骤
 阅读有关云服务[模型](cloud-services-model-and-package.md)的详细信息。
