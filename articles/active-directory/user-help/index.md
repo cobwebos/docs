@@ -11,8 +11,13 @@ ms.topic: landing-page
 ms.date: 07/30/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
+ms.openlocfilehash: 6e73e089f0753f49233c75a5e55513ebaf7bf9c9
+ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/21/2019
+ms.locfileid: "58338099"
 ---
-
 # <a name="user-help-for-authentication-apps-and-device-management"></a>有关身份验证、应用和设备管理的用户帮助
 
 我们创建了此内容来帮助你设置和使用安全信息与双重验证、了解如何重置自己的密码、设置和加入 Azure Active Directory 设备以及设置和使用 Microsoft Authenticator 应用与“我的应用”门户。

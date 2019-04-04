@@ -9,8 +9,13 @@ layout: LandingPage
 ms.service: power-bi-embedded
 ms.topic: landing-page
 ms.date: 07/31/2018
+ms.openlocfilehash: 8c7ee917234891123392a7954bf704e1ff2a70e1
+ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58447821"
 ---
-
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded 文档
 
 了解如何使用 Power BI Embedded 将数据可视化和交互式报表添加到应用程序。 教程、API 参考和其他文档介绍了如何在应用中无缝嵌入 Power BI 报表和仪表板。

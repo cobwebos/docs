@@ -5,15 +5,20 @@ description: 了解 Azure 计费方式、如何管理和监视使用量与费用
 services: billing
 author: cwatson-cat
 manager: dougeby
-ms.assetid: null
+ms.assetid: ''
 ms.service: billing
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 02/19/2019
 ms.author: banders
+ms.openlocfilehash: e150525b6f5fd1814f13595fbd4ea7e3bccde4fc
+ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 02/20/2019
+ms.locfileid: "56446709"
 ---
-
 # <a name="azure-billing-and-cost-management-documentation"></a>Azure 计费和成本管理文档
 
 了解 Azure 计费方式、如何监视使用量与费用，以及如何管理帐户和订阅。

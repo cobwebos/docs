@@ -18,7 +18,7 @@ ms.locfileid: "58181344"
 
 当应用程序开发向基于容器的开发转变时，资源的安排和管理就变得非常重要。 Kubernetes 是一个可用于可靠地规划和调度容错的应用程序工作负载的领先平台。 Azure Kubernetes 服务 (AKS) 是一种托管的 Kubernetes 服务，可进一步简化基于容器的应用程序的部署和管理。
 
-本文介绍了核心 Kubernetes 基础结构组件，例如群集主机、节点和节点池。 还介绍了 Pod、部署和集等工作负荷资源，以及如何将资源分组到命名空间。
+本文介绍了核心 Kubernetes 基础结构组件，例如集群主机、节点和节点池。 还介绍了 Pod、部署和集等工作负荷资源，以及如何将资源分组到命名空间。
 
 ## <a name="what-is-kubernetes"></a>什么是 Kubernetes？
 
@@ -28,7 +28,7 @@ Kubernetes 是一个快速发展的平台，用于管理基于容器的应用程
 
 作为开放平台，Kubernetes 可使用首选的编程语言、OS、库或消息总线生成应用程序。 现有的持续集成和持续交付 (CI/CD) 工具可以与 Kubernetes 集成，以计划和部署版本。
 
-Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 基于开放源代码 Azure Kubernetes 服务引擎 ([aks 引擎][aks-engine])。
+Azure Kubernetes 服务 (AKS) 提供托管 Kubernetes 服务，可简化部署和核心管理任务，包括协调升级。 Azure 平台可托管 AKS 群集主机，你只需为运行应用程序的 AKS 节点付费。 AKS 基于开源 Azure Kubernetes 服务引擎 ([aks 引擎][aks-engine])。
 
 ## <a name="kubernetes-cluster-architecture"></a>Kubernetes 群集体系结构
 
@@ -52,11 +52,11 @@ Kubernetes 群集分为两个组件：
 
 AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你来定义节点的数量和大小，Azure 平台配置群集主机与节点之间的安全通信。 通过 Kubernetes API（例如 `kubectl` 或 Kubernetes 仪表板）实现与群集主机之间的交互。
 
-此托管的群集主意味着您无需配置的组件，如高可用性*etcd*存储区，但它也意味着您不能直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，后者先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主日志。
+此托管的群集主机意味着无需配置某些组件，如高度可用的*etcd*存储区，但也意味着不能直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主日志。
 
 如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 
-关联的最佳做法，请参阅[的群集的安全性和在 AKS 中的升级最佳做法][operator-best-practices-cluster-security]。
+有关相关的最佳做法，请参阅[AKS 中的安全性和升级最佳做法][operator-best-practices-cluster-security]。
 
 ## <a name="nodes-and-node-pools"></a>节点和节点池
 
@@ -95,7 +95,7 @@ AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你�
     
 基础节点 OS 还需要一定量的 CPU 和内存资源来完成其自己的核心功能。
 
-关联的最佳做法，请参阅[在 AKS 中的基本计划程序功能的最佳做法][operator-best-practices-scheduler]。
+有关相关的最佳做法，请参阅[在 AKS 中的基本计划程序功能的最佳做法][operator-best-practices-scheduler]。
 
 ### <a name="node-pools"></a>节点池
 
@@ -207,7 +207,7 @@ Kubernetes 资源（如 Pod 和部署）以逻辑方式分组到命名空间中�
 
 - default - 不提供任何命名空间时，默认情况下在此命名空间中创建 Pod 和部署。 在小型环境中，可以将应用程序直接部署到默认命名空间，而无需创建其他逻辑分隔。 与 Kubernetes API（例如 `kubectl get pods`）交互时，如果未指定命名空间，则使用默认值。
 - kube-system - 此命名空间是核心资源的所在位置，例如 DNS 和代理等网络功能或 Kubernetes 仪表板。 通常不会将应用程序部署到此命名空间中。
-- kube-public - 通常不使用此命名空间，但可以用于在整个群集中可见的资源，并且可供任何用户查看。
+- kube-public - 通常不使用此命名空间，但可以用于让资源在整个群集中可见，并可供任何用户查看。
 
 有关详细信息，请参阅 [Kubernetes 命名空间][kubernetes-namespaces]。
 

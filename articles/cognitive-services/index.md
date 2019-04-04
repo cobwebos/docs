@@ -9,8 +9,13 @@ ms.service: cognitive-services
 ms.author: nitinme
 ms.date: 02/21/2019
 ms.topic: hub-page
+ms.openlocfilehash: 621cf49284ac1080bf18619f80f14c8a21c2f761
+ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 03/26/2019
+ms.locfileid: "58472916"
 ---
-
 <div id="main" class="v2">
 <h1>Azure 认知服务文档</h1>
         <p style="font-size: 1.12rem;margin-bottom: 1rem;">了解如何将智能算法构建到应用、网站和机器人中，从而使它们通过自然的沟通方式观察、倾听、说出和理解用户需求。 教程、快速入门、API 参考和示例演示了操作方法。</p>
