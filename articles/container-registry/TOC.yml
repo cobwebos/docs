@@ -7,13 +7,15 @@ items:
     href: container-registry-intro.md
 - name: 快速入门
   items:
-  - name: 容器注册表 - CLI
+  - name: 创建容器注册表 - CLI
     href: container-registry-get-started-azure-cli.md
-  - name: 容器注册表 - 门户
+  - name: 创建容器注册表 - 门户
     href: container-registry-get-started-portal.md
-  - name: 容器注册表 - PowerShell
+  - name: 创建容器注册表 - PowerShell
     href: container-registry-get-started-powershell.md
-  - name: 将事件与事件网格配合使用 - CLI
+  - name: 生成并运行映像 - CLI
+    href: container-registry-quickstart-task-cli.md
+  - name: 将事件发送到事件网格 - CLI
     href: container-registry-event-grid-quickstart.md
   expanded: true
 - name: 教程
@@ -89,10 +91,8 @@ items:
     items:
     - name: ACR 任务
       href: container-registry-tasks-overview.md
-    - name: 多步骤任务（预览版）
+    - name: 多步骤任务
       href: container-registry-tasks-multi-step.md
-    - name: 多步骤任务参考（预览版）
-      href: container-registry-tasks-reference-yaml.md
   - name: 注册表和其他 Azure 服务
     items:
     - name: Azure 容器实例
@@ -119,6 +119,8 @@ items:
     href: /javascript/api/overview/azure/container-registry
   - name: 资源管理器模板
     href: /azure/templates/microsoft.containerregistry/registries
+  - name: ACR 任务 YAML
+    href: container-registry-tasks-reference-yaml.md
   - name: Webhook 架构
     href: container-registry-webhook-reference.md
   - name: 事件网格架构
@@ -140,9 +142,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-container-registry
   - name: 视频
     href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 3b5c8cc63db967fd582d15765f2fd1ca1c7bbb3e
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 987b70f527afe9b9d09eeef70c7fa706c3e58932
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847665"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917866"

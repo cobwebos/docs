@@ -7,16 +7,28 @@ items:
       href: overview.md
     - name: 工作负荷
       href: partner-workloads.md
+  - name: 概念
+    items:
+    - name: 计算
+      href: concepts/mainframe-compute-azure.md
+    - name: 存储
+      href: concepts/mainframe-storage-azure.md
   - name: Micro Focus
     items:
     - name: 入门
       href: microfocus/get-started.md
-    - name: 安装 Micro Focus Enterprise Server
-      href: microfocus/set-up-micro-focus-on-azure.md
-    - name: 演示
+    - name: 安装 Enterprise Server
+      href: microfocus/set-up-micro-focus-azure.md
+    - name: 运行 CICS BankDemo
       href: microfocus/demo.md
+    - name: 容器中的 Enterprise Server
+      href: microfocus/run-enterprise-server-container.md
   - name: TmaxSoft OpenFrame
-    href: https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/
+    items:
+    - name: 入门
+      href: tmaxsoft/get-started.md
+    - name: 安装 OpenFrame
+      href: tmaxsoft/install-openframe-azure.md
   - name: IBM
     items:
     - name: 入门
@@ -29,9 +41,15 @@ items:
       href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
     - name: 部署 IBM DB2 pureScale
       href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-ms.openlocfilehash: e89b8301a325ab25d78598cfd3e58e6ac74198a6
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+  - name: 资源
+    items:
+    - name: 白皮书
+      href: mainframe-white-papers.md
+    - name: Azure 路线图
+      href: https://azure.microsoft.com/updates/
+ms.openlocfilehash: c0cec35997d398045f9c34904c8ee07755724572
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57342541"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895218"

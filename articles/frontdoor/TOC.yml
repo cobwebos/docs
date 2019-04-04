@@ -23,8 +23,8 @@ items:
     href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-  - name: 应用程序层安全性
-    href: front-door-application-security.md
+  - name: WAF
+    href: waf-overview.md
   - name: 后端和后端池
     href: front-door-backend-pool.md
   - name: 使用 Front Door 进行缓存
@@ -58,7 +58,11 @@ items:
     - name: 允许的证书颁发机构
       href: front-door-troubleshoot-allowed-ca.md
 - name: 常见问题解答
-  href: front-door-faq.md
+  items:
+  - name: Front Door 常见问题解答
+    href: front-door-faq.md
+  - name: WAF 常见问题解答
+    href: waf-faq.md
 - name: 引用
   items:
   - name: Azure CLI
@@ -77,9 +81,9 @@ items:
     href: https://azure.microsoft.com/pricing/calculator/
   - name: 服务更新
     href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: 98a5d50b8dc8195a0943379c2570711d01db268a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 20afe50b6b17acb0f155769e95c5ec66c19c8fba
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850105"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906236"

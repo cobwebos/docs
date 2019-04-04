@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 19e9bbafa1c560e7fa28be9945bc13cb0e342edc
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49388555"
 documentType: LandingData
-title: Azure Front Door 服务文档（预览版）
+title: Azure Front Door 服务文档
 metadata:
-  title: Azure Front Door 服务文档（预览版）
-  meta.description: Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.
+  title: Azure Front Door 服务文档
+  meta.description: 'Azure Front Door Service provides a scalable and secure entry point for fast delivery of your global web applications. Learn how to use Front Door with our quickstarts, tutorials, and samples.'
   services: frontdoor
   author: dlepow
   ms.service: frontdoor
@@ -19,33 +13,33 @@ metadata:
 abstract:
   description: Azure Front Door 服务提供可缩放的安全入口点，可快速交付全局 Web 应用程序。 使用我们的快速入门、教程和示例了解如何使用 Front Door。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 创建 Front Door，以实现高度可用的全局 Web 应用程序。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure 门户
-      href: quickstart-create-front-door.md
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何配置 Azure Front Door 服务以满足需求。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 创建 Front Door，以实现高度可用的全局 Web 应用程序。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure 门户
+            href: quickstart-create-front-door.md
+  - title: 分步教程
     items:
-    - html: <a href="front-door-custom-domain.md">将自定义域添加到 Front Door</a>
-    - html: <a href="front-door-custom-domain-https.md">为自定义域启用 HTTPS</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 了解如何配置 Azure Front Door 服务以满足需求。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="front-door-custom-domain.md">将自定义域添加到 Front Door</a>
+          - html: <a href="front-door-custom-domain-https.md">为自定义域启用 HTTPS</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/frontdoor">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: '<p><a href="/cli/azure/ext/front-door">Azure CLI</a></p><p><a href="https://go.microsoft.com/fwlink/?linkid=2020942">Azure PowerShell</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/frontdoor">REST API</a></p>

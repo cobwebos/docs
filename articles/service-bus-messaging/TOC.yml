@@ -105,6 +105,8 @@ items:
         href: service-bus-sas.md
     - name: 主题筛选器和操作
       href: topic-filters.md
+    - name: 从标准层迁移到高级层命名空间
+      href: service-bus-migrate-standard-premium.md
     - name: 分区的队列和主题
       href: service-bus-partitioning.md
     - name: 消息会话
@@ -121,6 +123,8 @@ items:
         href: service-bus-amqp-protocol-guide.md
       - name: 基于 AMQP 请求-响应的操作
         href: service-bus-amqp-request-response.md
+      - name: AMQP 错误
+        href: service-bus-amqp-troubleshoot.md
     - name: 高级功能
       items:
       - name: 使用防火墙
@@ -234,9 +238,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azureservicebus
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-bus
-ms.openlocfilehash: 09a7759c89411d53b374552a969f7aefdb89ee98
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 464e19bc796e41045d0c8422718da39f2aa66a9b
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848102"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906270"
