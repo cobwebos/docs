@@ -3,17 +3,17 @@ title: 快速入门：使用 Azure 数据资源管理器 Python 库引入数据
 description: 在本快速入门中，你将了解如何使用 Python 在 Azure 数据资源管理器中引入（加载）数据。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/16/2018
-ms.openlocfilehash: 61463f33491cc909a21be99efcbb82094c958edd
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 309e391412a0e2c698173f02eb9fd00d576ead09
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063244"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757714"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-python-library"></a>快速入门：使用 Azure 数据资源管理器 Python 库引入数据
 

@@ -4,16 +4,16 @@ description: 了解如何使用 Azure CLI 创建 Azure 数据资源管理器群�
 services: data-explorer
 author: radennis
 ms.author: radennis
-ms.reviewer: orspod
+ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 3/25/2019
-ms.openlocfilehash: 2a77671ca405a69ec87e335004a84acb2e649c2c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 852eb32611f526c6fae4898d2bc85cac0859498f
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418646"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58758430"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 

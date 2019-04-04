@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 10/17/2018
 ms.author: chrande
-ms.openlocfilehash: c9283b0abed62f26192fae30face8721a81f546e
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 6efa0bab6327022bfe4a1f6d94a6a135cd1f91f3
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108560"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849066"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
 
@@ -117,13 +117,13 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ```bash
 # Given an account created with 1 region like so
-az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=0'
+az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0
 
 # Add a new region by adding another region to the list
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=0 westus=1'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations eastus=0 westus=1
 
 # Remove a region by removing a region from the list
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'westus=0'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0
 ```
 
 ## <a name="configure-multiple-write-regions"></a>配置多个写入区域
@@ -216,9 +216,9 @@ az cosmosdb create --name <Azure Cosmos account name> --resource-group <Resource
 ### <a id="enable-manual-failover-via-cli"></a>Azure CLI
 
 ```bash
-# Given your account currently has regions with priority like so: 'eastus=0 westus=1'
+# Given your account currently has regions with priority like so: eastus=0 westus=1
 # Change the priority order to trigger a failover of the write region
-az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations 'eastus=1 westus=0'
+az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource Group name> --locations westus=0 eastus=1
 ```
 
 ## <a id="automatic-failover"></a>为 Azure Cosmos DB 帐户启用自动故障转移
@@ -275,7 +275,8 @@ az cosmosdb update --name <Azure Cosmos account name> --resource-group <Resource
 ### <a id="set-failover-priorities-via-cli"></a>Azure CLI
 
 ```bash
-az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resource-group <Resource Group name> --failover-policies 'eastus=0 westus=2 southcentralus=1'
+# Assume region order is initially eastus=0 westus=1 automatic failover on account creation
+az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resource-group <Resource Group name> --failover-policies westus=0 eastus=1
 ```
 
 ## <a name="next-steps"></a>后续步骤

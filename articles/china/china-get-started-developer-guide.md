@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: d2d248840f98b4fb6a155e098740869ecc035dc8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cface0b7848182db5d9aee282a2effb631c065bf
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079870"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58648828"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](https://www.azure.cn/home/features/products-by-region)可在 Microsoft Azure 中国世纪互联中使用。
 
-在提到适用于全球 Azure 服务的公用内容时，请务必修改相关的步骤，或自定义任何指定全球 Azure 服务设置的示例代码。 例如，自定义 [Azure 服务终结点](#Check-endpoints-in-Azure)。
+在提到适用于全球 Azure 服务的公用内容时，请务必修改相关的步骤，或自定义任何指定全球 Azure 服务设置的示例代码。 例如，自定义 [Azure 服务终结点](#check-endpoints-in-azure)。
 
 ## <a name="migrate-existing-applications-and-workloads"></a>迁移现有的应用程序和工作负荷
 迁移在其他位置托管的应用程序或工作负荷需要花费一定的时间，并需要做好规划。 迁移到 Microsoft Azure 中国世纪互联：

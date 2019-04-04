@@ -4,15 +4,13 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 1/29/2019
 ms.author: rgarcia
-ms.openlocfilehash: 9ef71ef67f53a37e5bbd5a672569114c3cd8af4e
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: f66a3653bc85925349dde84551310fd24f4c9336
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305254"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58633033"
 ---
-在 Unity 中，打开 `Unity` 文件夹中的项目。
-
 通过选择“文件” > “生成设置”，打开“生成设置”。
 
 在“平台”部分，选择“iOS”。
