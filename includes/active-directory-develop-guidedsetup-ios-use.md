@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d5a38d19541e59e0e2815362c0181a8e317a5d0f
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: b7883de410a1fd281a154a792dd45132c08f0c03
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203457"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890876"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-get-a-token-for-the-microsoft-graph-api"></a>使用 Microsoft 身份验证库 (MSAL) 获取用于 Microsoft Graph API 的令牌
 
@@ -215,7 +215,7 @@ class ViewController: UIViewController, UITextFieldDelegate, URLSessionDelegate 
 
 `acquireTokenSilent` 最终会失败（例如，用户已注销，或已在另一台设备上更改了密码）。 MSAL 检测到可以通过请求交互式操作解决问题时，它将引发 `MSALErrorCode.interactionRequired` 异常。 应用程序可以通过两种方式处理此异常：
 
-1. 立即调用 `acquireToken`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例应用程序使用此模式：可在第一次执行应用程序时看到其正在运行。 由于没有用户使用过该应用程序，`applicationContext.allAccounts().first` 将包含一个 null 值，并且引发 ` MSALErrorCode.interactionRequired ` 异常。 此示例中的代码随后处理此异常，方法是通过调用 `acquireToken` 使其显示用户登录提示。
+1. 立即调用 `acquireToken`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的脱机内容。 此指导式设置生成的示例应用程序使用此模式：可在第一次执行应用程序时看到其正在运行。 由于没有用户使用过该应用程序，`applicationContext.allAccounts().first` 将包含一个 null 值，并且引发 `MSALErrorCode.interactionRequired` 异常。 此示例中的代码随后处理此异常，方法是通过调用 `acquireToken` 使其显示用户登录提示。
 
 2. 应用程序还可以直观地提示用户以交互方式登录，用户可以选择在合适的时间登录，或者应用程序可以稍后重试 `acquireTokenSilent`。 如果用户可以在不中断应用程序的情况下（例如，应用程序中有可用的脱机内容）使用应用程序的其他功能，则通常会使用此方法。 在这种情况下，用户可以决定何时登录并访问受保护的资源，或何时刷新过期信息，或在网络暂时不可用得到还原后，应用程序可以决定重试 `acquireTokenSilent`。
 

@@ -9,18 +9,18 @@ ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
 ms.subservice: alerts
-ms.openlocfilehash: dcce5e424a5f14cb8f36582635383b0a8ba86caa
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: f8b9db47684a6dd78302f094d8e670da4a61ab2c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54472256"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849807"
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>当指标值满足条件时接收通知
 
 Azure Monitor 使指标可用于许多 Azure 资源。 这些指标传达相关资源的性能和运行状况。 在许多情况下，指标值可以指出某个资源发生错误。 可以创建指标警报以监视异常行为，并在异常行为发生时收到通知。 本快速入门分步介绍了如何创建逻辑应用、创建作业，并使逻辑应用的指标可视化。 然后，它将完成创建警报，并接收逻辑应用资源的指标的通知。
 
-有关指标和指标警报的详细信息，请参阅 [Azure Monitor 指标概述](../../azure-monitor/platform/data-collection.md)和 [Azure Monitor 警报概述](./alerts-overview.md)。 
+有关指标和指标警报的详细信息，请参阅 [Azure Monitor 指标概述](data-platform.md)和 [Azure Monitor 警报概述](alerts-overview.md)。 
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
