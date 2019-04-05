@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 227ea446a75c167be27128b15de1d3c216e6856d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: 3d35860452aabb6aecc4e8549c7b5ce4447d7aa4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34363370"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047664"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 
 客户经常会遇到验证基础结构安全局势的难题。 对于 Azure 中的 VM，也存在类似的难题。 必须应用一个基于网络安全组 (NSG) 规则的类似安全配置文件。 现在，使用安全组视图可以获取应用到 NSG 中 VM 的规则列表。 可以定义一个黄金 NSG 安全配置文件，然后每周启动安全组视图，将输出与该黄金配置文件进行比较并创建报告。 这样，便可以轻松识别不符合指定的安全配置文件的所有 VM。
 
 如果不熟悉网络安全组，请参阅[网络安全概述](../virtual-network/security-overview.md)。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -46,7 +49,7 @@ ms.locfileid: "34363370"
 
 ## <a name="retrieve-rule-set"></a>检索规则集
 
-本示例的第一个步骤是处理现有的基准。 以下示例是使用 `Get-AzureRmNetworkSecurityGroup` cmdlet 从现有网络安全组中提取的、用作本示例基准的一些 JSON 代码。
+本示例的第一个步骤是处理现有的基准。 以下示例是使用 `Get-AzNetworkSecurityGroup` cmdlet 从现有网络安全组中提取的、用作本示例基准的一些 JSON 代码。
 
 ```json
 [
@@ -123,19 +126,19 @@ $nsgbaserules = Get-Content -Path C:\temp\testvm1-nsg.json | ConvertFrom-Json
 
 ## <a name="retrieve-network-watcher"></a>检索网络观察程序
 
-下一步是检索网络观察程序实例。 将 `$networkWatcher` 变量传递给 `AzureRmNetworkWatcherSecurityGroupView` cmdlet。
+下一步是检索网络观察程序实例。 将 `$networkWatcher` 变量传递给 `AzNetworkWatcherSecurityGroupView` cmdlet。
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 ```
 
 ## <a name="get-a-vm"></a>获取 VM
 
-需要针对虚拟机运行 `Get-AzureRmNetworkWatcherSecurityGroupView` cmdlet。 以下示例获取 VM 对象。
+需要针对虚拟机运行 `Get-AzNetworkWatcherSecurityGroupView` cmdlet。 以下示例获取 VM 对象。
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
+$VM = Get-AzVM -ResourceGroupName "testrg" -Name "testvm1"
 ```
 
 ## <a name="retrieve-security-group-view"></a>检索安全组视图
@@ -143,7 +146,7 @@ $VM = Get-AzurermVM -ResourceGroupName "testrg" -Name "testvm1"
 下一步是检索安全组视图结果。 将此结果与前面所示的“基准”JSON 进行比较。
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="analyzing-the-results"></a>分析结果

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 9cc06e97730ac846e8aa42c2cee77dfe17be99bb
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
-ms.translationtype: HT
+ms.openlocfilehash: b22dd2dcf575362b96d150ef98148076f4ec631f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089640"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047579"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>使用 PowerShell 通过安全组视图分析虚拟机安全性
 
@@ -30,9 +30,12 @@ ms.locfileid: "39089640"
 
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 PowerShell 检索虚拟机的已配置的有效安全规则
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>开始之前
 
-在此方案中，运行 `Get-AzureRmNetworkWatcherSecurityGroupView` cmdlet 检索安全规则信息。
+在此方案中，运行 `Get-AzNetworkWatcherSecurityGroupView` cmdlet 检索安全规则信息。
 
 此方案假定已按照[创建网络观察程序](network-watcher-create.md)中的步骤创建网络观察程序。
 
@@ -42,19 +45,19 @@ ms.locfileid: "39089640"
 
 ## <a name="retrieve-network-watcher"></a>检索网络观察程序
 
-第一步是检索网络观察程序实例。 将此变量传递给 `Get-AzureRmNetworkWatcherSecurityGroupView` cmdlet。
+第一步是检索网络观察程序实例。 将此变量传递给 `Get-AzNetworkWatcherSecurityGroupView` cmdlet。
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 ```
 
 ## <a name="get-a-vm"></a>获取 VM
 
-需要针对虚拟机运行 `Get-AzureRmNetworkWatcherSecurityGroupView` cmdlet。 以下示例获取 VM 对象。
+需要针对虚拟机运行 `Get-AzNetworkWatcherSecurityGroupView` cmdlet。 以下示例获取 VM 对象。
 
 ```powershell
-$VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
+$VM = Get-AzVM -ResourceGroupName testrg -Name testvm1
 ```
 
 ## <a name="retrieve-security-group-view"></a>检索安全组视图
@@ -62,7 +65,7 @@ $VM = Get-AzurermVM -ResourceGroupName testrg -Name testvm1
 下一步是检索安全组视图结果。
 
 ```powershell
-$secgroup = Get-AzureRmNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
+$secgroup = Get-AzNetworkWatcherSecurityGroupView -NetworkWatcher $networkWatcher -TargetVirtualMachineId $VM.Id
 ```
 
 ## <a name="viewing-the-results"></a>查看结果

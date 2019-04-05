@@ -1,18 +1,18 @@
 ---
 author: robinsh
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: c30f31903e59c505d778c95c58adbb48af0db96f
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 145fc6bf9780f390d6f137b7e24a1f52f312a1a7
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505785"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59052000"
 ---
 ## <a name="prepare-to-authenticate-azure-resource-manager-requests"></a>准备对 Azure Resource Manager 请求进行身份验证
-必须使用 [Azure Resource Manager][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。
+必须使用 [Azure 资源管理器][lnk-authenticate-arm] 配合 Azure Active Directory (AD) 来验证所有针对资源执行的操作。 最简单的配置方式是使用 PowerShell 或 Azure CLI。
 
 在继续之前，请安装 [Azure PowerShell cmdlet][lnk-powershell-install]。
 

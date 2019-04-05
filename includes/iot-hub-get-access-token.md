@@ -1,15 +1,15 @@
 ---
 author: robinsh
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: e2d6b6413d1e397eaa3c53f28394dcf321dac729
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: b6ea8c7b3a6374572c8bd31e3c62b788efbafcbc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011759"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59052001"
 ---
 ## <a name="obtain-an-azure-resource-manager-token"></a>获取 Azure 资源管理器令牌
 Azure Active Directory 必须使用 Azure 资源管理器来验证所有针对资源执行的任务。 此处显示的示例使用密码身份验证，有关其他方法，请参阅[对 Azure 资源管理器请求进行身份验证][lnk-authenticate-arm]。
