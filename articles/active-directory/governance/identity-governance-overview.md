@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7872a43d5000ddb1ba581f76358c8001902ab56b
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579710"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045478"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD 标识监管？
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 标识监管可以在组织的安全性和员�
 
 组织可以通过[动态组](../users-groups-roles/groups-dynamic-membership.md)等技术，并结合 [SaaS 应用](../saas-apps/tutorial-list.md)的用户预配或者[与 SCIM集成的应用](../manage-apps/use-scim-to-provision-users-and-groups.md)，将访问生命周期过程自动化。  组织还可以控制哪些[来宾用户有权访问本地应用程序](../b2b/hybrid-cloud-to-on-premises.md)。  然后，可以使用 [Azure AD 访问评审](access-reviews-overview.md)定期评审这些访问权限。
 
-当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件访问策略可以显示[使用条款](active-directory-tou.md)，并确保用户在访问应用程序之前[同意这些条款](../conditional-access/require-tou.md)。
+当用户尝试访问应用程序时，Azure AD 会实施[条件访问](/azure/active-directory/conditional-access/)策略。 例如，条件性访问策略可以包括显示[使用条款](../conditional-access/terms-of-use.md)并[确保用户已同意这些条款](../conditional-access/require-tou.md)之前无法访问某个应用程序。
 
 ## <a name="privileged-access-lifecycle"></a>特权访问权限生命周期
 
@@ -68,20 +68,20 @@ Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azur
 
 尽管我们不能为每个客户提供完美的解决方案或建议，但以下配置提供了有关 Microsoft 建议的基准策略，确保提高安全性和员工工作效率的指导。
 
-- [标识和设备访问权限配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [保护特权访问](../users-groups-roles/directory-admin-roles-secure.md)
+- [标识和设备访问配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [保护特权的访问](../users-groups-roles/directory-admin-roles-secure.md)
 
 
 ### <a name="access-reviews"></a>访问评审
 
 - [什么是访问评审？](access-reviews-overview.md)
-- [使用访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
-- [使用访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
+- [管理使用访问评审的用户访问权限](manage-user-access-with-access-reviews.md)
+- [管理使用访问评审的来宾访问权限](manage-guest-access-with-access-reviews.md)
 - [启动 Azure AD 角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>使用条款
 
-- [“使用条款”可以用来做什么？](active-directory-tou.md)
+- [使用条款可以用来做什么？](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged Identity Management
 

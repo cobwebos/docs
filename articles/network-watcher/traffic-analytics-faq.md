@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 64a1693907dbf144aa34f5c35ae925af74d2cb34
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803199"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046971"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
 本文收集了许多有关 Azure 网络观察程序中流量分析的常见问题。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="what-are-the-prerequisites-to-use-traffic-analytics"></a>使用流量分析的先决条件是什么？
 
@@ -51,11 +54,11 @@ ms.locfileid: "58803199"
         
 检查针对订阅分配给用户的角色：
 
-1. 使用 Login-AzureRmAccount 登录 Azure。 
+1. 通过使用登录到 Azure**登录名 AzAccount**。 
 
-2. 使用 Select-AzureRmSubscription 选择所需订阅。 
+2. 通过选择所需的订阅**选择 AzSubscription**。 
 
-3. 若要列出分配给特定用户的所有角色，请使用 Get-AzureRmRoleAssignment -SignInName [用户电子邮件] -IncludeClassicAdministrators。 
+3. 若要列出分配给指定的用户的所有角色，请使用**Get AzRoleAssignment SignInName [用户电子邮件]-IncludeClassicAdministrators**。 
 
 如果未看到任何输出，请与相应的订阅管理员联系以获取运行命令的权限。 有关详细信息，请参阅[使用 Azure PowerShell 管理基于角色的访问控制](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell)。
 
@@ -66,28 +69,28 @@ ms.locfileid: "58803199"
 - 加拿大中部
 - 美国中西部
 - 美国东部
-- 美国东部 2 (弗吉尼亚)
+- 美国东部 2
 - 美国中北部
 - 美国中南部
 - 美国中部
 - 美国西部
 - 美国西部 2
 - 法国中部
-- 欧洲西部
-- 欧洲北部
+- 西欧
+- 北欧
 - 巴西南部
 - 英国西部
 - 英国南部
 - 澳大利亚东部
 - 澳大利亚东南部 
-- 亚洲东部
-- 亚洲东南部
+- 东亚
+- 东南亚
 - 韩国中部
 - 印度中部
 - 印度南部
 - 日本东部
 - 日本西部
-- 中国东部
+- 美国政府弗吉尼亚州
 
 Log Analytics 工作区必须存在于以下区域中：
 - 加拿大中部
@@ -95,14 +98,14 @@ Log Analytics 工作区必须存在于以下区域中：
 - 美国西部 2
 - 美国东部
 - 法国中部
-- 欧洲西部
+- 西欧
 - 英国南部
 - 澳大利亚东南部
-- 亚洲东南部 
+- 东南亚 
 - 韩国中部
 - 印度中部
 - 日本东部
-- 中国东部
+- 美国政府弗吉尼亚州
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>启用流日志的 NSG 是否可与工作区位于不同的区域？
 
@@ -122,7 +125,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-否。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
+不是。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -139,8 +142,8 @@ Log Analytics 工作区必须存在于以下区域中：
 要使流日志记录正常工作，必须注册 Microsoft.Insights 提供程序。 如果不确定是否为订阅注册了 Microsoft.Insights 提供程序，请替换以下命令中的“xxxxx-xxxxx-xxxxxx-xxxx”，并从 PowerShell 运行以下命令：
 
 ```powershell-interactive
-**Select-AzureRmSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
-**Register-AzureRmResourceProvider** -ProviderNamespace Microsoft.Insights
+**Select-AzSubscription** -SubscriptionId xxxxx-xxxxx-xxxxxx-xxxx
+**Register-AzResourceProvider** -ProviderNamespace Microsoft.Insights
 ```
 
 ## <a name="i-have-configured-the-solution-why-am-i-not-seeing-anything-on-the-dashboard"></a>我已配置解决方案。 为何仪表板上未显示任何信息？
@@ -170,13 +173,13 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-configure-traffic-analytics-using-powershell-or-an-azure-resource-manager-template-or-client"></a>是否可以使用 PowerShell 或 Azure 资源管理器模板或客户端配置流量分析？
 
-可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要使用 Set cmdlet 为特定 NSG 配置流日志记录和流量分析，请参阅 [Set-AzureRmNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/azurerm.network/set-azurermnetworkwatcherconfigflowlog)。 若要获取特定 NSG 的流日志记录和流量分析状态，请参阅 [Get-AzureRmNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkwatcherflowlogstatus)。
+可使用版本 6.2.1 及以上版本的 Windows PowerShell 配置流量分析。 若要通过使用在 Set cmdlet，为特定的 NSG 配置流日志记录和流量分析，请参阅[集 AzNetworkWatcherConfigFlowLog](https://docs.microsoft.com/powershell/module/az.network/set-aznetworkwatcherconfigflowlog)。 若要获取特定的 NSG 流日志记录和流量分析状态，请参阅[Get AzNetworkWatcherFlowLogStatus](https://docs.microsoft.com/powershell/module/az.network/get-aznetworkwatcherflowlogstatus)。
 
 目前，无法使用 Azure 资源管理器模板配置流量分析。
 
 若要使用 Azure 资源管理器客户端配置流量分析，请参阅以下示例。
 
-**Set cmdlet 示例：**
+**设置 cmdlet 的示例：**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<name of NSG>"
@@ -217,7 +220,7 @@ $apiversion = "2016-09-01"
 armclient login
 armclient post "https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/configureFlowlog?api-version=${apiversion}" $requestBody
 ```
-**Get cmdlet 示例：**
+**获取 cmdlet 的示例：**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<NSG name>"
@@ -269,7 +272,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-at-any-stage"></a>任何阶段的键盘导航
     
-- 按 `Esc` 可折叠已展开的选定内容。
+- `Esc` 折叠的更多选择。
 - 按 `Up arrow` 键可执行按 `Esc` 时所执行的相同操作。 按 `Down arrow` 键可执行按 `Enter` 时所执行的相同操作。
 - 使用 `Shift+Plus` 可以放大，使用 `Shift+Minus` 可以缩小。
 

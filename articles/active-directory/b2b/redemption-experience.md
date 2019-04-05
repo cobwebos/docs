@@ -11,12 +11,12 @@ author: msmimart
 manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 543c19d41cee55a309b5345af4f811c60b82a613
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56178968"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046489"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
 
@@ -56,7 +56,7 @@ ms.locfileid: "56178968"
 
 ## <a name="terms-of-use"></a>使用条款
 
-可以使用 Azure AD 使用条款功能在初始兑换过程中向来宾用户显示使用条款。 在 Azure Active Directory 中，可以在“管理” > “组织关系” > “使用条款”下或在“安全性” > “条件访问” > “使用条款”下访问此功能。 有关详细信息，请参阅 [Azure AD 使用条款功能](../governance/active-directory-tou.md)。
+可以使用 Azure AD 使用条款功能在初始兑换过程中向来宾用户显示使用条款。 在 Azure Active Directory 中，可以在“管理” > “组织关系” > “使用条款”下或在“安全性” > “条件访问” > “使用条款”下访问此功能。 有关详细信息，请参阅 [Azure AD 使用条款功能](../conditional-access/terms-of-use.md)。
 
 ![显示新使用条款的屏幕截图](media/redemption-experience/organizational-relationships-terms-of-use.png) 
 
@@ -65,5 +65,5 @@ ms.locfileid: "56178968"
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
 - [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](add-users-administrator.md)
 - [信息工作者如何将 B2B 协作用户添加到 Azure Active Directory？](add-users-information-worker.md)
-- [使用 PowerShell 添加 Azure Active Directory B2B 协作用户](customize-invitation-api.md#powershell)
+- [使用 PowerShell 将 Azure Active Directory B2B 协作用户添加](customize-invitation-api.md#powershell)
 - [以来宾用户身份离开组织](leave-the-organization.md)

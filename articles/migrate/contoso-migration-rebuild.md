@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: raynew
-ms.openlocfilehash: c0e953434e947703308ff8d796107838df8cc979
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 74c33d73f15c4edf63a02ea5c9a0cdcad88bb68c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437308"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049739"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Contoso 迁移：在 Azure 中重新生成本地应用
 
@@ -22,24 +22,27 @@ ms.locfileid: "57437308"
 本文档是系列文章中的其中一篇，目的是展示虚拟公司 Contoso 如何将本地资源迁移到 Microsoft Azure 云。 该系列介绍了背景信息，同时提供了很多应用场景来描述如何设置迁移基础结构、评估本地资源是否适合迁移以及如何运行不同类型的迁移。 应用场景越来越复杂。 我们将不断添加更多的文章。
 
 
-**文章** | **详细信息** | **Status**
+**文章** | **详细信息** | **状态**
 --- | --- | ---
 [文章 1：概述](contoso-migration-overview.md) | 简要介绍 Contoso 的迁移策略、文章系列和所使用的示例应用。 | 可用
 [文章 2：部署 Azure 基础结构](contoso-migration-infrastructure.md) | 介绍 Contoso 如何装备其本地和 Azure 基础结构进行迁移。 所有迁移文章共用同一个基础结构。 | 可用
 [文章 3：访问本地资源](contoso-migration-assessment.md)  | 展示 Contoso 如何评估 VMware 上运行的本地双层 SmartHotel360 应用。 Contoso 使用 [Azure Migrate](migrate-overview.md) 服务评估应用 VM，使用 [数据库迁移助手](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017)评估应用 SQL Server 数据库。 | 可用
-[文章 4：在 Azure VM 和 SQL 托管实例上重新托管应用](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
+[文章 4：重新托管在 Azure Vm 和 SQL 托管的实例上的应用](contoso-migration-rehost-vm-sql-managed-instance.md) | 演示 Contoso 如何将 SmartHotel360 应用直接迁移到 Azure。 Contoso 使用 [Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) 迁移应用前端 VM，使用 [Azure 数据库迁移服务](https://docs.microsoft.com/azure/dms/dms-overview)将应用数据库迁移到 SQL 托管实例。 | 可用
 [文章 5：在 Azure VM 上重新托管应用](contoso-migration-rehost-vm.md) | 展示 Contoso 如何在仅使用 Site Recovery 的情况下迁移 SmartHotel360 应用 VM。 | 可用
-[文章 6：将应用重新托管到 Azure VM 和 SQL Server AlwaysOn 可用性组](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
+[文章 6：重新托管到 Azure Vm 和 SQL Server Always On 可用性组的应用](contoso-migration-rehost-vm-sql-ag.md) | 展示 Contoso 如何迁移 SmartHotel360 应用。 Contoso 使用 Site Recovery 来迁移应用 VM，同时使用数据库迁移服务将应用数据库迁移到受 AlwaysOn 可用性组保护的 SQL Server 群集。 | 可用
 [文章 7：在 Azure VM 上重新托管 Linux 应用](contoso-migration-rehost-linux-vm.md) | 展示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用直接迁移到 Azure VM | 可用
-[文章 8：在 Azure VM 和 Azure MySQL 服务器上重新托管 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
-[文章 9：基于 Azure Web 应用和 Azure SQL 数据库重构应用](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel360 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
-[文章 10：将 Linux 应用重构到 Azure Web 应用和 Azure MySQL](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux 应用 osTicket 迁移到多个站点中的 Azure Web 应用，并集成 GitHub 以实现持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
-[文章 11：在 Azure DevOps Services 上重构 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Azure DevOps Services 来迁移该部署。 | 可用
-[文章 12：将应用重新架构到 Azure 容器和 SQL 数据库](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
+[文章 8：重新托管在 Azure Vm 和 Azure MySQL 服务器上的 Linux 应用](contoso-migration-rehost-linux-vm-mysql.md) | 演示 Contoso 如何使用 Site Recovery 将 Linux osTicket 应用迁移到 Azure VM，以及如何使用 MySQL 工作台将应用数据库迁移到 Azure MySQL 服务器实例。 | 可用
+[文章 9：重构上 Azure Web 应用和 Azure SQL 数据库的应用程序](contoso-migration-refactor-web-app-sql.md) | 演示 Contoso 如何将 SmartHotel360 应用迁移到 Azure Web 应用，并将应用数据库迁移到 Azure SQL Server 实例 | 可用
+[文章 10：重构到 Azure Web 应用和 Azure MySQL Linux 应用](contoso-migration-refactor-linux-app-service-mysql.md) | 演示 Contoso 如何将 Linux 应用 osTicket 迁移到多个站点中的 Azure Web 应用，并集成 GitHub 以实现持续交付。 他们将应用数据库迁移到 Azure MySQL 实例。 | 可用
+[文章 11：重构 Azure DevOps 服务上的 TFS](contoso-migration-tfs-vsts.md) | 展示 Contoso 如何通过将本地 Team Foundation Server (TFS) 部署迁移到 Azure 中的 Azure DevOps Services 来迁移该部署。 | 可用
+[文章 12：重新构建到 Azure 容器和 SQL 数据库的应用](contoso-migration-rearchitect-container-sql.md) | 展示 Contoso 如何将其 SmartHotel 应用迁移并重新架构到 Azure。 他们将应用 Web 层重新架构为 Windows 容器，将应用数据库重新架构到 Azure SQL 数据库中。 | 可用
 文章 13：在 Azure 中重新生成应用 | 展示 Contoso 如何使用一系列 Azure 功能和服务（包括应用服务、Azure Kubernetes、Azure Functions、认知服务和 Cosmos DB）重新生成其 SmartHotel 应用。 | 本文
 [文章 14：到 Azure 的大规模迁移](contoso-migration-scale.md) | 尝试过组合迁移后，Contoso 准备大规模整体迁移到 Azure。 | 可用
 
 在本文中，Contoso 将 VMware VM 上运行的双层 Windows. VMware VM 上运行的 NET SmartHotel360 应用迁移到 Azure。 此应用作为开源应用提供，可在 [github](https://github.com/Microsoft/SmartHotel360-Backend) 上下载。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="business-drivers"></a>业务驱动因素
 
@@ -112,7 +115,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 
 ### <a name="azure-services"></a>Azure 服务
 
-**服务** | **说明** | **成本**
+**服务** | **描述** | **成本**
 --- | --- | ---
 [AKS](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | 简化 Kubernetes 管理、部署和操作。 提供完全托管的 Kubernetes 容器业务流程服务。  | AKS 是一项免费服务。  只需要为使用的虚拟机、关联的存储和网络资源付费。 [了解详细信息](https://azure.microsoft.com/pricing/details/kubernetes-service/)。
 [Azure Functions](https://azure.microsoft.com/services/functions/) | 通过事件驱动型无服务器计算体验加快开发速度。 按需缩放。  | 只需要为使用的资源付费。 计划按每秒资源消耗和执行次数收费。 [了解详细信息](https://azure.microsoft.com/pricing/details/functions/)。
@@ -127,7 +130,7 @@ Contoso 通过将利弊清单放置在一起来评估其建议的设计。
 --- | ---
 **Azure 订阅** | 在前面的文章中，Contoso 已创建订阅。 如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。<br/><br/> 如果创建的是免费帐户，则你是自己的订阅的管理员，可以执行所有操作。<br/><br/> 如果你使用现有订阅并且不是管理员，则需要请求管理员为你分配“所有者”或“参与者”权限。
 **Azure 基础结构** | [了解](contoso-migration-infrastructure.md) Contoso 如何设置 Azure 基础结构。
-**开发人员先决条件** | Contoso 要求开发人员工作站上具有以下工具：<br/><br/> - [Visual Studio 2017 Community Edition：版本 15.5](https://www.visualstudio.com/)<br/><br/> 启用 .NET 工作负荷。<br/><br/> [Git](https://git-scm.com/)<br/><br/> [Azure PowerShell](https://azure.microsoft.com/downloads/)<br/><br/> [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)<br/><br/> 设置为使用 Windows 容器的 [Docker CE (Windows 10) 或 Docker EE (Windows Server)](https://docs.docker.com/docker-for-windows/install/)。
+**开发人员必备组件** | Contoso 要求开发人员工作站上具有以下工具：<br/><br/> - [Visual Studio 2017 Community Edition：版本 15.5](https://www.visualstudio.com/)<br/><br/> 启用 .NET 工作负荷。<br/><br/> [Git](https://git-scm.com/)<br/><br/> [Azure PowerShell](https://azure.microsoft.com/downloads/)<br/><br/> [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)<br/><br/> 设置为使用 Windows 容器的 [Docker CE (Windows 10) 或 Docker EE (Windows Server)](https://docs.docker.com/docker-for-windows/install/)。
 
 
 
@@ -175,7 +178,7 @@ Contoso 管理员预配以下项：
 
     ![AKS](./media/contoso-migration-rebuild/aks3.png)
 
-5. 在 PowerShell 集成终端中，使用 Connect-AzureRmAccount 命令登录到 Azure。 [详细了解](https://docs.microsoft.com/powershell/azure/get-started-azureps)如何开始使用 PowerShell。
+5. 在 PowerShell 集成终端中，他们在登录到 Azure 中使用连接 AzAccount 命令。 [详细了解](https://docs.microsoft.com/powershell/azure/get-started-azureps)如何开始使用 PowerShell。
 
     ![AKS](./media/contoso-migration-rebuild/aks4.png)
 
@@ -196,7 +199,7 @@ Contoso 管理员预配以下项：
 
 9. 部署完成后，安装 kubectl 命令行工具。 Azure CloudShell 上已安装了此工具。
 
-    **az aks install-cli**
+    **az aks 安装 cli**
 
 10. 通过运行 **kubectl get nodes** 命令，验证到群集的连接。 在自动创建的资源组中，节点与 VM 同名。
 
@@ -291,7 +294,7 @@ Contoso 创建 Azure DevOps 项目，配置 CI 生成来创建容器，然后将
 1. 打开开发人员命令提示，并为 Azure 订阅使用命令 az 登录。
 2. 通过键入以下命令使用 deploy.cmd 文件在 ContosoRG 资源组和 EUS2 区域中部署 Azure 资源：
 
-    .\deploy.cmd azuredeploy ContosoRG -c eastus2
+    **.\deploy.cmd azuredeploy ContosoRG -c eastus2**
 
     ![部署后端](./media/contoso-migration-rebuild/backend1.png)
 

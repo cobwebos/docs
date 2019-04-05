@@ -3,17 +3,17 @@ title: 了解 Azure IoT 中心配额和限制 | Microsoft Docs
 description: 开发人员指南 - 介绍适用于 IoT 中心的配额和预期限制行为。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/05/2018
-ms.openlocfilehash: d27b1ae05205d5b9c19b99733a3fa647a7f69c58
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 14c563fda48bc7c54dcce1e1ccbfba716b6c73ad
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499177"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049597"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参考 - IoT 中心配额和限制
 
@@ -44,7 +44,7 @@ ms.locfileid: "58499177"
 | 直接方法<sup>1</sup> | 160KB/秒/单位<sup>2</sup> | 480KB/秒/单位<sup>2</sup> | 24MB/秒/单位<sup>2</sup> | 
 | 查询 | 20/分钟/单位 | 20/分钟/单位 | 1000/分钟/单位 |
 | 孪生（设备和模块）读取<sup>1</sup> | 100/秒 | 高于 100/秒或 10/秒/单位 | 500/秒/单位 |
-| 孪生更新（设备和模块）<sup>1</sup> | 50/秒 | 更高版本为 50/秒或 5/秒/单位 | 250/秒/单位 |
+| 孪生更新（设备和模块）<sup>1</sup> | 50/秒 | 高于 50/秒或 5/秒/单位 | 250/秒/单位 |
 | 作业操作<sup>1、3</sup> <br/> （创建、更新、列表、删除） | 1.67/秒/单位（100/分钟/单位） | 1.67/秒/单位（100/分钟/单位） | 83.33/秒/单位（5000/分钟/单位） |
 | 作业设备操作<sup>1</sup> <br/> （更新孪生、调用直接方法） | 10/秒 | 高于 10/秒或 1/秒/单位 | 50/秒/单位 |
 | 配置和 Edge 部署<sup>1</sup> <br/> （创建、更新、列表、删除） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） | 0.33/秒/单位（20/分钟/单位） |

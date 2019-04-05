@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 6e1a9b2fd34d915716225c6a1bda6e0371a510a9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 67eb01ad596393c9095d72670e61b8c09776c588
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438829"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049228"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Azure 到 Azure 复制中的移动服务的自动更新
 
@@ -21,6 +21,9 @@ Azure Site Recovery 使用每月的发布节奏以修复任何问题和增强现
 
 如中所述[Azure 到 Azure 灾难恢复体系结构](azure-to-azure-architecture.md)，移动服务安装在所有 Azure 虚拟机 (Vm) 为其启用复制后，将 Vm 从一个 Azure 区域复制到另一个时。 当你使用自动更新时，每个新版本更新的移动服务扩展。
  
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="how-automatic-updates-work"></a>自动更新工作原理
 
 当你使用 Site Recovery 管理更新时，它将部署通过与保管库位于同一订阅中创建的自动化帐户 （由 Azure 服务） 的全局 runbook。 每个保管库使用一个自动化帐户。 Runbook 检查活动的自动更新的保管库的每个 VM，并升级移动服务扩展，如果较新版本可用。
@@ -342,7 +345,7 @@ $JobsFailedToStart = 0
 $JobsTimedOut = 0
 $Header = @{}
 
-$AzureRMProfile = Get-Module -ListAvailable -Name AzureRM.Profile | Select Name, Version, Path
+$AzureRMProfile = Get-Module -ListAvailable -Name Az.Accounts | Select Name, Version, Path
 $AzureRmProfileModulePath = Split-Path -Parent $AzureRMProfile.Path
 Add-Type -Path (Join-Path $AzureRmProfileModulePath "Microsoft.IdentityModel.Clients.ActiveDirectory.dll")
 

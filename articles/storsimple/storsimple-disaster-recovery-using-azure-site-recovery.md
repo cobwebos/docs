@@ -14,14 +14,17 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: vidarmsft
-ms.openlocfilehash: f5eefd1d3fa26738729d98e60d8a56cd8d33d86c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 11ff7066019654ce2771bce242f3431d10da44ae
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084872"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051931"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>使用 Azure Site Recovery 针对 StorSimple 上托管的文件共享创建自动灾难恢复解决方案
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="overview"></a>概述
 Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决通常与文件共享关联的非结构化数据的复杂性。 StorSimple 使用云存储作为本地解决方案的扩展，可跨本地存储和云存储自动将数据分层。 使用本地快照和云快照的集成式数据保护不需要扩建存储基础结构。
 
@@ -167,7 +170,7 @@ Microsoft Azure StorSimple 是一种混合型云存储解决方案，可解决�
    
 1. 在自动化帐户中，依次单击“变量”&gt;“添加变量”，再添加以下变量。 可以选择将这些资产加密。 这些变量为恢复计划专属。 如果恢复计划（将在下一步中创建）名为 TestPlan，变量应为 TestPlan-StorSimRegKey、TestPlan-AzureSubscriptionName 等。
 
-   - **BaseUrl**：Azure 云的资源管理器 URL。 使用 Get-AzureRmEnvironment | Select-Object Name, ResourceManagerUrl cmdlet 获取。
+   - **BaseUrl**：Azure 云的资源管理器 URL。 使用获取**Get AzEnvironment |-Select-object Name，ResourceManagerUrl** cmdlet。
    - *RecoveryPlanName***-ResourceGroupName**：包含 StorSimple 资源的资源管理器组。
    - *RecoveryPlanName***-ManagerName**：包含 StorSimple 设备的 StorSimple 资源。
    - *RecoveryPlanName***-DeviceName**：必须进行故障转移的 StorSimple 设备。

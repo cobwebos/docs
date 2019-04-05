@@ -14,18 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
-ms.openlocfilehash: be0c1611856a1fa68d20696c32b5fadcd8572004
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: a79753a897a62e194a759c23a9c0acc45c5f36c1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793605"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049466"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>适用于 StorSimple 的基于角色的访问控制
 
 本文简短地说明了如何对 StorSimple 设备使用 Azure 基于角色的访问控制 (RBAC)。 RBAC 提供针对 Azure 的细化访问管理。 使用 RBAC 只向 StorSimple 用户授予执行作业所需的适当访问量，而不用向每个人授予不受限制的访问。 若要深入了解 Azure 中访问管理的基础知识，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
 本文适用于在 Azure 门户中运行 Update 3.0 或更高版本的 StorSimple 8000 系列设备。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="rbac-roles-for-storsimple"></a>StorSimple 的 RBAC 角色
 
@@ -44,16 +46,16 @@ ms.locfileid: "58793605"
 
 1. 以管理员身份运行 Windows PowerShell。
 
-2. 登录到 Azure。
+2. 登录 Azure。
 
-    `Connect-AzureRmAccount`
+    `Connect-AzAccount`
 
 3. 在计算机上将读者角色导出为 JSON 模板。
 
     ```powershell
-    Get-AzureRMRoleDefinition -Name "Reader"
+    Get-AzRoleDefinition -Name "Reader"
 
-    Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+    Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
     ```
 
 4. 在 Visual Studio 中打开 JSON 文件。 可看到典型的 RBAC 角色由三个主要节组成：Actions、NotActions 和 AssignableScopes。
@@ -62,7 +64,7 @@ ms.locfileid: "58793605"
 
     使用 PowerShell 可查看订阅中可用且注册的所有资源提供程序。
 
-    `Get-AzureRMResourceProvider`
+    `Get-AzResourceProvider`
 
     还可查看可用于管理资源提供程序的所有 PowerShell cmdlet。
 
@@ -102,7 +104,7 @@ ms.locfileid: "58793605"
 
 6. 将自定义 RBAC 角色导回环境中。
 
-    `New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"`
+    `New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"`
 
 
 此角色现应显示在“访问控制”边栏选项卡的角色列表中。
@@ -114,7 +116,7 @@ ms.locfileid: "58793605"
 ### <a name="sample-output-for-custom-role-creation-via-the-powershell"></a>通过 PowerShell 创建自定义角色的示例输出
 
 ```powershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 
 ```Output
@@ -127,7 +129,7 @@ CurrentStorageAccount :
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader"
+Get-AzRoleDefinition -Name "Reader"
 ```
 
 ```Output
@@ -141,8 +143,8 @@ AssignableScopes : {/}
 ```
 
 ```powershell
-Get-AzureRMRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
-New-AzureRMRoleDefinition -InputFile "C:\ssrbaccustom.json"
+Get-AzRoleDefinition -Name "Reader" | ConvertTo-Json | Out-File C:\ssrbaccustom.json
+New-AzRoleDefinition -InputFile "C:\ssrbaccustom.json"
 ```
 
 ```Output
@@ -161,7 +163,7 @@ AssignableScopes : {/subscriptions/<subscription_ID>/}
 
 ## <a name="add-users-to-the-custom-role"></a>将用户添加到自定义角色
 
-从资源、资源组或在该角色分配范围内的订阅中授予访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
+授予资源、资源组或订阅（即角色分配范围）内的访问权限。 提供访问权限时，请牢记在父节点上授予的访问权限会由子节点继承。 有关详细信息，请转到[基于角色的访问控制](../role-based-access-control/overview.md)。
 
 1. 请转到“访问控制(IAM)”。 在“访问控制”边栏选项卡上单击“+ 添加”。
 

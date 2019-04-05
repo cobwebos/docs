@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: mlearned
-ms.openlocfilehash: cc9e2e09da572dc4260dcc0e20a8a1846ae17320
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a2a730e2c3ca466a2705f053d7db0db12d7941da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894143"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047309"
 ---
 # <a name="continuous-integration-in-azure-devops-services-using-azure-resource-group-deployment-projects"></a>使用 Azure 资源组部署项目在 Azure DevOps Services 中持续集成
 若要部署 Azure 模板，您可以在各个阶段中执行任务：生成、 测试、 复制到 Azure （也称为"暂存"），并部署模板。 可通过两种不同的方法将模板部署到 Azure DevOps Services。 两种方法产生的结果相同，因此请选择最符合工作流的方法。
@@ -28,6 +28,8 @@ ms.locfileid: "58894143"
 2. 添加多个 Azure DevOps Services 生成步骤，每个步骤执行一个阶段任务。
 
 本文演示了这两个选项。 第一个选项的优点是，在 Visual Studio 中使用开发人员所用的同一脚本，并且在整个生命周期中提供一致性。 第二个选项为内置脚本提供一个便捷替代方式。 两个过程都假设已经在 Azure DevOps Services 中签入 Visual Studio 部署项目。
+
+[!INCLUDE [updated-for-az](../includes/updated-for-az.md)]
 
 ## <a name="copy-artifacts-to-azure"></a>将项目复制到 Azure
 无论方案如何，如果具有模板部署所需的任何项目，必须向 Azure 资源管理器授予这些项目的访问权限。 这些项目可以包括如下所述的文件：
@@ -87,7 +89,7 @@ ms.locfileid: "58894143"
       
       对于 Azure PowerShell 脚本，请使用：
       
-      `Get-AzureRmSubscription`
+      `Get-AzSubscription`
       
       对于 Azure CLI，请使用：
       

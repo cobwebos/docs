@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 71e71b417f12b58fc03c581826c0e5c2412e684b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: c7bfd36bb4e36b10487edbbaa40421f067c9ed3e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876640"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048752"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>通过警报和 Azure Functions，使用数据包捕获执行主动网络监视
 
@@ -33,9 +33,12 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
 ![场景][scenario]
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>必备组件
 
-* 最新版本的 [Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
+* 最新版本的 [Azure PowerShell](/powershell/azure/install-Az-ps)。
 * 网络观察程序的现有实例。 [创建网络观察程序的实例](network-watcher-create.md)（如果还没有这样一个实例的话）。
 * 在网络观察程序所在的同一区域中的现有虚拟机，装有 [Windows 扩展](../virtual-machines/windows/extensions-nwa.md)或 [Linux 虚拟机扩展](../virtual-machines/linux/extensions-nwa.md)。
 
@@ -74,7 +77,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
     |**设置** | **值** | **详细信息** |
     |---|---|---|
-    |**应用名称**|PacketCaptureExample|函数应用的名称。|
+    |**应用程序名称**|PacketCaptureExample|函数应用的名称。|
     |**订阅**|[订阅]要为其创建函数应用的订阅。||
     |**资源组**|PacketCaptureRG|包含函数应用的资源组。|
     |**托管计划**|使用计划| 函数应用使用的计划类型。 选项包括“使用计划”或“Azure 应用服务计划”。 |
@@ -87,7 +90,7 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
     |**设置** | **值** | **详细信息** |
     |---|---|---|
-    |**方案**|试验|方案的类型|
+    |**场景**|试验|方案的类型|
     |**为函数命名**|AlertPacketCapturePowerShell|函数的名称|
     |**授权级别**|函数|函数的授权级别|
 
@@ -105,16 +108,16 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 1. 在已安装最新 Azure PowerShell 模块的本地计算机上，运行以下 PowerShell 命令：
 
     ```powershell
-    (Get-Module AzureRM.Network).Path
+    (Get-Module Az.Network).Path
     ```
 
     该示例提供 Azure PowerShell 模块的本地路径。 在稍后的步骤中将使用这些文件夹。 此方案中使用的模块包括：
 
-   * AzureRM.Network
+   * Az.Network
 
-   * AzureRM.Profile
+   * Az.Accounts
 
-   * AzureRM.Resources
+   * Az.Resources
 
      ![PowerShell 文件夹][functions5]
 
@@ -128,17 +131,17 @@ Azure 中部署的资源全天候运行。 但你和你的同事无法全天候�
 
     ![文件夹和子文件夹][functions3]
 
-    * AzureRM.Network
+    * Az.Network
 
-    * AzureRM.Profile
+    * Az.Accounts
 
-    * AzureRM.Resources
+    * Az.Resources
 
-1. 右键单击 AzureRM.Network 子文件夹，然后选择“上传文件”。 
+1. 右键单击**Az.Network**子文件夹，并选择**上传文件**。 
 
-6. 转到 Azure 模块。 在本地 AzureRM.Network 文件夹中，选择文件夹中的所有文件。 然后选择“确定”。 
+6. 转到 Azure 模块。 在本地**Az.Network**文件夹中，选择文件夹中的所有文件。 然后选择“确定”。 
 
-7. 对 AzureRM.Profile 和 AzureRM.Resources 重复这些步骤。
+7. 重复这些步骤**Az.Accounts**并**Az.Resources**。
 
     ![上传文件][functions6]
 
@@ -196,10 +199,10 @@ $Encryptedpassword
 1. 如果还没有可使用的应用程序，请运行以下示例创建应用程序。
 
     ```powershell
-    $app = New-AzureRmADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
-    New-AzureRmADServicePrincipal -ApplicationId $app.ApplicationId
+    $app = New-AzADApplication -DisplayName "ExampleAutomationAccount_MF" -HomePage "https://exampleapp.com" -IdentifierUris "https://exampleapp1.com/ExampleFunctionsAccount" -Password "<same password as defined earlier>"
+    New-AzADServicePrincipal -ApplicationId $app.ApplicationId
     Start-Sleep 15
-    New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
+    New-AzRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $app.ApplicationId
     ```
 
    > [!NOTE]
@@ -218,7 +221,7 @@ $Encryptedpassword
 通过运行以下 PowerShell 示例获取租户 ID：
 
 ```powershell
-(Get-AzureRmSubscription -SubscriptionName "<subscriptionName>").TenantId
+(Get-AzSubscription -SubscriptionName "<subscriptionName>").TenantId
 ```
 
 #### <a name="azurecredpassword"></a>AzureCredPassword
@@ -266,9 +269,9 @@ $Encryptedpassword
 
 ```powershell
             #Import Azure PowerShell modules required to make calls to Network Watcher
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Profile\AzureRM.Profile.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Network\AzureRM.Network.psd1" -Global
-            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\AzureRM.Resources\AzureRM.Resources.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Accounts\Az.Accounts.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Network\Az.Network.psd1" -Global
+            Import-Module "D:\home\site\wwwroot\AlertPacketCapturePowerShell\azuremodules\Az.Resources\Az.Resources.psd1" -Global
 
             #Process alert request body
             $requestBody = Get-Content $req -Raw | ConvertFrom-Json
@@ -290,7 +293,7 @@ $Encryptedpassword
             #Authentication
             $secpassword = $pw | ConvertTo-SecureString -Key (Get-Content $keypath)
             $credential = New-Object System.Management.Automation.PSCredential ($clientid, $secpassword)
-            Connect-AzureRmAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
+            Connect-AzAccount -ServicePrincipal -Tenant $tenant -Credential $credential #-WarningAction SilentlyContinue | out-null
 
 
             #Get the VM that fired the alert
@@ -302,22 +305,22 @@ $Encryptedpassword
                 Write-Output ("Resource Type:  {0}" -f $requestBody.context.resourceType)
 
                 #Get the Network Watcher in the VM's region
-                $nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
-                $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
+                $nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq $requestBody.context.resourceRegion}
+                $networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName
 
                 #Get existing packetCaptures
-                $packetCaptures = Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
+                $packetCaptures = Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher
 
                 #Remove existing packet capture created by the function (if it exists)
                 $packetCaptures | %{if($_.Name -eq $packetCaptureName)
                 { 
-                    Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
+                    Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName $packetCaptureName
                 }}
 
                 #Initiate packet capture on the VM that fired the alert
-                if ((Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
+                if ((Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher).Count -lt $packetCaptureLimit){
                     echo "Initiating Packet Capture"
-                    New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
+                    New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $requestBody.context.resourceId -PacketCaptureName $packetCaptureName -StorageAccountId $storageaccountid -TimeLimitInSeconds $packetCaptureDuration
                     Out-File -Encoding Ascii -FilePath $res -inputObject "Packet Capture created on ${requestBody.context.resourceID}"
                 }
             } 
@@ -344,11 +347,11 @@ $Encryptedpassword
   |**设置** | **值** | **详细信息** |
   |---|---|---|
   |**名称**|TCP_Segments_Sent_Exceeded|警报规则的名称。|
-  |**说明**|发送的 TCP 段已超出阈值|警报规则的说明。|
+  |**描述**|发送的 TCP 段已超出阈值|警报规则的说明。|
   |**指标**|发送的 TCP 段| 用于触发警报的指标。 |
   |**条件**|大于| 评估指标时要使用的条件。|
   |**阈值**|100| 触发警报的指标值。 此值应设置为环境的有效值。|
-  |**时间段**|过去五分钟| 确定要在其中查找指标阈值的时间段。|
+  |**周期**|过去五分钟| 确定要在其中查找指标阈值的时间段。|
   |**Webhook**|[函数应用中的 Webhook URL]| 来自前面步骤创建的函数应用的 Webhook URL。|
 
 > [!NOTE]

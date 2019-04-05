@@ -15,12 +15,12 @@ ms.date: 12/18/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
 ms.lastreviewed: 12/18/2018
-ms.openlocfilehash: 54bc6bc105dab2831df6e48a64a6f766582a3fb9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 55bb83015cee6476a10424f32b51eb9eb29db0da
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917554"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050248"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>在 Azure Stack 中轮换机密
 
@@ -63,13 +63,13 @@ Azure Stack 使用各种机密来维持 Azure Stack 基础结构资源与服务�
 
 |已安装的证书 CA|要轮换到的 CA|支持|支持的 Azure Stack 版本|
 |-----|-----|-----|-----|
-|从自签名|到企业|不支持||
+|从自签名|到企业|支持|1903 和更高版本|
 |从自签名|到自签名|不支持||
 |从自签名|到公共<sup>*</sup>|支持|1803 和更高版本|
-|从企业|到企业|只要客户使用与在部署时使用的相同的企业 CA，就可以支持|1803 和更高版本|
+|从企业|到企业|。 从 1803年 1903年： 支持，只要客户使用的同一个企业 CA，因为在部署时使用|1803 和更高版本|
 |从企业|到自签名|不支持||
 |从企业|到公共<sup>*</sup>|支持|1803 和更高版本|
-|从公共<sup>*</sup>|到企业|不支持|1803 和更高版本|
+|从公共<sup>*</sup>|到企业|支持|1903 和更高版本|
 |从公共<sup>*</sup>|到自签名|不支持||
 |从公共<sup>*</sup>|到公共<sup>*</sup>|支持|1803 和更高版本|
 

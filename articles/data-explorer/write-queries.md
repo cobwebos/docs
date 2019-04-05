@@ -1,19 +1,18 @@
 ---
 title: Azure 数据资源管理器的编写查询
 description: 在本操作说明中，你将学习如何针对 Azure 数据资源管理器执行基本查询和更高级的查询。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 8afb829f806ab55a069ded9cb7198f66368e8720
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6a764c5051aad9123c605ae51807117ef75a7047
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758691"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048480"
 ---
 # <a name="write-queries-for-azure-data-explorer"></a>Azure 数据资源管理器的编写查询
 
@@ -902,7 +901,7 @@ StormEvents
 
 [**funnel_sequence_completion plugin**](https://docs.microsoft.com/azure/kusto/query/funnel-sequence-completion-plugin)：计算不同时间段内已完成序列步骤的漏斗图。
 
-以下查询检查序列中的完成漏斗图：在一小时、四小时和一天 (`[1h, 4h, 1d]`) 的“总体”时间中的  `Hail -> Tornado -> Thunderstorm -> Wind` 。
+下面的查询检查对序列中的完成漏斗图： `Hail -> Tornado -> Thunderstorm -> Wind` 在一小时，四个小时数和一天中的"总体"时间 (`[1h, 4h, 1d]`)。
 
 **\[**[**单击以运行查询**](https://dataexplorer.azure.com/clusters/help/databases/Samples?query=H4sIAAAAAAAAA12QTYvCMBCG74L/YW6tkIV2XT9g8SjsnlvwICKhM9JAOqlJqrj4402CW0RIIB/PPLwzmjwcnZfWwwZQevKqo/yzKFYfRRnW7Hs60ZEhxjdi/UZcFaO5VuqPAjhfLvD/w9F5IG7iM95YdqrJ99mPVDoTkNXGskSTju3ASNZ5Y7t43wVhdhj9PVll0L1aylbAV9glJqyKldsLsXfTyR3oIvUQAsNpYCY95jg2puuDUhnOt71yBukXBVRxCnVoTjwnIlLX4rUzAUlf3/pEPYViDDd7AOyqowFQAQAA)**\]**
 

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 2/15/2019
 ms.author: victorh
-ms.openlocfilehash: 21309060b7b4a93d798c444bd96bc21c62693a54
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3f329d3dd4af1faef8f77d08db655cc7d6ef79fd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533997"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051812"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>防火墙日志分析的 azure 示例
 
@@ -40,7 +40,7 @@ ms.locfileid: "57533997"
 
 ![网络规则日志数据]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-AzureDiagnostics 下的 Azure 防火墙日志数据类别为“AzureFirewallApplicationRule”或“AzureFirewallApplicationRule”。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
+Azure 防火墙日志 AzureDiagnostics 下面的数据为类别**AzureFirewallApplicationRule**或**AzureFirewallNetworkRule**。 包含详细信息的数据存储在 msg_s 字段中。 借助[分析](https://docs.microsoft.com/azure/kusto/query/parseoperator)运算符，可从 msg_s 字段中提取各种相关属性。 以下查询提取两种类别的信息。
 
 ## <a name="application-rules-log-data-query"></a>应用程序规则日志数据查询
 

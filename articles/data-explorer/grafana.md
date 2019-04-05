@@ -1,19 +1,18 @@
 ---
-title: 在 Grafana 中可视化 Azure 数据资源管理器中的数据
+title: 从 Azure 数据资源管理器使用 Grafana 可视化数据
 description: 在本操作指南中，你将了解如何将 Azure 数据资源管理器设置为 Grafana 的数据源，然后将来自示例群集的数据可视化。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/05/2018
-ms.openlocfilehash: c77475c052ab3ce74563aba6e4c75a50c7e41bcc
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 188cb310cfc13fe2fc41ba3e01deb01068c0184d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758264"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048310"
 ---
 # <a name="visualize-data-from-azure-data-explorer-in-grafana"></a>在 Grafana 中可视化 Azure 数据资源管理器中的数据
 
@@ -211,4 +210,4 @@ Grafana 是一个分析平台，可用于查询和可视化数据，然后根据
 
 [Azure 数据资源管理器的编写查询](write-queries.md)
 
-[教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据](visualize-power-bi.md)
+[教程：从 Azure 数据资源管理器在 Power BI 中可视化数据](visualize-power-bi.md)

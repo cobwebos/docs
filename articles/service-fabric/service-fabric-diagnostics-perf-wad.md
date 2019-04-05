@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2018
 ms.author: srrengar
-ms.openlocfilehash: ec66a4fdffcff2d2ff7c11c969900c8b12dda755
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 20fa8945f01a3431d2fd78d545c43d6215c83f56
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669687"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049449"
 ---
 # <a name="performance-monitoring-with-the-windows-azure-diagnostics-extension"></a>使用 Windows Azure 诊断扩展进行性能监视
 
@@ -27,6 +27,9 @@ ms.locfileid: "58669687"
 
  > [!NOTE]
 > 应针对适用于你的这些步骤在群集上部署 WAD 扩展。 如果还未设置，请查看[使用 Windows Azure 诊断的事件聚合和集合](service-fabric-diagnostics-event-aggregation-wad.md)。  
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="collect-performance-counters-via-the-wadcfg"></a>通过 WadCfg 收集性能计数器
 
@@ -192,10 +195,10 @@ ms.locfileid: "58669687"
  >[!NOTE]
  >虽然可以使用 `*` 来指定名称类似的性能计数器组，但通过接收器发送任何计数器（到 Application Insights）都需要它们单独声明。 
 
-1. 在添加需要收集的适当性能计数器后，需要升级群集资源，以让这些更改反映到正在运行的群集中。 保存已修改的 `template.json` 并打开 PowerShell。 可以使用 `New-AzureRmResourceGroupDeployment` 升级群集。 该调用需要资源组的名称、更新的模板文件和参数文件，并提示资源管理器对你更新的资源进行相应更改。 一旦登录到帐户并在正确的订阅中，使用以下命令来运行升级：
+1. 在添加需要收集的适当性能计数器后，需要升级群集资源，以让这些更改反映到正在运行的群集中。 保存已修改的 `template.json` 并打开 PowerShell。 可以使用 `New-AzResourceGroupDeployment` 升级群集。 该调用需要资源组的名称、更新的模板文件和参数文件，并提示资源管理器对你更新的资源进行相应更改。 一旦登录到帐户并在正确的订阅中，使用以下命令来运行升级：
 
     ```sh
-    New-AzureRmResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
+    New-AzResourceGroupDeployment -ResourceGroupName <ResourceGroup> -TemplateFile <PathToTemplateFile> -TemplateParameterFile <PathToParametersFile> -Verbose
     ```
 
 1. 升级完成后（需要 15-45 分钟，具体取决于是否为首次部署以及资源组的大小），WAD 应收集性能计数器，并将其发送到与群集关联的存储帐户中的 WADPerformanceCountersTable 表中。 通过[将 AI 接收器添加到资源管理器模板](service-fabric-diagnostics-event-aggregation-wad.md#add-the-application-insights-sink-to-the-resource-manager-template)，查看 Application Insights 中的性能计数器。
@@ -203,4 +206,4 @@ ms.locfileid: "58669687"
 ## <a name="next-steps"></a>后续步骤
 * 收集群集的更多性能计数器。 有关应收集的计数器列表，请参阅[性能指标](service-fabric-diagnostics-event-generation-perf.md)。
 * [将监视和诊断与 Windows VM 和 Azure 资源管理器模板配合使用](../virtual-machines/windows/extensions-diagnostics-template.md)，以进一步修改 `WadCfg`，包括配置向其发送诊断数据的其他存储帐户。
-* 访问 [WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)以从头开始生成模板，并确保语法正确。
+* 请访问[WadCfg 生成器](https://azure.github.io/azure-diagnostics-tools/config-builder/)生成从零开始的模板，请确保你的语法是否正确。 (https://azure.github.io/azure-diagnostics-tools/config-builder/)生成从零开始的模板，请确保你的语法是否正确。

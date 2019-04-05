@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: ec509fc8957d20f95123e9f0f645c3e9b6e832f2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122363"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046149"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
 
@@ -46,7 +46,7 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure 批处理](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
 
@@ -118,7 +118,10 @@ Azure 机器学习计算对可以分配的核心数等属性实施默认限制�
 
 #### <a name="run-based-creation"></a>基于运行的创建
 
-可将 Azure 机器学习计算创建为运行时的计算目标。 将自动为运行创建计算。 群集将扩展到在运行配置中指定的 **max_nodes** 数目。完成运行后，会自动删除计算。
+可将 Azure 机器学习计算创建为运行时的计算目标。 将自动为运行创建计算。 完成运行后，会自动删除计算。 
+
+> [!NOTE]
+> 若要指定要使用的节点的最大数量，通常可以设置`node_count`到的节点数。 目前 (04/04/2019) 可以避免这一工作的 bug。 作为一种解决方法，使用`amlcompute._cluster_max_node_count`运行配置的属性。 例如，`run_config.amlcompute._cluster_max_node_count = 5`。
 
 > [!IMPORTANT]
 > Azure 机器学习计算的基于运行的创建功能目前为预览版。 如果使用自动化超参数优化或自动化机器学习，请不要使用基于运行的创建。 若要使用超参数优化或自动化机器学习，请改为创建[持久性计算](#persistent)目标。
@@ -358,8 +361,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
     > [!NOTE]
     > Microsoft 建议使用 SSH 密钥，因为它们比密码更安全。 密码很容易受到暴力破解攻击。 SSH 密钥依赖于加密签名。 若要了解如何创建用于 Azure 虚拟机的 SSH 密钥，请参阅以下文档：
     >
-    > * [在 Linux 或 macOS 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [在 Windows 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [创建和使用 Linux 或 macOS 上的 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [创建和在 Windows 上使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. 选择“附加”。 
 1. 通过在列表中选择计算目标来查看附加操作的状态。
@@ -425,4 +428,4 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 * 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
-* [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [Azure 虚拟网络中使用 Azure 机器学习服务](how-to-enable-virtual-network.md)

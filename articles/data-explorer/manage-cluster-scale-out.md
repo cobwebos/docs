@@ -1,19 +1,18 @@
 ---
-title: 根据不断变化的需求缩放 Azure 数据资源管理器群集
+title: 横向扩展以适应不断变化的需求的 Azure 数据资源管理器群集
 description: 本指南介绍了横向扩展和缩放的步骤在 Azure 数据资源管理器群集中根据不断变化的需求。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 9b54bf182f23eceb47c392059ff52c04bf0a8aed
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ab4ced6695e6066098dd5ff7348528deedfc0e1b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755074"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044228"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>根据不断变化的需求管理群集横向扩展
 
@@ -45,19 +44,19 @@ ms.locfileid: "58755074"
     | --- | --- |
     | **时间聚合** | 选择聚合条件，例如“平均”。 |
     | **指标名称** | 选择要求缩放操作依赖的指标，例如“缓存使用率”。 |
-    | 时间粒度统计信息 | 在 **Average**、**Minimum**、**Maximum** 和 **Sum** 之间选择。 |
-    | 运算符 | 选择适当的选项，例如“大于或等于”。 |
+    | **时间粒度统计信息** | 在 **Average**、**Minimum**、**Maximum** 和 **Sum** 之间选择。 |
+    | **运算符** | 选择适当的选项，例如“大于或等于”。 |
     | **阈值** | 选择适当的值。 例如，对于缓存使用率，80%是很好的起点。 |
-    | **持续时间（分钟）** | 选择适当的时间值，以便系统在计算指标时进行回溯。 一开始可将默认值设置为 10 分钟。 |
+    | **持续时间(分钟)** | 选择适当的时间值，以便系统在计算指标时进行回溯。 一开始可将默认值设置为 10 分钟。 |
     |  |  |
 
-    **Action**
+    **操作**
 
     | 设置 | 说明和值 |
     | --- | --- |
-    | **操作** | 选择进行横向缩放的适当选项。 |
+    | **Operation** | 选择进行横向缩放的适当选项。 |
     | **实例计数** | 选择在符合指标条件的情况下，需要添加或删除的节点或实例的数目。 |
-    | 冷却（分钟） | 选择需要在两项缩放操作之间等待的适当时间间隔。 一开始可将默认值设置为 5分钟。 |
+    | **冷却(分钟)** | 选择需要在两项缩放操作之间等待的适当时间间隔。 一开始可将默认值设置为 5分钟。 |
     |  |  |
 
 1. 选择 **添加** 。
@@ -66,8 +65,8 @@ ms.locfileid: "58755074"
 
     | 设置 | 说明和值 |
     | --- | --- |
-    | **最低** | 群集在缩放时不管使用率如何都不得低于的实例数。 |
-    | 最大值 | 群集在缩放时不管使用率如何都不得高于的实例数。 |
+    | **最小值** | 群集在缩放时不管使用率如何都不得低于的实例数。 |
+    | **最大值** | 群集在缩放时不管使用率如何都不得高于的实例数。 |
     | **默认** | 默认实例数。 如果有问题的读取资源指标，则使用此设置。 |
     |  |  |
 

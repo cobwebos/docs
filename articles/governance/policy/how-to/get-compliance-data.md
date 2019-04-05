@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: da027e492633ba3e4da912c2c45b2432fd217576
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c3ef6ff73366ae3017e1126de16153195576a1a8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802942"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048703"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -30,7 +30,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 > [!WARNING]
 > 如果符合性状态被报告成**未注册**，确认**Microsoft.PolicyInsights**注册资源提供程序和用户具有适当的基于角色的访问控制 （RBAC) 权限，如中所述[Azure 策略中的 RBAC](../overview.md#rbac-permissions-in-azure-policy)。
 
-[!INCLUDE [az-powershell-update](../../../../includes/updated-for-az.md)]
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="evaluation-triggers"></a>评估触发器
 
@@ -56,8 +56,8 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 在每个 REST API URI 中，包含替换为自己的值所使用的变量：
 
-- `{YourRG}` - 替换为资源组的名称
-- `{subscriptionId}` - 替换为订阅 ID
+- `{YourRG}` -替换为资源组的名称
+- `{subscriptionId}` -将替换为你的订阅 ID
 
 扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描：
 
@@ -79,7 +79,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的 `{ResourceContainerGUID}` 位置 URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
+`{ResourceContainerGUID}` 为请求的范围以静态方式生成。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的 `{ResourceContainerGUID}` 位置 URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
 
 ```json
 {
@@ -93,10 +93,10 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 
 | 资源状态 | 效果 | 策略评估 | 符合性状态 |
 | --- | --- | --- | --- |
-| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | TRUE | 不符合 |
-| 存在 | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | FALSE | 符合 |
-| 新建 | Audit、AuditIfNotExist\* | TRUE | 不符合 |
-| 新建 | Audit、AuditIfNotExist\* | FALSE | 符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | True | 不符合 |
+| Exists | Deny、Audit、Append\*、DeployIfNotExist\*、AuditIfNotExist\* | False | 符合 |
+| 新建 | Audit、AuditIfNotExist\* | True | 不符合 |
+| 新建 | Audit、AuditIfNotExist\* | False | 符合 |
 
 \*Append、DeployIfNotExist 和 AuditIfNotExist 效果要求 IF 语句为 TRUE。
 这些效果还要求存在条件为 FALSE 才能将资源判定为不合规。 如果为 TRUE，则 IF 条件会触发相关资源存在条件的计算。
@@ -316,7 +316,7 @@ Connect-AzAccount
 - `Start-AzPolicyRemediation`
 - `Stop-AzPolicyRemediation`
 
-示例:获取不合规资源数最多的、最前面的已分配策略的状态摘要。
+示例：获取不符合资源数最多的、最前面的已分配策略的状态摘要。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyStateSummary -Top 1
@@ -327,7 +327,7 @@ PolicyAssignments     : {/subscriptions/{subscriptionId}/resourcegroups/RG-Tags/
                         oft.authorization/policyassignments/37ce239ae4304622914f0c77}
 ```
 
-示例:获取最近评估的资源的状态记录（默认按时间戳的降序排序）。
+示例：获取最近评估的资源的状态记录（默认按时间戳的降序排序）。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Top 1
@@ -353,7 +353,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-示例:获取所有不合规虚拟网络资源的详细信息。
+示例：获取所有不符合虚拟网络资源的详细信息。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyState -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'"
@@ -379,7 +379,7 @@ PolicyDefinitionAction     : deny
 PolicyDefinitionCategory   : tbd
 ```
 
-示例:获取在特定日期后发生的、与不合规虚拟网络资源相关的事件。
+示例：获取在特定日期后发生的、与不符合虚拟网络资源相关的事件。
 
 ```azurepowershell-interactive
 PS> Get-AzPolicyEvent -Filter "ResourceType eq '/Microsoft.Network/virtualNetworks'" -From '2018-05-19'

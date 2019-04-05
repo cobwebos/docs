@@ -8,12 +8,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 12/01/2018
 ms.author: victorh
-ms.openlocfilehash: a15ffa23b64f944d8b2c088113bcc29443ce6873
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.openlocfilehash: e0fbec8b22993345114d8d6642e42095191d0b37
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54038953"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046268"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>使用模板部署 Azure 防火墙
 
@@ -25,11 +25,14 @@ ms.locfileid: "54038953"
 
 有关 Azure 防火墙的详细信息，请参阅[使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)。
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="use-the-template-to-deploy-azure-firewall"></a>使用模板部署 Azure 防火墙
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-**使用模板安装和部署 Azure 防火墙：**
+**安装和使用模板部署 Azure 防火墙：**
 
 1. 在 [https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox](https://github.com/Azure/azure-quickstart-templates/tree/master/101-azurefirewall-sandbox) 中访问模板。
    
@@ -56,10 +59,10 @@ ms.locfileid: "54038953"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-当不再需要这些资源时，可以通过运行 [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) PowerShell 命令来删除资源组、防火墙和所有相关的资源。 若要删除名为 MyResourceGroup 的资源组，请运行： 
+当您不再需要它们时，则可以通过运行删除资源组、 防火墙和所有相关的资源[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) PowerShell 命令。 若要删除名为 MyResourceGroup 的资源组，请运行： 
 
 ```azurepowershell-interactive
-Remove-AzureRmResourceGroup -Name MyResourceGroup
+Remove-AzResourceGroup -Name MyResourceGroup
 ```
 如果计划继续学习防火墙监视教程，请先不要删除资源组和防火墙。 
 

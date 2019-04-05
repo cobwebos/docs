@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 592bf638cf0be26182dfdb28ac5a0c8345a7a250
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ad58b914c22c112a83c18a7c0377b567424e4efd
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116701"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046013"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure 机器学习工作室 Web 服务：部署和使用
 
@@ -37,7 +37,7 @@ ms.locfileid: "58116701"
 * 有关部署 Web 服务的特定示例，请参阅：
 
   * [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
-  * [如何将 Web 服务部署到多个区域](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
+  * [如何将 web 服务部署到多个区域](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>使用 Web 服务资源提供程序 API (Azure 资源管理器 API)
 
@@ -49,7 +49,7 @@ ms.locfileid: "58116701"
 
 用于 Web 服务的 Azure 机器学习工作室资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
 
-要使用 cmdlet，必须先使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet 从 PowerShell 环境中登录到 Azure 帐户。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/manage-resources-powershell.md)。
+若要使用这些 cmdlet，你必须首先登录到你从 PowerShell 环境中的 Azure 帐户通过[Connect AzAccount](/powershell/module/az.profile/connect-azaccount) cmdlet。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/manage-resources-powershell.md)。
 
 若要导出预测实验，则使用[此代码示例](https://github.com/ritwik20/AzureML-WebServices)。 从代码创建 .exe 文件后，可以键入：
 
@@ -78,7 +78,7 @@ ms.locfileid: "58116701"
 
 有关更多详细信息，请参阅以下文章和示例代码：
 
-* MSDN 上的 [Azure 机器学习工作室 Cmdlet](https://docs.microsoft.com/powershell/module/azurerm.machinelearning) 参考
+* MSDN 上的 [Azure 机器学习工作室 Cmdlet](https://docs.microsoft.com/powershell/module/az.machinelearning) 参考
 * GitHub 上的示例[演练](https://github.com/raymondlaghaeian/azureml-webservices-arm-powershell/blob/master/sample-commands.txt)
 
 ## <a name="consume-the-web-services"></a>使用 Web 服务
@@ -95,8 +95,8 @@ ms.locfileid: "58116701"
 
 可以下载使用 Web 服务的 Excel 模板：
 
-* [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
-* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
+* [使用 Excel 中的 Azure 机器学习 web 服务](consuming-from-excel.md)
+* [Excel 外接程序的 Azure 机器学习 Web 服务](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 

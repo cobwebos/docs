@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a4bebbda528f7ed6d7bee6ce77c744c6349d0bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d81797f0d1e7f72842c3a5a127756b99bdc93992
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190885"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047800"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edigitalresearch"></a>教程：Azure Active Directory 与 eDigitalResearch 的集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56190885"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 eDigitalResearch 的集成，需要具有以下项：
 
@@ -89,7 +89,7 @@ ms.locfileid: "56190885"
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 eDigitalResearch 测试用户](#create-a-edigitalresearch-test-user)** - 在 eDigitalResearch 中创建 Britta Simon 的对应用户，并将其链接到该用户的 Azure AD 表示形式。
+1. **[创建 eDigitalResearch 测试用户](#create-an-edigitalresearch-test-user)** -有的 Britta Simon 相对应的 edigitalresearch 用户链接到用户的 Azure AD 表示形式。
 1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
 1. **[测试单一登录](#test-single-sign-on)** 以验证配置是否正常工作。
 
@@ -97,7 +97,7 @@ ms.locfileid: "56190885"
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 eDigitalResearch 应用程序中配置单一登录。
 
-**若要配置 eDigitalResearch 的 Azure AD 单一登录，请执行以下步骤：**
+**若要配置 Azure AD 单一登录 eDigitalResearch，请执行以下步骤：**
 
 1. 在 Azure 门户中，在 **eDigitalResearch** 应用程序集成页上，单击“单一登录”。
 
@@ -111,9 +111,9 @@ ms.locfileid: "56190885"
 
     ![eDigitalResearch 域和 URL 单一登录信息](./media/edigitalresearch-tutorial/tutorial_edigitalresearch_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company-name>.edigitalresearch.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<company-name>.edigitalresearch.com`
 
-    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://<company-name>.edigitalresearch.com/login/consume`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<company-name>.edigitalresearch.com/login/consume`
 
     > [!NOTE] 
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [eDigitalResearch 支持团队](https://www.maruedr.com/contact)来获取这些值。
@@ -143,7 +143,7 @@ ms.locfileid: "56190885"
 
    ![创建 Azure AD 测试用户][100]
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+**若要在 Azure AD 中创建的测试用户，请执行以下步骤：**
 
 1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
 
@@ -169,7 +169,7 @@ ms.locfileid: "56190885"
 
     d. 单击“创建”。
   
-### <a name="create-a-edigitalresearch-test-user"></a>创建 eDigitalResearch 测试用户
+### <a name="create-an-edigitalresearch-test-user"></a>创建 eDigitalResearch 测试用户
 
 本部分的目的是在 eDigitalResearch 中创建名为 Britta Simon 的用户。 
 
@@ -184,7 +184,7 @@ ms.locfileid: "56190885"
 
 ![分配用户角色][200] 
 
-**要将 Britta Simon 分配到 eDigitalResearch，请执行以下步骤：**
+**若要将 Britta Simon 分配到 eDigitalResearch，请执行以下步骤：**
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

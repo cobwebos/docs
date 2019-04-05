@@ -1,21 +1,20 @@
 ---
-title: 无法在 Azure 数据资源管理器中创建群集
+title: Azure 数据资源管理器创建群集的故障排除
 description: 本文介绍在 Azure 数据资源管理器中创建群集的故障排除步骤。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
-services: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: b95dabbdecd98902da3bf8217a14f41019c31e82
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9e6b3f53f07ac86d6b648a8562be4ef45879c37e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757694"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044103"
 ---
-# <a name="troubleshoot-failure-to-create-a-cluster-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建群集
+# <a name="troubleshoot-failed-cluster-creation-of-azure-data-explorer"></a>故障排除：Azure 数据资源管理器创建失败的群集
 
 在 Azure 数据资源管理器中，群集创建失败的可能性不大，如出现此情况，请遵循以下步骤。
 

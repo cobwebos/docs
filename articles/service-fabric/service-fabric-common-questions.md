@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd2518c23f2cd323d7c3b2b46465e4144c1ba1a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f75236c826584d742fe3163a2fdac29c4030bf66
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665315"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045792"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>有关 Service Fabric 的常见问题
 
 在 Service Fabric 的作用及其用法方面，我们收集了大量的常见问题。 本文档包含其中的许多常见问题及其解答。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="cluster-setup-and-management"></a>群集设置和管理
 
@@ -108,13 +111,13 @@ ms.locfileid: "58665315"
 
 ### <a name="what-are-the-directories-and-processes-that-i-need-to-exclude-when-running-an-anti-virus-program-in-my-cluster"></a>在群集中运行防病毒程序时需要排除哪些目录和进程？
 
-| **防病毒排除的目录** |
+| **防病毒排除目录** |
 | --- |
 | Program Files\Microsoft Service Fabric |
 | FabricDataRoot（从群集配置中） |
 | FabricLogRoot（从群集配置中） |
 
-| **防病毒排除的进程** |
+| **防病毒排除进程** |
 | --- |
 | Fabric.exe |
 | FabricHost.exe |
@@ -133,7 +136,7 @@ ms.locfileid: "58665315"
 下面为应用程序为实现对 KeyVault 的身份验证而获取凭据的方式：
 
 A. 在应用程序生成/打包作业期间，可以将证书拉进 SF 应用的数据包中，并使用此实现对 KeyVault 的身份验证。
-B. 对于支持虚拟机规模集 MSI 的主机，可为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以便[从 MSI 终结点获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然后[从 KeyVault 检索机密](https://docs.microsoft.com/powershell/module/azurerm.keyvault/Get-AzureKeyVaultSecret)
+B. 对于支持虚拟机规模集 MSI 的主机，可为 SF 应用开发一个简单的 PowerShell SetupEntryPoint，以便[从 MSI 终结点获取访问令牌](https://docs.microsoft.com/azure/active-directory/managed-service-identity/how-to-use-vm-token)，然后[从 KeyVault 检索机密](https://docs.microsoft.com/powershell/module/az.keyvault/Get-AzureKeyVaultSecret)
 
 ## <a name="application-design"></a>应用程序设计
 
@@ -189,4 +192,4 @@ Reliable Services 通常已分区，因此，可存储的数据量受到群集�
 
 ## <a name="next-steps"></a>后续步骤
 
-了解[核心 Service Fabric 概念](service-fabric-technical-overview.md)和[最佳做法](service-fabric-best-practices-overview.md)
+了解如何[核心 Service Fabric 概念](service-fabric-technical-overview.md)并[最佳做法](service-fabric-best-practices-overview.md)冰 Fabric concepts](service-fabric-technical-overview.md) 和[最佳做法](service-fabric-best-practices-overview.md)

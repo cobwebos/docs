@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: custom-vision
 ms.topic: conceptual
-ms.date: 01/10/2019
+ms.date: 04/03/2019
 ms.author: anroth
-ms.openlocfilehash: 78ee24280600d336d394819d33762d8cf6278858
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d0f0f3b120187a7538989f219876a8c10569a98e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891474"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051458"
 ---
 # <a name="how-to-build-a-classifier-with-custom-vision"></a>如何使用自定义影像服务生成分类器
 
@@ -56,9 +56,8 @@ ms.locfileid: "58891474"
     |__食品__|针对餐厅菜肴的照片进行优化。 如果要对各种水果或蔬菜的照片进行分类，请使用“食品”域。|
     |__特征点__|针对可识别的自然和人造地标进行优化。 在照片中的地标清晰可见的情况下，该域效果最佳。 即使照片中的人物稍微遮挡了地标，该域仍然有效。|
     |__零售__|针对购物目录或购物网站中的图像进行优化。 若想对连衣裙、裤子和衬衫进行精准分类，请使用此域。|
-    |__成人__|优化后能更好地识别成人内容和非成人内容。 例如，如果要屏蔽穿泳衣的人物图像，可通过此域生成自定义分类器来实现此操作。|
     |__Compact 域__| 针对移动设备上实时分类的约束进行优化。 可导出压缩域生成的模型在本地运行。|
-    
+
 1. 最后，选择“创建项目”。
 
 ## <a name="choose-training-images"></a>选择训练图像

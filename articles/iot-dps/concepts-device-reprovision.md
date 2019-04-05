@@ -3,25 +3,25 @@ title: 用于重新预配 Azure IoT 中心设备预配服务的设备概念 | Mi
 description: 介绍 Azure IoT 中心设备预配服务的设备重新预配概念
 author: wesmc7777
 ms.author: wesmc
-ms.date: 11/14/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: f52e2a1095c329aabf44a846a644cc05548d4df3
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+manager: philmea
+ms.openlocfilehash: fa8cb29f145c7658227f93d08a990c98563a0cfc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51712273"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050843"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>IoT 中心设备重新预配概念
 
 在 IoT 解决方案的生命周期中，设备在 IoT 中心之间频繁移动。 此项移动的原因可能包括以下情况：
 
-* **地理位置/地理延迟**：当设备在两位置之间移动时，通过将设备迁移到更近的 IoT 中心来改善网络延迟。
+* **地理位置/GeoLatency**：当设备在两位置之间移动时，通过将设备迁移到更近的 IoT 中心来改善网络延迟。
 
-* **多租户**：可以在同一 IoT 解决方案中使用设备并将其重新分配给新客户或客户站点。 可以使用不同的 IoT 中心来为这位新客户提供服务。
+* **多租户**：可以在同一 IoT 解决方案中使用设备并将其重新分配给新客户或客户站点。 可使用不同的 IoT 中心为这位新客户提供服务。
 
 * **解决方案更改**：可将设备移到新版或更新后的 IoT 解决方案中。 这种重新分配可能需要设备与连接到其他后端组件的新 IoT 中心通信。
 
@@ -51,7 +51,7 @@ ms.locfileid: "51712273"
 
 根据具体情况，设备通常会在重启时向预配服务实例发送请求。 还支持按需手动触发预配的方法。 注册项上的重新预配策略将确定设备预配服务实例处理这些预配请求的方式。 该策略还确定是否应在重新预配期间迁移设备状态数据。 单个注册和注册组可使用相同的策略：
 
-* **重新预配和迁移数据**：此策略是新注册项的默认策略。 当与注册项关联的设备提交新的请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的已更新设备状态信息将迁移到新的 IoT 中心 (2)。 迁移期间，设备的状态将报告为“正在分配”。
+* **重新预配并迁移数据**：此策略是新注册项的默认策略。 当与注册项关联的设备提交新的请求时，此策略将执行操作 (1)。 根据注册项配置，可将设备重新分配给其他 IoT 中心。 如果设备正在更改 IoT 中心，则将删除初始 IoT 中心内的设备注册。 来自该初始 IoT 中心的已更新设备状态信息将迁移到新的 IoT 中心 (2)。 迁移期间，设备的状态将报告为“正在分配”。
 
     ![使用设备预配服务进行预配](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "51712273"
 
 | REST API | C SDK | Python SDK |  Node SDK | Java SDK | .NET SDK |
 | -------- | ----- | ---------- | --------- | -------- | -------- |
-| [2018-04-01 及更早版本](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 及更早版本](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 及更早版本](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 及更早版本](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 及更早版本](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 及更早版本](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
+| [2018-04-01 及更早版本](/rest/api/iot-dps/createorupdateindividualenrollment/createorupdateindividualenrollment#uri-parameters) | [1.2.8 及更早版本](https://github.com/Azure/azure-iot-sdk-c/blob/master/version.txt) | [1.4.2 及更早版本](https://github.com/Azure/azure-iot-sdk-python/blob/0a549f21f7f4fc24bc036c1d2d5614e9544a9667/device/iothub_client_python/src/iothub_client_python.cpp#L53) | [1.7.3 或更早版本](https://github.com/Azure/azure-iot-sdk-node/blob/074c1ac135aebb520d401b942acfad2d58fdc07f/common/core/package.json#L3) | [1.13.0 或更早版本](https://github.com/Azure/azure-iot-sdk-java/blob/794c128000358b8ed1c4cecfbf21734dd6824de9/device/iot-device-client/pom.xml#L7) | [1.1.0 或更早版本](https://github.com/Azure/azure-iot-sdk-csharp/blob/9f7269f4f61cff3536708cf3dc412a7316ed6236/provisioning/device/src/Microsoft.Azure.Devices.Provisioning.Client.csproj#L20)
 
 > [!NOTE]
 > 这些值和链接可能会有所更改。 这只是占位符，尝试确定客户可以在何处确定版本以及预期的版本是什么。

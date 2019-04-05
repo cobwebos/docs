@@ -13,16 +13,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/03/2019
 ms.author: mabrigg
 ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
-ms.openlocfilehash: e287a6f436b51f55d9a5aa59dbbe2a195015c292
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 728839accbce80ece6795e098d5d2855320fab06
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883106"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006684"
 ---
 # <a name="prepare-a-red-hat-based-virtual-machine-for-azure-stack"></a>为 Azure Stack 准备基于 Red Hat 的虚拟机
 
@@ -264,7 +264,6 @@ ms.locfileid: "58883106"
 1. 确保已安装 SSH 服务器且已将其配置为在引导时启动。
 
     ```bash
-    systemctl stop cloud-init
     systemctl enable sshd
     ```
 
@@ -277,7 +276,7 @@ ms.locfileid: "58883106"
 
 1. 当为 Azure Stack 中创建自定义 vhd，请记住，2.2.20 和 2.2.35.1 （这两个不含） 之间的 WALinuxAgent 版本无法正常工作之前 1903年运行生成的 Azure Stack 环境。 若要解决此问题，应用 1901年/1902年修补程序或按照说明进行操作的此部分的第二部分。 
 
-如果运行的 Azure Stack 内部版本 1903年 （或更高） 或 1901年/1902年修补程序，从 Redhat extras 存储库下载 WALinuxAgent 包如下所示：
+    如果运行的 Azure Stack 内部版本 1903年 （或更高） 或 1901年/1902年修补程序，从 Redhat extras 存储库下载 WALinuxAgent 包如下所示：
     
    WALinuxAgent 包 `WALinuxAgent-<version>` 已推送到 Red Hat extras 存储库。 通过运行以下命令启用 extras 存储库：
 
@@ -298,7 +297,7 @@ ms.locfileid: "58883106"
     ```
     
     
-如果之前 1903年运行 Azure Stack 内部版本，并且尚未应用 1901年/1902年修补程序，然后按照以下说明下载 WALinuxAgent:
+    如果之前 1903年运行 Azure Stack 内部版本，并且尚未应用 1901年/1902年修补程序，然后按照以下说明下载 WALinuxAgent:
     
    a.   下载 setuptools
     ```bash
@@ -312,15 +311,15 @@ ms.locfileid: "58883106"
     unzip v2.2.36.zip
     cd WALinuxAgent-2.2.36
     ```
-    c. Install setup.py
+    c. 安装 setup.py
     ```bash
     sudo python setup.py install
     ```
-    d. Restart waagent
+    d. 重新启动 waagent
     ```bash
     sudo systemctl restart waagent
     ```
-    e. Test if the agent version matches the one your downloaded. For this example, it should be 2.2.36.
+    e. 如果代理版本匹配，一个下载进行测试。 对于此示例中，它应为 2.2.36。
     
     ```bash
     waagent -version

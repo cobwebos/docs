@@ -1,19 +1,18 @@
 ---
 title: Azure 数据资源管理器数据引入
 description: 了解在 Azure 数据资源管理器中引入（加载）数据的不同方式
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 2/18/2019
-ms.openlocfilehash: e2dd67b7b8e7eaac1b823c044fe3d345ce7e8c7b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 02/18/2019
+ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755778"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045588"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -93,8 +92,8 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 | --- | --- |
 | **内联引入** | 即时 |
 | **从查询引入** | 查询时间 + 处理时间 |
-| **从存储引入** | 下载时间 + 处理时间 |
-| **排队引入** | 批处理时间 + 处理时间 |
+| **从存储中引入** | 下载时间 + 处理时间 |
+| **排队的引入** | 批处理时间 + 处理时间 |
 | |
 
 处理时间取决于数据大小，通常不超过几秒钟。 批处理时间默认为 5 分钟。
@@ -145,7 +144,7 @@ Kusto 提供可与以下项一起用于引入和查询数据的客户端 SDK：
 > [将数据从事件中心引入到 Azure 数据资源管理器](ingest-data-event-hub.md)
 
 > [!div class="nextstepaction"]
-> [使用事件网格订阅将数据引入到 Azure 数据资源管理器](ingest-data-event-grid.md)
+> [引入数据使用到 Azure 数据资源管理器的事件网格订阅](ingest-data-event-grid.md)
 
 > [!div class="nextstepaction"]
 > [将数据从 Kafka 引入到 Azure 数据资源管理器](ingest-data-kafka.md)

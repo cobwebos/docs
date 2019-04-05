@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/04/2019
-ms.openlocfilehash: 2a2e289423eda53d610b2346193f6ee8a30b9c48
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.lastreviewed: 04/05/2019
+ms.openlocfilehash: a62c4dced78ef75588ef0fcc90e56bd6969c15a9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917679"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048803"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 更新
 
@@ -64,6 +64,12 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 改进的检测和修正的磁盘空间不足情况。
 
+### <a name="secret-management"></a>机密管理
+
+- Azure Stack 现在支持使用外部机密轮换证书的根证书的旋转。 有关详细信息[请参阅此文章](azure-stack-rotate-secrets.md)。
+
+- 1903 包含对于机密轮换减少执行内部机密轮换花费的时间的性能改进。
+
 ## <a name="prerequisites"></a>必备组件
 
 > [!IMPORTANT]
@@ -91,7 +97,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
-- <!-- 2468613 - IS --> 在安装此更新的过程中，可能会看到标题为 `Error – Template for FaultType UserAccounts.New is missing.` 的警报。可以放心忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
+- <!-- 2468613 - IS --> 在安装此更新期间，可能会出现标题如下的警报：“错误 - 缺少 FaultType UserAccounts.New 的模板”。 可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
 ## <a name="post-update-steps"></a>更新后步骤
 
@@ -151,9 +157,9 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 启用 SSH 授权与创建的 Ubuntu 18.04 VM 将不允许要使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
 
-- 如果没有硬件生命周期主机 (HLH)：在之前生成 1902年，您必须将组策略设置*计算机配置 \windows 设置 \ 安全设置 \ 本地策略 \ 安全选项*到**发送 LM 和 NTLM – 如果协商使用NTLMv2会话安全**. 自生成 1902年，必须将其作为**未定义**或将其设置为**仅发送 NTLMv2 响应**（这是默认值）。 否则为你将无法建立的 PowerShell 远程会话，你将收到*访问被拒绝*错误：
+- 如果不具有硬件生命周期主机 (HLH): 在之前生成 1902年，您必须将组策略设置**计算机配置 \windows 设置 \ 安全设置 \ 本地策略 \ 安全选项**到**发送 LM 和 NTLM –如果协商使用 NTLMv2 会话安全**。 从版本 1902 开始，必须将此策略保持为“未定义”，或将其设置为“仅发送 NTLMv2 响应”（默认值）。 否则为你将无法建立的 PowerShell 远程会话，你将看到**访问被拒绝**错误：
 
-   ```PowerShell
+   ```shell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
@@ -169,7 +175,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 <!-- 3239127 - IS, ASDK -->
 - 在 Azure Stack 门户中，对于已附加到 VM 实例的网络适配器，在更改与其绑定的 IP 配置的静态 IP 地址时，会看到一条警告消息，其中指出 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`
 
     可以放心忽略此消息；即使 VM 实例未重启，IP 地址也会更改。
 
@@ -193,7 +199,6 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 <!-- 2352906 - IS ASDK --> 
 - 在订阅中创建第一个 Azure 函数之前，必须先注册存储资源提供程序。
-
 
 <!-- ### Usage -->
 

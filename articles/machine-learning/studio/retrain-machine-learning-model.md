@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/14/2019
-ms.openlocfilehash: ea73c16687d393cd1e61c4aee83fbf74cc4ae9a7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 903f2700ad127c9bcc69e69ee125ba62fccf52e0
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58108114"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051625"
 ---
 # <a name="retrain-and-deploy-a-machine-learning-model"></a>重新训练和部署机器学习模型
 
@@ -28,6 +28,8 @@ ms.locfileid: "58108114"
 1. 部署**重新训练 Web 服务**
 1. 使用**重新训练 Web 服务**来训练新模型
 1. 将现有的**预测实验**更新为使用新模型
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="deploy-the-retraining-web-service"></a>部署重新训练 Web 服务
 
@@ -130,15 +132,15 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="sign-in-to-azure-resource-manager"></a>登录到 Azure 资源管理器
 
-首先，从 PowerShell 环境中使用 [Connect-AzureRmAccount](/powershell/module/azurerm.profile/connect-azurermaccount) cmdlet 登录到 Azure 帐户。
+首先，登录到 Azure 帐户从 PowerShell 环境中使用[Connect AzAccount](/powershell/module/az.profile/connect-azaccount) cmdlet。
 
 ### <a name="get-the-web-service-definition-object"></a>获取 Web 服务定义对象
 
-然后，通过调用 [Get-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/get-azurermmlwebservice) cmdlet 获取 Web 服务定义对象。
+接下来，获取通过调用 Web 服务定义对象[Get AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/get-azmlwebservice) cmdlet。
 
-    $wsd = Get-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+    $wsd = Get-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
-若要确定现有 Web 服务的资源组名称，请运行 Get-AzureRmMlWebService cmdlet 而不是任何参数，以显示订阅中的 Web 服务。 定位到 Web 服务，并查看其 Web 服务 ID。 资源组的名称是 ID 中的第四个元素，紧随 *resourceGroups* 元素之后。 在下面的示例中，资源组名称为 Default-MachineLearning-SouthCentralUS。
+若要确定现有 web 服务的资源组名称，请运行不带任何参数，以显示你的订阅中的 web 服务获取 AzMlWebService cmdlet。 定位到 Web 服务，并查看其 Web 服务 ID。 资源组的名称是 ID 中的第四个元素，紧随 *resourceGroups* 元素之后。 在下面的示例中，资源组名称为 Default-MachineLearning-SouthCentralUS。
 
     Properties : Microsoft.Azure.Management.MachineLearning.WebServices.Models.WebServicePropertiesForGraph
     Id : /subscriptions/<subscription ID>/resourceGroups/Default-MachineLearning-SouthCentralUS/providers/Microsoft.MachineLearning/webServices/RetrainSamplePre.2016.8.17.0.3.51.237
@@ -153,9 +155,9 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="export-the-web-service-definition-object-as-json"></a>将 Web 服务定义对象导出为 JSON
 
-要修改训练模型定义以使用新训练的模型，必须先使用 [Export-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/export-azurermmlwebservice) cmdlet 将其导出到 JSON 格式的文件。
+若要修改训练的模型以使用新训练的模型的定义，必须先使用[导出 AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/export-azmlwebservice) cmdlet 将其导出为 JSON 格式的文件。
 
-    Export-AzureRmMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
+    Export-AzMlWebService -WebService $wsd -OutputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-reference-to-the-ilearner-blob"></a>将引用更新到 iLearner blob
 
@@ -176,19 +178,19 @@ BES 示例代码将文件从本地驱动器（例如，“C:\temp\CensusInput.cs
 
 ### <a name="import-the-json-into-a-web-service-definition-object"></a>将 JSON 导入到 Web 服务定义对象
 
-使用 [Import-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/import-azurermmlwebservice) cmdlet 将修改的 JSON 文件转换回可用于更新预测实验的 Web 服务定义对象。
+使用[导入 AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/import-azmlwebservice) cmdlet 将修改后的 JSON 文件转换回可用于更新预测实验的 Web 服务定义对象。
 
-    $wsd = Import-AzureRmMlWebService -InputFile "C:\temp\mlservice_export.json"
+    $wsd = Import-AzMlWebService -InputFile "C:\temp\mlservice_export.json"
 
 ### <a name="update-the-web-service"></a>更新 Web 服务
 
-最后，使用 [Update-AzureRmMlWebService](https://docs.microsoft.com/powershell/module/azurerm.machinelearning/update-azurermmlwebservice) cmdlet 更新预测实验。
+最后，使用[更新 AzMlWebService](https://docs.microsoft.com/powershell/module/az.machinelearning/update-azmlwebservice) cmdlet 更新预测实验。
 
-    Update-AzureRmMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
+    Update-AzMlWebService -Name 'RetrainSamplePre.2016.8.17.0.3.51.237' -ResourceGroupName 'Default-MachineLearning-SouthCentralUS'
 
 ## <a name="next-steps"></a>后续步骤
 
 若要了解有关如何管理 Web 服务或跟踪多个实验运行的详细信息，请参阅以下文章：
 
-* [探索 Web 服务门户](manage-new-webservice.md)
-* [管理实验迭代](manage-experiment-iterations.md)
+* [浏览 Web 服务门户](manage-new-webservice.md)
+* [管理试验迭代](manage-experiment-iterations.md)

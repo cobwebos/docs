@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
-ms.openlocfilehash: f201ac1f0ea5a4bc07e8c052e7653194140e8759
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669361"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049175"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
 
@@ -27,6 +27,9 @@ ms.locfileid: "58669361"
 > 缩放前阅读此部分
 
 要缩放计算资源来满足你的应用程序工作负载，需要实施有目的性的计划，此操作在生产环境中总是需要几乎一个多小时才能完成，而且你还要对你的工作负载和业务环境了如指掌。事实上，如果从未执行过此操作，建议在继续本文档其余部分之前，首先阅读并理解 [Service Fabric 群集容量规划注意事项](service-fabric-cluster-capacity.md)。 该项建议的目的是避免出现意外的实时站点问题；此外，建议成功测试你决定针对非生产环境执行的操作。 可随时[报告生产问题或请求 Azure 付费支持](service-fabric-support.md#report-production-issues-or-request-paid-support-for-azure)。 对于被分配根据适当情况执行这些操作的工程师，请参考本文了解缩放操作。但是，你必须决定并了解哪些操作适合你的情况，例如要缩放哪些资源（CPU、存储、内存）、按哪个方向进行缩放方向（垂直或水平），以及要执行哪些操作（资源模板部署、门户、PowerShell/CLI）。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules-or-manually"></a>使用自动缩放规则或者手动来扩展和缩减 Service Fabric 群集
 虚拟机规模集是一种 Azure 计算资源，可用于将一组 VM 作为一个集进行部署和管理。 在 Service Fabric 群集中定义的每个节点类型将设置为不同的虚拟机规模集。 然后，每个节点类型可以独立扩展或缩减、打开不同的端口集，并可以有不同的容量指标。 阅读有关它的详细信息[Service Fabric 节点类型](service-fabric-cluster-nodetypes.md)文档。 由于群集中的 Service Fabric 节点类型的后端虚拟机规模集构成，需要设置为每个节点类型/虚拟机规模集的自动缩放规则。
@@ -42,9 +45,9 @@ ms.locfileid: "58669361"
 若要获取构成群集的虚拟机规模集的列表，请运行以下 cmdlet：
 
 ```powershell
-Get-AzureRmResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
+Get-AzResource -ResourceGroupName <RGname> -ResourceType Microsoft.Compute/VirtualMachineScaleSets
 
-Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
+Get-AzVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine scale set name>
 ```
 
 ## <a name="set-auto-scale-rules-for-the-node-typevirtual-machine-scale-set"></a>为节点类型/虚拟机规模集设置自动缩放规则
@@ -79,10 +82,10 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <virtual machine sca
 以下代码按名称获取规模集，并使规模集的容量增加 1。
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
+$scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
+Update-AzVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
 此代码将容量设为 6。
@@ -119,16 +122,16 @@ sfctl node list --query "sort_by(items[*], &name)[-1]"
 Service Fabric 群集需要了解此节点将被删除。 需要执行以下三个步骤：
 
 1. 禁用节点，使其不再是数据复制。  
-PowerShell：`Disable-ServiceFabricNode`  
-sfctl：`sfctl node disable`
+PowerShell： `Disable-ServiceFabricNode`  
+sfctl: `sfctl node disable`
 
 2. 停止节点，使 Service Fabric 运行时完全关闭且应用获取终止请求。  
-PowerShell：`Start-ServiceFabricNodeTransition -Stop`  
-sfctl：`sfctl node transition --node-transition-type Stop`
+PowerShell： `Start-ServiceFabricNodeTransition -Stop`  
+sfctl: `sfctl node transition --node-transition-type Stop`
 
 2. 从群集移除节点。  
-PowerShell：`Remove-ServiceFabricNodeState`  
-sfctl：`sfctl node remove-state`
+PowerShell： `Remove-ServiceFabricNodeState`  
+sfctl: `sfctl node remove-state`
 
 对节点执行这三个步骤后，即可将其从规模集中移除。 如果使用除 [bronze][durability] 以外的任意持续性层，在移除规模集实例时会完成这些步骤。
 
@@ -192,7 +195,7 @@ else
 }
 ```
 
-在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：
+在中**sfctl**下面代码中，使用以下命令来获取**节点名称**最近创建节点的值： `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -220,10 +223,10 @@ sfctl node remove-state --node-name _nt1vm_5
 将 Service Fabric 节点从群集中删除后，即可缩小虚拟机规模集。 在下面的示例中，规模集容量缩小了 1。
 
 ```powershell
-$scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
+$scaleset = Get-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity -= 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
 ```
 
 此代码将容量设为 5。
@@ -260,7 +263,7 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 
 * [规划群集容量](service-fabric-cluster-capacity.md)
 * [群集升级](service-fabric-cluster-upgrade.md)
-* [为有状态服务分区以最大程度地实现缩放](service-fabric-concepts-partitioning.md)
+* [有状态服务分区的最大小数位数](service-fabric-concepts-partitioning.md)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png

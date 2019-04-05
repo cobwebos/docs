@@ -1,19 +1,18 @@
 ---
 title: 使用 Python 从 Azure Databricks 连接到 Azure 数据资源管理器
 description: 本主题介绍了如何使用两个身份验证方法中的一个，通过 Azure Databricks 中的 Python 库访问 Azure 数据资源管理器中的数据。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.openlocfilehash: 7e91aa0707b1ae8ac4b9b6ddd9ee7142a04a0f37
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 55257d441916971b505432247f28033d6222c3be
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756922"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047749"
 ---
 # <a name="connect-to-azure-data-explorer-from-azure-databricks-by-using-python"></a>使用 Python 从 Azure Databricks 连接到 Azure 数据资源管理器
 

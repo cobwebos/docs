@@ -1,5 +1,5 @@
 ---
-title: 创建 Vnet 之间的连接： 经典：Azure 门户 | Microsoft Docs
+title: 在 VNet 之间创建连接：经典：Azure 门户 | Microsoft Docs
 description: 使用 PowerShell 和 Azure 门户将 Azure 虚拟网络连接到一起。
 services: vpn-gateway
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 6924d4eca52bfab8c90e7787bb8849b47df064db
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112256"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046116"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
 
@@ -33,12 +33,14 @@ ms.locfileid: "58112256"
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
-> * [连接不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+> * [连接不同部署模型-Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [连接不同部署模型-PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
 
 ![VNet 到 VNet 连接示意图](./media/vpn-gateway-howto-vnet-vnet-portal-classic/v2vclassic.png)
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="about-vnet-to-vnet-connections"></a>关于 VNet 到 VNet 的连接
 
@@ -96,10 +98,10 @@ ms.locfileid: "58112256"
 
 如果使用本文进行练习，可以使用以下示例值：
 
-**用于 TestVNet1 的值**
+**TestVNet1 的值**
 
 姓名：TestVNet1<br>
-地址空间：10.11.0.0/16，10.12.0.0/16 （可选）<br>
+地址空间：10.11.0.0/16, 10.12.0.0/16（可选）<br>
 子网名称：默认值<br>
 子网地址范围：10.11.0.1/24<br>
 资源组：ClassicRG<br>
@@ -109,20 +111,20 @@ GatewaySubnet：10.11.1.0/27
 **用于 TestVNet4 的值**
 
 姓名：TestVNet4<br>
-地址空间：10.41.0.0/16，10.42.0.0/16 （可选）<br>
+地址空间：10.41.0.0/16, 10.42.0.0/16（可选）<br>
 子网名称：默认值<br>
 子网地址范围：10.41.0.1/24<br>
 资源组：ClassicRG<br>
 位置：美国西部<br>
 GatewaySubnet：10.41.1.0/27
 
-**创建 VNet 时，请注意以下设置：**
+**在创建 Vnet，请记住以下设置：**
 
 * **虚拟网络地址空间** – 在“虚拟网络地址空间”页上，指定要用于虚拟网络的地址范围。 这些都是动态 IP 地址，将分配给你部署到此虚拟网络的 VM 和其他角色实例。<br>选择的地址空间不能与任何其他 VNet 的地址空间重叠，也不能与此 VNet 将连接到的本地位置的地址空间重叠。
 
 * **位置** - 创建虚拟网络时，它将与某个 Azure 位置（区域）相关联。 例如，如果要部署到虚拟网络的 VM 的实际位置为美国西部，请选择该位置。 创建虚拟网络后，将无法更改与虚拟网络关联的位置。
 
-**创建 VNet 后，可以添加以下设置：**
+**创建 Vnet 后, 可以添加以下设置：**
 
 * **地址空间** – 此配置不需要额外的地址空间，但可以在创建 VNet 后添加额外的地址空间。
 
@@ -210,7 +212,7 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 
 ## <a name="getvalues"></a>步骤 7 - 从网络配置文件中检索值
 
-在 Azure 门户中创建经典 VNet 时，看到的名称不是用于 PowerShell 的完整名称。 例如，在门户中命名为 **TestVNet1** 的 VNet 在网络配置文件中可能具有更长的名称。 名称可能如下所示：**组 ClassicRG TestVNet1**。 在创建连接时，请务必使用在网络配置文件中看到的值。
+在 Azure 门户中创建经典 VNet 时，看到的名称不是用于 PowerShell 的完整名称。 例如，在门户中命名为 **TestVNet1** 的 VNet 在网络配置文件中可能具有更长的名称。 名称可能如下所示：**Group ClassicRG TestVNet1**。 在创建连接时，请务必使用在网络配置文件中看到的值。
 
 在下面的步骤中，需连接到 Azure 帐户并下载和查看网络配置文件，以便获取连接所需的值。
 
@@ -219,19 +221,19 @@ Azure 使用在每个本地网络站点中指定的设置来确定如何在 VNet
 2. 使用提升的权限打开 PowerShell 控制台，并连接到帐户。 使用下面的示例来帮助连接：
 
    ```powershell
-   Connect-AzureRmAccount
+   Connect-AzAccount
    ```
 
    检查该帐户的订阅。
 
    ```powershell
-   Get-AzureRmSubscription
+   Get-AzSubscription
    ```
 
    如果有多个订阅，请选择要使用的订阅。
 
    ```powershell
-   Select-AzureRmSubscription -SubscriptionName "Replace_with_your_subscription_name"
+   Select-AzSubscription -SubscriptionName "Replace_with_your_subscription_name"
    ```
 
    接下来，使用以下 cmdlet 将 Azure 订阅添加到经典部署模型的 PowerShell。

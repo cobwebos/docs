@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: dhanyahk
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50b49ce05eb3309f5b21761dc55ab17a1a18f7cc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f6fe7b2cefdd29f0497bbc18e969a77ac295ba42
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670925"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051948"
 ---
 # <a name="archive-for-whats-new-in-azure-active-directory"></a>Azure Active Directory 的新增功能存档
 
@@ -372,7 +372,7 @@ Azure AD Connect 的最新版本包括：
 
 如果你有任何应用使用 Azure AD 活动日志 API，请在更改发生后执行以下步骤来确保应用不会损坏。
 
-**更新应用权限**
+**若要更新应用权限**
 
 1. 登录 Azure 门户，选择“Azure Active Directory”，然后选择“应用注册”。
 2. 选择使用 Azure AD 活动日志 API 的应用，依次选择“设置”、“所需权限”和“Microsoft Azure Active Directory”API。
@@ -398,9 +398,9 @@ Azure AD Connect 的最新版本包括：
 
 过时的浏览器可能不支持较新的 TLS 版本，例如 TLS 1.2。 若要查看浏览器支持哪些版本的 TLS，请转到 [Qualys SSL 实验室](https://www.ssllabs.com/)网站，然后单击“Test your browser”（测试浏览器）。 建议将 Web 浏览器升级到最新版本，并且最好只启用 TLS 1.2。
 
-**在各种浏览器中启用 TLS 1.2**
+**若要启用 TLS 1.2，通过浏览器**
 
-- **Microsoft Edge和 Internet Explorer（均使用 Internet Explorer 设置）**
+- **Microsoft Edge 和 Internet 资源管理器 （两者都设置使用 Internet Explorer）**
 
     1. 打开 Internet Explorer，选择“工具” > “Internet 选项” > “高级”。
     2. 在“安全”部分，选择“使用 TLS 1.2”，然后选择“确定”。
@@ -466,7 +466,7 @@ Azure AD Connect 的最新版本包括：
 
 在创建使用条款 (ToU) 期间，还会为“所有来宾”和“所有应用”创建新的条件访问策略模板。 此全新的策略模板采用新创建的 ToU，简化了来宾的创建和执行过程。
 
-有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
 ---
 
@@ -478,7 +478,7 @@ Azure AD Connect 的最新版本包括：
 
 在创建使用条款 (ToU) 期间，还会创建新的“自定义”条件访问策略模板。 通过此新策略模板可创建 ToU，然后立即转到条件访问策略创建边栏选项卡，无需手动浏览门户。
 
-有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure Active Directory 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
 ---
 
@@ -510,11 +510,11 @@ Azure AD Connect 的最新版本包括：
 
     - **应用程序开发人员。** 即使“允许用户注册应用”选项已关闭，该角色也可授予创建应用注册的权限。
 
-- **所有权（设置每个应用注册和每个企业应用，类似于群组所有权流程：**
+- **所有权 (设置每个应用程序注册和每个企业应用，类似于组所有权过程：**
  
-    - **应用注册所有者。** 授予管理自有应用注册各个方面的权限，包括应用清单和添加其他所有者。
+    - **应用程序注册所有者。** 授予管理自有应用注册各个方面的权限，包括应用清单和添加其他所有者。
 
-    - **企业应用所有者。** 授予管理自有企业应用许多方面的权限，包括 SSO 设置、应用分配和同意（Azure AD 资源除外）。
+    - **企业应用程序所有者。** 授予管理自有企业应用许多方面的权限，包括 SSO 设置、应用分配和同意（Azure AD 资源除外）。
 
 有关公共预览版的详细信息，请参阅 [Azure AD 委派的应用程序管理角色处于公共预览状态！](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/13/hallelujah-azure-ad-delegated-application-management-roles-are-in-public-preview/) 博客。 有关角色和权限的详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](https://docs.microsoft.com/azure/active-directory/active-directory-assign-admin-roles-azure-portal)。
 
@@ -532,9 +532,9 @@ Azure AD Connect 的最新版本包括：
 
 同时我们正在改变我们的支持，我们也知道，在某些情况下，你可能仍然需要为身份验证流量使用专用的线路集。 因此，Azure AD 将继续使用 ExpressRoute 支持每租户 IP 范围限制，并继续通过“其他 Office 365 联机服务”社区支持 Microsoft 对等互连上已有的服务。 如果服务受到影响，但你需要 ExpressRoute，则必须执行以下操作：
 
-- **如果当前在使用 Azure 公共对等互连。** 迁移到 Microsoft 对等互连并注册其他 Office 365 联机服务 (12076:5100) 社区。 有关如何从 Azure 公共对等互连迁移到 Microsoft 对等互连的详细信息，请参阅[将公共对等互连迁移到 Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)一文。
+- **如果使用的是 Azure 公共对等互连。** 迁移到 Microsoft 对等互连并注册其他 Office 365 联机服务 (12076:5100) 社区。 有关如何从 Azure 公共对等互连迁移到 Microsoft 对等互连的详细信息，请参阅[将公共对等互连迁移到 Microsoft 对等互连](https://docs.microsoft.com/azure/expressroute/how-to-move-peering)一文。
 
-- **如果当前在使用 Microsoft 对等互连。** 注册其他 Office 365 联机服务 (12076:5100) 社区。 有关路由要求的详细信息，请参阅 ExpressRoute 路由要求一文中的[对 BGP 社区的支持](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)部分。
+- **如果你是 Microsoft 对等互连。** 注册其他 Office 365 联机服务 (12076:5100) 社区。 有关路由要求的详细信息，请参阅 ExpressRoute 路由要求一文中的[对 BGP 社区的支持](https://docs.microsoft.com/azure/expressroute/expressroute-routing#bgp)部分。
 
 如果必须继续使用专用线路，则需要与你的 Microsoft 帐户团队沟通如何获得授权来使用**其他 Office 365 联机服务 (12076:5100)** 社区。 MS Office 托管的评审委员会将验证你是否需要那些线路并确保你理解保留它们的技术影响。 尝试为 Office 365 创建路由筛选器的未经授权订阅将收到错误消息。 
  
@@ -739,7 +739,7 @@ fragment 和 form_post response_mode 继续有效 - 创建新的具有特定用�
  
 管理员现在可以选择给定 ToU，查看已同意该 ToU 的所有用户以及同意发生的日期/时间。
 
-有关详细信息，请参阅 [Azure AD 使用条款功能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure AD 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
 ---
  
@@ -782,7 +782,7 @@ Connect Health 现在支持按小时或按天检测超过失败 U/P 登录次数
 
 Azure AD 使用条款已从公共预览版过渡到正式版。
 
-有关详细信息，请参阅 [Azure AD 使用条款功能](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure AD 使用条款功能](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
 ---
 
@@ -883,8 +883,8 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 有关详细信息，请参阅：
 
-- [在 Azure Active Directory 中管理用于联合单一登录的证书](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
-- [Azure Active Directory 门户中的“审核活动”报表](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
+- [为联合单一登录 Azure Active Directory 中管理证书](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
+- [Azure Active Directory 门户中的“审核活动”报告](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
  
 ---
  
@@ -906,7 +906,7 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 **服务类别：** 条件性访问  
 **产品功能：** 标识安全性和保护
  
-**现在处于公开预览状态！**
+**目前在公共预览版 ！**
 
 **Intune Managed Browser SSO：** 员工可以将跨本机客户端（如 Microsoft Outlook）的单一登录和 Intune Managed Browser 用于 Azure AD 连接的所有应用。
 
@@ -916,9 +916,9 @@ Criterion HCM、[FiscalNote](https://docs.microsoft.com/azure/active-directory/a
 
 有关详细信息，请参阅：
 
-- [设置基于应用程序的条件访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+- [设置基于应用程序的条件性访问](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
 
-- [配置 Managed browser 策略](https://aka.ms/managedbrowser)  
+- [配置托管浏览器策略](https://aka.ms/managedbrowser)  
 
 ---
  
@@ -1215,7 +1215,7 @@ Azure AD Connect 是在 Azure AD 与本地数据源（包括 Windows Server Acti
 
 此版本提供以下更新和更改：
 
-**已修复的问题**
+**修复的问题**
 
 - 修复了在切换到下一页时，“分区筛选”页的后台任务的计时窗口问题。
 
@@ -1382,7 +1382,7 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 随着新 Azure Active Directory 管理控制台的正式发布以及用于活动和安全报告的新 API 的推出，“/reports”终结点下面的报告 API 从 2017 年 12 月 31 日开始已停用。
 
-**可用功能**
+**什么是可用？**
 
 在过渡到新管理控制台的过程中，我们开发了 2 个新 API 用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险事件 API 来访问以前通过安全报告提供的数据。
 
@@ -1414,7 +1414,7 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 4. 现在，可以查看已接受的使用条款。 
 
-有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
  
 ---
  
@@ -1454,7 +1454,7 @@ Azure AD 登录页上的“使我保持登录状态”复选框已被替换为�
 
 对于要求用户展开使用条款这一选项，可选择“打开”或“关闭”。 “打开”设置要求用户在接受使用条款之前先查看条款。
 
-有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure AD 使用条款功能（预览版）](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
  
 ---
 
@@ -1550,7 +1550,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 **客户端应用：** 浏览器
 
-**此更改会产生什么影响？**
+**更改的效果是什么？**
 
 目前，使用此条件时会阻止访问。 推出预览版后，所有访问都需要使用托管的浏览器应用程序。 
 
@@ -1617,7 +1617,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 以下条件和控制现可用于基于应用的条件访问：
 
-**支持的平台条件**
+**受支持的平台条件**
 
 - iOS
 - Android
@@ -1659,14 +1659,14 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 
 现在可以包含（或排除）macOS 作为 Azure AD 条件访问策略中的设备平台条件。 通过将 macOS 添加到支持的设备平台，可以：
 
-- **使用 Intune 登记和管理 macOS 设备。** 类似于 iOS 和 Android 等其他平台，macOS 可通过公司门户应用程序执行统一注册。 可以使用适用于 macOS 的新公司门户应用，通过 Intune 登记设备并将其注册到 Azure AD。
-- **确保 macOS 设备符合组织在 Intune 中定义的符合性策略。** 可以在 Azure 门户上的 Intune 中设置 macOS 设备的符合性策略。 
-- **只允许符合条件的 macOS 设备访问 Azure AD 中的应用程序。** 条件访问策略创作将 macOS 用作单独的设备平台选项。 现在，可以针对 Azure 中设置的目标应用程序创作特定于 macOS 的条件访问策略。
+- **注册和使用 Intune 管理 macOS 设备。** 类似于 iOS 和 Android 等其他平台，macOS 可通过公司门户应用程序执行统一注册。 可以使用适用于 macOS 的新公司门户应用，通过 Intune 登记设备并将其注册到 Azure AD。
+- **请确保 macOS 设备符合组织的合规性策略在 Intune 中定义。** 可以在 Azure 门户上的 Intune 中设置 macOS 设备的符合性策略。 
+- **在仅限为符合条件的 macOS 设备的 Azure AD 中限制对应用程序的访问。** 条件访问策略创作将 macOS 用作单独的设备平台选项。 现在，可以针对 Azure 中设置的目标应用程序创作特定于 macOS 的条件访问策略。
 
 有关详细信息，请参阅：
 
 - [使用 Intune 创建适用于 macOS 设备的设备符合性策略](https://aka.ms/macoscompliancepolicy)
-- [Azure AD 中的条件访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
+- [Azure AD 中的条件性访问](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
  
 ---
 
@@ -1695,7 +1695,7 @@ Azure Active Directory 访问控制（也称作访问控制服务）将在 2018 
 - 还原已删除的用户。 
 - 永久删除用户。
 
-**试试看：**
+**若要进行试用：**
 
 1. 在 Azure AD 管理中心，选择“管理”部分中的“[所有用户](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/All)”。 
 
@@ -1807,7 +1807,7 @@ Azure 门户提供：
 - 基于用户属性（例如，动态组中的医生与护士或国内员工和国际员工）的具体使用条款
 - 有关访问业务影响性较高的应用（例如 Salesforce）的具体使用条款
 
-有关详细信息，请参阅 [Azure AD 使用条款](https://docs.microsoft.com/azure/active-directory/active-directory-tou)。
+有关详细信息，请参阅 [Azure AD 使用条款](https://docs.microsoft.com/azure/active-directory/conditional-access/terms-of-use)。
 
 ---
 
@@ -1857,7 +1857,7 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 有关详细信息，请参阅[在 Azure AD 的用户体验中隐藏第三方应用程序](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)。 
 
 
-**可用功能**
+**什么是可用？**
 
  在过渡到新管理控制台的过程中，开发了两个新 API 用于检索可用的 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险事件 API 来访问以前通过安全报告提供的数据。
 
