@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 2755064190e787baa31ea0da7c375365fa6c29b5
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 27ee1980fd60a2e301830f198a5f65c4d89df59f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56733327"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046523"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>使用 Azure PowerShell cmdlet 监视和管理流分析作业
 了解如何使用可执行基本流分析任务的 Azure PowerShell cmdlet 和 PowerShell 脚本来监视和管理流分析资源。
@@ -58,7 +58,7 @@ New-AzResourceGroup -Name <YOUR RESOURCE GROUP NAME> -Location <LOCATION>
 
 ## <a name="azure-powershell-cmdlets-for-stream-analytics"></a>适用于流分析的 Azure PowerShell cmdlet
 下面的 Azure PowerShell cmdlet 可用于监视和管理 Azure 流分析作业。 请注意，Azure PowerShell 具有不同版本。 
-**在所列示例中，第一个命令用于 Azure PowerShell 0.9.8，第二个命令用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令会在命令中始终包含“AzureRM”。
+**列出的示例在第一个命令是用于 Azure PowerShell 0.9.8，第二个命令适用于 Azure PowerShell 1.0。** Azure PowerShell 1.0 命令将在命令中始终包含"Az"。
 
 ### <a name="get-azurestreamanalyticsjob--get-azstreamanalyticsjob"></a>Get-AzureStreamAnalyticsJob | Get-AzStreamAnalyticsJob
 列出所有在 Azure 订阅或指定资源组中定义的流分析作业，或者获取有关某个资源组中特定作业的作业信息。
@@ -200,7 +200,7 @@ Get-AzStreamAnalyticsQuota –Location "Central US"
 
 此 PowerShell 命令返回有关美中地区配额和流式处理单位使用情况的信息。
 
-### <a name="get-azurestreamanalyticstransformation--getazurermstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | GetAzureRMStreamAnalyticsTransformation
+### <a name="get-azurestreamanalyticstransformation--get-azstreamanalyticstransformation"></a>Get-AzureStreamAnalyticsTransformation | Get-AzStreamAnalyticsTransformation
 获取在流分析作业中定义的特定转换的相关信息。
 
 **示例 1**
@@ -548,10 +548,10 @@ Test-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [开始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [缩放 Azure Stream Analytics 作业](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics 查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
 
 [msdn-switch-azuremode]: https://msdn.microsoft.com/library/dn722470.aspx
 [powershell-install]: https://azure.microsoft.com/documentation/articles/powershell-install-configure/

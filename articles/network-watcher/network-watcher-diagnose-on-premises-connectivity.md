@@ -14,18 +14,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: f5c4f8d2c9cec4372ef5de70485d45ab33e022de
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 323e5d63b5f8566d570dfd47323fcf12f7c6b28b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55099390"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051574"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>通过 VPN 网关诊断本地连接
 
 使用 Azure VPN 网关可以创建混合解决方案，解决在本地网络与 Azure 虚拟网络之间建立安全连接的需求。 每个人的要求都是独一无二的，选择的本地 VPN 设备也是如此。 Azure 目前支持[多种 VPN 设备](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)，我们正在持续与设备供应商合作验证这些设备。 在配置本地 VPN 设备之前，请查看特定于设备的配置设置。 同样，Azure VPN 网关中配置了一组[受支持的 IPsec 参数](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)用于建立连接。 目前无法在 Azure VPN 网关中指定或选择 IPsec 参数的特定组合。 若要在本地与 Azure 之间成功建立连接，本地 VPN 设备设置必须符合 Azure VPN 网关规定的 IPsec 参数。 如果设置正确，则会导致连接断开，而到目前为止，排查这些问题并非小事一桩，通常需要花费几个小时来识别和修复问题。
 
 使用 Azure 网络观察程序故障排除功能，可以诊断任何网关和连接问题，在几分钟内获得足够的信息，就如何解决问题做出明智的决策。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>场景
 
@@ -57,7 +60,7 @@ ms.locfileid: "55099390"
 
 ## <a name="troubleshooting-using-azure-network-watcher"></a>使用 Azure 网络观察程序进行故障排除
 
-若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet。 可以在 [Troubleshoot Virtual Network Gateway and connections - PowerShell](network-watcher-troubleshoot-manage-powershell.md)（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。
+若要诊断连接，请连接到 Azure PowerShell 并启动 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。 可以在 [Troubleshoot Virtual Network Gateway and connections - PowerShell](network-watcher-troubleshoot-manage-powershell.md)（排查虚拟网络网关和连接问题 - PowerShell）中找到有关使用此 cmdlet 的详细信息。 此 cmdlet 最长可能需要几分钟时间才能完成。
 
 完成该 cmdlet 后，可以导航到该 cmdlet 中指定的存储位置，获取有关问题和日志的详细信息。 Azure 网络观察程序创建包含以下日志文件的 zip 文件夹：
 
@@ -104,10 +107,10 @@ Error: On-premises device rejected Quick Mode settings. Check values.
 | ConnectionIsMarkedDisconnected | 连接标记为“断开连接”。 |否|
 | ConnectionNotConfiguredOnGateway | 未在底层服务上配置连接。 | 是 |
 | ConnectionMarkedStandby | 底层服务标记为备用。| 是|
-| 身份验证 | 预共享密钥不匹配。 | 是|
+| Authentication | 预共享密钥不匹配。 | 是|
 | PeerReachability | 无法访问对等网关。 | 是|
 | IkePolicyMismatch | 对等网关中的 IKE 策略不受 Azure 支持。 | 是|
-| WfpParse 错误 | 分析 WFP 日志时出错。 |是|
+| WfpParse Error | 分析 WFP 日志时出错。 |是|
 
 ## <a name="next-steps"></a>后续步骤
 

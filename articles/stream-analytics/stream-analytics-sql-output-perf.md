@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 3/18/2019
-ms.openlocfilehash: d259fd5fc8c60837c6b6110eb751360227d70836
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: d685b06b95af42f07449cc84e70220dd1a4afa9f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338422"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051778"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>从 Azure 流分析输出到 Azure SQL 数据库
 
@@ -29,7 +29,7 @@ Azure 流分析中的 SQL 输出支持使用并行写入作为一个选项。 �
 - **继承分区** – 使用此 SQL 输出配置选项可以继承先前查询步骤或输入的分区方案。 启用此选项后，写入到基于磁盘的表以及对作业使用[完全并行](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#embarrassingly-parallel-jobs)拓扑时，吞吐量预期会提高。 其他许多[输出](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#partitions-in-sources-and-sinks)已自动采用此分区。 使用此选项执行批量插入时，还会禁用表锁定 (TABLOCK)。
 
 > [!NOTE] 
-> 如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 包含单个标识列和聚集索引的表曾经达到过此上限。 根据架构和选择的索引，观察结果可能有所不同。
+> 如果输入分区超过 8 个，则继承输入分区方案可能不是适当的选择。 包含单个标识列和聚集索引的表曾经达到过此上限。 在这种情况下，请考虑使用[INTO](https://docs.microsoft.com/stream-analytics-query/into-azure-stream-analytics#into-shard-count) 8 在查询中，若要显式指定的输出编写器数。 根据架构和选择的索引，观察结果可能有所不同。
 
 - **批大小** - 使用 SQL 输出配置可以根据目标表/工作负荷的性质，在 Azure 流分析 SQL 输出中指定最大批大小。 批大小是随每个批量插入事务一起发送的最大记录数。 在聚集列存储索引中，批大小约为 [100K](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-data-loading-guidance)，这可以实现并行化、极简的日志记录和锁定优化。 在基于磁盘的表中，10K（默认值）或更小的值可能最适合解决方案，因为较大的批大小可能在批量插入期间触发锁升级。
 

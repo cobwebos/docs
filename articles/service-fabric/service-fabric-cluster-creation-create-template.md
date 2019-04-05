@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/16/2018
 ms.author: aljo
-ms.openlocfilehash: ddfd8ce14ca20c7094fa927aeafc36ae53271499
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 2fdea1f088dd6eabdf7d72342c837d976133a1bc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665502"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046168"
 ---
 # <a name="create-a-service-fabric-cluster-resource-manager-template"></a>创建 Service Fabric 群集 Resource Manager 模板
 
@@ -28,6 +28,9 @@ ms.locfileid: "58665502"
 群集安全性是在首次设置群集时配置的，以后无法更改。 在设置群集之前，请先阅读 [Service Fabric 群集安全性方案][service-fabric-cluster-security]。 在 Azure 中，Service Fabric 使用 x509 证书来保护群集及其终结点，对客户端进行身份验证以及对数据进行加密。 另外，还建议使用 Azure Active Directory 来保护对管理终结点的访问。 在创建群集之前，必须先创建 Azure AD 租户和用户。  有关详细信息，请阅读[设置 Azure AD 来对客户端进行身份验证](service-fabric-cluster-creation-setup-aad.md)。
 
 在部署生产群集来运行生产工作负荷之前，请务必首先阅读[生产就绪情况核对清单](service-fabric-production-readiness-checklist.md)。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-the-resource-manager-template"></a>创建 资源管理器模板
 [GitHub 上的 Azure 示例](https://github.com/Azure-Samples/service-fabric-cluster-templates)中提供了示例资源管理器模板。 这些模板可用作群集模板的起点。
@@ -242,13 +245,13 @@ ms.locfileid: "58665502"
 运行以下 PowerShell 命令，使用参数文件测试资源管理器模板：
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json
 ```
 
 如果遇到问题并收到含义模糊的消息，请使用“-Debug”作为选项。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
+Test-AzResourceGroupDeployment -ResourceGroupName "myresourcegroup" -TemplateFile .\azuredeploy.json -TemplateParameterFile .\azuredeploy.parameters.json -Debug
 ```
 
 下图演示密钥保管库和 Azure AD 配置在 Resource Manager 模板中的作用。

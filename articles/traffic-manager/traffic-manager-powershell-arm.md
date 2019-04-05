@@ -11,16 +11,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.openlocfilehash: 2b480df0100690a7a5064044d435a34845516fa6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57442097"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045741"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
 
 Azure Resource Manager 是 Azure 中的首选服务管理接口。 可以使用基于 Azure 资源管理器的 API 和工具来管理 Azure 流量管理器配置文件。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="resource-model"></a>资源模型
 
@@ -38,7 +40,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
-本文中的示例假设已有一个资源组。 可以使用以下命令创建资源组：
+本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
 
 ```powershell
 New-AzResourceGroup -Name MyRG -Location "West US"
@@ -253,10 +255,10 @@ Set-AzTrafficManagerEndpoint -TrafficManagerEndpoint $endpoint
 
 ### <a name="example-1-enabling-and-disabling-a-traffic-manager-profile"></a>示例 1：启用和禁用流量管理器配置文件
 
-若要启用流量管理器配置文件，请使用 `Enable-AzureRmTrafficManagerProfile`。 可以使用配置文件对象指定该配置文件。 配置文件对象可以通过管道或使用“TrafficManagerProfile”参数传递。 在本示例中，我们通过配置文件和资源组名称指定配置文件。
+若要启用流量管理器配置文件，请使用 `Enable-AzTrafficManagerProfile`。 可以使用配置文件对象指定该配置文件。 配置文件对象可以通过管道或使用“TrafficManagerProfile”参数传递。 在本示例中，我们通过配置文件和资源组名称指定配置文件。
 
 ```powershell
-Enable-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
+Enable-AzTrafficManagerProfile -Name MyProfile -ResourceGroupName MyResourceGroup
 ```
 
 若要禁用流量管理器配置文件：
@@ -269,13 +271,13 @@ Disable-AzTrafficManagerProfile cmdlet 提示进行确认。 可以使用“-For
 
 ### <a name="example-2-enabling-and-disabling-a-traffic-manager-endpoint"></a>示例 2：启用和禁用流量管理器终结点
 
-若要启用流量管理器终结点，请使用 `Enable-AzureRmTrafficManagerEndpoint`。 有两种方法可以指定终结点
+若要启用流量管理器终结点，请使用 `Enable-AzTrafficManagerEndpoint`。 有两种方法可以指定终结点
 
 1. 使用通过管道或使用“-TrafficManagerEndpoint”参数传递的 TrafficManagerEndpoint object 对象
 2. 使用终结点名称、终结点类型、配置文件名称和资源组名称：
 
 ```powershell
-Enable-AzureRmTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
+Enable-AzTrafficManagerEndpoint -Name MyEndpoint -Type AzureEndpoints -ProfileName MyProfile -ResourceGroupName MyRG
 ```
 
 同样，若要禁用流量管理器终结点，请执行以下操作：

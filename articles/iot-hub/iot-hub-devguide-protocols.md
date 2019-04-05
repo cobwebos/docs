@@ -3,17 +3,17 @@ title: Azure IoT 中心通信协议和端口 | Microsoft Docs
 description: 开发人员指南 - 介绍了设备到云和云到设备通信支持的通信协议和必须打开的端口号。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
-ms.openlocfilehash: f6c39765c9133c9bf295d4225c332fda1140a13b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 7082ebc4ca3066f84ca9790797cfa04e437f78a3
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532675"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051049"
 ---
 # <a name="reference---choose-a-communication-protocol"></a>参考 - 选择通信协议
 

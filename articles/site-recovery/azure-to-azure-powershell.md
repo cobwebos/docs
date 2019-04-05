@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: 64b14f66e05c42581fcce6eb9879fa72d7f0d6f8
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 997b358a6daf2f5450c38fcbe484a584d06bf5c4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652070"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049052"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>使用 Azure PowerShell 为 Azure 虚拟机设置灾难恢复
 
@@ -36,24 +36,27 @@ ms.locfileid: "58652070"
 > 并非所有可以通过门户使用的方案功能都能通过 Azure PowerShell 使用。 目前不支持通过 Azure PowerShell 使用的部分方案功能包括：
 > - 在无需显式指定虚拟机每个磁盘的情况下指定要复制虚拟机中所有磁盘的功能。  
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>必备组件
 
 开始之前：
 - 请确保了解[方案体系结构和组件](azure-to-azure-architecture.md)。
 - 查看所有组件的[支持要求](azure-to-azure-support-matrix.md)。
-- 拥有 5.7.0 或更高版本的 AzureRm PowerShell 模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/azureps-cmdlets-docs)。
+- 已将 Azure PowerShell`Az`模块。 如需进安装或升级 Azure PowerShell，请遵循此[安装和配置 Azure PowerShell 指南](/powershell/install-az-ps)。
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>登录到 Microsoft Azure 订阅
 
-使用 Connect-AzureRmAccount cmdlet 登录到 Azure 订阅
+登录到 Azure 订阅使用 Connect AzAccount cmdlet
 
 ```azurepowershell
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
-选择 Azure 订阅。 使用 Get-azurermsubscription cmdlet 获取你有权访问的 Azure 订阅的列表。 使用 Select-AzureRmSubscription cmdlet 选择要处理的 Azure 订阅。
+选择 Azure 订阅。 使用 Get AzSubscription cmdlet 有权访问的有 Azure 订阅的列表。 选择要与选择 AzSubscription cmdlet 配合使用的 Azure 订阅。
 
 ```azurepowershell
-Select-AzureRmSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Select-AzSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 ## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>获取要复制的虚拟机的详细信息
@@ -62,7 +65,7 @@ Select-AzureRmSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 
 ```azurepowershell
 # Get details of the virtual machine
-$VM = Get-AzureRmVM -ResourceGroupName "A2AdemoRG" -Name "AzureDemoVM"
+$VM = Get-AzVM -ResourceGroupName "A2AdemoRG" -Name "AzureDemoVM"
 
 Write-Output $VM     
 ```
@@ -103,7 +106,7 @@ $DataDisk1VhdURI = $VM.StorageProfile.DataDisks[0].Vhd
 
 ```azurepowershell
 #Create a resource group for the recovery services vault in the recovery Azure region
-New-AzureRmResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+New-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 ```
 ```
 ResourceGroupName : a2ademorecoveryrg
@@ -117,7 +120,7 @@ ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resource
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
-$vault = New-AzureRmRecoveryServicesVault -Name "a2aDemoRecoveryVault" -ResourceGroupName "a2ademorecoveryrg" -Location "West US 2"
+$vault = New-AzRecoveryServicesVault -Name "a2aDemoRecoveryVault" -ResourceGroupName "a2ademorecoveryrg" -Location "West US 2"
 
 Write-Output $vault
 ```
@@ -133,7 +136,7 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ## <a name="set-the-vault-context"></a>设置保管库上下文
 
 > [!TIP]
-> Azure Site Recovery PowerShell 模块（AzureRm.RecoveryServices.SiteRecovery 模块）包含大多数 cmdlet 的易用别名。 模块中的 cmdlet 采用 *\<Operation>-**AzureRmRecoveryServicesAsr**\<Object>* 形式，并具有采用 *\<Operation>-**ASR**\<Object>* 形式的等效别名。 本文使用 cmdlet 别名以便阅读。
+> Azure Site Recovery PowerShell 模块 （Az.RecoveryServices 模块） 附带了易于使用的大多数 cmdlet 的别名。 模块中的 cmdlet 采用*\<操作 >-**AzRecoveryServicesAsr**\<对象 >* 并具有采用以下形式的等效别名 *\<操作 >-**ASR**\<对象 >*。 本文使用 cmdlet 别名以便阅读。
 
 设置 PowerShell 会话中使用的保管库上下文。 为此，请下载保管库设置文件，并将下载的文件导入 PowerShell 会话以设置保管库上下文。
 
@@ -141,10 +144,10 @@ Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 
  ```azurepowershell
 #Download the vault settings file for the vault.
-$Vaultsettingsfile = Get-AzureRmRecoveryServicesVaultSettingsFile -Vault $vault -SiteRecovery -Path C:\users\user\Documents\
+$Vaultsettingsfile = Get-AzRecoveryServicesVaultSettingsFile -Vault $vault -SiteRecovery -Path C:\users\user\Documents\
 
 #Import the downloaded vault settings file to set the vault context for the PowerShell session.
-Import-AzureRmRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.FilePath
+Import-AzRecoveryServicesAsrVaultSettingsFile -Path $Vaultsettingsfile.FilePath
 
 ```
 ```
@@ -214,7 +217,7 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```azurepowershell
 #Create a Protection container in the primary Azure region (within the Primary fabric)
-$TempASRJob = New-AzureRmRecoveryServicesAsrProtectionContainer -InputObject $PrimaryFabric -Name "A2AEastUSProtectionContainer"
+$TempASRJob = New-AzRecoveryServicesAsrProtectionContainer -InputObject $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
@@ -230,7 +233,7 @@ $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name 
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
-$TempASRJob = New-AzureRmRecoveryServicesAsrProtectionContainer -InputObject $RecoveryFabric -Name "A2AWestUSProtectionContainer"
+$TempASRJob = New-AzRecoveryServicesAsrProtectionContainer -InputObject $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
@@ -306,14 +309,14 @@ Write-Output $TempASRJob.State
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
-$EastUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
+$EastUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestorage" -ResourceGroupName "A2AdemoRG" -Location 'East US' -SkuName Standard_LRS -Kind Storage
 ```
 
 对于**不使用托管磁盘**的虚拟机，目标存储帐户是虚拟机磁盘复制到的恢复区域中的存储帐户。 目标存储帐户可以是标准存储帐户，也可以是高级存储帐户。 根据磁盘的数据更改率（IO 写入率）以及 Azure Site Recovery 对存储类型支持的变动限制，来选择所需的存储帐户类型。
 
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
-$WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -SkuName Standard_LRS -Kind Storage
+$WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -SkuName Standard_LRS -Kind Storage
 
 ```
 
@@ -325,9 +328,9 @@ $WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage"
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
-    $WestUSRecoveryVnet = New-AzureRmVirtualNetwork -Name "a2arecoveryvnet" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -AddressPrefix "10.0.0.0/16"
+    $WestUSRecoveryVnet = New-AzVirtualNetwork -Name "a2arecoveryvnet" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -AddressPrefix "10.0.0.0/16"
 
-    Add-AzureRmVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $WestUSRecoveryVnet -AddressPrefix "10.0.0.0/20" | Set-AzureRmVirtualNetwork
+    Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $WestUSRecoveryVnet -AddressPrefix "10.0.0.0/20" | Set-AzVirtualNetwork
 
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
@@ -345,7 +348,7 @@ $WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage"
     $NICname = $SplitNicArmId[-1]
 
     #Get network interface details using the extracted resource group name and resource name
-    $NIC = Get-AzureRmNetworkInterface -ResourceGroupName $NICRG -Name $NICname
+    $NIC = Get-AzNetworkInterface -ResourceGroupName $NICRG -Name $NICname
 
     #Get the subnet ID of the subnet that the nic is connected to
     $PrimarySubnet = $NIC.IpConfigurations[0].Subnet
@@ -390,7 +393,7 @@ $WestUSTargetStorageAccount = New-AzureRmStorageAccount -Name "a2atargetstorage"
 ```azurepowershell
 
 #Get the resource group that the virtual machine must be created in when failed over.
-$RecoveryRG = Get-AzureRmResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+$RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
 
@@ -399,7 +402,7 @@ $OSdiskId =  $vm.StorageProfile.OsDisk.ManagedDisk.Id
 $RecoveryOSDiskAccountType = $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 $RecoveryReplicaDiskAccountType =  $vm.StorageProfile.OsDisk.ManagedDisk.StorageAccountType
 
-$OSDiskReplicationConfig = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $EastUSCacheStorageAccount.Id `
          -DiskId $OSdiskId -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryOSDiskAccountType
 
@@ -408,7 +411,7 @@ $datadiskId1  = $vm.StorageProfile.DataDisks[0].ManagedDisk.id
 $RecoveryReplicaDiskAccountType =  $vm.StorageProfile.DataDisks[0]. StorageAccountType
 $RecoveryTargetDiskAccountType = $vm.StorageProfile.DataDisks[0]. StorageAccountType
 
-$DataDisk1ReplicationConfig  = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id `
+$DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -ManagedDisk -LogStorageAccountId $CacheStorageAccount.Id `
          -DiskId $datadiskId1 -RecoveryResourceGroupId  $RecoveryRG.ResourceId -RecoveryReplicaDiskAccountType  $RecoveryReplicaDiskAccountType `
          -RecoveryTargetDiskAccountType $RecoveryTargetDiskAccountType
 
@@ -428,17 +431,17 @@ $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -N
 #Specify replication properties for each disk of the VM that is to be replicated (create disk replication configuration)
 
 #Disk replication configuration for the OS disk
-$OSDiskReplicationConfig = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri $OSDiskVhdURI.Uri -LogStorageAccountId $EastUSCacheStorageAccount.Id -RecoveryAzureStorageAccountId $WestUSTargetStorageAccount.Id
+$OSDiskReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri $OSDiskVhdURI.Uri -LogStorageAccountId $EastUSCacheStorageAccount.Id -RecoveryAzureStorageAccountId $WestUSTargetStorageAccount.Id
 
 #Disk replication configuration for data disk
-$DataDisk1ReplicationConfig = New-AzureRmRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri $DataDisk1VhdURI.Uri -LogStorageAccountId $EastUSCacheStorageAccount.Id -RecoveryAzureStorageAccountId $WestUSTargetStorageAccount.Id
+$DataDisk1ReplicationConfig = New-AzRecoveryServicesAsrAzureToAzureDiskReplicationConfig -VhdUri $DataDisk1VhdURI.Uri -LogStorageAccountId $EastUSCacheStorageAccount.Id -RecoveryAzureStorageAccountId $WestUSTargetStorageAccount.Id
 
 #Create a list of disk replication configuration objects for the disks of the virtual machine that are to be replicated.
 $diskconfigs = @()
 $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
 #Get the resource group that the virtual machine must be created in when failed over.
-$RecoveryRG = Get-AzureRmResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
+$RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.  
 $TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
@@ -476,9 +479,9 @@ AzureDemoVM  Protected       Normal
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
-$TFOVnet = New-AzureRmVirtualNetwork -Name "a2aTFOvnet" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -AddressPrefix "10.3.0.0/16"
+$TFOVnet = New-AzVirtualNetwork -Name "a2aTFOvnet" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -AddressPrefix "10.3.0.0/16"
 
-Add-AzureRmVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $TFOVnet -AddressPrefix "10.3.0.0/20" | Set-AzureRmVirtualNetwork
+Add-AzVirtualNetworkSubnetConfig -Name "default" -VirtualNetwork $TFOVnet -AddressPrefix "10.3.0.0/20" | Set-AzVirtualNetwork
 
 $TFONetwork= $TFOVnet.Id
 ```
@@ -590,20 +593,20 @@ Errors           : {}
 
 ## <a name="reprotect-and-failback-to-source-region"></a>重新保护和故障回复到源区域
 
-故障转移后，准备好恢复到原始区域时，请使用 Update-AzureRmRecoveryServicesAsrProtectionDirection cmdlet 对复制保护项启动反向复制。
+故障转移后，当准备好返回到原始区域，开始使用更新 AzRecoveryServicesAsrProtectionDirection cmdlet 复制保护项的反向复制。
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
-$WestUSCacheStorageAccount = New-AzureRmStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
+$WestUSCacheStorageAccount = New-AzStorageAccount -Name "a2acachestoragewestus" -ResourceGroupName "A2AdemoRG" -Location 'West US' -SkuName Standard_LRS -Kind Storage
 ```
 
 ```azurepowershell
 #Use the recovery protection container, new cache storage accountin West US and the source region VM resource group
-Update-AzureRmRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
+Update-AzRecoveryServicesAsrProtectionDirection -ReplicationProtectedItem $ReplicationProtectedItem -AzureToAzure
 -ProtectionContainerMapping $RecoveryProtContainer -LogStorageAccountId $WestUSCacheStorageAccount.Id -RecoveryResourceGroupID $sourceVMResourcegroup.Id
 ```
 
 重新保护完成后，可以启动反方向 （到美国东部的美国西部） 和故障回复到源区域中的故障转移。
 
 ## <a name="next-steps"></a>后续步骤
-视图[Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/AzureRM.RecoveryServices.SiteRecovery)若要了解如何执行其他任务，如创建恢复计划和测试通过 PowerShell 恢复计划的故障转移。
+视图[Azure Site Recovery PowerShell 参考](https://docs.microsoft.com/powershell/module/az.RecoveryServices)若要了解如何执行其他任务，如创建恢复计划和测试通过 PowerShell 恢复计划的故障转移。

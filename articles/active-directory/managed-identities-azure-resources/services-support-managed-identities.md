@@ -10,12 +10,12 @@ ms.service: active-directory
 ms.subservice: msi
 manager: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5592ee7f3c4b5f55785100ceff09659aa437cb6
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d524f5f58e7381dd89f36c5d2821e6911ed9ec15
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578571"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045451"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>支持 Azure 资源托管标识的服务
 
@@ -122,7 +122,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 - [Azure 门户](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity)
 - [PowerShell](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-powershell)
 - [REST](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-rest-api)
-- [SDK](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
+- [SDK 中 IsInRole 中的声明](~/articles/data-factory/data-factory-service-identity.md#generate-managed-identity-using-sdk)
 
 ### <a name="azure-api-management"></a>Azure API 管理
 
@@ -177,7 +177,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure 德国 |  `https://vault.microsoftazure.de` | 可用 |
 | Azure 中国世纪互联 | `https://vault.azure.cn` | 可用 |
 
-## <a name="azure-data-lake"></a>Azure Data Lake 
+### <a name="azure-data-lake"></a>Azure Data Lake 
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
@@ -186,7 +186,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 
-## <a name="azure-sql"></a>Azure SQL 
+### <a name="azure-sql"></a>Azure SQL 
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
@@ -195,7 +195,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure 德国 | `https://database.cloudapi.de/` | 可用 |
 | Azure 中国世纪互联 | `https://database.chinacloudapi.cn/` | 可用 |
 
-## <a name="azure-event-hubs"></a>Azure 事件中心
+### <a name="azure-event-hubs"></a>Azure 事件中心
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
@@ -204,7 +204,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 
-## <a name="azure-service-bus"></a>Azure 服务总线
+### <a name="azure-service-bus"></a>Azure 服务总线
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|
@@ -213,7 +213,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | Azure 德国 |   | 不可用 |
 | Azure 中国世纪互联 |  | 不可用 |
 
-## <a name="azure-storage"></a>Azure 存储
+### <a name="azure-storage"></a>Azure 存储
 
 | 云 | 资源 ID | 状态 |
 |--------|------------|--------|

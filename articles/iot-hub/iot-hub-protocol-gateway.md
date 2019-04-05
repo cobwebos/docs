@@ -3,17 +3,17 @@ title: Azure IoT 协议网关 | Microsoft Docs
 description: 如何使用 Azure IoT 协议网关扩展 IoT 中心功能及协议支持，使设备利用不由 IoT 中心本机支持的协议即可连接到该中心。
 author: robinsh
 manager: philmea
-ms.author: robin.shahan
+ms.author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.openlocfilehash: 91d61ffecc0e5345d02db88af73aee4586f7099e
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.openlocfilehash: ecce53420a92713ad2dcfcc7e0fed9fc226b1d52
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009845"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046421"
 ---
 # <a name="support-additional-protocols-for-iot-hub"></a>支持 IoT 中心的其他协议
 Azure IoT 中心通过 MQTT、AMQP 和 HTTPS 协议以本机方式支持通信。 在某些情况下，设备或现场网关可能无法使用其中一个标准协议，并需要协议适配。 在这种情况下，可以使用自定义网关。 自定义网关通过桥接进出 IoT 中心的流量，为 IoT 中心终结点启用协议适配。 可以使用 [Azure IoT 协议网关](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)作为自定义网关，来为 IoT 中心启用协议自适应。
@@ -32,7 +32,7 @@ MQTT 适配器还会演示用来为其他协议构建协议适配器的编程模
 ## <a name="next-steps"></a>后续步骤
 要了解有关 Azure IoT 协议网关的详细信息以及如何使用并将其部署为 IoT 解决方案的一部分，请参阅：
 
-* [GitHub 上的 Azure IoT 协议网关存储库](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
+* [Azure IoT 协议网关存储库在 GitHub 上](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/README.md)
 * [Azure IoT 协议网关开发人员指南](https://github.com/Azure/azure-iot-protocol-gateway/blob/master/docs/DeveloperGuide.md)
 
 若要深入了解如何规划 IoT 中心部署，请参阅：

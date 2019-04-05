@@ -6,12 +6,12 @@ ms.author: stbaron
 ms.topic: conceptual
 ms.service: service-health
 ms.date: 9/4/2018
-ms.openlocfilehash: de5419bbfa5a364cb570651fd4d57d7560e4aafd
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: afa89fc90552c7ccba1fcea0945ee223d0096be4
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663428"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047511"
 ---
 # <a name="configure-resource-health-alerts-using-resource-manager-templates"></a>使用资源管理器模板创建资源运行状况警报
 
@@ -22,30 +22,32 @@ ms.locfileid: "58663428"
 > [!NOTE]
 > 资源运行状况警报目前处于预览状态。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="prerequisites"></a>必备组件
 
 若要按本页中的说明操作，需事先进行几项设置：
 
-1. 安装 [Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps) (`AzureRm`)
+1. 你需要安装[Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)
 2. [创建或重新使用](../azure-monitor/platform/action-groups.md)配置为向你发出通知的操作组
 
 ## <a name="instructions"></a>说明
 1. 使用 PowerShell，使用你的帐户登录到 Azure，并选择需与之交互的订阅
 
-        Login-AzureRmAccount
-        Select-AzureRmSubscription -Subscription <subscriptionId>
+        Login-AzAccount
+        Select-AzSubscription -Subscription <subscriptionId>
 
-    > 可以使用 `Get-AzureRmSubscription` 列出有权访问的订阅。
+    > 可以使用 `Get-AzSubscription` 列出有权访问的订阅。
 
 2. 查找并保存操作组的完整 Azure 资源管理器 ID
 
-        (Get-AzureRmActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
+        (Get-AzActionGroup -ResourceGroupName <resourceGroup> -Name <actionGroup>).Id
 
 3. 创建资源运行状况警报的资源管理器模板，并保存为 `resourcehealthalert.json`（[请参阅下面的详细信息](#resource-manager-template-for-resource-health-alerts)）
 
 4. 使用该模板创建一个新的 Azure 资源管理器部署
 
-        New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
+        New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <resourceGroup> -TemplateFile <path\to\resourcehealthalert.json>
 
 5. 系统将提示你键入之前复制的警报名称和操作组资源 ID：
 

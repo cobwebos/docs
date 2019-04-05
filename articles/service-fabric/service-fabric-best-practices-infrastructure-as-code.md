@@ -14,18 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
-ms.openlocfilehash: 2a4c3adb39ebf6e58770348eccc8c78e8ff92167
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804461"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049614"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
 
 在生产方案中，使用资源管理器模板创建 Azure Service Fabric 群集。 资源管理器模板可以更好地控制资源属性，并确保你具有一致的资源模型。
 
 [GitHub 上的 Azure 示例](https://github.com/Azure-Samples/service-fabric-cluster-templates)中提供了适用于 Windows 和 Linux 的示例资源管理器模板。 这些模板可用作群集模板的起点。 下载 `azuredeploy.json` 和 `azuredeploy.parameters.json` 并编辑它们以满足你的自定义要求。
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 若要部署你在上面下载的 `azuredeploy.json` 和 `azuredeploy.parameters.json` 模板，请使用以下 Azure CLI 命令：
 
@@ -45,8 +47,8 @@ $Location="westus"
 $Template="azuredeploy.json"
 $Parameters="azuredeploy.parameters.json"
 
-New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
-New-AzureRmResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
+New-AzResourceGroup -Name $ResourceGroupName -Location $Location
+New-AzResourceGroupDeployment -Name $ResourceGroupName -TemplateFile $Template -TemplateParameterFile $Parameters
 ```
 
 ## <a name="azure-service-fabric-resources"></a>Azure Service Fabric 资源

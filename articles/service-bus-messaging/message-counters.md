@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 43689ec92fe20e61fdfd7a145d3028a3b1ee956d
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: adfd8c5849cfee69805715378a3f56ec9f685b00
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848085"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050741"
 ---
 # <a name="message-counters"></a>消息计数器
 
 可以在 .NET Framework SDK 中使用 Azure 资源管理器和服务总线 [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 来检索队列和订阅中含有的消息计数。
 
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 借助 PowerShell，可以按如下所示获取计数：
 
 ```powershell
-(Get-AzureRmServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
+(Get-AzServiceBusQueue -ResourceGroup mygrp -NamespaceName myns -QueueName myqueue).CountDetails
 ```
 
 ## <a name="message-count-details"></a>消息计数详细信息

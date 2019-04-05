@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 01efbd928630b491419f6231007590c4f0fb0b22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 267b2c375ef9672c8e5bd7cb8280b4dd40dbcd0d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888479"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045537"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>在 PowerShell 中使用 Azure 网络观察程序管理数据包捕获
 
@@ -38,6 +38,9 @@ ms.locfileid: "57888479"
 - [**删除数据包捕获**](#delete-a-packet-capture)
 - [**下载数据包捕获**](#download-a-packet-capture)
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有以下资源：
@@ -54,33 +57,33 @@ ms.locfileid: "57888479"
 ### <a name="step-1"></a>步骤 1
 
 ```powershell
-$VM = Get-AzureRmVM -ResourceGroupName testrg -Name VM1
+$VM = Get-AzVM -ResourceGroupName testrg -Name VM1
 ```
 
 ### <a name="step-2"></a>步骤 2
 
-以下示例检索运行 `Set-AzureRmVMExtension` cmdlet 所需的扩展信息。 此 cmdlet 在来宾虚拟机上安装数据包捕获代理。
+以下示例检索运行 `Set-AzVMExtension` cmdlet 所需的扩展信息。 此 cmdlet 在来宾虚拟机上安装数据包捕获代理。
 
 > [!NOTE]
-> `Set-AzureRmVMExtension` cmdlet 可能需要几分钟才能完成。
+> `Set-AzVMExtension` cmdlet 可能需要几分钟才能完成。
 
 对于 Windows 虚拟机：
 
 ```powershell
-$AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
+$AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentWindows -Version 1.4.585.2
 $ExtensionName = "AzureNetworkWatcherExtension"
-Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
+Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
 对于 Linux 虚拟机：
 
 ```powershell
-$AzureNetworkWatcherExtension = Get-AzureRmVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
+$AzureNetworkWatcherExtension = Get-AzVMExtensionImage -Location WestCentralUS -PublisherName Microsoft.Azure.NetworkWatcher -Type NetworkWatcherAgentLinux -Version 1.4.13.0
 $ExtensionName = "AzureNetworkWatcherExtension"
-Set-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
+Set-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -Location $VM.Location -VMName $VM.Name -Name $ExtensionName -Publisher $AzureNetworkWatcherExtension.PublisherName -ExtensionType $AzureNetworkWatcherExtension.Type -TypeHandlerVersion $AzureNetworkWatcherExtension.Version.Substring(0,3)
 ```
 
-以下示例是运行 `Set-AzureRmVMExtension` cmdlet 后的成功响应。
+以下示例是运行 `Set-AzVMExtension` cmdlet 后的成功响应。
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -90,13 +93,13 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 
 ### <a name="step-3"></a>步骤 3
 
-为了确保安装代理，请运行 `Get-AzureRmVMExtension` cmdlet 并向其传递虚拟机名称和扩展名称。
+为了确保安装代理，请运行 `Get-AzVMExtension` cmdlet 并向其传递虚拟机名称和扩展名称。
 
 ```powershell
-Get-AzureRmVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
+Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-以下示例是运行 `Get-AzureRmVMExtension` 后的响应示例
+下面的示例是运行响应的示例 `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -124,11 +127,11 @@ ForceUpdateTag          :
 
 ### <a name="step-1"></a>步骤 1
 
-下一步是检索网络观察程序实例。 将此变量传递给步骤 4 中的 `New-AzureRmNetworkWatcherPacketCapture` cmdlet。
+下一步是检索网络观察程序实例。 将此变量传递给步骤 4 中的 `New-AzNetworkWatcherPacketCapture` cmdlet。
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" }
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName  
 ```
 
 ### <a name="step-2"></a>步骤 2
@@ -136,7 +139,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 检索存储帐户。 此存储帐户用于存储数据包捕获文件。
 
 ```powershell
-$storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name testrgsa123
+$storageAccount = Get-AzStorageAccount -ResourceGroupName testrg -Name testrgsa123
 ```
 
 ### <a name="step-3"></a>步骤 3
@@ -144,8 +147,8 @@ $storageAccount = Get-AzureRmStorageAccount -ResourceGroupName testrg -Name test
 可以使用筛选器来限制数据包捕获存储的数据。 以下示例设置两个筛选器。  第一个筛选器仅收集从本地 IP 10.0.0.3 发往目标端口 20、80 和 443 的传出 TCP 流量。  第二个筛选器仅收集 UDP 流量。
 
 ```powershell
-$filter1 = New-AzureRmPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
-$filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
+$filter1 = New-AzPacketCaptureFilterConfig -Protocol TCP -RemoteIPAddress "1.1.1.1-255.255.255.255" -LocalIPAddress "10.0.0.3" -LocalPort "1-65535" -RemotePort "20;80;443"
+$filter2 = New-AzPacketCaptureFilterConfig -Protocol UDP
 ```
 
 > [!NOTE]
@@ -153,13 +156,13 @@ $filter2 = New-AzureRmPacketCaptureFilterConfig -Protocol UDP
 
 ### <a name="step-4"></a>步骤 4
 
-运行 `New-AzureRmNetworkWatcherPacketCapture` cmdlet 并传递在上一步骤中检索的所需值，启动数据包捕获过程。
+运行 `New-AzNetworkWatcherPacketCapture` cmdlet 并传递在上一步骤中检索的所需值，启动数据包捕获过程。
 ```powershell
 
-New-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
+New-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -TargetVirtualMachineId $vm.Id -PacketCaptureName "PacketCaptureTest" -StorageAccountId $storageAccount.id -TimeLimitInSeconds 60 -Filter $filter1, $filter2
 ```
 
-以下示例是运行 `New-AzureRmNetworkWatcherPacketCapture` cmdlet 后的预期输出。
+以下示例是运行 `New-AzNetworkWatcherPacketCapture` cmdlet 后的预期输出。
 
 ```
 Name                    : PacketCaptureTest
@@ -199,13 +202,13 @@ Filters                 : [
 
 ## <a name="get-a-packet-capture"></a>获取数据包捕获
 
-运行 `Get-AzureRmNetworkWatcherPacketCapture` cmdlet，检索当前正在运行的或已完成的数据包捕获的状态。
+运行 `Get-AzNetworkWatcherPacketCapture` cmdlet，检索当前正在运行的或已完成的数据包捕获的状态。
 
 ```powershell
-Get-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Get-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
-以下示例是 `Get-AzureRmNetworkWatcherPacketCapture` cmdlet 的输出。 以下示例是捕获完成后的输出结果。 PacketCaptureStatus 值为“已停止”，StopReason 为 TimeExceeded。 此值显示数据包捕获已成功完成，并已运行了限定的时间。
+以下示例是 `Get-AzNetworkWatcherPacketCapture` cmdlet 的输出。 以下示例是捕获完成后的输出结果。 PacketCaptureStatus 值为“已停止”，StopReason 为 TimeExceeded。 此值显示数据包捕获已成功完成，并已运行了限定的时间。
 ```
 Name                    : PacketCaptureTest
 Id                      : /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/NetworkWatcherRG/providers/Microsoft.Network/networkWatcher
@@ -246,10 +249,10 @@ PacketCaptureError      : []
 
 ## <a name="stop-a-packet-capture"></a>停止数据包捕获
 
-运行 `Stop-AzureRmNetworkWatcherPacketCapture` cmdlet 后，如果捕获会话正在进行，它将停止。
+运行 `Stop-AzNetworkWatcherPacketCapture` cmdlet 后，如果捕获会话正在进行，它将停止。
 
 ```powershell
-Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Stop-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]
@@ -258,7 +261,7 @@ Stop-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketC
 ## <a name="delete-a-packet-capture"></a>删除数据包捕获
 
 ```powershell
-Remove-AzureRmNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
+Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCaptureName "PacketCaptureTest"
 ```
 
 > [!NOTE]

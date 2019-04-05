@@ -14,23 +14,24 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: d800d2a9c4eced2fa347658ecbb5b7a97031d997
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 6ee3e2b452dedbf791bdc05bbc81b07531e1f075
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838691"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049307"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>从 Azure 市场部署虚拟机
 
 本文介绍如何使用提供的 Azure PowerShell 脚本从 Azure 市场部署预配置的虚拟机 (VM)。  此脚本还公开 VM 上的 WinRM HTTP 和 HTTPS 终结点。  它需要你已按照[创建 Azure Key Vault 证书](./cpp-create-key-vault-cert.md)中所述，将证书上传到了 Azure Key Vault。 
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="vm-deployment-template"></a>VM 部署模板
 
 Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) 形式提供。  它包含以下参数：
 
-|  **Parameter**        |   **说明**                                 |
+|  **参数**        |   **描述**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName | 存储帐户的名称                       |
 | dnsNameForPublicIP    | 公共 IP 的 DNS 名称。 必须为小写。    |
@@ -43,7 +44,7 @@ Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://r
 | vmName                | VM 的名称                                    |
 | vaultName             | 密钥保管库的名称                             |
 | vaultResourceGroup    | 密钥保管库的资源组                   |
-| certificateUrl        | 证书的 URL，包括KeyVault 中的版本，例如：`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| certificateUrl        | 对于证书，例如在密钥保管库，包括版本 URL  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 
@@ -53,7 +54,7 @@ Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://r
 
 ```powershell
 
-New-AzureRmResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName" -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json" -newStorageAccountName "test$postfix" -dnsNameForPublicIP $vmName -adminUserName "isv" -adminPassword $pwd -vmSize "Standard_A2" -vmName $vmName -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id 
+New-AzResourceGroupDeployment -Name "dplvm$postfix" -ResourceGroupName "$rgName" -TemplateUri "https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json" -newStorageAccountName "test$postfix" -dnsNameForPublicIP $vmName -adminUserName "isv" -adminPassword $pwd -vmSize "Standard_A2" -vmName $vmName -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id 
 
 ```
 

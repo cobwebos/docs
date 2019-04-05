@@ -13,18 +13,21 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: jdial
-ms.openlocfilehash: dd4622e0359476f47a0ac939d59a2571e34a0a46
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: cddf6526a798195e3e3091af766fee28791ac522
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112693"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050573"
 ---
 # <a name="read-nsg-flow-logs"></a>读取 NSG 流日志
 
 了解如何使用 PowerShell 读取 NSG 流日志条目。
 
 NSG 流日志存储于[块 blob](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) 中的存储帐户中。 块 blob 由一些更小的块组成。 每个日志是每个一小时生成的单独块 blob。 每隔一小时会生成新的日志，每隔几分钟会以包含最新数据的新条目来更新日志。 本文介绍如何读取部分流日志。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="scenario"></a>场景
 
@@ -53,10 +56,10 @@ function Get-NSGFlowLogCloudBlockBlob {
 
     process {
         # Retrieve the primary storage account key to access the NSG logs
-        $StorageAccountKey = (Get-AzureRmStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
+        $StorageAccountKey = (Get-AzStorageAccountKey -ResourceGroupName $storageAccountResourceGroup -Name $storageAccountName).Value[0]
 
         # Setup a new storage context to be used to query the logs
-        $ctx = New-AzureStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
+        $ctx = New-AzStorageContext -StorageAccountName $StorageAccountName -StorageAccountKey $StorageAccountKey
 
         # Container name used by NSG flow logs
         $ContainerName = "insights-logs-networksecuritygroupflowevent"
@@ -65,7 +68,7 @@ function Get-NSGFlowLogCloudBlockBlob {
         $BlobName = "resourceId=/SUBSCRIPTIONS/${subscriptionId}/RESOURCEGROUPS/${NSGResourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/NETWORKSECURITYGROUPS/${NSGName}/y=$($logTime.Year)/m=$(($logTime).ToString("MM"))/d=$(($logTime).ToString("dd"))/h=$(($logTime).ToString("HH"))/m=00/macAddress=$($macAddress)/PT1H.json"
 
         # Gets the storage blog
-        $Blob = Get-AzureStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
+        $Blob = Get-AzStorageBlob -Context $ctx -Container $ContainerName -Blob $BlobName
 
         # Gets the block blog of type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from the storage blob
         $CloudBlockBlob = [Microsoft.WindowsAzure.Storage.Blob.CloudBlockBlob] $Blob.ICloudBlob

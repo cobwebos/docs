@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 01/18/2019
 ms.author: borisb
-ms.openlocfilehash: d42349de4324428103ccca3ef270ceb9109ca0c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fb3c0e46324a22bdd95bf7d93c28e69c195927e8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011660"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045416"
 ---
 # <a name="red-hat-enterprise-linux-images-in-azure"></a>Azure 中的 Red Hat Enterprise Linux 映像
 本文介绍 Azure 市场中可用的 Red Hat Enterprise Linux (RHEL) 映像以及与其命名和保留相关的策略。
@@ -65,7 +65,7 @@ az vm create --name RhelVM --resource-group TestRG --image RedHat:RHEL:7-RAW:lat
 ### <a name="current-naming-convention"></a>当前的命名约定
 当前发布的所有 RHEL 映像均使用即用即付模型，并连接到 [Azure 中的 Red Hat 更新基础结构 (RHUI)](https://aka.ms/rhui-update)。 由于 RHUI 的设计限制，RHEL 7 系列映像采用了新的命名约定。 RHEL 6 系列的命名目前尚未更改。
 
-该限制在于，当对连接到 RHUI 的 VM 运行非选择性 `yum update` 时，RHEL 版本会更新为当前系列中的最新版本。 有关详细信息，请参阅[此链接](https://aka.ms/rhui-udate)。 如果在更新后，预配的 RHEL 7.2 映像变为 RHEL 7.6，则可能导致混淆。 不过，通过明确指定所需版本，仍可以如上述示例所示，从较旧的映像进行预配。 如果在预配新的 RHEL 7 映像时未指定所需版本，则将预配最新映像。
+该限制在于，当对连接到 RHUI 的 VM 运行非选择性 `yum update` 时，RHEL 版本会更新为当前系列中的最新版本。 有关详细信息，请参阅[此链接](https://aka.ms/rhui-update)。 如果在更新后，预配的 RHEL 7.2 映像变为 RHEL 7.6，则可能导致混淆。 不过，通过明确指定所需版本，仍可以如上述示例所示，从较旧的映像进行预配。 如果在预配新的 RHEL 7 映像时未指定所需版本，则将预配最新映像。
 
 >[!NOTE]
 > 在 RHEL for SAP 映像集中，RHEL 版本保持不变。 因此，它们的命名约定在 SKU 中包含特定版本。

@@ -1,5 +1,5 @@
 ---
-title: 模型 interpretability
+title: 模型可解释性
 titleSuffix: Azure Machine Learning service
 description: 了解如何使用 Azure 机器学习 Interpretability SDK 来解释为什么您的模型进行预测。 它可以用于在定型和推断过程了解您的模型进行预测的方式。
 services: machine-learning
@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 03/27/2019
-ms.openlocfilehash: 1cd5f48e8e0e74dfa04465993246e5d68840a783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.date: 04/04/2019
+ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919720"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051795"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Azure 机器学习 Interpretability SDK
 
-了解如何解释为什么您的模型到达预测它使。 Azure 机器学习 Interpretability SDK，可解释您的模型，至关重要的原因如下：
+在本文中，您将了解如何解释为什么您的模型进行预测其使用 Azure 机器学习 Interpretability SDK 进行的。 能够解释您的模型是重要原因如下：
 
 * 客户和利益干系人想要知道**如果他们可以相信预测可让您的模型**。
 * 你想要了解为数据科学家**如何查询模型以寻找见解**。 你还需要工具来上做出明智的决策**如何改进您的模型**。
@@ -27,16 +27,10 @@ ms.locfileid: "58919720"
 
 机器学习 interpretability 非常重要的机器学习开发周期的两个阶段中：**培训**时间和**推断**时间：
 
-* 期间**培训**:模型设计人员和评估者需要 interpretability 工具以向利益干系人建立信任说明模型的输出。 Interpretability 工具还使你能够调试模型：
-
-    * 其行为是否匹配的目标和目标？
-    * 它的偏差为？
-
+* 期间**培训**:模型设计人员和评估者需要 interpretability 工具以向利益干系人建立信任说明模型的输出。 它们还需要深入了解该模型，以便它们可以调试模型，并使决策的行为是否符合其目标。 最后，他们需要确保该模型不会有偏差。
 * 期间**推断**:需要使用您的模型的人们可以解释预测。 例如，为什么没有模型拒绝抵押贷款时，或预测投资组合会带来较高风险？
 
-Azure 机器学习 Interpretability SDK 集成了技术开发的 Microsoft 和经验证的第三方库 （例如，SHAP 和酸橙色）。 它跨集成库提供一个通用 API，并与 Azure 机器学习服务集成。 
-
-使用此 SDK，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
+Azure 机器学习 Interpretability SDK 集成了技术开发的 Microsoft 和经验证的第三方库 （例如，SHAP 和酸橙色）。 SDK 集成库之间创建一个通用 API，并将 Azure 机器学习服务集成。 使用此 SDK，可以解释机器学习模型**上的所有数据从全球**，或**上的特定数据点的本地**易于使用且可缩放的方式使用先进的技术。
 
 ## <a name="how-does-it-work"></a>工作原理
 
@@ -48,11 +42,7 @@ Azure 机器学习 Interpretability 对模型进行其预测的方式返回一�
 
 * 全局/本地相对特征重要性
 * 全局/本地功能和预测的关系
-* 有关交互式可视化效果：
-
-    * 预测
-    * 功能和预测的关系
-    * 相对特征重要性值全局和本地
+* 显示预测的交互式可视化效果，功能和预测的关系，以及相对特征重要性值全局和本地
 
 ## <a name="architecture"></a>体系结构
 
@@ -114,11 +104,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 ### <a name="local-and-remote-compute-target"></a>本地和远程计算目标
 
-机器学习 Interpretability SDK 用于处理这两个本地和远程计算目标。 
-
-* 如果运行**本地**，SDK 不联系任何 Azure 服务。
-
-* 如果运行**远程**，Azure 机器学习运行历史记录服务中记录运行的相关信息。 此信息在登录之后，报表和可视化效果中进行了说明是 Azure 机器学习工作区门户上随时可供用户分析。
+机器学习 Interpretability SDK 用于处理这两个本地和远程计算目标。 如果本地运行，SDK 函数将不与任何 Azure 服务。 可以在 Azure 机器学习计算上远程运行说明并登录到 Azure 机器学习运行历史记录服务说明信息。 此信息在登录之后，报表和可视化效果中进行了说明是 Azure 机器学习工作区门户上随时可供用户分析。
 
 ## <a name="train-and-explain-locally"></a>训练和本地说明
 
@@ -138,9 +124,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     model = clf.fit(x_train, y_train)
     ```
 
-2. 调用的说明。 当实例化的说明对象，传递模型和训练数据。 （可选） 可以传递感兴趣的功能。 如果使用分类，将传递的输出名称。
-
-    下面的示例演示如何创建说明对象使用[TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py)， [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py)，和`LimeExplainer`本地。 `TabularExplainer` 正在调用下面三个 explainers 之一 (`TreeExplainer`， `DeepExplainer`，或`KernelExplainer`)，并自动选择最适合的选项为你的用例。 但是，可以直接调用每个其三个基础 explainers。
+2. 调用说明：若要启动的说明对象，您需要传递模型、 定型数据、 感兴趣 （可选） 和输出的类名的功能 (如果分类) 到说明。 下面介绍了如何实例化说明对象使用[TabularExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.tabularexplainer?view=azure-ml-py)， [MimicExplainer](https://docs.microsoft.com/python/api/azureml-explain-model/azureml.explain.model.mimic.mimicexplainer?view=azure-ml-py)，和`LimeExplainer`本地。 `TabularExplainer` 正在调用下面三个 explainers 之一 (`TreeExplainer`， `DeepExplainer`，或`KernelExplainer`)，并自动选择最适合的选项为你的用例。 但是，可以直接调用每个其三个基础 explainers。
 
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
@@ -213,7 +197,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     #client.upload_model_explanation(global_explanation, top_k=2, comment='global explanation: Only top 2 features')
     ```
 
-2. 若要提交运行定型，按照中的步骤[设置用于为模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)一文。 使用步骤创建 Azure 机器学习计算目标，并提交训练运行。
+2. 按照上的说明[设置用于为模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)若要了解有关如何设置 Azure 机器学习计算用作计算目标和提交训练运行。
 
 3. 下载本地 Jupyter 笔记本中的说明。 
 

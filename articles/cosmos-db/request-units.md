@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
-ms.openlocfilehash: 850c8af3e3dd696ce0e84b9c553d6f1617deb3de
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 72ec8332a3363d5336fb84b3390d5e44ced0b2e5
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762967"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047308"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位
+# <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB 中的请求单位数
 
 使用 Azure Cosmos DB 时，需要支付预配的吞吐量和每小时消耗的存储的费用。 必须预配吞吐量，以确保足够的系统资源在任何时候都可用于 Azure Cosmos 数据库。 你需要足够的资源来达到或超过[Azure Cosmos DB Sla](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)。
 
@@ -27,7 +27,7 @@ Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 
 ![数据库操作消耗请求单位](./media/request-units/request-units.png)
 
-为了方便管理和规划容量，Azure Cosmos DB 会确保针对给定数据集执行的给定数据库操作的 RU 数是确定性的。 您可以检查响应标头，若要跟踪的任何数据库操作使用的 Ru 数量。 当您了解[因素会影响 RU 费用](request-units.md#request-unit-considerations)和应用程序的吞吐量要求，可以运行经济高效的方式应用程序。
+为了方便管理和规划容量，Azure Cosmos DB 可确保针对给定数据集执行的给定数据库操作的 RU 数是确定性的。 您可以检查响应标头，若要跟踪的任何数据库操作使用的 Ru 数量。 当您了解[因素会影响 RU 费用](request-units.md#request-unit-considerations)和应用程序的吞吐量要求，可以运行经济高效的方式应用程序。
 
 可以按秒来预配应用程序的 RU 数，增量为每秒 100 RU。 若要缩放应用程序的预配吞吐量，随时可以增加或减少 RU 数。 可缩放中递增或递减的 100 个 Ru。 可以编程方式或使用 Azure 门户进行更改。 按每小时计费。
 
@@ -71,6 +71,7 @@ Azure Cosmos DB 支持多种 API，例如 SQL、MongoDB、Cassandra、Gremlin �
 * 详细了解如何[全局缩放预配的吞吐量](scaling-throughput.md)。
 * 了解[如何对 Azure Cosmos 容器预配吞吐量](how-to-provision-container-throughput.md)。
 * 了解[如何对 Azure Cosmos 数据库预配吞吐量](how-to-provision-database-throughput.md)。
+* 了解如何[操作找到的请求单位费用](find-request-unit-charge.md)。
 * 了解如何[优化了 Azure Cosmos DB 中的预配的吞吐量成本](optimize-cost-throughput.md)。
 * 了解如何[优化读取和写入 Azure Cosmos DB 中的成本](optimize-cost-reads-writes.md)。
 * 了解如何[优化 Azure Cosmos DB 中的查询开销](optimize-cost-queries.md)。

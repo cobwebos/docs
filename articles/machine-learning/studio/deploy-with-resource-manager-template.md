@@ -10,16 +10,18 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 02/05/2018
-ms.openlocfilehash: 83ae58e4a86d3bc2ffb2197f48d2c641790e8524
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 91413aa461261824782717ae4edacc2757ad5405
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648276"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048701"
 ---
 # <a name="deploy-azure-machine-learning-studio-workspace-using-azure-resource-manager"></a>使用 Azure 资源管理器部署 Azure 机器学习工作室工作区
 
 通过提供部署带有验证和重试机制的互连组件的可扩展方法，使用 Azure 资源管理器部署模板可节约时间。 例如，若要设置 Azure 机器学习工作室工作区，需要先配置 Azure 存储帐户，然后再部署工作区。 想象为数百个工作区手动执行此操作的样子。 更轻松的替代方法是使用 Azure 资源管理器模板部署工作室工作区及其所有依赖项。 本文将引导逐步完成此过程。 有关 Azure 资源管理器的整体概述，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="step-by-step-create-a-machine-learning-workspace"></a>分布说明：创建机器学习工作区
 我们将创建 Azure 资源组，然后使用资源管理器模板部署新的 Azure 存储帐户和新的 Azure 机器学习工作室工作区。 部署完成后，我们将打印有关所创建工作区的重要信息（主密钥、workspaceID 和该工作区的 URL）。
@@ -83,7 +85,7 @@ ms.locfileid: "58648276"
 
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery (press “A”)
-Install-Module AzureRM -Scope CurrentUser
+Install-Module Az -Scope CurrentUser
 
 # Install the Azure Service Management modules from the PowerShell Gallery (press “A”)
 Install-Module Azure -Scope CurrentUser
@@ -95,7 +97,7 @@ Install-Module Azure -Scope CurrentUser
 
 ```powershell
 # Authenticate (enter your credentials in the pop-up window)
-Connect-AzureRmAccount
+Connect-AzAccount
 ```
 此步骤需要为每个会话重复执行。 验证身份后，会显示订阅信息。
 
@@ -106,7 +108,7 @@ Connect-AzureRmAccount
 * 创建资源组
 
 ```powershell
-$rg = New-AzureRmResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
+$rg = New-AzResourceGroup -Name "uniquenamerequired523" -Location "South Central US"
 $rg
 ```
 
@@ -119,7 +121,7 @@ $rg
 
 ```powershell
 # Create a Resource Group, TemplateFile is the location of the JSON template.
-$rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
+$rgd = New-AzResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\mlworkspace.json" -ResourceGroupName $rg.ResourceGroupName
 ```
 
 完成部署后，可直接访问所部属工作区的属性。 例如，可访问主密钥令牌。
@@ -129,11 +131,11 @@ $rgd = New-AzureRmResourceGroupDeployment -Name "demo" -TemplateFile "C:\temp\ml
 $rgd.Outputs.mlWorkspaceToken.Value
 ```
 
-另一种检索现有工作区的方法是使用 Invoke-AzureRmResourceAction 命令。 例如，可列出所有工作区的主要和辅助令牌。
+检索现有工作区的另一种方法是使用 Invoke AzResourceAction 命令。 例如，可列出所有工作区的主要和辅助令牌。
 
 ```powershell
 # List the primary and secondary tokens of all workspaces
-Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzureRmResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
+Get-AzResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |ForEach-Object { Invoke-AzResourceAction -ResourceId $_.ResourceId -Action listworkspacekeys -Force}
 ```
 预配工作区后，还可使用[适用于 Azure 机器学习工作室的 PowerShell 模块](https://aka.ms/amlps)自动化许多 Azure 机器学习工作室任务。
 

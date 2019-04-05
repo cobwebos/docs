@@ -1,19 +1,18 @@
 ---
-title: Azure 数据资源管理器时序分析
-description: '了解 Azure 数据资源管理器中的时序分析 '
-services: data-explorer
+title: 分析时序数据使用 Azure 数据资源管理器
+description: 了解如何分析时序数据在云中使用 Azure 数据资源管理器。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 10/30/2018
-ms.openlocfilehash: 6a77e399e4de6ec41e74d1e5b9f9f518126958c2
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 496c033e3df096cdada2b3facba3e73092ffd755
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756769"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051489"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
 
@@ -58,10 +57,10 @@ demo_make_series1
 ```
 
 - 使用 [`make-series`](/azure/kusto/query/make-seriesoperator) 运算符创建由三个时序组成的集，其中：
-    - `num=count()`：流量的时序
-    - `range(min_t, max_t, 1h)`：时序是在时间范围（表记录的最旧和最新时间戳）的 1 小时箱中创建的
-    - `default=0`：指定缺失箱的填充方法，以创建正则时序。 或者，使用 [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)、[`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)、[`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) 和 [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) 进行更改
-    - `byOsVer`：由 OS 分区
+    - `num=count()`： 时序流量
+    - `range(min_t, max_t, 1h)`： 在 1 小时时间范围 （最早和最新时间戳的表记录） 中的箱中创建时间序列
+    - `default=0`： 指定缺少的箱来创建常规时序的 fill 方法。 或者，使用 [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)、[`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)、[`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) 和 [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) 进行更改
+    - `byOsVer`： 通过 OS 分区
 - 实际时序数据结构是每个时间箱的聚合值的数值数组。 我们将使用 `render timechart` 进行可视化。
 
 上表包含三个分区。 如下图所示，我们可为每个 OS 版本创建不同的时序：Windows 10（红色）、7（蓝色）和 8.1（绿色）：
@@ -79,7 +78,7 @@ demo_make_series1
 - 有两个泛型筛选函数：
     - [`series_fir()`](/azure/kusto/query/series-firfunction)：应用 FIR 筛选器。 用于方便计算变化检测中时序的移动平均值和差异。
     - [`series_iir()`](/azure/kusto/query/series-iirfunction)：应用 IIR 筛选器。 用于指数平滑与累计求和。
-- 通过将大小为 5 个箱的新移动平均时序（名为 *ma_num*）添加到查询，来 `Extend`（扩展）时序集：
+- `Extend` 通过添加新的移动平均系列的设置的时间系列大小为 5 个箱 (名为*ma_num*) 到查询：
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));
@@ -145,7 +144,7 @@ demo_series3
 | --- | --- | --- | --- |
 |   | periods | 评分 | days |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 第 |
+|   | 12 | 0.764601405803502 | 1 |
 
 该函数会检测每日和每周季节性。 每日评分小于每周评分，因为周末的天数不同于工作日天数。
 

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: e3757e94dcd8ccc39613b9a6fff8bf491812866a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58224190"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044974"
 ---
 # <a name="create-apache-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>使用资源管理器模板在 HDInsight 中创建 Apache Hadoop 群集
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "58224190"
 * Azure PowerShell 和/或 Azure 经典 CLI。
 
 ### <a name="resource-manager-templates"></a>资源管理器模板
-资源管理器模板可以轻松在单个协调的操作中创建你的应用程序的以下资源：
+通过资源管理器模板，可轻松地通过单个协调操作为应用程序创建以下资源：
 * HDInsight 群集及其依赖资源（例如默认存储帐户）。
 * 其他资源（例如要使用 [Apache Sqoop](https://sqoop.apache.org/) 的 Azure SQL 数据库）。
 

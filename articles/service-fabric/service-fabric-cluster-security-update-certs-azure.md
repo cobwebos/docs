@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2018
 ms.author: aljo
-ms.openlocfilehash: 534335b15d61d1e411ec2e7fb96123eb4701878e
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: 0038de621a02a2edf3198686e1f2fc88fb917d9c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315261"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050231"
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>在 Azure 中添加或删除 Service Fabric 群集的证书
 建议先了解 Service Fabric 使用 X.509 证书的方式，并熟悉[群集安全性应用场景](service-fabric-cluster-security.md)。 在继续下一步之前，必须先了解群集证书的定义和用途。
@@ -33,6 +33,9 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 > 
 > 
 
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
 ## <a name="add-a-secondary-cluster-certificate-using-the-portal"></a>使用门户添加辅助群集证书
 无法通过 Azure 门户使用 Azure powershell 添加辅助群集证书。 稍后在本文档中对该过程进行概述。
 
@@ -45,7 +48,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>使用 Resource Manager Powershell 添加辅助证书
 > [!TIP]
-> 现在可以使用 [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) cmdlet 更好、更轻松地添加辅助证书。 无需执行本部分中的其余步骤。  此外，使用 [Add-AzureRmServiceFabricClusterCertificate](/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate) cmdlet 时，不需要使用最初用来创建和部署群集的模板。
+> 更好、 更轻松地添加辅助证书使用现已[添加 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。 无需执行本部分中的其余步骤。  此外，不需要最初用于创建和部署群集时使用的模板[添加 AzServiceFabricClusterCertificate](/powershell/module/az.servicefabric/add-azservicefabricclustercertificate) cmdlet。
 
 执行这些步骤的前提是，熟悉资源管理器的工作原理，并已使用资源管理器模板至少部署了一个 Service Fabric 群集，同时已准备好在设置此群集时使用的模板。 此外，还有一个前提就是，可以熟练使用 JSON。
 
@@ -58,7 +61,7 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 
 为了便于参考，示例 5-VM-1-NodeTypes-Secure_Step2.JSON 包含我们将进行的所有编辑。 该示例位于 [git-repo](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/Cert%20Rollover%20Sample)。
 
-**请确保执行所有步骤**
+**请务必遵循所有步骤**
 
 1. 打开用于部署群集的 Resource Manager 模板。 （如果已从上述存储库下载此示例，则使用 5-VM-1-NodeTypes-Secure_Step1.JSON 部署安全群集，并打开该模板）。
 
@@ -195,19 +198,19 @@ Azure Service Fabrics SDK 的默认证书加载行为是部署和使用过期日
 - 登录到 Azure 帐户，选择特定的 Azure 订阅。 对于有权访问多个 Azure 订阅的用户而言，这是一个重要步骤。
 
 ```powershell
-Connect-AzureRmAccount
-Select-AzureRmSubscription -SubscriptionId <Subscription ID> 
+Connect-AzAccount
+Select-AzSubscription -SubscriptionId <Subscription ID> 
 
 ```
 
 部署模板之前先进行测试。 使用群集当前部署到的同一个资源组。
 
 ```powershell
-Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+Test-AzResourceGroupDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 
 ```
 
-将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行 New-AzureRmResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
+将模板部署到该资源组。 使用群集当前部署到的同一个资源组。 运行新建 AzResourceGroupDeployment 命令。 无需指定模式，因为默认值为 **incremental**。
 
 > [!NOTE]
 > 如果将 Mode 设置为 Complete，可能会无意中删除不在模板中的资源。 因此请不要在此方案中使用该模式。
@@ -215,7 +218,7 @@ Test-AzureRmResourceGroupDeployment -ResourceGroupName <Resource Group that your
 > 
 
 ```powershell
-New-AzureRmResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
+New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName <Resource Group that your cluster is currently deployed to> -TemplateFile <PathToTemplate>
 ```
 
 下面是已填充数据的同一个 Powershell 命令示例。
@@ -225,7 +228,7 @@ $ResourceGroup2 = "chackosecure5"
 $TemplateFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure_Step2.json"
 $TemplateParmFile = "C:\GitHub\Service-Fabric\ARM Templates\Cert Rollover Sample\5-VM-1-NodeTypes-Secure.parameters_Step2.json"
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
+New-AzResourceGroupDeployment -ResourceGroupName $ResourceGroup2 -TemplateParameterFile $TemplateParmFile -TemplateUri $TemplateFile -clusterName $ResourceGroup2
 
 ```
 
@@ -288,7 +291,7 @@ Get-ServiceFabricClusterHealth
 ## <a name="next-steps"></a>后续步骤
 有关群集管理的详细信息，请阅读以下文章：
 
-* [Service Fabric 群集升级过程与期望](service-fabric-cluster-upgrade.md)
+* [Service Fabric 群集升级过程和用户预期](service-fabric-cluster-upgrade.md)
 * [为客户端设置基于角色的访问](service-fabric-cluster-security-roles.md)
 
 <!--Image references-->

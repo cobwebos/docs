@@ -14,16 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: e30e8c94547ac0f9106a69f1e99cf9a7c03abea5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
-ms.translationtype: HT
+ms.openlocfilehash: 2433f4b3563cc8b301d1815cccf5ab24406e8662
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695891"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59045571"
 ---
 # <a name="azure-relay-faqs"></a>Azure 中继常见问题
 
 本文回答了一些关于 [Azure 中继](https://azure.microsoft.com/services/service-bus/)的常见问题 (FAQ)。 若要了解一般的 Azure 定价和支持信息，请参阅 [Azure 支持常见问题解答](https://azure.microsoft.com/support/faq/)。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="general-questions"></a>一般问题
 ### <a name="what-is-azure-relay"></a>什么是 Azure 中继？
@@ -86,7 +89,7 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 | [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) 和 [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) 中继的消息大小 |命名空间 |对消息大小没有限制。 |不受限制 |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>中继是否具有任何使用率配额？
-默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 我们了解，有时候，需求可能会超过这些限制。 可以随时联系客户服务人员，以便我们了解需求并相应地调整这些限制。 对于服务总线，聚合的使用率配额为如下所示：
+默认情况下，对于任何云服务，Microsoft 设置聚合的每月使用配额，通过对所有的客户订阅计算得到。 我们了解，有时候，需求可能会超过这些限制。 你可以随时联系客户服务人员，以便我们了解你的需求并相应地调整这些限制。 对于服务总线，聚合的使用率配额为如下所示：
 
 * 50 亿条消息
 * 200 万个中继小时
@@ -99,25 +102,25 @@ WCF 中继仅适用于标准层命名空间。 其他中继的定价和[连接�
 ## <a name="subscription-and-namespace-management"></a>订阅和命名空间管理
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>如何将命名空间迁移到另一个 Azure 订阅中？
 
-可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 命令，将命名空间从一个 Azure 订阅移到另一个订阅。 要将命名空间移到另一个订阅，该命名空间必须处于活动状态。 运行这些命令的用户必须是源订阅和目标订阅的管理员用户。
+可以使用 [Azure 门户](https://portal.azure.com)或 PowerShell 命令，将命名空间从一个 Azure 订阅移到另一个订阅。 若要将命名空间移到另一个订阅，该命名空间必须处于活动状态。 运行这些命令的用户必须是源订阅和目标订阅的管理员用户。
 
 #### <a name="azure-portal"></a>Azure 门户
 
-要使用 Azure 门户将 Azure 中继命名空间从一个订阅迁移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md#use-portal)。 
+若要使用 Azure 门户将 Azure 中继命名空间从一个订阅迁移到另一个订阅，请参阅[将资源移到新的资源组或订阅](../azure-resource-manager/resource-group-move-resources.md#use-portal)。 
 
 #### <a name="powershell"></a>PowerShell
 
-要使用 PowerShell 将命名空间从一个 Azure 订阅移到另一个订阅，请使用以下命令序列。 若要执行此操作，该命名空间必须已经处于活动状态，并且运行 PowerShell 命令的用户必须同时是源和目标订阅上的管理员用户。
+若要使用 PowerShell 将命名空间从一个 Azure 订阅移到另一个订阅，请使用以下命令序列。 若要执行此操作，该命名空间必须已经处于活动状态，并且运行 PowerShell 命令的用户必须同时是源和目标订阅上的管理员用户。
 
 ```azurepowershell-interactive
 # Create a new resource group in the target subscription.
-Select-AzureRmSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
-New-AzureRmResourceGroup -Name 'targetRG' -Location 'East US'
+Select-AzSubscription -SubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+New-AzResourceGroup -Name 'targetRG' -Location 'East US'
 
 # Move the namespace from the source subscription to the target subscription.
-Select-AzureRmSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
-$res = Find-AzureRmResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
-Move-AzureRmResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
+Select-AzSubscription -SubscriptionId 'aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa'
+$res = Find-AzResource -ResourceNameContains mynamespace -ResourceType 'Microsoft.ServiceBus/namespaces'
+Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptionId 'ffffffff-ffff-ffff-ffff-ffffffffffff' -ResourceId $res.ResourceId
 ```
 
 ## <a name="troubleshooting"></a>故障排除

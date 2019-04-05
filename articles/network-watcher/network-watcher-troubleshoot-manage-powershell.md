@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 51fb834c0c6a3602ed0edfee6256183eefb2026b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b25ebeadff46ea04c2adf5add6aeb86b751681ad
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889482"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047205"
 ---
 # <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>使用 Azure 网络观察程序 PowerShell 对虚拟网络网关和连接进行故障排除
 
@@ -30,6 +30,9 @@ ms.locfileid: "57889482"
 > - [REST API](network-watcher-troubleshoot-manage-rest.md)
 
 网络观察程序提供了许多功能，因为它关系到了解 Azure 中的网络资源。 其中一项功能就是资源故障排除。 可以通过门户、PowerShell、CLI 或 REST API 调用资源故障排除。 调用后，网络观察程序会检查虚拟网络网关或连接的运行状况，并返回调查结果。
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -43,11 +46,11 @@ ms.locfileid: "57889482"
 
 ## <a name="retrieve-network-watcher"></a>检索网络观察程序
 
-第一步是检索网络观察程序实例。 `$networkWatcher` 变量传递给步骤 4 中的 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet。
+第一步是检索网络观察程序实例。 `$networkWatcher` 变量传递给步骤 4 中的 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet。
 
 ```powershell
-$nw = Get-AzurermResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
-$networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
+$nw = Get-AzResource | Where {$_.ResourceType -eq "Microsoft.Network/networkWatchers" -and $_.Location -eq "WestCentralUS" } 
+$networkWatcher = Get-AzNetworkWatcher -Name $nw.Name -ResourceGroupName $nw.ResourceGroupName 
 ```
 
 ## <a name="retrieve-a-virtual-network-gateway-connection"></a>检索虚拟网络网关连接
@@ -55,7 +58,7 @@ $networkWatcher = Get-AzureRmNetworkWatcher -Name $nw.Name -ResourceGroupName $n
 在此示例中，将针对连接运行资源故障排除。 还可以向其传递虚拟网络网关。
 
 ```powershell
-$connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
+$connection = Get-AzVirtualNetworkGatewayConnection -Name "2to3" -ResourceGroupName "testrg"
 ```
 
 ## <a name="create-a-storage-account"></a>创建存储帐户
@@ -63,20 +66,20 @@ $connection = Get-AzureRmVirtualNetworkGatewayConnection -Name "2to3" -ResourceG
 资源故障排除返回有关资源运行状况的数据，还将日志保存到要查看的存储帐户中。 在此步骤中，我们将创建一个存储帐户（如果存在现有的存储帐户，可以使用它）。
 
 ```powershell
-$sa = New-AzureRmStorageAccount -Name "contosoexamplesa" -SKU "Standard_LRS" -ResourceGroupName "testrg" -Location "WestCentralUS"
-Set-AzureRmCurrentStorageAccount -ResourceGroupName $sa.ResourceGroupName -Name $sa.StorageAccountName
-$sc = New-AzureStorageContainer -Name logs
+$sa = New-AzStorageAccount -Name "contosoexamplesa" -SKU "Standard_LRS" -ResourceGroupName "testrg" -Location "WestCentralUS"
+Set-AzCurrentStorageAccount -ResourceGroupName $sa.ResourceGroupName -Name $sa.StorageAccountName
+$sc = New-AzStorageContainer -Name logs
 ```
 
 ## <a name="run-network-watcher-resource-troubleshooting"></a>运行网络观察程序资源故障排除
 
-将使用 `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet 对资源进行故障排除。 我们将向该 cmdlet 传递网络观察程序对象、连接或虚拟网络网关的 Id、存储帐户 Id 以及用来存储结果的路径。
+将使用 `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 对资源进行故障排除。 我们将向该 cmdlet 传递网络观察程序对象、连接或虚拟网络网关的 Id、存储帐户 Id 以及用来存储结果的路径。
 
 > [!NOTE]
-> `Start-AzureRmNetworkWatcherResourceTroubleshooting` cmdlet 的运行时间很长，可能需要几分钟才能完成。
+> `Start-AzNetworkWatcherResourceTroubleshooting` cmdlet 的运行时间很长，可能需要几分钟才能完成。
 
 ```powershell
-Start-AzureRmNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
+Start-AzNetworkWatcherResourceTroubleshooting -NetworkWatcher $networkWatcher -TargetResourceId $connection.Id -StorageId $sa.Id -StoragePath "$($sa.PrimaryEndpoints.Blob)$($sc.name)"
 ```
 
 运行 cmdlet 后，网络观察程序将查看资源以确认运行状况。 它将结果返回到 shell，并将结果的日志存储在指定的存储帐户中。

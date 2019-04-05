@@ -3,17 +3,17 @@ title: IoT 中心设备预配服务 - 自动预配的概念
 description: 本文提供使用 IoT 设备预配服务、IoT 中心和客户端 SDK 自动预配设备所要经历的阶段的概念性概述。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 06/01/2018
+ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 6ba21e29673da176c380d6b367e84b2ea7536955
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080025"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051727"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
 
@@ -59,7 +59,7 @@ ms.locfileid: "58080025"
 
 下图汇总了设备自动预配期间的角色和操作顺序：
 <br><br>
-[![设备的自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![为设备自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。 有关此顺序和其他要素的详细讨论，请观看[自动将设备注册到 Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) 视频（从 41:00 标记处开始）
@@ -97,9 +97,9 @@ ms.locfileid: "58080025"
 
 首先请完成最适合你偏好的管理工具的“设置自动预配”快速入门，其中逐步讲解了“服务配置”阶段：
 
-- [使用 Azure CLI 设置自动预配](quick-setup-auto-provision-cli.md)
-- [使用 Azure 门户设置自动预配](quick-setup-auto-provision.md)
-- [使用资源管理器模板设置自动预配](quick-setup-auto-provision-rm.md)
+- [设置自动预配使用 Azure CLI](quick-setup-auto-provision-cli.md)
+- [设置自动预配使用 Azure 门户](quick-setup-auto-provision.md)
+- [设置自动预配使用资源管理器模板](quick-setup-auto-provision-rm.md)
 
 然后继续学习最适合你偏好的设备认证机制和设备预配服务 SDK/语言的“自动预配模拟设备”快速入门。 此快速入门逐步讲解“设备登记”与“设备注册和配置”阶段： 
 

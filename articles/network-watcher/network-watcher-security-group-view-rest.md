@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 77519c57c9a603ae0eff46d248ff15432d0404fa
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: a2f55a65d88b499384fc961c3d6a479bac804ba8
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485384"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051523"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-rest-api"></a>使用 REST API 通过安全组视图分析虚拟机安全性
 
@@ -29,6 +29,9 @@ ms.locfileid: "58485384"
 > - [REST API](network-watcher-security-group-view-rest.md)
 
 安全组视图返回已应用于虚拟机的已配置的有效网络安全规则。 此功能可用于审核和诊断已在 VM 上配置以确保正确允许或拒绝流量的网络安全组和规则。 在本文中，我们将说明如何使用 REST API 检索应用于虚拟机的有效安全规则
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -50,7 +53,7 @@ armclient login
 
 运行以下脚本返回虚拟机。以下代码需要变量：
 
-- **subscriptionId** - 还可以使用 **Get-AzureRMSubscription** cmdlet 检索订阅 id。
+- **subscriptionId** -也可以使用检索的订阅 id **Get AzSubscription** cmdlet。
 - **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell

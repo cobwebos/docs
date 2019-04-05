@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 49a703164b302443d8b50ba950cf23b8601cb599
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 614c3e1831680fff50058cd5192449f8e6e28179
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58480696"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049790"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>通过 Azure REST API 使用 Azure 网络观察程序管理数据包捕获
 
@@ -39,6 +39,9 @@ ms.locfileid: "58480696"
 - [**启动数据包捕获**](#start-packet-capture)
 - [**停止数据包捕获**](#stop-packet-capture)
 - [**删除数据包捕获**](#delete-packet-capture)
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -60,7 +63,7 @@ armclient login
 
 以下代码需要以下变量：
 
-- **subscriptionId** - 还可以使用 **Get-AzureRMSubscription** cmdlet 检索订阅 ID。
+- **subscriptionId** -也可以使用检索的订阅 id **Get AzSubscription** cmdlet。
 - **resourceGroupName** - 包含虚拟机的资源组的名称。
 
 ```powershell

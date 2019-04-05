@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: da11d4977cc998c9fccb3628a44e45db95c7d977
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9b1dee8ea43d01825449cb6010fbfa62e4715cff
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759390"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047256"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 孪生部署到现有项目
 
@@ -30,10 +30,7 @@ OPC UA 设备注册表微服务提供了对已注册的 OPC UA 应用程序和�
 
 ## <a name="prerequisites"></a>必备组件
 
-> [!NOTE]
-> 注意：由于对 AzureRM 模块依赖关系，当前仅支持部署在 Windows 上。
-
-请确保有 PowerShell 并[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-1.1.0)安装扩展。   如果你不执行此操作，克隆此 GitHub 存储库。  打开命令提示符或终端并运行：
+请确保有 PowerShell 并[Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps)安装扩展。   如果你不执行此操作，克隆此 GitHub 存储库。  打开命令提示符或终端并运行：
 
 ```bash
 git clone --recursive https://github.com/Azure/azure-iiot-components 

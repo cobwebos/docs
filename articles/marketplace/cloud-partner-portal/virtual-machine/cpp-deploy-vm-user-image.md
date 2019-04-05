@@ -14,26 +14,27 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
-ms.openlocfilehash: 48be60a7ba5770f8c329cb6323a5caa8fcf7f961
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.openlocfilehash: 0885b187c4b9e9636144a3ab2a94b941008bec20
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54265050"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046729"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>从用户 VHD 中部署 Azure VM
 
 本文介绍如何使用提供的 Azure 资源管理器模板和 Azure PowerShell 脚本，部署通用 VHD 映像以创建新的 Azure VM 资源。
 
+[!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
 ## <a name="vhd-deployment-template"></a>VHD 部署模板
 
 将用于 [VHD 部署](cpp-deploy-json-template.md)的 Azure 资源管理器模板复制到名为 `VHDtoImage.json` 的本地文件。  编辑此文件以提供以下参数的值。 
 
-|  **Parameter**             |   **说明**                                                              |
+|  **参数**             |   **说明**                                                              |
 |  -------------             |   ---------------                                                              |
 | ResourceGroupName          | 现有 Azure 资源组名称。  通常使用与密钥保管库相关联的同一 RG  |
-| TemplateFile               | `VHDtoImage.json` 文件的完整路径                                    |
+| TemplateFile               | 文件的完整路径名 `VHDtoImage.json`                                    |
 | userStorageAccountName     | 存储帐户的名称                                                    |
 | sNameForPublicIP           | 公共 IP 的 DNS 名称。 必须为小写                                  |
 | subscriptionId             | Azure 订阅标识符                                                  |
@@ -41,7 +42,7 @@ ms.locfileid: "54265050"
 | vmName                     | 虚拟机名称                                                    |
 | vaultName                  | 密钥保管库的名称                                                          |
 | vaultResourceGroup         | 密钥保管库的资源组
-| certificateUrl             | 证书的 URL，包括存储在密钥保管库中的版本，例如：`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| certificateUrl             | Url 的证书，包括版本存储在密钥保管库，例如：  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 | vhdUrl                     | 虚拟硬盘的 URL                                                   |
 | vmSize                     | 虚拟机实例的大小                                           |
 | publicIPAddressName        | 公共 IP 地址的名称                                                  |
@@ -63,10 +64,10 @@ $storageaccount = "testwinrm11815"
 # generalized VHD URL
 $vhdUrl = "https://testwinrm11815.blob.core.windows.net/vhds/testvm1234562016651857.vhd"
 
-echo "New-AzureRMResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id  -vhdUrl "$vhdUrl" -vmSize "Standard_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
+echo "New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id  -vhdUrl "$vhdUrl" -vmSize "Standard_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd"
 
 #deploying VM with existing VHD
-New-AzureRMResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id  -vhdUrl "$vhdUrl" -vmSize "Standard_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd 
+New-AzResourceGroupDeployment -Name "dplisvvm$postfix" -ResourceGroupName "$rgName" -TemplateFile "C:\certLocation\VHDtoImage.json" -userStorageAccountName "$storageaccount" -dnsNameForPublicIP "$vmName" -subscriptionId "$mysubid" -location "$location" -vmName "$vmName" -vaultName "$kvname" -vaultResourceGroup "$rgName" -certificateUrl $objAzureKeyVaultSecret.Id  -vhdUrl "$vhdUrl" -vmSize "Standard_A2" -publicIPAddressName "myPublicIP1" -virtualNetworkName "myVNET1" -nicName "myNIC1" -adminUserName "isv" -adminPassword $pwd 
 
 ```
 

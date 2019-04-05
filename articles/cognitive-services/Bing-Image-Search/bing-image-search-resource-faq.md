@@ -10,12 +10,12 @@ ms.subservice: bing-image-search
 ms.topic: troubleshooting
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: a6d5d7b3ab83c8e405c6866562b4095434b9acff
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 20b8dbcae36555baf3913ab160575a631e204dd9
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539014"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049415"
 ---
 # <a name="frequently-asked-questions-faq-about-the-bing-image-search-api"></a>有关必应图像搜索 API 的常见问题解答 (FAQ)
 
@@ -25,11 +25,11 @@ ms.locfileid: "57539014"
 
 下面列出了必应图像搜索 API 的可能响应头。
 
-|||
-|-|-|
-|`X-MSEdge-ClientID`|必应分配给用户的唯一 ID|
-|`BingAPIs-Market`|用于完成请求的市场|
-|`BingAPIs-TraceId`|此请求在必应 API 服务器上的日志项目（用于客户支持）|
+| `Attribute`         | `Description` |
+| ------------------- | ------------- |
+| `X-MSEdge-ClientID` |必应分配给用户的唯一 ID |
+| `BingAPIs-Market`   |用于完成请求的市场 |
+| `BingAPIs-TraceId`  |此请求在必应 API 服务器上的日志项目（用于客户支持） |
 
 请务必保留客户端 ID，并在后续请求中返回它。 如果这样做，搜索不仅会在排名搜索结果时使用过往上下文，还会提供一致用户体验。
 
@@ -65,4 +65,4 @@ CORS 代理安装起来很简单，可便于[教程应用](tutorial-bing-image-s
 
 ## <a name="see-also"></a>另请参阅
 
- [堆栈溢出：认知服务](https://stackoverflow.com/questions/tagged/bing-api)
+ [Stack Overflow：认知服务](https://stackoverflow.com/questions/tagged/bing-api)
