@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/20/2019
-ms.openlocfilehash: 7511b85384c2c64c823d93df4369b0fea3e64b51
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 5d168264cbc392e1ba426707429f47dea70d1ea8
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226209"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58882049"
 ---
 # <a name="tutorial-managed-instance-security-in-azure-sql-database-using-azure-ad-server-principals-logins"></a>教程：使用 Azure AD 服务器主体（登录名）确保 Azure SQL 数据库中托管实例的安全性
 
@@ -69,7 +69,7 @@ ms.locfileid: "58226209"
 - [快速入门：配置从本地到托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)
 
 > [!IMPORTANT]
-> 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误：`Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
+> 用于设置托管实例的 Azure AD 管理员不可用于在托管实例中创建 Azure AD 服务器主体（登录名）。 必须使用充当 `sysadmin` 的 SQL Server 帐户创建第一个 Azure AD 服务器主体（登录名）。 Azure AD 服务器主体（登录名）的正式版推出后，即会去除这种暂时性限制。 如果尝试使用 Azure AD 管理员帐户创建登录名，将会看到以下错误： `Msg 15247, Level 16, State 1, Line 1 User does not have permission to perform this action.`
 
 1. 在 [SQL Server Management Studio](sql-database-managed-instance-configure-p2s.md#use-ssms-to-connect-to-the-managed-instance) 中使用充当 `sysadmin` 的标准 SQL Server 帐户（非 Azure AD）登录到托管实例。
 
@@ -444,8 +444,8 @@ ms.locfileid: "58226209"
 - [托管实例审核](sql-database-managed-instance-auditing.md) 
 - [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [威胁检测](sql-database-managed-instance-threat-detection.md) 
-- [动态数据屏蔽](/sql/relational-databases/security/dynamic-data-masking)
-- [行级安全](/sql/relational-databases/security/row-level-security) 
+- [动态数据掩码](/sql/relational-databases/security/dynamic-data-masking)
+- [行级别安全性](/sql/relational-databases/security/row-level-security) 
 - [透明数据加密 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="managed-instance-capabilities"></a>托管实例功能

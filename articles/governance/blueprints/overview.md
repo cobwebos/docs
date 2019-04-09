@@ -1,6 +1,6 @@
 ---
 title: Azure 蓝图概述
-description: Azure 蓝图是一项 Azure 服务，可用于在 Azure 环境中创建、定义和部署项目。
+description: 了解如何通过 Azure 蓝图服务在 Azure 环境中创建、定义和部署项目。
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
@@ -9,14 +9,14 @@ ms.topic: overview
 ms.service: blueprints
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: cf3801381359bb973d126e2ee946cdb51e5aecb7
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: 29c58abb3a69da0886d512767cbc301621943f07
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823087"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802569"
 ---
-# <a name="what-is-azure-blueprints"></a>什么是 Azure 蓝图？
+# <a name="overview-of-the-azure-blueprints-service"></a>Azure 蓝图服务概述
 
 正如工程师或建筑师使用蓝图勾勒出项目的设计参数一样，通过 Azure 蓝图，云架构师和中心信息技术组同样可以定义一组可重复的 Azure 资源，这些资源实现并遵守组织的标准、模式和要求。 通过 Azure 蓝图，开发团队可以快速生成和构建新环境，并确信这些生成的环境符合组织规定，还可以使用一组有助于加快开发和交付过程的内置组件（如网络）。
 

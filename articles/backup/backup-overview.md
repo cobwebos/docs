@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 02/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: d1debbcc8f225a0d4608d67b19e5e00aca580ce1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 51191f3276a9420129f47944b47a182479719d5a
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58122006"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621662"
 ---
 # <a name="what-is-azure-backup"></a>什么是 Azure 备份？
 
@@ -28,10 +28,14 @@ Azure 备份具有以下主要优势：
 - **卸载本地备份**：Azure 备份提供一个简单的解决方案，可以将本地资源备份到云。 获取短期和长期备份，不需部署复杂的本地备份解决方案。 
 - **备份 Azure IaaS VM**：Azure 备份提供独立且隔离的备份，可以防范原始数据的意外破坏。 备份存储在可以对恢复点进行内置托管的恢复服务保管库中。 配置和可伸缩性很简单，备份经过优化，可以轻松地根据需要还原。
 - **轻松缩放** - Azure 备份利用 Azure 云的基础功能和无限缩放功能实现高可用性 - 无需维护，也无需监视开销。 
-- **无限数据传输** - Azure 备份不会限制传输的入站或出站数据量，不会对传输的数据收费。
+- **无限数据传输**：Azure 备份不会限制传输的入站或出站数据量，不会对传输的数据收费。
     - 出站数据是指还原操作期间从恢复服务保管库传输的数据。
     - 如果使用 Azure 导入/导出服务执行脱机初始备份以导入大量数据，则入站数据将产生相关费用。  [了解详细信息](backup-azure-backup-import-export.md)。 
-- **保护数据安全**：可以通过数据加密在公有云中安全地传输和存储数据。 加密密码将存储在本地，绝不会传输或存储到 Azure 中。 如有必要还原任何数据，只需具有加密密码或密钥即可。
+- **保护数据安全**：
+    - 使用 AES256 在本地计算机上对本地传输数据进行加密。 传输的数据受存储和备份之间的 HTTPS 保护。 iSCSI 协议可保护在备份和用户计算机之间传输的数据。 安全隧道用于保护 iSCSI 通道。
+    - 进行从本地到 Azure 的备份时，使用你在设置备份时提供的通行短语对 Azure 中的数据进行静态加密。 通行短语或密钥绝不会传输或存储到 Azure 中。 如有必要还原任何数据，只需具有加密密码或密钥即可。
+    - 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。 备份会在存储数据之前自动加密数据。 Azure 存储会在检索数据之前解密数据。
+    - 备份也支持使用 Azure 磁盘加密 (ADE) 进行加密的 Azure VM。 [了解详细信息](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)。
 - **获取应用一致性备份**：应用程序一致性备份意味着恢复点包含还原备份副本所需的所有数据。 Azure 备份提供了应用程序一致性备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
 - **保留短期和长期数据**：可将恢复服务保管库用于短期和长期数据保留。 Azure 不会限制恢复服务保管库中数据的保留时间长度。 可将数据保留任意时间。 Azure 备份的限制为每个受保护实例仅限 9999 个恢复点。 [详细了解](backup-introduction-to-azure-backup.md#backup-and-retention)此限制对备份需求的影响。
 - **自动存储管理** - 混合环境常常需要异类存储（部分在本地，部分在云端）。 通过 Azure 备份，使用本地存储设备时无需付费。 Azure 备份会自动分配和管理备份存储，且采用即用即付模型，因此，你只需为消耗的存储付费。 [详细了解](https://azure.microsoft.com/pricing/details/backup)定价情况。

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: raynew
-ms.openlocfilehash: 4eaaff859811e4d97cbd4f73231d702285792064
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d99a3d23959cfdd9bd068fbde3a882eb1bc9b4ae
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285439"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58847298"
 ---
 # <a name="about-sql-server-backup-in-azure-vms"></a>关于 Azure VM 中的 SQL Server 备份
 
@@ -55,7 +55,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 - SQL Server 备份可配置在 Azure 门户或 PowerShell 中。 我们不支持 CLI。
 - 运行 SQL Server 的 VM 需要建立 Internet 连接才能访问 Azure 公共 IP 地址。
-- 不支持 SQL Server Always On 故障转移群集实例 (FCI)。
+- 不支持 SQL Server **故障转移群集实例 (FCI)** 和 SQL Server Always on 故障转移群集实例。
 - 不支持对镜像数据库和数据库快照执行备份和还原操作。
 - 使用多个备份解决方案来备份独立的 SQL Server 实例或 SQL Always on 可用性组可能导致备份失败；避免执行此操作。
 - 如果通过相同或不同的解决方案单独备份可用性组的两个节点，可能也会导致备份失败。 Azure 备份可检测和保护与保管库同一区域内的所有节点。 如果 SQL Server Always on 可用性组跨多个 Azure 区域，请从具有主节点的区域设置备份。 Azure 备份可根据备份首选项检测并保护可用性组中的所有数据库。  

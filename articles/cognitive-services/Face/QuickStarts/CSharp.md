@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: 8ccc5664ab06fe23266915196b98a8dac4f71880
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 40c9fac27f45699d4c56e57480dcfde1b0ffb64d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311913"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629920"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>快速入门：使用人脸 REST API 和 C# 检测图像中的人脸
 
@@ -51,23 +51,28 @@ using System.Text;
 
 ### <a name="add-essential-fields"></a>添加必要的字段
 
-将以下字段添加到 Program 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。
+添加包含以下字段的 **Program** 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `uriBase` 字符串，使之包含正确的区域标识符（如需包含所有区域终结点的列表，请参阅[人脸 API 文档](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)）。
 
 
 ```csharp
-// Replace <Subscription Key> with your valid subscription key.
-const string subscriptionKey = "<Subscription Key>";
+namespace DetectFace
+{
+    class Program
+    {
 
-// NOTE: You must use the same region in your REST call as you used to
-// obtain your subscription keys. For example, if you obtained your
-// subscription keys from westus, replace "westcentralus" in the URL
-// below with "westus".
-//
-// Free trial subscription keys are generated in the "westus" region.
-// If you use a free trial subscription key, you shouldn't need to change
-// this region.
-const string uriBase =
-    "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
+        // Replace <Subscription Key> with your valid subscription key.
+        const string subscriptionKey = "<Subscription Key>";
+
+        // NOTE: You must use the same region in your REST call as you used to
+        // obtain your subscription keys. For example, if you obtained your
+        // subscription keys from westus, replace "westcentralus" in the URL
+        // below with "westus".
+        //
+        // Free trial subscription keys are generated in the "westus" region.
+        // If you use a free trial subscription key, you shouldn't need to change
+        // this region.
+        const string uriBase =
+            "https://westcentralus.api.cognitive.microsoft.com/face/v1.0/detect";
 ```
 
 ### <a name="receive-image-input"></a>接收图像输入
@@ -75,29 +80,33 @@ const string uriBase =
 将以下代码添加到 **Program** 类的 **Main** 方法。 这样会将一个提示写入到控制台，要求用户输入图像 URL。 然后，它会调用另一方法 (**MakeAnalysisRequest**)，在该位置处理图像。
 
 ```csharp
-// Get the path and filename to process from the user.
-Console.WriteLine("Detect faces:");
-Console.Write(
-    "Enter the path to an image with faces that you wish to analyze: ");
-string imageFilePath = Console.ReadLine();
+        static void Main(string[] args)
+        {
 
-if (File.Exists(imageFilePath))
-{
-    try
-    {
-        MakeAnalysisRequest(imageFilePath);
-        Console.WriteLine("\nWait a moment for the results to appear.\n");
-    }
-    catch (Exception e)
-    {
-        Console.WriteLine("\n" + e.Message + "\nPress Enter to exit...\n");
-    }
-}
-else
-{
-    Console.WriteLine("\nInvalid file path.\nPress Enter to exit...\n");
-}
-Console.ReadLine();
+            // Get the path and filename to process from the user.
+            Console.WriteLine("Detect faces:");
+            Console.Write(
+                "Enter the path to an image with faces that you wish to analyze: ");
+            string imageFilePath = Console.ReadLine();
+
+            if (File.Exists(imageFilePath))
+            {
+                try
+                {
+                    MakeAnalysisRequest(imageFilePath);
+                    Console.WriteLine("\nWait a moment for the results to appear.\n");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("\n" + e.Message + "\nPress Enter to exit...\n");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nInvalid file path.\nPress Enter to exit...\n");
+            }
+            Console.ReadLine();
+        }
 ```
 
 ### <a name="call-the-face-detection-rest-api"></a>调用人脸检测 REST API
@@ -107,48 +116,48 @@ Console.ReadLine();
 将在以下步骤中定义帮助程序方法。
 
 ```csharp
-// Gets the analysis of the specified image by using the Face REST API.
-static async void MakeAnalysisRequest(string imageFilePath)
-{
-    HttpClient client = new HttpClient();
+        // Gets the analysis of the specified image by using the Face REST API.
+        static async void MakeAnalysisRequest(string imageFilePath)
+        {
+            HttpClient client = new HttpClient();
 
-    // Request headers.
-    client.DefaultRequestHeaders.Add(
-        "Ocp-Apim-Subscription-Key", subscriptionKey);
+            // Request headers.
+            client.DefaultRequestHeaders.Add(
+                "Ocp-Apim-Subscription-Key", subscriptionKey);
 
-    // Request parameters. A third optional parameter is "details".
-    string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
-        "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
-        "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
+            // Request parameters. A third optional parameter is "details".
+            string requestParameters = "returnFaceId=true&returnFaceLandmarks=false" +
+                "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
+                "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 
-    // Assemble the URI for the REST API Call.
-    string uri = uriBase + "?" + requestParameters;
+            // Assemble the URI for the REST API Call.
+            string uri = uriBase + "?" + requestParameters;
 
-    HttpResponseMessage response;
+            HttpResponseMessage response;
 
-    // Request body. Posts a locally stored JPEG image.
-    byte[] byteData = GetImageAsByteArray(imageFilePath);
+            // Request body. Posts a locally stored JPEG image.
+            byte[] byteData = GetImageAsByteArray(imageFilePath);
 
-    using (ByteArrayContent content = new ByteArrayContent(byteData))
-    {
-        // This example uses content type "application/octet-stream".
-        // The other content types you can use are "application/json"
-        // and "multipart/form-data".
-        content.Headers.ContentType =
-            new MediaTypeHeaderValue("application/octet-stream");
+            using (ByteArrayContent content = new ByteArrayContent(byteData))
+            {
+                // This example uses content type "application/octet-stream".
+                // The other content types you can use are "application/json"
+                // and "multipart/form-data".
+                content.Headers.ContentType =
+                    new MediaTypeHeaderValue("application/octet-stream");
 
-        // Execute the REST API call.
-        response = await client.PostAsync(uri, content);
+                // Execute the REST API call.
+                response = await client.PostAsync(uri, content);
 
-        // Get the JSON response.
-        string contentString = await response.Content.ReadAsStringAsync();
+                // Get the JSON response.
+                string contentString = await response.Content.ReadAsStringAsync();
 
-        // Display the JSON response.
-        Console.WriteLine("\nResponse:\n");
-        Console.WriteLine(JsonPrettyPrint(contentString));
-        Console.WriteLine("\nPress Enter to exit...");
-    }
-}
+                // Display the JSON response.
+                Console.WriteLine("\nResponse:\n");
+                Console.WriteLine(JsonPrettyPrint(contentString));
+                Console.WriteLine("\nPress Enter to exit...");
+            }
+        }
 ```
 
 ### <a name="process-the-input-image-data"></a>处理输入图像数据
@@ -156,84 +165,86 @@ static async void MakeAnalysisRequest(string imageFilePath)
 将以下方法添加到 **Program** 类。 这会将指定 URL 中的图像转换为字节数组。
 
 ```csharp
-// Returns the contents of the specified file as a byte array.
-static byte[] GetImageAsByteArray(string imageFilePath)
-{
-    using (FileStream fileStream =
-        new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
-    {
-        BinaryReader binaryReader = new BinaryReader(fileStream);
-        return binaryReader.ReadBytes((int)fileStream.Length);
-    }
-}
+        // Returns the contents of the specified file as a byte array.
+        static byte[] GetImageAsByteArray(string imageFilePath)
+        {
+            using (FileStream fileStream =
+                new FileStream(imageFilePath, FileMode.Open, FileAccess.Read))
+            {
+                BinaryReader binaryReader = new BinaryReader(fileStream);
+                return binaryReader.ReadBytes((int)fileStream.Length);
+            }
+        }
 ```
 
 ### <a name="parse-the-json-response"></a>分析 JSON 响应
 
-将以下方法添加到 **Program** 类。 这会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。
+将以下方法添加到 **Program** 类。 这会格式化 JSON 输入，使之更加易于读取。 应用会将该字符串数据写入到控制台。 然后即可关闭类和命名空间。
 
 ```csharp
-// Formats the given JSON string by adding line breaks and indents.
-static string JsonPrettyPrint(string json)
-{
-    if (string.IsNullOrEmpty(json))
-        return string.Empty;
-
-    json = json.Replace(Environment.NewLine, "").Replace("\t", "");
-
-    StringBuilder sb = new StringBuilder();
-    bool quote = false;
-    bool ignore = false;
-    int offset = 0;
-    int indentLength = 3;
-
-    foreach (char ch in json)
-    {
-        switch (ch)
+        // Formats the given JSON string by adding line breaks and indents.
+        static string JsonPrettyPrint(string json)
         {
-            case '"':
-                if (!ignore) quote = !quote;
-                break;
-            case '\'':
-                if (quote) ignore = !ignore;
-                break;
-        }
+            if (string.IsNullOrEmpty(json))
+                return string.Empty;
 
-        if (quote)
-            sb.Append(ch);
-        else
-        {
-            switch (ch)
+            json = json.Replace(Environment.NewLine, "").Replace("\t", "");
+
+            StringBuilder sb = new StringBuilder();
+            bool quote = false;
+            bool ignore = false;
+            int offset = 0;
+            int indentLength = 3;
+
+            foreach (char ch in json)
             {
-                case '{':
-                case '[':
+                switch (ch)
+                {
+                    case '"':
+                        if (!ignore) quote = !quote;
+                        break;
+                    case '\'':
+                        if (quote) ignore = !ignore;
+                        break;
+                }
+
+                if (quote)
                     sb.Append(ch);
-                    sb.Append(Environment.NewLine);
-                    sb.Append(new string(' ', ++offset * indentLength));
-                    break;
-                case '}':
-                case ']':
-                    sb.Append(Environment.NewLine);
-                    sb.Append(new string(' ', --offset * indentLength));
-                    sb.Append(ch);
-                    break;
-                case ',':
-                    sb.Append(ch);
-                    sb.Append(Environment.NewLine);
-                    sb.Append(new string(' ', offset * indentLength));
-                    break;
-                case ':':
-                    sb.Append(ch);
-                    sb.Append(' ');
-                    break;
-                default:
-                    if (ch != ' ') sb.Append(ch);
-                    break;
+                else
+                {
+                    switch (ch)
+                    {
+                        case '{':
+                        case '[':
+                            sb.Append(ch);
+                            sb.Append(Environment.NewLine);
+                            sb.Append(new string(' ', ++offset * indentLength));
+                            break;
+                        case '}':
+                        case ']':
+                            sb.Append(Environment.NewLine);
+                            sb.Append(new string(' ', --offset * indentLength));
+                            sb.Append(ch);
+                            break;
+                        case ',':
+                            sb.Append(ch);
+                            sb.Append(Environment.NewLine);
+                            sb.Append(new string(' ', offset * indentLength));
+                            break;
+                        case ':':
+                            sb.Append(ch);
+                            sb.Append(' ');
+                            break;
+                        default:
+                            if (ch != ' ') sb.Append(ch);
+                            break;
+                    }
+                }
             }
+
+            return sb.ToString().Trim();
         }
     }
-
-    return sb.ToString().Trim();
 }
 ```
 

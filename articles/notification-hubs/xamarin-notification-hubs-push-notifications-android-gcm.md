@@ -13,14 +13,14 @@ ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 1/4/2019
+ms.date: 03/28/2019
 ms.author: jowargo
-ms.openlocfilehash: f7088179f43c69fb9f72eacd6ff3703a926cabe2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 79913fc300f2ca66a84cf47c0e5b650b9ea2cc59
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886552"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58878768"
 ---
 # <a name="tutorial-push-notifications-to-xamarinandroid-apps-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向 Xamarin.Android 应用推送通知
 
@@ -28,7 +28,7 @@ ms.locfileid: "57886552"
 
 ## <a name="overview"></a>概述
 
-本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。 创建一个空白 Xamarin.Android 应用，以便使用 Firebase Cloud Messaging (FCM) 接收推送通知。 使用通知中心将推送通知广播到运行应用的所有设备。 [NotificationHubs 应用][GitHub]示例中提供了完成的代码。
+本教程说明如何使用 Azure 通知中心将推送通知发送到 Xamarin.Android 应用程序。 创建一个空白 Xamarin.Android 应用，以便使用 Firebase Cloud Messaging (FCM) 接收推送通知。 使用通知中心将推送通知广播到运行应用的所有设备。 [NotificationHubs 应用](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/Xamarin/GetStartedXamarinAndroid)示例中提供了完成的代码。
 
 在本教程中，我们将执行以下步骤：
 
@@ -112,8 +112,15 @@ ms.locfileid: "57886552"
         </intent-filter>
     </receiver>
     ```
+2. 将以下语句添加到 **application** 元素之前。 
 
-2. 收集有关 Android 应用和通知中心的以下信息：
+    ```xml
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    ```
+1. 收集有关 Android 应用和通知中心的以下信息：
 
    * **侦听连接字符串**：在 [Azure 门户]中的仪表板上，选择“查看连接字符串”。 复制此值的 `DefaultListenSharedAccessSignature` 连接字符串。
    * **中心名称**：中心在 [Azure 门户]中的名称。 例如 *mynotificationhub2*。
@@ -131,13 +138,61 @@ ms.locfileid: "57886552"
 
     ```csharp
     using Android.Util;
+    using Android.Gms.Common;
     ```
-6. 将一个实例变量添加到 `MainActivity.cs*`，用于在运行应用时显示警报对话框：
+6. 将以下属性添加到 MainActivity 类。 TAG 变量将用于在运行应用时显示警报对话框：
 
     ```csharp
     public const string TAG = "MainActivity";
+    internal static readonly string CHANNEL_ID = "my_notification_channel";
     ```
-7. 在 `MainActivity.cs` 中将以下代码添加到 `base.OnCreate(savedInstanceState)` 后面的 `OnCreate`：
+7. 向 MainActivity 类添加以下方法。 它会检查 **Google Play Services** 在设备上是否可用。 
+
+    ```csharp
+    public bool IsPlayServicesAvailable()
+    {
+        int resultCode = GoogleApiAvailability.Instance.IsGooglePlayServicesAvailable(this);
+        if (resultCode != ConnectionResult.Success)
+        {
+            if (GoogleApiAvailability.Instance.IsUserResolvableError(resultCode))
+                Log.Debug(TAG, GoogleApiAvailability.Instance.GetErrorString(resultCode));
+            else
+            {
+                Log.Debug(TAG, "This device is not supported");
+                Finish();
+            }
+            return false;
+        }
+     
+        Log.Debug(TAG, "Google Play Services is available.");
+        return true;
+    }
+    ```
+1. 向用于创建通知通道的 MainActivity 类添加以下方法。
+
+    ```csharp
+    private void CreateNotificationChannel()
+    {
+        if (Build.VERSION.SdkInt < BuildVersionCodes.O)
+        {
+            // Notification channels are new in API 26 (and not a part of the
+            // support library). There is no need to create a notification
+            // channel on older versions of Android.
+            return;
+        }
+     
+        var channelName = CHANNEL_ID;
+        var channelDescription = string.Empty;
+        var channel = new NotificationChannel(CHANNEL_ID, channelName, NotificationImportance.Default)
+        {
+            Description = channelDescription
+        };
+     
+        var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+        notificationManager.CreateNotificationChannel(channel);
+    }
+    ```
+1. 在 `MainActivity.cs` 中将以下代码添加到 `base.OnCreate(savedInstanceState)` 后面的 `OnCreate`：
 
     ```csharp
     if (Intent.Extras != null)
@@ -151,6 +206,9 @@ ms.locfileid: "57886552"
             }
         }
     }
+    
+    IsPlayServicesAvailable();
+    CreateNotificationChannel();
     ```
 8. 创建新类 `MyFirebaseIIDService`（就像创建 `Constants` 类一样）。
 9. 将以下 using 语句添加到 `MyFirebaseIIDService.cs`：
@@ -201,6 +259,9 @@ ms.locfileid: "57886552"
     using Android.App;
     using Android.Util;
     using Firebase.Messaging;
+    using Android.OS;
+    using Android.Support.V4.App;
+    using Build = Android.OS.Build;
     ```
 14. 将以下内容添加到类声明上方，让类从 `FirebaseMessagingService` 继承：
 
@@ -236,12 +297,18 @@ ms.locfileid: "57886552"
         intent.AddFlags(ActivityFlags.ClearTop);
         var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-        var notificationBuilder = new Notification.Builder(this)
+        var notificationBuilder = new NotificationCompat.Builder(this)
                     .SetContentTitle("FCM Message")
                     .SetSmallIcon(Resource.Drawable.ic_launcher)
                     .SetContentText(messageBody)
                     .SetAutoCancel(true)
+                    .SetShowWhen(false)
                     .SetContentIntent(pendingIntent);
+
+        if (Build.VERSION.SdkInt >= BuildVersionCodes.O)
+        {
+            notificationBuilder.SetChannelId(MainActivity.CHANNEL_ID);
+        }
 
         var notificationManager = NotificationManager.FromContext(this);
 
@@ -294,7 +361,7 @@ ms.locfileid: "57886552"
 [Live SDK for Windows]: https://go.microsoft.com/fwlink/p/?LinkId=262253
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-xamarin-android/#create-new-service
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
-[Visual Studio with Xamarin]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
+[将 Visual Studio 与 Xamarin 配合使用]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio for Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
 [Azure 门户]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
@@ -302,4 +369,4 @@ ms.locfileid: "57886552"
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx
 [Use Notification Hubs to push notifications to users]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
 [Use Notification Hubs to send breaking news]: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-[GitHub]: https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/Xamarin/GetStartedXamarinAndroid
+[GitHub]: https://github.com/Azure/azure-notificationhubs-android

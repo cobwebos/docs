@@ -1,20 +1,19 @@
 ---
-title: Apache Kafka 入门 - Azure HDInsight 快速入门
+title: 使用 Azure PowerShell 设置 Apache Kafka on HDInsight - 快速入门
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure PowerShell 创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
-ms.custom: mvc,hdinsightactive
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: 42384d3ef025640e302ef8173a25965580784319
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: c86e5faa212fb6458326e00cba02fbe2ea83c8f7
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361194"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58850328"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 
@@ -83,7 +82,7 @@ New-AzStorageAccount `
         -Location $location
 ```
 
-HDInsight 在 blob 容器中的存储帐户中存储数据。 使用 [New-AzStorageContainer](/powershell/module/Azure.Storage/New-AzStorageContainer) 创建新容器。
+HDInsight 在 blob 容器中的存储帐户中存储数据。 使用 [New-AzStorageContainer](/powershell/module/Az.Storage/New-AzStorageContainer) 创建新容器。
 
 ```powershell
 $containerName = Read-Host -Prompt "Enter the container name"

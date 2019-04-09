@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 0f4f890afd8c698bec8dbd76e8bb8dca710f4d6c
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203304"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58890865"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>使用 Microsoft 身份验证库 (MSAL) 登录用户
 
@@ -140,8 +140,8 @@ if (!isIE) {
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
 
-` acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginPopup`（或 `loginRedirect`）后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用，因为调用请求或续订令牌都以静默方式进行。
-在某些情况下，`acquireTokenSilent` 可能会失败，例如用户的密码已过期。 应用程序可以通过两种方式处理此异常：
+`acquireTokenSilent` 方法处理令牌获取和续订，无需进行任何用户交互。 首次执行 `loginPopup`（或 `loginRedirect`）后，通常使用 `acquireTokenSilent` 方法获取用于访问受保护资源的令牌，以便进行后续调用，因为调用请求或续订令牌都以静默方式进行。
+`acquireTokenSilent` 在某些情况下可能会失败，例如用户的密码已过期。 应用程序可以通过两种方式处理此异常：
 
 1. 立即调用 `acquireTokenPopup`，随后出现用户登录提示。 此模式通常用于联机应用程序，此时应用程序中没有可供用户使用的未经身份验证的内容。 本指导式设置生成的示例使用此模式。
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: a721cc2252619923496ee5a3a8ae590a5cda3b04
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487543"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578112"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -93,13 +93,15 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
 
     此机密使用配置 API 进行访问。 在所有支持的平台上，冒号 (:) 可以在配置 API 的配置名称中使用。 请参阅[按环境进行的配置](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/index?tabs=basicconfiguration&view=aspnetcore-2.0)。
 
-4. 打开 Program.cs 并更新 `CreateWebHostBuilder` 方法以通过调用 `config.AddAzureAppConfiguration()` 方法使用应用程序配置。
+4. 打开 *Program.cs*，并添加对应用程序配置 .NET Core 配置提供程序的引用。
 
     ```csharp
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+5. 通过调用 `config.AddAzureAppConfiguration()` 方法，更新 `CreateWebHostBuilder` 方法以使用应用配置。
 
+    ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
             .ConfigureAppConfiguration((hostingContext, config) =>
@@ -113,7 +115,7 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
             .UseStartup<Startup>();
     ```
 
-5. 在“视图”>“主页”目录中打开 Index.cshtml，并将其内容替换以下代码：
+6. 在“视图”>“主页”目录中打开 Index.cshtml，并将其内容替换以下代码：
 
     ```html
     @using Microsoft.Extensions.Configuration
@@ -139,7 +141,7 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
     </html>
     ```
 
-6. 在“视图”>“共享”目录中打开 _Layout.cshtml，并将其内容替换以下代码：
+7. 在“视图”>“共享”目录中打开 _Layout.cshtml，并将其内容替换以下代码：
 
     ```html
     <!DOCTYPE html>

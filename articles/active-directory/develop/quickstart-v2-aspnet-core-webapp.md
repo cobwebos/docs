@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/03/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fed62dfc3f7e7dc974fb709261e363f26ce97c51
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 0fa2e38a680e8590a89131717136a7960c1d3680
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200984"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903584"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>快速入门：向 ASP.NET Core Web 应用添加 Microsoft 登录功能
 
@@ -40,7 +40,7 @@ ms.locfileid: "58200984"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用注册（预览）](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)。
+> 1. 访问 [Azure 门户 - 应用注册](https://aka.ms/aspnetcore2-1-aad-quickstart-v2)。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
@@ -51,7 +51,8 @@ ms.locfileid: "58200984"
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)” > “新建注册”。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+> 1. 选择“新注册”。
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
 >    - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `AspNetCore-Quickstart`。
 >    - 在“回复 URL”中添加 `https://localhost:44321/`，然后选择“注册”。
@@ -78,7 +79,7 @@ ms.locfileid: "58200984"
 
 1. 将 zip 文件提取到根文件夹中的本地文件夹（例如，**C:\Azure-Samples**）
 1. 如果使用 Visual Studio 2017，请在 Visual Studio 中打开解决方案（可选）。
-1. 编辑 **appsettings.json** 文件。 找到 `ClientId` 并将 `Enter_the_Application_Id_here` 替换为刚注册的应用程序的**应用程序(客户端) ID** 值。 
+1. 编辑 **appsettings.json** 文件。 找到 `ClientId` 并将 `ClientId` 的值更新为刚注册的应用程序的**应用程序(客户端) ID** 值。 
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"
@@ -156,5 +157,5 @@ public void ConfigureServices(IServiceCollection services)
 请参阅此 ASP.NET Core 快速入门的 GitHub 存储库，了解有关详细信息，包括有关如何添加对全新 ASP.NET Core Web 应用程序的身份验证的说明：
 
 > [!div class="nextstepaction"]
-> [ASP.NET Core Web 代码示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
+> [ASP.NET Core Web 应用代码示例](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/)
 

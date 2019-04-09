@@ -13,15 +13,15 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/20/2019
+ms.date: 03/29/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: 88113fee64251344bd84085caedc9dfccfa10933
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351450"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58755906"
 ---
 # <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
 
@@ -44,38 +44,41 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * 将 Azure 媒体服务与 [Azure 认知服务 API](https://docs.microsoft.com/azure/#pivot=products&panel=ai) 配合使用来为视频添加字幕和描述文字，满足更多受众的需求（例如，听力障碍人士或想用不同语言阅读的人）。
 * 启用 Azure CDN 实现大幅度缩放，更好地处理即时高负载（例如在产品发布活动开始时）。 
 
-## <a name="v3-capabilities"></a>v3 功能
+## <a name="how-can-i-get-started-with-v3"></a>如何开始使用 v3？ 
 
-v3 基于一个统一的 API 接口，该接口公开了基于 Azure 资源管理器构建的管理和操作功能。 
+了解如何使用媒体服务 v3 来编码和打包内容、进行视频点播流式处理、实时广播和视频分析。 教程、API 参考和其他文档介绍了如何安全地向数百万用户传送可缩放的点播和直播视频或音频流。
 
-该版本提供以下功能：  
+在开始开发之前，请查看[基本概念](concepts-overview.md)<br/>
 
-* “转换”有助于定义媒体处理或分析任务的简单工作流。 “转换”是处理视频和音频文件的一种方法。 可以通过将作业提交到“转换”，重复应用“转换”来处理内容库中的所有文件。
-* “作业”用于处理（编码或分析）视频。 可以使用 HTTPS、URL、SAS URL 或位于 Azure Blob 存储中的文件路径，在作业上指定输入内容。 目前，AMS v3 不支持基于 HTTPS URL 的块传输编码。
-* “通知”用于监视作业进度或状态，或实时事件启动/停止和错误事件。 “通知”与 Azure 事件网格通知系统集成。 在 Azure 媒体服务中可以轻松订阅多个资源的事件。 
-* **Azure 资源管理**模板可用于创建和部署转换、流式处理终结点、实时事件等等。
-* 可在资源级别设置**基于角色的访问控制**，从而锁定对特定资源（如转换、实时事件等）的访问。
-* 多种语言的客户端 SDK：.NET、.NET core、Python、Go、Java 和 Node.js。
+### <a name="quickstarts"></a>快速入门  
 
-## <a name="naming-conventions"></a>命名约定
+快速入门向新客户展示基本的第 1 天使用说明，以便快速试用媒体服务。
 
-Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵循 Azure 资源管理器命名约束。 根据 Azure 资源管理器的要求，资源名称始终必须唯一。 因此，可以为资源名称使用任何唯一的标识符字符串（例如，GUID）。 
+* [对视频文件进行流式处理 - .NET](stream-files-dotnet-quickstart.md)
+* [对视频文件进行流式处理 - CLI](stream-files-cli-quickstart.md)
+* [对视频文件进行流式处理 - Node.js](stream-files-nodejs-quickstart.md)
+    
+### <a name="tutorials"></a>教程 
 
-媒体服务资源名称不能包含“<”、“>”、“%”、“&”、“:”、“&#92;”、“?”、“/”、“*”、“+”、“.”、单引号或任何控制字符。 允许其他所有字符。 资源名称的最大长度为 260 个字符。 
+教程演示一些顶级媒体服务任务的基于方案的过程。
 
-有关 Azure 资源管理器命名的详细信息，请参阅：[命名需求](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)和[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)。
+* [对远程文件和流视频进行编码 - REST](stream-files-tutorial-with-rest.md)
+* [对上传的文件和流视频进行编码 - .NET](stream-files-tutorial-with-api.md)
+* [实时流 - .NET](stream-live-tutorial-with-api.md)
+* [分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+* [AES-128 动态加密 - .NET](protect-with-aes128.md)
+    
+### <a name="how-to-guides"></a>操作指南
 
-## <a name="v3-api-design-principles"></a>v3 API 设计原则
+文章中包含的示例演示如何完成某项任务。 在此部分可以找到许多示例，下面只是其中的一些示例：
 
-V3 API 的主要设计原则之一是使 API 更安全。 v3 API 不在 **Get** 或 **List** 操作中返回机密或凭据。 在响应中，密钥始终为 null、空值或进行了净化。 你需要调用单独的操作方法来获取机密或凭据。 当某些 API 会检索/显示机密而另一些 API 不会这样做时，可以使用单独的操作设置不同的 RBAC 安全权限。 有关如何使用 RBAC 管理访问权限的信息，请参阅[使用 RBAC 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)。
-
-此类示例包括 
-
-* 不在 StreamingLocator 的 Get 中返回 ContentKey 值， 
-* 不在 ContentKeyPolicy 的 Get 中返回限制密钥， 
-* 不返回作业的 HTTP 输入 URL 的查询字符串部分（删除签名）。
-
-请参阅[获取内容密钥策略 - .NET](get-content-key-policy-dotnet-howto.md) 示例。
+* [创建帐户 - CLI](create-account-cli-how-to.md)
+* [访问 API - CLI](access-api-cli-how-to.md)
+* [开始使用 SDK 进行开发](developers-guide.md)
+* [在将 HTTPS 作为作业输入的情况下进行编码 - .NET](job-input-from-http-how-to.md)  
+* [监视事件 - 门户](monitor-events-portal-how-to.md)
+* [通过多重 DRM 进行动态加密 - .NET](protect-with-drm.md) 
+* [如何对自定义转换进行编码 - CLI](custom-preset-cli-howto.md)
 
 ## <a name="next-steps"></a>后续步骤
 

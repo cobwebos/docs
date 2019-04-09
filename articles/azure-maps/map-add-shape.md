@@ -9,20 +9,24 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 2582b277238bbfbda29156c857e7bd91cf6fe059
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: MT
+ms.openlocfilehash: 43406aee8d2e350b82659156bb2837e952fd4a92
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579285"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057018"
 ---
 # <a name="add-a-shape-to-a-map"></a>向地图添加形状
 
-本文介绍如何将[形状](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)添加到地图，并更新地图上现有形状的属性。
+本文介绍了如何呈现地图使用线条和多边形层上的几何图形。 Azure Maps Web SDK 还支持创建圆形几何中定义[扩展的 GeoJSON 架构](extend-geojson.md#circle)。 所有功能几何图形还可以轻松地都更新如果与包装[形状](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest)类。
 
 <a id="addALine"></a>
 
-## <a name="add-a-line"></a>添加线条
+## <a name="add-lines-to-the-map"></a>将行添加到代码图
+
+`LineString` 和`MultiLineString`功能用于表示路径并在地图上的概述。
+
+## <a name="use-a-line"></a>使用行
 
 <iframe height='500' scrolling='no' title='向地图添加线条' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a>（向地图添加线条）。
 </iframe>
@@ -33,7 +37,7 @@ ms.locfileid: "58579285"
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 呈现 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的线条对象。 最后一个代码块创建一个线条层并将其添加到地图。 请参阅 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和线条层并将其添加到地图，以确保完全加载地图后显示该线条。
 
-## <a name="add-symbols-along-a-line"></a>添加沿着一条线的符号
+### <a name="add-symbols-along-a-line"></a>添加沿着一条线的符号
 
 此示例演示如何在地图上添加沿着一条线的箭头图标。 当使用符号层设置为"行"的"放置"选项时，这将呈现直线符号并旋转图标 (0 度 = right)。
 
@@ -43,7 +47,17 @@ ms.locfileid: "58579285"
 请参阅笔<a href='https://codepen.io/azuremaps/pen/drBJwX/'>沿行显示箭头</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="customize-a-line-layer"></a>自定义线条层
+### <a name="line-stroke-gradient"></a> 将笔划渐变添加到行
+
+除了能够将单个笔画颜色应用到的行之外还可以使用渐变的颜色以显示一条线段从过渡到下一步中填充行。 例如，可以使用行渐变来表示随时间和距离或不同的温度的更改，跨连接的直线的对象。 若要将此功能应用于行，数据源必须具有`lineMetrics`选项设置为 true，并随后的颜色渐变的表达式可以传递到`strokeColor`行的选项。 笔划渐变表达式具有到引用`['line-progress']`公开为表达式计算出来的曲线指标数据表达式。
+
+<br/>
+
+<iframe height="265" style="width: 100%;" scrolling="no" title="笔划渐变线" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+请参阅笔<a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>笔划渐变线</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
+</iframe>
+
+### <a name="customize-a-line-layer"></a>自定义线条层
 
 线条层有多个样式选项。 以下工具可用来试用这些选项。
 
@@ -52,26 +66,15 @@ ms.locfileid: "58579285"
 <iframe height='700' scrolling='no' title='线条层选项' src='//codepen.io/azuremaps/embed/GwLrgb/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/GwLrgb/'>线条层选项</a>。
 </iframe>
 
-<a id="addACircle"></a>
-
-## <a name="add-a-circle"></a>添加圆圈
-
-<iframe height='500' scrolling='no' title='向地图添加圆圈' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a>（向地图添加圆圈）。
-</iframe>
-
-上述代码中的第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
-
-在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 圆是 [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 的[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，其中将 `subType` 属性设置为“圆”并计量 `radius` 属性值。 将子类型为“圆”的 Point 特征添加到数据源后，会将其转换为地图内的环状多边形。
-
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和多边形层并将其添加到地图，以确保完全加载地图后显示该圆。
-
 <a id="addAPolygon"></a>
 
-## <a name="add-a-polygon"></a>添加多边形
+## <a name="add-a-polygon-to-the-map"></a>向地图添加多边形
 
-可通过两种不同的方法将多边形添加到地图。 以下示例介绍了这两种方法。
+`Polygon` 和`MultiPolygon`功能通常用于表示在地图上的区域。 
 
-### <a name="use-polygon-layer"></a>使用多边形层 
+### <a name="use-a-polygon-layer"></a>使用多边形层 
+
+多边形层可呈现多边形的面积。 
 
 <iframe height='500' scrolling='no' title='向地图添加多边形 ' src='//codepen.io/azuremaps/embed/yKbOvZ/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/yKbOvZ/'>Add a polygon to a map</a>（向地图添加多边形）。
 </iframe>
@@ -82,7 +85,9 @@ ms.locfileid: "58579285"
 
 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和多边形层并将其添加到地图，以确保完全加载地图后显示该多边形。
 
-### <a name="use-polygon-and-line-layer"></a>使用多边形和线条层
+### <a name="use-a-polygon-and-line-layer-together"></a>一起使用的多边形和线层
+
+线条层可用于呈现轮廓的多边形。 
 
 <iframe height='500' scrolling='no' title='用于添加多边形的多边形和线条层' src='//codepen.io/azuremaps/embed/aRyEPy/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 中有关通过 Azure Maps 创建<a href='https://codepen.io/azuremaps/pen/aRyEPy/'>用于添加多边形的多边形和线层</a>的文章 (<a href='https://codepen.io/azuremaps'>@azuremaps</a>)。
 </iframe>
@@ -95,7 +100,10 @@ ms.locfileid: "58579285"
 
 最后一个代码块将多边形和线条层添加到地图。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和层并将其添加到地图，以确保完全加载地图后显示该多边形。
 
-## <a name="fill-a-polygon-with-a-pattern"></a>用图案填充多边形
+> [!TIP]
+> 线条层默认情况下将呈现为数据源中的行或多边形的坐标。 若要限制层，以便它仅呈现 LineString 功能集`filter`到层的属性`['==', ['geometry-type'], 'LineString']`或`['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`如果你想要包括 MultiLineString 的功能。
+
+### <a name="fill-a-polygon-with-a-pattern"></a>用图案填充多边形
 
 除了使用一种颜色填充多边形还可以使用映像模式。 加载到地图图像子画面资源映像模式，然后引用此映像`fillPattern`多边形层属性。
 
@@ -105,7 +113,7 @@ ms.locfileid: "58579285"
 请参阅笔<a href='https://codepen.io/azuremaps/pen/JzQpYX/'>多边形填充图案</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
-## <a name="customize-a-polygon-layer"></a>自定义多边形层
+### <a name="customize-a-polygon-layer"></a>自定义多边形层
 
 多边形层只有几个样式选项。 以下工具可用来试用这些选项。
 
@@ -114,10 +122,41 @@ ms.locfileid: "58579285"
 <iframe height='700' scrolling='no' title='LXvxpg' src='//codepen.io/azuremaps/embed/LXvxpg/?height=700&theme-id=0&default-tab=result' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/LXvxpg/'>LXvxpg</a>。
 </iframe>
 
-## <a name="update-a-shape"></a>更新形状
+<a id="addACircle"></a>
 
-Shape 类包装[几何图形](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，以便可以轻松更新和维护它们。
-`new Shape(data: Feature<data.Geometry, any>)` 构造 shape 对象，并使用指定的特征将其初始化。
+## <a name="add-a-circle-to-the-map"></a>向映射添加一个圆圈
+
+Azure Maps 使用 GeoJSON 架构提供圆圈所述的定义的扩展的版本[此处](extend-geojson.md#circle)。 可以通过创建代码图上呈现一个圆圈`Point`具有的功能`subType`属性值为`Circle`和一个`radius`属性，其中包含大量表示以米为单位的半径。 例如：
+
+```javascript
+{
+    "type": "Feature",
+    "geometry": {
+        "type": "Point",
+        "coordinates": [-122.126986, 47.639754]
+    },
+    "properties": {
+        "subType": "Circle",
+        "radius": 100
+    }
+}  
+```
+
+Azure Maps Web SDK 将这些数据转换`Pooint`功能到`Polygon`功能在后台，并可以使用多边形和线图层，如下所示在地图上呈现。
+
+<iframe height='500' scrolling='no' title='向地图添加圆圈' src='//codepen.io/azuremaps/embed/PRmzJX/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/PRmzJX/'>Add a circle to a map</a>（向地图添加圆圈）。
+</iframe>
+
+上述代码中的第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
+
+在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 圆是 [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 的[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，其中将 `subType` 属性设置为“圆”并计量 `radius` 属性值。 将子类型为“圆”的 Point 特征添加到数据源后，会将其转换为地图内的环状多边形。
+
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和多边形层并将其添加到地图，以确保完全加载地图后显示该圆。
+
+## <a name="make-a-geometry-easy-to-update"></a>轻松地更新几何图形
+
+一个`Shape`类包装[Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)并使其易于更新和维护它们。
+`new Shape(data: Feature<data.Geometry, any>)` 构造形状对象并初始化与指定的功能。
 
 <br/>
 

@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 空间定位点和 Azure Cosmos DB 后端在会话和设备间进行共享 | Microsoft Docs
+title: 教程 - 使用 Azure Cosmos DB 后端在会话和设备间共享 Azure 空间定位点 | Microsoft Docs
 description: 在本教程中，你会了解如何使用后端服务和 Azure Cosmos DB 在 Unity 中的 Android/iOS 设备间共享 Azure 空间定位点标识符。
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 0e7011b9778221869940b137a2b87239f2d8db9b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: d955654eee1d02994f303b6270b156eb9a61c29b
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286391"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58915248"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors-and-an-azure-cosmos-db-back-end"></a>教程：使用 Azure 空间定位点和 Azure Cosmos DB 后端在会话和设备间进行共享
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices-with-an-azure-cosmos-db-back-end"></a>教程：使用 Azure Cosmos DB 后端在会话和设备间共享 Azure 空间定位点
 
-在本教程中，你会了解如何使用 [Azure 空间定位点](../overview.md)：
-
-- 在一个会话期间创建定位点，然后在相同或不同设备上的另一个会话期间查找它们。 例如，第二个会话可能是在不同的日期。
-- 创建可以由多个设备同时在相同位置查找的定位点。
+本教程介绍如何在一个会话期间使用 [Azure 空间定位点](../overview.md)来创建定位点，然后在另一会话期间在相同或不同设备上查找它们。 例如，第二个会话可能是在不同的日期。 也可由多个设备同时在相同位置查找这些相同的定位点。
 
 ![演示对象持久性的 GIF](./media/persistence.gif)
 
@@ -73,7 +70,7 @@ ms.locfileid: "58286391"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，使用了 Azure Cosmos DB 在设备间共享定位点标识符。 若要了解有关 Azure 空间定位点库的详细信息，请继续阅读我们有关如何创建并找到定位点的教程。
+在本教程中，使用了 Azure Cosmos DB 在设备间共享定位点标识符。 若要深入了解如何在新 Android 应用中使用 Azure 空间定位点，请继续学习下一教程。
 
 > [!div class="nextstepaction"]
-> [使用 Azure 空间定位点创建并找到定位点](../create-locate-anchors-overview.md)
+> [启动新的 Android 应用](./tutorial-new-android-app.md)

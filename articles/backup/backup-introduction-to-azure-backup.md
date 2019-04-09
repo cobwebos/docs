@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 01/31/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ca50c7cbbcccadf96641c28e43f7da48421c8f3b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 98acb6c5b83ce31046b50f744492c518cdf77498
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994419"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58621645"
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure 备份功能概述
 Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 Microsoft 云端数据。 Azure 备份将现有的本地或异地备份解决方案替换为安全可靠、性价比高的云端解决方案。 Azure 备份提供多个组件，可将其下载并部署到适当的计算机、服务器或云中。 依据要保护的内容选择部署的组件或代理。 无论是保护本地数据还是云端数据，所有 Azure 备份组件均可用于将数据备份到 Azure 的恢复服务保管库中。 请参阅本文稍后部分的 [Azure 备份组件表格](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use)，了解保护特定数据、应用程序或工作负荷所用的组件。
@@ -37,7 +37,11 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 
 **无限数据传输** - Azure 备份不会限制传输的入站或出站数据量。 Azure 备份也不会对传输的数据收费。 但如果使用 Azure 导入/导出服务来导入大量数据，则入站数据将产生相关费用。 有关此费用的详细信息，请参阅 [Azure 备份中的脱机备份工作流](backup-azure-backup-import-export.md)。 出站数据是指还原操作期间从恢复服务保管库传输的数据。
 
-**数据加密** - 该服务允许在公有云中安全地传输和存储数据。 加密通行短语存储在本地，绝不会传输或存储到 Azure 中。 如有必要还原任何数据，只需具有加密密码或密钥即可。
+**数据加密**：
+- 使用 AES256 在本地计算机上对本地传输数据进行加密。 传输的数据受存储和备份之间的 HTTPS 保护。 iSCSI 协议可保护在备份和用户计算机之间传输的数据。 安全隧道用于保护 iSCSI 通道。
+- 进行从本地到 Azure 的备份时，使用你在设置备份时提供的通行短语对 Azure 中的数据进行静态加密。 通行短语或密钥绝不会传输或存储到 Azure 中。 如有必要还原任何数据，只需具有加密密码或密钥即可。
+- 对于 Azure VM，使用存储服务加密 (SSE) 对数据进行静态加密。 备份会在存储数据之前自动加密数据。 Azure 备份会在检索数据之前解密数据。
+- 备份也支持使用 Azure 磁盘加密 (ADE) 进行加密的 Azure VM。 [了解详细信息](backup-azure-vms-introduction.md#encryption-of-azure-vm-backups)。
 
 **应用程序一致性备份** - 应用程序一致性备份意味着恢复点包含还原备份副本所需的所有数据。 Azure 备份提供了应用程序一致性备份，确保了还原数据时无需额外的修补程序。 还原应用程序一致型数据可减少还原时间，因此可快速恢复到运行状态。
 
@@ -86,7 +90,7 @@ Azure 备份是基于 Azure 的服务，可用于备份（或保护）和还原 
 Azure 备份 (MARS) 代理 | 否（仅限基于 Windows 的代理）
 System Center DPM | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM
 Azure 备份服务器 | 在 Hyper-V 和 VMWare 上对 Linux 来宾 VM 进行文件一致性备份<br/><br/> 对 Hyper-V 和 VMWare Linux 来宾 VM 进行 VM 还原</br></br> 文件一致性备份不适用于 Azure VM
-Azure IaaS VM 备份 | 应用一致性备份，使用[前脚本和后脚本框架](backup-azure-linux-app-consistent.md)<br/><br/> [文件级恢复](backup-azure-restore-files-from-vm.md)<br/><br/> [从还原的磁盘创建 VM](backup-azure-arm-restore-vms.md#create-new-restore-disks)<br/><br/> [从恢复点创建 VM](backup-azure-arm-restore-vms.md#create-new-create-a-vm)。
+Azure IaaS VM 备份 | 应用一致性备份，使用[前脚本和后脚本框架](backup-azure-linux-app-consistent.md)<br/><br/> [文件级恢复](backup-azure-restore-files-from-vm.md)<br/><br/> [从还原的磁盘创建 VM](backup-azure-arm-restore-vms.md#restore-disks)<br/><br/> [从恢复点创建 VM](backup-azure-arm-restore-vms.md#create-a-vm)。
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>将高级存储 VM 与 Azure 备份配合使用
 Azure 备份会保护高级存储 VM。 Azure 高级存储是基于固态硬盘 (SSD) 的存储，用于支持 I/O 密集型工作负荷。 高级存储很适合虚拟机 (VM) 工作负荷。 有关高级存储和其他磁盘类型的详细信息，请参阅[选择磁盘类型](../virtual-machines/windows/disks-types.md)一文。

@@ -10,14 +10,14 @@ ms.subservice: content-moderator
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: sajagtap
-ms.openlocfilehash: cc8cbc19f416e6e80d2d0fdfb4862536da7f0ce2
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.openlocfilehash: 09fd58fa33873c06ac5dab4970af199bc3030479
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312236"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756536"
 ---
-# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析文本内容中是否存在令人反感的材料 
+# <a name="quickstart-analyze-text-content-for-objectionable-material-in-c"></a>快速入门：使用 C# 分析文本内容中是否存在令人反感的材料
 
 本文中的信息和代码示例有助于你完成[适用于 .NET 的内容审查器 SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) 的使用入门。 本文将介绍如何对文本内容执行基于字词的筛选和分类，以便审查其中是否存在可能会令人反感的材料。
 
@@ -74,7 +74,7 @@ These are all UK phone numbers, the last two being Microsoft UK support numbers:
 将以下代码添加到 Main 方法。 **ScreenText** 方法是重要的操作， 其参数指定将要执行的内容审查操作。 在此示例中，该方法配置为：
 - 检测文本中可能存在的猥亵语言。
 - 规范化文本和自动更正错别字。
-- 检测个人身份信息 (PII)，例如美国和英国的电话号码、电子邮件地址和美国邮寄地址。
+- 检测个人数据，例如美国和英国的电话号码、电子邮件地址和美国邮寄地址。
 - 使用基于机器学习的模型将文本分为三类。
 
 若要详细了解这些操作的功能，请单击[后续步骤](#next-steps)部分的链接。

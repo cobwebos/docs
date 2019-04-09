@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: b9f153aa2da32fac2bf2e64f9fc4cd469acb0b89
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5d89051ef479cf9d87ca8f921e05c6d0be12b8c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007499"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892171"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>教程：在 Azure 容器注册表中更新基础映像时自动化容器映像生成 
 
@@ -79,7 +79,7 @@ GIT_PAT=<personal-access-token> # The PAT you generated in the second tutorial
 
 在以下部分，我们将创建一个任务，在基础映像 Dockerfile 中更新 `NODE_VERSION` 值，并使用 ACR 任务来生成基础映像。 ACR 任务将新基础映像推送到注册表时，它会自动触发应用程序映像的生成。 可选择本地运行应用程序容器映像，在生成的映像中查看不同版本字符串。
 
-在本教程中，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)（目前为预览版），使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
+在本教程中，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)，使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
 
 ## <a name="build-the-base-image"></a>生成基础映像
 

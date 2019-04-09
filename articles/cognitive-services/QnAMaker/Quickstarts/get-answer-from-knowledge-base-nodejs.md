@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: f055ecdcc157a9ecf1a564913b0a4f889364b427
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a1caec1cd0c05fbc306b1a19c88fbe469be7fa6d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57309819"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881743"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>使用 Node.js 从知识库获取问题的答案
 
@@ -56,7 +56,7 @@ ms.locfileid: "57309819"
 
 [!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
 
-`Authorization` 标头的值包括字符串 `EndpointKey `。 
+`Authorization` 标头的值包括字符串 `EndpointKey`。 
 
 ## <a name="install-the-dependencies"></a>安装依赖项
 

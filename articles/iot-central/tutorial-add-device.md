@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 5d9e33e5cf4c8a7d5b8085e1e2ff8f4bde3274b7
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
+ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57770895"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58793475"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
@@ -50,13 +50,13 @@ ms.locfileid: "57770895"
 
    ![显示“连接的空调”的 Device Explorer 页](media/tutorial-add-device/explorer.png)
 
-   “Device Explorer”会显示“连接的空调”设备模板，以及当构建人员创建该设备模板时自动创建的模拟设备。
+   **Device Explorer** 显示“连接的空调”设备模板和模拟设备。 当你创建设备模板时，IoT Central 会自动创建模拟设备。
 
 2. 若要开始连接真实的连接空调设备，请依次选择“+”、“真实”：
 
    ![开始添加新的真实连接空调设备](media/tutorial-add-device/newreal.png)
 
-3. 输入设备 ID（应小写）或使用建议的设备 ID。也可输入新设备的名称，然后选择“创建”。
+3. 输入设备 ID（应小写）或使用建议的设备 ID。 也可输入新设备的名称，然后选择“创建”。
 
    ![重命名设备](media/tutorial-add-device/rename.png)
 
@@ -68,7 +68,7 @@ ms.locfileid: "57770895"
 
     ![设置显示正在同步](media/tutorial-add-device/settingssyncing.png)
 
-2. 在新的、真实的已连接空调设备的“属性”页上，服务位置和上次维修日期都是设备的可编辑属性。 在设备连接到应用程序之前，序列号和固件版本字段为空。 这些是从设备发送的只读值，不能进行编辑。
+2. 在真实的新设备的“属性”页上，服务位置和上次维修日期都是可编辑属性。 在设备连接到应用程序之前，序列号和固件版本字段为空。 这些只读值是从设备发送的，不能进行编辑。
 
     ![真实设备的设备属性](media/tutorial-add-device/setproperties1.png)
 
@@ -76,11 +76,11 @@ ms.locfileid: "57770895"
 
 ## <a name="generate-connection-string"></a>生成连接字符串
 
-设备开发人员需在设备上运行的代码中嵌入真实设备的连接字符串。 该连接字符串可让设备安全连接到 Azure IoT Central 应用程序。 在后续步骤中，请在准备以 Node.js 编写的客户端代码时生成连接字符串。 此 Node.js 应用程序表示真实的已连接空调。 
+设备开发人员需在设备上运行的代码中嵌入真实设备的连接字符串。 该连接字符串可让设备安全连接到应用程序。 以下步骤演示如何生成连接字符串并准备客户端 Node.js 代码。
 
 ## <a name="prepare-the-client-code"></a>准备客户端代码
 
-本文中的代码示例是以 [Node.js](https://nodejs.org/) 编写的，其中演示了用于实现以下目的的不多不少的代码：
+本文中的示例代码是以 [Node.js](https://nodejs.org/) 编写的，演示了如何通过足够的代码执行以下操作：
 
 * 以设备的形式连接到 Azure IoT Central 应用程序。
 * 以连接的空调设备形式发送温度遥测数据。
@@ -88,7 +88,7 @@ ms.locfileid: "57770895"
 * 对使用“设置温度”设置的操作员做出响应。
 * 处理从 Azure IoT Central 应用程序发出的回显命令。
 
-[后续步骤](#next-steps)部分提到的“操作说明”文章提供了更多完整示例，并介绍了其他编程语言的用法。 有关设备如何连接到 Azure IoT Central 的详细信息，请参阅[设备连接](concepts-connectivity.md)一文。
+[后续步骤](#next-steps)部分列出的文章包含更多完整示例，并介绍了其他编程语言。 有关设备如何连接到 Azure IoT Central 的详细信息，请参阅[设备连接](concepts-connectivity.md)一文。
 
 以下步骤说明如何准备 [Node.js](https://nodejs.org/) 示例：
 
@@ -163,7 +163,7 @@ ms.locfileid: "57770895"
 
 ## <a name="review-client-code"></a>评审客户端代码
 
-在上一部分，我们为某个应用程序创建了一个要与 Azure IoT Central 应用程序相连接的主干 Node.js 项目。 在本部分，我们将添加代码来实现以下目的：
+在上一部分，我们为某个应用程序创建了一个要与 Azure IoT Central 应用程序相连接的主干 Node.js 项目。 下一步是添加用于执行以下操作的代码：
 
 * 连接到 Azure IoT Central 应用程序。
 * 将遥测数据发送到 Azure IoT Central 应用程序。
@@ -300,7 +300,8 @@ ms.locfileid: "57770895"
 
 ## <a name="configure-client-code"></a>配置客户端代码
 
-<!-- Add the connection string to the sample code, build, and run -->要配置客户端代码以连接到 Azure IoT Central 应用程序，需要添加本教程前面记下的真实设备连接字符串。
+<!-- Add the connection string to the sample code, build, and run -->
+若要配置客户端代码以连接到 Azure IoT Central 应用程序，需要添加本教程前面记下的真实设备连接字符串。
 
 1. 在 **ConnectedAirConditioner.js** 文件中找到以下代码行：
 
@@ -365,10 +366,8 @@ ms.locfileid: "57770895"
 
 以设备开发人员身份了解如何：
 
-* [准备和连接 DevKit](howto-connect-devkit.md)
-* [准备和连接 Raspberry Pi](howto-connect-raspberry-pi-python.md)
+* [准备和连接 DevKit 设备 (C)](howto-connect-devkit.md)
+* [准备和连接 Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
+* [准备和连接 Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
+* [准备和连接 Windows 10 IoT Core 设备 (C#)](howto-connect-windowsiotcore.md)
 * [将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
-* [自定义代码][lnk-nodejs-device-ref]
-
-
-[lnk-nodejs-device-ref]: /javascript/api/azure-iot-device/?view=azure-iot-typescript-latest

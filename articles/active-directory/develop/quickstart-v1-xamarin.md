@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2e25848359de91d67925f49901c6c170978ea592
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b0a20c2e6524b0c466f5c45578e0ba8eaad351ea
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58078697"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58881879"
 ---
 # <a name="quickstart-build-a-xamarin-app-that-integrates-microsoft-sign-in"></a>快速入门：构建集成 Microsoft 登录的 Xamarin 应用
 
@@ -72,25 +72,25 @@ ms.locfileid: "58078697"
 
 1. 使用包管理器控制台将 ADAL 添加到 DirectorySearcher 项目。
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirectorySearcherLib
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Android
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Desktop
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-iOS
-    `
+    ```
 
-    `
+    ```
     PM> Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory -ProjectName DirSearchClient-Universal
-    `
+    ```
 
     注意每个项目中添加了两个库：ADAL 的 PCL 部分，和特定于平台的部分。
 2. 在 DirectorySearcherLib 项目中，打开 DirectorySearcher.cs。
@@ -104,7 +104,7 @@ ms.locfileid: "58078697"
 
 几乎所有的应用的身份验证逻辑都位于 `DirectorySearcher.SearchByAlias(...)`。 在特定于平台的项目中，所要做的一切就是将上下文参数传递到 `DirectorySearcher` PCL。
 
-1. 打开 DirectorySearcher.cs，然后将一个新参数添加到 `SearchByAlias(...)` 方法。 `IPlatformParameters` 是上下文参数，用于封装 ADAL 需要对其执行身份验证的特定于平台的对象。
+1. 打开 DirectorySearcher.cs，并将一个新参数添加到 `SearchByAlias(...)` 方法。 `IPlatformParameters` 是上下文参数，用于封装 ADAL 需要对其执行身份验证的特定于平台的对象。
 
     ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)

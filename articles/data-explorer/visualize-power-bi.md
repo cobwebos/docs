@@ -3,21 +3,21 @@ title: 教程：在 Power BI 中可视化 Azure 数据资源管理器中的数�
 description: 在本教程中，你将学习如何使用 Power BI 连接到 Azure 数据资源管理器，并可视化数据。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 09/24/2018
-ms.openlocfilehash: c04c9d9618cfc507ebdba170e0697aeaeecb1e99
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: f253911c1830e606dd47b64aaea1f17cb3478cd5
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51854095"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757741"
 ---
 # <a name="tutorial-visualize-data-from-azure-data-explorer-in-power-bi"></a>教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据
 
-Azure 数据资源管理器是一项快速且高度可缩放的数据浏览服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 在本教程中，首先了解 Azure 数据资源管理器中视觉对象的呈现方式。 然后使用 Power BI 连接到 Azure 数据资源管理器，生成基于示例数据的报表，并将报表发布到 Power BI 服务。
+Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。 在本教程中，首先了解 Azure 数据资源管理器中视觉对象的呈现方式。 然后使用 Power BI 连接到 Azure 数据资源管理器，生成基于示例数据的报表，并将报表发布到 Power BI 服务。
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。 如果没有注册 Power BI Pro，请在开始之前[注册免费试用版](https://app.powerbi.com/signupredirect?pbi_source=web)。
 

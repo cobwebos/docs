@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: pryerram
 ms.custom: mvc
-ms.openlocfilehash: c66a7d7af2a73e26878b92f34e0f42ce0b3ae7f2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: fb17afa4bfe8c00c91cc8fb33ab3326452065a9e
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437491"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885411"
 ---
 # <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>教程：将 Azure Key Vault 与通过 .NET 编写的 Windows 虚拟机配合使用
 
@@ -38,7 +38,7 @@ Azure Key Vault 用于保护机密，例如访问应用程序、服务和 IT 资
 
 在开始之前，请阅读 [Key Vault 的基本概念](key-vault-whatis.md#basic-concepts)。 
 
-如果还没有 Azure 订阅，可以创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -77,11 +77,11 @@ Azure 资源组是在其中部署和管理 Azure 资源的逻辑容器。
 az group create --name "<YourResourceGroupName>" --location "West US"
 ```
 
-本教程通篇使用新创建的资源组。
+本教程通篇使用新建的资源组。
 
 ## <a name="create-a-key-vault"></a>创建 key vault
 
-若要在上一步创建的资源组中创建密钥保管库，请提供以下信息：
+若要在上一步创建的资源组中创建 Key Vault，请提供以下信息：
 
 * Key Vault 名称：由 3 到 24 个字符构成的字符串，可以包含数字 (0-9)、字母 (a-z, A-Z) 和连字符 (-)
 * 资源组名称
@@ -90,13 +90,13 @@ az group create --name "<YourResourceGroupName>" --location "West US"
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
 ```
-目前，只有你的 Azure 帐户才有权对这个新的密钥保管库执行操作。
+目前，只有你的 Azure 帐户才有权对这个新的 Key Vault 执行操作。
 
 ## <a name="add-a-secret-to-the-key-vault"></a>向密钥保管库添加机密
 
 我们将添加机密以帮助说明这是如何工作的。 机密可以是 SQL 连接字符串，或者需要安全保存的、可供应用程序使用的其他任何信息。
 
-若要在名为 **AppSecret** 的密钥保管库中创建机密，请输入以下命令：
+若要在名为 **AppSecret** 的 Key Vault 中创建机密，请输入以下命令：
 
 ```azurecli
 az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --value "MySecret"
@@ -105,20 +105,20 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 此机密将存储值 **MySecret**。
 
 ## <a name="create-a-virtual-machine"></a>创建虚拟机
-可以使用以下某个方法创建虚拟机：
+可以使用以下方法之一创建虚拟机：
 
 * [Azure CLI](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-cli)
 * [PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-powershell)
 * [Azure 门户](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
 
 ## <a name="assign-an-identity-to-the-vm"></a>为 VM 分配标识
-在此步骤中，请为虚拟机创建一个系统分配标识，方法是在 Azure CLI 中运行以下命令：
+在此步骤中，请通过在 Azure CLI 中运行以下命令，为虚拟机创建系统分配的标识：
 
 ```azurecli
 az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourResourceGroupName>
 ```
 
-记下在以下代码中显示的系统分配标识。 以上命令的输出将为： 
+记下以下代码中显示的系统分配的标识。 以上命令的输出为： 
 
 ```azurecli
 {
@@ -128,7 +128,7 @@ az vm identity assign --name <NameOfYourVirtualMachine> --resource-group <YourRe
 ```
 
 ## <a name="assign-permissions-to-the-vm-identity"></a>为 VM 标识分配权限
-现在可以运行以下命令，为此前创建的标识分配密钥保管库访问权限：
+现在可以运行以下命令，将前面创建的标识权限分配到 Key Vault：
 
 ```azurecli
 az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssignedIdentity> --secret-permissions get list
@@ -148,7 +148,7 @@ az keyvault set-policy --name '<YourKeyVaultName>' --object-id <VMSystemAssigned
 
 可以运行以下命令，将“Hello World”输出到控制台：
 
-```
+```batch
 dotnet new console -o helloworldapp
 cd helloworldapp
 dotnet run
@@ -158,7 +158,7 @@ dotnet run
 
 打开 *Program.cs* 文件，添加以下包：
 
-```
+```csharp
 using System;
 using System.IO;
 using System.Net;
@@ -169,10 +169,10 @@ using Newtonsoft.Json.Linq;
 
 编辑类文件，使之包含在下面的两步过程中使用的代码：
 
-1. 从 VM 上的本地 MSI 终结点获取一个令牌。 这样做还会从 Azure AD 获取令牌。
+1. 从 VM 上的本地 MSI 终结点获取一个令牌。 这还会从 Azure AD 获取令牌。
 1. 将令牌传递到密钥保管库，然后获取机密。 
 
-```
+```csharp
  class Program
     {
         static void Main(string[] args)
@@ -221,7 +221,7 @@ using Newtonsoft.Json.Linq;
 
 ## <a name="clean-up-resources"></a>清理资源
 
-不再需要虚拟机和密钥保管库时，请将其删除。
+不再需要本教程中创建的虚拟机和 Key Vault 时，请将其删除。
 
 ## <a name="next-steps"></a>后续步骤
 

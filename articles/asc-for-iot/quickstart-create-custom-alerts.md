@@ -1,30 +1,30 @@
 ---
-title: 为 ASC for IoT 预览版创建自定义警报 | Microsoft Docs
-description: 为 ASC for IoT 创建并分配自定义设备警报。
-services: ascforiot
+title: 为适用于 IoT 的 Azure 安全中心预览版创建自定义警报 | Microsoft Docs
+description: 为适用于 IoT 的 Azure 安全中心创建并分配自定义设备警报。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: d1757868-da3d-4453-803a-7e3a309c8ce8
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: 591000f251d384b961569f9d7ca09ae93edea617
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: d793b105e6d73c98739cd05d6e19a218413d7813
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541711"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58861989"
 ---
 # <a name="quickstart-create-custom-alerts"></a>快速入门：创建自定义警报
 
 > [!IMPORTANT]
-> ASC for IoT 目前以公开预览版提供。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 使用自定义安全组和警报，可以充分利用端到端的安全信息和分类设备知识来确保提高整个 IoT 解决方案的安全性。 
@@ -33,7 +33,7 @@ ms.locfileid: "58541711"
 
 可以最清楚地了解自己的 IoT 设备。
 
-对于完全了解其预期设备行为的客户，ASC for IoT 可将这种了解转化为设备行为策略，并在背离预期的正常行为时发出警报。
+对于完全了解其预期设备行为的客户，适用于 IoT 的 Azure 安全中心 (ASC) 可将这种了解转化为设备行为策略，并在背离预期的正常行为时发出警报。
 
 ## <a name="security-groups"></a>安全组
 
@@ -63,7 +63,7 @@ ms.locfileid: "58541711"
 
 下表提供了可自定义的警报的摘要。
 
-| 严重性 | Name                                                                                                    | 数据源 | 说明                                                                                                                                     |
+| 严重性 | 名称                                                                                                    | 数据源 | 说明                                                                                                                                     |
 |----------|---------------------------------------------------------------------------------------------------------|-------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
 | 低      | 自定义警报 - AMQP 协议中云到设备的消息数目不在允许的范围内          | IoT 中心     | 时间窗口中云到设备的消息（AMQP 协议）数量不在配置的允许范围内                                  |
 | 低      | 自定义警报 - AMQP 协议中已拒绝的云到设备的消息数目不在允许的范围内 | IoT 中心     | 时间窗口中由设备拒绝的云到设备的消息（AMQP 协议）数量不在配置的允许范围内 |
@@ -90,4 +90,4 @@ ms.locfileid: "58541711"
 请转到下一篇文章了解如何部署安全代理...
 
 > [!div class="nextstepaction"]
-> [部署安全代理](select-deploy-agent.md)
+> [部署安全代理](how-to-deploy-agent.md)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/09/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7772797aa6c20c8f583608bac8fc002a92796a11
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: bb7de72a435faf100d6992815ef8d5ec00cb3581
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444045"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801855"
 ---
 # <a name="tutorial-use-a-linux-vm-system-assigned-managed-identity-to-access-azure-storage"></a>教程：使用 Linux VM 系统分配的托管标识访问 Azure 存储 
 
@@ -84,7 +84,7 @@ ms.locfileid: "58444045"
 1. 导航回新创建的存储帐户。  
 2. 单击左侧面板中的“访问控制(IAM)”链接。  
 3. 单击页面顶部的“+ 添加角色分配”，为 VM 添加新的角色分配。
-4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器(预览)”。 
+4. 在“角色”下，从下拉列表中，选择“存储 Blob 数据读取器”。 
 5. 在下一个下拉列表中，在“将访问权限分配到”下，选择“虚拟机”。  
 6. 接下来，确保“订阅”下拉列表中列出了正确的订阅，然后将“资源组”设置为“所有资源组”。  
 7. 在“选择”下，选择你的 VM 并单击“保存”。

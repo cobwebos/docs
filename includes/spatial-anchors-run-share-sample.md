@@ -4,14 +4,18 @@ ms.service: spatial-anchors
 ms.topic: include
 ms.date: 1/30/2019
 ms.author: rgarcia
-ms.openlocfilehash: 563c2bd561328561d30acee6910b70d53ef64c6b
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 397a8a9b07b4d7a88d0345399ac4abcc3e738a82
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305402"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58631146"
 ---
 ## <a name="set-up-your-device"></a>设置设备
+
+在 Unity 中，打开 `Unity` 文件夹中的项目。
+
+![Unity 窗口](./media/spatial-anchors-unity/unity-window.png)
 
 ### <a name="set-up-an-android-device"></a>设置 Android 设备
 
@@ -31,7 +35,9 @@ ms.locfileid: "58305402"
 
 选择“文件” > “保存”，从而保存场景。
 
-## <a name="to-deploy-the-app-to-an-android-device"></a>将应用部署到 Android 设备
+## <a name="deploy-to-your-device"></a>部署到设备
+
+### <a name="deploy-to-android-device"></a>部署到 Android 设备
 
 登录 Android 设备并使用 USB 线将其连接到计算机上。
 
@@ -41,9 +47,9 @@ ms.locfileid: "58305402"
 
 确保“导出项目”不显示勾号。 单击“生成并运行”。 系统将提示你保存 `.apk` 文件。 你可为其选择任何名称。
 
-根据应用中的说明操作。 可选择“创建并共享定位标记”或“找到共享定位标记”。 第一个选项是让你创建一个稍后能在相同设备或其他设备上找到的定位标记。 如果已在相同设备或其他设备上运行应用，则第二个选项可让你找到之前共享的定位标记。
+根据应用中的说明操作。 可选择“创建并共享定位标记”或“找到共享定位标记”。 第一个方案是让你创建一个稍后能在相同设备或其他设备上找到的定位标记。 如果已在相同设备或其他设备上运行应用，则第二个方案可让你找到之前共享的定位标记。 在你选取方案以后，应用会通过进一步的说明引导你完成后续步骤。 例如，会要求你四处移动设备以收集环境信息。 随后需在环境中放置一个定位点，等待其上传，以及执行其他操作。
 
-## <a name="to-deploy-the-app-to-an-ios-device"></a>将应用部署到 iOS 设备
+### <a name="deploy-to-an-ios-device"></a>部署到 iOS 设备
 
 通过选择“文件” > “生成设置”，打开“生成设置”。
 
@@ -51,6 +57,6 @@ ms.locfileid: "58305402"
 
 [!INCLUDE [Configure Xcode](spatial-anchors-unity-ios-xcode.md)]
 
-根据应用中的说明操作。 可选择“创建并共享定位标记”或“找到共享定位标记”。 第一个选项是让你创建一个稍后能在相同设备或其他设备上找到的定位标记。 如果已在相同设备或其他设备上运行应用，则第二个选项可让你找到之前共享的定位标记。
+根据应用中的说明操作。 可选择“创建并共享定位标记”或“找到共享定位标记”。 第一个方案是让你创建一个稍后能在相同设备或其他设备上找到的定位标记。 如果已在相同设备或其他设备上运行应用，则第二个方案可让你找到之前共享的定位标记。 在你选取方案以后，应用会通过进一步的说明引导你完成后续步骤。 例如，会要求你四处移动设备以收集环境信息。 随后需在环境中放置一个定位点，等待其上传，以及执行其他操作。
 
 在 Xcode 中，通过选择“停止”来停止应用。

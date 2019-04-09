@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/02/2018
 ms.author: ajaycode
-ms.openlocfilehash: d2d1ca3e41de36d423de24fdbade8c17507642b5
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 77cacd7f94d8ddd92fcd7383d2d0a7929734eaeb
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734294"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005931"
 ---
 # <a name="pricing-changes-for-azure-network-performance-monitor"></a>Azure 网络性能监视器的定价变化
 
 我们听取了客户的反馈，最近已针对 Azure 中的各种监视服务推出了[新的定价体验](https://azure.microsoft.com/blog/introducing-a-new-way-to-purchase-azure-monitoring-services/)。 本文以易于阅读的“问答”形式，汇总了与 Azure [网络性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview) (NPM) 相关的定价变化。
 
 网络性能监视器包括三个组件：
-* [性能监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
+* [性能监视](https://docs.microsoft.com/azure/networking/network-monitoring-overview#performance-monitor)
 * [服务终结点监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview)
 * [ExpressRoute 监视器](https://docs.microsoft.com/azure/networking/network-monitoring-overview#expressroute-monitor)
 
@@ -34,15 +34,15 @@ ms.locfileid: "55734294"
 
 ## <a name="performance-monitor"></a>性能监视
 
-**在旧模型中如何计收性能监视器的使用费？**
+**旧模型中计收性能监视器的使用情况如何？**
 
 NPM 的计费基于以下两个组件的用量和消耗量：
 * **节点**：所有综合事务都在节点上发起和终结。 节点也称为代理或 Microsoft 管理代理。
-* **数据**：各种网络测试的结果存储在 Azure Log Analytics 存储库中。
+* **Data**：各种网络测试结果存储在 Log Analytics 工作区中。
 
 在旧模型中，帐单是根据节点数和生成的数据量计算的。 
 
-**在新模型中如何计收性能监视器的使用费？**
+**在新的模式下是如何计费的性能监视器的使用情况的？**
 
 NPM 中的性能监视器功能现在根据以下各项的组合计费： 
 
@@ -53,30 +53,30 @@ NPM 中的性能监视器功能现在根据以下各项的组合计费：
 
 性能监视器监视网络中两个或更多个位置之间的连接。 一个子网中的一组节点或代理与另一个子网中的一组节点之间的连接称为子网链接。
 
-**我有两个子网（A 和 B），并且每个子网包含多个代理。性能监视器监视从子网 A 中所有代理到子网 B 中所有代理的连接。是否根据子网间的连接数计费？**
+**我有两个子网 （A 和 B），并且我有多个代理每个子网上。 性能监视器监视从子网 A 上的所有代理到子网 B.上的所有代理的连接收费依据网间的连接的数目？**
 
 不是。 计费时，从子网 A 到子网 B 的所有连接将统一合并成一个子网链接。 只会计收一个连接的费用。 性能监视器继续监视每个子网中各个代理之间的连接。
 
-**监视子网链接的费用是多少？**
+**监视的子网链接的费用是什么？**
 
 有关监视单个子网链接需要支付的整月成本，请参阅 [Ping Mesh](https://azure.microsoft.com/pricing/details/network-watcher/) 部分。
 
-**如何对性能监视器生成的数据收费？**
+**性能监视器会生成的数据的费用有哪些？**
 
-Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了针对引入（将数据上传到 Log Analytics，以及数据处理和编制索引）收取的费用。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
+引入 （数据上传到 Azure Monitor，处理数据和索引中的 Log Analytics 工作区） 的费用是可在上找到[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)Log analytics，在数据引入部分。 [定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据保留”部分中还提供了针对数据保留（即，在第一个月后，根据客户选项保留数据）收取的费用。
 
 
 ## <a name="expressroute-monitor"></a>ExpressRoute 监视器
 
-**ExpressRoute 监视器的使用费是多少？**
+**什么是 ExpressRoute 监视器的使用费？**
 
 ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有关详细信息，请参阅“如何对性能监视器生成的数据收费？”
 
-**我使用 ExpressRoute 监视器来监视多条 ExpressRoute 线路。费用是否根据监视的线路数来计收？**
+**我使用 ExpressRoute 监视器来监视多条 ExpressRoute 线路。 向我收费根据受监视的线路数？**
 
 我们不会根据线路数或对等互连类型（例如专用对等互连、Microsoft 对等互连）来计费， 而是根据数据量计费，如前所述。
 
-**当 ExpressRoute 监视单条线路时，生成的数据量有多大？**
+**什么是 ExpressRoute 监视单个线路时，生成的数据量？**
 
 当 ExpressRoute 监视专用对等连接时，每月生成的数据量如下：
 
@@ -92,7 +92,7 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 根据上表，位于第 50 百分位的客户需要支付 192 MB 数据的费用。 根据第一个月的价格 2.30 美元/GB，监视线路产生的费用是 0.43 美元 (192 * 2.30 / 1024)。
 
-**数据量出现差异有哪些原因？**
+**采用不同的数据量的一些原因有哪些？**
 
 生成的监视数据量取决于若干因素，例如：
 * 代理数。 代理数增加时，容错准确性也会提高。
@@ -103,7 +103,7 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 ## <a name="service-endpoint-monitor"></a>服务终结点监视器
 
-**服务终结点监视器的使用费是多少？**
+**什么是服务终结点监视器的使用费？**
 
 服务终结点监视器的使用费根据以下因素计算：
 * 连接数
@@ -113,7 +113,7 @@ ExpressRoute 监视器的费用根据监视期间生成的数据量计费。 有
 
 连接是在整个月份中，从单个代理测试对一个终结点（URL 或网络服务）的访问能力。 例如，从三个代理监视 bing.com 的连接构成了三个连接。
 
-**服务终结点监视器的费用是多少？**
+**服务终结点监视器的费用是什么？**
 
 请参阅[连接监视](https://azure.microsoft.com/pricing/details/network-watcher/)部分，了解监视终结点的整月费用。 Log Analytics 的[定价页](https://azure.microsoft.com/pricing/details/log-analytics/)上的“数据引入”部分中提供了数据费用。
 

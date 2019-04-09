@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: fdf87bff026dee4969b3995b37c31de3ead7714b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0b27514dfa34963901fb94be37d8fe330a3c65ce
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58004919"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58804388"
 ---
 # <a name="define-and-assign-an-azure-blueprint-in-the-portal"></a>在门户中定义和分配 Azure 蓝图
 
@@ -40,7 +40,7 @@ ms.locfileid: "58004919"
 
    - 或者，单击“入门”页上的“创建”，直接创建一个蓝图。
 
-   ![创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
+   ![在“蓝图定义”页中创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
 
 1. 提供“蓝图名称”，例如“MyBlueprint”（字母和数字 - 最多 48 个字符，但不包含空格或特殊字符），但暂时将“蓝图描述”保留为空。 在“定义位置”框中，单击右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后单击“选择”。
 
@@ -48,7 +48,7 @@ ms.locfileid: "58004919"
 
 1. 在订阅中添加角色分配：左键单击“订阅”下的“+ 添加项目...”行，随即会在浏览器右侧打开“添加项目”窗口。 为“项目类型”选择“角色分配”。 在“角色”下，选择“参与者”，保留“添加用户、应用或组”字段，并使用复选框指示动态参数。 单击“添加”将此项目添加到蓝图中。
 
-   ![项目 - 角色分配](./media/create-blueprint-portal/add-role-assignment.png)
+   ![蓝图项目 - 角色分配](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > 大多数项目支持参数。 在蓝图创建期间为其分配值的参数是静态参数。 如果在蓝图分配期间分配参数，则该参数是动态参数。 有关更多信息，请参阅[蓝图参数](./concepts/parameters.md)。
@@ -113,11 +113,11 @@ ms.locfileid: "58004919"
    }
    ```
 
-   ![项目 - 资源管理器模板](./media/create-blueprint-portal/add-resource-manager-template.png)
+   ![蓝图项目 - 资源管理器模板](./media/create-blueprint-portal/add-resource-manager-template.png)
 
 1. 已完成的蓝图应如下所示： 请注意，每个项目在“参数”列下都显示“已填充 y 个参数中的 x 个。 动态参数在每次分配蓝图期间设置。
 
-   ![已完成的蓝图](./media/create-blueprint-portal/completed-blueprint.png)
+   ![完成的蓝图定义](./media/create-blueprint-portal/completed-blueprint.png)
 
 1. 现在已添加所有计划项目，请单击页面底部的“保存草稿”。
 
@@ -135,11 +135,11 @@ ms.locfileid: "58004919"
 
 1. 在资源组下添加角色分配：在“ResourceGroup”条目下直接左键单击“+ 添加项目...”行。 为“项目类型”选择“角色分配”。 在“角色”下，选择“所有者”并取消选中“添加用户、应用或组”字段，然后搜索并选择要添加的用户、应用或组。 此项目使用每次分配此蓝图时以同样方式设置的静态参数。 单击“添加”将此项目添加到蓝图中。
 
-   ![项目 - 角色分配 #2](./media/create-blueprint-portal/add-role-assignment-2.png)
+   ![蓝图项目 - 角色分配 2](./media/create-blueprint-portal/add-role-assignment-2.png)
 
 1. 已完成的蓝图应如下所示： 请注意，新添加的角色分配显示“已填充 1 个参数中的 1 个”  ，这意味着它是一个静态参数。
 
-   ![已完成的蓝图 #2](./media/create-blueprint-portal/completed-blueprint-2.png)
+   ![完成的蓝图定义 2](./media/create-blueprint-portal/completed-blueprint-2.png)
 
 1. 现在既然草稿已更新，请单击“保存草稿”。
 
@@ -224,7 +224,7 @@ ms.locfileid: "58004919"
 
 1. 在蓝图列表中，右键单击之前分配的一个蓝图，然后选择“查看分配详细信息”。
 
-   ![查看分配详细信息](./media/create-blueprint-portal/view-assignment-details.png)
+   ![在“分配的蓝图”页中查看分配详细信息](./media/create-blueprint-portal/view-assignment-details.png)
 
 1. 在“蓝图分配”页面上，验证是否已成功部署所有项目，以及在部署期间是否未出现任何错误。 如果发生错误，请参阅[蓝图故障排除](./troubleshoot/general.md)，了解确定错误原因的操作步骤。
 

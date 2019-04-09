@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: diberry
-ms.openlocfilehash: 5635e0f669cec64bdbbf947099f980066a4aebc1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121411"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884119"
 ---
 # <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>教程：通过 QnA Maker 门户创建知识库并回答问题
 
@@ -66,7 +66,7 @@ ms.locfileid: "58121411"
     |设置名称|设置值|目的|
     |--|--|--|
     |代码|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |该 URL 中常见问题解答内容的格式为一个问题接一个答案。 QnA Maker 可以通过解释此格式来提取问题和相关联的答案。|
-    |文件 |不在本教程中使用|此项上传用于问题和答案的文件。 |
+    |文件 |_不在本教程中使用_|此项上传用于问题和答案的文件。 |
     |聊天个性化内容|好友|此项为常见问题和解答提供友好且随和的个性化内容。 可以稍后编辑这些问题和解答。 |
 
     ![KB 创建过程的步骤 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)
@@ -105,7 +105,7 @@ ms.locfileid: "58121411"
 
     ![Curl 命令](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-3-curl.png)
 
-1. 复制“Curl”选项卡的文本，在支持 Curl 的终端或命令行中执行。 授权标头的值包含文本 `Endpoint ` 和一个尾随空格以及密钥。
+1. 复制“Curl”选项卡的文本，在支持 Curl 的终端或命令行中执行。 授权标头的值包含文本 `Endpoint` 和一个尾随空格以及密钥。
 
 1. 将 `<Your question>` 替换为 `How large can my KB be?`。 这与问题 `How large a knowledge base can I create?` 接近，但并不完全相同。 QnA Maker 会应用自然语言处理来确定两个问题是否相同。     
 

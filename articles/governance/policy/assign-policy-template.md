@@ -1,5 +1,5 @@
 ---
-title: 使用资源管理器模板创建策略分配以识别不合规的资源
+title: 使用资源管理器模板创建策略分配
 description: 本文逐步讲解如何使用资源管理器模板创建策略分配，以识别不合规的资源。
 services: azure-policy
 author: DCtheGeek
@@ -8,12 +8,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 6ff76a66eba42fd87e88846f9ec2378bd63893f2
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: 354d5aa250449b87345cef17778befddc761fa19
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "58008618"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802501"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -31,24 +31,24 @@ ms.locfileid: "58008618"
 可通过多种方法创建策略分配。 本快速入门使用[快速入门模板](https://azure.microsoft.com/resources/templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/)。
 下面是该模板的副本：
 
-[!code-json[policy-assingment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
+[!code-json[policy-assignment](~/quickstart-templates/101-azurepolicy-assign-builtinpolicy-resourcegroup/azuredeploy.json)]
 
 > [!NOTE]
 > Azure Policy 服务是免费的。  有关详细信息，请参阅 [Azure Policy 概述](./overview.md)。
 
 1. 选择下图登录到 Azure 门户并打开模板：
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json"><img src="./media/assign-policy-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![将策略模板部署到 Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. 选择或输入以下值：
 
-   | Name | 值 |
+   | 名称 | 值 |
    |------|-------|
    | 订阅 | 选择 Azure 订阅。 |
    | 资源组 | 选择“新建”，指定名称，然后选择“确定”。 在屏幕截图中，资源组名称为 *mypolicyquickstart<Date in MMDD>rg*。 |
    | 位置 | 选择区域。 例如“美国中部”。 |
    | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。 |
-   | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]**。 **[resourceGroup()](/azure/azure-resource-manager/resource-group-template-functions-resource#resourcegroup)** 是检索资源组的模板函数。 |
+   | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]**。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |
    | 策略定义 ID | 指定 **/providers/Microsoft.Authorization/policyDefinitions/0a914e76-4921-4c19-b460-a2d36003525a**。 |
    | 我同意上述条款和条件 | （选择） |
 
@@ -65,7 +65,7 @@ ms.locfileid: "58008618"
 
 选择页面左侧的“符合性”。 然后找到所创建的“审核未使用托管磁盘的 VM”策略分配。
 
-![策略符合性](./media/assign-policy-template/policy-compliance.png)
+![策略符合性概述页](./media/assign-policy-template/policy-compliance.png)
 
 如果存在与此新分配不相符的任何现有资源，这些资源会在“不符合的资源”下显示。
 
@@ -79,7 +79,7 @@ ms.locfileid: "58008618"
 
 1. 右键单击“审核不使用托管磁盘的 VM”策略分配并选择“删除分配”。
 
-   ![删除分配](./media/assign-policy-template/delete-assignment.png)
+   ![从符合性概述页中删除分配](./media/assign-policy-template/delete-assignment.png)
 
 ## <a name="next-steps"></a>后续步骤
 

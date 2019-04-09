@@ -10,19 +10,19 @@ ms.subservice: acoustics
 ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 0baaf31386e1155dee6ca2bbfda6827ca3fc36fe
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313441"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006485"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
 本指南提供了现有的 Unreal 和 Wwise 游戏项目到项目噪声插件包的详细的集成步骤。 
 
-软件要求：
-* [Unreal 引擎](https://www.unrealengine.com/)4.21
-* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/)了对 2018.1。 +
+所需软件：
+* [Unreal 引擎](https://www.unrealengine.com/)4.20 或 4.21
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/)了对 2018.1。\*
 * [Unreal 的 Wwise 插件](https://www.audiokinetic.com/library/?source=UE4&id=index.html)
   * 如果使用的 Wwise SDK 的直接集成而不使用 Wwise Unreal 插件，请查阅项目噪声 Unreal 插件并调整 Wwise API 调用。
 
@@ -45,11 +45,11 @@ ms.locfileid: "58313441"
 7. Unreal 中的音频设置
 
 ## <a name="1-install-the-project-acoustics-mixer-plugin"></a>1.安装项目噪声混音器插件
-* 然后在中打开 Wwise 启动器**插件**选项卡上，在**安装新插件**，选择**从目录添加**。 
+* 打开 Wwise Launcher，然后在“插件”选项卡的“安装新插件”下，选择“从目录添加”。 
 
     ![安装插件 Wwise 启动器中的屏幕截图](media/wwise-install-new-plugin.png)
 
-* 选择`AcousticsWwisePlugin\ProjectAcoustics`下载的包中包含的目录。 它包含 Wwise mixer 插件捆绑包。
+* 选择下载的包中包含的 `AcousticsWwisePlugin\ProjectAcoustics` 目录。 它包含 Wwise mixer 插件捆绑包。
 
 * Wwise 将安装该插件。 项目噪声现在应显示在 Wwise 中安装了的插件列表中。
 ![屏幕截图的 Wwise 项目噪声安装之后安装了插件列表](media/unreal-integration-post-mixer-plugin-install.png)
@@ -59,7 +59,7 @@ ms.locfileid: "58313441"
 
 * **引擎插件：** 如果必须 Wwise 作为 Unreal c + + 项目中的游戏插件安装，请跳过此步骤。 如果安装改成作为引擎插件实例，由于 Unreal 项目是使用我们 mixer 插件蓝图仅限 Wwise 部署已更复杂。 创建虚拟的空 Unreal c + + 项目、 Unreal 编辑器随即打开，如果将其关闭并按照部署到此虚拟项目 Wwise 的剩余步骤。 然后将复制出的已部署的 Wwise 插件。
  
-* 从 Wwise 启动器，单击**Unreal Engine**选项卡，然后单击汉堡菜单旁边**最近 Unreal 引擎项目**，然后选择**浏览项目**。 打开您的游戏 Unreal 项目`.uproject`文件。
+* 在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”。 打开您的游戏 Unreal 项目`.uproject`文件。
 
     ![屏幕截图的 Wwise 启动器的 Unreal 选项卡](media/wwise-unreal-tab.png)
 
@@ -76,13 +76,13 @@ ms.locfileid: "58313441"
 
 ## <a name="4-extend-wwises-unreal-plugin-functionality"></a>4.扩展 Wwise 的 Unreal 插件功能
 * 项目噪声 Unreal 插件需要其他行为从每个 Wwise Unreal 插件 API 公开[这些准则](https://www.audiokinetic.com/library/?source=UE4&id=using__initialsetup.html)。 我们提供了一个批处理文件来自动执行修补过程。 
-* 内部`Plugins\ProjectAcoustics\Resources`，请运行`PatchWwise.bat`。 以下示例图使用我们 AcousticsGame 示例项目。
+* 在 `Plugins\ProjectAcoustics\Resources` 内，运行 `PatchWwise.bat`。 以下示例图使用我们 AcousticsGame 示例项目。
 
     ![资源管理器屏幕截图的 Windows 窗口突出显示提供修补 Wwise 脚本](media/patch-wwise-script.png)
 
 * 如果没有安装 DirectX SDK，将需要进行注释掉包含 DXSDK_DIR 中的行 `[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
 
-    ![代码编辑器，显示 DXSDK 注释掉的屏幕截图](media/directx-sdk-comment.png)
+    ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 
 ## <a name="5-build-game-and-check-python-is-enabled"></a>5.构建游戏并检查已启用 Python
 

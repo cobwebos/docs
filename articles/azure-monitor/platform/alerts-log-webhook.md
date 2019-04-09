@@ -1,6 +1,6 @@
 ---
 title: 用于 Azure 警报中日志警报的 Webhook 操作
-description: 本文介绍了使用 Log Analytics 或 application insights 的日志警报规则如何作为 HTTP Webhook 推送数据，以及可能的不同自定义设置的详细信息。
+description: 本文介绍如何对日志警报规则使用 log analytics 工作区或 application insights 推送数据，作为 HTTP webhook 和不同的自定义设置的详细信息可能。
 author: msvijayn
 services: monitoring
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: a592dc150d535df775a62c157f76f327b54240fd
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 2307fa985c88608d80400c8951c47b9f20caa1dc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496082"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006629"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>用于日志警报规则的 Webhook 操作
 [在 Azure 中创建日志警报](alerts-log.md)时，可以选择[使用操作组配置](action-groups.md)以执行一个或多个操作。  本文介绍可用的不同 Webhook 操作，以及有关配置基于 JSON 的自定义 Webhook 的详细信息。
@@ -202,5 +202,5 @@ Webhooks 包括 URL 和 JSON 格式的负载（即发送到外部服务的数据
 - 了解如何[在 Azure 中管理日志警报](alerts-log.md)
 - 创建和管理 [Azure 门户中的操作组](action-groups.md)
 - 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
-- 详细了解 [Log Analytics](../../azure-monitor/log-query/log-query-overview.md)。 
+- 详细了解如何[记录查询](../log-query/log-query-overview.md)。 
 

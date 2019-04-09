@@ -1,19 +1,18 @@
 ---
-title: Apache Kafka 入门 - Azure HDInsight 快速入门
+title: 使用 Azure 资源管理器设置 Apache Kafka on HDInsight - 快速入门
 description: 在此快速入门中，了解如何在 Azure HDInsight 上使用 Azure 门户创建 Apache Kafka 群集。 还可以了解 Kafka 主题、订阅服务器和使用者。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
-ms.custom: mvc,hdinsightactive
+ms.custom: mvc
 ms.topic: quickstart
 ms.date: 04/16/2018
-ms.openlocfilehash: b359716db5a30f8a77b9f54c2b0bc7b4d00a7f39
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: c1b8f711a6984a6134e6df0ae6ae12bf0b62cc0d
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225750"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58757674"
 ---
 # <a name="quickstart-create-an-apache-kafka-on-hdinsight-cluster"></a>快速入门：创建 Apache Kafka on HDInsight 群集
 

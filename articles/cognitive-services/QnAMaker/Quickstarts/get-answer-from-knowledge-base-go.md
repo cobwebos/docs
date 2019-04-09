@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: be134267bbb1ca372006bc1ff05d7a5ddc3732de
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a74d67df55d46376017adbd48f5161d337ebaa0d
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57311078"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58879303"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-go"></a>使用 Go 从知识库获取问题的答案
 
@@ -64,7 +64,7 @@ func main() {
 
 [!code-go[Add a POST request to send question to knowledge base](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=35-48 "Add a POST request to send question to knowledge base")]
 
-`Authorization` 标头的值包括字符串 `EndpointKey `。 
+`Authorization` 标头的值包括字符串 `EndpointKey`。 
 
 详细了解[请求](../how-to/metadata-generateanswer-usage.md#generateanswer-request)和[响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response)。
 

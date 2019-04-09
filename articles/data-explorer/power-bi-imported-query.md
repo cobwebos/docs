@@ -3,17 +3,17 @@ title: 快速入门：使用已导入到 Power BI 中的查询来可视化数据
 description: 本快速入门介绍如何使用三个选项中的一个在 Power BI 中可视化数据：从 Azure 数据资源管理器导入查询。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 139b20a2390c7301bd83113c3e98be40846fab22
-ms.sourcegitcommit: 7804131dbe9599f7f7afa59cacc2babd19e1e4b9
+ms.openlocfilehash: 3251ae9f39ea38eac6887df3072257e1e8e88306
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/17/2018
-ms.locfileid: "51858146"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756110"
 ---
 # <a name="quickstart-visualize-data-using-a-query-imported-into-power-bi"></a>快速入门：使用已导入到 Power BI 中的查询来可视化数据
 
@@ -84,4 +84,4 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：使用 Power BI 中的已导入查询来可视化数据](power-bi-sql-query.md)
+> [快速入门：使用 Power BI 中已导入的查询来直观显示数据](power-bi-sql-query.md)

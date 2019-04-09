@@ -16,7 +16,7 @@ ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: aa6c154e14fbf5291e2493f4f27b9d4501ba18f4
 ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56117980"
@@ -30,7 +30,7 @@ Azure 安全中心使用[基于角色的访问控制 (RBAC)](../role-based-acces
 除这些角色外，还有两个特定的安全中心角色：
 
 * **安全读者**：属于此角色的用户对安全中心具有查看权限。 该用户可查看建议、警报、安全策略和安全状态，但不能更改。
-* **安全管理员**：属于此角色的用户具有与安全读者相同的权限，此外，还可以更新安全策略、关闭警报和建议。
+* **安全管理员**：属于此角色的用户具有与安全读取者相同的权限，此外，还可以更新安全策略、关闭警报和建议。
 
 > [!NOTE]
 > 安全角色（安全读取者和安全管理员）只能访问安全中心。 安全角色无权访问存储、Web 和移动或物联网等其他 Azure 服务区域。

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: alkohli
-ms.openlocfilehash: a67cbd3bfca478a45e12adeb0bf119b891866718
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: d1e4af6e73c272a7ccc8996b0ccc854be64dd74b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905233"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006361"
 ---
 # <a name="azure-data-box-edge-system-requirements"></a>Azure 数据框边缘系统要求
 
@@ -101,6 +101,37 @@ Azure IoT Edge 允许使用支持的 IoT 中心协议从本地 Edge 设备来与
 ## <a name="internet-bandwidth"></a>Internet 带宽
 
 [!INCLUDE [Internet bandwidth](../../includes/data-box-edge-gateway-internet-bandwidth.md)]
+
+## <a name="compute-sizing-considerations"></a>计算调整大小考虑事项
+
+使用您体验，同时开发和测试你的解决方案来确保数据框边缘设备上没有足够的容量和从你的设备获取最佳性能。
+
+应考虑的因素包括：
+
+- **容器细节**-考虑以下。
+
+    - 你的工作负荷中有多少个容器？ 你可以与几个占用大量资源的轻量级容器的很多。
+    - 分配给这些容器而不是什么是进程占用的资源的资源有哪些？
+    - 容器共享多少层？
+    - 是否有未使用的容器？ 停止的容器仍将占用磁盘空间。
+    - 哪种语言编写所用容器？
+- **处理的数据的大小**的数据量将你的容器处理？ 此数据将会占用磁盘空间或内存中处理的数据？
+- **预期性能**-你的解决方案的所需的性能特征是什么？ 
+
+若要了解和优化你的解决方案的性能，可以使用：
+
+- 在 Azure 门户中可用的计算度量值。 转到数据框边缘资源，然后转到**监视 > 指标**。 看看**边缘计算的内存使用情况**并**边缘计算-CPU 百分比**若要了解可用的资源和如何将占用的资源获取。
+- 通过 PowerShell 接口，例如设备的可用监视命令：
+
+    - `dkr` 若要获取资源使用情况统计信息的容器的实时流的统计信息。 该命令支持 CPU、 内存使用情况、 内存限制和网络 IO 指标。
+    - `dkr system df` 若要获取有关使用的磁盘空间量的信息。 
+    - `dkr image [prune]` 若要清理未使用的映像并释放空间。
+    - `dkr ps --size` 若要查看正在运行的容器的近似大小。 
+
+    有关可用命令的详细信息，请转到[监视和故障排除计算模块](data-box-edge-connect-powershell-interface.md#monitor-and-troubleshoot-compute-modules)。
+
+最后，请确保你在你的数据集上验证你的解决方案和量化数据框边缘部署在生产环境中之前的性能。
+
 
 ## <a name="next-step"></a>后续步骤
 

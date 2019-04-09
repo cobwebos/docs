@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0fddbcbea23226bef68f36369341afcf1b100b77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f1f493120431481423892706fa2a9352b322c500
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847325"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880791"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cylanceprotect"></a>教程：Azure Active Directory 与 CylancePROTECT 集成
 
@@ -109,7 +109,7 @@ ms.locfileid: "57847325"
     
     | 区域 | URL 值 |
     |----------|---------|
-    | 亚太东北部 (APNE1)| ` https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
+    | 亚太东北部 (APNE1)| `https://login-apne1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | 亚太东南部 (AU) | `https://login-au.cylance.com/EnterpriseLogin/ConsumeSaml` |
     | 欧洲中部 (EUC1)|`https://login-euc1.cylance.com/EnterpriseLogin/ConsumeSaml`|
     | 北美|`https://login.cylance.com/EnterpriseLogin/ConsumeSaml`|
@@ -210,5 +210,5 @@ ms.locfileid: "57847325"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

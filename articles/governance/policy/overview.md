@@ -8,14 +8,14 @@ ms.date: 12/06/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7b5d9d483d05ac8225ea4b7497922192be44f1bc
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 7440c9bbfce801ffcfc5c4e0f800f6f4f9d34f8c
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57731689"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58805119"
 ---
-# <a name="what-is-azure-policy"></a>什么是 Azure Policy？
+# <a name="overview-of-the-azure-policy-service"></a>Azure 策略服务概述
 
 治理验证组织是否能够通过有效且高效地使用 IT 来实现其目标。 它通过详细说明业务目标和 IT 项目来满足这一需求。
 

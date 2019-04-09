@@ -14,12 +14,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 7f2fe6fc3ba3ae515d372fb5a794e46897bad115
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6a4e9a0c33b227716227213e94948df430566065
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517940"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58622189"
 ---
 # <a name="monitor-published-apis"></a>监视已发布的 API
 
@@ -77,21 +77,28 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 
 配置警报：
 
-1. 在靠近页面底部的菜单栏中选择“警报(经典)”。
+1. 在靠近页面底部的菜单栏中选择“警报”。
 
-    ![alerts](./media/api-management-azure-monitor/api-management-alert-rules-blade.png)
+    ![alerts](./media/api-management-azure-monitor/alert-menu-item.png)
 
-2. 选择“添加指标警报”。
-3. 输入此警报的**名称**。
-4. 选择“未经授权的网关请求”作为要监视的指标。
-5. 选择“电子邮件所有者、参与者和阅读者”。
-6. 按“确定”。
-7. 尝试在不使用 API 密钥的情况下调用会议 API。 此 API 管理服务的所有者会收到电子邮件警报。 
+2. 对于此警报，请单击“新建警报规则”。
+3. 单击“添加条件”。
+4. 在“信号类型”下拉列表中选择“指标”。
+5. 选择“未经授权的网关请求”作为要监视的信号。
 
-    > [!TIP]
-    > 警报规则在触发后还可调用 Web 挂钩或 Azure 逻辑应用。
+    ![alerts](./media/api-management-azure-monitor/signal-type.png)
 
-    ![set-up-alert](./media/api-management-azure-monitor/set-up-alert.png)
+6. 在“配置信号逻辑”视图中指定触发警报的阈值，然后单击“完成”。
+
+    ![alerts](./media/api-management-azure-monitor/threshold.png)
+
+7. 选择现有的操作组或创建新组。 在下面的示例中，将向管理员发送电子邮件。 
+
+    ![alerts](./media/api-management-azure-monitor/action-details.png)
+
+8. 提供警报规则的名称和说明，然后选择严重级别。 
+9. 按“创建警报规则”。
+10. 现在，尝试在不使用 API 密钥的情况下调用会议 API。 将会触发警报，向管理员发送电子邮件。 
 
 ## <a name="activity-logs"></a>活动日志
 

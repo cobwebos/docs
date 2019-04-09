@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 10/5/2018
+ms.date: 04/02/2019
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 017c8c2f060f969f2e7f8d387dcbafa2dac426d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b7adcc85b9274af45ddab653e875377e959e40c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842939"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58876320"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan-preview"></a>教程：使用 Azure 虚拟 WAN（预览版）创建 ExpressRoute 关联
 
@@ -47,8 +47,7 @@ ms.locfileid: "57842939"
 
 **预览注意事项：**
 
-* 区域可用性：美国中西部
-* 必须在支持 [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) 的国家/地区启用 ExpressRoute 线路
+必须在支持 [ExpressRoute Global Reach](https://docs.microsoft.com/azure/expressroute/expressroute-faqs#where-is-expressroute-global-reach-supported) 的国家/地区启用 ExpressRoute 线路。
 
 ## <a name="vnet"></a>1.创建虚拟网络
 
@@ -70,16 +69,16 @@ ms.locfileid: "57842939"
 
 ## <a name="hub"></a>4.查找线路并将其关联到中心
 
-1. 选择 vWAN，在“虚拟 WAN 体系结构”下，选择“ExpressRoute 线路”
-1. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路” 
+1. 选择 vWAN，在“虚拟 WAN 体系结构”下，选择“ExpressRoute 线路”。
+1. 如果 ExpressRoute 线路与 vWAN 在同一订阅中，请在订阅中单击“选择 ExpressRoute 线路”。 
 1. 使用下拉菜单，选择要关联到中心的 ExpressRoute。
 1. 如果 ExpressRoute 线路不在同一订阅中，或者你已获得[授权密钥和对等 ID](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md)，请选择“查找兑换授权密钥的线路”
 1. 输入以下详细信息：
 1. **授权密钥** - 如上所述，由线路所有者生成
 1. **对等线路 URI** - 线路所有者提供的线路 URI，是线路的唯一标识符
 1. **路由权重** - [路由权重](../expressroute/expressroute-optimize-routing.md) - 当来自不同对等互连位置的多个线路连接到同一个中心时，允许你选择某些路径
-1. 单击“查找线路”并选择线路（如果找到）
-1. 从下拉列表中选择一个或多个中心，然后单击“保存”
+1. 单击“查找线路”并选择线路（如果找到）。
+1. 从下拉列表中选择一个或多个中心，然后单击“保存”。
 
 ## <a name="vnet"></a>5.将 VNet 连接到中心
 

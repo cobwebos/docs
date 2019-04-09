@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: quickstart
-ms.date: 02/06/2019
+ms.date: 03/27/2019
 ms.author: pafarley
-ms.openlocfilehash: e9f613b6cd02bd1e85b75db7a3b2c2b4adccce3f
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 57605f9bd1a39435e27a2f2c56c06cf3bfb38605
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372125"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58630699"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-net-sdk"></a>快速入门：使用人脸 .NET SDK 检测图像中的人脸
 
@@ -34,9 +34,7 @@ ms.locfileid: "58372125"
 1. 如果解决方案中有其他项目，请将此项目选为单一启动项目。
 1. 获取所需的 NuGet 包。 在解决方案资源管理器中，右键单击项目并选择“管理 NuGet 包”。 单击“浏览”选项卡，选择“包括预发行版”，然后找到并安装以下包：
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.2.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-    - Microsoft.Rest.ClientRuntime
-    - Microsoft.Rest.ClientRuntime.Azure
-    - Newtonsoft.Json
+1. 确保已为项目安装所有 NuGet 包的最新版本。 在解决方案资源管理器中，右键单击项目并选择“管理 NuGet 包”。 单击“更新”选项卡，安装显示的任何包的最新版本。
 
 ## <a name="add-face-detection-code"></a>添加人脸检测代码
 
@@ -50,21 +48,21 @@ ms.locfileid: "58372125"
 
 ### <a name="add-essential-fields"></a>添加必要的字段
 
-将以下字段添加到 Program 类。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `faceEndpoint` 字符串，使之包含正确的区域标识符。 还需将 `localImagePath` 和/或 `remoteImageUrl` 的值设置为路径，使之指向实际的图像文件。
+为 **Program** 类添加以下字段。 该数据指定如何连接到人脸服务，以及在何处获取输入数据。 需使用订阅密钥的值更新 `subscriptionKey` 字段，并且可能需要更改 `faceEndpoint` 字符串，使之包含正确的区域标识符。 还需将 `localImagePath` 和/或 `remoteImageUrl` 的值设置为路径，使之指向实际的图像文件。
 
 `faceAttributes` 字段只是一个数组，包含特定类型的属性。 它将指定要检索的有关已检测人脸的信息。
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=13-34)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=9-34)]
 
 ### <a name="create-and-use-the-face-client"></a>创建并使用人脸客户端
 
 接下来，请将以下代码添加到 **Program** 类的 **Main** 方法。 这样会设置人脸 API 客户端。
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=38-41)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=36-41)]
 
 另请在 **Main** 方法中添加以下代码，以便使用新创建的人脸客户端来检测远程图像和本地图像中的人脸。 检测方法将随后定义。 
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-49)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=43-50)]
 
 ### <a name="detect-faces"></a>检测人脸
 
@@ -82,9 +80,9 @@ ms.locfileid: "58372125"
 
 [!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=103-116)]
 
-最后，定义 **DisplayAttributes** 方法，以便将人脸属性数据写入到控制台输出。
+最后，定义 **DisplayAttributes** 方法，以便将人脸属性数据写入到控制台输出。 然后即可关闭类和命名空间。
 
-[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-123)]
+[!code-csharp[](~/cognitive-services-vision-csharp-sdk-quickstarts/Face/Program.cs?range=118-125)]
 
 ## <a name="run-the-app"></a>运行应用
 

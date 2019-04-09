@@ -5,17 +5,17 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 12/13/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: f907e8c0d10c2972bde852192883e7268f78baaa
-ms.sourcegitcommit: 85d94b423518ee7ec7f071f4f256f84c64039a9d
-ms.translationtype: HT
+ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53387788"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59286841"
 ---
-可以使用 FedEx、UPS 或 DHL 将包裹寄送到 Azure 数据中心。 
+可以使用 FedEx、UPS 或 DHL 将包裹寄送到 Azure 数据中心。 如果你想要使用非 FedEx/DHL 快递商，请联系 Azure 数据框操作团队 `adbops@microsoft.com`
 
 - 必须提供有效的 FedEx、UPS 或 DHL 承运商帐号，以便 Microsoft 可以寄回驱动器。 
     

@@ -1,5 +1,5 @@
 ---
-title: 远程监视解决方案导入 ADM 包 - Azure | Microsoft Docs
+title: 远程监视解决方案导入程序包-Azure |Microsoft Docs
 description: 本文介绍如何将自动设备管理包导入到远程监视解决方案加速器
 author: dominicbetts
 manager: philmea
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
-ms.openlocfilehash: 8fd6e733f3e80ba2a3ec632c088d070252e260cc
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
+ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52684358"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009846"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>将自动设备管理包导入到远程监视解决方案加速器
 
@@ -37,7 +37,7 @@ ms.locfileid: "52684358"
     [![IoT 设备配置详细信息](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/configuration-details-expanded.png#lightbox)
 1. 单击“下载配置文件”：
 
-    [![下载配置文件](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
+    [![Download 配置文件](./media/iot-accelerators-remote-monitoring-import-adm-package/download-inline.png)](./media/iot-accelerators-remote-monitoring-import-adm-package/download-expanded.png#lightbox)
 
 1. 将 JSON 文件另存为名为 configuration.json 的本地文件。
 

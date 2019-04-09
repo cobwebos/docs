@@ -3,19 +3,19 @@ title: 快速入门：使用 Power BI 中的 SQL 查询来可视化数据
 description: 本快速入门介绍如何使用三个选项中的一个在 Power BI 中可视化数据：针对 Azure 数据资源管理器群集的 SQL 查询。
 services: data-explorer
 author: orspod
-ms.author: v-orspod
+ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: 4eb6fdd5b5a78f0afb00265ebd957231464a9083
-ms.sourcegitcommit: 8314421d78cd83b2e7d86f128bde94857134d8e1
+ms.openlocfilehash: f41bd1dcd354d75788569f5c1f24a50c604b5737
+ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/19/2018
-ms.locfileid: "51977278"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58756341"
 ---
-# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>快速入门：使用 Power BI 的 Azure 数据资源管理器连接器进行数据可视化
+# <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>快速入门：使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
 
 Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。 Power BI 是一种业务分析解决方案，可以用来可视化数据，并在组织内共享结果。
 
@@ -86,4 +86,4 @@ Azure 数据资源管理器提供三个可以在 Power BI 中连接到数据的�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [快速入门：使用 Power BI 中的已导入查询来可视化数据](power-bi-connector.md)
+> [快速入门：使用 Power BI 中已导入的查询来直观显示数据](power-bi-connector.md)

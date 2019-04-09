@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: b633c6a8ccbf9f29b93314bb9391215031d523eb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893055"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010594"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
@@ -288,10 +288,9 @@ WITH PRIVATE KEY (<private_key_options>)
     - 不支持队列读取器。  
     - 尚不支持命令外壳。
   - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
-  - 尚不支持 PowerShell。
   - 不支持 Analysis Services。
 - 部分支持通知。
-- 支持电子邮件通知，但需要配置数据库邮件配置文件。 公共预览版中只能有一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`（暂时性的限制）。  
+- 支持电子邮件通知，但需要配置数据库邮件配置文件。 SQL 代理可以使用只有一个数据库邮件配置文件和必须调用`AzureManagedInstance_dbmail_profile`。  
   - 不支持寻呼机。  
   - 不支持 NetSend。
   - 尚不支持警报。
@@ -432,10 +431,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - `.BAK` 无法还原包含多个备份集的文件。
 - `.BAK` 无法还原包含多个日志文件的文件。
 - 如果 .bak 包含 `FILESTREAM` 数据，则还原将会失败。
-- 目前无法还原包含数据库且这些数据库中具有活动内存中对象的备份。  
-- 目前无法还原包含数据库且这些数据库的某个位置存在内存中对象的备份。
-- 目前无法还原包含采用只读模式的数据库的备份。 很快将会去除此限制。
-
+- 不能在常规用途实例上还原备份中包含具有活动的内存中对象的数据库备份。  
 有关 Restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
 
 ### <a name="service-broker"></a>服务代理
@@ -485,6 +481,8 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
+`CREATE DATABASE ``ALTER DATABASE ADD FILE`，和`RESTORE DATABASE`语句可能会失败，因为该实例可以访问 Azure 存储限制。
+
 35 TB 的存储为 Azure 高级磁盘空间保留的每个常规用途托管实例会带来高达并每个数据库文件放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
 例如，常规用途托管实例可以将一个文件中 4 TB 磁盘放置的大小和 248 放置在单独的 128 GB 磁盘的文件 (每个 1 GB 的大小) 1.2 TB。 在本示例中：
@@ -514,9 +512,13 @@ WITH PRIVATE KEY (<private_key_options>)
 
 多个系统视图、性能计数器、错误消息、XEvent 和错误日志条目显示了 GUID 数据库标识符而非实际的数据库名称。 不要依赖这些 GUID 标识符，因为它们在将来会被替换为实际的数据库名称。
 
+### <a name="database-mail"></a>数据库邮件
+
+`@query` 中的参数[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql)过程不起作用。
+
 ### <a name="database-mail-profile"></a>数据库邮件配置文件
 
-SQL 代理使用的数据库邮件配置文件必须在调用`AzureManagedInstance_dbmail_profile`。
+SQL 代理使用的数据库邮件配置文件必须在调用`AzureManagedInstance_dbmail_profile`。 没有限制，有关其他数据库邮件配置文件名称。
 
 ### <a name="error-logs-are-not-persisted"></a>错误日志不会持久保留
 

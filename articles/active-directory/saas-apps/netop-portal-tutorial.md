@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: d33ef63f142763d5d29c9cb1931fdd87bae5976e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 17c5e568bbdbdd9aa07db0ee10438cb7d05bd56c
+ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891012"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58849240"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netop-portal"></a>教程：Azure Active Directory 与 Netop Portal 集成
 
@@ -110,7 +110,7 @@ ms.locfileid: "57891012"
 
 6. 除了上述属性，Netop Portal 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------| --------- |
     | NRC-ACCOUNT-ID | “adfs demo” |
     | NRC-EMAIL | user.userprincipalname |
@@ -128,7 +128,7 @@ ms.locfileid: "57891012"
 
     b. 在“名称”文本框中，键入为该行显示的属性名称。
 
-    c. 将“命名空间”留空。
+    c. 在“命名空间”文本框中，键入 https:\//secure.netop.com。
 
     d. 选择“源”作为“属性”。
 
@@ -154,7 +154,7 @@ ms.locfileid: "57891012"
 
 ### <a name="configure-netop-portal-single-sign-on"></a>配置 Netop Portal 单一登录
 
-若要在 Netop Portal 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [Netop Portal 支持团队](mailto:casemanager@netop.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 Netop Portal 端配置单一登录，需要发送下载的“联合元数据 XML”以及从 Azure 门户获得的登录 URL。 按照[此处](https://kb.netop.com/assets/netop_portal_adfs_and_azure_ad_integration.pdf)的文档的步骤 3 中的说明操作，以便配置适用于 Azure AD 身份验证的 NetOp Portal。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 

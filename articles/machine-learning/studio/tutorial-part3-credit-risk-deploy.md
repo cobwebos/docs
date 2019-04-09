@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: tutorial
 ms.date: 02/11/2019
-ms.openlocfilehash: 7132c2073223008cd82d0ffd54aaf266d0a630ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6cdccd54546296c85864f1588b71109ed8b8f79f
+ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839011"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58620500"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio"></a>教程 3：部署信用风险模型 - Azure 机器学习工作室
 
@@ -172,7 +172,7 @@ ms.locfileid: "57839011"
 然后，结果将通过“Web 服务输出”模块从 Web 服务返回给用户。
 
 > [!TIP]
-> 根据预测试验的配置方式，将返回[评分模型][score-model]模块的整个结果。 这包括所有输入数据以及信用风险值和评分概率。 如果希望返回不同的结果 - 例如，只返回信用风险值， 可以在[评分模型][score-model]和 **Web 服务输出**之间插入[投影列][project-columns]模块，用于排除不想要让 Web 服务返回的列。 
+> 根据预测试验的配置方式，将返回[评分模型][score-model]模块的整个结果。 这包括所有输入数据以及信用风险值和评分概率。 如果希望返回不同的结果 - 例如，只返回信用风险值， 可以在[评分模型][score-model]和 **Web 服务输出**之间插入[选择列][select-columns]模块，用于排除不想要让 Web 服务返回的列。 
 > 
 > 
 
@@ -267,4 +267,4 @@ Web 服务是一种 Azure Web 服务，可以两种方式之一使用 REST API �
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-boosted-decision-tree]: https://msdn.microsoft.com/library/azure/e3c522f8-53d9-4829-8ea4-5c6a6b75330c/
 [two-class-support-vector-machine]: https://msdn.microsoft.com/library/azure/12d8479b-74b4-4e67-b8de-d32867380e20/
-[project-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/
+[select-columns]: https://msdn.microsoft.com/library/azure/1ec722fa-b623-4e26-a44e-a50c6d726223/

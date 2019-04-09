@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 12/26/2018
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 795002d450505b9103f1815a8b03c8d546bddde8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 168b5cdf4f65992bad886352921e9aaff6d5b09c
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58119456"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885781"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-supported-features-and-syntax"></a>Azure Cosmos DB 的用于 MongoDB 的 API：支持的功能和语法
 
@@ -214,22 +214,22 @@ Azure Cosmos DB 的 MongoDB API 支持以下数据库命令：
 
 运算符 | 示例 |
 --- | --- |
-$eq | ``` { "Volcano Name": { $eq: "Rainier" } } ``` |
-$gt | ``` { "Elevation": { $gt: 4000 } } ``` |
-$gte | ``` { "Elevation": { $gte: 4392 } } ``` |
-$lt | ``` { "Elevation": { $lt: 5000 } } ``` |
-$lte | ``` { "Elevation": { $lte: 5000 } } ``` |
-$ne | ``` { "Elevation": { $ne: 1 } } ``` |
-$in | ``` { "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } } ``` |
-$nin | ``` { "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } } ``` |
-$or | ``` { $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
-$and | ``` { $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] } ``` |
-$not | ``` { "Elevation": { $not: { $gt: 5000 } } } ```|
-$nor | ``` { $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] } ``` |
-$exists | ``` { "Status": { $exists: true } } ```|
-$type | ``` { "Status": { $type: "string" } } ```|
-$mod | ``` { "Elevation": { $mod: [ 4, 0 ] } } ``` |
-$regex | ``` { "Volcano Name": { $regex: "^Rain"} } ```|
+$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
+$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
+$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
+$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
+$lte | `{ "Elevation": { $lte: 5000 } }` | | -
+$ne | `{ "Elevation": { $ne: 1 } }` |  | -
+$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
+$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
+$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
+$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
+$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
+$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
+$exists | `{ "Status": { $exists: true } }`|  | -
+$type | `{ "Status": { $type: "string" } }`|  | -
+$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
+$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
 
 ### <a name="notes"></a>说明
 
@@ -340,4 +340,4 @@ Cosmos DB 支持服务器端自动分片。 不支持手动分片命令。
 - 了解如何将 [Robo 3T](mongodb-robomongo.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API 配合使用。
 - 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
 
-<sup>注意：本文介绍了可与 MongoDB 数据库实现网络协议兼容的 Azure Cosmos DB 功能。Microsoft 不会运行 MongoDB 数据库来提供此服务。Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>
+<sup>注意：本文介绍了可与 MongoDB 数据库实现网络协议兼容的 Azure Cosmos DB 功能。 Microsoft 不会运行 MongoDB 数据库来提供此服务。 Azure Cosmos DB 并不隶属于 MongoDB, inc.</sup>

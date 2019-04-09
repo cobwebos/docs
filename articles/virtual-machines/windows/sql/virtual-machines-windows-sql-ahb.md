@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bc3e2955049188b0794367d5391762f5eb50b1c0
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: MT
+ms.openlocfilehash: c0d659d983e62cd2a85c0d6768c54e5a1d9e9217
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58850191"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005790"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>如何在 Azure 中更改 SQL Server 虚拟机的许可模型
 本文介绍如何在 Azure 中使用新的 SQL VM 资源提供程序 **Microsoft.SqlVirtualMachine** 来更改 SQL Server 虚拟机的许可模型。 有两个许可模型为虚拟机 (VM) 托管 SQL Server 的即用即付，并自带许可 (BYOL)。 现在可以通过 PowerShell 或 Azure CLI 对 SQL Server VM 使用哪个许可模型进行修改。 
@@ -35,12 +35,17 @@ ms.locfileid: "58850191"
 
 ## <a name="remarks"></a>备注
 
- - 当前，仅当从即用即付 SQL Server VM 映像开始时，才能使用转换许可模型的功能。 如果从门户首先使用自带许可映像，则无法将该映像转换为即用即付。
  - CSP 客户可通过首先部署即用即付 VM，然后将它转换为自带许可，来利用 AHB 权益。 
- - 当前仅对公有云安装启用此功能。
  - 当注册资源提供程序的自定义 SQL Server VM 映像，指定许可证类型 = AHUB。 将保留该许可证类型为空白，也可指定 PAYG 将导致注册失败。 
+ 
+## <a name="limitations"></a>限制
+
+ - 当前，仅当从即用即付 SQL Server VM 映像开始时，才能使用转换许可模型的功能。 如果从门户首先使用自带许可映像，则无法将该映像转换为即用即付。
+  - 目前，更改的许可模式仅支持使用资源管理器模型部署的虚拟机。 不支持使用经典模型部署的 Vm。 
+   - 公共云安装仅启用当前正在更改的授权模型。
 
 ## <a name="prerequisites"></a>必备组件
+
 使用 SQL VM 资源提供程序需要安装 SQL IaaS 扩展。 因此，若要继续利用 SQL VM 提供程序，需要：
 - 一个 [Azure 订阅](https://azure.microsoft.com/free/)。
 - [软件保障](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default)。 
@@ -231,9 +236,9 @@ Get-Module -ListAvailable -Name Azure -Refresh
 
 有关详细信息，请参阅以下文章： 
 
-* [Windows VM 上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)
-* [Windows VM 上的 SQL Server 常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)
-* [Windows VM 上的 SQL Server 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)
-* [Windows VM 上的 SQL Server 发行说明](virtual-machines-windows-sql-server-iaas-release-notes.md)
+* [在 Windows VM 上的 SQL Server 概述](virtual-machines-windows-sql-server-iaas-overview.md)
+* [Windows VM 常见问题解答的 SQL Server](virtual-machines-windows-sql-server-iaas-faq.md)
+* [Windows VM 的定价指南上的 SQL Server](virtual-machines-windows-sql-server-pricing-guidance.md)
+* [SQL Server 的 Windows VM 发行说明](virtual-machines-windows-sql-server-iaas-release-notes.md)
 
 

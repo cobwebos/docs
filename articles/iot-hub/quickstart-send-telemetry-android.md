@@ -31,7 +31,7 @@ IoT 中心是一项 Azure 服务，用于将大量遥测数据从 IoT 设备引�
 
 ## <a name="prerequisites"></a>先决条件
 
-* https://developer.android.com/studio/ 提供的 Android Studio。 有关 Android Studio 安装的详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。 
+* [https://developer.android.com/studio/](https://developer.android.com/studio/)提供的 Android Studio。 有关 Android Studio 安装的详细信息，请参阅 [Android 安装](https://developer.android.com/studio/install)。 
 
 * 本文中的示例使用 Android SDK 27。 
 

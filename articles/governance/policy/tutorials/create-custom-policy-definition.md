@@ -8,12 +8,12 @@ ms.date: 02/12/2019
 ms.topic: tutorial
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: ddda2a8bf1fab4e4c48c647237617d8f705f0561
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: 79b99532f5fb38123b03d2a39b7c9c6364e9f636
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112081"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58802252"
 ---
 # <a name="create-a-custom-policy-definition"></a>创建自定义策略定义
 
@@ -72,7 +72,7 @@ ms.locfileid: "56112081"
 查找属性的最简单方法是查找相同类型的现有资源。 已使用所要强制实施的设置配置的资源也会提供用于比较的值。
 在 Azure 门户中，找到该特定资源的“自动化脚本”页（在“设置”下）。
 
-![“自动化脚本”页](../media/create-custom-policy-definition/automation-script.png)
+![现有资源上的“导出模板”页](../media/create-custom-policy-definition/automation-script.png)
 
 针对存储帐户执行此操作会显示以下示例所示的模板：
 

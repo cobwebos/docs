@@ -11,15 +11,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 09/17/2018
+ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
-ms.openlocfilehash: 9f328e47a49a5c6c53c21baa880c38578c657a33
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733734"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904060"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器将 ASP.NET 应用迁移到 Azure 应用服务（预览）
 
@@ -29,7 +29,7 @@ ms.locfileid: "55733734"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程需要：
+完成本教程：
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
@@ -80,7 +80,7 @@ ms.locfileid: "55733734"
 需要使用[受支持的父映像](app-service-web-get-started-windows-container.md#use-a-different-parent-image)。 通过将 `FROM` 行替换为以下代码，更改父映像：
 
 ```Dockerfile
-FROM microsoft/aspnet:4.7.1
+FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-ltsc2019
 ```
 
 在该文件的末尾，添加以下行并保存文件：
@@ -142,9 +142,9 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 | 设置  | 建议的值 | 更多信息 |
 | ----------------- | ------------ | ----|
-|**应用名称**| 键入唯一名称。 | Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。 |
+|**应用程序名称**| 键入唯一名称。 | Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。 |
 |**资源组**| 选择“使用现有资源组”，键入“myResourceGroup”。 |  |
-|**OS**| Windows（预览） | |
+|**操作系统**| Windows（预览） | |
 
 ### <a name="configure-app-service-plan"></a>配置应用服务计划
 
@@ -180,7 +180,7 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-祝贺你！ 你已通过 Windows 容器将 ASP.NET 应用程序迁移到 Azure 应用服务。
+**祝贺你！** 你已通过 Windows 容器将 ASP.NET 应用程序迁移到 Azure 应用服务。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 

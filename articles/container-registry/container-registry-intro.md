@@ -5,15 +5,15 @@ services: container-registry
 author: stevelas
 ms.service: container-registry
 ms.topic: overview
-ms.date: 09/25/2018
+ms.date: 03/29/2019
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: befac6f1429d5099f68f0c2ba0a90bb1217f8b6f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 39f643bd66e2a96b0b9b93989d2941a9c30ea7fc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530256"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894007"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Azure 中的专用 Docker 容器注册表简介
 
@@ -54,7 +54,7 @@ Azure 容器注册表是基于开源 Docker 注册表 2.0 的托管 [Docker 注�
 
 [Azure 容器注册表任务](container-registry-tasks-overview.md)（ACR 任务）是 Azure 容器注册表中的一个功能套件，用于在 Azure 中提供简化且高效的 Docker 容器映像生成功能。 使用 ACR 任务可以通过将 `docker build` 操作卸载到 Azure 来将开发内部循环扩展到云。 配置生成任务以使其自动执行容器 OS 和框架修补管道，并使其在团队将代码提交到源代码管理时自动生成映像。
 
-[多步骤任务](container-registry-tasks-overview.md#multi-step-tasks-preview)（ACR 任务的一项预览版功能），提供用于在云中构建、测试和修补容器映像的基于步骤的任务定义和执行。 任务步骤定义各个容器映像构建和推送操作。 它们还可以定义一个或多个容器的执行，每个步骤都使用容器作为其执行环境。
+[多步骤任务](container-registry-tasks-overview.md#multi-step-tasks)提供用于在云中构建、测试和修补容器映像的基于步骤的任务定义和执行。 任务步骤定义各个容器映像构建和推送操作。 它们还可以定义一个或多个容器的执行，每个步骤都使用容器作为其执行环境。
 
 ## <a name="next-steps"></a>后续步骤
 

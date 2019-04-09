@@ -1,5 +1,5 @@
 ---
-title: 教程 - 使用 Azure 空间定位点在会话和设备间进行共享 | Microsoft Docs
+title: 教程 - 在会话和设备间共享 Azure 空间定位点 | Microsoft Docs
 description: 在本教程中，你会了解如何使用后端服务在 Unity 中的 Android/iOS 设备之间共享 Azure 空间定位点标识符。
 author: ramonarguelles
 manager: vicenterivera
@@ -8,19 +8,16 @@ ms.author: rgarcia
 ms.date: 02/24/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 7d9fe58b7db60513eed81aae628ebd7ca754a53a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ff9868dd7347812eb6ef566288ec364bc89b6955
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901298"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629307"
 ---
-# <a name="tutorial-sharing-across-sessions-and-devices-with-azure-spatial-anchors"></a>教程：使用 Azure 空间定位点在会话和设备间进行共享
+# <a name="tutorial-share-azure-spatial-anchors-across-sessions-and-devices"></a>教程：在会话和设备间共享 Azure 空间定位点
 
-本教程会演示如何使用 [Azure 空间定位点](../overview.md)：
-
-1. 在一个会话中创建定位点，然后在相同或不同设备上的另一个会话中查找它们。 例如，在另一天。
-2. 创建可以由多个设备同时在相同位置查找的定位点。
+本教程介绍如何在一个会话期间使用 [Azure 空间定位点](../overview.md)来创建定位点，然后在相同或不同设备上查找它们。 也可由多个设备同时在相同位置查找这些相同的定位点。
 
 ![持久性](./media/persistence.gif)
 
@@ -51,10 +48,6 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 [!INCLUDE [Publish Azure](../../../includes/spatial-anchors-publish-azure.md)]
 
-## <a name="open-the-sample-project-in-unity"></a>在 Unity 中打开示例项目
-
-[!INCLUDE [Clone Sample Repo](../../../includes/spatial-anchors-clone-sample-repository.md)]
-
 [!INCLUDE [Run Share Anchors Sample](../../../includes/spatial-anchors-run-share-sample.md)]
 
 [!INCLUDE [Clean-up section](../../../includes/clean-up-section-portal.md)]
@@ -63,7 +56,7 @@ Azure 空间定位点是一种跨平台开发人员服务。通过该服务，�
 
 在本教程中，你在 Azure 中部署了 ASP.NET Core Web 应用，然后配置并部署了 Unity 应用。 你使用应用创建了空间定位点，然后使用 ASP.NET Core Web 应用与其他设备共享它们。
 
-要详细了解如何改进 ASP.NET Core Web 应用，使其使用 Cosmos DB 存储共享空间定位点，请继续阅读下一个教程。
+若要详细了解如何改进 ASP.NET Core Web 应用，使其使用 Cosmos DB 存储共享的空间定位点标识符，请继续阅读下一教程。 Azure Cosmos DB 将为 ASP.NET Core Web 应用带来持久性。 这样应用就可以在今天创建一个定位点，然后过几天再回来查找它，只需使用存储在 Web 应用中的定位点标识符即可。
 
 > [!div class="nextstepaction"]
 > [教程：使用 Azure Cosmos DB 存储定位点](./tutorial-use-cosmos-db-to-store-anchors.md)

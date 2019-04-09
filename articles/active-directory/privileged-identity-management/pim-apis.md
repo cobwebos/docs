@@ -1,6 +1,6 @@
 ---
-title: 适用于 PIM 的 Microsoft Graph API（预览版） | Microsoft Docs
-description: 介绍如何使用适用于 Azure Active Directory Privileged Identity Management (PIM) 的 Microsoft Graph API（预览版）。
+title: 适用于 PIM 的 Microsoft Graph API（预览版） - Azure Active Directory | Microsoft Docs
+description: 介绍如何使用适用于 Azure AD Privileged Identity Management (PIM) 的 Microsoft Graph API（预览版）。
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -14,16 +14,16 @@ ms.date: 11/13/2018
 ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5d853579335653987321fded154eb9fb0f8dbdb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e54ec4049b2b0cd67c148d881a64a40efff438a2
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000286"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578962"
 ---
 # <a name="microsoft-graph-apis-for-pim-preview"></a>适用于 PIM 的 Microsoft Graph API（预览版）
 
-大多数可以使用 Azure 门户在 Azure AD Privileged Identity Management (PIM) 中执行的任务也可使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) 来执行。 本文介绍使用适用于 PIM 的 Microsoft Graph API 时涉及的一些重要概念。 有关 Microsoft Graph API 的详细信息，请查看 [Azure AD Privileged Identity Management API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)。
+大多数可以使用 Azure 门户在 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 中执行的任务也可使用 [Microsoft Graph API](https://developer.microsoft.com/graph/docs/concepts/overview) 来执行。 本文介绍使用适用于 PIM 的 Microsoft Graph API 时涉及的一些重要概念。 有关 Microsoft Graph API 的详细信息，请查看 [Azure AD Privileged Identity Management API 参考](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/privilegedidentitymanagement_root)。
 
 > [!IMPORTANT]
 > Microsoft Graph 中 /beta 版本下的 API 为预览版，可能会进行更改。 不支持在生产应用程序中使用这些 API。

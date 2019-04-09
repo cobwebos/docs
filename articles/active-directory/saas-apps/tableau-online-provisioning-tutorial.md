@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 0be9c435-f9a1-484d-8059-e578d5797d8e
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ed8bae32cb8d0680b1f9aa66f26407c3313ea06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f732eebd410a6b52a21a46925a29bf4676f7c8cb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077813"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057483"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教程：为 Tableau Online 配置自动用户预配
 
@@ -47,25 +48,19 @@ ms.locfileid: "58077813"
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 导航到“企业应用程序” > “所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![“企业应用程序”部分][2]
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加 Tableau Online，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Tableau Online”。
+4. 在搜索框中，键入**Tableau Online**，选择**Tableau Online**结果面板中单击**添加**按钮添加该应用程序。
 
-    ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/AppSearch.png)
-
-5. 在结果面板中，选择“Tableau Online”，然后单击“添加”按钮将 Tableau Online 添加到 SaaS 应用程序列表。
-
-    ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/AppSearchResults.png)
-
-    ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/AppCreation.png)
+    ![结果列表中的 tableau Online](common/search-new-app.png)
 
 ## <a name="assigning-users-to-tableau-online"></a>将用户分配到 Tableau Online
 
@@ -90,11 +85,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-tableau-online-in-azure-ad"></a>若要在 Azure AD 中为 Tableau Online 配置自动用户预配，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)，并浏览到“Azure Active Directory”>“企业应用程序”>“所有应用程序”。
+1. 登录到[Azure 门户](https://portal.azure.com)，然后选择**企业应用程序**，选择**所有应用程序**，然后选择**Tableau Online**。
 
-2. 从 SaaS 应用程序列表中选择 Tableau Online。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-    ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/AppInstanceSearch.png)
+2. 在应用程序列表中，选择“Tableau Online”。
+
+    ![应用程序列表中的 Tableau Online 链接](common/all-applications.png)
 
 3. 选择“预配”选项卡。
 
@@ -116,13 +113,16 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 6. 登录到 Tableau Online 的管理帐户以后，即可从“管理员”页的 URL 中提取“域”和“内容 URL”的值。
 
-    *   Tableau Online 帐户的“域”可从 URL 的以下部分复制：![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+    * Tableau Online 帐户的“域”可从 URL 的以下部分复制：
 
-    *   Tableau Online 帐户的“内容 URL”可从此部分复制，是在帐户设置过程中定义的值。 在此示例中，该值为“contoso”：![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
+        ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/DomainUrlPart.png)
+
+    * Tableau Online 帐户的“内容 URL”可从此部分复制，是在帐户设置过程中定义的值。 在此示例中，该值为“contoso”：
+
+        ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/ContentUrlPart.png)
 
         > [!NOTE]
-        > 你的**域**可能不同于此处显示的域。 
-
+        > 你的**域**可能不同于此处显示的域。
 
 7. 填充步骤 5 中所示的字段后，请单击“测试连接”，确保 Azure AD 可以连接到 Tableau Online。 如果连接失败，请确保 Tableau Online 帐户具有管理员权限，然后重试。
 
@@ -132,35 +132,35 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/EmailNotification.png)
 
-10. 单击“ **保存**”。
+9. 单击“ **保存**”。
 
-11. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Tableau”。
+10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Tableau”。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/UserMappings.png)
 
-12. 在“属性映射”部分中，查看从 Azure AD 同步到 Tableau Online 的用户属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+11. 在“属性映射”部分中，查看从 Azure AD 同步到 Tableau Online 的用户属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/UserAttributeMapping.png)
 
-13. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Tableau”。
+12. 在“映射”部分下，选择“将 Azure Active Directory 组同步到 Tableau”。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/GroupMappings.png)
 
-14. 在“属性映射”部分中，查看从 Azure AD 同步到 Tableau Online 的组属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
+13. 在“属性映射”部分中，查看从 Azure AD 同步到 Tableau Online 的组属性。 选为“匹配”属性的特性用于匹配 Tableau Online 中的用户帐户以执行更新操作。 选择“保存”按钮以提交任何更改。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/GroupAttributeMapping.png)
 
-15. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
+14. 若要配置范围筛选器，请参阅[范围筛选器教程](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md)中提供的以下说明。
 
-16. 若要为 Tableau Online 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
+15. 若要为 Tableau Online 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/ProvisioningStatus.png)
 
-17. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Tableau Online 的用户和/或组。
+16. 通过在“设置”部分的“范围”中选择所需的值，定义要预配到 Tableau Online 的用户和/或组。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/ScopeSync.png)
 
-18. 已准备好预配时，单击“保存”。
+17. 已准备好预配时，单击“保存”。
 
     ![Tableau Online 预配](./media/tableau-online-provisioning-tutorial/SaveProvisioning.png)
 
@@ -171,12 +171,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
-
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动报告](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/tableau-online-provisioning-tutorial/tutorial_general_01.png

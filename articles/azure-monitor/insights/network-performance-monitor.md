@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: d35918659acb899e43f76e94168abcba080aa006
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 1c80395880c556138313ebfd9af1610ace946c8a
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452124"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006767"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -59,7 +59,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="install-and-configure-agents"></a>安装并配置代理 
 
-使用[将 Windows 计算机连接到 Azure Log Analytics](../../azure-monitor/platform/agent-windows.md) 和[将 Operations Manager 连接到 Log Analytics](../../azure-monitor/platform/om-agents.md) 中的基本过程安装代理。
+使用基本过程安装代理[连接 Windows 计算机连接到 Azure Monitor](../platform/agent-windows.md)并[将 Operations Manager 连接到 Azure Monitor](../platform/om-agents.md)。
 
 ### <a name="where-to-install-the-agents"></a>代理安装位置 
 
@@ -101,7 +101,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 ### <a name="configure-the-solution"></a>配置解决方案 
 
-1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 也可以使用[从解决方案库中添加 Log Analytics 解决方案](../../azure-monitor/insights/solutions.md)中所述的过程。 
+1. 将网络性能监视器解决方案从 [Azure 市场](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview)添加到工作区。 您还可以使用中所述的过程[从解决方案库中的添加 Azure Monitor 解决方案](../../azure-monitor/insights/solutions.md)。 
 2. 打开 Log Analytics 工作区，然后选择“概览”磁贴。 
 3. 选择消息为 **“解决方案需要进行额外配置”** 的 *“网络性能监视器”* 磁贴。
 
@@ -151,7 +151,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 配置所需功能：
 
-- [性能监视器](network-performance-monitor-performance-monitor.md#configuration)
+- [性能监视](network-performance-monitor-performance-monitor.md#configuration)
 - [服务终结点监视器](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute 监视器](network-performance-monitor-expressroute.md#configuration)
 
@@ -168,7 +168,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
  
 
  
-解决方案使用综合事务来评估网络的运行状况。 在网络中各个点安装的 Log Analytics 代理会相互交换 TCP 数据包或 ICMP Echo。 代理是使用 TCP 数据包还是 ICMP Echo 取决于选择用于监视的协议。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 每隔五秒重复执行测试。 代理聚合数据三分钟，然后数据将上传到 Log Analytics 服务。
+解决方案使用综合事务来评估网络的运行状况。 在网络中各个点安装的 Log Analytics 代理会相互交换 TCP 数据包或 ICMP Echo。 代理是使用 TCP 数据包还是 ICMP Echo 取决于选择用于监视的协议。 在此过程中，代理将了解往返时间和丢包情况（如果有）。 每个代理还会定期对其他代理执行跟踪路由，以全部找出网络中必须测试的各种路由。 使用此数据，代理就可以推断出网络延迟和丢包数字。 每隔五秒重复执行测试。 数据聚合数据大约三分钟代理之前上传到 Azure Monitor 中的 Log Analytics 工作区。
 
 
 
@@ -241,9 +241,9 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 ![拓扑图](media/network-performance-monitor/topology-map.png)
  
 
-## <a name="log-analytics-search"></a>Log Analytics 搜索 
+## <a name="log-queries-in-azure-monitor"></a>Azure Monitor 中的日志查询
 
-通过网络性能监视器仪表板和向下钻取页面以图形方式显示的所有数据也可以在 [Log Analytics 搜索](../../azure-monitor/log-query/log-query-overview.md)中以本地方式使用。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的 **“常见查询”** 区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
+以图形方式公开，通过网络性能监视器仪表板和向下钻取页面的所有数据也都是可以在[记录查询](../log-query/log-query-overview.md)。 可对存储库中的数据执行交互式分析，并关联来自不同源的数据。 还可以创建自定义警报和视图，并将数据导出到 Excel、Power BI 或可共享的链接。 仪表板的 **“常见查询”** 区域中有一些查询非常有用，可以基于这些查询创建自己的查询和报表。 
 
 ## <a name="alerts"></a>警报
 
@@ -251,7 +251,7 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)管理所有通知。  
 
-如果你是通过 Log Analytics 创建警报的 NPM 用户： 
+如果你是 NPM 用户创建通过 LAzure 监视器警报： 
 1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
 2. 单击“网络性能监视器解决方案”磁贴。 
 3. 导航到“配置”。  

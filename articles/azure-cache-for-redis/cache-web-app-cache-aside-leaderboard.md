@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
 ms.author: yegu
-ms.openlocfilehash: 138bc0350e4eecac4639125dc3ae508ddbbd7d72
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 9cfb320f0623f5a93527a4dc0e8d82096980cc2c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234860"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893735"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>教程：在 ASP.NET 中创建缓存端排行榜
 
@@ -79,7 +79,7 @@ ms.locfileid: "56234860"
     using System.Data.Entity.SqlServer;
     ```
 
-1. 将 `Team` 类的定义替换为以下代码片段，其中包含更新的 `Team` 类定义以及某些其他实体框架帮助器类。 本教程对实体框架使用代码优先方法。 此方法可让实体框架通过代码创建数据库。 有关本教程中使用的实体框架 Code First 方法的详细信息，请参阅 [对新数据库使用 Code First](https://msdn.microsoft.com/data/jj193542)。
+1. 将 `Team` 类的定义替换为以下代码片段，其中包含更新的 `Team` 类定义以及某些其他实体框架帮助器类。 本教程对实体框架使用代码优先方法。 此方法可让实体框架通过代码创建数据库。 有关本教程中使用的实体框架 Code First 方法的详细信息，请参阅 [对新数据库使用 Code First](/ef/ef6/modeling/code-first/workflows/new-database)。
 
     ```csharp
     public class Team
@@ -663,7 +663,7 @@ ms.locfileid: "56234860"
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **数据库名称** | *ContosoTeamsDatabase* | 如需有效的数据库名称，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
-   | **订阅** | 用户的订阅  | 选择用于创建缓存和托管应用服务的同一订阅。 |
+   | **订阅** | *订阅*  | 选择用于创建缓存和托管应用服务的同一订阅。 |
    | **资源组**  | *TestResourceGroup* | 单击“使用现有项”，并使用缓存和应用服务所在的同一资源组。 |
    | **选择源** | **空白数据库** | 从空白数据库开始。 |
 
@@ -672,7 +672,7 @@ ms.locfileid: "56234860"
    | 设置       | 建议的值 | 说明 |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 任何全局唯一名称 | 如需有效的服务器名称，请参阅 [Naming rules and restrictions](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)（命名规则和限制）。 |
-   | 服务器管理员登录名 | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
+   | **服务器管理员登录名** | 任何有效的名称 | 如需有效的登录名，请参阅 [Database Identifiers](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)（数据库标识符）。 |
    | **密码** | 任何有效的密码 | 密码必须至少有 8 个字符，且必须包含以下类别中的三个类别的字符：大写字符、小写字符、数字以及非字母数字字符。 |
    | **位置** | *美国东部* | 选择创建缓存和应用服务的同一区域。 |
 
@@ -744,4 +744,4 @@ ms.locfileid: "56234860"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [如何缩放用于 Redis 的 Azure 缓存](./cache-how-to-scale.md)
+> [如何缩放 Azure Redis 缓存](./cache-how-to-scale.md)

@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/05/2018
 ms.author: gokuma
-ms.openlocfilehash: c4b178cc7e0604f38e4da25452a3bad01f8145de
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dde9b71c3615a592f8c08e040c5e9ba7bc756bd6
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858129"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008832"
 ---
 # <a name="provision-a-geo-artificial-intelligence-virtual-machine-on-azure"></a>在 Azure 上预配地理人工智能虚拟机 
 
@@ -47,7 +47,7 @@ Geo-DSVM 包含用于人工智能的多个工具，包括：
 
 
 
-   - **基础知识**
+   - **基础**
 
       1. **名称**：要创建的数据科学服务器的名称。
 
@@ -87,7 +87,7 @@ Geo-DSVM 已经预先安装了 ArcGIS Pro 桌面并且预配置了环境来使�
 
 ![ArcGIS-Free-Trial](./media/provision-geo-ai-dsvm/ArcGIS-Free-Trial.png)
 
-在注册付费或免费试用版 ArcGIS 帐户后，可以根据 [ArcGIS Pro 入门文档](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)中的说明授权你的帐户使用 ArcGIS Pro。 
+注册是付费或免费试用版 ArcGIS 帐户后，可以授权 ArcGIS Pro 为你的帐户中的说明[ArcGIS Pro 入门](https://www.esri.com/library/brochures/getting-started-with-arcgis-pro.pdf)。 
 
 使用 ArcGIS 帐户登录到 ArcGIS Pro 桌面后，可以开始将 VM 上安装并配置的数据科学工具用于地理空间分析和机器学习项目。
 

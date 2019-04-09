@@ -12,12 +12,12 @@ ms.author: joke
 ms.reviwer: sstein
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: f90e4281be27f4f30f4fdf0e3eb2932fa4e743ef
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb5066185f9301450a68276dd4b2ce2123231b34
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57840811"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58666778"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>使用 PowerShell 创建弹性作业代理
 
@@ -129,7 +129,7 @@ $Db2
 
 ## <a name="enable-the-elastic-jobs-preview-for-your-subscription"></a>启用适合订阅的弹性作业预览版
 
-若要使用弹性作业，请运行以下命令（此命令只需在每个需要在其中使用弹性作业的订阅中运行一次），以便在 Azure 订阅中注册此功能：
+若要使用弹性作业，请运行以下命令，在 Azure 订阅中注册此功能。 针对要在其中预配弹性作业代理的订阅运行此命令一次。 如果订阅只包含属于作业目标的数据库，则不需注册此类订阅。
 
 ```powershell
 Register-AzProviderFeature -FeatureName sqldb-JobAccounts -ProviderNamespace Microsoft.Sql

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: e00c086e0b91c0f48821143ff118c62afdd76e82
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 7c84a5c39b1a3b4a52505c053fdcfc92030237c3
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485163"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58575550"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
@@ -57,14 +57,16 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
         dotnet restore
 
-3. 打开 Program.cs 并更新 `Main` 方法以通过调用 `builder.AddAzureAppConfiguration()` 方法使用应用程序配置。
+3. 打开 *Program.cs*，并添加对应用程序配置 .NET Core 配置提供程序的引用。
 
     ```csharp
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.Configuration.AzureAppConfiguration;
+    ```
 
-    ...
+4. 通过调用 `builder.AddAzureAppConfiguration()` 方法，更新 `Main` 方法以使用应用配置。
 
+    ```csharp
     static void Main(string[] args)
     {
         var builder = new ConfigurationBuilder();

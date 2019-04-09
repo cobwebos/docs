@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: overview
 ms.date: 01/09/2019
 ms.author: alkohli
-ms.openlocfilehash: 6b6d0d1a7e14035f7a1b7998ec4b3e68761539f5
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
+ms.openlocfilehash: 5d1c3e4bb1c4b3545c8f051432016348112f16b0
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54158102"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58903640"
 ---
 # <a name="use-azure-portal-to-administer-your-data-box-disk"></a>使用 Azure 门户管理 Data Box Disk
 
@@ -25,7 +25,7 @@ ms.locfileid: "54158102"
 
 下达订单后，你可能会出于各种原因需要取消订单。 只能在磁盘准备工作开始之前取消订单。 一旦磁盘已准备好并且订单已处理，就不能取消订单。 
 
-执行以下步骤取消订单。
+可以执行以下步骤来取消订单。
 
 1.  转到“概况”>“取消”。 
 
@@ -55,7 +55,7 @@ ms.locfileid: "54158102"
 
 几分钟后将会创建克隆的订单，并且门户会更新，以显示新订单。
 
-[![克隆订单 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
+[![C克隆订单 3](media/data-box-portal-ui-admin/clone-order3.png)](media/data-box-portal-ui-admin/clone-order3.png#lightbox) 
 
 ## <a name="delete-order"></a>删除订单
 
@@ -119,7 +119,7 @@ ms.locfileid: "54158102"
 
 ## <a name="view-order-status"></a>查看订单状态
 
-|订单状态 |Description |
+|订单状态 |说明 |
 |---------|---------|
 |已订购     | 已成功下单。 <br> 如果磁盘缺货，你会收到通知。 <br>如果磁盘有货，Microsoft 会指定要发货的磁盘，并准备磁盘包装。        |
 |已处理     | 订单处理已完成。 <br> 在订单处理期间，将执行以下操作：<li>使用 AES-128 BitLocker 加密技术将磁盘加密。 </li> <li>锁定 Data Box 磁盘，防止任何未经授权的访问。</li><li>在此过程中，将生成用于解锁磁盘的支持密钥。</li>        |

@@ -4,16 +4,16 @@ description: 了解如何使用 Azure 蓝图资源锁“只读”和“不要删
 services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 03/13/2018
+ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: e3a05329ea247dbf5baa23ae9b3d32f909c0d1bb
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57855753"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58629221"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>使用 Azure 蓝图资源锁保护新资源
 
@@ -40,7 +40,7 @@ ms.locfileid: "57855753"
 
 1. 在左侧的“开始”页中，选择“创建蓝图”下的“创建”按钮。
 
-1. 在页面顶部找到“空白示例”蓝图示例，然后选择“使用此示例”。
+1. 在页面顶部找到“空白蓝图”蓝图示例，然后选择“以空白蓝图开始”。
 
 1. 输入该蓝图示例的“基本信息”：
 
@@ -81,7 +81,7 @@ ms.locfileid: "57855753"
        "resources": [{
            "type": "Microsoft.Storage/storageAccounts",
            "name": "[variables('storageAccountName')]",
-           "location": "[resourceGroups('RGtoLock').location]",
+           "location": "[resourceGroup().location]",
            "apiVersion": "2018-07-01",
            "sku": {
                "name": "[parameters('storageAccountType')]"
@@ -152,7 +152,7 @@ ms.locfileid: "57855753"
 
      |项目名称|项目类型|参数名称|值|说明|
      |-|-|-|-|-|
-     |RGtoLock 资源组|资源组|Name|TestingBPLocks|定义要将蓝图锁应用到的新资源组的名称。|
+     |RGtoLock 资源组|资源组|名称|TestingBPLocks|定义要将蓝图锁应用到的新资源组的名称。|
      |RGtoLock 资源组|资源组|位置|美国西部 2|定义要将蓝图锁应用到的新资源组的位置。|
      |StorageAccount|资源管理器模板|storageAccountType (StorageAccount)|Standard_GRS|选择存储 SKU。 默认值为 _Standard_LRS_。|
 
@@ -181,6 +181,8 @@ ms.locfileid: "57855753"
 1. 选择“拒绝分配”选项卡。
 
    该蓝图分配在部署的资源组中创建了一个[拒绝分配](../../../role-based-access-control/deny-assignments.md)，以强制实施“只读”蓝图锁定模式。 该拒绝分配会阻止“角色分配”选项卡中具有相应权限的某人执行特定的操作。 拒绝分配会影响所有主体。
+
+   若要了解如何从拒绝分配中排除主体，请参阅[蓝图资源锁定](../concepts/resource-locking.md#exclude-a-principal-from-a-deny-assignment)。
 
 1. 选择该拒绝分配，然后在左侧选择“拒绝的权限”页。
 
@@ -221,9 +223,9 @@ ms.locfileid: "57855753"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解[蓝图生命周期](../concepts/lifecycle.md)
-- 了解如何使用[静态和动态参数](../concepts/parameters.md)
-- 了解如何使用[蓝图资源锁定](../concepts/resource-locking.md)
-- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)
-- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)
-- 使用[常规疑难解答](../troubleshoot/general.md)在蓝图分配期间解决问题
+- 了解[蓝图生命周期](../concepts/lifecycle.md)。
+- 了解如何使用[静态和动态参数](../concepts/parameters.md)。
+- 了解如何利用[蓝图资源锁定](../concepts/resource-locking.md)。
+- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
+- 了解如何[更新现有分配](../how-to/update-existing-assignments.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

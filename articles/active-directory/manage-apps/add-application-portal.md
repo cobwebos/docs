@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/24/2018
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9f062596e2be93065b3c076787c2f5b3dfcedf9d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af30568d3ab35b35d2a0e0bef00921debb1ea451
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58110114"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58917798"
 ---
 # <a name="quickstart-add-an-application-to-your-azure-active-directory-tenant"></a>快速入门：向 Azure Active Directory 租户添加应用程序
 
@@ -42,76 +42,67 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 
 若要向 Azure AD 租户添加库应用程序，请执行以下操作：
 
-1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，单击“Azure Active Directory”。
+1. 在 [Azure 门户](https://portal.azure.com)的左侧导航面板中，选择“Azure Active Directory”。
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“企业应用程序”。
+2. 在“Azure Active Directory”窗格中，选择“企业应用程序”。
 
     ![打开企业应用程序](media/add-application-portal/open-enterprise-apps.png)
 
-3. 此时“所有应用程序”边栏选项卡会打开，显示 Azure AD 租户中应用程序的随机示例。
-
-    ![“所有应用程序”边栏选项卡](media/add-application-portal/applications-blade.png)
-
-
-4. 在“所有应用程序”边栏选项卡顶部，单击“新建应用程序”。
+3. 此时会打开“所有应用程序”窗格，其中显示了 Azure AD 租户中应用程序的随机示例。 在“所有应用程序”窗格顶部，选择“新建应用程序”。
 
     ![新建应用程序](media/add-application-portal/new-application.png)
 
-5. 若要查看库中应用程序的列表，最简单的方法是使用“类别”，因为“特色应用程序”下的图标是库应用程序的随机示例。
+4. 在“类别”窗格中的“特色应用程序”区域下面会显示一些图标，表示库应用程序的随机示例。  若要查看更多应用程序，可以选择“显示更多内容”。 但是，我们建议不要以这种方式进行搜索，因为库中有数千应用程序。
 
     ![按名称或类别搜索](media/add-application-portal/categories.png)
 
-    若要查看更多应用程序，可以单击“显示更多内容”。 建议不要以这种方式进行搜索，因为库中有数千应用程序。
-
-6. 若要搜索应用程序，请在“从库中添加”下输入要添加的应用程序的名称。 从结果中选择应用程序，然后单击“添加”。 以下示例演示在搜索 github.com 后显示的“添加应用”窗体。
+5. 若要搜索应用程序，请在“从库中添加”下输入要添加的应用程序的名称。 从结果中选择应用程序，然后选择“添加”。 以下示例演示在搜索 github.com 后显示的“添加应用”窗体。
 
     ![添加应用程序](media/add-application-portal/add-an-application.png)
 
 6. 在特定于应用程序的窗体中，可以更改属性信息。 例如，可以根据组织需要编辑应用程序的名称。 此示例使用 **GitHub-test** 作为名称。
 
-8. 完成对属性的更改后，请单击“添加”。
+7. 完成对属性的更改后，选择“添加”。
 
-9. 此时会显示一个入门页面，其中包含为组织配置应用程序所需的选项。
+8. 此时会显示一个入门页面，其中包含为组织配置应用程序所需的选项。
 
-    ![“入门”菜单](media/add-application-portal/get-started.png)
-
-已完成添加应用程序的操作。 请稍作休息。 后续部分介绍如何更改徽标和编辑应用程序的其他属性。
+现已添加完应用程序。 请稍作休息。 后续部分介绍如何更改徽标和编辑应用程序的其他属性。
 
 ## <a name="find-your-azure-ad-tenant-application"></a>查找 Azure AD 租户应用程序
 
-假设你此前因故必须离开，现在回来继续配置应用程序。 首先需找到应用程序。
+假设你此前因故必须离开，现在回来继续配置应用程序。 首先找到应用程序。
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”。
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择“Azure Active Directory”。
 
-2. 在“Azure Active Directory”边栏选项卡中，单击“企业应用程序”。
+2. 在“Azure Active Directory”窗格中，选择“企业应用程序”。
 
-3. 在“应用程序类型”下拉菜单中，选择“所有应用程序”，然后单击“应用”。 若要详细了解查看选项，请参阅[查看租户应用程序](view-applications-portal.md)。
+3. 在“应用程序类型”下拉菜单中，选择“所有应用程序”，然后选择“应用”。 若要详细了解查看选项，请参阅[查看租户应用程序](view-applications-portal.md)。
 
-4. 此时可以看到一个列表，其中包含 Azure AD 租户中的所有应用程序。 此列表为随机示例。 若要查看更多应用程序，请单击“显示更多内容”一次或多次。
+4. 此时可以看到一个列表，其中包含 Azure AD 租户中的所有应用程序。 此列表为随机示例。 若要查看更多应用程序，请选择“显示更多内容”一次或多次。
 
-5. 若要快速查找租户中的应用程序，请在搜索框中输入应用程序名称，然后单击“应用”。 此示例查找以前添加的 GitHub-test 应用程序。
+5. 若要快速查找租户中的应用程序，请在搜索框中输入应用程序名称，然后选择“应用”。 此示例查找前面添加的 GitHub-test 应用程序。
 
     ![搜索应用程序](media/add-application-portal/find-application.png)
 
 
 ## <a name="configure-user-sign-in-properties"></a>配置用户登录属性
 
-找到应用程序以后，即可将其打开并配置其属性。
+找到应用程序后，可将其打开并配置其属性。
 
-编辑应用程序属性的步骤
+编辑应用程序属性：
 
-1. 单击应用程序将其打开。
-2. 单击“属性”，打开供编辑的属性边栏选项卡。
+1. 选择应用程序将其打开。
+2. 选择“属性”，以打开属性页进行编辑。
 
-    ![“编辑属性”边栏选项卡](media/add-application-portal/edit-properties.png)
+    ![“编辑属性”窗格](media/add-application-portal/edit-properties.png)
 
-3. 花点时间了解登录选项。 “启用以供用户登录”、“需要进行用户分配”和“对用户可见”组合起来，决定了分配或未分配给应用程序的用户能否登录， 以及用户能否看到访问面板中的应用程序。
+3. 花点时间了解登录选项。 这些选项确定在应用程序中分配或取消分配的用户如何登录到应用程序。 这些选项还确定用户能否在访问面板中看到该应用程序。
 
     - “启用以供用户登录”决定了分配给应用程序的用户能否登录。
     - “需要进行用户分配”决定了未分配给应用程序的用户能否登录。
     - “对用户可见”决定了分配给应用的用户能否在访问面板和 O365 启动器中看到它。
 
-4. 根据下面的表来选择最符合需求的选项。
+4. 参考下表选择最符合需求的选项。
 
    - **已分配**用户的行为：
 
@@ -148,10 +139,10 @@ Azure Active Directory (Azure AD) 有一个库，其中包含数千预集成的�
 若要使用自定义徽标，请执行以下操作：
 
 1. 创建一个 215 x 215 像素的徽标，将其保存为 PNG 格式。
-2. 由于已找到应用程序，请单击该应用程序。
-2. 在左边栏选项卡中，单击“属性”。
+2. 既然已找到该应用程序，请将其选中。
+2. 在左窗格中选择“属性”。
 4. 上传该徽标。
-5. 完成后，单击“保存”。
+5. 完成后，选择“保存”。
 
     ![更改徽标](media/add-application-portal/change-logo.png)
 

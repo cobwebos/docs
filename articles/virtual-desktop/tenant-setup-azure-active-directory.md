@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: b8b5c2cef1db5018ce0d61e1950f49a3bd215ac2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 1c66b3de9e18cb74c43f20499e4065c7ec7ae5ca
+ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402892"
+ms.lasthandoff: 04/01/2019
+ms.locfileid: "58801668"
 ---
 # <a name="tutorial-create-a-tenant-in-windows-virtual-desktop-preview"></a>教程：在 Windows 虚拟桌面预览版中创建租户
 
@@ -30,6 +30,8 @@ ms.locfileid: "58402892"
 * Windows 虚拟桌面用户的 [Azure Active Directory](https://azure.microsoft.com/services/active-directory/) 租户 ID。
 * Azure Active Directory 租户中的全局管理员帐户。
    * 这也适用于要为其客户创建 Windows 虚拟桌面租户的云解决方案提供商 (CSP) 组织。 CSP 组织必须能够以其客户的 Azure Active Directory 全局管理员身份登录。
+   * 管理员帐户必须源自 Azure Active Directory 租户，你将在该租户中尝试创建 Windows 虚拟桌面租户。 此过程不支持 Azure Active Directory B2B（来宾）帐户。
+   * 管理员帐户必须是工作或学校帐户。
 * Azure 订阅 ID
 
 ## <a name="grant-azure-active-directory-permissions-to-the-windows-virtual-desktop-preview-service"></a>向 Windows 虚拟桌面预览版服务授予 Azure Active Directory 权限
@@ -75,7 +77,7 @@ ms.locfileid: "58402892"
 运行以下 cmdlet，使用 TenantCreator 用户帐户登录到 Windows 虚拟桌面：
 
 ```powershell
-Add-RdsAccount -DeploymentUrl “https://rdbroker.wvd.microsoft.com”
+Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 ```
 
 然后，创建与 Azure Active Directory 租户关联的新 Windows 虚拟桌面租户：

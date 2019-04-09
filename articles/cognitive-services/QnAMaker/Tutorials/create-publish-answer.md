@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 01/24/2019
 ms.author: diberry
-ms.openlocfilehash: 42d53cee48be73a0d151b6f44d381463fa1c4e16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d209d73d67af96e99589dddcb71b6b50214356ee
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58102156"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877272"
 ---
 # <a name="tutorial-using-c-create-knowledge-base-then-answer-question"></a>教程：使用 C# 创建知识库并回答问题
 
@@ -158,7 +158,7 @@ ms.locfileid: "58102156"
 
 |标头名称|标头值|
 |--|--|
-|授权|`Endpoint ` + **主终结点**<br>示例： `Endpoint xxxxxxx`<br>请注意 `Endpoint` 的文本与主终结点值之间的空格。 
+|授权|`Endpoint` + **主终结点**<br>示例： `Endpoint xxxxxxx`<br>请注意 `Endpoint` 的文本与主终结点值之间的空格。 
 
 请求正文需传递适当的 JSON：
 

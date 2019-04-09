@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 0d8fd6a0422ee26610f58f872cba4487d4e01e6b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: cac685cc3f5a19e9da134df87076299e3f38fe11
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403623"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58880961"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教程：Azure Active Directory 与 Periscope Data 集成
 
@@ -109,9 +109,9 @@ ms.locfileid: "58403623"
     | |
     |--|
     | `https://app.periscopedata.com/` |
-    | ` https://app.periscopedata.com/app/<SITENAME>` |
+    | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://app.periscopedata.com/<SITENAME>/sso`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请将这些值更新为实际登录 URL。 与 [Periscope Data 客户端支持团队](mailto:support@periscopedata.com)获取此值，以及将从本教程后面部分说明的“配置 Periscope Data 单一登录”部分获取的标识符值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -231,9 +231,9 @@ ms.locfileid: "58403623"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [ 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？ ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

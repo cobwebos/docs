@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 03/07/2019
 ms.author: danlep
-ms.openlocfilehash: bf9f2be8a0854a6968f3be6bfdaf3a59fc81dc76
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.openlocfilehash: 3d73d05c64f4b4867c69a15089c19ab8c320b9a8
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57728961"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006479"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>适用于 Azure 容器实例的 Azure 资源管理器模板
 
@@ -25,7 +25,7 @@ ms.locfileid: "57728961"
 | | |
 |-|-|
 | **应用程序** ||
-| [Wordpress][app-wp] | 在容器实例中创建 WordPress 网站及其 MySQL 数据库。 WordPress 站点内容和 MySQL 数据库会保存到 Azure 文件共享中。 |
+| [WordPress][app-wp] | 容器组中创建 WordPress 网站和其 MySQL 数据库。 WordPress 站点内容和 MySQL 数据库会保存到 Azure 文件共享中。 此外会创建应用程序网关，以公开对 WordPress 的公共网络访问。 |
 | [带有 SQL Server 和 IIS 的 MS NAV][app-nav] | 使用全功能自包含 Dynamics NAV/Dynamics 365 Business Central 环境部署单个 Windows 容器。 |
 | **卷** ||
 | [emptyDir][vol-emptydir] | 部署两个共享 emptyDir 卷的 Linux 容器。 |

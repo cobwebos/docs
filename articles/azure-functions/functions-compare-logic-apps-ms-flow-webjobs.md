@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: de83cc80d64fb1862f1fdec32b704d0948ef9fc8
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: ea99c7fe9bc7fd8d6e4e26baa0afe45505949098
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56820512"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58895641"
 ---
 # <a name="what-are-microsoft-flow-logic-apps-functions-and-webjobs"></a>什么是 Microsoft Flow、逻辑应用、Functions 和 WebJobs？
 
@@ -26,7 +26,7 @@ ms.locfileid: "56820512"
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure 逻辑应用](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
-* [Azure 应用服务 WebJobs](../app-service/webjobs-create.md)
+* [Azure 应用服务 Web 作业](../app-service/webjobs-create.md)
 
 所有这些服务都可以解决集成问题并自动化业务流程。 它们都可以定义输入、操作、条件和输出。 可以在日程安排或触发器中运行其中一个。 每种服务都有其独特的优点，本文将介绍这些差异。
 
@@ -84,7 +84,7 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 
 |  | 函数 | 带 WebJobs SDK 的 WebJobs |
 | --- | --- | --- |
-|使用[自动缩放](functions-scale.md#how-the-consumption-plan-works)的[无服务器应用模型](https://azure.microsoft.com/solutions/serverless/)|✔||
+|使用[自动缩放](functions-scale.md#how-the-consumption-and-premium-plans-work)的[无服务器应用模型](https://azure.microsoft.com/solutions/serverless/)|✔||
 |[在浏览器中进行开发和测试](functions-create-first-azure-function.md) |✔||
 |[按使用付费定价](functions-scale.md#consumption-plan)|✔||
 |[集成逻辑应用](functions-twitter-email.md)|✔||
@@ -128,6 +128,6 @@ Azure Functions 是在 WebJobs SDK 上构建的，因此共享许多相同的事
 
 开始创建第一个流、逻辑应用、函数应用。 选择以下任一链接：
 
-* [开始使用 Microsoft Flow](https://flow.microsoft.com/en-us/documentation/getting-started/)
+* [Microsoft Flow 入门](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [创建逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)

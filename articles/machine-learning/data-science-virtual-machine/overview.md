@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: f90e82fea9cbb3c3052738d15ff4a3838f1ad000
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 74fe2345af5d1249d6704c7560b42323561bc623
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863234"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918240"
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Azure 数据科学虚拟机简介
 
@@ -87,7 +87,7 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 | &nbsp;&nbsp;&nbsp;&nbsp;* Git 和 GitBash | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* OpenJDK | Y | Y |
 | &nbsp;&nbsp;&nbsp;&nbsp;* .NET Framework | Y | N |
-| PowerBI Desktop | Y | N |
+| Power BI Desktop | Y | N |
 | 访问服务的 Azure 和 Cortana Intelligence Suite 的 SDK | Y | Y |
 | **数据移动和管理工具** | | |
 | &nbsp;&nbsp;&nbsp;&nbsp;* Azure 存储资源管理器 | Y | Y |
@@ -139,4 +139,4 @@ Data Science VM 可用于在基于 GPU（图形处理单元）的硬件上使用
 * 有关介绍如何通过 Linux VM（CentOS 和 Ubuntu）执行多个常见数据科学任务的演示，请参阅 [Linux 数据科学虚拟机上的数据科学](linux-dsvm-walkthrough.md)。
 
 ## <a name="next-steps"></a>后续步骤
-[Azure 的 R 开发人员指南](../r-developers-guide.md)
+[Azure 中的 R 开发指南](/azure/architecture/data-guide/technology-choices/r-developers-guide)

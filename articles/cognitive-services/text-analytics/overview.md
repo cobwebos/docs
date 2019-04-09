@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: overview
 ms.date: 03/01/2019
 ms.author: aahi
-ms.openlocfilehash: 1e6aea792666447141e504f45a3ff55cb70f6261
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 59763b1146986b9920b87152101fd1dcdb00fece
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533232"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58904757"
 ---
 # <a name="what-is-text-analytics-api"></a>什么是文本分析 API？
 
@@ -77,7 +77,7 @@ ms.locfileid: "57533232"
 | 整个请求的最大大小 | 1 MB |
 | 一个请求中的文档数上限 | 1,000 个文档 |
 
-速率限制为每分钟 100 次调用。 请注意，可在单次调用中提交大量的文档（最多 1,000 个文档）。
+速率限制为每秒 100 个请求，每分钟 1000 个请求。 可以在单次调用中提交大量的文档（最多 1000 个文档）。
 
 ## <a name="unicode-encoding"></a>Unicode 编码
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 02/28/2019
 ms.author: diberry
-ms.openlocfilehash: 9b80222acfc1104c184fc9cfb4711c16e7bb8dd2
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: a8e51534fec3dacb577ef9b79bb42c48557dc15b
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57312981"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884935"
 ---
 # <a name="get-answers-to-a-question-from-a-knowledge-base-with-java"></a>使用 Java 从知识库获取问题的答案
 
@@ -70,7 +70,7 @@ public class GetAnswer {
 
 [!code-java[Add a POST request to send question to knowledge base](~/samples-qnamaker-java/documentation-samples/quickstarts/get-answer/GetAnswer.java?range=44-72 "Add a POST request to send question to knowledge base")]
 
-`Authorization` 标头的值包括字符串 `EndpointKey `。 
+`Authorization` 标头的值包括字符串 `EndpointKey`。 
 
 详细了解[请求](../how-to/metadata-generateanswer-usage.md#generateanswer-request)和[响应](../how-to/metadata-generateanswer-usage.md#generateanswer-response)。
 

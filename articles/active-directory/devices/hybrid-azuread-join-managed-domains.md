@@ -69,7 +69,7 @@ ms.locfileid: "58519079"
 - https://enterpriseregistration.windows.net
 - https://login.microsoftonline.com
 - https://device.login.microsoftonline.com
-- https://autologon.microsoftazuread-sso.com（如果正在使用或计划使用无缝 SSO）
+- [https://autologon.microsoftazuread-sso.com](https://autologon.microsoftazuread-sso.com) （如果正在使用或计划使用无缝 SSO）
 
 自 Windows 10 1709 起，如果组织需要通过出站代理访问 Internet，可[使用组策略对象 (GPO) 在计算机上配置代理设置](https://blogs.technet.microsoft.com/netgeeks/2018/06/19/winhttp-proxy-settings-deployed-by-gpo/)。 如果计算机运行的版本比 Windows 10 1709 低，必须实现 Web 代理自动发现 (WPAD)，让 Windows 10 能够向 Azure AD 注册设备。 
 

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 763ff0d5f619d2808fb06c05d5b266160b3a7069
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 5aa637938433eb1f906f0a4d81038cec0d6c6dcc
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868559"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893004"
 ---
 # <a name="tutorial-automate-container-image-builds-in-the-cloud-when-you-commit-source-code"></a>教程：提交源代码时，在云中自动化容器映像生成
 
@@ -52,7 +52,7 @@ ACR 任务目前支持以下触发器：
 * 向 Git 存储库提交内容
 * 更新基础映像
 
-在本教程中，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)（目前为预览版），使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
+在本教程中，ACR 任务会生成并推送在 Dockerfile 中指定的单一容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)，使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
 
 ## <a name="create-a-build-task"></a>创建生成任务
 

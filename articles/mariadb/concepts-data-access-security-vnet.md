@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: fdf2d3aeea32beba0b8e95c1816a80140d7cf6be
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 5a4e6819eeff2a2c8efaf3807c38cc06f7c35002
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958904"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006685"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>对 Azure Database for MariaDB 使用虚拟网络服务终结点和规则
 
@@ -91,7 +91,7 @@ ms.locfileid: "56958904"
 - **网络管理员：**&nbsp; 启用终结点。
 - **数据库管理员：**&nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for MariaDB 服务器。
 
-RBAC 备用：
+*RBAC 备用：*
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
@@ -105,6 +105,8 @@ RBAC 备用：
 ## <a name="limitations"></a>限制
 
 对于 Azure Database for MariaDB，虚拟网络规则功能具有以下限制：
+
+- Web 应用可以映射到 VNet/子网中的专用 IP。 即使已从给定 VNet/子网启用服务终结点，从 Web 应用到服务器的连接也将具有 Azure 公共 IP 源，而不是 VNet/子网源。 若要启用从 Web 应用连接到具有 VNet 防火墙规则的服务器，必须允许 Azure 服务访问服务器上的服务器。
 
 - 在 Azure Database for MariaDB 的防火墙中，每个虚拟网络规则都引用一个子网。 引用的所有这些子网都必须托管在同一个托管 Azure Database for MariaDB 的地理区域内。
 
@@ -138,7 +140,7 @@ RBAC 备用：
 
 ## <a name="next-steps"></a>后续步骤
 有关创建 VNet 规则的文章，请参阅：
-- [使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 规则](howto-manage-vnet-portal.md)
+- [创建和管理 Azure Database for MariaDB VNet 规则使用 Azure 门户](howto-manage-vnet-portal.md)
  
 <!--
 - [Create and manage Azure Database for MariaDB VNet rules using Azure CLI](howto-manage-vnet-using-cli.md)

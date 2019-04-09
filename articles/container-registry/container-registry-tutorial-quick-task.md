@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 901c844ecbfbbe68163c70b12cc061eae0f75d5a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860467"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58893701"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
 
@@ -30,7 +30,7 @@ ms.locfileid: "55860467"
 > * 在 Azure 中生成容器映像
 > * 将容器部署到 Azure 容器实例
 
-后续教程将会介绍如何使用 ACR 任务在代码提交和基础映像更新时自动生成容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)（目前为预览版），使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
+后续教程将会介绍如何使用 ACR 任务在代码提交和基础映像更新时自动生成容器映像。 ACR 任务也可运行[多步骤任务](container-registry-tasks-multi-step.md)，使用 YAML 文件来定义相关步骤，以便生成并推送多个容器，并可选择对其进行测试。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -220,8 +220,8 @@ az keyvault secret set \
 
 现已创建 Azure Key Vault 并在其中存储了两个机密：
 
-* `$ACR_NAME-pull-usr`：用作容器注册表**用户名**的服务主体 ID。
-* `$ACR_NAME-pull-pwd`：用作容器注册表**密码**的服务主体密码。
+* `$ACR_NAME-pull-usr`:用作容器注册表**用户名**的服务主体 ID。
+* `$ACR_NAME-pull-pwd`:用作容器注册表**密码**的服务主体密码。
 
 现在，当你或你的应用程序和服务从注册表提取映像时，可以按名称引用这些机密。
 

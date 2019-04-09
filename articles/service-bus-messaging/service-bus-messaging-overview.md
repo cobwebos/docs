@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 8217eddd6f31a30b9113b178d74b59afb94f42af
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
+ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57900856"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "58918835"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？
 
@@ -39,7 +39,7 @@ Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure
 
 ![队列](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即按请求传送消息。 **
+队列中的消息会排队，并在到达时加盖时间戳。 获得接受后，消息会安全地存储在冗余存储中。 消息以拉取模式传送，即按请求传送消息。
 
 ## <a name="topics"></a>主题
 
@@ -127,5 +127,5 @@ Microsoft Azure 服务总线是一种完全托管的企业[集成](https://azure
 
 * [比较 Azure 消息传送服务](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
 * 详细了解 Azure 服务总线的[标准和高级](https://azure.microsoft.com/pricing/details/service-bus/)层及其定价
-* [Azure 服务总线高级层的性能和延迟](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/)
+* [Azure 服务总线高级层的性能和延迟](https://techcommunity.microsoft.com/t5/Service-Bus-blog/Premium-Messaging-How-fast-is-it/ba-p/370722)
 * 尝试 [.NET](service-bus-dotnet-get-started-with-queues.md)、[Java](service-bus-java-how-to-use-queues.md) 或 [JMS](service-bus-java-how-to-use-jms-api-amqp.md) 中的快速入门

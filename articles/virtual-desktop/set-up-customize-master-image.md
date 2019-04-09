@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: fb107d9e48db5a9809ceb7ffcbac09550279f12d
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: d22fffcb792227b4d0805abd005d8c050cb97248
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485860"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006200"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -260,7 +260,7 @@ Windows 虚拟桌面不正式支持适用于业务和团队 Skype。
 ```batch
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v fResetBroken /t REG_DWORD /d 1 /f
-reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 600000 /f
+reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxConnectionTime /t REG_DWORD /d 10800000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v RemoteAppLogoffTimeLimit /t REG_DWORD /d 0 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxDisconnectionTime /t REG_DWORD /d 5000 /f
 reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxIdleTime /t REG_DWORD /d 7200000 /f
@@ -368,8 +368,8 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 
 现在，你具有映像后，可以创建或更新主机池。 若要了解有关如何创建和更新主机池的详细信息，请参阅以下文章：
 
-- [使用 Azure 资源管理器模板创建一个主机池](create-host-pools-arm-template.md)
-- [教程：使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)
+- [使用 Azure 资源管理器模板创建主机池](create-host-pools-arm-template.md)
+- [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
-- [设置主机池的用户配置文件共享](create-host-pools-user-profile.md)
-- [配置 Windows 虚拟机负载平衡方法](configure-host-pool-load-balancing.md)
+- [为主机池设置用户配置文件共享](create-host-pools-user-profile.md)
+- [配置 Windows 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)

@@ -198,7 +198,7 @@ Identity Protection 支持 Azure AD 中的 3 个角色，以平衡围绕部署�
 | --- | --- | --- |
 | 全局管理员 | 对 Identity Protection 具有完全访问权限、载入 Identity Protection | |
 | 安全管理员 | 对 Identity Protection 具有完全访问权限 | 载入 Identity Protection、重置用户密码 |
-| 安全读者 | 对 Identity Protection 的只读访问 | 载入 Identity Protection、修改用户、配置策略、重置密码| 
+| 安全读取者 | 对 Identity Protection 的只读访问 | 载入 Identity Protection、修改用户、配置策略、重置密码| 
 
 有关更多详细信息，请参阅[在 Azure Active Directory 中分配管理员角色](../users-groups-roles/directory-assign-admin-roles.md)
 

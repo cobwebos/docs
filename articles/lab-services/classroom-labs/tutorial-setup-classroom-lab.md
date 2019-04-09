@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 03/18/2019
+ms.date: 03/29/2019
 ms.author: spelluru
-ms.openlocfilehash: 31bf2de7417a1be6139de3ec9dcc8d531df586d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c32d1aaace765a1b46d5b25e82bab6e937d2ed
+ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58090315"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58649697"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>教程：设置教室实验室 
 在本教程中，请设置带虚拟机的课堂实验室，供学生在课堂上使用。  
@@ -32,7 +32,7 @@ ms.locfileid: "58090315"
 > * 将注册链接发送给学生
 
 ## <a name="prerequisites"></a>先决条件
-若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中下述某个角色的成员：所有者、实验室创建者或参与者。 用来创建实验室帐户的帐户会自动添加到所有者角色。
+只有充当下述角色之一的成员才能在实验室帐户中设置课堂实验室：所有者、实验室创建者或参与者。 用来创建实验室帐户的帐户会自动添加到所有者角色。
 
 实验室所有者可以将其他用户添加到“实验室创建者”角色。 例如，实验室所有者可以将教授添加到“实验室创建者”角色。 然后，教授可以为其课堂创建带 VM 的实验室。 学生使用从教授处接收的注册链接注册到实验室。 注册以后，他们可以使用实验室中的 VM 完成课堂作业和家庭作业。 有关如何将用户添加为“实验室创建者”角色的详细步骤，请参阅[将用户添加为“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
 
@@ -48,8 +48,8 @@ ms.locfileid: "58090315"
 
         ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. 在“选择虚拟机规范”页上执行以下步骤：
-    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 
-    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 
+    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，允许**小型**、**中型**、**大型**和 **GPU** 大小。
+    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
     4. 选择“**下一步**”。
 
         ![指定 VM 规范](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -69,7 +69,7 @@ ms.locfileid: "58090315"
 
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. 在“配置模板”页上执行以下步骤：对于此教程来说，这些步骤是**可选**的。
-    1. 选择“连接”以连接到模板 VM。 
+    1. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
     2. 在模板 VM 上安装并配置软件。     
     3. 输入模板的**说明**
 9. 在模板页上选择“下一步”。 
@@ -109,14 +109,19 @@ ms.locfileid: "58090315"
 
 
 ## <a name="send-an-email-with-the-registration-link"></a>发送包含注册链接的电子邮件
+
 1. 切换到“用户”视图（如果尚未转到该页）。 
-2. 在列表中选择特定或所有用户。 要选择特定用户，请选中列表第一列中的复选框。 要选择所有用户，请选中第一列标题前面的复选框（名称），或选中列表中所有用户的所有复选框。
-3. 选择工具栏上的“发送邀请”。 此外可以将鼠标悬停在列表中的学生姓名上，然后发送电子邮件图标。 
+2. 在列表中选择特定或所有用户。 要选择特定用户，请选中列表第一列中的复选框。 要选择所有用户，请选中第一列标题前面的复选框（名称），或选中列表中所有用户的所有复选框。 在此列表中可以查看**邀请状态**。  在下图中，所有学生的邀请状态设置为“未发送邀请”。 
+
+    ![选择学生](../media/tutorial-setup-classroom-lab/select-students.png)
+1. 在某一行中选择**电子邮件图标（信封）**，或者在工具栏上选择“发送邀请”。 将鼠标悬停在列表中的学生姓名上也可以看到电子邮件图标。 
 
     ![通过电子邮件发送注册链接](../media/tutorial-setup-classroom-lab/send-email.png)
 4. 在“通过电子邮件发送注册链接”页上，请按照下列步骤操作： 
     1. 键入要发送给学生的“可选邮件”。 电子邮件自动包含注册链接。 
-    2. 在“通过电子邮件发送注册链接”页上，请选择“发送”。 
+    2. 在“通过电子邮件发送注册链接”页上，请选择“发送”。 将会看到，邀请状态先更改为“正在发送邀请”，然后更改为“已发送邀请”。 
+        
+        ![已发送邀请](../media/tutorial-setup-classroom-lab/invitations-sent.png)
 
 ## <a name="next-steps"></a>后续步骤
 在本教程中，创建并配置了课堂实验室。 若要了解学生如何使用注册链接访问实验室中的 VM，请转到下一教程：
