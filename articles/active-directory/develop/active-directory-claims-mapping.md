@@ -13,12 +13,12 @@ ms.date: 03/28/2019
 ms.author: celested
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e492586f0c70d4cd3013ef8f466afd6bb2bb65ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2076aec1585ff8b60ee2b593621b75abfaeaa1ac
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884071"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260300"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>如何：为租户中的特定应用自定义在令牌中发出的声明（预览版）
 
@@ -415,7 +415,7 @@ ID 元素标识源中用于为声明提供值的属性。 下表列出对 Source
 
 ### <a name="custom-signing-key"></a>自定义签名密钥
 
-自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 所有之前受此策略影响的已颁发令牌都使用自定义签名密钥进行签名，并且必须将应用程序配置为接受使用该签名密钥签名的令牌。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。
+自定义签名密钥必须分配给服务主体对象，才能使声明映射策略生效。 这可以确保确认令牌是由声明映射策略的创建者修改的，并防止应用程序被恶意参与者创建的声明映射策略破坏。  已启用的映射必须检查其令牌签名密钥通过追加一个特殊 URI 声明的应用`appid={client_id}`到其[OpenID Connect 元数据请求](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)。  
 
 ### <a name="cross-tenant-scenarios"></a>跨租户方案
 

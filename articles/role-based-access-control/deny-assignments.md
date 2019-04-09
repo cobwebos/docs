@@ -15,12 +15,12 @@ ms.date: 03/13/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
-ms.openlocfilehash: fff213c8d1a408bf96e385f2097a5ef30dcc05d2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 497571a65510f806d7d7994c9dc37f9a00b65a5f
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57992094"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006723"
 ---
 # <a name="understand-deny-assignments-for-azure-resources"></a>了解 Azure 资源的拒绝分配
 
@@ -31,7 +31,7 @@ ms.locfileid: "57992094"
 本文介绍如何定义拒绝分配。
 
 > [!NOTE]
-> 在此期间，您可以添加自己的唯一方法拒绝分配是使用 Azure 蓝图。 有关详细信息，请参阅[保护 Azure 蓝图资源锁的新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
+> 此时，可以添加自己的拒绝分配的唯一方法是使用 Azure 蓝图。 有关详细信息，请参阅[使用 Azure 蓝图资源锁保护新资源](../governance/blueprints/tutorials/protect-new-resources.md)。
 
 ## <a name="deny-assignment-properties"></a>拒绝分配属性
 
@@ -56,12 +56,12 @@ ms.locfileid: "57992094"
 
 ## <a name="system-defined-principal"></a>系统定义的主体
 
-为了支持拒绝分配，引入了**系统定义的主体**。 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 可以将 `SystemDefined` 与 `ExcludePrincipals` 组合使用来拒绝除了某些用户之外的所有主体。 `SystemDefined` 具有以下约束：
+为了支持拒绝分配，引入了**系统定义的主体**。 此主体表示 Azure AD 目录中的所有用户、组、服务主体和托管标识。 如果主体 ID 是零 GUID `00000000-0000-0000-0000-000000000000` 且主体类型是 `SystemDefined`，则此主体表示所有主体。 `SystemDefined` 可以结合`ExcludePrincipals`拒绝除某些用户的所有主体。 `SystemDefined` 具有以下限制：
 
 - 只能用于 `Principals`，不能用于 `ExcludePrincipals`。
 - `Principals[i].Type` 必须设置为 `SystemDefined`。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用 REST API 列出 Azure 资源的拒绝分配](deny-assignments-rest.md)
+* [使用 Azure 门户查看 Azure 资源的拒绝分配](deny-assignments-portal.md)
 * [了解 Azure 资源的角色定义](role-definitions.md)

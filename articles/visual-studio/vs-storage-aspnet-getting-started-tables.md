@@ -12,12 +12,12 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 12/21/2016
 ms.author: ghogen
-ms.openlocfilehash: 1a35d1cbd49a55b0c25f5e2b993358130589c125
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: ea50506df53bfd586656d0030be4536d9d3b907d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444627"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010135"
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>开始使用 Azure 表存储和 Visual Studio 连接服务 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -537,7 +537,7 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
     CloudTable table = tableClient.GetTableReference("TestTable");
     ```
 
-1. 实例化 **TableQuery** 对象，指定 **Where** 子句中的查询。 以下代码片段使用[向表添加一批实体](#add-a-batch-of-entities-to-a-table)部分提供的 **CustomerEntity** 类和数据，通过 **PartitionKey**（客户的姓氏）值“Smith”查询表中的所有实体：
+1. 实例化 **TableQuery** 对象，指定 **Where** 子句中的查询。 使用**CustomerEntity**类和数据节中提供[向表中添加一批实体](#add-a-batch-of-entities-to-a-table)，下面的代码段查询表中的所有实体其中**PartitionKey** （客户的姓氏） 的值为"Smith":
 
     ```csharp
     TableQuery<CustomerEntity> query = 
@@ -710,5 +710,5 @@ Azure 表存储使用户可以存储大量结构化数据。 该服务是一个 
 ## <a name="next-steps"></a>后续步骤
 查看更多功能指南，以了解在 Azure 中存储数据的其他方式。
 
-  * [Azure Blob 存储和 Visual Studio 连接服务入门 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
-  * [Azure 队列存储和 Visual Studio 连接服务入门 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)
+  * [开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)
+  * [开始使用 Azure 队列存储和 Visual Studio 连接服务 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-queues.md)

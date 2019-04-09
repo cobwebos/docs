@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: anwestg
 ms.reviewer: ''
-ms.openlocfilehash: 851673de4a711f5eb64228233ea7703ef86bfa7b
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 192ac256f013498e57ecf7939d29796af073b948
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500196"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260555"
 ---
 # <a name="app-service-on-azure-stack-update-5-release-notes"></a>基于 Azure Stack 的应用服务 Update 5 发行说明
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 本发行说明介绍 Azure Stack 上的 Azure 应用服务 Update 5 中的改进和修复，以及任何已知问题。 已知问题分为与部署、更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
@@ -72,12 +72,12 @@ Azure Stack 上的 Azure 应用服务 Update 5 包含以下改进和修复：
   - 已将 Kudu 更新到 79.20129.3767
   
 - **对所有角色的基础操作系统的更新**：
-  - [适用于 x64 系统的 Windows Server 2016 的 2019-02 累积更新 (KB4487006)](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
+  - [2019-02 适用于 Windows Server 2016 的基于 x64 的系统 (KB4487006) 的累积更新](https://support.microsoft.com/help/4487006/windows-10-update-kb4487006)
 
 ### <a name="post-deployment-steps"></a>部署后步骤
 
 > [!IMPORTANT]  
-> 如果已经为应用服务 RP 提供 SQL Always On 实例，则必须[将 appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)并同步数据库，以免在进行数据库故障转移时丢失服务。
+> 如果使用 SQL Alwayson 实例提供了应用服务资源提供程序必须[appservice_hosting 和 appservice_metering 数据库添加到可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/availability-group-add-a-database)和同步数据库以避免造成任何损失数据库故障转移时的服务。
 
 ### <a name="post-update-steps"></a>更新后步骤
 

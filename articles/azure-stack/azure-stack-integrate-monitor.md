@@ -15,12 +15,12 @@ ms.date: 02/06/2019
 ms.author: jeffgilb
 ms.reviewer: thoroet
 ms.lastreviewed: 02/06/2019
-ms.openlocfilehash: 520319fb21dce3cf4f3cc1b36c52657cf9eb24e7
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 77dda80e538c8b742a96e7b7f81abe8650ee6b5d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903992"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257291"
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>将外部监视解决方案与 Azure Stack 集成
 
@@ -30,7 +30,7 @@ ms.locfileid: "58903992"
 - 物理计算机可以通过基板管理控制器 (BMC) 提供运行状况和警报信息。
 - 物理网络设备可以通过 SNMP 协议提供运行状况和警报信息。
 
-每个 Azure Stack 解决方案随附硬件生命周期主机。 此主机针对物理服务器和网络设备运行原始设备制造商 (OEM) 硬件供应商的监视软件。 如果需要，可以绕过这些监视解决方案，直接与数据中心内现有的监视解决方案集成。
+每个 Azure Stack 解决方案随附硬件生命周期主机。 此主机针对物理服务器和网络设备运行原始设备制造商 (OEM) 硬件供应商的监视软件。 请咨询 OEM 提供商，如果其监视解决方案可与你的数据中心现有监视解决方案集成。
 
 > [!IMPORTANT]
 > 使用的外部监视解决方案必须无代理。 不能在 Azure Stack 组件内部安装第三方代理。
@@ -40,7 +40,7 @@ ms.locfileid: "58903992"
 ![显示 Azure Stack、监视与票证解决方案之间的流量的示意图。](media/azure-stack-integrate-monitor/MonitoringIntegration.png)  
 
 > [!NOTE]
-> 不允许直接与物理服务器和网络设备进行外部监视集成，访问控制列表 (ACL) 会主动阻止这种集成。 
+> 直接与物理服务器的外部监视集成不是允许的和主动阻止的访问控制列表 (Acl)。  支持直接与物理网络设备的外部监视集成，请咨询 OEM 提供商，如何启用此功能。
 
 本文介绍如何将 Azure Stack 与外部监视解决方案（例如 System Center Operations Manager 和 Nagios）集成。 此外，还介绍如何使用 PowerShell 或 REST API 调用以编程方式处理警报。
 

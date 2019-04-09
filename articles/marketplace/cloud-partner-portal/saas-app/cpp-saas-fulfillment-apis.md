@@ -12,18 +12,22 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/26/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6084687f54be265e88e6755e7d082da7c32eda1b
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: c7da46984d592abc6ed97d7490fde732bf26b0ba
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58349512"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009439"
 ---
-# <a name="saas-fulfillment-apis"></a>SaaS 执行 Api
+# <a name="saas-fulfillment-apis"></a>SaaS 履行 API
 
-SaaS 履行 API，独立软件供应商 (Isv) 可以将其 SaaS 应用程序集成在 Azure marketplace 中销售。 此 API 使 ISV 应用程序可以参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  此 API 是事务 SaaS 提供了在 Azure Marketplace 上列出的要求。
+SaaS 履行 Api 使独立软件供应商 (Isv) 可以将其 SaaS 应用程序集成在 Azure marketplace 中销售。 这些 Api 使 ISV 应用程序能够参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  它们是用于列出在 Azure Marketplace 上的事务 SaaS 产品/服务的要求。
+
+> [!WARNING]
+> 此 API 的当前版本为版本 2，这应该用于所有新的 SaaS 提供。  第 1 版 API 已过时，维护以支持现有产品/服务。
+
 
 ## <a name="business-model-support"></a>业务模型支持
 
@@ -37,4 +41,4 @@ SaaS 履行 API，独立软件供应商 (Isv) 可以将其 SaaS 应用程序集�
 
 ## <a name="next-steps"></a>后续步骤
 
-此接口可用于开发：[SaaS 履行 API 版本 2](./cpp-saas-fulfillment-api-v2.md)。
+如果尚未这样做，在将 SaaS 应用程序注册[Azure 门户](https://ms.portal.azure.com)中所述[注册一个 Azure AD 应用程序](./cpp-saas-registration.md)。  然后，使用此接口的最新版本进行开发：[SaaS 履行 API 版本 2](./cpp-saas-fulfillment-api-v2.md)。

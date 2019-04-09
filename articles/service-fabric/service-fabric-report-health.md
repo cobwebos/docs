@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: 06fedddffd51dc22b45e8ae6e415ad139346c5b6
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670381"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058605"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>添加自定义 Service Fabric 运行状况报告
 Azure Service Fabric 引入了[运行状况模型](service-fabric-health-introduction.md)，用于在特定实体上标记不正常的群集和应用程序状态。 运行状况模型使用**运行状况报告器**（系统组件和监视器）。 其目标是实现轻松快捷的诊断和修复。 服务编写器必须预先考虑到运行状况。 应报告任何可能会影响运行状况的条件，尤其是如果它有助于标记出接近根源的问题。 运行状况信息可节省调试和调查的时间和精力。 该服务在云端（私有云或 Azure 云）大规模启动并运行后，好处格外明显。
@@ -55,18 +55,18 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 > 
 
 ## <a name="health-client"></a>运行状况客户端
-运行状况报告会使用存在于结构客户端内的运行状况客户端来发送至运行状况存储。 可以使用下列设置来配置运行状况客户端：
+运行状况报告发送到通过运行状况客户端，存在于结构客户端内的运行状况管理器。 运行状况管理器将报表保存在运行状况存储中。 可以使用下列设置来配置运行状况客户端：
 
-* **HealthReportSendInterval**：报告添加至客户端与报告发送至运行状况存储之间的时间延迟。 用于在单条消息中批处理报告，而不会针对每个报告发送一条消息。 批处理可以提升性能。 默认值：30 秒。
-* **HealthReportRetrySendInterval**：运行状况客户端将累积的运行状况报告重新发送给运行状况存储的间隔时间。 默认值：30 秒。
-* **HealthOperationTimeout**：报告消息发送到运行状况存储的超时期限。 如果消息超时，运行状况客户端就会不断重试，直到运行状况存储确认报告已处理为止。 默认值：2 分钟。
+* **HealthReportSendInterval**：该报表随即添加到客户端的时间和时间之间的延迟则是发送到运行状况管理器。 用于在单条消息中批处理报告，而不会针对每个报告发送一条消息。 批处理可以提升性能。 默认值：30 秒。
+* **HealthReportRetrySendInterval**：为运行状况管理器报告运行状况客户端重新发送累积的运行状况的时间间隔。 默认值：30 秒，最小：1 秒。
+* **HealthOperationTimeout**：报告消息发送到运行状况管理器超时时间。 如果消息超时，运行状况客户端将重试它直到运行状况管理器确认报告已处理为止。 默认值：2 分钟。
 
 > [!NOTE]
-> 批量处理报告时，结构客户端必须至少保持 HealthReportSendInterval 的活动状态，以确保报告发送完毕。 如果消息丢失或运行状况存储因为暂时性错误而无法应用它们，结构客户端必须保持更长时间的活动状态，让其有再试一次的机会。
+> 批量处理报告时，结构客户端必须至少保持 HealthReportSendInterval 的活动状态，以确保报告发送完毕。 如果该消息将丢失或运行状况管理器因为暂时性错误而无法应用它们，结构客户端必须将保持处于活动状态更长时间以使其有机会重试。
 > 
 > 
 
-客户端上的缓冲会将报告的唯一性纳入考虑范围。 例如，如果特定的错误报告器针对相同实体的相同属性每秒产生 100 个报告，则会以最后一个版本取代所有报告。 客户端队列中最多存在一个这样的报表。 如果配置了批处理，则发送到运行状况存储的报告数目仅为每个发送间隔发送一份报告。 这是最后添加的报告，可反映实体的最新状态。
+客户端上的缓冲会将报告的唯一性纳入考虑范围。 例如，如果特定的错误报告器针对相同实体的相同属性每秒产生 100 个报告，则会以最后一个版本取代所有报告。 客户端队列中最多存在一个这样的报表。 如果配置批处理，发送到运行状况管理器的报表数只是一个每次发送间隔。 这是最后添加的报告，可反映实体的最新状态。
 创建 `FabricClient` 时，通过传递 [FabricClientSettings](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclientsettings) 及运行状况相关实体的所需值来指定配置参数。
 
 以下示例创建结构客户端，并指定添加报告后尽快发送。 在可重试的错误或超时发生时，每 40 秒重试一次。
@@ -304,7 +304,7 @@ HealthEvents          :
 ## <a name="next-steps"></a>后续步骤
 根据运行状况数据，服务编写人员和群集/应用程序管理员可以想一想如何使用这些信息。 例如，他们可以根据运行状况设置警报，以便在出现导致服务中断的严重问题之前就将其捕获。 管理员还可以设置修复系统以便自动修复问题。
 
-[Service Fabric 运行状况监视简介](service-fabric-health-introduction.md)
+[介绍 Service Fabric 运行状况监视](service-fabric-health-introduction.md)
 
 [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
 

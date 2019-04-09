@@ -11,29 +11,31 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/28/2019
+ms.date: 04/5/2019
 ms.author: banders
-ms.openlocfilehash: 229b5a0948a81c9b5d78dd49f304e7b6891f95ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652942"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281975"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>自助服务交换和退款 Azure 保留项
 
 Azure 保留提供弹性，以帮助满足不断发展的需要。 你可以在交换为相同类型的另一个预订的保留。 如果不再需要还可以退款保留项，最多 50,000 美元每年。
+
+自助服务交换和取消功能不可用于美国政府企业协议客户。 支持其他美国政府版订阅类型，包括即用即付和 CSP。
 
 ## <a name="exchange-an-existing-reserved-instance"></a>交换现有的保留的实例
 
 你可以在交换中的三个快速步骤与预订[Azure 门户](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade)。
 
 1. 选择你想要退款和单击的预订**Exchange**。  
-    ![显示要返回的预订的示例图像 ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
+    ![显示要返回的预订的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-return.png)
 2. 选择你想要购买并键入数量的 VM 产品。 请确保新的购买总不只是返回总计。 [确定适当的大小，在购买之前](../virtual-machines/windows/prepay-reserved-vm-instances.md#determine-the-right-vm-size-before-you-buy)。  
-    ![显示 VM 产品购买进行交换的示例图像 ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
+    ![显示 VM 产品购买进行交换的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-select-purchase.png)
 3. 查看并完成该事务。  
-    ![显示 VM 产品购买进行交换，完成返回的示例图像 ](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
+    ![显示 VM 产品购买进行交换，完成返回的示例图像](./media/billing-azure-reservations-self-service-exchange-and-refund/exchange-refund-confirm-exchange.png)
 
 若要退款预订，请转到**预订详细信息**然后单击**退款**。
 
@@ -84,10 +86,10 @@ Money 添加到交换的货币承诺和退款如果原始购买了使用其中�
 
 - 若要了解如何管理预留，请参阅[管理 Azure 预留](billing-manage-reserved-vm-instance.md)。
 - 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
-    - [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
-    - [管理 Azure 中的预留](billing-manage-reserved-vm-instance.md)
-    - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
-    - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
-    - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
-    - [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
-    - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)
+    - [什么是 Azure 预留项？](billing-save-compute-costs-reservations.md)
+    - [管理在 Azure 中的保留项](billing-manage-reserved-vm-instance.md)
+    - [了解如何应用预订折扣](billing-understand-vm-reservation-charges.md)
+    - [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
+    - [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
+    - [未包含的保留项的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+    - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 azure 保留](/partner-center/azure-reservations)

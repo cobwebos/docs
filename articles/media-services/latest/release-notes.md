@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: a6746fa193331aff66b8726da1cb3afe49fdc9bf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: de5432c4e04fb0cfaf0517426fe9ee9da2a57b37
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351536"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058078"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Azure 媒体服务 v3 发行说明
 
@@ -37,6 +37,8 @@ ms.locfileid: "58351536"
 ## <a name="march-2019"></a>2019 年 3 月
 
 动态打包现在支持 Dolby Atmos. 有关详细信息，请参阅[音频编解码器支持的动态打包](dynamic-packaging-overview.md#audio-codecs-supported-by-dynamic-packaging)。
+
+现在可以指定将适用于你的流式处理定位符的资产或帐户筛选器的列表。 有关详细信息，请参阅[流式处理定位符相关联的筛选器](filters-concept.md#associate-filters-with-streaming-locator)。
 
 ## <a name="february-2019"></a>2019 年 2 月
 
@@ -67,15 +69,15 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 ### <a name="new-commands"></a>新命令
 
-- [az ams account](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
-- [az ams account-filter](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
-- [az ams asset](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
-- [az ams asset-filter](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
-- [az ams content-key-policy](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
-- [az ams job](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
-- [az ams live-event](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
-- [az ams live-output](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
-- [az ams streaming-endpoint](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
+- [az ams 帐户](https://docs.microsoft.com/cli/azure/ams/account?view=azure-cli-latest)
+- [az ams 帐户筛选器](https://docs.microsoft.com/cli/azure/ams/account-filter?view=azure-cli-latest)
+- [az ams 资产](https://docs.microsoft.com/cli/azure/ams/asset?view=azure-cli-latest)
+- [az ams 资产筛选器](https://docs.microsoft.com/cli/azure/ams/asset-filter?view=azure-cli-latest)
+- [az ams 内容密钥策略](https://docs.microsoft.com/cli/azure/ams/content-key-policy?view=azure-cli-latest)
+- [az ams 作业](https://docs.microsoft.com/cli/azure/ams/job?view=azure-cli-latest)
+- [az ams 实时事件](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest)
+- [az ams 实时输出](https://docs.microsoft.com/cli/azure/ams/live-output?view=azure-cli-latest)
+- [az ams 流式处理终结点](https://docs.microsoft.com/cli/azure/ams/streaming-endpoint?view=azure-cli-latest)
 - [az ams streaming-locator](https://docs.microsoft.com/cli/azure/ams/streaming-locator?view=azure-cli-latest)
 - [az ams account mru](https://docs.microsoft.com/cli/azure/ams/account/mru?view=azure-cli-latest) - 用于管理媒体保留单位。 有关详细信息，请参阅[缩放媒体保留单位](media-reserved-units-cli-how-to.md)。
 
@@ -83,31 +85,31 @@ CLI 2.0 模块现在可用于 [Azure 媒体服务 v3 正式版](https://docs.mic
 
 #### <a name="asset-commands"></a>资产命令
 
-- 添加了 ```--storage-account``` 和 ```--container``` 参数。
+- ```--storage-account``` 和```--container```添加的参数。
 - 在 ```az ams asset get-sas-url``` 命令中添加了到期时间默认值（现在时间 + 23 小时）和权限默认值（读取）。
 
 #### <a name="job-commands"></a>作业命令
 
-- 添加了 ```--correlation-data``` 和 ```--label``` 参数
-- ```--output-asset-names``` 已重命名为 ```--output-assets```。 现在，它接受 'assetName=label' 格式的资产列表（以空格分隔）。 没有标签的资产可以采用以下格式发送：'assetName='。
+- ```--correlation-data``` 和```--label```添加参数
+- ```--output-asset-names``` 重命名为```--output-assets```。 现在，它接受 'assetName=label' 格式的资产列表（以空格分隔）。 没有标签的资产可以采用以下格式发送：'assetName='。
 
 #### <a name="streaming-locator-commands"></a>创建流式处理定位符命令
 
-- ```az ams streaming locator``` 基本命令已替换为 ```az ams streaming-locator```。
-- 添加了 ```--streaming-locator-id``` 和 ```--alternative-media-id support``` 参数。
-- 更新了 ```--content-keys argument``` 参数。
-- ```--content-policy-name``` 已重命名为 ```--content-key-policy-name```。
+- ```az ams streaming locator``` 基本命令替换```az ams streaming-locator```。
+- ```--streaming-locator-id``` 和```--alternative-media-id support```添加的参数。
+- ```--content-keys argument``` 更新的自变量。
+- ```--content-policy-name``` 重命名为```--content-key-policy-name```。
 
 #### <a name="streaming-policy-commands"></a>流式处理策略命令
 
-- ```az ams streaming policy``` 基本命令已替换为 ```az ams streaming-policy```。
+- ```az ams streaming policy``` 基本命令替换```az ams streaming-policy```。
 - 在 ```az ams streaming-policy create``` 中添加了加密参数支持。
 
 #### <a name="transform-commands"></a>转换命令
 
-- ```--preset-names``` 参数已替换为 ```--preset```。 现在只能一次设置 1 个输出/预设（若要添加更多，必须运行 ```az ams transform output add```）。 此外，还可以通过将路径传递到自定义 JSON 来设置自定义 StandardEncoderPreset。
-- 可以通过传递要删除的输出索引来执行 ```az ams transform output remove```。
-- 在 ```az ams transform create``` 和 ```az ams transform output add``` 命令中添加了 ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 参数。
+- ```--preset-names``` 替换为参数```--preset```。 现在只能一次设置 1 个输出/预设（若要添加更多，必须运行 ```az ams transform output add```）。 此外，还可以通过将路径传递到自定义 JSON 来设置自定义 StandardEncoderPreset。
+- ```az ams transform output remove``` 可以通过传递要删除的输出索引执行。
+- ```--relative-priority, --on-error, --audio-language and --insights-to-extract``` 参数中添加```az ams transform create```和```az ams transform output add```命令。
 
 ## <a name="october-2018---ga"></a>October 2018 - GA
 

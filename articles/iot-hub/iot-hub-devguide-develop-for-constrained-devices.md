@@ -7,16 +7,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/24/2018
 ms.author: yizhon
-ms.openlocfilehash: 683f3ca88c349fef31f9647566dbed8a840f94dd
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
-ms.translationtype: HT
+ms.openlocfilehash: 7788bca621a59ec8cdfe36edf73a99efca8c460c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451725"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261388"
 ---
 # <a name="develop-for-constrained-devices-using-azure-iot-c-sdk"></a>使用 Azure IoT C SDK 针对受限制设备进行开发
 
 Azure IoT 中心 C SDK 使用 ANSI C (C99) 编写，因而非常适合用于运行各种平台，磁盘和内存占用都很小。 建议 RAM 至少为 64 KB，但具体内存占用取决于使用的协议、打开的连接数以及目标平台。
+> [!NOTE]
+> * Azure IoT C SDK 会定期发布资源消耗信息来帮助进行开发。  请访问我们[GitHub 存储库](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/c_sdk_resource_information.md)并查看最新的基准。
+>
 
 C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要以受限制设备为目标，则可能需要为目标平台在本地构建 SDK。 本文档演示如何使用 [cmake](https://cmake.org/) 删除特定功能，从而缩小 C SDK 占用的空间。 此外，本文档讨论使用受限制设备的最佳编程模型。
 
@@ -24,13 +27,13 @@ C SDK 可通过 apt-get、NuGet 和 MBED 以程序包的形式提供。 若要�
 
 针对受限制设备构建 C SDK。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 请按照本 [C SDK 设置指南](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md)准备用于构建 C SDK 的开发环境。 在开始执行使用 cmake 进行构建的步骤前，可调用 cmake 标记来删除未使用的功能。
 
 ### <a name="remove-additional-protocol-libraries"></a>删除其他协议库
 
-C SDK 当前支持五种协议：MQTT、基于 WebSocket 的 MQTT、AMQP、基于 WebSocket 的 AMQP 和 HTTPS。 大多数方案需要在客户端上运行一到两个协议，因此可从 SDK 中删除未使用的协议库。 有关为方案选择适当通信协议的其他信息，请参阅[选择 IoT 中心通信协议](iot-hub-devguide-protocols.md)。 例如，MQTT 是一种轻量级协议，通常更适合用于受限制设备。
+C SDK 目前支持五个协议：MQTT、 基于 WebSocket 的 AMQPs、 基于 AMQP WebSocket，以及 HTTPS MQTT。 大多数方案需要在客户端上运行一到两个协议，因此可从 SDK 中删除未使用的协议库。 有关为方案选择适当通信协议的其他信息，请参阅[选择 IoT 中心通信协议](iot-hub-devguide-protocols.md)。 例如，MQTT 是一种轻量级协议，通常更适合用于受限制设备。
 
 可以使用以下 cmake 命令删除 AMQP 和 HTTP 库：
 
@@ -80,4 +83,4 @@ C SDK 支持两种编程模型。 其中一组拥有具有 _LL_ 中缀的 API，
 
 若要详细了解 Azure IoT C SDK 体系结构，请参阅：
 -   [Azure IoT C SDK 源代码](https://github.com/Azure/azure-iot-sdk-c/)
--   [适用于 C 语言的 Azure IoT 设备 SDK 简介](iot-hub-device-sdk-c-intro.md)
+-   [有关 C 介绍的 azure IoT 设备 SDK](iot-hub-device-sdk-c-intro.md)

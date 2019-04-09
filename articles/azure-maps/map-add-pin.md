@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: a4d1a54e94b3228c64352bf08cd8cc69820a5e2d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 3225ae919e221935b6d8a52e20d943d2178f6a47
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500043"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056839"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
-本文介绍如何将数据源中的点数据呈现为地图上的符号层。 符号层是使用 WebGL 呈现的，与 HTML 标记相比，它支持的数据点数目大幅增加，但它不支持使用传统的 CSS 和 HTML 元素来设置样式。  
+本文介绍如何将数据源中的点数据呈现为地图上的符号层。 符号层使用 WebGL 呈现和支持比 HTML 标记的点太多更大的集，但不支持传统的 CSS 和 HTML 元素的样式设置。  
 
 > [!TIP]
-> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 若要限制层以便仅呈现点几何图形功能，请将层的 `filter` 属性设置为 `['==', '$type', 'Point']`
+> 默认情况下，符号层将呈现数据源中所有几何图形的坐标。 功能集限制在层，以便它仅呈现点几何图形`filter`到层的属性`['==', ['geometry-type'], 'Point']`或`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`如果想要包括多点功能。
 
 ## <a name="add-a-symbol-layer"></a>添加符号层
 
@@ -34,14 +34,14 @@ ms.locfileid: "58500043"
 
 第三个代码块创建[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)，并在单击鼠标时使用 shape 类的 [setCoordinates](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.shape?view=azure-iot-typescript-latest) 方法更新点的坐标。
 
-某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源、点击事件侦听器和符号层并将其添加到地图，以确保完全加载地图后显示该点。
+某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  创建和添加到映射中的数据源、 单击事件侦听器和符号层`ready`[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数，以确保在加载并可访问映射后显示的点。
 
 > [!TIP]
 > 默认情况下，为性能，符号层优化通过隐藏重叠的符号的符号的呈现。 在隐藏符号中放大时变得可见。 若要禁用此功能，并在所有时间呈现所有符号，设置`allowOverlap`的属性`iconOptions`到选项`true`。
 
 ## <a name="add-a-custom-icon-to-a-symbol-layer"></a>将自定义图标添加到符号层
 
-符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 本示例演示如何将自定义符号图标添加到地图资源，然后结合地图上的自定义符号使用此图标来呈现点数据。 符号层的 `textField` 属性要求指定一个表达式。 在这种情况下，我们想要呈现的文本值的点功能温度属性。 可以使用表达式 `['get', 'temperature']` 来实现此目的。 
+符号层是使用 WebGL 呈现的。 因此，所有资源（例如图标图像）必须载入 WebGL 上下文。 此示例演示如何将自定义图标添加到映射资源，然后使用它来呈现与在地图上的自定义符号的点数据。 符号层的 `textField` 属性要求指定一个表达式。 在这种情况下，我们想要呈现的温度属性，但由于它是一个数字，它需要转换为字符串。 此外，我们想要向其追加"° F"。 表达式可用于此;`['concat', ['to-string', ['get', 'temperature']], '°F']`. 
 
 <br/>
 
@@ -85,4 +85,4 @@ ms.locfileid: "58500043"
 > [添加气泡层](./map-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [添加 HTML 标记](./map-add-bubble-layer.md)
+> [添加 HTML 创建者](./map-add-bubble-layer.md)

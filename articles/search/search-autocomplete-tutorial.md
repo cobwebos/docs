@@ -7,23 +7,23 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 9fb3cdd4b4b809e45180cd95b8fe930cce86826e
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 43d289f2688bbf4927ee244d6ae9992782bf380e
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498802"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009812"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>示例：将建议或自动完成功能添加到 Azure 搜索应用程序
 
-在此示例中，了解如何使用[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)并[记忆式键入功能](https://docs.microsoft.com/rest/api/searchservice/autocomplete)生成支持搜索---键入时行为的功能强大的搜索框。
+在本文中，了解如何使用[建议](https://docs.microsoft.com/rest/api/searchservice/suggestions)并[记忆式键入功能](https://docs.microsoft.com/rest/api/searchservice/autocomplete)生成支持搜索---键入时行为的功能强大的搜索框。
 
-+ *建议*是当你键入时，其中每条建议是从与已键入内容相匹配的索引的单个结果而生成的建议结果的列表。 
++ *建议*建议结果生成在你键入时，其中每条建议是从与已键入内容相匹配的索引的单个结果。 
 
-+ *记忆式键入功能*，[预览功能](search-api-preview.md)，"完成"的单词或短语当前键入用户。 建议，因为已完成的单词或短语的前提是索引中的匹配项。 
++ *记忆式键入功能*，[预览功能](search-api-preview.md)，"完成"的单词或短语当前键入用户。 而不是返回结果，它将完成的查询，然后您可以执行返回的结果。 使用建议，因为已完成的词或短语查询中的都基于索引中的匹配项。 服务不会提供在索引中返回零个结果的查询。
 
 可以下载并运行中的示例代码**DotNetHowToAutocomplete**来评估这些功能。 示例代码以填充的预建的索引为目标[NYCJobs 演示数据](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs)。 NYCJobs 索引包含[建议器构造](index-add-suggesters.md)，这是对使用建议或自动完成功能的要求。 可以使用托管在沙盒服务中，已准备好的索引或[填充自己的索引](#configure-app)NYCJobs 示例解决方案中使用数据加载器。 
 
@@ -42,7 +42,7 @@ ms.locfileid: "58498802"
 
 Azure 搜索服务是对于本练习可选的因为该解决方案使用一个实时沙盒服务托管的已准备好的 NYCJobs 演示索引。 如果你想要在搜索服务上运行此示例，请参阅[配置 NYC 作业索引](#configure-app)有关的说明。
 
-* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)，任何版本。 免费的 Community 版本上进行了测试的示例代码和说明。
+* [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
 * 下载[DotNetHowToAutoComplete 示例](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToAutocomplete)。
 
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-在页面加载配置的 jQuery UI 自动填充"example1a"输入框，在浏览器中运行上面的代码。  `minLength: 3` 确保仅当搜索框中至少有三个字符时，才显示建议。  源值非常重要：
+在页面加载配置的 jQuery UI 自动填充"example1a"输入框，在浏览器中运行上面的代码。  `minLength: 3` 可确保在搜索框中有至少三个字符时才会显示建议。  源值非常重要：
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",
@@ -156,7 +156,7 @@ $(function () {
 });
 ```
 
-## <a name="c-version"></a>C#版本
+## <a name="c-example"></a>C# 示例
 
 现在，我们已讨论了 web 页面的 JavaScript 代码，让我们看看C#实际检索的建议的匹配项，使用 Azure 搜索.NET SDK 的服务器端的控制器代码。
 
@@ -229,9 +229,11 @@ public ActionResult AutoComplete(string term)
 
 页上的其他示例，遵照相同的模式来添加搜索词突出显示并的面，从而支持客户端缓存的记忆式键入功能结果。 请查看其中的每个示例，以了解其工作原理，以及如何在搜索体验中利用这些功能。
 
-## <a name="javascript-version-with-rest"></a>使用 REST 的 JavaScript 版本
+## <a name="javascript-example"></a>JavaScript 示例
 
-有关 JavaScript 实现中，打开**IndexJavaScript.cshtml**。 请注意，jQuery UI 自动完成函数也可用于搜索框中，收集搜索术语输入，进行到 Azure 搜索的异步调用以检索建议的匹配项或完成条款。 
+记忆式键入功能和建议的 Javascript 实现调用 REST API 中，作为源使用 URI 指定的索引和操作。 
+
+若要查看的 JavaScript 实现，打开**IndexJavaScript.cshtml**。 请注意，jQuery UI 自动完成函数也可用于搜索框中，收集搜索术语输入，进行到 Azure 搜索的异步调用以检索建议的匹配项或完成条款。 
 
 让我们看看第一个示例的 JavaScript 代码：
 
@@ -291,7 +293,7 @@ var autocompleteUri = "https://" + searchServiceName + ".search.windows.net/inde
 
 到目前为止，你已使用托管的 NYCJobs 演示索引。 如果你想要完全的可见性的所有代码，包括索引，将按照这些说明来创建和加载搜索服务中的索引。
 
-1. [创建 Azure 搜索服务](search-create-service-portal.md)或[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)在当前订阅下。 可以使用此示例中的一项免费服务。 
+1. [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用此示例中的一项免费服务。 
 
    > [!Note]
    > 如果使用免费的 Azure 搜索服务，则仅限使用三个索引。 NYCJobs 数据加载器将创建两个索引。 请确保服务中有足够的空间用于接受新索引。

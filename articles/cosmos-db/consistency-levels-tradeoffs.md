@@ -1,18 +1,18 @@
 ---
 title: Azure Cosmos DB 中各种一致性级别的可用性和性能权衡
 description: Azure Cosmos DB 中各种一致性级别的可用性和性能利弊。
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 2/13/2019
-ms.author: mjbrown
+ms.date: 04/08/2019
+ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: ac5b6e0d44376332e005d30b4a8fcc97021c4eda
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: a76e277bf56861bcaefb5bf7f8b3b3bc03ad1164
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407515"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266420"
 ---
 # <a name="consistency-availability-and-performance-tradeoffs"></a>一致性、可用性和性能权衡 
 
@@ -21,7 +21,7 @@ ms.locfileid: "58407515"
 Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包含多个选项，而不会走非常一致性和最终一致性这两种极端。 可以从一致性范畴的五个定义完善的模型中进行选择。 按最强到最弱的顺序，模型分别为：
 
 - *非常*
-- *有限过期*
+- *有限过期性*
 - *会话*
 - *一致前缀*
 - *最终*
@@ -52,7 +52,7 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 
 |**区域**|**复制模式**|**一致性级别**|**RPO**|**RTO**|
 |---------|---------|---------|---------|---------|
-|第|单主或多主数据库|任何一致性级别|< 240 分钟|<1 周|
+|1|单主或多主数据库|任何一致性级别|< 240 分钟|<1 周|
 |>1|单主数据库|会话、一致的前缀或最终|< 15 分钟|< 15 分钟|
 |>1|单主数据库|有限过期|*K* & *T*|< 15 分钟|
 |>1|多主数据库|会话、一致的前缀或最终|< 15 分钟|0|
@@ -67,6 +67,6 @@ Azure Cosmos DB 通过某种选择范围来实现数据一致性。 此方法包
 
 详细了解全局分布，以及分布式系统中的常规一致性利弊。 请参阅以下文章：
 
-- [现代分布式数据库系统设计中的一致性利弊](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
+- [现代分布式的数据库系统设计中的一致性平衡方案](https://www.computer.org/csdl/magazine/co/2012/02/mco2012020037/13rRUxjyX7k)
 - [高可用性](high-availability.md)
 - [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

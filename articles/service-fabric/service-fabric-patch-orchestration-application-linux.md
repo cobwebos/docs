@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/22/2018
 ms.author: nachandr
-ms.openlocfilehash: 5efcc92bc2054dfb66b5fe03ae083c49f924d2ce
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 537450dbc386a94fa5c2e0d9334435dce041a32f
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668188"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057636"
 ---
 # <a name="patch-the-linux-operating-system-in-your-service-fabric-cluster"></a>在 Service Fabric 群集中修补 Linux 操作系统
 
@@ -76,7 +76,7 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 
 ##### <a name="azure-portal"></a>Azure 门户
 在设置群集时，可以从 Azure 门户启用修复管理器。 在配置群集时选择“附加功能”下的“包含修复管理器”选项。
-![从 Azure 门户启用修复管理器的映像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
+![从 Azure 门户启用修复管理器的图像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
 ##### <a name="azure-resource-manager-deployment-model"></a>Azure 资源管理器部署模型
 另外，也可以使用 [Azure 资源管理器部署模型](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)在新的或现有 Service Fabric 群集上启用修复管理器服务。 获取要部署的群集的模板。 可以使用示例模板，或者创建自定义 Azure 资源管理器部署模型模板。 
@@ -121,13 +121,13 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 
 可以从[存档链接](https://go.microsoft.com/fwlink/?linkid=867984)下载应用程序和安装脚本。
 
-可以从 [sfpkg 链接](https://aka.ms/POA/POA_v2.0.2.sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
+可以从 [sfpkg 链接](https://aka.ms/POA/POA_v2.0.3.sfpkg)下载 sfpkg 格式的应用程序。 这对[基于 Azure 资源管理器的应用程序部署](service-fabric-application-arm-resource.md)非常有用。
 
 ## <a name="configure-the-app"></a>配置应用
 
 可配置修补业务流程应用的行为来满足需求。 在创建或更新应用程序的过程中，通过传入应用程序参数来替代默认值。 可以通过在 cmdlet `Start-ServiceFabricApplicationUpgrade` 或 `New-ServiceFabricApplication` 中指定 `ApplicationParameter` 来提供应用程序参数。
 
-|**Parameter**        |类型                          | **详细信息**|
+|**参数**        |**Type**                          | **详细信息**|
 |:-|-|-|
 |MaxResultsToCache    |Long                              | 应缓存的更新结果数上限。 <br>在假定以下情况时，默认值为 3000： <br> - 节点数为 20。 <br> - 节点上每月发生的更新次数为 5。 <br> - 每个操作的结果数可为 10。 <br> - 过去三个月的结果应已存储。 |
 |TaskApprovalPolicy   |枚举 <br> { NodeWise, UpgradeDomainWise }                          |TaskApprovalPolicy 指示协调器服务用于跨 Service Fabric 群集节点安装更新的策略。<br>                         允许值包括： <br>                                                           <b>NodeWise</b>。 每次在一个节点上安装更新。 <br>                                                           <b>UpgradeDomainWise</b>。 每次在一个升级域上安装更新。 （在最大程度情况下，属于升级域的所有节点都可进行更新。）
@@ -173,7 +173,8 @@ Linux 版修补业务流程应用使用特定的运行时功能，这些功能�
 
 ## <a name="view-the-update-results"></a>查看更新结果
 
-修补业务流程应用公开了 REST API，以向用户显示历史结果。 下面是一个示例结果：```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
+修补业务流程应用公开了 REST API，以向用户显示历史结果。 下面是示例结果：
+```testadm@bronze000001:~$ curl -X GET http://10.0.0.5:20002/PatchOrchestrationApplication/v1/GetResults```
 ```json
 [ 
   { 
@@ -271,7 +272,7 @@ RejectedList | 默认值为 "" | 此更新拒绝的修补程序列表
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-问： 为什么在修补业务流程应用运行时，我发现群集处于错误状态？
+问： **修补业务流程应用运行时，为什么发现群集处于错误状态？**
 
 A. 在安装过程中，修补业务流程应用会禁用或重启节点。 此操作可能暂时导致群集的运行状况变差。
 
@@ -285,15 +286,15 @@ A. 在安装过程中，修补业务流程应用会禁用或重启节点。 此�
 
 如果问题持续出现，请参阅“故障排除”部分。
 
-问： 修补业务流程应用处于警告状态
+问： **修补业务流程应用处于警告状态**
 
 A. 检查针对应用程序发布的运行状况报告是否是根本原因。 通常，警告中会包含问题的详细信息。 如果该问题是暂时性的，则应用程序应该会自动从此状态中恢复。
 
-问： 如果群集运行不正常，而我需要进行紧急的操作系统更新，该怎么办？
+问： **如果群集运行不正常，并且我需要进行紧急的操作系统更新，该怎么办？**
 
 A. 群集运行不正常时，修补业务流程应用不会安装更新。 若要消除修补业务流程应用工作流的阻碍，请将群集恢复正常状态。
 
-问： 为何跨群集运行修补需要花费很长时间？
+问： **为何跨群集修补需要花费很长时间运行？**
 
 A. 修补业务流程应用所需的时长主要取决于以下因素：
 
@@ -303,26 +304,26 @@ A. 修补业务流程应用所需的时长主要取决于以下因素：
 - 下载和安装更新所需的平均时间，不应超过两个小时。
 - VM 的性能和网络带宽。
 
-问： **修补业务流程应用如何判断哪些更新是安全更新？**
+问： **执行修补业务流程应用如何判断哪些更新是安全更新。**
 
 A. 修补业务流程应用使用特定于分发版的逻辑来确定可用更新中的哪些更新是安全更新。 例如：在 ubuntu 中，应用会搜索存档 $RELEASE-security、$RELEASE-updates 中的更新（$RELEASE 为 Xenial 或 Linux 标准基础发行版）。 
 
  
-问： **如何锁定为特定的包版本？**
+问： **如何锁定到特定的包版本？**
 
 A. 使用 ApprovedPatches 设置可将包锁定为特定版本。 
 
 
-问： **Ubuntu 中启用的自动更新如何进行？**
+问： **在 Ubuntu 中启用自动更新会发生什么情况？**
 
 A. 在群集上安装修补业务流程应用后，会立即禁用群集节点上的无人参与升级。 所有定期更新工作流将由修补业务流程应用驱动。
 若要在整个群集中实现环境一致性，我们建议只通过修补业务流程应用安装更新。 
  
-问： **在升级后，修补业务流程应用是否会清理未使用的包？**
+问： **升级后，修补业务流程应用是否会清理未使用的包？**
 
 A. 是的，在执行安装后的步骤期间会执行清理。 
 
-问： **修补业务流程应用是否可用来修补开发群集（单节点群集）？**
+问： **可修补业务流程应用用于我的开发群集 （单节点群集） 的修补程序？**
 
 A. 否，修补业务流程应用不能用来修补单节点群集。 此限制是设计使然，因为 [Service Fabric 系统服务](https://docs.microsoft.com/azure/service-fabric/service-fabric-technical-overview#system-services)或者任意客户应用将面临停机时间，因此修复管理器不会批准任何修复工作进行修补。
 
@@ -373,5 +374,10 @@ A. 否，修补业务流程应用不能用来修补单节点群集。 此限制�
 ### <a name="version-201"></a>版本 2.0.1
 - 使用最新 Service Fabric SDK 重新编译应用
 
-### <a name="version-202-latest"></a>版本 2.0.2（最新版本）
+### <a name="version-202"></a>版本 2.0.2 
 - 修复了在重启过程中未带运行状况警告的问题。
+
+### <a name="version-203-latest"></a>版本 2.0.3 （最新版本）
+- 其中的节点代理守护程序服务的 CPU 使用率达到最多 99%标准 d1 v2 Vm 上解决此问题。
+- 解决此问题，这会影响修补的生命周期在节点上，以防其中是当前的节点名称的子集名称的节点。 对于此类节点，可能会出现修补缺失或重启操作挂起的情况。
+- 修复了 bug，由于节点代理守护程序总是崩溃时损坏设置传递给服务。

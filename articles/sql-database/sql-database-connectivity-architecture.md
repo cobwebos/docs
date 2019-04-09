@@ -1,6 +1,6 @@
 ---
 title: 将 Azure 流量定向到 Azure SQL 数据库和 SQL 数据仓库 | Microsoft Docs
-description: 本文档从 Azure 内部或 Azure 外部说明 Azure SQL 数据库和 SQL 数据仓库连接体系结构。
+description: 本文档介绍了数据库连接从 Azure 内或从 Azcure SQL onnectivity 体系结构在 Azure 之外。
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,34 +12,16 @@ ms.author: srbozovi
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 04/03/2019
-ms.openlocfilehash: 619893ad42664f8d37fff5e61b8560f6c6d83e23
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4ff6cc0ba18074f353eb5b99af7052edd658a80e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918597"
+ms.locfileid: "59006770"
 ---
 # <a name="azure-sql-connectivity-architecture"></a>Azure SQL 连接体系结构
 
 本文介绍 Azure SQL 数据库和 SQL 数据仓库连接体系结构，以及如何使用不同的组件将流量定向到 Azure SQL 实例。 借助这些连接组件，可以通过连接自 Azure 内部的客户端和连接自 Azure 外部的客户端将网络流量定向到 Azure SQL 数据库或 SQL 数据仓库。 本文还提供脚本示例用于更改连接方式，以及提供与更改默认连接设置相关的注意事项。
-
-> [!IMPORTANT]
-> **[即将发生的更改]为服务终结点连接到 Azure SQL 服务器`Default`的连接行为更改`Redirect`。**
-> 建议客户创建新的服务器，并将现有服务器的连接类型显式设置为“重定向”（首选）或“代理”，具体取决于服务器的连接体系结构。
->
-> 为了防止在进行此更改时在现有环境中通过服务终结点进行的连接中断，我们使用遥测执行以下操作：
->
-> - 对于在更改前检测到的通过服务终结点进行过访问的服务器，我们将连接类型切换为 `Proxy`。
-> - 对于所有其他的服务器，我们会将连接类型切换为 `Redirect`。
->
-> 在以下方案中，服务终结点用户可能仍会受影响：
->
-> - 应用程序不常连接到现有的服务器，因此我们的遥测不捕获有关这些应用程序的信息。
-> - 自动的部署逻辑创建假定服务终结点连接的默认行为一个 SQL 数据库服务器 `Proxy`
->
-> 如果不能建立到 Azure SQL Server 的服务终结点连接，而你怀疑自己受此更改的影响，请验证是否已将连接类型显式设置为 `Redirect`。 如果这种情况，则必须打开 VM 的防火墙和网络安全组 (NSG) 到区域中属于 Sql 的所有 Azure IP 地址[服务标记](../virtual-network/security-overview.md#service-tags)为 11000-11999 的端口。 如果这不是适合自己的选项，请将服务器显式切换为 `Proxy`。
-> [!NOTE]
-> 本主题适用于承载单一数据库和弹性池，SQL 数据仓库数据库、 Azure Database for MySQL、 Azure Database for MariaDB 和 Azure Database for PostgreSQL 的 Azure SQL 数据库服务器。 为简单起见，引用到 SQL 数据库、 SQL 数据仓库、 Azure Database for MySQL、 MariaDB 的 Azure 数据库和 Azure Database for PostgreSQL 时，则使用 SQL 数据库。
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 

@@ -9,27 +9,27 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: codepen
-ms.openlocfilehash: 786880c5fa919fce5ed60d011211e6d7348f7260
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: b8205383c25ba04212126e0e6ca1bd44e4efad1a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57570056"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264516"
 ---
 # <a name="show-directions-from-a-to-b"></a>显示从 A 到 B 的路线
 
 本文展示了如何发出路线请求并在地图上显示路线。
 
-可通过两种方法来执行此操作。 第一种方法是通过服务模块查询 [Azure Maps 路线 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 第二种方法是利用[提取 API](https://fetch.spec.whatwg.org/)发出搜索请求到[Azure 地图路由 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 下面将讨论这两种方法。
+可通过两种方法来执行此操作。 第一种方法是通过服务模块查询 [Azure Maps 路线 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 第二种方法是使用[提取 API](https://fetch.spec.whatwg.org/)发出搜索请求到[Azure 地图路由 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 下面将讨论这两种方法。
 
 ## <a name="query-the-route-via-service-module"></a>通过服务模块查询路线
 
 <iframe height='500' scrolling='no' title='在地图上显示从 A 到 B 的路线（服务模块）' src='//codepen.io/azuremaps/embed/RBZbep/?height=265&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/RBZbep/'>在地图上显示从 A 到 B 的路线（服务模块）</a>。
 </iframe>
 
-在上述代码中，第一个代码块构造 map 对象并设置使用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
+在上述代码中，第一个代码块构造 map 对象并设置要使用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个块的代码创建**SubscriptionKeyCredentialPolicy**使用订阅密钥向 Azure Maps 的 HTTP 请求进行身份验证。 **Atlas.service.MapsURL.newPipeline()** 采用**SubscriptionKeyCredential**策略，并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 **RouteURL**表示 Azure Maps 的 URL[路由](https://docs.microsoft.com/rest/api/maps/route)操作。
+第二个代码块创建`SubscriptionKeyCredentialPolicy`使用订阅密钥向 Azure Maps 的 HTTP 请求进行身份验证。 `atlas.service.MapsURL.newPipeline()`采用`SubscriptionKeyCredential`策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 `routeURL`表示 Azure Maps 的 URL[路由](https://docs.microsoft.com/rest/api/maps/route)操作。
 
 第三个块的代码创建并添加[数据源](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest)到映射的对象。
 
@@ -37,9 +37,9 @@ ms.locfileid: "57570056"
 
 线条是 [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest) 的一个特征。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 呈现 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的线条对象（作为地图中的线条）。 第四个代码块创建线条层并将其添加到地图。 请参阅 [LinestringLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。
 
-某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 第五个代码块创建符号层并将其添加到地图。
+某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 第五个的代码块创建并向地图中添加符号层。
 
-第六个块的代码查询 Azure Maps 路由服务，它是一部分的[服务模块](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2)。 [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteURL 方法用于获取起点和终点之间的路由。 然后使用提取响应中的 GeoJSON 功能集合**geojson.getFeatures()** 方法并添加到数据源。 然后，它将响应呈现为地图上的路线。 有关向地图添加线条的详细信息，请参阅[在地图上添加线条](./map-add-shape.md#addALine)。
+第六个块的代码查询 Azure Maps 路由服务，它是一部分的[服务模块](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js)。 [CalculateRouteDirections](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.routeurl?view=azure-iot-typescript-latest#methods) RouteURL 方法用于获取起点和终点之间的路由。 然后使用提取响应中的 GeoJSON 功能集合`geojson.getFeatures()`方法并添加到数据源。 然后，它将响应呈现为地图上的路线。 有关向地图添加线条的详细信息，请参阅[在地图上添加线条](./map-add-shape.md#addALine)。
 
 使用地图的地图的边界设置的最后一个代码块[setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-)属性。
 
@@ -50,7 +50,7 @@ ms.locfileid: "57570056"
 <iframe height='500' scrolling='no' title='在地图上显示从 A 到 B 的路线' src='//codepen.io/azuremaps/embed/zRyNmP/?height=469&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/zRyNmP/'>Show directions from A to B on a map</a>（在地图上显示从 A 到 B 的方向）。
 </iframe>
 
-在上述代码中，第一个代码块构造 map 对象并设置使用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
+在上述代码中，第一个代码块构造 map 对象并设置要使用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
 
 第二个代码块创建 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 对象并将其添加到地图。
 
@@ -58,11 +58,11 @@ ms.locfileid: "57570056"
 
 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 呈现 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的线条对象（作为地图中的线条）。 第四个代码块创建线条层并将其添加到地图。 请参阅 [LineLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。
 
-某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 第五个代码块创建符号层并将其添加到地图。 请在 [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 中参阅符号层的属性。
+某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。 第五个的代码块创建并向地图中添加符号层。 请在 [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 中参阅符号层的属性。
 
 下一个代码块从起点和终点之间创建 `SouthWest` 和 `NorthEast` 点，并使用地图的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性设置地图的边界。
 
-最后一个代码块利用[提取 API](https://fetch.spec.whatwg.org/)发出搜索请求到[Azure 地图路由 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 然后，它将解析传入的响应。 并且，对于成功的响应，它收集每个路线点的纬度和经度信息并通过连接这些点来创建行的数组。 然后，它将所有这些线条添加到 dataSource 上，以在地图中呈现路线。 有关说明，可以参阅[在地图上添加线条](./map-add-shape.md#addALine)。
+使用代码的最后一个块[提取 API](https://fetch.spec.whatwg.org/)发出搜索请求到[Azure 地图路由 API](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)。 在响应中进行分析。 如果响应成功，用于通过连接这些点创建一个数组行的纬度和经度信息。 行数据然后添加到数据源，以便呈现在地图上的路由。 有关说明，可以参阅[在地图上添加线条](./map-add-shape.md#addALine)。
 
 路线查询、数据源、符号和线条层以及照相机边界在地图的[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)中进行创建和设置，以确保在地图完全加载后才显示结果。
 
@@ -71,7 +71,7 @@ ms.locfileid: "57570056"
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [映射](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 有关完整代码示例，请参阅以下文章：
 
@@ -79,4 +79,4 @@ ms.locfileid: "57570056"
 > [在地图上显示交通信息](./map-show-traffic.md)
 
 > [!div class="nextstepaction"]
-> [与地图交互 - 鼠标事件](./map-events.md)
+> [与地图的鼠标事件交互](./map-events.md)

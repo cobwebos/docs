@@ -15,16 +15,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: waltero
 ms.lastreviewed: 02/27/2019
-ms.openlocfilehash: 4e9df0d413b964b4a14cf9ca48db8b7956b441f9
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: fa663cce10a39ef60a0efa5838b81b257fd02b46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255931"
 ---
 # <a name="access-the-kubernetes-dashboard-in-azure-stack"></a>访问 Azure Stack 中的 Kubernetes 仪表板 
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包* 
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包* 
 > [!Note]   
 > Azure Stack 上的 Kubernetes 现为预览版。 在预览目前不支持 azure Stack 离线的场景中。 
 
@@ -47,7 +47,7 @@ Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪
 ## <a name="overview-of-steps-to-enable-dashboard"></a>若要启用仪表板的步骤概述
 
 1.  从群集中的主节点中导出的 Kubernetes 证书。 
-2.  证书导入到 Azure Stack 管理计算机。
+2.  导入到 Azure Stack 管理计算机的证书。
 2.  打开 Kubernetes web 仪表板。 
 
 ## <a name="export-certificate-from-the-master"></a>从主节点中导出证书 
@@ -70,7 +70,7 @@ Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪
     ```Bash   
     kubectl cluster-info 
     ``` 
-    找到仪表板的 URL。 例如：`https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
+    找到仪表板的 URL。 例如：  `https://k8-1258.local.cloudapp.azurestack.external/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy`
 
 6.  提取自签名的证书并将其转换为 PFX 格式。 运行以下命令：
 
@@ -135,6 +135,6 @@ Kubernetes 包括可用于基本的管理操作的 web 仪表板。 使用此仪
 
 [将 Kubernetes 部署到 Azure Stack](azure-stack-solution-template-kubernetes-deploy.md)  
 
-[将 Kubernetes 群集添加到市场（面向 Azure Stack 操作员）](../azure-stack-solution-template-kubernetes-cluster-add.md)  
+[（适用于 Azure Stack 操作员） 添加到 Marketplace 的 Kubernetes 群集](../azure-stack-solution-template-kubernetes-cluster-add.md)  
 
-[在 Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  
+[Azure 上的 Kubernetes](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)  

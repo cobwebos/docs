@@ -1,5 +1,5 @@
 ---
-title: 开始使用 Azure 开发测试实验室
+title: 使用 Azure 开发测试实验室的热门方案
 description: 本文提供有关使用 Azure 开发测试实验室和两个常规路径以开始使用你的组织中的服务的主要方案。
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -13,14 +13,14 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 219697451174811fab7880ba0d5930ba85edf8fb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803791"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272371"
 ---
-# <a name="get-started-with-using-azure-devtest-labs"></a>开始使用 Azure 开发测试实验室
+# <a name="popular-scenarios-for-using-azure-devtest-labs"></a>使用 Azure 开发测试实验室的热门方案
 具体取决于企业的需求，可以配置开发测试实验室，以满足不同的要求。  本文讨论了常用方案。 每个方案介绍如何通过使用开发测试实验室和资源来用于实现这些方案带来的好处。  
 
 - 开发人员桌面
@@ -85,5 +85,5 @@ Azure 开发测试实验室的实验室中充当的很好的容器，如研讨�
 请阅读以下文章：
 
 - [开发测试实验室概念](devtest-lab-concepts.md)
-- [开发测试实验室常见问题解答](devtest-lab-faq.md)
+- [DevTest Labs 常见问题](devtest-lab-faq.md)
 

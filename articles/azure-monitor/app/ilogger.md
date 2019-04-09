@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
 ms.author: cithomas
-ms.openlocfilehash: ea7f2e730b4963016d221705ba8c9356efffa858
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 9d5e25e0fd00f9c0635009f684e79336d58b7b4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905267"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263751"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>对于.NET Core ILogger 日志 ApplicationInsightsLoggerProvider
 
@@ -208,10 +208,10 @@ Microsoft.ApplicationInsights.AspNet SDK 2.7.0-beta2 之前, 的版本中支持�
 1. 前面的提供程序不具备的支持[作用域](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.2#log-scopes)。 在新的提供程序，从作用域的属性将自动添加为自定义属性到收集的遥测。
 2. 现在可以更早地在应用程序启动管道捕获日志。 例如  现在可以捕获程序和启动类中的日志。
 3. 使用新的提供程序进行筛选在框架级别本身。 筛选的日志到 Application Insights 提供程序可以在完全相同的方式与其他提供程序，包括控制台中，调试，如内置提供程序中，依次类推。 还有可能要应用于多个提供程序相同的筛选器。
-4. [建议](https://github.com/aspnet/Announcements/issues/255)Asp.Net Core (及更高版本 2.0) 中的方法，以启用日志记录提供程序是使用 ILoggingBuilder 中的扩展方法`Program.cs`本身。
+4. [建议](https://github.com/aspnet/Announcements/issues/255)ASP.NET Core (及更高版本 2.0) 中的方法，以启用日志记录提供程序是使用 ILoggingBuilder 中的扩展方法`Program.cs`本身。
 
 > [!Note]
-新的提供程序是适用于应用程序面向`NETSTANDARD2.0`或更高版本。 如果你的应用程序面向较旧的.NET Core 版本，如.NET Core 1.1 或面向.NET Framework，继续使用旧的提供程序。
+> 新的提供程序是适用于应用程序面向`NETSTANDARD2.0`或更高版本。 如果你的应用程序面向较旧的.NET Core 版本，如.NET Core 1.1 或面向.NET Framework，继续使用旧的提供程序。
 
 ## <a name="console-application"></a>控制台应用程序
 

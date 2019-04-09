@@ -4,25 +4,23 @@ description: 介绍在 Azure 资源管理器模板中检索值、处理字符串
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 0644abe1-abaa-443d-820d-1966d7d26bfd
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: eb3435d8c7b10e2de55cb0cf1f3ad2548bf2bcef
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: b5a1f12a877008a3ce2ff7bd9635b9ed47b379f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57766744"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280309"
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure 资源管理器模板函数
-本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 有关在模板中使用函数的信息，请参阅[模板语法](resource-group-authoring-templates.md#syntax)。
+本文介绍可以在 Azure 资源管理器模板中使用的所有函数。 若要了解如何在模板中使用函数，请参阅[模板语法](resource-group-authoring-templates.md#syntax)。
 
 若要创建自己的函数，请参阅[用户定义函数](resource-group-authoring-templates.md#functions)。
 
@@ -47,14 +45,14 @@ ms.locfileid: "57766744"
 ## <a name="array-and-object-functions"></a>数组和对象函数
 Resource Manager 提供以下用于处理数组和对象的函数。
 
-* [array](resource-group-template-functions-array.md#array)
+* [数组](resource-group-template-functions-array.md#array)
 * [coalesce](resource-group-template-functions-array.md#coalesce)
 * [concat](resource-group-template-functions-array.md#concat)
 * [contains](resource-group-template-functions-array.md#contains)
 * [createArray](resource-group-template-functions-array.md#createarray)
 * [empty](resource-group-template-functions-array.md#empty)
 * [first](resource-group-template-functions-array.md#first)
-* [intersection](resource-group-template-functions-array.md#intersection)
+* [交集](resource-group-template-functions-array.md#intersection)
 * [json](resource-group-template-functions-array.md#json)
 * [last](resource-group-template-functions-array.md#last)
 * [length](resource-group-template-functions-array.md#length)
@@ -87,8 +85,8 @@ Resource Manager 提供了多个用于在模板中进行比较的函数。
 ## <a name="deployment-value-functions"></a>部署值函数
 Resource Manager 提供以下函数，用于从与部署相关的模板和值部分获取值：
 
-* [deployment](resource-group-template-functions-deployment.md#deployment)
-* [参数](resource-group-template-functions-deployment.md#parameters)
+* [部署](resource-group-template-functions-deployment.md#deployment)
+* [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 
 <a id="and" />
@@ -104,7 +102,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 * [bool](resource-group-template-functions-logical.md#bool)
 * [if](resource-group-template-functions-logical.md#if)
 * [not](resource-group-template-functions-logical.md#not)
-* [or](resource-group-template-functions-logical.md#or)
+* [或](resource-group-template-functions-logical.md#or)
 
 <a id="add" />
 <a id="copyindex" />
@@ -120,7 +118,7 @@ Resource Manager 提供以下函数，用于从与部署相关的模板和值部
 ## <a name="numeric-functions"></a>数值函数
 Resource Manager 提供以下用于处理整数的函数：
 
-* [add](resource-group-template-functions-numeric.md#add)
+* [添加](resource-group-template-functions-numeric.md#add)
 * [copyIndex](resource-group-template-functions-numeric.md#copyindex)
 * [div](resource-group-template-functions-numeric.md#div)
 * [float](resource-group-template-functions-numeric.md#float)
@@ -150,7 +148,7 @@ Resource Manager 提供以下用于获取资源值的函数：
 * [reference](resource-group-template-functions-resource.md#reference)
 * [resourceGroup](resource-group-template-functions-resource.md#resourcegroup)
 * [resourceId](resource-group-template-functions-resource.md#resourceid)
-* [subscription](resource-group-template-functions-resource.md#subscription)
+* [订阅](resource-group-template-functions-resource.md#subscription)
 
 <a id="base64" />
 <a id="base64tojson" />
@@ -196,6 +194,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [empty](resource-group-template-functions-string.md#empty)
 * [endsWith](resource-group-template-functions-string.md#endswith)
 * [first](resource-group-template-functions-string.md#first)
+* [格式](resource-group-template-functions-string.md#format)
 * [guid](resource-group-template-functions-string.md#guid)
 * [indexOf](resource-group-template-functions-string.md#indexof)
 * [last](resource-group-template-functions-string.md#last)
@@ -223,4 +222,4 @@ Resource Manager 提供以下用于处理字符串的函数：
 * 有关 Azure 资源管理器模板中各部分的说明，请参阅[创作 Azure 资源管理器模板](resource-group-authoring-templates.md)
 * 要合并多个模板，请参阅[将链接的模板与 Azure 资源管理器配合使用](resource-group-linked-templates.md)
 * 若要在创建资源类型时迭代指定的次数，请参阅[在 Azure 资源管理器中创建多个资源实例](resource-group-create-multiple.md)
-* 若要了解如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)
+* 若要查看如何部署已创建的模板，请参阅[使用 Azure 资源管理器模板部署应用程序](resource-group-template-deploy.md)

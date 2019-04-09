@@ -13,45 +13,45 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f35de1865f2e02331b8455bbdce92e8fe2f9a1b6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: a763b2516f88e8c92efc321db50dc15881f54c9b
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56210469"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057840"
 ---
 # <a name="tutorial-configure-asana-for-automatic-user-provisioning"></a>教程：为 Asana 配置自动用户预配
 
 本教程的目的是说明从 Azure Active Directory (Azure AD) 自动将用户帐户预配到 Asana 和取消其预配所需在 Asana 和 Azure AD 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定您已具有以下各项：
 
-*   Azure AD 租户
-*   启用了[企业](https://www.asana.com/pricing)计划或更佳计划的 Asana 租户 
-*   在 Asana 中具有管理员权限的用户帐户 
+* Azure AD 租户
+* 启用了[企业](https://www.asana.com/pricing)计划或更佳计划的 Asana 租户
+* 在 Asana 中具有管理员权限的用户帐户
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD 预配集成依赖于可用于 Asana 的 [Asana API](https://asana.com/developers/api-reference/users)。
 
 ## <a name="assign-users-to-asana"></a>将用户分配到 Asana
 
-Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和组。 
+Azure AD 使用称为的概念*分配*来确定哪些用户应收到对所选应用的访问。 在自动用户帐户预配的上下文中，只同步已分配到 Azure AD 中的应用程序的用户和组。
 
 配置和启用预配服务前，需确定 Azure AD 中的哪些用户或组需访问 Google Apps 应用。 确定后，可以按照此处的说明将这些用户分配到 Asana 应用：
 
-[向企业应用分配用户](../manage-apps/assign-user-or-group-access-portal.md)
+[将用户分配到企业应用程序](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-asana"></a>将用户分配到 Asana 的重要提示
 
 建议将单个 Azure AD 用户分配到 Asana 以测试预配配置。 其他用户可以稍后分配。
 
-## <a name="configure-user-provisioning-to-asana"></a>为 Asana 配置用户预配 
+## <a name="configure-user-provisioning-to-asana"></a>为 Asana 配置用户预配
 
 本部分将指导你完成将 Azure AD 连接到 Workplace by Facebook 的用户帐户预配 API。 还可根据 Azure AD 中的用户和组分配，配置预配服务，以创建、更新和禁用 Google Apps 中分配的用户帐户。
 
@@ -86,7 +86,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 然后选中复选框。
 
-1. 选择“保存”。 
+1. 选择“保存”。
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Asana”。
 
@@ -94,7 +94,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 若要为 Asana 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”。
 
-1. 选择“保存”。 
+1. 选择“保存”。
 
 这会对“用户”部分中分配到 Asana 的任何用户启动初始同步。 初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 40 分钟就会进行一次同步。 可使用“同步详细信息”部分监视进度并跟踪指向预配活动日志的链接。 这些审核日志描述了预配服务对 Asana 应用执行的所有操作。
 

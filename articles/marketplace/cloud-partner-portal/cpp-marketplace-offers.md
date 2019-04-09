@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/07/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: fd51a9f70d60219a9429ff66d6f1d404391f6fb0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: f537a43f5d4d0431e1659daa258e0c1453f2295b
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446703"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010565"
 ---
 # <a name="azure-and-appsource-marketplace-offers"></a>Azure 和 AppSource 市场套餐
 
@@ -29,7 +29,7 @@ ms.locfileid: "57446703"
 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2018/BRK2513/player]
 
-**生成适用于 Azure 市场和 AppSource 的应用与服务 - Build 2018**
+**构建应用程序和服务的 Azure Marketplace 和 AppSource-生成 2018**
 
 有关这些市场的详细信息，请参阅 [Azure 市场和 AppSource 发布指南](../marketplace-publishers-guide.md)。
 
@@ -56,11 +56,11 @@ ms.locfileid: "57446703"
 | [咨询服务](./consulting-services/cloud-partner-portal-consulting-services-publishing-offer.md) | Azure 和 AppSource | Microsoft 认可的顾问可以在 Azure 市场或 AppSource 中列出其域特定的服务。  他们的专业知识可帮助客户评估问题，以及根据业务目标创建和部署适当的解决方案。  |
 | [容器](./containers/cpp-containers-offer.md)  | Azure | 解决方案是预配为基于 Kubernetes 的服务或 Azure 容器实例的 Docker 容器映像。 |
 | [Dynamics 365 Business Central](../cloud-partner-portal-orig/cpp-business-central-offer.md) | AppSource | 一个可以扩展此企业资源规划 (ERP) 和业务管理系统的包。 |
-| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 一个可以通过其销售、服务、项目服务和现场服务模块扩展此客户资源管理 (CRM) 系统的包。  |
-| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 一个可以扩展此企业资源规划 (ERP) 服务并支持高级财务、运营、制造和供应链管理的包。 |
+| [Dynamics 365 for Customer Engagement](./dyn365ce/cpp-customer-engagement-offer.md) | AppSource | 扩展了此客户的包资源管理 (CRM) 系统，通过其销售、 服务、 项目服务和域服务模块  |
+| [Dynamics 365 for Finance and Operations](../cloud-partner-portal-orig/cpp-dynamics-365-operations-offer.md) | AppSource | 扩展此企业资源规划 (ERP) 服务，该支持高级财务、 操作、 制造和供应链管理包 |
 | [IoT Edge 模块](./iot-edge-module/cpp-offer-process-parts.md) | Azure | 一个可在 IoT Edge 设备上运行的 Docker 兼容容器。  其中包含小型计算模块，这些模块使用自定义代码、其他 Azure 服务和第三方服务的组合。 |
-| [Power BI 应用](./power-bi/cpp-power-bi-offer.md) | AppSource | 一个使用数据流将报表和仪表板连接到常用数据存储中的数据的包。 |
-| [SaaS 应用](./saas-app/cpp-saas-offer.md) | Azure | 解决方案是发布者管理的软件即服务订阅，用户可以通过利用 Azure Active Directory 的自定义界面登录其中。 |
+| [Power BI 应用](./power-bi/cpp-power-bi-offer.md) | AppSource | Power BI 应用包所包括的数据集、 报表和仪表板的可自定义 Power BI 内容 |
+| [SaaS 应用](./saas-app/cpp-saas-offer.md) | Azure | 解决方案是发布服务器中，哪些用户通过使用 Azure Active Directory 的自定义界面登录管理的软件即服务订阅。 |
 | [虚拟机](./virtual-machine/cpp-virtual-machine-offer.md)  | Azure  | 解决方案包含在部署到客户订阅的单个虚拟机中。  |
 | &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |   |   |
 
@@ -69,4 +69,4 @@ ms.locfileid: "57446703"
 
 ## <a name="next-steps"></a>后续步骤
 
-在[管理套餐](./manage-offers/cpp-manage-offers.md)主题中了解可对市场套餐执行的常规操作，以及套餐的常用技术属性和资产。
+您将了解可以在 marketplace 产品/服务及其常见技术特性和一文中的资产执行的常规操作[管理产品](./manage-offers/cpp-manage-offers.md)。

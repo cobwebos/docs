@@ -7,28 +7,28 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
-ms.openlocfilehash: f8558529df24c0aaede0c58744e17829ec0b5669
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 65e94a271fc8fc72ac74d51af3cf7b717f8410b0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337526"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259144"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
 基于容器的应用程序通常需要访问数据并将数据保存在外部数据卷中。 如果多个 Pod 需要同时访问同一存储卷，则可以使用 Azure 文件通过[服务器消息块 (SMB) 协议][smb-overview]进行连接。 本文介绍了如何手动创建 Azure 文件共享并将其附加到 AKS 中的 Pod。
 
-有关 Kubernetes 卷的详细信息，请参阅[AKS 中的应用程序的存储选项][concepts-storage]。
+有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-您还需要 Azure CLI 版本 2.0.59 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="create-an-azure-file-share"></a>创建 Azure 文件共享
 
-必须先创建 Azure 存储帐户和文件共享，然后才能将 Azure 文件共享用作 Kubernetes 卷。 下面的命令创建名为的资源组*myAKSShare*，一个存储帐户和名为的文件共享*aksshare*:
+必须先创建 Azure 存储帐户和文件共享，然后才能将 Azure 文件共享用作 Kubernetes 卷。 以下命令创建一个名为 *myAKSShare* 的资源组、一个存储帐户和一个名为 *aksshare* 的文件共享：
 
 ```azurecli-interactive
 # Change these four parameters as needed for your own environment
@@ -47,7 +47,7 @@ az storage account create -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURC
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $AKS_PERS_STORAGE_ACCOUNT_NAME -g $AKS_PERS_RESOURCE_GROUP -o tsv`
 
 # Create the file share
-az storage share create -n $AKS_PERS_SHARE_NAME
+az storage share create -n $AKS_PERS_SHARE_NAME --connection-string $AZURE_STORAGE_CONNECTION_STRING
 
 # Get storage account key
 STORAGE_KEY=$(az storage account keys list --resource-group $AKS_PERS_RESOURCE_GROUP --account-name $AKS_PERS_STORAGE_ACCOUNT_NAME --query "[0].value" -o tsv)
@@ -172,7 +172,7 @@ spec:
 
 ## <a name="next-steps"></a>后续步骤
 
-关联的最佳做法，请参阅[存储和备份在 AKS 中的最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 有关 AKS 群集与 Azure 文件进行交互的详细信息，请参阅 [Azure 文件的 Kubernetes 插件][kubernetes-files]。
 

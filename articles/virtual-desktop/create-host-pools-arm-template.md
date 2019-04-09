@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: 262ec35a8a177652dff12bccb3b5435cb5856d81
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: ba98328002cafbcede855b1187881d39f1de8fc5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401420"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279221"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
 
-主机池是一系列一个或多个相同的虚拟机在 Windows 虚拟桌面预览租户环境中。 每个主机池可以包含用户可以与交互，就像在物理桌面上的应用程序组。
+主机池是 Windows 虚拟桌面预览版租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 
 按照本部分的说明为 Windows 虚拟桌面租户使用 Microsoft 提供的 Azure 资源管理器模板创建主机池。 本文将告诉您如何在 Windows 虚拟桌面中创建主机池、 Azure 订阅中的 Vm 创建资源组、 加入 AD 域中，这些 Vm 和 Vm 注册到 Windows 虚拟桌面。
 
@@ -52,7 +52,7 @@ ms.locfileid: "58401420"
 
 在开始测试虚拟机上的完整会话桌面前，GitHub Azure 资源管理器模板完成后，分配用户访问权限。
 
-首先，[下载并导入的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)如果尚未在 PowerShell 会话中使用。
+首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
 
 若要将用户分配到桌面应用程序组中，打开 PowerShell 窗口并运行此 cmdlet 可登录到 Windows 虚拟桌面环境：
 
@@ -72,6 +72,9 @@ Set-RdsContext -TenantGroupName <Tenant Group name>
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-用户的 UPN 应与 Azure Active Directory 中的用户的标识匹配 (例如， user1@contoso.com)。 如果你想要添加多个用户，则必须运行此 cmdlet 为每个用户。
+用户的 UPN 应与该用户在 Azure Active Directory 中的标识（例如 user1@contoso.com）相匹配。 若要添加多个用户，必须针对每个用户运行此 cmdlet。
 
-完成这些步骤后，添加到桌面应用程序组的用户可以使用支持的远程桌面客户端登录到 Windows 虚拟桌面，并会看到一个会话的桌面的资源。
+完成这些步骤后，添加到桌面应用程序组的用户可以使用支持的远程桌面客户端登录到 Windows 虚拟桌面，并且可以看到会话桌面的资源。
+
+>[!IMPORTANT]
+>若要帮助保护您的 Windows 虚拟桌面环境在 Azure 中，我们建议不在 Vm 上打开端口 3389 的入站。 Windows 虚拟桌面不需要开放的入站的端口 3389，用户可以访问主机池的 Vm。 如果您必须打开端口 3389 以进行故障排除，我们建议你使用[中实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。

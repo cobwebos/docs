@@ -15,12 +15,12 @@ ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro
-ms.openlocfilehash: 4557ce7dea207be0bc6f68a62e3dd7f81ce87911
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: f505f922685cd192525814df25cca1a1401d2913
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010662"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281210"
 ---
 # <a name="built-in-roles-for-azure-resources"></a>Azure 资源的内置角色
 
@@ -121,7 +121,6 @@ ms.locfileid: "59010662"
 | [空间定位点帐户所有者](#spatial-anchors-account-owner) | 允许管理帐户中的空间定位点，包括删除它们 |
 | [空间定位点帐户读者](#spatial-anchors-account-reader) | 允许查找并读取帐户中的空间定位点的属性 |
 | [SQL DB 参与者](#sql-db-contributor) | 允许管理 SQL 数据库，但不允许访问这些数据库。 此外，不允许管理其安全相关的策略或其父 SQL 服务器。 |
-| [SQL 托管实例参与者](#sql-managed-instance-contributor) | 允许你管理 SQL 托管实例，但无法向其他人授予访问权限。 |
 | [SQL 安全管理器](#sql-security-manager) | 允许管理 SQL 服务器和数据库的安全相关策略，但不允许访问它们。 |
 | [SQL Server 参与者](#sql-server-contributor) | 允许管理 SQL 服务器和数据库，但不允许访问它们及其安全相关的策略。 |
 | [存储帐户参与者](#storage-account-contributor) | 允许管理存储帐户，但不允许对其进行访问。 |
@@ -2229,31 +2228,6 @@ ms.locfileid: "59010662"
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentScans/* |  |
 > | Microsoft.Sql/servers/databases/vulnerabilityAssessmentSettings/* |  |
 > | Microsoft.Sql/servers/vulnerabilityAssessments/* |  |
-> | **DataActions** |  |
-> | *无* |  |
-> | **NotDataActions** |  |
-> | *无* |  |
-
-## <a name="sql-managed-instance-contributor"></a>SQL 托管实例参与者
-> [!div class="mx-tableFixed"]
-> | | |
-> | --- | --- |
-> | **描述** | 允许你管理 SQL 托管实例，但无法向其他人授予访问权限。 |
-> | **ID** | 4939a1f6-9ae0-4e48-a1e0-f2cbe897382d |
-> | **操作** |  |
-> | Microsoft.ResourceHealth/availabilityStatuses/read | 获取指定范围内所有资源的可用性状态 |
-> | Microsoft.Resources/deployments/* | 创建和管理资源组部署 |
-> | Microsoft.Resources/subscriptions/resourceGroups/read | 获取或列出资源组。 |
-> | Microsoft.Network/networkSecurityGroups/write | 创建网络安全组，或更新现有的网络安全组 |
-> | Microsoft.Network/routeTables/write | 创建路由表，或更新现有的路由表 |
-> | Microsoft.Sql/locations/*/read |  |
-> | Microsoft.Sql/managedInstances/* |  |
-> | Microsoft.Support/* | 创建和管理支持票证 |
-> | Microsoft.Network/virtualNetworks/subnets/write | 创建虚拟网络子网，或更新现有的虚拟网络子网 |
-> | Microsoft.Network/virtualNetworks/subnets/join/action | 加入虚拟网络。 不可发出警报。 |
-> | Microsoft.Authorization/*/read | 读取角色和角色分配 |
-> | **NotActions** |  |
-> | *无* |  |
 > | **DataActions** |  |
 > | *无* |  |
 > | **NotDataActions** |  |

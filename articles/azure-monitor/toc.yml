@@ -86,12 +86,6 @@ items:
       href: platform/data-ingestion-time.md
     - name: 自定义指标到指标存储
       href: platform/metrics-custom-overview.md
-  - name: 分析日志数据
-    items:
-    - name: 日志查询
-      href: log-query/log-query-overview.md
-    - name: 日志查询门户
-      href: log-query/portals.md
   - name: 数据安全
     items:
     - name: 日志数据
@@ -327,6 +321,8 @@ items:
           items:
           - name: 用于 Linux 应用服务的 Profiler（预览版）
             href: app/profiler-aspnetcore-linux.md
+        - name: 没有 Visual Studio 的 ASP.NET Core
+          href: app/asp-net-core-no-visualstudio.md
         - name: 控制台
           href: app/console.md
         - name: 应用程序仪表板
@@ -611,6 +607,8 @@ items:
           href: insights/vminsights-maps.md
         - name: 监视性能
           href: insights/vminsights-performance.md
+        - name: 使用工作簿
+          href: insights/vminsights-workbooks.md
         - name: 使用 Log Analytics 查询数据
           href: insights/vminsights-log-search.md
         - name: 禁用监视
@@ -680,18 +678,20 @@ items:
       href: platform/grafana-plugin.md
   - name: 分析数据
     items:
-    - name: 指标资源管理器入门
-      href: platform/metrics-getting-started.md
-    - name: 指标资源管理器的高级功能
-      href: platform/metrics-charts.md
-    - name: 指标图表示例
-      href: platform/metric-chart-samples.md
-    - name: 在活动日志中查看事件
-      href: ../azure-resource-manager/resource-group-audit.md
-    - name: 查看服务通知
-      href: platform/service-notifications.md
-    - name: 查询日志数据
+    - name: 度量值
       items:
+      - name: 指标资源管理器入门
+        href: platform/metrics-getting-started.md
+      - name: 指标资源管理器的高级功能
+        href: platform/metrics-charts.md
+      - name: 指标图表示例
+        href: platform/metric-chart-samples.md
+    - name: 日志
+      items:
+      - name: 日志查询
+        href: log-query/log-query-overview.md
+      - name: 日志查询门户
+        href: log-query/portals.md
       - name: 查询语言文档
         href: log-query/query-language.md
       - name: 语言差异
@@ -766,6 +766,10 @@ items:
         href: platform/flow-tutorial.md
       - name: 日志搜索 API
         href: https://dev.loganalytics.io/
+    - name: 在活动日志中查看事件
+      href: ../azure-resource-manager/resource-group-audit.md
+    - name: 查看服务通知
+      href: platform/service-notifications.md
   - name: 响应事件
     items:
     - name: 警报
@@ -1067,9 +1071,9 @@ items:
     href: https://stackoverflow.com/search?q=monitoring
   - name: 代码示例
     href: https://azure.microsoft.com/resources/samples/?service=monitor
-ms.openlocfilehash: 9c0f17f113b7940f83e3d3b5b2161fe9f88c01ac
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: b2021ca33265e06f882f04f726a889ddae0fd91f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886635"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261150"
