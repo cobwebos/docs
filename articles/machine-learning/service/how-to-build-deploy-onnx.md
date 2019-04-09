@@ -11,12 +11,12 @@ ms.author: prasantp
 author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
-ms.openlocfilehash: 349f2c4eea743c3e44e492dfa76be4a70f2c37d6
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 33a93aa01499beb978f616f633588ba75e4b62a3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362019"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259178"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX 和 Azure 机器学习：创建和部署可互操作的 AI 模型
 
@@ -28,15 +28,16 @@ ms.locfileid: "58362019"
 Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现这些目标。  
 
 ## <a name="why-choose-onnx"></a>为什么选择 ONNX？
+
 通过 ONNX 获得的互操作性可以更快地将好的想法投入生产。 使用 ONNX，数据科学家可以选择其首选的作业框架。 同样，开发人员可以花费更少的时间让模型为生产做好准备，并跨云和边缘部署。  
 
-可以从许多框架创建 ONNX 模型，这些框架包括 PyTorch、Chainer、Microsoft Cognitive Toolkit (CNTK)、MXNet 和 ML.Net、TensorFlow、Keras、SciKit-Learn 等等。
+可以从许多框架，包括 PyTorch、 Chainer、 MXNet、 ML.Net、 TensorFlow、 Keras、 Scikit-learn、 Microsoft 认知工具包、 和的详细信息创建 ONNX 模型。
 
 此外，还有用于可视化和加速 ONNX 模型的工具生态系统。 许多预先定型的 ONNX 模型也可用于常见方案。
 
 可以使用 Azure 机器学习和 ONNX 运行时将 [ONNX 模型部署](#deploy)到云中。 还可以使用 [Windows 机器学习](https://docs.microsoft.com/windows/ai/)将它们部署到 Windows 10 设备。 甚至可以使用 ONNX 社区中提供的转换器将它们部署到其他平台。 
 
-[![ONNX 数据流关系图显示培训、 转换器和部署](media/concept-onnx/onnx.png) ](./media/concept-onnx/onnx.png#lightbox)
+[![ONNX 数据流关系图显示培训、 转换器和部署](media/concept-onnx/onnx.png)](./media/concept-onnx/onnx.png#lightbox)
 
 ## <a name="get-onnx-models"></a>获取 ONNX 模型
 
@@ -53,11 +54,11 @@ Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现�
 |用于模型的框架|转换示例或工具|
 |-----|-------|
 |PyTorch|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)|
-|Microsoft&nbsp;Cognitive&nbsp;Toolkit&nbsp;(CNTK)|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
-|TensorFlow|[tensorflow-onnx 转换器](https://github.com/onnx/tensorflow-onnx)|
+|TensorFlow|[tensorflow onnx 转换器](https://github.com/onnx/tensorflow-onnx)|
 |Chainer|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)|
 |MXNet|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)|
 |Keras、ScitKit-Learn、CoreML<br/>XGBoost 和 libSVM|[WinMLTools](https://docs.microsoft.com/windows/ai/convert-model-winmltools)|
+|Microsoft&nbsp;Cognitive&nbsp;Toolkit|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/CntkOnnxExport.ipynb)|
 
 可以在 [ONNX 教程站点](https://github.com/onnx/tutorials)中找到支持的框架和转换器的最新列表。
 
@@ -144,6 +145,9 @@ results = session.run([], {"input1": indata1, "input2": indata2})
    image.wait_for_creation(show_output = True)
    ```
 
+   > [!TIP]
+   > 前面的示例使用 Azure 机器学习服务提供的默认映像。 此外可以使用自定义映像。 有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#configureimage)的配置和注册映像部分。
+
    文件 `score.py` 包含评分逻辑，需要包括在映像中。 此文件用于运行映像中的模型。 有关如何创建评分脚本的说明，请参阅本[教程](tutorial-deploy-models-with-aml.md#create-scoring-script)。 ONNX 模型的示例文件如下所示：
 
    ```python
@@ -207,6 +211,6 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 + [GitHub 上的 ONNX 代码](https://github.com/onnx/onnx)
 
 详细了解 ONNX 运行时或者为项目做出贡献：
-+ [ONNX 运行时 GitHub 存储库](https://github.com/Microsoft/onnxruntime)
++ [ONNX 运行库 GitHub 存储库](https://github.com/Microsoft/onnxruntime)
 
 

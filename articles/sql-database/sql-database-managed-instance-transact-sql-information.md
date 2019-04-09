@@ -1,10 +1,9 @@
 ---
-title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
+title: Azure SQL 数据库托管实例 T-SQL 差异 |Microsoft Docs
 description: 本文介绍了 Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
@@ -12,20 +11,17 @@ ms.author: jovanpop
 ms.reviewer: carlrab, bonova
 manager: craigg
 ms.date: 03/13/2019
-ms.openlocfilehash: 208370884d89a7a2585f320c037284d6657732db
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.custom: seoapril2019
+ms.openlocfilehash: 14e33ec25dd2384607d41e4be6e5a33ebf889cbc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010594"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260487"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
-托管实例部署选项与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。
-
-![迁移](./media/sql-database-managed-instance/migration.png)
-
-由于两者的语法和行为仍有一些差异，本文汇总并解释了这些差异。 <a name="Differences"></a>
+本文总结并介绍 Azure SQL 数据库托管实例和本地 SQL Server 数据库引擎之间的语法和行为差异。 <a name="Differences"></a>
 
 - [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名/用户名](#logins--users)、[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异
@@ -33,6 +29,10 @@ ms.locfileid: "59010594"
 - [功能](#functionalities)包括 [BULK INSERT/OPENROWSET](#bulk-insert--openrowset)、[CLR](#clr)、[DBCC](#dbcc)、[分布式事务](#distributed-transactions)、[已扩展事件](#extended-events)、[外部库](#external-libraries)、[文件流和文件表](#filestream-and-filetable)、[全文语义搜索](#full-text-semantic-search)、[链接服务器](#linked-servers)、[Polybase](#polybase)、[复制](#replication)、[还原](#restore-statement)、[Service Broker](#service-broker)、[存储过程、函数和触发器](#stored-procedures-functions-triggers)方面的差异
 - [在托管实例中具有不同行为的功能](#Changes)
 - [临时限制和已知的问题](#Issues)
+
+托管实例部署选项与本地 SQL Server 数据库引擎高度兼容。 托管实例支持大多数 SQL Server 数据库引擎功能。
+
+![迁移](./media/sql-database-managed-instance/migration.png)
 
 ## <a name="availability"></a>可用性
 
@@ -494,7 +494,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 在此示例中，只要未添加新文件，现有数据库就会继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
 
-你可以[确定剩余的文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)使用系统视图。 如果您达到此限制尝试[的空和删除一些较小的文件使用 DBCC SHRINKFILE 语句](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)或到 shitch[不的业务关键层都有此限制](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
+你可以[确定剩余的文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)使用系统视图。 如果您达到此限制尝试[的空和删除一些较小的文件使用 DBCC SHRINKFILE 语句](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)或切换到[不的业务关键层都有此限制](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
 

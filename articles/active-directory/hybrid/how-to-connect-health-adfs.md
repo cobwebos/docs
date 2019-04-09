@@ -17,12 +17,12 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 70fb463b1ac8664838404a7dfcd0380da8f3358d
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 92825a9ef84edc30b6b34aa875f8a207c70c8511
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889488"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260929"
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>使用 Azure AD Connect Health 监视 AD FS
 以下文档专门介绍如何使用 Azure AD Connect Health 来监视 AD FS 基础结构。 有关使用 Azure AD Connect Health 监视 Azure AD Connect（同步）的信息，请参阅 [使用用于同步的 Azure AD Connect Health](how-to-connect-health-sync.md)。此外，有关使用 Azure AD Connect Health 监视 Active Directory 域服务的信息，请参阅 [在 AD DS 中使用 Azure AD Connect Health](how-to-connect-health-adds.md)。
@@ -120,5 +120,5 @@ Azure AD Connect Health for ADFS 提供一份报告，内容有关因为用户�
 ## <a name="related-links"></a>相关链接
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Azure AD Connect Health 代理安装](how-to-connect-health-agent-install.md)
-* [风险 IP 报表 ](how-to-connect-health-adfs-risky-ip.md)
+* [风险 IP 报表](how-to-connect-health-adfs-risky-ip.md)
 

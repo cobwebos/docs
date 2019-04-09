@@ -13,13 +13,13 @@ ms.tgt_pltfrm: mobile-multiple
 ms.devlang: dotnet
 ms.topic: article
 ms.author: jowargo
-ms.date: 01/23/2019
-ms.openlocfilehash: 028e9a2973ed524037f6415d9e802f947458cfa6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 04/08/2019
+ms.openlocfilehash: 559dd5ecfa4615e42e4f7ac40008e69c9210e2a4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58166763"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260439"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -45,12 +45,12 @@ ms.locfileid: "58166763"
 以下是使用安装的一些主要优点：
 
 - 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
-- 使用安装模型可轻松完成单个推送 - 针对特定设备。 每次执行基于安装的注册时，都会自动添加一个系统标记 **"$InstallationId:[installationId]"**。 因此，无需编写任何额外的代码，就能对此标记调用 send 以针对特定的设备。
+- 安装模型支持特殊的标记格式 (`$InstallationId:{INSTALLATION_ID}`)，使直接向特定设备发送通知。 例如，如果应用程序的代码设置的安装 ID`joe93developer`对于此特定设备，开发人员可以针对此设备发送到通知时`$InstallationId:{joe93developer}`标记。 这使您可以针对特定的设备，而无需进行任何其他编码。
 - 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法很有用。 不需要删除整个注册，并重新发送前面的所有标记。
 
 安装可包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://msdn.microsoft.com/library/azure/mt621153.aspx)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。
 
-```javascript
+```json
 // Example installation format to show some supported properties
 {
     installationId: "",
@@ -101,8 +101,7 @@ ms.locfileid: "58166763"
 
 对于 Windows 应用商店客户端应用程序，将通知发送到辅助磁贴与将通知发送到主磁贴相同。 安装中也支持此行为。 辅助磁贴具有不同的 ChannelUri，客户端应用上的 SDK 会以透明方式处理此 ChannelUri。
 
-SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建 SecondaryTiles 时使用的 TileId 相同。
-与主 ChannelUri 一样，辅助磁贴的 ChannelUri 可随时更改。 为了使通知中心中的安装保持更新，设备必须使用辅助磁贴的当前 ChannelUri 刷新这些安装。
+SecondaryTiles 字典使用的 TileId 与在 Windows 应用商店应用中创建 SecondaryTiles 时使用的 TileId 相同。 与主 ChannelUri 一样，辅助磁贴的 ChannelUri 可随时更改。 为了使通知中心中的安装保持更新，设备必须使用辅助磁贴的当前 ChannelUri 刷新这些安装。
 
 ## <a name="registration-management-from-the-device"></a>从设备管理注册
 
