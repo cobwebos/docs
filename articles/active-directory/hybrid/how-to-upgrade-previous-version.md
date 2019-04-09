@@ -12,19 +12,22 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: Identity
-ms.date: 07/18/2018
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa21b1054fa6860a8acc5d6971f75e1d74c889f7
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 2a3e7373a8b0354a3d08debf944f2f77f1609382
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193749"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267032"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect：从以前版本升级到最新版本
 本主题介绍可将 Azure Active Directory (Azure AD) Connect 安装升级到最新版本的不同方法。 建议使用最新版本的 Azure AD Connect。 进行重大配置更改时，也可以使用[交叉迁移](#swing-migration)部分所述的步骤。
+
+>[!NOTE]
+> 目前支持从任何版本的 Azure AD Connect 升级到最新版本。 不支持就地升级的 DirSync 或 ADSync 和交叉迁移是必需的。  如果你想要从 DirSync 升级，请参阅[从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)或[交叉迁移](#swing-migration)部分。  </br>在实践中，很早版本的客户可能会遇到与 Azure AD Connect 不是直接相关的问题。 已在几年中，对于生产环境中的服务器通常具有有几个修补程序应用于它们，并非所有内容都可以得到解决。  通常情况下，在 12-18 个月内未升级的客户应考虑交叉升级而是因为这是最保守估计，至少风险的选项。
 
 如果要从 DirSync 升级，请参阅[从 Azure AD 同步工具 (DirSync) 升级](how-to-dirsync-upgrade-get-started.md)。
 
@@ -34,7 +37,7 @@ ms.locfileid: "57193749"
 | --- | --- |
 | [自动升级](how-to-connect-install-automatic-upgrade.md) |对于使用快速安装的客户，这是最容易的方法。 |
 | [就地升级](#in-place-upgrade) |如果只有一台服务器，可在该服务器上就地升级安装。 |
-| [交叉迁移](#swing-migration) |如果有两台服务器，可将其中一台升级到最新版本或配置，并在准备就绪时更改活动服务器。 |
+| [交叉迁移](#swing-migration) |如果有两台服务器，可将其中一台升级到最新版本或配置，然后在准备就绪时更改活动服务器。 |
 
 有关权限信息，请参阅[升级所需权限](reference-connect-accounts-permissions.md#upgrade)。
 
@@ -105,7 +108,7 @@ ms.locfileid: "57193749"
 
    ![DisableFullSyncAfterUpgrade](./media/how-to-upgrade-previous-version/disablefullsync01.png)
 
-2. 升级完成后，运行以下 cmdlet，找出添加的替代：`Get-ADSyncSchedulerConnectorOverride | fl`
+2. 升级完成后，运行以下 cmdlet，以找出哪些替代已添加： `Get-ADSyncSchedulerConnectorOverride | fl`
 
    >[!NOTE]
    > 该替代特定于连接器。 以下示例中，已在本地 AD 连接器和 Azure AD 连接器中添加完全导入步骤和完全同步步骤。
@@ -114,7 +117,7 @@ ms.locfileid: "57193749"
 
 3. 记下已添加的现有替代。
    
-4. 若要删除任意连接器上的完全导入和完全同步替代，请运行以下 cmdlet：`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
+4. 若要删除的完全导入和任意连接器上的完全同步替代，请运行以下 cmdlet: `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid-of-ConnectorIdentifier> -FullImportRequired $false -FullSyncRequired $false`
 
    若要删除所有连接器上的替代，请执行以下 PowerShell 脚本：
 
@@ -125,12 +128,12 @@ ms.locfileid: "57193749"
    }
    ```
 
-5. 若要恢复计划程序，请运行以下 cmdlet：`Set-ADSyncScheduler -SyncCycleEnabled $true`
+5. 若要恢复计划程序，请运行以下 cmdlet: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
    > 请务必尽早执行必需的同步步骤。 可使用 Synchronization Service Manager 手动执行这些步骤，或使用 Set-ADSyncSchedulerConnectorOverride cmdlet 重新添加替代。
 
-若要在任意连接器上添加完全导入和完全同步替代，请运行以下 cmdlet：`Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
+若要添加任意连接器上完全导入和完全同步替代，请运行以下 cmdlet:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 
 ## <a name="troubleshooting"></a>故障排除
 以下部分包含故障排除内容以及在遇到 Azure AD Connect 升级问题时可以使用的信息。
@@ -141,7 +144,7 @@ ms.locfileid: "57193749"
 
 ![错误](./media/how-to-upgrade-previous-version/error1.png)
 
-此错误发生的原因是当前 Azure AD Connect 配置中不存在标识符为 b891884f-051e-4a83-95af-2544101c9083 的 Azure Active Directory 连接器。 若要验证此情况，打开 PowerShell 窗口并运行 cmdlet `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
+此错误发生的原因是当前 Azure AD Connect 配置中不存在标识符为 b891884f-051e-4a83-95af-2544101c9083 的 Azure Active Directory 连接器。 若要验证这种情况，请打开 PowerShell 窗口，运行 Cmdlet `Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083`
 
 ```
 PS C:\> Get-ADSyncConnector -Identifier b891884f-051e-4a83-95af-2544101c9083

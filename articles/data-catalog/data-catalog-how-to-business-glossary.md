@@ -1,22 +1,22 @@
 ---
-title: 在 Azure 数据目录中为管控标记设置业务术语表
+title: 设置在 Azure 数据目录业务术语表
 description: 操作指南文章重点说明了 Azure 数据目录中的业务术语表，用于定义和使用通用业务词汇来标记已注册的数据资产。
-services: data-catalog
 author: markingmyname
 ms.author: maghan
-ms.assetid: b3d63dbe-1ae7-499f-bc46-42124e950cd6
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 9c5d7ac792f2a68d6187c7c2831b1e7404f41f30
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.date: 04/05/2019
+ms.openlocfilehash: 0337b2a7a228052dacfb35982ee6e8d62372fb29
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409416"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264210"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>为管控标记设置业务术语表
-## <a name="introduction"></a>介绍
+
+## <a name="introduction"></a>简介
+
 Azure 数据目录可用于发现数据源，使用户能够轻松发现和理解执行分析和作出决策所需的数据源。 当用户能够找到并了解最广泛的可用数据源时，这些功能可以产生最大的影响。
 
 标记是一种能促进更好地了解资产数据的数据目录功能。 通过使用标记，可以将关键字与资产或列关联，从而可以更轻松地通过搜索和浏览发现资产。 标记还有助于更容易地理解上下文和资产的意图。
@@ -31,7 +31,8 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 通过使用数据目录业务术语表，组织可记录关键业务术语及其定义，以便创建通用业务词汇。 这种管控可使整个组织的数据使用保持一致。 在业务术语表中定义术语后，可将它分配给目录中的某个数据资产。 这种方法即“管控标记”，和标记方法相同。
 
 ## <a name="glossary-availability-and-privileges"></a>术语表可用性和特权
-业务术语表仅在 Azure 数据目录标准版中可用。 数据目录免费版不包含术语表，也不提供管控标记功能。
+
+业务术语表仅在 Azure 数据目录标准版中可用。 数据目录免费版不包括术语表，并且它不提供管控标记功能。
 
 可通过数据目录门户导航菜单中的“术语表”选项访问业务术语表。  
 
@@ -42,6 +43,7 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 ![添加新的术语表术语](./media/data-catalog-how-to-business-glossary/02-new-term.png)
 
 ## <a name="creating-glossary-terms"></a>创建术语表术语
+
 数据目录管理员和术语表管理员可通过单击“新建术语”按钮创建术语表术语。 每个术语表术语均包含以下字段：
 
 * 术语的业务定义
@@ -50,6 +52,7 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 * 定义了组织术语的层次结构的父术语
 
 ## <a name="glossary-term-hierarchies"></a>术语表术语层次结构
+
 通过使用数据目录业务术语表，组织可将其业务词汇表现为术语层次结构，也可以创建能够更好地表现业务分类的术语类别。
 
 在给出的层次结构级别里，术语必须是唯一的。 不允许重复的名称。 层次结构中的级别数没有限制，但是三个或更少级别的层次结构通常更易于理解。
@@ -57,23 +60,26 @@ Azure 数据目录可用于发现数据源，使用户能够轻松发现和理�
 可以选择在业务术语表中使用层次结构。 将术语表术语的父术语字段留空，这会在术语表中创建一个简单（而非分层）术语列表。  
 
 ## <a name="tagging-assets-with-glossary-terms"></a>使用术语表术语标记资产
+
 在目录中定义了术语表术语后，优化了标记资产的体验，以在用户键入其标记时搜索术语表。 数据目录门户显示一个匹配的术语表术语列表以供选择。 如果用户从列表中选择一个术语表术语，则会将其作为标记添加到资产中（也称为术语标记）。 用户还可以选择通过键入不在术语表中的术语来创建新标记（也称为用户标记）。
 
 ![标记有一个用户标记和两个术语表标记的数据资产](./media/data-catalog-how-to-business-glossary/03-tagged-asset.png)
 
 > [!NOTE]
 > 用户标记是数据目录免费版中唯一支持的标记类型。
->
->
 
 ### <a name="hover-behavior-on-tags"></a>标记上的悬停行为
+
 在数据目录门户中，这两种类型的标记看起来有所不同，具有不同的悬停行为。 将鼠标悬停在用户标记上时，可以看到标记文本和添加了该标记的一名或多名用户。 将鼠标悬停在术语表标记上时，还可以看到术语表术语的定义，以及用于打开业务术语表以查看该术语的完整定义的链接。
 
 ### <a name="search-filters-for-tags"></a>标记的搜索筛选器
+
 术语表标记和用户标记均可搜索，可以在搜索中应用为筛选器。
 
 ## <a name="summary"></a>摘要
+
 使用 Azure 数据目录中的业务术语表及其启用的管控标记，可以以一致的方式识别、管理和发现数据资产。 业务术语表可促进组织成员学习业务词汇。 术语表也支持捕获有意义的元数据，这可以简化资产的发现和理解。
 
 ## <a name="next-steps"></a>后续步骤
-* [用于业务术语表操作的 REST API 文档](https://msdn.microsoft.com/library/mt708855.aspx)
+
+* [业务术语表操作的 REST API 文档](/rest/api/datacatalog/data-catalog-glossary)

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: dbf614f9749039b054e1134df31334a6248e2b78
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.openlocfilehash: 24cff3a2ec4d0bed7a030ca430eaa698eb4a7325
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55981394"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278762"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -94,7 +94,7 @@ az vmss create \
     --zones 1
 ```
 
-有关单区域规模集和网络资源的完整示例，请参阅[此示例 CLI 脚本](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh.)
+有关单区域规模集和网络资源的完整示例，请参阅[此示例 CLI 脚本](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh)
 
 ### <a name="zone-redundant-scale-set"></a>区域冗余规模集
 

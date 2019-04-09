@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 1/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: f7288202eb6dd66aee0bb38bb3611e8b319b50f2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1e57e623e3e95f3d71e895c49c928f00aa0ad46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010540"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274666"
 ---
 # <a name="configure-openvpn-clients-for-azure-vpn-gateway-preview"></a>为 Azure VPN 网关配置 OpenVPN 客户端（预览）
 
-本文有助于配置 OpenVPN 客户端。
+本文可帮助你配置**OpenVPN® 协议**客户端。
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -49,7 +49,7 @@ ms.locfileid: "58010540"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. 在记事本中打开 *profileinfo.txt*。 若要获取私钥，请选择并复制“-----BEGIN PRIVATE KEY-----”与“-----BEGIN PRIVATE KEY-----”之间的文本（包括这两行）。
+8. 在记事本中打开 *profileinfo.txt*。 若要获取的私钥，请选择文本 （包括而且之间）"---BEGIN PRIVATE KEY---"和"---END PRIVATE KEY---"并将其复制。
 9. 返回到记事本中的 vpnconfig.ovpn 文件，并找到此节。 粘贴私钥，替换“key”与“/key”之间的所有内容。
 
    ```
@@ -109,7 +109,7 @@ ms.locfileid: "58010540"
    $CLIENTCERTIFICATE
    </cert>
    ```
-8. 在文本编辑器中打开 profileinfo.txt。 若要获取私钥，请选择并复制“-----BEGIN PRIVATE KEY-----”与“-----BEGIN PRIVATE KEY-----”之间的文本（包括这两行）。
+8. 在文本编辑器中打开 profileinfo.txt。 若要获取的私钥，请选择文本包括和之间"---BEGIN PRIVATE KEY---"和"---END PRIVATE KEY---"并将其复制。
 
 9. 在文本编辑器中打开 vpnconfig.ovpn 文件，并找到此节。 粘贴私钥，替换“key”与“/key”之间的所有内容。
 
@@ -138,4 +138,6 @@ ms.locfileid: "58010540"
 
 ## <a name="next-steps"></a>后续步骤
 
-如果希望 VPN 客户端能够访问另一个 VNet（生产）中的资源，请遵照 [VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md) 文章中的说明设置 VNet 到 VNet 连接。 确保在网关和连接中启用 BGP，否则流量不会流动。
+如果你想要能够访问另一个 VNet （生产） 中的资源的 VPN 客户端，然后按照说明[VNet 到 VNet](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)文章设置 vnet 到 vnet 连接。 确保在网关和连接中启用 BGP，否则流量不会流动。
+
+**"OpenVPN"是 OpenVPN Inc.的商标**

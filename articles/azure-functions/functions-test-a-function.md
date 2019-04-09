@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 030/25/2019
 ms.author: cshoe
-ms.openlocfilehash: 4b3cba7e7656ea13a6e7b36be4cb2fef99893867
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 15e4cf484ae38268c59781101256d64ef85e72ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439322"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283029"
 ---
 # <a name="strategies-for-testing-your-code-in-azure-functions"></a>在 Azure Functions 中测试代码的策略
 
@@ -26,8 +26,8 @@ ms.locfileid: "58439322"
 
 下面的内容根据不同的语言和环境划分为两个不同的部分。 可以了解：
 
-- [使用 xUnit 在 Visual Studio 的 C# 中生成测试](#c-in-visual-studio)
-- [使用 Jest 在 VS Code 的 JavaScript 中生成测试](#javascript-in-vs-code)
+- [C#在 Visual Studio 中使用 xUnit](#c-in-visual-studio)
+- [在 VS Code 中使用 Jest JavaScript](#javascript-in-vs-code)
 
 [GitHub](https://github.com/Azure-Samples/azure-functions-tests) 上提供了示例存储库。
 
@@ -252,6 +252,8 @@ namespace Functions.Tests
 - **Http_trigger_should_return_string_from_member_data**：此测试使用 xUnit 属性为 HTTP 函数提供示例数据。
 
 - **Timer_should_log_message**：此测试创建 `ListLogger` 的实例并将其传递给计时器函数。 运行该函数后，将检查日志以确保存在预期的消息。
+
+如果你想要访问在测试中的应用程序设置，则可以使用[System.Environment.GetEnvironmentVariable](./functions-dotnet-class-library.md#environment-variables)。
 
 ### <a name="run-tests"></a>运行测试
 

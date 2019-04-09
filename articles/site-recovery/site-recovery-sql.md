@@ -6,16 +6,16 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: d4be7b9c7774163aed8c0efb3414dbd6a794cf7f
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: 67526eddd19c5869aa54432f963d9b80396f878d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52847790"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270976"
 ---
-# <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复 
+# <a name="set-up-disaster-recovery-for-sql-server"></a>为 SQL Server 设置灾难恢复
 
 本文介绍如何结合使用 SQL Server 业务连续性和灾难恢复 (BCDR) 技术与 [Azure Site Recovery](site-recovery-overview.md) 来保护应用程序的 SQL Server 后端。
 
@@ -30,7 +30,7 @@ ms.locfileid: "52847790"
 * **SQL Server 故障转移群集实例 (AlwaysOn FCI)**：在一个 Windows 故障转移群集中配置两个或更多个运行带共享磁盘的 SQL Server 实例的节点。 如果某个节点关闭，群集可将 SQL Server 故障转移到其他实例。 此设置通常用于在主站点上实现高可用性。 此部署不能防止共享存储层中出现故障或中断。 共享磁盘可以使用 iSCSI、光纤通道或共享 vhdx 来实现。
 * **SQL AlwaysOn 可用性组**：使用同步复制与自动故障转移在可用性组中配置 SQL Server 数据库时，在不共享任何内容的群集中设置两个或更多个节点。
 
- 本文利用以下本机 SQL 灾难恢复技术将数据库恢复到远程站点：
+  本文利用以下本机 SQL 灾难恢复技术将数据库恢复到远程站点：
 
 * SQL Always On 可用性组，针对 SQL Server 2012 或 2014 Enterprise Edition 提供灾难恢复。
 * SQL Server Standard Edition（任何版本）或 SQL Server 2008 R2 高安全性模式下的 SQL 数据库镜像。
@@ -40,12 +40,12 @@ ms.locfileid: "52847790"
 ### <a name="supported-scenarios"></a>支持的方案
 Site Recovery 可以保护下表中汇总的 SQL Server。
 
-**方案** | **到辅助站点** | **到 Azure**
+**场景** | **到辅助站点** | **到 Azure**
 --- | --- | ---
 **Hyper-V** | 是 | 是
 **VMware** | 是 | 是
 **物理服务器** | 是 | 是
-**Azure**|NA| 是
+**Azure** |NA| 是
 
 ### <a name="supported-sql-server-versions"></a>支持的 SQL Server 版本
 支持的方案支持以下 SQL Server 版本：
@@ -59,11 +59,11 @@ Site Recovery 可以保护下表中汇总的 SQL Server。
 
 Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提供灾难恢复解决方案。
 
-**功能** | **详细信息** | **SQL Server** |
+**Feature** | **详细信息** | **SQL Server** |
 --- | --- | ---
 **Always On 可用性组** | SQL Server 的多个独立实例，每个实例在包含多个节点的故障转移群集中运行。<br/><br/>数据库可以分组到可在 SQL Server 实例上复制（镜像）的故障转移组，因此不需要任何共享存储。<br/><br/>在主站点与一个或多个辅助站点之间提供灾难恢复。 使用同步复制与自动故障转移在可用性组中配置 SQL Server 数据库时，可以在不共享任何内容的群集中设置两个节点。 | SQL Server 2016、SQL Server 2014 和 SQL Server 2012 Enterprise Edition
 **故障转移群集 (Always On FCI)** | SQL Server 利用 Windows 故障转移群集实现本地 SQL Server 工作负载的高可用性。<br/><br/>使用共享磁盘运行 SQL Server 实例的节点是在故障转移群集中配置的。 如果实例关闭，群集将故障转移到另一个节点。<br/><br/>群集无法防止共享存储的故障或中断。 共享磁盘可以使用 iSCSI、光纤通道或共享 VHDX 来实现。 | SQL Server Enterprise 版本<br/><br/>SQL Server Standard 版本（仅限两个节点）
-**数据库镜像（高安全性模式）** | 在单个辅助副本中保护单个数据库。 提供高安全性（同步）和高性能（异步）复制模式。 不需要故障转移群集。 | SQL Server 2008 R2<br/><br/>SQL Server Enterprise 的所有版本
+**数据库镜像 （高安全性模式）** | 在单个辅助副本中保护单个数据库。 提供高安全性（同步）和高性能（异步）复制模式。 不需要故障转移群集。 | SQL Server 2008 R2<br/><br/>SQL Server Enterprise 的所有版本
 **独立 SQL Server** | SQL Server 和数据库托管在单个服务器（物理或虚拟）上。 如果是虚拟服务器，则主机群集用于高可用性。 没有来宾级别的高可用性。 | Enterprise 或 Standard 版本
 
 ## <a name="deployment-recommendations"></a>部署建议
@@ -73,11 +73,11 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 | **版本** | **版本** | **部署** | **本地到本地** | **本地到 Azure** |
 | --- | --- | --- | --- | --- |
 | SQL Server 2016、2014 或 2012 |Enterprise |故障转移群集实例 |Always On 可用性组 |Always On 可用性组 |
-|| Enterprise |用于实现高可用性的 Always On 可用性组 |Always On 可用性组 |Always On 可用性组 | |
-|| 标准 |故障转移群集实例 (FCI) |使用本地镜像进行 Site Recovery 复制 |使用本地镜像进行 Site Recovery 复制 | |
-|| Enterprise 或 Standard |独立 |站点恢复复制 |站点恢复复制 | |
+|| Enterprise |用于实现高可用性的 Always On 可用性组 |Always On 可用性组 |Always On 可用性组 |
+|| 标准 |故障转移群集实例 (FCI) |使用本地镜像进行 Site Recovery 复制 |使用本地镜像进行 Site Recovery 复制 |
+|| Enterprise 或 Standard |独立 |站点恢复复制 |站点恢复复制 |
 | SQL Server 2008 R2 或 2008 |Enterprise 或 Standard |故障转移群集实例 (FCI) |使用本地镜像进行 Site Recovery 复制 |使用本地镜像进行 Site Recovery 复制 |
-|| Enterprise 或 Standard |独立 |站点恢复复制 |站点恢复复制 | |
+|| Enterprise 或 Standard |独立 |站点恢复复制 |站点恢复复制 |
 | SQL Server（任何版本） |Enterprise 或 Standard |故障转移群集实例 - DTC 应用程序 |站点恢复复制 |不支持 |
 
 ## <a name="deployment-prerequisites"></a>部署先决条件
@@ -101,7 +101,7 @@ Site Recovery 可与表中汇总的本机 SQL Server BCDR 技术集成，以提�
 
 1. 将脚本导入到 Azure 自动化帐户中。 这包括用于在 [Resource Manager 虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAG.ps1)和[经典虚拟机](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/asr-automation-recovery/scripts/ASR-SQL-FailoverAGClassic.ps1)中对 SQL 可用性组进行故障转移的脚本。
 
-    [![部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
+    [![D部署到 Azure](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 
 1. 将 ASR-SQL-FailoverAG 添加为恢复计划的第一个组的准备操作。
@@ -116,11 +116,11 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 
 1. 触发对恢复计划进行测试性故障转移之前，请从上一步骤中进行的备份恢复虚拟机。
 
-    ![从 Azure 备份进行还原 ](./media/site-recovery-sql/restore-from-backup.png)
+    ![从 Azure 备份进行还原](./media/site-recovery-sql/restore-from-backup.png)
 
 1. 在从备份还原的虚拟机中[强制实施仲裁](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/force-a-wsfc-cluster-to-start-without-a-quorum#PowerShellProcedure)。
 
-1. 将侦听器的 IP 更新为测试故障转移网络中可用的某个 IP。
+1. 将侦听程序的 IP 更新为测试故障转移网络中可用的某个 IP。
 
     ![更新侦听器 IP](./media/site-recovery-sql/update-listener-ip.png)
 
@@ -130,9 +130,9 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 
 1. 使用在前端 IP 池下创建的与每个可用性组侦听器对应的一个 IP 与在后端池中添加的 SQL 虚拟机创建一个负载均衡器。
 
-     ![创建负载均衡器 - 前端 IP 池 ](./media/site-recovery-sql/create-load-balancer1.png)
+     ![创建负载均衡器 - 前端 IP 池](./media/site-recovery-sql/create-load-balancer1.png)
 
-    ![创建负载均衡器 - 后端池 ](./media/site-recovery-sql/create-load-balancer2.png)
+    ![创建负载均衡器 - 后端池](./media/site-recovery-sql/create-load-balancer2.png)
 
 1. 对恢复计划进行测试性故障转移。
 
@@ -145,7 +145,7 @@ SQL Always On 无法原生支持测试性故障转移。 因此，我们建议�
 
 如果 SQL Server 使用可用性组（或 FCI）实现高可用性，我们建议也在恢复站点上使用可用性组。 请注意，这适用于不使用分布式事务的应用。
 
-1. 在可用性组中[配置数据库](https://msdn.microsoft.com/library/hh213078.aspx)。
+1. [配置数据库](https://msdn.microsoft.com/library/hh213078.aspx) 。
 1. 在辅助站点上创建虚拟网络。
 1. 在该虚拟网络与主站点之间配置站点到站点 VPN 连接。
 1. 在恢复站点上创建虚拟机，并在其上安装 SQL Server。

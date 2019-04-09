@@ -5,15 +5,15 @@ services: cosmos-db
 author: roygara
 ms.service: cosmos-db
 ms.topic: article
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
-ms.openlocfilehash: c5491683a74321e370044cd6eb270cc34bbbce6a
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056402"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273118"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
@@ -35,13 +35,16 @@ Azure 表存储是一种 NoSQL 数据存储，可用于存储和查询大量的�
 这些示例要求 Az PowerShell 模块`Az.Storage (1.1.0 or greater)`和`Az.Resources (1.2.0 or greater)`。 在 PowerShell 窗口中，运行 `Get-Module -ListAvailable Az*` 可查找版本。 如果未显示任何信息或需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。
 
 > [!IMPORTANT]
-> 使用 PowerShell 的 Azure 功能必须已安装 `Az` 模块。 AzureRmStorageTable 的当前版本不兼容的较旧的 AzureRM 模块。
+> 使用 PowerShell 的 Azure 功能必须已安装 `Az` 模块。 当前版本的`AzTable`与较旧的 AzureRM 模块不兼容。
 > 请按照[最新版本安装说明安装 Az 模块](/powershell/azure/install-az-ps)必要。
 
-安装或更新 Azure PowerShell 后，必须安装模块 AzureRmStorageTable，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module 命令。
+安装或更新 Azure PowerShell 后，必须安装模块**AzTable**，其中包含用于管理实体的命令。 若要安装此模块，请以管理员身份运行 PowerShell 并使用 Install-Module 命令。
+
+> [!IMPORTANT]
+> 模块名称兼容性原因，我们仍要发布的旧名称下此相同模块`AzureRmStorageTables`PowerShell 库中。 本文档将引用新名称。
 
 ```powershell
-Install-Module AzureRmStorageTable
+Install-Module AzTable
 ```
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
@@ -115,9 +118,9 @@ $storageTable = Get-AzStorageTable –Name $tableName –Context $ctx
 ## <a name="reference-cloudtable-property-of-a-specific-table"></a>引用特定表的 CloudTable 属性
 
 > [!IMPORTANT]
-> 使用时，是必需的 CloudTable 的使用情况**AzureRmStorageTable** PowerShell 模块。 调用**Get AzTableTable**命令来获取对此对象的引用。 如果尚不存在，则此命令还将创建表。
+> 使用时，是必需的 CloudTable 的使用情况**AzTable** PowerShell 模块。 调用**Get AzTableTable**命令来获取对此对象的引用。 如果尚不存在，则此命令还将创建表。
 
-若要执行对表使用的操作**AzureRmStorageTable**，您需要对特定表的 CloudTable 属性的引用。
+若要执行对表使用的操作**AzTable**，您需要对特定表的 CloudTable 属性的引用。
 
 ```powershell
 $cloudTable = (Get-AzStorageTable –Name $tableName –Context $ctx).CloudTable
@@ -160,6 +163,6 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 * [存储空间 PowerShell cmdlet](/powershell/module/az.storage#storage)
 
-* [使用 PowerShell-AzureRmStorageTable PS 模块 v2.0 从 Azure 表](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
+* [使用 PowerShell-AzureRmStorageTable/AzTable PS 模块 v2.0 从 Azure 表](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 
 * [Microsoft Azure 存储资源管理器](../../vs-azure-tools-storage-manage-with-storage-explorer.md)是 Microsoft 免费提供的独立应用，适用于在 Windows、macOS 和 Linux 上以可视方式处理 Azure 存储数据。

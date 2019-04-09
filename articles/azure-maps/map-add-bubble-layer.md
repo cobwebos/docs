@@ -9,19 +9,19 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 895f6ce728ce608184bf6f68be3b73d5dc384d79
-ms.sourcegitcommit: 2bb46e5b3bcadc0a21f39072b981a3d357559191
-ms.translationtype: HT
+ms.openlocfilehash: f2c4c6b8655d5efb993a2dedf536000ac94328c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/05/2018
-ms.locfileid: "52892829"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281482"
 ---
 # <a name="add-a-bubble-layer-to-a-map"></a>将气泡层添加地图
 
 本文介绍如何将数据源中的点数据呈现为地图上的气泡层。 气泡层将点呈现为地图上具有固定像素半径的圆。 
 
 > [!TIP]
-> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 若要限制层以便仅呈现点几何图形功能，请将层的 `filter` 属性设置为 `['==', '$type', 'Point']`
+> 默认情况下，气泡层将呈现数据源中所有几何图形的坐标。 功能集限制在层，以便它仅呈现点几何图形`filter`到层的属性`['==', ['geometry-type'], 'Point']`或`['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]`如果想要包括多点功能。
 
 ## <a name="add-a-bubble-layer"></a>添加气泡层
 
@@ -73,4 +73,7 @@ ms.locfileid: "52892829"
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [添加符号层](./map-add-pin.md)
+> [添加符号层](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)

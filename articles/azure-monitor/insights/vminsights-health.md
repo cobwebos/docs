@@ -11,16 +11,16 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.author: magoedte
-ms.openlocfilehash: 987d28470b8a848755cdd7d1264ba7f7f66544df
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4c330e36210e97172c8f06bbfc3850210e200777
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918937"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260334"
 ---
-# <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms-preview"></a>使用用于 VM 的 Azure Monitor（预览版）了解 Azure 虚拟机的运行状况
+# <a name="understand-the-health-of-your-azure-virtual-machines"></a>了解 Azure 虚拟机的运行状况 
 Azure 包含的多个服务可在监视空间中单独执行特定的角色或任务，但无法针对 Azure 虚拟机上托管的操作系统提供深入的运行状况透视图。  虽然可以使用 Azure Monitor 的不同情况进行监视，它并不旨在模型和表示核心组件的运行状况或虚拟机的总体运行状况。  用于 VM 的 Azure Monitor 运行状况功能可以使用一个代表核心组件及其关系的模型、指定如何度量这些组件的运行状况的条件，来主动监视 Windows 或 Linux 来宾 OS 的可用性和性能，并在检测到不正常状况时发出警报。  
 
 可以直接在虚拟机中或者某个资源组中的所有 VM 上，使用用于 VM 的 Azure Monitor 运行状况功能的两个透视图查看 Azure VM 和基础操作系统的总体运行状况。
@@ -92,16 +92,16 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 
 |图标 |运行状况 |含义 |
 |-----|-------------|------------|
-| |Healthy |如果运行状况状态在定义的运行状况条件内，则为正常状态，表示没有检测到任何 VM 问题，它在按要求正常运行。 对于父汇总监视器，运行状况将会汇总，并反映子级的最佳和最差状态。|
-| |严重 |如果运行状况状态不在定义的运行状况条件内，则为严重状态，表示检测到一个或多个关键问题，需要解决这些问题才能恢复正常功能。 对于父汇总监视器，运行状况将会汇总，并反映子级的最佳和最差状态。|
-| |警告 |如果运行状况状态介于定义的运行状况条件的两个阈值之间，其中一个阈值指示“警告”状态，另一个指示“严重”状态（可以配置三个运行状况状态阈值），或者检测到非严重性问题，若不解决可能会导致严重问题，这种情况为警告状态。 对于父汇总监视器，如果一个或多个子级处于警告状态，则父级将反映“警告”状态。 如果一个子级处于“严重”状态，另一个子级处于“警告”状态，则父汇总将显示“严重”运行状况。|
+| |Healthy |如果运行状况状态在定义的运行状况条件内，则为正常状态，表示没有检测到任何 VM 问题，它在按要求正常运行。 与父汇总监视器，运行状况汇总和它反映了子的最佳和最差状态。|
+| |严重 |如果运行状况状态不在定义的运行状况条件内，则为严重状态，表示检测到一个或多个关键问题，需要解决这些问题才能恢复正常功能。 与父汇总监视器，运行状况汇总和它反映了子的最佳和最差状态。|
+| |警告 |如果运行状况状态介于定义的运行状况条件的两个阈值之间，其中一个阈值指示“警告”状态，另一个指示“严重”状态（可以配置三个运行状况状态阈值），或者检测到非严重性问题，若不解决可能会导致严重问题，这种情况为警告状态。 父汇总监视器，如果一个或多个子级是处于警告状态，则父级将反映*警告*状态。 如果一个子级处于“严重”状态，另一个子级处于“警告”状态，则父汇总将显示“严重”运行状况。|
 | |Unknown |如果出于多种原因（例如，无法收集数据、服务未初始化，等等）而无法计算的运行状况状态，则运行状况处于“未知”状态。此运行状况状态不可配置。| 
 
 选择“查看运行状况诊断”会打开一个页面，其中显示了 VM 的所有组件、关联的运行状况条件、状态更改，以及与 VM 相关的监视组件遇到的其他重大问题。 有关详细信息，请参阅[运行状况诊断](#health-diagnostics)。 
 
 “组件运行状况”部分下的表格显示了运行状况条件针对“CPU”、“内存”、“磁盘”和“网络”这几个具体方面监视的主要性能类别的总体运行状况。  选择其中一个组件会打开一个页面，其中列出了该组件的各个运行状况条件监视方面以及相应的运行状况。  
 
-在运行 Windows 操作系统的 Azure VM 中访问“运行状况”时，“核心服务运行状况”部分下面会显示前 5 个核心 Windows 服务的运行状况。  选择任一服务会打开一个页面，其中列出了该组件的运行状况条件监视信息及其运行状况。  单击运行状况条件的名称会打开属性窗格，在其中可以查看配置详细信息，包括是否为运行状况条件定义了相应的 Azure Monitor 警报。 若要了解详细信息，请参阅[运行状况诊断和使用运行状况条件](#health-diagnostics)。  
+当从运行 Windows 操作系统的 Azure VM 访问运行状况中, 五种核心的 Windows 服务显示在部分顶部的运行状况状态**核心服务运行状况**。  选择任一服务会打开一个页面，其中列出了该组件的运行状况条件监视信息及其运行状况。  单击运行状况条件的名称会打开属性窗格，在其中可以查看配置详细信息，包括是否为运行状况条件定义了相应的 Azure Monitor 警报。 若要了解详细信息，请参阅[运行状况诊断和使用运行状况条件](#health-diagnostics)。  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>聚合虚拟机透视图
 若要查看资源组中所有虚拟机的运行状况集合，请在门户上的导航列表中，依次选择“Azure Monitor”、“虚拟机(预览)”。  
@@ -133,7 +133,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 
 ![所选 Azure 虚拟机的 VM 见解](./media/vminsights-health/vminsights-directvm-health.png)
 
-此页显示该虚拟机的“运行状况”汇总信息，以及按严重性分类的“警报”。这些警报显示了运行状况条件将运行状况从正常更改为不正常时引发的 VM 运行状况警报。  选择“出现严重状况的 VM”会打开一个页面，其中列出了处于严重运行状况的一个或多个 VM。  在该列表中单击某个 VM 的运行状况会显示该 VM 的“运行状况诊断”视图。  在此视图中可以找出哪个运行状况条件反映了运行状况问题。 当“运行状况诊断”页打开时，它会显示 VM 的所有组件，以及这些组件的关联运行状况条件和当前运行状况。  有关更多详细信息，请参阅[运行状况诊断](#health-diagnostics)部分。  
+此页显示该虚拟机的“运行状况”汇总信息，以及按严重性分类的“警报”。这些警报显示了运行状况条件将运行状况从正常更改为不正常时引发的 VM 运行状况警报。  选择“出现严重状况的 VM”会打开一个页面，其中列出了处于严重运行状况的一个或多个 VM。  在该列表中单击某个 VM 的运行状况会显示该 VM 的“运行状况诊断”视图。  在此视图中可以找出哪个运行状况条件反映了运行状况问题。 当“运行状况诊断”页打开时，它会显示 VM 的所有组件，以及这些组件的关联运行状况条件和当前运行状况。 有关详细信息，请参阅[运行状况诊断](#health-diagnostics)。  
 
 选择“查看所有运行状况条件”会打开一个页面，其中显示了适用于此功能的所有运行状况条件的列表。  可根据以下选项进一步筛选信息：
 
@@ -164,7 +164,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 * 可用性
 * 性能
  
-为特定组件（如逻辑磁盘、CPU 等）定义的所有运行状况条件。此外，可以在“运行状况条件”列看到其旁边的监视器类别。  
+所有运行状况条件定义特定的组件，如逻辑磁盘、 CPU、 等不筛选上的两个类别 （这是所有条件的全部视图），可以查看或选择时按这两种类别筛选结果**可用性**或**性能**页上的选项。 此外，可以看到条件的类别在其旁边**运行状况条件**列。 如果条件不符合所选的类别，它将显示消息**没有可用于所选类别的运行状况条件**中**运行状况条件**列。  
 
 运行状况条件的状态按以下四种状态之一进行定义：“严重”、“警告”、“正常”和“未知”。 前三种状态是可配置的，这意味着你可以使用[工作负载监视器 API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/monitors/update) 修改监视器的阈值。 “未知”不可配置，保留用于特定场景。  
 
@@ -190,7 +190,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 
 运行状况条件使用某种条件（可能是一个阈值、实体状态等）来度量受监视实例的运行状况。如前面所述，运行状况条件具有两个或三个可配置的运行状况状态阈值。 在任意给定时间，运行状况条件只能处于一种潜在状态。 
 
-目标的总体运行状况取决于运行状况模型中为该目标定义的每个运行状况条件的运行状况。 这是直接针对目标的运行状况条件、针对组件的并通过聚合运行状况条件汇总到目标的运行状况条件的组合。 “运行状况诊断”页的“运行状况条件”部分演示了此层次结构。 运行状况汇总策略是聚合运行状况条件配置的一部分（默认值设置为“最差”）。 可以在[监视配置详细信息](#monitoring-configuration-details)部分找到作为此功能的一部分运行的默认运行状况条件集列表。  
+目标的总体运行状况取决于运行状况模型中为该目标定义的每个运行状况条件的运行状况。 它是直接针对目标运行状况条件以汇总到聚合运行状况条件通过目标组件为目标的运行状况条件的组合。 “运行状况诊断”页的“运行状况条件”部分演示了此层次结构。 运行状况汇总策略是聚合运行状况条件配置的一部分（默认值设置为“最差”）。 可以在[监视配置详细信息](#monitoring-configuration-details)部分找到作为此功能的一部分运行的默认运行状况条件集列表。  
 
 单击最右侧的椭圆形链接并选择“显示详细信息”打开配置窗格，可以修改运行状况条件“单元”类型的配置。 
 
@@ -220,7 +220,7 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 
 在上面的示例中，当你选择“磁盘 - 1 D:”时，运行状况条件树会根据“磁盘 - 1 D:”进行筛选。 “状态更改”列根据“磁盘 - 1 D:”的可用性显示状态更改。 
 
-若要查看更新的运行状况状态，可以单击“刷新”链接来刷新“运行状况诊断”页。  如果基于预定义的轮询间隔对运行状况条件的运行状况做了更新，则此任务可以避免等待显示最新运行状况。  “运行状况条件状态”是一个筛选器，用于根据所选运行状况状态（“正常”、“警告”**、“严重”、“未知”和“所有”）来限定结果范围。  右上角的“上次更新时间”表示上次刷新“运行状况诊断”页的时间。  
+若要查看更新的运行状况状态，可以单击“刷新”链接来刷新“运行状况诊断”页。  如果基于预定义的轮询间隔对运行状况条件的运行状况做了更新，则此任务可以避免等待显示最新运行状况。  **运行状况条件状态**是一个筛选器，用于根据所选运行状况状态（*正常*、*警告*、*严重*、*未知*和*所有*）来限定结果范围。  右上角的“上次更新时间”表示上次刷新“运行状况诊断”页的时间。  
 
 ## <a name="alerts"></a>警报
 用于 VM 的 Azure Monitor 运行状况功能与 [Azure 警报](../../azure-monitor/platform/alerts-overview.md)相集成，当预定义的运行状况条件在检测到相应状况后从正常更改为不正常状态时，会引发警报。 警报按严重性分类 - 严重性 0 到 4，严重性 0 表示最高严重性级别。  
@@ -256,6 +256,64 @@ Azure 包含的多个服务可在监视空间中单独执行特定的角色或�
 ![所选警报的警报详细信息窗格](./media/vminsights-health/alert-details-pane-01.png)
 
 还可以更改一个或多个警报的警报状态，方法是选择这些警报，然后在“所有警报”页的左上角选择“更改状态”。 在“更改警报状态”窗格中选择一种状态，在“注释”字段中添加更改操作的说明，然后单击“确定”提交更改。 在验证信息和应用更改期间，可在菜单中的“通知”下面跟踪操作进度。  
+
+### <a name="configure-alerts"></a>配置警报
+某些警报管理任务不能从 Azure 门户管理和执行使用，以使[Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/microsoft.workloadmonitor/components)。 具体而言：
+
+- 启用或禁用运行状况条件的警报 
+- 设置运行状况条件警报通知 
+
+每个示例中使用的方法使用[ARMClient](https://github.com/projectkudu/armclient)在 Windows 计算机上。 如果您不熟悉此方法，请参阅[使用 ARMClient](../platform/rest-api-walkthrough.md#use-armclient)。  
+
+#### <a name="enable-or-disable-alert-rule"></a>启用或禁用警报规则
+
+若要启用或禁用警报规则为特定的运行状况条件的运行状况条件属性*alertGeneration*需要使用的值来修改**禁用**或**已启用**. 若要识别*monitorId*的特定运行状况条件，下面的示例将说明如何查询条件值**LogicalDisk\Avg Disk 秒 Per Transfer**。
+
+1. 在终端窗口中，键入 **armclient.exe login**。 这样做会提示你登录到 Azure。
+
+2. 键入以下命令检索所有活动的特定虚拟机上的运行状况条件并确定的值*monitorId*属性。 
+
+    ```
+    armclient GET "subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors?api-version=2018-08-31-preview”
+    ```
+
+    下面的示例显示了该命令的输出。 记下的值*MonitorId*以红色突出显示。 此值是必需的下一步需要指定运行状况条件的 ID，并修改其属性，以创建警报。
+
+    ![示例检索运行状况条件的监视器 ID](./media/vminsights-health/get-monitor-identifier-01.png)
+
+3. 键入以下命令来修改*alertGeneration*属性。
+
+    ```
+    armclient patch subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/monitors/Microsoft_LogicalDisk_AvgDiskSecPerTransfer?api-version=2018-08-31-preview 1-preview "{'properties':{'alertGeneration':'Disabled'}}"
+    ```   
+
+4. 键入在步骤 2 中用于验证属性的值设置为 GET 命令**禁用**。  
+
+#### <a name="associate-action-group-with-health-criteria"></a>将操作组与运行状况条件相关联
+
+Azure Vm 运行状况监视器支持短信和电子邮件通知时，将生成警报时运行状况条件将变为不正常。 若要配置通知，需要记下配置为发送短信或电子邮件通知的操作组的名称。 
+
+>[!NOTE]
+>此操作需要对受监视的每个 VM 执行你想要接收的通知。
+
+1. 在终端窗口中，键入 **armclient.exe login**。 这样做会提示你登录到 Azure。
+
+2. 键入以下命令以将操作组关联的警报规则。
+ 
+    ```
+    $payload = "{'properties':{'ActionGroupResourceIds':['/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/microsoft.insights/actionGroups/actiongroupName']}}" 
+    armclient PUT https://management.azure.com/subscriptions/subscriptionId/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings/default?api-version=2018-08-31-preview $payload
+    ```
+
+3. 若要验证的属性值**actionGroupResourceIds**已成功更新，请键入以下命令。
+
+    ```
+    armclient GET "subscriptions/subscriptionName/resourceGroups/resourcegroupName/providers/Microsoft.Compute/virtualMachines/vmName/providers/Microsoft.WorkloadMonitor/notificationSettings?api-version=2018-08-31-preview"
+    ```
+
+    输出应如下所示：
+    
+    ![Get notificationSettings 的输出示例](./media/vminsights-health/get-notification-config-status.png)
 
 ## <a name="next-steps"></a>后续步骤
 若要查明 VM 性能的瓶颈和整体利用率，请参阅[查看 Azure VM 性能](vminsights-performance.md)；若要查看已发现的应用程序依赖项，请参阅[查看用于 VM 的 Azure Monitor 映射](vminsights-maps.md)。 

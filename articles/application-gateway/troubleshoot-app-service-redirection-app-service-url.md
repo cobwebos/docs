@@ -1,50 +1,58 @@
 ---
 title: 使用应用服务-重定向到应用服务的 URL 的 Azure 应用程序网关故障排除
-description: 本文提供有关如何与 Azure 应用服务一起使用 Azure 应用程序网关时，重定向问题进行故障排除信息
+description: 本文介绍如何排查将 Azure 应用程序网关与 Azure 应用服务配合使用时出现的重定向问题
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
-ms.openlocfilehash: 359d75f10f95b0e41ccd9a869d49247355f0d5d0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123175"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274529"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service--redirection-to-app-services-url"></a>使用应用服务排查应用程序网关问题 – 重定向到应用服务的 URL
+# <a name="troubleshoot-application-gateway-with-app-service"></a>对使用应用服务应用程序网关进行故障排除
 
- 了解如何诊断和解决应用程序网关获取其中公开应用程序服务的 URL 重定向问题。
+了解如何诊断和解决与应用程序网关和后端服务器作为应用服务时遇到的问题。
 
 ## <a name="overview"></a>概述
 
-当配置面向公众的应用程序网关后端池中的应用服务，而如果必须在应用程序代码中配置的重定向，你可能会看到，当访问应用程序网关时，你将重定向浏览器可以直接向应用程序服务 URL。
+在本文中，将了解如何解决以下问题：
 
-由于是以下主要原因可能会发生此问题：
+> [!div class="checklist"]
+> * 获取重定向时在浏览器中公开的应用服务的 URL
+> * 应用服务的 ARRAffinity Cookie 域设置为应用服务主机名 (example.azurewebsites.net) 而不是原始主机
 
-- 必须在应用服务上配置的重定向。 可以重定向为向请求添加尾部反斜杠一样简单。
-- 具有 Azure AD 身份验证，这将导致重定向。
-- 已启用应用程序网关的 HTTP 设置中的"选择主机名从后端地址"交换机。
-- 你没有你的应用服务中注册的自定义域。
+在应用程序网关后端池中配置面向公众的应用服务时，如果在应用程序代码中配置了重定向，访问应用程序网关时你可能会看到，浏览器会直接将你重定向到应用服务 URL。
+
+此问题的主要可能原因如下：
+
+- 在应用服务中配置了重定向。 只需在请求中添加一个尾随的斜杠即可配置重定向。
+- Azure AD 身份验证导致重定向。
+- 在应用程序网关的 HTTP 设置中启用了“从后端地址中选取主机名”开关。
+- 未将自定义域注册到应用服务。
+
+此外，如果使用的应用服务应用程序网关后，使用自定义域来访问应用程序网关可能会看到应用服务设置的 ARRAffinity cookie 的域值将包含"example.azurewebsites.net"域名称。 如果你想为 cookie 域也在原始主机名，请按照本文中的解决方案。
 
 ## <a name="sample-configuration"></a>示例配置
 
-- HTTP 侦听器：基本或多站点
+- HTTP 侦听器：“基本”或“多站点”
 - 后端地址池：应用服务
-- HTTP 设置："选择主机名后端地址从"已启用
-- 探测："选择主机名从 HTTP 设置"已启用
+- HTTP 设置：已启用“从后端地址中选取主机名”
+- 探测：已启用“从 HTTP 设置中选取主机名”
 
 ## <a name="cause"></a>原因
 
 应用服务仅使用配置的主机名在自定义域设置中，默认情况下访问，它是"example.azurewebsites.net"并且如果你想要访问应用服务应用程序网关使用未注册或使用应用服务中的主机名应用程序网关的 FQDN，您必须重写中对应用服务的主机名的原始请求的主机名。
 
-若要使用应用程序网关实现此目的，我们使用的交换机"选取主机名从后端地址"HTTP 设置中和探测来工作，我们在探测配置中使用"选择主机名从后端 HTTP 设置"。
+为了在应用程序网关中实现此目的，我们在 HTTP 设置中使用了“从后端地址中选取主机名”开关；为了正常运行探测，我们在探测配置中使用了“从后端 HTTP 设置中选取主机名”。
 
 ![appservice-1](./media/troubleshoot-app-service-redirection-app-service-url/appservice-1.png)
 
-由于此操作，请在应用服务执行的重定向，它使用主机名"example.azurewebsites.net"中的 Location 标头，而不是原始主机名除非已另外进行配置。 您可以检查下面的示例请求和响应头。
+由于此操作，请在应用服务执行的重定向，它使用主机名"example.azurewebsites.net"中的 Location 标头，而不是原始主机名除非已另外进行配置。 可以查看下面的示例请求和响应标头。
 ```
 ## Request headers to Application Gateway:
 
@@ -66,34 +74,44 @@ Set-Cookie: ARRAffinity=b5b1b14066f35b3e4533a1974cacfbbd969bf1960b6518aa2c2e2619
 
 X-Powered-By: ASP.NET
 ```
-在上述示例中，可以注意到响应标头的 301 重定向状态代码和 location 标头具有应用服务的主机名而非原始主机名"www.contoso.com"。
+在上面的示例中可以发现，响应标头包含重定向状态代码 301，location 标头包含应用服务的主机名而不是原始主机名“www.contoso.com”。
 
 ## <a name="solution"></a>解决方案
 
-如果这是不可能，我们必须将应用程序网关接收的相同主机标头传递到应用服务还执行主机替代，而是可以通过不将重定向对应用程序端，但是，解决此问题。
+不在应用程序端使用重定向可以解决此问题，但是，如果无法做到这一点，则我们也必须将应用程序网关收到的同一主机标头传递给应用服务，而不要执行主机替代。
 
-一旦我们这样做，应用服务将进行重定向 （如果有） 上指向应用程序网关的同一原始主机标头，而不自己。
+这样做后，应用服务会在指向应用程序网关而不是指向自身的同一原始主机标头中执行重定向（如果有）。
 
-若要实现此目的，必须拥有自定义域，并请遵循下面所述的过程。
+若要实现此目的，必须拥有一个自定义域并遵循下面所述的过程。
 
-- 注册到自定义域列表的应用服务域。 为此，必须具有一个 CNAME，指向应用服务的 FQDN 的自定义域中。 有关详细信息，请参阅[现有的自定义 DNS 名称映射到 Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)。
+- 将该域注册到应用服务的自定义域列表。 为此，必须在自定义域中创建一个指向应用服务 FQDN 的 CNAME。 有关详细信息，请参阅[将现有的自定义 DNS 名称映射到 Azure 应用服务](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain)。
 
 ![appservice-2](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
-- 完成后，你的应用服务已准备好接受的主机名"www.contoso.com"。 现在，更改你在 DNS 中为返回指向应用程序网关的 FQDN 的 CNAME 条目。 例如，"appgw.eastus.cloudapp.azure.com"。
+- 这样做后，应用服务已准备好接受主机名“www.contoso.com”。 现在，请更改 DNS 中的 CNAME 条目，使其重新指向应用程序网关的 FQDN。 例如，"appgw.eastus.cloudapp.azure.com"。
 
-- 请确保你的域"www.contoso.com"解析为应用程序网关的 FQDN 中，当执行 DNS 查询时。
+- 确保执行 DNS 查询时，域“www.contoso.com”解析为应用程序网关的 FQDN。
 
-- 设置你的自定义探测以禁用"选取主机名从后端 HTTP 设置"。 这可以在门户中完成通过取消选中中探测设置的复选框，并在 PowerShell 中不使用-PickHostNameFromBackendHttpSettings 切换集 AzApplicationGatewayProbeConfig 命令中。 在探测主机名字段中，输入从应用程序网关发送的探测请求将主机标头中携带此应用服务 FQDN"example.azurewebsites.net"。
+- 设置自定义探测以禁用“从后端 HTTP 设置中选取主机名”。 为此，可以在门户上取消选中探测设置中的相应复选框，或者在 PowerShell 中，不要在 Set-AzApplicationGatewayProbeConfig 命令中使用 -PickHostNameFromBackendHttpSettings 开关。 在探测主机名字段中，输入从应用程序网关发送的探测请求将主机标头中携带此应用服务 FQDN"example.azurewebsites.net"。
 
   > [!NOTE]
-  > 同时执行下一步，请确保的自定义探测都不关联到后端 HTTP 设置因为在 HTTP 设置仍具有在这种情况下启用的"选择主机名从后端地址"交换机。
+  > 执行下一步时，请确保自定义探测未关联到后端 HTTP 设置，因为此时 HTTP 设置中仍然启用了“从后端地址中选取主机名”开关。
 
-- 设置应用程序网关的 HTTP 设置，以禁用"选取主机名从后端地址"。 这可以在门户中完成，通过取消选中该复选框，并在 PowerShell 中不使用-PickHostNameFromBackendAddress 切换集 AzApplicationGatewayBackendHttpSettings 命令中。
+- 设置应用程序网关的 HTTP 设置以禁用“从后端地址中选取主机名”。 为此，可以在门户上取消选中相应的复选框，或者在 PowerShell 中，不要在 Set-AzApplicationGatewayBackendHttpSettings 命令中使用 -PickHostNameFromBackendAddress 开关。
 
-- 将返回到后端 HTTP 设置的自定义探测和验证后端运行状况，如果运行状况良好。
+- 将自定义探测重新关联到后端 HTTP 设置，并验证后端的运行状况是否正常。
 
-- 完成此操作后，应用程序网关现在应将相同的主机名"www.contoso.com"转发到应用服务，重定向会基于相同的主机名。 您可以检查下面的示例请求和响应头。
+- 这样做后，应用程序网关应会将相同的主机名“www.contoso.com”转发到应用服务，并且同一个主机名上会发生重定向。 可以查看下面的示例请求和响应标头。
+
+若要实现的现有安装程序中使用 PowerShell 为上面所述的步骤，请执行下面的示例 PowerShell 脚本。 请注意如何不使用-PickHostname 开关中的探测和 HTTP 设置配置。
+
+```azurepowershell-interactive
+$gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG
+Set-AzApplicationGatewayProbeConfig -ApplicationGateway $gw -Name AppServiceProbe -Protocol Http -HostName "example.azurewebsites.net" -Path "/" -Interval 30 -Timeout 30 -UnhealthyThreshold 3
+$probe=Get-AzApplicationGatewayProbeConfig -Name AppServiceProbe -ApplicationGateway $gw
+Set-AzApplicationGatewayBackendHttpSettings -Name appgwhttpsettings -ApplicationGateway $gw -Port 80 -Protocol Http -CookieBasedAffinity Disabled -Probe $probe -RequestTimeout 30
+Set-AzApplicationGateway -ApplicationGateway $gw
+```
   ```
   ## Request headers to Application Gateway:
 

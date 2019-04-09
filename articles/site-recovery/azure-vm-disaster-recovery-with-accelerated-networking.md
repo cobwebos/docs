@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: ff772d4f53b279d8d048720beaa62cfdeb6401eb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: c7edc7979636ced8697aa5ad724f9c6600d840bb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52850408"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283352"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>将加速网络与 Azure 虚拟机灾难恢复配合使用
 
@@ -24,7 +24,7 @@ ms.locfileid: "52850408"
 
 对于故障转移到不同 Azure 区域的 Azure 虚拟机，Azure Site Recovery 允许你利用加速网络的优势。 本文介绍了如何为通过 Azure Site Recovery 复制的 Azure 虚拟机启用加速网络。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保了解：
 -   Azure 虚拟机[复制体系结构](azure-to-azure-architecture.md)
@@ -58,7 +58,7 @@ ms.locfileid: "52850408"
 * **RHEL 7.4**
 * **CentOS 7.4**
 * **CoreOS Linux**
-* **Debian“Stretch”（backport 内核）**
+* **Debian"Stretch"与 backports 内核**
 * **Oracle Linux 7.4**
 
 ### <a name="supported-vm-instances"></a>支持的 VM 实例

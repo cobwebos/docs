@@ -17,11 +17,11 @@ ms.date: 03/27/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f732eebd410a6b52a21a46925a29bf4676f7c8cb
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057483"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270780"
 ---
 # <a name="tutorial-configure-tableau-online-for-automatic-user-provisioning"></a>教程：为 Tableau Online 配置自动用户预配
 
@@ -58,9 +58,9 @@ ms.locfileid: "59057483"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入**Tableau Online**，选择**Tableau Online**结果面板中单击**添加**按钮添加该应用程序。
+4. 在搜索框中键入 **Tableau Online**，在结果面板中选择“Tableau Online”，然后单击“添加”按钮添加该应用程序。
 
-    ![结果列表中的 tableau Online](common/search-new-app.png)
+    ![结果列表中的“Tableau Online”](common/search-new-app.png)
 
 ## <a name="assigning-users-to-tableau-online"></a>将用户分配到 Tableau Online
 
@@ -91,7 +91,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 2. 在应用程序列表中，选择“Tableau Online”。
 
-    ![应用程序列表中的 Tableau Online 链接](common/all-applications.png)
+    ![“应用程序”列表中的“Tableau Online”链接](common/all-applications.png)
 
 3. 选择“预配”选项卡。
 

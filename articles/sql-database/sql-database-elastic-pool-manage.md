@@ -1,10 +1,10 @@
 ---
-title: 创建和管理弹性池 - Azure SQL 数据库 | Microsoft Docs
+title: 管理弹性池-Azure SQL 数据库 |Microsoft Docs
 description: 创建和管理 Azure SQL 弹性池。
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: oslake
@@ -12,14 +12,14 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: e3f3a2260ba877c94262c12f5a999c6b7bdf5cd1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: debf91f04cff3cb9705ebc5915e2e665679230a9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892392"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267576"
 ---
-# <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>在 Azure SQL 数据库中创建和管理弹性池
+# <a name="manage-elastic-pools-in-azure-sql-database"></a>管理 Azure SQL 数据库中的弹性池
 
 使用弹性池，可以确定弹性池处理其数据库工作负载所需的资源量，以及每个入池数据库的资源量。
 

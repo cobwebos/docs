@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11846ca2a323da5889f444024767df4803a48a51
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892205"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269021"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>规划基于云的 Azure 多重身份验证
 
@@ -60,8 +60,14 @@ Azure 多重身份验证被部署的强制实施条件性访问策略。 一个[
 * 合规的设备
 * 混合 Azure AD 加入设备
 * 批准的客户端应用程序
+ 
+
+使用 [多重身份验证推出材料] 中的可自定义的海报和电子邮件模板以向你的组织推出多重身份验证。 (https://www.microsoft.com/en-us/download/details.aspx?id=57600&WT.mc_id=rss_alldownloads_all)
+
+## <a name="enable-multi-factor-authentication-with-conditional-access"></a>结合条件访问启用多重身份验证
 
 条件性访问策略强制注册，需取消注册的用户完成在首次登录，重要的安全注意事项的注册。
+
 
 [Azure AD Identity Protection](../identity-protection/howto-configure-risk-policies.md)参与的注册策略以及向 Azure 多重身份验证情景的自动的风险检测和修正策略。 策略可以创建以遭到入侵的标识的威胁时强制更改密码或要求登录被视为有风险由以下时使用 MFA[事件](../reports-monitoring/concept-risk-events.md):
 

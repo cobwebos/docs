@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: c0d659d983e62cd2a85c0d6768c54e5a1d9e9217
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: f3ebbfb1b9894b2bf1ca41ac46970e138d107f7b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005790"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265077"
 ---
 # <a name="how-to-change-the-licensing-model-for-a-sql-server-virtual-machine-in-azure"></a>如何在 Azure 中更改 SQL Server 虚拟机的许可模型
 本文介绍如何在 Azure 中使用新的 SQL VM 资源提供程序 **Microsoft.SqlVirtualMachine** 来更改 SQL Server 虚拟机的许可模型。 有两个许可模型为虚拟机 (VM) 托管 SQL Server 的即用即付，并自带许可 (BYOL)。 现在可以通过 PowerShell 或 Azure CLI 对 SQL Server VM 使用哪个许可模型进行修改。 
@@ -42,7 +42,8 @@ ms.locfileid: "59005790"
 
  - 当前，仅当从即用即付 SQL Server VM 映像开始时，才能使用转换许可模型的功能。 如果从门户首先使用自带许可映像，则无法将该映像转换为即用即付。
   - 目前，更改的许可模式仅支持使用资源管理器模型部署的虚拟机。 不支持使用经典模型部署的 Vm。 
-   - 公共云安装仅启用当前正在更改的授权模型。
+   - 目前，更改的许可模式仅可用于公共云安装。
+   - 目前，仅在具有单个 NIC （网络接口） 的虚拟机上支持此过程。 在具有多个 NIC 的虚拟机，你应首先删除其中一个 Nic （通过使用 Azure 门户） 在尝试此过程之前。 否则，将遇到如下错误："虚拟机\<vmname\>具有多个 NIC 相关联。" 尽管您可以将 NIC 添加回 VM 后更改的授权模式，将不再被视为的 SQL 配置边栏选项卡，如自动修补和备份，通过执行的操作支持。
 
 ## <a name="prerequisites"></a>必备组件
 

@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 782027f19d4e82f26fc1265f25b86223386d7182
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57903379"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272200"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
 
@@ -41,7 +41,7 @@ ms.locfileid: "57903379"
 
 如果预配托管实例所在的虚拟网络中的自承载集成运行时，请确保集成运行时计算机与托管实例位于不同的子网中。 如果预配的自承载集成运行时与托管实例位于不同的虚拟网络中，则可使用虚拟网络对等互连或虚拟网络间的连接。 有关详细信息，请参阅[将应用程序连接到 Azure SQL 数据库托管实例](../sql-database/sql-database-managed-instance-connect-app.md)。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -55,8 +55,8 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 |:--- |:--- |:--- |
 | type | type 属性必须设置为 **SqlServer**。 | 是的。 |
 | connectionString |此属性指定使用 SQL 身份验证或 Windows 身份验证连接到托管实例时所需的 connectionString 信息。 有关详细信息，请参阅以下示例。 <br/>将此字段标记为 SecureString，以便安全地将其存储在数据工厂中。 还可以在 Azure 密钥保管库中输入密码，如果是 SQL 身份验证，则从连接字符串中拉取 `password` 配置。 有关更多详细信息，请参阅下表的 JSON 示例和[在密钥保管库中存储凭据](store-credentials-in-key-vault.md)一文。 |是的。 |
-| userName |如果你使用 Windows 身份验证，则此属性指定用户名。 例如，**domainname\\username**。 |不是。 |
-| password |此属性指定为用户名指定的用户帐户的密码。 选择 **SecureString** 以安全地将 connectionString 信息存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |不是。 |
+| userName |如果你使用 Windows 身份验证，则此属性指定用户名。 例如，**domainname\\username**。 |不。 |
+| password |此属性指定为用户名指定的用户帐户的密码。 选择 **SecureString** 以安全地将 connectionString 信息存储在数据工厂中，或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 |不。 |
 | connectVia | 此[集成运行时](concepts-integration-runtime.md)用于连接到数据存储。 在托管实例所在的虚拟网络中预配自承载集成运行时。 |是的。 |
 
 >[!TIP]
@@ -83,7 +83,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 }
 ```
 
-**示例 2：将 SQL 身份验证与 Azure 密钥保管库中的密码结合使用**
+**示例 2：使用 SQL 身份验证和 Azure 密钥保管库中的密码**
 
 ```json
 {
@@ -179,16 +179,16 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动 source 节的 type 属性必须设置为 SqlSource。 | 是的。 |
-| sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |不是。 |
-| sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |不是。 |
-| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |不是。 |
+| sqlReaderQuery |此属性使用自定义 SQL 查询来读取数据。 例如 `select * from MyTable`。 |不。 |
+| sqlReaderStoredProcedureName |此属性是从源表读取数据的存储过程的名称。 最后一个 SQL 语句必须是存储过程中的 SELECT 语句。 |不。 |
+| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |不。 |
 
 请注意以下几点：
 
 - 如果为 **SqlSource** 指定 sqlReaderQuery，则复制活动针对托管实例源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
 - 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName** 属性，则数据集 JSON 的“structure”节中定义的列用于构建查询。 查询 `select column1, column2 from mytable` 针对托管实例运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
 
-示例：**使用 SQL 查询**
+**示例：使用 SQL 查询**
 
 ```json
 "activities":[
@@ -220,7 +220,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 ]
 ```
 
-示例：**使用存储过程**
+**示例：使用存储的过程**
 
 ```json
 "activities":[
@@ -256,7 +256,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 ]
 ```
 
-**存储过程定义**
+**存储的过程定义**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -282,12 +282,12 @@ GO
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动的 sink 的 type 属性必须设置为 SqlSink。 | 是的。 |
-| writeBatchSize |当缓冲区大小达到 writeBatchSize 时，此属性会将数据插入 SQL 表。<br/>允许的值为表示行数的整数。 |否（默认值：10,000）。 |
-| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值表示时间跨度。 例如，“00:30:00”表示 30 分钟。 |不是。 |
-| preCopyScript |此属性指定将数据写入到托管实例中之前复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |不是。 |
-| sqlWriterStoredProcedureName |此名称所适用的存储过程定义如何将源数据应用于目标表。 例如，使用自己的业务逻辑执行 upsert 或转换操作就属于过程。 <br/><br/>此存储过程由每个批处理调用。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。 |不是。 |
-| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |不是。 |
-| sqlWriterTableType |此属性指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |不是。 |
+| writeBatchSize |插入 SQL 表的行数**每个批处理**。<br/>允许的值为表示行数的整数。 |否（默认值：10,000）。 |
+| writeBatchTimeout |此属性指定超时前等待批插入操作完成的时间。<br/>允许的值表示时间跨度。 例如，“00:30:00”表示 30 分钟。 |不。 |
+| preCopyScript |此属性指定将数据写入到托管实例中之前复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 可以使用此属性清除预加载的数据。 |不。 |
+| sqlWriterStoredProcedureName |此名称所适用的存储过程定义如何将源数据应用于目标表。 例如，使用自己的业务逻辑执行 upsert 或转换操作就属于过程。 <br/><br/>此存储过程由每个批处理调用。 若要执行仅运行一次且与源数据无关的操作（例如删除或截断），请使用 `preCopyScript` 属性。 |不。 |
+| storedProcedureParameters |这些参数用于存储过程。<br/>允许的值为名称或值对。 参数的名称和大小写必须与存储过程参数的名称和大小写匹配。 |不。 |
+| sqlWriterTableType |此属性指定要在存储过程中使用的表类型名称。 通过复制活动，使移动数据在具备此表类型的临时表中可用。 然后，存储过程代码可合并复制数据和现有数据。 |不。 |
 
 > [!TIP]
 > 将数据复制到 Azure SQL 数据库托管实例时，复制活动默认将数据追加到接收器表后面。 若要执行 upsert 或其他业务逻辑，请在 SqlSink 中使用存储过程。 有关详细信息，请参阅[从 SQL 接收器中调用存储过程](#invoke-a-stored-procedure-from-a-sql-sink)。
@@ -324,7 +324,7 @@ GO
 ]
 ```
 
-**示例 2：复制过程中为 upsert 调用存储过程**
+**示例 2：在 upsert 的复制过程中调用存储的过程**
 
 请参阅[调用 SQL 接收器的存储过程](#invoke-a-stored-procedure-from-a-sql-sink)，了解更多详细信息。
 
@@ -438,9 +438,9 @@ create table dbo.TargetTbl
 
 当内置复制机制无法使用时，还可使用存储过程。 如果在将源数据最终插入目标表之前必须执行 upsert（更新 + 插入）操作或额外处理，则一般会使用存储过程。 额外处理可能包括合并列、查找其他值以及将内容插入多个表中等任务。
 
-以下示例演示如何使用存储过程，在托管实例中的表内执行 upsert。 此示例假设输入数据和接收器“Marketing”表各有三列：ProfileID、State 和 Category。 基于“ProfileID”列执行 upsert，仅应用于特定类别。
+以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表各具有三列：**ProfileID**、**State** 和 **Category**。 基于 ProfileID 列执行 upsert，并仅将其应用于特定类别。
 
-**输出数据集**
+**输出数据集：** "tableName"应为你的存储过程 （请参阅下面的存储的过程脚本） 中的同一个表类型参数名称。
 
 ```json
 {
@@ -459,7 +459,7 @@ create table dbo.TargetTbl
 }
 ```
 
-如下所示，在复制活动中定义 SqlSink 节：
+定义**SQL 接收器**部分复制活动中，如下所示。
 
 ```json
 "sink": {
@@ -474,7 +474,7 @@ create table dbo.TargetTbl
 }
 ```
 
-在数据库中，使用与 SqlWriterStoredProcedureName 相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称与数据集中定义的“tableName”相同。
+在数据库中，使用与 SqlWriterStoredProcedureName 相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称应与数据集中定义的 **tableName** 相同。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

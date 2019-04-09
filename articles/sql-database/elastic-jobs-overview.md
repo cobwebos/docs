@@ -12,12 +12,12 @@ ms.author: srinia
 ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
-ms.openlocfilehash: aa4fff24620ffd74393d549f1888bdf0e1cb0224
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 62efee57f3663f1dad0446da659de16d2800bf75
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57773573"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264414"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>创建、配置和管理弹性作业
 
@@ -76,6 +76,8 @@ ms.locfileid: "57773573"
 
 若要确保针对 SQL 弹性池中的数据库运行作业时资源不会超负荷，可以对作业进行配置，限制可以在同一时间对其运行作业的数据库数。
 
+设置作业通过设置运行的并发数据库数目`sp_add_jobstep`存储过程的`@max_parallelism`T-SQL 中的参数或`Add-AzSqlElasticJobStep -MaxParallelism`在 PowerShell 中。
+
 ## <a name="best-practices-for-creating-jobs"></a>创建作业的最佳做法
 
 ### <a name="idempotent-scripts"></a>幂等脚本
@@ -96,5 +98,5 @@ IF NOT EXIST (some_object)
 
 ## <a name="next-steps"></a>后续步骤
 
-- [使用 PowerShell 创建和管理弹性作业](elastic-jobs-powershell.md)
-- [使用 Transact-SQL (T-SQL) 创建和管理弹性作业](elastic-jobs-tsql.md)
+- [创建和管理弹性作业使用 PowerShell](elastic-jobs-powershell.md)
+- [创建和管理弹性作业使用 TRANSACT-SQL (T-SQL)](elastic-jobs-tsql.md)

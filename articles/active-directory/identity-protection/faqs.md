@@ -35,7 +35,7 @@ ms.locfileid: "58522224"
 ---
 
 ## <a name="do-i-need-to-be-a-global-admin-to-use-identity-protection-in-the-azure-portal"></a>是否需要是全局管理员，才能在 Azure 门户中使用 Identity Protection？
-**答:** 不。 若要使用 Identity Protection，可以是安全读者、安全管理员或全局管理员。
+**答:** 不。 若要使用 Identity Protection，可以是安全读取者、安全管理员或全局管理员。
 
 ---
 

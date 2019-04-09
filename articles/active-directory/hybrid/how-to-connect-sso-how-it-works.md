@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/02/2019
+ms.date: 04/08/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 813ab2a349ba843e9f41675234e395470bef9740
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 788b03bb55abdc3040df8c5317f1f55738ebb023
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896119"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268341"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory 无缝单一登录：技术深入了解
 
@@ -44,7 +44,7 @@ ms.locfileid: "58896119"
 - 与 Azure AD 安全共享计算机帐户的 Kerberos 解密密钥。 如果有多个 AD 林，每个计算机帐户将具有其自己唯一的 Kerberos 解密密钥。
 
 >[!IMPORTANT]
-> `AZUREADSSOACC`需要出于安全原因强保护的计算机帐户。 只有域管理员应该能够管理的计算机帐户。 请确保已禁用对计算机帐户的 Kerberos 委派。 存储的计算机帐户的组织单位 (OU) 中它们是安全不被意外删除。 在计算机帐户上的 Kerberos 解密密钥还应处理为敏感。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
+> `AZUREADSSOACC`需要出于安全原因强保护的计算机帐户。 只有域管理员应该能够管理的计算机帐户。 请确保已禁用对计算机帐户的 Kerberos 委派。 将计算机帐户存储中组织单位 (OU)，其中它们的安全性不被意外删除，且只有域管理员具有访问权限。 在计算机帐户上的 Kerberos 解密密钥还应处理为敏感。 我们强烈建议至少每隔 30 天滚动更新一次 `AZUREADSSOACC` 计算机帐户的 [Kerberos 解密密钥](how-to-connect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account)。
 
 完成此设置后，无缝 SSO 的工作方式与使用集成 Windows 身份验证 (IWA) 的任何其他登录方式相同。
 

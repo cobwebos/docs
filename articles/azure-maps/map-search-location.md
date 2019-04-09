@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 8ae6c8a20a05df723d3f6b394e0639f218896a85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: be01c9d96386804b8bc074d81041104cbf592df6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57845131"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271588"
 ---
 # <a name="show-search-results-on-the-map"></a>在地图上显示搜索结果
 
@@ -29,11 +29,11 @@ ms.locfileid: "57845131"
 
 在上述代码中，第一个代码块构造 map 对象并设置使用订阅密钥的身份验证机制。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-第二个块的代码创建**SubscriptionKeyCredentialPolicy**使用订阅密钥向 Azure Maps 的 HTTP 请求进行身份验证。 然后**atlas.service.MapsURL.newPipeline()** 采用**SubscriptionKeyCredential**策略，并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 **SearchURL**表示 Azure Maps 的 URL[搜索](https://docs.microsoft.com/rest/api/maps/search)操作。
+第二个代码块创建`SubscriptionKeyCredentialPolicy`使用订阅密钥向 Azure Maps 的 HTTP 请求进行身份验证。 然后`atlas.service.MapsURL.newPipeline()`采用`SubscriptionKeyCredential`策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 `searchURL`表示 Azure Maps 的 URL[搜索](https://docs.microsoft.com/rest/api/maps/search)操作。
 
 第三个代码块使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建一个数据源对象并向其添加搜索结果。 某个[符号层](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.symbollayer?view=azure-iot-typescript-latest)使用文本或图标来呈现作为符号包装在地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中的基于点的数据。  随后创建一个符号层并向其中添加数据源，然后将该符号层添加到地图。
 
-第四个代码块使用[SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams)中的方法[服务模块](https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2)。 它使您能够通过自由格式文本搜索[Get 模糊搜索 rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)搜索兴趣点。 获取搜索模糊 API 可以处理任何模糊输入组合。 然后使用提取响应中的 GeoJSON 功能集合**geojson.getFeatures()** 方法并添加到数据源，这会自动导致通过符号层在地图上呈现的数据。
+第四个代码块使用[SearchFuzzy](/javascript/api/azure-maps-rest/atlas.service.models.searchgetsearchfuzzyoptionalparams)中的方法[服务模块](https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js)。 它使您能够通过自由格式文本搜索[Get 模糊搜索 rest API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)搜索兴趣点。 获取搜索模糊 API 可以处理任何模糊输入组合。 然后使用提取响应中的 GeoJSON 功能集合`geojson.getFeatures()`方法并添加到数据源，这会自动导致通过符号层在地图上呈现的数据。
 
 最后一个代码块使用地图的 [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性调整地图的照相机边界。
 
@@ -62,12 +62,12 @@ ms.locfileid: "57845131"
 详细了解**模糊搜索**：
 
 > [!div class="nextstepaction"]
-> [Azure Maps 模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+> [Azure 会将映射模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
 
 详细了解本文中使用的类和方法：
 
 > [!div class="nextstepaction"]
-> [Map](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+> [映射](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
 有关完整代码示例，请参阅以下文章：
 

@@ -1,18 +1,18 @@
 ---
-title: 横向扩展以适应不断变化的需求的 Azure 数据资源管理器群集
+title: 横向扩展的 Azure 数据资源管理器群集
 description: 本指南介绍了横向扩展和缩放的步骤在 Azure 数据资源管理器群集中根据不断变化的需求。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 02/18/2019
-ms.openlocfilehash: ab4ced6695e6066098dd5ff7348528deedfc0e1b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/05/2019
+ms.openlocfilehash: 24bbddd28943adc929fbaea456eeae8165db290c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59044228"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261592"
 ---
 # <a name="manage-cluster-scale-out-to-accommodate-changing-demand"></a>根据不断变化的需求管理群集横向扩展
 
@@ -22,21 +22,23 @@ ms.locfileid: "59044228"
 
 本文介绍如何管理群集横向扩展，也称为自动缩放。 自动缩放可以横向扩展会自动根据预定义的规则和计划的实例计数。 在 Azure 门户中，指定你的群集的自动缩放设置，如本文中所述。
 
-请转到你的群集。 下**设置**，选择**横向扩展**。在“配置”下选择“启用自动缩放”。
+## <a name="steps-to-configure-autoscale"></a>若要配置自动缩放的步骤
 
-![启用自动缩放](media/manage-cluster-scaling/enable-autoscale.png)
+在 Azure 门户中，转到数据资源管理器群集资源。 下**设置**标题下方，选择**横向扩展**。上**配置**选项卡上，选择**启用自动缩放**。
 
-下图显示后续几个步骤的流程。 图形下面是更多详细信息。
+   ![启用自动缩放](media/manage-cluster-scaling/enable-autoscale.png)
 
-![缩放规则](media/manage-cluster-scaling/scale-rule.png)
+下图显示后续几个步骤的流程。 更多详细信息，请按照该图形。
 
-1. 在中**自动缩放设置名称**框中，提供一个名称，例如*横向扩展： 缓存使用率*。
+1. 在中**自动缩放设置名称**框中，提供一个名称，例如*横向扩展： 缓存使用率*。 
 
-1. 有关**缩放模式**，选择**基于指标缩放**。 此模式下提供动态缩放。 您还可以选择**缩放为具体实例数**。
+   ![缩放规则](media/manage-cluster-scaling/scale-rule.png)
 
-1. 选择**添加规则 +**。
+2. 有关**缩放模式**，选择**基于指标缩放**。 此模式下提供动态缩放。 您还可以选择**缩放为具体实例数**。
 
-1. 在右侧的“缩放规则”部分，提供每项设置的值。
+3. 选择**添加规则 +**。
+
+4. 在右侧的“缩放规则”部分，提供每项设置的值。
 
     **条件**
 
@@ -59,9 +61,9 @@ ms.locfileid: "59044228"
     | **冷却(分钟)** | 选择需要在两项缩放操作之间等待的适当时间间隔。 一开始可将默认值设置为 5分钟。 |
     |  |  |
 
-1. 选择 **添加** 。
+5. 选择 **添加** 。
 
-1. 在左侧的“实例限制”部分，提供每项设置的值。
+6. 在左侧的“实例限制”部分，提供每项设置的值。
 
     | 设置 | 说明和值 |
     | --- | --- |
@@ -70,10 +72,14 @@ ms.locfileid: "59044228"
     | **默认** | 默认实例数。 如果有问题的读取资源指标，则使用此设置。 |
     |  |  |
 
-1. 选择“保存”。
+7. 选择“保存”。
 
 现在已为 Azure 数据资源管理器群集配置了横向扩展操作。 添加另一条适用于横向缩减操作的规则。 此配置允许你的群集缩放动态基于你指定的指标。
 
 此外可以[管理群集向上扩展](manage-cluster-scale-up.md)适当调整大小的群集。
 
 如果您需要使用群集缩放问题的帮助[建立支持请求](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)在 Azure 门户中。
+
+## <a name="next-steps"></a>后续步骤
+
+[监视 Azure 数据资源管理器性能、 运行状况和使用情况指标](using-metrics.md)

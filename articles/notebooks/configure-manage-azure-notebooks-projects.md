@@ -6,19 +6,19 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 35dd6ff1-a14a-4a2e-b173-6d8467de3e89
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
-ms.openlocfilehash: b4d40f011b9a9e69953496fbdb0dc63ffc8a5027
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57774551"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268001"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
 
@@ -95,9 +95,9 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 | 项类型 | 描述 | 命令行为 |
 | --- | --- | --- |
-| **笔记本** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
-| **文件夹** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
-| **空白文件** | 可供存储文本、数据等任何内容的文件。 | 在项目的文件列表中创建一个编辑字段，用于输入文件名。 |
+| **Notebook** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
+| **Folder** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
+| **空白的文件** | 可供存储文本、数据等任何内容的文件。 | 在项目的文件列表中创建一个编辑字段，用于输入文件名。 |
 | **Markdown** | Markdown 文件。 | 在项目的文件列表中创建一个编辑字段，用于输入文件名。 |
 
 ### <a name="upload-files"></a>上传文件

@@ -1,7 +1,6 @@
 ---
 title: 使用参数创建动态蓝图
 description: 了解有关静态和动态参数以及如何使用它们创建动态蓝图。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/12/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 538015f3cd26d451285f1fd66853366f814f3b0a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805561"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279969"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -77,7 +76,7 @@ ms.locfileid: "58805561"
 
 在每个 REST API URI 中，包含替换为自己的值所使用的变量：
 
-- `{YourMG}` - 替换为管理组的名称
+- `{YourMG}` -替换为管理组的名称
 - `{subscriptionId}` - 替换为订阅 ID
 
 ##### <a name="blueprint-level-parameter"></a>蓝图级别参数

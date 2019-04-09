@@ -1,27 +1,27 @@
 ---
-title: B2B 协作用户的 Azure Active Directory 的属性 |Microsoft Docs
-description: Azure Active Directory B2B 协作用户属性是可配置的
+title: 属性的某个 B2B 来宾用户的 Azure Active Directory |Microsoft Docs
+description: Azure Active Directory B2B 来宾用户属性和状态之前和之后邀请兑换
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: conceptual
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: mimart
 author: msmimart
 manager: daveba
 ms.reviewer: sasubram
-ms.custom: it-pro, seo-update-azuread-jan
+ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 791dcfadf1db6cae48bee5c926f75e454c88fc55
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294648"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257597"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
-Azure Active Directory (Azure AD) 企业对企业 (B2B) 协作用户是 UserType = Guest 的用户。 此来宾用户通常来自某个合作伙伴组织，默认情况下，对邀请方的目录拥有有限的特权。
+本文介绍的属性和 Azure Active Directory (Azure AD) 中的 B2B 来宾用户对象的状态之前和之后邀请兑换。 Azure AD 企业到企业 (B2B) 协作用户是 usertype = Guest。 此来宾用户通常来自某个合作伙伴组织，默认情况下，对邀请方的目录拥有有限的特权。
 
 根据邀请方组织的需要，Azure AD B2B 协作用户可以处于以下帐户状态之一：
 

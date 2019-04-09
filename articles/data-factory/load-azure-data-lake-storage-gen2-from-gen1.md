@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: jingwang
-ms.openlocfilehash: b975b34c638db812d3809bf50d1eccbb651028b5
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: e3a27ab15c72289dd28e31d832b81407a66dc754
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448932"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256781"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>使用 Azure 数据工厂将数据从 Azure Data Lake Storage Gen1 复制到 Gen2
 
@@ -34,11 +34,11 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 
 * Azure 订阅：如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/)。
 * 其中有数据的 Azure Data Lake Storage Gen1 帐户。
-* 启用了 Data Lake Storage Gen2 的 Azure 存储帐户：如果没有存储帐户，请单击[此处](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)创建一个。
+* 启用了 Data Lake Storage Gen2 的 Azure 存储帐户：如果没有存储帐户[创建一个帐户](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM)。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
-1. 在左侧菜单中，选择**创建资源** > **数据 + 分析** > **数据工厂**:
+1. 在左侧菜单中，选择“创建资源” > “数据 + 分析” > “数据工厂”：
    
    ![在“新建”窗格中选择“数据工厂”](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
@@ -104,7 +104,7 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
    
    ![指定 Azure Data Lake Storage Gen2 帐户](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 
-9. 在“选择输出文件或文件夹”页上，输入 **copyfromadlsgen1** 作为输出文件夹名称，然后选择“下一步”： 
+9. 在中**选择输出文件或文件夹**页上，输入**copyfromadlsgen1**作为输出文件夹的名称，然后选择**下一步**。 ADF 将创建相应的 ADLS 第 2 代文件系统和子文件夹在复制期间如果不存在。
 
     ![指定输出文件夹](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-path.png)
 
@@ -140,4 +140,4 @@ Azure 数据工厂提供可横向扩展的托管数据移动解决方案。 得�
 ## <a name="next-steps"></a>后续步骤
 
 * [复制活动概述](copy-activity-overview.md)
-* [Azure Data Lake Storage Gen2 连接器](connector-azure-data-lake-storage.md)
+* [Azure 数据湖存储第 2 代连接器](connector-azure-data-lake-storage.md)

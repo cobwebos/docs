@@ -2,23 +2,21 @@
 title: 以编程方式创建 Azure Enterprise 订阅 | Microsoft Docs
 description: 了解如何以编程方式创建其他 Azure Enterprise 或 Enterprise 开发/测试订阅。
 services: azure-resource-manager
-author: adpick
-manager: adpick
-editor: ''
+author: tfitzmac
 ms.assetid: ''
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/05/2018
-ms.author: adpick
-ms.openlocfilehash: 1b772fdbda8e58db9414e09ef3ef7c98fc9f86b8
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.date: 04/05/2019
+ms.author: tomfitz
+ms.openlocfilehash: 93df0c196d78a4685ff82108354b82a07d67695d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55486973"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256917"
 ---
 # <a name="programmatically-create-azure-enterprise-subscriptions-preview"></a>以编程方式创建 Azure Enterprise 订阅（预览版）
 
@@ -28,11 +26,11 @@ Azure [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreeme
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在你希望在其中创建订阅的注册帐户中，你必须具有“所有者”或“参与者”角色。 可通过两种方式来获取这些角色：
+你想要创建下的订阅注册帐户，必须具有的所有者角色。 可通过两种方式来获取这些角色：
 
-* 注册管理员可以[使你成为帐户所有者](https://ea.azure.com/helpdocs/addNewAccount)（需要登录），这使得你成为注册帐户的所有者。 按照收到的邀请电子邮件中的说明手动创建初始订阅。 请先确认帐户所有权并手动创建初始 EA 订阅，然后继续下一步操作。 只将帐户添加到合约是不够的。
+* 你的注册管理员可以[将你的帐户所有者](https://ea.azure.com/helpdocs/addNewAccount)（登录所需） 这使你的注册帐户所有者。 按照收到的邀请电子邮件中的说明手动创建初始订阅。 请先确认帐户所有权并手动创建初始 EA 订阅，然后继续下一步操作。 只将帐户添加到合约是不够的。
 
 * 注册帐户的现有所有者可以[向你授予访问权限](grant-access-to-create-subscription.md)。 类似地，若要使用某个服务主体来创建 EA 订阅，必须[向该服务主体授予创建订阅的权限](grant-access-to-create-subscription.md)。
 
@@ -42,7 +40,7 @@ Azure [企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreeme
 
 若要运行以下命令，必须登录到帐户所有者的主目录（默认在该目录中创建订阅）。
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 列出所有注册帐户的请求：
 
@@ -75,7 +73,7 @@ Azure 使用有访问权限的所有注册帐户列表做出响应：
 }
 ```
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 使用 [Get-AzEnrollmentAccount](/powershell/module/az.billing/get-azenrollmentaccount) cmdlet 列出你可以访问的所有注册帐户。
 
@@ -91,7 +89,7 @@ ObjectId                               | PrincipalName
 4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
 ```
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 
 使用 [az billing enrollment-account list](https://aka.ms/EASubCreationPublicPreviewCLI) 命令列出有访问权限的所有注册帐户。
 
@@ -132,7 +130,7 @@ Azure 使用对象 ID 和帐户电子邮件地址列表做出响应。
 
 下面的示例创建请求创建名为“开发团队订阅”的订阅，订阅套餐为 MS-AZR-0017P（常规 EA）。 合约帐户为 `747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx`（占位符值，此值为 GUID），是 SignUpEngineering@contoso.com 的合约帐户。 它也选择性地添加两个用户作为订阅的 RBAC 所有者。
 
-# <a name="resttabrest"></a>[REST](#tab/rest)
+# [<a name="rest"></a>REST](#tab/rest)
 
 使用请求路径中 `enrollmentAccount` 的 `id` 创建订阅。
 
@@ -153,7 +151,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 }
 ```
 
-| 元素名称  | 必选 | Type   | 说明                                                                                               |
+| 元素名称  | 需要 | Type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `displayName` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offerType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -161,7 +159,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 
 在响应中，返回 `subscriptionOperation` 对象进行监视。 完成订阅创建后，`subscriptionOperation` 对象将返回有订阅 ID 的 `subscriptionLink` 对象。
 
-# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
 
 要使用此预览版模块，请先运行 `Install-Module Az.Subscription -AllowPrerelease` 进行安装。 为了确保 `-AllowPrerelease` 有效，请从[获取 PowerShellGet 模块](/powershell/gallery/installing-psget)安装 PowerShellGet 最新版本。
 
@@ -171,7 +169,7 @@ POST https://management.azure.com/providers/Microsoft.Billing/enrollmentAccounts
 New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -EnrollmentAccountObjectId 747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx -OwnerObjectId <userObjectId>,<servicePrincipalObjectId>
 ```
 
-| 元素名称  | 必选 | Type   | 说明                                                                                               |
+| 元素名称  | 需要 | Type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `Name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `OfferType`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |
@@ -182,7 +180,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 
 要查看所有参数的完整列表，请参阅 [New-AzSubscription](/powershell/module/az.subscription.preview)。
 
-# <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
+# [<a name="azure-cli"></a>Azure CLI](#tab/azure-cli)
 
 要使用此预览版扩展，请先运行 `az extension add --name subscription` 进行安装。
 
@@ -192,7 +190,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
-| 元素名称  | 必选 | Type   | 说明                                                                                               |
+| 元素名称  | 需要 | Type   | 描述                                                                                               |
 |---------------|----------|--------|-----------------------------------------------------------------------------------------------------------|
 | `display-name` | 否      | String | 订阅的显示名称。 如果未指定，则将其设置为产品/服务名称，例如“Microsoft Azure Enterprise”。                                 |
 | `offer-type`   | 是      | String | 订阅的套餐。 EA 的两个选项是 [MS-AZR-0017P](https://azure.microsoft.com/pricing/enterprise-agreement/)（生产用）和 [MS-AZR-0148P](https://azure.microsoft.com/offers/ms-azr-0148p/)（开发/测试用，需要[使用 EA 门户启用](https://ea.azure.com/helpdocs/DevOrTestOffer)）。                |

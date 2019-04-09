@@ -1,21 +1,21 @@
 ---
 title: 使用 IoT 中心的数据通过 Azure 机器学习进行天气预报 | Microsoft Docs
 description: 使用 Azure 机器学习基于 IoT 中心从传感器收集的温度和湿度数据来预测下雨的可能性。
-author: rangv
-manager: ''
+author: robinsh
+manager: philmea
 keywords: 天气预报机器学习
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 7fdd2a96044acdae223243d751bfcffb7a99da78
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.author: robinsh
+ms.openlocfilehash: a203018cb1a27c17b9c7162b50a380f9edae2e60
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534253"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273186"
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>在 Azure 机器学习中使用 IoT 中心的传感器数据进行天气预报
 
@@ -58,7 +58,7 @@ ms.locfileid: "57534253"
    ![在 Azure 机器学习工作室中部署天气预测模型](media/iot-hub-weather-forecast-machine-learning/4-deploy-weather-prediction-model-in-azure-machine-learning-studio.png)
 1. 在关系图中，将“Web 服务输入”模块拖动至“评分模型”模块附近的某个位置。
 1. 将“Web 服务输入”模块连接到“评分模型”模块。
-   ![在 Azure 机器学习工作室中连接两个模块](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
+   ![连接 Azure 机器学习工作室中的两个模块](media/iot-hub-weather-forecast-machine-learning/13_connect-modules-azure-machine-learning-studio.png)
 1. 单击“运行”以验证模型中的步骤。
 1. 单击“部署 WEB 服务”以将模型部署为 Web 服务。
 1. 在模型的仪表板上，下载“Excel 2010 或更早版本的工作簿”用于“请求/响应”。

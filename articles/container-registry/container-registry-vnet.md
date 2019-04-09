@@ -5,14 +5,14 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 04/03/2019
 ms.author: danlep
-ms.openlocfilehash: 0a4d9f355a5cdc92bab4491c08677042c42986cb
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 15b67218b129b5e017e67651587c389af412d7a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517923"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268396"
 ---
 # <a name="restrict-access-to-an-azure-container-registry-using-an-azure-virtual-network-or-firewall-rules"></a>限制对 Azure 容器注册表使用 Azure 虚拟网络或防火墙规则的访问
 
@@ -29,6 +29,8 @@ ms.locfileid: "58517923"
 * 仅**高级**可以使用网络访问规则来配置容器注册表。 有关注册表服务层的信息，请参阅[Azure 容器注册表 Sku](container-registry-skus.md)。 
 
 * 仅[Azure Kubernetes 服务](../aks/intro-kubernetes.md)群集或 Azure[虚拟机](../virtual-machines/linux/overview.md)可用于为主机访问虚拟网络中的容器注册表。 *目前不支持其他 Azure 服务包括 Azure 容器实例。*
+
+* [ACR 任务](container-registry-tasks-overview.md)操作当前不支持在容器注册表部署到虚拟网络。
 
 * 每个注册表支持最多为 100 的虚拟网络规则。
 
@@ -97,7 +99,7 @@ sudo apt install docker.io -y
 sudo docker run -it hello-world
 ```
 
-输出:
+输出：
 
 ```
 Hello from Docker!
@@ -125,7 +127,7 @@ This message shows that your installation appears to be working correctly.
 az network vnet list --resource-group myResourceGroup --query "[].{Name: name, Subnet: subnets[0].name}"
 ```
 
-输出:
+输出：
 
 ```console
 [
@@ -157,7 +159,7 @@ az network vnet subnet show \
   --output tsv
 ``` 
 
-输出:
+输出：
 
 ```
 /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/myResourceGroup/providers/Microsoft.Network/virtualNetworks/myDockerVMVNET/subnets/myDockerVMSubnet
@@ -194,7 +196,7 @@ az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 1. 下**设置**，选择**子网**。
 1. 选择你的虚拟机部署的位置，如子网*myDockerVMSubnet*。
 1. 下**服务终结点**，选择**Microsoft.ContainerRegistry**。
-1. 选择“其他安全性验证” 。
+1. 选择“保存”。
 
 ![将服务终结点添加到子网][acr-subnet-service-endpoint] 
 
@@ -205,8 +207,8 @@ az acr network-rule add --name mycontainerregistry --subnet <subnet-resource-id>
 1. 在门户中，导航到容器注册表。
 1. 下**设置**，选择**防火墙和虚拟网络**。
 1. 若要默认拒绝访问，请选择允许从“所选网络”进行访问。 
-1. 选择**将现有虚拟网络添加**，并选择虚拟网络和子网配置的服务终结点。 选择“设置” （应用程序对象和服务主体对象）。
-1. 选择“其他安全性验证” 。
+1. 选择**将现有虚拟网络添加**，并选择虚拟网络和子网配置的服务终结点。 选择 **添加** 。
+1. 选择“保存”。
 
 ![配置容器注册表的虚拟网络][acr-vnet-portal]
 
@@ -266,14 +268,14 @@ az acr network-rule add --name mycontainerregistry --ip-address <public-IP-addre
   1. 下**设置**，选择**子网**。
   1. 选择在其中部署你的虚拟机的子网。
   1. 下**服务终结点**，删除的复选框**Microsoft.ContainerRegistry**。 
-  1. 选择“其他安全性验证” 。
+  1. 选择“保存”。
 
 * 删除允许访问注册表的子网的网络规则。
 
   1. 在门户中，导航到容器注册表。
   1. 下**设置**，选择**防火墙和虚拟网络**。
   1. 下**虚拟网络**，选择虚拟网络的名称，然后选择**删除**。
-  1. 选择“其他安全性验证” 。
+  1. 选择“保存”。
 
 #### <a name="add-network-rule-to-registry"></a>将网络规则添加到注册表
 
@@ -282,7 +284,7 @@ az acr network-rule add --name mycontainerregistry --ip-address <public-IP-addre
 1. 如果尚未执行此操作，选择允许从访问**选定的网络**。 
 1. 下**虚拟网络**，确保已选中任何网络。
 1. 下**防火墙**，输入 VM 的公共 IP 地址。 或者，在包含 VM 的 IP 地址的 CIDR 表示法输入的地址范围。
-1. 选择“其他安全性验证” 。
+1. 选择“保存”。
 
 ![配置容器注册表的防火墙规则][acr-vnet-firewall-portal]
 
@@ -355,7 +357,7 @@ az acr update --name myContainerRegistry --default-action Allow
 1. 下**虚拟网络**，选择每个虚拟网络，然后选择**删除**。
 1. 下**防火墙**，选择每个地址范围，并选择删除图标。
 1. 下**允许从访问**，选择**的所有网络**。 
-1. 选择“其他安全性验证” 。
+1. 选择“保存”。
 
 ## <a name="clean-up-resources"></a>清理资源
 

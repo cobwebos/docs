@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2019
 ms.author: cephalin
-ms.openlocfilehash: 4b5b7cf3a00e21b9904f72a98d5f24264bb0ecbc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 544ef8947f3a593071cabea018c722db96ab1475
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484281"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266199"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>设置 Azure 应用服务中的过渡环境
 <a name="Overview"></a>
@@ -84,7 +84,12 @@ ms.locfileid: "58484281"
 * 监视和诊断设置
 * 公用证书
 * WebJobs 内容
-* 混合连接
+* 混合连接 *
+* VNet 集成 *
+* 服务终结点 *
+* Azure CDN *
+
+功能标有 * 计划进行粘到槽。 
 
 **不交换的设置**：
 
@@ -93,10 +98,15 @@ ms.locfileid: "58484281"
 * 私有证书和 SSL 绑定
 * 缩放设置
 * Web 作业计划程序
+* IP 限制
+* AlwaysOn
+* 协议设置 (HTTP**S**，TLS 版本，客户端证书)
+* 诊断日志设置
+* CORS
 
-<!-- VNET, IP restrictions, CORS, hybrid connections? -->
+<!-- VNET and hybrid connections not yet sticky to slot -->
 
-要将应用设置或连接字符串配置为固定在某个特定槽中（不交换），请导航到该槽的“应用程序设置”页面，然后针对应固定在该槽中的配置元素选中“槽设置”框。 将配置元素标记为特定于槽将告知应用服务其不可交换。
+要将应用设置或连接字符串配置为固定在某个特定槽中（不交换），请导航到该槽的“应用程序设置”页面，然后针对应固定在该槽中的配置元素选中“槽设置”框。 将配置元素标记为特定于槽将告知应用服务其不可交换。 
 
 ![槽设置](./media/web-sites-staged-publishing/SlotSetting.png)
 
@@ -209,8 +219,8 @@ ms.locfileid: "58484281"
 
 还可以使用下列[应用设置](web-sites-configure.md)中的一个或多个来自定义预热行为：
 
-- `WEBSITE_SWAP_WARMUP_PING_PATH`：用于对你的站点进行预热的 ping 路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如，`/statuscheck`。 默认值为 `/`。 
-- `WEBSITE_SWAP_WARMUP_PING_STATUSES`：预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如：`200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。
+- `WEBSITE_SWAP_WARMUP_PING_PATH`:用于对你的站点进行预热的 ping 路径。 通过指定以斜杠开头的自定义路径作为值来添加此应用设置。 例如，`/statuscheck`。 默认值为 `/`。 
+- `WEBSITE_SWAP_WARMUP_PING_STATUSES`:预热操作的有效 HTTP 响应代码。 使用以逗号分隔的 HTTP 代码列表添加此应用设置。 例如：`200,202`。 如果返回的状态代码不在列表中，则预热和交换操作会停止。 默认情况下，所有响应代码都是有效的。
 
 ## <a name="monitor-swap"></a>监视器交换
 
@@ -329,4 +339,4 @@ Remove-AzResource -ResourceGroupName [resource group name] -ResourceType Microso
 有关用于部署槽的 [Azure CLI](https://github.com/Azure/azure-cli) 命令，请参阅 [az webapp deployment slot](/cli/azure/webapp/deployment/slot)。
 
 ## <a name="next-steps"></a>后续步骤
-[阻止对非生产槽进行访问](app-service-ip-restrictions.md)
+[阻止对非生产槽访问](app-service-ip-restrictions.md)

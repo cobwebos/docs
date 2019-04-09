@@ -51,7 +51,7 @@ ms.locfileid: "58438540"
 
 ### <a name="error-user-is-not-in-the-allowed-roles"></a>错误：用户不是允许的角色 
 
-如果在尝试使用 API 访问审核日志或登录时看到此错误消息，请确保帐户属于 Azure Active Directory 租户中的“安全读者”或“报表读者”角色。 
+如果在尝试使用 API 访问审核日志或登录时看到此错误消息，请确保帐户属于 Azure Active Directory 租户中的“安全读取者”或“报表读取者”角色。 
 
 ### <a name="error-application-missing-aad-read-directory-data-permission"></a>错误：应用程序缺少 AAD“读取目录数据”权限 
 

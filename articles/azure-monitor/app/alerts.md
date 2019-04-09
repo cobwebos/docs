@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: c1165fcebf8382d30b1be86f102da78ef0a4ac9a
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57244360"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257155"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
 当 Web 应用中的性能或用法指标发生变化时，[Azure Application Insights][start] 可发出警报。 
@@ -45,7 +45,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 * 如果已设置响应警报的 Web 应用，请设置 [Webhook 地址](../../azure-monitor/platform/alerts-webhooks.md)。 当警报激活时，以及警报得到解决时，系统会调用此地址。 （但请注意，查询参数不会以 Webhook 属性的形式传递。）
 * 您可以禁用或启用警报： 请参阅顶部的按钮。
 
-*我看不到“添加警报”按钮。*
+*我看不到添加警报按钮。*
 
 * 使用的是组织帐户？ 如果对此应用程序资源拥有所有者或参与者访问权限，则可以设置警报。 看看访问控制选项卡。[了解访问控制][roles]。
 
@@ -143,7 +143,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 
 10. 最后添加警报详细信息 （警报规则名称、 说明、 严重性）。 完成后，单击**创建警报规则**底部。
 
-    ![在警报详细信息下键入警报规则名称、 编写的说明，然后选择严重级别 ](./media/alerts/9alertdetails.png)
+    ![在警报详细信息下键入警报规则名称、 编写的说明，然后选择严重级别](./media/alerts/9alertdetails.png)
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
 
@@ -160,7 +160,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 
 ## <a name="automation"></a>自动化
 * [使用 PowerShell 自动设置警报](../../azure-monitor/app/powershell-alerts.md)
-* [使用 Webhook 自动响应警报](../../azure-monitor/platform/alerts-webhooks.md)
+* [使用 webhook 自动响应警报](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>另请参阅
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)

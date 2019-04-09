@@ -1,7 +1,6 @@
 ---
 title: 获取策略符合性数据
 description: Azure Policy 的评估和效果确定了符合性。 了解如何获取符合性详细信息。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/01/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: c3ef6ff73366ae3017e1126de16153195576a1a8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048703"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263757"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
 
@@ -57,7 +56,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 在每个 REST API URI 中，包含替换为自己的值所使用的变量：
 
 - `{YourRG}` -替换为资源组的名称
-- `{subscriptionId}` -将替换为你的订阅 ID
+- `{subscriptionId}` - 替换为订阅 ID
 
 扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描：
 

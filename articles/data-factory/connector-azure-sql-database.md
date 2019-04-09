@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: e9efe96490ea1c9351d87b5b2477474ef68fbda9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875231"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266291"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -42,7 +42,7 @@ ms.locfileid: "57875231"
 > 如果使用 Azure 数据工厂集成运行时复制数据，请将 [Azure SQL Server 防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)配置为允许 Azure 服务访问服务器。
 > 如果使用自承载集成运行时复制数据，请将 Azure SQL Server 防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure SQL 数据库的计算机的 IP。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -182,7 +182,7 @@ Azure SQL 数据库链接服务支持以下属性：
 
 若要使用托管的标识身份验证，请执行以下步骤：
 
-1. 在 Azure AD 中创建组。 将托管的标识的组的成员。
+1. **在 Azure AD 中创建一个组。** 将托管的标识的组的成员。
     
    1. 找到从 Azure 门户的数据工厂托管标识。 转到数据工厂的“属性”。 复制服务标识 ID。
     
@@ -277,7 +277,7 @@ Azure SQL 数据库链接服务支持以下属性：
 ### <a name="points-to-note"></a>需要注意的要点：
 
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 也可以指定存储过程。 如果存储过程使用参数，则指定 sqlReaderStoredProcedureName 和 storedProcedureParameters。
-- 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则数据集 JSON 的“结构”部分定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
+- 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName**，则数据集 JSON 的 **structure** 节中定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
 
@@ -373,7 +373,7 @@ GO
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为 SqlSink。 | 是 |
-| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会将数据插入到 SQL 表。<br/> 允许的值为 **integer**（行数）。 | 不是。 默认值为 10000。 |
+| writeBatchSize | 插入 SQL 表的行数**每个批处理**。<br/> 允许的值为 **integer**（行数）。 | 不。 默认值为 10000。 |
 | writeBatchTimeout | 超时前等待批插入操作完成的时间。<br/> 允许的值为 **timespan**。 示例：“00:30:00”（30 分钟）。 | 否 |
 | preCopyScript | 将数据写入到 Azure SQL 数据库之前，指定复制活动要运行的 SQL 查询。 每次运行复制仅调用该查询一次。 使用此属性清理预加载的数据。 | 否 |
 | sqlWriterStoredProcedureName | 定义如何将源数据应用于目标表的存储过程的名称。 例如，使用自己的业务逻辑执行 upsert 或转换操作。 <br/><br/>此存储过程由每个批处理调用。 对于仅运行一次且与源数据无关的操作，请使用 `preCopyScript` 属性。 例如，删除和截断操作。 | 否 |
@@ -535,7 +535,7 @@ create table dbo.TargetTbl
 
 以下示例演示如何使用存储过程在 Azure SQL 数据库数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表各具有三列：**ProfileID**、**State** 和 **Category**。 基于 ProfileID 列执行 upsert，并仅将其应用于特定类别。
 
-#### <a name="output-dataset"></a>输出数据集
+**输出数据集：** "tableName"应为你的存储过程 （请参阅下面的存储的过程脚本） 中的同一个表类型参数名称。
 
 ```json
 {
@@ -554,7 +554,7 @@ create table dbo.TargetTbl
 }
 ```
 
-在复制活动中定义 SqlSink 部分：
+定义**SQL 接收器**部分复制活动中，如下所示。
 
 ```json
 "sink": {

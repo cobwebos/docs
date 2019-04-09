@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c2f58a3510699cdf74e3150d3ad5882929f4f05b
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358705"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267117"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
 本文介绍在执行数据复制操作时，Azure 数据工厂复制活动如何将架构和数据类型从源数据映射到接收器数据。
@@ -147,10 +147,10 @@ ms.locfileid: "54358705"
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动转换器的 type 属性必须设置为：**TabularTranslator** | 是 |
-| schemaMapping | 键值对的集合，代表从表格端到层次结构端的映射关系。<br/>- **键：** 在数据集结构中定义的表格数据的列名。<br/>- **值：** 要提取和映射的每个字段的 JSON 路径表达式。 对于根对象下的字段，请以根 $ 开头；对于按 `collectionReference` 属性选择的数组中的字段，请以数组元素开头。  | 是 |
+| schemaMapping | 键 / 值对的集合，它表示映射关系**源一方要接收端从**。<br/>- **密钥：** 表示源。 有关**表格源**，指定列名称，如数据集结构中定义; 有关**层次结构的源**，为列指定 JSON 路径表达式以提取和映射的每个字段。<br/>- **值：** 表示接收器。 有关**表格接收器**，指定列名称，如数据集结构中定义; 有关**分层接收器**，为列指定 JSON 路径表达式以提取和映射的每个字段。 <br/> JSON 路径以根 $; 对于分层数据，为根对象下的字段的启动有关选择的数组中的字段，`collectionReference`从数组元素的属性，JSON 路径开始。  | 是 |
 | collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否 |
 
-**示例：从 MongoDB 复制到 SQL：**
+**示例： 将从 MongoDB 复制到 SQL:**
 
 例如，如果 MongoDB 文档的内容如下： 
 
@@ -232,7 +232,7 @@ ms.locfileid: "54358705"
 * Boolean
 * Datetime
 * Datetimeoffset
-* 小数
+* Decimal
 * Double
 * Guid
 * Int16

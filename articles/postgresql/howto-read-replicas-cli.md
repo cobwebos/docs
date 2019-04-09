@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 04/01/2019
-ms.openlocfilehash: 21408f87c4446ebad4092cb982179c7d78ea9e32
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.date: 04/05/2019
+ms.openlocfilehash: b5e0336a290090ed6bd7f5af508e691677780a80
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847754"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265282"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli"></a>创建和管理从 Azure CLI 的只读的副本
 
@@ -44,7 +44,7 @@ ms.locfileid: "58847754"
 
 ## <a name="create-a-read-replica"></a>创建只读副本
 
-`az mysql server replica create` 命令需要以下参数：
+[Az postgres server 副本创建](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-create)命令需要以下参数：
 
 | 设置 | 示例值 | 描述  |
 | --- | --- | --- |
@@ -64,14 +64,14 @@ az postgres server replica create --name mydemoserver-replica --source-server my
 > 将主服务器的配置更新为新值之前，请将副本配置更新为与这些新值相等或更大的值。 此操作可确保副本与主服务器发生的任何更改保持同步。
 
 ## <a name="list-replicas"></a>列表副本
-您可以查看副本的主服务器的列表。
+可以通过查看的主服务器的副本列表[az postgres server 副本列表](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-list)命令。
 
 ```azurecli-interactive
-az postgres server replica stop --server-name mydemoserver --resource-group myresourcegroup 
+az postgres server replica list --server-name mydemoserver --resource-group myresourcegroup 
 ```
 
 ## <a name="stop-replication-to-a-replica-server"></a>停止复制到副本服务器
-可以停止主服务器与只读副本之间的复制。
+可以使用停止主服务器和读取的副本之间的复制[az postgres server 副本停止](/cli/azure/postgres/server/replica?view=azure-cli-latest#az-postgres-server-replica-stop)命令。
 
 停止复制到主服务器和只读副本后，无法撤消该操作。 只读副本将成为支持读取和写入的独立服务器。 独立服务器不能再次成为副本。
 
@@ -80,7 +80,7 @@ az postgres server replica stop --name mydemoserver-replica --resource-group myr
 ```
 
 ## <a name="delete-a-master-or-replica-server"></a>删除主服务器或副本服务器
-若要删除的 master 或副本服务器，您可以使用相同的命令并删除独立的 Azure Database for PostgreSQL 服务器。 
+若要删除的 master 或副本服务器，请使用[az postgres server delete](/cli/azure/postgres/server?view=azure-cli-latest#az-postgres-server-delete)命令。
 
 删除主服务器后，将停止复制到所有只读副本。 只读副本将成为支持读取和写入的独立服务器。
 

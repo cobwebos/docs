@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cf5eeff9aa56a2c3366c57ddef47f4020e73c161
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804643"
 documentType: LandingData
 title: Azure Policy 服务文档
 metadata:
   title: Azure Policy 文档 - 教程和 API 参考
   description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。
-  services: azure-policy
   author: DCtheGeek
   manager: carmonm
   ms.service: azure-policy
@@ -20,60 +13,60 @@ metadata:
 abstract:
   description: 可以借助 Azure Policy，通过策略定义来对资源强制实施规则并施加影响，以便管理和预防 IT 问题。 使用 Azure Policy 时，资源始终符合公司标准和服务级别协议。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何在 Azure 中创建、分配和管理策略定义。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        alt: Azure 门户
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure 门户
-      href: ./assign-policy-portal
-    - image:
-        alt: Azure PowerShell
-        src: ./media/powershell.svg
-      text: Azure PowerShell
-      href: ./assign-policy-powershell
-    - image:
-        alt: Azure CLI
-        src: ./media/cli.svg
-      text: Azure CLI
-      href: ./assign-policy-azurecli
-    - image:
-        alt: 资源管理器模板
-        src: https://docs.microsoft.com/media/logos/logo_vs-code.svg
-      text: 资源管理器模板
-      href: ./assign-policy-template
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何在 Azure 中创建、分配和管理策略定义。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何在 Azure 中创建、分配和管理策略定义。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: Azure 门户
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure 门户
+            href: ./assign-policy-portal
+          - image:
+              alt: Azure PowerShell
+              src: ./media/powershell.svg
+            text: Azure PowerShell
+            href: ./assign-policy-powershell
+          - image:
+              alt: Azure CLI
+              src: ./media/cli.svg
+            text: Azure CLI
+            href: ./assign-policy-azurecli
+          - image:
+              alt: 资源管理器模板
+              src: 'https://docs.microsoft.com/media/logos/logo_vs-code.svg'
+            text: 资源管理器模板
+            href: ./assign-policy-template
+  - title: 分步教程
     items:
-    - html: <a href="/azure/governance/policy/tutorials/create-and-manage">创建和管理 Azure Policy</a>
-    - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">创建自定义策略定义</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 请查看为了帮助你在 Azure 中创建策略定义而提供的示例。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 了解如何在 Azure 中创建、分配和管理策略定义。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/governance/policy/tutorials/create-and-manage">创建和管理 Azure Policy</a>
+          - html: <a href="/azure/governance/policy/tutorials/create-custom-policy-definition">创建自定义策略定义</a>
+  - title: 示例
     items:
-    - html: <a href="/azure/governance/policy/samples/index">示例索引</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 请查看为了帮助你在 Azure 中创建策略定义而提供的示例。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/governance/policy/samples/index">示例索引</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell（策略）</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell（策略见解）</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell（来宾配置）</a></p>
-    - title: 资源管理器模板
-      html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">分配</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">策略定义</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">计划定义</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/policy-insights/policyevents">事件</a></p><p><a href="/rest/api/policy-insights/policystates">状态</a></p><p><a href="/rest/api/resources/policyassignments">分配</a></p><p><a href="/rest/api/resources/policydefinitions">策略定义</a></p><p><a href="/rest/api/resources/policysetdefinitions">计划定义</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">策略受跟踪的资源</a></p><p><a href="/rest/api/policy-insights/remediations">修正</a></p><p><a href="/rest/api/guestconfiguration/">来宾配置</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: '<p><a href="/cli/azure/policy">Azure CLI</a></p><p><a href="/powershell/module/az.resources/#policies">Azure PowerShell（策略）</a></p><p><a href="/powershell/module/az.policyinsights#policy_insights">Azure PowerShell（策略见解）</a></p><p><a href="https://www.powershellgallery.com/packages/Az.GuestConfiguration">Azure PowerShell（来宾配置）</a></p>'
+          - title: 资源管理器模板
+            html: <p><a href="/azure/templates/microsoft.authorization/policyassignments">分配</a></p><p><a href="/azure/templates/microsoft.authorization/policydefinitions">策略定义</a></p><p><a href="/azure/templates/microsoft.authorization/policysetdefinitions">计划定义</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/policy-insights/policyevents">活动</a></p><p><a href="/rest/api/policy-insights/policystates">States</a></p><p><a href="/rest/api/resources/policyassignments">分配</a></p><p><a href="/rest/api/resources/policydefinitions">策略定义</a></p><p><a href="/rest/api/resources/policysetdefinitions">计划定义</a></p><p><a href="/rest/api/policy-insights/policytrackedresources">策略受跟踪的资源</a></p><p><a href="/rest/api/policy-insights/remediations">修正</a></p><p><a href="/rest/api/guestconfiguration/">来宾配置</a></p>

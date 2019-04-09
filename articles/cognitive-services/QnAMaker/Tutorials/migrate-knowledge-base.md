@@ -1,28 +1,28 @@
 ---
 title: 迁移知识库 - QnA Maker
 titleSuffix: Azure Cognitive Services
-description: 将使用 QnA Maker 创建的某一知识库移动到新的知识库。
+description: 迁移知识库需要从一个知识库中导出然后导入另一个知识库。
 services: cognitive-services
 author: tulasim88
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: e91f41633bf6cf6581c237e7634150a5b92746a7
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: eac5e43c69cc09c5945316827a35f729c158d47a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56245909"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264312"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>使用导出-导入迁移知识库
 
 迁移知识库需要从一个知识库中导出然后导入另一个知识库。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在开始之前，创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * 设置新 [QnA Maker 服务](../How-To/set-up-qnamaker-service-azure.md)
@@ -48,10 +48,10 @@ ms.locfileid: "56245909"
    ![导入知识库](../media/qnamaker-how-to-migrate-kb/Import.png)
 
 1. 使用“测试”面板测试新知识库。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
-1. 发布知识库。 了解如何[发布知识库](../How-To/publish-knowledge-base.md)。
+1. 发布知识库。 了解如何[发布知识库](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
 1. 在应用程序或机器人代码中使用此终结点。 参阅此处，了解如何[创建 QnA 机器人](../Tutorials/create-qna-bot.md)。
 
-    ![QnA Maker 值](../media/qnamaker-tutorials-create-bot/qnamaker-settings-kbid-key.PNG)
+    ![QnA Maker 值](../media/qnamaker-how-to-migrate-kb/qnamaker-settings-kbid-key.png)
 
     此时，所有知识库内容（问题、答案和元数据，以及源文件的名称和 URL）都已导入新知识库。 
 

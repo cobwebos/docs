@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 62a4493204fdc09dbd48b1463e5558fabf9c7c40
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918036"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267900"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
@@ -33,7 +33,10 @@ ms.locfileid: "58918036"
 * 神经默认：神经是默认的翻译系统。 使用参数 `category=smt` 可访问适用于 Microsoft Translator Hub 的统计系统。
 * 仅神经：只有神经翻译可用。
 
-**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。 自定义翻译器仅可用于神经语言。 [查看自定义转换器中的当前可用的语言](#customization)。
+**V3 Translator API** V3 Translator API 在默认情况下为神经，统计系统仅在没有神经系统时才可用。 
+
+> [!NOTE]
+> 目前，神经语言子集可自定义转换器，我们会逐渐添加附加索引。 [查看自定义转换器中的当前可用的语言](#customization)。
 
 |语言|  语言代码|  V2 API| V3 API|
 |:-----|:-----:|:-----|:-----|

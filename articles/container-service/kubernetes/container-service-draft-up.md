@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 48afb867a5455ffea10f8a74b1fff2c2b7f361ab
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57849748"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283675"
 ---
 # <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>（已弃用）结合使用 Draft 与 Azure 容器服务和 Azure 容器注册表，生成应用程序并将其部署到 Kubernetes
 
@@ -139,7 +139,7 @@ waiting for AAD role to propagate.done
 
 ## <a name="build-and-deploy-an-application"></a>生成和部署应用程序
 
-在 Draft 中，存储库是 [6 个简单的示例应用程序](https://github.com/Azure/draft/tree/master/examples)。 克隆存储库并使用 [Java 示例](https://github.com/Azure/draft/tree/master/examples/java)。 切换为 examples/java 目录，并键入 `draft create` 生成应用程序。 结果应与以下示例类似。
+在 Draft 中，存储库是 [6 个简单的示例应用程序](https://github.com/Azure/draft/tree/master/examples)。 克隆存储库并使用 [Java 示例](https://github.com/Azure/draft/tree/master/examples/example-java)。 切换为 examples/java 目录，并键入 `draft create` 生成应用程序。 结果应与以下示例类似。
 ```bash
 $ draft create
 --> Draft detected the primary language as Java with 91.228814% certainty.

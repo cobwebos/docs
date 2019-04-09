@@ -1,7 +1,6 @@
 ---
 title: 如何更新现有分配从门户
 description: 了解如何更新现有分配在门户中 Azure 蓝图的机制。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 10/25/2018
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 78b2f98b61306c22eaba59b9be7259b3a24d7bbe
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: c75bd8c3831bad0c8217f16315843cbe3824fe4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805748"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276828"
 ---
 # <a name="how-to-update-an-existing-blueprint-assignment"></a>如何更新现有蓝图分配
 
@@ -50,11 +49,11 @@ ms.locfileid: "58805748"
 
 - 角色分配
   - 如果角色或角色代理人（用户、组或应用程序）发生更改，则创建新的角色分配。 以前部署的角色分配将会保留。
-- 策略分配数
+- 策略分配
   - 如果策略分配的参数已发生更改，则更新现有分配。
   - 如果策略分配的定义已发生更改，则会创建一个新的策略分配。 以前部署的策略分配将会保留。
   - 如果从蓝图中删除策略分配项目，已部署的策略分配将会保留。
-- Azure Resource Manager 模板
+- Azure 资源管理器模板
   - 该模板通过资源管理器作为 PUT 处理。 由于每个资源类型以不同的方式处理此操作，因此请查看包含的每个资源的文档，以确定在蓝图运行时该操作的影响。
 
 ## <a name="possible-errors-on-updating-assignments"></a>更新分配上可能出现的错误

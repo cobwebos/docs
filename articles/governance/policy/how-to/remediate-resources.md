@@ -1,7 +1,6 @@
 ---
 title: 修正不符合资源
 description: 本操作说明将指导你完成修正 Azure Policy 中不符合策略的资源的过程。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/23/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e86553e789fc9879ea4a6326b08d893fe24c8ac8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: fe06e7081e4e3691aeb054985f9f2f3f6dc7d19e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802552"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283437"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>修正 Azure Policy 中的不符合资源
 
@@ -139,7 +138,7 @@ if ($roleDefinitionIds.Count -gt 0)
 
 1. 在 Azure 门户中单击“所有服务”，然后搜索并选择“策略”，启动 Azure Policy 服务。
 
-   ![搜索所有服务中的策略](../media/remediate-resources/search-policy.png)
+   ![在所有服务中搜索策略](../media/remediate-resources/search-policy.png)
 
 1. 选择“Azure Policy”页左侧的“修正”。
 

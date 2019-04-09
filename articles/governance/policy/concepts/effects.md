@@ -1,7 +1,6 @@
 ---
 title: 了解效果的工作原理
 description: Azure Policy 定义具有各种效果，可确定管理和报告符合性的方式。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/29/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: ae9c9c5ed8b951760ddac3034c617a13ebe35006
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 67a195932ad1afc3c93a94dfcbda8ab8a47760b2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802629"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256849"
 ---
 # <a name="understand-azure-policy-effects"></a>了解 Azure Policy 效果
 
@@ -27,7 +26,7 @@ Azure Policy 中的每个策略定义都有单一效果。 该效果确定了在
 - AuditIfNotExists
 - 拒绝
 - DeployIfNotExists
-- 禁用
+- 已禁用
 
 ## <a name="order-of-evaluation"></a>评估顺序
 
@@ -40,7 +39,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 资源提供程序返回成功代码后，将会评估 **AuditIfNotExists** 和 **DeployIfNotExists** 以确定是否需要其他合规性日志记录或操作。
 
-## <a name="disabled"></a>禁用
+## <a name="disabled"></a>已禁用
 
 对于测试情况以及在策略定义已参数化效果时，此效果很有用。 借助这种灵活性可以禁用单个分配，而无需禁用该策略的所有分配。
 
@@ -60,7 +59,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="append-examples"></a>“附加”示例
 
-示例 1：使用单个字段/值对追加一个标记。
+示例 1：单个**字段/值**对附加一个标记。
 
 ```json
 "then": {
@@ -136,7 +135,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="deny-example"></a>“拒绝”示例
 
-示例:使用“拒绝”效果。
+示例：使用“拒绝”效果。
 
 ```json
 "then": {
@@ -158,7 +157,7 @@ Policy 首先评估通过 Azure 资源管理器创建或更新资源的请求。
 
 ### <a name="audit-example"></a>“审核”示例
 
-示例:使用“审核”效果。
+示例：使用“审核”效果。
 
 ```json
 "then": {
@@ -204,7 +203,7 @@ AuditIfNotExists 效果的“details”属性具有定义要匹配的相关资�
 
 ### <a name="auditifnotexists-example"></a>AuditIfNotExists 示例
 
-示例:评估虚拟机以确定是否存在反恶意软件扩展，然后在缺失时进行审核。
+示例：评估虚拟机以确定是否存在反恶意软件扩展，然后在缺失时进行审核。
 
 ```json
 {
@@ -288,7 +287,7 @@ DeployIfNotExists 效果的“details”属性具有可定义要匹配的相关�
 
 ### <a name="deployifnotexists-example"></a>DeployIfNotExists 示例
 
-示例:评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
+示例：评估 SQL Server 数据库以确定是否启用 transparentDataEncryption。 如果未启用，则执行启用它的部署。
 
 ```json
 "if": {

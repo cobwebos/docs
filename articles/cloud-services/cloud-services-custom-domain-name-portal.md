@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 814ae0e79ac24d5b645c4bf107287ab1b8326ff4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121615"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267134"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 http://contoso.cloudapp.net）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。
@@ -64,11 +64,11 @@ CNAME 记录映射*特定*域，如**contoso.com**或**www\.contoso.com**，到�
 
 1. 使用下列方法之一查找分配的云服务的 **.cloudapp.net** 域名。
 
-   * 登录到 [Azure 门户]，选择云服务，查看“概要”部分，并找到“站点 URL”条目。
+   * 登录到[Azure 门户]，选择你的云服务，看看**概述**部分，并找到**站点 URL**条目。
 
        ![显示站点 URL 的速览部分][csurl]
 
-       **或者**
+       **或**
    * 安装并配置 [Azure Powershell](/powershell/azure/overview)，并使用以下命令：
 
        ```powershell
@@ -97,7 +97,7 @@ CNAME 记录映射*特定*域，如**contoso.com**或**www\.contoso.com**，到�
 
 1. 使用以下方法之一来获取云服务的 IP 地址。
 
-   * 登录到 [Azure 门户]，选择云服务，查看“概要”部分，并找到“公共 IP 地址”条目。
+   * 登录到[Azure 门户]，选择你的云服务，看看**概述**部分，并找到**公共 IP 地址**条目。
 
        ![显示 VIP 的速览部分][vip]
 

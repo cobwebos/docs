@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f733b2c9bcd8dc8ad8c068c465e1beda00b45d28
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 31c6c1258b6d20eb2d2802cf23244cb59df682c0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471005"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281261"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>用于数据科学项目的平台和工具
 
@@ -44,7 +44,7 @@ Microsoft 在 Windows 和 Linux 上提供的数据科学虚拟机包含用于数
 - 适用于 Windows 的 Power BI Desktop
 - Windows/Postgres on Linux 上的 SQL Server 2016 Developer Edition
 
-此外，还包括 **ML 和 AI 工具**，例如 CNTK（Microsoft 开发的开源深度学习工具包）、xgboost、mxnet 和 Vowpal Wabbit。
+它还包括**机器学习和 AI 工具**，如 xgboost、 mxnet 和 Vowpal Wabbit。
 
 DSVM 目前可在 **Windows** 和 **Linux CentOS** 操作系统中使用。 根据计划在其上执行的数据科学项目的需求，选择 DSVM 的大小（CPU 核心数和内存量）。 
 

@@ -8,18 +8,18 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 216ce32997a4114f4f2684b14338b4e36d9afd03
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53557999"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257274"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
 设置流分析作业，并通过它运行某些示例数据，这通常很直接了当。 但当我们需要运行数据量更大的相同作业时，该怎么办？ 需要了解如何配置流分析作业，以便可以缩放它。 本文档关注使用机器学习函数缩放流分析作业的特殊方面。 有关在一般情况下如何缩放流分析作业的信息，请参阅文章[缩放作业](stream-analytics-scale-jobs.md)。
 
 ## <a name="what-is-an-azure-machine-learning-function-in-stream-analytics"></a>流分析中的 Azure 机器学习函数是什么？
-流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在同一 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关更多信息，请参阅[流分析中的 Azure 机器学习函数](https://blogs.technet.microsoft.com/machinelearning/2015/12/10/azure-ml-now-available-as-a-function-in-azure-stream-analytics/)和 [Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
+流分析中的机器学习函数可像流分析查询语言中的常规函数调用那样使用。 但是在后台，函数调数用实际上是 Azure 机器学习 Web 服务请求数。 机器学习 Web 服务支持在同一 Web 服务 API 调用中“批处理”多个行（这称为“微批处理”），从而提高整体吞吐量。 有关详细信息，请参阅[Azure 机器学习 Web 服务](../machine-learning/studio/consume-web-services.md)。
 
 ## <a name="configure-a-stream-analytics-job-with-machine-learning-functions"></a>使用机器学习函数配置流分析作业
 在配置流分析作业的机器学习函数时，需要考虑两个参数：机器学习函数调用数的批大小和为流分析作业预配的流式处理单位 (SU)。 若要确定 SU 的相应值，请首先确定延迟和吞吐量，即流分析作业延迟和每个 SU 的吞吐量。 虽然额外的 SU 会增加运行作业的成本，但可能会始终将 SU 添加到某个作业，以增加分区良好的流分析查询吞吐量。
@@ -81,14 +81,14 @@ ms.locfileid: "53557999"
 | **18 个 SU** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 个 SU** |10,000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
-| **60 个 SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
+| **60 个SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
 到目前为止，应该清楚了解流分析中机器学习函数的工作原理。 可能还知道流分析作业从数据源中“提取”数据，并且每次“提取”都会返回一批供流分析作业处理的事件。 这种“提取”模型如何影响机器学习 Web 服务请求？
 
 通常情况下，我们为机器学习函数设置的批大小不会被每个流分析作业“提取”而返回的事件数整除。 如果发生这种情况，机器学习 Web 服务将通过“部分”批处理调用。 这样做是为了在合并提取与提取之间的事件时不会产生其他的作业延迟开销。
 
 ## <a name="new-function-related-monitoring-metrics"></a>与函数相关的新监视指标
-在流分析作业的“监视”区域，新增了三个与函数相关的指标。 它们是“函数请求数”、“函数事件数”和“失败的函数请求数”，如下图所示。
+在流分析作业的“监视”区域，新增了三个与函数相关的指标。 它们是 FUNCTION REQUESTS、FUNCTION EVENTS 和 FAILED FUNCTION REQUESTS，如下图所示。
 
 ![使用机器学习函数指标缩放流分析](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "使用机器学习函数指标缩放流分析")
 
@@ -112,7 +112,7 @@ ms.locfileid: "53557999"
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：
 
-* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
-* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
-* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [开始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
+* [缩放 Azure Stream Analytics 作业](stream-analytics-scale-jobs.md)
+* [Azure Stream Analytics 查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure Stream Analytics 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

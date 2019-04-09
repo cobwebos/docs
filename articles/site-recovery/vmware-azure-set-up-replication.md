@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 04/08/2019
 ms.author: sutalasi
-ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: HT
+ms.openlocfilehash: b60d8a8fb9b9300a6914ad33b2f760fb5adde3b4
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006813"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278218"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>配置和管理用于从 VMware 灾难恢复到 Azure 的复制策略
 本文介绍如何配置复制策略，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将 VMware VM 复制到 Azure。
@@ -20,7 +20,7 @@ ms.locfileid: "59006813"
 ## <a name="create-a-policy"></a>创建策略
 
 1. 选择“管理” > “Site Recovery 基础结构”。
-2. 在“适用于 VMware 和物理计算机”中选择“复制策略”。 
+2. 在“适用于 VMware 和物理计算机”中选择“复制策略”。
 3. 单击“+复制策略”，并指定策略名称。
 4. 在“RPO 阈值”中：指定 RPO 限制。 当连续复制超出此限制时，将生成警报。
 5. 在“恢复点保留期”中，针对每个恢复点指定保留期的时长（以小时为单位）。 受保护的计算机可以恢复到某个保留期时段内的任意时间点。 复制到高级存储的计算机最长支持 24 小时的保留期。 标准存储最长支持 72 个小时。
@@ -29,7 +29,7 @@ ms.locfileid: "59006813"
 
 创建复制策略时，会使用后缀“failback”自动创建相应的故障回复复制策略。 创建策略后，可以通过选择它 >“编辑设置”对其进行编辑。
 
-## <a name="associate-a-configuration-server"></a>关联配置服务器 
+## <a name="associate-a-configuration-server"></a>关联配置服务器
 
 将复制策略与本地配置服务器相关联。
 

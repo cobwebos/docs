@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/20/2018
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 38b8e8a0e413f367d34a4ccf5dbd87817891b8ea
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53313014"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277760"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>针对管理访问权限设置 RBAC 角色
 
@@ -38,6 +38,6 @@ ms.locfileid: "53313014"
 
 ## <a name="see-also"></a>另请参阅
 
-+ [使用 PowerShell 进行管理](search-manage-powershell.md) 
-+ [Azure 搜索中的性能和优化](search-performance-optimization.md)
++ [使用 PowerShell 管理](search-manage-powershell.md) 
++ [性能和优化 Azure 搜索中](search-performance-optimization.md)
 + [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。

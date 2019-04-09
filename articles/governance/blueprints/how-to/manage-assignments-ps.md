@@ -1,19 +1,18 @@
 ---
 title: 如何管理使用 PowerShell 分配
 description: 了解如何管理与官方 Azure 蓝图 PowerShell 模块，Az.Blueprint 蓝图分配。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/14/2019
 ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: 47026975a5142760f90a1a5712b532519f969fd7
-ms.sourcegitcommit: 4133f375862fdbdec07b70de047d70c66ac29d50
+ms.openlocfilehash: d8eacffe4b792eda5d81051f6aa65caa3292c896
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/15/2019
-ms.locfileid: "57997614"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256866"
 ---
 # <a name="how-to-manage-assignments-with-powershell"></a>如何管理使用 PowerShell 分配
 
@@ -333,8 +332,8 @@ Remove-AzBlueprintAssignment -InputObject $bpAssignment -SubscriptionId '{subId}
 
 ## <a name="next-steps"></a>后续步骤
 
-- 了解如何[蓝图生命周期](../concepts/lifecycle.md)。
+- 了解[蓝图生命周期](../concepts/lifecycle.md)。
 - 了解如何使用[静态和动态参数](../concepts/parameters.md)。
-- 了解如何自定义[蓝图先后顺序](../concepts/sequencing-order.md)。
-- 了解如何使利用[蓝图资源锁定](../concepts/resource-locking.md)。
-- 使用蓝图赋值的过程中解决的问题[常规故障排除](../troubleshoot/general.md)。
+- 了解如何自定义[蓝图排序顺序](../concepts/sequencing-order.md)。
+- 了解如何利用[蓝图资源锁定](../concepts/resource-locking.md)。
+- 使用[一般故障排除](../troubleshoot/general.md)在蓝图的分配期间解决问题。

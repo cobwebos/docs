@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9d4661f6c975265ec710b29a8a05cc7ef41b4011
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057415"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268494"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -51,6 +51,8 @@ Azure 自动化中的 Runbook 可以在 Azure 中的沙盒上运行，也可以�
 ## <a name="runbook-behavior"></a>Runbook 行为
 
 Runbook 基于其内部定义的逻辑执行操作。 如果 Runbook 中断，则 Runbook 将在开始时重启。 这种行为要求 runbook 以某种方式进行编写，在此方式中，如果存在瞬态问题，runbook 支持重启。
+
+在 Azure 中运行 PowerShell 作业从一个 Runbook 启动沙盒可能不会在完整语言模式下运行。 若要了解有关 PowerShell 语言模式的详细信息，请参阅[PowerShell 语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes)。 有关如何与 Azure 自动化中的作业进行交互的其他详细信息，请参阅[检索使用 PowerShell 作业状态](#retrieving-job-status-using-powershell)
 
 ### <a name="creating-resources"></a>创建资源
 

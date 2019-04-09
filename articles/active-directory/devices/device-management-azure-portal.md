@@ -204,7 +204,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 - 全局管理员
 - Helpdesk Admin
 - 安全管理员
-- 安全读者
+- 安全读取者
 - Intune 服务管理员
 
 > [!NOTE]

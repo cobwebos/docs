@@ -16,16 +16,16 @@ ms.date: 02/28/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: c9f43eb1623ec784bd960fb182dffec48e7b0833
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: 0fe5b055665ef5a770fba71fdefcfd13b9809e37
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481240"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282264"
 ---
 # <a name="azure-stack-1811-update"></a>Azure Stack 1811 更新
 
-*适用于：Azure Stack 集成系统*
+*适用于Azure Stack 集成系统*
 
 本文介绍 1811 更新包的内容。 该更新包包含此版 Azure Stack 的改进、修复和新功能。 本文还描述了此版本中的已知问题，并包含一个用于下载该更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
@@ -350,7 +350,7 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 
 - 在 Azure Stack 门户中，对于已附加到 VM 实例的网络适配器，在更改与其绑定的 IP 配置的静态 IP 地址时，会看到一条警告消息，其中指出 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。 
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`. 
 
     可以放心忽略此消息；即使 VM 实例未重启，IP 地址也会更改。
 
@@ -391,6 +391,9 @@ Azure Stack 定期发布修补程序。 将 Azure Stack 更新到 1811 之前，
 <!-- #### Identity -->
 <!-- #### Marketplace -->
 
+### <a name="syslog"></a>Syslog 
+- Syslog 配置不会保留通过更新循环，从而导致 syslog 客户端会丢失其配置和要停止正在转发的 syslog 消息。 Syslog 客户端 (1809) 正式发布以来，此问题适用于所有版本的 Azure Stack。
+解决方法是在应用 Azure Stack 更新后重新配置 syslog 客户端。
 
 ## <a name="download-the-update"></a>下载更新
 

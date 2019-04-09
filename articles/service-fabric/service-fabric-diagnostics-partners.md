@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/16/2018
 ms.author: srrengar
-ms.openlocfilehash: e9bfb835a1dea240573c21ccbbe13088561851ab
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: c2f953c98e41291951f07556bd0cd441d2793d1d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661405"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259127"
 ---
 # <a name="azure-service-fabric-monitoring-partners"></a>Azure Service Fabric 监视合作伙伴
 
@@ -45,6 +45,9 @@ New Relic 是与 Service Fabric 应用程序完美集成的另一个应用程序
 
 ELK 堆栈是以下开源技术的集合：Elasticsearch、Logstash 和 Kibana。 结合使用这些技术可以收集、存储和分析 Service Fabric 监视与诊断数据。 我们在[此处](service-fabric-tutorial-java-elk.md)提供了有关如何对 Service Fabric 本机 Java 应用程序执行此操作的教程。 
 
+## <a name="humio"></a>Humio
+
+Humio 是可从你的应用程序和 Service Fabric 在云中或本地在真实时间中的事件中收集日志的日志收集服务。 除实时的可观察性，Humio 还提供最先进的分析和可视化功能，用于查看和从你的诊断收集见解。 Humio 具有成本效益的定价计划和内置，同时保留它的规模变革快的速度。 它直接与 Service Fabric 平台事件和应用程序遥测集成。 你可以阅读更多有关 Humio 和 Service Fabric 集成[此处](https://github.com/humio/service-fabric-humio)。
 
 ## <a name="next-steps"></a>后续步骤
 

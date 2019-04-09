@@ -90,7 +90,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 
 ### <a name="assign-rbac-roles-to-users"></a>向用户分配 RBAC 角色
-若想获得所有订阅的可见性，租户管理员需要在根管理组级别向他们希望向其授予租户级可见性的所有用户分配合适的 RBAC 角色，包括他们自己。 建议分配的角色是**安全管理员**或**安全读者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
+若想获得所有订阅的可见性，租户管理员需要在根管理组级别向他们希望向其授予租户级可见性的所有用户分配合适的 RBAC 角色，包括他们自己。 建议分配的角色是**安全管理员**或**安全读取者**。 通常情况下，若要在根级别应用策略，需要安全管理员角色，若要提供租户级可见性，安全读取者角色就足够了。 有关这些角色授予的权限的详细信息，请参阅[安全管理员内置角色说明](../role-based-access-control/built-in-roles.md#security-admin)或[安全读取者内置角色说明](../role-based-access-control/built-in-roles.md#security-reader)。
 
 
 #### <a name="assign-rbac-roles-to-users-through-the-azure-portal"></a>通过 Azure 门户向用户分配 RBAC 角色： 
@@ -107,7 +107,7 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 
 1. 选择要分配的角色和用户，然后单击“保存”。  
    
-   ![添加安全读者角色屏幕截图](./media/security-center-management-groups/asc-security-reader.png)
+   ![添加安全读取者角色屏幕截图](./media/security-center-management-groups/asc-security-reader.png)
 
 
 #### <a name="assign-rbac-roles-to-users-with-powershell"></a>使用 PowerShell 向用户分配 RBAC 角色： 

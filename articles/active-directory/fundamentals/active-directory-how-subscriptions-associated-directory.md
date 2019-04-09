@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f8c5cb04c17e508409e67f0441daee4bc44c29d5
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285000"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264890"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -30,6 +30,8 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
 
 > [!Important]
 > 在将对另一个目录，已使用分配的角色的用户的订阅[基于角色的访问控制 (RBAC)](../../role-based-access-control/role-assignments-portal.md)将失去访问权限。 经典订阅管理员 （服务管理员和协同管理员） 还将失去访问权限。
+> 
+> 此外，Azure Kubernetes 服务 (AKS) 群集移到不同的订阅，或将群集拥有订阅移到新租户，会导致群集由于丢失的角色分配和服务主体权限的功能。 有关 AKS 的详细信息，请参阅[Azure Kubernetes 服务 (AKS)](https://docs.microsoft.com/en-us/azure/aks/)。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -67,15 +69,16 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
 
     ![目录切换器页上，使用示例的信息](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-更改订阅目录是服务级操作，不会影响订阅的账单所有权。 帐户管理员仍可从[帐户中心](https://account.azure.com/subscriptions)更改服务管理员。 若要删除原始目录，必须将订阅的账单所有权转让给新的帐户管理员。若要详细了解如何转让账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)。 
+更改订阅目录是服务级操作，不会影响订阅的账单所有权。 帐户管理员仍可从[帐户中心](https://account.azure.com/subscriptions)更改服务管理员。 若要删除原始目录，必须将订阅的账单所有权转让给新的帐户管理员。若要详细了解如何转让账单所有权，请参阅[将 Azure 订阅所有权转让给其他帐户](../../billing/billing-subscription-transfer.md)。
 
 ## <a name="post-association-steps"></a>发布关联的步骤
-
 将关联到不同的目录的订阅后，可能必须执行恢复操作的其他步骤。
 
 1. 如果你有任何密钥保管库，则必须更改密钥保管库租户 id。 有关详细信息，请参阅[订阅移动后更改密钥保管库租户 ID](../../key-vault/key-vault-subscription-move-fix.md)。
 
-1. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](../../azure-stack/azure-stack-registration.md)。
+2. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](../../azure-stack/azure-stack-registration.md)。
+
+
 
 ## <a name="next-steps"></a>后续步骤
 

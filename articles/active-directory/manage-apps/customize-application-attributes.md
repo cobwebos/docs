@@ -11,75 +11,84 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/09/2018
+ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1926849c8ec63b4240d951e46b1341f31f7c5bd
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170340"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267202"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
-Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果已为第三方 SaaS 应用程序启用用户预配，Azure 门户将以属性映射的形式控制其属性值。
+Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果启用了第三方 SaaS 应用程序的用户预配，Azure 门户将控制通过属性映射其属性值。
 
-Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配置的一组属性和属性映射。 除了“用户”以外，某些应用还可以管理其他类型的对象，例如“组”。 <br> 
- 可以根据业务需求自定义默认的属性映射。 这意味着，可以更改或删除现有属性映射或者创建新的属性映射。
+没有一组预配置的属性和 Azure AD 用户对象和每个 SaaS 应用的用户对象之间的属性映射。 某些应用程序管理其他类型的对象，以及用户、 组等。
+
+可以根据业务需求自定义默认的属性映射。 因此，可以更改或删除现有属性的映射，或创建新的属性映射。
  
 ## <a name="editing-user-attribute-mappings"></a>编辑用户属性映射
 
-在 Azure AD 门户中，可在“企业应用程序”的“管理”部分，通过单击“预配”下的“映射”配置来访问此功能。
+请按照以下步骤访问**映射**用户预配的功能：
 
+1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。
 
-![Salesforce](./media/customize-application-attributes/21.png) 
+1. 选择**企业应用程序**在左窗格中。 显示所有已配置应用的列表，包括那些从库添加的应用。
 
-单击“映射”配置，打开相关的“属性映射”屏幕。 SaaS 应用程序需要执行一些属性映射才能正确运行。 对于必需属性，“删除”功能将不可用。
+1. 选择要上传其应用的管理窗格，其中可以查看报表和管理应用程序设置任何应用。
 
+1. 选择**预配**来管理用户帐户预配所选应用的设置。
 
-![Salesforce](./media/customize-application-attributes/22.png)
+1. 展开**映射**查看和编辑 Azure AD 之间流动的用户属性和目标应用程序。 如果目标应用程序支持，可以使用本部分 （可选） 配置的组和用户帐户预配。
 
-在上面的示例中，可以发现 Salesforce 中托管对象的“用户名”属性由所链接的 Azure Active Directory 对象的“userPrincipalName”值填充。
+   ![Salesforce](./media/customize-application-attributes/21.png) 
 
-可通过单击映射自定义现有“属性映射”。 此时会打开“编辑属性”屏幕。
+1. 选择**映射**配置，以打开相关**属性映射**屏幕。 某些属性映射所需的 SaaS 应用程序才能正常工作。 对于必需属性，“删除”功能将不可用。
 
-![Salesforce](./media/customize-application-attributes/23.png)
+   ![Salesforce](./media/customize-application-attributes/22.png)
+
+   在此屏幕截图中，可以看到**用户名**Salesforce 中的托管对象的属性使用填充**userPrincipalName**链接的 Azure Active Directory 对象的值。
+
+1. 选择一个现有**属性映射**以打开**编辑属性**屏幕。 在这里，您可以编辑 Azure AD 之间流动的用户属性和目标应用程序。
+
+   ![Salesforce](./media/customize-application-attributes/23.png)
 
 
 ### <a name="understanding-attribute-mapping-types"></a>了解属性映射类型
 使用属性映射可以控制属性在第三方 SaaS 应用程序中的填充方式。 支持四种不同的映射类型：
 
 * **直接** – 目标属性由 Azure AD 中的链接对象的属性值填充。
-* **常量** - 目标属性使用已指定的特定字符串填充。
+* **常量**– 目标属性使用你指定的特定字符串填充。
 * **表达式** - 目标属性是基于脚本式表达式的结果填充的。 
   有关详细信息，请参阅[在 Azure Active Directory 中编写属性映射的表达式](functions-for-customizing-application-data.md)。
-* **无** - 目标属性保持不变。 不过，如果目标属性曾经为空，则它由你指定的默认值填充。
+* **无** - 目标属性保持不变。 不过，如果目标属性曾经为空，它是与你指定的默认值填充。
 
-除了这四个基本类型之外，自定义属性映射还支持可选的默认值赋值概念。 默认值赋值确保当 Azure AD 中和目标对象中都没有值时使用某个值填充目标属性。 最常见的配置是将此项留空。
+这四种基本类型，以及自定义属性映射还支持可选的概念**默认**值赋值。 默认值赋值确保如果没有一个值，Azure AD 中或目标对象上使用某个值填充目标属性。 最常见的配置是将此项留空。
 
 
 ### <a name="understanding-attribute-mapping-properties"></a>了解属性映射的属性
 
-前面的部分介绍了属性映射类型属性。
-除此属性外，属性映射还支持以下属性：
+在上一节中已介绍了属性映射类型属性。
+此属性，以及属性映射还支持以下属性：
 
 - **源属性** - 来自源系统的用户属性（示例：Azure Active Directory）。
 - **目标属性** - 目标系统中的用户属性（示例：ServiceNow）。
-- 使用此属性匹配对象 – 是否应使用此映射唯一标识源系统和目标系统之间的用户。 这通常在 Azure AD 中的 userPrincipalName 或邮件属性上设置，其通常映射到目标应用程序中的用户名字段。
-- 匹配优先级 – 可设置多个匹配属性。 当存在匹配时，会按照此字段定义的顺序进行评估。 一旦找到匹配，就不会进一步评估其他匹配属性。
+- **使用此属性匹配对象**– 是否应使用此映射唯一标识源和目标系统之间的用户。 它通常在 Azure AD 中，此值通常映射到目标应用程序中的用户名字段设置 userPrincipalName 或邮件属性上。
+- 匹配优先级 – 可设置多个匹配属性。 如果有多个，它们是按此字段定义的顺序进行计算。 一旦找到匹配，就不会进一步评估其他匹配属性。
 - **应用此映射**
-    - 始终 – 对用户创建和更新操作均应用此映射
-    - 仅创建期间 - 仅对用户创建操作应用此映射
+    - **始终**– 在这两个用户创建应用此映射和更新操作。
+    - **仅创建期间**-仅在用户的创建操作上应用此映射。
 
 
 ## <a name="editing-group-attribute-mappings"></a>编辑组属性映射
 
-一些特定的应用程序（例如 ServiceNow、Box 和 Google Apps）除了支持预配“用户”对象以外，还支持预配“组”对象。 “组”对象可以包含组属性（例如显示名称和电子邮件别名）以及组成员。
+一些特定的应用程序，例如 ServiceNow、 Box 和 Google Apps 支持预配组对象和用户对象的能力。 组对象可以包含组的属性，例如显示名称和电子邮件别名，以及组成员。
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 
-可以通过在“映射”下面选择组映射，并在“属性映射”屏幕中将“已启用”设置为所需的选项，来有选择性地启用或禁用组预配。
+组预配可以根据需要启用或禁用通过选择下的组映射**映射**，并设置**已启用**中所需的选项为**的属性映射**屏幕。
 
 可以自定义预配为“组”对象的一部分的属性，就像前面所述的预配“用户”对象一样。 
 
@@ -89,9 +98,9 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 ## <a name="editing-the-list-of-supported-attributes"></a>编辑受支持属性的列表
 
-给定应用程序支持的用户属性是预先配置的。 大多数应用程序的用户管理 API 不支持架构发现，因此，Azure AD 预配服务无法通过调用应用程序来动态生成受支持属性的列表。 
+给定应用程序支持的用户属性是预先配置的。 大多数应用程序的用户管理 Api 不支持架构发现。 因此，Azure AD 预配服务不能动态调用应用程序，从而生成受支持的属性列表。 
 
-但是，某些应用程序支持自定义属性。 要使 Azure AD 预配服务能够读取和写入自定义属性，必须使用“属性映射”屏幕底部的“显示高级选项”复选框，将这些属性的定义输入 Azure 门户。
+但是，某些应用程序支持自定义特性，并且 Azure AD 预配服务可以读取和写入到自定义属性。 若要在 Azure 门户中输入其定义，请选择**显示高级选项**底部的复选框**属性映射**屏幕上，并选择**编辑属性列表**您的应用程序。
 
 支持属性列表自定义的应用程序和系统包括：
 
@@ -104,35 +113,33 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 >[!NOTE]
 >建议只让自定义了其应用程序和系统的架构，并且原本就知道自定义属性定义方式的管理员来编辑受支持属性的列表。 有时，需要熟悉应用程序或系统提供的 API 和开发人员工具才能执行此操作。 
 
-![编辑器](./media/customize-application-attributes/25.png) 
-
 编辑受支持属性的列表时，将提供以下属性：
 
 * **名称** - 属性的系统名称，在目标对象的架构中定义。 
-* **类型** - 属性存储的数据类型，在目标对象的架构中定义。 可以是以下值之一：
+* **类型**-的数据类型属性存储，定义在目标对象的架构中，可以是以下类型之一：
    * *二进制* - 属性包含二进制数据。
    * *布尔值* - 属性包含 True 或 False 值。
    * *日期时间* - 属性包含日期字符串。
    * *整数* - 属性包含整数。
    * *引用* - 属性包含 ID，该 ID 引用目标应用程序中的另一个表存储的值。
    * *字符串* - 属性包含文本字符串。 
-* **主键?** - 属性是否已定义为目标对象架构中的主键字段。
-* **必需？** - 是否需要在目标应用程序或系统中填充该属性。
-* **多值?** - 属性是否支持多个值。
-* **区分大小写?** - 是否以区分大小写的方式计算属性值。
-* **API 表达式** - 除非特定预配连接器（例如 Workday）的文档要求使用，否则请不要使用。
-* **引用的对象属性** - 如果这是一个引用类型的属性，则此菜单允许在目标应用程序中选择包含与该属性关联的值的表和属性。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 请注意，给定应用程序支持的引用表和主要 ID 字段是预先配置的，目前无法使用 Azure 门户进行编辑，但可以使用[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes) 进行编辑。
+* **主键?** -是否该属性定义为目标对象的架构中的主键字段。
+* **必需？** -是否该属性为所需的目标应用程序或系统进行填充。
+* **多值？** -是否该属性支持多个值。
+* **确切的大小写?** -是否区分大小写的方式计算属性值。
+* **API 表达式**-不使用，除非要求这样做 （例如 Workday) 特定的预配连接器的文档。
+* **引用的对象属性**-如果它为引用类型的属性，则此菜单允许您选择的表和属性中包含的值与属性关联的目标应用程序。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 引用表和主要 ID 字段给定的应用程序支持的预配置目前不能使用 Azure 门户中，编辑但可使用编辑[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)。
 
-若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。 添加完属性后选择“保存”。 然后需要重新加载“预配”选项卡，使新属性显示在属性映射编辑器中。
+若要添加新属性，请滚动到受支持属性列表的末尾，使用提供的输入填充上述字段，然后选择“添加属性”。 添加完属性后选择“保存”。 然后，你需要重新加载**预配**将新的属性，属性映射编辑器中可用的选项卡。
 
 ## <a name="restoring-the-default-attributes-and-attribute-mappings"></a>还原默认属性和属性映射
 
-如果需要从头开始并将现有映射重置为默认状态，可以选中“还原默认映射”复选框并保存配置。 这样就会设置所有映射，就如同刚刚将应用程序从应用程序库添加到 Azure AD 租户一样。 
+如果需要通过启动和重置现有映射回其默认状态，你可以选择**还原默认映射**复选框并保存配置。 执行此操作集的所有映射，当应用程序刚添加到你的 Azure AD 租户应用程序库中。 
 
-在运行预配服务时，选择此选项可以有效地强制重新同步所有用户。 
+预配服务正在运行时，选择此选项可以有效地强制重新同步所有用户。 
 
 >[!IMPORTANT]
->调用此选项之前，我们强烈建议将“预配状态”设置为“关闭”。
+>我们强烈建议**预配状态**设置为**关闭**之前调用此选项。
 
 
 ## <a name="what-you-should-know"></a>要点
@@ -141,14 +148,14 @@ Azure AD 用户对象与每个 SaaS 应用的用户对象之间存在预先配�
 
 * 更新属性映射会影响同步周期的性能。 对属性映射配置进行更新需要重新评估所有托管对象。 
 
-* 建议采用的最佳做法是尽量少地连续更改属性映射。
+* 推荐的最佳做法是连续更改的数量保持在最少属性的映射。
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
-* [为属性映射编写表达式](functions-for-customizing-application-data.md)
-* [用于用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
+* [自动用户预配和取消预配 SaaS 应用](user-provisioning.md)
+* [属性映射编写表达式](functions-for-customizing-application-data.md)
+* [用户预配范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](use-scim-to-provision-users-and-groups.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
 

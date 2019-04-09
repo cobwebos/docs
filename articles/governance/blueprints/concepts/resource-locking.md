@@ -1,7 +1,6 @@
 ---
 title: 了解资源锁定
 description: 了解用于在分配蓝图时保护资源的锁定选项。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5409de8aabb52a531551abbc28ae9e873b262eba
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.openlocfilehash: 232d823f364f9f98d1da1bade50ba369b898a57d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58762423"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275923"
 ---
 # <a name="understand-resource-locking-in-azure-blueprints"></a>了解 Azure 蓝图中的资源锁定
 
@@ -27,12 +26,12 @@ ms.locfileid: "58762423"
 
 蓝图分配中由项目创建的资源具有四种状态：“未锁定”、“只读”、“无法编辑/删除”或“无法删除”。 每种项目类型都可以处于“未锁定”状态。 下表可以用于确定资源的状态：
 
-|模式|项目资源类型|州/省/自治区/直辖市|描述|
+|Mode|项目资源类型|状态|描述|
 |-|-|-|-|
 |不锁定|*|未锁定|资源不受蓝图保护。 此状态也用于从蓝图分配外部添加到“只读”或“不要删除”资源组项目的资源。|
 |只读|资源组|无法编辑/删除|资源组是只读的，资源组上的标记无法修改。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 |只读|非资源组|只读|以任何方式都无法更改资源 -- 无更改且无法将其删除。|
-|请勿删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
+|不要删除|*|无法删除|资源可以更改，但无法删除。 可以从此资源组添加、移动、更改或删除“未锁定”资源。|
 
 ## <a name="overriding-locking-states"></a>重写锁定状态
 

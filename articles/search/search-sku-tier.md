@@ -7,19 +7,21 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 523c99436eb49f1658a5d4c56d64248adccc5c3a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621261"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270931"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
-在 Azure 搜索中，[资源是在某个定价层或 SKU 中创建的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括**免费**，**基本**，**标准**，或者**存储优化**。  **标准**并**存储优化**均位于多个配置和容量。 大多数客户首先使用**免费**层进行评估，然后再升级为更高版本的付费层开发和生产部署中的一个。 可以在“免费”层上完成所有快速入门和教程，包括资源密集型认知搜索的教程。
+在 Azure 搜索中，[资源是在某个定价层或 SKU 中创建的](search-create-service-portal.md)，该定价层或 SKU 在该服务的整个生存期内是固定的。 层包括**免费**，**基本**，**标准**，或者**存储优化**。  **标准**并**存储优化**均位于多个配置和容量。 
+
+大多数客户首先使用**免费**层进行评估，然后再升级为更高版本的付费层开发和生产部署中的一个。 可以在“免费”层上完成所有快速入门和教程，包括资源密集型认知搜索的教程。
 
 > [!NOTE]
 > 当前以折扣价格，目的是收集反馈的测试和实验目的在预览版的形式提供存储优化服务层。 确定最终定价将在以后宣布这些层通常不可用时。 建议不要对生产应用程序使用这些层。
@@ -29,7 +31,7 @@ ms.locfileid: "58621261"
 + 可以创建的索引数
 + 分区（物理存储）的大小和速度
 
-尽管所有层（包括“免费”层）通常会提供功能奇偶一致性，但较大的工作负荷可以要求使用较高的层。 例如，[认知搜索](cognitive-search-concept-intro.md)索引具有长期运行的特性，除非数据集很小，否则会在免费服务中超时。
+尽管所有层（包括“免费”层）通常会提供功能奇偶一致性，但较大的工作负荷可以要求使用较高的层。 例如， [AI 索引使用认知服务](cognitive-search-concept-intro.md)具有长时间运行的技能时超时上一项免费服务除非碰巧是小型数据集。
 
 > [!NOTE] 
 > 功能奇偶一致性的例外情况是[索引器](search-indexer-overview.md)，它们不可用于 S3HD。
@@ -53,7 +55,7 @@ ms.locfileid: "58621261"
 |存储优化 2 (L2) | 2 TB/分区 (每个服务最大 24 TB) |
 
 > [!NOTE] 
-> 存储优化层还提供更大的存储容量，以更低价格每 TB 比标准层。  主要弊端是更高的查询延迟，应验证的特定应用程序的要求。  若要了解有关此层的性能注意事项的详细信息，请参阅[性能和优化注意事项](search-performance-optimization.md)。
+> 存储优化层还提供更大的存储容量，以更低价格每 TB 比标准层。 主要弊端是更高的查询延迟，应验证的特定应用程序的要求。  若要了解有关此层的性能注意事项的详细信息，请参阅[性能和优化注意事项](search-performance-optimization.md)。
 >
 
 ## <a name="how-billing-works"></a>计费原理
@@ -70,17 +72,27 @@ ms.locfileid: "58621261"
 
 提供额外的副本和分区的初始费用的附加内容。 搜索服务需要的副本和分区，因此最小配置各项之一。 超出最小值，您添加副本和分区独立。 例如，可以添加仅副本或仅分区。 
 
-提供额外的副本和分区的收费依据[公式](#search-units)。 成本不是线性的 （容量超过双精度型值成本加倍）。 有关如何使用公式的工作原理的示例，请参阅["如何分配副本和分区"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)
+提供额外的副本和分区的收费依据[公式](#search-units)。 成本不是线性的 （容量超过双精度型值成本加倍）。 有关如何使用公式的工作原理的示例，请参阅["如何分配副本和分区"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)。
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2.在索引期间的数据传出费用
 
-从 Azure SQL 数据库或 Cosmos DB 数据源提取数据时，在这些资源的帐单中可以看到事务费用。 这些费用不是 Azure 搜索指标，但它们此处所述，因为如果索引器将从 Azure SQL 数据库或 Azure Cosmos DB 提取数据，您将看到该费用在帐单中。
+利用[Azure 搜索索引器](search-indexer-overview.md)可能会导致计费影响具体取决于服务的位置。 如果在你的数据所在的同一区域中创建 Azure 搜索服务，则可以消除数据传出费用。
+
++ 任何入站数据传输到 Azure 上的任何服务的任何费用。
+
++ Azure 搜索中的任何出站数据不必支付费用。
+
++ 数据文件或文件从 SQL DB，Cosmos，Blob 存储出站免费 （入站到 Azure 搜索），只要所有服务都都在同一区域中。
+
++ 如果存储和 Azure 搜索是在不同区域中，对出站数据或文件执行操作收取费用。
+
+在 Azure 区域之间进行路由数据，会看到这些资源在帐单中的带宽费用。 这些费用不是你 Azure 搜索的帐单的一部分，但它们此处所述，因为如果使用索引器提取数据或文件在网络上，您将看到该费用，总费用中。
+
+如果使用索引器，没有任何带宽费用。 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3.AI 强化索引使用认知服务
 
-（仅适用于[认知搜索](cognitive-search-concept-intro.md)）文档破解期间的图像提取费用根据从文档中提取的图像数量计算。 文本提取目前是免费的。 其他正基于[内置认知技能](cognitive-search-predefined-skills.md)针对认知服务资源计费。 扩充费率与直接使用认知服务执行任务的费率相同。
-
-如果未使用[认知搜索](cognitive-search-concept-intro.md)或 [Azure 搜索索引器](search-indexer-overview.md)，则费用只与用于常规索引和查询工作负荷的实际使用的副本与分区相关。
+有关[AI 索引使用认知服务](cognitive-search-concept-intro.md)仅根据从文档中提取的映像数量计费图像提取中的，在文档破解。 文本提取目前是免费的。 基于自然语言处理，如其他正[内置认知技能](cognitive-search-predefined-skills.md)针对认知服务资源计费。 扩充费率与直接使用认知服务执行任务的费率相同。
 
 <a name="search-units"></a>
 
@@ -181,7 +193,7 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
 估计容量的一种方法是从“免费”层开始。 回想一下，“免费”服务最多提供 3 个索引、50 MB 存储和 2 分钟索引时间。 使用这些约束来估计预计的索引大小可能具有挑战性，但以下示例介绍了一种方法：
 
-+ [创建免费服务](search-create-service-portal.md)
++ [创建一项免费服务](search-create-service-portal.md)
 + 准备小型且具有代表性的数据集（假设五千个文档和百分之十的示例大小）
 + [生成初始索引](search-create-index-portal.md)并记下其在门户中的大小（假设为 30 MB）
 
@@ -209,7 +221,7 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 > 如果文档包含无关数据，存储要求可能会过高。 理想情况下，文档仅包含搜索体验所需的数据。 二进制数据不可搜索，应该分开存储（或许存储在 Azure 表或 blob 存储中），并且在索引中要有一个字段用于保存外部数据的 URL 参考。 个别文档的最大大小是 16 MB（如果在一次请求中批量上传了多个文档，则小于 16 MB）。 [Azure 搜索中的服务限制](search-limits-quotas-capacity.md)提供详细信息。
 >
 
-**查询量注意事项**
+**查询卷的注意事项**
 
 每秒查询数 (QPS) 是在性能调整过程中突出显示的一个指标，但通常不是层级考虑因素，除非你期望在一开始就有较高的查询量。
 

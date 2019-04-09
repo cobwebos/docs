@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 指标资源管理器
-description: 了解 Azure Monitor 指标资源管理器中的新功能
+title: Azure 指标资源管理器的高级的功能
+description: 了解有关 Azure Monitor 指标资源管理器的高级功能
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,51 +8,46 @@ ms.topic: conceptual
 ms.date: 01/22/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: 08ae74bcd9ee0a7cf5e0fb6d38758b1429c39145
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 67e4281b24a7489cf202d82bdddbe99992aac095
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916336"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271673"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Azure Monitor 指标资源管理器
+# <a name="advanced-features-of-azure-metrics-explorer"></a>Azure 指标资源管理器的高级的功能
 
-Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，通过它可以绘制图表、以直观的形式关联趋势及研究指标值的上升和下降。 指标资源管理器是研究 Azure 托管的或 Azure Monitor 服务监视的应用程序，以及基础结构存在的各种性能问题和可用性问题的基本起始点。
+> [!NOTE]
+> 本文假定你熟悉的指标资源管理器的基本功能。 如果你是新用户并想要了解如何创建第一个度量值图表，请参阅[Azure 指标资源管理器入门](metrics-getting-started.md)。
 
 ## <a name="metrics-in-azure"></a>Azure 中的指标
 
 [Azure Monitor 中的指标](data-platform-metrics.md)是随着时间的推移收集和存储的一系列测量值和计数。 有标准（或“平台”）指标和自定义指标。 标准指标由 Azure 平台本身提供。 标准指标反映 Azure 资源的运行状况和使用情况统计信息。 而由应用程序通过发送到 Azure 的自定义指标[自定义事件和指标的 Application Insights API](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics)， [Windows Azure 诊断 (WAD) 扩展](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostics-extension-overview)，或由[Azure监视 REST API](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-store-custom-rest-api)。
 
-## <a name="create-a-new-chart"></a>创建新图表
+## <a name="create-views-with-multiple-metrics-and-charts"></a>创建具有多个指标和图表视图
 
-1. 打开 Azure 门户
-2. 导航到新的“监视”选项卡，并选择“指标”。
+你可以创建图表的绘制多个度量值行或同时显示多个指标的图表。 此功能可以：
 
-   ![指标图像](./media/metrics-charts/00001.png)
+- 与另一个相关上相同的图形，以查看如何一个值相关联的相关度量值
+- 显示具有不同的邻近的度量单位的指标
+- 以可视方式聚合和比较来自多个资源的指标
 
-3. “指标选择器”将自动打开。 从列表中选择一个资源，查看它关联的指标。 列表将只显示具有指标的资源。
+例如，如果你有 5 个存储帐户，并且你想要知道它们之间使用总空间量，可以创建 （堆积） 面积图显示的个人和所有值的总和中特定点的时间。
 
-   ![指标图像](./media/metrics-charts/00002.png)
+### <a name="multiple-metrics-on-the-same-chart"></a>同一个图表上的多个指标
 
-   > [!NOTE]
-   >如果有多个 Azure 订阅，指标资源管理器将拉取“门户设置 -> 按订阅筛选”列表中选定的所有订阅中的资源。 若要更改此设置，请单击屏幕顶部的“门户设置”齿轮图标，然后选择要使用的订阅。
-
-4. 对于某些资源类型（即存储帐户和虚拟机），选择指标前必须先选择**命名空间**。 每个命名空间都带有自己的指标集，这些指标只与此命名空间有关，而与其他命名空间无关。
-
-   例如，每个 Azure 存储空间都包含针对次级服务“Blob”、“文件”、“队列”和“表”（这些均是存储帐户的组成部分）的指标。 但是，指标“队列消息计数”必然只适用于次级服务“队列”，而不适用于任何其他存储帐户次级服务。
-
-   ![指标图像](./media/metrics-charts/00003.png)
-
-5. 从列表中选择一个指标。 如果知道所需指标的部分名称，可以将其键入，即可看到可用指标的筛选列表：
-
-   ![指标图像](./media/metrics-charts/00004.png)
-
-6. 选择指标后，将显示图表，其中包含对所选指标的默认聚合。 此时，在“指标选择器”之外单击即可将其关闭。 也可以选择将图表切换到不同的聚合。 对于一些指标，可以通过切换聚合选择想要在图表上看到的值。 例如，可以在平均值、最小值和最大值之间切换。 
-
-7. 通过单击“添加指标”并重复步骤 3-6，你可以在同一个图表上添加其他指标。
+首先，[创建新图表](metrics-getting-started.md#create-your-first-metric-chart)。 单击**添加指标**，重复步骤以在同一图表中添加另一个度量值。
 
    > [!NOTE]
    > 通常情况下，你不会想要在一个图表上拥有度量单位不同（即“毫秒”和“千字节”）或刻度差异显著的多个指标。 此时，可考虑使用多个图表。 单击“添加图表”按钮，即可在指标资源管理器中创建多个图表。
+
+### <a name="multiple-charts"></a>多个图表
+
+单击**添加图表**，并使用不同的指标创建另一个图表。
+
+### <a name="order-or-delete-multiple-charts"></a>排序或删除多个图表
+
+若要排序或删除多个图表，请单击省略号 ( **...** ) 要打开图表菜单，然后选择相应的菜单项的符号**向上移动**，**向下移动**，或**删除**。
 
 ## <a name="apply-filters-to-charts"></a>向图表应用筛选器
 
@@ -76,27 +71,7 @@ Azure Monitor 指标资源管理器是 Microsoft Azure 门户的一个组件，�
 
 5. 可以重复步骤 1-4 将多个筛选器应用到同一个图表。
 
-## <a name="multiple-metrics-and-charts"></a>多个指标和图表
 
-此外可以创建图表的绘制多个度量值或同时显示多个指标的图表。 此功能可以：
-
-- 与另一个相关上相同的图形，以查看如何一个值相关联的相关度量值
-- 显示具有不同的邻近的度量单位的指标
-- 以可视方式聚合和比较来自多个资源的指标
-
-例如，如果你有 5 个存储帐户，并且你想要知道它们之间使用总空间量，可以创建 （堆积） 面积图显示的个人和所有值的总和中特定点的时间。
-
-### <a name="multiple-metrics-on-a-chart"></a>图表上的多个指标
-
-首先，[创建新图表](#create-a-new-chart)。 单击**添加指标**，重复步骤以在同一图表中添加另一个度量值。
-
-### <a name="multiple-charts"></a>多个图表
-
-单击**添加图表**，并使用不同的指标创建另一个图表。
-
-### <a name="order-or-delete-multiple-charts"></a>排序或删除多个图表
-
-若要排序或删除多个图表，请单击省略号 ( **...** ) 要打开图表菜单，然后选择相应的菜单项的符号**向上移动**，**向下移动**，或**删除**。
 
 ## <a name="apply-splitting-to-a-chart"></a>将应用到图表拆分
 

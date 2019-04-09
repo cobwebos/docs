@@ -1,32 +1,40 @@
 ---
 title: 文本到语音转换与 Azure 的语音服务
 titleSuffix: Azure Cognitive Services
-description: 文本到语音转换从 Azure 语音服务是一种基于 REST 的服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经声音，选择或创建你自己的自定义语音唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。
+description: Azure 语音服务从文本到语音转换为一个服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经声音，选择或创建你自己的自定义语音唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。
 services: cognitive-services
 author: erhopf
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 52f74bb3cb9e460fc5c572079355f47b4b0bf0a3
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: HT
+ms.openlocfilehash: 597932ae9ad4dba76428fa6a4882c50f6ff98754
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010441"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263105"
 ---
 # <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
-文本到语音转换从 Azure 语音服务是一种基于 REST 的服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经声音，选择或创建你自己的自定义语音唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。 有关完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
+Azure 语音服务从文本到语音转换为一个服务，使你的应用程序、 工具或设备，将文本转换为自然人合成语音。 从标准和神经声音，选择或创建你自己的自定义语音唯一的产品或品牌。 75 标准语音可在多个 45 语言和区域设置，以及 5 神经语音有 4 个语言和区域设置。 有关完整列表，请参阅[支持的语言](language-support.md#text-to-speech)。
 
 文本到语音转换技术，使内容创建者可以以不同方式与他们的用户交互。 通过为用户提供用于呼叫与内容进行交互的选项，文本到语音转换可以提高可访问性。 无论用户有视觉障碍者，学习为残疾人士，还是需要导航信息，同时还能降低，文本到语音转换可以提高现有体验。 文本到语音转换也是有价值的语音机器人和虚拟助手外接程序。
 
+### <a name="standard-voices"></a>标准语音
+
+使用统计参数合成和/或串联合成技术创建标准的语音。 这些语音是高度可识别，听起来很自然。 您可以轻松实现在多个 45 语言中，与范围广泛的语音选项说出您的应用程序。 这些语音提供高发音的准确性，包括对缩写、 首字母缩略词扩展、 日期/时间的解释、 polyphones，和的详细信息的支持。 使用标准的语音用户与你的内容时传递语音交互，从而提高应用程序和服务可访问性。
+
 ### <a name="neural-voices"></a>神经语音
 
+神经语音使用深层神经网络来克服中匹配模式的压力和声调和到计算机使用的语音合成语音的单位中口述语言的传统文本到语音转换系统的限制。 标准文本到语音转换将分解为单独的语言分析和由独立的模型管理的声学预测步骤诗体论。 这可以导致 muffled、 buzzy 语音合成。 我们神经功能执行诗体论预测和语音合成，这会导致更流畅和自然发音的语音。
+
 可以使用神经语音使与聊天机器人和虚拟助手的交流更加自然和专注、可将数字文本（如电子书）转换为有声读物以及可增强车载导航系统。 使用类似于人类的自然诗体论和明确的单词，神经语音显著减少侦听疲劳与 AI 系统进行交互时。 有关神经语音的详细信息，请参阅[支持的语言](language-support.md#text-to-speech)。
+
+若要了解有关神经语音的优势的详细信息，请参阅[Microsoft 的新神经文本到语音转换服务可帮助与人一样说出计算机](https://azure.microsoft.com/blog/microsoft-s-new-neural-text-to-speech-service-helps-machines-speak-like-people/)。
 
 ### <a name="custom-voices"></a>自定义语音
 
@@ -54,11 +62,7 @@ ms.locfileid: "59010441"
 
 我们提供了快速入门旨在让您在 10 分钟内运行代码。 此表包含一系列按语言的文本到语音转换快速入门。
 
-| 快速入门 (REST) | 平台 | API 参考 |
-|------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、 macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | 窗口中，macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | 窗口中，macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+### <a name="sdk-quickstarts"></a>SDK 快速入门
 
 | 快速入门 (SDK) | 平台 | API 参考 |
 |------------|----------|---------------|
@@ -66,12 +70,20 @@ ms.locfileid: "59010441"
 | [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [浏览](https://aka.ms/csspeech/cppref) |
 | [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [浏览](https://aka.ms/csspeech/cppref) |
 
+### <a name="rest-quickstarts"></a>REST 快速入门
+
+| 快速入门 (REST) | 平台 | API 参考 |
+|------------|----------|---------------|
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、 macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | 窗口中，macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | 窗口中，macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+
 ## <a name="sample-code"></a>代码示例
 
 文本到语音转换的示例代码位于 GitHub 上提供。 这些示例涉及最常用编程语言中的文本到语音转换。
 
-* [文本到语音转换示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 * [文本到语音转换示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
+* [文本到语音转换示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
 
 ## <a name="reference-docs"></a>参考文档
 

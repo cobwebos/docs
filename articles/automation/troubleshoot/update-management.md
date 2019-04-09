@@ -4,16 +4,16 @@ description: 了解如何排查更新管理问题
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/05/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: b92ce1d5fb0e0b2b043b1bbfcb78dbaf3dde2e23
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 22e3ea1c90946902fc2a16d947ff2884e5e0a44b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804456"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274580"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>排查更新管理问题
 
@@ -40,7 +40,7 @@ The components for the 'Update Management' solution have been enabled, and now t
 1. 返回到自动化帐户的通信被阻止。
 2. 正在加入的 VM 可能来自未在安装 Microsoft Monitoring Agent 的情况下进行系统准备的克隆计算机。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 1. 访问[网络规划](../automation-hybrid-runbook-worker.md#network-planning)，了解需要允许哪些地址和端口才能使更新管理正常工作。
 2. 如果使用的是克隆的映像：
@@ -63,7 +63,7 @@ The client has permission to perform action 'Microsoft.Compute/virtualMachines/w
 
 当创建的更新部署包含另一个租户中的 Azure 虚拟机时会发生此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 你需要使用以下解决方法来进行安排。 你可以使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 和开关 `-ForUpdate` 来创建计划，然后使用 [New-AzureRmAutomationSoftwareUpdateConfiguration](/powershell/module/azurerm.automation/new-azurermautomationsoftwareupdateconfiguration
 ) cmdlet 并将另一个租户中的计算机传递给 `-NonAzureComputer` 参数。 以下示例展示了如何执行此操作：
@@ -88,11 +88,11 @@ New-AzureRmAutomationSoftwareUpdateConfiguration  -ResourceGroupName $rg -Automa
 
 混合 Runbook 辅助角色可能需要重新注册并重新安装。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 遵循[部署 Windows 混合 Runbook 辅助角色](../automation-windows-hrw-install.md)中的步骤来为 Windows 安装混合辅助角色，或者遵循[部署 Linux 混合 Runbook 辅助角色](../automation-linux-hrw-install.md)中的步骤为 Linux 进行安装。
 
-## <a name="windows"></a>窗口
+## <a name="windows"></a>Windows
 
 如果在尝试在虚拟机上载入解决方案时遇到问题，请查看本地计算机“应用程序和服务日志”下的“Operations Manager”事件日志中是否存在事件 ID 为 4502、事件消息包含 Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent 的事件。
 
@@ -112,7 +112,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 计算机已载入到其他进行更新管理的工作区。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 通过[删除混合 runbook 组](../automation-hybrid-runbook-worker.md#remove-a-hybrid-worker-group)对计算机上的旧项目进行清理，然后重试。
 
@@ -138,7 +138,7 @@ The certificate presented by the service <wsid>.oms.opinsights.azure.com was not
 
 可能是因为代理、网关或防火墙阻止了网络通信。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 检查网络并确保允许适当的端口和地址。 有关更新管理和混合 Runbook 辅助角色所需的端口和地址列表，请参阅[网络要求](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -156,7 +156,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 混合 Runbook 辅助角色无法生成自签名证书
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 请验证系统帐户是否具有对文件夹 C:\ProgramData\Microsoft\Crypto\RSA 的读取权限，然后重试。
 
@@ -170,7 +170,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 计算机中的 Windows 更新或 WSUS 配置不正确。 更新管理依赖于 Windows 更新或 WSUS 来提供所需的更新、修补程序的状态，以及所部署的修补程序的结果。 如果没有该信息，则更新管理无法正确报告所需的或已安装的修补程序。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 双击显示为红色的异常，查看完整的异常消息。 查看下表，了解可能采取的解决方案或措施：
 
@@ -181,6 +181,8 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 |`0x8024402C`     | 如果使用 WSUS 服务器，请确保注册表项 `HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate` 下 `WUServer` 和 `WUStatusServer` 的注册表值具有正确的 WSUS 服务器。        |
 |`The service cannot be started, either because it is disabled or because it has no enabled devices associated with it. (Exception from HRESULT: 0x80070422)`     | 请确保 Windows 更新服务 (wuauserv) 正在运行，并且未禁用。        |
 |任何其他一般异常     | 在 Internet 上搜索可能的解决方案，并与本地 IT 支持人员合作。         |
+
+查看`windowsupdate.log`可以帮助您尝试确定可能的原因。 有关如何读取日志的详细信息，请参阅[如何读取 Windowsupdate.log 文件](https://support.microsoft.com/en-ca/help/902093/how-to-read-the-windowsupdate-log-file)。
 
 此外，你可以下载并运行 [Windows 更新疑难解答](https://support.microsoft.com/help/4027322/windows-update-troubleshooter)，以检查计算机上的 Windows 更新是否存在任何问题。
 
@@ -199,7 +201,7 @@ Unable to Register Machine for Patch Management, Registration Failed with Except
 
 Linux 混合辅助角色运行状况不正常。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 请创建以下日志文件的副本并保留它以用于故障排除：
 
@@ -221,7 +223,7 @@ Linux 混合辅助角色运行状况不正常。
 * 特定包可能干扰了基于云的修补
 * 其他原因
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 如果更新运行在 Linux 上成功启动后又失败，请检查运行中受影响的计算机的作业输出。 可以从计算机的包管理器查找特定的错误消息，可以对这些错误消息进行调查并对其采取操作。 更新管理要求包管理器正常运行才能成功进行更新部署。
 
@@ -239,4 +241,4 @@ Linux 混合辅助角色运行状况不正常。
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

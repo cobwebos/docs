@@ -1,20 +1,20 @@
 ---
 title: ESP8266 到云 - 将 Feather HUZZAH ESP8266 连接到 Azure IoT 中心 | Microsoft Docs
 description: 在本教程中了解如何设置 Adafruit Feather HUZZAH ESP8266 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
-author: rangv
-manager: nasing
+author: wesmc7777
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
-ms.author: rangv
-ms.openlocfilehash: 82e31c498c6148454a5790a6eb4b82e3a2300a92
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.author: wesmc
+ms.openlocfilehash: 928860cd9b6493200ed8a14b7654f6a6f32c45d5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58847064"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259382"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
 
@@ -128,7 +128,7 @@ ms.locfileid: "58847064"
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` 是在上一步骤中获取的组所有者名称。 `<username>` 是 Ubuntu 用户名。
+   `<group-owner-name>` 是你在上一步中获取的组所有者名称。 `<username>` 是 Ubuntu 用户名。
 
 3. 需要注销 Ubuntu，并重新登录，更改才会显示。
 

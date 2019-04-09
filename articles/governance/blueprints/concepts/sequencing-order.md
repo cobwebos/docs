@@ -1,7 +1,6 @@
 ---
 title: 了解部署排序顺序
 description: 了解有关蓝图定义所经历的生命周期和有关每个阶段的详细信息。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/25/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 8451b858717e1a3e66214f66db624ee41f6da375
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434800"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266182"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -26,7 +25,7 @@ Azure 蓝图使用**序列化顺序**处理蓝图定义的分配时确定的顺�
 
 JSON 示例中的有些变量需要用自己的值替换：
 
-- `{YourMG}` - 替换为管理组的名称
+- `{YourMG}` -替换为管理组的名称
 
 ## <a name="default-sequencing-order"></a>默认排序顺序
 
@@ -47,7 +46,7 @@ JSON 示例中的有些变量需要用自己的值替换：
 
 当撰写大型蓝图定义时，可能有必要为按特定顺序创建资源。 蓝图定义包含多个 Azure 资源管理器模板时，此方案的最常见的使用模式。 蓝图通过允许定义排序顺序来处理此模式。
 
-排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 蓝图定义中，为资源组和项目对象支持此属性。 `dependsOn` 是在创建特定项目之前需要创建的项目名称的字符串数组。
+排序是通过在 JSON 中定义 `dependsOn` 属性来实现的。 蓝图定义中，为资源组和项目对象支持此属性。 `dependsOn` 是特定项目需要它创建之前创建的项目名称的字符串数组。
 
 ### <a name="example---ordered-resource-group"></a>示例-排序资源组
 

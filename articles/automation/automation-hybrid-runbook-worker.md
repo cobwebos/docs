@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 01/31/2019
+ms.date: 04/05/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 5f98cf51b618686e3c608535667993e9d5f9e939
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c91bf389f5c63b95e5b68784b6657e92b109a46
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852910"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265859"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>使用混合 Runbook 辅助角色使数据中心或云端的资源实现自动化
 
@@ -97,11 +97,11 @@ sudo python onboarding.py --deregister --endpoint="<URL>" --key="<PrimaryAccessK
 
 ### <a name="hybrid-worker-role"></a>混合辅助角色
 
-若要连接到并使用 Azure Monitor 日志注册混合 Runbook 辅助角色，它必须有权访问的端口号和此部分所述的 Url。 此访问权限是到顶部[端口和 Url 所需的 Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md)以连接到 Azure Monitor 日志。
+若要连接到并将注册到 Azure 自动化混合 Runbook 辅助角色，它必须有权访问的端口号和此部分所述的 Url。 此访问权限是到顶部[端口和 Url 所需的 Microsoft Monitoring Agent](../azure-monitor/platform/agent-windows.md)以连接到 Azure Monitor 日志。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-如果代理与 Azure Monitor 服务之间的通信使用代理服务器，请确保相应的资源是否可访问。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
+如果代理与 Azure 自动化服务之间的通信使用代理服务器，请确保相应的资源是否可访问。 混合 Runbook 辅助角色和自动化服务中请求的超时时间为 30 秒。 在 3 次尝试后，请求将失败。 如果使用防火墙来限制对 Internet 的访问，则必须将防火墙配置为允许访问。 如果将 Log Analytics 网关用作代理，请确保为混合辅助角色配置 Log Analytics 网关。 有关如何执行此操作的说明，请参阅[为自动化混合辅助角色配置 Log Analytics 网关](https://docs.microsoft.com/azure/log-analytics/log-analytics-oms-gateway)。
 
 混合 Runbook 辅助角色与自动化通信时需要以下端口和 URL：
 
