@@ -66,8 +66,6 @@ items:
       href: domains-admin-takeover.md
     - name: Azure AD Connect
       href: /azure/active-directory/connect/active-directory-aadconnect?context=azure/active-directory/users-groups-roles/context/ugr-context
-    - name: 配置公司品牌
-      href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
   - name: 管理组
     items:
     - name: 使用组管理访问权限
@@ -140,6 +138,12 @@ items:
         href: directory-emergency-access.md
     - name: 管理单元
       href: directory-administrative-units.md
+  - name: 管理登录
+    items:
+    - name: 自定义公司品牌
+      href: /azure/active-directory/fundamentals/customize-branding?context=azure/active-directory/users-groups-roles/context/ugr-context
+    - name: 主领域发现
+      href: signin-realm-discovery.md
   - name: 将服务与 Azure AD 集成
     items:
     - name: 将 LinkedIn 与 Azure AD 集成
@@ -165,9 +169,9 @@ items:
     href: https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0
   - name: Azure AD 服务限制
     href: directory-service-limits-restrictions.md
-ms.openlocfilehash: 34c4dcef7b986fdec7a3d611c6f42917542b4271
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
+ms.openlocfilehash: 7bf7fa66c5e12660bc0dd56d4b52a9ba7638826e
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55509246"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006970"

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sutalasi
-ms.openlocfilehash: 4f558d8d1e5e4e743e6d44cca1a804b3e5898b30
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 18dc7ea513d1e3787dbd38b1ab687be607a79f8b
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58443422"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006813"
 ---
 # <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery-to-azure"></a>配置和管理用于从 VMware 灾难恢复到 Azure 的复制策略
 本文介绍如何配置复制策略，以便使用 [Azure Site Recovery](site-recovery-overview.md) 将 VMware VM 复制到 Azure。
@@ -45,7 +45,7 @@ ms.locfileid: "58443422"
 1. 选择**管理** > **Site Recovery 基础结构** > **复制策略**。
 2. 选择你想要修改的复制策略。
 3. 单击**编辑设置**，并更新的 RPO 阈值/恢复点保留期小时/应用一致的快照频率字段为必需。
-4. 如果你想要关闭的应用程序一致性点生成，请选择"关"的字段的下拉列表中的值**应用程序一致性快照频率**。
+4. 如果你想要关闭的应用程序一致性点生成，请选择"关"字段的下拉列表中的值**应用程序一致性快照频率**。
 5. 单击“ **保存**”。 应在 30 到 60 秒内更新策略。
 
 ## <a name="disassociate-or-delete-a-replication-policy"></a>取消关联或删除复制策略

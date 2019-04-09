@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 03/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9ce1bb6df0a4c062ee41d2a58adf1b7fc93d9805
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 896553890252572e4b5524d047893953b78a4ba1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286238"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010085"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Azure 磁盘加密先决条件
 
@@ -29,7 +29,7 @@ ms.locfileid: "58286238"
 ## <a name="bkmk_OSs"></a>支持的操作系统
 以下操作系统支持 Azure 磁盘加密：
 
-- Windows Server 版本：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016。
+- Windows Server 版本：在 Azure 库中找到 Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2 和更高版本的 Windows。
   - 对于 Windows Server 2008 R2，必须安装 .NET Framework 4.5 才能在 Azure 中启用加密。 通过安装可选更新“适用于 Windows Server 2008 R2 x64 系统的 Microsoft .NET Framework 4.5.2 ([KB2901983](https://support.microsoft.com/kb/2901983))”，从 Windows 更新安装该组件。    
 - Windows 客户端版本：Windows 8 客户端和 Windows 10 客户端。
 - 仅基于特定 Azure 库的 Linux 服务器分发和版本支持 Azure 磁盘加密。 有关当前受支持版本的列表，请参阅 [Azure 磁盘加密常见问题解答](azure-security-disk-encryption-faq.md#bkmk_LinuxOSSupport)。
@@ -301,7 +301,7 @@ Azure 平台需要访问 Key Vault 中的加密密钥或机密，才能使这些
  
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [启用适用于 Windows 的 Azure 磁盘加密](azure-security-disk-encryption-windows.md)
+> [启用 Windows 的 Azure 磁盘加密](azure-security-disk-encryption-windows.md)
 
 > [!div class="nextstepaction"]
 > [启用适用于 Linux 的 Azure 磁盘加密](azure-security-disk-encryption-linux.md)

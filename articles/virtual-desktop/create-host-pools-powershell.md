@@ -5,22 +5,22 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: bd46e5f7428bab58508521b2c7d4d7cca25d689b
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439067"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258464"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
 
-主机池是一系列一个或多个相同的虚拟机在 Windows 虚拟桌面预览租户环境中。 每个主机池可以包含用户可以与交互，就像在物理桌面上的应用程序组。
+主机池是 Windows 虚拟桌面预览版租户环境中一个或多个相同虚拟机的集合。 每个主机池可以包含一个应用组，用户可以像在物理桌面上一样与该应用组交互。
 
 ## <a name="use-your-powershell-client-to-create-a-host-pool"></a>使用 PowerShell 客户端创建主机池
 
-首先，[下载并导入的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)如果尚未在 PowerShell 会话中使用。
+首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
 
 运行以下 cmdlet，以登录到 Windows 虚拟桌面环境
 
@@ -112,9 +112,12 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
      - 选择**文件**，然后**打开...**，然后找到将下载的文件中的 PowerShell 脚本并将其打开。
      - 选择绿色播放按钮来运行脚本。
 
+>[!IMPORTANT]
+>若要帮助保护您的 Windows 虚拟桌面环境在 Azure 中，我们建议不在 Vm 上打开端口 3389 的入站。 Windows 虚拟桌面不需要开放的入站的端口 3389，用户可以访问主机池的 Vm。 如果您必须打开端口 3389 以进行故障排除，我们建议你使用[中实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。
+
 ## <a name="next-steps"></a>后续步骤
 
-现在，所做的主机池，可以用 RemoteApps 填充它。 若要了解有关如何管理 Windows 虚拟桌面中的应用的详细信息，请参阅管理应用程序组教程。
+现在，所做的主机池，可以用 RemoteApps 填充它。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请参阅“管理应用组”教程。
 
 > [!div class="nextstepaction"]
 > [管理应用程序组教程](./manage-app-groups.md)

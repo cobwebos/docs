@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c68bf4cf8bcc50069f3741ac0f1746363c1f82ac
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57861802"
 documentType: LandingData
 title: 语音服务文档
 metadata:
@@ -26,233 +20,230 @@ metadata:
 abstract:
   description: 了解如何使用语音服务和语音 SDK 向应用添加支持语音的功能。 可以使用语音 SDK 向应用添加<i>语音转文本</i>（语音识别/SR）、<i>意向</i>、<i>翻译</i>和<i>文本转语音</i> (TTS) 功能。 语音服务还具有 REST API，这些 API 可与任何能够发出 HTTP 请求的编程语言配合使用。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/speech-service/overview
+            html: <p>了解 Azure 语音服务。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是语音服务？
+          - href: /azure/cognitive-services/speech-service/get-started
+            html: <p>免费注册。</p>
+            image:
+              src: ../media/index/i_get-started.svg
+            title: 注册语音服务
+          - href: /azure/cognitive-services/speech-service/speech-devices-sdk
+            html: <p>了解支持语音的硬件参考。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 语音设备 SDK
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/speech-service/overview
-      html: <p>了解 Azure 语音服务。</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是语音服务？
-    - href: /azure/cognitive-services/speech-service/get-started
-      html: <p>免费注册。</p>
-      image:
-        src: ../media/index/i_get-started.svg
-      title: 注册语音服务
-    - href: /azure/cognitive-services/speech-service/speech-devices-sdk
-      html: <p>了解支持语音的硬件参考。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 语音设备 SDK
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过选择箭头链接，了解如何下载、安装和使用 SDK <img src="media/index/link.jpg" height="15" width="15"></img>.
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/uwp.jpg
-    - image:
-        src: media/index/logo_csharp.svg
-    - image:
-        src: media/index/logo_cplusplus.svg
-    - image:
-        src: media/index/logo_netcore.svg
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_unity.svg
-    - image:
-        src: media/index/logo_java.jpg
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_objc.jpg
-    - image:
-        src: media/index/logo_nodejs.svg
-    - image:
-        src: media/index/logo_js.svg
-    - image:
-        src: media/index/logo_rest.svg
-    rows:
-    - title: Windows 10 (x64)
-      values:
-      - href: quickstart-csharp-uwp
-      - href: quickstart-csharp-windows
-      - href: quickstart-cpp-windows
-      - href: quickstart-csharp-dotnetcore-windows
-      - href: quickstart-csharp-unity
-      - href: quickstart-java-jre
-      - href: quickstart-python
-      - href: 
-      - href: quickstart-js-node
-      - href: 
-    - title: Windows 10 (x86)
-      values:
-      - href: quickstart-csharp-uwp
-      - href: quickstart-csharp-windows
-      - href: quickstart-cpp-windows
-      - href: quickstart-csharp-dotnetcore-windows
-      - href: quickstart-csharp-unity
-      - href: 
-      - href: quickstart-python
-      - href: 
-      - href: quickstart-js-node
-      - href: 
-    - title: Linux (x64)
-      values:
-      - href: 
-      - href: 
-      - href: quickstart-cpp-linux
-      - href: quickstart-csharp-dotnetcore-windows
-      - href: 
-      - href: quickstart-java-jre
-      - href: quickstart-python
-      - href: 
-      - href: quickstart-js-node
-      - href: 
-    - title: Linux (x86)
-      values:
-      - href: 
-      - href: 
-      - href: quickstart-cpp-linux
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-js-node
-      - href: 
-    - title: Android (ARM32/64)
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-csharp-unity
-      - href: quickstart-java-android
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: Android (x86/x64)
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-csharp-unity
-      - href: quickstart-java-android
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: iOS (ARM64)
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-objectivec-ios
-      - href: 
-      - href: 
-    - title: macOS (x64)
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-python
-      - href: 
-      - href: quickstart-js-node
-      - href: 
-    - title: 设备 SDK (ARM32)
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: speech-devices-sdk
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: 浏览器
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: quickstart-js-browser
-    - title: REST
-      values:
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-      - href: rest-apis
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用语音服务开发应用程序：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 通过选择箭头链接，了解如何下载、安装和使用 SDK <img src="media/index/link.jpg" height="15" width="15"></img>.
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/uwp.jpg
+          - image:
+              src: media/index/logo_csharp.svg
+          - image:
+              src: media/index/logo_cplusplus.svg
+          - image:
+              src: media/index/logo_netcore.svg
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_unity.svg'
+          - image:
+              src: media/index/logo_java.jpg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_objc.jpg
+          - image:
+              src: media/index/logo_nodejs.svg
+          - image:
+              src: media/index/logo_js.svg
+          - image:
+              src: media/index/logo_rest.svg
+        rows:
+          - title: Windows 10 (x64)
+            values:
+              - href: quickstart-csharp-uwp
+              - href: quickstart-csharp-windows
+              - href: quickstart-cpp-windows
+              - href: quickstart-csharp-dotnetcore-windows
+              - href: quickstart-csharp-unity
+              - href: quickstart-java-jre
+              - href: quickstart-python
+              - href: null
+              - href: quickstart-js-node
+              - href: null
+          - title: Windows 10 (x86)
+            values:
+              - href: quickstart-csharp-uwp
+              - href: quickstart-csharp-windows
+              - href: quickstart-cpp-windows
+              - href: quickstart-csharp-dotnetcore-windows
+              - href: quickstart-csharp-unity
+              - href: null
+              - href: quickstart-python
+              - href: null
+              - href: quickstart-js-node
+              - href: null
+          - title: Linux (x64)
+            values:
+              - href: null
+              - href: null
+              - href: quickstart-cpp-linux
+              - href: quickstart-csharp-dotnetcore-windows
+              - href: null
+              - href: quickstart-java-jre
+              - href: quickstart-python
+              - href: null
+              - href: quickstart-js-node
+              - href: null
+          - title: Linux (x86)
+            values:
+              - href: null
+              - href: null
+              - href: quickstart-cpp-linux
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: quickstart-js-node
+              - href: null
+          - title: Android (ARM32/64)
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: quickstart-csharp-unity
+              - href: quickstart-java-android
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Android (x86/x64)
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: quickstart-csharp-unity
+              - href: quickstart-java-android
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: iOS (ARM64)
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: quickstart-objectivec-ios
+              - href: null
+              - href: null
+          - title: macOS (x64)
+            values:
+              - href: null
+              - href: null
+              - href: quickstart-cpp-macos
+              - href: quickstart-csharp-dotnetcore-windows
+              - href: null
+              - href: quickstart-java-jre
+              - href: quickstart-python
+              - href: quickstart-objective-c-macos
+              - href: quickstart-js-node
+              - href: null
+          - title: 设备 SDK (ARM32)
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: speech-devices-sdk
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: 浏览器
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: quickstart-js-browser
+          - title: REST
+            values:
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+              - href: rest-apis
+  - title: 分步教程
     items:
-    - html: <a href="speech-to-text-sample.md">语音转文本 (SR)</a><br/>
-    - html: <a href="intent.md">意向识别</a><br/>
-    - html: <a href="translation.md">翻译</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 在 GitHub 上查找语音服务的示例：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用语音服务开发应用程序：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="speech-to-text-sample.md">语音转文本 (SR)</a><br/>
+          - html: <a href="intent.md">意向识别</a><br/>
+          - html: <a href="translation.md">翻译</a>
+          - html: <a href="quickstart-text-to-speech-dotnet-windows.md">文本转语音</a><br/>
+  - title: 示例
     items:
-    - html: <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">服务 SDK 示例</a><br/>
-    - html: <a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">设备 SDK 示例</a><br/>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 在 GitHub 上查找语音服务的示例：
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">服务 SDK 示例</a><br/>'
+          - html: '<a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">设备 SDK 示例</a><br/>'
+  - title: 引用
     items:
-    - title: SDK 参考
-      html: >
-        <p><a href="https://aka.ms/csspeech/csharpref">C# API（UWP、.NET 和 Unity）</a></p>
-
-        <p><a href="https://aka.ms/csspeech/cppref">C + + API</a></p>
-
-        <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
-
-        <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
-
-        <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
-
-        <p><a href="https://aka.ms/csspeech/javascriptref">JavaScript API</a></p>
-    - title: REST API
-      html: >
-        <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST API</a></p>
-    - title: PowerShell
-      html: >
-        <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: SDK 参考
+            html: |
+              <p><a href="https://aka.ms/csspeech/csharpref">C# API（UWP、.NET 和 Unity）</a></p>
+              <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
+              <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
+              <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
+              <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>
+              <p><a href="https://aka.ms/csspeech/javascriptref">JavaScript API</a></p>
+          - title: REST API
+            html: |
+              <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">REST API</a></p>
+          - title: PowerShell
+            html: |
+              <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
+          - title: CLI
+            html: |
+              <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>

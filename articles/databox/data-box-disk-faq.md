@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 02/26/2019
+ms.date: 04/01/2019
 ms.author: alkohli
-ms.openlocfilehash: 97794675f3d489e1154d9c327c18d40708dd5b53
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877847"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58892324"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -42,7 +42,7 @@ A. 使用 Azure Data Box 磁盘能够快速、经济、安全地将 TB 量级的
 A. 如果需要将 40 TB（或更少）的数据传输到 Azure，则使用 Data Box Disk 会很有利。
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>问： Data Box 磁盘的价格是多少？
-A. 有关 Data Box Disk 的价格，请访问[定价页](https://azure.microsoft.com/pricing/details/storage/databox/disk/)。
+A. 有关 Data Box Disk 的价格，请访问[定价页](https://azure.microsoft.com/pricing/details/databox/disk/)。
 
 ### <a name="q-how-do-i-get-data-box-disks"></a>问： 如何获取 Data Box 磁盘？ 
 A.  若要获取 Azure Data Box Disk，请登录到 Azure 门户并创建磁盘的 Data Box 订单。 提供联系信息和通知详细信息。 在你提交订单后，我们会在 10 天内将磁盘寄送给你，具体时间取决于磁盘的供货情况。
@@ -170,6 +170,6 @@ A. 是的。 你的数据已上传到 Azure，但如果看不到任何已指定�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 请查看 [Data Box 系统要求](data-box-disk-system-requirements.md)。
-- 了解 [Data Box 限制](data-box-disk-limits.md)。
+- 查看 [Data Box Disk 系统要求](data-box-disk-system-requirements.md)。
+- 了解 [Data Box 磁盘限制](data-box-disk-limits.md)。
 - 在 Azure 门户中快速部署 [Azure Data Box 磁盘](data-box-disk-quickstart-portal.md)。

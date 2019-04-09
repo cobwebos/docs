@@ -12,22 +12,22 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
-ms.openlocfilehash: d9de47ad83f37fa976c3816a0cb2e3e3beaa5472
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437571"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010110"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
 
 本指南包含有关使用 JavaScript 编写 Azure Functions 的复杂性的信息。
 
-JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是`context`对象，用于接收和发送绑定数据，日志记录，以及与运行时通信。
+JavaScript 函数是导出的 `function`，它将在触发时执行（[触发器在 function.json 中配置](functions-triggers-bindings.md)）。 传递给每个函数的第一个参数是 `context` 对象，该对象用于接收和发送绑定数据、日志记录以及与运行时通信。
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 完成函数快速入门，以创建你的第一个函数，请使用[Visual Studio Code](functions-create-first-function-vs-code.md)或[在门户中](functions-create-first-azure-function.md)。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 完成有关使用 [Visual Studio Code](functions-create-first-function-vs-code.md) 或[门户](functions-create-first-azure-function.md)创建第一个函数的 Functions 快速入门。
 
-这篇文章还支持[TypeScript 应用程序开发](#typescript)。
+本文也支持 [TypeScript 应用开发](#typescript)。
 
 ## <a name="folder-structure"></a>文件夹结构
 
@@ -110,13 +110,13 @@ module.exports = async function (context, req) {
 
 ### <a name="inputs"></a>输入
 在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
- - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 `name`中定义的属性*function.json*不需要以匹配名称的参数，尽管它应。
+ - **_[建议]_ 为参数传递给函数。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 *function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **以 [`context.bindings`](#contextbindings-property) 对象的成员的形式。** 每个成员由 *function.json* 中定义的 `name` 属性命名。
+ - **作为的成员[ `context.bindings` ](#contextbindings-property)对象。** 每个成员由 *function.json* 中定义的 `name` 属性命名。
  
    ```javascript
    module.exports = async function(context) { 
@@ -126,7 +126,7 @@ module.exports = async function (context, req) {
    };
    ```
    
- - **使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 对象以输入的形式。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
+ - **作为输入使用 JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx)对象。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
  
    ```javascript
    module.exports = async function(context) { 
@@ -139,9 +139,9 @@ module.exports = async function (context, req) {
 ### <a name="outputs"></a>Outputs
 函数可通过多种方式写入输出（`direction === "out"` 的绑定）。 在所有情况下，*function.json* 中定义的绑定属性 `name` 对应于函数中所写入到的对象成员的名称。 
 
-（不结合使用这些方法） 的以下方法之一，可以将数据分配给输出绑定：
+可通过以下方式之一将数据分配到输出绑定（不要结合使用这些方法）：
 
-- **_[有多个输出时建议使用]_ 返回对象。** 如果使用异步函数/返回 Promise 的函数，可以返回分配有输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
+- **_[建议用于多个输出]_ 返回的对象。** 如果将异步/Promise 返回函数，可以返回具有分配的输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ module.exports = async function (context, req) {
   ```
 
   如果使用同步函数，可以使用 [`context.done`](#contextdone-method) 返回此对象（请参阅示例）。
-- **_[有单个输出时建议使用]_ 直接返回值，并使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
+- **_[建议用于单个输出]_ 直接返回值和使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
 - **向 `context.bindings` 赋值** 可以直接向 context.bindings 赋值。
 
   ```javascript
@@ -352,7 +352,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 一个包含请求正文的对象。               |
 | _headers_     | 一个包含请求标头的对象。                   |
-| _method_      | 请求的 HTTP 方法。                                |
+| _方法_      | 请求的 HTTP 方法。                                |
 | _originalUrl_ | 请求的 URL。                                        |
 | _params_      | 一个包含请求的路由参数的对象。 |
 | _query_       | 一个包含查询参数的对象。                  |
@@ -395,9 +395,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **_[仅响应]_ 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 是隐式调用的。
++ **[仅响应] 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 隐式调用。
 
-+ **_[仅响应]_ 通过调用 `context.done()`。** 有一种特殊的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
++ **[仅响应] 通过调用 `context.done()`。** 有一种特殊的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
 
     ```json
     {
@@ -494,7 +494,7 @@ function GetEnvironmentVariable(name)
 
 默认情况下通过 `index.js`（与其对应的 `function.json` 共享相同父目录的文件）执行 JavaScript 函数。
 
-`scriptFile` 可用于获取以下示例所示的文件夹结构：
+`scriptFile` 可用于获取文件夹结构，如以下示例所示：
 
 ```
 FunctionApp
@@ -552,57 +552,57 @@ const myObj = new MyObj();
 module.exports = myObj;
 ```
 
-在此示例中，务必要注意虽然正在导出对象，但没有用于保留两次执行之间的状态的保证。
+请在此示例中务必注意，尽管正在导出对象，但无法保证可保留两次执行之间的状态。
 
 ## <a name="local-debugging"></a>本地调试
 
-使用启动时`--inspect`参数，Node.js 进程侦听指定端口上的调试客户端。 在 Azure Functions 2.x，可以指定要传递到通过添加环境变量或应用设置来运行你的代码的 Node.js 进程参数`languageWorkers:node:arguments = <args>`。 
+使用 `--inspect` 参数启动时，Node.js 进程会在指定端口上侦听调试客户端。 在 Azure Functions 2.x 中，可以指定要传递到运行代码的 Node.js 进程中的参数，方法是添加环境变量或应用设置 `languageWorkers:node:arguments = <args>`。 
 
-若要在本地进行调试，添加`"languageWorkers:node:arguments": "--inspect=5858"`下`Values`在你[local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file)文件，并将调试器附加到端口 5858。
+若要在本地进行调试，请在 [local.settings.json](https://docs.microsoft.com/azure/azure-functions/functions-run-local#local-settings-file) 文件的 `Values` 下添加 `"languageWorkers:node:arguments": "--inspect=5858"`，然后将调试程序附加到端口 5858。
 
-使用 VS Code 中，调试时`--inspect`参数会自动添加使用`port`项目的 launch.json 文件中的值。
+使用 VS Code 进行调试时，系统会使用项目的 launch.json 文件中的 `port` 值自动添加 `--inspect` 参数。
 
-在版本 1.x 中，设置`languageWorkers:node:arguments`不起作用。 可以使用选择的调试端口[ `--nodeDebugPort` ](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start)上 Azure Functions Core Tools 的参数。
+在版本 1.x 中，设置 `languageWorkers:node:arguments` 将无效。 可以在 Azure Functions Core Tools 中使用 [`--nodeDebugPort`](https://docs.microsoft.com/azure/azure-functions/functions-run-local#start) 参数来选择调试端口。
 
 ## <a name="typescript"></a>TypeScript
 
-当针对版本 2.x 的 Functions 运行时，同时[Visual Studio Code 的 Azure Functions](functions-create-first-function-vs-code.md)和[Azure Functions Core Tools](functions-run-local.md)可用于创建使用模板支持的函数应用TypeScript 函数应用项目。 该模板会生成`package.json`和`tsconfig.json`轻松地转译，项目文件运行，并发布具有这些工具的 TypeScript 代码中的 JavaScript 函数。
+如果将目标限定为 2.x 版 Functions 运行时，可以在 [Azure Functions for Visual Studio Code](functions-create-first-function-vs-code.md) 和 [Azure Functions Core Tools](functions-run-local.md) 中使用支持 TypeScript 函数应用项目的模板创建函数应用。 该模板会生成 `package.json` 和 `tsconfig.json` 项目文件，以方便使用这些工具从 TypeScript 代码转译、运行和发布 JavaScript 函数。
 
-一个已生成`.funcignore`文件用于指示项目发布到 Azure 时排除哪些文件。  
+生成的 `.funcignore` 文件用于指示将项目发布到 Azure 时会排除哪些文件。  
 
-TypeScript 文件 (.ts) 转译为 JavaScript (.js) 文件位于`dist`输出目录。 使用 TypeScript 模板[`scriptFile`参数](#using-scriptfile)中`function.json`以指示相应的.js 文件中的位置`dist`文件夹。 使用模板设置输出位置`outDir`中的参数`tsconfig.json`文件。 如果更改此设置或文件夹的名称，则运行时不能以查找要运行的代码。
+TypeScript 文件 (.ts) 转译为 `dist` 输出目录中的 JavaScript (.js) 文件。 TypeScript 模板使用 `function.json` 中的 [`scriptFile` 参数](#using-scriptfile)来指示 `dist` 文件夹中相应 .js 文件的位置。 模板使用 `tsconfig.json` 文件中的 `outDir` 参数设置输出位置。 如果更改此设置或文件夹的名称，则运行时将找不到要运行的代码。
 
 > [!NOTE]
-> 用于 TypeScript 的实验性支持存在版本 1.x 的 Functions 运行时。 实验性版本 transpiles TypeScript 文件时调用该函数的 JavaScript 文件中。 在版本 2.x 中，此实验性支持已被取代，由工具驱动方法初始化主机之前执行的转译和在部署过程。
+> 1.x 版 Functions 运行时提供 TypeScript 的试验性支持。 调用函数时，试验版本会将 TypeScript 文件转译为 JavaScript 文件。 在版本 2.x 中，此试验性支持已由工具驱动的方法取代，该方法在初始化主机之前以及部署期间执行转译。
 
-在本地开发和部署从 TypeScript 项目的方式取决于你的开发工具。
+在本地通过 TypeScript 项目进行开发和部署的方式取决于所用的开发工具。
 
 ### <a name="visual-studio-code"></a>Visual Studio Code
 
-[Visual Studio Code 的 Azure Functions](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions)扩展允许你使用 TypeScript 函数的开发。 Core Tools 是 Azure Functions 扩展的要求。
+[Azure Functions for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions) 扩展允许使用 TypeScript 开发函数。 Azure Functions 扩展要求安装 Core Tools。
 
-若要在 Visual Studio Code 中创建一个 TypeScript 函数应用，只需选择`TypeScript`时创建的 function app 和系统要求选择的语言。
+若要在 Visual Studio Code 中创建 TypeScript 函数应用，只需在创建函数应用时选择 `TypeScript`，系统将要求你选择语言。
 
-当您按下**F5**运行应用程序本地的转译完成初始化主机 (func.exe) 之前。 
+按下 **F5** 在本地运行应用时，会先执行转译，然后再初始化主机 (func.exe)。 
 
-当将函数应用部署到 Azure 中使用**部署函数应用到...** 按钮时，Azure Functions 扩展插件首先从 TypeScript 源文件生成 JavaScript 文件的生产就绪版本。
+使用“部署到函数应用...”按钮将函数应用部署到 Azure 时，Azure Functions 扩展首先会基于 TypeScript 源文件生成一个可随时在生产环境中使用的 JavaScript 文件版本。
 
-### <a name="azure-functions-core-tools"></a>Azure Functions 核心工具
+### <a name="azure-functions-core-tools"></a>Azure Functions Core Tools
 
-若要创建使用 Core Tools 一个 TypeScript 函数应用项目，必须创建函数应用时指定的 typescript 语言选项。 可以通过以下方式之一执行此操作：
+若要使用 Core Tools 创建 TypeScript 函数应用项目，必须在创建函数应用时指定 typescript 语言选项。 可通过以下方式之一执行此操作：
 
-- 运行`func init`命令中，选择`node`作为语言堆栈，然后选择`typescript`。
+- 运行 `func init` 命令，选择 `node` 作为语言堆栈，然后选择 `typescript`。
 
 - 运行 `func init --worker-runtime typescript` 命令。
 
-若要运行函数应用程序代码使用在本地核心工具，使用`npm start`命令，而不是`func host start`。 `npm start`命令等同于以下命令：
+若要使用 Core Tools 在本地运行函数应用代码，请使用 `npm start` 命令，而不要使用 `func host start`。 `npm start` 命令等效于以下命令：
 
 - `npm run build`
 - `func extensions install`
 - `tsc`
 - `func start`
 
-在使用之前[ `func azure functionapp publish` ]命令将部署到 Azure，必须先运行`npm run build:production`命令。 此命令从 TypeScript 源文件，可以使用部署创建 JavaScript 文件的生产就绪版本[ `func azure functionapp publish` ]。
+在使用 [`func azure functionapp publish`] 命令部署到 Azure 之前，必须先运行 `npm run build:production` 命令。 此命令基于 TypeScript 源文件创建一个可通过 [`func azure functionapp publish`] 部署的、随时可在生产环境中使用的 JavaScript 文件版本。
 
 ## <a name="considerations-for-javascript-functions"></a>JavaScript 函数的注意事项
 
@@ -624,8 +624,8 @@ Azure Functions 应用程序中使用特定于服务的客户端时，不创建�
 
 有关详细信息，请参阅以下资源：
 
-+ [Azure Functions 最佳实践](functions-best-practices.md)
-+ [Azure Functions 开发人员参考](functions-reference.md)
++ [Azure Functions 最佳做法](functions-best-practices.md)
++ [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
 + [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
 [func azure functionapp 发布]: functions-run-local.md#project-file-deployment

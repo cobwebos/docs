@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50349d008e3c2a7a8a09fd3e2d9e96097acc0c9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 18b575b74c80499f2ddd6648bf051b5245077d2f
+ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855812"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58906134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>教程：Azure Active Directory 与 Jamf Pro 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "57855812"
 
 要配置 Jamf Pro 与 Azure AD 的集成，需要从库中将 Jamf Pro 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Jamf Pro，请执行以下步骤：
+**若要从库中添加 Jamf Pro，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,11 +105,11 @@ ms.locfileid: "57855812"
 
     ![Jamf Pro 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.jamfcloud.com/saml/SSO`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请点击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com`
 
@@ -278,4 +278,4 @@ ms.locfileid: "57855812"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

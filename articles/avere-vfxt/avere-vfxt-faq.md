@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
-ms.openlocfilehash: 1dda3e379a9dcec9dc48d741c107ee352c4f2033
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57404631"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057143"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
 
@@ -200,7 +200,15 @@ Avere vFXT 环境与任何其他 Azure VM 类似，因为它需要通过网络�
 
 否，Avere vFXT 在通过最佳做法保护的网络环境中运行。  
 
-## <a name="technical-back-end-storage-core-filers"></a>技术：后端存储（核心文件管理器）
+### <a name="can-i-restrict-internet-access-from-my-clusters-virtual-network"></a>可以从我的群集虚拟网络限制 internet 访问权限？ 
+
+一般情况下，根据需要可以在 vnet 上配置额外的安全，但某些限制可能会干扰群集操作。
+
+例如，从 vnet 限制出站 internet 访问权限会导致问题的群集除非您还将添加规则显式允许访问 AzureConnectors 和 AzureCloud。 这种情况下所述[GitHub 上的补充文档](https://github.com/Azure/Avere/tree/master/src/vfxt/internet_access.md)。
+
+自定义安全的帮助，请联系支持部门中所述[获取有关您的系统的帮助](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt)。
+
+## <a name="technical-back-end-storage-core-filers"></a>技术权益：后端存储（核心文件管理器）
 
 ### <a name="how-many-core-filers-does-a-single-avere-vfxt-environment-support"></a>单个 Avere vFXT 环境支持多少核心文件管理器？
 

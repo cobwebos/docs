@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/22/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d99c6b419ee201be50e74849cd95a332845f5b73
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 483f9092d29fc40937ed9d54510269af2af30872
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623163"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008640"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
 
@@ -156,6 +156,9 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 1. 在 Azure 门户中，从你的自动化帐户中，从左侧的“共享资源”部分下选择“计划”。
 2. 单击某个计划的名称以打开详细信息窗格。
 3. 将“已启用”更改为“否”。
+
+> [!NOTE]
+> 如果你想要禁用具有在过去的开始时间的计划，必须更改之前将其保存在将来某个时间开始日期。
 
 ### <a name="to-disable-a-schedule-with-powershell"></a>若要使用 PowerShell 禁用计划
 

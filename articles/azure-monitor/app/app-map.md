@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: a42eb7b57319df7de4c5277cdcdd93eb777f376c
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622104"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009189"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -36,7 +36,7 @@ ms.locfileid: "58622104"
 
 你可以跨多个级别的相关应用程序组件中查看完整的应用程序拓扑。 组件可以是不同的 Application Insights 资源或不同的角色在单个资源。 应用映射通过跟踪已安装 Application Insights SDK 的服务器之间进行的任何 HTTP 依赖项调用来查找服务器节点。 
 
-这种体验开头渐进式发现的组件。 当首次加载应用程序映射时，将触发一组查询来发现与此组件相关的组件。 在左上角的按钮将使用更新你的应用程序中的组件数量发现它们。 
+这种体验开头渐进式发现的组件。 在首次加载应用程序映射时，会触发一组查询发现与此组件相关的组件。 在左上角的按钮将使用更新你的应用程序中的组件数量发现它们。 
 
 单击"更新映射组件"，发现在该点之前的所有组件刷新映射。 这可能要花费一段时间来进行加载，具体取决于应用程序的复杂性。
 
@@ -109,7 +109,8 @@ namespace CustomInitializer.Telemetry
             if (string.IsNullOrEmpty(telemetry.Context.Cloud.RoleName))
             {
                 //set custom role name here
-                telemetry.Context.Cloud.RoleName = "RoleName";
+                telemetry.Context.Cloud.RoleName = "Custom RoleName";
+                telemetry.Context.Cloud.RoleInstance = "Custom RoleInstance"
             }
         }
     }
@@ -184,6 +185,32 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 });
 ```
+
+### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>应用程序映射的上下文中了解 Cloud.RoleName
+
+如何考虑 Cloud.RoleName 可能会看一下应用程序映射为远端的具有多个 Cloud.RoleNames 存在：
+
+![应用程序映射屏幕截图](media/app-map/cloud-rolename.png)
+
+在上面的绿色框中的名称的每个应用程序映射都是此特定的分布式应用程序的不同方面的 Cloud.RoleName/role 值。 使此应用程序及其角色组成： `Authentication`， `acmefrontend`， `Inventory Management`、 `Payment Processing Worker Role`。 
+
+对于此应用程序每个这些`Cloud.RoleNames`也代表不同的唯一 Application Insights 资源具有其自己的检测密钥。 由于此应用程序的所有者有权访问每个四个不同 Application Insights 资源，应用程序映射是可以整合的基础关系图。
+
+有关[官方定义](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
+
+```
+   [Description("Name of the role the application is a part of. Maps directly to the role name in azure.")]
+    [MaxStringLength("256")]
+    705: string      CloudRole = "ai.cloud.role";
+    
+    [Description("Name of the instance where the application is running. Computer name for on-premises, instance name for Azure.")]
+    [MaxStringLength("256")]
+    715: string      CloudRoleInstance = "ai.cloud.roleInstance";
+```
+
+或者，Cloud.RoleInstance 可以是于其中 Cloud.RoleName 告诉您的问题是某个位置中将 web 前端，但你可能运行的 web 前端跨多个负载平衡服务器，能够向下钻取更深入层中的情况通过 Kusto 查询和了解问题影响所有 web 前端服务器/实例或只是一个可以变得极为重要。
+
+您可能想要为 Cloud.RoleInstance 重写值的方案可能是如果您的应用程序是环境中运行容器化其中只了解各个服务器可能不足够的信息来查找某一的问题。
 
 有关如何使用遥测数据初始化表达式替代 cloud_RoleName 属性的详细信息，请参阅[添加属性：ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer)。
 

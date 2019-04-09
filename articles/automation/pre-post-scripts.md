@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/01/2019
+ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: dc0c516ce9dc3a13474cefc61b6634dbeea0fce0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
-ms.translationtype: MT
+ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793628"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056671"
 ---
 # <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
 
@@ -67,6 +67,23 @@ ms.locfileid: "58793628"
 如果需要其他对象类型，可以在 runbook 中使用自己的逻辑将它强制转换为其他类型。
 
 除了标准的 Runbook 参数以外，还提供了一个附加参数。 此参数是 **SoftwareUpdateConfigurationRunContext**。 此参数是一个 JSON 字符串；如果在前脚本或后脚本中定义该参数，更新部署会自动传入该参数。 该参数包含有关更新部署的信息（[SoftwareUpdateconfigurations API](/rest/api/automation/softwareupdateconfigurations/getbyname#updateconfiguration) 返回的信息的子集）。下表显示了变量中提供的属性：
+
+## <a name="stopping-a-deployment"></a>停止某一部署
+
+如果你想要停止的部署前脚本，您必须基于[引发](automation-runbook-execution.md#throw)异常。 如果不会引发异常，仍将运行的部署和后脚本。 [示例 runbook](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44?redir=0)在库中显示了如何执行此操作。 下面是该 runbook 的代码段。
+
+```powershell
+#In this case, we want to terminate the patch job if any run fails.
+#This logic might not hold for all cases - you might want to allow success as long as at least 1 run succeeds
+foreach($summary in $finalStatus)
+{
+    if ($summary.Type -eq "Error")
+    {
+        #We must throw in order to fail the patch deployment.  
+        throw $summary.Summary
+    }
+}
+```
 
 ### <a name="softwareupdateconfigurationruncontext-properties"></a>SoftwareUpdateConfigurationRunContext 属性
 
@@ -231,6 +248,17 @@ if ($summary.Type -eq "Error")
 }
 ```
 
+## <a name="abort-patch-deployment"></a>中止修补程序部署
+
+如果前脚本返回错误，您可能想要中止部署。 若要执行此操作，必须[引发](/powershell/module/microsoft.powershell.core/about/about_throw)中您的脚本的任何逻辑的行为就构成了失败的错误。
+
+```powershell
+if (<My custom error logic>)
+{
+    #Throw an error to fail the patch deployment.  
+    throw "There was an error, abort deployment"
+}
+```
 ## <a name="known-issues"></a>已知问题
 
 * 使用前脚本和后脚本时，无法将对象或数组传递给参数。 Runbook 将会失败。

@@ -13,35 +13,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/27/2019
 ms.author: asmalser-msft
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb39843d9f1e1a430c3f35e8c60521418042921
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: b50bcada8cfc72c06804793850f1f28a288f5248
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211778"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057013"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
 
+本教程的目的是说明从 Azure AD 自动将用户帐户预配到 Slack 和取消其预配所需在 Slack 和 Azure 中执行的步骤。
 
-本教程的目的是说明从 Azure AD 自动将用户帐户预配到 Slack 和取消其预配所需在 Slack 和 Azure 中执行的步骤。 
-
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定已有以下各项：
 
-*   一个 Azure Active Directory 租户
-*   启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户 
-*   在 Slack 中具有团队管理员权限的用户帐户 
+* 一个 Azure Active Directory 租户
+* 启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户
+* 在 Slack 中具有团队管理员权限的用户帐户
 
 注意：Azure AD 预配集成依赖于可供 Slack 团队在加法计划或更佳计划中使用的 [Slack SCIM API](https://api.slack.com/scim)。
 
 ## <a name="assigning-users-to-slack"></a>将用户分配到 Slack
 
-Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只有已“分配”到 Azure AD 中的应用程序的用户和组才进行同步。 
+Azure Active Directory 使用称为“分配”的概念来确定哪些用户应收到对所选应用的访问权限。 在自动用户帐户预配的上下文中，只有已“分配”到 Azure AD 中的应用程序的用户和组才进行同步。
 
 在配置和启用预配服务之前，需要确定 Azure AD 中的哪些用户和/或组表示需要访问 Slack 应用的用户。 确定后，可以按照此处的说明将这些用户分配到 Slack 应用：
 
@@ -49,10 +48,9 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="important-tips-for-assigning-users-to-slack"></a>将用户分配到 Slack 的重要提示
 
-*   建议将单个 Azure AD 用户分配到 Slack 以测试预配配置。 其他用户和/或组可以稍后分配。
+* 建议将单个 Azure AD 用户分配到 Slack 以测试预配配置。 其他用户和/或组可以稍后分配。
 
-*   将用户分配到 Slack 时，必须在分配对话框中选择“用户”或“组”角色。 “默认访问权限”角色不可用于预配。
-
+* 将用户分配到 Slack 时，必须在分配对话框中选择“用户”或“组”角色。 “默认访问权限”角色不可用于预配。
 
 ## <a name="configuring-user-provisioning-to-slack"></a>为 Slack 配置用户预配 
 
@@ -60,9 +58,7 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 提示：还可选择按照 [Azure 门户](https://portal.azure.com)中提供的说明为 Slack 启用基于 SAML 的单一登录。 可以独立于自动预配配置单一登录，尽管这两个功能互相补充。
 
-
 ### <a name="to-configure-automatic-user-account-provisioning-to-slack-in-azure-ad"></a>若要在 Azure AD 中为 Slack 配置自动用户帐户预配，请执行以下操作：
-
 
 1. 在 [Azure 门户](https://portal.azure.com)中，浏览到“Azure Active Directory”>“企业应用”>“所有应用程序”部分。
 
@@ -74,17 +70,17 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
    ![Slack 预配](./media/slack-provisioning-tutorial/Slack1.PNG)
 
-5. 在“管理员凭据”部分下，单击“授权”。 这会在新的浏览器窗口中打开“Slack 授权”对话框。 
+5. 在“管理员凭据”部分下，单击“授权”。 这会在新的浏览器窗口中打开“Slack 授权”对话框。
 
 6. 在新窗口中，使用团队管理员帐户登录到 Slack。 在显示的授权对话框中，选择要启用预配的 Slack 团队，并选择“授权”。 完成后，返回到 Azure 门户完成预配配置。
 
-   ![授权对话框](./media/slack-provisioning-tutorial/Slack3.PNG)
+    ![授权对话框](./media/slack-provisioning-tutorial/Slack3.PNG)
 
 7. 在 Azure 门户中，单击“测试连接”以确保 Azure AD 可以连接到 Slack 应用。 如果连接失败，请确保 Slack 帐户具有团队管理员权限，并重试“授权”步骤。
 
 8. 在“通知电子邮件”字段中输入应收到预配错误通知的用户或组的电子邮件地址，并选中下面的复选框。
 
-9. 单击“ **保存**”。 
+9. 单击“ **保存**”。
 
 10. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Slack”。
 
@@ -92,11 +88,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 12. 要为 Slack 启用 Azure AD 预配服务，请在“设置”部分中将“预配状态”更改为“启用”
 
-13. 单击“ **保存**”。 
+13. 单击“ **保存**”。
 
 这会开始将“用户和组”部分中分配的任何用户和/或组初始同步到 Slack。 请注意，初始同步执行的时间比后续同步长，只要服务正在运行，大约每隔 10 分钟就会进行一次同步。 可以使用“同步详细信息”部分监视进度并跟踪指向预配活动报告的链接，这些报告描述了预配服务对 Slack 应用执行的所有操作。
 
-## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[可选] 为 Slack 配置组对象预配 
+## <a name="optional-configuring-group-object-provisioning-to-slack"></a>[可选] 为 Slack 配置组对象预配
 
 （可选）可以启用从 Azure AD 到 Slack 的组对象预配。 这与“分配用户组”不同，因为除了其成员外实际组对象也会从 Azure AD 复制到 Slack。 例如，如果在 Azure AD 中有一个名为“My Group”的组，则会在 Slack 中创建相同的名为“My Group”的组。
 
@@ -116,14 +112,19 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ## <a name="connector-limitations"></a>连接器限制
 
-  * 配置 Slack 的 **displayName** 属性时，请注意以下行为： 
+* 配置 Slack 的 **displayName** 属性时，请注意以下行为：
+
   * 值并非完全唯一（例如，2 个用户可以具有相同的显示名称）
+
   * 支持非英语字符、空格、大写。 
+  
   * 允许使用的标点符号包括句点、下划线、连字符、撇号、括号（例如 ( [ { } ] )）和分隔符（例如 , / ;）。
+  
   * 仅当在 Slack 的工作区/组织中配置了这两个设置时才进行更新 - **启用配置文件同步**和**用户无法更改其显示名称**。
-  * Slack 的 **userName** 属性必须小于 21 个字符并具有唯一值。 
+  
+  * Slack 的 **userName** 属性必须小于 21 个字符并具有唯一值。
 
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)

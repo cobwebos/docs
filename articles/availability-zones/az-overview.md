@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/19/2019
+ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 3d4b0b143b41daca376aecc64cf734fadcc94faa
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226566"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268715"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>什么是 Azure 中的可用性区域？
 可用性区域是一个高可用性产品/服务，在数据中心发生故障时可以保护应用程序和数据。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 区域中可用性区域的物理隔离可以在发生数据中心故障的情况下保护应用程序和数据。 区域冗余服务可跨可用性区域复制应用程序和数据，以防范单点故障。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。 完整 [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) 说明了 Azure 作为整体的保证可用性。
@@ -45,6 +45,7 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - 法国中部
 - 北欧
 - 东南亚 
+- 英国南部&#42;
 - 西欧
 - 美国西部 2
 
@@ -57,8 +58,8 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - Windows 虚拟机
 - 虚拟机规模集
 - 托管磁盘
-- 负载均衡器
-- 公共 IP 地址
+- 标准负载均衡器&#42;
+- 标准公共 IP 地址&#42;
 - 区域冗余存储
 - SQL 数据库
 - 事件中心
@@ -66,6 +67,8 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 - VPN 网关
 - ExpressRoute
 - 应用程序网关（预览版）
+
+&#42;在英国南部 2019 年 3 月 25 日之前创建的资源很快将转换为区域冗余。 2019 年 3 月 25 日之后创建的资源将立即区域冗余。
 
 ## <a name="services-resiliency"></a>服务复原能力
 所有 Azure 管理服务，旨在从免受区域级故障中复原。 范围的故障，在区域中的一个或多个可用性区域故障具有较小故障半径相比整个区域的故障。 从区域级故障的管理服务在区域中或从另一个 Azure 区域，azure 可以恢复。 Azure 中的区域，以避免影响客户资源在区域内跨可用性区域部署任何失败一次执行关键维护一个区域。
@@ -76,10 +79,10 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 
 ## <a name="get-started-with-availability-zones"></a>可用性区域入门
 - [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
-- [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [添加托管磁盘使用 PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [创建区域冗余虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [具有区域冗余前端使用标准负载均衡器跨区域负载均衡 Vm](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [使用具有区域性前端的标准负载均衡器在区域内的负载均衡 Vm](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
 - [SQL 数据库](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)

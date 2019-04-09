@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: cb0d04e46834530c8fea29ef79a2156caabeeeff
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202361"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008963"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>示例：使用 C# 为 Azure 搜索添加同义词
 
@@ -37,7 +37,7 @@ ms.locfileid: "58202361"
 
 * [Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure 搜索服务](search-create-service-portal.md)
-* [Microsoft.Azure.Search .NET 库](https://aka.ms/search-sdk)
+* [Microsoft.Azure.Search.NET 库](https://aka.ms/search-sdk)
 * [如何使用 .NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)
 
 ## <a name="overview"></a>概述

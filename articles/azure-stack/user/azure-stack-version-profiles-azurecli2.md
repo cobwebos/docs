@@ -14,16 +14,16 @@ ms.date: 03/07/2019
 ms.author: mabrigg
 ms.reviewer: sijuman
 ms.lastreviewed: 02/28/2019
-ms.openlocfilehash: 21167366ff3af2bb360c33eaae9d591020bf11a5
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: fa1731c9361be83949aa794ed8842681bd81d995
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487577"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057772"
 ---
 # <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>在 Azure Stack 中将 API 版本配置文件与 Azure CLI 配合使用
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 可以按照本文中的步骤设置 Azure 命令行接口 (CLI)，以从 Linux、Mac 和 Windows 客户端平台管理 Azure Stack 开发工具包 (ASDK) 资源。
 
@@ -99,7 +99,7 @@ az --version
     python -m pip install --upgrade pip
     ```
 
-3. 安装 **certifi** 模块。 [Certifi](https://pypi.org/project/certifi/) 是根证书的集合模块，可以在验证 TLS 主机的身份时验证 SSL 证书的可信度。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
+3. 安装 **certifi** 模块。 [Certifi](https://pypi.org/project/certifi/)是模块和根证书的集合，用于验证 TLS 主机的标识时验证 SSL 证书的可信度。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
 
     ```powershell
     pip install certifi
@@ -139,7 +139,7 @@ az --version
     sudo -H pip3 install --upgrade pip
     ```
 
-3. 安装 **certifi** 模块。 [Certifi](https://pypi.org/project/certifi/) 是根证书的集合模块，可以在验证 TLS 主机的身份时验证 SSL 证书的可信度。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
+3. 安装 **certifi** 模块。 [Certifi](https://pypi.org/project/certifi/)是模块和根证书的集合，用于验证 TLS 主机的标识时验证 SSL 证书的可信度。 打开命令提示符或权限提升的 PowerShell 提示符，然后键入以下命令：
 
     ```bash
     pip3 install certifi
@@ -205,15 +205,15 @@ az --version
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+2. 注册环境。 在运行 `az cloud register` 时使用以下参数。
 
     | 值 | 示例 | 描述 |
     | --- | --- | --- |
     | 环境名称 | AzureStackUser | 对于用户环境，请使用 `AzureStackUser`。 如果你是操作员，请指定 `AzureStackAdmin`。 |
-    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
-    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/` 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果对集成系统终结点有疑问，请与云操作员联系。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 文档的 URI，其中包含虚拟机映像别名。 有关详细信息，请参阅 [### 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -325,15 +325,15 @@ az group create -n MyResourceGroup -l local
     set ADAL_PYTHON_SSL_NO_VERIFY=1
     ```
 
-2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+2. 注册环境。 在运行 `az cloud register` 时使用以下参数。
 
     | 值 | 示例 | 描述 |
     | --- | --- | --- |
     | 环境名称 | AzureStackUser | 对于用户环境，请使用 `AzureStackUser`。 如果你是操作员，请指定 `AzureStackAdmin`。 |
-    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
-    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/` 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果对集成系统终结点有疑问，请与云操作员联系。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 文档的 URI，其中包含虚拟机映像别名。 有关详细信息，请参阅 [### 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -441,15 +441,15 @@ az group create -n MyResourceGroup -l local
    set ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+2. 注册环境。 在运行 `az cloud register` 时使用以下参数。
 
     | 值 | 示例 | 描述 |
     | --- | --- | --- |
     | 环境名称 | AzureStackUser | 对于用户环境，请使用 `AzureStackUser`。 如果你是操作员，请指定 `AzureStackAdmin`。 |
-    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
-    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/` 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果对集成系统终结点有疑问，请与云操作员联系。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 文档的 URI，其中包含虚拟机映像别名。 有关详细信息，请参阅 [### 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -552,15 +552,15 @@ az group create -n MyResourceGroup -l local
    set ADAL_PYTHON_SSL_NO_VERIFY=1
    ```
 
-2. 注册你的环境。 在运行时使用以下参数`az cloud register`。
+2. 注册环境。 在运行 `az cloud register` 时使用以下参数。
 
     | 值 | 示例 | 描述 |
     | --- | --- | --- |
     | 环境名称 | AzureStackUser | 对于用户环境，请使用 `AzureStackUser`。 如果你是操作员，请指定 `AzureStackAdmin`。 |
-    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/` **ResourceManagerUrl**集成系统中是：`https://management.<region>.<fqdn>/` 若要检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果您有关于集成的系统终结点的问题，请联系云操作员。 |
-    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，您将想要使用为您的系统终结点。  |
-    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 包含虚拟机映像别名的文档的 URI。 有关详细信息，请参阅[# # # 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
+    | 资源管理器终结点 | https://management.local.azurestack.external | Azure Stack 开发工具包 (ASDK) 中的 **ResourceManagerUrl** 为：`https://management.local.azurestack.external/`集成系统中的 **ResourceManagerUrl** 为：`https://management.<region>.<fqdn>/` 检索所需的元数据：`<ResourceManagerUrl>/metadata/endpoints?api-version=1.0` 如果对集成系统终结点有疑问，请与云操作员联系。 |
+    | 存储终结点 | local.azurestack.external | `local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | Keyvalut 后缀 | .vault.local.azurestack.external | `.vault.local.azurestack.external` 适用于 ASDK。 对于集成系统，需使用适用于系统的终结点。  |
+    | VM 映像别名文档终结点- | https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json | 文档的 URI，其中包含虚拟机映像别名。 有关详细信息，请参阅 [### 设置虚拟机别名终结点](#set-up-the-virtual-machine-aliases-endpoint)。 |
 
     ```azurecli  
     az cloud register -n <environmentname> --endpoint-resource-manager "https://management.local.azurestack.external" --suffix-storage-endpoint "local.azurestack.external" --suffix-keyvault-dns ".vault.local.azurestack.external" --endpoint-vm-image-alias-doc <URI of the document which contains virtual machine image aliases>
@@ -635,5 +635,5 @@ az group create -n MyResourceGroup -l local
 ## <a name="next-steps"></a>后续步骤
 
 - [使用 Azure CLI 部署模板](azure-stack-deploy-template-command-line.md)
-- [为 Azure Stack 用户启用 Azure CLI（操作员）](../azure-stack-cli-admin.md)
+- [启用 Azure CLI 为 Azure Stack 用户 （运算符）](../azure-stack-cli-admin.md)
 - [管理用户权限](azure-stack-manage-permissions.md) 

@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 3212befac60e3677c0b556825560cc548df42969
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 46978d19a0789bb43e861ca89661aa5b78eb4ec7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56990979"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271061"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>规划 Avere vFXT 系统
 
@@ -130,6 +130,17 @@ Avere vFXT for Azure 群集位于专用子网中，并且该群集没有公用 I
 
 * 如果创建新的 VNET 或新子网，系统会为群集控制器分配一个公用 IP 地址。
 * 如果选择现有的 VNET 和子网，则群集控制器将仅具有专用 IP 地址。 
+
+## <a name="vm-access-roles"></a>VM 访问角色 
+
+Azure 使用[基于角色的访问控制](../role-based-access-control/index.yml)(RBAC) 授权群集 Vm 执行某些任务。 例如，群集控制器需要授权才能创建和配置群集节点 Vm。 群集节点需要能够分配或重新分配到其他群集节点的 IP 地址。
+
+两个内置的 Azure 角色用于 Avere vFXT 虚拟机： 
+
+* 群集控制器使用的内置角色[Avere 参与者](../role-based-access-control/built-in-roles.md#avere-contributor)。 
+* 群集节点使用的内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator)
+
+如果需要自定义 Avere vFXT 组件的访问权限角色，必须定义你自己的角色并向 Vm 中在创建时分配它。 不能在 Azure Marketplace 中使用部署模板。 查阅 Microsoft 客户服务和支持通过 Azure 门户中打开票证，如中所述[获取有关您的系统的帮助](avere-vfxt-open-ticket.md)。 
 
 ## <a name="next-step-understand-the-deployment-process"></a>后续步骤：了解部署过程
 

@@ -3,15 +3,15 @@ title: 如何更改、 删除或管理管理组-Azure 监管
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 author: rthorn17
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: f75686d19a468983a6b0ce68eb4a456e00c90eeb
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 58f8b3346ddd250736e09966b7c36e570b62bb10
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881035"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057738"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
 
@@ -34,6 +34,8 @@ ms.locfileid: "58881035"
 1. 选择“所有服务” > “管理组”。
 
 1. 选择要重命名的管理组。
+
+1. 选择**详细信息**。
 
 1. 选择页面顶部的“重命名组”选项。
 
@@ -80,6 +82,8 @@ az account management-group update --name 'Contoso' --display-name 'Contoso Grou
 1. 选择“所有服务” > “管理组”。
 
 1. 选择要删除的管理组。
+
+1. 选择**详细信息**。
 
 1. 选择“删除”
 

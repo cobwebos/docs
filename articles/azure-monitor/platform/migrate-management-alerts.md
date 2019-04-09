@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
-ms.openlocfilehash: 4d82cc59eb1098451a263957aa028b66996bb072
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57307176"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006791"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>将管理事件的 Azure 警报迁移到活动日志警报
 
@@ -104,7 +104,7 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 * 按照我们的有关[如何在 Azure 门户中创建警报的指南](../../azure-monitor/platform/activity-log-alerts.md)进行操作
 * 了解如何[使用资源管理器模板创建警报](../../azure-monitor/platform/alerts-activity-log.md)
  
-有关你以前创建的管理事件的通知将不会自动迁移到活动日志警报。 你需要使用上述 PowerShell 脚本，列出当前已配置的管理事件警报，并手动将它们重新创建为活动日志警报。 此操作必须在 10 月 1 日之前完成，在此之后，有关管理事件的警报将不再显示在 Azure 订阅中。 其他类型的 Azure 警报，包括 Azure Monitor 指标警报、Application Insights 警报和 Log Analytics 警报都不会受此更改的影响。 如果你有任何问题，请在下面评论中提出。
+有关你以前创建的管理事件的通知将不会自动迁移到活动日志警报。 你需要使用上述 PowerShell 脚本，列出当前已配置的管理事件警报，并手动将它们重新创建为活动日志警报。 此操作必须在 10 月 1 日之前完成，在此之后，有关管理事件的警报将不再显示在 Azure 订阅中。 其他类型的 Azure 警报，包括 Azure Monitor 指标警报、 Application Insights 警报和日志搜索警报不受此更改。 如果你有任何问题，请在下面评论中提出。
 
 
 ## <a name="next-steps"></a>后续步骤

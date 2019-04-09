@@ -12,37 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/27/2018
+ms.date: 04/08/2018
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 12/27/2018
-ms.openlocfilehash: 02ceb6cbcbf824f8bf830c66bc9899c20f6ed822
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 650b868762299725927623134039e87bbee9f4c2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484033"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277504"
 ---
 # <a name="check-your-templates-for-azure-stack-with-the-template-validation-tool"></a>使用模板验证工具检查 Azure Stack 的模板
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
-可以使用模板验证工具检查 Azure 资源管理器[模板](azure-stack-arm-templates.md)是否已准备好部署到 Azure Stack。 模板验证工具是 Azure Stack 工具的一部分。 使用[从 GitHub 下载工具](azure-stack-powershell-download.md)一文中所述的步骤下载 Azure Stack 工具。
+可以使用模板验证工具来检查是否在 Azure 资源管理器[模板](azure-stack-arm-templates.md)已经可供部署到 Azure Stack。 模板验证工具是 Azure Stack 工具的一部分。 使用[从 GitHub 下载工具](azure-stack-powershell-download.md)一文中所述的步骤下载 Azure Stack 工具。
 
 ## <a name="overview"></a>概述
 
-若要验证模板，必须先生成云功能文件，然后运行验证工具。 使用 Azure Stack 工具中的以下 PowerShell 模块：
+若要验证模板，您必须首先生成云功能文件，，然后运行验证工具。 使用 Azure Stack 工具中的以下 PowerShell 模块：
 
-- 在 **CloudCapabilities** 文件夹中：<br>         `AzureRM.CloudCapabilities.psm1` 会创建云功能 JSON 文件，该文件表示 Azure Stack 云中的服务和版本。
-- 在 **TemplateValidator** 文件夹中：<br>
-`AzureRM.TemplateValidator.psm1` 使用云功能 JSON 文件来测试要在 Azure Stack 中部署的模板。
+- 在中**CloudCapabilities**文件夹：`AzureRM.CloudCapabilities.psm1`创建云功能 JSON 文件表示的服务和在 Azure Stack 云的版本。
+- 在中**TemplateValidator**文件夹：`AzureRM.TemplateValidator.psm1`使用云功能 JSON 文件来测试在 Azure Stack 中部署的模板。
 
 ## <a name="build-the-cloud-capabilities-file"></a>生成云功能文件
 
 使用模板验证程序之前，先运行 **AzureRM.CloudCapabilities** PowerShell 模块以生成 JSON 文件。
 
 >[!NOTE]
->如果更新集成系统，或添加任何新服务或虚拟扩展，应重新运行该模块。
+> 如果更新集成系统，或添加任何新服务或虚拟扩展，应重新运行该模块。
 
 1. 请确保已连接到 Azure Stack。 这些步骤可从 Azure Stack 开发工具包主机执行，也可以使用 [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 从工作站连接。
 2. 导入 **AzureRM.CloudCapabilities** PowerShell 模块：
@@ -51,7 +50,7 @@ ms.locfileid: "58484033"
     Import-Module .\CloudCapabilities\AzureRM.CloudCapabilities.psm1
     ```
 
-3. 使用 `Get-CloudCapabilities` cmdlet 检索服务版本，并创建云功能 JSON 文件。 如果未指定 **-OutputPath**，则将在当前目录中创建文件 AzureCloudCapabilities.Json。 使用实际位置：
+3. 使用 `Get-CloudCapabilities` cmdlet 检索服务版本，并创建云功能 JSON 文件。 如果未指定 **-OutputPath**，则将在当前目录中创建文件 AzureCloudCapabilities.Json。 使用实际的 Azure 位置：
 
     ```powershell
     Get-AzureRMCloudCapability -Location <your location> -Verbose
@@ -76,7 +75,7 @@ ms.locfileid: "58484033"
     -Verbose
     ```
 
-模板验证警告或错误会记录到 PowerShell 控制台和源目录中的 HTML 文件。 以下屏幕截图显示了验证报告的示例：
+模板验证警告或错误都显示在 PowerShell 控制台中，写入到源目录中的 HTML 文件。 以下屏幕截图是验证报告的示例：
 
 ![模板验证报告](./media/azure-stack-validate-templates/image1.png)
 
@@ -86,13 +85,13 @@ ms.locfileid: "58484033"
 
 | 参数 | 描述 | 需要 |
 | ----- | -----| ----- |
-| TemplatePath | 指定要在其中递归查找 Azure 资源管理器模板的路径 | 是 | 
+| TemplatePath | 指定的路径以递归方式查找 Azure 资源管理器模板。 | 是 |
 | TemplatePattern | 指定要匹配的模板文件的名称。 | 否 |
-| CapabilitiesPath | 指定云功能 JSON 文件的路径 | 是 | 
-| IncludeComputeCapabilities | 包括 IaaS 资源（如 VM 大小和 VM 扩展）的评估 | 否 |
-| IncludeStorageCapabilities | 包括存储资源（如 SKU 类型）的评估 | 否 |
-| 报表 | 指定生成的 HTML 报告的名称 | 否 |
-| 详细 | 将错误和警告记录到控制台 | 否|
+| CapabilitiesPath | 指定云功能 JSON 文件的路径。 | 是 |
+| IncludeComputeCapabilities | 包括 IaaS 资源，如 VM 大小和 VM 扩展的评估。 | 否 |
+| IncludeStorageCapabilities | 包括存储资源，如 SKU 类型的评估。 | 否 |
+| 报表 | 指定生成的 HTML 报表的名称。 | 否 |
+| 详细 | 错误和警告记录到控制台。 | 否|
 
 ### <a name="examples"></a>示例
 

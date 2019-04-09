@@ -7,14 +7,14 @@ ms.service: iot-hub
 services: iot-hub
 ms.devlang: csharp
 ms.topic: conceptual
-ms.date: 08/24/2017
-ms.author: robin.shahan
-ms.openlocfilehash: 8a59f2ad7d3af09f776aa22b96ddf58403da28e2
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.date: 04/03/2019
+ms.author: robinsh
+ms.openlocfilehash: d16f57db6a3c39be34c13663db62d7be50749f57
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010882"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010509"
 ---
 # <a name="send-messages-from-the-cloud-to-your-device-with-iot-hub-net"></a>使用 IoT 中心 (.NET) 将消息从云发送到设备
 
@@ -36,7 +36,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 可以在 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)中找到有关“云到设备”消息的详细信息。
 
-在本教程结束时，会运行 2 个 .NET 控制台应用：
+在本教程结束时，会运行两个.NET 控制台应用。
 
 * **SimulatedDevice**（[从设备将遥测数据发送到 IoT 中心...](quickstart-send-telemetry-dotnet.md) 中创建的应用的修改版本），它连接到 IoT 中心并接收云到设备的消息。
 
@@ -58,13 +58,13 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
 1. 在 Visual Studio 的 **SimulatedDevice** 项目中，将以下方法添加到 **Program** 类。
 
-   ```csharp   
+   ```csharp
     private static async void ReceiveC2dAsync()
     {
         Console.WriteLine("\nReceiving cloud to device messages from service");
         while (true)
         {
-            Message receivedMessage = await deviceClient.ReceiveAsync();
+            Message receivedMessage = await s_deviceClient.ReceiveAsync();
             if (receivedMessage == null) continue;
 
             Console.ForegroundColor = ConsoleColor.Yellow;
@@ -72,74 +72,91 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
             Encoding.ASCII.GetString(receivedMessage.GetBytes()));
             Console.ResetColor();
 
-            await deviceClient.CompleteAsync(receivedMessage);
+            await s_deviceClient.CompleteAsync(receivedMessage);
         }
     }
    ```
 
    在设备收到消息时，`ReceiveAsync` 方法以异步方式返回收到的消息。 它在可指定的超时期限过后返回 *null*（在本例中，使用的是默认值一分钟）。 当应用收到 *null* 时，它应继续等待新消息。 此要求是使用 `if (receivedMessage == null) continue` 行的原因。
-   
+
     对 `CompleteAsync()` 的调用通知 IoT 中心，指出已成功处理消息。 可以安全地从设备队列中删除该消息。 如果因故导致设备应用无法完成消息处理操作，IoT 中心将重新传送该消息。 因此设备应用中的消息处理逻辑必须是幂等的，以便多次接收同一消息会生成相同的结果。 
-    
+
     应用程序也可以暂时放弃消息，让 IoT 中心将消息保留在队列中以供将来使用。 或者，应用程序可以拒绝消息，以永久性从队列中删除该消息。 有关云到设备消息生命周期的详细信息，请参阅 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)。
-   
+
    > [!NOTE]
    > 使用 HTTPS 而不使用 MQTT 或 AMQP 作为传输时，`ReceiveAsync` 方法将立即返回。 使用 HTTPS 的云到设备消息，其支持模式是间歇连接到设备，且不常检查消息（时间间隔小于 25 分钟）。 发出更多 HTTPS 接收会导致 IoT 中心限制请求。 有关 MQTT、AMQP 和 HTTPS 支持之间的差异，以及 IoT 中心限制的详细信息，请参阅 [IoT 中心的 D2C 和 C2D 消息传送](iot-hub-devguide-messaging.md)。
-   > 
-   > 
+   >
+
 2. 在 **Main** 方法中的 `Console.ReadLine()` 行前面添加以下方法：
-   
-   ``` csharp   
+
+   ```csharp
    ReceiveC2dAsync();
    ```
 
-## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
-在本部分中，会编写 .NET 控制台应用，以向设备应用发送云到设备消息。
+## <a name="get-the-iot-hub-connection-string"></a>获取 IoT 中心连接字符串
 
-1. 在当前的 Visual Studio 解决方案中，使用“控制台应用程序”项目模板创建一个 Visual C# 桌面应用项目。 将项目命名为 **SendCloudToDevice**。
-   
+首先，从门户中检索的 IoT 中心连接字符串。
+
+1. 登录到[Azure 门户](https://portal.azure.com)，选择**资源组**。
+
+2. 选择将用于本操作说明的资源组。
+
+3. 选择正在使用的 IoT 中心。
+
+4. 在中心窗格中，选择**共享访问策略**。
+
+5. 选择“iothubowner”。 它显示在连接字符串**iothubowner**面板。 选择复制图标**连接字符串-主键**。 保存连接字符串供以后使用。
+
+   ![获取 IoT 中心连接字符串](./media/iot-hub-csharp-csharp-c2d/get-iot-hub-connection-string.png)
+
+## <a name="send-a-cloud-to-device-message"></a>发送云到设备的消息
+
+现在，您编写一个.NET 控制台应用，向设备应用发送云到设备的消息。
+
+1. 在当前的 Visual Studio 解决方案中，右键单击解决方案并选择添加 > 新项目。 选择**Windows 桌面**，然后**控制台应用 (.NET Framework)**。 将项目命名**SendCloudToDevice**并选择最新版本的.NET Framework 中，然后选择**确定**创建项目。
+
    ![Visual Studio 中的新项目](./media/iot-hub-csharp-csharp-c2d/create-identity-csharp1.png)
 
-2. 在“解决方案资源管理器”中，右键单击该解决方案，并单击“为解决方案管理 NuGet 包...” 。 
-   
-    此操作将打开“管理 NuGet 包”窗口。
+2. 在“解决方案资源管理器”中，右键单击该解决方案，并单击“为解决方案管理 NuGet 包...” 。
 
-3. 搜索“Microsoft.Azure.Devices”，单击“安装”并接受使用条款。 
-   
-    这会下载、安装 [Azure IoT 服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Devices/)并添加对它的引用。
+   此操作将打开“管理 NuGet 包”窗口。
 
-4. 在 **Program.cs** 文件顶部添加以下 `using` 语句：
+3. 搜索**Microsoft.Azure.Devices**，选择浏览选项卡。找到包，请单击**安装**，并接受使用条款。
 
-   ``` csharp   
+   这会下载、安装 [Azure IoT 服务 SDK NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.Devices/)并添加对它的引用。
+
+4. 添加以下`using`顶部的语句**Program.cs**文件。
+
+   ``` csharp
    using Microsoft.Azure.Devices;
    ```
 
-5. 将以下字段添加到 Program 类。 将占位符值替换为[从设备将遥测数据发送到 IoT 中心...](quickstart-send-telemetry-dotnet.md) 中的 IoT 中心连接字符串：
+5. 将以下字段添加到 Program 类。 在本部分中以前保存的 IoT 中心连接字符串占位符值替换。 
 
    ``` csharp
    static ServiceClient serviceClient;
    static string connectionString = "{iot hub connection string}";
    ```
 
-6. 将以下方法添加到 **Program** 类：
-   
+6. 将以下方法添加到 **Program** 类。 将设备名称设置为定义中的设备时使用的什么[向 IoT 中心从设备发送遥测数据...](quickstart-send-telemetry-dotnet.md).
+
    ``` csharp
    private async static Task SendCloudToDeviceMessageAsync()
    {
-        var commandMessage = new 
+        var commandMessage = new
          Message(Encoding.ASCII.GetBytes("Cloud to device message."));
-        await serviceClient.SendAsync("myFirstDevice", commandMessage);
+        await serviceClient.SendAsync("myDevice", commandMessage);
    }
    ```
 
    此方法会将新的云到设备消息发送到 ID 为 `myFirstDevice` 的设备。 仅当修改了[从设备将遥测数据发送到 IoT 中心...](quickstart-send-telemetry-dotnet.md) 中使用的参数，才更改此参数。
 
-7. 最后，在 **Main** 方法中添加以下行：
+7. 最后，将下面的行添加到 **Main** 方法。
 
    ``` csharp
    Console.WriteLine("Send Cloud-to-Device message\n");
    serviceClient = ServiceClient.CreateFromConnectionString(connectionString);
-   
+
    Console.WriteLine("Press any key to send a C2D message.");
    Console.ReadLine();
    SendCloudToDeviceMessageAsync().Wait();
@@ -149,7 +166,7 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 8. 在 Visual Studio 中，右键单击解决方案并选择“**设置启动项目...**”。选择“多个启动项目”，并同时针对 **ReadDeviceToCloudMessages**、**SimulatedDevice** 和 **SendCloudToDevice** 选择“启动”操作。
 
 9. 按 **F5**。 这三个应用程序应该都会启动。 选择“**SendCloudToDevice**”窗口并按 **Enter**。 应会看到设备应用正在接收的消息。
-   
+
    ![应用接收消息](./media/iot-hub-csharp-csharp-c2d/sendc2d1.png)
 
 ## <a name="receive-delivery-feedback"></a>接收送达反馈
@@ -164,18 +181,18 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
    private async static void ReceiveFeedbackAsync()
    {
         var feedbackReceiver = serviceClient.GetFeedbackReceiver();
-   
+
         Console.WriteLine("\nReceiving c2d feedback from service");
         while (true)
         {
             var feedbackBatch = await feedbackReceiver.ReceiveAsync();
             if (feedbackBatch == null) continue;
-   
+
             Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("Received feedback: {0}", 
+            Console.WriteLine("Received feedback: {0}",
               string.Join(", ", feedbackBatch.Records.Select(f => f.StatusCode)));
             Console.ResetColor();
-   
+
             await feedbackReceiver.CompleteAsync(feedbackBatch);
         }
     }
@@ -183,29 +200,29 @@ Azure IoT 中心是一项完全托管的服务，有助于在数百万台设备�
 
     请注意，此接收模式与用于从设备应用接收云到设备消息的模式相同。
 
-2. 将以下方法添加到 **Main** 方法中紧接在 `serviceClient = ServiceClient.CreateFromConnectionString(connectionString)` 行的后面：
-   
+2. 将以下方法中的添加**Main**方法中，紧靠其后`serviceClient = ServiceClient.CreateFromConnectionString(connectionString)`行。
+
    ``` csharp
    ReceiveFeedbackAsync();
    ```
 
-3. 若要请求针对传递云到设备消息的反馈，必须在 **SendCloudToDeviceMessageAsync** 方法中指定一个属性。 紧接在 `var commandMessage = new Message(...);` 行的后面添加以下行：
-   
+3. 若要请求针对传递云到设备消息的反馈，必须在 **SendCloudToDeviceMessageAsync** 方法中指定一个属性。 之后添加以下行，`var commandMessage = new Message(...);`行。
+
    ``` csharp
    commandMessage.Ack = DeliveryAcknowledgement.Full;
    ```
 
 4. 按 **F5** 运行应用。 应会看到三个应用程序都在启动。 选择“**SendCloudToDevice**”窗口并按 **Enter**。 应会看到设备应用正在接收的消息，几秒钟后，**SendCloudToDevice** 应用程序将收到反馈消息。
-   
+
    ![应用接收消息](./media/iot-hub-csharp-csharp-c2d/sendc2d2.png)
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
-> 
+>
 
 ## <a name="next-steps"></a>后续步骤
 
-本操作说明已介绍了如何发送和接收云到设备的消息。 
+本操作说明已介绍了如何发送和接收云到设备的消息。
 
 若要查看使用 IoT 中心完成端到端解决方案的示例，请参阅 [Azure IoT 远程监视解决方案加速器](https://docs.microsoft.com/azure/iot-suite/)。
 

@@ -102,13 +102,14 @@ items:
     - name: “见解”页
       href: ./cloud-partner-portal/portal-tour/cpp-insights-page.md
   - name: 门户管理
+    href: ./cloud-partner-portal/portal-manage/cpp-portal-management.md
     items:
-    - name: 开发人员中心帐户注册
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-dev-center-accounts-registration.md
-    - name: 管理发布者个人资料
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-publisher-profile.md
+    - name: 帐户管理先决条件
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-prerequisites.md
+    - name: 管理发布者配置文件
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-publisher-profile.md
     - name: 管理用户
-      href: ./cloud-partner-portal-orig/cloud-partner-portal-manage-users.md
+      href: ./cloud-partner-portal/portal-manage/cpp-manage-users.md
   - name: 业务管理
     items:
     - name: SEO 指南
@@ -367,7 +368,9 @@ items:
       - name: SaaS 履行 API
         href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-apis.md
         items:
-        - name: SaaS API v1
+        - name: 注册 SaaS 应用程序
+          href: ./cloud-partner-portal/saas-app/cpp-saas-registration.md
+        - name: SaaS API v1（已弃用）
           href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v1.md
         - name: SaaS API v2
           href: ./cloud-partner-portal/saas-app/cpp-saas-fulfillment-api-v2.md
@@ -466,9 +469,9 @@ items:
       href: ./cloud-partner-portal-orig/cloud-partner-portal-api-troubleshooting-authentication-errors.md
   - name: 获取支持
     href: ./cloud-partner-portal-orig/cloud-partner-portal-support-for-cloud-partner-portal.md
-ms.openlocfilehash: 72166e2f797c5eaaeb2908475b18c0f8424e8804
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 9b4b1dd0a98ef8717ddc522d69e38a6b15b56cb4
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402790"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010852"

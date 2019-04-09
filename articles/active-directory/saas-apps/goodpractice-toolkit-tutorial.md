@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd8453c93b4e48a076d8efbe1d438d15d8131fc9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864399"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58885343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>教程：Azure Active Directory 与 GoodPractice Toolkit 集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "57864399"
 
     ![GoodPractice Toolkit 域和 URL 单一登录信息](common/sp-intiated.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId> `。
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>`。
 
     > [!Note]
     > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [GoodPractice Toolkit 客户端支持团队](mailto:support@goodpractice.com)获取此值。
@@ -195,5 +195,5 @@ ms.locfileid: "57864399"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

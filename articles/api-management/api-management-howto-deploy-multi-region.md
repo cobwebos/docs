@@ -11,20 +11,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 04/04/2019
 ms.author: apimpm
-ms.openlocfilehash: 82ae0ef72bb4f546a1f946f3127aa5d74bec3c3b
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: d22da92355616c208c7616b4b0e8c26b7f9e7006
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52957753"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058033"
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>如何将 Azure API 管理服务实例部署到多个 Azure 区域
 
 Azure API 管理多区域部署，该部署可使 API 发布者在任意数量的所需 Azure 区域中分配单个 Azure API 管理服务。 这有助于减少地理上分散的 API 使用者所感知的请求延迟，并且还改善其中一个区域处于离线状态时的服务可用性。
 
-新的 Azure API 管理服务最初只在一个 Azure 区域（主要区域）中包含一个[单元][unit]。 可通过 Azure 门户轻松添加其他区域。 API 管理网关服务器部署到每个区域，并且调用流量将路由到最近的网关。 如果一个区域处于离线状态，则传入流量自动重定向到下一个最近的网关。
+新的 Azure API 管理服务最初只在一个 Azure 区域（主要区域）中包含一个[单元][unit]。 可通过 Azure 门户轻松添加其他区域。 API 管理网关服务器部署到每个区域，并调用流量将路由到最近的网关，因为延迟。 如果一个区域处于离线状态，则传入流量自动重定向到下一个最近的网关。
 
 > [!NOTE]
 > Azure API 管理仅复制跨区域的 API 网关组件。 服务管理组件仅托管在主要区域中。 如果主要区域发生服务中断，则无法向 Azure API 管理服务实例应用配置更改 - 包括设置或策略更新。
@@ -105,6 +105,20 @@ Azure API 管理只有一个后端服务 URL。 即使不同的区域中存在 A
         </on-error>
     </policies>
     ```
+
+> [!TIP]
+> 您还可能前端与后端服务[Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)、 直接 API 调用到流量管理器中，并让其解析的路由自动。
+
+## <a name="custom-routing"> </a>使用自定义路由到 API 管理区域网关
+
+API 管理将请求路由到区域*网关*基于[最低延迟](../traffic-manager/traffic-manager-routing-methods.md#performance)。 尽管不能重写此设置在 API 管理中的，您可以使用自定义的路由规则使用流量管理器。
+
+1. 创建您自己[Azure 流量管理器](https://azure.microsoft.com/services/traffic-manager/)。
+1. 如果使用自定义域[使用它使用流量管理器](../traffic-manager/traffic-manager-point-internet-domain.md)而不是 API 管理服务。
+1. [配置流量管理器中的 API 管理区域终结点](../traffic-manager/traffic-manager-manage-endpoints.md)。 区域的终结点执行的 URL 模式`https://<service-name>-<region>-01.regional.azure-api.net`，例如`https://contoso-westus2-01.regional.azure-api.net`。
+1. [配置流量管理器中的 API 管理区域状态终结点](../traffic-manager/traffic-manager-monitoring.md)。 区域状态的终结点执行的 URL 模式`https://<service-name>-<region>-01.regional.azure-api.net/status-0123456789abcdef`，例如`https://contoso-westus2-01.regional.azure-api.net/status-0123456789abcdef`。
+1. 指定[路由方法](../traffic-manager/traffic-manager-routing-methods.md)的流量管理器。
+
 
 [api-management-management-console]: ./media/api-management-howto-deploy-multi-region/api-management-management-console.png
 

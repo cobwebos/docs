@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17c9ef471ca1536f928ca5ae2fe4f55e8e2b3424
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878411"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259858"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
@@ -148,7 +148,7 @@ Microsoft 标识可以通过与应用程序相关的多种方式进行身份验�
 
 ## <a name="validating-tokens"></a>验证令牌
 
-若要验证 id_token 或 access_token，应用应该验证该令牌的签名和声明。 要验证访问令牌，应用还应验证颁发者、目标受众和签名令牌。 这些需要根据 OpenID 发现文档中的值进行验证。 例如，文档的租户独立版本位于 [https://login.microsoftonline.com/common/.well-known/openid-configuration](https://login.microsoftonline.com/common/.well-known/openid-configuration)。 
+若要验证 id_token 或 access_token，应用应该验证该令牌的签名和声明。 要验证访问令牌，应用还应验证颁发者、目标受众和签名令牌。 这些需要根据 OpenID 发现文档中的值进行验证。 例如，独立于租户的版本的文档位于[ https://login.microsoftonline.com/common/.well-known/openid-configuration ](https://login.microsoftonline.com/common/.well-known/openid-configuration)。 
 
 Azure AD 中间件具有验证访问令牌的内置功能，可以浏览我们的[示例](https://docs.microsoft.com/azure/active-directory/active-directory-code-samples)，以所选语言进行查找。 有关如何显式验证 JWT 令牌的详细信息，请参阅[手动 JWT 验证示例](https://github.com/Azure-Samples/active-directory-dotnet-webapi-manual-jwt-validation)。 
 
@@ -173,14 +173,14 @@ JWT 包含三个段（以 `.` 字符分隔）。 第一个段称为**标头**，
 
 在任何给定时间点，Azure AD 可以使用一组特定公钥 - 私钥对中的一个对来签名 id_token。 Azure AD 定期换用一组可能的密钥，因此应将应用编写成自动处理这些密钥更改。 检查 Azure AD 所用公钥的更新的合理频率大约为每 24 小时一次。
 
-可以使用位于以下位置的 OpenID Connect 元数据文档来获取验证签名所需的签名密钥数据：
+可以获取必须通过验证签名的签名密钥数据[OpenID Connect 元数据文档](v2-protocols-oidc.md#fetch-the-openid-connect-metadata-document)位于：
 
 ```
-https://login.microsoftonline.com/common/.well-known/openid-configuration
+https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration
 ```
 
 > [!TIP]
-> 在浏览器中尝试打开此 [URL](https://login.microsoftonline.com/common/.well-known/openid-configuration)！
+> 在浏览器中尝试打开此 [URL](https://login.microsoftonline.com/common/v2.0/.well-known/openid-configuration)！
 
 此元数据文档：
 
@@ -190,7 +190,9 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 > [!NOTE]
 > V1.0 终结点返回 `x5t` 和 `kid` 声明，尽管 v2.0 终结点仅使用 `kid` 声明进行响应。 从目前开始，我们建议使用 `kid` 声明来验证令牌。
 
-执行签名验证超出了本文档的范围 - 有许多开放源代码库可帮助这么做（如有必要）。
+执行签名验证超出了本文档的范围 - 有许多开放源代码库可帮助这么做（如有必要）。  但是，Microsoft 标识平台都有一个令牌签名的标准的自定义签名密钥的扩展。  
+
+如果您的应用程序已由于使用自定义签名密钥[声明映射](active-directory-claims-mapping.md)功能，必须将附加`appid`查询参数以获取包含应用程序 ID`jwks_uri`指向您的应用程序的签名密钥信息应该用于验证。 例如：`https://login.microsoftonline.com/{tenant}/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e`包含`jwks_uri`的`https://login.microsoftonline.com/{tenant}/discovery/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`。
 
 ### <a name="claims-based-authorization"></a>基于声明的授权
 

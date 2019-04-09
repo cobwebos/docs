@@ -9,14 +9,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 3663526dc32b0a607c9fca3d7c76496bfb5566f4
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57549132"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260742"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
 
@@ -46,7 +46,7 @@ ms.locfileid: "57549132"
 
 - [生成托管的标识，使用 PowerShell](#generate-managed-identity-using-powershell)
 - [生成托管的标识使用 REST API](#generate-managed-identity-using-rest-api)
-- 生成托管的标识使用 Azure 资源管理器模板
+- [生成托管的标识使用 Azure 资源管理器模板](#generate-managed-identity-using-an-azure-resource-manager-template)
 - [生成托管的标识使用 SDK](#generate-managed-identity-using-sdk)
 
 >[!NOTE]
@@ -156,11 +156,11 @@ client.Factories.CreateOrUpdate(resourceGroup, dataFactoryName, dataFactory);
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>检索托管的标识使用 Azure 门户
 
-您可以找到从 Azure 门户的托管的标识信息-> 数据工厂-> 设置-> 属性：
+您可以找到从 Azure 门户的托管的标识信息-> 数据工厂-> 属性：
 
-- 服务标识 ID
-- 服务标识租户
-- **服务标识应用程序 ID** > 复制此值
+- 托管标识对象 ID
+- 托管标识租户
+- **托管标识应用程序 ID** > 复制此值
 
 ![检索托管的标识](media/data-factory-service-identity/retrieve-service-identity-portal.png)
 
@@ -192,6 +192,6 @@ Type                  : ServicePrincipal
 请参阅以下主题，其中介绍何时以及如何使用数据工厂管理的标识：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
-- [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
+- [从/向 Azure 资源的身份验证使用管理的标识的 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
 请参阅[管理的标识的 Azure 资源概述](/azure/active-directory/managed-identities-azure-resources/overview)为基于 Azure 资源，哪些数据工厂托管标识的管理的标识的更多背景。 

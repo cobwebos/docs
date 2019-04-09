@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.date: 07/20/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: cc0f452cf9dc27354124437acc8d9a7c99fa80f4
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
+ms.openlocfilehash: 577a047fb88208d7e14e8ba06a1b9e7e87c5ef91
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065182"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58884222"
 ---
 # <a name="quickstart-create-your-first-automated-workflow-with-azure-logic-apps---azure-portal"></a>快速入门：使用 Azure 逻辑应用创建第一个自动化工作流 - Azure 门户
 
@@ -69,10 +69,10 @@ ms.locfileid: "54065182"
 
    ![使用 RSS 源、频率和间隔设置触发器](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | 属性 | 值 | Description | 
+   | 属性 | 值 | 说明 | 
    |----------|-------|-------------| 
    | **RSS 源 URL** | ```http://feeds.reuters.com/reuters/topNews``` | 要监视的 RSS 源的链接 | 
-   | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
+   | **时间间隔** | 1 | 在两次检查之间需等待的时间间隔数 | 
    | **频率** | 分钟 | 两次检查的间隔的时间单位  | 
    |||| 
 
@@ -114,7 +114,7 @@ ms.locfileid: "54065182"
       现在，请忽略出现的“添加动态内容”列表。 
       单击某些编辑框时，此列表会出现并显示前一步骤中提供的参数，这样即可将其作为工作流的输入包括进去。 
 
-   2. 在“主题”框中，输入带有尾随空格的以下文本：```New RSS item: ```
+   2. 在“主题”框中，输入带有尾随空格的以下文本：```New RSS item:```
 
       ![输入电子邮件主题](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-subject.png)
  
@@ -136,11 +136,11 @@ ms.locfileid: "54065182"
 
       ![添加电子邮件正文内容](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | 属性 | Description | 
+      | 属性 | 说明 | 
       |----------|-------------| 
-      | 源标题 | 项的标题 | 
-      | 源发布日期 | 项的发布日期和时间 | 
-      | 源主链接 | 项的 URL | 
+      | **源标题** | 项的标题 | 
+      | **源发布日期** | 项的发布日期和时间 | 
+      | **源主链接** | 项的 URL | 
       ||| 
    
 5. 保存逻辑应用。

@@ -12,16 +12,16 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 02/27/2019
+ms.date: 03/28/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 6d18adfaec965d858bdcb1f74ebcea89f57eea39
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 437009079c1bebe3694aaa26f945bd726b3c9fb9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878020"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59010561"
 ---
-# <a name="saas-fulfillment-api"></a>SaaS 执行 API
+# <a name="saas-fulfillment-apis-version-2"></a>SaaS 履行 Api 版本 2 
 
 本文详细介绍了 Azure Marketplace 的 API，使独立软件供应商 (Isv)，将其 SaaS 应用程序进行集成。 此 API 使 ISV 应用程序可以参与所有启用的商务通道： 直接、 合作伙伴主导式 （经销商） 和字段导致。  此 API 是事务 SaaS 提供了在 Azure Marketplace 上列出的要求。
 
@@ -73,14 +73,34 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 
 订阅达到此状态，以响应到的显式客户请求，或者作为要归因未付款的响应。 Isv 预期结果是客户的数据是保留的最小 X 天的请求上进行恢复，然后删除。 
 
+
 ## <a name="api-reference"></a>API 参考
 
-本部分介绍 SaaS*订阅 API*并*操作 API*。
+本部分介绍 SaaS*订阅 API*并*操作 API*。  值`api-version`参数在版本 2 Api 是`2018-08-31`。  
+
+
+### <a name="parameter-and-entity-definitions"></a>参数和实体定义
+
+下表列出了常见参数和执行 Api 使用的实体的定义。
+
+|     实体/参数     |     定义                         |
+|     ----------------     |     ----------                         |
+| `subscriptionId`         | SaaS 资源的 GUID 标识符  |
+| `name`                   | 此资源的客户提供的友好名称 |
+| `publisherId`            | 为每个发布服务器，例如"conotosocorporation"自动生成的唯一字符串标识符 |
+| `offerId`                | 为每个产品/服务，例如"contosooffer1"自动生成的唯一字符串标识符  |
+| `planId`                 | 为每个计划和 sku，例如"contosobasicplan"自动生成的唯一字符串标识符 |
+| `operationId`            | 某一特定操作的 GUID 标识符  |
+|  `action`                | 在资源上，可以执行的操作`subscribe`， `unsubscribe`， `suspend`， `reinstate`，或 `changePlan`  |
+|   |   |
+
+全局唯一标识符 ([Guid](https://en.wikipedia.org/wiki/Universally_unique_identifier)) 通常会自动生成的 128 位 （32 十六进制） 号。 
 
 
 ### <a name="subscription-api"></a>订阅 API
 
 订阅 API 支持 HTTPS 执行以下操作：**获取**， **Post**，**修补程序**，并且**删除**。
+
 
 #### <a name="list-subscriptions"></a>列出订阅
 
@@ -106,34 +126,37 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 *响应代码：*
 
 代码：200<br>
-基于身份验证令牌获取发布服务器和发布服务器的所有产品/服务的相应订阅。<br> 响应有效负载：<br>
+根据身份验证令牌，获取发布服务器和发布服务器的所有产品/服务的相应订阅。<br> 响应有效负载：<br>
 
 ```json
 {
-  "subscriptions": [
+  [
       {
-          "id": "",
-          "name": "CloudEndure for Production use",
-          "publisherId": "cloudendure",
-          "offerId": "ce-dr-tier2",
+          "id": "<guid>",
+          "name": "Contoso Cloud Solution",
+          "publisherId": "contoso",
+          "offerId": "cont-cld-tier2",
           "planId": "silver",
           "quantity": "10",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
           "allowedCustomerOperations": [
               "Read" // Possible Values: Read, Update, Delete.
           ], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
           "sessionMode": "None", // Possible Values: None, DryRun (Dry Run indicates all transactions run as Test-Mode in the commerce stack)
-          "status": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
+          "saasSubscriptionStatus": "Subscribed" // Indicates the status of the operation. [Provisioning, Subscribed, Suspended, Unsubscribed]
       }
   ],
   "continuationToken": ""
 }
 ```
+
+继续标记才会显示是否存在的计划，以检索其他"页"。 
+
 
 代码：403 <br>
 未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。 
@@ -174,22 +197,22 @@ Microsoft SaaS 服务管理 SaaS 订阅购买的整个生命周期，并使用�
 *响应代码：*
 
 代码：200<br>
-从标识符获取 saas 订阅<br> 响应有效负载：<br>
+从标识符获取 SaaS 订阅<br> 响应有效负载：<br>
 
 ```json
 Response Body:
 { 
         "id":"",
-        "name":"CloudEndure for Production use",
-        "publisherId": "cloudendure",
-        "offerId": "ce-dr-tier2",
+        "name":"Contoso Cloud Solution",
+        "publisherId": "contoso",
+        "offerId": "cont-cld-tier2",
         "planId": "silver",
         "quantity": "10"",
           "beneficiary": { // Tenant for which SaaS subscription is purchased.
-              "tenantId": "cc906b16-1991-4b6d-a5a4-34c66a5202d7"
+              "tenantId": "<guid>"
           },
           "purchaser": { // Tenant that purchased the SaaS subscription. These could be different for reseller scenario
-              "tenantId": "0396833b-87bf-4f31-b81c-c67f88973512"
+              "tenantId": "<guid>"
           },
         "allowedCustomerOperations": ["Read"], // Indicates operations allowed on the SaaS subscription. For CSP initiated purchases, this will always be Read.
         "sessionMode": "None", // Dry Run indicates all transactions run as Test-Mode in the commerce stack
@@ -240,25 +263,23 @@ Response Body:
 代码：200<br>
 获取客户的可用计划列表。<br>
 
+响应正文：
+
 ```json
-Response Body:
-[{
-    "planId": "silver",
-    "displayName": "Silver",
-    "isPrivate": false
-},
 {
-    "planId": "silver-private",
-    "displayName": "Silver-private",
-    "isPrivate": true
-}]
+    "plans": [{
+        "planId": "Platinum001",
+        "displayName": "Private platinum plan for Contoso",
+        "isPrivate": true
+    }]
+}
 ```
 
 代码：404<br>
 未找到<br> 
 
 代码：403<br>
-未授权。 未提供身份验证令牌，无效或请求尝试访问不属于当前用户获取。 <br> 
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。 <br> 
 
 代码：500<br>
 内部服务器错误<br>
@@ -301,12 +322,12 @@ Response Body:
 ```json
 Response body:
 {
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",  
-    "subscriptionName": "My Saas application",
-    "offerId": "ce-dr-tier2",
+    "subscriptionId": "<guid>",  
+    "subscriptionName": "Contoso Cloud Solution",
+    "offerId": "cont-cld-tier2",
     "planId": "silver",
     "quantity": "20",
-    "operationId": " be750acb-00aa-4a02-86bc-476cbe66d7fa"  
+    "operationId": "<guid>"  
 }
 ```
 
@@ -348,7 +369,7 @@ Response body:
 |  ---------------   |  ---------------  |
 |  Content-Type      | `application/json`  |
 |  x-ms-requestid    | 用于跟踪请求从客户端，最好是一个 GUID 唯一字符串值。 如果未提供此值，则系统会生成一个值，并在响应标头中提供该值。  |
-|  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此值将客户端操作生成的所有事件与服务器端的事件相关联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
+|  x-ms-correlationid  | 在客户端上的操作的唯一字符串值。 此字符串将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     |  JSON web 令牌 (JWT) 持有者令牌 |
 
 *请求：*
@@ -511,7 +532,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 使用提供的值更新订阅。
 
-**修补程序：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operation/<operationId>?api-version=<ApiVersion>`**
+**修补程序：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
 *查询参数：*
 
@@ -534,15 +555,15 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 ```json
 {
-    "planId": "",
-    "quantity": "",
+    "planId": "cont-cld-tier2",
+    "quantity": "44",
     "status": "Success"    // Allowed Values: Success/Failure. Indicates the status of the operation.
 }
 ```
 
 *响应代码：*
 
-代码：200<br> 调用以通知的 ISV 端操作的完成。 例如，这可能是个席位/计划的更改。
+代码：200<br> 调用以通知的 ISV 端操作的完成。 例如，此响应可能表示席位/计划的更改。
 
 代码：404<br>
 未找到
@@ -551,7 +572,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 错误的请求验证失败
 
 代码：403<br>
-未授权。 未提供身份验证令牌，无效或请求尝试访问不属于当前用户获取。
+未授权。 身份验证令牌未提供，是无效的或者请求正在尝试访问不属于当前用户获取。
 
 代码：409<br>
 冲突。 例如，已满足更高版本的事务
@@ -597,11 +618,11 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 ```json
 [{
-    "id": "be750acb-00aa-4a02-86bc-476cbe66d7fa",  
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId": "cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+    "id": "<guid>",  
+    "activityId": "<guid>",
+    "subscriptionId": "<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
@@ -634,7 +655,7 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 
 #### <a name="get-operation-status"></a>获取操作状态
 
-使用户能够跟踪触发的异步操作 （订阅 / 取消订阅 / 更改计划） 的状态。
+使用户能够跟踪指定触发的异步操作 （订阅 / 取消订阅 / 更改计划） 的状态。
 
 **获取：<br> `https://marketplaceapi.microsoft.com/api/saas/subscriptions/<subscriptionId>/operations/<operationId>?api-version=<ApiVersion>`**
 
@@ -653,23 +674,23 @@ ISV 发起调用，以指示取消订阅 SaaS 订阅。<br>
 |  x-ms-correlationid |  在客户端上执行的操作的唯一字符串值。 此参数将在服务器端上的事件从客户端操作的所有事件相关都联。 如果未提供此值，其中一个将生成并在响应标头中提供。  |
 |  authorization     | JSON Web 令牌 (JWT) 持有者令牌。  |
 
-*响应代码：* 代码：200<br> 获取所有挂起的 SaaS 操作的列表<br>
+*响应代码：* 代码：200<br> 获取指定挂起 SaaS 操作<br>
 响应有效负载：
 
 ```json
 Response body:
-[{
-    "id  ": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",  
+{
+    "id  ": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",  
     "planId": "silver",
     "quantity": "20",
     "action": "Convert",
     "timeStamp": "2018-12-01T00:00:00",
     "status": "NotStarted"
-}]
+}
 
 ```
 
@@ -700,11 +721,11 @@ Response body:
 
 ```json
 {
-    "operationId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "activityId": "be750acb-00aa-4a02-86bc-476cbe66d7fa",
-    "subscriptionId":"cd9c6a3a-7576-49f2-b27e-1e5136e57f45",
-    "offerId": "ce-dr-tier2",
-    "publisherId": "cloudendure",
+    "operationId": "<guid>",
+    "activityId": "<guid>",
+    "subscriptionId":"<guid>",
+    "offerId": "cont-cld-tier2",
+    "publisherId": "contoso",
     "planId": "silver",
     "quantity": "20"  ,
     "action": "Activate",   // Activate/Delete/Suspend/Reinstate/Change[new]  
@@ -713,14 +734,12 @@ Response body:
 
 ```
 
-<!-- Review following, might not be needed when this publishes -->
-
 
 ## <a name="mock-api"></a>模拟 API
 
-我们的模拟 Api 可用于帮助你开始进行开发，特别是原型制作和测试项目。 
+可以使用我们的模拟 Api 来帮助你开始进行开发，特别是原型制作和测试项目。 
 
-主机终结点： https://marketplaceapi.microsoft.com/api API 版本：2018-09-15 无身份验证所需示例 Uri: https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15
+主机终结点：`https://marketplaceapi.microsoft.com/api` API 版本：`2018-09-15` 无身份验证所需示例 Uri: `https://marketplaceapi.microsoft.com/api/saas/subscriptions?api-version=2018-09-15`
 
 在本文中的 API 调用的任何可对模拟主机终结点。 您可能希望获取返回作为响应的模拟数据。
 

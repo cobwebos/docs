@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 56580454753ae6af60f5f8c51d9504f813f91e97
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: ffd2afd66c108f9eef690d641d9c4cbc85e9d609
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540119"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256084"
 ---
 # <a name="use-the-azure-maps-map-control"></a>使用 Azure Maps Map Control
 
@@ -30,8 +30,8 @@ ms.locfileid: "58540119"
     a. 通过在该文件的 `<head>` 元素中添加样式表和脚本引用的 URL 终结点，使用 Azure Maps Web SDK 的全局承载的 CDN 版本：
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
     b. 另外，还可以使用 [azure-maps-control](https://www.npmjs.com/package/azure-maps-control) NPM 程序包将 Azure Maps Web SDK 源代码加载到本地并将其与你的应用承载在一起。 此程序包还包括了 TypeScript 定义。
@@ -102,7 +102,7 @@ ms.locfileid: "58540119"
     </script>
     ```
 
-    请参阅[身份验证与 Azure Maps](azure-maps-authentication.md)的更多详细信息。
+    有关详细信息，请参阅[身份验证与 Azure Maps](azure-maps-authentication.md)的更多详细信息。
 
 6. （可选）在页面的头部添加以下元标记元素，你会发现这比较有用：
 
@@ -114,7 +114,7 @@ ms.locfileid: "58540119"
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     ```
 
-7. 将上述内容都放在一起后，你的 HTML 文件应当如下所示：
+7. 将它放在一起 HTML 文件应类似于以下代码：
 
     ```HTML
     <!DOCTYPE html>
@@ -131,8 +131,8 @@ ms.locfileid: "58540119"
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <style>
             html, body {
@@ -164,7 +164,7 @@ ms.locfileid: "58540119"
     </html>
     ```
 
-8. 在 Web 浏览器中打开该文件并查看呈现的地图。 该元素应类似于：
+8. 在 Web 浏览器中打开该文件并查看呈现的地图。 它应如以下代码所示：
 
     <iframe height="700" style="width: 100%;" scrolling="no" title="如何使用地图控件" src="//codepen.io/azuremaps/embed/yZpEYL/?height=557&theme-id=0&default-tab=html,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 发布的 Pen <a href='https://codepen.io/azuremaps/pen/yZpEYL/'>如何使用地图控件</a>。

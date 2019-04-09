@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/11/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 2c6f3d88aae99c419b2507f421cc4dfebb2c022b
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.openlocfilehash: 1d7874d7c8d04e3d3565cdfe2e52e49c538b3091
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100193"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009795"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
@@ -23,7 +23,7 @@ Azure Active Directory (Azure AD) B2C 支持更改由最终用户在创建帐户
 
 ## <a name="password-rule-enforcement"></a>密码规则强制实施
 
-在注册或密码重置期间，最终用户必须提供符合复杂性规则的密码。 根据用户流要求，需强制实施密码复杂性规则。 在注册时，一个用户流可能需要一个 4 位数的 pin，而另一个用户流在注册时需要一个 8 字符的字符串。 例如，可以使用针对成人（而非儿童）的不同密码复杂性的用户流。
+在注册或密码重置期间，最终用户必须提供符合复杂性规则的密码。 根据用户流要求，需强制实施密码复杂性规则。 很可能有一个用户流要求在注册时另一个用户流需要的八个字符字符串在注册期间使用四位数字 pin。 例如，可以使用针对成人（而非儿童）的不同密码复杂性的用户流。
 
 在登录期间绝不会强制实施密码复杂性。 登录时不会提示用户更改密码，因为它不符合当前的复杂性要求。
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) B2C 支持更改由最终用户在创建帐户
 
 ### <a name="comparison-chart"></a>比较图表
 
-| 复杂性 | 说明 |
+| 复杂性 | 描述 |
 | --- | --- |
 | 简单 | 为至少 8 到 64 个字符的密码。 |
 | 非常 | 为至少 8 到 64 个字符的密码。 它需要 4 个小写字母、大写字母、数字或符号中的 3 个。 |

@@ -12,20 +12,20 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 03/27/2019
 ms.author: pbutlerm
-ms.openlocfilehash: 11bbd87eb283dca2c7da19e32833221c7320a79f
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.openlocfilehash: f18a1b05e5a38a79945d8df6706dd2147d6b43df
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56817790"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009710"
 ---
-# <a name="power-bi-app-offer"></a>Power BI 应用产品/服务
+# <a name="power-bi-app-offer"></a>Power BI 应用套餐
 
 |              |                                |
-|-|--------------------------------|
-| 此文章介绍了如何将 Power BI 应用发布到 Microsoft [AppSource marketplace](https://appsource.microsoft.com/)。 Power BI 应用打包 Power BI 内容，并使用数据流连接到常用数据存储中的数据的报表和仪表板。 然后可以将应用部署到通过 AppSource 其他租户。 | ![Power BI 图标](./media/powerbi-icon.png) |
+|--------------|--------------------------------|
+| 此文章介绍了如何将 Power BI 应用发布到 Microsoft [AppSource marketplace](https://appsource.microsoft.com/)。  Power BI 应用包可自定义 Power BI 内容，包括数据集、 报表和仪表板。 然后可以将应用部署到通过 AppSource 其他 Power BI 租户、 执行的调整和开发人员所允许的自定义项并将其连接到你自己的数据。 | ![Power BI 图标](./media/powerbi-icon.png) |
 
 
 本文分为三个主要部分：
@@ -43,16 +43,15 @@ ms.locfileid: "56817790"
 
 下面是 Power BI 应用产品/服务发布过程：
 
-1. 在 Power BI 中创建服务应用程序。 此操作将生成的包安装 URL，它表示该产品/服务的技术资产。 有关详细信息，请参阅[什么是 Power BI？](https://go.microsoft.com/fwlink/?linkid=2028636)。
-2. 收集或创建业务资产，包括：
-    - 市场营销材料。
-    - 法律和支持文档。
-3.  创建产品/服务。 使用云合作伙伴门户配置的产品/服务，包括产品/服务描述，市场营销材料、 法律信息、 支持信息和资产规范的详细信息。
-4.  认证和发布产品/服务。 这将启动发布过程。
-    - AppSource 载入团队测试、验证并认证应用程序。 
-    - 认证产品/服务后，查看在其测试环境中，并将其释放。
+1. 在 Power BI 中创建的模板应用程序。 此操作将生成的包安装 URL，它表示该产品/服务的主要技术资产。 此外在此时，将提升到预生产环境测试包。 有关详细信息，请参阅[什么是 Power BI 模板应用？](https://docs.microsoft.com/power-bi/service-template-apps-overview)。 
+2. 收集或创建产品/服务的市场营销材料，其中包括： 正式名称、 说明、 徽标等。 
+3. 收集或创建产品/服务的法律和支持文档：*使用条款*，*隐私策略*，*支持策略*，用户帮助，等等。
+4. 创建产品/服务： 使用云合作伙伴门户配置的产品/服务，包括产品/服务描述，市场营销材料、 法律信息、 支持信息和资产规范的详细信息。  完全指定产品/服务后，将其提交进行发布。
+5. 监视云合作伙伴门户中发布的过程。  在此步骤中，AppSource 载入团队测试，验证，并证明你的应用程序。 
+6. 应用程序成功认证后，查看在其测试环境中并将其释放。 
+7. Power BI 应用 （其"实时转"） 在 AppSource 上列出。
+8. 在 Power BI 中，将提升到生产环境的预生产包。 有关详细信息，请参阅[管理模板应用版本](https://docs.microsoft.com/power-bi/service-template-apps-create#manage-the-template-app-release)。
 
-完成这些步骤后，你的 Power BI 应用推出产品/服务在 AppSource 上。
 
 ## <a name="next-steps"></a>后续步骤
 

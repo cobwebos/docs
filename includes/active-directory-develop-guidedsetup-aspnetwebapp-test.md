@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 4c4870dc0f5a423288e6cb561b985501414e8525
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203593"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58919155"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -82,12 +82,12 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>选项 1：限制某个组织的 Active Directory 实例的用户登录应用程序（单租户）
 
-此选项是一个常见方案*LOB 应用程序*:如果您希望接受只能从属于特定 Azure Active Directory 实例的帐户登录应用程序 (包括*来宾帐户*的该实例) 执行以下操作：
+此选项是 LOB 应用程序的常见方案：如果希望应用程序仅接受属于特定 Azure Active Directory 实例的帐户（包括该示例的来宾帐户）进行登录，请执行以下操作：
 
 1. 在 **web.config** 文件中，将 `Tenant` 参数的值从 `Common` 更改为组织的租户名称，例如 `contoso.onmicrosoft.com`。
 2. 在 [OWIN Startup 类](#configure-the-authentication-pipeline)中，将 `ValidateIssuer` 参数设置为 `true`。
 
-#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>选项 2：限制对组织的应用程序与特定列表中的用户的访问
+#### <a name="option-2-restrict-access-to-your-application-to-users-in-a-specific-list-of-organizations"></a>选项 2：仅允许特定列表中的组织中的用户访问应用程序
 
 可以将登录访问权限仅限于允许组织列表中的 Azure AD 组织中的用户帐户：
 1. 在 [OWIN Startup 类](#configure-the-authentication-pipeline)中，将 `ValidateIssuer` 参数设置为 `true`。
@@ -95,6 +95,6 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>选项 3：使用自定义方法来验证颁发者
 
-可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请阅读 MSDN 上的 [TokenValidationParameters class](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx)（TokenValidationParameters 类）。
+可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请阅读 [TokenValidationParameters 类](/previous-versions/visualstudio/dn464192(v=vs.114))。
 
 [!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

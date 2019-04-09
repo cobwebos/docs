@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure Monitor 创建、查看和管理日志警报
+title: 创建、 查看和管理使用 Azure Monitor 的日志警报 |Microsoft Docs
 description: 在 Azure 中使用 Azure Monitor 创作、查看和管理日志警报规则。
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: f26c8e670855513995463ffaaf7e49a8e00e35fa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d3285a6b2aa09dd78bbb63c384bd1f65c17034ff
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57873785"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006949"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>使用 Azure Monitor 创建、查看和管理日志警报
 
@@ -23,10 +23,10 @@ ms.locfileid: "57873785"
 - 条件：特定的条件或逻辑，出现在“信号”中时，应触发操作
 - 操作：发送到通知接收方 - 电子邮件、短信、Webhook 等的特定调用。
 
-术语**日志警报**用来描述警报，其中的信号是基于 [Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 的自定义查询。 从[日志警报 - 概述](../../azure-monitor/platform/alerts-unified-log.md)中详细了解功能、术语和类型。
+术语**日志警报**来描述的警报，其中的信号是中的日志查询[Log Analytics 工作区](../learn/tutorial-viewdata.md)或[Application Insights](../app/analytics.md)。 从[日志警报 - 概述](alerts-unified-log.md)中详细了解功能、术语和类型。
 
 > [!NOTE]
-> [Azure Log Analytics](../../azure-monitor/learn/tutorial-viewdata.md) 中的常见日志数据现在也可以在 Azure Monitor 中的指标平台上查看。 有关详细信息，请查看[日志的指标警报](../../azure-monitor/platform/alerts-metric-logs.md)
+> 从常用日志数据[Log Analytics 工作区](../../azure-monitor/learn/tutorial-viewdata.md)，现在还可以在 Azure Monitor 中的指标平台。 有关详细信息，请查看[日志的指标警报](alerts-metric-logs.md)
 
 ## <a name="managing-log-alerts-from-the-azure-portal"></a>从 Azure 门户中管理日志警报
 
@@ -58,7 +58,7 @@ ms.locfileid: "57873785"
 
    > [!NOTE]
    > 
-   > 警报列表可以导入分析查询作为信号类型 - **日志（已保存查询）**，如上图所示。 这样用户便能够在 Analytics 中完善查询，然后保存这些查询供将来在警报中使用 - 有关使用保存的查询的详细信息，请参阅[在 Log Analytics 中使用日志搜索](../../azure-monitor/log-query/log-query-overview.md)或 [Application Insights Analytics 中的共享查询](../../azure-monitor/log-query/log-query-overview.md)。
+   > 警报列表可以导入分析查询作为信号类型 - **日志（已保存查询）**，如上图所示。 这样用户可以完善 Analytics 中的查询，然后将其保存以供将来用于警报的详细信息的详细信息使用保存的查询在[使用 Azure Monitor 中的日志查询](../log-query/log-query-overview.md)或[application insights analytics 中的共享的查询](../log-query/log-query-overview.md).
 
 1. 日志警报：选择后，可以在“搜索查询”字段中指定警报查询；如果查询语法不正确，该字段将以红色显示错误。 如果查询语法正确 - 将以图表形式显示指定查询的历史数据供参考，同时显示用于调整时间范围（过去六个小时到过去一周）的选项。
 
@@ -119,19 +119,19 @@ ms.locfileid: "57873785"
     > 日志警报规则包括由用户提供的基于自定义查询的逻辑，因此不存在已解决状态。 因此，每当满足日志警报规则中指定的条件时，它都会触发。
 
 1. 在顶部栏中选择“管理规则”按钮，导航到规则管理部分 - 其中列出了创建的所有警报规则，包括已禁用的警报。
-    ![管理警报规则](media/alerts-log/manage-alert-rules.png)
+    ![ 管理警报规则](media/alerts-log/manage-alert-rules.png)
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>使用 Azure 资源模板管理日志警报
 
 Azure Monitor 中的日志警报与资源类型 `Microsoft.Insights/scheduledQueryRules/` 相关联。 有关此资源类型的详细信息，请参阅 [Azure Monitor - 计划查询规则 API 参考](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)。 可以使用[计划查询规则 API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) 为 Application Insights 或 Log Analytics 创建日志警报。
 
 > [!NOTE]
-> 还可以使用旧式 [Log Analytics 警报 API](../../azure-monitor/platform/api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../../azure-monitor/insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
+> 还可以使用旧式 [Log Analytics 警报 API](api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
 
 
 ### <a name="sample-log-alert-creation-using-azure-resource-template"></a>使用 Azure 资源模板创建日志警报示例
 
-以下是基于资源模板的[计划查询规则创建](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)结构，它使用[结果类型日志警报的数量](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules)的标准日志搜索查询，其中示例数据集作为变量。
+以下是基于资源模板的[计划查询规则创建](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate)结构，它使用[结果类型日志警报的数量](alerts-unified-log.md#number-of-results-alert-rules)的标准日志搜索查询，其中示例数据集作为变量。
 
 ```json
 {
@@ -316,7 +316,7 @@ Azure Monitor - 计划查询规则 API]（ https://docs.microsoft.com/rest/api/m
 
 
 > [!NOTE]
-> 还可以使用旧式 [Log Analytics 警报 API](../../azure-monitor/platform/api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../../azure-monitor/insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
+> 还可以使用旧式 [Log Analytics 警报 API](api-alerts.md) 以及 [Log Analytics 保存的搜索和警报](../insights/solutions-resources-searches-alerts.md)的旧式模板管理 Log Analytics 的日志警报。 有关默认使用此处详述的新 ScheduledQueryRules API 的详细信息，请参阅[切换到 Log Analytics 警报的新 API](alerts-log-api-switch.md)。
 
 日志警报当前不具有专用的 PowerShell 或 CLI 命令目前;但是，如下图所示可用于通过 Azure 资源管理器 PowerShell cmdlet 示例前面所示的资源模板 (sampleScheduledQueryRule.json) 在模板资源部分中：
 
@@ -335,4 +335,4 @@ On successful operation, 201 will be returned to state new alert rule creation o
 * Learn about [Log Alerts in Azure Alerts](../../azure-monitor/platform/alerts-unified-log.md)
 * Understand [Webhook actions for log alerts](../../azure-monitor/platform/alerts-log-webhook.md)
 * Learn more about [Application Insights](../../azure-monitor/app/analytics.md)
-* Learn more about [Log Analytics](../../azure-monitor/log-query/log-query-overview.md).
+* Learn more about [log queries](../log-query/log-query-overview.md).

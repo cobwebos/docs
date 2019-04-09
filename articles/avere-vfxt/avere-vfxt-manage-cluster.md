@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
-ms.openlocfilehash: bc91b052d3d69924af9afeb012c0ebb5be01dfbf
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
+ms.openlocfilehash: be9205fdf7fec0661d7382ed0d1bedf47487b15e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55745548"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058027"
 ---
 # <a name="manage-the-avere-vfxt-cluster"></a>管理 Avere vFXT 群集
 
@@ -98,7 +98,7 @@ GitHub 上提供了完整 vfxt.py 使用指南：[使用 vfxt.py 管理云群集
 * 群集资源组名称，以及网络和存储资源的资源组名称（与群集资源组名称不一致时）
 * 群集位置
 * 群集网络和子网 
-* 群集节点访问角色 
+* 群集节点访问角色 (使用内置角色[Avere 运算符](../role-based-access-control/built-in-roles.md#avere-operator))
 * 群集管理 IP 地址和管理密码 
 * 要添加的节点数（1、2 或 3）
 * 节点实例类型和缓存大小值 
@@ -113,7 +113,7 @@ GitHub 上提供了完整 vfxt.py 使用指南：[使用 vfxt.py 管理云群集
    --add-nodes --nodes NODE_COUNT \
    --management-address CLUSTER_IP --admin-password ADMIN_PASSWORD \
    --instance-type TYPE --node-cache-size SIZE \
-   --azure-role ROLE_NAME \
+   --azure-role "Avere Operator" \
    --log ~/vfxt.log
 ```
 
@@ -187,7 +187,7 @@ Azure 门户可用于执行以下群集管理任务：
 
 ### <a name="delete-additional-cluster-resources-from-the-azure-portal"></a>从 Azure 门户中删除其他群集资源
 
-如果创建了专用于 vFXT 群集的其他资源，则可能需要在销毁群集时将其删除。 不应销毁包含所需数据的元素，或与其他项目共享的任何项。
+如果创建了专用于 vFXT 群集的其他资源，则可能需要在销毁群集时将其删除。 不销毁包含所需的数据或与其他项目共享任何项的元素。
 
 除删除群集节点外，请考虑删除以下组件： 
 

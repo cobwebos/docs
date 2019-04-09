@@ -14,43 +14,41 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/12/2019
 ms.author: rkarlin
-ms.openlocfilehash: b6ea852c9a1bb8ea6eb51df310aab97e9b10d48e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c055b3d9dec2e2538a7dc7ac0eb707c97313d0d6
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399682"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006587"
 ---
 # <a name="on-board-azure-sentinel-preview"></a>载入 Azure Sentinel 预览
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 在本快速入门中，将了解如何载入 Azure Sentinel。 
 
-为载入 Azure Sentinel，首先需要连接到数据源。 Azure Sentinel 存在很多适用于 Microsoft 解决方案，可在带的框，并提供了实时的集成，包括 Microsoft 威胁防护解决方案，Microsoft 365 源，包括 Office 365，Azure AD 中，Azure ATP 连接器和Microsoft Cloud App Security，和的详细信息。 此外，还有内置连接器再到非 Microsoft 解决方案的更广泛的安全生态系统。 此外可以使用通用事件格式，Syslog 或 REST API 与 Azure Sentinel 连接数据源。  
+若要载入 Azure Sentinel，首先需要连接到数据源。 Azure Sentinel 存在很多适用于 Microsoft 解决方案，可在带的框，并提供了实时的集成，包括 Microsoft 威胁防护解决方案，Microsoft 365 源，包括 Office 365，Azure AD 中，Azure ATP 连接器和Microsoft Cloud App Security，和的详细信息。 此外，内置的连接器可以拓宽非 Microsoft 解决方案的安全生态系统。 此外可以使用通用事件格式，Syslog 或 REST API 与 Azure Sentinel 连接数据源。  
 
 数据源连接后，选择从熟练地创建仪表板的基于数据的见解传达库。 可以根据需要轻松地自定义这些仪表板。
 
 
 ## <a name="global-prerequisites"></a>全局系统必备组件
 
-- 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+- 有效的 Azure 订阅，如果你没有帐户，创建[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)在开始之前。
 
 - Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](../log-analytics/log-analytics-quick-create-workspace.md)
 
-- 若要启用 Azure Sentinel 你租户的参与者权限
-
-- 租户全局或安全管理员权限
- 
+    - 与 Azure Sentinel 绑定到资源组的参与者权限
+    - 向资源组的参与者权限以启用 Azure Sentinel 
 
 ## 启用 Azure Sentinel <a name="enable"></a>
 
 1. 转到 Azure 门户。
 2. 请确保已选择在其中创建 Azure Sentinel，订阅。 
 3. 搜索 Azure Sentinel。 
-   ![search](./media/quickstart-onboard/search-product.png)
+   ![搜索](./media/quickstart-onboard/search-product.png)
 
 1. 单击“+添加”。
 1. 选择你想要使用或创建一个新的工作区。 可以在多个工作区中，运行 Azure Sentinel 但数据隔离到单个工作区。
@@ -79,7 +77,7 @@ Azure Sentinel 通过连接到服务并将事件和日志转发给 Azure Sentine
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了有关数据源连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了有关数据源连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。
 - Stream 中的数据[常见错误格式设备](connect-common-event-format.md)到 Azure Sentinel。

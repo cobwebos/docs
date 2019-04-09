@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 1edc2587ef8680f60082bf6271b73d30184f331b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 52f74bb3cb9e460fc5c572079355f47b4b0bf0a3
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521238"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010441"
 ---
 # <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
@@ -36,9 +36,9 @@ ms.locfileid: "58521238"
 
 此表列出了文本到语音转换的核心功能：
 
-| 用例 | SDK | REST |
+| 使用案例 | SDK 中 IsInRole 中的声明 | REST |
 |----------|-----|------|
-| 将文本到语音转换。 | 否 | 是 |
+| 将文本到语音转换。 | 是 | 是 |
 | 上传为语音适配的数据集。 | 否 | 是\* |
 | 创建和管理语音字体模型。 | 否 | 是\* |
 | 创建和管理语音字体部署。 | 否 | 是\* |
@@ -54,17 +54,24 @@ ms.locfileid: "58521238"
 
 我们提供了快速入门旨在让您在 10 分钟内运行代码。 此表包含一系列按语言的文本到语音转换快速入门。
 
-| 快速入门 | 平台 | API 参考 |
+| 快速入门 (REST) | 平台 | API 参考 |
 |------------|----------|---------------|
-| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、 macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Node.js](quickstart-nodejs-text-to-speech.md) | 窗口中，macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
-| [Python](quickstart-python-text-to-speech.md) | 窗口中，macOS、 Linux | [Browse](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [C#, .NET Core](quickstart-dotnet-text-to-speech.md) | Windows、 macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Node.js](quickstart-nodejs-text-to-speech.md) | 窗口中，macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+| [Python](quickstart-python-text-to-speech.md) | 窗口中，macOS、 Linux | [浏览](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis) |
+
+| 快速入门 (SDK) | 平台 | API 参考 |
+|------------|----------|---------------|
+| [C#.NET framework](quickstart-text-to-speech-dotnet-windows.md) | Windows | [浏览](https://aka.ms/csspeech/csharpref) |
+| [C++](quickstart-text-to-speech-cpp-windows.md) | Windows | [浏览](https://aka.ms/csspeech/cppref) |
+| [C++](quickstart-text-to-speech-cpp-linux.md) | Linux | [浏览](https://aka.ms/csspeech/cppref) |
 
 ## <a name="sample-code"></a>代码示例
 
 文本到语音转换的示例代码位于 GitHub 上提供。 这些示例涉及最常用编程语言中的文本到语音转换。
 
-* [文本转语音示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [文本到语音转换示例 (REST)](https://github.com/Azure-Samples/Cognitive-Speech-TTS)
+* [文本到语音转换示例 (SDK)](https://github.com/Azure-Samples/cognitive-services-speech-sdk)
 
 ## <a name="reference-docs"></a>参考文档
 
@@ -72,7 +79,7 @@ ms.locfileid: "58521238"
 * [语音设备 SDK](speech-devices-sdk.md)
 * [REST API：语音转文本](rest-speech-to-text.md)
 * [REST API：文本转语音](rest-text-to-speech.md)
-* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
+* [REST API：批处理脚本和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cd9f6112cbca78b323e0a14818b06f891a3f673
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d58c019cf3d801ce938a4ca6eca70b1606bf4ff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862881"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264465"
 ---
 # <a name="enforce-azure-ad-password-protection-for-windows-server-active-directory"></a>为 Windows Server Active Directory 强制执行 Azure AD 密码保护
 
@@ -31,7 +31,8 @@ Azure AD 密码保护专为提供记住这些原则：
 * 无需进行任何 Active Directory 架构更改。 软件使用现有的 Active Directory**容器**并**serviceConnectionPoint**架构对象。
 * 没有最小 Active Directory 域或林功能级别 (DFL/FFL) 是必需的。
 * 该软件不会创建或要求它保护的 Active Directory 域中的帐户。
-* 在密码验证期间或在其他任何时间，用户明文密码不要将域控制器。
+* 用户明文密码永远不会保留在域控制器中，在密码验证期间或在其他任何时间。
+* 该软件不依赖于其他 Azure AD 功能;例如 Azure AD 密码哈希同步不相关，并且不要求为了使 Azure AD 密码保护函数。
 * 支持增量部署，但仅安装域控制器和代理 （DC 代理） 实施密码策略。 请参阅下一主题的更多详细信息。
 
 ## <a name="incremental-deployment"></a>增量部署
@@ -62,7 +63,7 @@ DC 代理服务负责启动下载的 Azure AD 中的新密码策略。 第一步
 
 DC 代理服务从 Azure AD 收到新的密码策略后，服务会将该策略存储在专用文件夹中其域的根目录*sysvol*文件夹共享。 DC 代理服务还监视此文件夹，以防从域中的其他 DC 代理服务以复制较新的策略。
 
-DC 代理服务始终请求在服务启动新的策略。 DC 代理服务启动后，它会检查每小时当前的本地可用策略的期限。 如果策略超过一小时，DC 代理新策略从 Azure AD 请求，如前面所述。 如果当前策略不超过一小时，DC 代理将继续使用该策略。
+DC 代理服务始终请求在服务启动新的策略。 DC 代理服务启动后，它会检查每小时当前的本地可用策略的期限。 如果策略超过一小时，DC 代理新策略从 Azure AD 请求通过代理服务，如前面所述。 如果当前策略不超过一小时，DC 代理将继续使用该策略。
 
 只要下载 Azure AD 密码保护密码策略，该策略是特定于租户。 换而言之，密码策略始终是 Microsoft 全球受禁密码列表和每个租户的自定义受禁密码列表的组合。
 
@@ -77,6 +78,8 @@ DC 代理永远不会在网络可用的端口上侦听。
 DC 代理服务始终使用最新的本地可用密码策略来评估用户的密码。 如果没有密码策略在本地的 DC 上不可用，会自动接受此密码。 在这种情况，被记录的事件消息来警告管理员。
 
 Azure AD 密码保护并不是实时的策略应用程序引擎。 可以在 Azure AD 中执行密码策略配置更改时与该更改达到和所有域控制器上强制实施之间延迟。
+
+Azure AD 密码保护的现有 Active Directory 密码策略，不能取代补充作用。 这包括可能安装的任何其他第三方密码筛选器 dll。 Active Directory 始终要求所有密码验证组件再接受密码即表示都同意。
 
 ## <a name="foresttenant-binding-for-password-protection"></a>针对密码保护的林/租户绑定
 

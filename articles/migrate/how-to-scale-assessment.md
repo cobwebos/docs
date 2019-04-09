@@ -4,18 +4,21 @@ description: 介绍如何使用 Azure Migrate 服务访问大量本地计算机�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: 8a2ea64d32194ff06378e3227b260c4f10d53175
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58116667"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59057466"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
-Azure Migrate 具有每个项目 1500 台计算机的限制，本文介绍了如何使用 [Azure Migrate](migrate-overview.md) 访问大量本地虚拟机 (VM)。   
+Azure Migrate 具有每个项目 1500 台计算机的限制，本文介绍了如何使用 [Azure Migrate](migrate-overview.md) 访问大量本地虚拟机 (VM)。
+
+> [!NOTE]
+> 我们有一个预览版本可用，可以最多 10,000 个 VMware Vm 发现使用单个设备的单个项目中，如果您有兴趣尝试一下，请注册[此处。](https://aka.ms/migratefuture)
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -155,7 +158,7 @@ Azure Migrate 会创建一个称作收集器设备的本地 VM。 此 VM 可发�
 
    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
 
-   用法示例：```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
+   示例用法: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 
 3. 确保生成的哈希与以下设置匹配。
 

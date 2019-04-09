@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: tutorial
 ms.date: 10/24/2018
 ms.author: victorh
-ms.openlocfilehash: 2befbf66733430e6077f5e5ff3044c30a77b7e5c
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: 10837730bea17f98083f456ec4c9fb0d7567af57
+ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958966"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58877255"
 ---
 # <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>教程：监视 Azure 防火墙日志和指标
 
@@ -41,7 +41,7 @@ ms.locfileid: "56958966"
 完成此过程启用诊断日志记录后，可能需要经过几分钟，数据才会显示在日志中。 如果一开始未看到任何内容，请在几分钟后重新查看。
 
 1. 在 Azure 门户中，打开防火墙资源组并单击防火墙。
-2. 在“监视”下面，单击“诊断日志”。
+2. 在“监视”下面，单击“诊断设置”。
 
    Azure 防火墙有两个特定于服务的日志：
 

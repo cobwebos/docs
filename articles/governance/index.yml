@@ -1,16 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 985f620caaa329b48b00d6ce586e7dcefbf5869d
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56341227"
 documentType: LandingData
 title: Azure 管理 - 治理
 metadata:
   title: Azure 管理 - 治理
   description: 了解可通过明确的设计和规则，对环境进行一致性管理的概念和 Azure 服务，并了解符合性的审核方法。
-  services: governance
   author: DCtheGeek
   manager: carmonm
   ms.service: governance
@@ -21,55 +14,55 @@ abstract:
   description: Azure 治理是一组概念和服务，旨在实现大规模管理各种 Azure 资源。 这些服务提供了以逻辑方式组织和构建订阅，创建和部署可重用的 Azure 本机资源包以及定义、审核和修复资源等功能。 可通过此页面了解有关这些概念和服务的更多信息，以及如何立即在环境中启用和使用每个概念和服务。
   aside:
     image:
-      alt: 
+      alt: null
       height: 225
       src: ./media/video.png
       width: 250
-    title: 使用 Azure 治理对资源进行加速和控制 (1:47)
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    title: '使用 Azure 治理对资源进行加速和控制 (1:47)'
+    href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
     width: 250
 sections:
-- title: 组件和服务
-- items:
-  - type: list
-    style: cards
-    className: cardsD
-    columns: 2
-    items:
-    - href: ./management-groups/overview
-      html: <p>了解如何在逻辑层次结构中对订阅进行分组和组织，以支持以结构化方式部署其他治理服务。<br /></p>
-      image:
-        alt: 管理组
-        src: ./media/management-groups-illustration.svg
-      title: 管理组
-    - href: ./resource-graph/
-      html: <p>使用功能强大的命令行工具（支持 Azure CLI 和 Azure PowerShell）快速查询有关 Azure 资源的复杂详细信息。 查找并公开信息（以前需要复杂的迭代脚本才能找到），以便大规模发现这些资源。</p>
-      image:
-        alt: Resource Graph
-        src: ./media/resource-graph-illustration.svg
-      title: Resource Graph
-    - href: ./policy/
-      html: <p>为环境中的资源定义和应用标准。 防止创建不需要的资源，使用其他元素强化新资源，以及审核和修复环境中的已有资源。</p>
-      image:
-        alt: 策略
-        src: ./media/policy-illustration.svg
-      title: 策略
-    - href: ./blueprints/
-      html: <p>创建一个 Azure 本机<i>项目</i>包（资源组、策略、角色分配、资源管理器模板等），从而可将该包动态部署到订阅以创建一致的可重复环境。</p>
-      image:
-        alt: 蓝图
-        src: ./media/blueprints-illustration.svg
-      title: 蓝图
-- title: 实现形式
-- items:
-  - type: list
-    style: cards
-    className: cardsZ
-    columns: 3
-    items:
-    - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-      html: <p>在过去，企业必须全权拥有技术，并承担各种程度的责任，包括从基础结构到软件等各个方面。 现在，云提供了变革的潜力，可让企业通过预配和使用所需的资源来利用技术。</p>
-      title: 企业云的采用
-    - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-      html: <p>它能使管理员确保工作负荷满足组织的最低治理要求，同时又不妨碍业务小组和开发人员尽快实现自身的目标。<br /><br /></p>
-      title: 企业基架
+  - title: 组件和服务
+  - items:
+      - type: list
+        style: cards
+        className: cardsD
+        columns: 2
+        items:
+          - href: ./management-groups/overview
+            html: <p>了解如何在逻辑层次结构中对订阅进行分组和组织，以支持以结构化方式部署其他治理服务。<br /></p>
+            image:
+              alt: 管理组
+              src: ./media/management-groups-illustration.svg
+            title: 管理组
+          - href: ./resource-graph/
+            html: <p>使用功能强大的命令行工具（支持 Azure CLI 和 Azure PowerShell）快速查询有关 Azure 资源的复杂详细信息。 查找并公开信息（以前需要复杂的迭代脚本才能找到），以便大规模发现这些资源。</p>
+            image:
+              alt: Resource Graph
+              src: ./media/resource-graph-illustration.svg
+            title: Resource Graph
+          - href: ./policy/
+            html: <p>为环境中的资源定义和应用标准。 防止创建不需要的资源，使用其他元素强化新资源，以及审核和修复环境中的已有资源。</p>
+            image:
+              alt: 策略
+              src: ./media/policy-illustration.svg
+            title: 策略
+          - href: ./blueprints/
+            html: <p>创建一个 Azure 本机<i>项目</i>包（资源组、策略、角色分配、资源管理器模板等），从而可将该包动态部署到订阅以创建一致的可重复环境。</p>
+            image:
+              alt: 蓝图
+              src: ./media/blueprints-illustration.svg
+            title: 蓝图
+  - title: 实现形式
+  - items:
+      - type: list
+        style: cards
+        className: cardsZ
+        columns: 3
+        items:
+          - href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+            html: <p>在过去，企业必须全权拥有技术，并承担各种程度的责任，包括从基础结构到软件等各个方面。 现在，云提供了变革的潜力，可让企业通过预配和使用所需的资源来利用技术。</p>
+            title: 企业云的采用
+          - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+            html: <p>它能使管理员确保工作负荷满足组织的最低治理要求，同时又不妨碍业务小组和开发人员尽快实现自身的目标。<br /><br /></p>
+            title: 企业基架

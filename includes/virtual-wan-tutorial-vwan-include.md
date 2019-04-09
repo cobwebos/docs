@@ -5,19 +5,19 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: include
-ms.date: 02/27/2019
+ms.date: 03/27/2019
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 485a386210458d57b87aaa0537b1c58a6adab2c7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: b2549abd3a4f87de99efa9a916e39b99c6fc8747
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58342473"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58616478"
 ---
-1. 可以通过导航到“所有服务”并搜索“虚拟 WAN”找到虚拟 WAN。 或者，可以在 Azure 门户顶部的搜索框中搜索“虚拟 WAN”。 单击“虚拟 WAN”打开相应的页。
-2. 单击“+添加”打开“创建 WAN”页。
-3. 在“创建 WAN”页上填写以下字段：
+1. 导航到“虚拟 WAN”页。 若要浏览到此页，一种方法是转到“所有服务”，然后搜索“虚拟 WAN”。
+1. 单击“+添加”打开“创建 WAN”页。
+1. 在“创建 WAN”页上填写以下字段：
 
    * **名称** - 选择 WAN 的名称。
    * **订阅** - 选择要使用的订阅。

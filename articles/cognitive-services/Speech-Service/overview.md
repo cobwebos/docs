@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 03/13/2019
 ms.author: erhopf
-ms.openlocfilehash: 06b2a5211c720d50a2f14e5fa56fa296cb80d41f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: b536c55b0f7c29bc463781d9fda0348ef994c5ce
+ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519623"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58662218"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
 
@@ -39,7 +39,7 @@ Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转�
 
 了解 Azure 语音服务的新增功能。
 
-* 2019 年 3 月 - 现在有一个新的用于文本到语音转换的终结点可用，可以返回特定区域中可用语音的完整列表。 有关详细信息，请参阅[文本到语音转换 API 参考 (REST)](rest-text-to-speech.md)。
+* 2019 年 3 月 - 现在有一个新的用于文本到语音转换 (TTS) 的终结点可用，可以返回特定区域中可用语音的完整列表。 另外，TTS 现在支持新区域。 有关详细信息，请参阅[文本到语音转换 API 参考 (REST)](rest-text-to-speech.md)。
 * 2019 年 2 月 - 发布了支持 [Unity (beta)](quickstart-csharp-unity.md) 的语音 SDK 1.3.0。 添加了对 `AudioInput` 类的支持，使用该类可以选择音频流源。 有关增强功能和已知问题的完整列表，请参阅[发行说明](releasenotes.md)。
 * 2018 年 12 月 - 发布了支持 [Python](quickstart-python.md)、[Node.js](quickstart-js-node.md) 和 Ubuntu 18.04 LTS 的语音 SDK 1.2.0。 有关详细信息，请参阅[发行说明](releasenotes.md)。
 
