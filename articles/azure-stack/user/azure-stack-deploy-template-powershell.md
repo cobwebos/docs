@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/08/2019
 ms.author: sethm
 ms.reviewer: unknown
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: d71df99096e58b3ac7adc920b91891b9a50cd6f7
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 9c1df99557293030dc0b1c0693b0bbc517a3f0ff
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58479575"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262289"
 ---
 # <a name="deploy-a-template-to-azure-stack-using-powershell"></a>使用 PowerShell 将模板部署到 Azure Stack
 
-*适用于：Azure Stack 集成系统和 Azure Stack 开发工具包*
+*适用于Azure Stack 集成系统和 Azure Stack 开发工具包*
 
 可以使用 PowerShell 将 Azure 资源管理器模板部署到 Azure Stack。 本文介绍如何使用 PowerShell 部署模板。
 
@@ -34,9 +34,9 @@ ms.locfileid: "58479575"
 此示例使用 **AzureRM** PowerShell cmdlet 和存储在 GitHub 上的模板。 此模板创建 Windows Server 2012 R2 Datacenter 虚拟机。
 
 >[!NOTE]
->在尝试此示例之前，请确保已为 Azure Stack 用户[配置了 PowerShell](azure-stack-powershell-configure-user.md)。
+> 在尝试此示例之前，请确保已为 Azure Stack 用户[配置了 PowerShell](azure-stack-powershell-configure-user.md)。
 
-1. 转到 [https://aka.ms/AzureStackGitHub](https://aka.ms/AzureStackGitHub) 并找到 **101-simple-windows-vm** 模板。 将模板保存到此位置：`C:\templates\azuredeploy-101-simple-windows-vm.json`。
+1. 浏览[AzureStackGitHub 存储库](https://aka.ms/AzureStackGitHub)并找到**101 简单的 windows vm**模板。 将模板保存到此位置：`C:\templates\azuredeploy-101-simple-windows-vm.json`。
 2. 打开权限提升的 PowerShell 命令提示符。
 3. 将以下脚本中的 `username` 和 `password` 替换为你的用户名和密码，然后运行脚本：
 
@@ -45,10 +45,10 @@ ms.locfileid: "58479575"
     $myNum = "001" # Modify this per deployment
     $RGName = "myRG$myNum"
     $myLocation = "local"
-   
+
     # Create resource group for template deployment
     New-AzureRmResourceGroup -Name $RGName -Location $myLocation
-   
+
     # Deploy simple IaaS template
     New-AzureRmResourceGroupDeployment `
         -Name myDeployment$myNum `
@@ -63,10 +63,10 @@ ms.locfileid: "58479575"
     ```
 
     >[!IMPORTANT]
-    >每次运行此脚本时，都应递增 `$myNum` 参数的值，以避免覆盖你的部署。
+    > 每次运行此脚本时，都应递增 `$myNum` 参数的值，以避免覆盖你的部署。
 
 4. 打开 Azure Stack 门户，选择“浏览”，然后选择“虚拟机”以查找新虚拟机 (**myDeployment001**)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- [通过 Visual Studio 部署模板](azure-stack-deploy-template-visual-studio.md)
+- [使用 Visual Studio 部署模板](azure-stack-deploy-template-visual-studio.md)

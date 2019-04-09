@@ -8,14 +8,14 @@ services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/06/2019
 ms.author: heidist
-ms.openlocfilehash: a59451c659effb55a2e16236b359b7601eb31cd4
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 64b07d37ce9267681ccfb5de3c7201586bd85b35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286595"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273407"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-search-service"></a>创建和管理 Azure 搜索服务的 API 密钥
 
@@ -53,30 +53,37 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 
 ## <a name="create-query-keys"></a>创建查询密钥
 
-查询密钥用于对索引中的文档的只读访问。 限制访问和客户端应用中的操作是必要的保护你的服务上的搜索资产。 始终使用从客户端应用程序发起的任何查询的查询密钥而不是管理密钥。
+查询密钥用于只读访问到索引中的文档的文档集合为目标的操作。 搜索、 筛选和建议的查询是进行查询密钥的所有操作。 返回系统数据或对象定义，如索引定义或索引器状态，任何只读操作需要管理密钥。
+
+限制访问和客户端应用中的操作是必要的保护你的服务上的搜索资产。 始终使用从客户端应用程序发起的任何查询的查询密钥而不是管理密钥。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 列出订阅的[搜索服务](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
 3. 选择服务，然后在概述页上单击**设置** >**密钥**。
 4. 单击**管理查询密钥**。
-5. 使用已为你的服务，生成的查询或创建最多 50 个新的查询密钥。 未命名的默认查询密钥，但其他查询密钥可以命名的可管理性。
+5. 使用已为你的服务，生成的查询密钥或创建最多 50 个新的查询密钥。 未命名的默认查询密钥，但其他查询密钥可以命名的可管理性。
 
    ![创建或使用查询密钥](media/search-security-overview/create-query-key.png) 
-
 
 > [!Note]
 > 显示查询密钥使用情况的代码示例可在[查询中的 Azure 搜索索引C# ](search-query-dotnet.md)。
 
+<a name="regenerate-admin-keys"></a>
+
 ## <a name="regenerate-admin-keys"></a>重新生成管理员密钥
 
-针对每个服务创建两个管理密钥，以便可以旋转主键，使用辅助密钥继续访问。
-
-如果同时重新生成主密钥和辅助密钥，任何使用任意密钥访问服务操作的应用程序将不再有权访问该服务。
+针对每个服务创建两个管理密钥，以便可以旋转主键，实现业务连续性使用辅助密钥。
 
 1. 在“设置” >“密钥”页中，复制辅助密钥。
 2. 对于所有应用程序，更新 API 密钥设置以使用辅助密钥。
 3. 重新生成主密钥。
 4. 更新所有应用程序以使用新的主密钥。
+
+如果你无意中重新生成在同一时间的这两个密钥，使用这些密钥的所有客户端请求将失败并 HTTP 403 禁止访问。 但是，不删除内容，并且您不应局限永久。 
+
+您仍可以通过门户或管理层访问服务 ([REST API](https://docs.microsoft.com/rest/api/searchmanagement/)， [PowerShell](https://docs.microsoft.com/azure/search/search-manage-powershell)，或 Azure 资源管理器)。 管理功能是订阅 ID 不是服务 api 的密钥，通过操作性，因此仍然可用，即使你的 api 密钥并不是。 
+
+创建新的密钥通过门户或管理层后，你的内容 （索引、 索引器、 数据源、 同义词映射） 恢复访问权限后具有新的密钥和在请求中提供这些键。
 
 ## <a name="secure-api-keys"></a>保护 API 密钥
 通过门户或 Resource Manager 界面（PowerShell 或命令行接口）以限制访问，从而保护密钥安全。 如前所述，订阅管理员可以查看和重新生成所有 API 密钥。 作为预防措施，查看角色分配以了解谁有权访问管理密钥。
@@ -91,5 +98,5 @@ API 密钥是随机生成的数字和字母所组成的字符串。 通过[基�
 ## <a name="see-also"></a>另请参阅
 
 + [Azure 搜索中基于角色的访问控制](search-security-rbac.md)
-+ [使用 PowerShell 进行管理](search-manage-powershell.md) 
++ [使用 PowerShell 管理](search-manage-powershell.md) 
 + [性能和优化文章](search-performance-optimization.md)

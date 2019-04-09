@@ -4,7 +4,7 @@ description: 了解 Azure 云环境中运行的多租户软件即服务 (SaaS) �
 services: sql-database
 ms.service: sql-database
 ms.subservice: scenario
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: MightyPen
@@ -12,18 +12,18 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: d55d8f8f945e30402cb772c7e26b234e3e460698
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 6332555c1a176a06004ddfeee513844ad5875c30
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57217863"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260538"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>多租户 SaaS 数据库租户模式
 
-在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租户模型确定如何将每个租户的数据映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
+本指南介绍了各种可用于多租户 SaaS 应用程序的租户模型。
 
-本指南介绍备选租户模型。
+在设计多租户 SaaS 应用程序时，必须慎重选择最符合应用程序需要的租户模型。  租户模型确定如何将每个租户的数据映射到存储。  所选的租户模型会影响应用程序设计和管理。  今后改用不同的模型可能需要付出一定的代价。
 
 ## <a name="a-saas-concepts-and-terminology"></a>A. SaaS 概念和术语
 
@@ -85,7 +85,7 @@ ms.locfileid: "57217863"
 
 接下来的这个模式使用包含许多数据库的多租户应用程序，这些数据库都是单租户数据库。  针对每个新租户预配一个新数据库。  可通过为每个节点添加更多的资源来纵向扩展应用程序层。  或者，可通过添加更多的节点来横向扩展应用。  缩放基于工作负荷，不受各个数据库的数目或规模的影响。
 
-![设计采用“每个租户各有数据库”模型的多租户应用。][image-mt-app-db-per-tenant-132d]
+![使用每个租户一个数据库的多租户应用程序的设计。][image-mt-app-db-per-tenant-132d]
 
 #### <a name="customize-for-a-tenant"></a>根据租户进行自定义
 
@@ -97,7 +97,7 @@ ms.locfileid: "57217863"
 
 如果将数据库部署在同一个资源组中，可将其分组到弹性池。  通过池可以经济高效地在许多数据库之间共享资源。  与创建足够大的数据库来适应它所遇到的用量高峰相比，使用这种池选项的成本更低廉。  即使入池的数据库共享资源访问权限，也仍能实现较高程度的性能隔离。
 
-![使用弹性池设计采用“每个租户各有数据库”模型的多租户应用。][image-mt-app-db-per-tenant-pool-153p]
+![使用每个租户一个数据库，使用弹性池的多租户应用程序的设计。][image-mt-app-db-per-tenant-pool-153p]
 
 Azure SQL 数据库提供所需的工具用于配置、监视和管理共享。  可在 Azure 门户中，并通过 Azure Monitor 日志池级别和数据库级别的性能指标。  指标可以提供聚合性能和租户特定性能的深入见解。  可以在池之间移动单个数据库，以便向特定的租户提供保留的资源。  使用这些工具可确保以经济高效的方式获得良好性能。
 
@@ -146,7 +146,7 @@ Azure SQL 数据库平台提供多种管理功能，用于大规模管理大量�
 
 大多数 SaaS 应用程序每次只访问一个租户的数据。  使用此访问模式可在多个数据库或分片之间分布租户数据，其中，任一租户的所有数据包含在一个分片中。  将分片模型与多租户数据库模式相结合可以实现几乎无限的规模。
 
-![设计包含分片多租户数据库的多租户应用。][image-mt-app-sharded-mt-db-174s]
+![使用分片多租户数据库的多租户应用程序的设计。][image-mt-app-sharded-mt-db-174s]
 
 #### <a name="manage-shards"></a>管理分片
 

@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d30fe326ef677ca4543534d57dd306ed2a660300
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895556"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261514"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
 
@@ -138,6 +138,7 @@ ms.locfileid: "58895556"
 
 - **需要加入域** - 如果不具有加入域的设备，此阻止访问权限的策略还可能会阻止组织中所有用户的访问权限。
 
+- **需要应用保护策略**-此策略阻止访问也有可能阻止你的组织中的所有用户的访问权限，如果你没有 Intune 策略。 如果你是管理员不具有 Intune 应用保护策略的客户端应用程序的情况下，此策略会阻止你回到如 Intune 和 Azure 门户。
 
 **对于所有用户、 所有云应用，所有设备平台：**
 

@@ -13,19 +13,19 @@ ms.topic: reference
 ms.date: 03/27/2019
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f09fded38e384126a8dfdbe567ce4a3ebd5b1af4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 459758142c94ddfd244df1427dd5632186efc0de
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893582"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266915"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Azure Functions 的缩放和托管
 
 Azure Functions 在两个不同的计划中运行：消耗量计划和高级计划 （公共预览版）。 运行你的代码时，消耗计划会自动添加的计算能力。 您的应用程序是以处理负载，根据需要向外扩展和缩减代码停止运行时。 无需为空闲的 VM 付费或提前保留容量。  高级计划还会自动将缩放和运行你的代码时将添加更多计算能力。  高级计划提供了其他功能，例如高级计算实例、 使实例保存无限期，热和 VNet 连接。  如果你有现有的应用服务计划，还可以运行函数应用中。
 
 > [!NOTE]  
-> 这两[高级版计划](https://azure.microsoft.com/blog/uncompromised-serverless-scale-for-enterprise-workloads-with-the-azure-functions-premium-plan/preview/)并[适用于 Linux 的消耗计划](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)目前处于预览状态。
+> 这两[高级版计划](https://aka.ms/functions-premiumplan)并[适用于 Linux 的消耗计划](https://azure.microsoft.com/updates/azure-functions-consumption-plan-for-linux-preview/)目前处于预览状态。
 
 如果不熟悉 Azure Functions，请参阅 [Azure Functions 概述](functions-overview.md)。
 

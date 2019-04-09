@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9e910fb3bc75c285986871627d875296f1a2a746
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577316"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269123"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
@@ -66,7 +66,7 @@ ms.locfileid: "58577316"
 
 下图演示了工作区的分类：
 
-[![工作区分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
+[![Workspace 分类](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.svg)](./media/concept-azure-machine-learning-architecture/azure-machine-learning-taxonomy.png#lightbox)
 
 ## <a name="experiment"></a>试验
 
@@ -80,7 +80,7 @@ ms.locfileid: "58577316"
 
 模型通过 Azure 机器学习中的运行生成。 还可以使用在 Azure 机器学习外部训练的模型。 可在 Azure 机器学习服务工作区中注册模型。
 
-Azure 机器学习服务与框架无关。 创建模型时，可以使用任何流行的机器学习框架，例如 Scikit-learn、XGBoost、PyTorch、TensorFlow、Chainer 和 Microsoft Cognitive Toolkit（前称为 CNTK）。
+Azure 机器学习服务与框架无关。 创建模型时，可以使用任何常用的机器学习框架，例如 scikit-learn、 XGBoost、 PyTorch、 TensorFlow 和链接器。
 
 为模型定型的示例，请参阅[教程：使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md)。
 
@@ -185,6 +185,10 @@ Azure 机器学习可以创建两种类型的映像：
 
 * **FPGA 映像**：部署到 Azure 中的现场可编程门阵列时使用。
 * **Docker 映像**：部署到 FPGA 以外的计算目标时使用。 例如，部署到 Azure 容器实例和 Azure Kubernetes 服务时。
+
+Azure 机器学习服务提供了一个基本映像，默认情况下使用。 你还可以提供自己的自定义映像。
+
+有关详细信息，请参阅[部署模型](how-to-deploy-and-where.md#configureimage)的配置和注册映像部分。
 
 有关创建映像的示例，请参阅[在 Azure 容器实例中部署映像分类模型](tutorial-deploy-models-with-aml.md)。
 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: CodyBorn
 ms.author: coborn
-ms.date: 8/2/2018
+ms.date: 04/08/2019
 ms.topic: article
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
-ms.openlocfilehash: 5a693fef2f77471f799bec46f149ff19d6edca80
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905913"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274784"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
 
@@ -279,7 +279,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 管理员 Ethereum 地址|用于参与 PoA 治理的 Ethereum 帐户地址。  建议使用 MetaMask 生成 Ethereum 地址。|以 0x 开头的 42 个字母数字字符|NA
 高级选项|用于 Ethereum 设置的高级选项|启用或禁用|禁用
 公共 IP（高级选项 = 启用）|在 VNet 网关后方部署网络，并删除对等互连访问权限。 如果选择了此选项，则所有成员都必须使用 VNet 网关进行连接，以确保兼容性。|公共 IP 专用 VNet|公共 IP
-区块燃料限制（高级选项 = 启用）|网络的起始区块燃料限制|任意数字|50,000,00
+区块燃料限制（高级选项 = 启用）|网络的起始区块燃料限制|任意数字|50000000
 区块重新封装时间段（秒）|网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。|任意数字|15
 事务权限协定（高级选项 = 启用）|事务权限协定的字节码。 将智能协定部署和执行的允许列表的以太坊帐户的限制。|协定字节码|NA
 
@@ -760,7 +760,7 @@ Truffle 具有可用于调试智能合同的本地开发网络。 可在[此处]
 
 ## <a name="reference"></a>参考
 
-### <a name="faq"></a>常见问题解答
+### <a name="faq"></a>常见问题
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>我在网络上看到许多未发送的事务。 这些事务来自哪里？
 

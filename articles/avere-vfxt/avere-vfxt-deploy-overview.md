@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: v-erkell
-ms.openlocfilehash: 0c61db5e34ba58bb767b0bda773a54c8e65cd404
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.openlocfilehash: 88305e5d877f5bc3cc7ebb116f69b0f49f162b79
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991795"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268375"
 ---
 # <a name="avere-vfxt-for-azure---deployment-overview"></a>Avere vFXT for Azure - 部署概述
 
@@ -32,14 +32,6 @@ vFXT 群集启动并运行后，需要知道如何将客户端连接到该群集
 1. 配置先决条件 
 
    在创建 VM 之前，必须创建 Avere vFXT 项目的新订阅、配置订阅所有权、检查配额并根据需要请求提高配额，并接受 Avere vFXT 软件的使用条款。 有关详细说明，请参阅[准备创建 Avere vFXT](avere-vfxt-prereqs.md)。
-
-1. 为群集节点创建访问角色
-
-   Azure 使用[基于角色的访问控制](../role-based-access-control/index.yml) (RBAC) 来授权群集节点 VM 执行特定的任务。 例如，群集节点需要能够向其他群集节点分配或重新分配 IP 地址。 在创建群集之前，必须定义一个角色，以便为这些节点授予足够的权限。
-
-   有关说明，请参阅[创建群集节点访问角色](avere-vfxt-prereqs.md#create-the-cluster-node-access-role)。
-
-   群集控制器也使用访问角色，但你可以接受默认角色“所有者”，而不创建你自己的角色。 如果想要为群集控制器创建自定义角色，请阅读[自定义的控制器访问角色](avere-vfxt-controller-role.md)。 
 
 1. 创建 Avere vFXT 群集 
 

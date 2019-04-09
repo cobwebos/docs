@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: fd47b5de2226d88b6295cb28713db2a5d251e768
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577240"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276399"
 ---
 # <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理日志数据和 Azure Monitor 中的工作区
 Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问，需要对工作区执行各种管理任务。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
@@ -102,7 +102,6 @@ _访问模式_指的是用户如何访问 Log Analytics 工作区，并定义他
 > - Service Fabric
 > - Application Insights
 > - 容器
-> - 创建的 HTTP 数据收集器 API 的自定义日志
 >
 > 如果通过运行查询其资源与正确关联的日志，以及检查记录你感兴趣，可以进行测试。 如果正在正确的资源 ID [_ResourceId](log-standard-properties.md#_resourceid)属性，则数据可供资源为中心的查询。
 

@@ -6,15 +6,15 @@ manager: cgronlun
 services: search
 ms.service: search
 ms.topic: conceptual
-ms.date: 02/18/2019
+ms.date: 04/06/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: c0f824e2be0215192ca4ca1a722e814cbf299b7a
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.openlocfilehash: 11b2fb5a246dfa8f5b1295a11cc57de36120898e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342416"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269548"
 ---
 # <a name="security-and-data-privacy-in-azure-search"></a>Azure 搜索中的安全性和数据隐私
 
@@ -28,11 +28,11 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 + [ISO 27001:2013](https://www.iso.org/isoiec-27001-information-security.html) 
 + [SOC 2 类型 2 符合性](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) 有关完整报告，请转到 [Azure - Azure 政府版 SOC 2 类型 II 报告](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)。 
-+ [健康保险可携性和责任法案 (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
-+ [GxP（CFR 第 21 篇第·11 部分）](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
++ [健康保险可携性与责任法案 (HIPAA)](https://en.wikipedia.org/wiki/Health_Insurance_Portability_and_Accountability_Act)
++ [GxP (21 CFR 第 11 部分）](https://en.wikipedia.org/wiki/Title_21_CFR_Part_11)
 + [HITRUST](https://en.wikipedia.org/wiki/HITRUST)
 + [PCI DSS 1 级](https://en.wikipedia.org/wiki/Payment_Card_Industry_Data_Security_Standard)
-+ [澳大利亚 IRAP 未分类 DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
++ [澳大利亚 IRAP 未分类的 DLM](https://asd.gov.au/infosec/irap/certified_clouds.htm)
 
 标准符合性应用于正式版功能。 预览版功能在转变为正式版时进行认证，不能用于具有严格标准要求的解决方案中。 符合性认证记录在 [Microsoft Azure 符合性概述](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)和[信任中心](https://www.microsoft.com/en-us/trustcenter)中。 
 
@@ -40,7 +40,7 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 加密扩展到整个索引管道：从连接通过传输向下到存储在 Azure 搜索中的索引数据。
 
-| 安全层 | 说明 |
+| 安全层 | 描述 |
 |----------------|-------------|
 | 传输中加密 <br>(HTTPS/SSL/TLS) | Azure 搜索在 HTTPS 端口 443 上侦听。 与 Azure 服务建立的跨平台连接经过加密。 <br/><br/>所有从客户端到服务的 Azure 搜索交互都支持 SSL/TLS 1.2。  请务必为你的服务的 SSL 连接使用 TLSv1.2。|
 | 静态加密 | 加密在索引过程中完全进行内部化处理，而不会显著影响完成索引所需的时间或索引大小。 加密自动对所有索引进行，包括对未完全加密的索引（在 2018 年 1 月前创建）的增量更新。<br><br>在内部，加密基于 [Azure 存储服务加密](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)，使用 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)进行。|
@@ -53,10 +53,12 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 整个 Azure 提供多种安全机制，因此，创建的 Azure 搜索资源也会自动获得这些安全机制。
 
-+ [订阅或资源级别的锁可防止删除](../azure-resource-manager/resource-group-lock-resources.md)
-+ [基于角色的访问控制 (RBAC) 可以控制对信息和管理操作的访问](../role-based-access-control/overview.md)
++ [在订阅或资源级别，以防止删除锁](../azure-resource-manager/resource-group-lock-resources.md)
++ [基于角色的访问控制 (RBAC) 来控制对信息和管理操作的访问](../role-based-access-control/overview.md)
 
 所有 Azure 服务支持使用基于角色的访问控制 (RBAC) 在不同的服务之间以一致的方式设置访问级别。 例如，仅限“所有者”和“参与者”角色查看敏感数据（如管理密钥），而任何角色的成员都可以查看服务状态。 RBAC 提供“所有者”、“参与者”和“读取者”角色。 默认情况下，所有服务管理员是“所有者”角色的成员。
+
+<a name="service-access-and-authentication"></a>
 
 ## <a name="service-access-and-authentication"></a>服务访问和身份验证
 
@@ -65,11 +67,11 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 有两个搜索服务访问级别，可通过两种类型的密钥启用它们：
 
 * 管理员访问（适用于服务的任何读写操作）
-* 查询访问（适用于只读操作，例如针对索引的查询）
+* 查询 （适用于只读操作，例如，对索引的文档集合的查询） 的访问权限
 
-预配服务时会创建*管理员密钥*。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 可以重新生成任一管理密钥，但无法添加到管理密钥总计数。 每个搜索服务最多有两个管理密钥。
+预配服务时会创建*管理员密钥*。 有两个管理密钥，分别指定为*主要*和*辅助*密钥以将它们保持在各自的位置，但事实上是可互换的。 每个服务都有两个管理密钥，以便在转换其中一个时不会丢失服务的访问权限。 你可以[重新生成管理密钥](search-security-api-keys.md#regenerate-admin-keys)定期每个 Azure 安全最佳实践，但您不能将添加到管理密钥总计数。 有最多为每个搜索服务的两个管理密钥。
 
-*查询密钥*根据需要创建，专用于直接调用搜索的客户端应用程序。 最多可以创建 50 个查询密钥。 在应用程序代码中，可以指定搜索 URL 和查询 API 密钥，以允许对服务的只读访问。 应用程序代码还会指定应用程序使用的索引。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
+*查询密钥*根据需要创建并设计用于客户端应用程序发出查询。 最多可以创建 50 个查询密钥。 在应用程序代码中，指定搜索 URL 和查询 api 密钥以允许对特定索引的文档集合的只读访问。 终结点、仅供只读访问的 API 密钥以及目标索引共同定义客户端应用程序连接的作用域和访问级别。
 
 需要对每个请求进行身份验证，而每个请求由必需密钥、操作和对象组成。 链接在一起后，两个权限级别（完全或只读）加上上下文（例如，索引上的查询操作）便足以针对服务操作提供全面的安全性。 有关密钥的详细信息，请参阅[创建和管理 API 密钥](search-security-api-keys.md)。
 
@@ -83,26 +85,20 @@ Azure 搜索针对以下标准进行了认证，如 [2018 年 6 月发布的公�
 
 需要索引级安全边界的多租户解决方案通常包含一个中间层，客户可以使用它来处理索引隔离。 有关多租户用例的详细信息，请参阅[多租户 SaaS 应用程序与 Azure 搜索的设计模式](search-modeling-multitenant-saas-applications.md)。
 
-## <a name="admin-access-from-client-apps"></a>从客户端应用进行管理访问
+## <a name="admin-access"></a>管理员访问权限
 
-Azure 搜索管理 REST API 是 Azure 资源管理器的扩展并共享其依赖关系。 因此，要对 Azure 搜索进行服务管理，必须事先安装 Active Directory。 必须使用 Azure Active Directory 对客户端代码发出的所有管理请求进行身份验证，然后请求才能到达资源管理器。
+[基于角色的访问 (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview)确定你是否有权访问控制服务和其内容。 如果是 Azure 搜索服务的所有者或参与者，则可以使用门户或 PowerShell **Az.Search**模块来创建、 更新或删除该服务的对象。 此外可以使用[Azure 搜索管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api)。
 
-针对 Azure 搜索服务终结点发出的数据请求（例如“创建索引（Azure 搜索服务 REST API）”或“搜索文档（Azure 搜索服务 REST API）”）在请求标头中使用 api-key。
-
-如果应用程序代码需要处理针对搜索索引或文档执行的服务管理操作以及数据操作，请在代码中实现两种身份验证方法：Azure 搜索的本机访问密钥，以及资源管理器所需的 Active Directory 身份验证方法。 
-
-有关在 Azure 搜索中构建请求的信息，请参阅 [Azure 搜索服务 REST](https://docs.microsoft.com/rest/api/searchservice/)。 有关资源管理器的身份验证要求的详细信息，请参阅[使用资源管理器身份验证 API 访问订阅](../azure-resource-manager/resource-manager-api-authentication.md)。
-
-## <a name="user-access-to-index-content"></a>用户对索引内容的访问
+## <a name="user-access"></a>用户访问权限
 
 默认情况下，由查询请求中的访问密钥确定用户对索引的访问权限。 大部分开发人员会针对客户端搜索请求创建并分配[*查询密钥*](search-security-api-keys.md)。 查询密钥授予对索引内的所有内容的读取访问权限。
 
 如果需要对内容进行精细的基于每个用户的控制，可以在查询中生成安全筛选器，返回与给定安全标识关联的文档。 基于标识的访问控制不是预定义的角色和角色分配，它作为*筛选器*实现，该筛选器可以根据标识修整文档和内容的搜索结果。 下表描述了修整未经授权内容的搜索结果的两种方法。
 
-| 方法 | 说明 |
+| 方法 | 描述 |
 |----------|-------------|
 |[基于标识筛选器的安全修整](search-security-trimming-for-azure-search.md)  | 阐述实现用户标识访问控制的基本工作流。 该工作流包括将安全标识符添加到索引，然后解释如何针对该字段进行筛选，以修整受禁内容的结果。 |
-|[Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |
+|[基于 Azure Active Directory 标识的安全修整](search-security-trimming-for-azure-search-with-aad.md)  | 此文延伸了前一篇文章的内容，提供了有关从 Azure Active Directory (AAD)（Azure 云平台中的一个[免费服务](https://azure.microsoft.com/free/)）检索标识的步骤。 |
 
 ## <a name="table-permissioned-operations"></a>表：权限操作
 
@@ -128,8 +124,8 @@ Microsoft 数据中心提供行业领先的物理安全性，符合广泛的标�
 
 ## <a name="see-also"></a>另请参阅
 
-+ [.NET 入门（演示如何使用管理密钥创建索引）](search-create-index-dotnet.md)
-+ [REST 入门（演示如何使用管理密钥创建索引）](search-create-index-rest-api.md)
-+ [使用 Azure 搜索筛选器进行基于标识的访问控制](search-security-trimming-for-azure-search.md)
-+ [使用 Azure 搜索筛选器进行 Active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
++ [获取 （演示如何使用管理密钥创建索引） 的.NET 入门](search-create-index-dotnet.md)
++ [获取启动的 REST （演示如何使用管理密钥创建索引）](search-create-index-rest-api.md)
++ [使用 Azure 搜索筛选器基于标识的访问控制](search-security-trimming-for-azure-search.md)
++ [使用 Azure 搜索筛选器的 active Directory 基于标识的访问控制](search-security-trimming-for-azure-search-with-aad.md)
 + [Azure 搜索中的筛选器](search-filters.md)

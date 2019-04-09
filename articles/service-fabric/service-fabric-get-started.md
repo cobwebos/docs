@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/25/2018
+ms.date: 04/02/2019
 ms.author: aljo
-ms.openlocfilehash: ccb5f690b7947192af401233aa03e799e5c5be0b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 45d5d1b4e050d01b003b6321e1af44c0da762e19
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668715"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275471"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>在 Windows 上准备开发环境
 > [!div class="op_single_selector"]
@@ -69,8 +69,8 @@ Service Fabric 工具是 Visual Studio 2017 中 Azure 开发工作负荷的一�
 * [安装 Microsoft Azure Service Fabric SDK][core-sdk]
 
 当前版本包括：
-* Service Fabric SDK 和工具 3.3.644
-* Service Fabric 运行时 6.4.644
+* Service Fabric SDK 和工具 3.3.654
+* Service Fabric 运行时 6.4.654
 * 适用于 Visual Studio 2015 的 Service Fabric 工具 2.4.11116.1
 * Visual Studio 2017 15.9 包括适用于 Visual Studio 的 Service Fabric 工具 2.4.11024.1 
 
@@ -91,10 +91,10 @@ Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Force -Scope CurrentUser
 ## <a name="next-steps"></a>后续步骤
 完成设置开发环境之后，便可开始生成和运行应用。
 
-* [了解如何创建、部署和管理应用程序](service-fabric-tutorial-create-dotnet-app.md)
-* [了解编程模型：Reliable Services 和 Reliable Actors](service-fabric-choose-framework.md)
-* [在 GitHub 上检查 Service Fabric 代码示例](https://aka.ms/servicefabricsamples)
-* [使用 Service Fabric 资源管理器可视化群集](service-fabric-visualizing-your-cluster.md)
+* [了解如何创建、 部署和管理应用程序](service-fabric-tutorial-create-dotnet-app.md)
+* [了解有关编程模型的信息：Reliable Services 和 Reliable Actors](service-fabric-choose-framework.md)
+* [请查看 GitHub 上的 Service Fabric 代码示例](https://aka.ms/servicefabricsamples)
+* [通过使用 Service Fabric Explorer 可视化群集](service-fabric-visualizing-your-cluster.md)
 * 了解 [Service Fabric 支持选项](service-fabric-support.md)
 
 [1]: https://azure.microsoft.com/campaigns/service-fabric/ "Service Fabric 活动页"

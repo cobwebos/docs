@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fc09c8d8e284fc81a26097a7c1a58732539029c6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 3f92001e9d2fd322e858440ef64991b9de856735
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051116"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273033"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -232,6 +232,23 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 - 批准的客户端应用支持 Intune 移动应用管理功能。
 - “需要批准的客户端应用”要求：
    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platform-condition)。
+
+## <a name="app-protection-policy-requirement"></a>应用保护策略要求 
+
+在条件性访问策略中，你可以要求之前访问可供所选的云应用，会出现在客户端应用程序上的应用保护策略。 
+
+![使用应用保护策略控制访问](./media/technical-reference/22.png)
+
+此设置适用于以下客户端应用：
+
+- Microsoft OneDrive
+- Microsoft Outlook
+
+**备注**
+
+- 应用应用保护策略支持使用策略保护的 Intune 移动应用程序管理功能。
+- **需要应用保护策略**要求：
+    - 仅支持 iOS 和 Android 作为[设备平台条件](#device-platform-condition)。
 
 ## <a name="next-steps"></a>后续步骤
 

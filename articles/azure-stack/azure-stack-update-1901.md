@@ -16,16 +16,16 @@ ms.date: 03/27/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 03/27/2019
-ms.openlocfilehash: 00eb4fc3eb0b2e7120208e6318bf35fc2cc6f188
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: bf355aec2a76a42986320a74447860a8baa968ef
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649399"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257393"
 ---
 # <a name="azure-stack-1901-update"></a>Azure Stack 1901 更新
 
-*适用于：Azure Stack 集成系统*
+*适用于Azure Stack 集成系统*
 
 本文介绍 1901 更新包的内容。 该更新包含此版 Azure Stack 的改进、修复和新功能。 本文还描述了此版本中的已知问题，并包含一个用于下载该更新的链接。 已知问题分为与更新过程直接相关的问题，以及内部版本（安装后）的问题。
 
@@ -86,7 +86,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
          Bug 修复 - `Import-AzureRmContext` 可正确反序列化已保存的令牌。  
    * **AzureRm.Resources**  
          Bug 修复 - `Get-AzureRmResource` 可按资源类型进行不区分大小写的查询。  
-   * **Azure.Storage**  
+   * **Azure.存储**  
          AzureRm 汇总模块现在包含已发布的 4.5.0 版，支持 **api-version 2017-07-29**。  
    * **AzureRm.Storage**  
          AzureRm 汇总模块现在包含已发布的 5.0.4 版，支持 **api-version 2017-10-01**。  
@@ -98,7 +98,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - **AzureStack 1.7.1**这一项重大更改的释放。 有关中断性变更的详细信息，请参阅 https://aka.ms/azspshmigration171
    * **Azs.Backup.Admin 模块**  
          重大更改：备份对基于证书的加密模式的更改。 已弃用对对称密钥的支持。  
-   * **Azs.Fabric.Admin 模块**  
+   * **Azs.Fabric.Admin Module**  
          `Get-AzsInfrastructureVolume` 已弃用。 使用新的 cmdlet `Get-AzsVolume`。  
          `Get-AzsStorageSystem` 已弃用。  使用新的 cmdlet `Get-AzsStorageSubSystem`。  
          `Get-AzsStoragePool` 已弃用。 `StorageSubSystem` 对象包含容量属性。  
@@ -223,7 +223,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 ## <a name="known-issues-with-the-update-process"></a>更新过程的已知问题
 
-- 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，如果 **AzsInfraRoleSummary** 或 **AzsPortalApiSummary** 测试失败，系统会提示你结合 `-Repair` 标志运行 **Test-AzureStack**。  如果运行此命令，它会失败并显示以下错误消息：`Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
+- 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，如果 **AzsInfraRoleSummary** 或 **AzsPortalApiSummary** 测试失败，系统会提示你结合 `-Repair` 标志运行 **Test-AzureStack**。  如果运行此命令，它会失败并显示以下错误消息：  `Unexpected exception getting Azure Stack health status. Cannot bind argument to parameter 'TestResult' because it is null.`
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
@@ -284,7 +284,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 <!-- 3239127 - IS, ASDK -->
 - 在 Azure Stack 门户中，对于已附加到 VM 实例的网络适配器，在更改与其绑定的 IP 配置的静态 IP 地址时，会看到一条警告消息，其中指出 
 
-    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`。
+    `The virtual machine associated with this network interface will be restarted to utilize the new private IP address...`.
 
     可以放心忽略此消息；即使 VM 实例未重启，IP 地址也会更改。
 
@@ -315,6 +315,10 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Syslog 
+- Syslog 配置不会保留通过更新循环，从而导致 syslog 客户端会丢失其配置和要停止正在转发的 syslog 消息。 Syslog 客户端 (1809) 正式发布以来，此问题适用于所有版本的 Azure Stack。
+解决方法是在应用 Azure Stack 更新后重新配置 syslog 客户端。
 
 ## <a name="download-the-update"></a>下载更新
 

@@ -53,6 +53,8 @@ items:
       href: devtest-lab-concepts.md
     - name: 方案
       items:
+      - name: 适合使用开发测试实验室的常见场景
+        href: devtest-lab-guidance-get-started.md
       - name: 使用开发人员实验室
         href: devtest-lab-developer-lab.md
       - name: 使用测试环境实验室
@@ -109,8 +111,6 @@ items:
     - name: 设置企业中的开发测试实验室基础结构
       href: devtest-lab-guidance-prescriptive-adoption.md
       items:
-      - name: 开始使用开发测试实验室
-        href: devtest-lab-guidance-get-started.md
       - name: 纵向扩展开发测试实验室部署
         href: devtest-lab-guidance-scale.md
       - name: 安排实现开发测试实验室
@@ -279,9 +279,9 @@ items:
       href: https://azure.microsoft.com/resources/videos/index/?services=devtest-lab
     - name: 常见问题
       href: devtest-lab-faq.md
-ms.openlocfilehash: 0b8c70629d17ed93b67a746fadfe66944d9489c9
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: a5312fc1c99072c10337bd00569a608825df3bc8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894434"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262867"

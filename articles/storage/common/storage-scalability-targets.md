@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: ca9c4c959d21f26369600129f3897b7624dd84f2
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371167"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267695"
 ---
 # <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>存储帐户的 azure 存储可伸缩性和性能目标
 
@@ -23,7 +23,7 @@ ms.locfileid: "58371167"
 
 当应用程序达到分区能够处理的工作负荷极限时，Azure 存储将开始返回错误代码 503（服务器忙）或错误代码 500（操作超时）响应。 如果发生 503 错误，请考虑修改应用程序以使用指数退避策略进行重试。 使用指数退让策略，可以减少分区上的负载，缓解该分区的流量高峰。
 
-## <a name="standard-performance-storage-account-scale-limits"></a>标准性能存储帐户规模限制
+## <a name="storage-account-scale-limits"></a>存储帐户规模限制
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
@@ -45,6 +45,36 @@ ms.locfileid: "58371167"
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
 
+### <a name="premium-files-scale-targets"></a>高级文件缩放目标
+
+有三个类别的要考虑的高级文件的限制： 存储帐户、 共享和文件。
+
+例如：单个共享可以实现 100,000 IOPS 和单个文件可以扩展最多 5,000 个 IOPS。 因此，例如，如果您有一个共享中的三个文件，就可以从该共享的最大 IOPs 是 15000。
+
+#### <a name="premium-file-share-limits"></a>高级文件共享限制
+
+> [!IMPORTANT]
+> 存储帐户限制适用于所有共享。 最多缩放的存储帐户的最大值才可实现，如果只有一个共享每个存储帐户。
+
+|区域  |确定目标  |
+|---------|---------|
+|最小大小                        |100 GiB      |
+|最大大小                        |100 TiB      |
+|最小大小增大/减少    |1 GiB      |
+|基线 IOPS    |每 GiB 多达 100,000 个 1 IOPS|
+|爆发的 IOPS    |3 个 x IOPS 每 GiB 多达 100,000 个|
+|最小带宽                     |100        |
+|带宽 |0.1 每个高达 5 GiB/秒 GiB 的 MB/秒     |
+|最大快照数        |200       |
+
+#### <a name="premium-file-limits"></a>高级文件限制
+
+|区域  |确定目标  |
+|---------|---------|
+|大小                  |1 TiB         |
+|每个文件的最大 IOPS     |5,000         |
+|并发句柄    |2,000         |
+
 ### <a name="azure-file-sync-scale-targets"></a>Azure 文件同步规模目标
 
 Azure 文件同步的设计目标是无限使用，但并非总是可以无限使用。 下表指示了 Microsoft 测试的边界，还指出了哪些目标是硬限制：
@@ -62,6 +92,6 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 ## <a name="see-also"></a>另请参阅
 
 - [存储定价详细信息](https://azure.microsoft.com/pricing/details/storage/)
-- [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)
+- [Azure 订阅和服务限制、 配额和约束](../../azure-subscription-service-limits.md)
 - [Azure 存储复制](../storage-redundancy.md)
 - [Microsoft Azure 存储性能和可伸缩性清单](../storage-performance-checklist.md)

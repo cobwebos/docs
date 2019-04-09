@@ -34,7 +34,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 
 > [!NOTE]
 > 若要使用此报表，请务必启用 AD FS 审核。 有关详细信息，请参阅 [为 AD FS 启用审核](how-to-connect-health-agent-install.md#enable-auditing-for-ad-fs)。 <br />
-> 若要访问预览版，需要提供全局管理员或[安全读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。  
+> 若要访问预览版，需要提供全局管理员或[安全读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。  
 > 
 
 ## <a name="what-is-in-the-report"></a>什么是报表？
@@ -112,7 +112,7 @@ AD FS 客户可以将密码身份验证终结点公开给 Internet，以便为�
 - AD FS 场中未启用审核。
 
 **为何会出现任何报表访问权限？**  <br />
-需要全局管理员或[安全读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。 请联系全局管理员以获得访问权限。
+需要全局管理员或[安全读取者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader)权限。 请联系全局管理员以获得访问权限。
 
 
 ## <a name="next-steps"></a>后续步骤

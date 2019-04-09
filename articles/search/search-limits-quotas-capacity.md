@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 8a6023c87dd1d68ab76c5c2342cb825e63d2b336
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: c52ac6128ad00d9bb772816d6130f3aedc480138
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620630"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273390"
 ---
 # <a name="service-limits-in-azure-search"></a>Azure 搜索中的服务限制
 最大限制对存储、 工作负荷，以及数量的索引、 文档和其他对象依赖于是否您[预配 Azure 搜索](search-create-service-portal.md)处**免费**，**基本**， **标准**，或**存储优化**定价层。
@@ -51,7 +51,7 @@ ms.locfileid: "58620630"
 | -------- | ---- | ------------------- | --- | --- | --- | --- | --- | --- |
 | 最大索引数 |3 |5 或 15 |50 |200 |200 |每个分区 1000，或者每个服务 3000 |10 |10 |
 | 每个索引的最大字段 |1000 |100 |1000 |1000 |1000 |1000 |1000 |1000 |
-| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |第 |1 |1 |1 |1 |1 |1 |第 |
+| 每个索引最大[建议器](https://docs.microsoft.com/rest/api/searchservice/suggesters)数 |1 |1 |1 |1 |1 |1 |1 |1 |
 | 每个索引的最大[计分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)数 |100 |100 |100 |100 |100 |100 |100 |100 |
 | 每个配置文件的最大函数数量 |8 |8 |8 |8 |8 |8 |8 |8 |
 
@@ -114,7 +114,7 @@ ms.locfileid: "58620630"
 | Blob 索引器：最大 blob 大小，MB |16 |16 |128 |256 |256 |不适用  |256 |256 |
 | Blob 索引器：从 blob 中提取的内容的最大字符数 |32,000 |64,000 |4 百万 |4 百万 |4 百万 |不适用 |4 百万 |4 百万 |
 
-<sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。
+<sup>1</sup> 对于免费服务，对于 blob 源，索引器最长执行时间为 3 分钟；对于所有其他数据源，索引器最长执行时间为为 1 分钟。 用于 AI 索引到认知服务的调用，免费服务仅限于每日 20 免费事务处理事务指已成功通过扩充管道的文档。
 
 <sup>2</sup> 2017 年底后创建的基本服务的上限已增大为 15 个索引、数据源和索引器。 之前创建的服务的上限为 5。
 

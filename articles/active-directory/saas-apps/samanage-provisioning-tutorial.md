@@ -6,21 +6,22 @@ documentationcenter: ''
 author: zchia
 writer: zchia
 manager: beatrizd-msft
-ms.assetid: na
+ms.assetid: 62d0392f-37d4-436e-9aff-22f4e5b83623
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2018
+ms.date: 03/28/2019
 ms.author: v-wingf-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b51f8d9329bc86320501183d7dba7735fb369fa5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ca43b62e66e3a736aa52fdd10fe36e635daba245
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092372"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59058010"
 ---
 # <a name="tutorial-configure-samanage-for-automatic-user-provisioning"></a>教程：为 Samanage 配置自动用户预配
 
@@ -33,39 +34,34 @@ ms.locfileid: "58092372"
 
 本教程中所述的方案假定你已具备以下项：
 
-*   Azure AD 租户
-*   拥有专业版套餐的 [Samanage 租户](https://www.samanage.com/pricing/)
-*   在 Samanage 中具有管理员权限的用户帐户
+* Azure AD 租户
+* 拥有专业版套餐的 [Samanage 租户](https://www.samanage.com/pricing/)
+* 在 Samanage 中具有管理员权限的用户帐户
 
 > [!NOTE]
 > Azure AD 预配集成依赖于 [Samanage Rest API](https://www.samanage.com/api/)，该 Rest API 可供拥有专业版套餐的帐户的 Samanage 开发人员使用。
 
 ## <a name="adding-samanage-from-the-gallery"></a>从库中添加 Samanage
+
 在使用 Azure AD 为 Samanage 配置自动用户预配之前，需要从 Azure AD 应用程序库将 Samanage 添加到托管的 SaaS 应用程序列表。
 
 **若要从 Azure AD 应用程序库中添加 Samanage，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-2. 导航到“企业应用程序” > “所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![“企业应用程序”部分][2]
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-3. 若要添加 Samanage，请单击对话框顶部的“新建应用程序”按钮。
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![“新增应用程序”按钮][3]
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“Samanage”。
+4. 在搜索框中，键入“Samanage”，在结果面板中选择“Samanage”，然后单击“添加”按钮添加该应用程序。
 
-    ![Samanage 预配](./media/samanage-provisioning-tutorial/AppSearch.png)
-
-5. 在结果面板中，选择“Samanage”，然后单击“添加”按钮将 Samanage 添加到 SaaS 应用程序列表。
-
-    ![Samanage 预配](./media/samanage-provisioning-tutorial/AppSearchResults.png)
-
-    ![Samanage 预配](./media/samanage-provisioning-tutorial/AppCreation.png)
+    ![结果列表中的 Samanage](common/search-new-app.png)
 
 ## <a name="assigning-users-to-samanage"></a>将用户分配到 Samanage
 
@@ -92,11 +88,13 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 
 ### <a name="to-configure-automatic-user-provisioning-for-samanage-in-azure-ad"></a>若要在 Azure AD 中为 Samanage 配置自动用户预配，请执行以下操作：
 
-1. 登录 [Azure 门户](https://portal.azure.com)，并浏览到“Azure Active Directory”>“企业应用程序”>“所有应用程序”。
+1. 登录到[Azure 门户](https://portal.azure.com)，然后选择**企业应用程序**，选择**所有应用程序**，然后选择**Samanage**。
 
-2. 从 SaaS 应用程序列表中选择 Samanage。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-    ![Samanage 预配](./media/samanage-provisioning-tutorial/AppInstanceSearch.png)
+2. 在应用程序列表中，选择“Samanage”。
+
+    ![应用程序列表中的 Samanage 链接](common/all-applications.png)
 
 3. 选择“预配”选项卡。
 
@@ -164,12 +162,12 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
+* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动的报告](../manage-apps/check-status-user-account-provisioning.md)
+* [了解如何查看日志并获取有关预配活动报告](../manage-apps/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/samanage-provisioning-tutorial/tutorial_general_01.png

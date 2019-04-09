@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: helohr
-ms.openlocfilehash: a7e2f3c95819c6ab6d2e63e5c7a2f62649ebd15c
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056089"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276382"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
 
@@ -66,3 +66,6 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 |---------------------|--------------------|-----------------------------------|
 | 已启用             | DWORD              | 1                                 |
 | VHDLocations        | 多字符串值 | "网络文件共享路径"     |
+
+>[!IMPORTANT]
+>若要帮助保护您的 Windows 虚拟桌面环境在 Azure 中，我们建议不在 Vm 上打开端口 3389 的入站。 Windows 虚拟桌面不需要开放的入站的端口 3389，用户可以访问主机池的 Vm。 如果您必须打开端口 3389 以进行故障排除，我们建议你使用[中实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。

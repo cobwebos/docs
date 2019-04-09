@@ -1,19 +1,18 @@
 ---
 title: 确定导致非符合性的原因
 description: 不符合资源时，有许多可能的原因。 了解如何找出不符合的原因。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 02/26/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 1121bdb379265ef592a26a8a31a90d402e529cc8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802739"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276093"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
 
@@ -21,7 +20,7 @@ ms.locfileid: "58802739"
 
 > [!div class="checklist"]
 > - [符合性详细信息](#compliance-details)
-> - [更改历史记录 （预览版）](#change-history-preview)
+> - [更改历史记录（预览版）](#change-history-preview)
 
 ## <a name="compliance-details"></a>符合性详细信息
 
@@ -91,7 +90,7 @@ ms.locfileid: "58802739"
 |当前值必须包含目标值作为键。 |containsKey 或**不**notContainsKey |
 |当前值必须包含目标值。 |包含或**不**notContains |
 |当前值必须等于目标值。 |等于或**不**notEquals |
-|必须存在当前值。 |存在 |
+|必须存在当前值。 |exists |
 |当前值必须在目标值的范围内。 |在中或**不**notIn |
 |当前值必须与目标值类似。 |如或**不**notLike |
 |当前值必须与目标值匹配(区分大小写)。 |匹配或**不**notMatch |

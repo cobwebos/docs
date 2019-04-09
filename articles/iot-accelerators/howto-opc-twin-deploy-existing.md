@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 9b1dee8ea43d01825449cb6010fbfa62e4715cff
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047256"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59255880"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 孪生部署到现有项目
 
@@ -140,4 +140,4 @@ cd azure-iiot-components
 现在，已了解如何将 OPC 孪生部署到现有项目，下面是建议的下一步：
 
 > [!div class="nextstepaction"]
-> [OPC 客户端和 OPC PLC 的安全通信 ](howto-opc-vault-deploy-existing-client-plc-communication.md)
+> [OPC 客户端和 OPC PLC 的安全通信](howto-opc-vault-deploy-existing-client-plc-communication.md)

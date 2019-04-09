@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c010a7bcd2d811b31d9c2d05e81cce5dc85c2ce
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2949559542759cadf90d329bc50b352998b3eb7e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118589"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262544"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>使用 Azure AD 应用程序代理重定向已发布应用的硬编码链接
 
@@ -81,6 +81,31 @@ Azure AD 应用程序代理使本地应用对远程或在自己设备上的用�
 
 - 相对内部链接，可指向本地文件结构（如 `/claims/claims.html`）中的共享资源。 这些链接在通过应用程序代理发布的应用中自动运行，并且在有无链接转换时均能继续运行。 
 - 硬编码内部链接，指向其他本地应用（如 `http://expenses`）或已发布文件（如 `http://expenses/logo.jpg`）。 链接转换功能对硬编码内部链接进行操作，并将其更改为指向远程用户需要访问的外部 URL。
+
+HTML 代码的完整列表标记包含该应用程序代理支持链接转换：
+* a
+* audio
+* 基本
+* button
+* div
+* 嵌入
+* 窗体
+* 帧
+* Head
+* html
+* iframe
+* img
+* input
+* 链接
+* 菜单项
+* meta
+* 对象
+* 脚本
+* 源
+* 跟踪
+* video
+
+此外，在 CSS URL 特性还转换。
 
 ### <a name="how-do-apps-link-to-each-other"></a>应用如何彼此链接？
 

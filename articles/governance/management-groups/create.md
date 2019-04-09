@@ -7,15 +7,15 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/04/2019
+ms.date: 04/05/2019
 ms.author: rithorn
 ms.topic: conceptual
-ms.openlocfilehash: 928cb790bd97270870618534a73316bba5eeb070
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 2dd2a6e071533deef47a6482bfb9ed92953864ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057432"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59259791"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>创建用来组织和管理资源的管理组
 
@@ -50,7 +50,7 @@ ms.locfileid: "59057432"
 
 ### <a name="create-in-powershell"></a>在 PowerShell 中创建
 
-在 PowerShell 中，使用 New-AzManagementGroup cmdlet：
+对于 PowerShell，请使用[新建 AzManagementGroup](/powershell/module/az.resources/new-azmanagementgroup) cmdlet 以创建新的管理组。
 
 ```azurepowershell-interactive
 New-AzManagementGroup -GroupName 'Contoso'
@@ -58,20 +58,39 @@ New-AzManagementGroup -GroupName 'Contoso'
 
 **GroupName** 是要创建的唯一标识符。 此 ID 由其他命令用来引用此组和更高版本不能更改。
 
-如果希望管理组在 Azure 门户中显示一个不同的名称，则通过字符串添加 **DisplayName** 参数。 例如，如果希望创建一个 GroupName 为 Contoso 且显示名称为“Contoso Group”的管理组，需要使用以下 cmdlet：
+如果你想要显示不同的名称在 Azure 门户中的管理组，添加**DisplayName**参数。 例如，若要创建管理组与 Contoso 域的组名和"Contoso Group"的显示名称，请使用以下 cmdlet:
 
 ```azurepowershell-interactive
-New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group' -ParentId '/providers/Microsoft.Management/managementGroups/ContosoTenant'
+New-AzManagementGroup -GroupName 'Contoso' -DisplayName 'Contoso Group'
 ```
 
-可以使用 **ParentId** 参数将此管理组创建到另一个管理组下。
+在上述示例中，在根管理组下创建新的管理组。 若要为父级指定不同的管理组，请使用**ParentId**参数。
+
+```azurepowershell-interactive
+$parentGroup = Get-AzManagementGroup -GroupName Contoso
+New-AzManagementGroup -GroupName 'ContosoSubGroup' -ParentId $parentGroup.id
+```
 
 ### <a name="create-in-azure-cli"></a>在 Azure CLI 中创建
 
-在 Azure CLI 中，可以使用 az account management-group create 命令。
+对于 Azure CLI，请使用[az account 管理组创建](/cli/azure/account/management-group?view=azure-cli-latest#az-account-management-group-create)命令以创建新的管理组。
 
 ```azurecli-interactive
-az account management-group create --name 'Contoso'
+az account management-group create --name Contoso
+```
+
+**名称**是正在创建的唯一标识符。 此 ID 由其他命令用来引用此组和更高版本不能更改。
+
+如果你想要显示不同的名称在 Azure 门户中的管理组，添加**显示名称**参数。 例如，若要创建管理组与 Contoso 域的组名和"Contoso Group"的显示名称，请使用以下命令：
+
+```azurecli-interactive
+az account management-group create --name Contoso --display-name 'Contoso Group'
+```
+
+在上述示例中，在根管理组下创建新的管理组。 若要为父级指定不同的管理组，请使用**父**参数，并提供的父组的名称。
+
+```azurecli-interactive
+az account management-group create --name ContosoSubGroup --parent Contoso
 ```
 
 ## <a name="next-steps"></a>后续步骤

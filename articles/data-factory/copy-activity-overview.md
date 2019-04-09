@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 154e0dcefab6d5bcdfc9532ba4258d09593f0970
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311121"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267140"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
 
@@ -54,14 +54,15 @@ ms.locfileid: "56311121"
 
 可以使用复制活动**复制**基于文件的两个数据存储间的文件，这种情况下，数据可以高效复制而无需任何序列化/反序列化。
 
-复制活动还支持以指定的格式读取和写入文件：支持文本、JSON、Avro、ORC 和 Parquet，以及压缩编解码器 GZip、Deflate、BZip2 和 ZipDeflate。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
+复制活动还支持以指定的格式读取和写入文件：**文本、 JSON、 Avro、 ORC 和 Parquet**，并使用以下编解码器进行压缩和 decompresing 文件：**GZip、 Deflate，BZip2 和 ZipDeflate**。 有关详细信息，请参阅[支持的文件和压缩格式](supported-file-formats-and-compression-codecs.md)。
 
 例如，可执行以下复制活动：
 
-* 从本地 SQL Server 中复制数据，并将其以 ORC 格式写入 Azure Data Lake Store。
+* 在本地 SQL Server 中复制数据，以 Parquet 格式写入到 Azure 数据湖存储第 2 代。
 * 从本地文件系统中复制文本 (CSV) 格式文件，并将其以 Avro 格式写入 Azure Blob。
-* 从本地文件系统中复制压缩文件，并将其解压缩然后传到 Azure Data Lake Store。
+* 从本地文件系统复制压缩的文件并解压缩然后传到 Azure 数据湖存储第 2 代。
 * 从 Azure Blob 复制 GZip 压缩文本 (CSV) 格式的数据，并将其写入 Azure SQL 数据库。
+* 和使用序列化/反序列化或压缩/解压缩的很多更多情况下需要。
 
 ## <a name="supported-regions"></a>支持的区域
 
@@ -71,9 +72,9 @@ ms.locfileid: "56311121"
 
 要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
 
-1. **创建用于源数据存储和接收器数据存储的链接服务。** 有关如何配置支持的属性，请参阅连接器文章的“链接服务属性”部分。 受支持的连接器列表可以在[受支持的数据存储和格式](#supported-data-stores-and-formats)部分找到。
-2. **为源和接收器创建数据集。** 有关如何配置支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
-3. **借助复制活动创建管道。** 接下来的部分将提供示例。  
+1. **创建用于源数据存储和接收器数据存储链接的服务。** 有关如何配置支持的属性，请参阅连接器文章的“链接服务属性”部分。 受支持的连接器列表可以在[受支持的数据存储和格式](#supported-data-stores-and-formats)部分找到。
+2. **创建用于源和接收器的数据集。** 有关如何配置支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
+3. **创建包含复制活动的管道。** 接下来的部分将提供示例。  
 
 ### <a name="syntax"></a>语法
 
@@ -160,17 +161,17 @@ ms.locfileid: "56311121"
 >[!TIP]
 >对于某些方案，你还会在复制监视页面的顶部看到“**性能优化提示**”，这告诉你所识别出的瓶颈并指导你进行一些更改来提升复制吞吐量，请参阅[此处](#performance-and-tuning)包含详细信息的示例。
 
-**示例：从 Amazon S3 复制到 Azure Data Lake Store**
+**示例： 从 Amazon S3 复制到 Azure Data Lake Store**
 ![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
 
-**示例：使用暂存复制从 Azure SQL 数据库复制到 Azure SQL 数据仓库**
+**示例： 从 Azure SQL 数据库复制到 Azure SQL 数据仓库使用暂存复制**
 ![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
 
 ### <a name="monitor-programmatically"></a>以编程方式监视
 
 “复制活动运行结果”->“输出”部分中也会返回复制活动执行详细信息和性能特征。 下面是一个详细清单；将只显示适用于用户复制方案的内容。 了解如何从[快速入门监视部分](quickstart-create-data-factory-dot-net.md#monitor-a-pipeline-run)监视活动运行。
 
-| 属性名称  | 说明 | 单位 |
+| 属性名称  | 描述 | 单位 |
 |:--- |:--- |:--- |
 | dataRead | 从源中读取的数据大小 | Int64 值（**字节**） |
 | DataWritten | 写入接收器的数据大小 | Int64 值（**字节**） |
@@ -238,7 +239,7 @@ ms.locfileid: "56311121"
 
 在某些情况下，当你在 ADF 中执行复制活动时，会直接在[复制活动监视页面](#monitor-visually)上看到“**性能优化提示**”，如以下示例所示。 它不仅告诉你针对给定复制运行所识别出的瓶颈，而且还指导你进行一些更改来提升复制吞吐量。 目前的性能优化提示提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能优化规则也将逐渐丰富。
 
-**示例：复制到 Azure SQL DB 时的性能优化提示**
+**示例： 复制到 Azure SQL 数据库性能优化提示**
 
 在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。 
 
@@ -253,6 +254,6 @@ ms.locfileid: "56311121"
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：
 
-- [在同一 Azure Blob 存储中将数据从一个位置复制到另一个位置](quickstart-create-data-factory-dot-net.md)
+- [将数据从一个位置复制到同一 Azure Blob 存储中的其他位置](quickstart-create-data-factory-dot-net.md)
 - [将数据从 Azure Blob 存储复制到 Azure SQL 数据库](tutorial-copy-data-dot-net.md)
 - [将数据从本地 SQL Server 复制到 Azure](tutorial-hybrid-copy-powershell.md)

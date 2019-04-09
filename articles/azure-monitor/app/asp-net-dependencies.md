@@ -1,6 +1,6 @@
 ---
 title: 在 Azure Application Insights 中跟踪依赖项 | Microsoft Docs
-description: 通过 Application Insights 分析本地或 Microsoft Azure Web 应用程序的使用情况、可用性和性能。
+description: 分析使用情况、 可用性和在本地或 Microsoft Azure web 应用程序使用 Application Insights 的性能。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4aa18ae791e5fa573eae76d5bdb9c45b9311e6b5
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888077"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273101"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
 *依赖项*是应用调用的外部组件。 它通常是使用 HTTP、数据库或文件系统调用的服务。 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 可以度量应用程序等待依赖项的时长以及依赖项调用失败的频率。 可以调查特定的调用，并将其与请求和异常相关联。
@@ -50,7 +50,7 @@ ms.locfileid: "56888077"
 
 ## <a name="where-to-find-dependency-data"></a>在何处查找依赖项数据
 * [应用程序地图](#application-map)直观显示应用与相邻组件之间的依赖关系。
-* [性能、浏览器和失败边栏选项卡](#performance-and-failure-blades)显示服务器依赖性数据。
+* [性能、浏览器和失败边栏选项卡](https://docs.microsoft.com/azure/azure-monitor/learn/tutorial-performance)显示服务器依赖性数据。
 * [浏览器边栏选项卡](#ajax-calls)显示从用户浏览器发出的 AJAX 调用。
 * 单击缓慢或失败的请求可以检查其依赖性调用。
 * [Analytics](#analytics) 可用于查询依赖性数据。
@@ -58,7 +58,7 @@ ms.locfileid: "56888077"
 ## <a name="application-map"></a>应用程序地图
 应用程序地图发挥视觉辅助作用，发现应用程序组件之间的依赖项。 这些信息是基于应用发送的遥测数据自动生成的。 此示例显示了从浏览器脚本发出的 AJAX 调用，以及从服务器应用向两个外部服务发出的 REST 调用。
 
-![应用程序地图](./media/asp-net-dependencies/08.png)
+![应用程序地图](./media/asp-net-dependencies/cloud-rolename.png)
 
 * **在框中导航**到相关依赖项和其他图表。
 * **将地图固定**到[仪表板](../../azure-monitor/app/app-insights-dashboards.md)，在这里它将完全发挥效用。
@@ -66,18 +66,12 @@ ms.locfileid: "56888077"
 [了解详细信息](../../azure-monitor/app/app-map.md)。
 
 ## <a name="performance-and-failure-blades"></a>性能和失败边栏选项卡
-性能边栏选项卡显示服务器应用发出的依赖项调用的持续时间。 其中提供了一个摘要图表，以及一个按调用分段的表。
-
-![性能边栏选项卡中的依赖项图表](./media/asp-net-dependencies/dependencies-in-performance-blade.png)
-
-单击摘要图表或表项可以搜索这些调用的原始匹配项。
-
-![依赖项调用实例](./media/asp-net-dependencies/dependency-call-instance.png)
+性能边栏选项卡显示服务器应用发出的依赖项调用的持续时间。
 
 “失败计数”显示在“失败”边栏选项卡上。 失败是指不在 200-399 范围内或者未知的返回代码。
 
 > [!NOTE]
-> **全部失败？** - 这可能表示只获取了部分依赖项数据。 需要[设置适用于平台的依赖项监视](#set-up-dependency-monitoring)。
+> **100%失败？** - 这可能表示只获取了部分依赖项数据。 需要[设置适用于平台的依赖项监视](#set-up-dependency-monitoring)。
 >
 >
 
@@ -85,52 +79,11 @@ ms.locfileid: "56888077"
 “浏览器”边栏选项卡显示[网页中的 JavaScript](../../azure-monitor/app/javascript.md) 发出的 AJAX 调用的持续时间和失败率。 这些信息显示为依赖项。
 
 ## <a name="diagnosis"></a>诊断慢速请求
-每个请求事件是应用处理请求时跟踪到的依赖项调用、异常和其他事件相关联。 因此，如果某些请求的性能不佳，可以判断其原因是否为某个依赖项的响应速度缓慢。
-
-让我们演练一个相关的示例。
-
-### <a name="tracing-from-requests-to-dependencies"></a>从发往依赖项的请求开始跟踪
-打开“性能”边栏选项卡，并查看请求网格：
-
-![包含平均值和计数的请求列表](./media/asp-net-dependencies/02-reqs.png)
-
-第一个请求花费很长时间。 让我们看看是否可以查明花费时间的部分。
-
-单击该行，查看单独的请求事件：
-
-![请求事件的列表](./media/asp-net-dependencies/03-instances.png)
-
-单击任何一个长时间运行的实例以做进一步调查，并向下滚动到与此请求相关的远程依赖项调用：
-
-![查找对远程依赖项的调用，标识异常持续时间](./media/asp-net-dependencies/04-dependencies.png)
-
-似乎处理此请求的大部分时间都花在对本地服务的调用上。
-
-选择该行，获取详细信息：
-
-![单击该远程依赖项，标识原因](./media/asp-net-dependencies/05-detail.png)
-
-看起来这就是问题所在。 我们已经查明了问题，现在只需调查该调用为何花费了这么长时间。
-
-### <a name="request-timeline"></a>请求时间线
-在不同的情况下，依赖项调用的持续时间都不是很长。 但切换到时间线视图后，可以发现内部进程中发生的延迟：
-
-![查找对远程依赖项的调用，标识异常持续时间](./media/asp-net-dependencies/04-1.png)
-
-似乎在第一次依赖项调用后经过了一个较长的时间间隔，我们应在代码中调查原因是什么。
+每个请求事件都与依赖项调用、 异常和跟踪您的应用程序处理请求时的其他事件相关联。 因此，如果某些请求的性能不佳，可以判断其原因是否为某个依赖项的响应速度缓慢。
 
 ### <a name="profile-your-live-site"></a>分析实时站点
 
-不知道时间花到哪去了？ [Application Insights 探查器](../../azure-monitor/app/profiler.md)将跟踪对实时站点的 HTTP 调用，并显示代码中有哪些函数花费了最长的时间。
-
-## <a name="failed-requests"></a>失败的请求
-失败的请求还可能与依赖项的失败调用相关联。 同样，我们可以单击相应的项来跟踪问题。
-
-![单击失败的请求图表](./media/asp-net-dependencies/06-fail.png)
-
-单击某个失败的请求，并查看其关联的事件。
-
-![单击请求类型、单击实例以访问同一实例的不同视图、单击它以获取异常详细信息。](./media/asp-net-dependencies/07-faildetail.png)
+不知道时间花到哪去了？ [Application Insights 探查器](../../azure-monitor/app/profiler.md)跟踪 HTTP 调用对实时站点，并显示在代码中的哪些函数花费了最长时间。
 
 ## <a name="analytics"></a>分析
 可以跟踪 [Kusto 查询语言](/azure/kusto/query/)中的依赖项。 下面是一些示例。
@@ -212,11 +165,7 @@ ms.locfileid: "56888077"
 | Azure Web 应用 |在 Web 应用控件面板中[打开“Application Insights”边栏选项卡](../../azure-monitor/app/azure-web-apps.md)，并在出现提示时选择“安装”。 |
 | Azure 云服务 |[使用启动任务](../../azure-monitor/app/cloudservices.md)或[安装 .NET framework 4.6+](../../cloud-services/cloud-services-dotnet-install-dotnet.md)。 |
 
-## <a name="video"></a>视频
-
-> [!VIDEO https://channel9.msdn.com/events/Connect/2016/112/player]
-
 ## <a name="next-steps"></a>后续步骤
-* [异常](../../azure-monitor/app/asp-net-exceptions.md)
+* [例外](../../azure-monitor/app/asp-net-exceptions.md)
 * [用户和页面数据](../../azure-monitor/app/javascript.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)

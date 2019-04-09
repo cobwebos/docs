@@ -40,7 +40,7 @@ Azure Active Directory (Azure AD) 中的报告体系结构由以下部分组成�
 ## <a name="prerequisites"></a>必备组件
 
 ### <a name="who-can-access-the-data"></a>谁可以访问该数据？
-* 具有“安全管理员”、“安全读者”和“报告读者”角色的用户
+* 具有“安全管理员”、“安全读取者”和“报告读取者”角色的用户
 * 全局管理员
 * 此外，任何用户（非管理员）都可以访问自己的登录活动 
 

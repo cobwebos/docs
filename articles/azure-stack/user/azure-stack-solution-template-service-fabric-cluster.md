@@ -15,12 +15,12 @@ ms.date: 01/25/2019
 ms.author: mabrigg
 ms.reviewer: shnatara
 ms.lastreviewed: 01/25/2019
-ms.openlocfilehash: 8041e7e02b117b8938f0f7c18da2d57c31dddb34
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0a24228f1437fbb23c11070b3e99cea60489c071
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482258"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59264976"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>在 Azure Stack 中部署 Service Fabric 群集
 
@@ -44,9 +44,9 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
 
 1. **管理客户端证书**这是客户端用于在 Service Fabric 群集中进行身份验证的证书，可以是自签名的证书。 请参阅创建此客户端证书所要满足的[要求](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security)。
 
-1. **必须在 Azure Stack 市场中提供以下各项：**
+1. **以下各项必须在 Azure Stack Marketplace 中可用：**
     - **Windows Server 2016** – 模板使用 Windows Server 2016 映像来创建群集。  
-    - **客户脚本扩展** - Microsoft 提供的虚拟机扩展。  
+    - **自定义脚本扩展**-从 Microsoft 的虚拟机扩展。  
     - **PowerShell Desired Stage Configuration** - Microsoft 提供的虚拟机扩展。
 
 
@@ -171,7 +171,7 @@ Azure Stack 中的 Service Fabric 群集不使用资源提供程序 Microsoft.Se
        ![个人信息交换](media/azure-stack-solution-template-service-fabric-cluster/image8.png)  
 
     d. 在“证书存储”页上选择“个人”，然后完成向导。  
-       ![证书存储](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
+       ![证书存储区](media/azure-stack-solution-template-service-fabric-cluster/image9.png)  
 1. 若要查找 Service Fabric 群集的 FQDN：  
 
     a. 转到与 Service Fabric 群集关联的资源组，并找到“公共 IP 地址”资源。 选择与“公共 IP 地址”关联的对象，打开“公共 IP 地址”边栏选项卡。  

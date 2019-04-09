@@ -84,7 +84,7 @@ Azure Active Directory Identity Protection 不只是一个监视和报告工具�
 | :--                          | ---                                |  ---   |
 | 全局管理员         | 对 Identity Protection 具有完全访问权限、载入 Identity Protection| |
 | 安全管理员       | 对 Identity Protection 具有完全访问权限 | 载入 Identity Protection、重置用户密码 |
-| 安全读者              | 对 Identity Protection 的只读访问 | 载入 Identity Protection、修改用户、配置策略、重置密码 |
+| 安全读取者              | 对 Identity Protection 的只读访问 | 载入 Identity Protection、修改用户、配置策略、重置密码 |
 
 
 

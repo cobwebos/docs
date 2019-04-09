@@ -9,22 +9,19 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: 0c6be20bfb2a6f15335564a1aa98dc0ac88e3507
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c616b2578f7606ce7df19fdbef16bec8a24428d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905828"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262493"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
 启用监视.NET 和.NET Core 上运行 Azure 应用服务上的基于的 web 应用程序是现在比以往更容易。 以前需要手动安装站点扩展，而最新扩展代理现已内置到应用服务映像默认情况下。 本文将引导你完成启用 Application Insights 监视，以及提供用于自动执行大规模部署过程的初步指导。
 
 > [!NOTE]
-> 手动添加 Application Insights 站点扩展通过**开发工具** > **扩展**已弃用。 该扩展的最新稳定版本现已[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)作为应用服务映像的一部分。 文件位于`d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`，并使用每个稳定版本自动更新。 如果您遵循的基于代理的说明进行操作，以启用监视下面，它会自动将为您删除不推荐使用的扩展。
-
-
-[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+> 手动添加 Application Insights 站点扩展通过**开发工具** > **扩展**已弃用。 此方法扩展安装了依赖于手动更新每个新版本。 该扩展的最新稳定版本现已[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)作为应用服务映像的一部分。 文件位于`d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`，并使用每个稳定版本自动更新。 如果您遵循的基于代理的说明进行操作，以启用监视下面，它会自动将为您删除不推荐使用的扩展。
 
 ## <a name="enable-application-insights"></a>启用 Application Insights
 
@@ -285,6 +282,8 @@ ms.locfileid: "58905828"
 
 若要启用通过 PowerShell 监视的应用程序，只是基础的应用程序设置需要进行更改。 下面是一个示例，从而使应用程序监视的网站中的资源组"AppMonitoredRG"调用"AppMonitoredSite"，并配置数据发送到"012345678-abcd-ef01-2345年-6789abcd"检测密钥。
 
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
+
 ```powershell
 $app = Get-AzWebApp -ResourceGroupName "AppMonitoredRG" -Name "AppMonitoredSite" -ErrorAction Stop
 $newAppSettings = @{} # case-insensitive hash map
@@ -348,6 +347,7 @@ $app = Set-AzWebApp -AppSettings $newAppSettings -ResourceGroupName $app.Resourc
 |问题值|说明|解决方法
 |---- |----|---|
 | `AppAlreadyInstrumented:true` | 此值指示，该扩展检测到 SDK 的某些方面已经存在于应用程序，并将回退。 它可能是由于对的引用`System.Diagnostics.DiagnosticSource`， `Microsoft.AspNet.TelemetryCorrelation`，或 `Microsoft.ApplicationInsights`  | 删除的引用。 从特定 Visual Studio 模板，添加默认情况下某些这些引用和较旧版本的 Visual Studio 可能会将引用添加到`Microsoft.ApplicationInsights`。
+|`AppAlreadyInstrumented:true` | 如果应用程序面向.NET Core 2.1 或 2.2，并且是指[Microsoft.AspNetCore.All](https://www.nuget.org/packages/Microsoft.AspNetCore.All)元包，然后它将在 Application Insights 中和扩展将回退。 | 客户在.NET Core 2.1,2.2[建议](https://github.com/aspnet/Announcements/issues/287)以改为使用 Microsoft.AspNetCore.App 元包。|
 |`AppAlreadyInstrumented:true` | 此值还可能引起从以前的部署的应用程序文件夹中的上述 dll 存在。 | 清除要确保删除这些 dll 的应用程序文件夹。|
 |`AppContainsAspNetTelemetryCorrelationAssembly: true` | 此值指示扩展检测到对引用`Microsoft.AspNet.TelemetryCorrelation`在应用程序，并将回退。 | 删除的引用。
 |`AppContainsDiagnosticSourceAssembly**:true`|此值指示扩展检测到对引用`System.Diagnostics.DiagnosticSource`在应用程序，并将回退。| 删除的引用。

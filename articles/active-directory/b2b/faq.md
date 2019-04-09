@@ -12,12 +12,12 @@ manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cb7296ea4acfbf90d94b8f94a644b8a382b033b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 98f81edcfa2a9daf5162ff1c7e23025b405092b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877357"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260385"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B 协作常见问题解答
 
@@ -60,7 +60,7 @@ ms.locfileid: "58877357"
  能！ 配置此策略时请小心，避免意外阻止成员和管理员的访问。
 若要阻止来宾用户访问 [Azure 门户](https://portal.azure.com)，可以在 Windows Azure 经典部署模型 API 中使用条件访问策略：
 1. 修改“所有用户”组，使其仅包含成员。
-   ![显示所有用户组 UserType 不等于来宾的屏幕截图 ](media/faq/modify-all-users-group.png)
+   ![显示所有用户组 UserType 不等于来宾的屏幕截图](media/faq/modify-all-users-group.png)
 2. 创建包含来宾用户的动态组。
    ![显示新的所有来宾用户组的屏幕截图](media/faq/group-with-guest-users.png)
 3. 设置条件访问策略以阻止来宾用户访问门户，如以下视频中所示：

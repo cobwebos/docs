@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: 9fad5874a0e595ee2c275f06504665ce143266f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: MT
+ms.openlocfilehash: cb6826be8f6a9a8caf54a23b0dbc5f3dda7830d6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759399"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273968"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API-.NET
 
@@ -200,10 +200,6 @@ namespace ConsoleApp1
  
         private static async Task<ServiceClientCredentials> GetCredentialsAsync(ConfigWrapper config)
         {
-            // Use UserTokenProvider.LoginWithPromptAsync or UserTokenProvider.LoginSilentAsync to get a token using user authentication
-            //// ActiveDirectoryClientSettings.UsePromptOnly
-            //// UserTokenProvider.LoginWithPromptAsync
-
             // Use ApplicationTokenProvider.LoginSilentWithCertificateAsync or UserTokenProvider.LoginSilentAsync to get a token using service principal with certificate
             //// ClientAssertionCertificate
             //// ApplicationTokenProvider.LoginSilentWithCertificateAsync
@@ -229,17 +225,17 @@ namespace ConsoleApp1
 
 ## <a name="see-also"></a>另请参阅
 
-- [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
-- [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
-- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
-- [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
-- [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
-- [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
-- [使用 AES-128 动态加密和密钥传递服务 - .NET](protect-with-aes128.md)
-- [使用 DRM 动态加密和许可证传送服务 - .NET](protect-with-drm.md)
-- [从现有策略获取签名密钥 - .NET](get-content-key-policy-dotnet-howto.md)
-- [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-howto.md)
-- [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](https://aka.ms/ams3functions)
+- [教程：上传、 编码和流式传输视频-.NET](stream-files-tutorial-with-api.md) 
+- [教程：使用媒体服务 v3-.NET live Stream](stream-live-tutorial-with-api.md)
+- [教程：分析视频使用媒体服务 v3-.NET](analyze-videos-tutorial-with-api.md)
+- [从本地文件的.NET 中创建作业输入](job-input-from-local-file-how-to.md)
+- [从 HTTPS URL-.NET 创建作业输入](job-input-from-http-how-to.md)
+- [使用自定义转换的.NET 进行编码](customize-encoder-presets-how-to.md)
+- [使用 AES-128 动态加密和密钥传送服务-.NET](protect-with-aes128.md)
+- [使用 DRM 动态加密和许可证传送服务的.NET](protect-with-drm.md)
+- [从现有策略-.NET 获取签名密钥](get-content-key-policy-dotnet-howto.md)
+- [使用媒体服务-.NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
+- [高级视频按需示例的 Azure Functions v2 使用媒体服务 v3](https://aka.ms/ams3functions)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,7 +1,6 @@
 ---
 title: 以编程方式创建策略和查看符合性数据
 description: 本文逐步讲解如何以编程方式创建和管理适用于 Azure Policy 的策略。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 01/31/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: e929fd80e87524b62c08a159c457be6f1f21eaad
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: ade5d55833f1d63a8d70b6eedb3c3e4bdffe590b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768598"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59276484"
 ---
 # <a name="programmatically-create-policies-and-view-compliance-data"></a>以编程方式创建策略和查看符合性数据
 
@@ -96,12 +95,12 @@ ms.locfileid: "57768598"
    将 _ContosoRG_ 替换为所需资源组的名称。
 
    **作用域**上的参数`New-AzPolicyAssignment`适用于管理组、 订阅、 资源组或单个资源。 该参数使用完整资源路径，它将返回 `Get-AzResourceGroup` 的 **ResourceId** 属性。 每个容器的**范围**模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。
-   `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   `{rType}` 应该用来替换**资源类型**的资源，如`Microsoft.Compute/virtualMachines`vm。
 
-   - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - 资源组 - `/subscriptions/{subId}/resourceGroups/{rgName}`
-   - 订阅 - `/subscriptions/{subId}/`
-   - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - 资源- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - 资源组- `/subscriptions/{subId}/resourceGroups/{rgName}`
+   - 订阅- `/subscriptions/{subId}/`
+   - 管理组 `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 有关使用 Azure 资源管理器 PowerShell 模块管理资源策略的详细信息，请参阅 [Az.Resources](/powershell/module/az.resources/#policies)。
 
@@ -224,12 +223,12 @@ ms.locfileid: "57768598"
    az policy assignment create --name '<name>' --scope '<scope>' --policy '<policy definition ID>'
    ```
 
-   `az policy assignment create` 的 **--scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 **--scope** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 将替换为资源的**资源类型**，例如 VM 的 `Microsoft.Compute/virtualMachines`。
+   `az policy assignment create` 的 **--scope** 参数适用于管理组、订阅、资源组或单个资源。 该参数使用完整资源路径。 每个容器的 **--scope** 模式如下所示。 将 `{rName}`、`{rgName}`、`{subId}` 和 `{mgName}` 分别替换为你的资源名称、资源组名称、订阅 ID 和管理组名称。 `{rType}` 应该用来替换**资源类型**的资源，如`Microsoft.Compute/virtualMachines`vm。
 
-   - 资源 - `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
-   - 资源组 - `/subscriptions/{subID}/resourceGroups/{rgName}`
-   - 订阅 - `/subscriptions/{subID}`
-   - 管理组 - `/providers/Microsoft.Management/managementGroups/{mgName}`
+   - 资源- `/subscriptions/{subID}/resourceGroups/{rgName}/providers/{rType}/{rName}`
+   - 资源组- `/subscriptions/{subID}/resourceGroups/{rgName}`
+   - 订阅- `/subscriptions/{subID}`
+   - 管理组 `/providers/Microsoft.Management/managementGroups/{mgName}`
 
 可以在 PowerShell 中使用以下命令获取策略定义 ID：
 

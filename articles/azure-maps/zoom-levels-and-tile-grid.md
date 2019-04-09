@@ -8,28 +8,29 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: c6d38dbb7ee292172fe081c2b77a49db61856d5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
-ms.translationtype: HT
+ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42140414"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261253"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
-Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。
+Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG:3857).
 
-世界分成正方形磁贴。 呈现（光栅）有 21 个缩放级别，其编号为 0 到 20。 呈现（矢量）有 23 个缩放级别，其编号为 0 到 22。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
+世界分成正方形磁贴。 Azure maps 为 23 的缩放级别，编号为 0 到 22 提供光栅图与矢量图块。 在缩放级别为 0 时，单个磁贴可以容纳整个世界：
 
 ![世界磁贴](./media/zoom-levels-and-tile-grid/world0.png)
 
 缩放级别 1 使用 4 个磁贴来呈现世界：一个 2 x 2 的正方形
 
-![世界磁贴左上方](./media/zoom-levels-and-tile-grid/world1a.png)     ![世界磁贴右上方](./media/zoom-levels-and-tile-grid/world1c.png) 
+![世界磁贴左上方](media/zoom-levels-and-tile-grid/world1a.png)     ![世界磁贴右上方](media/zoom-levels-and-tile-grid/world1c.png) 
 
-![世界磁贴左下方](./media/zoom-levels-and-tile-grid/world1b.png)     ![世界磁贴右下方](./media/zoom-levels-and-tile-grid/world1d.png) 
+![世界磁贴左下方](media/zoom-levels-and-tile-grid/world1b.png)     ![世界磁贴右下方](media/zoom-levels-and-tile-grid/world1d.png) 
 
+每个其他的缩放级别分为四创建 2 的网格将前一个磁贴<sup>zoom</sup> x 2<sup>缩放</sup>。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
 
-每个后续缩放级别都将前一个缩放级别的磁贴分为四份，从而创建一个 2 <sup>缩放</sup> x 2 <sup>缩放</sup>的网格。 缩放级别 22 是一个 2<sup>22</sup> x 2<sup>22</sup> 的网格，或有 4,194,304 x 4,194,304 个磁贴（共有 17,592,186,044,416 个磁贴）。
+Azure Maps 互动地图控件适用于 web 和 Android 支持缩放级别 25 的缩放级别，编号为 0 和 24 之间。 尽管道路数据仅可在磁贴时所提供的缩放级别。
 
 下表提供了缩放级别的完整列表值：
 
@@ -58,15 +59,17 @@ Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG: 3857)。
 |20|0.15|38.2|
 |21|0.075|19.1|
 |22|0.0375|9.55|
+|23|0.01875|4.775|
+|24|0.009375|2.3875|
 
 通过缩放级别调用磁贴，x 和 y 坐标对应磁贴在该缩放级别的网格上的位置。
 
-在确定要使用的具体缩放级别时，请记住每个位置在其磁贴上是固定的。 这意味着要显示给定范围区域所需的磁贴数量取决于世界上缩放网格的具体位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
+在确定要使用的缩放级别，请记住每个位置是在其磁贴上的固定位置中。 这意味着要显示给定范围区域所需的磁贴数量取决于世界上缩放网格的具体位置。 例如，如果有两个点相距 900 米，则可能仅在缩放级别 17 使用三个磁贴来显示这两点之间的路线。 但是，如果西边的点在磁贴的右边，而东边的点在磁贴的左边，则需要四个磁贴：
 
-![缩放演示比例](./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
+![缩放演示比例](media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
 
-缩放级别确定后，可以计算 x 和 y 值。 每个缩放网格的左上方磁贴为 x=0、y=0，右下方磁贴为 x=2<sup>缩放-1</sup>，y=2<sup>缩放-1</sup>。
+缩放级别确定后，可以计算 x 和 y 值。 每个缩放网格的左上方磁贴是 x = 0，y = 0;右下方磁贴为 x = 2<sup>缩放-1</sup>，y = 2<sup>缩放 1</sup>。
 
 以下是缩放级别 1 的缩放网格：
 
-![缩放级别 1 的缩放网格](./media/zoom-levels-and-tile-grid/api_x_y.png)
+![缩放级别 1 的缩放网格](media/zoom-levels-and-tile-grid/api_x_y.png)

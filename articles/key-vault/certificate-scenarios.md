@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 8b56151ae56de44cbab3003743ce6df33ec89612
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58075623"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275889"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
 以下方案概述了 Key Vault 的证书管理服务的多种主要使用方式，包括在密钥保管库中创建第一个证书所需的其他步骤。
@@ -102,6 +102,17 @@ ms.locfileid: "58075623"
 
 -   另外，用户可以编辑策略。策略在导入时生效，但其包含的默认设置在导入时并未指定任何信息。 例如： 无颁发者信息  
 
+### <a name="formats-of-import-we-support"></a>导入我们支持的格式
+我们为 PEM 文件格式支持以下类型的导入。 PKCS #8 编码的它具有以下未加密的密钥以及单个 PEM 编码的证书
+
+---BEGIN 证书------最终证书--
+
+---BEGIN PRIVATE KEY------结束 PRIVATE KEY--
+
+在证书合并我们支持 2 基于 PEM 格式。 可以将合并单个 PKCS #8 编码的证书或使用 base64 编码的 P7B 文件。 ---BEGIN 证书------最终证书--
+
+我们当前不支持 EC 密钥以 PEM 格式。
+
 ## <a name="creating-a-certificate-with-a-ca-not-partnered-with-key-vault"></a>使用不与 Key Vault 配合使用的 CA 创建证书  
  此方法允许使用除 Key Vault 的合作提供者之外的其他 CA，也就是说，组织可以使用自选的 CA。  
 
@@ -121,4 +132,4 @@ ms.locfileid: "58075623"
 
 ## <a name="see-also"></a>另请参阅
 
-- [关于键、密钥和证书](about-keys-secrets-and-certificates.md)
+- [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)

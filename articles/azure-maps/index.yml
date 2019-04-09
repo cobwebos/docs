@@ -1,56 +1,57 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 684e6a798c690c65f70c2f6224ac8f11256ce6eb
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270124"
 documentType: LandingData
 title: Azure Maps 文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Maps 文档 | Microsoft Docs
   meta.description: Use Azure Maps to provide geospatial services to your web or mobile application.
   author: philmea
-  manager: 
+  manager: null
   ms.service: azure-maps
   services: azure-maps
   ms.topic: landing-page
   ms.date: 02/14/2019
   ms.author: philmea
 abstract:
-  description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了可用于为 Web 和移动应用程序提供地理环境的最新地图数据。 Azure Maps 是 Azure 的一个 API，它与一组 REST API 兼容，提供地图、搜索、路由、流量、时区、地理位置、地理围栏、地图数据和空间操作功能，随之提供的 Web 和 Android SDK 使得开发简单、灵活且可跨多个平台移植。
+  description: Azure Maps 为各行各业的开发人员提供强大的地理空间功能，并搭配了可用于为 Web 和移动应用程序提供地理环境的最新地图数据。 Azure Maps 是一组兼容 Azure One API 的 REST API，适用于地图、搜索、路线、交通、时区、地理位置、地理围栏、地图数据和空间操作，随 Web 和 Android SDK 一起提供，可以使开发变得简单、灵活且可跨多个平台移植。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 启动使用 Azure Maps 的地图搜索应用。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: /azure/sql-database/media/index/portal.svg
-      text: 启动演示地图应用
-      href: /azure/azure-maps/quick-demo-map-app
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 开发地理空间 Web 应用程序，以便使用 Azure Maps 搜索兴趣点、规划通往相应位置的路线并跟踪设备。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何使用 Azure Maps 创建地理空间应用程序。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
+            text: 创建 Web 应用
+            href: /azure/azure-maps/quick-demo-map-app
+  - title: 分步教程
     items:
-    - html: <a href="/azure/azure-maps/tutorial-search-location">搜索兴趣点</a>
-    - html: <a href="/azure/azure-maps/tutorial-route-location">规划通往兴趣点的路线</a>
-    - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">按旅行模式规划路线</a>
-    - html: <a href="/azure/azure-maps/tutorial-create-store-locator">创建商店定位器</a>
-    - html: <a href="/azure/azure-maps/tutorial-geofence">设置地理围栏</a>
-- title: 参考
-  items:
-  - type: list
-    style: cards
-    className: cardsW
+      - html: <b>Web SDK 教程</b>
+      - type: paragraph
+        text: 使用 Azure Maps Web SDK 生成地理空间 Web 应用程序。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-maps/tutorial-search-location">搜索兴趣点</a>
+          - html: <a href="/azure/azure-maps/tutorial-route-location">规划通往兴趣点的路线</a>
+          - html: <a href="/azure/azure-maps/tutorial-prioritized-routes">按旅行模式规划路线</a>
+          - html: <a href="/azure/azure-maps/tutorial-create-store-locator">创建商店定位器</a>
+      - html: <b>REST API 教程</b>
+      - type: paragraph
+        text: 生成调用 Azure Maps REST 服务的地理空间应用程序。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-maps/tutorial-geofence">设置地理围栏</a>
+  - title: 引用
     items:
-    - title: JavaScript
-      html: <p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/maps/data">数据服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">地理位置服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空间服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p>
+      - type: list
+        style: cards
+        className: cardsW
+        items:
+          - title: JavaScript
+            html: '<p><a href="https://docs.microsoft.com/javascript/api/azure-maps-javascript/">地图控件</a></p>'
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/maps/data">数据服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/geolocation">地理位置服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/render">呈现服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/route">路线服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/search">搜索服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/spatial">空间服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/timezone">时区服务</a></p><p><a href="https://docs.microsoft.com/rest/api/maps/traffic">交通服务</a></p>'

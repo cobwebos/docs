@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: befb5370dce5b9b7617370f0b14d471dfeb35437
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: MT
+ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051676"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271826"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新
 
@@ -80,7 +80,7 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - 1902 版本在 Azure Stack 管理员门户上引入了新的用户界面用于创建计划、套餐、配额和附加计划。 有关详细信息（包括屏幕截图），请参阅[创建计划、套餐和配额](azure-stack-create-plan.md)。
 
 <!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- 改进了添加节点期间缩放单元状态从“正在扩展存储”切换为运行状态时的容量扩展可靠性。
+- 切换缩放单元的状态从"扩展存储"为"正在运行"时添加节点操作期间的容量扩展可靠性改进。
 
 <!--
 1426197 3852583: Increase Global VM script mutex wait time to accommodate enclosed operation timeout    PNU
@@ -104,9 +104,6 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
     - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们
     - 检查 XRP service fabric 节点的状态并根据需要修复它们
     - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们
-
-<!-- 1460884    Hotfix: Adding StorageController service permission to talk to ClusterOrchestrator  Add node -->
-- 改进了添加节点期间缩放单元状态从“正在扩展存储”切换为运行状态时的容量扩展可靠性。    
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -259,6 +256,10 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
  
 <!-- #### Identity -->
 <!-- #### Marketplace -->
+
+### <a name="syslog"></a>Syslog 
+- Syslog 配置不会保留通过更新循环，从而导致 syslog 客户端会丢失其配置和要停止正在转发的 syslog 消息。 Syslog 客户端 (1809) 正式发布以来，此问题适用于所有版本的 Azure Stack。
+解决方法是在应用 Azure Stack 更新后重新配置 syslog 客户端。
 
 ## <a name="download-the-update"></a>下载更新
 

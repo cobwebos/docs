@@ -8,12 +8,12 @@ ms.date: 01/24/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 84db71f8dabfb7557b5efbc06e024c43e654b56d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f93f6c8891ba9f7407310a8f09387e97f5c1f578
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58805068"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59267338"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Runbook 错误故障排除
 
@@ -34,7 +34,7 @@ Unknown_user_type: Unknown User Type
 
 如果凭据资产名称无效，将发生此错误。 如果用于设置自动化凭据资产的用户名和密码无效，也可能会出现此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 要确定具体错误，请执行以下步骤：  
 
@@ -49,7 +49,7 @@ Unknown_user_type: Unknown User Type
    Connect-AzureRmAccount –Credential $Cred
    ```
 
-3. 如果无法在本地进行身份验证，则意味着你尚未设置好 Azure Active Directory 凭据。 请参阅 [使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/) 博客文章，了解如何正确设置 Azure Active Directory 帐户。  
+3. 如果无法在本地进行身份验证，则意味着你尚未设置好 Azure Active Directory 凭据。 请参阅[使用 Azure Active Directory 向 Azure 进行身份验证](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/)博客文章，了解如何正确设置 Azure Active Directory 帐户。  
 
 4. 如果它看起来是暂时性错误，请尝试向身份验证例程添加重试逻辑，使身份验证更加可靠。
 
@@ -93,7 +93,7 @@ The subscription named <subscription name> cannot be found.
 
 * 尝试获取订阅详细信息的 Azure Active Directory 用户未配置为订阅的管理员。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 执行以下步骤以确定是否已正确向 Azure 进行身份验证并有权访问尝试选择的订阅：  
 
@@ -127,9 +127,9 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 如果对 Azure 帐户设置了多重身份验证，则不能使用 Azure Active Directory 用户向 Azure 进行身份验证。 而只能使用证书或服务主体向 Azure 进行身份验证。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
-要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 若要将服务主体用于 Azure Resource Manager cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[通过 Azure Resource Manager 对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
+要将证书用于 Azure 经典部署模型 cmdlet，请参阅[创建并添加管理 Azure 服务所需的证书](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx)。 要将服务主体用于 Azure 资源管理器 cmdlet，请参阅[使用 Azure 门户创建服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)和[通过 Azure 资源管理器对服务主体进行身份验证](../../active-directory/develop/howto-authenticate-service-principal-powershell.md)。
 
 ## <a name="common-errors-when-working-with-runbooks"></a>使用 Runbook 时的常见错误
 
@@ -137,7 +137,7 @@ Add-AzureAccount: AADSTS50079: Strong authentication enrollment (proof-up) is re
 
 #### <a name="issue"></a>问题
 
-使用 `-Wait` 开关调用 childrunbook 并且输出流包含对象时，会收到以下错误：
+调用子 runbook 中的使用时，收到以下错误`-Wait`交换机和输出流包含和对象：
 
 ```error
 Object reference not set to an instance of an object
@@ -147,7 +147,7 @@ Object reference not set to an instance of an object
 
 有一个已知问题，如果 [Start-AzureRmAutomationRunbook](/powershell/module/AzureRM.Automation/Start-AzureRmAutomationRunbook) 包含对象，则它无法正确处理输出流。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 要解决此问题，建议改为实现轮询逻辑并使用 [Get-AzureRmAutomationJobOutput](/powershell/module/azurerm.automation/get-azurermautomationjoboutput) cmdlet 来检索输出。 下面的示例中定义了此逻辑的示例。
 
@@ -195,7 +195,7 @@ At line:16 char:1
 
 此错误是因为在同一 runbook 中同时使用 AzureRM 和 Az cmdlet 而导致的。 在导入 `AzureRM` 之前导入 `Az` 会出现此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 不能在同一 runbook 中同时导入并使用 Az 和 AzureRM cmdlet，若要详细了解 Azure 自动化中对 Az 的支持，请参阅 [Azure 自动化中的 Az 模块支持](../az-modules.md)。
 
@@ -213,7 +213,7 @@ Exception: A task was canceled.
 
 使用过时的 Azure 模块会导致此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 可以通过将 Azure 模块更新到最新版本来解决此错误。
 
@@ -229,7 +229,7 @@ Exception: A task was canceled.
 
 Runbook 在运行时没有使用正确的上下文。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 如果使用多个订阅，则调用 Runbook 时可能会丢失订阅上下文。 若要确保将订阅上下文传递给 Runbook，请将 `AzureRmContext` 参数添加到 cmdlet 并将上下文传递给它。 还建议将 `Disable-AzureRmContextAutosave` cmdlet 与 **Process** 范围配合使用来确保你使用的凭据仅用于当前 runbook。
 
@@ -275,7 +275,7 @@ The term 'Connect-AzureRmAccount' is not recognized as the name of a cmdlet, fun
 1. 包含该 cmdlet 的模块未导入到自动化帐户中
 2. 包含该 cmdlet 的模块已导入但已过期
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 可通过完成以下任务之一来解决此错误：
 
@@ -305,7 +305,7 @@ The job was tried three times but it failed
 
 4. 在 runbook 尝试调用可执行文件或在 Azure 沙盒中运行的 runbook 中子进程。 Azure 沙盒不支持此方案。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：
 
@@ -333,7 +333,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 
 如果 runbook 为 PowerShell 工作流，它会将复杂对象以反序列化格式进行存储，以便在工作流暂停的情况下保留 runbook 状态。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 下述三种解决方案中的任何一种都可以解决此问题：
 
@@ -357,7 +357,7 @@ Cannot convert the <ParameterType> value of type Deserialized <ParameterType> to
 4. 某些模块对 Windows 计算机上存在的库进行假设。 这些库可能不存在于沙盒中。
 5. 某些模块依赖的 .NET 版本不同于沙盒中可用的版本。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 下述任一解决方案可能可以解决此问题：
 
@@ -381,9 +381,9 @@ The quota for the monthly total job run time has been reached for this subscript
 
 #### <a name="cause"></a>原因
 
-当作业执行时间超过你帐户的 500 分钟免费配额时，就会出现此错误。 此配额适用于所有类型的作业执行任务。 其中一些任务可能是测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure 门户或数据中心计划要执行的作业。 若要详细了解自动化的定价，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
+作业执行时间超过帐户的 500 分钟免费配额时，就会出现此错误。 此配额适用于所有类型的作业执行任务。 其中一些任务可能是测试作业、从门户启动作业、使用 Webhook 执行作业，以及通过 Azure 门户或数据中心计划要执行的作业。 若要详细了解自动化的定价，请参阅[自动化定价](https://azure.microsoft.com/pricing/details/automation/)。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 如果想要每月使用 500 分钟以上的处理时间，则需将订阅从免费层改为基本层。 可以通过下述步骤升级到基本层：  
 
@@ -406,13 +406,13 @@ Runbook 作业失败并显示错误：
 
 当 PowerShell 引擎找不到要在 runbook 中使用的 cmdlet 时，则会导致此错误。 此错误可能是因为，帐户中缺少包含该 cmdlet 的模块、与 Runbook 名称冲突，或者该 cmdlet 也存在于其他模块中，而自动化无法解析该名称。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：  
 
 * 检查输入的 cmdlet 名称是否正确。  
 * 确保 cmdlet 存在于自动化帐户中，且没有冲突。 要验证 cmdlet 是否存在，请在编辑模式下打开 Runbook，并搜索希望在库中找到的 cmdlet，或者运行 `Get-Command <CommandName>`。 验证该 cmdlet 可供帐户使用且与其他 cmdlet 或 runbook 不存在名称冲突以后，可将其添加到画布上，并确保使用的是 runbook 中的有效参数集。  
-* 如果存在名称冲突且 cmdlet 可在两个不同的模块中使用，则可使用 cmdlet 的完全限定名称来解决此问题。 例如，可以使用 ModuleName\CmdletName。  
+* 如果存在名称冲突且 cmdlet 可在两个不同的模块中使用，则可使用 cmdlet 的完全限定名称来解决此问题。 例如，可以使用 **ModuleName\CmdletName**。  
 * 如果是在本地执行混合辅助角色组中的 runbook，则请确保模块和 cmdlet 已安装在托管混合辅助角色的计算机上。
 
 ### <a name="long-running-runbook"></a>场景：长时间运行的 Runbook 无法完成
@@ -431,7 +431,7 @@ The job was evicted and subsequently reached a Stopped state. The job cannot con
 
 Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 建议的解决方案是在[混合 Runbook 辅助角色](../automation-hrw-run-runbooks.md)上运行 runbook。
 
@@ -445,7 +445,7 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 [Get-AzureRmAutomationJob](/powershell/module/azurerm.automation/get-azurermautomationjob) - 在子 runbook 完成后，如果需要执行操作，可使用此 cmdlet 检查每个子 runbook 的作业状态。
 
-### <a name="expired webhook"></a>场景：状态:调用 Webhook 时显示 400 错误请求
+### <a name="expired webhook"></a>场景：状态：调用 Webhook 时显示 400 错误请求
 
 #### <a name="issue"></a>问题
 
@@ -459,7 +459,7 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 尝试调用的 Webhook 已禁用，或者已过期。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 如果 Webhook 处于禁用状态，可以通过 Azure 门户重新启用 Webhook。 如果 Webhook 已过期，需要删除并重新创建 Webhook。 如果尚未过期，只能[续订 Webhook](../automation-webhooks.md#renew-webhook)。
 
@@ -477,12 +477,35 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 从具有多个[详细流](../automation-runbook-output-and-messages.md#verbose-stream)的 Runbook 中检索作业输出时，可能发生此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 可通过两种方法来解决此错误：
 
 * 编辑 Runbook，并减少它发出的作业流数量。
 * 减少运行 cmdlet 时要检索的流数量。 若要遵循此行为，可以为 `Get-AzureRmAutomationJobOutput` cmdlet 指定 `-Stream Output` 参数以仅检索输出流。 
+
+### <a name="cannot-invoke-method"></a>场景：PowerShell 作业失败，出现错误：不能调用方法
+
+#### <a name="issue"></a>问题
+
+在 Azure 中运行的 runbook 在启动 PowerShell 作业时收到以下错误消息：
+
+```error
+Exception was thrown - Cannot invoke method. Method invocation is supported only on core types in this language mode.
+```
+
+#### <a name="cause"></a>原因
+
+启动 runbook 中的作业在 Azure 中运行 PowerShell 时，可能会发生此错误。 此行为可能是因为在 Azure 中运行的 runbook 可能无法运行沙盒[完整语言模式](/powershell/module/microsoft.powershell.core/about/about_language_modes))。
+
+#### <a name="resolution"></a>解决方法
+
+可通过两种方法来解决此错误：
+
+* 而不是使用`Start-Job`，使用`Start-AzureRmAutomationRunbook`来启动 runbook
+* 如果 runbook 有此错误消息，运行在混合 Runbook 辅助角色
+
+若要了解有关此行为，并且 Azure 自动化 Runbook 的其他行为的详细信息，请参阅[Runbook 行为](../automation-runbook-execution.md#runbook-behavior)。
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -490,4 +513,4 @@ Runbook 超出了 Azure 沙盒中公平份额允许的 3 小时限制。
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。

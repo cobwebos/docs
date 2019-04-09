@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 3225ae919e221935b6d8a52e20d943d2178f6a47
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 2580f1177bf9e6e3a92934f88a5d8ab51894e8d9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59056839"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269480"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>将符号层添加到地图
 
@@ -76,13 +76,16 @@ ms.locfileid: "59056839"
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [添加弹出项](./map-add-popup.md)
+> [添加弹出项](map-add-popup.md)
 
 > [!div class="nextstepaction"]
-> [添加形状](./map-add-shape.md)
+> [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)
 
 > [!div class="nextstepaction"]
-> [添加气泡层](./map-add-bubble-layer.md)
+> [添加形状](map-add-shape.md)
 
 > [!div class="nextstepaction"]
-> [添加 HTML 创建者](./map-add-bubble-layer.md)
+> [添加气泡层](map-add-bubble-layer.md)
+
+> [!div class="nextstepaction"]
+> [添加 HTML 创建者](map-add-bubble-layer.md)

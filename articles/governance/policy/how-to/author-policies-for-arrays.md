@@ -1,36 +1,35 @@
 ---
-title: Azure 资源上的阵列属性的作者策略
-description: 了解如何创建数组的参数，创建语言表达式的数组的规则，评估 [*] 别名，以及如何将元素追加到现有数组与 Azure 策略定义规则。
-services: azure-policy
+title: 针对 Azure 资源中的数组属性创作策略
+description: 了解如何使用 Azure Policy 定义规则来创建数组参数、创建数组语言表达式的规则、评估 [*] 别名，以及将元素追加到现有数组。
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/06/2019
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 62267a4549355212a18654ff9781b2164ba19fa9
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 38cf6decb8e61768faa9680058f6366e1550ba40
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57860234"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274717"
 ---
-# <a name="author-policies-for-array-properties-on-azure-resources"></a>Azure 资源上的阵列属性的作者策略
+# <a name="author-policies-for-array-properties-on-azure-resources"></a>针对 Azure 资源中的数组属性创作策略
 
-Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个对多关系时，复杂属性改为定义为数组。 在 Azure 策略数组用在多种不同的方式：
+Azure 资源管理器属性往往定义为字符串和布尔值。 存在一个对多的关系时，复杂属性将定义为数组。 在 Azure Policy 中，可通过多种不同的方式使用数组：
 
-- 类型[definition 参数](../concepts/definition-structure.md#parameters)，以提供多个选项
-- 一部分[策略规则](../concepts/definition-structure.md#policy-rule)使用条件**中**或**notIn**
-- 策略规则的计算结果的一部分[ \[ \* \]别名](../concepts/definition-structure.md#understanding-the--alias)若要计算特定方案如**None**，**任何**，或**所有**
-- 在中[追加效果](../concepts/effects.md#append)来替换或添加到现有的数组
+- 可提供多个选项的[定义参数](../concepts/definition-structure.md#parameters)类型
+- 使用条件 **in** 或 **notIn** 的[策略规则](../concepts/definition-structure.md#policy-rule)部分
+- 可评估 [\[\*\] 别名](../concepts/definition-structure.md#understanding-the--alias)，以评估 **None**、**Any** 或 **All** 等特定方案的策略规则部分
+- 使用可以替换或者可以添加到现有数组的 [append 效果](../concepts/effects.md#append)
 
-本文介绍了每次使用 Azure 策略，并提供了几个示例中定义。
+本文将会介绍 Azure Policy 的每种用法，并提供几个示例定义。
 
 ## <a name="parameter-arrays"></a>参数数组
 
 ### <a name="define-a-parameter-array"></a>定义参数数组
 
-需要多个值时，作为一个数组中定义的参数允许策略灵活性。
+如果需要多个值，将参数定义为数组可以提高策略的灵活性。
 此策略定义允许的参数的任何单个位置**allowedLocations**默认值为_eastus2_:
 
 ```json
@@ -47,9 +46,9 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个�
 }
 ```
 
-作为**类型**已_字符串_，只有一个值时可以设置分配策略。 如果此策略分配，在单个 Azure 区域中仅允许范围内的资源。 需要有关的已批准的选项，例如允许列表允许大多数策略定义_eastus2_， _eastus_，并_westus2_。
+由于**类型**是_字符串_，因此在分配该策略时，只能设置一个值。 如果分配此策略，只允许单个 Azure 区域中的处于范围内的资源。 需要有关的已批准的选项，例如允许列表允许大多数策略定义_eastus2_， _eastus_，并_westus2_。
 
-若要创建策略定义，以允许多个选项，请使用_数组_**类型**。 可以按如下所示重新编写相同的策略：
+若要创建允许多个选项的策略定义，请使用“数组”**类型**。 可按如下所示重新编写同一策略：
 
 ```json
 "parameters": {
@@ -72,17 +71,17 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个�
 ```
 
 > [!NOTE]
-> 保存策略定义后，**类型**参数上的属性不能更改。
+> 保存策略定义后，无法更改参数中的 **type** 属性。
 
-此新的参数定义在分配策略期间采用多个值。 与数组属性**allowedValues**定义，在分配过程中可用的值是进一步限制为预定义的选择列表。 利用**allowedValues**是可选的。
+在分配策略期间，此新参数定义将采用多个值。 如果定义了数组属性 **allowedValues**，则在分配期间，可用值将进一步限制为预定义的选项列表。 **allowedValues** 是可选的。
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>在分配期间将值传递给参数数组
 
-分配策略通过 Azure 门户的参数时**类型**_数组_显示为单个文本框。 提示表示"使用;若要分隔值。 （例如伦敦;New York)"。 若要允许的位置的值传递_eastus2_， _eastus_，并_westus2_到参数，可使用以下字符串：
+通过 Azure 门户分配策略时，“数组”**类型**的参数将显示为单个文本框。 提示中会指出“请使用 ; 来分隔值。 (例如 London;New York)”。 若要允许的位置的值传递_eastus2_， _eastus_，并_westus2_到参数，可使用以下字符串：
 
 `eastus2;eastus;westus2`
 
-使用 Azure CLI、 Azure PowerShell 或 REST API 时不同的参数值的格式。 将值传递通过 JSON 字符串，它还包括参数的名称。
+使用 Azure CLI、Azure PowerShell 或 REST API 时，参数值的格式是不同的。 值将会通过也包含参数名称的 JSON 字符串进行传递。
 
 ```json
 {
@@ -96,18 +95,18 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个�
 }
 ```
 
-若要与每个 SDK 配合使用此字符串，请使用以下命令：
+若要在每个 SDK 中使用此字符串，请使用以下命令：
 
-- Azure CLI：命令[az 策略分配创建](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)参数与**params**
-- Azure PowerShell：Cmdlet[新建 AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)参数与**PolicyParameter**
-- REST API：在中_放_[创建](/rest/api/resources/policyassignments/create)操作作为请求正文的一部分的值作为**properties.parameters**属性
+- Azure CLI：命令 [az policy assignment create](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)，结合参数 **params**
+- Azure PowerShell：cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment)，结合参数 **PolicyParameter**
+- REST API：在请求正文中使用 _PUT_ [create](/rest/api/resources/policyassignments/create) 操作作为 **properties.parameters** 属性的值
 
 ## <a name="policy-rules-and-arrays"></a>策略规则和数组
 
 ### <a name="array-conditions"></a>数组条件
 
-策略规则[条件](../concepts/definition-structure.md#conditions)的_数组_
-**类型**可能使用的参数使用仅限于`in`和`notIn`。 采取以下策略定义具有条件`equals`作为示例：
+可以结合“数组”
+**类型**的参数使用的策略规则[条件](../concepts/definition-structure.md#conditions)限制为 `in` 和 `notIn`。 以包含条件 `equals` 的以下策略定义为例：
 
 ```json
 {
@@ -135,20 +134,20 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个�
 }
 ```
 
-尝试创建此策略定义，通过 Azure 门户导致错误，如此错误消息：
+尝试通过 Azure 门户创建此策略定义会导致出现如下所示的错误消息：
 
-- "策略 {GUID} 无法参数化，因为验证错误。 请检查策略参数是否正确定义。 内部异常评估结果的语言表达式 [parameters('allowedLocations')] 是数组类型需要的类型为 'String' '。"
+- “由于出现验证错误，无法参数化策略 '{GUID}'。 请检查是否正确定义了策略参数。 出现内部异常‘语言表达式 '[parameters('allowedLocations')]' 评估结果的类型为‘数组’，而预期类型为‘字符串’。’”
 
-预期**类型**的条件`equals`是_字符串_。 由于**allowedLocations**指**类型**_数组_，策略引擎计算语言表达式，并将引发错误。 与`in`并`notIn`条件，策略引擎预期**类型**_数组_语言表达式中。 若要解决此错误消息，请更改`equals`至任一`in`或`notIn`。
+条件 `equals` 的预期**类型**为“字符串”。 由于 **allowedLocations** 定义为“数组”**类型**，因此策略引擎会评估该语言表达式并引发错误。 使用 `in` 和 `notIn` 条件时，策略引擎预期语言表达式中的**类型**为“数组”。 若要解决此错误消息，请将 `equals` 更改为 `in` 或 `notIn`。
 
 ### <a name="evaluating-the--alias"></a>评估 [*] 别名
 
-具有别名 **[\*]** 附加到其名称指示**类型**是_数组_。 而不是评估整个数组的值 **[\*]** 就可以评估每个元素的数组。 有三种方案这每项评估中很有用：None、 任何，并且所有。
+名称中附加有 **[\*]** 的别名表示**类型**为“数组”。 指定 **[\*]** 可以评估数组的每个元素，而不会评估整个数组的值。 这种按项评估的功能在三种场合下非常有用：None、Any 和 All。
 
-策略引擎触发器**效果**中**然后**时，才**如果**规则评估为 true。
-这一点非常重要的方式的上下文中理解 **[\*]** 数组的每个元素的计算结果。
+仅当 **if** 规则评估为 true 时，策略引擎才会在 **then** 中触发**效果**。
+若要根据上下文了解 **[\*]** 如何评估数组的每个元素，必须知道这一事实。
 
-下面的方案中表的示例策略规则：
+场景表的示例策略规则如下：
 
 ```json
 "policyRule": {
@@ -167,7 +166,7 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个�
 }
 ```
 
-**IpRules**数组，如下所示为下方案表：
+以下场景表的 **ipRules** 数组如下所示：
 
 ```json
 "ipRules": [
@@ -182,29 +181,29 @@ Azure 资源管理器属性通常定义为字符串和布尔值。 存在一个�
 ]
 ```
 
-对于以下每个条件示例中，替换`<field>`与`"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`。
+对于下面的每个条件示例，请将 `<field>` 替换为 `"field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules[*].value"`。
 
-条件的示例策略规则和更高版本的现有值的数组的组合的结果的输出如下：
+以下结果是将上面所示现有值的条件、示例策略规则和数组合并后的结果：
 
 |条件 |结果 |说明 |
 |-|-|-|
-|`{<field>,"notEquals":"127.0.0.1"}` |执行任何操作 |一个数组元素的计算结果为 false (127.0.0.1 ！ = 127.0.0.1)，另一个为 true (127.0.0.1 ！ = 192.168.1.1)，因此**notEquals**条件_false_和效果不会触发。 |
-|`{<field>,"notEquals":"10.0.4.1"}` |策略效果 |这两个数组元素的计算结果为 true (10.0.4.1 ！ = 127.0.0.1 和 10.0.4.1 ！ = 192.168.1.1)，因此**notEquals**条件_true_和触发效果。 |
-|`"not":{<field>,"Equals":"127.0.0.1"}` |策略效果 |一个数组元素的计算结果为 true (127.0.0.1 = = 127.0.0.1)，另一个为 false (127.0.0.1 = = 192.168.1.1)，因此**等于**条件_false_。 逻辑运算符计算结果为 true (**不** _false_)，因此触发效果。 |
-|`"not":{<field>,"Equals":"10.0.4.1"}` |策略效果 |这两个数组元素的计算结果为 false (10.0.4.1 = = 127.0.0.1 和 10.0.4.1 = = 192.168.1.1)，因此**等于**条件_false_。 逻辑运算符计算结果为 true (**不** _false_)，因此触发效果。 |
-|`"not":{<field>,"notEquals":"127.0.0.1" }` |策略效果 |一个数组元素的计算结果为 false (127.0.0.1 ！ = 127.0.0.1)，另一个为 true (127.0.0.1 ！ = 192.168.1.1)，因此**notEquals**条件_false_。 逻辑运算符计算结果为 true (**不** _false_)，因此触发效果。 |
-|`"not":{<field>,"notEquals":"10.0.4.1"}` |执行任何操作 |这两个数组元素的计算结果为 true (10.0.4.1 ！ = 127.0.0.1 和 10.0.4.1 ！ = 192.168.1.1)，因此**notEquals**条件_true_。 逻辑运算符的计算结果为 false (**不** _true_)，因此效果不会触发。 |
-|`{<field>,"Equals":"127.0.0.1"}` |执行任何操作 |一个数组元素的计算结果为 true (127.0.0.1 = = 127.0.0.1)，另一个为 false (127.0.0.1 = = 192.168.1.1)，因此**等于**条件_false_和效果不会触发。 |
-|`{<field>,"Equals":"10.0.4.1"}` |执行任何操作 |这两个数组元素的计算结果为 false (10.0.4.1 = = 127.0.0.1 和 10.0.4.1 = = 192.168.1.1)，因此**等于**条件_false_和效果不会触发。 |
+|`{<field>,"notEquals":"127.0.0.1"}` |无 |一个数组元素评估为 false (127.0.0.1 != 127.0.0.1)，一个数组元素评估为 true (127.0.0.1 != 192.168.1.1)，因此，**notEquals** 条件为 _false_，且不会触发效果。 |
+|`{<field>,"notEquals":"10.0.4.1"}` |策略效果 |两个数组元素均评估为 true（10.0.4.1 != 127.0.0.1，10.0.4.1 != 192.168.1.1），因此，**notEquals** 条件为 _true_，并且会触发效果。 |
+|`"not":{<field>,"Equals":"127.0.0.1"}` |策略效果 |一个数组元素评估为 true (127.0.0.1 == 127.0.0.1)，一个数组元素评估为 false (127.0.0.1 == 192.168.1.1)，因此，**Equals** 条件为 _false_。 逻辑运算符评估为 true (**not** _false_)，因此会触发效果。 |
+|`"not":{<field>,"Equals":"10.0.4.1"}` |策略效果 |两个数组元素均评估为 false（10.0.4.1 == 127.0.0.1，10.0.4.1 == 192.168.1.1），因此，**Equals** 条件为 _false_。 逻辑运算符评估为 true (**not** _false_)，因此会触发效果。 |
+|`"not":{<field>,"notEquals":"127.0.0.1" }` |策略效果 |一个数组元素评估为 false (127.0.0.1 != 127.0.0.1)，一个数组元素评估为 true (127.0.0.1 != 192.168.1.1)，因此，**notEquals** 条件为 _false_。 逻辑运算符评估为 true (**not** _false_)，因此会触发效果。 |
+|`"not":{<field>,"notEquals":"10.0.4.1"}` |无 |两个数组元素均评估为 true（10.0.4.1 != 127.0.0.1，10.0.4.1 != 192.168.1.1），因此，**notEquals** 条件为 _true_。 逻辑运算符评估为 false (**not** _true_)，因此不会触发效果。 |
+|`{<field>,"Equals":"127.0.0.1"}` |无 |一个数组元素评估为 true (127.0.0.1 == 127.0.0.1)，一个数组元素评估为 false (127.0.0.1 == 192.168.1.1)，因此，**Equals** 条件为 _false_，且不会触发效果。 |
+|`{<field>,"Equals":"10.0.4.1"}` |无 |两个数组元素均评估为 false（10.0.4.1 == 127.0.0.1，10.0.4.1 == 192.168.1.1），因此，**Equals** 条件为 _false_，且不会触发效果。 |
 
-## <a name="the-append-effect-and-arrays"></a>追加效果和数组
+## <a name="the-append-effect-and-arrays"></a>append 效果和数组
 
-[追加效果](../concepts/effects.md#append)行为有所不同，具体取决于**details.field**是 **[\*]** 别名与否。
+[append 效果](../concepts/effects.md#append)的行为根据 **details.field** 是否为 **[\*]** 别名而有所不同。
 
-- 时未 **[\*]** 别名，追加替换整个数组**值**属性
-- 当 **[\*]** 别名，追加添加**值**属性设置为现有数组，或创建新的数组
+- 如果不是 **[\*]** 别名，则 append 会将整个数组替换为 **value** 属性
+- 如果是 **[\*]** 别名，则 append 会将 **value** 属性添加到现有数组，或创建新数组
 
-有关详细信息，请参阅[追加示例](../concepts/effects.md#append-examples)。
+有关详细信息，请参阅 [append 示例](../concepts/effects.md#append-examples)。
 
 ## <a name="next-steps"></a>后续步骤
 
