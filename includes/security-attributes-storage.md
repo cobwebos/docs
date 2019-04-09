@@ -1,15 +1,15 @@
 ---
 author: msmbaldwin
-ms.service: key-vault
+ms.service: storage
 ms.topic: include
-ms.date: 01/31/2019
+ms.date: 03/15/2019
 ms.author: mbaldwin
-ms.openlocfilehash: d8e33113ca9f0886a4cef1c8f9acb855b32c2973
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.openlocfilehash: b242bda524c747b28453061c797afde02cf6f455
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "58114714"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59007492"
 ---
 ## <a name="preventative"></a>预防
 
@@ -34,7 +34,7 @@ ms.locfileid: "58114714"
 
 | 安全属性 | Yes/No | 说明|
 |---|---|--|
-| Azure 监视支持（Log Analytics、App Insights 等）| 是 | 可用的 azure Monitor 指标现在，可以记录开始预览 |
+| Azure 监视支持 （日志分析、 应用程序见解等）| 是 | 可用的 azure Monitor 指标现在，可以记录开始预览 |
 
 ## <a name="iam-support"></a>IAM 支持
 
@@ -55,4 +55,4 @@ ms.locfileid: "58114714"
 
 | 安全特性 | Yes/No | 说明|
 |---|---|--|
-| 配置管理支持（配置的版本控制等）| 是 | 支持通过 Azure 资源管理器 Api 的资源提供程序版本控制 |
+| 配置管理支持 （版本控制的配置，等等）。| 是 | 支持通过 Azure 资源管理器 Api 的资源提供程序版本控制 |

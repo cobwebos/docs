@@ -5,18 +5,18 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: how-to
-ms.date: 03/21/2019
+ms.date: 04/04/2019
 ms.author: helohr
-ms.openlocfilehash: af4147de06f9fb7c856dfd93dc186f1a6e83ffff
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: a7e2f3c95819c6ab6d2e63e5c7a2f62649ebd15c
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58628988"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056089"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
 
-Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案 FSLogix 配置文件的容器。 我们不建议使用用户配置文件磁盘 (UPD) 解决方案，并将 Windows 虚拟桌面的未来版本中弃用。
+Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案 FSLogix 配置文件的容器。 我们不建议使用用户配置文件磁盘 (UPD) 解决方案，将弃用在将来版本的 Windows 虚拟桌面。
 
 本部分将介绍如何设置主机池 FSLogix 配置文件容器共享。 有关 FSLogix 的常规文档，请参阅[FSLogix 站点](https://docs.fslogix.com/)。
 
@@ -40,12 +40,12 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 
 以下是有关如何准备虚拟机的一般说明，使其作为用户配置文件的文件共享：
 
-1. 加入到的会话主机虚拟机[Active Directory 安全组](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups)。 此安全组将用于进行身份验证到刚创建文件共享虚拟机的会话主机虚拟机。
+1. Windows 虚拟桌面 Active Directory 将用户添加到[Active Directory 安全组](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-security-groups)。 将使用此安全组，只需创建的文件共享虚拟机到 Windows 虚拟桌面用户进行身份验证。
 2. [连接到文件共享虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)。
 3. 在文件共享虚拟机上创建一个文件夹**C 驱动器**要使用的配置文件共享。
 4. 右键单击新文件夹，选择**属性**，选择**共享**，然后选择**高级共享...**.
 5. 选择**共享此文件夹**，选择**权限...**，然后选择**添加...**.
-6. 搜索安全组添加会话主机虚拟机，则请确保该组具有**完全控制**。
+6. 搜索安全组添加 Windows 虚拟桌面用户，则请确保该组具有**完全控制**。
 7. 添加后的安全组，右键单击该文件夹中，选择**属性**，选择**共享**，然后向下复制**网络路径**以供稍后使用。
 
 有关权限的详细信息，请参阅[FSLogix 文档](https://docs.fslogix.com/display/20170529/Requirements%2B-%2BProfile%2BContainers)。
@@ -56,17 +56,13 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 
 1. [连接到虚拟机](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal#connect-to-virtual-machine)时创建虚拟机时提供的凭据。
 2. 启动 internet 浏览器并导航到[此链接](https://go.microsoft.com/fwlink/?linkid=2084562)下载 FSLogix 代理。 作为 Windows 虚拟桌面公共预览版的一部分，你将获得许可证密钥以激活 FSLogix 软件。 该密钥是 FSLogix 代理.zip 文件中包含的 LicenseKey.txt 文件。
-3. 安装 FSLogix 代理。
+3. 导航到任一\\ \\Win32\\版本或\\ \\X64\\发布该.zip 文件并运行**FSLogixAppsSetup**安装 FSLogix 代理。
 4. 导航到**Program Files** > **FSLogix** > **应用**以确认安装了代理。
-5. 从开始菜单中，运行**RegEdit**以管理员身份。 导航到**计算机\\HKEY_LOCAL_MACHINE\\软件\\FSLogix\\配置文件**
-6. 创建以下值：
+5. 从开始菜单中，运行**RegEdit**以管理员身份。 导航到**计算机\\HKEY_LOCAL_MACHINE\\软件\\FSLogix**。
+6. 创建名为**配置文件**。
+7. 创建配置文件项的以下值：
 
 | 名称                | Type               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| 已启用             | DWORD              | 第                                 |
-| VHDLocations        | 多字符串值 | "网络文件共享路径" |
-| VolumeType          | String             | VHDX                              |
-| SizeInMBs           | DWORD              | "配置文件的大小的整数"     |
-| IsDynamic           | DWORD              | 第                                 |
-| LockedRetryCount    | DWORD              | 第                                 |
-| LockedRetryInterval | DWORD              | 0                                 |
+| 已启用             | DWORD              | 1                                 |
+| VHDLocations        | 多字符串值 | "网络文件共享路径"     |

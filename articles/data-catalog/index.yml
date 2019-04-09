@@ -1,0 +1,36 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure 数据目录文档
+metadata:
+  title: Azure 数据目录文档 - 教程和 API 参考
+  meta.description: 'Learn how to set up a data catalog where your organization can find, understand, and consume data sources. Tutorials, API reference, and other documentation.'
+  services: data-catalog
+  author: markingmyname
+  ms.author: maghan
+  ms.service: data-catalog
+  ms.topic: landing-page
+  ms.date: 04/05/2019
+abstract:
+  description: 了解如何使用可帮助组织与团队发现、了解和使用数据源的数据目录。 教程、REST API 参考和其他文档介绍了如何规划和设置数据存储库，数据使用者可在其中发现可用数据源，学习主题专家分享的知识。
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何部署第一个 Azure 数据目录：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/data-catalog.svg
+            text: Azure 门户
+            href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/datacatalog/">REST API 参考</a></p><p><a href="/rest/api/datacatalog/data-catalog-search-syntax-reference">搜索语法参考</a></p>
+          - title: 资源管理器
+            html: <p><a href="/azure/templates/microsoft.datacatalog/catalogs">资源管理器模板</a></p>

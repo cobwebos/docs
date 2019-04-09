@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4a47f393853d1e1dfb2b6c367fe62d1822e98806
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249445"
 documentType: LandingData
 title: Azure AD 标识治理文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory 标识治理文档 | Microsoft Docs
   description: 了解跨员工和合作伙伴的标识生命周期治理、访问权限生命周期治理和安全管理。
   services: active-directory
@@ -24,31 +18,31 @@ abstract:
   description: Azure Active Directory (Azure AD) 标识治理使组织可以跨员工和合作伙伴治理标识生命周期、治理访问权限生命周期以及保护管理。
   aside:
     image:
-      alt: 
+      alt: null
       height: 112
       src: media/index/video-thumb-identity-governance.png
       width: 200
     title: '治理对资源的访问 (1: 17:24)'
-    href: https://www.youtube.com/embed/aY7A0Br8u5M
+    href: 'https://www.youtube.com/embed/aY7A0Br8u5M'
     width: 200
 sections:
-- title: 标识治理
-  items:
-  - type: list
-    style: unordered
+  - title: 标识治理
     items:
-    - html: <a href="/azure/active-directory/governance/identity-governance-overview">什么是标识治理？</a>
-- title: 访问评审
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/governance/identity-governance-overview">什么是标识治理？</a>
+  - title: 访问评审
     items:
-    - html: <a href="/azure/active-directory/governance/access-reviews-overview">什么是访问评审？</a>
-    - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">使用访问评审管理用户访问权限</a>
-    - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">使用访问评审管理来宾访问权限</a>
-- title: 使用条款
-  items:
-  - type: list
-    style: unordered
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/governance/access-reviews-overview">什么是访问评审？</a>
+          - html: <a href="/azure/active-directory/governance/manage-user-access-with-access-reviews">使用访问评审管理用户访问权限</a>
+          - html: <a href="/azure/active-directory/governance/manage-guest-access-with-access-reviews">使用访问评审管理来宾访问权限</a>
+  - title: 使用条款
     items:
-    - html: <a href="/azure/active-directory/governance/active-directory-tou">“使用条款”可以用来做什么？</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/conditional-access/terms-of-use">使用条款可以用来做什么？</a>

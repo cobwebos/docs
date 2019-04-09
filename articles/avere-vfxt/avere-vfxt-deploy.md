@@ -4,14 +4,14 @@ description: 在 Azure 中部署 Avere vFXT 群集的步骤
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 04/05/2019
 ms.author: v-erkell
-ms.openlocfilehash: 7dbfc39075bb42b1ec13823849eb769e117ddd4a
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.openlocfilehash: 7ded66c29f12b8f68746726ca6c126bffbc51f0d
+ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409680"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59056599"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>部署 vFXT 群集
 
@@ -31,18 +31,17 @@ ms.locfileid: "57409680"
 1. [新订阅](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [订阅所有者权限](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [vFXT 群集的配额](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [自定义访问角色](avere-vfxt-prereqs.md#create-access-roles) - 必须创建基于角色的访问控制角色，以便将其分配到群集节点。 可以选择也为群集控制器创建自定义访问角色，但大多数用户会采用默认的所有者角色，这样可以获得与资源组所有者相对应的控制器特权。 如需更多详细信息，请阅读 [Azure 资源的内置角色](../role-based-access-control/built-in-roles.md#owner)。
 1. [存储服务终结点 （如果需要）](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) -必需的部署使用现有的虚拟网络和创建 blob 存储
 
 有关群集部署的步骤和计划的详细信息，请阅读[计划 Avere vFXT 系统](avere-vfxt-deploy-plan.md)和[部署概述](avere-vfxt-deploy-overview.md)。
 
 ## <a name="create-the-avere-vfxt-for-azure"></a>创建 Avere vFXT for Azure
 
-在 Azure 门户中访问创建模板，方法是：先搜索 Avere，然后选择“Avere vFXT ARM 部署”。 
+通过 Avere 搜索并选择"Azure ARM 模板 Avere vFXT"访问 Azure 门户中的创建模板。 
 
-![显示 Azure 门户的浏览器窗口（带有面包屑导航“新建>市场>所有内容”）。 在“所有内容”页面上，搜索字段中有术语“avere”，并且第二个结果“Avere vFXT ARM 部署”以红色突出显示。](media/avere-vfxt-template-choose.png)
+![显示 Azure 门户的浏览器窗口（带有面包屑导航“新建>市场>所有内容”）。 在所有功能页上，搜索字段中术语"avere"和第二个结果，"Avere vFXT Azure ARM 模板"的边框为红色以突出显示它。](media/avere-vfxt-template-choose.png)
 
-参阅“Avere vFXT ARM 部署”页面上的详细信息后，请单击“创建”开始操作。 
+阅读有关 Azure ARM 模板页 Avere vFXT 的详细信息之后, 单击**创建**开始。 
 
 ![Azure 市场，显示部署模板的第一页](media/avere-vfxt-deploy-first.png)
 
@@ -69,14 +68,6 @@ ms.locfileid: "57409680"
 
 * **密码**或 **SSH 公钥** - 必须在后续字段中提供 RSA 公钥或密码，具体取决于所选身份验证类型。 此凭据与以前提供的用户名配合使用。
 
-* **Avere 群集创建角色 ID** - 使用此字段指定群集控制器的访问控制角色。 默认值为内置角色：[所有者](../role-based-access-control/built-in-roles.md#owner)。 群集控制器的所有者特权仅限群集的资源组。 
-
-  必须使用与角色相对应的全局唯一标识符。 与默认值（所有者）相对应的 GUID 为 8e3af657-a8ff-443c-a75c-2fe8c4bcb635。 若要查找自定义角色的 GUID，请使用以下命令： 
-
-  ```azurecli
-  az role definition list --query '[*].{roleName:roleName, name:name}' -o table --name 'YOUR ROLE NAME'
-  ```
-
 * **订阅** - 选择 Avere vFXT 的订阅。 
 
 * **资源组** - 选择 Avere vFXT 群集的资源组，或者单击“新建”，然后输入新的资源组名称。 
@@ -97,10 +88,6 @@ ms.locfileid: "57409680"
 * **Avere vFXT 群集节点计数** - 选择要在群集中使用的节点的数目。 至少 3 个节点，至多 12 个节点。 
 
 * **群集管理密码** - 创建用于群集管理的密码。 若要登录到群集控制面板来监视群集并配置设置，需将此密码与用户名 ```admin``` 配合使用。
-
-* **Avere 群集操作角色** - 指定群集节点的访问控制角色的名称。 这是在先决条件步骤中创建的自定义角色。 
-
-  [创建群集节点访问角色](avere-vfxt-prereqs.md#create-the-cluster-node-access-role)中所述的示例将文件另存为 ```avere-operator.json```，相应的角色名称为 ```avere-operator```。
 
 * **Avere vFXT 群集名称** - 为群集提供唯一名称。 
 
@@ -138,7 +125,7 @@ ms.locfileid: "57409680"
 
 ![部署模板的第三页 - 验证](media/avere-vfxt-deploy-3.png)
 
-在第四页上单击“创建”按钮，接受条款并创建 Avere vFXT for Azure 群集。 
+在第 4 页上，输入任何所需的联系信息，然后单击**创建**按钮以接受条款并创建 Azure 群集 Avere vFXT。 
 
 ![部署模板的第四页 - 条款和条件、“创建”按钮](media/avere-vfxt-deploy-4.png)
 

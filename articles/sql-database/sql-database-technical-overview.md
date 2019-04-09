@@ -12,13 +12,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 03/29/2019
-ms.openlocfilehash: e71039c84c79c27a372a378144b21f6f724d08d8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.date: 04/08/2019
+ms.openlocfilehash: bd696a003b54face4f95ae426c11840bb8805bee
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670829"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273135"
 ---
 # <a name="what-is-azure-sql-database-service"></a>什么是 Azure SQL 数据库服务？
 
@@ -156,7 +156,7 @@ SQL 数据库提供针对需要监视的查询的详细见解。 SQL 数据库�
 SQL 数据库提供一系列[内置安全性和符合性功能](sql-database-security-overview.md)，帮助应用程序满足各种安全性和符合性要求。
 
 > [!IMPORTANT]
-> Azure SQL 数据库 （所有部署选项），已通过许多法规标准认证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，可以从中找到 [SQL 数据库法规认证](https://www.microsoft.com/trustcenter/compliance/complianceofferings)的最新列表。
+> Azure SQL 数据库 （所有部署选项），已通过许多法规标准认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 ### <a name="advance-threat-protection"></a>高级威胁防护
 
@@ -186,7 +186,7 @@ SQL 数据库可以保护数据。对于动态数据，它使用[传输层安全
 
 ### <a name="compliance-certification"></a>符合性认证
 
-SQL 数据库参与定期审核，并已针对多个符合性标准进行验证。 有关详细信息，请参阅 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/)，可以从中找到 [SQL 数据库法规认证](https://azure.microsoft.com/support/trust-center/services/)的最新列表。
+SQL 数据库参与定期审核，并已针对多个符合性标准进行验证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 ## <a name="easy-to-use-tools"></a>易于使用的工具
 
@@ -215,7 +215,7 @@ SQL 数据库的当前版本是 V12。 V11 版本已停用。
 
 ### <a name="can-i-control-when-patching-downtime-occurs"></a>我可以控制修补故障的时间吗
 
-不是。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关如何为 Azure SQL 数据库上的计划内维护事件做好准备的详细信息，请参阅[规划 Azure SQL 数据库中的 Azure 维护事件](sql-database-planned-maintenance.md)。
+不。 如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则修补通常不会产生明显影响。 有关如何为 Azure SQL 数据库上的计划内维护事件做好准备的详细信息，请参阅[规划 Azure SQL 数据库中的 Azure 维护事件](sql-database-planned-maintenance.md)。
 
 ### <a name="azure-hybrid-benefit-questions"></a>Azure 混合权益问题
 
@@ -257,8 +257,8 @@ SQL 数据库客户将获得与面向 SQL Server 的 Azure 混合权益相关的
 
   - [在 Azure 门户中创建 SQL 数据库](sql-database-single-database-get-started.md)  
   - [使用 Azure CLI 创建 SQL 数据库](sql-database-get-started-cli.md)
-  - [使用 PowerShell 创建 SQL 数据库](sql-database-get-started-powershell.md)
+  - [创建使用 PowerShell 为 SQL 数据库](sql-database-get-started-powershell.md)
 
 - 如需一组 Azure CLI 和 PowerShell 的示例，请参阅：
-  - [适用于 SQL 数据库的 Azure CLI 示例](sql-database-cli-samples.md)
-  - [适用于 SQL 数据库的 Azure PowerShell 示例](sql-database-powershell-samples.md)
+  - [SQL 数据库的 azure CLI 示例](sql-database-cli-samples.md)
+  - [SQL 数据库的 azure PowerShell 示例](sql-database-powershell-samples.md)

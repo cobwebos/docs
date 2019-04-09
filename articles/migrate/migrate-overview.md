@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 03/11/2019
+ms.date: 04/03/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 7f0b3a0f63b87928938e5c0e9d39cc49c0fc791d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
+ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999970"
+ms.lasthandoff: 04/03/2019
+ms.locfileid: "58894963"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -37,7 +37,7 @@ Azure Migrate 有助于：
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 -  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。
 
-    **地域** | **存储位置**
+    **地理位置** | **存储位置**
     --- | ---
     Azure Government  | 美国政府弗吉尼亚州
     亚洲 | 东南亚或东亚
@@ -69,7 +69,7 @@ Azure Migrate 有助于：
 **货币** | 计费货币。 默认为美元。
 **折扣 (%)** | 基于 Azure 套餐获得的任何特定订阅的折扣。 默认设置是 0%。
 **VM 运行时间** | 如果 VM 不会在 Azure 中全天候运行，则可指定运行持续时间（每月的天数和每天的小时数），然后系统就会进行相应的成本估算。 默认值为“每月 31 天和每天 24 小时”。
-**Azure 产品/服务** | 加入的 [Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
+**Azure 套餐** | 加入的 [Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
 **Azure 混合权益** | 是否有软件保证，以及是否有资格享受带成本折扣的 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate 工作原理
@@ -103,6 +103,12 @@ Azure Migrate 有助于：
 
 - **Azure Site Recovery**：可以使用 Azure Site Recovery 迁移到 Azure。 为此，请根据需要[准备 Azure 组件](../site-recovery/tutorial-prepare-azure.md)，包括存储帐户和虚拟网络。 在本地，请[准备 VMware 环境](../site-recovery/vmware-azure-tutorial-prepare-on-premises.md)。 一切准备好以后，请设置并启用目标为 Azure 的复制，然后迁移 VM。 [了解详细信息](../site-recovery/vmware-azure-tutorial.md)。
 - **Azure 数据库迁移**：如果本地计算机在运行 SQL Server、MySQL 或 Oracle 之类的数据库，则可使用 [Azure 数据库迁移服务](../dms/dms-overview.md)将其迁移到 Azure。
+
+## <a name="want-to-learn-more-from-community-experts"></a>想要从社区专家处了解更多内容？
+请访问 [Azure Migrate MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureMigrate&filter=alltypes&sort=lastpostdesc)或 [Stack Overflow](https://stackoverflow.com/search?q=azure+migrate)
+
+## <a name="need-help-contact-us"></a>需要帮助？ 请联系我们。  
+如有任何疑问或需要帮助，请创建[支持请求](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest)。 如果支持请求要求深入的技术指南，请访问 [Azure 支持计划](https://azure.microsoft.com/support/plans/)     
 
 
 ## <a name="next-steps"></a>后续步骤

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: 2baabe6837d25cce5e9f5d9e1071af8417fe5f4d
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: da653842b09c15a5fd42bae0ed45e7b31452b972
+ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401856"
+ms.lasthandoff: 03/28/2019
+ms.locfileid: "58578741"
 ---
 # <a name="tutorial-manage-app-groups-for-windows-virtual-desktop-preview"></a>教程：管理 Windows 虚拟桌面预览版的应用组
 
@@ -28,13 +28,13 @@ ms.locfileid: "58401856"
 
 ## <a name="create-a-remoteapp-group"></a>创建 RemoteApp 组
 
-1. 运行以下 PowerShell cmdlet 以创建新的空 RemoteApp 组。
+1. 运行以下 PowerShell cmdlet 以创建新的空 RemoteApp 应用组。
 
    ```powershell
    New-RdsAppGroup <tenantname> <hostpoolname> <appgroupname> -ResourceType "RemoteApp"
    ```
 
-2. （可选）若要验证是否已创建应用程序组，可运行以下 cmdlet，以查看主机池的所有应用程序组列表。
+2. （可选）若要验证是否已创建应用组，可运行以下 cmdlet，以查看主机池的所有应用组列表。
 
    ```powershell
    Get-RdsAppGroup <tenantname> <hostpoolname>
@@ -45,17 +45,17 @@ ms.locfileid: "58401856"
    ```powershell
    Get-RdsStartMenuApp <tenantname> <hostpoolname> <appgroupname>
    ```
-
-4. 运行以下 cmdlet，将新的 RemoteApp 发布到在步骤 1 中创建的应用程序组。
+   
+4. 运行以下 cmdlet，基于其 appalias 安装应用程序。 运行步骤 3 的输出时，可以看到 appalias。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -AppAlias <appalias>
    ```
 
-5. （可选）运行以下 cmdlet，基于 appalias 安装应用程序。 运行步骤 3 的输出时，可以看到 appalias。
+5. （可选）运行以下 cmdlet，将新的 RemoteApp 发布到在步骤 1 中创建的应用程序组。
 
    ```powershell
-   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> <remoteappname> -AppAlias <appalias>
+   New-RdsRemoteApp <tenantname> <hostpoolname> <appgroupname> -Name <remoteappname> -Filepath <filepath>  -IconPath <iconpath> -IconIndex <iconindex>
    ```
 
 6. 若要验证应用是否已发布，请运行以下 cmdlet。

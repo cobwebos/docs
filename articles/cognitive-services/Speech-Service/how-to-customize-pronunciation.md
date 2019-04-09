@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 139c5d47fe6ea82148e2d5e1cf2f5fcb72d4020e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: f825cf8f381a7a2974b150a74a091412b24b09bc
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339391"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005169"
 ---
 # <a name="enable-custom-pronunciation"></a>启用自定义发音
 
@@ -63,7 +63,7 @@ Display form <Tab> Spoken form <Newline>
 显示窗体可以是自定义字词、 首字母缩写词或合并现有字词的组合词。
 
 >[!NOTE]
->不建议使用此功能来重新规划常见字词或修改口头形式。 最好是运行解码器，以确定是否有一些不常见词汇（如缩写、技术词汇或外来词）未正确解码。 若有，请将它们添加到自定义发音文件。 在语言模型中，应始终仅使用字词的显示形式。
+>不建议使用此功能来重新规划常见字词或修改口头形式。 是否某些不常见字词 （如缩写词、 技术词汇或外语单词） 不正确 transribed 才使用此功能，它是更好地检查。 若有，请将它们添加到自定义发音文件。 在语言模型中，应始终仅使用字词的显示形式。
 
 ## <a name="requirements-for-the-file-size"></a>文件大小要求
 包含发音条目的 .txt 文件的大小限制为 1 兆字节（对于免费层密钥，则为 1 KB）。 通常情况下，无需通过此文件上传大量数据。 大多数自定义发音文件可能只有几千字节 (KB) 大小。 对于所有区域设置，.txt 文件的编码都应为 UTF-8 BOM。 对于英语区域设置，ANSI 也是可接受的。

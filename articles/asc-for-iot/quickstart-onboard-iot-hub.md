@@ -1,37 +1,37 @@
 ---
-title: 在 IoT 中心预览版中启用适用于 IoT 的 ASC 服务 | Microsoft Docs
-description: 了解如何在 IoT 中心启用适用于 IoT 的 ASC 服务。
-services: ascforiot
+title: 在 IoT 中心预览版中启用适用于 IoT 的 Azure 安全中心服务 | Microsoft Docs
+description: 了解如何在 IoT 中心启用适用于 IoT 的 Azure 安全中心服务。
+services: asc-for-iot
+ms.service: ascforiot
 documentationcenter: na
 author: mlottner
 manager: barbkess
 editor: ''
 ms.assetid: 670e6d2b-e168-4b14-a9bf-51a33c2a9aad
-ms.service: ascforiot
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
-ms.openlocfilehash: 4fd7fb68fd2eb8be0c1c109d76cff341faba9391
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
+ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541700"
+ms.lasthandoff: 04/02/2019
+ms.locfileid: "58862380"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>快速入门：在 IoT 中心启用服务
 
 > [!IMPORTANT]
-> 适用于 IoT 的 ASC 目前以公开预览版提供。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
-本文介绍如何在 IoT 中心启用适用于 IoT 的 ASC 预览版服务。  
+本文介绍如何在 IoT 中心启用适用于 IoT 的 Azure 安全中心 (ASC) 预览版服务。  
 
 > [!NOTE]
-> 适用于 IoT 的 ASC 目前仅支持标准层和更高层的 IoT 中心。
->适用于 IoT 的 ASC 是一种单中心解决方案。 如果需要多个中心，则需要多个解决方案。 
+> 适用于 IoT 的 Azure 安全中心目前仅支持标准层和更高层的 IoT 中心。
+> 适用于 IoT 的 Azure 安全中心是一种单中心解决方案。 如果需要多个中心，则需要多个解决方案。 
 
 ## <a name="prerequisites-for-enabling-the-service"></a>启用服务的先决条件
 
