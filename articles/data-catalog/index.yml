@@ -24,6 +24,14 @@ sections:
               src: media/index/data-catalog.svg
             text: Azure 门户
             href: 'https://docs.microsoft.com/azure/data-catalog/data-catalog-get-started'
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何注册、搜索、批注、管理和删除 Azure 数据目录中的资产：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="register-data-assets-tutorial">在 Azure 数据目录中注册数据资产</a>
   - title: 引用
     items:
       - type: list

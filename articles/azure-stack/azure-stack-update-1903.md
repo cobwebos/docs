@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/09/2019
+ms.date: 04/10/2019
 ms.author: sethm
 ms.reviewer: adepue
-ms.lastreviewed: 04/09/2019
-ms.openlocfilehash: 79f61f99050748c93ca4bd17d1849f4cbba7a295
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.lastreviewed: 04/10/2019
+ms.openlocfilehash: f07f81562c604913e633a8d93fa9c7db28a7bf55
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360553"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471471"
 ---
 # <a name="azure-stack-1903-update"></a>Azure Stack 1903 更新
 
@@ -97,7 +97,8 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 运行 [Test-AzureStack](azure-stack-diagnostic-test.md) 时，会显示基板管理控制器 (BMC) 中的一条警告消息。 可以放心地忽略此警告。
 
-- <!-- 2468613 - IS --> 在安装此更新期间，可能会出现标题如下的警报：“错误 - 缺少 FaultType UserAccounts.New 的模板”。 可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
+<!-- 2468613 - IS -->
+- 此更新的安装期间，可能会看到警报标题**错误-FaultType UserAccounts 的模板。新找不到。** 可以放心地忽略这些警报。 完成此更新的安装后，这些警报会自动关闭。
 
 ## <a name="post-update-steps"></a>更新后步骤
 
@@ -124,10 +125,15 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 - 删除用户订阅生成孤立的资源。 解决方法是先删除用户资源或整个资源组，然后再删除用户订阅。
 
 <!-- 1663805 - IS ASDK --> 
-- 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是[使用 PowerShell 验证权限](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan)。
+- 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是[使用 PowerShell 验证权限](/powershell/module/azurerm.resources/get-azurermroleassignment)。
 
 <!-- Daniel 3/28 -->
-- 在用户门户中，导航到存储帐户中的某个 blob，并尝试打开时**访问策略**导航树中，从后续窗口中将无法加载。
+- 在用户门户中，导航到存储帐户中的某个 blob，并尝试打开时**访问策略**导航树中，从后续窗口中将无法加载。 若要解决此问题，以下 PowerShell cmdlet 启用了创建、 检索、 设置和分别删除访问策略：
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- Daniel 3/28 -->
 - 在用户门户中，当你尝试上传 blob 使用时**OAuth(preview)** 选项，则任务将失败并显示错误消息。 若要解决此问题，请使用上传 blob **SAS**选项。
@@ -157,17 +163,16 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 - 启用 SSH 授权与创建的 Ubuntu 18.04 VM 将不允许要使用 SSH 密钥登录。 若要解决此问题，请在预配后使用针对 Linux 扩展的 VM 访问权限来实现 SSH 密钥，或者使用基于密码的身份验证。
 
-- Azure Stack 现在支持大于 2.2.20 版本的 Windows Azure Linux 代理。 这种支持是 1901年和 1902年修补程序的一部分，并允许客户维护 Azure 和 Azure Stack 之间一致的 linux 映像。
-
+- Azure Stack 现在支持大于 2.2.20 版本的 Windows Azure Linux 代理。 这种支持是 1901年和 1902年修补程序的一部分，并允许客户以维护一致的 Linux 映像，Azure 和 Azure Stack 之间。
 
 - 如果不具有硬件生命周期主机 (HLH): 在之前生成 1902年，您必须将组策略设置**计算机配置 \windows 设置 \ 安全设置 \ 本地策略 \ 安全选项**到**发送 LM 和 NTLM –如果协商使用 NTLMv2 会话安全**。 从版本 1902 开始，必须将此策略保持为“未定义”，或将其设置为“仅发送 NTLMv2 响应”（默认值）。 否则为你将无法建立的 PowerShell 远程会话，你将看到**访问被拒绝**错误：
 
-   ```shell
+   ```powershell
    PS C:\Users\Administrator> $session = New-PSSession -ComputerName x.x.x.x -ConfigurationName PrivilegedEndpoint  -Credential $cred
    New-PSSession : [x.x.x.x] Connecting to remote server x.x.x.x failed with the following error message : Access is denied. For more information, see the 
    about_Remote_Troubleshooting Help topic.
    At line:1 char:12
-   + $session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
+   + $Session = New-PSSession -ComputerName x.x.x.x -ConfigurationNa ...
    +            ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       + CategoryInfo          : OpenError: (System.Manageme....RemoteRunspace:RemoteRunspace) [New-PSSession], PSRemotingTransportException
       + FullyQualifiedErrorId : AccessDenied,PSSessionOpenFailed

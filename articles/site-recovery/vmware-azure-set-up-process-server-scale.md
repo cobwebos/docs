@@ -5,14 +5,14 @@ author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.author: mayg
-ms.openlocfilehash: e3f6a160f57a4432f91c395a2e0dd664bc8f323d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.date: 4/9/2019
+ms.author: ramamill
+ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106536"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59362155"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>为故障回复使用更多进程服务器进行扩展
 
@@ -31,7 +31,7 @@ ms.locfileid: "58106536"
 
 验证该表中汇总的调整大小要求。 通常，如果必须将部署扩大到 200 台以上的源计算机，或者每日总改动率超过 2 TB，则需要额外的进程服务器来处理流量。
 
-| **额外的进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机** |
+| **其他进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机** |
 | --- | --- | --- | --- |
 |4 个 vCPU（2 个插槽 * 2 个核心 \@ 2.5 GHz），8 GB 内存 |300 GB |250 GB 或更少 |复制 85 台或更少的计算机。 |
 |8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），12 GB 内存 |600 GB |250 GB 到 1 TB |复制 85-150 台计算机。 |
@@ -51,7 +51,7 @@ ms.locfileid: "58106536"
 
 下载进程服务器的安装文件，如下所示：
 
-1. 登录 Azure 门户并浏览到恢复服务保管库。
+1. 登录到 Azure 门户中，并浏览到恢复服务保管库。
 2. 打开“Site Recovery 基础结构” > “VMWare 和物理计算机” > “配置服务器”（在“针对 VMware 和物理计算机”下面）。
 3. 选择配置服务器以向下钻取到配置服务器详细信息。 然后单击“+ 进程服务器”。
 4. 在“添加进程服务器” >  “选择要部署进程服务器的位置”中，选择“在本地部署横向扩展进程服务器”。

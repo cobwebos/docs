@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/14/2019
 ms.author: mbullwin
-ms.openlocfilehash: 213f4313e96638e4d94455be5f16aa3221d35b73
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0f348e3e7dc2812bf354d1f8ec86330b0742439a
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905675"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361872"
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights 中的资源、角色和访问控制
 
@@ -48,7 +48,7 @@ ms.locfileid: "58905675"
 
 ## <a name="access"></a> 控制资源组中的访问
 
-请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 它们会附加到与应用程序相同的[资源组](#resource-group)。 还可以在其中放置其他 Azure 服务，例如网站或存储。
+请务必了解，除了为应用程序创建的资源外，也有为警报和 Web 测试单独隐藏的资源。 与其所附加到相同[资源组](#resource-group)为 Application Insights 资源。 还可以在其中放置其他 Azure 服务，例如网站或存储。
 
 若要控制对这些资源的访问，建议：
 

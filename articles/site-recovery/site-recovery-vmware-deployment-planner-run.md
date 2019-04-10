@@ -5,14 +5,14 @@ author: nsoneji
 manager: garavd
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/28/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 55d6f1393f4f180776557ea9a2651064d61c3e06
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55301490"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361991"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>运行用于从 VMware 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -22,7 +22,7 @@ ms.locfileid: "55301490"
 可使用以下四种模式之一运行该命令行工具 (ASRDeploymentPlanner.exe)：
 
 1.  [分析](#profile-vmware-vms)
-2.  [报表生成](#generate-report)
+2.  [报告生成](#generate-report)
 3.  [获取吞吐量](#get-throughput)
 
 首先，请以分析模式运行该工具，收集 VM 数据变动量和 IOPS。 接下来，运行该工具以生成报表，确定网络带宽、存储要求和 DR 成本。
@@ -65,7 +65,7 @@ ms.locfileid: "55301490"
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| 参数名称 | 说明 |
+| 参数名称 | 描述 |
 |---|---|
 | -Operation | StartProfiling |
 | -Server | 要分析其 VM 的 vCenter 服务器/vSphere ESXi 主机的完全限定域名或 IP 地址。|
@@ -81,7 +81,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 |-Protocol| （可选）用于连接到 vCenter 的指定协议，即“http”或“https”。 默认协议为 https。|
 | -StorageAccountName | （可选）存储帐户名称，用于确定在将数据从本地复制到 Azure 时可实现的吞吐量。 该工具会将测试数据上传到此存储帐户来计算吞吐量。 存储帐户必须是常规用途 v1 (GPv1) 类型。 |
 | -StorageAccountKey | （可选）用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <*存储帐户名称*> >“设置”>“访问密钥”> 密钥 1。 |
-| -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
+| -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 Azure 美国政府或 Azure 中国的 21Vianet 在目标 Azure 区域时使用的参数。 |
 
 
 建议在分析 VM 时，分析 7 天以上。 如果变动量模式在某个月发生变化，建议在看到最大变动量的一周内进行分析。 最好的方式是分析 31 天，以便获取更好的建议。 在分析过程中，ASRDeploymentPlanner.exe 将保持运行。 该工具将取以天为单位的分析时间输入。 若要快速测试此工具或获取概念证明，可以分析数小时或数分钟。 允许的最短分析时间为 30 分钟。
@@ -95,7 +95,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling /?
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-使用默认设置时，若要分析特定数量的 VM（例如 1500 个 VM），请创建两个 VMList.txt 文件。 一个包含 1000 个 VM，另一个是 500 个 VM 的列表。 运行 ASR 部署规划器的这两个实例，一个使用 VMList1.txt，另一个使用 VMList2.txt。 可以使用同一目录路径来存储两个 VMList VM 的已分析数据。
+使用默认设置时，若要分析特定数量的 VM（例如 1500 个 VM），请创建两个 VMList.txt 文件。 一个包含 1000 个 VM，另一个是 500 个 VM 的列表。 运行 Azure Site Recovery Deployment Planner，另一个使用 VMList1.txt，另一种具有 VMList2.txt 的两个实例。 可以使用同一目录路径来存储两个 VMList VM 的已分析数据。
 
 我们已经看到，根据硬件配置（尤其是在其中运行报表生成工具的服务器的 RAM 大小），在内存不足的情况下，操作可能会失败。 如果硬件良好，可将 MaxVMsSupported 更改为更高的值。  
 
@@ -145,7 +145,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 `ASRDeploymentPlanner.exe -Operation GenerateReport /?`
 
-|参数名称 | 说明 |
+|参数名称 | 描述 |
 |-|-|
 | -Operation | GenerateReport |
 | -Server |  vCenter/vSphere 服务器完全限定域名或 IP 地址（使用的名称或 IP 地址与分析时使用的相同），其中包含需要生成其报告的已分析 VM。 请注意，如果在分析时使用了 vCenter 服务器，则不能使用 vSphere 服务器来生成报告，反之亦然。|
@@ -214,7 +214,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="percentile-value-used-for-the-calculation"></a>用于计算的百分位值
-**在生成报告时，该工具将使用分析期间收集的性能指标的哪个默认百分位值？**
+**在分析期间收集的性能指标的哪个默认百分位值？ 该工具使用时生成的报告**
 
 该工具默认使用分析所有 VM 期间收集的读/写 IOPS、写入 IOPS 和数据变动量的第 95 百分位值。 此指标可确保系统不使用第 100 百分位峰值（在发生临时事件时，可能会出现在 VM 中）来确定目标存储帐户和源带宽需求。 例如，临时事件可能是一天运行一次的备份作业、定期发生的数据库索引编制或分析报告生成活动，或者其他类似的短期时间点事件。
 
@@ -226,9 +226,9 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="growth-factor-considerations"></a>增长系数考虑因素
-**为何在对部署进行计划时应考虑增长系数？**
+**我为何应考虑增长系数时部署进行计划？**
 
-假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护，再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
+假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
 
 例如，假设你目前的 VM 适合标准存储复制帐户。 在随后的三个月中，可能会发生多项变化：
 
@@ -242,10 +242,10 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 * [本地摘要](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM<->存储位置](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [VM <>-存储位置](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [兼容的 VM](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [不兼容的 VM](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [成本估算](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [成本的估算](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 
@@ -257,7 +257,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 `ASRDeploymentPlanner.exe -Operation GetThroughput /?`
 
-|参数名称 | 说明 |
+|参数名称 | 描述 |
 |-|-|
 | -Operation | GetThroughput |
 |-Virtualization|指定虚拟化类型（VMware 或 Hyper-V）。|
@@ -265,7 +265,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 | -StorageAccountName | 存储帐户名称，用于确定在将数据从本地复制到 Azure 时消耗的带宽。 该工具会将测试数据上传到此存储帐户来确定消耗的带宽。 存储帐户必须是常规用途 v1 (GPv1) 类型。|
 | -StorageAccountKey | 用于访问存储帐户的存储帐户密钥。 转到 Azure 门户 >“存储帐户”> <存储帐户名称> >“设置”>“访问密钥”> 密钥 1（或经典存储帐户的主访问密钥）。 |
 | -VMListFile | 一个文件，其中包含一系列可以通过分析来计算所消耗带宽的 VM。 文件路径可以是绝对或相对路径。 此文件应该每行包含一个 VM 名称/IP 地址。 此文件中指定的 VM 名称应与 vCenter 服务器/vSphere ESXi 主机上的 VM 名称相同。<br>例如，VMList.txt 文件包含以下 VM：<ul><li>VM_A</li><li>10.150.29.110</li><li>VM_B</li></ul>|
-| -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 当目标 Azure 区域为 Azure 美国政府版或 Azure 中国云时，请使用此参数。 |
+| -Environment | （可选）这是目标 Azure 存储帐户环境。 此项可能采用下述三个值之一：AzureCloud、AzureUSGovernment、AzureChinaCloud。 默认值为 AzureCloud。 Azure 美国政府或 Azure 中国的 21Vianet 在目标 Azure 区域时使用的参数。 |
 
 该工具将在指定的目录中创建多个 64 MB 的 asrvhdfile<#>.vhd 文件（其中“#”是文件编号）。 该工具会将这些文件上传到存储帐户来确定吞吐量。 测出吞吐量后，该工具会从存储帐户和本地服务器中删除所有这些文件。 如果该工具在计算吞吐量时因故被终止，它不会从存储或本地服务器中删除这些文件。 需要手动删除这些文件。
 

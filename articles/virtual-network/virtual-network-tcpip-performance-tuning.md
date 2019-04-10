@@ -28,12 +28,12 @@ ms.author:
 - minale
 - btalb
 - prachank
-ms.openlocfilehash: 60424edc8e617aca55777d019e6a0f9409f7ca28
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276518"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426437"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP 的性能优化 Azure Vm
 
@@ -85,7 +85,7 @@ ms.locfileid: "59276518"
 
 #### <a name="azure-and-fragmentation"></a>Azure 和碎片
 
-虚拟网络堆栈设置以删除"无序碎片，"不以其原始的碎片化顺序到达，它是零碎的数据包。 主要是因为它在名为 FragmentStack 2018 年 11 月宣布的网络安全漏洞会丢弃这些数据包。
+虚拟网络堆栈设置以删除"无序碎片，"不以其原始的碎片化顺序到达，它是零碎的数据包。 主要是因为它在名为 FragmentSmack 2018 年 11 月宣布的网络安全漏洞会丢弃这些数据包。
 
 FragmentSmack 是 Linux 内核处理重组零碎的 IPv4 和 IPv6 数据包的方式中的一个缺陷。 远程攻击者可以使用此触发器昂贵片段重组操作，这将导致增加的 CPU 和拒绝服务在目标系统上的缺陷。
 

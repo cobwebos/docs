@@ -36,6 +36,8 @@ items:
   items:
   - name: 连接设备
     items:
+    - name: 生成设备连接字符串
+      href: howto-generate-connection-string.md
     - name: 准备和连接 Node.js（一般）应用程序
       href: howto-connect-nodejs.md
     - name: 准备和连接 MXChip IoT DevKit
@@ -144,9 +146,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: 支持的浏览器
     href: iot-central-supported-browsers.md
-ms.openlocfilehash: 09145448edd42e03b77abde46a120ade1631d6bf
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 277b1ca0a239bddc02ca32d93ca1ffebbf542240
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520728"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425893"

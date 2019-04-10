@@ -14,19 +14,19 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: fc8b300cea714ee44f826a78ce8c7a10c1443414
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282111"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357441"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
 [托管实例](sql-database-managed-instance.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
-- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
 
@@ -242,7 +242,7 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 ## <a name="next-steps"></a>后续步骤
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
-- 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
+- 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 <!--Image references-->
 

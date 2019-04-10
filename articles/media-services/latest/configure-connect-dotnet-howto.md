@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
-ms.openlocfilehash: cb6826be8f6a9a8caf54a23b0dbc5f3dda7830d6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273968"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361236"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API-.NET
 
@@ -35,7 +35,7 @@ ms.locfileid: "59273968"
 1. 从**文件**菜单上，单击**新建** > **项目**。 
 1. 创建 **.NET Core**控制台应用程序。
 
-本主题中的示例应用程序面向`netcoreapp2.0`。 中使用异步 'main'，这是从开始提供的代码C#7.1。 请参阅此[博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)的更多详细信息。
+本主题中的示例应用程序面向`netcoreapp2.0`。 代码使用 async main，可从C#7.1。 请参阅此[博客](https://blogs.msdn.microsoft.com/benwilli/2017/12/08/async-main-is-available-but-hidden/)的更多详细信息。
 
 ## <a name="add-required-nuget-packages"></a>添加所需的 NuGet 包
 
@@ -223,7 +223,7 @@ namespace ConsoleApp1
 }
 ```
 
-## <a name="see-also"></a>另请参阅
+## <a name="next-steps"></a>后续步骤
 
 - [教程：上传、 编码和流式传输视频-.NET](stream-files-tutorial-with-api.md) 
 - [教程：使用媒体服务 v3-.NET live Stream](stream-live-tutorial-with-api.md)
@@ -237,6 +237,6 @@ namespace ConsoleApp1
 - [使用媒体服务-.NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
 - [高级视频按需示例的 Azure Functions v2 使用媒体服务 v3](https://aka.ms/ams3functions)
 
-## <a name="next-steps"></a>后续步骤
+## <a name="see-also"></a>另请参阅
 
 [.NET 参考](https://docs.microsoft.com/dotnet/api/overview/azure/mediaservices/management?view=azure-dotnet)

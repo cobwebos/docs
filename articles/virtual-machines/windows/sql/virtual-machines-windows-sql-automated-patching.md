@@ -16,19 +16,19 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 210043eaaf09fb601fe01c33cc1a53c9146bf859
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: 348979a53bff76c85e6d1531bd16cd695145e21b
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848255"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425979"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)
 > [!div class="op_single_selector"]
-> * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
+> * [资源管理器](virtual-machines-windows-sql-automated-patching.md)
 > * [经典](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
-自动修补为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
+自动修补将为运行 SQL Server 的 Azure 虚拟机建立一个维护时段。 只能在此维护时段内安装自动更新。 对于 SQL Server，此限制可以确保在数据库的最佳可能时间发生系统更新和任何关联的重新启动。 
 
 > [!IMPORTANT]
 > 仅安装标记为“重要”的 Windows 更新。 必须手动安装其他 SQL Server 更新，如累积更新。 
@@ -68,7 +68,7 @@ ms.locfileid: "58848255"
 | --- | --- | --- |
 | **自动修补** |启用/禁用（已禁用） |为 Azure 虚拟机启用或禁用自动修补。 |
 | **维护计划** |每天、星期一、星期二、星期三、星期四、星期五、星期六、星期日 |为虚拟机下载和安装 Windows、SQL Server 和 Microsoft 更新的计划。 |
-| **维护开始时间** |0-24 |更新虚拟机的本地开始时间。 |
+| **维护开始小时** |0-24 |更新虚拟机的本地开始时间。 |
 | **维护时段持续时间** |30-180 |允许完成更新下载和安装的分钟数。 |
 | **修补程序类别** |重要说明 | 要下载并安装的 Windows 更新类别。|
 
@@ -97,11 +97,6 @@ ms.locfileid: "58848255"
 
 首次启用自动修补时，Azure 会在后台配置 SQL Server IaaS 代理。 在此期间，Azure 门户可能不会显示已配置自动修补。 请等待几分钟，以便安装和配置代理。 随后，Azure 门户将反映新设置。
 
-> [!NOTE]
-> 也可以使用模板来配置自动修补。 有关详细信息，请参阅 [Azure quickstart template for Automated Patching](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-sql-existing-autopatching-update)（用于自动修补的 Azure 快速入门模板）。
-> 
-> 
-
 ## <a name="configuration-with-powershell"></a>使用 PowerShell 进行配置
 预配 SQL VM 后，使用 PowerShell 配置自动修补。
 
@@ -120,7 +115,7 @@ ms.locfileid: "58848255"
 
 | 参数 | 效果 |
 | --- | --- |
-| **DayOfWeek** |每个星期四安装修补程序。 |
+| **星期几** |每个星期四安装修补程序。 |
 | **MaintenanceWindowStartingHour** |在上午 11:00 开始更新。 |
 | **MaintenanceWindowsDuration** |必须在 120 分钟内安装修补程序。 根据开始时间，修补必须在下午 1:00 之前完成。 |
 | **PatchCategory** |此参数的唯一可能设置为 **Important**。 这会安装标记为“重要”的 Windows 更新；不安装未包含在此类别中的任何 SQL Server 更新。 |

@@ -3,17 +3,17 @@ title: Azure IoT Central 中的设备连接 | Microsoft Docs
 description: 本文介绍与 Azure IoT Central 中的设备连接相关的重要概念
 author: dominicbetts
 ms.author: dobett
-ms.date: 02/28/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: e45960363290879af2e72211f5ef31b825461947
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 9e1e85d1ab1c5e7ce0cbd96c64137309c2e2916a
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522088"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425961"
 ---
 # <a name="device-connectivity-in-azure-iot-central"></a>Azure IoT Central 中的设备连接
 
@@ -30,7 +30,7 @@ ms.locfileid: "58522088"
 - 您可以使用您自己的设备 Id 在 IoT 中心注册设备。 使用您自己的设备 Id 可以简化与现有后端办公系统集成。
 - 用于将设备连接到 IoT 中心的单个、 一致方法。
 
-本操作指南文章介绍了以下四个用例：
+本文介绍了以下四个用例：
 
 1. [快速连接单个设备使用 SAS](#connect-a-single-device)
 1. [连接设备进行大规模使用 SAS](#connect-devices-at-scale-using-sas)
@@ -39,24 +39,7 @@ ms.locfileid: "58522088"
 
 ## <a name="connect-a-single-device"></a>连接单个设备
 
-通过 IoT Central 试用或测试设备时，此方法非常有用。
-
-若要连接到 IoT 中心使用 SAS 的单个设备，请按照下列步骤：
-
-1. 若要添加真实的设备，请导航到**Device Explorer**，选择一个设备模板，然后选择 **+ 新建 > 实际**:
-    - 输入你自己 （小写）**设备 ID**或使用建议的 id。
-    - 输入**设备名称**或使用建议的名称。
-
-      ![添加设备](media/concepts-connectivity/add-device.png)
-
-1. 若要获取设备连接信息，请选择**Connect**设备页上。 所需**作用域 ID**，**设备 ID**，并**Primary Key**值：
-    - 每个 IoT Central 应用程序的唯一[作用域 ID](../iot-dps/concepts-device.md#id-scope) DPS 生成。
-    - [设备 ID](../iot-dps/concepts-device.md#device-id)是唯一的设备 id。 设备 ID 存储在[标识注册表](../iot-hub/iot-hub-devguide-identity-registry.md)。
-    - **主键**是 SAS 令牌，用于设备生成的 IoT 中心。
-
-      ![连接详细信息](media/concepts-connectivity/device-connect.png)
-
-在设备代码中使用的连接信息，若要启用你的设备以连接并将数据发送到 IoT，IoT Central 应用程序。 有关将设备连接的详细信息，请参阅[后续步骤](#next-steps)。
+通过 IoT Central 试用或测试设备时，此方法非常有用。 可以从 IoT 中心应用程序使用的设备连接信息以生成设备的连接字符串。 有关详细步骤，请参阅[如何生成一个设备连接字符串以连接到 Azure IoT Central 应用程序](howto-generate-connection-string.md)。
 
 ## <a name="connect-devices-at-scale-using-sas"></a>连接设备进行大规模使用 SAS
 
@@ -104,7 +87,7 @@ ms.locfileid: "58522088"
 
 - [RaspberryPi](https://aka.ms/iotcentral-docs-Raspi-releases) 的示例实现。
 
-- [C 编写的示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
+- [在 C 中的示例设备客户端](https://github.com/Azure/azure-iot-sdk-c/blob/dps_symm_key/provisioning_client/devdoc/using_provisioning_client.md)
 
 ### <a name="for-testing-purposes-only"></a>仅出于测试目的
 
@@ -132,7 +115,7 @@ IoT 中心启用的关键方案是 oem 可以批量制造设备可以连接到 I
 
     - **X.509 证书：**[添加和验证根/中间证书](#connect-devices-using-x509-certificates)并使用它在以下步骤中生成设备证书。
     - **SAS：** 复制主密钥。 此密钥是 IoT 中心应用程序组 SAS 密钥。 使用密钥生成下一个步骤中的设备的 SAS 密钥。
-    ![连接设置 SAS](media/concepts-connectivity/connection-settings-sas.png)
+    ![SAS 的连接设置](media/concepts-connectivity/connection-settings-sas.png)
 
 1. 生成你的设备凭据
     - **X.509 证书中：** 生成你使用的根或中间证书添加到 IoT 中心应用程序的设备叶证书。 请确保使用小写**设备 ID**为叶证书中的 CNAME。 对于测试目的，使用这[命令行工具](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md )生成设备证书。
@@ -169,26 +152,6 @@ IoT 中心启用的关键方案是 oem 可以批量制造设备可以连接到 I
 
 1. 操作员可以阻止设备。 设备被阻止时，它不能将数据发送到 IoT 中心应用程序。 已阻止设备的预配状态已**已阻止**。 它可以继续发送数据之前，操作员必须重置设备。 当运算符将取消阻止的设备预配状态为以前的值，返回**Registered**或**已设置**。
 
-## <a name="get-a-connection-string"></a>获取连接字符串
-
-以下步骤介绍如何为设备获取连接字符串：
-
-1. 选择**Connect**上**Device Explorer**页后，可以获取连接详细信息：**作用域 ID**，**设备 ID**，和**设备主键**:
-
-    ![连接详细信息](media/concepts-connectivity/device-connect.png)
-
-1. 使用`dps-keygen`命令行实用工具，以生成连接字符串：若要安装[密钥生成器实用程序](https://github.com/Azure/dps-keygen)，运行以下命令：
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-    若要生成连接字符串，请运行以下命令：
-
-    ```cmd/sh
-    dps-keygen -di:<device_id> -dk:<device_key> -si:<scope_id>
-    ```
-
 ## <a name="sdk-support"></a>SDK 支持
 
 Azure 设备 Sdk 的产品/服务最简单的方法为您实现您的设备代码。 以下设备 SDK 已发布：
@@ -206,19 +169,19 @@ Azure 设备 Sdk 的产品/服务最简单的方法为您实现您的设备代�
 与 IoT 中心进行的所有设备通信都使用以下 IoT 中心连接选项：
 
 - [设备到云的消息传递](../iot-hub/iot-hub-devguide-messages-d2c.md)
-- [设备孪生](../iot-hub/iot-hub-devguide-device-twins.md)
+- [设备克隆](../iot-hub/iot-hub-devguide-device-twins.md)
 
 下表对 Azure IoT Central 设备功能映射到 IoT 中心功能的具体情况进行了汇总：
 
 | Azure IoT Central | Azure IoT 中心 |
 | ----------- | ------- |
-| 度量：遥测 | 设备到云的消息传送 |
+| 度量：遥测 | 设备到云的消息传递 |
 | 设备属性 | 设备孪生报告属性 |
 | 设置 | 设备孪生所需的和报告的属性 |
 
 若要详细了解如何使用设备 SDK，请查看下面的某篇文章以获取示例代码：
 
-- [将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
+- [泛型的 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
 - [将 Raspberry Pi 设备连接到 Azure IoT Central 应用程序](howto-connect-raspberry-pi-python.md)
 - [将 DevDiv 工具包设备连接到 Azure IoT Central 应用程序](howto-connect-devkit.md)。
 
@@ -234,7 +197,7 @@ Azure 设备 Sdk 的产品/服务最简单的方法为您实现您的设备代�
 
 如果设备无法使用这些受支持协议中的任何一种，可以使用 Azure IoT Edge 进行协议转换。 IoT Edge 支持其他边缘智能方案，可以将处理从 Azure IoT Central 应用程序卸载到边缘。
 
-## <a name="security"></a>安全性
+## <a name="security"></a>安全
 
 在设备与 Azure IoT Central 之间交换的所有数据都经过加密。 如果设备已连接到任何面向设备的 IoT 中心终结点，则 IoT 中心会对从该设备发出的所有请求进行身份验证。 为了避免通过网络交换凭据，设备使用签名的令牌进行身份验证。 有关详细信息，请参阅[控制对 IoT 中心的访问](../iot-hub/iot-hub-devguide-security.md)。
 
@@ -242,7 +205,7 @@ Azure 设备 Sdk 的产品/服务最简单的方法为您实现您的设备代�
 
 现在，你已了解有关在 Azure IoT 中心的设备连接性，下面是建议的后续步骤：
 
-- [准备和连接 DevKit 设备](howto-connect-devkit.md)
-- [准备和连接 Raspberry Pi](howto-connect-raspberry-pi-python.md)
-- [将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
+- [准备并将 DevKit 设备连接](howto-connect-devkit.md)
+- [准备并将 Raspberry Pi 连接](howto-connect-raspberry-pi-python.md)
+- [泛型的 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
 - [C SDK:预配设备客户端 SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client/devdoc/using_provisioning_client.md)

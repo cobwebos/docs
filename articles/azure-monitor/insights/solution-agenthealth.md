@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 294695cceaed39a66a57dcd3a165ca276b6801c6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757968"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426216"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 在 Azure 中的代理运行状况解决方案可帮助你了解所有直接向 Azure Monitor 中的 Log Analytics 工作区报告的代理或 System Center Operations Manager 管理组连接到 Azure Monitor，哪些不响应和正在提交操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -51,7 +51,7 @@ ms.locfileid: "58757968"
 | System Center Operations Manager 管理组 | 是 | 检测信号事件是从代理向管理组报告每隔 60 秒收集，并转发到 Azure Monitor。 从 Operations Manager 代理直接连接到 Azure Monitor 不是必需的。 检测信号事件数据从管理组转发到 Log Analytics 工作区。|
 
 ## <a name="using-the-solution"></a>使用解决方案
-向 Log Analytics 工作区添加解决方案时，“代理运行状况”磁贴将添加到仪表板。 此磁贴显示过去 24 小时内的总代理数以及不响应的代理数。<br><br> ![仪表板上的“代理运行状况解决方案”磁贴](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
+向 Log Analytics 工作区添加解决方案时，“代理运行状况”磁贴将添加到仪表板。 此磁贴显示过去 24 小时内的总代理数以及不响应的代理数。<br><br> ![在仪表板上的代理运行状况解决方案磁贴](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 单击“代理运行状况”磁贴可打开“代理运行状况”仪表板。  仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前十个事件。 可以通过在每一列右下方选择“查看全部”或单击列标题来运行提供整个列表的日志搜索。
 
@@ -74,23 +74,23 @@ ms.locfileid: "58757968"
 ### <a name="heartbeat-records"></a>检测信号记录
 创建的是“Heartbeat”类型的记录。  这些记录的属性在下表中列出。  
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 | --- | --- |
-| Type | Heartbeat|
-| 类别 | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|
-| Computer | 计算机名称。|
-| OSType | Windows 或 Linux 操作系统。|
-| OSMajorVersion | 操作系统主要版本。|
-| OSMinorVersion | 操作系统次要版本。|
-| 版本 | Log Analytics 代理或 Operations Manager 代理版本。|
-| SCAgentChannel | 值为“Direct”和/或“SCManagementServer”。|
-| IsGatewayInstalled | 如果 Log Analytics 网关已安装，则值为 true，否则值为 false。|
-| ComputerIP | 计算机的 IP 地址。|
-| RemoteIPCountry | 已部署计算机所在的地理位置。|
-| ManagementGroupName | Operations Manager 管理组的名称。|
-| SourceComputerId | 计算机的唯一 ID。|
-| RemoteIPLongitude | 计算机的地理位置的经度。|
-| RemoteIPLatitude | 计算机的地理位置的纬度。|
+| `Type` | *检测信号*|
+| `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|
+| `Computer` | 计算机名称。|
+| `OSType` | Windows 或 Linux 操作系统。|
+| `OSMajorVersion` | 操作系统主要版本。|
+| `OSMinorVersion` | 操作系统次要版本。|
+| `Version` | Log Analytics 代理或 Operations Manager 代理版本。|
+| `SCAgentChannel` | 值为“Direct”和/或“SCManagementServer”。|
+| `IsGatewayInstalled` | 如果 Log Analytics 网关已安装，则值为 true，否则值为 false。|
+| `ComputerIP` | 计算机的 IP 地址。|
+| `RemoteIPCountry` | 已部署计算机所在的地理位置。|
+| `ManagementGroupName` | Operations Manager 管理组的名称。|
+| `SourceComputerId` | 计算机的唯一 ID。|
+| `RemoteIPLongitude` | 计算机的地理位置的经度。|
+| `RemoteIPLatitude` | 计算机的地理位置的纬度。|
 
 向 Operations Manager 管理服务器报告每个代理会发送两个检测信号，而 SCAgentChannel 属性的值则会包括**直接**并**SCManagementServer**具体取决于什么数据源和已启用在订阅中的监视解决方案。 如果您还记得，解决方案的数据或者会直接从 Operations Manager 管理服务器到 Azure Monitor，或者出于在代理上收集的数据量直接从代理发送到 Azure Monitor。 对于值为 SCManagementServer 的检测信号事件，ComputerIP 值为管理服务器的 IP 地址，因为数据实际上是通过其上传的。  对于 SCAgentChannel 设置为 Direct 的检测信号，该值为代理的公共 IP 地址。  
 

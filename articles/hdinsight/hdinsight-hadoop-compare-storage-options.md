@@ -1,19 +1,18 @@
 ---
 title: 比较用于与 Azure HDInsight 群集配合使用的存储选项
 description: 概述存储类型及其如何使用 Azure HDInsight。
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 02/04/2019
-ms.openlocfilehash: fa08d2fb2185bd4b6cd0e2e9d20e1c44a4a35eae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/08/2019
+ms.openlocfilehash: ac1a0e4eadc0b84fdd2a170c2e0f6e0a2f2af3a4
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101476"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361782"
 ---
 # <a name="compare-storage-options-for-use-with-azure-hdinsight-clusters"></a>比较用于与 Azure HDInsight 群集配合使用的存储选项
 
@@ -96,7 +95,7 @@ Azure Data Lake Storage Gen2 使用新的 URI 方案从 HDInsight 访问 Azure �
 
 此 URI 方案提供了 SSL 加密访问（前缀为 `abfss://`）和未加密访问（前缀为 `abfs://`）。 请尽量使用 `abfss`，即使在访问位于 Azure 中同一区域内的数据时也是如此。
 
-`<FILE_SYSTEM_NAME>` 标识文件系统 Data Lake Storage Gen2 的路径。
+`<FILE_SYSTEM_NAME>` 标识文件系统数据湖存储第 2 代的路径。
 
 `<ACCOUNT_NAME>` 标识 Azure 存储帐户名称。 完全限定域名 (FQDN) 是必需的。
 
@@ -119,6 +118,8 @@ abfss:///example/jars/hadoop-mapreduce-examples.jar /example/jars/hadoop-mapredu
 Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无缝集成。 HDInsight 可将 Azure 存储中的 Blob 容器用作群集的默认文件系统。 HDInsight 中的整套组件可以通过 HDFS 界面直接操作以 Blob 形式存储的结构化或非结构化数据。
 
 我们建议使用单独的存储容器的默认群集存储和业务数据，来隔离的 HDInsight 日志和从你自己的业务数据的临时文件。 我们还建议删除默认 blob 容器，其中包含应用程序和系统日志之后每次使用，以降低存储成本。 请确保在删除该容器之前检索日志。
+
+如果您选择要保护使用存储帐户**防火墙和虚拟网络**限制**选定的网络**，请务必启用例外**允许受信任的 Microsoft服务...** ，以便 HDInsight 可以访问你的存储帐户。
 
 ### <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 
@@ -210,7 +211,7 @@ Data Lake Storage Gen1 的数据容器本质上是文件夹和文件。 可以�
 ## <a name="DataLakeStoreSecurity"></a>Data Lake Storage Gen1 中的数据安全性
 Data Lake Storage Gen1 使用 Azure Active Directory 进行身份验证，使用访问控制列表 (ACL) 管理对数据的访问。
 
-| **功能** | **说明** |
+| **Feature** | **描述** |
 | --- | --- |
 | Authentication |Data Lake Storage Gen1 与 Azure Active Directory (Azure AD) 集成，可对 Data Lake Storage Gen1 中存储的所有数据进行标识与访问管理。 因为这种集成，Data Lake Storage Gen1 可受益于所有 Azure AD 功能。 这些功能包括多重身份验证、条件访问、基于角色的访问控制、应用程序使用情况监视、安全监视和警报，等等。 Data Lake Storage Gen1 支持在 REST 接口中使用 OAuth 2.0 协议进行身份验证。 参阅[使用 Azure Active Directory 进行 Azure Data Lake Storage Gen1 身份验证](../data-lake-store/data-lakes-store-authentication-using-azure-active-directory.md)。|
 | 访问控制 |Data Lake Storage Gen1 通过支持 WebHDFS 协议公开的 POSIX 样式权限来提供访问控制。 可对根文件夹、子文件夹和单个文件启用 ACL。 有关 ACL 在 Data Lake Storage Gen1 上下文中的工作原理的详细信息，请参阅 [Data Lake Storage Gen1 中的访问控制](../data-lake-store/data-lake-store-access-control.md)。 |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
-ms.openlocfilehash: 104eae7c8d18c32fd5b9b84147df2bf121345c22
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 668862714b416bd89d3b5f82caf8b0305fccae54
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59277404"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426522"
 ---
 # <a name="example-3-build-a-perimeter-network-to-protect-networks-with-a-firewall-udr-and-nsgs"></a>示例 3：构建外围网络以通过防火墙、 UDR 和 Nsg 保护网络
 
@@ -396,7 +396,7 @@ DNS 规则文档中的更高版本中使用此单个 IP 地址引用。
     > [!TIP]
     > 尽管该示例规则使用`<explicit-dest>`引用，应使用一致的方法在整个防火墙配置。 我们建议使用已命名的网络对象，以便于可读性和可支持性。 `<explicit-dest>`此处显示仅用于显示备选的引用方法。 我们通常不建议，尤其是对于复杂的配置。
 
-* **出站到 internet 规则**:此传递规则允许来自任何源网络传递到所选的目标网络的流量。 Barracuda NextGen 防火墙通常具有此此规则"上"默认情况下，但处于禁用状态。 右键单击此规则以访问**激活规则**命令。 修改将后端和前端的子网的网络对象添加到此规则的源属性的屏幕截图中所示的规则。 在这篇文章的先决条件部分中创建这些网络对象。
+* **出站到 internet 规则**:此传递规则允许来自任何源网络传递到所选的目标网络的流量。 Barracuda NextGen 防火墙默认情况下，但处于禁用状态，通常将此规则具有"on"。 右键单击此规则以访问**激活规则**命令。 修改将后端和前端的子网的网络对象添加到此规则的源属性的屏幕截图中所示的规则。 在这篇文章的先决条件部分中创建这些网络对象。
   
     ![防火墙出站规则][14]
 

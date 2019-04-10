@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 100d33bbd888d00ed33a38680df5a777e12fd63e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f7bbde98c6ef35021cc03b2646193d3601ca1cff
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120799"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425842"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>使用 Azure Monitor 监视 Active Directory 复制状态
 
@@ -44,7 +44,7 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 3. 在该计算机上，设置以下注册表项：<br>注册表项：HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName>\Solutions\ADReplication<br>值：IsTarget<br>值数据：**true**
 
    > [!NOTE]
-   > 在重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 之后，这些更改才会生效。
+   > 重新启动 Microsoft Monitoring Agent 服务 (HealthService.exe) 这些更改会生效。
    > ### <a name="install-solution"></a>安装解决方案
    > 按照[安装监视解决方案](solutions.md#install-a-monitoring-solution)中描述的过程，将 **Active Directory 复制状态**解决方案添加到 Log Analytics 工作区。 无需进一步的配置。
 
@@ -119,29 +119,29 @@ AD 复制状态解决方案包定期监视 Active Directory 环境中是否有�
 ![Excel 中导出的 AD 复制状态错误](./media/ad-replication-status/oms-ad-replication-export.png)
 
 ## <a name="ad-replication-status-faq"></a>AD 复制状态常见问题
-**问：AD 复制状态数据多长时间更新一次？**
+**问：AD 复制状态数据更新的频率**
 答：信息每 5 天更新一次。
 
-**问：是否有方法来配置此数据的更新频率？**
+**问：是否有某种方法来配置此数据的更新频率如何？**
 答：现在不行。
 
-**问：是否需要将所有域控制器添加到我的 Log Analytics 工作区中以查看复制状态？**
+**问：我是否需要将所有域控制器添加到我的 Log Analytics 工作区中，以查看复制状态？**
 答：不需要，只需要添加一个域控制器。 如果 Log Analytics 工作区中有多个域控制器，则所有域控制器的数据发送到 Azure Monitor。
 
-**问：我不想将任何域控制器添加到我的 Log Analytics 工作区。是否仍可以使用 AD 复制状态解决方案？**
+**问：我不想将任何域控制器添加到我的 Log Analytics 工作区。 仍可以使用 AD 复制状态解决方案**
 
 答：是的。 可以设置注册表项的值来实现此目的。 请参阅[启用非域控制器](#enable-non-domain-controller)。
 
-**问：执行数据收集的进程的名称是什么？**
+**问：执行数据收集过程的名称是什么？**
 答：AdvisorAssessment.exe
 
-**问：收集数据需要多长时间？**
+**问：它需要多长的数据收集？**
 答：数据收集时间取决于 Active Directory 环境的大小，但通常不会超过 15 分钟。
 
-**问：收集的数据类型是什么？**
+**问：收集的数据类型？**
 答：通过 LDAP 收集复制信息。
 
-**问：是否有某种方法来配置收集数据的时间？**
+**问：是否有某种方法来配置何时收集数据？**
 答：现在不行。
 
 **问：需要哪些权限才能收集数据？**

@@ -16,12 +16,12 @@ ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 2005cf4b1929dfe9e520f56308493db7d820226e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 93221b8cd30993c4bdfdc84b5d14ac432fa661d3
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361112"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471268"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新
 
@@ -197,6 +197,14 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 
 <!-- 1663805 - IS ASDK --> 
 - 无法使用 Azure Stack 门户查看订阅的权限。 解决方法是[使用 PowerShell 验证权限](/powershell/module/azs.subscriptions.admin/get-azssubscriptionplan)。
+
+<!-- Daniel 3/28 -->
+- 在用户门户中，导航到存储帐户中的某个 blob，并尝试打开时**访问策略**导航树中，从后续窗口中将无法加载。 若要解决此问题，以下 PowerShell cmdlet 启用了创建、 检索、 设置和分别删除访问策略：
+
+  - [New-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/new-azurestoragecontainerstoredaccesspolicy)
+  - [Get-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/get-azurestoragecontainerstoredaccesspolicy)
+  - [Set-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/set-azurestoragecontainerstoredaccesspolicy)
+  - [Remove-AzureStorageContainerStoredAccessPolicy](/powershell/module/azure.storage/remove-azurestoragecontainerstoredaccesspolicy)
 
 <!-- ### Health and monitoring -->
 

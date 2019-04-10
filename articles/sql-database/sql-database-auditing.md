@@ -12,12 +12,12 @@ ms.author: arib
 ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 75c4f531fff02d8dfeed4ca32bbe1da432635765
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261065"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361274"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "59261065"
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
-- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 
 > [!NOTE] 

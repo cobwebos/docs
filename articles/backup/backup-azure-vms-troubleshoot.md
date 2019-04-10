@@ -6,41 +6,168 @@ author: srinathv
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/04/2019
+ms.date: 04/08/2019
 ms.author: srinathv
-ms.openlocfilehash: b8d1152856935c239a59eb9133aaf48d26a5a8b6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: e8b739c7b4dee67273e2f5c500c6d3b05190b3a5
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259943"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361515"
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 虚拟机备份疑难解答
 可使用下表中所列出的信息排查使用 Azure 备份时遇到的错误：
 
+## <a name="backup"></a>备份
+
+### <a name="copyingvhdsfrombackupvaulttakinglongtime--copying-backed-up-data-from-vault-timed-out"></a>CopyingVHDsFromBackUpVaultTakingLongTime-正在复制已备份数据从保管库操作已超时
+
+错误代码：CopyingVHDsFromBackUpVaultTakingLongTime <br/>
+错误消息：正在复制已备份数据从保管库操作已超时
+
+这可能是由于暂时性存储错误或没有足够的存储帐户的 IOPS 可供备份服务将数据传输到保管库，在超时期限内。 配置使用这些 VM 备份[最佳做法](backup-azure-vms-introduction.md#best-practices)，然后重试备份操作。
+
+### <a name="usererrorvmnotindesirablestate---vm-is-not-in-a-state-that-allows-backups"></a>UserErrorVmNotInDesirableState-VM 不处于允许备份的状态。
+
+错误代码：UserErrorVmNotInDesirableState <br/>
+错误消息：VM 未处于允许备份的状态下。<br/>
+
+备份操作失败，因为 VM 处于失败状态。 成功备份 VM 的状态应为正在运行、 已停止或已停止 （已解除分配）。
+
+* 如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改。 然后触发备份作业。
+*  如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent)，确保已安装备份扩展。
+
+### <a name="usererrorfsfreezefailed---failed-to-freeze-one-or-more-mount-points-of-the-vm-to-take-a-file-system-consistent-snapshot"></a>UserErrorFsFreezeFailed-未能冻结一个或多个的装入点的 VM，使文件系统一致的快照
+
+错误代码：UserErrorFsFreezeFailed <br/>
+错误消息：未能冻结一个或多个的装入点的 VM，使文件系统一致的快照。
+
+* 检查所有装入设备使用的文件系统状态**tune2fs**命令，例如**tune2fs-l/dev/sdb1 \\** 。\| grep**文件系统状态**.
+* 卸载的设备为其未清除文件系统状态，使用**umount**命令。
+* 使用运行在这些设备上的通过文件系统一致性检查**fsck**命令。
+* 再次装入设备，然后重试备份操作。</ol>
+
+### <a name="extensionsnapshotfailedcom--extensioninstallationfailedcom--extensioninstallationfailedmdtc---extension-installationoperation-failed-due-to-a-com-error"></a>ExtensionSnapshotFailedCOM / ExtensionInstallationFailedCOM / ExtensionInstallationFailedMDTC-扩展安装/操作失败，原因是 COM + 错误
+
+错误代码：ExtensionSnapshotFailedCOM <br/>
+错误消息：由于 COM + 错误导致快照操作失败
+
+错误代码：ExtensionInstallationFailedCOM  <br/>
+错误消息：扩展安装/操作失败，因为 COM + 错误
+
+错误代码：ExtensionInstallationFailedMDTC 出现错误消息：扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。
+
+由于 Windows 服务的问题，备份操作失败**COM + 系统**应用程序。  若要解决此问题，请执行以下步骤：
+
+* 请尝试启动/重新启动 Windows 服务**COM + 系统应用程序**(从提升的命令提示符 **-net start COMSysApp**)。
+* 请确保**分布式事务处理协调器**服务正在作为**网络服务**帐户。 如果没有，请将其更改为以运行**网络服务**帐户并重新启动**COM + 系统应用程序**。
+* 如果无法重新启动服务，然后重新安装**分布式事务处理协调器**服务按照以下步骤：
+    * 停止 MSDTC 服务
+    * 打开命令提示符 (cmd)
+    * 运行命令"msdtc-卸载"
+    * 取消命令"msdtc-安装"
+    * 启动 MSDTC 服务
+* 启动 Windows 服务“COM+ 系统应用程序”。 “COM+ 系统应用程序”启动后，从 Azure 门户触发备份作业。</ol>
+
+### <a name="extensionfailedvsswriterinbadstate---snapshot-operation-failed-because-vss-writers-were-in-a-bad-state"></a>ExtensionFailedVssWriterInBadState-快照操作失败，因为 VSS 编写器处于错误状态
+
+错误代码：ExtensionFailedVssWriterInBadState <br/>
+错误消息：快照操作失败，因为 VSS 编写器处于错误状态。
+
+请重启处于错误状态的 VSS 编写器。 在提升的命令提示符处，运行 ```vssadmin list writers```。 输出包含所有 VSS 编写器及其状态。 对于每个状态不为“[1] 稳定”的 VSS 编写器，要重启 VSS 编写器，请在提升权限的命令提示符处运行以下命令：
+
+  * ```net stop serviceName```
+  * ```net start serviceName```
+
+### <a name="extensionconfigparsingfailure--failure-in-parsing-the-config-for-the-backup-extension"></a>ExtensionConfigParsingFailure-分析备份扩展的配置失败
+
+错误代码：ExtensionConfigParsingFailure<br/>
+错误消息：分析备份扩展的配置时出错。
+
+发生此错误的原因是 MachineKeys 目录 %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys 上的权限已更改。
+运行以下命令并验证该权限**MachineKeys**目录是默认值：**icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys**。
+
+默认权限如下：
+* Everyone:(R,W)
+* BUILTIN\Administrators：(F)
+
+如果在“MachineKeys”目录中看到的权限与默认值不同，请执行以下步骤以更正权限、删除证书以及触发备份：
+
+1. 修复“MachineKeys”目录上的权限。 通过在目录中使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限具有以下特殊访问权限：
+
+    * 列出文件夹/读取数据
+    * 读取属性
+    * 读取扩展的属性
+    * 创建文件/写入数据
+    * 创建文件夹/附加数据
+    * 写入属性
+    * 写入扩展的属性
+    * 读取权限
+2. 删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书：
+    * [在本地计算机控制台上打开证书](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。
+    * 在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。
+3. 触发 VM 备份作业。
+
+### <a name="extensionstuckindeletionstate---extension-state-is-not-supportive-to-backup-operation"></a>ExtensionStuckInDeletionState-扩展状态不支持备份操作
+
+错误代码：ExtensionStuckInDeletionState <br/>
+错误消息：扩展状态不支持备份操作
+
+由于备份扩展的不一致状态，备份操作失败。 若要解决此问题，请执行以下步骤：
+
+* 确保来宾代理已安装并可做出响应
+* 从 Azure 门户中，转到“虚拟机” > “所有设置” > “扩展”
+* 选择备份扩展 VmSnapshot 或 VmSnapshotLinux，并单击“卸载”
+* 在删除备份扩展后重试备份操作
+* 后续备份操作将以所需的状态安装新扩展
+
+### <a name="extensionfailedsnapshotlimitreachederror---snapshot-operation-failed-as-snapshot-limit-is-exceeded-for-some-of-the-disks-attached"></a>对于某些附加的磁盘超过 ExtensionFailedSnapshotLimitReachedError-快照操作失败，因为快照限制
+
+错误代码：ExtensionFailedSnapshotLimitReachedError  <br/>
+错误消息：对于某些附加的磁盘超过快照操作失败，因为快照限制
+
+对于某些附加的磁盘超出快照操作失败，因为此快照数量上限。 完成以下故障排除步骤，然后重试该操作。
+
+* 删除磁盘 blob 的快照不需要的。 务必小心以删除磁盘 blob，只为 blob 快照应被删除。
+* 如果 VM 磁盘存储帐户上启用了软删除，配置软删除保留，从而使现有快照都小于最大允许在任何时间点。
+* 如果备份的 VM 中启用了 Azure Site Recovery，则执行如下：
+
+    * 确保的价值**isanysnapshotfailed**设置为 false /etc/azure/vmbackup.conf 中
+    * 计划 Azure Site Recovery 在不同时间，以便它不会发生冲突的备份操作。
+
+### <a name="extensionfailedtimeoutvmnetworkunresponsive---snapshot-operation-failed-due-to-inadequate-vm-resources"></a>ExtensionFailedTimeoutVMNetworkUnresponsive-快照操作失败，因为 VM 资源不足。
+
+错误代码：ExtensionFailedTimeoutVMNetworkUnresponsive<br/>
+错误消息：由于 VM 资源不足，快照操作失败。
+
+由于网络调用延迟执行快照操作时失败的 VM 上的备份操作。 若要解决此问题，请执行步骤 1。 如果问题仍然存在，请尝试执行步骤 2 和 3。
+
+**步骤 1**：通过主机创建快照
+
+从提升的（管理员）命令提示符下，运行以下命令：
+
+```
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotMethod /t REG_SZ /d firstHostThenGuest /f
+REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v CalculateSnapshotTimeFromHost /t REG_SZ /d True /f
+```
+
+这将确保通过主机而不是来宾来拍摄快照。 请重试备份操作。
+
+**步骤 2**：请尝试更改到 VM 时 （较少 CPU/IOps 等） 较低负载下一次备份计划
+
+**步骤 3**：请尝试[增加的 VM 大小](https://azure.microsoft.com/blog/resize-virtual-machines/)并重试该操作
+
+### <a name="common-vm-backup-errors"></a>常见的 VM 备份错误
+
 | 错误详细信息 | 解决方法 |
 | ------ | --- |
-| 由于虚拟机 (VM) 不再存在，备份无法执行操作： <br>停止保护虚拟机，无需删除备份数据。 有关更多信息，请参阅[停止保护虚拟机](https://go.microsoft.com/fwlink/?LinkId=808124)。 |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>**或**</li><li> 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](https://go.microsoft.com/fwlink/?LinkId=808124)。</li></ol> |
-| Azure 虚拟机代理（VM 代理）无法与 Azure 备份服务通信： <br>请确保 VM 具有网络连接，并且 VM 代理为最新版且正常运行。 有关详细信息，请参阅[对 Azure 备份失败进行故障排除：代理或扩展的问题](https://go.microsoft.com/fwlink/?LinkId=800034)。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会发生此错误。 了解有关[调试 VM 快照问题](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#UserErrorGuestAgentStatusUnavailable-vm-agent-unable-to-communicate-with-azure-backup)的详细信息。 <br><br>如果 VM 代理未导致任何问题，请重启 VM。 VM 状态错误可能导致出现问题，重启 VM 会重置状态。 |
+| 错误代码：320001<br/> 错误消息：无法执行该操作，因为 VM 不再存在。 <br/> <br/> 错误代码：400094 <br/> 错误消息：虚拟机不存在 <br/> <br/>  找不到 Azure 虚拟机。  |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>**或**</li><li> 通过删除或不删除备份数据来停止保护虚拟机。 有关更多信息，请参阅[停止保护虚拟机](backup-azure-manage-vms.md#stop-protecting-a-vm)。</li></ol>|
 | VM 处于失败的预配状态： <br>请重启 VM，并确保 VM 正在运行或已关闭。 | 当其中某个扩展失败将 VM 状态置于失败的预配状态时，会发生此错误。 请转到扩展列表，查看是否有失败的扩展，将其删除并尝试重启虚拟机。 如果所有扩展都处于运行状态，请检查 VM 代理服务是否正在运行。 如果未运行，请重启 VM 代理服务。 |
-| 由于存储帐户中的可用空间不足，备份无法复制虚拟机的快照： <br>请确保存储帐户的可用空间等于连接到虚拟机的高级存储磁盘上的数据。 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
-| 由于 VM 代理没有响应，因此备份无法执行操作。 |如果 VM 代理出现问题，或以某种方式阻止了对 Azure 基础结构的网络访问，则会发生此错误。 对于 Windows VM，请检查服务中的 VM 代理服务状态，以及代理是否显示在控制面板的程序中。 <br><br>请尝试从控制面板中删除程序，然后按照 [VM 代理](#vm-agent)中的说明重新安装代理。 重新安装代理后，将触发临时备份以进行验证。 |
-| 恢复服务扩展操作失败： <br>请确保虚拟机上有最新的 VM 代理，并且 VM 代理服务正在运行。 请重试备份操作。 如果备份操作失败，请联系 Microsoft 支持部门。 |VM 代理过期时会发生此错误。 请参阅“对 Azure 虚拟机备份进行故障排除”以更新 VM 代理。 |
-| 虚拟机不存在： <br>请确保该虚拟机存在，或选择其他虚拟机。 |删除主 VM 时会发生此错误，但备份策略仍会查找要备份的 VM。 要修复此错误，请执行以下步骤： <ol><li> 重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称”<br>**或**<br></li><li>停止保护虚拟机，无需删除备份数据。 有关更多信息，请参阅[停止保护虚拟机](https://go.microsoft.com/fwlink/?LinkId=808124)。</li></ol> |
-| 命令失败： <br>此项上当前正在进行另一项操作。 等待前一项操作完成。 然后重试该操作。 |现有备份作业正在运行，当前作业结束前无法开始新的作业。 |
-| 从恢复服务保管库复制 VHD 时超时： <br>请在几分钟后重试该操作。 如果问题持续出现，请联系 Microsoft 支持。 | 如果存储端存在暂时性错误，或者备份服务未在超时期限内接收足够的存储帐户 IOPS 以将数据传输到保管库，则会发生此错误。 请确保按照 [VM 配置最佳做法](backup-azure-vms-introduction.md#best-practices)进行操作。 将 VM 移到未加载的其他存储帐户，然后重试备份作业。|
-| 备份失败，出现内部错误： <br>请在几分钟后重试该操作。 如果问题持续出现，请联系 Microsoft 支持。 |出现此错误的原因有两个： <ul><li> 在访问 VM 存储时存在暂时性问题。 请查看 [Azure 状态网站](https://azure.microsoft.com/status/)，检查区域中是否存在计算、存储或网路问题。 问题解决后，请重试备份作业。 <li> 已删除原始 VM，恢复点无法采用。 若要保留已删除 VM 的备份数据，但要删除备份错误，请取消保护 VM 并选择保留数据选项。 此操作可停止计划备份作业和阻止反复出现的错误消息。 |
-| 备份无法在所选项目上安装 Azure 恢复服务扩展： <br>VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 |<ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。 |
-| 扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。 |此错误通常表示 COM+ 服务未运行。 请与 Microsoft 支持部门联系，以获取解决此问题所需的帮助。 |
+|错误代码：UserErrorBCMPremiumStorageQuotaError<br/> 错误消息：无法将复制的虚拟机，由于没有足够可用空间的存储帐户中的快照 | 对于 VM 备份堆栈 V1 上的高级 VM，我们将快照复制到存储帐户。 此步骤可确保在快照上运行的备份管理流量不会限制使用高级磁盘的应用程序的可用 IOPS 数。 <br><br>我们建议只分配总存储帐户空间的 50%（即 17.5 TB）。 这样，Azure 备份服务可以将快照复制到存储帐户，并将数据从存储帐户中的复制位置传输到保管库。 |
+| 未能安装 Microsoft 恢复服务扩展，因为虚拟机未运行 <br>VM 代理是 Azure 恢复服务扩展的先决条件。 安装 Azure 虚拟机代理并重启注册操作。 |<ol> <li>检查 VM 代理是否安装正确。 <li>确保已正确设置 VM 配置中的标志。</ol> 阅读有关安装 VM 代理以及如何验证 VM 代理安装的详细信息。 |
 | 快照操作失败，出现卷影复制服务 (VSS) 操作错误“此驱动器已通过 BitLocker 驱动器加密锁定。必须通过控制面板解锁此驱动器”。 |关闭 VM 上的所有驱动器的 BitLocker，并检查 VSS 问题是否得到解决。 |
-| VM 未处于允许备份的状态。 |<ul><li>如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改。 然后触发备份作业。 <li> 如果 VM 是 Linux VM，并使用 Security-Enhanced Linux 内核模块，排除 Azure Linux 代理路径 **/var/lib/waagent 中获得**从安全策略并确保已安装 Azure 备份扩展。  |
-| 找不到 Azure 虚拟机。 |删除主 VM 时会发生此错误，但备份策略仍会查找已删除的 VM。 请修复此错误，如下所示： <ol><li>重新创建具有相同名称和相同资源组名称的虚拟机，“云服务名称” <br>**或** <li> 禁用对此 VM 的保护，从而不创建备份作业。 </ol> |
+| VM 未处于允许备份的状态。 |<ul><li>如果 VM 处于“运行”和“关闭”之间的瞬时状态，请等待状态更改。 然后触发备份作业。 <li> 如果 VM 是 Linux VM 并使用安全性增强的 Linux 内核模块，则需要从安全策略排除 Azure Linux 代理路径 (/var/lib/waagent)，确保已安装备份扩展。  |
 | 虚拟机上不存在 VM 代理： <br>安装任何必备组件和 VM 代理。 然后，重启该操作。 |阅读有关 [VM 代理安装以及如何验证 VM 代理安装](#vm-agent)的详细信息。 |
-| 快照操作失败，因为 VSS 编写器处于错误状态。 |请重启处于错误状态的 VSS 编写器。 在提升的命令提示符处，运行 ```vssadmin list writers```。 输出包含所有 VSS 编写器及其状态。 对于每个状态不为“[1] 稳定”的 VSS 编写器，要重启 VSS 编写器，请在提升权限的命令提示符处运行以下命令： <ol><li>```net stop serviceName``` <li> ```net start serviceName```</ol>|
-| 由于配置分析失败，因此快照操作失败。 |发生此错误的原因是 MachineKeys 目录 %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys 上的权限已更改。 <br> 请运行以下命令，并验证“MachineKeys”目录的权限是否为默认值：<br>icacls %systemdrive%\programdata\microsoft\crypto\rsa\machinekeys。 <br><br>默认权限如下： <ul><li>Everyone:(R,W) <li>BUILTIN\Administrators：(F)</ul> 如果在“MachineKeys”目录中看到的权限与默认值不同，请执行以下步骤以更正权限、删除证书以及触发备份： <ol><li>修复“MachineKeys”目录上的权限。 通过在目录中使用 Explorer 安全属性和高级安全设置，将权限重新设为默认值。 从目录中删除所有用户对象（默认值除外），确保 Everyone 权限具有以下特殊访问权限： <ul><li>列出文件夹/读取数据 <li>读取属性 <li>读取扩展的属性 <li>创建文件/写入数据 <li>创建文件夹/附加数据<li>写入属性<li>写入扩展的属性<li>读取权限 </ul><li>删除其中发布对象为经典部署模式或“Windows Azure CRP 证书生成器”的所有证书：<ol><li>[在本地计算机控制台上打开证书](https://msdn.microsoft.com/library/ms788967(v=vs.110).aspx)。<li>在“个人” > “证书”下，删除其中发布对象为经典部署模式或 Windows Azure CRP 证书生成器的所有证书。</ol> <li>触发 VM 备份作业。 </ol>|
-| Azure 备份服务对 Azure Key Vault 没有足够的权限来备份加密的虚拟机。 |通过使用[从还原的磁盘创建 VM](backup-azure-vms-automation.md) 中的步骤，在 PowerShell 中为备份服务提供这些权限。 |
-|快照扩展安装失败，出现错误“COM+ 无法与 Microsoft 分布式事务处理协调器通信”。 | 通过提升的命令提示符，启动 Windows 服务“COM+ 系统应用程序”。 例如，net start COMSysApp。 如果该服务无法启动，请执行以下步骤：<ol><li> 确保服务“分布式事务处理协调器”的登录帐户为“网络服务”。 如果不是，请将登录帐户更改为“网络服务”并重启该服务。 然后尝试启动“COM+ 系统应用程序”。<li>如果“COM+ 系统应用程序”无法启动，请按照以下步骤卸载/安装服务“分布式事务处理协调器”： <ol><li>停止 MSDTC 服务。 <li>打开命令提示符“(cmd)”。 <li>运行命令 ```msdtc -uninstall```。 <li>运行命令 ```msdtc -install```。 <li>启动 MSDTC 服务。 </ol> <li>启动 Windows 服务“COM+ 系统应用程序”。 “COM+ 系统应用程序”启动后，从 Azure 门户触发备份作业。</ol> |
-|  由于 COM+ 错误，快照操作失败。 | 我们建议通过提升的命令提示符“net start COMSysApp”重启 Windows 服务“COM+ 系统应用程序”。 如果此问题一再出现，请重启 VM。 如果重启 VM 不起作用，请尝试[删除 VMSnapshot 扩展](https://docs.microsoft.com/azure/backup/backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout)并手动触发备份。 |
 | 备份无法冻结一个或多个 VM 装入点以获取文件系统一致性快照。 | 执行以下步骤： <ul><li>通过使用“tune2fs”命令来检查所有装入设备的文件系统状态。 例如， **tune2fs-l/dev/sdb1 \\** 。\| grep**文件系统状态**。 <li>使用“umount”命令卸载未清除文件系统状态的设备。 <li> 使用“fsck”命令在这些设备上运行文件系统一致性检查。 <li> 再次装入设备，并尝试备份。</ol> |
 | 由于无法创建安全的网络通信通道，因此快照操作失败。 | <ol><li> 通过在权限提升模式下运行“regedit.exe”来打开注册表编辑器。 <li> 标识系统中存在的所有 .NET Framework 版本。 它们位于注册表项“HKEY_LOCAL_MACHINE \ SOFTWARE \ Microsoft”的层次结构下。 <li> 请为注册表项中存在的每个 .Net Framework 添加以下键： <br> “SchUseStrongCrypto"=dword:00000001”。 </ol>|
 | 由于 Visual C++ Redistributable for Visual Studio 2012 安装失败，因此快照操作失败。 | 导航到 C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot\agentVersion and install vcredist2012_x64。 请确保允许此服务安装的注册表项值设置为正确的值。 也就是说，注册表项“HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\Msiserver”的值设置为“3”，而不是“4”。 <br><br>如果仍然遇到安装问题，请通过权限提升的命令提示符运行“MSIEXEC /UNREGISTER”，接着运行“MSIEXEC /REGISTER”来重启安装服务。  |
@@ -124,30 +251,8 @@ VM 备份依赖于向底层存储发出快照命令。 如果无法访问存储�
 - 如果四个以上的 VM 共享同一云服务，请为 VM 选择多个不同的备份策略。 错开备份时间，使同时开始的 VM 备份不超过四个。 尝试将策略中的开始时间至少隔开一小时。
 - VM 在高 CPU 或内存情况下运行。 如果虚拟机在高内存或 CPU 使用率（超过 90%）情况下运行，则快照任务将排队并延迟。 最终会超时。如果发生此问题，请尝试按需备份。
 
-## <a name="troubleshoot-backup-of-encrypted-vms"></a>对备份加密的 Vm 进行故障排除
-
-### <a name="azure-backup-doesnt-have-permissions-for-key-vault-access"></a>Azure 备份不具有密钥保管库访问权限
-- **错误代码**：UserErrorKeyVaultPermissionsNotConfigured
-- **错误消息**：Azure 备份服务对 Key Vault 没有足够的权限，无法备份加密的虚拟机。
-- **解决方法**：分配 Azure 备份中的 Key Vault 的权限[门户](backup-azure-vms-encryption.md#provide-permissions)，或使用[PowerShell](backup-azure-vms-automation.md#enable-protection)
-
-### <a name="the-vm-cant-be-restored-because-the-associated-key-vault-doesnt-exist"></a>无法还原 VM，因为不存在关联的密钥保管库
-- **解决方法**：确保你已经[创建 Key Vault](../key-vault/quick-create-portal.md#create-a-vault)。
-- **解决方法**：请按照[这些说明](backup-azure-restore-key-secret.md)还原密钥和机密，即使它们不存在密钥保管库中。
-
-### <a name="the-vm-cant-be-restored-because-the-associated-key-doesnt-exist"></a>无法还原 VM，因为关联的键不存在
-- **错误代码**：UserErrorKeyVaultKeyDoesNotExist
-- **错误消息**：无法还原此加密 VM，因为与之关联的密钥不存在。
-- **解决方法**：请按照[这些说明](backup-azure-restore-key-secret.md)还原密钥和机密，即使它们不存在密钥保管库中。
-
-### <a name="the-vm-cant-be-restored-because-azure-backup-doesnt-have-authorization"></a>无法还原 VM，因为 Azure 备份服务未获授权
-- **错误代码**：ProviderAuthorizationFailed/UserErrorProviderAuthorizationFailed
-- **错误消息**：备份服务没有权限访问订阅中的资源。
-- **解决方法**：根据建议，请还原磁盘。 [了解详细信息](backup-azure-vms-encryption.md#restore-an-encrypted-vm)。 
-
-
 ## <a name="networking"></a>网络
-与所有扩展一样 Azure 备份扩展需要访问公共 internet 才能工作。 无法访问公共 Internet 可能会出现以下各种情况：
+与所有扩展一样，备份扩展也需要访问公共 Internet 才能工作。 无法访问公共 Internet 可能会出现以下各种情况：
 
 * 扩展安装可能会失败。
 * 磁盘快照等备份操作可能失败。

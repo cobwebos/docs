@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/11/2018
 ms.author: aljo
-ms.openlocfilehash: 7252af42ac515f9177b8988e2995e6ce77f4e12f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268205"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361539"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -407,11 +407,14 @@ ms.locfileid: "59268205"
 |AzureStorageMaxWorkerThreads | Int，默认值为 25 |动态|最大并行工作线程数。 |
 |AzureStorageOperationTimeout | 以秒为单位的时间，默认值为 6000 |动态|指定以秒为单位的时间范围。 完成 xstore 操作的超时时间。 |
 |CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 FALSE |动态|此配置启用或禁用成功预配的应用程序包自动清理。 |
+|CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|此配置如果启用，则允许以自动取消注册未使用的应用程序类型版本正在跳过最新三个未使用的版本，从而剪裁映像存储区占用的磁盘空间。 自动清理将触发成功预配该特定应用类型的末尾，并且还会定期每天运行一次的所有应用程序类型。 未使用的版本要跳过数是可配置使用参数"MaxUnusedAppTypeVersionsToKeep"。 |
 |DisableChecksumValidation | Bool，默认值为 false |静态| 通过此配置可在应用程序预配过程中启用或禁用校验和验证。 |
 |DisableServerSideCopy | Bool，默认值为 false |静态|此配置可以在应用程序预配过程中启用或禁用 ImageStore 上应用程序包的服务器端副本。 |
 |ImageCachingEnabled | Bool，默认值为 true |静态|通过此配置可启用或禁用缓存。 |
 |ImageStoreConnectionString |SecureString |静态|ImageStore 的根的连接字符串。 |
 |ImageStoreMinimumTransferBPS | Int，默认值为 1024 |动态|群集和 ImageStore 之间的最小传输速率。 此值用于确定访问外部 ImageStore 时的超时时间。 仅当群集和 ImageStore 之间的延迟较高时可更改此值，以允许群集获得更多的时间从外部 ImageStore 进行下载。 |
+|MaxUnusedAppTypeVersionsToKeep | Int，默认值为 3 |动态|此配置中定义的未使用的应用程序类型版本要跳过清理的数目。 启用参数 CleanupUnusedApplicationTypes，此参数才适用。 |
+
 
 ## <a name="metricactivitythresholds"></a>MetricActivityThresholds
 | **参数** | **允许的值** |**升级策略**| **指导或简短说明** |

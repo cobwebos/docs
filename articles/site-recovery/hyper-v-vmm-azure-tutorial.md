@@ -5,21 +5,24 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5b664285ae7d8b5af6e64c2b7ba3d4c6bdadd656
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 64559f653ba8a466de7bec10db34383b508e3e4b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312659"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361288"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>设置 VMM 云中的本地 Hyper-V VM 到 Azure 的灾难恢复
 
-[Azure Site Recovery](site-recovery-overview.md) 服务可管理和协调本地计算机和 Azure 虚拟机 (VM) 的复制、故障转移和故障回复，进而有利于灾难恢复策略。
+本文介绍如何为管理由 System Center Virtual Machine Manager (VMM)，用于灾难恢复到 Azure 中使用的本地 HYPER-V Vm 启用复制[Azure Site Recovery](site-recovery-overview.md)服务。 如果不使用 VMM，然后[遵循本教程](hyper-v-azure-tutorial.md)。
 
-本教程演示如何对 Azure 设置本地 Hyper-V VM 的灾难恢复 本教程适用于由 System Center Virtual Machine Manager (VMM) 托管的 Hyper-V VM。 本教程介绍如何执行下列操作：
+这是一系列，演示如何为在本地 VMware Vm 设置灾难恢复到 Azure 中的第三个教程。 在上一教程中，我们[准备好的本地 HYPER-V 环境](hyper-v-prepare-on-premises-tutorial.md)用于灾难恢复到 Azure。 
+
+本教程介绍如何执行下列操作：
+
 
 > [!div class="checklist"]
 > * 选择复制源和目标。
@@ -28,37 +31,45 @@ ms.locfileid: "58312659"
 > * 创建复制策略
 > * 为虚拟机启用复制
 
+
+> [!NOTE]
+> 教程介绍了一种方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看站点恢复表的内容的操作方法部分中文章。
+
+## <a name="before-you-begin"></a>开始之前
+
 此教程为系列教程中的第三个教程。 本教程假设你已完成前面教程中的以下任务：
 
 1. [准备 Azure](tutorial-prepare-azure.md)
-2. [准备本地 Hyper-V](tutorial-prepare-on-premises-hyper-v.md)
-
-在开始之前，[查看灾难恢复方案的体系结构](concepts-hyper-v-to-azure-architecture.md)会有所帮助。
-
+2. [准备本地 HYPER-V](tutorial-prepare-on-premises-hyper-v.md)这是一系列中的第三个教程。 本教程假设你已完成前面教程中的以下任务：
 
 
 ## <a name="select-a-replication-goal"></a>选择复制目标
 
-1. 在“所有服务” > “恢复服务保管库”中，单击在此系列教程中使用的保管库名称“ContosoVMVault”。
+1. 在“恢复服务保管库”中，选择保管库。 我们准备好保管库**ContosoVMVault**前面的教程。
 2. 在“入门”中，单击“Site Recovery”。 然后单击“准备基础结构”
-3. 在“保护目标” > “计算机所在位置”中，选择“本地”。
-4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”。
-5. 在“计算机是否已虚拟化”中，选择“是，带有 Hyper-V”。
+3. 在中**保护目标** > **所在计算机所在？**，选择**本地**。
+4. 在中**要在其中将计算机复制？**，选择**到 Azure**。
+5. 在中**计算机虚拟化是否？** 选择**是，带有 HYPER-V**。
 6. 在“是否使用 System Center VMM”中，选择“是”。 然后单击“确定”。
 
     ![复制目标](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
 
 
+## <a name="confirm-deployment-planning"></a>确认部署规划
+
+1. 在中**部署规划**，如果您计划大型部署，下载页上的链接适用于 HYPER-V 部署规划器。 [了解详细信息](hyper-v-deployment-planner-overview.md)有关 HYPER-V 部署规划。
+2. 对于本教程的目的，我们不需要部署规划器。 在中**已完成部署规划？**，选择**我将稍后进行**。 然后单击“确定”。
+
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-设置源环境时，安装 Azure Site Recovery 提供程序和 Azure 恢复服务代理，并在保管库中注册本地服务器。 
+时设置源环境时，您在 VMM 服务器上安装 Azure Site Recovery 提供程序，并在保管库中注册服务器。 每个 HYPER-V 主机上安装 Azure 恢复服务代理。 
 
 1. 在“准备基础结构”中，单击“源”。
 2. 在“准备源”中单击“+VMM”以添加 VMM 服务器。 在“添加服务器”中，检查“服务器类型”中是否已显示“System Center VMM 服务器”。
 3. 下载 Microsoft Azure Site Recovery 提供程序的安装程序。
 4. 下载保管库注册密钥。 运行安装提供程序时需要用到此选项。 生成的密钥有效期为 5 天。
-5. 下载恢复服务代理。
+5. 下载 Microsoft Azure 恢复服务代理的安装程序。
 
     ![下载](./media/hyper-v-vmm-azure-tutorial/download-vmm.png)
 
@@ -75,7 +86,7 @@ ms.locfileid: "58312659"
 
 完成注册后，Azure Site Recovery 将检索服务器中的元数据，该 VMM 服务器显示在“Site Recovery 基础结构”中。
 
-### <a name="install-the-recovery-services-agent"></a>安装恢复服务代理
+### <a name="install-the-recovery-services-agent-on-hyper-v-hosts"></a>HYPER-V 主机上安装恢复服务代理
 
 在包含要复制的 VM 的每个 Hyper-V 主机上安装代理。
 
@@ -90,7 +101,7 @@ ms.locfileid: "58312659"
 
 1. 单击“准备基础结构” > “目标”。
 2. 选择在故障转移后要在其中创建 Azure VM 的订阅和资源组 (ContosoRG)。
-3. 选择“资源管理器”部署模型。
+3. 选择**资源管理器**部署模型。
 
 Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
 
@@ -108,10 +119,10 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
 
 1. 单击“准备基础结构” > “复制设置” > “+创建和关联”。
-2. 在“创建和关联策略”中指定策略名称“ContosoReplicationPolicy”。
+2. 在“创建和关联策略”中指定策略名称。 我们将使用**ContosoReplicationPolicy**。
 3. 保留默认设置，并单击“确定”。
     - **复制频率**指示增量数据（初始复制之后）每五分钟复制一次。
-    - **恢复点保留期**指示每个恢复点的保留时长为两个小时。
+    - **恢复点保留期**指示为每个恢复点将保留两个小时。
     - **应用一致性快照频率**指示每小时创建一次包含应用一致性快照的恢复点。
     - **初始复制开始时间**指示初始复制会立即开始。
     - **加密 Azure 上存储的数据** - 默认设置为“关闭”，指示不会加密 Azure 中的静态数据。
@@ -128,5 +139,7 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
    可以在“作业” > “Site Recovery 作业”中，跟踪“启用保护”操作的进度。 “最后完成保护”作业完毕后，初始复制即已完成，VM 可执行故障转移。
 
 
+
 ## <a name="next-steps"></a>后续步骤
-[运行灾难恢复演练](tutorial-dr-drill-azure.md)
+> [!div class="nextstepaction"]
+> [运行灾难恢复演练](tutorial-dr-drill-azure.md)

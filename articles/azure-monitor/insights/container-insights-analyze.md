@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/08/2019
+ms.date: 04/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 5a72c0539cabec3bf4168280c85a2afb92569b25
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56233994"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426386"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能 
 借助适用于容器的 Azure Monitor，可以使用性能图表和运行状况从两个角度（直接从 AKS 群集查看，或是从 Azure Monitor 查看订阅中的所有 AKS 群集）查看 Azure Kubernetes 服务 (AKS) 群集的工作负载。 在监视特定 AKS 群集时，还可以查看 Azure 容器实例 (ACI)。
@@ -71,7 +71,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | |警告 |不适用 |
 | |严重 |<100% |
 | |Unknown |如果未在过去 30 分钟报告 |
-|**Node** | | |
+|**节点** | | |
 | |Healthy |>85% |
 | |警告 |60 - 84% |
 | |严重 |<60% |
@@ -100,7 +100,34 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 可以使用向左键/向右键循环浏览图表上的每个数据点，使用向上键/向下键循环显示百分位线。
 
-切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示“属性”窗格。  它显示所选项的属性，包括定义用于组织 Kubernetes 对象的标签。 单击窗格中的 >> 链接以查看\隐藏窗格。  
+用于容器的 azure Monitor 还支持 Azure Monitor[指标资源管理器](../platform/metrics-getting-started.md)，可以创建您自己绘图图表，关联和调查趋势，并位置固定到仪表板。 从指标资源管理器，您还可以使用已设置为用作的基础可视化你的度量值的条件[基于指标的警报规则](../platform/alerts-metric.md)。  
+
+## <a name="view-container-metrics-in-metrics-explorer"></a>查看容器指标在指标资源管理器
+在指标资源管理器，可以查看聚合的节点和 pod 利用率指标通过 Azure Monitor 的容器。 下表总结了用于帮助你了解如何使用指标的图表来可视化容器指标的详细信息。
+
+|命名空间 | 指标 |
+|----------|--------|
+| insights.container/nodes | |
+| | cpuUsageMillicores |
+| | cpuUsagePercentage |
+| | memoryRssBytes |
+| | memoryRssPercentage |
+| | memoryWorkingSetBytes |
+| | memoryWorkingSetPercentage |
+| | nodesCount |
+| insights.container/pods | |
+| | PodCount |
+
+您可以将应用[拆分](../platform/metrics-charts.md#apply-splitting-to-a-chart)的度量值以查看通过维度和可视化不同部分与其他进行比较。 对于节点，您可以将图表分段通过*主机*维度，并从 pod 可将其划分按以下维度：
+
+* 控制器
+* Kubernetes 命名空间
+* 节点
+* 阶段
+
+## <a name="analyze-nodes-controllers-and-container-health"></a>分析节点、 控制器和容器运行状况
+
+切换到“节点”、“控制器”和“容器”选项卡时，页面右侧会自动显示“属性”窗格。  它显示的属性的项选择，包括定义来组织 Kubernetes 对象的标签。 单击窗格中的 >> 链接以查看\隐藏窗格。  
 
 ![示例 Kubernetes 透视属性窗格](./media/container-insights-analyze/perspectives-preview-pane-01.png)
 
@@ -133,7 +160,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 
 当鼠标悬停在“趋势”列下的条形图上方时，每一条都显示 15 分钟示例期间内的 CPU 或内存使用情况（具体取决于所选指标）。 通过键盘选择趋势图后，可以使用 Alt + PageUp 或 Alt + PageDown 键单独循环浏览每一条，并获得与鼠标悬停操作相同的详细信息。
 
-![“趋势”条形图悬停示例](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
+![栏示例悬停在图表的趋势](./media/container-insights-analyze/containers-metric-trend-bar-01.png)    
 
 在下一个示例中，请注意列表中的第一项 - 节点 aks-nodepool1-，其“容器”的值为 9，表示部署的容器汇总总数。
 
@@ -176,8 +203,8 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 |--------|-------------|
 | 名称 | 控制器的名称。|
 | 状态 | 完成运行状态时容器的汇总状态，例如“正常”、“已终止”、“已失败”、“已停止”或“已暂停”。 如果容器仍在运行，但是状态未正确显示或者未被代理选择并且超出 30 分钟后仍未响应，则状态为“未知”。 下表中提供了状态图标的更多详细信息。|
-| Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 每个实体在选定指标和百分位的平均百分比的汇总平均值。 |
-| Avg、Min、Max、50th、90th  | 容器在选定百分位的平均 CPU millicore 或内存性能汇总。 平均值根据为 Pod 设置的 CPU/内存限制进行计算。 |
+| Avg&nbsp;%、Min&nbsp;%、Max&nbsp;%、50th&nbsp;%、90th&nbsp;% | 汇总所选度量值和百分位数的每个实体的平均百分比的平均值。 |
+| Avg、Min、Max、50th、90th  | 所选百分位的容器的平均 CPU millicore 或内存性能汇总。 平均值根据为 Pod 设置的 CPU/内存限制进行计算。 |
 | 容器 | 控制器或 Pod 的容器总数。 |
 | 重启数 | 容器重启计数汇总。 |
 | 运行时间 | 表示容器启动后的时间。 |

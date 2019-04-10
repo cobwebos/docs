@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
-ms.openlocfilehash: f0f156568eed5a1e8f3296ff7c37df7f050dbc33
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540039"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426183"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>通过适用于 Linux 的 Log Analytics 代理将来自 Nagios 和 Zabbix 的警报收集到 Azure Monitor 中 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
@@ -90,35 +90,35 @@ Log Analytics Linux 代理支持从 Nagios（最高版本 4.2.x）和 Zabbix（�
 
 Nagios 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** 为 **Nagios**。  它们具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
-| Type |*Alert* |
-| SourceSystem |*Nagios* |
-| AlertName |警报的名称。 |
-| AlertDescription | 警报的说明。 |
-| AlertState | 服务或主机的状态。<br><br>OK<br>WARNING<br>UP<br>DOWN |
-| HostName | 创建了警报的主机的名称。 |
-| PriorityNumber | 警报的优先级。 |
-| StateType | 警报状态的类型。<br><br>SOFT - 尚未重新检查的问题。<br>HARD - 已重新检查了指定次数的问题。  |
-| TimeGenerated |警报的创建日期和时间。 |
+| `Type` |*警报* |
+| `SourceSystem` |*Nagios* |
+| `AlertName` |警报的名称。 |
+| `AlertDescription` | 警报的说明。 |
+| `AlertState` | 服务或主机的状态。<br><br>OK<br>WARNING<br>UP<br>DOWN |
+| `HostName` | 创建了警报的主机的名称。 |
+| `PriorityNumber` | 警报的优先级。 |
+| `StateType` | 警报状态的类型。<br><br>SOFT - 尚未重新检查的问题。<br>HARD - 已重新检查了指定次数的问题。  |
+| `TimeGenerated` |警报的创建日期和时间。 |
 
 
 ### <a name="zabbix-alert-records"></a>Zabbix 警报记录
 Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** 为 **Zabbix**。  它们具有下表中的属性。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
-| Type |*Alert* |
-| SourceSystem |*Zabbix* |
-| AlertName | 警报的名称。 |
-| AlertPriority | 警报的严重性。<br><br>未分类<br>信息<br>警告<br>平均值<br>高<br>灾难  |
-| AlertState | 警报的状态。<br><br>0 - 状态为最新。<br>1 - 状态为未知。  |
-| AlertTypeNumber | 指定警报是否可以生成多个问题事件。<br><br>0 - 状态为最新。<br>1 - 状态为未知。    |
-| 注释 | 警报的附加备注。 |
-| HostName | 创建了警报的主机的名称。 |
-| PriorityNumber | 指示警报严重性的值。<br><br>0 - 未分类<br>1 - 信息<br>2 - 警告<br>3 - 平均值<br>4 - 高<br>5 - 灾难 |
-| TimeGenerated |警报的创建日期和时间。 |
-| TimeLastModified |上次更改警报状态的日期和时间。 |
+| `Type` |*警报* |
+| `SourceSystem` |*Zabbix* |
+| `AlertName` | 警报的名称。 |
+| `AlertPriority` | 警报的严重性。<br><br>未分类<br>信息<br>警告<br>平均值<br>高<br>灾难  |
+| `AlertState` | 警报的状态。<br><br>0 - 状态为最新。<br>1 - 状态为未知。  |
+| `AlertTypeNumber` | 指定警报是否可以生成多个问题事件。<br><br>0 - 状态为最新。<br>1 - 状态为未知。    |
+| `Comments` | 警报的附加备注。 |
+| `HostName` | 创建了警报的主机的名称。 |
+| `PriorityNumber` | 指示警报严重性的值。<br><br>0 - 未分类<br>1 - 信息<br>2 - 警告<br>3 - 平均值<br>4 - 高<br>5 - 灾难 |
+| `TimeGenerated` |警报的创建日期和时间。 |
+| `TimeLastModified` |上次更改警报状态的日期和时间。 |
 
 
 ## <a name="next-steps"></a>后续步骤
