@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 78d82f7604d86b50ee5e05e5c3b5b9802a9559e5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877932"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283403"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,7 +64,7 @@ SQL Server 链接服务支持以下属性：
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
 
-**示例 1：使用 SQL 身份验证**
+**示例 1： 使用 SQL 身份验证**
 
 ```json
 {
@@ -85,7 +85,7 @@ SQL Server 链接服务支持以下属性：
 }
 ```
 
-**示例 2：在 Azure 密钥保管库中使用带有密码的 SQL 身份验证**
+**示例 2： 使用 SQL 身份验证使用 Azure 密钥保管库中的密码**
 
 ```json
 {
@@ -114,7 +114,7 @@ SQL Server 链接服务支持以下属性：
 }
 ```
 
-**示例 3：使用 Windows 身份验证**
+**示例 3： 使用 Windows 身份验证**
 
 ```json
 {
@@ -190,7 +190,7 @@ SQL Server 链接服务支持以下属性：
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 SQL Server 源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。
 - 如果不指定“sqlReaderQuery”或“sqlReaderStoredProcedureName”，则使用在数据集 JSON 的“结构”部分定义的列，构建针对 SQL Server 运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义不具备该“结构”，则从表中选择所有列。
 
-**示例：使用 SQL 查询**
+**示例： 使用 SQL 查询**
 
 ```json
 "activities":[
@@ -222,7 +222,7 @@ SQL Server 链接服务支持以下属性：
 ]
 ```
 
-**示例：使用存储过程**
+**示例： 使用存储的过程**
 
 ```json
 "activities":[
@@ -258,7 +258,7 @@ SQL Server 链接服务支持以下属性：
 ]
 ```
 
-**存储过程定义：**
+**存储的过程定义中：**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -284,7 +284,7 @@ GO
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | type | 复制活动接收器的 type 属性必须设置为：**SqlSink** | 是 |
-| writeBatchSize |缓冲区大小达到 writeBatchSize 时会数据插入 SQL 表。<br/>允许的值为：整数（行数）。 |否（默认值：10000） |
+| writeBatchSize |插入 SQL 表的行数**每个批处理**。<br/>允许的值为：整数（行数）。 |否（默认值：10000） |
 | writeBatchTimeout |超时之前等待批插入操作完成时的等待时间。<br/>允许的值为：timespan。 示例：“00:30:00”（30 分钟）。 |否 |
 | preCopyScript |将数据写入到 SQL Server 之前，指定复制活动要执行的 SQL 查询。 每次运行复制仅调用该查询一次。 此属性可用于清理预先加载的数据。 |否 |
 | sqlWriterStoredProcedureName |存储过程的名称，该存储过程定义如何将源数据应用到目标表，例如使用你自己的业务逻辑执行更新插入或转换。 <br/><br/>请注意，此存储过程将由每个批处理调用。 如果要执行仅运行一次且与源数据无关的操作（例如删除/截断），请使用 `preCopyScript` 属性。 |否 |
@@ -294,7 +294,7 @@ GO
 > [!TIP]
 > 将数据复制到 SQL Server 时，默认情况下复制活动将数据追加到接收器表。 要执行 UPSERT 或其他业务逻辑，请在 SqlSink 中使用存储过程。 参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。
 
-**示例 1：追加数据**
+**示例 1： 追加数据**
 
 ```json
 "activities":[
@@ -326,7 +326,7 @@ GO
 ]
 ```
 
-**示例 2：在 upsert 的复制过程中调用存储过程**
+**示例 2： 在 upsert 的复制过程调用的存储的过程**
 
 参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。
 
@@ -440,9 +440,9 @@ create table dbo.TargetTbl
 
 内置的复制机制无法使用时，可使用存储过程。 在最后一次将源数据插入目标表前需要完成 upsert（插入+更新）或额外处理（合并列、查找其他值、插入到多个表等）时，通常使用此过程。
 
-以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表各具有三列：ProfileID、State 和 Category。 基于“ProfileID”列执行 upsert，仅应用于特定类别。
+以下示例演示如何使用存储过程，在 SQL Server 数据库中的表内执行 upsert。 假设输入数据和接收器“Marketing”表各具有三列：**ProfileID**、**State** 和 **Category**。 基于 ProfileID 列执行 upsert，并仅将其应用于特定类别。
 
-**输出数据集**
+**输出数据集：** "tableName"应为你的存储过程 （请参阅下面的存储的过程脚本） 中的同一个表类型参数名称。
 
 ```json
 {
@@ -461,7 +461,7 @@ create table dbo.TargetTbl
 }
 ```
 
-如下所示，在复制活动中定义 SqlSink 节。
+定义**SQL 接收器**部分复制活动中，如下所示。
 
 ```json
 "sink": {
@@ -476,7 +476,7 @@ create table dbo.TargetTbl
 }
 ```
 
-在数据库中，使用与 SqlWriterStoredProcedureName 相同的名称定义存储过程。 它处理来自指定源的输入数据，并合并到输出表中。 存储过程中的表类型的参数名称应与数据集中定义的“tableName”相同。
+在数据库中，使用与 SqlWriterStoredProcedureName 相同的名称定义存储过程。 它可处理来自指定源的输入数据，并将其合并到输出表中。 存储过程中的表类型的参数名称应与数据集中定义的 **tableName** 相同。
 
 ```sql
 CREATE PROCEDURE spOverwriteMarketing @Marketing [dbo].[MarketingType] READONLY, @category varchar(256)

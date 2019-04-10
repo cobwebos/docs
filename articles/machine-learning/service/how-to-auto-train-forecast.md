@@ -10,19 +10,19 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 32f96a28e027bfd0e65d934bb47bb98400af459d
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360714"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357245"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时间序列预测的模型
 
 在本文中，您将了解如何使用自动化的机器学习在 Azure 机器学习服务中对时间序列预测回归模型定型。 配置一个预测模型，类似于设置标准回归模型中使用自动化的机器学习，但某些配置选项和预处理步骤存在用于时间序列数据。 以下示例演示了如何为：
 
 * 为时序建模准备数据
-* 配置中的特定时间序列参数[ `AutoMLConfig` ](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)对象
+* 配置中的特定时间序列参数[ `AutoMLConfig` ](/python/api/azureml-train-automl/azureml.train.automl.automlconfig)对象
 * 运行时间序列数据预测
 
 ## <a name="prerequisites"></a>必备组件

@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 03f71e4e10b65d9f295e13cdd8bc6881622c523d
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320271"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359029"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
 
@@ -56,7 +56,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **网络**：符合 DR 需要的 ExpressRoute 和站点到站点 VPN 成本。 
 
-**ASR 许可证**：针对所有兼容 VM 的 Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Site Recovery 许可证成本。
+**Azure Site Recovery 许可证**:针对所有兼容 VM 的 Site Recovery 许可证成本。 如果在详细的成本分析表中手动输入了一个 VM，则还会包括该 VM 的 Site Recovery 许可证成本。
 
 ### <a name="overall-dr-costs-by-states"></a>按状态估算的总体 DR 成本
 总 DR 成本按两种不同的状态（“复制”和“DR 演练”）分类。
@@ -107,17 +107,17 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
-    a. **VM 数**
+    a. **Vm 数**
 
-    b. **IaaS 大小(你的选择)**
+    b. **IaaS 大小 （你的选择）**
 
-    c. **存储类型(标准/高级)**
+    c. **存储类型的标准/高级**
 
     d. **VM 总存储大小(GB)**
 
     e. **一年的 DR 演练次数**
 
-    f. **每次 DR 演练的持续时间(天)**
+    f. **每次 DR 演练的持续时间 （天）**
 
     g. **OS 类型**
 
@@ -157,7 +157,7 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 **总 DR 演练成本(平均)**：DR 演练的计算和存储成本。
 
-**ASR 许可证成本**：Site Recovery 许可证成本。
+**Azure Site Recovery 许可证成本**:Site Recovery 许可证成本。
 
 ## <a name="supported-target-regions"></a>支持的目标区域
 Site Recovery 部署规划器为以下 Azure 区域提供成本估算。 如果你的区域没有列在这下面，可以使用定价最接近你的区域的任何区域：

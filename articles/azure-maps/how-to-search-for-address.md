@@ -1,23 +1,30 @@
 ---
 title: 如何使用 Azure Maps 搜索服务搜索地址 | Microsoft Docs
 description: 了解如何使用 Azure Maps 搜索服务搜索地址
-author: dsk-2015
-ms.author: dkshir
-ms.date: 09/11/2018
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
-manager: timlt
-ms.openlocfilehash: ba5ea7205a5d0e5fdbadc8a1ba955091ae95b569
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+manager: philmea
+ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56875780"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277317"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
 Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点、兴趣点、商家列表和其他地理信息。 该服务将纬度/经度分配到特定的地址、十字路口、地理特征或兴趣点 (POI)。 在诸如路线和交通流之类的其他 Maps 服务中，可将搜索返回的纬度和经度值用作参数。
+
+在本文中，您将学习如何：
+
+* 搜索地址使用[模糊搜索 API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy)
+* 搜索地址以及属性和坐标
+* 请[反向地址搜索](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse)搜索街道地址
+* 跨街道使用搜索[搜索地址反向跨街道 API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet)
 
 ## <a name="prerequisites"></a>必备组件
 

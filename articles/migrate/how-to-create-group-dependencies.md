@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 12/05/2018
 ms.author: raynew
-ms.openlocfilehash: 71f792dd1238b11810abfb6a97ac9e051da2ec45
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 3ee528cc68a2a5637e85dc1d5ef68203916138e7
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274617"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357175"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>使用组依赖项映射优化组
 
@@ -127,14 +127,14 @@ Azure Migrate 利用 Azure Monitor 日志，若要启用的计算机的依赖项
 1. 安装代理后，请转到门户并单击“概述”。
 2. 在“概述”中，转到项目的“Essentials”部分，然后单击“OMS 工作区”旁边提供的工作区名称。
 3. 在“Log Analytics 工作区”页上，单击“常规” > “日志”。
-4. 编写查询来收集依赖项数据使用 Azure Monitor 日志。 [此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)提供用于收集依赖项数据的示例查询。
+4. 编写查询来收集依赖项数据使用 Azure Monitor 日志。 在下一部分中查找示例的查询。
 5. 通过单击“运行”，运行查询。 
 
 [了解详细信息](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal)有关如何编写 Kusto 查询。 
 
 ## <a name="sample-azure-monitor-logs-queries"></a>示例 Azure Monitor 日志查询
 
-以下是可用来提取依赖关系数据的示例查询。 您可以修改查询以提取你的首选的数据点。 依赖项数据记录中的字段的详尽列表是可用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)
+以下是可用来提取依赖关系数据的示例查询。 您可以修改查询以提取你的首选的数据点。 依赖项数据记录中的字段的详尽列表是可用[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#log-analytics-records)。 查找更多的示例查询[此处](https://docs.microsoft.com/azure/azure-monitor/insights/service-map#sample-log-searches)。
 
 ### <a name="summarize-inbound-connections-on-a-set-of-machines"></a>汇总一组计算机上的入站的连接
 

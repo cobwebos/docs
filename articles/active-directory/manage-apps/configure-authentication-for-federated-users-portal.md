@@ -1,6 +1,6 @@
 ---
 title: 使用主领域发现策略为应用程序配置登录自动加速 | Microsoft Docs
-description: 介绍什么是 Azure AD 租户，以及如何通过 Azure Active Directory 管理 Azure。
+description: 了解如何配置 Azure Active Directory 身份验证的联合用户，包括自动加速和域提示的主领域发现策略。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -11,19 +11,20 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/08/2018
+ms.date: 04/08/2019
 ms.author: celested
+ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 333258ef9696e6dbe4aab5b10e815bb84428d425
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d82ccf7c2983051597ff634117be81311c4c78a9
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56190256"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360935"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>使用主领域发现策略为应用程序配置 Azure Active Directory 登录行为
 
-以下文档介绍了如何为联合用户配置 Azure Active Directory 身份验证行为。   其中介绍了自动加速的配置，以及联合域中用户的身份验证限制。
+本文提供了配置为联合用户的 Azure Active Directory 身份验证行为的简介。 其中介绍了自动加速的配置，以及联合域中用户的身份验证限制。
 
 ## <a name="home-realm-discovery"></a>主领域发现
 主领域发现 (HRD) 过程允许 Azure Active Directory (Azure AD) 确定登录时用户需要在何处进行身份验证。  登录 Azure AD 租户访问资源或 Azure AD 公共登录页时，用户需键入用户名 (UPN)。 Azure AD 以此来发现用户需要在何处登录。 
@@ -151,7 +152,7 @@ MSDN 中的[策略操作](https://msdn.microsoft.com/library/azure/ad/graph/api/
 - 列出为其配置了策略的应用程序。
 
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 以下示例在 Azure AD 中的应用程序服务主体上创建、更新、链接和删除策略。
 
 1.  首先请下载最新的 Azure AD PowerShell Cmdlet 预览版。 

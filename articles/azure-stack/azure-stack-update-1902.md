@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/09/2019
 ms.author: sethm
 ms.reviewer: adepue
 ms.lastreviewed: 04/05/2019
-ms.openlocfilehash: 1cb99bba1fa5c762af57a1ad26d034974ff196a6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2005cf4b1929dfe9e520f56308493db7d820226e
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271826"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59361112"
 ---
 # <a name="azure-stack-1902-update"></a>Azure Stack 1902 更新
 
@@ -97,13 +97,14 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
   ```  
   
 - 若要在更新过程中改进的整体可靠性和可用性的核心基础结构服务，作为更新操作计划的一部分的本机更新资源提供程序将检测并调用根据需要自动全局修正。 全局补救“修复”工作流包括：
-    - 检查处于非最佳状态并尝试修复它们所需的基础结构虚拟机 
-    - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复它们根据需要
-    - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试修复它们根据需要
-    - 检查网络控制器 (NC) 服务的状态并尝试修复它根据需要
-    - 检查紧急恢复控制台服务 (ERCS) service fabric 节点的状态并根据需要修复它们
-    - 检查 XRP service fabric 节点的状态并根据需要修复它们
-    - 检查 Azure 一致的存储 (ACS) service fabric 节点的状态并根据需要修复它们
+
+  - 检查处于非最佳状态并尝试修复它们所需的基础结构虚拟机。
+  - 作为控制计划的一部分的 SQL 服务问题，检查并尝试修复它们根据需要。
+  - 检查作为一部分的网络控制器 (NC) 软件负载均衡器 (SLB) 服务的状态并尝试修复它们根据需要。
+  - 检查网络控制器 (NC) 服务的状态并尝试修复它根据需要
+  - 检查紧急恢复控制台服务 (ERCS) Service Fabric 节点的状态，并根据需要进行修复。
+  - 检查基础结构角色的状态并根据需要修复。
+  - 检查 Azure 一致性存储 (ACS) Service Fabric 节点的状态，并根据需要进行修复。
 
 <!-- 
 1426690 [SOLNET] 3895478-Get-AzureStackLog_Output got terminated in the middle of network log   Diagnostics
@@ -258,8 +259,8 @@ Azure Stack 修补程序仅适用于 Azure Stack 集成系统；请勿尝试在 
 <!-- #### Marketplace -->
 
 ### <a name="syslog"></a>Syslog 
-- Syslog 配置不会保留通过更新循环，从而导致 syslog 客户端会丢失其配置和要停止正在转发的 syslog 消息。 Syslog 客户端 (1809) 正式发布以来，此问题适用于所有版本的 Azure Stack。
-解决方法是在应用 Azure Stack 更新后重新配置 syslog 客户端。
+
+- Syslog 配置不会保留通过更新循环，导致 syslog 客户端会丢失其配置以及要停止正在转发的 syslog 消息。 Syslog 客户端 (1809) 正式发布以来，此问题适用于所有版本的 Azure Stack。 若要解决此问题，请重新应用 Azure Stack 更新后配置 syslog 客户端。
 
 ## <a name="download-the-update"></a>下载更新
 

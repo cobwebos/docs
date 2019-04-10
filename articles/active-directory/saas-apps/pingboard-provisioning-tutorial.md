@@ -13,30 +13,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/27/2019
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e36d0985aee53f2a7f701f9bf7887ae26a426b68
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203737"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280326"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
 
 本教程的目的在于介绍将用户帐户从 Azure Active Directory (Azure AD) 自动预配到 Pingboard 和取消其预配时所要遵循的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定您已具有以下各项：
 
-*   Azure AD 租户
-*   Pingboard 租户[专业版帐户](https://pingboard.com/pricing) 
-*   Pingboard 中具有管理员权限的用户帐户 
+* Azure AD 租户
+* Pingboard 租户[专业版帐户](https://pingboard.com/pricing)
+* Pingboard 中具有管理员权限的用户帐户
 
-> [!NOTE] 
+> [!NOTE]
 > Azure AD 预配集成依赖于帐户可用的 [Pingboard API](https://pingboard.docs.apiary.io/#)。
 
 ## <a name="assign-users-to-pingboard"></a>将用户分配到 Pingboard
@@ -45,7 +45,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 配置和启用预配服务前，需确定 Azure AD 中的哪些用户或组需访问 Pingboard 应用。 确定后，可以按照此处的说明将这些用户分配到 Pingboard 应用：
 
-[向企业应用分配用户](../manage-apps/assign-user-or-group-access-portal.md)
+[将用户分配到企业应用程序](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-pingboard"></a>将用户分配到 Pingboard 的重要提示
 
@@ -69,7 +69,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 1. 将“预配模式”设置为“自动”。
 
     ![Pingboard 预配](./media/pingboard-provisioning-tutorial/pingboardazureprovisioning.png)
-    
+
 1. 在“管理员凭据”部分中，使用以下步骤：
 
     a. 在“租户 URL”中，输入 `https://your_domain.pingboard.com/scim/v2` 并将 your_domain 替换为实际的域
@@ -86,7 +86,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 1. 在“通知电子邮件”字段中输入应接收预配错误通知的人员或组的电子邮件地址。 然后选中复选框。
 
-1. 选择“保存”。 
+1. 选择“保存”。
 
 1. 在“映射”部分下，选择“将 Azure Active Directory 用户同步到 Pingboard”。
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/30/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 805de614246028bc75268e83991fa7831b990325
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: bb6ab29f02282a394e3f93e41682ceaec5208b75
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882321"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357619"
 ---
 # <a name="azure-app-service-static-access-restrictions"></a>Azure App Service 静态访问限制 #
 
@@ -85,3 +85,9 @@ management.azure.com/subscriptions/subscription ID/resourceGroups/resource group
         "name": "allowed access"
       }
     ],
+
+## <a name="function-app-ip-restrictions"></a>函数应用 IP 限制
+
+IP 限制是可用于与应用服务计划相同的功能与这两个函数应用。 请注意，启用 IP 限制将禁用任何不允许的 Ip 门户代码编辑器。
+
+[此处详细了解](../azure-functions/functions-networking-options.md#inbound-ip-restrictions)

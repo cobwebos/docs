@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: sashan, moslake
+author: stevestein
+ms.author: sstein
+ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/07/2019
-ms.openlocfilehash: a14912c48f27c4f4d0e54239f8e0523ffa62324f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888496"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357950"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层、Azure 混合权益和迁移
 
@@ -37,7 +37,7 @@ vCore 模型提供了三个服务层：常规用途、超大规模和业务关�
 
 下表可帮助你了解这三个层之间的差别：
 
-||**常规用途**|**业务关键**|**超大规模（预览版）**|
+||**常规用途**|**业务关键**|**超大规模 （预览版）**|
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。|IO 要求高的业务应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷|
 |计算|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|
@@ -76,17 +76,17 @@ vCore 模型提供了三个服务层：常规用途、超大规模和业务关�
 
 - 使用 Azure CLI 设置或更新许可证类型：
 
-  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db 创建](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
   - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [az sql mi 创建](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
 - 使用 REST API 设置或更新许可证类型：
 
-  - [数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+  - [数据库-创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [数据库-更新](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [托管实例的创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [托管的实例的更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>从 DTU 模型迁移到 vCore 模型
 

@@ -12,12 +12,12 @@ ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
 ms.date: 04/08/2019
-ms.openlocfilehash: 7c01e8132cc8fe8fcc01e468973a273dbfcfad64
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: f9387d68139119c13d57ebb135e0c0f5b7bba8ec
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261048"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359050"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -157,7 +157,7 @@ SQL 数据库动态数据掩码通过对非特权用户模糊化敏感数据来�
 
 ### <a name="compliance"></a>合规性
 
-除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
+除了上述有助于应用程序符合各项安全要求的特性和功能以外，Azure SQL 数据库还定期参与审核，并已通过许多法规标准的认证。 有关详细信息，请参阅[Microsoft Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 1/14/2019
 ms.author: alkarche
-ms.openlocfilehash: 8bbc44e7af68f005f30fff143741bc4bfe0adcf2
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896275"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358161"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 网络连接选项
 
@@ -43,7 +43,8 @@ ms.locfileid: "58896275"
 
 通过 IP 限制，可定义允许访问应用的 IP 地址的允许/拒绝列表（按优先级排序）。 此允许列表可能包含 IPv4 和 IPv6 地址。 如果存在一个或多个条目，则在列表末尾会存在一个隐式的“拒绝所有”。 IP 限制功能适用于托管选项的所有函数。
 
-> ![重要]若要能够使用 Azure 门户的编辑器，在门户必须能够直接访问正在运行的函数应用，并用于访问门户，设备必须拥有其 IP 加入允许列表。 使用现有的网络限制，你仍可以访问中的任何功能**平台功能**选项卡。
+> [!NOTE]
+> 若要能够使用 Azure 门户的编辑器，在门户必须能够直接访问正在运行的函数应用，并用于访问门户，设备必须拥有其 IP 加入允许列表。 使用现有的网络限制，你仍可以访问中的任何功能**平台功能**选项卡。
 
 [此处详细了解](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 

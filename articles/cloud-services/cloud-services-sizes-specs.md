@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 5c4ad5c200bd2e49f3c472d82ad030c6a8f2478d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 6f3177c37a2db03b8821e3e4f5b68c8b1315a016
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918257"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358252"
 ---
 # <a name="sizes-for-cloud-services"></a>云服务的大小
 本主题介绍云服务角色实例（Web 角色和辅助角色）的可用大小和选项。 此外，还提供了在计划使用这些资源时要考虑的部署注意事项。 每个大小都具有会放入[服务定义文件](cloud-services-model-and-package.md#csdef)中的 ID。 [云服务定价](https://azure.microsoft.com/pricing/details/cloud-services/)页提供每种大小的价格。
@@ -205,7 +205,7 @@ Azure H 系列虚拟机是下一代高性能计算 VM，旨在满足高端计算
 
 ## <a name="changing-the-size-of-an-existing-role"></a>更改现有角色的大小
 
-工作负荷性质更改或有新的 VM 大小可用时，可能需要更改角色的大小。 为此，必须在服务定义文件中更改 VM 大小（如上所示），然后重新打包云服务并进行部署。 不能直接从门户或 PowerShell 更改 VM 大小。
+工作负荷性质更改或有新的 VM 大小可用时，可能需要更改角色的大小。 为此，必须在服务定义文件中更改 VM 大小（如上所示），并重新打包云服务并进行部署。
 
 >[!TIP]
 > 用户可能希望在不同的环境（例如 测试和生产）中为角色使用不同的 VM 大小。 一种办法是在项目中创建多个服务定义文件 (.csdef)，然后使用 CSPack 工具在自动生成期间为每个环境创建不同的云服务包。 若要了解云服务包的元素以及如何创建云服务包，请参阅[什么是云服务模型以及如何打包？](cloud-services-model-and-package.md)

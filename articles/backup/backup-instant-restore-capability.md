@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/20/2019
+ms.date: 04/05/2019
 ms.author: sogup
-ms.openlocfilehash: 56c75840ca3114af40a2c843e2107f850bbff51a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905964"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359961"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -23,12 +23,11 @@ ms.locfileid: "58905964"
 即时还原的新模型提供以下功能增强：
 
 * 可以使用执行备份作业期间创建的用于恢复的快照，而无需等待完成将数据传输到保管库的操作。 它缩短了快照在触发还原之前复制到保管库的等待时间。
-* 通过在本地保留快照，缩短备份和还原时间，默认可在本地保留两天。 此默认保管库可配置为 1 到 5 天之间的任何值。
-* 最大支持 4 TB 的磁盘。
+* 通过在本地保留快照，缩短备份和还原时间，默认可在本地保留两天。 此默认快照保留期值是可配置为 1 到 5 天之间的任何值。
+* 最大支持 4 TB 的磁盘。 Azure 备份不支持条带化的磁盘。 Azure 备份，不建议重设大小的磁盘。
 * 支持标准 SSD 磁盘，以及标准 HDD 磁盘和高级 SSD 磁盘。
 *   还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="whats-new-in-this-feature"></a>功能亮点
 
@@ -75,9 +74,9 @@ ms.locfileid: "58905964"
 > 从 Az PowerShell 1.6.0 版本及更高版本，可以更新策略使用 PowerShell 中的即时还原快照保留期
 
 ```powershell
-PS C:\> $bkpPol = Get-AzRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
+PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
-PS C:\> Set-AzRecoveryServicesBackupProtectionPolicy -policy $bkpPol
+PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
 每个策略的默认快照保留期设置为 2 天。 用户可以将值更改为最小为 1，最大为 5 天。 对于每周的策略，快照保留期固定为 5 天。
 

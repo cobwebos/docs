@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 1/29/2019
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 29c2e53c4fb496e0f12e04f08b0add4273db25a7
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.openlocfilehash: a814fc6e9a72ba92d915821bd1e1694366844555
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790149"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277403"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Web 应用程序防火墙请求大小限制和排除列表
 
@@ -54,6 +54,7 @@ WAF 排除列表允许你忽略 WAF 评估中的某些请求属性。 常见示�
 - **开头为**：此运算符与以指定选择器值开头的所有字段匹配。
 - **结尾为**：此运算符与以指定选择器值结尾的所有请求字段匹配。
 - **包含**：此运算符与包含指定选择器值的所有请求字段匹配。
+- **等于任何**:此运算符可匹配所有请求字段。 * 将是选择器值。
 
 在所有情况下，匹配不区分大小写，并且正则表达式不允许作为选择器。
 

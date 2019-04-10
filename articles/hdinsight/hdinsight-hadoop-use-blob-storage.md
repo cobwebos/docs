@@ -1,24 +1,22 @@
 ---
 title: 从与 HDFS 兼容的 Azure 存储查询数据 - Azure HDInsight
 description: 了解如何从 Azure 存储和 Azure Data Lake Storage 查询数据，以存储分析结果。
-services: hdinsight,storage
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
-ms.date: 01/28/2019
-ms.openlocfilehash: d88a05b03813eb0ec94a84f60bffb903e1344987
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.date: 04/08/2019
+ms.openlocfilehash: 3356d3eee00a640efe10e2d9f3aa4fa7be775995
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361908"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360780"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>将 Azure 存储与 Azure HDInsight 群集配合使用
 
-要分析 HDInsight 群集中的数据，可以将数据存储在 [Azure 存储](../storage/common/storage-introduction.md)和/或 [Azure Data Lake Storage Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md) 中。 这两个存储选项都允许安全地删除用于计算的 HDInsight 群集，而不会丢失用户数据。
+若要分析 HDInsight 群集中的数据，可以存储数据，或者在[Azure 存储](../storage/common/storage-introduction.md)， [Azure Data Lake 存储 Gen 1](../data-lake-store/data-lake-store-overview.md)/[Azure Data Lake 存储 Gen 2](../storage/blobs/data-lake-storage-introduction.md)，或组合。 这些存储选项，可安全删除用于计算而不会丢失用户数据的 HDInsight 群集。
 
 Apache Hadoop 支持默认文件系统的概念。 默认文件系统意指默认方案和授权。 它还可用于解析相对路径。 在 HDInsight 群集创建过程中，可以指定 Azure 存储中的 Blob 容器作为默认文件系统，或者借助 HDInsight 3.6，可以选择 Azure 存储或 Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 作为默认文件系统（有少数例外）。 有关对将 Data Lake Storage Gen 1 同时用作默认存储和链接存储的支持能力，请参阅 [HDInsight 群集的可用性](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)。
 
@@ -41,6 +39,8 @@ Azure 存储是一种稳健、通用的存储解决方案，它与 HDInsight 无
  
  > [!NOTE]  
  > 存档访问层是一个离线层，具有几小时的检索延迟，不建议与 HDInsight 一起使用。 有关详细信息，请参阅<a href="https://docs.microsoft.com/azure/storage/blobs/storage-blob-storage-tiers#archive-access-tier">存档访问层</a>。
+
+如果您选择要保护使用存储帐户**防火墙和虚拟网络**限制**选定的网络**，请务必启用例外**允许受信任的 Microsoft服务...** ，以便 HDInsight 可以访问你的存储帐户。
 
 ## <a name="hdinsight-storage-architecture"></a>HDInsight 存储体系结构
 下图提供了使用 Azure 存储时的 HDInsight 存储体系结构的抽象视图：
@@ -340,7 +340,7 @@ azure storage blob list <containername> <blobname|prefix> --account-name <storag
 * [将 Apache Hive 和 HDInsight 配合使用][hdinsight-use-hive]
 * [将 Apache Pig 和 HDInsight 配合使用][hdinsight-use-pig]
 * [使用 Azure 存储共享访问签名来限制使用 HDInsight 访问数据][hdinsight-use-sas]
-* [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](hdinsight-hadoop-use-data-lake-storage-gen2.md)
 
 [hdinsight-use-sas]: hdinsight-storage-sharedaccesssignature-permissions.md
 [powershell-install]: /powershell/azureps-cmdlets-docs

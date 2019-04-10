@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/26/2019
 ms.author: bwren
-ms.openlocfilehash: 1027398a1a7f790adedf6c7eebed44a8db501b8a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 2646941e2384acf6d303615f564b65d616931180
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905029"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358870"
 ---
 # <a name="metrics-in-azure-monitor"></a>Azure Monitor 中的指标
 
@@ -39,7 +39,7 @@ Azure Monitor 中的指标是轻量和能够附近实时方案，使其特别适
 | 警报 | 配置[指标预警规则](alerts-metric.md)的发送通知或执行[自动化操作](action-groups.md)指标值超过阈值时。 |
 | 自动化 |  使用[自动缩放](autoscale-overview.md)来增加或减少资源基于超出阈值的指标值。 |
 | 导出 | [将指标路由到日志](diagnostic-logs-stream-log-store.md)分析中 Azure Monitor 指标以及在 Azure Monitor 日志中的数据的数据并将其存储的时间超过 93 天的指标值。<br>Stream 的指标[事件中心](stream-monitoring-data-event-hubs.md)以将它们路由到外部系统。 |
-| 检索 | 从命令行使用访问指标值[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>从自定义应用程序使用访问指标值[REST API](rest-api-walkthrough.md)。<br>从命令行使用访问指标值[CLI](/azure/monitor/metrics)。 |
+| 检索 | 从命令行使用访问指标值[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.applicationinsights)<br>从自定义应用程序使用访问指标值[REST API](rest-api-walkthrough.md)。<br>从命令行使用访问指标值[CLI](/cli/azure/monitor/metrics)。 |
 | 存档 | 出于符合性、审核或脱机报告目的，对资源的性能或运行状况历史记录进行 [存档](..//learn/tutorial-archive-data.md)。 |
 
 

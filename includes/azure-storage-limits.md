@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: dccc967e7899d8cc9c4bde6829d6fc44f9cba4e0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 2957b45a0a26c590e2db1b402f4956ae9c3b8000
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890872"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291675"
 ---
 下表介绍 Azure 存储的默认限制。 “传入”限制是指请求中发送到存储帐户的所有数据。 “传出”限制是指响应中从存储帐户接收的所有数据。
 
@@ -22,10 +22,15 @@ ms.locfileid: "58890872"
 | 每个订阅每个区域的存储帐户数，包括标准帐户和高级帐户 | 250 |
 | 最大存储帐户容量 | 2 PB 针对美国和欧洲，对于所有其他区域，其中包括英国 500 TB |
 | 每个存储帐户的 Blob 容器、Blob、文件共享、表、队列、实体或消息数上限 | 无限制 |
+| 文件存储 （预览版） 存储帐户的最大大小 | 100,000 GiB |
+| 文件存储 （预览版） 存储帐户的最大 IOPS | 100,000 |
+| 文件存储 （预览版） 存储帐户的最大带宽 | 5 GB/s |
 | 每个存储帐户的最大请求速率<sup>1</sup> | 每秒 20,000 个请求 |
 | 最大入口<sup>1</sup>每个存储帐户 （美国区域） | 如果已启用 RA-GRS/GRS 的 10 Gbps，20 Gbps; 对于 LRS/ZRS<sup>2</sup> |
 | 最大入口<sup>1</sup>每个存储帐户 （非美国区域） | 如果已启用 RA-GRS/GRS，则为 5 Gbps，10 Gbps; 对于 LRS/ZRS<sup>2</sup> |
-| 对于常规用途 v2 和 Blob 存储帐户 （所有区域） 的最大出口 | 50 Gbps |
+| 每个文件存储 （预览版） 存储帐户 （美国区域） 的最大入口 | (仅适用于 LRS) 为 20 Gbps |
+| 每个文件存储 （预览版） 存储帐户 （非美国区域） 的最大入口 | 10 Gbps (仅适用于 LRS)|
+| 最大出口为常规用途 v2、 文件存储 （预览版） 和 Blob 存储帐户 （所有区域） | 50 Gbps |
 | 常规用途 v1 存储帐户 （美国区域） 的最大出口 | 如果启用 RA-GRS/GRS，则为 20 Gbps、 30 Gbps; 对于 LRS/ZRS<sup>2</sup> |
 | 常规用途 v1 存储帐户 （非美国区域） 的最大出口 | 如果已启用 RA-GRS/GRS 的 10 Gbps，15 Gbps; 对于 LRS/ZRS<sup>2</sup> |
 

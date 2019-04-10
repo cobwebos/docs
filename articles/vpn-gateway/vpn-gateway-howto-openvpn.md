@@ -7,16 +7,16 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/16/2019
 ms.author: cherylmc
-ms.openlocfilehash: 50a8c30831ba806d0ea02d4f67b4e672e71e6325
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.openlocfilehash: 8cc2a6d4ad06bf4a55d4ef078970823df1e0d910
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56415079"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281958"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>为 Azure 点到站点 VPN 网关（预览版）配置 OpenVPN
 
-本文可帮助你在 Azure VPN 网关上设置 OpenVPN。 本文假设你已拥有一个可正常工作的点到站点环境。 如果并非如此，请按照步骤 1 中的说明来创建点到站点 VPN。
+本文可帮助你设置了**OpenVPN® 协议**上 Azure VPN 网关。 本文假设你已拥有一个可正常工作的点到站点环境。 如果并非如此，请按照步骤 1 中的说明来创建点到站点 VPN。
 
 > [!IMPORTANT]
 > 此公共预览版在提供时没有附带服务级别协议，不应该用于生产工作负荷。 某些功能可能不受支持或受到约束，或者不一定在所有 Azure 位置都可用。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
@@ -54,15 +54,11 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 > [!IMPORTANT]
 > OpenVPN 不支持基本 SKU。
 
-## <a name="cmdlets"></a>2.安装 PowerShell cmdlet
-
-安装最新版本的资源管理器 PowerShell cmdlet。 有关安装 PowerShell cmdlet 的详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。 这很重要，因为早期版本的 cmdlet 不包含本练习所需的最新值。
-
-## <a name="enable"></a>3.在网关上启用 OpenVPN
+## <a name="enable"></a>2.在网关上启用 OpenVPN
 
 在网关上启用 OpenVPN。 在运行以下命令之前，请确保已为点到站点（IKEv2 或 SSTP）配置网关：
 
-```powershell
+```azurepowershell-interactive
 $gw = Get-AzVirtualNetworkGateway -ResourceGroupName $rgname -name $name
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVPN
 ```
@@ -70,3 +66,5 @@ Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gw -VpnClientProtocol OpenVP
 ## <a name="next-steps"></a>后续步骤
 
 若要为 OpenVPN 配置客户端，请参阅[配置 OpenVPN 客户端](vpn-gateway-howto-openvpn-clients.md)。
+
+**"OpenVPN"是 OpenVPN Inc.的商标**

@@ -11,25 +11,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/22/2019
+ms.date: 04/04/2019
 ms.author: mabrigg
-ms.lastreviewed: 01/22/2019
-ms.openlocfilehash: a5fe2d9b295a72b8e2e3adb7e5cffd5a98c03070
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.lastreviewed: 04/04/2019
+ms.reviewer: justini
+ms.openlocfilehash: bf797404b173d6febe133eacbb9d36310160aff6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487509"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281567"
 ---
 # <a name="manage-updates-in-azure-stack-overview"></a>在 Azure Stack 中管理更新概述
 
-*适用于：Azure Stack 集成系统*
+*适用于Azure Stack 集成系统*
 
-Azure Stack 集成系统的 Microsoft 更新包通常大约在每月的第四个星期二发布。 请向你的 OEM 咨询具体的通知流程以确保更新能够到达你的组织。 还可以查看位于“概述” > “发行说明”下的此文档库来了解有关处于有效支持状态的发行版的信息。 
+Azure Stack 集成系统的 Microsoft 更新包通常大约在每月的第四个星期二发布。 提出有关特定通知过程，以确保更新通知达到你的组织在原始设备制造商 (OEM)。 还可以查看位于“概述” > “发行说明”下的此文档库来了解有关处于有效支持状态的发行版的信息。 
 
 每次发布的 Microsoft 软件更新均打包为单个更新包。 Azure Stack 操作员可以从管理员门户导入和安装这些更新包，并监视这些更新包的安装进度。 
 
-原始设备制造商 (OEM) 硬件供应商也会发布更新，例如驱动程序和固件更新。 虽然这些更新是由你的 OEM 硬件供应商作为单独的程序包提供的，但导入、安装和管理它们的方式与来自 Microsoft 更新程序包的更新程序包完全相同。
+OEM 供应商也会发布更新，如驱动程序和固件更新。 虽然这些更新作为单独的包由供应商进行传递，它们正在导入、 安装，并且从 Microsoft 更新包为相同的方式管理。
 
 若要保持系统受支持，必须始终将 Azure Stack 更新为特定版本级别。 请务必查看 [Azure Stack 服务策略](azure-stack-servicing-policy.md)。
 
@@ -38,7 +39,7 @@ Azure Stack 集成系统的 Microsoft 更新包通常大约在每月的第四个
 
 ## <a name="the-update-resource-provider"></a>更新资源提供程序
 
-Azure Stack 包含协调 Microsoft 软件更新应用的更新资源提供程序。 此资源提供程序可确保在所有物理主机、Service Fabric 应用程序和运行时以及所有基础结构虚拟机及其关联的服务上应用更新。
+Azure Stack 包含的更新资源提供程序处理的 Microsoft 软件更新的应用程序。 此提供程序检查更新应用跨所有物理主机、 Service Fabric 应用程序和运行时和基础结构的所有虚拟机和其关联的服务。
 
 当更新安装时，由于更新进程以 Azure Stack 中的各种子系统（例如，物理主机和基础结构虚拟机）为目标，因此你可以查看高级状态。
 
@@ -53,25 +54,47 @@ Azure Stack 包含协调 Microsoft 软件更新应用的更新资源提供程序
   ``` 
 
 ## <a name="using-the-update-tile-to-manage-updates"></a>使用“更新”磁贴管理更新
+
 从管理员门户中管理更新。 Azure Stack 操作员可以使用仪表板中的“更新”磁贴执行以下操作：
 
 - 查看重要信息，例如当前版本。
-- 安装更新，并监视进度。
+- 安装更新并监视进度。
 - 查看以前安装的更新的更新历史记录。
+- 查看云的当前 OEM 包版本
  
 ## <a name="determine-the-current-version"></a>确定当前版本
 
-“更新”磁贴会显示当前的 Azure Stack 版本。 可以在管理员门户中使用下列其中一种方法转到“更新”磁贴：
+更新磁贴中，可以查看 Azure Stack 的当前版本。 若要打开该磁贴：
 
-- 在仪表板上的“更新”磁贴中查看当前版本。
- 
-   ![默认仪表板上的“更新”磁贴](./media/azure-stack-updates/image1.png)
- 
-- 在“区域管理”磁贴上，单击区域名称。 在“更新”磁贴中查看当前版本。
+1. 打开 Azure Stack 管理门户。
+2. 选择“仪表板”。 在中**更新**列出磁贴中，当前版本。 
+
+    ![默认仪表板上的“更新”磁贴](./media/azure-stack-updates/image1.png)
+
+    例如，在屏幕中的版本是 1.1903.0.35。
+
+## <a name="install-updates-and-monitor-progress"></a>安装更新和监视进度
+
+
+1. 打开 Azure Stack 管理门户。
+2. 选择“仪表板”。 选择更新磁贴。
+3. 选择**立即更新**。
+
+    ![Azure Stack 更新运行详细信息](media/azure-stack-updates/azure-stack-update-button.png)
+
+4.  更新过程循环访问在 Azure Stack 中的各种子系统时，可以查看高级状态。 示例子系统包括物理主机，Service Fabric 基础结构虚拟机和服务提供的管理员和用户门户。 在整个更新过程中，更新资源提供程序的其他详细信息报告的更新，如已成功的步骤数，以及正在进行中的数字。
+
+5. 选择**下载完整日志**从更新运行详细信息边栏选项卡中下载完整日志。
+
+    ![Azure Stack 更新运行详细信息](media/azure-stack-updates/update-run-details.png)
+
+6. 完成后，更新资源提供程序提供了**Succeeded**确认，告知你是否已完成更新过程和所用的时间。 在这里，可以查看有关所有更新、 可用的更新或使用筛选器的已安装的更新的信息。
+
+    ![Azure Stack 更新运行详细信息成功](media/azure-stack-updates/update-success.png)
+
+   如果更新失败，更新磁贴的报表**需要注意**。 使用**下载完整日志**以获取高级状态的更新可能已失败。 Azure Stack 日志收集有助于诊断和故障排除。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Stack 服务策略](azure-stack-servicing-policy.md) 
-- [Azure Stack 中的区域管理](azure-stack-region-management.md)     
-
-
+- [Azure Stack 中的区域管理](azure-stack-region-management.md)

@@ -2,16 +2,16 @@
 title: 使用 Azure Site Recovery 在 Azure VM 故障转移期间保留 IP 地址 | Microsoft Docs
 description: 介绍如何在使用 Azure Site Recovery 将用于灾难恢复的 Azure VM 故障转移到次要区域时保留 IP 地址
 ms.service: site-recovery
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 author: mayurigupta13
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: aefb0684ea065841824ad27d1105ef309418c6b9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 618d60417aa6b582eaef94bf75dcf16c74750f83
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58090740"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357889"
 ---
 # <a name="retain-ip-addresses-during-failover"></a>在故障转移期间保留 IP 地址
 
@@ -49,7 +49,7 @@ ms.locfileid: "58090740"
         - 东南亚具有与“源 VNet”相同的恢复 VNet（名为“恢复 VNet”）。
         - 东南亚具有地址空间为 10.2.0.0/16 的额外 VNet (Azure VNet)。
         - Azure VNet 包含地址空间为 10.2.4.0/24 的子网（子网 4）。
-        - SQL Server Always On、域控制器等的副本节点位于子网 4 中。
+        - 有关 SQL Server Always On 副本节点，域控制器等都位于**子网 4**。
     - 源 VNet 和 Azure VNet 通过 VPN 站点到站点连接建立连接。
     - **恢复 VNet** 未与其他任何虚拟网络相连接。
     - 公司 A 分配/验证已复制项的目标 IP 地址。 每个 VM 的目标 IP 均与源 IP 相同。
@@ -92,7 +92,7 @@ ms.locfileid: "58090740"
 - 次要（目标）区域为“Azure 东南亚”- 东南亚具有与源 VNet 1 和源 VNet 2 相同的恢复 VNet（恢复 VNet 1 和恢复 VNet 2）。
         - 恢复 VNet 1 和恢复 VNet 2 各自具有 2 个与源 VNet 1 和源 VNet 2 中的子网匹配的子网 - 东南亚具有地址空间为 10.3.0.0/16 的额外 VNet (Azure VNet)。
         - Azure VNet 包含地址空间为 10.3.4.0/24 的子网（子网 4）。
-        - SQL Server Always On、域控制器等的副本节点位于子网 4 中。
+        有关 SQL Server Always On 副本节点，域控制器等都位于**子网 4**。
 - 存在大量站点到站点 VPN 连接： 
     - 源 VNet 1 和 Azure VNet
     - 源 VNet 2 和 Azure VNet

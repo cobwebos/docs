@@ -8,32 +8,38 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 4/3/2019
+ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
-ms.openlocfilehash: 13d43a3810bc07cede2a49760f122157de86c44d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: d53019294a255e42c4cf66f59226c9234a5adf73
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010152"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359740"
 ---
 # <a name="release-notes"></a>发行说明
+
+## <a name="speech-sdk-141"></a>Speech SDK 1.4.1
+
+这是一个仅限 JavaScript 的版本。 未增加任何功能。 进行了以下修复：
+
+* 防止 webpack 加载 https 代理程序。
 
 ## <a name="speech-sdk-140-2019-april-release"></a>语音 SDK 1.4.0:2019 年 4 月版本
 
 **新增功能** 
 
-* SDK 现在支持作为测试版的文本到语音转换服务。 支持 Windows 和 Linux 桌面 c + +，从C#，和 Java。 有关详细信息，请[文本到语音转换概述](text-to-speech.md#get-started-with-text-to-speech)。
-* SDK 现在支持 MP3 和大作/Ogg 音频文件作为流输入文件。 此功能目前仅在从 c + + 的 Linux 上和C#和目前处于 beta 版本 (更多详细信息[此处](how-to-use-compressed-audio-input-streams.md))。
-* 语音 SDK for Java，.NET core，c + + 和 OBJECTIVE-C 获得了 macOS 支持。 适用于 macOS 的 Objective C 支持目前处于 beta 版本。
+* SDK 现在支持作为测试版的文本到语音转换服务。 支持 Windows 和 Linux 桌面从C++， C#，和 Java。 有关详细信息，请[文本到语音转换概述](text-to-speech.md#get-started-with-text-to-speech)。
+* SDK 现在支持 MP3 和大作/Ogg 音频文件作为流输入文件。 此功能目前仅在从 Linux 上C++和C#和当前为 beta 版本 (更多详细信息[此处](how-to-use-compressed-audio-input-streams.md))。
+* 适用于 Java、.NET core 的语音 SDK C++ ，Objective C 已获得 macOS 支持。 适用于 macOS 的 Objective C 支持目前处于 beta 版本。
 * iOS：适用于 iOS (OBJECTIVE-C) 的语音 SDK 现在还作为 CocoaPod 发布。
 * JavaScript：对非默认麦克风作为输入设备的支持。
 * JavaScript：用于 Node.js 的代理支持。
 
 **示例**
 
-* 添加了适用于 macOS 上使用 c + + 和 Objective C 使用语音 SDK 示例。
+* 使用语音 SDK 使用示例C++和 macOS 上的 Objective C 中添加了。
 * 添加了演示文本到语音转换服务的用法示例。
 
 **改进 / 更改**

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b91af553c402cc1cb241e51e2bb2289bf45b1825
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269021"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358105"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>规划基于云的 Azure 多重身份验证
 
@@ -107,6 +107,9 @@ Azure 多重身份验证被部署的强制实施条件性访问策略。 一个[
 ### <a name="notification-through-mobile-app"></a>通过移动应用发送通知
 
 推送通知发送到你的移动设备上的 Microsoft Authenticator 应用。 用户将查看通知并选择**批准**以完成验证。 通过移动应用的推送通知提供用户的干扰最少选项。 它们也是最可靠、 安全选项，因为它们使用的数据连接，而不是电话服务。
+
+> [!NOTE]
+> 如果你的组织有员工在工作或出差到中国**移动应用的通知**方法**Android 设备**在该国家/地区中不适用。 备用方法应可为这些用户。
 
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 

@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 03/15/2019
+ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 14e9bd7b87f2941fcc075a6265f2e6c96fe646ea
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 275907eed94f3165853ecf9adcb11fb62460d2e2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649897"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282213"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -42,7 +42,7 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 | Linux 分发版 | 版本 | 支持加密的卷类型|
 | --- | --- |--- |
 | Ubuntu | 16.04| OS 和数据磁盘 |
-| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[使用 Azure 优化内核更新为 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
 | RHEL | 7.6 | OS 和数据磁盘* |
 | RHEL | 7.5 | OS 和数据磁盘* |
 | RHEL | 7.4 | OS 和数据磁盘* |
@@ -72,7 +72,7 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 
 ## <a name="can-i-encrypt-both-boot-and-data-volumes-with-azure-disk-encryption"></a>是否可以使用 Azure 磁盘加密来加密引导卷和数据卷？
 
-是的，可以加密 Windows 和 Linux IaaS VM 的引导卷和数据卷。 对于 Windows VM，在不事先加密 OS 卷的情况下无法加密数据。 对于 Linux VM，可以在不事先加密 OS 卷的情况下加密数据卷。 加密 Linux 的 OS 卷之后，不支持针对 Linux IaaS VM 的 OS 卷禁用加密。
+是的，可以加密 Windows 和 Linux IaaS VM 的引导卷和数据卷。 对于 Windows VM，在不事先加密 OS 卷的情况下无法加密数据。 对于 Linux VM，可以在不事先加密 OS 卷的情况下加密数据卷。 加密 Linux 的 OS 卷之后，不支持针对 Linux IaaS VM 的 OS 卷禁用加密。 对于在规模集中的 Linux Vm，仅数据可以对卷进行加密。
 
 ## <a name="can-i-encrypt-an-unmounted-volume-with-azure-disk-encryption"></a>可以加密 Azure 磁盘加密的卸载的卷？
 
@@ -166,5 +166,5 @@ Azure 备份提供了一种机制来备份和还原加密的 VM 的同一订阅�
 本文档详细描述了有关 Azure 磁盘加密的最常见问题。 有关此服务的详细信息，请参阅以下文章：
 
 - [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)
-- [在 Azure 安全中心应用磁盘加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [Azure 静态数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [在 Azure 安全中心中应用磁盘加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
+- [静态 azure 数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)

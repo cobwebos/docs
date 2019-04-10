@@ -7,17 +7,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: 0e9001111d6aa48f0dad69a2fb3b2186bfc37ab7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 46a620900896d07273da22e53171330b85d3f1ec
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010504"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360193"
 ---
 # <a name="azure-sql-database-purchasing-models"></a>Azure SQL 数据库购买模型
 
@@ -36,7 +36,7 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 
 以下表格和图表对这两种购买模型做了对比。
 
-|**购买模型**|**说明**|**最适用于**|
+|**购买模型**|**描述**|**最适用于**|
 |---|---|---|
 |基于 DTU 的模型|此模型基于计算、存储和 IO 资源的捆绑度量。 单一数据库的计算大小以数据库事务单位 (DTU) 表示，弹性池则以弹性数据库事务单位 (eDTU) 表示。 有关 DTU 和 eDTU 的详细信息，请参阅[什么是 DTU 和 eDTU？](sql-database-purchase-models.md#dtu-based-purchasing-model)|最适合希望获得简单预配置资源选项的客户。|
 |基于 vCore 的模型|此模型允许单独选择计算和存储资源。 基于 vCore 的购买模型还允许使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)来节省成本。|最适合注重灵活性、控制度和透明度的客户。|
@@ -50,11 +50,11 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 
 ## <a name="storage-costs"></a>存储成本
 
-不同存储类型的计费方式各不相同。 对于数据存储，你要根据所选的最大数据库或池大小支付预配存储的费用。 除非减小或增大该最大值，否则费用不会变化。 备份存储与实例的自动备份相关联，并动态分配。 延长备份保留期会使实例使用的备份存储空间增大。 
+不同存储类型的计费方式各不相同。 对于数据存储，你要根据所选的最大数据库或池大小支付预配存储的费用。 除非减小或增大该最大值，否则费用不会变化。 备份存储与实例的自动备份相关联，并动态分配。 延长备份保留期会使实例使用的备份存储空间增大。
 
 默认情况下，数据库的 7 天自动备份会复制到 RA-GRS 标准 blob 存储。 存储由每周完整备份、每日差异备份和 5 分钟复制一次的事务日志备份使用。 事务日志的大小取决于数据库的变化率。 提供与 100% 数据库大小相等的最小存储量，不收取额外费用。 超出此部分的其他备份存储用量将以 GB 为单位每月进行收费。
 
-有关存储价格的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页。 
+有关存储价格的详细信息，请参阅[定价](https://azure.microsoft.com/pricing/details/sql-database/single/)页。
 
 ## <a name="vcore-based-purchasing-model"></a>基于 vCore 的购买模型
 
@@ -71,7 +71,7 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 > 区域限制：有关受支持区域的当前列表，请参阅[可用产品(按区域)](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all)。 如果要在当前不支持的区域中创建托管实例，可以[通过 Azure 门户发送支持请求](sql-database-managed-instance-resource-limits.md#obtaining-a-larger-quota-for-sql-managed-instance)。
 .
 
-如果单一数据库或弹性池消耗的 DTU 超过 300 个，则转换为基于 vCore 的购买模型可以降低成本。 如果决定进行转换，可以使用所选的 API 或 Azure 门户进行转换，无需停机。 但是，转换不是必需的并且不会自动完成。 如果基于 DTU 的购买模型可以满足性能和业务要求，应继续使用它。 如果决定从基于 DTU 的购买模型转换为基于 vCore 的购买模型，请使用以下经验法则来选择计算大小： 
+如果单一数据库或弹性池消耗的 DTU 超过 300 个，则转换为基于 vCore 的购买模型可以降低成本。 如果决定进行转换，可以使用所选的 API 或 Azure 门户进行转换，无需停机。 但是，转换不是必需的并且不会自动完成。 如果基于 DTU 的购买模型可以满足性能和业务要求，应继续使用它。 如果决定从基于 DTU 的购买模型转换为基于 vCore 的购买模型，请使用以下经验法则来选择计算大小：
 
 - 标准层中的每 100 个 DTU 至少需要常规用途层中的 1 个 vCore
 - 高级层中的每 125 个 DTU 至少需要业务关键层中的 1 个 vCore

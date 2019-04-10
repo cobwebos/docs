@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
-ms.openlocfilehash: fbea3daec3d9ccac81f246d3dc762fc80cb4b18a
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7f3afa59b4c8eaaeaf54576eb9fcaad626749683
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759387"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358915"
 ---
 # <a name="connect-to-media-services-v3-api---nodejs"></a>连接到媒体服务 v3 API 的 Node.js
 
@@ -127,6 +127,5 @@ node index.js
 ## <a name="next-steps"></a>后续步骤
 
 - [媒体服务概念](concepts-overview.md)
-- [快速入门]()
 - [Node.js 参考](https://docs.microsoft.com/javascript/api/azure-arm-mediaservices/?view=azure-node-latest)
-- [NPM install azure-arm-mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)<br>
+- [NPM 安装 azure arm mediaservices](https://www.npmjs.com/package/azure-arm-mediaservices/)<br>

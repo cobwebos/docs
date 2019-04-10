@@ -9,17 +9,17 @@ ms.devlang: ''
 ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
-ms.reviewer: bonova, carlrab
+ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: f08b22f24dfde41646f56dc1ecd9777f267620ee
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651306"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358286"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>对于 Azure SQL 数据库中的托管实例的连接体系结构 
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>对于 Azure SQL 数据库中的托管实例的连接体系结构
 
 本文介绍 Azure SQL 数据库托管实例中的通信。 它还介绍了连接体系结构以及如何组件将流量定向到托管实例。  
 
@@ -117,7 +117,6 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点是该
 
 > [!IMPORTANT]
 > 尽管所需的入站的安全规则允许来自的流量_任何_源上的端口 9000，这些端口 9003、 1438年、 1440 和 1452，受内置防火墙。 有关详细信息，请参阅[确定的管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
-
 > [!NOTE]
 > 如果在托管实例中，使用事务复制，并且您使用任何实例数据库作为发布服务器或分发服务器，请在子网的安全规则中打开端口 445(tcp 出站)。 此端口将允许访问 Azure 文件共享。
 

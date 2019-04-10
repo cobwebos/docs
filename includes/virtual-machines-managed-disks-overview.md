@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dfd91caf67592b349bd16bab673a3e45397ad282
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58807443"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291712"
 ---
-## <a name="benefits-of-managed-disks"></a>托管磁盘的优势
+## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
 接下来让我们看一下使用托管磁盘可以获得的一些好处。
 
@@ -31,6 +31,10 @@ ms.locfileid: "58807443"
 
 托管磁盘集成可用性集，可确保[可用性集中的 VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的磁盘彼此之间完全隔离以避免单点故障。 磁盘自动放置于不同的存储缩放单元（模块）。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
 
+## <a name="integration-with-availability-zones"></a>与可用性区域的集成
+
+托管磁盘支持[可用性区域](../articles/availability-zones/az-overview.md)，这是保护数据中心发生故障的应用程序高可用性产品/服务。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。
+
 ### <a name="azure-backup-support"></a>Azure 备份支持
 
 若要防范区域灾难，可以使用 [Azure 备份](../articles/backup/backup-introduction-to-azure-backup.md)创建具有基于时间的备份和备份保留策略的备份作业。 这样就可以随意执行简单的 VM 还原。 目前，Azure 备份支持高达 4 TB (TiB) 的磁盘大小。 有关详细信息，请参阅[为具有托管磁盘的 VM 使用 Azure 备份](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)。
@@ -41,11 +45,15 @@ ms.locfileid: "58807443"
 
 ## <a name="disk-roles"></a>磁盘角色
 
-### <a name="data-disks"></a>数据磁盘
+在 Azure 中有三个主要磁盘角色： 数据磁盘、 OS 磁盘和临时磁盘。 这些角色映射到附加到虚拟机的磁盘。
+
+![磁盘操作中的角色](media/virtual-machines-managed-disks-overview/disk-types.png)
+
+### <a name="data-disk"></a>数据磁盘
 
 数据磁盘是附加到虚拟机的托管磁盘，用于存储应用程序数据或其他需要保留的数据。 数据磁盘注册为 SCSI 驱动器并且带有所选择的字母标记。 每个数据磁盘的最大容量为 32,767 gibibyte 计算的 (GiB)。 虚拟机的大小决定了可附加的磁盘数目，以及可用来托管磁盘的存储类型。
 
-### <a name="os-disks"></a>OS 磁盘
+### <a name="os-disk"></a>操作系统磁盘
 
 每个虚拟机都附加了一个操作系统磁盘。 该 OS 磁盘有一个预先安装的 OS，是在创建 VM 时选择的。
 
@@ -57,12 +65,12 @@ ms.locfileid: "58807443"
 
 ## <a name="managed-disk-snapshots"></a>托管磁盘快照
 
-托管磁盘快照是托管磁盘的只读完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 基于已使用大小对这些快照进行计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。  
+托管磁盘快照是托管磁盘的只读完整副本，默认情况下它作为标准托管磁盘进行存储。 使用快照，可以在任意时间点备份托管磁盘。 这些快照独立于源磁盘而存在，并可用来创建新的托管磁盘。 基于已使用大小对这些快照进行计费。 例如，如果创建预配容量为 64 GiB 且实际使用数据大小为 10 GiB 的托管磁盘的快照，则仅针对已用数据大小 10 GiB 对该快照计费。  
 
 若要了解有关如何使用托管磁盘创建快照的详细信息，请查看下列资源：
 
-* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [创建作为托管磁盘在 Windows 中使用快照存储 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [创建作为托管磁盘在 Linux 中使用快照存储 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>映像
 
@@ -71,7 +79,7 @@ ms.locfileid: "58807443"
 有关创建映像的信息，请查看以下文章：
 
 * [如何在 Azure 中捕获通用 VM 的托管映像](../articles/virtual-machines/windows/capture-image-resource.md)
-* [如何使用 Azure CLI 生成和捕获 Linux 虚拟机](../articles/virtual-machines/linux/capture-image.md)
+* [如何通用化和捕获使用 Azure CLI 为 Linux 虚拟机](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>映像与快照
 

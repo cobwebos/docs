@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
-ms.openlocfilehash: c403bca3abf493448265e25316babe20ea9c8544
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
+ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272014"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358065"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
 
@@ -35,7 +35,7 @@ ms.locfileid: "59272014"
 
 ## <a name="release-notes"></a>发行说明
 
-[发行]] (https://aka.ms/csspeech/whatsnew)只要新版本则可更新。 这些说明包含有关新功能、 改进和 bug 修复的信息。
+[发行说明](https://aka.ms/csspeech/whatsnew)只要新版本则可更新。 这些说明包含有关新功能、 改进和 bug 修复的信息。
 
 ## <a name="search"></a>搜索
 

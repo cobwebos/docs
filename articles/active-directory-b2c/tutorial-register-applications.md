@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 02/05/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f79ecd96b15ff4ff96a3bb93061f0c9d7598191f
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 849bcfe2b5ee177d06b8e4cf62fd29459d2e59ce
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338150"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278388"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
 
@@ -48,7 +48,7 @@ ms.locfileid: "58338150"
 
 ## <a name="create-a-client-secret"></a>创建客户端机密
 
-如果应用程序将代码交换为令牌，则需要创建应用程序机密。
+如果你的应用程序交换令牌的代码，您需要创建应用程序密码。
 
 1. 选择“密钥”，然后单击“生成密钥”。
 2. 选择“保存”以查看密钥。 记下“应用密钥”值。 在应用程序的代码中将该值用作应用程序机密。

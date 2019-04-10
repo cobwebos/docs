@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: 6fe4f391b5337929efc3f6190a925fd1e967cf1c
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: e5a34a75c73401c567a0e898a1ce9f85cde96586
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55999345"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360533"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>使用视频索引器 API 自定义人员模型
 
@@ -50,11 +50,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Person
 curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
 ```
 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-PersonModel?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)。
 
 ### <a name="request-parameters"></a>请求参数 
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|**Type**|**需要**|**描述**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -95,11 +95,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Person
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
 ```
 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-PersonModel?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|**Type**|**需要**|**描述**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -132,11 +132,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Person
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
 ```
 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-PersonModels?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|**Type**|**需要**|**描述**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -187,11 +187,11 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Ind
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
 ```
 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-face?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?)。
 
 ### <a name="request-parameters"></a>请求参数
 
-|**名称**|类型|**必需**|**说明**|
+|**名称**|**Type**|**需要**|**描述**|
 |---|---|---|---|
 |位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
 |accountId|字符串|是|帐户的全局唯一标识符|
@@ -212,4 +212,4 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Vide
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用视频索引器网站自定义人员模型](customize-person-model-with-website.md)
+[自定义个人模型使用视频索引器网站](customize-person-model-with-website.md)

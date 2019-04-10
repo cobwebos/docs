@@ -7,17 +7,17 @@ ms.subservice: managed-instance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
-ms.reviewer: ''
+author: stevestein
+ms.author: sstein
+ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: c4f8144c3e941c673da3ecc9be7ac7f091583d4a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6362084c11ce7aa9078823758700239694162765
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864654"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359150"
 ---
 # <a name="managed-api-reference-for-azure-sql-database-managed-instances"></a>Azure SQL 数据库托管实例的托管 API 引用
 
@@ -58,14 +58,14 @@ ms.locfileid: "57864654"
 
 | Cmdlet | 描述 |
 | --- | --- |
-|[az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |创建托管实例|
-|[az sql mi list](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|列出可用的托管实例|
+|[az sql mi 创建](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create) |创建托管实例|
+|[az sql mi 列表](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-list)|列出可用的托管实例|
 |[az sql mi show](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-show)|获取托管实例的详细信息|
 |[az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)|更新托管实例|
 |[az sql mi delete](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-delete)|删除托管实例|
-|[az sql midb create](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |创建托管数据库|
-|[az sql midb list](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|列出可用的托管数据库|
-|[az sql midb restore](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|还原托管数据库|
+|[az sql midb 创建](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-create) |创建托管数据库|
+|[az sql midb 列表](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-list)|列出可用的托管数据库|
+|[az sql midb 还原](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-restore)|还原托管数据库|
 |[az sql midb delete](https://docs.microsoft.com/cli/azure/sql/midb#az-sql-midb-delete)|删除托管数据库|
 
 ## <a name="transact-sql-create-and-manage-instance-databases"></a>Transact-SQL：创建并管理实例数据库
@@ -79,7 +79,7 @@ ms.locfileid: "57864654"
 
 | 命令 | 描述 |
 | --- | --- |
-|[CREATE DATABASE](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|创建新的托管实例数据库。 必须连接到 master 数据库，才能新建数据库。|
+|[创建数据库](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current)|创建新的托管实例数据库。 必须连接到 master 数据库，才能新建数据库。|
 | [ALTER DATABASE](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-mi-current) |修改 Azure SQL 托管实例数据库。|
 
 ## <a name="rest-api-create-and-manage-managed-instances"></a>REST API：创建和管理托管实例
@@ -88,12 +88,12 @@ ms.locfileid: "57864654"
 
 | 命令 | 描述 |
 | --- | --- |
-|[托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|创建或更新托管实例。|
-|[托管实例 - 删除](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|删除托管实例。|
-|[托管实例 - 获取](https://docs.microsoft.com/rest/api/sql/managedinstances/get)|获取托管实例。|
-|[托管实例 - 列表](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|返回订阅中的托管实例列表。|
-|[托管实例 - 按资源组列出](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|返回资源组中的托管实例列表。|
-|[托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|更新托管实例。|
+|[托管实例的创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)|创建或更新托管实例。|
+|[托管的实例-删除](https://docs.microsoft.com/rest/api/sql/managedinstances/delete)|删除托管实例。|
+|[托管的实例-获取](https://docs.microsoft.com/rest/api/sql/managedinstances/get)|获取托管实例。|
+|[托管实例的列表](https://docs.microsoft.com/rest/api/sql/managedinstances/list)|返回订阅中的托管实例列表。|
+|[托管实例-按资源组的列表](https://docs.microsoft.com/rest/api/sql/managedinstances/listbyresourcegroup)|返回资源组中的托管实例列表。|
+|[托管的实例的更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)|更新托管实例。|
 
 ## <a name="next-steps"></a>后续步骤
 

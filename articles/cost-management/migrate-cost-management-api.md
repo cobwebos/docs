@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: d9c5d731120f939cf7fb28c718cc4159a3702e44
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518773"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279867"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>企业协议从迁移到 Microsoft 客户协议 Api
 
@@ -50,7 +50,7 @@ MCA Api 和新的集成使您能够：
 
 EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份验证。
 
-| 用途 | EA API | MCA API |
+| 目的 | EA API | MCA API |
 | --- | --- | --- |
 | 余额和信用额度 | [/balancesummary](/rest/api/billing/enterprise/billing-enterprise-api-balance-summary) | Microsoft.Billing/billingAccounts/billingProfiles/availableBalanceussae |
 | 使用情况 (JSON) | [/usagedetails](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format)[/usagedetailsbycustomdate](/rest/api/billing/enterprise/billing-enterprise-api-usage-detail#json-format) | [Microsoft.Consumption/usageDetails](/rest/api/consumption/usagedetails)<sup>1</sup> |
@@ -66,7 +66,7 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 
 以下 Api 可供 MCA 计费帐户：
 
-| 用途 | Microsoft 客户协议 (MCA) API |
+| 目的 | Microsoft 客户协议 (MCA) API |
 | --- | --- |
 | 计费帐户<sup>2</sup> | Microsoft.Billing/billingAccounts |
 | 计费配置文件<sup>2</sup> | Microsoft.Billing/billingAccounts/billingProfiles |
@@ -78,7 +78,7 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 
 如果使用任何现有 EA Api，你需要它们更新为支持 MCA 计费帐户。 下表显示了其他集成的更改：
 
-| 用途 | 旧的产品/服务 | 新产品/服务 |
+| 目的 | 旧的产品/服务 | 新产品/服务 |
 | --- | --- | --- |
 | Cloudyn | [Cloudyn.com](https://www.cloudyn.com) | [Azure 成本管理](https://azure.microsoft.com/services/cost-management/) |
 | Power BI | [Microsoft 使用情况见解](/power-bi/desktop-connect-azure-consumption-insights)内容包和连接器 | [Microsoft Azure 使用情况见解 Power BI 应用](https://appsource.microsoft.com/product/power-bi/pbi_azureconsumptioninsights.pbi-azure-consumptioninsights?tab=overview)和[Azure Consumption Insights 连接器](/power-bi/desktop-connect-azure-consumption-insights) |
@@ -126,7 +126,7 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 
 使用情况详细信息 API，所有成本管理 Api，都是可在多个作用域。 对于已开票成本，因为传统上会收到在注册级别，使用计费的配置文件范围。  有关成本管理作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
 
-| 类型 | ID 格式 |
+| Type | ID 格式 |
 | --- | --- |
 | 计费帐户 | `/Microsoft.Billing/billingAccounts/{billingAccountId}` |
 | 计费配置文件 | `/Microsoft.Billing/billingAccounts/{billingAccountId}/billingProfiles/{billingProfileId}` |
@@ -176,14 +176,14 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | AccountNameAccountOwnerId 和 AccountOwnerEmail | 不适用 | 不会跟踪订阅创建者。 使用 invoiceSectionName （与 departmentName 相同）。 |
 | 其他信息 | additionalInfo | &nbsp;  |
 | ChargesBilledSeparately | isAzureCreditEligible | 请注意，这些属性刚好相反。 如果 isAzureCreditEnabled 为 true，ChargesBilledSeparately 将为 false。 |
-| 已使用数量 | quantity | &nbsp; |
+| ConsumedQuantity | quantity | &nbsp; |
 | 已使用的服务 | consumedService | 确切的字符串值可能不同。 |
 | 已使用的服务 ID | 无 | &nbsp; |
-| 成本中心 | costCenter | &nbsp; |
-| 日期和 usageStartDate | date | &nbsp;  |
-| 天 | 无 | 分析日期的一天。 |
+| CostCenter | costCenter | &nbsp; |
+| 日期和 usageStartDate | 日期 | &nbsp;  |
+| 日期 | 无 | 分析日期的一天。 |
 | 部门 ID | invoiceSectionId | 确切的值不同。 |
-| 部门名称 | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
+| DepartmentName | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
 | ExtendedCost 和成本 | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
 | 为周期性费用 | 无 | &nbsp;  |
@@ -193,16 +193,16 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | 计量名称 | meterName | 确切的字符串值可能不同。 |
 | 计量区域 | meterRegion | 确切的字符串值可能不同。 |
 | 计量子类别 | meterSubCategory | 确切的字符串值可能不同。 |
-| 月 | 无 | 分析一个月中日期。 |
-| 产品/服务名称 | 无 | 使用 publisherName 和 productOrderName。 |
+| 月份 | 无 | 分析一个月中日期。 |
+| 产品名称 | 无 | 使用 publisherName 和 productOrderName。 |
 | OfferId | 无 | &nbsp;  |
 | 订单编号 | 无 | &nbsp;  |
 | PartNumber | 无 | 使用 meterId 和 productOrderName 来唯一标识的价格。 |
 | 计划名称 | productOrderName | &nbsp;  |
 | 产品 | 产品 |   |
-| 产品 ID | productId | 确切的字符串值而有所不同。 |
+| ProductId | productId | 确切的字符串值而有所不同。 |
 | 发布者名称 | publisherName | &nbsp;  |
-| 资源组 | resourceGroupName | &nbsp;  |
+| resourceGroup | resourceGroupName | &nbsp;  |
 | ResourceGuid | meterId | 确切的字符串值而有所不同。 |
 | 资源位置 | resourceLocation | &nbsp;  |
 | 资源位置 ID | 无 | &nbsp;  |
@@ -215,11 +215,11 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | 存储服务标识符 | 不适用 | &nbsp;  |
 | 订阅 Guid | subscriptionId | &nbsp;  |
 | SubscriptionId | subscriptionId | &nbsp;  |
-| 订阅名称 | subscriptionName | &nbsp;  |
+| SubscriptionName | subscriptionName | &nbsp;  |
 | 标记 | 标记 | 标记属性适用于根对象，而不是嵌套的属性属性。 |
 | 度量单位 | unitOfMeasure | 确切的字符串值而有所不同。 |
-| usageEndDate | date | &nbsp;  |
-| 年 | 无 | 分析日期的年份。 |
+| usageEndDate | 日期 | &nbsp;  |
+| 年龄 | 无 | 分析日期的年份。 |
 | (新建) | billingCurrency | 使用付费的货币。 |
 | (新建) | billingProfileId | 计费 （相同的注册） 的配置文件的唯一 ID。 |
 | (新建) | billingProfileName | 计费 （相同的注册） 的配置文件的名称。 |
@@ -430,7 +430,7 @@ Microsoft 客户协议下, 一节中使用的信息。 它提供了用于 Micros
 
 | 旧 Azure 资源管理器价格表 API 属性  | 新的 Microsoft 客户协议价目表 API 属性   | 描述 |
 | --- | --- | --- |
-| 计量 ID | _meterId_ | 测定仪的唯一标识符。 MeterId 相同。 |
+| 测定仪 ID | _meterId_ | 测定仪的唯一标识符。 MeterId 相同。 |
 | 计量名称 | meterName | 计量的名称。 指标表示 Azure 服务可部署资源。 |
 | 计量类别  | 服务 | 测定仪分类类别的名称。 与 Microsoft 客户协议价目表中的服务相同。 确切的字符串值而有所不同。 |
 | 计量子类别 | meterSubCategory | 计量子分类类别的名称。 基于在服务中的高级功能集差异的分类。 例如，基本 SQL DB 的 vs 标准 SQL 数据库。 |

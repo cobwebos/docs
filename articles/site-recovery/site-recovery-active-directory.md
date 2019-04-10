@@ -7,14 +7,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/27/2018
+ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: f4da0a4672bc50688d0a25bbd2db1f3be984ee8b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55821382"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358045"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 
@@ -24,7 +24,7 @@ ms.locfileid: "55821382"
 
 本文介绍如何为 Active Directory 创建灾难恢复解决方案。 其中包括先决条件，以及故障转移的说明。 开始之前，应先熟悉 Active Directory 和 Site Recovery。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 如果要复制到 Azure，请[准备 Azure 资源](tutorial-prepare-azure.md)，包括订阅、Azure 虚拟网络、存储帐户和恢复服务保管库。
 * 查看所有组件的[支持要求](site-recovery-support-matrix-to-azure.md)。
@@ -106,9 +106,9 @@ ms.locfileid: "55821382"
 从 Windows Server 2012 开始，[Active Directory 域服务 (AD DS) 中内置了额外的安全措施](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)。 如果底层虚拟机监控程序平台支持 VM-GenerationID，这些安全措施就可以防止虚拟化域控制器出现 USN 回退。 Azure 支持 VM-GenerationID。 因此，在 Azure 虚拟机上运行 Windows Server 2012 或更高版本的域控制器具有额外的安全防护措施。
 
 
-重置 VM-GenerationID 时，AD DS 数据库的 InvocationID 值也会被重置。 除此之外，还放弃了 RID 池，将 SYSVOL 标记为非授权。 有关详细信息，请参阅 [Active Directory 域服务虚拟化简介](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全虚拟化 DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)。
+重置 VM-GenerationID 时，AD DS 数据库的 InvocationID 值也会被重置。 此外，放弃 RID 池，并标记为非权威 sysvol 文件夹。 有关详细信息，请参阅 [Active Directory 域服务虚拟化简介](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)和[安全虚拟化 DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)。
 
-故障转移到 Azure 可能会导致 VM-GenerationID重置。 域控制器虚拟机在 Azure 中启动时，重置 VM-GenerationID会触发额外的安全措施。 尝试登录域控制器虚拟机时，这可能会导致严重的延迟。
+故障转移到 Azure 可能会导致 VM-GenerationID重置。 域控制器虚拟机在 Azure 中启动时，重置 VM-GenerationID会触发额外的安全措施。 这可能会导致*长的延迟*能够登录到域控制器虚拟机。
 
 由于该域控制器仅用于测试故障转移，因此不需要实施虚拟化安全措施。 要确保域控制器虚拟机的 VM-GenerationID 值不改变，可在本地域控制器中将下述 DWORD 的值更改为 4：
 
@@ -128,11 +128,11 @@ ms.locfileid: "55821382"
 
     ![调用 ID 更改](./media/site-recovery-active-directory/Event1109.png)
 
-* SYSVOL 和 NETLOGON 共享不可用。
+* Sysvol 文件夹和 NETLOGON 共享不可用。
 
-    ![SYSVOL 共享](./media/site-recovery-active-directory/sysvolshare.png)
+    ![Sysvol 文件夹共享](./media/site-recovery-active-directory/sysvolshare.png)
 
-    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+    ![NtFrs sysvol 文件夹](./media/site-recovery-active-directory/Event13565.png)
 
 * DFSR 数据库被删除。
 
@@ -146,7 +146,7 @@ ms.locfileid: "55821382"
 >
 >
 
-1. 在命令提示符处运行以下命令，检查是否已共享 SYSVOL 和 NETLOGON 文件夹：
+1. 在命令提示符处，运行以下命令以检查是否共享了 sysvol 文件夹和 NETLOGON 文件夹：
 
     `NET SHARE`
 
@@ -166,7 +166,7 @@ ms.locfileid: "55821382"
     * 虽然不推荐 [FRS 复制](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)，但如果使用了 FRS 复制，请按照步骤执行授权还原。 [使用 BurFlags 注册表项重新初始化文件复制服务](https://support.microsoft.com/kb/290762)中介绍了该过程。
 
         有关 BurFlags 的详细信息，请参阅博客文章 [D2 和 D4：它的作用是什么？](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)。
-    * 如果使用 DFSR 复制，请完成授权还原步骤。 [强制进行 DFSR 复制的 SYSVOL（如 FRS 的“D4/D2”）的授权和非授权同步](https://support.microsoft.com/kb/2218556)中介绍了该过程。
+    * 如果使用 DFSR 复制，请完成授权还原步骤。 中介绍该过程[强制 DFSR 复制的 sysvol 文件夹 （如"D4/D2"frs) 的权威和非权威同步](https://support.microsoft.com/kb/2218556)。
 
         还可以使用 PowerShell 函数。 有关详细信息，请参阅 [DFSR-SYSVOL 授权/非授权还原 PowerShell 函数](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)。
 

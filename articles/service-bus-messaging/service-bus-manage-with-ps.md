@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/21/2018
 ms.author: aschhab
-ms.openlocfilehash: 9810baf433ddf67997aeda10856060edc0d1ebec
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051147"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359133"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>使用 PowerShell 管理服务总线资源
 
@@ -37,7 +37,7 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 * 配备 Azure PowerShell 的计算机。 有关说明，请参阅 [Azure PowerShell cmdlet 入门](/powershell/azure/get-started-azureps)。
 * 大致了解 PowerShell 脚本、NuGet 包和 .NET Framework。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 第一步是使用 PowerShell 登录 Azure 帐户和 Azure 订阅。 按照 [Azure PowerShell cmdlet 入门](/powershell/azure/get-started-azureps)中的说明登录 Azure 帐户，检索并访问 Azure 订阅中的资源。
 
@@ -83,11 +83,11 @@ Microsoft Azure PowerShell 是一个脚本编写环境，可用于控制和自�
 
 ### <a name="create-a-namespace-authorization-rule"></a>创建命名空间授权规则
 
-下面的示例演示如何管理使用的命名空间授权规则[新建 AzServiceBusNamespaceAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusnamespaceauthorizationrule)， [Get AzServiceBusNamespaceAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusnamespaceauthorizationrule)， [集 AzServiceBusNamespaceAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusnamespaceauthorizationrule)，并[删除 AzServiceBusNamespaceAuthorizationRule cmdlet](/powershell/module/az.servicebus/remove-azservicebusnamespaceauthorizationrule)。
+下面的示例演示如何管理使用的命名空间授权规则[新建 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule)， [Get AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule)， [集 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)，并[删除 AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) cmdlet。
 
 ```powershell
 # Query to see if rule exists
-$CurrentRule = Get-AzServiceBusNamespaceAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
+$CurrentRule = Get-AzServiceBusAuthorizationRule -ResourceGroup $ResGrpName -NamespaceName $Namespace -AuthorizationRuleName $AuthRule
 
 # Check if the rule already exists or needs to be created
 if ($CurrentRule)

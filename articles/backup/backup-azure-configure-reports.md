@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
-ms.openlocfilehash: dbfe33d062c4609ba29adbaa2d9956687115cb5a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440992"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278813"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文介绍了如何使用恢复服务保管库为 Azure 备份配置报表。 还介绍了如何使用 Power BI 访问报表。 完成这些步骤后，可以直接转到 Power BI 来查看、自定义和创建报表。
@@ -43,9 +43,6 @@ ms.locfileid: "57440992"
 
    * 在资源列表中，输入“恢复服务”。
    * 开始键入时，会根据输入筛选该列表。 出现“**恢复服务保管库**”时，请选择它。
-
-      ![创建恢复服务保管库步骤 1](./media/backup-azure-vms-encryption/browse-to-rs-vaults.png) <br/>
-
    * 此时会显示恢复服务保管库列表。 在恢复服务保管库列表中选择一个保管库。
 
      此时会打开选定的保管库仪表板。
@@ -154,5 +151,5 @@ ms.locfileid: "57440992"
 配置存储帐户并导入 Azure 备份内容包后，下一步是自定义这些报表，并使用报表数据模型创建报表。 有关详细信息，请参阅以下文章。
 
 * [使用 Azure 备份报表数据模型](backup-azure-reports-data-model.md)
-* [在 Power BI 中筛选报表](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+* [Power BI 中的筛选器报表](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
 * [在 Power BI 中创建报表](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

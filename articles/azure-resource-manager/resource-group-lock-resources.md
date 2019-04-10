@@ -4,22 +4,20 @@ description: 通过对所有用户和角色应用锁，来防止用户更新或�
 services: azure-resource-manager
 documentationcenter: ''
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: 53c57e8f-741c-4026-80e0-f4c02638c98b
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/21/2019
+ms.date: 04/08/2019
 ms.author: tomfitz
-ms.openlocfilehash: 83518825c91cdd727b3d4fb9ecc86d51dea8fc26
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.openlocfilehash: 8942ae9a24613f7b7896cf7124b344d9d9315954
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56649163"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360446"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>锁定资源以防止意外更改 
 
@@ -36,26 +34,46 @@ ms.locfileid: "56649163"
 
 与基于角色的访问控制不同，可以使用管理锁来对所有用户和角色应用限制。 若要了解如何为用户和角色设置权限，请参阅 [Azure 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。
 
-Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁将阻止你删除或修改该数据库，但它不会阻止你创建、 更新或删除数据库中的数据。 允许数据事务，因为这些操作不会发送到`https://management.azure.com`。
+Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到 `https://management.azure.com` 的操作。 这类锁不会限制资源如何执行各自的函数。 资源更改将受到限制，但资源操作不受限制。 例如，SQL 数据库上的 ReadOnly 锁会阻止你删除或修改数据库。 它不会阻止你在数据库中创建、更新或删除数据。 允许数据事务，因为这些操作不会发送到 `https://management.azure.com`。
 
 应用 **ReadOnly** 可能会导致意外结果，因为看起来好像读取操作的某些操作实际上需要其他操作。 例如，在存储帐户上放置 **ReadOnly** 锁会阻止所有用户列出密钥。 列出密钥操作通过 POST 请求进行处理，因为返回的密钥可用于写入操作。 另举一例，在应用服务资源上放置 **ReadOnly** 锁将阻止 Visual Studio 服务器资源管理器显示资源文件，因为该交互需要写访问权限。
 
-## <a name="who-can-create-or-delete-locks-in-your-organization"></a>谁可以在组织中创建或删除锁
+## <a name="who-can-create-or-delete-locks"></a>谁可以创建或删除锁
 若要创建或删除管理锁，必须有权执行 `Microsoft.Authorization/*` 或 `Microsoft.Authorization/locks/*` 操作。 在内置角色中，只有“所有者”和“用户访问管理员”有权执行这些操作。
+
+## <a name="managed-applications-and-locks"></a>托管应用程序和锁
+
+使用某些 Azure 服务，例如 Azure Databricks[托管应用程序](../managed-applications/overview.md)来实现该服务。 在这种情况下，该服务创建两个资源组。 一个资源组包含服务的概述，并且不会锁定。 另一个资源组包含服务的基础结构，并且被锁定。
+
+如果尝试删除基础结构资源组，您将获得一个错误，指出该资源组已锁定。 如果你尝试删除基础结构资源组的锁定，您将获取一个错误，指出无法删除该锁，因为它属于系统应用程序。
+
+相反，删除服务，这也会删除基础结构资源组。
+
+对于托管应用程序，选择部署的服务。
+
+![选择服务](./media/resource-group-lock-resources/select-service.png)
+
+请注意该服务包含的链接**管理的资源组**。 该资源组包含基础结构，并且被锁定。 不能直接删除。
+
+![显示被管理的组](./media/resource-group-lock-resources/show-managed-group.png)
+
+若要删除所有内容对于服务，包括基础结构已锁定的资源组，请选择**删除**服务。
+
+![删除服务](./media/resource-group-lock-resources/delete-service.png)
 
 ## <a name="portal"></a>门户
 [!INCLUDE [resource-manager-lock-resources](../../includes/resource-manager-lock-resources.md)]
 
 ## <a name="template"></a>模板
 
-使用资源管理器模板部署一个锁时, 用于不同的值的名称和根据范围的锁的类型。
+使用资源管理器模板来部署某个锁定时，请根据锁定范围对名称和类型使用不同的值。
 
-当应用到锁**资源**，使用以下格式：
+对**资源**应用锁定时，请使用以下格式：
 
 * name - `{resourceName}/Microsoft.Authorization/{lockName}`
 * type - `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
-当应用到锁**资源组**或**订阅**，使用以下格式：
+对**资源组**或**订阅**应用锁定时，请使用以下格式：
 
 * name - `{lockName}`
 * type - `Microsoft.Authorization/locks`
@@ -117,7 +135,7 @@ Resource Manager 锁仅适用于管理平面内发生的操作，包括发送到
 }
 ```
 
-有关设置锁在资源组的示例，请参阅[创建资源组，并将其锁定](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
+如需在资源组上设置锁定的示例，请参阅[创建资源组并将其锁定](https://github.com/Azure/azure-quickstart-templates/tree/master/subscription-level-deployments/create-rg-lock-role-assignment)。
 
 ## <a name="powershell"></a>PowerShell
 可以通过 Azure PowerShell 使用 [New-AzResourceLock](/powershell/module/az.resources/new-azresourcelock) 命令锁定已部署的资源。
@@ -207,7 +225,7 @@ az lock delete --ids $lockid
 
     PUT https://management.azure.com/{scope}/providers/Microsoft.Authorization/locks/{lock-name}?api-version={api-version}
 
-作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api 版本，请使用**2016年-09-01**。
+作用域可能是订阅、资源组或资源。 锁名称可以是想要对该锁使用的任何称谓。 对于 api 版本，请使用 **2016-09-01**。
 
 在请求中，包括指定锁属性的 JSON 对象。
 

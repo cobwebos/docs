@@ -5,15 +5,15 @@ author: alkohli
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 12/11/2018
+ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: c7e78f89883e5cfc3fc8b9088c3ac0b3166682c7
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e60a58a8d2f1c69728a2d049fe1414ca1997893e
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878173"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283267"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
 
@@ -31,7 +31,7 @@ ms.locfileid: "58878173"
 - 拥有运行[受支持 OS 版本](storage-import-export-requirements.md#supported-operating-systems)的 Windows 系统。 
 - 在 Windows 系统上启用 BitLocker。 请参阅[如何启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/)。
 - 在 Windows 系统上[下载 WAImportExport 版本 1](https://aka.ms/waiev1)。 解压缩到默认文件夹 `waimportexportv1`。 例如，`C:\WaImportExportV1`。
-- 具有 FedEx/DHL 帐户。  
+- 具有 FedEx/DHL 帐户。 如果你想要使用非 FedEx/DHL 快递商，请联系 Azure 数据框操作团队`adbops@microsoft.com`。  
     - 该帐户必须是有余额的有效帐户，且有退货功能。
     - 生成导出作业的跟踪号。
     - 每个作业都应有一个单独的跟踪号。 不支持多个作业共享相同跟踪号。
@@ -49,7 +49,7 @@ ms.locfileid: "58878173"
 1.  在每个驱动器上创建一个 NTFS 卷。 为卷分配驱动器号。 不要使用装入点。
 2.  在 NTFS 卷上启用 BitLocker 加密。 如果使用某个 Windows Server 系统，请使用[如何在 Windows Server 2012 R2 上启用 BitLocker](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/) 中的说明。
 3.  将数据复制到加密的卷。 可使用拖放或 Robocopy 或任何类似的复制工具。
-4.  使用管理权限打开 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
+4.  使用管理权限打开一个 PowerShell 或命令行窗口。 若要将目录切换到解压缩的文件夹，请运行以下命令：
     
     `cd C:\WaImportExportV1`
 5.  若要获取驱动器的 BitLocker 密钥，请运行以下命令：
@@ -113,7 +113,7 @@ ms.locfileid: "58878173"
 
 4. 在“回寄信息”中：
 
-   - 从下拉列表中选择承运商。
+   - 从下拉列表中选择承运商。 如果你想要使用非 FedEx/DHL 快递商，请从下拉列表中选择一个现有的选项。 联系 Azure 数据框操作团队的`adbops@microsoft.com`与你打算使用与运营商相关的信息。
    - 输入你已在该承运商那里创建的有效承运商帐户编号。 导入作业完成后，Microsoft 使用此帐户寄回驱动器。 如果还没有帐户编号，请创建一个 [FedEx](https://www.fedex.com/us/oadr/) 或 [DHL](http://www.dhl.com/) 承运商帐户。
    - 提供完整、有效的联系人姓名、电话号码、电子邮件地址、街道地址、城市、邮政编码、省/自治区/直辖市和国家/地区。 
         

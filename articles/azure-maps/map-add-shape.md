@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 43406aee8d2e350b82659156bb2837e952fd4a92
-ms.sourcegitcommit: b4ad15a9ffcfd07351836ffedf9692a3b5d0ac86
-ms.translationtype: HT
+ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59057018"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282383"
 ---
 # <a name="add-a-shape-to-a-map"></a>向地图添加形状
 
@@ -35,7 +35,7 @@ ms.locfileid: "59057018"
 
 在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 将创建 [LineString](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.linestring?view=azure-iot-typescript-latest) 对象并将其添加到数据源。
 
-[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 呈现 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的线条对象。 最后一个代码块创建一个线条层并将其添加到地图。 请参阅 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和线条层并将其添加到地图，以确保完全加载地图后显示该线条。
+[LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 呈现 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的线条对象。 最后一个代码块创建一个线条层并将其添加到地图。 请参阅 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。 创建并添加到映射中的数据源和线条层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保映射完全加载后显示的行。
 
 ### <a name="add-symbols-along-a-line"></a>添加沿着一条线的符号
 
@@ -49,7 +49,7 @@ ms.locfileid: "59057018"
 
 ### <a name="line-stroke-gradient"></a> 将笔划渐变添加到行
 
-除了能够将单个笔画颜色应用到的行之外还可以使用渐变的颜色以显示一条线段从过渡到下一步中填充行。 例如，可以使用行渐变来表示随时间和距离或不同的温度的更改，跨连接的直线的对象。 若要将此功能应用于行，数据源必须具有`lineMetrics`选项设置为 true，并随后的颜色渐变的表达式可以传递到`strokeColor`行的选项。 笔划渐变表达式具有到引用`['line-progress']`公开为表达式计算出来的曲线指标数据表达式。
+除了能够将单个笔画颜色应用到的行之外还可以使用渐变的颜色以显示一条线段从过渡到下一步中填充行。 例如，可以使用行渐变来表示随时间和距离或不同的温度的更改，跨连接的直线的对象。 若要将此功能应用于行，数据源必须具有`lineMetrics`选项设置为 true，并随后的颜色渐变的表达式可以传递到`strokeColor`行的选项。 笔划渐变表达式具有到引用`['line-progress']`公开为表达式计算出来的曲线指标的数据表达式。
 
 <br/>
 
@@ -83,7 +83,7 @@ ms.locfileid: "59057018"
 
 在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 将从坐标数组创建 [Polygon](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.polygon?view=azure-iot-typescript-latest) 并将其添加到数据源。 
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和多边形层并将其添加到地图，以确保完全加载地图后显示该多边形。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 创建并添加到映射中的数据源和多边形层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保此多边形映射完全加载后显示。
 
 ### <a name="use-a-polygon-and-line-layer-together"></a>一起使用的多边形和线层
 
@@ -98,7 +98,7 @@ ms.locfileid: "59057018"
 
 [PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 [LineLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.linelayer?view=azure-iot-typescript-latest) 是一系列线条。 请参阅 [LineLayerOptions](/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest) 中介绍的线条层属性。 第三个代码块创建多边形和线条层。
 
-最后一个代码块将多边形和线条层添加到地图。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和层并将其添加到地图，以确保完全加载地图后显示该多边形。
+最后一个代码块将多边形和线条层添加到地图。 创建并添加到映射中的数据源和层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保此多边形映射完全加载后显示。
 
 > [!TIP]
 > 线条层默认情况下将呈现为数据源中的行或多边形的坐标。 若要限制层，以便它仅呈现 LineString 功能集`filter`到层的属性`['==', ['geometry-type'], 'LineString']`或`['any', ['==', ['geometry-type'], 'LineString'], ['==', ['geometry-type'], 'MultiLineString']]`如果你想要包括 MultiLineString 的功能。
@@ -126,7 +126,7 @@ ms.locfileid: "59057018"
 
 ## <a name="add-a-circle-to-the-map"></a>向映射添加一个圆圈
 
-Azure Maps 使用 GeoJSON 架构提供圆圈所述的定义的扩展的版本[此处](extend-geojson.md#circle)。 可以通过创建代码图上呈现一个圆圈`Point`具有的功能`subType`属性值为`Circle`和一个`radius`属性，其中包含大量表示以米为单位的半径。 例如：
+Azure Maps 使用提供的圆所述定义 GeoJSON 架构的扩展的版本[此处](extend-geojson.md#circle)。 可以通过创建代码图上呈现一个圆圈`Point`具有的功能`subType`属性值为`"Circle"`和一个`radius`属性具有一个数字，表示以米为单位的半径。 例如：
 
 ```javascript
 {
@@ -149,9 +149,9 @@ Azure Maps Web SDK 将这些数据转换`Pooint`功能到`Polygon`功能在后�
 
 上述代码中的第一个代码块构造 Map 对象。 有关说明，可以参阅[创建地图](./map-create.md)。
 
-在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 圆是 [Point](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest) 的[特征](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)，其中将 `subType` 属性设置为“圆”并计量 `radius` 属性值。 将子类型为“圆”的 Point 特征添加到数据源后，会将其转换为地图内的环状多边形。
+在第二个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 是一个圆[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)的[点](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.point?view=azure-iot-typescript-latest)并且具有`subType`属性设置为`"Circle"`和`radius`以米为单位的属性值。 时具有的点功能`subType`的`"Circle"`添加到数据源，则其转换为地图内的循环多边形。
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源和多边形层并将其添加到地图，以确保完全加载地图后显示该圆。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 最后一个代码块创建一个多边形层并将其添加到地图。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 创建并添加到映射中的数据源和多边形层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保映射完全加载后，显示该圆形。
 
 ## <a name="make-a-geometry-easy-to-update"></a>轻松地更新几何图形
 
@@ -171,14 +171,11 @@ Azure Maps Web SDK 将这些数据转换`Pooint`功能到`Polygon`功能在后�
 
 在第四个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 然后将点添加到数据源。
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 第三个代码块创建多边形层。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 在[事件侦听器](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)函数中创建数据源、点击事件侦听器和多边形层并将其添加到地图，以确保完全加载地图后显示该点。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 第三个代码块创建多边形层。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 创建和添加到映射中的数据源、 单击事件 hanlder 和多边形层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保该映射完全加载后，会显示的点。
 
 ## <a name="next-steps"></a>后续步骤
 
 有关可向地图添加的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [HTML 标记](./map-add-custom-html.md)
-
-> [!div class="nextstepaction"]
-> [添加热度地图层](./map-add-heat-map-layer.md)
+> [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)

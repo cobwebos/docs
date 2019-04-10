@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 5dd77d85e06a821d8dd359174bb5de6bca8b4d61
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: b205f7782dc14c9108032d2b4a274f884194874e
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669770"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357857"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -187,11 +187,11 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 1. 检查端口配置。 指定的端口号应在下面的所有资产中都完全相同：
     * **Dockerfile：** 通过 `EXPOSE` 指令指定。
     * **[Helm 图表](https://docs.helm.sh)：** 通过服务的 `externalPort` 和 `internalPort` 值（通常位于 `values.yml` 文件中）指定。
-    * 在应用程序代码（例如，Node.js 的 `var server = app.listen(80, function () {...}` ）中打开的任何端口
+    * 任何应用程序代码，例如在 Node.js 中打开的端口： `var server = app.listen(80, function () {...}`
 
 
 ## <a name="config-file-not-found"></a>找不到配置文件
-运行 `azds up`，然后出现以下错误：`Config file not found: .../azds.yaml`
+在运行`azds up`并出现以下错误： `Config file not found: .../azds.yaml`
 
 ### <a name="reason"></a>原因
 必须从要运行的代码的根目录运行 `azds up`，并且必须初始化代码文件夹，以便使用 Azure Dev Spaces 来运行。
@@ -208,7 +208,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 2. 再次按 F5。
 
 ## <a name="debugging-error-failed-to-find-debugger-extension-for-typecoreclr"></a>调试错误“无法找到类型为 coreclr 的调试器扩展”
-运行 VS Code 调试器时，报告错误：`Failed to find debugger extension for type:coreclr.`
+运行 VS Code 调试程序时报告错误： `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>原因
 未在开发计算机上安装适用于 C# 的 VS Code 扩展。 C#扩展插件包括调试.NET Core (CoreCLR) 的支持。
@@ -217,7 +217,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 安装[适用于 C# 的 VS Code 扩展](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)。
 
 ## <a name="debugging-error-configured-debug-type-coreclr-is-not-supported"></a>调试错误“已配置的调试类型 'coreclr' 不受支持”
-运行 VS Code 调试器时，报告错误：`Configured debug type 'coreclr' is not supported.`
+运行 VS Code 调试程序时报告错误： `Configured debug type 'coreclr' is not supported.`
 
 ### <a name="reason"></a>原因
 未在开发计算机上安装适用于 Azure Dev Spaces 的 VS Code 扩展。
@@ -226,7 +226,7 @@ Azure Dev Spaces 为 C# 和 Node.js 提供本机支持。 在包含以下列语�
 安装[适用于 Azure Dev Spaces 的 VS Code 扩展](get-started-netcore.md)。
 
 ## <a name="debugging-error-invalid-cwd-value-src-the-system-cannot-find-the-file-specified-or-launch-program-srcpath-to-project-binary-does-not-exist"></a>调试错误“无效的 'cwd' 值 '/src'。 系统找不到指定的文件。” 或者“launch: program‘/src/[项目二进制文件的路径]’不存在”
-运行 VS Code 调试程序报告了错误 `Invalid 'cwd' value '/src'. The system cannot find the file specified.` 和/或 `launch: program '/src/[path to project executable]' does not exist`
+运行 VS Code 调试程序报告错误`Invalid 'cwd' value '/src'. The system cannot find the file specified.`和/或 `launch: program '/src/[path to project executable]' does not exist`
 
 ### <a name="reason"></a>原因
 默认情况下，VS Code 扩展使用 `src` 作为项目在容器上的工作目录。 如果你已更新了 `Dockerfile` 来指定一个不同的工作目录，则可能会看到此错误。

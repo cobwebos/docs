@@ -2,17 +2,17 @@
 title: 如何有效地使用 Azure Maps 搜索服务搜索 |Microsoft Docs
 description: 了解如何使用 Azure Maps 搜索服务搜索使用最佳方案
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 04/08/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 3a9c5ad92494dd82500c4faee82c119e99346c7a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288151"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358142"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure 地图搜索服务的最佳做法
 
@@ -83,7 +83,7 @@ Azure Maps[搜索服务](https://docs.microsoft.com/rest/api/maps/search)包含�
 **示例请求：**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?api-version=1.0&subscription-key={subscription-key}&query=MicrosoftWay&entityType=Municipality
+https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscription-key={subscription-key}&query=47.6394532,-122.1304551&language=en-US&entityType=Municipality
 ```
 
 **响应：**
@@ -240,14 +240,20 @@ https://atlas.microsoft.com/search/address/json?subscription-key={subscription-k
 
 ### <a name="uri-encoding-to-handle-special-characters"></a>URI 编码来处理特殊字符 
 
-若要查找十字路口地址，即，第一种途径和 Union Street，西雅图，特殊字符 & 需要发送请求之前进行编码。 我们建议编码的 URI 中的字符数据使用 %字符进行编码的所有字符的位置以及为其 utf-8 字符相对应的两个字符十六进制值。
+若要查找交叉街道地址，即"第一种途径 & 联合 Street，西雅图"、 特殊字符 & 发送请求之前要编码的需求。 我们建议编码的 URI 中的字符数据使用 %字符进行编码的所有字符的位置以及为其 utf-8 字符相对应的两个字符十六进制值。
 
 **用法示例**:
 
 获取搜索地址：
 
 ```
-query=1st Avenue & E 111th St, New York shall be encoded as query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York 
+query=1st Avenue & E 111th St, New York
+```
+
+ 应编码为：
+
+```
+query"=1st%20Avenue%20%26%20E%20111th%20St%2C%20New%20York
 ```
 
 
@@ -315,7 +321,7 @@ url.QueryEscape(query)
 **示例查询：**
 
 ```HTTP
-https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas station&limit=3&lat=47.6413362&lon=-122.1327968
+https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&api-version=1.0&query=gas%20station&limit=3&lat=47.6413362&lon=-122.1327968
 ```
 
 **响应：**
@@ -402,72 +408,7 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
                 }
             ]
         },
-        {
-            "type": "POI",
-            "id": "US/POI/p0/7728133",
-            "score": 5.663,
-            "dist": 1330.1278248163273,
-            "info": "search:ta:840539001100326-US",
-            "poi": {
-                "name": "76",
-                "phone": "+(1)-(425)-7472126",
-                "brands": [
-                    {
-                        "name": "76"
-                    }
-                ],
-                "url": "www.76.com/",
-                "classifications": [
-                    {
-                        "code": "PETROL_STATION",
-                        "names": [
-                            {
-                                "nameLocale": "en-US",
-                                "name": "petrol station"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "address": {
-                "streetNumber": "2421",
-                "streetName": "148th Ave NE",
-                "municipalitySubdivision": "Redmond, Bellevue",
-                "municipality": "Redmond, Bellevue",
-                "countrySecondarySubdivision": "King",
-                "countryTertiarySubdivision": "Seattle East",
-                "countrySubdivision": "WA",
-                "postalCode": "98007",
-                "countryCode": "US",
-                "country": "United States Of America",
-                "countryCodeISO3": "USA",
-                "freeformAddress": "2421 148th Ave NE, Bellevue, WA 98007",
-                "countrySubdivisionName": "Washington"
-            },
-            "position": {
-                "lat": 47.63187,
-                "lon": -122.14365
-            },
-            "viewport": {
-                "topLeftPoint": {
-                    "lat": 47.63277,
-                    "lon": -122.14498
-                },
-                "btmRightPoint": {
-                    "lat": 47.63097,
-                    "lon": -122.14232
-                }
-            },
-            "entryPoints": [
-                {
-                    "type": "main",
-                    "position": {
-                        "lat": 47.63186,
-                        "lon": -122.14313
-                    }
-                }
-            ]
-        },
+        ...,
         {
             "type": "POI",
             "id": "US/POI/p0/7727106",
@@ -559,31 +500,31 @@ https://atlas.microsoft.com/search/poi/json?subscription-key={subscription-key}&
 **示例查询：**
 
 ```HTTP
-https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400BroadSt,Seattle,WA&countrySet=US
+https://atlas.microsoft.com/search/address/json?subscription-key={subscription-key}&api-version=1&query=400%20Broad%20Street%2C%20Seattle%2C%20WA&countrySet=US
 ```
 
-进一步让我们看下面的响应结构。 在响应中的结果对象的结果类型是不同的。 如果仔细观察你可以看到我们有三种不同类型的结果对象，该是点地址、 街道和十字路口。 请注意，该地址搜索未返回 Poi。 `Score`为每个响应对象的参数指示相对的匹配分数对同一响应中其他对象的分数。 请参阅[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)若要了解有关响应对象参数的详细信息。
+进一步让我们看下面的响应结构。 在响应中的结果对象的结果类型是不同的。 如果仔细观察你可以看到我们有三种不同类型的结果对象，它是"点地址"、"Street"和"跨 Street"。 请注意，该地址搜索未返回 Poi。 `Score`为每个响应对象的参数指示相对的匹配分数对同一响应中其他对象的分数。 请参阅[获取搜索地址](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress)若要了解有关响应对象参数的详细信息。
 
 **支持的结果类型：**
 
-**点地址：** 具有街道名称和编号与特定地址的映射的点。 可用地址的准确性最高级别。 
+* **点地址：** 具有街道名称和编号与特定地址的映射的点。 可用地址的准确性最高级别。 
 
-**地址范围：** 对于某些街道有开头和结尾街道; 的内插的地址点这些点表示为地址范围。 
+* **地址范围：** 对于某些街道有开头和结尾街道; 的内插的地址点这些点表示为地址范围。 
 
-**地理位置：** 它是表示管理部门的土地的地图、 国家/地区、 状态、 城市的区域。 
+* **地理位置：** 它是表示管理部门的土地的地图、 国家/地区、 状态、 城市的区域。 
 
-**POI-（感兴趣的点）：** 值得注意，可能感兴趣点，在地图上。
+* **POI-（感兴趣的点）：** 值得注意，可能感兴趣点，在地图上。
 
-**街道：** 在地图上的街道的表示形式。 地址将解析为包含地址的街道名的纬度/经度坐标。 门牌号码可能不会处理。 
+* **街道：** 在地图上的街道的表示形式。 地址将解析为包含地址的街道名的纬度/经度坐标。 门牌号码可能不会处理。 
 
-**十字路口：** 交集。 交接点; 的表示形式两个街道相交的位置。
+* **十字路口：** 交集。 交接点; 的表示形式两个街道相交的位置。
 
 **响应：**
 
 ```JSON
 {
     "summary": {
-        "query": "400 broad st seattle wa",
+        "query": "400 broad street seattle wa",
         "queryType": "NON_NEAR",
         "queryTime": 129,
         "numResults": 6,

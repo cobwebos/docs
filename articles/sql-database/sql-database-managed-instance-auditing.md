@@ -13,20 +13,20 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: d283cfa18d31e360aed78ae5262c5416f94c0676
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.date: 04/08/2019
+ms.openlocfilehash: fc8b300cea714ee44f826a78ce8c7a10c1443414
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086048"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282111"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
 
 [托管实例](sql-database-managed-instance.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
-- 实现并促进遵从合规标准，但不能保证合规性。 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
 
@@ -60,7 +60,7 @@ ms.locfileid: "58086048"
 
         ![Blob 容器属性按钮](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. 通过单击复制图标来复制容器 URL并保存该 URL（例如在记事本中）供将来使用。 容器 URL 格式应当为 `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. 通过单击复制图标来复制容器 URL并保存该 URL（例如在记事本中）供将来使用。 容器 URL 格式应为 `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![Blob 容器复制 URL](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -154,8 +154,8 @@ ms.locfileid: "58086048"
 
 了解更多信息：
 
-- [Azure SQL 数据库中的单一数据库、弹性池和托管实例以及 SQL Server 中的数据库之间的审核差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
-- [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
+- [审核 Azure SQL 数据库和 SQL Server 数据库中单一数据库、 弹性池、 s 和托管的实例之间的差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [创建服务器审核](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
 ## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>为您的服务器到事件中心或 Azure Monitor 日志设置审核
@@ -237,12 +237,12 @@ Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 - 一种新语法`TO EXTERNAL MONITOR`用于启用的事件中心和 Azure Monitor 日志目标。
 - **不支持** `TO FILE` 语法，因为 SQL 数据库无法访问 Windows 文件共享。
 - **不支持**关闭选项。
-- **不支持** `queue_delay` 为 0。
+- `queue_delay` 0**不支持**。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
-- 有关可帮助遵从标准 Azure 计划的详细信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)。
+- 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://azure.microsoft.com/support/trust-center/compliance/)在哪里可以找到 SQL 数据库法规认证的最新列表。
 
 <!--Image references-->
 

@@ -11,12 +11,12 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 1528b5e92e1952bf85799afd71bd5dac16aedcf4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878292"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280887"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
 
@@ -87,6 +87,8 @@ model = Model.register(model_path = "outputs/sklearn_mnist_model.pkl",
 
 对于 **Azure 容器实例**、**Azure Kubernetes 服务**和 **Azure IoT Edge** 部署，将使用 [azureml.core.image.ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) 类来创建映像配置。 然后，使用映像配置创建新的 Docker 映像。
 
+创建映像配置时，可以使用__默认图像__提供的 Azure 机器学习服务或__自定义映像__您提供的。
+
 以下代码演示如何创建新的映像配置：
 
 ```python
@@ -112,6 +114,36 @@ image_config = ContainerImage.image_configuration(execution_script = "score.py",
 有关创建映像配置的示例，请参阅[部署的图像分类器](tutorial-deploy-models-with-aml.md)。
 
 有关详细信息，请参阅 [ContainerImage 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py)的参考文档
+
+### <a id="customimage"></a> 使用自定义映像
+
+在使用自定义映像时，图像必须满足以下要求：
+
+* Ubuntu 16.04 或更高版本。
+* Conda 4.5。 # 或更高版本。
+* Python 3.5。 # 或 3.6。 #。
+
+若要使用自定义映像，设置`base_image`映像配置到的地址的图像的属性。 下面的示例演示如何使用从这两个公共和专用 Azure 容器注册表的映像：
+
+```python
+# use an image available in public Container Registry without authentication
+image_config.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
+
+# or, use an image available in a private Container Registry
+image_config.base_image = "myregistry.azurecr.io/mycustomimage:1.0"
+image_config.base_image_registry.address = "myregistry.azurecr.io"
+image_config.base_image_registry.username = "username"
+image_config.base_image_registry.password = "password"
+```
+
+将映像上传到 Azure 容器注册表的详细信息，请参阅[将第一个映像推送到专用 Docker 容器注册表](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)。
+
+如果您的模型训练 Azure 机器学习计算上，使用__1.0.22 版本或更高版本__的 Azure 机器学习 SDK，在定型过程中创建映像。 下面的示例演示如何使用此映像：
+
+```python
+# Use an image built during training with SDK 1.0.22 or greater
+image_config.base_image = run.properties["AzureML.DerivedImageName"]
+```
 
 ### <a id="script"></a> 执行脚本
 
@@ -396,7 +428,7 @@ print(service.state)
 
 ## <a name="define-schema"></a>定义架构
 
-可用于自定义修饰器[OpenAPI](https://swagger.io/docs/specification/about/)规范生成和输入键入操作时部署 web 服务。 在`score.py`文件中，为其中一个已定义的类型对象，提供的输入和/或构造函数中的输出的示例，以及使用类型和示例来自动生成的架构。 目前支持以下类型：
+可用于自定义修饰器[OpenAPI](https://swagger.io/docs/specification/about/)规范生成和输入键入操作时部署 web 服务。 在`score.py`文件中，为其中一个已定义的类型对象，提供的输入和/或构造函数中的输出的示例和的类型和示例用于自动创建架构。 目前支持以下类型：
 
 * `pandas`
 * `numpy`

@@ -6,18 +6,18 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
-ms.openlocfilehash: 419974138d6f556a2f774e8c1a355729c824fddc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 60ca12e5b362a37eb9f85c9a0d1fc23ca99e9edc
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310602"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360791"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>将 Hyper-V VM 灾难恢复到辅助站点时的支持矩阵
 
-本文汇总了使用 [Azure Site Recovery](site-recovery-overview.md) 服务将 System Center Virtual Machine Manager (VMM) 云中托管的 Hyper-V VM 复制到辅助站点时所支持的内容。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
+本文汇总了使用时支持的功能[Azure Site Recovery](site-recovery-overview.md)服务，以将 HYPER-V Vm 复制到辅助站点的 System Center Virtual Machine Manager (VMM) 云中托管。 如果要将 Hyper-V VM 复制到 Azure，请查看[此支持矩阵](hyper-v-azure-support-matrix.md)。
 
 > [!NOTE]
 > Hyper-V 主机在 VMM 云中托管时，只能复制到辅助站点。
@@ -36,7 +36,7 @@ Windows Server 2016 |  目前不支持混合使用 Windows Server 2016 和 2012 
 
 下表总结了通过 Site Recovery 完成复制的计算机的操作系统支持。 支持的操作系统上可运行任何工作负荷。
 
-**Windows 版本** | **Hyper-V（包含 VMM）**
+**Windows 版本** | **Hyper-v （包含 VMM)**
 --- | ---
 Windows Server 2016 | Windows Server 2016 上的[Hyper-V 支持](https://docs.microsoft.com/windows-server/virtualization/hyper-v/Supported-Windows-guest-operating-systems-for-Hyper-V-on-Windows)的所有来宾操作系统 
 Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn792027%28v%3dws.11%29)的所有来宾操作系统
@@ -70,7 +70,7 @@ Windows Server 2012 R2 | Windows Server 2012 R2 上的[Hyper-V 支持](https://d
 
 ### <a name="host-storage"></a>主机存储
 
-**存储（主机）** | **支持**
+**存储 （主机）** | **支持**
 --- | --- 
 NFS | 不适用
 SMB 3.0 |  是
@@ -99,7 +99,7 @@ RDM | 不适用
 
 ## <a name="vaults"></a>保管库
 
-**Action** | **支持**
+**操作** | **支持**
 --- | --- 
 跨资源组移动保管库（订阅内或跨订阅移动） |  否
 跨资源组移动存储、网络和 Azure VM（订阅内或跨订阅移动） | 否
@@ -110,11 +110,11 @@ RDM | 不适用
 
 **最新** | **更新**
 --- | --- 
-5.1.19（[可从门户获取](https://aka.ms/downloaddra)） | [最新功能和修复](https://support.microsoft.com/kb/3155002)
+5.1.19（[可从门户获取](https://aka.ms/downloaddra)） | [最新功能和修补程序](https://support.microsoft.com/kb/3155002)
 
 
 
 ## <a name="next-steps"></a>后续步骤
 
-[将 VMM 云中的 Hyper-V VM 复制到辅助站点](tutorial-vmm-to-vmm.md)
+[将 VMM 云中的 HYPER-V Vm 复制到辅助站点](tutorial-vmm-to-vmm.md)
 

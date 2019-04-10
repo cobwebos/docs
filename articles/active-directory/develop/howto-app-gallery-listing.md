@@ -13,19 +13,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/15/2019
+ms.date: 04/08/2019
 ms.author: celested
 ms.reviewer: elisol, bryanla
-ms.custom: aaddev
+ms.custom: aaddev, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cda09a6b407621e595b0cb8ed9103b1fbbd5cc5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1b5ec950a91f3ed0099873e40c7235a9d59f0cb2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58097951"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283573"
 ---
 # <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>如何：在 Azure Active Directory 应用程序库中列出你的应用程序
+
+本文演示如何列出 Azure AD 应用程序库中的应用程序、 单一登录 (SSO)、 实现和管理列表。
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>什么是 Azure AD 应用程序库？
 

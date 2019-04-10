@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry, michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a7a2866952d5e66e24770b81e69039d733fdd2a1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0c9af1a9ad8b816809f661d368133997f55329d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894587"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360654"
 ---
 # <a name="what-are-authentication-methods"></a>有哪些身份验证方法？
 
-管理员选择身份验证方法为 Azure 多重身份验证和自助服务密码重置 (SSPR) 建议您要求用户注册多个身份验证方法。 无法为用户提供身份验证方法时，他们可以选择使用另一种方法进行身份验证。
+作为管理员，为 Azure 多重身份验证和自助服务密码重置 (SSPR) 建议要求用户注册多个身份验证方法中选择身份验证方法。 无法为用户提供身份验证方法时，他们可以选择使用另一种方法进行身份验证。
 
 管理员可在策略中定义 SSPR 和 MFA 用户能够使用哪些身份验证方法。 某些身份验证方法不一定适用于所有功能。 有关配置详细信息为你的策略，请参阅文章[如何成功推出自助服务密码重置](howto-sspr-deployment.md)和[规划基于云的 Azure 多重身份验证](howto-mfa-getstarted.md)
 
@@ -141,6 +141,9 @@ Microsoft Authenticator 应用通过将通知推送到智能手机或平板电�
 
 如果你允许通过移动应用和移动应用的验证码使用通知，则使用通知注册 Microsoft Authenticator 应用的用户可以使用通知和代码来验证其身份。
 
+> [!NOTE]
+> 如果你的组织有员工在工作或出差到中国**移动应用的通知**方法**Android 设备**在该国家/地区中不适用。 备用方法应可为这些用户。
+
 ### <a name="verification-code-from-mobile-app"></a>通过移动应用发送验证码
 
 Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验证码所需的软件令牌。 输入用户名和密码后，在登录屏幕中输入该应用提供的代码。 验证码提供了第二种形式的身份验证。
@@ -149,11 +152,11 @@ Microsoft Authenticator 应用或其他第三方应用可用作生成 OATH 验�
 > 对于自助密码重置，如果只需使用一种方法来执行重置，则验证码是可供用户确保最高级别的安全性的唯一选项。
 >
 
-用户可以具有最多 5 个 OATH 硬件令牌或验证器应用程序（如配置为可随时使用的 Microsoft Authenticator 应用）的组合。
+用户可能具有最多五个 OATH 硬件令牌或验证器应用程序，如配置为在任何时间使用的 Microsoft Authenticator 应用的组合。
 
 ## <a name="oath-hardware-tokens-public-preview"></a>OATH 硬件令牌（公共预览版）
 
-OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 请注意，密钥限制为 128 个字符，可能不会与所有令牌兼容。
+OATH 是一个开放标准，用于指定如何生成一次性密码 (OTP) 代码。 Azure AD 将支持使用 30 秒或 60 秒的 OATH-TOTP SHA-1 令牌。 客户可以从所选的供应商处购买这些令牌。 密钥被限制为 128 个字符，可能不兼容的所有令牌。
 
 ![将 OATH 令牌上传到 MFA 服务器 OATH 令牌边栏选项卡](media/concept-authentication-methods/oath-tokens-azure-ad.png)
 
@@ -175,7 +178,7 @@ Helga@contoso.com,1234567,1234567890abcdef1234567890abcdef,60,Contoso,HardwareKe
 
 解决所有错误后，管理员可以对要激活的令牌单击“激活”，然后输入令牌上显示的 OTP，以此来激活每个密钥。
 
-用户可以具有最多 5 个 OATH 硬件令牌或验证器应用程序（如配置为可随时使用的 Microsoft Authenticator 应用）的组合。
+用户可能具有最多五个 OATH 硬件令牌或验证器应用程序，如配置为在任何时间使用的 Microsoft Authenticator 应用的组合。
 
 ## <a name="mobile-phone"></a>移动电话
 

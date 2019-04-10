@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: a7271aa3faf438b42319f8c2c297c6e39baab92e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904145"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360629"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 
@@ -46,7 +46,7 @@ Azure Monitor 中的日志包含不同类型的数据组织到具有不同的每
 | 分析 | 使用[Log Analytics](../log-query/get-started-portal.md)在 Azure 门户中编写[记录查询](../log-query/log-query-overview.md)以交互方式使用和分析日志数据的功能强大的数据资源管理器中分析引擎。<br>使用[Application Insights analytics 控制台](../app/analytics.md)编写日志查询并以交互方式分析从 Application Insights 的日志数据在 Azure 门户中。 |
 | 可视化 | 将查询结果呈现为表或图表固定[Azure 仪表板](../../azure-portal/azure-portal-dashboards.md)。<br>创建[工作簿](../app/usage-workbooks.md)来组合和多个的交互式报表中的数据集。 <br>将查询结果导出到 [Power BI](powerbi.md)，以使用不同的可视化效果并与 Azure 外部的用户共享。<br>导出到查询的结果[Grafana](grafana-plugin.md)利用其仪表板建设并结合其他数据源。|
 | 警报 | 配置[日志警报规则](alerts-log.md)，以便在查询结果与特定的结果匹配时发送通知或执行[自动化操作](action-groups.md)。<br>配置[指标预警规则](alerts-metric-logs.md)上某些日志数据日志提取为指标。 |
-| 检索 | 从命令行使用访问日志查询结果[Azure CLI](/azure/ext/log-analytics/monitor/log-analytics)。<br>从命令行使用访问日志查询结果[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights)。<br>从自定义应用程序使用访问日志查询结果[REST API](https://dev.loganalytics.io/)。 |
+| 检索 | 从命令行使用访问日志查询结果[Azure CLI](/cli/azure/ext/log-analytics/monitor/log-analytics)。<br>从命令行使用访问日志查询结果[PowerShell cmdlet](https://docs.microsoft.com/powershell/module/az.operationalinsights)。<br>从自定义应用程序使用访问日志查询结果[REST API](https://dev.loganalytics.io/)。 |
 | 导出 | 生成要检索日志数据，并将其复制到外部位置使用的工作流[逻辑应用](~/articles/logic-apps/index.yml)。 |
 
 
@@ -105,8 +105,8 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 |:---|:---|
 | 请求和异常 | 有关应用程序请求和异常的详细的数据位于_请求_， _pageViews_，并_异常_表。 调用[外部组件](../app/asp-net-dependencies.md)处于_依赖项_表。 |
 | 使用情况和性能 | 应用程序的性能现已推出_请求_， _browserTimings_并_performanceCounters_表。 数据[自定义指标](../app/api-custom-events-metrics.md#trackevent)处于_customMetrics_表。|
-| 跟踪数据 | 得出[分布式跟踪](/app/distributed-tracing)存储在_跟踪_表。 |
-| 可用性测试 | 从摘要数据[可用性测试](/app/monitor-web-app-availability)存储在_availabilityResults_表。 这些测试中的详细的数据位于单独的存储和访问从 Application Insights 在 Azure 门户中。 |
+| 跟踪数据 | 得出[分布式跟踪](../app/distributed-tracing.md)存储在_跟踪_表。 |
+| 可用性测试 | 从摘要数据[可用性测试](../app/monitor-web-app-availability.md)存储在_availabilityResults_表。 这些测试中的详细的数据位于单独的存储和访问从 Application Insights 在 Azure 门户中。 |
 
 ### <a name="insights"></a>洞察力
 
@@ -127,7 +127,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 | 数据 | 描述 |
 |:---|:---|
 | Azure 安全中心 | [Azure 安全中心](/azure/security-center/)将存储在其中进行与其他日志数据分析的 Log Analytics 工作区中收集的数据。 请参阅[Azure 安全中心中的数据收集](../../security-center/security-center-enable-data-collection.md)有关工作区配置的详细信息。 |
-| Azure Sentinel | [Azure Sentinel](/azure/sentinel/)将来自数据源的数据存储到 Log Analytics 工作区。 请参阅 [](/sentinel/connect-data-sources.md)  |
+| Azure Sentinel | [Azure Sentinel](/azure/sentinel/)将来自数据源的数据存储到 Log Analytics 工作区。 请参阅[数据源连接](/azure/sentinel/connect-data-sources)。  |
 
 
 ## <a name="next-steps"></a>后续步骤

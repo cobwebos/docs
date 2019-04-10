@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: ad58b914c22c112a83c18a7c0377b567424e4efd
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046013"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359657"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure 机器学习工作室 Web 服务：部署和使用
 
@@ -49,7 +49,7 @@ ms.locfileid: "59046013"
 
 用于 Web 服务的 Azure 机器学习工作室资源提供程序支持使用 PowerShell cmdlet 来部署和管理 Web 服务。
 
-若要使用这些 cmdlet，你必须首先登录到你从 PowerShell 环境中的 Azure 帐户通过[Connect AzAccount](/powershell/module/az.profile/connect-azaccount) cmdlet。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/manage-resources-powershell.md)。
+若要使用这些 cmdlet，你必须首先登录到你从 PowerShell 环境中的 Azure 帐户通过[Connect AzAccount](/powershell/module/az.accounts/connect-azaccount) cmdlet。 如果对调用基于资源管理器的 PowerShell 命令不熟悉，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../../azure-resource-manager/manage-resources-powershell.md)。
 
 若要导出预测实验，则使用[此代码示例](https://github.com/ritwik20/AzureML-WebServices)。 从代码创建 .exe 文件后，可以键入：
 

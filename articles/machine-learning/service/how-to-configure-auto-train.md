@@ -9,14 +9,14 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd937aba302004f23904e4f743c93e69460f9026
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 5aa9a60c624e1bfaa1570d02bfd1a421fcab3301
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541139"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358303"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -26,7 +26,7 @@ ms.locfileid: "58541139"
 
 自动化机器学习提供的配置选项：
 
-* 选择试验类型：分类、回归或预测
+* 选择试验类型：分类、 回归或时间序列预测
 * 数据源、格式和提取数据
 * 选择计算目标：本地或远程
 * 自动化机器学习试验设置
@@ -39,21 +39,21 @@ ms.locfileid: "58541139"
 
 在自动化和优化过程中，自动化机器学习支持以下算法。 用户不需要指定算法。 尽管 DNN 算法可在定型期间，自动化机器学习不生成 DNN 模型。
 
-分类 | 回归 | 预测
+分类 | 回归 | 时间序列预测
 |-- |-- |--
 [逻辑回归](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[光 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[光 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[光 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
 [渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [决策树](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)
-[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[最近近邻 K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[最近近邻 K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[最近近邻 K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS 套索](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS 套索](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
 [C 支持向量分类 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
+[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
 
@@ -84,7 +84,7 @@ ms.locfileid: "58541139"
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>在远程计算中提取用于运行试验的数据
 
-如果使用远程计算来运行试验，必须将数据提取包装在单独的 Python 脚本 `get_data()` 中。 此脚本在运行自动化机器学习试验的远程计算中运行。 `get_data` 消除了通过网络为每个迭代提取数据的需要。 如果不使用 `get_data`，则在远程计算中运行时，试验将会失败。
+如果使用远程计算来运行试验，必须将数据提取包装在单独的 Python 脚本 `get_data()` 中。 此脚本在运行自动化机器学习试验的远程计算中运行。 `get_data` 无需通过为每个迭代网络提取数据。 如果不使用 `get_data`，则在远程计算中运行时，试验将会失败。
 
 下面是 `get_data` 的示例：
 
@@ -112,7 +112,7 @@ automl_config = AutoMLConfig(****, data_script=project_folder + "/get_data.py", 
 
 `get_data` 脚本可以返回：
 
-密钥 | 类型 |    与以下对象互斥 | 描述
+密钥 | Type | 与以下对象互斥    | 描述
 ---|---|---|---
 X | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |  用于训练的所有特征
 y | Pandas 数据帧或 Numpy 数组 |   label   | 用于训练的标签数据。 对于分类，应是一个整数数组。
@@ -191,6 +191,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
         primary_metric='AUC_weighted',
         max_time_sec=12000,
         iterations=50,
+        blacklist_models='XGBoostClassifier',
         X=X,
         y=y,
         n_cross_validations=2)
@@ -202,55 +203,25 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
         task='regression',
         max_time_sec=600,
         iterations=100,
+        whitelist_models='kNN regressor'
         primary_metric='r2_score',
         X=X,
         y=y,
         n_cross_validations=5)
     ```
 
-有三个不同的 `task` 参数值，可确定要应用的算法的列表。  使用 `whitelist` 或 `blacklist` 参数可进一步修改迭代，从而包含或排除可用算法。
-* 分类
-    * LogisticRegression
-    * SGD
-    * MultinomialNaiveBayes
-    * BernoulliNaiveBayes
-    * SVM
-    * LinearSVM
-    * KNN
-    * DecisionTree
-    * RandomForest
-    * ExtremeRandomTrees
-    * LightGBM
-    * GradientBoosting
-    * TensorFlowDNN
-    * TensorFlowLinearClassifier
-    * XGBoostClassifier
-* 回归
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
-* 预测
-    * ElasticNet
-    * GradientBoosting
-    * DecisionTree
-    * KNN
-    * LassoLars
-    * SGD 
-    * RandomForest
-    * ExtremeRandomTree
-    * LightGBM
-    * TensorFlowLinearRegressor
-    * TensorFlowDNN
-    * XGBoostRegressor
+三种不同`task`参数值确定算法要应用的列表。  使用 `whitelist` 或 `blacklist` 参数可进一步修改迭代，从而包含或排除可用算法。 可以在中找到的受支持的模式列表[SupportedAlgorithms 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)
+
+## <a name="primary-metric"></a>主要指标
+主要指标;如中所示上面的示例将确定该度量值以用于在模型定型过程进行优化。 可以选择的主要指标取决于您选择任务类型。 下面是可用的度量值的列表。
+
+|分类 | 回归 | 时间序列预测
+|-- |-- |--
+|accuracy| spearman_correlation | spearman_correlation
+|AUC_weighted | normalized_root_mean_squared_error | normalized_root_mean_squared_error
+|average_precision_score_weighted | r2_score | r2_score
+|norm_macro_recall | normalized_mean_absolute_error | normalized_mean_absolute_error
+|precision_score_weighted |
 
 ## <a name="data-pre-processing-and-featurization"></a>数据预处理和特征化
 
@@ -269,7 +240,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 ## <a name="time-series-forecasting"></a>时间序列预测
 对于时间序列预测任务类型必须要定义的其他参数。
-1. time_horizon_name-这是列的一个必需的参数，用于训练数据包含日期/时间序列中定义的名称。 
+1. time_column_name-这是列的一个必需的参数，用于训练数据包含日期/时间序列中定义的名称。 
 1. max_horizon-这将定义您希望预测出基于定型数据的周期的时间长度。 例如如果必须使用每日的时间粒度的定型数据，则定义延伸的范围缩小天内你想要用于定型模型。
 1. grain_column_names-这将定义包含定型数据中的各个时序数据的列的名称。 例如，如果预测的特定品牌的应用商店的销售额，您将应用商店和品牌的列定义为粒度列。
 
@@ -324,7 +295,6 @@ run = experiment.submit(automl_config, show_output=True)
 1. 在一段时间-你可以定义多长时间以分钟为单位试验时，应该在运行设置中使用 experiment_timeout_minutes 后退出。
 1. 已达到一个分数-使用你可以选择在达到基于主要指标的分数后完成 experiement experiment_exit_score 后退出。
 
-
 ## <a name="explore-model-metrics"></a>探索模型指标
 如果在笔记本中操作，可以在小组件或内联单元中查看结果。 有关更多详细信息，请参阅[跟踪和评估模型](how-to-track-experiments.md#view-run-details)。
 
@@ -332,7 +302,7 @@ run = experiment.submit(automl_config, show_output=True)
 ### <a name="classification-metrics"></a>分类指标
 在分类任务的每次迭代中保存以下指标。
 
-|度量值|描述|计算|其他参数
+|指标|描述|计算|其他参数
 --|--|--|--|
 AUC_macro| AUC 是接收方操作特性曲线下面的区域。 Macro 是每个类的 AUC 算术平均值。  | [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="macro"|
 AUC_Micro| AUC 是接收方操作特性曲线下面的区域。 通过组合每个类中的真报率和误报率来全局计算 Micro| [计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.roc_auc_score.html) | average="micro"|
@@ -355,10 +325,10 @@ recall_score_micro|Recall 是实际位于某个类中的已正确标记的元素
 recall_score_weighted|Recall 是实际位于某个类中的已正确标记的元素百分比。 Weighted 是每个类的召回率算术平均值，按每个类中的真实实例数加权|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.recall_score.html)|average="weighted"|
 weighted_accuracy|加权准确度是当分配给每个示例的权重等于该示例的真实类中的真实实例比例时的准确度|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.accuracy_score.html)|sample_weight 是等于目标中每个元素的该类比例的向量|
 
-### <a name="regression-and-forecasting-metrics"></a>回归和预测指标
+### <a name="regression-and-time-series-forecasting-metrics"></a>回归和时间序列预测指标
 在回归或预测任务的每次迭代中保存以下指标。
 
-|度量值|描述|计算|其他参数
+|指标|描述|计算|其他参数
 --|--|--|--|
 explained_variance|解释方差是数学模型计算给定数据集的方差时遵循的比例。 它是原始数据方差与误差方差之间的递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.explained_variance_score.html)|无|
 r2_score|R2 是与输出平均值的基线模型相比，平方误差的确定系数或递减百分比。 如果误差平均值为 0，则它等于解释方差。|[计算](https://scikit-learn.org/0.16/modules/generated/sklearn.metrics.r2_score.html)|无|

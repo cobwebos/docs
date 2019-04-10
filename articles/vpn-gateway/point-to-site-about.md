@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 01/18/2019
 ms.author: cherylmc
-ms.openlocfilehash: 8f444cebac6ee60fbe65399e3f9c8e05eb033843
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 11fbf14cdeb8d22dbfdf522e1c5838634937f6cb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878207"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282094"
 ---
 # <a name="about-point-to-site-vpn"></a>关于点到站点 VPN
 
@@ -22,7 +22,7 @@ ms.locfileid: "58878207"
 
 点到站点 VPN 可使用以下协议之一：
 
-* OpenVPN，一种基于 SSL/TLS 的 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可以用于 Android、 iOS 从连接 (版本 11.0 和更高版本)，Windows、 Linux 和 Mac 设备 (OSX 版本 10.13 及更高版本)。
+* **OpenVPN® 协议**，SSL/TLS 基于 VPN 协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 OpenVPN 可以用于 Android、 iOS 从连接 (版本 11.0 和更高版本)，Windows、 Linux 和 Mac 设备 (OSX 版本 10.13 及更高版本)。
 
 * 安全套接字隧道协议 (SSTP)，这是一种基于 SSL 的专属协议。 由于大多数防火墙都会打开 SSL 所用的 TCP 端口 443，因此 SSL VPN 解决方案可以穿透防火墙。 只有 Windows 设备支持 SSTP。 Azure 支持所有采用 SSTP 的 Windows 版本（Windows 7 和更高版本）。
 
@@ -54,7 +54,7 @@ RADIUS 服务器还能与 AD 证书服务集成。 这样，便可以使用 RADI
 RADIUS 服务器还能与其他外部标识系统集成。 这样就为 P2S VPN 提供了大量的身份验证选项，包括多重身份验证选项。
 
 >[!NOTE]
->RADIUS 身份验证不支持 OpenVPN 协议。
+>**OpenVPN® 协议**不支持 RADIUS 身份验证。
 >
 
 ![点到站点](./media/point-to-site-about/p2s.png "点到站点")
@@ -109,3 +109,5 @@ P2S 配置需要相当多的特定步骤。 以下文章包含引导你完成 P2
 * [配置 P2S 连接-RADIUS 身份验证](point-to-site-how-to-radius-ps.md)
 
 * [配置 P2S 连接-Azure 本机证书身份验证](vpn-gateway-howto-point-to-site-rm-ps.md)
+
+**"OpenVPN"是 OpenVPN Inc.的商标**

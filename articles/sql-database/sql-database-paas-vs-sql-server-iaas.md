@@ -8,17 +8,17 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 keywords: SQL Server 云, 云中 SQL Server, PaaS 数据库, 云 SQL Server, DBaaS
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/11/2019
-ms.openlocfilehash: e5f400bb25fce58a4fb63ca1ad76ddf2b71fbd9c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d9cd5ba0b697cbf67f943eb49d66010745d8561e
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57835412"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360824"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>在 Azure 中选择适当的 SQL Server 选项
 
@@ -66,7 +66,7 @@ ms.locfileid: "57835412"
 
 经过优化，可将预配和管理许多数据库的整体管理成本降到最低。 由于无需管理任何虚拟机、操作系统或数据库软件，因此可以持续降低管理成本。 用户不必管理升级、高可用性或 [备份](sql-database-automated-backups.md)。 一般而言，Azure SQL 数据库可以大幅增加由单个 IT 或开发资源管理的数据库数目。 [弹性池](sql-database-elastic-pool.md)也支持 SaaS 多租户应用程序体系结构，提供租户隔离等功能，并可以跨数据库共享资源，通过缩放来降低成本。 [托管实例](sql-database-managed-instance.md)支持面向实例的功能，可用于轻松迁移现有应用程序，以及在数据库之间共享资源。
 
-- **Azure VM 上运行的 SQL Server**
+- **在 Azure Vm 上运行的 SQL Server**
 
 已针对将现有应用程序迁移到 Azure 或将现有本地应用程序扩展到混合部署中的云进行了优化。 此外，还可以使用虚拟机中的 SQL Server 开发和测试传统的 SQL Server 应用程序。 有了 Azure VM 上的 SQL server，即拥有了专用 SQL Server 实例和基于云的 VM 的完全管理权限。 当组织拥有可用来维护虚拟机的 IT 资源时，此选项是最佳选择。 使用这些功能，可以构建高度定制的系统，以解决应用程序的特定性能和可用性要求。
 
@@ -126,7 +126,7 @@ ms.locfileid: "57835412"
 - SQL 数据库服务成本
 - 无硬件购置成本
 
-**使用 Azure VM 上的 SQL Server 时：**
+**当使用 Azure Vm 上的 SQL Server:**
 
 - 更高的管理成本
 - 已迁移的应用程序的有限开发成本，甚至没有成本
@@ -135,9 +135,9 @@ ms.locfileid: "57835412"
 
 有关定价的详细信息，请参阅以下资源：
 
-- [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)
+- [SQL Database 定价](https://azure.microsoft.com/pricing/details/sql-database/)
 - 针对 [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows) 的[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)
-- [Azure 价格计算器](https://azure.microsoft.com/pricing/calculator/)
+- [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)
 
 ### <a name="administration"></a>管理
 

@@ -1,23 +1,17 @@
 ---
 title: Azure 应用程序网关 Web 应用程序防火墙 CRS 规则组和规则
 description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则的信息。
-documentationcenter: na
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.custom: ''
-ms.workload: infrastructure-services
-ms.date: 4/16/2018
+ms.date: 4/8/2019
 ms.author: victorh
-ms.openlocfilehash: b45e782984f637f1b084ec757000dde9dd3a5777
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302024"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279697"
 ---
 # <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供的 Web 应用程序防火墙 CRS 规则组和规则列表
 
@@ -29,49 +23,31 @@ ms.locfileid: "56302024"
 
 ### <a name="General"></a> <p x-ms-format-detection="none">常规</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |200004|可能的多部分不匹配边界。|
 
 ### <a name="crs911"></a> <p x-ms-format-detection="none">REQUEST-911-METHOD-ENFORCEMENT</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|911011|规则 911011|
-|911012|规则 911012|
 |911100|方法不受策略允许|
-|911013|规则 911013|
-|911014|规则 911014|
-|911015|规则 911015|
-|911016|规则 911016|
-|911017|规则 911017|
-|911018|规则 911018|
 
 
 ### <a name="crs913"></a> <p x-ms-format-detection="none">REQUEST-913-SCANNER-DETECTION</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|913011|规则 913011|
-|913012|规则 913012|
 |913100|找到了与安全扫描程序关联的用户代理|
 |913110|找到了与安全扫描程序关联的请求标头|
 |913120|找到了与安全扫描程序关联的请求文件名/参数|
-|913013|规则 913013|
-|913014|规则 913014|
 |913101|找到了与脚本/通用 HTTP 客户端关联的用户代理|
 |913102|找到了与 Web 爬网程序/bot 关联的用户代理|
-|913015|规则 913015|
-|913016|规则 913016|
-|913017|规则 913017|
-|913018|规则 913018|
 
 ### <a name="crs920"></a> <p x-ms-format-detection="none">REQUEST-920-PROTOCOL-ENFORCEMENT</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|920011|规则 920011|
-|920012|规则 920012|
 |920100|无效的 HTTP 请求行|
 |920130|未能分析请求正文。|
 |920140|多部分请求正文未通过严格验证 =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
@@ -102,30 +78,22 @@ ms.locfileid: "56302024"
 |920430|HTTP 协议版本不受策略允许|
 |920440|策略限制了 URL 文件扩展名|
 |920450|策略限制了 HTTP 标头 (%@{MATCHED_VAR})|
-|920013|规则 920013|
-|920014|规则 920014|
 |920200|范围 = 字段太多（6 个或以上）|
 |920201|范围 = pdf 请求的字段在多（35 个或以上）|
 |920230|检测到多个 URL 编码|
 |920300|请求缺少 Accept 标头|
 |920271|请求中的字符无效（不可列显的字符）|
 |920320|缺少用户代理标头|
-|920015|规则 920015|
-|920016|规则 920016|
 |920272|请求中的字符无效（不属于 ascii 127 下面的可列显字符）|
-|920017|规则 920017|
-|920018|规则 920018|
 |920202|范围 = pdf 请求的字段在多（6 个或以上）|
 |920273|请求中的字符无效（不属于极严格集）|
 |920274|请求标头中的字符无效（不属于极严格集）|
-|920460|规则 920460|
+|920460|异常转义字符|
 
 ### <a name="crs921"></a> <p x-ms-format-detection="none">REQUEST-921-PROTOCOL-ATTACK</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|921011|规则 921011|
-|921012|规则 921012|
 |921100|HTTP 请求走私攻击。|
 |921110|HTTP 请求走私攻击|
 |921120|HTTP 响应拆分攻击|
@@ -133,75 +101,43 @@ ms.locfileid: "56302024"
 |921140|通过标头展开的 HTTP 标头注入攻击|
 |921150|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
 |921160|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF 和标头名称）|
-|921013|规则 921013|
-|921014|规则 921014|
 |921151|通过有效负载展开的 HTTP 标头注入攻击（检测到 CR/LF）|
-|921015|规则 921015|
-|921016|规则 921016|
-|921170|规则 921170|
+|921170|HTTP 参数污染|
 |921180|HTTP 参数污染 (%@{TX.1})|
-|921017|规则 921017|
-|921018|规则 921018|
 
 ### <a name="crs930"></a> <p x-ms-format-detection="none">REQUEST-930-APPLICATION-ATTACK-LFI</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|930011|规则 930011|
-|930012|规则 930012|
 |930100|路径遍历攻击 (/../)|
 |930110|路径遍历攻击 (/../)|
 |930120|OS 文件访问企图|
 |930130|受限文件访问企图|
-|930013|规则 930013|
-|930014|规则 930014|
-|930015|规则 930015|
-|930016|规则 930016|
-|930017|规则 930017|
-|930018|规则 930018|
 
 ### <a name="crs931"></a> <p x-ms-format-detection="none">REQUEST-931-APPLICATION-ATTACK-RFI</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|931011|规则 931011|
-|931012|规则 931012|
 |931100|可能的远程文件包含 (RFI) 攻击 = 使用 IP 地址的 URL 参数|
 |931110|可能的远程文件包含 (RFI) 攻击 = 对 URL 有效负载使用常见 RFI 漏洞参数名使用|
 |931120|可能的远程文件包含 (RFI) 攻击 = 在 URL 有效负载中使用尾随问号 (?)|
-|931013|规则 931013|
-|931014|规则 931014|
 |931130|可能的远程文件包含 (RFI) 攻击 = 域外引用/链接|
-|931015|规则 931015|
-|931016|规则 931016|
-|931017|规则 931017|
-|931018|规则 931018|
 
 ### <a name="crs932"></a> <p x-ms-format-detection="none">REQUEST-932-APPLICATION-ATTACK-RCE</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|932011|规则 932011|
-|932012|规则 932012|
 |932120|远程命令执行 = 找到 Windows PowerShell 命令|
 |932130|远程命令执行 = 找到 Unix Shell 表达式|
 |932140|远程命令执行 = 找到 Windows FOR/IF 命令|
 |932160|远程命令执行 = 找到 Unix Shell 代码|
 |932170|远程命令执行 = Shellshock (CVE-2014-6271)|
 |932171|远程命令执行 = Shellshock (CVE-2014-6271)|
-|932013|规则 932013|
-|932014|规则 932014|
-|932015|规则 932015|
-|932016|规则 932016|
-|932017|规则 932017|
-|932018|规则 932018|
 
 ### <a name="crs933"></a> <p x-ms-format-detection="none">REQUEST-933-APPLICATION-ATTACK-PHP</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|933011|规则 933011|
-|933012|规则 933012|
 |933100|PHP 注入攻击 = 找到开始/结束标记|
 |933110|PHP 注入攻击 = 找到 PHP 脚本文件上传|
 |933120|PHP 注入攻击 = 找到配置指令|
@@ -209,58 +145,42 @@ ms.locfileid: "56302024"
 |933150|PHP 注入攻击 = 找到高风险的 PHP 函数名称|
 |933160|PHP 注入攻击 = 找到高风险的 PHP 函数调用|
 |933180|PHP 注入攻击 = 找到可变函数调用|
-|933013|规则 933013|
-|933014|规则 933014|
 |933151|PHP 注入攻击 = 找到中等风险的 PHP 函数名称|
-|933015|规则 933015|
-|933016|规则 933016|
 |933131|PHP 注入攻击 = 找到变量|
 |933161|PHP 注入攻击 = 找到低值 PHP 函数调用|
 |933111|PHP 注入攻击 = 找到 PHP 脚本文件上传|
-|933017|规则 933017|
-|933018|规则 933018|
 
 ### <a name="crs941"></a> <p x-ms-format-detection="none">REQUEST-941-APPLICATION-ATTACK-XSS</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|941011|规则 941011|
-|941012|规则 941012|
 |941100|检测到通过 libinjection 展开的 XSS 攻击|
 |941110|XSS 筛选器 - 类别 1 = 脚本标记向量|
 |941130|XSS 筛选器 - 类别 3 = 属性向量|
 |941140|XSS 筛选器 - 类别 4 = Javascript URI 向量|
 |941150|XSS 筛选器 - 类别 5 = 不允许的 HTML 属性|
 |941180|节点验证器方块列表关键字|
-|941190|IE XSS 筛选器 - 检测到攻击。|
-|941200|IE XSS 筛选器 - 检测到攻击。|
-|941210|IE XSS 筛选器 - 检测到攻击。|
-|941220|IE XSS 筛选器 - 检测到攻击。|
-|941230|IE XSS 筛选器 - 检测到攻击。|
-|941240|IE XSS 筛选器 - 检测到攻击。|
-|941260|IE XSS 筛选器 - 检测到攻击。|
-|941270|IE XSS 筛选器 - 检测到攻击。|
-|941280|IE XSS 筛选器 - 检测到攻击。|
-|941290|IE XSS 筛选器 - 检测到攻击。|
-|941300|IE XSS 筛选器 - 检测到攻击。|
+|941190|XSS 使用样式表|
+|941200|XSS 使用 VML 帧|
+|941210|XSS 使用经过模糊处理的 Javascript|
+|941220|XSS 使用经过模糊处理的 VB 脚本|
+|941230|使用 XSS 嵌入标记|
+|941240|使用导入或 implementation 特性的 XSS|
+|941260|使用 meta 标记的 XSS|
+|941270|使用链接 href XSS|
+|941280|XSS 使用 'base' 标记|
+|941290|使用小程序标记的 XSS|
+|941300|使用 object 标记的 XSS|
 |941310|US-ASCII 格式错误编码 XSS 筛选器 - 检测到攻击。|
 |941330|IE XSS 筛选器 - 检测到攻击。|
 |941340|IE XSS 筛选器 - 检测到攻击。|
 |941350|UTF-7 编码 IE XSS - 检测到攻击。|
-|941013|规则 941013|
-|941014|规则 941014|
 |941320|检测到可能的 XSS 攻击 - HTML 标记处理程序|
-|941015|规则 941015|
-|941016|规则 941016|
-|941017|规则 941017|
-|941018|规则 941018|
 
 ### <a name="crs942"></a> <p x-ms-format-detection="none">REQUEST-942-APPLICATION-ATTACK-SQLI</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|942011|规则 942011|
-|942012|规则 942012|
 |942100|检测到通过 libinjection 展开的 SQL 注入攻击|
 |942110|SQL 注入攻击：检测到常见注入测试|
 |942130|SQL 注入攻击：检测到 SQL 同义反复。|
@@ -280,41 +200,27 @@ ms.locfileid: "56302024"
 |942350|检测 MySQL UDF 注入和其他数据/结构操作企图|
 |942360|检测到连接的基本 SQL 注入和 SQLLFI 尝试|
 |942370|检测到经典 SQL 注入探测 2/2|
-|942013|规则 942013|
-|942014|规则 942014|
 |942150|SQL 注入攻击|
 |942410|SQL 注入攻击|
 |942430|受限 SQL 字符异常情况检测 (args)：已超出特殊字符数 (12)|
 |942440|检测到 SQL 注释序列。|
 |942450|识别到 SQL 十六进制编码|
-|942015|规则 942015|
-|942016|规则 942016|
 |942251|检测 HAVING 注入|
 |942460|元字符异常检测警报 - 重复的非单词字符|
-|942017|规则 942017|
-|942018|规则 942018|
 
 ### <a name="crs943"></a> <p x-ms-format-detection="none">REQUEST-943-APPLICATION-ATTACK-SESSION-FIXATION</p>
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
-|943011|规则 943011|
-|943012|规则 943012|
 |943100|可能的会话固定攻击 = 在 HTML 中设置 Cookie 值|
 |943110|可能的会话固定攻击 = 包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击 = 不包含引用方的 SessionID 参数名称|
-|943013|规则 943013|
-|943014|规则 943014|
-|943015|规则 943015|
-|943016|规则 943016|
-|943017|规则 943017|
-|943018|规则 943018|
 
 ## <a name="owasp229"></a> OWASP_2.2.9
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |960911|无效的 HTTP 请求行|
 |981227|Apache 错误 = 请求中的 URI 无效。|
@@ -332,7 +238,7 @@ ms.locfileid: "56302024"
 |958295|找到了多个/有冲突的连接标头数据。|
 |950107|URL 编码滥用攻击企图|
 |950109|检测到多个 URL 编码|
-|950108|URL 编码滥用攻击企图|
+|950108|URL 编码滥用攻击尝试|
 |950801|UTF8 编码滥用攻击企图|
 |950116|Unicode 全角/半角滥用攻击企图|
 |960901|请求中的字符无效|
@@ -340,7 +246,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs21"></a> crs_21_protocol_anomalies
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |960008|请求缺少 Host 标头|
 |960007|Host 标头为空|
@@ -353,7 +259,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs23"></a> crs_23_request_limits
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |960209|参数名称太长|
 |960208|参数值太长|
@@ -364,7 +270,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs30"></a> crs_30_http_policy
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |960032|方法不受策略允许|
 |960010|请求内容类型不受策略允许|
@@ -374,7 +280,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs35"></a> crs_35_bad_robots
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |990002|请求指示安全扫描程序已扫描站点|
 |990901|请求指示安全扫描程序已扫描站点|
@@ -383,7 +289,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs40"></a> crs_40_generic_attacks
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |960024|元字符异常检测警报 - 重复的非单词字符|
 |950008|注入未记录的 ColdFusion 标记|
@@ -412,7 +318,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs41sql"></a> crs_41_sql_injection_attacks
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |981231|检测到 SQL 注释序列。|
 |981260|识别到 SQL 十六进制编码|
@@ -449,7 +355,7 @@ ms.locfileid: "56302024"
 
 ### <a name="crs41xss"></a> crs_41_xss_attacks
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |973336|XSS 筛选器 - 类别 1 = 脚本标记向量|
 |973338|XSS 筛选器 - 类别 3 = Javascript URI 向量|
@@ -554,13 +460,13 @@ ms.locfileid: "56302024"
 
 ### <a name="crs42"></a> crs_42_tight_security
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |950103|路径遍历攻击|
 
 ### <a name="crs45"></a> crs_45_trojans
 
-|RuleId|说明|
+|RuleId|描述|
 |---|---|
 |950110|后门访问|
 |950921|后门访问|
@@ -569,5 +475,3 @@ ms.locfileid: "56302024"
 ## <a name="next-steps"></a>后续步骤
 
 查看以下文章，了解如何禁用 WAF 规则：[自定义 WAF 规则](application-gateway-customize-waf-rules-portal.md)
-
-[1]: ./media/application-gateway-integration-security-center/figure1.png
