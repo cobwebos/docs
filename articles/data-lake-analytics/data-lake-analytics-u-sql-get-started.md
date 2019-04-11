@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: b70de1e4494bb142da1cad0d0154b5dc7f765983
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51233350"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469601"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门
 U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处理任何规模的数据。 通过 U-SQL 的可缩放分布式查询功能，可以跨关系存储（如 Azure SQL 数据库）高效分析其中的数据。 使用 U-SQL，可以通过在读取和插入自定义逻辑和 UDF 时应用架构来处理非结构化数据。 此外，U-SQL 还提供可扩展性，可更精细地控制大规模执行的方式。 
@@ -25,9 +25,9 @@ U-SQL 是一种将声明性 SQL 与命令性 C# 相结合的语言，能够处�
 * 有关 **U-SQL 语言语法**的详细信息，请参阅 [U-SQL 语言参考](https://go.microsoft.com/fwlink/p/?LinkId=691348)。
 * 若要了解 **U-SQL 设计理念**，请参阅 Visual Studio 博客文章 [U-SQL（使大数据处理更轻松的语言）简介](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-在学习本文档中的 U-SQL 示例之前，请先阅读并完成[教程：使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
+完成本文档中的 U-SQL 示例之前，阅读并完成[教程：开发 U-SQL 脚本使用 Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)。 该教程介绍了将 U-SQL 与针对 Visual Studio 的 Azure Data Lake 工具结合使用的机制。
 
 ## <a name="your-first-u-sql-script"></a>第一个 U-SQL 脚本
 
@@ -55,9 +55,9 @@ OUTPUT @searchlog
 请注意 `Duration` 字段中数据类型旁边的问号。 它表示 `Duration` 字段可以为 null。
 
 ### <a name="key-concepts"></a>关键概念
-* **行集变量**：生成行集的每个查询表达式可以分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
-* **EXTRACT** 关键字从文件中读取数据，并在读取时定义架构。 `Extractors.Tsv` 是用于制表符分隔值文件的内置 U-SQL 提取程序。 可以开发自定义提程序。
-* **OUTPUT** 将行集中的数据写入到文件。 `Outputters.Csv()` 是用于创建逗号分隔值文件的内置 U-SQL 输出器。 可以开发自定义输出器。
+* **行集变量**:每个生成的行集的查询表达式可以分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
+* **EXTRACT** 关键字从文件中读取数据，并在读取时定义架构。 `Extractors.Tsv` 是制表符分隔值文件的内置 U-SQL 提取程序。 可以开发自定义提程序。
+* **OUTPUT** 将行集中的数据写入到文件。 `Outputters.Csv()` 是一个内置 U-SQL 输出器创建一个以逗号分隔值文件。 可以开发自定义输出器。
 
 ### <a name="file-paths"></a>文件路径
 
@@ -117,7 +117,7 @@ EXTRACT 和 OUTPUT 语句使用文件路径。 文件路径可以是绝对路径
         TO "/output/SearchLog-transform-rowsets.csv"
         USING Outputters.Csv();
 
-WHERE 子句使用 [C# 布尔表达式](https://msdn.microsoft.com/library/6a71f45d.aspx)。 可以使用 C# 表达式语言执行自己的表达式和函数。 将这些表达式和函数与逻辑“与 (And)”和“或 (Or)”结合，甚至可以执行更复杂的筛选操作。
+WHERE 子句使用 [C# 布尔表达式](/dotnet/csharp/language-reference/operators/index)。 可以使用 C# 表达式语言执行自己的表达式和函数。 将这些表达式和函数与逻辑“与 (And)”和“或 (Or)”结合，甚至可以执行更复杂的筛选操作。
 
 以下脚本使用 DateTime.Parse() 方法和一个“与”。
 
@@ -222,7 +222,7 @@ U-SQL 行集不为下一个查询保留其顺序。 因此，若要对输出进�
         ORDER BY TotalDuration DESC
         USING Outputters.Csv();
 
-有关高级聚合方案，请参阅有关[聚合、分析和引用函数](https://msdn.microsoft.com/library/azure/mt621335.aspx)的 U-SQL 参考文档
+有关高级聚合方案，请参阅有关[聚合、分析和引用函数](/u-sql/built-in-functions)的 U-SQL 参考文档
 
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)

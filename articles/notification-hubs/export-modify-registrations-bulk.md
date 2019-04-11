@@ -1,6 +1,6 @@
 ---
 title: 导出和导入大容量中的 Azure 通知中心注册 |Microsoft Docs
-description: 了解如何使用通知中心批量支持，可执行大量的通知中心的操作或导出所有注册信息。
+description: 了解如何使用通知中心批量操作支持针对通知中心执行大量操作或导出所有注册。
 services: notification-hubs
 author: jwargo
 manager: patniko
@@ -12,32 +12,32 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: jowargo
-ms.openlocfilehash: a86c3bd85f9d611787a41754f49ee2475ba33a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c24fcd5f007b641bb594bb07348491f70c03ea41
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58175763"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469125"
 ---
-# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>导出和导入大容量中的 Azure 通知中心注册
-有在其中需要创建或修改大量注册信息在通知中心的方案。 其中一些方案是标记更新批处理计算后或迁移为使用通知中心的现有推送实现。
+# <a name="export-and-import-azure-notification-hubs-registrations-in-bulk"></a>批量导出和导入 Azure 通知中心注册
+在某些情况下，我们需要在通知中心创建或修改大量的注册。 其中的某些情况是先进行标记更新，再进行批量计算，或者迁移现有的推送实施方案以使用通知中心。
 
-本文介绍如何执行大量的通知中心的操作或导出所有注册，在大容量。
+本文介绍如何针对通知中心执行大量操作，或者批量导出所有注册。
 
-## <a name="high-level-flow"></a>高级流程
-批处理支持旨在支持长时间运行的作业涉及数百万条注册信息。 为了达到此规模，批处理支持使用 Azure 存储来存储作业详细信息和输出。 以执行大容量更新操作的用户是所需的 blob 容器，其内容是注册更新操作的列表中创建文件。 当正在启动作业，用户提供输入的 blob，以及指向输出目录 （也在 blob 容器中） 的 URL 的 URL。 启动作业后，用户可以通过查询开始作业中提供的 URL 位置检查状态。 特定作业只能执行特定类型的操作 （创建、 更新或删除）。 与执行导出操作。
+## <a name="high-level-flow"></a>概要工作流
+批处理支持旨在支持涉及到数百万个注册的长时间运行的作业。 为了实现这种规模，批处理支持使用 Azure 存储来存储作业详细信息和输出。 执行批量更新操作时，用户需要在 Blob 容器中创建一个文件，其内容是注册更新操作的列表。 启动该作业时，用户需提供输入 Blob 的 URL，以及输出目录（也在 Blob 容器中）的 URL。 启动该作业后，用户可以通过查询启动作业时提供的 URL 位置来检查状态。 特定的作业只能执行特定类型的操作（创建、更新或删除）。 导出操作以类似的方式执行。
 
 ## <a name="import"></a>导入
 
 ### <a name="set-up"></a>设置
-本部分假定您有以下实体：
+本部分假设存在以下实体：
 
-- 预配的通知中心。
-- Azure 存储 blob 容器。
-- 对 Azure 存储和 Azure 服务总线 NuGet 包的引用。
+- 一个预配的通知中心。
+- 一个 Azure 存储 Blob 容器。
+- 对引用[Azure 存储 NuGet 包](https://www.nuget.org/packages/windowsazure.storage/)并[通知中心 NuGet 包](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs/1.0.9)。
 
-### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入的文件并将其存储在 blob 中
-输入的文件包含在 XML 中，每行表示一个序列化注册信息列表。 使用 Azure SDK，下面的代码示例演示如何序列化注册并将其上载到 blob 容器。
+### <a name="create-input-file-and-store-it-in-a-blob"></a>创建输入文件并将其存储在 Blob 中
+输入文件包含以 XML 格式序列化的注册列表，每行包含一个注册。 以下代码示例演示如何使用 Azure SDK 序列化注册并将其上传到 Blob 容器。
 
 ```csharp
 private static void SerializeToBlob(CloudBlobContainer container, RegistrationDescription[] descriptions)
@@ -57,10 +57,10 @@ private static void SerializeToBlob(CloudBlobContainer container, RegistrationDe
 ```
 
 > [!IMPORTANT]
-> 前面的代码序列化在内存中的注册，然后将整个流上载到 blob。 如果已上传超过几兆字节的文件，请参阅 Azure blob 指南如何执行以下步骤：例如，[块 blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)。
+> 上面的代码在内存中序列化注册，然后将整个流上传到 Blob。 如果上传的文件大小只有几个 MB，请参阅有关如何执行这些步骤的 Azure Blob 指导，例如 [块 Blob](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs)。
 
 ### <a name="create-url-tokens"></a>创建 URL 标记
-输入的文件上传后, 生成的 Url 提供给你的通知中心以获得输入的文件和输出目录。 输入和输出，可以使用两个不同的 blob 容器。
+上传输入文件后，生成要提供给通知中心的输入文件 URL 和输出目录 URL。 可为输入和输出使用两个不同的 Blob 容器。
 
 ```csharp
 static Uri GetOutputDirectoryUrl(CloudBlobContainer container)
@@ -88,7 +88,7 @@ static Uri GetInputFileUrl(CloudBlobContainer container, string filePath)
 ```
 
 ### <a name="submit-the-job"></a>提交作业
-使用两个输入和输出 Url，现在可以开始批处理作业。
+生成两个输入和输出 URL 后，接下来可以启动批处理作业。
 
 ```csharp
 NotificationHubClient client = NotificationHubClient.CreateClientFromConnectionString(CONNECTION_STRING, HUB_NAME);
@@ -113,26 +113,26 @@ while (i > 0 && job.Status != NotificationHubJobStatus.Completed)
 }
 ```
 
-此示例创建输入和输出 Url 中，除了`NotificationHubJob`对象，其中包含`JobType`对象，可以是以下类型之一：
+此示例除了创建输入和输出 URL 以外，还会创建一个 `NotificationHubJob` 对象，该对象包含以下类型之一的 `JobType` 对象：
 
 - `ImportCreateRegistrations`
 - `ImportUpdateRegistrations`
 - `ImportDeleteRegistrations`
 
-后调用完成，该作业将继续运行通知中心，您可以检查其状态对的调用[GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet)。
+完成调用后，通知中心会继续运行该作业，可以通过调用 [GetNotificationHubJobAsync](/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.getnotificationhubjobasync?view=azure-dotnet) 来检查作业状态。
 
-在作业完成时，可以通过查看输出目录中的以下文件中检查结果：
+完成该作业后，可以通过查看输出目录中的以下文件来检查结果：
 
 - `/<hub>/<jobid>/Failed.txt`
 - `/<hub>/<jobid>/Output.txt`
 
-这些文件包含从您的批的成功和失败操作的列表。 文件格式是`.cvs`，其中每行具有原始输入文件的行号和操作 （通常创建或更新的注册说明） 的输出中。
+这些文件包含成功和失败的批处理操作列表。 文件的格式为 `.cvs`，其中，每行包含原始输入文件的行号，以及操作的输出（通常是创建或更新的注册说明）。
 
-### <a name="full-sample-code"></a>完整的示例代码
-下面的示例代码导入的通知中心注册。
+### <a name="full-sample-code"></a>完整示例代码
+以下示例代码将注册导入到通知中心。
 
 ```csharp
-using Microsoft.ServiceBus.Notifications;
+using Microsoft.Azure.NotificationHubs;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using System;
@@ -260,13 +260,13 @@ namespace ConsoleApplication1
 ```
 
 ## <a name="export"></a>导出
-导出注册信息类似于导入具有以下差异：
+导出注册的过程类似于导入，但存在以下差别：
 
-- 您只需要输出 URL。
-- 创建类型 ExportRegistrations NotificationHubJob。
+- 只需提供输出 URL。
+- 创建 ExportRegistrations 类型的 NotificationHubJob。
 
 ### <a name="sample-code-snippet"></a>示例代码片段
-下面是示例代码片段用于导出在 Java 中的注册：
+下面是在 Java 中导出注册的示例代码片段：
 
 ```java
 // submit an export job
@@ -286,8 +286,8 @@ while(true){
 ```
 
 ## <a name="next-steps"></a>后续步骤
-若要了解有关注册的详细信息，请参阅以下文章：
+若要详细了解注册，请参阅以下文章：
 
-- [管理注册](notification-hubs-push-notification-registration-management.md)
+- [注册管理](notification-hubs-push-notification-registration-management.md)
 - [注册标记](notification-hubs-tags-segment-push-message.md)
 - [模板注册](notification-hubs-templates-cross-platform-push-messages.md)

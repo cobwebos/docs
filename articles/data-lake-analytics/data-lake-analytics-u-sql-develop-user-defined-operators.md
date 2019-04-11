@@ -9,18 +9,18 @@ ms.reviewer: jasonwhowell
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.topic: conceptual
 ms.date: 12/05/2016
-ms.openlocfilehash: 9751801449eebc5d07ca4bbb9b408d9679fef24e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 122a4b6af78a22f74d5057da75767077f8d9b978
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040984"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469618"
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>开发 U-SQL 用户定义的运算符 (UDO)
 本文介绍如何开发用户定义的运算符以处理 U-SQL 作业中的数据。
 
 ## <a name="define-and-use-a-user-defined-operator-in-u-sql"></a>在 U-SQL 中定义和使用用户定义的运算符
-**创建和提交 U-SQL 作业**
+**若要创建和提交 U-SQL 作业**
 
 1. 在 Visual Studio 中，选择“文件”>“新建”>“项目”>“U-SQL 项目”。
 2. 单击“确定”。 Visual Studio 将创建包含 Script.usql 文件的解决方案。
@@ -118,11 +118,11 @@ ms.locfileid: "43040984"
 11. 单击“提交”。 完成提交后，“结果”窗口中会出现提交结果和作业链接。
 12. 单击“刷新”按钮以查看最新的作业状态和刷新屏幕。
 
-**查看输出**
+**若要查看输出**
 
 1. 在“服务器资源管理器”中依次展开 “Azure”、“Data Lake Analytics”、Data Lake Analytics 帐户、“存储帐户”，右键单击“默认存储”，并单击“资源管理器”。
 2. 展开示例、展开输出，并双击 “Drivers.csv”。
 
 ## <a name="see-also"></a>另请参阅
-* [Extending U-SQL Expressions with User-Code](https://msdn.microsoft.com/library/azure/mt621316.aspx)（使用用户代码扩展 U-SQL 表达式）
-* [使用适用于 Visual Studio 的工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)
+* [与用户代码扩展 U-SQL 表达式](/u-sql/concepts/extending-u-sql-expressions-with-user-code)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 应用程序](data-lake-analytics-data-lake-tools-get-started.md)

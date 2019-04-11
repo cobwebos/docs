@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: 8190c2043d7d3daae91c93fd3b66126d0941710b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361845"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469364"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建自定义映像工厂
 本文介绍如何设置保留策略、 清理工厂，并从组织中的所有开发测试实验室中停用旧的映像。 
@@ -75,5 +75,5 @@ ms.locfileid: "59361845"
 ## <a name="next-steps"></a>后续步骤
 1. [计划生成/发布](/azure/devops/pipelines/build/triggers?view=azure-devops&tabs=designer)定期运行映像工厂。 它将刷新定期在工厂生成的图像。
 2. 请为您的工厂的更多黄金映像。 您也可以考虑[创建项目](devtest-lab-artifact-author.md)编写脚本的 VM 安装程序任务的其他部分，并将这些项目包含在工厂映像。
-4. 创建[单独的生成/发布](/azure/devops/pipelines/overview.md?view=azure-devops-2019)运行**DistributeImages**单独脚本。 对 Labs.json 进行更改并获取映像复制到目标实验室而无需再次重新创建所有映像时，可以运行此脚本。
+4. 创建[单独的生成/发布](/azure/devops/pipelines/overview?view=azure-devops-2019)运行**DistributeImages**单独脚本。 对 Labs.json 进行更改并获取映像复制到目标实验室而无需再次重新创建所有映像时，可以运行此脚本。
 

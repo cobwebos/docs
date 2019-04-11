@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
-ms.openlocfilehash: 33ec96b3708bc89f3fbd415f892e0810fc468876
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58889798"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471029"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -80,7 +80,7 @@ Azure Functions 工具包含在 [Visual Studio 2017 版本 15.5](https://www.vis
 
 * **host.json**：用于配置 Functions 主机。 在本地和 Azure 中运行时，都会应用这些设置。 有关详细信息，请参阅 [host.json 参考](functions-host-json.md)。
 
-* **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件为函数所需的变量指定应用设置。 针对项目中的函数绑定所需的每个连接，将新项添加到 **Values** 数组。 有关详细信息，请参阅“Azure Functions 核心工具”一文中的[本地设置文件](functions-run-local.md#local-settings-file)。
+* **local.settings.json**：维护本地运行函数时使用的设置。 Azure 不使用这些设置，它们由 [Azure Functions 核心工具](functions-run-local.md)使用。 使用此文件指定的环境变量所需的函数应用设置。 针对项目中的函数绑定所需的每个连接，将新项添加到 **Values** 数组。 有关详细信息，请参阅“Azure Functions 核心工具”一文中的[本地设置文件](functions-run-local.md#local-settings-file)。
 
     >[!IMPORTANT]
     >由于 local.settings.json 文件可能包含机密，因此必须将其从项目源代码管理中排除。 此文件的“复制到输出目录”设置应始终为“如果较新则复制”。 
@@ -207,15 +207,11 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ## <a name="monitoring-functions"></a>监视函数
 
-监视 Azure 中函数执行的建议方法是与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。 改为获得内置日志记录，不建议这样做。
+监视你的函数执行的建议的方法是通过将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。
 
-若要在 Azure 中为函数应用启用 Application Insights，请执行以下操作：
+若要为函数应用中启用 Application Insights:
 
-1. 在 [Azure 门户](https://portal.azure.com)中创建 Application Insights 实例并复制其检测密钥。 若要了解具体方法，请参阅[手动连接 App Insights 资源](functions-monitoring.md#manually-connect-an-app-insights-resource)。  
-
-1. 将名为 `APPINSIGHTS_INSTRUMENTATIONKEY` 的应用设置添加到 Azure 中的函数应用设置，如[函数应用设置](#function-app-settings)中所述。 此应用设置包含在上一步中创建的检测密钥。
-
-1. 从 Azure 的函数应用中删除 `AzureWebJobsDashboard` 应用设置，这将禁用内置日志记录。  
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 
 若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 

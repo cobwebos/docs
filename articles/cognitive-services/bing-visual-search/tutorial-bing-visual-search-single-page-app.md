@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/05/2019
 ms.author: aahi
-ms.openlocfilehash: e06fd7a4b2d072e5528643c2c8517d7545c36ef3
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338648"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469091"
 ---
-# <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用 
+# <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用
 
-必应视觉搜索 API 提供类似于 Bing.com/images 上显示的映像详细信息的体验。 借助视觉搜索，可以指定图像并取回有关图像的见解，如视觉上相似的图像、购物源、包含图像的网页等。 
+必应视觉搜索 API 返回图像见解。 你可以上传图像，也可以提供图像的 URL。 见解是视觉上类似的图像、购物源、包含图像的网页，等等。 必应视觉搜索 API 返回的见解类似于 Bing.com/images 上显示的见解。
 
-本文介绍了如何扩展必应图像搜索 API 的单页 Web 应用。 若要查看该教程或获取此处使用的源代码，请参阅[教程：创建必应图像搜索 API 的单页应用](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)。 
+本教程介绍如何扩展必应图像搜索 API 的单页 web 应用。 若要查看该教程或获取此处使用的源代码，请参阅[教程：创建必应图像搜索 API 的单页应用](../Bing-Image-Search/tutorial-bing-image-search-single-page-app.md)。
 
 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchApp.html) 上提供了此应用程序的完整源代码（在扩展它以使用必应视觉搜索 API 后）。
 
@@ -31,7 +31,7 @@ ms.locfileid: "57338648"
 
 ## <a name="call-the-bing-visual-search-api-and-handle-the-response"></a>调用必应视觉搜索 API 并处理响应
 
-编辑必应图像搜索教程，并将以下代码添加到 `<script>` 元素的末尾（在结尾 `</script>` 标记之前）。 以下代码处理来自 API 的视觉对象搜索响应，循环访问结果并显示它们。
+编辑必应图像搜索教程，并将以下代码添加到 `<script>` 元素的末尾（在结尾 `</script>` 标记之前）。 下面的代码处理来自 API 的视觉搜索响应、 循环访问结果，并显示它们：
 
 ``` javascript
 function handleVisualSearchResponse(){
@@ -63,8 +63,7 @@ function handleVisualSearchResponse(){
 }
 ```
 
-以下代码向 API 发送一个搜索请求，使用事件侦听器来调用 `handleVisualSearchResponse()`。
-
+以下代码将搜索请求发送到 API，使用事件侦听器调用`handleVisualSearchResponse()`:
 
 ```javascript
 function bingVisualSearch(insightsToken){
@@ -83,8 +82,8 @@ function bingVisualSearch(insightsToken){
     let requestBody = startBoundary + newLine;
     requestBody += bodyHeader;
     requestBody += JSON.stringify(postBody) + newLine + newLine;
-    requestBody += endBoundary + newLine;       
-    
+    requestBody += endBoundary + newLine;
+
     let request = new XMLHttpRequest();
 
     try {
@@ -102,7 +101,7 @@ function bingVisualSearch(insightsToken){
 
 ## <a name="capture-insights-token"></a>捕获 insights 令牌
 
-将以下代码添加到 `searchItemsRenderer` 对象中。 此代码添加“查找类似”链接，该链接在单击时调用 `bingVisualSearch` 函数。 该函数将 imageInsightsToken 接收为参数。
+将以下代码添加到`searchItemsRenderer`对象。 此代码添加“查找类似”链接，该链接在单击时调用 `bingVisualSearch` 函数。 在函数收到`imageInsightsToken`作为自变量。
 
 ``` javascript
 html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + "\");'>find similar</a><br>");
@@ -110,7 +109,7 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 
 ## <a name="display-similar-images"></a>显示相似的图像
 
-将以下 HTML 代码添加到第 601 行。 此标记代码添加了一个用于显示必应视觉搜索 API 调用结果的元素。
+将以下 HTML 代码添加到第 601 行。 此标记代码将添加一个元素以显示必应视觉搜索 API 调用的结果：
 
 ``` html
 <div id="insights">
@@ -124,4 +123,4 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [裁剪并上传图像](tutorial-visual-search-crop-area-results.md)
+> [教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像](tutorial-visual-search-crop-area-results.md)

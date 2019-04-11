@@ -8,21 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 5/16/2018
+ms.date: 4/05/2019
 ms.author: scottwhi
-ms.openlocfilehash: b01b68964600f6162512d4405fddbaf125e7e76d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58082715"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469108"
 ---
-# <a name="using-an-insights-token-to-get-insights-about-an-image"></a>使用见解标记获取有关图像的见解
+# <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用 insights 标记图像中获取见解
 
-必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关演示了通过上传图像来获取见解的示例，请参阅快速入门 ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md))。
+必应视觉搜索 API 将返回有关所提供的图像的信息。 可以通过使用图像的 URL、见解标记或通过上传图像来提供图像。 有关这些选项的信息，请参阅[什么是必应视觉搜索 API？](overview.md)。 本文演示了如何使用见解标记。 有关示例，演示如何上传图像以获取见解，请参阅快速入门教程 ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node.js](quickstarts/nodejs.md)  | [Python](quickstarts/python.md))。
 
-
-如果向视觉搜索发送图像标记或 URL，下面显示了必须在 POST 的正文中包含的窗体数据。 窗体数据必须包含 Content-Disposition 标头，且必须将其 `name` 参数设置为“knowledgeRequest”。 有关 `imageInfo` 对象的详细信息，请参阅“请求”。
+如果图像标记或 URL 发送必应视觉搜索下, 图显示窗体数据必须包括在 POST 的正文中。 窗体数据必须包括`Content-Disposition`标头，并且您必须将其`name`"knowledgeRequest"的参数。 有关详细信息`imageInfo`对象，请参阅请求：
 
 ```json
 {
@@ -44,7 +43,7 @@ ms.locfileid: "58082715"
 }
 ```
 
-本文中的示例展示了如何使用见解标记。 你从 /图像/搜索 API 响应中的图像对象中获取见解标记。 有关获取见解标记的信息，请参阅[必应图像搜索 API](../Bing-Image-Search/overview.md)。
+本文中的示例展示了如何使用见解标记。 获取从 insights 标记`Image`对象中 /images/搜索 API 响应。 有关获取见解令牌的信息，请参阅[必应图像搜索 API 是什么？](../Bing-Image-Search/overview.md)。
 
 ```
 --boundary_1234-abcd
@@ -59,28 +58,24 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
+有关使用见解标记的示例，请参阅 [C#](#use-with-c) | [Java](#use-with-java) | [Node.js](#use-with-nodejs) | [Python](#use-with-python)。
 
-有关使用见解标记的示例，请参阅 [C#](#using-csharp) | [Java](#using-java) | [Node.js](#using-nodejs) | [Python](#using-python)。
+## <a name="use-with-c"></a>使用C#
 
-<a name="using-csharp" />
+### <a name="c-prerequisites"></a>C#系统必备组件
 
-## <a name="using-c"></a>使用 C#
+- 任何版本的[Visual Studio 2017](https://www.visualstudio.com/downloads/)若要获取在 Windows 上运行此代码。
+- Azure 订阅。 对于此快速入门中，你可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费的订阅密钥。
 
-### <a name="prerequisites"></a>必备组件
-
-需要使用 [Visual Studio 2017](https://www.visualstudio.com/downloads/) 才能在 Windows 上运行此代码。 （免费的社区版也可以。）
-
-对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
-
-## <a name="running-the-application"></a>运行应用程序
+## <a name="run-the-application"></a>运行应用程序
 
 若要运行此应用程序，请执行以下步骤：
 
-1. 在 Visual Studio 中创建一个新的控制台解决方案。
-1. 将 `Program.cs` 的内容替换为本快速入门中显示的代码。
-2. 将 `accessKey` 值替换为你的订阅密钥。
-2. 将 `insightsToken` 值替换为 /图像/搜索响应中的见解标记。
-3. 运行该程序。
+1. 在 Visual Studio 中创建的控制台解决方案。
+2. 在本快速入门中所示的代码替换 Program.cs 的内容。
+3. 将 `accessKey` 值替换为你的订阅密钥。
+4. 将 `insightsToken` 值替换为 /图像/搜索响应中的见解标记。
+5. 运行该程序。
 
 ```csharp
 using System;
@@ -238,22 +233,19 @@ namespace VisualSearchInsightsToken
 }
 ```
 
-<a name="using-java" />
+## <a name="use-with-java"></a>与 Java 配合使用
 
-## <a name="using-java"></a>使用 Java
+### <a name="java-prerequisites"></a>Java 系统必备组件
 
-### <a name="prerequisites"></a>必备组件
+- 必须使用[JDK 7 或 8](https://aka.ms/azure-jdks)编译并运行此代码。 如果已收藏项，但文本编辑器就足够了，您可以使用 Java IDE。
+- 对于此快速入门中，你可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费的订阅密钥。
 
-需要使用 [JDK 7 或 8](https://aka.ms/azure-jdks) 来编译和运行此代码。 如果你有喜欢使用的 Java IDE，可以使用它，但文本编辑器足以满足要求。
-
-对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
-
-## <a name="running-the-application"></a>运行应用程序
+## <a name="run-the-java-application"></a>运行 Java 应用程序
 
 若要运行此应用程序，请执行以下步骤：
 
-1. 下载或安装 [gson 库](https://github.com/google/gson)。 也可以通过 Maven 获取它。
-2. 在你喜欢使用的 IDE 或编辑器中新建一个 Java 项目。
+1. 下载或安装[Gson Java 库](https://github.com/google/gson)。 你还可以获取 Gson 通过 Maven。
+2. 在最喜爱的 IDE 或编辑器中新建一个 Java 项目。
 3. 将提供的代码添加到一个名为 `VisualSearch.java` 的文件中。
 4. 将 `subscriptionKey` 值替换为你的订阅密钥。
 5. 运行该程序。
@@ -351,38 +343,35 @@ public class InsightsToken {
         return gson.toJson(json);
     }
 
-    
+
 }
 ```
 
+## <a name="use-with-nodejs"></a>与 Node.js 配合使用
 
-<a name="using-nodejs" />
+### <a name="nodejs-prerequisites"></a>Node.js 先决条件
 
-## <a name="using-nodejs"></a>使用 Node.js
+- 您必须具有[Node.js 6](https://nodejs.org/en/download/)运行此代码。
+- 对于此快速入门中，你可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费的订阅密钥。
 
-### <a name="prerequisites"></a>必备组件
-
-需要使用 [Node.js 6](https://nodejs.org/en/download/) 来运行此代码。
-
-对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
-
-## <a name="running-the-application"></a>运行应用程序
+## <a name="run-the-javascript-application"></a>运行 JavaScript 应用程序
 
 若要运行此应用程序，请执行以下步骤：
 
 1. 为项目创建一个文件夹（或使用你最喜欢的 IDE 或编辑器）。
 2. 从命令提示符或终端导航至刚刚创建的文件夹。
-3. 安装请求模块：  
-   ```  
+3. 安装请求模块：
+  
+   ```
    npm install request  
-   ```  
-3. 安装窗体数据模块：  
-   ```  
+   ```
+1. 安装窗体数据模块：  
+   ```
    npm install form-data  
-   ```  
-4. 创建一个名为 GetVisualInsights.js 的文件，并将以下代码添加到其中。
-5. 将 `subscriptionKey` 值替换为你的订阅密钥。
-7. 运行该程序。  
+   ```
+1. 创建一个名为 GetVisualInsights.js 的文件，并将以下代码添加到其中。
+1. 将 `subscriptionKey` 值替换为你的订阅密钥。
+1. 运行该程序。  
    ```
    node GetVisualInsights.js
    ```
@@ -422,19 +411,14 @@ function requestCallback(err, res, body) {
 }
 ```
 
+## <a name="use-with-python"></a>与 Python 配合使用
 
-<a name="using-python" />
+### <a name="python-prerequisites"></a>Python 必备组件
 
-## <a name="using-python"></a>使用 Python
+- 您必须具有[Python 3](https://www.python.org/)运行此代码。
+- 对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
 
-
-### <a name="prerequisites"></a>必备组件
-
-需要使用 [Python 3](https://www.python.org/) 来运行此代码。
-
-对于此快速入门，可以使用[免费试用版](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)订阅密钥或付费订阅密钥。
-
-## <a name="running-the-walkthrough"></a>运行演练
+## <a name="run-the-python-application"></a>运行 Python 应用程序
 
 若要运行此应用程序，请执行以下步骤：
 
@@ -442,7 +426,6 @@ function requestCallback(err, res, body) {
 2. 创建一个名为 visualsearch.py 的文件并添加此快速入门中所示的代码。
 3. 将 `SUBSCRIPTION_KEY` 值替换为你的订阅密钥。
 4. 运行该程序。
-
 
 ```python
 """Bing Visual Search example"""
@@ -492,8 +475,8 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>后续步骤
 
-[必应视觉搜索单页应用教程](tutorial-bing-visual-search-single-page-app.md)  
-[必应视觉搜索概述](overview.md)  
-[试试看](https://aka.ms/bingvisualsearchtryforfree)  
-[获取免费试用版访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
-[必应视觉搜索 API 参考](https://aka.ms/bingvisualsearchreferencedoc)
+[创建视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app.md)  
+[什么是必应视觉搜索 API？](overview.md)  
+[试用认知服务](https://aka.ms/bingvisualsearchtryforfree)  
+[获取免费试用版的访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[映像-视觉搜索](https://aka.ms/bingvisualsearchreferencedoc)

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/02/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1af2117b1d12c98182434705181462fd7c9bebf4
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862941"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426473"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -353,9 +353,10 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="search-logs"></a>搜索日志
 
-除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择“Log Analytics”。 此时将打开“日志搜索”窗格。
+除了 Azure 门户中提供的详细信息以外，还可以针对日志执行搜索。 在解决方案页上，选择**Log Analytics**。 此时将打开**日志搜索**窗格。
 
-还可访问 Log Analytics 搜索 API 文档，了解如何自定义查询或从不同客户端使用查询等。
+还可访问 Log Analytics 搜索 API 文档，[了解如何自定义查询或从不同客户端使用查询等。](
+https://dev.loganalytics.io/).
 
 ### <a name="sample-queries"></a>示例查询
 
@@ -564,7 +565,7 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
-## <a name="using-dynamic-groups"></a>使用动态组（预览）
+## <a name="using-dynamic-groups"></a>使用动态组
 
 更新管理能够定位 Azure VM 的动态组以进行更新部署。 这些组由查询进行定义，当更新部署开始时，将评估该组的成员。 动态组不适用于经典 Vm。 定义查询时，结合使用以下各项填充动态组
 

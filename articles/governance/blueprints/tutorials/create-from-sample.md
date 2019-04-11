@@ -1,20 +1,18 @@
 ---
 title: 基于蓝图示例创建环境
 description: 使用蓝图示例创建蓝图定义，用于设置两个资源组并为每个资源组配置角色分配。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/05/2019
 ms.topic: tutorial
 ms.service: blueprints
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 68bd6e3942d2b2e2c8bcf39bfcff10540e564315
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 4f400e45d8defc304cf58c4bd05fa19f16d0501b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57411167"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277766"
 ---
 # <a name="create-an-environment-from-a-blueprint-sample"></a>基于蓝图示例创建环境
 
@@ -106,10 +104,10 @@ ms.locfileid: "57411167"
 
      |项目名称|项目类型|参数名称|值|说明|
      |-|-|-|-|-|
-     |ProdRG 资源组|资源组|Name|ProductionRG|定义第一个资源组的名称。|
+     |ProdRG 资源组|资源组|名称|ProductionRG|定义第一个资源组的名称。|
      |ProdRG 资源组|资源组|位置|美国西部 2|设置第一个资源组的位置。|
      |参与者|角色分配|用户或组|{你的 ID}|定义要将“参与者”角色授予第一个资源组中的哪个用户或组。|
-     |PreProdRG 资源组|资源组|Name|PreProductionRG|定义第二个资源组的名称。|
+     |PreProdRG 资源组|资源组|名称|PreProductionRG|定义第二个资源组的名称。|
      |PreProdRG 资源组|资源组|位置|美国西部|设置第二个资源组的位置。|
      |所有者|角色分配|用户或组|{你的 ID}|定义要将“所有者”角色授予第二个资源组中的哪个用户或组。|
      |读取者|角色分配|用户或组|{你的 ID}|定义要将“读取者”角色授予第二个资源组中的哪个用户或组。|

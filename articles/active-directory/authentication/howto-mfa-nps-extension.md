@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b36b6e513e382e25f7d7038f49e7467a21686a0f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311724"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470349"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -57,10 +57,10 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 ### <a name="libraries"></a>库
 
-这些库将自动随扩展一同安装。
+这些库会自动随扩展一同安装。
 
-- [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
-- [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ Visual Studio 2013 (X64) 可再发行组件包](https://www.microsoft.com/download/details.aspx?id=40784)
+- [Microsoft Azure Active Directory 的 Windows PowerShell 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 已安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块，如果尚未安装，可以通过配置脚本，作为安装过程的一部分运行。 如果尚未安装此模块，则无需提前安装。
 
@@ -207,6 +207,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 
 请在证书存储中查找安装程序创建的自签名证书，然后检查私钥中是否包含授予“网络服务”用户的权限。 证书的使用者名称为 **CN \<tenantid\>，OU = Microsoft NPS Extension**
 
+生成的自签名的证书*AzureMfaNpsExtnConfigSetup.ps1*脚本还具有一个有效的生存期的两年。 验证安装了证书，还应检查该证书未过期。
+
 -------------------------------------------------------------
 
 ### <a name="how-can-i-verify-that-my-client-cert-is-associated-to-my-tenant-in-azure-active-directory"></a>如何验证客户端证书是否已关联到 Azure Active Directory 中的租户？
@@ -261,6 +263,14 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 ### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>HTTP 日志中为何出现错误，并且所有身份验证都失败？
 
 验证是否可以从运行该 NPS 扩展的服务器访问 https://adnotifications.windowsazure.com。
+
+-------------------------------------------------------------
+
+### <a name="why-is-authentication-not-working-despite-a-valid-certificate-being-present"></a>身份验证不工作的原因，尽管存在有效的证书？
+
+如果你以前的计算机证书已过期，并且已生成新证书，则应删除任何过期的证书。 具有已过期的证书可能会导致问题的 NPS 扩展启动。
+
+若要检查是否具有有效的证书，检查本地计算机帐户的证书存储区使用 MMC 中，并确保该证书尚未通过其到期日期。 若要生成新的有效证书，请重新运行步骤的部分下"[运行 PowerShell 脚本](#run-the-powershell-script)"
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 

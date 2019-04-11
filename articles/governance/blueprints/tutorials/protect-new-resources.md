@@ -1,19 +1,18 @@
 ---
 title: 使用蓝图资源锁保护新资源
 description: 了解如何使用 Azure 蓝图资源锁“只读”和“不要删除”来保护新部署的资源。
-services: blueprints
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/28/2019
 ms.topic: tutorial
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: f39d59ef7ab3f555637aef69b301a0e77c00fc24
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: d315fb5fe3ce7844946e6a9405a9a5f6a0be8b9d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629221"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272268"
 ---
 # <a name="protect-new-resources-with-azure-blueprints-resource-locks"></a>使用 Azure 蓝图资源锁保护新资源
 

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 3b6860c9a84384bfade099fb7c8c8c72281c3593
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257155"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469788"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
 当 Web 应用中的性能或用法指标发生变化时，[Azure Application Insights][start] 可发出警报。 
@@ -144,6 +144,24 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 10. 最后添加警报详细信息 （警报规则名称、 说明、 严重性）。 完成后，单击**创建警报规则**底部。
 
     ![在警报详细信息下键入警报规则名称、 编写的说明，然后选择严重级别](./media/alerts/9alertdetails.png)
+
+## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>如何取消订阅经典警报的电子邮件通知
+
+本部分适用于**经典可用性警报**， **Application Insights 指标警报**，并对其**经典失败异常警报**。
+
+如果以下任一应用，收到这些经典警报的电子邮件通知：
+
+* 警报规则设置中的通知电子邮件收件人字段中列出你的电子邮件地址。
+
+* 将电子邮件通知发送到用户的订阅的某些角色选项已激活，并按住该特定的 Azure 订阅的相应角色。
+
+![警报通知的屏幕截图](./media/alerts/alert-notification.png)
+
+若要更好地控制您的安全和隐私，我们通常建议对经典警报中显式指定通知收件人**通知电子邮件收件人**字段。 此选项以通知所有用户持有的某些角色用于向后兼容性。
+
+若要取消订阅警报规则生成的电子邮件通知，请删除从电子邮件地址**通知电子邮件收件人**字段。
+
+如果未显式列出你的电子邮件地址，我们建议禁用此选项以自动通知某些角色的所有成员，而是列出所有用户电子邮件，需要在通知电子邮件中接收通知的警报规则收件人字段。
 
 ## <a name="who-receives-the-classic-alert-notifications"></a>谁会收到（经典）警报通知？
 

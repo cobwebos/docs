@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.author: mesameki
 author: mesameki
 ms.reviewer: larryfr
-ms.date: 04/04/2019
-ms.openlocfilehash: f72923b80751f16ece128ced209679bbc325226c
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/09/2019
+ms.openlocfilehash: fbcafb61ecd69f58bb3c14d1b15f36f1b21f2833
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051795"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469771"
 ---
 # <a name="azure-machine-learning-interpretability-sdk"></a>Azure 机器学习 Interpretability SDK
 
@@ -34,7 +34,7 @@ Azure 机器学习 Interpretability SDK 集成了技术开发的 Microsoft 和�
 
 ## <a name="how-does-it-work"></a>工作原理
 
-Azure 机器学习 Interpretability 可用于了解模型的全局行为或特定预测。 以前称为全局解释，后者调用本地说明。
+Azure 机器学习 Interpretability 可用于了解模型的全局行为或特定的预测。 以前称为全局解释，后者调用本地说明。
 
 可以根据该方法是否是不可知的模型或模型特定还分类 azure 机器学习 Interpretability 方法。 某些方法针对特定类型的模型。 例如，SHAP 的树说明仅适用于基于树的模型。 某些方法视为黑盒子，如模拟说明或 SHAP 的内核说明该模型。 Azure 机器学习 Interpretability SDK 利用这些基于数据集、 模型类型和用例的不同方法。
 
@@ -42,7 +42,6 @@ Azure 机器学习 Interpretability 对模型进行其预测的方式返回一�
 
 * 全局/本地相对特征重要性
 * 全局/本地功能和预测的关系
-* 显示预测的交互式可视化效果，功能和预测的关系，以及相对特征重要性值全局和本地
 
 ## <a name="architecture"></a>体系结构
 
@@ -70,11 +69,10 @@ __直接 explainers__来自集成的库。 SDK 可包装所有 explainers，以�
 * **暗黄说明**:根据为浅，酸橙色说明使用先进的本地可解释不限模型的说明 （酸橙色） 算法来创建本地代理项的模型。 全局代理项与模型不同，酸橙色侧重于训练本地代理项模型来解释单个预测。
 * **HAN 文本说明**:HAN 文本说明用于为给定的黑色框文本模型获取从文本数据的模型说明使用分层网络。 我们为在给定的教师模型的预测输出 HAN 代理项模型定型。 定型后全局在文本语料库，我们添加了特定文档的 fine-tune 步骤以提高准确性的说明。 HAN 使用两个关注层，使用双向 RNN 句子和词引起注意。 DNN 是教师模型定型并对特定文档进行微调，我们可以关注层从提取 word importances。 我们发现 HAN 是比酸橙色或 SHAP 更准确的文本数据，但成本更高的定型时间也方面。 但是，我们已训练时间改进了通过为用户提供选项来初始化通过手套字词嵌入网络，虽然仍很慢。 可以通过在远程 Azure GPU VM 上运行 HAN 显著改进的训练时间。 层次结构的文档分类 （Yang et 都 2016年） 注意网络中描述的 HAN 实现 ([https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf](https://www.cs.cmu.edu/~diyiy/docs/naacl16.pdf))。
 
-__元 explainers__自动选择合适的直接说明并生成基于给定的模型和数据集的最佳说明信息。 元 explainers 利用所有的库 （SHAP、 酸橙色、 GA2M、 模仿等） 已集成或开发。 以下是元 explainers SDK 中提供：
+__元 explainers__自动选择合适的直接说明并生成基于给定的模型和数据集的最佳说明信息。 元 explainers 利用所有的库 （SHAP、 酸橙色，模仿等） 已集成或开发。 以下是元 explainers SDK 中提供：
 
 * **表格说明**:与表格数据集一起使用。
 * **文本说明**:与文本数据集一起使用。
-* **映像说明**与图像数据集一起使用。
 
 除了为元选择的直接 explainers、 元 explainers 开发的基础库之上的其他功能和通过直接 explainers 提高速度和可伸缩性。
 
@@ -90,7 +88,6 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 * **初始化数据集的摘要**。 中的说明的速度最重要的情况下，我们汇总初始化数据集并生成一组较小的具有代表性的示例，这样可以加快全局和本地的说明。
 * **评估数据集进行抽样**。 如果用户通过一大组评估示例中，但实际上并不需要所有这些要计算，可以设置采样参数为 true，则全局说明提高速度。
-* **KNN 快速说明**。 在说明需要作为单个/评分预测速度的情况下，可以使用 KNN 方法。 在全局说明过程中保留初始化示例和相应的 top k 功能。 若要生成的每个评估示例的说明，KNN 方法用于查找初始化示例中，从最相似的示例，以评估示例的顶部-k 功能的形式返回最相似的示例的顶部-k 功能。
 
 下图显示了两组直接与元 explainers 之间的关系。
 
@@ -100,7 +97,7 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 
 在 Python 中的数据集训练所有模型`numpy.array`， `pandas.DataFrame`， `iml.datatypes.DenseData`，或`scipy.sparse.csr_matrix`格式支持的机器学习 Interpretability SDK。
 
-说明函数接受作为输入模型和管道。 如果提供一个模型，则模型必须实现的预测函数`predict`或`predict_proba`Scikit 约定来确认。 如果提供的管道 （管道脚本的名称），则说明函数假定正在运行的管道脚本返回预测。
+说明函数接受作为输入模型和管道。 如果提供一个模型，则模型必须实现的预测函数`predict`或`predict_proba`符合 Scikit 约定。 如果提供的管道 （管道脚本的名称），则说明函数假定正在运行的管道脚本返回预测。
 
 ### <a name="local-and-remote-compute-target"></a>本地和远程计算目标
 
@@ -129,13 +126,12 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     ```python
     from azureml.explain.model.tabular_explainer import TabularExplainer
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
-    or
+    ```
+    或
+    ```python
     from azureml.explain.model.mimic.mimic_explainer import MimicExplainer
     from azureml.explain.model.mimic.models.lightgbm_model import LGBMExplainableModel
     explainer = MimicExplainer(model, x_train, LGBMExplainableModel, features=breast_cancer_data.feature_names, classes=classes)
-    or
-    from azureml.contrib.explain.model.lime.lime_explainer import LIMEExplainer
-    explainer = LIMEExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     ```
 
 3. 获取全局功能重要性的值。
@@ -154,9 +150,16 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     ```python
     # explain the first data point in the test set
     local_explanation = explainer.explain_local(x_test[0,:])
-    or
+    
+    # sorted feature importance values and feature names
+    sorted_local_importance_names = local_explanation.get_ranked_local_names()
+    sorted_local_importance_values = local_explanation.get_ranked_local_values()
+    ```
+    或
+    ```python
     # explain the first five data points in the test set
     local_explanation = explainer.explain_local(x_test[0:4,:])
+    
     # sorted feature importance values and feature names
     sorted_local_importance_names = local_explanation.get_ranked_local_names()
     sorted_local_importance_values = local_explanation.get_ranked_local_values()
@@ -172,21 +175,14 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
     run = Run.get_context()
     client = ExplanationClient.from_run(run)
     
-    breast_cancer_data = load_breast_cancer()
-    X_train, X_test, y_train, y_test = train_test_split(breast_cancer_data.data, breast_cancer_data.target, test_size = 0.2, random_state = 0)
-    data = {
-        "train":{"X": X_train, "y": y_train},        
-        "test":{"X": X_test, "y": y_test}
-    }
-    clf = svm.SVC(gamma=0.001, C=100., probability=True)
-    model = clf.fit(data['train']['X'], data['train']['y'])
-    joblib.dump(value = clf, filename = 'model.pkl')
+    # Train your model here
+
     # explain predictions on your local machine    
     explainer = TabularExplainer(model, x_train, features=breast_cancer_data.feature_names, classes=classes)
     # explain overall model predictions (global explanation)
-    global_explanation = explainer.explain_global(data["test"]["X"])
+    global_explanation = explainer.explain_global(x_test)
     # explain local data points (individual instances)
-    local_explanation = explainer.explain_local(data["test"]["X"][0,:])
+    local_explanation = explainer.explain_local(x_test[0,:])
     # upload global and local explanation objects to Run History
     upload_model_explanation(run, local_explanation, top_k=2, comment='local explanation: top 2 features')
     # Uploading global model explanation data for storage or visualization in webUX
@@ -200,6 +196,8 @@ __元 explainers__自动选择合适的直接说明并生成基于给定的模�
 2. 按照上的说明[设置用于为模型定型的计算目标](how-to-set-up-training-targets.md#amlcompute)若要了解有关如何设置 Azure 机器学习计算用作计算目标和提交训练运行。
 
 3. 下载本地 Jupyter 笔记本中的说明。 
+    > [!IMPORTANT]
+    > Contrib 中的内容不完全支持。 在实验性功能变得成熟，它们将逐渐将转移到主要包。
 
     ``` python
     from azureml.contrib.explain.model.explanation.explanation_client import ExplanationClient

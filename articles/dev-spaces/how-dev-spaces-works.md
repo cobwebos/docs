@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 0c22a6bbc9b75a14085f24a5be955e3482687965
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361491"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470893"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -96,13 +96,15 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 * 删除名为任何 Kubernetes 命名空间*azds*，如果它存在，并且还创建一个新。
 * 部署 Kubernetes 初始值设定项对象。
 
+它还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
+
 ![Azure 开发人员空间准备群集](media/how-dev-spaces-works/prepare-cluster.svg)
 
 若要使用 Azure 开发人员空格，必须至少一个适用于开发人员空间。 Azure 开发人员空间为开发人员空间使用 AKS 群集中的 Kubernetes 命名空间。 安装控制器时，它会提示您创建新的 Kubernetes 命名空间或选择现有的命名空间用作第一个适用于开发人员空间。 命名空间指定为开发人员空间时，会添加控制器*azds.io/space=true*到该命名空间，以将其标识为开发人员空格的标签。 默认情况下，准备你的群集后，创建或指定的初始开发空间处于选中状态。 选择一个空格后，它可供 Azure 开发人员空间用于创建新的工作负荷。
 
 默认情况下，控制器创建名为开发人员空格*默认*通过升级现有*默认*Kubernetes 命名空间。 客户端工具可用于创建新的开发空间和删除现有的开发空间。 由于在 Kubernetes 中，限制*默认*不能删除适用于开发人员的空间。 在控制器还会删除任何现有 Kubernetes 命名的命名空间*azds*以避免与冲突`azds`由客户端工具的命令。
 
-Kubernetes 初始值设定项对象用于在用于检测部署过程中将插入三个容器的 pod: devspaces 代理容器、 devspaces 代理初始化容器和 devspaces 生成容器。 **所有这三个这些容器在 AKS 群集上运行具有根访问权限。**
+Kubernetes 初始值设定项对象用于在用于检测部署过程中将插入三个容器的 pod: devspaces 代理容器、 devspaces 代理初始化容器和 devspaces 生成容器。 **所有这三个这些容器在 AKS 群集上运行具有根访问权限。** 他们还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
 
 ![Azure 开发人员空格 Kubernetes 初始值设定项](media/how-dev-spaces-works/kubernetes-initializer.svg)
 

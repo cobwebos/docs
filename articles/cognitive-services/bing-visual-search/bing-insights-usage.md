@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: conceptual
-ms.date: 04/17/2018
+ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: b120ad6c116b5722e5d2a982e93960232b0baf94
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 94f8d4ea98f42ad919597ef53dc63281825f0e6b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55869341"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470128"
 ---
 # <a name="examples-of-bing-insights-usage"></a>必应见解用法示例
 
@@ -23,34 +23,31 @@ ms.locfileid: "55869341"
 
 ## <a name="pagesincluding-insight-example"></a>PagesIncluding 见解示例
 
-下面显示指向第一个网页的链接，并允许用户展开和折叠包含图像的其他网页列表。
+以下显示一个链接到第一个网页，使用户可以展开和折叠的其他网页包含图像的列表：
 
 ![包含扩展页面](./media/pages-including.PNG)
 
-
 ## <a name="shoppingsources-insight-example"></a>ShoppingSources 见解示例
 
-以下介绍了必应如何显示图像中产品的购物源。
+下面显示了如何必应可能会显示购物源产品图所示：
 
 ![购物源](./media/shopping-sources.PNG)
 
-
 ## <a name="visualsearch-insight-example"></a>VisualSearch 见解示例
 
-以下介绍了必应如何显示视觉上相似的图像（请参阅示例中的相关图像）。
+下面的示例演示如何必应可能会显示外观相似的图像 (请参阅**相关映像**在示例中):
 
 ![视觉上相似的图像](./media/similar-images.PNG)
 
 ## <a name="recipes-insight-example"></a>Recipes 见解示例
 
-以下介绍了必应如何为图像中的食物显示食谱。 此示例使用户可以知道有可用的食谱。
+以下介绍了必应如何为图像中的食物显示食谱。 该示例允许用户知道有可用的方案：
 
 ![包含食谱和页面](./media/recipes-pages-including.PNG)
 
- 当用户展开列表时，提供指向食谱的链接。
+ 并在用户展开列表时提供为食谱的链接：
 
 ![包含展开的食谱页面](./media/expanded-recipes-pages-including.PNG)
-
 
 ## <a name="relatedsearches-insight-example"></a>RelatedSearches 见解示例
 
@@ -58,13 +55,11 @@ ms.locfileid: "55869341"
 
 ![图像的相关搜索](./media/bordered-related-searches.PNG)
 
-
 ## <a name="entity-insight-example"></a>Entity 见解示例
 
-以下介绍了必应如何显示图像中实体（人物、位置或事物）的相关信息。 如果用户单击实体链接，将针对实体转到 Bing.com 搜索结果页面。
+以下介绍了必应如何显示图像中实体（人物、位置或事物）的相关信息。 如果用户单击实体链接时，会将用户带到 Bing.com 搜索结果页面中的实体：
 
 ![图像中显示的实体](./media/entity.PNG)
-
 
 ## <a name="displaying-other-insights-that-the-user-might-explore"></a>显示用户可能浏览的其他见解
 
@@ -72,18 +67,15 @@ ms.locfileid: "55869341"
 
 ![浏览有关图像的其他见解](./media/apple-pie-more-tags.PNG)
 
-
 ## <a name="bounding-boxes-and-hot-spots"></a>边框和热点
 
-非默认标记包括标识图像（标记应用于的图像）中感兴趣区域的边框。 如果边框未标识整个图像，使用边框在图像上创建热点。 用户可以单击热点以获取与热点（或矩形）下内容相关的信息。 例如，如果图像是一个高级时装图像，结果可能包含图像中配饰（如钱包、珠宝、围巾）的标记（和边框）。下面示例演示图像中太阳镜的热点矩形。
+非默认标记包括标识图像（标记应用于的图像）中感兴趣区域的边框。 如果边框未标识整个图像，使用边框在图像上创建热点。 用户可以单击热点以获取与热点（或矩形）下内容相关的信息。 例如，如果映像是一个高方式映像，结果可能包含标记 （和范围框） 的 accessories 图中所示钱包、 珠宝、 scarfs，等。 下面的示例演示场闹剧图所示的作用点矩形：
 
 ![边框和热点](./media/click-to-search.PNG)
 
-
-
 ## <a name="next-steps"></a>后续步骤
 
-若要快速了解如何使用第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
+若要开始使用你的第一个请求，请参阅快速入门：[C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [node.js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)
 
 
 

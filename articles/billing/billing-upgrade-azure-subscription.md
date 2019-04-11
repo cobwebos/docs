@@ -17,16 +17,16 @@ ms.workload: na
 ms.date: 03/14/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6cb875aa686d9e2d0ba7bf51563d3b51b1572a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d6af7106e991f0306ae2fef69129888219a9c0e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094222"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469516"
 ---
 # <a name="upgrade-your-free-trial-or-azure-for-students-starter-subscription-to-pay-as-you-go"></a>升级免费试用版或 Azure for Students Starter 订阅到即用即付
 
-如果有[免费试用版](https://azure.microsoft.com/free/)，则可以升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)在 Azure 门户中的订阅。 如果有[Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/)订阅，则可以升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)Azure 帐户中心中。
+如果有[免费试用版](https://azure.microsoft.com/free/)或[Azure for Students Starter](https://azure.microsoft.com/offers/ms-azr-0144p/)订阅，则可以升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)在 Azure 门户中。 如果你有 Azure for Students Starter 订阅并且有资格免费试用版，则可以升级到免费试用版。
 
 <a id="freetrial"></a>
 
@@ -35,9 +35,9 @@ ms.locfileid: "58094222"
 从免费试用版订阅升级时，创建订阅后，可保留剩余信用额度整整 30 天。 仍可使用 12 个月的免费服务。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)
-1. 搜索上**成本管理 + 计费。**
+1. 搜索上**订阅。**
 
-    ![显示搜索的屏幕截图](./media/billing-upgrade-azure-subscription/search.png)
+    ![显示搜索的屏幕截图](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
 
 1. 选择免费试用版订阅。
 1. 在订阅概览边栏选项卡，单击**升级订阅**命令栏中。
@@ -63,15 +63,24 @@ ms.locfileid: "58094222"
 
 ## <a name="upgrade-your-azure-for-students-starter-subscription-to-pay-as-you-go"></a>将你的 Azure for Students Starter 订阅升级到即用即付
 
-1. 登录到 [Azure 帐户中心](https://account.windowsazure.com/subscriptions)。
+当您执行以下步骤时，我们会使您的选项，如果您有资格升级到免费试用版。
+
+1. 登录到 [Azure 门户](https://portal.azure.com)
+1. 搜索上**订阅。**
+
+    ![显示搜索的屏幕截图](./media/billing-upgrade-azure-subscription/search-subscriptions-ibiza.png)
+
 1. 选择你的 Azure for Students Starter 订阅。
-1. 下**订阅状态**，单击**立即升级**。
+1. 在订阅概览边栏选项卡，单击**升级订阅**命令栏中。
 
-    ![显示学生的升级的屏幕截图](./media/billing-upgrade-azure-subscription/student-upgrade-button.png)
+    ![屏幕截图，面向学生显示升级按钮](./media/billing-upgrade-azure-subscription/student-upgrade-ibiza.png)
 
-1. 输入你的订阅的名称。
+1. 如果要升级到即用即付，并且没有为你的订阅的支付方法，将提示您添加一个。
+1. 您可能需要输入一个电话号码来验证你的身份。
+1. 键入你的订阅的名称。
+1. 如果要升级到即用即付，选择你的订阅的支持计划。 若要了解有关支持计划的详细信息，请参阅[Azure 支持计划](https://azure.microsoft.com/us/support/plans/)。
 
-1. 单击**立即升级**。
+1. 单击“升级”。
 
 ## <a name="next-steps"></a>后续步骤
 

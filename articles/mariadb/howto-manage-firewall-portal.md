@@ -5,16 +5,18 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 3fccb50e3447eabc15cbef89ab7655b3f1d1f4ac
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.date: 04/09/2019
+ms.openlocfilehash: e9ab243692f5a4a1ec7de25774f5bad867698fc3
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56876800"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469992"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MariaDB 防火墙规则
-使用服务器级防火墙规则，管理员可以从指定的 IP 地址或某个范围的 IP 地址访问 Azure Database for MariaDB 服务器。 
+服务器级防火墙规则可以用于管理访问权限对 Azure Database for MariaDB 服务器从指定的 IP 地址或某个范围内的 IP 地址。
+
+此外可以使用虚拟网络 (VNet) 规则来保护对你的服务器访问。 详细了解如何[创建和管理虚拟网络服务终结点和规则使用 Azure 门户](howto-manage-vnet-portal.md)。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>在 Azure 门户中创建服务器级防火墙规则
 
@@ -52,7 +54,6 @@ ms.locfileid: "56876800"
 * 若要修改现有规则，单击规则中的任意字段并修改。 单击“保存”以保存更改。
 * 若要删除现有规则，请单击省略号 […]，然后单击“删除”。 单击“保存”以保存更改。
 
-<!--
-## Next steps
- - Similarly, you can script to [Create and manage Azure Database for MariaDB firewall rules using Azure CLI](howto-manage-firewall-using-cli.md).
-- For help in connecting to an Azure Database for MariaDB server, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md) -->
+## <a name="next-steps"></a>后续步骤
+ - 同样，您可以参阅[创建和管理 Azure Database for MariaDB 的防火墙规则使用 Azure CLI](howto-manage-firewall-cli.md)。
+ - 进一步保护对你的服务器的访问[创建和管理虚拟网络服务终结点和规则使用 Azure 门户](howto-manage-vnet-portal.md)。

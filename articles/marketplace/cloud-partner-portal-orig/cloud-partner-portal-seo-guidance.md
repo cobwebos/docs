@@ -1,5 +1,5 @@
 ---
-title: Azure 市场 SEO 发布者指南 | Microsoft Docs
+title: Azure Marketplace SEO 指南 |Microsoft Docs
 description: 提供了有关最大程度地提升搜索引擎优化 (SEO) 的指南。
 services: Azure, Marketplace, Cloud Partner Portal,
 documentationcenter: ''
@@ -12,21 +12,23 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 04/09/2019
 ms.author: pbutlerm
-ms.openlocfilehash: cacc7c0b269e8006903961049caf3cd7e3bee449
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: da7b59400baa4c964dff71fa1f842fede9d68df1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834330"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469652"
 ---
-<a name="azure-marketplace-seo-publisher-guide"></a>Azure 市场 SEO 发布者指南
-=======================================
+# <a name="azure-marketplace-seo-guidance"></a>Azure Marketplace SEO 指南
 
-### <a name="general-explanation-of-algorithm"></a>算法的一般说明
+此文章介绍了如何充分利用通过中的搜索功能的产品/服务的可发现性[Azure Marketplace](https://azuremarketplace.microsoft.com)并[AppSource](https://appsource.microsoft.com)。 
 
-市场利用 Azure 搜索来为站点的搜索功能提供助力。 算法基于词频–逆向文档频率 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf))。 将使用标准 [Lucene 分析器](https://lucene.apache.org/core/)。
+
+## <a name="general-explanation-of-algorithm"></a>算法的一般说明
+
+Microsoft 商城利用 Azure 搜索进行增强站点的搜索功能。 算法基于词频–逆向文档频率 ([TF-IDF](https://en.wikipedia.org/wiki/Tf–idf))。 将使用标准 [Lucene 分析器](https://lucene.apache.org/core/)。
 
 通常情况下，所有文本字段、类别和行业都将包括在相关性权重中。 其他应用不常用但你的应用中常用的专业术语在搜索时将产生较高的匹配分数。 因此，使用“VM”这样的术语不会带来多大好处，而使用“Azure搜索”将更加专业。
 下面是要考虑的最相关的字段。
@@ -42,7 +44,7 @@ ms.locfileid: "57834330"
 |  |  |  |
 
 
-### <a name="other-tips"></a>其他技巧
+## <a name="other-tips"></a>其他技巧
 
 -   搜索建议会导致过多的用户活动。 它根据应用名称/发布者确定匹配项的优先级。 当搜索词与发布者/应用名称不完全匹配时，简短说明将成为键字段。
 -   用于下载的文档不包括在搜索权重中。

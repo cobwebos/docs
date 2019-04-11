@@ -10,18 +10,18 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: 1982f974acd1e9d5e8cae91201f6503eb2ae678a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57898784"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469703"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 数据库项目开发 Azure Data Lake 的 U-SQL 数据库
 
 U-SQL 数据库为表格中的非结构化数据和托管的结构化数据提供了结构化的视图。 它还提供用于整理结构化数据和自定义代码的常规元数据目录系统。 数据库是将这些相关对象组在一起的概念。
 
-了解有关 [U-SQL 数据库和数据定义语言 (DDL)](https://msdn.microsoft.com/azure/data-lake-analytics/u-sql/data-definition-language-ddl-statements-u-sql)的详细信息。 
+了解有关 [U-SQL 数据库和数据定义语言 (DDL)](/u-sql/data-definition-language-ddl-statements)的详细信息。 
 
 U-SQL 数据库项目是 Visual Studio 中的一种项目类型，可帮助开发人员快速轻松地开发、管理和部署其 U-SQL 数据库。
 
@@ -92,7 +92,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
   
 ### <a name="deploy-u-sql-database-by-using-the-sdk"></a>使用 SDK 部署 U-SQL 数据库
 
-`PackageDeploymentTool.exe` 提供帮助部署 U-SQL 数据库的编程和命令行接口。 SDK 包含在 [U-SQL SDK Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)中，位于 `build/runtime/PackageDeploymentTool.exe`。
+`PackageDeploymentTool.exe` 提供的编程和命令行接口，可帮助部署 U-SQL 数据库。 SDK 包含在 [U-SQL SDK Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)中，位于 `build/runtime/PackageDeploymentTool.exe`。
 
 [了解有关 SDK 和如何为 U-SQL 数据库部署设置 CI/CD 管道的详细信息](data-lake-analytics-cicd-overview.md)。
 
@@ -117,5 +117,5 @@ U-SQL 项目可以引用 U-SQL 数据库项目。 该引用将影响两个工作
 ## <a name="next-steps"></a>后续步骤
 
 - [如何为 Azure Data Lake Analytics 设置 CI/CD 管道](data-lake-analytics-cicd-overview.md)
-- [如何测试 Azure Data Lake Analytics 代码](data-lake-analytics-cicd-test.md)
+- [如何测试你的 Azure Data Lake Analytics 代码](data-lake-analytics-cicd-test.md)
 - [在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)

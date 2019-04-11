@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02c12a8cc8163fa70008b21995ddb35aec57dfcf
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: d42fe972b79ecd9bcee65d0664c5d13da02d2238
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579676"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470604"
 ---
 # <a name="review-access-to-groups-or-applications-in-azure-ad-access-reviews"></a>查看对组的访问或 Azure AD 中的应用程序访问评审
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 1. 在页面右上角，单击用户符号，其中显示了你的姓名和默认组织。 如果列出多个组织，请选择已请求访问评审的组织。
 
-1. 在页面的右侧，单击**访问评审**磁贴以查看未完成的访问评审的列表。
+1. 单击**访问评审**磁贴以查看未完成的访问评审的列表。
 
     如果该磁贴不可见，则该组织没有要执行的访问评审，此时不需要执行任何操作。
 
@@ -71,11 +71,13 @@ Azure Active Directory (Azure AD) 简化了企业在 Azure AD 中管理访问组
 
 1. 查看要决定是否批准或拒绝其持续访问权限的用户列表。
 
-1. 若要批准或拒绝每个请求，请单击要打开窗口，以指定要执行的操作的行。
+1. 若要批准或拒绝每个请求，请单击要打开一个窗口来指定要执行的操作的行。
 
 1. 单击**批准**或**拒绝**。 如果您不确定，则可以单击**不知道**。 执行此操作将导致用户维护其访问权限，但所选内容将反映在审核日志。
 
     ![执行访问评审](./media/perform-access-review/approve-deny.png)
+
+1. 如有必要，输入在原因**原因**框。
 
     访问评审的管理员可能要求你提供批准持续访问权限或组成员身份的原因。
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 2e13f1f09fcdfb68a99e705511e3659f1632132e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 93d0f148c1fa3f13e79b28e19527251455a1b65c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895475"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470825"
 ---
 # <a name="profile-live-azure-cloud-services-with-application-insights"></a>使用 Application Insights 分析实时 Azure 云服务
 
@@ -33,7 +33,7 @@ Application Insights Profiler 随 Azure 诊断扩展一同安装。 只需将 Az
 
 1. [将 Application Insights SDK 添加到 Azure 云服务](../../azure-monitor/app/cloudservices.md?toc=/azure/azure-monitor/toc.json)。
 
-   >**是探查器在 WAD 的最新版本中随附的云服务中的 bug。** 若要使用探查器与云服务，它仅支持最高版本 2.7.2 AI SDK。 如果使用 AI SDK 的较新版本，您必须返回 2.7.2，它才能使用探查器。 如果使用 Visual Studio App Insights SDK 的版本降级，可能会在运行时获取绑定重定向错误。 这是因为 Microsoft.ApplicationInsights 的 web.config 文件中的"newVersion"应设置为"2.7.2.0"后降级 AI SDK，但它不会自动更新。
+    **已修复探查器在 WAD 中随附的云服务中的错误。** WAD (1.12.2.0) 为云服务的最新版本适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但它不是即时。 若要强制升级，可以重新部署你的服务或重新启动节点。
 
 1. 使用 Application Insights 跟踪请求：
 

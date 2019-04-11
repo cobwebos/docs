@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: c380f0391c51628b0eb71723a0faf982a4399680
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887754"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470248"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Monitor 中的视图设计器磁贴的参考指南
 通过 Azure Monitor 中使用视图设计器，可以在可帮助你可视化 Log Analytics 工作区中的数据在 Azure 门户中创建各种自定义视图。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。
@@ -33,14 +33,17 @@ ms.locfileid: "56887754"
 
 | 磁贴 | 描述 |
 |:--- |:--- |
-| [数字](#number-tile) |查询中的记录数。 |
+| [Number](#number-tile) |查询中的记录数。 |
 | [两个数字](#two-numbers-tile) |两个不同查询中的记录数。 |
-| [圆环图](#donut-tile) | 基于一个查询的图表，中心显示汇总值。 |
+| [同心圆](#donut-tile) | 基于一个查询的图表，中心显示汇总值。 |
 | 折线图和标注 | 基于一个查询的折线图，并使用汇总值进行标注。 |
 | [折线图](#line-chart-tile) |基于一个查询的折线图。 |
 | [两条时间线](#two-timelines-tile) | 具有两个序列的柱状图，每个序列基于一个单独的查询。 |
 
 后续部分将详细介绍磁贴类型及其属性。
+
+> [!NOTE]
+> 基于视图中的磁贴[记录查询](../log-query/log-query-overview.md)Log Analytics 工作区中。 它们当前不支持[跨资源查询](../log-query/cross-workspace-query.md)从 Application Insights 中检索数据。
 
 ## <a name="number-tile"></a>数字磁贴
 **数字**磁贴显示一个日志查询中的记录数，具有一个标签。
@@ -90,13 +93,13 @@ ms.locfileid: "56887754"
 |:--- |:--- |
 | 名称 |在磁贴顶部显示的文本。 |
 | 描述 |在磁贴名称下面显示的文本。 |
-| **圆环图** | |
+| **同心圆** | |
 | Query |要为该圆环图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 此查询通常使用 *measure* 关键字来汇总结果。 |
-| **圆环图** |**> 中心** |
+| **同心圆** |**> 中心** |
 | 文本 |在该圆环图中的值下显示的文本。 |
 | Operation |要在值属性上执行以汇总到单个值的操作。<ul><li>总和：累加具有该属性值的所有记录的值。</li><li>百分比：具有该属性值的记录的总和值占所有记录总和值的百分比。</li></ul> |
 | 用于中心操作的结果值 |（可选）选择加号 (+) 可添加一个或多个值。 查询的结果将限于具有指定属性值的记录。 如果没有添加任何值，则查询中包含所有记录。 |
-| **圆环图** |**>其他选项** |
+| **同心圆** |**> 其他选项** |
 | 颜色 |为前三个主要属性分别显示的颜色。 若要特定属性值指定备选颜色，可使用“高级颜色映射”。 |
 | 高级颜色映射 |显示表示特定属性值的颜色。 如果指定的值位于前三，则会显示备选颜色而不是标准颜色。 如果该属性不在前三，则不会显示颜色。 |
 | **高级** |**> 数据流验证** |

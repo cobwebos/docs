@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: glenga
-ms.openlocfilehash: 8e41145dd67c61b2e806740265a3f234401aefe1
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 9db84ee23a2b2b19d05e458ff38854076a530e38
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009829"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470834"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
 
@@ -466,6 +466,16 @@ func deploy
 | **`--max`**  | （可选）设置要部署到的最大函数应用实例数。 |
 | **`--min`**  | （可选）设置要部署到的最小函数应用实例数。 |
 | **`--config`** | 设置可选的部署配置文件。 |
+
+## <a name="monitoring-functions"></a>监视函数
+
+监视你的函数执行的推荐的方法是通过与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，当使用 Azure CLI 创建 function app，不是完成在 Azure 中在函数应用中的集成。
+
+若要为函数应用中启用 Application Insights:
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
