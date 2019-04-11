@@ -3,20 +3,20 @@ title: 使用 Azure 复制数据工具复制本地数据 | Microsoft Docs
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从本地 SQL Server 数据库复制到 Azure Blob 存储。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: nabhishek
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
-ms.date: 01/04/2018
-ms.author: jingwang
-ms.openlocfilehash: 3569d39b8e4668894e44507dfdd0e20297028290
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.date: 04/09/2018
+ms.author: abnarain
+ms.openlocfilehash: 26bc6861602cae349c8ebaafefe070c119a93e87
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226498"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261507"
 ---
 # <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>使用“复制数据”工具将数据从本地 SQL Server 数据库复制到 Azure Blob 存储
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -205,21 +205,19 @@ ms.locfileid: "58226498"
 
 1. 选择“**下一步**”。
 
-       ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
+   ![](./media/tutorial-hybrid-copy-data-tool/select-source-linked-service.png)
 
 1. 在“选择要从中复制数据的表或使用自定义查询”页中，从列表中选择“[dbo].[emp]”表，然后选择“下一步”。 可以根据你的数据库选择任何其他表。
 
-       ![The Product table selection](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
+   ![Product 表选择](./media/tutorial-hybrid-copy-data-tool/select-emp-table.png)
 
 1. 在“目标数据存储”页面上，选择“创建新连接”
 
-       //image create-new-sink-connection.png
-
-       ![Create Destination linked service](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
+   ![创建目标链接服务](./media/tutorial-hybrid-copy-data-tool/create-new-sink-connection.png)
 
 1. 在“新建链接服务”中，搜索并选择“Azure Blob”，然后选择“继续”。 
 
-       ![Blob storage selection](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
+   ![Blob 存储选择](./media/tutorial-hybrid-copy-data-tool/select-destination-data-store.png)
 
 1. 在“新建链接服务(Azure Blob 存储)”对话框中，执行以下步骤： 
 
@@ -231,47 +229,47 @@ ms.locfileid: "58226498"
 
        d. Select **Next**.
 
-       ![Specify the storage account](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
+   ![指定存储帐户](./media/tutorial-hybrid-copy-data-tool/specify-azure-blob-storage-account.png)
 
 1. 在“目标数据存储”对话框中，选择“下一步”。 在“连接属性”中，对于“Azure 存储服务”，选择“Azure Blob 存储”。 选择“**下一步**”。 
 
-       ![connection properties](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
+   ![连接属性](./media/tutorial-hybrid-copy-data-tool/select-connection-properties.png)
 
 1. 在“选择输出文件或文件夹”对话框中，在“文件夹路径”下，输入 **adftutorial/fromonprem**。 在执行先决条件中的步骤时，你已创建了 **adftutorial** 容器。 如果输出文件夹（在本例中为 **fromonprem**）不存在，则数据工厂会自动创建它。 也可以使用“浏览”按钮来浏览 Blob 存储及其容器/文件夹。 如果没有在“文件名”下指定任何值，则默认情况下将使用源中的名称（在本例中为 **dbo.emp**）。
            
-       ![Choose the output file or folder](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
+   ![选择输出文件或文件夹](./media/tutorial-hybrid-copy-data-tool/choose-output-file-folder.png)
 
 1. 在“文件格式设置”对话框中，选择“下一步”。 
 
-       ![File format settings page](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
+   ![“文件格式设置”页](./media/tutorial-hybrid-copy-data-tool/file-format-settings-page.png)
 
 1. 在“设置”对话框中，选择“下一步”。 
 
-       ![Settings page](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
+   ![“设置”页](./media/tutorial-hybrid-copy-data-tool/settings-page.png)
 
 1. 在“摘要”对话框中，复查所有设置的值，然后选择“下一步”。 
 
-       ![Summary page](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
+   ![“摘要”页](./media/tutorial-hybrid-copy-data-tool/summary-page.png)
 
 1. 在“部署”页中，选择“监视”可以监视创建的管道或任务。
 
-       ![Deployment page](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+   ![“部署”页](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
 
 1. 在“监视”选项卡中，可以查看创建的管道的状态。 可以使用“操作”列中的链接查看与管道运行关联的活动运行，以及重新运行管道。 
 
-       ![Monitor pipeline runs](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
+   ![监视管道运行](./media/tutorial-hybrid-copy-data-tool/monitor-pipeline-runs.png)
 
 1. 选择“操作”列中的“查看活动运行”链接可以查看与管道运行关联的活动运行。 若要查看复制操作的详细信息，请选择“操作”列中的“详细信息”链接（眼镜图标）。 若要切换回“管道运行”视图，请选择顶部的“管道”。
 
-       ![Monitor activity runs](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
+   ![监视活动运行](./media/tutorial-hybrid-copy-data-tool/monitor-activity-runs.png)
 
 1. 确认可以在 **adftutorial** 容器的 **fromonprem** 文件夹中看到输出文件。 
 
-       ![Output blob](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
+   ![输出 Blob](./media/tutorial-hybrid-copy-data-tool/output-blob.png)
 
 1. 选择左侧的“编辑”选项卡可以切换到编辑器模式。 可以使用编辑器来更新该工具创建的链接服务、数据集和管道。 选择“代码”可以查看与编辑器中打开的实体相关联的 JSON 代码。 有关如何在数据工厂 UI 中编辑这些实体的详细信息，请参阅[此教程的 Azure 门户版本](tutorial-copy-data-portal.md)。
 
-       ![Edit tab](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
+   ![“编辑”选项卡](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>后续步骤

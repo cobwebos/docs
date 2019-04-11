@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 07/13/2018
 ms.author: spelluru
-ms.openlocfilehash: 5c53c64c337cb2992b002ee02ceb9aab36e16de4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: a4ca5cba924a3269f279469f26e68acdb0ad0659
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958739"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257614"
 ---
 # <a name="an-introduction-to-azure-lab-services"></a>Azure 实验室服务简介
 通过 Azure 实验室服务，可以快速在云中设置团队环境（例如，开发环境、测试环境、教室实验室环境）。 实验室所有者创建实验室、预配 Windows 或 Linux 虚拟机、安装必要的软件和工具，并将其提供给实验室用户使用。 实验室用户在实验室中连接到虚拟机 (VM)，以便进行日常工作、短期项目或实验室练习。 用户开始利用实验室中的资源后，实验室管理员可分析多个实验室的成本和使用情况，并设置总体策略以优化组织或团队成本。

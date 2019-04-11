@@ -3,20 +3,20 @@ title: 使用 Azure 复制数据工具复制数据 | Microsoft Docs
 description: 创建一个 Azure 数据工厂，然后使用“复制数据”工具将数据从 Azure Blob 存储中的一个位置复制到另一个位置。
 services: data-factory
 documentationcenter: ''
-author: linda33wj
+author: dearandyxu
 manager: craigg
 ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/20/2018
-ms.author: jingwang
-ms.openlocfilehash: 6ff264c079ef5ee18258c3cd136cf441dc33e299
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.author: yexu
+ms.openlocfilehash: a77041b063f043c065df9a2955e9d07b5692f592
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "55992749"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59256254"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>快速入门：使用“复制数据”工具复制数据
 

@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f3fcbda160d84e41fd2244a4d58766ae3991e52
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: c7b3eee08c036862e6ce9f0c590a596f7b1d3fb0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56197651"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258685"
 ---
 # <a name="about-microsoft-identity-platform"></a>关于 Microsoft 标识平台
 
@@ -38,7 +38,7 @@ Microsoft 标识平台是 Azure Active Directory (Azure AD) 标识服务和开�
 
 下图显示了高级别的 Microsoft 标识体验，包括应用注册体验、SDK、终结点和支持的标识。
 
-![如今的 Microsoft 标识平台](./media/about-microsoft-identity-platform/microsoft-identity-platform-preview.png)
+![如今的 Microsoft 标识平台](./media/about-microsoft-identity-platform/about-microsoft-identity-platform.svg)
 
 Microsoft 标识平台具有两个终结点（v1.0 和 v2.0）和两组客户端库，用于处理这些终结点。 开发新应用程序时，请考虑终结点和身份验证库的优势和当前状态。 另请考虑以下因素：
 
