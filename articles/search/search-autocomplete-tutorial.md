@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
-ms.openlocfilehash: 7c06489af7c418a437c2e7a8714c89bee1414c2b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: HT
+ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357964"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471726"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>示例：将建议或自动完成功能添加到 Azure 搜索应用程序
 
@@ -164,7 +164,7 @@ $(function () {
 
 您可能注意到的第一件事是一种方法在调用类的顶部`InitSearch`。 此方法在 Azure 搜索服务中创建经过身份验证的 HTTP 索引客户端。 有关详细信息，请参阅[如何使用.NET 应用程序中的 Azure 搜索](https://docs.microsoft.com/azure/search/search-howto-dotnet-sdk)。
 
-在第 41 行，请注意建议函数。 它基于[DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview)。
+在第 41 行，请注意建议函数。 它基于[DocumentsOperationsExtensions.Suggest 方法](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest?view=azure-dotnet-preview)。
 
 ```csharp
 public ActionResult Suggest(bool highlights, bool fuzzy, string term)

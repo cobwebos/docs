@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 10/05/2018
 ms.reviewer: mbullwin
 ms.author: tilee
-ms.openlocfilehash: dd28bc3925b0f07a441c46a26498ef1a14c3e650
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 101c985178b8269b4ff542b94b057330d0c2652a
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55510317"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471658"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>适用于 Azure Functions 的 Application Insights 支持功能
 
@@ -27,12 +27,12 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 
 | Azure Functions                       | V1                | V2 (Ignite 2018)  | 
 |-----------------------------------    |---------------    |------------------ |
-| **Application Insights .NET SDK**   | 2.5.0       | 2.7.2         |
+| **Application Insights.NET SDK**   | **2.5.0**       | **2.9.1**         |
 | | | | 
-| **自动集合**        |                 |                   |               
+| **自动收集**        |                 |                   |               
 | &bull; 请求                     | 是             | 是               | 
 | &bull; 异常                   | 是             | 是               | 
-| &bull; 性能计数器         | 是             |                   |
+| &bull; 性能计数器         | 是             | 是               |
 | &bull; 依赖项                   |                   |                   |               
 | &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | 是               | 
 | &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | 是               | 
@@ -45,7 +45,7 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 | &bull; 采样                     | 是             | 是               | 
 | &bull; 检测信号                   |                 | 是               | 
 | | | | 
-| **关联性**                       |                   |                   |               
+| **相关**                       |                   |                   |               
 | &bull; ServiceBus                     |                   | 是               | 
 | &bull; EventHub                       |                   | 是               | 
 | | | | 
@@ -65,3 +65,30 @@ Azure Functions 提供与 Application Insights 的[内置集成](https://docs.mi
 ## <a name="sampling"></a>采样
 
 Azure Functions 默认在其配置中启用采样功能。 有关详细信息，请参阅[配置采样](https://docs.microsoft.com/azure/azure-functions/functions-monitoring#configure-sampling)。
+
+如果你的项目依赖于 Application Insights SDK 以执行手动跟踪的遥测数据，可能会遇到奇怪的行为，则不同于 Functions 的采样配置采样配置时。 
+
+我们建议为函数使用相同的配置。 与**Functions v2**，可以获取在构造函数中使用依赖关系注入的相同配置：
+
+```csharp
+using Microsoft.ApplicationInsights;
+using Microsoft.ApplicationInsights.Extensibility;
+
+public class Function1 
+{
+
+    private readonly TelemetryClient telemetryClient;
+
+    public Function1(TelemetryConfiguration configuration)
+    {
+        this.telemetryClient = new TelemetryClient(configuration);
+    }
+
+    [FunctionName("Function1")]
+    public async Task<IActionResult> Run(
+        [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req, ILogger logger)
+    {
+        this.telemetryClient.TrackTrace("C# HTTP trigger function processed a request.");
+    }
+}
+```

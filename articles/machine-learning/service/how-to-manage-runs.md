@@ -1,7 +1,7 @@
 ---
 title: 启动、 监视和取消在 Python 中的训练运行
 titleSuffix: Azure Machine Learning service
-description: 了解如何启动、 状态、 标记和组织您的机器学习试验。
+description: 了解如何启动、 设置标记，状态和组织您的机器学习试验。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
-ms.date: 4/5/2019
-ms.openlocfilehash: 726273024a2da0cea5207c86140f3c31263a208f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
-ms.translationtype: HT
+ms.date: 04/05/2019
+ms.openlocfilehash: 82df2258116ce55fa440b67ec0a66b106d0d72c7
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426680"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471488"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>启动、 监视和取消在 Python 中的训练运行
 
@@ -47,7 +47,7 @@ ms.locfileid: "59426680"
 
 <a name="monitor"></a>
 
-## <a name="start-and-status-a-run"></a>启动和运行状态
+## <a name="start-a-run-and-set-its-status"></a>启动运行并将其状态设置
 
 通过导入设置试验[工作区](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py)，[试验](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py)，[运行](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py)，并[ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py)类从[azureml.core](https://docs.microsoft.com/python/api/azureml-core/azureml.core?view=azure-ml-py)包。
 
@@ -101,7 +101,7 @@ print("Has it completed?",notebook_run.get_status())
 
 ## <a name="cancel-or-fail-runs"></a>取消或失败，运行
 
- 如果您注意到了错误的操作或运行操作可能需要长时间才能完成，请使用[ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--)方法完成之前停止运行并将其标记为已取消。
+ 如果您注意到了错误的操作或运行似乎要花一段时间才能完成，请使用[ `cancel()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#cancel--)方法完成之前停止运行并将其标记为已取消。
 
 ```Python
 run_config = ScriptRunConfig(source_directory='.', script='hello_with_delay.py')

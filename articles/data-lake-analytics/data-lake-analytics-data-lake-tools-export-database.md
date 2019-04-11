@@ -9,12 +9,12 @@ ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 11/27/2017
-ms.openlocfilehash: 7a4aae87cd704cf94c89c308c0c056ae5b9a8b4d
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.openlocfilehash: fe28aa8b88f557d4bbcdabf1de1c4bc6491743ce
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51250996"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471403"
 ---
 # <a name="export-a-u-sql-database"></a>导出 U-SQL 数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "51250996"
 
 ## <a name="export-steps"></a>导出步骤
 
-### <a name="step-1-export-the-database-in-server-explorer"></a>步骤 1：在服务器资源管理器中导出数据库
+### <a name="step-1-export-the-database-in-server-explorer"></a>步骤 1：在服务器资源管理器中的将数据库导出
 
 你有权访问的所有 Data Lake Analytics 帐户都列在服务器资源管理器中。 若要导出数据库，请执行以下操作：
 
@@ -37,7 +37,7 @@ ms.locfileid: "51250996"
 
      如果“导出”菜单选项不可用，需要[将工具更新到最新版本](https://aka.ms/adltoolsvs)。
 
-### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步骤 2：配置想要导出的对象
+### <a name="step-2-configure-the-objects-that-you-want-to-export"></a>步骤 2：配置你想要导出的对象
 
 如果只需要某个大型数据库的一小部分，可以在导出向导中配置所要导出的对象子集。 
 
@@ -51,7 +51,7 @@ ms.locfileid: "51250996"
 
 还可以配置导出目标的其他设置。 下表列出了配置说明：
 
-|配置|Description|
+|配置|描述|
 |-------------|-----------|
 |目标名称|此名称指示要将导出的数据库资源保存到的位置。 这些资源的示例包括程序集、附加文件和示例数据。 将在本地数据根文件夹下创建使用此名称的文件夹。|
 |项目目录|此路径定义要将导出的 U-SQL 脚本保存到的位置。 所有数据库对象定义都保存在此位置。|
@@ -84,7 +84,7 @@ ms.locfileid: "51250996"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解 U-SQL 数据库](https://msdn.microsoft.com/library/azure/mt621299.aspx) 
+* [了解 U-SQL 数据库](/u-sql/data-definition-language-ddl-statements) 
 * [使用本地运行和 Azure Data Lake U-SQL SDK 来测试及调试 U-SQL 作业](data-lake-analytics-data-lake-tools-local-run.md)
 
 

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: 6c96b7139787a3863b3f7a47949d9cdf20cc5021
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855667"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471522"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -67,9 +67,15 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 要使 Profiler 正常工作：
 * Web 应用服务计划必须属于“基本”层或更高层。
 * Web 应用必须已启用 Application Insights。
-* 必须在 Web 应用的 **APPINSIGHTS_INSTRUMENTATIONKEY** 应用设置中配置 Application Insights SDK 所用的相同检测密钥。
-* 必须定义 Web 应用的 **APPINSIGHTS_PROFILERFEATURE_VERSION** 应用设置，并将其设置为 1.0.0。
-* Web 应用必须已定义 DiagnosticServices_EXTENSION_VERSION 应用设置并将该值设置为 ~3。
+* 你的 web 应用必须具有以下应用设置：
+
+    |应用设置    | 值    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | 为你的 Application Insights 资源的 iKey    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
+
+
 * ApplicationInsightsProfiler3 webjob 必须正在运行。 若要检查 webjob：
    1. 转到 [Kudu](https://blogs.msdn.microsoft.com/cdndevs/2015/04/01/the-kudu-debug-console-azure-websites-best-kept-secret/)。
    1. 在“工具”菜单中，选择“WebJobs 仪表板”。  
@@ -93,12 +99,13 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 1. 设置 **.NET Framework 版本**到**v4.6**。
 
 1. 将“Always On”设置为“打开”。
+1. 创建这些应用程序设置：
 
-1. 添加应用设置“APPINSIGHTS_INSTRUMENTATIONKEY”，将值设置为 SDK 使用的同一检测密钥。
-
-1. 添加 **APPINSIGHTS_PROFILERFEATURE_VERSION** 应用设置，并将值设置为 1.0.0。
-
-1. 添加 DiagnosticServices_EXTENSION_VERSION 应用设置，并将该值设置为 ~3。
+    |应用设置    | 值    |
+    |---------------|----------|
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | 为你的 Application Insights 资源的 iKey    |
+    |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
+    |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
 ### <a name="too-many-active-profiling-sessions"></a>活动分析会话太多
 
@@ -124,7 +131,7 @@ Profiler 在 Web 应用中以连续 Web 作业的形式运行。 可以在 [Azur
 
 ## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>排查 Profiler 和 Azure 诊断的问题
 
-  >**是探查器在 WAD 的最新版本中随附的云服务中的 bug。** 若要使用探查器与云服务，它仅支持最高版本 2.7.2 AI SDK。 如果使用 AI SDK 的较新版本，您必须返回 2.7.2，它才能使用探查器。 如果使用 Visual Studio App Insights SDK 的版本降级，可能会在运行时获取绑定重定向错误。 这是因为 Microsoft.ApplicationInsights 的 web.config 文件中的"newVersion"应设置为"2.7.2.0"后降级 AI SDK，但它不会自动更新。
+>**已修复探查器在 WAD 中随附的云服务中的错误。** WAD (1.12.2.0) 为云服务的最新版本适用于所有最新版本的 App Insights SDK。 云服务主机将自动升级 WAD，但它不是即时。 若要强制升级，可以重新部署你的服务或重新启动节点。
 
 若要查看 Azure 诊断是否正确配置了 Profiler，请执行以下三项操作： 
 1. 首先，检查部署的 Azure 诊断配置的内容是否符合预期。 

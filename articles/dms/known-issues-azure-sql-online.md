@@ -10,17 +10,20 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/05/2019
-ms.openlocfilehash: 38a59a3a390977c5a3fd22b185542f5f2ec33d79
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/09/2019
+ms.openlocfilehash: a822e540db87c36358f1a0e34d75e05ed866868d
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58091488"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471233"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-db"></a>联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制
 
 下面描述了从 SQL Server 联机迁移到 Azure SQL 数据库时存在的已知问题和限制。
+
+> [!IMPORTANT]
+> 使用的 SQL Server 到 Azure SQL 数据库的联机迁移，不支持 SQL_variant 数据类型的迁移。
 
 ### <a name="migration-of-temporal-tables-not-supported"></a>不支持迁移时态表
 
@@ -62,17 +65,20 @@ ms.locfileid: "58091488"
       select object_name(object_id) 'Table name' from sys.columns where system_type_id =240 and object_id in (select object_id from sys.objects where type='U')
       ``` 
 
-   1. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
+2. 在用于指定要迁移的表的“配置迁移设置”边栏选项卡中排除这些表。
 
-   1. 重新运行迁移活动。
+3. 重新运行迁移活动。
 
 ### <a name="migration-failures-with-various-integrity-violations-with-active-triggers-in-the-schema-during-full-data-load-or-incremental-data-sync"></a>在执行“完整数据加载”或“增量数据同步”期间发生迁移失败，并且与架构中的活动触发器发生各种完整性冲突
 
 **解决方法**
+
 1. 使用以下查询在源数据库中查找当前处于活动状态的触发器：
+
      ```
      select * from sys.triggers where is_disabled =0
      ```
+
 2. 使用 [DISABLE TRIGGER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/disable-trigger-transact-sql?view=sql-server-2017) 一文中提供的步骤在源数据库中禁用这些触发器。
 
 3. 重新运行迁移活动。
@@ -101,11 +107,11 @@ DMS 不会迁移源时间戳值；DMS 在目标表中生成新的时间戳值。
 
 如果需要 DMS 迁移源表中存储的确切时间戳值，请联系的工程团队[让 Azure 数据库迁移](mailto:AskAzureDatabaseMigrations@service.microsoft.com)。
 
-### <a name="data-migration-errors-do-not-provide-additional-details-on-the-database-detailed-status-blade"></a>发生数据迁移错误时，“数据库详细状态”边栏选项卡上不会提供其他详细信息。
+### <a name="data-migration-errors-dont-provide-additional-details-on-the-database-detailed-status-blade"></a>数据迁移错误未提供数据库的详细的状态边栏选项卡上的其他详细信息。
 
 **症状**
 
-如果“数据库详细状态”视图中显示迁移失败，选择顶部功能区中的“数据迁移错误”链接可能不会提供特定于该迁移失败的其他详细信息。
+跨数据库的详细信息状态视图中的迁移失败时，选择**数据的迁移错误**顶部功能区上的链接可能无法提供特定于迁移失败的其他详细信息。
 
 ![发生数据迁移错误时不提供详细信息的示例](media/known-issues-azure-sql-online/dms-data-migration-errors-no-details.png)
 

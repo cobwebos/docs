@@ -5,13 +5,14 @@ author: christianreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: conceptual
+ms.custom: fasttrack-new
 services: batch
-ms.openlocfilehash: 1e3b2d42ae390b9eb755e568b82fc1a90e0eae6a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58806775"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471318"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure 管道来生成和部署的 HPC 解决方案
 
@@ -52,7 +53,7 @@ Azure 管道用于生成、 部署、 测试和监视软件提供了一系列新
 * [什么是源代码管理？](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops)
 * [了解 Azure 资源管理器模板的结构和语法](../azure-resource-manager/resource-group-authoring-templates.md)
 
-#### <a name="azure-resource-manager-templates"></a>Azure Resource Manager 模板
+#### <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 
 此示例利用多个资源管理器模板来部署我们的解决方案。 若要执行此操作，我们使用功能的模板数 （类似于单元或模块） 实现特定的一项功能。 我们还使用它负责将这些基础功能在一起的端到端解决方案模板。 有几个为这种方法带来的好处：
 
@@ -301,7 +302,7 @@ Azure 管道用于生成、 部署、 测试和监视软件提供了一系列新
 * **Arm 模板**将我们的基础结构存储为代码的文件夹
 * **Hpc 应用程序**包含 ffmpeg 的二进制文件的文件夹
 * **管道**包含为我们生成的管道定义的文件夹。
-* **可选**：**客户端应用程序**将存储为.NET 应用程序代码的文件夹。 我们不要使用这在示例中，但在您自己的项目，你可能想要执行的 HPC 批处理应用程序通过客户端应用程序的运行。
+* 可选：**客户端应用程序**将存储为.NET 应用程序代码的文件夹。 我们不要使用这在示例中，但在您自己的项目，你可能想要执行的 HPC 批处理应用程序通过客户端应用程序的运行。
 
 > [!NOTE]
 > 这只是一个示例结构的代码库。 这种方法用于演示应用程序、 基础架构和管道代码存储在同一个存储库的目的。
@@ -360,7 +361,7 @@ Azure 管道用于生成、 部署、 测试和监视软件提供了一系列新
 > [!NOTE]
 > 如果使用客户端应用程序来执行 HPC Batch 应用程序，您需要创建该应用程序的单独的生成定义。 您可以找到操作方法指南中的大量[Azure 管道](https://docs.microsoft.com/azure/devops/pipelines/get-started/index?view=azure-devops)文档。
 
-## <a name="continuous-deployment"></a>持续部署
+## <a name="continuous-deployment"></a>连续部署
 
 Azure 管道还用于部署应用程序和底层基础结构。 [发布管道](https://docs.microsoft.com/azure/devops/pipelines/release/what-is-release-management?view=azure-devops)是启用持续部署和自动执行发布过程的组件。
 
@@ -396,7 +397,7 @@ Azure 管道还用于部署应用程序和底层基础结构。 [发布管道](h
     * **batchApplicationVersion**:语义版本的 batch 应用程序 （即，ffmpeg 二进制文件）
     * **location**：要部署 Azure 资源的位置
     * **resourceGroupName**:要创建的资源组的名称和在其中部署你的资源
-    * **StorageAccountName**:若要保存链接的资源管理器模板的存储帐户的名称
+    * **storageAccountName**：若要保存链接的资源管理器模板的存储帐户的名称
 
     ![对于 Azure 管道版本设置变量的示例](media/batch-ci-cd/Release-4.jpg)
 
@@ -505,5 +506,5 @@ az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 
 除了本文中，有两个利用 ffmpeg，使用.NET 和 Python 的教程。 有关如何与 Batch 帐户，通过简单的应用程序进行交互，请参阅这些教程，详细信息。
 
-* [通过使用 Python API 的 Azure Batch 运行并行工作负荷](tutorial-parallel-python.md)
-* [通过使用.NET API 的 Azure Batch 运行并行工作负荷](tutorial-parallel-dotnet.md)
+* [使用 Python API 通过 Azure Batch 运行并行工作负荷](tutorial-parallel-python.md)
+* [使用 .NET API 通过 Azure Batch 运行并行工作负荷](tutorial-parallel-dotnet.md)

@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: d3aad8f1b032960786564bbb18f99c260fd72113
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092712"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471709"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -64,8 +64,8 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 我们正在开发[关联 HTTP 协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)的 RFC 提案。 此提案定义两个标头：
 
-- `Request-Id`：承载调用的全局唯一 ID。
-- `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
+- `Request-Id`:承载调用的全局唯一 ID。
+- `Correlation-Context`:承载分布式跟踪属性的名称值对集合。
 
 该标准还定义了 `Request-Id` 生成项的两个架构：平面和分层。 使用平面架构时，将为 `Correlation-Context` 集合定义一个已知的 `Id` 键。
 
@@ -75,8 +75,8 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 我们正在转换为 [W3C 分布式跟踪格式](https://w3c.github.io/trace-context/)。 定义的内容：
 
-- `traceparent`：承载调用的全局唯一操作 ID 和唯一标识符。
-- `tracestate`：承载跟踪系统特定的上下文。
+- `traceparent`:承载调用的全局唯一操作 ID 和唯一标识符。
+- `tracestate`:承载跟踪系统特定的上下文。
 
 #### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
 
@@ -102,7 +102,7 @@ public void ConfigureServices(IServiceCollection services)
 
 #### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
-- **传入配置**
+- **传入的配置**
 
   - 对于 Java EE 应用，请将以下内容添加到 ApplicationInsights.xml 内的 `<TelemetryModules>` 标记中：
 
@@ -117,7 +117,7 @@ public void ConfigureServices(IServiceCollection services)
     - `azure.application-insights.web.enable-W3C=true`
     - `azure.application-insights.web.enable-W3C-backcompat-mode=true`
 
-- **传出配置**
+- **传出的配置**
 
   将以下代码添加到 AI-Agent.xml：
 
@@ -143,11 +143,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`、`PageView`                 | 带 `span.kind = server` 的 `Span`                  |
-| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
-| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
+| `Request`， `PageView`                 | `Span` 替换为 `span.kind = server`                  |
+| `Dependency`                          | `Span` 替换为 `span.kind = client`                  |
+| `Id` `Request`和 `Dependency`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
+| `Operation_ParentId`                  | `Reference` 类型的`ChildOf`（父范围）   |
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。 
 
@@ -157,18 +157,18 @@ public void ConfigureServices(IServiceCollection services)
 
 .NET 至今已定义了多种方式来关联遥测和诊断日志：
 
-- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。 
-- `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
-- `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 
+- `System.Diagnostics.CorrelationManager` 允许跟踪[LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。 
+- `System.Diagnostics.Tracing.EventSource` 和事件跟踪 Windows (ETW) 定义[SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)方法。
+- `ILogger` 使用[日志作用域](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 
 - Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
 
-但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 是支持跨计算机自动关联的一种方式。 .NET 库支持“DiagnosticSource”，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
+但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 是一种方法，以支持自动跨计算机相关联。 .NET 库支持“DiagnosticSource”，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
 
 `DiagnosticSource` 中的[指南活动](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
-从版本 4.1.0 开始，`System.Net.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
+`System.Net.HttpClient`从版本 4.1.0，开始支持自动注入关联 HTTP 标头并在活动的 HTTP 调用的跟踪。
 
 经典 ASP.NET 有一个新的 HTTP 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 `DiagnosticSource` 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测，即使 Internet Information Services (IIS) 处理的每个阶段在不同的托管线程上运行。
 
@@ -183,6 +183,11 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 > 只有通过 Apache HTTPClient 进行的调用才能使用关联功能。 如果使用 Spring RestTemplate 或 Feign，则二者实际上都可以与 Apache HTTPClient 配合使用。
 
 目前不支持跨消息传送技术（例如，Kafka、RabbitMQ 或 Azure 服务总线）自动进行上下文传播。 但是，可以通过 `trackDependency` 和 `trackRequest` API 手动编码此类方案。 在这些 API 中，让依赖项遥测代表由生成者排队的消息，让请求代表由使用者处理的消息。 在这种情况下，`operation_id` 和 `operation_parentId` 都应在消息的属性中传播。
+
+### <a name="telemetry-correlation-in-asynchronous-java-application"></a>异步 Java 应用程序中的遥测关联
+
+为了将异步 Spring Boot 应用程序中的遥测相关联，请按照[这](https://github.com/Microsoft/ApplicationInsights-Java/wiki/Distributed-Tracing-in-Asynchronous-Java-Applications)详细的文章。 它提供了有关检测 Spring 的指导[ThreadPoolTaskExecutor](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskExecutor.html) ，以及[ThreadPoolTaskScheduler](https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/scheduling/concurrent/ThreadPoolTaskScheduler.html)。 
+
 
 <a name="java-role-name"></a>
 ## <a name="role-name"></a>角色名称

@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 02/20/2019
+ms.date: 04/01/2019
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5e25af938d09a254abd5d28ca3a5eecca2d3f8f1
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576186"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471624"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>创建访问评审的组或 Azure AD 中的应用程序访问评审
 
@@ -30,18 +30,18 @@ ms.locfileid: "58576186"
 
 ## <a name="prerequisites"></a>必备组件
 
-- [访问评审已启用](access-reviews-overview.md)
+- [已启用的访问评审](access-reviews-overview.md)
 - 全局管理员或用户管理员
 
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审
 
-1. 登录到 Azure 门户并打开[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
+1. 登录到 Azure 门户，然后打开[访问评审页](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)。
 
-1. 单击“控制”。
+1. 在左侧菜单中，单击**访问评审**。
 
 1. 单击“新建访问评审”创建新的访问评审。
 
-    ![访问评审 - 控制](./media/create-access-review/controls.png)
+    ![访问评审 - 控制](./media/create-access-review/access-reviews.png)
 
 1. 命名访问评审。 可选择为评审提供说明。 名称和说明向评审者显示。
 
@@ -51,11 +51,11 @@ ms.locfileid: "58576186"
 
     ![创建访问评审 - 开始和结束日期](./media/create-access-review/start-end-dates.png)
 
-1. 若要让访问评审定期进行，请将“频率”设置从“一次”更改为“每周”、“每月”、“每季”或“每年”，并使用“持续时间”滑块或文本框来定义定期进行的一系列评审每次的运行天数（可供审阅者输入）。 例如，每月评审的最长持续时间可以设置为 27 天，以免评审时间重叠。
+1. 若要使访问评审再次发生，请更改**频率**设置从**一次**到**每周**，**每月**， **每季度**或**每年一次**。 使用**持续时间**滑块或文本框中，可以定义多长时间内每段评论各定期系列的将是打开的审阅者的输入。 例如，每月评审的最长持续时间可以设置为 27 天，以免评审时间重叠。
 
 1. 使用“结束”设置指定如何结束定期访问评审系列。 系列的结束方式有三种：持续运行，无限期地开始评审；运行至指定日期；运行至已完成定义的评审数目。 另一个用户管理员或另一个全局管理员可以停止序列创建之后通过更改中的日期**设置**，以便它在该日期结束。
 
-1. 在“用户”部分，指定访问评审要应用到的用户。 访问评审的对象可以是组成员，或者是已分配到应用程序的用户。 可将访问评审的范围进一步限定为仅评审属于成员（或已分配到应用程序）的来宾用户，而不是评审属于成员或有权访问应用程序的所有用户。
+1. 在中**用户**部分中，指定访问评审适用于的用户。 访问评审的对象可以是组成员，或者是已分配到应用程序的用户。 可将访问评审的范围进一步限定为仅评审属于成员（或已分配到应用程序）的来宾用户，而不是评审属于成员或有权访问应用程序的所有用户。
 
     ![创建访问评审 - 用户](./media/create-access-review/users.png)
 
@@ -112,7 +112,9 @@ ms.locfileid: "58576186"
 
 ## <a name="start-the-access-review"></a>启动访问评审
 
-指定访问评审的设置后，单击“启动”。
+指定访问评审的设置后，单击“启动”。 访问评审会在其状态指示符列表中显示。
+
+![访问评审列表](./media/create-access-review/access-reviews-list.png)
 
 默认情况下，在评审开始后不久，Azure AD 会向评审者发送一封电子邮件。 如果选择不让 Azure AD 发送电子邮件，请务必通知评审者有一个访问评审任务等待他们完成。 说明如何显示[评审为组或应用程序的访问权限](perform-access-review.md)。 如果评审工作是让来宾评审他们自己的访问权限，显示它们如何的说明[评审自己的访问权限，对组或应用程序](review-your-access.md)。
 
@@ -120,13 +122,15 @@ ms.locfileid: "58576186"
 
 ## <a name="manage-the-access-review"></a>管理访问审阅
 
-当审阅者完成其审阅的 Azure AD 仪表板中，你可以跟踪进度**访问评审**部分。 在[评审完成](complete-access-review.md)之前，目录中的任何访问权限都不会更改。
+你可以跟踪进度，当评审者在完成其审阅**概述**访问评审页。 在[评审完成](complete-access-review.md)之前，目录中的任何访问权限都不会更改。
+
+![访问评审进度](./media/create-access-review/overview-progress.png)
 
 如果这是一次性的评审，然后访问评审期限结束后，或者管理员停止访问评审后请按照中的步骤[完成组或应用程序的访问评审](complete-access-review.md)查看并应用结果。  
 
-若要管理一系列访问评审，请从“控件”导航到访问评审，此时会在“计划的评审”中找到即将进行的评审，然后即可相应地编辑结束日期或添加/删除评审者。 
+若要管理一系列访问评审会议中，导航到访问评审，并你将找到计划评审中即将推出的匹配项和编辑的结束日期或添加/删除审阅者相应地。
 
-根据你在“完成后操作”设置中的选择，自动应用会在评审者的结束日期之后执行，或在你手动停止评审后执行。 评审状态将从“已完成”变为各种中间状态（例如“正在应用”），并最终变为“已应用”状态。 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
+基于所选内容中**完成设置后**，自动应用将审阅的结束日期或手动停止评审后执行。 此评审的状态将更改从**已完成**通过中间状态，如**应用**，最后到状态**应用**。 几分钟后，应会看到被拒绝的用户（如果有）已从组成员身份或应用程序分配中删除。
 
 ## <a name="create-reviews-via-apis"></a>通过 API 创建评审
 

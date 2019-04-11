@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/09/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: 22a95ce506a7f906604cc65d08a04b7f761bb4c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 704aefd68f35ca20f72a2a0c46bf11912c139e65
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59273577"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469482"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>教程：创建和管理 Azure 预算
 
@@ -63,9 +63,9 @@ ms.locfileid: "59273577"
 
 ![Azure 门户中显示的成本管理预算](./media/tutorial-acm-create-budgets/budgets01.png)
 
-在“创建预算”窗口中，输入预算名称和预算金额。 然后，选择任一每月、 每季度或每年的持续时间<sup>1</sup>。 接下来，选择结束日期。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 当满足预算阈值时，通常将在八小时内接收到电子邮件通知。 有关通知的详细信息，请参阅[使用成本警报](cost-mgt-alerts-monitor-usage-spending.md)。
+在“创建预算”窗口中，输入预算名称和预算金额。 然后，选择月、季或年作为预算期限。 接下来，选择结束日期。 预算需要至少一个成本阈值（预算百分比）和相应的电子邮件地址。 可以选择在单个预算中包括多达五个阈值和五个电子邮件地址。 当满足预算阈值时，通常将在八小时内接收到电子邮件通知。 有关通知的详细信息，请参阅[使用成本警报](cost-mgt-alerts-monitor-usage-spending.md)。
 
-<sup>1</sup>如果你是即用即付、 MSDN 或 Visual Studio 客户发票计费周期的订阅可能不会对齐到日历月。 订阅和资源组归到此存储桶，可以创建对齐的预算，到你的发票或日历月。 若要创建与你的发票对齐的预算，选择重置期间的计费月、 计费季度或在创建时的计费年。 若要创建与日历月份一致的预算，选择重置期间的每月、 季度或每年一次创建时。
+如果你有一个即用即付、 MSDN 或 Visual Studio 订阅，发票计费周期可能不会与日历月份一致。 对于这些类型的订阅和资源组，可以创建对齐的预算，到你的发票期或日历月。 若要创建与你的发票期对齐的预算，选择重置期间的计费月、 计费季度或计费年。 若要创建与日历月份一致的预算，请选择重置期间的每月、 每季度或每年一次。
 
 下面是一个示例，说明了如何创建金额为 4,500 美元的每月预算。 达到预算的 90% 时，会生成电子邮件警报。
 

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.openlocfilehash: f0f5a4ee5206201cca20e705011126e6cf472a1a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835446"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471080"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
 
@@ -85,7 +85,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>使用 C# 表达式显示今天的日期
 
-可使用下面的 C# 表达式拉取今天的日期：`DateTime.Now.ToString("M/d/yyyy")`
+若要拉取今天的日期，我们可以使用以下C#表达式： `DateTime.Now.ToString("M/d/yyyy")`
 
 以下示例演示如何在脚本中使用此表达式：
 
@@ -534,7 +534,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 * **序列化**：使用所提供流的给定根对某对象或对象的图形进行序列化。
 
 `MyType` 实例：类型的实例。  
-`IColumnWriter` 写入器/`IColumnReader` 读取器：基础列流。  
+`IColumnWriter` 编写器 /`IColumnReader`读取器：基础列流。  
 `ISerializationContext` 上下文：用于定义一组标志的枚举，该枚举在序列化期间指定流的源上下文或目标上下文。
 
 * **中间**：指定源上下文或目标上下文不是持久存储。
@@ -1267,9 +1267,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* 为每个输入行调用 `Output`。 返回 `IUnstructuredWriter output` 行集。
+* `Output` 为每个输入行调用。 返回 `IUnstructuredWriter output` 行集。
 * 构造函数类用于将参数传递到用户定义的输出器。
-* `Close` 用于选择性地进行重写以发布开销状态或确定最后一行的写入时间。
+* `Close` 用于根据需要重写以发布昂贵状态或确定何时写入的最后一行。
 
 **SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 此类不能继承。
 
@@ -1601,7 +1601,7 @@ CROSS APPLYis used to pass parameters
 new MyScript.MyApplier(param1, param2) AS alias(output_param1 string, …);
 ```
 
-有关在 SELECT 表达式中使用应用器的详细信息，请参阅 [U-SQL SELECT：从 CROSS APPLY 和 OUTER APPLY 中选择](https://msdn.microsoft.com/library/azure/mt621307.aspx)。
+有关在 SELECT 表达式中使用应用器的详细信息，请参阅 [U-SQL SELECT：从 CROSS APPLY 和 OUTER APPLY 中选择](/u-sql/statements-and-expressions/select/from/select-selecting-from-cross-apply-and-outer-apply)。
 
 用户定义的应用器基类定义如下所示：
 
@@ -1815,7 +1815,7 @@ Combine_Expression :=
     USING_Clause.
 ```
 
-有关详细信息，请参阅 [COMBINE 表达式 (U-SQL)](https://msdn.microsoft.com/library/azure/mt621339.aspx)。
+有关详细信息，请参阅 [COMBINE 表达式 (U-SQL)](/u-sql/statements-and-expressions/combine-expression)。
 
 若要定义用户定义的合并器，需使用 [`SqlUserDefinedCombiner`] 属性创建 `ICombiner` 接口，这对于用户定义的合并器定义是可选的。
 
@@ -1877,7 +1877,7 @@ CombinerMode 枚举可采用以下值：
 
 为进行缓存，可创建 List\<T\> 类型的内存结构，作为 LINQ 查询执行的结果，具体而言就是 List<`IRow`>。 还可在枚举期间使用匿名数据类型。
 
-有关 LINQ 查询的详细信息，请参阅 [LINQ 查询 (C#) 简介](https://msdn.microsoft.com/library/bb397906.aspx)，有关 IEnumerable\<T\> 接口的详细信息，请参阅 [IEnumerable\<T\> 接口](https://msdn.microsoft.com/library/9eekhta0(v=vs.110).aspx)。
+有关 LINQ 查询的详细信息，请参阅 [LINQ 查询 (C#) 简介](/dotnet/csharp/programming-guide/concepts/linq/introduction-to-linq-queries)，有关 IEnumerable\<T\> 接口的详细信息，请参阅 [IEnumerable\<T\> 接口](/dotnet/api/system.collections.generic.ienumerable-1)。
 
 为从传入 `IRowset` 获取实际数据值，需使用 `IRow` 接口的 Get() 方法。
 
