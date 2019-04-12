@@ -1,6 +1,6 @@
 ---
-title: 如何安装和使用用于 Azure Active Directory 的 Log Analytics 视图（预览版）| Microsoft Docs
-description: 了解如何安装和使用用于 Azure Active Directory 的 Log Analytics 视图（预览版）
+title: 如何安装和使用用于 Azure Active Directory 的日志分析视图（预览版）| Microsoft Docs
+description: 了解如何安装和使用用于 Azure Active Directory 的日志分析视图（预览版）
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -24,22 +24,22 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58437299"
 ---
-# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的 Log Analytics 视图
+# <a name="install-and-use-the-log-analytics-views-for-azure-active-directory"></a>安装和使用用于 Azure Active Directory 的日志分析视图
 
-Azure Active Directory Log Analytics 视图可以帮助你分析和搜索 Azure AD 租户中的 Azure AD 活动日志。 Azure AD 活动日志包括：
+Azure Active Directory 日志分析视图可以帮助你分析和搜索 Azure AD 租户中的 Azure AD 活动日志。 Azure AD 活动日志包括：
 
 * 审核日志：可通过[审核日志活动报表](concept-audit-logs.md)访问在租户中执行的每个任务的历史记录。
 * 登录日志：可通过[登录活动报表](concept-sign-ins.md)来确定谁执行了审核日志中报告的任务。
 
 ## <a name="prerequisites"></a>必备组件
 
-若要使用 Log Analytics 视图，需要执行以下操作：
+若要使用日志分析视图，需要执行以下操作：
 
 * 在 Azure 订阅中创建 Log Analytics 工作区。 了解如何[创建 Log Analytics 工作区](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-create-workspace)。
 * 首先，完成[将 Azure AD 活动日志路由到 Log Analytics 工作区](howto-integrate-activity-logs-with-log-analytics.md)的相关步骤。
 * 将视图从 [GitHub 存储库](https://aka.ms/AADLogAnalyticsviews)下载到本地计算机。
 
-## <a name="install-the-log-analytics-views"></a>安装 Log Analytics 视图
+## <a name="install-the-log-analytics-views"></a>安装日志分析视图
 
 1. 导航到 Log Analytics 工作区。 若要执行此操作，首先导航到 [Azure 门户](https://portal.azure.com)，然后选择“所有服务”。 在文本框中键入“Log Analytics”，然后选择“Log Analytics 工作区”。 选择要将活动日志路由到的工作区，作为必备项的一部分。
 2. 选择“视图设计器”，选择“导入”，然后选择“选择文件”，从本地计算机中导入视图。

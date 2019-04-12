@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: aaaa5fedfbcc3683d725cad8e4eff9d6b8dcce08
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000718"
 documentType: LandingData
 title: Azure 存储文档
 metadata:
@@ -22,128 +16,128 @@ metadata:
 abstract:
   description: Azure 存储是一项 Microsoft 托管服务，其提供的云存储的可用性、安全性、持久性、可伸缩性和冗余性都很高。 Azure 存储包括 Azure Blob（对象）、Azure Data Lake Storage Gen2、Azure 文件、Azure 队列和 Azure 表。 使用快速入门和教程了解如何在应用程序中利用 Azure 存储。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过浏览这些快速入门了解如何使用 Azure 存储。
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-        text: 门户
-    - image:
-        src: media/index/logo_powershell.svg
-        text: Powershell
-    - image:
-        src: media/index/cli.svg
-        text: Azure CLI
-    - image:
-        src: media/index/logo_net.svg
-    - image:
-        src: media/index/logo_java.svg
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_nodejs.svg
-    rows:
-    - title: 创建存储帐户
-      values:
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=powershell
-      - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-    - title: Blob 快速入门
-      values:
-      - href: /azure/storage/blobs/storage-quickstart-blobs-portal
-      - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
-      - href: /azure/storage/blobs/storage-quickstart-blobs-cli
-      - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
-      - href: /azure/storage/blobs/storage-quickstart-blobs-java
-      - href: /azure/storage/blobs/storage-quickstart-blobs-python
-      - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
-    - title: Data Lake Storage Gen2
-      values:
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-      - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
-      - href: 
-      - href: 
-      - href: 
-      - href: 
-- title: 分步教程
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+  - title: 5 分钟快速入门
     items:
-    - title: Blob
-      html: <p>在云中上传和处理图像数据</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">上传和检索云中的图像数据</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">触发 Azure Functions 来处理 Blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">保护应用程序数据</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">监视存储和排查其问题</a></li></ul><p>针对高可用性设计应用程序</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">使应用程序数据的可用性高</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">模拟访问读取访问冗余存储时发生的故障</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">在 Azure 存储中搜索非结构化数据</a></p>
-    - title: Data Lake Storage Gen2
-      html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">使用 Azure Databricks 提取、转换和加载数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">使用 Apache Hive on Azure HDInsight 提取、转换和加载数据</a></p>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找常见管理任务的脚本。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 通过浏览这些快速入门了解如何使用 Azure 存储。
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+              text: 门户
+          - image:
+              src: media/index/logo_powershell.svg
+              text: Powershell
+          - image:
+              src: media/index/cli.svg
+              text: Azure CLI
+          - image:
+              src: media/index/logo_net.svg
+          - image:
+              src: media/index/logo_java.svg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_nodejs.svg
+        rows:
+          - title: 创建存储帐户
+            values:
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=portal
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-powershell
+              - href: /azure/storage/common/storage-quickstart-create-account?tabs=azure-cli
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+          - title: Blob 快速入门
+            values:
+              - href: /azure/storage/blobs/storage-quickstart-blobs-portal
+              - href: /azure/storage/blobs/storage-quickstart-blobs-powershell
+              - href: /azure/storage/blobs/storage-quickstart-blobs-cli
+              - href: /azure/storage/blobs/storage-quickstart-blobs-dotnet
+              - href: /azure/storage/blobs/storage-quickstart-blobs-java
+              - href: /azure/storage/blobs/storage-quickstart-blobs-python
+              - href: /azure/storage/blobs/storage-quickstart-blobs-nodejs
+          - title: Data Lake Storage Gen2
+            values:
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: /azure/storage/blobs/data-lake-storage-quickstart-create-account
+              - href: null
+              - href: null
+              - href: null
+              - href: null
+  - title: 分步教程
     items:
-    - html: .NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blob</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">文件</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">队列</a>
-    - html: Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blob</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">文件</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">队列</a>
-    - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
-    - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
-- title: 利用 Microsoft Learn 掌握技能
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Blob
+            html: <p>在云中上传和处理图像数据</p><ul><li><a href="/azure/storage/blobs/storage-upload-process-images">将图像数据上传到云中并进行检索</a></li><li><a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">触发 Azure Functions 来处理 Blob</a></li><li><a href="/azure/storage/blobs/storage-secure-access-application">保护应用程序数据</a></li><li><a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">监视存储和排查存储问题</a></li></ul><p>针对高可用性设计应用程序</p><ul><li><a href="/azure/storage/blobs/storage-create-geo-redundant-storage">使应用程序数据具有高可用性</a></li><li><a href="/azure/storage/blobs/storage-simulate-failure-ragrs-account-app">模拟访问读取访问冗余存储时发生的故障</a></li></ul><p><a href="/azure/storage/blobs/storage-unstructured-search">在 Azure 存储中搜索非结构化数据</a></p>
+          - title: Data Lake Storage Gen2
+            html: <p><a href="/azure/storage/blobs/data-lake-storage-handle-data-using-databricks">使用 Azure Databricks 提取、转换和加载数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-use-databricks-spark">使用 Spark 通过 DataBricks 访问 Azure Data Lake Storage Gen2 数据</a></p><p><a href="/azure/storage/blobs/data-lake-storage-tutorial-extract-transform-load-hive">使用 Apache Hive on Azure HDInsight 提取、转换和加载数据</a></p>
+  - title: 示例
     items:
-    - title: Azure 中的数据简介
-      href: /learn/modules/intro-to-data-in-azure/
-      image:
-        src: /learn/achievements/intro-to-data-in-azure.svg
-        href: //learn/modules/intro-to-data-in-azure/
-    - title: " 在 Azure 中选择一种数据存储方法"
-      href: /learn/modules/choose-storage-approach-in-azure/
-      image:
-        src: /learn/achievements/choose-storage-approach-in-azure.svg
-        href: /learn/modules/choose-storage-approach-in-azure/
-    - title: 创建 Azure 存储帐户
-      href: /learn/modules/create-azure-storage-account/
-      image:
-        src: /learn/achievements/create-azure-storage-account.svg
-        href: /learn/modules/create-azure-storage-account/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-storage">更多交互式学习...</a>
-- title: 免费 Pluralsight 视频培训
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 查找常见管理任务的脚本。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '.NET &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=dotnet">Blob</a> | <a     href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=dotnet">文件</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=dotnet">队列</a>'
+          - html: 'Java &#58; <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=blob&sort=0&platform=java">Blob</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=file&sort=0&platform=java">文件</a> | <a href="https://azure.microsoft.com/resources/samples/?service=storage&term=queue&sort=0&platform=java">队列</a>'
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-powershell">Azure PowerShell</a>
+          - html: <a href="/azure/storage/blobs/storage-samples-blobs-cli">Azure CLI</a>
+  - title: 利用 Microsoft Learn 掌握技能
     items:
-    - title: 在 Azure 上使用 .NET 进行开发
-      href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents
-    - title: 在 Azure 上使用 Node.js 进行开发
-      href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 中的数据简介
+            href: /learn/modules/intro-to-data-in-azure/
+            image:
+              src: /learn/achievements/intro-to-data-in-azure.svg
+              href: //learn/modules/intro-to-data-in-azure/
+          - title: "\_在 Azure 中选择一种数据存储方法"
+            href: /learn/modules/choose-storage-approach-in-azure/
+            image:
+              src: /learn/achievements/choose-storage-approach-in-azure.svg
+              href: /learn/modules/choose-storage-approach-in-azure/
+          - title: 创建 Azure 存储帐户
+            href: /learn/modules/create-azure-storage-account/
+            image:
+              src: /learn/achievements/create-azure-storage-account.svg
+              href: /learn/modules/create-azure-storage-account/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-storage">更多交互式学习...</a>
+  - title: 免费 Pluralsight 视频培训
     items:
-    - title: 命令行
-      html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="https://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="https://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="https://azure.github.io/azure-storage-android">Android</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/storageservices">Blob、队列、表和文件 API</a></p><p><a href="/rest/api/storagerp">存储资源提供程序 API</a></p><p><a href="/rest/api/storageimportexport">导入/导出服务 API</a></p>
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 在 Azure 上使用 .NET 进行开发
+            href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-dotnet-microsoft-azure-getting-started/table-of-contents'
+          - title: 在 Azure 上使用 Node.js 进行开发
+            href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://app.pluralsight.com/library/courses/developing-nodejs-microsoft-azure-getting-started/table-of-contents'
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/powershell/storage">PowerShell</a></p><p><a href="/cli/azure/storage">Azure CLI</a></p>
+          - title: Languages
+            html: '<p><a href="/dotnet/api/overview/azure/storage/client?view=azure-dotnet">.NET</a></p><p><a href="/java/api/overview/azure/storage/client?view=azure-java-stable">Java</a></p><p><a href="/javascript/api/overview/azure/storage?view=azure-node-latest">Node.js</a></p><p><a href="/python/api/overview/azure/storage">Python</a></p><p><a href="https://azure.github.io/azure-storage-php/">PHP</a></p><p><a href="https://azure.github.io/azure-storage-ruby">Ruby</a></p><p><a href="https://azure.github.io/azure-storage-cpp">C++</a></p><p><a href="https://github.com/Azure/azure-storage-ios">iOS</a></p><p><a href="https://azure.github.io/azure-storage-android">Android</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/storageservices">Blob、队列、表和文件 API</a></p><p><a href="/rest/api/storagerp">存储资源提供程序 API</a></p><p><a href="/rest/api/storageimportexport">导入/导出服务 API</a></p>

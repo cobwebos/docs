@@ -11,7 +11,7 @@ services: iot-accelerators
 manager: philmea
 ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
 ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/23/2019
 ms.locfileid: "54467309"
@@ -51,7 +51,7 @@ IoT 解决方案应该能够在几乎任何类型的设备和云网关之间实�
 * 处理协议转换的通信启用程序。
 * 本地设备控制系统和设备遥测数据处理中心。 边缘设备可以在不与云通信的情况下在本地处理遥测数据以控制设备。 边缘设备还可以筛选或聚合设备遥测数据，以减少传输到云的遥测数据量。
 
-在远程监视解决方案中，设备连接到 IoT 中心并发送遥测数据进行处理。 借助远程监控解决方案，操作员还可以使用作业或自动设备管理来管理设备。 使用 Azure IoT 设备 SDK 实现设备。
+在远程监视解决方案中，设备连接到 IoT 中心并发送遥测数据进行处理。 借助远程监视解决方案，操作员还可以使用作业或自动设备管理来管理设备。 使用 Azure IoT 设备 SDK 实现设备。
 
 远程监视解决方案可以部署和管理 IoT Edge 设备。 边缘处理有助于减少发送到云的遥测数据量，并加快对设备事件的响应。
 

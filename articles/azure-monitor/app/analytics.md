@@ -14,7 +14,7 @@ ms.date: 02/02/2019
 ms.author: mbullwin
 ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
 ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2019
 ms.locfileid: "56268594"
@@ -31,7 +31,7 @@ Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索�
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/123/player] 
 
 ## <a name="relation-to-azure-monitor-logs"></a>与 Azure Monitor 日志的关系
-与 Azure Monitor 日志一样，Application Insights 分析基于 [Azure 数据资源管理器](/azure/data-explorer)并且也使用 [Kusto 查询语言](/azure/kusto/query)。 它使用与 Azure Monitor 日志相同的 [Log Analytics 门户](../log-query/get-started-portal.md)，虽然其数据存储在不同的分区中。
+与 Azure Monitor 日志一样，Application Insights 分析基于 [Azure 数据资源管理器](/azure/data-explorer)并且也使用 [Kusto 查询语言](/azure/kusto/query)。 它使用与 Azure Monitor 日志相同的[日志分析门户](../log-query/get-started-portal.md)，虽然其数据存储在不同的分区中。
 
 无法直接从 Application Insights Analytics 访问 Log Analytics 工作区中的数据，也无法直接从 Log Analytics 访问应用程序数据。 要想同时查询这两个数据集，请[在 Log Analytics 中编写查询](../log-query/log-query-overview.md)并使用 [app() 表达式](../log-query/app-expression.md)来访问应用程序数据。
 

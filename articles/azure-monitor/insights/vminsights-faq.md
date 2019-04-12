@@ -12,7 +12,7 @@ ms.date: 01/09/2018
 ms.author: magoedte
 ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
 ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2019
 ms.locfileid: "56243767"
@@ -52,7 +52,7 @@ ms.locfileid: "56243767"
 如果在启动载入后有消息指出 VM 需要载入，则 VM 最长需要花费 30 分钟来完成该过程。 
 
 ## <a name="i-only-enabled-azure-monitor-for-vms-why-do-i-see-all-my-vms-monitored-by-the-health-feature"></a>我只启用了用于 VM 的 Azure Monitor，为什么发现所有 VM 都受运行状况功能监视？
-即使只对单个 VM 启用了“运行状况”功能，也会为连接到 Log Analytics 工作区的所有 VM 启用该功能。
+即使只对单个 VM 启动了该操作，也会为连接到 Log Analytics 工作区的所有 VM 启用该功能。
 
 ## <a name="can-i-modify-the-schedule-for-when-health-criteria-evaluates-a-condition"></a>能否修改运行状况条件执行状况评估的时间计划？
 不能，在此版本中，无法修改运行状况条件执行任务的时间段和频率。 

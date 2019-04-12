@@ -131,7 +131,7 @@ Azure Monitor 是单独的服务，必须配置。 Azure 监视器日志在 Log 
 
     ![Log Analytics 工作区](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-在 Log Analytics 门户中，可进一步浏览日志和指标数据。 
+在 Log Analytics 工作区中，可进一步浏览日志和指标数据。 
 
 监视和警报 Azure Monitor 中日志基于工作区中，像在 Azure 门户中的每个资源上定义的警报功能中的数据查询。 通过让警报基于查询，可以定义一个监视所有数据库的警报，而不必每个数据库都定义一个。 查询仅限于工作区中可用的数据。
 

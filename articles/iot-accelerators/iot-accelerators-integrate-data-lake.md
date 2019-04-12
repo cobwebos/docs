@@ -1,5 +1,5 @@
 ---
-title: 将远程监视解决方案与 Data Lake Storage 集成 - Azure | Microsoft Docs
+title: 将远程监视解决方案与 Data Lake Store 集成 - Azure | Microsoft Docs
 description: 了解如何使用 Azure 流分析作业将远程监视解决方案与 Azure Data Lake Store 集成。
 author: philmea
 manager: timlt
@@ -10,7 +10,7 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
 ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/19/2018
 ms.locfileid: "53603923"

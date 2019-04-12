@@ -10,7 +10,7 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
 ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/12/2018
 ms.locfileid: "49165872"
@@ -33,7 +33,7 @@ ms.locfileid: "49165872"
 
 ## <a name="before-you-start"></a>开始之前
 
-应现完成[将自定义页面添加到远程监控解决方案加速器 Web UI](iot-accelerators-remote-monitoring-customize-page.md) 文章中的步骤，然后再继续操作。
+应现完成[将自定义页面添加到远程监视解决方案加速器 Web UI](iot-accelerators-remote-monitoring-customize-page.md) 文章中的步骤，然后再继续操作。
 
 ## <a name="add-a-panel"></a>添加面板
 

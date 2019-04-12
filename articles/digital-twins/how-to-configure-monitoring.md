@@ -50,7 +50,7 @@ Azure 数字孪生的活动日志记录默认启用，可以通过以下方式�
 
 1. “Activity Log Analytics 概述”汇总了基本的活动日志数据：
 
-    ![Activity Log Analytics 概述][3]
+    ![活动日志分析概述][3]
 
 >[!TIP]
 >使用活动日志可以快速了解订阅级事件。

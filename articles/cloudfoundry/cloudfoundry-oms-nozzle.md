@@ -75,7 +75,7 @@ Nozzle 还需要对 Loggregator Firehose 和云控制器拥有访问权限。 �
 1. 打开 Azure 门户。
 1. 单击“+”号，或单击左上角的“创建资源”。
 1. 在搜索窗口中键入“Cloud Foundry”，选择“Cloud Foundry 监视解决方案”。
-1. 将加载 Cloud Foundry 监视解决方案模板前页，单击“创建”以启动模板边栏选项卡。
+1. 将加载 Cloud Foundry 监视解决方案模板首页，单击“创建”以启动模板边栏选项卡。
 1. 输入所需的参数：
     * **订阅**：选择 Log Analytics 工作区的 Azure 订阅，通常与 Cloud Foundry 部署相同。
     * **资源组**：选择现有资源组或为 Log Analytics 工作区创建新资源组。

@@ -91,7 +91,7 @@ IoT 解决方案加速器是完整且易于部署的 IoT 解决方案，可以�
 
 可以通过 [Microsoft Azure IoT 解决方案加速器](https://www.azureiotsolutions.com/Accelerators#)站点或命令行部署解决方案加速器。
 
-可以按下述配置部署远程监视解决方案加速器：
+可以按以下配置部署远程监视解决方案加速器：
 
 * **标准：** 扩展的基础结构部署，适用于开发生产型部署。 Azure 容器服务将微服务部署到多个 Azure 虚拟机。 Kubernetes 会协调托管单个微服务的 Docker 容器。
 * **基本：** 降低成本版，用于演示或部署测试。 所有微服务都部署到一个 Azure 虚拟机。

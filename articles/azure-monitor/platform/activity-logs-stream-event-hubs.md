@@ -24,7 +24,7 @@ ms.locfileid: "57309683"
 ## <a name="what-you-can-do-with-the-activity-log-and-event-hubs"></a>可以对活动日志和事件中心执行的操作
 可以通过下述两种方式将流式传输功能用于活动日志：
 
-* **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和 Log Analytics 解决方案。
+* **流式传输到第三方日志记录和遥测系统**：一段时间后，Azure 事件中心的流式传输就会成为一种机制，用于将活动日志通过管道传输到第三方 SIEM 和日志分析解决方案。
 * **生成自定义遥测和日志记录平台**：如果已经有一个自定义生成的遥测平台，或者正想生成一个，则可利用事件中心高度可缩放的发布-订阅功能，灵活地引入活动日志。 有关详细信息，请参阅 [Dan Rosanova 的视频：了解如何在全局规模的遥测平台中使用事件中心](https://azure.microsoft.com/documentation/videos/build-2015-designing-and-sizing-a-global-scale-telemetry-platform-on-azure-event-Hubs/)。
 
 ## <a name="enable-streaming-of-the-activity-log"></a>启用活动日志的流式传输

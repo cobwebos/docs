@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0d4968c0cfbc49f990eebbd84c8bd4d8ecac5fe7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434732"
 documentType: LandingData
 title: Azure 通知中心文档
 metadata:
@@ -12,7 +6,7 @@ metadata:
   description: 了解如何使用通知中心从任何后端向任何移动设备发送推送通知。 教程、API 参考和其他文档。
   services: notification-hubs
   author: spelluru
-  manager: 
+  manager: null
   ms.service: notification-hubs
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -23,43 +17,44 @@ abstract:
   description: 了解如何使用通知中心（一种多平台可缩放的推送通知引擎）向各类设备（Android、iOS、Windows、Windows Phone、百度、Kindle）上运行的应用程序快速发送数百万条消息。 <p>教程、API 参考和其他文档介绍了如何设置推送通知以及将其从任何后端发送到任何移动设备。</p>
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
     title: 向 Android 应用程序推送通知
-    href: https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application
+    href: 'https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Notification-Hubs-in-an-Android-Application'
     width: 250
 sections:
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用通知中心来推送通知：
-  - type: list
-    style: ordered
+  - title: 分步教程
     items:
-    - html: 向所有注册的设备推送通知 - <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started">百度</a> | <a href="/azure/notification-hubs/notification-hubs-chrome-push-notifications-get-started">Chrome</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification">Kindle</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
-    - html: 向特定设备推送通知 - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
-    - html: 向特定用户推送通知 - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
-    - html: 推送基于位置的通知 - <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
-    - html: 推送个性化和本地化通知 - <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 可从多个来源获得 Azure 通知中心示例应用。 我们将特定于平台的示例与单个 SDK（下面的链接）捆绑在一起，并且独立的示例存储库包括用于其他平台的示例。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用通知中心来推送通知：
+      - type: list
+        style: ordered
+        items:
+          - html: 向所有注册的设备推送通知 - <a href="/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started">Android</a> | <a href="/azure/notification-hubs/notification-hubs-baidu-china-android-notifications-get-started">百度</a> | <a href="/azure/notification-hubs/notification-hubs-chrome-push-notifications-get-started">Chrome</a> | <a href="/azure/notification-hubs/notification-hubs-ios-apple-push-notification-apns-get-started">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-kindle-amazon-adm-push-notification">Kindle</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-get-started-wns-push-notification">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-mobile-push-notifications-mpns">Windows Phone</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-push-notifications-android-gcm">Xamarin.Android</a> | <a href="/azure/notification-hubs/xamarin-notification-hubs-ios-push-notification-apns-get-started">Xamarin.iOS</a>
+          - html: 向特定设备推送通知 - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-ios-xplat-segmented-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns">Windows</a> | <a href="/azure/notification-hubs/notification-hubs-windows-phone-push-xplat-segmented-mpns-notification">Windows Phone</a>
+          - html: 向特定用户推送通知 - <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification">Android</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-ios-apple-apns-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-aspnet-backend-windows-dotnet-wns-notification">Windows</a>
+          - html: 推送基于位置的通知 - <a href="/azure/notification-hubs/notification-hubs-push-bing-spatial-data-geofencing-notification">Windows</a>
+          - html: 推送个性化和本地化通知 - <a href="/azure/notification-hubs/notification-hubs-ios-xplat-localized-apns-push-notification">iOS</a> | <a href="/azure/notification-hubs/notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification">Windows</a>
+  - title: 示例
     items:
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>
-    - html: <a href="https://github.com/Azure/azure-notificationhubs-samples">示例存储库（其他平台）</a>
-    - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
-- title: 引用
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 可从多个来源获得 Azure 通知中心示例应用。 我们将特定于平台的示例与单个 SDK（下面的链接）捆绑在一起，并且独立的示例存储库包括用于其他平台的示例。
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-android">Android SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-ios">iOS SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-dotnet">.NET SDK</a>'
+          - html: '<a href="https://github.com/Azure/azure-notificationhubs-samples">示例存储库（其他平台）</a>'
+          - html: <a href="/azure/notification-hubs/samples-powershell">PowerShell</a>
+  - title: 引用
     items:
-    - html: <a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>
-    - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-    - html: <a href="/rest/api/notificationhubs">REST API</a>
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
+          - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
+          - html: <a href="/rest/api/notificationhubs">管理 REST API</a>
+          - html: '<a href="https://docs.microsoft.com/previous-versions/azure/reference/dn223264(v%3dazure.100)">通知中心服务 REST API</a>'

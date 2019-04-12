@@ -10,7 +10,7 @@ ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
 ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/23/2019
 ms.locfileid: "54464215"
@@ -61,7 +61,7 @@ Microsoft 建议用于 IoT 应用程序的体系结构的基础是云原生、�
 
 ### <a name="storage"></a>存储
 
-远程监控解决方案加速器在存储方面使用 Azure 时序见解和 Azure Cosmos DB。 Azure 时序见解存储来自所连接设备的 IoT Hub 消息。 解决方案加速器将 Azure Cosmos DB 用于所有其他存储，例如冷存储、规则定义、警报和配置设置。
+远程监视解决方案加速器在存储方面使用 Azure 时序见解和 Azure Cosmos DB。 Azure 时序见解存储来自所连接设备的 IoT Hub 消息。 解决方案加速器将 Azure Cosmos DB 用于所有其他存储，例如冷存储、规则定义、警报和配置设置。
 
 Azure Cosmos DB 是建议用于 IoT 应用程序的常规用途暖存储解决方案。 但是，Azure 时序见解和 Azure Data Lake 等解决方案适用于多个用例。 借助 Azure 时序见解，可以通过发现趋势和异常情况来深入了解时序传感器数据。 此功能可以进行根本原因分析并避免成本高昂的故障时间。
 

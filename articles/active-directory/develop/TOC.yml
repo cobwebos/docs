@@ -286,11 +286,11 @@ items:
         href: quickstart-v2-uwp.md
       - name: Windows 桌面 .NET
         href: quickstart-v2-windows-desktop.md
+    - name: 守护程序应用
+      items:
       - name: .NET Core 控制台（守护程序）
         href: quickstart-v2-netcore-daemon.md
-    - name: 服务到服务
-      items:
-      - name: ASP .NET
+      - name: ASP.NET 守护程序 Web 应用
         href: https://github.com/Azure-Samples/active-directory-dotnet-daemon-v2
   - name: 教程
     items:
@@ -326,19 +326,20 @@ items:
         href: authentication-scenarios.md
       - name: OAuth 2.0 和 OpenID Connect 协议
         href: active-directory-v2-protocols.md
-        items:
-        - name: OpenID Connect
-          href: v2-protocols-oidc.md
-        - name: OAuth 2.0 隐式授予流
-          href: v2-oauth2-implicit-grant-flow.md
-        - name: OAuth 2.0 授权代码授予
-          href: v2-oauth2-auth-code-flow.md
-        - name: OAuth 2.0 代理流
-          href: v2-oauth2-on-behalf-of-flow.md
-        - name: OAuth 2.0 客户端凭据授予
-          href: v2-oauth2-client-creds-grant-flow.md
-        - name: OAuth 2.0 资源所有者密码凭据授予
-          href: v2-oauth-ropc.md
+      - name: OpenID Connect
+        href: v2-protocols-oidc.md
+      - name: OAuth 2.0 隐式授予流
+        href: v2-oauth2-implicit-grant-flow.md
+      - name: OAuth 2.0 授权代码授予
+        href: v2-oauth2-auth-code-flow.md
+      - name: OAuth 2.0 代理流
+        href: v2-oauth2-on-behalf-of-flow.md
+      - name: OAuth 2.0 客户端凭据授予
+        href: v2-oauth2-client-creds-grant-flow.md
+      - name: OAuth 2.0 设备代码流
+        href: v2-oauth2-device-code.md
+      - name: OAuth 2.0 资源所有者密码凭据授予
+        href: v2-oauth-ropc.md
       - name: 签名密钥滚动更新
         href: active-directory-signing-key-rollover.md
       - name: ID 令牌
@@ -394,12 +395,10 @@ items:
         href: howto-add-app-roles-in-azure-ad-apps.md
       - name: 品牌准则
         href: howto-add-branding-in-azure-ad-apps.md
+      - name: 发布者域
+        href: howto-configure-publisher-domain.md
       - name: 服务条款和隐私声明
         href: howto-add-terms-of-service-privacy-statement.md
-      - name: Java
-        items:
-        - name: 保护 Java Web 应用
-          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-active-directory?toc=/java/azure/toc.json&bc=/java/azure/breadcrumb/toc.json
     - name: 使用 Visual Studio
       items:
       - name: 使用 Active Directory 连接服务
@@ -419,8 +418,8 @@ items:
     - name: 身份验证库
       displayName: MSAL
       href: reference-v2-libraries.md
-    - name: Microsoft Graph 中的 Azure AD API
-      href: https://developer.microsoft.com/graph/docs/concepts/azuread-identity-access-management-concept-overview
+    - name: Microsoft Graph 中的标识和访问 API
+      href: https://docs.microsoft.com/graph/api/resources/azure-ad-overview?view=graph-rest-beta
     - name: 应用程序清单
       href: reference-app-manifest.md
     - name: 身份验证和授权错误代码
@@ -436,6 +435,8 @@ items:
     href: https://azure.microsoft.com/roadmap/?category=security-identity
   - name: Azure AD 博客
     href: https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory
+  - name: Microsoft 标识平台开发人员博客
+    href: https://developer.microsoft.com/en-us/identity/blogs/
   - name: 尝试使用 Microsoft 登录
     href: https://azure.microsoft.com/develop/identity/signin/
   - name: 获取帮助
@@ -443,9 +444,9 @@ items:
     href: developer-support-help-options.md
   - name: Azure 资源的托管标识
     href: https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview
-ms.openlocfilehash: 974758ddcaa4d855b395e982b6bc9a3b0b72e130
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 9283d643717d4c516fb615a9ff5ec132a11e754c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886601"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500424"

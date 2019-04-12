@@ -106,7 +106,7 @@ ms.locfileid: "59006949"
 
      几分钟后，警报将处于活动状态，并按前面所述进行触发。
 
-用户还可以在 [log analytics](../log-query/portals.md) 中完成其分析查询，然后通过“设置警报”按钮推送它来创建警报 - 然后遵循以上教程中从步骤 6 开始的说明。
+用户还可以在 [Log Analytics](../log-query/portals.md) 中完成其分析查询，然后通过“设置警报”按钮推送它来创建警报 - 然后遵循以上教程中从步骤 6 开始的说明。
 
  ![Log Analytics - 设置警报](media/alerts-log/AlertsAnalyticsCreate.png)
 

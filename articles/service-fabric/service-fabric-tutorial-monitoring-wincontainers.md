@@ -192,7 +192,7 @@ ms.locfileid: "58663156"
 
 ## <a name="add-the-container-monitoring-solution-to-your-log-analytics-workspace"></a>将容器监视解决方案添加到 Log Analytics 工作区
 
-若要在工作区中设置容器解决方案，请搜索容器监视解决方案，并创建容器资源（在“监视和管理”类别下）。
+若要在工作区中设置容器解决方案，请搜索容器监视解决方案，并创建容器资源（在“监视 + 管理”类别下）。
 
 ![添加容器解决方案](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 

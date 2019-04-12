@@ -5,6 +5,8 @@ items:
   items:
   - name: 什么是文本分析 API？
     href: overview.md
+  - name: 示例用户方案
+    href: text-analytics-user-scenarios.md
   expanded: true
 - name: 快速入门
   items:
@@ -24,13 +26,16 @@ items:
     href: quickstarts/ruby.md
 - name: 教程
   items:
-  - name: 使用 Azure Databricks 针对流数据执行情绪分析
-    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-    maintainContext: true
-  - name: 使用 Power BI 进行文本分析
+  - name: 集成 Power BI 以分析客户反馈
     href: Tutorials/tutorial-power-bi-key-phrases.md
   - name: Power Apps 中的文本分析
     href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
+  - name: 使用 Azure Databricks 针对流数据执行情绪分析
+    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    maintainContext: true
+  - name: 使用 Flask 翻译文本、分析情绪以及合成语音
+    href: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
+    maintainContext: true
 - name: 操作指南
   items:
   - name: 注册
@@ -79,6 +84,8 @@ items:
       href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
 - name: 资源
   items:
+  - name: 使用 MS Flow 识别 Yammer 组中的评论情绪
+    href: https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure
   - name: 外部和社区内容
     href: text-analytics-resource-external-community.md
   - name: 常见问题解答
@@ -97,9 +104,9 @@ items:
     href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
   - name: UserVoice
     href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 1759bee73caeb18ac96a228bb3a81e697aa62089
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.openlocfilehash: 6c25fe6b6fa10c592cb9462e9fb712575f61bdd1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475622"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500815"

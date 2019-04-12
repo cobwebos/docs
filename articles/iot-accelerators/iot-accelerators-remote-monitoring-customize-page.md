@@ -10,7 +10,7 @@ ms.date: 10/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: 95830cdffb232e16f9fbae51cfa11fbd18172c3c
 ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/11/2018
 ms.locfileid: "49094462"
@@ -191,6 +191,6 @@ npm start
 
 本文已介绍可用来帮助自定义远程监视解决方案加速器中 Web UI 的资源。
 
-现在已定义页，下一步是[向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)，该服务检索要在 UI 中显示的数据。
+现在已定义了页，下一步是[向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)，该服务检索要在 UI 中显示的数据。
 
 有关远程监视解决方案加速器的其他概念性信息，请参阅[远程监视体系结构](iot-accelerators-remote-monitoring-sample-walkthrough.md)。

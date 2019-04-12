@@ -73,7 +73,7 @@ Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 ### <a name="verify-configuration"></a>验证配置
 
-要确认自动化帐户是否会将日志发送到 Log Analytics 工作空间，请使用以下 PowerShell 检查是否在自动化帐户上正确配置了诊断：
+要确认自动化帐户是否会将日志发送到 Log Analytics 工作区，请使用以下 PowerShell 检查是否在自动化帐户上正确配置了诊断：
 
 ```powershell-interactive
 Get-AzDiagnosticSetting -ResourceId $automationAccountId

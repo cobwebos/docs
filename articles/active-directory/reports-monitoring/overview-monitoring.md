@@ -63,7 +63,7 @@ ms.locfileid: "58434851"
 
 [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)是一项解决方案，可以将不同源的监视数据合并，并提供查询语言和分析引擎，让你深入了解应用程序和资源的操作。 将 Azure AD 活动日志发送到 Azure Monitor 日志即可快速检索和监视收集的数据以及针对其发出警报。 了解如何[将数据发送到 Azure Monitor 日志](howto-integrate-activity-logs-with-log-analytics.md)。
 
-也可安装针对 Azure AD 活动日志预生成的视图，以便监视涉及登录和审核事件的常见场景。 了解如何[安装和使用 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)。
+也可安装针对 Azure AD 活动日志预生成的视图，以便监视涉及登录和审核事件的常见场景。 了解如何[安装和使用 Azure AD 活动日志的日志分析视图](howto-install-use-log-analytics-views.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

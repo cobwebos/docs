@@ -34,7 +34,7 @@ ms.locfileid: "58223744"
 
 1. 设置 [ASC 标准版保护级别](https://azure.microsoft.com/pricing/details/security-center/)。 
  
-2. 将 Log Analytic 工作区设置为 Microsoft Monitoring Agent 将发送其在与订阅关联的 VM 上收集的数据位置，在此示例中，是现有用户定义的工作区 (myWorkspace)。
+2. 将 Log Analytics 工作区设置为 Microsoft Monitoring Agent 将发送其在与订阅关联的 VM 上收集的数据位置，在此示例中，是现有用户定义的工作区 (myWorkspace)。
 
 3. 激活[部署 Microsoft Monitoring Agent](security-center-enable-data-collection.md#auto-provision-mma) 的安全中心的自动代理预配。
 

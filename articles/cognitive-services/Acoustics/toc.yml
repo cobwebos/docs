@@ -12,18 +12,24 @@ items:
     href: unreal-quickstart.md
 - name: 教程
   items:
-  - name: Unity 设计工作流
-    href: unity-workflow.md
-  - name: Unreal/Wwise 设计工作流
-    href: unreal-workflow.md
-  - name: 使用 Unity 烘培音效
-    href: unity-baking.md
-  - name: 使用 Unreal/Wwise 烘培音效
-    href: unreal-baking.md
+  - name: Unity
+    items:
+    - name: 使用 Unity 烘培音效
+      href: unity-baking.md
+    - name: Unity 设计工作流
+      href: unity-workflow.md
+  - name: Unreal/Wwise
+    items:
+    - name: 使用 Unreal/Wwise 烘培音效
+      href: unreal-baking.md
+    - name: Unreal/Wwise 设计工作流
+      href: unreal-workflow.md
 - name: 概念
   items:
   - name: 包含音效模拟的设计概念
     href: design-process.md
+  - name: 烘培解析
+    href: bake-resolution.md
 - name: 操作方法
   items:
   - name: 创建 Azure Batch 帐户
@@ -38,9 +44,9 @@ items:
     href: faq.md
   - name: 已知问题
     href: known-issues.md
-ms.openlocfilehash: 37514a3f8c149c1e34b4e0faa8a7109290a80feb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0a445890369e48f61dfa545d7107f46e3d0675a1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58138213"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495628"

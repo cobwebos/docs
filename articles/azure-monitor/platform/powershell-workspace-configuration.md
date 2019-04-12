@@ -29,7 +29,7 @@ ms.locfileid: "58903397"
 * 从 Windows 事件日志中收集事件
 * 收集自定义事件日志
 * 将日志分析代理添加到 Azure 虚拟机
-* 将日志分析配置为索引使用 Azure 诊断收集的数据
+* 配置 Log Analytics 以便为使用 Azure 诊断收集的数据编制索引
 
 本文提供两个代码示例，用于演示一些可从 PowerShell 执行的函数。  有关其他函数，可以参阅 [Log Analytics PowerShell cmdlet 参考](https://docs.microsoft.com/powershell/module/az.operationalinsights/)。
 

@@ -11,7 +11,7 @@ ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
 ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/06/2018
 ms.locfileid: "53002006"
@@ -23,7 +23,7 @@ ms.locfileid: "53002006"
 在本文中，我们介绍如何部署 [Dynatrace](https://www.dynatrace.com/) OneAgent 以监视 Azure 容器服务群集中的所有代理节点。 此配置需要 Dynatrace SaaS/托管帐户。 
 
 ## <a name="dynatrace-saasmanaged"></a>Dynatrace SaaS/托管
-Dynatrace 是用于高动态容器和群集环境的云-本机监视解决方案。 它支持使用实时使用数据更好地优化容器部署和内存分配。 它提供自动基线、问题关联和根本原因检测，可自动查明应用程序和基础结构问题。
+Dynatrace 是用于高动态容器和群集环境的云原生监视解决方案。 它支持使用实时使用数据更好地优化容器部署和内存分配。 它提供自动基线、问题关联和根本原因检测，可自动查明应用程序和基础结构问题。
 
 下图显示 Dynatrace UI：
 

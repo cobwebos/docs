@@ -129,7 +129,7 @@ Azure blob 存储中 PT1H.json 文件的当前格式使用 JSON 数组记录。 
 
 ## <a name="how-to-update"></a>更新方法
 
-如果具有引入这些日志文件以进行进一步处理的自定义工具，则只需进行更新即可。 如果正在使用外部 Log Analytics 或 SIEM 工具，则建议[改为使用事件中心来引入此数据](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)。 在处理许多服务中的日志以及为特定日志中的位置添加书签方面，事件中心集成更加容易。
+如果具有引入这些日志文件以进行进一步处理的自定义工具，则只需进行更新即可。 如果正在使用外部日志分析或 SIEM 工具，则建议[改为使用事件中心来引入此数据](https://azure.microsoft.com/blog/use-azure-monitor-to-integrate-with-siem-tools/)。 在处理许多服务中的日志以及为特定日志中的位置添加书签方面，事件中心集成更加容易。
 
 应更新自定义工具以处理当前格式和上述 JSON Lines 格式。 这将确保当数据开始以新格式显示时，工具不会中断。
 
