@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: troubleshooting
 ms.date: 12/03/2018
 ms.author: genli
-ms.openlocfilehash: 4d090740b75acbe2629ae4f1e13cde8947f190bb
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: ae89ab811015fca9bcb50fcc149534754533c25f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286425"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491505"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>对 Azure 备份失败进行故障排除：代理或扩展的问题
 
@@ -30,11 +30,11 @@ ms.locfileid: "58286425"
 **错误消息**：VM 代理无法与 Azure 备份进行通信<br>
 
 注册并计划备份服务的 VM 后，备份将通过与 VM 代理进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：<br>
-**原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
-**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
-**原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 5：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
+**原因 1：[在 VM 中安装了代理，但无响应 （针对 Windows Vm)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**    
+**原因 2：[在 VM 中安装的代理已过时 （针对 Linux Vm)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 3：[无法检索快照状态，或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**    
+**原因 4：[无法更新或加载备份扩展](#the-backup-extension-fails-to-update-or-load)**  
+**原因 5:[VM 不具备 internet 访问](#the-vm-has-no-internet-access)**
 
 ## <a name="guestagentsnapshottaskstatuserror---could-not-communicate-with-the-vm-agent-for-snapshot-status"></a>GuestAgentSnapshotTaskStatusError - 无法与 VM 代理通信以获取快照状态
 
@@ -42,23 +42,23 @@ ms.locfileid: "58286425"
 **错误消息**：无法与 VM 代理通信，因此无法获取快照状态 <br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
-**原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
+**原因 1：[在 VM 中安装了代理，但无响应 （针对 Windows Vm)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 2：[在 VM 中安装的代理已过时 （针对 Linux Vm)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 3：[VM 不具备 internet 访问](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorrpcollectionlimitreached---the-restore-point-collection-max-limit-has-reached"></a>UserErrorRpCollectionLimitReached - 已达到还原点集合的最大限制
 
 **错误代码**：UserErrorRpCollectionLimitReached <br>
 **错误消息**：已达到还原点集合的最大限制。 <br>
 * 如果恢复点资源组中的锁阻止自动清理恢复点，则可能会发生此问题。
-* 如果每天触发多个备份，则也可能发生此问题。 目前，我们建议每天只创建一个备份，因为即时 RP 只保留 7 天，并且在任意给定时间，只能将 18 个即时 RP 与一个 VM 相关联。 <br>
+* 如果每天触发多个备份，则也可能发生此问题。 目前我们建议只有一个每日备份即时恢复点保留 1-5 天，根据配置的快照保留期并在任何给定时间只有 18 即时 Rp 可以是与 VM 相关联。 <br>
 
 建议的操作：<br>
 若要解决此问题，请删除 VM 资源组中的锁，并重试触发清理的操作。
 > [!NOTE]
 > 备份服务将创建一个单独的资源组而非 VM 的资源组来存储还原点集合。 建议客户不要锁定为备份服务使用而创建的资源组。 备份服务创建的资源组的命名格式为：AzureBackupRG_`<Geo>`_`<number>` 例如：AzureBackupRG_northeurope_1
 
-**步骤 1：[删除还原点资源组中的锁](#remove_lock_from_the_recovery_point_resource_group)** <br>
+**步骤 1：[从还原点资源组中删除锁定](#remove_lock_from_the_recovery_point_resource_group)** <br>
 **步骤 2：[清理还原点集合](#clean_up_restore_point_collection)**<br>
 
 ## <a name="usererrorkeyvaultpermissionsnotconfigured---backup-doesnt-have-sufficient-permissions-to-the-key-vault-for-backup-of-encrypted-vms"></a>UserErrorKeyvaultPermissionsNotConfigured - 备份服务对密钥保管库没有足够的权限，无法备份已加密的 VM
@@ -74,9 +74,9 @@ ms.locfileid: "58286425"
 **错误消息**：由于虚拟机上无网络连接，快照操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：    
-**原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
+**原因 1：[无法检索快照状态，或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**原因 2：[无法更新或加载备份扩展](#the-backup-extension-fails-to-update-or-load)**  
+**原因 3：[VM 不具备 internet 访问](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtentionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtentionOperationFailedForManagedDisks - VMSnapshot 扩展操作失败
 
@@ -84,10 +84,10 @@ ms.locfileid: "58286425"
 **错误消息**：VMSnapshot 扩展操作失败<br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
-**原因 1：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**原因 2：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 4：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因 1：[无法检索快照状态，或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**原因 2：[无法更新或加载备份扩展](#the-backup-extension-fails-to-update-or-load)**  
+**原因 3：[在 VM 中安装了代理，但无响应 （针对 Windows Vm)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 4：[在 VM 中安装的代理已过时 （针对 Linux Vm)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backupoperationfailed--backupoperationfailedv2---backup-fails-with-an-internal-error"></a>BackUpOperationFailed/BackUpOperationFailedV2 - 备份失败并出现内部错误
 
@@ -95,12 +95,12 @@ ms.locfileid: "58286425"
 **错误消息**：发生内部错误，备份失败 - 请在几分钟后重试操作 <br>
 
 注册和计划 Azure 备份服务的 VM 后，备份将通过与 VM 备份扩展进行通信获取时间点快照，从而启动作业。 以下任何条件都可能阻止快照的触发。 如果未触发快照，则备份可能失败。 请按所列顺序完成以下故障排除步骤，然后重试操作：  
-**原因 1：[代理安装在 VM 中，但无响应（针对 Windows VM）](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 2：[VM 中安装的代理已过时（针对 Linux VM）](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**原因 3：[无法检索快照状态或无法创建快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
-**原因 4：[备份扩展无法更新或加载](#the-backup-extension-fails-to-update-or-load)**  
-**原因 5：备份服务因资源组锁定而无权删除旧的还原点** <br>
-**原因 6：[VM 无法访问 Internet](#the-vm-has-no-internet-access)**
+**原因 1：[代理安装在 VM 中，但无响应 （针对 Windows Vm)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 2：[在 VM 中安装的代理已过时 （针对 Linux Vm)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**原因 3：[无法检索快照状态，或无法拍摄快照](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
+**原因 4：[无法更新或加载备份扩展](#the-backup-extension-fails-to-update-or-load)**  
+**原因 5:备份服务不具备权限因资源组锁定而删除旧的还原点** <br>
+**原因 6:[VM 不具备 internet 访问](#the-vm-has-no-internet-access)**
 
 ## <a name="usererrorunsupporteddisksize---currently-azure-backup-does-not-support-disk-sizes-greater-than-4095gb"></a>UserErrorUnsupportedDiskSize-当前 Azure 备份不支持大于 4095 GB 的磁盘大小
 
@@ -164,12 +164,12 @@ VM 代理可能已损坏或服务可能已停止。 重新安装 VM 代理可帮
    > [!NOTE]
    > 我们强烈建议只通过分发存储库更新代理。 不建议直接从 GitHub 下载代理代码进行更新。 如果分发没有可用的最新代理，请联系分发支持部门，了解如何安装最新代理。 若要检查最新代理，请转到 GitHub 存储库中的 [Microsoft Azure Linux 代理](https://github.com/Azure/WALinuxAgent/releases)页。
 
-2. 运行以下命令，确保 Azure 代理可在 VM 上运行：`ps -e`
+2. 确保 Azure 代理正在运行的 VM 上通过运行以下命令： `ps -e`
 
    如果该进程未运行，请使用以下命令进行重启：
 
-   * 对于 Ubuntu：`service walinuxagent start`
-   * 对于其他分发版：`service waagent start`
+   * 对于 Ubuntu: `service walinuxagent start`
+   * 对于其他分发版： `service waagent start`
 
 3. [配置自动重启代理](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash)。
 4. 运行新的测试备份。 如果仍然失败，请从 VM 收集以下日志：

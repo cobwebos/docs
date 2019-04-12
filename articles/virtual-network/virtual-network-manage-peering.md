@@ -13,14 +13,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2019
-ms.author: jdial;anavin
-ms.openlocfilehash: e0a5674d434d997d04bfd42ca0e0863c11046d69
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: fdc3a0030859e97cb81b8b9f6a66de1901b6eb3b
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882897"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491281"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>创建、更改或删除虚拟网络对等互连
 
@@ -113,7 +113,7 @@ ms.locfileid: "58882897"
 - <a name="cross-region"></a>可在相同区域或不同区域中的虚拟网络之间建立对等互连。 在不同区域的对等互连虚拟网络也称为*全局 VNet 对等互连*。 
 - 在创建全局对等互连时，对等互连的虚拟网络可以存在于任何 Azure 公有云区域或中国云区域或政府版云区域。 您不能对等互连跨云。 例如，不能与 Azure 中国云中 VNet 对等中 Azure 公有云的 VNet。
 - 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 同时，VNet 对等互连和全局 VNet 对等互连存在对标准负载均衡器的支持。
-- 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。
+- 可以使用远程网关或允许在全局对等互连的虚拟网络和本地对等互连的虚拟网络中的网关传输。
 - 虚拟网络可以位于相同或不同的订阅中。 如果对等虚拟网络位于不同的订阅中，两个订阅可关联到同一个或不同的 Azure Active Directory 租户。 如果还没有 AD 租户，则可以[创建一个](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant)。 门户中不支持通过与不同 Azure Active Directory 租户相关联的订阅跨虚拟网络进行对等互连。 可使用 CLI、PowerShell 或模板。
 - 进行对等互连的虚拟网络的 IP 地址空间不得重叠。
 - 虚拟网络与另一个虚拟网络对等后，不能向其添加或从中删除地址范围。 若要添加或删除地址范围，请删除对等，添加或删除地址范围，然后重新创建对等。 若要为虚拟网络添加或删除地址范围，请参阅[管理虚拟网络](manage-virtual-network.md)。

@@ -10,15 +10,15 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/09/2019
-ms.openlocfilehash: c9be129624c87ca0bff1e85a5d1c71425ef06b89
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.date: 04/10/2019
+ms.openlocfilehash: 23314e97051da95ab164baeab6e9d089f486351a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471856"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489684"
 ---
-# <a name="time-zone-in-azure-sql-database-managed-instance"></a>在 Azure SQL 数据库托管实例的时区
+# <a name="time-zone-in-azure-sql-database-managed-instance-preview"></a>Azure SQL 数据库托管实例 （预览版） 中的时区
 
 尽管使用协调世界时 (UTC) 的云解决方案的数据层推荐的做法是，Azure SQL 数据库托管实例提供时区的选择，以满足存储日期和时间值和呼叫日期的现有应用程序的需求和与特定时区的隐式上下文的时间函数。
 
@@ -72,7 +72,7 @@ T-SQL 的功能类似于[getdate （)](https://docs.microsoft.com/sql/t-sql/func
 
 ## <a name="checking-the-time-zone-of-instance"></a>检查实例的时区
 
-[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timestamp-transact-sql)函数返回的实例的时区的显示名称。
+[CURRENT_TIMEZONE](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)函数返回的实例的时区的显示名称。
 
 ## <a name="cross-feature-considerations"></a>跨功能注意事项
 

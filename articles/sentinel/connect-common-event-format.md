@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 CEF 数据 |Microsoft Docs
-description: 了解如何收集在 Azure Sentinel CEF 数据。
+title: 将 CEF 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+description: 了解如何将 CEF 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 2117a139de52643f7cdbc6d054f46e5fb8ec0a77
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 18eb305beb79913713898b939ef840ca9ffab014
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005601"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489393"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接外部解决方案是使用通用事件格式
 
@@ -29,8 +29,7 @@ ms.locfileid: "59005601"
 
 可以使用外部解决方案，可用于将日志文件保存在 Syslog 连接 Azure Sentinel。 如果你的设备，可将日志保存为 Syslog 通用事件格式 (CEF)，与 Azure Sentinel 的集成，可轻松地跨数据运行分析和查询。
 
-> [!NOTE]
-> 
+> [!NOTE] 
 > 数据存储在其运行 Azure Sentinel 的工作区的地理位置。
 
 ## <a name="how-it-works"></a>工作原理
@@ -59,7 +58,7 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 ### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理
 
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。 
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
    - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将您带入购买页面专用的 Linux VM 的自动连接到工作区，是的。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
@@ -96,7 +95,7 @@ Azure Sentinel 和你 CEF 的设备之间的连接发生在三个步骤：
 如果不使用 Azure，手动部署 Azure Sentinel 代理专用的 Linux 服务器上运行。
 
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。
 1. 若要创建一个专用的 Linux VM 下,**代理配置 Linux Syslog**选择**手动部署**。
    1. 下**下载并安装 Syslog 代理**，选择**非 Azure Linux 机**。 
    1. 在中**直接代理**屏幕打开时，选择**适用于 Linux 代理**下载代理或运行以下命令来下载 Linux 计算机上：   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

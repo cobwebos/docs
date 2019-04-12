@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: 了解如何在通过不同 Azure 订阅中的 Resource Manager 创建的虚拟网络间创建虚拟网络对等互连。
 services: virtual-network
 documentationcenter: ''
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
-ms.author: jdial;anavin
-ms.openlocfilehash: 2965f72a1f0532cd9e13d5fa03750cf4ed8bab99
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.date: 04/09/2019
+ms.author: anavin
+ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403453"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492288"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
 
@@ -27,9 +27,9 @@ ms.locfileid: "58403453"
 
 |Azure 部署模型  | Azure 订阅  |
 |--------- |---------|
-|[均为 Resource Manager 模型](tutorial-connect-virtual-networks-portal.md) |相同|
-|[一个为资源管理器模型，一个为经典模型](create-peering-different-deployment-models.md) |相同|
-|[一个为 Resource Manager 模型，一个为经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
+|[都是资源管理器模型](tutorial-connect-virtual-networks-portal.md) |相同|
+|[一个是资源管理器模型，一个是经典模型](create-peering-different-deployment-models.md) |相同|
+|[一个是资源管理器模型，一个是经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
 
 不能在通过经典部署模型部署的两个虚拟网络之间创建对等互连。 如需连接两个通过经典部署模型创建的虚拟网络，可使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来连接它们。
 
@@ -39,7 +39,9 @@ ms.locfileid: "58403453"
 
 ## <a name="portal"></a>创建对等互连 - Azure 门户
 
-如果要对等互连的虚拟网络位于与其他 Azure Active Directory 租户相关联的订阅中，请按照本文的“CLI 和 PowerShell”部分中的步骤操作。 如果虚拟网络属于其他 Active Directory 租户中的订阅，则门户不支持它的对等互连。
+如果要对等互连的虚拟网络位于与其他 Azure Active Directory 租户相关联的订阅中，请按照本文的“CLI 和 PowerShell”部分中的步骤操作。 如果虚拟网络属于其他 Active Directory 租户中的订阅，则门户不支持它的对等互连。 
+
+请注意，Cloud Shell 中切换订阅和租户由于 VNet 对等互连或全局 VNet 对等互连 Vnet 属于不同 Azure Active Directory 租户中的订阅之间将无法工作的限制。 请使用 PowerShell 或 CLI。
 
 下述步骤对每个订阅使用不同的帐户。 如果使用的帐户可访问这两个订阅，则可使用相同帐户完成所有步骤，跳过注销门户的步骤，及为虚拟网络分配其他用户权限的步骤。
 

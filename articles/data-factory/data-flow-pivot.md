@@ -1,21 +1,19 @@
 ---
 title: Azure 数据工厂映射数据流“透视”转换
-description: Azure 数据工厂映射数据流“透视”转换
+description: 从行到使用 Azure 数据工厂映射数据流透视转换的列的数据进行透视
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 5548a62218aaac2e4da3853e8e5d43a584922bc0
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: e16cac281b77f3ca93d9ef358ae806203bc8b663
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57569886"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490181"
 ---
-# <a name="azure-data-factory-mapping-data-flow-pivot-transformation"></a>Azure 数据工厂映射数据流“透视”转换
-
+# <a name="azure-data-factory-pivot-transformation"></a>Azure 数据工厂透视转换
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
 在 ADF 数据流中使用“透视”作为聚合，其中一个或多个分组列将其不同的行值转换到各个列中。 实际上，你可以将行值透视到新列中（将数据转换为元数据）。
@@ -32,7 +30,7 @@ ms.locfileid: "57569886"
 
 ![透视选项](media/data-flow/pivot3.png "透视 3")
 
-透视键是 ADF 从行透视到列的列。 默认情况下，此字段的数据集中的每个唯一值都将透视到列。 但是，你也可以选择输入此数据集中要透视到列值的值。
+透视键是 ADF 从行透视到列的列。 默认情况下，此字段的数据集中的每个唯一值都将透视到列。 但是，你也可以选择输入此数据集中要透视到列值的值。 这是将确定将创建的新列的列。
 
 ## <a name="pivoted-columns"></a>透视的列
 
@@ -54,9 +52,20 @@ ms.locfileid: "57569886"
 
 在表达式生成器中使用 ADF 数据流表达式语言来描述透视列转换： https://aka.ms/dataflowexpressions。
 
+## <a name="pivot-metadata"></a>数据透视表的元数据
+
+透视转换将生成是动态的基于传入数据的新列名称。 透视键生成每个新的列名称的值。 如果您未指定单独的值并想要在透视键中创建每个唯一值的动态列名称，然后 UI 将不显示在检查的元数据，并会有任何列传播到接收器转换。 如果将值设置为透视键，然后 ADF 可以确定新的列名和这些列名将检查可用和接收器映射。
+
+### <a name="landing-new-columns-in-sink"></a>登陆接收器中的新列
+
+即使使用 Pivot 中的动态列名称，可以仍到目标存储区中接收器新列名称和值。 只需设置"允许架构偏差"接收器设置中。 则不会看到新的动态名称在列元数据，但架构偏差选项将允许您将数据移。
+
+### <a name="view-metadata-in-design-mode"></a>在设计模式下查看元数据
+
+如果你想要查看新的列名称作为元数据检查，并且你想要看到显式传播到接收器转换的列，然后在透视键选项卡中设置显式值。
+
 ### <a name="how-to-rejoin-original-fields"></a>如何重新联接原始字段
-> [!NOTE]
-> “透视”转换将仅对聚合、分组和透视操作中使用的列进行投影。 如果你想要在流中包括的其他列从上一步，使用上一步的一个新分支，并使用自联接模式连接的原始元数据的流。
+“透视”转换将仅对聚合、分组和透视操作中使用的列进行投影。 如果你想要在流中包括的其他列从上一步，使用上一步的一个新分支，并使用自联接模式连接的原始元数据的流。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,6 +1,6 @@
 ---
-title: 了解 Azure AD v2.0 支持的授权协议 | Microsoft Docs
-description: 有关 Azure AD v2.0 终结点支持的协议的指南。
+title: 了解支持的 Microsoft 标识平台的授权协议 |Azure
+description: 支持的 Microsoft 标识平台终结点的 OAuth 2.0 和 OpenID Connect 协议的指南。
 services: active-directory
 documentationcenter: ''
 author: CelesteDG
@@ -13,32 +13,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2018
+ms.date: 04/11/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c56970091da74cfc389d60ad91f430fcb64d4bba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: dad05221376fa5871aadf6d89dcb15dff55a6dfa
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266964"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490702"
 ---
-# <a name="v20-protocols---oauth-20-and-openid-connect"></a>v2.0 协议 - OAuth 2.0 和 OpenID Connect
+# <a name="microsoft-identity-platform-protocols"></a>Microsoft 标识平台协议
 
-v2.0 终结点可以使用 Azure Active Directory (Azure AD)，通过行业标准协议（OpenID Connect 与 OAuth 2.0）提供标识即服务。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
+Microsoft 标识平台的终结点标识为-服务与行业标准协议，OpenID Connect 和 OAuth 2.0。 尽管此服务与标准兼容，但这些协议的两个实现之间仍然存在微妙的差异。 如果选择通过直接发送和处理 HTTP 请求，或使用第三方开放源代码库来编写代码，而不是使用我们的其中一个[开放源代码库](reference-v2-libraries.md)，则可以参考此处提供的有用信息。
 
 > [!NOTE]
-> 请注意，v2.0 终结点并非支持所有 Azure AD 方案和功能。 若要确定是否应使用 v2.0 终结点，请阅读 [v2.0 限制](active-directory-v2-limitations.md)。
+> Microsoft 标识平台终结点支持不是所有 Azure AD 方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，阅读[Microsoft 标识平台限制](active-directory-v2-limitations.md)。
 
 ## <a name="the-basics"></a>基础知识
 
 几乎在所有的 OAuth 2.0 和 OpenID Connect 流中，都有四个参与交换的对象：
 
-![OAuth 2.0 角色](../../media/active-directory-v2-flows/protocols_roles.png)
+![OAuth 2.0 角色](./media/active-directory-v2-flows/protocols-roles.svg)
 
-* “授权服务器”是 v2.0 终结点，它负责确保用户的标识、授予和吊销对资源的访问权限，以及颁发令牌。 授权服务器也称为标识提供者 - 它可安全处理与用户信息、用户访问权，以及流中各方彼此间信任关系有关的任何项目。
+* **授权服务器**是 Microsoft 标识平台终结点，并负责确保用户的标识，授予和撤消访问资源，以及发出令牌。 授权服务器也称为标识提供者 - 它可安全处理与用户信息、用户访问权，以及流中各方彼此间信任关系有关的任何项目。
 * 资源所有者通常是最终用户。 它是拥有数据的一方，并且有权允许第三方访问该数据或资源。
 * OAuth 客户端是应用，按照其应用程序 ID 进行标识。 OAuth 客户端通常是与最终用户交互的对象，并向授权服务器请求令牌。 客户端必须获得资源所有者授权才能访问资源。
 * **资源服务器**是资源或数据所在的位置。 它信任授权服务器便可以安全地进行身份验证和授权 OAuth 客户端，并使用持有者访问令牌来确保可以授予对资源的访问。
@@ -55,7 +55,7 @@ v2.0 终结点可以使用 Azure Active Directory (Azure AD)，通过行业标�
 
 ## <a name="endpoints"></a>终结点
 
-注册后，应用将通过向 v2.0 终结点发送请求来与 Azure AD 通信：
+注册后，应用将通过将请求发送到终结点与 Microsoft 标识平台进行通信：
 
 ```
 https://login.microsoftonline.com/{tenant}/oauth2/v2.0/authorize
@@ -74,17 +74,17 @@ https://login.microsoftonline.com/{tenant}/oauth2/v2.0/token
 要了解如何与这些终结点进行交互，请在[协议](#protocols)部分中选择特定的应用类型，然后通过访问链接获取更多信息。
 
 > [!TIP]
-> 在 Azure AD 中注册任何应用程序可以使用 v2.0 终结点，即使他们不在个人帐户登录。  这样一来，您可以将迁移到 2.0 版的现有应用程序和[MSAL](reference-v2-libraries.md)而无需重新创建你的应用程序。  
+> 在 Azure AD 中注册任何应用程序可以使用 Microsoft 标识平台终结点，即使他们不在个人帐户登录。  这样一来，您可以将迁移到 Microsoft 标识平台的现有应用程序和[MSAL](reference-v2-libraries.md)而无需重新创建你的应用程序。  
 
 ## <a name="tokens"></a>令牌
 
-OAuth 2.0 和 OpenID Connect 的 v2.0 实现广泛使用了持有者令牌，包括表示为 JWT 的持有者令牌。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 从这个意义上来说，“持有者”是可以提供令牌的任何一方。 虽然某一方必须首先通过 Azure AD 的身份验证才能收到持有者令牌，但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。 如果持有者令牌以明文形式传输，则恶意方可以使用中间人攻击来获取令牌并将其用于对受保护资源进行未经授权的访问。 当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](https://tools.ietf.org/html/rfc6750)。
+Microsoft 标识平台实现的 OAuth 2.0 和 OpenID Connect 进行广泛使用持有者令牌，包括表示为 Jwt 的持有者令牌。 持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 从这个意义上来说，“持有者”是可以提供令牌的任何一方。 参与方必须首先进行身份验证 Microsoft 标识平台，才能收到持有者令牌中，如果不采取必要的步骤来保护传输和存储中的令牌，但它可以截获并由不速之客。 虽然某些安全令牌具有内置机制来防止未经授权方使用它们，但是持有者令牌没有这一机制，因此必须在安全的通道（例如传输层安全 (HTTPS)）中进行传输。 如果持有者令牌以明文形式传输，则恶意方可以使用中间人攻击来获取令牌并将其用于对受保护资源进行未经授权的访问。 当存储或缓存持有者令牌供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。 有关持有者令牌的更多安全注意事项，请参阅 [RFC 6750 第 5 部分](https://tools.ietf.org/html/rfc6750)。
 
-有关 v2.0 终结点中使用的不同类型令牌的更多详细信息，请参阅 [v2.0 终结点令牌参考](v2-id-and-access-tokens.md)。
+更多详细信息的不同类型的标识平台终结点现已推出 Microsoft 中使用的标记[Microsoft 标识平台终结点令牌参考](v2-id-and-access-tokens.md)。
 
 ## <a name="protocols"></a>协议
 
-如果已准备好查看部分示例请求，请从下列教程之一开始。 每个教程对应一种特定的身份验证方案。 如果在确定适当的流时需要帮助，请查看[可使用 v2.0 构建的应用类型](v2-app-types.md)。
+如果已准备好查看部分示例请求，请从下列教程之一开始。 每个教程对应于特定的身份验证方案。 如果需要帮助确定哪一个适当的流，请查看[的类型的应用可以使用 Microsoft 标识平台构建](v2-app-types.md)。
 
 * [构建使用 OAuth 2.0 的移动和本机应用程序](v2-oauth2-auth-code-flow.md)
 * [构建 web 应用程序使用 OpenID Connect](v2-protocols-oidc.md)

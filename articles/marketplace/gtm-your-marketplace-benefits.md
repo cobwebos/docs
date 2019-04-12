@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/12/2019
 ms.author: ellacroi
-ms.openlocfilehash: 3fa4fb9fb7accfbe4517e2bf917a3df31ea10fa7
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 896e5a3f3b5c9f7d217340c396707718adf93dbb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887244"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489565"
 ---
 # <a name="your-marketplace-benefits"></a>市场权益
 
@@ -73,7 +73,7 @@ GTM 支持包括模板、Web 内容、培训以及用于推广业务的工具。
 
 \* 需要银级或金级资质。 <br>
 \*\* 需要金级资质。 <br>
-\*\*\* 需要金级资质，并且商品在 OCP 目录中列为“联合销售就绪”(Co-sell Ready)。 <br>
+\*\*\* 需要金级资格和合作伙伴编目中共同销售做好准备。 <br>
 ^ 仅限事务处理，适用于 Azure 市场。
 
 ## <a name="next-steps"></a>后续步骤

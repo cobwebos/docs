@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2019
+ms.date: 04/10/2019
 ms.author: magoedte
-ms.openlocfilehash: 12f8b3d9dd461dc5d09d76245aa02f0e1cefc343
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 8b6745a2b9afe8d3101585e3f7a13f2fc978c84a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188962"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492082"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms-preview"></a>如何从用于 VM 的 Azure Monitor（预览版）查询日志
 适用于 Vm 的 azure Monitor 收集性能和连接指标、 计算机和进程清单数据和运行状况状态信息并将其转发到 Azure Monitor 中的 Log Analytics 工作区。  此数据是可用于[查询](../../azure-monitor/log-query/log-query-overview.md)Azure 监视器中。 此数据可应用于包括迁移计划、容量分析、发现和按需性能故障排除在内的方案。
@@ -125,7 +125,12 @@ ms.locfileid: "58188962"
 ### <a name="ports"></a>端口 
 在计算机上的主动接受传入的流量或可能无法接受流量，但报告的时间窗口，期间处于空闲状态的端口将写入 VMBoundPort 表。  
 
-默认情况下，数据不写入此表。 若要让写入到此表的数据，请发送电子邮件至vminsights@microsoft.com以及工作区 ID 和工作区区域。   
+>[!NOTE]
+>Azure 监视的 Vm 不支持收集和记录在以下区域中的 Log Analytics 工作区中的端口数据：  
+>- 美国东部  
+>- 西欧
+>
+> 收集此数据中的其他启用[支持的区域](vminsights-onboard.md#log-analytics)Vm 的 Azure 监视器。 
 
 由以下字段标识 VMBoundPort 中的每个记录： 
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
-ms.openlocfilehash: f776bdba88902c0b4eaa9f27ef8ed3a4700765cc
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: de31ceea4faeecabd54c0d23e9263cbb4090925d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620813"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491332"
 ---
 # <a name="support-for-the-marketplace"></a>市场的支持  
 以下是市场的支持选项列表。  
@@ -40,7 +40,6 @@ ms.locfileid: "58620813"
 
 | 支持渠道 | 描述 |  
 |:--- |:--- |  
-| Slack：[join.marketplace.azure.com](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | 在环境出留出空间用于为存在技术问题的合作伙伴提供支持。 目前有超过 350 个合作伙伴使用此环境。 |  
 | MSDN 论坛：市场位于 [social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket](https://social.msdn.microsoft.com/Forums/azure/home?forum=DataMarket) | Microsoft Developer Network 论坛。 |  
 | Stack Overflow：Azure 位于 [stackoverflow.com/questions/tagged/azure](https://stackoverflow.com/questions/tagged/azure) | 用于获取解决方案并就 Azure 市场的所有相关内容提问的 Stack Overflow 环境。<ul> <li>Stack Overflow：Azure 市场位于 [stackoverflow.com/questions/tagged/azure-marketplace](https://stackoverflow.com/questions/tagged/azure-marketplace)</li> <li>Stack Overflow：Azure 资源管理器位于 [stackoverflow.com/questions/tagged/azure-resource-manager](https://stackoverflow.com/questions/tagged/azure-resource-manager)</li> <li>Stack Overflow：Azure 上的虚拟机位于 [stackoverflow.com/questions/tagged/azure-virtual-machine](https://stackoverflow.com/questions/tagged/azure-virtual-machine)</li> <li>Stack Overflow：Azure 上的容器位于 [stackoverflow.com/search?q=azure+container](https://stackoverflow.com/search?q=azure+container)</li> </ul> |
 | AppSource 的支持：[appsourcecrm@Microsoft.com](mailto:appsourcecrm@microsoft.com) | 支持发布 Dynamics 应用 |

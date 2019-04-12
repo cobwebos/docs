@@ -1,29 +1,31 @@
 ---
-title: 云中的机器学习：术语和体系结构
+title: 体系结构和关键概念
 titleSuffix: Azure Machine Learning service
-description: 了解组成 Azure 机器学习服务的体系结构、术语和概念。 此外，了解如何使用该服务的常规工作流，以及 Azure 机器学习服务所使用的 Azure 服务。
+description: 了解体系结构、 术语、 概念和组成 Azure 机器学习服务的工作流。
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1cc1b1584fdeb24aaba07f33cc260532c75249a2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 83ca4d2bf767d338943c396330b36f3f8180e170
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269123"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489941"
 ---
 # <a name="how-azure-machine-learning-service-works-architecture-and-concepts"></a>Azure 机器学习服务的工作原理：体系结构和概念
 
-本文介绍 Azure 机器学习服务的体系结构和概念。 下图显示该服务的主要组件，以及使用该服务时的常规工作流：
+了解体系结构、 概念和 Azure 机器学习服务的工作流。 下图显示该服务的主要组件，以及使用该服务时的常规工作流：
 
 [![Azure 机器学习服务体系结构和工作流](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
-工作流通常遵循以下顺序：
+## <a name="workflow"></a>工作流
+
+机器学习工作流通常采用以下顺序：
 
 1. 在 **Python** 中开发机器学习培训脚本。
 1. 创建和配置**计算目标**。

@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Fortinet 数据 |Microsoft Docs
-description: 了解如何收集在 Azure Sentinel Fortinet 数据。
+title: Fortinet 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+description: 了解如何连接到 Azure Sentinel Fortinet 数据。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 6c4bfbf67e45284f8f21166543228a821074b3b9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 612e384a2ee5bdc449d22ba469026d38c7469e73
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883210"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492116"
 ---
 # <a name="connect-your-fortinet-appliance"></a>Fortinet 设备连接 
 
@@ -42,7 +42,7 @@ ms.locfileid: "58883210"
 
 ### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。 
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
    - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
@@ -79,7 +79,7 @@ ms.locfileid: "58883210"
 如果不使用 Azure，手动部署 Azure Sentinel 代理专用的 Linux 服务器上运行。
 
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。
 1. 若要创建一个专用的 Linux VM 下,**代理配置 Linux Syslog**选择**手动部署**。
    1. 下**下载并安装 Syslog 代理**，选择**非 Azure Linux 机**。 
    1. 在中**直接代理**屏幕打开时，选择**适用于 Linux 代理**下载代理或运行以下命令来下载 Linux 计算机上：   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

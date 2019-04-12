@@ -9,16 +9,16 @@ ms.service: application-insights
 ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: mbullwin
-ms.openlocfilehash: c616b2578f7606ce7df19fdbef16bec8a24428d3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 25f620cb36c2bfb548ecf08c33dc04b37118a256
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262493"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489616"
 ---
 # <a name="monitor-azure-app-service-performance"></a>监视 Azure 应用服务性能
 
-启用监视.NET 和.NET Core 上运行 Azure 应用服务上的基于的 web 应用程序是现在比以往更容易。 以前需要手动安装站点扩展，而最新扩展代理现已内置到应用服务映像默认情况下。 本文将引导你完成启用 Application Insights 监视，以及提供用于自动执行大规模部署过程的初步指导。
+启用监视功能在.NET 和.NET Core 上基于上运行的 web 应用程序[Azure 应用服务](https://docs.microsoft.com/azure/app-service/)可以比以往更轻松。 以前需要手动安装站点扩展，而最新扩展代理现已内置到应用服务映像默认情况下。 本文将引导你完成启用 Application Insights 监视，以及提供用于自动执行大规模部署过程的初步指导。
 
 > [!NOTE]
 > 手动添加 Application Insights 站点扩展通过**开发工具** > **扩展**已弃用。 此方法扩展安装了依赖于手动更新每个新版本。 该扩展的最新稳定版本现已[预装](https://github.com/projectkudu/kudu/wiki/Azure-Site-Extensions)作为应用服务映像的一部分。 文件位于`d:\Program Files (x86)\SiteExtensions\ApplicationInsightsAgent`，并使用每个稳定版本自动更新。 如果您遵循的基于代理的说明进行操作，以启用监视下面，它会自动将为您删除不推荐使用的扩展。

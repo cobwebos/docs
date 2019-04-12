@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba77772352d3f6f6494abeddc7faf9f12e5f80c2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 40918493071fe0dd694c43e2b087a2bf7eb197d8
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262561"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489187"
 ---
 # <a name="troubleshooting-combined-security-information-registration-preview"></a>故障排除结合安全信息注册 （预览版）
 
@@ -154,7 +154,7 @@ ms.locfileid: "59262561"
 
 若要禁用你的用户的预览体验，请完成以下步骤：
 
-1. 以全局管理员或用户管理员身份登录到 Azure 门户。
+1. 以用户管理员身份登录到 Azure 门户。
 2. 转到**Azure Active Directory** > **用户设置** > **管理的访问面板中预览功能设置**。
 3. 下**用户可以使用预览功能来注册和管理的安全信息**，将选择器设置为**None**，然后选择**保存**。
 

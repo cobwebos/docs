@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: 7835553dafd66830b7a483c58bc2c7b7cf8c93f8
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e35330874c647eba2cddde694563c8a1d9e83df5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046888"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490266"
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT 中心设备预配服务安全性概念 
 
@@ -77,7 +77,11 @@ TPM 证明基于 nonce 质询，该质询使用认可和存储根密钥来提供
 
 ### <a name="end-entity-leaf-certificate"></a>最终实体“叶”证书
 
-分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。 有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
+分支证书或最终实体证书标识证书持有者。 它具有其证书链中的根证书以及零个或多个中间证书。 分支证书不用于对任何其他证书进行签名。 它向设置服务唯一标识设备，有时称为设备证书。 在身份验证期间，设备使用与此证书关联的私钥响应来自服务的所有权证明质询。
+
+叶证书用于[单独登记](./concepts-service.md#individual-enrollment)条目有要求的**使用者名称**必须设置为单独的注册项的注册 ID。 叶证书用于[登记组](./concepts-service.md#enrollment-group)条目应具有**使用者名称**设置为所需的设备 ID 会显示在**注册记录**为注册组中的经过身份验证的设备。
+
+有关详细信息，请参阅[对使用 X.509 CA 证书签名的设备进行身份验证](/azure/iot-hub/iot-hub-x509ca-overview#authenticating-devices-signed-with-x509-ca-certificates)。
 
 ## <a name="controlling-device-access-to-the-provisioning-service-with-x509-certificates"></a>使用 X.509 证书控制设备对设置服务的访问权限
 

@@ -1,6 +1,6 @@
 ---
-title: 在 Azure Sentinel 预览版中的收集检查点数据 |Microsoft Docs
-description: 了解如何收集 Azure Sentinel 中的检查点数据。
+title: 将检查点数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+description: 了解如何连接到 Azure Sentinel 的检查点数据。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 1fb4f9165be03a7fc3cd055ef616dcfadb58ac9d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 664b09a8ad0cb7d06019281869e390a465637c00
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58876490"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489170"
 ---
 # <a name="connect-your-check-point-appliance"></a>连接检查点设备
 
@@ -30,7 +30,7 @@ ms.locfileid: "58876490"
 您可以连接 Azure Sentinel 到任何检查点设备通过将日志文件保存为 Syslog CEF。 与 Azure Sentinel 的集成，可轻松地在日志文件数据从检查点运行分析和查询。 有关如何 Azure Sentinel 引入 CEF 数据的详细信息，请参阅[连接 CEF 设备](connect-common-event-format.md)。
 
 > [!NOTE]
-> - 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
+> 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
 
 ## <a name="step-1-connect-your-check-point-appliance-using-an-agent"></a>步骤 1：连接使用一个代理将检查点设备
 
@@ -42,7 +42,7 @@ ms.locfileid: "58876490"
 
 ### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。 
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
    - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页将自动连接到工作区的专用 vm。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。

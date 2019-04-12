@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Azure 信息保护数据 |Microsoft Docs
-description: 了解如何收集 Azure Sentinel 中的 Azure 信息保护数据。
+title: 连接到 Azure Sentinel 预览版的 Azure 信息保护数据 |Microsoft Docs
+description: 了解如何将 Azure 信息保护中 Azure Sentinel 数据连接。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 7c5866d3096823f91a70b28c7c5dd1790e1b3bf8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2f970910e19b3c1ed9d262d356c49848f4248b09
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537161"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489822"
 ---
-# <a name="collect-data-from-azure-information-protection"></a>Azure 信息保护中收集数据
+# <a name="connect-data-from-azure-information-protection"></a>Azure 信息保护中连接数据
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 可以从日志流式传输[Azure 信息保护](https://docs.microsoft.com/azure/information-protection/reports-aip)到 Azure Sentinel 单击一次。 Azure 信息保护有助于保护你的数据，它是存储在云中还是在本地基础结构和控制并帮助保护电子邮件、 文档和向公司之外共享的敏感数据存储。 从简单的分类到嵌入式的标签和权限，增强在所有时间与 Azure 信息保护的数据保护。 当您连接 Azure 信息保护到 Azure Sentinel，你的流的所有警报从 Azure 信息保护到 Azure Sentinel。
@@ -41,7 +41,7 @@ ms.locfileid: "57537161"
 如果部署 Azure 信息保护，并获取数据，警报数据可以轻松地进行流式传输到 Azure Sentinel。
 
 
-1. 在 Azure Sentinel，选择**数据收集**，然后单击**Azure 信息保护**磁贴。
+1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Azure 信息保护**磁贴。
 
 2. 转到[Azure 信息保护门户](https://portal.azure.com/?ScannerConfiguration=true&EndpointDiscovery=true#blade/Microsoft_Azure_InformationProtection/DataClassGroupEditBlade/quickstartBlade) 
 
@@ -57,6 +57,6 @@ ms.locfileid: "57537161"
 
 
 ## <a name="next-steps"></a>后续步骤
-在本文档中，您学习了如何将 Azure 信息保护连接到 Azure Sentinel。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文档中，您学习了如何将 Azure 信息保护连接到 Azure Sentinel。 要详细了解 Azure Sentinel，请参阅以下文章：
 - 了解如何[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
 - 开始[检测威胁 Azure Sentinel](tutorial-detect-threats.md)。

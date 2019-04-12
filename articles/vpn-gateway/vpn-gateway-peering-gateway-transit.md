@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/25/2018
 ms.author: yushwang
-ms.openlocfilehash: 05b25a524894248152114ca9c756d4a0f8944ad8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: d5e62bf1838c8f07068208019d28d7273c28bd63
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199624"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492339"
 ---
 # <a name="configure-vpn-gateway-transit-for-virtual-network-peering"></a>针对虚拟网络对等互连配置 VPN 网关传输
 
@@ -37,9 +37,6 @@ ms.locfileid: "58199624"
 1. 两种虚拟网络都使用资源管理器部署模型
 2. 辐射虚拟网络为经典部署模型，带网关的中心虚拟网络为资源管理器部署模型
 
-> [!IMPORTANT]  
-> 使用全局虚拟网络对等互连预览版目前支持网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域，但不是能跨云。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。 
-
 ## <a name="requirements"></a>要求
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -54,8 +51,8 @@ ms.locfileid: "58199624"
 有关说明，请参阅以下文档：
 
 1. [在虚拟网络中创建 VPN 网关](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
-2. [使用相同的部署模型创建虚拟网络对等互连](../virtual-network/tutorial-connect-virtual-networks-portal.md)
-3. [使用不同的部署模型创建虚拟网络对等互连](../virtual-network/create-peering-different-deployment-models.md)
+2. [创建虚拟网络对等互连使用相同的部署模型](../virtual-network/tutorial-connect-virtual-networks-portal.md)
+3. [创建虚拟网络对等互连使用不同的部署模型](../virtual-network/create-peering-different-deployment-models.md)
 
 ## <a name="permissions"></a>权限
 

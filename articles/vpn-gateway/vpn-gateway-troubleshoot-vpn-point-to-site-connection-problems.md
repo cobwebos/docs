@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/28/2018
+ms.date: 04/11/2018
 ms.author: genli
-ms.openlocfilehash: 7990a98e0e2d688456db054e3cdfa447e1ed1043
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630471"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492373"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
 
@@ -31,7 +31,7 @@ ms.locfileid: "58630471"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**找不到可用于此可扩展身份验证协议的证书。(错误 798)**
+**找不到可用于此可扩展身份验证协议的证书。 （错误 798）**
 
 ### <a name="cause"></a>原因
 
@@ -58,13 +58,42 @@ ms.locfileid: "58630471"
 > [!NOTE]
 > 导入客户端证书时，请勿选择“启用强私钥保护”选项。
 
+## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>无法建立您的计算机和 VPN 服务器之间的网络连接，因为远程服务器未响应
+
+### <a name="symptom"></a>症状
+
+尝试连接到 Azure 虚拟网络 gteway 正使用 IKEv2 在 Windows 上，将获得以下错误消息：
+
+**无法建立您的计算机和 VPN 服务器之间的网络连接，因为远程服务器未响应**
+
+### <a name="cause"></a>原因
+ 
+ 如果 Windows 版本不具有支持 IKE 碎片会出现问题
+ 
+### <a name="solution"></a>解决方案
+
+在 Windows 10 和 Server 2016 上支持 IKEv2。 但是，若要使用 IKEv2，必须在本地安装更新并设置注册表项值。 Windows 10 以前的 OS 版本不受支持，并且只能使用 SSTP。
+
+为运行 IKEv2 准备 Windows 10 或 Server 2016：
+
+1. 安装更新。
+
+   | OS 版本 | 日期 | 编号/链接 |
+   |---|---|---|---|
+   | Windows Server 2016<br>Windows 10 版本 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+   | Windows 10 版本 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+   | Windows 10 版本 1709 | 2018 年 3 月 22 日 | [KB4089848](https://www.catalog.update.microsoft.com/search.aspx?q=kb4089848) |
+   |  |  |  |  |
+
+2. 设置注册表项值。 在注册表中创建“HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload”REG_DWORD 键或将其设置为 1。
+
 ## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN 客户端错误：接收到的消息异常，或格式不正确
 
 ### <a name="symptom"></a>症状
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**收到意外或格式不当的消息。(错误 0x80090326)**
+**收到的消息是意外或格式不正确。 （错误 0x80090326）**
 
 ### <a name="cause"></a>原因
 
@@ -87,7 +116,7 @@ ms.locfileid: "58630471"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**已处理证书链，但是在不受信任提供程序信任的根证书中终止。**
+**处理证书链，但是在不受信任提供程序的根证书中终止。**
 
 ### <a name="solution"></a>解决方案
 
@@ -107,7 +136,7 @@ ms.locfileid: "58630471"
 
 看到以下错误消息：
 
-**文件下载错误。未指定目标 URI。**
+**文件下载错误。 目标 URI 未指定。**
 
 ### <a name="cause"></a>原因 
 
@@ -123,7 +152,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**用于更新路由表的自定义脚本失败。(错误 8007026f)**
+**自定义脚本 （用于更新路由表） 失败。 （错误 8007026f）**
 
 ### <a name="cause"></a>原因
 
@@ -156,7 +185,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-无法保存虚拟网络网关 &lt;网关名称&gt;**。证书 &lt;证书 ID&gt; 的数据无效**。
+**无法保存虚拟网络网关&lt;*网关名称*&gt;。 证书数据&lt;*证书 ID* &gt;无效。**
 
 ### <a name="cause"></a>原因 
 
@@ -203,7 +232,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试下载 VPN 客户端配置包时，看到以下错误消息：
 
-**无法下载文件。错误详细信息:错误 503。服务器正忙。**
+**未能下载文件。 错误详细信息:错误 503。 服务器正忙。**
  
 ### <a name="solution"></a>解决方案
 

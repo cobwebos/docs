@@ -1,5 +1,5 @@
 ---
-title: 如何部署从零开始的 Azure IoT OPC UA 设备管理模块 |Microsoft Docs
+title: 如何从零开始的 Azure 部署 OPC 孪生模块 |Microsoft Docs
 description: 如何将 OPC 孪生部署从零开始。
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: fe1b141ecacbd1d96c217322e69709828a3bf36c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: f470beb79e69b5a4a3febeb6a433c48490b96cf7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759356"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491350"
 ---
 # <a name="deploy-opc-twin-module-and-dependencies-from-scratch"></a>部署 OPC 孪生模块从零开始的依赖项
 
-OPC 设备孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OPC 设备孪生和注册表服务。 
+OPC 孪生模块在 IoT Edge 上运行，并提供了多个边缘服务添加到 OPC 设备孪生和注册表服务。 
 
 有几个选项来部署模块到您[Azure IoT Edge](https://azure.microsoft.com/services/iot-edge/)网关，在它们之间
 
@@ -109,7 +109,7 @@ OPC 设备孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OP
 
 ### <a name="prerequisites"></a>必备组件
 
-1. 部署 OPC UA 设备管理[依赖项](howto-opc-twin-deploy-dependencies.md)获取所生成和`.env`文件。 请注意已部署`hub name`的`PCS_IOTHUBREACT_HUB_NAME`变量中生成`.env`文件。
+1. 部署 OPC 孪生[依赖项](howto-opc-twin-deploy-dependencies.md)获取所生成和`.env`文件。 请注意已部署`hub name`的`PCS_IOTHUBREACT_HUB_NAME`变量中生成`.env`文件。
 
 2. 注册并启动[Linux](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-linux)或[Windows](https://docs.microsoft.com/azure/iot-edge/how-to-install-iot-edge-windows) IoT Edge 网关并记下及其`device id`。
 
@@ -205,7 +205,7 @@ OPC 设备孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OP
 
 ### <a name="prerequisites"></a>必备组件
 
-1. 部署 OPC UA 设备管理[依赖项](howto-opc-twin-deploy-dependencies.md)。
+1. 部署 OPC 孪生[依赖项](howto-opc-twin-deploy-dependencies.md)。
 
 2. 安装[Docker CE (18.02.0+)](https://www.docker.com/community-edition)上[Windows](https://docs.docker.com/docker-for-windows/install/)， [macOS](https://docs.docker.com/docker-for-mac/install/)或者[Linux](https://docs.docker.com/install/linux/docker-ce/ubuntu/#install-docker-ce)。
 

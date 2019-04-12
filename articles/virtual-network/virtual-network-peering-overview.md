@@ -4,20 +4,20 @@ titlesuffix: Azure Virtual Network
 description: 了解 Azure 中的虚拟网络对等互连。
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: anavinahar
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/21/2019
-ms.author: jdial
-ms.openlocfilehash: 3488e8501b0b9bea83bfcce5085d42b6476d3ed2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/01/2019
+ms.author: anavin
+ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880417"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489975"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -63,7 +63,7 @@ ms.locfileid: "58880417"
 
 ![虚拟网络对等互连传输](./media/virtual-networks-peering-overview/figure04.png)
 
-VNet 对等互连和全局 VNet 对等互连 （预览版） 支持网关传输。 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。
+VNet 对等互连和全局 VNet 对等互连 （预览版） 支持网关传输。 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 不需要加入允许列表。 可以通过 CLI、PowerShell、模板或 API 在预览版中进行测试。 预览版不支持门户。
 仅当网关在虚拟网络 （资源管理器） 支持通过不同部署模型 （Resource Manager 和经典） 创建虚拟网络之间的网关传输。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 正在共享单个 Azure ExpressRoute 连接的虚拟网络对等时，它们之间的流量会通过对等关系（即通过 Azure 主干网）流通。 仍可在各个虚拟网络中使用本地网关连接到本地线路。 也可使用共享网关，并为本地连接配置传输。
@@ -80,7 +80,6 @@ VNet 对等互连和全局 VNet 对等互连 （预览版） 支持网关传输�
 
 仅当虚拟网络全局对等互连时，以下约束适用：
 - 一个虚拟网络中的资源无法与全局对等互连的虚拟网络中的基本内部负载均衡器的前端 IP 地址通信。 基本负载均衡器的支持仅存在于同一区域内。 标准负载均衡器的支持存在全局 VNet 对等互连。
-- 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 未列入允许列表是必需的。 您可以通过 CLI、 PowerShell、 模板或 API 的预览版中进行测试。 门户不支持在预览中。
 
 若要详细了解要求和约束，请参阅[虚拟网络对等互连要求和约束](virtual-network-manage-peering.md#requirements-and-constraints)。 若要了解可以为虚拟网络创建的对等互连的数目限制，请参阅 [Azure 网络限制](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)。 
 

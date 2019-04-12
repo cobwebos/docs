@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/17/2018
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 6345eca674086801f8bb0f45476009f04a10f2e3
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214372"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503093"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -39,14 +39,13 @@ ms.locfileid: "58214372"
 
 ### <a name="view-application-results"></a>查看应用程序结果
 
-在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenAsync` 或 `AcquireTokenSilentAsync` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
+在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
 
 |属性  |格式  |描述 |
 |---------|---------|---------|
-|**名称** |用户全名 |用户的名字和姓氏。|
-|**用户名** |<span>user@domain.com</span> |用于标识用户的用户名。|
-|**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
-|**访问令牌** |String |发送到需要授权标头的 HTTP 请求的令牌字符串。|
+
+|**用户名** | <span> user@domain.com </span> |用于标识用户的用户名。 ||**令牌过期**|日期时间 |令牌到期的时间。 MSAL 通过续订令牌根据需要来延长到期日期。 |
+
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 188cb21688ee092db426e51c6ae327def3ff02d0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e8fe694cc757f5bcb9cf470f17306e8aa0028744
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919157"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502746"
 ---
 | 资源 | 默认限制 | 最大限制 |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "58919157"
 | 每个订阅的 DNS 服务器 |9 |100 |
 | 每个订阅的保留的 IP |20 |100 |
 | 每个订阅的[地缘组数](../articles/virtual-network/virtual-networks-migrate-to-regional-vnet.md) |256 |256 |
-
+| 订阅名称长度 （字符） | 64 | 64 |
 
 <sup>1</sup>额外小型实例计为一个 vCPU vCPU 限制，即使使用部分 CPU 核心。
 

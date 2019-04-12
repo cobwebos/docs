@@ -1,5 +1,5 @@
 ---
-title: 如何部署 Azure IoT OPC UA 设备管理云依赖关系 |Microsoft Docs
+title: 如何部署在 Azure 中的 OPC 孪生云依赖项 |Microsoft Docs
 description: 如何部署 OPC 孪生 Azure 依赖项。
 author: dominicbetts
 ms.author: dobett
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: cdd89293328da47c8e338bb6fca8c7b93dd84f97
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: ae9f2b05bfc6ea6315022d04c8d267d916cf282e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759395"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491980"
 ---
 # <a name="deploying-dependencies-for-local-development"></a>部署依赖项以进行本地开发
 
@@ -52,7 +52,7 @@ ms.locfileid: "58759395"
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，你已成功部署 OPC 设备管理服务，向现有项目，下面是建议的下一步：
+现在，你已成功部署 OPC 孪生服务，向现有项目，下面是建议的下一步：
 
 > [!div class="nextstepaction"]
-> [了解有关如何部署 OPC 设备管理模块](howto-opc-twin-deploy-modules.md)
+> [了解如何将 OPC 孪生模块部署](howto-opc-twin-deploy-modules.md)

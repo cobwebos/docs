@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: raynew
-ms.openlocfilehash: ae84313cd750e3d6c7eb9443ec59095dec9c632e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1b03cf648ad65960cce4ffc874cf32ad91ef7dc1
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265243"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490631"
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>发现和评估大型 VMware 环境
 
@@ -39,20 +39,11 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 - 详细信息：在数据中心级别分配的对数据中心内所有对象具有访问权限的用户。
 - 若要限制访问权限，请在选中“传播到子对象”的情况下将“无访问权”角色分配给子对象（vSphere 主机、数据存储、VM 和网络）。
 
-如果要在租户环境中进行部署，以下是对此进行设置的一种方法：
+如果你在多租户环境中部署，并希望到通过 Vm 的文件夹的作用域的单个租户，不能直接选择 VM 文件夹，当作用域在 Azure Migrate 中的集合。 以下是如何通过文件夹的范围内发现的 Vm 的说明：
 
-1. 每个租户创建一个用户并使用 [RBAC](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)，分配对属于特定租户的所有 VM 的只读权限。 然后，使用这些凭据进行发现。 RBAC 确保相应的 vCenter 用户将仅具有特定于租户的 VM 的访问权限。
-2. 将为不同的租户用户设置 RBAC，如以下示例中所述的用户 #1 和用户 #2：
-
-    - 在“用户名称”和“密码”中，指定收集器用来在其中发现 VM 的只读帐户凭据
-    - Datacenter1 - 向用户 #1 和用户 #2 授予只读权限。 不要将这些权限传播到所有子对象，因为你将对单个 VM 的子对象设置权限。
-
-      - VM1（租户 #1）（授予用户 #1 只读权限）
-      - VM2（租户 #1）（授予用户 #1 只读权限）
-      - VM3（租户 #2）（授予用户 #2 只读权限）
-      - VM4（租户 #2）（授予用户 #2 只读权限）
-
-   - 如果使用用户 #1 凭据执行发现，则仅能发现 VM1 和 VM2。
+1. 创建每个租户的用户，并将只读权限分配给属于特定租户的所有 Vm。 
+2. 授予此用户只读的访问权限的 Vm 的托管位置的所有父对象。 要包括的数据中心到层次结构中的所有父对象的主机，主机、 群集、 群集文件夹的文件夹-都则。 不需要将传播到所有子对象的权限。
+3. 选择与数据中心的发现使用的凭据*集合范围内*。 设置的 RBAC 可确保相应的 vCenter 用户将有权访问仅特定于租户的 Vm。
 
 ## <a name="plan-your-migration-projects-and-discoveries"></a>规划迁移项目和发现
 
@@ -97,7 +88,7 @@ Azure Migrate 需要访问 VMware 服务器才能自动发现用于评估的 VM�
 
 ### <a name="more-than-1500-machines-in-a-single-vcenter-server"></a>单台 vCenter Server 中的虚拟机数超过 1500
 
-如果单台 vCenter Server 中的虚拟机数超过 1500，则需要将发现拆分为多个迁移项目。 若要拆分发现，可以利用设备中的“范围”字段并指定要发现的主机、群集、文件夹或数据中心。 例如，如果 vCenter Server 中有两个文件夹，其中一个文件夹 (Folder1) 包含 1000 个 VM，另一个文件夹 (Folder2) 包含 800 个 VM，则你可以使用范围字段在这些文件夹之间拆分发现。
+如果单台 vCenter Server 中的虚拟机数超过 1500，则需要将发现拆分为多个迁移项目。 若要拆分发现，可以利用该设备中的作用域字段和指定主机、 群集、 文件夹的主机、 群集或你想要发现的数据中心的文件夹。 例如，如果 vCenter Server 中有两个文件夹，其中一个文件夹 (Folder1) 包含 1000 个 VM，另一个文件夹 (Folder2) 包含 800 个 VM，则你可以使用范围字段在这些文件夹之间拆分发现。
 
 **持续发现：** 在这种情况下，需要创建两个收集器设备，对于第一个收集器，需将范围指定为 Folder1 并将其连接到第一个迁移项目。 可以使用第二个收集器设备并行启动 Folder2的发现，并将其连接到第二个迁移项目。
 

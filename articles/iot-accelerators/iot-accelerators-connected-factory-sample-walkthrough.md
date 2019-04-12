@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: be9bde90684b46adef509532eb7b0cc236c5efb1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 950d248d2525f053981c8642ee2d39021b9a0494
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180596"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490353"
 ---
 # <a name="connected-factory-solution-accelerator-walkthrough"></a>连接工厂解决方案加速器演练
 
@@ -73,7 +73,7 @@ OPC 发布服务器模块连接到工作站 OPC UA 服务器并订阅要发布�
 
 1. 将节点数据转换为 JSON 格式。
 1. 对 JSON 进行加密。
-1. 将 JSON 作为 OPC UA Pub/Sub 消息发送到 IoT 中心。
+1. 在 JSON 到 IoT 中心将作为发送 OPC UA 发布/订阅消息。
 
 OPC 发布服务器模块仅需要出站 https 端口 (443) 并且可以与现有企业基础结构一起工作。
 
@@ -230,7 +230,7 @@ TSI 使用一个基于时间的**搜索跨度**对节点数据进行查询并按
 可通过阅读以下文章继续了解 IoT 解决方案加速器：
 
 * [Azureiotsolutions.com 站点权限][lnk-permissions]
-* [在 Windows 或 Linux 上为连接工厂解决方案加速器部署网关](iot-accelerators-connected-factory-gateway-deployment.md)
+* [部署连接工厂解决方案加速器在 Windows 或 Linux 上的网关](iot-accelerators-connected-factory-gateway-deployment.md)
 * [OPC 发布服务器引用实现](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
 [connected-factory-logical]:media/iot-accelerators-connected-factory-sample-walkthrough/cf-logical-architecture.png
