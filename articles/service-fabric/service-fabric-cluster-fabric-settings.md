@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/11/2018
+ms.date: 04/10/2019
 ms.author: aljo
-ms.openlocfilehash: 4b4ddd765996d8bb936d2abda4015f37d6df9098
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 97f75438cf6401b4e2d5043038c1ca32b7022e7c
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361539"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501291"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -403,10 +403,11 @@ ms.locfileid: "59361539"
 
 | **参数** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
+|AutomaticUnprovisionInterval|TimeSpan，默认值是 Common::TimeSpan::FromMinutes(5)|动态|指定以秒为单位的时间范围。 允许使用清理时间间隔的自动应用程序类型清理期间取消注册应用程序类型。|
 |AzureStorageMaxConnections | Int，默认值为 5000 |动态|最大并发 Azure 存储连接数。 |
 |AzureStorageMaxWorkerThreads | Int，默认值为 25 |动态|最大并行工作线程数。 |
 |AzureStorageOperationTimeout | 以秒为单位的时间，默认值为 6000 |动态|指定以秒为单位的时间范围。 完成 xstore 操作的超时时间。 |
-|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 FALSE |动态|此配置启用或禁用成功预配的应用程序包自动清理。 |
+|CleanupApplicationPackageOnProvisionSuccess|bool，默认值为 FALSE |动态|启用或禁用上成功预配应用程序包的自动清理。 |
 |CleanupUnusedApplicationTypes|布尔值，默认为 FALSE |动态|此配置如果启用，则允许以自动取消注册未使用的应用程序类型版本正在跳过最新三个未使用的版本，从而剪裁映像存储区占用的磁盘空间。 自动清理将触发成功预配该特定应用类型的末尾，并且还会定期每天运行一次的所有应用程序类型。 未使用的版本要跳过数是可配置使用参数"MaxUnusedAppTypeVersionsToKeep"。 |
 |DisableChecksumValidation | Bool，默认值为 false |静态| 通过此配置可在应用程序预配过程中启用或禁用校验和验证。 |
 |DisableServerSideCopy | Bool，默认值为 false |静态|此配置可以在应用程序预配过程中启用或禁用 ImageStore 上应用程序包的服务器端副本。 |

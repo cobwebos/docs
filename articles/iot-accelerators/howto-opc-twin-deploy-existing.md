@@ -1,5 +1,5 @@
 ---
-title: 如何将 Azure IoT OPC UA 设备管理模块部署到现有项目 |Microsoft Docs
+title: 如何将 OPC 孪生模块部署到现有的 Azure 项目 |Microsoft Docs
 description: 如何将 OPC 孪生部署到现有项目。
 author: dominicbetts
 ms.author: dobett
@@ -8,20 +8,20 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: dcf6acca344fe2a34fdc48fe89c5a1ee62b10b23
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6bdfeefc366734aa10dbaccec69bac8e0b41103f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59255880"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493240"
 ---
 # <a name="deploy-opc-twin-to-an-existing-project"></a>将 OPC 孪生部署到现有项目
 
-OPC 设备孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OPC 设备孪生和注册表服务。 
+OPC 孪生模块在 IoT Edge 上运行，并提供多个边缘服务到 OPC 孪生和注册表服务。 
 
-OPC 设备孪生微服务促进工厂运算符和 OPC 孪生 IoT Edge 模块通过在工厂车间的 OPC UA 服务器设备之间通信。 微服务公开通过其 REST API 的 OPC UA 服务 （浏览、 读取、 写入和执行）。 
+OPC 孪生微服务促进工厂运算符和 OPC 孪生 IoT Edge 模块通过在工厂车间的 OPC UA 服务器设备之间通信。 微服务公开通过其 REST API 的 OPC UA 服务 （浏览、 读取、 写入和执行）。 
 
-OPC UA 设备注册表微服务提供了对已注册的 OPC UA 应用程序和其终结点的访问。 操作员和管理员可以注册和取消注册新的 OPC UA 应用程序和浏览现有的包括其终结点。 除了应用程序和终结点管理，注册表服务还编录已注册的 OPC 设备孪生 IoT Edge 模块。 服务 API 将帮助您控制的边缘模块功能，例如，启动或停止服务器发现 （扫描服务），或激活可使用 OPC 孪生微服务访问的新终结点孪生。
+OPC UA 设备注册表微服务提供对已注册的 OPC UA 应用程序和其终结点的访问。 操作员和管理员可以注册和取消注册新的 OPC UA 应用程序和浏览现有的包括其终结点。 除了应用程序和终结点管理，注册表服务还编录已注册的 OPC 孪生 IoT Edge 模块。 服务 API 将帮助您控制的边缘模块功能，例如，启动或停止服务器发现 （扫描服务），或激活可使用 OPC 孪生微服务访问的新终结点孪生。
 
 模块的核心是监督程序标识。 监督程序管理终结点孪生，对应于使用相应的 OPC UA 注册表 API 激活的 OPC UA 服务器终结点。 此终结点孪生转换来自 OPC 孪生微服务在云中运行到 OPC UA 二进制消息，通过有状态安全通道发送到托管终结点的 OPC UA JSON。 监督程序还提供了设备发现事件发送到 OPC UA 设备载入服务进行处理，在更新到 OPC UA 注册表导致这些事件的发现服务。  本文介绍如何将 OPC 孪生模块部署到现有项目。 
 
@@ -71,7 +71,7 @@ cd azure-iiot-components
 2. 或者，部署另一个订阅中的专用 AAD 租户，重新启动该脚本，然后选择此选项可以使用它。
 
 > [!WARNING]
-> 永远不会继续而无需验证。  如果你选择这样做，任何人都可以从未经身份验证的 Internet 访问 OPC 设备管理终结点。   你可以始终选择["本地"部署选项](howto-opc-twin-deploy-dependencies.md)进行检验。
+> 永远不会继续而无需验证。  如果你选择这样做，任何人都可以从未经身份验证的 Internet 访问 OPC 孪生终结点。   你可以始终选择["本地"部署选项](howto-opc-twin-deploy-dependencies.md)进行检验。
 
 ## <a name="deploy-an-all-in-one-industrial-iot-services-demo"></a>部署-一体工业 IoT 服务演示
 

@@ -1,5 +1,5 @@
 ---
-title: 自动缩放 Azure HDInsight 群集 （预览版）
+title: 自动缩放 Azure HDInsight 群集（预览）
 description: 使用 HDInsight 自动缩放功能来自动缩放群集
 services: hdinsight
 author: hrasheed-msft
@@ -9,17 +9,17 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 28f04f5ab3cf8310a6ee3828405910d34b31591b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9631e4b82ceb14a98740491b98288d75dd23f9a3
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227545"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501002"
 ---
-# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集 （预览版）
+# <a name="automatically-scale-azure-hdinsight-clusters-preview"></a>自动缩放 Azure HDInsight 群集（预览）
 
 >[!Important]
->HDInsight 自动缩放功能目前处于预览状态。 请发送电子邮件至hdiautoscalepm@microsoft.com来为你的订阅启用了自动缩放。
+>HDInsight 自动缩放功能目前以预览版提供。 若要为订阅启用自动缩放，请向 hdiautoscalepm@microsoft.com 发送电子邮件。
 
 Azure HDInsight 的群集自动缩放功能可根据预定义范围内的负载自动增加和减少群集中的工作节点数。 创建新 HDInsight 群集期间，可以设置最小和最大工作节点数。 自动缩放功能随后监视分析负载的资源需求，并相应地增加或减少工作节点数。 此功能不会产生额外的费用。
 
@@ -30,11 +30,11 @@ Azure HDInsight 的群集自动缩放功能可根据预定义范围内的负载�
 > [!Note]
 > 目前仅 Azure HDInsight Hive、MapReduce 和 Spark 群集版本3.6 支持自动缩放功能。
 
-若要启用自动缩放功能，请执行以下操作正常的群集创建过程的一部分：
+若要启用自动缩放功能，请在正常群集创建过程中执行以下操作：
 
 1. 选择“自定义(大小、设置、应用)”而非“快速创建”。
 2. 在“自定义”第 5 步（群集大小）中，选中“工作节点自动缩放”复选框。
-3. 以下属性输入所需的值：  
+3. 为以下属性输入所需的值：  
 
     * 初始工作节点数。  
     * 最小工作节点数。  
@@ -83,11 +83,11 @@ Azure HDInsight 的群集自动缩放功能可根据预定义范围内的负载�
 
 ### <a name="enable-and-disable-autoscale-for-a-running-cluster"></a>为正在运行的群集启用和禁用自动缩放
 
-可以启用或禁用自动缩放通过 Azure 门户在 2019 年 1 月 1 日之后创建的 HDInsight 群集。
+你仅可以启用或禁用自动缩放的新 HDInsight 群集。
 
 ## <a name="monitoring"></a>监视
 
-您可以查看群集指标的一部分的群集向上扩展和缩减历史记录。 还可以列出过去一天、过去一周或更长时间内的所有缩放操作。
+可查看群集指标中包含的群集增加和减少历史记录。 还可以列出过去一天、过去一周或更长时间内的所有缩放操作。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -100,27 +100,27 @@ Azure HDInsight 的群集自动缩放功能可根据预定义范围内的负载�
 3. **总可用 CPU**：活动工作节点上所有未使用核心的总和。
 4. **总可用内存**：活动工作节点上未使用内存的总和（以 MB 为单位）。
 5. **每个节点的已使用内存**：工作节点上的负载。 使用了 10 GB 内存的工作节点的负载被认为比使用了 2 GB 内存的工作节点的负载更大。
-6. **每个节点的应用程序主机数**：在工作节点上运行的应用程序主机 (AM) 容器的数量。 辅助角色节点承载两个 AM 容器，被视为比辅助角色节点承载零个 AM 容器更重要。
+6. **每个节点的应用程序主机数**：在工作节点上运行的应用程序主机 (AM) 容器的数量。 托管两个 AM 容器的工作节点被认为比托管零个 AM 容器的工作节点更重要。
 
-每 60 秒检查一次上述指标。 自动缩放将扩大和缩小基于这些指标的决策。
+每 60 秒检查一次上述指标。 自动缩放将根据这些指标做出纵向扩展和纵向缩减决策。
 
-### <a name="cluster-scale-up"></a>群集向上扩展
+### <a name="cluster-scale-up"></a>群集纵向扩展
 
-检测到以下条件后，自动缩放将发出一个不断增长的请求：
+检测到以下情况时，自动缩放将发出纵向扩展请求：
 
-* 总待处理 CPU 大于总可用 CPU 的时间超过 1 分钟。
-* 总待处理内存大于总可用内存的时间超过 1 分钟。
+* 挂起的 CPU 总数大于总可用 CPU 超过 3 分钟。
+* 挂起的内存总数大于可用内存总量超过 3 分钟。
 
-我们将计算一定数量的新辅助角色节点所需满足当前的 CPU 和内存要求，然后发出的不断增长的请求，将该新辅助角色节点数。
+我们将计算得出需要一定数量新的工作节点来满足当前 CPU 和内存需求，然后通过添加相同数量的新工作节点来发出纵向扩展请求。
 
-### <a name="cluster-scale-down"></a>群集缩减
+### <a name="cluster-scale-down"></a>群集纵向缩减
 
-检测到以下条件后，自动缩放将发出一个缩减请求：
+检测到以下情况时，自动缩放将发出纵向缩减请求：
 
 * 总待处理 CPU 小于总可用 CPU 的时间超过 10 分钟。
 * 总待处理内存小于总可用内存的时间超过 10 分钟。
 
-根据每个节点的当前 CPU 和内存要求 AM 容器数，自动缩放将发出一个请求以删除一定数量的节点，指定哪些节点会删除的潜在候选项。 默认情况下，将在一个周期内删除两个节点。
+根据每个节点的当前 CPU 和内存要求 AM 容器数，自动缩放将发出一个请求以删除一定数量的节点，指定哪些节点会删除的潜在候选项。向下的缩放会触发的节点停用和节点都已完全解除授权后，将删除它们。
 
 ## <a name="next-steps"></a>后续步骤
 

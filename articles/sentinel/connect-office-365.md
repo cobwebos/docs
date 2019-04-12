@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Office 365 数据 |Microsoft Docs
-description: 了解如何收集 Azure Sentinel 中的 Office 365 数据。
+title: 将 Office 365 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+description: 了解如何将 Office 365 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: ad501958a5f88c821e48a3e21f69a960160b3c8e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 77587b0b7506ef0ccadbeb6d1f010f5b6a72d93e
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574852"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495184"
 ---
-# <a name="collect-data-from-office-365-logs"></a>从 Office 365 日志中收集数据
+# <a name="connect-data-from-office-365-logs"></a>从 Office 365 日志连接数据
 
 > [!IMPORTANT]
 > Azure Sentinel 当前为公共预览版。
@@ -33,11 +33,11 @@ ms.locfileid: "58574852"
 ## <a name="prerequisites"></a>必备组件
 
 - 您必须是全局管理员或安全管理员在你的租户
-- 你在计算机上，从中你登录到 Azure Sentinel 以创建连接，请 suretha 端口 4433 已打开 web 流量。
+- 你在计算机上，从中你登录到 Azure Sentinel 以创建连接，确保端口 4433 对 web 流量开放。
 
 ## <a name="connect-to-office-365"></a>连接到 Office 365
 
-1. 在 Azure Sentinel，选择**数据收集**，然后单击**Office 365**磁贴。
+1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Office 365**磁贴。
 
 2. 如果你尚未启用，在**连接**使用**启用**按钮以启用 Office 365 解决方案。 如果已启用，那么将为已启用了连接屏幕中进行标识。
 1. Office 365 使你能够对数据进行流式传输到 Azure Sentinel 的多个租户。 你想要连接到每个的租户，将添加在租户**将租户连接到 Azure Sentinel**。 

@@ -5,29 +5,29 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 02/12/2019
+ms.date: 04/08/2019
 ms.author: iainfou
-ms.openlocfilehash: a20dfcd9e2ef12252235b74455964d115d9aef9b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29180d6c1bb5f0991a4f33c3b7c9418f84d8260c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181480"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494759"
 ---
 # <a name="preview---secure-traffic-between-pods-using-network-policies-in-azure-kubernetes-service-aks"></a>预览-保护使用 Azure Kubernetes 服务 (AKS) 中的网络策略的 pod 之间的流量
 
 在 Kubernetes 中运行最新的基于微服务的应用程序时，通常想要控制哪些组件可以相互通信。 应为流量可以在 Azure Kubernetes 服务 (AKS) 群集中的 pod 之间流动，如何应用最小特权原则。 让我们假设你可能想要阻止直接到后端应用程序的流量。 *网络策略*在 Kubernetes 中的功能允许您定义的群集中的 pod 之间入口和出口流量的规则。
 
-Calico、 开放源网络和网络安全解决方案由 Tigera，成立的提供了一个网络策略引擎可实现 Kubernetes 网络策略规则。 本文介绍如何安装 Calico 网络策略引擎和创建 Kubernetes 网络策略来控制在 AKS 中的 pod 之间的流量流。
+本文介绍如何安装网络策略引擎和创建 Kubernetes 网络策略来控制在 AKS 中的 pod 之间的流量流。 此功能目前处于预览状态。
 
 > [!IMPORTANT]
-> AKS 预览版功能是自助服务和选择中。 预览版提供从我们的社区收集反馈和 bug。 但是，它们不受 Azure 技术支持。 如果创建群集，或将这些功能添加到现有群集，该群集是不受支持，直到此功能不再处于预览状态，为公开上市 (GA) 发布。
+> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
 >
-> 如果遇到问题的预览功能[打开在 AKS GitHub 存储库问题][ aks-github] bug 标题中的预览功能的名称。
+> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
 
 ## <a name="before-you-begin"></a>开始之前
 
-需要安装并配置 Azure CLI 2.0.56 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+你需要 Azure CLI 版本 2.0.61 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 若要创建的 AKS 群集，可以使用网络策略，请先启用你的订阅上的一个功能标志。 若要注册 EnableNetworkPolicy 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：
 
@@ -51,7 +51,35 @@ az provider register --namespace Microsoft.ContainerService
 
 AKS 群集中的所有 pod 可以发送和接收流量，而不受限制，默认情况下。 为了提高安全性，可定义用来控制流量流的规则。 后端应用程序通常仅公开所需的前端服务，例如。 或者，数据库组件仅可以访问连接到它们的应用程序层。
 
-网络策略属于 Kubernetes 资源，可用于控制 Pod 之间的流量流。 您可以选择允许或拒绝流量根据设置，例如分配的标签、 命名空间或流量端口。 按 YAML 清单定义网络策略。 这些策略可以是清单的作为更广泛，还会创建部署或服务的一部分。
+网络策略是一种 Kubernetes 规范，用于定义访问策略的 Pod 之间的通信。 使用网络策略，定义一组有序的规则以发送和接收流量，将它们应用于一系列匹配一个或多个标签选择器的 pod。
+
+按 YAML 清单定义这些网络策略规则。 网络策略可以是清单的作为更广泛，还会创建部署或服务的一部分。
+
+### <a name="network-policy-options-in-aks"></a>在 AKS 中的网络策略选项
+
+Azure 提供两种方法来实现网络策略。 创建 AKS 群集时选择的网络策略选项。 创建群集后，无法更改策略选项：
+
+* Azure 的实现，调用*Azure 网络策略*。
+* *网络策略 calico*，打开源网络和网络安全解决方案由成立[Tigera][tigera]。
+
+这两个实现使用 Linux *IPTables*强制执行指定的策略。 策略将转换为组允许的和不允许 IP 对。 然后，这些对进行编程作为 IPTable 筛选器规则。
+
+网络策略仅适用于 Azure CNI （高级） 选项。 实现方式不同，两个选项：
+
+* *Azure 网络策略*-Azure CNI 设置在节点内部网络的 VM 主机的桥梁。 将数据包传递桥时应用筛选规则。
+* *Calico 网络策略*-Azure CNI 设置了本地内核在节点内部流量的路由。 将策略应用 pod 的网络接口上。
+
+### <a name="differences-between-azure-and-calico-policies-and-their-capabilities"></a>Azure 和 Calico 策略和及其功能之间的差异
+
+| 功能                               | Azure                      | Calico                      |
+|------------------------------------------|----------------------------|-----------------------------|
+| 支持的平台                      | Linux                      | Linux                       |
+| 支持的网络选项             | Azure CNI                  | Azure CNI                   |
+| 与 Kubernetes 规范的符合性 | 支持的所有策略类型 |  支持的所有策略类型 |
+| 其他功能                      | 无                       | 扩展包括全局网络策略、 全局网络设置和主机终结点的策略模型。 有关使用的详细信息`calicoctl`CLI 来管理这些扩展功能，请参阅[calicoctl 用户参考][calicoctl]。 |
+| 支持                                  | 受 Azure 支持和工程团队 | Calico 社区支持。 有关其他付费支持的详细信息，请参阅[项目 Calico 支持选项][calico-support]。 |
+
+## <a name="create-an-aks-cluster-and-enable-network-policy"></a>创建 AKS 群集并启用网络策略
 
 若要查看在操作中，网络策略，让我们来创建，然后展开上一个策略，定义通信流：
 
@@ -59,9 +87,7 @@ AKS 群集中的所有 pod 可以发送和接收流量，而不受限制，默�
 * 允许基于 Pod 标签的流量。
 * 允许基于命名空间的流量。
 
-## <a name="create-an-aks-cluster-and-enable-network-policy"></a>创建 AKS 群集并启用网络策略
-
-创建群集后，才能启用网络策略。 无法在现有 AKS 群集上启用网络策略。 
+首先，让我们创建的 AKS 群集，支持网络策略。 创建群集时，可以仅启用的网络策略功能。 无法在现有 AKS 群集上启用网络策略。
 
 若要使用网络策略和 AKS 群集，必须使用[Azure CNI 插件][ azure-cni]并定义自己的虚拟网络和子网。 如需详细了解如何规划所需的子网范围，请参阅[配置高级网络][use-advanced-networking]。
 
@@ -71,6 +97,7 @@ AKS 群集中的所有 pod 可以发送和接收流量，而不受限制，默�
 * 创建 Azure Active Directory (Azure AD) 与 AKS 群集配合使用的服务主体。
 * 对虚拟网络的 AKS 服务主体授予“参与者”权限。
 * 在定义虚拟网络中创建的 AKS 群集并启用网络策略。
+    * *Azure*使用网络策略选项。 若要转而使用网络策略选项 Calico，使用`--network-policy calico`参数。
 
 提供自己的安全 SP_PASSWORD。 您可以替换*RESOURCE_GROUP_NAME*并*CLUSTER_NAME*变量：
 
@@ -122,7 +149,7 @@ az aks create \
     --vnet-subnet-id $SUBNET_ID \
     --service-principal $SP_ID \
     --client-secret $SP_PASSWORD \
-    --network-policy calico
+    --network-policy azure
 ```
 
 创建群集需要几分钟时间。 群集准备就绪后，配置`kubectl`通过使用连接到 Kubernetes 群集[az aks get-credentials 来获取凭据][ az-aks-get-credentials]命令。 此命令将下载凭据，并将 Kubernetes CLI 配置为使用这些凭据：
@@ -454,6 +481,9 @@ kubectl delete namespace development
 [terms-of-use]: https://azure.microsoft.com/support/legal/preview-supplemental-terms/
 [policy-rules]: https://kubernetes.io/docs/concepts/services-networking/network-policies/#behavior-of-to-and-from-selectors
 [aks-github]: https://github.com/azure/aks/issues]
+[tigera]: https://www.tigera.io/
+[calicoctl]: https://docs.projectcalico.org/v3.5/reference/calicoctl/
+[calico-support]: https://www.projectcalico.org/support
 
 <!-- LINKS - internal -->
 [install-azure-cli]: /cli/azure/install-azure-cli

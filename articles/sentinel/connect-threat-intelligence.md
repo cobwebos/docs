@@ -1,5 +1,5 @@
 ---
-title: 在 Azure Sentinel 预览版中的威胁智能数据收集 |Microsoft Docs
+title: 威胁智能数据连接到 Azure Sentinel 预览版 |Microsoft Docs
 description: 了解如何连接到 Azure Sentinel 威胁智能数据。
 documentationcenter: na
 author: rkarlin
@@ -11,19 +11,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/20/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: bc8a644f99d9a84e1f2c177a87e2668ae9a57868
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: a33b00e4e553824f1f719be2c8518487241f0a11
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400630"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494827"
 ---
-# <a name="collect-data-from-threat-intelligence-providers"></a>从威胁智能提供程序收集数据 
+# <a name="connect-data-from-threat-intelligence-providers"></a>威胁智能提供商处从连接的数据 
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 流式数据传输到 Azure Sentinel 后，你可以加强其威胁智能源与整个组织内使用的。 
@@ -44,7 +44,7 @@ ms.locfileid: "58400630"
 
 1. 如果你已在使用威胁智能提供程序，请确保以浏览到提示应用程序并授予权限以向 Microsoft 发送指标并指定该服务为 Azure Sentinel。  
 
-2. 在 Azure Sentinel，选择**数据收集**，然后单击**威胁智能**磁贴。
+2. 在 Azure Sentinel，选择**数据连接器**，然后单击**威胁智能**磁贴。
 
 3. 单击“连接”。 
 
@@ -55,5 +55,5 @@ ms.locfileid: "58400630"
 
 在本文档中，您学习了如何连接到 Azure Sentinel 威胁智能提供程序。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章。
 
-- 若要开始使用 Azure Sentinel，需要 Microsoft Azure 订阅。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/free/)。
-- 了解如何[载入到 Azure Sentinel 数据](quickstart-onboard.md)，并[来了解一下你的数据和潜在威胁](quickstart-get-visibility.md)。
+- 若要开始使用 Azure Sentinel，需要订阅 Microsoft Azure。 如果尚无订阅，可注册[免费试用版](https://azure.microsoft.com/free/)。
+- 了解如何[将数据载入到 Azure Sentinel](quickstart-onboard.md)，以及[获取数据和潜在威胁的见解](quickstart-get-visibility.md)。

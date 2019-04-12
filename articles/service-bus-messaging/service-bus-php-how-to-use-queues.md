@@ -12,33 +12,38 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 9915392f7bb12b31dce6e141383a48b69c6f70a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 55eee839e24db2ad96eb635adc488e9a119c5907
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842764"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501189"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>如何通过 PHP 使用服务总线队列
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本指南说明如何使用服务总线队列。 示例是用 PHP 编写的并使用了 [Azure SDK for PHP](../php-download-sdk.md)。 涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。
+在本教程中，您将学习如何创建 PHP 应用程序将消息发送到和从服务总线队列接收消息。 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>必备组件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 如果没有要处理的队列，按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)项目创建的队列。
+    1. 阅读快速**概述**的服务总线**队列**。 
+    2. 创建服务总线**命名空间**。 
+    3. 获取**连接字符串**。 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
+        > [!NOTE]
+        > 您将创建**队列**本教程中使用 PHP 在服务总线命名空间中。 
+3. [内置 Web 服务器](../php-download-sdk.md)
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
 创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用[ Azure SDK for PHP](../php-download-sdk.md) 中的类。 可以使用任何开发工具或记事本创建应用程序。
 
 > [!NOTE]
-> 在安装 PHP 的过程中，还必须安装并启用 [OpenSSL 扩展](https://php.net/openssl) 。
-> 
-> 
+> PHP 安装还必须已安装并启用 [OpenSSL 扩展](https://php.net/openssl)。
 
-在本指南中，将使用服务功能，这些功能可在 PHP 应用程序中本地调用，或通过在 Azure 的 Web 角色、辅助角色或网站中运行的代码调用。
+在本指南中，将使用服务功能，可以从在 PHP 应用程序本地，或在 Azure web 角色、 辅助角色或网站内运行的代码中调用。
 
 ## <a name="get-the-azure-client-libraries"></a>获取 Azure 客户端库
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
@@ -128,7 +133,7 @@ catch(ServiceException $e){
 > 
 
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
-要将消息发送到服务总线队列，应用程序应调用 `ServiceBusRestProxy->sendQueueMessage` 方法。 下面的代码演示了如何将消息发送到先前在 `MySBNamespace` 服务命名空间内创建的 `myqueue` 队列。
+要将消息发送到服务总线队列，应用程序应调用 `ServiceBusRestProxy->sendQueueMessage` 方法。 下面的代码演示了如何将消息发送到在 `MySBNamespace` 服务命名空间先前创建的 `myqueue` 队列。
 
 ```php
 require_once 'vendor/autoload.php';
@@ -158,7 +163,7 @@ catch(ServiceException $e){
 }
 ```
 
-发送到服务总线（以及从服务总线接收）的消息是 [BrokeredMessage][BrokeredMessage] 类的实例。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准方法和属性，用于保存特定于自定义应用程序的属性，以及大量随机应用程序数据。
+消息发送到 （和接收自） Service Bus 队列是的实例[BrokeredMessage] [ BrokeredMessage]类。 [BrokeredMessage][BrokeredMessage] 对象包含一组标准方法和属性，用于保存特定于自定义应用程序的属性，以及大量随机应用程序数据。
 
 服务总线队列在[标准层](service-bus-premium-messaging.md)中支持的最大消息大小为 256 KB，在[高级层](service-bus-premium-messaging.md)中则为 1 MB。 标头最大大小为 64 KB，其中包括标准和自定义应用程序属性。 一个队列可包含的消息数不受限制，但消息的总大小受限。 队列大小的上限为 5 GB。
 

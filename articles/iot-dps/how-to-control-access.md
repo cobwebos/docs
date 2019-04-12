@@ -2,18 +2,18 @@
 title: IoT 设备预配服务中的安全性终结点 | Microsoft Docs
 description: 概念 - 如何控制后端应用对 IoT 设备预配服务的访问权限。 包括安全令牌的相关信息。
 author: wesmc7777
-manager: timlt
+manager: philmea
 ms.service: iot-dps
 services: iot-dps
 ms.topic: conceptual
-ms.date: 09/28/2017
+ms.date: 04/09/2019
 ms.author: wesmc
-ms.openlocfilehash: 0258a37b0614ca7505a90f88afaaaee1a6d5c04e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.openlocfilehash: 7ff622ceac9c49eda7ba6bca1a8bb3aaabccb816
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55496953"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495424"
 ---
 # <a name="control-access-to-azure-iot-hub-device-provisioning-service"></a>控制对 Azure IoT 中心设备预配服务的访问
 
@@ -39,7 +39,7 @@ ms.locfileid: "55496953"
 > [!NOTE]
 > 有关详细信息，请参阅[权限](#device-provisioning-service-permissions)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 Azure IoT 中心设备预配服务通过针对共享访问策略验证令牌，授予对终结点的访问权限。 安全凭据（例如对称密钥）永远不会通过网络发送。
 
@@ -75,7 +75,7 @@ SharedAccessSignature sr =
 
 以下是预期值：
 
-| 值 | 说明 |
+| 值 | 描述 |
 | --- | --- |
 | {signature} |HMAC-SHA256 签名字符串的格式为：`{URL-encoded-resourceURI} + "\n" + expiry`。 **重要说明**：密钥是从 base64 解码得出的，用作执行 HMAC-SHA256 计算的密钥。|
 | {expiry} |从纪元 1970 年 1 月 1日 00:00:00 UTC 时间至今秒数的 UTF8 字符串。 |
@@ -179,11 +179,11 @@ var token = generateSasToken(endpoint, policyKey, policyName, 60);
 
 | 权限 | 说明 |
 | --- | --- |
-| ServiceConfig |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentRead |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| EnrollmentWrite |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusRead |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
-| RegistrationStatusWrite  |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
+| **ServiceConfig** |授予用于更改服务配置的访问权限。 <br/>后端云服务将使用此权限。 |
+| **EnrollmentRead** |授予对设备注册和注册组的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| **EnrollmentWrite** |授予对设备注册和注册组的写入访问权限。 <br/>后端云服务将使用此权限。 |
+| **RegistrationStatusRead** |授予对设备注册状态的读取访问权限。 <br/>后端云服务将使用此权限。 |
+| **RegistrationStatusWrite**  |授予对设备注册状态的删除访问权限。 <br/>后端云服务将使用此权限。 |
 
 <!-- links and images -->
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: d22fffcb792227b4d0805abd005d8c050cb97248
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006200"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505594"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -158,21 +158,20 @@ reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hide
 reg add HKLM\SOFTWARE\Policies\Microsoft\office\16.0\common\officeupdate /v hideenabledisableupdates /t REG_DWORD /d 1 /f
 ```
 
-您可以手动禁用自动更新。
+### <a name="disable-automatic-updates"></a>禁用自动更新
 
-若要禁用自动更新：
+若要禁用本地组策略通过自动更新：
 
-1. 按照中的说明安装 office 365[软件准备和安装](set-up-customize-master-image.md#software-preparation-and-installation)。
-2. 按照中的说明安装任何其他应用程序[设置用户配置文件容器 (FSLogix)](set-up-customize-master-image.md#set-up-user-profile-container-fslogix)，[配置 Windows Defender](set-up-customize-master-image.md#configure-windows-defender)，和[其他应用程序和注册表配置](set-up-customize-master-image.md#other-applications-and-registry-configuration)。
-3. 禁用本地 VM 上的 Windows 自动更新服务。
-4. 打开**本地组策略编辑器\\管理模板\\Windows 组件\\Windows Update**。
-5. 右键单击**配置自动更新**并将其设置为**禁用**。
+1. 打开**本地组策略编辑器\\管理模板\\Windows 组件\\Windows Update**。
+2. 右键单击**配置自动更新**并将其设置为**禁用**。
 
 此外可以在命令提示符下，禁用自动更新上运行以下命令。
 
 ```batch
 reg add HKLM\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU /v NoAutoUpdate /t REG_DWORD /d 1 /f
 ```
+
+### <a name="specify-start-layout-for-windows-10-pcs-optional"></a>Windows 10 电脑 （可选） 为指定开始布局
 
 运行此命令适用于 Windows 10 电脑指定开始布局。
 

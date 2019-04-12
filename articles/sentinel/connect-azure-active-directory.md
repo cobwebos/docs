@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Azure AD 数据 |Microsoft Docs
-description: 了解如何收集 Azure Sentinel 中的 Azure Active Directory 数据。
+title: 连接到 Azure Sentinel 预览版的 Azure AD 数据 |Microsoft Docs
+description: 了解如何将 Azure Active Directory 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/30/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: b42fb982abb916503d530d5040641ba1dcce3c92
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: f29ae9a8fcaecfc345efae02084f31d133e67b5d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575124"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494878"
 ---
-# <a name="collect-data-from-azure-active-directory"></a>从 Azure Active Directory 中收集数据
+# <a name="connect-data-from-azure-active-directory"></a>将数据从 Azure Active Directory 连接
 
 > [!IMPORTANT]
 > Azure Sentinel 当前为公共预览版。
@@ -38,7 +38,7 @@ Azure Sentinel，可从中收集数据[Azure Active Directory](../active-directo
 
 ## <a name="connect-to-azure-ad"></a>连接到 Azure AD
 
-1. 在 Azure Sentinel，选择**数据收集**，然后单击**Azure Active Directory**磁贴。
+1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Azure Active Directory**磁贴。
 
 2. 你想要流式传输到 Azure Sentinel 的日志，旁边单击**Connect**。
 

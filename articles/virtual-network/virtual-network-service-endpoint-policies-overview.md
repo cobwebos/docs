@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sumeet.mittal
-ms.openlocfilehash: 2d65d51ae8148e2e55d57d39e306ded0f75da687
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b39f365c8b66f7cab074a20bc574803e12f93422
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652580"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494161"
 ---
 # <a name="virtual-network-service-endpoint-policies-preview"></a>虚拟网络服务终结点策略（预览版）
 
@@ -24,7 +24,7 @@ ms.locfileid: "58652580"
 
 此功能以__预览版__的形式针对以下 Azure 服务和区域提供：
 
-__Azure 存储__：WestCentralUS、WestUS2。
+__Azure 存储__：WestCentralUS、 WestUS2、 NorthCentralUS、 SouthCentralUS、 CentralUS、 EastUS2 中。
 
 有关预览版的最新通知，请参阅 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。
 
@@ -35,13 +35,13 @@ __Azure 存储__：WestCentralUS、WestUS2。
 
 虚拟网络服务终结点策略提供以下优势：
 
-- __改进了发往 Azure 服务的虚拟网络流量的安全性__
+- __在虚拟网络流向 Azure 服务的改进的安全性__
 
   使用[网络安全组的 Azure 服务标记](https://aka.ms/servicetags)可以限制发往特定 Azure 服务的虚拟网络出站流量。 但是，这会允许流量发送到该 Azure 服务的所有资源。 
   
   现在，可以使用终结点策略限制为只允许对特定的 Azure 资源进行虚拟网络出站访问。 这可以提供精细得多的安全控制，为虚拟网络中访问的数据提供保护。 
 
-- __可缩放、高可用性的策略可以筛选 Azure 服务流量__
+- __若要筛选的 Azure 服务流量的可缩放、 高度可用策略__
 
    终结点策略提供可横向缩放、高可用性的解决方案来筛选虚拟网络通过服务终结点发出的 Azure 服务流量。 为虚拟网络中的此流量维护中心网络设备不会产生额外的开销。
 

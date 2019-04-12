@@ -1,5 +1,5 @@
 ---
-title: 如何部署从零开始的 Azure IoT OPC UA 证书管理模块 |Microsoft Docs
+title: 如何将 OPC 保管库模块从零开始的 Azure 部署 |Microsoft Docs
 description: 如何部署从零开始的 OPC 保管库。
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: a3a9d21b70f16482f05d27aa0df8d8865459aeb4
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: dedba42d7e4b8d603d97522cf0173f41efd20b3a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759379"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496890"
 ---
-# <a name="deploy-opc-vault-from-scratch"></a>从零开始部署 OPC 保管库
+# <a name="deploy-opc-vault-from-scratch"></a>从头开始部署 OPC 保管库
 
-Azure IoT OPC UA 证书管理，也称为 OPC 保管库是一个微服务，可以配置注册，然后管理证书生命周期的 OPC UA 服务器和客户端应用程序在云中。 本文介绍如何部署从零开始的 OPC 保管库。
+OPC 保管库是一个微服务，可以配置、 注册和管理证书生命周期的 OPC UA 服务器和客户端应用程序在云中。 本文介绍如何部署从零开始的 OPC 保管库。
 
 ## <a name="configuration-and-environment-variables"></a>配置和环境变量
 
@@ -71,11 +71,11 @@ Visual Studio，您可以快速而无需使用命令提示符处，而无需配�
 
 脚本文件夹包含一些常见任务的脚本：
 
-- `build`：编译的所有项目并运行测试。
+- `build`:编译的所有项目并运行测试。
 
-- `compile`：编译的所有项目。
+- `compile`:编译的所有项目。
 
-- `run`：编译项目并运行在 Windows 中的提升权限提示以运行 web 服务的服务。
+- `run`:编译项目并运行在 Windows 中的提升权限提示以运行 web 服务的服务。
 
 脚本检查环境变量设置。 可以在你的 OS 中的全局设置环境变量，也可以使用脚本文件夹中的"env var 设置"脚本。
 
@@ -85,9 +85,9 @@ Visual Studio，您可以快速而无需使用命令提示符处，而无需配�
 
 - `build --in-sandbox`：执行 Docker 容器内部的生成任务 (短格式`build -s`)。
 
-- `compile --in-sandbox`：执行 Docker 容器内部的编译任务 (短格式`compile -s`)。
+- `compile --in-sandbox`:执行 Docker 容器内部的编译任务 (短格式`compile -s`)。
 
-- `run --in-sandbox`：启动 Docker 容器内部的服务 (短格式`run -s`)。
+- `run --in-sandbox`:启动 Docker 容器内部的服务 (短格式`run -s`)。
 
 用于在沙箱的 Docker 映像托管在 Docker Hub[此处](https://hub.docker.com/r/azureiotpcs/code-builder-dotnet)。
 
@@ -95,9 +95,9 @@ Visual Studio，您可以快速而无需使用命令提示符处，而无需配�
 
 `scripts`文件夹包括 docker 子文件夹具有的服务打包到 Docker 映像所需的文件：
 
-- `Dockerfile`：Docker 映像的规范。
-- `build`：生成 Docker 容器并将图像存储在本地注册表中。
-- `run`：从本地注册表中存储的映像运行 Docker 容器。
+- `Dockerfile`:Docker 映像的规范。
+- `build`:生成 Docker 容器并将图像存储在本地注册表中。
+- `run`:从本地注册表中存储的映像运行 Docker 容器。
 - `content`：包含文件复制到映像，包括入口点脚本的文件夹。
 
 ## <a name="azure-iot-hub-setup"></a>Azure IoT 中心设置

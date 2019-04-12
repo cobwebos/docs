@@ -16,24 +16,24 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 1448c72e87d51c0bb88c9ee521a7a3112060473b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: b3cfc33f435c6ddaabe8358c344b1944f7c271f6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483823"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500509"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Azure Desired State Configuration 扩展处理程序简介
 
 Azure VM 代理和关联的扩展是 Microsoft Azure 基础结构服务的一部分。 VM 扩展是软件组件，可以扩展 VM 功能并简化各种 VM 管理操作。
 
-Azure Desired State Configuration (DSC) 扩展的 VM 启动到主要用例[Azure 自动化状态配置 (DSC) 服务](../../automation/automation-dsc-overview.md)。
-该服务提供[优势](/powershell/dsc/metaconfig#pull-service)包括持续管理 VM 配置以及与其他操作的工具，例如 Azure 监视集成。
-使用扩展向服务注册虚拟机的提供了一个灵活的解决方案，甚至跨 Azure 订阅。
+Azure Desired State Configuration (DSC) 扩展的主要用例是让 VM 启动到 [Azure Automation State Configuration (DSC) 服务](../../automation/automation-dsc-overview.md)。
+该服务带来的[好处](/powershell/dsc/metaconfig#pull-service)包括：持续管理 VM 的配置，并与其他操作工具（例如 Azure 监视）集成。
+使用扩展将 VM 注册到该服务可以提供一个甚至可跨 Azure 订阅工作的灵活解决方案。
 
 可以独立于 Automation DSC 服务使用 DSC 扩展。
-但是，这将仅将配置推送到 VM。
-已发布，而不在 VM 本地没有正在进行报告。
+但是，这只会将配置推送到 VM。
+系统不会提供持续的报告，只能在 VM 本地执行此类操作。
 
 本文提供有关两种方案的信息：使用 DSC 扩展进行自动化加入，以及使用 DSC 扩展作为工具，通过 Azure SDK 将配置分配给 VM。
 
@@ -66,24 +66,24 @@ Azure DSC 扩展使用 Azure VM 代理框架来传送、启用和报告 Azure VM
 
 Azure DSC 扩展包括一个默认配置脚本，该脚本计划在对 Azure Automation DSC 服务载入 VM 时使用。 脚本参数符合[本地配置管理器](/powershell/dsc/metaconfig)的可配置属性。 有关脚本参数，请参阅 [Desired State Configuration 扩展与 Azure 资源管理器模板](dsc-template.md)中的[默认配置脚本](dsc-template.md#default-configuration-script)。 有关完整脚本，请参阅 [GitHub 中的 Azure 快速入门模板](https://github.com/Azure/azure-quickstart-templates/blob/master/dsc-extension-azure-automation-pullserver/UpdateLCMforAAPull.zip?raw=true)。
 
-## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>注册到 Azure 自动化状态配置 (DSC) 服务的信息
+## <a name="information-for-registering-with-azure-automation-state-configuration-dsc-service"></a>有关注册到 Azure Automation State Configuration (DSC) 服务的信息
 
-当使用 DSC 扩展状态配置服务注册节点时，将需要提供三个值。
+使用 DSC 扩展将节点注册到 State Configuration 服务时，需要提供三个值。
 
-- RegistrationUrl-Azure 自动化帐户的 https 地址
-- RegistrationKey-若要向服务注册节点时使用的共享机密
-- NodeConfigurationName-名称的节点配置 (MOF) 可供抽取要配置的服务器角色的服务
+- RegistrationUrl - Azure 自动化帐户的 https 地址
+- RegistrationKey - 用于将节点注册到服务的共享机密
+- NodeConfigurationName - 从服务中提取的，用于配置服务器角色的节点配置 (MOF) 的名称
 
-此信息所示[Azure 门户](../../automation/automation-dsc-onboarding.md#azure-portal)或者可以使用 PowerShell。
+可以在 [Azure 门户](../../automation/automation-dsc-onboarding.md#azure-portal)中或者使用 PowerShell 查看此信息。
 
 ```powershell
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).Endpoint
 (Get-AzAutomationRegistrationInfo -ResourceGroupName <resourcegroupname> -AutomationAccountName <accountname>).PrimaryKey
 ```
 
-对于节点配置名称，请确保使用的名称*节点配置*和不包含配置。
-在使用的脚本中定义配置[将节点配置 （MOF 文件） 编译](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)。
-名称始终为句点后, 跟的配置`.`并且`localhost`或特定的计算机名。
+对于节点配置名称，请确保使用“节点配置”而不是“配置”的名称。
+配置在用于[编译节点配置（MOF 文件）](https://docs.microsoft.com/en-us/azure/automation/automation-dsc-compile)的脚本中定义。
+该名称始终为 Configuration 后接句点 `.` 以及 `localhost` 或特定计算机名。
 
 ## <a name="dsc-extension-in-resource-manager-templates"></a>资源管理器模板中的 DSC 扩展
 
@@ -142,12 +142,12 @@ $storageName = 'demostorage'
 #Publish the configuration script to user storage
 Publish-AzVMDscConfiguration -ConfigurationPath .\iisInstall.ps1 -ResourceGroupName $resourceGroup -StorageAccountName $storageName -force
 #Set the VM to run the DSC configuration
-Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate $true -ConfigurationName 'IISInstall'
+Set-AzVMDscExtension -Version '2.76' -ResourceGroupName $resourceGroup -VMName $vmName -ArchiveStorageAccountName $storageName -ArchiveBlobName 'iisInstall.ps1.zip' -AutoUpdate -ConfigurationName 'IISInstall'
 ```
 
 ## <a name="azure-cli-deployment"></a>Azure CLI 部署
 
-Azure CLI 可用于将 DSC 扩展部署到现有的虚拟机。
+可以使用 Azure CLI 将 DSC 扩展部署到现有的虚拟机。
 
 对于运行 Windows 的虚拟机：
 
@@ -202,7 +202,7 @@ az vm extension set \
 
 ## <a name="logs"></a>日志
 
-扩展的日志存储在以下位置：`C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
+扩展插件的日志存储在以下位置： `C:\WindowsAzure\Logs\Plugins\Microsoft.Powershell.DSC\<version number>`
 
 ## <a name="next-steps"></a>后续步骤
 

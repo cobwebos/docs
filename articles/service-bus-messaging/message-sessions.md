@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: d6c46d6ebfa8ae44c9bfac4929d3478f6701758a
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497833"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500135"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
@@ -51,7 +51,7 @@ ms.locfileid: "58497833"
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 接收程序是由接受会话的客户端创建。 客户端调用 C# 编写的 [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) 或 [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)。 在反应回调模型中，它会注册会话处理程序。
 
-当 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象被接受同时由客户端保留时，此客户端会对队列或订阅中的包含相应会话 [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) 的所有消息，以及在会话保留期间仍在到达且包含相应 SessionId 的所有消息一直施加排他锁。
+当 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) 对象被接受同时由客户端保留时，此客户端会对队列或订阅中的包含相应会话 [SessionId](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) 的所有消息，以及在会话保留期间仍在到达且包含相应 SessionId 的所有消息一直施加排他锁。
 
 调用 Close 或 CloseAsync 时，或当锁定期满导致应用程序无法执行关闭操作时，将会解除锁定。 应将会话锁定视为对文件施加的排他锁。也就是说，应用程序应在不再需要它时和/或不需要再处理其他任何消息时关闭会话。
 

@@ -1,10 +1,10 @@
 ---
-title: 多重身份验证 - Azure SQL | Microsoft Docs
+title: 使用 Azure SQL 数据库和 Azure SQL 数据仓库中使用多重身份 AAD 身份验证 |Microsoft Docs
 description: Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通用身份验证，从 SQL Server Management Studio (SSMS) 进行连接。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-ms.custom: ''
+ms.custom: seoapril2019
 ms.devlang: ''
 ms.topic: conceptual
 author: GithubMirek
@@ -12,21 +12,38 @@ ms.author: mireks
 ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
-ms.openlocfilehash: 938d1b820bbc85824138d77b81b0f922fd494d0d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ccb78e201b90dfc27f52523348e76da57087bcc8
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003380"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494895"
 ---
-# <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>使用 SQL 数据库和 SQL 数据仓库进行通用身份验证（MFA 的 SSMS 支持）
-Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通用身份验证，从 SQL Server Management Studio (SSMS) 进行连接。 
-**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 对于本文中的所有功能，请至少使用 2017 年 7 月的版本 17.2。  最新的连接对话框如下所示：![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "填写用户名框。")  
+# <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>使用多重身份 AAD 身份验证与 Azure SQL 数据库和 Azure SQL 数据仓库 （对 MFA 的 SSMS 支持）
+Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通用身份验证，从 SQL Server Management Studio (SSMS) 进行连接。 本文讨论的各种身份验证选项，以及使用通用身份验证相关的限制之间的差异。 
+
+**下载最新 SSMS** - 在客户端计算机上，从[下载 SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx) 下载最新版本的 SSMS。 
+
+
+对于本文中讨论的所有功能，请至少使用 2017 年 7 月版本 17.2。  最新的连接对话框应与下图类似：
+ 
+  ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "填写用户名框。")  
 
 ## <a name="the-five-authentication-options"></a>五个身份验证选项  
-- Active Directory 通用身份验证支持两种非交互式身份验证方法（`Active Directory - Password` 身份验证和 `Active Directory - Integrated` 身份验证）。 非交互式 `Active Directory - Password` 和 `Active Directory - Integrated` 身份验证方法可在许多不同的应用程序（ADO.NET、JDBC、ODBC 等）中使用。 这两种方法绝对不会产生弹出式对话框。
 
-- `Active Directory - Universal with MFA` 身份验证是同时支持 *Azure 多重身份验证* (MFA) 的交互式方法。 Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它利用一系列简单的验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证，用户可以根据自己的偏好选择所用的方法。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
+Active Directory 通用身份验证支持两种非交互式身份验证方法：
+    - `Active Directory - Password` authentication
+    - `Active Directory - Integrated` authentication
+
+有两种非交互式身份验证模型，可用于许多不同的应用程序 （ADO.NET、 JDCB、 ODC 等） 中。 这两种方法绝对不会产生弹出式对话框： 
+- `Active Directory - Password` 
+- `Active Directory - Integrated` 
+
+交互式方法，它也是 Azure 多重身份验证 (MFA) 的支持： 
+- `Active Directory - Universal with MFA` 
+
+
+Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户对简单登录过程的需求。 它利用一系列简单的验证选项（电话、短信、含有 PIN 码的智能卡或移动应用通知）提供强身份验证，用户可以根据自己的偏好选择所用的方法。 配合使用 Azure AD 和交互式 MFA 时会出现用于验证的弹出式对话框。
 
 有关多重身份验证的说明，请参阅[多重身份验证](../active-directory/authentication/multi-factor-authentication.md)。
 有关配置步骤，请参阅[配置 SQL Server Management Studio 的 Azure SQL 数据库多重身份验证](sql-database-ssms-mfa-authentication-configure.md)。
@@ -37,7 +54,7 @@ Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通�
    ![mfa-tenant-ssms](./media/sql-database-ssms-mfa-auth/mfa-tenant-ssms.png)   
 
 ### <a name="azure-ad-business-to-business-support"></a>Azure AD 企业到企业支持   
-针对 Azure AD B2B 方案以来宾用户身份受支持的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)）只能作为具有以下条件的组的成员连接到 SQL 数据库和 SQL 数据仓库：在当前 Azure AD 中创建，并使用 Transact-SQL `CREATE USER` 语句在给定数据库中手动映射。 例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest`（具有 Azure Ad 域 `contosotest.onmicrosoft.com`），则必须在 Azure AD 中创建包含 `steve@gmail.com` 成员的 Azure AD 组（如 `usergroup`）。 随后，必须通过执行 Transact-SQL `CREATE USER [usergroup] FROM EXTERNAL PROVIDER` 语句，通过 Azure AD SQL 域或 Azure AD DBO 为特定数据库（例如 MyDatabase）创建此组。 创建数据库用户之后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Active Directory – Universal with MFA support` 登录 `MyDatabase`。 默认情况下，用户只拥有连接权限以及需要采用正常方式授予的任何其他数据访问权限。 请注意，作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”，否则它处于灰显状态。
+针对 Azure AD B2B 方案以来宾用户身份受支持的 Azure AD 用户（请参阅[什么是 Azure B2B 协作](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md)）只能作为具有以下条件的组的成员连接到 SQL 数据库和 SQL 数据仓库：在当前 Azure AD 中创建，并使用 Transact-SQL `CREATE USER` 语句在给定数据库中手动映射。 例如，如果 `steve@gmail.com` 受邀加入 Azure AD `contosotest`（具有 Azure Ad 域 `contosotest.onmicrosoft.com`），则必须在 Azure AD 中创建包含 `steve@gmail.com` 成员的 Azure AD 组（如 `usergroup`）。 然后，创建此组必须为特定数据库 (即，MyDatabase) 通过 Azure AD SQL 域或 Azure AD DBO 通过执行 TRANSACT-SQL`CREATE USER [usergroup] FROM EXTERNAL PROVIDER`语句。 创建数据库用户之后，用户 `steve@gmail.com` 随后可以使用 SSMS 身份验证选项 `Active Directory – Universal with MFA support` 登录 `MyDatabase`。 默认情况下，用户只拥有连接权限以及需要采用正常方式授予的任何其他数据访问权限。 请注意，作为来宾用户的用户 `steve@gmail.com` 必须在 SSMS“连接属性”对话框中选中该框，并添加 AD 域名 `contosotest.onmicrosoft.com`。 仅对“通用且具有 MFA 连接”选项支持“AD 域名或租户 ID”，否则它处于灰显状态。
 
 ## <a name="universal-authentication-limitations-for-sql-database-and-sql-data-warehouse"></a>SQL 数据库和 SQL 数据仓库的 Active Directory 通用身份验证限制
 - SSMS 和 SqlPackage.exe 是目前唯一通过 Active Directory 通用身份验证针对 MFA 启用的工具。
@@ -55,7 +72,7 @@ Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通�
 - 向其他人授予对你数据库的访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
 - 确保其他人可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
 - [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)  
-- [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
+- [Microsoft SQL Server 数据层应用程序框架 (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [将 BACPAC 文件导入到新的 Azure SQL 数据库](../sql-database/sql-database-import.md)  
 - [将 Azure SQL 数据库导出到 BACPAC 文件](../sql-database/sql-database-export.md)  

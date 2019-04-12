@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
-ms.openlocfilehash: 5186c11259a03717f83db675cbfe7c90f3ecb7cc
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.openlocfilehash: 285f29055d0ac9ba656ec828972ef15f4c0d36c7
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734549"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496958"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -25,7 +25,7 @@ ms.locfileid: "55734549"
 
 本文收集了有关 Azure 中网络性能监视器 (NPM) 的常见问题 (FAQ)
 
-[网络性能监视器](/azure/networking/network-monitoring-overview)是一项基于云的[混合网络监视](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到[服务和应用程序终结点](../../azure-monitor/insights/network-performance-monitor-service-endpoint.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](../../azure-monitor/insights/network-performance-monitor-expressroute.md)。 
+[网络性能监视器](/azure/networking/network-monitoring-overview)是一项基于云的[混合网络监视](../../azure-monitor/insights/network-performance-monitor-performance-monitor.md)解决方案，可帮助你监视网络基础结构中不同点之间的网络性能。 它还可以监视到[服务和应用程序终结点](../../azure-monitor/insights/network-performance-monitor-service-connectivity.md)的网络连接，以及[监视 Azure ExpressRoute 的性能](../../azure-monitor/insights/network-performance-monitor-expressroute.md)。 
 
 网络性能监视器可检测诸如流量黑洞、路由错误之类的网络问题，以及传统网络监视方法无法检测到的问题。 只要突破网络链接的阈值，解决方案就会生成警报并进行通知。 它还可以确保及时检测到网络性能问题，然后确定问题根源所在的特定网络段或设备。 
 

@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: 37e2dcc13ed41911c8117dc1841a389c14e5867f
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54848560"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501631"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -84,7 +84,7 @@ AMQP 和 SBMP 更有效，因为只要消息工厂存在，它们便会维护与
 
 默认情况下，客户端的批处理间隔时间为 20 毫秒。 可通过在创建消息工厂之前，设置 [BatchFlushInterval][BatchFlushInterval] 属性，更改批处理的间隔时间。 此设置会影响此工厂创建的所有客户端。
 
-要禁用批处理，则将 [BatchFlushInterval][BatchFlushInterval] 属性设置为 **TimeSpan.Zero**。 例如：
+要禁用批处理，请将 [BatchFlushInterval][BatchFlushInterval] 属性设置为 **TimeSpan.Zero**。 例如：
 
 ```csharp
 MessagingFactorySettings mfs = new MessagingFactorySettings();
@@ -104,7 +104,7 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 
 在此间隔期间发生的其他存储操作会被添加到此批中。 批量存储访问仅影响**发送**和**完成**操作；接收操作不会受到影响。 批量存储访问是实体上的一个属性。 将跨所有启用了批量存储访问的实体实施批处理。
 
-在创建新队列、主题或订阅时，默认情况下启用批量存储访问。 要禁用批量存储访问，则在创建实体之前将 [EnableBatchedOperations][EnableBatchedOperations] 属性设置为 **false**。 例如：
+在创建新队列、主题或订阅时，默认情况下启用批量存储访问。 要禁用批量存储访问，请在创建实体之前将 [EnableBatchedOperations][EnableBatchedOperations] 属性设置为 **false** 。 例如：
 
 ```csharp
 QueueDescription qd = new QueueDescription();
@@ -127,6 +127,19 @@ Queue q = namespaceManager.CreateQueue(qd);
 服务器会在向客户端发送消息时检查消息的“生存时间 (TTL)”属性。 收到邮件时，客户端不检查消息的 TTL 属性。 即使消息被客户端缓存时该消息的 TTL 已通过，该消息仍可被接收。
 
 预提取不会影响可计费的消息操作的数目，且仅适用于服务总线客户端协议。 HTTP 协议不支持预提取。 预提取可用于同步和异步接收操作。
+
+## <a name="prefetching-and-receivebatch"></a>预提取和 ReceiveBatch
+
+在一起的多个消息预提取的概念有类似语义处理一批 (ReceiveBatch) 中的消息，而有利用它们合并到一起时必须牢记一些细微差别。
+
+预提取 （QueueClient 和 SubscriptionClient） 在客户端上进行配置 （或模式） 和 ReceiveBatch 是具有的操作 （请求-响应语义）。
+
+同时使用它们合并到一起，请考虑以下情况下的
+
+* 预提取应大于或等于应为从 ReceiveBatch 接收的消息数。
+* 预提取可达 n/3 时间处理每秒，其中 n 是默认锁定持续时间的消息数。
+
+有一些难题使用贪婪方法 （即保持预提取计数非常高），因为它意味着该消息已锁定到特定接收方。 建议是尝试出预值提取之间上面提到的阈值并根据经验确定实际。
 
 ## <a name="multiple-queues"></a>多个队列
 

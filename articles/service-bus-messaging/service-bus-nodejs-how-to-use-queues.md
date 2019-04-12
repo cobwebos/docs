@@ -12,25 +12,31 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 32b566056de76d4e73b88c7ce37e148b4ecc3fd7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6159609f894f967e8ee372a0ee316eb900537aba
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56587865"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500832"
 ---
 # <a name="how-to-use-service-bus-queues-with-nodejs"></a>如何通过 Node.js 使用服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本文介绍如何通过 Node.js 使用服务总线队列。 示例用 JavaScript 编写并使用 Node.js Azure 模块。 涉及的任务包括**创建队列**、**发送和接收消息**以及**删除队列**。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
+在本教程中，您将学习如何创建 Node.js 应用程序将消息发送到和从服务总线队列接收消息。 示例用 JavaScript 编写并使用 Node.js Azure 模块。 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>必备组件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 如果没有要处理的队列，按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)项目创建的队列。
+    1. 阅读快速**概述**的服务总线**队列**。 
+    2. 创建服务总线**命名空间**。 
+    3. 获取**连接字符串**。 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
+        > [!NOTE]
+        > 您将创建**队列**本教程中使用 Node.js 服务总线命名空间中。 
+ 
 
 ## <a name="create-a-nodejs-application"></a>创建 Node.js 应用程序
 创建一个空的 Node.js 应用程序。 有关如何创建 Node.js 应用程序的说明，请参阅[创建 Node.js 应用程序并将其部署到 Azure 网站][Create and deploy a Node.js application to an Azure Website]或 [Node.js 云服务][Node.js Cloud Service]（使用 Windows PowerShell）。
@@ -114,7 +120,7 @@ function handle (requestOptions, next)
 function (returnObject, finalCallback, next)
 ```
 
-在此回调中并且在处理 `returnObject`（来自对服务器请求的响应）后，回调必须调用 `next`（如果存在），继续处理其他筛选器，或者只调用 `finalCallback`，结束服务调用。
+在此回调中并且在处理`returnObject`（对的响应从请求服务器），回调必须调用`next`如果它存在以便继续处理其他筛选器，或调用`finalCallback`，以便结束服务调用.
 
 Azure SDK for Node.js 中包含实现重试逻辑的两个筛选器：`ExponentialRetryPolicyFilter` 和 `LinearRetryPolicyFilter`。 以下代码创建使用 `ExponentialRetryPolicyFilter` 的 `ServiceBusService` 对象：
 
@@ -173,7 +179,7 @@ serviceBusService.receiveQueueMessage('myqueue', { isPeekLock: true }, function(
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>如何处理应用程序崩溃和不可读消息
 服务总线提供了相关功能，帮助你轻松地从应用程序错误或消息处理问题中恢复。 如果接收方应用程序因某种原因无法处理消息，则它可以对 ServiceBusService 对象调用 `unlockMessage` 方法。 这会导致 Service Bus 解锁队列中的消息并使其能够重新被同一个正在使用的应用程序或其他正在使用的应用程序接收。
 
-还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），Service Bus 会自动解锁该消息并使它可再次被接收。
+还存在与队列中已锁定消息关联的超时，并且如果应用程序无法在锁定超时到期之前处理消息（例如，如果应用程序崩溃），服务总线会自动解锁该消息并使它可再次被接收。
 
 如果应用程序在处理消息之后，但在调用 `deleteMessage` 方法之前崩溃，则在应用程序重启时会将该消息重新传送给它。 此情况通常称作*至少处理一次*，即每条消息将至少被处理一次，但在某些情况下，同一消息可能会被重新传送。 如果方案无法容忍重复处理，则应用程序开发人员应向其应用程序添加更多逻辑以处理重复消息传送。 这通常可以通过使用消息的 **MessageId** 属性来实现，该属性在多次传送尝试中保持不变。
 

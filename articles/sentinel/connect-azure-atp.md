@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Azure ATP 数据 |Microsoft Docs
-description: 了解如何收集 Azure ATP 数据在 Azure Sentinel。
+title: 将 Azure ATP 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+description: 了解如何将 Azure ATP 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/26/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 5254e60b9b7c38e5f4534e90f8aabe938aef99b2
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574937"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492645"
 ---
-# <a name="collect-data-from-azure-advanced-threat-protection-atp"></a>收集的数据从 Azure 高级威胁防护 (ATP)
+# <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>将数据连接从 Azure 高级威胁防护 (ATP)
 
 > [!IMPORTANT]
 > Azure Sentinel 当前为公共预览版。
@@ -42,7 +42,7 @@ ms.locfileid: "58574937"
 
 
 
-1. 在 Azure Sentinel，选择**数据收集**，然后单击**Azure ATP**磁贴。
+1. 在 Azure Sentinel，选择**数据连接器**，然后单击**Azure ATP**磁贴。
 
 2. 单击“连接”。
 

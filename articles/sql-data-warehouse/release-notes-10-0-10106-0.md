@@ -5,17 +5,17 @@ services: sql-data-warehouse
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 03/27/2019
+ms.date: 04/10/2019
 author: anumjs
 ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
-ms.openlocfilehash: 8f852fe67443193ad19cb9bd57e0fd2294f3c817
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: ff5d6d1f96588ba3d319ffdef063467d613fe0e7
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266029"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501087"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -26,16 +26,18 @@ ms.locfileid: "59266029"
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**目前以预览版提供的工作负荷重要性**|工作负荷重要性使数据工程师能够使用重要性来对请求进行分类。 具有较高的优先级请求更快地访问资源，这有助于满足 Sla 保证。  工作负荷重要性允许具有高业务值工作较少的资源的共享环境中满足 sla 要求。<br/><br/>工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/>[工作负荷管理概念](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
-|**GROUP BY 汇总**|汇总现已是受支持的 GROUP BY 选项在 Azure 数据仓库中。   GROUP BY ROLLUP 创建每个列表达式组合为一个组。 GROUP BY 还"汇总"结果到小计和总计。 若要执行此操作，即会从右到左，减少对其创建的组和从右向列表达式的数目。  列的顺序会影响 ROLLUP 的输出，而且可能会影响在结果集中的行数。<br/><br/>GROUP BY ROLLUP 的详细信息，请参阅文章， [GROUP BY (TRANSACT-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
+|**数据发现和分类**|Azure SQL 数据仓库的数据发现和分类功能现处于公共预览状态。 若要保护敏感数据和客户的隐私性至关重要。 随着您的业务和客户数据资产的增长，变得难以管理，以发现、 分类和保护你的数据。 我们使用 Azure SQL 数据仓库以本机方式引入的数据发现和分类功能可帮助轻松保护你的数据更易于管理。 这项功能的整体优势包括：<br/>&bull; &nbsp; 会议数据隐私标准和法规遵从性要求。<br/>&bull; &nbsp; 限制访问并增强其安全性的数据仓库包含高度敏感数据。<br/>&bull; &nbsp; 监视和警报功能上存在异常访问敏感数据。<br/>&bull; &nbsp; 在 Azure 门户上的中央仪表板中的敏感数据的可视化效果。 </br></br>数据发现和分类是可用于所有 Azure 区域中的 Azure SQL 数据仓库的高级数据安全包括漏洞评估和威胁检测的一部分。 有关数据发现和分类的详细信息，请参阅[博客文章](https://azure.microsoft.com/en-us/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)和我们的联机[文档](/azure/sql-database/sql-database-data-discovery-and-classification)。|
+|**GROUP BY 汇总**|汇总现已是受支持的 GROUP BY 选项在 Azure 数据仓库中。   GROUP BY ROLLUP 创建每个列表达式组合为一个组。 GROUP BY 还"汇总"结果到小计和总计。 GROUP BY 函数处理从右到左，减少对其创建的组和从右向列表达式的数目。  列的顺序会影响 ROLLUP 的输出，而且可能会影响在结果集中的行数。<br/><br/>GROUP BY ROLLUP 的详细信息，请参阅[GROUP BY (TRANSACT-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**改进了的准确性的已用的 DWU 和 CPU 门户指标**|SQL 数据仓库会显著提高在 Azure 门户中的度量准确性。  此版本中包括要在所有计算节点之间正确反映你的工作负荷的 CPU 和已用的指标定义的修复的程序。 这项修复之前, 的指标值已被 undereported。 会看到已用的 DWU 的增加和 Azure 门户中的 CPU 指标。 |
-|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持：<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;    [STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
+|**行级安全性**|我们早在 2017 年 11 月引入了行级别安全性功能。 现在，我们扩展了此支持添加到外部表上。 此外，我们已添加了对调用非确定性函数在内联表值函数 （内联 Tvf） 定义安全筛选器谓词所需的支持。 此新增使你能够指定 IS_ROLEMEMBER()，安全筛选器谓词中的 user_name （） 等。 有关详细信息，请参阅中的示例[行级别安全性文档](/sql/relational-databases/security/row-level-security)。|
+|**更多 T-SQL 支持**|SQL 数据仓库的 T-SQL 语言外围已扩展为包括对支持：<br/>&bull; &nbsp; [FORMAT (Transact-SQL)](/sql/t-sql/functions/format-transact-sql)<br/>&bull; &nbsp;[STRING_ESCAPE (Transact-SQL)](/sql/t-sql/functions/string-escape-transact-sql)<br/>&bull; &nbsp; [STRING_SPLIT (Transact-SQL)](/sql/t-sql/functions/string-split-transact-sql)<br/>&bull; &nbsp; [TRANSLATE (Transact-SQL)](/sql/t-sql/functions/translate-transact-sql)<br/>&bull; &nbsp; [TRIM (Transact-SQL)](/sql/t-sql/functions/trim-transact-sql)
+|**查询优化器增强功能** |查询优化是任何数据库的关键组件。 有关如何最好地执行查询做出最佳选择可以产生显著的改进。  在分布式环境中执行复杂的分析查询时, 的操作数执行相关问题。 通过生成更好的质量计划已得到增强查询性能。 这些计划最大程度减少成本高昂的数据传输操作，并且计算冗余等重复子查询。 有关详细信息，请参阅此 Azure SQL 数据仓库[博客文章](https://azure.microsoft.com/en-us/blog/smarter-faster-safer-azure-sql-data-warehouse-is-simply-unmatched/)。|
 | | |
 
 ### <a name="documentation-improvements"></a>文档改进
 
 | 文档改进 | 详细信息 |
 | --- | --- |
-|新的工作负荷管理文档 |有关详细信息，请参阅[重要性](sql-data-warehouse-workload-importance.md)并[分类](sql-data-warehouse-workload-classification.md)。 |
 | | |
 
 ## <a name="january-2019"></a>2019 年 1 月
@@ -44,8 +46,8 @@ ms.locfileid: "59266029"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**返回 Order By 优化**|在此版本中，SELECT…ORDER BY 的性能已得到大幅提升。   现在，所有计算节点都将其结果发送到单个计算节点，该节点对结果进行合并和排序，然后，这些结果通过该计算节点返回给用户。  当查询结果集包含大量的行时，通过单个计算节点进行合并可以显著提升性能。 以前，查询执行引擎按每个计算节点将结果排序，再将结果流式传输到控制节点，然后合并结果。|
-|**PartitionMove 和 BroadcastMove 的数据移动增强**|在 Azure SQL 数据仓库 Gen2 中，ShuffleMove 类型的数据移动步骤使用[性能增强博客文章](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)中所述的即时数据移动技术。 在此版本中，PartitionMove 和 BroadcastMove 类型的数据移动步骤以相同的即时数据移动技术为后盾。 利用这些类型的数据移动步骤的用户查询可以提升运行性能。 无需更改代码便可利用这些性能改进。|
+|**返回 Order By 优化**|在此版本中，SELECT…ORDER BY 的性能已得到大幅提升。   现在，所有计算节点将其结果发送到单个计算节点。 此节点合并并对结果进行排序并将它们返回给用户。  当查询结果集包含大量的行时，通过单个计算节点进行合并可以显著提升性能。 以前，查询执行引擎将每个计算节点上按排序结果。 结果将它们传输到控制节点。 然后，控制节点会合并结果。|
+|**PartitionMove 和 BroadcastMove 的数据移动增强**|在 Azure SQL 数据仓库第 2 代中的数据移动步骤的类型 ShuffleMove，使用即时数据移动技术。  有关详细信息，请参阅[性能增强功能博客](https://azure.microsoft.com/blog/lightning-fast-query-performance-with-azure-sql-data-warehouse/)。 此版本中，PartitionMove 和 BroadcastMove 现在由相同的即时数据移动技术支持。 使用这些类型的数据移动步骤的用户查询将使用改进的性能运行。 无需更改代码便可利用这些性能改进。|
 |**值得注意的 Bug**|Azure SQL 数据仓库版本不正确-`SELECT @@VERSION`可能返回不正确的版本，10.0.9999.0。 当前版本的正确版本是 10.0.10106.0。 此 bug 已报告，正在评审。
 | | |
 
@@ -63,7 +65,7 @@ ms.locfileid: "59266029"
 | 服务改进 | 详细信息 |
 | --- | --- |
 |**虚拟网络服务终结点公开发布版**|此版本包括公开发布的虚拟网络 (VNet) 服务终结点，适用于所有 Azure 区域中的 Azure SQL 数据仓库。 使用 VNet 服务终结点，可从虚拟网络中的给定子网或子网集隔离与逻辑服务器的连接。 从 VNet 到 Azure SQL 数据仓库的流量始终保留在 Azure 主干网络内。 这种直接路由将优先于通过虚拟设备或本地访问 Internet 流量的任何特定路由。 通过服务终结点访问虚拟网络无需额外付费。 [Azure SQL 数据仓库](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/)的当前定价模型按原样应用。<br/><br/>在此版本中，我们还允许使用 [Azure Blob 文件系统](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-abfs-driver) (ABFS) 驱动程序通过 PolyBase 连接到 [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) (ADLS)。 Azure Data Lake Storage Gen2 为 Azure 存储提供了分析数据的整个生命周期所需的所有特性。 两个现有 Azure 存储服务（Azure Blob 存储和 Azure Data Lake Storage Gen1）的功能已聚合。 [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index) 的功能（例如文件系统语义、文件级安全性和规模）与 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-introduction)中的低成本分层存储和高可用性/灾难恢复功能进行了组合。<br/><br/>使用 Polybase 时，也可将数据从以安全方式连接到 VNet 的 Azure 存储导入到 Azure SQL 数据仓库中。 同样，也可通过 Polybase 将数据从 Azure SQL 数据仓库导出到以安全方式连接到 VNet 的 Azure 存储。<br/><br/>有关 Azure SQL 数据仓库中 VNet 服务终结点的详细信息，请参阅[博客文章](https://azure.microsoft.com/blog/general-availability-of-vnet-service-endpoints-for-azure-sql-data-warehouse/)或[文档](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=/azure/sql-data-warehouse/toc.json)。|
-|**自动性能监视（预览版）**|[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-2017)现已发布适用于 Azure SQL 数据仓库的预览版。 查询存储旨在帮助你进行查询性能故障诊断，可以通过跟踪查询、查询计划、运行时统计信息和查询历史记录来监视数据仓库的活动和性能。 查询存储是一组内部存储和动态管理视图 (DMV)，用于执行以下操作：<br/><br/>&bull; &nbsp; 识别并优化资源使用查询<br/>&bull; &nbsp; 识别并提高即席工作负荷<br/>&bull; &nbsp; 评估查询性能和影响到计划中的统计信息、 索引或系统的大小 （DWU 设置） 的更改<br/>&bull; &nbsp; 请参阅完整的查询文本，以执行的所有查询<br/><br/>查询存储包含三个实际的存储：<br/>&bull; &nbsp; 计划存储用于保存执行计划信息<br/>&bull; &nbsp; 用于永久保存执行统计信息的运行时统计信息存储<br/>&bull; &nbsp; 用于保存等待统计信息存储等待统计信息。<br/><br/>SQL 数据仓库会自动管理这些存储区，并提供无限的数量的查询 storied 过去七天内不额外收费。 启用查询存储很简单，只需运行 ALTER DATABASE T-SQL 语句即可： <br/>sql---ALTER DATABASE [数据库名称] 设置 QUERY_STORE = ON;---Azure SQL 数据仓库中查询存储区的详细信息，请参阅文章[使用 Query Store 监视性能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)，和查询存储区 Dmv，如[sys.query_store_query](/sql/relational-databases/system-catalog-views/sys-query-store-query-transact-sql)。 这是宣告发布情况的[博客文章](https://azure.microsoft.com/blog/automatic-performance-monitoring-in-azure-sql-data-warehouse-with-query-store/)。|
+|**自动性能监视（预览版）**|[查询存储](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store?view=sql-server-2017)现已发布适用于 Azure SQL 数据仓库的预览版。 查询存储旨在帮助你进行查询性能故障诊断，可以通过跟踪查询、查询计划、运行时统计信息和查询历史记录来监视数据仓库的活动和性能。 查询存储是一组内部存储和动态管理视图 (DMV)，用于执行以下操作：<br/><br/>&bull; &nbsp; 识别并优化资源使用查询<br/>&bull; &nbsp; 识别并提高计划外工作负荷<br/>&bull; &nbsp; 评估查询性能和影响到计划中的统计信息、 索引或系统的大小 （DWU 设置） 的更改<br/>&bull; &nbsp; 请参阅完整的查询文本，以执行的所有查询<br/><br/>查询存储包含三个实际的存储：<br/>&bull; &nbsp; 计划存储用于保存执行计划信息<br/>&bull; &nbsp; 用于永久保存执行统计信息的运行时统计信息存储<br/>&bull; &nbsp; 用于保存等待统计信息存储等待统计信息。<br/><br/>SQL 数据仓库会自动管理这些存储区，并提供无限的数量的查询 storied 过去七天内不额外收费。 启用查询存储很简单，只需运行 ALTER DATABASE T-SQL 语句即可： <br/>sql---ALTER DATABASE [DatabaseName] 设置 QUERY_STORE = ON;---Azure SQL 数据仓库中查询存储区的详细信息，请参阅文章[使用 Query Store 监视性能](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)，和查询存储区 Dmv，如[sys.query_store_query](/sql/relational-databases/system-catalog-views/sys-query-store-query-transact-sql)。 这是宣告发布情况的[博客文章](https://azure.microsoft.com/blog/automatic-performance-monitoring-in-azure-sql-data-warehouse-with-query-store/)。|
 |**适用于 Azure SQL 数据仓库 Gen2 的较低计算层**|Azure SQL 数据仓库 Gen2 现支持较低的计算层。 客户可以体验 Azure SQL 数据仓库的领先性能、灵活性和安全性功能，从 100 cDWU（[数据仓库单元](what-is-a-data-warehouse-unit-dwu-cdwu.md)）开始，并在几分钟内扩展到3 0,000 cDWU。 从 2018 年 12 月中开始，通过某些[区域](gen2-migration-schedule.md#automated-schedule-and-region-availability-table)中的较低的计算层，客户可以从 Gen2 性能和灵活性中受益。其余区域的此类计算层在 2019 年提供。<br/><br/>通过降低下一代数据仓库的入口点，Microsoft 为价值驱动型客户打开了大门，他们无需猜测哪种试用环境最适合，即可评估安全、高性能数据仓库的所有优势。 客户最低可以从 100 cDWU 开始，低于目前的 500 cDWU 入口点。 SQL 数据仓库 Gen2 继续支持暂停和恢复操作，并且不仅止于计算的灵活性。 Gen2 还支持无限的列存储容量，并且每个查询的内存增加了 1.5 倍，并发查询多达 128 个，以及[自适应缓存](https://azure.microsoft.com/blog/adaptive-caching-powers-azure-sql-data-warehouse-performance-gains/)功能。 与同一价格的 Gen1 上的相同数据仓库单元相比，这些功能的平均性能提高了 4 倍。 异地冗余备份是 Gen2 的标准配置，具有内置的保证数据保护。 Azure SQL 数据仓库 Gen2 随时可以缩放。|
 |**列存储后台合并**|默认情况下，Azure SQL 数据仓库 (Azure SQL DW) 使用称为[行组](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)的微分区以列格式存储数据。 有时候，由于构建索引或加载数据时的内存约束，行组可能会被压缩为小于最佳大小 100 万行。 行组还可能会由于删除而产生碎片。 小的或碎片化的行组会导致较高的内存消耗以及低效的查询执行。 使用此版本的 Azure SQL DW 时，列存储后台维护任务会将较小的压缩行组进行合并以创建较大的行组，从而更好地利用内存并提高查询执行速度。
 | | |

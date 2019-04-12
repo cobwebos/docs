@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: f9993058f93cf94ee468a92ac7cbb2d6881e61be
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 7a6fa45d0f4ea09fbc84d3185aa0e58db165ac19
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58214436"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502785"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>向应用添加应用程序的注册信息
 
@@ -35,7 +35,7 @@ ms.locfileid: "58214436"
 > 2. 将 **URL** 中的值复制到剪贴板：<br/> ![项目属性](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
 > 3. 将此值粘贴为此页顶部的“重定向 URL”，然后选择“更新”。
 
-<p/>
+<p>
 
 > #### <a name="setting-redirect-url-for-node"></a>设置 Node 的重定向 URL
 > 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 30662 作为参考，但可以使用任何其他可用的端口。 请按照以下说明在应用程序注册信息中设置重定向 URL：<br/>

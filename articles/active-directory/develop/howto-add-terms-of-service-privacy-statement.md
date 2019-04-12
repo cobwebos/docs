@@ -1,5 +1,5 @@
 ---
-title: Azure AD 应用的服务条款和隐私声明 | Microsoft Docs
+title: 应用程序的服务和隐私声明条款 |Azure
 description: 了解如何为注册为使用 Azure AD 的应用配置服务条款和隐私声明。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,14 +17,14 @@ ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3687d0b50add3301fb8e15b9c70569554b91c04
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56193503"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500289"
 ---
-# <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>已注册 Azure Active Directory 应用的服务条款和隐私声明
+# <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用程序的服务和隐私声明条款
 
 构建和管理与 Azure Active Directory (Azure AD) 和 Microsoft 帐户集成的应用的开发人员应随附指向应用的服务条款和隐私声明的链接。 服务条款和隐私声明通过用户同意体验展示给用户。 它们可以帮助用户认识到他们可以信任你的应用。 对于面向用户的多租户应用（由多个目录使用的应用或面向所有 Microsoft 帐户提供的应用）来说，服务条款和隐私声明至关重要。
 
@@ -44,22 +44,22 @@ ms.locfileid: "56193503"
 
 添加指向应用的服务条款和隐私声明的文档之前，请确保 URL 遵循以下准则。
 
-| 准则     | 说明                           |
+| 准则     | 描述                           |
 |---------------|---------------------------------------|
 | 格式        | 有效的 URL                             |
-| 有效的架构 | HTTP 和 HTTPS</br>建议使用 HTTPS |
+| 有效的架构 | HTTP 和 HTTPS<br/>建议使用 HTTPS |
 | 最大长度    | 2048 个字符                       |
 
-示例：`https://myapp.com/terms-of-service` 和 `https://myapp.com/privacy-statement`
+示例：`https://myapp.com/terms-of-service`和 `https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>添加指向服务条款和隐私声明的链接
 
 服务条款和隐私声明准备就绪后，可以在应用中使用这些方法之一添加指向这些文档的链接：
 
-* [通过 Azure 门户 添加](#registered-in-azure-portal)
-* [在应用程序注册门户或开发人员中心添加](#registered-in-app-reg-portal)
-* [使用应用对象 JSON](#app-object-json)
-* [使用 MSGraph beta REST API](#msgraph-beta-rest-api)
+* [通过 Azure 门户](#registered-in-azure-portal)
+* [在应用程序注册门户或开发人员中心](#registered-in-app-reg-portal)
+* [使用 JSON 的应用程序对象](#app-object-json)
+* [使用 REST API 的 MSGraph beta 版](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>已在 Azure 门户中注册应用
 
@@ -114,5 +114,5 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 ```
 
 > [!NOTE]
-> * 请注意不要覆盖已分配给以下任何字段的任何预先存在的值：`supportUrl``marketingUrl` 和 `logoUrl`
+> * 请注意，不要覆盖任何预先存在的值分配到其中的任何字段： `supportUrl`， `marketingUrl`，和 `logoUrl`
 > * 仅当使用 Azure AD 帐户登录时，MSGraph beta REST API 才会正常工作。 不支持 Microsoft 个人帐户。

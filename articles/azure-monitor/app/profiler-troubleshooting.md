@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.reviewer: mbullwin
 ms.date: 08/06/2018
 ms.author: cweining
-ms.openlocfilehash: c9e6e289fbda3188449ecc71cbc90bed546512e1
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 6ab13e1ecd5f4825270f4b3a28251b959ad98f02
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471522"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495390"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>排查启用或查看 Application Insights Profiler 时遇到的问题
 
@@ -71,7 +71,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
     |应用设置    | 值    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | 为你的 Application Insights 资源的 iKey    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 
@@ -83,7 +83,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
    
       ![profiler-webjob]   
    
-   1. 若要查看 webjob 的详细信息，包括日志，请选择“ApplicationInsightsProfiler2”链接。  
+   1. 若要查看详细信息的 web 作业，包括在日志中，选择**ApplicationInsightsProfiler3**链接。  
      “连续 WebJob 详细信息”窗格随即打开。
 
       ![profiler-webjob-log]
@@ -92,7 +92,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
     
 ### <a name="manual-installation"></a>手动安装
 
-配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。 若要手动应用更新，请执行以下操作：
+配置 Profiler 时，将对 Web 应用的设置进行更新。 如果你的环境有此要求，则可以手动应用更新。 例如，应用程序在适用于 PowerApps 的 Web 应用环境中运行。 若要手动应用更新：
 
 1. 在“Web 应用控制”窗格中，打开“设置”。
 
@@ -103,7 +103,7 @@ Profiler 将跟踪消息和自定义事件写入到 Application Insights 资源�
 
     |应用设置    | 值    |
     |---------------|----------|
-    |APPINSIGHTS_INSTRUMENTATIONKEY         | 为你的 Application Insights 资源的 iKey    |
+    |APPINSIGHTS_INSTRUMENTATIONKEY         | Application Insights 资源的 iKey    |
     |APPINSIGHTS_PROFILERFEATURE_VERSION | 1.0.0 |
     |DiagnosticServices_EXTENSION_VERSION | ~3 |
 

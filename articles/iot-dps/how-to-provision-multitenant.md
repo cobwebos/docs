@@ -3,17 +3,17 @@ title: 如何在 Azure IoT 中心设备预配服务中预配多租户的设备 |
 description: 如何使用你的设备预配服务实例来预配多租户的设备
 author: wesmc7777
 ms.author: wesmc
-ms.date: 08/15/2018
+ms.date: 04/10/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
-ms.openlocfilehash: ea071b704c58383ce52615bb1dfd88df8017ef7f
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+manager: philmea
+ms.openlocfilehash: 84e1f57175d772ad281c18b67fa1be484c0cac69
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544437"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500730"
 ---
 # <a name="how-to-provision-for-multitenancy"></a>如何预配多租户 
 
@@ -208,7 +208,7 @@ ms.locfileid: "57544437"
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
 
-    此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
 1. 对于这两个 VM，在存储库内创建一个新的 cmake 文件夹，并更改为该文件夹。
 
@@ -420,8 +420,8 @@ J5n4NY2GiBYy7Mp4lDDa5CbEe6zDU/c62rhjCuFWxnc=
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关重新设置的详细信息，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md) 
-- 若要了解更多取消设置，请参阅[如何取消预配了以前自动预配的设备](how-to-unprovision-devices.md) 
+- 若要了解更多 Reprovisioning，请参阅[IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
+- 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
 
 
 

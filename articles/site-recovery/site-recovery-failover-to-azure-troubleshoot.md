@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/04/2019
 ms.author: mayg
-ms.openlocfilehash: 75c97a7feb63a100d322610b7e6d2e5c57bebda2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2156ee6cf27ecfa32b19ad5bbef7549e99c3f7ef
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889686"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492849"
 ---
 # <a name="troubleshoot-errors-when-failing-over-vmware-vm-or-physical-machine-to-azure"></a>解决将 VMware VM 或物理计算机故障转移到 Azure 时出现的错误
 
@@ -76,7 +76,7 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
 
 如果 Azure 中已故障转移的 VM 的“连接”按钮灰显，并且你未通过快速路由或站点到站点 VPN 连接来连接到 Azure，则执行以下操作：
 
-1. 转到“虚拟机” > “网络”，单击所需网络接口的名称。  ![network-interface](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
+1. 转到“虚拟机” > “网络”，单击所需网络接口的名称。  ![网络接口](media/site-recovery-failover-to-azure-troubleshoot/network-interface.PNG)
 2. 导航到“IP 配置”，然后单击所需 IP 配置的名称字段。 ![IPConfigurations](media/site-recovery-failover-to-azure-troubleshoot/IpConfigurations.png)
 3. 若要启用公共 IP 地址，请单击“启用”。 ![启用 IP](media/site-recovery-failover-to-azure-troubleshoot/Enable-Public-IP.png)
 4. 单击“配置所需设置” > “新建”。 ![新建](media/site-recovery-failover-to-azure-troubleshoot/Create-New-Public-IP.png)
@@ -132,8 +132,10 @@ Site Recovery 无法在 Azure 中创建故障转移的虚拟机。 发生此情�
  
 此错误指示通过安装日志中的以下字符串： 
 
-RegisterHostStaticInfo 遇到异常 config/talwrapper.cpp(107) [文章] CurlWrapper 文章失败： 服务器：10.38.229.221，端口：443，phpUrl: request_handler.php，安全： 为 true，ignoreCurlPartialError: false 出现错误: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231] 未能 post 请求：(35)-SSL 连接错误。 
- 
+```
+RegisterHostStaticInfo encountered exception config/talwrapper.cpp(107)[post] CurlWrapper Post failed : server : 10.38.229.221, port : 443, phpUrl : request_handler.php, secure : true, ignoreCurlPartialError : false with error: [at curlwrapperlib/curlwrapper.cpp:processCurlResponse:231]   failed to post request: (35) - SSL connect error. 
+```
+
 若要解决问题，请执行以下操作：
  
 1. 在配置服务器 VM 上，打开命令提示符并验证的代理设置，使用以下命令：

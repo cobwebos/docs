@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4ed0be3178f9d5d014e9e50c11d555b586ced765
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579319"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494024"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。
@@ -47,7 +47,7 @@ Endpoint Protection 问题在安全中心内显示为建议。  如果环境容�
 
 ## <a name="install-antimalware-on-azure-vms"></a>在 Azure VM 上安装反恶意软件
 
-1. 选择安全中心主菜单或“概览”下的“计算”。
+1. 选择**计算和应用程序**在安全中心主菜单下或**概述**。
 
    ![选择“计算”][1]
 

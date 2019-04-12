@@ -1,6 +1,6 @@
 ---
-title: 收集 Azure Sentinel 预览版中的 Cisco 数据 |Microsoft Docs
-description: 了解如何收集在 Azure Sentinel Cisco 数据。
+title: 将 Cisco 数据连接到 Azure Sentinel 预览版 |Microsoft Docs
+description: 了解如何将 Cisco 数据连接到 Azure Sentinel。
 services: sentinel
 documentationcenter: na
 author: rkarlin
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 3/6/2019
+ms.date: 04/07/2019
 ms.author: rkarlin
-ms.openlocfilehash: 37dcd1dd7052db864797407897851d57e91d43e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5bc57d448b8aa04b8cb6fb16000205fda8964150
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58883899"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495696"
 ---
 # <a name="connect-your-cisco-asa-appliance"></a>将 Cisco ASA 设备连接 
 
@@ -30,7 +30,7 @@ ms.locfileid: "58883899"
 可以为任何 Cisco ASA 设备连接 Azure Sentinel。 Cisco ASA 本机与集成 Azure Sentinel 来引入数据，以便即使 Cisco 设备不会保存为 CEF 日志，Azure Sentinel 引入它们处理 CEF 日志的方式相同。 与 Azure Sentinel 的集成，可轻松分析和查询所有日志文件数据从运行 Cisco ASA。 
 
 > [!NOTE]
-> - 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
+> 数据将存储在其运行 Azure Sentinel 的工作区的地理位置。
 
 ## <a name="step-1-connect-your-cisco-asa-appliance-using-an-agent"></a>步骤 1：将 Cisco ASA 设备使用一个代理连接
 
@@ -42,7 +42,7 @@ ms.locfileid: "58883899"
 
 ### <a name="deploy-the-agent-in-azure"></a>部署在 Azure 中的代理
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。 
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。 
 
 1. 下**Linux Syslog 代理配置**:
    - 选择**自动部署**如果你想要创建预装了 Azure Sentinel 代理，并包括所有配置必要的新计算机，如上文所述。 选择**自动部署**然后单击**自动将代理部署**。 这将转到购买页自动连接到工作区，是的专用 vm。 VM 处于**标准 D2s v3 （2 个 vcpu，8 GB 内存）** 并且具有一个公共 IP 地址。
@@ -79,7 +79,7 @@ ms.locfileid: "58883899"
 如果不使用 Azure，手动部署 Azure Sentinel 代理专用的 Linux 服务器上运行。
 
 
-1. 在 Azure Sentinel 门户中，单击**数据收集**，然后选择你的设备类型。
+1. 在 Azure Sentinel 门户中，单击**数据连接器**，然后选择你的设备类型。
 1. 若要创建一个专用的 Linux VM 下,**代理配置 Linux Syslog**选择**手动部署**。
    1. 下**下载并安装 Syslog 代理**，选择**非 Azure Linux 机**。 
    1. 在中**直接代理**屏幕打开时，选择**适用于 Linux 代理**下载代理或运行以下命令来下载 Linux 计算机上：   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w {workspace GUID} -s gehIk/GvZHJmqlgewMsIcth8H6VqXLM9YXEpu0BymnZEJb6mEjZzCHhZgCx5jrMB1pVjRCMhn+XTQgDTU3DVtQ== -d opinsights.azure.com`

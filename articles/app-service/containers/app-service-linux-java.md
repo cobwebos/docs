@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: 71632b3846a5dac39d7827c874367bd9802574f8
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803509"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500458"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -49,7 +49,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 提供 SSH 连接到运行您的应用程序的 Linux 环境。 请参阅 [Linux 上的 Azure 应用服务的 SSH 支持](/azure/app-service/containers/app-service-linux-ssh-support)，获取有关通过 Web 浏览器或本地终端连接到 Linux 系统的完整说明。
 
-### <a name="streaming-logs"></a>流式处理日志
+### <a name="streaming-logs"></a>流式传输日志
 
 若要快速进行调试和故障排除，可以使用 Azure CLI 将日志流式传输到控制台。 使用 `az webapp log config` 配置 CLI 以启用日志记录：
 
@@ -69,9 +69,13 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 
 ### <a name="app-logging"></a>应用日志记录
 
-通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](/azure/app-service/troubleshoot-diagnostic-logs#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。
+通过 Azure 门户或 [Azure CLI](/cli/azure/webapp/log#az-webapp-log-config) 启用[应用程序日志记录](/azure/app-service/troubleshoot-diagnostic-logs#enablediag)，以将应用服务配置为向本地文件系统或 Azure Blob 存储写入应用程序的标准控制台输出和标准控制台错误流。 在完成配置并经过 12 个小时后，将禁用记录到应用服务本地文件系统实例。 如果需要保留日志更长时间，请将应用程序配置为向 Blob 存储容器写入输出。 Java 和 Tomcat 应用程序日志可在`/home/LogFiles/Application/`目录。
 
 如果应用程序使用 [Logback](https://logback.qos.ch/) 或 [Log4j](https://logging.apache.org/log4j) 进行跟踪，则你可以遵照[在 Application Insights 中浏览 Java 跟踪日志](/azure/application-insights/app-insights-java-trace-logs)中的日志记录框架配置说明，将这些用于审查的跟踪写入到 Azure Application Insights。
+
+### <a name="troubleshooting-tools"></a>故障排除工具
+
+基于内置的 Java 映像[Alpine Linux](https://alpine-linux.readthedocs.io/en/latest/getting_started.html)操作系统。 使用`apk`包管理器安装任何故障排除工具或命令。
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
@@ -81,31 +85,34 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 - [设置自定义域](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [启用 SSL](/azure/app-service/app-service-web-tutorial-custom-ssl?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [添加 CDN](/azure/cdn/cdn-add-to-web-app?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+- [配置 Kudu 站点](https://github.com/projectkudu/kudu/wiki/Configurable-settings#linux-on-app-service-settings)
 
 ### <a name="set-java-runtime-options"></a>设置 Java 运行时选项
 
-若要在 Tomcat 和 Java SE 环境中设置分配的内存或其他 JVM 运行时选项，请按如下所示将 JAVA_OPTS 设置为[应用程序设置](/azure/app-service/web-sites-configure#app-settings)。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
+若要设置已分配的内存或其他 JVM 运行时选项在 Tomcat 和 Java SE 环境中，创建[应用程序设置](/azure/app-service/web-sites-configure#app-settings)名为`JAVA_OPTS`的选项。 应用服务 Linux 在启动时，会将此设置作为环境变量传递给 Java 运行时。
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `$JAVA_OPTS -Xms512m -Xmx1204m`。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
 
-若要通过 Azure 应用服务 Linux Maven 插件配置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
+若要配置的 Maven 插件中设置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
 
 ```xml
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Xms512m -Xmx1204m</value>
+        <value>-Xms512m -Xmx1204m</value>
     </property>
 </appSettings>
 ```
 
 在应用服务计划中运行包含一个部署槽位的单个应用程序的开发人员可以使用以下选项：
 
-- B1 和 S1 实例：-Xms1024m -Xmx1024m
-- B2 和 S2 实例：-Xms3072m -Xmx3072m
-- B3 和 S3 实例：-Xms6144m -Xmx6144m
+- B1 和 S1 实例： `-Xms1024m -Xmx1024m`
+- B2 和 S2 的实例： `-Xms3072m -Xmx3072m`
+- B3 和 S3 的实例： `-Xms6144m -Xmx6144m`
 
 优化应用程序堆设置时，请查看应用服务计划详细信息，并考虑多个应用程序和部署槽位方面的需求，以得出最佳内存分配。
+
+如果要部署的 JAR 应用程序，它应被命名为`app.jar`以便内置映像可以正确地标识您的应用程序。 （的 Maven 插件情况执行此重命名自动）。如果不希望重命名为 JAR `app.jar`，可以上传包含要运行 JAR 的命令的 shell 脚本。 然后粘贴到此脚本中的完整路径[启动文件](https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-faq#startup-file)在门户的配置部分中的文本框。
 
 ### <a name="turn-on-web-sockets"></a>启用 Web 套接字
 
@@ -126,7 +133,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="set-default-character-encoding"></a>设置默认的字符编码
 
-在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `$JAVA_OPTS -Dfile.encoding=UTF-8` 的新应用设置。
+在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含值 `-Dfile.encoding=UTF-8` 的新应用设置。
 
 或者，可以使用应用服务 Maven 插件配置应用设置。 在插件配置中添加设置名称和值标记：
 
@@ -134,10 +141,14 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 <appSettings>
     <property>
         <name>JAVA_OPTS</name>
-        <value>$JAVA_OPTS -Dfile.encoding=UTF-8</value>
+        <value>-Dfile.encoding=UTF-8</value>
     </property>
 </appSettings>
 ```
+
+### <a name="adjust-startup-timeout"></a>调整启动超时
+
+如果你的 Java 应用程序是特别大，则应增加启动时间限制。 若要执行此操作，创建应用程序设置，`WEBSITES_CONTAINER_START_TIME_LIMIT`并将其设置为应用服务超时前应等待的秒数。最大值是`1800`秒。
 
 ## <a name="secure-applications"></a>安全应用程序
 

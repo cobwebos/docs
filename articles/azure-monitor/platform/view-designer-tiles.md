@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: bwren
 ms.openlocfilehash: 9c0283081bd7245b1b886ed82ba03130a7a3bf2c
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470248"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495322"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Azure Monitor 中的视图设计器磁贴的参考指南
 通过 Azure Monitor 中使用视图设计器，可以在可帮助你可视化 Log Analytics 工作区中的数据在 Azure 门户中创建各种自定义视图。 本文针对自定义视图中可用的磁贴，提供设置方面的参考指南。

@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
-ms.openlocfilehash: 974e640977fcf4d580575705d7fdf0faf632c31b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361457"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496089"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用[Azure 备份服务](backup-overview.md)备份的本地计算机和工作负荷和 Azure 虚拟机 (Vm)。 使用 Azure 备份的 Azure Vm 备份时，本文汇总了支持设置和限制。
@@ -41,8 +41,8 @@ Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。
 **操作** | **支持**
 --- | ---
 创建 Windows Azure VM 时启用备份 | 支持：Windows Server 2019 （数据中心/数据中心核心）、 Windows Server 2016 （数据中心/数据中心核心）;Windows Server 2012 R2 数据中心;Windows Server 2008 R2 （RTM 和 SP1）
-创建 Linux VM 时启用备份 | 支持：<br/><br/> - Ubuntu Server：1710、1704、1604 (LTS)、1404 (LTS)<br/><br/> - Red Hat：RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server：11 SP4、12 SP2、12 SP3<br/><br/> - Debian：8、9<br/><br/> - CentOS：6.9、7.3<br/><br/> -Oracle Linux:6.7、6.8、6.9、7.2、7.3
-备份已关闭/脱机/正在查找 VM 的 VM | 。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
+创建 Linux VM 时启用备份 | 支持：<br/><br/> - Ubuntu Server：1710、1704、1604 (LTS)、1404 (LTS)<br/><br/> - Red Hat：RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server：11 SP4，12 SP2，12 SP3，15 <br/><br/> - Debian：8、9<br/><br/> - CentOS：6.9、7.3<br/><br/> -Oracle Linux:6.7、6.8、6.9、7.2、7.3
+备份 VM 关闭/脱机 VM | 。<br/><br/> 仅创建崩溃一致性快照，不会创建应用一致性快照。
 备份磁盘后迁移到托管磁盘 | 。<br/><br/> 备份将继续工作。 不需要执行任何操作。
 启用资源组锁定后备份托管磁盘 | 不支持。<br/><br/> Azure 备份不能删除较旧的资源点，并且备份将开始失败时达到的还原点的最大限制。
 修改 VM 的备份策略 | 。<br/><br/> 将新策略中使用的计划和保留期设置备份 VM。 如果保留期设置已延长，则会标记并保留现有的恢复点。 如果它们的操作已简化，将在下一清理作业中修剪并最终删除现有的恢复点。
@@ -149,8 +149,7 @@ VM 大小 |   至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小�
 从部署的 Vm 备份[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps?filters=virtual-machine-images)<br/><br/> （由 Microsoft、 第三方发布） |  。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
 备份自定义映像 （第三方） 中部署的 Vm |   。<br/><br/> VM 必须运行受支持的操作系统。<br/><br/> 恢复 VM 上的文件时，可以仅还原到兼容的 OS（不是早期版本或更高版本的 OS）。
 迁移到 Azure 的 Vm 备份  | 。<br/><br/> 若要备份 VM，必须在迁移的计算机上安装 VM 代理。
-备份 Vm 的一致性 | 不受支持。 <br/><br/>Azure 备份不支持多 VM 一致性。
-
+备份多 VM 一致性 | Azure 备份不提供跨多个 Vm 的数据和应用程序一致性。
 
 
 ## <a name="vm-storage-support"></a>VM 存储支持
@@ -166,7 +165,7 @@ Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><
 备份已删除重复数据的磁盘 | 不支持。
 将磁盘添加到受保护的 VM | 。
 调整受保护 VM 上的磁盘大小 | 。
-共享的存储| 不建议使用 CSV 或横向扩展文件服务器的 Vm 备份。 CSV 写入器可能会失败。
+共享的存储| 不建议使用群集共享卷 (CSV) 或横向扩展文件服务器的 Vm 备份。 CSV 编写器均可能会在备份期间失败。 在恢复时，包含 CSV 卷的磁盘可能不附带的最高。
 
 > [!NOTE]
 > Azure 备份不支持条带化的磁盘。 Azure 备份，不建议重设大小的磁盘。

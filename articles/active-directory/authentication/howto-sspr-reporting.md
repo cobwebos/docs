@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 53140c7b02dd657036b76db0dd137bd770d97f4d
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369524"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493053"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -118,7 +118,7 @@ ms.locfileid: "58369524"
 以下列表详细说明了此活动：
 
 * **活动说明**：表示管理员通过 Azure 门户代表用户执行了密码重置。
-* **活动参与者**：代表其他最终用户或管理员执行了密码重置的管理员。 必须是全局管理员、密码管理员、用户管理员或支持管理员。
+* **活动参与者**：代表其他最终用户或管理员执行了密码重置的管理员。 必须是密码管理员、 用户管理员或支持人员管理员。
 * **活动目标**：其密码被重置的用户。 此用户可能是最终用户，也可能是其他管理员。
 * **活动状态**：
   * _成功_：表示管理员已成功重置用户的密码。
@@ -176,16 +176,16 @@ ms.locfileid: "58369524"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何完成成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
-* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
-* [SSPR 有哪些策略选项？](concept-sspr-policy.md)
-* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
-* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
-* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
+* [SSPR 使用哪些数据以及哪些数据应填充为你的用户？](howto-sspr-authenticationdata.md)
+* [向用户提供的身份验证方法？](concept-sspr-howitworks.md#authentication-methods)
+* [使用 SSPR 策略选项有哪些？](concept-sspr-policy.md)
+* [什么是密码写回，为什么我关心它？](howto-sspr-writeback.md)
+* [什么是所有 SSPR 中的选项以及执行哪些操作它们的含义是？](concept-sspr-howitworks.md)
+* [我认为有些功能被破坏。 如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我有了别处未涵盖的问题](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 中的 SSPR 活动审核日志示例"

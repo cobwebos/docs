@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: c7163667ec370abf468b289cea231e86a4b5753f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 92680a453d93c8dc0189c6ae376449a8e7a22076
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046831"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499846"
 ---
 # <a name="how-to-reprovision-devices"></a>如何重新预配设备
 
@@ -27,7 +27,7 @@ ms.locfileid: "59046831"
 
 * **隔离**：类似于解决方案更改。 出现故障、被盗用或已过时的设备可能会重新分配到 IoT 中心，该设备只能在此处进行更新并恢复其符合性。 一旦设备正常运行，它就会迁移回主中心。
 
-有关更详细的重新预配概述，请参阅 [IoT 中心设备重新预配概念](concepts-device-reprovision.md)。
+有关更多的重新预配的更详细的概述，请参阅[IoT 中心设备重新预配概念](concepts-device-reprovision.md)。
 
 
 ## <a name="configure-the-enrollment-allocation-policy"></a>配置注册分配策略
@@ -93,7 +93,7 @@ ms.locfileid: "59046831"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关重新设置的详细信息，请参阅 [IoT 中心设备重新设置概念](concepts-device-reprovision.md) 
+- 若要了解更多 Reprovisioning，请参阅[IoT 中心设备重新预配概念](concepts-device-reprovision.md) 
 - 若要了解有关取消设置的详细信息，请参阅[如何取消设置以前自动预配的设备](how-to-unprovision-devices.md) 
 
 

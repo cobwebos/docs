@@ -12,26 +12,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 01/10/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 074976ea1f889893b5daa21cea5c186ec77145c4
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
+ms.openlocfilehash: 6c42fbffd0b4569a9b04dede94061e716c48ecf1
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56588341"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501104"
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>如何通过 Ruby 使用服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本指南介绍如何使用服务总线队列。 相关示例通过 Ruby 编写并使用 Azure gem。 涉及的方案包括“创建队列、发送和接收消息”以及“删除队列”。 有关服务总线队列的详细信息，请参阅[后续步骤](#next-steps)部分。
+在本教程中，您将学习如何创建 Ruby 应用程序将消息发送到和从服务总线队列接收消息。 相关示例通过 Ruby 编写并使用 Azure gem。
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>必备组件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文。
+    1. 阅读快速**概述**的服务总线**队列**。 
+    2. 创建服务总线**命名空间**。 
+    3. 获取**连接字符串**。 
 
-## <a name="create-a-service-bus-namespace"></a>创建服务总线命名空间
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-   
+        > [!NOTE]
+        > 您将创建**队列**本教程中使用 Ruby 在服务总线命名空间中。 
+
 [!INCLUDE [service-bus-ruby-setup](../../includes/service-bus-ruby-setup.md)]
 
 ## <a name="how-to-create-a-queue"></a>如何创建队列
@@ -74,7 +79,7 @@ azure_service_bus_service.send_queue_message("test-queue", message)
 
 默认行为使读取和删除变成一个两阶段操作，从而也有可能支持不允许遗漏消息的应用程序。 当 Service Bus 收到请求时，它会查找下一条要使用的消息，锁定该消息以防其他使用者接收，然后将该消息返回到应用程序。 应用程序处理完该消息（或将它可靠地存储起来留待将来处理）后，通过调用 `delete_queue_message()` 方法并提供要删除的消息作为参数，完成接收过程的第二阶段。 `delete_queue_message()` 方法会将消息标记为已使用，并从队列中将其删除。
 
-如果 `:peek_lock` 参数设置为“false”，读取并删除消息将是最简单的模式，并且最适合在发生故障时应用程序可以容忍不处理消息的情况。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
+如果`:peek_lock`参数设置为**false**、 读取和删除消息将是最简单的模式，并且最适合于在其中应用程序可以容忍不处理消息的出现故障时的方案。 为了理解这一点，可以考虑这样一种情形：使用方发出接收请求，但在处理该请求前发生了崩溃。 由于服务总线已将消息标记为“已使用”，因此当应用程序重新启动并重新开始使用消息时，它会漏掉在发生崩溃前使用的消息。
 
 以下示例演示如何使用 `receive_queue_message()` 接收和处理消息。 该示例先通过将 `:peek_lock` 设置为“false”接收并删除一条消息，然后再接收另一条消息，最后使用 `delete_queue_message()` 删除该消息：
 

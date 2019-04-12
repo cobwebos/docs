@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
-ms.openlocfilehash: 40f771e97b61c28229b0eff29191247ef2fef695
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862839"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505611"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>部署 IoT Edge 设备上的安全模块
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 **Azure 安全中心 (ASC) 为 IoT**模块的 IoT Edge 设备提供全面的安全解决方案。
@@ -75,8 +75,25 @@ ms.locfileid: "58862839"
 1. 从**添加模块**选项卡上，**部署模块**区域中，单击**AzureSecurityCenterforIoT**。 
    
 1. 更改**名称**到**azureiotsecurity**。
-1. 更改的名称**映像 URI**到**mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1**
-      
+1. 更改**图像 URI**到**mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3**。
+1. 验证是否**容器创建选项**值设置为：      
+    ``` json
+    {
+        "NetworkingConfig": {
+            "EndpointsConfig": {
+                "host": {}
+            }
+        },
+        "HostConfig": {
+            "Privileged": true,
+            "NetworkMode": "host",
+            "PidMode": "host",
+            "Binds": [
+                "/:/host"
+            ]
+        }
+    }    
+    ```
 1. 确认**集模块孪生的所需属性**已选中，然后更改到的配置对象：
       
     ``` json
@@ -89,12 +106,16 @@ ms.locfileid: "58862839"
 1. 单击“ **保存**”。
 1. 滚动到选项卡，然后选择底部**配置高级 Edge 运行时设置**。
    
-  >[!Note]
-  > 不要**不**禁用 IoT Edge 中心的 AMQP 通信。
-  > Azure 安全中心的 IoT 模块要求使用 IoT Edge 中心的 AMQP 通信。
+   >[!Note]
+   > 不要**不**禁用 IoT Edge 中心的 AMQP 通信。
+   > Azure 安全中心的 IoT 模块要求使用 IoT Edge 中心的 AMQP 通信。
    
-1. 更改**图像**下**边缘中心**到**mcr.microsoft.com/ascforiot/edgehub:1.05-preview**。
-      
+1. 更改**图像**下**边缘中心**到**mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview**。
+
+   >[!Note]
+   > Azure 安全中心的 IoT 模块需要 IoT Edge 中心，基于 SDK 版本 1.20 分叉的的版本。
+   > 通过更改映像 IoT Edge 中心，则会指示你的 IoT Edge 设备将最新稳定版本替换为 IoT Edge 中心，IoT Edge 服务不正式支持的分叉版本。
+
 1. 验证是否**创建选项**设置为： 
          
     ``` json
@@ -137,8 +158,8 @@ ms.locfileid: "58862839"
    
    | 名称 | IMAGE |
    | --- | --- |
-   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.1 |
-   | edgeHub | asotcontainerregistry.azurecr.io/edgehub:1.04-preview |
+   | azureIoTSecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:0.0.3 |
+   | edgeHub | mcr.microsoft.com/ascforiot/edgehub:1.0.9-preview |
    | edgeAgent | mcr.microsoft.com/azureiotedge-agent:1.0 |
    
    如果容器不存在所需的最低，请检查对 IoT Edge 部署清单符合建议的设置。 有关详细信息，请参阅[部署 IoT Edge 模块](#deployment-using-azure-portal)。

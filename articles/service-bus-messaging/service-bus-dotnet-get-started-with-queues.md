@@ -12,38 +12,29 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: dfdea9f8d50c467bf0e4317c8d95135afefa765f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 22996b277aba96cbbfedbb3e9cc67644d1a535ca
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57778002"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500679"
 ---
 # <a name="get-started-with-service-bus-queues"></a>服务总线队列入门
-
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
-
-本教程涵盖以下步骤：
-
-1. 使用 Azure 门户创建服务总线命名空间。
-2. 使用 Azure 门户创建服务总线队列。
-3. 编写 .NET Core 控制台应用程序，向队列发送一组消息。
-4. 编写 .NET Core 控制台应用程序，从队列接收这些消息。
+在本教程中，将创建.NET Core 控制台应用程序将消息发送到和从服务总线队列接收消息。 
 
 ## <a name="prerequisites"></a>必备组件
 
 1. [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
 2. [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
-2. Azure 订阅。
-
-[!INCLUDE [create-account-note](../../includes/create-account-note.md)]
-
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-[!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]
-
+2. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+3. 如果没有要处理的队列，按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)项目创建的队列。
+    1. 阅读快速**概述**的服务总线**队列**。 
+    2. 创建服务总线**命名空间**。 
+    3. 获取**连接字符串**。 
+    4. 创建服务总线**队列**。 
 
 ## <a name="send-messages-to-the-queue"></a>将消息发送到队列
 
@@ -206,7 +197,7 @@ ms.locfileid: "57778002"
 
 ## <a name="receive-messages-from-the-queue"></a>从队列接收消息
 
-若要接收刚发送的消息，请创建另一 .NET Core 控制台应用程序并安装 **Microsoft.Azure.ServiceBus** NuGet 包，类似于前面的发件人应用程序。
+若要接收您发送的消息，创建另一个.NET Core 控制台应用程序并安装**Microsoft.Azure.ServiceBus** NuGet 包，类似于前面的发件人应用程序。
 
 ### <a name="write-code-to-receive-messages-from-the-queue"></a>编写从队列接收消息的代码
 

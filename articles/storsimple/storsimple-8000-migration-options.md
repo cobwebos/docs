@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/31/2019
+ms.date: 04/10/2019
 ms.author: alkohli
-ms.openlocfilehash: ea8a6d604187a25e5186d7200feba6aaab1f676a
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e8a5ae4a4ee9cfd5c39e8e399784ec65f2ee2660
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339447"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500900"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>用于从 StorSimple 5000-7000 系列迁移数据的选项 
 
@@ -49,15 +49,28 @@ StorSimple 5000-7000 系列将在 2019 年 7 月[终止支持](https://support.m
 
 #### <a name="migrate-to-panzura-freedom-nas"></a>迁移到 Panzura Freedom NAS
 
-StorSimple 5000-7000客户可以选择迁移到 Panzura Freedom NAS 以将他们的数据保存在 Azure 中。 Panzura Freedom 解决方案提供跨越数据中心、办公室、公有云和私有云的 NAS 解决方案。 该解决方案支持 NFS、SMB 和移动客户端的本地、混合和云内数据工作流。 Panzura 支持此迁移，客户可以通过在 [Panzura 网站](https://panzura.com/storsimple-migration/)请求迁移支持来开始。
+StorSimple 5000-7000客户可以选择迁移到 Panzura Freedom NAS 以将他们的数据保存在 Azure 中。 Panzura Freedom 解决方案提供跨越数据中心、办公室、公有云和私有云的 NAS 解决方案。 该解决方案支持 NFS、SMB 和移动客户端的本地、混合和云内数据工作流。 
+
+Panzura 支持此迁移，客户可以通过在 [Panzura 网站](https://panzura.com/storsimple-migration/)请求迁移支持来开始。
 
 #### <a name="migrate-to-cohesity"></a>迁移到 Cohesity
 
-Cohesity 使你可以将数据从当前 StorSimple 5000–7000 迁移到 Azure 上的 Cohesity 数据平台。 Cohesity 数据平台是软件定义的 Web 规模解决方案，将文件、备份、对象和 VM 合并到单个云本机解决方案中。 迁移到该数据平台之后，可以通过单一平台来管理、保护和预配数据和应用（从云到核心）。 使用 Cohesity 时，最少只需从三个节点开始。 了解有关[迁移到 Cohesity DataPlatform](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html) 的详细信息。
+Cohesity 使你可以将数据从当前 StorSimple 5000–7000 迁移到 Azure 上的 Cohesity 数据平台。 Cohesity 数据平台是软件定义的 Web 规模解决方案，将文件、备份、对象和 VM 合并到单个云本机解决方案中。 迁移到该数据平台之后，可以通过单一平台来管理、保护和预配数据和应用（从云到核心）。 使用 Cohesity 时，最少只需从三个节点开始。 
+
+了解详细信息[Cohesity 数据平台迁移](https://info.cohesity.com/migrate-from-storsimple-to-cohesity.html)。
 
 #### <a name="migrate-to-nasuni"></a>将迁移到 Nasuni
 
-Nasuni 轻松 StorSimple 5000-7000 客户迁移并在 Azure 中保留其数据。  Nasuni 是领先的基于 Azure 的 NAS 存储解决方案，为客户提供的性能和安全性他们期望从内部部署解决方案，具有云经济和小数位数。  除了高性能文件存储、 Nasuni 和 Azure 句柄备份和灾难恢复，同时允许您共享和协作与集中式的文件存储管理全球各地的数据。 Nasuni 具有丰富的经验来轻松迁移-立即开始： https://info.nasuni.com/nasuni-storsimple-migration
+Nasuni 轻松 StorSimple 5000-7000 客户迁移并在 Azure 中保留其数据。  Nasuni 是领先的基于 Azure 的 NAS 存储解决方案，为客户提供的性能和安全性他们期望从内部部署解决方案，具有云经济和小数位数。  除了高性能文件存储、 Nasuni 和 Azure 句柄备份和灾难恢复，同时允许您共享和协作与集中式的文件存储管理全球各地的数据。 
+
+Nasuni 具有丰富的经验来轻松迁移-立即开始： https://info.nasuni.com/nasuni-storsimple-migration
+
+#### <a name="migrate-to-talon-fast"></a>将迁移到 Talon 快速
+
+Talon 轻松 StorSimple 5000-7000 客户可以继续使用更大的函数中利用这些值在 StorSimple 平台 （现场的轻量型由不受限制的云资源提供支持） 中如此多的优势。  使用快速 Talon 的解决方案，客户可以将迁移和保留其数据在 Azure 中，现在具有更小的仅限软件的现场占用空间和添加权益，例如全局文件时锁定，全局命名空间和多站点协作。  Talon 是一款领先的 Azure 生态系统解决方案，使用全球客户迁移到统一的、 基于 Azure 的占用空间中，不会损害用户工作流或体验其本地文件服务器工作负荷。  
+
+要详细了解如何在云合并的企业发展 https://www.talonstorage.com/alliances/microsoft-storsimple。
+
 
 ## <a name="migration---frequently-asked-questions"></a>迁移 - 常见问题解答
 

@@ -12,39 +12,40 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: aschhab
-ms.openlocfilehash: 2c28ae3bf05a994293a8bf2af0675280d818fdde
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 622b1f6f6a852251c07c5576ed10cd76adbf5231
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242592"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500492"
 ---
 # <a name="how-to-use-service-bus-queues-with-python"></a>如何通过 Python 使用服务总线队列
 
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
 
-本文介绍了如何使用服务总线队列。 相关示例采用 Python 编写，并使用了 [Python Azure 服务总线包][Python Azure Service Bus package]。 涉及的任务包括**创建队列、发送和接收消息**以及**删除队列**。
+在本教程中，您将学习如何创建 Python 应用程序将消息发送到和从服务总线队列接收消息。 
 
-[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+## <a name="prerequisites"></a>必备组件
+1. Azure 订阅。 要完成本教程，需要一个 Azure 帐户。 可以激活您[MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF)。
+2. 按照步骤[使用 Azure 门户创建服务总线队列](service-bus-quickstart-portal.md)一文。
+    1. 阅读快速**概述**的服务总线**队列**。 
+    2. 创建服务总线**命名空间**。 
+    3. 获取**连接字符串**。 
 
-[!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
-
-> [!IMPORTANT]
-> 若要安装 Python 或 [Python Azure 服务总线包][Python Azure Service Bus package]，请参阅 [Python 安装指南](../python-how-to-install.md)。
-> 
-> 请参阅服务总线 Python SDK 的完整文档[此处](/python/api/overview/azure/servicebus?view=azure-python)
-
+        > [!NOTE]
+        > 您将创建**队列**本教程中使用 Python 在服务总线命名空间中。 
+1. 安装 Python 或[Python Azure 服务总线包][Python Azure Service Bus package]，请参阅[Python 安装指南](../python-how-to-install.md)。 请参阅服务总线 Python SDK 的完整文档[此处](/python/api/overview/azure/servicebus?view=azure-python)。
 
 ## <a name="create-a-queue"></a>创建队列
-**ServiceBusClient**对象可用于处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
+可以通过 **ServiceBusClient** 对象处理队列。 将以下代码添加到任何 Python 文件的顶部附近，你希望在其中以编程方式访问服务总线：
 
 ```python
 from azure.servicebus import ServiceBusClient
 ```
 
-下面的代码创建**ServiceBusClient**对象。 将 `mynamespace`、`sharedaccesskeyname` 和 `sharedaccesskey` 替换为命名空间、共享访问签名 (SAS) 密钥名称和值。
+以下代码创建 **ServiceBusClient** 对象。 将 `mynamespace`、`sharedaccesskeyname` 和 `sharedaccesskey` 替换为命名空间、共享访问签名 (SAS) 密钥名称和值。
 
 ```python
 sb_client = ServiceBusClient.from_connection_string('<CONNECTION STRING>')
@@ -69,7 +70,7 @@ sb_client.create_queue("taskqueue", queue_options)
 有关详细信息，请参阅[Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
 
 ## <a name="send-messages-to-a-queue"></a>向队列发送消息
-若要将消息发送到服务总线队列，应用程序应调用`send`方法`ServiceBusClient`对象。
+要将消息发送到服务总线队列，应用程序需对 `ServiceBusClient` 对象调用 `send` 方法。
 
 以下示例演示如何使用 `send_queue_message` 向名为 `taskqueue` 的队列发送一条测试消息：
 
@@ -89,7 +90,7 @@ queue_client.send(Message("Message"))
 有关详细信息，请参阅[Azure 服务总线 Python 文档](/python/api/overview/azure/servicebus?view=azure-python)。
 
 ## <a name="receive-messages-from-a-queue"></a>从队列接收消息
-从队列接收消息`get_receiver`方法`ServiceBusService`对象：
+对 `ServiceBusService` 对象使用 `get_receiver` 方法可从队列接收消息：
 
 ```python
 from azure.servicebus import QueueClient, Message

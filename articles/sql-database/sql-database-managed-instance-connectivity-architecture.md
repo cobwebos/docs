@@ -1,6 +1,6 @@
 ---
-title: 对于 Azure SQL 数据库中的托管实例的连接体系结构 |Microsoft Docs
-description: 了解 Azure SQL 数据库托管实例的通信和连接体系结构如何组件将流量定向到托管实例。
+title: Azure SQL 数据库中托管实例的连接体系结构 | Microsoft Docs
+description: 了解 Azure SQL 数据库托管实例的通信和连接体系结构，以及如何组件如何将流量定向到托管实例。
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,54 +12,54 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
-ms.openlocfilehash: 801294241f399097d363dd8dc2682f158c0bf2cc
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 82b533f7293e00469a5b92b02e8d58967379a585
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358286"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59497060"
 ---
-# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>对于 Azure SQL 数据库中的托管实例的连接体系结构
+# <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
-本文介绍 Azure SQL 数据库托管实例中的通信。 它还介绍了连接体系结构以及如何组件将流量定向到托管实例。  
+本文介绍 Azure SQL 数据库托管实例中的通信。 此外介绍连接体系结构，以及组件如何将流量定向到托管实例。  
 
-SQL 数据库托管的实例置于 Azure 虚拟网络和专用于托管实例的子网。 此部署提供：
+SQL 数据库托管实例放置在专用于托管实例的 Azure 虚拟网络和子网中。 此部署提供：
 
 - 安全的专用 IP 地址。
-- 能够在本地网络连接到的托管实例。
-- 连接到链接的服务器或其他托管的实例的功能的本地数据存储区。
-- 能够连接到 Azure 资源的托管的实例。
+- 将本地网络连接到托管实例的功能。
+- 将托管实例连接到链接服务器或其他本地数据存储的功能。
+- 将托管实例连接到 Azure 资源的功能。
 
 ## <a name="communication-overview"></a>通信概述
 
-下图显示了连接到托管实例的实体。 它还显示与托管实例进行通信所需的资源。 在关系图的底部通信过程表示客户应用程序和数据源以连接到托管实例的工具。  
+下图显示了连接到托管实例的实体。 此外，显示了需要与托管实例通信的资源。 插图底部的通信流程表示作为数据源连接到托管实例的客户应用程序和工具。  
 
 ![连接体系结构中的实体](./media/managed-instance-connectivity-architecture/connectivityarch001.png)
 
-托管的实例是平台即服务 (PaaS) 产品/服务。 Microsoft 使用自动化的代理 （管理、 部署和维护） 来管理此服务基于遥测数据流。 由于 Microsoft 负责管理，客户不能通过远程桌面协议 (RDP) 访问托管的实例群集虚拟机。
+托管实例属于平台即服务 (PaaS)。 Microsoft 使用自动化代理（管理、部署和维护）基于遥测数据流管理此服务。 由于管理工作由 Microsoft 负责，客户无法通过远程桌面协议 (RDP) 访问托管实例的虚拟群集计算机。
 
-由最终用户或应用程序启动的操作可能需要某些 SQL Server 托管实例与平台进行交互。 一种情况下都是托管的实例数据库的创建。 通过 Azure 门户、 PowerShell、 Azure CLI 和 REST API 公开此资源。
+由最终用户或应用程序启动的某些 SQL Server 操作可能需要使用托管实例来与平台交互。 一种情况是创建托管实例数据库。 此资源是通过 Azure 门户、PowerShell、Azure CLI 和 REST API 公开的。
 
-托管的实例的透明数据加密 (TDE) 依赖于如备份的 Azure 存储、 遥测数据的 Azure 服务总线、 Azure Active Directory 身份验证和 Azure 密钥保管库的 Azure 服务。 托管的实例建立连接到这些服务。
+托管的实例依赖于 Azure 服务，例如备份的 Azure 存储、 遥测数据的 Azure 事件中心、 Azure Active Directory 进行身份验证、 Azure 密钥保管库的透明数据加密 (TDE) 和几个 Azure 平台提供的服务安全性和可支持性的功能。 托管的实例将连接到这些服务。
 
-所有通信都使用证书进行加密和签名。 若要检查的通信方，管理可信度实例将不断地通过联系证书颁发机构验证这些证书。 如果证书被吊销或者无法验证，托管的实例将关闭连接后，若要保护的数据。
+所有通信进行加密和签名使用证书。 若要检查的通信方，管理可信度实例不断验证这些证书通过证书吊销列表。 如果证书被吊销，托管的实例将关闭连接后，若要保护的数据。
 
 ## <a name="high-level-connectivity-architecture"></a>高级连接体系结构
 
-在高级别中，托管的实例是一组服务组件。 这些组件托管在一组专用的独立虚拟机的客户的虚拟网络子网内运行。 这些计算机构成虚拟群集。
+从较高层面讲，托管实例是一组服务组件。 这些组件托管在客户虚拟网络子网中运行的一组专用隔离虚拟机上。 这些计算机构成了虚拟群集。
 
-虚拟群集可以托管多个托管的实例。 如果需要群集将自动会扩大或缩小时客户的子网中预配的实例数更改。
+一个虚拟群集可以承载多个托管实例。 当客户更改子网中预配的实例数时，群集可根据需要自动扩展或收缩。
 
-客户应用程序可以连接到托管实例和可以查询和更新数据库仅当它们运行在虚拟网络内对等互连虚拟网络或通过 VPN 或 Azure ExpressRoute 连接的网络。 此网络必须使用一个终结点和一个专用 IP 地址。  
+客户应用程序可以连接到托管实例和可以查询和更新虚拟网络对等互连虚拟网络中的数据库或通过 VPN 或 Azure ExpressRoute 连接的网络。 此网络必须使用一个终结点和一个专用 IP 地址。  
 
-![连接体系结构关系图](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
+![连接体系结构示意图](./media/managed-instance-connectivity-architecture/connectivityarch002.png)
 
-外部虚拟网络中运行 Microsoft 管理和部署服务。 通过具有公共 IP 地址的终结点连接的托管的实例和 Microsoft 服务。 托管的实例创建时的出站连接，接收端网络地址转换 (NAT) 使连接看起来像它来自此公共 IP 地址。
+外部虚拟网络中运行 Microsoft 管理和部署服务。 通过具有公共 IP 地址的终结点连接的托管的实例和 Microsoft 服务。 当托管实例建立出站连接时，在接收端，网络地址转换 (NAT) 会使该连接看上去来自此公共 IP 地址。
 
-管理流量流经客户的虚拟网络。 这意味着虚拟网络的基础结构的元素可以实例失败，并且变得不可用，从而损害管理流量。
+管理流量通过客户的虚拟网络传送。 这意味着，虚拟网络基础结构的要素可能会使实例发生故障并变得不可用，从而对管理流量造成不利影响。
 
 > [!IMPORTANT]
-> 若要改善客户体验和服务可用性，Microsoft 将网络意向策略应用对 Azure 虚拟网络基础结构元素中。 该策略会影响托管的实例的工作原理。 此平台机制以透明方式进行通信，向用户的网络要求。 策略的主要目标是为了防止网络配置不正确，并确保正常的托管的实例操作。 当删除托管的实例时，也会删除网络意向策略。
+> 若要改善客户体验和服务可用性，Microsoft 将网络意向策略应用对 Azure 虚拟网络基础结构元素中。 该策略可影响托管实例的工作方式。 此平台机制以透明方式向用户传达网络要求。 该策略的主要目的是防止网络配置不当，并确保托管实例正常运行。 删除某个托管实例时，会一并删除网络意向策略。
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>虚拟群集连接体系结构
 
@@ -71,104 +71,172 @@ SQL 数据库托管的实例置于 Azure 虚拟网络和专用于托管实例的
 
 此专用 IP 地址属于托管的实例的内部负载均衡器。 负载均衡器将流量定向到托管的实例的网关。 由于多个托管的实例可以运行在同一群集中，网关将使用的托管的实例的主机名来将流量重定向到正确的 SQL 引擎服务。
 
-管理和部署服务通过连接到托管实例[管理终结点](#management-endpoint)映射到一个外部负载均衡器。 仅当一组预定义仅托管的实例的管理组件使用的端口上接收流量路由到的节点。 在节点上内置的防火墙设置以允许仅从 Microsoft IP 范围的流量。 证书相互进行身份验证管理组件和管理平面之间的所有通信。
+管理和部署服务使用映射到外部负载均衡器的[管理终结点](#management-endpoint)连接到托管实例。 仅当流量是在一组专用于托管实例管理组件的预定义端口上收到的时，才将流量路由到节点。 节点上的内置防火墙设置为只允许来自 Microsoft IP 范围的流量。 证书将对管理组件与管理平面之间的所有通信进行相互身份验证。
 
 ## <a name="management-endpoint"></a>管理终结点
 
-Microsoft 管理的托管的实例使用的管理终结点。 此终结点是该实例的虚拟群集内。 管理终结点保护的网络级别上的内置防火墙。 在应用程序级别上受到由使用证书进行相互验证。 若要查找终结点的 IP 地址，请参阅[确定管理终结点的 IP 地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于该实例的虚拟群集内部。 管理终结点在网络级别受到内置防火墙的保护。 在应用程序级别，管理终结点受到证书相互验证的保护。 若要查找终结点的 IP 地址，请参阅[确定管理终结点的 IP 地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 
-当连接开始执行的托管实例中 （如备份和审核日志），流量会显示，若要从管理终结点的公共 IP 地址开始。 您可以设置防火墙规则以允许仅限托管的实例的 IP 地址访问限制的托管实例从公共服务。 有关详细信息，请参阅[验证托管的实例的内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
+在托管实例中启动连接时（提供备份和审核日志），流量似乎是从管理终结点的公共 IP 地址启动的。 可以通过将防火墙规则设置为只允许托管实例的 IP 地址，来限制从托管实例访问公共服务。 有关详细信息，请参阅[验证托管实例的内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
 
 > [!NOTE]
-> 在防火墙中为托管实例中启动的连接，与托管的实例的区域内的 Azure 服务具有适用于将这些服务之间的流量的防火墙。
+> 将转到托管的实例的区域内的 Azure 服务的流量进行了优化，并为该原因不到托管实例管理终结点公共 IP 地址的 nat 型。 因此如果您需要使用基于 IP 的防火墙规则，最常进行存储，服务需要在不同的区域从托管实例。
 
 ## <a name="network-requirements"></a>网络要求
 
-部署虚拟网络中的专用子网中的托管的实例。 子网必须具有以下特征：
+在虚拟网络中的专用子网内部署托管实例。 该子网必须具有以下特征：
 
-- **专用子网：** 托管的实例子网不能包含具有与其关联的任何其他云服务并且它不能是网关子网。 子网不能包含任何资源，但该托管的实例和更高版本不能将资源添加子网中。
-- **网络安全组 (NSG)**：必须定义与虚拟网络关联的 NSG[入站安全规则](#mandatory-inbound-security-rules)并[出站安全规则](#mandatory-outbound-security-rules)之前的任何其他规则。 可以使用 NSG 来控制对该托管的实例的数据终结点访问端口 1433年上筛选流量。
-- **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定[条目](#user-defined-routes)。
-- **服务终结点：** 没有服务终结点应与托管的实例子网相关联。 请确保在创建虚拟网络时，禁用服务终结点选项。
-- **足够的 IP 地址：** 托管的实例子网必须具有至少 16 个 IP 地址。 建议的最小为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 你可以部署在托管的实例[现有的网络](sql-database-managed-instance-configure-vnet-subnet.md)配置它以满足之后[的托管实例的网络要求](#network-requirements)。 否则，创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
+- **专用子网：** 托管实例的子网不能包含其他任何关联的云服务，且不能是网关子网。 该子网不能包含除该托管实例以外的其他任何资源，以后无法在该子网中添加资源。
+- **网络安全组 (NSG)**：与虚拟网络关联的 NSG 必须在其他任何规则的前面定义[入站安全规则](#mandatory-inbound-security-rules)和[出站安全规则](#mandatory-outbound-security-rules)。 可以使用 NSG 来控制对该托管的实例的数据终结点访问端口 1433年上筛选流量和端口 11000-11999 时托管的实例配置为将连接重定向。
+- **用户定义的路由 (UDR) 表：** 与虚拟网络关联的 UDR 表必须包含特定的[条目](#user-defined-routes)。
+- **没有服务终结点：** 不应将任何服务终结点与托管实例的子网相关联。 创建虚拟网络时，请务必禁用“服务终结点”选项。
+- **足够的 IP 地址：** 托管实例子网必须至少有 16 个 IP 地址。 建议的最少数目为 32 个 IP 地址。 有关详细信息，请参阅[确定托管实例的子网大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。 根据[托管实例的网络要求](#network-requirements)配置托管实例后，可将其部署在[现有网络](sql-database-managed-instance-configure-vnet-subnet.md)中。 否则，请创建[新的网络和子网](sql-database-managed-instance-create-vnet-subnet.md)。
 
 > [!IMPORTANT]
-> 如果目标子网缺少这些特征，则无法部署新的托管的实例。 创建托管的实例时，网络意向策略应用上的子网，以便防止对网络的安装程序不符合要求的更改。 从子网中删除最后一个实例之后，也被删除网络意向策略。
+> 如果目标子网缺少这些特征，则无法部署新的托管实例。 创建托管实例时，将会针对子网应用网络意向策略，以防止对网络设置进行不合规的更改。 从子网中删除最后一个实例后，网络意向策略也会一并删除。
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
 | 名称       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|管理  |9000、9003、1438、1440、1452|TCP     |任意              |任意        |允许 |
-|mi_subnet   |任意                         |任意     |MI SUBNET        |任意        |允许 |
-|health_probe|任意                         |任意     |AzureLoadBalancer|任意        |允许 |
+|管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
+|mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
+|health_probe|任意                         |任意     |AzureLoadBalancer|MI SUBNET  |允许 |
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
 | 名称       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
-|管理  |80、443、12000|TCP     |任意              |AzureCloud  |允许 |
-|mi_subnet   |任意           |任意     |任意              |MI SUBNET*  |允许 |
+|管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |允许 |
+|mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
 
 > [!IMPORTANT]
-> 确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 如果为每个端口分别配置入站和输出的规则，托管实例预配通过 ARM 部署将失败。 如果这些端口是在单独的规则，则部署将失败，错误代码 `VnetSubnetConflictWithIntendedPolicy`
+> 确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 托管实例预配通过 Azure 资源管理器部署将失败，如果为每个端口分别配置入站和输出的规则。 如果这些端口是在单独的规则，则部署将失败，错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
-\* MI 子网是指在窗体 10.x.x.x/y 中的子网的 IP 地址范围。 您可以在 Azure 门户中，子网属性中找到此信息。
+\* MI SUBNET 是指子网的 IP 地址范围，采用 10.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 
 > [!IMPORTANT]
-> 尽管所需的入站的安全规则允许来自的流量_任何_源上的端口 9000，这些端口 9003、 1438年、 1440 和 1452，受内置防火墙。 有关详细信息，请参阅[确定的管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
+> 尽管所需的入站安全规则允许来自端口 9000、9003、1438、1440 和 1452 上的任意资源的流量，但这些端口受内置防火墙的保护。 有关详细信息，请参阅[确定管理终结点地址](sql-database-managed-instance-find-management-endpoint-ip-address.md)。
 > [!NOTE]
-> 如果在托管实例中，使用事务复制，并且您使用任何实例数据库作为发布服务器或分发服务器，请在子网的安全规则中打开端口 445(tcp 出站)。 此端口将允许访问 Azure 文件共享。
+> 如果在托管实例中使用事务复制，并使用任何实例数据库作为发布方或分发方，请在子网的安全规则中打开端口 445（TCP 出站）。 此端口允许访问 Azure 文件共享。
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
 |名称|地址前缀|下一跃点|
 |----|--------------|-------|
-|subnet_to_vnetlocal|[mi_subnet]|虚拟网络|
-|mi-0-5-next-hop-internet|0.0.0.0/5|Internet|
-|mi-11-8-nexthop-internet|11.0.0.0/8|Internet|
-|mi-12-6-nexthop-internet|12.0.0.0/6|Internet|
-|mi-128-3-nexthop-internet|128.0.0.0/3|Internet|
-|mi-16-4-nexthop-internet|16.0.0.0/4|Internet|
-|mi-160-5-nexthop-internet|160.0.0.0/5|Internet|
-|mi-168-6-nexthop-internet|168.0.0.0/6|Internet|
-|mi-172-12-nexthop-internet|172.0.0.0/12|Internet|
-|mi-172-128-9-nexthop-internet|172.128.0.0/9|Internet|
-|mi-172-32-11-nexthop-internet|172.32.0.0/11|Internet|
-|mi-172-64-10-nexthop-internet|172.64.0.0/10|Internet|
-|mi-173-8-nexthop-internet|173.0.0.0/8|Internet|
-|mi-174-7-nexthop-internet|174.0.0.0/7|Internet|
-|mi-176-4-nexthop-internet|176.0.0.0/4|Internet|
-|mi-192-128-11-nexthop-internet|192.128.0.0/11|Internet|
-|mi-192-160-13-nexthop-internet|192.160.0.0/13|Internet|
-|mi-192-169-16-nexthop-internet|192.169.0.0/16|Internet|
-|mi-192-170-15-nexthop-internet|192.170.0.0/15|Internet|
-|mi-192-172-14-nexthop-internet|192.172.0.0/14|Internet|
-|mi-192-176-12-nexthop-internet|192.176.0.0/12|Internet|
-|mi-192-192-10-nexthop-internet|192.192.0.0/10|Internet|
-|mi-192-9-nexthop-internet|192.0.0.0/9|Internet|
-|mi-193-8-nexthop-internet|193.0.0.0/8|Internet|
-|mi-194-7-nexthop-internet|194.0.0.0/7|Internet|
-|mi-196-6-nexthop-internet|196.0.0.0/6|Internet|
-|mi-200-5-nexthop-internet|200.0.0.0/5|Internet|
-|mi-208-4-nexthop-internet|208.0.0.0/4|Internet|
-|mi-224-3-nexthop-internet|224.0.0.0/3|Internet|
-|mi-32-3-nexthop-internet|32.0.0.0/3|Internet|
-|mi-64-2-nexthop-internet|64.0.0.0/2|Internet|
-|mi-8-7-nexthop-internet|8.0.0.0/7|Internet|
+|subnet_to_vnetlocal|MI SUBNET|虚拟网络|
+|mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|
+|mi-13-96-13-nexthop-internet|13.96.0.0/13|Internet|
+|mi-13-104-14-nexthop-internet|13.104.0.0/14|Internet|
+|mi-20-8-nexthop-internet|20.0.0.0/8|Internet|
+|mi-23-96-13-nexthop-internet|23.96.0.0/13|Internet|
+|mi-40-64-10-nexthop-internet|40.64.0.0/10|Internet|
+|mi-42-159-16-nexthop-internet|42.159.0.0/16|Internet|
+|mi-51-8-nexthop-internet|51.0.0.0/8|Internet|
+|mi-52-8-nexthop-internet|52.0.0.0/8|Internet|
+|mi-64-4-18-nexthop-internet|64.4.0.0/18|Internet|
+|mi-65-52-14-nexthop-internet|65.52.0.0/14|Internet|
+|mi-66-119-144-20-nexthop-internet|66.119.144.0/20|Internet|
+|mi-70-37-17-nexthop-internet|70.37.0.0/17|Internet|
+|mi-70-37-128-18-nexthop-internet|70.37.128.0/18|Internet|
+|mi-91-190-216-21-nexthop-internet|91.190.216.0/21|Internet|
+|mi-94-245-64-18-nexthop-internet|94.245.64.0/18|Internet|
+|mi-103-9-8-22-nexthop-internet|103.9.8.0/22|Internet|
+|mi-103-25-156-22-nexthop-internet|103.25.156.0/22|Internet|
+|mi-103-36-96-22-nexthop-internet|103.36.96.0/22|Internet|
+|mi-103-255-140-22-nexthop-internet|103.255.140.0/22|Internet|
+|mi-104-40-13-nexthop-internet|104.40.0.0/13|Internet|
+|mi-104-146-15-nexthop-internet|104.146.0.0/15|Internet|
+|mi-104-208-13-nexthop-internet|104.208.0.0/13|Internet|
+|mi-111-221-16-20-nexthop-internet|111.221.16.0/20|Internet|
+|mi-111-221-64-18-nexthop-internet|111.221.64.0/18|Internet|
+|mi-129-75-16-nexthop-internet|129.75.0.0/16|Internet|
+|mi-131-253-16-nexthop-internet|131.253.0.0/16|Internet|
+|mi-132-245-16-nexthop-internet|132.245.0.0/16|Internet|
+|mi-134-170-16-nexthop-internet|134.170.0.0/16|Internet|
+|mi-134-177-16-nexthop-internet|134.177.0.0/16|Internet|
+|mi-137-116-15-nexthop-internet|137.116.0.0/15|Internet|
+|mi-137-135-16-nexthop-internet|137.135.0.0/16|Internet|
+|mi-138-91-16-nexthop-internet|138.91.0.0/16|Internet|
+|mi-138-196-16-nexthop-internet|138.196.0.0/16|Internet|
+|mi-139-217-16-nexthop-internet|139.217.0.0/16|Internet|
+|mi-139-219-16-nexthop-internet|139.219.0.0/16|Internet|
+|mi-141-251-16-nexthop-internet|141.251.0.0/16|Internet|
+|mi-146-147-16-nexthop-internet|146.147.0.0/16|Internet|
+|mi-147-243-16-nexthop-internet|147.243.0.0/16|Internet|
+|mi-150-171-16-nexthop-internet|150.171.0.0/16|Internet|
+|mi-150-242-48-22-nexthop-internet|150.242.48.0/22|Internet|
+|mi-157-54-15-nexthop-internet|157.54.0.0/15|Internet|
+|mi-157-56-14-nexthop-internet|157.56.0.0/14|Internet|
+|mi-157-60-16-nexthop-internet|157.60.0.0/16|Internet|
+|mi-167-220-16-nexthop-internet|167.220.0.0/16|Internet|
+|mi-168-61-16-nexthop-internet|168.61.0.0/16|Internet|
+|mi-168-62-15-nexthop-internet|168.62.0.0/15|Internet|
+|mi-191-232-13-nexthop-internet|191.232.0.0/13|Internet|
+|mi-192-32-16-nexthop-internet|192.32.0.0/16|Internet|
+|mi-192-48-225-24-nexthop-internet|192.48.225.0/24|Internet|
+|mi-192-84-159-24-nexthop-internet|192.84.159.0/24|Internet|
+|mi-192-84-160-23-nexthop-internet|192.84.160.0/23|Internet|
+|mi-192-100-102-24-nexthop-internet|192.100.102.0/24|Internet|
+|mi-192-100-103-24-nexthop-internet|192.100.103.0/24|Internet|
+|mi-192-197-157-24-nexthop-internet|192.197.157.0/24|Internet|
+|mi-193-149-64-19-nexthop-internet|193.149.64.0/19|Internet|
+|mi-193-221-113-24-nexthop-internet|193.221.113.0/24|Internet|
+|mi-194-69-96-19-nexthop-internet|194.69.96.0/19|Internet|
+|mi-194-110-197-24-nexthop-internet|194.110.197.0/24|Internet|
+|mi-198-105-232-22-nexthop-internet|198.105.232.0/22|Internet|
+|mi-198-200-130-24-nexthop-internet|198.200.130.0/24|Internet|
+|mi-198-206-164-24-nexthop-internet|198.206.164.0/24|Internet|
+|mi-199-60-28-24-nexthop-internet|199.60.28.0/24|Internet|
+|mi-199-74-210-24-nexthop-internet|199.74.210.0/24|Internet|
+|mi-199-103-90-23-nexthop-internet|199.103.90.0/23|Internet|
+|mi-199-103-122-24-nexthop-internet|199.103.122.0/24|Internet|
+|mi-199-242-32-20-nexthop-internet|199.242.32.0/20|Internet|
+|mi-199-242-48-21-nexthop-internet|199.242.48.0/21|Internet|
+|mi-202-89-224-20-nexthop-internet|202.89.224.0/20|Internet|
+|mi-204-13-120-21-nexthop-internet|204.13.120.0/21|Internet|
+|mi-204-14-180-22-nexthop-internet|204.14.180.0/22|Internet|
+|mi-204-79-135-24-nexthop-internet|204.79.135.0/24|Internet|
+|mi-204-79-179-24-nexthop-internet|204.79.179.0/24|Internet|
+|mi-204-79-181-24-nexthop-internet|204.79.181.0/24|Internet|
+|mi-204-79-188-24-nexthop-internet|204.79.188.0/24|Internet|
+|mi-204-79-195-24-nexthop-internet|204.79.195.0/24|Internet|
+|mi-204-79-196-23-nexthop-internet|204.79.196.0/23|Internet|
+|mi-204-79-252-24-nexthop-internet|204.79.252.0/24|Internet|
+|mi-204-152-18-23-nexthop-internet|204.152.18.0/23|Internet|
+|mi-204-152-140-23-nexthop-internet|204.152.140.0/23|Internet|
+|mi-204-231-192-24-nexthop-internet|204.231.192.0/24|Internet|
+|mi-204-231-194-23-nexthop-internet|204.231.194.0/23|Internet|
+|mi-204-231-197-24-nexthop-internet|204.231.197.0/24|Internet|
+|mi-204-231-198-23-nexthop-internet|204.231.198.0/23|Internet|
+|mi-204-231-200-21-nexthop-internet|204.231.200.0/21|Internet|
+|mi-204-231-208-20-nexthop-internet|204.231.208.0/20|Internet|
+|mi-204-231-236-24-nexthop-internet|204.231.236.0/24|Internet|
+|mi-205-174-224-20-nexthop-internet|205.174.224.0/20|Internet|
+|mi-206-138-168-21-nexthop-internet|206.138.168.0/21|Internet|
+|mi-206-191-224-19-nexthop-internet|206.191.224.0/19|Internet|
+|mi-207-46-16-nexthop-internet|207.46.0.0/16|Internet|
+|mi-207-68-128-18-nexthop-internet|207.68.128.0/18|Internet|
+|mi-208-68-136-21-nexthop-internet|208.68.136.0/21|Internet|
+|mi-208-76-44-22-nexthop-internet|208.76.44.0/22|Internet|
+|mi-208-84-21-nexthop-internet|208.84.0.0/21|Internet|
+|mi-209-240-192-19-nexthop-internet|209.240.192.0/19|Internet|
+|mi-213-199-128-18-nexthop-internet|213.199.128.0/18|Internet|
+|mi-216-32-180-22-nexthop-internet|216.32.180.0/22|Internet|
+|mi-216-220-208-20-nexthop-internet|216.220.208.0/20|Internet|
 ||||
 
-此外，可以将条目添加到路由表将为通过虚拟网络网关或虚拟网络设备 (NVA) 目标已在本地专用 IP 范围的流量路由。
+此外，还可以将条目添加到路由表，以通过虚拟网络网关或虚拟网络设备 (NVA) 路由发往本地专用 IP 范围的流量。
 
-如果虚拟网络中包含的自定义 DNS，添加 Azure 递归解析程序 IP 地址 （例如 168.63.129.16) 的条目。 有关详细信息，请参阅[设置的自定义 DNS](sql-database-managed-instance-custom-dns.md)。 自定义 DNS 服务器必须能够解析这些域和其子域中的主机名称： *microsoft.com*， *windows.net*， *windows.com*， *msocsp.com*， *digicert.com*， *live.com*， *microsoftonline.com*，和*microsoftonline p.com*.
+如果虚拟网络中包含的自定义 DNS，自定义 DNS 服务器必须能够解析中的主机名称\*。 core.windows.net 组合在一起的区域。 使用其他功能等 Azure AD 身份验证可能需要解决额外的 Fqdn。 有关详细信息，请参阅[设置自定义 DNS](sql-database-managed-instance-custom-dns.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关概述，请参阅 [SQL 数据库内高级数据安全性](sql-database-managed-instance.md)。
-- 了解如何[设置新的 Azure 虚拟网络](sql-database-managed-instance-create-vnet-subnet.md)或[现有 Azure 虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)可在其中部署托管的实例。
-- [计算子网的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)你想要部署托管的实例。
-- 了解如何创建托管的实例：
+- 有关概述，请参阅  [SQL 数据库高级数据安全性](sql-database-managed-instance.md)。
+- 了解如何设置可用于部署托管实例的[新 Azure 虚拟网络](sql-database-managed-instance-create-vnet-subnet.md)或[现有 Azure 虚拟网络](sql-database-managed-instance-configure-vnet-subnet.md)。
+- [计算用于部署托管实例的子网的大小](sql-database-managed-instance-determine-size-vnet-subnet.md)。
+- 了解如何通过以下方式创建托管实例：
   - 通过 [Azure 门户](sql-database-managed-instance-get-started.md)。
-  - 通过使用[PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
-  - 通过使用[的 Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
-  - 通过使用[（使用包含的 SSMS 中使用 JumpBox，） 的 Azure 资源管理器模板](https://portal.azure.com/)。
+  - 使用 [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md)。
+  - 使用 [Azure 资源管理器模板](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/)。
+  - 使用 [Azure 资源管理器模板（使用包含 SSMS 的 JumpBox）](https://portal.azure.com/)。 

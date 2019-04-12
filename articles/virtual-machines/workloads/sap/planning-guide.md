@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 839f77df88314c95df1056b60c3612de27421ca0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886125"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501325"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -779,8 +779,6 @@ Azure 门户是用于管理 Azure VM 部署的三个界面之一。 基本的管
 
 ![Microsoft Azure 门户 - 虚拟机概览][planning-guide-figure-800]
 
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-networks-create-vnet-arm-pportal/>)
-[comment]: <> (MSSedusch * <https://azure.microsoft.com/documentation/articles/virtual-machines-windows-tutorial/>)
 
 可以从 Azure 门户内部完成虚拟机实例的管理和配置任务。
 
@@ -791,9 +789,6 @@ Azure 门户提供了基本的功能，用于部署和配置 VM 以及其他许�
 * 将 VHD 上传到 Azure
 * 复制 VM
 
-[comment]: <> (MShermannd TODO：适用于 SAP VM 的自动化服务支持此操作吗？)
-[comment]: <> (MSSedusch：可同时部署多个 VM OS)
-[comment]: <> (MSSedusch：另外，无法使用 Azure 门户完成有关部署的任何类型的自动化操作。无法通过 Azure 门户完成使用脚本部署多个 VM 等任务。)
 
 ### <a name="management-via-microsoft-azure-powershell-cmdlets"></a>通过 Microsoft Azure PowerShell cmdlet 进行管理
 
@@ -808,9 +803,8 @@ Windows PowerShell 是一个功能强大的可扩展框架，在 Azure 中部署
 请参阅此处的示例：
 <https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
-[comment]: <> (MShermannd TODO：测试后将介绍新的 CLI 命令)
-部署适用于 SAP 的 Azure 监视扩展（请参阅本文档中的[适用于 SAP 的 Azure 监视解决方案][planning-guide-9.1]一章）只能通过 PowerShell 或 CLI 完成。 因此，在 Azure 中部署或管理 SAP NetWeaver 系统时，必须安装并配置 PowerShell 或 CLI。
-  
+
+部署适用于 SAP 的 Azure 监视扩展（请参阅本文档中的[适用于 SAP 的 Azure 监视解决方案][planning-guide-9.1]一章）只能通过 PowerShell 或 CLI 完成。 因此，在 Azure 中部署或管理 SAP NetWeaver 系统时，必须安装并配置 PowerShell 或 CLI。  
 
 随着 Azure 提供的功能越来越多，我们会添加新的 PS cmdlet，这就需要你更新 cmdlet。 因此，最好是每月至少查看 Azure 下载站点 <https://azure.microsoft.com/downloads/> 一次，获取新版 cmdlet。 安装新版本时会覆盖旧版本。
 
@@ -1587,7 +1581,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ##### <a name="template"></a>模板
 
-可以使用 github 上 azure-quickstart-templates 存储库中的示例模板。
+可以在 GitHub 上的 azure 快速入门模板存储库上使用的示例模板。
 
 * [简单的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
@@ -1632,13 +1626,13 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 ![本地与 Azure 资产之间的站点到站点连接][planning-guide-figure-2100]
 
-在上图所示的方案中，本地 AD/OpenLDAP 和 DNS 已扩展到 Azure。 在本地端，为每个 Azure 订阅保留了一个特定的 IP 地址范围。 该 IP 地址范围将分配到 Azure 端的 Azure 虚拟网络。
-
-#### <a name="security-considerations"></a>安全注意事项
+如上所示的方案描述的方案，在内部部署
 
 最低的要求是在浏览器中使用 SSL/TLS 等安全通信协议或者在系统中使用基于 VPN 的连接来访问 Azure 服务。 假设条件是公司要以极其不同的方式处理其企业网络与 Azure 之间的 VPN 连接。 一些公司可能会完全打开所有的端口， 还有一些公司可能希望确切地知道需要打开哪些端口，等等。
 
 下表中列出了典型的 SAP 通信端口。 基本上，打开 SAP 网关端口便已足够。
+
+<!-- sapms is prefix of a SAP service name and not a spelling error -->
 
 | 服务 | 端口名称 | 示例 `<nn`> = 01 | 默认范围（最小-最大） | 注释 |
 | --- | --- | --- | --- | --- |
@@ -1834,7 +1828,7 @@ Microsoft 已添加更多 VM 类型，这些类型在 vCPU 数量、内存，更
 
 某些客户采用的一种特殊部署方案是向 Internet 直接公开 SAP 企业门户，同时通过站点到站点 VPN 隧道或 ExpressRoute 将虚拟机主机连接到公司网络。 对于这种方案，必须确保特定的端口已打开，而未被防火墙或网络安全组封锁。 
 
-初始门户 URI 为 http(s):`<Portalserver`>:5XX00/irj，其中的端口值计算公式为 50000 + (系统编号 ?? 100)。 SAP 系统 00 的默认门户 URI 为 `<dns name`>.`<azure region`>.Cloudapp.azure.com:PublicPort/irj。 有关更多详细信息，请查看 <https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>。
+初始门户 URI 为 http （s）：`<Portalserver`>: 5XX00/irj sap 中所述的正确端口<https://help.sap.com/saphelp_nw70ehp1/helpdata/de/a2/f9d7fed2adc340ab462ae159d19509/frameset.htm>。
 
 ![终结点配置][planning-guide-figure-2800]
 

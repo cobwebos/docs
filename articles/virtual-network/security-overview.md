@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
-ms.openlocfilehash: efce606f9c48668f569b0fb4fc45745adc6652c4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 6b100846ec08ca1bdda49d0d7bce9eb78ecf019b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59262136"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501121"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -80,6 +80,7 @@ ms.locfileid: "59262136"
 * **AzureMonitor**（仅限资源管理器）：此标记表示 AzureMonitor 服务的地址前缀。 如果指定 AzureMonitor 作为值，则会允许或拒绝发往 AzureMonitor 的流量。 
 * **ServiceFabric**（仅限资源管理器）：此标记表示 ServiceFabric 服务的地址前缀。 如果指定 ServiceFabric 作为值，则会允许或拒绝发往 ServiceFabric 的流量。 
 * **AzureMachineLearning**（仅限资源管理器）：此标记表示 AzureMachineLearning 服务的地址前缀。 如果指定 AzureMachineLearning 作为值，则会允许或拒绝发往 AzureMachineLearning 的流量。 
+* **BatchNodeManagement** （仅限资源管理器）：此标记表示 Azure BatchNodeManagement 服务的地址前缀。 如果指定*BatchNodeManagement*值，流量是允许还是拒绝来自 Batch 服务的计算节点。
 
 > [!NOTE]
 > Azure 服务的服务标记表示来自所使用的特定云的地址前缀。 

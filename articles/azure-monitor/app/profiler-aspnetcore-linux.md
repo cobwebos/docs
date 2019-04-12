@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: cweining
-ms.openlocfilehash: 5787db7e2b726a10891fcabb0b215399d0d4e0ae
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 35789cc1e516fb24d5e985e12b44fe3cd01b795d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884301"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59494742"
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>使用 Application Insights Profiler 探查 ASP.NET Core Azure Linux Web 应用
 
@@ -29,7 +29,7 @@ ms.locfileid: "55884301"
 
 ![探查器跟踪](./media/profiler-aspnetcore-linux/profiler-traces.png)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 以下说明适用于所有 Windows、Linux 和 Mac 开发环境：
 
 * 安装 [.NET Core SDK 2.1.2 或更高版本](https://dotnet.microsoft.com/download/archives)。
@@ -39,21 +39,40 @@ ms.locfileid: "55884301"
 
 1. 在计算机上打开命令提示符窗口。 以下说明适用于所有 Windows、Linux 和 Mac 开发环境。
 
-2. 创建 ASP.NET Core MVC Web 应用程序：
+1. 创建 ASP.NET Core MVC Web 应用程序：
 
     ```
     dotnet new mvc -n LinuxProfilerTest
     ```
 
-3. 将工作目录切换到项目的根文件夹。
+1. 将工作目录切换到项目的根文件夹。
 
-4. 添加用于收集探查器跟踪的 NuGet 包：
+1. 添加用于收集探查器跟踪的 NuGet 包：
 
-    ```
+    ```shell
     dotnet add package Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
 
-5. 在 **HomeController.cs** 节中添加用于随机延迟几秒钟的一行代码：
+1. 启用 Application Insights 在 Program.cs 中：
+
+    ```csharp
+    public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+        WebHost.CreateDefaultBuilder(args)
+            .UseApplicationInsights() // Add this line of code to Enable Application Insights
+            .UseStartup<Startup>();
+    ```
+    
+1. 启用 Profiler 在 Startup.cs 中：
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddServiceProfiler(); // Add this line of code to Enable Profiler
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+1. 在 **HomeController.cs** 节中添加用于随机延迟几秒钟的一行代码：
 
     ```csharp
         using System.Threading;
@@ -68,7 +87,7 @@ ms.locfileid: "55884301"
             }
     ```
 
-6. 保存并提交对本地存储库的更改：
+1. 保存并提交对本地存储库的更改：
 
     ```
         git init
@@ -143,10 +162,7 @@ ms.locfileid: "55884301"
 
     ```
     APPINSIGHTS_INSTRUMENTATIONKEY: [YOUR_APPINSIGHTS_KEY]
-    ASPNETCORE_HOSTINGSTARTUPASSEMBLIES: Microsoft.ApplicationInsights.Profiler.AspNetCore
     ```
-
-    ![配置应用设置](./media/profiler-aspnetcore-linux/set-appsettings.png)
 
     更改应用设置时，站点会自动重启。 应用新设置后，探查器会立即运行两分钟。 然后，探查器每隔一小时运行两分钟。
 
@@ -160,16 +176,8 @@ ms.locfileid: "55884301"
 
 ## <a name="known-issues"></a>已知问题
 
-### <a name="the-enable-action-in-the-profiler-configuration-pane-doesnt-work"></a>“探查器配置”窗格中的“启用”操作不起作用
-
-> [!NOTE]
-> 如果使用 Linux 上的应用服务来托管应用，则不需要在 Application Insights 门户的“性能”窗格中再次启用探查器。 可以在项目中包含 NuGet 包，并在 Web 应用设置中设置 Application Insights **iKey** 值，以启用探查器。
-
-如果遵循 [Application Insights Profiler for Windows](./profiler.md) 的启用工作流，并在“配置探查器”窗格中选择“启用”，则会收到错误。 启用操作会尝试在 Linux 环境中安装 Windows 版本的探查器代理。
-
-我们正在努力解决此问题。
-
-![请勿尝试在“性能”窗格中再次启用探查器](./media/profiler-aspnetcore-linux/issue-enable-profiler.png)
+### <a name="profile-now-button-doesnt-work-for-linux-profiler"></a>配置文件现在按钮并不适用于 Linux Profiler
+App Insights profiler 的 Linux 版本尚不支持按需分析现在使用配置文件按钮。
 
 
 ## <a name="next-steps"></a>后续步骤

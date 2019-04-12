@@ -7,12 +7,12 @@ ms.topic: article
 ms.author: mbaldwin
 ms.date: 04/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 413ed4a56afad5ced221ba957af9ddb007622b6a
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: d7ccf370ae2f3f9add2b73797e8938d4580d81dd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59470043"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493138"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -37,11 +37,11 @@ Azure 磁盘加密可在标准层 VM 上使用，包括 [A、D、DS、G、GS 和
 
 ## <a name="bkmk_LinuxOSSupport"></a>Azure 磁盘加密支持哪些 Linux 分发版？
 
-子集上支持 azure 磁盘加密[Azure 认可的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)，这本身就是所有可能的发行版的子集。
+子集上支持 azure 磁盘加密[Azure 认可的 Linux 分发版](../virtual-machines/linux/endorsed-distros.md)，这本身就是所有的 Linux 服务器可能分发的子集。
 
  ![支持 Azure 磁盘加密的维恩图的 Linux 服务器分发](./media/azure-security-disk-encryption-faq/ade-supported-distros.png)
 
-Azure 不认可的发行版不支持 Azure 磁盘加密，并且这些认可，只有以下 Linux 服务器分发和版本支持 Azure 磁盘加密：
+Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且这些认可，只有以下分发版和版本支持 Azure 磁盘加密：
 
 | Linux 分发版 | 版本 | 支持加密的卷类型|
 | --- | --- |--- |

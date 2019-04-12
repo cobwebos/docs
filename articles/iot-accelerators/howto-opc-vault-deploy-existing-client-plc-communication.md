@@ -1,5 +1,5 @@
 ---
-title: 保护通信的 OPC 客户端和使用 Azure IoT OPC UA 证书管理的 OPC PLC |Microsoft Docs
+title: 保护通信的 OPC 客户端和 OPC PLC 与 OPC 保管库-Azure |Microsoft Docs
 description: 通过登录他们使用 OPC 保管库 CA 的证书保护的 OPC 客户端和 OPC PLC 的通信。
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: c437f6db21956d1be5e4f6d3512f325f37ca7308
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759398"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59493979"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>保护 OPC 客户端和 OPC PLC 的通信
 
-Azure IoT OPC UA 证书管理，也称为 OPC 保管库是一个微服务，可以配置注册，然后管理证书生命周期的 OPC UA 服务器和客户端应用程序在云中。 本文介绍如何通过签名他们使用 OPC 保管库 CA 的证书保护的 OPC 客户端和 OPC PLC 的通信。
+OPC 保管库是一个微服务，可以配置、 注册和管理证书生命周期的 OPC UA 服务器和客户端应用程序在云中。 本文介绍如何通过签名他们使用 OPC 保管库 CA 的证书保护的 OPC 客户端和 OPC PLC 的通信。
 
 在以下设置中，OPC 客户端测试与 OPC PLC 的连接。 默认情况下，连接是不可能因为这两个组件未配有正确的证书。 如果使用证书的 OPC UA 组件未尚未设置，它将生成在启动时的自签名的证书。 但是，可以由证书颁发机构 (CA) 签署的证书，将其安装在 OPC UA 组件。 这是 OPC 客户端和 OPC PLC 后，启用连接。 下面的工作流描述的过程。 OPC UA 安全的一些背景信息可在[本文档](https://opcfoundation.org/wp-content/uploads/2014/05/OPC-UA_Security_Model_for_Administrators_V1.00.pdf)白皮书。 可以在 OPC UA 规范中找到完整的信息。
 
@@ -47,7 +47,7 @@ OPC 保管库的脚本：
 docker-compose -f connecttest.yml up
 ```
 
-**确认**
+**验证**
 
 验证日志中有安装的第一个在没有证书。 此处 OPC PLC （类似显示 OPC 客户端注册） 的日志输出:...
 ```
@@ -59,7 +59,7 @@ opcplc-123456 | [20:51:32 INF] Rejected certificate store contains 0 certs
 ```
 如果您看到报告的证书，请按照上述准备步骤并删除 docker 卷。
 
-验证连接到 OPC PLC 已失败。 应看到以下输出中 OPC 客户端日志输出：
+验证连接到 OPC PLC 已失败。 应看到以下输出的 OPC 客户端日志输出：
 
 ```
 opcclient-123456 | [20:51:35 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
@@ -92,7 +92,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
     
 1. 转到[OPC 保管库网站](https://opcvault.azurewebsites.net/)。
 
-1. 选择 `Register New`
+1. Select `Register New`
 
 1. 从日志输出输入 OPC PLC 信息`CreateSigningRequest information`上相应的输入字段中的区域`Register New OPC UA Application`页上，选择`Server`为 ApplicationType。
 
@@ -175,7 +175,7 @@ opcplc-123456 | [20:54:39 INF] Rejected certificate store contains 0 certs
 应用程序证书的颁发者是 CA`CN=Azure IoT OPC Vault CA, O=Microsoft Corp.`和 OPC PLC 信任此 CA 的签名还所有的证书。
 
 
-验证已成功创建连接到 OPC PLC 和 OPC 客户端可以从 OPC PLC 读取数据。 应看到以下输出中 OPC 客户端日志输出：
+验证已成功创建连接到 OPC PLC 和 OPC 客户端可以从 OPC PLC 读取数据。 应看到以下输出的 OPC 客户端日志输出：
 ```
 opcclient-123456 | [20:54:42 INF] Create secured session for endpoint URI 'opc.tcp://opcplc-123456:50000/' with timeout of 10000 ms.
 opcclient-123456 | [20:54:42 INF] Session successfully created with Id ns=3;i=1085867946.
@@ -189,7 +189,7 @@ opcclient-123456 | [20:54:42 INF] Execute 'OpcClient.OpcTestAction' action on no
 opcclient-123456 | [20:54:42 INF] Action (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258') completed successfully
 opcclient-123456 | [20:54:42 INF] Value (ActionId: 000 ActionType: 'OpcTestAction', Endpoint: 'opc.tcp://opcplc-123456:50000/' Node 'i=2258'): 10/20/2018 20:54:42
 ```
-如果看到以下输出，则 OPC PLC 是现在信任 OPC 客户端和反向转换，因为两者都具有现在由 CA 签名的证书并且这两个信任证书的位置由该 CA 签名。
+如果看到以下输出，则 OPC PLC 是现在由于都有现在由 CA 签名的证书和信任证书的位置信任 OPC 客户端，反之亦然，由该 CA 签名。
 
 > [!NOTE] 
 > 尽管我们仅为 OPC PLC 介绍了第一个的两个验证步骤，但那些需要为 OPC 客户端还验证。

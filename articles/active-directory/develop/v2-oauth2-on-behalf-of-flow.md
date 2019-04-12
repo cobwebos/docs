@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f4de33bb02a008d6b394055c64119ac2a4fbc4d9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d0c7c29bf3094c3d5fc99b9906ee4469a6643317
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276042"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501583"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-on-behalf-of-flow"></a>Microsoft 标识平台和 OAuth 2.0 代理流
 
@@ -33,7 +33,7 @@ OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服
 
 > [!NOTE]
 >
-> - Microsoft 标识平台终结点不支持的所有方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[Microsoft 标识平台限制](active-directory-v2-limitations.md)。 具体而言，具有 Microsoft 帐户 (MSA) 和 Azure AD 受众的应用不支持已知的客户端应用程序。 因此，OBO 的常见同意模式不适用于同时登录个人和工作或学校帐户的客户端。 若要详细了解如何处理该流的此步骤，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
+> - Microsoft 标识平台终结点不支持的所有方案和功能。 若要确定是否应使用 Microsoft 标识平台终结点，请阅读[Microsoft 标识平台限制](active-directory-v2-limitations.md)。 具体而言，已知的客户端应用程序不支持具有 Microsoft 帐户 (MSA) 和 Azure AD 用户的应用。 因此，OBO 的常见同意模式不适用于同时登录个人和工作或学校帐户的客户端。 若要详细了解如何处理该流的此步骤，请参阅[为中间层应用程序获得同意](#gaining-consent-for-the-middle-tier-application)。
 > - 自 2018 年 5 月起，派生 `id_token` 的某些隐式流不能用于 OBO 流。 单页应用 (SPA) 应改为将**访问**令牌传递给中间层机密客户端，才能执行 OBO 流。 有关哪些客户端可以执行 OBO 调用的详细信息，请参阅[限制](#client-limitations)。
 
 ## <a name="protocol-diagram"></a>协议图
@@ -55,7 +55,7 @@ OAuth 2.0 代理流 (OBO) 适用于这样的用例：应用程序调用某个服
 
 ## <a name="service-to-service-access-token-request"></a>服务到服务访问令牌请求
 
-若要请求访问令牌，请使用以下参数向特定于租户的 v2.0 令牌终结点发出 HTTP POST。
+若要请求访问令牌，请对特定于租户的 Microsoft 标识平台令牌终结点使用以下参数进行 HTTP POST。
 
 ```
 https://login.microsoftonline.com/<tenant>/oauth2/v2.0/token
@@ -191,13 +191,13 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="gaining-consent-for-the-middle-tier-application"></a>为中间层应用程序获得同意
 
-具体取决于你的应用程序的受众，则可以考虑不同的策略来确保 OBO 流未成功。 在所有情况下，最终目标都是确保给予适当的同意。 但是，如何实现这一点取决于应用程序支持哪些用户。 
+具体取决于你的应用程序的受众，则可以考虑不同的策略来确保 OBO 流未成功。 在所有情况下，最终目标都是确保给予适当的同意。 但是，如何实现这一点取决于应用程序支持哪些用户。
 
 ### <a name="consent-for-azure-ad-only-applications"></a>同意 Azure AD 专用应用程序
 
 #### <a name="default-and-combined-consent"></a>/.default 和组合同意
 
-对于只需要登录工作或学校帐户的应用程序，传统的“已知客户端应用程序”方法就足够了。 中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 v2.0 终结点上，使用 [`/.default` 范围](v2-permissions-and-consent.md#the-default-scope)完成此操作。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
+对于只需要登录工作或学校帐户的应用程序，传统的“已知客户端应用程序”方法就足够了。 中间层应用程序将客户端添加到其清单中的已知客户端应用程序列表中，然后，客户端可以为自身和中间层应用程序触发组合同意流。 在 Microsoft 标识平台终结点，这是使用[`/.default`作用域](v2-permissions-and-consent.md#the-default-scope)。 当使用已知的客户端应用程序和 `/.default` 触发同意屏幕时，同意屏幕将显示客户端到中间层 API 的权限，同时还会请求中间层 API 所需的任何权限。 用户同意这两个应用程序，接着 OBO 流便开始工作。
 
 目前，个人 Microsoft 帐户系统不支持组合同意，因此这种方法不适合想要专门登录个人帐户的应用。 在租户中用作来宾帐户的个人 Microsoft 帐户使用 Azure AD 系统进行处理，可以通过组合同意。
 
@@ -211,7 +211,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ### <a name="consent-for-azure-ad--microsoft-account-applications"></a>同意 Azure AD + Microsoft 帐户应用程序
 
-由于个人帐户权限模型的限制以及缺少控制租户，个人帐户的同意要求与 Azure AD 略有不同。 既没有租户提供租户范围内的同意，也没有能力进行组合同意。 因此，会出现其他策略 - 请注意，这些策略也适用于仅需要支持 Azure AD 帐户的应用程序。
+由于在个人帐户的权限模型以及缺少的权限用于控制租户限制，个人帐户的许可要求会从 Azure AD 稍有不同。 既没有租户提供租户范围内的同意，也没有能力进行组合同意。 因此，会出现其他策略 - 请注意，这些策略也适用于仅需要支持 Azure AD 帐户的应用程序。
 
 #### <a name="use-of-a-single-application"></a>使用单一应用程序
 
@@ -219,7 +219,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJub25jZSI6IkFRQUJBQUFBQUFCbmZpRy1tQTZOVG
 
 ## <a name="client-limitations"></a>客户端限制
 
-如果客户端使用隐式流来获取 id_token，且该客户端在回复 URL 中也具有通配符，则 id_token 不能用于 OBO 流。  但是，即使发起客户端已注册通配符回复 URL，通过隐式授予流获取的访问令牌仍可由机密客户端兑换。
+如果客户端使用隐式流来获取的 id_token，并且该客户端还具有通配符在回复 URL，不能使用 OBO 流的 id_token。  但是，即使发起客户端已注册通配符回复 URL，通过隐式授予流获取的访问令牌仍可由机密客户端兑换。
 
 ## <a name="next-steps"></a>后续步骤
 

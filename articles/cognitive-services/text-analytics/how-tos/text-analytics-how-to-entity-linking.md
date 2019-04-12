@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
-ms.openlocfilehash: d1f4c72ec0a67baa6f523c1ab632903b0580f3a7
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339374"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505569"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
 
@@ -56,7 +56,7 @@ ms.locfileid: "58339374"
 | 数量      | 温度   | “32 degrees”    |
 | DateTime      | 暂无\*         | “6:30PM February 4, 2012”      | 
 | DateTime      | 日期          | “May 2nd, 2017”、“05/02/2017”   | 
-| DateTime     | 时间          | “8am”、“8:00”  | 
+| DateTime      | 时间          | “8am”、“8:00”  | 
 | DateTime      | DateRange     | “May 2nd to May 5th”    | 
 | DateTime      | TimeRange     | “6pm to 7pm”     | 
 | DateTime      | Duration      | “1 minute and 45 seconds”   | 
@@ -96,7 +96,7 @@ ms.locfileid: "58339374"
 
 + 创建 POST 请求。 查看此请求的 API 文档：[实体链接 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ 设置用于实体提取的 HTTP 终结点。 它必须包括`/entities`资源： `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
@@ -107,7 +107,7 @@ ms.locfileid: "58339374"
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
-在收到请求时执行分析。 该服务接受每个第二个到 1000年的请求，每分钟最多 100 个请求。 每个请求最大为 1 MB。
+在收到请求时执行分析。 该服务每秒最多接受 100 个请求，每分钟最多接受 1000 个请求。 每个请求最大为 1 MB。
 
 记住，该服务是无状态服务。 帐户中未存储任何数据。 结果会立即在响应中返回。
 
@@ -288,7 +288,7 @@ ms.locfileid: "58339374"
 ## <a name="see-also"></a>另请参阅 
 
  [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
+ [常见问题 (FAQ)](../text-analytics-resource-faq.md)</br>
  [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>后续步骤

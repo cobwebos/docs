@@ -17,25 +17,26 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b94004aa4b4834be80c13a044fcf7eb0023b6f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 88c47e1090673eb0a56f12c2eaf790a0ac851c6b
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259858"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501138"
 ---
 # <a name="azure-active-directory-access-tokens"></a>Azure Active Directory 访问令牌
 
 客户端可以使用访问令牌安全调用受 Azure 保护的 API。 Azure Active Directory (Azure AD) 访问令牌为 [JWT](https://tools.ietf.org/html/rfc7519)，即 Azure 签名的 Base64 编码 JSON 对象。 客户端应将访问令牌视为不透明的字符串，作为令牌的内容仅适用于资源。 在验证和调试时，开发人员可以使用 [jwt.ms](https://jwt.ms) 等站点来解码 JWT。 客户端可以使用各种协议从任一终结点（v1.0 或 v2.0）获取访问令牌。
 
-请求访问令牌时，Azure AD 还针对应用的使用返回一些有关访问令牌的元数据。 此信息包括访问令牌的到期时间及其有效范围。 此数据可让应用执行访问令牌的智能缓存，而无需分析访问令牌本身。
+当客户端请求访问令牌，Azure AD 还返回一些有关访问令牌，以便应用程序的元数据。 此信息包括访问令牌的到期时间及其有效范围。 此数据可让应用执行访问令牌的智能缓存，而无需分析访问令牌本身。
 
 如果应用程序是客户端可以请求访问的资源 (Web API)，则访问令牌会提供可在身份验证和授权中使用的有用信息，例如用户、客户端、颁发者、权限，等等。 
 
 请参阅以下部分，了解资源如何验证和使用访问令牌中的声明。
 
-> [!NOTE]
-> 使用个人帐户（例如 hotmail.com 或 outlook.com）测试客户端应用程序时，你可能会发现客户端收到的访问令牌是不透明的字符串。 这是因为，所访问的资源请求了已加密的旧式 MSA（Microsoft 帐户）票证，而客户端无法识别这些票证。
+> [!Important]
+> 根据创建访问令牌*受众*的令牌，这意味着拥有的令牌中的作用域的应用程序。  这是如何将资源设置`accessTokenAcceptedVersion`中[应用程序清单](reference-app-manifest.md#manifest-reference)到`2`允许客户端调用 v1.0 终结点以接收 v2.0 访问令牌。  同样，这就是原因更改访问令牌[可选声明](active-directory-optional-claims.md)对于在客户端，请执行更改的访问令牌时收到的请求一个令牌`user.read`，归 MS Graph 资源。  
+> 出于相同原因，测试与个人帐户 （例如 hotmail.com 或 outlook.com），在客户端应用程序时可能会发现您的客户端收到的访问令牌是不透明的字符串。 这是因为，所访问的资源请求了已加密的旧式 MSA（Microsoft 帐户）票证，而客户端无法识别这些票证。
 
 ## <a name="sample-tokens"></a>示例令牌
 

@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: fc6db4d02898ea0e8eed3cdf3d0b1a9788d943e9
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 302c382a7e19e9dcc4c979d31ddc0768655a1465
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439290"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501345"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>使用分布式跟踪（预览版）跟踪 Azure IoT 设备到云的消息
 
@@ -98,7 +98,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive -b public-preview
     ```
 
-    此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
 1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。
 
@@ -242,7 +242,7 @@ IoT 中心是用于支持分布式跟踪的第一批 Azure 服务之一。 随�
 
 | 元素名称 | 需要 | Type | 描述 |
 |-----------------|----------|---------|-----------------------------------------------------|
-| `sampling_mode` | 是 | Integer | 目前支持使用两个模式值来启用和禁用采样。 `1` 表示启用，`2` 表示禁用。 |
+| `sampling_mode` | 是 | Integer | 目前支持使用两个模式值来启用和禁用采样。 `1` 位于和，`2`处于关闭状态。 |
 | `sampling_rate` | 是 | Integer | 此值是百分比。 只允许使用从 `0` 到 `100`（含）的值。  |
 
 ## <a name="query-and-visualize"></a>查询和可视化
@@ -276,7 +276,7 @@ Log Analytics 显示的示例日志：
 若要可视化 IoT 消息流，请设置应用程序映射示例应用。 该示例应用使用 Azure 函数和事件中心将分布式跟踪日志发送到[应用程序映射](../application-insights/app-insights-app-map.md)。
 
 > [!div class="button"]
-> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">在 GitHub 上获取示例</a>
+> <a href="https://github.com/Azure-Samples/e2e-diagnostic-provision-cli" target="_blank">Github 上获取示例</a>
 
 下图显示了应用映射中的分布式跟踪，其中包含三个路由终结点：
 

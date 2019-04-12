@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/03/2019
+ms.date: 04/10/2019
 ms.author: carlrab
-ms.openlocfilehash: c63ce51f442c8d7552c382f0e103be443afb9c75
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360088"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495099"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -42,6 +42,8 @@ ms.locfileid: "59360088"
 |行存储 （在兼容性级别 150） 的批处理模式|有关信息，请参阅[行存储在批处理模式](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore)|
 |（在兼容性级别 150） 的内存授予反馈 （行模式）|有关信息，请参阅[内存授予反馈 （行模式）](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback)|
 |表变量延迟编译 （在兼容性级别 150）|有关信息，请参阅[表变量延迟的编译](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation)|
+|SQL Analytics|有关信息，请参阅[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
+| 托管实例的时区支持|有关详细信息，请参阅[中 Azure SQL 数据库托管实例所在的时区](sql-database-managed-instance-timezone.md)|
 |||
 
 ## <a name="march-2019"></a>2019 年 3 月
@@ -57,6 +59,7 @@ ms.locfileid: "59360088"
 
 | 文档改进 | 详细信息 |
 | --- | --- |
+| 托管实例的时区支持|有关详细信息，请参阅[中 Azure SQL 数据库托管实例所在的时区](sql-database-managed-instance-timezone.md)|
 | 添加了单一数据库的日志限制|有关详细信息，请参阅[单一数据库 vCore 资源限制](sql-database-vcore-resource-limits-single-databases.md)。|
 | 添加了弹性池和共用数据库的日志限制|有关详细信息，请参阅[弹性池 vCore 资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。|
 | 添加了事务日志速率调控| 为[事务日志速率调控](sql-database-resource-limits-database-server.md#transaction-log-rate-governance)添加了新内容。|
