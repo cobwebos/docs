@@ -42,7 +42,7 @@ ms.locfileid: "58904910"
 
 ### <a name="if-you-dont-have-an-azure-subscription"></a>如果你没有 Azure 订阅
 
-创建有效期为 7 天的免费密钥，获得计算机视觉服务的**[试用][computervision_resource]** 体验。 创建密钥后，复制密钥和终结点名称。 需要这些来[创建客户端](#create-client)。
+创建有效期为 7 天的免费密钥，获得计算机视觉服务的 **[试用][computervision_resource]** 体验。 创建密钥后，复制密钥和终结点名称。 需要这些来[创建客户端](#create-client)。
 
 创建密钥后，保留以下项：
 
