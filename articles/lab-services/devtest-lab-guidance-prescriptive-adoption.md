@@ -10,27 +10,31 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/11/2019
+ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: f16bdb8b89c2ce72c2a31a320d2dedbc4df09c81
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.openlocfilehash: 67bb81675dabd8aef28693a958a0ac39b1b441e7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242781"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549231"
 ---
 # <a name="set-up-azure-devtest-labs-infrastructure-in-your-enterprise"></a>在企业中设置 Azure 开发测试实验室基础结构
-由于从敏捷性、灵活性和经济学的角度来看，云具有很多优势，因此企业正在迅速采用它。 通常进入云的第一步是迁移开发和测试工作负载。 迁移这些工作负载时存在一组常见问题，例如以下问题： 
+企业快速采用云由于其[优势](/architecture/cloud-adoption/business-strategy/cloud-migration-business-case)敏捷性、 灵活性和经济性，同时还包括。 供客户使用云的常见第一步是开始开发和测试工作负荷。  开发测试实验室提供了[功能](devtest-lab-concepts.md)企业和支持的好处[密钥企业开发/测试方案](devtest-lab-guidance-get-started.md)。
 
-- 保护开发/测试资源
-- 开发/测试和生产之间的明确分离
-- IT 团队、应用程序团队和项目团队之间的资源划分
-- 管理成本
-- 允许在不影响安全性的情况下自行设置开发/测试基础结构
+将这些工作负荷迁移到云时，还有一组通用的问题：
+
+- [保护开发/测试资源](devtest-lab-guidance-governance-policy-compliance.md)
+- [管理和了解成本](devtest-lab-guidance-governance-cost-ownership.md)
+- 为开发人员启用自助服务，而不会影响企业安全性和符合性
+- 自动执行和扩展开发测试实验室，以覆盖其他方案
+- [缩放到数千个资源的基于开发测试实验室的解决方案](devtest-lab-guidance-scale.md)
+- [开发测试实验室的大规模部署](devtest-lab-guidance-orchestrate-implementation.md)
+- [开始使用的概念证明](devtest-lab-guidance-orchestrate-implementation.md)
 
 ## <a name="intended-audience"></a>目标受众
-本文档适用于负责建立和审核整体部署以及监督操作实践的 IT规划人员、架构师和经理。 因此，本文档重点介绍了整个流程和建议的设计原则，以促进实现安全稳定的开发环境，最终推动 Azure 开发测试实验室在组织内的采用。
+面向企业的文档适用于 IT 计划者、 架构师和管理员人数负责建立和查看总体部署和监督操作实践。 因此，本文档侧重于整体进程，建议设计原则来提升最终推动组织中的采用 Azure 开发测试实验室为安全和稳定开发/测试环境。
 
 ## <a name="next-steps"></a>后续步骤
-- [开始使用 Azure 开发测试实验室](devtest-lab-guidance-get-started.md)
+- [针对企业参考体系结构](devtest-lab-reference-architecture.md)

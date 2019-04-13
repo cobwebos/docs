@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5aa9a60c624e1bfaa1570d02bfd1a421fcab3301
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 87e1e57a969fc5e65302dcce44231773f7e74b3a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358303"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548813"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -42,18 +42,18 @@ ms.locfileid: "59358303"
 分类 | 回归 | 时间序列预测
 |-- |-- |--
 [逻辑回归](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression)| [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)| [弹性网络](https://scikit-learn.org/stable/modules/linear_model.html#elastic-net)
-[光 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[光 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[光 GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
+[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)|[Light GBM](https://lightgbm.readthedocs.io/en/latest/index.html)
 [渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#classification)|[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)|[渐进提升](https://scikit-learn.org/stable/modules/ensemble.html#regression)
 [决策树](https://scikit-learn.org/stable/modules/tree.html#decision-trees)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)|[决策树](https://scikit-learn.org/stable/modules/tree.html#regression)
-[最近近邻 K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[最近近邻 K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[最近近邻 K](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
-[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS 套索](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS 套索](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
+[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)|[K 近邻](https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-regression)
+[线性 SVC](https://scikit-learn.org/stable/modules/svm.html#classification)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)|[LARS Lasso](https://scikit-learn.org/stable/modules/linear_model.html#lars-lasso)
 [C 支持向量分类 (SVC)](https://scikit-learn.org/stable/modules/svm.html#classification)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)|[随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#regression)
 [随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)|[随机林](https://scikit-learn.org/stable/modules/ensemble.html#random-forests)
-[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极随机的树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
+[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)|[极端随机树](https://scikit-learn.org/stable/modules/ensemble.html#extremely-randomized-trees)
 [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)|[Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)| [Xgboost](https://xgboost.readthedocs.io/en/latest/parameter.html)
 [DNN 分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNClassifier)|[DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor) | [DNN 回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/DNNRegressor)|
 [DNN 线性分类器](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearClassifier)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)|[线性回归量](https://www.tensorflow.org/api_docs/python/tf/estimator/LinearRegressor)
-[Naive Bayes](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
+[朴素贝叶斯](https://scikit-learn.org/stable/modules/naive_bayes.html#bernoulli-naive-bayes)|
 [随机梯度下降 (SGD)](https://scikit-learn.org/stable/modules/sgd.html#sgd)|
 
 
@@ -84,7 +84,7 @@ ms.locfileid: "59358303"
 
 ## <a name="fetch-data-for-running-experiment-on-remote-compute"></a>在远程计算中提取用于运行试验的数据
 
-如果使用远程计算来运行试验，必须将数据提取包装在单独的 Python 脚本 `get_data()` 中。 此脚本在运行自动化机器学习试验的远程计算中运行。 `get_data` 无需通过为每个迭代网络提取数据。 如果不使用 `get_data`，则在远程计算中运行时，试验将会失败。
+如果使用远程计算来运行试验，必须将数据提取包装在单独的 Python 脚本 `get_data()` 中。 此脚本在运行自动化机器学习试验的远程计算中运行。 `get_data` 消除了通过网络为每个迭代提取数据的需要。 如果不使用 `get_data`，则在远程计算中运行时，试验将会失败。
 
 下面是 `get_data` 的示例：
 
@@ -173,7 +173,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 *   本地台式机或便携式计算机等本地计算机  – 如果数据集较小，并且仍处于探索阶段，则通常使用此选项。
 *   云中的远程计算机 – [Azure 机器学习托管计算](concept-azure-machine-learning-architecture.md#managed-and-unmanaged-compute-targets)是一个托管服务，可用于在 Azure 虚拟机群集上训练机器学习模型。
 
-有关包含本地和远程计算目标的示例 Notebook，请参阅 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/automl)。
+有关包含本地和远程计算目标的示例 Notebook，请参阅 [GitHub 站点](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning)。
 
 <a name='configure-experiment'></a>
 
@@ -238,6 +238,9 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
     * 唯一值很少的数字特征将转换为分类特征。
     * 根据分类特征的基数，执行标签编码或（哈希）独热编码。
 
+## <a name="ensemble-models"></a>系综模型
+系综学习的项而不是使用单个模型的多个模型，改进了机器学习结果和预测性能。 时使用自动完成机器学习，可以使用的系综模型定型[Caruana 系综选择算法与已排序的系综初始化](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)。 系综迭代将显示为您运行的最后一个迭代。
+
 ## <a name="time-series-forecasting"></a>时间序列预测
 对于时间序列预测任务类型必须要定义的其他参数。
 1. time_column_name-这是列的一个必需的参数，用于训练数据包含日期/时间序列中定义的名称。 
@@ -270,7 +273,6 @@ automl_config = AutoMLConfig(task='forecasting',
                              X=X_train,
                              y=y_train,
                              n_cross_validations=5,
-                             enable_ensembling=False,
                              path=project_folder,
                              verbosity=logging.INFO,
                              **time_series_settings)

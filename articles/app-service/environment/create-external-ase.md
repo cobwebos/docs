@@ -14,26 +14,28 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 4a2c90accaafea0c17456f8e6c5eae41199b17ed
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105159"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545410"
 ---
-> [!NOTE]
-> 每个应用服务环境都具有虚拟 IP (VIP)，可用于联系应用服务环境。
-> 
-> # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境 #
+# <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境
 
-Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。 可通过两种方法部署应用服务环境 (ASE)：
+Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络 (VNet) 的子网中。
+
+> [!NOTE]
+> 每个应用服务环境具有虚拟 IP (VIP)，用于联系应用服务环境。
+
+可通过两种方法部署应用服务环境 (ASE)：
 
 - 使用外部 IP 地址上的 VIP，通常称为外部 ASE。
 - 使用内部 IP 地址上的 VIP，通常称为 ILB ASE，因为内部终结点是内部负载均衡器 (ILB)。
 
 本文介绍如何创建外部 ASE。 有关 ASE 的概述，请参阅[应用服务环境简介][Intro]。 若要了解如何创建 ILB ASE，请参阅[创建和使用 ILB ASE][MakeILBASE]。
 
-## <a name="before-you-create-your-ase"></a>创建 ASE 前的准备工作 ##
+## <a name="before-you-create-your-ase"></a>创建 ASE 前的准备工作
 
 创建 ASE 后，不能更改以下项：
 
@@ -48,7 +50,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 > 选择 VNet 和指定子网时，请确保大小足够容纳未来的增长和扩展需求。 建议使用包含 256 个地址的大小 `/24`。
 >
 
-## <a name="three-ways-to-create-an-ase"></a>创建 ASE 的 3 种方法 ##
+## <a name="three-ways-to-create-an-ase"></a>创建 ASE 的 3 种方法
 
 可通过 3 种方法创建 ASE：
 
@@ -58,7 +60,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 外部 ASE 具有公共 VIP，这意味着到 ASE 中应用的所有 HTTP/HTTPS 流量都会命中一个可访问 Internet 的 IP 地址。 通过 ILB 创建的 ASE 具有 ASE 所用子网的 IP 地址。 托管在 ILB ASE 中的应用不直接向 Internet 公开。
 
-## <a name="create-an-ase-and-an-app-service-plan-together"></a>同时创建 ASE 和应用服务计划 ##
+## <a name="create-an-ase-and-an-app-service-plan-together"></a>同时创建 ASE 和应用服务计划
 
 应用服务计划是一个应用容器。 在应用服务中创建应用时，需选择或创建应用服务计划。 应用服务环境保存应用服务计划，应用服务计划保存应用。
 
@@ -142,7 +144,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 1. 选择“创建”以创建 ASE。 此过程还会创建应用服务计划和应用。 ASE、应用服务计划和应用都位于同一订阅和同一资源组中。 如果 ASE 需要单独的资源组，或者你需要 ILB ASE，请按照以下步骤自动创建 ASE。
 
 
-## <a name="create-an-ase-by-itself"></a>自动创建 ASE ##
+## <a name="create-an-ase-by-itself"></a>自动创建 ASE
 
 如果创建独立的 ASE，则其中不含任何内容。 空的 ASE 存在基础结构，每月仍会产生费用。 按照这些步骤通过 ILB 创建 ASE，或在其自身的资源组中创建 ASE。 创建 ASE 后，可使用常规过程在其中创建应用。 选择新 ASE 作为位置。
 
@@ -170,7 +172,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
     
     * 如果选择现有 VNet，需要在 ASE 创建期间创建新的子网。 不能在门户中使用预先创建的子网。如果使用资源管理器模板，则可创建具有现有子网的 ASE。 若要从模板创建 ASE，请参阅[从模板创建应用服务环境][MakeASEfromTemplate]。
 
-## <a name="app-service-environment-v1"></a>应用服务环境 v1 ##
+## <a name="app-service-environment-v1"></a>应用服务环境 v1
 
 仍可创建初版应用服务环境 (ASEv1) 的实例。 若要开始该过程，请在市场内搜索“应用服务环境 v1”。 采用与创建独立 ASE 相同的方式创建 ASE。 完成后，ASEv1 就有两个前端和两个辅助角色。 ASEv1 创建后，必须管理前端和辅助角色。 它们不会在创建应用服务计划时自动添加。 前端充当 HTTP/HTTPS 终结点，并将流量发送给辅助角色。 辅助角色是托管应用的角色。 可在创建 ASE 后，调整前端和辅助角色的数量。 
 

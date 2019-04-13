@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 24956dd51ef4c2544ce28005fa3bff31113e5959
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57848912"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521588"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>为 P2S 转换到公共 CA 网关证书
 
@@ -56,7 +56,7 @@ ms.locfileid: "57848912"
 
 ### <a name="classic"></a>经典
 
-1. 在客户端计算机上，导航到路径 %appdata%/Microsoft/Network/Connections/Cm/<gatewayID>。 在网关 ID 文件夹中，可以查看证书。
+1. 在客户端计算机上导航到路径`%appdata%/Microsoft/Network/Connections/Cm/<gatewayID>`。 在网关 ID 文件夹中，可以查看证书。
 2. 在证书的常规选项卡上，验证颁发机构是否是"DigiCert 全局根 CA"。 如果颁发机构并非此机构，则网关证书将作为更新的一部分进行转换。
 
 ## <a name="2-check-certificate-transition-schedule"></a>2.检查证书转换计划

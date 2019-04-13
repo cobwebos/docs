@@ -4,22 +4,24 @@ description: 本页提供有关 Web 应用程序防火墙 CRS 规则组和规则
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.date: 4/8/2019
+ms.date: 4/11/2019
 ms.author: victorh
-ms.openlocfilehash: 61ab41eed7703c82c2e5ef2a3b5412a9f56389ba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 0ad5cc76c0f4631fd60eea7d0a57e4740b6a9db3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279697"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523913"
 ---
-# <a name="list-of-web-application-firewall-crs-rule-groups-and-rules-offered"></a>提供的 Web 应用程序防火墙 CRS 规则组和规则列表
+# <a name="web-application-firewall-crs-rule-groups-and-rules"></a>Web 应用程序防火墙 CRS 规则组和规则
 
-出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这种保护是由根据 OWASP 核心规则集 2.2.9 或 3.0 定义的规则实现的。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
+出现常见的漏洞和攻击时，应用程序网关 Web 应用程序防火墙 (WAF) 可保护 Web 应用程序。 这是通过定义根据 OWASP 核心规则集 3.0 或 2.2.9 的规则。 可以逐个禁用这些规则。 本文包含当前提供的规则和规则集。
 
-下列表格列出了在将应用程序网关与 Web 应用程序防火墙结合使用时可用的规则。  每个表格显示了特定 CRS 版本的规则组中的规则。
+使用 web 应用程序防火墙的应用程序网关时，以下规则组和规则都可用。
 
-## <a name="owasp30"></a> OWASP_3.0
+# <a name="owasp-30tabowasp3"></a>[OWASP 3.0](#tab/owasp3)
+
+## <a name="owasp30"></a> 规则集
 
 ### <a name="General"></a> <p x-ms-format-detection="none">常规</p>
 
@@ -50,7 +52,7 @@ ms.locfileid: "59279697"
 |---|---|
 |920100|无效的 HTTP 请求行|
 |920130|未能分析请求正文。|
-|920140|多部分请求正文未通过严格验证 =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
+|920140|多部分请求正文未通过严格的验证|
 |920160|Content-Length HTTP 标头不是数字。|
 |920170|包含正文内容的 GET 或 HEAD 请求。|
 |920180|POST 请求缺少 Content-Length 标头。|
@@ -216,7 +218,9 @@ ms.locfileid: "59279697"
 |943110|可能的会话固定攻击 = 包含域外引用方的 SessionID 参数名称|
 |943120|可能的会话固定攻击 = 不包含引用方的 SessionID 参数名称|
 
-## <a name="owasp229"></a> OWASP_2.2.9
+# <a name="owasp-229tabowasp2"></a>[OWASP 2.2.9](#tab/owasp2)
+
+## <a name="owasp229"></a> 规则集
 
 ### <a name="crs20"></a> crs_20_protocol_violations
 
@@ -225,7 +229,7 @@ ms.locfileid: "59279697"
 |960911|无效的 HTTP 请求行|
 |981227|Apache 错误 = 请求中的 URI 无效。|
 |960912|未能分析请求正文。|
-|960914|多部分请求正文未通过严格验证 =     PE %@{REQBODY_PROCESSOR_ERROR}     BQ %@{MULTIPART_BOUNDARY_QUOTED}     BW %@{MULTIPART_BOUNDARY_WHITESPACE}     DB %@{MULTIPART_DATA_BEFORE}     DA %@{MULTIPART_DATA_AFTER}     HF %@{MULTIPART_HEADER_FOLDING}     LF %@{MULTIPART_LF_LINE}     SM %@{MULTIPART_SEMICOLON_MISSING}     IQ %@{MULTIPART_INVALID_QUOTING}     IH %@{MULTIPART_INVALID_HEADER_FOLDING}     FLE %@{MULTIPART_FILE_LIMIT_EXCEEDED}|
+|960914|多部分请求正文未通过严格的验证|
 |960915|多部分分析器检测到可能的不匹配边界。|
 |960016|Content-Length HTTP 标头不是数字。|
 |960011|包含正文内容的 GET 或 HEAD 请求。|
@@ -472,6 +476,8 @@ ms.locfileid: "59279697"
 |950921|后门访问|
 |950922|后门访问|
 
+---
+
 ## <a name="next-steps"></a>后续步骤
 
-查看以下文章，了解如何禁用 WAF 规则：[自定义 WAF 规则](application-gateway-customize-waf-rules-portal.md)
+了解如何禁用 WAF 规则：[自定义 WAF 规则](application-gateway-customize-waf-rules-portal.md)

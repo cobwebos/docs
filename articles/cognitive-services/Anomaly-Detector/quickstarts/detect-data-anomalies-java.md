@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 06cb4d32359014f3cbc67ed1f75988c794e6599e
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 1c8ce91a0fd8805b307e1e21bc08f9050b8a47d4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58619505"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547033"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-java"></a>快速入门：使用异常检测器 REST API 和 Java 时序数据中检测异常
 
@@ -82,7 +82,7 @@ ms.locfileid: "58619505"
 3. JSON 数据文件中读取
 
     ```java
-    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
+    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
     ```
 
 ## <a name="create-a-function-to-send-requests"></a>创建一个函数来发送请求
@@ -93,9 +93,9 @@ ms.locfileid: "58619505"
 
 3. 使用请求的`setHeader()`函数来设置`Content-Type`标头`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
 
-4. 使用请求的`setEntity()`要发送的数据的函数。   
+4. 使用请求的`setEntity()`要发送的数据的函数。
 
-5. 使用客户端`execute()`函数发送请求，并将其保存到`CloseableHttpResponse`对象。 
+5. 使用客户端`execute()`函数发送请求，并将其保存到`CloseableHttpResponse`对象。
 
 6. 创建`HttpEntity`对象来存储响应内容。 获取与内容`getEntity()`。 如果响应不为空，则将其返回。
 
@@ -127,16 +127,20 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
 
 1. 创建一个名为方法`detectAnomaliesBatch()`来检测异常在整个数据作为一个批。 调用`sendRequest()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。 获取结果，并将其打印到控制台。
 
-2. 在数据集中找到异常的位置。 响应的`isAnomaly`字段包含与给定的数据点是否异常的布尔值。 获取 JSON 数组并循环访问它，打印的任何索引`true`值。 如果任何发现，这些值对应于异常的数据点的索引。
+2. 如果响应包含`code`字段中，打印的错误代码和错误消息。
 
-    
-    ```java
-    static void detectAnomaliesBatch(String requestData) {
-        System.out.println("Detecting anomalies as a batch");
-        String result = sendRequest(batchDetectionUrl, endpoint, subscriptionKey, requestData);
-        if (result != null) {
-            System.out.println(result);
-            JSONObject jsonObj = new JSONObject(result);
+3. 否则，在数据集中发现的异常的位置。 响应的`isAnomaly`字段包含与给定的数据点是否异常的布尔值。 获取 JSON 数组并循环访问它，打印的任何索引`true`值。 如果任何发现，这些值对应于异常的数据点的索引。
+
+```java
+static void detectAnomaliesBatch(String requestData) {
+    System.out.println("Detecting anomalies as a batch");
+    String result = sendRequest(batchDetectionUrl, endpoint, subscriptionKey, requestData);
+    if (result != null) {
+        System.out.println(result);
+        JSONObject jsonObj = new JSONObject(result);
+        if (jsonObj.has("code")) {
+            System.out.println(String.format("Detection failed. ErrorCode:%s, ErrorMessage:%s", jsonObj.getString("code"), jsonObj.getString("message")));
+        } else {
             JSONArray jsonArray = jsonObj.getJSONArray("isAnomaly");
             System.out.println("Anomalies found in the following data positions:");
             for (int i = 0; i < jsonArray.length(); ++i) {
@@ -146,7 +150,8 @@ static String sendRequest(String apiAddress, String endpoint, String subscriptio
             System.out.println();
         }
     }
-    ```
+}
+```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测到异常情况状态的最新的数据点
 
@@ -165,14 +170,14 @@ static void detectAnomaliesLatest(String requestData) {
 1. 在您的应用程序，在包含将添加到请求的数据的 JSON 文件中读取的主要方法。
 
 2. 调用上面创建的两个异常情况检测函数。
-    
-    ```java
-    public static void main(String[] args) throws Exception {
-        String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "UTF-8");
-        detectAnomaliesBatch(requestData);
-        detectAnomaliesLatest(requestData);
-    }
-    ```
+
+```java
+public static void main(String[] args) throws Exception {
+    String requestData = new String(Files.readAllBytes(Paths.get(dataPath)), "utf-8");
+    detectAnomaliesBatch(requestData);
+    detectAnomaliesLatest(requestData);
+}
+```
 
 ### <a name="example-response"></a>示例响应
 

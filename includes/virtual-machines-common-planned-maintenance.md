@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/14/2018
 ms.author: shants
 ms.custom: include file
-ms.openlocfilehash: 34723a6ee37e54ea2d81e6d1143672e3ccb30d1e
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: c26c037455b6d14a906894ec39bf46630826950b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53805706"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551607"
 ---
 Azure 定期更新平台，以提高虚拟机的主机基础结构的可靠性、性能及安全性。 此类更新包括修补宿主环境中的软件组件、升级网络组件以及硬件解除授权等多项内容。 大多数此类更新不会影响托管的虚拟机。 但是，有些情况下更新确实会产生影响，Azure 会选择影响最小的更新方法：
 
@@ -27,9 +27,9 @@ Azure 定期更新平台，以提高虚拟机的主机基础结构的可靠性�
 
 有关管理计划维护的“操作说明”信息，请参阅 [Linux](../articles/virtual-machines/linux/maintenance-notifications.md) 或 [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) 的“处理计划维护通知”。
 
-## <a name="memory-preserving-maintenance"></a>内存保留维护
+## <a name="maintenance-not-requiring-a-reboot"></a>不需要重新启动的维护
 
-大多数无需重启的更新的目标是 VM 暂停少于 10 秒。 在某些情况下，使用内存保留维护机制，暂停 VM 最多 30 秒并保留 RAM 中的内存。 然后，虚拟机会进行恢复，其时钟会自动同步。 Azure 越来越多地使用实时迁移技术并改进内存保留维护机制以减少暂停持续时间。
+大多数不需要重新启动的维护的目标是不超过 10 秒暂停 vm。 在某些情况下，使用内存保留维护机制，暂停 VM 最多 30 秒并保留 RAM 中的内存。 然后，虚拟机会进行恢复，其时钟会自动同步。 Azure 越来越多地使用实时迁移技术并改进内存保留维护机制以减少暂停持续时间。
 
 各容错域将逐一应用这些无需重启的维护操作，如果收到任何警告运行状况信号，则进度停止。 
 

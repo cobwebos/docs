@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: bwren
-ms.openlocfilehash: 1f55e03d9a925bf939d627f376d29edf27461e74
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.openlocfilehash: 8fcab1ead4ab6135e715dc173829178e43f8af2a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56001113"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522704"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Azure Monitor 中的 Windows 事件日志数据源
 由于许多应用程序都会写入 Windows 事件日志，因此 Windows 事件日志是使用 Windows 代理收集数据的最常见[数据源](agent-data-sources.md)之一。  除了指定由需要监视的应用程序创建的任何自定义日志，还可以从标准日志（如系统和应用程序）中收集事件。
@@ -44,7 +44,7 @@ Azure Monitor 在事件创建时从受监视的事件日志中收集与所选严
 ## <a name="windows-event-records-properties"></a>Windows 事件的记录属性
 Windows 事件记录都有一个**事件**类型，并且具有下表中的属性：
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
 | Computer |从中收集事件的计算机的名称。 |
 | EventCategory |事件的类别。 |
@@ -54,7 +54,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 | EventLevelName |以文本形式指示的事件严重性。 |
 | EventLog |从中收集事件的事件日志名称。 |
 | ParameterXml |XML 格式的事件参数值。 |
-| ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，该值为 AOI-<workspace ID> |
+| ManagementGroupName |System Center Operations Manager 代理的管理组名称。  对于其他代理，此值是 `AOI-<workspace ID>` |
 | RenderedDescription |具有参数值的事件描述 |
 | 源 |事件源。 |
 | SourceSystem |从中收集事件的代理类型。 <br> OpsManager – Windows 代理，直接连接或 Operations Manager 管理 <br> Linux - 所有 Linux 代理  <br> AzureStorage – Azure 诊断 |
@@ -64,7 +64,7 @@ Windows 事件记录都有一个**事件**类型，并且具有下表中的属�
 ## <a name="log-queries-with-windows-events"></a>使用 Windows 事件的日志查询
 下表提供了检索 Windows 事件记录的不同日志查询的示例。
 
-| Query | 说明 |
+| Query | 描述 |
 |:---|:---|
 | 事件 |所有 Windows 事件。 |
 | Event &#124; where EventLevelName == "error" |所有 Windows 事件与错误的严重性。 |

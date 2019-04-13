@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: jrasnik
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: 0a9472dec9b76dfbde1690e11f13836746b0dfaa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 983a090942a77c2f40e0136b00acdc0a3d49c571
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57862890"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528333"
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL 数据库中扩展事件的事件文件目标代码
 
@@ -39,7 +39,7 @@ ms.locfileid: "57862890"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 * Azure 帐户和订阅。 可以注册[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 可以在其中创建表的任何数据库。
@@ -52,7 +52,7 @@ ms.locfileid: "57862890"
   * [直接指向下载位置的链接。](https://go.microsoft.com/fwlink/?linkid=616025)
 * 必须安装 [Azure PowerShell 模块](https://go.microsoft.com/?linkid=9811175)。
   
-  * 模块提供的命令，例如-**新建 AzStorageAccount**。
+  * 这些模块提供 **New-AzStorageAccount** 等命令。
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>阶段 1：Azure 存储容器的 PowerShell 代码
 
@@ -72,7 +72,7 @@ ms.locfileid: "57862890"
 
 ### <a name="powershell-code"></a>PowerShell 代码
 
-此 PowerShell 脚本假定你安装了 Az 模块。 有关信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
+此 PowerShell 脚本假定你已安装 Az 模块。 有关信息，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-Az-ps)。
 
 ```powershell
 ## TODO: Before running, find all 'TODO' and make each edit!!
@@ -463,9 +463,9 @@ GO
 
 ## <a name="output"></a>输出
 
-完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 此时将显示一个 **<event>** 元素，其中显示了一个 UPDATE 语句。
+完成 Transact-SQL 脚本后，请单击 **event_data_XML** 列标题下的单元格。 一个**\<事件 >** 元素，系统会显示一条 UPDATE 语句。
 
-下面是测试期间生成的一个 **<event>** 元素：
+下面是一个**\<事件 >** 测试期间生成的元素：
 
 
 ```xml

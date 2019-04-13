@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: df8196389ecb92229ff9495002c4bce394d7c048
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: ac2edb4c12e95a915790c1fadfb2dcdcce554aad
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58202701"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545567"
 ---
 # <a name="use-c-user-defined-functions-with-apache-hive-and-apache-pig-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 用户定义函数与 Apache Hive 和 Apache Pig 流式处理配合使用
 
@@ -46,8 +46,6 @@ Hive 和 Pig 都可以将数据传递到外部应用程序以进行处理。 此
 * 使用 [Mono (https://mono-project.com)](https://mono-project.com) 运行 .NET 应用程序的__基于 Linux 的 HDInsight__ 群集。 HDInsight 版本 3.6 附带了 Mono 版本 4.2.1。
 
     有关 Mono 与 .NET Framework 版本的兼容性的详细信息，请参阅 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)。
-
-    若要使用 Mono 的特定版本，请参阅[安装或更新 Mono](../hdinsight-hadoop-install-mono.md) 文档。
 
 * __基于 Windows 的 HDInsight__ 群集使用 Microsoft .NET CLR 运行 .NET 应用程序。
 

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: minxia
 author: mx-iao
 ms.reviewer: sgilley
-ms.date: 02/21/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: b41098907f801f7dae839a470249834b02c8d519
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: 78db7d21774750892c831ac220244c54594b78f3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338546"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548348"
 ---
 # <a name="train-tensorflow-and-keras-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务的训练 TensorFlow 和 Keras 模型
 
@@ -48,7 +48,7 @@ tf_est = TensorFlow(source_directory='./my-tf-proj',
 参数 | 描述
 --|--
 `source_directory` | 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
-`script_params` | 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
+`script_params` | 指定训练脚本的命令行参数的字典`entry_script`，格式为 < 命令行参数，值 > 对。  若要指定在 verbose 标志`script_params`，使用`<command-line argument, "">`。
 `compute_target` | 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集
 `entry_script` | 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages` | 要通过训练脚本所需的 conda 安装的 Python 包列表。 在这种情况下，训练脚本使用 `sklearn` 来加载数据，因此请指定要安装的包。  构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包

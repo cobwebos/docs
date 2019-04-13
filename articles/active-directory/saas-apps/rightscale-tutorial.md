@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c99bc4ef23ee2d8f4478bbaab591e7b36c7ea75
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 416a98c5f9c5a2ec813206ea9ea7f311b23e86cb
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109825"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525572"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>教程：Azure Active Directory 与 RightScale 的集成
 
@@ -132,7 +132,7 @@ ms.locfileid: "58109825"
 1. 在“RightScale 配置”部分，单击“配置 RightScale”，打开“配置登录”窗口。 从“快速参考”部分中复制“SAML 实体 ID 和 SAML 单一登录服务 URL”。
 
     ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_configure.png) 
-   <CS>
+
 1. 若要为应用程序配置 SSO，需要以管理员身份登录 RightScale 租户。
 
     a. 在顶部菜单中，单击“设置”选项卡，并选择“单一登录”。
@@ -164,7 +164,7 @@ ms.locfileid: "58109825"
     ![配置单一登录](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
     h. 单击“ **保存**”。
-   <CE>
+
    > [!TIP]
    > 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
    > 

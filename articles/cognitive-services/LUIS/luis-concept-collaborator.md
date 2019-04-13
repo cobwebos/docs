@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 9229a583dac526d09d7c5046c4bb81d30c9d4c3f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 34ae47723762215fdea99362419c3875dc2e5942
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55873557"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522739"
 ---
 # <a name="collaborating-with-other-authors"></a>与其他作者协作
 
-通过 LUIS 提供的协作组成员可共同创作应用。
+LUIS 应用需要一个所有者和多个可选协作者以允许多人共同创作一个应用。
 
 ## <a name="luis-account"></a>LUIS 帐户
 LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联。 每个 LUIS 帐户都分配有一个免费的[创作密钥](luis-concept-keys.md#authoring-key)，可用于创作该帐户可访问的所有 LUIS 应用。 
@@ -30,7 +30,8 @@ LUIS 帐户与一个 [Microsoft Live](https://login.live.com/) 帐户相关联�
 请参阅 [Azure Active Directory 租户用户](luis-how-to-collaborate.md#azure-active-directory-tenant-user)，了解有关 Active Directory 用户帐户的详细信息。 
 
 ## <a name="luis-app-owner"></a>LUIS 应用所有者
-创建应用的帐户是所有者。 每个应用都有一个所有者。 应用[“设置”](luis-how-to-collaborate.md)上列出了所有者。 使用此帐户可删除应用。 此外，若终结点配额达到每月限额的 75%，则还会向此帐户发送电子邮件。 
+
+创建应用程序的帐户所有者，并且每个应用都有一个所有者。 所有者列出的应用上**[设置](luis-how-to-collaborate.md)** 页。 所有者可以删除该应用程序终结点配额达到 75%的每月限制时接收电子邮件。 
 
 ## <a name="authorization-roles"></a>授权角色
 LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所有者是唯一可以删除应用的帐户。
@@ -61,6 +62,10 @@ LUIS 不支持所有者和协作者的不同角色，但有一个例外。 所�
 [导出](luis-how-to-manage-versions.md#export-version)基础版本。 各创建者导入该版本。 导入应用的创建者即为该版本的所有者。 修改应用后，导出该版本。 
 
 导出的应用为 JSON 格式的文件，可与导出的基础版进行比较，发现所做更改。 合并这些文件，创建一个新版本的 JSON 文件。 更改 JSON 中的 versionId 属性以表示新的合并版本。 将该版本导入原始应用。
+
+## <a name="collaborator-roles-vs-entity-roles"></a>协作者角色 vs 实体角色
+
+[实体角色](luis-concept-roles.md)适用于 LUIS 应用程序的数据模型。 协作者角色适用于创作访问的级别。 
 
 ## <a name="next-steps"></a>后续步骤
 

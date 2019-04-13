@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 92ffa02959f020789d14b3bea71763f3f5b9bb47
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084092"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527466"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核 
 
@@ -27,7 +27,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
 
 在本文中，学习如何使用这些内核以及使用它们的优势。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
@@ -69,7 +69,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
    
     可以直接在应用程序中使用预设上下文。
 
-- **单元 magic**。 PySpark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用的特殊命令（例如 `%%MAGIC` <args>）。 magic 命令必须是代码单元中的第一个字，并且允许多行内容。 magic 一字应该是单元中的第一个字。 在 magic 前面添加任何内容（即使是注释）会导致错误。     有关 magic 的详细信息，请参阅[此处](https://ipython.readthedocs.org/en/stable/interactive/magics.html)。
+- **单元 magic**。 PySpark 内核提供一些预定义的“magic”，这是可以结合 `%%` 调用的特殊命令（例如 `%%MAGIC` `<args>`）。 magic 命令必须是代码单元中的第一个字，并且允许多行内容。 magic 一字应该是单元中的第一个字。 在 magic 前面添加任何内容（即使是注释）会导致错误。     有关 magic 的详细信息，请参阅[此处](https://ipython.readthedocs.org/en/stable/interactive/magics.html)。
    
     下表列出可通过内核提供的不同 magic。
 

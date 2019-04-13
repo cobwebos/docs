@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: 888cc9d894861c7d7b808500cd60bbed9faa05d7
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56309111"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523386"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 
@@ -95,7 +95,7 @@ ML Services on HDInsight 可使用各种存储解决方案来保存数据、代�
 
 所有目录和文件引用现在都指向存储帐户 `wasb://container2@storage2.blob.core.windows.net`。 这是已指定的**名称节点**。
 
-必须在 storage2 上配置 /user/RevoShare/<SSH username> 目录，如下所示：
+你必须配置`/user/RevoShare/<SSH username>`目录**storage2** ，如下所示：
 
 
     hadoop fs -mkdir wasb://container2@storage2.blob.core.windows.net/user

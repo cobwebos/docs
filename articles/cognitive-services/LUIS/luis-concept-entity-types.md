@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 6e37466145af58a52a86a08a2a873e406c99b9e5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 59a05e7a20f6b229b37977a75d22611c0d5c31d9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895539"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528027"
 ---
 # <a name="entity-types-and-their-purposes-in-luis"></a>实体类型及其在 LUIS 中的目的
 
@@ -24,7 +24,15 @@ ms.locfileid: "58895539"
 
 ## <a name="entity-compared-to-intent"></a>实体与意向
 
-实体表示要提取的话语中的字词或短语。 话语可包括多个实体，也可不包含任何实体。 实体表示一种类，包含相似对象（位置、事项、人员、事件或概念）的集合。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 例如，新闻搜索应用可能包括“主题”、“源”、“关键字”和“发布日期”等实体，这些是用于搜索新闻的关键数据。 在旅行预订应用中，“位置”、“日期”、“航空公司”、“舱位等级”和“机票”均为航班预订（与“Bookflight”意向相关）的关键信息。
+实体表示要提取的话语中的字词或短语。 话语可包括多个实体，也可不包含任何实体。 客户端应用程序可能需要执行其任务，或将其用作多个选项的指南来向用户显示的实体。 
+
+实体：
+
+* 表示包括一系列类似对象 （位置、 内容、 人员、 事件或概念） 的类。 
+* 描述与意图相关的信息
+
+
+例如，新闻搜索应用可能包括“主题”、“源”、“关键字”和“发布日期”等实体，这些是用于搜索新闻的关键数据。 在旅行预订应用中，“位置”、“日期”、“航空公司”、“舱位等级”和“机票”均为航班预订（与“Bookflight”意向相关）的关键信息。
 
 相比之下，意向表示有关整个话语的预测。 
 
@@ -88,15 +96,15 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 
 |机器学习|可以标记|教程|示例<br>响应|实体类型|目的|
 |--|--|--|--|--|--|
-|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**复合实体**](#composite-entity)|实体的分组，不考虑实体类型。|
-|✔|✔|[✔](luis-quickstart-intent-and-hier-entity.md)|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**分层实体**](#hierarchical-entity)|简单实体的分组。|
-|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**列出**](#list-entity)|使用文本完全匹配法提取的项列表及其同义词。|
+|✔|✔|[✔](luis-tutorial-composite-entity.md)|[✔](luis-concept-data-extraction.md#composite-entity-data)|[**复合**](#composite-entity)|实体的分组，不考虑实体类型。|
+|✔|✔|-|[✔](luis-concept-data-extraction.md#hierarchical-entity-data)|[**分层**](#hierarchical-entity)|简单实体的分组。|
+|||[✔](luis-quickstart-intent-and-list-entity.md)|[✔](luis-concept-data-extraction.md#list-entity-data)|[**列表**](#list-entity)|使用文本完全匹配法提取的项列表及其同义词。|
 |混合||[✔](luis-tutorial-pattern.md)|[✔](luis-concept-data-extraction.md#patternany-entity-data)|[**Pattern.any**](#patternany-entity)|难以确定末尾部分的实体。|
 |||[✔](luis-tutorial-prebuilt-intents-entities.md)|[✔](luis-concept-data-extraction.md#prebuilt-entity-data)|[**预生成**](#prebuilt-entity)|已经过训练，可以提取各种类型的数据。|
 |||[✔](luis-quickstart-intents-regex-entity.md)|[✔](luis-concept-data-extraction.md#regular-expression-entity-data)|[**正则表达式**](#regular-expression-entity)|使用正则表达式来匹配文本。|
 |✔|✔|[✔](luis-quickstart-primary-and-secondary-data.md)|[✔](luis-concept-data-extraction.md#simple-entity-data)|[**简单**](#simple-entity)|包含单词或短语中的单个概念。|
 
-对于每个意向，只需在示例话语中标记机器学习到的实体。 机器学习到的实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endpoint-utterances.md)进行测试。 
+只有机器学习的内容的实体需要标记的示例语音样本。 机器学习到的实体最适合通过[终结点查询](luis-concept-test.md#endpoint-testing)和[查看终结点话语](luis-how-to-review-endoint-utt.md)进行测试。 
 
 需要在[模式](luis-how-to-model-intent-pattern.md)模板示例而不是意向用户示例中标记 Pattern.any 实体。 
 
@@ -117,33 +125,19 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 ![复合实体](./media/luis-concept-entities/composite-entity.png)
 
 [教程](luis-tutorial-composite-entity.md)<br>
-[实体的示例 JSON 响应](luis-concept-data-extraction.md#composite-entity-data)<br>
+[实体的 JSON 响应示例](luis-concept-data-extraction.md#composite-entity-data)<br>
 
 ## <a name="hierarchical-entity"></a>分层实体
 
+**层次结构的实体最终将被弃用。使用[实体角色](luis-concept-roles.md)以确定实体子类型，而不是分层实体。**
+
 分层实体是根据上下文学习到的一类简单实体，称为子级。
-
-如果数据具有以下特征，则非常适合使用此实体：
-
-* 是简单实体。
-* 在使用陈述的情况下彼此相关。
-* 使用特别选择的单词来指示每个子实体。 这些词汇的示例包括：from/to（从/到）、leaving/headed to（离开/前往）、away from/toward（离开/前往）。
-* 子级往往在同一个话语中。 
-* 需要由客户端应用作为一个信息单元进行分组和处理。
-
-对于以下情况，请不要使用此实体：
-
-* 不管上下文如何，某个实体都需要与子级的文本完全匹配。 请改用[列表实体](#list-entity)。 
-* 某个实体需要与其他实体类型之间存在父子关系。 请使用[复合实体](#composite-entity)。
 
 ![分层实体](./media/luis-concept-entities/hierarchical-entity.png)
 
-[教程](luis-quickstart-intent-and-hier-entity.md)<br>
-[实体的示例 JSON 响应](luis-concept-data-extraction.md#hierarchical-entity-data)<br>
-
 ### <a name="roles-versus-hierarchical-entities"></a>角色与分层实体
 
-模式的[角色](luis-concept-roles.md#roles-versus-hierarchical-entities)将同一问题作为分层实体予以解决，但适用于所有实体类型。 目前，角色只能在模式中使用。 角色在意向的示例话语中不可用。  
+[角色](luis-concept-roles.md)解决分层实体但适用于所有实体类型相同的问题。  
 
 ## <a name="list-entity"></a>列表实体
 
@@ -158,7 +152,7 @@ LUIS 提供许多类型的实体。 请根据数据的提取方式以及提取�
 ![列表实体](./media/luis-concept-entities/list-entity.png)
 
 [教程](luis-quickstart-intent-and-list-entity.md)<br>
-[实体的示例 JSON 响应](luis-concept-data-extraction.md#list-entity-data)
+[实体的 JSON 响应示例](luis-concept-data-extraction.md#list-entity-data)
 
 ## <a name="patternany-entity"></a>Pattern.any 实体
 
@@ -168,7 +162,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 
 * 实体的末尾可能与话语的其余文本相混淆。 
 [教程](luis-tutorial-pattern.md)<br>
-[实体的示例 JSON 响应](luis-concept-data-extraction.md#patternany-entity-data)
+[实体的 JSON 响应示例](luis-concept-data-extraction.md#patternany-entity-data)
 
 **示例**  
 假设某个客户端应用程序需要基于标题搜索书籍，则 pattern.any 会提取完整的标题。 一个使用 pattern.any 进行这种书籍搜索的模板话语是 `Was {BookTitle} written by an American this year[?]`。 
@@ -195,7 +189,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ![编号预生成实体](./media/luis-concept-entities/number-entity.png)
 
 [教程](luis-tutorial-prebuilt-intents-entities.md)<br>
-[实体的示例 JSON 响应](luis-concept-data-extraction.md#prebuilt-entity-data)
+[实体的 JSON 响应示例](luis-concept-data-extraction.md#prebuilt-entity-data)
 
 其中一些预生成实体是在开源[识别器 - 文本](https://github.com/Microsoft/Recognizers-Text)项目中定义的。 如果你的特定区域性或实体当前不受支持，请通过为项目做贡献来获得支持。 
 
@@ -243,7 +237,7 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ![正则表达式实体](./media/luis-concept-entities/regex-entity.png)
 
 [教程](luis-quickstart-intents-regex-entity.md)<br>
-[实体的示例 JSON 响应](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
+[实体的 JSON 响应示例](luis-concept-data-extraction.md#regular-expression-entity-data)<br>
 
 ## <a name="simple-entity"></a>简单实体 
 
@@ -256,30 +250,21 @@ Patterns.any 是一种长度可变的占位符，仅在模式的模板话语中�
 ![简单实体](./media/luis-concept-entities/simple-entity.png)
 
 [教程](luis-quickstart-primary-and-secondary-data.md)<br/>
-[实体的示例响应](luis-concept-data-extraction.md#simple-entity-data)<br/>
+[实体响应示例](luis-concept-data-extraction.md#simple-entity-data)<br/>
 
 ## <a name="entity-limits"></a>实体限制
 
 查看[限制](luis-boundaries.md#model-boundaries)，了解可添加到模型中的每种类型的实体的数量。
 
-## <a name="composite-vs-hierarchical-entities"></a>复合实体与分层实体
-
-复合实体和分层实体都具有父子关系，并且都是机器学习的实体。 通过机器学习，LUIS 能够基于不同上下文（字词排列方式）来理解实体。 复合实体更为灵活，因为它们允许使用不同的实体类型作为子实体。 分层实体的子实体只能是简单实体。 
-
-|Type|目的|示例|
-|--|--|--|
-|分层实体|简单实体的父子关系|Location.Origin=纽约<br>Location.Destination=伦敦|
-|复合实体|父子实体：预生成的实体、列表实体、简单实体、分层实体| 数字=3<br>列表=头等舱<br>prebuilt.datetimeV2=3 月 5 日|
-
 ## <a name="if-you-need-more-than-the-maximum-number-of-entities"></a>如果所需实体数超过最大实体数 
 
-可能需要使用分层实体和复合实体。 分层实体反映共享某些特征或属于同一类别的实体之间的关系。 子实体均为其父实体的类别的成员。 例如，名为 PlaneTicketClass 的分层实体可能具有子实体 EconomyClass 和 FirstClass。 层次结构仅跨越一个级别。  
+您可能需要使用复合实体与实体角色结合使用。
 
-复合实体表示整体的一部分。 例如，名为 PlaneTicketOrder 的复合实体可能具有子实体 Airline、Destination、DepartureCity、DepartureDate 和 PlaneTicketClass。 复合实体可从预先存在的简单实体、分层实体的子实体或预生成的实体生成。  
+复合实体表示整体的一部分。 例如，名为 PlaneTicketOrder 的复合实体可能具有子实体 Airline、Destination、DepartureCity、DepartureDate 和 PlaneTicketClass。
 
 LUIS 还提供非机器学习的列表实体类型，可让 LUIS 应用指定固定的值列表。 请参阅 [LUIS 边界](luis-boundaries.md)参考内容，查看列表实体类型的限制。 
 
-如果已考虑使用分层、复合和列表实体，但所需超过了限制，请与支持部门联系。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
+如果您已考虑过这些实体，并仍需要更多限制，请联系支持。 为此，请收集有关系统的详细信息，转到 [LUIS](luis-reference-regions.md#luis-website) 网站，然后选择“支持”。 如果所持 Azure 订阅包含支持服务，请与 [Azure 技术支持](https://azure.microsoft.com/support/options/)联系。 
 
 ## <a name="next-steps"></a>后续步骤
 

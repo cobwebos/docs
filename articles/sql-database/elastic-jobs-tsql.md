@@ -12,12 +12,12 @@ author: jaredmoo
 ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 4f4032551efbf517ab47a64afc393cc57ace6bc1
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 59e0e4cf82af9851dacf3ec030575ed392571331
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621492"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523760"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>使用 Transact-SQL (T-SQL) 创建和管理弹性数据库作业
 
@@ -193,7 +193,7 @@ CREATE TABLE [dbo].[Test]([TestId] [int] NOT NULL);',
 默认情况下，作业代理将查找创建表以存储返回的结果。 因此，与用于输出凭据的凭据相关联的登录将需要具有足够的权限来执行此操作。 如果要提前手动创建表，则需要具有以下属性：
 1. 具有结果集的正确名称和数据类型的列。
 2. 数据类型为 uniqueidentifier 的 internal_execution_id 的其他列。
-3. internal_execution_id 列上名为“IX_<TableName>_Internal_Execution_ID”的非聚集索引。
+3. 名为非聚集索引`IX_<TableName>_Internal_Execution_ID`internal_execution_id 列上。
 
 连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
 
@@ -284,7 +284,7 @@ select * from jobs.jobsteps
 ```
 
 
-## <a name="begin-ad-hoc-execution-of-a-job"></a>开始作业的即席执行
+## <a name="begin-ad-hoc-execution-of-a-job"></a>开始即席执行作业
 
 以下示例演示如何立即启动作业。  
 连接到[作业数据库](sql-database-job-automation-overview.md#job-database)，然后运行以下命令：
@@ -691,7 +691,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **\@output_table_name =** ] 'output_table_name'  
 如果不为 null，则为将命令的首个结果集写入到其中的表的名称。 如果此表不存在，则会根据返回结果集的架构来创建它。 如果 output_type 等于 SqlDatabase，则必须指定此项。 output_table_name 为 nvarchar(128)，默认值为 NULL。
 
-[  **\@job_version =** ] job_version 输出  
+[ **\@job_version =** ] job_version OUTPUT  
 一个输出参数，将会为其分配新作业版本号。 job_version 为 int。
 
 [ **\@max_parallelism =** ] max_parallelism OUTPUT  
@@ -815,7 +815,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **\@output_table_name =** ] 'output_table_name'  
 如果不为 null，则为将命令的首个结果集写入到其中的表的名称。 如果此表不存在，则会根据返回结果集的架构来创建它。 如果 output_type 等于 SqlDatabase，则必须指定此项。 若要将 output_server_name 的值重置为 NULL，请将此参数的值设置为 ''（空字符串）。 output_table_name 为 nvarchar(128)，默认值为 NULL。
 
-[  **\@job_version =** ] job_version 输出  
+[ **\@job_version =** ] job_version OUTPUT  
 一个输出参数，将会为其分配新作业版本号。 job_version 为 int。
 
 [ **\@max_parallelism =** ] max_parallelism OUTPUT  
@@ -862,7 +862,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **\@step_name =** ] 'step_name'  
 要删除的步骤的名称。 必须指定 step_id 或 step_name。 step_name 为 nvarchar(128)。
 
-[  **\@job_version =** ] job_version 输出  
+[ **\@job_version =** ] job_version OUTPUT  
 一个输出参数，将会为其分配新作业版本号。 job_version 为 int。
 
 #### <a name="return-code-values"></a>返回代码值
@@ -961,7 +961,7 @@ sp_add_job 必须从创建作业代理时指定的作业代理数据库运行。
 [ **\@target_group_name =** ] 'target_group_name'  
 要创建的目标组的名称。 target_group_name 为 nvarchar(128)，没有默认值。
 
-[  **\@target_group_id =** ] target_group_id 输出目标组已成功创建时分配给作业的标识号。 target_group_id 是类型为 uniqueidentifier 的输出变量，默认值为 NULL。
+[ **\@target_group_id =** ] target_group_id OUTPUT 分配给已成功创建的作业的目标组标识号。 target_group_id 是类型为 uniqueidentifier 的输出变量，默认值为 NULL。
 
 #### <a name="return-code-values"></a>返回代码值
 0（成功）或 1（失败）

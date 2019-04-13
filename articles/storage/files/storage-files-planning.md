@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 609e774c36ab685d017f311a74c8680dbb9750c9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d4361fc37d01b351d20a273aa39f558e9b00faa4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59283012"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525919"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>规划 Azure 文件部署
 
@@ -109,9 +109,9 @@ Azure 文件提供两个性能层： 标准和高级。
 >
 > 限制 = 3 * 基线 IOPS。 （最多 max 100,000 IOPS)。
 >
-> 出口率 = 60 MiB/秒 + 0.06 预配的 GiB （最多 6 GiB/秒）
+> 出口率 = 60 MiB/秒 + 0.06 * 预配 GiB
 >
-> 入口速率 = 40 MiB/秒 + 0.04 预配的 GiB （最多 4 GiB)
+> 入口速率 = 40 MiB/秒 + 0.04 * 预配 GiB
 
 共享大小可以随时增加在任何时间和降低，但可以减少一次自最后一个增加每隔 24 小时。 大小更改后的 24 小时内，IOPS/吞吐量规模更改将生效。
 
@@ -128,9 +128,9 @@ Azure 文件提供两个性能层： 标准和高级。
 |10,240 *     | 10,240  | 最多 30,720  | 675 | 450   |
 |33,792 *     | 33,792  | 最多 100,000 个 | 2,088 | 1,392   |
 |51,200 *     | 51,200  | 最多 100,000 个 | 3,132 | 2,088   |
-|100,000 *    | 100,000 | 最多 100,000 个 | 6,204 | 4,136   |
+|102,400 *    | 100,000 | 最多 100,000 个 | 6,204 | 4,136   |
 
-目前，最多 5 TiB 文件共享大小是在公共预览版中，虽然大小高达 102 TiB 的受限公共预览版，若要请求访问完整的有限公共预览版[此调查。](https://aka.ms/azurefilesatscalesurvey)
+目前，最多 5 TiB 文件共享大小是在公共预览版中，虽然大小高达 100 TiB 的受限公共预览版，若要请求访问完整的有限公共预览版[此调查。](https://aka.ms/azurefilesatscalesurvey)
 
 ### <a name="bursting"></a>爆发
 

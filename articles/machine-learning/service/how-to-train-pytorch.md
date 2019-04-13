@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 12/04/2018
 ms.custom: seodec18
-ms.openlocfilehash: a5ddc17f6200ba2d43d67fcd2e4bcc35c224e6cb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 9ae7795381f036bb819ce24554d8cea94ceb5552
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004057"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548536"
 ---
 # <a name="train-pytorch-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务训练 PyTorch 模型
 
@@ -46,7 +46,7 @@ pt_est = PyTorch(source_directory='./my-pytorch-proj',
 参数 | 描述
 --|--
 `source_directory` |  包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算
-`script_params` |  指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
+`script_params` |  指定训练脚本的命令行参数的字典`entry_script`，格式为 < 命令行参数，值 > 对。  若要指定在 verbose 标志`script_params`，使用`<command-line argument, "">`。
 `compute_target` |  运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集
 `entry_script` |  要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages` |  要通过训练脚本所需的 conda 安装的 Python 包列表。 构造函数具有名为 `pip_packages` 的另一个参数，可以将其用于任何所需的 pip 包

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 9daa7fc15ecbb4065c8d26bb5cefa27f17f66f4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c57a45145d9abc43d0ca79839ea297dfc025db9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878246"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524083"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>通过 PowerShell 创建使用 Azure Data Lake Storage Gen1 作为默认存储的 HDInsight 群集
 
 > [!div class="op_single_selector"]
 > * [使用 Azure 门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [使用 PowerShell （对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-> * [使用 PowerShell （对于附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [使用 PowerShell（对于附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 
 了解如何在 Azure PowerShell 中配置使用 Azure Data Lake Storage Gen1 作为默认存储的 Azure HDInsight 群集。 有关如何创建使用 Data Lake Storage Gen1 作为额外存储的 HDInsight 群集的说明，请参阅[创建使用 Data Lake Storage Gen1 作为额外存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell.md)。
@@ -215,7 +215,7 @@ ms.locfileid: "58878246"
     成功完成该 cmdlet 后，应会出现列出群集详细信息的输出。
 
 ## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-data-lake-storage-gen1"></a>在 HDInsight 群集上运行测试作业以使用 Data Lake Storage Gen1
-配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 为此，请运行一个示例 Hive 作业，使用 Data Lake Storage Gen1 的 <cluster root>/example/data/sample.log 中已提供的示例数据创建一个表。
+配置 HDInsight 群集后，可在该群集上运行测试作业，确保该群集可访问 Data Lake Storage Gen1。 若要执行此操作，请运行示例 Hive 作业以创建使用已在数据湖存储 Gen1 中提供的示例数据的表*\<群集根 > /example/data/sample.log*。
 
 在本部分，我们将与创建的 HDInsight Linux 群集建立安全外壳 (SSH) 连接，然后运行示例 Hive 查询。
 
@@ -255,7 +255,7 @@ ms.locfileid: "58878246"
 
 ## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [Azure 门户：创建 HDInsight 群集以使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure 门户：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 928860cd9b6493200ed8a14b7654f6a6f32c45d5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 293901aca3fa1a94c9c6340d2e04f47914db0e07
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259382"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524457"
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>将 Adafruit Feather HUZZAH ESP8266 连接到云中的 Azure IoT 中心
 
@@ -128,7 +128,7 @@ ms.locfileid: "59259382"
    sudo usermod -a -G <group-owner-name> <username>
    ```
 
-   `<group-owner-name>` 是你在上一步中获取的组所有者名称。 `<username>` 是 Ubuntu 用户名。
+   `<group-owner-name>` 是在上一步骤中获取的组所有者名称。 `<username>` 是 Ubuntu 用户名。
 
 3. 需要注销 Ubuntu，并重新登录，更改才会显示。
 
@@ -220,7 +220,7 @@ ms.locfileid: "59259382"
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>将示例应用程序部署到 Feather HUZZAH ESP8266
 
-1. 在 Visual Studio Code 中，单击状态栏的 <Select Serial Port>，然后单击 Feather HUZZAH ESP8266 的串行端口。
+1. 在 Visual Studio Code 中，单击**\<选择串行端口 >** 状态栏，并单击 Feather HUZZAH ESP8266 的串行端口。
 
 2. 输入`F1`，然后键入**Arduino** ，然后选择**arduino 开发：上传**生成和部署到 Feather HUZZAH ESP8266 的示例应用程序。
 

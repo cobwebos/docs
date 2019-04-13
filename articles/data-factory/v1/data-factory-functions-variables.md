@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5293c44a3e4494593e069ab45fbc38806c6999ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1d1c9ef5ba355f1944a362bf0e6f5d7ba91a700a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57976770"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523930"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure 数据工厂 - 函数和系统变量
 > [!NOTE]
@@ -59,7 +59,7 @@ ms.locfileid: "57976770"
 
 1. 指定数据选择查询（请参阅[数据移动活动](data-factory-data-movement-activities.md)一文引用的连接器文章）。
    
-   调用数据工厂函数的语法是：**$$<function>**，用于数据选择查询以及活动和数据集中的其他属性。  
+   用于调用数据工厂函数的语法是：  **$$\<函数 >** 用于数据选择查询以及活动和数据集的其他属性。  
 2. 指定活动输入集合中含数据工厂函数的输入依赖项。
    
     指定输入依赖项表达式不需要 $$。     

@@ -10,12 +10,12 @@ ms.author: gwallace
 ms.date: 09/24/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c2bc4d4034d63ed190f6964caa2bccf1ad8590a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1697f479cf013f2ef94dd5a8a2fc637d72e6e18a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57833809"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549230"
 ---
 # <a name="my-first-powershell-workflow-runbook"></a>我的第一个 PowerShell 工作流 Runbook
 
@@ -33,7 +33,7 @@ ms.locfileid: "57833809"
 
 * Azure 订阅。 如果还没有帐户，可以[激活 MSDN 订户权益](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)或注册[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 * [自动化帐户](automation-offering-get-started.md) ，用来保存 Runbook 以及向 Azure 资源进行身份验证。  此帐户必须有权启动和停止虚拟机。
-* Azure 虚拟机。 停止并启动该虚拟机，因此它不应为生产用 VM。
+* Azure 虚拟机。 停止和启动此虚拟机，因此它不应为生产用 VM。
 
 ## <a name="step-1---create-new-runbook"></a>步骤 1 - 创建新的 Runbook
 
@@ -77,10 +77,10 @@ ms.locfileid: "57833809"
 在发布 Runbook 使其可在生产中使用之前，需对其进行测试以确保其能正常工作。 测试 Runbook 时，可以运行其“草稿”版本并以交互方式查看其输出。
 
 1. 单击“测试窗格”  打开测试窗格。
-1. 单击“启动”以启动测试  。 此选项应仅已启用的选项。
+1. 单击“启动”以启动测试  。 此选项应该是唯一的已启用选项。
 1. 将创建一个 [Runbook 作业](automation-runbook-execution.md) 并显示其状态。
 
-   作业状态初始为*排队*，该值指示它正在等待的 runbook 辅助角色在云中可用。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”。  
+   作业状态初始为“排队”，该值指示它正在等待云中的 Runbook 辅助角色可用。 在某个辅助角色认领此作业后，作业状态将变为“正在启动”，然后当 Runbook 实际开始运行时，此状态将变为“正在运行”。  
 
 1. Runbook 作业完成后，会显示其输出。 在此示例中，应会显示 Hello World。
 
@@ -90,7 +90,7 @@ ms.locfileid: "57833809"
 
 ## <a name="step-4---publish-and-start-the-runbook"></a>步骤 4 - 发布和启动 Runbook
 
-创建的 Runbook 仍处于“草稿”模式。 在生产环境中运行之前，必须发布它。 当发布 Runbook 时，可以用草稿版本覆盖现有的已发布版本。 在此示例中，由于刚创建了 Runbook，因此还没有已发布版本。
+创建的 Runbook 仍处于“草稿”模式。 必须首先发布此 Runbook，然后才能在生产中运行它。 当发布 Runbook 时，可以用草稿版本覆盖现有的已发布版本。 在此示例中，由于刚创建了 Runbook，因此还没有已发布版本。
 
 1. 单击“发布”以发布该 Runbook，并在出现提示时单击“是”。
 1. 如果向左滚动以在“Runbook”窗格中查看该 Runbook，它会显示“已发布”的“创作状态”。
@@ -110,20 +110,20 @@ ms.locfileid: "57833809"
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-outputtile.png)  
 
 1. 关闭“输出”窗格。
-1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 您应该只会看到*Hello World*在输出流，但此视图可以显示 runbook 作业，如 Verbose 和错误的其他流，是否 runbook 向其写入。
+1. 单击“所有日志”打开 Runbook 作业的“流”窗格。 应该只会在输出流中看到 *Hello World*，但此视图也可以显示 Runbook 作业的其他流，例如，“详细”和“错误”（如果 Runbook 向其写入）。
 
    ![作业摘要](media/automation-first-runbook-textual/job-pane-status-blade-alllogstile.png)
 
-1. 关闭流页和作业页返回到 MyFirstRunbook 页。
-1. 单击**作业**若要打开此 runbook 的作业页。 此页列出此 runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
+1. 关闭“流”页和“作业”页，以便返回到“MyFirstRunbook”页。
+1. 单击“作业”打开此 Runbook 的“作业”页。 此页列出此 runbook 创建的所有作业。 由于只运行该作业一次，应该只会看到一个列出的作业。
 
    ![作业](media/automation-first-runbook-textual/runbook-control-job-tile.png)
 
-1. 您可以单击此作业，打开在启动 runbook 时查看过的同一作业页面。 这样便可以回溯并查看为特定 runbook 创建的任何作业的详细信息。
+1. 可以单击此作业，打开在启动 Runbook 时查看过的同一“作业”页。 这样便可以回溯并查看为特定 runbook 创建的任何作业的详细信息。
 
 ## <a name="step-5---add-authentication-to-manage-azure-resources"></a>步骤 5 - 添加身份验证来管理 Azure 资源
 
-已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 不能但除非已使用中提到的凭据身份验证[先决条件](#prerequisites)。 可使用 Connect-AzureRmAccount cmdlet 实现此目的。
+已经测试并发布 Runbook，但到目前为止它不执行任何有用的操作。 需要让其管理 Azure 资源。 然而，除非已使用[先决条件](#prerequisites)中提到的凭据对其进行身份验证，否则它将无法进行管理。 可使用 Connect-AzureRmAccount cmdlet 实现此目的。
 
 1. 通过单击 MyFirstRunbook-Workflow 窗格上的“编辑”打开文本编辑器。
 2. 由于不再需要 **Write-Output** 行，因此请直接删除它。
@@ -138,7 +138,7 @@ ms.locfileid: "57833809"
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
    -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-   $AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   $AzureContext = Select-AzureRmSubscription -SubscriptionId $Conn.SubscriptionID
    ```
 
    > [!IMPORTANT]
@@ -148,13 +148,13 @@ ms.locfileid: "57833809"
 > 即使刚刚创建了一个新的自动化帐户，也可能需要[更新模块](automation-update-azure-modules.md)。
 
 1. 单击“测试”窗格，以便测试 Runbook。
-1. 单击“启动”以启动测试  。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此操作确认凭据有效。
+1. 单击“启动”以启动测试  。 完成后，你会收到类似于以下内容的输出，显示帐户中的基本信息。 此操作是对凭据有效的确认。
 
    ![身份验证](media/automation-first-runbook-textual/runbook-auth-output.png)
 
 ## <a name="step-6---add-code-to-start-a-virtual-machine"></a>步骤 6 – 添加用于启动虚拟机的代码
 
-现在 Runbook 正在向 Azure 订阅进行身份验证，你可以管理资源。 将添加一个命令，用于启动虚拟机。 可以在 Azure 订阅中选取任何虚拟机，现在您又该名称在 runbook 中硬编码。 如果你正在跨多个订阅来管理资源，你必须使用 **-AzureRmContext**参数与[Get-azurermcontext](/powershell/module/azurerm.profile/get-azurermcontext)。
+现在 Runbook 正在向 Azure 订阅进行身份验证，你可以管理资源。 将添加一个命令，用于启动虚拟机。 可以在 Azure 订阅中选取任何虚拟机。而现在，需将该名称硬编码到 Runbook。 如果要跨多个订阅管理资源，需要使用 -AzureRmContext 参数以及 [Get-AzureRmContext](/powershell/module/azurerm.profile/get-azurermcontext)。
 
 1. 在 Connect-AzureRmAccount 后面键入 Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'NameofResourceGroup'（提供要启动的虚拟机的名称和资源组名称）。  
 
@@ -167,7 +167,7 @@ ms.locfileid: "57833809"
    $Conn = Get-AutomationConnection -Name AzureRunAsConnection
    Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID -ApplicationId $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
 
-   $AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
+   $AzureContext = Select-AzureRmSubscription -SubscriptionId $Conn.SubscriptionID
 
    Start-AzureRmVM -Name 'VMName' -ResourceGroupName 'ResourceGroupName' -AzureRmContext $AzureContext
    }

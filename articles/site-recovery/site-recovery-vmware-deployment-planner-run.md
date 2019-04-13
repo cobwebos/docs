@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
-ms.openlocfilehash: 1cf324887a225ecb9ba2cb40176a1f358e40a8e1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a3aef06e6ee0d3989a4da8fdd93d27d28f2eede4
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361991"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527673"
 ---
 # <a name="run-the-azure-site-recovery-deployment-planner-for-vmware-disaster-recovery-to-azure"></a>运行用于从 VMware 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 本文为适用于 VMware 到 Azure 生产部署的 Azure Site Recovery Deployment Planner 用户指南。
@@ -22,7 +22,7 @@ ms.locfileid: "59361991"
 可使用以下四种模式之一运行该命令行工具 (ASRDeploymentPlanner.exe)：
 
 1.  [分析](#profile-vmware-vms)
-2.  [报告生成](#generate-report)
+2.  [报表生成](#generate-report)
 3.  [获取吞吐量](#get-throughput)
 
 首先，请以分析模式运行该工具，收集 VM 数据变动量和 IOPS。 接下来，运行该工具以生成报表，确定网络带宽、存储要求和 DR 成本。
@@ -136,7 +136,7 @@ ASRDeploymentPlanner.exe -Operation StartProfiling -Virtualization VMware -Direc
 
 
 ## <a name="generate-report"></a>生成报告
-该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报告输出，对所有部署建议进行了汇总。 该报告名为 DeploymentPlannerReport_<unique numeric identifier>.xlsm，置于指定目录中。
+该工具生成一个启用了宏的 Microsoft Excel 文件（XLSM 文件）作为报告输出，对所有部署建议进行了汇总。 报告名为`DeploymentPlannerReport_<unique numeric identifier>.xlsm`，置于指定目录中。
 
 >[!NOTE]
 >该报告需要将小数点符号配置为“.”，以便在运行部署计划器的服务器上生成成本估算。 如果已在 Windows 计算机上设置了“,”作为小数点符号，请转到“控制面板”中的“更改日期、时间或数字格式”，然后转到“其他设置”将小数点符号更改为“.”。
@@ -214,7 +214,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="percentile-value-used-for-the-calculation"></a>用于计算的百分位值
-**在分析期间收集的性能指标的哪个默认百分位值？ 该工具使用时生成的报告**
+**在生成报告时，该工具将使用分析期间收集的性能指标的哪个默认百分位值？**
 
 该工具默认使用分析所有 VM 期间收集的读/写 IOPS、写入 IOPS 和数据变动量的第 95 百分位值。 此指标可确保系统不使用第 100 百分位峰值（在发生临时事件时，可能会出现在 VM 中）来确定目标存储帐户和源带宽需求。 例如，临时事件可能是一天运行一次的备份作业、定期发生的数据库索引编制或分析报告生成活动，或者其他类似的短期时间点事件。
 
@@ -226,7 +226,7 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 ```
 
 ## <a name="growth-factor-considerations"></a>增长系数考虑因素
-**我为何应考虑增长系数时部署进行计划？**
+**为何在对部署进行计划时应考虑增长系数？**
 
 假设使用量在一段时间内可能会增多，则考虑工作负荷特征的增长就至关重要。 在保护就位以后，如果工作负荷特征发生更改，则除非先禁用保护再重新启用保护，否则在切换到其他存储帐户后将无法获得保护。
 
@@ -242,10 +242,10 @@ ASRDeploymentPlanner.exe -Operation GenerateReport -Virtualization VMware  -Dire
 
 * [本地摘要](site-recovery-vmware-deployment-planner-analyze-report.md#on-premises-summary)
 * [建议](site-recovery-vmware-deployment-planner-analyze-report.md#recommendations)
-* [VM <>-存储位置](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
+* [VM<->存储位置](site-recovery-vmware-deployment-planner-analyze-report.md#vm-storage-placement)
 * [兼容的 VM](site-recovery-vmware-deployment-planner-analyze-report.md#compatible-vms)
 * [不兼容的 VM](site-recovery-vmware-deployment-planner-analyze-report.md#incompatible-vms)
-* [成本的估算](site-recovery-vmware-deployment-planner-cost-estimation.md)
+* [成本估算](site-recovery-vmware-deployment-planner-cost-estimation.md)
 
 ![Deployment Planner](media/site-recovery-vmware-deployment-planner-analyze-report/Recommendations-v2a.png)
 

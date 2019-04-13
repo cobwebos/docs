@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 04/11/2019
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b11c71f7f5a329a836d379a16afe66c08572ccde
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 8d710a86bb63765ea8a1a777818ca5f99e38d3a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177982"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548029"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>使用 Azure Active Directory 添加或更新用户的配置文件信息
 使用 Azure Active Directory (Azure AD) 来添加用户配置文件信息，包括配置文件图片、工作特定信息和某些设置。 有关添加新用户的详细信息，请参阅[如何添加或删除 Azure Active Directory 中的用户](add-users-azure-active-directory.md)。
@@ -26,7 +26,7 @@ ms.locfileid: "56177982"
 如你所见，用户配置文件中提供的信息比在创建用户时能够添加的信息多。 这些附加信息全都是可选信息，组织可以根据需要添加。
 
 ## <a name="to-add-or-change-profile-information"></a>添加或更改配置文件信息的步骤
-1. 以目录全局管理员或用户管理员身份登录到 [Azure 门户](https://portal.azure.com/)。
+1. 登录到[Azure 门户](https://portal.azure.com/)作为组织的用户管理员。
 
 2. 依次选择“Azure Active Directory”、“用户”，然后选择一个用户。 例如，Alain Charon。
 
@@ -40,7 +40,7 @@ ms.locfileid: "56177982"
 
     - **配置文件图片。** 为用户帐户选择缩略图图像。 该图显示在 Azure Active Directory 和用户的个人页面上（如 myapps.microsoft.com 页面）。
 
-    - **身份。** 添加与帐户相关的任何信息（如婚后姓氏或更改后的用户名）。 
+    - **身份。** 添加或更新用户，如已婚姓氏一个附加的标识值。 名字和姓氏的值中，可以单独设置此名称。 例如，可以将它包括姓名首字母缩写，公司名称，或更改显示名称的序列。 在另一个示例中，为两个名为 Chris Green 的用户可以使用的标识字符串将其名称设置为 Chris B.Green Chris。 Green (Contoso)。
 
     - **工作信息。** 添加与工作相关的任何信息（如用户的职务、部门或经理）。
 

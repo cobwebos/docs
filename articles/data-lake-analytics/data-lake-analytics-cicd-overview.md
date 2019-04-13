@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 09/14/2018
-ms.openlocfilehash: b6c5df1ef0c93508595e27cbda315281aa3461b5
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: b035be727df2dfecb613da79681affd740c69bec
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124280"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544812"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>如何为 Azure Data Lake Analytics 设置 CI/CD 管道  
 
@@ -66,7 +66,7 @@ U-SQL 项目中的 U-SQL 脚本可能包含针对 U-SQL 数据库对象的查询
 详细了解 [U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md)。
 
 >[!NOTE]
->U-SQL 数据库项目目前处于公开预览状态。 如果该项目中有 DROP 语句，生成将失败。 DROP 语句不久将会被允许。
+>DROP 语句可能会导致意外删除问题。 若要启用 DROP 语句，您需要显式指定 MSBuild 参数。 **AllowDropStatement**将启用非数据相关的删除操作，如删除程序集和 drop 表值函数。 **AllowDataDropStatement**将启用与数据相关的删除操作，如删除表和删除架构。 您必须使用 AllowDataDropStatement 之前启用 AllowDropStatement。
 >
 
 ### <a name="build-a-u-sql-project-with-the-msbuild-command-line"></a>使用 MSBuild 命令行生成 U-SQL 项目
@@ -79,11 +79,11 @@ msbuild USQLBuild.usqlproj /p:USQLSDKPath=packages\Microsoft.Azure.DataLake.USQL
 
 参数的定义和值如下：
 
-* **USQLSDKPath=<U-SQL Nuget 包>\build\runtime**。 此参数引用 U-SQL 语言服务的 NuGet 包的安装路径。
+* **USQLSDKPath =\<U-SQL 的 Nuget 包 > \build\runtime**。 此参数引用 U-SQL 语言服务的 NuGet 包的安装路径。
 * **USQLTargetType=Merge 或 SyntaxCheck**：
     * **Merge**。 Merge 模式编译代码隐藏文件。 示例包括 **.cs**、**.py** 和 **.r** 文件。 它将生成的用户定义代码库内联到 U-SQL 脚本中。 示例包括 dll 库、Python 或 R 代码。
     * **SyntaxCheck**。 SyntaxCheck 模式首先将代码隐藏文件合并到 U-SQL 脚本中。 然后编译 U-SQL 脚本以验证代码。
-* **DataRoot=<DataRoot path>**。 只有 SyntaxCheck 模式需要 DataRoot。 使用 SyntaxCheck 模式生成脚本时，MSBuild 会检查脚本中对数据库对象的引用。 在生成之前，请设置匹配的本地环境，其中包含生成计算机的 DataRoot 文件夹中 U-SQL 数据库中的引用对象。 你还可以通过[引用 U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)管理这些数据库依赖项。 MSBuild 只会检查数据库对象引用，而不检查文件。
+* **DataRoot =\<DataRoot 路径 >**。 只有 SyntaxCheck 模式需要 DataRoot。 使用 SyntaxCheck 模式生成脚本时，MSBuild 会检查脚本中对数据库对象的引用。 在生成之前，请设置匹配的本地环境，其中包含生成计算机的 DataRoot 文件夹中 U-SQL 数据库中的引用对象。 你还可以通过[引用 U-SQL 数据库项目](data-lake-analytics-data-lake-tools-develop-usql-database.md#reference-a-u-sql-database-project)管理这些数据库依赖项。 MSBuild 只会检查数据库对象引用，而不检查文件。
 * **EnableDeployment=true** 或 **false**。 EnableDeployment 指示是否允许在生成过程中部署引用的 U-SQL 数据库。 如果引用了 U-SQL 数据库项目，并在 U-SQL 脚本中使用了数据库对象，请将此参数设置为 **true**。
 
 ### <a name="continuous-integration-through-azure-pipelines"></a>通过 Azure Pipelines 进行持续集成

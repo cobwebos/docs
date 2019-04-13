@@ -8,12 +8,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
-ms.openlocfilehash: 29ced587022bc15e82c756cb5f1b80554cfcceb2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 1a61a825ce223282e85c9262c613814530ba130f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009391"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527296"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>将本地 VMware 虚拟机或物理服务器的灾难恢复设置到辅助站点
 
@@ -57,7 +57,7 @@ Azure Site Recovery 为 VMware 和 Hyper-V 客户提供一流的无缝 DRaaS 解
 **支持矩阵** | [单击此处了解详细信息](./vmware-physical-azure-support-matrix.md)|[下载 ASR Scout 兼容矩阵](https://aka.ms/asr-scout-cm)
 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 完成本教程：
 
 - [查看](vmware-physical-secondary-support-matrix.md)所有组件的支持要求。
@@ -188,7 +188,7 @@ Scout Update 6 是累积更新。 其中包含从 Update 1 到 Update 5 的所�
 - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
 - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
 - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
-- RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+- RHEL5、OL5、OL6、SUSE 10、SUSE 11 的 UA update4 位：UA_\<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
   1. 解压缩 .zip 文件。
   2. **RX 服务器**：将 RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz 复制到 RX 服务器并将其解压缩。 在解压缩的文件夹中运行 **/Install**。
   3. **配置服务器和进程服务器**：将 **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** 复制到配置服务器和进程服务器。 双击以运行该文件。<br>

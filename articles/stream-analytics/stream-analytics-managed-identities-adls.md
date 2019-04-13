@@ -1,19 +1,18 @@
 ---
-title: 在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证
+title: 对 Azure 数据湖存储 Gen1 输出到 Azure Stream Analytics 作业进行身份验证
 description: 本文介绍如何使用托管标识在 Azure Data Lake Storage Gen1 输出中对 Azure 流分析作业进行身份验证。
-services: stream-analytics
 author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/8/2019
+ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9eb66a9000c9add0718c6edf6674a26ce8e479b3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 695591fedfacb34742335a6e9d6ca32a9c77eb7e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257971"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522055"
 ---
 # <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Stream Analytics 到 Azure 数据湖存储 Gen1 使用管理的标识进行身份验证
 
@@ -100,33 +99,37 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
    此属性告知 Azure 资源管理器为你的 Azure 流分析作业创建和管理标识。
 
    **示例作业**
-
-    ```json
-    {
-      "Name": "AsaJobWithIdentity",
-      "Type": "Microsoft.StreamAnalytics/streamingjobs",
-      "Location": "West US",
-      "Identity": {
-        "Type": "SystemAssigned",
-      },
-      "properties": {
-        "sku": {
-          "name": "standard"
-        },
-        "outputs": [
-          {
-            "name": "string",
-            "properties":{
-              "datasource": {
-                "type": "Microsoft.DataLake/Accounts",
-                "properties": {
-                  "accountName": "myDataLakeAccountName",
-                  "filePathPrefix": "cluster1/logs/{date}/{time}",
-                  "dateFormat": "YYYY/MM/DD",
-                  "timeFormat": "HH",
-                  "authenticationMode": "Msi"
-                }
-              }
+   
+   ```json
+   {
+     "Name": "AsaJobWithIdentity",
+     "Type": "Microsoft.StreamAnalytics/streamingjobs",
+     "Location": "West US",
+     "Identity": {
+       "Type": "SystemAssigned",
+     },
+     "properties": {
+       "sku": {
+         "name": "standard"
+       },
+       "outputs": [
+         {
+           "name": "string",
+           "properties":{
+             "datasource": {
+               "type": "Microsoft.DataLake/Accounts",
+               "properties": {
+                 "accountName": "myDataLakeAccountName",
+                 "filePathPrefix": "cluster1/logs/{date}/{time}",
+                 "dateFormat": "YYYY/MM/DD",
+                 "timeFormat": "HH",
+                 "authenticationMode": "Msi"
+             }
+           }
+         }
+       }
+     }
+   }
    ```
   
    **示例作业响应**
@@ -145,7 +148,8 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
         "sku": {
           "name": "standard"
         },
-      }
+     }
+   }
    ```
 
    记下作业响应中的主体 ID，以授予对所需 ADLS 资源的访问权限。
@@ -169,18 +173,17 @@ Azure 流分析支持使用 Azure Data Lake Storage (ADLS) Gen1 输出进行托�
    User -Id 14c6fd67-d9f5-4680-a394-cd7df1f9bacf -Permissions WriteExecute
    ```
 
-   若要了解有关上述 PowerShell 命令的详细信息，请参阅[集 AzDataLakeStoreItemAclEntry](https://docs.microsoft.com/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry)文档。
+   若要了解有关上述 PowerShell 命令的详细信息，请参阅[集 AzDataLakeStoreItemAclEntry](/powershell/module/az.datalakestore/set-azdatalakestoreitemaclentry)文档。
 
 ## <a name="limitations"></a>限制
 此功能不支持以下功能：
 
-1.  **多租户访问**:为给定的 Stream Analytics 作业创建的服务主体将驻留在 Azure Active Directory 租户的作业创建，且不能使用对驻留在不同的 Azure Active Directory 租户的资源。 因此，仅可以在同一 Azure Active Directory 租户与 Azure Stream Analytics 作业中的第 1 代 ADLS 资源上使用 MSI。 
+1. **多租户访问**:为给定的 Stream Analytics 作业创建的服务主体将驻留在 Azure Active Directory 租户的作业创建，且不能使用对驻留在不同的 Azure Active Directory 租户的资源。 因此，仅可以在同一 Azure Active Directory 租户与 Azure Stream Analytics 作业中的第 1 代 ADLS 资源上使用 MSI。 
 
-2.  **[用户分配标识](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/overview)**： 不支持这意味着用户不能输入他们自己的服务主体，以供其 Stream Analytics 作业。 由 Azure Stream Analytics 生成的服务主体。 
-
+2. **[用户分配标识](../active-directory/managed-identities-azure-resources/overview.md)**： 不支持。 这意味着用户不能输入他们自己的服务主体，以供其 Stream Analytics 作业。 由 Azure Stream Analytics 生成的服务主体。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [使用流分析创建 Data lake Store 输出](../data-lake-store/data-lake-store-stream-analytics.md)
+* [使用流分析创建 Data Lake Store 输出](../data-lake-store/data-lake-store-stream-analytics.md)
 * [使用 Visual Studio 在本地测试流分析查询](stream-analytics-vs-tools-local-run.md)
-* [测试本地使用 Azure Stream Analytics tools for Visual Studio 的实时数据](stream-analytics-live-data-local-testing.md) 
+* [使用适用于 Visual Studio 的 Azure 流分析工具在本地测试实时数据](stream-analytics-live-data-local-testing.md) 

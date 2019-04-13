@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/05/2019
 ms.author: bwren
-ms.openlocfilehash: 0a29e453c723ecc9ac378ee337365525587aaef2
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: c2babb5a86d69881b6a76c6dceae80a24a891f6c
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444117"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549297"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Azure Monitor 日志查询中的计算机组
 使用 Azure Monitor 中的计算机组可为一组特定的计算机设定[日志查询](../log-query/log-query-overview.md)的范围。  每个组使用定义的查询或通过从不同源导入组填充计算机。  当日志查询中包括组时，结果仅限于与组中的计算机匹配的记录。
@@ -125,17 +125,17 @@ ms.locfileid: "57444117"
 ## <a name="computer-group-records"></a>计算机组记录
 会在通过 Active Directory 或 WSUS 创建的每个计算机组成员身份的 Log Analytics 工作区中创建记录。  这些记录的类型为 **ComputerGroup**，并且具有下表中的属性。  不会基于日志查询为计算机组创建记录。
 
-| 属性 | 说明 |
+| 属性 | 描述 |
 |:--- |:--- |
-| Type |*ComputerGroup* |
-| SourceSystem |*SourceSystem* |
-| Computer |成员计算机的名称。 |
-| 组 |组名称。 |
-| GroupFullName |包括源和源名称的组的完整路径。 |
-| GroupSource |从中收集组的源。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |从中收集组的源名称。  对于 Active Directory，这是域名。 |
-| ManagementGroupName |SCOM 代理的管理组名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
-| TimeGenerated |创建或更新计算机组的日期和时间。 |
+| `Type` |*ComputerGroup* |
+| `SourceSystem` |*SourceSystem* |
+| `Computer` |成员计算机的名称。 |
+| `Group` |组名称。 |
+| `GroupFullName` |包括源和源名称的组的完整路径。 |
+| `GroupSource` |从中收集组的源。 <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
+| `GroupSourceName` |从中收集组的源名称。  对于 Active Directory，这是域名。 |
+| `ManagementGroupName` |SCOM 代理的管理组名称。  对于其他代理，这是 AOI-\<工作区 ID\> |
+| `TimeGenerated` |创建或更新计算机组的日期和时间。 |
 
 ## <a name="next-steps"></a>后续步骤
 * 了解[日志查询](../log-query/log-query-overview.md)以便分析从数据源和解决方案中收集的数据。  

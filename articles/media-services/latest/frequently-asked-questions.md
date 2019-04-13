@@ -9,20 +9,24 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/10/2019
 ms.author: juliako
-ms.openlocfilehash: e543f6e69632da67900e3b49a9c77e125df5f852
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: d6e5142bec29f58671c553b7b32bb72202cae263
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316909"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544171"
 ---
 # <a name="azure-media-services-v3-frequently-asked-questions"></a>Azure 媒体服务 v3 常见问题
 
 本文将解答 Azure 媒体服务 (AMS) v3 常见问题。
 
 ## <a name="v3-apis"></a>v3 API
+
+### <a name="what-azure-roles-can-perform-actions-on-azure-media-services-resources"></a>哪些 Azure 角色可以对 Azure 媒体服务资源执行操作？ 
+
+请参阅[媒体服务帐户的基于角色的访问控制 (RBAC)](rbac-overview.md)。
 
 ### <a name="how-do-i-configure-media-reserved-units"></a>如何配置媒体保留单位？
 
@@ -73,7 +77,7 @@ ms.locfileid: "58316909"
 
 ### <a name="can-i-use-the-azure-portal-to-manage-v3-resources"></a>能否使用 Azure 门户来管理 v3 资源？
 
-目前，无法使用 Azure 门户来管理 v3 资源。 使用[REST API](https://aka.ms/ams-v3-rest-ref)， [CLI](https://aka.ms/ams-v3-cli-ref)，或某个受支持[Sdk](developers-guide.md)。
+目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
 
 ### <a name="is-there-an-assetfile-concept-in-v3"></a>v3 中是否有 AssetFile 概念？
 

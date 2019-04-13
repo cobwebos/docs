@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: b5c7050ac006ea2500854f8f41b134895e5e0061
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3b31e796b07bea8c11bccb3f2bb306a4279f2ca3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541207"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523709"
 ---
-# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实施分面导航
+# <a name="how-to-implement-faceted-navigation-in-azure-search"></a>如何在 Azure 搜索中实现分面导航
 分面导航是一种筛选机制，用于在搜索应用程序中提供自定向的深化导航。 术语“分面导航”可能让人觉得陌生，但我们以前也许用过它。 如以下示例所示，分面导航就是用于筛选结果的类别。
 
  ![Azure 搜索作业门户演示][1]
@@ -321,7 +321,7 @@ if (businessTitleFacet != "")
 
 由于分片体系结构，分面计数可能不准确。 每个搜索索引具有多个分片，每个分片报告按记录计数排序的前 N 个分面，并合并到单个结果中。 如果某些分片具有大量匹配值，而其他分片的值很少，你可能会发现某些分面值丢失或未计入结果中。
 
-尽管此行为可能随时更改，但如果现在遇到此行为，可通过以下方式解决它：人为地将 count:<number> 扩大到较大的值，以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
+尽管此行为可能随时更改，如果现在遇到此行为，您可以解决它的人为地都计数：\<数 > 为大型数字以强制从每个分片进行完整报告。 如果 count: 的值大于或等于字段中唯一值的数目，可保证获得准确结果。 但是，如果记录计数较高，性能可能会受到负面影响，因此请谨慎使用此选项。
 
 ### <a name="user-interface-tips"></a>用户界面提示
 **为分面导航中的每个字段添加标签**
@@ -395,7 +395,7 @@ Azure 搜索作业门户演示包含本文中参考的示例。
    
 <a name="nextstep"></a>
 
-## <a name="learn-more"></a>了解更多
+## <a name="learn-more"></a>了解详细信息
 观看 [Azure 搜索深入研究](https://channel9.msdn.com/Events/TechEd/Europe/2014/DBI-B410)。 在 45:25，演示了如何实现分面。
 
 有关分面导航设计准则的更多见解，建议查看以下链接：

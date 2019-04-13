@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: adbf3e4fbc0f9d49458dadaebcdd2a090030654e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e27c4462e7137145917d1284bfb6f8838e8a090b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838878"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523590"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>团队数据科学过程实务：使用 SQL 数据仓库
 在本教程中，我们指导为某个公开提供的数据集（[NYC 出租车车程](https://www.andresmh.com/nyctaxitrips/)数据集）完成以下过程：使用 SQL 数据仓库 (SQL DW) 构建和部署机器学习模型。 构建的二元分类模型可预测是否为某段旅程支付了小费；而且还会讨论用于多类分类和回归的模型，这些模型可预测支付的小费金额的分布。
@@ -77,7 +77,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 **设置 Azure SQL DW 实例。**
 请按照[创建 SQL 数据仓库](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)处的文档设置 SQL 数据仓库实例。 请务必记下以下 SQL 数据仓库凭据，稍后的步骤中会使用它们。
 
-* **服务器名称**：<server Name>.database.windows.net
+* **服务器名称**:\<服务器名称 >。 database.windows.net
 * **SQLDW（数据库）名称**
 * **用户名**
 * **密码**
@@ -431,7 +431,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 | tip_class | tip_freq |
 | --- | --- |
-| 第 |82230915 |
+| 1 |82230915 |
 | 2 |6198803 |
 | 3 |1932223 |
 | 0 |82264625 |
@@ -535,7 +535,7 @@ NYC 出租车车程数据包含大约 20 GB（未压缩约为  48 GB）的压缩
 
 |  | pickup_latitude | pickup_longitude | dropoff_latitude | dropoff_longitude | DirectDistance |
 | --- | --- | --- | --- | --- | --- |
-| 第 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
+| 1 |40.731804 |-74.001083 |40.736622 |-73.988953 |.7169601222 |
 | 2 |40.715794 |-74,010635 |40.725338 |-74.00399 |.7448343721 |
 | 3 |40.761456 |-73.999886 |40.766544 |-73.988228 |0.7037227967 |
 

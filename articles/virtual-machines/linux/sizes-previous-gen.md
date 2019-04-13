@@ -13,22 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: jonbeck
-ms.openlocfilehash: 58c7261e3082311e4ce9d04cb39f688bc8f04bb6
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
-ms.translationtype: HT
+ms.openlocfilehash: b5da253c699c895c61df14ff50062a99e82d6913
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900994"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544664"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>前几代虚拟机大小
-
 
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-previous-gen.md)]
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../../includes/virtual-machines-common-sizes-table-defs.md)]
 
+## <a name="older-generations-of-virtual-machine-sizes"></a>较旧的虚拟机大小的级别
+
+[!INCLUDE [virtual-machines-common-sizes-older](../../../includes/virtual-machines-common-sizes-older.md)]
 
 ## <a name="other-sizes"></a>其他大小
 
@@ -39,7 +41,6 @@ ms.locfileid: "37900994"
 - [GPU](sizes-gpu.md)
 - [高性能计算](sizes-hpc.md)
 
-
 ## <a name="next-steps"></a>后续步骤
-了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
+了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。

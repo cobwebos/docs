@@ -1,6 +1,6 @@
 ---
-title: Azure 存储可伸缩性和性能目标的存储帐户
-description: 了解有关可伸缩性和性能目标，包括容量、 请求速率以及入站和出站带宽，Azure 存储帐户的信息。
+title: Azure 存储可伸缩性和性能目标 - 存储帐户
+description: 了解 Azure 存储帐户的可伸缩性和性能目标，包括容量、请求速率以及入站和出站带宽。
 services: storage
 author: roygara
 ms.service: storage
@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.subservice: common
-ms.openlocfilehash: 96322c730300e360ed03f4b623db2a7f18825f55
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e3e0e9ae4a1939aad9ab2ae42a1b51b1b00e2462
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267695"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521710"
 ---
-# <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>存储帐户的 azure 存储可伸缩性和性能目标
+# <a name="azure-storage-scalability-and-performance-targets-for-storage-accounts"></a>存储帐户的 Azure 存储可伸缩性和性能目标
 
 本文详细介绍了 Azure 存储帐户的可伸缩性和性能目标。 以下所列的可伸缩性和性能目标为高端目标，但却是能够实现的。 在任何情况下，存储帐户实现的请求速率和带宽取决于存储对象大小、使用的访问模式、应用程序执行的工作负荷类型。
 
@@ -27,7 +27,7 @@ ms.locfileid: "59267695"
 
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
 
-## <a name="premium-performance-storage-account-scale-limits"></a>高级性能存储帐户规模限制
+## <a name="premium-performance-storage-account-scale-limits"></a>高级性能存储帐户缩放限制
 
 [!INCLUDE [azure-premium-limits](../../../includes/azure-storage-limits-premium.md)]
 
@@ -58,13 +58,13 @@ ms.locfileid: "59267695"
 
 |区域  |确定目标  |
 |---------|---------|
-|最小大小                        |100 GiB      |
-|最大大小                        |100 TiB      |
+|预配的最小大小                        |100 GiB      |
+|最大预配大小                        |100 TiB      |
 |最小大小增大/减少    |1 GiB      |
 |基线 IOPS    |每 GiB 多达 100,000 个 1 IOPS|
 |爆发的 IOPS    |3 个 x IOPS 每 GiB 多达 100,000 个|
-|最小带宽                     |100        |
-|带宽 |0.1 每个高达 5 GiB/秒 GiB 的 MB/秒     |
+|出口率         |60 MiB/秒 + 0.06 * 预配 GiB        |
+|入口速率| 40 MiB/秒 + 0.04 * 预配 GiB |
 |最大快照数        |200       |
 
 #### <a name="premium-file-limits"></a>高级文件限制
@@ -92,6 +92,6 @@ Azure 文件同步的设计目标是无限使用，但并非总是可以无限�
 ## <a name="see-also"></a>另请参阅
 
 - [存储定价详细信息](https://azure.microsoft.com/pricing/details/storage/)
-- [Azure 订阅和服务限制、 配额和约束](../../azure-subscription-service-limits.md)
+- [Azure 订阅和服务限制、配额和约束](../../azure-subscription-service-limits.md)
 - [Azure 存储复制](../storage-redundancy.md)
 - [Microsoft Azure 存储性能和可伸缩性清单](../storage-performance-checklist.md)

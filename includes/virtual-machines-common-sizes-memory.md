@@ -8,21 +8,20 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 97efb82f104742993f7b2fac40a74f4feb9e0b38
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.openlocfilehash: 7984172c2b66f2b09e31c646b111e4b9d04fce2b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333776"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551497"
 ---
 内存优化 VM 大小提供适用于关系数据库服务器、中到大型规模的缓存和内存中分析的高内存 CPU 比率。 本文介绍了此分组中各个大小的 vCPU 数、数据磁盘数、NIC 数、存储吞吐量及网络带宽的相关信息。 
 
 * M 系列为云中的任何 VM 提供最高 vCPU 计数（最多 128 个 vCPU）和最大内存（最大 3.8 TiB）。  它非常适用于极大型数据库或受益于高 vCPU 计数和大量内存的其他应用程序。
 
-* Dv2 系列、G 系列以及对应的 DSv2/GS 系列是要求更快速 vCPU、更佳临时存储性能，或具有更高内存要求的应用程序的最佳选择。  它们为许多企业级应用程序提供强大的组合。
+* Dv2 系列、 G 系列以及对应 DSv2/GS 系列非常适合需要快速的 Vcpu、 更好的临时存储性能，或有更高内存要求的应用程序。 它们为许多企业级应用程序提供强大的组合。
 
-
-* Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 它基于最新一代的 2.4 GHz Intel Xeon® E5-2673 v3 2.4 GHz (Haswell) 或 E5-2673 v4 2.3 GHz (Broadwell) 处理器，通过英特尔睿频加速技术 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
+* Dv2 系列是原 D 系列的后续系列，其特点是 CPU 功能更强大。 Dv2 系列 CPU 比 D 系列 CPU 快大约 35%。 它基于最新一代 2.4 GHz Intel Xeon® E5 2673 v3 2.4 GHz (Haswell) 或 E5 2673 v4 2.3 GHz (Broadwell) 处理器，通过 Intel Turbo Boost 技术 2.0 可以达到 3.1 GHz。 Dv2 系列的内存和磁盘配置与 D 系列相同。
 
 * Ev3 系列在超线程配置中采用 E5-2673 v4 2.3 GHz (Broadwell) 处理器，针对最常规用途的工作负荷提供了更好的价值主张，因此 Ev3 适用于大多数其他云的常规用途 VM。  在磁盘和网络限制已基于核心进行了调整以适应超线程技术的同时，内存也得到了扩展（从 7 GiB/vCPU 到 8 GiB/vCPU）。  Ev3 是 D/Dv2 系列的高内存 VM 大小产品的后继产品。
 
@@ -170,7 +169,6 @@ ACU：180 - 240
 <sup>1</sup> 实例对于专用于单个客户的硬件独立。
 <br>
 
-
 ## <a name="dsv2-series-11-15"></a>DSv2 系列 11-15
 
 ACU：210 - 250 <sup>1</sup>
@@ -187,14 +185,10 @@ ACU：210 - 250 <sup>1</sup>
 | Standard_DS14_v2&nbsp;<sup>3</sup>|16 |112 |224 |64 |64,000 / 512 (576) |51,200 / 768 |8 / 12000 |
 | Standard_DS15_v2&nbsp;<sup>2</sup> |20 |140 |280 |64 |80,000 / 640 (720) |64,000 / 960 |8 / 25000&nbsp;<sup>4</sup>
 
-
-<sup>1</sup> DSv2 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
-
-<sup>2</sup> 实例对于专用于单个客户的硬件独立。
-
-<sup>3</sup> 受约束的可用核心大小。
-
-<sup>4</sup> 25000 Mbps，具有加速网络。
+<sup>1</sup> DSv2 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。  
+<sup>2</sup> 实例对于专用于单个客户的硬件独立。  
+<sup>3</sup> 受约束的可用核心大小。  
+<sup>4</sup> 25000 Mbps，具有加速网络。 
 
 <br>
 
@@ -214,13 +208,5 @@ ACU：210 - 250
 | Standard_D14_v2   | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 12000          |
 | Standard_D15_v2&nbsp;<sup>1</sup> | 20        | 140         | 1,000          | 60000/937/468                                        | 64/64x500                       | 8 / 25000&nbsp;<sup>2</sup> |
 
-<sup>1</sup> 实例对于专用于单个客户的硬件独立。 
-
-<sup>2</sup> 25000 Mbps，具有加速网络。
-
-
-
-<br>
-
-
-
+<sup>1</sup> 实例对于专用于单个客户的硬件独立。  
+<sup>2</sup> 25000 Mbps，具有加速网络。 

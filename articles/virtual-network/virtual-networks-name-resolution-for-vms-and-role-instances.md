@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/25/2019
 ms.author: rohink
-ms.openlocfilehash: 78c66ac25e9d20d9202236407d42f815879cd3f2
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: fe63b76589c841706ae335c61e56a57c3c33fb3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426420"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527177"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Azure 虚拟网络中资源的名称解析
 
@@ -34,7 +34,7 @@ ms.locfileid: "59426420"
 > 根据具体的场景，可能需要使用目前以公共预览版提供的 Azure DNS 专用区域功能。 有关详细信息，请参阅[在专用域中使用 Azure DNS](../dns/private-dns-overview.md)。
 >
 
-| **场景** | **解决方案** | **后缀** |
+| **方案** | **解决方案** | **后缀** |
 | --- | --- | --- |
 | 位于相同虚拟网络的 VM 或位于相同云服务的 Azure 云服务角色实例之间的名称解析。 | [Azure DNS 专用区域](../dns/private-dns-overview.md)或 [Azure 提供的名称解析](#azure-provided-name-resolution) |主机名或 FQDN |
 | 位于不同虚拟网络的 VM 或位于不同云服务的角色实例之间的名称解析。 |[Azure DNS 专用区域](../dns/private-dns-overview.md)或客户托管的 DNS 服务器，该服务器在虚拟网络之间转发查询，并由 Azure 进行解析（DNS 代理）。 请参阅[使用自己的 DNS 服务器进行名称解析](#name-resolution-that-uses-your-own-dns-server)。 |仅 FQDN |
@@ -147,7 +147,7 @@ DNS 转发还可用于在虚拟网络之间进行 DNS 解析，可以通过本�
 
 > [!NOTE]
 > 角色实例可对同一虚拟网络中的 VM 执行名称解析， 方法是使用由 VM 主机名和 **internal.cloudapp.net** DNS 后缀组成的 FQDN。 但是，在这种情况下，仅当角色实例在[角色架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/jj156212.aspx)中定义了 VM 名称时，名称解析才会成功。
-> <Role name="<role-name>" vmName="<vm-name>">
+> `<Role name="<role-name>" vmName="<vm-name>">`
 >
 > 需要在另一个虚拟网络中执行 VM 名称解析的角色实例（使用 **internal.cloudapp.net** 后缀的 FQDN）必须使用本部分所述的方法（在两个虚拟网络之间进行自定义 DNS 服务器转发）。
 >

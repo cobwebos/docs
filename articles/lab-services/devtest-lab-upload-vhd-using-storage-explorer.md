@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 12a21f4fdfb279df154b4995b6191aa0ed54ab43
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894472"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521719"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器将 VHD 文件上传到实验室的存储帐户
 
@@ -55,7 +55,7 @@ ms.locfileid: "57894472"
     
     1. “使用 PowerShell 上传映像”边栏选项卡显示对 Add-AzureVhd cmdlet 的调用。 第一个参数 (*Destination*) 包含采用以下格式的实验室存储帐户名称：
     
-        https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/... 
+        `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
     1. 请记下存储帐户名称，因为会在后续步骤中使用它。
     

@@ -10,12 +10,12 @@ ms.reviewer: sgilley
 ms.author: sgilley
 author: sdgilley
 ms.date: 03/21/2019
-ms.openlocfilehash: f417aef1fd1cc48a37399ff7a157a0e658bbbb02
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: e2304f45cef2db720adf4430868205c00714034f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58879278"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547942"
 ---
 # <a name="create-an-azure-machine-learning-service-workspace"></a>创建 Azure 机器学习服务工作区
 
@@ -34,10 +34,10 @@ ms.locfileid: "58879278"
 - [Azure 容器注册表](https://azure.microsoft.com/services/container-registry/)
 - [Azure 存储](https://azure.microsoft.com/services/storage/)
 - [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) 
-- [Azure 密钥保管库](https://azure.microsoft.com/services/key-vault/)
+- [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
 
 >[!Note]
->与其他 Azure 服务一样，机器学习也有相关的限制和配额。 [了解有关配额和如何请求的详细信息。](how-to-manage-quotas.md)
+>与其他 Azure 服务一样，机器学习也有相关的限制和配额。 [了解配额以及如何请求提高配额。](how-to-manage-quotas.md)
 
 
 ## <a name="prerequisites"></a>必备组件
@@ -160,7 +160,7 @@ ms.locfileid: "58879278"
 
 ### <a name="write-a-configuration-file"></a>编写配置文件
 
-将配置文件中工作区的详细信息保存到当前目录中。 此文件称为*aml_config/config.json*。  
+将配置文件中工作区的详细信息保存到当前目录中。 此文件称为 *.azureml/config.json*。  
 
 稍后可以通过此工作区配置文件轻松加载相同的工作区。 您可以与其他笔记本和相同的目录或使用代码的子目录中脚本加载它`ws=Workspace.from_config()`。 
 
@@ -177,13 +177,14 @@ ms.locfileid: "58879278"
 ```
 
 > [!TIP]
-> 若要使用 Python 脚本或其他目录中的 Jupyter 笔记本中的工作区，请将此文件复制到该目录。 该文件可以为同一个目录，一个名为子目录*aml_config*，或父目录中。
+> 若要使用 Python 脚本或其他目录中的 Jupyter 笔记本中的工作区，请将此文件复制到该目录。 该文件可以为同一个目录，一个名为子目录 *.azureml*，或父目录中。
 
 ## <a name="resource-manager-template"></a>资源管理器模板
 
 若要使用模板创建一个工作区，请参阅[使用模板创建 Azure 机器学习服务工作区](how-to-create-workspace-template.md)
 
-## <a name="cli"></a>CLI
+<a name="cli"></a>
+## <a name="command-line-interface"></a>命令行接口
 
 若要使用 CLI 创建一个工作区，请参阅[CLI 扩展用于 Azure 机器学习服务](reference-azure-machine-learning-cli.md)。
 

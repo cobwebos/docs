@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: 8072d72dbb164d5012ad42d5cba66c8b425e99a1
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
+ms.openlocfilehash: 023fd8267a557fa57e98a6a57785fb9ebfcb12ab
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53787897"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523964"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>管理 Azure HDInsight 上 Apache Spark 群集的资源 
 
@@ -45,7 +45,7 @@ Spark History Server 是已完成和正在运行的 Spark 应用程序的 Web UI
     https://<ClusterName>.azurehdinsight.net/sparkhistory
     ```
 
-    将 <ClusterName> 替换为 Spark 群集名称。
+    将 `<ClusterName>` 替换为 Spark 群集名称。
 
 Spark History Server Web UI 如下所示：
 
@@ -147,7 +147,7 @@ Spark Thrift 服务器驱动程序内存配置为头节点 RAM 大小的 25%，�
 
     ![终止 App1](./media/apache-spark-resource-manager/kill-app1.png "终止 App1")
 
-2. 单击右上角的“终止应用程序”，并单击“确定”。
+2. 单击右上角的“终止应用程序”，然后单击“确定”。
 
     ![终止 App2](./media/apache-spark-resource-manager/kill-app2.png "终止 App2")
 

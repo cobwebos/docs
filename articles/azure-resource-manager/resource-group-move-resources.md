@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: tomfitz
-ms.openlocfilehash: a5350befd8d0fb1582606554314d909f7fec04c5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f5ff43102c42823891f2035c3f577e7def87fcb7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272285"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528231"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
-本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。 若要完成教程，请参阅[教程：将 Azure 资源移到另一个资源组或订阅](./resource-manager-tutorial-move-resources.md)。
+本文说明了如何将 Azure 资源移动到另一 Azure 订阅，或移动到同一订阅下的另一资源组。 可以使用 Azure 门户、Azure PowerShell、Azure CLI 或 REST API 移动资源。
 
 在移动操作过程中，源组和目标组都会锁定。 在完成移动之前，将阻止对资源组执行写入和删除操作。 此锁意味着将无法添加、更新或删除资源组中的资源，但并不意味着资源已被冻结。 例如，如果将 SQL Server 及其数据库移动到新的资源组中，则使用该数据库的应用程序将不会遇到停机的情况。 它仍可读取和写入到数据库。
 
@@ -180,8 +180,8 @@ ms.locfileid: "59272285"
 * 找到含有以下命名模式的资源组：`AzureBackupRG_<location of your VM>_1` 例如，AzureBackupRG_westus2_1
 * 如果在 Azure 门户中，则查看“显示隐藏的类型”
 * 如果在 PowerShell 中，则使用 `Get-AzResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` cmdlet
-* 如果在 CLI 中，使用 `az resource list -g AzureBackupRG_<location of your VM>_1`
-* 找到该资源类型为`Microsoft.Compute/restorePointCollections`具有以下命名模式： `AzureBackup_<name of your VM that you're trying to move>_###########`
+* 如果在 CLI 中，则使用 `az resource list -g AzureBackupRG_<location of your VM>_1`
+* 使用类型 `Microsoft.Compute/restorePointCollections` 找到具有命名模式 `AzureBackup_<name of your VM that you're trying to move>_###########` 的资源
 * 删除此资源。 此操作仅删除即时恢复点，不删除保管库中的备份数据。
 * 删除完成后，即可移动虚拟机。 可以将保管库和虚拟机移到目标订阅。 移动后即可继续备份，不会丢失数据。
 * 若要了解如何移动恢复服务保管库以完成备份，请参阅[恢复服务限制](#recovery-services-limitations)。

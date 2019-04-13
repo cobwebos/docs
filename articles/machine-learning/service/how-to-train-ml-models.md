@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.reviewer: sgilley
-ms.date: 2/14/2019
+ms.date: 04/19/2019
 ms.custom: seodec18
-ms.openlocfilehash: 818b6e5994a4f5b9d21d511f0a31eab6e00033f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7b479556543c6a9dff88643fdc587dec3f832f39
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012473"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548148"
 ---
 # <a name="train-models-with-azure-machine-learning-using-estimator"></a>通过估算器使用 Azure 机器学习训练模型
 
@@ -59,7 +59,7 @@ sk_est = Estimator(source_directory='./my-sklearn-proj',
 参数 | 描述
 --|--
 `source_directory`| 包含训练作业所需的所有代码的本地目录。 此文件夹已从本地计算机复制到远程计算 
-`script_params`| 指定训练脚本 `entry_script` 的命令行参数的字典，格式为 <命令行参数, 值> 对
+`script_params`| 指定训练脚本的命令行参数的字典`entry_script`，格式为 < 命令行参数，值 > 对。 若要指定在 verbose 标志`script_params`，使用`<command-line argument, "">`。
 `compute_target`| 运行训练脚本的远程计算目标，在本例中为 Azure 机器学习计算 ([AmlCompute](how-to-set-up-training-targets.md#amlcompute)) 群集。 （请注意，即使 AmlCompute 集群是常用目标，也可以选择其他计算目标类型，比如 Azure VM 甚至是本地计算机。）
 `entry_script`| 要在远程计算上运行的训练脚本的文件路径（相对于 `source_directory`）。 此文件以及所依赖的任何其他文件应位于此文件夹中
 `conda_packages`| 要通过训练脚本所需的 conda 安装的 Python 包列表。  

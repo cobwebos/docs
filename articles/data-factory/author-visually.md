@@ -12,12 +12,12 @@ author: sharonlo101
 ms.author: shlo
 ms.reviewer: ''
 manager: craigg
-ms.openlocfilehash: 77eb109b8826bcb6136e91ac610235f74551cecb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d2e51551643e154714b9d2368e63d7af9ebfa204
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57853080"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526905"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure 数据工厂中的视觉对象创作
 Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部署资源为你的数据工厂而无需编写任何代码。 通过此无代码的界面，可将活动拖放到管道画布上、执行测试运行、以迭代方式进行调试，以及部署和监视管道运行。 可通过两种方法使用 UX 执行视觉对象创作：
@@ -61,12 +61,12 @@ Azure 数据工厂用户界面体验 (UX) 允许你以可视方式创作和部�
 | 设置 | 描述 | 值 |
 |:--- |:--- |:--- |
 | **存储库类型** | Azure Repos 代码存储库的类型。<br/>**注意**：当前不支持 GitHub。 | Azure Repos Git |
-| **Azure Active Directory** | Azure AD 租户的名称。 | <your tenant name> |
-| **Azure Repos 组织** | Azure Repos 组织名称。 可以在 `https://{organization name}.visualstudio.com` 中找到 Azure Repos 组织名称。 可以[登录到 Azure Repos 组织](https://www.visualstudio.com/team-services/git/)来访问 Visual Studio 配置文件并查看存储库和项目。 | <your organization name> |
-| **ProjectName** | Azure Repos 项目名称。 可以在 `https://{organization name}.visualstudio.com/{project name}` 中找到 Azure Repos 项目名称。 | <your Azure Repos project name> |
-| **RepositoryName** | Azure Repos 代码存储库名称。 Azure Repos 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | <your Azure Repos code repository name> |
-| **协作分支** | 将用于发布的 Azure Repos 协作分支。 默认为 `master`。 如果希望从其他分支发布资源，可更改此设置。 | <your collaboration branch name> |
-| **根文件夹** | Azure Repos 协作分支中的根文件夹。 | <your root folder name> |
+| **Azure Active Directory** | Azure AD 租户的名称。 | `<your tenant name>` |
+| **Azure Repos 组织** | Azure Repos 组织名称。 可以在 `https://{organization name}.visualstudio.com` 中找到 Azure Repos 组织名称。 可以[登录到 Azure Repos 组织](https://www.visualstudio.com/team-services/git/)来访问 Visual Studio 配置文件并查看存储库和项目。 | `<your organization name>` |
+| **ProjectName** | Azure Repos 项目名称。 可以在 `https://{organization name}.visualstudio.com/{project name}` 中找到 Azure Repos 项目名称。 | `<your Azure Repos project name>` |
+| **RepositoryName** | Azure Repos 代码存储库名称。 Azure Repos 项目包含 Git 存储库，随着项目的发展来管理源代码。 要么创建一个新的存储库，要么使用项目中已有的存储库。 | `<your Azure Repos code repository name>` |
+| **协作分支** | 将用于发布的 Azure Repos 协作分支。 默认为 `master`。 如果希望从其他分支发布资源，可更改此设置。 | `<your collaboration branch name>` |
+| **根文件夹** | Azure Repos 协作分支中的根文件夹。 | `<your root folder name>` |
 | 确认选中“将现有的数据工厂资源导入存储库”选项。 | 指定是否从 UX 创作画布将现有数据工厂资源导入 Azure Repos Git 存储库。 选择相应的框以将你的数据工厂资源导入 JSON 格式关联的 Git 存储库。 此操作单独导出每个资源（即，链接的服务和数据集导出到单独的 JSON）。 如果未选中此框，不能导入现有的资源。 | 已选择（默认） |
 
 #### <a name="configuration-method-2-azure-repos-git-repo-ux-authoring-canvas"></a>配置方法 2（Azure Repos Git 存储库）：UX 创作画布

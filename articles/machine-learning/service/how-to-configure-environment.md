@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
-ms.openlocfilehash: d4866a6863143d2228c556a64c8e75c9f273076e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489495"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548880"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -87,7 +87,7 @@ Azure 机器学习 SDK 适用于 Ubuntu 或 Windows 版本的 DSVM。 但是，�
 
     * Azure 门户：
 
-        * [创建 Ubuntu 数据科学虚拟机](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
+        * [创建 Ubuntu Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)
 
         * [创建 Windows Data Science Virtual Machine](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/provision-vm)
 
@@ -280,7 +280,7 @@ Azure Databricks 的工作原理与 Azure 机器学习服务：
 ### <a name="set-up-your-databricks-cluster"></a>设置 Databricks 群集
 
 创建[Databricks 群集](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)。 安装适用于自动化机器学习在 Databricks 上的 SDK 的情况下，才会应用某些设置。
-**创建群集需要几分钟的时间。**
+**它将需要几分钟以创建群集。**
 
 使用以下设置：
 
@@ -350,7 +350,7 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
 }
 ```
 
-此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以位于同一目录（名为 *aml_config* 的子目录）中，也可以位于父目录中。
+此 JSON 文件必须采用包含 Python 脚本或 Jupyter Notebook 的目录结构。 它可以是在相同的目录中，一个名为子目录 *.azureml*，或父目录中。
 
 要从代码使用此文件，请使用 `ws=Workspace.from_config()`。 此代码从文件中加载信息，并连接到工作区。
 
@@ -379,7 +379,7 @@ SDK databricks **WITH**自动执行机器学习![SDK 自动安装在 Databricks 
         print('Workspace not found')
     ```
 
-    此代码将配置文件写入 *aml_config/config.json* 文件。
+    此代码将写入到配置文件 *.azureml/config.json*文件。
 
 
 ## <a name="next-steps"></a>后续步骤

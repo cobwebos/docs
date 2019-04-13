@@ -6,14 +6,14 @@ author: alexkarcher-msft
 manager: jehollan
 ms.service: azure-functions
 ms.topic: article
-ms.date: 12/03/2018
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 4f27bbeb43bbf373b621d151d68583f0041378b3
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894194"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523726"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>将函数应用与 Azure 虚拟网络集成
 
@@ -99,7 +99,7 @@ ms.locfileid: "58894194"
     <img src="./media/functions-create-vnet/new-proxy.png" width="250">
 
 1. 配置代理名称和路由。 选择 /plant 作为路由。
-1. 填写从之前的 wordpress 站点的 IP 和后端 URL 设置为 `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
+1. 填写前面创建的 Wordpress 站点的 IP，并将后端 URL 设置为 `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
     
     <img src="./media/functions-create-vnet/create-proxy.png" width="900">
 
@@ -111,13 +111,14 @@ ms.locfileid: "58894194"
 
 ## <a name="next-steps"></a>后续步骤
 
-高级版计划中运行的函数共享相同的基础应用服务基础结构为 Web 应用。 这意味着，所有的 Web 应用文档适用于高级计划函数。
+在高级版计划中运行的函数共享相同基础应用服务基础结构，因为 PV2 上的 Web 应用计划。 这意味着，所有的 Web 应用文档适用于高级计划函数。
 
-1. [了解有关使用应用服务的 VNET 集成的详细信息 / 此处功能](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
-1. [了解有关在 Azure 中的 Vnet 的详细信息](https://azure.microsoft.com/documentation/articles/virtual-networks-overview/)
-1. [启用网络功能和控制使用应用服务环境](https://docs.microsoft.com/azure/app-service/environment/intro)
-1. [连接到独立的本地资源而无需使用混合连接的防火墙更改](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
-1. [了解有关函数代理的详细信息](https://review.docs.microsoft.com/azure/azure-functions/functions-proxies)
+1. [了解有关此处的函数中的网络选项的详细信息](./functions-networking-options.md)
+1. [读取网络常见问题此处函数](./functions-networking-faq.md)
+1. [深入了解 Azure 中的 VNET](../virtual-network/virtual-networks-overview.md)
+1. [启用网络功能和使用应用服务环境的控制](../app-service/environment/intro.md)
+1. [使用混合连接连接到单独的本地资源而无需更改防火墙](../app-service/app-service-hybrid-connections.md)
+1. [了解有关 Function 代理的详细信息](./functions-proxies.md)
 
 <!--Image references-->
 [1]: ./media/functions-create-vnet/topology.png

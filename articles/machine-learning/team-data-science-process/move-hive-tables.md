@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d67bd26dcb2ac0b3bf909e1ef3d5ca75a0882eb3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840641"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522497"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
@@ -112,7 +112,7 @@ Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用
 ![显示 Hive 查询输出的 Azure 存储资源管理器](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2.使用 Hive 编辑器提交 Hive 查询
-此外，还可以通过在 Web 浏览器中输入 URL 来使用查询控制台（Hive 编辑器），该 URL 的格式为 *https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor*。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
+此外可以使用查询控制台 （Hive 编辑器），通过输入以下形式的 URL *https:\//\<Hadoop 群集名称 >.azurehdinsight.net/Home/HiveEditor*在 web 浏览器。 必须先登录才能查看此控制台，因此需要使用 Hadoop 群集凭据进行登录。
 
 ### <a name="ps"></a> 3.使用 Azure PowerShell 命令提交 Hive 查询
 也可以使用 PowerShell 来提交 Hive 查询。 有关说明，请参阅[使用 PowerShell 提交 Hive 作业](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)。
@@ -149,7 +149,7 @@ Hive 查询在 [GitHub 存储库](https://github.com/Azure/Azure-MachineLearning
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **\<Blob 数据的路径\>**：如果要上传到 Hive 表的 Blob 文件位于 HDInsight Hadoop 群集的默认容器中，则 *\<Blob 数据的路径\>* 应采用 *“wasb:///<directory in this container>/<blob file name>”* 这种格式。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下，*\<Blob 数据的路径\>* 应采用 *“wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>”* 这种格式。
+* **\<Blob 数据的路径\>**：如果要上传到 Hive 表的 blob 文件位于 HDInsight Hadoop 群集的默认容器*\<对 blob 数据的路径\>* 应采用格式*wasb: / /\<此容器中目录 > /\<blob 文件名称 >*。 blob 文件也可以在 HDInsight Hadoop 群集的其他容器中。 在这种情况下， *\<对 blob 数据的路径\>* 应采用格式*wasb: / /\<容器名称 >\<存储帐户名称 >.blob.core.windows.net/\<blob 文件名称 >*。
 
   > [!NOTE]
   > 要上传到 Hive 表的 blob 数据必须位于 Hadoop 群集存储帐户的默认或其他容器中。 否则，*LOAD DATA* 查询会失败，并声称它无法访问数据。

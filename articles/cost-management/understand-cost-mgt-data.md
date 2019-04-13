@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/08/2019
+ms.date: 04/11/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 1fc04ee953ea53f96adfd1e85c9a616c62268ade
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282978"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544630"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
@@ -25,31 +25,31 @@ ms.locfileid: "59282978"
 
 以下信息说明了 Azure 成本管理中目前支持的 [Microsoft Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。  Azure 套餐是客户拥有的 Azure 订阅类型。
 
-| 类别  | **产品名称** | **配额 ID** | **产品/服务编号** |
+| 类别  | **产品/服务名称** | **Quota ID** | **套餐编号** |
 | --- | --- | --- | --- |
-| **Azure 德国** | [Azure Germany 即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
-| **Azure Government ** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
+| **Azure 德国** | [Azure 德国即用即付](https://azure.microsoft.com/offers/ms-azr-de-0003p)      | PayAsYouGo_2014-09-01 | MS-AZR-DE-0003P |
+| **Azure Government** | Azure Government Enterprise                                                         | EnterpriseAgreement_2014-09-01 | MS-AZR-USGOV-0017P |
 | **企业协议 (EA)** | Enterprise 开发/测试                                                        | MSDNDevTest_2014-09-01 | MS-AZR-0148P |
 | **企业协议 (EA)** | [Microsoft Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support-upgrade) | EnterpriseAgreement_2014-09-01 | MS-AZR-0017P |
-| **Microsoft 客户协议** | [Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | 不适用 |
-| **Microsoft 客户协议** | [用于开发/测试的 Microsoft Azure 计划](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | 不适用 |
-| **Microsoft Developer Network (MSDN)** | [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
+| **Microsoft 客户协议** | [Microsoft Azure Plan](https://azure.microsoft.com/offers/ms-azr-0017g) | EnterpriseAgreement_2014-09-01 | 不适用 |
+| **Microsoft 客户协议** | [Microsoft Azure 开发/测试计划](https://azure.microsoft.com/offers/ms-azr-0148g)  | MSDNDevTest_2014-09-01 | 不适用 |
+| **Microsoft 开发人员网络 (MSDN)** | [MSDN 平台](https://azure.microsoft.com/offers/ms-azr-0062p) | MSDN_2014-09-01 | MS-AZR-0062P |
 | **即用即付** | [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p)                       | PayAsYouGo_2014-09-01 | MS-AZR-0003P |
 | **即用即付** | [即用即付开发/测试](https://azure.microsoft.com/offers/ms-azr-0023p)              | MSDNDevTest_2014-09-01 | MS-AZR-0023P |
 | **即用即付** | [Microsoft 合作伙伴网络](https://azure.microsoft.com/offers/ms-azr-0025p)           | MPN_2014-09-01 | MS-AZR-0025P |
-| **即用即付** | [免费试用版](https://azure.microsoft.com/offers/ms-azr-0044p)                          | FreeTrial_2014-09-01 | MS-AZR-0044P |
-| **即用即付** | [Azure 开放许可](https://azure.microsoft.com/offers/ms-azr-0111p)                       | AzureInOpen_2014-09-01 | MS-AZR-0111P |
-| **即用即付** | [Azure for Students](https://azure.microsoft.com/offers/ms-azr-0170p)                  | AzureForStudents_2018-01-01 | MS-AZR-0170P |
+| **即用即付** | [免费试用](https://azure.microsoft.com/offers/ms-azr-0044p)                          | FreeTrial_2014-09-01 | MS-AZR-0044P |
+| **即用即付** | [Azure 开放式许可](https://azure.microsoft.com/offers/ms-azr-0111p)                       | AzureInOpen_2014-09-01 | MS-AZR-0111P |
+| **即用即付** | [面向学生的 Azure](https://azure.microsoft.com/offers/ms-azr-0170p)                  | AzureForStudents_2018-01-01 | MS-AZR-0170P |
 | **即用即付** | Azure Pass                                                                             | AzurePass_2014-09-01 | MS-AZR-0120P、MS-AZR-0122P - MS-AZR-0125P、MS-AZR-0128P - MS-AZR-0130P |
 | **Visual Studio** | [Visual Studio Enterprise – MPN](https://azure.microsoft.com/offers/ms-azr-0029p)      | MPN_2014-09-01 | MS-AZR-0029P |
 | **Visual Studio** | [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p)          | MSDN_2014-09-01 | MS-AZR-0059P |
 | **Visual Studio** | [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p)     | MSDNDevTest_2014-09-01 | MS-AZR-0060P |
 | **Visual Studio** | [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p)            | MSDN_2014-09-01 | MS-AZR-0063P |
-| **Visual Studio** | [Visual Studio Enterprise:BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
+| **Visual Studio** | [Visual Studio Enterprise：BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p)  | MSDN_2014-09-01 | MS-AZR-0064P |
 
 下表显示了不支持的套餐。
 
-| 类别  | **产品名称** | **配额 ID** | **产品/服务编号** |
+| 类别  | **产品/服务名称** | **Quota ID** | **套餐编号** |
 | --- | --- | --- | --- |
 | **云解决方案提供商 (CSP)** | Microsoft Azure                                    | CSP_2015-05-01 | MS-AZR-0145P |
 | **云解决方案提供商 (CSP)** | Azure 政府版 CSP                               | CSP_2015-05-01 | MS-AZR-USGOV-0145P |
@@ -75,9 +75,9 @@ ms.locfileid: "59282978"
 
 下表显示了成本管理中包括或不包括的数据。 所有成本都估计直到生成发票。 显示成本不包括免费版和预付信用额度。
 
-**成本和使用情况数据**
+**成本和用量数据**
 
-| **附送** | **不包括** |
+| **包括** | **不包括** |
 | --- | --- |
 | Azure 服务用量<sup>1</sup> | 预订 – 有关详细信息，请参阅 [Azure 预订自动化的 API](../billing/billing-reservation-apis.md)。 |
 | Marketplace 产品/服务使用情况<sup>2</sup> | 市场购买 – 有关详细信息，请参阅[第三方服务费用](../billing/billing-understand-your-azure-marketplace-charges.md)。 |
@@ -90,7 +90,7 @@ ms.locfileid: "59282978"
 
 **元数据**
 
-| **附送** | **不包括** |
+| **包括** | **不包括** |
 | --- | --- |
 | 资源标记<sup>3</sup> | 资源组标记 |
 
@@ -123,6 +123,25 @@ ms.locfileid: "59282978"
 - 通过计费引擎和成本管理管道处理用量数据所花费的时间。
 
 有些服务比其他服务更频繁地发出用量数据。 因此在成本管理中，某些服务的数据比发送频率更低的其他服务的数据更快出现。 一般情况下，服务用量数据需要在 8-24 小时后才会出现在成本管理中。 请注意，随着用量的增大，未结月份的数据将会更新，因为更新是累积性的。
+
+## <a name="historical-data-might-not-match-invoice"></a>历史数据可能与发票不匹配
+
+对于基于信用额度和提前支付产品/服务的历史数据可能与你的发票。 某些 Azure 即用即付、 MSDN 以及 Visual Studio 产品/服务可以具有的 Azure 额度和高级应用于发票的付款。 但是，在成本管理中所示的历史数据基于您估计耗用量费用。 成本的管理历史数据不包括付款和信用额度。 结果是，针对以下产品/服务显示的历史数据可能不与你的发票完全匹配。
+
+-   MS-AZR-0029P
+-   MS-AZR-0064P
+-   MS-AZR-0170P
+-   MS-AZR-0062P
+-   MS-AZR-0123P
+-   MS-AZR-0129P
+-   MS-AZR-0044P
+-   MS-AZR-0128P
+-   MS-AZR-0120P
+-   MS-AZR-0125P
+-   MS-AZR-0059P
+-   MS-AZR-0063P
+-   MS-AZR-0060P
+-   MS-AZR-0111P
 
 ## <a name="see-also"></a>另请参阅
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0445643d3aae0e4e072e7fa8e3a73dc8973e84a5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 38dd4d13aa45b69fc846ef9b6b2e1b56f56de573
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268494"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544749"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>在 Azure 自动化中执行 Runbook
 
@@ -46,7 +46,7 @@ Azure 自动化中的 Runbook 可以在 Azure 中的沙盒上运行，也可以�
 |安装需要安装程序的模块|混合 Runbook 辅助角色|沙盒的模块必须复制|
 |使用需要不同于 4.7.2 版本的 .NET Framework 的 Runbook 或模块|混合 Runbook 辅助角色|自动化沙盒的 .NET Framework 4.7.2 无法进行升级|
 |需要提升的脚本|混合 Runbook 辅助角色|沙箱不允许提升。 若要解决此问题，使用混合 Runbook 辅助角色，并可以关闭 UAC，并使用`Invoke-Command`时运行该命令需要提升|
-|需要访问 WMI 的脚本|混合 Runbook 辅助角色|云沙盒中运行的作业[不具有访问 WMI](#device-and-application-characteristics)|
+|需要访问 WMI 的脚本|混合 Runbook 辅助角色|在云沙盒中运行的作业[不能访问到 WMI](#device-and-application-characteristics)|
 
 ## <a name="runbook-behavior"></a>Runbook 行为
 
@@ -192,7 +192,7 @@ function Get-ContosoFiles
 
 ### <a name="device-and-application-characteristics"></a>设备和应用程序特征
 
-在 Azure 沙盒中运行的 Runbook 作业无权访问任何设备或应用程序特征。 最常用于在 Windows 上查询性能指标的 API 是 WMI。 其中的一些常见指标是内存和 CPU 使用率。 但是，使用哪个 API 并不重要。 在云中运行的作业不具有访问的 Microsoft 实现的 Web 基于企业管理 (WBEM)，它构建在通用信息模型 (CIM)，这是用于定义设备和应用程序的特征的行业标准。
+在 Azure 沙盒中运行的 Runbook 作业无权访问任何设备或应用程序特征。 最常用于在 Windows 上查询性能指标的 API 是 WMI。 其中的一些常见指标是内存和 CPU 使用率。 但是，使用哪个 API 并不重要。 在云中运行的作业不具有访问 Microsoft 实现的 Web 基于企业管理 (WBEM)，它构建在通用信息模型 (CIM)，这是用于定义设备和应用程序的特征的行业标准。
 
 ## <a name="job-statuses"></a>作业状态
 

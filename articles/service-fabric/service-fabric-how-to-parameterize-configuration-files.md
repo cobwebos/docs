@@ -12,12 +12,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/09/2018
 ms.author: mikhegn
-ms.openlocfilehash: 0ab6e3f189d4a2e7e8f3bc96108d7979c99fffa8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3d03ca5cec2cef67862c2678b3b0a8f17b413787
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102663"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524508"
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>如何在 Service Fabric 中参数化配置文件
 
@@ -27,7 +27,7 @@ ms.locfileid: "58102663"
 
 在此示例中，在应用程序部署中使用参数来替代配置值。
 
-1. 打开服务项目中的 *<MyService>\PackageRoot\Config\Settings.xml* 文件。
+1. 打开 *\<MyService > \PackageRoot\Config\Settings.xml*服务项目中的文件。
 1. 通过添加以下 XML，设置配置参数名称和值，例如高速缓存大小等于 25：
 
    ```xml
@@ -37,7 +37,7 @@ ms.locfileid: "58102663"
    ```
 
 1. 保存并关闭该文件。
-1. 打开 *<MyApplication>\ApplicationPackageRoot\ApplicationManifest.xml* 文件。
+1. 打开 *\<MyApplication > \ApplicationPackageRoot\ApplicationManifest.xml*文件。
 1. 在 ApplicationManifest.xml 文件的 `Parameters` 元素中声明参数和默认值。  建议参数名称包含服务的名称（例如，“MyService”）。
 
    ```xml

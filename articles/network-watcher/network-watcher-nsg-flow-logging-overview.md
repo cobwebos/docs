@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 62b526950367987e26c1c67394bc0720ae895fa6
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 6e15149dec9fdbb7413745d36b3f6a158113b586
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983789"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547016"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>针对网络安全组进行流日志记录简介
 
@@ -92,6 +92,8 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 **在附加到资源的所有 NSG 上启用 NSG 流日志记录**：Azure 中的流日志记录是在 NSG 资源上配置的。 一个流只与一个 NSG 规则相关联。 如果利用多个 NSG，则我们建议在应用资源子网或网络接口的所有 NSG 上启用 NSG 流日志记录，以确保记录所有流量。 有关网络安全组的详细信息，请参阅[流量评估方式](../virtual-network/security-overview.md#how-traffic-is-evaluated)。 
 
 **流日志记录成本**：NSG 流日志记录按生成的日志量计费。 流量较高时，流日志的量和相关成本可能会增大。 NSG 流日志定价不包括基本的存储成本。 将 NSG 流日志记录与保留策略功能结合使用可能会导致存储操作量和相关成本增加。 如果不需要使用保留策略功能，我们建议将此值设置为 0。 有关更多详细信息，请参阅[网络观察程序定价](https://azure.microsoft.com/en-us/pricing/details/network-watcher/)和 [Azure 存储定价](https://azure.microsoft.com/en-us/pricing/details/storage/)。
+
+**从 internet Ip 记录到 Vm，无需公共 Ip 的流的入站**:没有通过关联与作为实例层级公共 IP 的 NIC 的公共 IP 地址分配的公共 IP 地址或属于基本负载均衡器后端池，使用的 Vm[默认 SNAT](../load-balancer/load-balancer-outbound-connections.md#defaultsnat)和已分配的 IP 地址若要建立出站连接的 azure。 因此，可能会看到流的流日志项从 internet IP 地址，如果流量发往到分配的 SNAT 端口的范围中的端口。 尽管 Azure 不会允许这些流到 VM，该尝试记录，并且设计网络观察程序 NSG 流日志中，将显示。 我们建议使用 NSG 显式阻止的不需要入站的 internet 流量。
 
 ## <a name="sample-log-records"></a>示例日志记录
 

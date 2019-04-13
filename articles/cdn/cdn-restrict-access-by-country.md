@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2018
 ms.author: magattus
-ms.openlocfilehash: f6efec64b4e6659b822b76e0fd7f9cc71a164094
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 248a51da76cdee06e55438a706c543c70dcf141e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917747"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526175"
 ---
 # <a name="restrict-azure-cdn-content-by-country"></a>按国家/地区限制 Azure CDN 内容
 
@@ -47,7 +47,7 @@ ms.locfileid: "58917747"
 例如，以下所有目录路径筛选器都是有效的：   
 */*                                 
 */Photos/*     
-*/Photos/则 /*     
+*/Photos/Strasbourg/*     
 */Photos/Strasbourg/city.png*
 
 ### <a name="define-the-type-of-action"></a>定义操作的类型
@@ -59,8 +59,8 @@ ms.locfileid: "58917747"
 - **块**:资产的请求通过递归路径访问拒绝来自指定国家/地区的用户。 如果没有针对该位置配置其他国家/地区筛选选项，则所有其他用户都允许进行访问。
 
 例如，用于阻止路径 */Photos/Strasbourg/* 的地区筛选规则将筛选以下文件：     
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/1000.jpg*
-*http://<endpoint>.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
+*http:\//\<终结点 >.azureedge.net/Photos/Strasbourg/1000.jpg*
+*http:\//\<终结点 >.azureedge.net/Photos/Strasbourg/Cathedral/1000.jpg*
 
 ### <a name="define-the-countries"></a>定义国家/地区
 从“国家/地区代码”列表中，针对该路径选择要阻止或允许的国家/地区。 

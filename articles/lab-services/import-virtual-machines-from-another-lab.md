@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 8b2eee0bfd32b58cd751f8bf70aff1d4f460a353
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 9cd2e5e211fcda7c59469d3b09e9c9e5bdefdbd6
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340134"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546574"
 ---
 # <a name="import-virtual-machines-from-another-lab-in-azure-devtest-labs"></a>从 Azure 开发测试实验室中的另一个实验室导入虚拟机
 本文提供了有关如何从另一个实验室的虚拟机导入到你的实验室信息。 
@@ -47,7 +47,7 @@ ms.locfileid: "58340134"
 - 目前，只能通过 Powershell 和 REST API 支持此功能。
 
 ## <a name="use-powershell"></a>使用 PowerShell
-下载文件 ImportVirtualMachines.ps1 [GitHub](https://github.com/Azure/azure-devtestlab/blob/master/Scripts/ImportVirtualMachines/ImportVirtualMachines.ps1)。 该脚本可用于单个 VM 或源实验室中的所有 Vm 导入到目标实验室。 
+下载文件 ImportVirtualMachines.ps1 [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)。 该脚本可用于单个 VM 或源实验室中的所有 Vm 导入到目标实验室。 
 
 ### <a name="use-powershell-to-import-a-single-vm"></a>使用 PowerShell 导入单个 VM
 执行此 powershell 脚本需要标识源 VM 和目标实验中，并根据需要提供要用于在目标计算机的新名称：

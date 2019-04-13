@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: sngun
-ms.openlocfilehash: 50ae4de8c9c1d10b0b17a9744ffa2340059fc298
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 379c7913f803c599865df080524da5c3fb1d0e52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120510"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526328"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>使用 Azure Cosmos DB 更改源将实时数据分析可视化
 
@@ -53,7 +53,7 @@ Azure Cosmos DB 更改源是在 Azure Cosmos DB 容器中创建或修改记录�
 
 7. **Power BI：** Power BI 用于可视化 Azure 流分析发送的数据。 可以构建一个仪表板来实时了解指标的变化。  
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * Microsoft .NET Framework 4.7.1 或更高版本
 
@@ -165,7 +165,7 @@ Azure 事件中心接收事件数据，并存储、处理和转发这些数据�
 
 1. 导航回到文件资源管理器中的存储库，并右键单击“ChangeFeedFunction.sln”，在新的 Visual Studio 窗口中再次将其打开。  
 
-2. 导航到 **App.config** 文件。在 <appSettings> 块中，添加前面检索到的 Azure Cosmos DB 帐户的终结点和唯一**主密钥**。  
+2. 导航到 **App.config** 文件。在 `<appSettings>` 块中，添加前面检索到的 Azure Cosmos DB 帐户的终结点和唯一**主密钥**。  
 
 3. 添加**集合**和**数据库**的名称。 （除非你已选择不同的名称，否则这些名称应是 **changefeedlabcollection** 和 **changefeedlabdatabase**。）
 

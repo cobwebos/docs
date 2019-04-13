@@ -9,28 +9,82 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 12/17/2018
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 958194d49cd403caeaf9dd21dd90a02cab098e45
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55881451"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522480"
 ---
-# <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>模式中的实体角色是上下文子类型
-角色是仅在[模式](luis-concept-patterns.md)中使用的实体的已命名上下文子类型。
+# <a name="entity-roles-for-contextual-subtypes"></a>上下文的子类型的实体角色
 
-例如，在表述 `buy a ticket from New York to London` 中，纽约和伦敦都是城市，但是两者在句中的含义不同。 纽约为出发城市，伦敦为目标城市。 
+角色允许实体具有名为的子类型。 角色可以用于任何预生成或自定义实体类型，并在示例语音样本和模式中使用。 
+
+<a name="example-role-for-entities"></a>
+<a name="roles-with-prebuilt-entities"></a>
+
+## <a name="machine-learned-entity-example-of-roles"></a>机器学习的内容的实体的角色的示例
+
+在查询文本"购买从票证**纽约**到**伦敦**、 New York 和伦敦城市但每个句子中具有不同的含义。 纽约为出发城市，伦敦为目标城市。 
+
+```
+buy a ticket from New York to London
+```
 
 角色为这些差异命名：
 
-|实体|角色|目的|
+|实体类型|实体名称|角色|目的|
+|--|--|--|--|
+|简单|位置|origin|飞机起飞地|
+|简单|位置|目标|飞机降落地|
+
+## <a name="non-machine-learned-entity-example-of-roles"></a>非机器学习了实体的角色的示例
+
+在查询文本"计划到 9 8 会议"，这两个数字表示一次，但每次在查询文本中具有不同的含义。 角色提供名称的差异。 
+
+```
+Schedule the meeting from 8 to 9
+```
+
+|实体类型|角色名称|值|
 |--|--|--|
-|位置|origin|飞机起飞地|
-|位置|目标|飞机降落地|
-|预生成的 datetimeV2|to|结束日期|
-|预生成的 datetimeV2|from|开始日期|
+|预生成的 datetimeV2|开始时间|8|
+|预生成的 datetimeV2|结束时间|9|
+
+## <a name="are-multiple-entities-in-an-utterance-the-same-thing-as-roles"></a>在查询文本中的多个实体与角色相同的功能？ 
+
+多个实体可以存在于查询文本，并且可以提取不使用角色。 如果句子的上下文具有指示版本的实体具有一个值，则应使用角色。 
+
+### <a name="dont-use-roles-for-duplicates-without-meaning"></a>不要为重复项的含义不使用角色
+
+如果查询文本中包含的位置，列表`I want to travel to Seattle, Cairo, and London.`，这是一个列表的每个项没有其他意义。 
+
+### <a name="use-roles-if-duplicates-indicate-meaning"></a>如果重复项表示的含义，请使用角色
+
+如果查询文本中包含有意义的位置的列表`I want to travel from Seattle, with a layover in Londen, landing in Cairo.`，应使用角色捕获此原点、 里，以及目标的含义。
+
+### <a name="roles-can-indicate-order"></a>角色可以指示订单
+
+如果查询文本更改，以指示你想要提取，顺序`I want to first start with Seattle, second London, then third Cairo`，可以在两种方法中提取。 你可以标记指示该角色，标记`first start with`， `second`， `third`。 您还可以使用预生成的实体**序号**并**GeographyV2**在复合实体中捕获的顺序和位置概念的预建的实体。 
+
+## <a name="how-are-roles-used-in-example-utterances"></a>如何在示例查询文本中使用角色？
+
+当实体具有一个角色，并且该实体标记中的示例查询文本时，可以选择只是实体，或选择的实体和角色的选择。 
+
+以下示例查询文本使用实体和角色：
+
+|标记视图|实体视图|
+|--|--|
+|我所感学习更多有关**西雅图**|我感兴趣学习有关 {Location} 的详细信息|
+|从西雅图到纽约购买票证|购买票证来源 {位置:} 到 {位置： 目标}|
+
+## <a name="how-are-roles-related-to-hierarchical-entities"></a>如何与层次结构的实体相关角色？
+
+角色现可用于示例查询文本，以及上一使用模式中的所有实体。 因为这些信息可无处不在它们会取代分层实体的需求。 使用角色，而不是使用分层实体，应创建新的实体。 
+
+层次结构的实体最终将被弃用。
 
 ## <a name="how-are-roles-used-in-patterns"></a>如何在模式中使用角色？
 在模式的模板表述中，角色在表述内使用： 
@@ -43,27 +97,13 @@ ms.locfileid: "55881451"
 ## <a name="role-syntax-in-patterns"></a>模式中的角色语法
 实体和角色在括号 `{}` 内。 实体和角色由冒号分隔。 
 
+## <a name="entity-roles-versus-collaborator-roles"></a>实体与协作者角色的角色
 
-[!INCLUDE [H2 Roles versus hierarchical entities](../../../includes/cognitive-services-luis-hier-roles.md)] 
+实体的角色适用于 LUIS 应用的数据模型。 [协作者](luis-concept-collaborator.md)角色适用于创作访问的级别。 
 
-## <a name="example-role-for-entities"></a>实体的示例角色
-
-角色只是一个实体在话语中的上下文学习位置。 当话语具有多个实体类型时，它最有效。 对于任何实体类型，最简单的示例是区分 to 和 from 位置。 位置可以用许多不同的实体类型表示。 
-
-一个示例用例是将员工从一个部门调到另一个部门，其中每个部门都是列表中的项目。 例如： 
-
-`Move [PersonName] from [Department:from] to [Department:to]`。 
-
-在返回的预测中，两个部门实体将在 JSON 响应中返回，每个部门实体都将包含角色名称。 
-
-## <a name="roles-with-prebuilt-entities"></a>具有预构建实体的角色
-
-使用具有预生成实体的角色，对某话语中预生成实体的不同实例赋予含义。 
-
-### <a name="roles-with-datetimev2"></a>具有 datetimeV2 的角色
-
-预生成实体 datetimeV2 可以很好地理解话语中日期和时间的各种变化。 你可能希望以不同于预生成实体的默认理解方式来指定日期和日期范围。 
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
 
 ## <a name="next-steps"></a>后续步骤
 
+* 使用[动手教程](tutorial-entity-roles.md)实体角色使用机器学习实体
 * 了解如何添加[角色](luis-how-to-add-entities.md#add-a-role-to-pattern-based-entity)

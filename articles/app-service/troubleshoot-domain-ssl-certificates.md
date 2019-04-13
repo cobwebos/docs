@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 8ae6c9d5238f2853a12c20edfd3dba6d3f529b2c
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: c0584a69349c2785b5b6bce1d17c023c95b36151
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905811"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525375"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>排查 Azure 应用服务中的域和 SSL 证书问题
 
@@ -115,17 +115,17 @@ ms.locfileid: "58905811"
 
 配置的自定义域缺少 CNAME 或 A 记录。 
 
-**原因 1 的解决方案**
+**原因 1 的解决方法**
 
 - 如果添加了 A 记录，请确保同时添加 TXT 记录。 有关详细信息，请参阅[创建 A 记录](./app-service-web-tutorial-custom-domain.md#create-the-a-record)。
 - 如果不需要对应用使用根域，我们建议使用 CNAME 记录，而不要使用 A 记录。
-- 不要对同一个域同时使用 CNAME 记录和 A 记录。 此问题可能会导致冲突，并防止域正在被解析。 
+- 不要对同一个域同时使用 CNAME 记录和 A 记录。 此问题可能会导致冲突，并阻止域解析。 
 
 **原因 2** 
 
 Internet 浏览器可能仍在缓存域的旧 IP 地址。 
 
-**原因 2 的解决方案**
+**原因 2 的解决方法**
 
 清除浏览器缓存。 对于 Windows 设备，可以运行命令 `ipconfig /flushdns`。 使用 [WhatsmyDNS.net](https://www.whatsmydns.net/) 验证域是否指向应用的 IP 地址。 
 
@@ -138,7 +138,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 #### <a name="solution"></a>解决方案
 
 - 咨询订阅管理员，确保有权将主机名添加到应用。
-- 如果需要多个子域，我们建议您更改域托管到 Azure 域服务 (DNS)。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
+- 如果需要更多子域，我们建议将域托管服务更改为 Azure 域服务 (DNS)。 使用 Azure DNS 可将 500 个主机名添加到应用。 有关详细信息，请参阅[添加子域](https://blogs.msdn.microsoft.com/waws/2014/10/01/mapping-a-custom-subdomain-to-an-azure-website/)。
 
 ### <a name="dns-cant-be-resolved"></a>无法解析 DNS
 
@@ -168,7 +168,7 @@ Internet 浏览器可能仍在缓存域的旧 IP 地址。
 订阅所有者可能意外删除了该域。
 
 #### <a name="solution"></a>解决方案
-如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请务必在搜索框中键入确切的域名。）此域不会重复产生费用。 如果在域中删除超过七天前，请联系[Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)有关还原域的帮助。
+如果域的删除时间不超过七天，则尚未对该域启动删除过程。 在这种情况下，可以在 Azure 门户中的同一个订阅下购买同一个域。 （请务必在搜索框中键入确切的域名。）此域不会重复产生费用。 如果该域的删除时间超过七天，请求助 [Azure 支持](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)来还原该域。
 
 ## <a name="domain-problems"></a>域问题
 
@@ -270,62 +270,62 @@ Azure 应用服务每隔 8 小时会运行一个后台作业，如果有任何�
     |记录类型|主机|指向|
     |------|------|-----|
     |A|@|应用的 IP 地址|
-    |TXT|@|<应用名称>.azurewebsites.net|
-    |CNAME|www|<应用名称>.azurewebsites.net|
+    |TXT|@|`<app-name>.azurewebsites.net`|
+    |CNAME|www|`<app-name>.azurewebsites.net`|
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
-**我是否必须购买它进行配置我的网站的自定义域？**
+**购买网站的自定义域后是否必须配置该域？**
 
-当你购买的域在 Azure 门户中时，应用服务应用程序自动配置为使用该自定义域。 您无需执行任何其他步骤。 有关详细信息，观看[Azure 应用服务自助帮助：自定义域名添加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)第 9 频道上。
+通过 Azure 门户购买某个域时，应用服务应用程序会自动配置为使用该自定义域。 你不需要执行任何额外的步骤。 有关详细信息，观看[Azure 应用服务自助帮助：自定义域名添加](https://channel9.msdn.com/blogs/Azure-App-Service-Self-Help/Add-a-Custom-Domain-Name)第 9 频道上。
 
-**可以使用 Azure 门户中购买的域以改为指向 Azure VM？**
+**是否可以使用在 Azure 门户中购买的域来指向 Azure VM？**
 
 是的您可以将域指向 VM 了。 有关详细信息，请参阅[使用 Azure DNS 为 Azure 服务提供自定义域设置](../dns/dns-custom-domain.md)。
 
-**通过 GoDaddy 或 Azure DNS 托管我的域？**
+**我的域是由 GoDaddy 还是 Azure DNS 托管？**
 
-应用服务域使用 GoDaddy 域注册和 Azure DNS 来托管域。 
+应用服务域使用 GoDaddy 进行域注册，使用 Azure DNS 来托管域。 
 
-**我有自动续订已启用，但仍收到通过电子邮件向我的域一份续订通知。 我该怎么办？**
+**我已启用自动续订，但仍收到了有关域续订的电子邮件通知。我该怎样做？**
 
-如果有自动续订已启用，你不需要执行任何操作。 请注意，电子邮件提供以通知您域是即将到期，并手动续订，如果自动续订未启用。
+如果你已启用自动续订，则不需要执行任何操作。 电子邮件通知旨在告诉你该域即将过期，如果未启用自动续订，则需要手动续订。
 
-**将收取 Azure DNS 托管我的域？**
+**在 Azure DNS 中托管域是否要付费？**
 
-域购买的初始成本适用于仅域注册。 除了注册成本，还有免费的 Azure DNS 根据使用情况。 有关详细信息，请参阅[Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)的更多详细信息。
+最初的域购买费用仅适用于域注册。 除了注册费用以外，Azure DNS 还会根据用量收费。 有关详细详细，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 
-**我购买我前面在 Azure 门户中的域，并且想要将从 GoDaddy 托管到 Azure DNS 托管移。 如何执行此操作？**
+**我的域是之前在 Azure 门户中购买的，现在想要从 GoDaddy 托管改为 Azure DNS 托管。该如何处理？**
 
-不一定要迁移到 Azure DNS 托管。 如果确实想要有关迁移到 Azure DNS 中，在 Azure 门户中的域管理体验提供了到 Azure DNS 所需的步骤信息。 如果域通过应用服务购买的从 GoDaddy 托管到 Azure DNS 的迁移是相对无缝的过程。
+不一定非要迁移到 Azure DNS 托管。 如果你确实想要迁移到 Azure DNS，Azure 门户中的域管理体验会提供有关转移到 Azure DNS 的步骤信息。 如果域通过应用服务购买的，则从 GoDaddy 托管迁移到 Azure DNS 的过程相对较为顺畅。
 
-**我想要购买我从应用服务域的域，但可以托管我的域上 GoDaddy 而不是 Azure DNS？**
+**如果通过应用服务域购买域，是否可以在 GoDaddy 而不是 Azure DNS 中托管该域？**
 
-自 2017 年 7 月 24 日，在门户中购买的应用服务域托管在 Azure DNS。 如果想要使用其他托管提供商，则必须转到其网站，以获取域托管解决方案。
+从 2017 年 7 月 24 日开始，在门户中购买的应用服务域将托管在 Azure DNS 中。 如果你想要使用其他托管提供商，则必须转到其网站以获取域托管解决方案。
 
-**我是否需要支付我的域保护隐私？**
+**是否需要支付域的隐私保护费用？**
 
-当你购买域通过 Azure 门户时，可以选择要添加隐私在无需额外付费。 这是购买通过 Azure 应用服务域的优势之一。
+通过 Azure 门户购买域时，可以选择免费添加隐私保护。 这是通过 Azure 应用服务购买域所能获得的权益之一。
 
-**如果我决定我不再想要我的域，可以获取我的钱返回？**
+**如果我不再想要使用我的域，是否可以获得退款？**
 
-当你购买域时，您无需支付 5 天，在此期间您可以决定不希望域一段。 如果您决定不想在域内的五天内，你不会收费。 （.uk 域是一种例外。 如果购买.uk 域中，会立即产生费用且不能退还帐户）。
+购买域时，你可以免费试用 5 天，在此期间，可以决定是否要继续使用。 如果在这五天内你决定不需要该域，则不会产生费用。 （.uk 域例外。 购买 .uk 域会立即产生费用，而不能获得退款）。
 
-**可以在我的订阅中使用的域中另一个 Azure 应用服务应用程序？**
+**是否可以在订阅中的另一个 Azure 应用服务应用中使用域？**
 
-是的。 在访问 Azure 门户中的自定义域和 SSL 边栏选项卡时，您将看到已购买的域。 您可以将应用配置为使用任何这些域。
+是的。 在 Azure 门户中访问“自定义域和 SSL”边栏选项卡时，会看到购买的域。 可将应用配置为使用其中的任何域。
 
-**可以将传输域从一个订阅到另一个订阅？**
+**是否可将域从一个订阅转移到另一个订阅？**
 
 可以将一个域移到另一个订阅/资源组使用[移动 AzResource](https://docs.microsoft.com/powershell/module/az.Resources/Move-azResource) PowerShell cmdlet。
 
-**如果当前没有对 Azure 应用服务应用程序如何管理我的自定义域？**
+**如果我当前没有 Azure 应用服务应用，该如何管理自定义域？**
 
-即使没有应用服务 Web 应用，你可以管理你的域。 域可以用于 Azure 服务，例如虚拟机、 存储等等。如果你想要用于应用服务 Web 应用的域，然后您需要包括免费应用服务计划，以便将其绑定到 web 应用的域不是一个 Web 应用。
+即使没有应用服务 Web 应用，也可以管理域。 域可用于虚拟机、存储等 Azure 服务。如果你打算将域用于应用服务 Web 应用，则需要添加一个未包含在免费应用服务计划中的 Web 应用才能将域绑定到 Web 应用。
 
-**可以将使用自定义域的 web 应用到另一个订阅或从应用服务环境 v1 到 V2？**
+**是否可将使用自定义域的 Web 应用移到另一个订阅，或者将其从应用服务环境 v1 移到 v2？**
 
-是的可以在订阅之间移动你的 web 应用。 遵循中的指导[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)。 移动 web 应用时，有一些限制。 有关详细信息，请参阅[移动应用服务资源的限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
+是的，可以在订阅之间移动 Web 应用。 请遵照[如何在 Azure 中移动资源](../azure-resource-manager/resource-group-move-resources.md)中的指导操作。 移动 Web 应用时存在一些限制。 有关详细信息，请参阅[移动应用服务资源时存在的限制](../azure-resource-manager/resource-group-move-resources.md#app-service-limitations
 )。
 
-移动 web 应用之后, 设置的自定义的域中的域主机名绑定应保持不变。 配置主机名绑定所不需执行任何额外步骤。
+移动 Web 应用之后，自定义域设置中的域的主机名绑定应保持不变。 无需执行额外的步骤即可配置主机名绑定。

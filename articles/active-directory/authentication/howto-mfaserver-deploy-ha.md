@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 71b7784d054f279dfccdb3a2424fd427789ca658
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2ddf0885ce7615e06b78eccbd6424e63cc6103c2
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370068"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546999"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-for-high-availability"></a>配置 Azure 多重身份验证服务器以实现高可用性
 
@@ -36,7 +36,7 @@ MFA 服务器是装有 Azure 多重身份验证软件的 Windows 服务器。 MF
 
 在 AD 中成功完成身份验证后，MFA 服务器会与 MFA 服务通信。 MFA 服务器等待 MFA 服务发出允许或拒绝用户访问应用程序的通知。
 
-如果 MFA 主服务器脱机，仍可处理身份验证，但无法处理需要对 MFA 数据库进行更改的操作。 （示例包括：添加用户、自助 PIN 更改，以及更改用户信息）
+如果 MFA 主服务器脱机，仍可处理身份验证，但无法处理需要对 MFA 数据库进行更改的操作。 (示例包括： 添加用户、 自助 PIN 更改、 不断变化用户信息或用户门户的访问权限)
 
 ## <a name="deployment"></a>部署
 

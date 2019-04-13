@@ -11,12 +11,12 @@ author: nacharya1
 ms.author: nilesha
 ms.date: 12/12/2018
 ms.custom: seodec18
-ms.openlocfilehash: bf010e33a5ef77fcfde2506bfef9760a09667a9d
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: 620dbd22613df37fdc3c20e34906684446b2251f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867246"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545991"
 ---
 # <a name="what-is-automated-machine-learning"></a>什么是自动化机器学习？
 
@@ -51,27 +51,14 @@ ms.locfileid: "56867246"
 
 你可以检查记录的运行信息，其中包含运行期间收集的指标。 训练运行还会生成一个包含模型和数据预处理的 Python 序列化对象（`.pkl` 文件）。
 
-## <a name="model-explainability"></a>模型可说明性
-
-自动化机器学习的常见问题是不能看到端到端过程。 可以通过 Azure 机器学习详细了解这些模型，更好地了解在后端运行的内容。 某些模型（例如线性回归）被认为是相当直观的模型，因此容易理解。 但是，随着添加的功能越来越多，使用的机器学习模型越来越复杂，理解它们也越来越困难。 了解机器学习时有两个关键的方面：
-
-1. 了解机器学习管道以及所有相关的步骤，包括数据预处理/特征化和超参数值。
-1. 了解输入变量（也称为“特征”）和模型输出之间的关系。  了解每个特征对预测值的影响大小和方向可以更好地了解和解释模型。 这称为特征重要性。
-
-可以启用所选的管道的全局功能重要性按需发布培训或启用它的所有管道作为自动化的机器学习训练的一部分。 医疗保健和银行等的很大程度受管制行业，这很关键，以符合法规和最佳实践。  下面是几个实际的方案，以阐明：
-
-1. 使用机器学习来预测未来的检测失败一家制造公司，因此他们可以主动执行维护活动。 一旦您知道检测即将出现故障，什么最可能的原因要因此可以快速执行预防性维护？
-1. 金融机构使用机器学习过程贷款或信用卡应用程序。 您如何知道是否模型是否执行了正确的任务，以及如果客户要求的更多详细信息在其应用程序已拒绝的原因，如何将您应对它们？
-1. 在线零售商或独立软件提供商使用机器学习来预测客户流失。 什么是密钥参与者客户流失，以及如何可以您防止客户改动？
-
-这是一项预览功能，我们将继续投资中提供更丰富的信息可帮助您更好地了解机器学习模型。 按此[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/model-explanation/auto-ml-model-explanation.ipynb)操作，在 Azure 机器学习中试验模型解释。
 
 ## <a name="next-steps"></a>后续步骤
 
 查看示例并了解如何使用自动化机器学习构建模型：
-+ [示例：使用 Jupyter 笔记本探索 Azure 机器学习服务](samples-notebooks.md#automated-ml-setup)
 
 + [教程：使用 Azure 自动机器学习自动训练分类模型](tutorial-auto-train-models.md)
+
++ [笔记本示例](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
 
 + [在远程资源上使用自动训练](how-to-auto-train-remote.md)
 

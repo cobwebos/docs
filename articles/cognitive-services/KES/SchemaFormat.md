@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 23120e45a1070f46ae4e1927a29bdab4c990d96f
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 51a812762659bcc67762b82e9c120772065aab53
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860705"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549672"
 ---
 # <a name="schema-format"></a>架构格式
 
@@ -41,16 +41,16 @@ ms.locfileid: "55860705"
 
 下面列出了支持的属性数据类型：
 
-| Type | 说明 | 操作 | 示例 |
+| Type | 描述 | 操作 | 示例 |
 |------|-------------|------------|---------|
-| String | 字符串（1-1024 个字符） | equals、starts_with | "hello world" |
-| Int32 | 已签名的 32 位整数 | equals、starts_with、is_between | 2016 |
-| Int64 | 已签名的 64 位整数 | equals、starts_with、is_between | 9876543210 |
-| Double | 双精度浮点值 | equals、starts_with、is_between | 1.602e-19 |
-| 日期 | 日期（1400-01-01 到 9999-12-31） | equals、is_between | '2016-03-14' |
-| Guid | 全局唯一标识符 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| Blob | 内部压缩的非索引数据 | 无 | "Empower every person and every organization on the planet to achieve more" |
-| Composite | 多个子属性的复合| *不适用* | { "Name":"harry shum", "Affiliation":"microsoft" } |
+| `String` | 字符串（1-1024 个字符） | equals、starts_with | "hello world" |
+| `Int32` | 已签名的 32 位整数 | equals、starts_with、is_between | 2016 |
+| `Int64` | 已签名的 64 位整数 | equals、starts_with、is_between | 9876543210 |
+| `Double` | 双精度浮点值 | equals、starts_with、is_between | 1.602e-19 |
+| `Date` | 日期（1400-01-01 到 9999-12-31） | equals、is_between | '2016-03-14' |
+| `Guid` | 全局唯一标识符 | equals | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
+| `Blob` | 内部压缩的非索引数据 | 无 | "Empower every person and every organization on the planet to achieve more" |
+| `Composite` | 多个子属性的复合| *不适用* | { "Name":"harry shum", "Affiliation":"microsoft" } |
 
 String 属性用于表示可能在用户查询中显示的字符串值。  它们支持完全匹配的 equals 操作，以及适用于查询完成方案的 starts_with 操作（如匹配“micros”与“microsoft”）。  今后推出的版本将支持不区分大小写和模糊匹配，以便处理拼写错误。
 

@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 845bd7a6ad690288585418a42e5706fdbebbf143
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 16ccd89fe6eaad3fd6c2704b2f324f486eee45e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890862"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59532423"
 ---
 # <a name="common-errors-during-classic-to-azure-resource-manager-migration"></a>从经典部署模型迁移到 Azure 资源管理器部署模型的过程中出现的常见错误
 本文编录了从 Azure 经典部署模型将 IaaS 资源迁移到 Azure 资源管理器堆栈的过程中出现的最常见错误和缓解措施。
@@ -23,8 +23,8 @@ ms.locfileid: "58890862"
 | 内部服务器错误 |在某些情况下，这是重试时会消失的暂时性错误。 如果该错误仍然存在，请[联系 Azure 支持人员](../articles/azure-supportability/how-to-create-azure-support-request.md)，因为它需要调查平台日志。 <br><br> **注意：** 支持团队跟踪事件后，请不要尝试任何自我缓解措施，因为这可能会对环境造成意想不到的后果。 |
 | HostedService {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它是 PaaS 部署（Web/辅助角色）。 |当部署包含 Web/辅助角色时，会发生这种情况。 由于只有虚拟机才支持迁移，请从部署中删除 Web/辅助角色，并重试迁移。 |
 | 模板 {template-name} 部署失败。 CorrelationId={guid} |在迁移服务的后端，我们使用 Azure Resource Manager 模板在 Azure Resource Manager 堆栈中创建资源。 由于模板是幂等的，通常可以安全地重试迁移操作，以通过此错误。 如果此错误仍然存在，请[联系 Azure 支持人员](../articles/azure-supportability/how-to-create-azure-support-request.md)，并向他们提供 CorrelationId。 <br><br> **注意：** 支持团队跟踪事件后，请不要尝试任何自我缓解措施，因为这可能会对环境造成意想不到的后果。 |
-| 虚拟网络 {virtual-network-name} 不存在。 |如果在新的 Azure 门户中创建虚拟网络，则可能会发生这种情况。 实际的虚拟网络名称遵循模式“Group * <VNET name>” |
-| 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含 Azure 资源管理器不支持的扩展 {extension-name}。 建议从 VM 中卸载该扩展，再继续迁移。 |XML 扩展，如 BGInfo 1。\*不支持 Azure 资源管理器中。 因此，无法迁移这些扩展。 如果将这些扩展保留安装在虚拟机上，则在完成迁移之前会自动将其卸载。 |
+| 虚拟网络 {virtual-network-name} 不存在。 |如果在新的 Azure 门户中创建虚拟网络，则可能会发生这种情况。 实际的虚拟网络名称遵循模式"组 * \<VNET 名称 >" |
+| 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含 Azure 资源管理器不支持的扩展 {extension-name}。 建议从 VM 中卸载该扩展，再继续迁移。 |Azure 资源管理器不支持 XML 扩展（例如 BGInfo 1.\*）。 因此，无法迁移这些扩展。 如果将这些扩展保留安装在虚拟机上，则在完成迁移之前会自动将其卸载。 |
 | HostedService {hosted-service-name} 中的 VM {vm-name} 包含当前不支持进行迁移的扩展 VMSnapshot/VMSnapshotLinux。 请从 VM 中卸载它，在迁移完成后再使用 Azure 资源管理器重新添加它 |这是为 Azure 备份配置虚拟机的方案。 由于这是当前不支持的方案，请按照 https://aka.ms/vmbackupmigration 中的解决方法进行操作 |
 | 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含未从 VM 报告其状态的扩展 {extension-name}。 因此，此 VM 无法迁移。 确保从此 VM 报告该扩展状态或者将该扩展从此 VM 中卸载，并重试迁移。 <br><br> 托管服务 {hosted-service-name} 中的 VM {vm-name} 包含报告处理程序状态: {handler-status} 的扩展 {extension-name}。 因此，此 VM 无法迁移。 确保所报告的扩展处理程序状态为 {handler-status} 或将该扩展从 VM 中卸载，并重试迁移。 <br><br> 托管服务 {hosted-service-name} 中 VM {vm-name} 的 VM 代理正在将总体代理状态报告为“未就绪”。 因此，该 VM 无法迁移（如果它有可迁移的扩展）。 请确保 VM 代理将总体代理状态报告为“就绪”。 请参阅 https://aka.ms/classiciaasmigrationfaqs。 |Azure 来宾代理和 VM 扩展需要对 VM 存储帐户进行出站 Internet 访问以填充其状态。 状态失败的常见原因包括 <li> 阻止出站访问 Internet 的网络安全组 <li> 如果 VNET 有本地 DNS 服务器，并且 DNS 连接已丢失 <br><br> 如果仍然看到不支持的状态，则可以卸载该扩展以跳过此检查并继续进行迁移。 |
 | 托管服务 {hosted-service-name} 中的部署 {deployment-name} 不支持迁移，因为它具有多个可用性集。 |目前，只有具有 1 个或更少可用性集的托管服务可以进行迁移。 要解决此问题，请将其他可用性集和这些可用性集中的虚拟机移到其他托管服务。 |

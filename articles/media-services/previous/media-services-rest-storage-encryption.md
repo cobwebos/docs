@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: ca7f749a04b569d183589fba8c788ce48f29358b
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a26388de85ff6293985fe23adac8ca4d04d0de61
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295549"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525783"
 ---
 # <a name="encrypting-your-content-with-storage-encryption"></a>通过存储加密来加密内容 
 
@@ -111,7 +111,7 @@ AMS 存储加密将 **AES-CTR** 模式加密应用于整个文件。  AES-CTR �
 
     请求正文属性    | 描述
     ---|---
-    ID | 使用以下格式生成 ContentKey ID：“nb:kid:UUID:<NEW GUID>”。
+    ID | 使用以下格式生成 ContentKey ID"nb:kid:UUID:\<新的 GUID >"。
     ContentKeyType | 内容密钥类型是一个整数，用于定义密钥。 存储加密格式的值为 1。
     EncryptedContentKey | 我们创建一个新的内容密钥值，这是一个 256 位（32 字节）的值。 此密钥使用存储加密 X.509 证书进行加密，该证书是我们通过执行 GetProtectionKeyId 和 GetProtectionKey 方法的 HTTP GET 请求从 Microsoft Azure 媒体服务中检索到的。 有关示例，请参阅下面的 .NET 代码：[此处](https://github.com/Azure/azure-sdk-for-media-services/blob/dev/src/net/Client/Common/Common.FileEncryption/EncryptionUtils.cs)定义的 **EncryptSymmetricKeyData** 方法。
     ProtectionKeyId | 这是存储空间加密 X.509 证书的保护密钥 ID，用于加密内容密钥。

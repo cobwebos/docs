@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 11/28/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 1c75d781c8a83b54ac9474c83388cf02b5d03e3c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2e2502e35b3720ddbfe5950b89e2388de378f2ba
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57532076"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528112"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>配置网关资源以路由请求
 
@@ -228,8 +228,8 @@ HTTP 传递规则包括以下属性：
 ```
 
 此网关是为 Linux 应用程序“meshAppLinux”配置的，该应用程序由至少两个服务组成，“helloWorldService”和“counterService”，在端口 80 上侦听。 根据传入请求的 URL 结构，它将请求路由到其中一项服务。 
-* “<IPAddress>:80/helloWorld/\<request\>”会导致请求被定向到 helloWorldService 中的“helloWorldListener”。 
-* “<IPAddress>:80/counter/\<request\>”会导致请求被定向到 counterService 中的“counterListener”。 
+* "\<Ip 地址 >: 80/helloWorld/\<请求\>"会导致定向到 helloWorldService"helloWorldListener"的请求。 
+* "\<Ip 地址 >: 80/计数器/\<请求\>"会导致定向到 counterService"counterListener"的请求。 
 
 ## <a name="next-steps"></a>后续步骤
 * 部署[入口示例](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress)以查看操作中的网关

@@ -12,12 +12,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: f2ea9f784064a926a391ba0eadebd9fa5224a36d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57875180"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549723"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-ip-firewall-rules"></a>Azure SQL 数据库和 SQL 数据仓库 IP 防火墙规则
 
@@ -151,7 +151,7 @@ EXECUTE sp_delete_firewall_rule @name = N'ContosoFirewallRule'
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 | Cmdlet | 级别 | 描述 |
 | --- | --- | --- |
@@ -244,11 +244,12 @@ az sql server firewall-rule create --resource-group myResourceGroup --server $se
 
   如果 Internet 连接使用动态 IP 寻址，并且在通过防火墙时遇到问题，则可以尝试以下解决方法之一：
   
-  - Internet 服务提供商 (ISP) 询问分配给你访问 Azure SQL 数据库服务器的客户端计算机的 IP 地址范围，然后添加作为 IP 防火墙规则的 IP 地址范围。
+  - 向 Internet 服务提供商 (ISP) 请求获取分配给访问 Azure SQL 数据库服务器的客户端计算机的 IP 地址范围，然后将此 IP 地址范围添加为 IP 防火墙规则。
   - 改为获取客户端计算机的静态 IP 地址，并将此 IP 地址添加为 IP 防火墙规则。
 
 ## <a name="next-steps"></a>后续步骤
 
+- 确认企业网络环境允许 Microsoft Azure 数据中心使用的计算 IP 地址范围 （包括 SQL 范围） 的入站的通信。 可能有必要加入允许列表这些 IP 地址，请参阅[Microsoft Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)  
 - 有关介绍了如何创建服务器级别 IP 防火墙规则的快速入门，请参阅[创建 Azure SQL 数据库](sql-database-single-database-get-started.md)。
 - 有关从开放源或第三方应用程序连接到 Azure SQL 数据库的帮助，请参阅 [SQL 数据库的客户端快速入门代码示例](https://msdn.microsoft.com/library/azure/ee336282.aspx)。
 - 有关可能需要打开的其他端口的信息，请参阅 **SQL 数据库：外部与内部**部分（在[用于 ADO.NET 4.5 和 SQL 数据库的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)中）

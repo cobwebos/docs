@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: v-jansko
-ms.openlocfilehash: b65182cac91f6ed3dc653d6d9e77f80e99346bb7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 961dd277034db7e5406e671233f26b4fd8fe5f26
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918002"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527279"
 ---
 # <a name="translator-text-api-v20"></a>文本翻译 API v2.0
 
@@ -45,7 +45,7 @@ ms.locfileid: "58918002"
 |ProfanityAction    |操作 |示例源（日语）  |示例翻译（中文）  |
 |:--|:--|:--|:--|
 |NoAction   |默认。 与不设置此选项等效。 不雅内容会从源传递到目标。        |彼はジャッカスです。     |他是一个笨蛋。   |
-|Marked     |不雅词语会括在 XML 标记 <profanity> 和 </profanity> 中。     |彼はジャッカスです。 |他是一个<profanity>笨蛋</profanity>。    |
+|Marked     |将 XML 标记包围不当的词语\<猥亵语言 > 和\</profanity >。       |彼はジャッカスです。 |他\<猥亵语言 > jackass\</profanity >。  |
 |Deleted    |不雅词语会从输出中删除，不进行替换。     |彼はジャッカスです。 |他是一个。   |
 
     
@@ -129,17 +129,17 @@ ms.locfileid: "58918002"
 `TranslateArrayRequest` 中的元素包括：
 
 
-* `appid`:必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
-* `from`:可选。 一个字符串，表示进行文本翻译时源语言的语言代码。 如果留空，则响应会包括语言自动检测的结果。
-* `options`:可选。 一个 `Options` 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
-    - `Category`:一个字符串，包含翻译的类别（领域）。 默认为 `general`。
-    - `ContentType`:要翻译的文本的格式。 支持的格式为 `text/plain`（默认）、`text/xml`、`text/html`。 HTML 必须是格式正确的完整元素。
-    - `ProfanityAction`:指定如何处理上述不雅内容。 就 `ProfanityAction` 来说，接受的值为 `NoAction`（默认）、`Marked`、`Deleted`。
-    - `State`:用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
-    - `Uri`:按此 URI 筛选结果。 默认：`all`。
-    - `User`:按此用户筛选结果。 默认：`all`。
-* `texts`:必需。 一个包含要翻译文本的数组。 所有字符串必须采用同一语言。 要翻译的所有文本总共不得超过 10000 个字符。 最大数组元素数为 2000。
-* `to`:必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。
+* `appid`：必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
+* `from`：可选。 一个字符串，表示进行文本翻译时源语言的语言代码。 如果留空，则响应会包括语言自动检测的结果。
+* `options`：可选。 一个 `Options` 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
+    - `Category`：一个字符串，包含翻译的类别（领域）。 默认为 `general`。
+    - `ContentType`：要翻译的文本的格式。 支持的格式为 `text/plain`（默认）、`text/xml`、`text/html`。 HTML 必须是格式正确的完整元素。
+    - `ProfanityAction`：指定如何处理上述不雅内容。 就 `ProfanityAction` 来说，接受的值为 `NoAction`（默认）、`Marked`、`Deleted`。
+    - `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
+    - `Uri`：按此 URI 筛选结果。 默认：`all`。
+    - `User`：按此用户筛选结果。 默认：`all`。
+* `texts`：必需。 一个包含要翻译文本的数组。 所有字符串必须采用同一语言。 要翻译的所有文本总共不得超过 10000 个字符。 最大数组元素数为 2000。
+* `to`：必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。
 
 可选元素可以省略。 属于 TranslateArrayRequest 的直接子项的元素必须按字母顺序列出。
 
@@ -147,11 +147,11 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 
 **返回值：** 一个 `TranslateArrayResponse` 数组。 每个 `TranslateArrayResponse` 都有以下元素：
 
-* `Error`:指示一个错误（如果有）。 否则设置为 null。
-* `OriginalSentenceLengths`:一个整数数组，指示原始的源文本中每个句子的长度。 数组的长度指示句子数。
-* `TranslatedText`:翻译的文本。
-* `TranslatedSentenceLengths`:一个整数数组，指示翻译的文本中每个句子的长度。 数组的长度指示句子数。
-* `State`:用户状态，可帮助关联请求和响应。 返回的内容与请求中的一样。
+* `Error`：指示一个错误（如果有）。 否则设置为 null。
+* `OriginalSentenceLengths`：一个整数数组，指示原始的源文本中每个句子的长度。 数组的长度指示句子数。
+* `TranslatedText`：翻译的文本。
+* `TranslatedSentenceLengths`：一个整数数组，指示翻译的文本中每个句子的长度。 数组的长度指示句子数。
+* `State`：用户状态，可帮助关联请求和响应。 返回的内容与请求中的一样。
 
 响应正文的格式如下所示。
 
@@ -241,7 +241,7 @@ TranslateArray 方法接受 `application/xml` 或 `text/xml` 作为 `Content-Typ
 ## <a name="get-getlanguagesfortranslate"></a>GET /GetLanguagesForTranslate
 
 ### <a name="implementation-notes"></a>实现说明
-获取一个语言代码的列表，其中的代码所代表的语言受翻译服务的支持。  `Translate` 和`TranslateArray`可将一种语言的两个转换。
+获取一个语言代码的列表，其中的代码所代表的语言受翻译服务的支持。  `Translate` 和 `TranslateArray` 可以在这些语言的任意两种之间互译。
 
 请求 URI 为 `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate`。
 
@@ -327,7 +327,7 @@ binary
 |text|(empty)   |必需。 一个字符串，包含 wave 流对应的指定要朗读的语言的一个或多个句子。 要朗读的文本的大小不得超过 2000 个字符。|query|字符串|
 |语言|(empty)   |必需。 一个字符串，表示要朗读的文本所采用语言的受支持语言代码。 此代码必须存在于从 `GetLanguagesForSpeak` 方法返回的代码的列表中。|query|字符串|
 |格式|(empty)|可选。 一个字符串，指定 content-type ID。 目前，`audio/wav` 和 `audio/mp3` 可用。 默认值为 `audio/wav`。|query|字符串|
-|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和`MinSize`可用于指定的音频信号质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和`male`可用于指定所需的语音的性别。 默认为 `female`。 使用垂直条 <code>\|</code> 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|字符串|
+|options|(empty)    |<ul><li>可选。 一个字符串，指定已合成语音的属性：<li>`MaxQuality` 和 `MinSize` 可以用来指定音频信号的质量。 使用 `MaxQuality` 可以获取质量最高的语音，而使用 `MinSize` 则可获取大小最小的语音。 默认为 `MinSize`。</li><li>`female` 和 `male` 可以用来指定语音的所需性别。 默认为 `female`。 使用垂直条 <code>\|</code> 包含多个选项。 例如 `MaxQuality|Male`。</li></li></ul> |query|字符串|
 |授权|(empty)|必需，前提是 `appid` 字段或 `Ocp-Apim-Subscription-Key` 标头未指定。 授权令牌：`"Bearer" + " " + "access_token"`。|标头的值开始缓存响应|字符串|
 |Ocp-Apim-Subscription-Key|(empty)  |必需，前提是 `appid` 字段或 `Authorization` 标头未指定。|标头的值开始缓存响应|字符串|
 
@@ -508,11 +508,11 @@ DetectArray 成功。 返回一个字符串数组，其包含的双字符语言�
 
 AddtranslationsRequest 元素中的元素包括：
 
-* `AppId`:必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
-* `From`:必需。 一个字符串，包含源语言的语言代码。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
-* `To`:必需。 一个字符串，包含目标语言的语言代码。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
-* `Translations`:必需。 要添加到翻译记忆库的一个翻译数组。 每个翻译必须包含 originalText、translatedText 和评分。 每个 originalText 和 translatedText 的大小仅限 1000 个字符。 所有 originalText 和 translatedText 的总计不得超过 10000 个字符。 最大数组元素数为 100。
-* `Options`:必需。 一组选项，包括 Category、ContentType、Uri 和 User。 User 为必填项。 Category、ContentType 和 Uri 为可选项。 指定的元素必须按字母顺序列出。
+* `AppId`：必需。 如果使用了 `Authorization` 或 `Ocp-Apim-Subscription-Key` 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
+* `From`：必需。 一个字符串，包含源语言的语言代码。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
+* `To`：必需。 一个字符串，包含目标语言的语言代码。 必须是 `GetLanguagesForTranslate` 方法返回的语言之一。
+* `Translations`：必需。 要添加到翻译记忆库的一个翻译数组。 每个翻译必须包含 originalText、translatedText 和评分。 每个 originalText 和 translatedText 的大小仅限 1000 个字符。 所有 originalText 和 translatedText 的总计不得超过 10000 个字符。 最大数组元素数为 100。
+* `Options`：必需。 一组选项，包括 Category、ContentType、Uri 和 User。 User 为必填项。 Category、ContentType 和 Uri 为可选项。 指定的元素必须按字母顺序列出。
 
 ### <a name="response-class-status-200"></a>响应类（状态 200）
 AddTranslationArray 方法成功。 2018 年 1 月 31 日以后，不接受句子提交。 此服务会以错误代码 410 进行响应。
@@ -595,16 +595,16 @@ integer
 
 `TranslateOptions` 对象包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
 
-* `Category`:一个字符串，包含翻译的类别（领域）。 默认为“general”。
-* `ContentType`:唯一支持也是默认的选项为“text/plain”。
-* `IncludeMultipleMTAlternatives`: boolean 标志，用于确定是否应从 MT 引擎返回多个备选方法。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
+* `Category`：一个字符串，包含翻译的类别（领域）。 默认为“general”。
+* `ContentType`：唯一支持也是默认的选项为“text/plain”。
+* `IncludeMultipleMTAlternatives`：布尔标志，用于确定是否应从 MT 引擎返回多个备选项。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
     - 评级
 评级的适用范围如下：1) 最佳自动翻译评级为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
     - 备选项数 返回的备选项的数目最多为 maxTranslations，但可以更少。
     - 语言对 此功能不可用于简体中文与繁体中文之间的翻译（双向）。 它可用于 Microsoft 翻译工具支持的所有其他语言对。
-* `State`:用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
-* `Uri`:按此 URI 筛选结果。 如果未设置任何值，则默认值为 all。
-* `User`:按此用户筛选结果。 如果未设置任何值，则默认值为 all。
+* `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
+* `Uri`：按此 URI 筛选结果。 如果未设置任何值，则默认值为 all。
+* `User`：按此用户筛选结果。 如果未设置任何值，则默认值为 all。
 
 请求 `Content-Type` 应为 `text/xml`。
 
@@ -629,18 +629,18 @@ integer
 
 这包括一个包含以下值的 `GetTranslationsResponse` 元素：
 
-* `Translations`:一系列已发现的匹配项，存储在 TranslationMatch（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
-* `From`:如果方法未指定源语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
-* `State`:用户状态，可帮助关联请求和响应。 包含的值与在 TranslateOptions 参数中给出的值相同。
+* `Translations`：一系列已发现的匹配项，存储在 TranslationMatch（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
+* `From`：如果方法未指定源语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
+* `State`：用户状态，可帮助关联请求和响应。 包含的值与在 TranslateOptions 参数中给出的值相同。
 
 TranslationMatch 对象由以下元素组成：
 
-* `Error`:如果特定的输入字符串出错，则会存储错误代码。 否则，此字段为空。
-* `MatchDegree`:系统将输入句子与存储内容进行匹配，包括不精确匹配。  MatchDegree 表示输入文本与存储中发现的原始文本的匹配程度。 返回的值为 0 到 100，0 表示不相似，100 表示完全匹配（区分大小写）。
+* `Error`：如果特定的输入字符串出错，则会存储错误代码。 否则，此字段为空。
+* `MatchDegree`：系统将输入句子与存储内容进行匹配，包括不精确匹配。  MatchDegree 表示输入文本与存储中发现的原始文本的匹配程度。 返回的值为 0 到 100，0 表示不相似，100 表示完全匹配（区分大小写）。
 MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原始文本不同于输入文本的情况下，才返回此项。 用于返回模糊匹配的源文本。 不是针对 Microsoft 翻译工具结果返回的。
-* `Rating`:表示进行质量决策的人员的权威性。 机器翻译结果的评分将为 5。 匿名提供的翻译的评分通常为 1 到 4，而权威人士提供的翻译的评分则通常为 6 到 10。
-* `Count`:此评分的这个翻译被选中的次数。 对于自动翻译的响应，此值将为 0。
-* `TranslatedText`:翻译的文本。
+* `Rating`：表示进行质量决策的人员的权威性。 机器翻译结果的评分将为 5。 匿名提供的翻译的评分通常为 1 到 4，而权威人士提供的翻译的评分则通常为 6 到 10。
+* `Count`：此评分的这个翻译被选中的次数。 对于自动翻译的响应，此值将为 0。
+* `TranslatedText`：翻译的文本。
 
 ### <a name="response-class-status-200"></a>响应类（状态 200）
 一个 `GetTranslationsResponse` 对象，其格式如上所述。
@@ -701,22 +701,22 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 
 `GetTranslationsArrayRequest` 包括以下元素：
 
-* `AppId`:必需。 如果使用了 Authorization 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
-* `From`:必需。 一个表示翻译文本语言代码的字符串。
-* `MaxTranslations`:必需。 一个整数，表示要返回的最大翻译数。
-* `Options`:可选。 一个 Options 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
+* `AppId`：必需。 如果使用了 Authorization 标头，请将 appid 字段留空，否则请包括一个包含 `"Bearer" + " " + "access_token"` 的字符串。
+* `From`：必需。 一个表示翻译文本语言代码的字符串。
+* `MaxTranslations`：必需。 一个整数，表示要返回的最大翻译数。
+* `Options`：可选。 一个 Options 对象，包含下面列出的值。 它们都是可选的，并且默认为最常用的设置。 指定的元素必须按字母顺序列出。
     - 类别：一个字符串，包含翻译的类别（领域）。 默认为“general”。
-    - `ContentType`:唯一支持也是默认的选项为“text/plain”。
-    - `IncludeMultipleMTAlternatives`: boolean 标志，用于确定是否应从 MT 引擎返回多个备选方法。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
+    - `ContentType`：唯一支持也是默认的选项为“text/plain”。
+    - `IncludeMultipleMTAlternatives`：布尔标志，用于确定是否应从 MT 引擎返回多个备选项。 有效值为 true 和 false（区分大小写）。 默认值为 false，并且仅包括 1 个备选项。 将此标志设置为 true 即可在翻译中生成人工备选项，这些备选项已完全集成到协作翻译框架 (CTF) 中。 此功能允许为在 CTF 中没有备选项的句子返回备选项，其方法是从解码器的 n-best 列表中添加人工备选项。
         - 评级
 评级的适用范围如下：1) 最佳自动翻译评级为 5。 2) CTF 中的备选项反映了审阅者的权威性，其评分为 -10 到 +10。 3) 自动生成的（N 个最佳）翻译备选项的评级为 0，匹配度为 100。
         - 备选项数 返回的备选项的数目最多为 maxTranslations，但可以更少。
         - 语言对 此功能不可用于简体中文与繁体中文之间的翻译（双向）。 它可用于 Microsoft 翻译工具支持的所有其他语言对。
-* `State`:用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
-* `Uri`:按此 URI 筛选结果。 如果未设置任何值，则默认值为 all。
-* `User`:按此用户筛选结果。 如果未设置任何值，则默认值为 all。
-* `Texts`:必需。 一个包含要翻译文本的数组。 所有字符串必须采用同一语言。 要翻译的所有文本总共不得超过 10000 个字符。 最大数组元素数为 10。
-* `To`:必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。
+* `State`：用户状态，可帮助关联请求和响应。 响应中将返回相同的内容。
+* `Uri`：按此 URI 筛选结果。 如果未设置任何值，则默认值为 all。
+* `User`：按此用户筛选结果。 如果未设置任何值，则默认值为 all。
+* `Texts`：必需。 一个包含要翻译文本的数组。 所有字符串必须采用同一语言。 要翻译的所有文本总共不得超过 10000 个字符。 最大数组元素数为 10。
+* `To`：必需。 一个字符串，表示进行文本翻译时目标语言的语言代码。
 
 可选元素可以省略。 属于 `GetTranslationsArrayRequest` 的直接子项的元素必须按字母顺序列出。
 
@@ -751,17 +751,17 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 
 每个 `GetTranslationsResponse` 元素包含以下值：
 
-* `Translations`:一系列已发现的匹配项，存储在 `TranslationMatch`（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
-* `From`:如果方法未指定 `From` 语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
-* `State`:用户状态，可帮助关联请求和响应。 包含的值与在 `TranslateOptions` 参数中给出的值相同。
+* `Translations`：一系列已发现的匹配项，存储在 `TranslationMatch`（见下）对象中。 翻译可能包括原始文本的略变体（模糊匹配）。 将对翻译进行排序：首先是 100% 匹配，然后是模糊匹配。
+* `From`：如果方法未指定 `From` 语言，则此项为自动语言检测的结果。 否则，它就会是给定的源语言。
+* `State`：用户状态，可帮助关联请求和响应。 包含的值与在 `TranslateOptions` 参数中给出的值相同。
 
-`TranslationMatch` 对象由以下内容组成：
-* `Error`:如果特定的输入字符串出错，则会存储错误代码。 否则，此字段为空。
-* `MatchDegree`:系统将输入句子与存储内容进行匹配，包括不精确匹配。  `MatchDegree` 指示输入的文本与在存储中找到的原始文本的匹配程度。 返回的值为 0 到 100，0 表示不相似，100 表示完全匹配（区分大小写）。
-* `MatchedOriginalText`:此结果的匹配的原始文本。 只有在匹配的原始文本不同于输入文本的情况下，才返回此项。 用于返回模糊匹配的源文本。 不是针对 Microsoft 翻译工具结果返回的。
-* `Rating`:表示进行质量决策的人员的权威性。 机器翻译结果的评分将为 5。 匿名提供的翻译的评分通常为 1 到 4，而权威人士提供的翻译的评分则通常为 6 到 10。
-* `Count`:此评分的这个翻译被选中的次数。 对于自动翻译的响应，此值将为 0。
-* `TranslatedText`:翻译的文本。
+`TranslationMatch` 对象由以下项组成：
+* `Error`：如果特定的输入字符串出错，则会存储错误代码。 否则，此字段为空。
+* `MatchDegree`：系统将输入句子与存储内容进行匹配，包括不精确匹配。  `MatchDegree` 表示输入文本与存储中发现的原始文本的匹配程度。 返回的值为 0 到 100，0 表示不相似，100 表示完全匹配（区分大小写）。
+* `MatchedOriginalText`：此结果的匹配的原始文本。 只有在匹配的原始文本不同于输入文本的情况下，才返回此项。 用于返回模糊匹配的源文本。 不是针对 Microsoft 翻译工具结果返回的。
+* `Rating`：表示进行质量决策的人员的权威性。 机器翻译结果的评分将为 5。 匿名提供的翻译的评分通常为 1 到 4，而权威人士提供的翻译的评分则通常为 6 到 10。
+* `Count`：此评分的这个翻译被选中的次数。 对于自动翻译的响应，此值将为 0。
+* `TranslatedText`：翻译的文本。
 
 
 ### <a name="response-class-status-200"></a>响应类（状态 200）
@@ -789,7 +789,7 @@ MatchedOriginalText：此结果的匹配的原始文本。 只有在匹配的原
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [将迁移到 v3 文本翻译 API](../migrate-to-v3.md)
+> [迁移到 v3 文本翻译 API](../migrate-to-v3.md)
 
 
 

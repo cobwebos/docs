@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
-ms.openlocfilehash: 5c768497cc21b3fae82a9db290531af33841a2cf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7d881454eb857080f1178f228a1f7bec36cae178
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877286"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527415"
 ---
 # <a name="security-frame-exception-management--mitigations"></a>安全框架：异常管理 |缓解措施 
 | 产品/服务 | 文章 |
@@ -201,7 +201,7 @@ public HttpResponseMessage PostProduct(Product item)
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [编辑 ASP.NET 错误页设置对话框](https://technet.microsoft.com/library/dd569096(WS.10).aspx) |
-| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 <customErrors> 标记有三种模式：</p><ul><li>**上：** 指定启用了自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**关闭：** 指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly:** 指定自定义错误将显示仅向远程客户端，并为本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
+| **步骤** | <p>如果 ASP.NET 应用程序失败并导致 HTTP/1.x 500 内部服务器错误，或者某项功能配置（例如请求筛选）阻止显示页面，会生成错误消息。 管理员可以选择是要让应用程序向客户端显示友好的消息、向客户端显示详细的错误消息，还是只向 localhost 显示详细的错误消息。 web.config 中的 `<customErrors>` 标记有三种模式：</p><ul><li>**上：** 指定启用了自定义错误。 如果未指定 defaultRedirect 特性，用户将看到常规错误。 将向远程客户端和本地主机显示自定义错误</li><li>**关闭：** 指定禁用自定义错误。 将向远程客户端和本地主机显示详细的 ASP.NET 错误</li><li>**RemoteOnly:** 指定自定义错误将显示仅向远程客户端，并为本地主机显示 ASP.NET 错误。 这是默认值</li></ul><p>打开应用程序/站点的 `web.config`文件，确保该标记中定义了 `<customErrors mode="RemoteOnly" />` 或 `<customErrors mode="On" />`。</p>|
 
 ## <a id="deployment"></a>在 IIS 中将部署方法设置为 Retail
 

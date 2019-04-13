@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/20/2016
 ms.author: jeconnoc
-ms.openlocfilehash: f0724fd6e5f08f3e09bcb147c12d1657235dc704
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: f597bc760a3f3825416912642ee66a53dfb91696
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916880"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525555"
 ---
 # <a name="trace-the-flow-of-a-cloud-services-application-with-azure-diagnostics"></a>使用 Azure 诊断跟踪云服务应用程序的流
 跟踪是在应用程序运行时监视其执行情况的一种方式。 可以使用 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace)、[System.Diagnostics.Debug](/dotnet/api/system.diagnostics.debug) 和 [System.Diagnostics.TraceSource](/dotnet/api/system.diagnostics.tracesource) 类在日志、文本文件或其他设备中记录与错误及应用程序执行情况相关的信息，供以后进行分析。 有关跟踪的详细信息，请参阅[跟踪和检测应用程序](/dotnet/framework/debug-trace-profile/tracing-and-instrumenting-applications)。
@@ -69,7 +69,7 @@ Trace、Debug 和 TraceSource 都要求设置“侦听器”来收集和记录�
 完成添加侦听器的步骤后，即可将 Trace 语句添加到代码中。
 
 ### <a name="to-add-trace-statement-to-your-code"></a>将 Trace 语句添加到代码中
-1. 打开应用程序的源文件。 例如用于辅助角色或 Web 角色的 <RoleName>.cs 文件。
+1. 打开应用程序的源文件。 例如， \<RoleName > 辅助角色或 web 角色的.cs 文件。
 2. 添加以下 using 语句（如果尚未添加）：
     ```
         using System.Diagnostics;

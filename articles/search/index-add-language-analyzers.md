@@ -19,12 +19,12 @@ translation.priority.mt:
 - ru-ru
 - zh-cn
 - zh-tw
-ms.openlocfilehash: 9584f0ee4264724787c5913c0d6baa4c2769fa82
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 39fbe30ccf4429003dc0c9f11165c5dd057a89cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085671"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549146"
 ---
 # <a name="add-language-analyzers-to-an-azure-search-index"></a>向 Azure 搜索索引添加语言分析器
 
@@ -92,7 +92,7 @@ Microsoft 分析器的索引平均比 Lucene 的索引慢两到三倍，具体�
 |爱尔兰语||ga.lucene|  
 |意大利语|it.microsoft|it.lucene|  
 |日语|ja.microsoft|ja.lucene|  
-|卡纳达语|ka.microsoft||  
+|卡纳达语|kn.microsoft||  
 |韩语|ko.microsoft|ko.lucene|  
 |拉脱维亚语|lv.microsoft|lv.lucene|  
 |立陶宛语|lt.microsoft||  

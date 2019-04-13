@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
-ms.openlocfilehash: da27c772a0650a923068b3c519ef39494573f96a
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 738dd451ca44801c799d793e6501c547655bd0e0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793112"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524134"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>在内部虚拟网络中使用 Azure API 管理服务
 使用 Azure 虚拟网络，Azure API 管理可以管理无法通过 Internet 访问的 API。 可以使用多种 VPN 技术建立连接。 可在虚拟网络中通过两种主要模式部署 API 管理：
@@ -36,7 +36,7 @@ ms.locfileid: "58793112"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>先决条件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -45,9 +45,10 @@ ms.locfileid: "58793112"
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + **一个 Azure API 管理实例**。 有关详细信息，请参阅[创建 Azure API 管理实例](get-started-create-service-instance.md)。
++ API 管理服务部署在虚拟网络[的端口列表](./api-management-using-with-vnet.md#required-ports)习惯并需要打开。 
 
 ## <a name="enable-vpn"> </a>在内部虚拟网络中创建 API 管理
-内部虚拟网络中的 API 管理服务托管在后面[内部负载均衡器 （经典）](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)。 这是唯一可用的选项，不能更改。
+内部虚拟网络中的 API 管理服务托管在[内部负载均衡器（经典）](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-get-started-ilb-classic-cloud)后面。 这是唯一可用的选项，不能更改。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>使用 Azure 门户启用虚拟网络连接
 
@@ -57,9 +58,9 @@ ms.locfileid: "58793112"
 
     ![用于在内部虚拟网络中设置 Azure API 管理的菜单][api-management-using-internal-vnet-menu]
 
-4. 选择“其他安全性验证” 。
+4. 选择“保存”。
 
-部署成功后，应该可以在概览边栏选项卡上看到 API 管理服务的**专用**虚拟 IP 地址和**公共**虚拟 IP 地址。 **专用**虚拟 IP 地址是 API 管理委托的子网中经负载均衡的 IP 地址，可以通过该子网访问 `gateway`、`portal`、`management` 和 `scm` 终结点。 **公共**使用虚拟 IP 地址**仅**用于控制平面流量发往`management`终结点通过端口 3443 和可以向下锁定[ApiManagement] [ServiceTags] servicetag。
+部署成功后，应该可以在概览边栏选项卡上看到 API 管理服务的**专用**虚拟 IP 地址和**公共**虚拟 IP 地址。 **专用**虚拟 IP 地址是 API 管理委托的子网中经负载均衡的 IP 地址，可以通过该子网访问 `gateway`、`portal`、`management` 和 `scm` 终结点。 **公共**虚拟 IP 地址**仅**用于经端口 3443 发往 `management` 终结点的控制平面流量，并且可以锁定到 [ApiManagement][ServiceTags] servicetag。
 
 ![包含已配置的内部虚拟网络的 Azure API 管理仪表板][api-management-internal-vnet-dashboard]
 
@@ -120,8 +121,8 @@ ms.locfileid: "58793112"
 + 子网 IP 范围中的 IP 地址 (DIP) 将用于访问 vnet 中的资源，公共 IP 地址 (VIP) 将用于访问 vnet 外部的资源。
 + 负载均衡公共和专用 IP 地址可以在 Azure 门户的“概述/概要”边栏选项卡上找到。
 
-## <a name="related-content"> </a>相关内容
-要了解更多信息，请参阅下列文章：
+## <a name="related-content"></a>相关内容
+若要了解更多信息，请参阅下列文章：
 * [在虚拟网络中设置 Azure API 管理时的常见网络配置问题][Common network configuration problems]
 * [虚拟网络常见问题解答](../virtual-network/virtual-networks-faq.md)
 * [在 DNS 中创建记录](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))

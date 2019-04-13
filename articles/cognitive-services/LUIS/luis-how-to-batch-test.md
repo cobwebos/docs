@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 01/02/2019
+ms.date: 03/29/2019
 ms.author: diberry
-ms.openlocfilehash: 4d29602581531e9e42edbf4e00eca810757a8a99
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: d615eb2a23b953bad5e41859357d9ae9e9be2ba6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895726"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521202"
 ---
 # <a name="batch-testing-with-a-set-of-example-utterances"></a>使用一组示例话语进行批处理测试
 
@@ -96,11 +96,13 @@ ms.locfileid: "58895726"
 
 该图表中绿色的两个分区与预期预测相匹配。
 
+[!INCLUDE [Entity roles in batch testing - currently not supported](../../../includes/cognitive-services-luis-roles-not-supported-in-batch-testing.md)]
+
 ## <a name="next-steps"></a>后续步骤
 
 如果测试表明 LUIS 应用未正确识别意向和实体，则可以通过标记更多陈述或添加功能来提高 LUIS 应用的性能。 
 
-* [建议使用 LUIS 的语音样本添加标签](luis-how-to-review-endpoint-utterances.md) 
+* [使用 LUIS 标记建议的陈述](luis-how-to-review-endpoint-utterances.md) 
 * [使用相关功能来改进 LUIS 应用的性能](luis-how-to-add-features.md) 
-* [了解本教程中使用测试批处理](luis-tutorial-batch-testing.md)
+* [通过本教程了解批处理测试](luis-tutorial-batch-testing.md)
 * [了解批处理测试概念](luis-concept-batch-test.md)。

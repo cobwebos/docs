@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 95b339e8d7f2c5c63c30e002411152b50cece2a5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448775"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548398"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
@@ -23,7 +23,7 @@ ms.locfileid: "57448775"
 
 这种相同的迁移策略也适用于 LargePersonGroup 和 LargeFaceList 对象。 如果不熟悉本指南中的概念，请查看[术语表](../Glossary.md)中的相关概念定义。 本指南结合使用人脸 API .NET 客户端库与 C#。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 - 两个人脸 API 订阅密钥（一个包含现有数据，另一个是迁移目标）。 请按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明操作，订阅人脸 API 服务并获取密钥。
 - 对应于目标订阅的人脸 API 订阅 ID 字符串（位于 Azure 门户上的“概览”边栏选项卡中）。 
@@ -79,7 +79,7 @@ var takeSnapshotResult = await FaceClientEastAsia.Snapshot.TakeAsync(
 ```
 
 > [!NOTE]
-> 拍摄并应用快照的过程不会破坏任何对来源或目标 PersonGroup（或 FaceList）的常规调用。 不过，不建议同时执行更改来源对象的调用（例如，[人脸列表管理调用](https://docs.microsoft.com/rest/api/cognitiveservices/face/facelist)或[人员组 - 训练](https://docs.microsoft.com/rest/api/cognitiveservices/face/persongroup/train)调用），因为快照操作可能会先于或晚于这些操作执行，也可能会遇到错误。 
+> 拍摄并应用快照的过程不会破坏任何对来源或目标 PersonGroup（或 FaceList）的常规调用。 但是，我们不建议进行更改的源对象的同时调用 ([FaceList 管理调用](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.facelistoperations?view=azure-dotnet)或[person Group 训练](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.persongroupoperations?view=azure-dotnet)调用，例如)，因为快照操作可能会执行之前或之后的那些操作或可能会遇到错误。
 
 ## <a name="retrieve-the-snapshot-id"></a>检索快照 ID
 

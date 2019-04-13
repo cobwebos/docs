@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/06/2018
 ms.reviewer: sngun
 ms.custom: seodec18
-ms.openlocfilehash: e21058d47f554ca4a057ab90433895800fb17dd9
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 85a1dad9feb15550cf27cf032802af5055fdf155
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886717"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525630"
 ---
 # <a name="change-feed-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的更改源 - 概述
 
@@ -58,7 +58,7 @@ Azure Cosmos DB 非常适合用于 IoT、游戏、零售和操作日志记录应
 
 ### <a name="change-feed-and-etag-lsn-or-ts"></a>更改源和 _etag、_lsn 或 _ts
 
-_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是仅为更改源添加的批 ID，它表示事务 ID。许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
+_etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _ts 是修改或创建时间戳。 可以使用 _ts 进行时间顺序比较。 _lsn 是更改源; 仅为添加的批处理 ID它表示事务 id。 许多项可能具有相同的 _lsn。 FeedResponse 上的 ETag 不同于项上看到的 _etag。 _etag 是用于并发控制的内部标识符，它告知项的版本，而 ETag 用于将源定序。
 
 ## <a name="change-feed-use-cases-and-scenarios"></a>更改源用例和方案
 
@@ -84,7 +84,7 @@ _etag 属于内部格式，请不要依赖它，因为它随时可能更改。 _
 
 以下是一些可通过更改源轻松实现的方案：
 
-* 在[无服务器](https://azure.microsoft.com/en-us/solutions/serverless/) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](change-feed-functions.md) 向客户的设备发送推送通知）。
+* 在[无服务器](https://azure.microsoft.com/solutions/serverless/) Web 应用或移动应用中，可以跟踪各种事件（例如，对客户配置文件、首选项或其位置的更改），并触发特定的操作（例如，使用 [Azure Functions](change-feed-functions.md) 向客户的设备发送推送通知）。
 
 * 例如，若要使用 Azure Cosmos DB 构建游戏，可使用更改源，根据已完成的游戏的分数实时更新排行榜。
 

@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 10/15/2018
-ms.openlocfilehash: 204a3230c782279b0cad4194e97aa4014c940635
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.openlocfilehash: 5422f4796d2451b652222332799d8ad1a9fc4803
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608488"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525586"
 ---
 # <a name="improve-performance-of-apache-spark-workloads-using-azure-hdinsight-io-cache-preview"></a>使用 Azure HDInsight IO 缓存提高 Apache Spark 工作负载的性能（预览版）
 
@@ -78,4 +78,4 @@ IO 缓存是 Azure HDInsight 的数据缓存服务，可用于提高 Apache Spar
 
 ## <a name="next-steps"></a>后续步骤
 
-- 阅读关于 IO 缓存的更多信息，包括这篇博客文章中的性能基准：[Apache Spark jobs gain up to 9x speed up with HDInsight IO Cache](https://azure.microsoft.com/en-us/blog/apache-spark-speedup-with-hdinsight-io-cache/)（Apache Spark 作业使用 HDInsight IO 缓存提升多达 9 倍的速度）
+- 阅读关于 IO 缓存的更多信息，包括这篇博客文章中的性能基准：[Apache Spark jobs gain up to 9x speed up with HDInsight IO Cache](https://azure.microsoft.com/blog/apache-spark-speedup-with-hdinsight-io-cache/)（Apache Spark 作业使用 HDInsight IO 缓存提升多达 9 倍的速度）

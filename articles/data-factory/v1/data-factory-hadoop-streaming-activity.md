@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f4bdeee08e81c16dfdd03620eb1fc61251f90400
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.openlocfilehash: dd00c0a2998009ce6c39ca19abb25a2548682cee
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54025167"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523216"
 ---
 # <a name="transform-data-using-hadoop-streaming-activity-in-azure-data-factory"></a>使用 Azure 数据工厂中的 Hadoop 流式处理活动转换数据
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -99,7 +99,7 @@ HDInsight 群集使用示例程序（wc.exe 和 cat.exe）和数据 (davinci.txt
 2. 将活动的类型设置为 **HDInsightStreaming**。
 3. 对于 **mapper** 属性，指定映射器可执行文件的名称。 在示例中，cat.exe 即是映射器可执行文件。
 4. 对于 **reducer** 属性，指定减压器可执行文件的名称。 在示例中，wc.exe 即是减压器可执行文件。
-5. 对于 **input** 类型属性，指定映射器的输入文件（包括位置）。 在此示例中："wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt": adfsample 是 blob 容器，example/data/Gutenberg 是文件夹，davinci.txt 是 blob。
+5. 对于 **input** 类型属性，指定映射器的输入文件（包括位置）。 在示例 `wasb://adfsample@<account name>.blob.core.windows.net/example/data/gutenberg/davinci.txt` 中：adfsample 是 blob 容器，example/data/Gutenberg 是文件夹，davinci.txt 是 blob。
 6. 对于 **output** 类型属性，指定减压器的输出文件（包括位置）。 将 Hadoop Streaming 作业的输出写入到为该属性指定的位置。
 7. 在“filePaths”部分，指定映射器和减压器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。
 8. 对于 **fileLinkedService** 属性，指定表示 Azure 存储（包含“filePaths”部分中指定的文件）的 Azure 存储链接服务。

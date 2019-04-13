@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
-ms.openlocfilehash: 223486ec2dc184e6bbe02e1f6862b9d79d773a2c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339532"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525120"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -163,7 +163,7 @@ SCM 站点在单独的容器中运行。 用户无法查看应用容器的文件
 创建以下应用程序设置：
 
 - DOCKER_REGISTRY_SERVER_USERNAME
-- DOCKER_REGISTRY_SERVER_URL（完整 URL，例如： https://<server-name>.azurecr.io）
+- DOCKER_REGISTRY_SERVER_URL (完整 URL，例如： `https://<server-name>.azurecr.io`)
 - DOCKER_REGISTRY_SERVER_PASSWORD（在 ACR 设置中启用管理员访问权限）
 
 在配置文件内引用 ACR 映像，如下例所示：

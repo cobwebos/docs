@@ -6,18 +6,18 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.author: ramkris
-ms.openlocfilehash: 5a25d0cb8fe1dffbc0a12f6ef88e2adc037a2393
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 60afd8128224050d456699e798d814a259e106ae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56982974"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543815"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>使用 Apache Spark 到 Azure Cosmos DB 的连接器加速大数据分析
 
 你可以运行[Spark](https://spark.apache.org/)具有使用 Cosmos DB Spark 连接器的 Azure Cosmos DB 中存储的数据的作业。 Cosmos 可用于批处理和流处理，并为服务层进行低延迟访问。
 
-可以使用的连接器，并[Azure Databricks](https://azure.microsoft.com/services/databricks)或 [Azure HDInsight，提供管理 Azure 上的 Spark 群集。 下表显示支持的 Spark 版本。
+可以使用的连接器，并[Azure Databricks](https://azure.microsoft.com/services/databricks)或[Azure HDInsight](https://azure.microsoft.com/services/hdinsight/)，提供在 Azure 上托管的 Spark 群集。 下表显示支持的 Spark 版本。
 
 | 组件 | 版本 |
 |---------|-------|
@@ -129,7 +129,7 @@ flights.write.mode(SaveMode.Overwrite).cosmosDB(writeConfig)
 
 ### <a name="using-databricks-notebooks"></a>使用 Databricks notebook
 
-使用以下工具创建库 Databricks 工作区中 Azure Databricks 指南中的指南 >[使用 Azure Cosmos DB Spark 连接器](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
+创建 Databricks 工作区使用 Azure Databricks 指南中的指南库 >[使用 Azure Cosmos DB Spark 连接器](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/cosmosdb-connector.html)
 
 > [!NOTE]
 > 请注意，**使用 Azure Cosmos DB Spark 连接器**页当前不是最新。 而不是到六个不同的库下载的六个单独的 jar，您可以从 maven 在下载 uber jar https://search.maven.org/artifact/com.microsoft.azure/azure-cosmosdb-spark_2.4.0_2.11/1.3.5/jar)和安装此一个 jar/库。

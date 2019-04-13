@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 4d7ecdcff356f27e17eca95a0d42290037d6b570
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: 7bb25aa1f77a49363fe2e08d1430282b9b33caae
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426454"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549348"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy 定义结构
 
@@ -74,12 +74,12 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 
 **模式**确定将对策略评估哪些资源类型。 支持的模式包括：
 
-- `all`： 评估资源组和所有资源类型
-- `indexed`： 仅评估支持 tags 和 location 的资源类型
+- `all`：评估资源组和所有资源类型
+- `indexed`：仅评估支持标记和位置的资源类型
 
 大多数情况下，建议将“mode”设置为 `all`。 通过门户创建的所有策略定义使用 `all` 模式。 如果使用 PowerShell 或 Azure CLI，则可以手动指定 **mode** 参数。 如果策略定义不包含 **mode** 值，为提供后向兼容性，在 Azure PowerShell 中默认为 `all`，在 Azure CLI 中默认为 `null`。 `null` 模式等同于使用 `indexed` 来支持后向兼容性。
 
-`indexed` 创建强制执行标记或位置的策略时应使用。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
+在创建强制执行标记或位置的策略时，应该使用 `indexed`。 虽然并不是必需的，但是它会阻止不支持标记和位置的资源，使其不会在符合性结果中显示为不兼容。 资源组是一个例外。 在资源组上强制执行位置或标记的策略应将“mode”设为 `all`，并专门针对 `Microsoft.Resources/subscriptions/resourceGroups` 类型。 请在[强制执行资源组标记](../samples/enforce-tag-rg.md)查看相关示例。 如需支持标记的资源的列表，请参阅 [Azure 资源的标记支持](../../../azure-resource-manager/tag-support.md)。
 
 ## <a name="parameters"></a>parameters
 
@@ -94,13 +94,13 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 参数有下述可以在策略定义中使用的属性：
 
 - **名称**：参数的名称。 由策略规则中的 `parameters` 部署函数使用。 有关详细信息，请参阅[使用参数值](#using-a-parameter-value)。
-- `type`:确定参数是**字符串**还是**数组。
-- `metadata`:定义主要由 Azure 门户用来显示用户友好信息的子属性：
-  - `description`:说明参数的用途。 可以用来提供可接受值的示例。
-  - `displayName`:在门户中显示的用于参数的友好名称。
-  - `strongType`:（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
-- `defaultValue`:（可选）设置分配的参数的值（如果值未给定）。 在更新已分配的现有策略定义时必须使用此项。
-- `allowedValues`:（可选）提供了一个参数接受在分配过程的值数组。
+- `type`：确定参数是**字符串**还是**数组**。
+- `metadata`：定义主要由 Azure 门户用来显示用户友好信息的子属性：
+  - `description`：说明参数的用途。 可以用来提供可接受值的示例。
+  - `displayName`：在门户中显示的用于参数的友好名称。
+  - `strongType`：（可选）通过门户分配策略定义时使用。 提供上下文感知列表。 有关详细信息，请参阅 [strongType](#strongtype)。
+- `defaultValue`：（可选）设置分配的参数的值（如果值未给定）。 在更新已分配的现有策略定义时必须使用此项。
+- `allowedValues`：（可选）提供了一个参数接受在分配过程的值数组。
 
 例如，可以定义策略定义来限制资源的部署位置。 **allowedLocations** 可以是该策略定义的一个参数。 每次分配策略定义来限制接受的值时，会使用此参数。 使用 **strongType** 可以在通过门户完成分配时提供增强的体验：
 
@@ -262,7 +262,7 @@ Azure Policy 使用资源策略定义来建立资源约定。 每个定义描述
 - 属性别名 - 有关列表，请参阅[别名](#aliases)。
 
 > [!NOTE]
-> `tags.<tagName>``tags[tagName]`，和`tags[tag.with.dots]`仍可接受的声明标记字段的方法。
+> `tags.<tagName>``tags[tagName]` 和 `tags[tag.with.dots]` 仍然是可接受的用于声明标记字段的方式。
 > 但是，首选表达式是上面列出的那些。
 
 #### <a name="use-tags-with-parameters"></a>使用带参数的标记
@@ -424,7 +424,7 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 - resourceId()
 - variables()
 
-此外，`field` 函数可用于策略规则。 `field` 主要用于工作**AuditIfNotExists**并**DeployIfNotExists**给对资源的引用字段的计算。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
+此外，`field` 函数可用于策略规则。 `field` 主要用于 **AuditIfNotExists** 和 **DeployIfNotExists**，以引用所评估资源上的字段。 可以在 [DeployIfNotExists 示例](effects.md#deployifnotexists-example)中看到这种用法的示例。
 
 #### <a name="policy-function-example"></a>策略函数示例
 
@@ -487,36 +487,7 @@ AuditIfNotExists 和 DeployIfNotExists 评估相关的资源是否存在，并�
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`
 
-“normal”别名表示单一值字段。 如果整个值集必须确切定义（不能多定义，也不能少定义），则此字段将用于完全匹配比较方案。 使用 **ipRules** 时，某个示例将会验证是否存在确切的规则集，包括规则数目和每个规则的构成。 此示例规则检查 **ipRules** 中 _action_ 为 **Allow** 的 **192.168.1.1** 和 **10.0.4.1** 是否应用 **effectType**：
-
-```json
-"policyRule": {
-    "if": {
-        "allOf": [
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "exists": "true"
-            },
-            {
-                "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules",
-                "Equals": [
-                    {
-                        "action": "Allow",
-                        "value": "192.168.1.1"
-                    },
-                    {
-                        "action": "Allow",
-                        "value": "10.0.4.1"
-                    }
-                ]
-            }
-        ]
-    },
-    "then": {
-        "effect": "[parameters('effectType')]"
-    }
-}
-```
+“normal”别名表示单一值字段。 如果整个值集必须确切定义（不能多定义，也不能少定义），则此字段将用于完全匹配比较方案。
 
 使用 **[\*]** 别名可以比较数组中的每个元素值以及每个元素的特定属性。 使用这种方法可以比较“if none of”、“if any of”或“if all of”方案的元素属性。 使用 **ipRules [\*]** 时，某个示例将会验证每个 _action_ 是否为 _Deny_，但不考虑存在多少个规则，或 IP 的 _value_ 是什么。 此示例规则检查 **10.0.4.1** 的所有 **ipRules [\*].value** 匹配项，仅当至少未找到一个匹配项时，才应用 **effectType**：
 

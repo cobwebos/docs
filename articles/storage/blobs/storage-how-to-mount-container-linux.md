@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 2/1/2019
 ms.author: seguler
-ms.openlocfilehash: 1e26eb213ad2613877c46758299c2e962894d358
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: eadf52afd115eb1cb642082cea4b9f338bd44914
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697996"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521647"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>如何使用 Blobfuse 将 Blob 存储装载为文件系统
 
@@ -29,7 +29,7 @@ ms.locfileid: "55697996"
 ## <a name="install-blobfuse-on-linux"></a>在 Linux 上安装 Blobfuse
 适用于 Ubuntu 和 RHEL 发行版的 Blobfuse 二进制文件在[适用于 Linux 的 Microsoft 软件存储库](https://docs.microsoft.com/windows-server/administration/Linux-Package-Repository-for-Microsoft-Software)中提供。 若要在这些发行版上安装 blobfuse，请从列表中配置其中一个存储库。 如果你的发行版没有可用的二进制文件，还可以按照 [Azure 存储安装步骤](https://github.com/Azure/azure-storage-fuse/wiki/1.-Installation#option-2---build-from-source)从源代码生成二进制文件。
 
-Blobfuse 支持在 Ubuntu 14.04 和 16.04 上进行安装。 运行以下命令以确保你已部署了以下版本之一：
+Blobfuse 支持安装在 Ubuntu 14.04、 16.04 和 18.04 上。 运行以下命令以确保你已部署了以下版本之一：
 ```
 lsb_release -a
 ```
@@ -51,11 +51,11 @@ sudo dpkg -i packages-microsoft-prod.deb
 sudo apt-get update
 ```
 
-类似地，将 URL 更改为 `.../ubuntu/16.04/...`，使之指向 Ubuntu 16.04 发行版。
+同样，将 URL 更改为`.../ubuntu/16.04/...`或`.../ubuntu/18.04/...`来引用另一个 Ubuntu 版本。
 
 ### <a name="install-blobfuse"></a>安装 Blobfuse
 
-在 Ubuntu/Debian 发行版中：
+在 Ubuntu/Debian 发行版：
 ```bash
 sudo apt-get install blobfuse
 ```
@@ -85,7 +85,7 @@ sudo chown <youruser> /mnt/ramdisk/blobfusetmp
 
 请确保用户有权访问该临时路径：
 ```bash
-sudo mkdir /mnt/resource/blobfusetmp
+sudo mkdir /mnt/resource/blobfusetmp -p
 sudo chown <youruser> /mnt/resource/blobfusetmp
 ```
 
@@ -97,8 +97,15 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
+`accountName`是你的存储帐户不是完整 URL 的前缀。
 
-创建此文件以后，请确保限制对它的访问权限，防止其他用户读取它。
+创建此文件中使用：
+
+```
+touch ~/fuse_connection.cfg
+```
+
+一旦创建并编辑此文件后，请确保限制访问，因此没有其他用户可以读取它。
 ```bash
 chmod 600 fuse_connection.cfg
 ```

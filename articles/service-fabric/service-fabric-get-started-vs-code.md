@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/29/2018
 ms.author: pepogors
-ms.openlocfilehash: a0405e6c699192839f72b290d0466ab5062ac584
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f977a48338f784562ec84355aabb212e5a3dade4
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670116"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543662"
 ---
 # <a name="service-fabric-for-visual-studio-code"></a>Service Fabric for Visual Studio Code
 
@@ -120,7 +120,7 @@ ms.locfileid: "58670116"
 2.  使用 Service Fabric Explorer 查看该群集，确认已删除该应用程序。 此过程可能需要一段时间，请耐心等待。
 
 ### <a name="service-fabric-build-application"></a>Service Fabric:生成应用程序
-“Service Fabric:生成应用程序”命令可以生成 Java 或 C# Service Fabric 应用程序。 
+“Service Fabric:**生成应用程序**命令可以生成任一 Java 或C#Service Fabric 应用程序。 
 
 1.  执行此命令之前，请确保在应用程序根文件夹中操作。 该命令会识别应用程序的类型（C# 或 Java），并相应地生成应用程序。
 2.  选择“Service Fabric:生成应用程序”命令。

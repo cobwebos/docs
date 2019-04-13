@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: yegu
-ms.openlocfilehash: 838fc1da3e167d1df04fbb36a2fea33b8ac248a4
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 66361871d365068a90a2eeab70d92adb6b246a83
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482600"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527160"
 ---
 # <a name="how-to-troubleshoot-azure-cache-for-redis"></a>如何排查 Azure Redis 缓存问题
 
@@ -250,6 +250,7 @@ StackExchange.Redis 使用的配置设置命名`synctimeout`为默认值为 1000
 1. 是否存在到缓存超时前几个小型请求的大型请求？ 参数`qs`中错误消息，告知你多少请求从客户端发送到服务器，但尚未处理响应。 此值可能会持续增加，因为 StackExchange.Redis 使用单个 TCP 连接，一次只能读取一个响应。 即使第一个操作已超时，它不会阻止发送到或从服务器的更多数据。 将阻止其他请求，直到大型请求已完成，并可能会导致超时。 降低超时概率的一种解决方案是确保缓存对于工作负荷来说足够大，并将大的值拆分成较小的块。 另一种可能的解决方案是使用客户端中的 `ConnectionMultiplexer` 对象池，在发送新请求时选择负载最小的 `ConnectionMultiplexer`。 加载跨多个连接对象应防止单个超时而导致其他请求也超时。
 1. 如果您使用的`RedisSessionStateProvider`，确保已正确设置重试超时时间。 `retryTimeoutInMilliseconds` 应高于 `operationTimeoutInMilliseconds`，否则无法执行重试。 在下面的示例中，`retryTimeoutInMilliseconds` 设置为 3000。 有关详细信息，请参阅 [Azure Redis 缓存的 ASP.NET 会话状态提供程序](cache-aspnet-session-state-provider.md)和 [How to use the configuration parameters of Session State Provider and Output Cache Provider](https://github.com/Azure/aspnet-redis-providers/wiki/Configuration)（如何使用会话状态提供程序和输出缓存提供程序的配置参数）。
 
+    ```xml
     <add
       name="AFRedisCacheSessionStateProvider"
       type="Microsoft.Web.Redis.RedisSessionStateProvider"
@@ -262,6 +263,7 @@ StackExchange.Redis 使用的配置设置命名`synctimeout`为默认值为 1000
       connectionTimeoutInMilliseconds = "5000"
       operationTimeoutInMilliseconds = "1000"
       retryTimeoutInMilliseconds="3000" />
+    ```
 
 1. 通过[监视](cache-how-to-monitor.md#available-metrics-and-reporting-intervals) `Used Memory RSS` 和 `Used Memory`，了解 Azure Redis 缓存服务器上的内存使用情况。 如果实施了逐出策略，则当 `Used_Memory` 达到缓存大小时，Redis 就会开始逐出密钥。 理想情况下，`Used memory` 应只稍高于 `Used Memory RSS`。 差异过大意味着没有内存碎片 （内部或外部）。 如果 `Used Memory RSS` 小于 `Used Memory`，则意味着操作系统已更换部分缓存内存。 如果发生这种情况，则会出现明显的延迟。 因为没有控制如何将其分配映射到内存页，高 Redis。`Used Memory RSS`通常是出现峰值内存使用情况的结果。 当 Redis 服务器释放内存时，分配器会占用内存，但它可能会或可能不提供内存返回给系统。 `Used Memory` 值与操作系统所报告的内存消耗量可能存在差异。 内存可能已使用和发布由 Redis 但并未送回给系统。 若要帮助减少内存问题，可以执行以下步骤：
 

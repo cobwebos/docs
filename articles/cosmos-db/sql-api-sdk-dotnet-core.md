@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 03/22/2018
 ms.author: sngun
-ms.openlocfilehash: cc6c66ccb0bb08d709b2015d643544fb9dc30f52
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bae180e2ceae6fe0768a5f7951c18dc5147870fa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57846729"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545240"
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB .NET Core SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ ms.locfileid: "57846729"
 |**SDK 下载**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.Core/)|
 |**API 文档**|[ 参考文档](/dotnet/api/overview/azure/cosmosdb?view=azure-dotnet)|
 |**示例**|[.NET代码示例](sql-api-dotnet-samples.md)|
-|**入门**|[Azure Cosmos DB .NET Core SDK 入门](sql-api-dotnetcore-get-started.md)|
+|**入门**|[Azure Cosmos DB .NET Core SDK 入门](sql-api-dotnet-core-get-started-preview.md)|
 |**Web 应用教程**|[使用 Azure Cosmos DB 进行 Web 应用程序开发](sql-api-dotnet-application.md)|
 |**当前受支持的框架**|[.NET Standard 1.6 和 .NET Standard 1.5](https://www.nuget.org/packages/NETStandard.Library)|
 

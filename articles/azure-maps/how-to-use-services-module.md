@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: 3aa39568904cb0acc9b5b76ff7e07729bf99d6b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: e89a4675f867e53c499bb82b239ddb9bec1aed6f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278592"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521193"
 ---
 # <a name="using-the-azure-maps-services-module"></a>使用 Azure 地图服务模块
 
@@ -24,7 +24,7 @@ Azure Maps Web SDK 提供的是一个帮助程序库，它可以更轻松地使�
 1. 创建新的 HTML 文件。
 2. 加载 Azure 地图服务模块中。 可以使用以下两个选项之一执行此操作：
 
-    a. 使用 Azure Maps 服务模块的全局托管的 CDN 版本通过添加对的脚本引用<head>文件的元素：
+    a. 使用 Azure Maps 服务模块的全局托管的 CDN 版本通过添加对的脚本引用`<head>`文件的元素：
     
     ```html
     <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>

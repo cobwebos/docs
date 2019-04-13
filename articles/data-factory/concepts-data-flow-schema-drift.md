@@ -7,12 +7,12 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/04/2018
-ms.openlocfilehash: 42fde2804c04b2449068d649e1c660d02e72edb1
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: aadab68185347dc0a12e0802f675efe13ecea545
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56729349"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547138"
 ---
 # <a name="mapping-data-flow-schema-drift"></a>映射数据流架构偏差
 
@@ -26,7 +26,7 @@ ms.locfileid: "56729349"
 * 定义可以使用数据模式而不是硬编码字段和值的转换参数
 * 定义可以识别与传入字段相匹配而不是使用命名字段的表达式
 
-在 Azure 数据工厂数据流中，可通过以下工作流查看这些机制：
+## <a name="how-to-implement-schema-drift"></a>如何实现架构偏差
 
 * 在源转换中选择“允许架构偏差”
 
@@ -67,3 +67,10 @@ Azure 数据工厂数据流语法使用 $$ 来表示匹配模式中每个匹配�
 
 <img src="media/data-flow/taxidrift2.png" width="800">
 
+## <a name="access-new-columns-downstream"></a>下游访问新的列
+
+生成新列与列模式时，可以更高版本中使用"byName"表达式函数在数据流转换来访问这些新列。
+
+## <a name="next-steps"></a>后续步骤
+
+在中[数据流表达式语言](data-flow-expression-functions.md)将为您的附加工具用于列模式和包括"byName"和"byPosition"的架构偏差。

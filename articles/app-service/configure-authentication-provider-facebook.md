@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/19/2018
 ms.author: mahender
 ms.custom: seodec18
-ms.openlocfilehash: cc10c9be5bab3b84c8773d8a930473267db353ab
-ms.sourcegitcommit: c37122644eab1cc739d735077cf971edb6d428fe
-ms.translationtype: HT
+ms.openlocfilehash: f37a0c9e4c664ac9631a0a07fa6f114e62939845
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53411255"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522875"
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-facebook-login"></a>如何将应用服务应用程序配置为使用 Facebook 登录
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -48,7 +48,7 @@ ms.locfileid: "53411255"
    > 应用程序密钥是一个非常重要的安全凭据。 请勿与任何人分享此密钥或在客户端应用程序中分发它。
    > 
    > 
-9. 用于注册应用程序的 Facebook 帐户是应用的管理员帐户。 在这种情况下，只有管理员可以登录此应用程序。 若要对其他 Facebook 帐户进行身份验证，请单击“应用审核”，并启用“使 <your-app-name> 公开”以实现能够使用 Facebook 身份验证进行常规的公开访问。
+9. 用于注册应用程序的 Facebook 帐户是应用的管理员帐户。 在这种情况下，只有管理员可以登录此应用程序。 若要对其他 Facebook 帐户进行身份验证，请单击**应用审核**，并启用**使\<你的应用名称 > 公共**若要启用使用 Facebook 身份验证的常规公共访问权限。
 
 ## <a name="secrets"></a>向应用程序添加 Facebook 信息
 1. 返回 [Azure 门户]，导航到应用程序。 单击“设置” > “身份验证/授权”，并确保“应用服务身份验证”为“启用”。

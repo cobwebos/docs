@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2019
 ms.author: christoc;xpouyat;juliako
-ms.openlocfilehash: 3d51f5328aec66eee0d8382026e8795db45a6a2c
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d227e3618c138e6661cc4be7caa2b9a3ba1af3f1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189778"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523828"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高级媒体编码器高级工作流教程
 ## <a name="overview"></a>概述
@@ -760,7 +760,7 @@ Hello world 日志输出
 
 记录生成的剪辑列表
 
-执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着，只有在第一次设置输入和输出点时导致 xml 转换，其他任何时候临界子句 (if(clipListXML.indexOf("<trim>") == -1)) 都会在已经存在一个元素时防止工作流添加另一个修剪元素。
+执行测试回合以查看视频和音频流剪辑的情况。 但是，随着你使用不同的值针对修剪点执行多个测试回合，会发现并未考虑到这些因素！ 这是因为设计器不同于 Azure 运行时，不会在每次执行时重写剪辑列表 XML。 这意味着，只有在第一次设置和输出点时，将导致 xml 转换，所有其他情况下，临界子句 (如果 (`clipListXML.indexOf("<trim>") == -1`)) 将阻止工作流时已包含一个存在添加另一个修剪元素。
 
 为了让工作流方便在本地测试，我们最好添加一些监护代码，用于检查是否已经存在修剪元素。 如果是的话，我们可以在继续之前，将 XML 修改为新的值来将它删除。 不要使用纯文本字符串操作，通过实际的 XML 对象模型分析执行此操作可能更安全。
 

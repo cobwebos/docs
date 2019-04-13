@@ -8,16 +8,16 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: CarlRabeler
-ms.author: carlrab
+ms.author: sahsan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: 2aeb756bda50597bf3e43c0c84391e0750bd8acb
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.date: 04/11/2019
+ms.openlocfilehash: 47aa88040b6010aeca4aeed696310505d1e17df9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486812"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549675"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>复制 Azure SQL 数据库的事务一致性副本
 
@@ -50,9 +50,9 @@ ms.locfileid: "58486812"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-若要使用 PowerShell 复制数据库，请使用[新建 AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet。 
+若要使用 PowerShell 复制数据库，请使用 [New-AzSqlDatabaseCopy](/powershell/module/az.sql/new-azsqldatabasecopy) cmdlet。 
 
 ```powershell
 New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
@@ -90,10 +90,16 @@ New-AzSqlDatabaseCopy -ResourceGroupName "myResourceGroup" `
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
     CREATE DATABASE Database2 AS COPY OF server1.Database1;
+    
+> [!IMPORTANT]
+> 这两个服务器的防火墙必须配置为允许从客户端发出 T-SQL 的复制命令的 IP 的入站的连接。
 
-## <a name="to-move-a-database-between-subscriptions"></a>在订阅之间移动数据库
+### <a name="copy-a-sql-database-to-a-different-subscription"></a>将 SQL 数据库复制到不同的订阅
 
-在 [Azure 门户](https://portal.azure.com)中，单击“SQL Server”，并从列表中选择托管数据库的服务器。 单击“**移动**”，并选择要移动的资源以及要移动到其中的订阅。
+可以使用在上一节中的步骤 descrbed 将你的数据库复制到其他订阅中的 SQL 数据库服务器。 请确保使用源数据库的数据库所有者具有相同的名称和密码的登录名，并且它是 dbmanager 角色的成员或者是服务器级别主体登录名。 
+
+> [!NOTE]
+> [Azure 门户](https://portal.azure.com)不支持复制到其他订阅，因为门户调用 ARM API，它使用的订阅证书访问这两个异地复制所涉及的服务器。  
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>监视复制操作的进度
 

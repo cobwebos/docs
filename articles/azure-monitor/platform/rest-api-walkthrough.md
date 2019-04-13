@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/19/2018
 ms.author: mcollier
 ms.subservice: ''
-ms.openlocfilehash: f47e9fd8842f9884ced290385e5f647fac57bc13
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: ddbc00155c3c5c136f7d33861e9ad5177df77470
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58484976"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528061"
 ---
 # <a name="azure-monitoring-rest-api-walkthrough"></a>Azure 监视 REST API 演练
 
@@ -657,7 +657,7 @@ Version        : 08586982649483762729
 
 ### <a name="azure-cli"></a>Azure CLI
 
-若要使用 Azure CLI 检索某个 Azure 存储帐户的资源 ID，请执行“az storage account show”命令，如以下示例中所示：
+若要检索使用 Azure CLI 的 Azure 存储帐户的资源 ID，请执行`az storage account show`命令，如下面的示例中所示：
 
 ```
 az storage account show -g azmon-rest-api-walkthrough -n contosotweets2017

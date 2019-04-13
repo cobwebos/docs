@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: cherylmc
-ms.openlocfilehash: fdf5f07f9b27a17eb4c15495c4ac9776d77f525c
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b590dabbe4b2c6526f2c602aeed64667348eefa9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313934"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525161"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>为本机 Azure 证书身份验证 P2S 配置创建并安装 VPN 客户端配置文件
 
@@ -174,7 +174,7 @@ VPN 客户端配置文件包含在一个 zip 文件中。 配置文件提供本�
 2. 解压缩该文件。
 3. 从 **Generic** 文件夹中，将 VpnServerRoot.cer 复制或移动 /etc/ipsec.d/cacerts。
 4. 将 cp client.p12 复制或移动到 /etc/ipsec.d/private/。 此文件是 Azure VPN 网关的客户端证书。
-5. 打开 VpnSettings.xml 文件并复制 <VpnServer> 值。 下一步骤中将使用此值。
+5. 打开 VpnSettings.xml 文件并复制 `<VpnServer>` 值。 下一步骤中将使用此值。
 6. 调整以下示例中的值，然后将该示例添加到 /etc/ipsec.conf 配置中。
   
    ```

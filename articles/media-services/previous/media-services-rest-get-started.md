@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d1453a558032e458e89c724e30472cc06f9cf33c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: fea9bae9fadc20622a6ca3d2e08db9cd3a92c800
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295124"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523981"
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>开始使用 REST 传送点播内容  
 
@@ -560,7 +560,7 @@ SAS URL 采用以下格式：
 在任何作业请求中，都需要注意以下重要事项：
 
 * TaskBody 属性必须使用文本 XML 来定义任务使用的输入资产或输出资产的数量。 任务文章包含 XML 的 XML 架构定义。
-* 在 TaskBody 定义中，必须将 <inputAsset> 和 <outputAsset> 的每个内部值设置为 JobInputAsset(value) 或 JobOutputAsset(value)。
+* 在 TaskBody 定义中，必须将 `<inputAsset>` 和 `<outputAsset>` 的每个内部值设置为 JobInputAsset(value) 或 JobOutputAsset(value)。
 * 一个任务可以有多个输出资产。 作为作业任务的输出，一个 JobOutputAsset(x) 只能使用一次。
 * 可以将 JobInputAsset 或 JobOutputAsset 指定为某任务的输入资产。
 * 任务不得构成循环。
@@ -572,7 +572,7 @@ SAS URL 采用以下格式：
 >
 
 * InputMediaAssets 将映射到已在媒体服务中创建的一个或多个资产。 OutputMediaAssets 由系统创建。 它们不引用现有资产。
-* OutputMediaAssets 可以使用 assetName 属性来命名。 如果该属性不存在，则 OutputMediaAsset 的名称为 <outputAsset> 元素的任意内部文本值，并以作业名称值或作业 ID 值（在没有定义名称属性的情况下）为后缀。 例如，如果将 assetName 的值设置为“Sample”，则会将 OutputMediaAsset 名称属性设置为“Sample”。 但是，如果未设置 assetName 的值，但已将作业名称设置为“NewJob”，则 OutputMediaAsset 名称将为“JobOutputAsset(value)_NewJob”。
+* OutputMediaAssets 可以使用 assetName 属性来命名。 如果该属性不存在，则 OutputMediaAsset 的名称为 `<outputAsset>` 元素的任意内部文本值，并以作业名称值或作业 ID 值（在没有定义名称属性的情况下）为后缀。 例如，如果将 assetName 的值设置为“Sample”，则会将 OutputMediaAsset 名称属性设置为“Sample”。 但是，如果未设置 assetName 的值，但已将作业名称设置为“NewJob”，则 OutputMediaAsset 名称将为“JobOutputAsset(value)_NewJob”。
 
     以下示例说明了如何设置 assetName 属性：
 

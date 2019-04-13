@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
-ms.openlocfilehash: 7b52d07db076b62845465ee9f22a3d794c8cdf76
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cd026c9be2b1519d473ba02811d9e1ee90fe7a3e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57839519"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526208"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
@@ -32,7 +32,7 @@ ms.locfileid: "57839519"
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。 
 2. 单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 4. 在“创建流量管理器配置文件”中，按如下所示完成操作：
-    1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（<name>,trafficmanager.net），该名称用于访问流量管理器配置文件。
+    1. 在**名称**中，提供配置文件的名称。 此名称必须在 trafficmanager.net 区域中唯一，并将生成 DNS 名称（`<name>`,trafficmanager.net），该名称用于访问流量管理器配置文件。
     2. 在**路由方法**中，选择“优先级”路由方法。
     3. 在**订阅**中，选择要创建此配置文件的订阅
     4. 在**资源组**中，创建新的资源组，以在其下放置此配置文件。

@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1ee409bc9e4ad60602ddffd3d1896baf09df52da
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4415759530985710c8376709db9955ba98066160
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57854783"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527004"
 ---
 # <a name="tasks-for-the-project-lead-in-the-team-data-science-process"></a>Team Data Science Process 中项目主管的任务
 
@@ -23,7 +23,7 @@ ms.locfileid: "57854783"
 
 **项目主管**管理特定数据科学项目各个数据科学家的日常活动。 下图描绘了项目主管设置此环境时所要完成的任务的工作流：
 
-![第](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
+![1](./media/project-lead-tasks/project-leads-1-tdsp-creating-projects.png)
 
 本主题目前包括项目主管工作流的任务 1、2 和 6。
 
@@ -150,7 +150,7 @@ ms.locfileid: "57854783"
 
 ![10](./media/project-lead-tasks/project-leads-10-clone-project-repository-linux.png)
 
-如果使用 Azure DevOps 作为代码托管平台，项目存储库的 SSH URL 通常为 _ssh://<Azure DevOps Services 名称\>@<Azure DevOps Services 名称\>.visualstudio.com:22/<Your Project Name>/\_git/<项目存储库名称\>。 在此示例中，我们有***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***。
+如果通常情况下，作为代码托管平台，使用 Azure DevOps_项目存储库的 SSH URL_为 _ssh: / / < Azure DevOps 服务名称\>@< Azure DevOps 服务名称\>.visualstudio.com:22/ < 你的项目名称\>/\_git / < 项目存储库名称\>。 在此示例中，我们有***ssh://mysamplegroup\@mysamplegroup.visualstudio.com:22/MyTeam/_git/DSProject1***。
 
 ### <a name="copy-contents-of-d3-to-d5"></a>将 D3 的内容复制到 D5 
 

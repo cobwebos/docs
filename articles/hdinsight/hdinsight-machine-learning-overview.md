@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: hrasheed
-ms.openlocfilehash: fc7c957b766c1c95ea247ccb63cad5bedec6feec
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.openlocfilehash: a88ff7c7b889d197e78dddfbb498b7150e08d5ed
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56668988"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526803"
 ---
 # <a name="machine-learning-on-hdinsight"></a>HDInsight 中的机器学习
 
@@ -65,4 +65,4 @@ Azure 机器学习不仅提供预测分析建模工具，还提供完全托管�
 
 * [使用 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集](spark/apache-spark-microsoft-cognitive-toolkit.md)
 * [使用 Caffe on Azure HDInsight Spark 进行分布式深度学习](spark/apache-spark-deep-learning-caffe.md)
-* [数据科学虚拟机 (DSVM) 上的深度学习和人工智能框架](https://docs.microsoft.com/en-us/azure/machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks)
+* [数据科学虚拟机 (DSVM) 上的深度学习和人工智能框架](../machine-learning/data-science-virtual-machine/dsvm-deep-learning-ai-frameworks.md)

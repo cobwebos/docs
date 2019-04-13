@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 635b4e71c09a2e8b3901af5580f221bc4716831d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 3dbf0aea50f382a0b325bf068a200cde42098733
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917764"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547582"
 ---
 # <a name="using-azure-cdn-with-cors"></a>将 Azure CDN 与 CORS 一起使用
 ## <a name="what-is-cors"></a>什么是 CORS？
@@ -32,7 +32,7 @@ CORS 请求有两种类型：简单请求和复杂请求。
 
 1. 浏览器发送带有附加**源** HTTP 请求标头的 CORS 请求。 此标头的值是为父页面提供服务的源，它被定义为协议、域和端口的组合。  当来自 https://www.contoso.com 的页面尝试访问 fabrikam.com 源中的用户数据时，以下请求标头将发送到 fabrikam.com：
 
-   `Origin: https://www.contoso.com`
+   `Origin: https:\//www.contoso.com`
 
 2. 服务器可能会响应以下内容：
 

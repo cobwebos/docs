@@ -11,85 +11,123 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 04/04/2019
 ms.author: celested
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9c6f197f98eda5a71cefd3f4a0c71709a4f51b2
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 64c2d14a2aa6fc6b53260912b5bead2bd7c01e8d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56203125"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547838"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>在 Azure Active Directory 中管理用于联合单一登录的证书
-本文包含 Azure Active Directory (Azure AD) 为了与 SaaS 应用程序建立联合单一登录 (SSO) 而创建的证书的相关常见问题和信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。
 
-本文只与配置为通过 SAML 联合使用 Azure AD SSO 的应用相关，如以下示例中所示：
+在本文中，我们将介绍常见问题和与 Azure Active Directory (Azure AD) 创建来建立联合单一登录 (SSO) 到您的软件即服务 (SaaS) 应用程序的证书相关的信息。 从 Azure AD 应用库或使用非库应用程序模板添加应用程序。 使用联合 SSO 选项配置应用程序。
 
-![Azure AD 单一登录](./media/manage-certificates-for-federated-single-sign-on/saml_sso.PNG)
+本文是仅与应用程序配置为使用通过 Azure AD SSO[安全断言标记语言](https://wikipedia.org/wiki/Security_Assertion_Markup_Language)(SAML) 联合身份验证。
 
 ## <a name="auto-generated-certificate-for-gallery-and-non-gallery-applications"></a>为库和非库应用程序自动生成的证书
-从库中添加新的应用程序并配置基于 SAML 的登录时，Azure AD 将为应用程序生成具有 3 年有效期的证书。 可从“SAML 签名证书”部分下载此证书。 对于库应用程序，本部分可能会显示下载证书或元数据的选项，具体取决于应用程序的要求。
 
-![Azure AD 单一登录](./media/manage-certificates-for-federated-single-sign-on/saml_certificate_download.png)
+从库中添加新的应用程序和配置基于 SAML 的单一登录时 (通过选择**单一登录** > **SAML**从应用程序概述页上)，Azure AD 将生成证书有效期为三年的应用程序。 若要下载安全证书形式的活动证书 (**.cer**) 文件中，返回到该页 (**基于 SAML 的单一登录**)，然后选择中的下载链接**SAML 签名证书**标题。 您可以选择原始 （二进制） 证书或 Base64 （基 64 编码的文本） 证书。 对于库应用程序，本部分还可能会显示将其作为联合身份验证元数据 XML 下载的证书的链接 ( **.xml**文件)，取决于应用程序的要求。
+
+![SAML 活动签名证书下载选项](./media/manage-certificates-for-federated-single-sign-on/active-certificate-download-options.png)
+
+此外可以通过选择下载的活动或非活动证书**SAML 签名证书**标题的**编辑**显示的图标 （铅笔） **SAML 签名证书**页。 选择省略号 (**...**) 想要下载，然后选择哪种证书格式的证书旁边。 必须下载隐私增强邮件 (PEM) 格式的证书的其他选项。 此格式都为 Base64 相同但具有 **.pem**文件扩展名，在作为证书格式的 Windows 中无法识别。
+
+![SAML 签名证书下载选项 （活动和非活动）](./media/manage-certificates-for-federated-single-sign-on/all-certificate-download-options.png)
 
 ## <a name="customize-the-expiration-date-for-your-federation-certificate-and-roll-it-over-to-a-new-certificate"></a>自定义联合身份验证证书的过期日期以及滚动使用新证书
-默认情况下，证书设置为 3 年后过期。 可通过完成以下步骤为证书选择不同的过期日期。
-屏幕截图使用 Salesforce 作为示例，但这些步骤同样适用于任何联合 SaaS 应用。
 
-1. 在 [Azure 门户](https://aad.portal.azure.com)中，单击左侧窗格中的“企业应用程序”，然后单击“概述”页中的“新建应用程序”：
+默认情况下，Azure 将配置为在创建时自动在 SAML 单一登录配置过程的三年后过期的证书。 因为不能更改证书的日期，在保存后，您必须：
 
-   ![打开 SSO 配置向导](./media/manage-certificates-for-federated-single-sign-on/enterprise_application_new_application.png)
+1. 使用所需的日期创建新证书。
+2. 保存新的证书。
+3. 下载新证书的正确格式。
+4. 将新证书上传到应用程序。
+5. Azure Active Directory 门户中激活新证书。
 
-2. 搜索库应用程序并选择要添加的应用程序。 如果找不到所需的应用程序，请使用“非库应用程序”选项添加应用程序。 此功能仅适用于 Azure AD Premium（P1 和 P2）SKU。
+以下两个部分帮助你执行这些步骤。
 
-    ![Azure AD 单一登录](./media/manage-certificates-for-federated-single-sign-on/add_gallery_application.png)
+### <a name="create-a-new-certificate"></a>创建新证书
 
-3. 单击左侧窗格中的“单一登录”链接，并将“单一登录模式”更改为“基于 SAML 的登录”。 此步骤将为应用程序生成具有 3 年有效期的证书。
+首先，创建并使用不同的过期日期保存新的证书：
 
-4. 若要创建新证书，请单击“SAML 签名证书”部分的“新建证书”链接。
+1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 **Azure Active Directory 管理中心**页将出现。
 
-    ![生成新证书](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
+2. 在左窗格中，选择“企业应用程序”。 将显示你的帐户中的企业应用程序的列表。
 
-5. “新建证书”链接将打开日历控件。 可设置任意日期和时间（自当前日期起三年内）。 所选日期和时间即为新证书的到期日期和时间。 单击“ **保存**”。
+3. 选择受影响的应用程序。 应用程序的概览页会显示。
 
-    ![下载然后上传证书](./media/manage-certificates-for-federated-single-sign-on/certifcate_date_selection.PNG)
+4. 在应用程序概述页的左窗格中，选择**单一登录**。
 
-6. 现在有新的证书可供下载。 单击“证书”链接进行下载。 此时，证书处于不活动状态。 如果希望滚动至此证书，请选中“激活新证书”复选框并单击“保存”。 此后，Azure AD 将开始使用新证书对响应进行签名。
+5. 如果**选择单一登录方法**页面出现时，选择**SAML**。
 
-7.  若要了解如何将证书上传到特定 SaaS 应用程序，请单击“查看应用程序配置教程”链接。
+6. 在中**设置了单一登录使用 SAML-预览**页上，找到**SAML 签名证书**标题，然后选择**编辑**图标 （铅笔）。 **SAML 签名证书**页将出现，其中显示的状态 (**Active**或**非活动**)，到期日期和每个证书的指纹 （哈希字符串）。
 
-## <a name="certificate-expiration-notification-email"></a>证书到期通知电子邮件
+7. 选择**新的证书**。 一个新行如下所示的证书列表中，到期日期位置默认为当前日期后完全三年。 （所做的更改尚未保存，因此您仍可以修改的到期日期。）
 
-Azure AD 将在 SAML 证书到期前的 60 天、30 天和 7 天发送电子邮件通知。 若要指定发送通知的电子邮件地址：
+8. 在新的证书行中，悬停在到期日期列并选择**选择日期**图标 （日历）。 将出现一个日历控件，显示新行的当前到期日期的月份中的天。
 
-- 在 Azure Active Directory 应用程序的“单一登录”页面上，转到“通知电子邮件”字段。
-- 输入应接收证书到期通知电子邮件的电子邮件地址。 默认情况下，此字段使用添加应用程序的管理员的电子邮件地址。
+9. 使用日历控件设置新的日期。 您可以设置的当前日期和当前日期后的三年之间的任何日期。
 
-你将接收来自 aadnotification@microsoft.com 的通知电子邮件。 若要避免电子邮件进入你的垃圾邮件位置，请确保将此电子邮件添加到你的联系人。 
+10. 选择“保存”。 现在将显示新证书的状态**非活动**，到期日期选择和指纹。
+
+11. 选择**X**回到**设置了单一登录使用 SAML-预览**页。
+
+### <a name="upload-and-activate-a-certificate"></a>上传和激活证书
+
+接下来，下载正确的格式中的新证书，将其上载到该应用程序，并将其 Azure Active Directory 中处于活动状态：
+
+1. 通过以下任一方法查看应用程序的其他 SAML 单一登录配置说明：
+   - 选择**配置指南**链接以查看在单独的浏览器窗口或选项卡上，或
+   - 转到**设置**标题，然后选择**查看分步说明**查看侧栏中。
+
+2. 在说明中，请注意所需的证书上传的编码格式。
+
+3. 按照中的说明[自动生成的库和非库应用程序的证书](#auto-generated-certificate-for-gallery-and-non-gallery-applications)前面部分。 此步骤将下载应用程序上传所需的编码格式中的证书。
+
+4. 当您想要为新证书滚动更新时，请返回到**SAML 签名证书**页，然后在新保存的证书行中，选择省略号 (**...**)，然后选择**使证书处于活动状态**。 新证书的状态将变为**Active**，并将以前的活动证书更改为的状态**非活动**。
+
+5. 继续的以下应用程序的 SAML 单一登录配置说明，以便你可以上传 SAML 签名更早版本，显示的证书中的正确的编码格式。
+
+## <a name="add-email-notification-addresses-for-certificate-expiration"></a>添加证书的截止日期的电子邮件通知地址
+
+Azure AD 会发送 SAML 证书过期之前使用电子邮件通知 60、 30 和 7 天。 您可以添加多个电子邮件地址以接收通知。 若要指定您希望通知发送到的电子邮件地址：
+
+1. 在中**SAML 签名证书**页上，转到**通知电子邮件地址**标题。 默认情况下，此标题使用添加应用程序的管理员的电子邮件地址。
+
+2. 下面的最终电子邮件地址，键入应收到的证书过期通知，然后按 Enter 的电子邮件地址。
+
+3. 为你想要添加每个电子邮件地址重复上一步。
+
+4. 对于每个你想要删除的电子邮件地址，请选择**删除**电子邮件地址旁边的图标 （垃圾回收会）。
+
+5. 选择“保存”。
+
+你将接收来自 aadnotification@microsoft.com 的通知电子邮件。 若要避免电子邮件进入您垃圾邮件的位置，请向联系人添加此电子邮件。
 
 ## <a name="renew-a-certificate-that-will-soon-expire"></a>续订即将过期的证书
-以下续订步骤应该不会给用户造成任何严重的停机。 本部分的屏幕截图采用 Salesforce 作为示例，但这些步骤适用于所有联合 SaaS 应用。
 
-1. 在 Azure Active Directory 应用程序的“单一登录”页面上，为应用程序生成新证书。 可单击“SAML 签名证书”部分的“新建证书”链接来完成此操作。
+如果证书即将过期，则可以更新该使用会导致任何严重的停机，为你的用户的过程。 若要续订即将过期的证书：
 
-    ![生成新证书](./media/manage-certificates-for-federated-single-sign-on/create_new_certficate.png)
+1. 按照中的说明[创建新证书](#create-a-new-certificate)更早版本，部分重叠的日期使用的现有证书。 该日期限制由证书过期导致的停机时间量。
 
-2. 为新证书选择所需的到期日期和时间，然后单击“保存”。 选择与现有证书重叠的日期将确保由于证书到期而导致的停机时间是有限的。 
+2. 如果证书对其应用程序可以自动滚动更新，可以通过执行以下步骤将新的证书设置为活动：
+   1. 返回到**SAML 签名证书**页。
+   2. 在新保存的证书行中，选择省略号 (**...**)，然后选择**使证书处于活动状态**。
+   3. 跳过接下来两个步骤。
 
-3. 如果应用可以自动滚动更新证书，请将新证书设置为“活动”。  登录应用以检查其是否正常工作。
+3. 如果应用程序一次只能处理一个证书，选择停机时间间隔，以执行下一步。 （否则，如果应用程序不会自动选取新的证书，但可以处理多个签名证书，你可以执行下一步随时。）
 
-4. 如果应用没有自动选取新证书，但可以处理多个签名证书，请在旧证书过期之前，将新证书上传到应用，然后返回到门户并使新证书成为活动证书。 
+4. 在旧证书过期之前，按照中的说明[上传和激活证书](#upload-and-activate-a-certificate)前面部分。
 
-5. 如果应用一次只能处理一个证书，请选取停机时间窗口，下载新证书，将其上传到应用程序，返回 Azure 门户并将新证书设置为“活动”。 
-   
-6. 若要在 Azure AD 中激活新证书，请选中“激活新证书”复选框，然后单击页面顶部的“保存”按钮。 这将在 Azure AD 端滚动使用新证书。 证书的状态会从“新”更改为“活动”。 此后，Azure AD 将开始使用新证书对响应进行签名。 
-   
-    ![生成新证书](./media/manage-certificates-for-federated-single-sign-on/new_certificate_download.png)
+5. 登录到应用程序以确保该证书正常运行。
 
 ## <a name="related-articles"></a>相关文章
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](../saas-apps/tutorial-list.md)
-* [Azure Active Directory 中的应用程序管理](what-is-application-management.md)
-* [Azure Active Directory 的应用程序访问与单一登录](what-is-single-sign-on.md)
-* [排查基于 SAML 的单一登录的问题](../develop/howto-v1-debug-saml-sso-issues.md)
+
+* [用于将 SaaS 应用程序与 Azure Active Directory 集成的教程](../saas-apps/tutorial-list.md)
+* [使用 Azure Active Directory 的应用程序管理](what-is-application-management.md)
+* [单一登录到 Azure Active Directory 中的应用程序](what-is-single-sign-on.md)
+* [调试基于 SAML 的单一登录到 Azure Active Directory 中的应用程序](../develop/howto-v1-debug-saml-sso-issues.md)

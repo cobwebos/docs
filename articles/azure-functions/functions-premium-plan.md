@@ -8,14 +8,14 @@ ms.assetid: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 01/25/2019
+ms.date: 4/11/2019
 ms.author: jehollan
-ms.openlocfilehash: ca65b6a1691a870054682b36109f2bdc10d4ad98
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918699"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59543727"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions 的高级计划 （预览版）
 
@@ -42,7 +42,7 @@ az functionapp plan create -g <resource-group> -n <plan-name> -l <region> --numb
 
 如果没有事件和执行立即出现在消耗计划中，您的应用程序可能会减少到零个实例。 当新事件时，需要使用你在其上运行的应用进行专用化新实例。  专用的新实例可能需要一些时间，具体取决于应用程序。  在首次调用此额外延迟通常称为冷启动应用程序。
 
-在高级版计划中，您可以在指定数量的实例上预上做好准备您的应用程序。  预上做好准备的实例还允许您预先的高负载之前的某个应用扩展。 当应用横向扩展，它会预 warmed 实例第一次扩展。 其他实例可继续缓冲区和热立即以准备进行下一步的缩放操作。 通过让预上做好准备的实例的缓冲区，可以有效地避免冷启动延迟。  预上做好准备的实例是一项功能的高级计划，并需要保留至少一个实例在运行并可在所有时间的计划处于活动状态。
+在高级版计划中，您可以在指定数量的实例，直到达到最小的计划大小上预先上做好准备您的应用程序。  预上做好准备的实例还允许您预先的高负载之前的某个应用扩展。 当应用横向扩展，它会预 warmed 实例第一次扩展。 其他实例可继续缓冲区和热立即以准备进行下一步的缩放操作。 通过让预上做好准备的实例的缓冲区，可以有效地避免冷启动延迟。  预上做好准备的实例是一项功能的高级计划，并需要保留至少一个实例在运行并可在所有时间的计划处于活动状态。
 
 可以通过选择在 Azure 门户中配置预上做好准备的实例数**Scale Out**中**平台功能**选项卡。
 
@@ -69,6 +69,8 @@ Azure 函数部署到高级版计划利用[新的 web 应用的 VNet 集成](../
 ### <a name="unbounded-run-duration"></a>无限运行持续时间
 
 在消耗计划中的 azure Functions 是限制为 10 分钟一次执行。  在高级版计划中，将运行持续时间默认为 30 分钟，以防止失控的执行。 但是，你可以[修改 host.json 配置](./functions-host-json.md#functiontimeout)来实现此高级计划应用不受限制。
+
+在预览版中，您的持续时间过去的 12 分钟不能保证，并且会有超过 30 分钟后运行，如果您的应用程序不扩展超出其最小工作线程计数的最大限度地。
 
 ## <a name="plan-and-sku-settings"></a>计划和 SKU 设置
 
@@ -106,7 +108,6 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 |澳大利亚东部|
 |澳大利亚东南部|
 |加拿大中部|
-|印度中部|
 |美国中部|
 |东亚|
 |美国东部 2|

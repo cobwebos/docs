@@ -1,7 +1,7 @@
 ---
 title: 使用 Azure Blob 索引器为 JSON blob 编制索引以进行全文搜索 - Azure 搜索
 description: 使用 Azure 搜索 Blob 索引器抓取 Azure JSON Blob 以获取文本内容。 索引器可自动为所选数据源（如 Azure Blob 存储）引入数据。
-ms.date: 02/28/2019
+ms.date: 04/11/2019
 author: HeidiSteen
 manager: cgronlun
 ms.author: heidist
@@ -10,12 +10,12 @@ ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
-ms.openlocfilehash: f44161586f9f4e121001b9f5e285b0e1e1dcd9d1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518735"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527347"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>如何使用 Azure 搜索 Blob 索引器的 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 blob[索引器](search-indexer-overview.md)从 Azure Blob 存储中的 JSON 文档中提取结构化的内容，并使其可在 Azure 搜索中搜索。 此工作流创建 Azure 搜索索引并将其加载与从 JSON blob 中提取的现有文本。 
@@ -40,14 +40,15 @@ Azure Blob 存储中的 JSON blob 通常是一个 JSON 文档或 JSON 实体的�
 
 ### <a name="1---prepare-source-data"></a>1 - 准备源数据
 
-应有一个 Azure 存储帐户，其中包含 Blob 存储和 JSON 文档容器。 如果您不熟悉所有这些要求，请查看"设置 Azure Blob 服务并将示例数据"中[认知搜索-快速入门](cognitive-search-quickstart-blob.md#set-up-azure-blob-service-and-load-sample-data)。
+1. [登录到 Azure 门户](https://portal.azure.com/)。
 
-> [!Important]
-> 在容器中，务必**公共访问级别**设置为"容器 （容器和 blob 的匿名读取访问）"。 Azure 存储和 Azure 搜索应位于同一订阅，且如果可能，请在同一区域中。 
+1. [创建 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)以包含你的数据。 公共访问级别可以设置为任何有效的值。
+
+你将需要存储帐户名称、 容器名称和访问密钥，以检索中的数据**导入数据**向导。
 
 ### <a name="2---start-import-data-wizard"></a>2 - 启动“导入数据”向导
 
-可以通过 Azure 搜索服务页中的命令栏[启动该向导](search-import-data-portal.md)，或者在存储帐户左侧导航窗格的“Blob 服务”部分单击“添加 Azure 搜索”。
+在 Azure 搜索服务的概述页上，你可以[启动向导](search-import-data-portal.md)从命令栏中，或单击**添加 Azure 搜索**中**Blob 服务**部分应用存储帐户的左导航窗格中。
 
    ![门户中的导入数据命令](./media/search-import-data-portal/import-data-cmd2.png "启动导入数据向导")
 

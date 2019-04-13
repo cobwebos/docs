@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5bc67551c70b185ad0b5ed993a510ded2229481f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1abf3fd5ca678f878e36e3df3f8da0c0e0b5f852
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279612"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528129"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -27,12 +27,14 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-sdk-for-python-v1023"></a>Azure Machine Learning SDK for Python v1.0.23
 
-+ **新增功能**
++ **新功能**
   + Azure 机器学习 SDK 现在支持 Python 3.7。
+  + Azure 机器学习 DNN 房产现在提供内置的多版本支持。 例如， `TensorFlow` 估算器现在接受`framework_version`参数，并且用户可以指定"1.10"或"1.12"版本。 对于当前的 SDK 版本支持的版本的列表，请调用`get_supported_versions()`需的框架类 (例如`TensorFlow.get_supported_versions()`)。
+  有关最新 SDK 版本支持的版本的列表，请参阅[DNN 估算器文档](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn?view=azure-ml-py)。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v111"></a>Azure 机器学习数据准备 SDK v1.1.1
 
-+ **新增功能**
++ **新功能**
   + 您可以阅读使用 read_ * 转换的多个数据存储/数据路径/DataReference 源。
   + 您还可以对要创建一个新列的列执行以下操作： 部门、 floor、 模、 电源、 长度。
   + 数据准备现在是 Azure 机器学习诊断套件的一部分，并且将默认情况下记录诊断信息。
@@ -52,16 +54,16 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-sdk-for-python-v1021"></a>Azure Machine Learning SDK for Python v1.0.21
 
-+ **新增功能**
++ **新功能**
   + *Azureml.core.Run.create_children*方法允许多个子级的低延迟创建运行一次调用。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v110"></a>Azure 机器学习数据准备 SDK v1.1.0
 
-+ **重大变化**
++ **重大更改**
   + 数据准备包的概念已被弃用并不再受支持。 而不是持久保存在一个包中的多个数据流，您可以单独保留数据流。
     + 操作方法指南：[打开和保存数据流的 notebook](https://aka.ms/aml-data-prep-open-save-dataflows-nb)
 
-+ **新增功能**
++ **新功能**
   + 数据准备现在可以识别的类型匹配的特定语义，并相应地拆分的列。 目前支持 STypes 包括： 电子邮件地址、 地理坐标 （纬度和经度）、 IPv4 和 IPv6 地址、 美国电话号码和美国邮政编码。
     + 操作方法指南：[语义类型 notebook](https://aka.ms/aml-data-prep-semantic-types-nb)
   + 数据准备现在支持从两个数值列生成结果的列执行以下操作： 减、 乘、 除、 和取模。
@@ -82,7 +84,7 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1017"></a>Azure 机器学习数据准备 SDK v1.0.17
 
-+ **新增功能**
++ **新功能**
   + 现在支持添加两个数值列来生成结果的列使用表达式语言。
 
 + **Bug 修复和改进**
@@ -99,7 +101,7 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-sdk-for-python-v1017"></a>Azure Machine Learning SDK for Python v1.0.17
 
-+ **新增功能**
++ **新功能**
 
   + Azure 机器学习现在为常用的 DNN 框架，链接器提供一流的支持。 使用[ `Chainer` ](https://docs.microsoft.com/en-us/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py)类用户可以轻松地训练和部署链接器模型。
     + 了解如何[使用 ChainerMN 运行分布式的培训](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/distributed-chainer/distributed-chainer.ipynb)
@@ -111,14 +113,14 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-portal"></a>Azure 门户
 
-+ **新增功能**
++ **新功能**
   + 新的拖放功能表报表编辑器的体验。 用户可以将列从井中到表的预览将显示其中的表区域。 可以重新排列列。
   + 新的日志文件查看器
   + 尝试运行、 计算、 模型、 图像和从活动选项卡的部署的链接
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1015"></a>Azure 机器学习数据准备 SDK v1.0.15
 
-+ **新增功能**
++ **新功能**
   + 数据准备现在支持从数据流写入文件流。 此外提供的功能来处理要创建新的文件名称的文件流名称。
     + 操作方法指南：[使用与文件流 notebook](https://aka.ms/aml-data-prep-file-stream-nb)
 
@@ -132,7 +134,7 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-sdk-for-python-v1015"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.15
 
-+ **新增功能**
++ **新功能**
   + Azure 机器学习管道增加了 AzureBatchStep（[笔记本](https://aka.ms/pl-azbatch)）、HyperDriveStep（[笔记本](https://aka.ms/pl-hyperdrive)）和基于时间的计划功能（[笔记本](https://aka.ms/pl-schedule)）。
   +  DataTranferStep 已更新，可以与 Azure SQL Server 和 Azure database for PostgreSQL ([notebook](https://aka.ms/pl-data-trans)) 配合使用。
 
@@ -142,12 +144,12 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v1012"></a>Azure 机器学习数据准备 SDK v1.0.12
 
-+ **新增功能**
++ **新功能**
   + 数据准备现在支持使用数据存储从 Azure SQL 数据库读取数据。
  
 + **更改**
   + 显著改进了对大型数据的某些操作的内存性能。
-  + `read_pandas_dataframe()` 表现在要求`temp_folder`来指定。
+  + `read_pandas_dataframe()` 现在要求指定 `temp_folder`。
   + `ColumnProfile` 的 `name` 属性已弃用 - 请改用 `column_name`。
 
 ## <a name="2019-01-28"></a>2019-01-28
@@ -188,7 +190,7 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v107"></a>Azure 机器学习数据准备 SDK v1.0.7
 
-+ **新增功能**
++ **新功能**
   + 数据存储改进（记录在[数据存储区操作指南](https://aka.ms/aml-data-prep-datastore-nb)中）
     + 添加了在扩展中读取和写入 Azure 文件共享和 ADLS 数据存储的功能。
     + 使用数据存储时，数据准备现在支持使用服务主体身份验证而不是交互式身份验证。
@@ -208,8 +210,8 @@ ms.locfileid: "59279612"
 
 ### <a name="azure-machine-learning-data-prep-sdk-v104"></a>Azure 机器学习数据准备 SDK v1.0.4
 
-+ **新增功能**
-  + `to_bool` 函数现在允许不匹配的值转换为错误值。 这是针对 `to_bool` 和 `set_column_types` 的新的默认不匹配行为，而旧的默认行为是将不匹配的值转换为 False。
++ **新功能**
+  + 现在可以通过 `to_bool` 函数将不匹配的值转换为“错误”值。 这是针对 `to_bool` 和 `set_column_types` 的新的默认不匹配行为，而旧的默认行为是将不匹配的值转换为 False。
   + 调用 `to_pandas_dataframe` 时，可以通过新的选项将数字列中的 null/缺失值解释为 NaN。
   + 增加了检查某些表达式的返回类型的功能，目的是确保类型一致性和快速失败。
   + 现在可以调用 `parse_json`，以便将列中的值作为 JSON 对象进行分析，并将其扩张到多个列中。
@@ -242,18 +244,18 @@ Azure 机器学习服务现已公开发布。
 > 建议创建一个新工作区来使用 Azure 机器学习计算。 尝试从现有工作区创建 Azure 机器学习计算的用户可能会看到一个错误，但这种可能性很小。 工作区中的现有计算可以继续使用，不受影响。
 
 ### <a name="azure-machine-learning-sdk-for-python-v102"></a>适用于 Python 的 Azure 机器学习 SDK v1.0.2
-+ **重大变化**
++ **重大更改**
   + 此版本不再支持从 Azure 机器学习创建 VM。 仍可以附加现有的云 VM 或远程本地服务器。 
   + 我们还将删除对 BatchAI 的支持，所有这些现在由 Azure 机器学习计算提供支持。
 
-+ **新建**
++ **New**
   + 适用于机器学习管道：
     + [EstimatorStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.estimator_step.estimatorstep?view=azure-ml-py)
     + [HyperDriveStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.hyper_drive_step.hyperdrivestep?view=azure-ml-py)
     + [MpiStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.mpi_step.mpistep?view=azure-ml-py)
 
 
-+ **更新时间**
++ **已更新**
   + 适用于机器学习管道：
     + [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricks_step.databricksstep?view=azure-ml-py) 现在接受 runconfig
     + [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.data_transfer_step.datatransferstep?view=azure-ml-py) 现在可以通过 SQL 数据源进行复制
@@ -262,8 +264,8 @@ Azure 机器学习服务现已公开发布。
 <!--+ **Bugs fixed**-->
 
 ### <a name="azure-machine-learning-data-prep-sdk-v052"></a>Azure 机器学习数据准备 SDK v0.5.2
-+ **重大变化** 
-  * `SummaryFunction.N` 已重命名为`SummaryFunction.Count`。
++ **重大更改** 
+  * `SummaryFunction.N` 已重命名为 `SummaryFunction.Count`。
   
 + **Bug 修复**
   * 通过远程运行对数据存储进行读取和写入操作时，使用最新的 AML 运行令牌。 以前，如果在 Python 中更新 AML 运行令牌，则不会使用更新的 AML 运行令牌来更新数据准备运行时。
@@ -282,7 +284,7 @@ Azure 机器学习服务现已公开发布。
   + 了解如何[使用管道运行批量预测](how-to-run-batch-predictions.md)
 + Azure 机器学习计算目标
   + [示例笔记本](https://aka.ms/aml-notebooks)现已更新，可以使用新的托管计算。
-  + [了解有关此过程，计算](how-to-set-up-training-targets.md#amlcompute)
+  + [了解此计算](how-to-set-up-training-targets.md#amlcompute)
 
 ### <a name="azure-portal-new-features"></a>Azure 门户：新功能
 + 在门户中创建和管理 [Azure 机器学习计算](how-to-set-up-training-targets.md#amlcompute)类型。
@@ -300,14 +302,14 @@ Azure 机器学习服务现已公开发布。
 
 ### <a name="azure-machine-learning-sdk-for-python-v0180"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.80
 
-+ **重大变化** 
++ **重大更改** 
   * azureml.train.widgets 命名空间已移至 azureml.widgets。
   * azureml.core.compute.AmlCompute 弃用了以下类 - azureml.core.compute.BatchAICompute 和 azureml.core.compute.DSVMCompute。 后续版本中将删除后一类。 AmlCompute 类现在有一个更简单的定义，只需要 vm_size 和 max_nodes，并在提交作业时自动将集群从 0 扩展到 max_nodes。 我们的[示例笔记本](https://github.com/Azure/MachineLearningNotebooks/tree/master/training)已更新该信息，并且会提供使用示例。 我们希望你喜欢这种简化以及即将发布的版本中更多令人兴奋的功能！
 
 ### <a name="azure-machine-learning-data-prep-sdk-v051"></a>Azure 机器学习数据准备 SDK v0.5.1 
 
 阅读[参考文档](https://aka.ms/data-prep-sdk)，了解数据准备 SDK 的详细信息。
-+ **新增功能**
++ **新功能**
    * 创建了一个新的 DataPrep CLI 来执行 DataPrep 包并查看数据集或数据流的数据配置文件
    * 重新设计 SetColumnType API 以提高可用性
    * 将 smart_read_file 重命名为 auto_read_file
@@ -315,8 +317,8 @@ Azure 机器学习服务现已公开发布。
    * 可采用分层采样进行采样
    * 可从包含 CSV 文件的 zip 文件中读取
    * 可使用随机拆分逐行拆分数据集（例如，进入测试训练集）
-   * 可以获取所有列数据类型从数据流或数据配置文件通过调用 `.dtypes`
-   * 可以通过调用从数据流或数据配置文件获取行计数 `.row_count`
+   * 可以通过调用 `.dtypes` 从数据流或数据配置文件中获取所有列数据类型
+   * 可以通过调用 `.row_count` 从数据流或数据配置文件中获取行计数
 
 + **Bug 修复**
    * 修复长度为双线转换 
@@ -341,18 +343,18 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 ### <a name="azure-machine-learning-sdk-for-python-v0174"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.74
 
-+ **重大变化** 
++ **重大更改** 
   * *Workspace.compute_targets、datastores、experiments、images、models 和 webservices 现在是属性而不是方法。 例如，将 Workspace.compute_targets() 替换为 Workspace.compute_targets。
   * *Run.get_context* 弃用了 *Run.get_submitted_run*。 后续版本中将删除后一种方法。
   * *PipelineData* 类现在需要使用数据存储对象作为参数而非需要 datastore_name。 类似地，*Pipeline* 接受 default_datastore 而非 default_datastore_name。
 
-+ **新增功能**
++ **新功能**
   * Azure 机器学习管道[示例 Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/pipeline/pipeline-mpi-batch-prediction.ipynb) 现在使用 MPI 步骤。
   * Jupyter Notebook 的 RunDetails 小组件已更新，将显示管道的可视化效果。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v040"></a>Azure 机器学习数据准备 SDK v0.4.0 
  
-+ **新增功能**
++ **新功能**
   * 向数据配置文件中添加了类型计数 
   * 现在提供了值计数和直方图
   * 数据配置文件中提供了更多百分点值
@@ -361,7 +363,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
   * 将包含数据存储的数据流保存到数据准备包时，数据存储信息将持久保存为数据准备包的一部分
   * 现在支持写入到数据存储 
         
-+ **修复 bug**
++ **修复的 Bug**
   * Linux 上现在可以正确处理 64 位无符号整数溢出
   * 修复了 smart_read 中纯文本文件的不正确文本标签
   * 字符串列类型现在显示在指标视图中
@@ -373,15 +375,15 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 ### <a name="azure-machine-learning-sdk-for-python-v0168"></a>适用于 Python 的 Azure 机器学习 SDK v0.1.68
 
-+ **新增功能**
++ **新功能**
   * 创建新工作区时的多租户支持。
 
-+ **修复 bug**
++ **修复的 Bug**
   * 部署 Web 服务时，不再需要固定 pynacl 库版本。
 
 ### <a name="azure-machine-learning-data-prep-sdk-v030"></a>Azure 机器学习数据准备 SDK v0.3.0
 
-+ **新增功能**
++ **新功能**
   * 添加了方法 transform_partition_with_file(script_path)，允许用户传入 Python 文件的路径进行执行
 
 ## <a name="2018-10-01"></a>2018-10-01
@@ -391,7 +393,7 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 
 请参阅[已知问题列表](resource-known-issues.md)了解已知 bug 和解决方法。
 
-+ **重大变化**
++ **重大更改**
   * Workspace.experiments、Workspace.models、Workspace.compute_targets、Workspace.images，Workspace.web_services 将返回字典，而以前返回列表。 请参阅 [azureml.core.Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py) API 文档。
 
   * 自动化机器学习从主要指标中删除了规范化的均方误差。
@@ -433,11 +435,11 @@ Azure 机器学习服务的 Azure 门户具有以下更新：
 ### <a name="azure-machine-learning-data-prep-sdk-v020"></a>Azure 机器学习数据准备 SDK v0.2.0
 [版本 0.2.0](https://pypi.org/project/azureml-dataprep/0.2.0/) 包括以下功能和 Bug 修复：
 
-+ **新增功能**
++ **新功能**
   * 独热编码支持
   * 分位转换支持
    
-+ **已修复的 bug:**
++ **Bug 修复：**
   * 适用于所有 Tornado 版本，无需降级 Tornado 版本
   * 值对所有值都有意义，而不仅仅是前三个值
 

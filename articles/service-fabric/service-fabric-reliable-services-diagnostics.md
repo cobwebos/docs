@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/24/2018
 ms.author: dekapur
-ms.openlocfilehash: 96fc58ca8456e9a2e539e432f0ed85f6edc1a54f
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: f49176f944aa2abfa1d355ce0bd207d1b544c275
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58664109"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527044"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>有状态 Reliable Services 的诊断功能
 Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出 [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 事件，这些事件可用于调试服务、提供对运行时运行方式的深入了解，以及帮助进行故障排除。
@@ -32,7 +32,7 @@ Azure Service Fabri 有状态 Reliable Services StatefulServiceBase 类会发出
 ## <a name="events"></a>活动
 | 事件名称 | 事件 ID | 级别 | 事件说明 |
 | --- | --- | --- | --- |
-| StatefulRunAsyncInvocation |第 |信息性 |在服务 RunAsync 任务启动时发出 |
+| StatefulRunAsyncInvocation |1 |信息性 |在服务 RunAsync 任务启动时发出 |
 | StatefulRunAsyncCancellation |2 |信息性 |在服务 RunAsync 任务取消时发出 |
 | StatefulRunAsyncCompletion |3 |信息性 |在服务 RunAsync 任务完成时发出 |
 | StatefulRunAsyncSlowCancellation |4 |警告 |在服务 RunAsync 任务完成取消所用时间过长时发出 |
@@ -106,7 +106,7 @@ Reliable Services 运行时发出的以下事件属于 `Service Fabric Transacti
 | --- | --- |
 | 启动事务操作数/秒 | 每秒创建的新写入事务数。|
 | 事务操作数/秒 | 每秒在 Reliable Collections 上执行的添加/更新/删除操作的数目。|
-| 平均刷新延迟(毫秒) | 事务复制器每秒刷新到磁盘的字节数 |
+| 日志刷新字节数/秒 | 事务复制器每秒刷新到磁盘的字节数 |
 | 中止的操作数/秒 | 事务复制器出于限制原因每秒拒绝的操作数。 |
 | 平均事务用时(毫秒)/提交 | 每个事务的提交平均延时（毫秒） |
 | 平均刷新延迟(毫秒) | 由事务复制器启动的磁盘刷新操作的平均持续时间（毫秒） |

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 5393e202c7b5005552f164c9c6f55da92fc82572
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6894486118f69e682353142be04821e1d28440e5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104431"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523165"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>使用 SQL Server Integration Services (SSIS) 计划 U-SQL 作业
 
@@ -93,7 +93,7 @@ Azure Data Lake Analytics 任务允许用户向 Azure Data Lake Analytics 帐户
     
     创建此文件连接：
 
-   1. 在 FileConnection 设置中选择 <New Connection...>。
+   1. 选择**\<新建连接...>** FileConnection 设置中。
    2. 将“使用类型”设置为“现有文件”，并将“文件”设置为任何现有文件的文件路径。
 
        ![配置 Foreach 循环容器](./media/data-lake-analytics-schedule-jobs-ssis/configure-file-connection-for-foreach-loop-container.png)

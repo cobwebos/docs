@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 05/11/2018
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: fdc7aec703fdb5b6bb9744fad226b51769e73385
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 547b6a629677830b6f37883a4be835c12a62e599
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650472"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524034"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>针对预测性维护解决方案的 Azure AI 指南
 
@@ -227,7 +227,7 @@ PdM 中的另一个有用技术是使用检测数据异常的算法来捕获趋�
 
 完成上面所述的数据准备工作后，接下来应该可以根据下面所述对数据进行组织。 训练、测试和验证数据应具有此逻辑架构（此示例中的时间单位为“天”）。
 
-| 资产 ID | 时间 | <Feature Columns> | Label |
+| 资产 ID | 时间 | \<功能列 > | Label |
 | ---- | ---- | --- | --- |
 | A123 |第 1 天 | . . . | . |
 | A123 |第 2 天 | . . . | . |

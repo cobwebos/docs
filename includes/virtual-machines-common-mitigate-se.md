@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 130cc66831b25621cb022eb19005c624fcd71b9e
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
-ms.translationtype: HT
+ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40105500"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551610"
 ---
-**文档上次更新时间**：太平洋标准时间 2018 年 8 月 14 日上午 10:00。
+**上次文档更新**:14 年 8 月 2018 太平洋标准时间上午 10:00。
 
 发现一种称为推理执行旁道攻击的[新型 CPU 漏洞](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180002)，这使想要了解其详情的客户向我们提出了问题。  
 
 Microsoft 已在我们的所有云服务中部署了缓解措施。 运行 Azure 并将客户工作负荷相互隔离的基础结构是受保护的。 这意味着使用同一基础结构的潜在攻击者无法使用这些漏洞攻击你的应用程序。
 
-Azure 尽可能使用[内存保留维护](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#memory-preserving-maintenance)，这样可以尽量降低对客户的影响并且不需要重启。 Azure 会在对主机进行系统级更新时继续利用这些方法，对客户进行保护。
+Azure 尽可能使用[内存保留维护](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates#maintenance-not-requiring-a-reboot)，这样可以尽量降低对客户的影响并且不需要重启。 Azure 会在对主机进行系统级更新时继续利用这些方法，对客户进行保护。
 
 若要详细了解如何将安全性集成到 Azure 的各个方面，请访问 [Azure 安全文档](https://docs.microsoft.com/azure/security/)站点。 
 
@@ -70,17 +70,17 @@ Azure 尽可能使用[内存保留维护](https://docs.microsoft.com/azure/virtu
 
 目标操作系统必须为最新才能启用这些额外安全功能。 虽然许多推理执行旁道缓解措施是默认启用的，但此处所述的额外功能必须手动启用，并且可能会造成性能影响。 
 
-**步骤 1**：[与 Azure 支持部门联系](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)，要求其向你的虚拟机公开已更新的固件（微代码）。 
+**步骤 1**：[请联系 Azure 支持部门](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)到你的虚拟机的公开更新固件 （微代码）。 
 
-**步骤 2**：启用内核虚拟地址隐藏 (KVAS) 和分支目标注入 (BTI) OS 支持。 按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明通过 `Session Manager` 注册表项启用保护。 必须重启。 
+**步骤 2**：启用内核虚拟地址隐藏 (KVAS) 和分支目标注入 (BTI) 操作系统的支持。 按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明通过 `Session Manager` 注册表项启用保护。 必须重启。 
 
-**步骤 3**：对于使用[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)的部署（仅 D3 和 E3）：这些说明在用作 Hyper-V 主机的 VM 中应用。 
+**步骤 3**：对于正在使用的部署[嵌套虚拟化](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)（D3 和 E3 仅）：这些说明适用于使用作为 HYPER-V 主机的 VM。 
 
 1. 按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明通过 `MinVmVersionForCpuBasedMitigations` 注册表项启用保护。  
  
 1. 可以按照[此处](https://docs.microsoft.com/windows-server/virtualization/hyper-v/manage/manage-hyper-v-scheduler-types)的说明将虚拟机监控程序计划程序类型设置为“核心”。 
 
-**步骤 4**：按照 [KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution) 中的说明，验证是否已使用 [SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell 模块启用保护。 
+**步骤 4**：按照中的说明[KB4072698](https://support.microsoft.com/help/4072698/windows-server-guidance-to-protect-against-the-speculative-execution)若要验证保护启用了使用[SpeculationControl](https://aka.ms/SpeculationControlPS) PowerShell 模块。 
 
 > [!NOTE]
 > 如果以前下载过此模块，则需安装最新版本。
@@ -101,11 +101,11 @@ L1TFWindowsSupportEnabled: True
 
 <a name="linux"></a>在其中启用额外安全功能集要求目标操作系统已彻底更新。 某些缓解措施会默认启用。 以下部分介绍的功能是默认关闭的，以及/或者是依赖于硬件支持（微代码）的。 启用这些功能可能造成性能影响。 如需进一步的说明，请参阅操作系统提供商的文档。
  
-**步骤 1**：[与 Azure 支持部门联系](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)，要求其向你的虚拟机公开已更新的固件（微代码）。
+**步骤 1**：[请联系 Azure 支持部门](https://aka.ms/MicrocodeEnablementRequest-SupportTechnical)到你的虚拟机的公开更新固件 （微代码）。
  
-**步骤 2**：根据操作系统提供商的文档启用分支目标注入 (BTI) OS 支持，以便缓解 CVE-2017-5715（Spectre 变体 2）的影响。 
+**步骤 2**：启用分支目标注入 (BTI) OS 支持，以缓解 CVE-2017年-5715 (Spectre 变体 2) 按照操作系统提供商的文档。 
  
-**步骤 3**：根据操作系统提供商的文档启用内核页表隔离 (KPTI)，以便缓解 CVE-2017-5754（Meltdown 变体 3）的影响。 
+**步骤 3**：按照以下操作系统提供商的文档启用内核页表隔离 (KPTI) 来缓解 CVE-2017-5754 (变体 3 Meltdown)。 
  
 操作系统提供商提供更多信息：  
  

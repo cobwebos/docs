@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: da24c437a1dbe8744579cd26ee1348f50c4815ff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57884738"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524185"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -234,7 +234,7 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [通知中心安全推送教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-aspnet-backend-ios-secure-push/
 [通知中心故障排除]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [通知中心指标]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
-[注册信息导出/导入]: https://msdn.microsoft.com/library/dn790624.aspx
+[注册信息导出/导入]: https://docs.microsoft.com/en-us/azure/notification-hubs/export-modify-registrations-bulk
 [Azure 门户]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [移动应用]: https://azure.microsoft.com/services/app-service/mobile/

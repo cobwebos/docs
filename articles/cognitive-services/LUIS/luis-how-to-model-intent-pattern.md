@@ -1,7 +1,7 @@
 ---
 title: 模式添加准确性
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 了解如何在语言理解 (LUIS) 应用程序中添加模式模板，提高预测准确性。
+description: 添加模式模板以改进预测精确性语言理解 (LUIS) 应用程序中。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,17 +9,17 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 132f6eab86c02e28fe562a0c7d3357175e5813b8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.openlocfilehash: 202b9632b7a7faaf955874a0300edbe5134b7fa1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195041"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521248"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>如何添加模式以改进预测精确性
-LUIS 应用接收终结点语音样本后，使用[模式](luis-concept-patterns.md)以改进预测精确性的语音样本，显示一个图案中单词顺序和 word 的选择。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)以指示的位置：[实体](luis-concept-entity-types.md)，实体角色和可选的文本。
+LUIS 应用接收终结点语音样本后，使用[模式](luis-concept-patterns.md)以改进预测精确性的语音样本，显示一个图案中单词顺序和 word 的选择。 模式使用特定[语法](luis-concept-patterns.md#pattern-syntax)以指示的位置：[实体](luis-concept-entity-types.md)，实体[角色](luis-concept-roles.md)，和可选的文本。
 
 ## <a name="add-template-utterance-to-create-pattern"></a>添加模板表述以创建模式
 1. 通过选择“我的应用”页上的应用名称来打开应用，然后选择“提高应用性能”下左侧面板中的“模式”。
@@ -34,7 +34,7 @@ LUIS 应用接收终结点语音样本后，使用[模式](luis-concept-patterns
 
     ![模式实体的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-3.png)
 
-    如果实体中包含角色，请在实体名称后用一个冒号 `:` 指示该角色，例如 `{Location:Origin}`。 实体的角色列表将以列表形式显示。 选择该角色，然后按 Enter。 
+    如果你的实体包括[角色](luis-concept-roles.md)，指示角色使用单个冒号`:`，在该实体名称，例如`{Location:Origin}`。 实体的角色列表将以列表形式显示。 选择该角色，然后按 Enter。 
 
     ![包含角色的实体的屏幕截图](./media/luis-how-to-model-intent-pattern/patterns-4.png)
 

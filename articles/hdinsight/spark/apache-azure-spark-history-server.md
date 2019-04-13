@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 8fd737bb784938f7cbff243837678f41d5ac55c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076796"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524168"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
@@ -32,7 +32,7 @@ Apache Spark History Server 是已完成的和正在运行的 Spark 应用程序
     ![Spark History Server](./media/apache-azure-spark-history-server/launch-history-server.png "Spark History Server")
 
 ### <a name="open-the-spark-history-server-web-ui-by-url"></a>通过 URL 打开 Spark History Server Web UI
-浏览到以下 URL（将 <ClusterName> 替换为客户的 Spark 群集名称），打开 Spark History Server。
+浏览到以下 URL（将 `<ClusterName>` 替换为客户的 Spark 群集名称），打开 Spark History Server。
 
    ```
    https://<ClusterName>.azurehdinsight.net/sparkhistory
@@ -199,7 +199,7 @@ Spark History Server Web UI 如下所示：
     ![选择图表](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 
-## <a name="faq"></a>常见问题解答
+## <a name="faq"></a>常见问题
 
 ### <a name="1-revert-to-community-version"></a>1.还原到社区版本
 

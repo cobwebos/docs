@@ -13,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: mbullwin
-ms.openlocfilehash: 8026576478b16b753ba960155c383ffec62c61ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: eb8e98f66d000290ce7eb07d3d73e82fbc43514a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491536"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548691"
 ---
 # <a name="set-alerts-in-application-insights"></a>在 Application Insights 中设置警报
 当 Web 应用中的性能或用法指标发生变化时，[Azure Application Insights][start] 可发出警报。 
@@ -45,7 +45,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 * 如果已设置响应警报的 Web 应用，请设置 [Webhook 地址](../../azure-monitor/platform/alerts-webhooks.md)。 当警报激活时，以及警报得到解决时，系统会调用此地址。 （但请注意，查询参数不会以 Webhook 属性的形式传递。）
 * 您可以禁用或启用警报： 请参阅顶部的按钮。
 
-*我看不到添加警报按钮。*
+*我看不到“添加警报”按钮。*
 
 * 使用的是组织帐户？ 如果对此应用程序资源拥有所有者或参与者访问权限，则可以设置警报。 看看访问控制选项卡。[了解访问控制][roles]。
 
@@ -147,7 +147,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 
 ## <a name="how-to-unsubscribe-from-classic-alert-e-mail-notifications"></a>如何取消订阅经典警报的电子邮件通知
 
-本部分适用于**经典可用性警报**， **Application Insights 指标警报**，并对其**经典失败异常警报**。
+本部分适用于**经典可用性警报**，**经典的 Application Insights 指标警报**，并对其**经典失败异常警报**。
 
 如果以下任一应用，收到这些经典警报的电子邮件通知：
 
@@ -178,7 +178,7 @@ Application Insights 在[各种平台][platforms]上监视实时应用，帮助�
 
 ## <a name="automation"></a>自动化
 * [使用 PowerShell 自动设置警报](../../azure-monitor/app/powershell-alerts.md)
-* [使用 webhook 自动响应警报](../../azure-monitor/platform/alerts-webhooks.md)
+* [使用 Webhook 自动响应警报](../../azure-monitor/platform/alerts-webhooks.md)
 
 ## <a name="see-also"></a>另请参阅
 * [可用性 Web 测试](../../azure-monitor/app/monitor-web-app-availability.md)

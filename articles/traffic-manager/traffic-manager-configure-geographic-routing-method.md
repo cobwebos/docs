@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.openlocfilehash: 64e3cbd082f2d18668dff87fbec098add73ffda6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 30c4a6817272f7b5f1810873a93280b234ff6cc9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010076"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524304"
 ---
 # <a name="configure-the-geographic-traffic-routing-method-using-traffic-manager"></a>使用流量管理器配置地理流量路由方法
 
@@ -26,7 +26,7 @@ ms.locfileid: "58010076"
 1. 在浏览器中，登录 [Azure 门户](https://portal.azure.com)。 如果还没有帐户，可以注册[免费一个月试用版](https://azure.microsoft.com/free/)。
 2. 单击“创建资源” > “网络” > “流量管理器配置文件” > “创建”。
 4. 在“创建流量管理器配置文件”中：
-    1. 提供配置文件的名称。 此名称在 trafficmanager.net zone 中必须是唯一的。 若要访问流量管理器配置文件，请使用 DNS 名称 <profilename>.trafficmanager.net。
+    1. 提供配置文件的名称。 此名称在 trafficmanager.net zone 中必须是唯一的。 若要访问流量管理器配置文件，您使用的 DNS 名称`<profilename>.trafficmanager.net`。
     2. 选择“地理”路由方法。
     3. 选择要创建此配置文件的订阅。
     4. 使用现有资源组，或创建新的资源组，以在其下放置此配置文件。 如果选择创建新的资源组，请使用“资源组位置”下拉列表来指定资源组位置。 此设置指的是资源组的位置，对全局部署的流量管理器配置文件没有影响。

@@ -17,12 +17,12 @@ ms.devlang: na
 ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 743b078eac783365ae83e540a7dc05aba0ae8754
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517584"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547050"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>如何：调查有风险的用户和登录 
 
@@ -56,7 +56,7 @@ ms.locfileid: "58517584"
 
 - 风险上次更新时间
 
-- 类型
+- Type
 
 - 状态
  
@@ -113,7 +113,7 @@ ms.locfileid: "58517584"
 
 - 风险级别
 
-- 类型
+- Type
 
 - 状态
 
@@ -145,15 +145,15 @@ ms.locfileid: "58517584"
 
 使用“状态”筛选器，可以选择：
 
-- 已删除
+- Deleted
 - 活动
 
 
 ### <a name="download-risky-users-data"></a>下载有风险用户数据
 
-若要在 Azure 门户外部使用有风险用户数据，可以下载此类数据。 单击“下载”会生成包含最近 5000 条记录的 CSV 文件。 
+如果你想要在 Azure 门户外部使用它，您可以下载有风险的用户数据。 单击下载创建的最新的 2,500 记录的 CSV 文件。 
 
-![“有风险用户”报告](./media/howto-investigate-risky-users-signins/07.png)
+![有风险的用户报告](./media/howto-investigate-risky-users-signins/07.png)
 
 
 单击工具栏中的“列”可以自定义列表视图。
@@ -185,7 +185,7 @@ ms.locfileid: "58517584"
 
 “有风险登录”报告的默认视图显示以下信息：
 
-- Date
+- 日期
 
 - 用户
 
@@ -199,7 +199,7 @@ ms.locfileid: "58517584"
 
 - 风险级别(实时)
 
-- 条件访问
+- 条件性访问
 
 - 需要 MFA  
  
@@ -228,7 +228,7 @@ ms.locfileid: "58517584"
 
 - MFA 信息
 
-- 条件访问
+- 条件性访问
 
 
 
@@ -257,8 +257,8 @@ ms.locfileid: "58517584"
 - 风险状态
 - 风险级别(总计)
 - 风险级别(实时)
-- 条件访问
-- Date
+- 条件性访问
+- 日期
 - 风险级别类型
 
 ![风险登录报告](./media/howto-investigate-risky-users-signins/14.png)
@@ -271,8 +271,8 @@ ms.locfileid: "58517584"
 
 “登录状态”筛选器用于选择：
 
-- 全部
-- 成功
+- All
+- Success
 - 失败
 
 
@@ -300,9 +300,9 @@ ms.locfileid: "58517584"
 
 使用“条件访问”筛选器，可以选择：
 
-- 全部
+- All
 - 未应用
-- 成功
+- Success
 - 失败
 
 
@@ -310,8 +310,8 @@ ms.locfileid: "58517584"
 可能的值包括：
 
 - 过去 1 个月
-- 最近 7 天
-- 前 24 小时
+- 过去 7 天
+- 过去 24 小时
 - 自定义时间范围
 
 
@@ -320,9 +320,9 @@ ms.locfileid: "58517584"
 
 ### <a name="download-risky-sign-ins-data"></a>下载有风险登录数据
 
-若要在 Azure 门户外部使用有风险登录数据，可以下载此类数据。 单击“下载”会生成包含最近 5000 条记录的 CSV 文件。 
+如果你想要在 Azure 门户外部使用它，您可以下载有风险的登录活动数据。 单击下载创建的最新的 2,500 记录的 CSV 文件。 
 
-![“有风险用户”报告](./media/howto-investigate-risky-users-signins/15.png)
+![有风险的用户报告](./media/howto-investigate-risky-users-signins/15.png)
 
 
 

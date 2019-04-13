@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 65948b1de3a972687e738b011acf3542073db277
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 3938427c23993f0546e7df62da88dadaf3353118
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046971"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549365"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>流量分析常见问题解答
 
@@ -125,7 +125,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ## <a name="can-i-store-raw-logs-in-a-different-subscription"></a>是否可将原始日志存储在不同的订阅中？
 
-不是。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
+不。 可将原始日志存储在为流日志启用了 NSG 的任何存储帐户中。 但存储帐户和原始日志必须位于同一订阅和区域中。
 
 ## <a name="what-if-i-cant-configure-an-nsg-for-traffic-analytics-due-to-a-not-found-error"></a>如果由于“未找到”错误而无法为流量分析配置 NSG，该如何解决？
 
@@ -179,7 +179,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 若要使用 Azure 资源管理器客户端配置流量分析，请参阅以下示例。
 
-**设置 cmdlet 的示例：**
+**Set cmdlet 示例：**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<name of NSG>"
@@ -220,7 +220,7 @@ $apiversion = "2016-09-01"
 armclient login
 armclient post "https://management.azure.com/subscriptions/<NSG subscription id>/resourceGroups/<network watcher resource group name>/providers/Microsoft.Network/networkWatchers/<network watcher name>/configureFlowlog?api-version=${apiversion}" $requestBody
 ```
-**获取 cmdlet 的示例：**
+**Get cmdlet 示例：**
 ```
 #Requestbody parameters
 $TAtargetUri ="/subscriptions/<NSG subscription id>/resourceGroups/<NSG resource group name>/providers/Microsoft.Network/networkSecurityGroups/<NSG name>"
@@ -239,12 +239,27 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 ```
 
 
-
 ## <a name="how-is-traffic-analytics-priced"></a>流量分析如何计费？
 
 流量分析是计量式的。 该计量的基础是由服务处理流日志数据，并将生成的增强日志存储在 Log Analytics 工作区中。 
 
 例如，根据[定价计划](https://azure.microsoft.com/pricing/details/network-watcher/)，就美国中西部地区而言，如果流量分析处理的存储帐户中存储的流日志数据为 10 GB，而 Log Analytics 工作区中引入的增强日志为 1 GB 则适用的费用是：10 x 2.3$ + 1 x 2.76$ = 25.76$
+
+## <a name="how-frequently-does-traffic-analytics-process-data"></a>流量分析如何经常处理的数据？
+
+请参阅[数据聚合部分](https://docs.microsoft.com/en-us/azure/network-watcher/traffic-analytics-schema#data-aggregation)流量分析架构和数据聚合文档中
+
+## <a name="how-does-traffic-analytics-decide-that-an-ip-is-malicious"></a>流量分析如何决定 IP 是恶意活动？ 
+
+流量分析依赖于 Microsoft 内部威胁智能系统，从而确认为恶意 IP。 这些系统利用不同的遥测数据源，如 Microsoft 产品和服务、 Microsoft 数字犯罪部门 (DCU)、 Microsoft 安全响应中心 (MSRC)，以及外部源，并生成大量在其上的智能。 Mircosoft 内部这样的一些数据。 如果已知的 IP 获取标记为 malicios，请提出支持票证以了解详细信息。
+
+## <a name="how-can-i-set-alerts-on-traffic-analytics-data"></a>如何对流量分析数据设置警报？
+
+流量分析不具有对警报的内置的支持。 但是，因为流量分析数据存储在 Log Analytics 可以编写自定义查询，并对其设置警报。 步骤：
+- 为流量分析中的 Log Analytics，可以使用短链接。 
+- 使用[此处介绍架构](traffic-analytics-schema.md)编写查询 
+- 单击"新建警报规则"以创建警报
+- 请参阅[文档的日志警报](https://docs.microsoft.com/en-us/azure/azure-monitor/platform/alerts-log)创建警报
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>如何在地图视图中使用键盘导航？
 
@@ -272,7 +287,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
         
 ### <a name="keyboard-navigation-at-any-stage"></a>任何阶段的键盘导航
     
-- `Esc` 折叠的更多选择。
+- 按 `Esc` 可折叠已展开的选定内容。
 - 按 `Up arrow` 键可执行按 `Esc` 时所执行的相同操作。 按 `Down arrow` 键可执行按 `Enter` 时所执行的相同操作。
 - 使用 `Shift+Plus` 可以放大，使用 `Shift+Minus` 可以缩小。
 

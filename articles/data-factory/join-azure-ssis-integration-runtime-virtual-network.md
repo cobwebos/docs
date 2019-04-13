@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: 6c01232c9bdb685fbc54e5ebe1e1f9fa83073dc2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58107791"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526667"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络： 
@@ -135,9 +135,9 @@ ms.locfileid: "58107791"
 
 ### <a name="resource-group"></a>资源组需求
 -   Azure-SSIS IR 需要在与虚拟网络相同的资源组下创建某些网络资源。 这些资源包括：
-    -   Azure 负载均衡器，名为 <Guid>-azurebatch-cloudserviceloadbalancer。
-    -   Azure 公共 IP 地址，名为 <Guid>-azurebatch-cloudservicepublicip。
-    -   网络工作安全组，名为 <Guid>-azurebatch-cloudservicenetworksecuritygroup。 
+    -   具有名称的 Azure 负载均衡器 *\<Guid >-azurebatch-cloudserviceloadbalancer*。
+    -   Azure 公共 IP 地址，使用名称 *\<Guid >-azurebatch-cloudservicepublicip*。
+    -   网络工作安全组，具有名称 *\<Guid >-azurebatch-cloudservicenetworksecuritygroup*。 
 
 -   请确保虚拟网络所属的资源组或订阅上没有任何资源锁定。 如果配置只读锁定或删除锁定，启动和停止 IR 可能会失败或挂起。 
 

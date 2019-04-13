@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 2013b3b96fddd32f01245655c1feb600bc426e2a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 556589aa7a0a577b9b1a010cf4811922ebc6de52
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084135"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524882"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>使用 CLI 创建和修改 ExpressRoute 线路
 
@@ -56,7 +56,7 @@ az account set --subscription "<subscription ID>"
 
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.获取支持的提供商、位置和带宽的列表
 
-在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令“az network express-route list-service-providers”会返回此信息，在随后的步骤中将使用此信息：
+在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。 CLI 命令`az network express-route list-service-providers`返回此信息将在后面的步骤中使用：
 
 ```azurecli-interactive
 az network express-route list-service-providers
@@ -144,7 +144,7 @@ az group create -n ExpressRouteResourceGroup -l "West US"
 * SKU 系列确定计费类型。 可以指定“Metereddata”以获取数据流量套餐，指定“Unlimiteddata”以获取无限制流量套餐。 可以将计费类型从“Metereddata”更改为“Unlimiteddata”，但不能将类型从“Unlimiteddata”更改为“Metereddata”。
 
 
-从发布服务密钥的那一刻起，将对 ExpressRoute 线路进行计费。 以下是请求新的服务密钥的示例：
+从发布服务密钥的那一刻起，会对 ExpressRoute 线路进行计费。 以下是请求新的服务密钥的示例：
 
 ```azurecli-interactive
 az network express-route create --bandwidth 200 -n MyCircuit --peering-location "Silicon Valley" -g ExpressRouteResourceGroup --provider "Equinix" -l "West US" --sku-family MeteredData --sku-tier Standard
@@ -154,7 +154,7 @@ az network express-route create --bandwidth 200 -n MyCircuit --peering-location 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4.列出所有 ExpressRoute 线路
 
-若要获取已创建的所有 ExpressRoute 线路的列表，请运行“az network express-route list”命令。 可以随时使用此命令检索此信息。 若要列出所有线路，请进行不带任何参数的调用。
+若要获取你创建的所有 ExpressRoute 线路的列表，请运行`az network express-route list`命令。 可以随时使用此命令检索此信息。 若要列出所有线路，请进行不带任何参数的调用。
 
 ```azurecli-interactive
 az network express-route list
@@ -349,7 +349,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 若要取消预配并删除 ExpressRoute 线路，请确保已了解以下条件：
 
 * 必须取消所有虚拟网络与 ExpressRoute 线路的链接。 如果此操作失败，请查看是否有虚拟网络链接到了该线路。
-* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们那一端取消预配线路。 在服务提供商完成取消设置线路并通知我们之前，我们会继续保留资源并向你收费。
+* 如果 ExpressRoute 线路服务提供商预配状态为“正在预配”或“已预配”，则必须与服务提供商合作，在他们那一端取消预配线路。 在服务提供商取消对线路的预配并通知我们之前，我们会继续保留资源并收费。
 * 如果服务提供商已取消预配线路，则可以删除此线路。 取消预配线路后，服务提供商预配状态将被设置为“未预配”。 这样就会停止对线路的计费。
 
 可以通过运行以下命令来删除 ExpressRoute 线路：

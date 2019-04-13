@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/19/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73e5b081e85726a1fc78d92996846faa18ce616a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d34bd9d7f80f72b3c6c0821ad48e6be1fd260be9
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897616"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524627"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>教程：针对自动用户预配来配置 Workday
 
@@ -50,7 +50,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>此用户预配解决方案最适合哪些对象？
 
-此 Workday 用户预配解决方案目前以公共预览版提供，非常适合以下对象：
+此 Workday 用户预配解决方案非常适合：
 
 * 需要使用预建的、基于云的解决方案进行 Workday 用户预配的组织
 
@@ -152,8 +152,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 不是。 预配代理数 | 3（针对高可用性和故障转移） |
-| 不是。 Workday 到 AD 用户预配应用数 | 第 |
+| 不。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不。 Workday 到 AD 用户预配应用数 | 1 |
 
   ![方案 1](./media/workday-inbound-tutorial/dep_scenario1.png)
 
@@ -163,8 +163,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 不是。 预配代理数 | 3（针对高可用性和故障转移） |
-| 不是。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不。 预配代理数 | 3（针对高可用性和故障转移） |
+| 不。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 2](./media/workday-inbound-tutorial/dep_scenario2.png)
 
@@ -174,8 +174,8 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 |   |   |
 | - | - |
-| 不是。 预配代理数 | 每个非连续 AD 林 3 个 |
-| 不是。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
+| 不。 预配代理数 | 每个非连续 AD 林 3 个 |
+| 不。 Workday 到 AD 用户预配应用数 | 每个子域一个应用 |
 
   ![方案 3](./media/workday-inbound-tutorial/dep_scenario3.png)
 
@@ -460,7 +460,7 @@ Azure AD 用户预配服务支持的 Workday 用户预配工作流可将以下�
 
 2. 在“源对象范围”字段中，可以通过定义一组基于属性的筛选器，选择 Workday 中要预配到 AD 的用户集范围。 默认范围是“Workday 中的所有用户”。 示例筛选器：
 
-   * 示例：将范围限定为工作人员 ID 为 1000000 到 2000000 的用户
+   * 示例：将范围限定为工作人员 Id 与 1000000 到 2000000 （不包括 2000000）
 
       * 属性：WorkerID
 

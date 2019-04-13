@@ -10,14 +10,16 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
-ms.openlocfilehash: 1ad1d2c74be97afcb62f3f8e8161111f4938f645
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
-ms.translationtype: HT
+ms.openlocfilehash: aae6bc41f3c2fc2c5f8cf63d07f6b4d79bb3564a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093662"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547533"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>安装 Azure Functions 运行时预览版 2
+
+[!INCLUDE [intro](../../includes/functions-runtime-preview-note.md)]
 
 若要安装 Azure Functions 运行时预览版 2，必须执行以下步骤：
 
@@ -102,36 +104,37 @@ Azure Functions 运行时预览版安装程序会引导完成 Azure Functions �
 
 在 Azure Functions 运行时预览版中创建第一个函数
 
-1. 使用 https://<machinename>.<domain> 浏览到 **Azure Functions 运行时门户** 例如 https://mycomputer.mydomain.com
+1. 浏览到**Azure Functions 运行时门户**作为`https://<machinename>.<domain>`例如`https://mycomputer.mydomain.com`。
+
 1. 系统会提示**登录**。如果是在域中部署的，请使用帐户用户名和密码登录；否则，请使用本地帐户用户名和密码登录到门户。
 
-![Azure Functions 运行时预览版门户登录][14]
+    ![Azure Functions 运行时预览版门户登录][14]
 
-1. 若要创建函数应用，必须创建订阅。  在门户的左上角，单击订阅旁边的 **+** 选项
+1. 若要创建函数应用，必须创建订阅。  在门户的左上角，单击**+** 的订阅旁边的选项。
 
-![Azure Functions 运行时预览版门户订阅][15]
+    ![Azure Functions 运行时预览版门户订阅][15]
 
 1. 选择“DefaultPlan”，输入订阅名称，单击“创建”。
 
-![Azure Functions 运行时预览版门户订阅计划和名称][16]
+    ![Azure Functions 运行时预览版门户订阅计划和名称][16]
 
 1. 所有函数应用列在门户的左窗格中。  若要创建新的函数应用，请选择标题“函数应用”，单击 **+** 选项。
 
 1. 输入函数应用的名称，选择正确的订阅，选择想要对其编程的 Azure Functions 运行时版本，并单击“创建”
 
-![Azure Functions 运行时预览版门户 - 新建函数应用][17]
+    ![Azure Functions 运行时预览版门户 - 新建函数应用][17]
 
 1. 新函数应用将列入门户的左窗格中。  选择“函数”，单击门户中间窗格顶部的“新建函数”。
 
-![Azure Functions 运行时预览版模板][18]
+    ![Azure Functions 运行时预览版模板][18]
 
 1. 选择“计时器触发器”函数，在右侧浮出控件中为函数命名，将“计划”更改为 `*/5 * * * * *`（此 cron 表达式可让计时器函数每隔五秒执行一次），并单击“创建”
 
-![Azure Functions 运行时预览版 - 新计时器函数配置][19]
+    ![Azure Functions 运行时预览版 - 新计时器函数配置][19]
 
 1. 现已创建函数。  可以通过展开门户底部的“日志”窗格查看函数应用的执行日志。
 
-![Azure Functions 运行时预览版 - 函数执行][20]
+    ![Azure Functions 运行时预览版 - 函数执行][20]
 
 <!--Image references-->
 [1]: ./media/functions-runtime-install/AzureFunctionsRuntime_Installer1.png

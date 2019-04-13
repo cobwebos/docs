@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 03/05/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 42ac75b6ed0d4489ccae014b9cfe3b08269c1218
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2a160ab7447304dc6eb14f76a723df4e8a4d9f46
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547412"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523097"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>模式可提高预测的准确性
 模式旨在多条话语非常类似的情况下提升准确性。  使用模式可在不提供更多话语的情况下获得更高的意向准确度。 
@@ -41,7 +41,7 @@ ms.locfileid: "57547412"
 ## <a name="patterns-are-not-a-guarantee-of-intent"></a>模式不保证提取意向
 模式使用多种预测技术。 在模式中设置模板话语的意向并不保证得出意向预测，但表示很可能得出。 
 
-<a name="patterns-do-not-improve-entity-detection"/>
+<a name="patterns-do-not-improve-entity-detection"/></a>
 
 ## <a name="patterns-do-not-improve-machine-learned-entity-detection"></a>模式不会提高机器学习的内容实体检测
 
@@ -50,7 +50,7 @@ ms.locfileid: "57547412"
 若将多个话语合并到单个模式，则无法提升实体预测。 若要触发简单实体，需要添加话语或使用列表实体，否则模式将无法触发。
 
 ## <a name="patterns-use-entity-roles"></a>模式使用实体角色
-如果模式中的两个或多个实体具有相关的上下文，模式会使用实体[角色](luis-concept-roles.md)来提取关于实体的上下文信息。 这相当于分层实体子对象，但仅可在模式中使用。 
+如果模式中的两个或多个实体具有相关的上下文，模式会使用实体[角色](luis-concept-roles.md)来提取关于实体的上下文信息。  
 
 ## <a name="prediction-scores-with-and-without-patterns"></a>使用和不使用模式的情况下的预测得分
 假定有足够多的实例话语，则 LUIS 不使用模式即能提高预测的置信度。 无需提供尽量多的话语，模式就能增加置信度得分。  
@@ -83,7 +83,7 @@ ms.locfileid: "57547412"
 |是一个新窗体|与外部的可选单词和模式中的非可选单词匹配|
 |新的窗体|所需的匹配项字匹配|
 
-**分组**语法中的，使用括号，可以是嵌套的两个级别。 例如：`(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`。 这允许将任何要匹配的三个实体。 
+**分组**语法中的，使用括号，可以是嵌套的两个级别。 例如：`(({Entity1.RoleName1} | {Entity1.RoleName2} ) | {Entity2} )`。 此功能允许任何要匹配的三个实体。 
 
 如果实体 2 为列表实体 (RedWest C) 中的已知的构建名 Entity1 是具有角色，如来源 （西雅图） 和目标 (Cairo) 的位置，以下查询文本将映射到这种模式：
 
@@ -170,7 +170,7 @@ Pattern.any 实体可用于向模式添加不同长度的实体。 只要按照�
 |模式与可选的文本|含义|
 |--|--|
 |`[find] email about {subject} [from {person}]`|`find` 和`from {person}`都是可选的|
-|`Can you help me[?]|标点符号是可选的|
+|可以帮助我 [？] |标点符号是可选的|
 
 标点符号 (`?`， `!`， `.`) 应忽略，并且需要忽略它们在模式中使用方括号语法。 
 

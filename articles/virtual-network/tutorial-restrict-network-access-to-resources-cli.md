@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 35f2c1bcc3db82f5fbca5f0458d534bf73d9067a
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 4d93cfe78159fdf4ef3c34e8f80732603b701538
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59010492"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521674"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-the-azure-cli"></a>使用 Azure CLI 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
@@ -272,7 +272,7 @@ az vm create \
 
 ## <a name="confirm-access-to-storage-account"></a>确认对存储帐户的访问
 
-通过 SSH 登录到 *myVmPrivate* VM。 将 *<publicIpAddress>* 替换为 *myVmPrivate* VM 的公用 IP 地址。
+通过 SSH 登录到 *myVmPrivate* VM。 替换 *\<publicIpAddress >* 的公共 IP 地址与你*myVmPrivate* VM。
 
 ```bash 
 ssh <publicIpAddress>

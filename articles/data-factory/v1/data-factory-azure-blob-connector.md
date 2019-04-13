@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 9bb9954e8463617694efe2997d886a2ba4390ccb
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: 85832abeb9908dd891e3f35a0368bc35c7816a6e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58500281"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528200"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure Blob 存储中或从 Azure Blob 存储中复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -50,7 +50,7 @@ ms.locfileid: "58500281"
 >
 > 复制活动在源数据成功复制到目标位置后不会删除该数据。 如果需要在成功复制后删除源数据，请创建一个[自定义活动](data-factory-use-custom-activities.md)，以便删除数据并在管道中使用该活动。 相关示例请参阅 [GitHub 上的删除 Blob 或文件夹示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/DeleteBlobFileFolderCustomActivity)。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 可以使用不同的工具/API 创建包含复制活动的管道，此管道将数据移入/移出 Azure Blob 存储。
 
 创建管道的最简单方法是使用复制向导。 本文[演练](#walkthrough-use-copy-wizard-to-copy-data-tofrom-blob-storage)了如何创建管道，以便将数据从一个 Azure Blob 存储位置复制到另一个 Azure Blob 存储位置。 有关如何创建管道将数据从 Azure Blob 存储复制到 Azure SQL 数据库的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。
@@ -85,7 +85,7 @@ ms.locfileid: "58500281"
 | 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | folderPath |到 Blob 存储中的容器和文件夹的路径。 示例：myblobcontainer\myblobfolder\ |是 |
-| fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>如果没有为输出数据集指定 **fileName**，并且没有在活动接收器中指定 **preserveHierarchy**，则生成的文件的名称将采用以下格式：Data.<Guid>.txt（例如：Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
+| fileName |blob 的名称。 fileName 可选，并且区分大小写。<br/><br/>如果指定文件名，则活动（包括复制）将对特定 Blob 起作用。<br/><br/>如果未指定 fileName，则复制将包括输入数据集的 folderPath 中所有的 Blob。<br/><br/>时**文件名**未指定为输出数据集和**preserveHierarchy**未指定在活动接收器中生成的文件的名称会采用以下格式： `Data.<Guid>.txt` （适用于示例::Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt |否 |
 | partitionedBy |partitionedBy 是一个可选属性。 它可用于指定时序数据的动态 folderPath 和 filename。 例如，folderPath 可针对每小时的数据参数化。 请参阅[使用 partitionedBy 属性](#using-partitionedby-property)部分，了解详细信息和示例。 |否 |
 | 格式 | 支持以下格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](data-factory-supported-file-and-compression-formats.md#text-format)、[Json 格式](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro 格式](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc 格式](data-factory-supported-file-and-compression-formats.md#orc-format)和 [Parquet 格式](data-factory-supported-file-and-compression-formats.md#parquet-format)部分。 <br><br> 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 |否 |
 | compression | 指定数据的压缩类型和级别。 支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。 支持的级别为：“最佳”和“最快”。 有关详细信息，请参阅 [Azure 数据工厂中的文件和压缩格式](data-factory-supported-file-and-compression-formats.md#compression-support)。 |否 |

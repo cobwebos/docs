@@ -9,12 +9,12 @@ ms.topic: reference
 ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: 29091add5cee0934064224c9cca8644b401bd5e4
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 1230a9bcea01ef394a6299c50b8d5537850cfee5
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493308"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526329"
 ---
 # <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 诊断扩展配置架构版本和历史记录
 此页为 Microsoft Azure SDK 附带的 Azure 诊断扩展架构版本编制了索引。  
@@ -187,7 +187,7 @@ Azure 诊断扩展可与 Azure Monitor，其中包括 Application Insights 和 L
 
 * 在 Azure SDK 2.4 及更早版本中，诊断插件在运行时使用连接字符串获取用于传输诊断日志的存储帐户信息。
 * 在 Azure SDK 2.6 及更高版本中，Visual Studio 在发布过程中通过诊断连接字符串使用相应的存储帐户信息来配置诊断扩展。 连接字符串让你为 Visual Studio 会在发布时使用的不同服务配置定义不同的存储帐户。 但是，因为诊断插件已不再可用（在 Azure SDK 2.5 之后），.cscfg 文件本身不能启用诊断扩展。 必须通过工具（如 Visual Studio 或 PowerShell）单独启用扩展。
-* 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。 Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。 公共配置文件在“扩展”文件夹中创建，并遵循模式 PaaSDiagnostics<RoleName>.PubConfig.xml。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
+* 为了简化使用 PowerShell 配置诊断扩展的过程，Visual Studio 的程序包输出还包含每个角色的诊断扩展的公共配置 XML。 Visual Studio 使用诊断连接字符串来填充公共配置中存在的存储帐户信息。 公共配置文件在 Extensions 文件夹中创建，并遵循模式`PaaSDiagnostics.<RoleName>.PubConfig.xml`。 任何基于 PowerShell 的部署都可以使用此模式将每个配置映射到角色。
 * .cscfg 文件中的连接字符串还由 Azure 门户用于访问诊断数据，使这些数据可以显示在“监视”选项卡中。需要连接字符串才能配置服务以在门户中显示详细监视数据。
 
 #### <a name="migrating-projects-to-azure-sdk-26-and-later"></a>将项目迁移到 Azure SDK 2.6 和更高版本
@@ -207,7 +207,7 @@ Azure 诊断扩展可与 Azure Monitor，其中包括 Application Insights 和 L
 如果要将项目从 Azure SDK 2.4 升级到 Azure SDK 2.5 或更高版本，则应考虑到以下诊断功能差异。
 
 * **配置 API 已弃用** – 诊断的编程配置在 Azure SDK 2.4 或更早版本中可用，但在 Azure SDK 2.5 及更高版本中已弃用。 如果目前在代码中定义了诊断配置，则需在已迁移的项目中从头开始重新配置这些设置，这样才能让诊断正常工作。 Azure SDK 2.4 的诊断配置文件是 diagnostics.wadcfg，而 Azure SDK 2.5 及更高版本的诊断配置文件是 diagnostics.wadcfgx。
-* **仅可以在角色级别，而不是在实例级别配置云服务应用程序的诊断。**
+* **云服务应用程序的诊断只能在角色级别配置，而不能在实例级别配置。**
 * **每次部署应用程序时，都会更新诊断配置** – 如果从服务器资源管理器更改诊断配置并重新部署应用，这可能会导致奇偶校验问题。
 * **在 Azure SDK 2.5 及更高版本中，故障转储是在诊断配置文件而非代码中配置的** – 如果在代码中配置了故障转储，则必须手动将配置从代码传输至配置文件，因为故障转储并未在迁移至 Azure SDK 2.6 的过程中传输。
 

@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 60307d51439b4474c8be4f040792c03a6f83b0fd
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 6b4ddcadfe63f74d115c155354a276e45c6b53f9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473139"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544494"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>快速入门：使用异常检测器 REST API 和 Python 时序数据中检测异常
 
@@ -65,7 +65,7 @@ ms.locfileid: "58473139"
     data_location = "[PATH_TO_TIME_SERIES_DATA]"
     ```
 
-3. 打开它，并使用 JSON 数据文件中读取`json.load()`。 
+3. 打开它，并使用 JSON 数据文件中读取`json.load()`。
 
     ```python
     file_handler = open(data_location)
@@ -78,28 +78,24 @@ ms.locfileid: "58473139"
 
 2. 创建的请求标头的字典。 设置`Content-Type`到`application/json`，并添加你的订阅密钥的`Ocp-Apim-Subscription-Key`标头。
 
-3. 发送请求使用`requests.post()`。 合并你的终结点和完整的异常情况检测 URL 请求的 URL，并包括标头和 json 请求数据。 
+3. 发送请求使用`requests.post()`。 合并你的终结点和完整的异常情况检测 URL 请求的 URL，并包括标头和 json 请求数据。 然后返回响应。
 
-4. 如果请求成功，返回的响应。  
-    
-    ```python
-    def send_request(endpoint, url, subscription_key, request_data):
-        headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
-        response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
-        if response.status_code == 200:
-            return json.loads(response.content.decode("utf-8"))
-        else:
-            print(response.status_code)
-            raise Exception(response.text)
-    ```
+```python
+def send_request(endpoint, url, subscription_key, request_data):
+    headers = {'Content-Type': 'application/json', 'Ocp-Apim-Subscription-Key': subscription_key}
+    response = requests.post(endpoint+url, data=json.dumps(request_data), headers=headers)
+    return json.loads(response.content.decode("utf-8"))
+```
 
 ## <a name="detect-anomalies-as-a-batch"></a>作为一批中检测异常
 
-1. 创建一个名为方法`detect_batch()`来检测异常在整个数据作为一个批。 调用`send_request()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。 
+1. 创建一个名为方法`detect_batch()`来检测异常在整个数据作为一个批。 调用`send_request()`上面创建的终结点、 url、 订阅密钥和 json 数据的方法。
 
 2. 调用`json.dumps()`上要设置其格式，并将其打印到控制台的结果。
 
-3. 在数据集中找到异常的位置。 响应的`isAnomaly`字段包含与给定的数据点是否异常的布尔值。 循环访问列表中，并打印的任何索引`True`值。 如果任何发现，这些值对应于异常的数据点的索引。
+3. 如果响应包含`code`字段中，打印的错误代码和错误消息。
+
+4. 否则，在数据集中发现的异常的位置。 响应的`isAnomaly`字段包含与给定的数据点是否异常的布尔值。 循环访问列表中，并打印的任何索引`True`值。 如果任何发现，这些值对应于异常的数据点的索引。
 
 ```python
 def detect_batch(request_data):
@@ -107,12 +103,15 @@ def detect_batch(request_data):
     result = send_request(endpoint, batch_detection_url, subscription_key, request_data)
     print(json.dumps(result, indent=4))
 
-    # Find and display the positions of anomalies in the data set
-    anomalies = result["isAnomaly"]
-    print("Anomalies detected in the following data positions:")
-    for x in range(len(anomalies)):
-        if anomalies[x] == True:
-            print (x)
+    if result.get('code') != None:
+        print("Detection failed. ErrorCode:{}, ErrorMessage:{}".format(result['code'], result['message']))
+    else:
+        # Find and display the positions of anomalies in the data set
+        anomalies = result["isAnomaly"]
+        print("Anomalies detected in the following data positions:")
+        for x in range(len(anomalies)):
+            if anomalies[x] == True:
+                print (x)
 ```
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>检测到异常情况状态的最新的数据点
@@ -132,14 +131,14 @@ def detect_latest(request_data):
 ## <a name="load-your-time-series-data-and-send-the-request"></a>加载时间系列数据并发送请求
 
 1. 将 JSON 时间系列数据打开文件处理程序，并使用加载`json.load()`上它。 然后，调用异常上面创建的检测方法。
-    
-    ```python
-    file_handler = open (data_location)
-    json_data = json.load(file_handler)
-    
-    detect_batch(json_data)
-    detect_latest(json_data)
-    ```
+
+```python
+file_handler = open(data_location)
+json_data = json.load(file_handler)
+
+detect_batch(json_data)
+detect_latest(json_data)
+```
 
 ### <a name="example-response"></a>示例响应
 

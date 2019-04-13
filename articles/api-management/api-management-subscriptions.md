@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
-ms.openlocfilehash: 1f7c2bde631e42ac94ce4c0394d13e369f6ea23f
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.openlocfilehash: 6f577530c42952c6340a15110bcd37383a5fca57
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54049752"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526582"
 ---
 # <a name="subscriptions-in-azure-api-management"></a>Azure API 管理中的订阅
 
@@ -51,9 +51,6 @@ ms.locfileid: "54049752"
 
 ### <a name="subscriptions-for-all-apis-or-an-individual-api"></a>订阅所有 API 或单个 API
 
-> [!NOTE]
-> 目前，此功能仅在 API 管理的“消耗”层中提供。
-
 引入 API 管理的[消耗](https://aka.ms/apimconsumptionblog)层时，我们进行了一些更改以简化密钥管理。
 - 首先，我们在原来的基础上添加了两个订阅范围：所有 API 和单个 API。 订阅范围不再限于一个 API 产品。 现在可以创建密钥，以授予对 API 管理实例中的一个 API 或所有 API 的访问权限，而不需先创建一个产品并向其添加 API。 此外，每个 API 管理实例现在都有一个不可变的包含所有 API 的订阅。 此订阅使得在测试控制台中测试和调试 API 更为容易且简单明了。
 
@@ -67,5 +64,5 @@ ms.locfileid: "54049752"
 获取有关 API 管理的详细信息：
 
 + 了解 API 管理中的其他[概念](api-management-terminology.md)。
-+ 根据我们的[教程](import-and-publish.md)详细了解 API 管理。
++ 按[教程](import-and-publish.md)操作，详细了解 API 管理。
 + 查看[常见问题解答页](api-management-faq.md)，了解常见问题。

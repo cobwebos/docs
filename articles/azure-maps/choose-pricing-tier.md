@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ac88bc95ac9ffe4c2f32307b0bee427829242add
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.openlocfilehash: 1bf60014b20f4cec29d661db4deb029fea4ab1d5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234673"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547337"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>在 Azure Maps 中选择适当的定价层
 
@@ -29,7 +29,7 @@ S0 和 S1 定价层处理不同数量的数据吞吐量。 在选择 Azure Maps 
 
 | 功能                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| 搜索                                  |        ✓           |     ✓    |
+| 搜索 （fwd/rev 地理编码的关注点）  |        ✓           |     ✓    |
 | Batch 地理编码（预览版）              |                   |     ✓    |
 | 来自搜索的多边形          |                   |     ✓    |
 | 路由                                 |        ✓           |     ✓    |

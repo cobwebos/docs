@@ -13,22 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2019
 ms.author: spelluru
-ms.openlocfilehash: c6ae28e076d14faa7c2173f3a23d92daad4bd59e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 332f899f3502f34e46b4f158a6980dc96248140e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651117"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544018"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>管理 Azure 实验室服务中的教室实验室 
 本文介绍如何创建和删除教室实验室。 它还说明如何查看实验室帐户中的所有教室实验室。 
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 若要在实验室帐户中设置课堂实验室，你必须是实验室帐户中“实验室创建者”角色的成员。 用来创建实验室帐户的帐户会自动添加到此角色。 实验室所有者可以按照以下文章中的步骤将其他用户添加到“实验室创建者”角色：[将用户添加到“实验室创建者”角色](tutorial-setup-lab-account.md#add-a-user-to-the-lab-creator-role)。
 
 ## <a name="create-a-classroom-lab"></a>创建课堂实验室
 
-1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 
+1. 导航到 [Azure 实验室服务网站](https://labs.azure.com)。 请注意尚不支持 Internet Explorer 11。 
 2. 选择“登录”。 选择或输入属于实验室帐户中“实验室创建者”角色成员的“用户 ID”，然后输入密码。 Azure 实验室服务支持组织帐户和 Microsoft 帐户。 
 3. 在“新建实验室”窗口中，执行以下操作：： 
     1. 指定实验室的**名称**。 
@@ -37,9 +37,9 @@ ms.locfileid: "58651117"
 
         ![创建课堂实验室](../media/tutorial-setup-classroom-lab/new-lab-window.png)
 4. 在“选择虚拟机规范”页上执行以下步骤：
-    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，**小型**， **medium**，**大型**，以及**GPU**允许大小。
+    1. 选择在实验室中创建的虚拟机 (VM) 的**大小**。 目前，允许**小型**、**中型**、**大型**和 **GPU** 大小。
     2. 选择要在其中创建 VM 的**区域**。 
-    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，您会看到一个选项以启用远程桌面连接它。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
+    3. 选择用于在实验室中创建 VM 的 **VM 映像**。 如果选择 Linux 映像，可以看到一个用来为该映像启用远程桌面连接的选项。 有关详细信息，请参阅[启用适用于 Linux 的远程桌面连接](how-to-enable-remote-desktop-linux.md)。
     4. 选择“**下一步**”。
 
         ![指定 VM 规范](../media/tutorial-setup-classroom-lab/select-vm-specifications.png)    
@@ -60,7 +60,7 @@ ms.locfileid: "58651117"
     ![完成配置后的“配置模板”页](../media/tutorial-setup-classroom-lab/configure-template-after-complete.png)
 8. 在本教程中，以下步骤是可选步骤： 
     1. 选择“启动”来启动模板 VM。
-    2. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，你选择是否想要使用 SSH 或 rdp 连接 （如果启用了 RDP） 连接。
+    2. 选择“连接”以连接到模板 VM。 如果它是 Linux 模板 VM，请选择是要使用 SSH 还是 RDP（如果已启用 RDP）来建立连接。
     3. 在模板 VM 上安装并配置软件。 
     4. **停止** VM。  
     5. 输入模板的**说明**

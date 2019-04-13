@@ -10,12 +10,12 @@ ms.date: 03/04/2019
 ms.topic: conceptual
 description: 描述的过程，该 power Azure 开发人员空格和如何 azds.yaml 配置文件中配置
 keywords: azds.yaml，Azure 开发人员空格、 开发空格、 Docker、 Kubernetes，Azure，AKS，Azure Kubernetes 服务，容器
-ms.openlocfilehash: 0397a52e8cd838aafe44a35508f8a68caba4c94e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 494dd3774ec47598a95c6e20de6283abc2e4ff94
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489582"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544917"
 ---
 # <a name="how-azure-dev-spaces-works-and-is-configured"></a>Azure 开发人员空间如何工作，是配置
 
@@ -85,16 +85,18 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 * 使用在群集上启用 Azure 开发人员空格 `az aks use-dev-spaces`
 
 有关如何创建和配置 Azure 开发人员空间 AKS 群集的详细信息，请参阅入门指南：
-* [通过 Java 开始使用 Azure Dev Spaces](get-started-java.md)
-* [在 .NET Core 和 Visual Studio 中开始使用 Azure Dev Spaces](get-started-netcore-visualstudio.md)
-* [通过 .NET Core 开始使用 Azure Dev Spaces](get-started-netcore.md)
-* [通过 Node.js 开始使用 Azure Dev Spaces](get-started-nodejs.md)
+* [开始使用 Java 的 Azure 开发人员空格](get-started-java.md)
+* [开始在 Azure 开发人员使用.NET Core 和 Visual Studio 的空格](get-started-netcore-visualstudio.md)
+* [开始在 Azure 开发人员使用.NET Core 的空格](get-started-netcore.md)
+* [开始在 Azure 开发人员与 Node.js 配合使用的空间](get-started-nodejs.md)
 
 在 AKS 群集上启用 Azure 开发人员空格时，它将为群集控制器安装。 控制器是单独的 Azure 资源，在群集外部并执行以下操作在群集中的资源：
 
 * 创建或指定要用作开发空间的 Kubernetes 命名空间。
 * 删除名为任何 Kubernetes 命名空间*azds*，如果它存在，并且还创建一个新。
-* 部署 Kubernetes 初始值设定项对象。
+* 部署 Kubernetes webhook 配置。
+* 将 webhook 许可 server 部署。
+    
 
 它还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
 
@@ -104,9 +106,9 @@ Azure 开发人员空间的两个与交互的不同组件： 在控制器和客�
 
 默认情况下，控制器创建名为开发人员空格*默认*通过升级现有*默认*Kubernetes 命名空间。 客户端工具可用于创建新的开发空间和删除现有的开发空间。 由于在 Kubernetes 中，限制*默认*不能删除适用于开发人员的空间。 在控制器还会删除任何现有 Kubernetes 命名的命名空间*azds*以避免与冲突`azds`由客户端工具的命令。
 
-Kubernetes 初始值设定项对象用于在用于检测部署过程中将插入三个容器的 pod: devspaces 代理容器、 devspaces 代理初始化容器和 devspaces 生成容器。 **所有这三个这些容器在 AKS 群集上运行具有根访问权限。** 他们还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
+Kubernetes webhook 许可服务器用于检测部署过程将插入三个容器的 pod: devspaces 代理容器、 devspaces 代理初始化容器和 devspaces 生成容器。 **所有这三个这些容器在 AKS 群集上运行具有根访问权限。** 他们还使用相同的服务主体在 AKS 群集用来进行服务调用到其他 Azure 开发人员空间组件。
 
-![Azure 开发人员空格 Kubernetes 初始值设定项](media/how-dev-spaces-works/kubernetes-initializer.svg)
+![Azure 开发人员空格 Kubernetes webhook 许可服务器](media/how-dev-spaces-works/kubernetes-webhook-admission-server.svg)
 
 Devspaces 代理容器是处理所有 TCP 流量传入和传出的应用程序容器的挎斗容器，可帮助执行路由。 如果要使用某些空格，devspaces 代理容器重新确定 HTTP 消息。 例如，它可以帮助将父和子空间中的应用程序之间的 HTTP 消息路由。 所有非 HTTP 流量将通过 devspaces 代理未修改的形式传递。 Devspaces 代理容器还记录所有入站和出站 HTTP 消息，并将其发送到客户端作为跟踪工具。 这些跟踪可查看由开发人员若要检查的应用程序的行为。
 
@@ -117,7 +119,7 @@ Devspaces 生成容器是一个 init 容器，并且具有项目源代码和装�
 > [!NOTE]
 > Azure 开发人员空间使用同一个节点生成应用程序的容器并运行它。 因此，Azure 开发人员空间不需要用于构建和运行你的应用程序的外部容器注册表。
 
-在 AKS 群集中创建任何新 pod 侦听 Kubernetes 初始值设定项对象。 如果该 pod 部署到任何命名空间*azds.io/space=true*标签，将插入该 pod 使用更多的容器。 如果使用客户端工具运行应用程序的容器，只被注入 devspaces 生成容器。
+Kubernetes webhook 许可服务器侦听在 AKS 群集中创建任何新 pod。 如果该 pod 部署到任何命名空间*azds.io/space=true*标签，将插入该 pod 使用更多的容器。 如果使用客户端工具运行应用程序的容器，只被注入 devspaces 生成容器。
 
 一旦你已准备好在 AKS 群集，可以使用客户端工具来准备和运行你的代码在你开发的空间。
 
@@ -221,7 +223,7 @@ azds up
 1. 文件将从用户的计算机同步到仅适用于用户的 AKS 群集将 Azure 文件存储。 上载源代码、 Helm 图表和配置文件。 下一节中提供了在同步过程的更多详细信息。
 1. 在控制器创建一个请求以启动新会话。 此请求包含多个属性，包括唯一 ID、 空间名称、 源代码、 路径和调试标志。
 1. 控制器替换 *$(tag)* Helm 图表使用唯一的会话 ID 和安装 Helm 图表为您的服务中的占位符。 添加到 Helm 图表的唯一会话 id 的引用允许容器部署到 AKS 群集，此特定会话中进行关联回到会话请求和相关信息。
-1. 安装过程中的 Helm 图表，Kubernetes 初始值设定项对象将更多的容器添加到应用程序的 pod 规范和访问你的项目的源代码。 添加 devspaces 代理和 devspaces 代理初始化容器来提供 HTTP 跟踪和空间路由。 添加 devspaces 生成容器，以提供用于构建应用程序的容器的 Docker 实例和项目源代码的访问权限的 pod。
+1. 安装过程中的 Helm 图表，Kubernetes webhook 许可服务器将更多的容器添加到应用程序的 pod 规范和访问你的项目的源代码。 添加 devspaces 代理和 devspaces 代理初始化容器来提供 HTTP 跟踪和空间路由。 添加 devspaces 生成容器，以提供用于构建应用程序的容器的 Docker 实例和项目源代码的访问权限的 pod。
 1. 启动应用程序的 pod，devspaces 生成容器和 devspaces 代理初始化容器用于生成应用程序容器。 然后启动应用程序容器和 devspaces 代理容器。
 1. 客户端功能的应用程序容器启动后，使用 Kubernetes*端口转发*功能通过提供对你的应用程序的 HTTP 访问 http://localhost。 此端口转发将在开发计算机连接到你的开发空间中的服务。
 1. 当在 pod 中的所有容器都启动后时，服务正在运行。 此时，客户端功能开始流式传输的 HTTP 跟踪、 stdout 和 stderr。 开发人员的情况下，此信息显示的客户端的功能。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
-ms.openlocfilehash: 42fd28f2a18ecf81c7846abdc7b3159a275a9cd7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8d4fc5fbdc3185c46f00d94537b197ec03f66755
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013553"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528163"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 HTTP 变量
 HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后可使用此元数据动态更改请求或响应。 以下规则引擎功能对 HTTP 变量的使用具有一定的限制：
@@ -38,7 +38,7 @@ HTTP 变量提供各种检索 HTTP 请求和响应元数据的方法。 随后�
 | ---- | -------- | ----------- | ------------ |
 | ASN（申请者） | %{geo_asnum} | 指示申请者的 AS 号码。 <br /><br />**已弃用：**%{virt_dst_asnum}。 <br />此变量已被弃用，以支持 %{geo_asnum}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | AS15133 |
 | 市/县（申请者） | %{geo_city} | 指示申请者所在的市/县。 | 洛杉矶 |
-| 洲（申请者） | %{geo_continent} | 指示申请者所在的大洲（缩写形式） <br />有效值是： <br />AF:非洲<br />一样：亚洲<br />欧洲：欧洲<br />NA:北美<br />OC:大洋洲<br />SA:南美洲<br /><br />**已弃用：**%{virt_dst_continent}。 <ber />此变量已被弃用，以支持 %{geo_continent}。 <br />虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。| 不适用 |
+| 洲（申请者） | %{geo_continent} | 指示申请者所在的大洲（缩写形式） <br />有效值是： <br />AF:非洲<br />一样：亚洲<br />欧洲：欧洲<br />NA:北美<br />OC:大洋洲<br />SA:南美洲<br /><br />**已弃用：**%{virt_dst_continent}。 <br />此变量具有支持 %{geo_continent} 已弃用。 <br />虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。| 不适用 |
 | Cookie 值 | %{cookie_Cookie} | 返回的值对应于由 Cookie 术语标识的 cookie 项。 | 示例用法： <br />%{cookie__utma}<br /><br />示例值：<br />111662281.2.10.1222100123 |
 | 国家/地区（申请者） | %{geo_country} | 指示申请者所在的国家/地区（用国家/地区代码表示） <br />**已弃用：**%{virt_dst_country}。 <br /><br />此变量已被弃用，以支持 %{geo_country}。 虽然规则使用此已被弃用的变量后仍然有效，但还是应更新规则，以使用新变量。 | 美国 |
 | 指定的市场区域（申请者） | %{geo_dma_code} |表示申请者所在的媒体市场（用地区代码表示）。 <br /><br />此字段仅适用于源自美国国内的请求。| 745 |

@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/11/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 784fe19d1ae40a7cdff3cc853726d4c62265e0f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0044cbc9e6142989a57e79de5fd1e78e999bb5e1
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58106927"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522344"
 ---
 # <a name="create-entities-without-utterances"></a>创建不包含话语的实体
 
-实体表示要提取的话语中的字词或短语。 实体表示一种类，包含相似对象（位置、事项、人员、事件或概念）的集合。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 （之前或之后） 中添加查询文本转意向或间隔时，可以创建实体添加到意向的语音样本。
+实体表示要提取的话语中的字词或短语。 实体表示包括一系列类似对象 （位置、 内容、 人员、 事件或概念） 的类。 实体描述与意向相关的信息，它们有时对于应用执行任务至关重要。 （之前或之后） 中添加查询文本转意向或间隔时，可以创建实体添加到意向的语音样本。
 
 可在 LUIS 应用中通过“实体”页上的“实体列表”来编辑或删除实体。 LUIS 提供两种主要的实体类型：[预生成实体](luis-reference-prebuilt-entities.md)和自己的[自定义实体](luis-concept-entity-types.md#types-of-entities)。
 
@@ -135,7 +135,7 @@ ms.locfileid: "58106927"
 
 ## <a name="add-a-role-to-distinguish-different-contexts"></a>添加角色来区分不同的上下文
 
-角色是基于上下文的实体命名子类型。 它相当于[分层](#add-hierarchical-entities)实体，但是角色仅在[模式](luis-how-to-model-intent-pattern.md)中使用。 
+角色是基于上下文在命名子类型。 它现已推出包括预先生成和机器学习实体的所有实体。 
 
 使用出发地和目的地城市的分层实体的相同示例，区别在于角色是命名的出发地，而不是分层子级。 
 

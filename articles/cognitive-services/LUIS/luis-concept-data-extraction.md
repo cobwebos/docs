@@ -1,7 +1,7 @@
 ---
 title: 数据提取
 titleSuffix: Language Understanding - Azure Cognitive Services
-description: 了解可以从语言理解智能服务 (LUIS) 中提取什么类型的数据
+description: 从与意图和实体的查询文本文本中提取数据。 了解可以提取的数据类型从语言理解 (LUIS)。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,16 +9,16 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 76f8fed8d185598d62eef5a412fda2c3fd1317bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 35f1521884de3a4a0971b6e1c00f92a9094a8550
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58893973"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526283"
 ---
-# <a name="data-extraction-from-intents-and-entities"></a>从意向和实体中提取数据
+# <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>从与意图和实体的查询文本文本中提取数据
 使用 LUIS 可以从用户的自然语言陈述中获取信息。 信息以一种程序、应用程序或聊天机器人能够使用其来采取操作的方式进行提取。 在以下部分中，通过 JSON 示例了解从意向和实体返回了什么数据。
 
 最难提取的数据是机器学习的数据，因为它不是确切的文本匹配。 机器学习[实体](luis-concept-entity-types.md)的数据提取需要作为[创作周期](luis-concept-app-iteration.md)的一部分，直到你确信已接收到所需的数据。
@@ -170,9 +170,11 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 
 |数据对象|实体名称|值|
 |--|--|--|
-|简单实体|"Customer"|"bob jones"|
+|简单实体|`Customer`|`bob jones`|
 
 ## <a name="hierarchical-entity-data"></a>分层实体数据
+
+**层次结构的实体最终将被弃用。使用[实体角色](luis-concept-roles.md)以确定实体子类型，而不是分层实体。**
 
 [分层](luis-concept-entity-types.md)实体是机器学习的，并且可包括单词或短语。 子级通过上下文进行标识。 如果想要查找具备确切文本匹配的父子关系，请使用[列表](#list-entity-data)实体。
 
@@ -432,13 +434,18 @@ HTTPS 响应包含 LUIS 可基于当前发布的暂存或生产终结点的模�
 [PersonName](luis-reference-prebuilt-person.md) 和 [GeographyV2](luis-reference-prebuilt-geographyV2.md) 实体在某些[语言区域性](luis-reference-prebuilt-entities.md)中可用。 
 
 ### <a name="names-of-people"></a>人的姓名
-人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用分层实体将姓氏和名字作为子级，或者使用简单实体将姓氏和名字作为角色。 请确保给出的示例在陈述的不同部分、在不同长度的陈述中以及在所有意向（包括“None”意向）的陈述中使用姓氏和名字。 定期[查看](luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
+
+人的姓名可能会带有些许格式，具体取决于语言和区域性。 使用任一预构建**[personName](luis-reference-prebuilt-person.md)** 实体或**[简单实体](luis-concept-entity-types.md#simple-entity)** 与[角色](luis-concept-roles.md)的第一个和最后一个名称。 
+
+如果您使用简单的实体，请确保提供跨所有意图包括无使用语音样本，在不同长度的查询文本和语音样本中的不同部分中的第一个和最后一个名称的示例意向。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ### <a name="names-of-places"></a>地名
-地名是固定且已知的，例如市、县、州、省和国家/地区。 如果应用采用已知的地名集合，请考虑使用列表实体。 如果需要找到所有地名，请创建一个简单实体，并提供各种示例。 添加地名短语列表，以使地名在应用中更易认出。 定期[查看](luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
+
+地名是固定且已知的，例如市、县、州、省和国家/地区。 使用预生成的实体**[geographyV2](luis-reference-prebuilt-geographyv2.md)** 提取位置信息。
 
 ### <a name="new-and-emerging-names"></a>新出现的名称
-一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是最难提取的数据类型。 首先从简单实体开始，添加一个短语列表。 定期[查看](luis-how-to-review-endpoint-utterances.md)终结点陈述以标记未能正确预测的任何名称。
+
+一些应用需要能够找到新出现的名称，例如产品或公司。 这些类型的名称是难度最大数据提取的类型。 以开头**[简单实体](luis-concept-entity-types.md#simple-entity)** ，并添加[短语列表](luis-concept-feature.md)。 定期[查看](luis-how-to-review-endoint-utt.md)终结点陈述以标记未能正确预测的任何名称。
 
 ## <a name="pattern-roles-data"></a>模式角色数据
 角色是实体间的上下文差别。

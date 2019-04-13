@@ -16,12 +16,12 @@ ms.author: celested
 ms.reviewer: jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5548e7a5f60d9882fdfb4fb6eb777ab993e121
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: bede53ef2bc05750be21f831fc0cb790a001c6c5
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915987"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549331"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Azure Active Directory 中库应用的 SAML 令牌中的高级证书签名选项
 
@@ -49,7 +49,7 @@ Azure AD 支持两种签名算法或安全哈希算法 (Sha)，来为 SAML 响�
 
 * **SHA-1**。 此算法是更早版本，并将其视为小于比 SHA-256 安全。 如果应用程序仅支持此签名算法，可以在“签名算法”下拉列表选择此选项。 然后，Azure AD 会使用 SHA-1 算法为 SAML 响应签名。
 
-## <a name="change-the-certificate-signing-options-and-certificate-signing-algorithm"></a>更改证书签名选项和证书签名算法
+## <a name="change-certificate-signing-options-and-signing-algorithm"></a>更改证书签名选项和签名算法
 
 若要更改应用程序的 SAML 证书签名选项和证书签名算法，请选择相关应用程序：
 
@@ -81,5 +81,5 @@ Azure AD 支持两种签名算法或安全哈希算法 (Sha)，来为 SAML 响�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [配置单一登录到不在 Azure Active Directory 应用库中的应用程序](configure-federated-single-sign-on-non-gallery-applications.md)
-* [排查基于 SAML 的单一登录](../develop/howto-v1-debug-saml-sso-issues.md)
+* [针对不在 Azure Active Directory 应用库中的应用程序配置单一登录](configure-federated-single-sign-on-non-gallery-applications.md)
+* [排查基于 SAML 的单一登录的问题](../develop/howto-v1-debug-saml-sso-issues.md)

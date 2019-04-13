@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 1e550002948fc1320b8645bf1af635536d524fe6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f61c7a939902ee5d02b2e9ba896c7555968f9d0d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282383"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547979"
 ---
 # <a name="add-a-shape-to-a-map"></a>向地图添加形状
 
@@ -26,7 +26,7 @@ ms.locfileid: "59282383"
 
 `LineString` 和`MultiLineString`功能用于表示路径并在地图上的概述。
 
-## <a name="use-a-line"></a>使用行
+### <a name="add-a-line"></a>添加线条
 
 <iframe height='500' scrolling='no' title='向地图添加线条' src='//codepen.io/azuremaps/embed/qomaKv/?height=500&theme-id=0&default-tab=js,result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>请参阅 <a href='https://codepen.io'>CodePen</a> 上由 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 提供的 Pen <a href='https://codepen.io/azuremaps/pen/qomaKv/'>Add a line to a map</a>（向地图添加线条）。
 </iframe>
@@ -53,7 +53,7 @@ ms.locfileid: "59282383"
 
 <br/>
 
-<iframe height="265" style="width: 100%;" scrolling="no" title="笔划渐变线" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=265&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
+<iframe height="500" style="width: 100%;" scrolling="no" title="笔划渐变线" src="//codepen.io/azuremaps/embed/wZwWJZ/?height=500&theme-id=0&default-tab=js,result" frameborder="no" allowtransparency="true" allowfullscreen="true">
 请参阅笔<a href='https://codepen.io/azuremaps/pen/wZwWJZ/'>笔划渐变线</a>通过 Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) 上<a href='https://codepen.io'>CodePen</a>。
 </iframe>
 
@@ -156,7 +156,7 @@ Azure Maps Web SDK 将这些数据转换`Pooint`功能到`Polygon`功能在后�
 ## <a name="make-a-geometry-easy-to-update"></a>轻松地更新几何图形
 
 一个`Shape`类包装[Geometry](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.geometry?view=azure-iot-typescript-latest)或[功能](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.data.feature?view=azure-iot-typescript-latest)并使其易于更新和维护它们。
-`new Shape(data: Feature<data.Geometry, any>)` 构造形状对象并初始化与指定的功能。
+`new Shape(data: Feature<data.Geometry, any>)` 构造 shape 对象，并使用指定的特征将其初始化。
 
 <br/>
 
@@ -171,7 +171,7 @@ Azure Maps Web SDK 将这些数据转换`Pooint`功能到`Polygon`功能在后�
 
 在第四个代码块中，使用 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 类创建了一个数据源对象。 然后将点添加到数据源。
 
-[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 第三个代码块创建多边形层。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 创建和添加到映射中的数据源、 单击事件 hanlder 和多边形层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保该映射完全加载后，会显示的点。
+[PolygonLayer](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.layer.polygonlayer?view=azure-iot-typescript-latest) 呈现地图上 [DataSource](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.source.datasource?view=azure-iot-typescript-latest) 中包装的数据。 第三个代码块创建多边形层。 请参阅 [PolygonLayerOptions](/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest) 中介绍的多边形层属性。 创建和添加到映射中的数据源、 click 事件处理程序和多边形层[事件处理程序](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#events)以确保该映射完全加载后，会显示的点。
 
 ## <a name="next-steps"></a>后续步骤
 

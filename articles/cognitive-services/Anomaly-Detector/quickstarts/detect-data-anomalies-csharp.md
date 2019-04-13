@@ -9,12 +9,12 @@ ms.subservice: anomaly-detector
 ms.topic: article
 ms.date: 03/26/2019
 ms.author: aahi
-ms.openlocfilehash: 7aa171a49ea03769c3ecbb5d35ae31ac6fae052e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 772f15f54819f31d92411df747fc10d54b3e96cd
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473137"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544106"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-c"></a>快速入门：检测异常的异常情况检测程序 REST API 使用时序数据和C# 
 
@@ -81,24 +81,19 @@ ms.locfileid: "58473137"
 1. 创建一个名为的新异步函数`Request`采用上面创建的变量。
 
 2. 设置客户端的安全协议和标头信息使用`HttpClient`对象。 请确保添加到你的订阅密钥`Ocp-Apim-Subscription-Key`标头。 然后创建`StringContent`请求对象。
- 
-3. 发送包含请求`PostAsync()`。 如果请求成功，返回的响应。  
+
+3. 发送包含请求`PostAsync()`，然后返回响应。
 
 ```csharp
-static async Task<string> Request(string baseAddress, string endpoint, string subscriptionKey, string requestData){
-    using (HttpClient client = new HttpClient { BaseAddress = new Uri(baseAddress) }){
+static async Task<string> Request(string apiAddress, string endpoint, string subscriptionKey, string requestData){
+    using (HttpClient client = new HttpClient { BaseAddress = new Uri(apiAddress) }){
         System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls;
         client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
 
         var content = new StringContent(requestData, Encoding.UTF8, "application/json");
         var res = await client.PostAsync(endpoint, content);
-        if (res.IsSuccessStatusCode){
-            return await res.Content.ReadAsStringAsync();
-        }
-        else{
-            return $"ErrorCode: {res.StatusCode}";
-        }
+        return await res.Content.ReadAsStringAsync();
     }
 }
 ```
@@ -109,9 +104,9 @@ static async Task<string> Request(string baseAddress, string endpoint, string su
 
 2. 反序列化 JSON 对象，并将其写入到控制台。
 
-3. 在数据集中找到异常的位置。 响应的`isAnomaly`字段包含布尔值的数组，其中每个指示数据点是否为异常。 将其转换为响应对象的字符串数组`ToObject<bool[]>()`函数。
+3. 如果响应包含`code`字段中，打印的错误代码和错误消息。 
 
-4. 循环访问数组，并打印的任何索引`true`值。 如果任何发现，这些值对应于异常的数据点的索引。
+4. 否则，在数据集中发现的异常的位置。 响应的`isAnomaly`字段包含布尔值的数组，其中每个指示数据点是否为异常。 将其转换为响应对象的字符串数组`ToObject<bool[]>()`函数。 循环访问数组，并打印的任何索引`true`值。 如果任何发现，这些值对应于异常的数据点的索引。
 
 ```csharp
 static void detectAnomaliesBatch(string requestData){
@@ -126,11 +121,17 @@ static void detectAnomaliesBatch(string requestData){
     dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(result);
     System.Console.WriteLine(jsonObj);
 
-    bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
-    System.Console.WriteLine("\n Anomalies detected in the following data positions:");
-    for (var i = 0; i < anomalies.Length; i++) {
-        if (anomalies[i]) {
-            System.Console.Write(i + ", ");
+    if (jsonObj["code"] != null){
+        System.Console.WriteLine($"Detection failed. ErrorCode:{jsonObj["code"]}, ErrorMessage:{jsonObj["message"]}");
+    }
+    else{
+        bool[] anomalies = jsonObj["isAnomaly"].ToObject<bool[]>();
+        System.Console.WriteLine("\nAnomalies detected in the following data positions:");
+        for (var i = 0; i < anomalies.Length; i++){
+            if (anomalies[i])
+            {
+                System.Console.Write(i + ", ");
+            }
         }
     }
 }
@@ -140,11 +141,11 @@ static void detectAnomaliesBatch(string requestData){
 
 1. 创建一个名为的新函数`detectAnomaliesLatest()`。 构造请求并将其发送通过调用`Request()`与你的终结点、 订阅密钥、 最新点异常情况检测的 URL 和时间序列数据的函数。
 
-2. 反序列化 JSON 对象，并将其写入到控制台。 
+2. 反序列化 JSON 对象，并将其写入到控制台。
 
 ```csharp
 static void detectAnomaliesLatest(string requestData){
-    System.Console.WriteLine("\n\n Determining if latest data point is an anomaly");
+    System.Console.WriteLine("\n\nDetermining if latest data point is an anomaly");
     var result = Request(
         endpoint,
         latestPointDetectionUrl,

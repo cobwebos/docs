@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 5ec5109aa8079b37015f66443b8ebac905ad2fcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370550"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526266"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
@@ -49,7 +49,7 @@ Key Vault 托管存储帐户功能代你执行多种管理功能：
 > - Azure 政府云中的 Azure AD 租户使用应用程序 ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`。
 > - Azure 公有云及所有其他云中的 Azure AD 租户使用应用程序 ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`。
 
-<a name="prerequisites"></a>必备组件
+<a name="prerequisites"></a>先决条件
 --------------
 1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 安装 Azure CLI   
 2. [创建存储帐户](https://azure.microsoft.com/services/storage/)
@@ -109,7 +109,7 @@ Key Vault 托管存储帐户功能代你执行多种管理功能：
 完成上面所列的步骤后，可运行以下命令要求 Key Vault 为你生成 SAS 令牌。 
 
 在以下步骤中完成的任务列表包括：
-- 在保管库“<VaultName>”中的 KeyVault 管理的存储帐户“<YourStorageAccountName>”内设置名为“<YourSASDefinitionName>”的帐户 SAS 定义。 
+- 设置一个帐户 SAS 定义名为`<YourSASDefinitionName>`密钥保管库托管存储帐户上`<YourStorageAccountName>`保管库中`<VaultName>`。 
 - 为 Blob、文件、表和队列服务以及“服务”、“容器”和“对象”资源类型创建拥有所有权限、通过 HTTPS 访问并指定了开始和结束日期的帐户 SAS 令牌
 - 在保管库中设置 KeyVault 管理的存储 SAS 定义，其模板 URI 为上面创建的 SAS 令牌，SAS 类型为“帐户”，有效期为 N 天
 - 从对应于 SAS 定义的 KeyVault 机密中检索实际访问令牌

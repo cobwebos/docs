@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: magoedte
-ms.openlocfilehash: fbc9e0f8e7dfda86b5c53e28aa3aa3b733bb9600
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0a45c84b01cace7e14bd1a945617598c6295631e
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905743"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524270"
 ---
 # <a name="container-monitoring-solution-in-azure-monitor"></a>Azure Monitor 中的容器监视解决方案
 
@@ -124,11 +124,11 @@ ms.locfileid: "58905743"
 
 安装 Docker 之后，请使用以下容器主机设置来配置代理以供 Docker 使用。 首先，需要 Log Analytics 工作区 ID 和密钥，可在 Azure 门户中找到它们。 在工作区中，单击“快速启动” > “计算机”，查看工作区 ID和主键。  将它们复制并粘贴到喜爱的编辑器中。
 
-**对于除了 CoreOS 之外的所有 Linux 容器主机：**
+对于除了 CoreOS 之外的所有 Linux 容器主机：
 
 - 有关如何安装适用于 Linux 的 Log Analytics 代理的详细信息和步骤，请参阅 [Log Analytics 代理概述](../../azure-monitor/platform/log-analytics-agent.md)。
 
-**对于包括 coreos 在内的所有 Linux 容器主机：**
+对于包括 CoreOS 在内的所有 Linux 容器主机：
 
 启动要监视的容器。 修改并使用以下示例：
 
@@ -136,7 +136,7 @@ ms.locfileid: "58905743"
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
-**对于包括 coreos 在内的所有 Azure 政府 Linux 容器主机：**
+对于包括 CoreOS 在内的所有 Azure 政府 Linux 容器主机：
 
 启动要监视的容器。 修改并使用以下示例：
 
@@ -144,7 +144,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -v /var/lib/docker/containers:/var/lib/docker/containers -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
 ```
 
-**从使用已安装的 Linux 代理切换为使用容器中的 Linux 代理**
+从使用已安装的 Linux 代理切换为使用容器中的 Linux 代理
 
 如果以前使用直接安装的代理，并且想要改为使用容器中运行的代理，则必须首先删除适用于 Linux 的 Log Analytics 代理。 请参阅[卸载适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)，了解如何成功卸载代理。  
 
@@ -236,7 +236,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 在使用 Log Analytics 代理 daemon-set yaml 文件时，若要使用机密来保护 Log Analytics 工作区 ID 和主键，请执行以下步骤。
 
 1. 登录到 OpenShift 主节点并从 GitHub 复制 yaml 文件 [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) 和机密生成脚本 [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh)。  该脚本将为 Log Analytics 工作区 ID 和主键生成机密 yaml 文件，用于保护机密信息。  
-2. 运行以下命令来为 Azure Monitor 创建一个项目并设置用户帐户。 机密生成脚本需要 Log Analytics 工作区 ID <WSID> 和主键 <KEY>，并且会在完成时创建 ocp-secret.yaml 文件。  
+2. 运行以下命令来为 Azure Monitor 创建一个项目并设置用户帐户。 机密生成脚本需要 Log Analytics 工作区 ID `<WSID>` 和主键 `<KEY>`，并且会在完成时创建 ocp-secret.yaml 文件。  
 
     ```
     oadm new-project omslogging --node-selector='zone=default'  
@@ -306,7 +306,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 可以选择创建包含或不包含机密的 omsagent DaemonSet。
 
-**不包含机密的默认 OMSagent DaemonSet yaml 文件**
+不包含机密的默认 OMSagent DaemonSet yaml 文件
 
 - 对于默认 Log Analytics 代理 DaemonSet yaml 文件，将 `<WSID>` 和 `<KEY>` 分别替换为 WSID 和 KEY。 将文件复制到主节点并运行以下命令：
 
@@ -314,7 +314,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
     sudo kubectl create -f omsagent.yaml
     ```
 
-**包含机密的默认 OMSagent DaemonSet yaml 文件**
+包含机密的默认 OMSagent DaemonSet yaml 文件
 
 1. 若要使用包含机密信息的 Log Analytics 代理 DaemonSet，请先创建机密。
     1. 复制脚本和机密模板文件，并确保它们位于同一目录中。
@@ -365,7 +365,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
         KEY:    88 bytes
         ```
 
-    5. 创建 omsagent 守护程序集通过运行 ```sudo kubectl create -f omsagent-ds-secrets.yaml```
+    5. 通过运行 ```sudo kubectl create -f omsagent-ds-secrets.yaml``` 创建 omsagent daemon-set
 
 2. 验证 Log Analytics 代理 DaemonSet 是否正在运行，命令如下：
 
@@ -409,7 +409,7 @@ KEY:    88 bytes
         ```
         #> sudo bash ./secret-gen.sh
         ```
-    3. 创建 omsagent 守护程序集通过运行 ```kubectl create -f omsagentsecret.yaml```
+    3. 通过运行 ```kubectl create -f omsagentsecret.yaml``` 创建 omsagent daemon-set
     4. 若要检查，请运行以下命令：
 
         ```
@@ -436,7 +436,7 @@ KEY:    88 bytes
         KEY:    88 bytes
         ```
 
-    5. 创建 omsagent 守护程序集通过运行 ```kubectl create -f ws-omsagent-de-secrets.yaml```
+    5. 通过运行 ```kubectl create -f ws-omsagent-de-secrets.yaml``` 创建 omsagent daemon-set
 
 2. 验证 Log Analytics 代理 DaemonSet 是否正在运行，命令如下：
 
@@ -451,7 +451,7 @@ KEY:    88 bytes
 #### <a name="use-helm-to-deploy-log-analytics-agent-on-linux-kubernetes"></a>使用 Helm 在 Linux Kubernetes 上部署 Log Analytics 代理
 若要使用 helm 在 Linux Kubernetes 环境上部署 Log Analytics 代理，请执行以下步骤。
 
-1. 创建 omsagent 守护程序集通过运行 ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms```
+1. 通过运行 ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms``` 创建 omsagent daemon-set
 2. 结果将与以下内容类似：
 
     ```
@@ -567,12 +567,12 @@ Start-Service docker
 
 - 容器事件 - 显示容器状态和包含失败的容器的计算机。
 - 容器日志 - 显示随时间生成的容器日志文件图表，以及具有最大数量日志文件的计算机列表。
-- Kubernetes 事件 - 显示随时间生成的 Kubernetes 事件图表，以及 Pod 生成事件的原因列表。 *仅在 Linux 环境中使用此数据集。*
-- Kubernetes 命名空间清单 - 显示命名空间和 Pod 的数量，并显示其层次结构。 *仅在 Linux 环境中使用此数据集。*
-- 容器节点清单 - 显示容器节点/主机上使用的业务流程类型的数量。 此计算机节点/主机还会按容器数列出。 *仅在 Linux 环境中使用此数据集。*
+- Kubernetes 事件 - 显示随时间生成的 Kubernetes 事件图表，以及 Pod 生成事件的原因列表。 仅在 Linux 环境中使用此数据集。
+- Kubernetes 命名空间清单 - 显示命名空间和 Pod 的数量，并显示其层次结构。 仅在 Linux 环境中使用此数据集。
+- 容器节点清单 - 显示容器节点/主机上使用的业务流程类型的数量。 此计算机节点/主机还会按容器数列出。 仅在 Linux 环境中使用此数据集。
 - 容器映像清单 - 显示所用的容器映像总数以及映像类型的数量。 映像数量还按映像标记列出。
 - 容器状态 - 显示包含正在运行的容器的容器节点/主机计算机的总数。 计算机还按正在运行的主机数列出。
-- 容器进程 - 显示随着时间推移运行的容器进程的折线图。 容器还会按容器内正在运行的命令/进程列出。 *仅在 Linux 环境中使用此数据集。*
+- 容器进程 - 显示随着时间推移运行的容器进程的折线图。 容器还会按容器内正在运行的命令/进程列出。 仅在 Linux 环境中使用此数据集。
 - 容器 CPU 性能 - 显示计算机节点/主机随时间推移的平均 CPU 利用率的折线图。 还根据 CPU 平均使用率列出计算机节点/主机。
 - 容器内存性能 - 显示随时间推移的内存使用率的折线图。 还根据实例名称列出计算机内存利用率。
 - 计算机性能 - 显示随时间推移的 CPU 性能百分比、随时间推移的内存使用率百分比和随着时间推移的可用磁盘空间的兆字节数的折线图。 可以将鼠标悬停在图表中的任意行，查看更多详细信息。
@@ -607,7 +607,7 @@ Start-Service docker
    ![失败的容器](./media/containers/containers-state-failed-select.png)  
 1. 运行查询，然后展开行在结果中若要查看映像 id。  
    ![失败的容器](./media/containers/containers-state-failed.png)  
-1. 日志查询中键入以下内容。 `ContainerImageInventory | where ImageID == <ImageID>` 若要查看有关映像如停止和失败映像的映像大小和数量的详细信息。  
+1. 日志查询中键入以下内容。 `ContainerImageInventory | where ImageID == <ImageID>` 可查看有关映像的详细信息，如映像大小以及已停止和失败映像的数量。  
    ![失败的容器](./media/containers/containers-failed04.png)
 
 ## <a name="query-logs-for-container-data"></a>容器数据的查询日志

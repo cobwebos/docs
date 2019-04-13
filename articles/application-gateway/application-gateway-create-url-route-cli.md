@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 7/14/2018
 ms.author: victorh
-ms.openlocfilehash: 9c628b02961ee289833e669a4c77de0bf824de22
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 061156a455664a5a3f0b4c4497d24f4e8ff6eea7
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57999991"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527245"
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>通过 Azure CLI 使用基于 URL 路径的路由规则创建应用程序网关
 
@@ -220,7 +220,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>测试应用程序网关
 
-若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如， `http://40.121.222.19`， `http://40.121.222.19:8080/images/test.htm`，或`http://40.121.222.19:8080/video/test.htm`。
+若要获取应用程序网关的公共 IP 地址，可以使用 [az network public-ip show](/cli/azure/network/public-ip)。 复制该公共 IP 地址，并将其粘贴到浏览器的地址栏。 例如，`http://40.121.222.19`、`http://40.121.222.19:8080/images/test.htm` 或 `http://40.121.222.19:8080/video/test.htm`。
 
 ```azurepowershell-interactive
 az network public-ip show \
@@ -232,11 +232,11 @@ az network public-ip show \
 
 ![在应用程序网关中测试基 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
 
-将 http://<ip-address>:8080/video/test.html 的 URL 更改到基 URL 的末尾，应看到类似下例所示的内容：
+将 URL 更改为`http://<ip-address>:8080/video/test.html`到末尾的基 URL，并且应会出现类似于下面的示例：
 
-![应用程序网关中的测试映像 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
+![在应用程序网关中测试映像 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
 
-更改 http://<ip-address>:8080/video/test.html 的 URL，应看到类似下例所示的内容。
+将 URL 更改为`http://<ip-address>:8080/video/test.html`和，应看到类似于下面的示例。
 
 ![在应用程序网关中测试视频 URL](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
 

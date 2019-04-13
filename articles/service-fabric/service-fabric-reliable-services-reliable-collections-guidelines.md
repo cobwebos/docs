@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: aljo
-ms.openlocfilehash: d4d0145ef07a6a89cbae1fe18d2cb7df88cdd113
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 810427c394c3912142e0a21cf1b5c29b81620afb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667100"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548998"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric 中 Reliable Collections 的相关指导原则和建议
 本章节提供有关使用可靠状态管理器和 Reliable Collections 的指导原则。 目的是帮助用户避免常见的问题。
@@ -32,6 +32,7 @@ ms.locfileid: "58667100"
 * 切勿在已提交、中止或释放一个事务之后使用该事务。
 * 切勿在对其创建的事务范围之外使用枚举。
 * 切勿在另一个事务的 `using` 语句内创建事务，因为它可能会导致死锁。
+* 不要创建与可靠状态`IReliableStateManager.GetOrAddAsync`，并使用同一个事务中的可靠状态。 这会导致 InvalidOperationException。
 * 务必确保 `IComparable<TKey>` 实现正确。 系统依赖 `IComparable<TKey>` 进行检查点和行的合并。
 * 意图更新某项而读取该项时，切勿更新锁以防止出现某类死锁。
 * 请考虑将每个分区的可靠集合数保持在 1000 个以下。 最好使用包含较多项的可靠集合，而不是可靠性更高但所含项目较少的集合。

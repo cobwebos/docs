@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ba6a352d965f3f90a122f5277ad23ec5f92907eb
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: cfb90dc31635001291b1661f31ec2ee1fc378404
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258456"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523335"
 ---
 # <a name="use-bulk-executor-net-library-to-perform-bulk-operations-in-azure-cosmos-db"></a>使用 Bulk Executor .NET 库在 Azure Cosmos DB 中执行批量操作
 
@@ -115,7 +115,7 @@ git clone https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-st
    |NumberOfDocumentsImported (long)   |  从提供给批量导入 API 调用的文档中成功导入的文档总数。       |
    |TotalRequestUnitsConsumed (double)   |   批量导入 API 调用消耗的请求单位 (RU) 总数。      |
    |TotalTimeTaken (TimeSpan)    |   批量导入 API 调用完成执行所花费的总时间。      |
-   |BadInputDocuments (List<object>)   |     未在批量导入 API 调用中成功导入的格式不当文档列表。 用户应修复返回的文档，并重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。    |
+   |BadInputDocuments (List\<object>)   |     未在批量导入 API 调用中成功导入的格式不当文档列表。 用户应修复返回的文档，并重试导入。 格式不当的文档包括其 ID 值不是字符串（null 或其他任何数据类型被视为无效）的文档。    |
 
 ## <a name="bulk-update-data-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中批量更新数据
 

@@ -5,59 +5,25 @@ services: virtual-machines-windows, virtual-machines-linux
 author: cynthn
 ms.service: multiple
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 04/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: c16483f4b8ef160c78ff95582faf54c9a9d24a04
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d0802cfcf05874044b6e116ba194c16a79f9d309
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964083"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59550129"
 ---
-本文提供有关先前几代虚拟机大小的信息。 这些大小仍可使用，但有新的大小可供使用。
+本部分提供有关前几代虚拟机大小的信息。 这些大小仍可使用，但有新的大小可供使用。 
 
+## <a name="f-series"></a>F 系列
 
-## <a name="ds-series"></a>DS 系列
+F 系列基于 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) 处理器，该处理器使用 Intel Turbo Boost 技术 2.0，可实现高达 3.1 GHz 的时钟速度。 此 CPU 性能与 Dv2 系列的 VM 相同。  
 
-ACU：160-250 <sup>1</sup>
+对于需要更快的 CPU，但是每个 vCPU 不需要太多内存或临时存储的工作负荷来说，F 系列 VM 是一个极佳选择。  诸如分析、游戏服务器、Web 服务器和批处理等工作负荷从 F 系列的优势中获益。
 
-高级存储：支持
-
-高级存储缓存：支持
-
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |第 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
-| Standard_DS2 |2 |7 |14 |8 |8,000 / 64 (86) |6,400 / 64 |2 / 1000 |
-| Standard_DS3 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 128 |4 / 2000 |
-| Standard_DS4 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 256 |8 / 4000 |
-
-<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
-<br>
-
-## <a name="ds-series---memory-optimized"></a>DS 系列 - 内存优化
-
-ACU：160-250 <sup>1,2</sup>
-
-高级存储：支持
-
-高级存储缓存：支持
-
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS11 |2 |14 |28 |8 |8,000 / 64 (72) |6,400 / 64 |2 / 1000 |
-| Standard_DS12 |4 |28 |56 |16 |16,000 / 128 (144) |12,800 / 128 |4 / 2000 |
-| Standard_DS13 |8 |56 |112 |32 |32,000 / 256 (288) |25,600 / 256 |8 / 4000 |
-| Standard_DS14 |16 |112 |224 |64 |64,000 / 512 (576) |51,200 / 512 |8 / 8000 |
-
-<sup>1</sup> DS 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
-
-<sup>2</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
-
-## <a name="d-series"></a>D 系列 
-
-ACU：160-250 <sup>1</sup>
+ACU：210 - 250
 
 高级存储：不支持
 
@@ -65,101 +31,63 @@ ACU：160-250 <sup>1</sup>
 
 | 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
 |--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D1  | 第         | 3.5         | 50             | 3000/46/23                                           | 4/4x500                         | 2 / 500                 |
-| Standard_D2  | 2         | 7           | 100            | 6000/93/46                                           | 8/8x500                         | 2 / 1000                     |
-| Standard_D3  | 4         | 14          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 2000                     |
-| Standard_D4  | 8         | 28          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
+| Standard_F1  | 1         | 2           | 16             | 3000/46/23                                           | 4/4x500                         | 2 / 750                 |
+| Standard_F2  | 2         | 4           | 32             | 6000/93/46                                           | 8/8x500                         | 2 / 1500                     |
+| Standard_F4  | 4         | 8           | 64             | 12000/187/93                                         | 16/16x500                         | 4 / 3000                     |
+| Standard_F8  | 8         | 16          | 128            | 24000/375/187                                        | 32/32x500                       | 8 / 6000                     |
+| Standard_F16 | 16        | 32          | 256            | 48000/750/375                                        | 64/64x500                       | 8 / 12000           |
 
-<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
-<br>
+## <a name="fs-series-sup1sup"></a>Fs 系列 <sup>1</sup>
 
-## <a name="d-series---memory-optimized"></a>D 系列 - 内存优化
+Fs 系列具有 F 系列的所有优势（在高级存储的基础上）。
 
-ACU：160-250 <sup>1</sup>
+ACU：210 - 250
 
-高级存储：不支持
+高级存储：支持
 
-高级存储缓存：不支持
+高级存储缓存：支持
 
-| 大小         | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大临时存储吞吐量：IOPS/读取 MBps/写入 MBps | 最大的数据磁盘/吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps) |
-|--------------|-----------|-------------|----------------|----------------------------------------------------------|-----------------------------------|------------------------------|
-| Standard_D11 | 2         | 14          | 100            | 6000/93/46                                           | 8/8x500                         | 2 / 1000                     |
-| Standard_D12 | 4         | 28          | 200            | 12000/187/93                                         | 16/16x500                         | 4 / 2000                     |
-| Standard_D13 | 8         | 56          | 400            | 24000/375/187                                        | 32/32x500                       | 8 / 4000                     |
-| Standard_D14 | 16        | 112         | 800            | 48000/750/375                                        | 64/64x500                       | 8 / 8000                |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_F1s |1 |2 |4 |4 |4,000 / 32 (12) |3,200 / 48 |2 / 750 |
+| Standard_F2s |2 |4 |8 |8 |8,000 / 64 (24) |6,400 / 96 |2 / 1500 |
+| Standard_F4s |4 |8 |16 |16 |16,000 / 128 (48) |12,800 / 192 |4 / 3000 |
+| Standard_F8s |8 |16 |32 |32 |32,000 / 256 (96) |25,600 / 384 |8 / 6000 |
+| Standard_F16s |16 |32 |64 |64 |64,000 / 512 (192) |51,200 / 768 |8 / 12000 |
 
-<sup>1</sup> VM 系列可以在一个以下 CPU 上运行：2.2 GHz Intel Xeon® E5 2660 v2，2.4 GHz Intel Xeon® E5 2673 v3 (Haswell) 或 2.3 GHz Intel XEON® E5 2673 v4 (Broadwell)
-<br>
+MBps = 每秒 10^6 字节，GiB = 1024^3 字节。
 
-## <a name="a-series---compute-intensive-instances"></a>A 系列 - 计算密集型实例
+<sup>1</sup> Fs 系列 VM 可能的最大磁盘吞吐量（IOPS 或 MBps）可能受限于附加磁盘的数量、大小和条带化。  有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。  
 
-ACU：225
+## <a name="ls-series"></a>Ls 系列
 
-高级存储：不支持
+Ls-系列提供多达 32 个 vCPU，使用的是 [Intel® Xeon® 处理器 E5 v3 系列](http://www.intel.com/content/www/us/en/processors/xeon/xeon-e5-solutions.html)。 Ls 系列与 G/GS-系列拥有相同的 CPU 性能，并且每个 vCPU 附带 8 GiB 内存。
 
-高级存储缓存：不支持
+Ls 系列不支持创建本地缓存以增加持久数据磁盘可实现的 IOPS。 高吞吐量和 IOPS 的本地磁盘使得 Ls 系列 Vm 非常适合用于 NoSQL 存储 Apache Cassandra 和 MongoDB 等跨多个 Vm 以实现持久性发生的单一 vm 故障时复制数据。
 
-A8-A11 和 H 系列大小也称为“计算密集型实例”。 运行这些大小的硬件专为计算密集型和网络密集型应用程序而设计和优化，包括高性能计算 (HPC) 群集应用程序、建模和模拟。 A8-A11 系列使用 Intel Xeon E5-2670 @ 2.6 GHZ，H 系列使用 Intel Xeon E5-2667 v3 @ 3.2 GHz。  
+ACU：180-240
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数|
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A8 <sup>1</sup> |8 |56 |382 |32 |32x500 |2 |
-| Standard_A9 <sup>1</sup> |16 |112 |382 |64 |64x500 |4 |
-| Standard_A10 |8 |56 |382 |32 |32x500 |2  |
-| Standard_A11 |16 |112 |382 |64 |64x500 |4 |
-
-<sup>1</sup>对于 MPI 应用程序来说，专用 RDMA 后端网络是通过 FDR InfiniBand 网络启用的，后者可以提供相当低的延迟和高带宽。
-
-<br>
-
-## <a name="a-series"></a>A 系列
-
-ACU：50-100
-
-高级存储：不支持
+高级存储：支持
 
 高级存储缓存：不支持
+ 
+| 大小          | vCPU | 内存 (GiB) | 临时存储 (GiB) | 最大数据磁盘数 | 临时存储的最大吞吐量 (IOPS / MBps) | 非缓存磁盘的最大吞吐量 (IOPS / MBps) | 最大 NIC 数/预期网络带宽 (MBps) | 
+|----------------|-----------|-------------|--------------------------|----------------|-------------------------------------------------------------|-------------------------------------------|------------------------------| 
+| Standard_L4s   | 4  | 32  | 678   | 16 | 20,000 / 200 | 5,000 / 125  | 2 / 4,000  | 
+| Standard_L8s   | 8  | 64  | 1,388 | 32 | 40,000 / 400 | 10,000 / 250 | 4 / 8,000  | 
+| Standard_L16s  | 16 | 128 | 2,807 | 64 | 80,000 / 800 | 20,000 / 500 | 8 / 16,000 | 
+| Standard_L32s&nbsp;<sup>1</sup> | 32   | 256  | 5,630 | 64   | 160,000 / 1,600   | 40,000 / 1,000     | 8 / 20,000 | 
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps)  |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0 <sup>1</sup> |第 |0.768 |20 |第 |1x500 |2 / 100 |
-| Standard_A1 |第 |1.75 |70 |2 |2x500 |2 / 500  |
-| Standard_A2 |2 |3.5 |135 |4 |4x500 |2 / 500 |
-| Standard_A3 |4 |7 |285 |8 |8x500 |2 / 1000 |
-| Standard_A4 |8 |14 |605 |16 |16x500 |4 / 2000 |
-| Standard_A5 |2 |14 |135 |4 |4x500 |2 / 500 |
-| Standard_A6 |4 |28 |285 |8 |8x500 |2 / 1000 |
-| Standard_A7 |8 |56 |605 |16 |16x500 |4 / 2000 |
+Ls 系列 VM 可能的最大磁盘吞吐量可能受限于任何附加磁盘的数量、大小和条带化。 有关详细信息，请参阅[为实现高性能而设计](../articles/virtual-machines/windows/premium-storage-performance.md)。
 
-<br>
-
-<sup>1</sup> A0 大小在物理硬件上过度订阅。 仅针对此特定大小，其他客户部署可能影响正在运行的工作负荷的性能。 以下概述的相对性能为预期的基准，受限于近似变化性的 15%。
+<sup>1</sup> 实例对于专用于单个客户的硬件独立。
 
 ### <a name="standard-a0---a4-using-cli-and-powershell"></a>使用 CLI 和 PowerShell 的标准 A0 - A4
 
 在经典部署模型中，CLI 和 PowerShell 中的一些 VM 大小名称略有不同：
 
-* Standard_A0 是特小型 
+* Standard_A0 是特小型
 * Standard_A1 是小型
 * Standard_A2 是中型
 * Standard_A3 是大型
 * Standard_A4 是超大型
-
-## <a name="basic-a"></a>基本 A
-
-高级存储：不支持
-
-高级存储缓存：不支持
-
-基本层大小主要用于开发工作负荷，以及其他不需要负载均衡、自动缩放或内存密集型虚拟机的应用程序。
-
-|大小 – 大小\名称 | vCPU |内存|NIC 数（最大值）|最大临时磁盘大小 |最大 数据磁盘（每个 1023 GB）|最大 IOPS（每个磁盘 300 次）|
-|---|---|---|---|---|---|---|
-|A0\Basic_A0|第|768 MB|2| 20 GB|第|1x300|
-|A1\Basic_A1|第|1.75 GB|2| 40 GB |2|2x300|
-|A2\Basic_A2|2|3.5 GB|2| 60 GB|4|4x300|
-|A3\Basic_A3|4|7 GB|2| 120 GB |8|8x300|
-|A4\Basic_A4|8|14 GB|2| 240 GB |16|16x300|
- 
-
-

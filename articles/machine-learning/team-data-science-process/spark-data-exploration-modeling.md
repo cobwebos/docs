@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4ddcd2429ce1b7e44670b52a0a7b7494d0400af7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: acc701431afa458efd0768fb3d6898fd1920e333
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57860969"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528078"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>使用 Spark 进行数据探索和建模
 
@@ -129,7 +129,7 @@ Spark 能够读取和写入 Azure 存储 Blob（也称为 WASB）。 因此，�
 PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用的特殊命令。 在这些代码示例中使用的此类命令有两个。
 
 * **%%local** 指定本地执行后续行中的代码。 代码必须是有效的 Python 代码。
-* **%%sql -o <variable name>** 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
+* **%%sql-o\<变量的名称 >** 执行针对 sqlContext 的 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
 
 有关 Jupyter 笔记本内核和它们提供的预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。
 

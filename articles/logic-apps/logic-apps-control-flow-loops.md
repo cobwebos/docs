@@ -10,12 +10,12 @@ ms.reviewer: klam, LADocs
 manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
-ms.openlocfilehash: 3faa3b0a5cd919752f8b7e4969e3affd668c8077
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360766"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59522995"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -179,7 +179,7 @@ ms.locfileid: "59360766"
 
    | 属性 | 值 |
    | -------- | ----- |
-   | **时间间隔** | 1 | 
+   | **间隔** | 1 | 
    | **频率** | 日期 |
    | **在这些小时** | 8 |
    ||| 
@@ -193,10 +193,10 @@ ms.locfileid: "59360766"
 
    ![设置变量属性](./media/logic-apps-control-flow-loops/do-until-loop-set-variable-properties.png)
 
-   | 属性 | 值 | 描述 |
+   | 属性 | 值 | 说明 |
    | -------- | ----- | ----------- |
-   | **名称** | 限制 | 变量的名称 | 
-   | **Type** | Integer | 变量的数据类型 | 
+   | **名称** | Limit | 变量的名称 | 
+   | **类型** | Integer | 变量的数据类型 | 
    | **值** | 0 | 变量的起始值 | 
    |||| 
 
@@ -234,11 +234,11 @@ ms.locfileid: "59360766"
 
       ![设置电子邮件属性](./media/logic-apps-control-flow-loops/do-until-loop-send-email-settings.png)
 
-      | 属性 | 值 | 描述 |
+      | 属性 | 值 | 说明 |
       | -------- | ----- | ----------- | 
-      | **目标** | *<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
+      | **收件人** | *\<email-address\@domain>* | 收件人的电子邮件地址。 若要进行测试，请使用你自己的电子邮件地址。 | 
       | **主题** | “限制”的当前值为 **Limit** | 指定电子邮件主题。 对于本例，请确保包括 **Limit** 变量。 | 
-      | **Body** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
+      | **正文** | <*email-content*> | 指定你要发送的电子邮件消息内容。 对于本例，输入你喜欢的任何文本。 | 
       |||| 
 
 1. 保存逻辑应用。 若要手动测试逻辑应用，请在设计器工具栏上选择“运行”。
@@ -251,7 +251,7 @@ ms.locfileid: "59360766"
 
 Until 循环具有默认限制，用于在发生下列任一条件时停止执行：
 
-| 属性 | 默认值 | 描述 | 
+| 属性 | 默认值 | 说明 | 
 | -------- | ------------- | ----------- | 
 | **Count** | 60 | 在循环退出之前运行的最大循环次数。 默认值为 60 个周期。 | 
 | **超时** | PT1H | 在循环退出之前运行循环的最大时间量。 默认值为一小时，并且是以 ISO 8601 格式指定的。 <p>将针对每个循环周期评估超时值。 如果循环中的任何操作花费的时间超过超时限制，当前循环便不会停止。 但是，由于不满足限制条件，因此下一个循环不会启动。 | 
@@ -344,7 +344,7 @@ Until 循环具有默认限制，用于在发生下列任一条件时停止执�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [基于 （条件语句） 的条件运行步骤](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [基于不同的值 （switch 语句） 运行步骤](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [运行或合并并行步骤 （分支）](../logic-apps/logic-apps-control-flow-branches.md)
-* [基于分组的操作状态 （作用域） 运行步骤](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [基于条件运行步骤（条件语句）](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [基于不同的值运行步骤（switch 语句）](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [运行或合并并行步骤（分支）](../logic-apps/logic-apps-control-flow-branches.md)
+* [基于分组的操作状态运行步骤（作用域）](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)

@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 212d7f5352b58ee8f5b2c119bb1f5f828591f6bf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: f72e98d8874a5a5dc94deb882affdf66388b13c9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490769"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548519"
 ---
 # <a name="role-based-access-control-rbac-for-media-services-accounts"></a>媒体服务帐户的基于角色的访问控制 (RBAC)
 
@@ -43,8 +43,8 @@ foreach (Microsoft.Azure.Management.Media.Models.Operation a in client.Operation
 - [经典订阅管理员角色、Azure RBAC 角色和 Azure AD 管理员角色](https://docs.microsoft.com/azure/role-based-access-control/rbac-and-directory-admin-roles)
 - [什么是 Azure 资源的 RBAC？](https://docs.microsoft.com/azure/role-based-access-control/overview)
 - [使用 RBAC 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [获取内容密钥的策略使用媒体服务.NET](get-content-key-policy-dotnet-howto.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用媒体服务 v3 Api 进行开发](media-services-apis-overview.md)
+- [使用媒体服务 v3 Api 进行开发](media-services-apis-overview.md)
+- [获取内容密钥的策略使用媒体服务.NET](get-content-key-policy-dotnet-howto.md)

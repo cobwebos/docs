@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: magattus
 ms.custom: mvc
-ms.openlocfilehash: ba25bef75bc21eea2b0c3a57599a3b9ddd3164e0
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 296f1df9175f4595274a57ed936282abb73da18b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916812"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525103"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>创建 Azure CDN 终结点
 本文介绍现有 CDN 配置文件中用于创建 [Azure 内容分发网络 (CDN)](cdn-overview.md) 终结点的所有设置。 创建配置文件和终结点以后，即可将内容交付给客户。 快速入门中创建配置文件和终结点，请参阅[快速入门：创建 Azure CDN 配置文件和终结点](cdn-create-new-endpoint.md)。
@@ -44,7 +44,7 @@ ms.locfileid: "58916812"
    
     ![“添加终结点”页](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. 至于“名称”，请输入新建 CDN 终结点的唯一名称。 此名称用于访问在 _<endpointname>_.azureedge.net 域中缓存的资源。
+3. 至于“名称”，请输入新建 CDN 终结点的唯一名称。 此名称用于访问在域缓存的资源 _\<endpointname >_。 azureedge.net。
 
 4. 对于“源类型”，请选择下述源类型之一： 
    - **存储**：适用于 Azure 存储
@@ -62,7 +62,7 @@ ms.locfileid: "58916812"
    > 某些类型的原点（例如 Azure 存储和 Web 应用）需要主机头来匹配原点的域。 除非拥有的原点要求不同于其域的主机头，否则应当保留默认值。
    > 
     
-8. 至于“协议”和“源服务器端口”，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域 (_<endpointname>_.azureedge.net) 来访问 HTTPS 内容。 
+8. 至于“协议”和“源服务器端口”，请指定用于访问源服务器中资源的协议和端口。 必须至少选择一种协议（HTTP 或 HTTPS）。 使用 CDN 提供的域 (_\<endpointname >_。 azureedge.net) 来访问 HTTPS 内容。 
    
    > [!NOTE]
    > “源服务器端口”值只决定终结点用来从源服务器检索信息的端口。 终结点自身仅可用于默认 HTTP 和 HTTPS 端口（80 和 443）上的最终客户端，不管“源服务器端口”值如何。  
@@ -75,16 +75,16 @@ ms.locfileid: "58916812"
 
     将根据配置文件类型为以下优化类型设置提供支持：
     - **Microsoft 的 Azure CDN 标准版**配置文件：
-       - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
+       - [**常规 Web 分发**](cdn-optimization-overview.md#general-web-delivery)
 
     - **Verizon 的 Azure CDN 标准版**和 **Verizon 的 Azure CDN 高级版**配置文件：
-       - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
+       - [**常规 Web 分发**](cdn-optimization-overview.md#general-web-delivery)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Akamai 的 Azure CDN 标准版**配置文件：
-       - [**常规 Web 传送**](cdn-optimization-overview.md#general-web-delivery)
+       - [**常规 Web 分发**](cdn-optimization-overview.md#general-web-delivery)
        - [**常规媒体流式处理**](cdn-optimization-overview.md#general-media-streaming)
-       - [**点播视频流媒体**](cdn-optimization-overview.md#video-on-demand-media-streaming)
+       - [**点播视频媒体流式处理**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**大文件下载**](cdn-optimization-overview.md#large-file-download)
        - [**动态站点加速**](cdn-optimization-overview.md#dynamic-site-acceleration)
 

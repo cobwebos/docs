@@ -9,12 +9,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 6694865909a165842f994501befa404e1bc0a447
-ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.openlocfilehash: b5ed614fdd378b36d8f95fc90ce7ff98d63ef31a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53164375"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526395"
 ---
 # <a name="troubleshoot-input-connections"></a>排查输入连接问题
 
@@ -39,7 +39,9 @@ ms.locfileid: "53164375"
 ![Azure 流分析输入磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
 启用诊断日志，查看警告的详细信息。 对于格式不正确的输入事件，执行日志包含具有如下所示消息的条目： 
-<code>Could not deserialize the input event(s) from resource <blob URI> as json.</code>
+```
+Could not deserialize the input event(s) from resource <blob URI> as json.
+```
 
 ### <a name="what-caused-the-deserialization-error"></a>导致反序列化错误的原因
 可以执行以下步骤，详细分析输入事件，清晰了解反序列化错误的原因。 然后，可以修复事件源，生成格式正确的事件，防止再次发生此问题。
@@ -136,7 +138,7 @@ FROM data
 
 ## <a name="get-help"></a>获取帮助
 
-如需进一步的帮助，请试用我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
+如需进一步的帮助，请尝试我们的 [Azure 流分析论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: f9387d68139119c13d57ebb135e0c0f5b7bba8ec
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/11/2019
+ms.openlocfilehash: de9eb8ff33dc6d99c386ee92118a2d737ba1e476
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359050"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523684"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -107,7 +107,7 @@ Sql Server 时强制执行加密 (SSL/TLS) 在所有时间的所有连接。 这
 例如，使用 ADO.NET 驱动程序时实现这一点通过**Encrypt = True**并**TrustServerCertificate = False**。如果从 Azure 门户获取连接字符串，它将具有正确的设置。
 
 > [!IMPORTANT]
-> 请注意，某些非 Microsoft 驱动程序可能不会默认使用 TLS，或依赖于较旧版本的 TLS (< 2.0) 才能正常工作。 在这种情况下 SQL Server 将仍允许用户连接到你的数据库。 但是，我们建议你评估允许此类驱动程序和应用程序连接到 SQL 数据库，尤其是存储敏感数据的安全风险。 
+> 请注意，某些非 Microsoft 驱动程序可能不会默认使用 TLS，或依赖于较旧版本的 TLS (< 1.2) 才能正常工作。 在这种情况下 SQL Server 将仍允许用户连接到你的数据库。 但是，我们建议你评估允许此类驱动程序和应用程序连接到 SQL 数据库，尤其是存储敏感数据的安全风险。 
 >
 > 有关 TLS 和连接详细信息，请参阅[TLS 注意事项](sql-database-connect-query.md#tls-considerations-for-sql-database-connectivity)
 

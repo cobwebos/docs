@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: d49a6f88f3475359a74be74bf528fb5699dce632
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 573e6ea857ef17a6160f7e03f52f9c64f903530a
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57860646"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546620"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Azure Functions 的应用设置参考
 
@@ -106,7 +106,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="functionappeditmode"></a>FUNCTION\_APP\_EDIT\_MODE
 
-有效值为“readwrite”和“readonly”。
+指示是否启用了在 Azure 门户中进行编辑。 有效值为“readwrite”和“readonly”。
 
 |密钥|示例值|
 |---|------------|
@@ -122,7 +122,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 ## <a name="functionsworkerruntime"></a>FUNCTIONS\_WORKER\_RUNTIME
 
-要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效的值为`dotnet`(C#/F#)， `node` (JavaScript/TypeScript) `java` (Java) 和`python`(Python)。
+要在函数应用中加载的语言辅助角色运行时。  这将对应于应用程序中正在使用的语言（例如，“dotnet”）。 对于多种语言的函数，需要将它们发布到多个应用，每个应用都具有相应的辅助角色运行时值。  有效值为 `dotnet`(C#/F#)、`node` (JavaScript/TypeScript)、`java` (Java) 和 `python` (Python)。
 
 |密钥|示例值|
 |---|------------|
@@ -169,7 +169,7 @@ Azure Functions 运行时针对除 HTTP 触发的函数以外的其他所有函�
 
 |密钥|示例值|
 |---|------------|
-|WEBSITE\_RUN\_FROM\_PACKAGE|第|
+|WEBSITE\_RUN\_FROM\_PACKAGE|1|
 
 有效值是解析为部署包文件位置的 URL 或 `1`。 设置为 `1` 时，包必须位于 `d:\home\data\SitePackages` 文件夹中。 使用此设置的 zip 部署时，包将自动上传到此位置。 在预览版中，此设置名为 `WEBSITE_RUN_FROM_ZIP`。 有关详细信息，请参阅[从包文件运行函数](run-functions-from-deployment-package.md)。
 

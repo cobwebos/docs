@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d89886e7cc5fe47013902b281c490b79a07e7641
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888104"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524576"
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>操作 Spark 构建的机器学习模型
 
@@ -112,7 +112,7 @@ datetime.datetime(2016, 4, 25, 23, 56, 19, 229403)
 PySpark 内核提供一些预定义的“magic”，这是可以结合 %% 调用的特殊命令。 在这些代码示例中使用的此类命令有两个。
 
 * **%%local** 已指定后续行中的代码在本地执行。 代码必须是有效的 Python 代码。
-* **%%sql -o <variable name>** 
+* **%%sql -o \<variable name>** 
 * 针对 sqlContext 执行 Hive 查询。 如果传递了 -o 参数，则查询的结果以 Pandas 数据帧的形式保存在 %%local Python 上下文中。
 
 有关 Jupyter 笔记本内核和它们提供的预定义“magic”的详细信息，请参阅[适用于装有 HDInsight 上的 HDInsight Spark Linux 群集的 Jupyter 笔记本的内核](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md)。

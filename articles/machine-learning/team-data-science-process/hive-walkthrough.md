@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: a7aa5401cbba9fafda9f995a882934ef0edfa481
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d26bc6044ca106b0f081cee5a39405b4b78ce7ac
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57881140"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523998"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>运行中的 Team Data Science Process：使用 Azure HDInsight Hadoop 群集
 本演练在一个端到端方案中使用 [Team Data Science Process (TDSP)](overview.md)。 其中使用 [Azure HDInsight Hadoop 群集](https://www.andresmh.com/nyctaxitrips/)对公开发布的[纽约市出租车行程](https://azure.microsoft.com/services/hdinsight/)数据集中的数据进行存储、探索和实施特性工程，以及对该数据进行下采样。 为了处理二元分类、多类分类和回归预测任务，我们将使用 Azure 机器学习构建数据模型。 
@@ -88,11 +88,11 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 此处介绍如何使用 AzCopy 传输包含数据的文件。 若要下载并安装 AzCopy，请按照 [AzCopy 命令行实用工具入门](../../storage/common/storage-use-azcopy.md)中的说明进行操作。
 
-1. 在“命令提示符”窗口中，运行以下 AzCopy 命令（请将 *<path_to_data_folder>* 替换为所需目标）：
+1. 从命令提示符窗口中，运行以下 AzCopy 命令，将 *\<path_to_data_folder >* 所需目标：
 
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
 
-1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹称为 *<path\_to\_unzipped_data\_files\>*。
+1. 复制完成后，所选数据文件夹中总共会出现 24 个压缩文件。 将下载的文件解压缩到本地计算机上的同一目录。 记下未压缩的文件所在的文件夹。 此文件夹称为*\<路径\_到\_unzipped_data\_文件\>* 在下文中。
 
 ## <a name="upload"></a>将数据上传到 HDInsight Hadoop 群集的默认容器
 > [!NOTE]
@@ -102,10 +102,10 @@ NYC 出租车行程数据是大约 20 GB（未压缩时约为 48 GB）的压缩�
 
 在以下 AzCopy 命令中，将以下参数替换为创建 Hadoop 群集和解压缩数据文件时所指定的实际值。
 
-* ***<path_to_data_folder>*** 计算机上包含解压缩数据文件的目录（与路径）。  
-* ***<storage account name of Hadoop cluster>*** 与 HDInsight 群集关联的存储帐户。
-* ***<default container of Hadoop cluster>*** 群集使用的默认容器。 注意，默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
-* ***<storage account key>*** 群集使用的存储帐户密钥。
+* ***\<path_to_data_folder >*** 包含解压缩的数据文件在计算机上的目录 （与路径）。  
+* ***\<Hadoop 群集的存储帐户名称 >*** 与你的 HDInsight 群集关联的存储帐户。
+* ***\<Hadoop 群集的默认容器 >*** 群集使用的默认容器。 注意，默认容器的名称通常与群集本身的名称相同。 例如，如果群集名为“abc123.azurehdinsight.net”，则默认容器为 abc123。
+* ***\<存储帐户密钥 >*** 群集使用的存储帐户密钥。
 
 在命令提示符或 Windows PowerShell 窗口中，运行以下两个 AzCopy 命令。
 

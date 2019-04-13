@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e897a3fbc76a75e526e4d0706a2678cd29dfc2e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.openlocfilehash: 35d03a52125bd2646f86b96bcffe123d9fab7f64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55477448"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545308"
 ---
 # <a name="the-business-understanding-stage-of-the-team-data-science-process-lifecycle"></a>Team Data Science Process 生命周期的业务理解阶段
 
@@ -46,7 +46,7 @@ ms.locfileid: "55477448"
 ### <a name="define-objectives"></a>定义目标
 1. 此步骤的主要目标是确定分析需要预测的关键业务变量。 这些变量被称为模型目标，而与之关联的指标则用于确定项目是否成功。 此类目标的两个示例是销售预测或订单涉嫌欺诈的概率。
 
-2. 通过提出和完善相关、特定和明确的“尖锐”问题以定义项目目标。 数据科学是使用名称和数字来回答此类问题的过程。 有关如何提出尖锐问题的详细信息，请参阅[如何执行数据科学](https://blogs.technet.microsoft.com/machinelearning/2016/03/28/how-to-do-data-science/)博文。 数据科学或机器学习通常用于回答以下五类问题：
+2. 通过提出和完善相关、特定和明确的“尖锐”问题以定义项目目标。 数据科学是使用名称和数字来回答此类问题的过程。 数据科学或机器学习通常用于回答以下五类问题：
  
    * 多少？ （回归）
    * 哪一类别？ （分类）

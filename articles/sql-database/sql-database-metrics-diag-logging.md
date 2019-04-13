@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 03/12/2019
-ms.openlocfilehash: a2bd25f6dac4e73c0d8e3e951981f45e669b226a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: fe53dd4419c06d376a1cc46db0d2621ccbc06f23
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59490062"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548623"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL 数据库指标和诊断日志记录
 
@@ -114,12 +114,12 @@ ms.locfileid: "59490062"
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或选择现有的工作区。
 1. 选中弹性池诊断遥测对应的复选框：**AllMetrics**。
-   ![为弹性池配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
+   ![弹性池的配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-elasticpool-selection.png)
 1. 选择“保存”。
 1. 此外，配置想要在下一节中所述的以下步骤来监视弹性池内每个数据库的诊断遥测数据的流式处理。
 
 > [!IMPORTANT]
-> 除了为弹性池配置诊断遥测数据，还需为弹性池中的每个数据库配置诊断遥测数据，如下所述。 
+> 除了配置弹性池的诊断遥测数据，您还需要配置诊断遥测的每个数据库在弹性池中，按如下所述。 
 
 ### <a name="configure-streaming-of-diagnostics-telemetry-for-single-database-or-database-in-elastic-pool"></a>为单一数据库或弹性池中的数据库配置诊断遥测数据的流式传输
 
@@ -138,12 +138,12 @@ ms.locfileid: "59490062"
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。
 1. 对于高级的一分钟间隔监视体验，请选中“AllMetrics”对应的复选框。
-   ![为单一数据库、入池数据库或实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
+   ![单个配置诊断、 共用，或实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-selection.png)
 1. 选择“保存”。
 1. 为你想要监视每个数据库重复这些步骤。
 
 > [!NOTE]
-> （尽管在屏幕上显示），不能从数据库诊断设置来启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
+> （尽管在屏幕上显示），不能从数据库诊断设置启用安全审核和 SQLSecurityAuditEvents 日志。 若要启用审核日志流式处理，请参阅[为数据库设置审核](sql-database-auditing.md#subheading-2)，并[审核日志在 Azure Monitor 日志和 Azure 事件中心](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/SQL-Audit-logs-in-Azure-Log-Analytics-and-Azure-Event-Hubs/ba-p/386242)。
 > [!TIP]
 > 针对要监视的每个 Azure SQL 数据库重复上述步骤。
 
@@ -162,7 +162,7 @@ ms.locfileid: "59490062"
 - 启用的托管实例的诊断遥测数据的流式传输**和**
 - 允许将流式传输诊断遥测的每个实例数据库
 
-这是因为托管的实例是具有其自己正在独立于单个实例数据库遥测的遥测数据的数据库容器。
+这是因为托管的实例是具有其自己的遥测，独立于单个实例数据库遥测数据的数据库容器。
 
 若要为托管实例资源启用诊断遥测数据的流式传输，请执行以下步骤：
 
@@ -176,9 +176,9 @@ ms.locfileid: "59490062"
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于 log analytics 中，选择**配置**，并通过选择创建新的工作区 **+ 创建新工作区**，或使用现有的工作区。
 1. 选中实例诊断遥测对应的复选框：**ResourceUsageStats**。
-   ![为托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
+   ![托管实例配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-container-mi-selection.png)
 1. 选择“保存”。
-1. 此外，配置的每个实例数据库中你想要监视执行以下步骤在下一节中所述的托管实例的诊断遥测数据的流式处理。
+1. 此外，配置想要监视在下一节中所述的步骤在托管实例中每个实例数据库的诊断遥测数据的流式处理。
 
 > [!IMPORTANT]
 > 除了配置的托管实例的诊断遥测数据，您还需要配置诊断遥测的每个实例数据库中，按如下所述。 
@@ -200,7 +200,7 @@ ms.locfileid: "59490062"
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 选中数据库诊断遥测对应的复选框：“SQLInsights”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”和“Errors”。
-   ![为实例数据库配置诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
+   ![配置诊断实例数据库](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-mi-selection.png)
 1. 选择“保存”。
 1. 为你想要监视每个实例数据库重复这些步骤。
 
@@ -340,7 +340,7 @@ Azure SQL Analytics 是一种云解决方案，可跨多个订阅大规模监视
 
 ### <a name="configure-databases-to-record-metrics-and-diagnostics-logs"></a>将数据库配置为记录指标和诊断日志
 
-使用 Azure 门户配置数据库记录其指标的位置是最简单的方式。 如前所述，在 Azure 门户中转到 SQL 数据库资源，然后选择“诊断设置”。
+若要配置数据库记录度量值的位置的最简单方法是使用 Azure 门户。 如前所述，在 Azure 门户中转到 SQL 数据库资源，然后选择“诊断设置”。
 
 如果使用的是弹性池或托管实例，则还需要在这些资源中配置诊断设置，以便将诊断遥测数据流式传输到工作区。
 
@@ -417,19 +417,19 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="all-metrics-for-elastic-pools"></a>弹性池的所有指标
 
-|**资源**|**度量值**|
+|**资源**|**指标**|
 |---|---|
 |弹性池|eDTU 百分比、已用 eDTU、eDTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、会话百分比、辅助角色百分比、存储、存储百分比、存储限制、XTP存储百分比 |
 
 ### <a name="all-metrics-for-azure-sql-databases"></a>Azure SQL 数据库的所有指标
 
-|**资源**|**度量值**|
+|**资源**|**指标**|
 |---|---|
 |Azure SQL 数据库|DTU 百分比、已用 DTU、DTU 限制、CPU 百分比、物理数据读取百分比、日志写入百分比、成功/失败/防火墙阻止的连接数、会话百分比、辅助角色百分比、存储、存储百分比、XTP 存储百分比和死锁 |
 
 ## <a name="all-logs"></a>所有日志
 
-适用于所有日志的遥测数据详见下面的表。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
+下表中记录的遥测数据可用于所有日志的详细信息。 请参阅[支持诊断日志记录](#supported-diagnostic-logging-for-azure-sql-databases-and-instance-databases)汇集在一起，了解哪些日志支持的特定数据库 flavor-单一 Azure SQL 或实例数据库。
 
 ### <a name="resource-usage-stats-for-managed-instance"></a>托管实例的资源使用情况统计信息
 

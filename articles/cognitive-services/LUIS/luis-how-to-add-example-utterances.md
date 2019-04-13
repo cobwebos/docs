@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 02/19/2019
+ms.date: 04/01/2019
 ms.author: diberry
-ms.openlocfilehash: 1dac87ae07fac6a997cfd8e83c1e47ff39a91a83
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0d3123b1e0238a1907b5ad3d487b92a7919ff181
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096684"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524253"
 ---
 # <a name="add-an-entity-to-example-utterances"></a>将实体添加到示例话语 
 
@@ -91,6 +91,8 @@ Are there any SQL server jobs?
 
 ## <a name="add-hierarchical-entity"></a>添加分层的实体
 
+**层次结构的实体最终将被弃用。使用[实体角色](luis-concept-roles.md)以确定实体子类型，而不是分层实体。**
+
 分层实体是根据上下文学习的一类概念相关实体。 在以下示例中，该实体包含出发地和目的地。 
 
 在表述 `Move John Smith from Seattle to Cairo` 中，Seattle 是出发地，Cairo 是目的地。 每个位置因上下文而异，是从表述中的单词顺序和单词选择学习到的。
@@ -105,6 +107,12 @@ Are there any SQL server jobs?
 
     >[!CAUTION]
     >子实体名称在单个应用的所有实体中必须唯一。 两个不同的分层实体不得包含同一名称的子实体。 
+
+## <a name="add-entitys-role-to-utterance"></a>将实体的角色添加到查询文本
+
+角色是命名的实体，由查询文本的上下文的子类型。 可以将标记作为实体，查询文本中的实体或选择该实体中的角色。 任何实体可以具有包括机器学习的内容的自定义实体的角色 （简单实体和复合实体），不是机器学习的内容 （预生成的实体，正则表达式实体列表的实体）。 
+
+了解[如何将标记与实体角色查询文本](tutorial-entity-roles.md)从动手教程。 
 
 ## <a name="entity-status-predictions"></a>实体状态预测
 
@@ -151,11 +159,11 @@ Are there any SQL server jobs?
 
 ### <a name="add-prebuilt-entity-label"></a>添加预置实体标签
 
-向 LUIS 应用添加预生成实体时，无需通过这些实体来标记话语。 若要详细了解预置实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-prebuilt-entity)。
+向 LUIS 应用添加预生成实体时，无需通过这些实体来标记话语。 若要详细了解预置实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-a-prebuilt-entity-to-your-app)。
 
 ### <a name="add-regular-expression-entity-label"></a>添加正则表达式实体标签
 
-如果向 LUIS 应用添加正则表达式实体，则不需要通过这些实体来标记话语。 若要详细了解正则表达式实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-regular-expression-entities)。
+如果向 LUIS 应用添加正则表达式实体，则不需要通过这些实体来标记话语。 若要详细了解正则表达式实体以及添加它们的方法，请参阅[添加实体](luis-how-to-add-entities.md#add-regular-expression-entities-for-highly-structured-concepts)。
 
 
 ### <a name="create-a-pattern-from-an-utterance"></a>通过表述创建模式

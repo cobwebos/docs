@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/23/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 1cb353d22e39447d7aeb723b5506ac0209cf74d8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: da796f8eeb6b24dfbbe8418cc728f09b424228cf
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59287096"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528486"
 ---
 ### <a name="premium-performance-block-blob-storage"></a>高级性能数据块 blob 存储
 
@@ -25,10 +25,11 @@ ms.locfileid: "59287096"
 
 |区域  |确定目标  |
 |---------|---------|
-|最大大小     |5 TiB （公共预览版）、 100 TiB （受限公共预览版）     |
+|最大预配大小     |5 TiB （公共预览版）、 100 TiB （受限公共预览版）     |
 |共享   |不受限制  |
 |IOPS     |100000 （受限公共预览版）    |
-|带宽|5 GB/s     |
+|流入量|4,136 MiB/s     |
+|流出量|6,204 MiB/s |
 
  对于高级文件共享规模目标，请参阅[高级文件缩放目标](../articles/storage/common/storage-scalability-targets.md#premium-files-scale-targets)部分。
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: yluiu
-ms.openlocfilehash: 02e4e73bbbc7f843a3483bab4791484b89f97dd7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 8502d643986392ba846d509819c6d8f63f931c07
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862023"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544544"
 ---
 # <a name="face-api-release-notes"></a>人脸 API 发行说明
 
@@ -27,7 +27,7 @@ ms.locfileid: "58862023"
 
 ### <a name="release-changes-in-january-2019"></a>2019 年 1 月的发布更改
 
-* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://docs.microsoft.com/rest/api/cognitiveservices/face/snapshot)。 中的更多详细信息[如何将人脸数据迁移到不同的人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
+* 添加了快照功能以支持跨订阅的数据迁移：[快照](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/snapshot-get)。 中的更多详细信息[如何将人脸数据迁移到不同的人脸订阅](Face-API-How-to-Topics/how-to-migrate-face-data.md)。
 
 ### <a name="release-changes-in-october-2018"></a>2018 年 10 月的发布更改
 

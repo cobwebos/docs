@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: sajagtap
-ms.openlocfilehash: 56cd608d337d817b849a0902569e9aeddeca80ab
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: a3d362f08765cc80b65659b406a2fac3af71f167
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758576"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524491"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>使用 .NET 创建视频脚本评论
 
@@ -154,7 +154,7 @@ public static ContentModeratorClient NewClient()
 **CreateVideoReviews** 具有以下必需参数：
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
-1. 一个 **IList<CreateVideoReviewsBodyItem>** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
+1. **IList\<CreateVideoReviewsBodyItem >** 对象。 每个 CreateVideoReviewsBodyItem  对象表示一次视频审查。 本快速入门一次创建一条评论。
 
 **CreateVideoReviewsBodyItem** 具有多个属性。 至少应设置以下属性：
 - Content。 要评论的视频的 URL。
@@ -244,15 +244,15 @@ static void AddTranscript(ContentModeratorClient client, string review_id, strin
 1. 一个字符串，包含应为“application/json”的 MIME 类型。 
 1. 内容审查器团队名称。
 1. **CreateVideoReviews** 返回的视频评论 ID。
-1. 一个 IList<TranscriptModerationBodyItem>。 **TranscriptModerationBodyItem** 具有以下属性：
-1. **Terms**。 一个 IList<TranscriptModerationBodyItemTermsItem>。 **TranscriptModerationBodyItemTermsItem** 具有以下属性：
+1. IList\<TranscriptModerationBodyItem >。 **TranscriptModerationBodyItem** 具有以下属性：
+1. **Terms**。 IList\<TranscriptModerationBodyItemTermsItem >。 **TranscriptModerationBodyItemTermsItem** 具有以下属性：
 1. **Index**。 该词语从零开始的索引。
 1. **Term**。 一个包含该词语的字符串。
 1. **Timestamp**。 一个字符串，包含在脚本中找到词语的时间（以秒为单位）。
 
 脚本必须采用 WebVTT 格式。 有关更多信息，请参阅 [WebVTT：Web 视频文本轨道格式](https://www.w3.org/TR/webvtt1/)。
 
-将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换为 IList<TranscriptModerationBodyItem>，并提交到 **AddVideoTranscriptModerationResult**。
+将以下方法定义添加到 VideoTranscriptReviews 命名空间中的 Program 类。 此方法将脚本提交到 **ContentModeratorClient.TextModeration.ScreenText** 方法。 它还将结果转换到 IList\<TranscriptModerationBodyItem >，并将提交给**AddVideoTranscriptModerationResult**。
 
 ```csharp
 /// <summary>

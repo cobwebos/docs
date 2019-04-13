@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: anavin
-ms.openlocfilehash: ff8c866f62e8d795f04491cf249b7dae26c8269c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3294eda4d9330332bf23c3a8f1804f067373bf7a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492288"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528248"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>创建虚拟网络对等互连 - Resource Manager，不同订阅
 
@@ -27,9 +27,9 @@ ms.locfileid: "59492288"
 
 |Azure 部署模型  | Azure 订阅  |
 |--------- |---------|
-|[都是资源管理器模型](tutorial-connect-virtual-networks-portal.md) |相同|
-|[一个是资源管理器模型，一个是经典模型](create-peering-different-deployment-models.md) |相同|
-|[一个是资源管理器模型，一个是经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
+|[均为 Resource Manager 模型](tutorial-connect-virtual-networks-portal.md) |相同|
+|[一个为资源管理器模型，一个为经典模型](create-peering-different-deployment-models.md) |相同|
+|[一个为 Resource Manager 模型，一个为经典模型](create-peering-different-deployment-models-subscriptions.md) |不同|
 
 不能在通过经典部署模型部署的两个虚拟网络之间创建对等互连。 如需连接两个通过经典部署模型创建的虚拟网络，可使用 Azure [VPN 网关](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)来连接它们。
 
@@ -61,7 +61,7 @@ ms.locfileid: "59492288"
 7. 在“角色”框中选择“网络参与者”。
 8. 在“选择”框中，选择 *UserB*，或者键入 UserB 的电子邮件地址来搜索该用户。
 9. 选择“保存”。
-10. 在“myVnetA - 访问控制 (IAM)”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA。
+10. 在“myVnetA - 访问控制 (IAM)”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 是类似于下面的示例： `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA`。
 11. 以用户 A 的身份注销门户，然后以用户 B 的身份登录。
 12. 完成步骤 2-3，在步骤 3 中输入或选择以下值：
 
@@ -74,7 +74,7 @@ ms.locfileid: "59492288"
     - **位置**：*美国东部*
 
 13. 在门户顶部的“搜索资源”框中键入 myVnetB。 选择出现在搜索结果中的“myVnetB”。
-14. 在“myVnetB”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 类似于以下示例：/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB。
+14. 在“myVnetB”下，选择左侧垂直选项列表中的“属性”。 复制“资源 ID”，在稍后的步骤中使用。 资源 ID 是类似于下面的示例： `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`。
 15. 在“myVnetB”下选择“访问控制(IAM)”，然后为 myVnetB 完成步骤 5-10，在步骤 8 中输入 **UserA**。
 16. 以用户 B 的身份注销门户，然后以用户 A 的身份登录。
 17. 在门户顶部的“搜索资源”框中键入 myVnetA。 选择出现在搜索结果中的“myVnetA”。
@@ -111,7 +111,7 @@ ms.locfileid: "59492288"
 除安装 CLI 及其依赖项外，还可使用 Azure Cloud Shell。 Azure Cloud Shell 是可直接在 Azure 门户中运行的免费 Bash shell。 它预安装有 Azure CLI 并将其配置为与帐户一起使用。 选择下面脚本中的“试用”按钮，调用一个可用于登录 Azure 帐户的 Cloud Shell。
 
 1. 使用 `azure login` 命令打开 CLI 会话并以用户 A 的身份登录 Azure。 用于登录的帐户必须拥有创建虚拟网络对等互连的必要权限。 有关权限列表，请参阅[虚拟网络对等互连权限](virtual-network-manage-peering.md#permissions)。
-2. 将以下脚本复制到电脑上的文本编辑器，将 `<SubscriptionA-Id>` 替换为订阅 A 的 ID，然后复制修改后的脚本，将其粘贴到 CLI 会话，按 `Enter`。 如果不知道订阅 ID，请输入“az account show”命令。 输出中的 ID 值就是订阅 ID。
+2. 将以下脚本复制到电脑上的文本编辑器，将 `<SubscriptionA-Id>` 替换为订阅 A 的 ID，然后复制修改后的脚本，将其粘贴到 CLI 会话，按 `Enter`。 如果不知道订阅 ID，请输入 `az account show` 命令。 输出中的 ID 值就是订阅 ID。
 
     ```azurecli-interactive
     # Create a resource group.

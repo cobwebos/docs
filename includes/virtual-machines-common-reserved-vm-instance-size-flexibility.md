@@ -4,12 +4,12 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11-20-2018
-ms.openlocfilehash: 0a8b4f9821164cca943064b20f1ec1a87981a172
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05820cc5f7b7d61d83f73ea5b62b05f8712e0997
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58113984"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551637"
 ---
 # <a name="virtual-machine-size-flexibility-with-reserved-vm-instances"></a>虚拟机预留实例的虚拟机大小灵活性
 
@@ -110,7 +110,7 @@ ms.locfileid: "58113984"
 |Standard_DS4_v2|8|
 |Standard_DS5_v2|16|
 
-有关详细信息，请参阅[常规用途虚拟机大小](../articles/virtual-machines/windows/sizes-general.md#dv2-series)。
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
 ## <a name="dsv2-series-high-memory"></a>高内存 DSv2 系列
 
@@ -129,7 +129,7 @@ ms.locfileid: "58113984"
 |Standard_DS14-8_v2|8|
 |Standard_DS15_v2|10|
 
-有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#dsv2-series-11-15)。
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
 ## <a name="dsv3-series"></a>DSv3 系列
 
@@ -154,7 +154,7 @@ ms.locfileid: "58113984"
 |Standard_D4_v2|8|
 |Standard_D5_v2|16|
 
-有关详细信息，请参阅[常规用途虚拟机大小](../articles/virtual-machines/windows/sizes-general.md#dv2-series)。
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
 ## <a name="dv2-series-high-memory"></a>高内存 Dv2 系列
 
@@ -166,7 +166,7 @@ ms.locfileid: "58113984"
 |Standard_D14_v2|8|
 |Standard_D15_v2|10|
 
-有关详细信息，请参阅[内存优化虚拟机大小](../articles/virtual-machines/windows/sizes-memory.md#dv2-series-11-15)。
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
 ## <a name="dv3-series"></a>Dv3 系列
 
@@ -228,7 +228,7 @@ ms.locfileid: "58113984"
 |Standard_F8|8|
 Standard_F16|16|
 
-有关详细信息，请参阅[计算优化虚拟机大小](../articles/virtual-machines/windows/sizes-compute.md#f-series)。
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
 ## <a name="fs-series"></a>FS 系列
 
@@ -240,7 +240,7 @@ Standard_F16|16|
 |Standard_F8s|8|
 |Standard_F16s|16|
 
-有关详细信息，请参阅[计算优化虚拟机大小](../articles/virtual-machines/windows/sizes-compute.md#fs-series-1)。
+有关详细信息，请参阅[前几代虚拟机大小](../articles/virtual-machines/windows/sizes-previous-gen.md)。
 
 ## <a name="fsv2-series"></a>Fsv2 系列
 

@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 00e2c143116550aa77d38b4bc93bbe2e0b41c331
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868338"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526483"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 
 了解如何部署语言检测容器。 此过程说明如何创建本地 Docker 容器，将容器推送到自己的专用容器注册表，在 Kubernetes 群集中运行容器，以及在 Web 浏览器中对其进行测试。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 此过程要求必须在本地安装和运行多个工具。 请勿使用 Azure Cloud Shell。 
 
@@ -206,7 +206,7 @@ ms.locfileid: "55868338"
 
     为本节中步骤 3 保存完整值。 
 
-1. 若要授予 AKS 群集使用容器注册表中存储的映像的适当访问权限，请创建角色分配。 将 <appId> 和 <acrId> 替换为在前两个步骤中收集的值。
+1. 若要授予 AKS 群集使用容器注册表中存储的映像的适当访问权限，请创建角色分配。 将 `<appId>` 和 `<acrId>` 替换为在前两个步骤中收集的值。
 
     ```azurecli
     az role assignment create --assignee <appId> --scope <acrId> --role Reader

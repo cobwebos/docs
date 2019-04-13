@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: magattus
-ms.openlocfilehash: 6e17b110cbfc293e19714399d5b2cdb753aa1ac4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: c21ae227d74442be5701dd906180392b1e0fdf8b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917951"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525664"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>在 Azure CDN 中管理 Web 内容的到期时间
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.locfileid: "58917951"
    ![CDN 缓存页](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
-**若要使用全局缓存规则设置 web 服务器的缓存控制标头：**
+**使用全局缓存规则设置 Web 服务器的 Cache-Control 标头：**
 
 1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
       
@@ -68,7 +68,7 @@ ms.locfileid: "58917951"
 
 1. 选择“保存”。
 
-**若要使用自定义缓存规则设置 web 服务器文件的缓存控制标头：**
+**使用自定义缓存规则设置 Web 服务器文件的 Cache-Control 标头：**
 
 1. 在“自定义缓存规则”下，创建两个匹配条件：
 
@@ -106,7 +106,7 @@ ms.locfileid: "58917951"
 </configuration>
 ```
 
-若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并且会作为 `Cache-Control` `max-age` 指令的值使用。 有关 `<clientCache>` 元素的详细信息，请参阅[客户端缓存<clientCache>](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
+若要使用 **cacheControlMaxAge** 属性，必须将 **cacheControlMode** 属性的值设为 `UseMaxAge`。 此设置导致了 HTTP 标头和指令 `Cache-Control: max-age=<nnn>` 添加到响应中。 **cacheControlMaxAge** 属性的时间跨度值格式为 `<days>.<hours>:<min>:<sec>`。 其值将转换为秒，并且会作为 `Cache-Control` `max-age` 指令的值使用。 有关详细信息`<clientCache>`元素，请参阅[客户端缓存\<clientCache >](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)。  
 
 ## <a name="setting-cache-control-headers-programmatically"></a>以编程方式设置 Cache-Control 标头
 对于 ASP.NET 应用程序，可以通过设置 .NET API 的 **HttpResponse.Cache** 属性，以编程方式控制 CDN 缓存行为。 有关 **HttpResponse.Cache** 属性的信息，请参阅 [HttpResponse.Cache 属性](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache)和 [HttpCachePolicy 类](/dotnet/api/system.web.httpcachepolicy)。  
@@ -131,7 +131,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 可以轻松验证 Web 内容 的 TTL 设置。 使用浏览器的[开发人员工具](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)，测试 Web 内容是否包含 `Cache-Control` 响应标头。 还可以使用 **wget**、[Postman](https://www.getpostman.com/) 或 [Fiddler](https://www.telerik.com/fiddler) 等工具检查响应标头。
 
 ## <a name="next-steps"></a>后续步骤
-* [了解详细信息**clientCache**元素](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
-* [阅读有关的文档**HttpResponse.Cache**属性](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
-* [阅读有关的文档**HttpCachePolicy 类**](/dotnet/api/system.web.httpcachepolicy)  
+* [阅读有关 **clientCache** 元素](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)的详细信息
+* [阅读有关 **HttpResponse.Cache** 属性的文档](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
+* [阅读有关 **HttpCachePolicy 类**的文档](/dotnet/api/system.web.httpcachepolicy)  
 * [了解缓存概念](cdn-how-caching-works.md)

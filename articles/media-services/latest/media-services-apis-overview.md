@@ -9,19 +9,48 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/08/2019
+ms.date: 04/11/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 18b72ceaee0ca0747a0bf2144d5f9ffddbee8b8c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59492135"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546392"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>使用媒体服务 v3 Api 进行开发
 
 本文介绍了使用媒体服务 v3 进行开发时对实体和 Api 应用的规则。
+
+## <a name="accessing-the-azure-media-services-api"></a>访问 Azure 媒体服务 API
+
+若要访问 Azure 媒体服务资源，应使用 Azure Active Directory (AD) 服务主体身份验证。 Azure 媒体服务 API 需要用户或应用程序 REST API 请求有权访问 Azure 媒体服务帐户资源 (通常**参与者**或**所有者**角色）。 有关详细信息，请参阅[媒体服务帐户的基于角色的访问控制](rbac-overview.md)。
+
+而不是创建服务主体，请考虑使用 Azure 资源的管理的标识访问通过 Azure 资源管理器中的媒体服务 API。 若要了解有关 Azure 资源的管理的标识的详细信息，请参阅[什么是 Azure 资源的管理的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+
+### <a name="azure-ad-service-principal"></a>Azure AD 服务主体 
+
+如果要创建 Azure AD 应用程序和服务主体，该应用程序必须处于它自己的租户。 创建应用程序后，让应用程序**参与者**或**所有者**角色到媒体服务帐户的访问。 
+
+如果您不确定是否有权创建一个 Azure AD 应用程序，请参阅[所需的权限](../../active-directory/develop/howto-create-service-principal-portal.md#required-permissions)。
+
+在下图中，数字表示按时间顺序的请求流：
+
+![中间层应用](../previous/media/media-services-use-aad-auth-to-access-ams-api/media-services-principal-service-aad-app1.png)
+
+1. 中间层应用程序请求 Azure AD 访问令牌具有以下参数：  
+
+   * Azure AD 租户终结点。
+   * 媒体服务资源 URI。
+   * REST 媒体服务的资源 URI。
+   * Azure AD 应用程序值：客户端 ID和客户端密码。
+   
+   若要获取所有所需的值，请参阅[使用 Azure CLI 访问 Azure 媒体服务 API](access-api-cli-how-to.md)
+
+2. Azure AD 访问令牌发送到中间层。
+4. 中间层使用 Azure AD 令牌向 Azure 媒体 REST API 发送请求。
+5. 中间层获取媒体服务返回的数据。
 
 ## <a name="naming-conventions"></a>命名约定
 
@@ -30,17 +59,6 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 媒体服务资源名称不能包含“<”、“>”、“%”、“&”、“:”、“&#92;”、“?”、“/”、“*”、“+”、“.”、单引号或任何控制字符。 允许其他所有字符。 资源名称的最大长度为 260 个字符。 
 
 有关 Azure 资源管理器命名的详细信息，请参阅：[命名需求](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/resource-api-reference.md#arguments-for-crud-on-resource)和[命名约定](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)。
-
-## <a name="v3-api-design-principles-and-rbac"></a>v3 API 设计原理和 RBAC
-
-V3 API 的主要设计原则之一是使 API 更安全。 v3 Api 不返回机密或凭据上**获取**或**列表**操作。 在响应中，密钥始终为 null、空值或进行了净化。 用户需要调用一个单独的操作方法来获取机密信息或凭据。 **读取器**角色不能调用操作，以便它不能调用 Asset.ListContainerSas，StreamingLocator.ListContentKeys，ContentKeyPolicies.GetPolicyPropertiesWithSecrets 等操作。 具有单独的操作，可根据需要自定义角色中设置更精细的 RBAC 安全权限。
-
-有关详细信息，请参阅：
-
-- [内置的角色定义](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles)
-- [使用 RBAC 管理访问权限](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-rest)
-- [媒体服务帐户的基于角色的访问控制](rbac-overview.md)
-- [获取内容密钥的策略-.NET](get-content-key-policy-dotnet-howto.md)。
 
 ## <a name="long-running-operations"></a>长时间运行的操作
 
@@ -71,4 +89,4 @@ V3 API 的主要设计原则之一是使 API 更安全。 v3 Api 不返回机密
 
 ## <a name="next-steps"></a>后续步骤
 
-[使用 SDK/工具通过媒体服务 v3 API 开始进行开发](developers-guide.md)
+[开始使用媒体服务 v3 API 使用 Sdk/工具进行开发](developers-guide.md)

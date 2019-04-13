@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 465d59ff13982eee8432d7ef97e2f522b0d7125b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: ac10f1f1c6336098afc2abd2b8f720cedfb6f579
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489718"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548929"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure 中的网络性能监视器解决方案
 
@@ -151,8 +151,8 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 配置所需功能：
 
-- [性能监视](network-performance-monitor-performance-monitor.md#configuration)
-- [服务连接监视器](network-performance-monitor-performance-monitor.md#configuration)
+- [性能监视器](network-performance-monitor-performance-monitor.md#configuration)
+- [服务连接性监视器](network-performance-monitor-performance-monitor.md#configuration)
 - [ExpressRoute 监视器](network-performance-monitor-expressroute.md#configuration)
 
  
@@ -251,13 +251,13 @@ NPM 可从以下任一区域托管的工作区监视世界上任何地方网络�
 
 这意味着使用[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#overview)管理所有通知。  
 
-如果你是 NPM 用户创建通过 LAzure 监视器警报： 
-1. 你将看到一个链接，该链接可将你重定向到 Azure 门户。 单击该链接以访问门户。
+如果你是通过 Log Analytics 创建警报的 NPM 用户： 
+1. 您将看到将重定向到 Azure 门户的链接。 单击该链接以访问门户。
 2. 单击“网络性能监视器解决方案”磁贴。 
 3. 导航到“配置”。  
 4. 选择要针对其创建警报的测试，并按照下述步骤进行操作。
 
-如果你是通过 Azure 门户创建警报的 NPM 用户：  
+如果你是 NPM 用户创建通过 Azure 门户警报：  
 1. 可以选择直接输入电子邮件，也可以选择通过操作组创建警报。
 2. 如果选择直接输入电子邮件，则将创建名为 **NPM Email ActionGroup** 的操作组，并将电子邮件 ID 添加到该操作组。
 3. 如果选择使用操作组，则需要选择一个以前创建的操作组。 可以在[此处](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups#create-an-action-group-by-using-the-azure-portal)了解如何创建操作组。 

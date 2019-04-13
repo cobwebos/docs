@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f3eec1f846f1b74ab3e19bca022d4e009540d1a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7cf8d5cb13b39d58920555ff9d99a4949e1bfc20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280003"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521421"
 ---
 # <a name="combined-security-information-registration-preview"></a>组合的安全信息注册 （预览版）
 
@@ -25,6 +25,8 @@ ms.locfileid: "59280003"
 ![我的配置文件显示已注册的用户的安全信息](media/concept-registration-mfa-sspr-combined/combined-security-info-defualts-registered.png)
 
 启用新的体验之前, 查看此管理员为中心的文档和专注于用户的文档以确保您了解的功能和此功能的效果。 使您的用户文档的新体验准备你的用户和帮助确保成功推出的培训。
+
+Azure AD 相结合的注册不是当前可用于 Azure 美国政府、 Azure 德国或 Azure 中国的 21Vianet 等的国家/地区云的安全信息。
 
 |     |
 | --- |
@@ -137,6 +139,6 @@ SSPR 策略要求用户定期查看其安全信息，如果用户是在登录期
 
 [多重身份验证和 SSPR 的可用方法](concept-authentication-methods.md)
 
-[配置自助密码重置](howto-sspr-deployment.md)
+[配置自助服务密码重置](howto-sspr-deployment.md)
 
 [配置 Azure 多重身份验证](howto-mfa-getstarted.md)

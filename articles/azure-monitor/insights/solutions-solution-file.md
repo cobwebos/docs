@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 298bf10cf07467de897c7e38af9539fc71375eab
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57776642"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59526361"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -213,7 +213,7 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 属性 | 描述 |
 |:--- |:--- |
-| workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 窗体中 Log Analytics 工作区的 ID。 |
+| workspaceResourceId |在窗体中的 Log Analytics 工作区 ID *\<资源组 ID > /providers/Microsoft.OperationalInsights/workspaces/\<工作区名称\>*。 |
 | referencedResources |解决方案中不应随解决方案一起删除的资源的列表。 |
 | containedResources |解决方案中应随解决方案一起删除的资源的列表。 |
 

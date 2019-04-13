@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 287a4104104c12e33fa2c50c398f422f9e6ea8c5
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: f08d7bb2087ef4f30b325b3796a13e387ccdea22
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418697"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525834"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>排查配置服务器问题
 
@@ -81,7 +81,7 @@ ms.locfileid: "58418697"
 
 ## <a name="failure-to-activate-windows-license-from-server-standard-evaluation-to-server-standard"></a>如果不激活 Windows 许可证服务器标准计算到 Server Standard
 
-1. 作为通过 OVF 配置服务器部署的一部分，将使用 evaluation 许可证，其有效期为 180 天。 需要在此许可证过期之前进行激活。 否则，这可以导致频繁的配置服务器关闭，因此会导致影响复制活动。
+1. 通过 OVF 部署配置服务器的过程中，使用了评估许可证，该许可证的有效期为 180 天。 需要在此许可证过期之前进行激活。 否则，这可以导致频繁的配置服务器关闭，因此会导致影响复制活动。
 2. 如果无法激活 Windows 许可证，请联系 [Windows 支持团队](https://aka.ms/Windows_Support)以解决此问题。
 
 ## <a name="register-source-machine-with-configuration-server"></a>将源计算机注册到配置服务器
@@ -203,7 +203,7 @@ ms.locfileid: "58418697"
 
 若要验证并确保主目标代理可以为配置服务器 IP 创建 TCP 会话，请在主目标代理日志中查找类似于以下内容的跟踪：
 
-TCP <Replace IP with CS IP here>:52739 <Replace IP with CS IP here>:443 SYN_SENT 
+TCP\<替换为此处 CS IP IP >: 52739\<使用此处的 CS IP 替换 IP >: 443 SYN_SENT 
 
 TCP    192.168.1.40:52739     192.168.1.40:443      SYN_SENT  // 此处将 IP 替换为 CS IP
 
