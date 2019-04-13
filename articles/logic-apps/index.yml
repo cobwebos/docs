@@ -1,18 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2d1c2aaa47d056a56d6fb0fc09f4de8072258c9a
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56242122"
 documentType: LandingData
 title: Azure 逻辑应用文档
 metadata:
   title: Azure 逻辑应用文档 - 教程和 API 参考 | Microsoft 文档
   description: Azure 逻辑应用简化了生成自动可缩放工作流的方法，便于跨云服务和本地系统集成应用和数据。 了解如何创建、设计和部署逻辑应用，以便自动完成快速入门、教程、模板和 API 中的业务流程。
   services: logic-apps
-  author: czeumault
-  manager: estfan
+  author: ecfan
+  manager: carmonm
   ms.service: logic-apps
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -22,34 +16,34 @@ metadata:
 abstract:
   description: Azure 逻辑应用简化了生成自动可缩放工作流的方法，便于跨云服务和本地系统集成应用和数据。 了解如何创建、设计和部署逻辑应用，以便自动完成快速入门、教程、模板和 API 中的业务流程。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何在 Azure 中创建逻辑应用。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure 门户
-      href: /azure/logic-apps/quickstart-create-first-logic-app-workflow
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何生成按计划运行的逻辑应用，以便跨 Azure 服务、Microsoft 服务以及其他软件即服务 (SaaS) 应用集成数据。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何在 Azure 中创建逻辑应用。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure 门户
+            href: /azure/logic-apps/quickstart-create-first-logic-app-workflow
+  - title: 分步教程
     items:
-    - html: <a href="/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow">使用按计划的逻辑应用检查流量</a>
-    - html: <a href="/azure/logic-apps/tutorial-process-mailing-list-subscriptions-workflow">使用逻辑应用管理邮件列表请求</a>
-    - html: <a href="/azure/logic-apps/tutorial-process-email-attachments-workflow">使用逻辑应用处理电子邮件和附件</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 了解如何生成按计划运行的逻辑应用，以便跨 Azure 服务、Microsoft 服务以及其他软件即服务 (SaaS) 应用集成数据。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/logic-apps/tutorial-build-schedule-recurring-logic-app-workflow">使用按计划的逻辑应用检查流量</a>
+          - html: <a href="/azure/logic-apps/tutorial-process-mailing-list-subscriptions-workflow">使用逻辑应用管理邮件列表请求</a>
+          - html: <a href="/azure/logic-apps/tutorial-process-email-attachments-workflow">使用逻辑应用处理电子邮件和附件</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="/powershell/module/az.logicapp">Azure PowerShell</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/logic/">REST API 参考</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/powershell/module/az.logicapp">Azure PowerShell</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/logic/">REST API 参考</a></p>

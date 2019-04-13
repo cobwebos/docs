@@ -61,9 +61,6 @@ items:
     - name: 开发脚本操作
       href: ../hdinsight-hadoop-script-actions-linux.md
       maintainContext: true
-    - name: 安装或更新 Mono
-      href: ../hdinsight-hadoop-install-mono.md
-      maintainContext: true
     - name: 构建 HDInsight 应用程序
       items:
       - name: 安装自定义应用
@@ -280,9 +277,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: b8a55191f78010bab759cf90880c3b7aaddab7ba
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 1719490323df6609fe400344f9c9af441d3e6625
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444960"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545469"

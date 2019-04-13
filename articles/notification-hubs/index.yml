@@ -56,5 +56,4 @@ sections:
         items:
           - html: '<a href="https://docs.microsoft.com/powershell/module/az.notificationhubs">Azure PowerShell</a>'
           - html: <a href="/dotnet/api/microsoft.azure.notificationhubs">.NET SDK</a>
-          - html: <a href="/rest/api/notificationhubs">管理 REST API</a>
-          - html: '<a href="https://docs.microsoft.com/previous-versions/azure/reference/dn223264(v%3dazure.100)">通知中心服务 REST API</a>'
+          - html: <a href="/rest/api/notificationhubs">REST API 参考</a>

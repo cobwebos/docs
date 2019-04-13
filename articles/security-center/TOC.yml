@@ -161,6 +161,8 @@ items:
       href: security-center-events-dashboard.md
     - name: 搜索
       href: security-center-search.md
+    - name: 规划和操作
+      href: security-center-planning-and-operations-guide.md
 - name: 引用
   items:
   - name: REST API
@@ -175,8 +177,6 @@ items:
     href: security-center-privacy.md
   - name: 常见问题解答
     href: security-center-faq.md
-  - name: 规划和操作
-    href: security-center-planning-and-operations-guide.md
   - name: Azure 安全性
     href: /azure/security/
   - name: Azure 路线图
@@ -195,9 +195,9 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: 故障排除
     href: security-center-troubleshooting-guide.md
-ms.openlocfilehash: 582597639fb8681f4ac2894fb1cac7fe4ec17fcf
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 702e8fe5f5fec2488135104614936762e054b98c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895133"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520925"
