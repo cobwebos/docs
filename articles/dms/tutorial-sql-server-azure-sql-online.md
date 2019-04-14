@@ -253,7 +253,7 @@ ms.locfileid: "58883490"
     ![查找 Azure 数据库迁移服务实例](media/tutorial-sql-server-to-azure-sql-online/dms-instance-search.png)
 
 3. 选择“+ 新建迁移项目”。
-4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL数据库”。
+4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”。
 5. 在“选择活动类型”部分选择“联机数据迁移”。
 
     ![创建数据库迁移服务项目](media/tutorial-sql-server-to-azure-sql-online/dms-create-project3.png)

@@ -20,7 +20,7 @@ metadata:
 sections:
   - items:
       - type: paragraph
-        text: Azure SQL 数据库是一个完全托管的平台即服务 (PaaS) 数据库引擎，可在无需用户参与的情况下处理大多数数据库管理功能，如升级、修补、备份和监控。 Azure SQL Database 数据库始终运行于最新稳定版 SQL Server 数据库引擎和具有 99.99% 可用性的已修补 OS 之上。 Azure SQL 数据库中内置的 PaaS 功能可使你专注于对业务至关重要的特定于域的数据库管理和优化活动。
+        text: Azure SQL 数据库是一个完全托管的平台即服务 (PaaS) 数据库引擎，可在无需用户参与的情况下处理大多数数据库管理功能，如升级、修补、备份和监控。 Azure SQL 数据库始终运行于最新稳定版 SQL Server 数据库引擎和具有 99.99% 可用性的已修补 OS 之上。 Azure SQL 数据库中内置的 PaaS 功能可使你专注于对业务至关重要的特定于域的数据库管理和优化活动。
       - type: list
         style: cards
         className: cardsM

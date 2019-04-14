@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 超大规模数据库 FAQ | Microsoft Docs
+title: 超大规模 Azure SQL 数据库常见问题解答 | Microsoft Docs
 description: 对客户关于超大规模服务层中的 Azure SQL 数据库（通常称为超大规模数据库）提出的常见问题的回答。
 services: sql-database
 ms.service: sql-database
@@ -24,7 +24,7 @@ ms.locfileid: "58540663"
 本文就客户对 Azure SQL 数据库超大规模服务层中的数据库（通常称为超大规模数据库，当前为公共预览版）提出的常见问题作出回答。 本文介绍超大规模支持的方案，并且跨功能服务通常与 SQL 超大规模数据库兼容。
 
 - 本常见问题解答适用于对超大规模服务层有基本了解并希望其具体问题得到解答的读者。
-- 它不是指南，不解答关于如何使用 SQL 超大规模数据库的问题。 为此，建议参考 [Azure SQL 超大规模数据库](sql-database-service-tier-hyperscale.md)文档。
+- 它不是指南，不解答关于如何使用 SQL 超大规模数据库的问题。 为此，建议参考[超大规模 Azure SQL 数据库](sql-database-service-tier-hyperscale.md)文档。
 
 ## <a name="general-questions"></a>一般问题
 

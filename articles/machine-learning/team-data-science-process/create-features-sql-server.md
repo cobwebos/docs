@@ -32,7 +32,7 @@ ms.locfileid: "57854885"
 本文假设用户具备以下条件：
 
 * 已创建 Azure 存储帐户。 如果需要说明，请参阅[创建 Azure 存储帐户](../../storage/common/storage-quickstart-create-account.md)
-* 在 SQL Server 中存储的数据。 如果尚未存储，请参阅[将数据移到 Azure 机器学习 Azure SQL Database](move-sql-azure.md) 以便获取有关如何移动数据的说明。
+* 在 SQL Server 中存储的数据。 如果尚未存储，请参阅[将数据移到 Azure 机器学习的 Azure SQL 数据库](move-sql-azure.md)以便获取有关如何移动数据的说明。
 
 ## <a name="sql-featuregen"></a>使用 SQL 生成特征
 在本部分中，介绍使用 SQL 生成功能的方法：  

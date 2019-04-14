@@ -25,7 +25,7 @@ ms.locfileid: "59006770"
 
 ## <a name="connectivity-architecture"></a>连接体系结构
 
-下图提供了 Azure SQL Database 连接体系结构的高级别概述。
+下图提供了 Azure SQL 数据库连接体系结构的高级别概述。
 
 ![体系结构概述](./media/sql-database-connectivity-architecture/connectivity-overview.png)
 

@@ -195,7 +195,7 @@ END
 5. 切换到“设置”选项卡，针对“源数据集”单击“+ 新建”。 在此步骤中，请创建一个代表 **watermarktable** 中数据的数据集。 此表包含在前一复制操作中使用过的旧水印。 
 
    ![“新建数据集”菜单 - 旧水印](./media/tutorial-incremental-copy-portal/new-dataset-old-watermark.png)
-6. 在“新建数据集”窗口中，选择“Azure SQL 数据集”，然后单击“完成”。 此时会看到数据集的新选项卡打开。 
+6. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“完成”。 此时会看到数据集的新选项卡打开。 
 
    ![选择 Azure SQL 数据库](./media/tutorial-incremental-copy-portal/select-azure-sql-database-old-watermark.png)
 7. 在数据集的属性窗口中，输入 **WatermarkDataset** 作为**名称**。
@@ -227,7 +227,7 @@ END
 13. 在第二个“复制”活动的属性窗口中切换到“设置”选项卡，然后单击“新建”。 请创建一个数据集，使之指向源表，该表包含新的水印值（LastModifyTime 的最大值）。 
 
     ![第二个查找活动 - 新建数据集](./media/tutorial-incremental-copy-portal/second-lookup-activity-settings-new-button.png)
-14. 在“新建数据集”窗口中，选择“Azure SQL 数据集”，然后单击“完成”。 此时会看到此数据集的新选项卡打开。 也可在树状视图中看到此数据集。 
+14. 在“新建数据集”窗口中，选择“Azure SQL 数据库”，然后单击“完成”。 此时会看到此数据集的新选项卡打开。 也可在树状视图中看到此数据集。 
 15. 在属性窗口的“常规”选项卡中，输入 **SourceDataset** 作为**名称**。 
 
     ![源数据集 - 名称](./media/tutorial-incremental-copy-portal/source-dataset-name.png)

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据超大规模库概述 | Microsoft Docs
+title: 超大规模 Azure SQL 数据库概述 | Microsoft Docs
 description: 本文介绍 Azure SQL 数据库中基于 vCore 的采购模型中的超大规模服务层，并说明它与常规用途服务层和业务关键服务层的不同之处。
 services: sql-database
 ms.service: sql-database
