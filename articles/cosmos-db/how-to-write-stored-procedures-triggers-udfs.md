@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: sample
 ms.date: 12/11/2018
 ms.author: mjbrown
-ms.openlocfilehash: 9f890a8468eaa22fbfce326fc16afe545fd515d6
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: c94509fb39d1c5ebb9aec1acfe1cbacc9cd6fd4a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339306"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268394"
 ---
 # <a name="how-to-write-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>如何在 Azure Cosmos DB 中编写存储过程、触发器和用户定义的函数
 
@@ -279,7 +279,7 @@ function updateMetadataCallback(err, items, responseOptions) {
 }
 ```
 
-必须注意的一个要点是 Azure Cosmos DB 中触发器的事务执行。 在执行“创建 Azure Cosmos DB 项”操作所用的同一事务期间，将运行此后触发器。 因此，如果在执行后触发器期间收到异常（例如，无法更新元数据项），则整个事务将会失败并回滚。 因此，会创建 Azure Cosmos DB 项并返回异常。
+必须注意的一个要点是 Azure Cosmos DB 中触发器的事务执行。 后触发器作为基础项本身的同一事务的一部分运行。 后触发器执行期间的异常将导致整个事务失败。 提交的任何内容都将回退并返回异常。
 
 有关如何注册和调用前触发器的示例，请参阅[前触发器](how-to-use-stored-procedures-triggers-udfs.md#pre-triggers)和[后触发器](how-to-use-stored-procedures-triggers-udfs.md#post-triggers)文章。 
 
@@ -322,6 +322,6 @@ function tax(income) {
 
 * [如何在 Azure Cosmos DB 中使用 Javascript 查询 API 编写存储过程和触发器](how-to-write-javascript-query-api.md)
 
-* [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器与用户定义的函数](stored-procedures-triggers-udfs.md)
+* [在 Azure Cosmos DB 中使用 Azure Cosmos DB 存储过程、触发器和用户定义的函数](stored-procedures-triggers-udfs.md)
 
 * [在 Azure Cosmos DB 中使用 JavaScript 语言集成式查询 API](javascript-query-api.md)

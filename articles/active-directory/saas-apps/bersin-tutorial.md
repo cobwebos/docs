@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d4771c49502b07e371cd227f757445d5ebac9163
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f250a5ac5f6fefa099303b033a9687f1a219efd8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855378"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262306"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>教程：Azure Active Directory 与 Bersin 集成
 
@@ -104,11 +104,11 @@ ms.locfileid: "57855378"
 
     ![Bersin 域和 URL 单一登录信息](common/idp-identifier-relay.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.bersin.com/shibboleth`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://www.bersin.com/shibboleth`
 
     b. 单击“设置其他 URL”。
 
-    c. 在“中继状态”文本框中，使用以下模式键入 URL：`https://www.bersin.com/secure/`
+    c. 在“中继状态”文本框中，使用以下模式键入 URL： `https://www.bersin.com/secure/`
 
 5. 若要在 **SP** 发起的模式下配置应用程序，请单击“设置其他 URL”并执行以下步骤：
 
@@ -199,6 +199,6 @@ ms.locfileid: "57855378"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

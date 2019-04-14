@@ -1,19 +1,18 @@
 ---
 title: 快速入门：使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 description: 本快速入门介绍如何使用 .NET Standard SDK 在 Azure 数据资源管理器中引入（加载）数据。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/18/2018
-ms.openlocfilehash: 327ab46b01e15b77e675e052dbfe8b3453b566a6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6a068c45a13bd45a09ed51fd154b5842938e0c5e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757116"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044658"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-net-standard-sdk-preview"></a>快速入门：使用 Azure 数据资源管理器 .NET Standard SDK（预览版）引入数据
 

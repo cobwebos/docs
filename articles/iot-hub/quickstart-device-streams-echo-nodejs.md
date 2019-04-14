@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: 1e7efe28918cafb3fa9547c144be3360768d549c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4b546b91634e153fa0074adfb863596a1bf36242
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079889"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006438"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-nodejs-via-iot-hub-device-streams-preview"></a>快速入门：通过 IoT 中心设备流在 Node.js 中与设备应用程序通信（预览）
 
@@ -37,12 +37,11 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-
 ## <a name="prerequisites"></a>先决条件
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-  - 美国中部
+  - **美国中部**
   - **美国中部 EUAP**
 
 若要运行本快速入门中所述的服务端应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
@@ -53,6 +52,12 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 ```
 node --version
+```
+
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
+
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
 ```
 
 如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip 下载示例 Node.js 项目并提取 ZIP 存档。
@@ -71,14 +76,13 @@ node --version
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 
-1. 在 Azure Cloud Shell 中运行以下命令，以添加 IoT 中心 CLI 扩展并创建设备标识。 
+1. 在 Azure Cloud Shell 中运行以下命令，以创建设备标识。
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
    **MyDevice**：这是为注册的设备提供的名称。 如示例中所示使用 MyDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
@@ -146,7 +150,7 @@ node --version
 
 在本快速入门中，你设置了一个 IoT 中心、注册了一个设备、在设备和服务端的应用程序之间建立了一个设备流，并通过该流在应用程序之间来回发送数据。
 
-请使用以下链接详细了解设备流：
+使用以下链接详细了解设备流：
 
 > [!div class="nextstepaction"]
 > [设备流概述](./iot-hub-device-streams-overview.md)

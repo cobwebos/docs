@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: a737413f6692b4ee811d0590351a385552cc9a8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a459473e04f9cbf3b11b75f3b9dbea2732455084
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085569"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59005431"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
@@ -27,17 +27,15 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 本文首先介绍 SSH 的设置（使用端口 22）。 然后介绍如何修改 RDP 的设置（使用端口 3389）。 由于设备流不区分应用程序和协议，因此，可以修改同一示例（通常是修改通信端口）来适应其他类型的客户端/服务器应用程序流量。
 
-
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
-
 
 ## <a name="prerequisites"></a>先决条件
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-  - 美国中部
+  - **美国中部**
   - **美国中部 EUAP**
 
 若要运行本快速入门中所述的服务本地应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
@@ -50,8 +48,13 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 node --version
 ```
 
-如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip 下载示例 Node.js 项目并提取 ZIP 存档。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
+如果尚未进行此操作，请从 https://github.com/Azure-Samples/azure-iot-samples-node/archive/streams-preview.zip 下载示例 Node.js 项目并提取 ZIP 存档。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -59,21 +62,19 @@ node --version
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub-device-streams.md)]
 
-
 ## <a name="register-a-device"></a>注册设备
 
 如果已完成上一[快速入门：将遥测数据从设备发送到 IoT 中心](quickstart-send-telemetry-node.md)，则可以跳过此步骤。
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 
-1. 在 Azure Cloud Shell 中运行以下命令，以添加 IoT 中心 CLI 扩展并创建设备标识。 
+1. 在 Azure Cloud Shell 中运行以下命令，以创建设备标识。
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
    **MyDevice**：这是为注册的设备提供的名称。 如示例中所示使用 MyDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
@@ -89,13 +90,11 @@ node --version
 
    `"HostName={YourIoTHubName}.azure-devices.net;SharedAccessKeyName=service;SharedAccessKey={YourSharedAccessKey}"`
 
-
 ## <a name="ssh-to-a-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
 
 ### <a name="run-the-device-local-proxy"></a>运行设备本地代理
 
 如前所述，IoT 中心 Node.js SDK 仅支持服务端的设备流。 对于设备本地应用程序，请使用 [C 快速入门](./quickstart-device-streams-proxy-c.md)或 [C# 快速入门](./quickstart-device-streams-proxy-csharp.md)指南中随附的设备代理程序。 请继续下一步之前，请确保设备本地代理正在运行。
-
 
 ### <a name="run-the-service-local-proxy"></a>运行服务本地代理
 
@@ -128,13 +127,12 @@ node --version
   ```
 
 ### <a name="ssh-to-your-device-via-device-streams"></a>使用 SSH 通过设备流连接到设备
+
 在 Linux 中，请在终端上使用 `ssh $USER@localhost -p 2222` 运行 SSH。 在 Windows 中，请使用偏好的 SSH 客户端（例如 PuTTY）。
 
 建立 SSH 会话后服务本地的控制台输出（服务本地代理侦听端口 2222）：![替代文本](./media/quickstart-device-streams-proxy-nodejs/service-console-output.PNG "SSH 终端输出")
 
-
 SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：![替代文本](./media/quickstart-device-streams-proxy-nodejs/ssh-console-output.PNG "SSH 客户端输出")
-
 
 ### <a name="rdp-to-your-device-via-device-streams"></a>使用 RDP 通过设备流连接到设备
 
@@ -145,7 +143,6 @@ SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地
 
 ![替代文本](./media/quickstart-device-streams-proxy-nodejs/rdp-screen-capture.PNG "使用 RDP 客户端连接到服务本地代理。")
 
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
@@ -154,7 +151,7 @@ SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地
 
 在本快速入门中，你设置了一个 IoT 中心、注册了一个设备，并部署了一个用于通过 RDP 和 SSH 连接到 IoT 设备的服务代理程序。 将使用设备流通过 IoT 中心以隧道方式传输 RDP 和 SSH 流量。 这样就无需与设备建立直接连接。
 
-请使用以下链接详细了解设备流：
+使用以下链接详细了解设备流：
 
 > [!div class="nextstepaction"]
 > [设备流概述](./iot-hub-device-streams-overview.md)

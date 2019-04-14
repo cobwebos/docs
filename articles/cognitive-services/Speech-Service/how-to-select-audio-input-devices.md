@@ -10,16 +10,17 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: e8e2bd34ebb5b789bb3e9ba4a419ab424d3fdf5a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 97a3f00bcb5b1a0fb3f499657044b9d83f5b08d7
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550664"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59010373"
 ---
 # <a name="select-an-audio-input-device-with-the-speech-sdk"></a>使用语音 SDK 选择音频输入设备
 
-1.3.0 版语音 SDK 引入了用于选择音频输入的 API。本文介绍如何获取已连接到系统的音频设备的 ID。
+语音 SDK 1.3.0 版引入了一个 API，用于选择音频输入。
+本文介绍如何获取连接到系统的音频设备的 ID。
 然后，可以通过 `AudioConfig` 对象配置音频设备，以便在语音 SDK 中使用这些项目：
 
 ```C++
@@ -42,8 +43,11 @@ audioConfig = AudioConfiguration.FromMicrophoneInput("<device id>");
 audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
 ```
 
-> [!NOTE]
-> 目前无法通过 JavaScript 使用此功能。
+```JavaScript
+audioConfig = AudioConfiguration.fromMicrophoneInput("<device id>");
+```
+>[!Note]
+> 在 Node.js 中运行的 JavaScript 无法使用麦克风
 
 ## <a name="audio-device-ids-on-windows-for-desktop-applications"></a>在 Windows 桌面版应用程序上的音频设备 ID
 
@@ -367,6 +371,10 @@ iOS 不支持通过语音 SDK 来选择音频设备。
 ```
 
 将蓝牙耳机用于支持语音的应用。
+
+## <a name="audio-device-ids-in-javascript"></a>JavaScript 中的音频设备 ID
+
+在 JavaScript 中，[MediaDevices.enumerateDevices()](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/enumerateDevices) 方法可用于枚举媒体设备并查找要传递给 `fromMicrophone(...)` 的设备 ID。
 
 ## <a name="next-steps"></a>后续步骤
 

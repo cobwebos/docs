@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5b5a037f5d13db1f0f1c704a52fb1fd9b712cd8e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: ff26acc1050a6104525ec44304fd9fee21d6d3cb
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448343"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275566"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panorama9"></a>教程：Azure Active Directory 与 Panorama9 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "58448343"
 
 要配置 Panorama9 与 Azure AD 的集成，需要从库中将 Panorama9 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Panorama9，请执行以下步骤：
+**若要从库中添加 Panorama9，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,9 +105,9 @@ ms.locfileid: "58448343"
 
     ![Panorama9 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://dashboard.panorama9.com/saml/access/3262`
+    a. 在“登录 URL”文本框中，键入 URL： `https://dashboard.panorama9.com/saml/access/3262`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://www.panorama9.com/saml20/<tenant-name>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://www.panorama9.com/saml20/<tenant-name>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Panorama9 客户端支持团队](https://support.panorama9.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -237,7 +237,7 @@ ms.locfileid: "58448343"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

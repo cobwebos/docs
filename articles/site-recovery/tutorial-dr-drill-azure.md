@@ -6,36 +6,41 @@ manager: carmonm
 ms.service: site-recovery
 services: site-recovery
 ms.topic: tutorial
-ms.date: 03/19/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 7e85226d15b818dda65600760b3950fab9dd7aaf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: b93fb92c9170f3e0fb7bd6ee754dde5df729e299
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312319"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59358184"
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>运行 Azure 灾难恢复演练
 
-本文演示如何使用测试故障转移对 Azure 本地计算机运行灾难恢复演练。 演练在不丢失数据的情况下验证你的复制策略。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务对本地计算机运行到 Azure 的灾难恢复演练。 演练在不丢失数据的情况下验证你的复制策略。
 
-这是本系列的第四个教程，演示如何为本地 VMware VM 或 Hyper-V VM 设置到 Azure 的灾难恢复。
 
-本教程假定你已完成头三个教程：
-- 在[第一个教程](tutorial-prepare-azure.md)中，我们设置了 VMware 灾难恢复所需的 Azure 组件。
-- 在[第二个教程](vmware-azure-tutorial-prepare-on-premises.md)中，我们准备了用于灾难恢复的本地组件，并查看了先决条件。
-- 在[第三个教程](vmware-azure-tutorial.md)中，我们为本地 VMware VM 设置并启用了复制。
-- 教程旨在介绍**方案的最简单部署路径**。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 如果想要更详细地了解测试故障转移步骤，请阅读[操作方法指南](site-recovery-test-failover-to-azure.md)。
+这是本系列的第四个教程，演示如何为本地计算机设置到 Azure 的灾难恢复。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 设置隔离式网络以用于测试故障转移
 > * 准备在故障转移后连接到 Azure VM
-> * 为单一计算机运行测试故障转移
+> * 为单一计算机运行测试故障转移。
 
+> [!NOTE]
+> 教程介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 如果想要更详细地了解灾难恢复演练步骤，请[查看本文](site-recovery-test-failover-to-azure.md)。
 
+## <a name="before-you-start"></a>开始之前
+
+完成前一篇教程：
+
+1. 确保已[设置 Azure](tutorial-prepare-azure.md)，以便能够将本地 VMware VM、Hyper-V VM 和物理计算机灾难恢复到 Azure。
+2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 环境，以实现灾难恢复。 若要为物理服务器设置灾难恢复，请查看[支持矩阵](vmware-physical-secondary-support-matrix.md)。
+3. 为 [VMware VM](vmware-azure-tutorial.md)、[Hyper-V VM](hyper-v-azure-tutorial.md) 或[物理计算机](physical-azure-disaster-recovery.md)设置灾难恢复。
+ 
 
 ## <a name="verify-vm-properties"></a>验证 VM 属性
 
@@ -76,14 +81,13 @@ ms.locfileid: "58312319"
 
 在某些情况下，故障转移需要大约八到十分钟的时间完成其他进程。 你可能注意到，VMware Linux 计算机、未启用 DHCP 服务的 VMware VM，以及未安装启动驱动程序（storvsc、vmbus、storflt、intelide、atapi）的 VMware VM 需要更长的测试故障转移时间。
 
-## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>准备在故障转移后连接到 Azure VM
+## <a name="connect-after-failover"></a>在故障转移后连接
 
-如果想要在故障转移后使用 RDP/SSH 连接到 Azure VM，请遵照[此处](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)表格中汇总的要求。
-
-按照[此处](site-recovery-failover-to-azure-troubleshoot.md)所述步骤对故障转移后的任何连接问题进行故障排除。
+如果要在故障转移后使用 RDP/SSH 连接到 Azure VM，请[准备连接](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)。 如果故障转移后遇到任何连接问题，请遵循[故障排除](site-recovery-failover-to-azure-troubleshoot.md)指南予以解决。
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [为本地 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)。
-> [为本地 Hyper-V VM 运行故障转移和故障回复](hyper-v-azure-failover-failback-tutorial.md)。
+> [针对 VMware VM 运行故障转移和故障回复](vmware-azure-tutorial-failover-failback.md)。
+> [针对 Hyper-V VM 运行故障转移和故障回复](hyper-v-azure-failover-failback-tutorial.md)。
+> [针对物理计算机运行故障转移和故障回复](physical-to-azure-failover-failback.md)

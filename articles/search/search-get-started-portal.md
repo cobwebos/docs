@@ -1,23 +1,29 @@
 ---
-title: 使用 Azure 门户索引和查询快速入门教程 - Azure 搜索
-description: 了解如何使用 Azure 门户中的内置示例数据和导入数据向导在 Azure 搜索中构建和查询第一个索引。
+title: 快速入门：在 Azure 门户中创建、加载和查询索引 - Azure 搜索
+description: 使用 Azure 门户中的内置示例数据和导入数据向导在 Azure 搜索中构建和查询第一个索引。
 author: HeidiSteen
 manager: cgronlun
 tags: azure-portal
 services: search
 ms.service: search
 ms.topic: tutorial
-ms.date: 02/13/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 85fc8a42f5220aa8f05495aa260d05ce009884f0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58137821"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282655"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
+> [!div class="op_single_selector"]
+> * [门户](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+> * [C#](search-create-index-dotnet.md)
+>*
 
 若要快速提升 Azure 搜索概念，请尝试 Azure 门户中的内置工具。 向导和编辑器不提供与 .NET 和 REST API 完全相同的功能，但你可以快速开始使用无代码的介绍，在几分钟内针对示例数据编写感兴趣的查询。
 
@@ -222,7 +228,7 @@ ms.locfileid: "58137821"
 
 ### <a name="fuzzy-search"></a> 试用模糊搜索
 
-默认情况下，执行典型的搜索时，如果拼错查询字词（例如，将西雅图地区的 Samammish 高原拼写为 *samamish*），则无法返回匹配项。 以下示例不会返回任何结果。
+默认情况下，执行典型的搜索时，如果拼错查询字词（例如，将西雅图区域的 Sammamish 高原拼写为 *samamish*），则无法返回匹配项。 以下示例不会返回任何结果。
 
 #### <a name="example-misspelled-term-unhandled-searchsamamish"></a>示例（拼错字词且未经处理）：`search=samamish`
 
@@ -268,4 +274,4 @@ ms.locfileid: "58137821"
 
 * [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [使用 REST API 创建索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [使用 Postman/Fiddler 和 Azure 搜索 REST Api 创建索引](search-fiddler.md)
+* [使用 Postman/Fiddler 和 Azure 搜索 REST API 创建索引](search-fiddler.md)

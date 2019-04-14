@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: c84241abc69b5bd070d893ba57fb60b90d4d6d28
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 73a19fa97a898e2c51912a18f46751e855ee0303
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295583"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>教程：Azure Active Directory 与 IMPAC Risk Manager 集成
 
@@ -51,7 +51,7 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
 
 若要配置 IMPAC Risk Manager 与 Azure AD 的集成，需要将库中的 IMPAC Risk Manager 添加到托管 SaaS 应用列表。
 
-若要从库中添加 IMPAC Risk Manager，请执行以下步骤：
+**若要从库中添加 IMPAC Risk Manager，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -219,6 +219,6 @@ IMPAC Risk Manager 与 Azure AD 的集成可提供以下优势：
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

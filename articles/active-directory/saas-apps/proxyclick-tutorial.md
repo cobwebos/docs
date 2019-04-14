@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: d37e3cc56b4a80fce9dcae6f87ff626867496007
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: b797c7d49495aac90abb31a9214bf2928784a866
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578315"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59262391"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proxyclick"></a>教程：Azure Active Directory 与 Proxyclick 集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "58578315"
 
     ![Proxyclick 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://saml.proxyclick.com/init/<companyId>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://saml.proxyclick.com/init/<companyId>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://saml.proxyclick.com/consume/<companyId>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://saml.proxyclick.com/consume/<companyId>`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -250,7 +250,7 @@ ms.locfileid: "58578315"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

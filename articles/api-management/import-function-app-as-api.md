@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 08/28/2018
 ms.author: apimpm
-ms.openlocfilehash: e86bd797774448d8e4821ff02d358d420a099442
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: fe6a008a6cbd2ca4e8aedeeca6d96cc00f6b29d1
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55810773"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046047"
 ---
 # <a name="import-an-azure-function-app-as-an-api-in-azure-api-management"></a>在 Azure API 管理中将 Azure Function App 作为 API 导入
 
@@ -69,7 +69,7 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
     ![从 Function App 添加](./media/import-function-app-as-api/add-05.png)
 
     > [!NOTE]
-    > 可以只导入基于 HTTP 触发器的 Functions，并将授权级别设置设为“匿名”或“函数”。
+    > 可以只导入基于 HTTP 触发器的 Functions，并将授权级别设置设为“匿名”或“函数”。 目前，不支持 Linux Function App。
 
 7. 切换到“完整”视图并将“产品”分配到新 API。 如果需要，请编辑预先填充的字段。
 
@@ -111,11 +111,14 @@ Azure API 管理支持将 Azure Function App 作为新 API 导入或将其追加
 
     ![从 Function App 追加](./media/import-function-app-as-api/append-04.png)
 
-## <a name="function-app-import-keys"></a> 生成的 Azure Function App 主机密钥
+## <a name="authorization"></a> 授权
 
 导入 Azure Function App 会自动生成：
+
 * 主机密钥，该密钥位于 Function App 中，其名称为 apim-{*你的 Azure API 管理服务实例名称*}；
-* 命名值，该值位于 Azure API 管理实例中，，其名称为 {*你的 Azure Function App 实例名称*}-key，其中包含创建的主机密钥。
+* 命名值，该值位于 Azure API 管理实例中，其名称为 {*你的 Azure Function App 实例名称*}-key，其中包含创建的主机密钥。
+
+对于 2019 年 4 月 4 日以后创建的 API，主机密钥将通过 HTTP 请求从 API 管理传递到标头中的 Function App。 较旧的 API 将主机密钥作为[查询参数](../azure-functions/functions-bindings-http-webhook.md#api-key-authorization)传递。 可以通过对与 Function App 关联的*后端*实体进行 `PATCH Backend` [REST API 调用](https://docs.microsoft.com/rest/api/apimanagement/backend/update#backendcredentialscontract)来更改此行为。
 
 > [!WARNING]
 > 删除或更改 Azure Function App 主机密钥或 Azure API 管理命名值的值会导致服务之间的通信中断。 这些值不自动同步。

@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/18/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 32b9b12c2adf03a4cb0616a5da48dd33fc81fb4f
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
+ms.openlocfilehash: 8a85a21d47733bb031ea8ca16f776ea8c2df6da2
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52973080"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59291682"
 ---
-Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义（如文本或二进制数据）的数据。 
+Azure Blob 存储是 Microsoft 提供的适用于云的对象存储解决方案。 Blob 存储最适合存储巨量的非结构化数据。 非结构化数据是不遵循特定数据模型或定义（如文本或二进制数据）的数据。
 
 ## <a name="about-blob-storage"></a>关于 Blob 存储
 
@@ -30,8 +30,8 @@ Blob 存储用于：
 
 用户或客户端应用程序通过 HTTP/HTTPS 可以从世界任何地方访问 Blob 存储中的对象。 Blob 存储中的对象可以通过 [Azure 存储 REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api)、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azure.storage)、[Azure CLI](https://docs.microsoft.com/cli/azure/storage) 或 Azure 存储客户端库访问。 客户端库适用于各种语言，包括 [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/storage/client)、[Java](https://docs.microsoft.com/java/api/overview/azure/storage/client)、[Node.js](http://azure.github.io/azure-storage-node)、[Python](https://docs.microsoft.com/python/azure/)、[Go](https://github.com/azure/azure-storage-blob-go/)、[PHP](http://azure.github.io/azure-storage-php/) 和 [Ruby](http://azure.github.io/azure-storage-ruby)。
 
-## <a name="about-azure-data-lake-storage-gen2"></a>关于 Azure Data Lake Storage Gen2 
+## <a name="about-azure-data-lake-storage-gen2"></a>关于 Azure Data Lake Storage Gen2
 
-Blob 存储支持 Azure Data Lake storage Gen2，即 Microsoft 适用于云的企业大数据分析解决方案。 Azure Data Lake Storage Gen2 提供分层文件系统，具有 Blob 存储的优势，包括低成本的分层存储、高可用性、强一致性以及灾难恢复能力。 
+Blob 存储支持 Azure Data Lake storage Gen2，即 Microsoft 适用于云的企业大数据分析解决方案。 Azure Data Lake Storage Gen2 提供分层文件系统，具有 Blob 存储的优势，包括低成本的分层存储、高可用性、强一致性以及灾难恢复能力。
 
-有关 Data Lake Storage Gen2 的详细信息，请参阅 [Azure Data Lake Storage Gen2 预览版简介](../articles/storage/data-lake-storage/introduction.md)。
+有关 Data Lake Storage Gen2 的详细信息，请参阅 [Azure Data Lake Storage Gen2 简介](../articles/storage/data-lake-storage/introduction.md)。

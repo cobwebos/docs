@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 6e43c607c2dc67054bde7689d50e495a59e6b659
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540850"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270797"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -105,7 +105,7 @@ ms.locfileid: "58540850"
 <br/>
 <center>
 
-![演示制表符分隔数据集的 Notepad 文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+![演示制表符分隔数据集的记事本文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>设置项目
@@ -132,14 +132,14 @@ ms.locfileid: "58540850"
 1. 添加对 Azure Maps Web 控件 JavaScript 和 CSS 文件的引用：
 
     ```HTML
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-    <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
     ```
 
 1. 添加对 Azure Maps 服务模块的引用。 该模块是一个 JavaScript 库，用于包装 Azure Maps REST 服务，并使其可在 JavaScript 中方便使用。 该模块可用于增强搜索功能。
 
     ```HTML
-    <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
     ```
 
 1. 添加对 *index.js* 和 *index.css* 的引用：
@@ -454,7 +454,7 @@ ms.locfileid: "58540850"
         //Wait until the map resources are ready.
         map.events.add('ready', function() {
 
-        //Add your post-map load functionality.
+            //Add your post-map load functionality.
 
         });
     }
@@ -516,7 +516,7 @@ ms.locfileid: "58540850"
     window.onload = initialize;
     ```
 
-1. 在地图的 `load` 事件侦听器中，添加缩放控件和 HTML 标记以显示搜索区域的中心点。
+1. 在地图的 `ready` 事件侦听器中，添加缩放控件和 HTML 标记以显示搜索区域的中心点。
 
     ```JavaScript
     //Add a zoom control to the map.
@@ -533,7 +533,7 @@ ms.locfileid: "58540850"
     map.markers.add(centerMarker);
     ```
 
-1. 在地图的 `load` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 这使用户体验变得更流畅，并可改善性能。
+1. 在地图的 `ready` 事件侦听器中添加一个数据源。 然后，发出调用来加载和分析数据集。 对数据源启用聚集。 数据源聚集可将重叠的点组合到一个聚集中。 当用户放大地图时，聚集将分离成单独的点。 这使用户体验变得更流畅，并可改善性能。
 
     ```JavaScript
     //Create a data source, add it to the map, and then enable clustering.
@@ -548,7 +548,7 @@ ms.locfileid: "58540850"
     loadStoreData();
     ```
 
-1. 在地图的 `load` 事件侦听器中加载数据集后，定义层集来呈现数据。 气泡层用于呈现聚集数据点。 符号层用于呈现气泡层上方每个聚集中的点数。 另一个符号层在地图上呈现各个位置的自定义图标。
+1. 在地图的 `ready` 事件侦听器中加载数据集后，定义层集来呈现数据。 气泡层用于呈现聚集数据点。 符号层用于呈现气泡层上方每个聚集中的点数。 另一个符号层在地图上呈现各个位置的自定义图标。
 
    将 `mouseover` 和 `mouseout` 事件添加到气泡层和图标层，以便当用户将鼠标悬停在地图上的聚集或图标上时更改鼠标光标。 将 `click` 事件添加到聚集气泡层。 当用户选择任一聚集时，此 `click` 事件会将地图放大两个级别，并将地图中心点置于某个聚集上。 将 `click` 事件添加到图标层。 当用户选择单个位置图标时，此 `click` 事件会显示一个弹出窗口，其中显示了咖啡厅的详细信息。 将某个事件添加到地图，以监视地图何时完成移动。 激发此事件时，会更新列表面板中的项。  
 
@@ -926,7 +926,7 @@ ms.locfileid: "58540850"
 <br/>
 <center>
 
-![浏览器中请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![浏览器请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口，其中显示了该位置的信息。
 
@@ -970,3 +970,6 @@ ms.locfileid: "58540850"
 
 > [!div class="nextstepaction"]
 > [如何使用地图控件](how-to-use-map-control.md)
+
+> [!div class="nextstepaction"]
+> [使用数据驱动样式表达式](data-driven-style-expressions-web-sdk.md)

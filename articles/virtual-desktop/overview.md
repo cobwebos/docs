@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 03/21/2019
 ms.author: helohr
-ms.openlocfilehash: f922f940f6c579c8710dadec29b365e7cf4c7938
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6385838064c408ccfa23dacbd5785f8e82f3cc8b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577180"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049421"
 ---
 # <a name="what-is-windows-virtual-desktop-preview"></a>什么是 Windows 虚拟桌面预览版？ 
 
@@ -54,12 +54,12 @@ Windows 虚拟桌面现已推出公共预览版，它是一个在云中运行的
 
 设置 Windows 虚拟桌面并将用户成功连接到其 Windows 桌面和应用程序需要注意几个事项。
 
-首先，请确保根据所要部署的桌面和应用，为用户提供相应的许可证：
+首先，请确保根据所要部署的桌面和应用，为用户提供[相应的许可证](https://azure.microsoft.com/pricing/details/virtual-desktop/)：
 
 |操作系统|所需的许可证|
 |---|---|
-|Windows 10 Enterprise 多会话或 Windows 10 单会话|Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5|
-|Windows 7|Microsoft E3、E5、A3、A5、Business<br>Windows E3、E5、A3、A5|
+|Windows 10 Enterprise 多会话或 Windows 10 单会话|Microsoft 365 E3、E5、A3、A5、Business、F1<br>Windows E3、E5、A3、A5|
+|Windows 7|Microsoft 365 E3、E5、A3、A5、Business、F1<br>Windows E3、E5、A3、A5|
 |Windows Server 2012 R2、2016、2019|附带软件保障的 RDS 客户端访问许可证 (CAL)|
 
 基础结构需要满足以下要求才能支持 Windows 虚拟桌面：

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/22/2019
 ms.custom: mvc
-ms.openlocfilehash: faccebbd00b4ee9c8ecc257722ab87f0494d9466
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1418a9815e155a0c491fc65b16307fa2755bd964
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116684"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008896"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>教程：实现设备固件更新过程
 
@@ -100,7 +100,7 @@ az iot hub device-identity show-connection-string --device-id MyFirmwareUpdateDe
 
 ## <a name="start-the-firmware-update"></a>启动固件更新
 
-在后端应用程序中创建[自动设备管理配置](iot-hub-auto-device-config.md#create-a-configuration)即可在其 **devicetype** 标记为冷却器的所有设备上开始固件更新过程。 本部分介绍以下操作：
+在后端应用程序中创建[自动设备管理配置](iot-hub-automatic-device-management.md#create-a-configuration)即可在其 **devicetype** 标记为冷却器的所有设备上开始固件更新过程。 本部分介绍以下操作：
 
 * 在后端应用程序中创建配置。
 * 监视作业，直至其完成。
@@ -209,4 +209,4 @@ az group delete --name tutorial-iot-hub-rg
 本教程介绍了如何针对连接的设备实施固件更新过程。 转到下一教程，了解如何使用 Azure IoT 中心门户工具和 Azure CLI 命令来测试设备连接性。
 
 > [!div class="nextstepaction"]
-> [使用模拟设备测试 IoT 中心的连接](tutorial-connectivity.md)
+> [使用模拟设备测试与 IoT 中心的连接](tutorial-connectivity.md)

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Data Box Edge in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: a1357e92b868f85556fc4d665eb475abd095fece
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 46192d32e70e371325abeafd4da26fa29e491b13
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400010"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278473"
 ---
 # <a name="tutorial-install-azure-data-box-edge"></a>教程：安装 Azure Data Box Edge
 
@@ -90,7 +90,9 @@ ms.locfileid: "58400010"
 
 - 在开始之前，请阅读“安全、环保和法规信息”小册子中的安全指示。 这本小册子已随设备一起交付。
 - 在最靠近机箱底部的分配空间中开始安装导轨。
-- 若要装配工模导轨，需要提供八颗螺丝，其规格为 #10-32、#12-24、#M5 或 #M6。 螺丝的头端直径必须小于 10 毫米（0.4 英寸）。
+- 对于工具导轨安装配置：
+    -  需要提供八个螺钉：#10-32、#12-24、#M5 或 #M6。 螺丝的头端直径必须小于 10 毫米（0.4 英寸）。
+    -  需要一把平头螺丝刀。
 
 ### <a name="identify-the-rail-kit-contents"></a>识别导轨工具包内容
 
@@ -102,6 +104,9 @@ ms.locfileid: "58400010"
 
 ### <a name="install-and-remove-tool-less-rails-square-hole-or-round-hole-racks"></a>安装和拆除免工具导轨（方孔或圆孔机架）
 
+> [!TIP]
+> 此选项无需工具，因为它不需要工具即可将导轨安装到机架上的无螺纹方孔或圆孔中并可将其拆除。
+
 1. 朝内定位好标有 **FRONT** 的左右导轨尾段并摆放好每个尾段，使之固定在立式机架法兰正面的孔位中。
 2. 在所需 U 形空间的下孔和上孔中对齐每个尾段。
 3. 啮合导轨的末端，使之完全进入立式机架法兰，并且闩锁卡入就位。 在立式机架法兰上重复这些步骤以定位和固定正面尾段。
@@ -110,6 +115,9 @@ ms.locfileid: "58400010"
 ![安装和拆除免工具导轨](./media/data-box-edge-deploy-install/installing-removing-tool-less-rails.png)
 
 ### <a name="install-and-remove-tooled-rails-threaded-hole-racks"></a>安装和拆除工模导轨（螺孔机架）
+
+> [!TIP]
+> 此选项需要工具，因为它需要工具（_平头螺丝刀_）来将导轨安装到机架上的螺纹圆孔中并可将其拆除。
 
 1. 使用一字螺丝刀拆下正面和背面安装支架上的定位销。
 2. 拉起并旋转导轨闩锁附属装配件，从安装支架上将其拆下。
@@ -152,7 +160,7 @@ ms.locfileid: "58400010"
 
 1. 在两个机架法兰的内侧找到外部 CMA 支架。
 2. 轻轻绑好线缆，将其拉到左侧。请不要碰到系统连接器。
-3. 在系统两侧的外部 CMA 支架上的工模槽中合上粘扣带，以紧固绑在一起的线缆。
+3. 将挂钩和环带穿过系统两侧外部 CMA 支架上的插槽，以固定电缆束。
 
 
 ![布线](./media/data-box-edge-deploy-install/routing-cables.png)

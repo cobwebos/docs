@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 11ac9d859ec76c782f762dfc6f424d70ea487665
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 041f1e9706c7d815dad1a33104e7dd15b2cc3893
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360222"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270217"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-syncplicity"></a>教程：Azure Active Directory 与 Syncplicity 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "58360222"
 
 若要配置 Syncplicity 与 Azure AD 的集成，需要从库中将 Syncplicity 添加到托管 SaaS 应用列表。
 
-**若要从库添加 Syncplicity，请执行以下步骤：**
+**若要从库中添加 Syncplicity，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,9 +105,9 @@ ms.locfileid: "58360222"
 
     ![Syncplicity 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.syncplicity.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.syncplicity.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.syncplicity.com/sp`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<companyname>.syncplicity.com/sp`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Syncplicity 客户端支持团队](https://www.syncplicity.com/contact-us)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -136,7 +136,7 @@ ms.locfileid: "58360222"
 
 1. 在“单一登录(SSO)”对话框页上，执行以下步骤：
 
-    ![单一登录\(\)SSO](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
+    ![单一登录 \(SSO\)](./media/syncplicity-tutorial/ic769550.png "Single Sign-On \\\(SSO\\\)")
 
     a. 在“自定义域”文本框中，键入域名。
   
@@ -245,6 +245,6 @@ ms.locfileid: "58360222"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

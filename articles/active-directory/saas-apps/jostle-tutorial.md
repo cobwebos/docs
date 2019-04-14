@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fd2e9c90a7ae2593b2b4d6502ce55b3aee579db
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6304f4afa05850ced8b88bb81c0f94e4a31fb5be
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903551"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277252"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jostle"></a>教程：Azure Active Directory 与 Jostle 集成
 
@@ -105,11 +105,11 @@ ms.locfileid: "57903551"
 
     ![Jostle 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://login-prod.jostle.us`
+    a. 在“登录 URL”文本框中，键入 URL： `https://login-prod.jostle.us`
 
-    b. 在“标识符”框中键入 URL `https://jostle.us`：
+    b. 在“标识符”框中键入 URL： `https://jostle.us`
 
-    c. 在“回复 URL”文本框中键入 URL：`https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
+    c. 在“回复 URL”文本框中键入 URL： `https://login-prod.jostle.us/saml/SSO/alias/newjostle.us`
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
@@ -197,6 +197,6 @@ ms.locfileid: "57903551"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

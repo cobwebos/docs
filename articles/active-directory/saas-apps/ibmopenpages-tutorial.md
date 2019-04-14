@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc5403dee386db2fbdabc124b80fb559a59e637a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 699e4830b6399fbce07dfc125e69513b58f58dd1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834908"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ibm-openpages"></a>教程：Azure Active Directory 与 IBM OpenPages 集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "57834908"
 
     ![IBM OpenPages 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`http://<subdomain>.ibm.com:<ID>/openpages`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `http://<subdomain>.ibm.com:<ID>/openpages`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.ibm.com:<ID>/samlsps/op`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.ibm.com:<ID>/samlsps/op`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [IBM OpenPages 客户端支持团队](https://www.ibm.com/support/home/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -195,6 +195,6 @@ ms.locfileid: "57834908"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

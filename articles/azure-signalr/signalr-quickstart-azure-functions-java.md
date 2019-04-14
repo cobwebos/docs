@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/04/2019
 ms.author: zhshang
-ms.openlocfilehash: b2f89d3fbb427cc3e14be231d4ffae879e641f2c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 9e4e64b99a69e523547bae04146c7460d08bc1df
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57554836"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261167"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-java"></a>快速入门：使用 Java 通过 Azure Functions 和 SignalR 服务创建聊天室
 
@@ -58,18 +58,18 @@ ms.locfileid: "57554836"
 
     ![创建 SignalR 服务](media/signalr-quickstart-azure-functions-javascript/signalr-quickstart-keys.png)
 
-1. 在代码编辑器中，打开克隆存储库中的 *chat/src/java* 文件夹。
+1. 在代码编辑器中，打开克隆存储库中的 *src/chat/java* 文件夹。
 
 1. 将 *local.settings.sample.json* 重命名为 *local.settings.json*。
 
 1. 在 **local.settings.json** 中，将连接字符串粘贴到 **AzureSignalRConnectionString** 设置的值中。 保存文件。
 
-1. 包含这些函数的主文件位于 *src/main/java/com/function/Functions.java* 中：
+1. 包含这些函数的主文件位于 *src/chat/java/src/main/java/com/function/Functions.java* 中：
 
     - **negotiate** - 使用 *SignalRConnectionInfo* 输入绑定生成并返回有效的连接信息。
     - **sendMessage** - 在请求正文中接收聊天消息，并使用 *SignalR* 输出绑定将消息广播到所有连接的客户端应用程序。
 
-1. 在终端中，确保你位于 *chat/src/java* 文件夹中。 生成函数应用。
+1. 在终端中，确保你位于 *src/chat/java* 文件夹中。 生成函数应用。
 
     ```bash
     mvn clean package
@@ -90,4 +90,4 @@ ms.locfileid: "57554836"
 在本快速入门中，使用 Maven 生成并运行了一个实时无服务器应用程序。 接下来，了解如何从头开始创建 Java Azure Functions。
 
 > [!div class="nextstepaction"]
-> [使用 Java 和 Maven 创建第一个函数](../azure-functions/functions-create-first-java-maven.md)
+> [使用 Java 和 Maven 创建你的第一个函数](../azure-functions/functions-create-first-java-maven.md)

@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
-ms.openlocfilehash: 1358751c71dfba39574807c9b232957227980f5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887504"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282553"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box 将数据导入为托管磁盘
 
@@ -46,7 +46,7 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 - `mydbmdrg1_MDisk`
 - `mydbmdrg2_MDisk`
 
-在每个共享中，将创建对应于存储帐户中的容器的以下四个文件夹。
+在每个共享中，将创建对应于存储帐户中的容器的以下三个文件夹。
 
 - 高级·SSD
 - 标准 HDD

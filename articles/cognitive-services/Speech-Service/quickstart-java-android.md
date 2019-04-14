@@ -10,19 +10,19 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: wolfma
-ms.openlocfilehash: 9458f052258993ee598ddfbca262faf8f6cb4ab9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 690656449fdb86c200a8978f0e17db562e4abbca
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258541"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009172"
 ---
 # <a name="quickstart-recognize-speech-in-java-on-android-by-using-the-speech-sdk"></a>快速入门：使用语音 SDK 在 Android 上的 Java 中识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
 本文介绍如何使用认知服务语音 SDK 将语音转为文本，进而开发适用于 Android 的 Java 应用程序。
-该应用程序基于 Microsoft 认知服务语音 SDK Maven 包（版本 1.3.1）和 Android Studio 3.1。
+该应用程序基于语音 SDK Maven 包（版本 1.4.0）和 Android Studio 3.3。
 语音 SDK 目前与具有 32/64 位 ARM 和 Intel x86/x64 兼容处理器的 Android 设备兼容。
 
 > [!NOTE]
@@ -38,27 +38,19 @@ ms.locfileid: "58258541"
 
     ![Android Studio 的“欢迎”窗口的屏幕截图](media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. 此时会显示“新建项目”向导。 在“创建 Android 项目”屏幕中，输入“快速入门”作为应用程序名称，输入“samples.speech.cognitiveservices.microsoft.com”作为公司域，并选择项目目录。 不勾选 C++ 和 Kotlin 复选框，选择“下一步”。
+1. 此时会出现“选择项目”向导，在活动选择框中选择“手机和平板电脑”以及“空活动”。 选择“**下一步**”。
 
-   ![“新建项目”向导的屏幕截图](media/sdk/qs-java-android-02-create-android-project.png)
+   ![“选择项目”向导的屏幕截图](media/sdk/qs-java-android-02-target-android-devices.png)
 
-1. 在“目标 Android 设备”屏幕中，仅选择“手机和平板电脑”。 在下方的下拉列表中选择“API 23:Android 6.0 (Marshmallow)”，然后选择“下一步”。
+1. 在“配置项目”屏幕中，输入“Quickstart”作为名称，输入“samples.speech.cognitiveservices.microsoft.com”作为包名称，并选择项目目录。 对于**最低 API 级别**，选取“API 23: Android 6.0 (Marshmallow)”，将所有其他复选框保留未选中，然后选择“完成”。
 
-   ![“新建项目”向导的屏幕截图](media/sdk/qs-java-android-03-target-android-devices.png)
-
-1. 在“将活动添加到移动设备”屏幕中，选择“空活动”并单击“下一步”。
-
-   ![“新建项目”向导的屏幕截图](media/sdk/qs-java-android-04-add-an-activity-to-mobile.png)
-
-1. 在“配置活动”屏幕中，使用“MainActivity”作为活动名称，并使用“activity\_main”作为布局名称。 选择这两个复选框，然后选择“完成”。
-
-   ![“新建项目”向导的屏幕截图](media/sdk/qs-java-android-05-configure-activity.png)
+   ![“配置项目”向导的屏幕截图](media/sdk/qs-java-android-03-create-android-project.png)
 
 Android Studio 需要一定的时间来准备你的新 Android 项目。 接下来对项目进行配置，以便了解 Speech SDK 并使用 Java 8。
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.3.1`。
+认知服务语音 SDK 的当前版本是 `1.4.0`。
 
 将适用于 Android 的语音 SDK 打包为 [AAR（Android 库）](https://developer.android.com/studio/projects/android-library)，其内附必要的库以及所需的 Android 权限。
 它托管在位于 https:\//csspeechstorage.blob.core.windows.net/maven/ 处的 Maven 存储库中。
@@ -73,7 +65,7 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
    ![“项目结构”窗口的屏幕截图](media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. 在出现的窗口中，输入适用于 Android 的语音 SDK 的名称和版本 (`com.microsoft.cognitiveservices.speech:client-sdk:1.3.1`)。 然后选择“确定”。
+1. 在出现的窗口中，输入适用于 Android 的语音 SDK 的名称和版本 (`com.microsoft.cognitiveservices.speech:client-sdk:1.4.0`)。 然后选择“确定”。
    现应将语音 SDK 添加到依赖项列表中，如下所示：
 
    ![“项目结构”窗口的屏幕截图](media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
@@ -100,16 +92,9 @@ Android Studio 需要一定的时间来准备你的新 Android 项目。 接下�
 
 现在，UI 的文本和图形表示形式应如下所示：
 
-<table>
-<tr>
-<td valign="top">
 ![](media/sdk/qs-java-android-11-gui.png)
-</td>
-<td valign="top">
+
 [!code-xml[](~/samples-cognitive-services-speech-sdk/quickstart/java-android/app/src/main/res/layout/activity_main.xml)]
-</td>
-</tr>
-</table>
 
 ## <a name="add-sample-code"></a>添加示例代码
 

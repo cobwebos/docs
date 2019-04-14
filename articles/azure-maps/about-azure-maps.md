@@ -9,18 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 023f5ed43453d7fb20dec5d91651230aa8fb4370
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.openlocfilehash: 944a111ac0c31e755b3991f9ea101ba652c676d3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571297"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268751"
 ---
 # <a name="what-is-azure-maps"></a>什么是 Azure Maps？
 
-Azure Maps 是通过可用的全新地图数据解锁的一系列地理空间服务，为 Web 和移动应用程序提供准确的地理上下文。 Azure Maps 包含多个 REST API，用于以多种样式和卫星成像来呈现**地图**；在全球**搜索**地址、地点和兴趣点；**路线**功能，其中包括点到点路线、多点路线、多点优化、等时路线、商用车路线、交通受影响的路线，以及矩阵路线；快速查看交通状况和交通事件；通过**地理位置**功能确定用户位置；将位置转换为**时区**；以及获取某个位置的时间。 另外，Azure Maps 还提供用于**地理围栏**的服务、地图**数据**存储 - 在 Azure 中托管位置信息；使用**空间操作**通过地理空间分析提供位置智能。 Azure Maps 服务以 REST API 形式直接提供，也可以通过功能强大的 **Web SDK** 或 **Android SDK** 来使用它。 在 Azure 云中，开发人员可以通过这些工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 立即注册获取免费的 [Azure Maps 帐户](https://azure.microsoft.com/services/azure-maps/)，开始开发！
+Azure Maps 是通过可用的全新地图数据解锁的一系列地理空间服务，为 Web 和移动应用程序提供准确的地理上下文。 Azure Maps 包含多个 REST API，用于以多种样式和卫星成像来呈现**地图**；在全球**搜索**地址、地点和兴趣点；**路线**功能，其中包括点到点路线、多点路线、多点优化、等时路线、商用车路线、交通受影响的路线，以及矩阵路线；查看行业领先的交通流量和交通事件；通过**地理位置**功能确定用户位置；将位置转换为**时区**；以及获取在某个位置的时间。 另外，Azure Maps 还提供用于**地理围栏**的服务、地图**数据**存储 - 在 Azure 中托管位置信息；使用**空间操作**通过地理空间分析提供位置智能。 Azure Maps 服务以 REST API 形式直接提供，也可以通过功能强大的 **Web SDK** 或 **Android SDK** 来使用它。 在 Azure 云中，开发人员可以通过这些工具快速开发和缩放将位置信息集成到 Azure 解决方案中的解决方案。 立即注册获取免费的 [Azure Maps 帐户](https://azure.microsoft.com/services/azure-maps/)，开始开发！
 
 以下视频深入介绍了 Azure Maps：
+
+<br/>
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Maps/player?format=ny" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
@@ -95,7 +97,7 @@ Azure Maps 包含以下六个可在 Azure 应用程序中提供地理上下文�
 “交通”服务是一套 Web 服务，旨在让开发人员创建交通所需的 Web 和移动应用程序。 该服务提供两种数据类型：
 
 * 交通流量 - 路网中所有关键道路的实时观察速度和行驶时间。
-* 交通事件 - 有关路网周围的交通堵塞和事故的准确视图。
+* 交通事件 - 有关路网周围的交通堵塞和事故的最新视图。
 
 ![Azure Maps 流量](media/about-azure-maps/Introduction_Traffic.png)
 
@@ -121,7 +123,7 @@ Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带为�
 
 ## <a name="supported-regions"></a>支持的区域
 
-只有以下国家/地区尚未推出 Azure Maps API：
+Azure Maps API 目前在除以下区域外的所有国家/地区都可用：
 
 * 阿根廷
 * 中国
@@ -139,7 +141,7 @@ Azure Maps 使用基于密钥的身份验证方案。 你的帐户将附带为�
 > [!div class="nextstepaction"]
 > [路线矩阵、等时线、IP 查找等](https://azure.microsoft.com/blog/route-matrix-isochrones-ip-lookup-and-more-added-to-azure-maps/)
 
-请继续尝试学习展示该服务的示例应用：
+试用一个展示 Azure Maps 的示例应用：
 
 > [!div class="nextstepaction"]
-> [启动演示交互式搜索地图](quick-demo-map-app.md)
+> [快速入门：创建 Web 应用](quick-demo-map-app.md)

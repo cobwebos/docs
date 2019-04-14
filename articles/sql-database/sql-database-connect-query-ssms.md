@@ -8,17 +8,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 2348b4293b8726c406b1f06b2f88c37dfb00e80c
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 86f29f07df6174ecead852fada73ac05f8682fca
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447755"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359978"
 ---
 # <a name="quickstart-use-sql-server-management-studio-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 SQL Server Management Studio 连接和查询 Azure SQL 数据库
 
@@ -44,7 +44,7 @@ ms.locfileid: "58447755"
 
 ## <a name="install-the-latest-ssms"></a>安装最新的 SSMS
 
-在开始之前，请确保已安装最新的 [SSMS][ssms-install-latest-84g]。 
+在开始之前，请确保已安装最新的 [SSMS][ssms-install-latest-84g]。
 
 ## <a name="get-sql-server-connection-information"></a>获取 SQL Server 连接信息
 
@@ -58,7 +58,7 @@ ms.locfileid: "58447755"
 
 ## <a name="connect-to-your-database"></a>连接到数据库
 
-在 SMSS 中，连接到 Azure SQL 数据库服务器。 
+在 SMSS 中，连接到 Azure SQL 数据库服务器。
 
 > [!IMPORTANT]
 > Azure SQL 数据库服务器在端口 1433 上进行侦听。 若要从公司防火墙后连接到 SQL 数据库服务器，该防火墙必须打开此端口。
@@ -68,12 +68,12 @@ ms.locfileid: "58447755"
 
 2. 输入以下信息：
 
-   | 设置      | 建议的值    | 说明 | 
-   | ------------ | ------------------ | ----------- | 
+   | 设置      | 建议的值    | 说明 |
+   | ------------ | ------------------ | ----------- |
    | **服务器类型** | 数据库引擎 | 所需的值。 |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
-   | **身份验证** | SQL Server 身份验证 | 本教程使用 SQL 身份验证。 |
-   | **登录名** | 服务器管理员帐户用户 ID | 用于创建服务器的服务器管理员帐户的用户 ID。 |
+   | **Authentication** | SQL Server 身份验证 | 本教程使用 SQL 身份验证。 |
+   | **登录** | 服务器管理员帐户用户 ID | 用于创建服务器的服务器管理员帐户的用户 ID。 |
    | **密码** | 服务器管理员帐户密码 | 用于创建服务器的服务器管理员帐户的密码。 |
    ||||
 
@@ -83,7 +83,7 @@ ms.locfileid: "58447755"
 
    ![连接到服务器上的 DB](./media/sql-database-connect-query-ssms/options-connect-to-db.png)  
 
-4. 选择“连接”。 此时会打开“对象资源管理器”窗口。 
+4. 选择“连接”。 此时会打开“对象资源管理器”窗口。
 
 5. 要查看数据库的对象，请展开“数据库”，然后展开“mySampleDatabase”。
 
@@ -140,15 +140,14 @@ ms.locfileid: "58447755"
 1. 将之前的查询替换为此查询。
 
    ```sql
-   SELECT * FROM [SalesLT].[Product] 
-   WHERE Name='myNewProduct' 
+   SELECT * FROM [SalesLT].[Product]
+   WHERE Name='myNewProduct'
    ```
-   
-2. 选择“执行”。 将显示以下结果。 
+
+2. 选择“执行”。 将显示以下结果。
 
    ![结果](./media/sql-database-connect-query-ssms/result.png)
 
- 
 ## <a name="update-data"></a>更新数据
 
 运行此 [UPDATE](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL 代码以修改新产品。
@@ -188,8 +187,6 @@ ms.locfileid: "58447755"
 - 若要使用 Python 进行连接和查询，请参阅[使用 Python 进行连接和查询](sql-database-connect-query-python.md)。
 - 若要使用 Ruby 进行连接和查询，请参阅[使用 Ruby 进行连接和查询](sql-database-connect-query-ruby.md)。
 
-
 <!-- Article link references. -->
 
 [ssms-install-latest-84g]: https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms
-

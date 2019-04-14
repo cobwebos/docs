@@ -8,17 +8,17 @@ ms.subservice: service
 ms.custom: ''
 ms.devlang: ''
 ms.topic: quickstart
-author: CarlRabeler
-ms.author: carlrab
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
-ms.openlocfilehash: 20d6ccca448d53da54835aad1d6dd85702c7390f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58446939"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357102"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio Code 连接和查询 Azure SQL 数据库
 
@@ -46,11 +46,11 @@ ms.locfileid: "58446939"
 
 请确保已安装最新版 [Visual Studio Code](https://code.visualstudio.com/Download) 并加载了 [mssql 扩展](https://aka.ms/mssql-marketplace)。 有关 mssql 扩展的安装指南，请参阅[安装 VS Code](https://docs.microsoft.com/sql/linux/sql-server-linux-develop-use-vscode#install-and-start-visual-studio-code) 和 [mssql for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-mssql.mssql)（适用于 Visual Studio Code 的 mssql）。
 
-## <a name="configure-visual-studio-code"></a>配置 Visual Studio Code 
+## <a name="configure-visual-studio-code"></a>配置 Visual Studio Code
 
-### <a name="mac-os"></a>**Mac OS**
+### **<a name="mac-os"></a>Mac OS**
 
-对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。 
+对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。
 
 ```bash
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -61,11 +61,11 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
+### **<a name="linux-ubuntu"></a>Linux (Ubuntu)**
 
 无需特殊配置。
 
-### <a name="windows"></a>**Windows**
+### **<a name="windows"></a>Windows**
 
 无需特殊配置。
 
@@ -83,13 +83,13 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 在 Visual Studio Code 中，将语言模式设置为 SQL，以便启用 mssql 命令和 T-SQL IntelliSense。
 
-1. 打开新的 Visual Studio Code 窗口。 
+1. 打开新的 Visual Studio Code 窗口。
 
-2. 按 Ctrl+N。 这会打开一个新的纯文本文件。 
+2. 按 Ctrl+N。 这会打开一个新的纯文本文件。
 
 3. 选择状态栏右下角的“纯文本”。
 
-4. 在打开的“选择语言模式”下拉菜单中，选择“SQL”。 
+4. 在打开的“选择语言模式”下拉菜单中，选择“SQL”。
 
 ## <a name="connect-to-your-database"></a>连接到数据库
 
@@ -97,7 +97,6 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 > [!IMPORTANT]
 > 在继续之前，请确保服务器和登录信息已准备就绪。 在开始输入连接配置文件信息的情况下，如果在 Visual Studio Code 中更改焦点，则需重新开始创建配置文件。
->
 
 1. 在 Visual Studio Code 中，按 Ctrl+Shift+P（或 F1）打开命令面板。
 
@@ -105,17 +104,17 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
 3. 选择“创建连接配置文件”。
 
-4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续。 
+4. 按照提示指定新配置文件的连接属性。 指定每个值后，选择“Enter”继续。
 
    | 属性       | 建议的值 | 说明 |
-   | ------------ | ------------------ | ------------------------------------------------- | 
+   | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |
-   | **身份验证** | SQL 登录名| 本教程使用 SQL 身份验证。 |
+   | **Authentication** | SQL 登录名| 本教程使用 SQL 身份验证。 |
    | **用户名** | 用户名 | 用于创建服务器的服务器管理员帐户的用户名。 |
    | **密码(SQL 登录名)** | 密码 | 用于创建服务器的服务器管理员帐户的密码。 |
    | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
-   | 输入此配置文件的名称 | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 | 
+   | **输入此配置文件的名称** | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
 
    如果成功，会显示通知，指出已创建并连接配置文件。
 
@@ -144,22 +143,22 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 
    ```sql
    INSERT INTO [SalesLT].[Product]
-           ( [Name]
-           , [ProductNumber]
-           , [Color]
-           , [ProductCategoryID]
-           , [StandardCost]
-           , [ListPrice]
-           , [SellStartDate]
-           )
+        ( [Name]
+        , [ProductNumber]
+        , [Color]
+        , [ProductCategoryID]
+        , [StandardCost]
+        , [ListPrice]
+        , [SellStartDate]
+        )
      VALUES
-           ('myNewProduct'
-           ,123456789
-           ,'NewColor'
-           ,1
-           ,100
-           ,100
-           ,GETDATE() );
+        ('myNewProduct'
+        ,123456789
+        ,'NewColor'
+        ,1
+         ,100
+         ,100
+         ,GETDATE() );
    ```
 
 2. 按 Ctrl+Shift+E 在 `Product` 表中插入新行。

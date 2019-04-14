@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
-ms.openlocfilehash: b962f0e7d571828fb3a1180b3d77a3368ef6c665
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: bb18aa35c89657f01319512eac6c15096174891f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852621"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-excelityglobal"></a>教程：Azure Active Directory 与 ExcelityGlobal 的集成
 
@@ -106,15 +106,15 @@ ms.locfileid: "57852621"
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：
 
-    **对于生产环境**：`https://ess.excelityglobal.com`
+    **对于生产环境**： `https://ess.excelityglobal.com`
 
-    **对于沙盒环境**：`https://s6.excelityglobal.com`
+    **对于沙盒环境**： `https://s6.excelityglobal.com`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
 
-    **对于生产环境**：`https://ess.excelityglobal.com/ACS`
+    **对于生产环境**： `https://ess.excelityglobal.com/ACS`
 
-    **对于沙盒环境**：`https://s6.excelityglobal.com/ACS`
+    **对于沙盒环境**： `https://s6.excelityglobal.com/ACS`
 
 5. ExcelityGlobal 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 ExcelityGlobal 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
  
@@ -160,7 +160,7 @@ ms.locfileid: "57852621"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -207,6 +207,6 @@ ms.locfileid: "57852621"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

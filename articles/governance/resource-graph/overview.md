@@ -1,19 +1,18 @@
 ---
 title: Azure Resource Graph 概述
 description: 了解如何使用 Azure Resource Graph 服务对资源进行大规模的复杂查询。
-services: resource-graph
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 02/06/2019
+ms.date: 03/29/2019
 ms.topic: overview
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: 15cfdc87fafa25e9f37c63c8159289b25a547817
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 28efdabc024fd32c83ba966b15284ec6ff368d4d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802316"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269277"
 ---
 # <a name="overview-of-the-azure-resource-graph-service"></a>Azure Resource Graph 服务概述
 
@@ -32,7 +31,7 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 
 当前，Azure 资源管理器向有限的资源缓存发送数据，该缓存提供多个资源字段，具体包括资源名称、ID、类型、资源组、订阅和位置。 以前，使用各种资源属性时，必须调用各个资源提供程序，并请求每个资源的属性详细信息。
 
-使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。
+使用 Azure Resource Graph，可以访问资源提供程序返回的这些属性，无需对资源提供程序进行单独调用。 如需支持的资源类型的列表，请在[完整模式部署的资源](../../azure-resource-manager/complete-mode-deletion.md)表中查找“是”。
 
 ## <a name="the-query-language"></a>查询语言
 
@@ -45,6 +44,9 @@ Azure Resource Graph 是 Azure 中的一项服务，旨在通过提供高效和�
 ## <a name="permissions-in-azure-resource-graph"></a>Azure Resource Graph 中的权限
 
 若要使用 Resource Graph，必须在[基于角色的访问控制](../../role-based-access-control/overview.md) (RBAC) 中至少拥有对想要查询的资源的读取权限。 必须至少有 Azure 对象或对象组的 `read` 权限，否则不会返回结果。
+
+> [!NOTE]
+> Resource Graph 使用主体在登录期间可用的订阅。 若要查看在活动会话期间添加的新订阅的资源，主体必须刷新上下文。 此操作在注销并重新登录时自动发生。
 
 ## <a name="throttling"></a>限制
 

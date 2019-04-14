@@ -10,19 +10,19 @@ ms.subservice: acoustics
 ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: 1575c4f4a1c96a84823f76e8e98e76de3c2ace86
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313016"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470383"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>项目音响效果 Unreal/Wwise 快速入门
 在本快速入门中，将使用为 Unreal Engine 和 Wwise 提供的示例内容来试验项目音响效果设计控件。
 
 所需软件：
-* [Unreal Engine 4.21](https://www.unrealengine.com/)
-* [Wwise 2018.1.6](https://www.audiokinetic.com/products/wwise/)
+* [Unreal Engine](https://www.unrealengine.com/) 4.21
+* [AudioKinetic Wwise](https://www.audiokinetic.com/products/wwise/) 2018.1.6
 
 ## <a name="download-the-sample-package"></a>下载示例包
 下载[项目音响效果 Unreal + Wwise 示例包](https://www.microsoft.com/download/details.aspx?id=58090)。 示例包中包含 Unreal Engine 项目、该 Unreal 项目的 Wwise 项目以及项目音响效果 Wwise 插件。
@@ -50,7 +50,7 @@ ms.locfileid: "58313016"
 
     ![Windows 资源管理器窗口的屏幕截图，其中显示修补 Wwise 项目的脚本](media/patch-wwise-script.png)
 
-* 如果没有安装 DirectX SDK，则需要在 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 DXSDK_DIR 的行
+* 如果没有安装 DirectX SDK，则需要在以下项中注释掉包含 DXSDK_DIR 的行 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 

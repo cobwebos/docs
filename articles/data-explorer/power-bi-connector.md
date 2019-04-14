@@ -1,19 +1,18 @@
 ---
 title: 快速入门：使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
 description: 本快速入门介绍如何使用三个选项中的一个在 Power BI 中可视化数据：Azure 数据资源管理器的 Power BI 连接器。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 11/14/2018
-ms.openlocfilehash: ca3e68f3ef039f86957e47e22df48922498c292f
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 1be13090244a94c1bf3f731c8b6d73fa0848c393
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754730"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047596"
 ---
 # <a name="quickstart-visualize-data-using-the-azure-data-explorer-connector-for-power-bi"></a>快速入门：使用 Power BI 的 Azure 数据资源管理器连接器直观显示数据
 

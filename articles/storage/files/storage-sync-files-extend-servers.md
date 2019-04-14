@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: 0372f34d5e58361d460465a9ddf4b6eed79a49f0
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55474813"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049132"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
 
@@ -28,6 +28,8 @@ ms.locfileid: "55474813"
 > * 创建服务器终结点
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
+[!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 
@@ -181,7 +183,7 @@ ms.locfileid: "55474813"
 1. 运行以下命令：
 
    ```powershell
-   Install-Module -Name AzureRm
+   Install-Module -Name Az
    ```
 
    > [!NOTE]
@@ -200,7 +202,7 @@ ms.locfileid: "55474813"
 
 1. 回答“是”或“全部确认”，可继续进行安装。
 
-`AzureRM` 模块是 Azure PowerShell cmdlet 的汇总模块。 安装它时，系统会下载所有可用的 Azure 资源管理器模块并使其 cmdlet 可供使用。
+`Az` 模块是 Azure PowerShell cmdlet 的汇总模块。 安装它时，系统会下载所有可用的 Azure 资源管理器模块并使其 cmdlet 可供使用。
 
 此时，你已设置本教程的环境。 可以部署存储同步服务了。
 
@@ -251,7 +253,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 向存储同步服务注册 Windows Server 可在服务器（或群集）与存储同步服务之间建立信任关系。 一个服务器只能注册到一个存储同步服务。 它可以与存储同步服务所关联的其他服务器和 Azure 文件共享同步。
 
-服务器注册 UI 会在 Azure 文件同步代理安装后自动打开。 如果没有，可以从其文件位置手动将其打开：`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+服务器注册 UI 会在 Azure 文件同步代理安装后自动打开。 如果没有，可以从其文件位置手动将其打开： `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. 服务器注册 UI 在 VM 中打开后，请选择“确定”。
 1. 选择“登录”即可开始操作。
@@ -305,7 +307,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
    | | |
    | ----- | ----- |
    | 值 | 说明 |
-   | **已注册的服务器** | 创建的服务器的名称。 就本教程来说，请使用 *afsvm101918*。 |
+   | **已注册服务器** | 创建的服务器的名称。 就本教程来说，请使用 *afsvm101918*。 |
    | **路径** | 创建的驱动器的 Windows Server 路径。 在本教程中，请使用 *f:\filestosync*。 |
    | **云分层** | 在本教程中，保留为禁用状态。 |
    | **卷可用空间** | 在本教程中，保留为空白。 |

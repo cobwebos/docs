@@ -17,12 +17,12 @@ ms.date: 04/01/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e6de55cb9f1f89c9c3cd809294890f63134a26d8
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 3cf4ec48942cbe345b12d2a358afc3dadbe63a96
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793163"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59360117"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
@@ -88,7 +88,7 @@ ms.locfileid: "58793163"
 > 其中：
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 > - `Enter_the_Tenant_Info_Here` - 是下述选项之一：
->   - 如果应用程序支持“仅我的组织”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+>   - 如果应用程序支持“仅我的组织”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.onmicrosoft.com）
 >   - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
 >   - 如果应用程序支持“所有 Microsoft 帐户用户”，请将该值替换为 `common`
 >
@@ -167,4 +167,4 @@ authResult = await App.PublicClientApp.AcquireTokenSilentAsync(scopes, accounts.
 试用 Windows 桌面教程，了解有关构建应用程序和新功能的完整分布指南，包括本快速入门的完整说明。
 
 > [!div class="nextstepaction"]
-> [UWP - 调用 Graph API 教程](tutorial-v2-windows-uwp.md)
+> [UWP - 调用图形 API 教程](tutorial-v2-windows-uwp.md)

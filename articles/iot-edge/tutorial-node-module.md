@@ -9,12 +9,12 @@ ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
-ms.openlocfilehash: 10026f0a9ff702ee45926ca097e9123ea3db06d5
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 3b79c75b9846a4f8966a113c6e06fabc25bcf011
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225920"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470944"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-to-your-simulated-device"></a>教程：开发 Node.js IoT Edge 模块并将其部署到模拟设备
 
@@ -35,8 +35,8 @@ ms.locfileid: "58225920"
 
 Azure IoT Edge 设备：
 
-* 可以按照适用于 [Linux](quickstart-linux.md) 或 [Windows 设备](quickstart.md)的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
-* 如果是在 Windows 上运行 IoT Edge，则 IoT Edge 版本 1.0.5 不支持 Node.js 模块。 有关详细信息，请参阅 [1.0.5 发行说明](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)。 有关如何安装特定版本的步骤，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。
+* 可以按照适用于 [Linux](quickstart-linux.md) 的快速入门中的步骤，将开发计算机或虚拟机用作 Edge 设备。
+* 用于 IoT Edge 的 Node.js 模块不支持 Windows 容器。 
 
 云资源：
 
@@ -47,6 +47,7 @@ Azure IoT Edge 设备：
 * [Visual Studio Code](https://code.visualstudio.com/)。 
 * 适用于 Visual Studio Code 的 [Azure IoT 工具](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-edge)。 
 * [Docker CE](https://docs.docker.com/engine/installation/)。 
+   * 如果是在 Windows 设备上进行开发，请确保将 Docker [配置为使用 Linux 容器](https://docs.docker.com/docker-for-windows/#switch-between-windows-and-linux-containers)。 
 * [Node.js 和 npm](https://nodejs.org)。 npm 包是随 Node.js 分发的，也就是说，下载 Node.js 时，npm 会自动安装在计算机上。
 
 ## <a name="create-a-container-registry"></a>创建容器注册表
@@ -184,7 +185,7 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 
 10. 在 VS Code 资源管理器的 IoT Edge 解决方案工作区中打开 **deployment.template.json** 文件。 此文件告知 IoT Edge 代理部署哪些模块（在本例中为 **tempSensor** 和 **NodeModule**），并告知 IoT Edge 中心如何在它们之间路由消息。 Visual Studio Code 扩展会自动填充部署模板中所需的大部分信息，但确保解决方案的所有内容都是准确的： 
 
-   1. 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **NodeModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7** 或 **windows-amd64**（如果这就是 IoT Edge 设备的体系结构）。 
+   1. 在 VS Code 状态栏中将 IoT Edge 的默认平台设置为 **amd64**，这意味着将 **NodeModule** 设置为映像的 Linux amd64 版本。 在状态栏中将默认平台从 **amd64** 更改为 **arm32v7**（如果这就是 IoT Edge 设备的体系结构）。 
 
       ![更新模块映像平台](./media/tutorial-node-module/image-platform.png)
 
@@ -229,8 +230,9 @@ VS Code 窗口将加载你的 IoT Edge 解决方案空间。 解决方案工作�
 >[!TIP]
 >如果你在尝试生成并推送模块时收到错误，请进行以下检查：
 >* 你在 Visual Studio Code 中登录到 Docker 时是否使用了来自容器注册表的凭据？ 这些凭据不同于用来登录到 Azure 门户的凭据。
->* 你的容器存储库是否正确？ 打开“模块” > “cmodule” > “module.json”并查找 **repository** 字段。 映像存储库应当类似于 **\<registryname\>.azurecr.io/nodemodule**。 
->* 你在生成的容器是否为开发计算机运行的同一类型的容器？ Visual Studio Code 默认生成 Linux amd64 容器。 如果开发计算机运行的是 Windows 容器或 Linux arm32v7 容器，请在 VS Code 窗口底部的蓝色状态栏上更新平台，以匹配你的容器平台。
+>* 你的容器存储库是否正确？ 打开“模块” > “nodemodule” > “module.json”并查找 **repository** 字段。 映像存储库应当类似于 **\<registryname\>.azurecr.io/nodemodule**。 
+>* 你在生成的容器是否为开发计算机运行的同一类型的容器？ Visual Studio Code 默认生成 Linux amd64 容器。 如果开发计算机运行的是 Linux arm32v7 容器，请在 VS Code 窗口底部的蓝色状态栏上更新平台，以匹配你的容器平台。
+>* 用于 IoT Edge 的 Node.js 模块不支持 Windows 容器。
 
 ## <a name="deploy-and-run-the-solution"></a>部署并运行解决方案
 

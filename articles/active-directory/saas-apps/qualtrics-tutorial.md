@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: fa8f52cc106fdf9c104717d19792770677d10949
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 5e7c1ce6ab217149acd3aed9e5268b70fbd664df
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622138"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274173"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-qualtrics"></a>教程：Azure Active Directory 与 Qualtrics 集成
 
@@ -53,7 +53,7 @@ ms.locfileid: "58622138"
 
 要配置 Qualtrics 与 Azure AD 的集成，需要从库中将 Qualtrics 添加到托管 SaaS 应用列表。
 
-若要从库添加 Qualtrics，请执行以下步骤：
+**若要从库中添加 Qualtrics，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -107,7 +107,7 @@ ms.locfileid: "58622138"
 
     ![Qualtrics 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.qualtrics.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.qualtrics.com`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
@@ -202,7 +202,7 @@ ms.locfileid: "58622138"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

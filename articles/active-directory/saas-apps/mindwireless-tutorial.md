@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 51f4801c00d23aa820949faa58f7cd64ee3597ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2fce8b628798ef38889f64d9409bf586a85463b8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842390"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mindwireless"></a>教程：Azure Active Directory 与 mindWireless 集成
 
@@ -50,7 +50,7 @@ ms.locfileid: "57842390"
 
 要配置 mindWireless 与 Azure AD 的集成，需要从库中将 mindWireless 添加到托管 SaaS 应用列表。
 
-**若要从库添加 mindWireless，请执行以下步骤：**
+**若要从库中添加 mindWireless，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -104,9 +104,9 @@ ms.locfileid: "57842390"
 
     ![mindWireless 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.mwsmart.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<subdomain>.mwsmart.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.mwsmart.com/SAML/AssertionConsumerService.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [mindWireless 客户端支持团队](mailto:sdulloor@mindwireless.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -117,7 +117,7 @@ ms.locfileid: "57842390"
 
 6. 除了上述属性，mindWireless 应用程序还要求在 SAML 响应中传递回更多的属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 命名空间  |  源属性|
+    | 名称 | 命名空间  |  源属性|
     | -------------- | --------------- | ----------------|
     | 员工 ID | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`| user.employeeid |
 
@@ -175,7 +175,7 @@ ms.locfileid: "57842390"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -222,7 +222,7 @@ ms.locfileid: "57842390"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

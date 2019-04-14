@@ -3,17 +3,17 @@ title: 在 Azure IoT Central 自定义操作员的视图 | Microsoft Docs
 description: 以构建人员的身份在 Azure IoT Central 应用程序中自定义操作员的视图。
 author: sandeeppujar
 ms.author: sandeepu
-ms.date: 01/29/2018
+ms.date: 03/26/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 86c9a7794146edc4106d8ec30106e1c27556248f
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769670"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279935"
 ---
 # <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>教程：自定义 Azure IoT Central 操作员的视图（新 UI 设计）
 
@@ -56,7 +56,7 @@ ms.locfileid: "57769670"
 
     | 设置     | 值 |
     | ----------- | ----- |
-    | Name        | 最高温度 |
+    | 名称        | 最高温度 |
     | 时间范围  | 过去 1 周 |
     | 度量类型 | 遥测 |
     | 度量 | 温度 |

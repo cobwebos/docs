@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 65badda86fa29dc68f2eef1e9c0883dc8b40107a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852885"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
 
@@ -67,7 +67,7 @@ ms.locfileid: "57852885"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入“GitHub”，在结果面板中选择“GitHub”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中，键入“GitHub”，在结果面板中选择“GitHub.com”，然后单击“添加”按钮添加该应用程序。
 
      ![结果列表中的 GitHub](common/search-new-app.png)
 
@@ -107,9 +107,9 @@ ms.locfileid: "57852885"
 
     ![GitHub 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>/sso`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://github.com/orgs/<entity-id>/sso`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://github.com/orgs/<entity-id>`
 
     > [!NOTE]
     > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。
@@ -222,7 +222,7 @@ ms.locfileid: "57852885"
 
 本部分的目的是在 GitHub 中创建名为“Britta Simon”的用户。 GitHub 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](github-provisioning-tutorial.md)。
 
-如果需要手动创建用户，请执行以下步骤：
+**如果需要手动创建用户，请执行以下步骤：**
 
 1. 以管理员身份登录到 GitHub 公司站点。
 
@@ -259,4 +259,4 @@ ms.locfileid: "57852885"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

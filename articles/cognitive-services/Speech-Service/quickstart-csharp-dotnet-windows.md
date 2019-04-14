@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 12/13/2018
 ms.author: wolfma
-ms.openlocfilehash: a3990bfac9199fadeff0573d7547d7e5bc551ece
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2f190ccbead9e6349543d04e2419f458888fba2c
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838606"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59008741"
 ---
 # <a name="quickstart-recognize-speech-with-the-speech-sdk-for-net-framework-windows"></a>快速入门：使用适用于 .NET Framework 的语音 SDK (Windows) 识别语音
 
@@ -25,7 +25,7 @@ ms.locfileid: "57838606"
 
 为了快速演示（无需自己构建 Visual Studio 项目，如下所示）：
 
-从 Github 获取最新[认知服务语音 SDK](https://github.com/Azure-Samples/cognitive-services-speech-sdk)。
+从 GitHub 获取最新[认知服务语音 SDK 示例](https://github.com/Azure-Samples/cognitive-services-speech-sdk)。
 
 ## <a name="prerequisites"></a>先决条件
 

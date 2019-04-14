@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
-ms.openlocfilehash: ced28f5bc3ca947bb4754b7de716b37062f9859a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ec1fce18913d6763514abb80ceba471bf73d59ad
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898561"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59263666"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lessonlycom"></a>教程：Azure Active Directory 与 Lessonly.com 的集成
 
@@ -105,12 +105,12 @@ ms.locfileid: "57898561"
 
     ![Lessonly.com 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.lessonly.com/signin`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.lessonly.com/signin`
 
     > [!NOTE]
     > 引用通用名称时，需将 **companyname** 替换为实际的名称。
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.lessonly.com/auth/saml/metadata`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<companyname>.lessonly.com/auth/saml/metadata`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Lessonly.com 客户端支持团队](mailto:support@lessonly.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -121,7 +121,7 @@ ms.locfileid: "57898561"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤： 
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------------  | ----------------|
     | urn:oid:2.5.4.42 | user.givenname |
     | urn:oid:2.5.4.4  | user.surname |
@@ -235,7 +235,7 @@ ms.locfileid: "57898561"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

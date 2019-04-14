@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 07442d9636ec488da6eb3cdf9000b7f3cc24b61f
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 4edd445fe526b9be5c421b21b25f9b095c734f43
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223506"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269888"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sumologic"></a>教程：Azure Active Directory 与 SumoLogic 的集成
 
@@ -105,7 +105,7 @@ ms.locfileid: "58223506"
 
     ![SumoLogic 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.SumoLogic.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<tenantname>.SumoLogic.com`
 
    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
 
@@ -262,7 +262,7 @@ ms.locfileid: "58223506"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

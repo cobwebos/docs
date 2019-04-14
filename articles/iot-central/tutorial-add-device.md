@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 8e7eee40bed29117d2873393395a852e4b738533
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793475"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425927"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
 
@@ -41,6 +41,8 @@ ms.locfileid: "58793475"
 * [定义新设备类型](tutorial-define-device-type.md)（必需）
 * [配置设备的规则和操作](tutorial-configure-rules.md)（可选）
 * [自定义操作员的视图](tutorial-customize-operator.md)（可选）
+
+在开发计算机上安装 [Node.js](https://nodejs.org/) 版本 8.0.0 或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
@@ -92,37 +94,27 @@ ms.locfileid: "58793475"
 
 以下步骤说明如何准备 [Node.js](https://nodejs.org/) 示例：
 
-1. 在计算机中安装 [Node.js](https://nodejs.org/) 4.0.x 或更高版本。 Node.js 适用于各种操作系统。
-
-1. 在计算机上创建名为 `connectedairconditioner` 的文件夹。
-
-1. 在命令行环境中，导航到创建的 `connectedairconditioner` 文件夹。
-
-1. 通过以下命令安装 DPS 密钥生成器：
-
-    ```cmd/sh
-    npm i -g dps-keygen
-    ```
-
-   在[此处](https://www.npmjs.com/package/dps-keygen)详细了解命令行工具。
+### <a name="get-the-device-connection-information"></a>获取设备连接信息
 
 1. 应用程序中设备实例的连接字符串是根据 IoT Central 提供的设备信息生成的。
 
-   返回到 IoT Central 门户。 在真实的已连接空调的设备屏幕上，选择“连接”。
+   在真实的已连接空调的设备屏幕上，选择“连接”。
 
    ![显示“查看连接信息”链接的“设备”页](media/tutorial-add-device/connectionlink.png)
 
-1. 在“设备连接”页面上，复制“范围 ID、设备 ID 和主密钥”并将其粘贴到文本编辑器中，然后保存。 下一步使用这些值。
+1. 在“设备连接”页上，记下**作用域 ID**、**设备 ID** 和**主要密钥**值。 下一步使用这些值。
 
    ![连接详细信息](media/tutorial-add-device/device-connect.png)
 
-1. 返回到命令行环境，通过执行以下命令生成连接字符串：
+### <a name="generate-the-connection-string"></a>生成连接字符串
 
-    ```cmd/sh
-    dps-keygen -si:<scope_id> -di:<device_id> -dk:<Primary Key>
-    ```
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-   复制输出并将其保存在新文件（例如 connection.txt）中。
+### <a name="prepare-the-nodejs-project"></a>准备 Node.js 项目
+
+1. 在开发计算机上，创建名为 `connectedairconditioner` 的文件夹。
+
+1. 在命令行环境中，导航到创建的 `connectedairconditioner` 文件夹。
 
 1. 若要初始化 Node.js 项目，请运行以下命令并接受所有默认值：
 
@@ -309,7 +301,7 @@ ms.locfileid: "58793475"
     var connectionString = '{your device connection string}';
     ```
 
-1. 将 `{your device connection string}` 替换为真实设备的连接字符串。 此前已将连接字符串保存到文本编辑器中。
+1. 将 `{your device connection string}` 替换为真实设备的连接字符串。 你复制了在上一步中生成的连接字符串。
 
 1. 保存对 **ConnectedAirConditioner.js** 文件所做的更改。
 
@@ -370,4 +362,4 @@ ms.locfileid: "58793475"
 * [准备和连接 Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
 * [准备和连接 Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
 * [准备和连接 Windows 10 IoT Core 设备 (C#)](howto-connect-windowsiotcore.md)
-* [将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
+* [将通用 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a9b3d8a2670a0b4e6bed2d5e9a9b64e597adcb16
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a00dfd1186d19ce9432db8e636bffa40eb977af
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855718"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280530"
 ---
 # <a name="tutorial-recognize-intents-from-speech-using-the-speech-sdk-for-c"></a>教程：使用适用于 C# 的语音 SDK 从语音中识别意向
 
@@ -131,7 +131,7 @@ static async Task RecognizeIntentAsync()
 
 现在，使用 `LanguageUnderstandingModel.FromAppId()` 从 LUIS 应用导入模型，并添加想要通过识别器的 `AddIntent()` 方法识别的 LUIS 意向。 这两个步骤会指出用户有可能在其请求中使用的单词，以此提高语音识别的准确性。 如果不需要在应用程序中识别应用的所有意向，则不需要添加这些意向。
 
-添加意向需要三个参数：LUIS 模型（刚刚已创建，名为 `model`）、意向名称和意向 ID。 ID 与名称之间的差别如下。
+添加意向需要三个参数：LUIS 模型（已创建并命名为 `model`）、意向名称和意向 ID。 ID 与名称之间的差别如下。
 
 |`AddIntent()` 参数|目的|
 |--------|-------|
@@ -144,6 +144,8 @@ static async Task RecognizeIntentAsync()
 recognizer.AddIntent(model, "HomeAutomation.TurnOff", "off");
 recognizer.AddIntent(model, "HomeAutomation.TurnOn", "on");
 ```
+
+也可以使用 `AddAllIntents` 方法将模型中的所有意向都添加到识别器中，而不是添加单个意向。
 
 ## <a name="start-recognition"></a>开始识别
 

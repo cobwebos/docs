@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5e50a4f10b7706e474941842b14e1f45364d13a7
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: bd1ed30d56e8d23057e560b1180c35e0a29542b6
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226481"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274937"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-intime"></a>教程：Azure Active Directory 与 InTime 集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "58226481"
 
     ![InTime 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://intime6.intimesoft.com/mytime/login/login.xhtml`
+    a. 在“登录 URL”文本框中，键入 URL： `https://intime6.intimesoft.com/mytime/login/login.xhtml`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://auth.intimesoft.com/auth/realms/master`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL： `https://auth.intimesoft.com/auth/realms/master`
 
 5. InTime 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 InTime 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
@@ -196,6 +196,6 @@ ms.locfileid: "58226481"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

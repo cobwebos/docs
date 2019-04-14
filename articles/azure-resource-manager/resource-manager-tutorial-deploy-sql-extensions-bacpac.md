@@ -10,15 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 02/25/2019
+ms.date: 04/08/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 40c7e00ad5271457904fc3273fdb633b0c7a8016
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7339c975bf979907bd1f9bbb46546b58ef7ae6e5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58085059"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282349"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-azure-resource-manager-templates"></a>教程：使用 Azure 资源管理器模板导入 SQL BACPAC 文件
 
@@ -53,21 +53,21 @@ BACPAC 文件在[可以公开访问的 Azure 存储帐户](https://armtutorials.
 
 ## <a name="open-a-quickstart-template"></a>打开快速入门模板
 
-Azure 快速入门模板是资源管理器模板的存储库。 无需从头开始创建模板，只需找到一个示例模板并对其自定义即可。 在本教程中使用的模板称为[部署带威胁检测的 Azure SQL Server](https://azure.microsoft.com/resources/templates/201-sql-threat-detection-server-policy-optional-db/)。
+本教程中使用的模板存储在 [Azure 存储帐户](https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json)中。 
 
 1. 在 Visual Studio Code 中，选择“文件”>“打开文件”。
 2. 在“文件名”中粘贴以下 URL：
 
     ```url
-    https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-sql-threat-detection-server-policy-optional-db/azuredeploy.json
+    https://armtutorials.blob.core.windows.net/createsql/azuredeploy.json
     ```
 3. 选择“打开”以打开该文件。
 
     有三个在此模板中定义的资源：
 
-   * `Microsoft.Sql/servers`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)。
-   * `Microsoft.SQL/servers/securityAlertPolicies`。 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)。
-   * `Microsoft.SQL.servers/databases`。  请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
+   * `Microsoft.Sql/servers`. 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers)。
+   * `Microsoft.SQL/servers/securityAlertPolicies`. 请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)。
+   * `Microsoft.SQL.servers/databases`.  请参阅[模板参考](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases)。
 
      在自定义模板之前，不妨对其进行一些基本的了解。
 4. 选择“文件”>“另存为”，将该文件的副本保存到名为 **azuredeploy.json** 的本地计算机。
@@ -175,4 +175,4 @@ New-AzResourceGroupDeployment `
 在本教程中，你部署了 SQL Server、SQL 数据库并导入了 BACPAC 文件。 BACPAC 文件存储在 Azure 存储帐户中。 得到该 URL 的任何人都可以访问该文件。 若要了解如何保护 BACPAC 文件（项目），请参阅
 
 > [!div class="nextstepaction"]
-> [保护项目](./resource-manager-tutorial-secure-artifacts.md)
+> [“保护项目”](./resource-manager-tutorial-secure-artifacts.md)

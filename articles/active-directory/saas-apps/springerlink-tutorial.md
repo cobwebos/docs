@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 2acdb960df2ebd265d078f37840f7a4c37015044
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00154ac3c94a1f43872aff3be29ddd108a4173f0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001228"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268835"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>教程：Azure Active Directory 与 Springer Link 集成
 
@@ -105,13 +105,13 @@ ms.locfileid: "58001228"
 
     ![Springer Link 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a. 在“标识符”文本框中键入 URL：`https://fsso.springer.com`
+    a. 在“标识符”文本框中键入 URL： `https://fsso.springer.com`
 
-    b. 在“回复 URL”文本框中键入 URL：`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
+    b. 在“回复 URL”文本框中键入 URL： `https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`
 
     c. 单击“设置其他 URL”。
 
-    d. 在“中继状态”文本框中键入 URL：`https://link.springer.com`
+    d. 在“中继状态”文本框中键入 URL： `https://link.springer.com`
 
 5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
@@ -205,7 +205,7 @@ ms.locfileid: "58001228"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

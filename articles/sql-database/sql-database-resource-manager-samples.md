@@ -9,15 +9,15 @@ ms.devlang: ''
 ms.topic: sample
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: ''
+ms.reviewer: sstein
 manager: craigg
 ms.date: 02/04/2019
-ms.openlocfilehash: 58513b77315badc52acbc0c5116343461b44fa08
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.openlocfilehash: 1e2f55d334d432544ffc185e5c68dfe4325b2b09
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232956"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59356820"
 ---
 # <a name="azure-resource-manager-templates-for-azure-sql-database"></a>Azure SQL 数据库的 Azure 资源管理器模板
 
@@ -29,7 +29,7 @@ ms.locfileid: "56232956"
 
 | |  |
 |---|---|
-| [单个数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | 此 Azure 资源管理器模板创建包含逻辑服务器的单一 Azure SQL 数据库并配置防火墙规则。 |
+| [单一数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create) | 此 Azure 资源管理器模板创建包含逻辑服务器的单一 Azure SQL 数据库并配置防火墙规则。 |
 | [逻辑服务器](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-logical-server) | 此 Azure 资源管理器模板创建 Azure SQL 数据库的逻辑服务器。 |
 | [弹性池](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create) | 使用此模板可以部署新的弹性池，并在其中分配新的关联 SQL Server 和新的 SQL 数据库。 |
 | [故障转移组](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-with-failover-group) | 此模板创建两个 Azure SQL 逻辑服务器、一个 SQL 数据库和一个故障转移组。|
@@ -40,7 +40,7 @@ ms.locfileid: "56232956"
 | [使用 SQL 数据库的 Azure Web 应用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-sql-database) | 此示例在“基本”服务级别创建免费的 Azure Web 应用和 SQL 数据库。|
 | [使用 SQL 数据库的 Azure Web 应用和 Redis 缓存](https://github.com/Azure/azure-quickstart-templates/tree/master/201-web-app-redis-cache-sql-database) | 此模板在同一资源组中创建 Web 应用、Redis 缓存和 SQL 数据库，并在适用于 SQL 数据库和 Redis 缓存的 Web 应用中创建两个连接字符串。|
 | [使用 ADF V2 从 Blob 存储导入数据](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-v2-blob-to-sql-copy) | 此 Azure 资源管理器模板创建 Azure 数据工厂 V2，用于将数据从 Azure Blob 存储复制到 SQL 数据库。|
-| [使用 SQL 数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 使用此模板可以创建 HDInsight 群集、SQL 数据库服务器、SQL 数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)一文中使用了此模板 |
+| [带有 SQL 数据库的 HDInsight 群集](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-linux-with-sql-database) | 使用此模板可以创建 HDInsight 群集、SQL 数据库服务器、SQL 数据库和两个表。 [将 Sqoop 与 HDInsight 中的 Hadoop 配合使用](https://docs.microsoft.com/azure/hdinsight/hadoop/hdinsight-use-sqoop)一文中使用了此模板 |
 | [按计划运行 SQL 存储过程的 Azure 逻辑应用](https://github.com/Azure/azure-quickstart-templates/tree/master/101-logic-app-sql-proc) | 使用此模板可以创建一个按计划运行 SQL 存储过程的逻辑应用。 可将该过程的所有参数放入该模板的正文部分。|
 
 ## <a name="managed-instance"></a>托管实例
@@ -53,4 +53,3 @@ ms.locfileid: "56232956"
 | [托管实例的网络环境](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment) | 此部署创建包含两个子网的已配置 Azure 虚拟网络 - 其中一个子网专用于托管实例，另一个子网用于放置其他资源（例如 VM、应用服务环境，等等）。 此模板将创建经过适当配置的网络环境，可在该环境中部署托管实例。 |
 | [使用 P2S 连接的托管实例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-point-to-site-vpn) | 此部署将创建包含子网 `ManagedInstance` 和 `GatewaySubnet` 的 Azure 虚拟网络。 托管实例将部署在 ManagedInstance 子网中。 将在 `GatewaySubnet` 子网中创建虚拟网络网关，并为其配置点到站点 VPN 连接。 |
 | [使用虚拟机的托管实例](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sqlmi-new-vnet-w-jumpbox) | 此部署将创建包含子网 `ManagedInstance` 和 `Management` 的 Azure 虚拟网络。 托管实例将部署在 `ManagedInstance` 子网中。 使用最新版 SQL Server Management Studio (SSMS) 的虚拟机将部署在 `Management` 子网中。 |
-

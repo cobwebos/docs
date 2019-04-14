@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: zhshang
-ms.openlocfilehash: c18597fde157e0308138348432d63d56446931b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 28fb3295ef02d508ef04299398a61ea59828df35
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58012559"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59278819"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>教程：使用 Azure Functions 进行 Azure SignalR 服务身份验证
 
@@ -53,7 +53,7 @@ ms.locfileid: "58012559"
 
 1. 输入以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 资源名称 | SignalR 服务实例的唯一名称 |
     | 资源组 | 创建具有唯一名称的新资源组 |
@@ -145,11 +145,11 @@ ms.locfileid: "58012559"
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | Name | negotiate |
+    | 名称 | negotiate |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 negotiate 的文件夹。
@@ -204,11 +204,11 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 函数应用文件夹 | 选择主项目文件夹 |
     | 模板 | HTTP 触发器 |
-    | Name | SendMessage |
+    | 名称 | SendMessage |
     | 授权级别 | 匿名 |
 
     将创建包含新函数的名为 **SendMessage** 的文件夹。
@@ -315,7 +315,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 输入以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 订阅 | 选择包含 SignalR 服务实例的订阅 |
     | 资源组 | 选择相同资源组 |
@@ -348,7 +348,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 发送消息时，应用可以确定是要发送到所有已连接的客户端，还是仅发送到已对给定用户进行身份验证的客户端。
 
-1. 在 VS Code 中，打开 **SignalRInfo/function.json**。
+1. 在 VS Code 中打开 **negotiate/function.json**。
 
 1. 将一个[绑定表达式](https://docs.microsoft.com/azure/azure-functions/functions-triggers-bindings)插入到 *SignalRConnectionInfo* 绑定的 *userId* 属性中：`{headers.x-ms-client-principal-name}`。 这会将值设置为经过身份验证的用户的用户名。 特性现在应如下所示。
 
@@ -371,7 +371,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 要部署的文件夹 | 选择主项目文件夹 |
     | 订阅 | 选择订阅 |
@@ -390,7 +390,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 出现提示时，请提供以下信息。
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 本地设置文件 | local.settings.json |
     | 订阅 | 选择订阅 |
@@ -449,7 +449,7 @@ Web 应用还需要使用一个 HTTP API 来发送聊天消息。 我们将创�
 
 1. 输入以下值：
 
-    | Name | 值 |
+    | 名称 | 值 |
     |---|---|
     | 订阅 | 选择订阅 |
     | 存储帐户 | 选择前面创建的存储帐户 |

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a0d2ab4a28465e733a1441df1daec8a3f2936e79
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 95c24f74e9af4443db994a6655a82108de18efdd
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58188114"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280139"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>教程：Azure Active Directory 与 iQualify LMS 集成
 
@@ -109,14 +109,14 @@ ms.locfileid: "58188114"
     a. 在“标识符”文本框中，使用以下模式键入 URL：
     | |
     |--|--|
-    | 生产环境：`https://<yourorg>.iqualify.com/`|
-    | 测试环境：`https://<yourorg>.iqualify.io`|
+    | 生产环境： `https://<yourorg>.iqualify.com/`|
+    | 测试环境： `https://<yourorg>.iqualify.io`|
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|--|
-    | 生产环境：`https://<yourorg>.iqualify.com/auth/saml2/callback` |
-    | 测试环境：`https://<yourorg>.iqualify.io/auth/saml2/callback` |
+    | 生产环境： `https://<yourorg>.iqualify.com/auth/saml2/callback` |
+    | 测试环境： `https://<yourorg>.iqualify.io/auth/saml2/callback` |
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -125,8 +125,8 @@ ms.locfileid: "58188114"
     在“登录 URL”文本框中，使用以下模式键入 URL：
     | |
     |--|--|
-    | 生产环境：`https://<yourorg>.iqualify.com/login` |
-    | 测试环境：`https://<yourorg>.iqualify.io/login` |
+    | 生产环境： `https://<yourorg>.iqualify.com/login` |
+    | 测试环境： `https://<yourorg>.iqualify.io/login` |
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [iQualify LMS 客户端支持团队](https://www.iqualify.com/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -137,7 +137,7 @@ ms.locfileid: "58188114"
 
 7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | --- | --- |
     | 电子邮件 | user.userprincipalname |
     | first_name | user.givenname |
@@ -282,6 +282,6 @@ ms.locfileid: "58188114"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

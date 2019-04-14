@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 97419dac33688d24159b35f00f1e9bffbd587497
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 2aed12b085557eda4210be9c067f5cdad4cd2d1b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57886382"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>教程：Azure Active Directory 与 Agiloft 集成
 
@@ -167,13 +167,13 @@ ms.locfileid: "57886382"
 
     ![Agiloft 配置](./media/agiloft-tutorial/setup4.png)
 
-    a. 在“IdP 实体 ID/颁发者”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值 ****  ****。
+    a. 在“IdP 实体 ID/颁发者”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值。
 
-    b. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值 ****  ****。
+    b. 在“IdP 登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    c. 在“IdP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值 ****  ****。
+    c. 在“IdP 注销 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
-    d. 在记事本中打开从 Azure 门户下载的 **base-64 编码证书**，将其内容复制到剪贴板，并粘贴到“IdP 提供的 X.509 证书内容”文本框中 **** 。
+    d. 在记事本中打开从 Azure 门户下载的 base-64 编码证书，将其内容复制到剪贴板，并粘贴到“IdP 提供的 X.509 证书内容”文本框中。
 
     e. 单击“完成”。
 
@@ -244,4 +244,4 @@ ms.locfileid: "57886382"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

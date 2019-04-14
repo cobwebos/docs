@@ -10,12 +10,12 @@ ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
 manager: mmontwil
-ms.openlocfilehash: 49f3f50cd33d2b3fea1e784fcfc70044c568ba31
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b69a793d1d860bf2f2a4d52a92d4bea5cf903c0c
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842407"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426301"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-java"></a>通过 Java 开始使用 Azure Dev Spaces
 
@@ -26,15 +26,10 @@ ms.locfileid: "57842407"
 - 在团队环境中高效地开发和测试代码。
 
 > [!Note]
-> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。
-
-现在可以在 Azure 中创建基于 Kubernetes 的开发空间了。
+> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
 Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
-
-> [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.43 版或更高版本。
 
 ### <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 登录 Azure。 在终端窗口中键入以下命令：
@@ -153,7 +148,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 > Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可以用来快速地以迭代方式查看所做的代码更改在云的 Kubernetes 环境中的效果。
 
 1. 在终端窗口中按 `Ctrl+C`（用于停止 `azds up`）。
-1. 打开名为 `src/main/java/com/ms/sample/webfrontend/Application.java` 的代码文件并编辑问候消息：`return "Hello from webfrontend in Azure!";`
+1. 打开名为 `src/main/java/com/ms/sample/webfrontend/Application.java` 的代码文件并编辑问候消息： `return "Hello from webfrontend in Azure!";`
 1. 保存文件。
 1. 在终端窗口中运行 `azds up`。
 

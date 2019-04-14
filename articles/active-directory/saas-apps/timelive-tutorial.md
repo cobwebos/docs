@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: c5375bc88281eb31637f42b1f13b59cb11a8ade8
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: cd38da7cb640e53c90a209850bcd8386c75a8aa9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848586"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59271495"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-timelive"></a>教程：Azure Active Directory 与 TimeLive 的集成
 
@@ -107,9 +107,9 @@ ms.locfileid: "58848586"
 
     ![TimeLive 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<domainname>.livetecs.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domainname>.livetecs.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<domainname>.livetecs.com/`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<domainname>.livetecs.com/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TimeLive 客户端支持团队](mailto:support@livetecs.com)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -218,7 +218,7 @@ ms.locfileid: "58848586"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 13986b3ca5515ea07ba5bba2355b1cc67c1c3ebe
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 59cfdfaae597feb8f1cab212b407a8879d78f9f9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223370"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265570"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sansan"></a>教程：Azure Active Directory 与 Sansan 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "58223370"
 
 若要配置 Sansan 与 Azure AD 的集成，需要从库中将 Sansan 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Sansan，请执行以下步骤：
+**若要从库中添加 Sansan，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -260,6 +260,6 @@ ms.locfileid: "58223370"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

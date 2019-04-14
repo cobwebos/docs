@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 895f648e59e8efdc19d7e09a0493e80fb80d0409
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5a59dbd934ba1a449f7671d433529513b9f14c80
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877881"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-cloud"></a>教程：Azure Active Directory 与 Cisco Cloud 集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "57877881"
 
     ![Cisco Cloud 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`<subdomain>.cisco.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `<subdomain>.cisco.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.cisco.com/sp/ACS.saml2`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.cisco.com/sp/ACS.saml2`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -124,7 +124,7 @@ ms.locfileid: "57877881"
 
 7. 除了上述属性外，Cisco Cloud 应用程序还需要另外几个属性在 SAML 响应中传回。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | -----------| ------------|
     | country    | user.country |
     | company    | user.companyname |
@@ -174,7 +174,7 @@ ms.locfileid: "57877881"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -221,6 +221,6 @@ ms.locfileid: "57877881"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

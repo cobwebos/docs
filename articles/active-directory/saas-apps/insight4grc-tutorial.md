@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 360dbd6605953f77a2874b2daf8db2d4e93307c1
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: 1ad101d209415acdceb0091dba5fbedeb8b0aa4b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189608"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280513"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insight4grc"></a>教程：Azure Active Directory 与 Insight4GRC 集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "58189608"
 
 若要配置将 Insight4GRC 集成到 Azure AD，需要将 Insight4GRC 从库中添加到托管 SaaS 应用程序列表。
 
-**若要从库中添加 Insight4GRC，请按照以下步骤操作：**
+**若要从库中添加 Insight4GRC，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -106,9 +106,9 @@ ms.locfileid: "58189608"
 
     ![“Insight4GRC 域和 URL”单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/SAML`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<subdomain>.Insight4GRC.com/SAML`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.Insight4GRC.com/Public/SAML/ACS.aspx`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -195,7 +195,7 @@ ms.locfileid: "58189608"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

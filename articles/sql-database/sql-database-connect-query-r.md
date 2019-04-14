@@ -11,13 +11,13 @@ author: dphansen
 ms.author: davidph
 ms.reviewer: ''
 manager: cgronlun
-ms.date: 03/01/2019
-ms.openlocfilehash: e15cf93514f921223fea37aa480730bba46dd195
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/04/2019
+ms.openlocfilehash: f5d43794ba80e4791c8bf24ad404069a8329518e
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57864943"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051217"
 ---
 # <a name="quickstart-use-machine-learning-services-with-r-in-azure-sql-database-preview"></a>快速入门：在 Azure SQL 数据库中使用机器学习服务（预览版，使用 R）
 
@@ -98,7 +98,8 @@ GRANT EXECUTE ANY EXTERNAL SCRIPT TO <username>
     b <- 2
     c <- a/b
     d <- a*b
-    print(c, d)'
+    print(c(c, d))
+    '
     ```
 
 2. 假设一切设置正确，则会计算出正确的结果，且 R 的 `print` 函数会将结果返回到“消息”窗口。
@@ -522,5 +523,5 @@ Microsoft 提供许多预安装在 SQL 数据库的机器学习服务中的 R �
 - [Azure SQL 数据库机器学习服务（使用 R）](sql-database-machine-learning-services-overview.md)
 - [SQL Server 机器学习服务](https://docs.microsoft.com/sql/advanced-analytics/what-is-sql-server-machine-learning)
 - [教程：了解在 SQL Server 中使用 R 进行数据库内分析](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-in-database-r-for-sql-developers)
-- [End-to-end data science walkthrough for R and SQL Server](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)（适用于 R 和 SQL Server 的端到端数据科学演练）
+- [End-to-end data science walkthrough for R and SQL Server（适用于 R 和 SQL Server 的端到端数据科学演练）](https://docs.microsoft.com/sql/advanced-analytics/tutorials/walkthrough-data-science-end-to-end-walkthrough)
 - [教程：将 RevoScaleR R 函数与 SQL Server 数据配合使用](https://docs.microsoft.com/sql/advanced-analytics/tutorials/deepdive-data-science-deep-dive-using-the-revoscaler-packages)

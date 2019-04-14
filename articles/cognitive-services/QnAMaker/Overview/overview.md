@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 04/05/2019
 ms.author: tulasim
-ms.openlocfilehash: 1fa15c4420cb1e42fcaa34c56a1b0aef9c4102b1
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: bafc39e7d9237fc7dd8469e5f9e97adb30355c8f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872452"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257223"
 ---
 # <a name="what-is-qna-maker"></a>什么是 QnA Maker？
 
@@ -66,10 +66,9 @@ QnA Maker 体系结构包括下述两个组件：
 
 ## <a name="service-highlights"></a>服务亮点
 
-- 完全**不需要代码编写**经验即可[创建常见问题解答机器人](https://aka.ms/qnamaker-docs-create-faqbot)。
+- 完全**不需要代码编写**经验即可根据知识库[创建机器人](../Quickstarts/create-publish-knowledge-base.md#create-a-bot)。
 - **对于预测没有网络限制**。 只需支付服务托管费用，不需支付事务费用。 如需更多详细信息，请参阅[定价页](https://aka.ms/qnamaker-docs-pricing)。
 - **可以根据需要进行缩放**。 选择与方案匹配的单个组件的适当 SKU。 了解如何为 QnA Maker 服务[选择容量](https://aka.ms/qnamaker-docs-capacity)。
-- **完全符合数据要求**。 预测服务组件部署在 Azure 订阅中，处于符合性边界内。
 
 
 ## <a name="next-steps"></a>后续步骤

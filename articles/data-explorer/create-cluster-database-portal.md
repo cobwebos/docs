@@ -1,19 +1,18 @@
 ---
 title: 快速入门：创建 Azure 数据资源管理器群集和数据库
 description: 在本快速入门中，了解如何创建 Azure 数据资源管理器群集和数据库，以及如何引入（加载）数据。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 3/25/2019
-ms.openlocfilehash: aa98fb8f9569282e9636d5cb593523b9642395e1
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.date: 03/25/2019
+ms.openlocfilehash: 41a15a29798953cb32029b7c4d1167020074e49f
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758630"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59046030"
 ---
 # <a name="quickstart-create-an-azure-data-explorer-cluster-and-database"></a>快速入门：创建 Azure 数据资源管理器群集和数据库
 

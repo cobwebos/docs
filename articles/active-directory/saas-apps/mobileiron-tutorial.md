@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa1e9749040c61f8c6a52f3635b7b8aa13a0cdff
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0e37b35f87920016f81bda60fe8a9b6f1714eaae
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57834772"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277250"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>教程：Azure Active Directory 与 MobileIron 的集成
 
@@ -101,13 +101,13 @@ ms.locfileid: "57834772"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在  **IDP**  发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
     ![MobileIron 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.mobileiron.com/<key>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://www.mobileiron.com/<key>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<host>.mobileiron.com/saml/SSO/alias/<key>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<host>.mobileiron.com/saml/SSO/alias/<key>`
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -226,5 +226,5 @@ ms.locfileid: "57834772"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

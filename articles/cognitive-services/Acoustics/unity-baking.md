@@ -10,12 +10,12 @@ ms.subservice: acoustics
 ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
-ms.openlocfilehash: f44b6f9ed42770fe830346de08058e33ed68a249
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309634"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470332"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>项目音响效果 Unity 烘焙教程
 本教程介绍了在 Unity 中使用项目音响效果进行音效烘焙。
@@ -137,7 +137,7 @@ ms.locfileid: "58309634"
 
 1. “探测”选项卡按钮，用于打开此页面
 2. 有关需要使用此页面执行的操作的简短说明
-3. 使用它们可选择粗糙或精细分辨率。 粗糙分辨率的速度更快，但需要进行某种权衡。 有关详细信息，请参阅[选择高分辨率或低分辨率](#Coarse-vs-Fine-Resolution)。
+3. 使用它们可选择粗糙或精细分辨率。 粗糙分辨率的速度更快，但需要进行某种权衡。 请参阅下面的[烘培分辨率](bake-resolution.md)了解详细信息。
 4. 使用此字段，选择应该放置声学数据文件的位置。 单击具有“...”的按钮以使用文件夹选取器。 默认值为 Assets/AcousticsData。 此外，还将在此位置下创建“Editor”子文件夹。 要详细了解数据文件，请参阅下面的[数据文件](#Data-Files)。
 5. 系统使用此处提供的前缀命名该场景的数据文件。 默认值为“Acoustics_[Scene Name]”。
 6. 计算完探测后，将禁用上述控件。 单击“清除”按钮，清除计算并启用控件，以便可以使用新设置重新计算。
@@ -145,21 +145,7 @@ ms.locfileid: "58309634"
 
 在此版本的 Project Acoustics 中，不能手动放置探测，必须通过“探测”选项卡中提供的自动化进程进行放置。
 
-### <a name="Coarse-vs-Fine-Resolution"></a>选择高分辨率或低分辨率
-
-高分辨率和低分辨率设置之间的唯一区别在于模拟的执行频率。 高分辨率的执行频率是低分辨率的两倍。
-虽然这看似简单，但它对声学模拟具有多种影响：
-
-* 低分辨率的波长是高分辨率的两倍，因此体素是后者的两倍大。
-* 模拟时间与体素大小直接相关，因此低分辨率烘焙的速度约为高分辨率烘焙的 16 倍。
-* 不能模拟小于体素大小的门户（例如门或窗户）。 低分辨率设置可能导致不模拟其中一些较小的传送门，因此它们在运行时不传播声音。 通过查看体素可确定是否发生该情况。
-* 更低的模拟频率将减少角和边周围的衍射。
-* 无法在“已填充”体素内找到声源，因为该体素包含几何体，这将导致没有声音。 而且，更难找到声源，因此它们不存在于与使用高分辨率设置时相比更大的低分辨率体素中。
-* 如下所示，更大的体素将更多地挤入门户。 第一张图像是使用低分辨率创建的，而第二张是使用高分辨率的同一门口。 如红色标记所示，更少体素挤入使用高分辨率设置的门口。 蓝色线条是几何体定义的门廊，而红色线条是体素大小定义的有效声学门户。 这种侵入如何在给定的情况下播放出来完全取决于体素与门户几何体的一致程度，后者由场景中对象的大小和位置决定。
-
-![门廊中低分辨率体素的屏幕截图](media/coarse-voxel-doorway.png)
-
-![门廊中高分辨率体素的屏幕截图](media/fine-voxel-doorway.png)
+请参阅[烘培分辨率](bake-resolution.md)了解有关粗糙分辨率与精细分辨率的更多详细信息。
 
 ## <a name="bake-your-scene-using-azure-batch"></a>使用 Azure Batch 烘焙场景
 可借助 Azure Batch 服务使用云端计算群集来烘焙场景。 项目音响效果 Unity 插件会直接连接到 Azure Batch，为每个烘焙实例化、管理和关闭一个 Azure Batch 群集。 在“烘焙”选项卡上，输入你的 Azure 凭据，选择群集计算机类型和大小，然后单击“烘焙”。

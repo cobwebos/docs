@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: tutorial
 ms.date: 11/29/2018
 ms.author: adugar
-ms.openlocfilehash: 640eb8800f9593aef510d99713595bdd0c844263
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
+ms.openlocfilehash: 8a5c74c76662a089675fcbdcd8d5a7ea54b58fd1
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52683424"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009661"
 ---
 # <a name="tutorial-manage-your-connected-devices-in-bulk"></a>教程：批量管理连接的设备
 
@@ -151,7 +151,7 @@ If this is going to be a tutorial - we need to split this include into two so th
 
 ## <a name="create-a-device-configuration"></a>创建设备配置
 
-设备配置指定设备的所需状态。 通常情况下，开发人员会在 Azure 门户的“IoT 设备配置”页上[创建配置](../iot-hub/iot-hub-auto-device-config.md#create-a-configuration)。 设备配置是一个 JSON 文档，可指定设备的所需状态和一系列指标。
+设备配置指定设备的所需状态。 通常情况下，开发人员会在 Azure 门户的“IoT 设备配置”页上[创建配置](../iot-hub/iot-hub-automatic-device-management.md#create-a-configuration)。 设备配置是一个 JSON 文档，可指定设备的所需状态和一系列指标。
 
 在本地计算机上将以下配置另存为名为 **firmware-update.json** 的文件。 将 `YOURSTRORAGEACCOUNTNAME`、`YOURCHECKSUM` 和 `YOURPACKAGESIZE` 占位符替换为以前记下的值。
 

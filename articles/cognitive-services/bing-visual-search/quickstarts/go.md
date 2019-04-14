@@ -8,29 +8,29 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/20/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 68dd71687e18243a112df0c2568af5b2b6d0d687
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: a0d7c1611f7c6851d98fea734dfdbd3940b59b89
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57340977"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59048013"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>快速入门：使用必应视觉搜索 REST API 和 Go 获取图像见解
 
-本快速入门使用 Go 编程语言调用必应视觉搜索 API 并显示结果。 Post 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
+本快速入门使用 Go 编程语言调用必应视觉搜索 API 并显示结果。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
 
 ## <a name="prerequisites"></a>先决条件
+
 * 安装 [Go 二进制文件](https://golang.org/dl/)。
-* go-spew 代码深度美化器用于显示结果。
-    * 安装此库：`$ go get -u https://github.com/davecgh/go-spew`。
+* go-spew 代码深度美化器用于显示结果。 可以使用 `$ go get -u https://github.com/davecgh/go-spew` 命令安装 go-spew。
 
 [!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="project-and-libraries"></a>项目和库
 
-在 IDE 或编辑器中新建一个 Go 项目。 然后，导入用于请求的 `net/http`，导入 `ioutil` 来读取响应，导入 `encoding/json` 来处理结果的 JSON 文本。 `go-spew` 库用于分析 JSON 结果。 
+在 IDE 或编辑器中创建一个 Go 项目。 然后，导入用于请求的 `net/http`，导入 `ioutil` 来读取响应，导入 `encoding/json` 来处理结果的 JSON 文本。 `go-spew` 库用于分析 JSON 结果。
 
 ```
 package main
@@ -52,7 +52,7 @@ import (
 
 ## <a name="struct-to-format-results"></a>用于设置结果格式的结构
 
-`BingAnswer` 结构用于设置 JSON 响应中返回的数据的格式。此类数据分为多个层次，相当复杂。  以下实现涵盖了部分基础知识。
+`BingAnswer` 结构用于设置 JSON 响应中返回的数据的格式。此类数据分为多个层次并很复杂。 以下实现涵盖了部分基础知识：
 
 ```
 type BingAnswer struct {
@@ -109,7 +109,7 @@ type BingAnswer struct {
 
 ## <a name="main-function-and-variables"></a>Main 函数和变量  
 
-以下代码声明 main 函数并指定必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。  `batchNumber` 是一个 GUID，是 Post 数据的前导和尾随边界所需的。  `fileName` 变量标识 Post 的图像文件。  以下部分介绍代码的详细信息。
+以下代码声明 main 函数并指定必需的变量。 确认终结点正确并将 `token` 值替换为来自你的 Azure 帐户的有效订阅密钥。 `batchNumber` 是 POST 数据的前导和尾随边界所需的 GUID。 `fileName` 变量标识 POST 的图像文件。 以下部分介绍代码的详细信息：
 
 ```
 func main() {
@@ -157,9 +157,9 @@ func main() {
 
 ```
 
-## <a name="boundaries-of-post-body"></a>Post 正文的边界
+## <a name="boundaries-of-post-body"></a>POST 正文的边界
 
-对视觉搜索终结点的 Post 请求要求使用前导和尾随边界来封闭 Post 数据。  前导边界包括批号、内容类型标识符 `Content-Disposition: form-data; name="image"; filename=`，以及要 Post 的图像的文件名。  尾随边界就是批号。  这些函数不包括在 `main` 块中。
+对视觉搜索终结点的 POST 请求要求使用前导和尾随边界来封闭 POST 数据。 前导边界包括批号、内容类型标识符 `Content-Disposition: form-data; name="image"; filename=`，以及要 POST 的图像的文件名。 尾随边界就是批号。 这些函数不包括在 `main` 块中：
 
 ```
 func BuildFormDataStart(batNum string, fileName string) string{
@@ -176,9 +176,9 @@ func BuildFormDataEnd(batNum string) string{
 }
 
 ```
-## <a name="add-image-bytes-to-post-body"></a>向 Post 正文添加图像字节
+## <a name="add-image-bytes-to-post-body"></a>向 POST 正文添加图像字节
 
-此代码段创建包含图像数据的 Post 请求。 
+此代码段创建包含图像数据的 POST 请求：
 
 ```
 func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, string) {
@@ -207,7 +207,7 @@ func createRequestBody(fileName string, batchNumber string) (*bytes.Buffer, stri
 
 ## <a name="send-the-request"></a>发送请求
 
-以下代码发送请求并读取结果。
+以下代码发送请求并读取结果：
 
 ```
 resp, err := client.Do(req)
@@ -226,7 +226,7 @@ resp, err := client.Do(req)
 
 ## <a name="handle-the-response"></a>处理响应
 
-`Unmarshall` 函数从视觉搜索 API 返回的 JSON 文本提取信息。  `go-spew` 代码美化器显示结果。
+`Unmarshall` 函数从视觉搜索 API 返回的 JSON 文本提取信息。 `go-spew` 代码美化器显示结果：
 
 ```
     // Create a new answer.  
@@ -249,7 +249,7 @@ resp, err := client.Do(req)
 
 ## <a name="results"></a>结果
 
-结果标识与 Post 正文中包含的图像类似的图像。  有用的字段为 `WebSearchUrl` 和 `Name`。
+结果标识与 POST 正文中包含的图像类似的图像。 有用的字段为 `WebSearchUrl` 和 `Name`：
 
 ```
     Value: ([]struct { WebSearchUrl string "json:\"webSearchUrl\""; Name string "json:\"name\"" }) (len=66 cap=94) {
@@ -287,5 +287,5 @@ resp, err := client.Do(req)
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [什么是必应视觉搜索](../overview.md)
+> [什么是必应视觉搜索 API？](../overview.md)
 > [以 Go 编写的必应 Web 搜索快速入门](../../Bing-Web-Search/quickstarts/go.md)

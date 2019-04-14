@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 5e879395e034813f954d1046e4a69e21534f3968
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1222395fd8efb7cf189ae6678f6c39f5a6c63157
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58077150"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051164"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Azure IT 操作人员入门
 
@@ -169,7 +169,7 @@ Azure 资源管理器模板是一个 JavaScript 对象表示法 (JSON) 文件，
 
 #### <a name="azure-powershell"></a>Azure PowerShell
 
-Azure PowerShell 是一组模块，提供用于管理 Azure 的 cmdlet。 可以使用这些 cmdlet 创建、管理和删除 Azure 服务。 这些 cmdlet 有助于实现可重复的一致型无人参与部署。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/azurerm/install-azurerm-ps)。
+Azure PowerShell 是一组模块，提供用于管理 Azure 的 cmdlet。 可以使用这些 cmdlet 创建、管理和删除 Azure 服务。 这些 cmdlet 有助于实现可重复的一致型无人参与部署。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/install-Az-ps)。
 
 #### <a name="azure-command-line-interface"></a>Azure 命令行接口
 

@@ -6,35 +6,37 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2018
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 883e4cbc33ebbef0328bb1de47025e99e670f7cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 1095a80ba05aa3e0ae6dfcd526db7ffd18fb9d4d
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311027"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59359370"
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>准备本地 VMware 服务器用于灾难恢复到 Azure
 
-[Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
+本文介绍如何准备本地 VMware 服务器使用 [Azure Site Recovery](site-recovery-overview.md) 服务灾难恢复到 Azure。 
 
-- 这是本系列的第二个教程，演示如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在第一个教程中，我们[设置了 VMware 灾难恢复所需的 Azure 组件](tutorial-prepare-azure.md)。
+这是本系列的第二个教程，演示如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在第一个教程中，我们[设置了 VMware 灾难恢复所需的 Azure 组件](tutorial-prepare-azure.md)。
 
 
-> [!NOTE]
-> 教程旨在向你展示方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请参阅相应方案的“操作方法”部分。
-
-在本文中，我们演示，当你希望使用 Azure Site Recovery 将 VMware VM 复制到 Azure 时，如何准备本地 VMware 环境。 学习如何：
+在本文中，学习如何：
 
 > [!div class="checklist"]
-> * 在 vCenter 服务器或 vSphere ESXi 主机上准备一个帐户，以自动化 VM 发现
-> * 准备一个帐户用于在 VMware VM 上自动安装移动服务
-> * 查看 VMware 服务器和 VM 要求
-> * 准备在故障转移后连接到 Azure VM
+> * 在 vCenter 服务器或 vSphere ESXi 主机上准备一个帐户，用于自动发现 VM。
+> * 准备一个帐户用于在 VMware VM 上自动安装移动服务。
+> * 查看 VMware 服务器和 VM 要求与支持。
+> * 准备在故障转移后连接到 Azure VM。
 
+> [!NOTE]
+> 教程介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 Site Recovery 目录的“操作指南”部分所列的文章。
 
+## <a name="before-you-start"></a>开始之前
+
+请确保按照[本系列中的第一个教程](tutorial-prepare-azure.md)中的说明准备好 Azure。
 
 ## <a name="prepare-an-account-for-automatic-discovery"></a>为自动发现准备帐户
 
@@ -107,13 +109,13 @@ Site Recovery 需要访问 VMware 服务器，才能够：
 
 
 ## <a name="failback-requirements"></a>故障回复要求
-如果打算故障回复到本地，则还需确保某些[先决条件得到满足](vmware-azure-reprotect.md##before-you-begin)。 不过，对 VM 来说，这些先决条件**不是开始启用灾难恢复所需的**，也可在故障转移到 Azure 后履行。
+如果计划故障回复到本地站点，则有多个[故障回复先决条件](vmware-azure-reprotect.md##before-you-begin)。 现在可以准备这些先决条件，但不需要。 可以在故障转移到 Azure 后准备。
 
-## <a name="useful-links"></a>有用链接
 
-如果要复制多个 VM，则应在开始之前规划容量和部署。 [了解详细信息](site-recovery-deployment-planner.md)。
 
 ## <a name="next-steps"></a>后续步骤
 
+设置灾难恢复。 如果要复制多个 VM，请规划容量。
 > [!div class="nextstepaction"]
 > [针对 VMware VM 设置到 Azure 的灾难恢复](vmware-azure-tutorial.md)
+> [执行容量规划](site-recovery-deployment-planner.md)。

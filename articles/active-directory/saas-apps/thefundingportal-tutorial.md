@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: da06b8772cbf4f9f805952e19cff03791a86e4c7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4f7edd13c07d24d5d5a12fb9973083db44f0211f
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437948"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59257733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>教程：Azure Active Directory 与 The Funding Portal 集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "58437948"
 
     ![The Funding Portal 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.regenteducation.net/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<subdomain>.regenteducation.net`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [The Funding Portal 客户端支持团队](mailto:info@regenteducation.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -118,7 +118,7 @@ ms.locfileid: "58437948"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ---------- | ---------------- |
     | externalId1 | user.extensionattribute1 |
     | | |
@@ -224,6 +224,6 @@ ms.locfileid: "58437948"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

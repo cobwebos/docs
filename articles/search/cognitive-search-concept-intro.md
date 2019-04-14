@@ -7,15 +7,15 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: overview
-ms.date: 03/17/2019
+ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 187e40716bc55f71623ef758722eb58d27651d4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882478"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265962"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>什么是 Azure 搜索中的“认知搜索”？
 
@@ -99,6 +99,8 @@ Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：
 + [快速入门（门户）](cognitive-search-quickstart-blob.md)
 + [教程（HTTP 请求）](cognitive-search-tutorial-blob.md)
 + [自定义技能示例 (C#)](cognitive-search-create-custom-skill-example.md)
+
+我们建议将免费服务用于学习目的，但请注意，免费事务的数量限制为每天 20 个文档。 若要在一天内同时运行快速入门和教程，请使用较小的文件集（10 个文档），这样就可以同时运行这两个练习。
 
 **步骤 3：查看 API（仅限 REST）**
 

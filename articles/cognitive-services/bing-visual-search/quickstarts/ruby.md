@@ -8,18 +8,18 @@ manager: rosh
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: quickstart
-ms.date: 2/27/2019
+ms.date: 4/02/2019
 ms.author: rosh
-ms.openlocfilehash: 6b7685f837cabf7ec659311c54f8c168981e4777
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 8c350b5c2d945ed48566f549ab85844fc14625dc
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544710"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59049280"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-ruby"></a>快速入门：使用必应视觉搜索 REST API 和 Ruby 获取图像见解
 
-本快速入门使用 Ruby 编程语言调用必应视觉搜索并显示结果。 Post 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
+本快速入门使用 Ruby 编程语言调用必应视觉搜索并显示结果。 POST 请求可将图像上传到 API 终结点。 结果包含 URL 以及与已上传图像类似的图像的相关描述信息。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -32,7 +32,7 @@ ms.locfileid: "57544710"
 
 ## <a name="project-and-required-modules"></a>项目和所需的模块
 
-在 IDE 或编辑器中新建一个 Ruby 项目。 导入 `net/http`、`uri` 和 `json` 以处理结果中的 JSON 文本。 `base64` 库用于编码文件名字符串。 
+在 IDE 或编辑器中新建一个 Ruby 项目。 导入 `net/http`、`uri` 和 `json` 以处理结果中的 JSON 文本。 `base64` 库用于编码文件名字符串： 
 
 ```
 require 'net/https'
@@ -44,7 +44,7 @@ require 'base64'
 
 ## <a name="define-variables"></a>定义变量
 
-以下代码分配所需的变量。 确认终结点正确，并将 `accessKey` 值替换为你的 Azure 帐户中的订阅密钥。  `batchNumber` 是 Post 数据的前导和尾随边界所需的 GUID。  `fileName` 变量标识 Post 的图像文件。  `if` 块测试订阅密钥是否有效。
+以下代码分配所需的变量。 确认终结点正确，并将 `accessKey` 值替换为你的 Azure 帐户中的订阅密钥。  `batchNumber` 是 POST 数据的前导和尾随边界所需的 GUID。  `fileName` 变量标识 POST 的图像文件。  `if` 块测试订阅密钥是否有效。
 
 ```
 accessKey = "ACCESS-KEY"
@@ -61,9 +61,9 @@ end
 
 ```
 
-## <a name="form-data-for-post-request"></a>构成 Post 请求的数据
+## <a name="form-data-for-post-request"></a>构成 POST 请求的数据
 
-Post 的图像数据由前导和尾随边界封装。  以下函数设置边界。
+POST 的图像数据由前导和尾随边界封装。 以下函数设置边界：
 
 ```
 def BuildFormDataStart(batNum, fileName)
@@ -74,10 +74,9 @@ end
 def BuildFormDataEnd(batNum)
     return "\r\n\r\n" + "--batch_" + batNum + "--" + "\r\n"
 end
-
 ```
 
-接下来构造终结点 URI，并构造一个数组用于包含 Post 正文。  使用上面的函数将起始边界载入该数组。 将图像文件读入该数组。 然后，将结束边界读入该数组。 
+接下来构造终结点 URI，并构造一个数组用于包含 POST 正文。  使用上面的函数将起始边界载入该数组。 将图像文件读入该数组。 然后，将结束边界读入该数组：
 
 ```
 uri = URI(uri + path)
@@ -91,12 +90,11 @@ post_body << BuildFormDataStart(batchNumber, fileName)
 post_body << File.read(fileName) #Base64.encode64(File.read(fileName))
 
 post_body << BuildFormDataEnd(batchNumber)
-
 ```
 
 ## <a name="create-the-http-request"></a>创建 HTTP 请求
 
-设置 `Ocp-Apim-Subscription-Key` 标头。  创建请求。  然后分配标头和内容类型。  将前面创建的 Post 正文联接到请求。
+设置 `Ocp-Apim-Subscription-Key` 标头。  创建请求。 然后分配标头和内容类型。 将前面创建的 POST 正文加入到请求：
 
 ```
 header = {'Ocp-Apim-Subscription-Key': accessKey}
@@ -110,7 +108,7 @@ request.body = post_body.join
 
 ## <a name="request-and-response"></a>请求和响应
 
-Ruby 使用以下代码行发送请求并获取响应。
+Ruby 使用以下代码行发送请求并获取响应：
 
 ```
 response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
@@ -121,7 +119,7 @@ end
 
 ## <a name="print-the-results"></a>传输结果
 
-列显响应的标头。 然后使用 JSON 库设置输出格式。
+输出响应的标头，并使用 JSON 库设置输出格式：
 
 ```
 puts "\nRelevant Headers:\n\n"
@@ -138,7 +136,7 @@ puts JSON::pretty_generate(JSON(response.body))
 
 ## <a name="results"></a>结果
 
-以下 JSON 是输出的片段。
+以下 JSON 是输出的片段：
 
 ```
 Relevant Headers:
@@ -287,4 +285,4 @@ JSON Response:
 
 > [!div class="nextstepaction"]
 > [必应视觉搜索概述](../overview.md)
-> [生成自定义搜索 Web 应用](../tutorial-bing-visual-search-single-page-app.md)
+> [生成视觉搜索单页 Web 应用](../tutorial-bing-visual-search-single-page-app.md)

@@ -6,25 +6,25 @@ documentationcenter: ''
 author: kraigb
 manager: douge
 ms.assetid: 9cea5a8e-c52d-4bdc-9e4a-cecdc1ad02c1
-ms.service: azure
+ms.service: azure-notebooks
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 01/11/2019
+ms.date: 04/05/2019
 ms.author: kraigb
-ms.openlocfilehash: 9916b75a15098acbafc1cb1f6d44d948cf6de851
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57777713"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59280096"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
 
 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本（jupyter.org 提供的图片）：
 
-[![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![EJupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 由于代码、图形和说明性文本的这种组合功能强大，因此 Jupyter 在许多方面已变得很常用，例如数据科学指令、数据清理和转换、数值模拟、统计建模，以及机器学习模型的开发。
 
@@ -58,6 +58,8 @@ Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyte
 Azure Notebooks 是一项免费服务，但每个项目有 4GB 内存和 1GB 数据的限制，防止滥用。 超过这些限制的用户会看到 Captcha 质询，回答正确后即可继续运行笔记本。
 
 若要解除所有限制，请通过使用 Azure Active Directory 的某个帐户（例如公司帐户）登录到 Azure Notebooks。 如果该帐户与某个 Azure 订阅相关联，则可连接到该订阅中的任何 Azure Data Science Virtual Machine 实例。 有关详细信息，请参阅[管理和配置项目 - 计算层](configure-manage-azure-notebooks-projects.md#compute-tier)。
+
+Notebook 服务器保证最多存在 8 小时。 在大多数情况下，你的容器不受此限制的影响并继续运行超过此时间，但偶尔可能会关闭长期会话以确保系统稳定性。
 
 ## <a name="available-kernels-and-environments"></a>可用内核和环境
 
@@ -113,7 +115,7 @@ Azure Notebooks 预配置了以下 Jupyter 扩展：
   
   - [创建和克隆项目](create-clone-jupyter-notebooks.md)
   - [配置和管理项目](configure-manage-azure-notebooks-projects.md)
-  - [从笔记本中安装包](install-packages-jupyter-notebook.md)
+  - [从笔记本内安装包](install-packages-jupyter-notebook.md)
   - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
   - [处理数据文件](work-with-project-data-files.md)
   - [访问数据资源](access-data-resources-jupyter-notebooks.md)

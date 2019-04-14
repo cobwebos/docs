@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 23c74c0b1d4c311cd57a02cbac9498f3acb16992
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578112"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59051433"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -87,7 +87,7 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
 
     必须在 .csproj 文件所在的同一目录中执行此命令。
 
-        dotnet user-secrets set ConnectionStrings:AppConfig "Endpoint=<your_endpoint>;Id=<your_id>;Secret=<your_secret>"
+        dotnet user-secrets set ConnectionStrings:AppConfig <your_connection_string>
 
     机密管理器仅用于本地测试 web 应用程序。 应用部署（例如部署到 [Azure 应用服务](https://azure.microsoft.com/services/app-service/web)）后，你将使用应用程序设置（例如应用服务中的连接字符串）。 使用此设置，而不使用机密管理器存储连接字符串。
 

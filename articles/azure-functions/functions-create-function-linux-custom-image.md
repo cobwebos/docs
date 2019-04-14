@@ -11,12 +11,12 @@ ms.service: azure-functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: jeconnoc
-ms.openlocfilehash: 92811110ef44676de487bca1ad2022cb63315c75
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.openlocfilehash: 03e1ec58b0ef3ad50a04f82ced7d20119ab3ef5b
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418051"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59470060"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-image"></a>在 Linux 上使用自定义映像创建函数
 
@@ -67,7 +67,7 @@ func init MyFunctionProj --docker
 
 * `dotnet`：创建一个 .NET 类库项目 (.csproj)。
 * `node`：创建一个 JavaScript 项目。
-* `python`：创建 Python 项目。
+* `python`：创建一个 Python 项目。
 
 [!INCLUDE [functions-python-preview-note](../../includes/functions-python-preview-note.md)]
 
@@ -255,6 +255,16 @@ AzureWebJobsStorage=$storageConnectionString
 现在，可以测试 Azure 中的 Linux 上运行的函数。
 
 [!INCLUDE [functions-test-function-code](../../includes/functions-test-function-code.md)]
+
+## <a name="enable-application-insights"></a>启用 Application Insights
+
+监视函数执行的建议方法是将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
+
+若要为函数应用启用 Application Insights，请执行以下操作：
+
+[!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
+
+若要了解详细信息，请参阅[监视 Azure Functions](functions-monitoring.md)。
 
 ## <a name="enable-continuous-deployment"></a>启用持续部署
 

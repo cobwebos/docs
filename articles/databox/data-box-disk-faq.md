@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: overview
-ms.date: 04/01/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: b104f2578938997ff12778d65f08cca226d9a445
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 27200406f0866697100e1cf9b32c199203ad600d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892324"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258770"
 ---
 # <a name="what-is-azure-data-box-disk"></a>什么是 Azure Data Box 磁盘？
 
@@ -54,7 +54,7 @@ A. 如果使用 5 个磁盘，并且磁盘具有 8 TB 容量（7 TB 可用容量
 A.  若要了解目前在哪些区域提供 Data Box Disk，请转到[区域可用性](data-box-disk-overview.md#region-availability)。  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>问： 使用 Data Box 磁盘可在哪些区域存储数据？
-A. 美国、加拿大、澳大利亚、西欧和北欧的所有区域支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
+A. 美国、加拿大、澳大利亚、西欧和北欧、韩国及日本的所有区域支持 Data Box Disk。 仅支持 Azure 公有云区域。 不支持 Azure 政府版或其他主权云。
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>问： 如果 Data Box 磁盘出现任何问题，我应该与谁联系？
 A. 如果 Data Box Disk 出现任何问题，请联系 [Microsoft 支持部门](https://docs.microsoft.com/azure/databox/data-box-disk-contact-microsoft-support)。
@@ -132,8 +132,8 @@ A. 随 Data Box Disk 提供的工具集包含三个工具：
 - [下载适用于 Windows 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolswin) 
 - [下载适用于 Linux 的 Data Box Disk 工具集](https://aka.ms/databoxdisktoolslinux)
  
-  ### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>问： 我可以使用 Data Box Disk 将数据传输到 Azure 文件，然后在 Azure 文件同步中使用该数据吗？ 
-  A. Azure 文件可以与 Data Box Disk 配合使用，但不能与 Azure 文件同步配合使用。如果在 Azure 文件同步中使用文件数据，元数据不会保留。
+### <a name="q-can-i-use-data-box-disk-to-transfer-data-to-azure-files-and-then-use-the-data-with-azure-file-sync"></a>问： 我可以使用 Data Box Disk 将数据传输到 Azure 文件，然后在 Azure 文件同步中使用该数据吗？ 
+A. Azure 文件可以与 Data Box Disk 配合使用，但不能与 Azure 文件同步配合使用。如果在 Azure 文件同步中使用文件数据，元数据不会保留。
 
 
 ## <a name="verify-and-upload"></a>验证和上传
@@ -166,7 +166,7 @@ A. 可以克隆以前的订单。 克隆操作会创建与以前相同的订单�
 A. 是的。 你的数据已上传到 Azure，但如果看不到任何已指定了资源组的托管磁盘，则可能是因为数据无效。 如果页 Blob、块 Blob、Azure 文件和托管磁盘无效，系统会将其转移到以下文件夹：
  - 页 Blob 会进入以 *databoxdisk-invalid-pb-* 开头的块 Blob 容器。
  - Azure 文件会进入以 *databoxdisk-invalid-af-* 开头的块 Blob 容器。
- - 托管磁盘会进入以 *databoxdisk-invliad-md-* 开头的块 Blob 容器。
+ - 托管磁盘会进入以 *databoxdisk-invalid-md-* 开头的块 Blob 容器。
 
 ## <a name="next-steps"></a>后续步骤
 

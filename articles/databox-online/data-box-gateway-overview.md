@@ -5,14 +5,14 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: overview
-ms.date: 03/20/2019
+ms.date: 04/08/2019
 ms.author: alkohli
-ms.openlocfilehash: e7a65a6b49544783ed3f40194e2338540819536b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 340ff99aae9acff49ffdeaa43463521debb16a07
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400958"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282808"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>什么是 Data Box Gateway？
 
@@ -29,6 +29,8 @@ Data Box Gateway 是一种虚拟设备，基于在虚拟化环境或虚拟机监
 - **持续数据引入** - 无论数据大小如何，都能够将数据持续引入到设备中，以复制到云端。 在将数据写入网关设备时，设备会将数据上传到 Azure 存储。  
 
 - **初始批量传输后进行增量传输** - Data Box 用于在脱机模式下进行批量传输（初始播种），Data Box Gateway 用于在网络上进行增量传输（持续馈送）。
+
+有关详细信息，请转到 [Azure Data Box Gateway 用例](data-box-gateway-use-cases.md)。
 
 ## <a name="benefits"></a>优点
 

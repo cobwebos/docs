@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a5968710a919d96b9aee1d5acbd2366be76aa9e8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 8581b7f940aceca4e3ab85e44f83bf0bebb1b6f5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371787"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281499"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-planmyleave"></a>教程：Azure Active Directory 与 PlanMyLeave 集成
 
@@ -107,9 +107,9 @@ ms.locfileid: "58371787"
 
     ![PlanMyLeave 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company-name>.planmyleave.com/Login.aspx`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company-name>.planmyleave.com/Login.aspx`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company-name>.planmyleave.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<company-name>.planmyleave.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [PlanMyLeave 客户端支持团队](mailto:support@planmyleave.com)以获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -220,7 +220,7 @@ ms.locfileid: "58371787"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/28/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb64495d727429ff4dcfc233adee7dd5c60aaa8d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 05127e8ecfe68b4cb6330f838f252557bbd5e11d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852128"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272693"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cisco-webex"></a>教程：Azure Active Directory 与 Cisco Webex 的集成
 
@@ -107,20 +107,20 @@ ms.locfileid: "57852128"
 
     ![Cisco Webex 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入以下 URL：`https://web.ciscospark.com/#/signin`
+    a. 在“登录 URL”文本框中，键入以下 URL： `https://web.ciscospark.com/#/signin`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://idbroker.webex.com/<Org Id>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://idbroker.webex.com/<Org Id>`
 
     > [!NOTE]
     > 此标识符值不是实际值。 请使用实际标识符更新此值。 如果你有服务提供商元数据，请将其上传到“基本 SAML 配置”部分，然后将自动填充**标识符(实体 ID)** 值。
 
-5. Cisco Webex 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑” 图标添加属性。 ****
+5. Cisco Webex 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表。 单击“编辑”图标添加属性。
 
     ![图像](common/edit-attribute.png)
 
 6. 除了上述属性外，Cisco Webex 应用程序还需要另外几个属性在 SAML 响应中传回。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
     
-    | Name |  源属性|
+    | 名称 |  源属性|
     | ---------------|--------- |
     | uid | user.userprincipalname |
 
@@ -261,8 +261,8 @@ ms.locfileid: "57852128"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [配置用户预配](https://docs.microsoft.com/azure/active-directory/saas-apps/cisco-spark-provisioning-tutorial) 

@@ -8,12 +8,12 @@ ms.date: 01/31/2019
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: 91a0e1fd66861f8747c6c6da21f2c54ed40bd200
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: 139ce3fd81c14f9bf97e45c8aebb83d2fb1bbe10
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492792"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426607"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>有关如何备份 Azure 文件的问题
 本文回答了有关如何备份 Azure 文件的常见问题。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -38,9 +38,9 @@ ms.locfileid: "55492792"
 是的。 但是，需要先在连接的保管库中[停止保护](backup-azure-files.md#stop-protecting-an-azure-file-share)，[注销](troubleshoot-azure-files.md#configuring-backup)此存储帐户，然后在另一保管库中对其进行保护。
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>可以在哪些地理区域备份 Azure 文件共享？ <br/>
-Azure 文件共享备份目前为预览版，只在以下地理区域提供： 
-- 澳大利亚东部 (AE) 
-- 澳大利亚东南部 (ASE) 
+Azure 文件共享备份目前为预览版，只在以下地理区域提供：
+- 澳大利亚东部 (AE)
+- 澳大利亚东南部 (ASE)
 - 巴西南部 (BRS)
 - 加拿大中部 (CNC)
 - 加拿大东部 (CE)
@@ -50,17 +50,17 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 - 美国东部 2 (EUS2)
 - 日本东部 (JPE)
 - 日本西部 (JPW)
-- 印度中部 (INC) 
+- 印度中部 (INC)
 - 印度南部 (INS)
 - 韩国中部 (KRC)
 - 韩国南部 (KRS)
-- 美国中北部 (NCUS) 
-- 北欧 (NE) 
-- 美国中南部 (SCUS) 
+- 美国中北部 (NCUS)
+- 北欧 (NE)
+- 美国中南部 (SCUS)
 - 东南亚 (SEA)
-- 英国南部 (UKS) 
-- 英国西部 (UKW) 
-- 西欧 (WE) 
+- 英国南部 (UKS)
+- 英国西部 (UKW)
+- 西欧 (WE)
 - 美国西部 (WUS)
 - 美国中西部 (WCUS)
 - 美国西部 2 (WUS 2)
@@ -82,7 +82,7 @@ Azure 文件共享备份目前为预览版，只在以下地理区域提供：
 在任何时间点，最多可以有一个文件共享的 200 个快照。 此限制包括由 Azure 备份根据策略的定义创建的快照。 如果在达到此限制后无法进行备份，请删除按需还原点，以便将来能够成功地进行备份。
 
 ### <a name="after-enabling-virtual-networks-on-my-storage-account-the-backup-of-file-shares-in-the-account-started-failing-why"></a>在存储帐户上启用虚拟网络以后，就无法在帐户中备份文件共享。 为什么？
-Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在存储帐户中禁用虚拟网络即可成功地进行备份。 
+Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在存储帐户中禁用虚拟网络即可成功地进行备份。
 
 ## <a name="restore"></a>还原
 
@@ -91,6 +91,10 @@ Azure 文件共享的备份不支持启用了虚拟网络的存储帐户。 在�
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>在停止对 Azure 文件共享进行保护的情况下，是否能从备份还原？ <br/>
 是的。 如果在停止保护时选择了“保留备份数据”，则可从所有现有的还原点还原。
+
+### <a name="what-happens-if-i-cancel-an-ongoing-restore-job"></a>如果取消正在进行的还原作业，会发生什么情况？
+如果取消正在进行的还原作业，则还原过程将停止，并且在取消之前还原的所有文件将保留在已配置的目标位置（原始位置或备用位置），而不进行任何回退。 
+
 
 ## <a name="manage-backup"></a>管理备份
 

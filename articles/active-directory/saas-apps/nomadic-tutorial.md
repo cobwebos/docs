@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 6b8a63d24626a1d7af3659281b613f8186a62a5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 91ba5de6a6e0a18d494a449acfdea330234bcc9b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897633"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-nomadic"></a>教程：Azure Active Directory 与 Nomadic 的集成
 
@@ -104,7 +104,7 @@ ms.locfileid: "57897633"
 
     ![Nomadic 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.nomadic.fm/signin`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.nomadic.fm/signin`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     
@@ -152,7 +152,7 @@ ms.locfileid: "57897633"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -199,7 +199,7 @@ ms.locfileid: "57897633"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

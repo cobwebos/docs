@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 71b7cfb92b4caded75e0723564a09fae9f10858c
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: 851b28d10bdf0b2df67e1c0782a683e790b711bc
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359767"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266488"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>教程：Azure Active Directory 与 Jitbit Helpdesk 集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "58359767"
 
 若要配置 Jitbit Helpdesk 与 Azure AD 的集成，需要从库中将 Jitbit Helpdesk 添加到托管 SaaS 应用列表。
 
-**若要从库添加 Jitbit Helpdesk，请执行以下步骤：**
+**若要从库中添加 Jitbit Helpdesk，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -115,7 +115,7 @@ ms.locfileid: "58359767"
     > [!NOTE] 
     > 此值不是真实值。 使用实际登录 URL 更新此值。 请联系 [Jitbit Helpdesk 客户端支持团队](https://www.jitbit.com/support/)获取此值。
 
-    b. 在“标识符(实体 ID)”文本框中，键入如下所示的 URL：`https://www.jitbit.com/web-helpdesk/`
+    b. 在“标识符(实体 ID)”文本框中，键入如下所示的 URL： `https://www.jitbit.com/web-helpdesk/`
 
 5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -253,6 +253,6 @@ ms.locfileid: "58359767"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

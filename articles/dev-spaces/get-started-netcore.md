@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: a72e02cf7cc85113fe4fb660fdc5e5f0b5f22019
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 4c759462d603a35e738f76a505abd04b832afc3f
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57903141"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59426335"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-net-core"></a>通过 .NET Core 开始使用 Azure Dev Spaces
 
@@ -25,17 +25,10 @@ ms.locfileid: "57903141"
 - 在团队环境中高效地开发和测试代码。
 
 > [!Note]
-> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。
-
-现在可以在 Azure 中创建基于 Kubernetes 的开发空间了。
+> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
-Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 本地计算机可以运行 Windows、Mac 或 Linux。 对于 Linux，支持以下发行版：Ubuntu（18.04、16.04 和 14.04），Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2 和 SLES 12。
-
-首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
-
-> [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.43 版或更高版本。
+Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ### <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 登录 Azure。 在终端窗口中键入以下命令：
@@ -152,7 +145,7 @@ Service 'webfrontend' port 80 (TCP) is available at 'http://localhost:<port>'
 ### <a name="update-a-content-file"></a>更新内容文件
 Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可以用来快速地以迭代方式查看所做的代码更改在云的 Kubernetes 环境中的效果。
 
-1. 找到 `./Views/Home/Index.cshtml` 文件，对 HTML 进行编辑。 例如，将第 70 行的 `<h2>Application uses</h2>` 更改为类似 `<h2>Hello k8s in Azure!</h2>` 的内容
+1. 找到 `./Views/Home/Index.cshtml` 文件，对 HTML 进行编辑。 例如，将读取 `<h2>Application uses</h2>` 的第 70 行更改为如下内容： `<h2>Hello k8s in Azure!</h2>`
 1. 保存文件。 稍后会在终端窗口中看到一条消息，指出正在运行的容器中的文件已更新。
 1. 转到浏览器并刷新页面。 此时会看到网页显示更新的 HTML。
 
@@ -162,7 +155,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 更新代码文件需要的工作多一些，因为 .NET Core 应用需重新构建并生成更新的应用程序二进制文件。
 
 1. 在终端窗口中按 `Ctrl+C`（用于停止 `azds up`）。
-1. 打开名为 `Controllers/HomeController.cs` 的代码文件，编辑“关于”页面将显示的消息：`ViewData["Message"] = "Your application description page.";`
+1. 打开名为 `Controllers/HomeController.cs` 的代码文件，编辑“关于”页面将显示的消息： `ViewData["Message"] = "Your application description page.";`
 1. 保存文件。
 1. 在终端窗口中运行 `azds up`。 
 

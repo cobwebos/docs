@@ -10,27 +10,22 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 8bb601ac5c1ed8e9ca6d2027fe1b774a938e1f0a
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58362314"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59281125"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过自己的 Notebook 服务器开始使用 Azure 机器学习
 
-本文介绍如何使用自己的 Notebook 服务器来运行在 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md)中记录的代码。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。
+使用自己的 Notebook 服务器来运行在 [Azure 机器学习服务工作区](concept-azure-machine-learning-architecture.md)中记录值的代码。 该工作区是基础的云端块，用于通过机器学习进行机器学习模型的试验、训练和部署。
 
-本快速入门使用你自己的 Python 环境和 Jupyter Notebook 服务器。 有关不需进行安装的快速入门，请参阅[快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md) 
+本快速入门使用你自己的 Python 环境和 Jupyter Notebook 服务器。 有关不需安装 SDK 的快速入门，请参阅[快速入门：通过基于云的 Notebook 服务器开始使用 Azure 机器学习](quickstart-run-cloud-notebook.md) 
 
 观看本快速入门的视频版本：
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2G9N6]
-
-在本快速入门中，请执行以下操作：
-
-* 编写代码，用于记录工作区中的值。
-* 在工作区中查看所记录的值。
 
 如果没有 Azure 订阅，请在开始之前创建一个免费帐户。 立即试用 [Azure 机器学习服务免费版或付费版](https://aka.ms/AMLFree)。
 
@@ -61,7 +56,7 @@ ms.locfileid: "58362314"
 print(run.get_portal_url())
 ```
 
-在浏览器中使用相应的链接查看 Azure 门户中记录的值。
+此代码返回一个链接，你可以使用该链接在浏览器中查看 Azure 门户中记录的值。
 
 ![Azure 门户中记录的值](./media/quickstart-run-local-notebook/logged-values.png)
 
@@ -79,6 +74,6 @@ print(run.get_portal_url())
 在本文中，你创建了进行试验和部署模型所需的资源。 在 Notebook 中运行了代码，并在云端工作区中浏览了该代码的运行历史记录。
 
 > [!div class="nextstepaction"]
-> [教程：训练图像分类模型](tutorial-train-models-with-aml.md)
+> [教程：训练映像分类模型](tutorial-train-models-with-aml.md)
 
 还可以学习 [GitHub 中的更高级示例](https://aka.ms/aml-notebooks)或查看 [SDK 用户指南](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
-ms.openlocfilehash: cf6327583c73128cb839bcdd2c9861a4daf96b58
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 240291c7ec1d989e52a2896dc696f69afbee0093
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897752"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59279346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mypolicies"></a>教程：Azure Active Directory 与 myPolicies 集成
 
@@ -50,7 +50,7 @@ ms.locfileid: "57897752"
 
 若要配置 myPolicies 与 Azure AD 的集成，需要从库中将 myPolicies 添加到托管 SaaS 应用列表。
 
-若要从库中添加 myPolicies，请执行以下步骤：
+**若要从库中添加 myPolicies，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -104,9 +104,9 @@ ms.locfileid: "57897752"
 
     ![myPolicies 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<tenantname>.mypolicies.com/`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<tenantname>.mypolicies.com/users/auth/saml/callback`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<tenantname>.mypolicies.com/users/auth/saml/callback`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [myPolicies 客户端支持团队](mailto:support@mypolicies.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -147,7 +147,7 @@ ms.locfileid: "57897752"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 **brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -194,7 +194,7 @@ ms.locfileid: "57897752"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

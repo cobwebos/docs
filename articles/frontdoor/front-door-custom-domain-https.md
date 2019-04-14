@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
-ms.openlocfilehash: b3ec0616a7f022a104a20589f3281262b2717e35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014115"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59050971"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
 
@@ -40,6 +40,9 @@ ms.locfileid: "58014115"
 > - 使用自己的证书，即，自定义 SSL 证书
 > - 验证域
 > - 在自定义域上禁用 HTTPS 协议
+
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -86,11 +89,11 @@ ms.locfileid: "58014115"
 
 通过 PowerShell 将 Azure Front Door 服务的服务主体注册为 Azure Active Directory 中的应用。
 
-1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM/6.0.0)。
+1. 根据需要在本地计算机上的 PowerShell 中安装 [Azure PowerShell](/powershell/azure/install-az-ps)。
 
 2. 在 PowerShell 中运行以下命令：
 
-     `New-AzureRmADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
+     `New-AzADServicePrincipal -ApplicationId "ad0e1c7e-6d38-4ba4-9efd-0bc77ba9f037"`              
 
 #### <a name="grant-azure-front-door-service-access-to-your-key-vault"></a>授予 Azure Front Door 服务对 Key Vault 的访问权限
  
@@ -139,7 +142,7 @@ ms.locfileid: "58014115"
 
 CNAME 记录应采用以下格式，其中 *Name* 是自定义域名，*Value* 是 Front Door 的默认 .azurefd.net 主机名：
 
-| Name            | 类型  | 值                 |
+| 名称            | 类型  | 值                 |
 |-----------------|-------|-----------------------|
 | <www.contoso.com> | CNAME | contoso.azurefd.net |
 
@@ -238,23 +241,23 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-1. 谁是证书提供者？使用哪种类型的证书？
+1. *谁是证书提供者？使用哪种类型的证书？*
 
     Digicert 提供的专用/单一证书用于自定义域。 
 
-2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？
+2. *使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？*
 
     Azure Front Door 服务使用 SNI TLS/SSL。
 
-3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？
+3. *如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？*
 
     如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 afdverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
 
-4. 使用 SAN 证书是否没有使用专用证书安全？
+4. *使用 SAN 证书是否没有使用专用证书安全？*
     
     SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 SSL 证书都使用 SHA-256 来增强服务器安全性。
 
-5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？
+5. *我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？*
 
     否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
 

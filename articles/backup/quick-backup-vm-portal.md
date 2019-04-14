@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 7/17/2018
 ms.author: saurse
 ms.custom: mvc
-ms.openlocfilehash: 445437fe92ec75f1d34021808d7d47a372c2a44b
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: d167ed012e3f0e45988c88b64040208d87623518
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57535172"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275472"
 ---
 # <a name="back-up-a-virtual-machine-in-azure"></a>在 Azure 中备份虚拟机
 可以通过 Azure 门户创建 Azure 备份。 此方法提供基于浏览器的用户界面用于创建和配置 Azure 备份及所有相关的资源。 可以通过定期创建备份来保护数据。 Azure 备份可创建恢复点，这些恢复点可存储在异地冗余的恢复保管库中。 本文详细介绍如何使用 Azure 门户备份虚拟机 (VM)。 
@@ -79,7 +79,7 @@ VM 的“备份”窗口中显示了备份的状态，以及已完成的还原�
 
 3. 从下拉菜单中选择“删除备份数据”。
 
-4. 在“键入备份项的名称”对话框中输入 VM 名称，例如 *myVM*。 选择“停止备份”
+4. 在“键入备份项的名称”对话框中输入 VM 名称，例如 *myVM*。 选择“停止备份”。
 
     停止 VM 备份并删除恢复点之后，可以删除资源组。 如果使用了现有的 VM，你可能希望保留资源组和 VM。
 

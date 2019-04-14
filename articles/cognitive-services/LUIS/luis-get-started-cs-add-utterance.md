@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: dd60897d19ef4de7369b2b127c88e778363a387f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e9f8d274d81cdefbf9dfb41708cd537b2d60471a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852257"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59273458"
 ---
 # <a name="quickstart-change-model-using-c"></a>快速入门：使用 C# 更改模型
 
@@ -37,19 +37,19 @@ ms.locfileid: "57852257"
 
 ## <a name="create-quickstart-code"></a>创建快速入门代码 
 
-在 Visual Studio 中，使用 .NET Framework 创建新的 **Windows 经典桌面控制台**应用。 
+在 Visual Studio 中，使用 .NET Framework 创建新的 **Windows 经典桌面控制台**应用。 将项目命名为 `ConsoleApp1`。
 
 ![Visual Studio 项目类型](./media/luis-quickstart-cs-add-utterance/vs-project-type.png)
 
 ### <a name="add-the-systemweb-dependency"></a>添加 System.Web 依赖项
 
-Visual Studio 项目需要 **System.Web**。 在解决方案资源管理器中，右键单击“引用”并选择“添加引用”。
+Visual Studio 项目需要 **System.Web**。 在解决方案资源管理器中，右键单击“引用”并从“程序集”部分中选择“添加引用”。
 
 ![添加 System.web 引用](./media/luis-quickstart-cs-add-utterance/system.web.png)
 
 ### <a name="add-other-dependencies"></a>添加其他依赖项
 
-Visual Studio 项目需要 **JsonFormatterPlus** 和 **CommandLineParser**。 在“解决方案资源管理器”中，右键单击“引用”，并选择“管理 NuGet 包...”。搜索并添加两个包中的每一个。 
+Visual Studio 项目需要 **JsonFormatterPlus** 和 **CommandLineParser**。 在“解决方案资源管理器”中，右键单击“引用”，并选择“管理 NuGet 包...”。浏览并添加这两个包中的每一个包。 
 
 ![添加第三方依赖项](./media/luis-quickstart-cs-add-utterance/add-dependencies.png)
 
@@ -64,7 +64,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleApp3
+namespace ConsoleApp1
 {
     class Program
     {
@@ -75,7 +75,7 @@ namespace ConsoleApp3
 }
 ```
 
-添加依赖项。
+更新依赖项，以便：
 
    [!code-csharp[Add the dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/csharp/ConsoleApp1/Program.cs?range=1-11 "Add the dependencies")]
 
@@ -115,7 +115,7 @@ namespace ConsoleApp3
 
 ### <a name="copy-utterancesjson-to-output-directory"></a>将 utterances.json 复制到输出目录
 
-在解决方案资源管理器中，右键单击 `utterances.json` 并选择“属性”。 在属性窗口中，标记 `Content` 的“生成操作”，并标记 `Copy Always` 的“复制到输出目录”。  
+在解决方案资源管理器中，通过右键单击解决方案资源管理器的项目名称，然后依次选择“添加”、“现有项”，添加 `utterances.json`。 选择 `utterances.json` 文件。 这会将文件添加到项目。 然后需要将它添加到输出方向。 右键单击 `utterances.json` 并选择“属性”。 在属性窗口中，标记 `Content` 的“生成操作”，并标记 `Copy Always` 的“复制到输出目录”。  
 
 ![将 JSON 文件标记为内容](./media/luis-quickstart-cs-add-utterance/content-properties.png)
 
@@ -128,7 +128,7 @@ namespace ConsoleApp3
 在项目的 /bin/Debug 目录中，从命令行运行应用程序。 
 
 ```console
-ConsoleApp\bin\Debug> ConsoleApp1.exe --add utterances.json --train --status
+ConsoleApp1.exe --add utterances.json --train --status
 ```
 
 此命令行显示调用“添加陈述”API 的结果。 

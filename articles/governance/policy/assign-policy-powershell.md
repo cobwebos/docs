@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure PowerShell 创建策略以识别不符合的资源
 description: 使用 Azure PowerShell 创建 Azure Policy 分配以识别不符合的资源。
-services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
 ms.date: 03/11/2019
@@ -9,12 +8,12 @@ ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 7f743ee99516200c1fb046460c261605e7b3b4e0
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: f07a760153c4ec15cec5c5bc1348e23152c59cb8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58801197"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258328"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-using-azure-powershell"></a>使用 Azure PowerShell 创建策略分配以识别不符合的资源
 

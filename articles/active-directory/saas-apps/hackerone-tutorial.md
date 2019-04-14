@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 52a782831f0f017423faef7610f984b2ea87e445
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6faf023d36ea40e3694161ee0cfc8aac7c5652fa
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898459"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59277929"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>教程：Azure Active Directory 与 HackerOne 集成
 
@@ -106,9 +106,9 @@ ms.locfileid: "57898459"
 
     ![HackerOne 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://hackerone.com/<company name>/authentication`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://hackerone.com/<company name>/authentication`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://hackerone.com/users/saml/metadata`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL： `https://hackerone.com/users/saml/metadata`
 
     > [!NOTE]
     > 此登录 URL 值不是真实值。 使用实际登录 URL 更新此值。 请联系 [HackerOne 客户端支持团队](mailto:support@hackerone.com)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -145,7 +145,7 @@ ms.locfileid: "57898459"
 
     a. 在“电子邮件域”文本框中，键入已注册域。
 
-    b. 在“单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。  **** ****
+    b. 在“单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
     c. 打开从 Azure 门户下载到记事本中的“证书文件”，将内容复制到剪贴板，然后粘贴到“X509 证书”文本框。
 
@@ -226,4 +226,4 @@ ms.locfileid: "57898459"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

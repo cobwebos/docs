@@ -1,19 +1,18 @@
 ---
 title: 快速入门：使用 Azure 数据资源管理器 Node 库引入数据
 description: 本快速入门介绍如何使用 Node.js 在 Azure 数据资源管理器中引入（加载）数据。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 10/25/2018
-ms.openlocfilehash: 0a23c171d99d46eb29dd589867ce70ca2739ff29
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: d530ed3710a3406e5cd8115d615e91d5056a5f8c
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756447"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047647"
 ---
 # <a name="quickstart-ingest-data-using-the-azure-data-explorer-node-library"></a>快速入门：使用 Azure 数据资源管理器 Node 库引入数据
 

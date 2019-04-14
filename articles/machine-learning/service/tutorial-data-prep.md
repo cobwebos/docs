@@ -11,12 +11,12 @@ ms.author: MayMSFT
 ms.reviewer: trbye
 ms.date: 03/29/2019
 ms.custom: seodec18
-ms.openlocfilehash: d85f1ddcfe264e027a0f9d6c5f291d0005cad67c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: cd0b41966a392f6e56a5f0dfb97c00fc713d17d7
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665009"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266267"
 ---
 # <a name="tutorial-prepare-data-for-regression-modeling"></a>教程：为回归建模准备数据
 
@@ -58,7 +58,7 @@ Azure Notebooks 的入门很容易！ 已在 [Azure Notebooks](https://notebooks
 
 执行这些步骤，在计算机上创建本地 Jupyter Notebook 服务器。  完成这些步骤后，运行 **tutorials/regression-part1-data-prep.ipynb** Notebook。
 
-1. 完成 [[Azure 机器学习 Python 快速入门](quickstart-run-local-notebook.md) ](setup-create-workspace.md#python)中的安装步骤来创建 Miniconda 环境。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
+1. 完成 [[Azure 机器学习 Python 快速入门](quickstart-run-local-notebook.md)](setup-create-workspace.md#python)中的安装步骤来创建 Miniconda 环境。  如果愿意，可以跳过**创建工作区**部分，但是本教程系列的[第 2 部分](tutorial-auto-train-models.md)将需要使用工作区。
 1. 使用 `pip install azureml-dataprep` 在你的环境中安装数据准备 SDK。
 1. 克隆 [GitHub 存储库](https://aka.ms/aml-notebooks)。
 
@@ -157,7 +157,8 @@ green_df.head(5)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>
+.dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -685,7 +686,8 @@ time_split_df.head(5)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>
+.dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;
@@ -879,7 +881,8 @@ transformed_features_df.head(5)
 ```
 
 <div>
-<style scoped> .dataframe tbody tr th:only-of-type { vertical-align: middle; }
+<style scoped>
+.dataframe tbody tr th:only-of-type { vertical-align: middle; }
 
     .dataframe tbody tr th {
         vertical-align: top;

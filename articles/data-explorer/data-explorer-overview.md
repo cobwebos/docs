@@ -1,19 +1,18 @@
 ---
 title: 什么是 Azure 数据资源管理器？
 description: Azure 数据资源管理器是一项快速且高度可缩放的数据探索服务，适用于日志和遥测数据。
-services: data-explorer
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: overview
 ms.date: 09/24/2018
-ms.openlocfilehash: e3a669c547b33e5f13da43bc3ce851a2f24783f5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 02b239922f481240341225ea68d8d0ee7492c48b
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755986"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59044168"
 ---
 # <a name="what-is-azure-data-explorer"></a>什么是 Azure 数据资源管理器？
 
@@ -64,7 +63,7 @@ Azure 数据资源管理器同样可以处理大量的结构化、半结构化�
 我们很乐意收到你对 Azure 数据资源管理器及其查询语言的反馈：
 
 - 提出问题
-  - [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-data-explorer)
+  - [堆栈溢出](https://stackoverflow.com/questions/tagged/azure-data-explorer)
   - [Microsoft 技术社区](https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto)
   - [MSDN](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto)
 - [在 User Voice 中提出产品建议](https://aka.ms/AzureDataExplorer.UserVoice)

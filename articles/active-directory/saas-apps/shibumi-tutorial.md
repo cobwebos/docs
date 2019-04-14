@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
-ms.openlocfilehash: c8a4a6b8ccccafd496d2a621c41421dbf100727a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 445e24732edc1bc7e4d1cfe3ff49a54115c7ea3a
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671575"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59283199"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-shibumi"></a>教程：Azure Active Directory 与 Shibumi 的集成
 
@@ -107,9 +107,9 @@ ms.locfileid: "58671575"
 
     ![Shibumi 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.shibumi.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.shibumi.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.shibumi.com/saml/SSO`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.shibumi.com/saml/SSO`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -202,7 +202,7 @@ ms.locfileid: "58671575"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

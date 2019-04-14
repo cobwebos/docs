@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/18/2018
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cce100c4e8aa33a9180f5657756b11d6c6e34920
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57838861"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258787"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>教程：Azure Active Directory 与 AuditBoard 集成
 
@@ -38,7 +38,7 @@ ms.locfileid: "57838861"
 
 若要配置 Azure AD 与 AuditBoard 的集成，需要具有以下项：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
 * 已启用 AuditBoard 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
@@ -51,7 +51,7 @@ ms.locfileid: "57838861"
 
 若要配置 AuditBoard 与 Azure AD 的集成，需从库中将 AuditBoard 添加到托管 SaaS 应用列表。
 
-**若要从库添加 AuditBoard，请执行以下步骤：**
+**若要从库中添加 AuditBoard，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -67,7 +67,7 @@ ms.locfileid: "57838861"
 
 4. 在搜索框中，键入“AuditBoard”，在结果面板中选择“AuditBoard”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 AuditBoard](common/search-new-app.png)
+    ![结果列表中的 AuditBoard](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -79,8 +79,8 @@ ms.locfileid: "57838861"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 AuditBoard 单一登录](#configure-auditboard-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. **[创建 AuditBoard 测试用户](#create-auditboard-test-user)** - 在 AuditBoard 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 AuditBoard 测试用户](#create-auditboard-test-user)** - 在 AuditBoard 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -105,20 +105,20 @@ ms.locfileid: "57838861"
 
     ![AuditBoard 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    d. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/`。
+    d. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.auditboardapp.com/`
 
     ![AuditBoard 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 请联系 [AuditBoard 客户端支持团队](mailto:support@auditboard.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-4. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
+5. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
     ![证书下载链接](common/copy-metadataurl.png)
 
@@ -126,7 +126,7 @@ ms.locfileid: "57838861"
 
 若要在 AuditBoard 端配置单一登录，需要将下载的“应用联合元数据 URL”发送给 [AuditBoard 支持团队](mailto:support@auditboard.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
@@ -144,8 +144,7 @@ ms.locfileid: "57838861"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -181,7 +180,7 @@ ms.locfileid: "57838861"
 
 在本部分中，需在 AuditBoard 中创建名为 Britta Simon 的用户。 请与 [AuditBoard 支持团队](mailto:support@auditboard.com)协作，将用户添加到 AuditBoard 平台。 使用单一登录前，必须先创建并激活用户。
 
-### <a name="test-single-sign-on"></a>测试单一登录 
+### <a name="test-single-sign-on"></a>测试单一登录
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
@@ -193,5 +192,4 @@ ms.locfileid: "57838861"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

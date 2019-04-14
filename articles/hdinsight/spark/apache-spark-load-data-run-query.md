@@ -8,13 +8,13 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,mvc
 ms.topic: tutorial
 ms.author: hrasheed
-ms.date: 11/06/2018
-ms.openlocfilehash: ddcde2956da774e687c1e587649e65b79003bf3a
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.date: 04/03/2019
+ms.openlocfilehash: 18f5d34e50a4ed4ed82a3ceb4740d594ce4bd78d
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57448979"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59274002"
 ---
 # <a name="tutorial-load-data-and-run-queries-on-an-apache-spark-cluster-in-azure-hdinsight"></a>教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询
 
@@ -24,8 +24,6 @@ ms.locfileid: "57448979"
 > [!div class="checklist"]
 > * 从 csv 文件创建数据帧
 > * 对数据帧运行查询
-
-如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -38,7 +36,11 @@ ms.locfileid: "57448979"
 ![交互式 Spark SQL 查询的数据快照](./media/apache-spark-load-data-run-query/hdinsight-spark-sample-data-interactive-spark-sql-query.png "交互式 Spark SQL 查询的数据快照")
 
 
-1. 打开在先决条件部分中创建的 Jupyter 笔记本。
+1. 打开在先决条件部分中创建的 Jupyter 笔记本，并使用 PySpark 创建一个新笔记本。
+
+    > [!NOTE]  
+    > 如果使用 PySpark 内核创建 Notebook，在运行第一个代码单元格时，系统会自动创建 `spark` 会话。 不需要显式创建会话。
+
 2. 在 Notebook 的空单元格中粘贴以下代码，然后按 **SHIFT + ENTER** 运行这些代码。 这些代码会导入此方案所需的类型：
 
     ```python
@@ -58,10 +60,6 @@ ms.locfileid: "57448979"
     csvFile.write.saveAsTable("hvac")
     ```
 
-    > [!NOTE]  
-    > 如果使用 PySpark 内核创建 Notebook，在运行第一个代码单元格时，系统会自动创建 `spark` 会话。 不需要显式创建会话。
-
-
 ## <a name="run-queries-on-the-dataframe"></a>对数据帧运行查询
 
 创建表后，可以针对数据运行交互式查询。
@@ -77,13 +75,13 @@ ms.locfileid: "57448979"
 
      ![交互式 Spark 查询结果的表输出](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result.png "交互式 Spark 查询结果的表输出")
 
-3. 也可以在其他视觉效果中查看结果。 若要查看相同输出的面积图，请选择“面积”，然后设置其他值，如下所示。
+2. 也可以在其他视觉效果中查看结果。 若要查看相同输出的面积图，请选择“面积”，然后设置其他值，如下所示。
 
     ![交互式 Spark 查询结果的面积图](./media/apache-spark-load-data-run-query/hdinsight-interactive-spark-query-result-area-chart.png "交互式 Spark 查询结果的面积图")
 
-10. 在笔记本的“文件”菜单中，选择“保存和检查点”。 
+3. 从笔记本菜单栏中，导航到“文件” > “保存和检查点”。
 
-11. 如果现在开始[下一教程](apache-spark-use-bi-tools.md)，请使笔记本保持打开状态。 否则，关闭笔记本，释放群集资源：在笔记本的“文件”菜单中，选择“关闭并停止”。
+4. 如果现在开始[下一教程](apache-spark-use-bi-tools.md)，请使笔记本保持打开状态。 否则，请关闭笔记本以释放群集资源：从笔记本菜单栏，导航到“文件” >  “关闭并停止”。
 
 ## <a name="clean-up-resources"></a>清理资源
 
@@ -98,11 +96,10 @@ ms.locfileid: "57448979"
 ## <a name="next-steps"></a>后续步骤
 
 本教程介绍了如何：
-
-* 创建 Apache Spark dataframe。
-* 针对数据帧运行 Spark SQL。
+> [!div class="checklist"]
+> * 创建 Apache Spark dataframe。
+> * 针对数据帧运行 Spark SQL。
 
 请转到下一篇文章，了解如何将在 Apache Spark 中注册的数据拉取到 Power BI 等 BI 分析工具中。 
 > [!div class="nextstepaction"]
 > [使用 BI 工具分析数据](apache-spark-use-bi-tools.md)
-

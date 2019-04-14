@@ -10,18 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 2/20/2019
 ms.author: chlandsi
-ms.openlocfilehash: 2520f05c83cb5b727c8cdae1602b39320de4b99d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: ee0be31b10c86651fa36577ad0dffccc3dc7bf59
+ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58094916"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59009252"
 ---
 # <a name="quickstart-recognize-speech-in-objective-c-on-ios-using-the-speech-sdk"></a>快速入门：在 iOS 上使用语音 SDK 通过 Objective-C 识别语音
 
 [!INCLUDE [Selector](../../../includes/cognitive-services-speech-service-quickstart-selector.md)]
 
-本文介绍如何使用认知服务语音 SDK 在 Objective-C 中创建 iOS 应用，以便将包含录制语音的视频文件转录为文本。
+本文介绍如何使用认知服务语音 SDK 在 Objective-C 中创建 iOS 应用，以便将麦克风或包含录制音频的文件中的语音转录为文本。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,16 +29,16 @@ ms.locfileid: "58094916"
 
 * 语音服务的[订阅密钥](get-started.md)
 * [Xcode 9.4.1](https://geo.itunes.apple.com/us/app/xcode/id497799835?mt=12) 或更高版本的 macOS 计算机
-* 目标设置为 iOS 11.4 版或更高版本
+* 目标设置为 iOS 9.3 版或更高版本
 
 ## <a name="get-the-speech-sdk-for-ios"></a>获取用于 iOS 的语音 SDK
 
 [!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
-认知服务语音 SDK 的当前版本是 `1.3.1`。
+认知服务语音 SDK 的当前版本是 `1.4.0`。
 
-用于 Mac 和 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式发行。
-它可以从 https://aka.ms/csspeech/iosbinary 下载。 将文件下载到主目录。
+用于 iOS 的认知服务语音 SDK 目前以 Cocoa Framework 形式分发。
+它可从[此处](https://aka.ms/csspeech/iosbinary)下载。 将文件下载到主目录。
 
 ## <a name="create-an-xcode-project"></a>创建 Xcode 项目
 
@@ -103,3 +103,4 @@ ms.locfileid: "58094916"
 
 > [!div class="nextstepaction"]
 > [浏览 GitHub 上的 Objective-C 示例](https://aka.ms/csspeech/samples)
+

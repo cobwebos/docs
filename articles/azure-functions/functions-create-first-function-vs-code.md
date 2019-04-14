@@ -12,12 +12,12 @@ ms.topic: quickstart
 ms.date: 09/07/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d265c391b12a46f509c8663c64892372c8d806ba
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
+ms.openlocfilehash: cbe4dbd2ae741f4225cfdc628c31508956cbb95c
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54104516"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59469720"
 ---
 # <a name="create-your-first-function-using-visual-studio-code"></a>使用 Visual Studio Code 创建你的第一个函数
 
@@ -42,7 +42,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
     | 语言 | 分机 |
     | -------- | --------- |
     | **C#** | [适用于 Visual Studio Code 的 C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)<br/>[.NET Core CLI 工具](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)*   |
-    | **Java** | [Debugger for Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
+    | **Java** | [用于 Java 的调试器](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-debug)<br/>[Java 8](https://aka.ms/azure-jdks)<br/>[Maven 3+](https://maven.apache.org/) |
     | **JavaScript** | [Node 8.0+](https://nodejs.org/)  |
 
     \* 也是 Core Tools 所必需的。
@@ -115,12 +115,10 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
 
 ## <a name="next-steps"></a>后续步骤
 
-你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 若要了解有关以特定语言开发函数的详细信息，请参阅 [JavaScript](functions-reference-node.md)、[.NET](functions-dotnet-class-library.md) 或[Java](functions-reference-java.md) 的语言参考指南。
-
-接下来你可能想要了解有关使用 Azure Functions Core Tools 从终端或命令提示符下进行本地测试和调试的详细信息。
+你已使用 Visual Studio Code 通过简单的 HTTP 触发函数创建了函数应用。 你还可能想要了解有关使用 Azure Functions Core Tools [从终端或命令提示符进行本地测试和调试](functions-run-local.md)的详细信息。
 
 > [!div class="nextstepaction"]
-> [在本地编写代码并测试](functions-run-local.md)
+> [启用 Application Insights 集成](functions-monitoring.md#manually-connect-an-app-insights-resource)
 
 [Azure Functions Core Tools]: functions-run-local.md
 [适用于 Visual Studio Code 的 Azure Functions 扩展]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions

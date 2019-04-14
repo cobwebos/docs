@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/25/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16cf541dca003446e7b49033018d5b9950bfc54f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: edfc1f0b2d49510926cfbc306dacf6715225c5c1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57889567"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59272149"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learningpool-act"></a>教程：Azure Active Directory 与 Learningpool Act 的集成
 
@@ -51,7 +51,7 @@ ms.locfileid: "57889567"
 
 若要配置 Learningpool Act 与 Azure AD 的集成，需要从库中将 Learningpool Act 添加到托管 SaaS 应用列表。
 
-若要从库中添加 Learningpool Act，请执行以下步骤：
+**若要从库中添加 Learningpool Act，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,7 +105,7 @@ ms.locfileid: "57889567"
 
     ![Learningpool Act 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL：`https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
+    a. 在“登录 URL”文本框中，键入 URL： `https://parliament.preview.Learningpool.com/auth/shibboleth/index.php`
 
     b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：
     
@@ -124,7 +124,7 @@ ms.locfileid: "57889567"
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤： 
 
-    | Name | 源属性|
+    | 名称 | 源属性|
     | ------------------- | -------------------- |
     | urn:oid:1.2.840.113556.1.4.221 | user.userprincipalname |
     | urn:oid:2.5.4.42 | user.givenname |
@@ -239,7 +239,7 @@ ms.locfileid: "57889567"
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

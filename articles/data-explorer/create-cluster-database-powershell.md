@@ -1,19 +1,18 @@
 ---
 title: 快速入门：使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 description: 了解如何使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
-services: data-explorer
 author: oflipman
 ms.author: oflipman
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
-ms.openlocfilehash: 86fbf5801e9ff1c8bd9dead8be14aeeea1b58a29
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
+ms.openlocfilehash: 84b0cbfd7e8ec6709b79328220aac7c9ae904bdb
+ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58472474"
+ms.lasthandoff: 04/05/2019
+ms.locfileid: "59047154"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>使用 PowerShell 创建 Azure 数据资源管理器群集和数据库
 
@@ -68,7 +67,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | Name | mykustocluster | 所需的群集名称。|
+   | 名称 | *mykustocluster* | 所需的群集名称。|
    | SKU | *D13_v2* | 将用于群集的 SKU。 |
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
 
@@ -92,8 +91,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | ClusterName | mykustocluster | 将在其中创建数据库的群集的名称。|
-   | Name | mykustodatabase | 数据库名称。|
+   | ClusterName | *mykustocluster* | 将在其中创建数据库的群集的名称。|
+   | 名称 | *mykustodatabase* | 数据库名称。|
    | ResourceGroupName | *testrg* | 将在其中创建群集的资源组名称。 |
    | SoftDeletePeriod | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
    | HotCachePeriod | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
