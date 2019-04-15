@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 04/12/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87a416b6ff73fd658158276a02796aaae946bc20
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 95d19068e482722bf6cd01e44d27c2719bc419a3
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59491485"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564525"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -57,10 +57,10 @@ Windows Server 2008 R2 SP1 或更高版本。
 
 ### <a name="libraries"></a>库
 
-这些库会自动随扩展一同安装。
+这些库将自动随扩展一同安装。
 
-- [Visual C++ Visual Studio 2013 (X64) 可再发行组件包](https://www.microsoft.com/download/details.aspx?id=40784)
-- [Microsoft Azure Active Directory 的 Windows PowerShell 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
+- [Visual C++ Redistributable Packages for Visual Studio 2013 (X64)](https://www.microsoft.com/download/details.aspx?id=40784)
+- [用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块版本 1.1.166.0](https://www.powershellgallery.com/packages/MSOnline/1.1.166.0)
 
 已安装用于 Windows PowerShell 的 Microsoft Azure Active Directory 模块，如果尚未安装，可以通过配置脚本，作为安装过程的一部分运行。 如果尚未安装此模块，则无需提前安装。
 
@@ -78,6 +78,12 @@ NPS 服务器必须能够通过端口 80 和 443 与以下 URL 通信。
 
 * https://adnotifications.windowsazure.com  
 * https://login.microsoftonline.com
+
+此外，需要连接到以下 Url 来完成[适配器使用提供的 PowerShell 脚本的安装程序](#run-the-powershell-script)
+
+- https://login.microsoftonline.com
+- https://provisioningapi.microsoftonline.com
+- https://aadcdn.msauth.net
 
 ## <a name="prepare-your-environment"></a>准备环境
 
@@ -142,6 +148,14 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 1. 从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)。
 2. 将二进制文件复制到要配置的网络策略服务器。
 3. 运行 *setup.exe* 并按照安装说明操作。 如果发生错误，请仔细检查先决条件部分的两个库是否已成功安装。
+
+#### <a name="upgrade-the-nps-extension"></a>升级的 NPS 扩展
+
+当升级现有的 NPS 扩展安装时，若要避免重新启动基础服务器完成以下步骤：
+
+1. 卸载现有版本
+1. 运行新的安装程序
+1. 重新启动网络策略服务器 (IAS) 服务
 
 ### <a name="run-the-powershell-script"></a>运行 PowerShell 脚本
 
@@ -231,7 +245,7 @@ Connect-MsolService
 Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b09b8cd720" -ReturnKeyValues 1 | select -ExpandProperty "value" | out-file c:\npscertficicate.cer
 ```
 
-运行此命令后，请转到 C 驱动器，找到该文件并双击它。 转到详细信息并向下滚动到“指纹”，将服务器上安装的证书的指纹与此指纹进行比较。 证书指纹应匹配。
+一旦运行此命令，请转到 C 驱动器，找到文件，并双击它。 转到详细信息并向下滚动到“指纹”，将服务器上安装的证书的指纹与此指纹进行比较。 证书指纹应匹配。
 
 如果该命令返回了多个证书，可以使用 Valid-From 和 Valid-Until 时间戳（采用用户可读格式）来筛选出每个不相符的项。
 
@@ -239,7 +253,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 ### <a name="why-cant-i-sign-in"></a>为何无法登录？
 
-检查密码是否未过期。 NPS 扩展不支持在登录工作流中更改密码。 请与组织的 IT 人员联系以获得进一步的帮助。
+检查密码是否未过期。 NPS 扩展不支持在登录工作流中更改密码。 与组织的 IT 人员联系以获得进一步帮助。
 
 -------------------------------------------------------------
 
@@ -270,7 +284,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 如果你以前的计算机证书已过期，并且已生成新证书，则应删除任何过期的证书。 具有已过期的证书可能会导致问题的 NPS 扩展启动。
 
-若要检查是否具有有效的证书，检查本地计算机帐户的证书存储区使用 MMC 中，并确保该证书尚未通过其到期日期。 若要生成新的有效证书，请重新运行步骤的部分下"[运行 PowerShell 脚本](#run-the-powershell-script)"
+若要检查是否具有有效的证书，检查本地计算机帐户的证书存储区使用 MMC 中，并确保该证书尚未通过其到期日期。 若要生成新的有效证书，请重新运行部分下的步骤"[运行 PowerShell 脚本](#run-the-powershell-script)"
 
 ## <a name="managing-the-tlsssl-protocols-and-cipher-suites"></a>管理 TLS/SSL 协议和密码套件
 

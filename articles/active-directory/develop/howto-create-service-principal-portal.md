@@ -16,19 +16,19 @@ ms.author: celested
 ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee12cb2a0fdd4547ffae8dfce4fddee03167e539
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257405"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565914"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
-本文介绍如何创建新的 Azure Active Directory 应用程序和服务主体，可用于基于角色的访问控制。 如果有需要访问或修改资源的代码，则可以为应用创建标识。 此标识称为服务主体。 可以将所需权限分配给服务主体。 本文介绍如何使用门户创建服务主体。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
+本文介绍如何创建新的 Azure Active Directory (Azure AD) 应用程序和服务主体，可使用基于角色的访问控制。 如果有需要访问或修改资源的代码，则可以为应用创建标识。 此标识称为服务主体。 可以将所需权限分配给服务主体。 本文介绍如何使用门户创建服务主体。 重点介绍单租户应用程序，其中应用程序只应在一个组织内运行。 通常会将单租户应用程序作为在组织中运行的业务线应用程序使用。
 
 > [!IMPORTANT]
-> 请考虑使用 Azure 资源的托管标识作为应用程序标识，而不是创建服务主体。 如果代码在支持托管标识的服务上运行并访问支持 Azure Active Directory (Azure AD) 身份验证的资源，则托管标识是更好的选择。 若要详细了解 Azure 资源的托管标识（包括当前支持它的服务），请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。
+> 请考虑使用 Azure 资源的托管标识作为应用程序标识，而不是创建服务主体。 如果你的代码在支持托管的标识，支持 Azure AD 身份验证的访问资源的服务上运行，管理的标识是为你更好的选择。 若要详细了解 Azure 资源的托管标识（包括当前支持它的服务），请参阅[什么是 Azure 资源的托管标识？](../managed-identities-azure-resources/overview.md)。
 
 ## <a name="create-an-azure-active-directory-application"></a>创建 Azure Active Directory 应用程序
 

@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: glenga
-ms.openlocfilehash: 0e4c308e745cbf2ffbc18f64101043aff3ddde35
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 96656da078b79474dbf6576455a485d17868db49
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495679"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565951"
 ---
 # <a name="monitor-azure-functions"></a>监视 Azure Functions
 
@@ -99,10 +99,10 @@ ms.locfileid: "59495679"
 
 | Tab | 描述 |
 | ---- | ----------- |
-| **[失败数](../azure-monitor/app/asp-net-exceptions.md)** |  创建图表和基于函数失败和服务器异常的警报。 操作名称是函数名称。 依赖项中的失败不会显示，除非实现依赖项的自定义遥测数据。 |
+| **[失败](../azure-monitor/app/asp-net-exceptions.md)** |  创建图表和基于函数失败和服务器异常的警报。 操作名称是函数名称。 依赖项中的失败不会显示，除非实现依赖项的自定义遥测数据。 |
 | **[性能](../azure-monitor/app/performance-counters.md)** | 分析性能问题。 |
 | **服务器** | 查看资源利用率和每个服务器的吞吐量。 在函数阻碍基础资源的调试方案下，此数据非常有用。 服务器被称为云角色实例。 |
-| **[度量值](../azure-monitor/app/metrics-explorer.md)** | 创建图表和基于指标的警报。 度量值包括函数调用、 执行时间和成功率的数。 |
+| **[指标](../azure-monitor/app/metrics-explorer.md)** | 创建图表和基于指标的警报。 度量值包括函数调用、 执行时间和成功率的数。 |
 | **[实时指标流](../azure-monitor/app/live-stream.md)** | 创建实时查看指标数据。 |
 
 ## <a name="query-telemetry-data"></a>查询遥测数据
@@ -127,7 +127,7 @@ requests
 | 表 | 描述 |
 | ----- | ----------- |
 | **traces** | 创建由运行时和函数代码的日志。 |
-| **请求** | 每个函数调用的一个请求。 |
+| **requests** | 每个函数调用的一个请求。 |
 | **异常** | 由运行时引发的任何异常。 |
 | **customMetrics** | 成功和失败的调用、 成功率和持续时间的计数。 |
 | **customEvents** | 事件跟踪的运行时，例如：触发函数的 HTTP 请求。 |
@@ -595,7 +595,9 @@ module.exports = function (context, req) {
 
 ## <a name="dependencies"></a>依赖项
 
-该函数所拥有的其他服务的依赖项不会自动显示。 可以编写自定义代码来显示依赖项。 有关示例，请参阅中的示例代码[C#自定义遥测部分](#log-custom-telemetry-in-c-functions)。 示例代码会导致*应用程序映射*在 Application Insights 中看起来像以下映像：
+Functions v2 会自动收集有关 HTTP 请求、 服务总线和 SQL 的依赖项。
+
+可以编写自定义代码来显示依赖项。 有关示例，请参阅中的示例代码[C#自定义遥测部分](#log-custom-telemetry-in-c-functions)。 示例代码会导致*应用程序映射*在 Application Insights 中看起来像以下映像：
 
 ![应用程序映射](./media/functions-monitoring/app-map.png)
 

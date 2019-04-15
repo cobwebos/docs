@@ -10,12 +10,12 @@ ms.subservice: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: f5b3234c45a9ee80bc5a2c2afe67046896270802
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58163780"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565404"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>如何添加预先训练的实体
 本教程展示了如何向 Conversation Learner 模型添加预先训练的实体。
@@ -62,7 +62,7 @@ ms.locfileid: "58163780"
 
 1. 选择**操作**在左侧的窗格中，然后**新操作**。
 2. 输入**日期是什么？** 为**智能机器人应用程序的响应...**.预先训练的实体不能**所需实体**如他们所识别的默认值为所有语音样本。
-3. 输入**builtin datetimev2**有关**取消将赋予**。
+3. 输入**builtin datetimev2**有关**取消实体**。
 4. 选择“创建”。
 
 ![](../media/T08_action_create_2.png)

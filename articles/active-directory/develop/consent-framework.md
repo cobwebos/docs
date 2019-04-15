@@ -17,12 +17,12 @@ ms.author: celested
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0200aa917894f4b7f1a45a9d3bd15b128aaf27a2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: f01555933ca8b3d0c48a956d3deb4b3356b4e1a2
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124170"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564952"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Azure Active Directory 许可框架
 
@@ -46,7 +46,7 @@ ms.locfileid: "58124170"
 
 1. 如果用户尚未经过身份验证，Azure AD 的 `/authorize` 终结点会提示用户登录。
 
-    [用户或管理员登录到 Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
+    ![用户或管理员登录到 Azure AD](./media/quickstart-v1-integrate-apps-with-azure-ad/usersignin.png)
 
 1. 用户登录后，Azure AD 将决定是否要向该用户显示同意页。 此决定基于该用户（或其组织的管理员）是否已授予应用程序许可。 如果尚未授予许可，Azure AD 会提示用户授予许可，并显示运行该应用程序所需的权限。 许可对话框中显示的权限集与在 Azure 门户中的“委托权限”中选择的权限集相匹配。
 

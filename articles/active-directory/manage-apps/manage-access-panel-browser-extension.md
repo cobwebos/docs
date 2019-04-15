@@ -1,5 +1,5 @@
 ---
-title: 适用于 IE 的 Azure 访问面板扩展故障排除 | Microsoft 文档
+title: 获得为 IE Azure 访问面板扩展进行故障排除 |Microsoft Docs
 description: 如何使用组策略为我的应用门户部署 Internet Explorer 加载项。
 services: active-directory
 documentationcenter: ''
@@ -11,87 +11,86 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/11/2018
+ms.date: 04/11/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ace2482e51454458977452f0aa610dd43a94e8a7
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: 63dfece713657df4450f18b8a7ce212ce2c41687
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56211183"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565021"
 ---
-# <a name="troubleshooting-the-access-panel-extension-for-internet-explorer"></a>Internet Explorer 访问面板扩展故障排除
+# <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Internet explorer 访问面板扩展进行故障排除
+
 本文将帮助用户解决以下问题：
 
 * 使用 Internet Explorer 时无法通过我的应用门户访问应用。
 * 即使已安装软件，也看到“安装软件”消息。
 
-如果你是管理员，另请参阅：[如何使用组策略部署 Internet Explorer 的访问面板扩展](deploy-access-panel-browser-extension.md)
+如果你是管理员，请参阅[如何部署使用组策略的 Internet Explorer 访问面板扩展](deploy-access-panel-browser-extension.md)。
 
 ## <a name="run-the-diagnostic-tool"></a>运行诊断工具
-可以下载并运行访问面板诊断工具，使用访问面板扩展来诊断安装问题：
 
-1. [单击此处可下载诊断工具](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)。
-2. 打开文件，并按“全部提取”按钮。
+可以通过下载并运行访问面板诊断工具来诊断安装问题的访问面板扩展。 
+
+若要下载并安装诊断工具：
+
+1. [选择此链接以下载该诊断工具。](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
+
+2. 打开文件并将内容提取到您的计算机。
    
-    ![按“全部提取”](./media/manage-access-panel-browser-extension/extract1.png)
-3. 然后按“提取”按钮以继续。
+3. 若要运行该工具，用鼠标右键单击名为的文件*AccessPanelExtensionDiagnosticTool.js* ，然后选择**使用打开** > **Microsoft Windows 基于脚本宿主**.
    
-    ![按“提取”](./media/manage-access-panel-browser-extension/extract2.png)
-4. 要运行该工具，请右键单击名为“AccessPanelExtensionDiagnosticTool”的文件，并选择“打开方式”>“基于 Microsoft Windows 的脚本主机”。
-   
-    ![打开方式 > 基于 Microsoft Windows 的脚本主机](./media/manage-access-panel-browser-extension/open_tool.png)
-5. 然后将看到以下诊断窗口，其中说明安装出现哪些信息可能是错误的。
-   
-    ![诊断窗口的一个示例](./media/manage-access-panel-browser-extension/tool_preview.png)
-6. 单击“是”，让程序修复已发现的问题。
-7. 要保存这些更改，请关闭每个 Internet Explorer 窗口，并重新打开 Internet Explorer。<br />如果仍然无法访问应用，请尝试执行以下步骤。
+    ![打开方式 > 基于 Microsoft Windows 的脚本主机](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
+
+4. 查看诊断结果的显示并选择**是**来解决问题。 **检查结果**对话框显示有关要执行的操作如果扩展不起作用的信息。  
+
+5. 读取消息并选择**确定**。
 
 ## <a name="check-that-the-access-panel-extension-is-enabled"></a>检查访问面板扩展是否已启用
-若要在 Internet Explorer 中验证访问面板扩展是否已启用，请执行以下操作：
 
-1. 在 Internet Explorer 中，单击窗口右上角的“齿轮”图标。 然后选择“Internet 选项”。<br />（在较旧版本的 Internet Explorer 中可以在“工具”>“Internet 选项”下找到此项。）
+若要验证已启用 Internet Explorer 中的访问面板扩展：
+
+1. 在 Internet Explorer 中，选择**齿轮图标**右上角的窗口，然后选择**Internet 选项**。
    
-    ![转到“工具”>“Internet 选项”](./media/manage-access-panel-browser-extension/internetoptions.png)
-2. 单击“程序”选项卡，并单击“管理加载项”按钮。
+2. 转到**程序**选项卡并选择**管理加载项**。
    
-    ![单击“管理加载项”](./media/manage-access-panel-browser-extension/internetoptions_programs.png)
-3. 在此对话框中，选择“访问面板扩展”，并单击“启用”按钮。
+3. 选择**访问面板扩展**中**Microsoft Corporation**部分，并选择**启用**。
    
-    ![单击“启用”](./media/manage-access-panel-browser-extension/enableaddon.png)
-4. 要保存这些更改，请关闭每个 Internet Explorer 窗口，并重新打开 Internet Explorer。
+4. 若要保存所做的更改，关闭所有 Internet Explorer 浏览器窗口必须打开。 更改下次打开 Internet Explorer 时生效。
 
 ## <a name="enable-extensions-for-inprivate-browsing"></a>为 InPrivate 浏览启用扩展
-如果使用 InPrivate 浏览模式，请执行以下操作：
 
-1. 在 Internet Explorer 中，单击窗口右上角的“齿轮”图标。 然后选择“Internet 选项”。<br />（在较旧版本的 Internet Explorer 中可以在“工具”>“Internet 选项”下找到此项。）
+为 InPrivate 浏览启用扩展：
+
+1. 在 Internet Explorer 中，选择**齿轮图标**右上角的窗口，然后选择**Internet 选项**。
    
-    ![诊断窗口的一个示例](./media/manage-access-panel-browser-extension/inprivateoptions.png)
-2. 转到“隐私”选项卡，并**取消选中**标记为“在 InPrivate 浏览启动时禁用工具栏和扩展”的复选框</p>
+2. 转到**隐私**选项卡，确认**InPrivate 浏览启动时禁用工具栏和扩展**复选框已清除。
    
-    ![取消选中“在 InPrivate 浏览启动时禁用工具栏和扩展”](./media/manage-access-panel-browser-extension/enabletoolbars.png)
-3. 要保存这些更改，请关闭每个 Internet Explorer 窗口，并重新打开 Internet Explorer。
+3.  若要保存所做的更改，关闭所有 Internet Explorer 浏览器窗口必须打开。 更改下次打开 Internet Explorer 时生效。
 
 ## <a name="uninstall-the-access-panel-extension"></a>卸载访问面板扩展
-若要从计算机中卸载访问面板扩展，请执行以下操作：
 
-1. 在键盘上按 **Windows 键**，打开“开始”菜单。 打开菜单后，可以键入任何内容以执行搜索。 键入“控制面板”，并在“控制面板”出现在搜索结果中时打开**控制面板**。
+若要从计算机中卸载访问面板扩展：
+
+1. 在控制面板中，搜索*卸载*。 
+
+2. 在搜索结果中，选择**卸载程序**。
    
-    ![搜索“控制面板”](./media/manage-access-panel-browser-extension/search_sm.png)
-2. 在控制面板的右上角，将“查看方式”选项更改为“大图标”。 然后找到并单击“程序和功能”按钮。
+    ![卸载程序的搜索。](./media/manage-access-panel-browser-extension/uninstall-program-control-panel.png)
+
+3. 从列表中选择**访问面板扩展**，然后选择**卸载**。
+
+    ![卸载访问面板扩展。](./media/manage-access-panel-browser-extension/uninstall-access-panel-extension.png)
    
-    ![将视图更改为显示大图标](./media/manage-access-panel-browser-extension/control_panel.png)
-3. 从列表中选择“访问面板扩展”，并单击“卸载”按钮。
-   
-    ![单击“卸载”](./media/manage-access-panel-browser-extension/uninstall.png)
 4. 然后，可以尝试重新安装扩展，以了解该问题是否已解决。
 
-如果在卸载扩展时遇到问题，还可以使用 [Microsoft Fix It](https://go.microsoft.com/?linkid=9779673) 工具删除它。
+如果遇到问题卸载扩展时，您还可以删除它使用[Microsoft Fix It](https://go.microsoft.com/?linkid=9779673)工具。
 
 ## <a name="related-articles"></a>相关文章
 * [Azure Active Directory 的应用程序访问与单一登录](what-is-single-sign-on.md)
-* [如何使用组策略部署 Internet Explorer 的访问面板扩展](deploy-access-panel-browser-extension.md)
+* [如何部署使用组策略的 Internet Explorer 访问面板扩展](deploy-access-panel-browser-extension.md)
 

@@ -16,13 +16,17 @@ ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2bb6237e53f945b645f1ee757a53ef67270e2416
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268373"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565949"
 ---
+> [!NOTE]
+> 一些的以下准则可能仅适用于 Windows 或 Linux 应用服务。 例如，Linux 应用服务默认情况下在 64 位模式下运行。
+>
+
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的应用程序性能常见问题解答
 
 本文包含有关针对 [Azure 应用服务的 Web 应用功能](https://azure.microsoft.com/services/app-service/web/)的应用程序性能问题的常见问题 (FAQ) 解答。
@@ -39,7 +43,7 @@ ms.locfileid: "56268373"
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何对高内存使用率情况进行故障排除？
 
-在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
+在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 自动执行应用服务 Web 应用？
 

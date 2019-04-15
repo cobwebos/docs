@@ -6,14 +6,14 @@ author: mayurigupta13
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/15/2019
 ms.author: mayg
-ms.openlocfilehash: 7f5d3ff6759cebca2f592e1cd4822ee85959ecb9
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 2e1cbb2446501d0afda29eba179e388b5a22e6a8
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361313"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565676"
 ---
 # <a name="set-up-ip-addressing-to-connect-to-azure-vms-after-failover"></a>设置在故障转移后用于连接到 Azure VM 的 IP 地址
 
@@ -54,7 +54,7 @@ Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP �
 
 ![运行子网故障转移前](./media/site-recovery-network-design/network-design7.png)
 
-**故障转移之前的基础结构**
+**故障转移前的基础结构**
 
 
 为了能使 Woodgrove 在保留 IP 地址的同时将其 VM 复制到 Azure，该公司需执行以下操作：
@@ -62,7 +62,7 @@ Site Recovery 支持在通过子网故障转移到 Azure 时保留固定的 IP �
 
 1. 创建 Azure 虚拟网络，故障转移本地计算机后将在其中创建 Azure VM。 此网络应为本地网络扩展，这样应用程序才能顺畅地进行故障转移。
 2. 在 Site Recovery 中故障转移前，将在计算机属性中分配相同 IP 地址。 故障转移后，Site Recovery 将此地址分配给 Azure VM。
-3. 运行故障转移并使用相同 IP 地址创建 Azure VM 后，这些 VM 将使用 [Vnet 到 Vnet 连接](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)连接到网络。 此操作可以编写脚本。
+3. 运行故障转移并使用相同 IP 地址创建 Azure VM 后，这些 VM 将使用 [Vnet 到 Vnet 连接](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)连接到网络。 此操作可以编写脚本。
 4. 它们需要修改路由，以反映 192.168.1.0/24 现在已移到 Azure。
 
 

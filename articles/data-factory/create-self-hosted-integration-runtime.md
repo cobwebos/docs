@@ -11,12 +11,12 @@ ms.date: 01/15/2019
 author: nabhishek
 ms.author: abnarain
 manager: craigg
-ms.openlocfilehash: 7fd4fd65b48c199527d9172b7cea89010c962f5b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: aaa72d3a29fee28ede336a2be350015bf3cbc9b4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261031"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565494"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>创建和配置自承载集成运行时
 集成运行时 (IR) 是 Azure 数据工厂用于在不同的网络环境之间提供数据集成功能的计算基础结构。 有关 IR 的详细信息，请参阅[集成运行时概述](concepts-integration-runtime.md)。
@@ -184,13 +184,13 @@ ms.locfileid: "59261031"
 
 ### <a name="monitoring"></a>监视 
 
-- **共享红外线 （ir)**
+- **共享 IR**
 
   ![用于查找共享集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-shared-IR.png)
 
   ![监视选项卡](media/create-self-hosted-integration-runtime/contoso-shared-ir-monitoring.png)
 
-- **链接红外线 （ir)**
+- **链接 IR**
 
   ![用于查找链接集成运行时的选项](media/create-self-hosted-integration-runtime/Contoso-linked-ir.png)
 
@@ -255,7 +255,7 @@ download.microsoft.com | 443 | 用于下载更新
 
 ![指定代理](media/create-self-hosted-integration-runtime/specify-proxy.png)
 
-自承载集成运行时使用代理服务器连接到云服务。 在初始设置期间单击“更改”链接。 此时会出现代理设置对话框。
+自承载的集成运行时配置时，使用代理服务器连接到云服务、 源 / 目标 (使用 HTTP / HTTPS 协议)。 这是选择**更改链接**在初始安装过程。 此时会出现代理设置对话框。
 
 ![设置代理](media/create-self-hosted-integration-runtime/set-http-proxy.png)
 

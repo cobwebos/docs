@@ -11,34 +11,29 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 04/12/2019
 ms.author: celested
 ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdbabc1a1ccf4bf27172a4db53255eeb1576def9
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.openlocfilehash: a168c3415996ff97137c4e312348f74a48e9531b
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56180498"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564986"
 ---
 # <a name="disable-user-sign-ins-for-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中对企业应用禁用用户登录
-可以轻松地禁用企业应用程序，防止用户在 Azure Active Directory (Azure AD) 中登录该程序。 必须具有适当的权限才能管理企业应用，并且必须是目录的全局管理员。
+很容易地禁用企业应用程序，以便任何用户可以不登录到它在 Azure Active Directory (Azure AD) 中。 需要适当的权限来管理企业应用。 并且，你必须是目录全局管理员。
 
 ## <a name="how-do-i-disable-user-sign-ins"></a>如何禁用用户登录？
 1. 使用目录全局管理员的帐户登录到 [Azure 门户](https://portal.azure.com)。
-2. 选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
-3. 在“Azure Active Directory -  目录名”窗格（即，正在管理的目录的 Azure AD 窗格）中，选择“企业应用程序”。
-
-    ![打开企业应用](./media/disable-user-sign-in-portal/open-enterprise-apps.png)
-4. 在“企业应用程序”窗格中，选择“所有应用程序”。 此时会显示可管理应用的列表。
-5. 在“企业应用程序 - 所有应用程序”窗格中，选择一个应用。
-6. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”。
-
-    ![选择“所有应用程序”命令](./media/disable-user-sign-in-portal/select-app.png)
-7. 在“appname - 属性”窗格中，对“启用以让用户登录?”设置选择“否”。
-8. 选择“保存”命令。
+1. 选择“所有服务”，在文本框中输入 **Azure Active Directory**，并选择“Enter”。
+1. 上**Azure Active Directory** -  ***directoryname***窗格 （即，正在管理的目录的 Azure AD 窗格），选择**企业应用程序**.
+1. 上**企业应用程序-所有应用程序**窗格中，您将看到一系列你可以管理的应用。 选择一个应用。
+1. 在 ***appname*** 窗格（即标题中包含所选应用的名称的窗格）中，选择“属性”。
+1. 在“appname - 属性”窗格中，对“启用以让用户登录?”设置选择“否”。
+1. 选择“保存”命令。
 
 ## <a name="next-steps"></a>后续步骤
 * [查看所有组](../fundamentals/active-directory-groups-view-azure-portal.md)

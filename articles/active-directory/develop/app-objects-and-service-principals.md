@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2019
+ms.date: 04/13/2019
 ms.author: celested
 ms.custom: aaddev
 ms.reviewer: sureshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1b7ab4007a94efbc48bfea67c6b954c02de0b2ba
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 9cee05b1ff6c63aae07b9c04435e4ff3ae4d07ee
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887431"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565880"
 ---
 # <a name="application-and-service-principal-objects-in-azure-active-directory"></a>Azure Active Directory 中的应用程序对象和服务主体对象
 
@@ -52,7 +52,7 @@ ms.locfileid: "56887431"
 
 ### <a name="application-object"></a>应用程序对象
 
-Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象位于应用程序注册到的 Azure AD 租户（称为应用程序的“宿主”租户）中。 Azure AD Graph [Application 实体][AAD-Graph-App-Entity]定义应用程序对象属性的架构。
+Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象位于应用程序注册到的 Azure AD 租户（称为应用程序的“宿主”租户）中。 Microsoft Graph[应用程序实体][ MS-Graph-App-Entity]定义应用程序对象的属性的架构。
 
 ### <a name="service-principal-object"></a>服务主体对象
 
@@ -60,7 +60,7 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 安全主体定义 Azure AD 租户中用户/应用程序的访问策略和权限。 这样便可实现核心功能，如在登录时对用户/应用程序进行身份验证，在访问资源时进行授权。
 
-当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 Azure AD Graph [ServicePrincipal 实体][AAD-Graph-Sp-Entity]定义服务主体对象属性的架构。
+当应用程序被授予了对租户中资源的访问权限时（根据注册或[许可](developer-glossary.md#consent)），将创建一个服务主体对象。 Microsoft Graph [ServicePrincipal 实体][ MS-Graph-Sp-Entity]定义一个服务主体对象属性的架构。
 
 ### <a name="application-and-service-principal-relationship"></a>应用程序和服务主体的关系
 
@@ -68,7 +68,7 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 
 应用程序对象用作模板，常见属性和默认属性从其中*派生*，以便在创建相应服务主体对象时使用。 因此，应用程序对象与软件应用程序存在 1 对 1 关系，而与其对应的服务主体对象存在 1 对多关系。
 
-必须在将使用应用程序的每个租户中创建服务主体，让它能够建立用于登录和/或访问受租户保护的资源的标识。 单租户应用程序只有一个服务主体（在其宿主租户中），在应用程序注册期间创建并被允许使用。 多租户 Web 应用程序/API 还会在租户中的某个用户已同意使用它的每个租户中创建服务主体。 
+必须在将使用应用程序的每个租户中创建服务主体，让它能够建立用于登录和/或访问受租户保护的资源的标识。 单租户应用程序只有一个服务主体（在其宿主租户中），在应用程序注册期间创建并被允许使用。 多租户 Web 应用程序/API 还会在租户中的某个用户已同意使用它的每个租户中创建服务主体。
 
 > [!NOTE]
 > 对应用程序对象所做的任何更改也只反映在该对象在应用程序宿主租户（其注册所在的租户）的服务主体对象中。 对于多租户应用程序，在通过[应用程序访问面板](https://myapps.microsoft.com)删除该访问权限并重新授予访问权限之前，对应用程序对象所做的更改不会反映在任何使用者租户的服务主体对象中。
@@ -83,25 +83,25 @@ Azure AD 应用程序由其唯一一个应用程序对象来定义，该对象�
 - **Contoso** - Contoso 组织使用的租户，即 **HR 应用**的使用者
 - **Fabrikam** - Fabrikam 组织使用的租户，它也使用 **HR 应用**
 
-![应用程序对象与服务主体对象之间的关系](./media/app-objects-and-service-principals/application-objects-relationship.png)
+![应用程序对象与服务主体对象之间的关系](./media/app-objects-and-service-principals/application-objects-relationship.svg)
 
 在此示例方案中：
 
 | 步骤 | 描述 |
 |------|-------------|
-| 第    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
+| 1    | 是在应用程序的宿主租户中创建应用程序对象和服务主体对象的过程。 |
 | 2    | 当 Contoso 和 Fabrikam 的管理员完成同意并向应用程序授予访问权限时，会在其公司的 Azure AD 租户中创建服务主体对象，并向其分配管理员所授予的权限。 另请注意，HR 应用可能配置/设计为允许由用户同意以供个人使用。 |
 | 3    | HR 应用程序的使用者租户（例如 Contoso 和 Fabrikam）各有自己的服务主体对象。 每个对象代表其在运行时使用的应用程序实例，该实例受相关管理员同意的权限控制。 |
 
 ## <a name="next-steps"></a>后续步骤
 
-- 可以使用 [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) 查询应用程序和服务主体对象。
-- 可以使用 Azure AD Graph API、[Azure 门户的][AZURE-Portal]应用程序清单编辑器或 [Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) 访问应用程序的应用程序对象（由其 OData [Application 实体][AAD-Graph-App-Entity]表示）。
-- 可以通过 Azure AD Graph API 或 [Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0) 访问应用程序的服务主体对象（由其 OData [ServicePrincipal 实体][AAD-Graph-Sp-Entity]表示）。
+- 可以使用[Microsoft Graph 资源管理器](https://developer.microsoft.com/graph/graph-explorer)查询的应用程序和服务主体对象。
+- 您可以访问使用 Microsoft Graph API，应用程序的应用程序对象[Azure 门户][ AZURE-Portal]应用程序清单编辑器中，或[Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)由其 OData[应用程序实体][MS-Graph-App-Entity]。
+- 您可以通过 Microsoft Graph API 访问应用程序的服务主体对象或[Azure AD PowerShell cmdlet](https://docs.microsoft.com/powershell/azure/overview?view=azureadps-2.0)，如由其 OData [ServicePrincipal 实体][ MS-Graph-Sp-Entity].
 
 <!--Image references-->
 
 <!--Reference style links -->
-[AAD-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
-[AAD-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
+[MS-Graph-App-Entity]: https://docs.microsoft.com/graph/api/resources/application
+[MS-Graph-Sp-Entity]: https://docs.microsoft.com/graph/api/resources/serviceprincipal
 [AZURE-Portal]: https://portal.azure.com

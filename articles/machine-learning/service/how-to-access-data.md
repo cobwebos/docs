@@ -11,12 +11,12 @@ author: mx-iao
 ms.reviewer: sgilley
 ms.date: 02/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: 85910e2f422ea45b2468f20b4ff9425f64ca3cbe
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.openlocfilehash: 0ab01187b03b3d658b171029003667588382bd7f
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793402"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563514"
 ---
 # <a name="access-data-from-your-datastores"></a>访问你的数据存储中的数据
 
@@ -28,7 +28,7 @@ ms.locfileid: "58793402"
 * [上传和下载数据到数据存储](#up-and-down)
 * [在训练期间访问数据存储](#train)
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 若要使用数据存储，首先需要一个[工作区](concept-azure-machine-learning-architecture.md#workspace)。
 
@@ -78,7 +78,7 @@ ds = ws.get_default_datastore()
   ```Python
   ds = Datastore.register_azure_file_share(workspace=ws, 
                                            datastore_name='your datastore name', 
-                                           container_name='your file share name',
+                                           file_share_name='your file share name',
                                            account_name='your storage account name', 
                                            account_key='your storage account key',
                                            create_if_not_exists=True)
@@ -115,7 +115,7 @@ ws.set_default_datastore('your datastore name')
 ## <a name="upload--download-data"></a>上传和下载数据
 [ `upload()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)并[ `download()` ](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py#download-target-path--prefix-none--overwrite-false--show-progress-true-)下面的示例中所述的方法特定于和的相同操作[AzureBlobDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azureblobdatastore?view=azure-ml-py)并[AzureFileDatastore](https://docs.microsoft.com/python/api/azureml-core/azureml.data.azure_storage_datastore.azurefiledatastore?view=azure-ml-py)类。
 
-### <a name="upload"></a>上传
+### <a name="upload"></a>上载
 
  使用 Python SDK 将目录或单个文件上传到数据存储。
 
@@ -157,7 +157,7 @@ ds.download(target_path='your target path',
 ----|-----|--------
 装载| [`as_mount()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-mount--)| 使用计算目标上安装数据存储。
 下载|[`as_download()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-download-path-on-compute-none--overwrite-false-)|使用你的数据存储的内容下载到指定的位置`path_on_compute`。 <br> 对于训练运行上下文中，此下载运行前发生。
-上传|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| 使用指定的位置中的文件上传`path_on_compute`到你的数据存储。 <br> 有关运行定型的上下文，此上传在运行后发生。
+上载|[`as_upload()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py#as-upload-path-on-compute-none--overwrite-false-)| 使用指定的位置中的文件上传`path_on_compute`到你的数据存储。 <br> 有关运行定型的上下文，此上传在运行后发生。
 
  ```Python
 import azureml.data
@@ -182,7 +182,7 @@ ds.path('./bar').as_download()
 
 以下矩阵将显示不同的计算上下文和数据存储方案的可用数据访问功能。 此矩阵中的"管道"一词是指使用数据存储作为输入或输出中的功能[Azure 机器学习管道](https://docs.microsoft.com/azure/machine-learning/service/concept-ml-pipelines)。
 
-||本地计算|Azure 机器学习计算|数据传输|Databricks|HDInsight|Azure Batch|Azure DataLake Analytics|虚拟机|
+||本地计算|Azure 机器学习计算|数据传输|Databricks|HDInsight|Azure 批处理|Azure DataLake Analytics|虚拟机|
 -|--|-----------|----------|---------|-----|--------------|---------|---------|
 |AzureBlobDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] <br> 管道|管道|管道|[`as_download()`] <br> [`as_upload()`]|管道||[`as_download()`] <br> [`as_upload()`]|
 |AzureFileDatastore|[`as_download()`] [`as_upload()`]|[`as_mount()`]<br> [`as_download()`] [`as_upload()`] Pipeline |||[`as_download()`] [`as_upload()`]|||[`as_download()`] [`as_upload()`]|

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 04/10/2019
 ms.author: juergent
-ms.openlocfilehash: d47c64fb8b148e39eab09a33c3241ac7dd3ea537
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 3c1d0e252b5c658ab6da2b3932918f05ba651d52
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502123"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565795"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [2015553]:https://launchpad.support.sap.com/#/notes/2015553
@@ -538,7 +538,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
 
 
 > [!IMPORTANT] 
-> 在开始测试之前，请确保 Pacemaker 不具有任何失败的操作 (crm status) 和没有任何位置约束 （剩余项的迁移测试），并 IBM Db2 HADR 同步正常工作。 请使用与用户 db2\<sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
+> 在开始测试之前，请确保 Pacemaker 不具有任何失败的操作 (crm status) 和没有任何位置约束 （剩余项的迁移测试），并 IBM Db2 HADR 同步正常工作。 请与用户 db2\<sid > <pre><code>db2pd -hadr -db \<DBSID></code></pre>
 
 
 迁移通过执行以下命令运行主 Db2 数据库的节点：
@@ -879,7 +879,7 @@ stonith-sbd     (stonith:external/sbd): Started azibmdb02
 ## <a name="next-steps"></a>后续步骤
 请参考此文档：
 
-- [SAP NetWeaver 的高可用性体系结构和方案](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
+- [高可用性体系结构和方案适用于 SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
 - [上设置 Pacemaker SUSE Linux 输入
 - pri
 - se 服务器在 Azure 中] (https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
