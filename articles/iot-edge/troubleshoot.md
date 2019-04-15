@@ -150,7 +150,7 @@ IoT Edge 安全守护程序运行后，请查看容器日志以检测问题。 �
 还可以检查在 IoT 中心与 IoT Edge 设备之间发送的消息。 使用用于 Visual Studio Code 的 [Azure IoT 中心工具包](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)扩展（以前称为 Azure IoT 工具包扩展）来查看这些消息。 有关详细信息，请参阅 [Handy tool when you develop with Azure IoT](https://blogs.msdn.microsoft.com/iotdev/2017/09/01/handy-tool-when-you-develop-with-azure-iot/)（通过 Azure IoT 进行开发时的顺手工具）。
 
 ### <a name="restart-containers"></a>重启容器
-在调查日志和消息获得信息后，可以尝试重启容器：
+在为了解信息而调查日志和消息后，可以尝试重启容器：
 
 ```
 iotedge restart <container name>

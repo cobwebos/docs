@@ -189,7 +189,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 1. 遵循[从托管在环境中的 Windows 计算机收集数据](../../azure-monitor/platform/agent-windows.md)所述步骤安装 Log Analytics 代理。
 2. 下载 Windows 依赖关系代理使用上一节中的链接，并运行通过使用以下命令： `InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
-4. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
+4. 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
 
 #### <a name="windows-command-line"></a>Windows 命令行
 
@@ -214,7 +214,7 @@ InstallDependencyAgent-Windows.exe /?
 
 1. 遵循[从托管在环境中的 Linux 计算机收集数据](../../azure-monitor/learn/quick-collect-linux-computer.md#obtain-workspace-id-and-key)所述步骤安装 Log Analytics 代理。
 2. 使用上一部分中的链接下载 Linux 依赖关系代理，然后以 root 身份使用以下命令安装该代理：sh InstallDependencyAgent-Linux64.bin
-3. 如果依赖关系代理无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是：/var/opt/microsoft/dependency-agent/log。
+3. 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 在 Linux 代理上，日志目录是：/var/opt/microsoft/dependency-agent/log。
 
 若要查看安装标志列表，请在使用 `-help` 标志的情况下运行安装程序，如下所示。
 

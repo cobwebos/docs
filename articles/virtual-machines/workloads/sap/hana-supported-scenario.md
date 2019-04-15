@@ -155,7 +155,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/SID | HANA 安装 | 
 |/hana/data/SID/mnt00001 | 数据文件安装 | 
 |/hana/log/SID/mnt00001 | 日志文件安装 | 
-|/hana/logbackups/SID | 恢复日志 |
+|/hana/logbackups/SID | 重做日志 |
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
@@ -190,11 +190,11 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/SID1 | SID1 的 HANA 安装 | 
 |/hana/data/SID1/mnt00001 | SID1 的数据文件安装 | 
 |/hana/log/SID1/mnt00001 | SID1 的日志文件安装 | 
-|/hana/logbackups/SID1 | SID1 的恢复日志 |
+|/hana/logbackups/SID1 | SID1 的重做日志 |
 |/hana/shared/SID2 | SID2 的 HANA 安装 | 
 |/hana/data/SID2/mnt00001 | SID2 的数据文件安装 | 
 |/hana/log/SID2/mnt00001 | SID2 的日志文件安装 | 
-|/hana/logbackups/SID2 | SID2 的恢复日志 |
+|/hana/logbackups/SID2 | SID2 的重做日志 |
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
@@ -230,7 +230,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/SID | SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | SID 的日志文件安装 | 
-|/hana/logbackups/SID | SID 的恢复日志 |
+|/hana/logbackups/SID | SID 的重做日志 |
 
 
 ### <a name="key-considerations"></a>重要注意事项
@@ -272,7 +272,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 |**在 DR 站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
@@ -280,7 +280,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/QA-SID | QA SID 的 HANA 安装 | 
 |/hana/data/QA-SID/mnt00001 | QA SID 的数据文件安装 | 
 |/hana/log/QA-SID/mnt00001 | QA SID 的日志文件安装 |
-|/hana/logbackups/QA-SID | QA SID 的恢复日志 |
+|/hana/logbackups/QA-SID | QA SID 的重做日志 |
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
@@ -326,12 +326,12 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 |**在辅助节点上**|
 |/hana/shared/SID | 辅助 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 辅助 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 辅助 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 辅助 SID 的恢复日志 |
+|/hana/logbackups/SID | 辅助 SID 的重做日志 |
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
@@ -374,12 +374,12 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 |**在主站点的辅助节点上**|
 |/hana/shared/SID | 辅助 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 辅助 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 辅助 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 辅助 SID 的恢复日志 |
+|/hana/logbackups/SID | 辅助 SID 的重做日志 |
 |**在 DR 站点**|
 |/hana/shared/SID | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
@@ -387,7 +387,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared/QA-SID | QA SID 的 HANA 安装 | 
 |/hana/data/QA-SID/mnt00001 | QA SID 的数据文件安装 | 
 |/hana/log/QA-SID/mnt00001 | QA SID 的日志文件安装 |
-|/hana/logbackups/QA-SID | QA SID 的恢复日志 |
+|/hana/logbackups/QA-SID | QA SID 的重做日志 |
 
 ### <a name="key-considerations"></a>重要注意事项
 - /usr/sap/SID 是 /hana/shared/SID 的符号链接。
@@ -433,7 +433,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 
 
 
@@ -474,7 +474,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 
 
 ## <a name="9-scale-out-without-standby"></a>9.不使用备用节点的横向扩展
@@ -510,7 +510,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 
 
 ### <a name="key-considerations"></a>重要注意事项
@@ -549,7 +549,7 @@ HANA 大型实例支持多种体系结构，可满足你的业务需求。 以�
 |/hana/shared | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 
 |/hana/log/SID/mnt00001 | 生产 SID 的日志文件安装 | 
-|/hana/logbackups/SID | 生产 SID 的恢复日志 |
+|/hana/logbackups/SID | 生产 SID 的重做日志 |
 |**在 DR 节点上**|
 |/hana/shared | 生产 SID 的 HANA 安装 | 
 |/hana/data/SID/mnt00001 | 生产 SID 的数据文件安装 | 

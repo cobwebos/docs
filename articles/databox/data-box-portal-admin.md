@@ -177,7 +177,7 @@ Data Box 订单完成以后，会擦除设备磁盘上的数据。 当设备清�
 
 ![登录存储帐户](media/data-box-portal-admin/logs-in-storage-acct-2.png)
 
-也可查看包含审核日志和 BOM 文件的监管日志链。
+也可查看包含审核日志和 BOM 文件的一系列监管日志。
 
 ![登录存储帐户](media/data-box-portal-admin/logs-in-storage-acct-1.png)
 

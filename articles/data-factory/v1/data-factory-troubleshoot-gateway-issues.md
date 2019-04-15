@@ -268,7 +268,7 @@ ms.locfileid: "58119337"
 * 尝试在数据管理网关配置管理器上使用重新生成的密钥注册网关。
 * 尝试发送日志，但无法连接网关主机服务。
 
-对于此类情况，可将网关日志另存为 zip 文件，然后在联系 Microsoft 支持部门时将其与之共享。 例如在注册网关时收到错误，如以下屏幕快照所示。   
+对于此类情况，可将网关日志另存为 zip 文件，并在联系 Microsoft 支持部门时将其与之共享。 例如在注册网关时收到错误，如以下屏幕快照所示。   
 
 ![数据管理网关 - 注册错误](media/data-factory-troubleshoot-gateway-issues/data-management-gateway-registration-error.png)
 

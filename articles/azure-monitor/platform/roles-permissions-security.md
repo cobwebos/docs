@@ -182,7 +182,7 @@ Azure Monitor 需要访问 Azure 资源以提供你启用的服务。 如果你�
 ### <a name="secured-storage-accounts"></a>安全存储帐户 
 
 监视数据通常会写入到存储帐户。 你可能希望确保未经授权的用户无法访问复制到存储帐户的数据。 为了提高安全性，你可以通过限制存储帐户使用“所选网络”来锁定网络访问权限，以仅允许授权资源和受信任的 Microsoft 服务访问存储帐户。
-![“Azure 存储设置”对话框](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Microsoft 服务”之一。如果你允许受信任的 Microsoft 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 诊断日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从安全存储中读取日志。   
+![“Azure 存储设置”对话框](./media/roles-permissions-security/secured-storage-example.png) Azure Monitor 被视为“受信任的 Microsoft 服务”之一。如果你允许受信任的 Microsoft 服务访问安全存储，则 Azure Monitor 将可以访问安全存储帐户；在这些受保护的条件下，允许将 Azure Monitor 诊断日志、活动日志和指标写入存储帐户。 这还会使 Log Analytics 能够从受保护的存储中读取日志。   
 
 
 有关详细信息，请参阅[网络安全性和 Azure 存储](../../storage/common/storage-network-security.md)

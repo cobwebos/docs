@@ -184,7 +184,7 @@ Azure DDoS 防护标准通过 DDoS 攻击分析提供详细的攻击见解和可
     - **发送到 Log Analytics**：将日志写入到 Azure Monitor 服务。 若要了解有关此选项的详细信息，请参阅[收集有关在 Azure Monitor 日志中使用的日志](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 1. 若要在 Azure 分析仪表板中查看流日志数据，可从 https://github.com/Anupamvi/Azure-DDoS-Protection/raw/master/flowlogsbyip.zip 导入示例仪表板
 
-流日志具有以下字段： 
+流日志将具有以下字段： 
 - Source IP
 - Destination IP
 - Source Port 

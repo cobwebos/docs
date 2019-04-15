@@ -11,7 +11,7 @@ ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
 ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/15/2019
 ms.locfileid: "54321562"
@@ -19,7 +19,7 @@ ms.locfileid: "54321562"
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
 ## <a name="introduction"></a>介绍
-本解决方案演示如何使用 Azure 流分析从数据获得实时见解。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或引用数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
+本解决方案演示如何使用 Azure 流分析从数据获得实时见解。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或参考数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
 
 完成后此解决方案，你将可以：
 

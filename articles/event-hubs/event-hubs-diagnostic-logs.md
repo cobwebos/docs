@@ -1,5 +1,5 @@
 ---
-title: 设置诊断日志 - Azure 事件中心 | Microsoft 文档
+title: 设置诊断日志 - Azure 事件中心 | Microsoft Docs
 description: 了解如何为 Azure 中的事件中心设置活动日志和诊断日志。
 keywords: ''
 documentationcenter: ''
@@ -27,8 +27,8 @@ ms.locfileid: "56957515"
 
 可以查看两种类型的 Azure 事件中心日志：
 
-* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**：此类日志提供对作业执行的操作的相关信息。 始终启用这些日志。
-* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)**：可配置诊断日志，更深入地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
+* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**：此类日志提供对作业执行的操作的相关信息。 这些日志始终启用。
+* **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)**：可以配置诊断日志，从而更全面地了解作业发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="enable-diagnostic-logs"></a>启用诊断日志
 
@@ -105,7 +105,7 @@ category | ArchiveLogs
 }
 ```
 
-### <a name="operational-logs-schema"></a>运行日志架构
+### <a name="operational-logs-schema"></a>操作日志架构
 
 运行日志 JSON 字符串包括下表列出的元素：
 

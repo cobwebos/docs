@@ -37,7 +37,7 @@ ms.locfileid: "57535540"
 
 ## <a name="azure-portal"></a>Azure 门户
 
-最简单的入手方式就是使用 Azure 门户查看活动日志。 下面的屏幕截图展示了已筛选为显示角色分配和角色定义操作的活动日志示例。 它还包括一个能将日志下载为 CSV 文件的链接。
+最简单的入手方式就是使用 Azure 门户查看活动日志。 下面的屏幕截图展示了已筛选为显示角色分配和角色定义操作的活动日志示例。 它还包括一个用于将日志下载为 CSV 文件的链接。
 
 ![使用门户的活动日志 - 屏幕截图](./media/change-history-report/activity-log-portal.png)
 
@@ -115,7 +115,7 @@ az monitor activity-log list --resource-provider "Microsoft.Authorization" --sta
 - 编写复杂查询和逻辑
 - 与警报、Power BI 和其他工具集成
 - 以更长的保持期保存数据
-- 与其他日志（例如安全性、虚拟机和自定义）交叉引用
+- 与其他日志（例如安全性、虚拟机和自定义日志）交叉引用
 
 以下是开始使用的基本步骤：
 

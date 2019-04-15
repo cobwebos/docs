@@ -89,7 +89,7 @@ YARN 计划程序 UI 中会立即显示这些更改。
      application_1490377567345_0006 hive            spark  thriftsvr       1       0       1       0      1G      0G    1628430    2442645  10.00   18:20:20 Thrift JDBC/ODBC Server
     ```
 
-3. 若要下载所有应用程序主控的 YARN 容器日志，请使用以下命令：
+3. 若要下载所有应用程序主机的 YARN 容器日志，请使用以下命令：
    
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am ALL > amlogs.txt
@@ -97,7 +97,7 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
     此命令创建名为 amlogs.txt 的日志文件。 
 
-4. 若只要下载最新应用程序主控的 YARN 容器日志，请使用以下命令：
+4. 若只要下载最新应用程序主机的 YARN 容器日志，请使用以下命令：
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am -1 > latestamlogs.txt
@@ -105,7 +105,7 @@ YARN 计划程序 UI 中会立即显示这些更改。
 
     此命令创建名为 latestamlogs.txt 的日志文件。 
 
-4. 若要下载前两个应用程序主控的 YARN 容器日志，请使用以下命令：
+4. 若要下载前两个应用程序主机的 YARN 容器日志，请使用以下命令：
 
     ```apache
     yarn logs -applicationIdn logs -applicationId <application_id> -am 1,2 > first2amlogs.txt 

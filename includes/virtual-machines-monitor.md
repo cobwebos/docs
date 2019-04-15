@@ -6,7 +6,7 @@ ms.date: 01/27/2019
 ms.author: cynthn
 ms.openlocfilehash: 2978da7f2e7ec27ded6b5994570fa50a9032d0d2
 ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/09/2019
 ms.locfileid: "55985376"
@@ -27,7 +27,7 @@ ms.locfileid: "55985376"
 
 - **启用来宾 OS 诊断数据收集。** 创建 VM 时，可以在“设置”屏幕上启用来宾 OS 诊断。 如果确实启用了诊断数据收集，[用于 Linux 的 IaaSDiagnostics 扩展](../articles/virtual-machines/linux/diagnostic-extension.md)或[用于 Windows 的 IaaSDiagnostics 扩展](../articles/virtual-machines/windows/ps-extensions-diagnostics.md)将添加到 VM，使你可以收集更多的磁盘、CPU 和内存数据。
 
-    使用收集的诊断数据，可以为 VM 配置自动缩放。 还可以配置日志，以便存储数据并设置警报，从而在性能不正常时获得通知。
+    使用收集的诊断数据，可以为 VM 配置自动缩放。 还可以配置日志，以便存储数据并设置警报，从而在性能不正常时通知你。
 
 ## <a name="alerts"></a>警报
 

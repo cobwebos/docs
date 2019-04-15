@@ -73,7 +73,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-delete"></a>sfctl application delete
 删除现有 Service Fabric 应用程序。
@@ -96,7 +96,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-deployed"></a>sfctl application deployed
 获取部署在 Service Fabric 节点上的应用程序的相关信息。
@@ -120,7 +120,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-deployed-health"></a>sfctl application deployed-health
 获取部署在 Service Fabric 节点上的应用程序的运行状况。
@@ -146,7 +146,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-deployed-list"></a>sfctl application deployed-list
 获取部署在 Service Fabric 节点上的应用程序的列表。
@@ -171,7 +171,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-health"></a>sfctl application health
 获取 Service Fabric 应用程序运行状况。
@@ -197,7 +197,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-info"></a>sfctl application info
 获取 Service Fabric 应用程序的相关信息。
@@ -220,7 +220,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-list"></a>sfctl application list
 获取在 Service Fabric 群集中创建且与指定的筛选器匹配的应用程序列表。
@@ -246,7 +246,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-load"></a>sfctl application load
 获取 Service Fabric 应用程序的相关加载信息。
@@ -268,7 +268,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-manifest"></a>sfctl application manifest
 获取描述应用程序类型的清单。
@@ -291,7 +291,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-provision"></a>sfctl application provision
 使用外部存储中的 .sfpkg 包或使用映像存储中的应用程序包向群集预配或注册 Service Fabric 应用程序类型。
@@ -318,7 +318,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-report-health"></a>sfctl application report-health
 发送有关 Service Fabric 应用程序的运行状况报告。
@@ -348,7 +348,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-type"></a>sfctl application type
 获取 Service Fabric 群集中与指定名称完全匹配的应用程序类型的列表。
@@ -374,7 +374,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-type-list"></a>sfctl application type-list
 获取 Service Fabric 群集中应用程序类型的列表。
@@ -399,7 +399,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-unprovision"></a>sfctl application unprovision
 从群集中删除或注销 Service Fabric 应用程序类型。
@@ -423,7 +423,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-upgrade"></a>sfctl application upgrade
 开始升级 Service Fabric 群集中的应用程序。
@@ -460,7 +460,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-upgrade-resume"></a>sfctl application upgrade-resume
 继续升级 Service Fabric 群集中的应用程序。
@@ -483,7 +483,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-upgrade-rollback"></a>sfctl application upgrade-rollback
 开始回滚 Service Fabric 群集中当前正在进行的应用程序升级。
@@ -505,7 +505,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-upgrade-status"></a>sfctl application upgrade-status
 获取对此应用程序执行的最近一次升级的详细信息。
@@ -527,7 +527,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-application-upload"></a>sfctl application upload
 将 Service Fabric 应用程序包复制到映像存储区。
@@ -550,7 +550,7 @@ ms.locfileid: "58665536"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

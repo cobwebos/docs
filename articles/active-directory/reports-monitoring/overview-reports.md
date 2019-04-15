@@ -81,7 +81,7 @@ ms.locfileid: "58436942"
 
 #### <a name="what-azure-ad-license-do-you-need-to-access-the-audit-logs-report"></a>访问审核日志报表需要什么 Azure AD 许可证？  
 
-审核日志报表适用于你有许可证的功能。 如果有特定功能的许可证，则还可以访问其审核日志信息。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)。   
+对于你有其许可证的功能，会提供审核日志报表。 如果有特定功能的许可证，则还可以访问其审核日志信息。 有关更多详细信息，请参阅 [Azure Active Directory 特性和功能](https://www.microsoft.com/cloud-platform/azure-active-directory-features)。   
 
 ### <a name="sign-ins-report"></a>登录报告
 

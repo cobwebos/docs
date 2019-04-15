@@ -584,7 +584,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 记录网络配置过程中执行的操作。 这些审核日志对于制定各种合规性策略至关重要。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。
 
 > [!Note]
-> 有关审核日志的详细信息，请参阅[使用 Resource Manager 执行审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
+> 有关审核日志的详细信息，请参阅[使用资源管理器审核操作](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)。
 针对所有网络资源执行的操作都有相应的审核日志。
 
 
@@ -597,7 +597,7 @@ Azure 提供许多用于监视、防止、检测和响应网络安全事件的�
 
 #### <a name="diagnostic-logs"></a>诊断日志
 
-定期和自发性事件由网络资源创建和记录在存储帐户中，发送到事件中心或 Azure Monitor 日志。 这些日志提供资源运行状况的见解。 可以在 Power BI 和 Azure Monitor 日志等工具中查看这些日志。 若要了解如何查看诊断日志，请访问[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
+定期和自发性事件由网络资源创建和记录在存储帐户中，发送到事件中心或 Azure Monitor 日志。 这些日志提供对资源运行状况的见解。 可以在 Power BI 和 Azure Monitor 日志等工具中查看这些日志。 若要了解如何查看诊断日志，请访问[Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
 
 诊断日志适用于[负载均衡器](https://docs.microsoft.com/azure/load-balancer/load-balancer-monitor-log)、[网络安全组](https://docs.microsoft.com/azure/virtual-network/virtual-network-nsg-manage-log)、路由和[应用程序网关](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics)。
 

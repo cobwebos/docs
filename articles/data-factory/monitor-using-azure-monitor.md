@@ -25,7 +25,7 @@ ms.locfileid: "58013311"
 Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的基础结构指标和日志。 有关详细信息，请参阅[监视概述](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-azure-monitor)。 Azure 诊断日志是资源发出的日志，记录与该资源的操作相关的各种频繁生成的数据。 数据工厂在 Azure Monitor 中输出诊断日志。
 
 ## <a name="persist-data-factory-data"></a>保存数据工厂数据
-数据工厂仅将管道运行数据存储 45 天。 如果希望使用 Azure Monitor 将管道运行数据持久保存 45 天以上，则不仅可以路由诊断日志进行分析，还可以将它们持久保存到存储帐户中，以便在所选的持续时间内保留工厂信息。
+数据工厂仅将管道运行数据存储 45 天。 如果希望将管道运行数据保留 45 天以上，请使用 Azure Monitor，这样不仅可以路由诊断日志以进行分析，还可以将诊断日志保存到存储帐户中，以便获得所选持续时间内的工厂信息。
 
 ## <a name="diagnostic-logs"></a>诊断日志
 
@@ -38,12 +38,12 @@ Azure Monitor 针对 Microsoft Azure 中的大多数服务提供基本级别的�
 ## <a name="set-up-diagnostic-logs"></a>设置诊断日志
 
 ### <a name="diagnostic-settings"></a>诊断设置
-可以使用诊断设置配置非计算资源的诊断日志。 用于资源控制的诊断设置：
+可以使用“诊断设置”配置非计算资源的诊断日志。 用于资源控制的诊断设置：
 
 * 诊断日志会发送到何处 （存储帐户、 事件中心或 Azure Monitor 日志）。
 * 发送哪些日志类别。
 * 应该将每个日志类别保留在存储帐户中多长时间。
-* 保留期为零天表示日志将永久保留。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
+* 保留期为 0 天表示永久保留日志。 如果不需永久保留，则可将该值设置为 1 到 2147483647 之间的任意天数。
 * 如果设置了保留策略，但禁止将日志存储在存储帐户中 （例如，仅事件中心或 Azure Monitor 日志选项处于选中状态），则保留策略产生任何影响。
 * 保留策略按天应用，因此在一天结束时 (UTC)，会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。
 
@@ -106,7 +106,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 | 属性 | Type | 描述 |
 | --- | --- | --- |
 | storageAccountId |String | 要将诊断日志发送到的存储帐户的资源 ID |
-| serviceBusRuleId |String | 要在其中创建事件中心，以便流式传输诊断日志的服务总线命名空间的服务总线规则 ID。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
+| serviceBusRuleId |String | 服务总线命名空间的服务总线规则 ID。你要在该服务总线命名空间中创建事件中心，以便流式传输诊断日志。 规则 ID 的格式为：“{服务总线资源 ID}/authorizationrules/{密钥名称}”。|
 | workspaceId | 复杂类型 | 指标时间粒度及其保留策略的数组。 目前，此属性为空。 |
 |指标| 要传递到被调用管道的管道运行的参数值| 用于将参数名称映射到参数值的 JSON 对象 |
 | 日志| 复杂类型| 某个资源类型的诊断日志类别的名称。 若要获取资源的诊断日志类别列表，请先执行 GET 诊断设置操作。 |

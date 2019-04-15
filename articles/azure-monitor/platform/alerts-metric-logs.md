@@ -23,7 +23,7 @@ ms.locfileid: "58483856"
 
 Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classic-portal.md)更具优势的[指标警报类型](../../azure-monitor/platform/alerts-metric-near-real-time.md)。 指标可用于 [Azure 服务的大型列表](../../azure-monitor/platform/metrics-supported.md)。 本文解释某个资源子集的用法 - `Microsoft.OperationalInsights/workspaces`。
 
-可对提取为指标的常用 Log Analytics 日志使用指标警报。这些指标是日志中的指标一部分，包括 Azure 中或本地的资源。 下面列出了支持的 Log Analytics 解决方案：
+还可对常用 Log Analytics 日志（作为“日志中的指标”的一部分提取为指标）使用指标警报，包括 Azure 中或本地的资源。 下面列出了支持的 Log Analytics 解决方案：
 
 - 适用于 Windows 和 Linux 计算机的[性能计数器](../../azure-monitor/platform/data-sources-performance-counters.md)
 - [代理运行状况的检测信号记录](../../azure-monitor/insights/solution-agenthealth.md)
@@ -82,7 +82,7 @@ Azure Monitor 支持比[经典警报](../../azure-monitor/platform/alerts-classi
 1. 使用 scheduledQueryRule API 创建用于从支持的日志中提取指标的规则
 2. 针对从日志中提取的（步骤 1）和从用作目标资源的 Log Analytics 工作区中提取的指标创建指标警报
 
-### <a name="metric-alerts-for-logs-with-static-threshold"></a>针对具有静态阈值的日志的指标警报
+### <a name="metric-alerts-for-logs-with-static-threshold"></a>带有静态阈值的日志的指标警报
 
 为实现相同的效果，可以使用下面的示例 Azure 资源管理器模板 - 只有在成功创建了用于通过 scheduledQueryRule 从日志中提取指标的规则之后，才能创建静态阈值指标警报。
 
@@ -371,7 +371,7 @@ New-AzResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile metricfrom
 az group deployment create --resource-group myRG --template-file metricfromLogsAlertStatic.json --parameters @metricfromLogsAlertStatic.parameters.json
 ```
 
-### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>针对具有动态阈值的日志的指标警报
+### <a name="metric-alerts-for-logs-with-dynamic-thresholds"></a>带有动态阈值的日志的指标警报
 
 为实现相同的效果，可以使用下面的示例 Azure 资源管理器模板 - 只有在成功创建了用于通过 scheduledQueryRule 从日志中提取指标的规则之后，才能创建动态阈值指标警报。
 

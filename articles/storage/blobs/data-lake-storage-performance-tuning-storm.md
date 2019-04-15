@@ -111,7 +111,7 @@ ms.locfileid: "58076201"
 若要查看是否受到限制，请在客户端上启用调试日志记录：
 
 1. 在“Ambari” > “Storm” > “配置” > “高级 storm-worker-log4j”中，将 **&lt;root level="info"&gt;** 更改为 **&lt;root level=”debug”&gt;**。 重新启动所有节点/服务使配置生效。
-2. 监视辅助节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen2 限制异常。
+2. 监视工作器节点上的 Storm 拓扑日志（在 /var/log/storm/worker-artifacts/&lt;TopologyName&gt;/&lt;port&gt;/worker.log 下面），确定是否发生 Data Lake Storage Gen2 限制异常。
 
 ## <a name="next-steps"></a>后续步骤
 有关 Storm 的其他性能优化方法，请参阅这篇[博客](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)。

@@ -19,7 +19,7 @@ ms.reviewer: jeffgo
 ms.lastreviewed: 08/15/2018
 ms.openlocfilehash: 728839accbce80ece6795e098d5d2855320fab06
 ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/04/2019
 ms.locfileid: "59006684"
@@ -91,7 +91,7 @@ ms.locfileid: "59006684"
 
    这可以确保所有控制台消息都发送到第一个串行端口，从而协助 Azure 支持人员调试问题。 此配置还会关闭 NIC 的新 RHEL 7 命名约定。
 
-   图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。 我们建议删除以下参数：
+   图形界面式引导和安静引导在云环境中不适用，在云环境中，我们希望所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。 我们建议删除以下参数：
 
     ```sh
     rhgb quiet crashkernel=auto
@@ -442,7 +442,7 @@ ms.locfileid: "59006684"
     rhgb quiet crashkernel=auto
     ```
 
-    图形引导和无人参与引导不适用于云环境，在该环境中我们想要将所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。
+    图形界面式引导和安静引导在云环境中不适用，在云环境中，我们希望所有日志都发送到串行端口。 如果需要，可以保留配置的 `crashkernel` 选项。 请注意，此参数可以将虚拟机中的可用内存量减少 128 MB 或更多，遇到较小的虚拟机大小时，此配置可能会有问题。
 
 1. 完成 `/etc/default/grub` 编辑后，运行以下命令以重新生成 grub 配置：
 

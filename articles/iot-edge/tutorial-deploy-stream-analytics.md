@@ -227,7 +227,7 @@ Azure IoT Edge 设备：
 
 应该可以看到，机器温度逐渐升高，在 30 秒内达到了 70 度。 然后，流分析模块触发重置，机器温度下降到 21 度。 
 
-   ![将命令输出重置为模块日志](./media/tutorial-deploy-stream-analytics/docker_log.png)
+   ![将命令输出重置到模块日志中](./media/tutorial-deploy-stream-analytics/docker_log.png)
 
 ## <a name="clean-up-resources"></a>清理资源 
 

@@ -73,7 +73,7 @@ https://{storageAccountName}.blob.core.windows.net/insights-logs-networksecurity
 
 ## <a name="nsg-flow-logs-version-2"></a>NSG 流日志版本 2
 
-版本 2 的日志引入了流状态。 可以配置接收的流日志的版本。 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
+版本 2 的日志引入了流状态。 可以配置要接收的流日志的版本。 要了解如何启用流日志，请参阅[启用 NSG 流日志记录](network-watcher-nsg-flow-logging-portal.md)。
 
 启动流时记录流状态 B。 流状态 C 和流状态 E 是分别标记流的延续和终止的状态。 状态 C 和 E 都包含流量带宽信息。
 

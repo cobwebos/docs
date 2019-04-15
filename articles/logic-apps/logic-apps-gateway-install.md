@@ -478,7 +478,7 @@ TcpTestSucceeded       : True
      ```
 
      > [!IMPORTANT]
-     > 根据网关的使用情况，启用 EmitQueryTraces 设置可能会显著增大日志大小。 检查完日志后，请确保将 EmitQueryTraces 重置为 **false**，而不要长期保留此设置。
+     > 根据网关的使用情况，启用 EmitQueryTraces 设置可能会显著增大日志大小。 检查完日志后，请确保将 EmitQueryTraces 重置为 **false**，而不要让此设置长期处于启用状态。
 
    * **Microsoft.PowerBI.DataMovement.Pipeline.Diagnostics.dll.config**
 
@@ -497,7 +497,7 @@ TcpTestSucceeded       : True
        ![启用附加日志记录](./media/logic-apps-gateway-install/turn-on-additional-logging.png)
 
      > [!IMPORTANT]
-     > 根据网关的使用情况，启用 TracingVerbosity 设置可能会显著增大日志大小。 检查完日志后，请确保在网关安装程序中禁用“附加日志记录”，或者在配置文件中将 TracingVerbosity 重置为 **4**，而不要长期保留此设置。
+     > 根据网关的使用情况，启用 TracingVerbosity 设置可能会显著增大日志大小。 检查完日志后，请确保在网关安装程序中禁用“附加日志记录”，或者在配置文件中将 TracingVerbosity 重置为 **4**，而不要让此设置长期处于启用状态。
 
 3. 若要找出查询的持续时间，请执行以下步骤：
 

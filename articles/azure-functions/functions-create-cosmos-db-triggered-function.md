@@ -23,7 +23,7 @@ ms.locfileid: "58137838"
 
 了解如何创建在数据添加到 Azure Cosmos DB 或在其中更改数据时触发的函数。 若要了解有关 Azure Cosmos DB 的详细信息，请参阅 [Azure Cosmos DB：使用 Azure Functions 的无服务器数据库计算](../cosmos-db/serverless-computing-database.md)。
 
-![在日志中查看消息。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
+![查看日志中的消息。](./media/functions-create-cosmos-db-triggered-function/quickstart-completed.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -128,9 +128,9 @@ ms.locfileid: "58137838"
             "description": "some task"
         }
 
-1. 切换到包含门户中的函数的第一个浏览器选项卡。 展开函数日志并验证新的文档已触发该函数。 会看到 `task1` 文档 ID 值已写入日志。 
+1. 切换到包含门户中的函数的第一个浏览器选项卡。 展开函数日志并验证新的文档已触发该函数。 会看到 `task1` 文档 ID 值已写入到日志。 
 
-    ![在日志中查看消息。](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-view-logs.png)
+    ![查看日志中的消息。](./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-view-logs.png)
 
 1. （可选）返回到文档进行更改，然后单击“更新”。 然后，回到函数日志，并验证此更新同样已触发该函数。
 

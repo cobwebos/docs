@@ -264,7 +264,7 @@ Get-AzKeyVault -VaultName 'contosokeyvault'`
 | **resultDescription** |有关结果的其他描述（如果有）。 |
 | **durationMs** |为 REST API 请求提供服务所花费的时间，以毫秒为单位。 此时间不包括网络延迟，因此在客户端上测得的时间可能与此时间不匹配。 |
 | **callerIpAddress** |发出请求的客户端的 IP 地址。 |
-| **correlationId** |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端（密钥保管库）日志相关联。 |
+| **correlationId** |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端 (Key Vault) 日志相关联。 |
 | **identity** |从所提供的 REST API 请求的令牌的标识。 这通常是"user"，"服务主体"，或组合"用户 + 应用程序 Id，"请求，请求从 Azure PowerShell cmdlet 一样。 |
 | **properties** |各不相同的信息基于的操作 (**operationName**)。 在大多数情况下，此字段包含客户端信息 （客户端所传递的用户代理字符串）、 确切的 REST API 请求 URI 和 HTTP 状态代码。 此外，对象返回请求的结果 (例如， **KeyCreate**或**VaultGet**)，它还包含密钥 URI （作为"id")，保管库 URI 或机密 URI。 |
 

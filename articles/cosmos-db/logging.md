@@ -33,7 +33,7 @@ ms.locfileid: "58904859"
 
 在上图中，**计算资源**表示可以访问其 Microsoft 来宾 OS 的 Azure 资源。 例如，Azure 虚拟机、虚拟机规模集、Azure 容器服务等都视为计算资源。 计算资源生成活动日志、诊断日志和应用程序日志。 若要了解详细信息，请参阅 [Azure 中的监视数据源](../azure-monitor/platform/data-sources.md)一文。
 
-“非计算资源”是在其中无法访问基础 OS，但可直接使用资源的资源。 例如网络安全组、逻辑应用等。 Azure Cosmos DB 是一种非计算资源。 在活动日志中或者通过在门户中启用“诊断日志”选项可以查看非计算资源。 若要了解详细信息，请参阅 [Azure Monitor 中的数据源](../azure-monitor/platform/data-sources.md)一文。
+“非计算资源”是在其中无法访问基础 OS，但可直接使用资源的资源。 例如网络安全组、逻辑应用等。 Azure Cosmos DB 是一种非计算资源。 可以在活动日志中或通过在门户中启用“诊断日志”选项查看非计算资源的日志。 若要了解详细信息，请参阅 [Azure Monitor 中的数据源](../azure-monitor/platform/data-sources.md)一文。
 
 活动日志记录 Azure Cosmos DB 订阅级别的操作。 将记录 ListKeys、Write DatabaseAccounts 等操作。 诊断日志提供更精细的日志记录并允许记录 DataPlaneRequests（创建、读取、查询等）和 MongoRequests。
 
@@ -44,7 +44,7 @@ ms.locfileid: "58904859"
 
 Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级别事件的订阅日志。 活动日志在“管理”类别下报告订阅的控制平面事件。 通过活动日志，可确定订阅中资源上进行的任何写入操作 (PUT, POST, DELETE) 的“什么操作、谁操作和操作时间”等信息。 还可以了解该操作和其他相关属性的状态。 
 
-活动日志不同于诊断日志。 活动日志提供有关从外部（“控制面”）对资源所执行操作的数据。 在 Azure Cosmos DB 上下文中，控制平面操作包括创建容器、列出密钥、删除密钥、列出数据库，等等。 诊断日志由资源发出，并提供有关该资源（“数据面”）的操作信息。 诊断日志中部分数据平面操作的示例包括 Delete、Insert 和 ReadFeed。
+活动日志不同于诊断日志。 活动日志提供有关从外部（“控制面”）对资源所执行操作的数据。 在 Azure Cosmos DB 上下文中，控制平面操作包括创建容器、列出密钥、删除密钥、列出数据库，等等。 诊断日志由资源发出，并提供有关该资源（“数据平面”）的操作信息。 诊断日志中部分数据平面操作的示例包括 Delete、Insert 和 ReadFeed。
 
 活动日志（控制平面操作）在本质上可能要丰富得多，可能包括：调用方的完整电子邮件地址、调用方 IP 地址、资源名称、操作名称、TenantId，等等。 活动日志包含多个数据[类别](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)。 有关这些类别的架构的完整详细信息，请参阅 [Azure 活动日志事件架构](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)。 但是，诊断日志在本质上可能是限制性的，因为通常会将个人数据从这些日志中剥离出来。 因此，你可能有调用方的 IP 地址，但最后的八进制数已删除。
 
@@ -54,7 +54,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 ### <a name="azure-diagnostic-logs"></a>Azure 诊断日志
 
-Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 资源级诊断日志来宾 OS 级诊断日志也不相同。 来宾 OS 级诊断日志是由在虚拟机内部或其他受支持的资源类型中运行的代理收集的日志。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据。 来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
+Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 资源级诊断日志与来宾 OS 级诊断日志也不相同。 来宾 OS 级诊断日志由在虚拟机内部或其他受支持的资源类型中运行的代理收集。 资源级诊断日志不需要代理并从 Azure 平台本身捕获特定于资源的数据。 来宾 OS 级诊断日志从操作系统和在虚拟机上运行的应用程序捕获数据。
 
 ![存储、事件中心或 Azure Monitor 日志的诊断日志记录](./media/logging/azure-cosmos-db-logging-overview.png)
 
@@ -85,9 +85,9 @@ Azure 诊断日志由资源发出，提供与该资源的操作相关的各种�
     * **存档到存储帐户**：要使用此选项，需要一个可连接到的现有存储帐户。 要在门户中创建新的存储帐户，请参阅[创建存储帐户](../storage/common/storage-create-storage-account.md)，并按照说明创建 Azure 资源管理器（即通用帐户）。 然后在门户中返回到此页，选择存储帐户。 新创建的存储帐户可能几分钟后才会显示在下拉菜单中。
     * **流式传输到事件中心**：要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 要创建事件中心命名空间，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * **发送到 Log Analytics**：若要使用此选项，请使用现有的工作区，或遵循[创建新工作区](../azure-monitor/learn/quick-collect-azurevm.md#create-a-workspace)的步骤在门户中创建新的 Log Analytics 工作区。 有关 Azure Monitor 日志中查看日志的详细信息，请参阅在 Azure Monitor 日志中查看日志。
-    * **记录 DataPlaneRequests**：选择此选项可记录从底层 Azure Cosmos DB 分布式平台发出的针对 SQL、图形、MongoDB、Cassandra 和表 API 帐户的后端请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **记录 MongoRequests**：选择此选项可记录来自 Azure Cosmos DB 前端的用户发起的请求，以便为使用 Azure Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户提供服务。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **记录 DataPlaneRequests**：选择此选项可记录从底层 Azure Cosmos DB 分布式平台发出的针对 SQL、图形、MongoDB、Cassandra 和表 API 帐户的后端请求。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
+    * **记录 MongoRequests**：选择此选项可记录来自 Azure Cosmos DB 前端的用户发起的请求，以便为使用 Azure Cosmos DB 的 API for MongoDB 配置的 Cosmos 帐户提供服务。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
+    * **指标请求**：选择此选项可在 [Azure 指标](../azure-monitor/platform/metrics-supported.md)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日志。
 
 3. 选择“保存”。
 
@@ -344,7 +344,7 @@ $blobs | Get-AzStorageBlobContent `
 
 自执行 Azure Cosmos DB 操作起两小时，即可在帐户中使用诊断日志。 存储帐户中的日志完全由你管理：
 
-* 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
+* 请使用标准的 Azure 访问控制方法保护日志并限制可访问日志的人员。
 * 删除不想继续保留在存储帐户中的日志。
 * 选择“记录 DataPlaneRequests”设置后，在门户中配置存档到存储帐户的数据平面请求的保留期。 要更改此设置，请参阅[在 Azure 门户中启用日志记录](#turn-on-logging-in-the-azure-portal)。
 
@@ -380,7 +380,7 @@ $blobs | Get-AzStorageBlobContent `
 
 若要了解每个日志搜索返回的数据的含义，请参阅[解释 Azure Cosmos DB 日志](#interpret)。
 
-* 查询指定时间段内来自 Azure Cosmos DB 的所有诊断日志：
+* 若要查询指定时间段内来自 Azure Cosmos DB 的所有诊断日志，请执行以下操作：
 
     ```
     AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"

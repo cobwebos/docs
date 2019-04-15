@@ -43,12 +43,12 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 ![Azure 订阅集合](media/data-sources/azure-collection.png)
 
 ### <a name="azure-service-health"></a>Azure 服务运行状况
-[Azure 服务运行状况](service-notifications.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。 可以根据当前的以及预期的可能会影响应用程序的关键问题创建警报，以便到时获得通知。 服务运行状况记录存储在 [Azure 活动日志](activity-logs-overview.md)中，你可以在活动日志资源管理器中查看，并将其复制到 Azure Monitor 日志中。
+[Azure 服务运行状况](service-notifications.md)提供订阅中应用程序和资源所依赖的 Azure 服务的运行状况信息。 可以根据当前的以及预期的可能会影响应用程序的关键问题创建警报，以便到时获得通知。 服务运行状况记录存储在 [Azure 活动日志](activity-logs-overview.md)中，因此你可以在活动日志资源管理器中查看它们，并将其复制到 Azure Monitor 日志中。
 
 ### <a name="azure-activity-log"></a>Azure 活动日志
 [Azure 活动日志](activity-logs-overview.md)包含服务运行状况记录，以及对 Azure 资源所做的配置更改的记录。 活动日志可供所有 Azure 资源使用，代表其外部视图。 活动日志中记录的具体类型在 [Azure 活动日志事件架构](activity-log-schema.md)中介绍。
 
-可以在 Azure 门户中特定资源的页面上查看其活动日志，或在[活动日志资源管理器](activity-logs-overview.md)中的多个资源处查看日志。 可以将日志项目复制到 Azure Monitor 中，与其他监视数据组合在一起，这特别有用。 也可使用[事件中心](activity-logs-stream-event-hubs.md)将其发送到其他位置。
+可以在 Azure 门户中特定资源的页面上查看其活动日志，或在[活动日志资源管理器](activity-logs-overview.md)中查看来自多个资源的日志。 可以将日志项目复制到 Azure Monitor 中，与其他监视数据组合在一起，这特别有用。 也可使用[事件中心](activity-logs-stream-event-hubs.md)将其发送到其他位置。
 
 
 
@@ -63,7 +63,7 @@ Azure 中的监视数据来自各种来源，这些来源可以组织为层，�
 
 
 ### <a name="resource-diagnostic-logs"></a>资源诊断日志
-活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](diagnostic-logs-overview.md)则可用于了解资源本身的操作。   这些日志的配置要求和内容[因资源类型而异](diagnostic-logs-schema.md)。
+活动日志提供在 Azure 资源上执行的操作的信息，而资源级[诊断日志](diagnostic-logs-overview.md)则提供有关资源本身的操作的见解。   这些日志的配置要求和内容[因资源类型而异](diagnostic-logs-schema.md)。
 
 不能直接在 Azure 门户中查看诊断日志，但可以[将它们发送到 Azure 存储进行存档](archive-diagnostic-logs.md)，然后将它们导出到[事件中心](../../event-hubs/event-hubs-about.md)以便重定向到其他服务，或者导出[到 Azure Monitor](diagnostic-logs-stream-log-store.md) 进行分析。 某些资源可以直接写入到 Azure Monitor 中，而另一些资源则只能先写入到存储帐户，然后再[导入 Log Analytics 中](azure-storage-iis-table.md#use-the-azure-portal-to-collect-logs-from-azure-storage)。
 
@@ -95,7 +95,7 @@ Windows 或 Linux 虚拟机或物理计算机的全面监视和管理是通过 L
 
 
 ### <a name="application-data"></a>应用程序数据
-通过安装检测包为应用程序启用 Application Insights 后，它就会收集与应用程序的性能和运行相关的指标 和日志。 这包括有关页面视图、应用程序请求和异常的详细信息。 Application Insights 将它收集的数据存储在 Azure Monitor 中。 它包括各种用于分析此数据的工具，但是也可使用指标分析和日志分析之类的工具分析来自其他源的数据。
+通过安装检测包为应用程序启用 Application Insights 后，它就会收集与应用程序的性能和运行相关的指标和日志。 这包括有关页面视图、应用程序请求和异常的详细信息。 Application Insights 将它收集的数据存储在 Azure Monitor 中。 它包括各种用于分析此数据的工具，但是也可使用指标分析和日志分析之类的工具分析来自其他源的数据。
 
 也可使用 Application Insights [创建自定义指标](../../application-insights/app-insights-api-custom-events-metrics.md)。  这样就可以定义你自己的逻辑，以便计算出一个数字值，然后将该值与其他可以从指标分析访问的指标一起存储，用于[自动缩放](autoscale-custom-metric.md)和指标警报。
 

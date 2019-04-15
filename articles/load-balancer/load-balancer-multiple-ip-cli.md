@@ -15,7 +15,7 @@ ms.date: 06/25/2018
 ms.author: kumud
 ms.openlocfilehash: 1e8911847a555e3b6326f15d15a09344a4472f2c
 ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/10/2018
 ms.locfileid: "53165499"
@@ -121,4 +121,4 @@ ms.locfileid: "53165499"
 
 ## <a name="next-steps"></a>后续步骤
 - 若要深入了解如何在 Azure 中结合使用负载均衡服务，请参阅[在 Azure 中使用负载均衡服务](../traffic-manager/traffic-manager-load-balancing-azure.md)。
-- 若要了解如何在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅 [Azure 负载均衡器的 Log Analytics](../load-balancer/load-balancer-monitor-log.md)。
+- 若要了解如何在 Azure 中使用不同类型的日志对负载均衡器进行管理和故障排除，请参阅[用于 Azure 负载均衡器的日志分析](../load-balancer/load-balancer-monitor-log.md)。

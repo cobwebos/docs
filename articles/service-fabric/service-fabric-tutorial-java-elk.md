@@ -66,7 +66,7 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart
 2. 在 Azure 门户中转到自己的资源，然后转到“支持 + 故障排除”部分下的“启动诊断”选项卡。 接下来，单击“串行日志”选项卡。
 
     ![启动诊断](./media/service-fabric-tutorial-java-elk/bootdiagnostics.png)
-3. 在日志中搜索用于访问 Kibana 实例的密码。 搜索命令如以下代码片段所示：
+3. 在日志中搜索访问 Kibana 实例所需的密码。 搜索命令如以下代码片段所示：
 
     ```bash
     [   25.932766] bitnami[1496]: #########################################################################

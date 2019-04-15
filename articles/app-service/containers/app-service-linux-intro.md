@@ -78,7 +78,7 @@ Linux 上的应用服务仅支持[基本、标准和高级](https://azure.micros
 ## <a name="troubleshooting"></a>故障排除
 
 如果未能启动应用程序或希望检查应用中的日志记录，请查看 LogFiles 目录中的 Docker 日志。 可通过 SCM 站点或 FTP 访问此目录。
-若要从容器记录 `stdout` 和 `stderr`，需要在“诊断记录”下启用“Docker 容器记录”。
+若要从容器记录 `stdout` 和 `stderr`，需要在“诊断日志”下启用“Docker 容器日志记录”。
 
 ![启用日志记录][2]
 

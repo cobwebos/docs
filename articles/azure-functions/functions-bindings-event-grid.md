@@ -549,7 +549,7 @@ http://{functionappname}.azurewebsites.net/admin/host/systemkeys/eventgridextens
 
 ![Postman 中的请求正文](media/functions-bindings-event-grid/postman.png)
 
-事件网格触发器函数将会执行，并显示以下示例所示的日志：
+事件网格触发器函数将会执行，并显示类似于以下示例的日志：
 
 ![事件网格触发器函数日志示例](media/functions-bindings-event-grid/eg-output.png)
 
@@ -624,7 +624,7 @@ az eventgrid event-subscription create --resource-id /subscriptions/aeb4b7cb-b7c
 
 触发一个事件，以便向 ngrok 终结点生成 HTTP 流量。  例如，如果创建了 Blob 存储订阅，请上传或删除一个 Blob。
 
-事件网格触发器函数将会执行，并显示以下示例所示的日志：
+事件网格触发器函数将会执行，并显示类似于以下示例的日志：
 
 ![事件网格触发器函数日志示例](media/functions-bindings-event-grid/eg-output.png)
 

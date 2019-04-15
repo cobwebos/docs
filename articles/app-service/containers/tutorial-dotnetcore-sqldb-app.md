@@ -383,7 +383,7 @@ az webapp log config --name <app_name> --resource-group myResourceGroup --docker
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ```
 
-启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在可以看到传送到终端的控制台日志。 如果没有立即看到控制台日志，请在 30 秒后重新查看。
+启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在可以看到通过管道传送到终端的控制台日志。 如果没有立即看到控制台日志，请在 30 秒后重新查看。
 
 若要随时停止日志流式处理，请键入 `Ctrl`+`C`。
 

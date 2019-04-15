@@ -593,7 +593,7 @@ test custom activity Microsoft test custom activity Microsoft
       >
       >
    
-   e. 对于 **linkedServiceName** 属性，指定 **StorageLinkedService**。 已在之前的步骤中创建此链接服务。 此存储用作文件和日志的临时区域。
+   e. 对于 **linkedServiceName** 属性，指定 **StorageLinkedService**。 已在之前的步骤中创建此链接服务。 此存储用作文件和日志的暂存区域。
 
 1. 选择命令栏上的“部署”，部署链接服务。
 

@@ -454,7 +454,7 @@ HDInsight 服务提供多种方式来使用自定义组件。 不论在群集上
 
     ![操作的屏幕截图](./media/hdinsight-hadoop-customize-cluster-linux/script_action_logs_in_storage.png)
 
-    在此目录下，日志分别针对**头节点**、**工作节点**和 **Zookeeper 节点**进行组织。 请看以下示例：
+    在此目录下，日志分别针对**头节点**、**工作器节点**和 **Zookeeper 节点**进行组织。 请看以下示例：
 
     * **头节点**：`<uniqueidentifier>AmbariDb-hn0-<generated_value>.cloudapp.net`
 

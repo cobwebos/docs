@@ -420,7 +420,7 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 ![示例网络策略服务器日志](./media/howto-mfa-nps-extension-vpn/image45.png)
 
-在安装了适用于 Azure 多重身份验证的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa 位置找到特定于此扩展的事件查看器应用程序日志。
+在安装了适用于 Azure 多重身份验证的 NPS 扩展的服务器上，可以在 Application and Services Logs\Microsoft\AzureMfa 中找到特定于此扩展的事件查看器应用程序日志。
 
     `Get-WinEvent -Logname Security | where {$_.ID -eq '6272'} | FL`
 

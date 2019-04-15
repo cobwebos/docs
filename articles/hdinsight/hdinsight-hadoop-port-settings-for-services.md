@@ -11,7 +11,7 @@ ms.date: 11/06/2018
 ms.author: hrasheed
 ms.openlocfilehash: be264be41b198e95dae64730ef31f431ec06a2e7
 ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2018
 ms.locfileid: "53715454"
@@ -90,7 +90,7 @@ HDInsight 群集中的所有节点都在 Azure 虚拟网络中，无法直接从
 | --- | --- | --- | --- | --- |
 | NameNode Web UI |头节点 |30070 |HTTPS |用于查看状态的 Web UI |
 | NameNode 元数据服务 |头节点 |8020 |IPC |文件系统元数据 |
-| DataNode |所有辅助角色节点 |30075 |HTTPS |用于查看状态、日志等的 Web UI |
+| DataNode |所有辅助角色节点 |30075 |HTTPS |用于查看状态、日志等信息的 Web UI |
 | DataNode |所有辅助角色节点 |30010 |&nbsp; |数据传输 |
 | DataNode |所有辅助角色节点 |30020 |IPC |元数据操作 |
 | 辅助 NameNode |头节点 |50090 |HTTP |NameNode 元数据检查点 |

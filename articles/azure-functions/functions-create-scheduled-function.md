@@ -62,7 +62,7 @@ ms.locfileid: "54903380"
 
 4. 单击“创建”。 将使用所选语言创建一个每分钟运行一次的函数。
 
-5. 通过查看写入日志的跟踪信息来验证执行情况。
+5. 通过查看写入到日志的跟踪信息来验证执行情况。
 
     ![Azure 门户中的“函数日志”查看器。](./media/functions-create-scheduled-function/functions-timer-trigger-view-logs2.png)
 

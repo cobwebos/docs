@@ -17,7 +17,7 @@ ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3e92c3b302ab18aaaf20d187d61a488603ce81a7
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2019
 ms.locfileid: "56178016"
@@ -32,7 +32,7 @@ ms.locfileid: "56178016"
 - **AcquireToken**：客户端可以尝试以无提示方式获取，但也可以执行交互式请求（需要登录）。
 
 > [!TIP]
-> 最好在使用 ADAL 和 Azure AD 时记录所有错误和异常。 日志记录不仅有助于了解应用程序的整体运行状况，而且在调试更广泛的问题时也可发挥重要作用。 虽然应用程序可以从某些错误中恢复，但它们可能会提示存在其他设计问题，需要更改代码才能解决。 
+> 最好在使用 ADAL 和 Azure AD 时记录所有错误和异常。 日志不仅有助于了解应用程序的整体运行状况，而且在调试更广泛的问题时也可发挥重要作用。 虽然应用程序可以从某些错误中恢复，但它们可能会提示存在其他设计问题，需要更改代码才能解决。 
 > 
 > 出于上述原因，在实现本文档中提到的错误条件时，应记录错误代码和相应描述。 有关日志记录代码的示例，请参阅[错误和日志记录引用](#error-and-logging-reference)。 
 >

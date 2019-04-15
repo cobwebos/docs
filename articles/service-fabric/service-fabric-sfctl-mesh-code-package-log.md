@@ -43,7 +43,7 @@ ms.locfileid: "58661065"
 | --code-package-name [必需] | 服务的代码包名称。 |
 | --replica-name [必需] | Service Fabric 副本名称。 |
 | --service-name [必需] | 服务的名称。 |
-| --tail | 从日志末尾显示的行数。 默认值为 100。 “all”表示显示完整日志。 |
+| --tail | 要从日志末尾显示的行数。 默认值为 100。 “all”表示显示完整日志。 |
 
 ### <a name="global-arguments"></a>全局参数
 
@@ -53,7 +53,7 @@ ms.locfileid: "58661065"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

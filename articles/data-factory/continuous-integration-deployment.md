@@ -163,7 +163,7 @@ ms.locfileid: "58905250"
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
 ### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>向 Azure Pipelines 代理授权
-Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration 运行时时间。 请下载此发布的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
+Azure Key Vault 任务可能会失败并出现拒绝访问错误的 fIntegration 运行时时间。 请下载此发行版的日志，并使用此命令找到 `.ps1` 文件，以便向 Azure Pipelines 代理授权。 可以直接运行此命令，也可以从文件中复制主体 ID，然后在 Azure 门户中手动添加访问策略。 （“获取”和“列出”是所需的最小权限）。
 
 ### <a name="update-active-triggers"></a>更新活动触发器
 如果尝试更新活动触发器，部署可能会失败。 若要更新活动触发器，需手动将其停止，在部署后再将其启动。 可以为此添加 Azure Powershell 任务，如以下示例所示：

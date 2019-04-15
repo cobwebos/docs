@@ -13,7 +13,7 @@ ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 48f714a505bc79f0556a829206821aef986ad5d0
 ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/30/2019
 ms.locfileid: "55240250"
@@ -183,7 +183,7 @@ run_logger.log("accuracy", float(val_accuracy))
 
 使用提前终止策略时，可以配置以下参数来控制何时应用该策略：
 
-* `evaluation_interval`：应用策略的频率。 每次训练脚本记录主要指标都会算作一个间隔。 因此，如果 `evaluation_interval` 为 1，则训练脚本每次报告主要指标时，都会应用策略。 如果 `evaluation_interval` 为 2，则训练脚本每两次报告主要指标时会应用策略。 如果未指定，则默认将 `evaluation_interval` 设置为 1。
+* `evaluation_interval`：应用策略的频率。 每次训练脚本都会将主要指标计数记录为一个间隔。 因此，如果 `evaluation_interval` 为 1，则训练脚本每次报告主要指标时，都会应用策略。 如果 `evaluation_interval` 为 2，则训练脚本每两次报告主要指标时会应用策略。 如果未指定，则默认将 `evaluation_interval` 设置为 1。
 * `delay_evaluation`：将第一个策略评估延迟指定的间隔数。 这是一个可选参数，可让所有配置运行初始设置的最小间隔数，避免训练运行过早终止。 如果已指定，则每隔大于或等于 delay_evaluation 的 evaluation_interval 倍数应用策略。
 
 Azure 机器学习服务支持以下提前终止策略。

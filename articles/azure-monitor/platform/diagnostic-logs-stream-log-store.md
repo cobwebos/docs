@@ -29,7 +29,7 @@ Azure Monitor 提供一个灵活的日志查询和分析工具，使您能够深
 
 ## <a name="enable-streaming-of-diagnostic-logs-to-log-analytics-workspace"></a>启用诊断日志到 Log Analytics 工作区的流式传输
 
-可以通过门户或使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 以编程方式启用诊断日志的流式传输。 无论采用哪种方式，都可以创建一个诊断设置并在其中指定 Log Analytics 工作区，以及要发送到该工作区的日志类别和指标。 诊断日志类别是一类可由资源提供的日志。
+可以通过门户或使用 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) 以编程方式启用诊断日志的流式处理。 无论采用哪种方式，都可以创建一个诊断设置并在其中指定 Log Analytics 工作区，以及要发送到该工作区的日志类别和指标。 诊断日志类别是一类可由资源提供的日志。
 
 只要配置设置的用户同时拥有两个订阅的相应 RBAC 访问权限，Log Analytics 工作区就不必位于发出日志的资源所在的订阅中。
 

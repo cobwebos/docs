@@ -36,7 +36,7 @@ ms.locfileid: "58661609"
 | EULA_ENU.txt |有关使用 Microsoft Azure Service Fabric Windows Server 独立包的许可条款。 现在，可以[下载 EULA 的副本](https://go.microsoft.com/fwlink/?LinkID=733084)。 |
 | Readme.txt |发行说明和基本安装说明的链接。 这是本文中说明的子集。 |
 | ThirdPartyNotice.rtf |包中的第三方软件的通知。 |
-| Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe 按需运行，收集跟踪日志并将其上传到 Microsoft 以提供支持。 |
+| Tools\Microsoft.Azure.ServiceFabric.WindowsServer.SupportPackage.zip |StandaloneLogCollector.exe，它按需运行，以便收集跟踪日志并将其上传到 Microsoft 以提供支持。 |
 | Tools\ServiceFabricUpdateService.zip |用于为不具有 Internet 访问权限的群集启用自动代码升级的工具。 在[此处](service-fabric-cluster-upgrade-windows-server.md)可以找到更多详细信息|
 
 **模板** 

@@ -56,7 +56,7 @@ Azure Functions 用于在[无服务器](https://azure.microsoft.com/solutions/se
     | [资源组](../azure-resource-manager/resource-group-overview.md) |  myResourceGroup | 要在其中创建 Function App 的新资源组的名称。 |
    | **[应用服务计划/位置](./functions-scale.md)** | 新建 | 用于控制函数应用所要部署到的区域和资源密度的托管计划。 部署到同一计划的多个函数应用将共享同一个免费实例。 这是面向学生的入门版计划的限制。 [此处介绍](./functions-scale.md)了所有托管选项。|
     | **运行时堆栈** | 首选语言 | 选择支持你喜欢的函数编程语言的运行时。 对于 C# 和 F# 函数，选择 **.NET**。 |
-    |**[Application Insights](./functions-monitoring.md)**| 已启用 | Application Insights 用于存储和分析函数应用的日志。 如果选择了支持 Application Insights 的位置，则默认会启用 Application Insights。 可以通过手动选择用于部署 Application Insights 的附近区域，来为任何函数启用 Application Insights。 如果不使用 Application Insights，则只能查看实时传送视频流日志。
+    |**[Application Insights](./functions-monitoring.md)**| 已启用 | Application Insights 用于存储和分析函数应用的日志。 如果选择了支持 Application Insights 的位置，则默认会启用 Application Insights。 可以通过手动选择用于部署 Application Insights 的附近区域，来为任何函数启用 Application Insights。 如果不使用 Application Insights，则只能查看实时流式传输日志。
 
 3. 选择上述“应用服务计划/位置”以选择不同的位置
 

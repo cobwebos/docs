@@ -11,7 +11,7 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
 ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2018
 ms.locfileid: "53579951"
@@ -121,7 +121,7 @@ ms.locfileid: "53579951"
 
     ssh -L localhost:12800:localhost:12800 USERNAME@CLUSTERNAME-ed-ssh.azurehdinsight.net
 
-SSH 会话处于活动状态后，来自本地计算机端口 12800 的流量将通过 SSH 会话转发到边缘节点的端口 12800。 请确保在 `remoteLogin()` 方法中使用 `127.0.0.1:12800`。 这样将通过端口转发登录到边缘节点的操作化。
+SSH 会话处于活动状态后，来自本地计算机端口 12800 的流量将通过 SSH 会话转发到边缘节点的端口 12800。 请确保在 `remoteLogin()` 方法中使用 `127.0.0.1:12800`。 这样将通过“端口转移”功能登录到边缘节点的操作化功能。
 
 
     library(mrsdeploy)

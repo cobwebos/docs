@@ -243,7 +243,7 @@ RejectedList | 默认值为 "" | 此更新拒绝的修补程序列表
 
 ### <a name="diagnostic-logs"></a>诊断日志
 
-修补业务流程应用日志是作为 Service Fabric 运行日志的一部分进行收集的。
+修补业务流程应用日志是作为 Service Fabric 运行时日志的一部分进行收集的。
 
 在想要通过所选的诊断工具/管道捕获日志的情况下使用。 修补业务流程应用程序使用以下固定的提供程序 ID 通过 [eventsource](https://docs.microsoft.com/dotnet/api/system.diagnostics.tracing.eventsource?view=netstandard-2.0) 记录事件
 

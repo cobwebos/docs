@@ -268,16 +268,16 @@ public ActionResult About()
 
 日志记录会影响应用性能，因此 Azure 允许根据需要启用或禁用各种类型的日志。 对于应用程序日志，可以指定只写入特定严重级别以上的日志。 创建新的应用时，默认禁用所有日志记录。
 
-日志将写入应用文件系统中 *LogFiles* 文件夹内的文件，并可通过 FTP 访问。 Web 服务器日志和应用程序日志也可写入 Azure 存储帐户。 可在存储帐户中为日志留出大于文件系统预留量的空间。 使用文件系统时，最多可存储 100 兆字节的日志。 （文件系统日志仅适合短期保留。 达到限制后，Azure 将删除旧日志文件以便为新日志腾出空间。）  
+日志将写入到应用文件系统中 *LogFiles* 文件夹内的文件，并可通过 FTP 访问。 Web 服务器日志和应用程序日志也可写入到 Azure 存储帐户。 可在存储帐户中为日志留出大于文件系统预留量的空间。 使用文件系统时，最多可存储 100 兆字节的日志。 （文件系统日志仅适合短期保留。 达到限制后，Azure 将删除旧日志文件以便为新日志腾出空间。）  
 
 ## <a name="apptracelogs"></a>创建并查看应用程序跟踪日志
 在本部分中执行以下任务：
 
 * 将跟踪语句添加到在 [Azure 和 ASP.NET 入门](app-service-web-get-started-dotnet-framework.md)中创建的 Web 项目。
-* 本地运行该项目时查看日志。
+* 在本地运行该项目时查看日志。
 * 查看由运行于 Azure 中的应用程序生成的日志。
 
-有关如何在 WebJobs 中创建应用程序日志的信息，请参阅[如何使用 WebJobs SDK 处理 Azure 队列存储 - 如何写入日志](https://github.com/Azure/azure-webjobs-sdk/wiki)。 以下有关查看日志以及控制其在 Azure 中的存储方式的说明，同样适用于 WebJobs 创建的应用程序日志。
+有关如何在 Web 作业中创建应用程序日志的信息，请参阅[如何使用 WebJobs SDK 处理 Azure 队列存储 - 如何写入日志](https://github.com/Azure/azure-webjobs-sdk/wiki)。 以下有关查看日志以及控制其在 Azure 中的存储方式的说明，同样适用于 WebJobs 创建的应用程序日志。
 
 ### <a name="add-tracing-statements-to-the-application"></a>向应用程序添加跟踪语句
 1. 打开 *Controllers\HomeController.cs* 并将 `Index`、`About` 和 `Contact` 方法替换为以下代码，以便为 `System.Diagnostics` 添加 `Trace` 语句和 `using` 语句：
@@ -368,11 +368,11 @@ public ActionResult Contact()
     在 Visual Studio 发布更新后，将打开一个主页的浏览器窗口（假设没有清除“连接”选项卡上的“目标 URL”）。
 3. 在“服务器资源管理器”中，右键单击应用，并选择“查看流式处理日志”。
 
-    ![上下文菜单中的查看流式传输日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
+    ![上下文菜单中的查看流式处理日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png)
 
     “输出”窗口显示已连接至日志流式传输服务，每过一分钟没有要显示的日志，就添加一个通知行。
 
-    ![上下文菜单中的查看流式传输日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
+    ![上下文菜单中的查看流式处理日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png)
 4. 在显示应用程序主页的浏览器窗口，单击“联系人”。
 
     几秒钟内，添加到 `Contact` 方法的错误级跟踪的输出显示在“输出”窗口中。
@@ -383,7 +383,7 @@ public ActionResult Contact()
 
     ![应用程序日志记录关闭](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-apploggingoff.png)
 
-    然而，如果选择“查看流式传输日志”，Visual Studio 会自动将“应用程序日志记录(文件系统)”更改为“错误”，这意味着将报告错误级日志。 为了查看所有跟踪日志，可将该设置更改为“详细”。 如果选择的严重级别低于错误，也将报告所有更高严重级别的日志。 因此，如果选择“详细”，还可查看信息、警告以及错误日志。  
+    然而，如果选择“查看流式处理日志”，Visual Studio 会自动将“应用程序日志记录(文件系统)”更改为“错误”，这意味着将报告错误级日志。 为了查看所有跟踪日志，可将该设置更改为“详细”。 如果选择的严重级别低于错误，也将报告所有更高严重级别的日志。 因此，如果选择“详细”，还可查看信息、警告以及错误日志。  
 
 5. 在“服务器资源管理器”中，右键单击应用，并与之前一样单击“查看设置”。
 6. 将“应用程序日志记录(文件系统)”更改为“详细”，然后单击“保存”。
@@ -428,7 +428,7 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
     ![监视 Web 服务器日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-monitorwslogson.png)
 4. 在显示应用的浏览器窗口中，依次单击“主页”、“关于”、“联系人”。
 
-    应用程序日志通常第一个显示，其后是 Web 服务器日志。 可能需要等待一段时间日志才会显示。
+    应用程序日志通常首先显示，其后是 Web 服务器日志。 可能需要等待一段时间才会显示日志。
 
     ![输出窗口中的 Web 服务器日志](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-wslogs.png)
 
@@ -462,7 +462,7 @@ Web 服务器日志将记录应用上所有的 HTTP 活动。 若要在“输出
 ## <a name="downloadlogs"></a>下载文件系统日志
 任何可在“输出”窗口中监视的日志都可作为 *.zip* 文件进行下载。
 
-1. 在“输出”窗口中单击“下载流式传输日志”。
+1. 在“输出”窗口中单击“下载流式处理日志”。
 
     ![日志选项卡按钮](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png)
 
@@ -559,7 +559,7 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
      ![Trace table in Server Explorer](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-tracetablerow.png)
  -->
 ## <a name="failedrequestlogs"></a>查看失败请求跟踪日志
-在出现诸如 URL 重写或身份验证问题之类的情况下，需要详细了解 IIS 如何处理 HTTP 请求时可求助于失败请求跟踪日志。
+如果需要详细了解 IIS 如何处理 HTTP 请求（在出现 URL 重写或身份验证问题等情况下），失败请求跟踪日志十分有用。
 
 应用服务应用使用 IIS 7.0 及更高版本中提供的相同失败请求跟踪功能。 IIS 设置经过配置可记录指定错误，但无法访问该设置。 启用失败请求跟踪后，所有错误都将纳入捕获范围内。
 
@@ -678,7 +678,7 @@ catch (Exception ex)
 
 对于错误日志记录，若不想编写自己的跟踪代码，可以使用开源日志记录框架，如 [ELMAH](https://nuget.org/packages/elmah/)。 有关详细信息，请参阅 [Scott Hanselman 有关 ELMAH 的博客文章](https://www.hanselman.com/blog/NuGetPackageOfTheWeek7ELMAHErrorLoggingModulesAndHandlersWithSQLServerCompact.aspx)。
 
-并且，不需要使用 ASP.NET 或 `System.Diagnostics` 跟踪来获取来自 Azure 的流式处理日志。 应用服务应用流式处理日志服务会对其在 *LogFiles* 文件夹中找到的所有 *.txt*、*.html* 或 *.log* 文件进行流式处理。 因此，你可以创建自己的日志记录系统以写入应用的文件系统，文件会自动进行流式处理和下载。 所要做的就是编写在 *d:\home\logfiles* 文件夹中创建文件的应用程序代码。
+此外，不需要使用 ASP.NET 或 `System.Diagnostics` 跟踪来从 Azure 获取流式传输日志。 应用服务应用流式处理日志服务会对其在 *LogFiles* 文件夹中找到的所有 *.txt*、*.html* 或 *.log* 文件进行流式处理。 因此，你可以创建自己的日志记录系统以写入应用的文件系统，文件会自动进行流式处理和下载。 所要做的就是编写在 *d:\home\logfiles* 文件夹中创建文件的应用程序代码。
 
 ### <a name="analyzing-web-server-logs"></a>分析 Web 服务器日志
 有关分析 Web 服务器日志的详细信息，请参阅以下资源：

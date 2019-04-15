@@ -28,7 +28,7 @@ ms.locfileid: "59006998"
 
 诊断日志仅适用于通过 Azure 资源管理器部署模型部署的 NSG。 不能对通过经典部署模型部署的 NSG 启用诊断日志记录。 若要更好地了解这两种模型，请参阅[了解 Azure 部署模型](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
-分别为要收集其诊断数据的每个 NSG 启用诊断日志记录。 如果感兴趣的是运行日志或活动日志，请参阅 Azure [活动日志记录](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+分别为要收集其诊断数据的每个 NSG 启用诊断日志记录。 如果感兴趣的是操作日志或活动日志，请参阅 Azure [活动日志记录](../azure-monitor/platform/activity-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -109,7 +109,7 @@ nsgId=$(az network nsg show \
 
 可以将诊断日志写入三种目标类型。 有关详细信息，请参阅[日志目标](#log-destinations)。 例如，在本文中，日志发送到 *Log Analytics* 目标。 有关详细信息，请参阅[日志类别](#log-categories)。
 
-使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 为 NSG 启用诊断日志记录。 以下示例使用前面检索到的 NSG 的 ID 将事件和计数器类别数据记录到名为 *myWorkspace* 的现有工作空间，该工作空间存在于名为 *myWorkspaces* 的资源组中：
+使用 [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) 为 NSG 启用诊断日志记录。 以下示例使用前面检索到的 NSG 的 ID 将事件和计数器类别数据记录到名为 *myWorkspace* 的现有工作区，该工作区存在于名为 *myWorkspaces* 的资源组中：
 
 ```azurecli-interactive
 az monitor diagnostic-settings create \
@@ -206,7 +206,7 @@ az monitor diagnostic-settings create \
 
 ## <a name="next-steps"></a>后续步骤
 
-- 详细了解[活动日志记录](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（以前称为审核或运行日志）。 默认情况下，对通过任一 Azure 部署模型创建的 NSG 启用活动日志记录。 若要在活动日志中确定在 NSG 上完成的操作，请查找包含以下资源类型的条目：
+- 详细了解[活动日志记录](../azure-monitor/platform/diagnostic-logs-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)（以前称为审核或操作日志）。 默认情况下，对通过任一 Azure 部署模型创建的 NSG 启用活动日志记录。 若要在活动日志中确定在 NSG 上完成的操作，请查找包含以下资源类型的条目：
   - Microsoft.ClassicNetwork/networkSecurityGroups
   - Microsoft.ClassicNetwork/networkSecurityGroups/securityRules
   - Microsoft.Network/networkSecurityGroups

@@ -1,6 +1,6 @@
 ---
 title: 统一多个 Azure Monitor Application Insights 资源 | Microsoft Docs
-description: 本文详细介绍了如何在 Azure Monitor Logs 中使用函数来查询多个 Application Insights 资源并直观呈现这些数据。
+description: 本文详细介绍了如何在 Azure Monitor 日志中使用函数来查询多个 Application Insights 资源并直观呈现这些数据。
 services: azure-monitor
 documentationcenter: ''
 author: mgoedtel
@@ -14,7 +14,7 @@ ms.date: 02/19/2019
 ms.author: magoedte
 ms.openlocfilehash: 3f3de81197b05d4f025a3fd8638cffe4b07cecad
 ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/20/2019
 ms.locfileid: "56429510"

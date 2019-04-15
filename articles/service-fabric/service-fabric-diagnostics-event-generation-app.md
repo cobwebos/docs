@@ -1,6 +1,6 @@
 ---
 title: Azure Service Fabric 应用程序级别监视 | Microsoft Docs
-description: 了解用于监视和诊断 Azure Service Fabric 群集的应用程序和服务级别事件和日志。
+description: 了解用于监视和诊断 Azure Service Fabric 群集的应用程序和服务级别的事件和日志。
 services: service-fabric
 documentationcenter: .net
 author: srrengar
@@ -43,4 +43,4 @@ Application Insights 具有现成的与 Service Fabric 的丰富集成。 用户
 
 ## <a name="next-steps"></a>后续步骤
 
-选择了用于检测应用程序和服务的日志记录提供程序之后，需要将日志和事件聚合才能将其发送到任何的分析平台。 阅读有关 [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) 和 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 的信息，以便更好地了解 Azure Monitor 推荐的一些选项。
+选择了用于检测应用程序和服务的日志记录提供程序之后，需要聚合日志和事件才能将其发送到任何的分析平台。 阅读有关 [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) 和 [EventFlow](service-fabric-diagnostics-event-aggregation-eventflow.md) 的信息，以便更好地了解 Azure Monitor 推荐的一些选项。

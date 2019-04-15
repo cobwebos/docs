@@ -29,7 +29,7 @@ ms.locfileid: "56815886"
 > * 载入 Azure VM
 > * 载入非 Azure VM
 > * 查看已安装软件
-> * 在清单日志中搜索已安装软件
+> * 在清单日志中搜索已安装的软件
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -101,7 +101,7 @@ ms.locfileid: "56815886"
 
 例如，搜索“Contoso”会返回名称、发布者或版本中包含“Contoso”的所有软件。
 
-## <a name="search-inventory-logs-for-installed-software"></a>在清单日志中搜索已安装软件
+## <a name="search-inventory-logs-for-installed-software"></a>在清单日志中搜索已安装的软件
 
 清单生成发送到 Azure Monitor 日志的日志数据。 若要通过运行查询来搜索日志，请选择“清单”窗口顶部的“Log Analytics”。
 
@@ -140,7 +140,7 @@ ConfigurationData
 > * 载入 Azure VM
 > * 载入非 Azure VM
 > * 查看已安装软件
-> * 在清单日志中搜索已安装软件
+> * 在清单日志中搜索已安装的软件
 
 继续阅读更改跟踪和清单解决方案的概述可以了解其详细信息。
 

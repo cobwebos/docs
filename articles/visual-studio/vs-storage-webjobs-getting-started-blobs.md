@@ -14,7 +14,7 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51254394"
@@ -184,7 +184,7 @@ SDK 自动反序列化 JSON 消息。 下面是 **PoisonBlobMessage** 类：
 ### <a name="blob-polling-algorithm"></a>Blob 轮询算法
 启动应用程序时，WebJobs SDK 将扫描 **BlobTrigger** 属性指定的所有容器。 在大型存储帐户中，此扫描可能需要一些时间，因此在查找新 blob 和执行 **BlobTrigger** 函数之前，可能需要一段时间。
 
-若要在应用程序启动后检测新的或已更改的 Blob，SDK 会定期读取从 Blob 存储日志。 blob 日志将进行缓冲，仅每隔 10 分钟左右获取物理写入，因此创建或更新 blob 后可能存在很长的延迟，然后才会执行对应的 **BlobTrigger** 函数。
+若要在应用程序启动后检测新的或已更改的 Blob，SDK 会定期读取从 Blob 存储日志。 blob 日志将进行缓冲，仅每隔 10 分钟左右获取物理写入，因此创建或更新 blob 后可能存在很长的延迟，才会执行对应的 **BlobTrigger** 函数。
 
 使用 **Blob** 属性创建的 blob 例外。 当 WebJobs SDK 创建新 blob 时，会立即将新的 blob 传递给任何匹配的 **BlobTrigger** 函数。 因此，如果建立了 Blob 输入和输出的链接，则 SDK 可以高效地处理它们。 但是，如果想要对通过其他方式创建或更新的 blob 降低运行 blob 处理功能的延迟时间，建议使用 **QueueTrigger** 而非 **BlobTrigger**。
 

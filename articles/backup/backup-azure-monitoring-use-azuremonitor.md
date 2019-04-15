@@ -238,13 +238,13 @@ on BackupItemUniqueId_s
 
 ### <a name="identify-appropriate-log-and-create-alert"></a>标识相应的日志，并创建警报
 
-应用下图所示的筛选器，验证是否接收到成功备份的活动日志。 相应地更改时间跨度以查看视图。
+应用下图所示的筛选器，以便验证是否接收到成功备份的活动日志。 相应地更改时间跨度以查看视图。
 
 ![Azure VM 备份的活动日志](media/backup-azure-monitoring-laworkspace/activitylogs-azurebackup-vmbackups.png)
 
 可以单击“JSON”段，获取更多详细信息，并将其复制粘贴到文本编辑器进行查看。 它应显示保管库详细信息和触发活动的项的它是日志备份的项。
 
-然后单击“添加活动日志警报”，生成所有此类日志的警报。
+然后单击“添加活动日志警报”以生成所有此类日志的警报。
 
 你可以单击"添加活动日志警报"上面所示，它将打开类似于警报创建屏幕的警报创建屏幕[上文所述](#create-alerts-using-log-analytics)。
 
@@ -258,7 +258,7 @@ on BackupItemUniqueId_s
 
 - **有限的情况：** 仅适用于 Azure VM 备份，并且应重复的每个 RS 保管库。
 - **定义适合：** 计划的备份活动不适合使用活动日志的最新定义，并符合[诊断日志](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-logs-overview#what-are-azure-monitor-diagnostic-logs)。 意外的影响，如下面所述更改通过活动日志通道发送的数据时此销售线索。
-- **与活动日志通道相关的问题：** 我们已经转移到新的模式，即从恢复服务保管库上的 Azure 备份中抽取活动日志。 遗憾的是，在移动影响 Azure 主权云中的活动日志的生成。 如果 Azure 主权云用户创建或配置任何从通过 Azure Monitor 活动日志警报，它们不会触发。 此外，在所有 Azure 公共区域中，如果用户正在将恢复服务活动日志收集到[此处](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)提到的日志分析工作区中，那么这些日志也不会显示。
+- **与活动日志通道相关的问题：** 我们已经转移到新的模型，即从恢复服务保管库上的 Azure 备份中抽取活动日志。 遗憾的是，在移动影响 Azure 主权云中的活动日志的生成。 如果 Azure 主权云用户创建或配置任何从通过 Azure Monitor 活动日志警报，它们不会触发。 此外，在所有 Azure 公共区域中，如果用户正在将恢复服务活动日志收集到[此处](https://docs.microsoft.com/azure/azure-monitor/platform/collect-activity-logs)提到的 Log Analytics 工作区中，那么这些日志也不会显示。
 
 因此，强烈建议用于日志分析工作区进行监视和大规模警报针对所有 Azure 备份保护工作负荷。
 

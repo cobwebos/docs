@@ -209,7 +209,7 @@ ms.locfileid: "59357441"
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
 
-### <a name="consume-logs-stored-in-event-hub"></a>使用存储在事件中心中的日志
+### <a name="consume-logs-stored-in-event-hub"></a>使用在事件中心中存储的日志
 
 若要使用事件中心的审核日志数据，需设置一个流来使用事件并将其写入到目标。 有关详细信息，请参阅 Azure 事件中心文档。
 

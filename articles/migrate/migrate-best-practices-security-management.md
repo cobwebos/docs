@@ -30,7 +30,7 @@ ms.locfileid: "58498731"
 - [设置反恶意软件](#best-practice-protect-vms-with-antimalware)：防范 VM 受到恶意软件的攻击。
 - [保护 Web 应用](#best-practice-secure-web-apps)：使已迁移的 Web 应用中的敏感信息保持安全。
 - [评审订阅](#best-practice-review-subscriptions-and-resource-permissions)：确认谁可以在迁移后访问你的 Azure 订阅和资源。
-- [使用日志](#best-practice-review-audit-and-security-logs)：定期评审 Azure 审核和安全日志。
+- [使用日志](#best-practice-review-audit-and-security-logs)：定期查阅 Azure 审核和安全日志。
 - [评审其他安全功能](#best-practice-evaluate-other-security-features)：了解和评估 Azure 提供的高级安全功能。
 
 ## <a name="best-practice-follow-azure-security-center-recommendations"></a>最佳做法：遵循 Azure 安全中心建议
@@ -168,14 +168,14 @@ Azure 提供几种解决方案：
 - [了解](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)如何使用 RBAC 和 Azure 门户管理访问权限。
 - [了解](https://docs.microsoft.com/azure/role-based-access-control/custom-roles)自定义角色。
 
-## <a name="best-practice-review-audit-and-security-logs"></a>最佳做法：评审审核和安全日志
+## <a name="best-practice-review-audit-and-security-logs"></a>最佳做法：查阅审核和安全日志
 
 Azure Active Directory (AD) 提供 Azure Monitor 中显示的活动日志。 日志捕获 Azure 租户中执行的操作、操作的执行时间和执行者。 
 
 - 审核日志显示租户中任务的历史记录。 登录活动日志显示任务的执行者。 
 - 对安全报告的访问权限取决于 Azure AD 许可证。 Free 和 Basic 版本提供有风险用户和登录活动的列表。Premium 1 和 Premium 2 版本提供基础事件信息。
 - 可将活动日志路由到多个终结点进行长期保留及获取数据见解。
-- 使日志评审成为一项惯例，或者集成安全信息和事件管理 (SIEM) 工具来自动检查异常情况。  如果不使用 Premium 1 或 2，则需要自行执行大量的分析，或使用自己的 SIEM 系统。  分析包括探查有风险的登录和事件，以及其他用户攻击模式。
+- 使查阅日志成为一项惯例，或者集成安全信息和事件管理 (SIEM) 工具来自动检查异常情况。  如果不使用 Premium 1 或 2，则需要自行执行大量的分析，或使用自己的 SIEM 系统。  分析包括探查有风险的登录和事件，以及其他用户攻击模式。
 
 
 ![用户和组](./media/migrate-best-practices-security-management/azure-ad.png)

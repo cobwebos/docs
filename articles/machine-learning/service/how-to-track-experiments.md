@@ -89,7 +89,7 @@ ms.locfileid: "59494621"
    joblib.dump(value = reg, filename = 'model.pkl');
    ```
 
-2. 使用 Azure 机器学习服务 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志并将模型文件上传到试验运行。
+2. 使用 Azure 机器学习服务 SDK 添加试验跟踪并将持久化模型上传到试验运行记录。 以下代码添加标记、日志，并将模型文件上传到试验运行。
 
    ```python
    # Get an experiment object from Azure Machine Learning
@@ -272,7 +272,7 @@ ms.locfileid: "59494621"
 
   ![Azure 门户中的运行详细信息](./media/how-to-track-experiments/run-details-page-web.PNG)
 
-还可查看运行的任何输出或日志，或下载提交的实验的快照，以便与他人共享实验文件夹。
+还可查看运行的任何输出或日志，或下载提交的试验的快照，以便与他人共享试验文件夹。
 
 ### <a name="viewing-charts-in-run-details"></a>在运行详细信息中查看图表
 

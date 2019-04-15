@@ -96,7 +96,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>日志记录
-若要将输出以 F# 记录到[流式传输日志](../app-service/troubleshoot-diagnostic-logs.md)，函数应采用 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
+若要使用 F# 将输出记录到[流式处理日志](../app-service/troubleshoot-diagnostic-logs.md)中，函数应带有 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 为了保持一致，我们建议参数名为 `log`。 例如：
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: ILogger) =
@@ -230,7 +230,7 @@ Azure 函数执行代码时，它可以处理带有 `COMPILED` 定义的源，�
 可能希望会自动引用程序集放入编辑器 prelude，以提高编辑器与 F # 编译服务的交互。
 
 ### <a name="how-to-add-a-projectjson-file-to-your-azure-function"></a>如何添加 `project.json` 文件到 Azure 函数
-1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问显示程序包安装输出位置的流式日志日志。
+1. 首先，确保函数应用程序正在运行，可以通过在 Azure 门户中打开函数来执行此操作。 通过此操作，还可以访问将要显示程序包安装输出位置的流式传输日志。
 2. 若要上传 `project.json` 文件，请使用如何更新函数应用程序文件 中描述的其中一[种方法](functions-reference.md#fileupdate)。 如果使用 [ Azure 函数的连续部署](functions-continuous-deployment.md) ，可以添加 `project.json` 文件到临时分支，以便添加到部署的分支文件对其进行测试。
 3. 添加 `project.json` 文件后，将看到类似于函数流式日志中的实例的输出：
 

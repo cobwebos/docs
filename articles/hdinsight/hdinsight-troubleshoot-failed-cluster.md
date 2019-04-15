@@ -237,7 +237,7 @@ HDInsight Ambari UI 中包含一些“快速链接”部分。  若要访问 HDI
 
 ### <a name="view-hadoop-generated-log-files"></a>查看 Hadoop 生成的日志文件
 
-HDInsight 群集会生成日志，这些日志将写入 Azure 表和 Azure Blob 存储。 YARN 会创建自身的执行日志。 有关详细信息，请参阅[管理 HDInsight 群集的日志](hdinsight-log-management.md#access-the-hadoop-log-files)。
+HDInsight 群集会生成日志，这些日志将写入到 Azure 表和 Azure Blob 存储。 YARN 会创建自身的执行日志。 有关详细信息，请参阅[管理 HDInsight 群集的日志](hdinsight-log-management.md#access-the-hadoop-log-files)。
 
 ### <a name="review-heap-dumps"></a>查看堆转储
 

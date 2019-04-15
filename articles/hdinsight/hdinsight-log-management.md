@@ -104,19 +104,19 @@ Hadoop 在群集中的各个节点上以“任务尝试”的形式运行作业�
 
 #### <a name="hdinsight-logs-written-to-azure-blob-storage"></a>写入 Azure Blob 存储的 HDInsight 日志
 
-对于使用 Azure PowerShell cmdlet 或 .NET 作业提交 API 提交的任何作业，HDInsight 群集配置为将任务日志写入 Azure Blob 存储帐户。  如果通过群集的 SSH 连接提交作业，则会将执行日志记录信息存储在上一部分所述的 Azure 表中。
+对于使用 Azure PowerShell cmdlet 或 .NET 作业提交 API 提交的任何作业，HDInsight 群集已配置为将任务日志写入 Azure Blob 存储帐户。  如果通过群集的 SSH 连接提交作业，则会将执行日志记录信息存储在上一部分所述的 Azure 表中。
 
 除了 HDInsight 生成的核心日志文件以外，安装的服务（例如 YARN）也会生成作业执行日志文件。  日志文件的类型和数量取决于安装的服务。  常见的服务包括 Apache HBase、Apache Spark ，等等。  调查每个服务的作业日志执行文件可以了解群集上提供的各种日志记录文件。  每个服务使用自身独特的方法进行日志记录，并为日志文件提供独特的存储位置。  下一部分通过一个示例详细介绍了如何访问最常见的服务日志文件（通过 YARN）。
 
 ### <a name="hdinsight-logs-generated-by-yarn"></a>YARN 生成的 HDInsight 日志
 
-YARN 聚合工作节点上所有容器的日志，并将每个工作节点的这些日志存储为一个聚合日志文件。 应用程序完成运行后，该日志将存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个工作节点上运行的所有容器的日志始终聚合成单个文件。 因此，在每个工作节点上，应用程序只使用一个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。
+YARN 聚合工作器节点上所有容器的日志，并按工作器节点将这些日志存储为一个聚合日志文件。 应用程序完成运行后，该日志将存储在默认文件系统中。 应用程序可能使用数百或数千个容器，但在单个工作器节点上运行的所有容器的日志始终聚合成单个文件。 因此，在每个工作节点上，应用程序只使用一个日志。 在 HDInsight 群集版本 3.0 和更高版本上，日志聚合默认已启用。 聚合日志位于群集的默认存储中。
 
 ```
     /app-logs/<user>/logs/<applicationId>
 ```
 
-无法直接读取聚合日志，因为它们是以容器编制索引的 TFile 二进制格式编写的。 使用 YARN ResourceManager 日志或 CLI 工具以纯文本的形式查看感兴趣的应用程序或容器的日志。
+无法直接读取聚合日志，因为它们是以容器编制索引的 TFile 二进制格式编写的。 使用 YARN ResourceManager 日志或 CLI 工具以纯文本的形式查看感兴趣的应用程序或容器的这些日志。
 
 #### <a name="yarn-cli-tools"></a>YARN CLI 工具
 
@@ -133,7 +133,7 @@ YARN ResourceManager UI 在群集头节点上运行，可通过 Ambari Web UI �
 
 1. 在 Web 浏览器中导航到 `https://CLUSTERNAME.azurehdinsight.net`。 将 CLUSTERNAME 替换为 HDInsight 群集的名称。
 2. 在左侧的服务列表中选择“YARN”。
-3. 在“快速链接”下拉列表中选择一个群集头节点，然后选择“ResourceManager 日志”。 将显示 YARN 日志的链接列表。
+3. 在“快速链接”下拉列表中选择一个群集头节点，然后选择“ResourceManager 日志”。 此时将显示 YARN 日志的链接列表。
 
 ## <a name="step-4-forecast-log-volume-storage-sizes-and-costs"></a>步骤 4：预测日志卷存储大小和成本
 

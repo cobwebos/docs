@@ -14,7 +14,7 @@ ms.reviewer: sergkanz
 ms.author: mbullwin
 ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
 ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/28/2018
 ms.locfileid: "53811284"
@@ -372,7 +372,7 @@ public async Task Process(MessagePayload message)
 检测消息删除时，请务必设置操作（关联）标识符。 或者，可以使用 `Activity` API。 这样就无需在遥测项目上设置操作标识符，因为 Application Insights SDK 会为用户完成：
 
 - 从队列中获取项目后，创建新的 `Activity`。
-- 使用 `Activity.SetParentId(message.ParentId)` 关联使用者日志和生成者日志。
+- 使用 `Activity.SetParentId(message.ParentId)` 关联使用者日志和生产者日志。
 - 启动 `Activity`。
 - 使用 `Start/StopOperation` 帮助程序跟踪取消排队、处理和删除操作。 从同一个异步控制流（执行上下文）执行。 这样，它们就能正确关联。
 - 停止 `Activity`。

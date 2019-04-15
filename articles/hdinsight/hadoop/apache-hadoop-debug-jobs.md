@@ -20,9 +20,9 @@ ms.locfileid: "58449489"
 
 Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件系统的 Azure 存储帐户。 该存储帐户称作默认存储帐户。 群集使用默认存储帐户上的 Azure 表存储和 Blob 存储来存储其日志。  若要了解群集的默认存储帐户，请参阅[在 HDInsight 中管理 Apache Hadoop 群集](../hdinsight-administer-use-portal-linux.md#find-the-storage-accounts)。 即使在删除群集以后，日志仍会保留在存储帐户中。
 
-## <a name="logs-written-to-azure-tables"></a>写入 Azure 表的日志
+## <a name="logs-written-to-azure-tables"></a>写入到 Azure 表的日志
 
-通过写入 Azure 表的日志，可以在一定程度上了解 HDInsight 群集中发生的事件。
+使用写入到 Azure 表的日志，可以在一定程度上了解 HDInsight 群集中发生的事件。
 
 创建 HDInsight 群集时，会自动在默认表存储中为基于 Linux 的群集创建六个表：
 
@@ -99,7 +99,7 @@ Azure HDInsight 中的每个 Apache Hadoop 群集都有一个用作默认文件�
     有关构造筛选器的详细信息，请参阅[构造表设计器的筛选器字符串](../../vs-azure-tools-table-designer-construct-filter-strings.md)。
 
 ## <a name="logs-written-to-azure-blob-storage"></a>写入 Azure Blob 存储的日志
-通过写入 Azure 表的日志，可以在一定程度上了解 HDInsight 群集中发生的事件。 但是，这些表不提供任务级日志，这些日志在问题发生时可以用于进一步分析问题。 为了更进一步地详细了解所发生的问题，可以对 HDInsight 群集进行配置，将通过 Templeton 提交的作业的任务日志写入 Blob 存储帐户。 实际上，这是指通过 Microsoft Azure PowerShell cmdlet 或 .NET 作业提交 API 提交的作业，而不是指通过 RDP 提交的或通过命令行访问群集时提交的作业。 
+使用写入到 Azure 表的日志，可以在一定程度上了解 HDInsight 群集中发生的事件。 但是，这些表不提供任务级日志，这些日志在问题发生时可以用于进一步分析问题。 为了更进一步地详细了解所发生的问题，可以对 HDInsight 群集进行配置，将通过 Templeton 提交的作业的任务日志写入 Blob 存储帐户。 实际上，这是指通过 Microsoft Azure PowerShell cmdlet 或 .NET 作业提交 API 提交的作业，而不是指通过 RDP 提交的或通过命令行访问群集时提交的作业。 
 
 若要查看日志，请参阅[在基于 Linux 的 HDInsight 上访问 Apache Hadoop YARN 应用程序日志](../hdinsight-hadoop-access-yarn-app-logs-linux.md)。
 

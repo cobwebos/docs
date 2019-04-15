@@ -89,7 +89,7 @@ az mesh app show --resource-group myResourceGroup --name helloWorldApp
 
 ## <a name="see-the-application-logs"></a>查看应用程序日志
 
-使用 `az mesh code-package-log get` 命令观察所部署的应用程序的日志：
+使用 `az mesh code-package-log get` 命令查看所部署的应用程序的日志：
 
 ```azurecli-interactive
 az mesh code-package-log get --resource-group myResourceGroup --application-name helloWorldApp --service-name helloWorldService --replica-name 0 --code-package-name helloWorldCode

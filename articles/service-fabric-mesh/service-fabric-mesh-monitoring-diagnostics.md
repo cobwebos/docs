@@ -17,7 +17,7 @@ ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 9f857c23b5500bc7790a0ff7fcf81eaec51f37c9
 ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 07/31/2018
 ms.locfileid: "39358244"
@@ -42,7 +42,7 @@ az mesh code-package-log get --resource-group <nameOfRG> --app-name <nameOfApp> 
 > [!NOTE]
 > 可使用“az mesh service-replica”命令获取副本名称。 副本名称是从 0 开始递增的数字。*
 
-以下是在投票应用程序的 VotingWeb.Code 容器中查看日志的示例：
+以下是用于查看投票应用程序中 VotingWeb.Code 容器的日志的示例：
 
 ```cli
 az mesh code-package-log get --resource-group <nameOfRG> --application-name SbzVoting --service-name VotingWeb --replica-name 0 --code-package-name VotingWeb.Code

@@ -17,7 +17,7 @@ ms.date: 03/30/2018
 ms.author: roiyz
 ms.openlocfilehash: bf6eca33eb1448eb84065fb7fe184d01e77feb61
 ms.sourcegitcommit: f0c2758fb8ccfaba76ce0b17833ca019a8a09d46
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/06/2018
 ms.locfileid: "51036983"
@@ -337,7 +337,7 @@ INFO [Microsoft.OSTCExtensions.LinuxDiagnostic-2.3.9027] Launch command:diagnost
 
 1. 若要查看 Linux 代理日志，请在 /var/log/waagent.log 中查看预配扩展时的活动
 
-2. 在 /var/log/azure/<extensionName> 中查看实际扩展日志，获取详细信息
+2. 在 /var/log/azure/<extensionName> 中查看实际扩展日志，以便获取详细信息
 
 3. 查看特定扩展文档中有关错误代码和已知问题等的故障排除部分。
 

@@ -38,7 +38,7 @@ ms.locfileid: "59526395"
 
 ![Azure 流分析输入磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-启用诊断日志，查看警告的详细信息。 对于格式不正确的输入事件，执行日志包含具有如下所示消息的条目： 
+启用诊断日志，以便查看警告的详细信息。 对于格式不正确的输入事件，执行日志包含一条类似于以下内容的消息： 
 ```
 Could not deserialize the input event(s) from resource <blob URI> as json.
 ```

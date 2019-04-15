@@ -18,7 +18,7 @@ ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2019
 ms.locfileid: "56184884"
@@ -50,7 +50,7 @@ ms.locfileid: "56184884"
 |AADSTS8002|连接到 Active Directory 时超时|检查以确保 Active Directory 可用，并且可以响应代理的请求。
 |AADSTS80004|传递到代理的用户名无效|确保用户尝试使用正确的用户名登录。
 |AADSTS80005|验证遇到了不可预知的 WebException|暂时性的错误。 重试请求。 如果持续失败，请与 Microsoft 支持人员联系。
-|AADSTS80007|与 Active Directory 通信时出错|检查代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
+|AADSTS80007|与 Active Directory 通信时出错|查看代理日志以了解更多信息，并验证 Active Directory 是否按预期方式运行。
 
 ### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center-needs-premium-license"></a>Azure Active Directory 管理中心登录失败原因（需要 Premium 许可证）
 

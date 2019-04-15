@@ -14,7 +14,7 @@ ms.date: 09/19/2017
 ms.author: mbullwin
 ms.openlocfilehash: cb32069de295b883cdc6d3a9fa495b1bea719c39
 ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/09/2019
 ms.locfileid: "54116976"
@@ -83,7 +83,7 @@ Application Insights 附带了精选的 APM 体验，帮助你诊断所监视应
 * [TrackEvent()](../../azure-monitor/app/api-custom-events-metrics.md#trackevent) 通常用于监视使用模式，但它发送的数据还显示在诊断搜索的“自定义事件”下。 事件可以进行命名，并带有[筛选诊断搜索](../../azure-monitor/app/diagnostic-search.md)所依据的字符串属性和数值指标。
 * [TrackTrace()](../../azure-monitor/app/api-custom-events-metrics.md#tracktrace) 允许发送较长的数据，例如 POST 信息。
 * [TrackException()](#exceptions) 可发送堆栈跟踪。 [有关异常的详细信息](#exceptions)。
-* 如果已使用 Log4Net 或 NLog 等记录框架，可以[捕获这些日志](asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
+* 如果已使用 Log4Net 或 NLog 等日志记录框架，可以[捕获这些日志](asp-net-trace-logs.md)并在诊断搜索中查看它们以及请求和异常数据。
 
 要查看这些事件，请打开 [搜索](../../azure-monitor/app/diagnostic-search.md)、打开“筛选器”，并选择“自定义事件”、“跟踪”或“异常”。
 

@@ -350,7 +350,7 @@ AutoUpgradeMinorVersion     : True
 
 以下故障排除步骤适用于所有 VM 扩展。
 
-1. 若要检查 Windows 来宾代理日志，请在预配扩展时查看 *C:\WindowsAzure\Logs\WaAppAgent.txt* 中的活动
+1. 若要查看 Windows 来宾代理日志，请在预配扩展时查看 *C:\WindowsAzure\Logs\WaAppAgent.txt* 中的活动
 
 2. 查看 *C:\WindowsAzure\Logs\Plugins\<extensionName>* 中的实际扩展日志，以了解更多详细信息
 

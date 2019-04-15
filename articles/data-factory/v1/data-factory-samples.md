@@ -15,7 +15,7 @@ ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
 ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2019
 ms.locfileid: "54020806"
@@ -30,7 +30,7 @@ ms.locfileid: "54020806"
 
 | 示例 | Description |
 |:--- |:--- |
-| [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含引用数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
+| [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含参考数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
 | [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |此示例提供常见方案的 JSON 示例。 |
 | [Http 数据下载程序示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample) |此示例展示如何使用自定义 .NET 活动将数据从 HTTP 终结点下载到 Azure Blob 存储。 |
 | [跨 AppDomain Dot Net 活动示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |借助此示例，可创建自定义 .NET 活动，该活动不受 ADF 启动器使用的程序集版本限制（例如，WindowsAzure.Storage v4.3.0、 Newtonsoft.Json v6.0.x 等）。 |

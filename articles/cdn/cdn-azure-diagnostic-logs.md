@@ -170,7 +170,7 @@ ms.locfileid: "57881123"
 本部分介绍 CDN 核心分析的架构及其在 Azure 存储帐户中的组织方式，并提供用于将日志下载到 CSV 文件的示例代码。
 
 ### <a name="using-microsoft-azure-storage-explorer"></a>使用 Microsoft Azure 存储资源管理器
-首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
+首先需要一款可访问存储帐户内容的工具，才可从 Azure 存储帐户访问核心分析数据。 市场上有多种可用的工具，但推荐使用 Microsoft Azure 存储资源管理器。 若要下载该工具，请参阅 [Azure 存储资源管理器](https://storageexplorer.com/)。 下载并安装软件后，请将其配置为使用已配置为 CDN 诊断日志目标的同一 Azure 存储帐户。
 
 1.  打开 Microsoft Azure 存储资源管理器
 2.  找到存储帐户

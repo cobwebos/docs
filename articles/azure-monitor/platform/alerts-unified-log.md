@@ -10,7 +10,7 @@ ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 194fba3296359f5f7d29a37425a938fe08f1332b
 ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/20/2019
 ms.locfileid: "56452876"
@@ -55,7 +55,7 @@ ms.locfileid: "56452876"
 
 ### <a name="number-of-results-alert-rules"></a>“结果数”警报规则
 
-当搜索查询返回的记录数超出指定的阈值时，“结果数”警报规则将创建一个警报。 此类预警规则适用于处理 Windows 事件日志、Syslog、WebApp Response 和自定义日志等事件。  生成特定错误事件时，或在特定时间段内生成多个错误事件时，就可能需要创建警报。
+当搜索查询返回的记录数超出指定的阈值时，“结果数”警报规则将创建一个警报。 此类警报规则适用于处理 Windows 事件日志、Syslog、WebApp Response 和自定义日志等事件。  生成特定错误事件时，或在特定时间段内生成多个错误事件时，就可能需要创建警报。
 
 **阈值**：“结果数”警报规则的阈值要么超出某个特定值，要么低于该值。  如果日志搜索返回的记录数与此条件匹配，则创建警报。
 

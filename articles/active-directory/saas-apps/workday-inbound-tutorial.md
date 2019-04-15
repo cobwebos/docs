@@ -1026,7 +1026,7 @@ SelectUniqueValue(
 
 ## <a name="troubleshooting-tips"></a>故障排除提示
 
-本部分提供具体指导，其中介绍如何使用 Azure AD 审核日志和 Windows Server 事件查看器日志来排查 Workday 集成方面的配置问题。 它基于[教程：针对自动用户帐户预配进行报告](../manage-apps/check-status-user-account-provisioning.md)中介绍的一般性疑难解答步骤和概念进行编制
+本部分提供具体指导，其中介绍如何使用 Azure AD 审核日志和 Windows Server 事件查看器日志来排查 Workday 集成方面的预配问题。 它基于[教程：针对自动用户帐户预配进行报告](../manage-apps/check-status-user-account-provisioning.md)中介绍的一般性疑难解答步骤和概念进行编制
 
 本部分涵盖了疑难解答的以下方面：
 

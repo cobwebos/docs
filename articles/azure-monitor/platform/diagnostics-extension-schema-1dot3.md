@@ -459,7 +459,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子元素|描述|  
 |--------------------|-----------------|  
 |**CrashDumps**|在此页的其他位置查看说明。|  
-|**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于解决诊断系统本身的故障。 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
+|**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
 |**目录**|在此页的其他位置查看说明。|  
 |**EtwProviders**|在此页的其他位置查看说明。|  
 |**度量值**|在此页的其他位置查看说明。|  
@@ -494,7 +494,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |子元素|描述|  
 |--------------------|-----------------|  
 |**IISLogs**|在配置中包括此元素可启用收集 IIS 日志：<br /><br /> **containerName** - Azure 存储帐户中用于存储 IIS 日志的 blob 容器的名称。|   
-|**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
+|**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求的日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
 |**数据源**|要监视的目录的列表。|
 
 

@@ -22,7 +22,7 @@ ms.locfileid: "53186423"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>查看或分析使用 Log Analytics 日志搜索收集的数据
 
-在 Log Analytics 中，可通过构建查询利用日志搜索来分析收集的数据，也可使用预先存在的仪表板，可使用最有价值的搜索图形视图来自定义该仪表板。  定义从 Azure VM 和活动日志中的操作数据收集之后，可通过本教程了解如何：
+在 Log Analytics 中，可通过构建查询利用日志搜索来分析收集的数据，也可使用预先存在的仪表板，可使用最有价值的搜索图形视图来自定义该仪表板。  定义了如何从 Azure VM 和活动日志中收集操作数据之后，可通过本教程了解如何：
 
 > [!div class="checklist"]
 > * 对事件数据执行简单搜索，并使用功能来修改和筛选结果 

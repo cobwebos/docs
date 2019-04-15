@@ -91,7 +91,7 @@ ms.locfileid: "59361872"
 | Azure 服务部署版本管理参与者 | 通过 Azure 服务部署进行部署的服务的参与者角色。 |
 | [数据清除程序](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#data-purger) | 清除个人数据的特殊角色。 有关更多信息，请参阅我们的[个人数据指南](https://docs.microsoft.com/azure/application-insights/app-insights-customer-data)。   |
 | ExpressRoute 管理员 | 可以创建删除和管理快速路由。|
-| [Log Analytics 参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志集合、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。  |
+| [Log Analytics 参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-contributor) | Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。  |
 | [Log Analytics 读者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#log-analytics-reader) | Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 |
 | masterreader | 允许用户查看所有内容，但不能进行更改。 |
 | [监视参与者](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#monitoring-contributor) | 允许读取所有监视数据并更新监视设置。 |

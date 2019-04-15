@@ -23,7 +23,7 @@ ms.locfileid: "54901456"
 
 了解如何创建在文件上传到 Azure Blob 存储或在 Azure Blob 存储中更新时触发的函数。
 
-![在日志中查看消息。](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
+![查看日志中的消息。](./media/functions-create-storage-blob-triggered-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -102,7 +102,7 @@ ms.locfileid: "54901456"
 
 1. 返回到函数日志并验证是否已读取 blob。
 
-   ![在日志中查看消息。](./media/functions-create-storage-blob-triggered-function/functions-blob-storage-trigger-view-logs.png)
+   ![查看日志中的消息。](./media/functions-create-storage-blob-triggered-function/functions-blob-storage-trigger-view-logs.png)
 
     >[!NOTE]
     > 当 Function App 在默认消耗计划中运行时，添加或更新 blob 与触发函数之间可能会有多达几分钟的延迟。 如果需要在 blob 触发的函数中降低延迟，请考虑在应用服务计划中运行 Function App。

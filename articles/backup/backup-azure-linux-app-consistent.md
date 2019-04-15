@@ -11,7 +11,7 @@ ms.date: 1/12/2018
 ms.author: anuragm
 ms.openlocfilehash: a81c0b9c87db85771fcecab87c6b9ac88dcbd472
 ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/18/2018
 ms.locfileid: "53581838"
@@ -72,7 +72,7 @@ ms.locfileid: "53581838"
 
 ## <a name="troubleshooting"></a>故障排除
 
-编写操作前脚本和操作后脚本时，确保添加相应的日志记录，并查看脚本日志来解决任何脚本问题。 如果运行脚本时仍然遇到问题，请参阅下表中的详细信息。
+编写操作前脚本和操作后脚本时，请确保添加相应的日志记录，并查看脚本日志来解决任何脚本问题。 如果运行脚本时仍然遇到问题，请参阅下表中的详细信息。
 
 | 错误 | 错误消息 | 建议的操作 |
 | ------------------------ | -------------- | ------------------ |

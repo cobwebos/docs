@@ -24,7 +24,7 @@ ms.locfileid: "57444253"
 ---
 # <a name="tutorial-debug-a-java-application-deployed-on-a-local-service-fabric-cluster"></a>教程：调试本地 Service Fabric 群集上部署的 Java 应用程序
 
-本教程是一个系列中的第二部分。 其中介绍了如何使用适用于 Service Fabric 应用程序的 Eclipse 来附加远程调试器。 此外，介绍如何将运行中应用程序发出的日志重定向到方便开发人员处理的位置。
+本教程是一个系列中的第二部分。 其中介绍了如何使用适用于 Service Fabric 应用程序的 Eclipse 来附加远程调试器。 此外，还介绍如何将运行的应用程序发出的日志重定向到方便开发人员处理的位置。
 
 在此系列教程中，你会学习如何：
 > [!div class="checklist"]

@@ -15,7 +15,7 @@ ms.date: 02/12/2019
 ms.author: bwren
 ms.openlocfilehash: c80736dcd8be0c7ff3aae850aaaf9659f47daf36
 ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2019
 ms.locfileid: "56234786"
@@ -89,7 +89,7 @@ Azure Monitor 中的自定义日志数据源可以从 Windows 和 Linux 计算�
 | 说明 | 路径 |
 |:--- |:--- |
 | Windows 代理上的 *C:\Logs* 中带 .txt 扩展名的所有文件 |C:\Logs\\\*.txt |
-| Windows 代理上的 *C:\Logs* 中名称以 log 开头并带 .txt 扩展名的所有文件 |C:\Logs\log\*.txt |
+| Windows 代理上的 *C:\Logs* 中具有以 log 开头的名称和 .txt 扩展名的所有文件 |C:\Logs\log\*.txt |
 | Linux 代理上的 */var/log/audit* 中带 .txt 扩展名的所有文件 |/var/log/audit/*.txt |
 | Linux 代理上的 */var/log/audit* 中名称以 log 开头并带 .txt 扩展名的所有文件 |/var/log/audit/log\*.txt |
 
@@ -119,7 +119,7 @@ Azure Monitor 开始从自定义日志收集后，它的记录将可用于日志
 ## <a name="removing-a-custom-log"></a>删除自定义日志
 在 Azure 门户中使用以下过程删除以前定义的自定义日志。
 
-1. 从工作区的“高级设置”中的“数据”菜单中选择“自定义日志”，列出所有自定义日志。
+1. 从工作区的“高级设置”中的“数据”菜单中选择“自定义日志”，以便列出所有自定义日志。
 2. 单击要删除的自定义日志旁边的“删除”。
 
 

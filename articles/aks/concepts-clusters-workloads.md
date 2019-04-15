@@ -52,7 +52,7 @@ Kubernetes 群集分为两个组件：
 
 AKS 提供单租户群集主和专用 API 服务器，计划程序等。由你来定义节点的数量和大小，Azure 平台配置群集主机与节点之间的安全通信。 通过 Kubernetes API（例如 `kubectl` 或 Kubernetes 仪表板）实现与群集主机之间的交互。
 
-此托管的群集主机意味着无需配置某些组件，如高度可用的*etcd*存储区，但也意味着不能直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主日志。
+此托管的群集主机意味着无需配置某些组件，如高度可用的*etcd*存储区，但也意味着不能直接访问群集主机。 通过 Azure CLI 或 Azure 门户安排 Kubernetes 升级，先升级群集主机，然后升级节点。 要解决可能出现的问题，可以通过 Azure Monitor 日志查看群集主服务器日志。
 
 如果需要以特定方式配置群集主机或直接对其进行访问，可以使用 [aks-engine][aks-engine] 部署自己的 Kubernetes 群集。
 

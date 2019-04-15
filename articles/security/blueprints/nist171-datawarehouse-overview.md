@@ -37,7 +37,7 @@ SQL Server 负载均衡器将管理 SQL 流量以确保高性能。 此参考体
 
 该解决方案使用 Azure 存储帐户。客户可将存储帐户配置为使用存储服务加密，以维持静态数据的机密性。 Azure 会在客户选择的数据中心内存储三个数据副本，以提供复原能力。 异地冗余存储可确保将数据复制到数百英里之外的辅助数据中心，并在该数据中心内再次存储为三个副本。 此安排可防止客户主要数据中心发生的不利事件导致数据丢失。
 
-为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户可同时将这两个监视服务配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
+为了增强安全性，将通过 Azure 资源管理器以资源组的形式管理此解决方案中的所有资源。 Azure Active Directory (Azure AD) 基于角色的访问控制 (RBAC) 用于控制对已部署资源的访问。 这些资源包括 Azure Key Vault 中的客户密钥。 通过 Azure 安全中心和 Azure Monitor 监视系统运行状况。 客户可将这两个监视服务均配置为捕获日志。 系统运行状况在一个仪表板中显示，方便使用。
 
 VM 可作为管理守护主机。 它可为管理员提供安全连接以访问部署的资源。 数据将通过此管理守护主机加载到临时区域。 我们建议配置 VPN 或 Azure ExpressRoute 连接，以便进行管理和将数据导入参考体系结构子网。
 
@@ -134,7 +134,7 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 - Key Vault 中的所有密钥和机密都有过期日期。
 - Key Vault 中的所有密钥受专用硬件安全模块的保护。 密钥类型是硬件安全模块保护的 2048 位 RSA 密钥。
 - 使用 RBAC 可向所有用户和标识授予最低要求的权限。
-- 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
+- Key Vault 的诊断日志已启用，其保留期至少为 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
 **修补程序管理**：作为此参考体系结构的一部分部署的 Windows Vm 默认情况下从 Windows 更新服务接收自动更新配置。 此解决方案还包括 [Azure 自动化](https://docs.microsoft.com/azure/automation/automation-intro)服务，可以在需要时创建更新部署，以修补 VM。
@@ -158,7 +158,7 @@ VM 可作为管理守护主机。 它可为管理员提供安全连接以访问�
 
 Azure 服务广泛记录系统和用户活动以及系统运行状况：
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志，以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
+- **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、存储日志、密钥保管库审核日志以及 Azure 应用程序网关访问和防火墙日志。 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 用户可以配置多达 730 天的保留期，以满足其特定要求。
 
 **Azure Monitor 日志**：这些日志合并在[Azure Monitor 日志](https://azure.microsoft.com/services/log-analytics/)进行处理、 存储和仪表板报告。 收集数据后，会针对 Log Analytics 工作区中的每种数据类型将数据整理到单独的表中。 如此一来，无论数据的原始源如何，所有数据都可以一起分析。 安全中心与 Azure Monitor 日志集成。 客户可以使用 Kusto 查询来访问其安全事件数据并将其与其他服务中的数据。
 

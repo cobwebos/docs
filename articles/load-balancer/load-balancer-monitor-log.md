@@ -32,7 +32,7 @@ ms.locfileid: "57847138"
 * **运行状况探测日志：** 可以使用此日志查看运行状况探测器检测到的问题，例如后端池中由于运行状况探测失败未从负载均衡器接收请求的实例数。 当运行状况探测状态发生更改时，将写入此日志。
 
 > [!IMPORTANT]
-> Azure 监视器将记录当前仅适用于公共基本负载均衡器。 日志仅适用于 Resource Manager 部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
+> Azure 监视器将记录当前仅适用于公共基本负载均衡器。 日志仅适用于在资源管理器部署模型中部署的资源。 不能将日志用于经典部署模型中的资源。 有关部署模型的详细信息，请参阅[了解 Resource Manager 部署和经典部署](../azure-resource-manager/resource-manager-deployment-model.md)。
 
 ## <a name="enable-logging"></a>启用日志记录
 
@@ -55,7 +55,7 @@ ms.locfileid: "57847138"
 7. 在“日志”下，选择现有存储帐户或创建新存储帐户。 使用滑块来确定事件数据值得在事件日志中存储的天数。 
 8. 单击“ **保存**”。
 
-诊断将保存在指定存储帐户的表存储中。 如果未保存日志，则是因为没有生成相关日志。
+诊断将保存在指定存储帐户的表存储中。 如果日志未保存，这是因为没有生成相关日志。
 
 ![门户 - 诊断日志](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 

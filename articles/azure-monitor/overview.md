@@ -75,7 +75,7 @@ Azure Monitor 可以使用[数据收集器 API](platform/data-collector-api.md) 
 ![App Insights](media/overview/app-insights.png)
 
 ### <a name="azure-monitor-for-containers"></a>用于容器的 Azure Monitor
-[用于容器的 Azure Monitor](insights/container-insights-overview.md) 功能旨在监视部署到 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 它通过指标 API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集这些指标和日志。
+[用于容器的 Azure Monitor](insights/container-insights-overview.md) 功能旨在监视部署到 Azure Kubernetes 服务 (AKS) 上托管的托管 Kubernetes 群集的容器工作负荷的性能。 它通过指标 API 从 Kubernetes 中提供的控制器、节点和容器收集内存和处理器指标，来提供性能可见性。 容器日志也会被收集。  从 Kubernetes 群集启用监视后，将通过适用于 Linux 的 Log Analytics 代理的容器化版本自动收集这些指标和日志。
 
 ![容器运行状况](media/overview/container-insights.png)
 

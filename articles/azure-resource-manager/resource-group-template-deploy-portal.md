@@ -135,7 +135,7 @@ ms.locfileid: "58652444"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要查看审核日志，请参阅[使用 Resource Manager 进行审核操作](./resource-group-audit.md)。
+- 若要查看审核日志，请参阅[使用资源管理器审核操作](./resource-group-audit.md)。
 - 若要排查部署错误，请参阅[查看部署操作](./resource-manager-deployment-operations.md)。
 - 若要从部署或资源组中导出模板，请参阅[导出 Azure 资源管理器模板](./manage-resource-groups-portal.md#export-resource-groups-to-templates)。
 - 若要跨多个区域安全地推出服务，请参阅 [Azure 部署管理器](./deployment-manager-overview.md)。

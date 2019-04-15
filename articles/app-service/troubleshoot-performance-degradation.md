@@ -112,7 +112,7 @@ ms.locfileid: "57884216"
 ##### <a name="use-application-insights-profiler"></a>使用 Application Insights Profiler
 可以启用 Application Insights Profiler 开始捕获详细的性能跟踪。 需要调查过去发生的问题时，可以访问最多五日天前捕获的跟踪。 只要有权访问 Azure 门户中应用的 Application Insights 资源，就可以选择此选项。
 
-Application Insights Profiler 提供每个 Web 调用响应时间的统计信息，以及指示哪一行代码导致响应缓慢的跟踪信息。 有时应用服务应用运行速度慢，因为某些代码不是以高性能方式编写的。 示例包括可并行运行的顺序代码和不需要的数据库锁争用。 删除代码中的这些瓶颈会提供应用性能，但是如果不设置详细的跟踪和日志，则很难检测到这些瓶颈。 Application Insights Profiler 收集的跟踪信息有助于识别减慢应用程序速度的代码行，还有助于为应用服务应用解决这一挑战。
+Application Insights Profiler 提供每个 Web 调用响应时间的统计信息，以及指示哪一行代码导致响应缓慢的跟踪信息。 有时应用服务应用运行速度慢，因为某些代码不是以高性能方式编写的。 示例包括可并行运行的顺序代码和不需要的数据库锁争用。 删除代码中的这些瓶颈会提高应用性能，但是如果不设置详细的跟踪和日志，则很难检测到这些瓶颈。 Application Insights Profiler 收集的跟踪信息有助于识别减慢应用程序速度的代码行，还有助于为应用服务应用解决这一挑战。
 
  有关详细信息，请参阅[使用 Application Insights 分析 Azure 应用服务中的实时应用](../azure-monitor/app/profiler.md)。
 

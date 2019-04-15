@@ -109,7 +109,7 @@ Azure 安全中心每天对 Windows 和 Linux VM 进行监控，以找出缺少�
 
 ### <a name="vm-crashes"></a>VM 故障
 
-VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能触发来宾操作系统内的 Bug 检查。 为确定故障原因，请查看系统和应用程序日志（适用于 Windows VM）和串行日志（适用于 Linux VM）。
+VM 可能因自身问题重启。 在 VM 上运行的工作负荷或角色可能触发来宾操作系统内的 Bug 检查。 为帮助确定故障原因，请查看系统和应用程序日志（适用于 Windows VM）和串行日志（适用于 Linux VM）。
 
 ### <a name="storage-related-forced-shutdowns"></a>与存储相关的强制关机
 

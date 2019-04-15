@@ -17,7 +17,7 @@ ms.date: 08/02/2018
 ms.author: rogirdh
 ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
 ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/16/2019
 ms.locfileid: "56327504"
@@ -181,7 +181,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 - 随着读取密集型和写入密集型操作的 I/O 块的大小增大，添加更多数据磁盘。
 - 为大型顺序进程增加块大小。
 - 使用数据压缩来降低 I/O（针对数据和索引）。
-- 将恢复日志、system、temps 和 undo TS 分隔在不同的数据磁盘上。
+- 将重做日志、system、temps 和 undo TS 分隔在不同的数据磁盘上。
 - 不要将任何应用程序文件放在默认 OS 磁盘 (/dev/sda) 中。 这些磁盘未针对快速 VM 启动时间进行优化，可能无法为应用程序提供良好的性能。
 
 ### <a name="disk-cache-settings"></a>磁盘缓存设置

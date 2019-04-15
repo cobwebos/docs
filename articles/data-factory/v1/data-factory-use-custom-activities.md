@@ -640,7 +640,7 @@ test custom activity Microsoft test custom activity Microsoft
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
     ```
-6. 使用 [Azure 门户][azure-preview-portal] 或 Azure PowerShell cmdlet 监视数据工厂、管道和数据集。 将显示来自日志（特别是 user-0.log）中自定义活动的代码中 **ActivityLogger** 的消息，可从门户或使用 cmdlet 下载日志。
+6. 使用 [Azure 门户][azure-preview-portal] 或 Azure PowerShell cmdlet 监视数据工厂、管道和数据集。 可在日志（特别是 user-0.log）中看到来自自定义活动的代码中 **ActivityLogger** 的消息，可从门户或使用 cmdlet 下载该日志。
 
    ![下载自定义活动的日志][image-data-factory-download-logs-from-custom-activity]
 

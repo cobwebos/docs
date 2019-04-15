@@ -194,7 +194,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 例如，Windows 事件系统日志是适用于 VM 的一个诊断日志类别，而 Blob、表和队列日志是适用于存储帐户的诊断日志类别。
 
-诊断日志不同于[活动日志（以前称为审核日志或操作日志）](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
+诊断日志不同于[活动日志（以前称为“审核日志”或“操作日志”）](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。 活动日志提供针对订阅中的资源执行的操作的深入信息。 诊断日志提供资源本身执行的操作的深入信息。
 
 ### <a name="metrics"></a>度量值
 
@@ -224,7 +224,7 @@ Azure Monitor 提供有关特定类型资源的信息的导航。 它对来自 A
 
 网络观察程序目前提供以下功能：
 
--   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">审核日志</a> - 记录网络配置过程中执行的操作。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。 有关审核日志的详细信息，请参阅“使用 Resource Manager 执行审核操作”。 针对所有网络资源执行的操作都有相应的审核日志。
+-   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview">审核日志</a> - 记录网络配置过程中执行的操作。 可在 Azure 门户中查看，或者使用 Power BI 等 Microsoft 工具或第三方工具检索这些日志。 可通过门户、PowerShell、CLI 和 REST API 获取审核日志。 有关审核日志的详细信息，请参阅“使用资源管理器审核操作”。 针对所有网络资源执行的操作都有相应的审核日志。
 
 
 -   <a href="https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview">IP 流验证</a> - 根据流信息 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果网络安全组拒绝了数据包，则返回拒绝该数据包的规则和网络安全组。

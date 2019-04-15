@@ -26,7 +26,7 @@ ms.locfileid: "59521469"
 
 ![Azure 流分析仪表板上的“输入”磁贴](media/stream-analytics-malformed-events/stream-analytics-inputs-tile.png)
 
-若要查看详细信息，请启用诊断日志来查看警告详细信息。 对于格式不正确的输入事件，执行日志包含具有如下所示消息的条目：“消息：无法从资源的输入的事件反序列化\<blob URI > 为 json"。 
+若要查看详细信息，请启用诊断日志来查看警告详细信息。 对于格式不正确的输入事件，执行日志包含一条类似于以下内容的消息：“消息：无法从资源的输入的事件反序列化\<blob URI > 为 json"。 
 
 ### <a name="troubleshooting-steps"></a>疑难解答步骤
 

@@ -381,7 +381,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 |           | access_denied | 资源所有者或授权服务器拒绝了请求。 |  |
 |           | unsupported_response_type | 授权服务器不支持使用此方法获取访问令牌。 |  |
 |           | invalid_scope | 请求的范围无效、未知或格式不正确。 |  |
-| 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅 \<文件路径\> 中的日志 | 验证是否在 VM 上启用了 Azure 资源的托管标识。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅前面 REST 部分中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](services-support-msi.md)。
+| 500 内部服务器错误 | 未知 | 无法从 Active Directory 检索令牌。 有关详细信息，请参阅*\<文件路径\>* 中的日志 | 验证是否在 VM 上启用了 Azure 资源的托管标识。 如需 VM 配置方面的帮助，请参阅[使用 Azure 门户在 VM 上配置 Azure 资源的托管标识](qs-configure-portal-windows-vm.md)。<br><br>另请检查是否已正确设置 HTTP GET 请求 URI 的格式，尤其是查询字符串中指定的资源 URI。 有关示例，请参阅前面 REST 部分中的“示例请求”；有关服务的列表及其相应资源 ID，请参阅[支持 Azure AD 身份验证的 Azure 服务](services-support-msi.md)。
 
 ## <a name="retry-guidance"></a>重试指南 
 

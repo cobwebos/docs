@@ -42,7 +42,7 @@ ms.locfileid: "58359889"
 
 ## <a name="connector-errors"></a>连接器错误
 
-如果注册在连接器向导安装期间失败，有两种方法可查看失败原因。 查看**应用程序和服务日志\Microsoft\AadApplicationProxy\Connector\Admin** 下的事件日志，或运行以下 Windows PowerShell 命令：
+如果注册在连接器向导安装期间失败，有两种方法可查看失败原因。 查看“应用程序和服务日志\Microsoft\AadApplicationProxy\Connector\Admin”下的事件日志，或运行以下 Windows PowerShell 命令：
 
     Get-EventLog application –source "Microsoft AAD Application Proxy Connector" –EntryType "Error" –Newest 1
 

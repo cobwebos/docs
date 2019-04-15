@@ -70,7 +70,7 @@ ms.locfileid: "58100643"
 以下部分通过示例演示 Splunk 和 Azure Monitor 如何使用不同的运算符。
 
 > [!NOTE]
-> 在以下示例中，Splunk 字段 _rule_ 映射到 Azure Monitor 中的某个表，Splunk 的默认时间戳映射到 Azure Monitor 的 _ingestion_time()_ 列。
+> 在以下示例中，Splunk 字段 _rule_ 映射到 Azure Monitor 中的某个表，Splunk 的默认时间戳映射到 Logs Analytics 的 _ingestion_time()_ 列。
 
 ### <a name="search"></a>搜索
 在 Splunk 中，可以省略 `search` 关键字，并指定不带引号的字符串。 在 Azure Monitor 中，必须在每个查询的开头使用 `find`，不带引号的字符串是列名，查找值必须是带引号的字符串。 

@@ -10,7 +10,7 @@ ms.date: 8/21/2018
 ms.author: raynew
 ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
 ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/14/2019
 ms.locfileid: "56268866"
@@ -286,7 +286,7 @@ Azure 备份失败后，会在 20 分钟内引发警报。
 
 2. 如果此进程未运行，请打开“控制面板”，并浏览服务列表。 启动或重启 **Microsoft Azure 恢复服务管理代理**。
 
-    有关详细信息，请浏览以下位置中的日志：<br/>
+    有关详细信息，请浏览位于以下位置的日志：<br/>
    `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` 例如：<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 

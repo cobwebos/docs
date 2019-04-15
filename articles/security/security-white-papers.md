@@ -29,7 +29,7 @@ ms.locfileid: "57402370"
 |[在 Azure 上开发安全的应用程序](abstract-develop-secure-apps.md)|有关开发云应用程序时，你应该在软件开发生命周期的每个阶段考虑的安全问题和控制的一般指南。|
 |[高级威胁检测](azure-threat-detection.md)|指导你完成在威胁漏洞评估、诊断和分析方面的 Azure 方法。 介绍了 Microsoft 如何使用高级威胁检测机制来保护平台。 此外，还介绍了 Microsoft 如何在面向公众的功能和服务中提供这些机制。|
 |[Azure 静态数据加密](azure-security-encryption-atrest.md)|重点介绍如何在 Azure 和参与数据保护实现的各个组件中对数据进行静态保护。 查看不同密钥管理保护方法的优点和缺点。|
-|[Azure 日志记录和审核](azure-log-audit.md)|介绍了如何生成、收集和分析 Azure 上托管的服务的安全日志。 这些日志可以帮助你获得 Azure 部署的安全见解。 |
+|[Azure 日志记录和审核](azure-log-audit.md)|介绍了如何生成、收集和分析 Azure 上托管的服务的安全日志。 这些日志可以帮助你获得对 Azure 部署的安全见解。 |
 |[Azure 网络安全](abstract-azure-network-security.md)|介绍各种网络控件，通过配置这些控件可增强 Azure 中部署的解决方案的安全性。 重点介绍面向客户的网络安全控件。|
 |[Azure Functions 和无服务器平台安全性](https://azure.microsoft.com/mediahandler/files/resourcefiles/azure-functions-serverless-platform-security/Microsoft%20Serverless%20Platform.pdf)|这篇可下载的白皮书介绍了无服务器计算的优势，同时提供了 Azure 上下文中的安全注意事项和缓解措施。 |
 |[Microsoft Azure 中的容器安全性](abstract-container-security-microsoft-azure.md)|介绍容器、容器部署和管理，以及本机平台服务。 它还介绍 Azure 平台上使用容器出现的运行时安全问题。 |

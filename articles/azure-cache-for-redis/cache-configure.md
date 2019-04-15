@@ -76,7 +76,7 @@ ms.locfileid: "58849964"
 
 ### <a name="activity-log"></a>活动日志
 
-单击“活动日志”可查看已对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关如何使用审核日志的详细信息，请参阅 [Audit operations with Resource Manager](../azure-resource-manager/resource-group-audit.md)（使用 Resource Manager 执行审核操作）。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
+单击“活动日志”可查看已对缓存执行的操作。 也可以使用筛选来展开此视图，以包含其他资源。 有关如何使用审核日志的详细信息，请参阅[使用资源管理器审核操作](../azure-resource-manager/resource-group-audit.md)。 有关监视 Azure Redis 缓存事件的详细信息，请参阅[操作和警报](cache-how-to-monitor.md#operations-and-alerts)。
 
 ### <a name="access-control-iam"></a>访问控制 (IAM)
 

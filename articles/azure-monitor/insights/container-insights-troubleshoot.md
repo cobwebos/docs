@@ -78,7 +78,7 @@ ms.locfileid: "58577029"
     omsagent-fkq7g                      1/1       Running   0          1d 
     ```
 
-4. 检查代理日志。 部署容器化代理时，它通过运行 OMI 命令执行快速检查，并显示代理和提供程序的版本。 
+4. 查看代理日志。 部署容器化代理时，它通过运行 OMI 命令执行快速检查，并显示代理和提供程序的版本。 
 
 5. 若要验证代理是否已成功载入，请运行以下命令：`kubectl logs omsagent-484hw --namespace=kube-system`
 

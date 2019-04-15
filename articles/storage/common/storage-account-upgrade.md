@@ -131,7 +131,7 @@ az storage account update -g <resource-group> -n <storage-account> --set kind=St
 
 #### <a name="capacity-costs"></a>容量费用
 
-容量度量值表 $MetricsCapacityBlob 中行键为 'data' 的最新条目显示了用户数据所占用的存储容量。 容量度量值表 $MetricsCapacityBlob 中行键为 'analytics' 的最新条目显示了分析日志所占用的存储容量。
+容量度量值表 $MetricsCapacityBlob 中行键为 'data' 的最新条目显示了用户数据所占用的存储容量。 容量指标表 $MetricsCapacityBlob 中行键为 'analytics' 的最新条目显示了分析日志所占用的存储容量。
 
 用户数据和分析日志（如果已启用）所占用的这个总容量就可以用来估算在存储帐户中存储数据的费用。 也可以使用相同方法来估算 GPv1 存储帐户中的存储成本。
 

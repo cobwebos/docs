@@ -1,6 +1,6 @@
 ---
-title: 故障排除：下载的 Azure Active Directory 活动日志中缺少数据 | Microsoft 文档
-description: 为提供了一种解决方法，解决在下载的 Azure Active Directory 活动日志中缺少数据的问题。
+title: 故障排除：下载的 Azure Active Directory 活动日志中缺少数据 | Microsoft Docs
+description: 提供了一种解决方法，用于解决在下载的 Azure Active Directory 活动日志中缺少数据的问题。
 services: active-directory
 documentationcenter: ''
 author: MarkusVi

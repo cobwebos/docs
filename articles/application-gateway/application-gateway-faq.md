@@ -315,9 +315,9 @@ WAF 目前支持 CRS [2.2.9](application-gateway-crs-rulegroups-rules.md#owasp22
 
 ## <a name="diagnostics-and-logging"></a>诊断和日志记录
 
-### <a name="what-types-of-logs-are-available-with-application-gateway"></a>应用程序网关可以使用哪些类型的日志？
+### <a name="what-types-of-logs-are-available-with-application-gateway"></a>应用程序网关有哪些类型的日志可供使用？
 
-应用程序网关可以使用三种日志。 有关这些日志和其他诊断功能的详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
+应用程序网关有三种日志可供使用。 有关这些日志和其他诊断功能的详细信息，请参阅[应用程序网关的后端运行状况、诊断日志和指标](application-gateway-diagnostics.md)。
 
 * **ApplicationGatewayAccessLog**：访问日志包含提交到应用程序网关前端的每个请求。 数据包括调用方的 IP、请求的 URL、响应延迟、返回代码，以及传入和传出的字节数。每隔 300 秒会收集一次访问日志。 此日志包含每个应用程序网关实例的一条记录。
 * **ApplicationGatewayPerformanceLog**：性能日志捕获每个实例的性能信息，包括提供的请求总数、吞吐量（以字节为单位）、失败的请求计数、正常和不正常的后端实例计数。

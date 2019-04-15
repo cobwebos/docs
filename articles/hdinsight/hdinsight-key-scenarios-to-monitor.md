@@ -11,7 +11,7 @@ ms.date: 11/06/2018
 ms.author: arindamc
 ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
 ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/21/2018
 ms.locfileid: "53742467"
@@ -77,7 +77,7 @@ YARN 队列管理器页的左侧显示队列的列表，以及分配给每个队
 
 如果使用 Azure 存储，有关监视与存储相关问题（包括限制）的信息，请参阅[监视、诊断和排查 Microsoft Azure 存储问题](https://docs.microsoft.com/azure/storage/storage-monitoring-diagnosing-troubleshooting)。
 
-如果群集的后备存储为 Azure Data Lake Storage (ADLS)，产生限制的原因很可能是因为带宽限制。 在这种情况下，限制可通过观察任务日志中的限制错误来确定。 对于 ADLS，请参阅这些文章中相应服务的限制部分：
+如果群集的后备存储为 Azure Data Lake Storage (ADLS)，产生限制的原因很可能是因为带宽限制。 在这种情况下，可通过观察任务日志中的限制错误来确定限制。 对于 ADLS，请参阅这些文章中相应服务的限制部分：
 
 * [Apache Hive on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-hive.md)
 * [MapReduce on HDInsight 和 Azure Data Lake Storage 性能优化指南](../data-lake-store/data-lake-store-performance-tuning-mapreduce.md)

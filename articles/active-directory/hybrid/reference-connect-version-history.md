@@ -526,7 +526,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 * 修复了导致升级后出现不必要完整同步步骤的问题。 一般情况下，如果现成的同步规则发生了更改，则升级后需要运行完整同步步骤。 此问题的起因是：更改检测逻辑中出现错误，当遇到具有换行字符的同步规则表达式时，此错误导致错误地检测到更改。 已向同步规则表达式中插入了换行符来提升可读性。
 * 修复了可能导致自动升级后 Azure AD Connect 服务器无法正常工作的问题。 此问题会影响 1.1.443.0 版本（或更早版本）的 Azure AD Connect 服务器。 有关此问题的详细信息，请参阅文章[自动升级后 Azure AD Connect 无法正常工作](https://support.microsoft.com/help/4038479/azure-ad-connect-is-not-working-correctly-after-an-automatic-upgrade)。
 * 修复了遇到错误后导致每 5 分钟重试自动升级的问题。 通过此次修复，遇到错误时，自动升级重试次数将指数式下降。
-* 修复了密码同步事件 611 在 Windows 应用程序事件日志中显示不正确（显示为“信息”而不是“错误”）的问题。 只要密码同步出现问题，便会生成事件 611。 
+* 修复了密码同步事件 611 在 Windows 应用程序事件日志中错误显示（显示为“信息”而不是“错误”）的问题。 只要密码同步出现问题，便会生成事件 611。 
 * 修复了 Azure AD Connect 向导中允许在未选择组写回所需的 OU 的情况下启用组写回功能的问题。
 
 #### <a name="new-features-and-improvements"></a>新增功能和改进
@@ -901,7 +901,7 @@ AD FS 管理
 
 Azure AD Connect 同步
 * Get-ADSyncScheduler cmdlet 现在可返回一个名为 SyncCycleInProgress 的新的布尔属性。 如果返回的值为 true，则意味着正在进行计划的同步周期。
-* 已用于存储 Azure AD Connect 安装和安装程序日志的目标文件夹从 %localappdata%\AADConnect 移至 %programdata%\AADConnect，以提高日志文件的访问性。
+* 已用于存储 Azure AD Connect 安装和安装程序日志的目标文件夹从 %localappdata%\AADConnect 移至 %programdata%\AADConnect，以提高日志文件的可访问性。
 
 AD FS 管理
 * 添加了对更新 AD FS 场 SSL 证书的支持。

@@ -31,7 +31,7 @@ ms.locfileid: "58351875"
 * **Azure 存储分析**。 有关 Azure 存储的度量值和日志记录，请参阅 [Azure Storage Analytics](/rest/api/storageservices/Storage-Analytics)（Azure 存储分析）。
 
   * **存储度量值**用于跟踪存储帐户的事务度量值和容量度量值。 使用度量值，可以确定应用程序如何根据各种不同的度量值执行。 若要深入了解存储分析跟踪的度量值类型，请参阅 [Storage Analytics Metrics Table Schema](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema)（存储分析度量值表架构）。
-  * **存储日志记录**可在服务器端日志中记录发送到 Azure 存储服务的每个请求。 日志用于跟踪每个请求的详细数据，包括执行的操作、操作的状态和延迟信息。 若要深入了解存储分析写入日志的请求和响应数据，请参阅 [Storage Analytics Log Format](/rest/api/storageservices/Storage-Analytics-Log-Format)（存储分析日志格式）。
+  * **存储日志记录**可在服务器端日志中记录发送到 Azure 存储服务的每个请求。 日志用于跟踪每个请求的详细数据，包括执行的操作、操作的状态和延迟信息。 若要深入了解存储分析写入到日志的请求和响应数据，请参阅 [Storage Analytics Log Format](/rest/api/storageservices/Storage-Analytics-Log-Format)（存储分析日志格式）。
 
 * **Azure 门户**。 可以在 [Azure 门户](https://portal.azure.com)中配置存储帐户的指标和日志记录。 还可以查看显示应用程序在各时间段执行情况的图表和图形，以及配置警报，以便在应用程序的特定度量值不同于预期时接收通知。
 
@@ -46,7 +46,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 在此情况下，我们将低成功率视为低于 100% 的任何状态。 但是，可以根据自己的需求选择不同的度量值级别。 我们建议在测试期间，为关键性能度量值建立基线容差。 例如，可以根据测试，确定应用程序应该持续保持 90% 或 85% 的成功率。 如果度量值数据显示应用程序与该数字有偏差，则可以调查导致成功率上升的原因。
 
-对于我们的示例方案，一旦我们建立了成功率度量值低于 100%，我们会检查日志以查找与度量值相关的错误，并使用它们来找出导致较低成功率的原因。 我们将专门介绍 400 范围内的错误。 然后，我们将更细致地调查 404（未找到）错误。
+对于我们的示例方案，一旦我们确定了成功率指标低于 100%，我们会检查日志以查找与指标相关的错误，并使用它们来找出导致较低成功率的原因。 我们将专门介绍 400 范围内的错误。 然后，我们将更细致地调查 404（未找到）错误。
 
 ### <a name="some-causes-of-400-range-errors"></a>400 范围错误的某些原因
 以下示例中显示了对 Azure Blob 存储发出请求后返回的某些 400 范围错误示例和可能的原因。 其中的任何错误，以及 300 范围和 500 范围内的错误，可能会导致低成功率。
@@ -125,7 +125,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 
 首选，在 Azure 门户中导航到存储帐户。 默认情况下，包含“成功百分比”的监视图显示在帐户边栏选项卡上。 如果以前修改过此图表以显示不同指标，则请添加“成功百分比”指标。
 
-现在，监视图中会显示“成功百分比”，以及可能已添加的任何其他指标。 接下来要在 Message Analyzer 中通过分析日志进行调查，在此情况下，成功率百分比略低于 100%。
+现在，监视图中会显示“成功百分比”，以及可能已添加的任何其他指标。 接下来要通过在 Message Analyzer 中分析日志进行调查，在此情况下，成功率百分比略低于 100%。
 
 有关添加和自定义指标图表的更多详细信息，请参阅[自定义指标图表](storage-monitor-storage-account.md#customize-metrics-charts)。
 
@@ -241,14 +241,14 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 
 ![Azure 存储视图布局](./media/storage-e2e-troubleshooting/400-range-errors1.png)
 
-应用此筛选器后，可看到已从客户端日志中排除的行，因为客户端日志不包含 **StatusCode** 列。 首先，我们会检查服务器和网络跟踪日志，以找到 404 错误，然后我们会返回到客户端日志以检查导致它们的客户端操作。
+应用此筛选器后，可看到已从客户端日志中排除的行，因为客户端日志不包含 **StatusCode** 列。 首先，将检查服务器和网络跟踪日志，以找到 404 错误，然后会返回到客户端日志以检查导致它们的客户端操作。
 
 > [!NOTE]
 > 可以根据 **StatusCode** 列筛选，并仍显示所有三个日志（包括客户端日志）中的数据，前提是将表达式添加到包括日志条目的筛选器（状态代码为 null）。 若要构造此筛选器表达式，请使用：
 >
 > <code>&#42;StatusCode >= 400 or !&#42;StatusCode</code>
 >
-> 此筛选器返回所有行从客户端日志和仅从服务器日志和 HTTP 日志的行的状态代码大于 400。 如果将其应用到客户端请求 ID 和模块按分组视图布局，可以搜索或向下滚动到日志条目，以查找与其中表示所有三个日志。   
+> 此筛选器返回所有行从客户端日志和仅从服务器日志和 HTTP 日志的行的状态代码大于 400。 如果将其应用到按客户端请求 ID 和模块分组的视图布局，可以搜索日志条目或在日志条目中滚动，以查找显示了所有三个日志的客户端请求。   
 >
 >
 
@@ -273,13 +273,13 @@ Message Analyzer 的存储空间资产包括 Azure 存储视图布局，这是�
 
 下图显示了由于 Get Blob 不存在，而导致 Get Blob 操作生成 404 的特定请求。 请注意，为了显示相关数据，某些列已从标准视图中删除。
 
-![筛选的服务器和网络跟踪日志](./media/storage-e2e-troubleshooting/server-filtered-404-error.png)
+![筛选的服务器日志和网络跟踪日志](./media/storage-e2e-troubleshooting/server-filtered-404-error.png)
 
 接下来，我们将与此客户端请求 ID 与客户端日志数据相关联，以查看发生错误时客户端正在执行哪些操作。 可以为此会话显示一个新的分析网格视图，以在另一个选项卡中查看客户端日志数据：
 
 1. 首先，将 **ClientRequestId** 字段的值复制到剪贴板。 为此，可选择其中任意一行，找到 **ClientRequestId** 字段，右键单击数据值，并选择“复制 'ClientRequestId'”。
 2. 在工具栏功能区中，选择“新建查看器”，并选择“分析网格”打开新的选项卡。新选项卡会显示日志文件中的所有数据，且未应用分组、筛选或颜色规则。
-3. 在工具栏功能区中，选择“视图布局”，并选择“Azure 存储”部分下的“所有 .NET 客户端列”。 此视图布局显示客户端日志以及服务器和网络跟踪日志中的数据。 这些数据默认按 **MessageNumber** 列排序。
+3. 在工具栏功能区中，选择“视图布局”，并选择“Azure 存储”部分下的“所有 .NET 客户端列”。 此视图布局显示客户端日志以及服务器日志和网络跟踪日志中的数据。 这些数据默认按 **MessageNumber** 列排序。
 4. 接下来，搜索客户端请求 ID 的客户端日志。 在工具栏功能区中，选择“查找消息”，并在“查找”字段中指定客户端请求 ID 上的自定义筛选器。 对于筛选器，请使用以下语法指定自己的客户端请求 ID：
 
     ```
@@ -312,7 +312,7 @@ Message Analyzer 将查找并选择搜索条件匹配客户端请求 ID 的第�
 | 409（全部） |*StatusCode == 409 |All |
 | 低 PercentSuccess 或分析日志项包含事务状态为 ClientOtherErrors 的操作 |AzureStorageLog.RequestStatus == "ClientOtherError" |服务器 |
 | Nagle 警告 |((AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS) > (AzureStorageLog.ServerLatencyMS * 1.5)) 和 (AzureStorageLog.RequestPacketSize <1460) 和 (AzureStorageLog.EndToEndLatencyMS - AzureStorageLog.ServerLatencyMS >= 200) |服务器 |
-| 服务器和网络日志中的时间范围 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |服务器、网络 |
+| 服务器日志和网络日志中的时间范围 |#Timestamp   >= 2014-10-20T16:36:38 and #Timestamp <= 2014-10-20T16:36:39 |服务器、网络 |
 | 服务器日志中的时间范围 |AzureStorageLog.Timestamp >= 2014-10-20T16:36:38 和 AzureStorageLog.Timestamp <= 2014-10-20T16:36:39 |服务器 |
 
 ## <a name="next-steps"></a>后续步骤

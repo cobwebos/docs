@@ -51,7 +51,7 @@ ms.locfileid: "58662425"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-mesh-service-replica-show"></a>sfctl mesh service-replica show
 获取应用程序服务的给定副本。
@@ -74,7 +74,7 @@ ms.locfileid: "58662425"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

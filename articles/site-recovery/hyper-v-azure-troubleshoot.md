@@ -122,7 +122,7 @@ ms.locfileid: "58094171"
 
 ### <a name="vss-failing-inside-the-hyper-v-host"></a>VSS 在 Hyper-V 主机中失败
 
-1. 在事件日志中检查 VSS 错误和建议：
+1. 在事件日志中查找 VSS 错误和建议：
     - 在 Hyper-V 主机服务器上，通过“事件查看器” > “应用程序和服务日志” > “Microsoft” > “Windows” > “Hyper-V” > “管理”打开 Hyper-V 管理事件日志。
     - 检查是否有任何事件指示发生应用一致的快照失败。
     - 典型错误如下：“Hyper-V 无法为虚拟机 “XYZ” 生成 VSS 快照集:编写器遇到了非暂时性错误。 如果服务无响应，重启 VSS 服务可能会解决问题。”
@@ -143,7 +143,7 @@ ms.locfileid: "58094171"
 
 ## <a name="collect-replication-logs"></a>收集复制日志
 
-所有 Hyper-V 复制事件都记录在“应用程序和服务日志” > “Microsoft” > “Windows”下的“Hyper-V-VMMS\管理”日志中。 此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
+所有 Hyper-V 复制事件都记录在“应用程序和服务日志” > “Microsoft” > “Windows”下的 Hyper-V-VMMS\Admin 日志中。 此外，可按如下所示为 Hyper-V 虚拟机管理服务启用分析日志：
 
 1. 在事件查看器中显示分析和调试日志。 若要使日志可用，请在事件查看器中，单击“视图” > “显示分析和调试日志”。 分析日志显示在“Hyper-V-VMMS”下。
 2. 在“**操作**”窗格中，单击“**启用日志**”。 

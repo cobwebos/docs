@@ -1,6 +1,6 @@
 ---
 title: 查看 Azure Data Lake Storage Gen1 诊断日志 | Microsoft Docs
-description: '了解如何设置和访问 Azure Data Lake Storage Gen1 诊断日志 '
+description: '了解如何设置和访问 Azure Data Lake Storage Gen1 的诊断日志 '
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -48,7 +48,7 @@ ms.locfileid: "58877952"
 
         * 选择选项**发送到 Log Analytics**若要使用 Azure Monitor 服务分析生成的日志数据。 如果选择此选项，必须提供要用于执行日志分析的 Log Analytics 工作区的详细信息。 请参阅[查看或分析使用 Azure Monitor 日志搜索收集的数据](../azure-monitor/learn/tutorial-viewdata.md)有关使用 Azure Monitor 的详细信息记录。
      
-   * 指定是要获取审核日志还是请求日志，或者两者都获取。
+   * 指定是要获取审核日志还是请求日志，或者两者。
    * 指定数据必须保留的天数。 保留期仅在使用 Azure 存储帐户存档日志数据时才适用。
    * 单击“ **保存**”。
 

@@ -60,7 +60,7 @@ ms.locfileid: "58113446"
 
 ## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>即使用户已分配，审核日志还是显示他们已被跳过且未预配
 
-当用户在审核日志中显示为“已跳过”时，请务必阅读日志消息中的延伸详细信息，以确定原因。 以下为常见的原因和解决方法：
+当用户在审核日志中显示为“已跳过”时，请务必阅读日志消息中已扩展的详细信息，以确定原因。 以下为常见的原因和解决方法：
 
 - **已配置作用域筛选器**，**它根据属性值筛选用户**。 有关范围筛选器的详细信息，请参阅 <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>。
 

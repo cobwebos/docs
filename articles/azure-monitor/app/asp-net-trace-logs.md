@@ -1,5 +1,5 @@
 ---
-title: 在 Application Insights 中查看日志浏览 .NET 跟踪日志
+title: 在 Application Insights 中浏览 .NET 跟踪日志
 description: 搜索使用 Trace、NLog 或 Log4Net 生成的日志。
 services: application-insights
 documentationcenter: .net
@@ -43,7 +43,7 @@ ms.locfileid: "57552140"
    </configuration>
 ```
 
-## <a name="configure-application-insights-to-collect-logs"></a>配置 Application Insights 收集日志
+## <a name="configure-application-insights-to-collect-logs"></a>配置 Application Insights 以收集日志
 如果尚未执行此操作，**[向项目添加 Application Insights](../../azure-monitor/app/asp-net.md)**。 会看到一个选项以包括日志收集器。
 
 或者通过在解决方案资源管理器中右键单击项目**配置 Application Insights**。 选择“配置跟踪集合”选项。

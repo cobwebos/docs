@@ -10,7 +10,7 @@ ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: f7e21b805c64522005dce3e7d04aa158e1c21032
 ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2019
 ms.locfileid: "55892842"
@@ -86,7 +86,7 @@ Application Insights 接收器的示例配置：
 ## <a name="complete-sink-configuration-example"></a>完整的接收器配置示例
 下面是公共配置文件的完整示例。该文件
 1. 将所有错误都发送到 Application Insights（在 **DiagnosticMonitorConfiguration** 节点中指定）
-2. 此外，还会发送日志应用程序日志的详细级别日志（在 **Logs** 节点中指定）。
+2. 此外，还会发送应用程序日志的详细级别日志（在 **Logs** 节点中指定）。
 
 ```XML
 <WadCfg>

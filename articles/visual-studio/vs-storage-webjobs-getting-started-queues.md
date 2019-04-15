@@ -506,7 +506,7 @@ public class Program
 ## <a name="how-to-write-logs"></a>如何写入日志
 仪表板在两个位置显示日志：针对 Web 作业的页，以及针对特定 Web 作业调用的页。
 
-![WebJob 页中的日志](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
+![Web 作业页中的日志](./media/vs-storage-webjobs-getting-started-queues/dashboardapplogs.png)
 
 ![函数调用页中的日志](./media/vs-storage-webjobs-getting-started-queues/dashboardlogs.png)
 

@@ -16,7 +16,7 @@ ms.date: 02/22/2017
 ms.author: mareat
 ms.openlocfilehash: 7361eff0f76271564fd5a0e9b8a18221ec4138e3
 ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56098995"
@@ -25,7 +25,7 @@ ms.locfileid: "56098995"
 
 可以通过网络安全组流日志提供的信息了解网络安全组的入口和出口 IP 流量。 这些流日志根据规则显示出站和入站流、流所适用的 NIC、有关流的 5 元组信息（源/目标 IP、源/目标端口、协议），以及是允许还是拒绝流量。
 
-这些流日志可能难以手动分析并获取见解。 不过，可以使用多个开源工具将相关数据可视化。 本文将提供一个使用 Elastic Stack 将这些日志可视化的解决方案，方便用户在 Kibana 仪表板上快速完成流日志的索引和可视化操作。
+这些流日志可能难以手动分析并难以从中获取见解。 不过，可以使用多个开源工具将相关数据可视化。 本文将提供一个使用 Elastic Stack 将这些日志可视化的解决方案，方便用户在 Kibana 仪表板上快速完成流日志的索引和可视化操作。
 
 > [!Warning]  
 > 以下步骤适用于流日志版本 1。 有关详细信息，请参阅[针对网络安全组的流日志记录简介](network-watcher-nsg-flow-logging-overview.md)。 以下说明在未修改的情况下不适用于版本 2 的日志文件。
@@ -241,11 +241,11 @@ sudo /etc/init.d/logstash start
 
 ## <a name="conclusion"></a>结束语
 
-通过组合使用网络安全组流日志和 Elastic Stack，我们提出了一种用于可视化网络流量的方式，该方式功能强大并且可以自定义。 用户可以通过这些仪表板快速获取和共享针对网络流量的见解，并且可以通过筛选来调查任何潜在的异常问题。 使用 Kibana 时，用户可以根据安全、审核和符合性需要对这些仪表板进行定制，打造特定的可视化效果。
+通过将网络安全组流日志与 Elastic Stack 组合使用，我们提出了一种用于可视化网络流量的方式，该方式功能强大并且可以自定义。 用户可以通过这些仪表板快速获取和共享针对网络流量的见解，并且可以通过筛选来调查任何潜在的异常问题。 使用 Kibana 时，用户可以根据安全、审核和符合性需要对这些仪表板进行定制，打造特定的可视化效果。
 
 ## <a name="next-steps"></a>后续步骤
 
-访问[使用 Power BI 可视化 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 可视化 NSG 流日志
+访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
 
 <!--Image references-->
 

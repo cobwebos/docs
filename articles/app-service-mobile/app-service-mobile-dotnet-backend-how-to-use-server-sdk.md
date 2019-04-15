@@ -444,7 +444,7 @@ Azure 应用服务提供多种适用于 ASP.NET 应用程序的调试和故障�
 2. 在代码文件中添加以下 using 语句：
 
         using System.Web.Http.Tracing;
-3. 创建从 .NET 后端写入诊断日志的跟踪写入器，如下所示：
+3. 创建跟踪写入器以便从 .NET 后端写入诊断日志，如下所示：
 
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");

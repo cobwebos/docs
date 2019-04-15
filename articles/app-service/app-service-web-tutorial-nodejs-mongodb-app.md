@@ -472,7 +472,7 @@ git push azure master
 
 ## <a name="stream-diagnostic-logs"></a>流式传输诊断日志 
 
-当 Node.js 应用程序在 Azure 应用服务中运行时，可以将控制台日志传输到终端。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
+当 Node.js 应用程序在 Azure 应用服务中运行时，可以将控制台日志通过管道传输到终端。 如此，可以获得相同的诊断消息，以便调试应用程序错误。
 
 若要启动日志流式处理，请在 Cloud Shell 中使用 [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-tail) 命令。
 
@@ -480,7 +480,7 @@ git push azure master
 az webapp log tail --name <app_name> --resource-group myResourceGroup
 ``` 
 
-启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在看到传送到终端的控制台日志。
+启动日志流式处理后，请在浏览器中刷新 Azure 应用，以获取一些 Web 流量。 现在将看到通过管道传送到终端的控制台日志。
 
 通过键入 `Ctrl+C`，随时停止日志流式处理。 
 

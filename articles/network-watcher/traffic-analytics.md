@@ -133,7 +133,7 @@ Log Analytics 工作区必须存在于以下区域中：
 
 ### <a name="re-register-the-network-resource-provider"></a>重新注册网络资源提供程序
 
-在使用流量分析之前，必须重新注册网络资源提供程序。 在以下代码框中单击“试用”打开 Azure Cloud Shell。 Cloud Shell 会自动将你登录到你的 Azure 订阅。 打开 Cloud Shell 之后，输入以下命令重新注册网络资源提供程序：
+在使用流量分析之前，必须重新注册网络资源提供程序。 在以下代码框中单击“试用”打开 Azure Cloud Shell。 Cloud Shell 会自动使你登录到你的 Azure 订阅。 打开 Cloud Shell 之后，输入以下命令重新注册网络资源提供程序：
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"

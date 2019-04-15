@@ -175,7 +175,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
     .\HDInsightSAS.ps1
     ```
 
-    当脚本运行时，在创建资源组和存储帐户时，它将记录输出到 PowerShell 提示符。 系统会提示输入 HDInsight 群集的 HTTP 用户。 此帐户用于保护群集的 HTTP/s 访问。
+    当脚本运行时，在创建资源组和存储帐户时，它将输出记录到 PowerShell 提示符。 系统会提示输入 HDInsight 群集的 HTTP 用户。 此帐户用于保护群集的 HTTP/s 访问。
 
     如果要创建基于 Linux 的群集，系统会提示输入 SSH 用户帐户名称和密码。 此帐户用于远程登录到群集。
 

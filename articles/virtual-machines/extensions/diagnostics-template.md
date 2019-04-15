@@ -80,7 +80,7 @@ Azure 诊断扩展可在基于 Windows 的 Azure 虚拟机上提供监视和诊�
 
 *typeHandlerVersion* 指定要使用的扩展的版本。 将 autoUpgradeMinorVersion 次要版本设置为 true 可确保获得可用的最新扩展次要版本。 强烈建议始终将 *autoUpgradeMinorVersion* 设置为 **true**，这样就可以随时获得并使用具有所有新功能和缺陷修复的最新的可用诊断扩展。 
 
-*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 xmlcfg 属性包含诊断日志基于 xml 的配置、性能计数器等等，这些项目由诊断代理收集。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)。 常见的做法是将实际的 xml 配置存储为 Azure Resource Manager 模板中的变量，然后再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 storageAccount 属性指定向其传输诊断数据的存储帐户的名称。 
+*settings* 元素包含扩展的配置属性（有时称为公共配置），这些属性可以从扩展设置和读回。 xmlcfg 属性包含由诊断代理收集的诊断日志、性能计数器等内容的基于 xml 的配置。 有关 xml 架构本身的详细信息，请参阅[诊断配置架构](https://msdn.microsoft.com/library/azure/dn782207.aspx)。 常见的做法是将实际的 xml 配置存储为 Azure Resource Manager 模板中的变量，然后再进行连接和 base64 编码，以设置 *xmlcfg* 的值。 请参阅[诊断配置变量](#diagnostics-configuration-variables)部分，深入了解如何在变量中存储 xml。 storageAccount 属性指定向其传输诊断数据的存储帐户的名称。 
 
 *protectedSettings* 中的属性（有时称为专用配置）可设置，但在设置之后无法读回。 protectedSettings 的只写性质使其非常适合存储类似存储帐户密钥（写入诊断数据的位置）的密码。    
 

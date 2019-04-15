@@ -116,7 +116,7 @@ ms.locfileid: "59048106"
 **设置** | **详细信息**
 --- | ---
 使用情况 | UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
-安装日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
+安装程序日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
 /Platform | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。

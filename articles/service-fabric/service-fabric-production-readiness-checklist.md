@@ -42,7 +42,7 @@ ms.locfileid: "58107485"
 1. 理解并设置[持续性级别](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster)。 对于运行有状态工作负载的节点类型，建议使用银级或更高的持续性级别。 主节点类型应将持续性级别设置为银级或更高级别。
 1. 理解并选取节点类型的[可靠性级别](service-fabric-cluster-capacity.md#the-reliability-characteristics-of-the-cluster)。 建议使用银级或更高级别的可靠性。
 1. 对工作负载进行负载和缩放测试，确定群集的[容量需求](service-fabric-cluster-capacity.md)。 
-1. 服务和应用程序受到监控，会生成并存储应用程序日志，并带有警报。 有关示例，请参阅[添加到 Service Fabric 应用程序日志记录](service-fabric-how-to-diagnostics-log.md)并[使用 Azure Monitor 日志监视容器](service-fabric-diagnostics-oms-containers.md)。
+1. 服务和应用程序受到监视，并且系统会生成并存储应用程序日志，并会发送警报。 有关示例，请参阅[添加到 Service Fabric 应用程序日志记录](service-fabric-how-to-diagnostics-log.md)并[使用 Azure Monitor 日志监视容器](service-fabric-diagnostics-oms-containers.md)。
 1. 使用警报监视群集 (例如，对于[Azure Monitor 日志](service-fabric-diagnostics-event-analysis-oms.md))。 
 1. 使用警报监视的基础的虚拟机规模集基础结构 (例如，对于[Azure Monitor 日志](service-fabric-diagnostics-oms-agent.md)。
 1. 该群集始终具有[主要和辅助证书](service-fabric-cluster-security-update-certs-azure.md)（因此不会将你拒之门外）。

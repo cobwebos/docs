@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 207e9965f6600477e1df93845bc41bd33b5c028c
 ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2018
 ms.locfileid: "53547025"
@@ -45,7 +45,7 @@ az mysql server configuration list --resource-group myresourcegroup --server myd
 az mysql server-logs list --resource-group myresourcegroup --server mydemoserver > log_files_list.txt
 ```
 ## <a name="download-logs-from-the-server"></a>从服务器下载日志
-使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) 命令可下载服务器的单独日志文件。 
+使用 [az mysql server-logs download](/cli/azure/mysql/server-logs#az-mysql-server-logs-download) 命令可下载服务器的单个日志文件。 
 
 使用下列示例，可以将资源组“myresourcegroup”下服务器 mydemoserver.mysql.database.azure.com 的特定日志文件下载到本地环境。
 ```azurecli-interactive

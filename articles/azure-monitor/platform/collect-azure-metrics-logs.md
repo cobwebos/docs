@@ -22,7 +22,7 @@ ms.locfileid: "59006267"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>收集到 Log Analytics 工作区中 Azure Monitor 的 Azure 服务日志和指标
 
-有四种不同方式可收集 Azure 服务的日志和度量值：
+有四种不同方式可收集 Azure 服务的日志和指标：
 
 1. Azure 诊断定向到 Azure Monitor 中的 Log Analytics 工作区 (*诊断*下表中)
 2. Azure 诊断定向到 Azure 存储到 Azure Monitor 中的 Log Analytics 工作区 (*存储*下表中)

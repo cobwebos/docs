@@ -29,11 +29,11 @@ Azure 诊断扩展可收集以下类型的数据：
 | 应用程序日志 |应用程序写入的跟踪消息 |
 | Windows 事件日志 |发送到 Windows 事件日志记录系统的信息 |
 | .NET EventSource 日志 |使用 .NET [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) 类的代码编写事件 |
-| IIS Logs |有关 IIS 网站的信息 |
+| IIS 日志 |有关 IIS 网站的信息 |
 | [基于清单的 ETW 日志](https://docs.microsoft.com/windows/desktop/etw/about-event-tracing) |由任何进程生成的 Windows 事件的事件跟踪。(1) |
 | 故障转储（日志） |有关应用程序崩溃时的进程状态的信息 |
 | 自定义错误日志 |应用程序或服务创建的日志 |
-| Azure Diagnostics基础结构日志 |有关 Azure 诊断自身的信息 |
+| Azure 诊断基础结构日志 |有关 Azure 诊断自身的信息 |
 
 (1) 要获取 ETW 提供程序列表，在要收集信息的计算机的控制台窗口中运行 `c:\Windows\System32\logman.exe query providers`。
 

@@ -38,7 +38,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 [!INCLUDE [Access diagnostic logs](../../../includes/app-service-web-logs-access-no-h.md)]
 
-有关详细信息，请参阅[使用 Azure CLI 流式传输日志](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)。
+有关详细信息，请参阅[使用 Azure CLI 流式处理日志](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)。
 
 ### <a name="app-logging"></a>应用日志记录
 

@@ -58,7 +58,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-compose-list"></a>sfctl compose list
 获取在 Service Fabric 群集中创建的 compose 部署列表。
@@ -81,7 +81,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-compose-remove"></a>sfctl compose remove
 从群集中删除现有的 Service Fabric compose 部署。
@@ -103,7 +103,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-compose-status"></a>sfctl compose status
 获取有关 Service Fabric compose 部署的信息。
@@ -125,7 +125,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-compose-upgrade"></a>sfctl compose upgrade
 开始升级 Service Fabric 群集中的 compose 部署。
@@ -165,7 +165,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-compose-upgrade-rollback"></a>sfctl compose upgrade-rollback
 开始在 Service Fabric 群集中回退 compose 部署升级。
@@ -187,7 +187,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-compose-upgrade-status"></a>sfctl compose upgrade-status
 获取在此 Service Fabric Compose 部署中执行的最新升级的详细信息。
@@ -209,7 +209,7 @@ ms.locfileid: "58667485"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

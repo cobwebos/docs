@@ -205,7 +205,7 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 在同步组中，转到有问题的服务器终结点，并在“同步活动”部分查看当前同步会话中已上传或下载的文件计数。 请注意，此状态会延迟大约 5 分钟，如果同步会话足够小，可在此时间段内完成，则可能不会在门户中报告此会话。 
 
 # [<a name="server"></a>服务器](#tab/server)
-在服务器上的遥测日志中查看最近的 9302 事件（在事件查看器中，转到“应用程序和服务日志\Microsoft\FileSync\代理\遥测”）。 此事件指示当前同步会话的状态。 TotalItemCount 表示要同步多少个文件，AppliedItemCount 表示到目前为止已同步的文件数，PerItemErrorCount 表示同步失败的文件数（请参阅下文了解如何处理此问题）。
+在服务器上的遥测日志中查看最近的 9302 事件（在事件查看器中，转到“应用程序和服务日志\Microsoft\FileSync\Agent\Telemetry”）。 此事件指示当前同步会话的状态。 TotalItemCount 表示要同步多少个文件，AppliedItemCount 表示到目前为止已同步的文件数，PerItemErrorCount 表示同步失败的文件数（请参阅下文了解如何处理此问题）。
 
 ```
 Replica Sync Progress. 
@@ -844,7 +844,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 <a id="files-fail-tiering"></a>**排查文件无法分层的问题**  
 如果文件无法分层到 Azure 文件：
 
-1. 在事件查看器中，查看位于“应用程序和服务\Microsoft\FileSync\代理”下的遥测、操作和诊断事件日志。 
+1. 在事件查看器中，查看位于 Applications and Services\Microsoft\FileSync\Agent 下的遥测、操作和诊断事件日志。 
    1. 验证文件是否在 Azure 文件共享中存在。
 
       > [!NOTE]
@@ -859,7 +859,7 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 
 <a id="files-fail-recall"></a>排查无法重新调用文件的问题  
 如果无法重新调用文件：
-1. 在事件查看器中，查看位于“应用程序和服务\Microsoft\FileSync\代理”下的遥测、操作和诊断事件日志。
+1. 在事件查看器中，查看位于 Applications and Services\Microsoft\FileSync\Agent 下的遥测、操作和诊断事件日志。
     1. 验证文件是否在 Azure 文件共享中存在。
     2. 验证服务器是否已建立 Internet 连接。 
     3. 打开服务 MMC 管理单元，然后验证存储同步代理服务 (FileSyncSvc) 是否正在运行。
@@ -882,8 +882,8 @@ New-FsrmFileScreen -Path "E:\AFSdataset" -Description "Filter unsupported charac
 ## <a name="general-troubleshooting"></a>常规故障排除
 如果在服务器上遇到 Azure 文件同步问题，请先完成以下步骤：
 1. 在事件查看器中，查看遥测、操作和诊断事件日志。
-    - 同步、分层和重新调用问题记录在“应用程序和服务\Microsoft\FileSync\代理”下的遥测、诊断和操作事件日志中。
-    - 与管理服务器相关的（例如配置设置）问题记录在 Applications and Services\Microsoft\FileSync\Management 下的诊断和操作事件日志中。
+    - 同步、分层和重新调用问题记录在 Applications and Services\Microsoft\FileSync\Agent 下的遥测、诊断和操作事件日志中。
+    - 与管理服务器相关的（例如配置设置）问题记录在 Applications and Services\Microsoft\FileSync\Management 下的操作和诊断事件日志中。
 2. 验证 Azure 文件同步服务是否正在服务器上运行。
     - 打开服务 MMC 管理单元，然后验证存储同步代理服务 (FileSyncSvc) 是否正在运行。
 3. 验证 Azure 文件同步筛选器驱动程序（StorageSync.sys 和 StorageSyncGuard.sys）是否正在运行。

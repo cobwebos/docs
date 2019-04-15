@@ -274,7 +274,7 @@ export AZCOPY_LOG_LOCATION=<value>
 
 默认情况下，AzCopy 日志级别设置为信息。 如果想要降低日志详细程度以节省磁盘空间，请使用 ``--log-level`` 选项覆盖该设置。 可用日志级别为：调试、 信息、 警告、 错误、 死机和严重。
 
-### <a name="review-the-logs-for-errors"></a>查看错误日志
+### <a name="review-the-logs-for-errors"></a>查看日志中的错误
 
 以下命令将从 04dc9ca9-158f-7945-5933-564021086c79 日志中获取状态为 UPLOADFAILED 的所有错误：
 

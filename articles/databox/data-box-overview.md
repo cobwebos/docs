@@ -85,7 +85,7 @@ Data Box 包括以下组件：
 
     有关详细信息，请转到[使用 Data Box 服务管理 Data Box 设备](data-box-portal-ui-admin.md)。
 
-* **本地 Web 用户界面** - 基于 Web 的UI，用于配置设备，以便它可以连接到本地网络，并向 Data Box 服务注册该设备。 此外还可以使用本地 Web UI 关闭和重启 Data Box 设备、查看副本日志，并联系 Microsoft 支持部门以提交服务请求。
+* **本地 Web 用户界面** - 基于 Web 的UI，用于配置设备，以便它可以连接到本地网络，并向 Data Box 服务注册该设备。 此外还可以使用本地 Web UI 关闭和重启 Data Box 设备、查看复制日志，并联系 Microsoft 支持部门以提交服务请求。
 
     ![Data Box 本地 Web UI](media/data-box-overview/data-box-local-web-ui.png)
 

@@ -244,7 +244,7 @@ public static void Run(ICollector<string> myQueue, ILogger log)
 
 ## <a name="logging"></a>日志记录
 
-若要使用 C# 将输出记录到流式处理日志中，请包括 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`。 避免在 Azure Functions 中使用 `Console.Write`。
+若要使用 C# 将输出记录到流式传输日志中，请包括 [ILogger](https://docs.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger) 类型的参数。 建议将其命名为 `log`。 避免在 Azure Functions 中使用 `Console.Write`。
 
 ```csharp
 public static void Run(string myBlob, ILogger log)

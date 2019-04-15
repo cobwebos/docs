@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 12/19/2018
 ms.openlocfilehash: 15154844c954e53ca1add5d3fbaa3e9d02152ad2
 ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/01/2019
 ms.locfileid: "55568237"
@@ -97,7 +97,7 @@ Azure SQL Analytics 解决方案提供图形用户界面、有关数据库性能
 
 ### <a name="set-up-with-event-hubs"></a>通过事件中心进行设置
 
-若要将 Intelligent Insights 与事件中心配合使用，配置要流式传输到事件中心的 Intelligent Insights 日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)。
+若要将智能见解与事件中心配合使用，配置要流式传输到事件中心的智能见解日志数据，请参阅[将 Azure 诊断日志流式传输到事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md)。
 
 若要使用事件中心设置自定义监视和警报，请参阅[如何在事件中心处理指标和诊断日志](sql-database-metrics-diag-logging.md#what-to-do-with-metrics-and-diagnostics-logs-in-event-hubs)。
 

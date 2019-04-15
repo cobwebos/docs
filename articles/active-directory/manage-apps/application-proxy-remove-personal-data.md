@@ -17,7 +17,7 @@ ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5f3c1883f156562cfab59cb102fb0cf18b03803
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2019
 ms.locfileid: "56186584"
@@ -74,9 +74,9 @@ Azure Active Directory 应用程序代理要求你在设备上安装连接器，
 2. 按照前面介绍的[查看或导出特定数据](#view-or-export-specific-data)过程，查找需要删除的信息。 搜索所有连接器日志。
 3. 删除相关日志文件，或者有选择地删除包含个人数据的字段。 如果不再需要旧日志文件，也可以将其全部删除。
 
-### <a name="turn-off-connector-logs"></a>关闭连接器日志
+### <a name="turn-off-connector-logs"></a>禁用连接器日志
 
-确保连接器日志不包含个人数据的一个选项是关闭日志生成。 若要停止生成连接器日志，请从 `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` 中删除以下突出显示的行。 
+确保连接器日志不包含个人数据的一个选项是禁用日志生成。 若要停止生成连接器日志，请从 `C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe.config` 中删除以下突出显示的行。 
 
 ![配置](./media/application-proxy-remove-personal-data/01.png)
 

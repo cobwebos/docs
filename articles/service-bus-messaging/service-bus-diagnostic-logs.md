@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线诊断日志 | Microsoft 文档
+title: Azure 服务总线诊断日志 | Microsoft Docs
 description: 了解如何为 Azure 中的服务总线设置诊断日志。
 keywords: ''
 documentationcenter: .net
@@ -25,14 +25,14 @@ ms.locfileid: "57216333"
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
 可以查看两种类型的 Azure 服务总线日志：
-* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**。 此类日志包含对作业执行的操作的相关信息。 始终启用这些日志。
+* **[活动日志](../azure-monitor/platform/activity-logs-overview.md)**。 这些日志包含对作业执行的操作的相关信息。 这些日志始终启用。
 * **[诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)**。 可以配置诊断日志，以便更深入地了解作业内发生的所有情况。 诊断日志涵盖从创建作业开始到删除作业为止的所有活动，其中包括作业运行时发生的更新和活动。
 
 ## <a name="turn-on-diagnostic-logs"></a>启用诊断日志
 
 诊断日志默认已禁用。 若要启用诊断日志，请按照以下步骤操作：
 
-1.  在 [Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，单击“诊断日志”。
+1.  在[Azure 门户](https://portal.azure.com)中的“监视 + 管理”下，点击“诊断日志”。
 
     ![在边栏选项卡中导航到诊断日志](./media/service-bus-diagnostic-logs/image1.png)
 
@@ -58,7 +58,7 @@ ms.locfileid: "57216333"
 
 所有日志均以 JavaScript 对象表示法 (JSON) 格式存储。 每个条目均包含字符串字段，这些字段采用以下部分所述的格式。
 
-## <a name="operational-logs-schema"></a>运行日志架构
+## <a name="operational-logs-schema"></a>操作日志架构
 
 **OperationalLogs** 类别中的日志捕获在服务总线操作期间发生的情况。 具体而言，这些日志捕获操作类型，包括队列创建、所用的资源和操作状态。
 

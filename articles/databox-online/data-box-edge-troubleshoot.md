@@ -46,7 +46,7 @@ ms.locfileid: "58405652"
 
 ## <a name="collect-support-package"></a>收集支持包
 
-日志包由所有可帮助 Microsoft 支持人员排查任何设备问题的相关日志组成。 可以通过本地 Web UI 生成日志包。
+日志包由所有可帮助 Microsoft 支持部门排查任何设备问题的相关日志组成。 可以通过本地 Web UI 生成日志包。
 
 执行以下步骤收集支持包。 
 

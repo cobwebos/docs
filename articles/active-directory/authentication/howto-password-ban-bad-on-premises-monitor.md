@@ -20,7 +20,7 @@ ms.locfileid: "58479718"
 ---
 # <a name="azure-ad-password-protection-monitoring-and-logging"></a>Azure AD 密码保护中的监视和日志记录
 
-部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录日志信息，以及如何报告 Azure AD 密码保护使用情况。
+部署 Azure AD 密码保护后，监视和报告是至关重要的任务。 本文详细介绍了各种监视技术，包括每项服务在哪里记录信息，以及如何报告 Azure AD 密码保护使用情况。
 
 监视和报告完成事件日志消息或通过运行 PowerShell cmdlet。 DC 代理和代理服务这两个记录事件日志消息。 如下所述的所有 PowerShell cmdlet 都才可用代理服务器上 （请参阅 AzureADPasswordProtection PowerShell 模块）。 DC 代理软件不会安装 PowerShell 模块。
 

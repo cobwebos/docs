@@ -25,9 +25,9 @@ ms.locfileid: "58850072"
 
 在 Azure 环境中，有多“层”监视数据，访问每层数据的方法略有不同。 通常情况下，这些层可描述为：
 
-- **应用程序监视数据：** 有关已编写并在 Azure 上运行的代码的性能和功能的数据。 应用程序监视数据的示例包括性能跟踪、应用程序日志及用户遥测。 通常以下列的一种方式收集应用程序监视数据：
+- **应用程序监视数据：** 有关已编写并在 Azure 上运行的代码的性能和功能的数据。 应用程序监视数据的示例包括性能跟踪、应用程序日志及用户遥测数据。 通常以下列的一种方式收集应用程序监视数据：
   - 用 [Application Insights SDK](../../azure-monitor/app/app-insights-overview.md) 等 SDK 检测代码。
-  - 运行侦听应用程序运行于的计算机上的新应用程序日志的监视代理，如 [Windows Azure 诊断代理](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 诊断代理](../../virtual-machines/extensions/diagnostics-linux.md)。
+  - 运行一个监视代理（如 [Windows Azure 诊断代理](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 诊断代理](../../virtual-machines/extensions/diagnostics-linux.md)），以便侦听运行应用程序的计算机上的新应用程序日志。
 - **来宾 OS 监视数据**：有关运行应用程序的操作系统的数据。 来宾 OS 监视数据的示例有 Linux syslog 或 Windows 系统日志。 若要收集此类型的数据，需安装代理，如[ Windows Azure 诊断代理](./../../azure-monitor/platform/diagnostics-extension-overview.md)或 [Linux Azure 诊断代理](../../virtual-machines/extensions/diagnostics-linux.md)。
 - **Azure 资源监视数据：** 有关 Azure 资源操作的数据。 对于某些 Azure 资源类型（如虚拟机），该 Azure 服务中会监视来宾 OS 和应用程序。 对于其他 Azure 资源（如网络安全组），资源监视数据是可用数据的最高层（因为没有 来宾 OS 或应用程序在这些资源中运行）。 可以使用[资源诊断设置](./../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)收集这些数据。
 - **Azure 订阅监视数据：** 有关 Azure 订阅操作和管理的数据，以及有关 Azure 本身运行状况和操作的数据。 [活动日志](./../../azure-monitor/platform/activity-logs-overview.md)包含大多数订阅监视数据，例如服务运行状况事件和 Azure 资源管理器审核。 可以使用日志配置文件收集此数据。
@@ -65,7 +65,7 @@ Azure 订阅监视数据可以在 [Azure 活动日志](./../../azure-monitor/pla
 若要将数据从 Azure 活动日志发送到事件中心命名空间，请在订阅上设置日志配置文件。 [按照本指南](./activity-logs-stream-event-hubs.md)在订阅上设置日志配置文件。 对要监视每个订阅执行一次此操作。
 
 > [!TIP]
-> 日志配置当前仅允许选择一个事件中心命名空间，并将在其中创建名为“insights-operational-logs”的事件日志。 尚不可在日志配置文件中指定自己的事件中心名称。
+> 日志配置文件当前仅允许选择一个事件中心命名空间，并将在其中创建名为“insights-operational-logs”的事件日志。 尚不可在日志配置文件中指定自己的事件中心名称。
 
 ## <a name="azure-resource-metrics-and-diagnostics-logs"></a>Azure 资源指标和诊断日志
 

@@ -10,7 +10,7 @@ ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
 ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/06/2019
 ms.locfileid: "55751389"
@@ -57,8 +57,8 @@ Blob 存储事件包含响应数据更改所需的所有信息。  可以识别 
 > |data.eTag|字符串|此事件触发时，对象的 etag。  不适用于 BlobDeleted 事件。|
 > |data.api|字符串|触发此事件的 API 操作的名称。 对于 BlobCreated 事件，其值为“PutBlob”、“PutBlockList”或“CopyBlob”。 对于 BlobDeleted 事件，其值为“DeleteBlob”。 这些值与出现在 Azure 存储诊断日志中的 API 名称相同。 请参阅[记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。|
 > |data.sequencer|字符串|一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。|
-> |data.requestId|字符串|用于存储 API 操作的服务生成的请求 ID。 可用于关联日志中使用“request-id-header”字段的 Azure 存储诊断日志，由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。|
-> |data.clientRequestId|字符串|用于存储 API 操作的客户端提供的请求 ID。 可用于关联日志中使用“client-request-id”字段的 Azure 存储诊断日志，可以由使用“x-ms-client-request-id”标头的客户端请求提供。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+> |data.requestId|字符串|用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。|
+> |data.clientRequestId|字符串|用于存储 API 操作的客户端提供的请求 ID。 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 > |data.storageDiagnostics|对象|Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。|
 |data.blobType|字符串|Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。| 
 

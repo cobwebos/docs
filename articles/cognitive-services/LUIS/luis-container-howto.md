@@ -268,7 +268,7 @@ ApiKey={ENDPOINT_KEY}
 |`timezoneOffset`|数字|通过 timezoneOffset 可以[更改时区](luis-concept-data-alteration.md#change-time-zone-of-prebuilt-datetimev2-entity)，该时区由预生成实体 datetimeV2 使用。|
 |`verbose`|布尔值|设置为 true 时，返回所有意向及其分数。 默认值为 false 时，仅返回评分最高的意向。|
 |`staging`|布尔值|设置为 true 时，返回过渡环境结果中的查询。 |
-|`log`|布尔值|记录查询，可供以后[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
+|`log`|布尔值|记录查询，以便以后用于[主动学习](luis-how-to-review-endpoint-utterances.md)。 默认值为 true。|
 
 ### <a name="query-published-app"></a>查询已发布的应用
 

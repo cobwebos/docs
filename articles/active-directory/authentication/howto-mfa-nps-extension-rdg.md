@@ -327,7 +327,7 @@ NPS 角色服务提供 RADIUS 服务器和客户端功能，以及网络访问�
 
 要查看 Windows 事件查看器日志中的成功登录事件，可以发出以下 Windows PowerShell 命令来查询 Windows 终端服务和 Windows 安全日志。
 
-要在网关运行日志 (Event Viewer\Applications and Services Logs\Microsoft\Windows\TerminalServices-Gateway\Operational) 中查询成功登录事件，请使用以下 PowerShell 命令：
+要在网关操作日志（Event Viewer\应用程序和服务日志\Microsoft\Windows\TerminalServices-Gateway\Operational）中查询成功登录事件，请使用以下 PowerShell 命令：
 
 * `Get-WinEvent -Logname Microsoft-Windows-TerminalServices-Gateway/Operational | where {$_.ID -eq '300'} | FL`
 * 此命令显示 Windows 事件，这些事件可显示符合资源授权策略要求 (RD RAP) 的用户并向其授予访问权限。

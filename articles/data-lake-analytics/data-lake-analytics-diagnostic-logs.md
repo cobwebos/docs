@@ -15,9 +15,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 02/27/2019
 ms.locfileid: "56959115"
 ---
-# <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Accessing diagnostic logs for Azure Data Lake Analytics（访问 Azure Data Lake Analytics 的诊断日志）
+# <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>访问 Azure Data Lake Analytics 的诊断日志
 
-通过诊断日志记录可以收集数据访问审核线索。 此记录提供如下信息：
+通过诊断日志记录可以收集数据访问审核线索。 这些日志提供如下信息：
 
 * 访问数据的用户列表。
 * 数据被访问的频率。
@@ -37,12 +37,12 @@ ms.locfileid: "56959115"
 
    * 可选择以三种不同的方式存储/处理数据。
 
-     * 选择“存档到存储帐户”，将日志存储到 Azure 存储帐户。 如果想要将数据存档，请使用此选项。 如果选择此选项，必须提供一个 Azure 存储帐户，以将日志保存到其中。
+     * 选择“存档到存储帐户”以将日志存储到 Azure 存储帐户。 如果想要将数据存档，请使用此选项。 如果选择此选项，必须提供一个 Azure 存储帐户，以将日志保存到其中。
 
-     * 选择“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 具有下游处理管道来实时分析传入日志时使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
+     * 选择“流式传输到事件中心”将日志数据流式传输到 Azure 事件中心。 如果具有用于实时分析传入日志的下游处理管道，请使用此选项。 若选择此选项，必须提供要使用的 Azure 事件中心的详细信息。
 
      * 选择__发送到 Log Analytics__若要将数据发送到 Azure Monitor 服务。 如果你想要使用 Azure Monitor 日志收集并分析日志，请使用此选项。
-   * 指定是要获取审核日志还是请求日志，或者两者都获取。  请求日志捕获每个 API 请求。 审核日志记录由该 API 请求触发的所有操作。
+   * 指定是要获取审核日志还是请求日志，或者两者。  请求日志捕获每个 API 请求。 审核日志记录由该 API 请求触发的所有操作。
 
    * 对于“存档到存储帐户”，指定数据将保留的天数。
 

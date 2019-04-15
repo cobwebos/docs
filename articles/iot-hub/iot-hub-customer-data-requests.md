@@ -46,7 +46,7 @@ Azure IoT 中心是一项基于 REST API 的云服务，其目标是企业客户
 也可使用 REST API 对设备执行导出操作。 有关详细信息，请参阅[服务 - 获取设备](/rest/api/iothub/service/getdevice)。
 
 > [!NOTE]
-> 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出 Azure IoT 中心的某些系统生成日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
+> 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出 Azure IoT 中心系统生成的某些日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 

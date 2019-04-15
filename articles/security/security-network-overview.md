@@ -394,11 +394,11 @@ Azure 安全中心帮助预防、检测和响应威胁，同时提高 Azure 资�
 
 对任何网络安全方案而言，网络级别的日志记录都是一项关键功能。 在 Azure 中，可以记录针对 NSG 获得的信息，以获取网络级别的日志记录信息。 使用 NSG 日志记录，可以从以下日志中获取信息：
 
-* [活动日志](../azure-monitor/platform/activity-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，将启用这些日志并可在 Azure 门户中使用。 这些日志以前称为审核或运行日志。
+* [活动日志](../azure-monitor/platform/activity-logs-overview.md)。 使用这些日志查看提交到 Azure 订阅的所有操作。 默认情况下，这些日志已启用并可在 Azure 门户中使用。 这些日志以前称为审核或操作日志。
 * 事件日志。 这些日志提供有关应用了哪些 NSG 规则的信息。
 * 计数器日志。 通过这些日志，可知道所应用每个 NSG 规则拒绝或允许流量的次数。
 
-还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/)，以查看和分析这些日志。
+还可以使用功能强大的数据可视化工具 [Microsoft Power BI](https://powerbi.microsoft.com/what-is-power-bi/) 来查看和分析这些日志。
 了解更多：
 
 * [网络安全组 (Nsg) 的 azure Monitor 日志](../virtual-network/virtual-network-nsg-manage-log.md)

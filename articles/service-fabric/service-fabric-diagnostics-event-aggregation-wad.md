@@ -28,7 +28,7 @@ ms.locfileid: "59046285"
 >
 >
 
-运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
+当你运行 Azure Service Fabric 群集时，最好是从一个中心位置的所有节点中收集日志。 将日志放在中心位置可帮助分析和排查群集中的问题，或该群集中运行的应用程序与服务的问题。
 
 上传和收集日志的方式之一是使用可将日志上传到 Azure 存储、也能选择发送日志到 Azure Application Insights 或 Azure 事件中心的 Microsoft Azure 诊断 (WAD) 扩展。 此外可以使用外部进程读取存储中的事件并将它们放在分析平台产品，例如[Azure Monitor 日志](../log-analytics/log-analytics-service-fabric.md)或其他日志分析解决方案。
 

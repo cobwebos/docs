@@ -58,7 +58,7 @@ ms.locfileid: "59493053"
 
 ### <a name="converged-registration-preview"></a>聚合注册（预览版）
 
-如果使用聚合注册的公共预览版，可在“身份验证方法”类别下找到有关审核日志的用户活动信息。
+如果使用聚合注册的公共预览版，可在“身份验证方法”类别下找到有关审核日志中的用户活动的信息。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 

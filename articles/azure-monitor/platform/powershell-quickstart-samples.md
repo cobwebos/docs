@@ -1,6 +1,6 @@
 ---
 title: Azure 监视器 PowerShell 快速入门示例
-description: 使用 PowerShell 访问 Azure 监视器功能，如自动缩放、警报、webhook 和搜索活动日志。
+description: 使用 PowerShell 访问 Azure Monitor 功能，如自动缩放、警报、webhook 和搜索活动日志。
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
@@ -330,7 +330,7 @@ Add-AzLogProfile -Name my_log_profile_s1 -StorageAccountId /subscriptions/s1/res
 ```
 
 ## <a name="configure-diagnostics-logs"></a>配置诊断日志
-许多 Azure 服务提供额外的日志和遥测，可执行以下一项或多项操作： 
+许多 Azure 服务提供额外的日志和遥测数据，以便执行以下一项或多项操作： 
  - 配置为将数据存储在 Azure 存储帐户中
  - 发送到事件中心
  - 发送到 Log Analytics 工作区。 

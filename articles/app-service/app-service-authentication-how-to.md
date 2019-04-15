@@ -211,7 +211,7 @@ function refreshTokens() {
 }
 ```
 
-如果用户撤销了授予应用的权限，对 `/.auth/me` 的调用可能会失败并返回 `403 Forbidden` 响应。 若要诊断错误，请检查应用程序日志了解详细信息。
+如果用户撤销了授予应用的权限，对 `/.auth/me` 的调用可能会失败并返回 `403 Forbidden` 响应。 若要诊断错误，请查看应用程序日志了解详细信息。
 
 ## <a name="extend-session-token-expiration-grace-period"></a>延长会话令牌过期宽限期
 

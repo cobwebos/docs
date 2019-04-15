@@ -107,7 +107,7 @@ RLS 是在 Power BI Desktop 中编写的。 打开数据集和报表时，可以
 
 ![JSON Web 令牌示例](media/row-level-security/app-token-string-12.png)
 
-现已组合所有信息片段，当某人登录应用程序查看此报表时，会根据行级别安全性的定义，看到有权查看的数据。
+现已组合所有信息片段，当某人登录应用程序查看此报表时，会根据行级别安全性的定义，看到其有权查看的数据。
 
 ![应用程序中显示的报表](media/row-level-security/dashboard-13.png)
 

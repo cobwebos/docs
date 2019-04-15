@@ -11,7 +11,7 @@ ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 7a1e440a8dc8f518e272df9e126771df54390ed5
 ms.sourcegitcommit: efcd039e5e3de3149c9de7296c57566e0f88b106
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/10/2018
 ms.locfileid: "53161978"
@@ -36,7 +36,7 @@ ms.locfileid: "53161978"
 4.  确保按预期方式配置事件排序策略。 转到“设置”，选择“[事件排序](stream-analytics-out-of-order-and-late-events.md)”。 使用“测试”按钮测试查询时，不会应用此策略。 这是在浏览器中测试与在生产中运行作业之间的一个差别。 
 
 5. 使用审核和诊断日志进行调试：
-    - 使用[审核日志](../azure-resource-manager/resource-group-audit.md)并筛选以识别和调试错误。
+    - 使用[审核日志](../azure-resource-manager/resource-group-audit.md)，并进行筛选以识别和调试错误。
     - 使用[作业诊断日志](stream-analytics-job-diagnostic-logs.md)识别和调试错误。
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>作业消耗过多的流单元

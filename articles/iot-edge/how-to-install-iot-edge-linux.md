@@ -187,7 +187,7 @@ sudo systemctl restart iotedge
 systemctl status iotedge
 ```
 
-使用以下命令观察守护程序日志：
+使用以下命令查看守护程序日志：
 
 ```bash
 journalctl -u iotedge --no-pager --no-full

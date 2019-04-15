@@ -16,7 +16,7 @@ ms.date: 10/03/2016
 ms.author: crdun
 ms.openlocfilehash: dfc5e2923215b1669b0a3300653ad0cae7379655
 ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2019
 ms.locfileid: "55960728"
@@ -321,7 +321,7 @@ Azure 应用服务中通常会禁用诊断日志记录。  若要启用诊断日
 3. 单击“工具”按钮
 4. 在“观察”菜单下选择“日志流”。
 
-日志生成后会显示在窗口中。  还可以下载日志，以便后续使用部署凭据进行分析。 有关详细信息，请参阅[日志记录]文档。
+日志生成后会显示在窗口中。  还可以下载日志，以便稍后使用部署凭据进行分析。 有关详细信息，请参阅[日志记录]文档。
 
 ## <a name="known-issues"></a>已知问题
 ### <a name="deleting-a-migrated-mobile-app-clone-causes-a-site-outage"></a>删除已迁移的移动应用克隆会导致站点中断

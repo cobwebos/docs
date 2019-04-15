@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 容器实例获取容器日志和事件
-description: 了解如何使用 Azure 容器实例调试容器日志和事件
+description: 了解如何使用 Azure 容器实例获取容器日志和事件以进行调试
 services: container-instances
 author: dlepow
 manager: jeconnoc

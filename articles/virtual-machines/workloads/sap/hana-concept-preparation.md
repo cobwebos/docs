@@ -16,7 +16,7 @@ ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 73643cd6954932f933e200baad09e4301300aac2
 ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
 ms.locfileid: "55822538"
@@ -78,7 +78,7 @@ HANA 大型实例提供不同 Azure 区域中 HANA 大型实例戳之间的灾�
 
 接下来，设置或调整存储快照备份计划，以便在发生灾难时实现 RTO 和 RPO。 若要将恢复点目标最小化，请在 HANA 大型实例服务中设置以下复制间隔：
 - 组合快照（快照类型为 **hana**）涵盖的卷每隔 15 分钟复制到灾难恢复站点中的等效存储卷目标。
-- 事务日志备份卷（类型快照为 **logs**）每隔 3 分钟复制到灾难恢复站点中的等效存储卷目标。
+- 对于事务日志备份卷（快照类型为 **logs**），请设置为每隔 3 分钟复制到灾难恢复站点中的等效存储卷目标。
 
 若要将恢复点目标最小化，请使用以下设置：
 - 执行 **hana** 类型存储快照（请参阅“步骤 7：执行快照”），频率为每 30 分钟到 1 小时。

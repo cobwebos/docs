@@ -30,7 +30,7 @@ Azure 提供多种不同的可配置安全审核和日志记录选项，帮助�
 
 ## <a name="types-of-logs-in-azure"></a>Azure 中的日志类型
 
-云应用程序很复杂，包含很多移动部件。 日志可以提供数据，确保应用程序始终处于正常运行状态。 日志可帮助排查过去的问题，或避免潜在的问题。 此外，日志有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
+云应用程序很复杂，包含很多移动部件。 日志可以提供数据，从而帮助确保应用程序始终处于正常运行状态。 日志可帮助排查过去的问题，或避免潜在的问题。 此外，日志有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。
 
 Azure 日志划分为以下类型：
 * **控制/管理日志**提供有关 Azure 资源管理器 CREATE、UPDATE 和 DELETE 操作的信息。 有关详细信息，请参阅 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)。
@@ -54,7 +54,7 @@ Azure 日志划分为以下类型：
 
 ### <a name="activity-logs"></a>活动日志
 
-[Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志前称为“审核日志”或“操作日志”，因为它们报告订阅的[控制平面事件](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)。 
+[Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的深入信息。 活动日志以前称为“审核日志”或“操作日志”，因为它们报告订阅的[控制平面事件](https://driftboatdave.com/2016/10/13/azure-auditing-options-for-your-custom-reporting-needs/)。 
 
 活动日志可帮助确定写入操作（即 PUT、POST 或 DELETE）的“内容、执行者和时间”。 活动日志还可以帮助了解该操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作。
 
@@ -84,7 +84,7 @@ Azure 日志划分为以下类型：
 
 ### <a name="azure-diagnostics-logs"></a>Azure 诊断日志
 
-Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 例如，[Windows 事件系统日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)是适用于 VM 的一个诊断日志类别，而 [Blob、表和队列日志](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)是适用于存储帐户的诊断日志类别。 诊断日志不同于活动日志，后者提供针对订阅中资源执行的操作的深入信息。
+Azure 诊断日志由资源发出，提供与该资源的操作相关的各种频繁生成的数据。 这些日志的内容因资源类型而异。 例如，[Windows 事件系统日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-data-sources-windows-events)是适用于 VM 的一个诊断日志类别，而 [Blob、表和队列日志](https://docs.microsoft.com/azure/storage/storage-monitor-storage-account)是适用于存储帐户的诊断日志类别。 诊断日志不同于活动日志，后者用于提供有关对订阅中的资源执行的操作的见解。
 
 ![Azure 诊断日志示意图](./media/azure-log-audit/azure-log-audit-fig2.png)
 
@@ -210,13 +210,13 @@ Azure 中的网络日志记录和监视是一个综合性的功能，包括两�
 * 有关流的 5 元组信息：源或目标 IP、源或目标端口，以及协议。
 * 是允许流还是拒绝了流。
 
-流日志针对的是 NSG，但其显示方式不同于其他日志。 流日志仅存储在存储帐户中。
+虽然流日志针对的是 NSG，但其显示方式不同于其他日志。 流日志仅存储在存储帐户中。
 
 适用于其他日志的保留策略也适用于流日志。 日志的保留策略可以设置为 1 到 365 天。 如果未设置保留策略，则会永久保留日志。
 
 **诊断日志**
 
-定期和自发性事件由网络资源创建，记录在存储帐户中并发送到事件中心或 Log Analytics。 这些日志提供资源运行状况的见解。 可在 Power BI 和 Log Analytics 等工具中查看这些日志。 若要了解如何查看诊断日志，请参阅 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
+定期和自发性事件由网络资源创建，记录在存储帐户中并发送到事件中心或 Log Analytics。 这些日志提供对资源运行状况的见解。 可在 Power BI 和 Log Analytics 等工具中查看这些日志。 若要了解如何查看诊断日志，请参阅 [Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-networking-analytics)。
 
 ![诊断日志](./media/azure-log-audit/azure-log-audit-fig5.png)
 
@@ -302,7 +302,7 @@ Azure 安全中心可以自动从 Azure 资源、网络以及连接的合作伙�
 
 * **异常检测**：使用统计分析生成历史基线。 如果出现与已知基线偏离的情况，并且这些情况符合潜在攻击载体的行为，则会发出警报。
 
-许多安全操作和事件响应团队依靠 SIEM 解决方案作为会审和调查安全警报的起始点。 使用 Azure 日志集成，可以近实时地同步通过 Azure 诊断和审核日志收集的安全中心警报和虚拟机安全事件，以及 Log Analytics 或 SIEM 解决方案。
+许多安全操作和事件响应团队依靠 SIEM 解决方案作为会审和调查安全警报的起始点。 使用 Azure 日志集成，可以近实时地将通过 Azure 诊断和审核日志收集的安全中心警报和虚拟机安全事件与 Log Analytics 或 SIEM 解决方案同步。
 
 ## <a name="log-analytics"></a>Log Analytics
 

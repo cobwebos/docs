@@ -211,7 +211,7 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
     **示例：**
 
-    ![在日志中查看消息。](media/azure-stack-solution-staged-data-analytics/image13.png)
+    ![查看日志中的消息。](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="create-an-azure-stack-storage-account"></a>创建 Azure Stack 存储帐户
 
@@ -267,7 +267,7 @@ Azure Functions 和存储解决方案可以通过缩放来满足数据量和处�
 
    **示例：**
 
-   ![在日志中查看消息。](media/azure-stack-solution-staged-data-analytics/image13.png)
+   ![查看日志中的消息。](media/azure-stack-solution-staged-data-analytics/image13.png)
 
 ## <a name="securely-stored-and-accessed-compliant-data"></a>安全地存储和访问合规数据
 

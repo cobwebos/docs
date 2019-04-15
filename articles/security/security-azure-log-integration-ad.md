@@ -1,6 +1,6 @@
 ---
 title: Azure 日志集成与 Azure Active Directory 审核日志 | Microsoft Docs
-description: 了解如何安装 Azure 日志集成服务和集成来自 Azure 审核日志的日志
+description: 了解如何安装 Azure 日志集成服务并集成来自 Azure 审核日志的日志
 services: security
 documentationcenter: na
 author: Barclayn
@@ -17,7 +17,7 @@ ms.author: barclayn
 ms.custom: azlog
 ms.openlocfilehash: 473f9db7eb507fa910657696590bb656a8aff52f
 ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56109871"

@@ -10,7 +10,7 @@ ms.date: 01/31/2019
 ms.author: raynew
 ms.openlocfilehash: c5c3f498f62d6399534333f8166a514a10f044c5
 ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2019
 ms.locfileid: "56310147"
@@ -85,9 +85,9 @@ ms.locfileid: "56310147"
 ## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>使用活动日志获取成功备份的通知
 
 > [!NOTE]
-> 我们已经转移到新的模式，即从恢复服务保管库上的 Azure 备份中抽取活动日志。 遗憾的是，这影响了 Azure 主权云中活动日志的生成。 如果 Azure 主权云用户通过此处提及的 Azure Monitor 从活动日志中创建/配置任何警报，警报将不会触发。 在此情况下，我们建议这些用户使用诊断设置和 LA 工作区或 [PowerBI 报告解决方案](backup-azure-configure-reports.md)来获取相关信息。 此外，在所有 Azure 公共区域中，如果用户正在将恢复服务活动日志收集到[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)提到的日志分析工作区中，那么这些日志也不会显示。
+> 我们已经转移到新的模型，即从恢复服务保管库上的 Azure 备份中抽取活动日志。 遗憾的是，这影响了 Azure 主权云中活动日志的生成。 如果 Azure 主权云用户通过此处提及的 Azure Monitor 从活动日志中创建/配置任何警报，警报将不会触发。 在此情况下，我们建议这些用户使用诊断设置和 LA 工作区或 [PowerBI 报告解决方案](backup-azure-configure-reports.md)来获取相关信息。 此外，在所有 Azure 公共区域中，如果用户正在将恢复服务活动日志收集到[此处](https://docs.microsoft.com/azure/log-analytics/log-analytics-activity)提到的 Log Analytics 工作区中，那么这些日志也不会显示。
 
-如果想要在成功备份后收到通知，则可以使用基于保管库[活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)的警报。
+如果想要在成功备份后收到通知，则可以使用基于保管库[活动日志](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)生成的警报。
 
 ### <a name="login-into-azure-portal"></a>登录到 Azure 门户
 
@@ -95,13 +95,13 @@ ms.locfileid: "56310147"
 
 ### <a name="identify-appropriate-log"></a>找出相应日志
 
-应用下图所示的筛选器，验证是否接收到成功备份的活动日志。 相应地更改时间跨度以查看视图。
+应用下图所示的筛选器，以便验证是否接收到成功备份的活动日志。 相应地更改时间跨度以查看视图。
 
 ![活动日志](./media/backup-azure-monitor-vms/activity-logs-identify.png)
 
 可以单击“JSON”段，获取更多详细信息，并将其复制粘贴到文本编辑器进行查看。 其中应该显示出保管库详细信息和触发活动日志的项（即备份项）。
 
-然后单击“添加活动日志警报”，生成所有此类日志的警报。
+然后单击“添加活动日志警报”以生成所有此类日志的警报。
 
 ### <a name="add-activity-log-alert"></a>添加活动日志警报
 
@@ -119,7 +119,7 @@ ms.locfileid: "56310147"
 
 ![活动日志操作组](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-单击“确定”后，将生成活动日志警报，并且用于记录成功备份的后续活动日志将触发操作组中定义的操作。
+单击“确定”后，将生成活动日志警报，并且为成功备份记录的后续活动日志将触发操作组中定义的操作。
 
 ### <a name="limitations-on-alerts"></a>对警报的限制
 

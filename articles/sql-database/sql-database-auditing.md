@@ -43,7 +43,7 @@ ms.locfileid: "59361274"
 - **分析**报告。 可以查找可疑事件、异常活动和趋势。
 
 > [!IMPORTANT]
-> 审核日志会写入 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。
+> 审核日志会写入到 Azure 订阅的 Azure Blob 存储中的**追加 Blob**。
 >
 > - 支持所有存储类型（v1、v2、blob）。
 > - 支持所有存储复制配置。
@@ -99,7 +99,7 @@ ms.locfileid: "59361274"
 
     ![Log Analytics 工作区](./media/sql-database-auditing-get-started/auditing_select_oms.png)
 
-8. 若要配置将审核日志写入事件中心的操作，请选择“事件中心(预览版)”，打开“事件中心详细信息”。 选择要将日志写入到其中的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
+8. 若要配置将审核日志写入事件中心的操作，请选择“事件中心(预览版)”，打开“事件中心详细信息”。 选择要将日志写入到的事件中心，然后单击“确定”。 请确保事件中心与数据库和服务器位于同一区域。
 
     ![事件中心](./media/sql-database-auditing-get-started/auditing_select_event_hub.png)
 
@@ -210,7 +210,7 @@ ms.locfileid: "59361274"
     > [!IMPORTANT]
     > Azure SQL 数据库审核在审核记录中存储字符字段的 4000 个字符的数据。 当可审核操作返回的**语句**或 **data_sensitivity_information** 值包含超过 4000 个的字符时，超出前 4000 个字符的任何数据将**被截去不进行审核**。
 
-- 审核日志会写入 Azure 订阅的 Azure Blob 存储中的追加 Blob。
+- 审核日志会写入到 Azure 订阅的 Azure Blob 存储中的追加 Blob。
   - 追加 Blob 目前不支持高级存储。
   - 目前不支持 VNet 中的存储。
 

@@ -25,7 +25,7 @@ ms.locfileid: "58439033"
 
 在本文中，你将了解如何在 Azure 门户中查找 Azure Active Directory (Azure AD) 用户活动报告。
 
-## <a name="audit-logs-report"></a>审核日志报告
+## <a name="audit-logs-report"></a>审核日志报表
 
 审核日志报告将关于应用程序活动的多个报告组合到单个视图中以提供基于上下文的报告。 若要访问审核日志报告，请执行以下操作：
 

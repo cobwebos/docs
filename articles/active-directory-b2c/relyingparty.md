@@ -12,7 +12,7 @@ ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 5d42568a738d946d7df65601044b9797a35f6b1f
 ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/29/2019
 ms.locfileid: "55176006"
@@ -135,7 +135,7 @@ JourneyInsights 元素包含以下属性：
 | --------- | -------- | ----------- |
 | TelemetryEngine | 是 | 值必须是 `ApplicationInsights`。 | 
 | InstrumentationKey | 是 | 一个字符串，其中包含 application insights 元素的检测密钥。 |
-| DeveloperMode | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，Application Insights 将加快遥测数据通过处理管道。 此设置非常适合进行开发，但在高容量方面受到限制。详细活动日志仅用于帮助开发自定义策略。 请勿在生产中使用开发模式。 日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。 如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。 只有当该值设置为 `true`，才会收集这些详细日志。|
+| DeveloperMode | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，Application Insights 将加快遥测数据通过处理管道。 此设置非常适合用于开发，但在高容量方面受到限制。详细的活动日志仅用于帮助开发自定义策略。 请勿在生产中使用开发模式。 日志收集在开发过程中发送到标识提供者以及从中发出的所有声明。 如果在生产中使用，则开发人员对他们所拥有的 App Insights 日志中收集的 PII（私人身份信息）负责。 只有当该值设置为 `true`，才会收集这些详细日志。|
 | ClientEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，则发送用于跟踪页面视图和客户端错误的 Application Insights 客户端脚本。 | 
 | ServerEnabled | 是 | 可能的值：`true` 或 `false`。 如果是 `true`，则将现有 UserJourneyRecorder JSON 作为自定义事件发送到 Application Insights。 | 
 | TelemetryVersion | 是 | 值必须是 `1.0.0`。 | 

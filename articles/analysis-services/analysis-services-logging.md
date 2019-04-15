@@ -85,9 +85,9 @@ ms.locfileid: "57010916"
     * **流式传输到事件中心**。 要使用此选项，需要一个可连接到的现有事件中心命名空间和事件中心。 若要了解详细信息，请参阅[使用 Azure 门户创建事件中心命名空间和事件中心](../event-hubs/event-hubs-create.md)。 然后在门户中返回到此页，选择事件中心命名空间和策略名称。
     * 发送到 Azure Monitor（Log Analytics 工作区）。 若要使用此选项，可以使用现有工作区或者在门户中[新建工作区](../azure-monitor/learn/quick-create-workspace.md)资源。 有关查看日志的详细信息，请参阅本文中的[在 Log Analytics 工作区中查看日志](#view-logs-in-log-analytics-workspace)。
 
-    * **引擎** 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
-    * **指标** 选择此选项可在[指标](analysis-services-monitor.md#server-metrics)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后自动删除日期。
+    * **引擎** 选择此选项以记录 Xevent。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
+    * **服务**。 选择此选项以记录服务级别事件。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
+    * **指标** 选择此选项可在[指标](analysis-services-monitor.md#server-metrics)中存储详细数据。 若要存档到存储帐户，可以选择诊断日志的保留期。 保留期到期后会自动删除日志。
 
 3. 单击“ **保存**”。
 
@@ -107,7 +107,7 @@ ms.locfileid: "57010916"
    Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
    ```
 
-   存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
+   存储帐户 ID 是需要将日志发送到的存储帐户的资源 ID。
 
 - 要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
@@ -145,7 +145,7 @@ ms.locfileid: "57010916"
 
 ## <a name="manage-your-logs"></a>管理日志
 
-通常在设置日志记录数小时后可查看日志。 存储帐户中的日志完全由你管理：
+通常在设置日志记录数小时后可使用日志。 存储帐户中的日志完全由你管理：
 
 * 请使用标准的 Azure 访问控制方法限制可访问日志的人员，以此保护日志。
 * 删除不想继续保留在存储帐户中的日志。
@@ -224,7 +224,7 @@ Set-AzContext -SubscriptionId <subscription ID>
 
 ### <a name="create-a-new-storage-account-for-your-logs"></a>为日志创建新的存储帐户
 
-如果服务器所属订阅中存在现有存储帐户，可使用该帐户进行日志记录。 对本教程而言，需创建专用于 Analysis Services 日志的新存储帐户。 为方便起见，将存储帐户详细信息将存储到名为 sa 的变量中。
+如果服务器所属订阅中存在现有存储帐户，可对日志使用该帐户。 对本教程而言，需创建专用于 Analysis Services 日志的新存储帐户。 为方便起见，将存储帐户详细信息将存储到名为 sa 的变量中。
 
 还要使用包含 Analysis Services 服务器的资源组。 将 `awsales_resgroup`、`awsaleslogs` 和 `West Central US` 的值替换为自己的值：
 
@@ -233,7 +233,7 @@ $sa = New-AzStorageAccount -ResourceGroupName awsales_resgroup `
 -Name awsaleslogs -Type Standard_LRS -Location 'West Central US'
 ```
 
-### <a name="identify-the-server-account-for-your-logs"></a>标识用户记录日志的服务器帐户
+### <a name="identify-the-server-account-for-your-logs"></a>标识用于你的日志的服务器帐户
 
 将帐户名称设置为名为“account”的变量，其中 ResourceName 是帐户的名称。
 

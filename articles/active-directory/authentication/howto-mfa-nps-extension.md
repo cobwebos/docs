@@ -274,7 +274,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 
 -------------------------------------------------------------
 
-### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>HTTP 日志中为何出现错误，并且所有身份验证都失败？
+### <a name="why-do-i-see-http-connect-errors-in-logs-with-all-my-authentications-failing"></a>日志中为何出现 HTTP 连接错误，并且所有身份验证都失败？
 
 验证是否可以从运行该 NPS 扩展的服务器访问 https://adnotifications.windowsazure.com。
 

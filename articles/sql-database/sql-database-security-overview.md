@@ -90,7 +90,7 @@ SQL 数据库审核可跟踪数据库活动，通过将数据库事件记录到�
 
 ### <a name="threat-detection"></a>威胁检测
 
-通过分析有关异常行为和潜在恶意访问或利用数据库的审核日志，威胁检测可强化审核。 警报是针对可疑活动或异常访问模式（如 SQL 注入攻击、潜在数据渗透和暴力破解密码攻击）创建的。 可从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看威胁检测警报，其中提供了可疑活动的详细信息，并给出了进一步调查建议以及缓解威胁的措施。 威胁检测费用为每服务器每月 15 美元。 前 60 天免费。 有关详细信息，请参阅 [SQL 数据库威胁检测入门](sql-database-threat-detection.md)。
+通过分析有关异常行为和潜在恶意访问或利用数据库的审核日志，威胁检测强化了审核。 警报是针对可疑活动或异常访问模式（如 SQL 注入攻击、潜在数据渗透和暴力破解密码攻击）创建的。 可从 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)查看威胁检测警报，其中提供了可疑活动的详细信息，并给出了进一步调查建议以及缓解威胁的措施。 威胁检测费用为每服务器每月 15 美元。 前 60 天免费。 有关详细信息，请参阅 [SQL 数据库威胁检测入门](sql-database-threat-detection.md)。
 
 ![azure-database-td.jpg](media/sql-database-security-overview/azure-database-td.jpg)
 

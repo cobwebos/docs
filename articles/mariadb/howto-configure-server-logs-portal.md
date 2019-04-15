@@ -8,7 +8,7 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4ff2fbd5976a8e203bbc43a87b31ddb1bed63402
 ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 12/17/2018
 ms.locfileid: "53548810"
@@ -28,7 +28,7 @@ ms.locfileid: "53548810"
 
 2. 选择 Azure Database for MariaDB 服务器。
 
-3. 在侧栏中的“监视”部分下，选择“服务器日志”。 
+3. 在侧栏“监视”部分下，选择“服务器日志”。 
    ![选择“服务器日志”，单击“配置”](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. 若要查看服务器参数，请选择标题“单击此处以启用日志并配置日志参数”。
@@ -42,18 +42,18 @@ ms.locfileid: "53548810"
 6. 单击服务器参数页上的“关闭”按钮（X 图标）返回到日志列表。
 
 ## <a name="view-list-and-download-logs"></a>查看列表并下载日志
-日志记录开始后，可以在“服务器日志”面板上查看可用日志列表并下载各个日志文件。 
+日志记录开始后，在“服务器日志”面板上可以查看可用日志列表，并下载单个日志文件。 
 
 1. 打开 Azure 门户。
 
 2. 选择 Azure Database for MariaDB 服务器。
 
-3. 在侧栏中的“监视”部分下，选择“服务器日志”。 此页面将显示日志文件列表，如图所示：
+3. 在侧栏“监视”部分下，选择“服务器日志”。 此页面将显示日志文件列表，如图所示：
 
    ![日志列表](./media/howto-configure-server-logs-portal/4-server-logs-list.png)
 
    > [!TIP]
-   > 日志命名约定是 mysql-slow-< your server name>-yyyymmddhh.log。 文件名称中的日期和时间是发布日志的时间。 日志文件每 24 小时或每 7.5 GB 旋转一次，两个条件先达到任何一个就会开始旋转。
+   > 日志命名约定是 mysql-slow-< your server name>-yyyymmddhh.log。 文件名称中的日期和时间是发布日志的时间。 日志文件每 24 小时或每 7 GB 轮换一次（以先达到的条件为准）。
 
 4. 如果需要，使用“搜索框”可快速缩小范围，找到基于日期/时间的特定日志。 按日志名称进行搜索。
 

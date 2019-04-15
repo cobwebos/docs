@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的指标警报支持的资源
-description: Azure Monitor 中的指标警报的支持指标和日志参考
+description: Azure Monitor 中的指标警报的支持指标和日志的参考
 author: snehithm
 services: monitoring
 ms.service: azure-monitor

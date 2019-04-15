@@ -117,13 +117,13 @@ cf push
 
 ## <a name="view-application-logs"></a>查看应用程序日志
 
-可使用 Cloud Foundry CLI 通过应用程序名称查看其日志：
+可使用 Cloud Foundry CLI 按应用程序名称查看其日志：
 
 ```bash
 cf logs hello-spring-cloud
 ```
 
-默认情况下，日志命令会使用结尾，显示新写入的日志。 若要查看显示的新日志，请在浏览器中刷新 hello-spring-cloud 应用程序。
+默认情况下，日志命令会使用 tail，显示新写入的日志。 若要使新日志显示，请在浏览器中刷新 hello-spring-cloud 应用程序。
 
 若要查看已写入的日志，请添加 `recent` 开关：
 

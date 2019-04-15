@@ -83,7 +83,7 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 对于密钥管理，Data Lake Storage Gen1 提供两种用于管理主加密密钥 (MEK) 的模式，MEK 是对存储在 Data Lake Storage Gen1 中的任何数据进行解密所必需的。 可以让 Data Lake Storage Gen1 代为管理 MEK，或选择使用 Azure Key Vault 帐户保留 MEK 所有权。 创建 Data Lake Storage Gen1 帐户时可以指定密钥管理模式。 有关如何提供加密相关配置的详细信息，请参阅[通过 Azure 门户开始使用 Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)。
 
 ## <a name="activity-and-diagnostic-logs"></a>活动日志和诊断日志
-可以使用活动或诊断日志，具体取决于是否正在寻找与帐户管理或数据相关的活动日志。
+可以使用活动或诊断日志，具体取决于所查找的日志是与帐户管理相关的活动的日志还是与数据相关的活动的日志。
 
 * 与帐户管理相关的活动使用 Azure 资源管理器 API，并且通过活动日志显示在 Azure 门户中。
 * 与数据相关的活动使用 WebHDFS REST API，并且通过诊断日志显示在 Azure 门户中。

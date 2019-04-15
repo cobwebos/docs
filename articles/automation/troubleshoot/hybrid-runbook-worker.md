@@ -146,7 +146,7 @@ Windows 混合 Runbook 辅助角色依靠 Microsoft Monitoring Agent 与自动�
 
 #### <a name="issue"></a>问题
 
-在**应用程序和服务日志\Operations Manager** 事件日志中，你会看到事件 4502 和事件消息，其中包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 及以下描述：*服务 \<wsid\>.oms.opinsights.azure.com 提供的证书不是由用于 Microsoft 服务的证书颁发机构颁发的。请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。KB3126513 一文还介绍了关于连接问题的其他故障排除信息。*
+在“应用程序和服务日志\Operations Manager”事件日志中，你会看到事件 4502 和事件消息，其中包含 **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** 及以下描述：*服务 \<wsid\>.oms.opinsights.azure.com 提供的证书不是由用于 Microsoft 服务的证书颁发机构颁发的。请联系网络管理员以查看其是否正在运行截获 TLS/SSL 通信的代理。KB3126513 一文还介绍了关于连接问题的其他故障排除信息。*
 
 #### <a name="cause"></a>原因
 
@@ -154,7 +154,7 @@ Windows 混合 Runbook 辅助角色依靠 Microsoft Monitoring Agent 与自动�
 
 #### <a name="resolution"></a>解析
 
-日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以检查**应用程序和服务日志\Microsoft-SMA\操作**和 **应用程序和服务日志\Operations Manager** 事件日志中是否有任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。
+日志存储在每个混合辅助角色本地的 C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes 中。 可以检查“应用程序和服务日志\Microsoft-SMA\Operations”和“应用程序和服务日志\Operations Manager”事件日志中是否有任何警告或错误事件，指示出现了影响角色载入 Azure 自动化的连接问题或其他问题，或者在执行正常操作时出现问题。
 
 [Runbook 输出和消息](../automation-runbook-output-and-messages.md)将从混合辅助角色发送到 Azure 自动化，就像在云中运行的 Runbook 作业一样。 就像在其他 Runbook 中一样，还可以启用详细流和进度流。
 

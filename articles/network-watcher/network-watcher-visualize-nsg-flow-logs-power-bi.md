@@ -1,5 +1,5 @@
 ---
-title: 使用 Power BI 可视化 Azure 网络安全组流日志 | Microsoft 文档
+title: 使用 Power BI 可视化 Azure 网络安全组流日志 | Microsoft Docs
 description: 本页介绍如何使用 Power BI 可视化 NSG 流日志。
 services: network-watcher
 documentationcenter: na

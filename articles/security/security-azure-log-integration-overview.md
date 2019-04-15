@@ -32,13 +32,13 @@ Azure 日志集成可用于简化将 Azure 日志与本地安全信息和事件�
  建议的集成 Azure 日志的方法是使用 SIEM 供应商提供的连接器。 Azure Monitor 提供将日志流式传输到事件中心的功能，SIEM 供应商可以编写连接器以进一步将日志从事件中心集成到 SIEM 中。  有关此连接器工作原理的说明，请参阅[针对数据事件中心的监视器流监视](../azure-monitor/platform/stream-monitoring-data-event-hubs.md)中的说明。 该文章还列出了直接 Azure 连接器已经可用的 SIEM。  
 
 > [!IMPORTANT]
-> 如果你的主要兴趣是收集虚拟机日志，则大多数 SIEM 供应商在其解决方案中都包括了此选项。 使用 SIEM 供应商的连接器始终是首选替代方法。
+> 如果你的主要兴趣是收集虚拟机日志，那么大多数 SIEM 供应商会将此包含在其解决方案中。 使用 SIEM 供应商的连接器始终是首选替代方法。
 
 有关 Azure 日志集成功能的文档仍将维护，直到该功能弃用。
 
 进一步阅读以了解有关 Azure 日志集成功能的更多信息：
 
-Azure 日志集成从 Windows 事件查看器日志收集 Windows 事件，从 Azure 资源收集 [Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)、[Azure 安全中心警报](../security-center/security-center-intro.md)和 [Azure 诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)。 此集成可帮助你的 SIEM 解决方案为你的所有资产（无论是本地的还是云中的）提供统一的仪表板。 可以使用仪表板接收、聚合、关联和分析安全事件的警报。
+Azure 日志集成从来自 Azure 资源的 Windows 事件查看器日志、[Azure 活动日志](../azure-monitor/platform/activity-logs-overview.md)、[Azure 安全中心警报](../security-center/security-center-intro.md)和 [Azure 诊断日志](../azure-monitor/platform/diagnostic-logs-overview.md)收集 Windows 事件。 此集成可帮助你的 SIEM 解决方案为你的所有资产（无论是本地的还是云中的）提供统一的仪表板。 可以使用仪表板接收、聚合、关联和分析安全事件的警报。
 
 > [!NOTE]
 > 当前，Azure 日志集成仅支持 Azure 商业版云和 Azure 政府版云。 不支持其他云。
@@ -47,7 +47,7 @@ Azure 日志集成从 Windows 事件查看器日志收集 Windows 事件，从 A
 
 ## <a name="what-logs-can-i-integrate"></a>可以集成哪些日志？
 
-Azure 针对每个 Azure 服务生成大量日志记录。 这些日志提供三种日志类型：
+Azure 针对每个 Azure 服务生成大量日志记录。 这些日志代表三种日志类型：
 
 * **控制/管理日志**：提供 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)创建、更新和删除操作的相关信息。 Azure 活动日志是此类日志的示例。
 * **数据平面日志**：提供使用 Azure 资源时引发的事件的相关信息。 此日志类型的一个示例是位于 Windows 虚拟机上 Windows 事件查看器的**系统**、**安全**和**应用程序**频道。 另一个示例是通过 Azure Monitor 配置的 Azure 诊断日志记录。

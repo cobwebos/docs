@@ -5292,7 +5292,7 @@ Azure 数据工厂服务可自动创建基于 Windows/Linux 的按需 HDInsight 
 | filePaths | 映射器和化简器可执行文件的路径。 在此示例中：blob 容器为 "adfsample/example/apps/wc.exe"adfsample，文件夹为 example/apps，可执行文件为 wc.exe。 |
 | fileLinkedService | Azure 存储链接服务，表示包含 filePaths 节中指定的文件的 Azure 存储。 |
 | arguments | MapReduce 程序的逗号分隔参数列表。 运行时，可在 MapReduce 框架中看到几个额外的参数（例如：mapreduce.job.tags）。 要区分自己的参数和 MapReduce 参数，请考虑将选项和值同时作为参数使用，如下例所示（-s、--input、--output 等选项后面紧接相应的值） |
-| getDebugInfo | 一个可选元素。 将其设置为“Failure”时，仅针对失败下载日志。 将其设置为“All”时，不考虑执行状态，始终下载日志。 |
+| getDebugInfo | 一个可选元素。 将其设置为“Failure”时，仅针对失败下载日志。 将其设置为“All”时，则不考虑执行状态，始终下载日志。 |
 
 > [!NOTE]
 > 必须为 **outputs** 属性指定 Hadoop 流式处理活动的输出数据集。 此数据集可以是驱动管道计划（每小时、每日，等等）所需的虚构数据集。 如果活动未采用任何输入，可以不用为 **inputs** 属性指定活动的输入数据集。

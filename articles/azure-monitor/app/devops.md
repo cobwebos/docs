@@ -139,7 +139,7 @@ Web 系统中的故障通常由配置问题或系统中许多组件之间的交�
 ### <a name="configuring-application-insights"></a>配置 Application Insights
 Visual Studio 和 Eclipse 提供相应的工具来为开发中的项目配置正确的 SDK 包。 有一个菜单命令可以添加 Application Insights。
 
-如果正在使用  Log4N、NLog 或 System.Diagnostics.Trace 等跟踪日志记录框架，可以选择将记录发送到 Application Insights 以及另一个遥测系统，轻松地将跟踪与请求、依赖项调用和异常相关联。
+如果正在使用 Log4N、NLog 或 System.Diagnostics.Trace 等跟踪日志记录框架，可以选择将日志发送到 Application Insights 以及另一个遥测系统，轻松地将跟踪与请求、依赖项调用和异常相关联。
 
 ### <a name="search-telemetry-in-visual-studio"></a>在 Visual Studio 中搜索遥测数据
 开发和调试某个功能时，可以使用 Web 门户中的相同搜索工具在 Visual Studio 中直接查看和搜索遥测数据。

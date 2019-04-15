@@ -60,5 +60,5 @@ Azure Database for PostgreSQL 集成了 Azure Monitor 诊断日志。 一旦在 
 | _ResourceId | 资源 URI |
 
 ## <a name="next-steps"></a>后续步骤
-- 详细了解如何从 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 访问日志。
+- 详细了解如何通过 [Azure 门户](howto-configure-server-logs-in-portal.md)或 [Azure CLI](howto-configure-server-logs-using-cli.md) 访问日志。
 - 详细了解 [Azure Monitor 定价](https://azure.microsoft.com/pricing/details/monitor/)。

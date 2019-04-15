@@ -18,7 +18,7 @@ ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e74ad04f10865a830d27c1814be10eeff3ad59
 ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/13/2019
 ms.locfileid: "56182963"
@@ -52,7 +52,7 @@ ms.locfileid: "56182963"
 
 ## <a name="audit-logs-say-users-are-skipped-and-not-provisioned-even-though-they-are-assigned"></a>即使用户已分配，审核日志还是显示他们已被跳过且未预配
 
-当用户在审核日志中显示为“已跳过”时，请务必阅读日志消息中的延伸详细信息，以确定原因。 以下为常见的原因和解决方法：
+当用户在审核日志中显示为“已跳过”时，请务必阅读日志消息中已扩展的详细信息，以确定原因。 以下为常见的原因和解决方法：
 
 - **已配置作用域筛选器**，**它根据属性值筛选用户**。 有关范围筛选器的详细信息，请参阅[范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)。
 - **该用户“未得到有效授权”。** 如果看到此特定错误消息，是因为存储在 Azure AD 中的用户分配记录出现问题。 要解决此问题，请从应用中取消分配用户（或组），并重新分配。 有关分配的详细信息，请参阅[分配用户或组访问权限](assign-user-or-group-access-portal.md)。

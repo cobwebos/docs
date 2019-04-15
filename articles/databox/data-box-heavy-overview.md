@@ -88,7 +88,7 @@ Data Box Heavy 包括以下组件：
     
 * **Data Box 设备** - Azure 门户的扩展，使用该扩展可以通过 Web 界面（可从不同的地理位置访问该界面）管理 Data Box Heavy 设备。 使用 Data Box 服务执行的 Data Box Heavy 设备的日常管理。 服务任务包括如何创建和管理订单、查看和管理警报以及管理共享。  
 
-* **本地 Web 用户界面** - 基于 Web 的UI，用于配置设备，以便它可以连接到本地网络，并向 Data Box 服务注册该设备。 此外还可以使用本地 Web UI 关闭和重启该设备、查看副本日志，并联系 Microsoft 支持部门以提交服务请求。
+* **本地 Web 用户界面** - 基于 Web 的UI，用于配置设备，以便它可以连接到本地网络，并向 Data Box 服务注册该设备。 此外还可以使用本地 Web UI 关闭和重启该设备、查看复制日志，并联系 Microsoft 支持部门以提交服务请求。
 
 
 ## <a name="the-workflow"></a>工作流

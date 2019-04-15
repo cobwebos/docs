@@ -144,7 +144,7 @@ Azure 诊断可在部署的应用程序上启用诊断数据收集功能。 可�
 - [IP 流验证](https://docs.microsoft.com/azure/network-watcher/network-watcher-ip-flow-verify-overview)：根据流信息的 5 元组数据包参数（目标 IP、源 IP、目标端口、源端口和协议）检查数据包是被允许还是被拒绝。 如果安全组拒绝数据包，则返回拒绝数据包的规则和组。
 - [下一跃点](https://docs.microsoft.com/azure/network-watcher/network-watcher-next-hop-overview)：确定 Azure 网络结构中路由的数据包的下一跃点，以便诊断任何配置不正确的用户定义的路由。
 - [安全组视图](https://docs.microsoft.com/azure/network-watcher/network-watcher-security-group-view-overview)：获取在 VM 上应用的有效安全规则。
-- [网络安全组的 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：可捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
+- [网络安全组的 NSG 流日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)：用于捕获被组中的安全规则允许或拒绝的流量的相关日志。 流由 5 元组信息（源 IP、目标 IP、源端口、目标端口和协议）定义。
 - [虚拟网络网关和连接故障排除](https://docs.microsoft.com/azure/network-watcher/network-watcher-troubleshoot-manage-rest)：提供对虚拟网关和连接进行故障排除的功能。
 - [网络订阅限制](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)：用于查看网络资源用量与限制。
 - [诊断日志](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)：提供单个窗格来为资源组中的网络资源启用或禁用诊断日志。

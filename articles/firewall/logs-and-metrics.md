@@ -81,7 +81,7 @@ ms.locfileid: "56957685"
 
    默认情况下会收集活动日志条目，可在 Azure 门户中查看这些条目。
 
-   可以使用 [Azure 活动日志](../azure-resource-manager/resource-group-audit.md)（以前称为运行日志和审核日志）查看提交到 Azure 订阅的所有操作。
+   可以使用 [Azure 活动日志](../azure-resource-manager/resource-group-audit.md)（以前称为操作日志和审核日志）查看提交到 Azure 订阅的所有操作。
 
 
 ## <a name="next-steps"></a>后续步骤

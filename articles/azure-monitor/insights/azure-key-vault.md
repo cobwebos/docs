@@ -109,7 +109,7 @@ Azure 密钥保管库解决方案可分析从 Azure 诊断中的 [AuditEvent 日
 | SourceSystem |*Azure* |
 | CallerIpAddress |发出请求的客户端 IP 地址 |
 | 类别 | AuditEvent |
-| CorrelationId |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端（密钥保管库）日志相关联。 |
+| CorrelationId |一个可选 GUID，客户端可传递此 GUID 来使客户端日志与服务端 (Key Vault) 日志相关联。 |
 | DurationMs |为 REST API 请求提供服务所花费的时间，以毫秒为单位。 此时间不包括网络延迟，因此在客户端上测得的时间可能与此时间不匹配。 |
 | httpStatusCode_d |由请求返回的 HTTP 状态代码（例如，200） |
 | id_s |请求的唯一 ID |

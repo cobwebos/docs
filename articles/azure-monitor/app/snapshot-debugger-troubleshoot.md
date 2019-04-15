@@ -215,7 +215,7 @@ SnapshotUploader.exe Information: 0 : Deleted PDB scan marker : D:\local\Temp\Du
 
 2. 使用上传程序日志中的时间戳调整搜索的“时间范围”筛选器，以包含该时间范围。
 
-如果仍然看不到任何带快照 ID 的异常，则表示未向 Application Insights 报告该异常遥测。 如果应用程序在拍摄快照后，但还未报告异常遥测就崩溃，则会发生这种情况。 在这种情况下，请检查 `Diagnose and solve problems` 下的应用服务日志，了解是否存在意外重启或未处理的异常。
+如果仍然看不到任何带快照 ID 的异常，则表示未向 Application Insights 报告该异常遥测。 如果应用程序在拍摄快照后，但还未报告异常遥测就崩溃，则会发生这种情况。 在这种情况下，请查看 `Diagnose and solve problems` 下的应用服务日志，了解是否存在意外重启或未处理的异常。
 
 ## <a name="edit-network-proxy-or-firewall-rules"></a>编辑网络代理或防火墙规则
 

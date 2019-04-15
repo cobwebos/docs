@@ -1,5 +1,5 @@
 ---
-title: 将已完成作业和任务的结果或日志保存到数据存储 - Azure 批处理 | Microsoft Docs
+title: 将已完成作业和任务的结果或日志保存到数据存储 - Azure Batch | Microsoft Docs
 description: 了解用于保存批处理任务和作业的输出数据的不同选项。 可以将数据保存到 Azure 存储，或保存到其他数据存储。
 services: batch
 author: laurenhughes

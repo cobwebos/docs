@@ -35,7 +35,7 @@ ms.locfileid: "57537756"
     * 选择配置 Log Analytics 工作区，然后选择现有的工作区，或“创建新工作区”。
     * 如果需要创建工作区，请提供一个名称、资源组和位置。
 1. 在可用日志列表中，选择要启用的日志。 默认情况下，kube-apiserver、kube-controller-manager 和 kube-scheduler 日志已启用。 你可以启用其他日志，例如 kube-audit 和 cluster-autoscaler。 启用 Log Analytics 工作区后，可以返回并更改收集的日志。
-1. 准备就绪后，选择“保存”以启用选定日志的收集。
+1. 准备就绪后，选择“保存”以启用收集选定日志。
 
 > [!NOTE]
 > AKS 仅捕获在订阅上启用功能标志后创建或升级的群集的审核日志。 若要注册 *AKSAuditLog* 功能标志，请使用 [az feature register][az-feature-register] 命令，如以下示例所示：

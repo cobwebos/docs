@@ -170,7 +170,7 @@ Windows PowerShell 使用[首选项变量](https://technet.microsoft.com/library
 
 | 值 | 行为 |
 |:--- |:--- |
-| 继续 |继续记录消息并继续执行 Runbook。 |
+| 继续 |记录消息并继续执行 Runbook。 |
 | SilentlyContinue |继续执行 Runbook 但不记录消息。 该值会导致忽略消息。 |
 | 停止 |记录消息并挂起 Runbook。 |
 

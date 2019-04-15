@@ -170,11 +170,11 @@ ms.locfileid: "57443464"
 
 **监视**：[Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-get-started) 是一个平台服务，为监视所有 Azure 资源的活动日志、指标和诊断日志提供一个中心位置。 可将 Azure Monitor 配置为可视化、查询、路由、存档和处理来自 Azure 中资源的指标和日志。 建议使用基于资源的访问控制来保护审核线索，帮助确保用户无法修改日志。
 
-**活动日志**：配置 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)可提供针对订阅中资源执行的操作的深入信息。
+**活动日志**：配置 [Azure 活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)可提供有关对订阅中资源执行的操作的见解。
 
 **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是资源发出的所有日志。 这些日志可能包括 Windows 事件系统日志，以及 Blob、表和队列的日志。
 
-**防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志可用于已启用 WAF 的应用程序网关资源。
+**防火墙日志**：应用程序网关提供完整的诊断和访问日志。 防火墙日志适用于已启用 WAF 的应用程序网关资源。
 
 **日志存档**：日志数据存储可以配置为写入到集中式 Azure 存储帐户，存档和一个定义的保留期的。 可以使用 Azure Monitor 日志处理日志或由第三方 SIEM 系统。
 

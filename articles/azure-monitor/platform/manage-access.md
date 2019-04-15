@@ -230,7 +230,7 @@ Log Analytics 参与者角色的成员可以：
     > 若要成功执行最后两个操作，需要在资源组或订阅级别授予此权限。  
 
 - 读取存储帐户密钥   
-- 从 Azure 存储配置日志集合  
+- 从 Azure 存储配置日志收集  
 - 编辑 Azure 资源的监视设置，包括
   - 将 VM 扩展添加到 VM
   - 在所有 Azure 资源上配置 Azure 诊断
@@ -245,7 +245,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 | `*/read`     | 能够查看所有资源和资源配置。 包括查看： <br> 虚拟机扩展状态 <br> Azure 诊断在资源上的配置 <br> 所有资源的所有属性和设置 |
 | `Microsoft.Automation/automationAccounts/*` | 能够创建和配置 Azure 自动化帐户，包括添加和编辑 runbook |
 | `Microsoft.ClassicCompute/virtualMachines/extensions/*` <br> `Microsoft.Compute/virtualMachines/extensions/*` | 添加、更新和删除虚拟机扩展，包括 Microsoft Monitoring Agent 扩展和 OMS Agent for Linux 扩展 |
-| `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | 查看存储帐户密钥。 将 Log Analytics 配置为从 Azure 存储帐户读取日志所必需 |
+| `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | 查看存储帐户密钥。 在将 Log Analytics 配置为从 Azure 存储帐户读取日志时需要 |
 | `Microsoft.Insights/alertRules/*` | 添加、更新和删除警报规则 |
 | `Microsoft.Insights/diagnosticSettings/*` | 添加、更新和删除 Azure 资源上的诊断设置 |
 | `Microsoft.OperationalInsights/*` | 添加、更新和删除 Log Analytics 工作区的配置 |

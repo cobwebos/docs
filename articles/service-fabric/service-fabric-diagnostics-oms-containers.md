@@ -40,7 +40,7 @@ ms.locfileid: "58663175"
 
     ![添加容器解决方案](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 
-3. 在已为群集创建的同一工作区内创建解决方案。 此更改自动触发代理开始收集容器上的 docker 数据。 约 15 分钟后，应看到解决方案高亮显示，并显示传入日志和统计信息，如下图所示。
+3. 在已为群集创建的同一工作区内创建解决方案。 此更改自动触发代理开始收集容器上的 docker 数据。 约 15 分钟后，应看到解决方案显示了传入日志和统计信息，如下图所示。
 
     ![基本 Log Analytics 仪表板](./media/service-fabric-diagnostics-event-analysis-oms/oms-containers-dashboard.png)
 
@@ -48,7 +48,7 @@ ms.locfileid: "58663175"
 
 * ContainerInventory：显示有关容器位置、名称和图像的信息
 * ContainerImageInventory：有关已部署映像的信息，包括 ID 或大小
-* ContainerLog：特定的错误日志、stdout 等 docker 日志和其他条目
+* ContainerLog：特定的错误日志、docker 日志（stdout 等）和其他条目
 * ContainerServiceLog：已运行的 docker 守护程序命令
 * Perf：性能计数器，包括容器 cpu、内存、网络流量、磁盘 i/o 和主机的自定义指标
 

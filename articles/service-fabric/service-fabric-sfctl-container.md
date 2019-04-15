@@ -29,7 +29,7 @@ ms.locfileid: "58663700"
 |命令|描述|
 | --- | --- |
 | invoke-api | 在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。 |
-| 日志 | 获取给定代码包的 Service Fabric 节点上部署的容器的容器日志。 |
+| 日志 | 为给定代码包获取 Service Fabric 节点上部署的容器的容器日志。 |
 
 ## <a name="sfctl-container-invoke-api"></a>sfctl container invoke-api
 在 Service Fabric 节点上部署的容器上调用给定代码包的容器 API。
@@ -57,10 +57,10 @@ ms.locfileid: "58663700"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 ## <a name="sfctl-container-logs"></a>sfctl container logs
-获取给定代码包的 Service Fabric 节点上部署的容器的容器日志。
+为给定代码包获取 Service Fabric 节点上部署的容器的容器日志。
 
 ### <a name="arguments"></a>参数
 
@@ -71,7 +71,7 @@ ms.locfileid: "58663700"
 | --code-package-name        [必需] | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单中指定的代码包的名称。 |
 | --node-name                [必需] | 节点的名称。 |
 | --service-manifest-name    [必需] | 在 Service Fabric 群集中注册为应用程序类型一部分的服务清单的名称。 |
-| --tail | 从日志末尾显示的行数。 默认值为 100。 “all”表示显示完整日志。 |
+| --tail | 要从日志末尾显示的行数。 默认值为 100。 “all”表示显示完整日志。 |
 | --timeout -t | 服务器超时，以秒为单位。  默认值\: 60。 |
 
 ### <a name="global-arguments"></a>全局参数
@@ -82,7 +82,7 @@ ms.locfileid: "58663700"
 | --help -h | 显示此帮助消息并退出。 |
 | --output -o | 输出格式。  允许的值\: json、jsonc、table、tsv。  默认值\: json。 |
 | --query | JMESPath 查询字符串。 有关详细信息和示例，请参阅 http\://jmespath.org/。 |
-| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整的调试日志。 |
+| --verbose | 提高日志记录详细程度。 使用 --debug 可获取完整调试日志。 |
 
 
 ## <a name="next-steps"></a>后续步骤

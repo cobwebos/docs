@@ -109,7 +109,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**DiagnosticMonitorConfiguration**|必需。 可选属性：<br /><br /> -                     **overallQuotaInMB** - 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 5120 MB。<br /><br /> -                     **useProxyServer** - 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|  
 |**CrashDumps**|启用故障转储收集。 可选属性：<br /><br /> -                     **containerName** - Azure 存储帐户中用于存储故障转储的 Blob 容器的名称。<br /><br /> -                     **crashDumpType** - 将 Azure 诊断配置为收集少量或完整故障转储。<br /><br /> -                     **directoryQuotaPercentage** - 配置 VM 上为故障转储保留的 **overallQuotaInMB** 的百分比。|  
-|**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于解决诊断系统本身的故障。 可选属性：<br /><br /> -                     **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> -                     **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**目录**|启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|配置从基于 EventSource 和/或 ETW 清单的提供程序收集 ETW 事件。|  
 |**度量值**|此元素可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。 必需属性：<br /><br /> **resourceId** - 这是要将 Azure 诊断部署到的虚拟机的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。|  
@@ -131,7 +131,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |元素名称|描述|  
 |------------------|-----------------|  
 |**数据源**|要监视的目录的列表。|  
-|**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
+|**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求的日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
 |**IISLogs**|在配置中包括此元素可启用收集 IIS 日志：<br /><br /> **containerName** - Azure 存储帐户中用于存储 IIS 日志的 blob 容器的名称。|  
 
 ## <a name="datasources-element"></a>DataSources 元素  

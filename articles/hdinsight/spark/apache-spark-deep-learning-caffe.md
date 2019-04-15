@@ -10,7 +10,7 @@ ms.topic: conceptual
 ms.date: 02/17/2017
 ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
 ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/08/2019
 ms.locfileid: "55891073"
@@ -228,7 +228,7 @@ CaffeOnSpark 提供了一些用于 MNIST 培训的网络拓扑示例。 它具�
         at java.lang.reflect.Method.invoke(Method.java:498)
         at org.apache.spark.deploy.yarn.ApplicationMaster$$anon$2.run(ApplicationMaster.scala:627)
 
-有时候，问题可能会发生在执行程序而非驱动程序中。 在这种情况下，需检查容器日志。 始终可以获取容器日志，然后获取发生故障的容器。 例如，用户可能会在运行 Caffe 时遇到这种故障。
+有时候，问题可能会发生在执行程序而非驱动程序中。 在这种情况下，需检查容器日志。 用户始终可以获取容器日志，然后获取发生故障的容器。 例如，用户可能会在运行 Caffe 时遇到这种故障。
 
     17/02/01 07:12:05 WARN YarnAllocator: Container marked as failed: container_1485916338528_0008_05_000005 on host: 10.0.0.14. Exit status: 134. Diagnostics: Exception from container-launch.
     Container id: container_1485916338528_0008_05_000005

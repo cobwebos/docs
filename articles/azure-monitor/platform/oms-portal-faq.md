@@ -14,7 +14,7 @@ ms.date: 10/18/2018
 ms.author: bwren
 ms.openlocfilehash: 8947d235894ffc021243a64244b4904c5ca7f128
 ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/11/2019
 ms.locfileid: "55990422"
@@ -92,7 +92,7 @@ OMS 门户的“设置”部分的许多设置在 Azure 门户的工作区的“
 | Windows 事件日志           | 工作区的“高级设置”菜单。 |
 | Windows 性能计数器 | 工作区的“高级设置”菜单。 |
 | Linux 性能计数器   | 工作区的“高级设置”菜单。 |
-| IIS Logs                     | 工作区的“高级设置”菜单。 |
+| IIS 日志                     | 工作区的“高级设置”菜单。 |
 | 自定义字段                | 工作区的“高级设置”菜单。 |
 | 自定义日志                  | 工作区的“高级设置”菜单。 |
 | Syslog                       | 工作区的“高级设置”菜单。 |

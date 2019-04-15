@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 存储分析收集日志和指标数据 | Microsoft Docs
-description: 使用存储分析，可以跟踪所有存储服务的度量值数据，并收集 Blob、队列和表存储的日志。
+description: 使用存储分析，可以跟踪所有存储服务的指标数据，并收集 Blob、队列和表存储的日志。
 services: storage
 author: roygara
 ms.service: storage

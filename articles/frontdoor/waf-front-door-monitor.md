@@ -35,7 +35,7 @@ Azure web 应用程序防火墙 (WAF) 监视和日志记录是通过提供日志
 
 ## <a name="logs-and-diagnostics"></a>日志和诊断
 
-与第一道防线 WAF 会提供详细报告检测到每个威胁。 日志记录与 Azure 诊断日志集成，警报以 JSON 格式记录。 这些日志可与 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)集成。
+与第一道防线 WAF 会提供详细报告检测到每个威胁。 日志记录与 Azure 诊断日志集成，并且警报以 JSON 格式记录。 这些日志可与 [Azure Monitor 日志](../azure-monitor/insights/azure-networking-analytics.md)集成。
 
 ![WAFDiag](./media/waf-front-door-monitor/waf-frontdoor-diagnostics.png)
 

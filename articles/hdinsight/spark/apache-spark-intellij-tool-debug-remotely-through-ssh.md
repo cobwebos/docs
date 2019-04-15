@@ -117,7 +117,7 @@ ms.locfileid: "58005919"
    
    ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run.png)
 
-1. 单击“断开连接”按钮，提交日志未显示在左面板中。 但是，它仍在在后端上运行。
+1. 单击“断开连接”按钮，这样，提交日志就不显示在左面板中。 但是，它仍在在后端上运行。
 
    ![远程运行按钮](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/remote-run-result.png)
 

@@ -11,7 +11,7 @@ ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
 ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/07/2019
 ms.locfileid: "55822130"
@@ -85,7 +85,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 ## <a name="azure-diagnostics-isnt-starting"></a>Azure Diagnostics 不启动
 有关为和 Azure 诊断无法启动的信息，请参阅之前提供的日志文件位置中的 DiagnosticsPluginLauncher.log 和 DiagnosticsPlugin.log 文件。
 
-如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在之前部分中指示 `MonAgentHost log file` 的位置查看其日志。
+如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在之前部分中指示 `MonAgentHost log file` 的位置查看日志。
 
 日志文件的最后一行包含退出代码。  
 
@@ -131,7 +131,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 例如，`Performance Counters` 收集在 `PerformanceCountersTable.tsf` 中。 事件日志收集在 `WindowsEventLogsTable.tsf` 中。 使用[本地日志提取](#local-log-extraction)部分中的说明打开本地收集文件，验证它们是否是在磁盘上收集的。
 
-如果没有看到本地收集的日志，并且已验证主机正在生成数据，则可能是有配置问题。 仔细查看配置。
+如果没有看到在本地收集日志，并且已确认主机正在生成数据，则可能是有配置问题。 仔细查看配置。
 
 还要查看为 MonitoringAgent MaConfig.xml 生成的配置。 验证是否存在描述相关日志源的部分。 然后验证该部分是否在诊断配置和监视代理配置间的转换中丢失。
 

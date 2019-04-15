@@ -332,7 +332,7 @@ ms.locfileid: "58540748"
 > 第一次新的自定义日志发送到 Log Analytics 工作区它可能需要一小时，才可供搜索的自定义日志。
 
 >[!NOTE]
-> 活动日志将写入自定义表，而不会显示在[活动日志解决方案](./collect-activity-logs.md)中。
+> 活动日志将写入到自定义表，而不会显示在[活动日志解决方案](./collect-activity-logs.md)中。
 
 
 ![测试逻辑应用](media/collect-activity-logs-subscriptions/log-analytics-results.png)

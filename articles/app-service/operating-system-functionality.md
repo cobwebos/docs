@@ -17,7 +17,7 @@ ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: e5ab6651503766844b2aeef1849bffff9cf4d7bb
 ms.sourcegitcommit: 644de9305293600faf9c7dad951bfeee334f0ba3
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/25/2019
 ms.locfileid: "54901779"
@@ -120,7 +120,7 @@ ms.locfileid: "54901779"
 
 在类似情况下，还可以使用 .NET 跟踪和诊断基础结构将来自 .NET 应用的实时诊断信息记入日志，并且可以选择是将跟踪信息写入应用的网络共享还是写入 blob 存储位置。
 
-诊断日志记录和跟踪中不可用于应用的领域是 Windows ETW 事件以及常见的 Windows 事件日志（例如系统、应用程序和安全事件日志）。 因为 ETW 跟踪信息可能在计算机范围中是可查看的（具有正确的 ACL），所以，将阻止对 ETW 事件的读写访问。 开发人员可能会注意到，对读取和写入 ETW 事件和常见 Windows 事件日志的 API 调用好像在起作用，这是因为应用服务在“伪装”这些调用，让它们看起来很成功。 实际上，应用程序代码对于此事件数据没有访问权限。
+诊断日志记录和跟踪中不可用于应用的领域是 Windows ETW 事件以及常见的 Windows 事件日志（例如系统、应用程序和安全事件日志）。 因为 ETW 跟踪信息可能在计算机范围中是可查看的（具有正确的 ACL），所以，将阻止对 ETW 事件的读写访问。 开发人员可能会注意到，用于读取和写入 ETW 事件和常见 Windows 事件日志的 API 调用好像在起作用，但这是因为应用服务在“伪装”这些调用，让它们看起来很成功。 实际上，应用程序代码对于此事件数据没有访问权限。
 
 <a id="RegistryAccess"></a>
 

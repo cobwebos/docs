@@ -9,7 +9,7 @@ ms.service: iot-dps
 services: iot-dps
 ms.openlocfilehash: 5dd027c886e8102e77ddefe93817daee0e1ec29b
 ms.sourcegitcommit: 56d20d444e814800407a955d318a58917e87fe94
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/29/2018
 ms.locfileid: "52584140"
@@ -58,7 +58,7 @@ Azure IoT 中心设备预配服务是一项基于 REST API 的云服务，其目
 * 若要导出已预配的设备的相关信息，可以使用[注册状态 - 获取注册状态](/rest/api/iot-dps/getdeviceregistrationstate/getdeviceregistrationstate)操作。
 
 > [!NOTE]
-> 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出设备预配服务的某些系统生成日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
+> 当你使用 Microsoft 的企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 租户管理员无法访问或导出设备预配服务系统生成的某些日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关的诊断数据。
 
 ## <a name="links-to-additional-documentation"></a>其他文档的链接
 

@@ -23,7 +23,7 @@ ms.locfileid: "54902680"
 
 了解如何创建在将消息提交到 Azure 存储队列时触发的函数。
 
-![在日志中查看消息。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
+![查看日志中的消息。](./media/functions-create-storage-queue-triggered-function/function-app-in-portal-editor.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -103,7 +103,7 @@ ms.locfileid: "54902680"
 
 1. 等待几秒钟，返回到函数日志并验证是否已从队列中读取新消息。
 
-    ![在日志中查看消息。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
+    ![查看日志中的消息。](./media/functions-create-storage-queue-triggered-function/functions-queue-storage-trigger-view-logs.png)
 
 1. 返回到存储资源管理器中，单击“刷新”，并验证该消息是否已处理且不再在队列中。
 

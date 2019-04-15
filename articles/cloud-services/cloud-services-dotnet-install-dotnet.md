@@ -206,7 +206,7 @@ ms.locfileid: "57534065"
    ![包含所有文件的角色内容][2]
 
 ## <a name="configure-diagnostics-to-transfer-startup-logs-to-blob-storage"></a>配置诊断以将启动日志传输到 Blob 存储
-为了方便排查安装问题，可以配置 Azure 诊断，将启动脚本或 .NET 安装程序生成的任何日志文件传输到 Azure Blob 存储。 使用这种方法，可从 blob 存储直接下载日志文件，而无需通过远程桌面访问角色，即可查看日志。
+为了方便排查安装问题，可以配置 Azure 诊断，将启动脚本或 .NET 安装程序生成的任何日志文件传输到 Azure Blob 存储。 使用这种方法，可通过从 blob 存储直接下载日志文件（而无需通过远程桌面访问角色）查看日志。
 
 
 若要配置诊断，请打开 diagnostics.wadcfgx 文件，并在“Directories”节点下添加以下内容： 

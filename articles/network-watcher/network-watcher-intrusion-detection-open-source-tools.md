@@ -285,7 +285,7 @@ tail -f /var/log/suricata/fast.log
 
 访问 [Use packet capture to do proactive network monitoring with Azure Functions](network-watcher-alert-triggered-packet-capture.md)（在 Azure Functions 中使用数据包捕获执行主动网络监视），了解如何根据警报触发数据包捕获
 
-访问[使用 Power BI 可视化 NSG 流日志](network-watcher-visualize-nsg-flow-logs-power-bi.md)，了解如何使用 Power BI 可视化 NSG 流日志
+访问 [Visualize NSG flows logs with Power BI](network-watcher-visualize-nsg-flow-logs-power-bi.md)（使用 Power BI 可视化 NSG 流日志），了解如何使用 Power BI 可视化 NSG 流日志
 
 
 

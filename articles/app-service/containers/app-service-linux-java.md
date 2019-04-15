@@ -49,7 +49,7 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 提供 SSH 连接到运行您的应用程序的 Linux 环境。 请参阅 [Linux 上的 Azure 应用服务的 SSH 支持](/azure/app-service/containers/app-service-linux-ssh-support)，获取有关通过 Web 浏览器或本地终端连接到 Linux 系统的完整说明。
 
-### <a name="streaming-logs"></a>流式传输日志
+### <a name="streaming-logs"></a>流式处理日志
 
 若要快速进行调试和故障排除，可以使用 Azure CLI 将日志流式传输到控制台。 使用 `az webapp log config` 配置 CLI 以启用日志记录：
 
@@ -65,7 +65,7 @@ az webapp log config --name ${WEBAPP_NAME} \
 az webapp log tail --name webappname --resource-group myResourceGroup
 ```
 
-有关详细信息，请参阅[使用 Azure CLI 流式传输日志](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)。
+有关详细信息，请参阅[使用 Azure CLI 流式处理日志](../troubleshoot-diagnostic-logs.md#streaming-with-azure-cli)。
 
 ### <a name="app-logging"></a>应用日志记录
 

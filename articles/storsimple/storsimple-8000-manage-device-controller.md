@@ -16,7 +16,7 @@ ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: 5e461f340e1c58f64c6d645a1e47cfd811bc4de5
 ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 11/07/2018
 ms.locfileid: "51261700"
@@ -148,7 +148,7 @@ ms.locfileid: "51261700"
 
 **问：** 如何判断控制器是否已重新启动或关闭？
 
-**答：** 可以在“控制器”边栏选项卡上查看控制器状态。 控制器状态会指示控制器是否正在重启或关闭。 此外，如果重启或关闭了控制器，“警报”边栏选项卡也会包含信息性警报。 活动日志中也会记录控制器重启和关闭操作。 有关活动日志的详细信息，请转到[查看活动日志](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
+**答：** 可以在“控制器”边栏选项卡上查看控制器状态。 控制器状态会指示控制器是否正在重启或关闭。 此外，如果重启或关闭了控制器，“警报”边栏选项卡也会包含信息性警报。 控制器重启和关闭操作也会记录在活动日志中。 有关活动日志的详细信息，请转到[查看活动日志](storsimple-8000-service-dashboard.md#view-the-activity-logs)。
 
 **问：** 控制器故障转移是否对 I/O 造成任何影响？
 

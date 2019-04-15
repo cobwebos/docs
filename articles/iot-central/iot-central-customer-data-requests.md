@@ -29,7 +29,7 @@ Azure Active Directory 对象 ID 用于标识用户和分配角色。 Azure IoT 
 
 至于设备，Microsoft 不保留其信息，也无法访问将设备与用户相关联的数据。 在 Azure IoT Central 中托管的许多设备（例如售货机或咖啡机）不是个人设备。 不过，客户可以将某些设备视为可以进行个人标识的设备，并可自行保留将设备与个人绑定的个人资产或库存跟踪系统。 Azure IoT Central 将所有与设备关联的数据视为个人数据来管理和存储。
 
-当你使用 Microsoft 企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关（但与用户活动不相关）的诊断数据。 应用程序管理员无法访问或导出 Azure IoT Central 的系统生成日志。
+当你使用 Microsoft 企业服务时，Microsoft 会生成一些信息，称为系统生成的日志。 这些日志包含在服务中执行的实际操作以及与个人设备相关（但与用户活动不相关）的诊断数据。 应用程序管理员无法访问或导出 Azure IoT Central 系统生成的日志。
 
 ## <a name="deleting-customer-data"></a>删除客户数据
 

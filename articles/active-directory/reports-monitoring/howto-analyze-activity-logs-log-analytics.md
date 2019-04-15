@@ -26,7 +26,7 @@ ms.locfileid: "58436798"
 ---
 # <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>使用 Azure Monitor 日志（预览版）分析 Azure AD 活动日志
 
-[将 Azure AD 活动日志与 Azure Monitor 日志集成](howto-integrate-activity-logs-with-log-analytics.md)之后，可以使用 Azure Monitor 日志的强大功能来深入了解自己的环境。 此外，可以安装 [Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)，访问有关环境中审核和登录事件的预建报表。
+[将 Azure AD 活动日志与 Azure Monitor 日志集成](howto-integrate-activity-logs-with-log-analytics.md)之后，可以使用 Azure Monitor 日志的强大功能来深入了解自己的环境。 此外，可以安装[用于 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)，访问有关环境中审核和登录事件的预建报表。
 
 本文介绍如何在 Log Analytics 工作区中分析 Azure AD 活动日志。 
 
@@ -50,7 +50,7 @@ ms.locfileid: "58436798"
 
 ## <a name="view-the-schema-for-azure-ad-activity-logs"></a>查看 Azure AD 活动日志的架构
 
-系统将日志推送到工作区中的“AuditLogs”和“SigninLogs”表。 查看这些表的架构：
+日志将推送到工作区中的“AuditLogs”和“SigninLogs”表。 查看这些表的架构：
 
 1. 在上一节中的默认查询视图中，选择“架构”并展开工作区。 
 

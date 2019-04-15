@@ -10,13 +10,13 @@ ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
 ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/04/2019
 ms.locfileid: "55697826"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
-当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，会将日志写入到与该作业关联的存储帐户中的块 Blob 中。  
+当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，日志将写入到与该作业关联的存储帐户中的块 Blob 中。  
   
 导入/导出服务可能会写入两种日志：  
   

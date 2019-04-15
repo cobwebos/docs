@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
-ms.openlocfilehash: ffd5f4baf3bbd2b7f0fe90272f896e438a30a35f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: d36737e6007f247777689e2afa9f47b3ad5bf107
+ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58079224"
+ms.lasthandoff: 04/04/2019
+ms.locfileid: "59006662"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>快速入门：使用 C# 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
 
@@ -26,7 +26,6 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 服务和设备应用程序可以使用 [IoT 中心设备流](./iot-hub-device-streams-overview.md)以安全且防火墙友好的方式进行通信。 本快速入门指南涉及两个 C# 程序，在其中，可以使用通过 IoT 中心建立的设备流发送客户端/服务器应用程序流量（例如 SSH 和 RDP）。 有关设置概述，请参阅[此文](./iot-hub-device-streams-overview.md#local-proxy-sample-for-ssh-or-rdp)。
 
 本文首先介绍 SSH 的设置（使用端口 22）。 然后介绍如何修改设置中的 RDP 端口。 由于设备流不区分应用程序和协议，因此，可以修改同一示例来适应其他类型的应用程序流量。 这通常只需将通信端口更改为目标应用程序所用的端口。
-
 
 ## <a name="how-it-works"></a>工作原理：
 
@@ -53,8 +52,8 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-  - 美国中部
-  - 美国中部 EUAP
+  - **美国中部**
+  - **美国中部 EUAP**
 
 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
 
@@ -66,8 +65,13 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 dotnet --version
 ```
 
-从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载示例 C# 项目并提取 ZIP 存档。
+运行以下命令将用于 Azure CLI 的 Microsoft Azure IoT 扩展添加到 Cloud Shell 实例。 IOT 扩展会将 IoT 中心、IoT Edge 和 IoT 设备预配服务 (DPS) 特定的命令添加到 Azure CLI。
 
+```azurecli-interactive
+az extension add --name azure-cli-iot-ext
+```
+
+从 https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip 下载示例 C# 项目并提取 ZIP 存档。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -77,14 +81,13 @@ dotnet --version
 
 必须先将设备注册到 IoT 中心，然后该设备才能进行连接。 在本快速入门中，将使用 Azure Cloud Shell 来注册模拟设备。
 
-1. 在 Azure Cloud Shell 中运行以下命令，以添加 IoT 中心 CLI 扩展并创建设备标识。 
+1. 在 Azure Cloud Shell 中运行以下命令，以创建设备标识。
 
    **YourIoTHubName**：将下面的占位符替换为你为 IoT 中心选择的名称。
 
    **MyDevice**：这是为注册的设备提供的名称。 如示例中所示使用 MyDevice。 如果为设备选择不同名称，则可能还需要在本文中从头至尾使用该名称，并在运行示例应用程序之前在其中更新设备名称。
 
     ```azurecli-interactive
-    az extension add --name azure-cli-iot-ext
     az iot hub device-identity create --hub-name YourIoTHubName --device-id MyDevice
     ```
 
@@ -185,7 +188,7 @@ ssh <username>@localhost -p 2222
 
 通过 `IP_address:22` 连接到 SSH 守护程序的设备本地代理中的控制台输出：
 
-]替代文本(./media/quickstart-device-streams-proxy-csharp/device-console-output.png "")设备本地代理输出")
+![替代文本](./media/quickstart-device-streams-proxy-csharp/device-console-output.png "设备本地代理输出")
 
 SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地代理侦听的端口 22 来与 SSH 守护程序通信）：
 
@@ -259,7 +262,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 在本快速入门中，你设置了一个 IoT 中心、注册了一个设备、部署了一个设备和一个用于通过 IoT 中心建立设备流的服务本地代理程序，并使用了代理通过隧道传输 SSH 或 RDP 流量。 相同的模式可以适应其他客户端/服务器协议（其中的服务器（例如 SSH 守护程序）在设备上运行）。
 
-请使用以下链接详细了解设备流：
+使用以下链接详细了解设备流：
 
 > [!div class="nextstepaction"]
 > [设备流概述](./iot-hub-device-streams-overview.md)

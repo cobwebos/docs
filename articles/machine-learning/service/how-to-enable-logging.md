@@ -119,7 +119,7 @@ service.update(enable_app_insights=True)
 
 ## <a name="python-native-logging-settings"></a>Python 本机日志记录设置
 
-SDK 中的某些日志可能包含一个错误，指示将日志记录级别设置为“调试”。 若要设置日志记录级别，请在脚本中添加以下代码。
+SDK 中的某些日志可能包含一个错误，指示你将日志记录级别设置为“调试”。 若要设置日志记录级别，请在脚本中添加以下代码。
 
 ```python
 import logging

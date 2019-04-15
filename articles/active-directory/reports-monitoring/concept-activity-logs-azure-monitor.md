@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的 Azure Active Directory 活动日志（预览版）| Microsoft Docs
-description: Azure Monitor 中的 Azure Active Directory 活动日志（预览版）简介
+description: Azure Monitor（预览版）中的 Azure Active Directory 活动日志简介
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -24,7 +24,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 03/26/2019
 ms.locfileid: "58436296"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure AD 活动日志（预览版）
+# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor（预览版）中的 Azure AD 活动日志
 
 现在可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点以便长期保留以及获取数据见解。 使用 Azure Monitor 中的 Azure AD 日志公共预览版可以：
 
@@ -102,7 +102,7 @@ ms.locfileid: "58436296"
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-此部分回答 Azure Monitor 中 Azure AD 日志的常见问题并讨论已知问题。
+此部分回答 Azure Monitor 中 Azure AD 日志的常见问题并讨论其已知问题。
 
 **问：哪些日志包括在其中？**
 

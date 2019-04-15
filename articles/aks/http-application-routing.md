@@ -10,7 +10,7 @@ ms.date: 04/25/2018
 ms.author: laevenso
 ms.openlocfilehash: d6e1cc033416c90e27b5caf4bba310400e55b3a5
 ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/15/2019
 ms.locfileid: "56312271"
@@ -222,7 +222,7 @@ time="2018-04-26T20:36:21Z" level=info msg="Updating TXT record named 'party-cli
 
 ![获取 DNS 记录](media/http-routing/clippy.png)
 
-使用 [kubectl logs][kubectl-logs] 命令查看 Nginx 入口控制器的应用程序日志。 这些日志应确认入口资源的 `CREATE` 操作和控制器的重新加载操作。 所有 HTTP 活动都会记录到日志中。
+使用 [kubectl logs][kubectl-logs] 命令可查看 Nginx 入口控制器的应用程序日志。 这些日志应确认入口资源的 `CREATE` 操作和控制器的重新加载操作。 所有 HTTP 活动都会记录到日志中。
 
 ```bash
 $ kubectl logs -f deploy/addon-http-application-routing-nginx-ingress-controller -n kube-system

@@ -1,6 +1,6 @@
 ---
 title: 使用资源管理器模板自动启用诊断设置
-description: 了解如何使用 Resource Manager 模板创建诊断设置，以便将诊断日志流式传输到事件中心，或者将其存储在存储帐户中。
+description: 了解如何使用资源管理器模板创建诊断设置，以便将诊断日志流式传输到事件中心，或者将其存储在存储帐户中。
 author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
@@ -23,7 +23,7 @@ ms.locfileid: "58371462"
 >
 > 
 
-通过 Resource Manager 模板启用诊断日志时，所用方法取决于资源类型。
+通过资源管理器模板启用诊断日志时，所用方法取决于资源类型。
 
 * **非计算**资源（例如，网络安全组、逻辑应用、自动化）使用[此文中描述的诊断设置](../../azure-monitor/platform/diagnostic-logs-overview.md#diagnostic-settings)。
 * **计算**（基于 WAD/LAD）资源使用[此文中描述的 WAD/LAD 配置文件](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines)。

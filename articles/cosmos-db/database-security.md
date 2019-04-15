@@ -80,7 +80,7 @@ ms.locfileid: "58077235"
 
 以下屏幕截图显示在 Azure 门户中使用访问控制 (IAM) 的 Active directory 集成 (RBAC)：![Azure 门户中的访问控制 (IAM) - 演示数据库安全性](./media/database-security/nosql-database-security-identity-access-management-iam-rbac.png)
 
-以下屏幕截图显示如何使用审核日志和活动日志监视帐户：![Azure Cosmos DB 的活动日志](./media/database-security/nosql-database-security-application-logging.png)
+以下屏幕截图显示如何使用审核日志记录和活动日志监视帐户：![Azure Cosmos DB 的活动日志](./media/database-security/nosql-database-security-application-logging.png)
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory 活动日志内容包错误故障排除 | Microsoft 文档
+title: Azure Active Directory 活动日志内容包错误故障排除 | Microsoft Docs
 description: 本文将主要介绍 Azure Active Directory 活动内容包的错误消息列表，以及修复这些错误的步骤。
 services: active-directory
 documentationcenter: ''

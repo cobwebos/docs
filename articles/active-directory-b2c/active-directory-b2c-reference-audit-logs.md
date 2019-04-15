@@ -22,9 +22,9 @@ ms.locfileid: "58003597"
 Azure Active Directory B2C (Azure AD B2C) 发出审核日志，其中包含有关 B2C 资源、颁发的令牌和管理员访问权限的活动信息。 本文简要概述了通过审核日志可获取的信息并介绍了如何为 Azure AD B2C 租户访问此数据。
 
 > [!IMPORTANT]
-> 审核日志仅保留七天。 如果需要保留更长时间，请使用下示方法计划下载并存储日志。
+> 审核日志仅保留七天。 如果需要保留更长时间，请使用下面所示的方法计划下载并存储日志。
 
-## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志 B2C 类别中的可用活动概述
+## <a name="overview-of-activities-available-in-the-b2c-category-of-audit-logs"></a>审核日志的 B2C 类别中提供的活动的概述
 审核日志中的“B2C”类别包含以下类型的活动：
 
 |活动类型 |描述  |

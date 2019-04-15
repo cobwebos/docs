@@ -133,7 +133,7 @@ ms.locfileid: "58849569"
 有关配置和使用警报的详细信息，请参阅[警报概述](../monitoring-and-diagnostics/insights-alerts-portal.md)。
 
 ## <a name="activity-logs"></a>活动日志
-活动日志提供针对用于 Redis 的 Azure 缓存实例执行的操作的详细信息。 活动日志以前称为“审核日志”或“操作日志”。 通过活动日志，可确定对用于 Redis 的 Azure 缓存实例执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
+活动日志提供有关对 Azure Redis 缓存实例执行的操作的见解。 活动日志以前称为“审核日志”或“操作日志”。 通过活动日志，可确定对用于 Redis 的 Azure 缓存实例执行的任何写入操作 (PUT、POST、DELETE) 的“操作内容、操作人员和操作时间”。 
 
 > [!NOTE]
 > 活动日志不包括读取 (GET) 操作。

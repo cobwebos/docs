@@ -222,7 +222,7 @@ IIS 支持的是：IIS 7、7.5、8、8.5（IIS 是必需的）
     用于检测应用的 SDK 版本是最近下载到此服务器的版本。
 
     若要下载最新版本，请使用 Update-ApplicationInsightsVersion。
-* 成功时返回 `ApplicationInsightsApplication` 。 如果失败，则在 stderr 记录跟踪。
+* 成功时返回 `ApplicationInsightsApplication` 。 如果失败，则向 stderr 记录跟踪。
 
           Name                      : Default Web Site/WebApp1
           InstrumentationKey        : 00000000-0000-0000-0000-000000000000

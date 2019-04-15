@@ -58,7 +58,7 @@ ms.locfileid: "58519385"
 * 应该将每个日志类别在存储帐户中保留多长时间
     - 保留期为 0 天意味着永久保留日志。 否则，值可以是任意数量的 1 至 365 天之间。
     - 如果设置了保留策略，但禁止将日志存储在存储帐户中（例如，如果仅选择了“事件中心”或“Log Analytics”选项），则保留策略无效。
-    - 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从 UTC 晚上 12 点开始，但请注意，可能需要最多 24 小时才能将日志从存储帐户中删除。
+    - 保留策略按天应用，因此在一天结束时 (UTC)，将会删除当天已超过保留策略期限的日志。 例如，假设保留策略的期限为一天，则在今天开始时，会删除前天的日志。 删除过程从午夜 (UTC) 开始，但请注意，可能最多需要 24 小时才能将日志从存储帐户中删除。
 
 这些设置可以通过门户中的诊断设置、Azure PowerShell 和 CLI 命令或 [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/) 轻松进行配置。
 
@@ -69,7 +69,7 @@ ms.locfileid: "58519385"
 >
 >
 
-## <a name="how-to-enable-collection-of-diagnostic-logs"></a>如何启用诊断日志的收集
+## <a name="how-to-enable-collection-of-diagnostic-logs"></a>如何启用诊断日志收集
 
 可以[在资源管理器模板中创建资源的过程中](./../../azure-monitor/platform/diagnostic-logs-stream-template.md)或在创建资源后通过门户中该资源的页面启用诊断日志的收集。 也可使用 Azure PowerShell 或 CLI 命令（或者使用 Azure Monitor REST API）在任何时间点启用集合。
 
@@ -106,11 +106,11 @@ ms.locfileid: "58519385"
 
 ![AAD 诊断设置](./media/diagnostic-logs-overview/diagnostic-settings-aad.png)
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>通过 PowerShell 启用资源诊断日志的集合
+### <a name="enable-collection-of-resource-diagnostic-logs-via-powershell"></a>通过 PowerShell 启用资源诊断日志收集
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-若要通过 Azure PowerShell 启用资源诊断日志的集合，请使用以下命令：
+若要通过 Azure PowerShell 启用资源诊断日志收集，请使用以下命令：
 
 若要允许在存储帐户中存储诊断日志，请使用以下命令：
 
@@ -118,9 +118,9 @@ ms.locfileid: "58519385"
 Set-AzDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
-存储帐户 ID 是需要向其发送日志的存储帐户的资源 ID。
+存储帐户 ID 是要将日志发送到的存储帐户的资源 ID。
 
-若要允许将诊断日志流式传输到事件中心，请使用以下命令：
+要允许将诊断日志流式传输到事件中心，请使用以下命令：
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
@@ -206,7 +206,7 @@ az monitor diagnostic-settings create --name <diagnostic name> \
 
 目前无法使用 CLI 配置租户诊断设置。
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>通过 REST API 启用资源诊断日志的集合
+### <a name="enable-collection-of-resource-diagnostic-logs-via-rest-api"></a>通过 REST API 启用资源诊断日志收集
 
 若要使用 Azure Monitor REST API 更改诊断设置，请参阅[此文档](https://docs.microsoft.com/rest/api/monitor/)。
 

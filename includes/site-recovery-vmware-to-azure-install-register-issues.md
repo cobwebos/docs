@@ -6,7 +6,7 @@ ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 9919521c8cb77f23f50a8097c4e630b4467dc725
 ms.sourcegitcommit: 48592dd2827c6f6f05455c56e8f600882adb80dc
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 10/26/2018
 ms.locfileid: "50165699"
@@ -17,7 +17,7 @@ ms.locfileid: "50165699"
 |错误...未能加载帐户。 错误: System.IO.IOException: 安装和注册 CS 服务器时无法从传输连接读取数据。| 确保在计算机上启用 TLS 1.0。 |
 
 ### <a name="registration-failures"></a>注册失败
-可以通过检查 **%ProgramData%\ASRLogs** 文件夹中的日志来调试注册失败。
+可以通过查看 **%ProgramData%\ASRLogs** 文件夹中的日志来调试注册失败。
 
 | **示例错误消息** | **建议的操作** |
 |--------------------------|------------------------|

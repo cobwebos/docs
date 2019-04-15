@@ -84,7 +84,7 @@ Azure AD B2C 支持将数据发送到 Application Insights 的功能。  Applica
 ### <a name="see-the-logs-in-application-insights"></a>在 Application Insights 中查看日志
 
 >[!NOTE]
-> 可以在 Application Insights 中看到新日志之前，有一小段延迟（小于 5 分钟）。
+> 在 Application Insights 中看到新日志之前会有一小段延迟（短于 5 分钟）。
 
 1. 打开在 [Azure 门户](https://portal.azure.com)中创建的 Application Insights 资源。
 1. 在“概述”菜单中，单击“分析”。

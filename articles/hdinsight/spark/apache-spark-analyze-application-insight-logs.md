@@ -1,6 +1,6 @@
 ---
 title: 使用 Spark 分析 Application Insight 日志 - Azure HDInsight
-description: 了解如何将 Application Insight 日志导出到 Blob 存储，然后使用 HDInsight 上的 Spark 分析这些日志。
+description: 了解如何将 Application Insight 日志导出到 Blob 存储，并使用 HDInsight 上的 Spark 分析这些日志。
 services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -11,7 +11,7 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.openlocfilehash: 806e5b6f764797d2e038cc7ed58ec1d04f678e2b
 ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/09/2019
 ms.locfileid: "54120370"
@@ -201,7 +201,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
     此查询会返回 context.location.city 不为 null 的前 20 条记录的 city 信息。
 
    > [!NOTE]  
-   > context 结构存在于由 Application Insights 记录的所有遥测中。 日志中可能没有填充 city 元素。 使用架构识别可以查询的、可能包含日志数据的其他元素。
+   > context 结构存在于由 Application Insights 记录的所有遥测中。 日志中可能没有填充 city 元素。 使用架构识别你可以查询的、可能包含日志数据的其他元素。
 
     此查询会返回类似于以下文本的信息：
 
@@ -344,7 +344,7 @@ Application Insights 为导出到 Blob 的遥测数据格式提供[导出数据�
     此查询会返回 context.location.city 不为 null 的前 20 条记录的 city 信息。
 
    > [!NOTE]  
-   > context 结构存在于由 Application Insights 记录的所有遥测中。 日志中可能没有填充 city 元素。 使用架构识别可以查询的、可能包含日志数据的其他元素。
+   > context 结构存在于由 Application Insights 记录的所有遥测中。 日志中可能没有填充 city 元素。 使用架构识别你可以查询的、可能包含日志数据的其他元素。
    >
    >
 

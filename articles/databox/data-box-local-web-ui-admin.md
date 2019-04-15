@@ -19,7 +19,7 @@ ms.locfileid: "57404036"
 
 本文介绍可在 Data Box 上执行的一些配置和管理任务。 可以通过 Azure 门户 UI 和设备的本地 Web UI 管理 Data Box。 本文重点介绍可使用本地 Web UI 执行的任务。
 
-Data Box 的本地 Web UI 用于设备的初始配置。 还可以使用本地 Web UI 关闭或重启 Data Box、运行诊断测试、更新软件、查看副本日志以及生成供 Microsoft 支持部门使用的日志包。
+Data Box 的本地 Web UI 用于设备的初始配置。 还可以使用本地 Web UI 关闭或重启 Data Box、运行诊断测试、更新软件、查看复制日志以及生成供 Microsoft 支持部门使用的日志包。
 
 本文包括以下教程：
 

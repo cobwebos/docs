@@ -27,7 +27,7 @@ ms.locfileid: "57436471"
 |---|---|---|
 | time | 需要 | 事件时间戳 (UTC)。 |
 | resourceId | 需要 | 发出事件的资源的资源 ID。 对于租户服务，其形式为 /tenants/tenant-id/providers/provider-name。 |
-| tenantId | 对于租户日志是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
+| tenantId | 对于租户日志而言是必需的 | 此事件关联到的 Active Directory 租户的租户 ID。 此属性仅用于租户级日志，它不会出现在资源级日志中。 |
 | operationName | 需要 | 此事件表示的操作的名称。 如果该事件表示 RBAC 操作，则这是 RBAC 操作名称 （例如 Microsoft.Storage/storageAccounts/blobServices/blobs/Read）。 通常以资源管理器操作的形式建模，即使它们不是实际记录的资源管理器操作 (`Microsoft.<providerName>/<resourceType>/<subtype>/<Write/Read/Delete/Action>`) |
 | operationVersion | 可选 | 如果使用 API 执行 operationName，则 api-version 与该操作关联（例如 `http://myservice.windowsazure.net/object?api-version=2016-06-01`）。 如果没有与此操作相对应的 API，则该版本表示该操作的版本，以防与操作相关联的属性在将来发生更改。 |
 | category | 需要 | 事件的日志类别。 类别是可以在特定资源上启用或禁用日志的粒度。 在事件的属性 blob 内显示的属性在特定日志类别和资源类型中相同。 典型的日志类别是“Audit”、“Operational”、“Execution”和“Request”。 |
@@ -128,7 +128,7 @@ ms.locfileid: "57436471"
 |Microsoft.DocumentDB/databaseAccounts|MongoRequests|MongoRequests|
 |Microsoft.DocumentDB/databaseAccounts|QueryRuntimeStatistics|QueryRuntimeStatistics|
 |Microsoft.EventHub/namespaces|ArchiveLogs|存档日志|
-|Microsoft.EventHub/namespaces|OperationalLogs|运行日志|
+|Microsoft.EventHub/namespaces|OperationalLogs|操作日志|
 |Microsoft.EventHub/namespaces|AutoScaleLogs|自动缩放日志|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleEvaluations|自动缩放评估|
 |Microsoft.Insights/AutoscaleSettings|AutoscaleScaleActions|自动缩放缩放操作|
@@ -175,7 +175,7 @@ ms.locfileid: "57436471"
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryReplicationDataUploadRate|Azure Site Recovery 复制数据上传速度|
 |Microsoft.RecoveryServices/Vaults|AzureSiteRecoveryProtectedDiskDataChurn|Azure Site Recovery 受保护的磁盘数据改动|
 |Microsoft.Search/searchServices|OperationLogs|操作日志|
-|Microsoft.ServiceBus/namespaces|OperationalLogs|运行日志|
+|Microsoft.ServiceBus/namespaces|OperationalLogs|操作日志|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.Sql/servers/databases|AutomaticTuning|自动优化|
 |Microsoft.Sql/servers/databases|QueryStoreRuntimeStatistics|查询存储运行时统计信息|

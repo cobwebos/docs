@@ -44,7 +44,7 @@ Azure Active Directory (Azure AD) 可帮助管理用户标识，并创建智能�
 
 - **Microsoft Azure Active Directory B2C (Azure AD B2C)**
 
-    Azure AD B2C 在欧洲数据中心存储所有用户静态数据。 但是，运行日志（已删除个人数据）会保留在用户访问服务时所在的位置。 例如，如果某个 B2C 用户访问位于美国的服务，则运行日志会保留在美国。此外，不包含个人数据的所有策略配置数据只会存储在美国。有关策略配置的详细信息，请参阅 [Azure Active Directory B2C：内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)一文。
+    Azure AD B2C 在欧洲数据中心存储所有用户静态数据。 但是，操作日志（已删除个人数据）会保留在用户访问服务时所在的位置。 例如，如果某个 B2C 用户访问位于美国的服务，则操作日志会保留在美国。此外，不包含个人数据的所有策略配置数据只会存储在美国。有关策略配置的详细信息，请参阅 [Azure Active Directory B2C：内置策略](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-policies)一文。
 
 - **Microsoft Azure Active Directory B2B (Azure AD B2B)** 
     

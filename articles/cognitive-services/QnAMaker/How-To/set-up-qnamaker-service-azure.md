@@ -53,7 +53,7 @@ ms.locfileid: "58876395"
         > [!NOTE]
         > “搜索位置”可以与“网站位置”不同。
 
-    * 选择是否要启用 **Application Insights**。 如果启用了 **Application Insights**，则 QnA Maker 会收集有关流量、聊天记录和错误的遥测数据。
+    * 选择是否要启用 **Application Insights**。 如果启用了 **Application Insights**，则 QnA Maker 会收集有关流量、聊天日志和错误的遥测数据。
     * 选择将部署 Application Insights 资源的 **App insights 位置**。
     * 有关成本节约措施，你可以[共享](upgrade-qnamaker-service.md?#share-existing-services-with-qna-maker)QnA maker 创建的部分而不是所有 Azure 资源。 
 

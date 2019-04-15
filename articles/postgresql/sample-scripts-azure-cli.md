@@ -29,6 +29,6 @@ ms.locfileid: "53539857"
 |**还原服务器**||
 | [还原服务器](./scripts/sample-point-in-time-restore.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI 脚本，用于将适用于 PostgreSQL 服务器的 Azure 数据库还原到前一个时间点。 |
 |**下载服务器日志**||
-| [启用和下载服务器日志](./scripts/sample-server-logs.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI 脚本，用于启用和下载适用于 PostgreSQL 服务器的 Azure 数据库的服务器日志的。 |
+| [启用和下载服务器日志](./scripts/sample-server-logs.md?toc=%2fcli%2fazure%2ftoc.json) | Azure CLI 脚本，用于启用和下载 Azure Database for PostgreSQL 服务器的服务器日志。 |
 |||
 

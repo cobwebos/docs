@@ -36,7 +36,7 @@ ms.locfileid: "58848777"
 - 支持指标和日志。
 - 合并来自多个源包括来自输出的数据[指标资源管理器](platform/metrics-charts.md)，[记录查询](log-query/log-query-overview.md)，并[映射](app/app-map.md)和 Application Insights 中的可用性。
 - 包含个人或共享仪表板的选项。 与 Azure [基于角色的身份验证 (RBAC)](../role-based-access-control/overview.md) 集成。
-- 自动刷新。 指标刷新的时间范围至少为 5 分钟。 以 1 分钟为间隔刷新日志。
+- 自动刷新。 指标刷新的时间范围至少为 5 分钟。 日志以 1 分钟为间隔刷新。
 - 带有时间戳和自定义参数的参数化指标仪表板。
 - 灵活的布局选项。
 - 全屏模式。

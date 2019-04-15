@@ -134,7 +134,7 @@ az container create \
     --environment-variables NumWords=5 MinLength=8
 ```
 
-对容器的环境变量指定 `NumWords=5` 和 `MinLength=8` 后，容器日志应会显示不同的输出。 容器状态显示为 *Terminated*（使用 `az container show` 可检查其状态）后，将显示其日志用于查看新的输出：
+对容器的环境变量指定 `NumWords=5` 和 `MinLength=8` 后，容器日志应会显示不同的输出。 容器状态显示为 *Terminated*（使用 `az container show` 可检查其状态）后，请显示其日志以查看新的输出：
 
 ```azurecli-interactive
 az container logs --resource-group myResourceGroup --name mycontainer2

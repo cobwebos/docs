@@ -445,7 +445,7 @@ Azure AD 智能锁定可以防范暴力破解密码攻击。 智能锁定可以�
 
 监视运行身份验证代理的服务器，以保持解决方案的可用性。 除了常规服务器性能计数器以外，身份验证代理还会公开有助于了解身份验证统计信息和错误的性能对象。
 
-身份验证代理将操作记录到 Application and Service Logs\Microsoft\AzureAdConnect\AuthenticationAgent\Admin 下的 Windows 事件日志。
+身份验证代理将操作记录到“应用程序和服务日志\Microsoft\AzureAdConnect\AuthenticationAgent\Admin”下的 Windows 事件日志。
 
 还可以出于故障排除目的启用日志记录。
 

@@ -400,7 +400,7 @@ az mesh gateway show --resource-group myResourceGroup --name todolistappGateway
 az mesh app show --resource-group myResourceGroup --name todolistapp
 ```
 
-使用 `az mesh code-package-log get` 命令观察所部署的应用程序的日志：
+使用 `az mesh code-package-log get` 命令查看所部署的应用程序的日志：
 ```azurecli
 az mesh code-package-log get --resource-group myResourceGroup --application-name todolistapp --service-name WebFrontEnd --replica-name 0 --code-package-name WebFrontEnd
 ```

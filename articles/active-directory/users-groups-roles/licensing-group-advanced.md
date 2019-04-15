@@ -153,7 +153,7 @@ ms.locfileid: "57887012"
 - 基于组合许可证分配，对用户进行了哪些许可证更改。
 
 >[!NOTE]
-> 在门户的 Azure Active Directory 部分中大多数边栏选项卡上可以使用审计日志。 根据你访问筛选器的位置，可能会预应用筛选器，以仅显示与边栏选项卡的上下文相关的活动。 如果未看到所期望的结果，请检查[筛选选项](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)，或访问[“Azure Active Directory”>“活动”>“审核日志”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)下未经筛选的审核日志。
+> 在门户的 Azure Active Directory 部分中大多数边栏选项卡上可以获取审计日志。 根据你访问筛选器的位置，可能会预应用筛选器，以仅显示与边栏选项卡的上下文相关的活动。 如果未看到所期望的结果，请检查[筛选选项](../reports-monitoring/concept-audit-logs.md#filtering-audit-logs)，或访问[“Azure Active Directory”>“活动”>“审核日志”](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Audit)下未经筛选的审核日志。
 
 ### <a name="find-out-who-modified-a-group-license"></a>确定组许可证的修改者
 

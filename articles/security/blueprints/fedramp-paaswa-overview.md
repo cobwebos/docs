@@ -128,7 +128,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 - Key Vault 中的所有密钥和机密都有过期日期。
 - Key Vault 中的所有密钥受专用硬件安全模块 (HSM) 的保护。 密钥类型为受 HSM 保护的 2048 位 RSA 密钥。
 - 使用基于角色的访问控制向所有用户和标识授予了最低必需权限。
-- 启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
+- Key Vault 的诊断日志已启用，其保留期至少为 365 天。
 - 对密钥进行允许的加密操作时，仅限必需的操作。
 
 **应用程序网关**：体系结构在启用 Web 应用程序防火墙和 OWASP 规则集的情况下使用应用程序网关，可降低安全漏洞风险。 其他功能包括：
@@ -145,7 +145,7 @@ ASE 经隔离后只运行单个客户的应用程序，始终可部署到虚拟�
 Azure Monitor 可广泛记录系统和用户活动以及系统运行状况。 它收集并分析 Azure 和本地环境中的资源生成的数据。
 - **活动日志**：[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
 - **诊断日志**：[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)包括每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
-- **日志存档**：所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
+- **日志存档**：所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分包括在内：
 -   [Active Directory 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署的服务器基础结构的优先建议列表。

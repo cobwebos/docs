@@ -375,7 +375,7 @@ Azure AD Connect 的最新版本包括：
 **若要更新应用权限**
 
 1. 登录 Azure 门户，选择“Azure Active Directory”，然后选择“应用注册”。
-2. 选择使用 Azure AD 活动日志 API 的应用，依次选择“设置”、“所需权限”和“Microsoft Azure Active Directory”API。
+2. 选择使用 Azure AD 活动日志 API 的应用，依次选择“设置”、“所需权限”和“Windows Azure Active Directory”API。
 3. 在“启用访问权限”边栏选项卡的“委派的权限”区域中，选中“读取目录数据”旁边的框，然后选择“保存”。
 4. 选择“授予权限”，然后选择“是”。
     
@@ -1384,7 +1384,7 @@ MFA 配置位于：“Azure Active Directory”\>“MFA 服务器”
 
 **什么是可用？**
 
-在过渡到新管理控制台的过程中，我们开发了 2 个新 API 用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险事件 API 来访问以前通过安全报告提供的数据。
+在过渡到新管理控制台的过程中，有 2 个新 API 可用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险事件 API 来访问以前通过安全报告提供的数据。
 
 有关详细信息，请参阅：
 
@@ -1859,7 +1859,7 @@ Azure 门户中使用 Azure RBAC 功能的所有资源都可以利用 Azure AD P
 
 **什么是可用？**
 
- 在过渡到新管理控制台的过程中，开发了两个新 API 用于检索可用的 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险事件 API 来访问以前通过安全报告提供的数据。
+ 在过渡到新管理控制台的过程中，有两个新 API 可用于检索 Azure AD 活动日志。 新的 API 集提供更丰富的筛选和排序功能，此外还提供更丰富的审核和登录活动。 现在可以通过 Microsoft Graph 中的 Identity Protection 风险事件 API 来访问以前通过安全报告提供的数据。
 
 
 ## <a name="september-2017"></a>2017 年 9 月

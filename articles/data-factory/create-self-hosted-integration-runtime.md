@@ -323,7 +323,7 @@ download.microsoft.com | 443 | 用于下载更新
 如果遇到类似于以下的错误，可能是由于防火墙或代理服务器配置错误，阻止了自承载集成运行时连接到数据工厂进行自身身份验证。 若要确保正确配置防火墙和代理服务器，请参阅上一部分。
 
 * 尝试注册自承载集成运行时的时候，会收到以下错误：“无法注册此 Integration Runtime 节点！ 请确认身份验证密钥有效，且集成服务主机服务在此计算机上运行。”
-* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft 集成运行时”下，会看到错误消息，例如以下错误：
+* 打开 Integration Runtime Configuration Manager 时，将看到状态为“已断开连接”或“正在连接”。 查看 Windows 事件日志时，在“事件查看器” > “应用程序和服务日志” > “Microsoft Integration Runtime”下，会看到错误消息，例如以下错误：
 
     ```
     Unable to connect to the remote server

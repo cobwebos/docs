@@ -98,7 +98,7 @@ reliabilityLevel 的概念定义可在群集的主节点上运行的 Service Fab
 }
 ```
 
-metadata 用于描述群集诊断，可以根据具体的情况进行设置。 这些变量用于收集 ETW 跟踪日志、故障转储和性能计数器。 有关 ETW 跟踪日志的详细信息，请阅读 [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) 和 [ETW 跟踪](https://msdn.microsoft.com/library/ms751538.aspx)。 可将包含[故障转储](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)和[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)的所有日志定向到计算机上的 connectionString 文件夹。 还可以使用 AzureStorage 来存储诊断信息。 请参阅以下示例代码片段：
+metadata 用于描述群集诊断，可以根据具体的情况进行设置。 这些变量有助于收集 ETW 跟踪日志、故障转储和性能计数器。 有关 ETW 跟踪日志的详细信息，请阅读 [Tracelog](https://msdn.microsoft.com/library/windows/hardware/ff552994.aspx) 和 [ETW 跟踪](https://msdn.microsoft.com/library/ms751538.aspx)。 可将所有日志（包含[故障转储](https://blogs.technet.microsoft.com/askperf/2008/01/08/understanding-crash-dump-files/)和[性能计数器](https://msdn.microsoft.com/library/windows/desktop/aa373083.aspx)）定向到计算机上的 connectionString 文件夹。 还可以使用 AzureStorage 来存储诊断信息。 请参阅以下示例代码片段：
 
 ```json
 "diagnosticsStore": {

@@ -150,8 +150,8 @@ ms.locfileid: "57864467"
 Azure Monitor 日志可广泛记录系统和用户活动以及系统运行状况。 [Azure Monitor 日志](https://docs.microsoft.com/azure/security/azure-security-disk-encryption)解决方案收集和分析 Azure 中资源生成的数据，并在本地环境。
 
 - **活动日志：**[活动日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)提供针对订阅中资源执行的操作的见解。 活动日志可帮助确定操作的发起方、发生的时间和状态。
-- **诊断日志：**[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志，以及应用程序网关访问和防火墙日志。
-- **日志存档：** 所有诊断日志都将写入集中式加密 Azure 存储帐户进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
+- **诊断日志：**[诊断日志](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)是每个资源发出的所有日志。 这些日志包括 Windows 事件系统日志、Azure 存储日志、Key Vault 审核日志以及应用程序网关访问和防火墙日志。
+- **日志存档：** 所有诊断日志都将写入到集中式加密 Azure 存储帐户以进行存档。 保留期是允许用户配置的，最长为 730 天，具体取决于组织的保留期要求。 这些日志连接到 Azure Monitor 日志进行处理、 存储和仪表板报告。
 
 此外，以下监视解决方案作为此体系结构的一部分进行安装。 请注意，客户负责配置这些解决方案，使之符合 FedRAMP 安全控制的要求：
 -   [AD 评估](https://docs.microsoft.com/azure/log-analytics/log-analytics-ad-assessment)：Active Directory 运行状况检查解决方案按固定时间间隔评估服务器环境的风险和运行状况，并且提供特定于部署服务器基础结构的优先建议列表。

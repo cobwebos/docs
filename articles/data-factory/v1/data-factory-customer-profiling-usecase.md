@@ -15,7 +15,7 @@ ms.author: shlo
 robots: noindex
 ms.openlocfilehash: bb7d6531da330bcfbf6de786ffb19984cfd1964e
 ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/04/2019
 ms.locfileid: "54017423"
@@ -28,7 +28,7 @@ Contoso 是为多个平台（游戏控制台、手持设备和个人计算机 (P
 
 Contoso 的目标是基于其玩家的游戏历史记录确定向上销售/交叉销售机会，添加极具吸引力的功能以促进企业发展，以及为客户提供更好的体验。 有关此用例，我们将使用游戏公司作为企业的示例。 该公司希望基于玩家的行为优化其游戏。 这些原则适用于想要使用其产品和服务吸引客户并增强其客户体验的任何企业。
 
-在此解决方案中，Contoso 需要评估其最近启动的市场营销活动的成效。 我们从原始游戏日志着手，对其进行处理并使用地理位置数据将其扩充，加入广告引用数据，最后将其复制到 Azure SQL 数据库，进而分析市场活动的影响。
+在此解决方案中，Contoso 需要评估其最近启动的市场营销活动的成效。 我们从原始游戏日志着手，对其进行处理并使用地理位置数据将其扩充，加入广告参考数据，最后将其复制到 Azure SQL 数据库，进而分析市场活动的影响。
 
 ## <a name="deploy-solution"></a>部署解决方案
 访问和试用此简单用例所需要的是 [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)、[Azure Blob 存储帐户](../../storage/common/storage-quickstart-create-account.md)和 [Azure SQL 数据库](../../sql-database/sql-database-get-started.md)。 在数据工厂主页上的“示例管道”磁贴上，部署客户分析管道。

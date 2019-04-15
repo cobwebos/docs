@@ -14,7 +14,7 @@ ms.date: 01/07/2019
 ms.author: barclayn
 ms.openlocfilehash: 12492fad419fdc703ddabcf2288be282f2fd47be
 ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56111775"
@@ -49,7 +49,7 @@ Azure Key Vault 在创建或更新保管库、密钥、机密、证书和托管�
 
 用于创建保管库、密钥、机密、证书和托管存储帐户的相同 REST API、门户体验和 SDK 也可以让你查看和导出这些对象。
 
-Azure Key Vault 访问日志记录是可选功能，可将其打开，为每个 REST API 调用生成日志。 这些日志将被传输到订阅中的存储帐户，并且你向该订阅应用符合组织要求的保留策略。
+Azure Key Vault 访问日志记录是可选功能，可将其启用以便为每个 REST API 调用生成日志。 这些日志将传输到应用了符合组织要求的保留策略的订阅中的存储帐户。
 
 Azure Key Vault 诊断日志包含可通过在用户隐私门户中发出导出请求来进行检索的个人数据。 此请求必须由租户管理员发出。
 

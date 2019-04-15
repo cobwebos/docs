@@ -44,7 +44,7 @@ ms.locfileid: "58652274"
 
     wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Service Control Manager'] and EventID=7022 and TimeCreated[timediff(@SystemTime) <= 86400000]]]" | more
 
-对于经典 VM，需要在“脱机”模式下工作，并手动收集日志。
+对于经典 VM，你需要在“脱机”模式下工作，并手动收集日志。
 
 ## <a name="cause"></a>原因
 
