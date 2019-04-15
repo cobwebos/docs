@@ -538,7 +538,7 @@ Azure 数据工厂支持两种类型的 Azure 存储链接服务：**AzureStorag
 | 列名称 | Type |
 | --- | --- |
 | userid |Edm.Int64 |
-| 名称 |Edm.String |
+| name |Edm.String |
 | lastlogindate |Edm.DateTime |
 
 接下来，按如下所示定义 Azure 表数据集。 不需要指定包含类型信息的“结构”部分，因为类型信息已在基础数据存储中指定。
