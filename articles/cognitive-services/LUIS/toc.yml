@@ -62,11 +62,14 @@ items:
       href: luis-quickstart-intents-regex-entity.md
     - name: 通过列表获取确切的文本匹配项
       href: luis-quickstart-intent-and-list-entity.md
-    - name: 通过分层实体获取与上下文相关的数据
-      href: luis-quickstart-intent-and-hier-entity.md
+    - name: 使用实体角色获取相关数据
+      displayName: roles, geographyV2, context
+      href: tutorial-entity-roles.md
     - name: 通过复合实体将相关的数据分组并进行提取
+      displayName: roles
       href: luis-tutorial-composite-entity.md
     - name: 通过简单实体获取名称
+      displayName: roles
       href: luis-quickstart-primary-and-secondary-data.md
   - name: 改进应用
     items:
@@ -77,6 +80,7 @@ items:
     - name: 添加常见话语格式
       href: luis-tutorial-pattern.md
     - name: 提取与上下文相关的模式
+      displayName: roles
       href: luis-tutorial-pattern-roles.md
     - name: 提取自由格式数据
       href: luis-tutorial-pattern-any.md
@@ -113,7 +117,7 @@ items:
     - name: 意向
       href: luis-concept-intent.md
     - name: 实体
-      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed
+      displayName: prebuilt, custom, regular expression, regex, simple, list, pattern.any, composite, hierarchical, machine-learn, exact, mixed, roles
       href: luis-concept-entity-types.md
     - name: 陈述
       href: luis-concept-utterance.md
@@ -130,6 +134,7 @@ items:
     - name: 短语列表
       href: luis-concept-feature.md
     - name: 模式
+      displayName: roles
       href: luis-concept-patterns.md
   - name: 数据管理
     items:
@@ -138,6 +143,7 @@ items:
     - name: 转换数据
       href: luis-concept-data-conversion.md
     - name: 提取数据
+      displayName: roles
       href: luis-concept-data-extraction.md
     - name: 数据存储
       href: luis-concept-data-storage.md
@@ -171,7 +177,7 @@ items:
     - name: 将实体添加到话语
       href: luis-how-to-add-example-utterances.md
     - name: 在没有话语的情况下添加实体
-      displayName: import
+      displayName: roles, import
       href: luis-how-to-add-entities.md
     - name: 使用预构建的模型
       items:
@@ -220,7 +226,7 @@ items:
       displayName: synonym, interchange
       href: luis-how-to-add-features.md
     - name: 添加模式
-      displayName: syntax, template
+      displayName: syntax, template, roles
       href: luis-how-to-model-intent-pattern.md
   - name: 定型
     href: luis-how-to-train.md
@@ -410,9 +416,9 @@ items:
     href: https://blog.botframework.com/category/luis/
   - name: 知识库
     href: https://cognitive.uservoice.com/knowledgebase/topics/127872-luis-language-understanding-intelligent-service
-ms.openlocfilehash: db4e3cf9cad70556b057645dec52c9705fb29079
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 1a35c8befbffae02a169e87390677c547aec833c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896102"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523675"

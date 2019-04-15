@@ -1,26 +1,26 @@
 ---
-title: 在 Azure 门户中为 AI 支持的索引构建认知搜索管道 - Azure 搜索
-description: 在 Azure 门户中使用示例数据添加数据提取、自动语言和图像处理技能的示例。
+title: 快速入门：在 Azure 门户中生成基于 AI 的索引 - Azure 搜索
+description: 使用 Azure 门户和示例数据，在 Azure 搜索索引门户中添加数据提取、自然语言和图像处理技能。
 manager: cgronlun
 author: HeidiSteen
 services: search
 ms.service: search
 ms.topic: quickstart
-ms.date: 03/17/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: f00df841f81ea5c7aa1fd53309b00487602e5143
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 161d3ff3e00f7e9e979527533f6b8ac365c41490
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200616"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59265009"
 ---
-# <a name="quickstart-create-a-cognitive-search-pipeline-using-skills-and-sample-data"></a>快速入门：使用技能和示例数据创建认知搜索管道
+# <a name="quickstart-create-an-ai-indexing-pipeline-using-cognitive-skills-and-sample-data"></a>快速入门：使用认知技能和示例数据创建 AI 索引管道
 
-认知搜索（预览版）将数据提取、自然语言处理 (NLP) 和图像处理技能添加到 Azure 搜索索引管道，使不可搜索或非结构化的内容具有更高的可搜索性。 
+Azure 搜索与[认知服务](https://azure.microsoft.com/services/cognitive-services/)相集成，可将内容提取、自然语言处理 (NLP) 和图像处理技能添加到 Azure 搜索索引管道，使不可搜索或非结构化的内容具有更高的可搜索性。 
 
-认知搜索管道可将[认知服务资源](https://azure.microsoft.com/services/cognitive-services/) - 例如 [OCR](cognitive-search-skill-ocr.md)、[语言检测](cognitive-search-skill-language-detection.md)、[实体识别](cognitive-search-skill-entity-recognition.md) - 集成到索引过程。 认知服务的 AI 算法可用于在源数据中查找模式、功能和特征，返回可用于基于 Azure 搜索的全文搜索解决方案的结构和文字内容。
+许多认知服务资源（例如 [OCR](cognitive-search-skill-ocr.md)、[语言检测](cognitive-search-skill-language-detection.md)、[实体识别](cognitive-search-skill-entity-recognition.md)，等等）都可以附加到索引过程。 认知服务的 AI 算法可用于在源数据中查找模式、功能和特征，返回可用于基于 Azure 搜索的全文搜索解决方案的结构和文字内容。
 
 本快速入门介绍如何在编写单行代码之前，在 [Azure 门户](https://portal.azure.com)中创建第一个扩充管道：
 
@@ -30,63 +30,28 @@ ms.locfileid: "58200616"
 > * 运行向导（实体技能将检测人员、地点和组织）
 > * 使用[**搜索浏览器**](search-explorer.md)查询扩充的数据
 
-## <a name="supported-regions"></a> 支持的区域
+本快速入门在免费服务中运行，但免费事务数目限制为每日 20 个文档。 若要在同一天多次运行本快速入门，请使用可以运行更多次的较小文件集。
 
-在所有 Azure 搜索区域都可以通过认知服务进行 AI 扩充的索引编制。
+> [!NOTE]
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要附加可计费的认知服务资源。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
+>
+> 内置技能的执行将按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取费用将按预览版定价计费，详见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-> [!NOTE]
-> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这会使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
->
-> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
-
 ## <a name="prerequisites"></a>先决条件
 
-[什么是认知搜索？](cognitive-search-concept-intro.md) 介绍了扩充体系结构和组件。 
+[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
-本场景专门使用了 Azure 服务。 创建所需的服务属于准备工作。
+[认知服务](https://azure.microsoft.com/services/cognitive-services/)提供 AI。 本快速入门包含了在指定管道时添加这些内联资源的步骤。 无需提前设置帐户。
 
-+ [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)提供源数据
-+ [认知服务](https://azure.microsoft.com/services/cognitive-services/)提供 AI（指定管道时，可以按嵌入式方法创建这些资源）
-+ [Azure 搜索](https://azure.microsoft.com/services/search/)提供扩充的索引管道和丰富的自由格式的文本搜索体验，以供在自定义应用中使用
-
-### <a name="set-up-azure-search"></a>设置 Azure 搜索
-
-首先注册 Azure 搜索服务。 
-
-1. 使用 Azure 帐户登录到 [Azure 门户](https://portal.azure.com)。
-
-1. 单击“创建资源”，搜索“Azure 搜索”，然后单击“创建”。 首次设置搜索服务时如需更多帮助，请参阅[在门户中创建 Azure 搜索服务](search-create-service-portal.md)。
-
-   ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
-
-1. 对于“资源组”，请创建一个新的资源组用于包含本快速入门中创建的所有资源。 这样可以在完成本快速入门后更轻松地清理资源。
-
-1. 对于“位置”，请为认知搜索选择[支持的区域](#supported-regions)之一。
-
-1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
-
-   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
-
-   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
-
-   > [!NOTE]
-   > 认知搜索目前提供公共预览版。 技能集执行目前已在所有层中推出，包括免费层。 你将能够在不关联付费认知服务资源的情况下执行有限数量的扩充。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
-
-1. 将服务固定到仪表板，以快速访问服务信息。
-
-   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
+需要使用 Azure 服务将输入提供给索引管道。 可以使用 [Azure 搜索索引器](search-indexer-overview.md)支持的任何数据源，但 Azure 表存储除外，因为它不支持 AI 索引。 本快速入门使用 [Azure Blob 存储](https://azure.microsoft.com/services/storage/blobs/)作为源数据文件的容器。 
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
 
-扩充管道从 [Azure 搜索索引器](search-indexer-overview.md)支持的 Azure 数据源提取数据。 请注意，认知搜索不支持 Azure 表存储。 本演练使用 Blob 存储来展示多种内容类型。
-
 1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
 
-1. 注册 Azure Blob 存储，创建存储帐户，打开 Blob 服务页并创建容器。 
-
-1. 在容器中将公共访问级别设置为“容器(对容器和 Blob 进行匿名读取访问)”。 有关详细信息，请参阅*搜索非结构化数据*教程中的[“创建容器”部分](../storage/blobs/storage-unstructured-search.md#create-a-container)。
+1. [注册 Azure Blob 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，创建存储帐户，打开 Blob 服务页并创建容器。  在 Azure 搜索所在的同一区域创建存储帐户。
 
 1. 在创建的容器中，单击“上传”以上传在上一步中下载的示例文件。
 

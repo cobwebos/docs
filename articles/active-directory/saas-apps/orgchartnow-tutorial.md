@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: d34b40195a5f8effb794f3fbefc7949740509e27
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: cc2bbd0c1220a37de640bde6294eb096b25e5398
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835656"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59258192"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-orgchart-now"></a>教程：Azure Active Directory 与 OrgChart Now 集成
 
@@ -28,24 +28,24 @@ ms.locfileid: "57835656"
 将 OrgChart Now 与 Azure AD 集成提供以下优势：
 
 * 可在 Azure AD 中控制谁有权访问 OrgChart Now。
-* 使用其 Azure AD 帐户，可以让用户自动登录到 OrgChart Now （单一登录）。
+* 可让用户使用其 Azure AD 帐户自动登录到 OrgChart Now（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 OrgChart Now 的集成，需要准备好以下各项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* OrgChart Now 单一登录已启用的订阅
+* 已启用 OrgChart Now 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* OrgChart Now 支持**SP**并**IDP**启动的 SSO
+* OrgChart Now 支持 **SP** 和 **IDP** 发起的 SSO
 
 ## <a name="adding-orgchart-now-from-the-gallery"></a>从库中添加 OrgChart Now
 
@@ -71,25 +71,25 @@ ms.locfileid: "57835656"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，你将配置和测试 Azure AD 单一登录与 OrgChart Now 基于名为的测试用户**Britta Simon**。
-为实现单一登录工作，需要建立 Azure AD 用户与 OrgChart Now 中的相关的用户之间的链接关系。
+在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 OrgChart Now 的 Azure AD 单一登录。
+若要正常使用单一登录，需要在 Azure AD 用户与 OrgChart Now 相关用户之间建立链接关系。
 
 若要配置和测试 OrgChart Now 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[组织结构图现在上单一登录配置](#configure-orgchart-now-single-sign-on)** -若要在应用程序端配置单一登录设置。
+2. **[配置 OrgChart Now 单一登录](#configure-orgchart-now-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 OrgChart Now 测试用户](#create-orgchart-now-test-user)** -在 OrgChart Now 链接到用户的 Azure AD 表示形式中有的 Britta Simon 相对应。
+5. **[创建 OrgChart Now 测试用户](#create-orgchart-now-test-user)** - 在 OrgChart Now 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Azure AD 单一登录 OrgChart Now，请执行以下步骤：
+若要配置 OrgChart Now 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在中[Azure 门户](https://portal.azure.com/)，然后在**OrgChart Now**应用程序集成页上，选择**单一登录**。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“OrgChart Now”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -114,13 +114,13 @@ ms.locfileid: "57835656"
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://sso2.orgchartnow.com/Shibboleth.sso/Login?entityID=<YourEntityID>&target=https://sso2.orgchartnow.com`
 
     > [!NOTE]
-    > `<YourEntityID>` 是**Azure AD 标识符**从复制**设置 OrgChart Now**部分中，本教程的后面所述。
+    > `<YourEntityID>` 是从“设置 OrgChart Now”部分（本教程稍后会介绍）复制的“Azure AD 标识符”。
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
     ![证书下载链接](common/metadataxml.png)
 
-7. 上**设置 OrgChart Now**部分中，复制具体请根据要求的相应 URL。
+7. 在“设置 OrgChart Now”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -132,7 +132,7 @@ ms.locfileid: "57835656"
 
 ### <a name="configure-orgchart-now-single-sign-on"></a>配置 OrgChart Now 单一登录
 
-若要在配置单一登录**OrgChart Now**端，您需要发送下载**联合身份验证元数据 XML**并将相应的 Azure 门户中的复制的 Url [OrgChart Now 支持团队](mailto:ocnsupport@officeworksoftware.com). 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
+若要在 **OrgChart Now** 端配置单一登录，需要将下载的“联合元数据 XML”以及从 Azure 门户复制的相应 URL 发送给 [OrgChart Now 支持团队](mailto:ocnsupport@officeworksoftware.com)。 他们会对此进行设置，使两端的 SAML SSO 连接均正确设置。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
@@ -163,7 +163,7 @@ ms.locfileid: "57835656"
 
 在本部分，我们通过授予 Britta Simon 访问 OrgChart Now 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择**企业应用程序**，选择**的所有应用程序**，然后选择**OrgChart Now**。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“OrgChart Now”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -219,9 +219,9 @@ ms.locfileid: "57835656"
 
     ![OrgChart Now 管理](./media/orgchartnow-tutorial/tutorial_orgchartnow_manageusers.png)
 
-    * 在中**用户 ID**文本框中，输入用户 ID，例如**brittasimon\@contoso.com**。
+    * 在“用户 ID”文本框中输入用户 ID，例如 **brittasimon\@contoso.com**。
 
-    * 在中**电子邮件地址**文字框中，输入类似的用户的电子邮件**brittasimon\@contoso.com**。
+    * 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
 
     * 单击“添加”。
 
@@ -229,13 +229,13 @@ ms.locfileid: "57835656"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 OrgChart Now 磁贴时，你应会自动登录到 OrgChart Now 设置 SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“OrgChart Now”磁贴时，应会自动登录到设置了 SSO 的 OrgChart Now。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

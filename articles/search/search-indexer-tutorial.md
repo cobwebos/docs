@@ -1,23 +1,23 @@
 ---
-title: 有关在 Azure 门户中为 Azure SQL 数据库编制索引的教程 - Azure 搜索
-description: 在本教程中，连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 搜索索引。
+title: 教程：在 C# 代码示例中为 Azure SQL 数据库中的数据编制索引 - Azure 搜索
+description: 本 C# 代码示例演示如何连接到 Azure SQL 数据库、提取可搜索的数据，并将其加载到 Azure 搜索索引中。
 author: HeidiSteen
 manager: cgronlun
 services: search
 ms.service: search
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4e94f4c1b5de47e36dd9a5be6b9e7f43d264de82
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 401ad90f1ae4ffb4915a0b51aea41430e7045aa9
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201392"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59270451"
 ---
-# <a name="tutorial-crawl-an-azure-sql-database-using-azure-search-indexers"></a>教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
+# <a name="tutorial-in-c-crawl-an-azure-sql-database-using-azure-search-indexers"></a>C# 教程：使用 Azure 搜索索引器搜索 Azure SQL 数据库
 
 了解如何配置索引器来从示例 Azure SQL 数据库中提取可搜索的数据。 [索引器](search-indexer-overview.md)是 Azure 搜索组件，用于对外部数据源进行爬网，使用内容来填充[搜索索引](search-what-is-an-index.md)。 在所有索引器中，Azure SQL 数据库索引器运用最为广泛。 
 
@@ -37,35 +37,39 @@ ms.locfileid: "58201392"
 
 ## <a name="prerequisites"></a>先决条件
 
+本快速入门使用以下服务、工具和数据。 
+
 [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
-* [Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)，它提供索引器所用的外部数据源。 示例解决方案提供了一个用于创建表的 SQL 数据文件。
+[Azure SQL 数据库](https://azure.microsoft.com/services/sql-database/)存储索引器所用的外部数据源。 示例解决方案提供了一个用于创建表的 SQL 数据文件。 本教程提供了创建服务和数据库的步骤。
 
-* + [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
+可以使用任意版本的 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/) 来运行示例解决方案。 示例代码和说明已在免费社区版上进行了测试。
+
+[Azure-Samples/search-dotnet-getting-started](https://github.com/Azure-Samples/search-dotnet-getting-started) 提供 Azure 示例 GitHub 存储库中的示例解决方案。 请下载并提取该解决方案。 默认情况下，解决方案是只读的。 右键单击解决方案并清除只读属性，以便可以修改文件。
 
 > [!Note]
 > 如果使用免费的 Azure 搜索服务，则仅限使用三个索引、三个索引器和三个数据源。 本教程每样创建一个。 请确保服务中有空间来接受新资源。
 
-### <a name="download-the-solution"></a>下载解决方案
+## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-本教程中使用的索引器解决方案来自一个 Azure 搜索示例集合，只需进行一次主下载即可获得。 用于本教程的解决方案为 DotNetHowToIndexers。
+REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. 转到 Azure 示例 GitHub 存储库中的 [**Azure-Samples/search-dotnet-getting-started**](https://github.com/Azure-Samples/search-dotnet-getting-started)。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 单击“克隆或下载” > “下载 ZIP”。 默认情况下，该文件下载到 Downloads 文件夹。
+1.. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-3. 在“文件资源管理器” > “下载”中，右键单击该文件，然后选择“全部提取”。
+![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
-4. 关闭只读权限。 右键单击文件夹名称 >“属性” > “常规”，然后清除当前文件夹、子文件夹和文件的“只读”属性。
+所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-5. 在 **Visual Studio 2017** 中打开解决方案 DotNetHowToIndexers.sln。
-
-6. 在“解决方案资源管理器”中，右键单击顶级节点父解决方案 >“还原 NuGet 包”。
-
-### <a name="set-up-connections"></a>设置连接
+## <a name="set-up-connections"></a>设置连接
 所需服务的连接信息在解决方案的 **appsettings.json** 文件中指定。 
 
-在解决方案资源管理器中打开 **appsettings.json**，以便根据本教程中的说明填充每项设置。  
+1. 在 Visual Studio 中打开 **DotNetHowToIndexers.sln** 文件。
+
+1. 在解决方案资源管理器中打开 **appsettings.json**，以便可以填充每项设置。  
+
+现在，可以使用 Azure 搜索服务的 URL 和管理密钥填充前两个条目。 如果终结点为 `https://mydemo.search.windows.net`，则要提供的服务名称为 `mydemo`。
 
 ```json
 {
@@ -75,48 +79,17 @@ ms.locfileid: "58201392"
 }
 ```
 
-### <a name="get-the-search-service-name-and-admin-api-key"></a>获取搜索服务名称和管理 API 密钥
-
-可以在门户中找到搜索服务终结点和密钥。 密钥用于访问服务操作。 管理密钥允许写入访问，是在服务中创建和删除对象（例如索引和索引器）所必需的。
-
-1. 登录到 [Azure 门户](https://portal.azure.com/)，查找[订阅的搜索服务](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
-
-2. 打开服务页。
-
-3. 在顶部的主页中查找服务名称。 在下面的屏幕截图中，该名称为 azs-tutorial。
-
-   ![服务名称](./media/search-indexer-tutorial/service-name.png)
-
-4. 在 Visual Studio 中将其作为第一个条目复制并粘贴到 **appsettings.json**。
-
-   > [!Note]
-   > 服务名称是包含 search.windows.net 的终结点的一部分。 如果有兴趣，可以在“概述”页的“概要”中查看完整 URL。 URL 如以下示例所示： https://your-service-name.search.windows.net
-
-5. 在左侧的“设置” > “密钥”中，复制其中一个管理密钥并将其作为第二个条目粘贴到 **appsettings.json**。 密钥是在预配期间为服务生成的字母数字字符串，是对服务操作进行授权访问所必需的。 
-
-   添加两项设置以后，文件应如以下示例所示：
-
-   ```json
-   {
-    "SearchServiceName": "azs-tutorial",
-    "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
-    . . .
-   }
-   ```
+最后一个条目需是现有的数据库。 将在下一步骤中创建它。
 
 ## <a name="prepare-sample-data"></a>准备示例数据
 
-在此步骤中，请创建一个可供索引器爬网的外部数据源。 本教程的数据文件为 hotels.sql，在 \DotNetHowToIndexers 解决方案文件夹中提供。 
-
-### <a name="azure-sql-database"></a>Azure SQL 数据库
-
-可以使用 Azure 门户和示例中的 hotels.sql 文件，在 Azure SQL 数据库中创建数据集。 Azure 搜索使用平展行集，例如从视图或查询生成的行集。 示例解决方案中的 SQL 文件创建并填充单个表。
+在此步骤中，请创建一个可供索引器爬网的外部数据源。 可以使用 Azure 门户和示例中的 hotels.sql 文件，在 Azure SQL 数据库中创建数据集。 Azure 搜索使用平展行集，例如从视图或查询生成的行集。 示例解决方案中的 SQL 文件创建并填充单个表。
 
 以下练习假定没有现成的服务器或数据库，因此会指导你在步骤 2 中创建这两项。 （可选）如果有现成的资源，可以向其添加 hotels 表，从步骤 4 开始。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。 
 
-2. 单击“创建资源” > “SQL 数据库”，创建数据库、服务器和资源组。 可以使用默认设置和最低级别的定价层。 创建服务器的一大优势是可以指定管理员用户名和密码，这是在后面的步骤中创建和加载表所必需的。
+2. 找到或创建一个 **Azure SQL 数据库**，用于创建数据库、服务器和资源组。 可以使用默认设置和最低级别的定价层。 创建服务器的一大优势是可以指定管理员用户名和密码，这是在后面的步骤中创建和加载表所必需的。
 
    ![“新建数据库”页](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 
@@ -143,7 +116,7 @@ ms.locfileid: "58201392"
     ```sql
     SELECT HotelId, HotelName, Tags FROM Hotels
     ```
-    原型查询 `SELECT * FROM Hotels` 在查询编辑器中不起作用。 示例数据包括“位置”字段的地理坐标，目前在编辑器中无法处理。 如需要查询的其他列的列表，可执行以下语句：`SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
+    原型查询 `SELECT * FROM Hotels` 在查询编辑器中不起作用。 示例数据包括“位置”字段的地理坐标，目前在编辑器中无法处理。 如需要查询的其他列的列表，可执行以下语句： `SELECT * FROM sys.columns WHERE object_id = OBJECT_ID('dbo.Hotels')`
 
 10. 有了外部数据集以后，请复制数据库的 ADO.NET 连接字符串。 在数据库的“SQL 数据库”页，转到“设置” > “连接字符串”，然后复制 ADO.NET 连接字符串。
  
@@ -156,13 +129,13 @@ ms.locfileid: "58201392"
 
     ```json
     {
-      "SearchServiceName": "azs-tutorial",
-      "SearchServiceAdminApiKey": "A1B2C3D4E5F6G7H8I9J10K11L12M13N14",
+      "SearchServiceName": "<placeholder-Azure-Search-service-name>",
+      "SearchServiceAdminApiKey": "<placeholder-admin-key-for-Azure-Search>",
       "AzureSqlConnectionString": "Server=tcp:hotels-db.database.windows.net,1433;Initial Catalog=hotels-db;Persist Security  Info=False;User ID={your_username};Password={your_password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
     }
     ```
 
-## <a name="understand-index-and-indexer-code"></a>了解索引和索引器代码
+## <a name="understand-the-code"></a>了解代码
 
 代码现已就绪，可以生成并运行了。 执行该操作之前，请抽时间了解此示例的索引和索引器定义。 相关代码在两个文件中：
 

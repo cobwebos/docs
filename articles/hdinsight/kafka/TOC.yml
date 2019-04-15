@@ -22,19 +22,16 @@ items:
     href: apache-kafka-quickstart-resource-manager-template.md
 - name: 教程
   items:
-  - name: 1 - 使用 Apache Spark 结构化流
+  - name: 使用 Apache Spark 结构化流
     href: ../hdinsight-apache-kafka-spark-structured-streaming.md
     maintainContext: true
-  - name: 2 - 使用 Apache Storm 从 Apache Kafka 写入/读取
+  - name: 使用 Apache Storm 从 Apache Kafka 写入/读取
     href: ../hdinsight-apache-storm-with-kafka.md
     maintainContext: true
-  - name: 3 - 使用 Apache Kafka 生成者和使用者 API
+  - name: 使用 Apache Kafka 生成者和使用者 API
     href: apache-kafka-producer-consumer-api.md
-  - name: 4 - 使用 Apache Kafka 流 API 开发应用
+  - name: 使用 Apache Kafka 流 API 开发应用
     href: apache-kafka-streams-api.md
-  - name: 使用 Ambari 和 Azure Monitor 日志监视群集可用性
-    href: ../hdinsight-cluster-availability.md
-    maintainContext: true
 - name: 概念
   items:
   - name: 容量计划
@@ -159,6 +156,9 @@ items:
       - name: 使用 Apache Ambari REST API
         href: ../hdinsight-hadoop-manage-ambari-rest-api.md
         maintainContext: true
+      - name: 使用 Azure Monitor 日志监视群集可用性
+        href: ../hdinsight-cluster-availability.md
+        maintainContext: true
       maintainContext: true
     - name: 管理 HDInsight 群集的日志
       href: ../hdinsight-log-management.md
@@ -271,9 +271,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 1bc035c80492c283364e5216184d2e943bacc3aa
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 4549b041bc9e754aca632826c8e1a2afc7622a82
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58668137"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565084"

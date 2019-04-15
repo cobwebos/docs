@@ -15,43 +15,43 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a3e01b7275b7d8329a9fc3bfc90e20398fdf38b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 0d5c697f8c6c2365539ce5147ad5bafff1e6c396
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57845083"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59282180"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-origami"></a>教程：Azure Active Directory 与 Origami 集成
 
 本教程介绍如何将 Origami 与 Azure Active Directory (Azure AD) 集成。
 将 Origami 与 Azure AD 集成具有以下优势：
 
-* 您可以控制有权访问 Origami 的 Azure AD 中。
-* 可以让用户自动登录到 Origami （单一登录） 使用其 Azure AD 帐户。
+* 可以在 Azure AD 中控制谁有权访问 Origami。
+* 可让用户使用其 Azure AD 帐户自动登录到 Origami（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Origami 的集成，需备齐以下项目：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* 启用 origami 单一登录的订阅
+* 已启用 Origami 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* 支持 origami **SP**启动的 SSO
+* Origami 支持 **SP** 发起的 SSO
 
 ## <a name="adding-origami-from-the-gallery"></a>从库中添加 Origami
 
 要通过配置将 Origami 集成到 Azure AD 中，需从库将 Origami 添加到托管式 SaaS 应用的列表中。
 
-**若要从库添加 Origami，请执行以下步骤：**
+**若要从库中添加 Origami，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -65,31 +65,31 @@ ms.locfileid: "57845083"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中，键入**Origami**，选择**Origami**结果面板中单击**添加**按钮添加该应用程序。
+4. 在搜索框中键入 **Origami**，在结果面板中选择“Origami”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 origami](common/search-new-app.png)
+     ![结果列表中的“Origami”](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，配置和测试 Azure AD 单一登录与基于调用的测试用户的 Origami **Britta Simon**。
-为实现单一登录工作，需要建立 Azure AD 用户与 Origami 中的相关的用户之间的链接关系。
+在本部分，我们基于名为 **Britta Simon** 的测试用户来配置并测试 Origami 的 Azure AD 单一登录。
+若要正常使用单一登录，需要在 Azure AD 用户与 Origami 相关用户之间建立链接关系。
 
 若要使用 Origami 配置和测试 Azure AD 单一登录，需完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Origami 单一登录](#configure-origami-single-sign-on)** -若要在应用程序端配置单一登录设置。
+2. **[配置 Origami 单一登录](#configure-origami-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Origami 测试用户](#create-origami-test-user)** -Britta Simon 的对应在 Origami 中链接到用户的 Azure AD 表示形式。
+5. **[创建 Origami 测试用户](#create-origami-test-user)** - 在 Origami 中创建 Britta Simon 的对应用户，并将其关联到其在 Azure AD 中的表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Azure AD 单一登录 Origami，请执行以下步骤：
+若要配置 Origami 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在中[Azure 门户](https://portal.azure.com/)，然后在**Origami**应用程序集成页上，选择**单一登录**。
+1. 在 [Azure 门户](https://portal.azure.com/)中的“Origami”应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -103,7 +103,7 @@ ms.locfileid: "57845083"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![Origami 域和 Url 单一登录信息](common/sp-signonurl.png)
+    ![Origami 域和 URL 单一登录信息](common/sp-signonurl.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://live.origamirisk.com/origami/account/login?account=<companyname>`
 
@@ -114,7 +114,7 @@ ms.locfileid: "57845083"
 
     ![证书下载链接](common/certificatebase64.png)
 
-6. 上**设置 Origami**部分中，复制具体请根据要求的相应 URL。
+6. 在“设置 Origami”部分，根据要求复制相应的 URL。
 
     ![复制配置 URL](common/copy-configuration-urls.png)
 
@@ -138,9 +138,9 @@ ms.locfileid: "57845083"
 
     a. 选择“启用单一登录”。
 
-    b. 在中**标识提供者登录页 URL**文本框中，将的值粘贴**登录 URL**，从 Azure 门户复制的。
+    b. 在“标识提供者的登录页 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值。
 
-    c. 在中**标识提供者注销页 URL**文本框中，将的值粘贴**注销 URL**，从 Azure 门户复制的。
+    c. 在“标识提供者的注销页 URL”文本框中，粘贴从 Azure 门户复制的“注销 URL”值。
 
     d. 单击“浏览”上传从 Azure 门户下载的证书。
 
@@ -175,13 +175,13 @@ ms.locfileid: "57845083"
 
 本部分需授予 Britta Simon 访问 Origami 的权限，使之能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择**企业应用程序**，选择**的所有应用程序**，然后选择**Origami**。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Origami”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
 2. 在应用程序列表中，选择“Origami”。
 
-    ![应用程序列表中的 Origami 链接](common/all-applications.png)
+    ![“应用程序”列表中的“Origami”链接](common/all-applications.png)
 
 3. 在左侧菜单中，选择“用户和组”。
 
@@ -219,7 +219,7 @@ ms.locfileid: "57845083"
    
     ![配置单一登录](./media/origami-tutorial/tutorial_origami_56.png)
 
-    a. 在中**用户名**文本框中，输入类似的用户的电子邮件**brittasimon\@contoso.com**。
+    a. 在“用户名”文本框中，输入用户的电子邮件，例如 **brittasimon\@contoso.com**。
 
     b. 在“密码”文本框中，键入密码。
 
@@ -241,13 +241,13 @@ ms.locfileid: "57845083"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Origami 磁贴时，你应自动登录到 Origami 设置 SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+在访问面板中单击“Origami”磁贴时，应会自动登录到设置了 SSO 的 Origami。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

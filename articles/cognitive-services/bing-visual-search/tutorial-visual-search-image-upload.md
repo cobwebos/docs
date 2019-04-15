@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-visual-search
 ms.topic: tutorial
-ms.date: 07/10/2018
+ms.date: 04/03/2019
 ms.author: scottwhi
-ms.openlocfilehash: 919690dcef69bd6c142a692e992bfff45b995605
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: 0963c61027358c2c8e971533052631de28994b57
+ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858564"
+ms.lasthandoff: 04/10/2019
+ms.locfileid: "59471437"
 ---
-# <a name="tutorial-uploading-images-to-the-bing-visual-search-api"></a>教程：将图像上传到必应视觉搜索 API
+# <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>教程：将图像上传到必应视觉搜索 API
 
-使用必应视觉搜索 API 可在 Web 中搜索类似于所上传图像的图像。 本教程介绍如何创建一个可向该 API 发送图像并在网页中显示该 API 返回的见解的 Web 应用程序。 请注意，此应用程序并不遵守有关使用该 API 的所有[必应用法和显示要求](./use-and-display-requirements.md)。
+使用必应视觉搜索 API 可在 Web 中搜索类似于所上传图像的图像。 本教程介绍如何创建一个可向该 API 发送图像并在网页中显示该 API 返回的见解的 Web 应用程序。 请注意，此应用程序并不遵守有关使用该 API 的所有[必应用法和显示要求](../bing-web-search/use-display-requirements.md)。
 
 在 [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/Tutorials/Bing-Visual-Search/BingVisualSearchUploadImage.html) 上可以找到此示例的完整源代码，以及附加的错误处理方法和注释。
 
@@ -30,13 +30,13 @@ ms.locfileid: "55858564"
 > * 在 Web 应用程序中显示图像搜索结果
 > * 浏览该 API 提供的不同见解
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>先决条件
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-visual-search-signup-requirements.md)]
 
 ## <a name="create-and-structure-the-webpage"></a>创建和构造网页
 
-创建一个 HTML 页面，用于向必应发送图像，然后返回和显示见解。 在偏好的编辑器或 IDE 中，创建名为 `uploaddemo.html` 的文件。 向文件添加下面的基本 HTML 结构。
+创建一个 HTML 页面，用于将图像发送到必应视觉搜索 API，接收见解，然后显示见解。 在偏好的编辑器或 IDE 中，创建名为“uploaddemo.html”的文件。 将以下基本 HTML 结构添加到该文件：
 
 ```html
 <!DOCTYPE html>
@@ -47,18 +47,18 @@ ms.locfileid: "55858564"
 
     <body>
     </body>
-</html>      
+</html>
 ```
 
-将页面划分为请求部分和响应部分。用户在请求部分提供发出请求所需的全部信息，而见解显示在响应部分。 将以下 `<div>` 标记添加到 `<body>`。 `<hr>` 标记将请求部分和响应部分直观区分开来。
+将页面划分为请求部分和响应部分。用户在请求部分提供发出请求所需的全部信息，而见解显示在响应部分。 将以下 `<div>` 标记添加到 `<body>`。 `<hr>` 标记将请求部分和响应部分直观区分开来：
 
 ```html
 <div id="requestSection"></div>
-<hr />      
+<hr />
 <div id="responseSection"></div>
 ```
 
-将 `<script>` 标记添加到 `<head>` 标记，以包含应用程序的 JavaScript。
+将 `<script>` 标记添加到 `<head>` 标记，以包含应用程序的 JavaScript：
 
 ```html
 <script>
@@ -67,12 +67,11 @@ ms.locfileid: "55858564"
 
 ## <a name="get-the-upload-file"></a>获取上传文件
 
-为了让用户选择要上传的图像，该应用程序使用了 type 属性设置为 `file` 的 `<input>` 标记。 UI 中需要明确指出该应用程序将使用必应来获取搜索结果。 
+为了让用户选择要上传的图像，该应用程序使用了 type 属性设置为 `file` 的 `<input>` 标记。 UI 中需要明确指出该应用程序将使用必应来获取搜索结果。
 
-将以下 `<div>` 添加到 requestSection div。 文件输入接受任何图像类型的单个文件（例如 .jpg、.gif、.png）。 `onchange` 事件指定用户选择文件时调用的处理程序。
+将以下 `<div>` 添加到 `requestSection` `<div>`。 文件输入接受任何图像类型的单个文件（例如 .jpg、.gif、.png）。 `onchange` 事件指定用户选择文件时调用的处理程序。
 
-`<output>` 标记用于显示所选图像的缩略图。
-
+`<output>` 标记用于显示所选图像的缩略图：
 
 ```html
 <div>
@@ -84,7 +83,7 @@ ms.locfileid: "55858564"
 </div>
 ```
 
-## <a name="create-a-file-handler"></a>创建文件处理程序 
+## <a name="create-a-file-handler"></a>创建文件处理程序
 
 创建一个可以读入所要上传的图像的处理程序函数。 在循环访问 `FileList` 对象中的文件时，该处理程序应确保所选的文件是图像文件，并且其大小为 1 MB 或更小。 如果图像更大，则必须先减小其大小，然后再上传。 最后，该处理程序会显示图像的缩略图。
 
@@ -136,7 +135,7 @@ function handleFileSelect(selector) {
 
 ## <a name="add-and-store-a-subscription-key"></a>添加和存储订阅密钥
 
-该应用程序需要使用订阅密钥来调用必应视觉搜索 API。 对于本教程，你将在 UI 中提供该密钥。 将以下 `<input>` 标记（type 属性设置为 text）添加到紧靠在文件 `<output>` 标记下面的 `<body>`。
+该应用程序需要使用订阅密钥来调用必应视觉搜索 API。 对于本教程，你将在 UI 中提供该密钥。 将以下 `<input>` 标记（type 属性设置为 text）添加到紧靠在文件 `<output>` 标记下面的 `<body>`：
 
 ```html
     <div>
@@ -148,7 +147,7 @@ function handleFileSelect(selector) {
 
 使用图像和订阅密钥可以调用必应视觉搜索来获取有关图像的见解。 在本教程中，调用将使用默认市场 (`en-us`) 和安全搜索值 (`moderate`)。
 
-此应用程序提供一个用于更改这些值的选项。 在订阅密钥 div 下面添加以下 `<div>`。 该应用程序使用 `<select>` 标记提供市场和安全搜索值的下拉列表。 两个列表都显示默认值。
+此应用程序提供一个用于更改这些值的选项。 在订阅密钥 `<div>` 下面添加以下 `<div>`。 该应用程序使用 `<select>` 标记提供市场和安全搜索值的下拉列表。 两个列表都显示默认值。
 
 ```html
 <div>
@@ -210,9 +209,9 @@ function handleFileSelect(selector) {
 </div>
 ```
 
-## <a name="add-search-options-to-the-webpage"></a>将搜索选项添加到网页 
+## <a name="add-search-options-to-the-webpage"></a>将搜索选项添加到网页
 
-该应用程序在“查询”选项链接控制的可折叠 div 中隐藏列表。 单击“查询”选项链接时，div 将展开，让你能够查看和修改查询选项。 如果再次单击“查询”选项链接，div 将折叠并隐藏。 下面显示了“查询”选项链接的 onclick 处理程序。 处理程序控制 div 是展开还是折叠。 将此处理程序添加到 `<script>` 部分。 该演示中的所有可折叠的 div 都使用处理程序。
+该应用程序在“查询”选项链接控制的可折叠 `<div>` 中隐藏列表。 单击“查询”选项链接时，`<div>` 将展开，让你能够查看和修改查询选项。 如果再次单击“查询”选项链接，`<div>` 将折叠并隐藏。 以下代码片段显示“查询”选项链接的 `onclick` 处理程序。 处理程序控制 `<div>` 是展开还是折叠。 将此处理程序添加到 `<script>` 部分。 该演示中的所有可折叠的 `<div>` 部分都使用处理程序。
 
 ```javascript
 // Contains the toggle state of divs.
@@ -234,15 +233,15 @@ function expandCollapse(divToToggle) {
 }
 ```
 
-## <a name="call-the-onclick-handler"></a>调用 onclick 处理程序
+## <a name="call-the-onclick-handler"></a>调用 `onclick` 处理程序
 
-在正文中选项 div 下面添加以下 `"Get insights"` 按钮。 使用该按钮可以发起调用。 单击该按钮时，游标将更改为旋转等待游标并调用 onclick 处理程序。
+在正文中选项 `<div>` 下面添加以下 `"Get insights"` 按钮。 使用该按钮可以发起调用。 单击该按钮时，游标将更改为旋转等待游标并调用 `onclick` 处理程序。
 
 ```html
 <p><input type="button" id="query" value="Get insights" onclick="document.body.style.cursor='wait'; handleQuery()" /></p>
 ```
 
-将按钮的 onclick 处理程序 `handleQuery()` 添加到 `<script>` 标记。 
+将按钮的 `onclick` 处理程序 `handleQuery()` 添加到 `<script>` 标记。
 
 ## <a name="handle-the-query"></a>处理查询
 
@@ -253,7 +252,7 @@ function handleQuery() {
     var subscriptionKey = document.getElementById('key').value;
 
     // Make sure user provided a subscription key and image.
-    // For this demo, the user provides the key but typically you'd 
+    // For this demo, the user provides the key but typically you'd
     // get it from secured storage.
     if (subscriptionKey.length !== 32) {
         alert("Subscription key length is not valid. Enter a valid key.");
@@ -285,7 +284,7 @@ function handleQuery() {
 
 ## <a name="send-the-search-request"></a>发送搜索请求
 
-`sendRequest()` 函数可设置终结点 URL 的格式、将 Ocp-Apim-Subscription-Key 标头设置为订阅密钥、追加要上传的图像二进制文件、指定响应处理程序并发出调用。 
+`sendRequest()` 函数可设置终结点 URL 的格式、将 `Ocp-Apim-Subscription-Key` 标头设置为订阅密钥、追加要上传的图像二进制文件、指定响应处理程序并发出调用。
 
 ```javascript
 function sendRequest(file, key) {
@@ -307,7 +306,7 @@ function sendRequest(file, key) {
 
 ## <a name="get-and-handle-the-api-response"></a>获取和处理 API 响应
 
-`handleResponse()` 函数处理调用必应视觉搜索后返回的响应。 如果调用成功，它会将 JSON 响应分析为包含见解的各个标记。 接下来，它将搜索结果添加到页面。 然后，应用程序将为每个标记创建可折叠的 div，用于管理要显示的数据量。 将处理程序添加到 `<script>` 部分。
+`handleResponse()` 函数处理调用必应视觉搜索后返回的响应。 如果调用成功，它会将 JSON 响应分析为包含见解的各个标记。 接下来，它将搜索结果添加到页面。 然后，应用程序将为每个标记创建可折叠的 `<div>`，用于管理要显示的数据量。 将处理程序添加到 `<script>` 部分。
 
 ```javascript
 function handleResponse() {
@@ -323,7 +322,7 @@ function handleResponse() {
     document.getElementById('responseSection').appendChild(h4);
     buildTagSections(tags);
 
-    document.body.style.cursor = 'default'; // reset the wait curor set by query insights button
+    document.body.style.cursor = 'default'; // reset the wait cursor set by query insights button
 }
 ```
 
@@ -337,7 +336,7 @@ function parseResponse(json) {
 
     for (var i =0; i < json.tags.length; i++) {
         var tag = json.tags[i];
-        
+
         if (tag.displayName === '') {
             dict['Default'] = JSON.stringify(tag);
         }
@@ -352,7 +351,7 @@ function parseResponse(json) {
 
 ### <a name="build-a-tag-section"></a>生成标记部分
 
-`buildTagSections()` 函数循环访问已分析的 JSON 标记，并调用 `buildDiv()` 函数来为每个标记生成一个 div。 每个标记显示为链接。 单击该链接时，该标记将会展开，显示其相关见解。 再次单击该链接会折叠该部分。
+`buildTagSections()` 函数循环访问已分析的 JSON 标记，并调用 `buildDiv()` 函数来为每个标记生成一个 `<div>`。 每个标记显示为链接。 单击该链接时，该标记将会展开，显示其相关见解。 再次单击该链接会折叠该部分。
 
 ```javascript
 function buildTagSections(tags) {
@@ -391,11 +390,11 @@ function buildDiv(tags, tag) {
 
 ## <a name="display-the-search-results-in-the-webpage"></a>在网页中显示搜索结果
 
-`buildDiv()` 函数调用 addDivContent 函数来生成每个标记的可折叠 div 的内容。
+`buildDiv()` 函数调用 `addDivContent` 函数来生成每个标记的可折叠 `<div>` 的内容。
 
 标记的内容包括标记响应中的 JSON。 最初，只显示 JSON 的前 100 个字符，但你可单击 JSON 字符串以显示完整的 JSON。 如果再次单击，JSON 字符串将折叠回 100 个字符。
 
-接下来，添加标记中找到的操作类型。 对于每个操作类型，请调用相应的函数来添加其见解。
+接下来，添加标记中找到的操作类型。 对于每个操作类型，请调用相应的函数来添加其见解：
 
 ```javascript
 function addDivContent(div, tag, json) {
@@ -472,21 +471,21 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>显示不同操作的见解
 
-以下函数显示不同操作的见解。 函数将提供可单击的图像或可单击的链接，单击该图像或链接会向你发送一个网页，其中包含有关该图像的详细信息。 此页面由 Bing.com 或图像的原始网站托管。 并非所有见解数据都会显示在此应用程序中。 若要查看某项见解的所有可用字段，请参阅[必应视觉搜索参考](https://aka.ms/bingvisualsearchreferencedoc)。
+以下函数显示不同操作的见解。 函数将提供可单击的图像或可单击的链接，单击该图像或链接会向你发送一个网页，其中包含有关该图像的详细信息。 此页面由 Bing.com 或图像的原始网站托管。 并非所有见解数据都会显示在此应用程序中。 若要查看某项见解的所有可用字段，请参阅[图像 - 视觉搜索](https://aka.ms/bingvisualsearchreferencedoc)参考。
 
 > [!NOTE]
-> 必须在页面中显示最少量的见解信息。 有关详细信息，请参阅[必应用法和显示要求](./use-and-display-requirements.md)。
+> 必须在页面中显示最少量的见解信息。 有关详细信息，请参阅[必应搜索 API 的使用和显示要求](../bing-web-search/use-display-requirements.md)。
 
 ### <a name="relatedimages-insights"></a>RelatedImages 见解
 
-`addRelatedImages()` 函数通过循环访问 `RelatedImages` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为托管相关图像的每个网站创建一个标题。
+`addRelatedImages()` 函数通过循环访问 `RelatedImages` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为托管相关图像的每个网站创建一个标题：
 
 ```javascript
     function addRelatedImages(div, images) {
         var length = (images.length > 10) ? 10 : images.length;
 
-        // Set the title to the website that hosts the image. The title displays 
-        // when the user hovers over the image. 
+        // Set the title to the website that hosts the image. The title displays
+        // when the user hovers over the image.
 
         // Make the image clickable. If the user clicks the image, they're taken
         // to the image in Bing.com.
@@ -510,7 +509,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="pagesincluding-insights"></a>PagesIncluding 见解
 
-`addPagesIncluding()` 函数通过循环访问 `PagesIncluding` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为托管上传图像的每个网站创建一个链接。
+`addPagesIncluding()` 函数通过循环访问 `PagesIncluding` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为托管上传图像的每个网站创建一个链接：
 
 ```javascript
 
@@ -534,7 +533,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="relatedsearches-insights"></a>RelatedSearches 见解
 
-`addRelatedSearches()` 函数通过循环访问 `RelatedSearches` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为托管图像的网站创建一个链接。
+`addRelatedSearches()` 函数通过循环访问 `RelatedSearches` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为托管图像的网站创建一个链接：
 
 ```javascript
 
@@ -567,11 +566,11 @@ function addDivContent(div, tag, json) {
 
 ### <a name="recipes-insights"></a>Recipes 见解
 
-`addRecipes()` 函数通过循环访问 `Recipes` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的每个配方创建一个链接。
+`addRecipes()` 函数通过循环访问 `Recipes` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的每个配方创建一个链接：
 
 ```javascript
     // Display links to the first 10 recipes. Include the recipe's rating,
-    // if available. 
+    // if available.
     // TODO: Add 'more' link in case the user wants to see all of them.
     function addRecipes(div, recipes) {
         var length = (recipes.length > 10) ? 10 : recipes.length;
@@ -599,7 +598,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="shopping-insights"></a>Shopping 见解
 
-`addShopping()` 函数通过循环访问 `RelatedImages` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的任何购物结果创建一个链接。
+`addShopping()` 函数通过循环访问 `RelatedImages` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的任何购物结果创建一个链接：
 
 ```javascript
     // Display links for the first 10 shopping offers.
@@ -628,11 +627,11 @@ function addDivContent(div, tag, json) {
 
 ### <a name="products-insights"></a>Products 见解
 
-`addProducts()` 函数通过循环访问 `Products` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的任何产品结果创建一个链接。
+`addProducts()` 函数通过循环访问 `Products` 操作的列表，并将 `<img>` 标记添加到每个操作的外部 `<div>`，来为返回的任何产品结果创建一个链接：
 
 ```javascript
 
-    // Display the first 10 related products. Display a clickable image of the 
+    // Display the first 10 related products. Display a clickable image of the
     // product that takes the user to Bing.com search results for the product.
     // If there are any offers associated with the product, provide links to the offers.
     // TODO: Add 'more' link in case the user wants to see all of them.
@@ -692,7 +691,7 @@ function addDivContent(div, tag, json) {
 
 ### <a name="textresult-insights"></a>TextResult 见解
 
-`addTextResult()` 函数显示在图像中识别到的任何文本。
+`addTextResult()` 函数显示在图像中识别到的任何文本：
 
 ```javascript
 
@@ -703,7 +702,7 @@ function addDivContent(div, tag, json) {
     }
 ```
 
-`addEntity()` 函数显示一个链接，将用户定向到 Bing.com，让他们获取有关图像中的实体类型的详细信息（如果已检测到任何实体类型）。
+`addEntity()` 函数显示一个链接，将用户定向到 Bing.com，让他们获取有关图像中的实体类型的详细信息（如果已检测到任何实体类型）：
 
 ```javascript
     // If the image is of a person, the tag might include an entity
@@ -719,7 +718,7 @@ function addDivContent(div, tag, json) {
     }
 ```
 
-`addImageWithWebSearchUrl()` 函数在 div 中显示一个可单击的图像，用于将用户定向到 Bing.com 上的搜索结果。 
+`addImageWithWebSearchUrl()` 函数在 `<div>` 中显示一个可单击的图像，用于将用户定向到 Bing.com 上的搜索结果：
 
 ```javascript
     function addImageWithWebSearchUrl(div, image, action) {
@@ -738,11 +737,11 @@ function addDivContent(div, tag, json) {
 
 ## <a name="add-a-css-style"></a>添加 CSS 样式
 
-将以下 `<style>` 部分添加到 `<head>` 标记，以组织网页的布局。
+将以下 `<style>` 部分添加到 `<head>` 标记，以组织网页的布局：
 
 ```html
         <style>
-            
+
             .thumb {
                 height: 75px;
                 border: 1px solid #000;
@@ -773,4 +772,5 @@ function addDivContent(div, tag, json) {
 
 ## <a name="next-steps"></a>后续步骤
 
-* [教程：使用 ImageInsightsToken 在前面的搜索结果中查找类似的图像](./tutorial-visual-search-insights-token.md)。
+>[!div class="nextstepaction"]
+> [教程：使用 ImageInsightsToken 在前面的搜索结果中查找类似的图像](./tutorial-visual-search-insights-token.md)

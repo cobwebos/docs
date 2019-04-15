@@ -1,0 +1,35 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: Azure NetApp 文件文档
+metadata:
+  title: Azure NetApp 文件文档
+  description: 了解如何使用 Azure NetApp 文件服务设置、访问和管理卷。
+  author: b-juche
+  ms.author: b-juche
+  ms.service: azure-netapp-files
+  ms.topic: landing-page
+  ms.date: 04/10/2019
+abstract:
+  description: 了解如何使用 Azure NetApp 文件来创建和管理 NetApp 帐户、容量池和卷，如何配置导出策略，如何为虚拟机装载卷，以及如何管理快照。 <p>使用 Azure NetApp 文件需要加入公共预览版计划。 还需要被添加到允许列表中才能访问 Microsoft.NetApp Azure 资源提供程序。 若要请求加入“公共预览版”计划，请参阅<a href="azure-netapp-files-register">注册 Azure NetApp 文件</a>。</p>
+sections:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何通过以下方式设置 Azure NetApp 文件和创建卷：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/azure-netapp-files/media/index/get-started.svg'
+            text: Azure 门户
+            href: /azure/azure-netapp-files/azure-netapp-files-quickstart-set-up-account-create-volumes
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/netapp/">REST API</a></p>'
+          - title: Azure 资源管理器
+            html: '<p><a href="https://docs.microsoft.com/azure/templates/microsoft.netapp/allversions">资源管理器模板</a></p>'

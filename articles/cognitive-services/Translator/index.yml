@@ -93,7 +93,7 @@ sections:
       - type: paragraph
         text: 了解如何使用文本翻译 API 开发应用程序：
       - type: paragraph
-        text: '<a href="tutorial-wpf-translation-csharp.md">使用 C# 编写 WPF 应用程序以进行文本翻译</a>'
+        text: '<li><a href="tutorial-wpf-translation-csharp.md">使用 C# 创建 WPF 应用以进行文本翻译</a></li><li><a href="tutorial-build-flask-app-translation-synthesis.md">使用 Python 创建 Flask 翻译应用</a></li>'
   - title: 引用
     items:
       - type: paragraph

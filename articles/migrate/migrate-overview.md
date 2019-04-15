@@ -4,15 +4,15 @@ description: 概述 Azure Migrate 服务。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 04/03/2019
+ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9f1d127405046400e2a92ffc5ab695d287e297bd
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894963"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275436"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
 
@@ -32,7 +32,7 @@ Azure Migrate 有助于：
 - 只能评估要迁移到 Azure VM 的本地 VMware 虚拟机 (VM)。 VMware VM 必须通过 vCenter Server（5.5、6.0、6.5 或 6.7 版）进行管理。
 - 对 Hyper-V 的支持当前处于预览版且提供生产支持；如果有兴趣试用一下，请在[此处](https://aka.ms/migratefuture)注册。
 - 要对物理服务器进行评估，可使用我们的[合作伙伴工具](https://azure.microsoft.com/migration/partners/)。
-- 一次发现最多可以发现 1500 个 VM，单个项目中最多可以发现 1500 个 VM。 另外，单次评估最多可以评估 1500 个 VM。
+- 在单个发现和单个项目中最多可以发现 1500 个 VM。 我们提供了预览版本，允许使用单个设备在单个项目中发现多达 10,000 个 VMware VM，如果你有兴趣尝试，请在[此处](https://aka.ms/migratefuture)注册。
 - 若要发现更大的环境，可以拆分发现，然后创建多个项目。 [了解详细信息](how-to-scale-assessment.md)。 Azure Migrate 最多允许每个订阅 20 个项目。
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 -  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。

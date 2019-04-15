@@ -6,50 +6,44 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 3/18/2019
+ms.date: 4/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 06d18ccd6f14f0a2b31f579b0ed7250b2c4f0c92
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 9e8f450825b7b4ad0402b8976d68bc23c18ce855
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310585"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357876"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>针对本地 VMware VM 设置到 Azure 的灾难恢复
 
-[Azure Site Recovery](site-recovery-overview.md) 通过在计划内和计划外中断期间使商业应用程序保持启动和运行状态，有助于实施业务连续性和灾难恢复 (BCDR) 策略。 Site Recovery 管理并安排本地计算机和 Azure 虚拟机 (VM) 的灾难恢复，包括复制、故障转移和恢复。
+本文介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 服务启用本地 VMware VM 的复制，以便能够灾难恢复到 Azure。
 
+本文是系列教程的第三篇文章，介绍如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在上一篇教程中，我们已[准备本地 VMware 环境](vmware-azure-tutorial-prepare-on-premises.md)，以便能够灾难恢复到 Azure。
 
-本教程演示如何使用基本设置部署 Site Recovery，而无需自定义。 有关更复杂的选项，请查看“操作方法”下的文章。
-
-    - 设置[复制源](vmware-azure-set-up-source.md)和[配置服务器](vmware-azure-deploy-configuration-server.md)。
-    - 设置[复制目标](vmware-azure-set-up-target.md)。
-    - 配置[复制策略](vmware-azure-set-up-replication.md)并[启用复制](vmware-azure-enable-replication.md)。
 
 本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
-> * 输入复制源和目标。
-> * 设置源复制坏境，包括本地 Azure Site Recovery 组件和目标复制环境。
+> * 设置源复制设置，以及一个本地 Site Recovery 配置服务器。
+> * 设置复制目标。
 > * 创建复制策略。
-> * 为 VM 启用复制。
+> * 为 VMware VM 启用复制。
+
+> [!NOTE]
+> 教程中介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 Site Recovery 目录的“操作指南”部分所列的文章。
 
 ## <a name="before-you-start"></a>开始之前
 
-开始之前，需要：
+完成前一篇教程：
+1. 确保已[设置 Azure](tutorial-prepare-azure.md)，以便能够将本地 VMware 灾难恢复到 Azure。
+2. 遵循[这些步骤](vmware-azure-tutorial-prepare-on-premises.md)准备本地 VMware 部署，以便能够灾难恢复到 Azure。
+3. 在本教程中，我们介绍如何复制单个 VM。 若要部署多个 VMware VM，则应使用[部署规划器工具](https://aka.ms/asr-deployment-planner)。 [详细了解](site-recovery-deployment-planner.md)此工具。
+4. 本教程使用了多种选项，你也可以采用不同的方式：
+    - 本教程使用 OVA 模板创建配置服务器 VMware VM。 如果出于某种原因无法执行此操作，请遵照[这些说明](physical-manage-configuration-server.md)手动设置配置服务器。
+    - 在本教程中，Site Recovery 会自动将 MySQL 下载并安装到配置服务器。 如果你愿意，可以改为手动设置它。 [了解详细信息](vmware-azure-deploy-configuration-server.md#configure-settings)。
 
-- [查看体系结构](vmware-azure-architecture.md)，这适用于此灾难恢复方案。
-- 若要更详细地了解如何设置 VMware VM 的灾难恢复，请查看并使用以下资源：
-    - [了解有关 VMware 灾难恢复的常见问题](vmware-azure-common-questions.md)。
-    - [了解](vmware-physical-azure-support-matrix.md) VMware 的支持功能和要求。
-- 在本教程中，我们介绍如何复制单个 VM。 如果部署多个 VM，则应使用[部署规划器工具](https://aka.ms/asr-deployment-planner)来计划部署。 [详细了解](site-recovery-deployment-planner.md)此工具。
-
-查看以下提示：
-- 本教程使用 OVA 模板创建配置服务器 VMware VM。 如果无法执行此操作，请按[这些说明](physical-manage-configuration-server.md)手动设置配置服务器。
-- 在本教程中，Site Recovery 将 MySQL 下载并安装到配置服务器。 如果你愿意，可以改为手动设置它。 [了解详细信息](vmware-azure-deploy-configuration-server.md#configure-settings)。
-  >可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载最新版本的配置服务器模板。
-  通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 在 VM 上运行的 Windows 必须使用所需许可证进行激活。 
 
 
 
@@ -65,15 +59,18 @@ ms.locfileid: "58310585"
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-在源环境中，需要部署一台高度可用的本地计算机来托管本地 Site Recovery 组件。 组件包括配置服务器、进程服务器和主目标服务器：
+在源环境中，需要部署一台高度可用的本地计算机来托管这些本地 Site Recovery 组件：
 
-- 配置服务器在本地和 Azure 之间协调通信并管理数据复制。
-- 进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 进程服务器还会将移动服务安装在要复制的 VM 上，并执行针对本地 VMware VM 的自动发现。
-- 主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
-
-若要将配置服务器设置为高度可用的 VMware VM，请下载一个已准备好的开放虚拟化应用程序 (OVA) 模板，并将该模板导入 VMware 以创建 VM。 在设置配置服务器以后，请将它注册到保管库中。 注册后，Site Recovery 可发现本地 VMware VM。
+- **配置服务器**：配置服务器在本地和 Azure 之间协调通信并管理数据复制。
+- **进程服务器**：进程服务器充当复制网关。 它接收复制数据，通过缓存、压缩和加密对其进行优化，然后将其发送到 Azure 中的缓存存储帐户。 进程服务器还会将移动服务代理安装在要复制的 VM 上，并在本地 VMware VM 上执行自动发现。
+- **主目标服务器**：主目标服务器处理从 Azure 进行故障回复期间产生的复制数据。
 
 
+所有这些组件一起安装在称作“配置服务器”的一台本地计算机上。 默认情况下，为了实现 VMware 灾难恢复，我们会将一个高度可用的 VMware VM 设置为配置服务器。 为此，请下载一个已准备好的开放虚拟化应用程序 (OVA) 模板，并将该模板导入 VMware 以创建该 VM。 
+
+- 门户中提供了最新版本的配置服务器。 也可以直接从 [Microsoft 下载中心](https://aka.ms/asrconfigurationserver)下载该服务器。
+- 如果出于某种原因无法使用 OVA 模板来设置 VM，请遵照[这些说明](physical-manage-configuration-server.md)手动设置配置服务器。
+- 通过 OVF 模板提供的许可证是有效期为 180 天的评估许可证。 在 VM 上运行的 Windows 必须使用所需许可证进行激活。 
 
 
 ### <a name="download-the-vm-template"></a>下载 VM 模板
@@ -105,7 +102,7 @@ ms.locfileid: "58310585"
 
 ## <a name="add-an-additional-adapter"></a>添加其他适配器
 
-若要将其他 NIC 添加到配置服务器，请在将服务器注册到保管库中之前添加。 注册后不支持添加其他适配器。
+若要将其他 NIC 添加到配置服务器，请在将服务器注册到保管库中之前添加它。 注册后不支持添加其他适配器。
 
 1. 在 vSphere 客户端库存中，右键单击 VM 并选择“编辑设置”。
 2. 在“硬件”中，选择“添加” > “以太网适配器”。 然后，选择“下一步”。
@@ -114,6 +111,8 @@ ms.locfileid: "58310585"
 
 
 ## <a name="register-the-configuration-server"></a>注册配置服务器 
+
+设置配置服务器后，将它注册到保管库中。
 
 1. 通过 VMWare vSphere 客户端控制台打开 VM。
 2. VM 将启动并进入 Windows Server 2016 安装体验。 接受许可协议，然后输入管理员密码。
@@ -124,7 +123,11 @@ ms.locfileid: "58310585"
 7. 该工具将执行一些配置任务，然后重新启动。
 8. 再次登录到计算机。 在数秒内，配置服务器管理向导会自动启动。
 
+
 ### <a name="configure-settings-and-add-the-vmware-server"></a>配置设置并添加 VMware 服务器
+
+完成配置服务器的设置和注册。 
+
 
 1. 在配置服务器管理向导中，选择“设置连接”。 在下拉列表中，首先选择内置进程服务器用于发现的 NIC，将移动服务的安装推送到源计算机上，然后选择配置服务器用来与 Azure 连接的 NIC。 再选择“保存”。 配置后无法更改此设置。
 2. 在“选择恢复服务保管库”中，选择自己的 Azure 订阅以及相关的资源组和保管库。
@@ -140,7 +143,7 @@ ms.locfileid: "58310585"
 10. 注册完成后，请在 Azure 门户中确认配置服务器和 VMware 服务器是否已在保管库中的“源”页上列出。 然后，选择“确定”以配置目标设置。
 
 
-Site Recovery 会使用指定的设置连接到 VMware 服务器，并且会发现 VM。
+注册配置服务器后，Site Recovery 将使用指定的设置连接到 VMware 服务器，并发现 VM。
 
 > [!NOTE]
 > 帐户名出现在门户中可能需要 15 分钟或更长时间。 若要立即更新，请选择“配置服务器” > ***服务器名称*** > “刷新服务器”。
@@ -171,7 +174,7 @@ Site Recovery 会使用指定的设置连接到 VMware 服务器，并且会发�
 
 ## <a name="enable-replication"></a>启用复制
 
-可以通过以下方法来启用复制：
+为 VM 启用复制，如下所示：
 
 1. 选择“复制应用程序” > “源”。
 1. 在“源”中选择“本地”，然后在“源位置”中选择配置服务器。
@@ -181,7 +184,7 @@ Site Recovery 会使用指定的设置连接到 VMware 服务器，并且会发�
 1. 在“目标”中，选择要创建故障转移 VM 的订阅和资源组。 我们将使用资源管理器部署模型。 
 1. 选择 Azure VM 在故障转移后创建时所要连接的 Azure 网络和子网。
 1. 选择“立即为选定的计算机配置”，以便将网络设置应用到在其上启用了复制的所有 VM。 选择“稍后配置”以选择每个计算机的 Azure 网络。
-1. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机。 只能选择可以启用复制的计算机。 然后选择“确定”。 如果无法查看/选择特定虚拟机，请单击[此处](https://aka.ms/doc-plugin-VM-not-showing)解决此问题。
+1. 在“虚拟机” > “选择虚拟机”中，选择要复制的每个虚拟机。 只能选择可以启用复制的计算机。 然后选择“确定”。 如果无法查看/选择特定的虚拟机，请[详细了解](https://aka.ms/doc-plugin-VM-not-showing)如何解决此问题。
 1. 在“属性” > “配置属性”中，选择进程服务器在计算机上自动安装移动服务时使用的帐户。
 1. 在“复制设置” > “配置复制设置”中，检查是否选择了正确的复制策略。
 1. 选择“启用复制”。 为 VM 启用复制后，Site Recovery 会安装移动服务。
@@ -190,6 +193,6 @@ Site Recovery 会使用指定的设置连接到 VMware 服务器，并且会发�
 1. 若要监视添加的 VM，请在“配置服务器” > “上次联系时间”中查看上次发现 VM 的时间。 若要添加 VM 而不想要等待计划的发现，请突出显示配置服务器（不要选择它），然后选择“刷新”。
 
 ## <a name="next-steps"></a>后续步骤
-
+启用复制后，请运行演练以确保一切按预期进行。
 > [!div class="nextstepaction"]
-> 启用复制以后，[运行灾难恢复演练](site-recovery-test-failover-to-azure.md)，确保一切正常。
+> [运行灾难恢复演练](site-recovery-test-failover-to-azure.md)

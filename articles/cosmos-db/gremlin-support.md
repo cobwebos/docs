@@ -7,19 +7,19 @@ ms.subservice: cosmosdb-graph
 ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: c4622293f05be5f4595136a5bbf194116fb2887c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58081094"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59275549"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
-Azure Cosmos DB 支持 [Apache Tinkerpop](https://tinkerpop.apache.org) 的图形遍历语言 [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)，该语言是一种 Gremlin API，用于创建图形实体以及执行图形查询操作。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
+Azure Cosmos DB 支持 [Apache Tinkerpop](https://tinkerpop.apache.org) 的图形遍历语言（称为 [Gremlin](https://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps)）。 可以使用 Gremlin 语言创建图形实体（顶点和边缘）、修改这些实体内部的属性、执行查询和遍历，以及删除实体。 
 
-Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、低至个位数的可预测延迟、自动编制索引、SLA、跨越两个或更多 Azure 区域的数据库帐户的读取可用性。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此可以轻松迁移使用其他图形数据库编写的应用程序，而无需更改代码。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](https://spark.apache.org/graphx/)）无缝集成。 
+Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括全局分布、存储和吞吐量独立缩放、低至个位数的可预测延迟、自动编制索引、SLA、跨越两个或更多 Azure 区域的数据库帐户的读取可用性。 由于 Azure Cosmos DB 支持 TinkerPop/Gremlin，因此可以轻松迁移使用其他兼容图形数据库编写的应用程序。 此外，由于具有 Gremlin 支持，Azure Cosmos DB 可与支持 TinkerPop 的分析框架（例如 [Apache Spark GraphX](https://spark.apache.org/graphx/)）无缝集成。 
 
-本文提供 Gremlin 的快速演练，并列举 Gremlin API 支持的 Gremlin 功能和步骤。
+本文提供 Gremlin 的快速演练，并列举 Gremlin API 支持的 Gremlin 功能。
 
 ## <a name="gremlin-by-example"></a>举例介绍 Gremlin
 我们使用一个示例图形来了解如何在 Gremlin 中表示查询。 下图显示了一个商业应用程序，该应用程序管理以图形形式呈现的有关用户、兴趣和设备的数据。  
@@ -59,7 +59,7 @@ Azure Cosmos DB 为图形数据库提供企业级的功能。 这些功能包括
 :> g.V().hasLabel('person').order().by('firstName', decr)
 ```
 
-如果需要回答类似于“Thomas 的朋友使用哪些操作系统？”的问题，图形可以提供很大的方便。 可以运行这个简单的 Gremlin 遍历从图形中获取该信息：
+如果需要回答类似于“Thomas 的朋友使用哪些操作系统？”的问题，图形可以提供很大的方便。 可以运行此 Gremlin 遍历从图形中获取该信息：
 
 ```
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
@@ -123,31 +123,31 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
   }
 ```
 
-GraphSON 为顶点使用的属性如下：
+下面介绍 GraphSON 使用的顶点属性：
 
-| 属性 | Description |
-| --- | --- |
-| id | 顶点的 ID。 必须唯一（在适用的情况下，可与 _partition 的值合并） |
-| label | 顶点的标签。 这是用于描述实体类型的可选属性。 |
-| type | 用于将顶点与非图形文档相区分 |
-| 属性 | 与顶点关联的用户定义属性包。 每个属性可以有多个值。 |
-| _partition（可配置） | 顶点的分区键。 可用于将图形横向扩展到多个服务器 |
-| outE | 包含顶点中外部边缘的列表。 存储顶点的相邻信息，以便快速执行遍历。 边缘根据其标签分组。 |
+| 属性 | 说明 | 
+| --- | --- | --- |
+| `id` | 顶点的 ID。 必须唯一（在适用的情况下，可与 `_partition` 的值合并）。 如果未提供任何值，则系统会自动提供一个包含 GUID 的值 | 
+| `label` | 顶点的标签。 此属性用于描述实体类型。 |
+| `type` | 用于将顶点与非图形文档相区分 |
+| `properties` | 与顶点关联的用户定义属性包。 每个属性可以有多个值。 |
+| `_partition` | 顶点的分区键。 用于[图形分区](graph-partitioning.md)。 |
+| `outE` | 此属性包含顶点中外部边缘的列表。 存储顶点的相邻信息，以便快速执行遍历。 边缘根据其标签分组。 |
 
 边缘包含以下信息，以方便导航到图形的其他部件。
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
-| id | 边缘的 ID。 必须唯一（在适用的情况下，可与 _partition 的值合并） |
-| label | 边缘的标签。 此属性是可选的，用于描述关系类型。 |
-| inV | 包含边缘的一系列顶点。 存储顶点的相邻信息可以快速执行遍历。 顶点根据其标签分组。 |
-| 属性 | 与边缘关联的用户定义属性包。 每个属性可以有多个值。 |
+| `id` | 边缘的 ID。 必须唯一（在适用的情况下，可与 `_partition` 的值合并） |
+| `label` | 边缘的标签。 此属性是可选的，用于描述关系类型。 |
+| `inV` | 此属性包含边缘的一系列顶点。 存储顶点的相邻信息可以快速执行遍历。 顶点根据其标签分组。 |
+| `properties` | 与边缘关联的用户定义属性包。 每个属性可以有多个值。 |
 
 每个属性可在一个数组中存储多个值。 
 
-| 属性 | Description |
+| 属性 | 说明 |
 | --- | --- |
-| 值 | 属性的值
+| `value` | 属性的值
 
 ## <a name="gremlin-steps"></a>Gremlin 的步骤
 现在，让我们了解 Azure Cosmos DB 支持的 Gremlin 步骤。 有关 Gremlin 的完整参考信息，请参阅 [TinkerPop 参考](https://tinkerpop.apache.org/docs/current/reference)。
@@ -158,12 +158,13 @@ GraphSON 为顶点使用的属性如下：
 | `addV` | 将顶点添加到图形 | [addV 步骤](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
 | `and` | 确保所有遍历都返回值 | [and 步骤](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
 | `as` | 用于向步骤的输出分配变量的步骤调制器 | [as 步骤](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | 与 `group` 和 `order` 配合使用的步骤调制器 | [by 步骤](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `by` | 步骤调制器，与以下步骤配合使用：`group` 和 `order` | [by 步骤](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
 | `coalesce` | 返回第一个返回结果的遍历 | [coalesce 步骤](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | 返回常量值。 与 `coalesce` 配合使用| [constant 步骤](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `constant` | 返回常量值。 与以下步骤配合使用： `coalesce`| [constant 步骤](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
 | `count` | 从遍历返回计数 | [count 步骤](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
 | `dedup` | 返回已删除重复内容的值 | [dedup 步骤](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
 | `drop` | 丢弃值（顶点/边缘） | [drop 步骤](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
+| `executionProfile` | 创建执行的 Gremlin 步骤生成的所有操作的说明 | [executionProfile 步骤](graph-execution-profile.md) |
 | `fold` | 充当用于计算结果聚合值的屏障| [fold 步骤](https://tinkerpop.apache.org/docs/current/reference/#fold-step) |
 | `group` | 根据指定的标签将值分组| [group 步骤](https://tinkerpop.apache.org/docs/current/reference/#group-step) |
 | `has` | 用于筛选属性、顶点和边缘。 支持 `hasLabel`、`hasId`、`hasNot` 和 `has` 变体。 | [has 步骤](https://tinkerpop.apache.org/docs/current/reference/#has-step) |
@@ -172,7 +173,7 @@ GraphSON 为顶点使用的属性如下：
 | `limit` | 用于限制遍历中的项数| [limit 步骤](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
 | `local` | 本地包装遍历的某个部分，类似于子查询 | [local 步骤](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
 | `not` | 用于生成筛选器的求反结果 | [not 步骤](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | 如果生成了某个结果，则返回指定遍历的结果，否则返回调用元素 | [optional 步骤](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `optional` | 如果生成了某个结果，则返回指定遍历的结果，否则返回调用元素 | [可选步骤](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
 | `or` | 确保至少有一个遍历会返回值 | [or 步骤](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
 | `order` | 按指定的排序顺序返回结果 | [order 步骤](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
 | `path` | 返回遍历的完整路径 | [path 步骤](https://tinkerpop.apache.org/docs/current/reference/#path-step) |

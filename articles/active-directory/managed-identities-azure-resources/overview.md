@@ -15,12 +15,12 @@ ms.custom: mvc
 ms.date: 10/23/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4cbcab0d287f344d308e3ed51ae47087afae7f9e
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: d70dfceb0101c4f6dbd76f3c6b34d85e5255aa72
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449269"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261456"
 ---
 # <a name="what-is-managed-identities-for-azure-resources"></a>什么是 Azure 资源的托管标识？
 
@@ -50,11 +50,20 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
 - **系统分配托管标识**直接在 Azure 服务实例上启用。 启用标识后，Azure 将在实例的订阅信任的 Azure AD 租户中创建实例的标识。 创建标识后，系统会将凭据预配到实例。 系统分配标识的生命周期直接绑定到启用它的 Azure 服务实例。 如果实例遭删除，Azure 会自动清理 Azure AD 中的凭据和标识。
 - **用户分配托管标识**是作为独立的 Azure 资源创建的。 在创建过程中，Azure 会在由所用订阅信任的 Azure AD 租户中创建一个标识。 在创建标识后，可以将标识分配到一个或多个 Azure 服务实例。 用户分配标识的生命周期与它所分配到的 Azure 服务实例的生命周期是分开管理的。
 
-代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。
+在内部，托管标识是特殊类型的服务主体，它们已锁定，只能与 Azure 资源配合使用。 删除托管标识时，相应的服务主体也会自动删除。 
+
+代码可以使用托管标识来请求支持 Azure AD 身份验证的服务的访问令牌。 Azure 负责滚动更新服务实例使用的凭据。 
 
 下图演示了托管服务标识如何与 Azure 虚拟机 (VM) 协同工作：
 
 ![托管服务标识和 Azure VM](media/overview/msi-vm-vmextension-imds-example.png)
+
+|  属性    | 系统分配的托管标识 | 用户分配的托管标识 |
+|------|----------------------------------|--------------------------------|
+| 创建 |  作为 Azure 资源（例如 Azure 虚拟机或 Azure 应用服务）的一部分创建 | 作为独立 Azure 资源创建 |
+| 生命周期 | 与用于创建托管标识的 Azure 资源共享生命周期。 <br/> 删除父资源时，也会删除托管标识。 | 独立生命周期。 <br/> 必须显式删除。 |
+| 在 Azure 资源之间共享 | 无法共享。 <br/> 只能与单个 Azure 资源相关联。 | 可以共享 <br/> 用户分配的同一个托管标识可以关联到多个 Azure 资源。 |
+| 常见用例 | 包含在单个 Azure 资源中的工作负荷 <br/> 需要独立标识的工作负荷。 <br/> 例如，在单个虚拟机上运行的应用程序 | 在多个资源上运行的并可以共享单个标识的工作负荷。 <br/> 需要在预配流程中预先对安全资源授权的工作负荷。 <br/> 其资源经常回收，但权限应保持一致的工作负荷。 <br/> 例如，其中的多个虚拟机需要访问同一资源的工作负荷 | 
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>系统分配托管标识如何与 Azure VM 协同工作
 
@@ -64,7 +73,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
     1. 使用服务主体客户端 ID 和证书更新 Azure 实例元数据服务标识终结点。
     1. 预配 VM 扩展（计划于 2019 年 1 月弃用）并添加服务主体客户端 ID 和证书。 （根据计划，此步骤将弃用。）
 4. VM 有了标识以后，请根据服务主体信息向 VM 授予对 Azure 资源的访问权限。 若要调用 Azure 资源管理器，请在 Azure AD 中使用基于角色的访问控制 (RBAC) 向 VM 服务主体分配相应的角色。 若要调用 Key Vault，请授予代码对 Key Vault 中特定机密或密钥的访问权限。
-5. 在 VM 上运行的代码可以从只能从 VM 中访问的 Azure 实例元数据服务终结点请求令牌：`http://169.254.169.254/metadata/identity/oauth2/token`
+5. 在 VM 上运行的代码可以从只能从 VM 中访问的 Azure 实例元数据服务终结点请求令牌： `http://169.254.169.254/metadata/identity/oauth2/token`
     - resource 参数指定了要向其发送令牌的服务。 若要向 Azure 资源管理器进行身份验证，请使用 `resource=https://management.azure.com/`。
     - API 版本参数指定 IMDS 版本，请使用 api-version=2018-02-01 或更高版本。
 
@@ -86,7 +95,7 @@ Azure Active Directory (Azure AD) 中的 Azure 资源托管标识功能可以解
    > [!Note]
    > 也可在步骤 3 之前执行此步骤。
 
-5. 在 VM 上运行的代码可以从只能从 VM 中访问的 Azure 实例元数据服务标识终结点请求令牌：`http://169.254.169.254/metadata/identity/oauth2/token`
+5. 在 VM 上运行的代码可以从只能从 VM 中访问的 Azure 实例元数据服务标识终结点请求令牌： `http://169.254.169.254/metadata/identity/oauth2/token`
     - resource 参数指定了要向其发送令牌的服务。 若要向 Azure 资源管理器进行身份验证，请使用 `resource=https://management.azure.com/`。
     - 客户端 ID 参数指定为其请求令牌的标识。 当单台 VM 上有多个用户分配的标识时，此值是消除歧义所必需的。
     - API 版本参数指定 Azure 实例元数据服务版本。 请使用 `api-version=2018-02-01` 或指定更高的版本。
@@ -139,5 +148,5 @@ Azure 资源的托管标识可以用来向支持 Azure AD 身份验证的服务�
 
 请参阅以下快速入门，开始使用 Azure 资源托管标识功能：
 
-* [使用 Windows VM 系统分配托管标识访问资源管理器](tutorial-windows-vm-access-arm.md)
+* [使用 Windows VM 系统分配的托管标识访问资源管理器](tutorial-windows-vm-access-arm.md)
 * [使用 Linux VM 系统分配托管标识访问资源管理器](tutorial-linux-vm-access-arm.md)

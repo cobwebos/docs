@@ -397,7 +397,7 @@ azureMobile.js 文件中的大多数设置在 [Azure 门户]中都有对等的�
 
 <!--- ALTERNATE INCLUDE - we can't use ../includes/app-service-mobile-dotnet-backend-create-new-service.md - slightly different semantics -->
 
-无论使用哪种 Azure 应用服务应用程序类型，将 SQL 数据库用作数据存储的过程都是相同的。 如果尚未这样做，请根据以下步骤创建移动应用后端：
+无论使用哪种 Azure 应用服务应用程序类型，将 Azure SQL 数据库用作数据存储的过程都是相同的。 如果尚未这样做，请根据以下步骤创建移动应用后端：
 
 1. 登录到 [Azure 门户]。
 1. 在窗口左上方，选择“+新建”按钮 >“Web + 移动”>“移动应用”，并为移动应用后端提供名称。

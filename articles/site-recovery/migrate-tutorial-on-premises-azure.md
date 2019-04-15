@@ -5,58 +5,45 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 31d08c0dac63662568bf55a021e85ec414c61e52
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
+ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360361"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59357970"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
 
-除了使用 [Azure Site Recovery](site-recovery-overview.md) 服务管理和协调本地计算机和 Azure VM 的灾难恢复以实现业务连续性和灾难恢复 (BCDR) 外，还可以使用 Site Recovery 管理本地计算机到 Azure 的迁移。
+
+本文将介绍如何使用 [Azure Site Recovery](site-recovery-overview.md) 将本地计算机迁移到 Azure。 一般情况下，Site Recovery 用于管理和协调本地计算机与 Azure VM 的灾难恢复。 但是，它也可以用于迁移。 迁移的步骤与灾难恢复相同，只是有一处不同。 在迁移过程中，从本地站点故障转移计算机是最后一步。 与灾难恢复不同，在迁移方案中无法故障回复到本地。
 
 
-本教程演示如何将本地 VM 和物理服务器迁移到 Azure。 本教程介绍如何执行下列操作：
+本教程演示如何将本地 VM 和物理服务器迁移到 Azure。 学习如何：
 
 > [!div class="checklist"]
-> * 选择复制目标
-> * 设置源和目标环境
+> * 设置迁移的源和目标环境
 > * 设置复制策略
 > * 启用复制
 > * 运行测试迁移，确保一切按预期正常工作
 > * 面向 Azure 运行一次性故障转移
 
-此教程为系列教程中的第三个教程。 本教程假设你已完成前面教程中的以下任务：
-
-1. [准备 Azure](tutorial-prepare-azure.md)
-2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 服务器或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 服务器。
-
-在开始之前，查看用于灾难恢复的 [VMware](vmware-azure-architecture.md) 或 [Hyper-V](hyper-v-azure-architecture.md) 体系结构会有所帮助。
 
 > [!TIP]
-> 想要参与我们将 VMware VM 迁移到 Azure 的全新无代理体验吗？ [了解更多信息](https://aka.ms/migrateVMs-signup)。
-
-## <a name="prerequisites"></a>先决条件
-
-不支持半虚拟化驱动程序导出的设备。
+> Azure Migrate 服务现已推出预览版，它提供一种新的无代理体验用于将 VMware VM 迁移到 Azure。 [了解更多信息](https://aka.ms/migrateVMs-signup)。
 
 
-## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
+## <a name="before-you-start"></a>开始之前
 
-1. 登录到 [Azure 门户](https://portal.azure.com) > **恢复服务**。
-2. 单击“创建资源” > “管理工具” > “备份和 Site Recovery”。
-3. 在“名称”中，指定友好名称 **ContosoVMVault**。 如果有多个订阅，请选择合适的一个。
-4. 创建资源组 **ContosoRG**。
-5. 指定 Azure 区域。 若要查看受支持的区域，请参阅 [Azure Site Recovery 定价详细信息](https://azure.microsoft.com/pricing/details/site-recovery/)中的“地域可用性”。
-6. 若要从仪表板快速访问保管库，请单击“固定到仪表板”，然后单击“创建”。
+请注意，不支持半虚拟化驱动程序导出的设备。
 
-   ![新保管库](./media/migrate-tutorial-on-premises-azure/onprem-to-azure-vault.png)
 
-新保管库将添加到“仪表板”中的“所有资源”下，以及“恢复服务保管库”主页面上。
+## <a name="prepare-azure-and-on-premises"></a>在 Azure 中和本地做好准备
+
+1. 按[此文](tutorial-prepare-azure.md)中所述准备好 Azure。 虽然此文介绍的是灾难恢复的准备步骤，但这些步骤同样适用于迁移。
+2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 服务器或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 服务器。 如果迁移的是物理机，则不需要做任何准备。 只需检查[支持矩阵](vmware-physical-azure-support-matrix.md)即可。
 
 
 ## <a name="select-a-replication-goal"></a>选择复制目标
@@ -72,9 +59,11 @@ ms.locfileid: "58360361"
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-- [设置](vmware-azure-tutorial.md#set-up-the-source-environment) VMware VM 的源环境。
-- [设置](physical-azure-disaster-recovery.md#set-up-the-source-environment)物理服务器的源环境。
-- [设置](hyper-v-azure-tutorial.md#set-up-the-source-environment) Hyper-V VM 的源环境。
+**场景** | **详细信息**
+--- | --- 
+VMware | 设置[源环境](vmware-azure-set-up-source.md)和[配置服务器](vmware-azure-deploy-configuration-server.md)。
+物理机 | [设置](physical-azure-set-up-source.md)源环境和配置服务器。
+Hyper-V | 设置[源环境](hyper-v-azure-tutorial.md#set-up-the-source-environment)<br/><br/> 为使用 System Center VMM 部署的 Hyper-V 设置[源环境](hyper-v-vmm-azure-tutorial.md#set-up-the-source-environment)。
 
 ## <a name="set-up-the-target-environment"></a>设置目标环境
 
@@ -82,20 +71,26 @@ ms.locfileid: "58360361"
 
 1. 单击“准备基础结构” > “目标”，并选择要使用的 Azure 订阅。
 2. 指定资源管理器部署模型。
-3. Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和网络。
+3. Site Recovery 将检查 Azure 资源。
+    - 如果迁移的是 VMware VM 或物理服务器，则 Site Recovery 将会验证是否提供了一个 Azure 网络，在故障转移后创建 Azure VM 时，会将该 VM 放入该网络。
+    - 如果迁移的是 Hyper-V VM，则 Site Recovery 将会验证是否存在兼容的 Azure 存储帐户和网络。
+4. 如果迁移的是 System Center VMM 管理的 Hyper-V VM，请设置[网络映射](hyper-v-vmm-azure-tutorial.md#configure-network-mapping)。
 
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
 
-- 为 VMware VM [设置复制策略](vmware-azure-tutorial.md#create-a-replication-policy)。
-- 为物理服务器[设置复制策略](physical-azure-disaster-recovery.md#create-a-replication-policy)。
-- 为 Hyper-V VM [设置复制策略](hyper-v-azure-tutorial.md#set-up-a-replication-policy)。
-
+**场景** | **详细信息**
+--- | --- 
+VMware | 为 VMware VM 设置[复制策略](vmware-azure-set-up-replication.md)。
+物理机 | 为物理机设置[复制策略](physical-azure-disaster-recovery.md#create-a-replication-policy)。
+Hyper-V | 设置[复制策略](hyper-v-azure-tutorial.md#set-up-a-replication-policy)<br/><br/> 为使用 System Center VMM 部署的 Hyper-V 设置[复制策略](hyper-v-vmm-azure-tutorial.md#set-up-a-replication-policy)。
 
 ## <a name="enable-replication"></a>启用复制
 
-- 为 VMware VM [启用复制](vmware-azure-tutorial.md#enable-replication)。
-- 为物理服务器[启用复制](physical-azure-disaster-recovery.md#enable-replication)。
-- 在[使用](hyper-v-vmm-azure-tutorial.md#enable-replication)或[不使用 VMM](hyper-v-azure-tutorial.md#enable-replication) 的情况下，为 Hyper-V VM 启用复制。
+**场景** | **详细信息**
+--- | --- 
+VMware | 为 VMware VM [启用复制](vmware-azure-enable-replication.md)。
+物理机 | 为物理机[启用复制](physical-azure-disaster-recovery.md#enable-replication)。
+Hyper-V | [启用复制](hyper-v-azure-tutorial.md#enable-replication)<br/><br/> 为使用 System Center VMM 部署的 Hyper-V [启用复制](hyper-v-vmm-azure-tutorial.md#enable-replication)。
 
 
 ## <a name="run-a-test-migration"></a>运行测试迁移
@@ -160,8 +155,13 @@ ms.locfileid: "58360361"
 - 更新所有内部文档，以显示新的位置和 Azure VM 的 IP 地址。
 
 
+
+
 ## <a name="next-steps"></a>后续步骤
 
-在本教程中，已将本地 VM 迁移到 Azure VM。 现在可以为 Azure 区域设置到辅助 Azure 区域的[灾难恢复](azure-to-azure-replicate-after-migration.md)。
+在本教程中，已将本地 VM 迁移到 Azure VM。 Now
+
+> [!div class="nextstepaction"]
+> 为 Azure VM 设置到 Azure 次要区域的[灾难恢复](azure-to-azure-replicate-after-migration.md)。
 
   

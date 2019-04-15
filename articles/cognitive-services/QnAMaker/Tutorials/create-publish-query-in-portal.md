@@ -1,7 +1,7 @@
 ---
 title: 在 QnA Maker 中创建、发布和回答问题
 titleSuffix: Azure Cognitive Services
-description: 此基于门户的教程详细介绍如何以编程方式创建和发布知识库，然后通过知识库来回答问题。
+description: 通过基于 Web 的公共 FAQ 创建包含问答的新知识库。 保存、训练和发布知识库。 发布知识库后，使用 CURL 命令发送问题并接收解答。 然后创建机器人，并使用相同的问题测试机器人。
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/17/2018
+ms.date: 04/08/2019
 ms.author: diberry
-ms.openlocfilehash: 6f79614e4b1ec660d2ec5c8aee40924908cf8f5c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58884119"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59266925"
 ---
-# <a name="tutorial-create-a-knowledge-base-then-answer-question-via-the-qna-maker-portal"></a>教程：通过 QnA Maker 门户创建知识库并回答问题
+# <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>教程：通过 QnA Maker 门户创建知识库
 
-此教程详细介绍如何创建和发布知识库，然后通过知识库来回答问题。
+通过基于 Web 的公共 FAQ 创建包含问答的新知识库。 保存、训练和发布知识库。 发布知识库后，使用 Curl 命令发送问题并接收解答。 然后创建机器人，并使用相同的问题测试机器人。 
 
 本教程介绍如何执行下列操作： 
 
@@ -29,6 +29,7 @@ ms.locfileid: "58884119"
 > * 查看、保存和训练知识库
 > * 发布知识库
 > * 使用 Curl 查询知识库
+> * 创建机器人
 > 
 > [!NOTE]
 > [“Azure-Samples/cognitive-services-qnamaker-csharp”GitHub 存储库](https://github.com/Azure-Samples/cognitive-services-qnamaker-csharp/tree/master/documentation-samples/tutorials/create-publish-answer-knowledge-base)中提供本教程的编程版本和完整的解决方案。
@@ -99,7 +100,9 @@ ms.locfileid: "58884119"
 
 ![发布页面的终结点设置](../media/qnamaker-tutorial-create-publish-query-in-portal/publish-2.png)
 
-## <a name="use-curl-to-query-for-an-faq-answer"></a>使用 curl 查询 FAQ 解答
+请不要关闭此“发布”页，稍后在本教程中需要使用它来创建机器人。 
+
+## <a name="use-curl-to-query-for-an-faq-answer"></a>使用 Curl 查询 FAQ 解答
 
 1. 选择“Curl”选项卡。 
 
@@ -109,7 +112,7 @@ ms.locfileid: "58884119"
 
 1. 将 `<Your question>` 替换为 `How large can my KB be?`。 这与问题 `How large a knowledge base can I create?` 接近，但并不完全相同。 QnA Maker 会应用自然语言处理来确定两个问题是否相同。     
 
-1. 执行 CURL 命令，然后接收包含分数和答案的 JSON 响应。 
+1. 执行 Curl 命令，然后接收包含评分和解答的 JSON 响应。 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -133,11 +136,11 @@ ms.locfileid: "58884119"
 
     分数为 42.81%，表明 QnA Maker 不怎么确信其答案。  
 
-## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>使用 curl 查询聊天式的解答
+## <a name="use-curl-to-query-for-a-chit-chat-answer"></a>使用 Curl 查询聊天式解答
 
 1. 在支持 Curl 的终端中，将 `How large can my KB be?` 替换为用户进行的机器人聊天的结束语句，例如 `Thank you`。   
 
-1. 执行 CURL 命令，然后接收包含分数和答案的 JSON 响应。 
+1. 执行 Curl 命令，然后接收包含评分和解答的 JSON 响应。 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -173,13 +176,13 @@ ms.locfileid: "58884119"
 
     由于问题 `Thank you` 与聊天问题完全匹配，因此分数为 100，表明 QnA Maker 完全确信其答案。 QnA Maker 还返回了包含聊天元数据标记信息的所有相关问题和元数据属性。  
 
-## <a name="use-curl-to-query-for-the-default-answer"></a>使用 curl 查询默认解答
+## <a name="use-curl-to-query-for-the-default-answer"></a>使用 Curl 查询默认解答
 
 QnA Maker 不确信其答案的问题会收到默认答案。 该答案在 Azure 门户中配置。 
 
 1. 在支持 Curl 的终端中，将 `Thank you` 替换为 `x`。 
 
-1. 执行 CURL 命令，然后接收包含分数和答案的 JSON 响应。 
+1. 执行 Curl 命令，然后接收包含评分和解答的 JSON 响应。 
 
     ```TXT
       % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
@@ -197,7 +200,17 @@ QnA Maker 不确信其答案的问题会收到默认答案。 该答案在 Azure
     }
     ```
     
-    QnA Maker 返回的分数为 0，表明根本不信任答案，但仍返回了默认答案。 
+    QnA Maker 返回的评分为 `0`，表示没有置信度，但同时返回了默认解答。 
+
+## <a name="create-a-knowledge-base-bot"></a>创建知识库机器人
+
+有关详细信息，请参阅[使用此知识库创建聊天机器人](create-qna-bot.md)。
+
+## <a name="clean-up-resources"></a>清理资源
+
+处理完知识库机器人后，请删除资源组 `my-tutorial-rg`，以删除处理机器人过程中创建的所有 Azure 资源。
+
+处理完知识库后，请在 QnA Maker 门户中选择“我的知识库”，选择知识库“我的教程知识库”，然后选择该行最右侧的删除图标。  
 
 ## <a name="next-steps"></a>后续步骤
 
@@ -208,4 +221,4 @@ QnA Maker 不确信其答案的问题会收到默认答案。 该答案在 Azure
 有关默认答案的详细信息，请参阅[找不到匹配项](../Concepts/confidence-score.md#no-match-found)。 
 
 > [!div class="nextstepaction"]
-> [知识库概念](../Concepts/knowledge-base.md)
+> [使用此知识库创建聊天机器人](create-qna-bot.md)

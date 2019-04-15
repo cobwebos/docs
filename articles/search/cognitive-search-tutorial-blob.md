@@ -1,21 +1,21 @@
 ---
-title: 有关在索引管道中调用认知服务 API 的教程 - Azure 搜索
-description: 在本教程中，在用于数据提取和转换的 Azure 搜索索引中分步完成数据提取、自然语言和图像 AI 处理的示例。
+title: 教程：在索引管道中调用认知服务 API - Azure 搜索
+description: 本教程通过一个例子逐步说明如何在 Azure 搜索索引中完成数据提取、自然语言和图像 AI 处理，以便基于 JSON Blob 实现数据提取和转换。
 manager: pablocas
 author: luiscabrer
 services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: tutorial
-ms.date: 03/18/2019
+ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: f60b9002f939cbf4c3a0ecfb78b358598713ea1c
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881612"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59261915"
 ---
 # <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>教程：在 Azure 搜索索引管道中调用认知服务 API（预览版）
 
@@ -32,60 +32,44 @@ ms.locfileid: "58881612"
 
 输出是 Azure 搜索中的全文搜索索引。 可以使用[同义词](search-synonyms.md)、[评分配置文件](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)、[分析器](search-analyzers.md)和[筛选器](search-filters.md)等其他标准功能来增强索引。
 
-如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+本教程在免费服务中运行，但免费事务数目限制为每日 20 个文档。 若要在同一天多次运行本教程，请使用可以运行更多次的较小文件集。
 
 > [!NOTE]
-> 自 2018 年 12 月 21 日起，你可将认知服务资源与 Azure 搜索技能集进行关联。 这会使我们能够开始收取技能集执行的费用。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要附加可计费的认知服务资源。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 内置技能的执行将按现有的[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)进行计费。 图像提取费用将按预览版定价进行计费，详见 [Azure 搜索定价页面](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
+> 内置技能的执行将按现有[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services/)计费。 图像提取费用将按预览版定价计费，详见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。 了解[详细信息](cognitive-search-attach-cognitive-services.md)。
+
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>先决条件
 
-不太熟悉认知搜索？ 请阅读[什么是认知搜索？](cognitive-search-concept-intro.md) 来熟悉该服务，或尝试阅读[门户快速入门](cognitive-search-quickstart-blob.md)获取重要概念的简介和实践。
+[创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
 
-若要对 Azure 搜索发出 REST 调用，请使用 PowerShell 或 Web 测试工具（例如 Telerik Fiddler 或 Postman）来构建 HTTP 请求。 如果你不熟悉这些工具，请参阅[使用 Fiddler 或 Postman 探索 Azure 搜索 REST API](search-fiddler.md)。
+[Postman 桌面应用](https://www.getpostman.com/)用于对 Azure 搜索发出 REST 调用。
 
-使用 [Azure 门户](https://portal.azure.com/)创建端到端工作流中使用的服务。 
+### <a name="get-an-azure-search-api-key-and-endpoint"></a>获取 Azure 搜索 api-key 和终结点
 
-### <a name="set-up-azure-search"></a>设置 Azure 搜索
+REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-首先注册 Azure 搜索服务。 
+1. 在 Azure 门户中的搜索服务“概述”页上，获取该 URL。 示例终结点可能类似于 `https://my-service-name.search.windows.net`。
 
-1. 转到 [Azure 门户](https://portal.azure.com)，使用 Azure 帐户登录。
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
-1. 单击“创建资源”，搜索“Azure 搜索”，然后单击“创建”。 首次设置搜索服务时，请参阅[在门户中创建 Azure 搜索服务](search-create-service-portal.md)。
+![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
-   ![仪表板门户](./media/cognitive-search-tutorial-blob/create-search-service-full-portal.png "在门户中创建 Azure 搜索服务")
-
-1. 对于“资源组”，请创建一个资源组用于包含本教程中创建的所有资源。 这样可以在完成本教程后更轻松地清理资源。
-
-1. 选择位置时，选择邻近你的数据和其他云应用的区域。
-
-1. 对于“定价层”，可以创建“免费”服务来完成教程和快速入门。 要使用自己的数据进行更深入的调查，请创建一个[付费服务](https://azure.microsoft.com/pricing/details/search/)，例如“基本”或“标准”层的服务。 
-
-   “免费”服务限制为 3 个索引、最大 16 MB 的 Blob 和 2 分钟的索引，这不足以演练认知搜索的完整功能。 要查看不同层的限制，请参阅[服务限制](search-limits-quotas-capacity.md)。
-
-   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service1.png "门户中的服务定义页")
-   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service2.png "门户中的服务定义页")
-
- 
-1. 将服务固定到仪表板，以快速访问服务信息。
-
-   ![门户中的服务定义页](./media/cognitive-search-tutorial-blob/create-search-service3.png "门户中的服务定义页")
-
-1. 创建服务后，收集以下信息：“概述”页中的 **URL** 以及“密钥”页中的 **api-key**（主密钥或辅助密钥）。
-
-   ![门户中的终结点和密钥信息](./media/cognitive-search-tutorial-blob/create-search-collect-info.png "门户中的终结点和密钥信息")
+所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
 ### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
 
 扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 搜索索引器](search-indexer-overview.md)数据源类型。 请注意，认知搜索不支持 Azure 表存储。 本演练使用 Blob 存储来展示多种内容类型。
 
-1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)。 示例数据包括不同类型的小型文件集。 
+1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
 
-1. 注册 Azure Blob 存储，创建存储帐户，登录到存储资源管理器，并创建名为 `basicdemo` 的容器。 有关所有步骤的说明，请参阅 [Azure 存储资源管理器快速入门](../storage/blobs/storage-quickstart-blobs-storage-explorer.md)。
+1. [注册 Azure Blob 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，创建存储帐户，打开 Blob 服务页并创建容器。 在 Azure 搜索所在的同一区域创建存储帐户。
 
-1. 使用 Azure 存储资源管理器，在创建的 `basicdemo` 容器中单击“上传”以上传示例文件。
+1. 在创建的容器中，单击“上传”以上传在上一步中下载的示例文件。
+
+   ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
 
 1. 加载示例文件后，获取 Blob 存储的容器名称和连接字符串。 为此，请在 Azure 门户中导航到你的存储帐户。 在“访问密钥”中，复制“连接字符串”字段值。
 
@@ -438,7 +422,7 @@ api-key: [api-key]
 Content-Type: application/json
 ```
 
-针对其他字段（本演练中的 content、language、keyphrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
+针对本练习中的其他字段（content、languageCode、keyPhrases 和 organizations）重复上述步骤。 可以使用逗号分隔列表通过 `$select` 返回多个字段。
 
 可以根据查询字符串的复杂性和长度，使用 GET 或 POST。 有关详细信息，请参阅[使用 REST API 进行查询](https://docs.microsoft.com/rest/api/searchservice/search-documents)。
 

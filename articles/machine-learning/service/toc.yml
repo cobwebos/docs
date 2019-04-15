@@ -132,13 +132,14 @@ items:
   - name: 自动化机器学习
     displayName: automl, auto ml
     items:
-    - name: 使用 Python 自动执行训练
+    - name: 使用自动化 ML (Python)
       displayName: SDK automl
       href: how-to-configure-auto-train.md
     - name: 使用远程计算目标
       displayName: automl automated auto ml
       href: how-to-auto-train-remote.md
     - name: 自动训练预测模型
+      displayName: time series
       href: how-to-auto-train-forecast.md
   - name: ONNX 模型
     href: how-to-build-deploy-onnx.md
@@ -212,9 +213,9 @@ items:
   - name: 比较我们的 ML 产品
     href: /azure/architecture/data-guide/technology-choices/data-science-and-machine-learning
     maintainContext: true
-ms.openlocfilehash: 6106a8ea03253b0787bb740295f839301543f9c6
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 647c949a8f999a34963ddfa49f1df8a1606a1295
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495441"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521761"

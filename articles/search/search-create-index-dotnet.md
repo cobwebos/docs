@@ -1,5 +1,5 @@
 ---
-title: 使用 C# 创建索引 - Azure 搜索
+title: 快速入门：在 C# 控制台应用程序中创建索引 - Azure 搜索
 description: 了解如何通过 Azure 搜索 .NET SDK 使用 C# 创建全文可搜索索引。
 author: heidisteen
 manager: cgronlun
@@ -9,15 +9,21 @@ services: search
 ms.service: search
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 03/22/2019
-ms.openlocfilehash: a5861faaf26962d34d1c356e29dce1be40f8716b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.date: 04/08/2019
+ms.openlocfilehash: 83842893e0ffc6bb954832cd65b6312b59bbcaa3
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370578"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59269038"
 ---
 # <a name="quickstart-1---create-an-azure-search-index-in-c"></a>快速入门：1 - 使用 C# 创建 Azure 搜索索引
+> [!div class="op_single_selector"]
+> * [C#](search-create-index-dotnet.md)
+> * [门户](search-get-started-portal.md)
+> * [PowerShell](search-howto-dotnet-sdk.md)
+> * [Postman](search-fiddler.md)
+>*
 
 本文介绍了使用 C# 和 [.NET SDK](https://aka.ms/search-sdk) 创建 [Azure 搜索索引](search-what-is-an-index.md)的过程。 这是第一课，分为创建、加载和查询索引三部分练习。 执行以下任务，完成索引创建：
 
@@ -28,37 +34,45 @@ ms.locfileid: "58370578"
 
 ## <a name="prerequisites"></a>先决条件
 
+本快速入门使用以下服务、工具和数据。 
+
 [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可以使用本快速入门的免费服务。
 
 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)（版本不限）。 示例代码和说明已在免费社区版上进行了测试。
 
-获取搜索服务的 URL 终结点和管理员 API 密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
+[DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo) 提供了示例解决方案，一个用 C# 编写的 .NET Core 控制台应用程序，位于 Azure 示例 GitHub 存储库中。 下载并提取该解决方案。 默认情况下，解决方案是只读的。 右键单击解决方案并清除只读属性，以便可以修改文件。 数据包含在解决方案中。
 
-  1. 在 Azure 门户中的搜索服务“概述”页上，获取该 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
-  2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+对服务的调用要求每个请求都有一个 URL 终结点和一个访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-  ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
+1. [登录 Azure 门户](https://portal.azure.com/)，并在搜索服务“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
+
+2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+
+![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-## <a name="1---open-the-project"></a>1 - 打开项目
+## <a name="1---configure-and-build"></a>1 - 配置和生成
 
-从 GitHub 下载示例代码 [DotNetHowTo](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo)。 
+1. 在 Visual Studio 中打开 **DotNetHowTo.sln** 文件。
 
-在 appsettings.json 中，使用以下示例替换默认内容，然后为服务提供服务名称和管理员 API 密钥。 对于服务名称，只需要名称本身。 例如，如果你的 URL 为 https://mydemo.search.windows.net，请将 `mydemo` 添加到 JSON 文件。
+1. 在 appsettings.json 中，使用以下示例替换默认内容，然后为服务提供服务名称和管理员 API 密钥。 
 
 
-```json
-{
-    "SearchServiceName": "Put your search service name here",
-    "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
-}
-```
+   ```json
+   {
+       "SearchServiceName": "Put your search service name here (not the full URL)",
+       "SearchServiceAdminApiKey": "Put your primary or secondary API key here",
+    }
+   ```
 
-设置这些值后，可以按 F5 生成运行控制台应用的解决方案。 本练习中的其余步骤以及后续步骤将介绍此代码的工作原理。 
+  对于服务名称，只需要名称本身。 例如，如果你的 URL 为 https://mydemo.search.windows.net，请将 `mydemo` 添加到 JSON 文件。
 
-也可参阅[如何使用 .NET 应用程序中的 Azure 搜索](search-howto-dotnet-sdk.md)，了解 SDK 行为覆盖范围的详细信息。 
+1. 按 F5 生成解决方案并运行控制台应用。 本练习中的其余步骤以及后续步骤将介绍此代码的工作原理。 
+
+也可参阅[如何通过 .NET 应用程序使用 Azure 搜索](search-howto-dotnet-sdk.md)，了解 SDK 行为覆盖范围的详细信息。 
 
 <a name="CreateSearchServiceClient"></a>
 

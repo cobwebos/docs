@@ -9,12 +9,12 @@ ms.date: 09/26/2018
 ms.topic: tutorial
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s
-ms.openlocfilehash: 063ea2392dcaa705436bfbd7ba5d429bb096651e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: dc84844738e501a30f73104a76ff80bf00adff24
+ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891029"
+ms.lasthandoff: 04/09/2019
+ms.locfileid: "59425813"
 ---
 # <a name="get-started-on-azure-dev-spaces-with-nodejs"></a>通过 Node.js 开始使用 Azure Dev Spaces
 
@@ -25,17 +25,10 @@ ms.locfileid: "57891029"
 - 在团队环境中高效地开发和测试代码。
 
 > [!Note]
-> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分，或在此页上发表评论。
-
-现在可以在 Azure 中创建基于 Kubernetes 的开发环境了。
+> **如果在任何时候遇到问题**，请参阅[故障排除](troubleshooting.md)部分。
 
 ## <a name="install-the-azure-cli"></a>安装 Azure CLI
-Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 本地计算机可以运行 Windows、Mac 或 Linux。 对于 Linux，支持以下发行版：Ubuntu（18.04、16.04 和 14.04），Debian 8 和 9、RHEL 7、Fedora 26+、CentOS 7、openSUSE 42.2 和 SLES 12。
-
-首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。 
-
-> [!IMPORTANT]
-> 如果已安装 Azure CLI，请确保使用 2.0.43 版或更高版本。
+Azure Dev Spaces 需要进行最基本的本地计算机设置。 开发空间的大部分配置存储在云中，可以与其他用户共享。 首先，请下载并运行 [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ### <a name="sign-in-to-azure-cli"></a>登录 Azure CLI
 登录 Azure。 在终端窗口中键入以下命令：
@@ -167,7 +160,7 @@ Azure Dev Spaces 不仅仅是用来让代码在 Kubernetes 中运行，它还可
 使用 webfrontend 的公共 URL 在移动设备上打开该 Web 应用。 你可能希望将该 URL 从桌面复制并发送到设备，以避免输入长长的地址。 当该 Web 应用在移动设备中加载时，你会注意到 UI 在小型设备上不能正确显示。
 
 若要修复此问题，可添加一个 `viewport` meta 标记：
-1. 打开 `./public/index.html` 文件
+1. 打开文件 `./public/index.html`
 1. 在现有的 `head` 元素中添加 `viewport` META 标记：
 
     ```html

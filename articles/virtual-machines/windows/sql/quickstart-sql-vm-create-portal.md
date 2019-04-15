@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 13049018042183a4960c81af65b35fcfa6d4c50d
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: bd535aeb034a17f1844c1d19379c1811b43d27e5
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447008"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260219"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -43,9 +43,9 @@ ms.locfileid: "57447008"
 
 1. 使用帐户登录到 [Azure 门户](https://portal.azure.com)。
 
-1. 在 Azure 门户中，单击“创建资源”。 
+1. 在 Azure 门户中，选择“创建资源”。 
 
-1. 在搜索字段中键入“Windows Server 2016 上的 SQL Server 2017 Developer”，然后按 Enter。
+1. 在搜索框中键入 `SQL Server 2017 Developer on Windows Server 2016` 并按 ENTER。
 
 1. 选择“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”映像。
 
@@ -54,63 +54,50 @@ ms.locfileid: "57447008"
    > [!TIP]
    > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 有关完整的定价注意事项，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
-1. 单击“创建”。
+1. 选择“创建”。
 
 ## <a id="configure"></a> 提供基本详细信息
 
-在“基本信息”窗口中提供以下信息：
+在“基本信息”选项卡中提供以下信息：
 
-1. 在“名称”字段中，输入唯一的虚拟机名称。 
+1. 在“项目详细信息”部分选择你的 Azure 订阅，然后选择“新建”以创建新的资源组。 键入 _SQLVM-RG_ 作为名称。
 
-1. 在“用户名”字段中，指定 VM 上本地管理员帐户的名称。
+   ![订阅](media/quickstart-sql-vm-create-portal/basics-project-details.png)
 
-1. 提供一个强 **密码**。
+1. 在“实例详细信息”下：
+    1. 键入 _SQLVM_ 作为**虚拟机名称**。 
+    1. 为“区域”选择一个位置。 
+    1. 本快速入门将“可用性选项”保留设置为“无需基础结构冗余”。 有关可用性选项的详细信息，请参阅 [Azure 区域和可用性](../../windows/regions-and-availability.md)。 
+    1. 在“映像”列表中，选择“免费 SQL Server 许可证:Windows Server 2016 上的 SQL Server 2017 Developer”的映像。 
+    1. 对于虚拟机**大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。 用完资源后，请务必清理资源，以免产生任何意外的费用。 
 
-1. 输入新的**资源组**名称。 可借助此组管理与虚拟机关联的所有资源。
+   ![实例详细信息](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
-1. 确认其他默认设置，然后单击“确定”继续。
+1. 在“管理员帐户”下提供用户名（例如 _azureuser_）和密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../../windows/faq.md#what-are-the-password-requirements-when-creating-a-vm)。
 
-   ![SQL 基本信息窗口](./media/quickstart-sql-vm-create-portal/azure-sql-basic.png)
+   ![管理员帐户](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
-## <a name="choose-virtual-machine-size"></a>选择虚拟机大小
+1. 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。 
 
-1. 执行“大小”设置步骤时，请在“选择大小”窗口中选择虚拟机大小。
-
-   对于本快速入门，请选择“D2S_V3”。 门户中会显示计算机的每月连续使用估算费用（不包括 SQL Server 许可费用）。 请注意，Developer Edition 不会收取额外的 SQL Server 许可费用。 有关更具体的定价信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)。
-
-   > [!TIP]
-   > 在测试时，**D2S_V3** 计算机大小可以节省资金。 但是，对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)中建议的计算机大小和配置。
-
-1. 单击“选择”继续。
-
-## <a name="configure-optional-features"></a>配置可选功能
-
-1. 如果想要通过远程桌面连接到 VM，请在“设置”窗口中，从“选择公共入站端口”列表中选择“RDP (3389)”端口。
-
-   ![入站端口](./media/quickstart-sql-vm-create-portal/inbound-ports.png)
-
-   > [!NOTE]
-   > 可以选择“MS SQL (1433)”端口以远程访问 SQL Server。 但是，这不必要，因为 **SQL Server 设置**步骤也提供此选项。 如果在此步骤中选择了端口 1433，则无论在 **SQL Server 设置**步骤中选择了哪一项，都会打开该端口。
-
-1. 单击“确定”保存所做的更改并继续。
+   ![入站端口规则](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
 ## <a name="sql-server-settings"></a>SQL Server 设置
 
-在“SQL Server 设置”窗口中配置以下选项。
+在“SQL Server 设置”选项卡中配置以下选项：
 
-1. 在“SQL 连接”下拉列表中，选择“公共(Internet)”。 这样，便可以通过 Internet 建立 SQL Server 连接。
+1. 在“安全性和网络”下，为“SQL 连接”选择“公共(Internet)”，并将端口更改为 `1401`，以避免在公共方案中使用众所周知的端口号。 
+1. 在“SQL 身份验证”下，选择“启用”。 SQL 登录名设置为针对 VM 配置的相同用户名和密码。 对“Azure Key Vault 集成”和“存储配置”使用默认设置。  
 
-1. 将“端口”更改为 **1401**，以避免在公共方案中使用已知的端口名称。
+   ![SQL Server 安全性设置](media/quickstart-sql-vm-create-portal/sql-server-settings.png)
 
-1. 在“SQL 身份验证”下面，单击“启用”。 SQL 登录名设置为针对 VM 配置的相同用户名和密码。
+1. 根据需要更改其他任何设置，然后选择“查看 + 创建”。 
 
-1. 根据需要更改其他任何设置，然后单击“确定”完成 SQL Server VM 的配置。
+   ![查看 + 创建](media/quickstart-sql-vm-create-portal/review-create.png)
 
-   ![SQL Server 设置](./media/quickstart-sql-vm-create-portal/sql-settings.png)
 
 ## <a name="create-the-sql-server-vm"></a>创建 SQL Server VM
 
-在“摘要”窗口中查看摘要，然后单击“购买”以创建为此 VM 指定的 SQL Server、资源组和资源。
+在“查看 + 创建”选项卡中查看摘要，然后选择“创建”以创建为此 VM 指定的 SQL Server、资源组和资源。
 
 可以从 Azure 门户监视部署情况。 屏幕顶部的“ **通知** ”按钮显示部署的基本状态。
 
@@ -119,12 +106,12 @@ ms.locfileid: "57447008"
 
 ## <a name="connect-to-sql-server"></a>连接到 SQL Server
 
-1. 在门户上虚拟机属性的“概述”部分中找到 VM 的“公共 IP 地址”。
+1. 在门户上虚拟机属性的“概述”部分，找到 SQL Server VM 的“公共 IP 地址”。
 
 1. 在连接到 Internet 的其他计算机上，打开 SQL Server Management Studio (SSMS)。
 
    > [!TIP]
-   > 如果没有 SQL Server Management Studio，可以从[此处](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)下载。
+   > 如果你没有 SQL Server Management Studio，可以从 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 下载。
 
 1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值。 输入 VM 的公共 IP 地址。 添加一个逗号，然后添加配置新 VM 时指定的自定义端口 **1401**。 例如，`11.22.33.444,1401`。
 
@@ -134,7 +121,7 @@ ms.locfileid: "57447008"
 
 1. 在“密码”  框中，键入登录的密码。
 
-1. 单击“连接”。
+1. 选择“连接”。
 
     ![ssms 连接](./media/quickstart-sql-vm-create-portal/ssms-connect.png)
 
@@ -152,9 +139,10 @@ ms.locfileid: "57447008"
 
 如果不需要让 SQL VM 持续运行，可以在不使用它时将它停止，以免产生不必要的费用。 也可以永久删除与该虚拟机关联的所有资源，在门户中删除其关联的资源组即可。 请小心使用此命令，因为它也会永久删除该虚拟机。 有关详细信息，请参阅[通过门户管理 Azure 资源](../../../azure-resource-manager/manage-resource-groups-portal.md)。
 
+
 ## <a name="next-steps"></a>后续步骤
 
-本快速入门在 Azure 门户中创建了一个 SQL Server 2017 虚拟机。 若要详细了解如何将数据迁移到新的 SQL Server，请参阅以下文章。
+在本快速入门中，你在 Azure 门户中创建了一个 SQL Server 2017 虚拟机。 若要详细了解如何将数据迁移到新的 SQL Server，请参阅以下文章。
 
 > [!div class="nextstepaction"]
 > [将数据库迁移到 SQL VM](virtual-machines-windows-migrate-sql.md)
