@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 1a104da9ecb28d2109e82056995ef7a8048eafe2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: d02ec23e7e6ce936fdbcce63d1394e3a8681c65b
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838742"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59268630"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>教程：Azure Active Directory 与 Silverback 的集成
 
@@ -28,24 +28,24 @@ ms.locfileid: "57838742"
 将 Silverback 与 Azure AD 集成可提供以下好处：
 
 * 可在 Azure AD 中控制谁有权访问 Silverback。
-* 可以让用户自动登录到 Silverback （单一登录） 使用其 Azure AD 帐户。
+* 可让用户使用其 Azure AD 帐户自动登录到 Silverback（单一登录）。
 * 可在中心位置（即 Azure 门户）管理帐户。
 
 如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Silverback 的集成，需要准备好以下各项：
 
 * 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
-* Silverback 单一登录已启用的订阅
+* 启用了单一登录的 Silverback 订阅
 
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
 
-* 支持 silverback **SP**启动的 SSO
+* Silverback 支持 **SP** 发起的 SSO
 
 ## <a name="adding-silverback-from-the-gallery"></a>从库中添加 Silverback
 
@@ -71,25 +71,25 @@ ms.locfileid: "57838742"
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，配置和测试 Azure AD 单一登录的 Silverback 基于名为的测试用户**Britta Simon**。
-为实现单一登录工作，需要建立 Azure AD 用户与 Silverback 中的相关的用户之间建立链接关系。
+在本部分中，我们基于名为“Britta Simon”的测试用户为 Silverback 配置和测试 Azure AD 单一登录。
+若要使单一登录有效，需要在 Azure AD 用户与 Silverback 相关用户之间建立关联。
 
 若要配置和测试 Silverback 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-2. **[配置 Silverback 单一登录](#configure-silverback-single-sign-on)** -若要在应用程序端配置单一登录设置。
+2. **[配置 Silverback 单一登录](#configure-silverback-single-sign-on)** - 在应用程序端配置单一登录设置。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
 4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-5. **[创建 Silverback 测试用户](#create-silverback-test-user)** -Britta Simon 的对应在 Silverback 链接到用户的 Azure AD 表示形式。
+5. **[创建 Silverback 测试用户](#create-silverback-test-user)** - 在 Silverback 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-若要配置 Azure AD 单一登录 Silverback，请执行以下步骤：
+要为 Silverback 配置 Azure AD 单一登录，请执行以下步骤：
 
-1. 在中[Azure 门户](https://portal.azure.com/)，然后在**Silverback**应用程序集成页上，选择**单一登录**。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 **Silverback** 应用程序集成页上，选择“单一登录”。
 
     ![配置单一登录链接](common/select-sso.png)
 
@@ -105,11 +105,11 @@ ms.locfileid: "57838742"
 
     ![Silverback 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/ssp`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`<YOURSILVERBACKURL>.com`
+    b. 在“标识符”框中，使用以下模式键入 URL： `<YOURSILVERBACKURL>.com`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<YOURSILVERBACKURL>.com/sts/authorize/login`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Silverback 客户端支持团队](mailto:helpdesk@matrix42.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -120,7 +120,7 @@ ms.locfileid: "57838742"
 
 ### <a name="configure-silverback-single-sign-on"></a>配置 Silverback 单一登录
 
-1. 在另一个 web 浏览器到 Silverback 服务器以管理员身份登录。
+1. 在另一 Web 浏览器中，以管理员身份登录 Silverback 服务器。
 
 2. 导航到“管理员” > “验证提供程序”。
 
@@ -175,7 +175,7 @@ ms.locfileid: "57838742"
 
 在本部分中，你将通过授予 Britta Simon 访问 Silverback 的权限，使其能够使用 Azure 单一登录。
 
-1. 在 Azure 门户中，选择**企业应用程序**，选择**的所有应用程序**，然后选择**Silverback**。
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Silverback”。
 
     ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
@@ -232,13 +232,13 @@ ms.locfileid: "57838742"
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-单击访问面板中的 Silverback 磁贴时，你应会自动登录到 Silverback 设置 SSO。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
+单击访问面板中的 Silverback 磁贴时，应会自动登录到为其设置了 SSO 的 Silverback。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
 - [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

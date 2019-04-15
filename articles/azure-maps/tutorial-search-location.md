@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: d35c33a45f2ce23dabfba20bbd902c058e3033d3
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 3db2b810ba4ba96e492c6b6ba841d9cfa35418a8
+ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540444"
+ms.lasthandoff: 04/08/2019
+ms.locfileid: "59260839"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -81,11 +81,11 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <!-- Add references to the Azure Maps Map control JavaScript and CSS files. -->
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/css/atlas.min.css?api-version=2" type="text/css">
-        <script src="https://atlas.microsoft.com/sdk/js/atlas.min.js?api-version=2"></script>
+        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css">
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
 
         <!-- Add a reference to the Azure Maps Services Module JavaScript file. -->
-        <script src="https://atlas.microsoft.com/sdk/js/atlas-service.js?api-version=2"></script>
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
 
         <script>
         function GetMap(){
@@ -116,7 +116,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
    请注意，HTML 标头包含 Azure 地图控件库托管的 CSS 和 JavaScript 资源文件。 请注意页面正文中的 `onload` 事件。当页面正文加载时，此事件会调用 `GetMap` 函数。 `GetMap` 函数将包含内联的 JavaScript 代码，以访问 Azure Maps API。
 
-3. 将以下 JavaScript 代码添加到 HTML 文件的 `GetMap` 函数。 使用从 Maps 帐户复制的主键替换字符串 **\<Your Azure Maps Key\>**。
+3. 将以下 JavaScript 代码添加到 HTML 文件的 `GetMap` 函数。 将字符串 `<Your Azure Maps Key>` 替换为从 Maps 帐户复制的主密钥。
 
     ```JavaScript
     //Instantiate a map object
@@ -129,17 +129,17 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-   此段为 Azure Maps 帐户密钥初始化地图控件 API。 **atlas** 是包含 API 和相关视觉组件的命名空间。 **atlas.Map** 提供视觉对象和交互式 Web 地图的控件。
+   此段为 Azure Maps 帐户密钥初始化地图控件 API。 `atlas` 是包含 API 和相关视觉组件的命名空间。 `atlas.Map` 提供视觉对象和交互式 Web 地图的控件。
 
-4. 将更改保存到文件并在浏览器中打开 HTML 页。 这是使用帐户密钥调用“atlas.map”所能生成的最基本的地图。
+4. 将更改保存到文件并在浏览器中打开 HTML 页。 这是使用帐户密钥调用 `atlas.Map` 所能生成的最基本的地图。
 
    ![查看地图](./media/tutorial-search-location/basic-map.png)
 
 5. 在 `GetMap` 函数中，请在初始化地图以后，添加以下 JavaScript 代码。
 
     ```JavaScript
-    //Wait until the map resources are loaded.
-    map.events.add('load', function() {
+    //Wait until the map resources are ready.
+    map.events.add('ready', function() {
 
         //Create a data source and add it to the map.
         datasource = new atlas.source.DataSource();
@@ -161,7 +161,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-   在此代码段中，将会向地图添加一个加载事件。当地图资源完全加载以后，该事件会触发。 在地图加载事件处理程序中，将会创建一个数据源来存储结果数据。 将会创建一个符号层并将其附加到数据源。 此层指定如何呈现数据源中的结果数据。在此示例中，深蓝色的圆形针位于结果坐标的中心，其他图标可以与其重叠。 结果层将添加到地图层。
+   在此代码段中，将会向地图添加一个 `ready` 事件。当地图资源加载以后，该事件会触发，然后地图就可以供用户访问。 在地图 `ready` 事件处理程序中，将会创建一个数据源来存储结果数据。 将会创建一个符号层并将其附加到数据源。 此层指定如何呈现数据源中的结果数据。在此示例中，深蓝色的圆形针位于结果坐标的中心，其他图标可以与其重叠。 结果层将添加到地图层。
 
 <a id="usesearch"></a>
 
@@ -171,7 +171,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 ### <a name="service-module"></a>服务模块
 
-1. 在地图加载事件处理程序中，添加以下 Javascript 代码来构造搜索服务 URL。
+1. 在地图 `ready` 事件处理程序中，添加以下 Javascript 代码来构造搜索服务 URL。
 
     ```JavaScript
    // Use SubscriptionKeyCredential with a subscription key
@@ -184,9 +184,9 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
    var searchURL = new atlas.service.SearchURL(pipeline); 
    ```
 
-   SubscriptionKeyCredential 创建一个 SubscriptionKeyCredentialPolicy，用于通过订阅密钥向 Azure Maps 验证 HTTP 请求。 atlas.service.MapsURL.newPipeline() 采用 SubscriptionKeyCredential 策略并创建一个 [Pipeline](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest) 实例。 searchURL 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
+   `SubscriptionKeyCredential` 创建 `SubscriptionKeyCredentialPolicy` 以使用订阅密钥验证对 Azure Maps 的 HTTP 请求。 `atlas.service.MapsURL.newPipeline()` 接受 `SubscriptionKeyCredential` 策略并创建[管道](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.pipeline?view=azure-iot-typescript-latest)实例。 `searchURL` 表示 Azure Maps [搜索](https://docs.microsoft.com/rest/api/maps/search)操作的 URL。
 
-2. 接下来添加以下脚本块，以便生成搜索查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址、位置和兴趣点 (POI)。 此代码在提供的经纬度的指定半径内搜索邻近的加油站。 然后使用 geojson.getFeatures() 方法提取响应中的 GeoJSON 特征集合，并将其添加到数据源，这将自动通过符号层在地图上呈现数据。 脚本的最后一部分使用地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性通过结果的边框设置地图相机视图。
+2. 接下来添加以下脚本块，以便生成搜索查询。 它使用模糊搜索服务，这是搜索服务的基本搜索 API。 模糊搜索服务可处理最模糊的输入，例如地址、位置和兴趣点 (POI)。 此代码在提供的经纬度的指定半径内搜索邻近的加油站。 然后使用 `geojson.getFeatures()` 方法提取响应中的 GeoJSON 特征集合，并将其添加到数据源，这将自动通过符号层在地图上呈现数据。 脚本的最后一部分使用地图的 [setCamera](/javascript/api/azure-maps-control/atlas.map#setcamera-cameraoptions---cameraboundsoptions---animationoptions-) 属性通过结果的边框设置地图相机视图。
 
     ```JavaScript
     var query =  'gasoline-station';
@@ -229,7 +229,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 
 现在为止已完成的地图仅显示搜索结果的经度/纬度数据。 但是，如果查看该 Maps Search 服务返回的原始 JSON，会看到它包含有关每个加油站的其他信息，包括名称和街道地址。 可以使用交互式弹出框将数据合并到地图。
 
-1. 在地图加载事件处理程序中，在用于查询模糊搜索服务的代码后面添加以下代码行。 这样会创建弹出窗口的实例，并向符号层添加鼠标悬停事件。
+1. 在地图 `ready` 事件处理程序中，在用于查询模糊搜索服务的代码后面添加以下代码行。 这样会创建弹出窗口的实例，并向符号层添加鼠标悬停事件。
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.
@@ -239,7 +239,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     map.events.add('mouseover', resultLayer, showPopup);
     ```
 
-    API **atlas.Popup** 提供一个固定在地图上所需位置的信息窗口。 
+    API `sup` 提供一个固定在地图上所需位置的信息窗口。 
 
 2. 在 script 标记中的 `GetMap` 函数后面添加以下代码，以便在弹出窗口中显示鼠标悬停结果信息。
 
@@ -289,4 +289,4 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 下一教程演示如何显示两个地点之间的路线。
 
 > [!div class="nextstepaction"]
-> [目的地路线](./tutorial-route-location.md)
+> [规划目的地路线](./tutorial-route-location.md)
