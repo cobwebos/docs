@@ -308,22 +308,22 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | TinyInt | TinyInt |
 | Bit | Bit |
 | Decimal | Decimal |
-| 数字 | Decimal |
+| Numeric | Decimal |
 | Float | Float |
 | Money | Money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| 二进制 | 二进制 |
+| Binary | Binary |
 | Varbinary | Varbinary（最多 8000） |
-| 日期 | 日期 |
+| Date | Date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| 时间 | 时间 |
+| Time | Time |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
-| 文本 | Varchar（最多 8000） |
+| Text | Varchar（最多 8000） |
 | NText | NVarChar（最多 4000） |
-| 映像 | VarBinary（最多 8000） |
+| Image | VarBinary（最多 8000） |
 | UniqueIdentifier | UniqueIdentifier |
 | Char | Char |
 | NChar | NChar |
@@ -347,29 +347,29 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
-| 日期 |DateTime |
+| date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| 小数 |小数 |
-| FILESTREAM 特性 (varbinary(max)) |Byte[] |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| 图像 |Byte[] |
+| image |Byte[] |
 | int |Int32 |
-| money |小数 |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |小数 |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |小数 |
-| sql_variant |对象 * |
-| 文本 |String, Char[] |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
