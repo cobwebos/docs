@@ -348,7 +348,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 展开“myResourceGroup”资源组，该资源组在首次创建 Azure 应用时创建。
 
-右键单击 Azure 应用，并选择“查看流式传输日志”。
+右键单击 Azure 应用，并选择“查看流式处理日志”。
 
 ![启用日志流式传输](./media/app-service-web-tutorial-dotnet-sqldatabase/stream-logs.png)
 
@@ -356,7 +356,7 @@ public ActionResult Create([Bind(Include = "Description,CreatedDate,Done")] Todo
 
 ![输出窗口中的日志流式传输](./media/app-service-web-tutorial-dotnet-sqldatabase/log-streaming-pane.png)
 
-但还无法查看任何跟踪消息。 因为当首先选择“查看流式传输日志”时，Azure 应用将跟踪级别设置为 `Error`，此级别只记录错误事件（使用 `Trace.TraceError()` 方法）。
+但还无法查看任何跟踪消息。 因为当首先选择“查看流式处理日志”时，Azure 应用将跟踪级别设置为 `Error`，此级别只记录错误事件（使用 `Trace.TraceError()` 方法）。
 
 ### <a name="change-trace-levels"></a>更改跟踪级别
 

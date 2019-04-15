@@ -144,7 +144,7 @@ Data Lake Storage Gen1 提供详细的诊断日志和审核。 Data Lake Storage
 
 ### <a name="run-synthetic-transactions"></a>运行综合事务
 
-目前，Data Lake Storage Gen1 在 Azure 门户中的服务可用性指标每 7 分钟会刷新一次。 另外，该指标不能使用公开 API 进行查询。 因此，建议生成一个可以对 Data Lake Storage Gen1 执行综合事务的基本应用程序，以便获取最新可用性。 例如，可以创建 WebJob、逻辑应用或 Azure 函数应用，对 Data Lake Storage Gen1 执行读取、创建和更新操作，然后将结果发送到监视解决方案。 这些操作可以在临时文件夹中执行，在测试完成后删除，该测试按要求每 30-60 秒运行一次。
+目前，Data Lake Storage Gen1 在 Azure 门户中的服务可用性指标每 7 分钟会刷新一次。 另外，该指标不能使用公开 API 进行查询。 因此，建议生成一个可以对 Data Lake Storage Gen1 执行综合事务的基本应用程序，以便获取最新可用性。 例如，可以创建 WebJob、逻辑应用或 Azure Function App，对 Data Lake Storage Gen1 执行读取、创建和更新操作，然后将结果发送到监视解决方案。 这些操作可以在临时文件夹中执行，在测试完成后删除，该测试按要求每 30-60 秒运行一次。
 
 ## <a name="directory-layout-considerations"></a>目录布局注意事项
 

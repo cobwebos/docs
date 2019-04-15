@@ -14,7 +14,7 @@ ms.date: 01/16/2019
 ms.author: bwren
 ms.openlocfilehash: dc3a754bd1a9f689f4b24b9ee2c1e4cbc0611684
 ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 02/06/2019
 ms.locfileid: "55751355"
@@ -50,7 +50,7 @@ Log Analytics 中的日志搜索功能最近已由一个可以分析 Azure Monit
 ![保存日志查询](media/log-search-transition/save-query-logs.png)
 
 ## <a name="saved-queries"></a>已保存的查询
-在日志搜索中，可以通过操作栏中的“保存的搜索”项使用已保存的查询。 在 Azure Monitor 日志中，可以从[查询资源管理器](../log-query/get-started-portal.md#save-queries)访问已保存的查询。
+在日志搜索中，可以通过操作栏中的“保存的搜索”项使用已保存的查询。 在 Azure Monitor 日志中，可以从[“查询资源管理器”](../log-query/get-started-portal.md#save-queries)访问已保存的查询。
 
 ![查询资源管理器](media/log-search-transition/query-explorer.png)
 
