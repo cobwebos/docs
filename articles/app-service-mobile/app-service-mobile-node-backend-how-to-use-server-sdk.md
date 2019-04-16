@@ -934,7 +934,7 @@ Node.js 应用程序可访问各种诊断日志工具。 在内部，移动应�
 
 ![使用简易 API](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-apis.png)
 
-在门户中，可以更改 HTTP 操作的访问权限、在应用服务编辑器中编辑 API 脚本文件，或查看流式处理日志。
+在门户中，可以更改 HTTP 操作的访问权限、在应用服务编辑器中编辑 API 脚本文件，或查看流式传输日志。
 
 ### <a name="online-editor"></a>在应用服务编辑器中编辑代码
 
