@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 0f63ed7d00f1ae3e30cdac76606559a4e9f49f04
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b234ca37783fe557baf307f198de9636b06a382
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288091"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579489"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>数据驱动样式表达式 (Web SDK)
 
@@ -83,11 +83,11 @@ Azure Maps Web SDK 支持许多类型的表达式，可自行或与其他表达�
 |------------|-------------|-------------|
 | `['at', number, array]` | 对象 | 从数组中检索项。 |
 | `['geometry-type']` | 字符串 | 获取该功能的 geometry 类型：多点、 LineString、 MultiLineString、 Polygon、 MultiPolygon 点。 |
-| `['get', string]` | 值 | 从当前功能的属性获取的属性值。 如果缺少请求的属性，则，返回 null。 |
-| `['get', string, object]` | 值 | 获取与所提供的对象的属性的属性值。 如果缺少请求的属性，则，返回 null。 |
+| `['get', string]` | value | 从当前功能的属性获取的属性值。 如果缺少请求的属性，则，返回 null。 |
+| `['get', string, object]` | value | 获取与所提供的对象的属性的属性值。 如果缺少请求的属性，则，返回 null。 |
 | `['has', string]` | 布尔值 | 确定是否一项功能的属性具有指定的属性。 |
 | `['has', string, object]` | 布尔值 | 确定是否该对象的属性具有指定的属性。 |
-| `['id']` | 值 | 如果有，则获取该功能的 ID。 |
+| `['id']` | value | 如果有，则获取该功能的 ID。 |
 | `['length', string | array]` | 数字 | 获取字符串或数组的长度。 |
 
 **示例**
@@ -296,7 +296,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 一个`coalesce`表达式步骤通过一组表达式，直到第一个非 null 值获取和返回该值。 
 
-下面的伪代码定义的结构` coalesce`表达式。 
+下面的伪代码定义的结构`coalesce`表达式。 
 
 ```javascript
 [

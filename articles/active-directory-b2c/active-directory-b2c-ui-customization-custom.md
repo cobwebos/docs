@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/18/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 4cf7c0cdd066879edccf7869ae3c8de0191f1d2b
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.openlocfilehash: 7463a61945524672c5124966db2464c036559db7
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55818866"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571322"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略自定义应用程序的用户界面
 
@@ -23,7 +23,7 @@ ms.locfileid: "55818866"
 
 完成本文后，会生成一个带有公司品牌和外观的注册与登录自定义策略。 使用 Azure Active Directory B2C (Azure AD B2C)，几乎可以完全控制呈现给用户的 HTML 和 CSS 内容。 使用自定义策略时，需要以 XML 配置 UI 自定义，而不是使用 Azure 门户中的控件进行配置。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。 应准备好一个有效的自定义策略，以便使用本地帐户注册和登录。
 
@@ -97,7 +97,7 @@ ms.locfileid: "55818866"
 通过执行以下操作为 Blob 存储配置跨域资源共享：
 
 1. 在菜单中，选择“CORS”。
-2. 对于“允许的源”，请输入 `your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`fabrikam.b2clogin.com`。 输入租户名称时，需要使用全小写字母。
+2. 对于“允许的源”，请输入 `https://your-tenant-name.b2clogin.com`。 将 `your-tenant-name` 替换为 Azure AD B2C 租户的名称。 例如，`https://fabrikam.b2clogin.com`。 输入租户名称时，需要使用全小写字母。
 3. 对于“允许的方法”，请同时选择 `GET` 和 `OPTIONS`。
 4. 对于“允许的标头”，请输入一个星号 (*)。
 5. 对于“公开的标头”，请输入一个星号 (*)。
@@ -157,7 +157,7 @@ ms.locfileid: "55818866"
 2. 选择上传的自定义策略，并单击“立即运行”按钮。
 3. 现在，应该可以使用电子邮件地址进行注册了。
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 
 可以在以下位置找到用于 UI 自定义的示例模板：
 
@@ -167,7 +167,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
-| HTML5 模板 | 说明 |
+| HTML5 模板 | 描述 |
 |----------------|-------------|
 | *phonefactor.html* | 将此文件用作多重身份验证页面的模板。 |
 | *resetpassword.html* | 将此文件用作“忘记密码”页面的模板。 |
@@ -177,7 +177,7 @@ sample_templates/wingtip 文件夹包含以下 HTML 文件：
 
 在“修改注册或登录自定义策略”部分中，你已配置了 `api.idpselections` 的内容定义。 下表中列出了 Azure AD B2C 标识体验框架可以识别的整组内容定义 ID 及其说明：
 
-| 内容定义 ID | 说明 | 
+| 内容定义 ID | 描述 | 
 |-----------------------|-------------|
 | *api.error* | **错误页面**。 遇到异常或错误时显示此页面。 |
 | *api.idpselections* | **标识提供者选择页面**。 此页面包含有可供用户在登录期间选择的标识提供者列表。 这些选项是企业标识提供者、社交标识提供者（例如 Facebook 和 Google+）或本地帐户。 |

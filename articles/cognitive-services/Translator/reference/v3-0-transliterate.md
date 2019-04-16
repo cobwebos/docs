@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: 97a2318b7aa3591193108a8a061a15ec5692fac5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 4811e40f87962ecde75c7b2bb14e1d033e82ad44
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918614"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577825"
 ---
 # <a name="translator-text-api-30-transliterate"></a>文本翻译 API 3.0：Transliterate
 
@@ -60,8 +60,8 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
   <th width="20%">标头</th>
   <th>描述</th>
   <tr>
-    <td>_一个授权_<br/>_标头的值开始缓存响应_</td>
-    <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
+    <td>身份验证标头</td>
+    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -98,9 +98,9 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个元素。 结果对象包括以下属性：
 
-  * `text`:一个字符串，它是将输入字符串转换为输出脚本的结果。
+  * `text`：一个字符串，它是将输入字符串转换为输出脚本的结果。
   
-  * `script`:一个字符串，指定输出中使用的脚本。
+  * `script`：一个字符串，指定输出中使用的脚本。
 
 示例 JSON 响应如下：
 
@@ -165,7 +165,7 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
 
 以下示例显示如何将两个日语字符串转换为用罗马字母拼写的日语。
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 此示例中请求的 JSON 有效负载：
 

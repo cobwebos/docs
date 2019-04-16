@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/19/2018
 ms.author: jlian
-ms.openlocfilehash: 6cc5e45ab28a1c83125a37cefb289b1662096eb0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: HT
+ms.openlocfilehash: a107689796c58b17c445e7a9cf7c6f0402ef6005
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648813"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571046"
 ---
 # <a name="detect-and-troubleshoot-disconnects-with-azure-iot-hub"></a>检测和排查 Azure IoT 中心的连接断开问题
 
@@ -28,13 +28,18 @@ ms.locfileid: "58648813"
 若要记录设备连接事件和错误，请为 IoT 中心启用诊断。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到 IoT 中心。
-1. 选择“诊断设置”。
-1. 选择“启用诊断”。
-1. 启用要收集的“连接”日志。
-1. 为便于分析，应启用“发送到 Log Analytics”（[参阅定价](https://azure.microsoft.com/pricing/details/log-analytics/)）。 请参阅[解决连接错误](#resolve-connectivity-errors)下的示例。
 
-   ![建议的设置][2]
+2. 浏览到 IoT 中心。
+
+3. 选择“诊断设置”。
+
+4. 选择“启用诊断”。
+
+5. 启用要收集的“连接”日志。
+
+6. 为便于分析，应启用“发送到 Log Analytics”（[参阅定价](https://azure.microsoft.com/pricing/details/log-analytics/)）。 请参阅[解决连接错误](#resolve-connectivity-errors)下的示例。
+
+   ![建议的设置](./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png)
 
 有关详细信息，请参阅[监视 Azure IoT 中心的运行状况并快速诊断问题](iot-hub-monitor-resource-health.md)。
 
@@ -43,11 +48,16 @@ ms.locfileid: "58648813"
 若要获取警报，当设备断开连接时，请在配置警报**连接的设备 （预览版）** 指标。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-1. 浏览到 IoT 中心。
-1. 选择“**警报**”。
-1. 选择**新的警报规则**。
-1. 选择**添加条件**，然后选择"连接的设备 （预览）"。
-1. 完成设置所需阈值和警报选项按以下提示操作。
+
+2. 浏览到 IoT 中心。
+
+3. 选择“**警报**”。
+
+4. 选择**新的警报规则**。
+
+5. 选择**添加条件**，然后选择"连接的设备 （预览）"。
+
+6. 完成设置所需阈值和警报选项按以下提示操作。
 
 有关详细信息，请参阅 [Microsoft Azure 中的经典警报是什么？](../azure-monitor/platform/alerts-overview.md)。
 
@@ -56,8 +66,10 @@ ms.locfileid: "58648813"
 为联网设备启用诊断日志和警报后，如果出错，则会收到警报。 本部分介绍如何在收到警报时解决常见问题。 以下步骤假设已经在 Azure Monitor 日志中设置了诊断日志。
 
 1. 在 Azure 门户中转到 Log Analytics 的工作区。
-1. 选择 **“日志搜索”**。
-1. 若要隔离 IoT 中心的连接错误日志，请输入以下查询，然后选择“运行”：
+
+2. 选择 **“日志搜索”**。
+
+3. 若要隔离 IoT 中心的连接错误日志，请输入以下查询，然后选择“运行”：
 
     ```
     search *
@@ -67,12 +79,12 @@ ms.locfileid: "58648813"
 
 1. 如果返回了结果，请查看 `OperationName`、`ResultType`（错误代码）和 `ResultDescription`（错误消息），以获取有关错误的更多详细信息。
 
-   ![错误日志示例][4]
+   ![错误日志示例](./media/iot-hub-troubleshoot-connectivity/diag-logs.png)
 
-1. 使用下表来了解和解决常见错误。
+2. 使用下表来了解和解决常见错误。
 
     | 错误 | 根本原因 | 解决方法 |
-    |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+    |-------|------------|------------|
     | 404104 DeviceConnectionClosedRemotely | 设备关闭了连接，但 IoT 中心不知道原因。 常见原因包括 MQTT/AMQP 超时和 Internet 连接断开。 | 通过[测试连接](tutorial-connectivity.md)，确保设备能够连接到 IoT 中心。 如果连接正常，但设备间歇性断开连接，请确保为所选的协议 (MQTT/AMPQ) 实现正确的保持活动状态设备逻辑。 |
     | 401003 IoTHubUnauthorized | IoT 中心无法对连接进行身份验证。 | 确保所用的 SAS 或其他安全令牌未过期。 [Azure IoT SDK](iot-hub-devguide-sdks.md) 无需特殊的配置即可自动生成令牌。 |
     | 409002 LinkCreationConflict | 设备有多个连接。 针对设备发出新的连接请求时，IoT 中心会关闭上一个连接并返回此错误。 | 在最常见的情况下，设备检测到断开连接并尝试重新建立连接，但 IoT 中心仍认为设备已连接。 IoT 中心关闭先前的连接并记录此错误。 此错误通常表现为一个不同的暂时性问题的副作用，因此请查看日志中的其他错误以进一步排除故障。 否则，请确保仅在连接断开时才发出新的连接请求。 |
@@ -84,7 +96,9 @@ ms.locfileid: "58648813"
 如果前面的步骤没有帮助，可尝试以下操作：
 
 * 如果你有权以物理方式或远程访问（例如通过 SSH）有问题的设备，请遵循[设备端故障排除指南](https://github.com/Azure/azure-iot-sdk-node/wiki/Troubleshooting-Guide-Devices)继续进行故障排除。
+
 * 在 Azure 门户 > IoT 中心 > IoT 设备中验证设备是否已启用。
+
 * 从 [Azure IoT 中心论坛](https://social.msdn.microsoft.com/Forums/azure/home?forum=azureiothub)、[Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-hub) 或 [Azure 支持](https://azure.microsoft.com/support/options/)获得帮助。
 
 如果本指南未能提供所需的帮助，请在下面的反馈部分中留言，以帮助我们改进文档。
@@ -92,10 +106,5 @@ ms.locfileid: "58648813"
 ## <a name="next-steps"></a>后续步骤
 
 * 要了解有关解决暂时性问题的详细信息，请参阅[暂时性故障处理](/azure/architecture/best-practices/transient-faults)。
-* 要了解有关 Azure IoT SDK 和管理重试的详细信息，请参阅[如何使用 Azure IoT Hub 设备 SDK 管理连接和可靠消息传递](iot-hub-reliability-features-in-sdks.md#connection-and-retry)。
 
-<!-- Images -->
-[1]: ../../includes/media/iot-hub-diagnostics-settings/turnondiagnostics.png
-[2]: ./media/iot-hub-troubleshoot-connectivity/diagnostic-settings-recommendation.png
-[3]: ./media/iot-hub-troubleshoot-connectivity/metric-alert.png
-[4]: ./media/iot-hub-troubleshoot-connectivity/diag-logs.png
+* 要了解有关 Azure IoT SDK 和管理重试的详细信息，请参阅[如何使用 Azure IoT Hub 设备 SDK 管理连接和可靠消息传递](iot-hub-reliability-features-in-sdks.md#connection-and-retry)。

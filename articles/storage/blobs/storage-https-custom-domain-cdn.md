@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: mihauss
 ms.subservice: blobs
-ms.openlocfilehash: 1166f98dcd39362ef5e28be12ff9e2f561ab5b1f
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.openlocfilehash: 90ddb58f3499180e17df559a98ac8a46b53fb824
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55238203"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579006"
 ---
 # <a name="use-azure-cdn-to-access-blobs-with-custom-domains-over-https"></a>在 Azure CDN 中使用自定义域通过 HTTPS 访问 Blob
 
@@ -67,4 +67,4 @@ Azure CDN 不遵守添加到共享访问签名令牌的任何限制。 例如，
 ## <a name="next-steps"></a>后续步骤
 
 * [为 Blob 存储终结点配置自定义域名](storage-custom-domain-name.md)
-* [Azure 存储中的静态网站托管（预览版）](storage-blob-static-website.md)
+* [Azure 存储中的静态网站托管](storage-blob-static-website.md)

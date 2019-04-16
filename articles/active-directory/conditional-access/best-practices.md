@@ -18,12 +18,12 @@ ms.date: 01/25/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eafc379a65fda1ed64c6afee1427e704558b1ee6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 11d4d319fa31dd2493810dc7293d415554f79d94
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261514"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571114"
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory 中条件性访问的最佳实践
 
@@ -48,9 +48,9 @@ ms.locfileid: "59261514"
 
 | 对象           | 方式                                  | Why |
 | :--            | :--                                  | :-- |
-| **云应用** |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
-| **用户和组** | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
-| **访问控制** | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
+| 云应用 |选择一个或多个应用。  | 条件访问策略的目标是使你能够控制已授权用户访问云应用的方式。|
+| 用户和组 | 至少选择一个已经授权的用户或组来访问所选云应用。 | 未在其中分配任何用户和组的条件性访问策略永远不会触发。 |
+| 访问控制 | 至少选择一个访问控制。 | 策略处理器需要知道条件满足时需要执行的操作。 |
 
 
 
@@ -109,7 +109,7 @@ ms.locfileid: "59261514"
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件性访问是否适用于 Exchange ActiveSync？
 
-适用，可以在条件访问策略中使用 Exchange ActiveSync。
+是的可以在某些条件性访问策略中使用 Exchange ActiveSync[限制](https://docs.microsoft.com/en-us/azure/active-directory/conditional-access/conditional-access-for-exo-and-spo#exchange-activesync)。 
 
 ### <a name="how-should-you-configure-conditional-access-with-office-365-apps"></a>要如何与 Office 365 应用配置条件性访问？
 
@@ -130,7 +130,7 @@ ms.locfileid: "59261514"
 在环境中，应避免以下配置：
 
 
-**对于所有用户、 所有云应用：**
+**对于所有用户、所有云应用：**
 
 - **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
 
@@ -140,7 +140,7 @@ ms.locfileid: "59261514"
 
 - **需要应用保护策略**-此策略阻止访问也有可能阻止你的组织中的所有用户的访问权限，如果你没有 Intune 策略。 如果你是管理员不具有 Intune 应用保护策略的客户端应用程序的情况下，此策略会阻止你回到如 Intune 和 Azure 门户。
 
-**对于所有用户、 所有云应用，所有设备平台：**
+**对于所有用户、所有云应用、所有设备平台：**
 
 - **阻止访问** - 此配置将阻止整个组织（这绝对不是一个好的选项）。
 

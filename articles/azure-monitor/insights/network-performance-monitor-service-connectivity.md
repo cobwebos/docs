@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 9f881071559eaba0f6b1c86e8827993d52470baf
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 0c4b8d1646ba851acc6a0e2d9a3b920634098846
+ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501958"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59571165"
 ---
 # <a name="service-connectivity-monitor"></a>服务连接监视器
 
@@ -68,7 +68,7 @@ netsh advfirewall firewall add rule name="NPMDICMPV6TimeExceeded" protocol="icmp
 5. 在“目标”中，输入要监视其网络连接的目标 URL/FQDN/IP 地址。
 6. 在“端口号”中，输入目标服务的端口号。 
 7. 在“测试频率”中，输入表示测试的运行频率的值。 
-8. 选择要从中监视服务网络连接的节点。 
+8. 选择要从中监视服务网络连接的节点。 确保添加每个测试的代理数不超过 150。 任何代理可以测试最大 150 终结点/代理。
 
     >[!NOTE]
     > 对于基于 Windows 服务器的节点，该功能使用基于 TCP 的请求来执行网络度量。 对于基于 Windows 客户端的节点，该功能使用基于 ICMP 的请求来执行网络度量。 在某些情况下，当节点基于 Windows 客户端时，目标应用程序会阻止传入的基于 ICMP 的请求。 解决方案无法执行网络度量。 在这种情况下，我们建议使用基于 Windows 服务器的节点。 

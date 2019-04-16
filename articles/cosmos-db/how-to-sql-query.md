@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
-ms.openlocfilehash: 8e5c281a8a8b6c0b48f18bf247b451bf61a7e9dc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263037"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579202"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
@@ -484,15 +484,15 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 
 下表显示了 SQL API 中任意两个 JSON 类型之间等式比较的结果。
 
-| **Op** | **Undefined** | **Null** | **Boolean** | **Number** | **String** | **对象** | **Array** |
+| **Op** | 未定义 | Null | **布尔值** | **数字** | **字符串** | **Object** | 数组 |
 |---|---|---|---|---|---|---|---|
-| **Undefined** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Null** | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
-| **Boolean** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
-| **Number** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
-| **String** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
-| **对象** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
-| **Array** | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
+| 未定义 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined |
+| Null | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined | Undefined |
+| **布尔值** | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined | Undefined |
+| **数字** | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined | Undefined |
+| **字符串** | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined | Undefined |
+| **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
+| 数组 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
 对于比较运算符，如`>`， `>=`， `!=`， `<`，并`<=`，比较在类型或两个对象或数组生成`Undefined`。  
 
@@ -502,7 +502,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 
 逻辑运算符对布尔值进行运算。 下表显示了这些运算符的逻辑真值表：
 
-**或运算符**
+**OR 运算符**
 
 | 或 | True | False | Undefined |
 | --- | --- | --- | --- |
@@ -1238,7 +1238,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 
 类型检查函数使您可以检查 SQL 查询中表达式的类型。 类型检查函数可用于在变量或未知时确定在动态，项中的属性的类型。 下面是支持的内置类型检查函数表：
 
-| **使用情况** | **描述** |
+| **使用情况** | **说明** |
 |-----------|------------|
 | [IS_ARRAY (expr)](sql-api-query-reference.md#bk_is_array) | 返回一个布尔值，它指示值的类型是否为数组。 |
 | [IS_BOOL (expr)](sql-api-query-reference.md#bk_is_bool) | 返回一个布尔值，它指示值的类型是否为布尔。 |
@@ -1275,7 +1275,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | [CONTAINS (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | 返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。 |
 | [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | 返回第二个的第一个匹配项的起始位置字符串表达式中第一个指定的字符串表达式，则为-1，如果找不到字符串。 |
 | [LEFT (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | 返回具有指定字符数的字符串的左侧部分。 |
-| [右 （str_expr，num_expr）](sql-api-query-reference.md#bk_right) | 返回具有指定字符数的字符串的右侧部分。 |
+| [RIGHT (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | 返回具有指定字符数的字符串的右侧部分。 |
 | [LTRIM (str_expr)](sql-api-query-reference.md#bk_ltrim) | 返回删除前导空格后的字符串表达式。 |
 | [RTRIM (str_expr)](sql-api-query-reference.md#bk_rtrim) | 返回截断所有尾随空格后的字符串表达式。 |
 | [LOWER (str_expr)](sql-api-query-reference.md#bk_lower) | 返回在将大写字符数据转换为小写后的字符串表达式。 |
@@ -1714,7 +1714,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含
 
 .NET 客户端自动遍历的查询结果中的所有页`foreach`阻止，如前面的示例中所示。 中引入的查询选项[REST API](#RestAPI)部分也会出现在.NET SDK 中，使用`FeedOptions`并`FeedResponse`中的类`CreateDocumentQuery`方法。 您可以使用来控制页面数`MaxItemCount`设置。
 
-还可以通过使用 `IQueryable` 对象创建 `IDocumentQueryable`，并读取 ` ResponseContinuationToken` 值并将它们作为 `FeedOptions` 中的 `RequestContinuationToken` 向回传递，从而显式控制分页。 可以设置`EnableScanInQuery`查询不支持配置的索引策略时启用扫描。 对于已分区容器，可以使用`PartitionKey`来针对单个分区运行查询，尽管 Azure Cosmos DB 可以自动提取这从查询文本。 可以使用`EnableCrossPartitionQuery`对多个分区运行查询。
+您可以通过创建显式控制分页`IDocumentQueryable`使用`IQueryable`对象，然后通过阅读`ResponseContinuationToken`作为值并将它们传递回`RequestContinuationToken`中`FeedOptions`。 可以设置`EnableScanInQuery`查询不支持配置的索引策略时启用扫描。 对于已分区容器，可以使用`PartitionKey`来针对单个分区运行查询，尽管 Azure Cosmos DB 可以自动提取这从查询文本。 可以使用`EnableCrossPartitionQuery`对多个分区运行查询。
 
 有关使用查询的更多.NET 示例，请参阅[Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)在 GitHub 中。
 
@@ -1915,7 +1915,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **选择运算符，示例 1:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Select(family => family.parents[0].familyName);
@@ -1930,7 +1930,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
   
 **选择运算符，示例 2:** 
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Select(family => family.children[0].grade + c); // c is an int variable
@@ -1945,7 +1945,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
   
 **选择运算符，示例 3:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
     input.Select(family => new
@@ -1967,7 +1967,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 语法为 `input.SelectMany(x => f(x))`，其中 `f` 是返回容器类型的标量表达式。
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.SelectMany(family => family.children);
@@ -1986,7 +1986,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **其中运算符，示例 1:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Where(family=> family.parents[0].familyName == "Wakefield");
@@ -2002,7 +2002,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
   
 **其中运算符，示例 2:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Where(
@@ -2029,7 +2029,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **串联，示例 1:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Select(family=>family.parents[0])
@@ -2046,7 +2046,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **串联，示例 2:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Where(family => family.children[0].grade > 3)
@@ -2063,7 +2063,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **串联示例 3:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.Select(family => new { grade=family.children[0].grade}).
@@ -2080,7 +2080,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **串联示例 4:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.SelectMany(family => family.parents)
@@ -2103,7 +2103,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **嵌套，示例 1:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.SelectMany(family=>
@@ -2120,7 +2120,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **嵌套，示例 2:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.SelectMany(family =>
@@ -2138,7 +2138,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 **嵌套，示例 3:**
 
-- **LINQ lambda 表达式**
+- **LINQ Lambda 表达式**
   
   ```csharp
       input.SelectMany(family => family.children.Where(
@@ -2162,7 +2162,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 - [Javascript 规范](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
 - Graefe，Goetz。 [查询评估技术，对于大型数据库](https://dl.acm.org/citation.cfm?id=152611)。 *ACM 计算调查*25，没有。 2 (1993).
-- Graefe，g。"级联查询优化的框架。" *IEEE Data Eng. L l。* 18、 没有。 3 (1995).
+- Graefe，g。"级联查询优化的框架。" *IEEE 数据 eng。L l。* 18、 没有。 3 (1995).
 - Lu，Ooi，Tan。 "并行关系数据库系统中的处理查询"。 *IEEE 计算机协会出版社*(1994)。
 - Olston、 Christopher、 Benjamin Reed、 Utkarsh Srivastava、 Ravi Kumar 和 Andrew Tomkins。 "Pig Latin:数据处理不因此外语言。" *SIGMOD* (2008)。
 

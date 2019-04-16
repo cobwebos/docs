@@ -10,18 +10,25 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1abf3fd5ca678f878e36e3df3f8da0c0e0b5f852
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528129"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579149"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
 本文介绍 Azure 机器学习服务版本。  有关每个 SDK 的完整说明，请访问以下内容的参考文档：
 + Azure 机器学习[适用于 Python 的主 SDK](https://aka.ms/aml-sdk)
 + Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk)
+
+## <a name="2019-04-15"></a>2019-04-15
+
+### <a name="azure-portal"></a>Azure 门户
+  + 现在可以重新提交现有的远程计算群集上运行的现有脚本。 
+  + 在管道选项卡上，现在可以使用新参数运行已发布的管道。 
+  + 运行详细信息现在支持新的快照文件查看器。 提交特定运行时，您可以查看的目录的快照。 此外可以下载已提交启动运行 notebook。
 
 ## <a name="2019-04-08"></a>2019-04-08
 
@@ -49,6 +56,7 @@ ms.locfileid: "59528129"
   + 列类型检测现在支持长时间类型的列。
   + 修复了 bug 已被某些日期值显示为时间戳，而不是 Python datetime 对象。
   + 修复了 bug，其中一些类型计数已显示为双精度型值而不是整数。
+
   
 ## <a name="2019-03-25"></a>2019-03-25
 

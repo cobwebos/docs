@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: dsc
 author: bobbytreed
 ms.author: robreed
-ms.date: 08/08/2018
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 234d59f9d625af6d0309b2995cc734fad6028b1e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 60cd2d21167739e824489e30ebd187a5fc0cc12d
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767033"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579268"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Azure Automation State Configuration 入门
 
@@ -27,7 +27,7 @@ ms.locfileid: "57767033"
 若要完成本文中的示例，需要具备以下条件：
 
 - 一个 Azure 自动化帐户。 有关如何创建 Azure 自动化运行方式帐户的说明，请参阅 [Azure 运行方式帐户](automation-sec-configure-azure-runas-account.md)。
-- 一个运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM（非经典）。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+- Azure 资源管理器 VM （非经典） 运行[受支持的操作系统](automation-dsc-overview.md#operating-system-requirements)。 如需创建 VM 的说明，请参阅[在 Azure 门户中创建第一个 Windows 虚拟机](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
 
 ## <a name="creating-a-dsc-configuration"></a>创建 DSC 配置
 
@@ -149,9 +149,9 @@ ms.locfileid: "57767033"
 1. 在“虚拟机”详细信息页上，单击“+ 连接”。
 
    > [!IMPORTANT]
-   > 该 VM 必须是运行 Windows Server 2008 R2 或更高版本的 Azure 资源管理器 VM。
+   > 这必须是运行的 Azure 资源管理器 VM[受支持的操作系统](automation-dsc-overview.md#operating-system-requirements)。
 
-1. 在“注册”页上的“节点配置名称”框中，选择要应用到 VM 的节点配置的名称。 可以选择在此时提供名称。 可以在登记节点以后更改分配的节点配置。
+2. 在“注册”页上的“节点配置名称”框中，选择要应用到 VM 的节点配置的名称。 可以选择在此时提供名称。 可以在登记节点以后更改分配的节点配置。
    选中“根据需要重新启动节点”，并单击“确定”。
 
    ![“注册”边栏选项卡的屏幕快照](./media/automation-dsc-getting-started/RegisterVM.png)

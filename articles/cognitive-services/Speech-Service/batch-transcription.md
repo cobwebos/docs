@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 3b403eb80bae01efe730b69b7e6a5ddaea81355a
-ms.sourcegitcommit: 6cab3c44aaccbcc86ed5a2011761fa52aa5ee5fa
-ms.translationtype: HT
+ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56447644"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579353"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 
 如果要听录存储（如 Azure Blob）中的大量音频，则批量听录是理想的选择。 使用专用 REST API 可以通过共享访问签名 (SAS) URI 指向音频文件并异步接收听录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="subscription-key"></a>订阅密钥
 
@@ -82,11 +82,21 @@ Batch 听录 API 支持以下格式：
 
 ### <a name="configuration-properties"></a>配置属性
 
-| 参数 | 说明 | 必需/可选 |
+| 参数 | 描述 | 必需/可选 |
 |-----------|-------------|---------------------|
 | `ProfanityFilterMode` | 指定如何处理识别结果中的不雅内容。 接受的值为 `none`（禁用不雅内容筛选）、`masked`（将不雅内容替换为星号）、`removed`（从结果中删除所有不雅内容）或 `tags`（添加“不雅内容”标记）。 默认设置是 `masked`。 | 可选 |
 | `PunctuationMode` | 指定如何处理识别结果中的标点。 接受的值为 `none`（禁用标点）、`dictated`（表示使用显式标点）、`automatic`（允许解码器处理标点）或 `dictatedandautomatic`（表示使用专用标点符号或自动使用标点）。 | 可选 |
  | `AddWordLevelTimestamps` | 指定是否应将字级时间戳添加到输出。 接受的值为 `true`，其支持字级时间戳和 `false`（默认值）禁用它。 | 可选 |
+
+### <a name="storage"></a>存储
+
+批处理脚本支持[Azure Blob 存储](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)音频和编写转录到存储中读取。
+
+## <a name="webhooks"></a>Webhook 
+
+轮询听录状态不能性能最好，或提供最佳用户体验。 若要轮询状态，可以注册将在长时间运行的脚本任务已完成时通知客户端的回调。
+
+有关更多详细信息，请参阅[Webhook](webhooks.md)。
 
 ## <a name="sample-code"></a>代码示例
 
@@ -108,10 +118,6 @@ Batch 听录 API 支持以下格式：
 
 > [!NOTE]
 > 对于基线听录，无需声明基线模型的 ID。 如果只指定语言模型 ID（而不指定声学模型 ID），则自动选择匹配的声学模型。 如果只指定声学模型 ID，则自动选择匹配的语言模型。
-
-### <a name="supported-storage"></a>支持的存储
-
-目前，仅支持 Azure Blob 存储。
 
 ## <a name="download-the-sample"></a>下载示例
 

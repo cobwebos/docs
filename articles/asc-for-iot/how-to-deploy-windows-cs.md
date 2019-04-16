@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2019
 ms.author: mlottner
-ms.openlocfilehash: b45d64f56653ad6d0baabef4a63351ef14f24c42
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: 601ee706adedf522890acc3f3996a7d36b349348
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58861949"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577824"
 ---
 # <a name="deploy-an-azure-security-center-for-iot-c-based-security-agent-for-windows"></a>为 IoT 部署 Azure 安全中心C#-基于 Windows 的安全代理
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本指南介绍如何安装适用于 IoT Azure 安全中心 (ASC) C#-基于 Windows 上的安全代理。
@@ -86,7 +86,7 @@ ms.locfileid: "58861949"
 ### <a name="verify-deployment-status"></a>验证部署状态
 
 - 运行以下命令来检查代理部署状态：<br>
-    ```sc.exe query "ASC IoT Agent" ```
+    ```sc.exe query "ASC IoT Agent"```
 
 ### <a name="uninstall-the-agent"></a>卸载代理
 
@@ -135,7 +135,7 @@ ms.locfileid: "58861949"
 
 1. 查看日志文件，了解有关故障的详细信息。
 
-   日志文件位置： `%WinDir%/System32/IoTAgentLog.log`
+   日志文件位置：`%WinDir%/System32/IoTAgentLog.log`
 
 
 ## <a name="next-steps"></a>后续步骤

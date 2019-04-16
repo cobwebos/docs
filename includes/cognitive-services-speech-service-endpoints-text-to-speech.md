@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/11/2018
 ms.author: wolfma
-ms.openlocfilehash: 3ff49e800b8db09cbff5c07107f71532437a4572
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ef68d02f6aa23368962e08af7b35d2b81c0e80bb
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671742"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579796"
 ---
 ### <a name="neural-voices"></a>神经语音
 
@@ -31,7 +31,6 @@ ms.locfileid: "58671742"
 | 区域 | 终结点 |
 |--------|----------|
 | 澳大利亚东部 | https://australiaeast.tts.speech.microsoft.com/cognitiveservices/v1 |
-| 巴西南部 | https://brazilsouth.tts.speech.microsoft.com/cognitiveservices/v1 |
 | 加拿大中部 | https://canadacentral.tts.speech.microsoft.com/cognitiveservices/v1 |
 | 美国中部 | https://centralus.tts.speech.microsoft.com/cognitiveservices/v1 |
 | 东亚 | https://eastasia.tts.speech.microsoft.com/cognitiveservices/v1 |
@@ -57,7 +56,6 @@ ms.locfileid: "58671742"
 | 区域 | 终结点 |
 |--------|----------|
 | 澳大利亚东部 | https://australiaeast.voice.speech.microsoft.com |
-| 巴西南部 | https://brazilsouth.voice.speech.microsoft.com |
 | 加拿大中部 | https://canadacentral.voice.speech.microsoft.com |
 | 美国中部 | https://centralus.voice.speech.microsoft.com |
 | 东亚 | https://eastasia.voice.speech.microsoft.com |

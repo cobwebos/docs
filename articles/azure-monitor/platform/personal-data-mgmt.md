@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.openlocfilehash: 9112d50384aba288038343ff9a14ed55542fb722
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0cf5a80e3eedbe7efb8463162b5b3ed489ac08c8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58121343"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577892"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>存储在 Log Analytics 和 Application Insights 中的个人数据指南
 
@@ -86,6 +86,9 @@ Log Analytics 是十分灵活的存储，可在规定数据架构的同时允许
 ### <a name="view-and-export"></a>查看和导出
 
 对于查看和导出数据请求，应使用 [Log Analytics 查询 API](https://dev.loganalytics.io/) 或 [Application Insights 查询 API](https://dev.applicationinsights.io/quickstart)。 将数据形状转换为适当形状以提供给用户时，将由你实现相关逻辑。 [Azure Functions](https://azure.microsoft.com/services/functions/) 非常适合托管此类逻辑。
+
+> [!IMPORTANT]
+>  虽然大多数的清除操作可能会比 SLA，更快的速度完成**形参在 30 天内设置的清除操作完成的 SLA**由于大量使用的数据平台影响。 这是一个自动化的过程;没有方法来请求更快地处理操作。
 
 ### <a name="delete"></a>删除
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 311fdb0b0a2e587e7cf8581f967ed0248de85f6d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 4563bb0de688a8328796badffc8a133a33f64fcc
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59291712"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59566552"
 ---
 ## <a name="benefits-of-managed-disks"></a>托管磁盘的好处
 
@@ -31,7 +31,7 @@ ms.locfileid: "59291712"
 
 托管磁盘集成可用性集，可确保[可用性集中的 VM](../articles/virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) 的磁盘彼此之间完全隔离以避免单点故障。 磁盘自动放置于不同的存储缩放单元（模块）。 如果某个模块因硬件或软件故障而失败，则只有其磁盘在该模块上的 VM 实例会失败。 例如，假定某个应用程序在 5 台 VM 上运行并且这些 VM 位于一个可用性集中。 这些 VM 的磁盘不会存储在同一个模块中，因此，如果一个模块失败，该应用程序的其他实例可以继续运行。
 
-## <a name="integration-with-availability-zones"></a>与可用性区域的集成
+### <a name="integration-with-availability-zones"></a>与可用性区域的集成
 
 托管磁盘支持[可用性区域](../articles/availability-zones/az-overview.md)，这是保护数据中心发生故障的应用程序高可用性产品/服务。 可用性区域是 Azure 区域中独特的物理位置。 每个区域由一个或多个数据中心组成，这些数据中心配置了独立电源、冷却和网络。 为确保能够进行复原，所有已启用的区域中必须至少有三个单独的区域。 Azure 凭借可用性区域提供一流的 99.99% VM 运行时间 SLA。
 
@@ -61,7 +61,7 @@ ms.locfileid: "59291712"
 
 ### <a name="temporary-disk"></a>临时磁盘
 
-每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 临时磁盘上的数据可能会丢失期间[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)事件，或者当您[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)。 在 VM 成功标准重启期间，临时驱动器上的数据将保留。
+每个 VM 包含一个不是托管磁盘的临时磁盘。 临时磁盘为应用程序和进程提供短期存储存储空间，仅用于存储页面或交换文件等数据。 在[维护事件](../articles/virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)期间或[重新部署 VM](../articles/virtual-machines/troubleshooting/redeploy-to-new-node-windows.md?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) 时，临时磁盘上的数据可能会丢失。 在 VM 成功标准重启期间，临时驱动器上的数据将保留。
 
 ## <a name="managed-disk-snapshots"></a>托管磁盘快照
 
@@ -69,8 +69,8 @@ ms.locfileid: "59291712"
 
 若要了解有关如何使用托管磁盘创建快照的详细信息，请查看下列资源：
 
-* [创建作为托管磁盘在 Windows 中使用快照存储 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
-* [创建作为托管磁盘在 Linux 中使用快照存储 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
+* [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
+* [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
 
 ### <a name="images"></a>映像
 
@@ -79,7 +79,7 @@ ms.locfileid: "59291712"
 有关创建映像的信息，请查看以下文章：
 
 * [如何在 Azure 中捕获通用 VM 的托管映像](../articles/virtual-machines/windows/capture-image-resource.md)
-* [如何通用化和捕获使用 Azure CLI 为 Linux 虚拟机](../articles/virtual-machines/linux/capture-image.md)
+* [如何使用 Azure CLI 生成和捕获 Linux 虚拟机](../articles/virtual-machines/linux/capture-image.md)
 
 #### <a name="images-versus-snapshots"></a>映像与快照
 

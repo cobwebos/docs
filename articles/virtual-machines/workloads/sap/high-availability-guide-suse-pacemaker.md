@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: f1b993cf45d987cb51f64359b331f3862d054774
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 62356ee35631373b5a5d38ed356bbb2fb489807b
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549893"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577789"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>在 Azure 中的 SUSE Linux Enterprise Server 上设置 Pacemaker
 
@@ -84,7 +84,7 @@ SBD 设备至少需要一个额外的充当 iSCSI 目标服务器并提供 SBD �
 
 在所有 **iSCSI 目标虚拟机**上运行以下命令，为 SAP 系统使用的群集创建 iSCSI 磁盘。 以下示例中为多个群集创建 SBD 设备。 其中演示了如何对多个群集使用一个 iSCSI 目标服务器。 在 OS 磁盘中放置 SBD 设备。 确保有足够的空间。
 
-**` nfs`** 用于标识 NFS 群集**ascsnw1**用来标识的 ASCS 群集**NW1**， **dbnw1**用来标识的数据库群集**NW1**， **nfs 0**并**nfs 1** NFS 群集节点的主机名**nw1 xscs 0**和**nw1 xscs 1**的主机名**NW1** ASCS 群集节点，并**nw1-db-0**并**nw1-db-1**是群集节点的主机名的数据库。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
+**`nfs`** 用于标识 NFS 群集**ascsnw1**用来标识的 ASCS 群集**NW1**， **dbnw1**用来标识的数据库群集**NW1**， **nfs 0**并**nfs 1** NFS 群集节点的主机名**nw1 xscs 0**和**nw1 xscs 1**的主机名**NW1** ASCS 群集节点，并**nw1-db-0**并**nw1-db-1**是群集节点的主机名的数据库。 请将其替换为群集节点的主机名和 SAP 系统的 SID。
 
 <pre><code># Create the root folder for all SBD devices
 sudo mkdir /sbd
@@ -302,7 +302,7 @@ o- / ...........................................................................
    <b>SBD_WATCHDOG="yes"</b>
    </code></pre>
 
-   创建` softdog`配置文件
+   创建`softdog`配置文件
 
    <pre><code>echo softdog | sudo tee /etc/modules-load.d/softdog.conf
    </code></pre>

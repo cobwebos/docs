@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的日志警报故障排除 |Microsoft Docs
-description: Azure 中日志警报规则的常见问题、错误和解法方法。
+description: 常见的问题、 错误和日志警报规则在 Azure 中的解决方法。
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
-ms.openlocfilehash: aa42e8975432de8ca489cf9b1b6dd509c9fb01c1
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.openlocfilehash: 0c7189f1d43a114532b30b0c1aabe6f7cd4402d8
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59005303"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578707"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
@@ -25,7 +25,6 @@ ms.locfileid: "59005303"
 
 > [!NOTE]
 > 本文不考虑 Azure 门户中显示警报规则已触发以及通过关联的操作组执行通知的情况。 对于这种情况，请参阅有关[操作组](../platform/action-groups.md)的文章中的详细信息。
-
 
 ## <a name="log-alert-didnt-fire"></a>日志警报未激发
 
@@ -57,7 +56,7 @@ ms.locfileid: "59005303"
 
 例如，假设指标度量日志警报规则已配置为：
 
-- 查询为： `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
+- 查询为：`search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)`  
 - 时间段为 6 小时
 - 阈值为 50
 - 警报逻辑为三次连续违规
@@ -92,9 +91,94 @@ ms.locfileid: "59005303"
 
 ### <a name="alert-query-output-misunderstood"></a>警报查询输出令人误解
 
-你在分析查询中提供日志警报的逻辑。 分析查询可以使用各种大数据和数学函数。  警报服务使用指定时间段内的数据按指定的间隔执行你的查询。 警报服务根据所选择的警报类型对提供的查询进行细微更改。 这可以在“配置信号逻辑”屏幕中的“要执行的查询”部分中看到，如下所示：![要执行的查询](media/alert-log-troubleshoot/LogAlertPreview.png)
+你在分析查询中提供日志警报的逻辑。 分析查询可以使用各种大数据和数学函数。  警报服务使用指定时间段内的数据按指定的间隔执行你的查询。 警报服务根据所选择的警报类型对提供的查询进行细微更改。 可以在"要执行的查询"中的部分中查看此更改*配置信号逻辑*屏幕上，如下所示：![要执行的查询](media/alert-log-troubleshoot/LogAlertPreview.png)
 
 “要执行的查询”框中显示的内容是日志警报服务运行的内容。 如果你在实际创建警报之前想要了解警报查询输出可能会显示什么内容，请通过[分析门户](../log-query/portals.md)或[分析 API](https://docs.microsoft.com/rest/api/loganalytics/) 运行所陈述的查询以及时间范围。
+
+## <a name="log-alert-was-disabled"></a>已禁用日志警报
+
+下面列出了由于一些原因[Azure Monitor 中的日志警报规则](../platform/alerts-log.md)可能禁用 Azure monitor。
+
+### <a name="resource-on-which-alert-was-created-no-longer-exists"></a>不能再创建警报后的资源已存在
+
+在 Azure Monitor 中创建的日志警报规则的目标 Azure Log Analytics 工作区、 Azure Application Insights 应用和 Azure 资源等的特定资源。 日志警报服务然后运行分析查询提供规则中指定的目标。 但是，规则在创建后，通常，用户转到从 Azure 中删除或移动在 Azure 的警报规则的目标。 日志警报规则的目标不再有效，因为规则的执行将失败。
+
+在这种情况下，Azure Monitor 将禁用日志警报，并确保当规则本身不能为一个如一周的相当大段不断地执行对客户不会发生误报，计费。 用户可以找出的确切时间的日志预警规则已禁用通过 Azure monitor [Azure 活动日志](../../azure-resource-manager/resource-group-audit.md)。 Azure 活动日志中日志警报规则处于禁用状态由 Azure 时 Azure 活动日志中添加事件。
+
+由于其持续失败; 禁用警报规则在 Azure 活动日志示例事件如下所示。
+
+```json
+{
+    "caller": "Microsoft.Insights/ScheduledQueryRules",
+    "channels": "Operation",
+    "claims": {
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/spn": "Microsoft.Insights/ScheduledQueryRules"
+    },
+    "correlationId": "abcdefg-4d12-1234-4256-21233554aff",
+    "description": "Alert: test-bad-alerts is disabled by the System due to : Alert has been failing consistently with the same exception for the past week",
+    "eventDataId": "f123e07-bf45-1234-4565-123a123455b",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "id": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "level": "Informational",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "localizedValue": "Microsoft.Insights/ScheduledQueryRules/disable/action"
+    },
+    "resourceGroupName": "<Resource Group>",
+    "resourceProviderName": {
+        "value": "MICROSOFT.INSIGHTS",
+        "localizedValue": "Microsoft Insights"
+    },
+    "resourceType": {
+        "value": "MICROSOFT.INSIGHTS/scheduledqueryrules",
+        "localizedValue": "MICROSOFT.INSIGHTS/scheduledqueryrules"
+    },
+    "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2019-03-22T04:18:22.8569543Z",
+    "subscriptionId": "<SubscriptionId>",
+    "properties": {
+        "resourceId": "/SUBSCRIPTIONS/<subscriptionId>/RESOURCEGROUPS/<ResourceGroup>/PROVIDERS/MICROSOFT.INSIGHTS/SCHEDULEDQUERYRULES/TEST-BAD-ALERTS",
+        "subscriptionId": "<SubscriptionId>",
+        "resourceGroup": "<ResourceGroup>",
+        "eventDataId": "12e12345-12dd-1234-8e3e-12345b7a1234",
+        "eventTimeStamp": "03/22/2019 04:18:22",
+        "issueStartTime": "03/22/2019 04:18:22",
+        "operationName": "Microsoft.Insights/ScheduledQueryRules/disable/action",
+        "status": "Succeeded",
+        "reason": "Alert has been failing consistently with the same exception for the past week"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="query-used-in-log-alert-is-not-valid"></a>日志警报中使用的查询无效
+
+在 Azure Monitor 中为其配置的一部分创建的每个日志预警规则必须指定要由警报服务会定期执行的分析查询。 虽然分析查询可能在规则创建或更新时具有正确的语法。 在日志中的某些时间以在一段时间，此查询提供警报规则可以开发语法问题并使规则执行后启动失败。 为什么日志预警规则中提供的分析查询可以开发错误的一些常见原因是：
+
+- 查询写入[运行跨多个资源](../log-query/cross-workspace-query.md)和一个或多个资源指定，现在不存在。
+- 已分析平台，由于没有数据流向[执行查询时出现错误](https://dev.loganalytics.io/documentation/Using-the-API/Errors)因为没有提供的查询的数据。
+- 中的更改[查询语言](https://docs.microsoft.com/azure/kusto/query/)已在哪些命令和函数具有修改后的格式。 因此警报规则中的前面提供的查询不再有效。
+
+应将警告用户此行为的第一次通过[Azure 顾问](../../advisor/advisor-overview.md)。 建议会被添加为特定的日志警报规则上 Azure 顾问高可用性与中等程度的影响和说明，如"修复你的日志警报规则以确保监视"的类别下。 如果在 Azure 顾问提供的建议的七天后警报将查询中指定的日志警报规则是不在更正问题。 然后 Azure Monitor 将禁用日志警报，并确保当规则本身不能为一个如一周的相当大段不断地执行对客户不会发生误报，计费。
+
+用户可以找出的确切时间的日志预警规则已禁用通过 Azure monitor [Azure 活动日志](../../azure-resource-manager/resource-group-audit.md)。 Azure 活动日志，日志预警规则禁用的 Azure-事件添加 Azure 活动日志中。
 
 ## <a name="next-steps"></a>后续步骤
 

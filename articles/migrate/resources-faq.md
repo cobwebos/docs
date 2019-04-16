@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: snehaa
-ms.openlocfilehash: 366240c273feed559edb6e569640020046cc9471
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 17cead93325da903161d95b315435d6e7b106dbb
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578639"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578911"
 ---
 # <a name="azure-migrate---frequently-asked-questions-faq"></a>Azure Migrate - 常见问题解答 (FAQ)
 
@@ -60,6 +60,10 @@ Azure Government  | 美国政府弗吉尼亚州
 ### <a name="how-does-the-on-premises-site-connect-to-azure-migrate"></a>本地站点如何连接到 Azure Migrate？
 
 可以通过 Internet 或使用 ExpressRoute 与公共对等互连。
+
+### <a name="what-network-connectivity-requirements-are-needed-for-azure-migrate"></a>Azure Migrate 需要哪些网络连接要求？
+
+若要与 Azure 通信的 Url 和端口所需的 Azure 迁移，请参阅[的连接 Url](https://docs.microsoft.com/azure/migrate/concepts-collector#urls-for-connectivity)。
 
 ### <a name="can-i-harden-the-vm-set-up-with-the-ova-template"></a>我可以使用 OVA 模板强化 VM 设置吗？
 
@@ -178,7 +182,7 @@ Azure Migrate 目前不支持[企业协议套餐](https://azure.microsoft.com/of
 
 ### <a name="do-i-need-to-pay-to-use-the-dependency-visualization-feature"></a>是否需要支付依赖项可视化功能的使用费？
 
-不是。 [在此处](https://azure.microsoft.com/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。
+不。 [在此处](https://azure.microsoft.com/pricing/details/azure-migrate/)详细了解 Azure Migrate 定价。
 
 ### <a name="do-i-need-to-install-anything-for-dependency-visualization"></a>要实现依赖项可视化，是否需要安装任何软件？
 

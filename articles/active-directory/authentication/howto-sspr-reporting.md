@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b247338bbb1f20082fdef2a2bc291fb6183b10
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493053"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577961"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
@@ -50,15 +50,14 @@ ms.locfileid: "59493053"
 1. 浏览到 [Azure 门户](https://portal.azure.com)。
 2. 在左侧窗格中，选择“所有服务”。
 3. 在服务列表中搜索“Azure Active Directory”并选中它。
-4. 选择“用户和组”。
-5. 从“用户和组”菜单中选择“审核日志”。 此时会显示目录中所有用户发生的所有审核事件。 可以筛选此视图，查看所有与密码相关的事件。
-6. 要筛选此视图以便仅查看密码重置的相关事件，请选择窗格顶部的“筛选”按钮。
-7. 在“筛选”菜单中选择“类别”下拉列表，然后将其更改为“自助密码管理”类别类型。
-8. （可选）通过选择所需的特定“活动”进一步筛选该列表。
+4. 选择**用户**从管理部分。
+5. 选择**审核日志**从**用户**边栏选项卡。 此时会显示目录中所有用户发生的所有审核事件。 可以筛选此视图，查看所有与密码相关的事件。
+6. 从**筛选器**窗格中，选择顶部菜单**服务**下拉列表，并将其更改为**自助服务密码管理**服务类型。
+7. （可选）通过选择所需的特定“活动”进一步筛选该列表。
 
 ### <a name="converged-registration-preview"></a>聚合注册（预览版）
 
-如果使用聚合注册的公共预览版，可在“身份验证方法”类别下找到有关审核日志中的用户活动的信息。
+如果参与汇聚注册公共预览版时，将在有关审核日志中的用户活动信息服务下**身份验证方法**。
 
 ## <a name="description-of-the-report-columns-in-the-azure-portal"></a>Azure 门户中报表列的说明
 
@@ -176,16 +175,16 @@ ms.locfileid: "59493053"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [如何完成成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)。
 * [注册自助服务密码重置](../user-help/active-directory-passwords-reset-register.md)。
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据以及哪些数据应填充为你的用户？](howto-sspr-authenticationdata.md)
-* [向用户提供的身份验证方法？](concept-sspr-howitworks.md#authentication-methods)
-* [使用 SSPR 策略选项有哪些？](concept-sspr-policy.md)
-* [什么是密码写回，为什么我关心它？](howto-sspr-writeback.md)
-* [什么是所有 SSPR 中的选项以及执行哪些操作它们的含义是？](concept-sspr-howitworks.md)
-* [我认为有些功能被破坏。 如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
-* [我有了别处未涵盖的问题](active-directory-passwords-faq.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
+* [SSPR 有哪些策略选项？](concept-sspr-policy.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
+* [SSPR 中的所有选项是什么？它们有哪些含义？](concept-sspr-howitworks.md)
+* [我认为有些功能被破坏。如何对 SSPR 进行故障排除？](active-directory-passwords-troubleshoot.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)
 
 [Reporting]: ./media/howto-sspr-reporting/sspr-reporting.png "Azure AD 中的 SSPR 活动审核日志示例"

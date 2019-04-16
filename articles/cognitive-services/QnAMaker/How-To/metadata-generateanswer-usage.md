@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 02/21/2019
 ms.author: tulasim
-ms.openlocfilehash: 462dfb2de8608eebd5609f7044bde03991fca3ca
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56958042"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579404"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>获取一个使用 GenerateAnswer API 和元数据的知识答案
 
@@ -74,7 +74,7 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?i
 |标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值是: '|
 |标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|使用设置问题|
-|查询字符串参数 （可选）|`isTest`|布尔值|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
+
 
 JSON 正文具有多个设置：
 
@@ -83,6 +83,7 @@ JSON 正文具有多个设置：
 |`question`|必填|字符串|若要发送到您的知识库用户提出的问题。|
 |`top`|可选|integer|要包含在输出中的排序结果数。 默认值为 1。|
 |`userId`|可选|字符串|用于标识用户的唯一 ID。 此 ID 将记录在聊天日志中。|
+|`isTest`|可选|布尔值|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
 |`strictFilters`|可选|字符串|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。|
 
 一个 JSON 正文示例如下所示：
@@ -91,6 +92,7 @@ JSON 正文具有多个设置：
 {
     "question": "qna maker and luis",
     "top": 6,
+    "isTest": true,
     "strictFilters": [
     {
         "name": "category",

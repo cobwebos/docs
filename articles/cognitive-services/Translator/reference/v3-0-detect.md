@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: a552fece120d7978825a685960bf4faf65aba783
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: fa618c5c623a631e7a88f8235a0b7b16fcb2bc88
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916643"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578651"
 ---
 # <a name="translator-text-api-30-detect"></a>文本翻译 API 3.0：Detect
 
@@ -48,8 +48,8 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
   <th width="20%">标头</th>
   <th>描述</th>
   <tr>
-    <td>_一个授权_<br/>_标头的值开始缓存响应_</td>
-    <td>必需的请求标头。<br/>请参阅[用于身份验证的可用选项](./v3-0-reference.md#authentication)。</td>
+    <td>身份验证标头</td>
+    <td>必需的请求标头。<br/>请参阅<a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">用于身份验证的可用选项</a>。</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -85,15 +85,15 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 成功的响应是一个 JSON 数组，其中的每个结果对应于输入数组中的一个字符串。 结果对象包括以下属性：
 
-  * `language`:已检测语言的代码。
+  * `language`：已检测语言的代码。
 
-  * `score`:一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
+  * `score`：一个浮点值，表示结果的置信度。 分数介于 0 和 1 之间，较低的分数表示较低的置信度。
 
-  * `isTranslationSupported`:一个布尔值，如果检测到的语言是文本翻译支持的语言之一，则为 true。
+  * `isTranslationSupported`：一个布尔值，如果检测到的语言是文本翻译支持的语言之一，则为 true。
 
-  * `isTransliterationSupported`:一个布尔值，如果检测到的语言是文本音译支持的语言之一，则为 true。
+  * `isTransliterationSupported`：一个布尔值，如果检测到的语言是文本音译支持的语言之一，则为 true。
   
-  * `alternatives`:其他可能语言的阵列。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
+  * `alternatives`：其他可能语言的阵列。 数组中的每个元素是上述所列相同属性的另一个对象：`language`、`score`、`isTranslationSupported` 和 `isTransliterationSupported`。
 
 示例 JSON 响应如下：
 
@@ -176,7 +176,7 @@ https://api.cognitive.microsofttranslator.com/detect?api-version=3.0
 
 以下示例演示如何检索文本翻译支持的语言。
 
-# [<a name="curl"></a>curl](#tab/curl)
+# <a name="curltabcurl"></a>[curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/detect?api-version=3.0" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'What language is this text written in?'}]"

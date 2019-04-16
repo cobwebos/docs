@@ -4,21 +4,19 @@ description: 本文列出当前支持的数据源的规范。
 services: data-catalog
 author: markingmyname
 ms.author: maghan
-ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
-ms.date: 01/18/2018
-ms.openlocfilehash: 56fa449bd665457ab1b98b67bb42ec52e0742c5f
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
-ms.translationtype: HT
+ms.date: 04/15/2019
+ms.openlocfilehash: d859fc92c4adbcd224d49601678804445a313ef7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410181"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579387"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 
 要发布元数据，可使用公共 API、单击一次的注册工具或直接手动将信息输入到 Azure 数据目录 Web 门户。 下表汇总了目录当前支持的所有数据源以及每个数据源的发布功能。 还列出了外部数据工具（每个数据源都可从门户“open-in”体验启动它）。 第二个表包含每个数据源连接属性的详细技术规范。
-
 
 ## <a name="list-of-supported-data-sources"></a>受支持的数据源列表
 
@@ -32,7 +30,7 @@ ms.locfileid: "47410181"
        <td><b>说明</b></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 目录</td>
+      <td>Azure Data Lake Store 目录 (仅第 1 代)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>
@@ -40,7 +38,7 @@ ms.locfileid: "47410181"
       <td></td>
     </tr>
     <tr>
-      <td>Azure Data Lake Store 文件</td>
+      <td>Azure Data Lake Store 文件 (仅第 1 代)</td>
       <td>✓</td>
       <td>✓</td>
       <td>✓</td>

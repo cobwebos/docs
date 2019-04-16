@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: erhopf
 ms.custom: seodec18
-ms.openlocfilehash: 85c51320d2be1eac540f1d14910927c0fdccef64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2c5c2bc2b8dd1930efef9833bd442fcad5566e2a
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549499"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578775"
 ---
 # <a name="what-is-text-to-speech"></a>文本到语音转换是什么？
 
@@ -53,10 +53,7 @@ Azure 语音服务从文本到语音转换为一个服务，使你的应用程�
 | 创建和管理语音字体测试。 | 否 | 是\* |
 | 管理订阅。 | 否 | 是\* |
 
-\* *这些服务可使用 cris.ai 终结点。请参阅[Swagger 引用](https://westus.cris.ai/swagger/ui/index)。*
-
-> [!NOTE]
-> 自定义语音终结点实施限制，限制为 25 个每 5 秒的请求。 当出现阻止情况，则会通知您通过消息标头。
+\* *这些服务可使用 cris.ai 终结点。请参阅[Swagger 引用](https://westus.cris.ai/swagger/ui/index)。这些自定义语音培训和管理 Api 实施限制，限制为每 5 秒的 25 个请求而语音合成 API 本身实现限制，允许每秒为最高 200 个请求。当出现阻止情况，则会通知您通过消息标头。*
 
 ## <a name="get-started-with-text-to-speech"></a>开始使用文本到语音转换
 

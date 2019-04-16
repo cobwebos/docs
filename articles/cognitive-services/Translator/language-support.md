@@ -10,18 +10,20 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/21/2019
 ms.author: v-jansko
-ms.openlocfilehash: 5c41456f1cf661fd372a565885c9196593c894ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3b938f07ef5b1feb9d5859f27423eaa79c2937cc
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59267900"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59577582"
 ---
 # <a name="language-and-region-support-for-the-translator-text-api"></a>文本翻译 API 的语言和区域支持
 
 文本翻译 API 支持对以下语言进行文本到文本翻译。 神经机器翻译 (NMT) 是采用 AI 的高质量机器翻译的新标准，当神经系统可用时，其可使用文本翻译 API 的 V3 版作为默认值。
 
-[了解有关机器翻译的工作原理的详细信息](https://www.microsoft.com/translator/mt.aspx)
+[详细了解机器翻译的工作原理](https://www.microsoft.com/translator/mt.aspx)
+
+## <a name="translation"></a>翻译
 
 **V2 Translator API**
 
@@ -113,10 +115,10 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | 阿拉伯语 | `ar` | 阿拉伯语 `Arab` | <--> | 拉丁语 `Latn` |
 |Bangla  | `bn` | 孟加拉语 `Beng` | <--> | 拉丁语 `Latn` |
-| 中文(简体) | `zh-Hans` | 中文(简体) `Hans`| <--> | 拉丁语 `Latn` |
-| 中文(简体) | `zh-Hans` | 中文(简体) `Hans`| <--> | 中文(繁体) `Hant`|
-| 中文(繁体) | `zh-Hant` | 中文(繁体) `Hant`| <--> | 拉丁语 `Latn` |
-| 中文(繁体) | `zh-Hant` | 中文(繁体) `Hant`| <--> | 中文(简体) `Hans` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 拉丁语 `Latn` |
+| 中文(简体) | `zh-Hans` | 简体中文 `Hans`| <--> | 繁体中文 `Hant`|
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 拉丁语 `Latn` |
+| 中文(繁体) | `zh-Hant` | 繁体中文 `Hant`| <--> | 简体中文 `Hans` |
 | 古吉拉特语 | `gu`  | 古吉拉特语 `Gujr` | --> | 拉丁语 `Latn` |
 | 希伯来语 | `he` | 希伯来语 `Hebr` | <--> | 拉丁语 `Latn` |
 | 印地语 | `hi` | 梵语 `Deva` | <--> | 拉丁语 `Latn` |
@@ -191,77 +193,8 @@ Transliterate 方法支持以下语言。 在“音译方向”中，“<-->”�
 
 ## <a name="detect"></a>Detect
 
-Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator 无法翻译的语言。
+文本翻译 API 检测可用于转换和音译所有语言。
 
-| 语言    |
-|:----------- |
-| 南非荷兰语 |
-| 阿尔巴尼亚语 |
-| 阿拉伯语 |
-| 巴斯克语 |
-| 白俄罗斯语 |
-| 保加利亚语 |
-| 加泰罗尼亚语 |
-| 中文 |
-| 中文(简体) |
-| 中文(繁体) |
-| 克罗地亚语 |
-| 捷克语 |
-| 丹麦语 |
-| 荷兰语 |
-| 英语 |
-| 世界语 |
-| 爱沙尼亚语 |
-| 芬兰语 |
-| 法语 |
-| 加利西亚语 |
-| 德语 |
-| 希腊语 |
-| 海地克里奥尔语 |
-| 希伯来语 |
-| 印地语 |
-| 匈牙利语 |
-| 冰岛语 |
-| 印度尼西亚语 |
-| 爱尔兰语 |
-| 意大利语 |
-| 日语 |
-| 韩语 |
-| 库尔德语(阿拉伯语) |
-| 库尔德语(拉丁语) |
-| 拉丁语 |
-| 拉脱维亚语 |
-| 立陶宛语 |
-| 马其顿语 |
-| 马来语 |
-| 马耳他语 |
-| 挪威语 |
-| 挪威语(尼诺斯克语) |
-| 普什图语 |
-| 波斯语 |
-| 波兰语 |
-| 葡萄牙语 |
-| 罗马尼亚语 |
-| 俄语 |
-| 塞尔维亚语(西里尔文) |
-| 塞尔维亚语(拉丁语系) |
-| 斯洛伐克语 |
-| 斯洛文尼亚语 |
-| 索马里语 |
-| 西班牙语 |
-| 斯瓦希里语 |
-| 瑞典语 |
-| 他加禄语 |
-| 泰卢固语 |
-| 泰语 |
-| 土耳其语 |
-| 乌克兰语 |
-| 乌尔都语 |
-| 乌兹别克语(西里尔文) |
-| 乌兹别克语(拉丁语) |
-| 越南语 |
-| 威尔士语 |
-| 意第绪语 |
 
 ## <a name="access-the-translator-text-api-language-list-programmatically"></a>以编程方式访问文本翻译 API 语言列表
 
@@ -294,6 +227,7 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 | 印地语      | `hi`          |
 | 匈牙利语      | `hu`          |
 | 冰岛语 | `is` |
+| 印度尼西亚语|   `id`    |
 | 意大利语      | `it`          |
 | 日语      | `ja`          |
 | 韩语      | `ko`          |
@@ -319,4 +253,4 @@ Detect 方法支持以下语言。 Detect 可能会识别 Microsoft Translator �
 
 若要快速查看语言，Microsoft Translator 网站上显示了 文本翻译和语音 API 支持的所有语言。 此列表不包括特定于开发者的信息，例如语言代码。
 
-[请参阅语言的列表](https://www.microsoft.com/translator/languages.aspx)
+[查看语言列表](https://www.microsoft.com/translator/languages.aspx)

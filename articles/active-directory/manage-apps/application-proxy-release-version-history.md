@@ -16,12 +16,12 @@ ms.date: 04/05/2019
 ms.subservice: manage-apps
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ab280b4647c0e8eb7083797ec00965cbaec6f8e
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: bf9ee43c6c6b332c05286da8e330812d7e0db6c2
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59502333"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578583"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD 应用程序代理：版本发行历史记录
 本文列出了版本和已发布的 Azure Active Directory (Azure AD) 应用程序代理功能。 Azure AD 团队定期更新应用程序代理的新特性和功能。 发布新版本时，应用程序代理连接器会自动更新。
@@ -31,7 +31,7 @@ ms.locfileid: "59502333"
 资源 |  详细信息
 --------- | --------- |
 如何启用应用程序代理 | 启用应用程序代理并安装并注册连接器的必备组件所述[教程](application-proxy-add-on-premises-application.md)。
-了解 Azure AD 应用程序代理连接器 | 详细了解如何[连接器管理](application-proxy-connectors.md)和如何连接器自动升级。
+了解 Azure AD 应用程序代理连接器 | 详细了解如何[连接器管理](application-proxy-connectors.md)以及连接器[自动升级](application-proxy-connectors.md#automatic-updates)。
 Azure AD 应用程序代理连接器下载 |  [下载最新的连接器](https://download.msappproxy.net/subscription/d3c8b69d-6bf7-42be-a529-3fe9c2e70c90/connector/download)。
 
 ## <a name="156120"></a>1.5.612.0

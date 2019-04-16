@@ -8,12 +8,12 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: virtual-machines-linux
-ms.openlocfilehash: 6b109f347ee7a917b57acfc56ab4418755295bc5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 78a8b5e7a1c5512f81315519210bc7759dd15342
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58896256"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578469"
 ---
 # <a name="install-tmaxsoft-openframe-on-azure"></a>在 Azure 上安装 TmaxSoft OpenFrame
 
@@ -945,7 +945,7 @@ ProSort 是在批处理事务，用于对数据进行排序的实用工具。
      export PATH
      ```
 
-6. 若要执行 bash 配置文件中的，在命令提示符处，键入： ` . .bash_profile`
+6. 若要执行 bash 配置文件中的，在命令提示符处，键入： `. .bash_profile`
 
 7. 创建配置文件。 例如：
 
@@ -1055,7 +1055,7 @@ OFCOBOL 是解释大型机的 COBOL 程序 OpenFrame 编译器。
      0 NonFatalErrors 
      0 FatalError
      ```
-10. 使用`ofcob --version `命令并查看要验证安装的版本号。 例如：
+10. 使用`ofcob --version`命令并查看要验证安装的版本号。 例如：
 
      ```
      [oframe7@ofdemo ~]$ ofcob --version 
@@ -1342,7 +1342,7 @@ JEUS （Java 企业用户解决方案） 提供了 OpenFrame web 应用程序服
      [oframe7\@ofdemo setup]\$ vi domain-config-template.properties
      ```
 
-7. 更改`jeus.password=jeusadmin nodename=Tmaxsoft`到 `jeus.password=tmax1234 nodename=ofdemo`
+7. 将 `jeus.password=jeusadmin nodename=Tmaxsoft` 更改为 `jeus.password=tmax1234 nodename=ofdemo`
 
 8. 执行`ant install`命令以生成 JEUS。
 9.  更新.bash\_与 JEUS 变量所示的配置文件：
@@ -1477,5 +1477,5 @@ OFManager 为 OpenFrame 提供操作和管理功能在 web 环境中。
 如果正在考虑大型机迁移，我们扩展的合作伙伴生态系统，可帮助你。 有关选择合作伙伴解决方案的详细指南，请参阅[平台现代化联盟](https://www.platformmodernization.org/pages/mainframe.aspx)。
 
 -   [Azure 入门](https://docs.microsoft.com/azure/)
--   [主机 Integration Server (HIS) 文档](https://docs.microsoft.com/host-integration-server/)
+-   [Host Integration Server (HIS) 文档](https://docs.microsoft.com/host-integration-server/)
 -   [Azure 虚拟数据中心提升和转移指南](https://blogs.msdn.microsoft.com/azurecat/2018/03/12/new-whitepaper-azure-virtual-datacenter-lift-and-shift-guide/)
