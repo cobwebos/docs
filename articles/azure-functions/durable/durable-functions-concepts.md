@@ -2,7 +2,7 @@
 title: Azure Functions 中的 Durable Functions 模式和技术概念
 description: 了解 Azure Functions 中的 Durable Functions 扩展如何在云中提供有状态代码执行优势。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: azfuncdf
-ms.openlocfilehash: e54fe17e80382348bcf463624043f7922a29d1c1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: aa9563266f6b43e3bc2f21fbc0b340c86c5895ae
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58892749"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608725"
 ---
 # <a name="durable-functions-patterns-and-technical-concepts-azure-functions"></a>Durable Functions 模式和技术概念 (Azure Functions)
 
@@ -437,6 +437,6 @@ Durable Functions 扩展使用 Azure 存储中的队列、表和 Blob 来持久�
 开始操作：
 
 > [!div class="nextstepaction"]
-> [创建第一个持久函数](durable-functions-create-first-csharp.md)
+> [创建第一个 Durable Function](durable-functions-create-first-csharp.md)
 
 [DurableOrchestrationContext]: https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html

@@ -8,19 +8,25 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/11/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 5b4c9e24bdcb6aaf4efde24d747e77d6014b2539
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439462"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607157"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker 常见问题解答
 
 QnA Maker 服务相关的最常见问题的特选的列表将帮助你更快、 更好的效果与采用该服务。
+
+## <a name="use-the-help-bot-in-the-qna-maker-portal"></a>使用 QnA Maker 门户中的帮助机器人
+
+QnA Maker 提供**帮助**QnA Maker 门户，以帮助您的智能机器人应用程序。 每个网页上提供了帮助机器人。 智能机器人应用程序使用 QnA Maker 回答，并提供[ C# Bot Framework 代码项目](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)到智能机器人即可快速启动并运行与答案智能机器人。 
+
+![![QnA Maker 提供了 * * 帮助 * * 智能机器人应用程序以帮助您在 QnA Maker 门户中的。](。 / media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知识库
 
@@ -98,7 +104,7 @@ QnA Maker 可能无法从有效的常见问题解答 URL 中自动提取某些�
 
 ### <a name="can-i-use-the-same-azure-search-resource-for-knowledge-bases-using-multiple-languages"></a>是否可以将同一 Azure 搜索资源用于使用多种语言的知识库？
 
-若要使用多种语言和多个知识库，用户必须为每种语言创建一个 QnA Maker 资源。 这会为每种语言创建单独的 Azure 搜索服务。 在单个 Azure 搜索服务中混合使用不同语言的知识库会导致结果相关性下降。
+若要使用多种语言和多个知识库，用户必须为每种语言创建一个 QnA Maker 资源。 这将创建一个单独的 Azure 搜索服务的每种语言。 在单个 Azure 搜索服务中混合使用不同语言的知识库会导致结果相关性下降。
 
 ### <a name="how-can-i-change-the-name-of-the-azure-search-resource-used-by-qna-maker"></a>如何更改 QnA Maker 使用的 Azure 搜索资源的名称？
 

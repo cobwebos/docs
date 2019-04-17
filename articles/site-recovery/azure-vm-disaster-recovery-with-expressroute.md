@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
-ms.openlocfilehash: 895b53d4091f04f324b28a148c7937159997fa84
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272761"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618072"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -93,7 +93,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 - **中心 vNet**。 **中心 vNet“源中心 vNet”：** 10.10.10.0/24。
   - 此中心 vNet 充当网关守卫。
   - 跨子网的所有通信都通过此中心进行。
-    - ****中心 vNet 子网**。 中心 vNet 具有两个子网：
+    - **中心 vNet 子网**。 中心 vNet 具有两个子网：
     - **NVA 子网**：10.10.10.0/25。 此子网包含 NVA (10.10.10.10)。
     - **网关子网**：10.10.10.128/25。 此子网包含连接到 ExpressRoute 连接的 ExpressRoute 网关，该连接通过专用对等互连路由域路由到本地站点。
 - 本地数据中心通过香港的合作伙伴边缘建立了 ExpressRoute 线路连接。
@@ -104,7 +104,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="spoke-to-hub"></a>分支到中心
 
-**方向** | **设置** | **状态**
+**Direction** | **设置** | **State**
 --- | --- | ---
 分支到中心 | 允许虚拟网络地址 | 已启用
 分支到中心 | 允许转发流量 | 已启用
@@ -115,7 +115,7 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 #### <a name="hub-to-spoke"></a>中心到分支
 
-**方向** | **设置** | **状态**
+**Direction** | **设置** | **State**
 --- | --- | ---
 中心到分支 | 允许虚拟网络地址 | 已启用
 中心到分支 | 允许转发流量 | 已启用

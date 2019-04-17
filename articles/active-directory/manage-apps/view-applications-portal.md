@@ -11,17 +11,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 07/25/2018
+ms.date: 04/09/2019
 ms.author: celested
 ms.reviewer: arvinh
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca57746d1b13d2020f78d3c527e7d0c7a444769
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: b57d87a9a00213945a09f380a74b129226c4017e
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918393"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564821"
 ---
 # <a name="view-your-azure-active-directory-tenant-applications"></a>查看 Azure Active Directory 租户应用程序
 
@@ -41,11 +41,11 @@ Azure AD 租户应用程序可以在 Azure 门户的“企业应用”部分查�
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，选择“Azure Active Directory”。 
 
-2. 在“Azure Active Directory”窗格中，选择“企业应用程序”。 
+1. 在“Azure Active Directory”窗格中，选择“企业应用程序”。 
 
-3. 在“应用程序类型”下拉菜单中选择“所有应用程序”，然后选择“应用”。 此时会显示租户应用程序的随机示例。
+1. 在“应用程序类型”下拉菜单中选择“所有应用程序”，然后选择“应用”。 此时会显示租户应用程序的随机示例。
    
-4. 若要查看更多应用程序，请选择列表底部的“加载更多”。 根据租户中应用程序的数目，也许[搜索特定应用程序](#search-for-a-tenant-application)比滚动浏览整个列表要容易些。
+1. 若要查看更多应用程序，请选择列表底部的“加载更多”。 根据租户中应用程序的数目，也许[搜索特定应用程序](#search-for-a-tenant-application)比滚动浏览整个列表要容易些。
 
 ## <a name="select-viewing-options"></a>选择查看选项
 
@@ -53,17 +53,17 @@ Azure AD 租户应用程序可以在 Azure 门户的“企业应用”部分查�
 
 1. 可以根据“应用程序类型”、“应用程序状态”和“应用程序可见性”查看应用程序。 
 
-2. 在“应用程序类型”下选择下述选项之一：
+1. 在“应用程序类型”下选择下述选项之一：
 
     - “企业应用程序”显示非 Microsoft 应用程序。
     - “Microsoft 应用程序”显示 Microsoft 应用程序。
     - “所有应用程序”显示非 Microsoft 应用程序和 Microsoft 应用程序。
 
-3. 在“应用程序状态”下选择“任何”、“已禁用”或“已启用”。 “任何”选项包括已禁用和已启用的应用程序。
+1. 在“应用程序状态”下选择“任何”、“已禁用”或“已启用”。 “任何”选项包括已禁用和已启用的应用程序。
 
-4. 在“应用程序可见性”下选择“任何”或“已隐藏”。 “已隐藏”选项显示租户中存在的、但对用户不可见的应用程序。
+1. 在“应用程序可见性”下选择“任何”或“已隐藏”。 “已隐藏”选项显示租户中存在的、但对用户不可见的应用程序。
 
-5. 选择所需的选项后，选择“应用”。
+1. 选择所需的选项后，选择“应用”。
  
 
 ## <a name="search-for-a-tenant-application"></a>搜索租户应用程序
@@ -72,11 +72,11 @@ Azure AD 租户应用程序可以在 Azure 门户的“企业应用”部分查�
 
 1. 在“应用程序类型”菜单中，选择“所有应用程序”，然后选择“应用”。
 
-2. 输入要查找的应用程序的名称。 如果该应用程序已添加到 Azure AD 租户中，则会显示在搜索结果中。 此示例显示 GitHub 尚未添加到租户应用程序中。
+1. 输入要查找的应用程序的名称。 如果该应用程序已添加到 Azure AD 租户中，则会显示在搜索结果中。 此示例显示 GitHub 尚未添加到租户应用程序中。
 
     ![搜索应用程序](media/view-applications-portal/search-for-tenant-application.png)
 
-3. 尝试输入应用程序名称的头几个字母。 此示例显示以 **Sales** 开头的所有应用程序。
+1. 尝试输入应用程序名称的头几个字母。 此示例显示以 **Sales** 开头的所有应用程序。
 
     ![使用前缀搜索](media/view-applications-portal/search-by-prefix.png)
 

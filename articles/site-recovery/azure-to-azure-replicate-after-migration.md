@@ -5,19 +5,19 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/18/2019
+ms.date: 04/16/2019
 ms.author: raynew
-ms.openlocfilehash: 76119c912ac6ad1447bfcff1f4c98e60f34b072f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 019c6ec776277a9102cb95cd685bbae0fc660d66
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317118"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615908"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-after-migration-to-azure"></a>设置 Azure VM 迁移到 Azure 后的灾难恢复 
 
 
-如果你已使用此文[迁移到 Azure Vm 的本地计算机](tutorial-migrate-on-premises-to-azure.md)使用[Site Recovery](site-recovery-overview.md)服务，并且现在想要获取 Vm 设置灾难恢复到辅助 Azure 区域。 本文介绍如何确保已迁移的 Vm 上安装了 Azure VM 代理以及如何删除已迁移后不再需要 Site Recovery 移动服务。
+如果你已将遵循此篇文章[迁移到 Azure Vm 的本地计算机](tutorial-migrate-on-premises-to-azure.md)使用[Site Recovery](site-recovery-overview.md)服务，并且现在想要获取 Vm 设置灾难恢复到辅助 Azure 区域。 本文介绍如何确保已迁移的 Vm 上安装了 Azure VM 代理以及如何删除已迁移后不再需要 Site Recovery 移动服务。
 
 
 
@@ -77,7 +77,7 @@ ms.locfileid: "58317118"
         ```
     - 对于 Linux，以根用户身份登录。 在终端中，转到 **/user/local/ASR**，运行以下命令：
         ```
-        uninstall.sh -Y
+        ./uninstall.sh -Y
         ```
 2. 在配置复制之前，请重新启动 VM。
 

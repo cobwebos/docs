@@ -11,17 +11,17 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: ajayanti1
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8b859c64c61264f43a88c158dc10ba6f2b2e56ce
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: e90c4e1f39deffea8a7dd7b2c0dbfdcf5e0b3555
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59495116"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609500"
 ---
 # <a name="product-names-and-service-plan-identifiers-for-licensing"></a>用于许可的产品名称和服务计划标识符
 
@@ -34,7 +34,7 @@ ms.locfileid: "59495116"
 - **服务包含的计划 （友好名称）**:服务计划 （友好名称） 在产品中对应的字符串 ID 和 GUID 的列表
 
 >[!NOTE]
->此信息截止 2018 年 8 月 17 日是准确的。
+>此信息是准确 2019 年 4 月 15 日。
 
 | 产品名称 | 字符串 ID | GUID | 包含的服务计划 | 包含的服务计划 （友好名称） |
 | --- | --- | --- |--- |
@@ -218,6 +218,6 @@ ms.locfileid: "59495116"
 * [将许可证分配到 Azure Active Directory 中的组](licensing-groups-assign.md)
 * [识别和解决 Azure Active Directory 中组的许可问题](licensing-groups-resolve-problems.md)
 * [如何将单个许可用户迁移到 Azure Active Directory 中基于组的许可](licensing-groups-migrate-users.md)
-* [如何使用 Azure Active Directory 中基于组的许可的产品许可证之间迁移用户](licensing-groups-change-licenses.md)
-* [基于 Azure Active Directory 组的许可的其他方案](licensing-group-advanced.md)
+* [如何在 Azure Active Directory 中使用基于组的许可在产品许可证之间迁移用户](licensing-groups-change-licenses.md)
+* [Azure Active Directory 基于组的许可的其他方案](licensing-group-advanced.md)
 * [Azure AD 中基于组的许可的 PowerShell 示例](licensing-ps-examples.md)

@@ -3,17 +3,17 @@ title: 将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序 | Mic
 description: 了解如何以设备开发人员的身份将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序。
 author: miriambrus
 ms.author: miriamb
-ms.date: 04/09/2018
+ms.date: 04/05/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0312e322aea74b3ce9867d09cebc7543da40de5f
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: af6d66d2e3eae80477a151323578b930dcd7727a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426233"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617846"
 ---
 # <a name="connect-a-windows-iot-core-device-to-your-azure-iot-central-application"></a>将 Windows IoT Core 设备连接到 Azure IoT Central 应用程序
 
@@ -23,78 +23,66 @@ ms.locfileid: "59426233"
 
 若要完成本文中的步骤，需要以下各项：
 
-1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
-2. 运行 Windows 10 IoT Core 操作系统的设备。 就本演练来说，我们将使用 Raspberry Pi。
+- 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
 
+- 运行 Windows 10 IoT Core 操作系统的设备。 有关详细信息，请参阅[设置 Windows 10 IoT Core 设备](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)。
 
-## <a name="sample-devkits-application"></a>**示例 Devkits** 应用程序
+- 与在开发计算机[Node.js](https://nodejs.org/) 8.0.0 版或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
 
-从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板： 
+## <a name="the-sample-devkits-application"></a>示例 Devkits 应用程序
 
-- 包含设备的度量值的遥测数据：湿度、温度和压力。 
-- 显示“风扇速度”的设置。
-- 包含设备属性模具号和位置云属性的属性。
+从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板：
 
+- 设备的遥测度量：**湿度**，**温度**，和**压力**。
+- 设置控制**风扇转速**。
+- 设备属性**骰子数字**和云属性**位置**。
 
-有关设备模板配置的完整详细信息，请参阅 [Windows IoT Core 设备模板详细信息](howto-connect-windowsiotcore.md#windows-iot-core-device-template-details)
+设备模板的配置的完整详细信息，请参阅[Windows IoT Core 设备模板详细信息](#device-template-details)。
 
 ## <a name="add-a-real-device"></a>添加真实设备
 
-在 Azure IoT Central 应用程序中，从“Windows IoT Core”设备模板添加真实设备，并记下设备连接字符串。 有关详细信息，请参阅[将真实设备添加到 Azure IoT Central 应用程序](tutorial-add-device.md)。
+Azure IoT Central 应用程序中使用**Device Explorer**页，将添加从实际设备**Windows 10 IoT Core**设备模板。 请记下的设备连接详细信息 (**作用域 ID**，**设备 ID**，并**主键**)。 有关详细信息，请参阅[获取连接信息](howto-generate-connection-string.md#get-connection-information)。
 
-### <a name="prepare-the-windows-iot-core-device"></a>准备 Windows IoT Core 设备
+## <a name="prepare-the-device"></a>准备设备
 
-若要设置 Windows IoT Core 设备，请按[设置 Windows IoT Core 设备](https://github.com/Azure/iot-central-firmware/tree/master/WindowsIoT#setup-a-physical-device)中的分步指南操作。
+若要连接到 IoT 中心设备，它需要一个连接字符串。
 
-### <a name="add-a-real-device"></a>添加真实设备
+[!INCLUDE [iot-central-howto-connection-string](../../includes/iot-central-howto-connection-string.md)]
 
-在 Azure IoT Central 应用程序中，从 Windows IoT Core 设备模板添加真实设备，并记下设备连接详细信息（作用域 ID、设备 ID 和主键）。 请按照这些说明[生成的设备连接字符串](howto-generate-connection-string.md)使用**作用域 ID**，**设备 ID**，并**主键**所做以前的注意。
+若要访问的连接字符串的设备代码，将其保存在名为的文件**connection.string.iothub**文件夹中`C:\Data\Users\DefaultAccount\Documents\`Windows 10 IoT Core 设备上。
 
-## <a name="prepare-the-windows-10-iot-core-device"></a>准备 Windows 10 IoT Core 设备
+若要将复制**connection.string.iothub**文件从桌面计算机`C:\Data\Users\DefaultAccount\Documents\`你的设备上的文件夹，可以使用[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal):
 
-### <a name="what-youll-need"></a>你将需要的内容
+1. 使用 web 浏览器导航到你的设备上 Windows Device Portal。
+1. 若要浏览你的设备上的文件，请选择**应用程序 > 文件资源管理器**。
+1. 导航到**用户 Folders\Documents**。 然后将上传**connection.string.iothub**文件：
 
-若要设置真实 Windows 10 IoT Core 设备，需首先有一个运行 Windows 10 IoT Core 的设备。 在[此处](https://docs.microsoft.com/windows/iot-core/tutorials/quickstarter/devicesetup)了解如何设置 Windows 10 IoT Core 设备。
+    ![上传连接字符串](media/howto-connect-windowsiotcore/device-portal.png)
 
-此外还需要一个能够与 Azure IoT Central 通信的客户端应用程序。 可以使用 Azure SDK 开发你自己的自定义应用程序，然后使用 Visual Studio 将其部署到设备；也可以下载[预生成的示例](https://developer.microsoft.com/windows/iot/samples)，然后直接在设备上部署并运行。 
+## <a name="deploy-and-run"></a>部署和运行
 
-### <a name="deploying-the-sample-client-application"></a>部署示例客户端应用程序
+若要部署和运行示例应用程序在设备上，可以使用[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal):
 
-若要将上一步的客户端应用程序部署到 Windows 10 IoT 设备以便对其进行准备，请执行以下操作：
+1. 使用 web 浏览器导航到你的设备上 Windows Device Portal。
+1. 若要部署和运行**Azure IoT 中心客户端**应用程序中，选择**应用 > 快速运行示例**。 然后选择**Azure IoT 中心客户端**。
+1. 然后选择**部署并运行**。
 
-**确保连接字符串存储在客户端应用程序使用的设备上**
-* 在桌面上，将连接字符串保存在名为 connection.string.iothub 的文本文件中。
-* 将文本文件复制到设备的文档文件夹：
-`[device-IP-address]\C$\Data\Users\DefaultAccount\Documents\connection.string.iothub`
+    ![部署和运行](media/howto-connect-windowsiotcore/quick-run.png)
 
-完成后，需在任意浏览器中键入 http://[device-IP-address]:8080，以便打开 [Windows 设备门户](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)。
+后几分钟的时间，您可以查看遥测数据从你的设备在 IoT Central 应用程序中。
 
-在该处，需按照下图所示执行相关操作：
-1. 展开**应用**在左侧的节点。
-2. 选择**快速运行示例**。
-3. 选择**Azure IoT 中心客户端**。
-4. 选择**部署并运行**。
+[Windows Device Portal](https://docs.microsoft.com/windows/iot-core/manage-your-device/deviceportal)包括可用于你的设备进行故障排除的工具：
 
-![Windows 设备门户中 Azure IoT 中心客户端的 Gif](./media/howto-connect-windowsiotcore/iothubapp.gif)
+- **应用程序管理器**页可用于控制设备上运行的应用。
+- 如果你没有连接到你的设备的监视器，则可以使用**设备设置**页后，可以捕获你的设备的屏幕截图。 例如：
 
-成功后，应用程序会在设备上启动，如下所示：
-
-![Azure IoT 中心客户端应用的平屏幕截图](./media/howto-connect-windowsiotcore/IoTHubForegroundClientScreenshot.png)
-
-在 Azure IoT Central 中，可以看到在 Raspberry Pi 上运行的代码如何与应用程序交互：
-
-* 在真实设备的“度量”页上，可以看到遥测数据。
-* 在“属性”页上，可以看到报告的“模具编号”属性的值。
-* 在“设置”页中，可以更改 Raspberry Pi 上的各种设置，例如电压和风扇速度。
+    ![应用程序的屏幕截图](media/howto-connect-windowsiotcore/iot-hub-foreground-client.png)
 
 ## <a name="download-the-source-code"></a>下载源代码
 
-如需浏览并修改客户端应用程序的源代码，可以从[此处](https://github.com/Microsoft/Windows-iotcore-samples/tree/develop/Samples/Azure/IoTHubClients)的 GitHub 中下载。 如果打算修改代码，则应按[此处](https://github.com/Microsoft/Windows-iotcore-samples)的自述文件中针对桌面操作系统的说明进行操作。
+如果你想要浏览和修改客户端应用程序的源代码，您可以从中进行下载[Windows iotcore 示例 GitHub 存储库](https://github.com/Microsoft/Windows-iotcore-samples/blob/master/Samples/Azure/IoTHubClients)。
 
-> [!NOTE]
-> 如果开发环境中未安装 git，可以从 [https://git-scm.com/download](https://git-scm.com/download) 下载。
-
-## <a name="windows-iot-core-device-template-details"></a>Windows IoT Core 设备模板详细信息
+## <a name="device-template-details"></a>设备模板详细信息
 
 从“示例 Devkit”应用程序模板创建的应用程序包含一个具有以下特征的 Windows IoT Core 设备模板：
 
@@ -114,10 +102,13 @@ ms.locfileid: "59426233"
 | ------------ | ---------- | ----- | -------------- | ------- | ------- | ------- |
 | 风扇速度    | fanSpeed   | RPM   | 0              | 0       | 1000    | 0       |
 
-
 ### <a name="properties"></a>属性
 
 | 类型            | 显示名称 | 字段名 | 数据类型 |
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具号   | dieNumber  | 数字    |
 | 文本            | 位置     | 位置   | 不适用       |
+
+## <a name="next-steps"></a>后续步骤
+
+现在，已了解如何将 Raspberry Pi 连接到 Azure IoT Central 应用程序，建议下一步是了解如何[设置自定义设备模板](howto-set-up-template.md)IoT 设备。

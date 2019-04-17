@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/19/2019
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51fc93f9508bada40885e41b39e8a87cf4e0bf3c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: ba5455680647b90b113d31c55816a2e0b0131b33
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58101000"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617795"
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory 传递身份验证：快速入门
 
@@ -111,7 +111,15 @@ ms.locfileid: "58101000"
 >[!IMPORTANT]
 >在生产环境中，我们建议你在租户上至少运行 3 个身份验证代理。 系统限制每位租户最多安装 40 个身份验证代理。 最佳做法是将运行身份验证代理的所有服务器视为第 0 层系统（请参阅[参考](https://docs.microsoft.com/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material)）。
 
-请按照以下说明下载身份验证代理软件：
+安装多个直通身份验证代理可确保实现高可用性，但不是确定性负载均衡身份验证代理之间。 若要确定多少个身份验证代理所需的租户，请考虑的峰值数目和你希望看到你的租户的登录请求的平均负载。 作为基准，单一身份验证代理可在标准的 4 核 CPU、16 GB RAM 服务器上每秒处理 300 到 400 个身份验证。
+
+若要估算网络流量，请使用以下大小调整指南：
+- 每个请求的有效负载大小为 (0.5K + 1K * num_of_agents) 个字节，即 Azure AD 至身份验证代理间的数据。 此处，“num_of_agents”表示在租户上注册的身份验证代理的数量。
+- 每个响应的有效负载大小为 1K 字节，即身份验证代理至 Azure AD 间的数据。
+
+对于大多数客户，总共三个身份验证代理便足以针对高可用性和容量。 应在域控制器附近安装身份验证代理以改善登录延迟。
+
+若要开始，请按照这些说明下载身份验证代理软件：
 
 1. 若要下载最新版身份验证代理（版本 1.5.193.0 或更高版本），请使用租户的全局管理员凭据登录到 [Azure Active Directory 管理中心](https://aad.portal.azure.com)。
 2. 在左窗格中选择“Azure Active Directory”。
@@ -141,6 +149,13 @@ ms.locfileid: "58101000"
 3. 转到 C:\Program Files\Microsoft Azure AD Connect Authentication Agent 并使用创建的 `$cred` 对象运行以下脚本：
 
         RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+>[!IMPORTANT]
+>如果虚拟机上安装身份验证代理，则无法克隆虚拟机，若要设置另一个身份验证代理。 此方法是**不受支持**。
+
+## <a name="step-5-configure-smart-lockout-capability"></a>步骤 5：配置智能锁定功能
+
+智能锁定可锁定不良参与方人员尝试猜测用户的密码或使用强制方法获取帮助。 通过在本地 Active Directory 中配置 Azure AD 中的智能锁定设置和/或适当的锁定设置，攻击可以被筛选掉的然后访问 Active Directory。 读取[这篇文章](../authentication/howto-password-smart-lockout.md)若要了解如何保护你的用户帐户在租户上配置智能锁定设置的详细信息。
 
 ## <a name="next-steps"></a>后续步骤
 - [从 AD FS 迁移到传递身份验证](https://aka.ms/adfstoptadp) - 从 AD FS（或其他联合技术）迁移到传递身份验证的详细指南。

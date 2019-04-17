@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 7ca51b176c17f33b4779a0129c5dc57b220c0097
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 25f8a88c1b488b9272ed1254aaca79a79bc7e871
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57877626"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544188"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>快速入门：使用 .NET SDK 和 Azure Cosmos DB 生成表 API 应用 
 
@@ -65,9 +65,6 @@ ms.locfileid: "57877626"
    ```bash
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
-   > [!NOTE]
-   > 本文档中所述的.NET 标准示例适用于 Azure Cosmos DB 表 API 和 Azure 表存储。 如果你想要运行适用于 .NET Framework 4.5 的示例，请参阅 [storage-table-dotnet-getting-started](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) 示例。 
-
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>在 Visual Studio 中打开示例应用程序
 
@@ -94,7 +91,6 @@ ms.locfileid: "57877626"
       "StorageConnectionString": "<Primary connection string from Azure portal>"
    }
    ```
-   如果使用 [.NET Framework](https://github.com/Azure-Samples/storage-table-dotnet-getting-started) 示例，应更新 **App.config** 文件中的连接字符串。
 
 4. 按 CTRL+S 保存 **Settings.json** 文件。
 
@@ -107,9 +103,6 @@ ms.locfileid: "57877626"
    ![管理 NuGet 包](media/create-table-dotnet/azure-cosmosdb-manage-nuget.png)
 
 2. 在 NuGet 的“浏览”框中，键入 Microsoft.Azure.Cosmos.Table。 这样会查找 Cosmos DB 表 API 客户端库。 请注意，此库目前仅适用于 .NET Framework 和 .NET Standard。 
-
-   > [!NOTE]
-   > 如果所用的示例使用 .NET Framework，则应安装 NuGet 包 *Microsoft.Azure.CosmosDB.Table*。 如果将 .NET Framework 示例与 Azure 表存储配合使用，则除了 Cosmos DB 特定的 NuGet 包以外，还需要安装 NuGet 包 *Microsoft.Azure.Storage.Common*。 
    
    ![NuGet 的“浏览”选项卡](media/create-table-dotnet/azure-cosmosdb-nuget-browse.png)
 

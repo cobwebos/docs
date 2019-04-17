@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 08/15/2018
 ms.author: sumeet.mittal
 ms.custom: ''
-ms.openlocfilehash: 45ac09b84aca44f6739a0e29994986200424fc5c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 73621c3bbab7f0c49feacab29e1e5de1792b80e4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669327"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618152"
 ---
 # <a name="virtual-network-service-endpoints"></a>虚拟网络服务终结点
 
@@ -33,6 +33,7 @@ ms.locfileid: "58669327"
 - **[Azure SQL 数据仓库](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
 - **[Azure Database for PostgreSQL 服务器](../postgresql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Database for MySQL 服务器](../mysql/howto-manage-vnet-using-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在可以使用数据库服务的 Azure 区域中通常可用。
+- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**：在可以使用数据库服务的 Azure 区域中通常可用。
 - **[Azure Cosmos DB](../cosmos-db/vnet-service-endpoint.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
 - **[Azure Key Vault](../key-vault/key-vault-overview-vnet-service-endpoints.md)**：在所有 Azure 区域正式发布。
 - **[Azure 服务总线](../service-bus-messaging/service-bus-service-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)**：在所有 Azure 区域正式发布。
@@ -41,7 +42,6 @@ ms.locfileid: "58669327"
 
 **公共预览版**
 
-- **[Azure Database for MariaDB](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)**：可以在 Azure Database for MariaDB 可用的所有 Azure 区域中预览。
 - **[Azure 容器注册表](../container-registry/container-registry-vnet.md)**:在 Azure 容器注册表是可用的所有 Azure 区域中预览可用。
 
 有关最新通知，请查看 [Azure 虚拟网络更新](https://azure.microsoft.com/updates/?product=virtual-network)页。

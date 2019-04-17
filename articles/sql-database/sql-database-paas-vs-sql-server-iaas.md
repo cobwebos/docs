@@ -103,7 +103,7 @@ ms.locfileid: "59360824"
 
 #### <a name="billing-and-licensing-basics"></a>计费和许可基础概念
 
-目前，**SQL 数据库**以服务的形式出售，提供了多个部署选项和多个服务层，根据资源采用不同的价格，所有资源根据所选的服务层和计算大小，以固定费率向你收取每小时费用。 有关当前支持的服务层、计算大小和存储量的最新信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+目前，**SQL 数据库**以服务的形式出售，提供了多个部署选项和多个服务层，根据资源采用不同的价格，所有资源根据所选的服务层和计算大小，以固定费率向你收取每小时费用。 有关当前支持的服务层级、计算大小和存储量的最新信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 - 使用 SQL 数据库单一数据库时，可根据需求选择各种价格的服务层，基本层的价格为 5 美元/月。
 - 你可以创建[弹性池](sql-database-elastic-pool.md)，在数据库实例之间共享资源，以降低成本和应对使用高峰期。

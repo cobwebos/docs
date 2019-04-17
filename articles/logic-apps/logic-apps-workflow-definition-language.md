@@ -1,29 +1,28 @@
 ---
-title: 工作流定义语言的架构引用 - Azure 逻辑应用 | Microsoft Docs
-description: 使用工作流定义语言编写 Azure 逻辑应用的自定义工作流定义
+title: 工作流定义语言-Azure 逻辑应用的架构参考
+description: 在 Azure 逻辑应用中的工作流定义语言架构的参考指南
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 04/30/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: d2de2a25d67da230d539156c851cca34335a01c2
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: d80ffa862546f56e93a338a7a1db031e2cb55990
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620830"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616792"
 ---
 # <a name="schema-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的架构引用
 
-使用 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)创建逻辑应用工作流时，工作流的基础定义将描述针对逻辑应用运行的实际逻辑。 此描述遵循工作流定义语言架构定义和验证的、使用 [JavaScript 对象表示法 (JSON)](https://www.json.org/) 的结构。
+当您创建了逻辑应用中的[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，逻辑应用具有描述在逻辑应用中运行的实际逻辑的基础工作流定义。 该工作流定义使用[JSON](https://www.json.org/)并遵循由工作流定义语言架构验证的结构。 本参考提供有关此结构和架构如何定义工作流定义中的元素的概述。
 
 ## <a name="workflow-definition-structure"></a>工作流定义结构
 
-工作流定义至少包含一个用于实例化逻辑应用的触发器，以及逻辑应用运行的一个或多个操作。
+工作流定义始终包括用于实例化逻辑应用，加上后触发器触发时运行的一个或多个操作的触发器。
 
 下面是工作流定义的高级结构：
 
@@ -51,7 +50,7 @@ ms.locfileid: "58620830"
 
 ## <a name="parameters"></a>parameters
 
-在 `parameters` 节中，定义逻辑应用在部署时用来接受输入的所有工作流参数。 部署时需要参数声明和参数值。 在其他工作流节中使用这些参数之前，请确保声明这些节中的所有参数。 
+在`parameters`部分中，定义你的工作流定义使用在部署时用于接受输入的所有工作流参数。 部署时需要参数声明和参数值。 在其他工作流节中使用这些参数之前，请确保声明这些节中的所有参数。 
 
 下面是参数定义的一般结构：
 
@@ -75,7 +74,7 @@ ms.locfileid: "58620830"
 | type | 是 | int、float、string、securestring、bool、array、JSON 对象、secureobject <p><p>**注意**：对于所有密码、密钥和机密，请使用 `securestring` 和 `secureobject` 类型，因为 `GET` 操作不会返回这些类型。 有关保护参数的详细信息，请参阅[保护逻辑应用](../logic-apps/logic-apps-securing-a-logic-app.md#secure-action-parameters) | 参数的类型 |
 | defaultValue | 是 | 与 `type` 相同 | 在工作流实例化时未指定值的情况下使用的默认参数值 |
 | allowedValues | 否 | 与 `type` 相同 | 包含参数可接受的值的数组 |
-| metadata | 否 | JSON 对象 | 其他任何参数详细信息，例如，逻辑应用的名称或可读说明，或者 Visual Studio 或其他工具使用的设计时数据 |
+| metadata | 否 | JSON 对象 | 任何其他参数的详细信息，例如，名称或逻辑应用或流中或使用 Visual Studio 或其他工具的设计时数据的可读说明 |
 ||||
 
 ## <a name="triggers-and-actions"></a>触发器和操作
@@ -104,10 +103,10 @@ ms.locfileid: "58620830"
 |---------|----------|------|-------------|
 | <*key-name*> | 是 | String | 输出返回值的密钥名称 |
 | type | 是 | int、float、string、securestring、bool、array、JSON 对象 | 输出返回值的类型 |
-| 值 | 是 | 与 `type` 相同 | 输出返回值 |
+| value | 是 | 与 `type` 相同 | 输出返回值 |
 |||||
 
-若要从工作流运行中获取输出，请在 Azure 门户中查看逻辑应用的运行历史记录和详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
+若要运行工作流中获取输出，请查看逻辑应用的运行历史记录和在 Azure 门户中的详细信息，或使用[工作流 REST API](https://docs.microsoft.com/rest/api/logic/workflows)。 也可将输出传递给 Power BI 等外部系统，以便可创建仪表板。
 
 <a name="expressions"></a>
 
@@ -216,7 +215,7 @@ ms.locfileid: "58620830"
 
 ## <a name="functions"></a>函数
 
-某些表达式从运行时操作获取其值，而这些操作在逻辑应用开始执行时可能不存在。 若要在表达式中引用或处理这些值，可以使用工作流定义语言提供的[*函数*](../logic-apps/workflow-definition-language-functions-reference.md)。
+某些表达式可能尚不存在工作流定义开始运行时的运行时操作中获取它们的值。 若要在表达式中引用或处理这些值，可以使用工作流定义语言提供的[*函数*](../logic-apps/workflow-definition-language-functions-reference.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

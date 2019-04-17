@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 02/16/2019
 ms.author: kgremban
-ms.openlocfilehash: fe7c44df57b54fe3a152f4d35a2144fed8413314
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: c15db0766da3b4c18c306106ffdd5fc75a9143aa
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57540107"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608803"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>计划和广播作业 (Python)
 
@@ -31,6 +31,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 可在以下文章中了解有关所有这些功能的详细信息：
 
 * 设备孪生和属性：[设备孪生入门](iot-hub-python-twin-getstarted.md)和[教程：如何使用设备孪生属性](tutorial-device-twins.md)
+
 * 直接方法：[IoT 中心开发人员指南-直接方法](iot-hub-devguide-direct-methods.md)和[教程： 直接方法](quickstart-control-device-python.md)
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
@@ -38,6 +39,7 @@ Azure IoT 中心是一项完全托管的服务，允许后端应用创建和跟�
 本教程演示如何：
 
 * 创建一个 Python 模拟设备应用，该应用具有一种直接方法，使 lockDoor 能够由解决方案后端调用。
+
 * 创建 Python 控制台应用，它使用作业在模拟设备应用中调用 lockDoor 直接方法，并使用设备作业更新所需属性。
 
 在本教程结束时，会创建两个 Python 应用：
@@ -49,13 +51,14 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 要完成本教程，需要以下各项：
 
 * [Python 2.x 或 3.x](https://www.python.org/downloads/)。 请确保根据安装程序的要求，使用 32 位或 64 位安装。 在安装过程中出现提示时，请确保将 Python 添加到特定于平台的环境变量中。 如果使用 Python 2.x，则可能需要[安装或升级 pip - Python 包管理系统](https://pip.pypa.io/en/stable/installing/)。
+
 * 如果使用 Windows OS，则请安装 [Visual C++ 可再发行组件包](https://www.microsoft.com/download/confirmation.aspx?id=48145)，以便使用 Python 中的本机 DLL。
+
 * 有效的 Azure 帐户。 （如果没有帐户，只需几分钟即可创建一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。）
 
 > [!NOTE]
 > Azure IoT SDK for Python 不直接支持作业功能。 本教程中转而提供一种利用异步现成和计时器的备选解决方案。 有关进一步的更新，请参阅 [Azure IoT SDK for Python](https://github.com/Azure/azure-iot-sdk-python) 页面上的**服务客户端 SDK**功能列表。 
-> 
-> 
+>
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
 
@@ -70,18 +73,19 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
 [!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
 ## <a name="create-a-simulated-device-app"></a>创建模拟设备应用程序
+
 本部分将创建一个 Python 控制台应用，用于响应通过云调用的方法，这会触发模拟 lockDoor 方法。
 
 1. 在命令提示符处，运行以下命令以安装 azure-iot-device-client 包：
-   
+
     ```cmd/sh
     pip install azure-iothub-device-client
     ```
 
-1. 使用文本编辑器，在工作目录中创建一个 simDevice.py 文件。
+2. 使用文本编辑器，在工作目录中创建一个 simDevice.py 文件。
 
-1. 在 simDevice.py 文件的开头添加以下 `import` 语句和变量。 将 `deviceConnectionString` 替换为上述创建的设备的连接字符串：
-   
+3. 在 simDevice.py 文件的开头添加以下 `import` 语句和变量。 将 `deviceConnectionString` 替换为上述创建的设备的连接字符串：
+
     ```python
     import time
     import sys
@@ -98,8 +102,8 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     CONNECTION_STRING = "{deviceConnectionString}"
     ```
 
-1. 添加以下功能回调以处理 lockDoor 方法：
-   
+4. 添加以下功能回调以处理 lockDoor 方法：
+
     ```python
     def device_method_callback(method_name, payload, user_context):
         if method_name == "lockDoor":
@@ -111,7 +115,7 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
             return device_method_return_value
     ```
 
-1. 再添加一个功能回调来处理设备孪生更新：
+5. 再添加一个功能回调来处理设备孪生更新：
 
     ```python
     def device_twin_callback(update_state, payload, user_context):
@@ -120,8 +124,8 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
         print ( "payload: %s" % payload )
     ```
 
-1. 添加以下代码以注册 **lockDoor** 方法的处理程序。 此外还包含 `main` 例程：
-   
+6. 添加以下代码以注册 **lockDoor** 方法的处理程序。 此外还包含 `main` 例程：
+
     ```python
     def iothub_jobs_sample_run():
         try:
@@ -132,13 +136,13 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
             print ( "Direct method initialized." )
             print ( "Device twin callback initialized." )
             print ( "IoTHubClient waiting for commands, press Ctrl-C to exit" )
-        
+
             while True:
                 status_counter = 0
                 while status_counter <= WAIT_COUNT:
                     time.sleep(10)
                     status_counter += 1
-            
+
         except IoTHubError as iothub_error:
             print ( "Unexpected error %s from IoTHub" % iothub_error )
             return
@@ -153,27 +157,26 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
         iothub_jobs_sample_run()
     ```
 
-1. 保存并关闭 simDevice.py 文件。
+7. 保存并关闭 simDevice.py 文件。
 
 > [!NOTE]
 > 为简单起见，本教程不实现任何重试策略。 在生产代码中，应该按文章 [Transient Fault Handling](/azure/architecture/best-practices/transient-faults)（暂时性故障处理）中所述实施重试策略（例如指数性的回退）。
-> 
-> 
-
+>
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-updating-a-device-twins-properties"></a>安排作业，用于调用直接方法和更新设备孪生的属性
+
 在本部分中，将创建一个 Python 控制台应用，它使用直接方法在设备上启动远程 lockDoor 并更新设备孪生的属性。
 
 1. 在命令提示符处，运行以下命令以安装 azure-iot-service-client 包：
-   
+
     ```cmd/sh
     pip install azure-iothub-service-client
     ```
 
-1. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件。
+2. 使用文本编辑器，在工作目录中创建一个 scheduleJobService.py 文件。
 
-1. 在 scheduleJobService.py 文件的开头添加以下 `import` 语句和变量：
-   
+3. 在 scheduleJobService.py 文件的开头添加以下 `import` 语句和变量：
+
     ```python
     import sys
     import time
@@ -194,15 +197,15 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
     WAIT_COUNT = 5
     ```
 
-1. 添加以下用于查询设备的函数：
-   
+4. 添加以下用于查询设备的函数：
+
     ```python
     def query_condition(device_id):
         iothub_registry_manager = IoTHubRegistryManager(CONNECTION_STRING)
-    
+
         number_of_devices = 10
         dev_list = iothub_registry_manager.get_device_list(number_of_devices)
-    
+
         for device in range(0, number_of_devices):
             if dev_list[device].deviceId == device_id:
                 return 1
@@ -211,68 +214,68 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
         return 0
     ```
 
-1. 添加以下方法，用于运行调用直接方法和设备孪生的作业：
-   
+5. 添加以下方法，用于运行调用直接方法和设备孪生的作业：
+
     ```python
     def device_method_job(job_id, device_id, wait_time, execution_time):
         print ( "" )
         print ( "Scheduling job: " + str(job_id) )
         time.sleep(wait_time)
-    
+
         if query_condition(device_id):
             iothub_device_method = IoTHubDeviceMethod(CONNECTION_STRING)
-    
+
             response = iothub_device_method.invoke(device_id, METHOD_NAME, METHOD_PAYLOAD, TIMEOUT)
-        
+
             print ( "" )
             print ( "Direct method " + METHOD_NAME + " called." )
-        
+
     def device_twin_job(job_id, device_id, wait_time, execution_time):
         print ( "" )
         print ( "Scheduling job " + str(job_id) )
         time.sleep(wait_time)
-    
+
         if query_condition(device_id):
             iothub_twin_method = IoTHubDeviceTwin(CONNECTION_STRING)
-    
+
             twin_info = iothub_twin_method.update_twin(DEVICE_ID, UPDATE_JSON)
-        
+
             print ( "" )
             print ( "Device twin updated." )
     ```
 
-1. 添加以下代码以安排作业和更新作业状态。 此外还包含 `main` 例程：
-   
+6. 添加以下代码以安排作业和更新作业状态。 此外还包含 `main` 例程：
+
     ```python
     def iothub_jobs_sample_run():
         try:
             method_thr_id = uuid.uuid4()
             method_thr = threading.Thread(target=device_method_job, args=(method_thr_id, DEVICE_ID, 20, TIMEOUT), kwargs={})
             method_thr.start()
-        
+
             print ( "" )
             print ( "Direct method called with Job Id: " + str(method_thr_id) )
-        
+
             twin_thr_id = uuid.uuid4()
             twin_thr = threading.Thread(target=device_twin_job, args=(twin_thr_id, DEVICE_ID, 10, TIMEOUT), kwargs={})
             twin_thr.start()
-        
+
             print ( "" )
             print ( "Device twin called with Job Id: " + str(twin_thr_id) )
-        
+
             while True:
                 print ( "" )
-            
+
                 if method_thr.is_alive():
                     print ( "...job " + str(method_thr_id) + " still running." )
                 else:
                     print ( "...job " + str(method_thr_id) + " complete." )
-            
+
                 if twin_thr.is_alive():
                     print ( "...job " + str(twin_thr_id) + " still running." )
                 else:
                     print ( "...job " + str(twin_thr_id) + " complete." )
-                
+
                 print ( "Job status posted, press Ctrl-C to exit" )
 
                 status_counter = 0
@@ -296,36 +299,32 @@ scheduleJobService.py，它调用模拟设备应用中的直接方法，并通�
         iothub_jobs_sample_run()
     ```
 
-1. 保存并关闭 scheduleJobService.py 文件。
-
+7. 保存并关闭 scheduleJobService.py 文件。
 
 ## <a name="run-the-applications"></a>运行应用程序
+
 现在，已准备就绪，可以运行应用程序了。
 
 1. 在工作目录的命令提示符处，运行以下命令以开始侦听重启直接方法：
-   
+
     ```cmd/sh
     python simDevice.py
     ```
 
-1. 在工作目录的另一命令提示符处运行以下命令，以触发作业进行锁门和孪生项的更新：
-   
+2. 在工作目录的另一命令提示符处运行以下命令，以触发作业进行锁门和孪生项的更新：
+  
     ```cmd/sh
     python scheduleJobService.py
     ```
 
-1. 可在控制台查看针对直接方法和设备孪生的设备响应。
+3. 可在控制台查看针对直接方法和设备孪生的设备响应。
 
-    ![设备输出][1]
+    ![IoT 中心作业示例 1--设备输出](./media/iot-hub-python-python-schedule-jobs/sample1-deviceoutput.png)
 
-    ![服务输出][2]
-
+    ![IoT 中心作业示例 2--设备输出](./media/iot-hub-python-python-schedule-jobs/sample2-deviceoutput.png)
 
 ## <a name="next-steps"></a>后续步骤
+
 在本教程中，使用了作业来安排用于设备的直接方法以及设备孪生属性的更新。
 
 若要继续开始使用 IoT 中心和设备管理模式，如远程无线固件更新，请参阅[如何进行固件更新](tutorial-firmware-update.md)。
-
-<!-- images -->
-[1]: ./media/iot-hub-python-python-schedule-jobs/1.png
-[2]: ./media/iot-hub-python-python-schedule-jobs/2.png

@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 298f4d8cb62ce1d71ed8922483115606f8876d79
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: cb8a97a29a14ecd5601495048bcbe1aff748d892
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648550"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617126"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Java SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -127,7 +127,7 @@ SQL API Java SDK 支持同步操作。 如需异步支持，请使用 [SQL API A
 * 添加了对更改源的支持。
 * 通过 RequestOptions.setPopulateQuotaInfo 添加了对集合配额信息的支持。
 * 通过 RequestOptions.setScriptLoggingEnabled 添加了对存储过程脚本日志记录的支持。
-* 修复了一个 bug，该 bug 导致 DirectHttps 模式的查询在遇到限制失败时可能会挂起。
+* 修复了 bug，导致 DirectHttps 模式中的查询可能会停止响应时遇到限制失败。
 * 修复了一个会话一致性模式的 bug。
 * 修复了一个 bug，该 bug 可能会导致在请求率很高时，在 HttpContext 中出现 NullReferenceException。
 * 改进了 DirectHttps 模式的性能。

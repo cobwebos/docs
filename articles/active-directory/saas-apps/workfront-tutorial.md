@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ef18d37dda605c0b6b176f7c95c9aaf5595d4d47
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 97eb016f1a77d4166976c6a4d7aebd073550e8c2
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260437"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565761"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workfront"></a>教程：Azure Active Directory 与 Workfront 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "59260437"
 
 若要配置 Workfront 与 Azure AD 的集成，需要从库中将 Workfront 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Workfront，请执行以下步骤：**
+若要从库中添加 Workfront，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -106,9 +106,9 @@ ms.locfileid: "59260437"
 
     ![Workfront 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.attask-ondemand.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.attask-ondemand.com`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<companyname>.attasksandbox.com/SAML2`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<companyname>.attasksandbox.com/SAML2`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Workfront 客户端支持团队](https://www.workfront.com/services-and-support)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -203,7 +203,7 @@ ms.locfileid: "59260437"
 
 本部分的目的是在 Workfront 中创建名为 Britta Simon 的用户。
 
-**若要在 Workfront 中创建名为 Britta Simon 的用户，请执行以下步骤：**
+若要在 Workfront 中创建名为 Britta Simon 的用户，请执行以下步骤：
 
 1. 以管理员身份登录 Workfront 公司站点。
  
@@ -231,11 +231,11 @@ ms.locfileid: "59260437"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [ 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？ ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 <!--Image references-->
 
