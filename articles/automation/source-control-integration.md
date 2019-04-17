@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 3b2df5b24a12f3d2ea5d8a03721c08f8d2a742ad
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539983"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607086"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -26,7 +26,7 @@ Azure 自动化支持三种类型的源代码管理：
 * Azure 存储库 (Git)
 * Azure 存储库 (TFVC)
 
-## <a name="pre-requisites"></a>必备组件
+## <a name="pre-requisites"></a>先决条件
 
 * 源代码管理存储库 （GitHub 或 Azure 存储库）
 * 一个[运行方式帐户](manage-runas-account.md)
@@ -47,7 +47,7 @@ Azure 自动化支持三种类型的源代码管理：
 
 |属性  |描述  |
 |---------|---------|
-|源代码管理名称     | 源代码管理的友好名称        |
+|源代码管理名称     | 源控件的友好名称。 *此名称必须包含字母和数字。*        |
 |源代码管理类型     | 源代码管理源的类型。 可用选项包括：</br> GitHub</br>Azure 存储库 (Git)</br> Azure 存储库 (TFVC)        |
 |存储库     | 存储库或项目的名称。 返回前 200 个存储库。 若要搜索存储库，在字段中键入名称，然后单击**GitHub 上的搜索**。|
 |分支     | 要从源文件中提取的分支。 分支目标不是适用于 TFVC 源控件类型。          |
@@ -116,7 +116,7 @@ New-AzureRmAutomationSourceControl -Name SCGitHub -RepoUrl https://github.com/<a
 
 <sup>1</sup>服务连接权限，才需要是否已启用自动同步。
 
-## <a name="syncing"></a>正在同步
+## <a name="syncing"></a>同步
 
 在选择表中的源**源代码管理**页。 单击“开始同步”以开始同步过程。
 
@@ -173,4 +173,4 @@ Source Control Sync Summary:
 
 ## <a name="next-steps"></a>后续步骤
 
-若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure Automation runbook types](automation-runbook-types.md)
+若要了解有关 Runbook 类型、其优点和限制的详细信息，请参阅 [Azure 自动化 Runbook 类型](automation-runbook-types.md)

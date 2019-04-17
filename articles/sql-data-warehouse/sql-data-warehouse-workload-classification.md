@@ -1,6 +1,6 @@
 ---
-title: SQL 数据仓库分类 |Microsoft Docs
-description: 有关使用分类来管理并发性，重要性，以及计算 Azure SQL 数据仓库中的查询的资源的指导。
+title: SQL 数据仓库分类 | Microsoft Docs
+description: 有关使用分类管理 Azure SQL 数据仓库中查询的并发性、重要性和计算资源的指导。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,65 +10,65 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: c27856da0a5131f2c0e8dfd4d929b577a0a68421
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 888a64de29178834fc47199a033eb6bc62858e57
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520122"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617744"
 ---
-# <a name="sql-data-warehouse-workload-classification-preview"></a>SQL 数据仓库工作负荷分类 （预览版）
+# <a name="sql-data-warehouse-workload-classification-preview"></a>SQL 数据仓库工作负荷分类（预览）
 
-此文章介绍了 SQL 数据仓库工作负荷分类程序传入的请求分配的资源类和重要性。
+本文介绍用于向传入请求分配资源类和重要性的 SQL 数据仓库工作负荷分类过程。
 
 > [!Note]
-> 在第 2 代 SQL 数据仓库中可以使用工作负荷分类。
+> 可以在 SQL 数据仓库 Gen2 上预览工作负荷分类。 工作负荷管理分类和重要性 preview 适用于具有 2019 年 4 月 9 日，或更高版本的发布日期的生成。  用户应避免使用版本早于此日期执行工作负荷管理测试。  若要确定是否在生成工作负荷管理支持，请运行 select @@version时连接到 SQL 数据仓库实例。
 
 ## <a name="classification"></a>分类
 
 > [!Video https://www.youtube.com/embed/QcCRBAhoXpM]
 
-工作负荷管理分类允许将应用于通过分配请求的工作负荷策略[资源类](resource-classes-for-workload-management.md#what-are-resource-classes)并[重要性](sql-data-warehouse-workload-importance.md)。
+使用工作负荷管理分类可以通过分配[资源类](resource-classes-for-workload-management.md#what-are-resource-classes)和[重要性](sql-data-warehouse-workload-importance.md)对请求应用工作负荷策略。
 
-虽然有多种方法可以对数据仓库工作负荷进行分类，最简单且最常见分类为负载和查询。 加载数据使用 insert、 update 和 delete 语句。  查询使用选择的数据。 数据仓库解决方案通常会加载活动，例如，分配更高的资源类具有更多资源的工作负荷策略。 不同工作负荷策略可应用到查询中，例如比较，以加载活动的重要性较低。
+可通过多种方法来分类数据仓库工作负荷，而最简单且最常用的分类方法是加载和查询。 可以使用 insert、update 和 delete 语句加载数据。  可以使用 select 查询数据。 数据仓库解决方案通常对加载活动使用工作负荷策略，例如，分配具有更多资源的更高资源类。 可对查询应用不同的工作负荷策略，例如，分配比加载活动更低的重要性。
 
-此外可以 subclassify 工作负载和查询负载。 细分类提供更好地控制您的工作负载。 例如，查询工作负荷可以包含的多维数据集刷新、 仪表板查询或即席查询。 你可以对每个不同的资源类或重要性设置这些查询工作负荷分类。 负载可以是有益的细分类。 大型转换可以分配给较大资源类。 可以使用较高的优先级，以确保密钥的销售数据之前的天气数据的加载程序或者社交数据馈送。
+还可以将加载和查询工作负荷进一步分类。 进一步分类能够更好地控制工作负荷。 例如，查询工作负荷可能包括多维数据集刷新、仪表板查询或即席查询。 可以使用不同的资源类或重要性设置将其中的每个查询工作负荷分类。 加载活动也可以受益于进一步分类。 可将大型转换分配到较大的资源类。 可以使用较高的重要性来确保先加载重要销售数据，再加载天气数据或社交数据馈送。
 
 并非所有语句都归类为它们不需要的资源，或者需要重要性来影响执行。  DBCC 命令，BEGIN、 COMMIT 和 ROLLBACK TRANSACTION 语句不会被归类。
 
 ## <a name="classification-process"></a>分类过程
 
-SQL 数据仓库中的分类立即通过将用户分配到具有分配给它使用相应的资源类的角色来实现[sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)。 通过此功能有限的特征化之外的资源类的登录请求的功能。 用于分类的更丰富方法现可通过[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql)语法。  使用此语法中，SQL 数据仓库用户可以向请求分配重要性和资源类。  
+目前，SQL 数据仓库中的分类是通过将用户分配到某个角色来实现的，该角色具有一个使用 [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 分配的相应资源类。 使用此功能时，将请求特征化，使之超出资源类登录范围的能力会受到限制。 现在，可以通过 [CREATE WORKLOAD CLASSIFIER](/sql/t-sql/statements/create-workload-classifier-transact-sql) 语法来利用更丰富的分类方法。  SQL 数据仓库用户可以使用此语法向请求分配重要性和资源类。  
 
 > [!NOTE]
-> 分类评估基于每个请求。 在单个会话中的多个请求可以以不同的方式进行分类。
+> 分类是按每个请求评估的。 可以不同的方式对单个会话中的多个请求进行分类。
 
-## <a name="classification-precedence"></a>分类优先顺序
+## <a name="classification-precedence"></a>分类过程
 
-分类过程的一部分，优先顺序已准备就绪，若要确定哪些资源类分配。 分类基于的数据库用户优先于角色的成员身份。 如果创建的分类器用户 a 数据库用户映射到 mediumrc 资源类。 然后，将 RoleA 数据库角色 （用户 a 的成员） 映射到 largerc 资源类。 将数据库用户映射到 mediumrc 资源类的分类器将优先于将 RoleA 数据库角色映射到 largerc 资源类的分类器。
+在分类过程中，将使用优先顺序来确定要分配哪个资源类。 基于数据库用户的分类优先于角色成员身份。 如果创建一个将 UserA 数据库用户映射到 mediumrc 资源类的分类器， 请将 RoleA 数据库角色（UserA 是其成员）映射到 largerc 资源类。 将数据库用户映射到 mediumrc 资源类的分类器优先于将 RoleA 数据库角色映射到 largerc 资源类的分类器。
 
-如果用户是具有不同的资源类分配，或在多个分类器中匹配的多个角色的成员，为用户提供最高资源类分配。  此行为在与现有的资源类分配行为一致。
+如果某个用户是多个角色的成员，并且这些角色分配有不同的资源类或者在多个分类器中相匹配，则会为该用户分配最高的资源类。  此行为与现有的资源类分配行为保持一致。
 
 ## <a name="system-classifiers"></a>系统分类器
 
-工作负荷分类都有系统工作负荷分类器。 系统分类器会将现有的资源类角色成员身份与普通重要性映射到资源类的资源分配中。 不能删除系统分类器。 若要查看系统分类器，可以运行以下查询：
+工作负荷分类采用系统工作负荷分类器。 系统分类器将现有的资源类角色成员身份映射到具有一般重要性的资源类资源分配。 无法删除系统分类器。 若要查看系统分类器，可运行以下查询：
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <= 12
 ```
 
-## <a name="mixing-resource-class-assignments-with-classifiers"></a>混合资源类分配与分类器
+## <a name="mixing-resource-class-assignments-with-classifiers"></a>混合使用资源类分配和分类器
 
-系统替你创建的分类器提供用于将迁移到工作负荷分类的轻松途径。 分类优先级使用资源类角色映射，可能会导致错误分类，当你开始使用重要性创建新的分类器。
+使用自动创建的系统分类器能够轻松迁移到工作负荷分类。 开始创建具有重要性的新分类器时，使用具有分类优先顺序的资源类角色映射可能会导致错误分类。
 
-假设出现了下面这种情景：
+请考虑以下方案：
 
-•An 现有数据仓库具有 DBAUser 分配到 largerc 资源类角色的数据库用户。 使用 sp_addrolemember 做是资源类分配。
-• 该数据仓库工作负荷管理现已更新。
-• 如要测试的新分类语法 DBARole （即 DBAUser 的成员），已创建为其映射到 mediumrc 和重要性为高的分类器的数据库角色。
-•When DBAUser 登录并运行一个查询，查询将分配到 largerc 级别。 因为用户将优先于角色成员身份。
+•某个现有的数据仓库包含已分配到 largerc 资源类角色的数据库用户 DBAUser。 资源类分配是使用 sp_addrolemember 进行的。
+•现已使用工作负荷管理更新该数据仓库。
+•为了测试新的分类语法，为数据库角色 DBARole（DBAUser 是其成员）创建了一个分类器（用于将用户映射到 mediumrc），并且该角色具有较高的重要性。
+•当 DBAUser 登录并运行查询时，该查询将分配到 largerc， 因为用户优先于角色成员身份。
 
-若要简化故障排除的错误分类，我们建议在创建工作负荷分类器删除资源类角色映射。  下面的代码将返回现有的资源类角色成员身份。  运行[sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)为每个成员名称返回从相应的资源类。
+为了简化分类错误的排查，我们建议在创建工作负荷分类器时删除资源类角色映射。  以下代码返回现有的资源类角色成员身份。  针对相应资源类返回的每个成员名称运行 [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -84,4 +84,4 @@ sp_droprolemember ‘[Resource Class]’, membername
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据仓库工作负荷分类和重要性的详细信息，请参阅[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)并[SQL 数据仓库重要性](sql-data-warehouse-workload-importance.md)。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。
+有关 SQL 数据仓库工作负荷分类和重要性的详细信息，请参阅[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)和 [SQL 数据仓库重要性](sql-data-warehouse-workload-importance.md)。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。

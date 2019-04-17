@@ -9,12 +9,12 @@ ms.date: 09/11/2018
 ms.topic: conceptual
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes 服务, 容器, Helm, 服务网格, 服务网格路由, kubectl, k8s '
-ms.openlocfilehash: 16b33203099765633d6bc5992fdc266aa1f28a26
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 4617e878f2af446608ede4e0aed644848564a074
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548774"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609069"
 ---
 # <a name="troubleshooting-guide"></a>故障排除指南
 
@@ -357,3 +357,25 @@ azds controller create --name <cluster name> -g <resource group name> -tn <clust
 ```
 
 重新安装你的控制器后，重新部署 pod。
+
+## <a name="incorrect-rbac-permissions-for-calling-dev-spaces-controller-and-apis"></a>适用于开发人员空格控制器和 Api 调用的 RBAC 权限不正确
+
+### <a name="reason"></a>原因
+访问 Azure 开发人员空格控制器的用户必须具有读取管理员访问权限*kubeconfig* AKS 群集上。 例如，此权限现已推出[内置 Azure Kubernetes 服务群集管理员角色](../aks/control-kubeconfig-access.md#available-cluster-roles-permissions)。 访问 Azure 开发人员空格控制器的用户还必须具有*参与者*或*所有者*RBAC 角色的控制器。
+
+### <a name="try"></a>尝试
+提供了更多详细信息更新 AKS 群集的用户的权限[此处](../aks/control-kubeconfig-access.md#assign-role-permissions-to-a-user)。
+
+若要更新的控制器的用户的 RBAC 角色：
+
+1. 通过 https://portal.azure.com 登录到 Azure 门户。
+1. 导航到包含控制器，这通常是与 AKS 群集相同的资源组。
+1. 启用*显示隐藏的类型*复选框。
+1. 单击控制器。
+1. 打开*访问控制 (IAM)* 窗格。
+1. 单击*角色分配*选项卡。
+1. 单击*外*然后*添加的角色分配*。
+    * 有关*角色*选择*参与者*或*所有者*。
+    * 有关*分配访问权限*选择*Azure AD 用户、 组或服务主体*。
+    * 有关*选择*搜索你想要授予权限的用户。
+1. 单击“ *保存*”。

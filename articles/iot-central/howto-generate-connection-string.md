@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 3a5e8d15d9a705892fe54c50e9b79e6d42af78d9
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: f302cbfa7152ae30be434f560c0c39056d40f9f4
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426679"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615755"
 ---
 # <a name="generate-a-device-connection-string-to-connect-to-an-azure-iot-central-application"></a>生成一个设备连接字符串以连接到 Azure IoT Central 应用程序
 
@@ -23,14 +23,14 @@ ms.locfileid: "59426679"
 
 若要完成本文中的步骤，需要以下各项：
 
-1. Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
-1. 与在开发计算机[Node.js](https://nodejs.org/) 8.0.0 版或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
+- Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
+- 与在开发计算机[Node.js](https://nodejs.org/) 8.0.0 版或更高版本。 若要检查版本，可以在命令行中运行 `node --version`。 Node.js 适用于各种操作系统。
 
 ## <a name="get-connection-information"></a>获取连接信息
 
 以下步骤介绍如何获取您需要生成设备的 SAS 连接字符串的信息：
 
-1. 在中**资源管理器**，找到想要连接到你的应用程序的真实设备：
+1. 在中**Device Explorer**，找到想要连接到你的应用程序的真实设备：
 
     ![选择一个真实的设备](media/howto-generate-connection-string/real-devices.png)
 
@@ -52,8 +52,8 @@ ms.locfileid: "59426679"
 
 现在，已生成真实的设备连接到 Azure IoT Central 应用程序的连接字符串，下面是建议的后续步骤：
 
-* [准备并将 DevKit 设备 (C) 连接](howto-connect-devkit.md)
+* [准备和连接 DevKit 设备 (C)](howto-connect-devkit.md)
 * [准备和连接 Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
 * [准备和连接 Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
-* [准备和 Windows 10 IoT core 设备连接 (C#)](howto-connect-windowsiotcore.md)
-* [泛型的 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
+* [准备和连接 Windows 10 IoT Core 设备 (C#)](howto-connect-windowsiotcore.md)
+* [将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2018
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: b8e5c5b14ecdbc63daf200b7d11e755822cd063b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 311f4d612c9deab23e7537b0c53ff3932c312cd4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257002"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608004"
 ---
 # <a name="your-user-account-for-azure-notebooks"></a>Azure Notebooks 的用户帐户
 
@@ -41,6 +41,9 @@ Microsoft 帐户用于登录任何数量的 Microsoft 产品和服务，如 Wind
 如果不确定，请在帐户提示中选择“创建一个”命令。 可使用任何提供程序的任何电子邮件地址创建新的 Microsoft 帐户。
 
 ![用于创建新 Microsoft 帐户的命令](media/accounts/create-new-microsoft-account.png)
+
+> [!Note]
+> 如果尝试使用已有与之关联的帐户的电子邮件地址创建新帐户，可能会看到消息"不能在此处注册使用工作或学校电子邮件地址。 使用个人电子邮件，如 Gmail 或 yahoo ！，或获取新的 Outlook 电子邮件。" 在这种情况下，请尝试使用工作电子邮件地址登录而无需创建一个新的帐户。
 
 对于子帐户，默认情况下会阻止对 Azure Notebooks 的访问。 使用子帐户登录会显示以下错误：
 

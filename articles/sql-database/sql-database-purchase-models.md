@@ -78,7 +78,7 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 
 ## <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
 
-数据库事务单位 (DTU) 表示 CPU、内存、读取和写入的混合度量。 基于 DTU 的购买模型提供一组预配置的计算资源套件和随附的存储，以促成不同级别的应用程序性能。 偏爱预配置套件简易性和每月定价付款的客户，可能会发现基于 DTU 的模型更适合其需求。 在基于 DTU 的购买模型中，客户可为[单一数据库](sql-database-single-database-scale.md)和[弹性池](sql-database-elastic-pool.md)选择“基本”、“标准”或“高级”服务层。 此购买模型在[托管实例](sql-database-managed-instance.md)中不可用。
+数据库事务单位 (DTU) 表示 CPU、内存、读取和写入的混合度量。 基于 DTU 的购买模型提供一组预配置的计算资源套件和随附的存储，以促成不同级别的应用程序性能。 偏爱预配置套件简易性和每月定价付款的客户，可能会发现基于 DTU 的模型更适合其需求。 在基于 DTU 的购买模型中，客户可为[单一数据库](sql-database-single-database-scale.md)和[弹性池](sql-database-elastic-pool.md)选择“基本”、“标准”或“高级”服务层级。 此购买模型在[托管实例](sql-database-managed-instance.md)中不可用。
 
 ### <a name="database-transaction-units-dtus"></a>数据库事务单位 (DTU)
 
@@ -116,7 +116,7 @@ Azure SQL 数据库部署模型中提供了不同的购买模型：
 
 新服务层提供简单的在线转换方式，与现有标准和高级服务层间的升级和降级过程类似。 可以使用 Azure 门户、PowerShell、Azure CLI、T-SQL 或 REST API 启动此转换。 请参阅[管理单一数据库](sql-database-single-database-scale.md)和[管理弹性池](sql-database-elastic-pool.md)。
 
-### <a name="can-i-convert-a-database-from-a-service-tier-using-the-vcore-based-purchase-to-a-service-tier-using-the-dtu-based-purchasing-model"></a>是否可以将数据库从使用基于 vCore 的购买模型的服务层转换为使用基于 DTU 的购买模型的服务层？
+### <a name="can-i-convert-a-database-from-a-service-tier-using-the-vcore-based-purchase-to-a-service-tier-using-the-dtu-based-purchasing-model"></a>是否可以将数据库从使用基于 vCore 的购买模型的服务层级转换为使用基于 DTU 的购买模型的服务层级？
 
 是的，可以使用 Azure 门户、PowerShell、Azure CLI、T-SQL 或 REST API 轻松将数据库转换为支持的任何性能目标。 请参阅[管理单一数据库](sql-database-single-database-scale.md)和[管理弹性池](sql-database-elastic-pool.md)。
 

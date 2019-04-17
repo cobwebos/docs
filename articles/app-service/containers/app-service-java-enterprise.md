@@ -113,7 +113,7 @@ Web 应用实例是无状态的，因此必须在启动时配置启动的每个�
 
 默认情况下，应用服务上已启用 Web 套接字。 要在应用程序中使用 WebSockets，请参阅[本快速入门](https://github.com/wildfly/quickstart/tree/master/websocket-hello)。
 
-## <a name="logs-and-troubleshooting"></a>日志和疑难解答
+## <a name="logs-and-troubleshooting"></a>日志和排除故障
 
 应用服务提供的工具有助于解决应用程序的问题。
 

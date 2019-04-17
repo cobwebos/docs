@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: c038b899f60a4e04085b2343f2f02be5f7042ebb
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426403"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492305"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
 
@@ -43,6 +43,8 @@ ms.locfileid: "59426403"
 > * 配置一个应用程序规则以允许访问 www.google.com
 > * 配置网络规则，以允许访问外部 DNS 服务器
 > * 测试防火墙
+
+如果需要，可以使用 [Azure PowerShell](deploy-ps.md) 完成本教程中的步骤。
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -111,11 +113,11 @@ ms.locfileid: "59426403"
 4. 在“入站端口规则”下，对于 **“公共入站端口”**，请选择“允许所选端口”。
 5. 对于“选择入站端口”，请选择“RDP (3389)”。
 
-6. 接受其他默认值，然后选择“下一步:**磁盘”。
+6. 接受其他默认值，然后选择“下一步:**磁盘”**。
 7. 接受磁盘默认值，然后选择“下一步:网络”。
 8. 请确保选择 **Test-FW-VN** 作为虚拟网络，子网是 **Jump-SN**。
 9. 对于“公共 IP”，请接受默认的新公共 IP 地址名称 (Srv-Jump-ip)。
-11. 接受其他默认值，然后选择“下一步:**管理”。
+11. 接受其他默认值，然后选择“下一步:**管理”**。
 12. 选择“关闭”以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
 13. 检查摘要页上的设置，然后选择“创建”。
 

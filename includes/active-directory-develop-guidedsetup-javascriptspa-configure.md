@@ -14,18 +14,18 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: ec9eba4766da1afbbee568374de1ce06dc92ab2b
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: c0dcfc4ad7edf4d9203b807aa799eb047c753bed
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203286"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59551529"
 ---
 ## <a name="register-your-application"></a>注册应用程序
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)以注册应用程序。
 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)”>“新建注册”。
+1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
 1. “注册应用程序”页显示后，请输入应用程序的名称。
 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 1. 在“重定向 URI”部分下选择“Web”平台，并根据 Web 服务器将值设置为应用程序的 URL。 有关如何在 Visual Studio 和 Node 中设置和获取重定向 URL 的说明，请参阅以下部分。
@@ -39,7 +39,7 @@ ms.locfileid: "58203286"
 > 对于 Node.js，可以在 *server.js* 文件中设置 Web 服务器端口。 本教程使用端口 30662 作为参考，但可以使用任何其他可用的端口。 请按照以下说明在应用程序注册信息中设置重定向 URL：<br/>
 > - 切换回“应用程序注册”，并将 `http://localhost:30662/` 设置为 `Redirect URL`，或者，如果你使用的是自定义 TCP 端口（其中“[端口]”为自定义 TCP 端口号），则使用 `http://localhost:[port]/`。
 
-<p/>
+<p>
 
 > #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>用于获取重定向 URL 的 Visual Studio 说明
 > 按照以下步骤获取重定向 URL：
@@ -54,14 +54,15 @@ ms.locfileid: "58203286"
     ```javascript
     var applicationConfig = {
         clientID: "Enter_the_Application_Id_here",
-        authority: "https://login.microsoftonline.com/common",
+        authority: "https://login.microsoftonline.com/Enter_the_Tenant_Info_Here",
         graphScopes: ["user.read"],
         graphEndpoint: "https://graph.microsoft.com/v1.0/me"
     };
     ```
 
-<ol start="2">
-<li>
-将 <code>Enter the application Id here</code> 替换为刚注册的应用程序 ID。
-</li>
-</ol>
+    其中：
+    - `Enter_the_Application_Id_here` - 是已注册应用程序的**应用程序（客户端）ID**。
+    - `Enter_the_Tenant_Info_Here` - 设置为以下选项之一：
+       - 如果应用程序支持“此组织目录中的帐户”，请将该值替换为**租户 ID** 或**租户名称**（例如 contoso.microsoft.com）
+       - 如果应用程序支持“任何组织目录中的帐户”，请将该值替换为 `organizations`
+       - 如果应用程序支持“任何组织目录中的帐户和个人 Microsoft 帐户”，请将该值替换为 `common`
