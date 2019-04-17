@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d66b23878176b0b508d3fa0c4973d36b5731de82
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 88cee825f132054eb1228e8930f82199c7f1812f
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59269837"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565086"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-useall"></a>教程：Azure Active Directory 与 Useall 集成
 
@@ -106,9 +106,9 @@ ms.locfileid: "59269837"
 
     ![Useall 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.useall.com.br/tenant/useall`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.useall.com.br/tenant/useall`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.useall.com.br/tenant/apiuseall/saml2`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 若要获取这些值，请联系 [Useall 客户端支持团队](mailto:luizotavio@useall.com.br)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -183,9 +183,9 @@ ms.locfileid: "59269837"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [ 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？ ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

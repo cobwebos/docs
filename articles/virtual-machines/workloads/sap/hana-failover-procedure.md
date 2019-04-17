@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48bea302f2f8e878275e6a7c222d703e0f31f239
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
-ms.translationtype: HT
+ms.openlocfilehash: ca4d5912d75dd7b33737f61737a209284b7a5a47
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44492804"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616146"
 ---
 # <a name="disaster-recovery-failover-procedure"></a>灾难恢复故障转移过程
 
@@ -87,7 +87,7 @@ ms.locfileid: "44492804"
 1. 使用 SAP HANA Studio 将备份位置更改为 **/hana/logbackups**。
    ![更改 DR 恢复的备份位置](./media/hana-overview-high-availability-disaster-recovery/change_backup_location_dr1.png)
 
-1. SAP HANA 会逐个扫描备份文件位置并建议要还原到的最新事务日志备份。 扫描需要花费几分钟时间，扫描完成后会显示如下所示的屏幕：![DR 恢复的事务日志备份列表](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
+1. SAP HANA 会逐个扫描备份文件位置并建议要还原到的最新事务日志备份。 扫描可能需要几分钟直到如下所示，将显示以下屏幕：![DR 恢复的事务日志备份的列表](./media/hana-overview-high-availability-disaster-recovery/backup_list_dr2.PNG)
 
 1. 调整一些默认设置：
 
@@ -104,7 +104,7 @@ ms.locfileid: "44492804"
 
 ![还原进度](./media/hana-overview-high-availability-disaster-recovery/restore_progress_dr5.PNG)
 
-如果还原过程一直停留在“完成”屏幕且不显示进度屏幕，请确认辅助角色节点上的所有 SAP HANA 实例是否正常运行。 如有必要，请手动启动 SAP HANA 实例。
+如果还原过程来停止响应，并**完成**屏幕上并不显示进度屏幕，请确认辅助角色节点上的所有 SAP HANA 实例正在都运行。 如有必要，请手动启动 SAP HANA 实例。
 
 
 ## <a name="failback-from-a-dr-to-a-production-site"></a>从 DR 站点故障回复到生产站点

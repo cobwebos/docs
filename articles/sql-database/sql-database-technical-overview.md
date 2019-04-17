@@ -62,7 +62,7 @@ SQL 数据库通过多个资源类型、服务层和计算大小提供可预测�
 
 动态可伸缩性不同于自动缩放。 自动缩放是指服务根据条件自动缩放，而动态可伸缩性允许在无停机时间的情况下进行手动缩放。 单个数据库支持手动动态可伸缩性，但不支持自动缩放。 若要获得更多*自动*体验，请考虑使用弹性池，它允许数据库根据各个数据库需求共享池中的资源。 但是，有一些脚本可帮助自动执行单个数据库的可伸缩性。 有关示例，请参阅[使用 PowerShell 监视和缩放单个数据库](scripts/sql-database-monitor-and-scale-database-powershell.md)。
 
-### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>购买模型、服务层、计算大小和存储量
+### <a name="purchasing-models-service-tiers-compute-sizes-and-storage-amounts"></a>购买模型、服务层级、计算大小和存储量
 
 SQL 数据库提供以下两种购买模型：
 

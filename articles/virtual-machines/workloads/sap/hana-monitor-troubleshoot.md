@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 392dd39e2b3b0e26e7b0ba645bf5a70231167ad5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 71970a74817665c97a9522fbc9a68dd3834252b9
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014400"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616350"
 ---
 # <a name="monitoring-and-troubleshooting-from-hana-side"></a>HANA 端的监视和故障排除
 
@@ -108,7 +108,7 @@ ms.locfileid: "58014400"
 
 ## <a name="storage"></a>存储
 
-从最终用户的角度看，如果 I/O 性能有问题，应用程序（或整个系统）会运行缓慢、无响应，甚至呈现死机状态。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。
+从最终用户的角度看，应用程序 （或作为一个整体系统） 运行缓慢、 无响应，或可能甚至看起来停止响应是否输入/输出性能问题。 在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷。
 
 ![在 SAP HANA Studio 中的“Volumes”（卷）选项卡上，可以查看附加的卷，以及每个服务使用了哪些卷](./media/troubleshooting-monitoring/image5-volumes-tab-a.png)
 

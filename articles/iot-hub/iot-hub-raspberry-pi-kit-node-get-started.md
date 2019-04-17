@@ -1,6 +1,6 @@
 ---
 title: 连接到云的 Raspberry Pi (Node.js) - 将 Raspberry Pi 连接到 Azure IoT 中心 | Microsoft Docs
-description: 在本教程中了解如何设置 Raspberry Pi 并将其连接到 Azure IoT 中心，使其能够将数据发送到 Azure 云平台。
+description: 了解如何设置和 Raspberry Pi 连接到 Azure IoT 中心的 Raspberry Pi 将在本教程中将数据发送到 Azure 云平台。
 author: wesmc7777
 manager: philmea
 keywords: Azure IoT Raspberry Pi, Raspberry Pi IoT 中心, Raspberry Pi 将数据发送到云, 连接到云的 Raspberry Pi
@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: 1c52e03dbb20df2ddfdb977fe7de4afb94bc3a99
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: d1e9a6da399adcdca87c1d6dc30eaf425ec0541e
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272064"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609007"
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>将 Raspberry Pi 连接到 Azure IoT 中心 (Node.js)
 
@@ -28,38 +28,54 @@ ms.locfileid: "59272064"
 ## <a name="what-you-do"></a>准备工作
 
 * 创建 IoT 中心。
+
 * 在 IoT 中心内为 Pi 注册设备。
+
 * 设置 Raspberry Pi。
+
 * 在 Pi 上运行示例应用程序，以将传感器数据发送到 IoT 中心。
 
 ## <a name="what-you-learn"></a>学习内容
 
 * 如何创建 Azure IoT 中心以及如何获取新的设备连接字符串。
+
 * 如何通过 BME280 传感器连接 Pi。
+
 * 如何通过在 Pi 上运行示例应用程序来收集传感器数据。
+
 * 如何将传感器数据发送到 IoT 中心。
 
 ## <a name="what-you-need"></a>所需条件
 
-![所需条件](./media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
+![所需条件](./media/iot-hub-raspberry-pi-kit-node-get-started/0-starter-kit.png)
 
 * 一个 Raspberry Pi 2 或 Raspberry Pi 3 电路板。
+
 * Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+
 * 连接到 Pi 的监视器、USB 键盘和鼠标。
+
 * 运行 Windows 或 Linux 的 Mac 或 PC。
+
 * Internet 连接。
+
 * 16 GB 或更大内存的 microSD 卡。
+
 * USB-SD 适配器或 microSD 卡，用于将操作系统映像刻录到 microSD 卡中。
+
 * 带有 6 英尺微型 USB 电缆的 5 伏 2 安电源。
 
 以下项是可选项：
 
 * 已装配的 Adafruit BME280 温度、压力和湿度传感器。
+
 * 试验板。
+
 * 6 根 F/M 跳线。
+
 * 散射的 10 毫米 LED 灯。
 
-> [!NOTE] 
+> [!NOTE]
 > 如果没有可选项，可以使用模拟的传感器数据。
 
 ## <a name="create-an-iot-hub"></a>创建 IoT 中心
@@ -105,26 +121,26 @@ ms.locfileid: "59272064"
 
 ### <a name="enable-ssh-and-i2c"></a>启用 SSH 和 I2C
 
-1. 将 Pi 连接到监视器、键盘和鼠标。 
+1. 将 Pi 连接到监视器、键盘和鼠标。
 
-2. 启动 Pi，通过将 `pi` 用作用户名并将 `raspberry` 用作密码来登录 Raspbian。
+2. 启动 Pi，然后使用登录到 Raspbian`pi`作为用户名和`raspberry`作为密码。
 
 3. 依次单击 Raspberry 图标 >“首选项” > “Raspberry Pi 配置”。
 
-   ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
+   ![Raspbian 首选项菜单](./media/iot-hub-raspberry-pi-kit-node-get-started/1-raspbian-preferences-menu.png)
 
 4. 在“接口”选项卡上，将“I2C”和“SSH”设置为“启用”，然后单击“确定”。 如果没有物理传感器并且想要使用模拟的传感器数据，则此步骤是可选的。
 
-   ![在 Raspberry Pi 上启用 I2C 和 SSH](./media/iot-hub-raspberry-pi-kit-node-get-started/2_enable-i2c-ssh-on-raspberry-pi.png)
+   ![在 Raspberry Pi 上启用 I2C 和 SSH](./media/iot-hub-raspberry-pi-kit-node-get-started/2-enable-i2c-ssh-on-raspberry-pi.png)
 
-> [!NOTE] 
+> [!NOTE]
 > 若要启用 SSH 和 I2C，可在 [raspberrypi.org](https://www.raspberrypi.org/documentation/remote-access/ssh/) 和 [Adafruit.com](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c) 中找到更多参考文档。
 
 ### <a name="connect-the-sensor-to-pi"></a>将传感器连接到 Pi
 
 使用试验板和跳线，将 LED 灯和 BME280 连接到 Pi，如下所示。 如果没有该传感器，请[跳过此部分](#connect-pi-to-the-network)。
 
-![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
+![Raspberry Pi 和传感器连接](./media/iot-hub-raspberry-pi-kit-node-get-started/3-raspberry-pi-sensor-connection.png)
 
 BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云时，LED 将闪烁。 
 
@@ -143,13 +159,13 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
 成功将 BME280 连接到 Raspberry Pi 后，它应如下图所示。
 
-![连接在一起的 Pi 和 BME280](./media/iot-hub-raspberry-pi-kit-node-get-started/4_connected-pi.jpg)
+![连接在一起的 Pi 和 BME280](./media/iot-hub-raspberry-pi-kit-node-get-started/4-connected-pi.png)
 
 ### <a name="connect-pi-to-the-network"></a>将 Pi 连接到网络
 
 使用 USB 微电缆和电源开启 Pi。 使用以太网电缆将 Pi 连接到有线网络，或者按照 [Raspberry Pi Foundation 中的说明](https://www.raspberrypi.org/learning/software-guide/wifi/)将 Pi 连接到无线网络。 将 Pi 成功连接到网络后，需要记下 [Pi 的 IP 地址](https://learn.adafruit.com/adafruits-raspberry-pi-lesson-3-network-setup/finding-your-pis-ip-address)。
 
-![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-node-get-started/5_power-on-pi.jpg)
+![已连接到有线网络](./media/iot-hub-raspberry-pi-kit-node-get-started/5-power-on-pi.png)
 
 > [!NOTE]
 > 确保 Pi 与计算机连接到同一网络。 例如，如果计算机连接到无线网络，而 Pi 连接到有线网络，则在 devdisco 输出中可能看不到 IP 地址。
@@ -166,18 +182,18 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
 
    b. 将 Pi 的 IP 地址复制到主机名（或 IP 地址）部分，并选择 SSH 作为连接类型。
 
-   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   ![PuTTy](./media/iot-hub-raspberry-pi-kit-node-get-started/7-putty-windows.png)
 
    **Mac 和 Ubuntu 用户**
 
    使用 Ubuntu 或 macOS 上的内置 SSH 客户端。 可能需要运行 `ssh pi@<ip address of pi>`，以通过 SSH 连接 Pi。
 
-   > [!NOTE] 
+   > [!NOTE]
    > 默认用户名是 `pi`，密码是 `raspberry`。
 
 2. 将 Node.js 和 NPM 安装到 Pi。
 
-   首先检查 Node.js 版本。 
+   首先检查 Node.js 版本。
 
    ```bash
    node -v
@@ -203,7 +219,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    sudo npm install
    ```
 
-   > [!NOTE] 
+   > [!NOTE]
    >完成此安装过程可能需要几分钟，具体取决于网络连接情况。
 
 ### <a name="configure-the-sample-application"></a>配置示例应用程序
@@ -214,7 +230,7 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    nano config.json
    ```
 
-   ![配置文件](./media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
+   ![配置文件](./media/iot-hub-raspberry-pi-kit-node-get-started/6-config-file.png)
 
    此文件中有两个可以配置的项。 第一个是 `interval`，它定义了发送到云的消息之间的时间间隔（以毫秒为单位）。 第二个是 `simulatedData`，它是一个布尔值，指示是否使用模拟的传感器数据。
 
@@ -230,13 +246,12 @@ BME280 传感器可收集温度和湿度数据。 当设备向云发送消息云
    sudo node index.js '<YOUR AZURE IOT HUB DEVICE CONNECTION STRING>'
    ```
 
-   > [!NOTE] 
+   > [!NOTE]
    > 确保将设备连接字符串复制并粘贴到单引号中。
-
 
 应看到以下输出，该输出显示传感器数据和发送到 IoT 中心的消息。
 
-![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-node-get-started/8_run-output.png)
+![输出 - 从 Raspberry Pi 发送到 IoT 中心的传感器数据](./media/iot-hub-raspberry-pi-kit-node-get-started/8-run-output.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>读取中心收到的消息
 

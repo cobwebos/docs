@@ -248,6 +248,9 @@ items:
     - name: 为 HDInsight 群集修补 OS
       href: ../hdinsight-os-patching.md
       maintainContext: true
+    - name: 将 Hive 工作负荷迁移到 HDInsight 4.0
+      href: apache-hive-migrate-workloads.md
+      maintainContext: true
   - name: 故障排除
     href: ../hdinsight-troubleshoot-guide.md
     items:
@@ -357,12 +360,15 @@ items:
 - name: 资源
   items:
   - name: 发行说明
-    href: ../hdinsight-release-notes.md
     items:
+    - name: 当前发行说明
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
     - name: 已存档的发行说明
       href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-    maintainContext: true
+  - name: 对群集配置访问权限的更改
+    href: ../hdinsight-migrate-granular-access-cluster-configurations.md
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: 在论坛上获取帮助
@@ -376,9 +382,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 9aac9dcaa0e7a853b3cedf88a7666f789dbf558f
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 2f9952a95da9a47448d54ba5b48be033fb5707cc
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579064"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615717"

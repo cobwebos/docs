@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/11/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 9d1fa5786dcde70d42363dbb9af7221ca5383e64
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: ed10354047060825b4368e02160d4655e33bc8f6
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546392"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617390"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>使用媒体服务 v3 Api 进行开发
 
@@ -25,7 +25,8 @@ ms.locfileid: "59546392"
 
 ## <a name="accessing-the-azure-media-services-api"></a>访问 Azure 媒体服务 API
 
-若要访问 Azure 媒体服务资源，应使用 Azure Active Directory (AD) 服务主体身份验证。 Azure 媒体服务 API 需要用户或应用程序 REST API 请求有权访问 Azure 媒体服务帐户资源 (通常**参与者**或**所有者**角色）。 有关详细信息，请参阅[媒体服务帐户的基于角色的访问控制](rbac-overview.md)。
+若要访问 Azure 媒体服务资源，可以使用 Azure Active Directory (AD) 服务主体身份验证。
+媒体服务 API 需要用户或应用程序进行 REST API 请求有权访问媒体服务帐户资源，并使用**参与者**或**所有者**角色。 可以使用访问 API**读取器**角色但只**获取**或**列表** 操作将可用。 有关详细信息，请参阅[媒体服务帐户的基于角色的访问控制](rbac-overview.md)。
 
 而不是创建服务主体，请考虑使用 Azure 资源的管理的标识访问通过 Azure 资源管理器中的媒体服务 API。 若要了解有关 Azure 资源的管理的标识的详细信息，请参阅[什么是 Azure 资源的管理的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 

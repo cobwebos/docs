@@ -1,18 +1,18 @@
 ---
 title: Azure 应用程序网关中的 WebSocket 支持 | Microsoft Docs
 description: 此页概述了应用程序网关的 WebSocket 支持。
-author: amsriva
+author: vhorne
 ms.author: amsriva
 ms.service: application-gateway
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
-ms.openlocfilehash: bae4b3d955076679a5640717ac6f5446e3951fb9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58168113"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606899"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 
@@ -32,7 +32,7 @@ ms.locfileid: "58168113"
 
 ### <a name="listener-configuration-element"></a>侦听器配置元素
 
-现有的 HTTP 侦听器可用于支持 WebSocket 流量。 以下是示例模板文件中 httpListeners 元素的代码片段。 需要同时拥有 HTTP 和 HTTPS 侦听器才能支持 WebSocket 并保护 WebSocket 流量。 同样，可以使用[门户](application-gateway-create-gateway-portal.md)或 [PowerShell](application-gateway-create-gateway-arm.md) 在端口 80/443 上创建具有侦听器的应用程序网关，以支持 WebSocket 通信。
+现有的 HTTP 侦听器可用于支持 WebSocket 流量。 以下是示例模板文件中 httpListeners 元素的代码片段。 需要同时拥有 HTTP 和 HTTPS 侦听器才能支持 WebSocket 并保护 WebSocket 流量。 同样使用门户或 Azure PowerShell 创建具有侦听器的应用程序网关在端口 80/443，用于支持 WebSocket 流量上。
 
 ```json
 "httpListeners": [
@@ -123,5 +123,4 @@ ms.locfileid: "58168113"
 
 ## <a name="next-steps"></a>后续步骤
 
-了解 WebSocket 支持后，请转到[创建应用程序网关](application-gateway-create-gateway.md)，开始使用已启用 WebSocket 的 Web 应用程序。
-
+了解 WebSocket 支持后，请转到[创建应用程序网关](quick-create-powershell.md)，开始使用已启用 WebSocket 的 Web 应用程序。

@@ -23,7 +23,7 @@ items:
     href: stream-analytics-javascript-user-defined-functions.md
   - name: 4 - 在 Azure Pipelines 中通过 CI/CD 进行部署
     href: stream-analytics-tools-visual-studio-cicd-vsts.md
-  - name: 5 - 在 Edge 上运行 C# UDF
+  - name: 5 - 在 IoT Edge 上运行 C# UDF
     href: stream-analytics-edge-csharp-udf.md
 - name: 示例
   items:
@@ -142,7 +142,7 @@ items:
       href: stream-analytics-dotnet-management-sdk.md
     - name: 使用 Azure PowerShell
       href: https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick
-    - name: 对 Edge 作业使用 API
+    - name: 对 IoT Edge 作业使用 API
       href: stream-analytics-cicd-api.md
   - name: Visual Studio 工具
     items:
@@ -365,6 +365,9 @@ items:
       - name: POWER
         href: /stream-analytics-query/power-azure-stream-analytics
         maintainContext: true
+      - name: ROUND
+        href: /stream-analytics-query/round-azure-stream-analytics.md
+        maintainContext: true
       - name: SIGN
         href: /stream-analytics-query/sign-azure-stream-analytics
         maintainContext: true
@@ -408,6 +411,9 @@ items:
       - name: REGEXMATCH
         href: /stream-analytics-query/regexmatch-azure-stream-analytics
         maintainContext: true
+      - name: REPLACE
+        href: /stream-analytics-query/replace-azure-stream-analytics.md
+        maintainContext: true
       - name: SUBSTRING
         href: /stream-analytics-query/substring-azure-stream-analytics
         maintainContext: true
@@ -449,6 +455,9 @@ items:
       maintainContext: true
     - name: CASE
       href: /stream-analytics-query/case-azure-stream-analytics
+      maintainContext: true
+    - name: COALESCE
+      href: /stream-analytics-query/coalesce-azure-stream-analytics.md
       maintainContext: true
     - name: CREATE TABLE
       href: /stream-analytics-query/create-table-stream-analytics
@@ -536,9 +545,9 @@ items:
     href: https://azure.microsoft.com/case-studies/?service=stream-analytics
   - name: 白皮书 - 实时事件处理
     href: stream-analytics-real-time-event-processing-reference-architecture.md
-ms.openlocfilehash: b4b6bf1578e2e8b30e04b93717bfe679d86b25ff
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: ddb035686e8788710aeea5c6dc532ef6a87310a0
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59360135"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609347"

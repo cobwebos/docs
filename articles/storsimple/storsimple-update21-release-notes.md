@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 78be340b4a47fed88f5e8c3f5741ae7024124bd5
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: HT
+ms.openlocfilehash: 12d11cddf077d4d07732490255d44e89ddaf3217
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59527109"
 ---
 # <a name="storsimple-8000-series-update-22-release-notes"></a>StorSimple 8000 系列更新 2.2 发行说明
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 05/11/2018
 ## <a name="issues-fixed-in-update-22"></a>在更新 2.2 中修复的问题
 下表提供在更新 2.2 和 2.1 中已修复问题的摘要。    
 
-| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |主机性能 |在早期版本中，曾发现在本地固定卷的创建过程以及分层卷转换为本地固定卷的过程中存在主机端性能问题。 在此版本中已经修复这些问题，因而提高了在创建和转换卷过程中的主机性能。 |是 |否 |
 | 2 |本地固定卷 |在极少数情况下，系统可能会在创建本地固定卷时崩溃。 此版本中已修复这个 bug。 |是 |否 |
@@ -55,14 +56,14 @@ ms.lasthandoff: 05/11/2018
 | 4 |快照创建 |在卷很大且数据更改量几乎没有的情况下，会遇到和增量快照创建有关的问题。 在此版本中已修复这些问题。 |是 |是 |
 | 5 |Openstack 身份验证 |将 Openstack 用作云服务提供商时，用户可能会遇到和身份验证有关的罕见 bug，即，JSON 分析器会导致崩溃。 在此版本中已修复这一 bug。 |是 |否 |
 | 6 |主机端副本 |在早期版本的软件中，将数据从一个卷复制到另一个卷时，会遇到和 ODX 计时有关的罕见 bug。 此 bug 会导致控制器故障转移，且系统可能会进入恢复模式。 在此版本中已修复这一 bug。 |是 |否 |
-| 7 |Windows Management Instrumentation (WMI) |在早期版本的软件中，存在多个发生“<ManagementException> 提供程序加载失败”异常的 Web 代理失败实例。 此 bug 属于 WMI 内存泄露问题，现已修复。 |是 |否 |
+| 7 |Windows Management Instrumentation (WMI) |在早期版本的软件，没有多个实例的 web 代理失败，出现异常"\<ManagementException > 提供程序加载失败"。 此 bug 属于 WMI 内存泄露问题，现已修复。 |是 |否 |
 | 8 |更新 |在某些极少数情况下，用户在早期版本的软件中尝试扫描或安装更新时，会收到“CisPowershellHcsscripterror”。 在此版本中已修复了此问题。 |是 |是 |
 | 9 |支持包 |在此版本中，已改进收集和上传支持包的方式。 |是 |是 |
 
 ## <a name="known-issues-in-update-22"></a>更新 2.2 中的已知问题
 下表提供此版本中已知问题的摘要。
 
-| 不会。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
@@ -72,7 +73,7 @@ ms.lasthandoff: 05/11/2018
 | 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转至[配置设备的 Web 代理](storsimple-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
-| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
+| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |使用括号包装该 cmdlet，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
 | 10 |迁移 |当传递多个卷容器进行迁移时，只有第一个卷容器的最新备份的 ETA 准确。 此外，在迁移第一个卷容器中的前 4 个备份后，将开始并行迁移。 |建议一次迁移一个卷容器。 |是 |否 |
 | 11 |迁移 |还原后，不会将卷添加到备份策略或虚拟磁盘组。 |需要将这些卷添加到备份策略以创建备份。 |是 |是 |
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |

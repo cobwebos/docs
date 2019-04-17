@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 03/015/2019
 ms.author: radeltch
-ms.openlocfilehash: 02a97852a8dc659071c3484126b921d6f7106562
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 18bbeef833e1c82999e87451d279c0d3464af509
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662364"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617761"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>使用 Azure NetApp 文件的 SAP 应用程序的 SUSE Linux Enterprise Server 上的 Azure Vm 上的 SAP NetWeaver 的高可用性
 
@@ -166,14 +166,11 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
 
 - 最小容量池是 4 TiB。 容量池大小必须是 4 TiB 的倍数。
 - 最小的卷是 100 GiB
-- Azure 的 NetApp 文件和所有虚拟机，Azure NetApp 文件卷装载的位置必须是相同的 Azure 虚拟网络中。 [虚拟网络对等互连](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)Azure NetApp 文件尚不支持。
+- Azure 的 NetApp 文件和所有虚拟机，其中将装载 Azure NetApp 文件卷，必须在同一 Azure 虚拟网络中或在[虚拟网络对等互连](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-peering-overview)同一区域中。 现在支持通过 VNET 对等互连在同一区域中的 azure NetApp 文件访问。 尚不支持 azure 的 NetApp 访问通过全局对等互连。
 - 所选虚拟网络必须具有一个子网，委派给 Azure NetApp 文件。
 - Azure 的 NetApp 文件目前支持仅 NFSv3 
 - Azure 的 NetApp 文件提供[导出策略](https://docs.microsoft.com/en-gb/azure/azure-netapp-files/azure-netapp-files-configure-export-policy)： 可以控制允许的客户端访问类型 （读取和写入，Read Only，等等）。 
 - Azure 的 NetApp 文件功能尚未识别的区域。 当前 Azure NetApp 文件功能不被部署在 Azure 区域中的所有可用性区域中。 请注意在某些 Azure 区域中的潜在延迟影响。 
-
-   > [!NOTE]
-   > 请注意，Azure NetApp 文件不支持尚未对等互连的虚拟网络。 部署虚拟机和同一虚拟网络中的 Azure NetApp 文件卷。
 
 ## <a name="deploy-linux-vms-manually-via-azure-portal"></a>通过 Azure 门户手动部署 Linux Vm
 
@@ -574,6 +571,8 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
 
 9. [1] 创建 SAP 群集资源
 
+如果使用排队服务器 1 体系结构 (ENSA1)，定义的资源，如下所示：
+
    <pre><code>sudo crm configure property maintenance-mode="true"
    
    sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
@@ -599,6 +598,35 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
    sudo crm node online <b>anftstsapcl1</b>
    sudo crm configure property maintenance-mode="false"
    </code></pre>
+
+   SAP 引入了对排队服务器 2，包括复制，从 SAP NW 7.52 开始支持。 从 ABAP 平台 1809年开始，默认情况下安装排队服务器 2。 请参阅 SAP 注释[2630416](https://launchpad.support.sap.com/#/notes/2630416) for 排入队列 server 2 的支持。
+如果使用排队服务器 2 体系结构 ([ENSA2](https://help.sap.com/viewer/cff8531bc1d9416d91bb6781e628d4e0/1709%20001/en-US/6d655c383abf4c129b0e5c8683e7ecd8.html))，定义的资源，如下所示：
+
+   <pre><code>sudo crm configure property maintenance-mode="true"
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ASCS<b>00</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ASCS<b>00</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ASCS<b>00</b>_<b>anftstsapvh</b>" \
+    AUTOMATIC_RECOVER=false \
+    meta resource-stickiness=5000
+   
+   sudo crm configure primitive rsc_sap_<b>QAS</b>_ERS<b>01</b> SAPInstance \
+    operations \$id=rsc_sap_<b>QAS</b>_ERS<b>01</b>-operations \
+    op monitor interval=11 timeout=60 on_fail=restart \
+    params InstanceName=<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b> START_PROFILE="/sapmnt/<b>QAS</b>/profile/<b>QAS</b>_ERS<b>01</b>_<b>anftstsapers</b>" AUTOMATIC_RECOVER=false IS_ERS=true
+   
+   sudo crm configure modgroup g-<b>QAS</b>_ASCS add rsc_sap_<b>QAS</b>_ASCS<b>00</b>
+   sudo crm configure modgroup g-<b>QAS</b>_ERS add rsc_sap_<b>QAS</b>_ERS<b>01</b>
+   
+   sudo crm configure colocation col_sap_<b>QAS</b>_no_both -5000: g-<b>QAS</b>_ERS g-<b>QAS</b>_ASCS
+   sudo crm configure order ord_sap_<b>QAS</b>_first_start_ascs Optional: rsc_sap_<b>QAS</b>_ASCS<b>00</b>:start rsc_sap_<b>QAS</b>_ERS<b>01</b>:stop symmetrical=false
+   
+   sudo crm node online <b>anftstsapcl1</b>
+   sudo crm configure property maintenance-mode="false"
+   </code></pre>
+
+   如果您是从较旧版本进行升级并切换到排队服务器 2，请参阅 sap 说明[2641019](https://launchpad.support.sap.com/#/notes/2641019)。 
 
    请确保群集状态正常，并且所有资源都已启动。 资源在哪个节点上运行并不重要。
 
@@ -1051,7 +1079,7 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   通过编辑事务 su01 中的用户等方式创建一个排队锁。 运行以下命令，< sapsid\>adm 上运行的 ASCS 实例的节点。 这些命令将停止 ASCS 实例并重新启动该实例。 此测试中排队锁应会丢失。
+   通过编辑事务 su01 中的用户等方式创建一个排队锁。 运行以下命令，< sapsid\>adm 上运行的 ASCS 实例的节点。 这些命令将停止 ASCS 实例并重新启动该实例。 如果使用排队服务器 1 体系结构，被应排入队列锁在此测试中会丢失。 如果使用排队服务器 2 体系结构，将保留排入队列。 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1066,7 +1094,7 @@ Azure NetApp 文件功能为多个 Azure 区域的公共预览版。 在部署�
    <pre><code>anftstsapcl2:qasadm 52> sapcontrol -nr 00 -function StartWait 600 2
    </code></pre>
 
-   事务 su01 的排队锁应会丢失，且后端应已重置。 测试之后的资源状态：
+   排入队列锁的事务 su01 应该会丢失，如果使用排队服务器复制 1 体系结构和后端应被重置。 测试之后的资源状态：
 
    <pre><code>
     Resource Group: g-QAS_ASCS

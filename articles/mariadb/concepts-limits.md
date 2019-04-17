@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.openlocfilehash: 79d6e185b64fdaf332f877718487809ba6273441
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: HT
+ms.date: 04/15/2019
+ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55895782"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616265"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -28,10 +28,12 @@ ms.locfileid: "55895782"
 |常规用途| 8| 1250|
 |常规用途| 16| 2500|
 |常规用途| 32| 5000|
+|常规用途| 64| 10000|
 |内存优化| 2| 600|
 |内存优化| 4| 1250|
 |内存优化| 8| 2500|
 |内存优化| 16| 5000|
+|内存优化| 32| 10000|
 
 当连接数超出限制时，可能会收到以下错误：
 > 错误 1040 (08004)：连接过多
@@ -52,7 +54,7 @@ ms.locfileid: "55895782"
 ### <a name="unsupported"></a>不支持
 - DBA 角色：许多服务器参数和设置可能会无意中导致服务器性能下降或使 DBMS 的 ACID 属性无效。 因此，为了维护产品级别的服务完整性和 SLA，此服务不公开 DBA 角色。 默认用户帐户（在创建新的数据库实例时构造）允许该用户执行托管数据库实例中的大部分 DDL 和 DML 语句。
 - SUPER 特权：[SUPER 特权](https://mariadb.com/kb/en/library/grant/#global-privileges)同样也受到限制。
-- 定义者：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
+- DEFINER：需要创建并限制超级权限。 如果使用备份导入数据，请在执行 mysqldump 时手动删除或使用 `--skip-definer` 命令删除 `CREATE DEFINER` 命令。
 
 ## <a name="data-manipulation-statement-support"></a>数据操作语句支持
 

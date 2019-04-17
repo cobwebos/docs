@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: 5eb3c08792b760bf66e443f79762d91210706c92
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
-ms.translationtype: HT
+ms.openlocfilehash: cda08d44cba9e59af853b1705f538ec199ec4d3a
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435106"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59630451"
 ---
 在第一个方案中，我们将新的遥测类型添加到 Contoso 的现有“冷却器”设备类型。
 
@@ -67,7 +67,7 @@ ms.locfileid: "47435106"
 
 [!INCLUDE [cloud-shell-try-it.md](cloud-shell-try-it.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 按照本操作方法指南操作需要：
 
@@ -98,13 +98,11 @@ ms.locfileid: "47435106"
 
 在 Visual Studio Code 中打开 remote-monitoring-services-dotnet-master\storage-adapter 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
-打开 .vscode/launch.json 文件，并将 Cosmos DB 连接字符串分配给 PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING 环境变量。
-
-<!-- Open the **WebService/appsettings.ini** file and assign your Cosmos DB connection string to the **documentdb_connstring** configuration setting.-->
+打开**storage-adapter/WebService/appsettings.ini**文件，并将分配到 Cosmos DB 连接字符串**documentDBConnectionString**变量。
 
 要在本地运行微服务，请单击“调试”>“启动调试”。
 
-Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)。 导航到此地址时，状态应显示为“正常: 活动且正常”。
+Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输出，包括 Web 服务运行状况检查的 URL：[http://127.0.0.1:9022/v1/status](http://127.0.0.1:9022/v1/status)。 导航到此地址时，状态应显示为“正常:活动且正常”。
 
 在完成后续步骤时，让存储适配器微服务继续在 Visual Studio Code 的此实例中运行。
 
@@ -116,7 +114,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 1. 将以下文件从设备模拟微服务的已下载副本复制到新文件夹：
 
-    | Source | 目标 |
+    | 源 | 目标 |
     | ------ | ----------- |
     | Services\data\devicemodels\chiller-01.json | C:\temp\devicemodels\chiller-01.json |
     | Services\data\devicemodels\scripts\chiller-01-state.js | C:\temp\devicemodels\scripts\chiller-01-state.js |
@@ -417,11 +415,7 @@ Visual Studio Code 中的“终端”窗口显示正在运行的微服务的输�
 
 在 Visual Studio Code 的新实例中打开从 GitHub 下载的 device-simulation-dotnet-master 文件夹。 单击任意“还原”按钮，修复任何未解决的依赖项。
 
-打开 .vscode/launch.json 文件，将 IoT 中心连接字符串分配给 PCS_IOTHUB_CONNSTRING 环境变量。 在同一文件中，添加 **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** 环境变量，并为 Cosmos DB 数据库分配连接字符串。
-
-打开 WebService/Properties/launchSettings.json 文件，将 IoT 中心连接字符串分配给 PCS_IOTHUB_CONNSTRING 环境变量。
-
-按如下所示打开 WebService/appsettings.ini 文件并修改设置：
+打开**WebService/appsettings.ini**文件，并将分配到 Cosmos DB 连接字符串**documentdb_connstring**变量，以及修改的设置，如下所示：
 
 ```ini
 device_models_folder = C:\temp\devicemodels\

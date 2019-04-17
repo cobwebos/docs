@@ -12,12 +12,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: e528b70e257c41f771a1bd3e5ec811c61eb512cc
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 6978b83e66f58e468d9f98394904861c8a4d8bd0
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526667"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618135"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>将 Azure-SSIS 集成运行时加入虚拟网络
 对于以下情况，请将 Azure-SSIS 集成运行时 (IR) 加入 Azure 虚拟网络： 
@@ -139,7 +139,7 @@ ms.locfileid: "59526667"
     -   Azure 公共 IP 地址，使用名称 *\<Guid >-azurebatch-cloudservicepublicip*。
     -   网络工作安全组，具有名称 *\<Guid >-azurebatch-cloudservicenetworksecuritygroup*。 
 
--   请确保虚拟网络所属的资源组或订阅上没有任何资源锁定。 如果配置只读锁定或删除锁定，启动和停止 IR 可能会失败或挂起。 
+-   请确保虚拟网络所属的资源组或订阅上没有任何资源锁定。 如果配置了只读锁定或删除锁定，启动和停止 IR 可能失败或停止响应。 
 
 -   请确保没有任何 Azure Policy 会阻止在虚拟网络所属的资源组或订阅下创建以下资源： 
     -   Microsoft.Network/LoadBalancers 

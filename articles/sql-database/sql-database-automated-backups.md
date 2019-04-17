@@ -55,7 +55,7 @@ SQL 数据库使用 SQL Server 技术创建[完整](https://docs.microsoft.com/s
 
 #### <a name="dtu-based-purchasing-model"></a>基于 DTU 的购买模型
 
-使用基于 DTU 的购买模型创建的数据库的默认保持期取决于服务层：
+使用基于 DTU 的购买模型创建的数据库的默认保留期取决于服务层级：
 
 - 基本服务层为 1 周。
 - 标准服务层为 5 周。

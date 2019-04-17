@@ -1,27 +1,29 @@
 ---
-title: 工作流定义语言的函数引用 - Azure 逻辑应用 | Microsoft Docs
-description: 了解 Azure 逻辑应用的工作流定义语言函数
+title: 工作流定义语言-Azure 逻辑应用和 Microsoft Flow 中的函数的参考
+description: 为 Azure 逻辑应用和 Microsoft Flow 创建工作流定义语言使用的表达式中的函数的参考指南
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
+ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
-ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: e58d534811fc6d6ed2bb24486c149f217a7a28a3
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189897"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59618203"
 ---
-# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Azure 逻辑应用中工作流定义语言的函数引用
+# <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure 逻辑应用和 Microsoft Flow 中的工作流定义语言的函数参考
 
-[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)中的某些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)从运行时操作中获取其值，而这些操作在逻辑应用工作流定义开始运行时可能尚不存在。
-若要在表达式中引用或处理这些值，可以使用[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)提供的函数。
-可以使用数学函数进行计算。例如，[add()](../logic-apps/workflow-definition-language-functions-reference.md#add) 函数会从整数或浮点数返回总和。 下面是可以使用函数执行的另外几个示例任务：
+工作流中的定义[Azure 逻辑应用](../logic-apps/logic-apps-overview.md)并[Microsoft Flow](https://docs.microsoft.com/flow/getting-started)，有些[表达式](../logic-apps/logic-apps-workflow-definition-language.md#expressions)可能不存在的运行时操作中获取其值时您的工作流开始运行。 若要引用这些值或处理两个表达式中的值，可以使用*函数*提供[工作流定义语言](../logic-apps/logic-apps-workflow-definition-language.md)。 
+
+> [!NOTE]
+> 此参考页适用于 Azure 逻辑应用和 Microsoft Flow，但出现在 Azure 逻辑应用文档中。 虽然此页专指逻辑应用，这些函数将工作流和逻辑应用。 有关函数和 Microsoft Flow 中的表达式的详细信息，请参阅[在条件中使用表达式](https://docs.microsoft.com/flow/use-expressions-in-conditions)。
+
+例如，可以通过使用数学函数，如计算值[add （） 函数](../logic-apps/workflow-definition-language-functions-reference.md#add)： 用户需要从整数或浮点数的总和。 下面是可以使用函数执行的其他几个示例任务：
 
 | 任务 | 函数语法 | 结果 |
 | ---- | --------------- | ------ |
@@ -29,8 +31,7 @@ ms.locfileid: "58189897"
 | 返回全局唯一标识符 (GUID)。 | guid() |"c2ecc88d-88c8-4096-912c-d6f2e2b138ce" |
 ||||
 
-本文介绍了在创建逻辑应用定义时可以使用的函数。
-若要[基于函数的常规用途](#ordered-by-purpose)查找函数，请继续查看以下各表。 若要了解每个函数的详细信息，请参阅[按字母顺序排序的列表](#alphabetical-list)。
+若要查找的函数[基于其常规用途](#ordered-by-purpose)，查看下面的表。 若要了解每个函数的详细信息，请参阅[按字母顺序排序的列表](#alphabetical-list)。
 
 > [!NOTE]
 > 在参数定义的语法中，参数后显示的问号 (?) 表示参数是可选的。
@@ -142,7 +143,7 @@ ms.locfileid: "58189897"
 
 若要更改值的类型或格式，可以使用这些转换函数。
 例如，可将值从布尔值更改为整数。
-若要了解逻辑应用在转换期间如何处理内容类型，请参阅[处理内容类型](../logic-apps/logic-apps-content-type.md)。
+有关逻辑应用如何处理内容类型在转换过程的详细信息，请参阅[处理内容类型](../logic-apps/logic-apps-content-type.md)。
 有关每个函数的完整参考，请参阅[按字母顺序排序的列表](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list)。
 
 | 转换函数 | 任务 |
@@ -229,7 +230,7 @@ ms.locfileid: "58189897"
 这些工作流函数有助于：
 
 * 在运行时获取有关工作流实例的详细信息。
-* 使用用于实例化逻辑应用的输入。
+* 使用用于实例化逻辑应用或流的输入。
 * 引用触发器和操作的输出。
 
 例如，可以引用一个操作的输出，并在后面的操作中使用该数据。
@@ -248,7 +249,7 @@ ms.locfileid: "58189897"
 | [items](../logic-apps/workflow-definition-language-functions-reference.md#items) | 位于 for-each 或 do-until-loop 中时，返回指定循环中的当前项。|
 | [listCallbackUrl](../logic-apps/workflow-definition-language-functions-reference.md#listCallbackUrl) | 返回调用某个触发器或操作的“回调 URL”。 |
 | [multipartBody](../logic-apps/workflow-definition-language-functions-reference.md#multipartBody) | 返回具有多个部分的操作输出中某个特定部分的正文。 |
-| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回逻辑应用定义中描述的参数的值。 |
+| [parameters](../logic-apps/workflow-definition-language-functions-reference.md#parameters) | 返回工作流定义中所述的参数的值。 |
 | [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger) | 返回触发器在运行时的输出，或者来自其他 JSON 名称和值对的输出。 另请参阅 [triggerOutputs](#triggerOutputs) 和 [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody)。 |
 | [triggerBody](../logic-apps/workflow-definition-language-functions-reference.md#triggerBody) | 返回触发器在运行时的 `body` 输出。 请参阅 [trigger](../logic-apps/workflow-definition-language-functions-reference.md#trigger)。 |
 | [triggerFormDataValue](../logic-apps/workflow-definition-language-functions-reference.md#triggerFormDataValue) | 返回与表单数据或表单编码触发器输出中某个键名匹配的单个值。 |
@@ -1812,7 +1813,7 @@ first(createArray(0, 1, 2))
 ### <a name="float"></a>float
 
 将浮点数的字符串版本转换为实际的浮点数。
-仅当将自定义参数传递给应用（例如，逻辑应用）时，才使用此函数。
+仅当将自定义参数传递给应用，例如，逻辑应用或流时，可以使用此函数。
 
 ```
 float('<value>')
@@ -2766,7 +2767,7 @@ multipartBody('<actionName>', <index>)
 检查表达式是否为 false。
 当表达式为 false 时返回 true，当表达式为 true 时返回 false。
 
-```
+```json
 not(<expression>)
 ```
 
@@ -2784,7 +2785,7 @@ not(<expression>)
 
 这些示例检查指定的表达式是否为 false：
 
-```
+```json
 not(false)
 not(true)
 ```
@@ -2798,7 +2799,7 @@ not(true)
 
 这些示例检查指定的表达式是否为 false：
 
-```
+```json
 not(equals(1, 2))
 not(equals(1, 1))
 ```
@@ -2833,7 +2834,7 @@ or(<expression1>, <expression2>, ...)
 
 这些示例检查是否至少一个表达式为 true：
 
-```
+```json
 or(true, false)
 or(false, false)
 ```
@@ -2847,7 +2848,7 @@ or(false, false)
 
 这些示例检查是否至少一个表达式为 true：
 
-```
+```json
 or(equals(1, 1), equals(1, 2))
 or(equals(1, 2), equals(1, 3))
 ```
@@ -2861,7 +2862,7 @@ or(equals(1, 2), equals(1, 3))
 
 ### <a name="parameters"></a>parameters
 
-返回逻辑应用定义中描述的参数的值。
+返回工作流定义中所述的参数的值。
 
 ```
 parameters('<parameterName>')

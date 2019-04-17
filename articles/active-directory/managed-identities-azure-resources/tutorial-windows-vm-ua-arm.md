@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/10/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 42b0269d783dac17c48553c837ccdc2b3b014790
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.openlocfilehash: a6fc7e13cf5ea3991f81d53edcabe0980d799cb0
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58442219"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59520857"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>教程：使用 Windows VM 上用户分配的托管标识访问 Azure 资源管理器
 
@@ -136,7 +136,7 @@ CanDelegate: False
 
 ## <a name="read-the-properties-of-a-resource-group"></a>读取资源组属性
 
-使用上一个步骤中检索到的访问令牌访问 Azure 资源管理器，并读取向用户分配的标识授予了访问权限的资源组的属性。 将 <SUBSCRIPTION ID> 替换为你环境的订阅 ID。
+使用上一个步骤中检索到的访问令牌访问 Azure 资源管理器，并读取向用户分配的标识授予了访问权限的资源组的属性。 将 `<SUBSCRIPTION ID>` 替换为你环境的订阅 ID。
 
 ```azurepowershell
 (Invoke-WebRequest -Uri https://management.azure.com/subscriptions/80c696ff-5efa-4909-a64d-f1b616f423ca/resourceGroups/myResourceGroupVM?api-version=2016-06-01 -Method GET -ContentType "application/json" -Headers @{Authorization ="Bearer $ArmToken"}).content

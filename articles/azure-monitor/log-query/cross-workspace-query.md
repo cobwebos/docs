@@ -37,7 +37,7 @@ ms.locfileid: "58882236"
 若要在查询中引用另一个工作区，请使用 [*workspace*](https://docs.microsoft.com/azure/log-analytics/query-language/workspace-expression) 标识符，对于 Application Insights 中的应用，请使用 [*app*](https://docs.microsoft.com/azure/log-analytics/query-language/app-expression) 标识符。  
 
 ### <a name="identifying-workspace-resources"></a>标识工作区资源
-以下示例演示了跨 Log Analytics 工作区进行查询从名为 *contosoretail-it* 的工作区的 Update 表中返回记录的汇总计数。 
+以下示例演示了跨 Log Analytics 工作区进行查询以从名为 *contosoretail-it* 的工作区的 Update 表中返回记录的汇总计数。 
 
 可以通过以下任一方式来标识工作区：
 

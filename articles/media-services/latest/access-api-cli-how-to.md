@@ -10,25 +10,25 @@ ms.service: media-services
 ms.workload: ''
 ms.topic: article
 ms.custom: mvc
-ms.date: 01/28/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 1b872c5c2ff0f581300a843650d7434c7c526c84
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 8374e4c49012a2c49de41001be0fdb30f9151332
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545613"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617829"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>使用 Azure CLI 访问 Azure 媒体服务 API
  
-应使用 Azure AD 服务主体身份验证连接到 Azure 媒体服务 API。 应用程序需要请求具有以下参数 Azure AD 令牌：
+若要使用 Azure AD 服务主体身份验证连接到 Azure 媒体服务 API，你的应用程序需要请求 Azure AD 令牌具有以下参数：
 
 * Azure AD 租户终结点
 * 媒体服务资源 URI
 * REST 媒体服务的资源 URI
 * Azure AD 应用程序值：客户端 ID 和客户端密码
 
-有关详细信息，请参阅[使用媒体服务 v3 Api 进行开发](media-services-apis-overview.md)。
+有关详细说明，请参阅[访问媒体服务 v3 Api](media-services-apis-overview.md#accessing-the-azure-media-services-api)。
 
 本文介绍如何使用 Azure CLI 创建 Azure AD 应用程序和服务主体，以及获取访问 Azure 媒体服务资源所需的值。
 

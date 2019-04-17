@@ -2,7 +2,7 @@
 title: Durable Functions 的绑定 - Azure
 description: 如何使用 Azure Functions 的 Durable Functions 扩展的触发器和绑定。
 services: functions
-author: kashimiz
+author: ggailey777
 manager: jeconnoc
 keywords: ''
 ms.service: azure-functions
@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 889d26be12fef62d37a471fbe0640a2b8ecdd99c
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.openlocfilehash: 678e370977cadae642207f91a02136404fb6c34e
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53337183"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609313"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) 的绑定
 

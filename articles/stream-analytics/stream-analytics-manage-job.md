@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: d802fade0ff9c5b4bc329c7451144d8c782f8d3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 261b55f722fdc3c1e8f4b45debc664f49db3f898
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097934"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523539"
 ---
 # <a name="analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>使用流分析来分析电话呼叫数据并在 Power BI 仪表板中将结果可视化
 
@@ -53,7 +53,7 @@ ms.locfileid: "58097934"
 
    |**设置**  |**建议的值** |**说明**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
+   |名称     | myEventHubsNS        |  用于标识事件中心命名空间的唯一名称。       |
    |订阅     |   用户的订阅\<\>      |   选择要在其中创建事件中心的 Azure 订阅。      |
    |资源组     |   MyASADemoRG      |  选择“新建”，然后输入帐户的新资源组名称。       |
    |位置     |   美国西部 2      |    一个位置，可在其中部署事件中心命名空间。     |
@@ -96,7 +96,7 @@ ms.locfileid: "58097934"
 1. 提取 [TelcoGenerator.zip](https://download.microsoft.com/download/8/B/D/8BD50991-8D54-4F59-AB83-3354B69C8A7E/TelcoGenerator.zip) 文件的内容。
 2. 在所选文本编辑器中打开 `TelcoGenerator\TelcoGenerator\telcodatagen.exe.config` 文件（该文件夹中有多个 .config 文件，因此请确保打开正确的文件。）
 
-3. 使用以下详细信息更新配置文件中的 <appSettings> 元素：
+3. 使用以下详细信息更新配置文件中的 `<appSettings>` 元素：
 
    * 将 *EventHubName* 键的值设置为连接字符串中 EntityPath 的值。
    * 将 *Microsoft.ServiceBus.ConnectionString* 键的值设置为没有 EntityPath 值的连接字符串。

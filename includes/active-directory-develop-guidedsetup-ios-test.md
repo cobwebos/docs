@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 918e4016f638555bfe2dbaeaa849e963e352c78e
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: e48aaa03463bb968ec366b27308ca908aab30d99
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203454"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502964"
 ---
 ## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>测试从 iOS 应用程序查询 Microsoft Graph API
 
@@ -36,7 +36,8 @@ ms.locfileid: "58203454"
 ![许可应用程序访问](media/active-directory-develop-guidedsetup-ios-test/iosconsentscreen.png)
 
 ### <a name="view-application-results"></a>查看应用程序结果
-登录后，“日志记录”部分中应显示 Microsoft Graph API 调用返回的用户配置文件信息。 
+
+登录后，“日志记录”部分中应显示 Microsoft Graph API 调用返回的用户配置文件信息。
 
 <!--start-collapse-->
 ### <a name="more-information-about-scopes-and-delegated-permissions"></a>有关作用域和委派权限的详细信息

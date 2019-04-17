@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: celested
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c769d241f54d5d86ef4954609eec555d8aab947a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f8787008b396c2dd8ce1c006a40fee1e32e8100d
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57857991"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617372"
 ---
 # <a name="problem-configuring-password-single-sign-on-for-a-non-gallery-application"></a>配置非库应用程序密码单一登录时遇到的问题
 
@@ -142,7 +142,7 @@ ms.locfileid: "57857991"
 
 -   再次尝试手动捕获进程，确保红色红色标记在正确的字段上。
 
--   如果手动捕获进程看似已挂起或登录页面没有任何变化（上述案例 3），请再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开**控制台**，键入 **window.location="&lt;enter the sign-in url you specified when configuring the app&gt;"**，并按 **Enter**。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
+-   如果手动捕获进程看似停止响应，或登录页面没有任何变化 （案例 3 上方），再次尝试手动捕获进程。 但是，这次在进程完成后，请按“F12”按钮打开浏览器的开发人员控制台。 到达控制台后，打开**控制台**，键入 **window.location="&lt;enter the sign-in url you specified when configuring the app&gt;"**，并按 **Enter**。 这会使页面重定向至其他位置，以结束捕获过程并存储已捕获的字段。
 
 如果这些方法都无效，支持人员可以提供帮助。 建立支持案例，其中包含所尝试的操作的详细信息以及在[如何查看门户通知的详细信息](#i-cannot-manually-detect-sign-in-fields-for-my-application)和[如何通过向支持工程师发送通知详细信息来获取帮助](#how-to-get-help-by-sending-notification-details-to-a-support-engineer)部分中收集的信息（如果适用）。
 

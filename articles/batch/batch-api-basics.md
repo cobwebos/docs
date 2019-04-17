@@ -15,12 +15,12 @@ ms.workload: big-compute
 ms.date: 12/18/2018
 ms.author: lahugh
 ms.custom: seodec18
-ms.openlocfilehash: 3839a1a457af1549a82b7607310a619911c78591
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 1107842444ad0ac77ab890f07e65c8b489030461
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57761865"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617477"
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>使用 Batch 开发大规模并行计算解决方案
 
@@ -471,7 +471,7 @@ Batch 可以处理使用 Azure 存储将应用程序包存储及部署到计算�
 ### <a name="accounting-for-task-failures-or-interruptions"></a>应对任务失败或中断
 任务偶尔会失败或中断。 任务应用程序本身可能会失败，运行任务的节点可能会重新启动，或者在调整大小操作期间，可能会因为池的取消分配策略设置为在不等待任务完成的情况下立即删除节点，而从池中删除节点。 在所有情况下，任务都可以由 Batch 自动排队，并在另一个节点上执行。
 
-间歇性的问题也有可能会导致任务挂起，或者花费很长时间才能完成执行。 可为任务设置最长的执行时间间隔。 如果超出最长执行时间间隔，Batch 服务会中断任务应用程序。
+还有可能导致任务停止响应或花费很长时间执行的间歇性问题。 可为任务设置最长的执行时间间隔。 如果超出最长执行时间间隔，Batch 服务会中断任务应用程序。
 
 ### <a name="connecting-to-compute-nodes"></a>连接到计算节点
 可通过远程登录到计算节点来进一步执行调试和故障排除。 可以使用 Azure 门户下载 Windows 节点的远程桌面协议 (RDP) 文件，并获取 Linux 节点的安全外壳 (SSH) 连接信息。 也可以使用 Batch API（例如，使用 [Batch .NET][net_rdpfile] 或 [Batch Python](batch-linux-nodes.md#connect-to-linux-nodes-using-ssh)）执行此操作。

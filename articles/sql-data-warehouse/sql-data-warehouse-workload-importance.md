@@ -1,6 +1,6 @@
 ---
-title: 工作负荷重要性 |Microsoft Docs
-description: 有关设置 Azure SQL 数据仓库中查询的重要性的指南。
+title: 工作负荷重要性 | Microsoft Docs
+description: 有关为 Azure SQL 数据仓库中的查询设置重要性的指导。
 services: sql-data-warehouse
 author: ronortloff
 manager: craigg
@@ -10,58 +10,58 @@ ms.subservice: workload management
 ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
-ms.openlocfilehash: e53a6fcefb0f5370f6e24cc50fad2ad4ad4c64e3
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57876215"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616622"
 ---
-# <a name="sql-data-warehouse-workload-importance-preview"></a>SQL 数据仓库工作负荷重要性 （预览版）
+# <a name="sql-data-warehouse-workload-importance-preview"></a>SQL 数据仓库工作负荷重要性（预览）
 
-本文介绍了工作负荷重要性可以如何影响 SQL 数据仓库的请求的执行顺序。
+本文介绍工作负荷重要性如何影响 SQL 数据仓库请求的执行顺序。
 
 > [!Note]
-> SQL 数据仓库 Gen2 上提供了工作负荷的重要性。
+> 可以在 SQL 数据仓库 Gen2 上预览工作负荷分类。 工作负荷管理分类和重要性 preview 适用于具有 2019 年 4 月 9 日，或更高版本的发布日期的生成。  用户应避免使用版本早于此日期执行工作负荷管理测试。  若要确定是否在生成工作负荷管理支持，请运行 select @@version时连接到 SQL 数据仓库实例。
 
 ## <a name="importance"></a>Importance
 
 > [!Video https://www.youtube.com/embed/_2rLMljOjw8]
 
-业务需求可能需要数据仓库工作负荷要比其他更重要。  假设之前会计期间关闭任务关键的销售数据的加载位置。  例如天气数据不具有严格的 Sla，对于其他源加载数据。   加载销售数据的请求的重要性高和低重要性设置为加载是否数据确保销售数据负载的请求获取对资源的第一次访问，并更快速地完成。
+业务需求可能要求数据仓库工作负荷的重要性高于其他工作负荷。  假设存在这样一种情况：需要加载财务周期结束之前的任务关键型销售数据。  其他信息源（例如天气数据）的数据加载不需要遵守严格的 SLA。   为加载销售数据的请求设置高重要性，并为加载天气数据的请求设置低重要性，可以确保销售数据加载操作能够首先访问资源，并更快地完成。
 
 ## <a name="importance-levels"></a>重要性级别
 
-有五个级别的重要性： 低、 below_normal、 normal、 above_normal 和高。  不设置重要性的请求都分配默认级别的正常。  具有相同的重要性级别的请求必须现在存在的调度行为相同。
+有五个重要性级别：low、below_normal、normal、above_normal 和 high。  对于未设置重要性的请求，将为其分配默认级别 normal。  重要性级别相同的请求具有当前存在的相同计划行为。
 
-## <a name="importance-scenarios"></a>重要性方案
+## <a name="importance-scenarios"></a>重要性场景
 
-与销售额和天气数据上面所述的基本重要性方案，以外还有其他工作负荷重要性帮助满足数据处理和查询需求的方案。
+除了上面所述的有关销售数据和天气数据的基本重要性场景以外，在其他某些场景中，工作负荷重要性也有助于满足数据处理和查询需求。
 
 ### <a name="locking"></a>锁定
 
-访问到锁进行读取和写入活动是自然争用的一个领域。  如活动[分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或[重命名对象](/sql/t-sql/statements/rename-transact-sql)需要提升的锁。  而无需工作负荷的重要性，SQL 数据仓库优化吞吐量。  优化吞吐量意味着，运行时和排队的请求具有相同的锁定需求并提供了资源，排队的请求可以绕过之前到达请求队列中具有更高版本需要锁定请求。  一旦工作负荷重要性应用于具有更高版本的锁定请求都需要。 使用重要性较低，将请求之前运行较高的优先级与请求。
+访问读取和写入活动锁是自然争用的一个方面。  [分区切换](/azure/sql-data-warehouse/sql-data-warehouse-tables-partition)或 [RENAME OBJECT](/sql/t-sql/statements/rename-transact-sql) 等活动需要权限提升的锁。  如果不设置工作负荷重要性，SQL 数据仓库将会针对吞吐量进行优化。  针对吞吐量进行优化意味着，当正在运行的和排队的请求具有相同的锁定需求，并且资源可用时，排队的请求可能会绕过提前抵达请求队列的、具有更高锁定需求的请求。  将工作负荷重要性应用到具有较高锁定需求的请求后， 会先运行具有较高重要性的请求，然后再运行具有较低重要性的请求。
 
 下面是一个示例：
 
-第 1 季度是主动运行，并选择销售数据中的数据。
-第 2 季度将会排队等待第 1 季度才能完成。  它在上午 9 点已提交，并试图对新数据进行分区切换到销售数据。
-第 3 季度上午 9:01 提交，并且想要从销售数据中选择数据。
+Q1 正在运行，它从 SalesFact 中选择数据。
+Q2 正在排队等待 Q1 完成。  该请求是在上午 9:00 提交的，目前正在尝试将新数据分区切换到 SalesFact。
+Q3 是在上午 9:01 提交的，希望从 SalesFact 中选择数据。
 
-如果第 2 季度和年第 3 季度具有相同的重要性，并且仍在执行第 1 季度，第 3 季度将开始执行。 第 2 季度将继续等待销售数据上的排他锁。  如果第 2 季度具有较高的优先级比第 3 季度，它可以开始执行之前完成第 2 季度之前将等待第 3 季度。
+如果 Q2 和 Q3 的重要性相同，而 Q1 仍在执行，则 Q3 将开始执行。 Q2 将继续等待 SalesFact 上的独占锁。  如果 Q2 的重要性高于 Q3，则 Q3 将等待 Q2 完成，然后它才能开始执行。
 
 ### <a name="non-uniform-requests"></a>非统一请求
 
-其中重要性可以帮助满足查询需求的另一种情况是当提交具有不同的资源类的请求。  如先前所述，在相同的重要性，SQL 数据仓库优化吞吐量。  时 （例如 smallrc 或 mediumrc） 的混合的大小请求排队，SQL 数据仓库将选择最早到达范围内的可用资源的请求。  如果应用工作负荷的重要性下, 一步计划的最高的重要性请求。
+另一个可以借助重要性满足查询需求的场景是提交了具有不同资源类的请求。  如前所述，在重要性相同的情况下，SQL 数据仓库会针对吞吐量进行优化。  如果混合大小的请求（例如 smallrc 或 mediumrc）已排队，则 SQL 数据仓库会选择最早抵达的、可用资源能够解决的请求。  如果应用了工作负荷重要性，则计划执行的下一个请求是重要性最高的请求。
   
-请考虑在 DW500c 下面的示例：
+请考虑 DW500c 中的以下示例：
 
-第 1 季度、 第 2 季度、 年，第 3 季度和第 4 季度运行 smallrc 查询。
-问题 5 是在上午 9 点提交 mediumrc 资源类。
-问题 6 是上午 9:01 提交 smallrc 资源类。
+Q1、Q2、Q3 和 Q4 正在运行 smallrc 查询。
+Q5 是在上午 9:00 提交的，具有 mediumrc 资源类。
+Q6 是在上午 9:01 提交的，具有 smallrc 资源类。
 
-问题 5 是 mediumrc，因为它需要两个并发槽。  问题 5 需要等待两个正在运行的查询执行完毕。  但是，一个正在运行的查询 （第 1 季度-第 4 季度） 完成时，问题 6 计划立即因为资源来执行该查询存在。  如果问题 5 具有较高的优先级比问题 6，问题 6 等待，直到问题 5 运行之前它可在开始执行。
+由于 Q5 是 mediumrc，因此需要两个并发槽。  Q5 需要等待两个正在运行的查询完成。  但是，当一个正在运行的查询 (Q1-Q4) 完成时，会紧接着计划 Q6，因为可以提供用于执行查询的资源。  如果 Q5 的重要性高于 Q6，则 Q6 会等待 Q5 运行，然后才能开始执行。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关 SQL 数据仓库工作负荷分类的详细信息，请参阅[SQL 数据仓库工作负荷分类](sql-data-warehouse-workload-classification.md)并[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。 请参阅[sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql)若要查看查询和分配的重要性。
+有关 SQL 数据仓库工作负荷分类的详细信息，请参阅 [SQL 数据仓库工作负荷分类](sql-data-warehouse-workload-classification.md)和[创建工作负荷分类器](quickstart-create-a-workload-classifier-tsql.md)。 参阅 [sys.dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) 以查看查询和分配的重要性。

@@ -12,25 +12,26 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/15/2019
 ms.author: juliako
-ms.openlocfilehash: 56f1f04ea300ae628abb1200203873ee4ffb1af1
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: a2ffc344f51c45007eb982a02b14cb2d481d752e
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294172"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616775"
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>使用 Azure 媒体包装器完成静态打包任务  
+
 > [!NOTE]
-> Microsoft Azure 媒体包装器和 Microsoft Azure 媒体加密器的使用期限已延长到 2017 年 3 月 1 日。 在此日期之前，这些处理器的功能将添加到 Media Encoder Standard (MES) 中。 客户将收到有关如何迁移工作流以将作业发送到 MES 的指示。 格式转换和加密功能也可通过动态打包和动态加密提供。
-> 
-> 
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
+
 
 ## <a name="overview"></a>概述
+
 为通过 Internet 传送数字视频，必须压缩媒体。 数字视频文件较大，可能因过大而无法通过 Internet 传送或者无法在客户的设备上正常显示。 编码是压缩视频和音频以便客户能够查看媒体的过程。 视频经过编码后即可放入不同的文件容器中。 将编码后的媒体放入容器这一过程称为打包。 以 MP4 文件为例，可以使用 Azure 媒体包装器将其转换为平滑流式处理或 HLS 内容。 
 
-媒体服务支持动态和静态打包。 使用静态打包时，需要以客户要求的各种格式创建内容副本。 使用动态打包，只需要创建一个包含一组自适应比特率 MP4 或平滑流式处理文件的资产。 然后，按需流式处理服务器会确保用户以选定的协议按清单或分段请求中的指定格式接收流。 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
+媒体服务支持动态和静态打包。 使用静态打包时，需要以客户要求的各种格式创建内容副本。 通过动态打包，只需将创建包含一组自适应比特率 MP4 或平滑流式处理文件的资产。 然后，按需流式处理服务器会确保用户以选定的协议按清单或分段请求中的指定格式接收流。 因此，只需以单一存储格式存储文件并为其付费，然后媒体服务服务就会基于客户端的请求构建并提供相应响应。
 
 > [!NOTE]
 > 建议使用[动态打包](media-services-dynamic-packaging-overview.md)。
@@ -80,7 +81,7 @@ ms.locfileid: "58294172"
     </smil>
 ```
 
-创建自适应比特率 MP4 集后，便可以利用动态打包功能。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
+自适应比特率 MP4 集后，您可以利用动态打包。 动态打包允许通过指定的协议传送流，而不需要进一步地打包。 有关详细信息，请参阅[动态打包](media-services-dynamic-packaging-overview.md)。
 
 以下代码示例使用 Azure 媒体服务 .NET SDK 扩展。  请确保更新代码，以指向输入 MP4 文件和 .ism 文件所在的文件夹， 并指向 MediaPackager_ValidateTask.xml 文件所在的位置。 此 XML 文件的定义请参见 [Azure 媒体包装器的任务预设](https://msdn.microsoft.com/library/azure/hh973635.aspx)一文。
 
@@ -114,20 +115,27 @@ ms.locfileid: "58294172"
             private static MediaServicesCredentials _cachedCredentials = null;
             private static CloudMediaContext _context = null;
 
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServicesAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServicesAccountKey"];
+            // Read values from the App.config file.
+
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Ingest a set of multibitrate MP4s.
                 //
@@ -295,25 +303,27 @@ ms.locfileid: "58294172"
 
             // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
-
-
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+          
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Encoding and encrypting assets //////////////////////
                 // Load a single MP4 file.
@@ -665,7 +675,6 @@ ms.locfileid: "58294172"
                             CreateAsync("Deliver Common Content Key with no restrictions").
                             Result;
 
-
                 contentKeyAuthorizationPolicy.Options.Add(policyOption);
 
                 // Associate the content key authorization policy with the content key.
@@ -708,7 +717,7 @@ ms.locfileid: "58294172"
 > [!NOTE]
 > 要将内容转换为 HLS，必须先将内容转换/编码为平滑流。
 > 此外，对于使用 AES 加密的 HLS，请确保在 MediaPackager_SmoothToHLS.xml 文件中设置以下属性：将加密属性设置为 true，将密钥值和 keyuri 值设置为指向身份验证\授权服务器。
-> 媒体服务创建密钥文件，并将其放置在资产容器中。 应该将 /asset-containerguid/\*.key 文件复制到服务器（或创建自己的密钥文件），然后从资产容器中删除 \*.key 文件。
+> 媒体服务创建的密钥文件，并将其放置在资产容器中。 应该将 /asset-containerguid/\*.key 文件复制到服务器（或创建自己的密钥文件），然后从资产容器中删除 \*.key 文件。
 > 
 > 
 
@@ -743,23 +752,26 @@ ms.locfileid: "58294172"
             // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName = 
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey = 
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName, 
-                                _mediaServicesAccountKey);
-                // Use the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
 
                 // Encoding and encrypting assets //////////////////////
 
@@ -1030,24 +1042,27 @@ ms.locfileid: "58294172"
             // XML Configuration files path.
             private static readonly string _configurationXMLFiles = @"../..\Configurations\";
 
-
-            private static MediaServicesCredentials _cachedCredentials = null;
-            private static CloudMediaContext _context = null;
-
-            // Media Services account information.
-            private static readonly string _mediaServicesAccountName =
-                ConfigurationManager.AppSettings["MediaServiceAccountName"];
-            private static readonly string _mediaServicesAccountKey =
-                ConfigurationManager.AppSettings["MediaServiceAccountKey"];
+            // Read values from the App.config file.
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
 
             static void Main(string[] args)
             {
-                // Create and cache the Media Services credentials in a static class variable.
-                _cachedCredentials = new MediaServicesCredentials(
-                                _mediaServicesAccountName,
-                                _mediaServicesAccountKey);
-                // Used the cached credentials to create CloudMediaContext.
-                _context = new CloudMediaContext(_cachedCredentials);
+                AzureAdTokenCredentials tokenCredentials =
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
+
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+
 
                 // Load an MP4 file.
                 IAsset asset = IngestSingleMP4File(_singleMP4File, AssetCreationOptions.None);

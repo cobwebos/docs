@@ -9,12 +9,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 96ec1f3ecdca6437e1d25eca433d385573f6c659
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.openlocfilehash: 29e64a02cd4af3e1679283ffddb4afab065f8747
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220775"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609126"
 ---
 # <a name="geographic-availability-and-currency-support"></a>上市地区和货币支持
 
@@ -98,7 +98,7 @@ ms.locfileid: "57220775"
 | 立陶宛                           | LT        | EUR          |
 | 卢森堡                          | LU        | EUR          |
 | 澳门特别行政区                           | MO        | USD          |
-| 马其顿共和国 FYRO                      | MK        | USD          |
+| 北马其顿                     | MK        | USD          |
 | 马来西亚                            | MY        | USD          |
 | 马耳他                               | MT        | EUR          |
 | 毛里求斯                           | MU        | USD          |

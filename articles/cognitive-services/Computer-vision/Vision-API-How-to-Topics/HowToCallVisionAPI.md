@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4d9ec05b2495ec54657405c00e7dd42ee10911b1
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350906"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563364"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>示例：如何调用计算机视觉 API
 
@@ -167,13 +167,13 @@ POST https://westus.api.cognitive.microsoft.com/vision/v2.0/analyze?details=cele
 
 字段 | Type | 内容
 ------|------|------|
-标记  | 对象 | 标记数组的顶级对象
-tags[].Name | 字符串    | 标记分类器中的关键字
-tags[].Score    | 数字    | 置信度分数，介于 0 和 1 之间。
-description  | 对象   | 说明的顶级对象。
-description.tags[] |    字符串  | 标记列表。  如果置信度不足无法生成标题，则标记可能是可提供给调用方的唯一信息。
-description.captions[].text | 字符串    | 描述图像的短语。
-description.captions[].confidence   | 数字    | 短语的置信度。
+标记  | `object` | 标记数组的顶级对象
+tags[].Name | `string`  | 标记分类器中的关键字
+tags[].Score    | `number`  | 置信度分数，介于 0 和 1 之间。
+description  | `object` | 说明的顶级对象。
+description.tags[] |    `string`    | 标记列表。  如果置信度不足无法生成标题，则标记可能是可提供给调用方的唯一信息。
+description.captions[].text | `string`  | 描述图像的短语。
+description.captions[].confidence   | `number`  | 短语的置信度。
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>检索并了解特定于域的模型的 JSON 输出
 
@@ -229,10 +229,10 @@ description.captions[].confidence   | 数字    | 短语的置信度。
 
 字段   | Type  | 内容
 ------|------|------|
-categories | 对象 | 顶级对象
-categories[].name    | 字符串   | 86 个类别分类的名称
-categories[].score  | 数字    | 置信度分数，介于 0 和 1 之间
-categories[].detail  | 对象？      | 可选详细信息对象
+categories | `object`   | 顶级对象
+categories[].name    | `string` | 86 个类别分类的名称
+categories[].score  | `number`  | 置信度分数，介于 0 和 1 之间
+categories[].detail  | `object?`      | 可选详细信息对象
 
 请注意，如果多个类别匹配（例如，86 个类别分类器在 model=celebrities 时同时返回 people_ 和 people_young 的分数），则详细信息附加到最宽泛级别的匹配项（在该示例中为 people_）。
 

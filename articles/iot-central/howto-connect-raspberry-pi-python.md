@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 6ac16651e2d49dd903ff994b18a8f571bd92fbf6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eccc4100c89c971e264b9b915cd17b9f5ce4477b
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272353"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617437"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-python"></a>将 Raspberry Pi 连接到 Azure IoT Central 应用程序 (Python)
 
@@ -115,6 +115,4 @@ Azure IoT Central 应用程序中添加真实的设备，从**Raspberry Pi**设�
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何将 Raspberry Pi 连接到 Azure IoT Central 应用程序，以下是建议的后续步骤：
-
-* [连接到 Azure IoT Central 的泛型 Node.js 客户端应用程序](howto-connect-nodejs.md)
+现在，已了解如何将 Raspberry Pi 连接到 Azure IoT Central 应用程序，建议下一步是了解如何[设置自定义设备模板](howto-set-up-template.md)IoT 设备。

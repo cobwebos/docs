@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: v-wimarc
-ms.openlocfilehash: cface0b7848182db5d9aee282a2effb631c065bf
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: b48add54e83eb2d30b40faf64bc1b5c2c769f237
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648828"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521673"
 ---
 # <a name="developer-guide-for-azure-china-21vianet"></a>Azure 中国世纪互联开发人员指南
 Microsoft 提供所需的工具来帮助开发人员创建云应用程序并将其部署到全球 Microsoft Azure 服务（“全球服务”）和世纪互联运营的 Microsoft Azure（Azure 中国世纪互联）。 大多数当前可用的技术内容（例如 [Azure 文档中心](https://azure.microsoft.com/documentation/)）都假设应用程序是针对全球 Azure 开发的，因此，必须了解哪些[服务和功能](https://www.azure.cn/home/features/products-by-region)可在 Microsoft Azure 中国世纪互联中使用。
@@ -52,7 +52,7 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 
 另请参阅：
 - [Azure 中国应用程序的开发人员说明](https://msdn.microsoft.com/library/azure/dn578439.aspx)
-- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=42064) 
+- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=57062) 
 - [开发人员指南](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide)（中文版）。
 
 | 服务类别 | 全球 Azure URI | Azure URI（中国） |
@@ -81,6 +81,6 @@ Microsoft Azure 中国世纪互联与全球 Azure 有所不同，因此，必须
 
 ## <a name="next-steps"></a>后续步骤
 - [开发人员指南](https://www.azure.cn/documentation/articles/developerdifferences/#dev-guide)（中文版）
-- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=42064)
+- [中国的 Azure 数据中心 IP 范围](https://www.microsoft.com/en-us/download/confirmation.aspx?id=57062)
 - [管理性能和连接](/azure/china/china-how-to-manage-performance)
 - [Azure 体系结构中心](https://docs.microsoft.com/azure/architecture/)

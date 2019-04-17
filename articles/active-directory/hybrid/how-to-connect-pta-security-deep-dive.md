@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/19/2018
+ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b8db3bb2e7a21011508f30492bf99c7ecca583
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 7f5e2443a285e065426e3dba0312ef6420097ef1
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58096854"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617202"
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory 直通身份验证安全性深入研究
 
@@ -136,7 +136,7 @@ ms.locfileid: "58096854"
 4. 用户在“用户登录”页中输入其用户名，然后选择“下一步”按钮。
 5. 用户在“用户登录”页中输入其密码，然后选择“登录”按钮。
 6. 在 HTTPS POST 请求中，将用户名和密码提交到 Azure AD STS。
-7. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并将其用于加密密码。 
+7. Azure AD STS 从 Azure SQL 数据库检索租户上注册的所有身份验证代理的公钥，并将其用于加密密码。
     - 如果租户上注册了“N”个身份验证代理，它就会生成“N”个加密密码值。
 8. Azure AD STS 将密码验证请求（包含用户名和加密密码值）置于特定于租户的服务总线队列上。
 9. 由于初始化的身份验证代理持续连接到服务总线队列，因此其中一个可用身份验证代理会检索密码验证请求。
@@ -145,6 +145,9 @@ ms.locfileid: "58096854"
     - 在联合登录方案中，Active Directory 联合身份验证服务 (AD FS) 即使用此 API 登录用户。
     - 此 API 依赖 Windows Server 中的标准解析进程来查找域控制器。
 12. 身份验证代理从 Active Directory 检索结果（例如成功、用户名或密码不正确或密码过期）。
+
+   > [!NOTE]
+   > 如果在登录过程中失败身份验证代理，会丢弃整个登录请求。 没有任何提交的登录请求从一个身份验证代理到另一个身份验证代理的本地。 借助于云，而不是与彼此，仅与通信这些代理。
 13. 身份验证代理通过端口 443，由经相互身份验证的出站 HTTPS 通道将此结果转发回 Azure AD STS。 相互身份验证使用先前在注册期间发布给此身份验证代理的证书。
 14. Azure AD STS 验证此结果与租户上的特定登录请求相关联。
 15. Azure AD STS 按配置继续进行登录过程。 例如，如果密码验证成功，则可能要求用户进行多重身份验证，或者将用户重定向回该应用程序。
@@ -181,7 +184,7 @@ ms.locfileid: "58096854"
 
 ## <a name="auto-update-of-the-authentication-agents"></a>自动更新身份验证代理
 
-新版本发布时，此更新程序应用程序会自动更新身份验证代理。 此应用程序不处理租户的任何密码验证请求。 
+当发布新版本 （使用 bug 修复或性能增强功能），更新应用程序自动更新身份验证代理。 更新应用程序不处理租户的任何密码验证请求。
 
 Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软件的新版本。 使用 [Microsoft 验证码](https://msdn.microsoft.com/library/ms537359.aspx)和 SHA256 摘要算法对 MSI 进行签名。 
 
@@ -203,7 +206,7 @@ Azure AD 以已签名 Windows Installer 程序包 (MSI) 的形式，托管该软
     - 重启身份验证代理服务
 
 >[!NOTE]
->如果租户上注册了多个身份验证代理，Azure AD 不会同时续订其证书或更新它们。 相反，Azure AD 会逐渐进行续订或更新，确保登录请求的高可用性。
+>如果租户上注册了多个身份验证代理，Azure AD 不会同时续订其证书或更新它们。 相反，Azure AD 会因此一次一个地以确保登录请求的高可用性。
 >
 
 

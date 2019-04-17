@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: ef34985e7897aa751275231a28c6031d6c9747b0
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 06872eefd0d500a22214109ad5055dd236b5a6ac
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369952"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59606831"
 ---
 # <a name="run-containerized-tasks-with-restart-policies"></a>使用重启策略运行容器化任务
 
@@ -93,98 +93,9 @@ az container logs --resource-group myResourceGroup --name mycontainer
 
 此示例显示了由脚本发送到 STDOUT 的输出。 但是，容器化任务可能会将其输出写入到持久性存储供以后检索。 例如，写入到 [Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
 
-## <a name="manually-stop-and-start-a-container-group"></a>手动停止和启动容器组
-
-无论为[容器组](container-instances-container-groups.md)配置的重启策略如何，你都可能希望手动停止或启动容器组。
-
-* **停止** - 随时都可以手动停止正在运行的容器组 - 例如，通过使用 [az container stop][az-container-stop] 命令。 对于某些容器工作负荷，你可能希望在经过规定的一段时间后停止容器组，以便节省成本。 
-
-  停止某个容器组会终止并回收该组中的容器；它不保留容器状态。 
-
-* **启动** - 当容器组停止时（因为容器自行终止或者你手动停止了组），你可以使用[容器启动 API](/rest/api/container-instances/containergroups/start) 或 Azure 门户手动启动组中的容器。 如果更新了任何容器的容器映像，则会拉取一个新映像。 
-
-  启动容器组会使用相同的容器配置开始一个新部署。 此操作可帮助你快速重复使用按预期方式工作的已知容器组配置。 你无需创建新的容器组便可运行相同的工作负荷。
-
-* **重启** - 可以在容器组正在运行时将其重启 - 例如，通过使用 [az container restart][az-container-restart] 命令。 此操作会重启容器组中的所有容器。 如果更新了任何容器的容器映像，则会拉取一个新映像。 
-
-  如果你想要排查部署问题，则重启容器组会有所帮助。 例如，如果临时资源限制阻止了你的容器成功运行，则重启组可能会解决此问题。
-
-手动启动或重启容器组后，容器组将根据所配置的重启策略运行。
-
-## <a name="configure-containers-at-runtime"></a>在运行时配置容器
-
-创建容器实例时，可设置其**环境变量**，并指定一个要在启动容器时执行的自定义**命令行**。 可以在批处理作业中使用这些设置，以使用特定于任务的配置准备每个容器。
-
-## <a name="environment-variables"></a>环境变量
-
-在容器中设置环境变量，以提供容器运行的应用程序或脚本的动态配置。 这类似于在 `--env` 命令行中指定参数 `docker run`。
-
-例如，创建容器实例时，可以通过指定以下环境变量来修改示例容器中脚本的行为：
-
-*NumWords*：发送到 STDOUT 的单词数。
-
-*MinLength*：单词中最少包含几个字符才将它计为一个单词。 如果指定较大的数字，将会忽略“of”和“the”等常见单词。
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer2 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=5 MinLength=8
-```
-
-对容器的环境变量指定 `NumWords=5` 和 `MinLength=8` 后，容器日志应会显示不同的输出。 容器状态显示为 *Terminated*（使用 `az container show` 可检查其状态）后，请显示其日志以查看新的输出：
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer2
-```
-
-输出：
-
-```bash
-[('CLAUDIUS', 120),
- ('POLONIUS', 113),
- ('GERTRUDE', 82),
- ('ROSENCRANTZ', 69),
- ('GUILDENSTERN', 54)]
-```
-
-
-
-## <a name="command-line-override"></a>命令行重写
-
-创建容器实例时，可以指定一个命令行用于重写容器映像中植入的命令行。 这类似于在 `--entrypoint` 命令行中指定参数 `docker run`。
-
-例如，可以通过指定不同的命令行，让示例容器分析除“哈姆雷特”以外的文本。 容器执行的 Python 脚本 *wordcount.py* 接受使用 URL 作为参数，并处理该页面的内容而不是默认内容。
-
-例如，若要确定“罗密欧与朱丽叶”中前 3 个由五个字母构成的单词，请运行以下命令：
-
-```azurecli-interactive
-az container create \
-    --resource-group myResourceGroup \
-    --name mycontainer3 \
-    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
-    --restart-policy OnFailure \
-    --environment-variables NumWords=3 MinLength=5 \
-    --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
-```
-
-同样，容器状态显示为 *Terminated* 后，可通过显示容器的日志来查看输出：
-
-```azurecli-interactive
-az container logs --resource-group myResourceGroup --name mycontainer3
-```
-
-输出：
-
-```bash
-[('ROMEO', 177), ('JULIET', 134), ('CAPULET', 119)]
-```
-
 ## <a name="next-steps"></a>后续步骤
 
-### <a name="persist-task-output"></a>保留任务输出
+基于任务的情况下，例如批处理具有多个容器的大型数据集可以充分利用自定义[环境变量](container-instances-environment-variables.md)或[命令行](container-instances-start-command.md)在运行时。
 
 有关如何保存一直运行到完成的容器的输出，请参阅[装载包含 Azure 容器实例的 Azure 文件共享](container-instances-mounting-azure-files-volume.md)。
 
@@ -194,7 +105,5 @@ az container logs --resource-group myResourceGroup --name mycontainer3
 <!-- LINKS - Internal -->
 [az-container-create]: /cli/azure/container?view=azure-cli-latest#az-container-create
 [az-container-logs]: /cli/azure/container?view=azure-cli-latest#az-container-logs
-[az-container-restart]: /cli/azure/container?view=azure-cli-latest#az-container-restart
 [az-container-show]: /cli/azure/container?view=azure-cli-latest#az-container-show
-[az-container-stop]: /cli/azure/container?view=azure-cli-latest#az-container-stop
 [azure-cli-install]: /cli/azure/install-azure-cli

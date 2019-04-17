@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2018
+ms.date: 4/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f927d1deb3da6269159e1f3f24a17c4675dc7568
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: ae83cea866367fa6a6596caa683d0287bea96c29
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184884"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59616198"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>对 Azure Active Directory 直通身份验证进行故障排除
 
@@ -44,7 +44,7 @@ ms.locfileid: "56184884"
 
 如果用户无法使用直通身份验证进行登录，可能会在 Azure AD 登录屏幕上看到下列面向用户的错误之一： 
 
-|错误|说明|解决方法
+|错误|描述|解决方法
 | --- | --- | ---
 |AADSTS80001|无法连接到 Active Directory|确保代理服务器是需要验证其密码的用户所在的 AD 林的成员，并且能够连接到 Active Directory。  
 |AADSTS8002|连接到 Active Directory 时超时|检查以确保 Active Directory 可用，并且可以响应代理的请求。
@@ -72,11 +72,14 @@ ms.locfileid: "56184884"
 | 80010 | 身份验证代理无法解密密码。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。 
 | 80011 | 身份验证代理无法检索到解密密钥。 | 如果可始终重现该问题，请安装并注册新的身份验证代理。 并卸载当前的代理。
 
+>[!IMPORTANT]
+>通过调用验证用户名和密码对 Active Directory 直通身份验证代理身份验证的 Azure AD 用户[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)。 因此，如果要限制工作站登录访问 Active Directory 中设置的"登录到"设置，将需要添加到列表的"登录到"服务器以及承载直通身份验证代理服务器。 如果不这样做将阻止你登录到 Azure AD 的用户。
+
 ## <a name="authentication-agent-installation-issues"></a>身份验证代理安装问题
 
 ### <a name="an-unexpected-error-occurred"></a>发生了意外的错误
 
-从服务器[收集代理日志](#collecting-pass-through-authentication-agent-logs)，然后联系 Microsoft 支持人员反映问题。
+从服务器[收集代理日志](#collecting-pass-through-authentication-agent-logs)，然后联系 Microsoft 支持部门反映问题。
 
 ## <a name="authentication-agent-registration-issues"></a>身份验证代理注册问题
 
@@ -90,7 +93,7 @@ ms.locfileid: "56184884"
 
 ### <a name="an-unexpected-error-occurred"></a>发生了意外的错误
 
-从服务器[收集代理日志](#collecting-pass-through-authentication-agent-logs)，然后联系 Microsoft 支持人员反映问题。
+从服务器[收集代理日志](#collecting-pass-through-authentication-agent-logs)，然后联系 Microsoft 支持部门反映问题。
 
 ## <a name="authentication-agent-uninstallation-issues"></a>身份验证代理卸载问题
 
@@ -142,7 +145,7 @@ ms.locfileid: "56184884"
 
 `Net helpmsg 1328`
 
-![直通身份验证](./media/tshoot-connect-pass-through-authentication/pta3.png)
+![传递身份验证](./media/tshoot-connect-pass-through-authentication/pta3.png)
 
 ### <a name="domain-controller-logs"></a>域控制器日志
 

@@ -21,13 +21,13 @@ ms.locfileid: "58000667"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制
 
-本文详细介绍了 Azure SQL 数据库中使用基于 DTU 的购买模型的 弹性池和合并数据库的资源限制。
+本文详细介绍了 Azure SQL 数据库中使用基于 DTU 的购买模型的弹性池和共用数据库的资源限制。
 
 若要了解使用基于 DTU 的购买模型的单一数据库的资源限制，请参阅[基于 DTU 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-elastic-pools.md)。 有关基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 单一数据库](sql-database-vcore-resource-limits-single-databases.md)和[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
 ## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>弹性池：存储大小和计算大小
 
-对于 SQL 数据库弹性池，下表显示了每个服务层可用的资源和计算大小。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层、计算大小和存储量。
+对于 SQL 数据库弹性池，下表显示了每个服务层可用的资源和计算大小。 可通过 [Azure 门户](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases)、[PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases)、[Azure CLI](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases) 或 [REST API](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases) 设置服务层级、计算大小和存储量。
 
 > [!IMPORTANT]
 > 有关缩放指南和注意事项，请参阅[缩放弹性池](sql-database-elastic-pool-scale.md)
@@ -131,7 +131,7 @@ ms.locfileid: "58000667"
 ## <a name="next-steps"></a>后续步骤
 
 - 有关单个数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单个数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
-- 有关单个数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单个数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
+- 有关单一数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
 - 有关弹性池的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)
 - 有关托管实例的资源限制，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。
 - 有关常规 Azure 限制的相关信息，请参阅 [Azure 订阅和服务限制、配额和约束](../azure-subscription-service-limits.md)。

@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e9a978c8e32acb504ac97e3ca039deb8906e1543
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 816f9bfe022b4a00c01c3ee1bc243f87ef56817b
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59274427"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565931"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>教程：Azure Active Directory 与 Work.com 的集成
 
@@ -52,7 +52,7 @@ ms.locfileid: "59274427"
 
 若要配置 Work.com 与 Azure AD 的集成，需要从库中将 Work.com 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Work.com，请执行以下步骤：**
+**若要从库添加 Work.com，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -303,9 +303,9 @@ ms.locfileid: "59274427"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [ 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？ ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
