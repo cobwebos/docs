@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 02/27/2019
+ms.date: 04/15/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: de2c60d4449762c4a8fcc3e2f486130f3df37c7c
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.openlocfilehash: 532701eb2c5e92e5443f69c464b561d6fa242598
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243613"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617625"
 ---
 # <a name="encoding-with-media-services"></a>使用媒体服务进行编码
 
@@ -54,19 +54,38 @@ Azure 媒体服务，可将高质量的数字媒体文件编码为自适应比�
 
 目前支持以下预设：
 
-- **EncoderNamedPreset.AdaptiveStreaming**（推荐）。 有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
 - **EncoderNamedPreset.AACGoodQualityAudio**：生成一个 MP4 文件，其中仅包含以 192 kbps 编码的立体声音频。
+- **EncoderNamedPreset.AdaptiveStreaming**（推荐）。 有关详细信息，请参阅[自动生成比特率梯形图](autogen-bitrate-ladder.md)。
+- **EncoderNamedPreset.ContentAwareEncodingExperimental** -公开实验性的内容识别的编码预设。 给定输入的任何内容，服务将尝试自动确定层、 相应的比特率和分辨率设置为传递的最佳数量的自适应流式处理。 将继续随时间而改进基础算法。 输出将包含使用视频和音频交错的 MP4 文件。 有关详细信息，请参阅[识别的内容的编码预设的实验性](cae-experimental.md)。
 - **EncoderNamedPreset.H264MultipleBitrate1080p**：生成一组 8 GOP 对齐的 MP4 文件（范围从 6000 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 1080p，之后下降到 360p。
 - **EncoderNamedPreset.H264MultipleBitrate720p**：生成一组 6 GOP 对齐的 MP4 文件（范围从 3400 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 720p，之后下降到 360p。
-- **EncoderNamedPreset.H264MultipleBitrateSD**：生成一组 5 GOP 对齐的 MP4 文件（范围从 1600 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 480p，之后下降到 360p。<br/><br/>有关详细信息，请参阅[对文件进行上传、编码和流式传输](stream-files-tutorial-with-api.md)。
+- **EncoderNamedPreset.H264MultipleBitrateSD**：生成一组 5 GOP 对齐的 MP4 文件（范围从 1600 kbps 到 400 kbps）和立体声 AAC 音频。 起始分辨率为 480p，之后下降到 360p。
+- **EncoderNamedPreset.H264SingleBitrate1080p** -生成了 MP4 文件，其中对视频进行编码的 H.264 编解码器在 6750 kbps 和图片高度为 1080年像素，并使用以 64 kbps 速率进行 AAC LC 编解码器编码的立体声音频。
+- **EncoderNamedPreset.H264SingleBitrate720p** -生成了 MP4 文件，其中对视频进行编码的 H.264 编解码器在最多返回 4500 kbps 和图片高度为 720 像素，并使用以 64 kbps 速率进行 AAC LC 编解码器编码的立体声音频。
+- **EncoderNamedPreset.H264SingleBitrateSD** -生成了 MP4 文件，其中对视频进行编码的 H.264 编解码器在 2200 kbps 和图片高度为 480 像素，并使用以 64 kbps 速率进行 AAC LC 编解码器编码的立体声音频。
+
+若要查看最新的预设列表，请参阅[内置要用于编码视频的预设](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset)。
+
+若要了解如何使用预设，请查看[正在上传、 编码和流式处理文件](stream-files-tutorial-with-api.md)。
 
 ### <a name="standardencoderpreset-preset"></a>StandardEncoderPreset 预设
 
 [StandardEncoderPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#standardencoderpreset) 介绍使用标准编码器对输入视频进行编码时要使用的设置。 自定义转换预设时使用此预设。 
 
-#### <a name="custom-presets"></a>自定义预设
+#### <a name="considerations"></a>注意事项
 
-媒体服务完全支持自定义预设中的所有值，可满足特定的编码需求和要求。 自定义转换预设时使用 **StandardEncoderPreset** 预设。 有关详细说明和示例，请参阅[如何自定义编码器预设](customize-encoder-presets-how-to.md)。
+时创建自定义预设，应该注意以下事项：
+
+- 高度和宽度 AVC 内容上的所有值必须都是 4 的倍数。
+- 在 Azure 媒体服务 v3 所有编码比特率是比特 / 秒。 这是不同于与我们使用千比特/秒为单位的 v2 Api 的预设。 例如，如果在 v2 中的比特率 （千比特/秒） 已指定为 128，v3 中它将设置为 128000 （比特/秒）。
+
+#### <a name="examples"></a>示例
+
+媒体服务完全支持自定义预设中的所有值，可满足特定的编码需求和要求。 有关演示如何自定义编码器预设的示例，请参阅：
+
+- [自定义预设使用.NET](customize-encoder-presets-how-to.md)
+- [自定义预设使用 CLI](custom-preset-cli-howto.md)
+- [自定义预设使用 REST](custom-preset-rest-howto.md)
 
 ## <a name="scaling-encoding-in-v3"></a>在 v3 中缩放编码
 

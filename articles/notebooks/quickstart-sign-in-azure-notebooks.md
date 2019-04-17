@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/25/2019
+ms.date: 04/15/2019
 ms.author: kraigb
-ms.openlocfilehash: f3effc900b79ddb7beac6a3aaf2eee0a264f7b4d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: eb8ba7f23de99d333693430d806a8d887c55a678
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59280853"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608150"
 ---
 # <a name="quickstart-sign-in-and-set-a-user-id"></a>快速入门：登录并设置用户 ID
 
@@ -33,6 +33,9 @@ ms.locfileid: "59280853"
 1. 出现提示时，输入 Microsoft 帐户或者工作或学校帐户的电子邮件地址，并选择“下一步”。 [Azure Notebooks 的用户帐户](azure-notebooks-user-account.md)一文介绍了帐户类型。 如果你没有 Microsoft 帐户，或想要创建一个专门用于 Azure Notebooks 的帐户，请选择“创建一个”：
 
     ![登录提示中的新建 Microsoft 帐户命令](media/accounts/create-new-microsoft-account.png)
+
+    > [!Tip]
+    > 如果尝试使用已有与之关联的帐户的电子邮件地址创建新帐户，可能会看到消息"不能在此处注册使用工作或学校电子邮件地址。 使用个人电子邮件，如 Gmail 或 yahoo ！，或获取新的 Outlook 电子邮件。" 在这种情况下，请尝试使用工作电子邮件地址登录而无需创建一个新的帐户。
 
 1. 根据提示输入密码。
 

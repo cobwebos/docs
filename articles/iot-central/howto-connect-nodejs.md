@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 428e20995f6d2723c5af1ba2beb18ac1336243e7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 5497e4956fbdc74eced302867c33a66d07d6a184
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259960"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617931"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>将泛型客户端应用程序连接到 Azure IoT Central 应用程序 (Node.js)
 
@@ -62,7 +62,7 @@ Azure IoT Central 应用程序中需要具有以下度量值、 设备属性、 
 
 添加下面的事件上**度量**页：
 
-| 显示名称 | 字段名称  | 严重性 |
+| 显示名称 | 字段名称  | Severity |
 | ------------ | ----------- | -------- |
 | 过热  | 过热    | 错误    |
 
@@ -335,4 +335,4 @@ node connectedAirConditionerAdv.js
 
 ## <a name="next-steps"></a>后续步骤
 
-现在，已了解如何将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序，建议下一步是了解如何[准备并将 Raspberry Pi 连接](howto-connect-raspberry-pi-python.md)。
+现在，已了解如何将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序，建议下一步是了解如何[设置自定义设备模板](howto-set-up-template.md)IoT 设备。

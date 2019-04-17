@@ -3,19 +3,19 @@ title: Azure Functions 网络连接选项
 description: 可在 Azure Functions 中的所有网络选项的概述
 services: functions
 author: alexkarcher-msft
-manager: jehollan
+manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 1/14/2019
+ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 10d7daa6da45c56e20c622fcbca9ee288e737dab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: a4ae2d8bad50a4103da6afaa0bee5cbb75c877aa
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358161"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545495"
 ---
-# <a name="azure-functions-networking-options"></a>Azure Functions 网络连接选项
+# <a name="azure-functions-networking-options"></a>Azure Functions 的网络选项
 
 本文档介绍了一套可用的网络功能跨 Azure Functions 托管选项。 所有以下网络选项提供访问的资源，而无需使用 internet 路由的地址，或限制对 Function App 的 internet 访问某些功能。 托管的所有模型都具有不同级别的网络隔离，并选择正确的订阅将使您能够满足你的网络隔离要求。
 
@@ -29,11 +29,11 @@ ms.locfileid: "59358161"
 
 ## <a name="networking-feature-matrix"></a>网络功能矩阵
 
-|                |[使用计划](functions-scale.md#consumption-plan)|⚠ [高级计划](functions-scale.md##premium-plan-public-preview)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
+|                |[消耗计划](functions-scale.md#consumption-plan)|⚠ [高级计划](functions-scale.md##premium-plan-public-preview)|应用服务计划[](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[**入站的 IP 限制**](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
-|[**VNET 集成**](#vnet-integration)|❌No|⚠ 是的|✅Yes|✅Yes|
-|[**预览版 VNET 集成 （Express Route 和服务终结点）**](#preview-vnet-integration)|❌No|⚠ 是的|⚠ 是的|✅Yes|
+|[**VNET 集成**](#vnet-integration)|❌No|❌No|✅Yes|✅Yes|
+|[**预览版 VNET 集成 （Express Route 和服务终结点）**](#preview-vnet-integration)|❌No|⚠是的|⚠是的|✅Yes|
 |[**混合连接**](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
 |[**专用站点访问**](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 
@@ -46,9 +46,9 @@ ms.locfileid: "59358161"
 > [!NOTE]
 > 若要能够使用 Azure 门户的编辑器，在门户必须能够直接访问正在运行的函数应用，并用于访问门户，设备必须拥有其 IP 加入允许列表。 使用现有的网络限制，你仍可以访问中的任何功能**平台功能**选项卡。
 
-[此处详细了解](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
+[在此处了解更多信息](https://docs.microsoft.com/azure/app-service/app-service-ip-restrictions)
 
-## <a name="vnet-integration"></a>VNET 集成
+## <a name="vnet-integration"></a>VNet 集成
 
 VNET 集成，函数应用可以访问内部 VNET 的资源。 VNET 集成功能的高级计划和应用服务计划中可用。 如果应用是应用服务环境中，然后它已在 VNet 中，并且不需要使用 VNet 集成功能来访问同一 VNet 中的资源。
 
@@ -89,3 +89,13 @@ VNet 集成功能目前提供处于预览阶段的新版本。 该版本不依�
 专用站点访问指的是仅可从专用网络（例如 Azure 虚拟网络内）对应用进行访问。 专用站点访问仅适用于部署了内部负载均衡器 (ILB) 的 ASE。 有关使用 ILB ASE 的详细信息，请参阅[创建和使用 ILB ASE](../app-service/environment/create-ilb-ase.md)。
 
 有许多方法来访问 VNET 中其他托管选项，但 ASE 是允许通过 VNET 的函数的触发器的唯一方法。
+
+## <a name="next-steps"></a>后续步骤
+若要了解有关网络的详细信息和函数： 
+
+* [请按照我们的入门 VNET 集成教程](./functions-create-vnet.md)
+* [读取网络常见问题此处函数](./functions-networking-faq.md)
+* [单击此处深入了解 VNET 与应用服务/Functions 的集成](../app-service/web-sites-integrate-with-vnet.md)
+* [深入了解 Azure 中的 VNET](../virtual-network/virtual-networks-overview.md)
+* [启用网络功能和使用应用服务环境的控制](../app-service/environment/intro.md)
+* [使用混合连接连接到单独的本地资源而无需更改防火墙](../app-service/app-service-hybrid-connections.md)

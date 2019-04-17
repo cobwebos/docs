@@ -254,6 +254,8 @@ items:
       - name: 优化 Apache Hive 查询
         href: ../hdinsight-hadoop-optimize-hive-query.md
         maintainContext: true
+      - name: 对群集配置访问权限的更改
+        href: ../hdinsight-migrate-granular-access-cluster-configurations.md
     maintainContext: true
 - name: 企业就绪情况
   items:
@@ -307,12 +309,13 @@ items:
   - name: R 开发人员指南
     href: ../../machine-learning/r-developers-guide.md
   - name: 发行说明
-    href: ../hdinsight-release-notes.md
     items:
+    - name: 当前发行说明
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
     - name: 已存档的发行说明
       href: ../hdinsight-release-notes-archive.md
       maintainContext: true
-    maintainContext: true
   - name: Azure 路线图
     href: https://azure.microsoft.com/roadmap/?category=intelligence-analytics
   - name: 在论坛上获取帮助
@@ -326,9 +329,9 @@ items:
   - name: 适用于 HDInsight 的 Windows 工具
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: cfeff50427913e7df70bd3a2af3ea83519d27cfe
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 918489a8dbac91078af6114ae4942d8411460a21
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579081"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59615738"
