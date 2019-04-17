@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 04/10/2019
+ms.date: 04/15/2019
 ms.author: curtand
 ms.reviewer: kexia
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d82c1909a28de694925a12e9b801361cad1f36d2
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 6b6846c5f907c41db16e99883be7041a68357586
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494689"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608769"
 ---
 # <a name="home-realm-discovery-for-azure-active-directory-sign-in-pages"></a>Azure Active Directory 登录页的主领域发现
 
@@ -49,7 +49,7 @@ ms.locfileid: "59494689"
     ![密码是使用适当的用户名输入错误](./media/signin-realm-discovery/incorrect-password.png)
   
 > [!IMPORTANT]
-> 此功能可能会影响依赖于旧域级别主领域发现来强制执行联合身份验证的联合域。 有关何时将添加联合的域支持的更新，请参阅[期间登录 Microsoft 365 服务的主领域发现](https://blogs.azure.net/updates/Admin/Blogs/29/Posts/3170)。 在此期间，某些组织具有经过培训员工登录的用户名的 Azure Active Directory 中不存在，但包含正确的域名，因为域名将路由用户当前到其组织的域终结点。 新的登录行为不允许此操作。 通知用户若要更正的用户名称，并不允许使用 Azure Active Directory 中不存在的用户名登录。
+> 此功能可能会影响依赖于旧域级别主领域发现来强制执行联合身份验证的联合域。 有关何时将添加联合的域支持的更新，请参阅[期间登录 Microsoft 365 服务的主领域发现](https://azure.microsoft.com/en-us/updates/signin-hrd/)。 在此期间，某些组织具有经过培训员工登录的用户名的 Azure Active Directory 中不存在，但包含正确的域名，因为域名将路由用户当前到其组织的域终结点。 新的登录行为不允许此操作。 通知用户若要更正的用户名称，并不允许使用 Azure Active Directory 中不存在的用户名登录。
 >
 > 如果你或你的组织有依赖旧行为的做法，务必为组织管理员若要更新员工在登录和身份验证文档和培训员工使用其 Azure Active Directory 用户名进行登录。
   

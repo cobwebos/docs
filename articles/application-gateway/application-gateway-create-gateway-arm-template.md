@@ -1,33 +1,20 @@
 ---
-title: 创建 Azure 应用程序网关 - 模板 | Microsoft Docs
-description: 本页提供有关使用 Azure 资源管理器模板创建 Azure 应用程序网关的说明
-documentationcenter: na
+title: 创建 Azure 应用程序网关-模板
+description: 本文介绍如何使用 Azure 资源管理器模板创建 Azure 应用程序网关
 services: application-gateway
 author: vhorne
-manager: jpconnock
-editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.topic: conceptual
+ms.date: 4/15/2019
 ms.author: victorh
-ms.openlocfilehash: 682aac8ec6716ac59c6bdc0710065c916a0c41b6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 113e30ab65f2cd0ff420df1c79807147a62f79f1
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58084923"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59608446"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建应用程序网关
-
-> [!div class="op_single_selector"]
-> * [Azure 门户](application-gateway-create-gateway-portal.md)
-> * [Azure 资源管理器 PowerShell](application-gateway-create-gateway-arm.md)
-> * [Azure 经典 PowerShell](application-gateway-create-gateway.md)
-> * [Azure 资源管理器模板](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI](application-gateway-create-gateway-cli.md)
 
 Azure 应用程序网关是第 7 层负载均衡器。 它可在云端或本地​​的服务器间提供故障转移和性能路由 HTTP 请求。 应用程序网关提供许多应用程序传送控制器 (ADC) 功能，包括 HTTP 负载均衡、基于 Cookie 的会话相关性、安全套接字层 (SSL) 卸载、自定义运行状况探测、多站点支持，以及许多其他功能。 若要查找受支持功能的完整列表，请访问[应用程序网关概述](application-gateway-introduction.md)
 
@@ -243,4 +230,3 @@ az group delete --name appgatewayRG
 
 * [Azure 负载均衡器](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure 流量管理器](https://azure.microsoft.com/documentation/services/traffic-manager/)
-

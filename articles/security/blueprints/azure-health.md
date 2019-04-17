@@ -241,7 +241,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 -   Key Vault 中的所有密钥都受 HSM 保护 \[密钥类型 = 受 HSM 保护的 2048 位 RSA 密钥\]
 -   使用基于角色的访问控制 (RBAC) 向所有用户/标识授予了最低必需权限
 -   应用程序共享 Key Vault 的前提是彼此信任且需要在运行时访问相同的机密
--   启用 Key Vault 的诊断日志时，保留期设置为至少 365 天。
+-   Key Vault 的诊断日志已启用，其保留期至少为 365 天。
 -   对密钥进行允许的加密操作时，仅限必需的操作
 
 ## <a name="ingest"></a>引入 
@@ -251,7 +251,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **1.大容量导入的客户数据 phi 数据**
 
-根据 “部署和运行演示”中的概述，将演示脚本.\\HealthcareDemo.ps1 与 **BulkPatientAdmission** 开关配合使用时，该脚本会执行以下处理管道：
+根据 “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientAdmission** 开关配合使用时，该脚本会执行以下处理管道：
 1. **Azure Blob 存储** - 病人数据 .csv 文件示例上传到存储
 2. **事件网格** - 事件将数据发布到 Azure Function（批量导入 - Blob 事件）
 3. **Azure Function** - 进行处理后，将数据存储到 SQL 存储中，使用的是安全的函数 - event(type; blob url)

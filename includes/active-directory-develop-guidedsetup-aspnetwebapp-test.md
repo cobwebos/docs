@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 04/19/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 9b88a6f3f7e17cfc549b30d1f0d80d4cdf1c3e2d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: 8795c9ab0a4dbb76327d0ead48ed33fb0cff9e86
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58919155"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528525"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -96,5 +96,3 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 #### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>选项 3：使用自定义方法来验证颁发者
 
 可通过 IssuerValidator 参数实现自定义方法来验证颁发者。 有关如何使用此参数的详细信息，请阅读 [TokenValidationParameters 类](/previous-versions/visualstudio/dn464192(v=vs.114))。
-
-[!INCLUDE [Help and support](./active-directory-develop-help-support-include.md)]

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: raynew
-ms.openlocfilehash: f0540ff1fc1844c133e238267770b971992f61e6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 0c2ca8c17abd6ac5e540beec1bde715931e022a4
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904995"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59609398"
 ---
 # <a name="support-matrix-for-replicating-azure-vms-from-one-region-to-another"></a>从一个区域的 Azure Vm 复制到另一个支持矩阵
 
@@ -36,9 +36,9 @@ ms.locfileid: "58904995"
 --- | --- | ---
 **跨资源组移动保管库** | 不支持
 **跨资源组移动计算/存储/网络资源** | 不支持。<br/><br/> 如果在 VM 复制后移动 VM 或相关组件（如存储/网络），则需要禁用并重新启用 VM 的复制。
-**将 Azure Vm 从一个订阅复制到另一个用于灾难恢复** | 在同一 Azure Active Directory 租户中受支持。
-**跨区域 （内和跨订阅） 的受支持地理群集内迁移虚拟机** | 在同一 Azure Active Directory 租户中受支持。
-**在同一区域内迁移虚拟机** | 不支持。
+**将 Azure VM 从一个订阅复制到另一个订阅以进行灾难恢复** | 在同一 Azure Active Directory 租户中受支持。
+**在受支持的地理群集内跨区域迁移虚拟机（订阅内和跨订阅）** | 在同一 Azure Active Directory 租户中受支持。
+**在同一区域内迁移 VM** | 不支持。
 
 ## <a name="region-support"></a>区域支持
 
@@ -95,11 +95,11 @@ Windows Server 2008 R2 | 运行 SP1 或更高版本
 --- | ---
 Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6  
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6
-Ubuntu 14.04 LTS Server | [支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Ubuntu 16.04 LTS Server | [支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器以及用于配置云 VM 的 cloud-init 包可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 通过从“支持”>“故障排除”>“设置”菜单（Azure 门户中的故障转移 VM）重置密码，可以在虚拟机上重新启用基于密码的登录。
-Debian 7 | [支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | [支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
-SUSE Linux Enterprise Server 12 | SP1、SP2、SP3。 [（支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
+Ubuntu 14.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+Ubuntu 16.04 LTS Server | [受支持的内核版本](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> 使用基于密码的身份验证和登录的 Ubuntu 服务器以及用于配置云 VM 的 cloud-init 包可能会在故障转移时禁用基于密码的登录（具体取决于 cloudinit 配置）。 通过从“支持”>“故障排除”>“设置”菜单（Azure 门户中的故障转移 VM）重置密码，可以在虚拟机上重新启用基于密码的登录。
+Debian 7 | [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
+Debian 8 | [受支持的内核版本](#supported-debian-kernel-versions-for-azure-virtual-machines)
+SUSE Linux Enterprise Server 12 | SP1,SP2,SP3,SP4. [（受支持的内核版本）](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 11 | SP3<br/><br/> 不支持将复制计算机从 SP3 升级到 SP4。 如果已升级复制的计算机，则需要禁用复制并在升级后重新启用复制。
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 <br/><br/> 运行与 Red Hat 兼容的内核或 Unbreakable Enterprise Kernel Release 3 (UEK3)。
@@ -107,7 +107,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Ubuntu 内核版本
 
-**发布** | **移动服务版本** | **内核版本** |
+**版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 14.04 LTS | 9.23 | 3.13.0-24-generic 到 3.13.0-165-generic，<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-142-generic，<br/>到 4.15.0-1037-azure 4.15.0-1023-azure |
 14.04 LTS | 9.22 | 3.13.0-24-generic 到 3.13.0-164-generic、<br/>3.16.0-25-generic 到 3.16.0-77-generic、<br/>3.19.0-18-generic 到 3.19.0-80-generic、<br/>4.2.0-18-generic 到 4.2.0-42-generic、<br/>4.4.0-21-generic 到 4.4.0-140-generic、<br/>4.15.0-1023-azure 到 4.15.0-1036-azure |
@@ -121,7 +121,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5 
 
 #### <a name="supported-debian-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 Debian 内核版本
 
-**发布** | **移动服务版本** | **内核版本** |
+**版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
 Debian 7 | 9.19,9.20,9.21,9.22,9.23 | 3.2.0-4-amd64 到 3.2.0-6-amd64、3.16.0-0.bpo.4-amd64 |
 |||
@@ -130,9 +130,9 @@ Debian 8 | 9.19 | 3.16.0-4-amd64 到 3.16.0-6-amd64、4.9.0-0.bpo.4-amd64 到 4.
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Azure 虚拟机支持的 SUSE Linux Enterprise Server 12 内核版本
 
-**发布** | **移动服务版本** | **内核版本** |
+**版本** | **移动服务版本** | **内核版本** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.23 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>到 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>到 4.4.162-94.79-default SP3 4.4.73-5-default |
+SUSE Linux Enterprise Server 12 （SP1、 SP2、 SP3、 SP4） | 9.23 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>到 4.4.121-92.101-default SP2(LTSS) 4.4.121-92.73-default</br></br>到 4.4.162-94.79-default SP3 4.4.73-5-default</br></br>到 4.12.14-95.6-default SP4 4.12.14-94.41-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.22 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.21 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.72-default |
 SUSE Linux Enterprise Server 12（SP1、SP2、SP3） | 9.20 | SP1 3.12.49-11-default 到 3.12.74-60.64.40-default</br></br> SP1(LTSS) 3.12.74-60.64.45-default 到 3.12.74-60.64.107-default</br></br> SP2 4.4.21-69-default 到 4.4.120-92.70-default</br></br>SP2(LTSS) 4.4.121-92.73-default 到 4.4.121-92.98-default</br></br>SP3 4.4.73-5-default 到 4.4.162-94.69-default |
@@ -162,7 +162,7 @@ RBAC 策略 | 不支持 | 基于角色的访问控制 (RBAC) 策略在 Vm 上的
 
 ## <a name="replicated-machines---disk-actions"></a>复制的计算机 - 磁盘操作
 
-**操作** | **详细信息**
+**Action** | **详细信息**
 -- | ---
 调整复制的 VM 上的磁盘大小 | 支持
 将磁盘添加到复制的 VM | 不支持。<br/><br/> 需要为 VM 禁用复制，添加磁盘，然后再次启用复制。
@@ -175,7 +175,7 @@ RBAC 策略 | 不支持 | 基于角色的访问控制 (RBAC) 策略在 Vm 上的
 - 如果使用默认设置进行部署，Site Recovery 会根据源设置自动创建磁盘和存储帐户。
 - 如果自定义，请确保遵循指南。
 
-**组件** | **支持** | **详细信息**
+组件 | **支持** | **详细信息**
 --- | --- | ---
 OS 磁盘的最大大小 | 2048 GB | [深入了解 ](../virtual-machines/windows/managed-disks-overview.md)VM 磁盘相关信息。
 临时磁盘 | 不支持 | 始终从复制中排除临时磁盘。<br/><br/> 请勿在临时磁盘上存储任何持久性数据。 [了解详细信息](../virtual-machines/windows/managed-disks-overview.md)。

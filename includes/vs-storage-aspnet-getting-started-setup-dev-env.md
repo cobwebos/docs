@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 634143f56bc9134f240ff42b7b5989605c8bffde
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
-ms.translationtype: HT
+ms.openlocfilehash: a7c696870e22e1692ca5ed778e47f8e4cc00615a
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979355"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59610129"
 ---
 ## <a name="set-up-the-development-environment"></a>设置开发环境
 
@@ -37,7 +37,7 @@ ms.locfileid: "45979355"
 
 1. 在“解决方案资源管理器”中，右键单击项目。
 
-2. 从上下文菜单中，选择“添加” > “连接服务”。
+1. 从上下文菜单中，选择“添加” > “连接服务”。
 
 1. 在“连接服务”对话框中，选择“Azure 存储的云存储”。
 
@@ -45,8 +45,9 @@ ms.locfileid: "45979355"
 
 1. 在“Azure 存储”对话框中，选择要在本教程中使用的 Azure 存储帐户。 若要创建新的 Azure 存储帐户，请选择“创建新的存储帐户”并填写表单。 选择现有的存储帐户或创建新的存储帐户后，选择“添加”。 Visual Studio 会安装 Azure 存储的 NuGet 包，并将一个存储连接字符串添加到 Web.config。
 
+1. 在中**解决方案资源管理器**，右键单击**依赖关系**，选择**管理 NuGet 包**，并添加对最新版本的 NuGet 包引用Microsoft.Azure.ConfigurationManager。
+
 > [!TIP]
 > 若要了解如何使用 [Azure 门户](https://portal.azure.com)创建存储帐户，请参阅[创建存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)。
 >
 > 也可以使用 [Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md)、[Azure CLI](../articles/storage/common/storage-azure-cli.md) 或 [Azure Cloud Shell](../articles/cloud-shell/overview.md) 创建存储帐户。
-
