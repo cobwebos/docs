@@ -78,8 +78,8 @@ Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-89012
 | --- | --- | --- |
 | ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
 | StorageAccountId |否 |诊断日志应保存到的存储帐户的资源 ID。 |
-| 类别 |否 |要启用的日志类别的逗号分隔列表。 |
-| 已启用 |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |
+| Categories |否 |要启用的日志类别的逗号分隔列表。 |
+| Enabled |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |
 | RetentionEnabled |否 |一个布尔值，表示此资源是否启用了保留策略。 |
 | RetentionInDays |否 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期存储日志。 |
 
@@ -153,10 +153,10 @@ insights-logs-networksecuritygrouprulecounter/resourceId=/SUBSCRIPTIONS/s1id1234
 | 元素名称 | 描述 |
 | --- | --- |
 | time |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
-| ResourceId |受影响资源的资源 ID。 |
+| resourceId |受影响资源的资源 ID。 |
 | operationName |操作的名称。 |
 | category |事件的日志类别。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 
 > [!NOTE]
 > 这些属性的属性和使用情况各不相同，具体取决于资源。
