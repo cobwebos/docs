@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: v-ant-msft
 ms.openlocfilehash: 3ea502477cc5b380c99a183d9270c2b2e94375a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275464"
 ---
 # <a name="tutorial-configure-zscaler-for-automatic-user-provisioning"></a>教程：将 Zscaler 配置自动用户预配
@@ -163,11 +163,11 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解如何查看日志并获取有关预配活动报告](../active-directory-saas-provisioning-reporting.md)
+* [了解如何查看日志并获取有关预配活动的报告](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-provisioning-tutorial/tutorial-general-01.png

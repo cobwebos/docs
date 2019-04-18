@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: tulasim
 ms.openlocfilehash: 671d76b6c0a5a2cdac5797668fb0e5651b5823e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281737"
 ---
 # <a name="add-a-secured-sharepoint-data-source-to-your-knowledge-base"></a>将受保护的 Sharepoint 数据源添加到您的知识库
@@ -103,11 +103,11 @@ The Active Directory manager will get a pop-up window requesting permissions to 
 
 1. 搜索`QnAMakerPortalSharepoint`选择 QnA Maker 应用。 
 
-    [![S企业应用程序列表中为 QnAMakerPortalSharepoint 的 earch](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
+    [![企业应用程序列表中搜索的 QnAMakerPortalSharepoint](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png)](../media/add-sharepoint-datasources/search-enterprise-apps-for-qna-maker.png#lightbox)
 
 1. 下**安全**，请转到**权限**。 选择**授予为组织的管理员同意**。 
 
-    [![S选择身份验证的用户的 Active Directory 管理员](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
+    [![选择身份验证的用户的 Active Directory 管理员](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png)](../media/add-sharepoint-datasources/grant-aad-permissions-to-enterprise-app.png#lightbox)
 
 1. 选择具有要授予权限的 Active Directory 权限的登录帐户。 
 
@@ -174,4 +174,4 @@ Use the **@microsoft.graph.downloadUrl** from the previous section as the `fileu
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [针对知识库展开协作](collaborate-knowledge-base.md)
+> [在您的知识库上进行协作](collaborate-knowledge-base.md)

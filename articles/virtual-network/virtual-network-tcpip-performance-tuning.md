@@ -29,10 +29,10 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426437"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP 的性能优化 Azure Vm
@@ -140,7 +140,7 @@ Azure，我们建议您设置 TCP MSS 钳位为 1,350 字节和隧道接口 MTU 
 
 | | | | |
 |-|-|-|-|
-|**路由**|**距离**|**单向时间**|**RTT**|
+|Route|**距离**|**单向时间**|**RTT**|
 |纽约飞往旧金山|4,148 公里|21 ms|42 ms|
 |伦敦到纽约|5,585 公里|28 ms|56 ms|
 |纽约到悉尼|15,993 公里|80 毫秒|160 ms|
@@ -236,7 +236,7 @@ Set-NetTCPSetting
 
 | | | | |
 |-|-|-|-|
-|**AutoTuningLevel**|**比例因子**|**缩放乘数**|**为公式<br/>计算最大窗口大小**|
+|**AutoTuningLevel**|**比例因子**|**缩放乘数**|**公式<br/>计算最大窗口大小**|
 |已禁用|无|无|窗口大小|
 |受限|4|2^4|窗口大小 * (2 ^4)|
 |严格限制|2|2^2|窗口大小 * (2 ^2)|
@@ -376,7 +376,7 @@ NTttcp 是用于测试的 Linux 或 Windows VM 的 TCP 性能的工具。 可以
 
 - [Expressroute 网络性能故障排除](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-network-performance)
 
-- [如何验证到达虚拟网络的 VPN 吞吐量](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
+- [如何验证虚拟网络的 VPN 吞吐量](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-validate-throughput-to-vnet)
 
 ### <a name="detect-inefficient-tcp-behaviors"></a>检测低效 TCP 行为
 

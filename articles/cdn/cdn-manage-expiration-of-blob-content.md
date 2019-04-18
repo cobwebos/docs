@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/1/2018
 ms.author: mazha
 ms.openlocfilehash: f7fc11af8cd2574271b26f7dec62072692685672
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916795"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>在 Azure CDN 中管理 Azure Blob 存储的到期时间
@@ -59,7 +59,7 @@ ms.locfileid: "58916795"
    ![CDN 缓存页](./media/cdn-manage-expiration-of-blob-content/cdn-caching-page.png)
 
 
-**若要使用全局缓存规则设置 Blob 存储服务的缓存控制标头：**
+**使用全局缓存规则设置 Blob 存储服务的 Cache-Control 标头：**
 
 1. 在“全局缓存规则”下，将“查询字符串缓存行为”设置为“忽略查询字符串”，将“缓存行为”设置为“覆盖”。
       
@@ -71,7 +71,7 @@ ms.locfileid: "58916795"
 
 3. 选择“保存”。
  
-**若要使用自定义缓存规则设置 blob 文件的缓存控制标头：**
+**使用自定义缓存规则设置 Blob 文件的 Cache-Control 标头：**
 
 1. 在“自定义缓存规则”下，创建两个匹配条件：
 

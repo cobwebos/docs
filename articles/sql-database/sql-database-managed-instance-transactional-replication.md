@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库的事务复制 | Microsoft Docs
-description: 了解如何对 Azure SQL 数据库中的单一、池化和实例数据库使用 SQL Server 事务复制。
+description: 了解如何对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库使用 SQL Server 事务复制。
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57852746"
 ---
-# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一、入池和实例数据库进行事务复制
+# <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
 事务复制是 Azure SQL 数据库和 SQL Server 的一项功能，用于将 Azure SQL 数据库或 SQL Server 中表的数据复制到远程数据库中的表。 使用此功能可以同步不同数据库中的多个表。
 
@@ -48,7 +48,7 @@ ms.locfileid: "57852746"
 
 **分发服务器**是从发布服务器收集项目中的更改，并将其分发到订阅服务器的实例或服务器。 分发服务器可以是 Azure SQL 数据库托管实例或 SQL Server（可以采用等于或高于发布服务器版本的任何版本）。 
 
-**订阅服务器**是接收发布服务器上发生的更改的实例或服务器。 订阅服务器可以是 Azure SQL 数据库或 SQL Server 数据库中的单一、入池和实例数据库。 单一或入池数据库上的订阅服务器必须配置为推送订阅服务器。 
+**订阅服务器**是接收发布服务器上发生的更改的实例或服务器。 订阅服务器可以是 Azure SQL 数据库或 SQL Server 数据库中的单一数据库、共用数据库和实例数据库。 单一或入池数据库上的订阅服务器必须配置为推送订阅服务器。 
 
 | 角色 | 单一数据库和入池数据库 | 实例数据库 |
 | :----| :------------- | :--------------- |
@@ -131,11 +131,11 @@ ms.locfileid: "57852746"
 - 两个托管实例位于同一位置。
 - 不能[使用自动故障转移组异地复制](sql-database-auto-failover-group.md)正在托管发布和分发服务器数据库的托管实例。
 
-### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>发布服务器和分发服务器位于本地，订阅服务器位于单一、入池和实例数据库上 
+### <a name="publisher-and-distributor-on-premises-with-a-subscriber-on-a-single-pooled-and-instance-database"></a>发布服务器和分发服务器位于本地，订阅服务器位于单一数据库、共用数据库和实例数据库上 
 
 ![Azure SQL DB 用作订阅服务器](media/replication-with-sql-database-managed-instance/03-azure-sql-db-subscriber.png)
  
-在此配置中，Azure SQL 数据库（单一、入池和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于单一或入池数据库上，则它必须处于推送模式。  
+在此配置中，Azure SQL 数据库（单一数据库、共用数据库和实例数据库）是订阅服务器。 此配置支持从本地迁移到 Azure。 如果订阅服务器位于单一或入池数据库上，则它必须处于推送模式。  
 
 
 ## <a name="next-steps"></a>后续步骤

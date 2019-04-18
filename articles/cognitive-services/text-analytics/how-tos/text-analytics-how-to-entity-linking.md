@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: aahi
 ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59505569"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
@@ -96,7 +96,7 @@ ms.locfileid: "59505569"
 
 + 创建 POST 请求。 查看此请求的 API 文档：[实体链接 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ 设置用于实体提取的 HTTP 终结点。 它必须包括`/entities`资源： `https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
@@ -288,7 +288,7 @@ ms.locfileid: "59505569"
 ## <a name="see-also"></a>另请参阅 
 
  [文本分析概述](../overview.md)  
- [常见问题 (FAQ)](../text-analytics-resource-faq.md)</br>
+ [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
  [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>后续步骤

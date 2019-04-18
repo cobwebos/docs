@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: magattus
 ms.openlocfilehash: 0d34985c8d83e8adad43aeec36ead939d8b22132
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918359"
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>在 Azure CDN 终结点上预加载资产
@@ -50,8 +50,8 @@ ms.locfileid: "58918359"
    > 开始输入文本后，会出现更多“内容路径”文本框，以允许生成多个资产的列表。 若要从列表中删除资产，请选择省略号 (...) 按钮，然后选择“删除”。
    > 
    > 每个内容路径必须是符合以下[正则表达式](/dotnet/standard/base-types/regular-expression-language-quick-reference)的相对 URL：  
-   > - 加载单个文件路径： `^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
-   > - 加载包含查询字符串的单个文件： `^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
+   > - 加载单个文件路径：`^(?:\/[a-zA-Z0-9-_.%=\u0020]+)+$`  
+   > - 加载包含查询字符串的单个文件：`^(?:\?[-_a-zA-Z0-9\/%:;=!,.\+'&\u0020]*)?$` 
    > 
    > 由于每个资产都必须有其自己的路径，因此预加载资产没有通配符功能。
    > 

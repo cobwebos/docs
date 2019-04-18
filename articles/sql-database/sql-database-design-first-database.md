@@ -32,7 +32,7 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
 *如果还没有 Azure 订阅，请在开始前[创建免费帐户](https://azure.microsoft.com/free/)。
 
 > [!NOTE]
-> 本教程使用单一数据库。 你也可以使用弹性池中的入池数据库，或托管实例中的实例数据库。 若要连接到托管实例，请参阅以下托管实例快速入门：[快速入门：配置 Azure VM 以连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)和[快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
+> 本教程使用单一数据库。 你也可以使用弹性池中的共用数据库，或托管实例中的实例数据库。 若要连接到托管实例，请参阅以下托管实例快速入门：[快速入门：配置 Azure VM 以连接到 Azure SQL 数据库托管实例](sql-database-managed-instance-configure-vm.md)和[快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接](sql-database-managed-instance-configure-p2s.md)。
 
 ## <a name="prerequisites"></a>先决条件
 

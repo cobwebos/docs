@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 73fc17ae5c65cd1a6ce47a18cbe17e6c338b7aaf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 4152cf90d9de2eda15a798fbf6b5b4aa4f5646f7
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58882117"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677776"
 ---
 # <a name="configure-face-docker-containers"></a>配置人脸 Docker 容器
 
@@ -31,11 +31,11 @@ ms.locfileid: "58882117"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的人脸资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：人脸的资源管理，在“密钥”下
+* Azure 门户：**认知服务**资源管理下**密钥**
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,11 +43,13 @@ ms.locfileid: "58882117"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器的账单信息的人脸资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上人脸资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**人脸的**概述，标记为 `Endpoint`
+* Azure 门户：**认知服务**概述，标记为 `Endpoint`
+
+请记住添加_人脸_路由到终结点 URI，该示例中所示。 
 
 |需要| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
@@ -80,7 +82,7 @@ ms.locfileid: "58882117"
 
 | 名称 | 数据类型 | 描述 |
 |------|-----------|-------------|
-| `StorageScenario` | String | 容器支持的存储方案。 可用值如下<br/>`Memory` 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` 容器将用于存储 Azure 资源。 如果停止或删除容器，则会保留该容器的存储。|
+| `StorageScenario` | String | 容器支持的存储方案。 可用值如下<br/>`Memory` - 默认值。 容器使用非持久、非分布式的内存中存储，用于单节点的临时使用情况。 如果停止或删除容器，则该容器的存储将被销毁。<br/>`Azure` - 容器使用 Azure 资源进行存储。 如果停止或删除容器，则会保留该容器的存储。|
 | `ConnectionStringOfAzureStorage` | String | 容器使用的 Azure 存储资源的连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
 | `ConnectionStringOfCosmosMongo` | String | 容器使用的 Azure Cosmos DB 资源的 MongoDB 连接字符串。<br/>仅当为 `StorageScenario` 配置设置指定了 `Azure` 时，才应用此设置。 |
 
@@ -136,12 +138,12 @@ ms.locfileid: "58882117"
 
 | 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | 人脸资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
+|{BILLING_KEY} | 认知服务资源终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | 计费的终结点值包括区域和人脸路由。|`https://westcentralus.api.cognitive.microsoft.com/face/v1.0`|
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](face-how-to-install-containers.md#billing)。
-> ApiKey 值是来自 Azure 人脸资源密钥页面的“密钥”。 
+> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
 
 ## <a name="face-container-docker-examples"></a>人脸容器 Docker 示例
 

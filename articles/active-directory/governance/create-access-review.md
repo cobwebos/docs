@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 804efa6e0a39e009e18bbb9dec5ad1638a163597
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495048"
 ---
 # <a name="create-an-access-review-of-groups-or-applications-in-azure-ad-access-reviews"></a>创建访问评审的组或 Azure AD 中的应用程序访问评审
@@ -30,7 +30,7 @@ ms.locfileid: "59495048"
 
 ## <a name="prerequisites"></a>必备组件
 
-- [已启用的访问评审](access-reviews-overview.md)
+- [访问评审已启用](access-reviews-overview.md)
 - 全局管理员或用户管理员
 
 ## <a name="create-one-or-more-access-reviews"></a>创建一个或多个访问评审

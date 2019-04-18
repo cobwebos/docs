@@ -19,10 +19,10 @@ ms.reviewer: jmprieur, lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2054a873d73bce7048ef9e48adabf3fb5279df9
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500382"
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-user-using-the-multi-tenant-application-pattern"></a>如何：使用多租户应用程序模式让任何 Azure Active Directory 用户登录
@@ -58,7 +58,7 @@ Azure AD 中的 Web 应用/API 注册默认为单租户。 可以将注册转换
 
 在单租户应用程序中，登录请求将发送到租户的登录终结点。 以 contoso.onmicrosoft.com 为例，终结点将是：`https://login.microsoftonline.com/contoso.onmicrosoft.com`。 发送到租户终结点的请求可以让该租户中的用户（或来宾）登录该租户中的应用程序。
 
-使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点： `https://login.microsoftonline.com/common`
+使用多租户应用程序时，应用程序事先并不知道用户来自哪个租户，因此无法将请求发送到租户的终结点。 取而代之的是，请求将发送到在所有 Azure AD 租户之间多路复用的终结点：`https://login.microsoftonline.com/common`
 
 当 Microsoft 标识平台上收到请求时 /common 终结点，它让用户登录和，因而，可以发现用户来自哪个租户。 常见终结点可配合使用的所有 Azure AD 支持的身份验证协议：OpenID Connect、OAuth 2.0、SAML 2.0 和 WS 联合身份验证。
 

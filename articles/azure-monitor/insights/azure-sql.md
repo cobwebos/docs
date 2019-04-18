@@ -32,7 +32,7 @@ Azure SQL Analytics 是一种高级云监视解决方案，用于通过单一虚
 
 ## <a name="connected-sources"></a>连接的源
 
-Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一的、池化的和托管的实例数据库）的诊断遥测数据。 因为该解决方案不使用代理连接到 Azure Monitor，该解决方案不支持监视的托管的 SQL Server 的本地或在 Vm 中，请参阅下面的兼容性表。
+Azure SQL Analytics 是一种仅限云的监视解决方案，支持流式传输 Azure SQL 数据库（单一数据库、共用数据库和托管实例数据库）的诊断遥测数据。 因为该解决方案不使用代理连接到 Azure Monitor，该解决方案不支持监视的托管的 SQL Server 的本地或在 Vm 中，请参阅下面的兼容性表。
 
 | 连接的源 | 支持 | 描述 |
 | --- | --- | --- |

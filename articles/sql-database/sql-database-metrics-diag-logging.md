@@ -23,7 +23,7 @@ ms.locfileid: "59548623"
 
 在本主题中，您将学习如何配置日志记录的诊断遥测数据的 Azure SQL 数据库通过 Azure 门户、 PowerShell、 Azure CLI、 Azure 监视器 REST API 和 Azure 资源管理器模板。 这些诊断可以用于衡量资源利用率和查询执行统计信息。 
 
-单一数据库、弹性池中的入池数据库和托管实例中的实例数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
+单一数据库、弹性池中的共用数据库和托管实例中的实例数据库可以流式传输指标和诊断日志，以便更轻松地进行性能监视。 可以配置数据库，以将资源使用情况、辅助角色和会话以及连接性传输到以下 Azure 资源之一：
 
 - **Azure SQL Analytics**：使用报表、警报和缓解建议对 Azure SQL 数据库进行智能监视。
 - **Azure 事件中心**：将 SQL 数据库遥测与自定义监视解决方案或热管道相集成。
@@ -133,7 +133,7 @@ ms.locfileid: "59548623"
    - 最多可以创建三个并行连接用于流式传输诊断遥测数据。
    - 选择“+添加诊断设置”，配置为将诊断数据并行流式传输到多个资源。
 
-   ![为单一数据库、入池数据库或实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
+   ![为单一数据库、共用数据库或实例数据库启用诊断](./media/sql-database-metrics-diag-logging/diagnostics-settings-database-sql-enable.png)
 1. 输入设置名称供自己参考。
 1. 选择诊断数据要流式传输到的目标资源：“存档到存储帐户”、“流式传输到事件中心”或“发送到 Log Analytics”。
 1. 对于标准的基于事件的监视体验，请选中数据库诊断日志遥测对应的以下复选框：“SQLInsights”、“AutomaticTuning”、“QueryStoreRuntimeStatistics”、“QueryStoreWaitStatistics”、“Errors”、“DatabaseWaitStatistics”、“Timeouts”、“Blocks”和“Deadlocks”。

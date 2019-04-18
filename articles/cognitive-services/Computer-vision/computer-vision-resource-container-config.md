@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: db33ce748928b954f5447a82550c6ecde2188abf
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58877119"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678677"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>配置“识别文本”Docker 容器
 
@@ -31,11 +31,11 @@ ms.locfileid: "58877119"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，且此值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的“计算机视觉”资源的有效密钥。
+`ApiKey`设置指定 Azure`Cognitive Services`用于跟踪容器的计费信息的资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：“计算机视觉”的“资源管理”（在“密钥”下）
+* Azure 门户：**认知服务**资源管理下**密钥**
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,11 +43,13 @@ ms.locfileid: "58877119"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器帐单信息的“计算机视觉”资源的终结点 URI。 必须为这个配置设置指定值，且此值必须是 Azure 上“计算机视觉”资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI 对于_认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**计算机视觉**概述，标记为 `Endpoint`
+* Azure 门户：**认知服务**概述，标记为 `Endpoint`
+
+请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
 
 |需要| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
@@ -89,16 +91,18 @@ ms.locfileid: "58877119"
 * **行继续符**：以下各部分中的 Docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非很熟悉 Docker 容器，否则不要更改参数顺序。
 
+请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
+
 将 {_argument_name_} 替换为为你自己的值：
 
 | 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | “计算机视觉”资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_KEY} | 认知服务资源终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](computer-vision-how-to-install-containers.md#billing)。
-> ApiKey 值是“Azure 计算机视觉资源密钥”页中的密钥。 
+> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
 
 ## <a name="recognize-text-container-docker-examples"></a>“识别文本”容器 Docker 示例
 

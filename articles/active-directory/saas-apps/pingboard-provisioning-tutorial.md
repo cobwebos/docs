@@ -18,10 +18,10 @@ ms.author: asmalser
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d2ab7f58c3061044583baf9db73e193966d7d4eb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280326"
 ---
 # <a name="tutorial-configure-pingboard-for-automatic-user-provisioning"></a>教程：为 Pingboard 配置自动用户预配
@@ -45,7 +45,7 @@ Azure AD 使用称为“分配”的概念来确定哪些用户应收到对所�
 
 配置和启用预配服务前，需确定 Azure AD 中的哪些用户或组需访问 Pingboard 应用。 确定后，可以按照此处的说明将这些用户分配到 Pingboard 应用：
 
-[将用户分配到企业应用程序](../manage-apps/assign-user-or-group-access-portal.md)
+[向企业应用分配用户](../manage-apps/assign-user-or-group-access-portal.md)
 
 ### <a name="important-tips-for-assigning-users-to-pingboard"></a>将用户分配到 Pingboard 的重要提示
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
-ms.openlocfilehash: dbdd0165e276e5c82f8d4c15ef70d3a541d76bc0
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522190"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678983"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用 active 学习来改善您的知识库
 
@@ -46,7 +46,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 运行时版本 4.4.0 及更高版本支持主动学习。 如果你的知识库是在早期版本上创建的，请[升级运行时](troubleshooting-runtime.md#how-to-get-latest-qnamaker-runtime-updates)以使用此功能。 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 有关使用主动学习的最佳做法，请参阅[最佳做法](../Concepts/best-practices.md#active-learning)。
 
@@ -156,7 +156,7 @@ QnA Maker 通过隐式和显式反馈学习新的问题变体。
 
 一旦用户选择一个现有问题，客户端应用程序以使用 QnA Maker 训练 API 的反馈方式发送用户的选择。 此反馈完成活动学习反馈循环。 
 
-使用[Azure 智能机器人应用程序C#示例](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-activelearning-bot)若要查看端到端方案中的主动学习。
+使用[Azure 智能机器人应用程序示例](https://aka.ms/activelearningsamplebot)若要查看端到端方案中的主动学习。
 
 ## <a name="train-api"></a>训练 API
 
@@ -169,22 +169,22 @@ Content-Type: application/json
 {"feedbackRecords": [{"userId": "1","userQuestion": "<question-text>","qnaId": 1}]}
 ```
 
-|HTTP 请求属性|名称|类型|用途|
+|HTTP 请求属性|名称|Type|目的|
 |--|--|--|--|
 |URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
 |主机子域|QnAMaker 资源名称|字符串|在 Azure 订阅中将 QnA Maker 的主机名。 这是可在设置页上后发布该知识库。 |
-|页眉|内容类型|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
-|页眉|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有多个设置：
 
-|JSON 正文属性|类型|用途|
+|JSON 正文属性|Type|目的|
 |--|--|--|--|
-|`feedbackRecords`|阵列|反馈的列表。|
+|`feedbackRecords`|数组|反馈的列表。|
 |`userId`|字符串|接受建议的问题的人员的用户 ID。 用户 ID 格式是由您决定。 例如，电子邮件地址可以是您的体系结构中的有效用户 ID。 可选。|
 |`userQuestion`|字符串|问题的确切文本。 必需。|
-|`qnaID`|号|在中找到的问题的 ID [GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)。 |
+|`qnaID`|数字|在中找到的问题的 ID [GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)。 |
 
 一个 JSON 正文示例如下所示：
 

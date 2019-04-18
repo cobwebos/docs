@@ -18,10 +18,10 @@ ms.author: asmalser-msft
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b50bcada8cfc72c06804793850f1f28a288f5248
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272914"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>教程：为 Slack 配置自动用户预配
@@ -36,7 +36,7 @@ ms.locfileid: "59272914"
 * 启用了[加法计划](https://aadsyncfabric.slack.com/pricing)或更佳计划的 Slack 租户
 * 在 Slack 中具有团队管理员权限的用户帐户
 
-注意：Azure AD 预配集成依赖于可供 Slack 团队在加法计划或更佳计划中使用的 [Slack SCIM API](https://api.slack.com/scim)。
+请注意:Azure AD 预配集成依赖于可供 Slack 团队在加法计划或更佳计划中使用的 [Slack SCIM API](https://api.slack.com/scim)。
 
 ## <a name="assigning-users-to-slack"></a>将用户分配到 Slack
 
@@ -127,4 +127,4 @@ Azure Active Directory 使用称为“分配”的概念来确定哪些用户应
 ## <a name="additional-resources"></a>其他资源
 
 * [管理企业应用的用户帐户预配](../manage-apps/configure-automatic-user-provisioning-portal.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+* [什么是使用 Azure Active Directory 的应用程序访问和单一登录？](../manage-apps/what-is-single-sign-on.md)

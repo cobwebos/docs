@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e103604af7aba2a0ef2e3d0e02a721ae4740c40
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493767"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy-preview"></a>SAML 单一登录对应用程序代理 （预览版） 的本地应用程序
@@ -68,4 +68,4 @@ SAML SSO 与应用程序代理也适用于 SAML 令牌加密功能。 有关详�
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure AD 应用程序代理如何提供单一登录？](application-proxy-single-sign-on.md)
-- [应用程序代理故障排除](application-proxy-troubleshoot.md)
+- [排查应用程序代理问题](application-proxy-troubleshoot.md)

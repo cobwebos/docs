@@ -43,6 +43,6 @@ sections:
           - title: 命令行
             html: <p><a href="/cli/azure/ext/resource-graph/graph">Azure CLI</a></p><p><a href="/powershell/module/az.resourcegraph/">Azure PowerShell</a></p>
           - title: Languages
-            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">用于 .NET 的 Azure SDK</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">用于 Python 的 Azure SDK</a></p>
+            html: <p><a href="/dotnet/api/Microsoft.Azure.Management.ResourceGraph">用于 .NET 的 Azure SDK</a></p><p><a href="/python/api/azure-mgmt-resourcegraph/azure.mgmt.resourcegraph">Azure SDK for Python</a></p>
           - title: REST
             html: '<p><a href="/rest/api/azureresourcegraph/resources/resources">API 参考</a></p><p><a href="https://github.com/Azure/azure-rest-api-specs/tree/master/specification/resourcegraph/resource-manager/Microsoft.ResourceGraph/preview/2018-09-01-preview">2018-09-01-preview (OpenAPI)</a></p>'

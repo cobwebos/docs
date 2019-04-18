@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3cb6f4563cf45b9ccd377dec3db4ebab095c8a09
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885428"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677759"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -31,11 +31,11 @@ ms.locfileid: "58885428"
 
 ## <a name="apikey-configuration-setting"></a>ApiKey 配置设置
 
-`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定值，并且该值必须是为 [`Billing`](#billing-configuration-setting) 配置设置指定的_文本分析_资源的有效密钥。
+`ApiKey` 设置指定用于跟踪容器账单信息的 Azure 资源键。 必须为 ApiKey 指定一个值，该值必须为有效的密钥_认知服务_为指定的资源[ `Billing` ](#billing-configuration-setting)配置设置。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**文本分析的**资源管理，在“密钥”下
+* Azure 门户：**认知服务**资源管理下**密钥**
 
 ## <a name="applicationinsights-setting"></a>ApplicationInsights 设置
 
@@ -43,11 +43,13 @@ ms.locfileid: "58885428"
 
 ## <a name="billing-configuration-setting"></a>Billing 配置设置
 
-`Billing` 设置指定 Azure 上用于计量容器的账单信息的文本分析资源的终结点 URI。 必须为此配置设置指定值，并且该值必须是 Azure 上的_文本分析_资源的有效终结点 URI。 容器约每 10 到 15 分钟报告一次使用情况。
+`Billing`设置指定的终结点 URI 的_认知服务_使用在 Azure 上的资源要计数的容器的计费信息。 必须指定此配置设置，一个值，该值必须是有效的终结点 URI __认知服务_在 Azure 上的资源。 容器约每 10 到 15 分钟报告一次使用情况。
 
 可以在以下位置找到此设置：
 
-* Azure 门户：**文本分析**概述，标记为 `Endpoint`
+* Azure 门户：**认知服务**概述，标记为 `Endpoint`
+
+您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
 
 |需要| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
@@ -89,16 +91,18 @@ ms.locfileid: "58885428"
 * **行继续符**：以下各节中的 docker 命令使用反斜杠 `\` 作为行继续符。 根据主机操作系统的要求替换或删除字符。 
 * **参数顺序**：除非非常熟悉 docker 容器，否则不要更改参数顺序。
 
+您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
+
 将 {_argument_name_} 替换为为你自己的值：
 
 | 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
-|{BILLING_KEY} | Azure 门户的“文本分析密钥”页面上可用的文本分析资源的终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | Azure 门户的“文本分析概述”页面上提供了账单终结点值。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_KEY} | 为终结点密钥的`Cognitive Services`可在 Azure 上的资源`Cognitive Services`密钥页。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
+|{BILLING_ENDPOINT_URI} | 计费的终结点值是可在 Azure 上`Cognitive Services`概述页。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
-> ApiKey 值是来自 Azure 文本分析资源密钥页面的**密钥**。 
+> ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
 
 ## <a name="keyphrase-extraction-container-docker-examples"></a>keyPhrase 提取容器 docker 示例
 

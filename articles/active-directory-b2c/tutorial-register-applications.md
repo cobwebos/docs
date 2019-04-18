@@ -11,10 +11,10 @@ ms.date: 02/05/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 849bcfe2b5ee177d06b8e4cf62fd29459d2e59ce
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278388"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中注册应用程序
@@ -44,7 +44,7 @@ ms.locfileid: "59278388"
 
     回复 URL 必须以方案 `https` 开头，并且所有回复 URL 值必须共享一个 DNS 域。 例如，如果应用程序的回复 URL 为 `https://login.contoso.com`，则可以像此 URL `https://login.contoso.com/new` 一样向其添加。 或者，你可以引用 `login.contoso.com` 的 DNS 子域，例如 `https://new.login.contoso.com`。 若要将包含 `login-east.contoso.com` 和 `login-west.contoso.com` 的应用程序作为回复 URL，则必须按以下顺序添加这些回复 URL：`https://contoso.com`、`https://login-east.contoso.com`、`https://login-west.contoso.com`。 可以添加后两个回复 URL，因为它们是第一个回复 URL (`contoso.com`) 的子域。
 
-7. 单击“创建”。
+7. 单击**创建**。
 
 ## <a name="create-a-client-secret"></a>创建客户端机密
 

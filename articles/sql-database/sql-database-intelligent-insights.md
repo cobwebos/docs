@@ -65,7 +65,7 @@ Intelligent Insights 可分析数据库性能，方法是比较前一个小时�
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
-Intelligent Insights 在发现和排查 SQL 数据库性能问题方面出类拔萃。 若要使用 Intelligent Insights 排查 SQL 数据库和托管实例数据库的性能问题，请参阅[使用 Intelligent Insights 解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
+Intelligent Insights 在发现和排查 SQL 数据库性能问题方面出类拔萃。 若要使用智能见解排查 SQL 数据库和托管实例数据库的性能问题，请参阅[使用智能见解解决 Azure SQL 数据库性能问题](sql-database-intelligent-insights-troubleshoot-performance.md)。
 
 ## <a name="configure-intelligent-insights"></a>配置智能见解
 

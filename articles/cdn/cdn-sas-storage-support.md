@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/21/2018
 ms.author: magattus
 ms.openlocfilehash: 7edf0a9f8d4eb4c01b6d80fd82a1061b6cbb1e35
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918546"
 ---
 # <a name="using-azure-cdn-with-sas"></a>将 Azure CDN 与 SAS 一起使用
@@ -86,11 +86,10 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    ```
    $1?sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![CDN URL 重写规则的左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL 重写规则-右侧](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![CDN URL 重写规则 - 左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![CDN URL 重写规则 - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. 新规则激活以后，任何人都可以访问 CDN 终结点上指定容器中的文件，不管这些人是否在 URL 中使用 SAS 令牌。 下面是格式：
-   `https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. 新规则激活以后，任何人都可以访问 CDN 终结点上指定容器中的文件，不管这些人是否在 URL 中使用 SAS 令牌。 格式为：`https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    例如：   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -125,8 +124,8 @@ https://democdnstorage1.blob.core.windows.net/container1/demo.jpg?sv=2017-07-29&
    ```
    $1&sv=2017-07-29&ss=b&srt=c&sp=r&se=2027-12-19T17:35:58Z&st=2017-12-19T09:35:58Z&spr=https&sig=kquaXsAuCLXomN7R00b8CYM13UpDbAHcsRfGOW3Du1M%3D
    ```
-   ![CDN URL 重写规则的左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
-   ![CDN URL 重写规则-右侧](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
+   ![CDN URL 重写规则 - 左](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
+   ![CDN URL 重写规则 - 右](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
 3. 如果续订 SAS，请确保使用新的 SAS 令牌更新 URL 重写规则。 
 

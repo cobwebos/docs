@@ -9,10 +9,10 @@ editor: edprice
 tags: ''
 keywords: ''
 ms.openlocfilehash: 33d0baf10df1882baf212c3e2c2683c8ca072fcc
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896270"
 ---
 # <a name="install-micro-focus-enterprise-server-40-and-enterprise-developer-40-on-azure"></a>在 Azure 上安装微焦点 Enterprise Server 4.0 和企业级开发版 4.0
@@ -38,7 +38,7 @@ Azure 上的常见工作负荷是开发和测试环境中，因为它是因此�
 > [!NOTE]
 > 最佳做法是设置站点到站点虚拟专用网络 (VPN) 隧道或 jumpbox，以便可以控制对 Azure Vm 的访问。
 
-## <a name="install-enterprise-server"></a>安装企业服务器
+## <a name="install-enterprise-server"></a>安装 Enterprise Server
 
 1. 为了更好的安全性和可管理性，请考虑创建新的资源组，只需为此项目 — 例如， **RGMicroFocusEntServer**。 在 Azure 中使用的第一部分名称来指定要使其更容易发现列表中的资源类型。
 
@@ -74,7 +74,7 @@ Azure 上的常见工作负荷是开发和测试环境中，因为它是因此�
 
 ### <a name="check-for-updates"></a>检查更新
 
-安装完成后，请确保自多个如与企业服务器一起安装的 Microsoft c + + 可再发行组件和.NET Framework 的先决条件检查任何其他更新。
+安装完成后，请务必检查任何其他更新自多个先决条件，如 MicrosoftC++可再发行组件和.NET Framework 将随企业服务器一起安装。
 
 ### <a name="upload-the-license"></a>上传许可证
 

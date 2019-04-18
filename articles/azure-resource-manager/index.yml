@@ -72,7 +72,7 @@ sections:
             html: <p><a href="/azure/templates/">模板参考</a></p><p><a href="/azure/resource-group-template-functions">模板函数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-functions">UI 定义函数</a></p><p><a href="/azure/azure-resource-manager/managed-application-createuidefinition-elements">UI 定义元素</a></p>
           - title: 命令行
             html: <p><a href="/cli/azure/resource">Azure CLI</a></p><p><a href="/powershell/module/az.resources">Azure PowerShell</a></p>
-          - title: Languages
+          - title: 语言
             html: <p><a href="/dotnet/api/microsoft.azure.management.resourcemanager">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.resources">Java</a></p><p><a href="/python/api/overview/azure/resources?view=azure-python">Python</a></p>
           - title: REST
             html: <p><a href="/rest/api/resources/">REST API</a></p>

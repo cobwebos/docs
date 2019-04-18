@@ -18,10 +18,10 @@ ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97728fa70f0c5f58510e0e68d27a379b20887703
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500289"
 ---
 # <a name="how-to-configure-terms-of-service-and-privacy-statement-for-an-app"></a>如何：配置应用程序的服务和隐私声明条款
@@ -50,16 +50,16 @@ ms.locfileid: "59500289"
 | 有效的架构 | HTTP 和 HTTPS<br/>建议使用 HTTPS |
 | 最大长度    | 2048 个字符                       |
 
-示例：`https://myapp.com/terms-of-service`和 `https://myapp.com/privacy-statement`
+示例：`https://myapp.com/terms-of-service` 和 `https://myapp.com/privacy-statement`
 
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>添加指向服务条款和隐私声明的链接
 
 服务条款和隐私声明准备就绪后，可以在应用中使用这些方法之一添加指向这些文档的链接：
 
-* [通过 Azure 门户](#registered-in-azure-portal)
-* [在应用程序注册门户或开发人员中心](#registered-in-app-reg-portal)
-* [使用 JSON 的应用程序对象](#app-object-json)
-* [使用 REST API 的 MSGraph beta 版](#msgraph-beta-rest-api)
+* [通过 Azure 门户 添加](#registered-in-azure-portal)
+* [在应用程序注册门户或开发人员中心添加](#registered-in-app-reg-portal)
+* [使用应用对象 JSON](#app-object-json)
+* [使用 MSGraph beta REST API](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>已在 Azure 门户中注册应用
 
@@ -114,5 +114,5 @@ PATCH https://graph.microsoft.com/beta/applications/{application id}
 ```
 
 > [!NOTE]
-> * 请注意，不要覆盖任何预先存在的值分配到其中的任何字段： `supportUrl`， `marketingUrl`，和 `logoUrl`
+> * 请注意不要覆盖已分配给以下任何字段的任何预先存在的值：`supportUrl``marketingUrl` 和 `logoUrl`
 > * 仅当使用 Azure AD 帐户登录时，MSGraph beta REST API 才会正常工作。 不支持 Microsoft 个人帐户。

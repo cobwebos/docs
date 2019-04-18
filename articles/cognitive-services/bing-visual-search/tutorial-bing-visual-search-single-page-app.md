@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: aahi
 ms.openlocfilehash: 084aad5540a2bd56d98e343639a45c16f786e599
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496550"
 ---
 # <a name="create-a-visual-search-single-page-web-app"></a>创建视觉搜索单页 Web 应用
@@ -123,4 +123,4 @@ html.push("<a href='javascript:bingVisualSearch(\"" + item.imageInsightsToken + 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像](tutorial-visual-search-crop-area-results.md)
+> [教程：裁剪图像使用必应视觉搜索适用于 SDKC#](tutorial-visual-search-crop-area-results.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: anavin
-ms.openlocfilehash: e6c5a9aa3e4e173ecfc79f4072d091493677afed
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: b65bad57a300d941774f5d3e5d01967f0c13d684
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489975"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678473"
 ---
 # <a name="virtual-network-peering"></a>虚拟网络对等互连
 
@@ -63,8 +63,7 @@ ms.locfileid: "59489975"
 
 ![虚拟网络对等互连传输](./media/virtual-networks-peering-overview/figure04.png)
 
-VNet 对等互连和全局 VNet 对等互连 （预览版） 支持网关传输。 可以使用远程网关，也可以在预览中的全局对等互连虚拟网络中允许网关传输。 预览版目前在所有 Azure 区域、 中国云区域和政府云区域。 不需要加入允许列表。 可以通过 CLI、PowerShell、模板或 API 在预览版中进行测试。 预览版不支持门户。
-仅当网关在虚拟网络 （资源管理器） 支持通过不同部署模型 （Resource Manager 和经典） 创建虚拟网络之间的网关传输。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
+VNet 对等互连和全局 VNet 对等互连支持网关传输。 仅当网关在虚拟网络 （资源管理器） 支持通过不同部署模型 （Resource Manager 和经典） 创建虚拟网络之间的网关传输。 若要了解有关使用网关进行传输的详细信息，请参阅[配置 VPN 网关以在虚拟网络对等互连中传输](../vpn-gateway/vpn-gateway-peering-gateway-transit.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。
 
 正在共享单个 Azure ExpressRoute 连接的虚拟网络对等时，它们之间的流量会通过对等关系（即通过 Azure 主干网）流通。 仍可在各个虚拟网络中使用本地网关连接到本地线路。 也可使用共享网关，并为本地连接配置传输。
 

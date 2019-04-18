@@ -233,7 +233,7 @@ sections:
           - title: SDK 参考
             html: |
               <p><a href="https://aka.ms/csspeech/csharpref">C# API（UWP、.NET 和 Unity）</a></p>
-              <p><a href="https://aka.ms/csspeech/cppref">C++ API</a></p>
+              <p><a href="https://aka.ms/csspeech/cppref">C + + API</a></p>
               <p><a href="https://aka.ms/csspeech/javaref">Java API</a></p>
               <p><a href="https://aka.ms/csspeech/pythonref">Python API</a></p>
               <p><a href="https://aka.ms/csspeech/objectivecref">Objective-C API</a></p>

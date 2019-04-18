@@ -13,10 +13,10 @@ ms.reviewer: sahenry
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5adb857e6032e46c31a86685913277ec3eb571be
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496397"
 ---
 # <a name="troubleshoot-self-service-password-reset"></a>排查自助密码重置问题
@@ -266,7 +266,7 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 * **支持代码**：用户看到该错误时生成了哪个支持代码？
    * 若要找到此代码，请再现错误，然后选择屏幕底部的“支持代码”链接，将生成的 GUID 发送给支持工程师。
 
-   ![找到屏幕底部的支持代码][Support code]
+   ![在屏幕底部查找支持代码][Support code]
 
   * 如果所在页面的底部没有支持代码，请按 F12，搜索 SID 和 CID，然后将这两个结果发送给支持工程师。
 * **日期、时间和时区**：包含发生错误时的确切日期和时间及“时区”。
@@ -285,14 +285,14 @@ Azure AD Connect 需要 Active Directory“重置密码”权限才能执行密�
 
 以下文章提供了有关通过 Azure AD 进行密码重置的更多信息：
 
-* [如何完成成功推出 SSPR？](howto-sspr-deployment.md)
+* [如何成功推出 SSPR？](howto-sspr-deployment.md)
 * [重置或更改密码](../user-help/active-directory-passwords-update-your-own-password.md)
 * [注册自助密码重置](../user-help/active-directory-passwords-reset-register.md)
 * [是否有许可问题？](concept-sspr-licensing.md)
-* [SSPR 使用哪些数据以及哪些数据应填充为你的用户？](howto-sspr-authenticationdata.md)
-* [向用户提供的身份验证方法？](concept-sspr-howitworks.md#authentication-methods)
-* [使用 SSPR 策略选项有哪些？](concept-sspr-policy.md)
-* [什么是密码写回，为什么我关心它？](howto-sspr-writeback.md)
+* [SSPR 使用哪些数据？应为用户填充哪些数据？](howto-sspr-authenticationdata.md)
+* [哪些身份验证方法可供用户使用？](concept-sspr-howitworks.md#authentication-methods)
+* [SSPR 有哪些策略选项？](concept-sspr-policy.md)
+* [什么是密码写回？我为什么关心它？](howto-sspr-writeback.md)
 * [如何报告 SSPR 中的活动？](howto-sspr-reporting.md)
-* [什么是所有 SSPR 中的选项以及执行哪些操作它们的含义是？](concept-sspr-howitworks.md)
-* [我有了别处未涵盖的问题](active-directory-passwords-faq.md)
+* [SSPR 中的所有选项有哪些？它们有哪些含义？](concept-sspr-howitworks.md)
+* [我有在别处未涵盖的问题](active-directory-passwords-faq.md)

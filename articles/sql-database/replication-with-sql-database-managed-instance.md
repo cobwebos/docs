@@ -21,7 +21,7 @@ ms.locfileid: "58417949"
 ---
 # <a name="configure-replication-in-an-azure-sql-database-managed-instance-database"></a>在 Azure SQL 数据库托管实例数据库中配置复制
 
-使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。 还可以使用事务复制将在 Azure SQL 数据库托管实例中的实例数据库中所做的更改推送到 SQL Server 数据库，推送到 Azure SQL 数据库中的单一数据库或推送到 Azure SQL 数据库弹性池中的入池数据库。 事务复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
+使用事务复制，可将数据从 SQL Server 数据库或其他实例数据库复制到 Azure SQL 数据库托管实例数据库中。 还可以使用事务复制将在 Azure SQL 数据库托管实例中的实例数据库中所做的更改推送到 SQL Server 数据库，推送到 Azure SQL 数据库中的单一数据库或推送到 Azure SQL 数据库弹性池中的共用数据库。 事务复制在 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)上以公共预览版提供。 托管实例可以托管发布服务器、分发服务器和订阅服务器数据库。 有关可用配置，请参阅[事务复制配置](sql-database-managed-instance-transactional-replication.md#common-configurations)。
 
 ## <a name="requirements"></a>要求
 

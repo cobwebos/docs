@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2250449c0ef342332945b80cb10cb9a02885b259
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496924"
 ---
 # <a name="require-app-protection-policy-for-cloud-app-access-with-conditional-access-preview"></a>使用条件性访问 （预览版） 的云应用访问需要应用保护策略
@@ -206,11 +206,11 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 
 5. 下**的访问控制**，选择以下选项：
 
-   - **要求将设备标记为合规**
+   - “要求将设备标记为合规”
 
-   - **需要应用保护策略(预览版)**
+   - **需要应用保护策略 （预览版）**
 
-   - **需要某一已选控件**   
+   - “需要某一已选控件”   
  
      ![条件性访问](./media/app-protection-based-conditional-access/11.png)
 
@@ -238,11 +238,11 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 
 5. 下**的访问控制**，选择以下选项：
 
-   - **要求将设备标记为合规**
+   - “要求将设备标记为合规”
 
-   - **需要应用保护策略(预览版)**
+   - **需要应用保护策略 （预览版）**
 
-   - **需要某一已选控件**
+   - “需要某一已选控件”
 
      ![条件性访问](./media/app-protection-based-conditional-access/11.png)
 
@@ -308,11 +308,11 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 
 5. 下**的访问控制**，选择以下选项：
 
-   - **要求将设备标记为合规**
+   - “要求将设备标记为合规”
 
-   - **需要应用保护策略(预览版)**
+   - **需要应用保护策略 （预览版）**
 
-   - **要求所有选定控件**   
+   - ”需要所有已选控件“   
  
      ![条件性访问](./media/app-protection-based-conditional-access/13.png)
 
@@ -340,11 +340,11 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 
 5. 下**的访问控制**，选择以下选项：
 
-   - **要求将设备标记为合规**
+   - “要求将设备标记为合规”
 
-   - **需要应用保护策略(预览版)**
+   - **需要应用保护策略 （预览版）**
 
-   - **要求所有选定控件**   
+   - ”需要所有已选控件“   
  
      ![条件性访问](./media/app-protection-based-conditional-access/13.png)
 
@@ -417,9 +417,9 @@ Azure Active Directory 条件性访问限制对 Intune 已报告到 Azure AD 为
 
    - **需要批准的客户端应用**
 
-   - **需要应用保护策略(预览版)**
+   - **需要应用保护策略 （预览版）**
 
-   - **需要某一已选控件**
+   - “需要某一已选控件”
  
      ![条件性访问](./media/app-protection-based-conditional-access/12.png)
 

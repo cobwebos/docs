@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: wolfma
 ms.openlocfilehash: bf0916f197ff5bf1a9531fde98fe8cefc8d7727f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358065"
 ---
 # <a name="support-and-help-options"></a>支持和帮助选项
@@ -56,7 +56,7 @@ ms.locfileid: "59358065"
 Azure 客户可在 Azure 门户中创建和管理支持请求。
 
 * [Azure 门户](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
-* [适用于美国政府的 azure 门户](https://portal.azure.us)
+* [适用于美国政府的 Azure 门户](https://portal.azure.us)
 
 ## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
 
@@ -74,8 +74,8 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 > [!TIP]
 > Stack Overflow 中的以下文帖包含有关如何提交问题和添加源代码的提示。 遵循以下准则有助于提高社区成员快速评估和响应问题的可能性：  
-> * [如何提出的很好的问题？](https://stackoverflow.com/help/how-to-ask)
-> * [如何创建最小、 完整且可验证的示例](https://stackoverflow.com/help/mcve)
+> * [How do I ask a good question?](https://stackoverflow.com/help/how-to-ask)（如何正确提问？）
+> * [如何创建最小、完整且可验证的示例](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 
@@ -86,17 +86,17 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 你可以创建一个 bug 报告、功能请求，或者提出一般问题并共享最佳做法。 对于 bug 报告，请遵循所提供的模板：
 
-**描述程序错误**
+**描述 bug**
 
 清晰而简洁地描述此 bug 是什么。
 
-**若要重现**
+**重现步骤**
 
 用于重现此行为的步骤：
 1. ...
 2. ...
 
-**预期的行为**
+**预期行为**
 
 清晰而简洁地描述你预期发生的情况。
 
@@ -104,7 +104,7 @@ Stack Overflow 是开发相关问题的首选渠道。 在 Stack Overflow 中，
 
 所使用的 SDK 的版本。
 
-**平台、 操作系统和编程语言**
+**平台、操作系统和编程语言**
 
  - OS：[例如 Windows、Linux、Android、iOS、...] - 请具体说明
  - 硬件 - x64、x86、ARM、...
