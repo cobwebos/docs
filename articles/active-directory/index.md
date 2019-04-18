@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: barbkess
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 352050f4bd53188a420f75607677d88ebc081505
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051029"
 ---
 <div id="main" class="v2">
@@ -161,7 +161,7 @@ ms.locfileid: "59051029"
                                                             <a href="manage-apps/index.yml"><i>查看更多 &gt;</i></a>
                                                         </p>
                                                         <br><br>
-                                                        <h3><a href="authentication/index.yml">Authentication</a></h3>
+                                                        <h3><a href="authentication/index.yml">身份验证</a></h3>
                                                         <p>
                                                             <a href="authentication/concept-mfa-howitworks.md">工作原理：Azure MFA</a><br>
                                                             <a href="authentication/concept-sspr-howitworks.md">Azure AD 自助密码重置</a><br>
@@ -169,7 +169,7 @@ ms.locfileid: "59051029"
                                                             <a href="authentication/index.yml"><i>查看更多 &gt;</i></a>
                                                             </p>
                                                         <br><br>
-                                                        <h3><a href="b2b/index.yml">企业对企业 (B2B)</a></h3>
+                                                        <h3><a href="b2b/index.yml">企业到企业 (B2B)</a></h3>
                                                         <p>
                                                             <a href="b2b/what-is-b2b.md">什么是 Azure AD B2B？</a><br>
                                                             <a href="b2b/add-users-administrator.md">在门户中添加来宾用户</a><br>
@@ -177,7 +177,7 @@ ms.locfileid: "59051029"
                                                             <a href="b2b/index.yml"><i>查看更多 &gt;</i></a>
                                                             </p>
                                                         <br><br>
-                                                        <h3><a href="/azure/active-directory-b2c/index">企业对客户 (B2C)</a></h3>
+                                                        <h3><a href="/azure/active-directory-b2c/index">企业到客户 (B2C)</a></h3>
                                                         <p>
                                                             <a href="/azure/active-directory-b2c/active-directory-b2c-overview">什么是 Azure AD B2C？</a><br>
                                                             <a href="/azure/active-directory-b2c/tutorial-create-tenant">创建 Azure AD B2C 租户</a><br>
@@ -198,7 +198,7 @@ ms.locfileid: "59051029"
                                                         <h3><a href="conditional-access/index.yml">条件性访问</a></h3>
                                                         <p>
                                                             <a href="conditional-access/overview.md">什么是条件访问？</a><br>
-                                                            <a href="conditional-access/app-based-mfa.md">要求对特定应用执行 MFA</a><br>
+                                                            <a href="conditional-access/app-based-mfa.md">需要对特定应用执行 MFA</a><br>
                                                             <a href="conditional-access/location-condition.md">基于位置的条件</a><br>
                                                             <a href="conditional-access/index.yml"><i>查看更多 &gt;</i></a>
                                                             </p>
@@ -206,7 +206,7 @@ ms.locfileid: "59051029"
                                                            <h3><a href="develop/index.yml">开发人员</a></h3>
                                                         <p>
                                                             <a href="develop/about-microsoft-identity-platform.md">关于 Microsoft 标识平台</a><br>
-                                                            <a href="develop/v2-oauth2-auth-code-flow.md">OAuth 2.0 代码流授权</a><br>
+                                                            <a href="develop/v2-oauth2-auth-code-flow.md"> OAuth 2.0 代码流授予</a><br>
                                                             <a href="develop/quickstart-register-app.md">将应用注册到 Microsoft 标识平台</a><br>
                                                             <a href="develop/index.yml"><i>查看更多 &gt;</i></a>
                                                             </p>

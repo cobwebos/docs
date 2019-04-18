@@ -14,12 +14,12 @@ ms.topic: quickstart
 ms.date: 06/12/2018
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 99c6e7dc589a94880976a9c7abcde12377e4e5d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 01d982d91d772ccfd468ccdac6391f971be4f43b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58101527"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546536"
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>在应用服务环境中创建和使用内部负载均衡器 #
 
@@ -170,13 +170,13 @@ ILB ASE 需要有效的 SSL 证书。 可使用内部证书颁发机构、向外
 
 4. 设置 ASE 域的 DNS。 可以在 DNS 中将通配符与域结合使用。 若要执行一些简单测试，可编辑 VM 上的主机文件，将应用名称设置为 VIP IP 地址：
 
-    a. 如果 ASE 的域名为 _.ilbase.com_，并且创建的应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。 然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\_。）
+    a. 如果 ASE 的域名为 _.ilbase.com_，并且创建的应用名为 _mytestapp_，则它所在的地址为 _mytestapp.ilbase.com_。 然后设置 _mytestapp.ilbase.com_ 以解析为 ILB 地址。 （在 Windows 上，主机文件位于 _C:\Windows\System32\drivers\etc\\_。）
 
     b. 若要测试 Web 部署发布或访问高级控制台，请为 _mytestapp.scm.ilbase.com_ 创建一条记录。
 
 5. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 （或者转到域中的任意应用名称。）
 
-6. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则需接受安全性不足的缺点。
+6. 在该 VM 上使用浏览器并转到 https://mytestapp.ilbase.com。 如果使用自签名证书，则需接受安全性不足的缺点。
 
     ILB 的 IP 地址在“IP 地址”下列出。 此列表还包含由外部 VIP 用于入站流量管理的 IP 地址。
 

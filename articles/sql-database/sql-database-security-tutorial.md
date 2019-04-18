@@ -1,6 +1,6 @@
 ---
 title: 在 Azure SQL 数据库中确保单一数据库或入池数据库的安全 | Microsoft Docs
-description: 了解在 Azure SQL 数据库中保护单一数据库或入池数据库的技术和功能。
+description: 一个教程，介绍在 Azure SQL 数据库中保护单一数据库或入池数据库的技术和功能。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,23 @@ ms.author: vanto
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
-ms.openlocfilehash: d6f14a7cdcb77c1ca47d0f79f587e0bf3606b5d5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.custom: seoapril2019
+ms.openlocfilehash: d09af0a4c2d09004d5c1bbf3261a14850eef7714
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893265"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496431"
 ---
 # <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或入池数据库
+
+本教程介绍如何执行下列操作：
+
+> [!div class="checklist"]
+> - 创建服务器级和数据库级防火墙规则
+> - 配置 Azure Active Directory (AD) 管理员
+> - 通过 SQL 身份验证、Azure AD 身份验证和安全的连接字符串管理用户访问
+> - 启用安全功能，例如高级数据安全、审核、数据掩码和加密
 
 Azure SQL 数据库允许你通过以下方式确保单一数据库或入池数据库中数据的安全：
 
@@ -28,14 +37,6 @@ Azure SQL 数据库允许你通过以下方式确保单一数据库或入池数�
 
 > [!NOTE]
 > 可以根据 [Azure SQL 数据库托管实例](sql-database-managed-instance-index.yml)和[连接体系结构](sql-database-managed-instance-connectivity-architecture.md)中的说明，使用网络安全规则和专用终结点来确保托管实例上的 Azure SQL 数据库的安全。
-
-只需几个简单的步骤，即可增强数据库安全。 本教程介绍如何执行下列操作：
-
-> [!div class="checklist"]
-> - 创建服务器级和数据库级防火墙规则
-> - 配置 Azure Active Directory (AD) 管理员
-> - 通过 SQL 身份验证、Azure AD 身份验证和安全的连接字符串管理用户访问
-> - 启用安全功能，例如高级数据安全、审核、数据掩码和加密
 
 若要了解详细信息，请参阅 [Azure SQL 数据库安全概述](/azure/sql-database/sql-database-security-index)和[功能](sql-database-security-overview.md)这两篇文章。
 
@@ -142,7 +143,7 @@ SQL 数据库受 Azure 中的防火墙保护。 默认情况下，将拒绝与�
 
 - [将本地标识与 Azure AD 集成](../active-directory/hybrid/whatis-hybrid-identity.md)
 - [将自己的域名添加到 Azure AD](../active-directory/active-directory-domains-add-azure-portal.md)
-- [Microsoft Azure now supports federation with Windows Server AD](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)（Microsoft Azure 现在支持与 Windows Server AD 联合）
+- [Microsoft Azure 现在支持与 Windows Server AD 联合](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/)
 - [管理 Azure AD 目录](../active-directory/fundamentals/active-directory-administer.md)
 - [使用 PowerShell 管理 Azure AD](/powershell/azure/overview?view=azureadps-2.0)
 - [混合标识所需的端口和协议](../active-directory/hybrid/reference-connect-ports.md)

@@ -7,36 +7,32 @@ manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 02/25/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: b40cd130039f7d55b69198b4be4af908dedbe8b7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: eb19833251fc9ee08a12aaf6ffcef55d59cea5d6
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58076881"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500628"
 ---
 # <a name="quickstart-use-the-azure-cli-to-create-a-service-bus-queue"></a>快速入门：使用 Azure CLI 创建服务总线队列
-
-Microsoft Azure 服务总线是一种提供安全消息传送和可靠性的企业集成消息中转站。 典型的服务总线方案通常涉及将两个或更多应用程序、服务或进程彼此解耦（应用程序不需同时联机）、传输状态或数据更改，以及在应用程序之间发送消息。 
-
-例如，零售公司可能会将其销售点数据发送到后端办公系统或区域配送中心，以便进行补货和库存更新。 在这种情况下，客户端应用会将消息发送到服务总线队列并从中接收消息：
-
-![队列](./media/service-bus-quickstart-cli/quick-start-queue.png)
-
 本快速入门介绍了如何使用 Azure CLI 和服务总线 Java 库通过服务总线来发送和接收消息。 最后，如果对更多的技术细节感兴趣，可以[阅读说明](#understand-the-sample-code)，了解示例代码的重要元素。
 
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
+## <a name="prerequisites"></a>先决条件
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][]。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
+如果使用“试用”按钮来启动 Cloud Shell，请使用凭据登录到 Azure。 
 
-单击 Azure 门户右上角菜单上的“Cloud Shell”按钮，然后从“选择环境”下拉列表中选择“Bash”。 
+如果在 Web 浏览器中启动 Cloud Shell，不管是直接这样做还是在 Azure 门户中这样做，则请在 Cloud Shell 左上角看到 **PowerShell** 时切换到 **Bash**。 
 
 ## <a name="use-the-azure-cli-to-create-resources"></a>使用 Azure CLI 创建资源
-
-在 Cloud Shell 中的 Bash 提示符下，发出以下命令以预配服务总线资源。 请务必将所有占位符替换为适当的值：Java 示例程序要求队列名称为 BasicQueue，因此请不要更改它。 
+在 Cloud Shell 中的 Bash 提示符下，发出以下命令以预配服务总线资源。 请务必将所有占位符替换为适当的值：Java 示例程序要求队列名称为 BasicQueue，因此请不要更改它。 可能需要逐一复制/粘贴命令，这样就可以先替换值，然后再运行它们。 
 
 ```azurecli-interactive
 # Create a resource group
@@ -373,10 +369,10 @@ void registerReceiver(QueueClient queueClient, ExecutorService executorService) 
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读下面的服务总线教程：
+本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分。 
 
 > [!div class="nextstepaction"]
-> [使用 Azure CLI 和 Java 更新清单](./service-bus-tutorial-topics-subscriptions-cli.md)
+> [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)
 
 [免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [fully qualified domain name]: https://wikipedia.org/wiki/Fully_qualified_domain_name

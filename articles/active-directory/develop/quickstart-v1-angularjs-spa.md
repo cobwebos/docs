@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c508c402707663489fc383dccd958559df6b217f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.openlocfilehash: 6596d1d8251bafd1ff013961555b20475e3a06d3
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194676"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544934"
 ---
 # <a name="quickstart-build-an-angularjs-single-page-app-for-sign-in-and-sign-out-with-azure-active-directory"></a>快速入门：生成使用 Azure Active Directory 登录和注销的 AngularJS 单页应用
 
@@ -45,6 +45,9 @@ ms.locfileid: "56194676"
 1. 将应用注册到 Azure AD。
 2. 安装 ADAL 并配置单页面应用。
 3. 使用 ADAL 帮助保护单页面应用中的页面。
+
+> [!NOTE]
+> 如果除了工作和学校帐户登录外，还需要启用个人帐户登录，可以使用 [Microsoft 标识平台终结点](azure-ad-endpoint-comparison.md)。 有关详细信息，请参阅[此 JavaScript SPA 教程](tutorial-v2-javascript-spa.md)以及[此文](active-directory-v2-limitations.md)对 Microsoft 标识平台终结点的解释。 
 
 ## <a name="prerequisites"></a>先决条件
 

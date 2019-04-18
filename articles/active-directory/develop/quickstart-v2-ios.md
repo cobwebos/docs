@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2 iOS 快速入门 | Microsoft Docs
+title: Microsoft 标识平台 iOS 快速入门 | Azure
 description: 了解如何在 iOS 本机应用程序中将用户登录并查询 Microsoft Graph。
 services: active-directory
 documentationcenter: dev-center-name
@@ -17,12 +17,12 @@ ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57aabb25b960c1135704c62c30b5724026078b08
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: e6340e0f349d66ecf6baaca481722396a6d786c5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439256"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496123"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-native-app"></a>快速入门：从 iOS 本机应用将用户登录并调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "58439256"
 
 本快速入门包含了一个代码示例，该示例演示了本机 iOS 应用程序如何将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
 
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-ios/ios-intro-updated.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-ios/ios-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download"></a>注册和下载
@@ -147,7 +147,7 @@ self.applicationContext = try MSALPublicClientApplication(clientId: kClientID, a
 > |其中： ||
 > |---------|---------|
 > | `clientId` | 在 *portal.azure.com* 中注册的应用程序的应用程序 ID |
-> | `authority` | Azure AD v2.0 终结点。 在大多数情况下，这将是 *https<span/>://login.microsoftonline.com/common* |
+> | `authority` | Microsoft 标识平台终结点。 在大多数情况下，这将是 *https<span/>://login.microsoftonline.com/common* |
 
 ### <a name="requesting-tokens"></a>请求令牌
 
@@ -155,7 +155,7 @@ MSAL 有两种用来获取令牌的方法：`acquireToken` 和 `acquireTokenSile
 
 #### <a name="getting-an-access-token-interactively"></a>以交互方式获取访问令牌
 
-在某些情况下，需要强制用户与 Azure Active Directory (Azure AD) v2.0 终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
+在某些情况下，需要强制用户与 Microsoft 标识平台终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
 
 * 用户首次登录应用程序
 * 由于密码已过期，用户可能需要重新输入凭据的情况

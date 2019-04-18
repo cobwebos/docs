@@ -4,7 +4,7 @@ description: 本快速入门介绍如何在数分钟内在 Linux 上的 Azure �
 services: app-service\web
 documentationcenter: ''
 author: msangapu
-manager: cfowler
+manager: jeconnoc
 editor: ''
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
 ms.service: app-service-web
@@ -12,15 +12,15 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: quickstart
-ms.date: 12/10/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 4b95c75b863cdc86dd8a1ebe8347b77b637b110c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: af1256b4432e42f91209b622239ca55901929a1b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999103"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544732"
 ---
 # <a name="quickstart-create-a-java-app-in-app-service-on-linux"></a>快速入门：在 Linux 上的应用服务中创建 Java 应用
 
@@ -99,17 +99,15 @@ mvn package azure-webapp:deploy
 
 祝贺你！ 现已将第一个 Java 应用部署到 Linux 应用服务。
 
-
 [!INCLUDE [cli-samples-clean-up](../../../includes/cli-samples-clean-up.md)]
-
 
 ## <a name="next-steps"></a>后续步骤
 
-在本快速入门中，你已使用 Maven 创建了一个 Java 应用，配置了[适用于 Azure Web 应用的 Maven 插件](https://github.com/Microsoft/azure-maven-plugins/tree/develop/azure-webapp-maven-plugin)，然后将 Web 存档打包的 Java 应用部署到了 Linux 上的应用服务。 有关在 Linux 上的应用服务中托管 Java 应用程序的详细信息，请参阅以下教程和操作指南文章。
+> [!div class="nextstepaction"]
+> [教程：将 Java 企业应用与 PostgreSQL 配合使用](tutorial-java-enterprise-postgresql-app.md)
 
-- [教程：使用 PostgreSQL 部署 Java 企业应用](tutorial-java-enterprise-postgresql-app.md)
-- [配置 Tomcat 数据源](app-service-linux-java.md#tomcat)
-- [将 CI/CD 与 Jenkins 配合使用](/azure/jenkins/deploy-jenkins-app-service-plugin)
-- [设置应用程序性能监视工具](how-to-java-apm-monitoring.md)
-- [Linux 上的应用服务的 Java 开发人员指南](app-service-linux-java.md)
+> [!div class="nextstepaction"]
+> [配置 Java 应用](configure-custom-container.md)
 
+> [!div class="nextstepaction"]
+> [将 CI/CD 与 Jenkins 配合使用](/azure/jenkins/deploy-jenkins-app-service-plugin)

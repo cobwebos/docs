@@ -9,12 +9,12 @@ ms.topic: overview
 ms.date: 04/04/2019
 ms.author: babanisa
 ms.custom: seodec18
-ms.openlocfilehash: 7f501bf8496d1293a45c15908d4f2b21b6ed01d2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 8ceb3d2d97c63bd19333336314beb6c7444288e9
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045399"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578401"
 ---
 # <a name="what-is-azure-event-grid"></a>什么是 Azure 事件网格？
 
@@ -22,7 +22,7 @@ ms.locfileid: "59045399"
 
 可以使用筛选器将特定事件路由到不同的终结点，多播到多个终结点，并确保事件可靠传送。
 
-目前，Azure 事件网格可在所有公共区域中使用。 它尚未在 Azure 德国、Azure 中国或 Azure 政府云中提供。
+目前，Azure 事件网格可在所有公共区域中使用。 它尚未在 Azure 德国、Azure 中国世纪互联或 Azure 政府云中提供。
 
 本文将对 Azure 事件网格进行简要概述。 若要开始使用事件网格，请参阅[使用 Azure 事件网格创建和路由自定义事件](custom-event-quickstart.md)。 
 
@@ -34,30 +34,29 @@ ms.locfileid: "59045399"
 
 有关每个源的功能的完整详细信息及相关文章，请参阅[事件源](event-sources.md)。 当前，以下 Azure 服务支持将事件发送到事件网格：
 
-* Azure 订阅（管理操作）
-* 容器注册表
-* 自定义主题
-* 事件中心
-* IoT 中心
-* 媒体服务
-* 资源组（管理操作）
-* 服务总线
-* 存储 Blob
-* 常规用途 v2 (GPv2) 存储
-* Azure Maps
+* [Azure 订阅（管理操作）](event-sources.md#azure-subscriptions)
+* [容器注册表](event-sources.md#container-registry)
+* [自定义主题](event-sources.md#custom-topics)
+* [事件中心](event-sources.md#event-hubs)
+* [IoT 中心](event-sources.md#iot-hub)
+* [媒体服务](event-sources.md#media-services)
+* [资源组（管理操作）](event-sources.md#resource-groups)
+* [服务总线](event-sources.md#service-bus)
+* [存储 Blob](event-sources.md#storage)
+* [Azure Maps](event-sources.md#maps)
 
 ## <a name="event-handlers"></a>事件处理程序
 
 有关每个处理程序的功能的完整详细信息及相关文章，请参阅[事件处理程序](event-handlers.md)。 当前，以下 Azure 服务支持从事件网格处理事件： 
 
-* Azure 自动化
-* Azure Functions
-* 事件中心
-* 混合连接
-* 逻辑应用
-* Microsoft Flow
-* 队列存储
-* Webhook
+* [Azure 自动化](event-handlers.md#azure-automation)
+* [Azure Functions](event-handlers.md#azure-functions)
+* [事件中心](event-handlers.md#event-hubs)
+* [混合连接](event-handlers.md#hybrid-connections)
+* [逻辑应用](event-handlers.md#logic-apps)
+* [Microsoft Flow](https://preview.flow.microsoft.com/connectors/shared_azureeventgrid/azure-event-grid/)
+* [队列存储](event-handlers.md#queue-storage)
+* [WebHook](event-handlers.md#webhooks)
 
 ## <a name="concepts"></a>概念
 

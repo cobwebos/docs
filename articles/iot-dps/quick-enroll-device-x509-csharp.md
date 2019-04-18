@@ -3,19 +3,19 @@ title: 本快速入门展示了如何使用 C# 将 X.509 设备注册到 Azure �
 description: 本快速入门使用组注册。 在本快速入门中，需使用 C# 将 X.509 设备注册到 Azure IoT 中心设备预配服务。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 01/21/2018
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.devlang: csharp
 ms.custom: mvc
-ms.openlocfilehash: 390421c2805bf242b8f931200c8b8981cb7116c1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f375044fe7e2276b68476e609f33ca8372db9921
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57874994"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500866"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-c"></a>快速入门：使用 C# 将 X.509 设备注册到设备预配服务
 
@@ -53,7 +53,7 @@ ms.locfileid: "57874994"
    git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
    ```
 
-   此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
+   应该预料到此操作需要几分钟才能完成。
 
    测试工具位于你克隆的存储库的 *azure-iot-sdk-c/tools/CACertificates* 中。    
 

@@ -130,7 +130,7 @@ ms.locfileid: "58000667"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关单个数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单个数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
+- 有关单一数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单一数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
 - 有关单一数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
 - 有关弹性池的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的弹性池的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)
 - 有关托管实例的资源限制，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。

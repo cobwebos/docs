@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 5482ea720ea8d21230587dd9216bd006bf4e5a6e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 3be1da54b16a24ce3c4431dfe26eb778cea5c83d
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650642"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545257"
 ---
 # <a name="tutorial-access-a-classroom-lab-in-azure-lab-services"></a>教程：访问 Azure 实验室服务中的课堂实验室
 在本教程中，你会作为一名学生连接到教室实验室中的虚拟机 (VM)。 
@@ -32,7 +32,7 @@ ms.locfileid: "58650642"
 
 ## <a name="use-the-registration-link"></a>使用注册链接
 
-1. 导航到从教授/教师处收到的注册 URL。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 
+1. 导航到从教授/教师处收到的注册 URL。 完成注册后，不需使用注册 URL。 请改用 URL：[https://labs.azure.com](https://labs.azure.com)。 请注意尚不支持 Internet Explorer 11。 
 1. 使用学校帐户登录服务以完成注册。 
 2. 注册后，请确认可看到你有权访问的实验室的虚拟机。 
 3. 等待虚拟机准备就绪，然后**启动** VM。 此过程需要一些时间。  

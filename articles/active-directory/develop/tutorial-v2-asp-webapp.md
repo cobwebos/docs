@@ -12,19 +12,30 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ff2d492b8d6a854297fb47ebec1aaa67f7c3ee0
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 589554188bfe8bd53b5dd3adcd6d57abe95c2d23
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629149"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524137"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-setup.md)]
 [!INCLUDE [3. Use](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-use.md)]
 [!INCLUDE [4. Configure](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-configure.md)]
 [!INCLUDE [5. Test and Validate](../../../includes/active-directory-develop-guidedsetup-aspnetwebapp-test.md)]
+
+## <a name="next-steps"></a>后续步骤
+
+了解调用 Web API 的 Web 应用：
+
+### <a name="learn-the-steps-to-create-the-application-used-in-this-quickstart"></a>了解创建本快速入门中使用的应用程序的步骤
+
+> [!div class="nextstepaction"]
+> [调用 Web API 的 Web 应用]( https://aka.ms/msal-net-authorization-code)
+
+[!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]

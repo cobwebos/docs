@@ -1,7 +1,7 @@
 ---
 title: 使用 Docker Compose 创建多容器应用 - Azure 应用服务
 description: 在数分钟内在用于容器的 Azure Web 应用中部署你的第一个多容器应用
-keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, kubernetes, wordpress, azure db for mysql, 包含容器的生产数据库
+keywords: azure 应用服务, web 应用, linux, docker compose, 多容器, 用于容器的 web 应用, 多个容器, 容器, wordpress, azure db for mysql, 包含容器的生产数据库
 services: app-service\web
 documentationcenter: ''
 author: msangapu
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 06/22/2018
+ms.date: 03/27/2019
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: 404be7a064e0e4b09178830b7802192e8775e121
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
+ms.openlocfilehash: 543ba3ee4e72c5d31708e9b4983e7889421940ca
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316568"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546223"
 ---
 # <a name="create-a-multi-container-preview-app-using-a-docker-compose-configuration"></a>使用 Docker Compose 配置创建多容器（预览版）应用
 
-在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。 有关 Kubernetes 和使用 Azure DB for MySQL 的完整端到端解决方案，请参阅[多容器教程](tutorial-multi-container-app.md)。
+在[用于容器的 Web 应用](app-service-linux-intro.md)中可以灵活使用 Docker 映像。 本快速入门展示了如何在 [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) 中使用 Docker Compose 配置将多容器应用部署到用于容器的 Web 应用。
 
 你将在 Cloud Shell 中完成本快速入门，但是也可以使用 [Azure CLI](/cli/azure/install-azure-cli)（2.0.32 或更高版本）在本地运行这些命令。 
 
@@ -138,7 +138,10 @@ az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在用于容器的 Web 应用中创建多容器 WordPress 应用](tutorial-multi-container-app.md)
+> [教程：多容器 WordPress 应用](tutorial-multi-container-app.md)
+
+> [!div class="nextstepaction"]
+> [配置自定义容器](configure-custom-container.md)
 
 <!--Image references-->
 [1]: ./media/tutorial-multi-container-app/azure-multi-container-wordpress-install.png

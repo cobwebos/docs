@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: d2d7d420-dc91-41b8-a6b3-59579e043b35
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 239298959efa5c17d2f3d0c0aa5c4c30853c076f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 27a61205426cbf43fd3b3b549909ffa13ff07dc7
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902029"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500356"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce"></a>教程：Azure Active Directory 与 Salesforce 集成
 
@@ -55,7 +56,7 @@ ms.locfileid: "57902029"
 
 若要配置 Salesforce 与 Azure AD 的集成，需要从库中将 Salesforce 添加到托管的 SaaS 应用列表。
 
-若要从库中添加 Salesforce，请执行以下步骤：
+**若要从库中添加 Salesforce，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -71,7 +72,7 @@ ms.locfileid: "57902029"
 
 4. 在搜索框中键入 Salesforce，在结果面板中选择“Salesforce”，并单击“添加”按钮来添加该应用程序。
 
-     ![结果列表中的 Salesforce](common/search-new-app.png)
+    ![结果列表中的 Salesforce](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -101,7 +102,7 @@ ms.locfileid: "57902029"
 
     ![单一登录选择模式](common/select-saml-option.png)
 
-3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标打开“基本 SAML 配置”对话框。
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
@@ -111,15 +112,15 @@ ms.locfileid: "57902029"
 
     a. 在“登录 URL”文本框中，使用以下模式键入值：
 
-    企业帐户：`https://<subdomain>.my.salesforce.com`
+    企业帐户： `https://<subdomain>.my.salesforce.com`
 
-    开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
+    开发人员帐户： `https://<subdomain>-dev-ed.my.salesforce.com`
 
     b. 在“标识符”文本框中，使用以下模式键入值：
 
-    企业帐户：`https://<subdomain>.my.salesforce.com`
+    企业帐户： `https://<subdomain>.my.salesforce.com`
 
-    开发人员帐户：`https://<subdomain>-dev-ed.my.salesforce.com`
+    开发人员帐户： `https://<subdomain>-dev-ed.my.salesforce.com`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 请联系 [Salesforce 客户端支持团队](https://help.salesforce.com/support)获取这些值。
@@ -206,8 +207,7 @@ ms.locfileid: "57902029"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -255,6 +255,6 @@ ms.locfileid: "57902029"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [配置用户预配](salesforce-provisioning-tutorial.md)

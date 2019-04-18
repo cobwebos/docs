@@ -1,21 +1,19 @@
 ---
 title: Azure 流分析的概述
 description: 了解流分析，这是一种托管的服务，可以帮助你分析物联网 (IoT) 实时提供的流式数据。
-services: stream-analytics
 author: jseb225
 ms.author: jeanb
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: overview
-ms.workload: data-services
 ms.custom: seodec18
 ms.date: 12/07/2018
-ms.openlocfilehash: f0104bdc4b5ea5c5c6333e12b95defafb34665b3
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: 09f402f81700b53eb9e4a95e36545ef02850660a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295498"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524474"
 ---
 # <a name="what-is-azure-stream-analytics"></a>什么是 Azure 流分析？
 
@@ -51,9 +49,9 @@ Azure 流分析经过专门的设计，具有易用、灵活、可靠的特点�
 
 ## <a name="ease-of-getting-started"></a>易于入门
 
-Azure 流分析易于入门。 只需点击几下即可连接到多个源和接收器并创建端到端管道。 流分析可以连接到 [Azure 事件中心](https://docs.microsoft.com/azure/event-hubs/)和 [Azure IoT 中心](https://docs.microsoft.com/azure/iot-hub/)进行流数据引入， 还可以连接到 [Azure Blob 存储](https://docs.microsoft.com/azure/storage/storage-introduction)服务进行历史数据引入。 它可以将事件中心的数据与其他数据源和处理引擎组合在一起使用。 作业输入也可以包含静态的或不怎么变化的引用数据，你可以通过将流数据联接到该引用数据来执行查找操作。
+Azure 流分析易于入门。 只需点击几下即可连接到多个源和接收器并创建端到端管道。 流分析可以连接到 [Azure 事件中心](/azure/event-hubs/)和 [Azure IoT 中心](/azure/iot-hub/)进行流数据引入， 还可以连接到 [Azure Blob 存储](/azure/storage/storage-introduction)服务进行历史数据引入。 它可以将事件中心的数据与其他数据源和处理引擎组合在一起使用。 作业输入也可以包含静态的或不怎么变化的引用数据，你可以通过将流数据联接到该引用数据来执行查找操作。
 
-流分析可以将作业输出路由到许多存储系统，例如 [Azure Blob](https://docs.microsoft.com/azure/storage/storage-introduction)、[Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)、[Azure Data Lake Store](https://docs.microsoft.com/azure/data-lake-store/) 或 [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/introduction)。 进行存储以后，可以通过 Azure HDInsight 运行批处理分析，还可以将输出发送到其他服务（例如事件中心）以供使用，或者发送到 [Power BI](https://docs.microsoft.com/power-bi/)，由 Power BI 流式处理 API 进行实时可视化。
+流分析可以将作业输出路由到许多存储系统，例如 [Azure Blob](/azure/storage/storage-introduction)、[Azure SQL 数据库](/azure/sql-database/)、[Azure Data Lake Store](/azure/data-lake-store/) 或 [Azure Cosmos DB](/azure/cosmos-db/introduction)。 进行存储以后，可以通过 Azure HDInsight 运行批处理分析，还可以将输出发送到其他服务（例如事件中心）以供使用，或者发送到 [Power BI](https://docs.microsoft.com/power-bi/)，由 Power BI 流式处理 API 进行实时可视化。
 
 ## <a name="programmer-productivity"></a>程序员工作效率
 
@@ -79,7 +77,8 @@ Azure 流分析在云和智能边缘上采用同一种查询语言，让开发�
 ## <a name="mission-critical-ready"></a>关键任务就绪
 Azure 流分析可在全球多个地区使用，旨在通过支持可靠性、安全性和符合性要求来运行关键任务工作负载。
 ### <a name="reliability"></a>可靠性
-Azure 流分析保证刚好进行一次事件处理，以及至少进行一次事件传送，因此事件不会丢失。 使用[事件传递保证](https://docs.microsoft.com/en-us/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)中所述的选定输出保证刚好处理一次。 Azure 流分析有内置的恢复功能，可以在事件传送失败时发挥作用。 它还提供内置的检查点来维护作业的状态，并提供可重复的结果。
+Azure 流分析保证刚好进行一次事件处理，以及至少进行一次事件传送，因此事件不会丢失。 使用[事件传递保证](/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics)中所述的选定输出保证刚好处理一次。
+Azure 流分析有内置的恢复功能，可以在事件传送失败时发挥作用。 它还提供内置的检查点来维护作业的状态，并提供可重复的结果。
 
 作为一项托管服务，流分析可保证事件处理在分钟级别具备 99.9% 的可用性。 有关详细信息，请参阅[流分析 SLA](https://azure.microsoft.com/support/legal/sla/stream-analytics/v1_0/)。 
 

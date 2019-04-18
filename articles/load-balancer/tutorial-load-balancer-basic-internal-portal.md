@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: kumud
 ms.custom: seodec18
-ms.openlocfilehash: 6abae32f5d8781735bc6a50dc888fddacbe8d0b9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 56568cfb8fc659308475e581955e5acbdfd32b44
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58105295"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489308"
 ---
 # <a name="tutorial-balance-internal-traffic-load-with-a-basic-load-balancer-in-the-azure-portal"></a>教程：在 Azure 门户中通过基本负载均衡器对内部流量负载进行均衡
 
@@ -61,7 +61,7 @@ ms.locfileid: "58105295"
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
    
-1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”**。 
+1. 选择“网络”选项卡，或选择“下一步: 磁盘”，然后选择“下一步:网络”。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVNet**
@@ -93,13 +93,12 @@ ms.locfileid: "58105295"
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
-    | Name                   | *myLoadBalancer*                                   |
+    | 名称                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”。                                        |
-    | Type          | 选择“公共”。                                        |
+    | Type          | 选择“内部”。                                        |
     | SKU           | 选择“基本”。                          |
     | 虚拟网络           | 选择“MyVNet”。                          |    
-| 公共 IP 地址 | 选择“新建”。 |
-    | 公共 IP 地址分配              | 选择“静态”。   |
+    | IP 地址分配              | 选择“静态”。   |
     | 专用 IP 地址|键入一个位于虚拟网络和子网地址空间中的地址，例如 *10.3.0.7*。  |
 
 3. 在“查看 + 创建”选项卡中，单击“创建”。 

@@ -5,17 +5,17 @@ services: azure-blockchain
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 01/08/2019
+ms.date: 04/15/2019
 ms.topic: tutorial
 ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
-ms.openlocfilehash: 55207e1eb8fe1b88df7f9bfb84a1da505d0e0252
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
+ms.openlocfilehash: 89c83ed6d02a60978bd54fb97d37063e34f6c0c7
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54332211"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59578844"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>教程：在 Azure Blockchain Workbench 中使用应用程序
 
@@ -40,7 +40,7 @@ ms.locfileid: "54332211"
 
 需以 Blockchain Workbench 成员身份登录。 如果没有应用程序列出，则表明你是 Blockchain Workbench 的成员，但不是任何应用程序的成员。 Blockchain Workbench 管理员可以向应用程序分配成员。
 
-## <a name="create-new-contract"></a>创建新合同 
+## <a name="create-new-contract"></a>创建新合同
 
 若要创建新合同，需要成为指定为合同**发起人**的成员。 有关定义应用程序角色和合同发起人的信息，请参阅[配置中的工作流概述](configuration.md#workflows)。 有关将成员分配给应用程序角色的信息，请参阅[将成员添加到应用程序](manage-users.md#add-member-to-application)。
 
@@ -67,7 +67,7 @@ ms.locfileid: "54332211"
 
     ![合同详细信息](./media/use/contract-details.png)
 
-    | 部分  | Description  |
+    | 部分  | 说明  |
     |---------|---------|
     | 状态 | 列出合同各阶段的当前进度 |
     | 详细信息 | 合同的当前值 |

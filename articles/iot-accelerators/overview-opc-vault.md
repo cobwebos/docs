@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure IoT OPC UA 证书管理 | Microsoft Docs
+title: 什么是 OPC 保管库 - Azure | Microsoft Docs
 description: OPC 保管库概述
 author: dominicbetts
 ms.author: dobett
@@ -8,16 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: ba3313d927ec4317d6c051f6058d75a415b92288
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 99dfcaeb1ef5b52e6827f1b3ac65d6201557a8fb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759707"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59490370"
 ---
-# <a name="what-is-azure-iot-open-platform-communications-opc-ua-certificate-management"></a>什么是 Azure IoT 开放平台通信 (OPC) UA 证书管理？
+# <a name="what-is-opc-vault"></a>什么是 OPC 保管库？
 
-Azure IoT OPC UA 证书管理也称为 OPC 保管库，是可以配置、注册和管理云中 OPC UA 服务器与客户端应用程序的证书生命周期的微服务。 本文介绍 OPC 保管库的简单用例。
+OPC 保管库是可以配置、注册和管理云中 OPC UA 服务器与客户端应用程序的证书生命周期的微服务。 本文介绍 OPC 保管库的简单用例。
 
 ## <a name="certificate-management"></a>证书管理
 

@@ -1,5 +1,5 @@
 ---
-title: Azure AD v2.0 ASP.NET Web 服务器快速入门 | Microsoft Docs
+title: Microsoft 标识平台 ASP.NET Web 服务器快速入门 | Azure
 description: 了解如何使用 OpenID Connect 在 ASP.NET Web 应用上实现 Microsoft 登录。
 services: active-directory
 documentationcenter: dev-center-name
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ae388798716565c1fdeeb10b274c2a168ca86ea
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
+ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200253"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59579472"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -29,7 +29,7 @@ ms.locfileid: "58200253"
 
 本快速入门介绍如何使用 ASP.NET Web 应用从任何 Azure Active Directory (Azure AD) 实例中登录个人帐户（hotmail.com、outlook.com 等）以及学校和工作帐户。
 
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro-updated.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-aspnet-webapp/aspnetwebapp-intro.svg)
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>注册并下载快速入门应用
@@ -39,7 +39,7 @@ ms.locfileid: "58200253"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用程序注册（预览）](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)
+> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AspNetWebAppQuickstartPage/sourceType/docs)窗格。
 > 1. 输入应用程序的名称，然后单击“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
@@ -50,10 +50,11 @@ ms.locfileid: "58200253"
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)” > “新建注册”。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+> 1. 选择“新注册”。
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
 >      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `ASPNET-Quickstart`。
->      - 在“回复 URL”中添加 `https://localhost:44368/`，然后单击“注册”。
+>      - 在“重定向 URI”中添加 `https://localhost:44368/`，然后单击“注册”。
 选择“身份验证”菜单，在“隐式授权”下设置“ID 令牌”，然后选择“保存”。
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -132,7 +133,7 @@ public void Configuration(IAppBuilder app)
             // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
             TokenValidationParameters = new TokenValidationParameters()
             {
-                ValidateIssuer = false
+                ValidateIssuer = false // Simplification (see note below)
             },
             // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
             Notifications = new OpenIdConnectAuthenticationNotifications
@@ -147,13 +148,18 @@ public void Configuration(IAppBuilder app)
 > |其中  |  |
 > |---------|---------|
 > | `ClientId`     | Azure 门户中注册的应用程序的应用程序 ID |
-> | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者对于常用终结点（用于多租户应用程序）的引用，即 common |
-> | `RedirectUri`  | 一个 URL，在通过 Azure AD v2.0 终结点进行身份验证之后，会将用户发送到此 URL |
+> | `Authority`    | 用户要进行身份验证的 STS 终结点。 对于公有云，通常为 <https://login.microsoftonline.com/{tenant}/v2.0>，其中 {tenant} 是租户名称、租户 ID 或者引用常用终结点（用于多租户应用程序）的 common |
+> | `RedirectUri`  | 一个 URL，在通过 Microsoft 标识平台终结点进行身份验证之后，会将用户发送到此 URL |
 > | `PostLogoutRedirectUri`     | 一个 URL，在注销以后，会将用户发送到此 URL |
 > | `Scope`     | 请求的作用域的列表，使用空格进行分隔 |
 > | `ResponseType`     | 请求身份验证的响应包含 ID 令牌 |
 > | `TokenValidationParameters`     | 用于令牌验证的参数列表。 在本示例中，`ValidateIssuer` 设置为 `false`，指示它可以接受来自任何个人、工作或学校帐户类型的登录 |
 > | `Notifications`     | 委托的列表，这些委托可以在不同的 *OpenIdConnect* 消息上执行 |
+
+
+> [!NOTE]
+> 对本快速入门来说，设置 `ValidateIssuer = false` 是一种简化。 在实际应用程序中，需验证颁发者。
+> 查看示例，了解如何执行该操作。
 
 ### <a name="initiate-an-authentication-challenge"></a>启动身份验证质询
 

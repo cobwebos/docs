@@ -3,18 +3,18 @@ title: 针对 Azure IoT 中心设备预配服务设置设备
 description: 在设备制造过程中通过 IoT 中心设备预配服务设置设备以进行预配
 author: wesmc7777
 ms.author: wesmc
-ms.date: 04/02/2018
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: eae674693b647eed5bce0a38236d44d457c1c2ae
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 344cc3b8ba3f7698f5124d464f3c277b6cb5cdde
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486914"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500968"
 ---
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>使用 Azure IoT 中心设备预配服务设置设备以进行预配
 
@@ -45,23 +45,7 @@ ms.locfileid: "58486914"
 
 设备预配服务客户端 SDK 有助于实现设备注册软件。 但在使用它之前，需根据开发客户端平台和证明机制生成一个 SDK 版本。 在本教程中，请针对支持的证明类型生成一个使用 Visual Studio 2017（基于 Windows 开发平台）的 SDK：
 
-1. 下载 [CMake 生成系统](https://cmake.org/download/)。 使用与下载版本相对应的加密哈希值验证下载的二进制文件。 加密哈希值也可以从已提供的 CMake 下载链接中找到。
-
-    以下示例使用了 Windows PowerShell 来验证 x64 MSI 发行版本 3.13.4 的加密哈希：
-
-    ```powershell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
-    True
-    ```
-
-    在撰写本文时，在 CMake 站点上列出了版本 3.13.4 的以下哈希值：
-
-    ```
-    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
-    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
-    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
-    ```
+1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
@@ -70,7 +54,7 @@ ms.locfileid: "58486914"
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
 
 1. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 

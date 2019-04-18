@@ -8,36 +8,34 @@ ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 01/12/2019
+ms.date: 04/10/2019
 ms.author: spelluru
-ms.openlocfilehash: ef510ca88f1b305125c7840932641c8a2359d8c9
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 31b1b852c92ad671564fd54520af3f3a23b3e3c2
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59045235"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59499795"
 ---
 # <a name="quickstart-use-azure-powershell-to-create-a-service-bus-queue"></a>快速入门：使用 Azure PowerShell 创建服务总线队列
-Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性的企业集成消息中转站。 典型的服务总线方案通常涉及将两个或更多应用程序、服务或进程彼此解耦以及传输状态或数据更改。 此类方案可能涉及在其他应用程序或服务中计划多个批处理作业，或触发订单履行。 例如，零售公司可能会将其销售点数据发送到后端办公系统或区域配送中心，以便进行补货和库存更新。 在这种情况下，客户端应用会将消息发送到服务总线队列并从中接收消息。
-
-![队列](./media/service-bus-quickstart-powershell/quick-start-queue.png)
-
 本快速入门介绍如何使用 PowerShell 创建消息命名空间并在该命名空间中创建队列，以及如何获取该命名空间上的授权凭据，以便将消息发送到服务总线队列及从中接收消息。 然后该过程展示了如何使用 [.NET Standard 库](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)从此队列发送和接收消息。
 
-如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户][]。
-
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+[!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
+
 
 ## <a name="prerequisites"></a>先决条件
 
 若要完成本教程，请确保已安装：
 
-- [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。
+- Azure 订阅。 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户][]。 
+- [Visual Studio 2017 Update 3（版本 15.3 (26730.01)）](https://www.visualstudio.com/vs)或更高版本。 请使用 Visual Studio 生成一个示例，以便向队列发送消息以及从队列接收消息。 示例用于测试在门户中创建的队列。 
 - [NET Core SDK](https://www.microsoft.com/net/download/windows) 2.0 或更高版本。
 
-本快速入门要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell][]。
+本快速入门要求运行最新版本的 Azure PowerShell。 如需进行安装或升级，请参阅[安装和配置 Azure PowerShell][]。 如果熟悉 Azure Cloud Shell，则可使用它，不需在计算机上安装 Azure PowerShell。 有关 Azure Cloud Shell 的详细信息，请参阅 [Azure Cloud Shell 概述](../cloud-shell/overview.md)
 
-## <a name="log-in-to-azure"></a>登录 Azure
+## <a name="sign-in-to-azure"></a>登录 Azure
 
 1. 首先，如果尚未安装服务总线 PowerShell 模块，请安装：
 
@@ -45,7 +43,7 @@ Microsoft Azure 服务总线是一种提供安全消息传送和绝对可靠性�
    Install-Module Az.ServiceBus
    ```
 
-2. 运行以下命令以登录到 Azure：
+2. 运行以下命令来登录到 Azure：
 
    ```azurepowershell-interactive
    Login-AzAccount
@@ -259,10 +257,10 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>后续步骤
 
-本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读下面的服务总线教程：
+本文介绍了如何创建一个服务总线命名空间并从队列发送和接收消息所需的其他资源。 若要详细了解如何编写收发消息的代码，请继续阅读教程的“发送和接收消息”部分。 
 
 > [!div class="nextstepaction"]
-> [使用 Azure PowerShell 更新库存](./service-bus-tutorial-topics-subscriptions-powershell.md)
+> [发送和接收消息](service-bus-dotnet-get-started-with-queues.md)
 
 [免费帐户]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
 [安装和配置 Azure PowerShell]: /powershell/azure/install-Az-ps

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: tutorial
 ms.date: 01/20/2018
 ms.author: yexu
-ms.openlocfilehash: 77be9d80d535cced48a39c47695257d4868f698c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b9dafd31ed84298c97932b1cdb5593eb17769ef9
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257427"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59565999"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
 在本教程中，请创建一个带管道的 Azure 数据工厂，将增量数据从本地 SQL Server 中的多个表加载到 Azure SQL 数据库。    
@@ -491,11 +491,12 @@ END
 1. 切换到“接收器”选项卡，然后选择“SinkDataset”作为“接收器数据集”。 
         
     ![复制活动 - 接收器设置](./media/tutorial-incremental-copy-multiple-tables-portal/copy-sink-settings.png)
-1. 切换到“参数”选项卡，然后执行以下步骤：
+1. 请执行以下步骤：
 
-    1. 至于“接收器存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。
-    1. 至于“接收器表类型”属性，请输入 `@{item().TableType}`。
-    1. 在“接收器数据集”部分，请输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
+    1. 在“数据集”属性中，输入 `@{item().TABLE_NAME}` 作为 **SinkTableName** 参数。
+    1. 至于“存储过程名称”属性，请输入 `@{item().StoredProcedureNameForMergeOperation}`。
+    1. 至于“表类型”属性，请输入 `@{item().TableType}`。
+
 
         ![复制活动 - 参数](./media/tutorial-incremental-copy-multiple-tables-portal/copy-activity-parameters.png)
 1. 将“存储过程”活动从“活动”工具箱拖放到管道设计器图面。 将“复制”活动连接到“存储过程”活动。 
@@ -565,7 +566,7 @@ END
 ## <a name="review-the-results"></a>查看结果
 在 SQL Server Management Studio 中对目标 SQL 数据库运行以下查询，验证数据是否已从源表复制到目标表： 
 
-**Query** 
+**查询** 
 ```sql
 select * from customer_table
 ```
@@ -582,7 +583,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Query**
+**查询**
 
 ```sql
 select * from project_table
@@ -599,7 +600,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Query**
+**查询**
 
 ```sql
 select * from watermarktable
@@ -667,7 +668,7 @@ VALUES
 ## <a name="review-the-final-results"></a>查看最终结果
 在 SQL Server Management Studio 中对目标数据库运行以下查询，验证更新的/全新的数据是否已从源表复制到目标表。 
 
-**Query** 
+**查询** 
 ```sql
 select * from customer_table
 ```
@@ -686,7 +687,7 @@ PersonID    Name    LastModifytime
 
 请注意 **PersonID** 为 3 时对应的 **Name** 和 **LastModifytime** 的新值。 
 
-**Query**
+**查询**
 
 ```sql
 select * from project_table
@@ -706,7 +707,7 @@ NewProject  2017-10-01 00:00:00.000
 
 请注意，已将 **NewProject** 条目添加到 project_table。 
 
-**Query**
+**查询**
 
 ```sql
 select * from watermarktable

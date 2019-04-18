@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 1ad1cf90-52bc-4b71-ab2b-9a5a1280fb2d
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/31/2018
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c0a7ff6d06325a6e6f631b92335f9a41c2c8c06
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 44f0c99a66088aeb54ba061308fefb111610d4dc
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57854800"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501223"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 Confluence SAML SSO by Microsoft 集成
 
@@ -78,6 +79,9 @@ ms.locfileid: "57854800"
 - Confluence：6.11.0
 - Confluence：6.12.0
 
+> [!NOTE]
+> 请注意，Confluence 还支持 Linux Ubuntu 版本 16.04
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
@@ -104,7 +108,7 @@ ms.locfileid: "57854800"
 
 4. 在搜索框中键入“Confluence SAML SSO by Microsoft”，在结果面板中选择“Confluence SAML SSO by Microsoft”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 Confluence SAML SSO by Microsoft](common/search-new-app.png)
+    ![结果列表中的 Confluence SAML SSO by Microsoft](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -142,11 +146,11 @@ ms.locfileid: "57854800"
 
     ![Confluence SAML SSO by Microsoft 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
+    b. 在“标识符”框中，使用以下模式键入 URL： `https://<domain:port>/`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 Confluence 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -184,18 +188,18 @@ ms.locfileid: "57854800"
 
     c. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称。
 
-    d. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须是 Confluence 用户 ID。如果用户 ID 不匹配，系统将禁止用户登录。 
+    d. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须是 Confluence 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。 
 
     > [!Note]
     > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
     
-    e. 如果选择“用户 ID 位于 Attribute 元素之中”选项，则请在“Attribute 名称”文本框内键入应该出现用户 ID 的属性名称。 
+    e. 如果选择“用户 ID 位于属性元素之中”选项，则请在“属性名称”文本框内键入应该出现用户 ID 的属性名称。 
 
     f. 如果正在使用 Azure AD 的联合域（如 ADFS 等），请单击“启用主领域发现”选项，并配置“域名”。
     
     g. 如果是基于 ADFS 的登录，请在“域名”中键入域名。
 
-    h. 当用户从 Confluence 注销时，如果要从 Azure AD 注销，请选择“启用单一注销”。 
+    h. 当用户从 Confluence 注销时，如果要从 Azure AD 注销，请勾选“启用单一注销”。 
 
     i. 单击“保存”按钮保存设置。
 
@@ -220,8 +224,7 @@ ms.locfileid: "57854800"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -293,5 +296,5 @@ ms.locfileid: "57854800"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

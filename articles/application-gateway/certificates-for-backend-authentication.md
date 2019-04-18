@@ -14,7 +14,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 03/20/2019
 ms.locfileid: "58260419"
 ---
-# <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>通过 Azure 应用程序网关创建为列入白名单后端的证书
+# <a name="create-certificates-for-whitelisting-backend-with-azure-application-gateway"></a>通过 Azure 应用程序网关创建为列入允许列表后端的证书
 
 若要执行端到端 SSL，应用程序网关需要通过身份验证/受信任根证书上传要加入允许列表的后端实例。 如果 v1 SKU，身份验证证书所需而发生 v2 SKU 时受信任的根证书所需的允许列表的证书
 
@@ -31,7 +31,7 @@ ms.locfileid: "58260419"
 
 ## <a name="export-authentication-certificate-for-v1-sku"></a>导出身份验证证书 （适用于 v1 SKU)
 
-身份验证证书所需应用程序网关 v1 中的白名单后端实例 SKU。 身份验证证书是 Base-64 在后端服务器证书的公钥编码的 X.509 (。CER) 格式。 在此示例中，我们将用于后端证书的 SSL 证书并将其用作身份验证证书的公钥导出。 此外，在此示例中，我们将使用 Windows 证书管理器工具导出所需的证书。 您可以选择使用任何其他工具根据你的方便。
+身份验证证书所需应用程序网关 v1 中的允许列表后端实例 SKU。 身份验证证书是 Base-64 在后端服务器证书的公钥编码的 X.509 (。CER) 格式。 在此示例中，我们将用于后端证书的 SSL 证书并将其用作身份验证证书的公钥导出。 此外，在此示例中，我们将使用 Windows 证书管理器工具导出所需的证书。 您可以选择使用任何其他工具根据你的方便。
 
 从 SSL 证书，请将导出公用密钥.cer 文件 （不是私钥）。 以下步骤可帮助您导出.cer 文件采用 Base-64 编码 X.509 (。你的证书的 CER) 格式：
 
@@ -73,7 +73,7 @@ ms.locfileid: "58260419"
 
 ## <a name="export-trusted-root-certificate-for-v2-sku"></a>导出受信任的根证书 （适用于 v2 SKU)
 
-受信任的根证书是为应用程序网关 v2 中的白名单后端实例所需 SKU。 根证书是 Base-64 编码 X.509 (。从后端服务器证书的 CER) 格式的根证书。 在此示例中，我们将用于后端证书的 SSL 证书、 导出其公钥，然后从中要获取受信任的根证书的 base64 编码格式的公钥导出受信任的 CA 的根证书。 
+受信任的根证书是为应用程序网关 v2 中的允许列表后端实例所需 SKU。 根证书是 Base-64 编码 X.509 (。从后端服务器证书的 CER) 格式的根证书。 在此示例中，我们将用于后端证书的 SSL 证书、 导出其公钥，然后从中要获取受信任的根证书的 base64 编码格式的公钥导出受信任的 CA 的根证书。 
 
 以下步骤帮助你导出证书的.cer 文件：
 

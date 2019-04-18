@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/23/2019
 ms.openlocfilehash: 067ea8eee297eb8572bd37e240b8d13afe458ca7
 ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/09/2019
 ms.locfileid: "59358468"
@@ -27,10 +27,10 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 - [业务关键型](sql-database-service-tier-business-critical.md)，适用于具有一个可读副本的低延迟工作负荷。
 - [超大规模](sql-database-service-tier-hyperscale.md)，适用于具有多个可读副本的非常大的数据库（高达 100 TB）。
 
-本文讨论基于 vCore 购买模型中的常规用途和业务关键服务层的存储和备份注意事项。
+本文讨论基于 vCore 购买模型中的常规用途和业务关键服务层级的存储和备份注意事项。
 
 > [!NOTE]
-> 若要详细了解基于 vCore 的采购模型中的超大规模服务层，请参阅[超大规模服务层](sql-database-service-tier-hyperscale.md)。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-purchase-models.md)。
+> 若要详细了解基于 vCore 的购买模型中的超大规模服务层级，请参阅[超大规模服务层级](sql-database-service-tier-hyperscale.md)。 有关基于 vCore 购买模型与基于 DTU 购买模型的比较，请参阅 [Azure SQL 数据库购买模型和资源](sql-database-purchase-models.md)。
 
 ## <a name="data-and-log-storage"></a>数据和日志存储
 

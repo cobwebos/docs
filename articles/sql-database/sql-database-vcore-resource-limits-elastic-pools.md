@@ -21,7 +21,7 @@ ms.locfileid: "57853115"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-based-purchasing-model-limits"></a>使用基于 vCore 的购买模型限制的弹性池的资源限制
 
-本文提供针对使用基于 vCore 的购买模型的 Azure SQL 数据库弹性池和入池数据库的详细资源限制。
+本文提供针对使用基于 vCore 的购买模型的 Azure SQL 数据库弹性池和共用数据库的详细资源限制。
 
 有关基于 DTU 的购买模型限制，请参阅 [SQL 数据库基于 DTU 的资源限制 - 弹性池](sql-database-dtu-resource-limits-elastic-pools.md)。
 
@@ -277,7 +277,7 @@ ms.locfileid: "57853115"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关单个数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单个数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
+- 有关单一数据库的 vCore 资源限制，请参阅[使用基于 vCore 的购买模型的单一数据库的资源限制](sql-database-vcore-resource-limits-single-databases.md)
 - 有关单一数据库的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的单一数据库的资源限制](sql-database-dtu-resource-limits-single-databases.md)
 - 有关弹性池的 DTU 资源限制，请参阅[使用基于 DTU 的购买模型的弹性池的资源限制](sql-database-dtu-resource-limits-elastic-pools.md)
 - 有关托管实例的资源限制，请参阅[托管实例资源限制](sql-database-managed-instance-resource-limits.md)。

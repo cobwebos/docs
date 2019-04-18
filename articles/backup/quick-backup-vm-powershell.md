@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 03/05/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 00ec813aec37697526233532b75ba6c55bf852c2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 850fce4e04ce07a323e830d2daf74ea1a324f1a0
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58906066"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59489376"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-powershell"></a>使用 PowerShell 在 Azure 中备份虚拟机
 
@@ -29,7 +29,7 @@ ms.locfileid: "58906066"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="log-in-and-register"></a>登录和注册
+## <a name="sign-in-and-register"></a>登录和注册
 
 1. 使用 `Connect-AzAccount` 命令登录到 Azure 订阅，并按照屏幕上的说明进行操作。
 
@@ -53,7 +53,7 @@ ms.locfileid: "58906066"
 - 如果使用此[示例脚本](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm.md?toc=%2fpowershell%2fmodule%2ftoc.json)创建了 VM，则资源组为 myResourceGroup，VM 为 *myVM，资源位于 WestEurope 区域中。
 - Azure 备份会自动处理备份数据的存储。 默认情况下，保管库使用[异地冗余存储 (GRS)](../storage/common/storage-redundancy-grs.md)。 异地冗余可确保将备份数据复制到距主区域数百英里以外的辅助 Azure 区域。
 
-现在创建保管库。
+现在创建保管库：
 
 
 1. 使用 [New-AzRecoveryServicesVault](/powershell/module/az.recoveryservices/new-azrecoveryservicesvault) 创建保管库：
@@ -162,7 +162,7 @@ ms.locfileid: "58906066"
 - 如果要尝试还原 VM，请跳过清理。
 - 如果使用了现有的 VM，可以跳过最后一个 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) cmdlet，以保留资源组和 VM。
 
-禁用保护，删除还原点和保管库。然后删除资源组和关联 VM 资源，如下所示：
+禁用保护，删除还原点和保管库。 然后删除资源组和关联 VM 资源，如下所示：
 
 ```powershell
 Disable-AzRecoveryServicesBackupProtection -Item $item -RemoveRecoveryPoints

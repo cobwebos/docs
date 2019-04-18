@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 61fdaec79e563ba4d87e73b22aba52a5c3f8251b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f53e21b8121006a6a6a1d2099b26e7cb28ca0ed9
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270797"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59545291"
 ---
 # <a name="create-a-store-locator-by-using-azure-maps"></a>使用 Azure Maps 创建店铺定位器
 
@@ -105,7 +105,7 @@ ms.locfileid: "59270797"
 <br/>
 <center>
 
-![演示制表符分隔数据集的记事本文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
+![演示制表符分隔数据集的 Notepad 文件的屏幕截图](./media/tutorial-create-store-locator/StoreDataTabFile.png)</center>
 
 
 ## <a name="set-up-the-project"></a>设置项目
@@ -569,7 +569,7 @@ ms.locfileid: "59270797"
         },
 
         textOptions: {
-            textField: '{point_count_abbreviated}',
+            textField: ['get', 'point_count_abbreviated'],
             size: 12,
             font: ['StandardFont-Bold'],
             offset: [0, 0.4],
@@ -926,7 +926,7 @@ ms.locfileid: "59270797"
 <br/>
 <center>
 
-![浏览器请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
+![浏览器中请求访问用户位置的屏幕截图](./media/tutorial-create-store-locator/GeolocationApiWarning.png)</center>
 
 如果在包含咖啡厅位置的区域中将地图放到足够大，则聚集将分离成单独的位置。 在地图上选择某个图标或者在侧面板中选择一个项会显示一个弹出窗口，其中显示了该位置的信息。
 
@@ -955,11 +955,11 @@ ms.locfileid: "59270797"
 > * 将店铺定位器部署为 [Azure 应用服务 Web 应用](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)。 
 > * 将数据存储在数据库中，并搜索附近的位置。 有关详细信息，请参阅 [SQL Server 空间数据类型概述](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-types-overview?view=sql-server-2017)和[查询最近的邻域的空间数据](https://docs.microsoft.com/sql/relational-databases/spatial/query-spatial-data-for-nearest-neighbor?view=sql-server-2017)。
 
-可以在此处访问本教程的代码示例：
+> [!div class="nextstepaction"]
+> [查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
 
-> [使用 Azure Maps 创建店铺定位器](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator)
-
-[实时查看此处的示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
+> [!div class="nextstepaction"]
+> [查看实时示例](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator)
 
 若要了解有关 Azure Maps 的覆盖范围和功能的更多信息，请参阅：
 

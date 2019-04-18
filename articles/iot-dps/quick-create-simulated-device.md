@@ -3,18 +3,18 @@ title: 使用 C 将模拟的 TPM 设备预配到 Azure IoT 中心 | Microsoft Do
 description: 本快速入门使用单独注册。 在本快速入门中，请使用适用于 Azure IoT 中心设备预配服务的 C 设备 SDK 创建和预配模拟的 TPM 设备。
 author: wesmc7777
 ms.author: wesmc
-ms.date: 07/13/2018
+ms.date: 04/10/2019
 ms.topic: quickstart
 ms.service: iot-dps
 services: iot-dps
-manager: timlt
+manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 0ec778cc349ba7c21e693437b6a20c40f2e9c173
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: e705ce17f0f09d341f2c650dfaccbbad60da14c7
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485306"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59500186"
 ---
 # <a name="quickstart-provision-a-simulated-tpm-device-using-the-azure-iot-c-sdk"></a>快速入门：使用 Azure IoT C SDK 预配模拟的 TPM 设备
 
@@ -44,23 +44,7 @@ Azure IoT 设备预配服务支持两类注册：
 
 在本部分，我们将准备一个用于生成 [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) 和 [TPM](https://docs.microsoft.com/windows/device-security/tpm/trusted-platform-module-overview) 设备模拟器示例的开发环境。
 
-1. 下载 [CMake 生成系统](https://cmake.org/download/)。 使用与下载版本相对应的加密哈希值验证下载的二进制文件。 加密哈希值也可以从已提供的 CMake 下载链接中找到。
-
-    以下示例使用了 Windows PowerShell 来验证 x64 MSI 发行版本 3.13.4 的加密哈希：
-
-    ```powershell
-    PS C:\Downloads> $hash = get-filehash .\cmake-3.13.4-win64-x64.msi
-    PS C:\Downloads> $hash.Hash -eq "64AC7DD5411B48C2717E15738B83EA0D4347CD51B940487DFF7F99A870656C09"
-    True
-    ```
-
-    在撰写本文时，在 CMake 站点上列出了版本 3.13.4 的以下哈希值：
-
-    ```
-    563a39e0a7c7368f81bfa1c3aff8b590a0617cdfe51177ddc808f66cc0866c76  cmake-3.13.4-Linux-x86_64.tar.gz
-    7c37235ece6ce85aab2ce169106e0e729504ad64707d56e4dbfc982cb4263847  cmake-3.13.4-win32-x86.msi
-    64ac7dd5411b48c2717e15738b83ea0d4347cd51b940487dff7f99a870656c09  cmake-3.13.4-win64-x64.msi
-    ```
+1. 下载 [CMake 生成系统](https://cmake.org/download/)。
 
     在进行 `CMake` 安装**之前**，必须在计算机上安装 Visual Studio 必备组件（Visual Studio 和“使用 C++ 的桌面开发”工作负荷）。 满足先决条件并验证下载内容后，安装 CMake 生成系统。
 
@@ -69,7 +53,7 @@ Azure IoT 设备预配服务支持两类注册：
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-c.git --recursive
     ```
-    此存储库的大小目前大约为 220 MB。 应该预料到此操作需要几分钟才能完成。
+    应该预料到此操作需要几分钟才能完成。
 
 
 3. 在 git 存储库的根目录中创建 `cmake` 子目录，并导航到该文件夹。 

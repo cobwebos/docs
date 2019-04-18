@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
 ms.topic: tutorial
-ms.date: 06/25/2018
+ms.date: 04/10/2019
 ms.author: mimart
 author: msmimart
-manager: daveba
+manager: celested
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 94e5f4eaf32815dd0342ef73705efb2c575b71bc
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.openlocfilehash: d83cad9c6681a9d1c852c3d874028ceb6913344f
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293986"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496618"
 ---
 # <a name="tutorial-enforce-multi-factor-authentication-for-b2b-guest-users"></a>教程：对 B2B 用户强制执行多重身份验证
 
@@ -72,7 +72,7 @@ ms.locfileid: "58293986"
 3.  注销。
 
 ## <a name="create-a-conditional-access-policy-that-requires-mfa"></a>创建需要 MFA 的条件访问策略
-1.  以全局管理员、安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。
+1.  以安全管理员或条件访问管理员的身份登录到 [Azure 门户](https://portal.azure.com/)。
 2.  在 Azure 门户中，选择“Azure Active Directory”。 
 3.  在 Azure Active Directory 页面的“安全性”部分中，单击“条件访问”。
 4.  在“条件访问”页面顶部的工具栏中，选择“新建策略”。

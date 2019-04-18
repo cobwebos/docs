@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: overview
-ms.date: 03/27/2019
+ms.date: 04/12/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e07678604797e7e2090f5fefcdb3f3adff40161
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cd4d84d6698ddeda2fb00a8452fbe8cd02771e4b
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521765"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59544562"
 ---
 # <a name="what-is-azure-data-box-edge"></a>什么是 Azure Data Box Edge？ 
 
@@ -93,7 +93,7 @@ Data Box Edge 解决方案包括 Data Box Edge 资源、Data Box Edge 物理设�
     - **欧盟** - 西欧
     - **亚太** - 东南亚
     
-    Data Box Gateway 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
+    Data Box Edge 也可以部署在 Azure 政府云中。 有关详细信息，请参阅[什么是 Azure 政府？](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome)。
     
 - **目标存储帐户** - 存储数据的存储帐户可在所有 Azure 区域中获得。 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 JavaScript 快速入门 | Microsoft Docs
-description: 了解 JavaScript 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
+title: Microsoft 标识平台 JavaScript 快速入门 | Azure
+description: 了解 JavaScript 应用程序如何才能通过 Microsoft 标识平台调用需要访问令牌的 API。
 services: active-directory
 documentationcenter: dev-center-name
 author: navyasric
@@ -12,24 +12,32 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe8c2287da7a7eabc26ff134d8bb44c5e45085f1
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: 2021c5028637a6f7e732df61b6f7c034ef79324f
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203041"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59547391"
 ---
-# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-application"></a>快速入门：通过 JavaScript 应用程序登录用户并获取访问令牌
+# <a name="quickstart-sign-in-users-and-acquire-an-access-token-from-a-javascript-single-page-application-spa"></a>快速入门：通过 JavaScript 单页应用程序 (SPA) 登录用户并获取访问令牌
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-在本快速入门中，你将了解如何使用代码示例，该示例演示了 JavaScript 单页应用程序 (SPA) 登录个人、工作和学校帐户并获取访问令牌以调用 Microsoft Graph API 或任何 Web API 的方式。
+本快速入门介绍如何使用代码示例，该示例演示了 JavaScript 单页应用程序 (SPA) 登录个人、工作和学校帐户并获取访问令牌以调用 Microsoft Graph API 或任何 Web API 的方式。
 
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-javascript/javascriptspa-intro-updated.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-javascript/javascriptspa-intro.svg)
+
+## <a name="prerequisites"></a>先决条件
+
+需要以下设置才能完成本快速入门：
+* 若要通过 Node.js 服务器运行此项目，请执行以下操作：
+    * 安装 [Node.js](https://nodejs.org/en/download/)
+    * 安装 [Visual Studio Code](https://code.visualstudio.com/download)，以便编辑项目文件
+* 若要将项目作为 Visual Studio 解决方案运行，请安装 [Visual Studio 2017](https://visualstudio.microsoft.com/downloads/)。
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-application"></a>注册并下载快速入门应用程序
@@ -39,7 +47,9 @@ ms.locfileid: "58203041"
 >
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 >
-> 1. 访问 [Azure 门户 - 应用程序注册（预览）](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)
+> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
+> 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
+> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/JavascriptSpaQuickstartPage/sourceType/docs)窗格。
 > 1. 输入应用程序的名称，然后单击“注册”。
 > 1. 遵照说明下载内容，并一键式自动配置新应用程序。
 >
@@ -47,9 +57,10 @@ ms.locfileid: "58203041"
 >
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 >
-> 1. 登录到 [Azure 门户](https://portal.azure.com/)以注册应用程序。
+> 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)”>“新建注册”。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+> 1. 选择“新注册”。
 > 1. “注册应用程序”页显示后，请输入应用程序的名称。
 > 1. 在“支持的帐户类型”下，选择“任何组织目录中的帐户和个人 Microsoft 帐户”。
 > 1. 选择“重定向 URI”部分下的“Web”平台，并将值设置为 `http://localhost:30662/`。
@@ -121,14 +132,16 @@ var applicationConfig = {
 
 * 如果使用 [Visual Studio](https://visualstudio.microsoft.com/downloads/)，请确保选择项目解决方案，然后按 **F5** 来运行项目。
 
+在浏览器加载应用程序后，单击“登录”。  首次登录时，系统会提示你同意允许应用程序访问你的个人资料并登录。 成功登录后，应该会看到自己的用户个人资料信息显示在页面上。
+
 ## <a name="more-information"></a>更多信息
 
 ### <a name="msaljs"></a>*msal.js*
 
-MSAL 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft Azure Active Directory (Azure AD) 保护的 API。 本快速入门的 *index.html* 包含对库的引用：
+MSAL 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 本快速入门的 *index.html* 包含对库的引用：
 
 ```html
-<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.3/js/msal.min.js"></script>
+<script src="https://secure.aadcdn.microsoftonline-p.com/lib/0.2.4/js/msal.min.js"></script>
 ```
 
 或者，如果已安装 Node，则可通过 npm 下载它：
@@ -189,14 +202,14 @@ myMSALObj.acquireTokenSilent(applicationConfig.graphScopes).then(function (acces
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-有些情况下，需强制用户与 Azure AD v2.0 终结点交互。 例如：
+有些情况下，需强制用户与 Microsoft 标识平台终结点交互。 例如：
 * 由于密码已过期，用户可能需要重新输入凭据
 * 应用程序正在请求访问用户需要同意的其他资源作用域
 * 需要双重身份验证
 
 建议用于大多数应用程序的常用模式是先调用 `acquireTokenSilent`，然后捕获异常，然后再调用 `acquireTokenRedirect`（或 `acquireTokenPopup`），以便启动交互式请求。
 
-调用 `acquireTokenPopup(scope)` 将导致显示一个用于登录的弹出窗口（调用 `acquireTokenRedirect(scope)` 则会导致将用户重定向到 Azure AD v2.0 终结点），在这种情况下，用户需要进行交互，即确认凭证、同意所需资源或完成双重身份验证。
+调用 `acquireTokenPopup(scope)` 将导致显示一个用于登录的弹出窗口（调用 `acquireTokenRedirect(scope)` 则会导致将用户重定向到 Microsoft 标识平台终结点），在这种情况下，用户需要进行交互，即确认凭据、同意所需资源或完成双重身份验证。
 
 ```javascript
 myMSALObj.acquireTokenPopup(applicationConfig.graphScopes).then(function (accessToken) {

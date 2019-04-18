@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 03/20/2019
 ms.author: victorh
-ms.openlocfilehash: bb849e80e83edc4a25ad2f891d2c6c433ba0d106
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 447c5b1e94b848e9e560db1188a767f2040740c0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225529"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59546844"
 ---
 # <a name="what-is-azure-application-gateway"></a>什么是 Azure 应用程序网关？
 
@@ -118,9 +118,12 @@ WebSocket 和 HTTP/2 协议通过长时间运行的 TCP 连接，在服务器和
 
 ## <a name="rewrite-http-headers-public-preview"></a>重写 HTTP 标头（公共预览版）
 
-HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可帮助实现多个重要方案，例如，添加安全相关的标头字段（如 HSTS/ X-XSS-Protection），或者删除可能会透露敏感信息（如后端服务器名称）的响应标头字段。 
+HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可帮助实现多个重要方案，例如：
+- 添加安全相关的标头字段（如 HSTS/ X-XSS-Protection）。
+- 删除可能会透露敏感信息的响应标头字段。
+- 从 X-Forwarded-For 标头中去除端口信息。
 
-应用程序网关现在支持重写传入 HTTP 请求和传出 HTTP 响应的标头。 当请求/响应数据包在客户端与后端池之间移动时，你可以添加、删除或更新 HTTP 请求和响应标头。 可以重写标准标头字段（[RFC 2616](https://www.ietf.org/rfc/rfc2616.txt) 中已定义）和非标准标头字段。  
+当请求和响应数据包在客户端与后端池之间移动时，可以通过应用程序网关添加、删除或更新 HTTP 请求和响应标头。 它还允许你添加条件，确保只有在满足特定条件的情况下才能重写指定标头。
 
 有关此公共预览版功能的详细信息，请参阅[重写 HTTP 标头](rewrite-http-headers.md)。
 

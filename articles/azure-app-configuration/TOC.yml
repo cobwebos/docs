@@ -22,8 +22,8 @@ items:
   items:
   - name: 使用 ASP.NET Core 启用动态配置
     href: enable-dynamic-configuration-aspnet-core.md
-  - name: 与 Azure 托管服务标识集成
-    href: integrate-azure-managed-service-identity.md
+  - name: 与 CI/CD 管道集成
+    href: integrate-ci-cd-pipeline.md
 - name: 示例
   items:
   - name: Azure CLI
@@ -36,10 +36,10 @@ items:
     href: concept-point-time-snapshot.md
 - name: 操作指南
   items:
+  - name: 与 Azure 托管服务标识集成
+    href: howto-integrate-azure-managed-service-identity.md
   - name: 导入或导出配置数据
     href: howto-import-export-data.md
-  - name: 与 CI/CD 管道集成
-    href: howto-integrate-ci-cd-pipeline.md
 - name: 引用
   items:
   - name: .NET Core 配置提供程序
@@ -56,9 +56,9 @@ items:
   items:
   - name: 提供产品反馈
     href: https://github.com/Azure/AppConfiguration
-ms.openlocfilehash: c4712f08112a1abaf8524677746d9c0e929ee097
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 74de90cd0e8274f7192b177c41aba165eabbed40
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576405"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699604"

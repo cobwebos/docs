@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure IoT OPC UA 设备管理 | Microsoft Docs
+title: 什么是 OPC 孪生 - Azure | Microsoft Docs
 description: OPC 孪生概述
 author: dominicbetts
 ms.author: dobett
@@ -8,15 +8,16 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 3bbc20aa61faafb1405fa756b334bae05ec4129b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 9daf1a7e58af23cb78705691217bf9709359c4d5
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58759699"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496805"
 ---
 # <a name="what-is-azure-iot-open-platform-communications-opc-device-management"></a>什么是 Azure IoT 开放平台通信 (OPC) 设备管理？
-Azure IoT OPC UA 设备管理也称为 OPC 孪生，它由使用 Azure IoT Edge 和 IoT 中心连接云与工厂网络的微服务构成。 OPC 孪生通过 REST API 提供发现、注册和远程控制工业设备的功能。 OPC 孪生不需要 OPC 统一体系结构 (OPC UA) SDK，对编程语言不可知，可包含在无服务器工作流中。 本文将介绍 OPC 孪生的几个用例。
+
+OPC 孪生由使用 Azure IoT Edge 和 IoT 中心连接云与工厂网络的微服务构成。 OPC 孪生通过 REST API 提供发现、注册和远程控制工业设备的功能。 OPC 孪生不需要 OPC 统一体系结构 (OPC UA) SDK，对编程语言不可知，可包含在无服务器工作流中。 本文将介绍 OPC 孪生的几个用例。
 
 ## <a name="discovery-and-control"></a>发现和控制
 可以使用 OPC 孪生完成简单的发现和注册。

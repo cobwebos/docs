@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/08/2019
 ms.author: dobett
-ms.openlocfilehash: 2d759dbfc9b38aae00dd8c3a51a6c0ee2dbe523f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 6338403818259c7263fe66af7d8c8840d98efbcd
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58176559"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491264"
 ---
 # <a name="quickstart-try-a-cloud-based-solution-to-manage-my-industrial-iot-devices"></a>快速入门：尝试使用基于云的解决方案来管理工业 IoT 设备
 
@@ -64,7 +64,7 @@ ms.locfileid: "58176559"
 
 默认视图是仪表板。 若要导航到门户的其他区域，请使用页面左侧的菜单：
 
-[![解决方案仪表板](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
+[![S解决方案仪表板](./media/quickstart-connected-factory-deploy/dashboard-inline.png)](./media/quickstart-connected-factory-deploy/dashboard-expanded.png#lightbox)
 
 使用仪表板管理工业 IoT 设备。 联网工厂使用层次结构来显示全局工厂配置。 该层次结构的顶层是包含一个或多个工厂的企业。 每个工厂包含生产线，而每条生产线由工位构成。 在每个层级，可以查看 OEE 和 KPI、发布新的遥测节点，以及对警报做出响应。
 
@@ -74,13 +74,13 @@ ms.locfileid: "58176559"
 
 “设备综合效率”面板显示整个企业的 OEE 值，或者显示所查看的工厂/生产线/工位。 该值是从装配站视图聚合到企业级别的聚合值。 可以进一步分析 OEE 图及其构成元素。
 
-[![设备综合效率](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
+[![O设备综合效率](./media/quickstart-connected-factory-deploy/oee-inline.png)](./media/quickstart-connected-factory-deploy/oee-expanded.png#lightbox)
 
 OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE 是一项工业标准度量指标，其计算方式是将可用率、性能等级和成品率相乘：OEE = 可用率 x 性能等级 x 成品率。
 
 可以进一步分析层次结构数据中任意级别的 OEE。 单击 OEE、可用性、性能或质量百分比刻度。 此时会出现一个上下文面板，其中的可视化效果显示不同时间刻度的数据：
 
-[![设备综合效率详细信息](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
+[![O设备综合效率详细信息](./media/quickstart-connected-factory-deploy/oeedetail-inline.png)](./media/quickstart-connected-factory-deploy/oeedetail-expanded.png#lightbox)
 
 可以单击图表进一步分析数据。
 
@@ -88,7 +88,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 “关键绩效指标”面板显示整个企业或所查看的工厂/生产线/工位每小时生产的设备数，以及消耗的能源 (kWh)。 这些值是从装配站视图聚合到企业级别的聚合值。
 
-[![关键绩效指标](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
+[![K关键绩效指标](./media/quickstart-connected-factory-deploy/kpis-inline.png)](./media/quickstart-connected-factory-deploy/kpis-expanded.png#lightbox)
 
 可以进一步分析层次结构数据中任意级别的 KPI。 单击 OEE、可用性、性能或质量百分比刻度。 此时会出现一个上下文面板，其中的可视化效果显示不同时间刻度的数据：
 
@@ -100,7 +100,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 一个“工厂位置”面板，显示解决方案中的状态、位置和当前生产配置。 首次运行解决方案加速器时，仪表板中会显示一组模拟工厂。 每个生产线模拟由三个运行模拟任务和共享数据的实际 OPC UA 服务器组成。 有关 OPC UA 的详细信息，请参阅[联网工厂常见问题解答](iot-accelerators-faq-cf.md)：
 
-[![工厂位置](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
+[![F工厂位置](./media/quickstart-connected-factory-deploy/factorylocations-inline.png)](./media/quickstart-connected-factory-deploy/factorylocations-expanded.png#lightbox)
 
 可以在解决方案层次结构中导航，以及查看每个级别的 OEE 值和 KPI：
 
@@ -112,19 +112,19 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 1. 单击“能耗”。 随后会有一些图表绘制了不同时间刻度的此值。 可以单击图表进一步分析数据。
 
-[![查看能耗](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
+[![V查看能耗](./media/quickstart-connected-factory-deploy/explorelocations-inline.png)](./media/quickstart-connected-factory-deploy/explorelocations-expanded.png#lightbox)
 
 ### <a name="map"></a>映射
 
 如果订阅可以访问[必应地图 API](iot-accelerators-faq-cf.md)，则“工厂”视图会显示解决方案中所有工厂的地理位置和状态。 单击地图上显示的位置即可了解位置详细信息。
 
-[![地图](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
+[![Map](./media/quickstart-connected-factory-deploy/map-inline.png)](./media/quickstart-connected-factory-deploy/map-expanded.png#lightbox)
 
 ### <a name="alarms"></a>警报
 
 “警报”面板显示当报告的值或计算的 OEE/KPI 值超出阈值时生成的警报。 此面板显示层次结构中从工位级别到企业的每个级别的警报。 每个警报包括说明、日期、时间、位置和发生次数：
 
-[![警报](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
+[![A警报](./media/quickstart-connected-factory-deploy/alarms-inline.png)](./media/quickstart-connected-factory-deploy/alarms-expanded.png#lightbox)
 
 可以在仪表板中分析造成警报的数据。 管理员可对警报执行默认操作，例如：
 
@@ -133,7 +133,7 @@ OEE 使用与生产相关的运营参数来评价制造过程的效率。 OEE �
 
 单击某个警报，在“选择操作”下拉列表中选择“确认警报”，然后单击“应用”：
 
-[![确认警报](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
+[![A确认警报](./media/quickstart-connected-factory-deploy/acknowledge-inline.png)](./media/quickstart-connected-factory-deploy/acknowledge-expanded.png#lightbox)
 
 若要进一步分析警报数据，请单击警报面板中的图。
 
