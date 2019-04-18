@@ -639,29 +639,29 @@ create table dbo.TargetTbl
 | --- | --- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |布尔 |
+| bit |Boolean |
 | char |String, Char[] |
-| 日期 |DateTime |
+| date |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| 小数 |小数 |
-| FILESTREAM 特性 (varbinary(max)) |Byte[] |
+| Decimal |Decimal |
+| FILESTREAM attribute (varbinary(max)) |Byte[] |
 | Float |Double |
-| 图像 |Byte[] |
+| image |Byte[] |
 | int |Int32 |
-| money |小数 |
+| money |Decimal |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |小数 |
+| numeric |Decimal |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |小数 |
-| sql_variant |对象 * |
-| 文本 |String, Char[] |
+| smallmoney |Decimal |
+| sql_variant |Object * |
+| text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |
