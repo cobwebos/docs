@@ -397,7 +397,7 @@ rpm -e dependency-agent dependency-agent-connector
 | ReceivedBytes | 已接收的字节数 |
 | ProtocolName | 使用的网络协议的名称 |
 | IPVersion | IP 版本 |
-| 方向 | 入站或出站 |
+| Direction | 入站或出站 |
 | MaliciousIP | 某个已知恶意源的 IP 地址 |
 | Severity | 可疑恶意软件的严重性 |
 | RemoteIPCountry | 远程 IP 地址所在的国家/地区 |
