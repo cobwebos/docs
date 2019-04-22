@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/12/2018
 ms.author: ramamill
 ms.openlocfilehash: c23f3ec9c85bb3997380d83c097f2690b91c1f4f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049691"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vm-disaster-recovery"></a>为 VMware VM 灾难恢复管理配置服务器
@@ -68,7 +68,7 @@ ms.locfileid: "59049691"
 
 1. 在[登录](#access-configuration-server)后，选择“管理虚拟机凭据”。
 2. 单击“添加虚拟机凭据”。
-    ![add-mobility-credentials](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+    ![添加虚拟机凭据](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
 3. 输入新凭据，单击“添加”。
 
 还可以通过 CSPSConfigtool.exe 添加凭据。

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: 6998db1679e67f8ac4bf7c81ea9373c66a9618ee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278558"
 ---
 # <a name="index-policy-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
@@ -70,7 +70,7 @@ Azure Cosmos DB 支持两种索引模式，您可以通过索引策略的 Azure 
 
 阅读以下文章中有关索引的详细信息：
 
-* [索引概述](index-overview.md)
+* [索引概览](index-overview.md)
 * [索引类型](index-types.md)
 * [索引路径](index-paths.md)
 * [如何管理索引策略](how-to-manage-indexing-policy.md)

@@ -10,10 +10,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 34def35eba1e5c1645e6e1f9a505704d153ac716
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59277760"
 ---
 # <a name="set-rbac-roles-for-administrative-access"></a>针对管理访问权限设置 RBAC 角色
@@ -38,6 +38,6 @@ ms.locfileid: "59277760"
 
 ## <a name="see-also"></a>另请参阅
 
-+ [使用 PowerShell 管理](search-manage-powershell.md) 
-+ [性能和优化 Azure 搜索中](search-performance-optimization.md)
++ [使用 PowerShell 进行管理](search-manage-powershell.md) 
++ [Azure 搜索中的性能和优化](search-performance-optimization.md)
 + [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。

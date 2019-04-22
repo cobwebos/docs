@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/12/2019
 ms.author: aljo
 ms.openlocfilehash: 400e4653800d445506d4854e70034a707dcc4629
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049175"
 ---
 # <a name="scale-a-cluster-in-or-out"></a>缩小或扩大群集
@@ -122,16 +122,16 @@ sfctl node list --query "sort_by(items[*], &name)[-1]"
 Service Fabric 群集需要了解此节点将被删除。 需要执行以下三个步骤：
 
 1. 禁用节点，使其不再是数据复制。  
-PowerShell： `Disable-ServiceFabricNode`  
-sfctl: `sfctl node disable`
+PowerShell：`Disable-ServiceFabricNode`  
+sfctl：`sfctl node disable`
 
 2. 停止节点，使 Service Fabric 运行时完全关闭且应用获取终止请求。  
-PowerShell： `Start-ServiceFabricNodeTransition -Stop`  
-sfctl: `sfctl node transition --node-transition-type Stop`
+PowerShell：`Start-ServiceFabricNodeTransition -Stop`  
+sfctl：`sfctl node transition --node-transition-type Stop`
 
 2. 从群集移除节点。  
-PowerShell： `Remove-ServiceFabricNodeState`  
-sfctl: `sfctl node remove-state`
+PowerShell：`Remove-ServiceFabricNodeState`  
+sfctl：`sfctl node remove-state`
 
 对节点执行这三个步骤后，即可将其从规模集中移除。 如果使用除 [bronze][durability] 以外的任意持续性层，在移除规模集实例时会完成这些步骤。
 
@@ -195,7 +195,7 @@ else
 }
 ```
 
-在中**sfctl**下面代码中，使用以下命令来获取**节点名称**最近创建节点的值： `sfctl node list --query "sort_by(items[*], &name)[-1].name"`
+在下面的“sfctl”代码中，使用以下命令获取最近创建的节点 `sfctl node list --query "sort_by(items[*], &name)[-1].name"` 的 “node-name”值：
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -263,7 +263,7 @@ Service Fabric Explorer 中列出的节点是 Service Fabric 系统服务（特�
 
 * [规划群集容量](service-fabric-cluster-capacity.md)
 * [群集升级](service-fabric-cluster-upgrade.md)
-* [有状态服务分区的最大小数位数](service-fabric-concepts-partitioning.md)
+* [为有状态服务分区以最大程度地实现缩放](service-fabric-concepts-partitioning.md)
 
 <!--Image references-->
 [BrowseServiceFabricClusterResource]: ./media/service-fabric-cluster-scale-up-down/BrowseServiceFabricClusterResource.png

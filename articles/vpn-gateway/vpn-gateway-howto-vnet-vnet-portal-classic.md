@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: cherylmc
 ms.openlocfilehash: e323a8d71bbffd1d29ad793dff7b5b4a072b6979
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046116"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>配置 VNet 到 VNet 连接（经典）
@@ -33,8 +33,8 @@ ms.locfileid: "59046116"
 > * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure 门户（经典）](vpn-gateway-howto-vnet-vnet-portal-classic.md)
-> * [连接不同部署模型-Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
-> * [连接不同部署模型-PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
+> * [连接不同的部署模型 - Azure 门户](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [连接不同的部署模型 - PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 >
 >
 
@@ -98,7 +98,7 @@ ms.locfileid: "59046116"
 
 如果使用本文进行练习，可以使用以下示例值：
 
-**TestVNet1 的值**
+**用于 TestVNet1 的值**
 
 姓名：TestVNet1<br>
 地址空间：10.11.0.0/16, 10.12.0.0/16（可选）<br>
@@ -118,13 +118,13 @@ GatewaySubnet：10.11.1.0/27
 位置：美国西部<br>
 GatewaySubnet：10.41.1.0/27
 
-**在创建 Vnet，请记住以下设置：**
+**创建 VNet 时，请注意以下设置：**
 
 * **虚拟网络地址空间** – 在“虚拟网络地址空间”页上，指定要用于虚拟网络的地址范围。 这些都是动态 IP 地址，将分配给你部署到此虚拟网络的 VM 和其他角色实例。<br>选择的地址空间不能与任何其他 VNet 的地址空间重叠，也不能与此 VNet 将连接到的本地位置的地址空间重叠。
 
 * **位置** - 创建虚拟网络时，它将与某个 Azure 位置（区域）相关联。 例如，如果要部署到虚拟网络的 VM 的实际位置为美国西部，请选择该位置。 创建虚拟网络后，将无法更改与虚拟网络关联的位置。
 
-**创建 Vnet 后, 可以添加以下设置：**
+**创建 VNet 后，可以添加以下设置：**
 
 * **地址空间** – 此配置不需要额外的地址空间，但可以在创建 VNet 后添加额外的地址空间。
 

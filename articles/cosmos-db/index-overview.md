@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265689"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
@@ -58,7 +58,7 @@ Azure Cosmos 数据库采用倒排索引数据结构存储每个项的信息，�
 
 阅读以下文章中有关索引的详细信息：
 
-- [索引编制策略](index-policy.md)
+- [索引策略](index-policy.md)
 - [索引类型](index-types.md)
 - [索引路径](index-paths.md)
 - [如何管理索引策略](how-to-manage-indexing-policy.md)

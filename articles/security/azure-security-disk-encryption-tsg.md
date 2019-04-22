@@ -8,10 +8,10 @@ ms.author: mbaldwin
 ms.date: 03/12/2019
 ms.custom: seodec18
 ms.openlocfilehash: 3c6c552a6605278d8ab31264f5d180206e0badac
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490027"
 ---
 # <a name="azure-disk-encryption-troubleshooting-guide"></a>Azure 磁盘加密故障排除指南
@@ -156,5 +156,5 @@ If the expected encryption state does not match what is being reported in the po
 
 本文档已详细描述有关 Azure 磁盘加密的一些常见问题和解决这些问题的方法。 有关此服务及其功能的详细信息，请参阅以下文章：
 
-- [在 Azure 安全中心中应用磁盘加密](../security-center/security-center-apply-disk-encryption.md)
-- [静态 azure 数据加密](azure-security-encryption-atrest.md)
+- [在 Azure 安全中心应用磁盘加密](../security-center/security-center-apply-disk-encryption.md)
+- [Azure 静态数据加密](azure-security-encryption-atrest.md)

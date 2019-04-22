@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 9e30337eb8acaa6dc3386f5e60285faa80dd6307
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257903"
 ---
 # <a name="supported-file-formats-and-compression-codecs-in-azure-data-factory"></a>Azure 数据工厂中支持的文件格式和压缩编解码器
 
-*本文适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)， [Azure Blob](connector-azure-blob-storage.md)， [Azure 数据湖存储 Gen1](connector-azure-data-lake-store.md)， [Azure 数据湖存储第 2 代](connector-azure-data-lake-storage.md)， [Azure 文件存储](connector-azure-file-storage.md)，[文件系统](connector-file-system.md)， [FTP](connector-ftp.md)， [Google 云存储](connector-google-cloud-storage.md)， [HDFS](connector-hdfs.md)， [HTTP](connector-http.md)，和[SFTP](connector-sftp.md)。*
+本文适用于以下连接器：[Amazon S3](connector-amazon-simple-storage-service.md)、[Azure Blob](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md)、[Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md)、[Azure 文件存储](connector-azure-file-storage.md)、[文件系统](connector-file-system.md)、[FTP](connector-ftp.md)、[Google 云存储](connector-google-cloud-storage.md)、[HDFS](connector-hdfs.md)、[HTTP](connector-http.md) 和 [SFTP](connector-sftp.md)。
 
-如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
+如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。 如果要**分析或生成具有特定格式的文件**，Azure 数据工厂支持以下文件格式类型：
 
 * [文本格式](#text-format)
 * [JSON 格式](#json-format)
@@ -103,7 +103,7 @@ ms.locfileid: "59257903"
 
 复制活动可分析以下 JSON 文件模式：
 
-- **类型 I:setofobjects**
+- **类型 I：setOfObjects**
 
     每个文件包含单个对象，或者以行分隔/串连的多个对象。 在输出数据集中选择此选项时，复制活动将生成单个 JSON 文件，其中每行包含一个对象（以行分隔）。
 
@@ -157,7 +157,7 @@ ms.locfileid: "59257903"
         }
         ```
 
-- **类型 II: arrayOfObjects**
+- **类型 II：arrayOfObjects**
 
     每个文件包含对象的数组。
 
@@ -194,7 +194,7 @@ ms.locfileid: "59257903"
 
 **案例 1：从 JSON 文件复制数据**
 
-**示例 1： 从对象和数组中提取数据**
+**示例 1：从对象和数组中提取数据**
 
 在此示例中，预期要将一个根 JSON 对象映射到表格结果中的单个记录。 如果 JSON 文件包含以下内容：  
 
@@ -230,8 +230,8 @@ ms.locfileid: "59257903"
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 部分转换为表格数据时定义自定义的列名称和相应的数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
-- `jsonPathDefinition` 指定每个列，指示从中提取数据的位置的 JSON 路径。 若要从数组中复制数据，可以使用 `array[x].property` 从 `xth` 对象中提取给定属性的值，或者使用 `array[*].property` 从包含此类属性的任何对象中查找该值。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
+- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 若要从数组中复制数据，可以使用 `array[x].property` 从 `xth` 对象中提取给定属性的值，或者使用 `array[*].property` 从包含此类属性的任何对象中查找该值。
 
 ```json
 "properties": {
@@ -268,7 +268,7 @@ ms.locfileid: "59257903"
 }
 ```
 
-**示例 2： 交叉应用多个对象以同一模式从数组**
+**示例 2：使用数组中的相同模式交叉应用多个对象**
 
 在此示例中，预期要将一个根 JSON 对象转换为表格结果中的多个记录。 如果 JSON 文件包含以下内容：
 
@@ -305,9 +305,9 @@ ms.locfileid: "59257903"
 
 **JsonFormat** 类型的输入数据集定义如下（部分定义，仅包含相关部件）。 更具体说来：
 
-- `structure` 部分转换为表格数据时定义自定义的列名称和相应的数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
-- `jsonNodeReference` 指示进行迭代操作，从具有相同的模式下的对象中提取数据**数组** `orderlines`。
-- `jsonPathDefinition` 指定每个列，指示从中提取数据的位置的 JSON 路径。 在以下示例中，`ordernumber`、`orderdate` 和 `city` 位于 JSON 路径以“`$.`”开头的根对象下，而 `order_pd` 和 `order_price` 在定义时使用的路径派生自没有“`$.`”的数组元素。
+- `structure` 节定义自定义列名以及在转换为表格数据时的相应数据类型。 本节为**可选**，除非需要进行列映射。 有关详细信息，请参阅[将源数据集列映射到目标数据集列](copy-activity-schema-and-type-mapping.md)。
+- `jsonNodeReference` 指示进行迭代操作，在**数组**`orderlines`下以同一模式从对象提取数据。
+- `jsonPathDefinition` 为每个列指定 JSON 路径，表明从何处提取数据。 在以下示例中，`ordernumber`、`orderdate` 和 `city` 位于 JSON 路径以“`$.`”开头的根对象下，而 `order_pd` 和 `order_price` 在定义时使用的路径派生自没有“`$.`”的数组元素。
 
 ```json
 "properties": {
@@ -352,7 +352,7 @@ ms.locfileid: "59257903"
 * 如果同一级别存在重复的名称，复制活动将选择最后一个名称。
 * 属性名称区分大小写。 名称相同但大小写不同的两个属性被视为两个不同的属性。
 
-**案例 2：将数据写入到 JSON 文件**
+**案例 2：将数据写入 JSON 文件**
 
 如果 SQL 数据库中存在以下表：
 
@@ -591,7 +591,7 @@ ms.locfileid: "59257903"
 
 - [Azure Blob 存储连接器](connector-azure-blob-storage.md)
 - [Azure Data Lake Store 连接器](connector-azure-data-lake-store.md)
-- [Amazon S3 connector](connector-amazon-simple-storage-service.md)
+- [Amazon S3 连接器](connector-amazon-simple-storage-service.md)
 - [文件系统连接器](connector-file-system.md)
 - [FTP 连接器](connector-ftp.md)
 - [SFTP 连接器](connector-sftp.md)

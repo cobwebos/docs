@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/29/2019
 ms.author: alkohli
 ms.openlocfilehash: b4d047f4266d11a5f6b77f33054eb93e31f7090b
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58791569"
 ---
 # <a name="manage-an-azure-data-box-edge-device-via-windows-powershell"></a>管理通过 Windows PowerShell 的 Azure 数据框边缘设备
@@ -26,7 +26,7 @@ Azure 数据框边缘解决方案，可处理数据并将其通过网络发送�
 - 连接到 PowerShell 界面
 - 启动支持会话
 - 创建支持包
-- 上载证书
+- 上传证书
 - 将设备重置
 - 查看设备信息
 - 获取计算日志
@@ -40,7 +40,7 @@ Azure 数据框边缘解决方案，可处理数据并将其通过网络发送�
 
 [!INCLUDE [Create a support package](../../includes/data-box-edge-gateway-create-support-package.md)]
 
-## <a name="upload-certificate"></a>上载证书
+## <a name="upload-certificate"></a>上传证书
 
 [!INCLUDE [Upload certificate](../../includes/data-box-edge-gateway-upload-certificate.md)]
 

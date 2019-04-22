@@ -14,10 +14,10 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268347"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录
@@ -26,7 +26,7 @@ ms.locfileid: "59268347"
 > [!Note]
 > 如果你仍使用双重验证体验，需按照[设置帐户以便进行双重验证](multi-factor-authentication-end-user-first-time.md)一文中的说明设置身份验证方法。
 > 
-> 如果管理员已启用安全信息体验，则你需要使用这些分步文章设置身份验证方法：<ul><li>[设置为使用身份验证应用的安全信息](security-info-setup-auth-app.md)</li><li>[设置为使用短信的安全信息](security-info-setup-text-msg.md)</li><li>[设置为使用电话呼叫的安全信息](security-info-setup-phone-number.md)</li></ul>
+> 如果管理员已启用安全信息体验，则你需要使用这些分步文章设置身份验证方法：<ul><li>[设置安全信息以使用身份验证应用](security-info-setup-auth-app.md)</li><li>[设置安全信息以使用短信](security-info-setup-text-msg.md)</li><li>[设置安全信息以使用电话呼叫](security-info-setup-phone-number.md)</li></ul>
 
 ## <a name="sign-in-using-an-authenticator-app-notification-on-your-mobile-device"></a>使用验证器应用通知在移动设备上登录
 

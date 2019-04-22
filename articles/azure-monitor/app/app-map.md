@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 03/14/2019
+ms.date: 03/15/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 11f7bb69ed408adf87d62a4af1aa4bd87e70bd6d
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.openlocfilehash: 89aa5006882680205816e7e5d1e7e55b9c4b2ab0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009189"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678527"
 ---
 # <a name="application-map-triage-distributed-applications"></a>应用程序映射：会审分布式应用程序
 
@@ -90,9 +90,9 @@ ms.locfileid: "59009189"
 
 ![分析体验的屏幕截图](media/app-map/alerts-view.png)
 
-## <a name="set-cloudrolename"></a>设置 cloud_RoleName
+## <a name="set-cloud-role-name"></a>设置云角色名称
 
-应用程序映射使用 `cloud_RoleName` 属性来标识映射上的组件。 Application Insights SDK 会自动将 `cloud_RoleName` 属性添加到组件发出的遥测数据。 例如，SDK 会将网站名称或服务角色名称添加到 `cloud_RoleName` 属性。 但是，在某些情况下，你可能希望替代默认值。 若要替代 cloud_RoleName 并更改要在应用程序映射上显示的内容，请如下所示进行操作：
+使用应用程序映射**云角色名称**属性标识在地图上的组件。 Application Insights SDK 自动将云角色名称属性添加到的组件发出的遥测数据。 例如，SDK 将添加的 web 站点名称或服务角色名称的云角色名称属性。 但是，在某些情况下，你可能希望替代默认值。 若要重写云角色名称并更改显示在应用程序映射获取的内容：
 
 ### <a name="net"></a>.NET
 
@@ -171,9 +171,9 @@ appInsights.defaultClient.addTelemetryProcessor(envelope => {
 
 `spring.application.name=<name-of-app>`
 
-Spring Boot 入门版会自动将 cloudRoleName 分配给你为 spring.application.name 属性输入的值。
+Spring Boot 起动器会自动将云角色名称分配到 spring.application.name 属性输入的值。
 
-有关 Java 关联以及如何为非 SpringBoot 应用程序配置 cloudRoleName 的详细信息，请查看介绍了关联的[此部分](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name)内容。
+有关进一步信息 Java 相关性以及如何配置云角色命名为非 SpringBoot 应用程序签出这[部分](https://docs.microsoft.com/azure/application-insights/application-insights-correlation#role-name)上相关。
 
 ### <a name="clientbrowser-side-javascript"></a>客户端/浏览器端 JavaScript
 
@@ -186,15 +186,15 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 });
 ```
 
-### <a name="understanding-cloudrolename-within-the-context-of-the-application-map"></a>应用程序映射的上下文中了解 Cloud.RoleName
+### <a name="understanding-cloud-role-name-within-the-context-of-the-application-map"></a>了解应用程序映射的上下文中的云角色名称
 
-如何考虑 Cloud.RoleName 可能会看一下应用程序映射为远端的具有多个 Cloud.RoleNames 存在：
+至于如何考虑一下**云角色名称**，可以看一下具有多个云角色名称存在应用程序映射：
 
 ![应用程序映射屏幕截图](media/app-map/cloud-rolename.png)
 
-在上面的绿色框中的名称的每个应用程序映射都是此特定的分布式应用程序的不同方面的 Cloud.RoleName/role 值。 使此应用程序及其角色组成： `Authentication`， `acmefrontend`， `Inventory Management`、 `Payment Processing Worker Role`。 
+在上面的绿色框中的名称的每个应用程序映射是云角色名称值对此特定的分布式应用程序的不同方面。 使此应用程序及其角色组成： `Authentication`， `acmefrontend`， `Inventory Management`、 `Payment Processing Worker Role`。 
 
-对于此应用程序每个这些`Cloud.RoleNames`也代表不同的唯一 Application Insights 资源具有其自己的检测密钥。 由于此应用程序的所有者有权访问每个四个不同 Application Insights 资源，应用程序映射是可以整合的基础关系图。
+在此应用的情况下每个这些云角色名称与他们自己的检测密钥也代表不同的唯一 Application Insights 资源。 由于此应用程序的所有者有权访问每个四个不同 Application Insights 资源，应用程序映射是可以整合的基础关系图。
 
 有关[官方定义](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/39a5ef23d834777eefdd72149de705a016eb06b0/Schema/PublicSchema/ContextTagKeys.bond#L93):
 
@@ -208,15 +208,17 @@ appInsights.context.addTelemetryInitializer((envelope) => {
     715: string      CloudRoleInstance = "ai.cloud.roleInstance";
 ```
 
-或者，Cloud.RoleInstance 可以是于其中 Cloud.RoleName 告诉您的问题是某个位置中将 web 前端，但你可能运行的 web 前端跨多个负载平衡服务器，能够向下钻取更深入层中的情况通过 Kusto 查询和了解问题影响所有 web 前端服务器/实例或只是一个可以变得极为重要。
+或者，**云角色实例**的情况下会很有用，**云角色名称**告诉您的问题是某个位置在您的 web 前端，但你可能运行在前端 web多个负载平衡的服务器因此因为它能够在通过 Kusto 查询更深入一层中钻取和了解是否问题影响所有 web 前端服务器/实例或只是一个可以变得极为重要。
 
-您可能想要为 Cloud.RoleInstance 重写值的方案可能是如果您的应用程序是环境中运行容器化其中只了解各个服务器可能不足够的信息来查找某一的问题。
+你可能想要重写云角色实例的值的方案可能是如果您的应用程序是环境中运行容器化其中只了解各个服务器可能不足够的信息来查找某一的问题。
 
-有关如何使用遥测数据初始化表达式替代 cloud_RoleName 属性的详细信息，请参阅[添加属性：ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer)。
+有关如何使用遥测初始值设定项重写的云角色名称属性的详细信息，请参阅[添加属性：ITelemetryInitializer](api-filtering-sampling.md#add-properties-itelemetryinitializer)。
 
 ## <a name="troubleshooting"></a>故障排除
 
 如果无法让应用程序映射按预期方式工作，请尝试以下步骤：
+
+### <a name="general"></a>常规
 
 1. 请确保你使用的是官方支持的 SDK。 不受支持的/社区 SDK 可能不支持关联。
 
@@ -226,9 +228,23 @@ appInsights.context.addTelemetryInitializer((envelope) => {
 
 3. 如果将 Azure Functions 与 C# 一起使用，请升级到 [Functions V2](https://docs.microsoft.com/azure/azure-functions/functions-versions)。
 
-4. 确认 [cloud_RoleName](#set-cloud_rolename) 已正确配置。
+4. 确认[云角色名称](#set-cloud-role-name)正确配置。
 
 5. 如果缺少某个依赖项，请确保它在[自动收集的依赖项](https://docs.microsoft.com/azure/application-insights/auto-collect-dependencies)列表中。 如果不在其中，也可以使用某个[跟踪依赖项调用](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackdependency)手动跟踪它。
+
+### <a name="too-many-nodes-on-the-map"></a>在地图上过多的节点
+
+应用程序映射构造请求遥测中存在的每个独特的云角色名称的应用程序节点和依赖项节点类型、 目标和依赖项遥测中的云角色名称的每个唯一组合。 如果在遥测中有 10,000 多个节点，应用程序映射不能提取所有节点和链接，以便您的映射将不完整。 如果发生这种情况，查看映射时，将显示一条警告消息。
+
+此外，应用程序映射仅支持最多 1000 个单独的未分组的节点同时呈现。 应用程序映射降低了 visual 复杂性通过将依赖项组合在一起，具有相同类型和调用方，但如果遥测具有独特的云角色名称太多或过多的依赖项类型，该分组会不符合要求，并且该映射将不能为呈现。
+
+若要解决此问题，您将需要更改以正确设置云角色名称、 依赖关系类型和依赖关系的目标字段的检测。
+
+* 依赖关系目标应表示依赖关系的逻辑名称。 在许多情况下，它相当于服务器或依赖项的资源名称。 例如，在 HTTP 依赖项的情况下它设置为主机名。 它不应包含唯一的 Id 或将更改为另一个请求中的参数。
+
+* 依赖关系类型应表示依赖关系的逻辑类型。 例如，HTTP、 SQL 或 Azure Blob 是典型的依赖项类型。 它不应包含唯一 Id。
+
+* 中说明的云角色名称的用途[上面部分](https://docs.microsoft.com/azure/azure-monitor/app/app-map#set-cloud-role-name)。
 
 ## <a name="portal-feedback"></a>门户反馈
 

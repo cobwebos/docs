@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: yalavi
 ms.reviewer: mbullwin
-ms.openlocfilehash: 30f853bd65c83b922faf008fbb5279c28f197f68
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 772401c286a50774d201703cefcbbc12f0fcf88f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339000"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678881"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor-public-preview"></a>Azure Monitor 中具有动态阈值的指标警报（公共预览版）
 
@@ -41,6 +41,9 @@ ms.locfileid: "58339000"
 
 如果与选择的阈值之间有偏差，则表示指标行为存在异常。
 
+> [!NOTE]
+> 季节性模式检测设置为小时、 天或一周的时间间隔。 这意味着其他模式，例如 bihourly 模式或 semiweekly 可能未检测到。
+
 ## <a name="what-does-sensitivity-setting-in-dynamic-thresholds-mean"></a>动态阈值中的“敏感度”设置是指什么？
 
 警报阈值敏感度是一个高级概念，用于控制触发警报所要实现的指标行为的偏差量。
@@ -48,7 +51,7 @@ ms.locfileid: "58339000"
 
 - 高 - 阈值比较严格，并且与指标系列模式接近。 警报规则将在偏差最小时触发，因此会生成更多的警报。
 - 中 – 不太严格且比较均衡的阈值，生成的警报比使用高敏感度（默认设置）时更少。
-- 低 – 阈值比较宽松，与指标系列模式的偏差更大。 只会在偏差较大时触发警报规则，因此生成的警报较少。
+- 低 – 阈值比较宽松，与指标系列模式的偏差更大。 警报规则将只触发上大偏差，从而导致较少警报。
 
 ## <a name="what-are-the-operator-setting-options-in-dynamic-thresholds"></a>动态阈值中的“运算符”设置选项有哪些？
 
@@ -73,13 +76,23 @@ ms.locfileid: "58339000"
 
 **忽略此前的数据** - 用户还可以选择性地定义一个开始日期，从此日期开始，系统应开始计算阈值。 一个典型的用例是资源过去在测试模式下运行，现在模式已提升，以便为生产工作负荷提供服务，在这种情况下，应忽略任何指标在测试阶段的行为。
 
+## <a name="how-do-you-find-out-why-a-dynamic-thresholds-alert-was-triggered"></a>如何查明为何触发动态阈值警报？
+
+你可以浏览触发的警报实例，在警报视图中，通过单击以查看在 Azure 门户中查看警报的电子邮件或短信或浏览器中的链接。 [了解有关警报视图的详细信息](alerts-overview.md#alerts-experience)。
+
+警报视图显示：
+
+- 动态阈值警报激发的那一刻的所有度量值详细信息。
+- 警报在其中已包含在某个时间点所使用的动态阈值的触发器的段的图表。
+- 若要在动态阈值警报和警报视图体验，这可能会提高将来检测提供反馈的功能。
+
 ## <a name="will-slow-behavior-change-in-the-metric-trigger-an-alert"></a>指标中的慢速行为变更是否会触发警报？
 
 很有可能并非如此。 动态阈值适合检测重大偏差，而不适合检测逐渐形成的问题。
 
 ## <a name="how-much-data-is-used-to-preview-and-then-calculate-thresholds"></a>需要使用多少数据来预览再计算阈值？
 
-计算显示在图中之前此度量值，在创建警报规则, 的阈值是基于足够历史数据来计算小时或每日季节性模式 （10 天）。 按显示每周模式上将获取历史数据不足，无法计算每周季节性模式 （第 28 天）。 创建警报规则后，动态阈值将全部所需的历史数据，并且可将持续学习和擅长基于新数据以便更准确的阈值。
+计算显示在图中之前此度量值，在创建警报规则, 的阈值是基于足够历史数据来计算小时或每日季节性模式 （10 天）。 创建警报规则后，动态阈值将全部所需的历史数据，并且可将持续学习和擅长基于新数据以便更准确的阈值。 这意味着，后计算此图表还将显示每周模式。
 
 ## <a name="how-much-data-is-needed-to-trigger-an-alert"></a>需要多少数据以便在触发警报？
 

@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/09/2019
+ms.date: 04/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 39e8c06228381143a6f4975e4d6415799ce16d43
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59426473"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679068"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -134,9 +134,9 @@ Windows 代理必须配置为与 WSUS 服务器通信或必须有权访问 Micro
 
 要开始修补系统，需要启用更新管理解决方案。 可使用多种方法将计算机加入到更新管理。 以下是推荐和支持的方法，可用于加入此解决方案：
 
-* [从虚拟机](automation-onboard-solutions-from-vm.md)
-* [从浏览多个计算机](automation-onboard-solutions-from-browse.md)
-* [从自动化帐户](automation-onboard-solutions-from-automation-account.md)
+* [通过虚拟机](automation-onboard-solutions-from-vm.md)
+* [通过浏览多个计算机](automation-onboard-solutions-from-browse.md)
+* [通过自动化帐户](automation-onboard-solutions-from-automation-account.md)
 * [使用 Azure 自动化 runbook](automation-onboard-solutions.md)
   
 ### <a name="confirm-that-non-azure-machines-are-onboarded"></a>确认非 Azure 计算机已加入
@@ -208,9 +208,9 @@ Heartbeat
 
 ## <a name="install-updates"></a>安装更新
 
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要了解有关计算机组的详细信息，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
+对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建的更新部署，必须具有到自动化帐户的写访问权限，并且写入访问权限的任何 Azure Vm 中部署的目标。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要了解有关计算机组的详细信息，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
- 在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要避免使用[动态组](#using-dynamic-groups)，在部署时将解析这些组并由查询进行定义。
+在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要解决这种用法[动态组](#using-dynamic-groups)，这些组在部署时解析和为 Azure Vm 或非 Azure Vm 的已保存的搜索查询定义。
 
 > [!NOTE]
 > 默认情况下，从 Azure 市场部署的 Windows 虚拟机设置为从 Windows 更新服务接收自动更新。 添加此解决方案或者将 Windows 虚拟机添加到工作区时，此行为不会更改。 如果不主动通过此解决方案管理更新，则会应用默认行为（即自动应用更新）。
@@ -219,13 +219,13 @@ Heartbeat
 
 基于 Azure 市场中提供的按需 Red Hat Enterprise Linux (RHEL) 映像创建的虚拟机注册为访问 Azure 中部署的 [Red Hat 更新基础结构 (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md)。 对于任何其他 Linux 发行版，必须按照其支持的方法从发行版联机文件存储库对其进行更新。
 
-若要创建新的更新部署，请选择“计划更新部署”。 此时将打开“新建更新部署”窗格。 为下表中介绍的属性输入值，然后单击“创建”：
+若要创建新的更新部署，请选择“计划更新部署”。 **新的更新部署**页随即打开。 为下表中介绍的属性输入值，然后单击“创建”：
 
 | 属性 | 描述 |
 | --- | --- |
 | 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
-| 要更新的组（预览）|定义基于一组订阅、资源组、位置和标记的查询，生成要在部署中包含的 Azure VM 动态组。 有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
+| 若要更新的组 |适用于 Azure 机定义的订阅、 资源组、 位置和标记来生成要在部署中包含的 Azure Vm 的动态组组合所基于的查询。 </br></br>对于非 Azure 计算机，选择现有的已保存搜索以选择要包括在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类|
 |包括/排除更新|这将打开“包括/排除”页。 要包含或排除的更新位于单独的选项卡上。 有关如何处理包含的详细信息，请参阅[包含行为](automation-update-management.md#inclusion-behavior) |
@@ -567,7 +567,14 @@ Update
 
 ## <a name="using-dynamic-groups"></a>使用动态组
 
-更新管理能够定位 Azure VM 的动态组以进行更新部署。 这些组由查询进行定义，当更新部署开始时，将评估该组的成员。 动态组不适用于经典 Vm。 定义查询时，结合使用以下各项填充动态组
+更新管理提供面向更新部署的 Azure 或非 Azure Vm 的动态组的功能。 因此，不需要编辑你要添加的计算机的部署，会在部署时评估这些组。
+
+> [!NOTE]
+> 创建更新部署时，您必须具有适当权限。 若要了解详细信息，请参阅[安装更新](#install-updates)。
+
+### <a name="azure-machines"></a>Azure 计算机
+
+这些组由查询进行定义，当更新部署开始时，将评估该组的成员。 动态组不适用于经典 Vm。 定义查询时，结合使用以下各项填充动态组
 
 * 订阅
 * 资源组
@@ -579,6 +586,12 @@ Update
 若要预览动态组的结果，请单击“预览”按钮。 那时此预览将显示组成员身份，在此示例中，我们要搜索标记“Role”等于“BackendServer”的计算机。 如果多台计算机已添加此标记，会针对该组将它们添加到任何未来部署中。
 
 ![预览组](./media/automation-update-management/preview-groups.png)
+
+### <a name="non-azure-machines"></a>非 Azure 计算机
+
+适用于非 Azure 计算机，已保存的搜索也称为计算机组用于创建动态组。 若要了解如何创建已保存的搜索，请参阅[创建计算机组](../azure-monitor/platform/computer-groups.md#creating-a-computer-group)。 创建你的组后你可以从保存的搜索结果列表中选择它。 单击**预览版**预览此时已保存的搜索中的计算机。
+
+![选择组](./media/automation-update-management/select-groups-2.png)
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>集成 System Center Configuration Manager
 

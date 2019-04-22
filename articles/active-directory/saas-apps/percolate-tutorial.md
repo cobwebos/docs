@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: d399e83dbd1324827cc395cbf7834672baffa791
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2110b1ec7d5d6b317341855ff19acf7975733e71
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275838"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617863"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>教程：Azure Active Directory 与 Percolate 的集成
 
@@ -101,7 +101,7 @@ ms.locfileid: "59275838"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。 **** 
+4. 在“基本 SAML 配置”部分，若要在“IDP 发起的模式”下配置应用程序，用户无需执行任何步骤，因为该应用已预先集成到 Azure。
 
     ![Percolate 域和 URL 单一登录信息](common/preintegrated.png)
 
@@ -141,7 +141,7 @@ ms.locfileid: "59275838"
 
     b. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure AD 标识符”值。
 
-    c. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“x509 证书”框中。 **** 
+    c. 在记事本中，打开从 Azure 门户下载的 base-64 编码证书，复制其内容，然后将其粘贴到“x509 证书”框中。
 
     d. 在“电子邮件属性”文本框中，键入 **emailaddress**。
 
@@ -219,9 +219,9 @@ ms.locfileid: "59275838"
 
     ![配置单一登录](./media/percolate-tutorial/configure04.png)
 
-    a. 在“电子邮件”文本框中，输入用户的电子邮件，例如 brittasimon@contoso.com。 **** 
+    a. 在“电子邮件”文本框中，输入用户的电子邮件，如 brittasimon@contoso.com。
 
-    b. 在“全名”文本框中输入用户的姓名，例如  **Brittasimon**。 **** 
+    b. 在“全名”文本框中，输入用户姓名，例如 Brittasimon。
 
     c. 单击“创建用户”。
 
@@ -237,5 +237,5 @@ ms.locfileid: "59275838"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

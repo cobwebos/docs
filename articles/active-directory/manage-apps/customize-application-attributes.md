@@ -16,10 +16,10 @@ ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267202"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
@@ -125,8 +125,8 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
    * *字符串* - 属性包含文本字符串。 
 * **主键?** -是否该属性定义为目标对象的架构中的主键字段。
 * **必需？** -是否该属性为所需的目标应用程序或系统进行填充。
-* **多值？** -是否该属性支持多个值。
-* **确切的大小写?** -是否区分大小写的方式计算属性值。
+* **多值?** -是否该属性支持多个值。
+* **区分大小写?** -是否区分大小写的方式计算属性值。
 * **API 表达式**-不使用，除非要求这样做 （例如 Workday) 特定的预配连接器的文档。
 * **引用的对象属性**-如果它为引用类型的属性，则此菜单允许您选择的表和属性中包含的值与属性关联的目标应用程序。 例如，如果名为“Department”的属性的存储值引用了独立“Departments”表中的对象，则需要选择“Departments.Name”。 引用表和主要 ID 字段给定的应用程序支持的预配置目前不能使用 Azure 门户中，编辑但可使用编辑[图形 API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-configure-with-custom-target-attributes)。
 
@@ -153,9 +153,9 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 
 ## <a name="next-steps"></a>后续步骤
 
-* [自动用户预配和取消预配 SaaS 应用](user-provisioning.md)
-* [属性映射编写表达式](functions-for-customizing-application-data.md)
-* [用户预配范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
+* [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
+* [为属性映射编写表达式](functions-for-customizing-application-data.md)
+* [用于用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [使用 SCIM 启用从 Azure Active Directory 到应用程序的用户和组自动预配](use-scim-to-provision-users-and-groups.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
 

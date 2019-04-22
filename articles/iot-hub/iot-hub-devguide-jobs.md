@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/09/2018
 ms.openlocfilehash: aacb0ab69dad45f9ca7655daaae0c2acff0403f5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59044366"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>在多个设备上计划作业
@@ -32,7 +32,7 @@ Azure IoT 中心可启用多个构建基块（如[设备孪生属性和标记](i
 作业由解决方案后端启动，并由 IoT 中心维护。 可以通过面向服务的 URI (`PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30`) 启动作业，并通过面向服务的 URI (`GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30`) 查询正在执行的作业的进度。 若要在启动作业后刷新正在运行的作业的状态，请运行作业查询。
 
 > [!NOTE]
-> 在启动作业时，属性名称和值只能包含 US ASCII 可打印字母数字，但以下组中的任一除外： `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> 启动作业时，属性名称和值只能包含 US-ASCII 可打印字母数字，但下列组中的任一项除外：`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
 ## <a name="jobs-to-execute-direct-methods"></a>用于执行直接方法的作业
 

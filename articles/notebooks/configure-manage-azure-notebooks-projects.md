@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: d1f94c5fd774b51f57da2885d1ccd8eb909cd3c0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268001"
 ---
 # <a name="manage-and-configure-projects"></a>管理和配置项目
@@ -95,9 +95,9 @@ Azure Notebooks 中的项目实质上是运行 Jupyter 笔记本的基础 Linux 
 
 | 项类型 | 描述 | 命令行为 |
 | --- | --- | --- |
-| **Notebook** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
-| **Folder** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
-| **空白的文件** | 可供存储文本、数据等任何内容的文件。 | 在项目的文件列表中创建一个编辑字段，用于输入文件名。 |
+| **笔记本** | Jupyter 笔记本 | 显示一个弹出窗口，在其中指定笔记本的文件名和语言。 |
+| **文件夹** | 子文件夹 | 在项目的文件列表中创建一个编辑字段，用于输入文件夹名称。 |
+| **空白文件** | 可供存储文本、数据等任何内容的文件。 | 在项目的文件列表中创建一个编辑字段，用于输入文件名。 |
 | **Markdown** | Markdown 文件。 | 在项目的文件列表中创建一个编辑字段，用于输入文件名。 |
 
 ### <a name="upload-files"></a>上传文件

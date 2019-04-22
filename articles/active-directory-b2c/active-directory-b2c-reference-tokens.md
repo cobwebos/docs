@@ -1,109 +1,115 @@
 ---
-title: Azure Active Directory B2C 中的令牌引用 |Microsoft Docs
-description: Azure Active Directory B2C 中颁发的令牌类型
+title: 令牌-Azure Active Directory B2C 概述 |Microsoft Docs
+description: 了解如何在 Azure Active Directory B2C 中使用的令牌。
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 11/30/2018
+ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 6a588764908f72607bbb99e9b1ea031182c95e64
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55166911"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680258"
 ---
-# <a name="azure-ad-b2c-token-reference"></a>Azure AD B2C：令牌参考
+# <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌的概述
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) 在处理每个[身份验证流](active-directory-b2c-apps.md)时颁发多种安全令牌。 本文档说明每种令牌的格式、安全特征和内容。
+Azure Active Directory B2C (Azure AD) B2C 发出多种安全令牌，在处理每个[身份验证流](active-directory-b2c-apps.md)。 本文档说明每种令牌的格式、安全特征和内容。
 
-## <a name="types-of-tokens"></a>类型的令牌
-Azure AD B2B 支持 [OAuth 2.0 身份验证协议](active-directory-b2c-reference-protocols.md)，该协议使用访问令牌和刷新令牌。 它还支持通过 [OpenID Connect](active-directory-b2c-reference-protocols.md) 进行身份验证和登录，其中引入了第三种类型的令牌：ID 令牌。 每个令牌表示为“持有者令牌”。
+## <a name="token-types"></a>令牌类型
 
-持有者令牌是一种轻型安全令牌，它授予对受保护资源的“持有者”访问权限。 持有者是可以提供令牌的任何一方。 参与方必须先经 Azure AD B2C 验证才能接收持有者令牌。 但如果不采取必要的步骤在传输过程和存储中对令牌进行保护，令牌可能会被意外的某一方拦截并使用。 某些安全令牌具有防止未授权方使用令牌的内置机制，但持有者令牌并不具有这种机制。 它们必须在安全通道中传输，例如传输层安全性 (HTTPS)。
+Azure AD B2C 支持[OAuth 2.0 和 OpenID Connect 协议](active-directory-b2c-reference-protocols.md)，该协议使用的令牌进行身份验证和安全地访问资源。 使用 Azure AD B2C 中的所有标记都都[JSON web 令牌 (Jwt)](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)包含断言有关持有者的信息和对令牌使用者。
 
-如果持有者令牌在安全通道外传输，则恶意方就可以利用中间人攻击来获得令牌，并使用它对受保护资源进行未经授权的访问。 存储或缓存持有者令牌以供以后使用时，也应遵循同样的安全原则。 请始终确保应用以安全的方式传输和存储持有者令牌。
+与 Azure AD B2C 的通信中使用了以下标记：
 
-有关持有者令牌的其他安全注意事项，请参阅 [RFC 6750 第 5 部分](https://tools.ietf.org/html/rfc6750)。
+- *ID 令牌*-JWT，其中包含的声明可用于标识你的应用程序中的用户。 此令牌安全地发送相同的应用程序或服务的两个组件之间进行通信的 HTTP 请求中。 可以根据需要使用 ID 令牌中的声明。 它们常用于显示帐户信息或者要在应用程序进行访问控制决策。 ID 令牌已签名，但未加密。 当你的应用程序或 API 收到 ID 令牌时，它必须验证签名，证明令牌可信。 你的应用程序或 API 还必须验证令牌中的几个声明来证明其有效。 根据方案要求，验证应用程序的声明可能会有所不同，但是您的应用程序必须在每个方案中执行一些常见声明验证。
+- *访问令牌*-JWT，其中包含的声明可用于识别你的 api 授予的权限。 访问令牌已签名，但它们不会加密。 访问令牌用于提供对 Api 和资源的服务器的访问。  当 API 收到访问令牌时，它必须验证签名，证明令牌可信。 API 还必须验证令牌中的一些声明，证明令牌有效。 根据方案要求，验证应用程序的声明可能会有所不同，但是您的应用程序必须在每个方案中执行一些常见声明验证。
+- *刷新令牌*-刷新令牌用于获取新 ID 令牌和访问令牌在 OAuth 2.0 流中的。 它们而无需交互的那些用户提供长期访问资源代表的用户应用程序。 刷新令牌是不透明的应用程序。 它们由 Azure AD B2C 颁发并可检查和解释只能由 Azure AD B2C。 它们属于长效令牌，但不应使用刷新令牌将持续一段特定时间的假定条件下编写你的应用程序。 出于各种原因，可随时验证刷新令牌。 您知道刷新令牌是否有效的应用程序的唯一方法是以尝试兑换通过向 Azure AD B2C 发出的令牌请求。 在兑换刷新令牌获取新的令牌，令牌响应中收到新的刷新令牌。 保存新的刷新令牌。 它取代了以前在请求中使用的刷新令牌。 此操作有助于保证刷新令牌保持有效的尽可能长时间。 
 
-Azure AD B2C 颁发的许多令牌都实现为 JSON Web 令牌 (JWT)。 JWT 是一种精简的 URL 安全方法，可在两方之间传输信息。 JWT 包含称为“声明”的信息。 这些信息是令牌持有人和令牌主题的相关断言信息。 JWT 中的声明是为了传输而编码和序列化的 JSON 对象。 由于 Azure AD 所颁发的 JWT 已签名但未加密，因此可以轻松检查 JWT 的内容以进行调试。 有多个工具可执行此操作，其中包括 [jwt.ms](https://jwt.ms)。 有关 JWT 的详细信息，请参阅 [JWT 规范](https://self-issued.info/docs/draft-ietf-oauth-json-web-token.html)。
+## <a name="endpoints"></a>终结点
 
-### <a name="id-tokens"></a>ID 令牌
+一个[注册应用程序](tutorial-register-applications.md)接收令牌，并将请求发送到这些终结点与 Azure AD B2C 进行通信：
 
-ID 令牌是应用从 Azure AD B2C `/authorize` 和 `/token` 终结点接收的一种安全令牌。 ID 令牌表示为 [JWT](#types-of-tokens)，并且它们包含可用于标识应用中的用户的声明。 从 `/authorize` 终结点获取 ID 令牌时，将通过使用[隐式流](active-directory-b2c-reference-spa.md)完成此操作，该令牌通常供用户用于登录到基于 javascript 的 Web 应用程序。 从 `/token` 终结点获取 ID 令牌时，将通过使用[机密代码流](active-directory-b2c-reference-oidc.md)完成此操作，从而使令牌隐藏在浏览器中。 以此可以在 HTTP 请求中安全地发送令牌，以便在相同应用程序或服务的两个组件之间进行通信。 可以根据需要使用 ID 令牌中的声明。 它们常用于显示帐户信息或者在应用中进行访问控制决策。  
+- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/authorize`
+- `https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/oauth2/v2.0/token`
 
-ID 令牌已签名，但目前尚未加密。 当应用或 API 收到 ID 令牌时，必须[验证签名](#token-validation)，证明令牌可信。 应用或 API 还必须验证令牌中的一些声明，证明令牌有效。 根据具体的方案要求，应用验证的声明有所不同，但应用在每个方案中均须执行某些[常见声明验证](#token-validation)。
+从 Azure AD B2C 接收你的应用程序的安全令牌可以来自`/authorize`或`/token`终结点。 从获取 ID 令牌时`/authorize`终结点，它们会完成使用[隐式流](active-directory-b2c-reference-spa.md)，这通常用于登录到基于 javascript 的 web 应用程序的用户。 从 `/token` 终结点获取 ID 令牌时，将通过使用[机密代码流](active-directory-b2c-reference-oidc.md)完成此操作，从而使令牌隐藏在浏览器中。
 
-#### <a name="sample-id-token"></a>示例 ID 令牌
-```
-// Line breaks for display purposes only
+## <a name="claims"></a>声明
 
-eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6IklkVG9rZW5TaWduaW5nS2V5Q29udGFpbmVyIn0.
-eyJleHAiOjE0NDIzNjAwMzQsIm5iZiI6MTQ0MjM1NjQzNCwidmVyIjoiMS4wIiwiaXNzIjoiaHR0cHM6Ly9s
-b2dpbi5taWNyb3NvZnRvbmxpbmUuY29tLzc3NTUyN2ZmLTlhMzctNDMwNy04YjNkLWNjMzExZjU4ZDkyNS92
-Mi4wLyIsImFjciI6ImIyY18xX3NpZ25faW5fc3RvY2siLCJzdWIiOiJOb3Qgc3VwcG9ydGVkIGN1cnJlbnRs
-eS4gVXNlIG9pZCBjbGFpbS4iLCJhdWQiOiI5MGMwZmU2My1iY2YyLTQ0ZDUtOGZiNy1iOGJiYzBiMjlkYzYi
-LCJpYXQiOjE0NDIzNTY0MzQsImF1dGhfdGltZSI6MTQ0MjM1NjQzNCwiaWRwIjoiZmFjZWJvb2suY29tIn0.
-h-uiKcrT882pSKUtWCpj-_3b3vPs3bOWsESAhPMrL-iIIacKc6_uZrWxaWvIYkLra5czBcGKWrYwrAC8ZvQe
-DJWZ50WXQrZYODEW1OUwzaD_I1f1HE0c2uvaWdGXBpDEVdsD3ExKaFlKGjFR2V7F-fPThkVDdKmkUDQX3bVc
-yyj2V2nlCQ9jd7aGnokTPfLfpOjuIrTsAdPcGpe5hfSEuwYDmqOJjGs9Jp1f-eSNEiCDQOaTBSvr479L5ptP
-XWeQZyX2SypN05Rjr05bjZh3j70ZUimiocfJzjibeoDCaQTz907yAg91WYuFOrQxb-5BaUoR7K-O7vxr2M-_
-CQhoFA
+使用 Azure AD B2C 时，必须对令牌内容有精细的控制。 你可以配置[用户流](active-directory-b2c-reference-policies.md)并[自定义策略](active-directory-b2c-overview-custom.md)所需的应用程序的声明中发送的某些用户数据集。 这些声明可以包括标准属性如下所述**displayName**并**emailAddress**。 应用程序可以使用这些声明来安全地对用户和请求进行身份验证。 
 
-```
+ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任何时候引入 ID 令牌中。 你的应用程序不应中断，因为引入新声明。 此外可以包括[自定义用户属性](active-directory-b2c-reference-custom-attr.md)在声明中。
 
-### <a name="access-tokens"></a>访问令牌
+下表列出了可期望在 ID 令牌并访问由 Azure AD B2C 颁发的令牌的声明。
 
-访问令牌也是应用从 Azure AD B2C `/authorize` 和 `/token` 终结点接收的一种安全令牌。 访问令牌也以 [JWT](#types-of-tokens) 表示，并且它们包含声明，可用于标识已授予的对 API 的权限。 访问令牌已签名，但目前尚未加密。 访问令牌应用于提供对 API 和资源服务器的访问权限。 详细了解如何[使用访问令牌](active-directory-b2c-access-tokens.md)。 
+| 名称 | 声明 | 示例值 | 描述 |
+| ---- | ----- | ------------- | ----------- |
+| 目标受众 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 标识令牌的目标接收方。 对于 Azure AD B2C，受众是应用程序 id。 你的应用程序应验证此值，并拒绝该令牌，如果不匹配。 受众是资源的同义词。 |
+| 颁发者 | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | 标识构造并返回令牌的安全令牌服务 (STS)。 它还标识用户进行身份验证的目录。 你的应用程序应该验证颁发者声明，以确保令牌来自相应的终结点。 |
+| 颁发时间 | `iat` | `1438535543` | 颁发令牌的时间，以纪元时间表示。 |
+| 过期时间 | `exp` | `1438539443` | 令牌失效的时间，以纪元时间表示。 应用程序应使用此声明来验证令牌的生存期的有效性。 |
+| 生效时间 | `nbf` | `1438535543` | 令牌生效的时间，以纪元时间表示。 此时间通常是颁发令牌的时间相同。 应用程序应使用此声明来验证令牌的生存期的有效性。 |
+| 版本 | `ver` | `1.0` | ID 令牌，由 Azure AD B2C 定义的版本。 |
+| 代码哈希 | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 仅当令牌随 OAuth 2.0 授权代码一起颁发时包含在 ID 令牌代码哈希。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅[OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)。  |
+| 访问令牌哈希 | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 访问令牌哈希仅当令牌随 OAuth 2.0 访问令牌一起颁发时包含在 ID 令牌。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅[OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)  |
+| Nonce | `nonce` | `12345` | Nonce 是缓和令牌重放攻击的策略。 你的应用程序可以通过使用授权请求中指定 nonce`nonce`查询参数。 在请求中提供的值，将发出未修改的形式在`nonce`仅在 ID 令牌的声明。 此声明允许应用程序以根据在请求上指定的值验证此值。 你的应用程序应执行此验证 ID 令牌验证过程。 |
+| 主题 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 有关哪些令牌断言信息，例如应用程序的用户的主体。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
+| 身份验证上下文类引用 | `acr` | 不适用 | 仅与较旧的策略一起使用。 |
+| 信任框架策略 | `tfp` | `b2c_1_signupsignin1` | 用于获取 ID 令牌策略的名称。 |
+| 身份验证时间 | `auth_time` | `1438535543` | 用户上次输入凭据，以纪元时间表示。 |
+| 范围 | `scp` | `Read`| 访问令牌的资源授予的权限。 由空格分隔多个授予的权限。 |
+| 授权方 | `azp` | `975251ed-e4f5-4efd-abcb-5f1a8f566ab7` | 发起请求的客户端应用程序的**应用程序 ID**。 |
 
-当 API 收到访问令牌时，必须[验证签名](#token-validation)，证明令牌可信。 API 还必须验证令牌中的一些声明，证明令牌有效。 根据具体的方案要求，应用验证的声明有所不同，但应用在每个方案中均须执行某些[常见声明验证](#token-validation)。
+## <a name="configuration"></a>配置
 
-### <a name="claims-in-id-and-access-tokens"></a>ID 及访问令牌中的声明
+以下属性可用于[管理的安全令牌的生存期](configure-tokens.md)Azure AD B2C 发出的：
 
-使用 Azure AD B2C 时，必须对令牌内容有精细的控制。 可以配置[用户流](active-directory-b2c-reference-policies.md)和自定义策略，在声明中发送应用操作所需的几组特定的用户数据。 这些声明可以包括标准属性，比如用户的 `displayName` 和 `emailAddress` 属性。 还可以包括可在 B2C 目录中定义的[自定义用户属性](active-directory-b2c-reference-custom-attr.md)。 收到的每个 ID 令牌和访问令牌均包含一组特定的安全相关声明。 应用程序可以使用这些声明来安全地对用户和请求进行身份验证。
+- **访问令牌和 ID 令牌生存期（分钟）**- 用于获取受保护资源的访问权限的 OAuth 2.0 持有者令牌的生存期。 默认值为 60 分钟。 最小值 （含） 为 5 分钟。 （含） 的最大值为 1440 分钟。
 
-请注意，ID 令牌中的声明不按任何特定顺序返回。 此外，新的声明可以在任何时候引入 ID 令牌。 引入新的声明时，不得中断应用。 下面是预期在 Azure AD B2C 颁发的 ID 及访问令牌中存在的声明。 任何其他声明由策略确定。 练习时，请尝试将示例 ID 令牌中的声明粘贴到 [jwt.ms](https://jwt.ms) 中进行检查。 可以在 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)中找到进一步的详细信息。
+- **刷新令牌生存期 （天）** -在其之前可以使用刷新令牌获取新的访问或 ID 令牌的最大时间段。 时间段内还介绍了获取新的刷新令牌，如果你的应用程序已被授予`offline_access`作用域。 默认值为 14 天。 最小值 （含） 为一天。 （含） 的最大值为 90 天。
 
-| Name | 声明 | 示例值 | 说明 |
-| --- | --- | --- | --- |
-| 目标受众 |`aud` |`90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` |受众声明标识令牌的目标接收方。 对于 Azure AD B2C，受众是在应用注册门户中分配给应用的应用程序 ID。 应用应该验证此值并拒绝不匹配的令牌。 受众是资源的同义词。 |
-| 颁发者 |`iss` |`https://{tenantname}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` |此声明标识构造并返回令牌的安全令牌服务 (STS)。 它还标识在其中进行用户身份验证的 Azure AD 目录。 应用应该验证颁发者声明，以确保令牌来自 Azure Active Directory v2.0 终结点。 |
-| 颁发时间 |`iat` |`1438535543` |此声明表示颁发令牌的时间，以新纪元时间表示。 |
-| 过期时间 |`exp` |`1438539443` |此过期时间声明表示令牌失效的时间，以纪元时间表示。 应用应该使用此声明来验证令牌生存期的有效性。 |
-| 生效时间 |`nbf` |`1438535543` |此声明表示令牌生效的时间，以新纪元时间表示。 这通常与颁发令牌的时间相同。 应用应该使用此声明来验证令牌生存期的有效性。 |
-| 版本 |`ver` |`1.0` |这是 Azure AD 定义的 ID 令牌版本。 |
-| 代码哈希 |`c_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅当令牌随 OAuth 2.0 授权代码一起颁发时，代码哈希才包含在 ID 令牌中。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)。  |
-| 访问令牌哈希 |`at_hash` |`SGCPtt01wxwfgnYZy2VJtQ` |仅当令牌随 OAuth 2.0 访问令牌一起颁发时，访问令牌才包含在 ID 令牌中。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅 [OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)  |
-| Nonce |`nonce` |`12345` |Nonce 是缓和令牌重放攻击的策略。 应用可通过使用 `nonce` 查询参数，在授权请求中指定 nonce。 在请求中提供的值将仅在 ID 令牌的 `nonce` 声明中发出（未经修改）。 这可让应用根据在请求上指定的值验证此值，使应用的会话与给定的 ID 令牌相关联。 应用可在 ID 令牌验证过程中执行这项验证。 |
-| 主题 |`sub` |`884408e1-2918-4cz0-b12d-3aa027d7563b` |这是令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 若要了解详细信息，请参阅 [Azure Active Directory B2C：令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。 |
-| 身份验证上下文类引用 |`acr` |不适用 |除非是在旧策略中，否则目前不使用。 若要了解详细信息，请参阅 [Azure Active Directory B2C：令牌、会话和单一登录配置](active-directory-b2c-token-session-sso.md)。 |
-| 信任框架策略 |`tfp` |`b2c_1_sign_in` |这是用于获取 ID 令牌的策略名称。 |
-| 身份验证时间 |`auth_time` |`1438535543` |此声明是用户最后一次输入凭据的时间，以新纪元时间表示。 |
+- **刷新令牌滑动窗口生存期 （天）** -后强制用户重新进行身份验证，不考虑的最新刷新有效期由应用程序获取令牌此时间段结束。 仅在此开关设为“有限”时该属性才可用。 它的值必须大于或等于**刷新令牌生存期（天）** 的值。 如果此开关设置为“无限”，则无法提供特定值。 默认值为 90 天。 最小值 （含） 为一天。 （含） 的最大值为 365 天。
 
-### <a name="refresh-tokens"></a>刷新令牌
-刷新令牌是应用可用于在 OAuth 2.0 流中获取新 ID 令牌和访问令牌的安全令牌。 它们向应用提供代表用户长期访问资源的权限，而无需与这些用户进行交互。
+以下用例是使用这些属性实现的：
 
-若要在令牌响应中接收刷新令牌，应用必须请求 `offline_access` 范围。 若要了解有关 `offline_access` 范围的详细信息，请参阅 [Azure AD B2C 协议参考](active-directory-b2c-reference-protocols.md)。
+- 只要用户在移动应用程序上持续保持活动状态，允许该用户无限期地保持登录此应用程序。 可将登录用户流中的“刷新令牌的滑动窗口生存期(天)”开关设为“无限”。
+- 通过设置合适的访问令牌生存期来满足行业的安全性和合规性要求。
 
-刷新令牌永远对应用程序完全不透明。 它们由 Azure AD 颁发，且只能由 Azure AD 检查和解释。 它们属于长效令牌，但编写应用时，不应期望刷新令牌将持续一段特定时间。 出于各种原因，可随时验证刷新令牌。 让应用知道刷新令牌是否有效的唯一方式就是对 Azure AD 发出令牌请求以尝试兑换刷新令牌。
+这些设置不适用于密码重置用户流。 
 
-使用刷新令牌兑换新的访问令牌（而且应用已获得 `offline_access` 范围）时，会在令牌响应中收到新的刷新令牌。 应该保存新颁发的刷新令牌。 它应替代以前在请求中使用的刷新令牌。 这有助于保证刷新令牌尽可能长期保持有效。
+## <a name="compatibility"></a>兼容性
 
-## <a name="token-validation"></a>令牌验证
-若要验证令牌，应用应检查令牌的签名和声明。
+以下属性可用于[管理令牌兼容性](configure-tokens.md):
 
-许多开放源代码库都可用于验证 JWT，具体取决于首选语言。 建议浏览这些选项，而不是实施自己的验证逻辑。 本指南中的信息可帮助了解如何正确使用这些库。
+- **颁发者 (iss) 声明** - 此属性标识颁发令牌的 Azure AD B2C 租户。 默认值为 `https://<domain>/{B2C tenant GUID}/v2.0/`。 值`https://<domain>/tfp/{B2C tenant GUID}/{Policy ID}/v2.0/`包括适用于 Azure AD B2C 租户和令牌请求中使用的用户流的 Id。 如果你的应用程序或库需要 Azure AD B2C 才能符合[OpenID Connect Discovery 1.0 规范](https://openid.net/specs/openid-connect-discovery-1_0.html)，使用此值。
 
-### <a name="validate-the-signature"></a>验证签名
-JWT 包含三段，以 `.` 字符分隔。 第一个段称为*标头*，第二个称为*主体*，第三个称为*签名*。 签名段可用于验证令牌的真实性，使应用信任它。
+- **使用者 (sub) 声明** - 此属性标识令牌断言其信息的实体。 默认值是**ObjectID**，该组件填充`sub`声明中使用的用户的对象 ID 令牌。 值**不支持**仅用于向后兼容性。 建议改用**ObjectID**就立即可以。
 
-Azure AD B2C 令牌使用行业标准非对称式加密算法（例如 RSA 256）进行签名。 令牌标头包含用于签名令牌的密钥和加密方法的相关信息：
+- **声明表示策略 ID** -此属性标识在其中填充令牌请求中使用的策略名称的声明类型。 默认值为 `tfp`。 值`acr`仅用于向后兼容性。
+
+## <a name="pass-through"></a>直通
+
+用户旅程在启动时，Azure AD B2C 从标识提供程序接收访问令牌。 Azure AD B2C 使用该令牌来检索有关用户的信息。 您[启用用户流中的声明](idp-pass-through-user-flow.md)或[自定义策略中定义声明](idp-pass-through-custom.md)以通过令牌传递给在 Azure AD B2C 中注册的应用程序。 必须使用你的应用程序[v2 用户流](user-flow-versions.md)才能利用以声明方式传递令牌。
+
+Azure AD B2C 目前仅支持传递的 OAuth 2.0 标识提供者，其中包括 Facebook 和 Google 访问令牌。 对于所有其他标识提供者，声明将返回空白。 
+
+## <a name="validation"></a>验证
+
+若要验证令牌，应用程序应检查的签名和令牌的声明。 许多开放源代码库都可用于验证 Jwt，具体取决于您的首选语言。 建议您浏览这些选项而不是实现您自己的验证逻辑。
+
+### <a name="validate-signature"></a>验证签名
+
+JWT 包含三个段*标头*即*正文*，和一个*签名*。 签名段可用于验证令牌的真实性，使它可以信任的应用程序。 Azure AD B2C 令牌使用行业标准非对称式加密算法（例如 RSA 256）进行签名。 
+
+令牌标头包含用于签名令牌的密钥和加密方法的相关信息：
 
 ```
 {
@@ -113,44 +119,37 @@ Azure AD B2C 令牌使用行业标准非对称式加密算法（例如 RSA 256�
 }
 ```
 
-`alg` 声明指示用于对令牌签名的算法。 `kid` 声明指示用于对令牌签名的特殊公钥。
+值**alg**声明是用于对令牌进行签名的算法。 值**kid**声明是用于对令牌进行签名的公钥。 在任何给定时间，Azure AD B2C 可以使用任意一种一组公共 / 专用密钥对令牌签名。 Azure AD B2C 将定期旋转一组可能的密钥。 你的应用程序应编写成自动处理这些密钥更改。 若要检查的 Azure AD B2C 使用的公钥的更新的合理频率为每 24 小时。
 
-在任何给定时间，Azure AD 都可使用一组特定公钥-私钥对中的任意一个对令牌签名。 Azure AD 定期换用一组可能的密钥，因此应将应用编写成自动处理这些密钥更改。 检查 Azure AD 所用公钥的更新的合理频率大约为每 24 小时一次。
-
-Azure AD B2C 具有 OpenID Connect 元数据终结点。 这允许应用在运行时提取 Azure AD B2C 的相关信息。 此信息包括终结点、令牌内容和令牌签名密钥。 B2C 目录针对每个策略都有一个 JSON 元数据文档。 例如，`fabrikamb2c.onmicrosoft.com` 中 `b2c_1_sign_in` 策略的元数据文档位于：
+Azure AD B2C 具有 OpenID Connect 元数据终结点。 使用此终结点，应用程序可以请求在运行时 Azure AD B2C 的相关信息。 此信息包括终结点、令牌内容和令牌签名密钥。 在 Azure AD B2C 租户包含每个策略的 JSON 元数据文档。 元数据文档是包含多条有用信息的 JSON 对象。 元数据包含**jwks_uri**，其中提供的公钥集位置的用来签名令牌。 但它在这里，提供位置的最好通过使用元数据文档并分析动态提取位置**jwks_uri**:
 
 ```
-https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_sign_in
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_signupsignin1
 ```
-
-`fabrikamb2c.onmicrosoft.com` 是用于对用户进行身份验证的 B2C 目录，`b2c_1_sign_in` 是用来获取令牌的策略。 要确定对令牌签名所用的策略（以及提取元数据的位置），有两个选择。 首先，策略名称包含在令牌的 `acr` 声明中。 可以通过对主体进行 Base-64 解码，并反序列化生成的 JSON 字符串，从而分析 JWT 主体中的声明。 `acr` 声明将成为用于颁发令牌的策略名称。  另一个方法是在发出请求时在 `state` 参数的值中对策略进行编码，并对其进行解码以确定使用的策略。 任意一种方法均有效。
-
-元数据文档是包含多条有用信息的 JSON 对象。 其中包括执行 OpenID Connect 身份验证所需的终结点的位置。 还包括 `jwks_uri`，它提供用于对令牌签名的公钥集位置。 在此处提供该位置，但最好使用元数据文档并分析 `jwks_uri` 来动态提取位置：
-
-```
-https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/discovery/v2.0/keys?p=b2c_1_sign_in
-```
-
 位于此 URL 的 JSON 文档包含将在特定时间点使用的所有公钥信息。 应用可以使用 JWT 标头中的 `kid` 声明，选择用于签名特定令牌的 JSON 文档中的公钥。 然后，可以使用正确的公钥和指定的算法来执行签名验证。
 
-关于如何执行签名验证的说明已超出了本文档的讨论范围。 如果需要，许多开放源代码库都可用于对此进行帮助。
+元数据文档`B2C_1_signupsignin1`中的策略`contoso.onmicrosoft.com`租户位于：
 
-### <a name="validate-the-claims"></a>验证声明
-应用或 API 收到 ID 令牌时，还应对 ID 令牌中的声明执行几项检查。 这些检查包括但不限于：
+```
+https://contoso.b2clogin.com/contoso.onmicrosoft.com/v2.0/.well-known/openid-configuration?p=b2c_1_signupsignin1
+```
 
-* **受众**声明：验证是否计划向应用提供 ID 令牌。
-* **生效时间**和**过期时间**声明：验证 ID 令牌是否未过期。
-* **颁发者**声明：验证令牌是否确实由 Azure AD 向应用颁发。
-* **nonce**：这是缓和令牌重放攻击的策略。
+若要确定哪个策略用于对令牌进行签名 （以及到何处去请求元数据），有两个选项。 首先，策略名称包含在令牌的 `acr` 声明中。 可以通过对主体进行 Base-64 解码，并反序列化生成的 JSON 字符串，从而分析 JWT 主体中的声明。 `acr`声明是用来颁发令牌的策略的名称。 另一个选项是进行编码的值中的策略`state`参数时发出请求，然后将其解码以确定使用哪条策略了。 任意一种方法均有效。
 
-有关应用应该执行的验证的完整列表，请参阅 [OpenID Connect 规范](https://openid.net)。 这些声明的预期值详细信息包含在前面的[令牌部分](#types-of-tokens)中。  
+关于如何执行签名验证的说明已超出了本文档的讨论范围。 许多开放源代码库都可用于帮助你验证令牌。
 
-## <a name="token-lifetimes"></a>令牌生存期
-提供以下令牌生存期，以拓展知识。 它们在开发和调试应用时有所帮助。 请注意：编写应用时，不应期望任何这些生存期维持不变。 它们可以并且会改变。 可以阅读有关在 Azure AD B2C 中[自定义令牌生存期](active-directory-b2c-token-session-sso.md)的详细信息。
+### <a name="validate-claims"></a>验证声明
 
-| 令牌 | 生存期 | 说明 |
-| --- | --- | --- |
-| ID 令牌 |一小时 |ID 令牌的有效期通常为 1 小时。 Web 应用可使用此生存期维护其与用户的会话（推荐）。 也可以选择不同的会话生存期。 如果应用需要获取新的 ID 令牌，只需要对 Azure AD 发出新的登录请求即可。 如果用户与 Azure AD 具有有效的浏览器会话，则可能不会要求该用户再次输入凭据。 |
-| 刷新令牌 |最长 14 天 |单个刷新令牌的有效期最长为 14 天。 但是，刷新令牌可能随时会因为很多原因失效。 应用应继续尝试使用刷新令牌，直到该请求失败，或直到应用使用新的刷新令牌替换该刷新令牌。 如果自用户上次输入凭据已过 90 天，刷新令牌也可能失效。 |
-| 授权代码 |五分钟 |授权代码均有意设定为短期有效。 在收到授权代码时，应立即兑换访问令牌、ID 令牌或刷新令牌。 |
+当你的应用程序或 API 收到 ID 令牌时，还应对 ID 令牌中执行的声明的多个检查。 应检查以下声明：
+
+- **受众**-验证 ID 令牌旨在提供给应用程序。
+- **不早**并**过期时间**-验证 ID 令牌未过期。
+- **颁发者**-验证由 Azure AD B2C 令牌已颁发给你的应用程序。
+- **nonce** -令牌重放攻击缓解的策略。
+
+有关你的应用程序应该执行的验证的完整列表，请参阅[OpenID Connect 规范](https://openid.net)。  
+
+## <a name="next-steps"></a>后续步骤
+
+详细了解如何[使用访问令牌](active-directory-b2c-access-tokens.md)。
 

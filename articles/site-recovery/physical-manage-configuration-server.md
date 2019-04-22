@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/28/2019
 ms.author: mayg
 ms.openlocfilehash: 10bec01a3b90776c8dd8c32a74ba7754264da131
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050129"
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>为物理服务器灾难恢复管理配置服务器
@@ -24,7 +24,7 @@ ms.locfileid: "59050129"
 
 此表汇总了用于部署本地配置服务器计算机的先决条件。
 
-| **组件** | **要求** |
+| 组件 | 要求 |
 | --- |---|
 | CPU 核心数| 8 |
 | RAM | 16 GB|
@@ -176,7 +176,7 @@ ProxyPassword="Password"
 3. 单击“保管库注册”选项卡。
 4. 从门户下载新的注册文件，并将其作为输入提供给该工具。
       ![register-configuration-server](./media/physical-manage-configuration-server/register-csconfiguration-server.png)
-5. 提供代理服务器的详细信息，并单击“注册”按钮  。  
+5. 提供代理服务器的详细信息，并单击“注册”按钮。  
 6. 打开管理员 PowerShell 命令窗口。
 7. 运行以下命令
 

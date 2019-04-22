@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 7a8617ae2b01fc89a4c957b8610164a2b53a16f5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274767"
 ---
 # <a name="consistency-levels-and-azure-cosmos-db-apis"></a>一致性级别和 Azure Cosmos DB API
@@ -33,7 +33,7 @@ Azure Cosmos DB 的网络提供本机支持协议兼容的受欢迎的数据库�
 
 下表说明了如何本机 Cassandra 的一致性级别将映射到 Azure Cosmos DB 一致性级别时使用 Cassandra API:  
 
-[![Cassandra 一致性模型映射](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
+[![Cassandra 的一致性模型映射](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png)](./media/consistency-levels-across-apis/consistency-model-mapping-cassandra.png#lightbox)
 
 ## <a id="mongo-mapping"></a>MongoDB 和 Azure Cosmos DB 一致性级别之间映射
 
@@ -51,12 +51,12 @@ Azure Cosmos DB，与本机 MongoDB 不提供精确地定义的一致性保证�
 
 下表说明了如何本机 MongoDB 读/写问题都映射到 Azure Cosmos 一致性级别时使用 Azure Cosmos DB API for MongoDB:
 
-[![MongoDB 一致性模型映射](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
+[![MongoDB 的一致性模型映射](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png)](./media/consistency-levels-across-apis/consistency-model-mapping-mongodb.png#lightbox)
 
 ## <a name="next-steps"></a>后续步骤
 
 详细了解 Azure Cosmos DB API 与开源 API 之间的一致性级别和兼容性。 请参阅以下文章：
 
-* [各种一致性级别的可用性和性能利弊](consistency-levels-tradeoffs.md)
-* [MongoDB 功能适用于 MongoDB 的 Azure Cosmos DB 的 API 支持](mongodb-feature-support.md)
-* [支持的 Azure Cosmos DB Cassandra API 的 Apache Cassandra 功能](cassandra-support.md)
+* [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
+* [Azure Cosmos DB 的 API for MongoDB 支持的 MongoDB 功能](mongodb-feature-support.md)
+* [Azure Cosmos DB Cassandra API 支持的 Apache Cassandra 功能](cassandra-support.md)

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
 ms.openlocfilehash: 552c9820cca4380c00e1bf435fdb3d068c0690fb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59047933"
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>以编程方式缩放 Service Fabric 群集 
@@ -34,9 +34,9 @@ ms.locfileid: "59047933"
 可以使用以下步骤创建服务主体：
 
 1. 以有权访问虚拟机规模集的用户身份登录到 Azure CLI (`az login`)
-2. 创建服务主体与 `az ad sp create-for-rbac`
+2. 使用 `az ad sp create-for-rbac` 创建服务主体
     1. 记下 appId（在某些文档中称为“客户端 ID”）、名称、密码和租户供稍后使用。
-    2. 您还需要你的订阅 ID，可查看与 `az account list`
+    2. 还需要准备好订阅 ID（可使用 `az account list` 查看）
 
 Fluent 计算库可以使用这些凭据进行登录，如下所示（请注意，`IAzure` 等核心 Fluent Azure 类型位于 [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) 包中）：
 

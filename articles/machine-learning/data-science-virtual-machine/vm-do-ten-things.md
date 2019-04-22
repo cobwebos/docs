@@ -18,10 +18,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: gokuma
 ms.openlocfilehash: f30c241feced3031d9ed9791c27c6bb1e1e99efb
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046167"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Windows 数据科学虚拟机的十大功能
@@ -46,7 +46,7 @@ Windows 数据科学虚拟机 (DSVM) 是一个功能强大的数据科研开发�
 > 
 > 
 
-**必备组件**
+**先决条件**
 
 * 需要一个 Azure 订阅。 可以在[此处](https://azure.microsoft.com/free/)注册免费试用版。
 * 有关在 Azure 门户上配置数据科研虚拟机的说明，请参阅[创建虚拟机](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016)。
@@ -286,7 +286,7 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 ![Azure 存储资源管理器访问存储帐户时的屏幕截图](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
 
-**将数据从 VM 移动到 Azure Blob:AzCopy**
+将数据从 VM 移动到 Azure Blob：AzCopy
 
 若要在本地文件和 Blob 存储之间移动数据，可以在命令行或 PowerShell 中使用 AzCopy：
 
@@ -311,20 +311,20 @@ Azure Blob 是适合大小数据的经济可靠云存储。 本部分介绍如�
 
 ![存储帐户的屏幕截图，其中显示了上传的 CSV 文件](./media/vm-do-ten-things/AzCopy_run_finshed_Storage_Explorer_v3.png)
 
-**将数据从 VM 移动到 Azure Blob:Azure 存储资源管理器**
+将数据从 VM 移动到 Azure Blob：Azure 存储资源管理器
 
 还可以在 VM 中使用 Azure 存储资源管理器上传本地文件中的数据：
 
-* 若要将数据上载到容器中，选择目标容器，然后单击**上传**按钮。![在 Azure 存储资源管理器上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
-* 单击 **...** 右侧的**文件**框中，选择一个或多个文件从文件系统上传并单击**上载**若要开始上传文件。![上传的文件对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
+* 要将数据上传到容器，请选择目标容器，然后单击“上传”按钮。![Azure 存储资源管理器中的上传按钮的屏幕截图](./media/vm-do-ten-things/storage-accounts.png)
+* 单击“文件”框右侧的“...”，选择要从文件系统上传的一个或多个文件，然后单击“上传”开始上传文件。![上传文件对话框的屏幕截图](./media/vm-do-ten-things/upload-files-to-blob.png)
 
-**从 Azure Blob 读取数据：机器学习读取器模块**
+读取 Azure Blob 中的数据：机器学习阅读器模块
 
 在 Azure 机器学习工作室中，可以使用“导入数据模块”读取 Blob 中的数据。
 
 ![机器学习工作室中的导入数据模块的屏幕截图](./media/vm-do-ten-things/AML_ReaderBlob_Module_v3.png)
 
-**从 Azure Blob 读取数据：Python ODBC**
+读取 Azure Blob 中的数据：Python ODBC
 
 在 Jupyter Notebook 或 Python 程序中，可以使用 **BlobService** 库直接读取 Blob 中的数据。
 
@@ -389,7 +389,7 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 ![Visual Studio 中的 Data Lake 工具的屏幕截图](./media/vm-do-ten-things/Azure_Data_Lake_PlugIn_v2.PNG)
 
-**将数据从 VM 移动到 Data Lake:Azure Data Lake 资源管理器**
+将数据从 VM 移动到 Data Lake：Azure Data Lake 资源管理器
 
 可以使用 **Azure Data Lake 资源管理器**将虚拟机的本地文件中的数据上传到 Data Lake 存储。
 
@@ -397,7 +397,7 @@ Azure Data Lake 存储是一个超大规模存储库，适用于大数据分析�
 
 还可以使用 [Azure 数据工厂 (ADF)](https://azure.microsoft.com/services/data-factory/) 生成用于实现与 Azure Data Lake 之间移动数据操作的数据管道。 有关介绍如何生成数据管道的步骤，请参阅此[文章](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)。
 
-**读取数据从 Azure Blob 复制到 Data Lake:U-SQL**
+将数据从 Azure Blob 读取到 Data Lake：U-SQL
 
 如果数据驻留在 Azure Blob 存储中，可以使用 U-SQL 查询直接读取 Azure 存储 Blob 中的数据。 编写 U-SQL 查询之前，确保 Blob 存储帐户已链接到 Azure Data Lake。 转到 **Azure 门户**、找到 Azure Data Lake Analytics 仪表板、单击“添加数据源”、选择 **Azure 存储**的存储类型，并插入你的 Azure 存储帐户名称和密钥。 然后，你将能够引用存储帐户中存储的数据。
 
@@ -453,7 +453,7 @@ USING Outputters.Csv();
 
 ![作业对话框状态的屏幕截图](./media/vm-do-ten-things/USQL_Job_Status.PNG)
 
-**Data Lake 中查询数据：U-SQL**
+查询 Data Lake 中的数据：U-SQL
 
 在数据集引入 Azure Data Lake 后，即可使用 [U-SQL 语言](../../data-lake-analytics/data-lake-analytics-u-sql-get-started.md)查询和浏览数据。 U-SQL 语言与 T-SQL 类似，但结合了 C＃ 的一些功能，以便用户可以编写自定义的模块、用户定义的函数等。可以使用上一步骤中的脚本。
 
@@ -592,7 +592,7 @@ for i in range(1,13):
 
 在数据加载到 HDI 群集后，可以在 Azure 存储资源管理器中检查数据。 并且在 HDI 群集中创建数据库 nyctaxidb。
 
-**数据探索：Python 中的 hive 查询**
+数据浏览：Python 中的 Hive 查询
 
 由于数据在 Hadoop 群集中，因此可以 pyodbc 包连接到 Hadoop 群集并使用 Hive 查询数据库，以执行探索和特征工程。 可以查看我们在先决条件步骤中创建的现有表。
 
@@ -817,7 +817,7 @@ pd.read_sql(queryString,connection)
 
 ![表中前几行的数据](./media/vm-do-ten-things/DownSample_Data_For_Modeling_v2.PNG)
 
-**从使用机器学习的 HDI 读取数据： 读取器模块**
+**使用机器学习从 HDI 读取数据：读取器模块**
 
 还可以在机器学习工作室中使用**读取器**模块访问 Hadoop 群集中的数据库。 插入 HDI 群集和 Azure 存储帐户的凭据，以便能够使用 HDI 群集中的数据库构建机器学习模型。
 

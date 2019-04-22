@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: ecbdf182fe2da7413e6d27ef5775dbaa7ad60806
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270177"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>将合作伙伴 ID 链接到 Azure 帐户
@@ -126,15 +126,15 @@ C:\ az managementpartner delete --partner-id 12345
 
 合作伙伴组织中管理客户的 Azure 资源的任何用户都可将合作伙伴 ID 链接到帐户。
 
-**它链接后，可以更改合作伙伴 ID？**
+**链接合作伙伴 ID 后，是否可以更改？**
 
 是的。 可以更改、添加或删除已链接的合作伙伴 ID。
 
-**如果用户具有多个客户租户中的帐户？**
+**如果某个用户在多个客户租户中具有帐户怎么办？**
 
 合作伙伴 ID 与帐户之间的链接是针对每个客户租户执行的。 链接每个客户租户中的合作伙伴 ID。
 
-**可以其他合作伙伴或客户编辑或删除合作伙伴 ID 的链接？**
+**其他合作伙伴或客户是否可以编辑或删除合作伙伴 ID 的链接？**
 
 该链接在用户帐户级别关联。 只有你可以编辑或删除合作伙伴 ID 的链接。 客户和其他合作伙伴无法更改合作伙伴 ID 的链接。 
 

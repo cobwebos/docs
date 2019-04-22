@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273067"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
@@ -57,10 +57,10 @@ demo_make_series1
 ```
 
 - 使用 [`make-series`](/azure/kusto/query/make-seriesoperator) 运算符创建由三个时序组成的集，其中：
-    - `num=count()`： 时序流量
-    - `range(min_t, max_t, 1h)`： 在 1 小时时间范围 （最早和最新时间戳的表记录） 中的箱中创建时间序列
-    - `default=0`： 指定缺少的箱来创建常规时序的 fill 方法。 或者，使用 [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)、[`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)、[`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) 和 [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) 进行更改
-    - `byOsVer`： 通过 OS 分区
+    - `num=count()`：流量的时序
+    - `range(min_t, max_t, 1h)`：时序是在时间范围（表记录的最旧和最新时间戳）的 1 小时箱中创建的
+    - `default=0`：指定缺失箱的填充方法，以创建正则时序。 或者，使用 [`series_fill_const()`](/azure/kusto/query/series-fill-constfunction)、[`series_fill_forward()`](/azure/kusto/query/series-fill-forwardfunction)、[`series_fill_backward()`](/azure/kusto/query/series-fill-backwardfunction) 和 [`series_fill_linear()`](/azure/kusto/query/series-fill-linearfunction) 进行更改
+    - `byOsVer`：由 OS 分区
 - 实际时序数据结构是每个时间箱的聚合值的数值数组。 我们将使用 `render timechart` 进行可视化。
 
 上表包含三个分区。 如下图所示，我们可为每个 OS 版本创建不同的时序：Windows 10（红色）、7（蓝色）和 8.1（绿色）：
@@ -78,7 +78,7 @@ demo_make_series1
 - 有两个泛型筛选函数：
     - [`series_fir()`](/azure/kusto/query/series-firfunction)：应用 FIR 筛选器。 用于方便计算变化检测中时序的移动平均值和差异。
     - [`series_iir()`](/azure/kusto/query/series-iirfunction)：应用 IIR 筛选器。 用于指数平滑与累计求和。
-- `Extend` 通过添加新的移动平均系列的设置的时间系列大小为 5 个箱 (名为*ma_num*) 到查询：
+- 通过将大小为 5 个箱的新移动平均时序（名为 *ma_num*）添加到查询，来 `Extend`（扩展）时序集：
 
 ```kusto
 let min_t = toscalar(demo_make_series1 | summarize min(TimeStamp));

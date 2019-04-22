@@ -12,10 +12,10 @@ ms.author: clauren
 ms.date: 1/23/2019
 ms.custom: seodec18
 ms.openlocfilehash: 2cd2d328d33744854bc525e5ecf1dfa3b6e4bcc8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275430"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>使用 Azure 机器学习服务管理、部署和监视模型
@@ -33,7 +33,7 @@ ms.locfileid: "59275430"
 
 每个步骤都可以单独执行，或者作为单个部署命令的一部分执行。 另外还可以将部署集成到 **CI/CD 工作流**中，如下图所示。
 
-[!['Azure 机器学习持续集成/持续部署 (CI/CD) 周期 '](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+[![Azure 机器学习持续集成/持续部署 (CI/CD) 周期](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
 ## <a name="step-1-register-model"></a>步骤 1：注册模型
 
@@ -75,7 +75,7 @@ Azure 机器学习支持最常用的框架，但通常情况下，任何可以�
 
 Web 服务部署也可进行搜索。 例如，可以搜索特定模型或映像的所有部署。
 
-[![Inferencing 目标](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+[![推断目标](media/concept-model-management-and-deployment/inferencing-targets.png)](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
 
 可以将映像部署到云中的下述部署目标：
 

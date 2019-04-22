@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: 6ba9e77faeb297f9862b39384d397b478dc7cf36
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 5769f90ef69a82497194ff6de01b378acc84deec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617727"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678374"
 ---
 # <a name="release-notes-for-azure-hdinsight"></a>Azure HDInsight 发行说明
 
@@ -29,7 +29,7 @@ Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和
 
 ## <a name="new-features"></a>新增功能
 
-有关使用 HDInsight 4.0 的重要更改的详细信息。，请参阅[什么是 HDI 4.0 中的新增功能？](../hdinsight/hdinsight-version-release.md#whats-new-in-hdi-40)。
+有关使用 HDInsight 4.0 的重要更改的详细信息。，请参阅[什么是 HDI 4.0 中的新增功能？](../hdinsight/hdinsight-version-release.md)。
 
 ## <a name="component-versions"></a>组件版本
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 593948c9646304da73fd25e4975e65fa71aed6e2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 878d9b40172313ac6c3d816cbf0da6aba5e18542
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59275532"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617880"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>教程：Azure Active Directory 与 Periscope Data 集成
 
@@ -111,7 +111,7 @@ ms.locfileid: "59275532"
     | `https://app.periscopedata.com/` |
     | `https://app.periscopedata.com/app/<SITENAME>` |
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://app.periscopedata.com/<SITENAME>/sso`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://app.periscopedata.com/<SITENAME>/sso`
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请将这些值更新为实际登录 URL。 与 [Periscope Data 客户端支持团队](mailto:support@periscopedata.com)获取此值，以及将从本教程后面部分说明的“配置 Periscope Data 单一登录”部分获取的标识符值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -136,7 +136,7 @@ ms.locfileid: "59275532"
 
     d. 查找标记 SingleLogoutService并在“SLO URL”文本框中粘贴“位置”值。
 
-    e. 复制实例的“标识符”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)” **** 文本框中。
+    e. 复制实例的“标识符”值，并将其粘贴到 Azure 门户上“基本 SAML 配置”部分的“标识符(实体 ID)”文本框中。
 
     f. 找到 XML 文件的第一个标记，复制 entityID 的值并将其粘贴到“颁发者”文本框中。
 
@@ -235,5 +235,5 @@ ms.locfileid: "59275532"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

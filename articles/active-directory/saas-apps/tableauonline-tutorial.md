@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ccf978ab33226dc029d534a343a87a796ab69e8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 563668780c42ca23a1904757f886581f3ad0c5e8
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278099"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617297"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-online"></a>教程：Azure Active Directory 与 Tableau Online 集成
 
@@ -105,9 +105,9 @@ ms.locfileid: "59278099"
 
     ![Tableau Online 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，键入 URL： `https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
+    a. 在“登录 URL”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/login?alias=<entityid>`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL： `https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://sso.online.tableau.com/public/sp/metadata?alias=<entityid>`
 
     > [!NOTE]
     > 本教程的“设置 Tableau Online”部分会提供 `<entityid>` 值。 实体 ID 值是“设置 Tableau Online”部分提供的“Azure AD 标识符”值。
@@ -189,7 +189,7 @@ ms.locfileid: "59278099"
     a. 在“名称”字段中，输入 BrittaSimon。
   
     b. 在“用户名”字段中键入 brittasimon@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    例如，BrittaSimon\@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -247,4 +247,4 @@ ms.locfileid: "59278099"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

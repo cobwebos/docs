@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 ms.openlocfilehash: 2ce2e2b35d731c3edfed931d158b420e66ed5620
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045741"
 ---
 # <a name="using-powershell-to-manage-traffic-manager"></a>使用 PowerShell 管理流量管理器
@@ -40,7 +40,7 @@ Azure 流量管理器是使用名为流量管理器配置文件的一系列设�
 
 * [如何安装和配置 Azure PowerShell](/powershell/azure/overview)
 
-本文中的示例假设你具备现有的资源组。 可以使用以下命令创建资源组：
+本文中的示例假设已有一个资源组。 可以使用以下命令创建资源组：
 
 ```powershell
 New-AzResourceGroup -Name MyRG -Location "West US"

@@ -16,10 +16,10 @@ ms.date: 05/04/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: bb051d37f3a1dd82d7d46bfe8b22c2ba1251be85
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259195"
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>如何在 Azure 门户中预配 Windows SQL Server 虚拟机
@@ -72,7 +72,7 @@ ms.locfileid: "59259195"
 
 | 步骤 | 描述 |
 | --- | --- |
-| **基础** |[配置基本设置](#1-configure-basic-settings) |
+| **基础知识** |[配置基本设置](#1-configure-basic-settings) |
 | **可选功能** |[配置可选功能](#2-configure-optional-features) |
 | **SQL Server 设置** |[配置 SQL Server 设置](#3-configure-sql-server-settings) |
 | **查看 + 创建** | [查看摘要](#4-review--create) |
@@ -80,7 +80,7 @@ ms.locfileid: "59259195"
 ## <a name="1-configure-basic-settings"></a>1.配置基本设置
 
 
-上**基础知识**选项卡上，提供以下信息：
+在“基本信息”选项卡中提供以下信息：
 
 * 下**项目详细信息**，请确保选择正确的订阅。 
 *  在中**资源组**部分中，选择现有资源组列表中，或选择**新建**若要创建新的资源组。 资源组是 Azure（虚拟机、存储帐户、虚拟网络等）中相关资源的集合。 
@@ -91,12 +91,12 @@ ms.locfileid: "59259195"
   > 如果只是测试或了解 Azure 中的 SQL Server 部署，使用新的资源组很有帮助。 测试完成后，删除资源组会自动删除 VM 和与该资源组相关联的所有资源。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../../azure-resource-manager/resource-group-overview.md)。
 
 
-* 下**实例详细信息**:
+* 在“实例详细信息”下：
     1. 输入一个唯一**虚拟机名称**。  
-    1. 为选择的位置在**区域**。 
-    1. 在本指南中，将保留**可用性选项**设置为_没有所需的基础结构冗余_。 若要了解有关可用性选项的详细信息，请参阅[Azure 区域和可用性](../../windows/regions-and-availability.md)。 
-    1. 在中**图像**列表中，选择_免费 SQL Server 许可证：_ Windows Server 2016 上的 SQL Server 2017 Developer”的映像。  
-    1. 选择**更改大小**有关**大小**的虚拟机，然后选择**基本 A2**产品/服务。 请务必清理资源，完成后，使用它们来防止任何意外的费用。 对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)中建议的计算机大小和配置。
+    1. 为“区域”选择一个位置。 
+    1. 在本指南中，将保留**可用性选项**设置为_没有所需的基础结构冗余_。 有关可用性选项的详细信息，请参阅 [Azure 区域和可用性](../../windows/regions-and-availability.md)。 
+    1. 在“映像”列表中，选择“免费 SQL Server 许可证:Windows Server 2016 上的 SQL Server 2017 Developer”的映像。  
+    1. 对于虚拟机**大小**，请选择“更改大小”，然后选择“A2 基本”产品/服务。 用完资源后，请务必清理资源，以免产生任何意外的费用。 对于生产工作负荷，请参阅 [Azure 虚拟机中 SQL Server 的性能最佳做法](virtual-machines-windows-sql-performance.md)中建议的计算机大小和配置。
 
     ![实例详细信息](media/quickstart-sql-vm-create-portal/basics-instance-details.png)
 
@@ -107,7 +107,7 @@ ms.locfileid: "59259195"
 
    ![管理员帐户](media/quickstart-sql-vm-create-portal/basics-administrator-account.png)
 
-* 下**入站端口规则**，选择**允许所选的端口**，然后选择**RDP (3389)** 从下拉列表。 
+* 在“入站端口规则”下，选择“允许所选端口”，然后从下拉列表中选择“RDP (3389)”。 
 
    ![入站端口规则](media/quickstart-sql-vm-create-portal/basics-inbound-port-rules.png)
 
@@ -158,8 +158,8 @@ ms.locfileid: "59259195"
 | 设置 |
 | --- |
 | [连接](#connectivity) |
-| [Authentication](#authentication) |
-| [Azure Key Vault 集成](#azure-key-vault-integration) |
+| [身份验证](#authentication) |
+| [Azure 密钥保管库集成](#azure-key-vault-integration) |
 | [存储配置](#storage-configuration) |
 | [自动修补](#automated-patching) |
 | [自动备份](#automated-backup) |
@@ -211,9 +211,9 @@ ms.locfileid: "59259195"
 
 | 参数 | 说明 | 示例 |
 | --- | --- | --- |
-| **Key Vault URL** |密钥保管库的位置。 |https:\//contosokeyvault.vault.azure.net/ |
+| **密钥保管库 URL** |密钥保管库的位置。 |https:\//contosokeyvault.vault.azure.net/ |
 | **主体名称** |Azure Active Directory 服务主体名称。 该名称也称为客户端 ID。 |fde2b411-33d5-4e11-af04eb07b669ccf2 |
-| **主体密钥** |Azure Active Directory 服务主体密码。 该密码也称为客户端密码。 |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
+| **主体密码** |Azure Active Directory 服务主体密码。 该密码也称为客户端密码。 |9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM= |
 | **凭据名称** |**凭据名称**：AKV 集成在 SQL Server 内创建一个凭据，使 VM 具有对密钥保管库的访问权限。 为此凭据选择一个名称。 |mycred1 |
 
 有关详细信息，请参阅 [为 Azure VM 上的 SQL Server 配置 Azure 密钥保管库集成](virtual-machines-windows-ps-sql-keyvault.md)。
@@ -276,7 +276,7 @@ ms.locfileid: "59259195"
 
 ## <a name="4-review--create"></a>4.查看 + 创建
 
-上**查看 + 创建**选项卡上，查看摘要，然后选择**创建**创建 SQL Server、 资源组和为此 VM 指定的资源。
+在“查看 + 创建”选项卡中查看摘要，然后选择“创建”以创建为此 VM 指定的 SQL Server、资源组和资源。
 
 可以从 Azure 门户监视部署情况。 屏幕顶部的“ **通知** ”按钮显示部署的基本状态。
 

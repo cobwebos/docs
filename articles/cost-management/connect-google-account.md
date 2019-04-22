@@ -11,10 +11,10 @@ ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
 ms.openlocfilehash: 7f63293900e116fd3175b0ea6d704993a2dcf591
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051387"
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>连接 Google Cloud Platform 帐户
@@ -28,7 +28,7 @@ ms.locfileid: "59051387"
 
 1. 通过 [https://console.cloud.google.com](https://console.cloud.google.com) 登录到 Google Cloud Platform 控制台。
 2. 查看要载入到 Cloudyn 的项目信息，并记下“项目名称”和“项目 ID”。 请保留此信息，以便在后面的步骤中使用。  
-    ![项目名称和 Google Cloud Platform 控制台中显示的项目 ID](./media/connect-google-account/gcp-console01.png)
+    ![Google Cloud Platform 控制台中显示的项目名称和项目 ID](./media/connect-google-account/gcp-console01.png)
 3. 如果计费未启用并链接到项目，请创建计费帐户。 有关详细信息，请参阅[创建新的计费帐户](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create/_a/_new/_billing/_account)。
 
 ## <a name="enable-storage-bucket-billing-export"></a>启用存储桶计费导出
@@ -39,7 +39,7 @@ Cloudyn 从存储桶中检索 Google 计费数据。 请将“存储桶名称”
 
 1. 如果尚未启用在文件中导出计费，请遵照[如何启用在文件中导出计费](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file)中的说明。 可以使用 JSON 或 CSV 计费导出格式。
 2. 否则，请在 Google Cloud Platform 控制台中，导航到“计费” > “计费导出”。 记下计费的“存储桶名称”和“报表前缀”。  
-    ![计费导出页面上显示的计费导出信息](./media/connect-google-account/billing-export.png)
+    ![“计费导出”页面上显示的计费导出信息](./media/connect-google-account/billing-export.png)
 
 ## <a name="enable-google-cloud-platform-apis"></a>启用 Google Cloud Platform API
 

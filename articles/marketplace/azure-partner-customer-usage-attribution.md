@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 11/17/2018
 ms.author: yijenj
 ms.openlocfilehash: 078815185ddb6018a394401f57f7557ac3aedb73
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050146"
 ---
 # <a name="azure-partner-customer-usage-attribution"></a>Azure 合作伙伴和客户使用情况归因
@@ -316,19 +316,19 @@ Microsoft 合作伙伴技术顾问设置确定你的需求的范围的调用会�
 
 ## <a name="faq"></a>常见问题解答
 
-**将 GUID 添加到模板的好处是什么？**
+**向模板添加 GUID 有何好处？**
 
 Microsoft 针对客户部署的解决方案和见解的视图的合作伙伴提供对其 influenced 用法。 Microsoft 与合作伙伴可以使用此信息来促进销售团队之间的更密切合作。 Microsoft 与合作伙伴可以使用此数据来获取单个合作伙伴对 Azure 增长的影响的更加一致视图。
 
-**添加一个 GUID 后，可以对它已更改？**
+**添加 GUID 后是否可对其进行更改？**
 
 是，客户或实现合作伙伴可以自定义模板，并且可以更改或删除 GUID。 我们建议合作伙伴主动描述资源和 GUID 的 GUID 到防止删除或编辑其客户和合作伙伴的角色。 更改 GUID 只会影响新的部署和资源，而不会影响现有部署和资源。
 
-**可以跟踪从 GitHub 等非 Microsoft 存储库部署的模板？**
+**我是否可以跟踪通过非 Microsoft 存储库（如 GitHub）部署的模板？**
 
 是，只要部署模板时存在 GUID，就会跟踪使用情况。 合作伙伴都需要注册用于 Azure Marketplace 外的部署的 Guid 在 CPP 中有一个配置文件。
 
-**客户会收到以及报告？**
+**客户是否也会收到报告？**
 
 客户可在 Azure 门户中跟踪各个资源或客户定义资源组的使用情况。
 
@@ -336,7 +336,7 @@ Microsoft 针对客户部署的解决方案和见解的视图的合作伙伴提�
 
 这种将部署和使用情况与合作伙伴解决方案关联的新方法提供将合作伙伴解决方案与 Azure 使用情况连接的机制。 DPOR 旨在将咨询（系统集成商）或管理（托管服务提供商）合作伙伴与客户的 Azure 订阅关联。
 
-**使用 Azure 存储的 GUID 生成器窗体，好处是什么？**
+**使用 Azure 存储的 GUID 生成器窗体有何益处？**
 
 Azure 存储的 GUID 生成器窗体可确保生成所需格式的 GUID。 此外，如果使用任何 Azure 存储的数据平面跟踪方法，则可以利用相同 GUID 进行市场控制平面跟踪。 这样，你将可以利用 Partner 属性的单个统一 GUID，而无需维护单独的多个 GUID。
 

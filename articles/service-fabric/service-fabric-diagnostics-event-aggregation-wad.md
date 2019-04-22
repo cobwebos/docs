@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 04/03/2018
 ms.author: srrengar
 ms.openlocfilehash: d49104c1d1402969917de63e22bd41e7489a08c7
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046285"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>使用 Microsoft Azure 诊断的事件聚合和集合
@@ -192,7 +192,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 
 ### <a name="update-storage-quota"></a>更新存储配额
 
-由于由该扩展填充的表不断增长，直至达到配额，因此可能需要考虑减小配额大小。 默认值为 50 GB，可在下的模板中配置`overallQuotaInMB`字段 `DiagnosticMonitorConfiguration`
+由于由该扩展填充的表不断增长，直至达到配额，因此可能需要考虑减小配额大小。 默认值为 50 GB，可以在模板中在 `DiagnosticMonitorConfiguration` 下的 `overallQuotaInMB` 字段下进行配置。
 
 ```json
 "overallQuotaInMB": "50000",
@@ -349,7 +349,7 @@ Service Fabric 提供了一些[现成的日志记录通道](service-fabric-diagn
 >目前没有任何方法可以筛选或清理已发送到表的事件。 如果未实施某个过程从表中删除事件，该表会不断增大。 目前，在[监视器示例](https://github.com/Azure-Samples/service-fabric-watchdog-service)中有一个运行数据整理服务的示例，建议为自己编写一个，除非有需要存储超过 30 或 90 天日志的的理由。
 
 * [了解如何使用诊断扩展收集性能计数器或日志](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-* [使用 Application Insights 事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [使用 Azure Monitor 日志事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)
-* [使用 Application Insights 事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
+* [使用 Application Insights 进行事件分析和可视化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [使用 Azure Monitor 日志事件分析和可视化](service-fabric-diagnostics-event-analysis-oms.md)

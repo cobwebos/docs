@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 6ee3e2b452dedbf791bdc05bbc81b07531e1f075
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049307"
 ---
 # <a name="deploy-a-virtual-machine-from-the-azure-marketplace"></a>从 Azure 市场部署虚拟机
@@ -31,7 +31,7 @@ ms.locfileid: "59049307"
 
 Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-vm-winrm-keyvault-windows/azuredeploy.json) 形式提供。  它包含以下参数：
 
-|  **参数**        |   **描述**                                 |
+|  **Parameter**        |   **说明**                                 |
 |  -------------        |   ---------------                                 |
 | newStorageAccountName | 存储帐户的名称                       |
 | dnsNameForPublicIP    | 公共 IP 的 DNS 名称。 必须为小写。    |
@@ -44,7 +44,7 @@ Azure VM 部署快速入门模板现以联机文件 [azuredeploy.json](https://r
 | vmName                | VM 的名称                                    |
 | vaultName             | 密钥保管库的名称                             |
 | vaultResourceGroup    | 密钥保管库的资源组                   |
-| certificateUrl        | 对于证书，例如在密钥保管库，包括版本 URL  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| certificateUrl        | 证书的 URL，包括KeyVault 中的版本，例如：`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 |  |  |
 
 

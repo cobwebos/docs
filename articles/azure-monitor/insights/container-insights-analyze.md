@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: magoedte
 ms.openlocfilehash: 3261c2389a9706537366bcd60e00517bbcfb5f48
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426386"
 ---
 # <a name="understand-aks-cluster-performance-with-azure-monitor-for-containers"></a>使用适用于容器的 Azure Monitor 了解 AKS 群集性能 
@@ -71,7 +71,7 @@ Azure Monitor 提供一个多群集视图，显示在订阅中跨资源组部署
 | |警告 |不适用 |
 | |严重 |<100% |
 | |Unknown |如果未在过去 30 分钟报告 |
-|**节点** | | |
+|**Node** | | |
 | |Healthy |>85% |
 | |警告 |60 - 84% |
 | |严重 |<60% |

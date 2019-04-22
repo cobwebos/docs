@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 41a5f08be833d1235146d6e748580751af2c9d73
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046081"
 ---
 # <a name="service-bus-faq"></a>服务总线常见问题解答
@@ -121,8 +121,8 @@ Move-AzResource -DestinationResourceGroupName 'targetRG' -DestinationSubscriptio
 ## <a name="next-steps"></a>后续步骤
 若要了解有关服务总线的详细信息，请参阅以下文章：
 
-* [Azure 服务总线高级版 （博客文章） 简介](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
-* [Azure 服务总线高级版 （第 9 频道） 简介](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
+* [Azure 服务总线高级版简介（博客文章）](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
+* [Azure 服务总线高级版简介 (Channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [服务总线概述](service-bus-messaging-overview.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 

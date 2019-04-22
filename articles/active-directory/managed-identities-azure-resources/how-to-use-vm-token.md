@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abdeb7ce5327db57b8a6ae48fdd8d8c0c81879a7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258906"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>如何在 Azure VM 上使用 Azure 资源的托管标识获取访问令牌 
@@ -57,7 +57,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 | [使用 Azure PowerShell 获取令牌](#get-a-token-using-azure-powershell) | 使用来自 PowerShell 客户端的 Azure 资源的托管标识 REST 终结点示例 |
 | [使用 CURL 获取令牌](#get-a-token-using-curl) | 使用来自 Bash/CURL 客户端的 Azure 资源的托管标识 REST 终结点示例 |
 | 处理令牌缓存 | 有关处理过期访问令牌的指导 |
-| [错误处理。](#error-handling) | 处理从 Azure 资源的托管标识令牌终结点返回的 HTTP 错误的指南 |
+| [错误处理](#error-handling) | 处理从 Azure 资源的托管标识令牌终结点返回的 HTTP 错误的指南 |
 | [Azure 服务的资源 ID](#resource-ids-for-azure-services) | 在何处获取受支持 Azure 服务的资源 ID |
 
 ## <a name="get-a-token-using-http"></a>使用 HTTP 获取令牌 
@@ -365,7 +365,7 @@ Azure 资源的托管标识终结点通过 HTTP 响应消息标头的状态代�
 | 元素 | 描述 |
 | ------- | ----------- |
 | error   | 错误标识符。 |
-| error_description | 错误的详细说明。 **在任何时候，可以更改错误说明。 不要编写会根据错误说明中的值执行分支的代码。**|
+| error_description | 错误的详细说明。 **错误说明随时可能更改。请不要编写会根据错误说明中的值生成分支片段的代码。**|
 
 ### <a name="http-response-reference"></a>HTTP 响应参考
 

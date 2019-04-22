@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
-ms.openlocfilehash: dba2582b29d1fc81a39387f5297852245233b708
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731083"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678898"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
 
@@ -44,7 +44,7 @@ Azure 市场发布选项提供独特的方式，将云软件和服务提供商�
 
 ## <a name="transact-general-overview"></a>交易一般概述
 
-使用交易发布选项时，Microsoft 支持向客户的 Azure 订阅销售和部署第三方软件。 在 Azure 市场中选择计费模型和产品/服务类型时，发布者必须考虑 Azure 基础结构费，以及发布者自己的软件许可费。 
+在使用事务处理发布选项，Microsoft 将使第三方软件的销售和客户的 Azure 订阅对某些产品/服务类型的部署。 在 Azure 市场中选择计费模型和产品/服务类型时，发布者必须考虑 Azure 基础结构费，以及发布者自己的软件许可费。
 
 目前以下产品/服务类型支持 Azure 市场中的交易发布选项：虚拟机、Azure 应用程序或 SaaS 应用。
 
@@ -58,7 +58,7 @@ Azure 市场发布选项提供独特的方式，将云软件和服务提供商�
 
 **对于 SaaS 应用**
 
-对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为客户的每月固定费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。  客户将无法看到实际的基础结构使用费。  发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。  不计量软件许可费，它也不基于消耗量。
+对于 SaaS 应用，发布者必须将 Azure 基础结构使用费和软件许可费视为单一费用项。  它表示为对客户的费用。 Azure 基础结构使用情况由合作伙伴直接管理并对其计费。  客户将无法看到实际的基础结构使用费。  发布者通常选择将 Azure 基础结构使用费捆绑到其软件许可证定价中。  不计量软件许可费，它也不基于消耗量。
 
 ## <a name="transact-billing-models"></a>交易计费模式
 

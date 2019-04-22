@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/11/2019
 ms.author: kraigb
 ms.openlocfilehash: d5ccf3e9f35a8d35387962278577333ff92ff02b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258518"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>教程：使用 Python 创建并运行 Jupyter Notebook
@@ -128,7 +128,7 @@ ms.locfileid: "59258518"
 1. 由于已在环境设置中添加了 *requirements.txt* 文件，因此会看到消息“正在等待容器准备完成。” 可以选择“确定”关闭该消息并继续在 Notebook 中操作；但是，在完全设置好环境之前，无法运行代码单元。
 1. 该 Notebook 将在 Jupyter 界面中打开，其中默认包含单个空代码单元。
 
-    [![I新的 notebook Azure 笔记本中的初始视图](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
+    [![Azure Notebooks 中新 Notebook 的初始视图](media/tutorial/tutorial-new-notebook.png)](media/tutorial/tutorial-new-notebook.png#lightbox)
 
 ## <a name="tour-the-notebook-interface"></a>在 Notebook 界面中导航
 
@@ -144,7 +144,7 @@ ms.locfileid: "59258518"
 (F) 指示该 Notebook 是否受信任（默认为“不受信任”）。
 (G) 用于运行 Notebook 的内核以及活动指示器。
 
-[![PJupyter 界面的主 UI 区域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
+[![Jupyter 界面的主要 UI 区域](media/tutorial/tutorial-notebook-ui.png)](media/tutorial/tutorial-notebook-ui.png#lightbox)
 
 Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “用户界面导航”命令并在各个弹出窗口中单击可以开始导航。
 
@@ -427,7 +427,7 @@ Jupyter 提供主要 UI 元素的内置导航功能。 选择“帮助” > “�
 
 - [创建和克隆项目](create-clone-jupyter-notebooks.md)
 - [配置和管理项目](configure-manage-azure-notebooks-projects.md)
-- [从笔记本内安装包](install-packages-jupyter-notebook.md)
+- [从笔记本中安装包](install-packages-jupyter-notebook.md)
 - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
 - [处理数据文件](work-with-project-data-files.md)
 - [访问数据资源](access-data-resources-jupyter-notebooks.md)

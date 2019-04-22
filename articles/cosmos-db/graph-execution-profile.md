@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: lbosq
 ms.openlocfilehash: 2f3967c64e79b2bc7b01b35eff26f5ac0d4e3db4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288601"
 ---
 # <a name="how-to-use-the-execution-profile-step-to-evaluate-your-gremlin-queries"></a>如何使用执行配置文件步骤来评估 Gremlin 查询
@@ -133,20 +133,20 @@ ms.locfileid: "59288601"
 
 ExecutionProfile() 函数的响应将生成具有以下结构的 JSON 对象的层次结构：
   - **Gremlin 操作对象**:表示整个已执行的 Gremlin 操作。 包含以下属性。
-    - `gremlin`:已执行了 explicit Gremlin 语句。
-    - `totalTime`:时间 （毫秒），执行步骤中产生的。 
-    - `metrics`:一个数组，包含每个已执行以满足查询的 Cosmos DB 运行时运算符。 此列表被按执行顺序。
+    - `gremlin`：已执行了 explicit Gremlin 语句。
+    - `totalTime`：时间 （毫秒），执行步骤中产生的。 
+    - `metrics`：一个数组，包含每个已执行以满足查询的 Cosmos DB 运行时运算符。 此列表被按执行顺序。
     
   - **Cosmos DB 运行时运算符**:表示每个组件的整个 Gremlin 操作。 此列表被按执行顺序。 每个对象包含以下属性：
-    - `name`:操作员名称。 这是步骤的已计算并在执行的类型。 下表中了解的详细信息。
-    - `time`:时间 （毫秒），一个给定的运算符所执行的量。
-    - `annotations`:包含特定于已执行的运算符的详细信息。
-    - `annotations.percentTime`:执行特定的运算符所用的总时间的百分比。
-    - `counts`:从存储层此运算符返回的对象数。 这包含在`counts.resultCount`中的标量值。
-    - `storeOps`:表示可以跨一个或多个分区的存储操作。
-    - `storeOps.fanoutFactor`:表示此特定的存储操作访问的分区数。
-    - `storeOps.count`:表示此存储操作返回的结果数。
-    - `storeOps.size`:表示以字节为单位的给定的存储操作的结果的大小。
+    - `name`：操作员名称。 这是步骤的已计算并在执行的类型。 下表中了解的详细信息。
+    - `time`：时间 （毫秒），一个给定的运算符所执行的量。
+    - `annotations`：包含特定于已执行的运算符的详细信息。
+    - `annotations.percentTime`：执行特定的运算符所用的总时间的百分比。
+    - `counts`：从存储层此运算符返回的对象数。 这包含在`counts.resultCount`中的标量值。
+    - `storeOps`：表示可以跨一个或多个分区的存储操作。
+    - `storeOps.fanoutFactor`：表示此特定的存储操作访问的分区数。
+    - `storeOps.count`：表示此存储操作返回的结果数。
+    - `storeOps.size`：表示以字节为单位的给定的存储操作的结果的大小。
 
 Cosmos DB Gremlin 运行时运算符|描述
 ---|---

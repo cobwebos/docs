@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 602c7385b252daa7db22bd47f43afec3ad072263
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: db8c8de7a8047f7aa6a81f6a3b372d161408f1be
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904196"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679340"
 ---
-# <a name="set-up-a-device-template-new-ui-design"></a>创建设备模板（新 UI 设计）
+# <a name="set-up-a-device-template"></a>设置设备模板
 
 设备模板是一个蓝图，用于定义可连接到 Azure IoT Central 应用程序的某种设备的特征和行为。
 
@@ -197,8 +197,8 @@ ms.locfileid: "58904196"
    ![带有位置详细信息的“配置位置”窗体](./media/howto-set-up-template/locationcloudproperty2.png)
 
    有两种支持的格式可以添加位置：
-   - **为地址的位置**
-   - **与坐标的位置**
+   - **作为地址的位置**
+   - **作为坐标的位置**
 
 4. 选择“保存”。 操作员可以在“Device Explorer”中更新位置值。
 

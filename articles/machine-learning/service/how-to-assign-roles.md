@@ -12,10 +12,10 @@ author: Blackmist
 ms.date: 2/20/2019
 ms.custom: seodec18
 ms.openlocfilehash: 56813d9a075e1c327fb5612c50ea72f067ec505d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58805593"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>管理对 Azure 机器学习工作区的访问
@@ -26,9 +26,9 @@ ms.locfileid: "58805593"
 
 Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一样创建一个新的 Azure 机器学习工作区时，它附带了三个默认角色。 可以将用户添加到工作区并将其分配到这些内置角色之一。
 
-| 职位 | 访问级别 |
+| 角色 | 访问级别 |
 | --- | --- |
-| **读者** | 在工作区中的只读操作。 读取器可以列出和查看在工作区中，资产，但无法创建或更新这些资产。 |
+| **读取者** | 在工作区中的只读操作。 读取器可以列出和查看在工作区中，资产，但无法创建或更新这些资产。 |
 | **参与者** | 查看、 创建、 编辑或删除 （如果适用） 的工作区中的资产。 例如，参与者可以创建试验、 创建或附加的计算群集、 提交运行，和部署 web 服务。 |
 | **所有者** | 完全访问权限的工作区，包括能够查看、 创建、 编辑或删除 （如果适用） 的工作区中的资产。 此外，还可以更改角色分配。 |
 
@@ -44,7 +44,7 @@ Azure 机器学习工作区是一种 Azure 资源。 与其他 Azure 资源一�
 - [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
-- [Azure Resource Manager 模板](/azure/role-based-access-control/role-assignments-template)
+- [Azure 资源管理器模板](/azure/role-based-access-control/role-assignments-template)
 
 如果已安装[Azure 机器学习 CLI](reference-azure-machine-learning-cli.md)，还可以使用 CLI 命令为用户分配角色。
 

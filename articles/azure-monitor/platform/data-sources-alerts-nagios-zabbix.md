@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: magoedte
 ms.openlocfilehash: 0ed6747573edf4c059eb29d28107a22706c52856
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426183"
 ---
 # <a name="collect-alerts-from-nagios-and-zabbix-in-azure-monitor-from-log-analytics-agent-for-linux"></a>通过适用于 Linux 的 Log Analytics 代理将来自 Nagios 和 Zabbix 的警报收集到 Azure Monitor 中 
@@ -92,7 +92,7 @@ Nagios 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 
 | 属性 | 描述 |
 |:--- |:--- |
-| `Type` |*警报* |
+| `Type` |*Alert* |
 | `SourceSystem` |*Nagios* |
 | `AlertName` |警报的名称。 |
 | `AlertDescription` | 警报的说明。 |
@@ -108,7 +108,7 @@ Zabbix 收集的警报记录的 **Type** 为 **Alert**，且 **SourceSystem** �
 
 | 属性 | 描述 |
 |:--- |:--- |
-| `Type` |*警报* |
+| `Type` |*Alert* |
 | `SourceSystem` |*Zabbix* |
 | `AlertName` | 警报的名称。 |
 | `AlertPriority` | 警报的严重性。<br><br>未分类<br>信息<br>警告<br>平均值<br>高<br>灾难  |

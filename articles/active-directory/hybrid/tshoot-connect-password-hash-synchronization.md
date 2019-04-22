@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6feed11fcfc597658f3ec148b5dd18bb7e3f8f83
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793316"
 ---
 # <a name="troubleshoot-password-hash-synchronization-with-azure-ad-connect-sync"></a>使用 Azure AD Connect 同步解决密码哈希同步问题
@@ -177,7 +177,7 @@ ms.locfileid: "58793316"
 
 ![缺少 Azure AD 对象](./media/tshoot-connect-password-hash-synchronization/phssingleobjectnotexported.png)
 
-#### <a name="user-has-a-temporary-password"></a>用户的密码为临时密码
+#### <a name="user-has-a-temporary-password"></a>用户拥有临时密码
 
 当前，Azure AD Connect 不支持同步 Azure AD 的临时密码。 如果在本地 Active Directory 用户中设置了“下次登录时更改密码”选项，则会将密码视为临时密码。 返回以下错误：
 
@@ -196,7 +196,7 @@ ms.locfileid: "58793316"
 可以使用 `Invoke-ADSyncDiagnostics` cmdlet 找出未同步任何密码的原因。
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` cmdlet 仅可用于 Azure AD Connect 1.1.524.0 或更高版本。
+> `Invoke-ADSyncDiagnostics` cmdlet 仅可用于 Azure AD Connect 1.1.524.0 版或更高版本。
 
 ### <a name="run-the-diagnostics-cmdlet"></a>运行诊断 cmdlet
 
@@ -249,14 +249,14 @@ ms.locfileid: "58793316"
 
 1. 连接服务器是否处于[暂存模式](how-to-connect-sync-staging-server.md)？ 处于暂存模式的服务器不同步任何密码。
 
-2. 运行[获取密码同步设置的状态](#get-the-status-of-password-sync-settings)部分中的脚本。 这样可以大致了解密码同步配置。  
+2. 运行[获取密码同步设置的状态](#get-the-status-of-password-sync-settings)部分中的脚本。 这样就可以获得密码同步配置的概述。  
 
     ![PowerShell 脚本从密码同步设置中返回的输出](./media/tshoot-connect-password-hash-synchronization/psverifyconfig.png)  
 
 3. 如果未在 Azure AD 中启用该功能，或者未启用同步通道状态，请运行 Connect 安装向导。 选择“自定义同步选项”并取消选择密码同步。此项更改会暂时禁用该功能。 然后再次运行向导并重新启用密码同步。再次运行脚本，验证配置是否正确。
 
-4. 查看事件日志，查找错误。 查找下述事件，这些事件指示存在问题：
-    * 源:“目录同步”ID：0、611、652、655 如果看到这些事件，则表示有连接问题。 事件日志消息包含有问题的林信息。 有关详细信息，请参阅[连接问题](#connectivity problem)。
+4. 查看事件日志，查找错误。 查找以下事件，这些事件将指示问题：
+    * 源：“目录同步”ID：0、611、652、655 如果看到这些事件，则表示有连接问题。 事件日志消息包含有问题的林信息。 有关详细信息，请参阅[连接问题](#connectivity problem)。
 
 5. 如果没有看到检测信号，或者其他方面均为异常，则运行[触发所有密码的完全同步](#trigger-a-full-sync-of-all-passwords)。 仅运行该脚本一次。
 
@@ -329,7 +329,7 @@ ms.locfileid: "58793316"
 
     如果对象日志为空，则 Azure AD Connect 无法从 Active Directory 读取密码哈希。 继续进行针对连接错误的故障排除。 如果看到除“成功”外的任何其他值，请参阅[密码同步日志](#password-sync-log)中的表。
 
-    h.如果该值不存在，请单击“添加行”。 选择“沿袭”选项卡，确保至少有一个同步规则的“密码同步”列设置为“True”。 在默认配置中，同步规则的名称为“In from AD - User AccountEnabled”。  
+    h. 选择“沿袭”选项卡，确保至少有一个同步规则的“密码同步”列设置为“True”。 在默认配置中，同步规则的名称为“In from AD - User AccountEnabled”。  
 
     ![有关用户的沿袭信息](./media/tshoot-connect-password-hash-synchronization/cspasswordsync.png)  
 
@@ -353,7 +353,7 @@ ms.locfileid: "58793316"
 
 | 状态 | 说明 |
 | --- | --- |
-| Success |已成功同步密码。 |
+| 成功 |已成功同步密码。 |
 | FilteredByTarget |密码设置为“用户在下次登录时必须更改密码”。 未同步密码。 |
 | NoTargetConnection |Metaverse 或 Azure AD 连接器空间中没有任何对象。 |
 | SourceConnectorNotPresent |在本地 Active Directory 连接器空间中找不到任何对象。 |
@@ -424,7 +424,7 @@ Write-Host
 #### <a name="trigger-a-full-sync-of-all-passwords"></a>触发所有密码的完全同步
 
 > [!NOTE]
-> 仅运行此脚本一次。 如果需要多次运行该脚本，会出现其他问题。 若要排查问题，请联系 Microsoft 支持部门。
+> 仅运行此脚本一次。 如果需要多次运行该脚本，会出现其他问题。 要排查问题，请联系 Microsoft 支持部门。
 
 可以使用以下脚本触发所有密码的完全同步：
 

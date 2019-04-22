@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
 ms.openlocfilehash: 9de5c7228944bd0448d9dfa833ef223140ccf0e8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59488705"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Azure Data Lake Analytics U-SQL 入门
@@ -56,8 +56,8 @@ OUTPUT @searchlog
 
 ### <a name="key-concepts"></a>关键概念
 * **行集变量**:每个生成的行集的查询表达式可以分配给一个变量。 在脚本中，U-SQL 遵循 T-SQL 变量命名模式（例如 `@searchlog`）。
-* **EXTRACT** 关键字从文件中读取数据，并在读取时定义架构。 `Extractors.Tsv` 是制表符分隔值文件的内置 U-SQL 提取程序。 可以开发自定义提程序。
-* **OUTPUT** 将行集中的数据写入到文件。 `Outputters.Csv()` 是一个内置 U-SQL 输出器创建一个以逗号分隔值文件。 可以开发自定义输出器。
+* **EXTRACT** 关键字从文件中读取数据，并在读取时定义架构。 `Extractors.Tsv` 是用于制表符分隔值文件的内置 U-SQL 提取程序。 可以开发自定义提程序。
+* **OUTPUT** 将行集中的数据写入到文件。 `Outputters.Csv()` 是用于创建逗号分隔值文件的内置 U-SQL 输出器。 可以开发自定义输出器。
 
 ### <a name="file-paths"></a>文件路径
 

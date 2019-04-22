@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
 ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426216"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
@@ -51,7 +51,7 @@ ms.locfileid: "59426216"
 | System Center Operations Manager 管理组 | 是 | 检测信号事件是从代理向管理组报告每隔 60 秒收集，并转发到 Azure Monitor。 从 Operations Manager 代理直接连接到 Azure Monitor 不是必需的。 检测信号事件数据从管理组转发到 Log Analytics 工作区。|
 
 ## <a name="using-the-solution"></a>使用解决方案
-向 Log Analytics 工作区添加解决方案时，“代理运行状况”磁贴将添加到仪表板。 此磁贴显示过去 24 小时内的总代理数以及不响应的代理数。<br><br> ![在仪表板上的代理运行状况解决方案磁贴](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
+向 Log Analytics 工作区添加解决方案时，“代理运行状况”磁贴将添加到仪表板。 此磁贴显示过去 24 小时内的总代理数以及不响应的代理数。<br><br> ![仪表板上的“代理运行状况解决方案”磁贴](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 单击“代理运行状况”磁贴可打开“代理运行状况”仪表板。  仪表板包含下表中的列。 每个列按照指定时间范围内符合该列条件的计数列出了前十个事件。 可以通过在每一列右下方选择“查看全部”或单击列标题来运行提供整个列表的日志搜索。
 
@@ -76,7 +76,7 @@ ms.locfileid: "59426216"
 
 | 属性 | 描述 |
 | --- | --- |
-| `Type` | *检测信号*|
+| `Type` | Heartbeat|
 | `Category` | 值为“Direct Agent”、“SCOM Agent”或“SCOM Management Server”。|
 | `Computer` | 计算机名称。|
 | `OSType` | Windows 或 Linux 操作系统。|

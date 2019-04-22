@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/30/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f37ab1b9eef5be4aff6e5f8aecebc3688592f040
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046676"
 ---
 # <a name="deploy-a-vm-from-your-vhds"></a>从 VHD 部署 VM
@@ -30,7 +30,7 @@ ms.locfileid: "59046676"
 若要详细了解 VM 映像，请参阅以下博客文章：
 
 - [VM 映像](https://azure.microsoft.com/blog/vm-image-blog-post/)
-- [VM 映像 PowerShell 如何](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
+- [VM Image PowerShell 'How To'](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)（VM 映像 PowerShell 操作方法）
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -53,7 +53,7 @@ ms.locfileid: "59046676"
 部署 VM 后，即可[认证 VM 映像](./cpp-certify-vm.md)。
 
 1. 单击“新建”并搜索“模板部署”，然后选择“在编辑器中生成自己的模板”。  <br/>
-   ![构建在 Azure 门户中的 VHD 部署模板](./media/publishvm_021.png)
+   ![在 Azure 门户中生成 VHD 部署模板](./media/publishvm_021.png)
 
 1. 复制此 [JSON 模板](./cpp-deploy-json-template.md)并将其粘贴到编辑器中，然后单击“保存”。 <br/>
    ![在 Azure 门户中保存 VHD 部署模板](./media/publishvm_022.png)
@@ -62,14 +62,14 @@ ms.locfileid: "59046676"
 
    <table> <tr> <td valign="top"> <img src="./media/publishvm_023.png" alt="Custom deployment property page 1"> </td> <td valign="top"> <img src="./media/publishvm_024.png" alt="Custom deployment property page 2"> </td> </tr> </table> <br/> 
 
-   |  **参数**              |   **描述**                                                            |
+   |  **Parameter**              |   **说明**                                                            |
    |  -------------              |   ---------------                                                            |
    | 用户存储帐户名称   | 通用化 VHD 所在的存储帐户名称                    |
    | 用户存储容器名称 | 通用化 VHD 所在的容器名称                          |
    | 公共 IP 的 DNS 名称      | 公共 IP DNS 名称                                                           |
    | 管理员用户名             | 新 VM 的管理员帐户的用户名                                  |
    | 管理员密码              | 新 VM 的管理员帐户的密码                                  |
-   | OS 类型                     | VM 操作系统： `Windows` \| `Linux`                                    |
+   | OS 类型                     | VM 操作系统：`Windows` \| `Linux`                                    |
    | 订阅 ID             | 所选订阅的标识符                                      |
    | 位置                    | 部署的地理位置                                        |
    | VM 大小                     | [Azure VM 大小](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)，例如 `Standard_A2` |

@@ -5,7 +5,7 @@ items:
   href: https://docs.microsoft.com/azure/storage/data-lake-storage/introduction
 - name: 概述
   items:
-  - name: Data Lake Storage Gen1 概述
+  - name: Data Lake Storage Gen1 是什么？
     href: data-lake-store-overview.md
   - name: 与 Azure 存储进行比较
     href: data-lake-store-comparison-with-blob-storage.md
@@ -191,9 +191,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-data-lake
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=data-lake-store
-ms.openlocfilehash: 23fde084214b28fb763743ad3f26c259ad8aa07f
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.openlocfilehash: a2b287206c432a36b9d9683a1f5801909303ce06
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846457"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683570"

@@ -19,10 +19,10 @@ ms.reviewer: hirsin, andret, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, d
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dd443c95e8cf6dbddd66e5531b182469a118e4c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59260725"
 ---
 # <a name="comparing-the-microsoft-identity-platform-endpoint-and-azure-ad-v10-endpoint"></a>比较 Microsoft 标识平台终结点和 Azure AD v1.0 终结点
@@ -66,7 +66,7 @@ Microsoft 标识平台终结点，可编写的应用程序接受从个人 Micros
 
 对于使用 v1.0 终结点的应用，应用可以充当**资源**或令牌接收者。 资源可定义它所了解的许多**范围**或 **oAuth2Permissions**，使客户端应用能够从该资源中为一组特定的范围请求令牌。 请考虑以 Azure AD 图形 API 作为资源的示例：
 
-* 资源标识符或`AppID URI`: `https://graph.windows.net/`
+* 资源标识符，或 `AppID URI`：`https://graph.windows.net/`
 * 范围或 `oAuth2Permissions`：`Directory.Read`、`Directory.Write` 等等。
 
 这适用于 Microsoft 标识平台终结点。 应用仍可充当资源、定义范围并由 URI 标识。 客户端应用程序仍可请求访问这些范围。 但是，客户端用于请求这些权限的方式已改变。
@@ -143,7 +143,7 @@ Microsoft 标识平台终结点不断发展，以消除此处列出的限制，�
 
 ### <a name="restrictions-on-redirect-urls"></a>重定向 URL 的限制
 
-已被注册为 Microsoft 标识平台的应用仅限使用一组有限的重定向 URL 值。 Web 应用和服务的重定向 URL 必须以方案 `https` 开头，并且所有重定向 URL 值必须共享一个 DNS 域。  注册系统会将现有重定向 URL 的完整 DNS 名称与要添加的重定向 URL 的 DNS 名称相比较。 `http://localhost` 此外会支持作为重定向 URL。  
+已被注册为 Microsoft 标识平台的应用仅限使用一组有限的重定向 URL 值。 Web 应用和服务的重定向 URL 必须以方案 `https` 开头，并且所有重定向 URL 值必须共享一个 DNS 域。  注册系统会将现有重定向 URL 的完整 DNS 名称与要添加的重定向 URL 的 DNS 名称相比较。 也支持将 `http://localhost` 用作重定向 URL。  
 
 如果满足以下任一条件，添加 DNS 名称的请求会失败：  
 

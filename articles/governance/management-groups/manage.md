@@ -1,5 +1,5 @@
 ---
-title: 如何更改、 删除或管理管理组-Azure 监管
+title: 如何更改、删除或管理管理组 - Azure 治理
 description: 了解如何查看、维护、更新和删除管理组层次结构。
 author: rthorn17
 ms.service: azure-resource-manager
@@ -7,10 +7,10 @@ ms.date: 04/04/2019
 ms.author: rithorn
 ms.topic: conceptual
 ms.openlocfilehash: e47ce094cd690cba4ef398bc5d5d443f7ed647e9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272472"
 ---
 # <a name="manage-your-resources-with-management-groups"></a>使用管理组管理资源
@@ -39,11 +39,11 @@ ms.locfileid: "59272472"
 
 1. 选择页面顶部的“重命名组”选项。
 
-   ![在管理组页上的重命名组选项](./media/detail_action_small.png)
+   ![“管理组”页面上的“重命名组”选项](./media/detail_action_small.png)
 
 1. 菜单打开后，请输入要显示的新名称。
 
-   ![重命名组窗格中重命名管理组](./media/rename_context.png)
+   ![用于重命名管理组的“重命名组”窗格](./media/rename_context.png)
 
 1. 选择“保存”。
 
@@ -227,7 +227,7 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中选择具有正确 ID 的订阅。
 
-   ![可用的订阅将添加到管理组](./media/add_context_sub.png)
+   ![可以添加到管理组的订阅](./media/add_context_sub.png)
 
 1. 选择“保存”。
 
@@ -241,13 +241,13 @@ az account management-group show --name 'Contoso' -e -r
 
 1. 在列表中，选择要移动的订阅所在行末尾的椭圆。
 
-   ![在管理组上的 move 选项](./media/move_small.png)
+   ![管理组上的“移动”选项](./media/move_small.png)
 
 1. 选择“移动”。
 
 1. 在打开的菜单中，选择“父管理组”。
 
-   ![将窗格以更改父组移动](./media/move_small_context.png)
+   ![用于更改父组的“移动”窗格](./media/move_small_context.png)
 
 1. 选择“保存”。
 
@@ -298,7 +298,7 @@ az account management-group subscription remove --name 'Contoso' --subscription 
    - 选择新管理组将创建一个新管理组。
    - 选择现有管理组将显示所有管理组的下拉列表，这些管理组可移动到此管理组。  
 
-   ![将管理组移到新的或现有组](./media/add_context_MG.png)
+   ![将管理组移动到新的或现有组](./media/add_context_MG.png)
 
 1. 选择“保存”。
 
@@ -323,7 +323,7 @@ az account management-group update --name 'Contoso' --parent ContosoIT
 
 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)支持管理组。 可以查询与其他 Azure 资源相同的中心位置中的管理组发生的所有事件。  例如，可以看到对特定管理组所做的所有角色分配或策略分配更改。
 
-![使用管理组的活动日志](media/al-mg.png)
+![将活动日志与管理组配合使用](media/al-mg.png)
 
 如果要在 Azure 门户外针对管理组进行查询，管理组的目标范围将如下所示：**"/providers/Microsoft.Management/managementGroups/{yourMgID}"**。
 
@@ -349,8 +349,8 @@ GET https://management.azure.com/providers/Microsoft.Management/managementgroups
 
 若要了解有关管理组的详细信息，请参阅：
 
-- [创建用于整理 Azure 资源的管理组](create.md)
-- [如何更改、 删除或管理管理组](manage.md)
-- [查看 Azure PowerShell 资源模块中的管理组](/powershell/module/az.resources#resources)
-- [查看 REST API 中的管理组](/rest/api/resources/managementgroups)
-- [查看 Azure CLI 中的管理组](/cli/azure/account/management-group)
+- [创建管理组来组织 Azure 资源](create.md)
+- [如何更改、删除或管理管理组](manage.md)
+- [在 Azure PowerShell 资源模块中查看管理组](/powershell/module/az.resources#resources)
+- [在 REST API 中查看管理组](/rest/api/resources/managementgroups)
+- [在 Azure CLI 中查看管理组](/cli/azure/account/management-group)

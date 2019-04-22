@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 0df4eb664accd828c47d834fb0014d0d60f57458
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051727"
 ---
 # <a name="auto-provisioning-concepts"></a>自动预配的概念
@@ -59,7 +59,7 @@ ms.locfileid: "59051727"
 
 下图汇总了设备自动预配期间的角色和操作顺序：
 <br><br>
-[![为设备自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
+[![设备的自动预配顺序](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png)](./media/concepts-auto-provisioning/sequence-auto-provision-device-vs.png#lightbox) 
 
 > [!NOTE]
 > （可选）制造商还可以使用设备预配服务 API（而不是通过操作员）执行“登记设备标识”操作。 有关此顺序和其他要素的详细讨论，请观看[自动将设备注册到 Azure IoT](https://youtu.be/cSbDRNg72cU?t=2460) 视频（从 41:00 标记处开始）
@@ -97,9 +97,9 @@ ms.locfileid: "59051727"
 
 首先请完成最适合你偏好的管理工具的“设置自动预配”快速入门，其中逐步讲解了“服务配置”阶段：
 
-- [设置自动预配使用 Azure CLI](quick-setup-auto-provision-cli.md)
-- [设置自动预配使用 Azure 门户](quick-setup-auto-provision.md)
-- [设置自动预配使用资源管理器模板](quick-setup-auto-provision-rm.md)
+- [使用 Azure CLI 设置自动预配](quick-setup-auto-provision-cli.md)
+- [使用 Azure 门户设置自动预配](quick-setup-auto-provision.md)
+- [使用资源管理器模板设置自动预配](quick-setup-auto-provision-rm.md)
 
 然后继续学习最适合你偏好的设备认证机制和设备预配服务 SDK/语言的“自动预配模拟设备”快速入门。 此快速入门逐步讲解“设备登记”与“设备注册和配置”阶段： 
 

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 28d8c077f106f12812f7ed710217febd24d81efc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267140"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure 数据工厂中的复制活动
@@ -72,9 +72,9 @@ ms.locfileid: "59267140"
 
 要使用 Azure 数据工厂中的复制活动，需要执行以下操作：
 
-1. **创建用于源数据存储和接收器数据存储链接的服务。** 有关如何配置支持的属性，请参阅连接器文章的“链接服务属性”部分。 受支持的连接器列表可以在[受支持的数据存储和格式](#supported-data-stores-and-formats)部分找到。
-2. **创建用于源和接收器的数据集。** 有关如何配置支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
-3. **创建包含复制活动的管道。** 接下来的部分将提供示例。  
+1. **创建用于源数据存储和接收器数据存储的链接服务。** 有关如何配置支持的属性，请参阅连接器文章的“链接服务属性”部分。 受支持的连接器列表可以在[受支持的数据存储和格式](#supported-data-stores-and-formats)部分找到。
+2. **为源和接收器创建数据集。** 有关如何配置支持的属性，请参阅源和接收器连接器文章的“数据集属性”部分。
+3. **借助复制活动创建管道。** 接下来的部分将提供示例。  
 
 ### <a name="syntax"></a>语法
 
@@ -161,10 +161,10 @@ ms.locfileid: "59267140"
 >[!TIP]
 >对于某些方案，你还会在复制监视页面的顶部看到“**性能优化提示**”，这告诉你所识别出的瓶颈并指导你进行一些更改来提升复制吞吐量，请参阅[此处](#performance-and-tuning)包含详细信息的示例。
 
-**示例： 从 Amazon S3 复制到 Azure Data Lake Store**
+**示例：从 Amazon S3 复制到 Azure Data Lake Store**
 ![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-adls.png)
 
-**示例： 从 Azure SQL 数据库复制到 Azure SQL 数据仓库使用暂存复制**
+**示例：使用暂存复制从 Azure SQL 数据库复制到 Azure SQL 数据仓库**
 ![监视活动运行详细信息](./media/copy-activity-overview/monitor-activity-run-details-sql-dw.png)
 
 ### <a name="monitor-programmatically"></a>以编程方式监视
@@ -239,7 +239,7 @@ ms.locfileid: "59267140"
 
 在某些情况下，当你在 ADF 中执行复制活动时，会直接在[复制活动监视页面](#monitor-visually)上看到“**性能优化提示**”，如以下示例所示。 它不仅告诉你针对给定复制运行所识别出的瓶颈，而且还指导你进行一些更改来提升复制吞吐量。 目前的性能优化提示提供如下建议：在将数据复制到 Azure SQL 数据仓库时使用 PolyBase；在数据存储端资源出现瓶颈时增加 Azure Cosmos DB RU 或 Azure SQL DB DTU；删除不必要的暂存副本等等。性能优化规则也将逐渐丰富。
 
-**示例： 复制到 Azure SQL 数据库性能优化提示**
+**示例：复制到 Azure SQL DB 时的性能优化提示**
 
 在此示例中，在复制运行期间，ADF 注意到接收器 Azure SQL DB 达到了很高的 DTU 利用率，这会减慢写入操作，因此，建议使用更多的 DTU 来增加 Azure SQL DB 层。 
 
@@ -254,6 +254,6 @@ ms.locfileid: "59267140"
 ## <a name="next-steps"></a>后续步骤
 请参阅以下快速入门、教程和示例：
 
-- [将数据从一个位置复制到同一 Azure Blob 存储中的其他位置](quickstart-create-data-factory-dot-net.md)
+- [在同一 Azure Blob 存储中将数据从一个位置复制到另一个位置](quickstart-create-data-factory-dot-net.md)
 - [将数据从 Azure Blob 存储复制到 Azure SQL 数据库](tutorial-copy-data-dot-net.md)
 - [将数据从本地 SQL Server 复制到 Azure](tutorial-hybrid-copy-powershell.md)

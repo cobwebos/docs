@@ -12,10 +12,10 @@ author: prasanthpul
 ms.date: 12/3/2018
 ms.custom: seodec18
 ms.openlocfilehash: 33a93aa01499beb978f616f633588ba75e4b62a3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59259178"
 ---
 # <a name="onnx-and-azure-machine-learning-create-and-deploy-interoperable-ai-models"></a>ONNX 和 Azure 机器学习：创建和部署可互操作的 AI 模型
@@ -54,7 +54,7 @@ Microsoft 跨其产品（包括 Azure 和 Windows）支持 ONNX 以帮助实现�
 |用于模型的框架|转换示例或工具|
 |-----|-------|
 |PyTorch|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/PytorchOnnxExport.ipynb)|
-|TensorFlow|[tensorflow onnx 转换器](https://github.com/onnx/tensorflow-onnx)|
+|TensorFlow|[tensorflow-onnx 转换器](https://github.com/onnx/tensorflow-onnx)|
 |Chainer|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/ChainerOnnxExport.ipynb)|
 |MXNet|[Jupyter 笔记本](https://github.com/onnx/tutorials/blob/master/tutorials/MXNetONNXExport.ipynb)|
 |Keras、ScitKit-Learn、CoreML<br/>XGBoost 和 libSVM|[WinMLTools](https://docs.microsoft.com/windows/ai/convert-model-winmltools)|
@@ -211,6 +211,6 @@ results = session.run([], {"input1": indata1, "input2": indata2})
 + [GitHub 上的 ONNX 代码](https://github.com/onnx/onnx)
 
 详细了解 ONNX 运行时或者为项目做出贡献：
-+ [ONNX 运行库 GitHub 存储库](https://github.com/Microsoft/onnxruntime)
++ [ONNX 运行时 GitHub 存储库](https://github.com/Microsoft/onnxruntime)
 
 

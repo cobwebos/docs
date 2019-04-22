@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: 2c64019ae667ff4a2ce0694ffc4a9cd69b9116b3
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048913"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>迁移到适用于 HDInsight 群集的基于 Azure 资源管理器的开发工具
@@ -32,59 +32,59 @@ HDInsight 即将淘汰适用于 HDInsight 的基于 Azure 服务管理器 (ASM) 
 
 以下是通过 Azure 经典 CLI 使用 HDInsight 的基本命令：
 
-* `azure hdinsight cluster create` -创建新的 HDInsight 群集
-* `azure hdinsight cluster delete` -删除现有的 HDInsight 群集
-* `azure hdinsight cluster show` -显示有关现有群集的信息
-* `azure hdinsight cluster list` -列出你的 Azure 订阅的 HDInsight 群集
+* `azure hdinsight cluster create` - 创建新的 HDInsight 群集
+* `azure hdinsight cluster delete` - 删除现有的 HDInsight 群集
+* `azure hdinsight cluster show` - 显示有关现有群集的信息
+* `azure hdinsight cluster list` - 列出 Azure 订阅的 HDInsight 群集
 
 使用 `-h` 开关可以检查每个命令可用的参数和开关。
 
 ### <a name="new-commands"></a>新命令
 可用于 Azure 资源管理器的新命令包括：
 
-* `azure hdinsight cluster resize` -动态更改群集中的辅助角色节点数
-* `azure hdinsight cluster enable-http-access` -启用对群集的 HTTPs 访问 (在默认情况下)
-* `azure hdinsight cluster disable-http-access` -禁用对群集的 HTTPs 访问
-* `azure hdinsight script-action` -提供用于创建/管理脚本操作在群集上的命令
-* `azure hdinsight config` -有关创建配置文件可以使用与提供的命令`hdinsight cluster create`命令提供配置信息。
+* `azure hdinsight cluster resize` - 动态更改群集中的辅助角色节点数目
+* `azure hdinsight cluster enable-http-access` - 启用对群集的 HTTPs 访问（默认为打开）
+* `azure hdinsight cluster disable-http-access` - 禁用对群集的 HTTPs 访问
+* `azure hdinsight script-action` - 在群集上提供用于创建/管理脚本操作的命令
+* `azure hdinsight config` - 提供用于创建配置文件的命令，该配置文件可与 `hdinsight cluster create` 命令一起使用以提供配置信息。
 
 ### <a name="deprecated-commands"></a>已过时的命令
 如果使用 `azure hdinsight job` 命令将作业提交到 HDInsight 群集，则这些命令无法通过资源管理器命令提供。 如果需要以编程方式通过脚本将作业提交到 HDInsight，应改用 HDInsight 提供的 REST API。 有关如何使用 REST API 提交作业的详细信息，请参阅以下文档。
 
-* [使用 curl 通过 HDInsight 上的 Hadoop 运行 MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
-* [使用 curl 通过 HDInsight 上的 Apache Hadoop 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-curl.md)
-* [使用 curl 通过 HDInsight 上的 Apache Hadoop 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-curl.md)
+* [使用 cURL 在 HDInsight 上的 Hadoop 上远程运行 MapReduce 作业](hadoop/apache-hadoop-use-mapreduce-curl.md)
+* [使用 cURL 在 HDInsight 上通过 Apache Hadoop 运行 Apache Hive 查询](hadoop/apache-hadoop-use-hive-curl.md)
+* [使用 cURL 通过 Apache Hadoop on HDInsight 运行 Apache Pig 作业](hadoop/apache-hadoop-use-pig-curl.md)
 
 有关以其他交互方式运行 Apache Hadoop MapReduce、Apache Hive 和 Apache Pig 的信息，请参阅[将 MapReduce 与 HDInsight 上的 Hadoop 配合使用](hadoop/hdinsight-use-mapreduce.md)、[将 Apache Hive 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-hive.md)和[将 Apache Pig 与 HDInsight 上的 Apache Hadoop 配合使用](hadoop/hdinsight-use-pig.md)。
 
 ### <a name="examples"></a>示例
 **创建群集**
 
-* 旧命令 (ASM)- `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* 新命令- `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* 旧命令 (ASM) - `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* 新命令 - `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **删除群集**
 
-* 旧命令 (ASM)- `azure hdinsight cluster delete myhdicluster`
-* 新命令- `azure hdinsight cluster delete mycluster -g myresourcegroup`
+* 旧命令 (ASM) - `azure hdinsight cluster delete myhdicluster`
+* 新命令 - `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **列出群集**
 
-* 旧命令 (ASM)- `azure hdinsight cluster list`
-* 新命令- `azure hdinsight cluster list`
+* 旧命令 (ASM) - `azure hdinsight cluster list`
+* 新命令 - `azure hdinsight cluster list`
 
 > [!NOTE]  
 > 运行 list 命令时，使用 `-g` 指定资源组只会返回指定资源组中的群集。
 
 **显示群集信息**
 
-* 旧命令 (ASM)- `azure hdinsight cluster show myhdicluster`
-* 新命令- `azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* 旧命令 (ASM) - `azure hdinsight cluster show myhdicluster`
+* 新命令 - `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>将 Azure PowerShell 迁移到 Azure 资源管理器
 有关处于 Azure 资源管理器模式的 Azure PowerShell 的一般信息，请参阅[将 Azure PowerShell 与 Azure 资源管理器配合使用](../powershell-azure-resource-manager.md)。
 
-Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下*AzHDInsight*将与进行比较的 cmdlet 名称中*则包含 AzureHDInsight*在 ASM 模式下。  例如，*新建 AzHDInsightCluster* vs。*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
+Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种模式下的 cmdlet 可按其名称来区分。  资源管理器模式下的 cmdlet 名称中包含 AzHDInsight，而在 ASM 模式下则包含 AzureHDInsight。  例如，前者为 New-AzHDInsightCluster，后者为*New-AzureHDInsightCluster*. 某些参数和开关可能有新名称，并且在使用资源管理器时，有许多新参数可供使用。  例如，多个 cmdlet 需要名为 *-ResourceGroupName* 的新开关。 
 
 在使用这些 HDInsight cmdlet 之前，必须先连接到 Azure 帐户并创建新资源组：
 
@@ -131,17 +131,17 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 ### <a name="new-cmdlets"></a>新 cmdlet
 以下是只能在资源管理器模式下使用的新 cmdlet。 
 
-**脚本操作相关的 cmdlet:**
+**与脚本操作相关的 cmdlet：**
 
-* **Get-AzHDInsightPersistedScriptAction**:获取群集的持久性脚本操作，并按时间顺序列出这些操作，或获取有关指定持久性脚本操作的详细信息。 
-* **Get-AzHDInsightScriptActionHistory**:获取群集的脚本操作历史记录，并按时间顺序逆序列出这些操作，或获取有关以前执行的脚本操作的详细信息。 
-* **删除 AzHDInsightPersistedScriptAction**:从 HDInsight 群集中删除持久性脚本操作。
-* **Set-AzHDInsightPersistedScriptAction**:以前执行的脚本操作设置为持久性脚本操作。
-* **提交 AzHDInsightScriptAction**:将新的脚本操作提交到 Azure HDInsight 群集。 
+* **Get-AzHDInsightPersistedScriptAction**：获取群集的持久性脚本操作，并按时间顺序列出这些操作，或获取有关指定持久性脚本操作的详细信息。 
+* **Get-AzHDInsightScriptActionHistory**：获取群集的脚本操作历史记录，并按时间顺序逆序列出这些操作，或获取有关以前执行的脚本操作的详细信息。 
+* **Remove-AzHDInsightPersistedScriptAction**：从 HDInsight 群集中删除持久性脚本操作。
+* **Set-AzHDInsightPersistedScriptAction**：以前执行的脚本操作设置为持久性脚本操作。
+* **Submit-AzHDInsightScriptAction**：将新的脚本操作提交到 Azure HDInsight 群集。 
 
 有关其他用法信息，请参阅[使用脚本操作自定义基于 Linux 的 HDInsight 群集](hdinsight-hadoop-customize-cluster-linux.md)。
 
-**群集标识相关的 cmdlet:**
+**与群集标识相关的 cmdlet：**
 
 * **添加 AzHDInsightClusterIdentity**:将群集标识添加到群集配置对象，使 HDInsight 群集能够访问 Azure Data Lake Storage。 请参阅[使用 Azure PowerShell 创建包含 Data Lake Storage 的 HDInsight 群集](../data-lake-store/data-lake-store-hdinsight-hadoop-use-powershell.md)。
 
@@ -213,9 +213,9 @@ Azure PowerShell 资源管理器 cmdlet 可与 ASM cmdlet 一同安装。 两种
 
 #### <a name="other-samples"></a>其他示例
 * [创建 HDInsight 群集](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-* [将 Apache Hive 作业提交](hadoop/apache-hadoop-use-hive-powershell.md)
-* [将 Apache Pig 作业提交](hadoop/apache-hadoop-use-pig-powershell.md)
-* [将 Apache Sqoop 作业提交](hadoop/apache-hadoop-use-sqoop-powershell.md)
+* [提交 Apache Hive 作业](hadoop/apache-hadoop-use-hive-powershell.md)
+* [提交 Apache Pig 作业](hadoop/apache-hadoop-use-pig-powershell.md)
+* [提交 Apache Sqoop 作业](hadoop/apache-hadoop-use-sqoop-powershell.md)
 
 ## <a name="migrating-to-the-new-hdinsight-net-sdk"></a>迁移到新的 HDInsight .NET SDK
 基于 Azure 服务管理 (ASM) 的 [HDInsight.NET SDK](https://msdn.microsoft.com/library/azure/mt416619.aspx) 现已弃用。 建议使用基于 Azure 资源管理器的 [基于资源管理器的 HDInsight .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)。 以下基于 ASM 的 HDInsight 包即将过时。

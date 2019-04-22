@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/15/2019
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6e826bd965281d60cb6d73f325fbc5a7a06da234
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 3d2b22fc507b209a96870daa8bf12ea9ab60a466
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358489"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617407"
 ---
 # <a name="prepare-azure-resources-for-disaster-recovery-of-on-premises-machines"></a>准备 Azure 资源，以便对本地计算机进行灾难恢复
 
@@ -54,7 +54,7 @@ ms.locfileid: "59358489"
 
 ## <a name="create-a-recovery-services-vault"></a>创建恢复服务保管库
 
-1. 在 Azure 门户中单击“+创建资源”，然后在市场中搜索“恢复服务”。
+1. 在 Azure 门户中单击“+创建资源”，然后在市场中搜索“恢复”。
 2. 单击“备份和站点恢复(OMS)”，然后在“备份和站点恢复”页中单击“创建”。 
 1. 在“恢复服务保管库” > “名称”中，输入一个友好名称以标识此保管库。 对于这组教程，我们使用 **ContosoVMVault**。
 2. 在**资源组**中，选择现有资源组或创建新资源组。 在本教程中，我们使用 **contosoRG**。
@@ -73,7 +73,7 @@ ms.locfileid: "59358489"
 2. 选择“资源管理器”作为部署模型。
 3. 在“名称”中，输入网络名称。 名称在 Azure 资源组中必须唯一。 在本教程中我们将使用 **ContosoASRnet**。
 4. 指定将在其中创建网络的资源组。 我们将使用现有资源组 contosoRG。
-5. 在“地址范围”中，输入网络的范围。 我们将使用 **10.0.0.0/24**，而不使用子网。
+5. 在“地址范围”中，输入网络的范围。 我们将使用 10.1.0.0/24，而不使用子网。
 6. 在“订阅”中，选择要在其中创建网络的订阅。
 7. 在“位置”中，选择创建了恢复服务保管库的同一个区域。 本教程使用“西欧”。 该网络必须位于与保管库相同的区域中。
 8. 我们将保留基本 DDoS 防护的默认选项，网络上没有服务终结点。

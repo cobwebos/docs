@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 3c1bb38eb12ce77d172257706cd458cebda4bd8c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59260742"
 ---
 # <a name="managed-identity-for-data-factory"></a>数据工厂的托管标识
@@ -192,6 +192,6 @@ Type                  : ServicePrincipal
 请参阅以下主题，其中介绍何时以及如何使用数据工厂管理的标识：
 
 - [在 Azure Key Vault 中存储凭据](store-credentials-in-key-vault.md)
-- [从/向 Azure 资源的身份验证使用管理的标识的 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
+- [使用 Azure 资源的托管标识身份验证从/向 Azure Data Lake Store 复制数据](connector-azure-data-lake-store.md)
 
 请参阅[管理的标识的 Azure 资源概述](/azure/active-directory/managed-identities-azure-resources/overview)为基于 Azure 资源，哪些数据工厂托管标识的管理的标识的更多背景。 

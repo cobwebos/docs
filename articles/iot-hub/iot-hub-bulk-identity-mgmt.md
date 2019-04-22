@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049966"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>导入和导出大容量的 IoT 中心设备标识
@@ -258,7 +258,7 @@ JobProperties importJob =
 | **createOrUpdate** |如果设备不存在具有指定**ID**，它新注册。 <br/>如果该设备已存在，则使用提供的输入数据覆盖现有信息，与 **ETag** 值无关。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
 | **create** |如果设备不存在具有指定**ID**，它新注册。 <br/>如果设备已存在，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
 | **update** |如果设备已存在具有指定**ID**，使用与模式无关提供的输入数据覆盖现有信息**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
-| **updateIfMatchETag** |如果设备已存在具有指定**ID**，使用提供的输入数据覆盖现有信息，仅当没有**ETag**匹配。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 |
+| **updateIfMatchETag** |如果设备已存在具有指定**ID**，使用提供的输入数据覆盖现有信息，仅当没有**ETag**匹配。 <br/>如果设备不存在，则在日志文件中写入错误。 <br/>如果 **ETag** 不匹配，则在日志文件中写入错误。 |
 | **createOrUpdateIfMatchETag** |如果设备不存在具有指定**ID**，它新注册。 <br/>如果设备已存在，则只有当 **ETag** 匹配时，才使用提供的输入数据覆盖现有信息。 <br/>如果 **ETag** 不匹配，则将错误写入日志文件。 <br> 用户可以选择在指定设备数据的同时指定孪生数据。 如果指定了孪生的 etag，它的处理独立于设备 etag 的处理。 如果与现有孪生的 etag 不匹配，则会将错误写入日志文件。 |
 | **delete** |如果设备已存在具有指定**ID**，删除与模式无关**ETag**值。 <br/>如果设备不存在，则在日志文件中写入错误。 |
 | **deleteIfMatchETag** |如果设备已存在具有指定**ID**，仅当没有删除它**ETag**匹配。 如果设备不存在，则在日志文件中写入错误。 <br/>如果 ETag 不匹配，则将错误写入日志文件。 |

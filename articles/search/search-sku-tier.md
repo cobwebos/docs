@@ -7,15 +7,15 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/15/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: da8c8adacfead598a8dec6280cf3518fb7b31f49
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b50d0c0ca9a4000cc0c725453a3ef04b4bed9275
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59270931"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681553"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>选择 Azure 搜索的定价层
 
@@ -64,35 +64,36 @@ ms.locfileid: "59270931"
 
 ### <a name="1-core-service-costs-fixed-and-variable"></a>1.核心服务成本 （固定和可变）
 
-服务自身的最小的费用是第一个搜索单位 （1 个副本 x 1 分区） 和此数量是常量的服务的生存期，因为服务不能运行任何小于此配置。 
+服务本身，最少收取费用是第一个搜索单位 （1 个副本 x 1 分区），此数量固定的服务的生命周期，因为该服务无法运行任何小于此配置。 
 
-在以下屏幕截图中，每个单位定价表示为免费、 基本版和 S1 （S2、 S3、 L1 和 L2 未显示）。 如果您创建**基本**，**标准**，或**存储优化**服务，你每月的成本会平均为显示的值*价格 1*并*价格 2*分别。 由于计算能力和存储容量大于在每个连续层时，为每个层中转单位成本。
+超出最小值，您可以添加副本和分区独立。 例如，您可以只添加副本或仅分区。 通过副本和分区的容量中的增量增加构成变量成本的成分。 
+
+计费基于[公式 (副本分区 x 速率)](#search-units)。 你支付的费率取决于您选择的定价层。
+
+在以下屏幕截图中，每个单位定价表示为免费、 基本版和 S1 （S2、 S3、 L1 和 L2 未显示）。 如果您创建**基本**，**标准**，或**存储优化**服务，你每月的成本会平均为显示的值*价格 1*并*价格 2*分别。 由于计算能力和存储容量大于在每个连续层时，为每个层中转单位成本。 上发布的费率为 Azure 搜索[Azure 搜索定价页](https://azure.microsoft.com/pricing/details/search/)。
 
 ![每单位定价](./media/search-sku-tier/per-unit-pricing.png "每单位定价")
 
-提供额外的副本和分区的初始费用的附加内容。 搜索服务需要的副本和分区，因此最小配置各项之一。 超出最小值，您添加副本和分区独立。 例如，可以添加仅副本或仅分区。 
+当搜索解决方案的成本计算，注意到定价和容量不是线性 （容量超过双精度型值成本加倍）。 有关如何使用公式的工作原理的示例，请参阅["如何分配副本和分区"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)。
 
-提供额外的副本和分区的收费依据[公式](#search-units)。 成本不是线性的 （容量超过双精度型值成本加倍）。 有关如何使用公式的工作原理的示例，请参阅["如何分配副本和分区"](search-capacity-planning.md#how-to-allocate-replicas-and-partitions)。
 
 ### <a name="2-data-egress-charges-during-indexing"></a>2.在索引期间的数据传出费用
 
-利用[Azure 搜索索引器](search-indexer-overview.md)可能会导致计费影响具体取决于服务的位置。 如果在你的数据所在的同一区域中创建 Azure 搜索服务，则可以消除数据传出费用。
+利用[Azure 搜索索引器](search-indexer-overview.md)可能会导致具体取决于服务的位置会影响计费。 如果在你的数据所在的同一区域中创建 Azure 搜索服务，则可以消除数据传出费用。 以下几点取自[带宽定价页](https://azure.microsoft.com/pricing/details/bandwidth/)。
 
-+ 任何入站数据传输到 Azure 上的任何服务的任何费用。
++ Microsoft 不会不收取任何入站数据传输到 Azure 上的任何服务的任何出站数据; 二是从 Azure 搜索。
 
-+ Azure 搜索中的任何出站数据不必支付费用。
++ 在多服务解决方案中，有数据时的所有服务都都在同一区域中没有费用。
 
-+ 数据文件或文件从 SQL DB，Cosmos，Blob 存储出站免费 （入站到 Azure 搜索），只要所有服务都都在同一区域中。
-
-+ 如果存储和 Azure 搜索是在不同区域中，对出站数据或文件执行操作收取费用。
-
-在 Azure 区域之间进行路由数据，会看到这些资源在帐单中的带宽费用。 这些费用不是你 Azure 搜索的帐单的一部分，但它们此处所述，因为如果使用索引器提取数据或文件在网络上，您将看到该费用，总费用中。
-
-如果使用索引器，没有任何带宽费用。 
+如果服务是在不同区域中，对出站数据收取费用。 此类费用不属于你的 Azure 搜索帐单本身，但它们此处所述，因为如果您使用数据或 AI 丰富索引器提取数据从不同的区域，您将看到反映在总费用这些成本。 
 
 ### <a name="3-ai-enriched-indexing-using-cognitive-services"></a>3.AI 强化索引使用认知服务
 
-有关[AI 索引使用认知服务](cognitive-search-concept-intro.md)仅根据从文档中提取的映像数量计费图像提取中的，在文档破解。 文本提取目前是免费的。 基于自然语言处理，如其他正[内置认知技能](cognitive-search-predefined-skills.md)针对认知服务资源计费。 扩充费率与直接使用认知服务执行任务的费率相同。
+有关[AI 索引使用认知服务](cognitive-search-concept-intro.md)，您应计划将附加的处理即用即付定价层的可计费 S0 在认知服务资源。 没有任何"固定的费用"与附加认知服务相关联。 仅为所需的处理付费。
+
+图像提取中的，在文档破解是 Azure 搜索的费用，计费基于从文档中提取的映像数量。 文本提取目前是免费的。 
+
+基于自然语言处理，如其他正[内置认知技能](cognitive-search-predefined-skills.md)像执行了任务直接使用认知服务针对认知服务资源，相同的费率计费。 有关详细信息，请参阅[将附加具有技能组合的认知服务资源](cognitive-search-attach-cognitive-services.md)。
 
 <a name="search-units"></a>
 
@@ -193,7 +194,7 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 
 估计容量的一种方法是从“免费”层开始。 回想一下，“免费”服务最多提供 3 个索引、50 MB 存储和 2 分钟索引时间。 使用这些约束来估计预计的索引大小可能具有挑战性，但以下示例介绍了一种方法：
 
-+ [创建一项免费服务](search-create-service-portal.md)
++ [创建免费服务](search-create-service-portal.md)
 + 准备小型且具有代表性的数据集（假设五千个文档和百分之十的示例大小）
 + [生成初始索引](search-create-index-portal.md)并记下其在门户中的大小（假设为 30 MB）
 
@@ -221,7 +222,7 @@ SU 是服务使用的副本数和分区数的乘积：**`(R X P = SU)`**
 > 如果文档包含无关数据，存储要求可能会过高。 理想情况下，文档仅包含搜索体验所需的数据。 二进制数据不可搜索，应该分开存储（或许存储在 Azure 表或 blob 存储中），并且在索引中要有一个字段用于保存外部数据的 URL 参考。 个别文档的最大大小是 16 MB（如果在一次请求中批量上传了多个文档，则小于 16 MB）。 [Azure 搜索中的服务限制](search-limits-quotas-capacity.md)提供详细信息。
 >
 
-**查询卷的注意事项**
+**查询量注意事项**
 
 每秒查询数 (QPS) 是在性能调整过程中突出显示的一个指标，但通常不是层级考虑因素，除非你期望在一开始就有较高的查询量。
 

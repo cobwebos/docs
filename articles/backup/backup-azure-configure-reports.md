@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
 ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278813"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
@@ -151,5 +151,5 @@ ms.locfileid: "59278813"
 配置存储帐户并导入 Azure 备份内容包后，下一步是自定义这些报表，并使用报表数据模型创建报表。 有关详细信息，请参阅以下文章。
 
 * [使用 Azure 备份报表数据模型](backup-azure-reports-data-model.md)
-* [Power BI 中的筛选器报表](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
+* [在 Power BI 中筛选报表](https://powerbi.microsoft.com/documentation/powerbi-service-about-filters-and-highlighting-in-reports/)
 * [在 Power BI 中创建报表](https://powerbi.microsoft.com/documentation/powerbi-service-create-a-new-report/)

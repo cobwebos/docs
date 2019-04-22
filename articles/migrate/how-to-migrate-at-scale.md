@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762644"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>使用 Azure Site Recovery 进行 VM 的规模化迁移
@@ -21,9 +21,9 @@ ms.locfileid: "58762644"
 - 支持仅为目标 VM 的主 NIC 指定静态 IP 地址
 - 这些脚本不接受与 Azure 混合权益相关的输入，你需要手动更新门户中复制的 VM 的属性
 
-## <a name="how-does-it-work"></a>它是如何工作的?
+## <a name="how-does-it-work"></a>工作原理
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>必备组件
 开始迁移前，需要执行以下步骤：
 - 确保在 Azure 订阅中创建了 Site Recovery 保管库
 - 确保配置服务器和进程服务器安装在源环境中，并且保管库可以发现环境
@@ -59,7 +59,7 @@ CSV 准备就绪后，可以通过以下步骤来执行本地 VM 的迁移：
 5 | asr_testmigration.ps1 |  启动 csv 中列出的 VM 的测试故障转移，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息
 6 | asr_cleanuptestmigration.ps1 | 手动验证已执行测试故障转移的 VM 后，可以使用此脚本清理测试故障转移 VM
 7 | asr_migration.ps1 | 对 csv 中列出的 VM 执行计划外的故障转移，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息。 该脚本不会关闭本地虚拟机再触发故障转移的应用程序一致性，建议您手动先关闭 Vm 执行该脚本之前。
-9 | asr_completemigration.ps1 | 执行提交操作在虚拟机上的和删除 Azure Site Recovery 实体
+8 | asr_completemigration.ps1 | 执行提交操作在虚拟机上的和删除 Azure Site Recovery 实体
 9 | asr_postmigration.ps1 | 如果计划在故障转移后将网络安全组分配给 NIC，可以使用此脚本实现该操作。 它将 NSG 分配给目标 VM 中的任何一个 NIC。
 
 ## <a name="how-to-migrate-to-managed-disks"></a>如何迁移到托管磁盘？

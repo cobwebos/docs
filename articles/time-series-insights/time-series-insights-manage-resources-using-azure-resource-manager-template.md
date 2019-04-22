@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 12/08/2017
 ms.custom: seodec18
 ms.openlocfilehash: 79751dc0de8817c940355e8b64652014b1c67c35
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045894"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建时序见解资源
@@ -33,7 +33,7 @@ ms.locfileid: "59045894"
 
 资源管理器模板是用于定义资源组中资源的基础结构和配置的 JSON 文件。 有关详细信息，请参阅以下文档：
 
-- [Azure 资源管理器概述-模板部署](../azure-resource-manager/resource-group-overview.md#template-deployment)
+- [Azure 资源管理器概述 - 模板部署](../azure-resource-manager/resource-group-overview.md#template-deployment)
 - [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../azure-resource-manager/resource-group-template-deploy.md)
 - [Microsoft.TimeSeriesInsights 资源类型](/azure/templates/microsoft.timeseriesinsights/allversions)
 

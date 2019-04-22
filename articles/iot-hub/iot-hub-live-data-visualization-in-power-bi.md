@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 4/11/2018
 ms.author: robinsh
-ms.openlocfilehash: 5349a8a81c1d1361637b4fc9cf83e1ee83f5276a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7c770aced36e4c90f654de8d31c12d55ad80c8d0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265502"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59677980"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>使用 Power BI 可视化 Azure IoT 中心的实时传感器数据
 
@@ -37,7 +37,7 @@ ms.locfileid: "59265502"
 
 ## <a name="what-you-need"></a>所需条件
 
-* 已完成教程[设置设备](iot-hub-raspberry-pi-kit-node-get-started.md)，其中涵盖以下要求：
+* 完成[Raspberry Pi 联机模拟器](iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程中; 例如， [Raspberry Pi 与 node.js 配合使用](iot-hub-raspberry-pi-kit-node-get-started.md)。 这些涵盖以下要求：
   
   * 一个有效的 Azure 订阅。
   * 已在订阅中创建一个 Azure IoT 中心。
@@ -85,7 +85,7 @@ ms.locfileid: "59265502"
 
    **使用者组**：选择刚创建的使用者组。
 
-4. 单击“创建”。
+4. 单击**创建**。
 
    ![向 Azure 中的流分析作业添加输入](./media/iot-hub-live-data-visualization-in-power-bi/3_add-input-to-stream-analytics-job-azure.png)
 
@@ -105,7 +105,7 @@ ms.locfileid: "59265502"
 
 3. 单击“授权”，并登录到 Power BI 帐户。
 
-4. 单击“创建”。
+4. 单击**创建**。
 
    ![向 Azure 中的流分析作业添加输出](./media/iot-hub-live-data-visualization-in-power-bi/4_add-output-to-stream-analytics-job-azure.png)
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: 48412b3006a462fcc9c77219f42fb41d08f2df61
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490733"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建自定义映像工厂
@@ -27,7 +27,7 @@ ms.locfileid: "59490733"
 
 - [创建映像工厂](image-factory-create.md)
 - [从 Azure DevOps 运行映像工厂](image-factory-set-up-devops-lab.md)
-- [保存自定义映像并分发到多个实验室](image-factory-save-distribute-custom-images.md)
+- [保存自定义映像并将分发到多个实验室](image-factory-save-distribute-custom-images.md)
 
 以下各项应已就位：
 

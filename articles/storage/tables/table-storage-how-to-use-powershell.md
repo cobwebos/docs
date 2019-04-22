@@ -9,10 +9,10 @@ ms.date: 04/05/2019
 ms.author: rogarana
 ms.subservice: cosmosdb-table
 ms.openlocfilehash: 840c2793928816c6346e2039a38678585f8e0bc7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273118"
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>使用 Azure PowerShell 执行 Azure 表存储操作 
@@ -161,7 +161,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 有关详细信息，请参阅以下文章：
 
-* [存储空间 PowerShell cmdlet](/powershell/module/az.storage#storage)
+* [存储 PowerShell cmdlet](/powershell/module/az.storage#storage)
 
 * [使用 PowerShell-AzureRmStorageTable/AzTable PS 模块 v2.0 从 Azure 表](https://paulomarquesc.github.io/working-with-azure-storage-tables-from-powershell)
 

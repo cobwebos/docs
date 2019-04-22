@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: alkohli
 ms.openlocfilehash: 32445e3f6859a6161eb2fae20233c598234f18a0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58791637"
 ---
 # <a name="azure-data-box-disk-limits"></a>Azure Data Box 磁盘限制
@@ -52,8 +52,8 @@ ms.locfileid: "58791637"
 - 如果将数据上传到 Azure 时发生任何错误，则会在目标存储帐户中创建一个错误日志。 当上传完成时，可以在门户中找到此错误日志的路径，你可以查看此日志来采取纠正措施。 在验证上传的数据之前，不要删除源中的数据。
 - 如果按顺序指定了托管磁盘，请查看以下附加注意事项：
 
-    - 在一个资源组的所有预先创建的文件夹和所有 Data Box Disk 中，只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果有多个 VHD 同名，只会将一个 VHD 转换为使用该名称的托管磁盘。 其他 VHD 会作为页 Blob 上传到临时存储帐户中。
-    - 始终将 VHD 复制到某个预先创建的文件夹中。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 将作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
+    - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
+    - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
     - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
 
 ## <a name="azure-storage-account-size-limits"></a>Azure 存储帐户大小限制
@@ -71,8 +71,8 @@ ms.locfileid: "58791637"
 
 | Azure 对象类型 | 默认限制                                             |
 |-------------------|-----------------------------------------------------------|
-| 块 Blob        | ~ 4.75 TiB                                                 |
-| 页 Blob         | 8 TiB <br> （以页 Blob 格式上传的每个文件必须经过 512 字节对齐，否则上传会失败。 <br> VHD 和 VHDX 都已经过 512 字节对齐。） |
+| 块 blob        | ~ 4.75 TiB                                                 |
+| 页 blob         | 8 TiB <br> （以页 Blob 格式上传的每个文件必须经过 512 字节对齐，否则上传会失败。 <br> VHD 和 VHDX 都已经过 512 字节对齐。） |
 |Azure 文件        | 1 TiB <br> 最大 共享大小为 5 TiB     |
 | 托管磁盘     |4 TiB <br> 有关大小和限制的详细信息，请参阅： <li>[托管磁盘的可伸缩性目标](../virtual-machines/windows/disk-scalability-targets.md#managed-virtual-machine-disks)</li>|
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 14a4191612a5d42836ae4be3ff902ca47a6b06d4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59271501"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>在笔记本中访问云数据
@@ -68,9 +68,9 @@ Azure 存储提供了几种不同类型的非关系存储，具体取决于你�
 
 Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下文章提供了许多使用 Python 的 Cosmos DB 的不同方法：
 
-- [生成 SQL API 与 Python 配合使用的应用程序](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
-- [Mongodb 构建使用 Azure Cosmos DB 的 API 的 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
-- [创建图形数据库通过 Python 和 Gremlin API](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
+- [使用 Python 生成 SQL API 应用](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-python)
+- [使用 Azure Cosmos DB 的 API for MongoDB 构建 Flask 应用](https://docs.microsoft.com/azure/cosmos-db/create-mongodb-flask)
+- [使用 Python 和 Gremlin API 创建图形数据库](https://docs.microsoft.com/azure/cosmos-db/create-graph-python)
 - [使用 Python 和 Azure Cosmos DB 生成 Cassandra 应用](https://docs.microsoft.com/azure/cosmos-db/create-cassandra-python)
 - [使用 Python 和 Azure Cosmos DB 生成表 API 应用](https://docs.microsoft.com/azure/cosmos-db/create-table-python)
 
@@ -81,10 +81,10 @@ Azure Cosmos DB 为 JSON 文档提供了完全索引的 NoSQL 存储。 以下�
 Azure 提供了许多可以使用的其他数据库类型。 以下文章提供了从 Python 访问这些数据库的指导：
 
 - [Azure Database for PostgreSQL：使用 Python 连接和查询数据](https://docs.microsoft.com/azure/postgresql/connect-python)
-- [快速入门：使用 Azure Redis 缓存与 Python 配合使用](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
+- [快速入门：将 Azure Redis 缓存与 Python 配合使用](https://docs.microsoft.com/azure/redis-cache/cache-python-get-started)
 - [Azure Database for MySQL：使用 Python 连接和查询数据](https://docs.microsoft.com/azure/mysql/connect-python)
 - [Azure 数据工厂](https://azure.microsoft.com/services/data-factory/)
-  - [Azure 数据工厂复制向导](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
+  - [Azure 数据工厂的复制向导](https://azure.microsoft.com/updates/code-free-copy-wizard-for-azure-data-factory/)
 
 ## <a name="next-steps"></a>后续步骤
 

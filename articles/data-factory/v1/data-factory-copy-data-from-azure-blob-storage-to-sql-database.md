@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 7accb8f2d97f5e4b4dc19ba93ab9edc1a4e6ce8a
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 557228bafc00c3028a1fda520da8fe4ec8c7a6f2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57541327"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678711"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>教程：使用数据工厂将数据从 Blob 存储复制到 SQL 数据库
 > [!div class="op_single_selector"]
@@ -95,7 +95,6 @@ ms.locfileid: "57541327"
     ```
 2. 使用 [Azure 存储资源管理器](https://storageexplorer.com/)等工具创建 **adftutorial** 容器，将 **emp.txt** 文件上传到该容器。
 
-    ![Azure 存储资源管理器下载。 将数据从 Blob 存储复制到 SQL 数据库](./media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/getstarted-storage-explorer.png)
 3. 使用以下 SQL 脚本在 Azure SQL 数据库中创建 **emp** 表。  
 
     ```SQL

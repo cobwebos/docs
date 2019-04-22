@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.openlocfilehash: d01c825e50e30e3545a0d47e432835c658d677af
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59043875"
 ---
 # <a name="connect-to-azure-data-explorer-with-odbc"></a>连接到 Azure 数据资源管理器中使用 ODBC
@@ -102,4 +102,4 @@ ms.locfileid: "59043875"
 
 [Azure 数据资源管理器的编写查询](write-queries.md)
 
-[教程：从 Azure 数据资源管理器在 Power BI 中可视化数据](visualize-power-bi.md)
+[教程：在 Power BI 中可视化 Azure 数据资源管理器中的数据](visualize-power-bi.md)

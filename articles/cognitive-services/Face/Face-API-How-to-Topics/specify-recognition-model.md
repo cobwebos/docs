@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: longl
 ms.openlocfilehash: 33348e637143b923719425b9674f99a475d848d9
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58806654"
 ---
-# <a name="specify-a-face-recognition-model"></a>指定一个人脸识别模型
+# <a name="specify-a-face-recognition-model"></a>指定人脸识别模型
 
 本指南演示如何指定人脸检测、 标识和相似性搜索使用 Azure 人脸 API 的人脸识别模型。
 
@@ -25,7 +25,7 @@ ms.locfileid: "58806654"
 
 如果您是新用户，我们建议使用最新模型。 继续阅读以了解如何避免模型冲突时在不同的人脸操作中指定它。 如果你是高级的用户，而且不确定是否应切换到最新模型，请跳到[评估不同的模型](#evaluate-different-models)部分评估新模型并使用当前数据集的结果进行比较。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 您应熟悉 AI 人脸检测和标识的概念。 如果不是，首先看到这些操作方法指南：
 
@@ -58,7 +58,7 @@ var faces = await faceServiceClient.Face.DetectWithUrlAsync(imageUrl, true, true
 
 ## <a name="identify-faces-with-specified-model"></a>使用指定的模型中识别人脸
 
-人脸 API 可以从图像中提取人脸数据并将其与**Person**对象 (通过[添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 调用，例如)，和多个**人员**对象可以是一起存储在**person Group**。 然后，可与比较新的人脸**person Group** (使用[Face - Identify]调用)，并可以标识该组中的匹配人员。
+人脸 API 可以从图像中提取人脸数据并将其与**Person**对象 (通过[添加人脸](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b)API 调用，例如)，和多个**人员**对象可以是一起存储在**person Group**。 然后，可与比较新的人脸**person Group** (使用[人脸-识别]调用)，并可以标识该组中的匹配人员。
 
 一个**person Group**应具有一个唯一识别模型的所有**人员**s，并且您可以指定此使用`recognitionModel`参数在创建组时 ([PersonGroup - 创建]或[LargePersonGroup - 创建])。 如果不指定此参数，原始`recognition_01`使用模型。 一个组将始终使用创建，识别模型和新的人脸就会变得与此模型关联它们添加到它;这不能组的创建后更改。 若要查看哪些模型**person Group**配置，使用[PersonGroup - Get] API _returnRecognitionModel_参数设置为**true**.
 
@@ -74,7 +74,7 @@ await faceServiceClient.PersonGroup.CreateAsync(personGroupId, "My Person Group 
 
 相应地，您需要指定要使用检测人脸时要对此进行比较的模型**person Group** (通过[人脸-检测]API)。 您使用的模型应始终为与一致**person Group**的配置; 否则，该操作将失败由于不兼容的模型。
 
-在没有变化[Face - Identify]API; 您只需在检测中指定的模型版本。
+在没有变化[人脸-识别]API; 您只需在检测中指定的模型版本。
 
 ## <a name="find-similar-faces-with-specified-model"></a>查找相似人脸与指定的模型
 
@@ -100,7 +100,7 @@ await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", r
 
 1. 创建两个**person Group**与_recognition_01_并_recognition_02_分别。
 1. 使用您的图像数据检测人脸并注册到**Person**这两个的 s **person Group**s，并触发培训处理与[PersonGroup - 训练] API。
-1. 使用测试[Face - Identify]同时**person Group**s 并比较结果。
+1. 使用测试[人脸-识别]同时**person Group**s 并比较结果。
 
 如果正常情况下指定置信度阈值 （零和确定有多大把握模型必须是以识别人脸的那个之间的值），您可能需要为不同的模型使用不同的阈值。 一个模型的阈值并不旨在共享到另一个并不一定生成相同的结果。
 
@@ -112,7 +112,7 @@ await faceServiceClient.FaceList.CreateAsync(faceListId, "My face collection", r
 
 [人脸-检测]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d
 [人脸-查找相似]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237
-[Face - Identify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239（人脸 - 识别）
+[人脸-识别]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239
 [Face - Verify]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a（人脸 - 验证）
 [PersonGroup - 创建]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395244
 [PersonGroup - Get]: https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395246

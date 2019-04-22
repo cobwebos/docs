@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: f0db36fa380d0d1bb7f2b581c4bf8fa1abfaadaf
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58805374"
 ---
 # <a name="use-apache-ambari-to-optimize-hdinsight-cluster-configurations"></a>使用 Apache Ambari 优化 HDInsight 群集配置
@@ -176,12 +176,12 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
 可用的压缩类型包括：
 
-| 格式 | Tool | 算法 | 文件扩展名 | 是否可拆分？ |
+| 格式 | 工具 | 算法 | 文件扩展名 | 是否可拆分？ |
 | -- | -- | -- | -- | -- |
 | Gzip | Gzip | DEFLATE | .gz | 否 |
 | Bzip2 | Bzip2 | Bzip2 |.bz2 | 是 |
 | LZO | Lzop | LZO | .lzo | 是（如果已编制索引） |
-| Snappy | 无 | Snappy | Snappy | 否 |
+| Snappy | 不适用 | Snappy | Snappy | 否 |
 
 一般规则是，尽量使用可拆分的压缩方法，否则会创建极少的映射器。 如果输入数据为文本，则 `bzip2` 是最佳选项。 对于 ORC 格式，Snappy 是最快的压缩选项。
 
@@ -204,7 +204,7 @@ Hadoop 作业通常会遇到 I/O 瓶颈。 压缩数据能够加快 I/O 和总�
 
     d. 在“添加属性”窗口中，输入 `mapred.map.output.compression.codec` 作为键，输入 `org.apache.hadoop.io.compress.SnappyCodec` 作为值。
 
-    e. 单击“添加” 。
+    e. 单击“添加”。
 
     ![Hive 自定义属性](./media/hdinsight-changing-configs-via-ambari/hive-custom-property.png)
 
@@ -269,7 +269,7 @@ Hive 允许在表中插入记录时创建动态分区，且无需预定义每个
 
 Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的映射器会读取输入，并向中间文件发出联接键/值对。 Hadoop 在随机阶段中排序与合并这些对。 此随机阶段的系统开销较大。 根据数据选择右联接可以显著提高性能。
 
-| 联接类型 | 时间 | 方式 | Hive 设置 | 评论 |
+| 联接类型 | 时间 | 方式 | Hive 设置 | 注释 |
 | -- | -- | -- | -- | -- |
 | 随机联接 | <ul><li>默认选项</li><li>始终运行</li></ul> | <ul><li>从某个表的一部分内容中读取</li><li>根据联接键存储和排序</li><li>向每个化简器发送一个存储桶</li><li>在化简端执行联接</li></ul> | 不需要过多的 Hive 设置 | 每次运行 |
 | 映射联接 | <ul><li>一个表可以装入内存</li></ul> | <ul><li>将小型表读入内存哈希表</li><li>通过大型文件的一部分流式处理</li><li>联接哈希表中的每条记录</li><li>只按映射器执行联接</li></ul> | `hive.auto.confvert.join=true` | 速度很快，但受限 |
@@ -279,9 +279,9 @@ Hive 中的默认联接类型是“随机联接”。 在 Hive 中，特殊的�
 
 有关优化 Hive 执行引擎的其他建议：
 
-| 设置 | 推荐的项目 | HDInsight 默认值 |
+| 设置 | 建议 | HDInsight 默认值 |
 | -- | -- | -- |
-| `hive.mapjoin.hybridgrace.hashtable` | True = 更安全，但速度更慢；false = 速度更快 | 否 |
+| `hive.mapjoin.hybridgrace.hashtable` | True = 更安全，但速度更慢；false = 速度更快 | false |
 | `tez.am.resource.memory.mb` | 对于大多数的 4 GB 上限 | 自动优化 |
 | `tez.session.am.dag.submit.timeout.secs` | 300+ | 300 |
 | `tez.am.container.idle.release-timeout-min.millis` | 20000+ | 10000 |
@@ -395,9 +395,9 @@ HBase 堆大小指定区域服务器和主服务器要使用的最大堆数量�
 
 所有编辑内容都存储在称作 *Memstore* 的内存缓冲区中。 此机制增大了可在单个操作中写入磁盘的总数据量，并可加速以后对最近编辑内容的访问。 Memstore 大小由以下两个参数定义：
 
-* `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的最大区域服务器百分比。
+* `hbase.regionserver.global.memstore.UpperLimit`：定义 Memstore 总共可以使用的区域服务器的最大内存百分比。
 
-* `hbase.regionserver.global.memstore.LowerLimit`：定义 Memstore 总共可以使用的最小区域服务器百分比。
+* `hbase.regionserver.global.memstore.LowerLimit`：定义 Memstore 总共可以使用的区域服务器的最小内存百分比。
 
 若要优化随机读取，可以减小 Memstore 的上限和下限。
 

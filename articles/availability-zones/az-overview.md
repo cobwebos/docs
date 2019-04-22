@@ -17,10 +17,10 @@ ms.date: 04/02/2019
 ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
 ms.openlocfilehash: 557757fc4d99fe57ad545e9d2eebcce61ddb3a8f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268715"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>什么是 Azure 中的可用性区域？
@@ -79,10 +79,10 @@ Azure 区域中的可用性区域是容错域和更新域的组合。 例如，�
 
 ## <a name="get-started-with-availability-zones"></a>可用性区域入门
 - [创建虚拟机](../virtual-machines/windows/create-portal-availability-zone.md)
-- [添加托管磁盘使用 PowerShell](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
-- [创建区域冗余虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
-- [具有区域冗余前端使用标准负载均衡器跨区域负载均衡 Vm](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
-- [使用具有区域性前端的标准负载均衡器在区域内的负载均衡 Vm](../load-balancer/load-balancer-standard-public-zonal-cli.md)
+- [使用 PowerShell 添加托管磁盘](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+- [创建区域冗余的虚拟机规模集](../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md)
+- [使用具有区域冗余前端的标准负载均衡器跨区域对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
+- [使用具有区域性前端的标准负载均衡器在区域内对 VM 进行负载均衡](../load-balancer/load-balancer-standard-public-zonal-cli.md)
 - [区域冗余存储](../storage/common/storage-redundancy-zrs.md)
 - [SQL 数据库](../sql-database/sql-database-high-availability.md#zone-redundant-configuration)
 - [事件中心异地灾难恢复](../event-hubs/event-hubs-geo-dr.md#availability-zones)

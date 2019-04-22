@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/28/2017
 ms.openlocfilehash: f11034a4970e3fb95333310af82a6b2a2551f1eb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257274"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>使用 Azure 机器学习函数缩放流分析作业
@@ -81,7 +81,7 @@ ms.locfileid: "59257274"
 | **18 个 SU** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 个 SU** |10,000 |20,000 |80,000 |120,000 |200,000 |
 | **…** |… |… |… |… |… |
-| **60 个SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
+| **60 个 SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
 到目前为止，应该清楚了解流分析中机器学习函数的工作原理。 可能还知道流分析作业从数据源中“提取”数据，并且每次“提取”都会返回一批供流分析作业处理的事件。 这种“提取”模型如何影响机器学习 Web 服务请求？
 
@@ -112,7 +112,7 @@ ms.locfileid: "59257274"
 ## <a name="next-steps"></a>后续步骤
 若要了解流分析的更多内容，请参阅：
 
-* [开始使用 Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
-* [缩放 Azure Stream Analytics 作业](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Azure 流分析入门](stream-analytics-real-time-fraud-detection.md)
+* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
+* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e4e2f564de254c2aea779b30286183d0a4e17db6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045478"
 ---
 # <a name="what-is-azure-ad-identity-governance"></a>什么是 Azure AD 标识监管？
@@ -68,20 +68,20 @@ Azure AD Privileged Identity Management (PIM) 提供用于保护 Azure AD、Azur
 
 尽管我们不能为每个客户提供完美的解决方案或建议，但以下配置提供了有关 Microsoft 建议的基准策略，确保提高安全性和员工工作效率的指导。
 
-- [标识和设备访问配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
-- [保护特权的访问](../users-groups-roles/directory-admin-roles-secure.md)
+- [标识和设备访问权限配置](/microsoft-365/enterprise/microsoft-365-policies-configurations)
+- [保护特权访问](../users-groups-roles/directory-admin-roles-secure.md)
 
 
 ### <a name="access-reviews"></a>访问评审
 
 - [什么是访问评审？](access-reviews-overview.md)
-- [管理使用访问评审的用户访问权限](manage-user-access-with-access-reviews.md)
-- [管理使用访问评审的来宾访问权限](manage-guest-access-with-access-reviews.md)
+- [使用访问评审管理用户访问权限](manage-user-access-with-access-reviews.md)
+- [使用访问评审管理来宾访问权限](manage-guest-access-with-access-reviews.md)
 - [启动 Azure AD 角色的访问评审](../privileged-identity-management/pim-how-to-start-security-review.md)
 
 ### <a name="terms-of-use"></a>使用条款
 
-- [使用条款可以用来做什么？](../conditional-access/terms-of-use.md)
+- [“使用条款”可以用来做什么？](../conditional-access/terms-of-use.md)
 
 ### <a name="privileged-identity-management"></a>Privileged Identity Management
 

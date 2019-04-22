@@ -9,10 +9,10 @@ ms.service: azure-policy
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 84ed1632a61ae097bd2e187de4766dfc50f2503f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263757"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>获取 Azure 资源的符合性数据
@@ -27,7 +27,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 在探讨符合性报告方法之前，让我们了解符合性信息的更新时间和频率，以及触发评估周期的事件。
 
 > [!WARNING]
-> 如果符合性状态被报告成**未注册**，确认**Microsoft.PolicyInsights**注册资源提供程序和用户具有适当的基于角色的访问控制 （RBAC) 权限，如中所述[Azure 策略中的 RBAC](../overview.md#rbac-permissions-in-azure-policy)。
+> 如果符合性状态被报告为“未注册”，请验证是否已注册 **Microsoft.PolicyInsights** 资源提供程序，并验证用户是否具有适当的基于角色的访问控制 (RBAC) 权限，如 [Azure Policy 中的 RBAC](../overview.md#rbac-permissions-in-azure-policy) 所述。
 
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 
@@ -55,7 +55,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 
 在每个 REST API URI 中，包含替换为自己的值所使用的变量：
 
-- `{YourRG}` -替换为资源组的名称
+- `{YourRG}` - 替换为资源组的名称
 - `{subscriptionId}` - 替换为订阅 ID
 
 扫描支持评估订阅或资源组中的资源。 使用以下 URI 结构，通过 REST API POST 命令开始按范围扫描：
@@ -78,7 +78,7 @@ Azure Policy 的最大优势之一在于它针对订阅或订阅[管理组](../.
 https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.PolicyInsights/asyncOperationResults/{ResourceContainerGUID}?api-version=2018-07-01-preview
 ```
 
-`{ResourceContainerGUID}` 为请求的范围以静态方式生成。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的 `{ResourceContainerGUID}` 位置 URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
+以静态方式为请求的范围生成了 `{ResourceContainerGUID}`。 如果某个范围已在运行按需扫描，则不会启动新扫描。 而是为新请求的状态提供相同的 `{ResourceContainerGUID}` 位置 URI。 在评估过程中，位置 URI 的 REST API GET 命令返回“202 Accepted”状态。 评估扫描完成后，返回“200 OK”状态。 已完成的扫描的正文为 JSON 响应，其状态为：
 
 ```json
 {
@@ -119,18 +119,18 @@ https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.
 符合百分比是合规资源与总资源之比。
 根据定义，总资源是指合规资源、不合规资源和冲突资源的总和。 整体符合性是不同合规资源的总和除以所有唯一资源。 在下图中，有 20 种不同的资源适用，只有一种资源“不合规”。 因此，资源的整体符合性为 95%（19/20）。
 
-![从合规性页面的策略符合性的示例](../media/getting-compliance-data/simple-compliance.png)
+![符合性页面上的策略符合性示例](../media/getting-compliance-data/simple-compliance.png)
 
 ## <a name="portal"></a>门户
 
 Azure 门户展示了一个图形体验用于可视化和了解环境中的符合性状态。 在“策略”页上，“概述”选项提供了策略和计划符合性的可用范围的详细信息。 除了符合性状态和每个分配的计数以外，该页还包含一个图表，显示过去七天的符合性。
 “符合性”页包含上述大量相同信息（图表除外），但提供附加的筛选和排序选项。
 
-![策略符合性页的示例](../media/getting-compliance-data/compliance-page.png)
+![策略符合性页面的示例](../media/getting-compliance-data/compliance-page.png)
 
 由于策略或计划可分配到不同的范围，因此表中包含每个分配的范围，以及分配的定义类型。 还提供每个分配项中不合规资源和不合规策略的数量。 单击表中的某个策略或计划可以更深入地了解该特定分配的符合性。
 
-![策略符合性详细信息页示例](../media/getting-compliance-data/compliance-details.png)
+![策略符合性详细信息页面的示例](../media/getting-compliance-data/compliance-details.png)
 
 “资源符合性”选项卡上的资源列表显示当前分配的现有资源的评估状态。 此选项卡默认为“不符合”，但是可以进行筛选。
 创建资源的请求所触发的事件（追加、审核、拒绝、部署）显示在“事件”选项卡下。

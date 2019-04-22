@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263870"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>教程：创建与 Azure 的 QnA 机器人智能机器人应用程序服务 v4
@@ -41,7 +41,7 @@ ms.locfileid: "59263870"
 
 1. 在 QnA Maker 门户中，转到**发布**页，然后发布您的知识库。 选择**创建机器人**。 
 
-    ![在 QnA Maker 门户中，转到发布页，并发布您的知识库。 选择创建智能机器人应用程序。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    ![在 QnA Maker 门户中转到“发布”页，然后发布知识库。 选择“创建机器人”。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
 
     在 Azure 门户将打开与智能机器人应用程序创建配置。
 
@@ -56,11 +56,11 @@ ms.locfileid: "59263870"
     |定价层|`F0`|Azure 机器人服务免费层。|
     |应用程序名称|`my-tutorial-kb-bot-app`|这是一个 web 应用以支持仅智能机器人。 这不应是相同的应用名称，因为已在使用 QnA Maker 服务。 不支持与任何其他资源共享 QnA Maker 提供的 web 应用。|
     |SDK 语言|C#|这是使用 bot framework SDK 的基础编程语言。 您可以选择C#或 Node.js。|
-    |QnA 身份验证密钥|**不更改**|此值为您填充。|
-    |应用服务计划/位置|**不更改**|本教程中，位置并不重要。|
-    |Azure 存储|**不更改**|会话数据存储在 Azure 存储表。|
-    |Application Insights|**不更改**|日志记录发送到 Application Insights。|
-    |Microsoft 应用 ID|**不更改**|Active directory 用户和密码是必需的。|
+    |QnA 身份验证密钥|**不会更改**|此值为您填充。|
+    |应用服务计划/位置|**不会更改**|本教程中，位置并不重要。|
+    |Azure 存储|**不会更改**|会话数据存储在 Azure 存储表。|
+    |Application Insights|**不会更改**|日志记录发送到 Application Insights。|
+    |Microsoft 应用 ID|**不会更改**|Active directory 用户和密码是必需的。|
 
     ![使用这些设置创建知识库智能机器人应用程序。](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base.png)
 
@@ -107,9 +107,9 @@ ms.locfileid: "59263870"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [概念： 知识库](../concepts/knowledge-base.md)
+> [概念：知识库](../concepts/knowledge-base.md)
 
 ## <a name="see-also"></a>另请参阅
 
 - [管理知识库](https://qnamaker.ai)
-- [启用智能机器人中不同的通道](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)
+- [在不同频道启用机器人](https://docs.microsoft.com/azure/bot-service/bot-service-manage-channels)

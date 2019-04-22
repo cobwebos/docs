@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048208"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
@@ -145,7 +145,7 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 
 有关数据工厂概念的详细信息，请参阅以下文章：
 
-- [数据集和链接的服务](concepts-datasets-linked-services.md)
+- [数据集和链接服务](concepts-datasets-linked-services.md)
 - [管道和活动](concepts-pipelines-activities.md)
 - [集成运行时](concepts-integration-runtime.md)
 

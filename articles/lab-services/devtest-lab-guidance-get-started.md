@@ -14,10 +14,10 @@ ms.date: 04/01/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: 8736ba4c24ac4c8f8d84345028d1cadfdef38697
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272371"
 ---
 # <a name="popular-scenarios-for-using-azure-devtest-labs"></a>使用 Azure 开发测试实验室的热门方案
@@ -85,5 +85,5 @@ Azure 开发测试实验室的实验室中充当的很好的容器，如研讨�
 请阅读以下文章：
 
 - [开发测试实验室概念](devtest-lab-concepts.md)
-- [DevTest Labs 常见问题](devtest-lab-faq.md)
+- [开发测试实验室常见问题解答](devtest-lab-faq.md)
 

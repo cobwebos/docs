@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 49ebf4ab95816a3da2f74a464b12b46de6228456
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280547"
 ---
 # <a name="add-custom-service-fabric-health-reports"></a>添加自定义 Service Fabric 运行状况报告
@@ -304,7 +304,7 @@ HealthEvents          :
 ## <a name="next-steps"></a>后续步骤
 根据运行状况数据，服务编写人员和群集/应用程序管理员可以想一想如何使用这些信息。 例如，他们可以根据运行状况设置警报，以便在出现导致服务中断的严重问题之前就将其捕获。 管理员还可以设置修复系统以便自动修复问题。
 
-[介绍 Service Fabric 运行状况监视](service-fabric-health-introduction.md)
+[Service Fabric 运行状况监视简介](service-fabric-health-introduction.md)
 
 [查看 Service Fabric 运行状况报告](service-fabric-view-entities-aggregated-health.md)
 

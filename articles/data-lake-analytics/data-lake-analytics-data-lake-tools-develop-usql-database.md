@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 47235fa5676acd8de8a7cc0d969b813837faf0af
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59490387"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>使用 U-SQL 数据库项目开发 Azure Data Lake 的 U-SQL 数据库
@@ -92,7 +92,7 @@ U-SQL 数据库项目的生成输出是一个 U-SQL 数据库部署包，名称�
   
 ### <a name="deploy-u-sql-database-by-using-the-sdk"></a>使用 SDK 部署 U-SQL 数据库
 
-`PackageDeploymentTool.exe` 提供的编程和命令行接口，可帮助部署 U-SQL 数据库。 SDK 包含在 [U-SQL SDK Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)中，位于 `build/runtime/PackageDeploymentTool.exe`。
+`PackageDeploymentTool.exe` 提供帮助部署 U-SQL 数据库的编程和命令行接口。 SDK 包含在 [U-SQL SDK Nuget 包](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)中，位于 `build/runtime/PackageDeploymentTool.exe`。
 
 [了解有关 SDK 和如何为 U-SQL 数据库部署设置 CI/CD 管道的详细信息](data-lake-analytics-cicd-overview.md)。
 
@@ -117,5 +117,5 @@ U-SQL 项目可以引用 U-SQL 数据库项目。 该引用将影响两个工作
 ## <a name="next-steps"></a>后续步骤
 
 - [如何为 Azure Data Lake Analytics 设置 CI/CD 管道](data-lake-analytics-cicd-overview.md)
-- [如何测试你的 Azure Data Lake Analytics 代码](data-lake-analytics-cicd-test.md)
+- [如何测试 Azure Data Lake Analytics 代码](data-lake-analytics-cicd-test.md)
 - [在本地计算机上运行 U-SQL 脚本](data-lake-analytics-data-lake-tools-local-run.md)

@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: 9cb3c028c14e6c47d47eafcf6279a918c0917442
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59272200"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-managed-instance-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库托管实例复制数据
@@ -83,7 +83,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 }
 ```
 
-**示例 2：使用 SQL 身份验证和 Azure 密钥保管库中的密码**
+**示例 2：将 SQL 身份验证与 Azure 密钥保管库中的密码结合使用**
 
 ```json
 {
@@ -188,7 +188,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 - 如果为 **SqlSource** 指定 sqlReaderQuery，则复制活动针对托管实例源运行此查询以获取数据。 也可通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程，前提是存储过程使用参数。
 - 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName** 属性，则数据集 JSON 的“structure”节中定义的列用于构建查询。 查询 `select column1, column2 from mytable` 针对托管实例运行。 如果数据集定义没有“structure”，则会从表中选择所有列。
 
-**示例：使用 SQL 查询**
+示例：**使用 SQL 查询**
 
 ```json
 "activities":[
@@ -220,7 +220,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 ]
 ```
 
-**示例：使用存储的过程**
+示例：**使用存储过程**
 
 ```json
 "activities":[
@@ -256,7 +256,7 @@ Azure SQL 数据库托管实例链接的服务支持以下属性：
 ]
 ```
 
-**存储的过程定义**
+**存储过程定义**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -324,7 +324,7 @@ GO
 ]
 ```
 
-**示例 2：在 upsert 的复制过程中调用存储的过程**
+**示例 2：复制过程中为 upsert 调用存储过程**
 
 请参阅[调用 SQL 接收器的存储过程](#invoke-a-stored-procedure-from-a-sql-sink)，了解更多详细信息。
 

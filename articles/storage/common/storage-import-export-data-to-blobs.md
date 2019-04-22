@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: e60a58a8d2f1c69728a2d049fe1414ca1997893e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283267"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>使用 Azure 导入/导出服务将数据导入到 Azure Blob 存储
@@ -55,7 +55,7 @@ ms.locfileid: "59283267"
 5.  若要获取驱动器的 BitLocker 密钥，请运行以下命令：
     
     `manage-bde -protectors -get <DriveLetter>:`
-6.  若要准备磁盘，请运行以下命令。 **具体取决于数据大小，这可能需要几个小时，为天。** 
+6.  若要准备磁盘，请运行以下命令。 **这可能要花费几小时到几天时间，具体取决于数据大小。** 
 
     ```
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session#<session number> /sk:<Storage account key> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /skipwrite 
@@ -70,7 +70,7 @@ ms.locfileid: "59283267"
     |/id:     |会话 ID。 请为该命令的每个实例使用唯一的会话编号。      |
     |/sk:     |Azure 存储帐户密钥。         |
     |/t:     |要寄送的磁盘的驱动器号。 例如，驱动器 `D`。         |
-    |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自的输出 `manage-bde -protectors -get D:`      |
+    |/bk:     |驱动器的 BitLocker 密钥。 其数字密码来自 `manage-bde -protectors -get D:` 的输出      |
     |/srcdir:     |要寄送的磁盘的驱动器号后跟 `:\`。 例如，`D:\`。         |
     |/dstdir:     |Azure 存储中的目标容器的名称。         |
     |/skipwrite:     |此选项指定没有需要复制的新数据并且要准备磁盘上的现有数据。          |

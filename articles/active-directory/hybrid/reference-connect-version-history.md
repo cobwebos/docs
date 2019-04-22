@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58803147"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
@@ -39,54 +39,54 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 下载 | [下载 Azure AD Connect](https://go.microsoft.com/fwlink/?LinkId=615771)。
 
 >[!NOTE]
->发布新版本的 Azure AD Connect 是一个需要多个质量控制步骤，以确保该服务的操作功能的过程，尽管我们完成此过程将更新的新版本，以及发布状态的版本号以反映最新状态。
-我们完成此过程，而发布的版本编号将显示中数字的次版本的位置，如下所示"1.3.X.0"-"x"这表示在本文档中的发行说明适用于所有版本"1.3"。 从。 只要我们已完成发布过程的发行版本号会更新到最近发布的版本和发布状态将更新为"下载和自动升级已发布"。
+>发布新版 Azure AD Connect 的过程要求采取多种质量控制措施来确保服务的功能正常运行，遵循此过程时，我们会更新新发行版的版本号以及发布状态，以反映最近的状态。
+遵循此过程时，发行版的版本号将以“X”形式显示在次要版本号位置，例如“1.3.X.0”- 这表示此文档中的发行说明适用于以“1.3”开头的所有版本。 完成发布过程后，我们会立即将发行版本号更新为最近发布的版本，并将发布状态更新为“已发布供下载和自动升级”。
 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
 
 ## <a name="13x0"></a>1.3.X.0 
 
 ### <a name="release-status"></a>版本状态 
 
-3/25/2019:待定
+3/25/2019：待定
  
 ### <a name="new-features-and-improvements"></a>新增功能和改进 
 
-- 添加对域刷新的支持 
-- Exchange 邮件公用文件夹功能公开上市 
-- 提高处理服务故障的向导错误 
-- 添加了的连接器属性页面上的旧 UI 的警告链接。 
-- 统一组写回功能现已正式上市 
-- 改进了的 SSPR 时收到错误消息 DC 缺少 LDAP 控件 
-- 安装添加的诊断信息过程中的 DCOM 注册表错误  
-- 改进了跟踪的 PHS RPC 错误 
-- 允许从子域的 EA 凭据 
-- 允许在安装 （默认名称 ADSync） 过程中输入数据库名称
-- 升级到 ADAL 3.19.8 为 Ping 选取的 WS 信任修补程序并添加对新的 Azure 实例的支持 
-- 修改组同步规则来传送 samAccountName、 DomainNetbios 和 DomainFQDN 到云-所需的声明 
+- 添加了对域刷新的支持 
+- “Exchange 邮件公用文件夹”功能已推出正式版 
+- 改进了发生服务故障时在向导中处理错误的方法 
+- 在连接器属性页上添加了旧 UI 的警告链接。 
+- “统一组写回”功能现已推出正式版 
+- 改进了当 DC 缺少 LDAP 控制措施时显示的 SSPR 错误消息 
+- 添加了在安装期间出现的 DCOM 注册表错误的诊断方法  
+- 改进了 PHS RPC 错误跟踪 
+- 允许从子域添加 EA 凭据 
+- 允许在安装期间输入数据库名称（默认名称为 ADSync）
+- 升级到了 ADAL 3.19.8 以便对 Ping 执行 WS-Trust 修复，并添加了对新 Azure 实例的支持 
+- 修改了组同步规则，以便将声明所需的 samAccountName、DomainNetbios 和 DomainFQDN 传送到云中 
 - 修改默认同步规则处理 – 阅读更多[此处](how-to-connect-fix-default-rules.md)。
-- 添加新的代理作为 windows 服务运行。 此代理，名为"管理代理"，让你的 Azure AD Connect 服务器，以帮助进行故障排除时打开一个支持案例的 Microsoft 工程师的更深入地远程诊断。 阅读有关管理代理的详细信息[此处](whatis-aadc-admin-agent.md)。 
-- 更新最终用户许可协议 (EULA) 
-- 添加了自动升级为使用 AD FS 作为登录名类型的部署支持。  这也将删除作为升级过程的一部分更新 AD FS 的 Azure AD 信赖方信任的要求。 
-- 添加一个 Azure AD 信任管理任务，提供两个选项： 分析/更新信任和重置信任。 
-- 更改 AD FS 的 Azure AD 信赖方信任行为，以便它始终使用-SupportMultipleDomain 开关 (包括信任和 Azure AD 域更新)。 
-- 更改安装新的 AD FS 场行为，以使其通过删除使用预安装的证书的选项需要.pfx 证书。
-- 更新安装新的 AD FS 场工作流，使它只允许 1年个 AD FS 和 1 个 WAP 服务器部署。  初始安装后，将完成所有其他服务器。 
+- 添加了一个作为 Windows 服务运行的新代理。 此代理名为“管理代理”，可用于对 Azure AD Connect 服务器进行更深入的远程诊断，以帮助 Microsoft 工程师在收到支持案例时进行故障排除。 在[此处](whatis-aadc-admin-agent.md)详细了解管理代理。 
+- 更新了最终用户许可协议 (EULA) 
+- 为使用 AD FS 作为登录类型的部署添加了自动升级支持。  借助此新增功能，在升级过程中不再需要更新 AD FS Azure AD 信赖方信任。 
+- 添加了一个 Azure AD 信任管理任务，该任务提供两个选项：分析/更新信任和重置信任。 
+- 更改了 AD FS Azure AD 信赖方信任行为，使其始终使用 -SupportMultipleDomain 开关（包括信任和 Azure AD 域更新）。 
+- 更改了“安装新 AD FS 场”的行为：删除了使用预装证书的选项，使该操作要求提供 .pfx 证书。
+- 更新了“安装新 AD FS 场”工作流，使其只允许部署 1 个 AD FS 和 1 个 WAP 服务器。  完成初始安装后，将配置所有附加服务器。 
 
 ### <a name="fixed-issues"></a>修复的问题 
 
 
-- 修复 SQL 重新连接为 ADSync 服务的逻辑 
-- 修复，用于允许使用空的 SQL AOA DB 的全新安装 
-- 修复 PS 权限脚本，以优化 GWB 权限 
-- 修复使用 LocalDB 的 VSS 错误  
-- 对象类型不在范围内时修复误导性错误消息 
-- 更正了其中的服务器上安装的 Azure AD PowerShell 可能会导致冲突的程序集使用 Azure AD Connect 的问题。 
-- 修复了 PHS bug 连接器凭据更新旧 UI 中时的暂存服务器上。 
-- 修复了一些内存泄漏 
-- 杂项自动升级修补程序 
-- 导出和导入处理未确认的杂项修补程序 
-- 修复了 bug 处理反斜杠在域和 OU 筛选 
-- 修复了其中 ADSync 服务需要多个 2 分钟来停止并在升级时导致问题的问题。 
+- 修复了 SQL 重新连接 ADSync 服务逻辑的问题 
+- 修复后允许使用空的 SQL AOA DB 执行全新安装 
+- 修复了 PS 权限脚本，以细化 GWB 权限 
+- 修复了 LocalDB 出现的 VSS 错误  
+- 修复了当对象类型不在范围内时出现的误导性错误消息 
+- 更正了以下问题：在服务器上安装 Azure AD PowerShell 可能会导致某个程序集与 Azure AD Connect 相冲突。 
+- 修复了在旧 UI 中更新连接器凭据时，暂存服务器上出现的 PHS bug。 
+- 修复了一些内存泄漏问题 
+- 其他自动升级修复 
+- 对导出和未确认的导入处理进行了其他修复 
+- 修复了处理域和 OU 筛选中的反斜杠时存在的 bug 
+- 修复了以下问题：ADSync 服务需要 2 分钟以上才能停止，导致升级时出现问题。 
 
 
 

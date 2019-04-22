@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/20/2018
 ms.author: jingwang
 ms.openlocfilehash: 99798b35419ec9574c99aaba42803fbeeb1555f1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267117"
 ---
 # <a name="schema-mapping-in-copy-activity"></a>复制活动中的架构映射
@@ -150,7 +150,7 @@ ms.locfileid: "59267117"
 | schemaMapping | 键 / 值对的集合，它表示映射关系**源一方要接收端从**。<br/>- **密钥：** 表示源。 有关**表格源**，指定列名称，如数据集结构中定义; 有关**层次结构的源**，为列指定 JSON 路径表达式以提取和映射的每个字段。<br/>- **值：** 表示接收器。 有关**表格接收器**，指定列名称，如数据集结构中定义; 有关**分层接收器**，为列指定 JSON 路径表达式以提取和映射的每个字段。 <br/> JSON 路径以根 $; 对于分层数据，为根对象下的字段的启动有关选择的数组中的字段，`collectionReference`从数组元素的属性，JSON 路径开始。  | 是 |
 | collectionReference | 若要进行迭代操作，以同一模式从**数组字段中**的对象提取数据并按行和对象进行转换，请指定要进行交叉应用的该数组的 JSON 路径。 仅当分层数据为源时，才支持此属性。 | 否 |
 
-**示例： 将从 MongoDB 复制到 SQL:**
+**示例：从 MongoDB 复制到 SQL：**
 
 例如，如果 MongoDB 文档的内容如下： 
 

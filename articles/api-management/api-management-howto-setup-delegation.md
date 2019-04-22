@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 796bea3c64ef7fc03367707461d13e0ea2514b8b
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051744"
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>如何委派用户注册和产品订阅
@@ -29,7 +29,7 @@ ms.locfileid: "59051744"
 
 ## <a name="delegate-signin-up"> </a>委派开发人员登录和注册
 
-若要委派开发人员登录和注册到你现有的网站，您将需要在站点上创建一个特殊委派终结点。 需要对其充当从 API 管理开发人员门户中发起的任何此类请求的入口点。
+若要委托开发人员登录并注册现有网站，需要在该站点上创建一个特殊的委托终结点。 该终结点需要充当从 API 管理开发人员门户发起的任何此类请求的入口点。
 
 最终工作流将如下所示：
 
@@ -96,13 +96,13 @@ ms.locfileid: "59051744"
 ## <a name="delegate-product-subscription"> </a>委派产品订阅
 委派产品订阅的工作原理类似委派用户登录/注册。 最终工作流将如下所示：
 
-1. 开发人员 API 管理开发人员门户中选择一个产品，并单击订阅按钮。
-2. 浏览器重定向到委派终结点。
-3. 委派终结点执行所需的产品订阅步骤。 由你来设计步骤。 它们可能包括重定向到另一个页请求计费信息、 询问其他问题，或只需存储信息而不需任何用户执行任何操作。
+1. 开发人员在 API 管理开发人员门户中选择一个产品，并单击“订阅”按钮。
+2. 浏览器将重定向到委托终结点。
+3. 委托终结点执行所需的产品订阅步骤。 具体的步骤由你设计。 步骤可以包括重定向到另一个用于请求计费信息的页面、提出更多提问，或者只是存储信息而不要求执行任何用户操作
 
 若要启用此功能，请在“委派”页上单击“委派产品订阅”。
 
-接下来，请确保委派终结点以下操作：
+接下来，确保委托终结点执行以下操作：
 
 1. 接收以下形式的请求：
    
@@ -116,32 +116,32 @@ ms.locfileid: "59051744"
      * “Unsubscribe”：请求为用户取消某个产品的订阅
      * “Renew”：请求续订某个订阅（例如即将到期的订阅）
    * **productId**：用户请求订阅的产品的 ID
-   * **subscriptionId**： 上*Unsubscribe*并*续订*-产品订阅的 ID
-   * **userId**： 发出请求的用户的 ID
+   * **subscriptionId**（*Unsubscribe* 和 *Renew*）中 - 产品订阅的 ID
+   * **userId**：提出请求时所针对的用户的 ID
    * **salt**：用于计算安全哈希的特殊 salt 字符串
    * **sig**：计算的安全哈希，用于与用户自行计算的哈希进行比较
 
 2. 验证请求是否来自 Azure API 管理（可选，但强烈推荐执行以确保安全）
    
-   * 计算基于字符串的 HMAC-SHA512 **productId**， **userId**，并**salt**查询参数：
+   * 根据 **productId**、**userId** 和 **salt** 查询参数计算字符串的 HMAC-SHA512：
      
      > HMAC(**salt** + '\n' + **productId** + '\n' + **userId**)
      > 
      > 
    * 将上面计算的哈希与 **sig** 查询参数的值进行比较。 如果两个哈希匹配，则转到下一步，否则拒绝该请求。
-3. 处理产品订阅请求中的操作的类型**操作**-例如，计费信息、 提问更多问题，等等。
+3. 根据在 **operation** 中请求的操作类型（例如请求计费信息、提问更多问题，等等）处理产品订阅。
 4. 在这一端成功为用户订阅产品以后，即可[调用产品订阅 REST API] 为用户订阅 API 管理产品。
 
 ## <a name="delegate-example-code"> </a> 示例代码
 
-这些代码示例显示如何为：
+这些代码示例演示如何：
 
-* 采取*委派验证密钥*，发布者门户的委派屏幕中将其设置
-* 创建 HMAC，后者则用于验证签名，证明传递的 returnUrl 的有效性。
+* 提取发布者门户的“委托”屏幕中设置的委托验证密钥
+* 创建 HMAC，随后它将用于验证签名，以证实所传递的 returnUrl 的有效性。
 
 同样的代码也适用于 productId 和 userId，只需进行轻微修改。
 
-**C#用于生成 returnUrl 哈希的代码**
+**用于生成 returnUrl 哈希的 C# 代码**
 
 ```csharp
 using System.Security.Cryptography;
@@ -188,6 +188,6 @@ var signature = digest.toString('base64');
 [创建用户]: https://docs.microsoft.com/rest/api/apimanagement/user/createorupdate
 [调用产品订阅 REST API]: https://docs.microsoft.com/rest/api/apimanagement/productsubscriptions
 [Next steps]: #next-steps
-[下文提供了示例代码]: #delegate-example-code
+[示例代码在下面提供]: #delegate-example-code
 
 [api-management-delegation-signin-up]: ./media/api-management-howto-setup-delegation/api-management-delegation-signin-up.png 

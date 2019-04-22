@@ -10,10 +10,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: conceptual
 ms.date: 06/30/2017
 ms.openlocfilehash: d1b230b40d1f880787334ebfd39e704e3a650baa
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59489650"
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL 可编程性指南
@@ -85,7 +85,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>使用 C# 表达式显示今天的日期
 
-若要拉取今天的日期，我们可以使用以下C#表达式： `DateTime.Now.ToString("M/d/yyyy")`
+可使用下面的 C# 表达式拉取今天的日期：`DateTime.Now.ToString("M/d/yyyy")`
 
 以下示例演示如何在脚本中使用此表达式：
 
@@ -534,7 +534,7 @@ public class MyTypeFormatter : IFormatter<MyType>
 * **序列化**：使用所提供流的给定根对某对象或对象的图形进行序列化。
 
 `MyType` 实例：类型的实例。  
-`IColumnWriter` 编写器 /`IColumnReader`读取器：基础列流。  
+`IColumnWriter` 写入器/`IColumnReader` 读取器：基础列流。  
 `ISerializationContext` 上下文：用于定义一组标志的枚举，该枚举在序列化期间指定流的源上下文或目标上下文。
 
 * **中间**：指定源上下文或目标上下文不是持久存储。
@@ -1267,9 +1267,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output` 为每个输入行调用。 返回 `IUnstructuredWriter output` 行集。
+* 为每个输入行调用 `Output`。 返回 `IUnstructuredWriter output` 行集。
 * 构造函数类用于将参数传递到用户定义的输出器。
-* `Close` 用于根据需要重写以发布昂贵状态或确定何时写入的最后一行。
+* `Close` 用于选择性地进行重写以发布开销状态或确定最后一行的写入时间。
 
 **SqlUserDefinedOutputter** 属性指示该类型应注册为用户定义的输出器。 此类不能继承。
 

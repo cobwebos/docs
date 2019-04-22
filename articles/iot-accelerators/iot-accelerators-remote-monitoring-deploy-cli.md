@@ -9,17 +9,17 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793749"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
 本操作指南介绍如何部署远程监视解决方案加速器。 使用 CLI 部署解决方案。 您还可以部署该解决方案使用基于 web 的 UI 在 azureiotsolutions.com，若要了解有关此选项，请参阅[部署远程监视解决方案加速器](quickstart-remote-monitoring-deploy.md)快速入门。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 若要部署远程监视解决方案加速器，需要一个有效的 Azure 订阅。
 
@@ -51,8 +51,8 @@ pcs login
 
 | 选项 | 值 | 描述 |
 | ------ | ------ | ----------- |
-| SKU    | `basic`, `standard`, `local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上。 标准部署适用于生产，它将微服务部署到多个虚拟机上。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并使用 Azure 云服务（如存储和 Cosmos DB）。 |
-| 运行时 | `dotnet`, `java` | 选择微服务的语言实现。 |
+| SKU    | `basic`、`standard`、`local` | 基本部署适用于测试和演示，它将所有微服务部署到一个虚拟机上。 标准部署适用于生产，它将微服务部署到多个虚拟机上。 本地部署通过配置 Docker 容器在本地计算机中运行微服务，并使用 Azure 云服务（如存储和 Cosmos DB）。 |
+| 运行时 | `dotnet`、`java` | 选择微服务的语言实现。 |
 
 若要了解如何使用本地部署选项，请参阅[在本地运行远程监视解决方案](iot-accelerators-remote-monitoring-deploy-local.md)。
 
@@ -60,7 +60,7 @@ pcs login
 
 本部分汇总基本与标准部署之间的主要差别。
 
-### <a name="basic"></a>Basic
+### <a name="basic"></a>基本
 
 您可以执行从基本部署[azureiotsolutions.com](https://www.azureiotsolutions.com/Accelerators)或使用 CLI。
 
@@ -68,7 +68,7 @@ pcs login
 
 基本部署在 Azure 订阅中创建以下服务：
 
-| 计数 | 资源                       | 类型         | 用途 |
+| Count | 资源                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
 | 1     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
@@ -89,7 +89,7 @@ pcs login
 
 标准部署在 Azure 订阅中创建以下服务：
 
-| 计数 | 资源                                     | SKU/大小      | 用途 |
+| Count | 资源                                     | SKU/大小      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
 | 1     | [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 - 标准层 | 设备管理、命令和控制 |

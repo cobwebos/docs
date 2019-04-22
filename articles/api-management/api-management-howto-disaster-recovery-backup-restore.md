@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: apimpm
 ms.openlocfilehash: 7b5df31c3e1d07cc9ac93f73362e853fab728fa9
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793792"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>如何使用 Azure API 管理中的服务备份和还原实现灾难恢复
@@ -60,7 +60,7 @@ ms.locfileid: "58793792"
     此时将在右侧显示“创建”窗口。 可以在其中输入 AAD 应用相关信息。
 4. 输入应用程序的名称。
 5. 对于应用程序类型，选择“本机”。
-6. 输入占位符 URL，例如，为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框以保存应用程序。
+6. 输入占位符 URL，例如，为“重定向 URI”输入 `http://resources`，因为它是必填字段，但以后不使用该值。 单击此复选框保存应用程序。
 7. 单击**创建**。
 
 ### <a name="add-an-application"></a>添加应用程序
@@ -132,7 +132,7 @@ REST API 为 [Api 管理服务 - 备份](/rest/api/apimanagement/apimanagementse
 request.Headers.Add(HttpRequestHeader.Authorization, "Bearer " + token);
 ```
 
-### <a name="step1"> </a>备份 API 管理服务
+### <a name="step1"></a>备份 API 管理服务
 
 若要备份 API 管理服务问题，请发送以下 HTTP 请求：
 
@@ -171,7 +171,7 @@ POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/
 * 执行服务备份的频率将影响恢复点目标。 为了最大程度减少它，建议实施定期备份，以及在对 API 管理服务进行更改后执行按需备份。
 * 备份操作正在进行时对服务配置（例如 API、策略、开发人员门户外观）所做的**更改****可能不包含在备份中，会丢失**。
 
-### <a name="step2"> </a>还原 API 管理服务
+### <a name="step2"></a>还原 API 管理服务
 
 若要从之前创建的备份还原 API 管理服务，请发出以下 HTTP 请求：
 

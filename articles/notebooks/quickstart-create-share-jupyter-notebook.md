@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: b1618e2ac997445606ce98fc72a1ec35ca1280be
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273662"
 ---
 # <a name="quickstart-create-and-share-a-notebook"></a>快速入门：创建和共享笔记本
@@ -43,7 +43,7 @@ ms.locfileid: "59273662"
 
 1. 几分钟后，Azure Notebooks 导航到新项目。 通过选择“+ 新建”下拉列表（可能仅显示为 +）并选择“笔记本”，向该项目添加笔记本：
 
-    [![](media/quickstarts/empty-project-new-notebook-button.png "一个新的空项目并添加 notebook 命令")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
+    [![](media/quickstarts/empty-project-new-notebook-button.png "新的空项目和添加笔记本命令")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
 1. 在出现的“创建新笔记本”弹出窗口中，输入笔记本的文件名，例如 HelloWorldInPython.ipynb（.ipynb 表示 IronPython (Jupyter) Notebook），并为语言（也称为内核）选择“Python 3.6”：
 
@@ -106,4 +106,4 @@ ms.locfileid: "59273662"
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程： 创建运行 Jupyter notebook 来执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)

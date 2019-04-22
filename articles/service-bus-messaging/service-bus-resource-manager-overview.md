@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
 ms.openlocfilehash: 196b00f1268eada20d0e35473dc6eb43c9e48df6
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045263"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>使用 Azure 资源管理器模板创建服务总线资源
@@ -37,10 +37,10 @@ Azure 资源管理器模板可帮助你定义要为解决方案部署的资源�
 这些服务总线 Azure 资源管理器模板可供下载和部署。 单击以下链接可获得有关每个链接的详细信息，其中包含指向 GitHub 上的模板的链接：
 
 * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
-* [创建服务总线命名空间和队列](service-bus-resource-manager-namespace-queue.md)
+* [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)
 * [创建包含主题和订阅的服务总线命名空间](service-bus-resource-manager-namespace-topic.md)
-* [与队列和授权规则创建的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
-* [创建包含主题、 订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
+* [创建包含队列和授权规则的服务总线命名空间](service-bus-resource-manager-namespace-auth-rule.md)
+* [创建包含主题、订阅和规则的服务总线命名空间](service-bus-resource-manager-namespace-topic-with-rule.md)
 
 ## <a name="deploy-with-powershell"></a>使用 PowerShell 进行部署
 
@@ -258,7 +258,7 @@ Parameters        :
 * [Azure 资源管理器概述][Azure Resource Manager overview]
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源][Deploy resources with Azure Resource Manager templates]
 * [创作 Azure 资源管理器模板](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Microsoft.ServiceBus 的资源类型](/azure/templates/microsoft.servicebus/allversions)
+* [Microsoft.ServiceBus 资源类型](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/resource-group-overview.md
 [Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md
