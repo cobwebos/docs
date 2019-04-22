@@ -113,7 +113,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 属性 | 描述 |
 |:--- |:--- |
-| Runbook |包含要启动的 Runbook 名称的单个 name 实体。 |
+| runbook |包含要启动的 Runbook 名称的单个 name 实体。 |
 | parameters |Runbook 所需的每个参数值的实体。 |
 
 作业包括 Runbook 名称和发送到 Runbook 的任何参数值。  作业应[依赖于]( solutions-solution-file.md#resources)自必须在作业之前创建 Runbook 以来启动的 Runbook。  如果有多个应启动的 runbook，则可以通过让一个作业依赖于任何其他应先运行的作业来定义其顺序。
@@ -203,7 +203,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 | startTime |指定计划的开始时间作为 DateTime 对象。 如果它可以转换为有效的 DateTime，则可以提供一个字符串。 |
 | isEnabled |指定是否启用计划。 |
 | interval |计划的间隔类型。<br><br>day<br>hour |
-| 频率 |计划应在数天或数小时内触发的频率。 |
+| frequency |计划应在数天或数小时内触发的频率。 |
 
 计划的开始时间值必须晚于当前时间。  不能通过变量来提供此值，因为无法知道何时要安装。
 
@@ -242,8 +242,8 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 属性 | 描述 |
 |:--- |:--- |
-| 计划名称 |包含计划名称的单个 **name** 实体。 |
-| runbook 名称  |包含 Runbook 名称的单个 **name** 实体。  |
+| schedule name |包含计划名称的单个 **name** 实体。 |
+| runbook name  |包含 Runbook 名称的单个 **name** 实体。  |
 
 
 
@@ -272,7 +272,7 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 | description | 变量的可选说明。 |
 | isEncrypted | 指定是否应加密变量。 |
 | type | 当前此属性无效。  初始值决定该变量的数据类型。 |
-| 值 | 变量的值。 |
+| value | 变量的值。 |
 
 > [!NOTE]
 > 当前，“类型”属性对正在创建的变量无效。  变量的数据类型由值决定。  
@@ -281,9 +281,9 @@ Azure 自动化中的所有资源都包含在[自动化帐户](../../automation/
 
 | 数据类型 | 描述 | 示例 | 解析为 |
 |:--|:--|:--|:--|
-| 字符串   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
+| string   | 将值括在双引号中。  | “\"Hello world\"” | “Hello world” |
 | numeric  | 用单引号将数字值括起来。| “64” | 64 |
-| 布尔值  | 引号中的“true”或“false”。  请注意，此值必须为小写。 | "true" | true |
+| boolean  | 引号中的“true”或“false”。  请注意，此值必须为小写。 | "true" | true |
 | datetime | 序列化日期值。<br>可以在 PowerShell 中使用 ConvertTo-Json cmdlet 为特定日期生成此值。<br>示例：get-date "5/24/2017 13:14:57" \| ConvertTo-Json | "\\/Date(1495656897378)\\/" | 2017-05-24 13:14:57 |
 
 ## <a name="modules"></a>模块
