@@ -17,20 +17,20 @@ ms.date: 03/19/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd3d5a19e861bd738f3c618610aadb77da30b384
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: b563b0fb8dc12cbdcdd256a97134f9ff02988915
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520337"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698956"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>如何：配置多重身份验证注册策略
 
-Azure AD Identity Protection 可以通过配置一个策略来帮助管理多重身份验证 (MFA) 注册的首次实施。 本文介绍了可以使用该策略来做什么以及如何配置它。
+Azure AD Identity Protection 可帮助你管理通过配置一个策略需要 MFA 注册多重身份验证 (MFA) 注册的推出。 本文介绍了可以使用该策略来做什么以及如何配置它。
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>什么是多重身份验证注册策略？
 
-Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）对身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。  
+Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名和密码）对身份进行验证的一种方法。 它为用户登录和事务提供了附加的安全层。 为了使用户能够对 MFA 提示做出响应，它们必须先注册 mfa。 
 
 建议要求对用户登录执行 Azure 多重身份验证，因为这种身份验证方法可以：
 
@@ -39,7 +39,7 @@ Azure 多重身份验证是要求使用多种方式（而不仅仅是用户名�
 - 在帮助组织保护帐户以及在帐户遭到入侵后进行恢复方面发挥关键的作用
 
 
-有关更多详细信息，请参阅[什么是 Azure 多重身份验证？](../authentication/multi-factor-authentication.md)
+有关 MFA 的详细信息，请参阅[什么是 Azure 多重身份验证？](../authentication/multi-factor-authentication.md)
 
 
 ## <a name="how-do-i-access-the-mfa-registration-policy"></a>如何访问 MFA 注册策略？
@@ -53,13 +53,13 @@ MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azur
 
 ## <a name="policy-settings"></a>策略设置
 
-配置登录风险策略时，需要设置：
+配置 MFA 注册策略时，需要设置：
 
 - 该策略应用到的用户和组：
 
     ![用户和组](./media/howto-mfa-policy/11.png)
 
-- 要强制实施的访问类型：  
+- 强制执行要求的 MFA 注册所需的控件：  
 
     ![访问](./media/howto-mfa-policy/12.png)
 
@@ -70,7 +70,7 @@ MFA 注册策略位于 [Azure AD Identity Protection 页面](https://portal.azur
 
 策略配置对话框提供了一个选项用于评估配置的影响。
 
-![估计影响](./media/howto-mfa-policy/15.png)
+![估计的影响](./media/howto-mfa-policy/15.png)
 
 
 

@@ -10,16 +10,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/08/2019
-ms.openlocfilehash: 820bb22fee75e5c1159ba90f23b478339f6345b5
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.openlocfilehash: a56f2546eec12d04dcc64665e60a9874b8e991b6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201919"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684134"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>在 HDInsight 中上传 Apache Hadoop 作业的数据
 
-Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的好处的信息，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]、[将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)和[将 Data Lake Storage Gen2 与 HDInsight 配合使用](../storage/blobs/data-lake-storage-use-hdi-cluster.md)。
+Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen1 和 Gen2）的功能完备的 Hadoop 分布式文件系统 (HDFS)。 Azure 存储以及 Data Lake Storage Gen1 和 Data Lake Storage Gen2 设计为一个 HDFS 扩展，为客户提供无缝体验。 它们通过启用 Hadoop 生态系统中的整套组件以直接操作其管理的数据。 Azure 存储、Data Lake Storage Gen1 和 Data lake Storage Gen2 是独特的文件系统，并且已针对数据的存储和计算进行了优化。 有关使用 Azure Blob 存储的好处的信息，请参阅[将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]、[将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)和[将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -30,7 +30,7 @@ Azure HDInsight 提供一个基于 Azure 存储和 Azure Data Lake Storage（Gen
 
     - [将 Azure 存储与 HDInsight 配合使用][hdinsight-storage]
     - [将 Data Lake Storage Gen1 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-store.md)
-    - [将 Data Lake Storage Gen2 与 HDInsight 配合使用](../storage/blobs/data-lake-storage-use-hdi-cluster.md)  
+    - [将 Data Lake Storage Gen2 与 HDInsight 配合使用](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>将数据上传到 Azure 存储
 
@@ -53,7 +53,7 @@ Microsoft 提供以下实用工具用于操作 Azure 存储：
 ## <a id="commandline"></a>Hadoop 命令行
 仅当数据已存在于群集头节点中时，才可以使用 Hadoop 命令行将数据存储到 Azure 存储 Blob。
 
-若要使用 Hadoop 命令，你必须先连接到使用头节点[SSH 或 PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md)。
+若要使用 Hadoop 命令，必须先通过 [SSH 或 PuTTY](hdinsight-hadoop-linux-use-ssh-unix.md) 连接到头节点。
 
 连接之后，可以使用以下语法将文件上传到存储。
 

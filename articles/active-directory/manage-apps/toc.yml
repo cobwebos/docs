@@ -1,302 +1,297 @@
-items:
 - name: 应用程序管理文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于应用程序管理
-    href: what-is-application-management.md
+    - name: 关于应用程序管理
+      href: what-is-application-management.md
 - name: 快速入门
-  items:
-  - name: 添加库应用程序 - 门户
-    href: add-application-portal.md
-  - name: 查看租户应用 - 门户
-    href: view-applications-portal.md
   expanded: true
+  items:
+    - name: 添加库应用程序 - 门户
+      href: add-application-portal.md
+    - name: 查看租户应用 - 门户
+      href: view-applications-portal.md
 - name: 教程
   items:
-  - name: 配置单一登录 - 门户
-    href: configure-single-sign-on-portal.md
-  - name: 添加本地应用 - 门户
-    href: application-proxy-add-on-premises-application.md
+    - name: 配置单一登录 - 门户
+      href: configure-single-sign-on-portal.md
+    - name: 添加本地应用 - 门户
+      href: application-proxy-add-on-premises-application.md
 - name: 概念
   items:
-  - name: 计划云应用集成
-    items:
-    - name: 添加应用时发生的情况
-      href: plan-an-application-integration.md
-    - name: 开发人员指南
-      href: developer-guidance-for-integrating-applications.md
-  - name: 计划本地应用集成
-    items:
-    - name: 应用程序代理
-      href: application-proxy.md
-    - name: 连接器
-      href: application-proxy-connectors.md
-    - name: 连接器组
-      href: application-proxy-connector-groups.md
-    - name: 安全
-      href: application-proxy-security.md
-    - name: 网络拓扑
-      href: application-proxy-network-topology.md
-    - name: 比较远程访问解决方案
-      href: application-proxy-migration.md
-  - name: 预配用户和组
-    items:
-    - name: 自动用户预配
-      href: configure-automatic-user-provisioning-portal.md
-    - name: SaaS 应用
-      href: user-provisioning.md
-    - name: 启用 SCIM 的应用
-      href: use-scim-to-provision-users-and-groups.md
-    - name: 自定义应用程序属性
-      href: Customize-application-attributes.md
-    - name: 为属性映射编写表达式
-      href: functions-for-customizing-application-data.md
-    - name: 范围筛选器
-      href: define-conditional-rules-for-provisioning-user-accounts.md
-    - name: 针对自动用户预配进行报告
-      href: check-status-user-account-provisioning.md
-    - name: 排查用户预配问题
-      href: application-provisioning-config-problem.md
-  - name: 应用程序安全性
-    items:
-    - name: 应用访问选项
-      href: what-is-access-management.md
-    - name: 证书签名选项
-      href: certificate-signing-options.md
-    - name: 管理证书
-      href: manage-certificates-for-federated-single-sign-on.md
-    - name: 租户限制
-      href: tenant-restrictions.md
-    - name: 配置 SAML 令牌加密（预览版）
-      href: howto-saml-token-encryption.md
-  - name: 单一登录
-    href: what-is-single-sign-on.md
-  - name: 最终用户门户
-    href: end-user-experiences.md
+    - name: 计划云应用集成
+      items:
+        - name: 添加应用时发生的情况
+          href: plan-an-application-integration.md
+        - name: 开发人员指南
+          href: developer-guidance-for-integrating-applications.md
+    - name: 计划本地应用集成
+      items:
+        - name: 应用程序代理
+          href: application-proxy.md
+        - name: 计划应用程序代理部署
+          href: application-proxy-deployment-plan.md
+        - name: 连接器
+          href: application-proxy-connectors.md
+        - name: 连接器组
+          href: application-proxy-connector-groups.md
+        - name: 安全
+          href: application-proxy-security.md
+        - name: 网络拓扑
+          href: application-proxy-network-topology.md
+        - name: 比较远程访问解决方案
+          href: application-proxy-migration.md
+    - name: 预配用户和组
+      items:
+        - name: 自动用户预配
+          href: configure-automatic-user-provisioning-portal.md
+        - name: SaaS 应用
+          href: user-provisioning.md
+        - name: 启用 SCIM 的应用
+          href: use-scim-to-provision-users-and-groups.md
+        - name: 自定义应用程序属性
+          href: Customize-application-attributes.md
+        - name: 为属性映射编写表达式
+          href: functions-for-customizing-application-data.md
+        - name: 范围筛选器
+          href: define-conditional-rules-for-provisioning-user-accounts.md
+        - name: 针对自动用户预配进行报告
+          href: check-status-user-account-provisioning.md
+        - name: 排查用户预配问题
+          href: application-provisioning-config-problem.md
+    - name: 应用程序安全性
+      items:
+        - name: 应用访问选项
+          href: what-is-access-management.md
+        - name: 证书签名选项
+          href: certificate-signing-options.md
+        - name: 管理证书
+          href: manage-certificates-for-federated-single-sign-on.md
+        - name: 租户限制
+          href: tenant-restrictions.md
+        - name: 配置 SAML 令牌加密（预览版）
+          href: howto-saml-token-encryption.md
+    - name: 单一登录
+      href: what-is-single-sign-on.md
+    - name: 最终用户门户
+      href: end-user-experiences.md
 - name: 操作指南
   items:
-  - name: 云应用集成
-    items:
-    - name: 添加应用
+    - name: 云应用集成
       items:
-      - name: 选择应用类型
-        href: choose-application-type.md
-      - name: 常见问题 - 库应用
-        href: adding-gallery-app-common-problems.md
-      - name: 常见问题 - 非库应用
-        href: adding-non-gallery-app-common-problems.md
-    - name: 更改名称或徽标
-      href: change-name-or-logo-portal.md
-  - name: 本地应用集成
-    items:
-    - name: 配置连接器
-      href: application-proxy-configure-connectors-with-proxy-servers.md
-    - name: 配置声明感知应用
-      href: application-proxy-configure-for-claims-aware-applications.md
-    - name: 注册连接器 - 无提示安装
-      href: application-proxy-register-connector-powershell.md
-    - name: 配置本机客户端应用
-      href: application-proxy-configure-native-client-application.md
-    - name: 配置自定义主页
-      href: application-proxy-configure-custom-home-page.md
-    - name: 转换内联链接
-      href: application-proxy-configure-hard-coded-link-translation.md
-    - name: 配置 Cookie 设置
-      href: application-proxy-configure-cookie-settings.md
-    - name: 使用通配符发布
-      href: application-proxy-wildcard.md
-    - name: 删除个人数据
-      href: application-proxy-remove-personal-data.md
-    - name: 配置自定义域
-      href: application-proxy-configure-custom-domain.md
-    - name: 配置错误
-      href: application-proxy-troubleshoot.md
-    - name: 发布演练
+        - name: 添加应用
+          items:
+            - name: 选择应用类型
+              href: choose-application-type.md
+            - name: 常见问题 - 库应用
+              href: adding-gallery-app-common-problems.md
+            - name: 常见问题 - 非库应用
+              href: adding-non-gallery-app-common-problems.md
+        - name: 更改名称或徽标
+          href: change-name-or-logo-portal.md
+    - name: 本地应用集成
       items:
-      - name: 与 Cloud App Security 集成
-        href: application-proxy-integrate-with-microsoft-cloud-application-security.md
-      - name: 与远程桌面集成
-        href: application-proxy-integrate-with-remote-desktop-services.md
-      - name: 与 SharePoint 集成
-        href: application-proxy-integrate-with-sharepoint-server.md
-      - name: 与 Teams 集成
-        href: application-proxy-integrate-with-teams.md
-      - name: 与 Tableau 集成
-        href: application-proxy-integrate-with-tableau.md
-      - name: 与 Qlik 集成
-        href: application-proxy-qlik.md
-    - name: 应用程序代理故障排除
+        - name: 配置连接器
+          href: application-proxy-configure-connectors-with-proxy-servers.md
+        - name: 配置声明感知应用
+          href: application-proxy-configure-for-claims-aware-applications.md
+        - name: 注册连接器 - 无提示安装
+          href: application-proxy-register-connector-powershell.md
+        - name: 配置本机客户端应用
+          href: application-proxy-configure-native-client-application.md
+        - name: 配置自定义主页
+          href: application-proxy-configure-custom-home-page.md
+        - name: 转换内联链接
+          href: application-proxy-configure-hard-coded-link-translation.md
+        - name: 配置 Cookie 设置
+          href: application-proxy-configure-cookie-settings.md
+        - name: 使用通配符发布
+          href: application-proxy-wildcard.md
+        - name: 删除个人数据
+          href: application-proxy-remove-personal-data.md
+        - name: 配置自定义域
+          href: application-proxy-configure-custom-domain.md
+        - name: 配置错误
+          href: application-proxy-troubleshoot.md
+        - name: 发布演练
+          items:
+            - name: 与 Cloud App Security 集成
+              href: application-proxy-integrate-with-microsoft-cloud-application-security.md
+            - name: 与远程桌面集成
+              href: application-proxy-integrate-with-remote-desktop-services.md
+            - name: 与 SharePoint 集成
+              href: application-proxy-integrate-with-sharepoint-server.md
+            - name: 与 Teams 集成
+              href: application-proxy-integrate-with-teams.md
+            - name: 与 Tableau 集成
+              href: application-proxy-integrate-with-tableau.md
+            - name: 与 Qlik 集成
+              href: application-proxy-qlik.md
+        - name: 应用程序代理故障排除
+          items:
+            - name: 显示应用页时出现问题
+              href: application-proxy-page-appearance-broken-problem.md
+            - name: 应用程序加载时间过长
+              href: application-proxy-page-load-speed-problem.md
+            - name: 应用程序页上的链接不起作用
+              href: application-proxy-page-links-broken-problem.md
+            - name: 要为应用打开哪些端口
+              href: application-proxy-connectivity-ports-how-to.md
+            - name: 应用的连接器组中没有正常工作的连接器
+              href: application-proxy-connectivity-no-working-connector.md
+            - name: 在管理门户中配置
+              href: application-proxy-config-how-to.md
+            - name: 为应用配置单一登录
+              href: application-proxy-config-sso-how-to.md
+            - name: 在管理门户中创建应用时出现问题
+              href: application-proxy-config-problem.md
+            - name: 配置 Kerberos 约束委派
+              href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+            - name: 使用 PingAccess 配置
+              href: application-proxy-back-end-ping-access-how-to.md
+            - name: “无法访问此企业应用程序”错误
+              href: application-proxy-sign-in-bad-gateway-timeout-error.md
+            - name: 安装应用程序代理程序连接器时出现问题
+              href: application-proxy-connector-installation-problem.md
+            - name: 登录问题
+              href: application-sign-in-problem-on-premises-application-proxy.md
+    - name: 用户预配
       items:
-      - name: 显示应用页时出现问题
-        href: application-proxy-page-appearance-broken-problem.md
-      - name: 应用程序加载时间过长
-        href: application-proxy-page-load-speed-problem.md
-      - name: 应用程序页上的链接不起作用
-        href: application-proxy-page-links-broken-problem.md
-      - name: 要为应用打开哪些端口
-        href: application-proxy-connectivity-ports-how-to.md
-      - name: 应用的连接器组中没有正常工作的连接器
-        href: application-proxy-connectivity-no-working-connector.md
-      - name: 在管理门户中配置
-        href: application-proxy-config-how-to.md
-      - name: 为应用配置单一登录
-        href: application-proxy-config-sso-how-to.md
-      - name: 在管理门户中创建应用时出现问题
-        href: application-proxy-config-problem.md
-      - name: 配置 Kerberos 约束委派
-        href: application-proxy-back-end-kerberos-constrained-delegation-how-to.md
-      - name: 使用 PingAccess 配置
-        href: application-proxy-back-end-ping-access-how-to.md
-      - name: “无法访问此企业应用程序”错误
-        href: application-proxy-sign-in-bad-gateway-timeout-error.md
-      - name: 安装应用程序代理程序连接器时出现问题
-        href: application-proxy-connector-installation-problem.md
-      - name: 登录问题
-        href: application-sign-in-problem-on-premises-application-proxy.md
-  - name: 用户预配
-    items:
-    - name: 花费多长时间
-      href: application-provisioning-when-will-provisioning-finish-specific-user.md
-    - name: 花费数小时 - 库应用
-      href: application-provisioning-when-will-provisioning-finish.md
-    - name: 配置用户预配 - 库应用
-      href: application-provisioning-config-how-to.md
-    - name: 配置用户预配时出现问题 - 库应用
-      href: application-provisioning-config-problem.md
-    - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
-      href: application-provisioning-config-problem-storage-limit.md
-    - name: 未预配用户 - 库应用
-      href: application-provisioning-config-problem-no-users-provisioned.md
-    - name: 预配了错误的用户 - 库应用
-      href: application-provisioning-config-problem-wrong-users-provisioned.md
-  - name: 应用程序访问
-    items:
-    - name: 应用程序类型
-      href: application-types.md
-    - name: 配置用户同意
-      href: configure-user-consent.md
-    - name: 用于将用户和组分配到应用的方法
-      href: methods-for-assigning-users-and-groups.md
-    - name: 将用户分配到应用
-      href: assign-user-or-group-access-portal.md
-    - name: 用于删除用户对应用的访问权限的方法
-      href: methods-for-removing-user-access.md
-    - name: 分配了意外的用户
-      href: ways-users-get-assigned-to-applications.md
-    - name: 删除用户或组访问权限
-      href: remove-user-or-group-access-portal.md
-    - name: 对用户隐藏应用
-      href: hide-application-from-user-portal.md
-    - name: 禁用用户登录
-      href: disable-user-sign-in-portal.md
-    - name: 配置自助服务应用分配
-      href: manage-self-service-access.md
-    - name: 主领域发现
-      href: configure-authentication-for-federated-users-portal.md
-  - name: 单一登录
-    items:
-    - name: 配置非库应用
-      href: configure-single-sign-on-non-gallery-applications.md
-    - name: 配置联合单一登录 - 库应用
-      href: configure-federated-single-sign-on-gallery-applications.md
-    - name: 配置联合单一登录时常见的问题 - 库应用
-      href: configure-federated-single-sign-on-gallery-applications-problems.md
-    - name: 配置联合单一登录 - 非库应用
-      href: configure-federated-single-sign-on-non-gallery-applications.md
-    - name: 配置联合单一登录时常见的问题 - 非库应用
-      href: configure-federated-single-sign-on-non-gallery-applications-problems.md
-    - name: 配置密码 - 库应用
-      href: configure-password-single-sign-on-gallery-applications.md
-    - name: 配置密码时常见的问题 - 库应用
-      href: configure-password-single-sign-on-gallery-applications-problems.md
-    - name: 配置密码 - 非库应用
-      href: configure-password-single-sign-on-non-gallery-applications.md
-    - name: 配置密码时常见的问题 - 非库应用
-      href: configure-password-single-sign-on-non-gallery-applications-problems.md
-    - name: 应用程序代理
+        - name: 花费多长时间
+          href: application-provisioning-when-will-provisioning-finish-specific-user.md
+        - name: 花费数小时 - 库应用
+          href: application-provisioning-when-will-provisioning-finish.md
+        - name: 配置用户预配 - 库应用
+          href: application-provisioning-config-how-to.md
+        - name: 配置用户预配时出现问题 - 库应用
+          href: application-provisioning-config-problem.md
+        - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
+          href: application-provisioning-config-problem-storage-limit.md
+        - name: 未预配用户 - 库应用
+          href: application-provisioning-config-problem-no-users-provisioned.md
+        - name: 预配了错误的用户 - 库应用
+          href: application-provisioning-config-problem-wrong-users-provisioned.md
+    - name: 应用程序访问
       items:
-      - name: Kerberos 约束委派 (KCD)
-        href: application-proxy-configure-single-sign-on-with-kcd.md
-      - name: 密码保管
-        href: application-proxy-configure-single-sign-on-password-vaulting.md
-      - name: 标头
-        href: application-proxy-configure-single-sign-on-with-ping-access.md
-      - name: SAML SSO
-        href: application-proxy-configure-single-sign-on-on-premises-apps.md
-  - name: 访问面板
-    items:
-    - name: 管理浏览器扩展
-      href: manage-access-panel-browser-extension.md
-    - name: 应用未出现
-      href: access-panel-troubleshoot-application-not-appearing.md
-    - name: 出现意外的应用
-      href: access-panel-troubleshoot-unexpected-application.md
-    - name: 无法登录
-      href: access-panel-troubleshoot-web-sign-in-problem.md
-    - name: 安装浏览器扩展时出错
-      href: access-panel-extension-problem-installing.md
-    - name: 如何使用自助服务应用访问权限
-      href: access-panel-manage-self-service-access.md
-    - name: 使用自助服务应用访问权限时出错
-      href: access-panel-troubleshoot-self-service-access.md
-  - name: 迁移
-    items:
-    - name: 迁移资源
-      href: migration-resources.md
-    - name: 将 ADFS 应用迁移到 Azure
-      href: migrate-adfs-apps-to-azure.md
-  - name: 排查用户登录问题
-    items:
-    - name: 意外的许可提示
-      href: application-sign-in-unexpected-user-consent-prompt.md
-    - name: “用户同意”错误
-      href: application-sign-in-unexpected-user-consent-error.md
-    - name: 从自定义门户登录时出现问题
-      href: application-sign-in-other-problem-deeplink.md
-    - name: 从访问面板登录时出现问题
-      href: application-sign-in-other-problem-access-panel.md
-    - name: 应用程序登录页上的错误
-      href: application-sign-in-problem-application-error.md
-    - name: 使用密码单一登录时出现的问题 - 非库应用
-      href: application-sign-in-problem-password-sso-non-gallery.md
-    - name: 使用密码单一登录时出现的问题 - 库应用
-      href: application-sign-in-problem-password-sso-gallery.md
-    - name: 登录到 Microsoft 应用时出现问题
-      href: application-sign-in-problem-first-party-microsoft.md
-    - name: 使用联合单一登录时出现的问题 - 非库应用
-      href: application-sign-in-problem-federated-sso-non-gallery.md
-    - name: 使用联合单一登录时出现的问题 - 库应用
-      href: application-sign-in-problem-federated-sso-gallery.md
-    - name: 登录自定义开发的应用时出现的问题
-      href: application-sign-in-problem-custom-dev.md
+        - name: 应用程序类型
+          href: application-types.md
+        - name: 配置用户同意
+          href: configure-user-consent.md
+        - name: 用于将用户和组分配到应用的方法
+          href: methods-for-assigning-users-and-groups.md
+        - name: 将用户分配到应用
+          href: assign-user-or-group-access-portal.md
+        - name: 用于删除用户对应用的访问权限的方法
+          href: methods-for-removing-user-access.md
+        - name: 分配了意外的用户
+          href: ways-users-get-assigned-to-applications.md
+        - name: 删除用户或组访问权限
+          href: remove-user-or-group-access-portal.md
+        - name: 对用户隐藏应用
+          href: hide-application-from-user-portal.md
+        - name: 禁用用户登录
+          href: disable-user-sign-in-portal.md
+        - name: 配置自助服务应用分配
+          href: manage-self-service-access.md
+        - name: 主领域发现
+          href: configure-authentication-for-federated-users-portal.md
+    - name: 单一登录
+      items:
+        - name: 配置非库应用
+          href: configure-single-sign-on-non-gallery-applications.md
+        - name: 配置联合单一登录 - 库应用
+          href: configure-federated-single-sign-on-gallery-applications.md
+        - name: 配置联合单一登录时常见的问题 - 库应用
+          href: configure-federated-single-sign-on-gallery-applications-problems.md
+        - name: 配置联合单一登录 - 非库应用
+          href: configure-federated-single-sign-on-non-gallery-applications.md
+        - name: 配置联合单一登录时常见的问题 - 非库应用
+          href: configure-federated-single-sign-on-non-gallery-applications-problems.md
+        - name: 配置密码 - 库应用
+          href: configure-password-single-sign-on-gallery-applications.md
+        - name: 配置密码时常见的问题 - 库应用
+          href: configure-password-single-sign-on-gallery-applications-problems.md
+        - name: 配置密码 - 非库应用
+          href: configure-password-single-sign-on-non-gallery-applications.md
+        - name: 配置密码时常见的问题 - 非库应用
+          href: configure-password-single-sign-on-non-gallery-applications-problems.md
+        - name: 应用程序代理
+          items:
+            - name: Kerberos 约束委派 (KCD)
+              href: application-proxy-configure-single-sign-on-with-kcd.md
+            - name: 密码保管
+              href: application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: 标头
+              href: application-proxy-configure-single-sign-on-with-ping-access.md
+            - name: SAML SSO
+              href: application-proxy-configure-single-sign-on-on-premises-apps.md
+    - name: 访问面板
+      items:
+        - name: 管理浏览器扩展
+          href: manage-access-panel-browser-extension.md
+        - name: 应用未出现
+          href: access-panel-troubleshoot-application-not-appearing.md
+        - name: 出现意外的应用
+          href: access-panel-troubleshoot-unexpected-application.md
+        - name: 无法登录
+          href: access-panel-troubleshoot-web-sign-in-problem.md
+        - name: 安装浏览器扩展时出错
+          href: access-panel-extension-problem-installing.md
+        - name: 如何使用自助服务应用访问权限
+          href: access-panel-manage-self-service-access.md
+        - name: 使用自助服务应用访问权限时出错
+          href: access-panel-troubleshoot-self-service-access.md
+    - name: 迁移
+      items:
+        - name: 迁移资源
+          href: migration-resources.md
+        - name: 将 ADFS 应用迁移到 Azure
+          href: migrate-adfs-apps-to-azure.md
+    - name: 排查用户登录问题
+      items:
+        - name: 意外的许可提示
+          href: application-sign-in-unexpected-user-consent-prompt.md
+        - name: “用户同意”错误
+          href: application-sign-in-unexpected-user-consent-error.md
+        - name: 从自定义门户登录时出现问题
+          href: application-sign-in-other-problem-deeplink.md
+        - name: 从访问面板登录时出现问题
+          href: application-sign-in-other-problem-access-panel.md
+        - name: 应用程序登录页上的错误
+          href: application-sign-in-problem-application-error.md
+        - name: 使用密码单一登录时出现的问题 - 非库应用
+          href: application-sign-in-problem-password-sso-non-gallery.md
+        - name: 使用密码单一登录时出现的问题 - 库应用
+          href: application-sign-in-problem-password-sso-gallery.md
+        - name: 登录到 Microsoft 应用时出现问题
+          href: application-sign-in-problem-first-party-microsoft.md
+        - name: 使用联合单一登录时出现的问题 - 非库应用
+          href: application-sign-in-problem-federated-sso-non-gallery.md
+        - name: 使用联合单一登录时出现的问题 - 库应用
+          href: application-sign-in-problem-federated-sso-gallery.md
+        - name: 登录自定义开发的应用时出现的问题
+          href: application-sign-in-problem-custom-dev.md
 - name: 引用
   items:
-  - name: 应用程序代理版本历史记录
-    href: application-proxy-release-version-history.md
+    - name: 应用程序代理版本历史记录
+      href: application-proxy-release-version-history.md
 - name: 资源
   items:
-  - name: Azure AD 部署计划
-    href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
-  - name: Azure 反馈论坛
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/active-directory
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=active-directory
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 0be32a824491c8278f498c44aaf8d782a76d73bb
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500645"
+    - name: Azure AD 部署计划
+      href: /azure/active-directory/fundamentals/active-directory-deployment-plans?context=azure/active-directory/manage-apps/context/manage-apps-context
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

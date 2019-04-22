@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 5/24/2018
 ms.author: pvrk
-ms.openlocfilehash: c2f6d8262d47a537667ef7b25333a3beff425bbe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 6280ca55023fc604e70b62cabdc30cca6409d9e6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58878683"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698481"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>使用 PowerShell 部署和管理 Windows Server/Windows 客户端的 Azure 备份
 
@@ -200,9 +200,11 @@ Server properties updated successfully.
 
 发送到 Azure 备份的备份数据会加密，以保护数据的机密性。 加密通行短语是在还原时用于解密数据的“密码”。
 
+必须通过选择生成安全 pin **Generate**下**设置** > **属性** > **的安全PIN**中**恢复服务保管库**Azure 门户的一部分。 然后，使用此信息作为`generatedPIN`命令中：
+
 ```powershell
 $PassPhrase = ConvertTo-SecureString -String "Complex!123_STRING" -AsPlainText -Force
-Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase
+Set-OBMachineSetting -EncryptionPassPhrase $PassPhrase -SecurityPin "<generatedPIN>"
 ```
 
 ```Output
@@ -733,4 +735,4 @@ Invoke-Command -Session $Session -Script { param($D, $A) Start-Process -FilePath
 有关适用于 Windows Server/客户端的 Azure 备份的详细信息，请参阅
 
 * [Azure 备份简介](backup-introduction-to-azure-backup.md)
-* [备份 Windows 服务器](backup-configure-vault.md)
+* [备份 Windows Servers](backup-configure-vault.md)

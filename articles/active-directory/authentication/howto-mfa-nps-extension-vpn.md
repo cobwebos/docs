@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a5ea409b1726e82557b564f93fbd35898e9cf2cb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372448"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699109"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -374,7 +374,7 @@ NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计�
 
 2. 在 PowerShell 命令提示符处，输入“cd c:\Program Files\Microsoft\AzureMfa\Config”，然后按 Enter。
 
-3. 在下一个命令提示符处，输入“.\AzureMfsNpsExtnConfigSetup.ps1”，然后按 Enter。 该脚本检查是否安装了 Azure AD PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
+3. 在下一步的命令提示符下输入 **.\AzureMfaNpsExtnConfigSetup.ps1**，然后按 Enter。 该脚本检查是否安装了 Azure AD PowerShell 模块。 如果未安装，该脚本将为你安装此模块。
 
     ![运行 AzureMfsNpsExtnConfigSetup.ps1 配置脚本](./media/howto-mfa-nps-extension-vpn/image38.png)
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 4585d151e286917c67586a02539a10ade32bdd4c
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
-ms.translationtype: HT
+ms.openlocfilehash: 9d5b7f32cb298315a5816562f548bcdafbdeb5cf
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47094508"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682302"
 ---
 # <a name="import-vms-from-another-lab-in-azure-devtest-labs"></a>从 Azure 开发测试实验室的另一个实验室中导入 VM
 Azure 开发测试实验室服务可显著改善虚拟机 (VM) 的管理，以便进行开发和测试活动。 当团队或基础结构需求发生更改，它允许将 VM 从一个实验室转移到另一个实验室。 下面是一些常见的方案，你可能需要执行此操作： 
@@ -42,7 +42,7 @@ Azure 开发测试实验室允许实验室所有者将源实验室中的 VM 导�
 目前，可以通过使用 Azure PowerShell 和 REST API 将 VM 从一个实验室导入到另一个实验室。
 
 ### <a name="use-powershell"></a>使用 PowerShell
-从 [Azure 开发测试实验室 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImportVirtualMachines)将 PowerShell 脚本文件 ImportVirtualMachines.ps1 下载到本地驱动器。 
+从 [Azure 开发测试实验室 Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImportVirtualMachines)将 PowerShell 脚本文件 ImportVirtualMachines.ps1 下载到本地驱动器。 
 
 #### <a name="import-a-single-vm"></a>导入单个 VM
 运行 ImportVirtualMachines.ps1 脚本从源实验室将单个 VM 导入到目标实验室。 可以使用 DestinationVirtualMachineName 参数指定正在复制的虚拟机的新名称。 

@@ -15,26 +15,26 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 7231b6a33c94dfe029f41f034c7674b386090d7a
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 1c1198733fb56303d328ee97152442d25dbe945a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53104044"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682377"
 ---
 # <a name="git-repositories-with-samples-for-azure-event-hubs"></a>带有 Azure 事件中心示例的 Git 存储库 
 可以在 [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples) 上找到事件中心示例。 这些示例演示了 [Azure 事件中心](/azure/event-hubs/)的主要功能。 本文分类并介绍了可用的示例，每个示例均具有链接。
 
 ## <a name="net-samples"></a>.NET 示例
 
-| 示例名称 | Description | 
+| 示例名称 | 描述 | 
 | ----------- | ----------- | 
 | [SampleSender](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender) | 此示例演示如何编写将一组事件发送到事件中心的 .NET Core 控制台应用程序。 |
 | [SampleEHReceiver](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver) | 此示例介绍如何编写 .NET Core 控制台应用程序，以使用事件处理程序主机库从事件中心接收事件。  | 
 
 ## <a name="java-samples"></a>Java 示例
 
-| 示例名称 | Description | 
+| 示例名称 | 描述 | 
 | ----------- | ----------- | 
 | [SendBatch](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SendBatch)  | 此示例说明了如何将批量事件引入到事件中心。 | 
 | [SimpleSend](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/SimpleSend) | 此示例说明了如何将事件引入到事件中心。 |
@@ -50,7 +50,7 @@ ms.locfileid: "53104044"
 可在 [azure-event-hubs-python](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) GitHub 存储库中找到 Azure 事件中心的 Python 示例。
 
 ## <a name="nodejs-samples"></a>Node.js 示例
-可在 [azure-event-hubs-node](https://github.com/Azure/azure-event-hubs-node) GitHub 存储库中找到 Azure 事件中心的 Node.js 示例。
+您可以找到有关 Azure 事件中心中的 Node.js 示例[azure sdk 的 js](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs/samples) GitHub 存储库。
 
 ## <a name="go-samples"></a>Go 示例
 可在 [azure-event-hubs-go](https://github.com/Azure/azure-event-hubs-go/tree/master/_examples) GitHub 存储库中找到 Azure 事件中心的 Go 示例。

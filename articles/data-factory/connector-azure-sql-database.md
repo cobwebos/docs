@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.author: jingwang
-ms.openlocfilehash: d0ecf6a48735ec2ba1623f97d4760d230a6e6fbf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 749b5690f5814bb2f63f9f4451bba85990166acd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59266291"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683862"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure SQL 数据库复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -132,21 +132,21 @@ Azure SQL 数据库链接服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员必须是 Azure AD 用户或 Azure AD 组，但不能是服务主体。 执行此步骤后，在下一步骤中便可使用 Azure AD 标识来为服务主体创建包含的数据库用户。
+2. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员必须是 Azure AD 用户或 Azure AD 组，但不能是服务主体。 执行此步骤后，在下一步骤中便可使用 Azure AD 标识来为服务主体创建包含的数据库用户。
 
-1. 为服务主体[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 使用 SSMS 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 
+3. 为服务主体[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 使用 SSMS 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-1. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码：
+4. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码，或更多的选项是指[此处](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-1. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
+5. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>使用服务主体身份验证的链接服务示例
@@ -182,31 +182,21 @@ Azure SQL 数据库链接服务支持以下属性：
 
 若要使用托管的标识身份验证，请执行以下步骤：
 
-1. **在 Azure AD 中创建一个组。** 将托管的标识的组的成员。
-    
-   1. 找到从 Azure 门户的数据工厂托管标识。 转到数据工厂的“属性”。 复制服务标识 ID。
-    
-   1. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 使用 `Connect-AzureAD` 命令登录。 运行以下命令以创建组并添加为成员的托管的标识。
-      ```powershell
-      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
-      ```
-    
 1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予托管标识为管理员角色的组，请跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
 
-1. 为 Azure AD 组[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)。 使用 SSMS 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 
+2. **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 有关数据工厂托管标识。 使用 SSMS 等工具和至少具有 ALTER ANY USER 权限的 Azure AD 标识连接到要向其/从中复制数据的数据库。 运行以下 T-SQL： 
     
     ```sql
-    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-1. 像通常对 SQL 用户和其他用户所做的那样向 Azure AD 组授予所需的权限。 例如，运行以下代码：
+3. **授予数据工厂托管标识所需的权限**按照通常的 SQL 用户和其他用户的方式。 运行以下代码，或更多的选项是指[此处](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your AAD group name];
+    EXEC sp_addrolemember [role name], [your Data Factory name];
     ```
 
-1. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
+4. 在 Azure 数据工厂中配置 Azure SQL 数据库链接服务。
 
 **示例：**
 
@@ -277,7 +267,7 @@ Azure SQL 数据库链接服务支持以下属性：
 ### <a name="points-to-note"></a>需要注意的要点：
 
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 Azure SQL 数据库源运行此查询可获取数据。 也可以指定存储过程。 如果存储过程使用参数，则指定 sqlReaderStoredProcedureName 和 storedProcedureParameters。
-- 如果不指定 **sqlReaderQuery** 或 **sqlReaderStoredProcedureName**，则数据集 JSON 的 **structure** 节中定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
+- 如果不指定 sqlReaderQuery 或 sqlReaderStoredProcedureName，则数据集 JSON 的“结构”部分定义的列用于构建查询。 `select column1, column2 from mytable` 针对 Azure SQL 数据库运行。 如果数据集定义没有“结构”，则从表中选择所有列。
 
 #### <a name="sql-query-example"></a>SQL 查询示例
 

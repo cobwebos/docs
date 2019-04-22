@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 0f50ecb086b45cffb4ff27135a26f962c92926bf
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.openlocfilehash: baa2a09adeba133c5348449b12e037d4a9cb3213
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53434455"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683021"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Azure DNS 指标和警报
 Azure DNS 是 DNS 域的托管服务，它使用 Microsoft Azure 基础结构提供名称解析。 本文介绍了 Azure DNS 服务的指标和警报。
 
 ## <a name="azure-dns-metrics"></a>Azure DNS 指标
 
-Azure DNS 为客户提供指标，帮助他们监视服务中托管的 DNS 区域的具体各方面。 此外，借助 Azure DNS 指标，可以基于利害条件配置和接收警报。 指标通过 [Azure Monitor 服务](../azure-monitor/index.yml)提供。 Azure DNS 通过 Azure Monitor 为 DNS 区域提供以下指标：
+Azure DNS 为客户提供指标，使它们能够监视服务中托管其 DNS 区域的特定方面。 此外，借助 Azure DNS 指标，可以基于利害条件配置和接收警报。 指标通过 [Azure Monitor 服务](../azure-monitor/index.yml)提供。 Azure DNS 通过 Azure Monitor 为 DNS 区域提供以下指标：
 
 -   QueryVolume
 -   RecordSetCount
@@ -40,7 +40,9 @@ Azure DNS 为客户提供指标，帮助他们监视服务中托管的 DNS 区�
 
 ### <a name="query-volume"></a>查询量
 
-Azure DNS 中的“查询量”指标显示 Azure DNS 接收到的 DNS 区域的 DNS 查询量（查询流量）。 度量单位为计数，聚合是一段时间内收到的查询总数。 若要查看此指标，请从 Azure 门户的“监视”选项卡选择“指标(预览)”资源管理器体验。 从“资源”下拉列表选择 DNS 区域，选择“查询量”指标，然后选择“总和”作为“聚合”。 下面的屏幕快照显示示例。  有关指标资源管理器体验和图表的详细信息，请参阅 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-charts.md)。
+Azure DNS 中的“查询量”指标显示 Azure DNS 接收到的 DNS 区域的 DNS 查询量（查询流量）。 度量单位为计数，聚合是一段时间内收到的查询总数。 
+
+若要查看此指标，请从 Azure 门户的“监视”选项卡选择“指标(预览)”资源管理器体验。 从“资源”下拉列表选择 DNS 区域，选择“查询量”指标，然后选择“总和”作为“聚合”。 下面的屏幕快照显示示例。  有关指标资源管理器体验和图表的详细信息，请参阅 [Azure Monitor 指标资源管理器](../azure-monitor/platform/metrics-charts.md)。
 
 ![查询量](./media/dns-alerts-metrics/dns-metrics-query-volume.png)
 

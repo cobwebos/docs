@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: v-jysur
 ms.openlocfilehash: 64769ebb1bd9a5fb0f051cc6eca4e59cd41fccc9
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58903091"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785221"
 ---
 # <a name="create-service-manager-web-app-using-the-automated-script"></a>使用自动化脚本创建 Service Manager Web 应用
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 06/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c8afa671a323e37a99be8b5a43d0a4823fe1877a
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.openlocfilehash: c067d6f02ceeca9bf390ab5421dcfe463e9f758d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58800870"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699075"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -29,14 +29,14 @@ ms.locfileid: "58800870"
 尝试通过门户删除 DSC 配置时，将看到以下错误：
 
 ```error
-An error occured while deleteing the DSC configuration '<name>'.  Error-details: The arguement configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
+An error occurred while deleting the DSC configuration '<name>'.  Error-details: The argument configurationName with the value <name> is not valid.  Valid configuration names can contain only letters,  numbers, and underscores.  The name must start with a letter.  The length of the name must be between 1 and 64 characters.
 ```
 
 #### <a name="cause"></a>原因
 
 此错误是计划要解析的临时问题。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 * 使用 Az Cmdlet "Remove-AzAutomationDscConfiguration" 删除配置。
 * 此 cmdlet 的文档尚未更新。  在此之前，请参阅 AzureRM 模块的文档。
@@ -56,7 +56,7 @@ The attempt to get the action from server https://<url>//accounts/<account-id>/N
 
 将节点分配到配置名称（例如 ABC）而不是节点配置名称（例如 ABC.WebServer）时，通常会发生此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 * 请确保将具有"节点配置名称"而不是"配置名称"的节点。
 * 可以使用 Azure 门户或 PowerShell cmdlet 将节点配置分配给节点。
@@ -78,12 +78,12 @@ Compilation completed successfully, but no node configuration.mofs were generate
 
 如果 DSC 配置中“Node”关键字后面的表达式的计算结果为 `$null`，则不会生成节点配置。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 下述解决方案中的任何一种都可以解决此问题：
 
 * 请确保旁边的表达式**节点**配置定义中的关键字不评估结果为 $null。
-* 如果要在编译配置时传递 ConfigurationData，请确保从 [ConfigurationData](../automation-dsc-compile.md#configurationdata)传递配置需要的预期值。
+* 如果要在编译配置时传递 ConfigurationData，请确保从 [ConfigurationData](../automation-dsc-compile.md#configurationdata) 传递配置需要的预期值。
 
 ### <a name="dsc-in-progress"></a>场景：DSC 节点报告卡在了“正在进行”状态
 
@@ -99,7 +99,7 @@ No instance found with given property values
 
 已升级 WMF 版本，已损坏 WMI。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 若要解决此问题，请按照中的说明[DSC 已知问题和限制](https://msdn.microsoft.com/powershell/wmf/5.0/limitation_dsc)一文。
 
@@ -117,7 +117,7 @@ System.InvalidOperationException error processing property 'Credential' of type 
 
 在配置中使用过凭据但未提供正确**ConfigurationData**若要设置**PSDscAllowPlainTextPassword**为可用于每个节点配置。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 * 请确保传入正确**ConfigurationData**若要设置**PSDscAllowPlainTextPassword**为 true 的每个节点配置的配置中所述。 有关详细信息，请参阅 [Azure 自动化 DSC 中的资产](../automation-dsc-compile.md#assets)。
 

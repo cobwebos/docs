@@ -8,77 +8,73 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
 author: jovanpop-msft
-ms.author: jovanpop
+ms.author: sashan
 ms.reviewer: carlrab, sashan
 manager: craigg
-ms.date: 01/25/2019
-ms.openlocfilehash: fd6e383c2631a47daa7bf469c5bec59959453252
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.date: 04/17/2019
+ms.openlocfilehash: ec9f5aa8163ea9bb838b1a95ab8ad49233a72643
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616843"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698223"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性和 Azure SQL 数据库
 
-Azure SQL 数据库是高可用性数据库平台即服务，可保证数据库在 99.99% 的时间内保持正常运行，让客户无需考虑维护和停机问题。 它是在 Azure 云中承载的完全托管型 SQL Server 数据库引擎进程，确保 SQL Server 数据库始终能够得到升级/修补，且不会影响工作负荷。 实例得到修补或进行故障转移时，如果在应用中[使用重试逻辑](sql-database-develop-overview.md#resiliency)，则停机通常不会产生明显影响。 如果完成故障转移的时间长于 60 秒，则应打开支持事例。 即使出现最严重的问题，Azure SQL 数据库也能快速恢复，确保数据始终可用。
+Azure SQL 数据库中的高可用性体系结构的目标是时间的保证您的数据库已启动并正在运行的 99.99%，而无需担心的维护操作和服务中断的影响。 Azure 会自动处理关键的维护任务，例如修补、 备份、 Windows 和 SQL 升级，以及计划外的事件，例如基础硬件、 软件或网络故障。  当基础 SQL 实例进行修补或故障转移时，停机时间并不明显如果您[采用重试逻辑](sql-database-develop-overview.md#resiliency)应用程序中。 即使出现最严重的问题，Azure SQL 数据库也能快速恢复，确保数据始终可用。
 
-Azure 平台完全管理每个 Azure SQL 数据库，保证不会丢失数据并保证高百分比的数据可用性。 Azure 会自动处理修补、备份、复制、故障检测；基础的潜在硬件、软件或网络故障；部署 bug 修复、故障转移、数据库升级和其他维护任务。 SQL Server 工程师已实施成熟的做法，确保在数据库生命周期的不到 0.01% 的时间内就能完成所有维护操作。 此体系结构旨在确保提交的数据永远不会丢失，且执行的维护操作不会影响工作负荷。 在升级或维护数据库期间，维护或停机时段都不需要停止工作负荷。 Azure SQL 数据库中的内置高可用性保证该数据库永远不会成为软件体系结构中的单一故障点。
+高可用性解决方案旨在确保提交的数据永远不会因维护操作不会影响工作负荷的故障而丢失，并且数据库将不可单一软件体系结构中的故障点。 在升级或维护数据库期间，维护或停机时段都不需要停止工作负荷。 
 
-Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结构已根据云环境做出调整，以确保即使在发生基础结构故障时，也仍能提供 99.99% 的可用性。 Azure SQL 数据库中使用两种高可用性体系结构模型（两者都可确保 99.99% 的可用性）：
+有一些使用 Azure SQL 数据库中的两个高可用性体系结构模型：
 
-- 基于计算和存储隔离的标准/常规用途服务层模型。 此体系结构模型依赖于存储层的高可用性和可靠性，但在执行维护活动期间，它的性能可能有所下降。
-- 基于数据库引擎进程群集的高级/业务关键服务层模型。 此体系结构模型依赖于以下事实：即使在执行维护活动期间，也始终存在可用数据库引擎节点的仲裁，并且能尽量减少对工作负荷性能的影响。
+- 根据计算和存储分离的标准可用性模型。  它依赖的远程存储层的高可用性和可靠性。 此体系结构面向面向预算的业务应用程序可以容忍某些维护活动时的性能下降。
+- 基于数据库引擎进程在群集的高级可用性模型。 它依赖于这一事实是始终可用的数据库引擎节点的仲裁。 此体系结构针对关键任务应用程序具有高 IO 性能、 高事务率和保证工作负荷进行维护活动时的最小性能影响。
 
-Azure 以透明方式升级和修补底层操作系统、驱动程序和 SQL Server 数据库引擎，同时尽量减少最终用户的停机时间。 Azure SQL 数据库在最新稳定版本的 SQL Server 数据库引擎和 Windows OS 上运行，大多数用户不会察觉到正在持续执行升级。
+Azure SQL 数据库在 SQL Server 数据库引擎和 Windows OS 的最新稳定版本上运行和大多数用户不会察觉到连续执行升级。
 
 ## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>基本、标准和常规用途服务层可用性
 
-标准可用性是指在标准、基本和常规用途服务层中应用的 99.99% SLA。 此体系结构模型中的高可用性是通过将计算层与存储层相隔离，并复制存储层中的数据来实现的。
+这些服务层利用标准可用性体系结构。 下图显示了具有单独的计算和存储层的四个不同节点。
 
-下图显示了计算层和存储层已隔离的标准体系结构模型中的四个节点。
-
-![计算和存储隔离](media/sql-database-managed-instance/general-purpose-service-tier.png)
+![计算和存储隔离](media/sql-database-high-availability/general-purpose-service-tier.png)
 
 标准可用性模型包含两个层：
 
-- 无状态计算层：运行 `sqlserver.exe` 进程，仅包含暂时性的缓存数据（例如 - 计划缓存、缓冲池和列存储池）。 此无状态 SQL Server 节点由 Azure Service Fabric 操作。Service Fabric 初始化进程、控制节点运行状况，并根据需要执行到另一位置的故障转移。
-- 有状态数据层：包含存储在 Azure Blob 存储中的数据库文件 (.mdf/.ldf)。 Azure Blob 存储保证任何数据库文件中的任何记录不会发生数据丢失。 Azure Blob 存储的内置数据可用性/冗余，以确保即使 SQL Server 进程崩溃时，将保留在日志文件中的每个记录或数据文件中的页。
+- 运行一个无状态计算层`sqlserver.exe`处理并包含附加的 SSD 上仅暂时性和缓存数据，例如 TempDB、 model 数据库、 计划缓存中，缓冲池和列存储池。 此无状态的节点运营的 Azure Service Fabric，初始化`sqlserver.exe`，控制节点的运行状况并执行故障转移到另一个节点，如有必要。
+- 数据库文件 (.mdf/.ldf) 存储在 Azure Blob 存储中的一个有状态数据层。 Azure blob 存储具有内置数据可用性和冗余功能。 它可保证即使 SQL Server 进程崩溃将保留在日志文件或数据文件中的页中的每个记录。
 
-每当升级数据库引擎或操作系统、底层基础结构的某个部件发生故障，或者在 SQL Server 进程中检测到某个严重问题时，Azure Service Fabric 会将无状态 SQL Server 进程移到另一个无状态计算节点。 发生故障转移时，将有一组备用节点等待运行新的计算服务，以尽量减少故障转移时间。 Azure Blob 存储中的数据不受影响，数据/日志文件将附加到新初始化的 SQL Server 进程。 此进程保证 99.99% 的可用性，但可能会对正在运行的重型工作负荷造成一定的性能影响，原因是转换时间较长，并且新 SQL Server 节点从冷缓存启动。
+每次数据库引擎或操作系统升级时，或检测到故障，Azure Service Fabric 将无状态的 SQL Server 进程到另一个无状态计算节点具有足够的可用容量。 在移动后，不会影响 Azure Blob 存储中的数据和数据/日志文件附加到新初始化的 SQL Server 进程。 此过程可保证 99.99%的可用性，但繁重的工作负荷可能会遇到一些在转换期间的性能下降，因为使用冷缓存启动新的 SQL Server 实例。
 
 ## <a name="premium-and-business-critical-service-tier-availability"></a>“高级”或“业务关键”服务层可用性
 
-Azure SQL 数据库的“高级”或“业务关键”服务层中已启用高级可用性，此功能面向密集型工作负荷，此类工作负荷无法承受由于持续维护操作而造成的任何性能影响。
+高级和业务关键服务层利用集成的高级可用性模型计算资源 （SQL Server 数据库引擎进程） 和单个节点上的存储 (本地附加的 SSD)。 复制到其他节点创建三到四个节点群集的计算和存储，从而实现高可用性。 
 
-在高级模型中，Azure SQL 数据库在单个节点上集成了计算和存储层。 此体系结构模型中的高可用性是通过使用类似于 SQL Server [AlwaysOn 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技术复制部署在 4 节点集群中的计算（SQL Server 数据库引擎进程）和存储（本地连接的 SSD）来实现的。
+![数据库引擎节点群集](media/sql-database-high-availability/business-critical-service-tier.png)
 
-![数据库引擎节点群集](media/sql-database-managed-instance/business-critical-service-tier.png)
+基础数据库文件 (.mdf/.ldf) 放置在附加的 SSD 存储，以提供极低延迟 IO 工作负荷。 使用类似于 SQL Server 的技术实现高可用性[Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)。 群集包含一个主副本 （SQL Server 进程） 的读写客户工作负荷，并最多三个辅助副本 （计算和存储） 可访问包含数据的副本。 主节点不断地将更改推送到订单中的辅助节点，并确保提交的每个事务之前的数据同步到至少一个辅助副本。 此过程可保证，如果主节点由于任何原因发生故障，则始终完全同步的节点故障转移到。 Azure Service Fabric 启动故障转移。 一旦辅助副本将变成新的主节点，创建了另一个辅助副本以确保群集具有足够的节点 （仲裁集）。 故障转移完成后，SQL 连接会自动重定向到新的主节点上。
 
-SQL 数据库引擎进程和基础 mdf/ldf 文件都放置在同一个节点上，该节点在本地附加了 SSD 存储，使工作负荷保持较低的延迟。 高可用性是通过类似于 SQL Server [Always On 可用性组](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server)的技术实现的。 每个数据库是由数据库节点组成的群集，该群集中的一个主数据库可由客户工作负荷访问，还有三个辅助进程包含数据副本。 主节点不断地将更改推送到辅助节点，以确保在主节点出于任何原因崩溃时，可在次要副本上提供数据。 故障转移由 Azure Service Fabric 处理 - 一个次要副本成为主节点，并创建新的次要副本来确保群集中有足够的节点。 工作负荷自动重定向到新的主节点。
-
-此外，业务关键群集具有内置的[读取扩展](sql-database-read-scale-out.md)功能，该功能提供免费的内置只读节点，可用于运行不会影响主要工作负荷性能的只读查询（例如报告）。
+作为一项额外权益，高级可用性模型包括只读 SQL 连接重定向到一个辅助副本的能力。 此功能被称为[读取横向扩展](sql-database-read-scale-out.md)。它提供了额外的 100%计算，无需额外付费的容量来减轻只读操作，如从主副本的分析工作负荷。
 
 ## <a name="zone-redundant-configuration"></a>区域冗余配置
 
-默认情况下，本地存储配置的仲裁集是在相同的数据中心中创建的。 通过引入 [Azure 可用性区域](../availability-zones/az-overview.md)，可以将程序集中的不同副本放到同一区域中的不同可用性区域中。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 区域冗余配置不会创建其他数据库冗余，因此在“高级”或“业务关键”服务层中使用可用性区域不需要承担任何额外费用。 通过选择区域冗余数据库，可以让“高级”或“业务关键”数据库能应对范围更广的故障，包括灾难性的数据中心服务中断，且不会对应用程序逻辑产生任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
+默认情况下，同一数据中心内创建高级可用性模型的节点的群集。 通过引入[Azure 可用性区域](../availability-zones/az-overview.md)，SQL 数据库可以在群集到同一个区域中不同可用性区域中放置不同的副本。 若要消除单一故障点，还要将控件环跨区域地复制为三个网关环 (GW)。 到特定网关环的路由受 [Azure 流量管理器](../traffic-manager/traffic-manager-overview.md) (ATM) 控制。 由于高级或业务关键服务层中的区域冗余配置不会创建其他数据库冗余，则可以启用它，无需额外付费。 通过选择区域冗余配置，您可以对高级或业务关键数据库可复原更广的故障，包括灾难性的数据中心服务中断，而无需对应用程序逻辑的任何更改。 还可以将所有现有“高级”或“业务关键”数据库或池转换到区域冗余配置。
 
-由于区域冗余仲裁集的副本位于不同数据中心，且互相之间都有一定距离，因此增加的网络延迟可能会延长提交时间，从而影响某些 OLTP 工作负载的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此进程是一种数据大小操作，并且与常规的服务层更新类似。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
+由于区域冗余数据库与它们之间一定距离的不同数据中心内有副本，增加了的网络延迟可能增加的提交时间，并因此影响某些 OLTP 工作负荷的性能。 始终可以通过禁用区域冗余设置返回到单个区域配置。 此过程是类似于常规服务层升级的联机操作。 在此进程结束时，该数据库或池将从区域冗余环迁移到单个区域环，反之亦然。
 
 > [!IMPORTANT]
-> 目前，只有高级服务层才支持区域冗余数据库和弹性池。 默认情况下，备份和审核记录都存储在 RA-GRS 存储中，因此在发生区域范围的服务中断时可能不会自动可用。 
+> 区域冗余数据库和弹性池目前仅支持高级和业务关键服务层。 默认情况下，备份和审核记录都存储在 RA-GRS 存储中，因此在发生区域范围的服务中断时可能不会自动可用。 
 
 下图演示了高可用性体系结构的区域冗余版本：
 
-![高可用性体系结构区域冗余](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
+![高可用性体系结构区域冗余](./media/sql-database-high-availability/zone-redundant-business-critical-service-tier.png)
 
 ## <a name="accelerated-database-recovery-adr"></a>加速的数据库恢复 (ADR)
 
-[加速的数据库恢复 (ADR)](sql-database-accelerated-database-recovery.md) 是一项新的 SQL 数据库引擎功能，通过重新设计 SQL 数据库引擎恢复过程，极大地提高数据库可用性（尤其是存在长期运行的事务时）。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。
+[加速数据库恢复 (ADR)](sql-database-accelerated-database-recovery.md)新 SQL 数据库引擎功能的极大地提高了数据库的可用性，尤其是在存在长时间的情况下运行的事务。 ADR 目前可用于单个数据库、弹性池和 Azure SQL 数据仓库。
 
 ## <a name="conclusion"></a>结束语
 
-Azure SQL 数据库与 Azure 平台深度集成，严重依赖于使用 Service Fabric 来执行故障检测和恢复，并严重依赖于 Azure Blob 存储来执行数据保护，并依赖于可用性区域来提高容错性。 同时，Azure SQL 数据库充分利用 SQL Server 现成产品的 Always On 可用性组技术来执行复制和故障转移。 将这些技术相结合，应用程序可完全实现混合存储模型的优势并支持最严格的 SLA。
+Azure SQL 数据库功能的内置的高可用性解决方案，与 Azure 平台深度集成。 它是依赖于故障检测和恢复的 Service Fabric、 Azure Blob 存储用于数据保护和可用性区域提高容错性。 此外，Azure SQL 数据库利用从 SQL Server 复制和故障转移的 Alwayson 可用性组技术。 这些技术组合使应用程序来完全实现的混合存储优势的模型，支持最严格的 Sla。
 
 ## <a name="next-steps"></a>后续步骤
 

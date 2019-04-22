@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/11/2018
 ms.author: subramar
-ms.openlocfilehash: 04163bea8f4c1247f42b65c35c2b82910e623bc9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: 7bb9b1c545d30f66a09817ba977f12666a9f41c9
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661371"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699126"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>创建第一个 Azure Service Fabric 应用程序
 > [!div class="op_single_selector"]
@@ -108,7 +108,7 @@ Actor 项目自身未执行任何操作。 它们需要另一个服务或客户�
 
 1. 使用监视实用程序运行该脚本来查看 actor 服务的输出。
 
-   对于 MAC OS X，你需要通过运行以下附加命令将 myactorsvcTestClient 文件夹复制到容器内的某个位置。
+   MAC OS X，如果您需要将 myactorsvcTestClient 文件夹复制到容器中的相同位置，通过运行以下附加命令。
     
     ```bash
     docker cp  [first-four-digits-of-container-ID]:/home

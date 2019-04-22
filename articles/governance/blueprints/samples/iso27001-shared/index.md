@@ -7,12 +7,12 @@ ms.date: 03/14/2019
 ms.topic: sample
 ms.service: blueprints
 manager: carmonm
-ms.openlocfilehash: ca473474c62d0cb57c3ee76095740568398c67d7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c54d8aedb9464364f93a087de4bdb00c693a96ae
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59272744"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698905"
 ---
 # <a name="overview-of-the-iso-27001-shared-services-blueprint-sample"></a>ISO 27001 共享服务蓝图示例的概述
 
@@ -36,7 +36,7 @@ VDC 是一套行之有效的参考体系结构、自动化工具和参与模型�
 - [Log Analytics](../../../../azure-monitor/overview.md) 作为第一个 Azure 服务进行部署，以便确保从开始安全部署起所有操作和服务都记录到一个中心位置
 - 一个虚拟网络，它支持用于连接回本地数据中心的子网、用于 Internet 连接的入口和出口堆叠、使用 NSG 和 ASG 进行完全微分段的共享服务子网，其中包含：
   - 一个用于管理目的的 Jumpbox 或堡垒主机，只能通过入口堆叠子网中部署的 [Azure 防火墙](../../../../firewall/overview.md)访问
-  - 两个运行 Active Directory 目录服务 (ADDS) 和 DNS 的虚拟机，只能通过 Jumpbox 访问，可以配置为仅通过 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 连接来复制 AD（不按蓝图部署）
+  - 两个运行 Active Directory 域服务 (ADDS) 和 DNS 的虚拟机，只能通过 Jumpbox 访问，可以配置为仅通过 VPN 或 [ExpressRoute](../../../../expressroute/expressroute-introduction.md) 连接来复制 AD（不按蓝图部署）
   - 使用 [Azure 网络观察程序](../../../../network-watcher/network-watcher-monitoring-overview.md)和标准 DDoS 保护
 - 一个 [Azure Key Vault](../../../../key-vault/key-vault-whatis.md) 实例，用于托管对共享服务环境中部署的 VM 使用的机密
 

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: how-to
 ms.date: 04/03/2019
 ms.author: helohr
-ms.openlocfilehash: e82b9ae96ae43278e22da22702d3d899abadb1b5
-ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
-ms.translationtype: MT
+ms.openlocfilehash: 9d69a24b106fc39c03b8f95758bc240916023456
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59505594"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698309"
 ---
 # <a name="prepare-and-customize-a-master-vhd-image"></a>准备和自定义主 VHD 映像
 
@@ -274,7 +274,7 @@ reg add "HKLM\SOFTWARE\Policies\Microsoft\Windows NT\Terminal Services" /v MaxId
 1. 在 Active Directory 服务器上，打开**组策略管理控制台**。
 2. 展开你的域和组策略对象。
 3. 右键单击**组策略对象**创建的组策略设置并选择**编辑**。
-4. 在中**组策略管理编辑器**，导航到**计算机配置** > **策略** > **管理模板** > **Windows 组件** > **水平分割视图 RDSH Services** > **远程桌面会话主机** > **设备和资源重定向**。
+4. 在中**组策略管理编辑器**，导航到**计算机配置** > **策略** > **管理模板** > **Windows 组件** > **远程桌面服务** > **远程桌面会话主机**  > **设备和资源重定向**。
 5. 启用**允许时区重定向**设置。
 
 此外可以在主映像重定向的时区上运行此命令：
@@ -367,8 +367,8 @@ remove CorporateWerServer* from Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\W
 
 现在，你具有映像后，可以创建或更新主机池。 若要了解有关如何创建和更新主机池的详细信息，请参阅以下文章：
 
-- [使用 Azure 资源管理器模板创建主机池](create-host-pools-arm-template.md)
-- [教程：通过 Azure 市场创建主机池](create-host-pools-azure-marketplace.md)
+- [使用 Azure 资源管理器模板创建一个主机池](create-host-pools-arm-template.md)
+- [教程：使用 Azure Marketplace 创建主机池](create-host-pools-azure-marketplace.md)
 - [使用 PowerShell 创建主机池](create-host-pools-powershell.md)
-- [为主机池设置用户配置文件共享](create-host-pools-user-profile.md)
-- [配置 Windows 虚拟桌面负载均衡方法](configure-host-pool-load-balancing.md)
+- [设置主机池的用户配置文件共享](create-host-pools-user-profile.md)
+- [配置 Windows 虚拟机负载平衡方法](configure-host-pool-load-balancing.md)

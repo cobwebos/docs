@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: ac87ce2198296b82ef5655d7d75443a0bd49df3c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 1afe1b437d82759cdfd085f018c31db33264dbf5
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57875124"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683151"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
@@ -103,7 +103,6 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 有关解决这些类型的问题的其他信息，请参阅：
 
 - 这篇[探查参数](https://blogs.msdn.microsoft.com/queryoptteam/20../../i-smell-a-parameter/)博客文章
-- 这篇[参数探查问题和解决方法](https://blogs.msdn.microsoft.com/turgays/20../../parameter-sniffing-problem-and-possible-workarounds/)博客文章
 - 这篇[大象与老鼠参数探查](https://www.brentozar.com/archive/2013/06/the-elephant-and-the-mouse-or-parameter-sniffing-in-sql-server/)博客文章
 - 这篇[动态 sql 与参数化查询的计划质量](https://blogs.msdn.microsoft.com/conor_cunningham_msft/20../../conor-vs-dynamic-sql-vs-procedures-vs-plan-quality-for-parameterized-queries/)博客文章
 

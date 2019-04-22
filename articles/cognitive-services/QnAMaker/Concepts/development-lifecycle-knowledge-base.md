@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: 4acecb9d15f820ba092f36d8fa3ea204658d2dba
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3f78b8a2566137d596f4ab3f083e1d14289365c3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59276773"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684015"
 ---
 # <a name="knowledge-base-lifecycle-in-qna-maker"></a>QnA Maker 中的知识库生命周期
 QnA Maker 在反复的模型变更、表述示例、发布以及从终结点查询收集信息等周期中，会取得最佳的学习成效。 
@@ -35,14 +35,23 @@ QnA Maker 知识库 (KB) 终结点基于知识库的内容为用户查询提供�
 
 测试更新这一紧凑周期会持续至得到满意的结果为止。 了解如何[测试知识库](../How-To/test-knowledge-base.md)。
 
-对于大型的知识库，使用自动化与测试[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)并`isTest=true`查询字符串参数的查询`test`而不是已发布的知识库的知识库。 
+对于大型的知识库，使用自动测试与[generateAnswer API](../how-to/metadata-generateanswer-usage.md#get-answer-predictions-with-the-generateanswer-api)并`isTest`正文哪些查询的属性`test`而不是已发布的知识库的知识库。 
+
+```json
+{
+  "question": "example question",
+  "top": 3,
+  "userId": "Default",
+  "isTest": true
+}
+```
 
 ## <a name="publish-the-knowledge-base"></a>发布知识库
 完成知识库的测试后，即可发布此知识库。 发布操作会将经过测试的知识库的最新版本推送至代表“已发布”知识库的专用 Azure 搜索索引。 还会创建一个终结点，可在应用程序或聊天机器人中调用此终结点。
 
 这样一来，对知识库的测试版本进行的任何更改都不会影响可能已进入生产应用程序的已发布版本。
 
-所有这些知识库都可以单独作为测试目标。 使用 API，可以在 generateAnswer 调用中使用 `isTest=true` 标记，将知识库的测试版本作为目标。
+所有这些知识库都可以单独作为测试目标。 使用 Api，可以将包含知识库的测试版本`isTest`正文 generateAnswer 调用中的属性。
 
 了解如何[发布知识库](../Quickstarts/create-publish-knowledge-base.md#publish-the-knowledge-base)。
 

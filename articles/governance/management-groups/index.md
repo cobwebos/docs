@@ -4,9 +4,15 @@ description: 了解管理组、其权限的工作方式以及如何使用它们�
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 02/20/2019
+ms.date: 04/17/2019
 ms.author: rithorn
 ms.topic: overview
+ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
+ms.contentlocale: zh-CN
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699369"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -37,11 +43,11 @@ ms.topic: overview
 ## <a name="root-management-group-for-each-directory"></a>每个目录的根管理组
 
 为每个目录指定了一个称为“根”管理组的顶级管理组。
-此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 [Azure AD 全局管理员最初需要提升自身的权限](../../role-based-access-control/elevate-access-global-admin.md)才能成为此根组的所有者。 当管理员成为组的所有者后，可将任何 RBAC 角色分配给其他目录用户或组来管理层次结构。
+此根管理组内置在层次结构中，包含其所有下级管理组和订阅。 此根管理组允许在目录级别应用全局策略和 RBAC 分配。 一开始的时候，[Azure AD 全局管理员需要提升自身权限](../../role-based-access-control/elevate-access-global-admin.md)才能成为此根组的用户访问管理员角色。 提升访问权限后，管理员可将任何 RBAC 角色分配给其他目录用户或组，以便管理层次结构。 作为管理员，你可以将自己的帐户分配为根管理组的所有者。
 
 ### <a name="important-facts-about-the-root-management-group"></a>关于根管理组的重要事实
 
-- 默认情况下，已提供根管理组的名称和 ID。 随时可以更新此显示名称，以便在 Azure 门户中显示其他名称。
+- 默认情况下，已提供根管理组的名称和 ID。 随时可以更新此显示名称，以便在 Azure 门户中显示其他名称。 若要[更改名称](manage.md#change-the-name-of-a-management-group)，必须在根管理组中为帐户分配“所有者”或“参与者”角色。
   - 该名称将为“租户根组”。
   - ID 将为 Azure Active Directory ID。
 - 无法像操作其他管理组一样移动或删除根管理组。  
@@ -63,7 +69,7 @@ ms.topic: overview
 
 ## <a name="trouble-seeing-all-subscriptions"></a>查看所有订阅时遇到问题
 
-2018 年 6 月 25 日之前的预览版中较早开始使用管理组的一些目录可能会遇到问题，即并非所有订阅都在该层次结构中。  将所有订阅都纳入到该层次结构中的过程是在角色或策略分配已针对目录中的根管理组执行后实施的。
+2018 年 6 月 25 日之前的预览版中较早开始使用管理组的一些目录可能会遇到问题，即并非所有订阅都在该层次结构中。 将所有订阅都纳入到该层次结构中的过程是在角色或策略分配已针对目录中的根管理组执行后实施的。 
 
 ### <a name="how-to-resolve-the-issue"></a>如何解决问题
 

@@ -11,13 +11,13 @@ ms.workload: infrastructure-services
 ms.date: 04/03/2019
 ms.author: rambala
 ms.openlocfilehash: 4923c7f2048b7368af6314d5e2288216115bc3bc
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59052652"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784733"
 ---
-# <a name="cross-network-connectivity"></a>跨网络连接
+# <a name="cross-network-connectivity"></a>跨网连接
 
 Fabrikam Inc. 的实际经营场所众多，并在美国东部部署了 Azure。 Fabrikam 通过 ExpressRoute 在其本地与 Azure 部署之间建立了后端连接。 同样，Contoso Ltd.具有状态显示和美国西部的 Azure 部署。 Contoso 通过 ExpressRoute 在其本地与 Azure 部署之间建立了后端连接。  
 

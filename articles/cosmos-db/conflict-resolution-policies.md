@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 03/24/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 24201cfd657d4f23eb962b7407ed20262d780cf7
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: ebea55f769ca16bfa344d0a100fe16cec6d784d0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407413"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684219"
 ---
 # <a name="conflict-types-and-resolution-policies"></a>冲突类型和解决策略
 
@@ -37,11 +37,11 @@ Azure Cosmos DB 提供灵活策略驱动的机制来解决写入冲突。 您可
   > [!NOTE]
   > “最后写入者胜出”是默认的冲突解决策略。 它现在可供以下 Api:SQL、 MongoDB、 Cassandra、 Gremlin 和表。
 
-  有关详细信息，请参阅 [LWW 冲突解决策略的用法示例](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)。
+  有关详细信息，请参阅 [LWW 冲突解决策略的用法示例](how-to-manage-conflicts.md)。
 
 - **自定义**：此解决策略旨在使用应用程序定义的语义来调解冲突。 Azure Cosmos 容器上设置了此策略，还需要注册*合并存储的过程*。 在服务器上的数据库事务下检测到冲突时，会自动调用此过程。 在执行提交协议过程中，该系统可保证正好执行合并过程一次。  
 
-  如果使用自定义解决方法选项中，配置您的容器和无法注册容器上的合并过程或合并过程在运行时将引发异常，将写入冲突*冲突源*。 然后，应用程序需要自行解决冲突源中的冲突。 有关详细信息，请参阅[自定义解决策略和冲突源的用法示例](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)。
+  如果使用自定义解决方法选项中，配置您的容器和无法注册容器上的合并过程或合并过程在运行时将引发异常，将写入冲突*冲突源*。 然后，应用程序需要自行解决冲突源中的冲突。 有关详细信息，请参阅[自定义解决策略和冲突源的用法示例](how-to-manage-conflicts.md)。
 
   > [!NOTE]
   > 自定义冲突解决策略仅适用于 SQL API 帐户。
@@ -51,6 +51,5 @@ Azure Cosmos DB 提供灵活策略驱动的机制来解决写入冲突。 您可
 了解如何配置冲突解决策略：
 
 * [如何在应用程序中配置多主数据库](how-to-multi-master.md)
-* [如何使用 LWW 冲突解决策略](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
-* [如何使用自定义冲突解决策略](how-to-manage-conflicts.md#create-a-last-writer-wins-conflict-resolution-policy)
+* [如何管理冲突解决策略](how-to-manage-conflicts.md)
 * [如何读取冲突源](how-to-manage-conflicts.md#read-from-conflict-feed)

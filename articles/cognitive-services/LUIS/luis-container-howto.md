@@ -9,22 +9,22 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: ca9b08cdccd43a093ca8b5001d3e30be0e5258b5
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
-ms.translationtype: MT
+ms.openlocfilehash: 54a51c567e8dd655ee3a575d1d4887ec6e094e40
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58894672"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684050"
 ---
 # <a name="install-and-run-luis-docker-containers"></a>安装并运行 LUIS docker 容器
  
-语言理解 (LUIS) 容器可将已训练或已发布的语言理解模型（也称为 [LUIS 应用](https://www.luis.ai)）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 Azure 语言理解模型以提高应用的预测准确性。
+语言理解 (LUIS) 容器可将已训练或已发布的语言理解模型（也称为 [LUIS 应用](https://www.luis.ai)）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器收集查询日志并将这些后上传到语言理解应用程序以提高应用程序的预测准确性。
 
 以下视频演示如何使用此容器。
 
-[![C认知服务的 ontainer 演示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
+[![认知服务的容器演示](./media/luis-container-how-to/luis-containers-demo-video-still.png)](https://aka.ms/luis-container-demo)
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
@@ -36,7 +36,14 @@ ms.locfileid: "58894672"
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|语言理解 (LUIS) 资源和关联的应用 |若要使用容器，必须具有：<br><br>* [_语言理解_ Azure 资源](luis-how-to-azure-subscription.md)，以及关联的终结点密钥和终结点 URI（用作计费终结点）。<br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。<br>* 用于下载应用包的创作密钥（如果正在通过 API 执行此操作）。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}**：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APPLICATION_ID}**：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{ENDPOINT_KEY}**：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户的“语言理解”资源的密钥列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{BILLING_ENDPOINT}**：Azure 门户的“语言理解概述”页面上提供了计费终结点值。 例如：`https://westus.api.cognitive.microsoft.com/luis/v2.0`。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
+|Azure`Cognitive Services`资源和 LUIS[打包应用程序](/luis-how-to-start-new-app.md#export-app-for-containers)文件 |若要使用容器，必须具有：<br><br>* A_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 您需要添加`luis/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。 <br>* 已训练或已发布的应用，作为已安装的输入打包到具有其关联的应用 ID 的容器。 可以从 LUIS 门户或创作 Api 获取打包的文件。 如果要获取 LUIS 从封装的应用程序[创作 Api](#authoring-apis-for-package-file)，您还需要您_创作密钥_。<br><br>这些要求用于将命令行参数传递到以下变量：<br><br>**{AUTHORING_KEY}**：此密钥用于从云中的 LUIS 服务获取打包的应用并将查询日志上传回云。 格式为 `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx`。<br><br>**{APPLICATION_ID}**：此 ID 用于选择应用。 格式为 `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`。<br><br>**{ENDPOINT_KEY}**：此密钥用于启动容器。 可以在两个位置找到终结点密钥。 第一个是 Azure 门户中的_认知服务_资源的键列表。 也可以在 LUIS 门户的“密钥和终结点”设置页上找到终结点密钥。 请勿使用初学者密钥。<br><br>**{BILLING_ENDPOINT}**：例如：`https://westus.api.cognitive.microsoft.com/luis/v2.0`。<br><br>[创作密钥和终结点密钥](luis-boundaries.md#key-limits)具有不同的用途。 请勿互换使用。 |
+
+### <a name="authoring-apis-for-package-file"></a>包文件的创作 Api
+
+创作 Api 的打包应用程序：
+
+* [已发布的包 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagepublishedapplicationasgzip)
+* [不发布时，仅受过培训包 API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-packagetrainedapplicationasgzip)
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -46,12 +53,12 @@ ms.locfileid: "58894672"
 
 此容器支持设置的最小值和建议值：
 
-|容器| 最小值 | 建议 | TPS<br>（最低配置，最大值）|
+|容器| 最小值 | 建议 | TPS<br>(最小值, 最大值)|
 |-----------|---------|-------------|--|
 |LUIS|单核，2 GB 内存|单核，4 GB 内存|20,40|
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
-* TP-每秒事务数
+* TPS - 每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
@@ -114,7 +121,7 @@ LUIS 容器需要已训练或已发布的 LUIS 应用才能回复用户话语的
 
 |打包要求|详细信息|
 |--|--|
-|Azure 语言理解资源实例|支持的区域包括<br><br>美国西部 (```westus```)<br>西欧 (```westeurope```)<br>澳大利亚东部 (```australiaeast```)|
+|Azure_认知服务_资源实例|支持的区域包括<br><br>美国西部 (```westus```)<br>西欧 (```westeurope```)<br>澳大利亚东部 (```australiaeast```)|
 |已训练或已发布的 LUIS 应用|没有[不受支持的依赖项](#unsupported-dependencies)。 |
 |访问[主计算机](#the-host-computer)的文件系统 |主计算机必须允许[输入装入点](luis-container-configuration.md#mount-settings)。|
   
@@ -166,7 +173,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | 已发布 LUIS 应用的应用程序 ID。 |
 |{APPLICATION_ENVIRONMENT} | 已发布 LUIS 应用的环境。 使用以下值之一：<br/>```PRODUCTION```<br/>```STAGING``` |
 |{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。 |
-|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` -美国西部<br/>```westeurope``` -西欧<br/>```australiaeast``` -澳大利亚东部 |
+|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` - 美国西部<br/>```westeurope``` - 西欧<br/>```australiaeast``` - 澳大利亚东部 |
 
 使用以下 CURL 命令下载已发布的包，用你自己的值进行替换：
 
@@ -194,7 +201,7 @@ Ocp-Apim-Subscription-Key: {AUTHORING_KEY}
 |{APPLICATION_ID} | 已训练 LUIS 应用程序的应用程序 ID。 |
 |{APPLICATION_VERSION} | 已训练 LUIS 应用程序的应用程序版本。 |
 |{AUTHORING_KEY} | 已发布 LUIS 应用的 LUIS 帐户的创作密钥。<br/>可以从 LUIS 门户的“用户设置”页面中获取创作密钥。  |
-|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` -美国西部<br/>```westeurope``` -西欧<br/>```australiaeast``` -澳大利亚东部 |
+|{AZURE_REGION} | 相应的 Azure 区域：<br/><br/>```westus``` - 美国西部<br/>```westeurope``` - 西欧<br/>```australiaeast``` - 澳大利亚东部 |
 
 使用以下 CURL 命令下载已训练的包：
 
@@ -214,7 +221,7 @@ https://{AZURE_REGION}.api.cognitive.microsoft.com/luis/api/v2.0/package/{APPLIC
 | 占位符 | 值 |
 |-------------|-------|
 |{ENDPOINT_KEY} | 此密钥用于启动容器。 请勿使用初学者密钥。 |
-|{BILLING_ENDPOINT} | Azure 门户的“语言理解概述”页面上提供了计费终结点值。|
+|{BILLING_ENDPOINT} | 计费的终结点值是可在 Azure 门户上`Cognitive Services`概述页。 您需要添加`luis/v2.0`路由到终结点 URI，如下面的示例中所示： `https://westus.api.cognitive.microsoft.com/luis/v2.0`。|
 
 在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
 
@@ -245,7 +252,7 @@ ApiKey={ENDPOINT_KEY}
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](#billing)。
-> ApiKey 值是 LUIS 门户中“密钥和终结点”页面中的“密钥”，也可以在 Azure 语言理解资源密钥页上找到。  
+> ApiKey 当值**键**从密钥和终结点页 LUIS 门户中，也可在 Azure 上`Cognitive Services`资源密钥页。  
 
 [!INCLUDE [Running multiple containers on the same host](../../../includes/cognitive-services-containers-run-multiple-same-host.md)]
 
@@ -324,7 +331,7 @@ curl -X GET \
 
 ## <a name="billing"></a>计费
 
-LUIS 容器使用 Azure 帐户中的语言理解资源向 Azure 发送账单信息。 
+计费到 Azure 的信息，请使用 LUIS 容器发送_认知服务_上你的 Azure 帐户的资源。 
 
 [!INCLUDE [Container's Billing Settings](../../../includes/cognitive-services-containers-how-to-billing-info.md)]
 

@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: mlottner
 ms.openlocfilehash: 0089fd1af6576f9bcdebe4b7f270a573205dea82
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58861932"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59783494"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为适用于 Linux 的 IoT C 基于安全代理部署 Azure 安全中心
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本指南介绍如何安装和部署 IoT C 基于安全代理，Linux 上的 Azure 安全中心 (ASC)。

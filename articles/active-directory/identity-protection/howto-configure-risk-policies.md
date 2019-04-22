@@ -17,12 +17,12 @@ ms.date: 02/07/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbc2a1bd8b751ab1b88e54876227892ea3c257a3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: cdacdf604ab7a4ded7ddf302a217084630f60b31
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517532"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699024"
 ---
 # <a name="how-to-configure-risk-policies-in-azure-active-directory-identity-protection-refreshed"></a>如何：在 Azure Active Directory Identity Protection（已刷新）中配置风险策略
 
@@ -41,7 +41,8 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 登录风险策略是可以为特定登录风险级别配置的自动响应。 在响应中，你可以阻止对资源的访问，或者要求传递多重身份验证 (MFA) 质询来获取访问权限。
 
-   
+当用户成功完成登录风险策略触发的 MFA 提示时，可对 Identity Protection 中使用的登录源自于合法用户提供反馈。 因此，将自动关闭触发 MFA 提示的登录风险事件和 Identity Protection 将阻止此事件的用户风险的权限提升。 启用登录风险策略可以减少相风险登录视图中的，通过允许用户进行自我修正时提示进行 MFA 并随后自动关闭关联有风险登录。
+
 ## <a name="how-do-i-access-the-sign-in-risk-policy"></a>如何访问登录风险策略？
    
 登录风险策略位于 [Azure AD Identity Protection 页](https://portal.azure.com/#blade/Microsoft_AAD_ProtectionCenter/IdentitySecurityDashboardMenuBlade/SignInPolicy)上的“配置”部分中。
@@ -72,7 +73,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 策略配置对话框提供了一个选项来评估重新配置的影响。
 
-![估计影响](./media/howto-configure-risk-policies/15.png)
+![估计的影响](./media/howto-configure-risk-policies/15.png)
 
 ## <a name="what-you-should-know-about-sign-in-risk-policies"></a>登录风险策略要点
 
@@ -152,13 +153,13 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 策略配置对话框提供了一个选项用于评估配置的影响。
 
-![估计影响](./media/howto-configure-risk-policies/115.png)
+![估计的影响](./media/howto-configure-risk-policies/115.png)
 
 ## <a name="what-you-should-know-about-user-risk-polices"></a>用户风险策略要点
 
 可以设置用户风险安全策略，根据风险级别阻止用户登录。
 
-![正在阻止](./media/howto-configure-risk-policies/116.png)
+![阻止](./media/howto-configure-risk-policies/116.png)
 
 
 阻止登录：
@@ -191,7 +192,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。  
 

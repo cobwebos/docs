@@ -7,36 +7,35 @@ services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
-ms.date: 03/12/2019
+ms.date: 04/14/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: d5fdae09055f922fe9783f6eb074457af12c60df
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 09695f764ff71b274e125e90835f5314eb25c980
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880409"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683964"
 ---
 # <a name="attach-a-cognitive-services-resource-with-a-skillset-in-azure-search"></a>将认知服务资源与 Azure 搜索中的技能集联系起来 
 
-AI 算法会驱动用于在 Azure 搜索编制索引操作过程中处理非结构化数据的[认知搜索管道](cognitive-search-concept-intro.md)。 这些算法基于[认知服务资源](https://azure.microsoft.com/services/cognitive-services/)，包括[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)（用于图像分析和光学字符识别 (OCR)），以及[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)（用于实体识别、关键短语提取和其他扩充操作）。
+AI 算法驱动器[认知索引管道](cognitive-search-concept-intro.md)用于处理 Azure 搜索中的非结构化的数据。 这些算法基于[认知服务资源](https://azure.microsoft.com/services/cognitive-services/)，包括[计算机视觉](https://azure.microsoft.com/services/cognitive-services/computer-vision/)（用于图像分析和光学字符识别 (OCR)），以及[文本分析](https://azure.microsoft.com/services/cognitive-services/text-analytics/)（用于实体识别、关键短语提取和其他扩充操作）。
 
 可以免费扩充有限数量的文档，或者附加付费的认知服务资源来处理更大、更频繁的工作负荷。 本文介绍如何将认知服务资源关联到认知技能集，以便在 [Azure 搜索索引编制](search-what-is-an-index.md)期间扩充数据。
 
 如果管道中包含与认知服务 API 无关的技能，则你还应附加认知服务资源。 这样做会替代仅允许你每天执行少量扩充操作的“免费”资源。 未绑定到认知服务 API 的技能不收费。 这些技能包括：[自定义技能](cognitive-search-create-custom-skill-example.md)、[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)。
 
 > [!NOTE]
-> 自 2018 年 12 月 21 日起，可将认知服务资源与 Azure 搜索技能集进行关联。 这样，我们就可以开始收取技能集的执行费。 在此日期，我们还会开始将图像提取视为文档破解阶段的一部分进行计费。 我们将继续提供文档文本提取服务而不收取额外费用。
+> 通过增大处理频率、添加更多文档或添加更多 AI 算法来扩大范围时，需要附加可计费的认知服务资源。 调用认知服务中的 API，以及在 Azure 搜索中的文档破解阶段提取图像时，会产生费用。 提取文档中的文本不会产生费用。
 >
-> 执行[内置认知技能](cognitive-search-predefined-skills.md)按[认知服务即用即付价格](https://azure.microsoft.com/pricing/details/cognitive-services)收费，其费率与你以往直接执行任务的费率相同。 图像提取是 Azure 搜索收费项，目前以预览定价提供。 有关详细信息，请参见 [Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)或[如何计费](search-sku-tier.md#how-billing-works)。
+> 执行[内置认知技能](cognitive-search-predefined-skills.md)执行收费[认知服务付款现转价格](https://azure.microsoft.com/pricing/details/cognitive-services)，在相同速率像已直接执行该任务。 图像提取是反映在 Azure 搜索费用[Azure 搜索定价页](https://go.microsoft.com/fwlink/?linkid=2042400)。
 
 
 ## <a name="use-free-resources"></a>使用免费资源
 
 可以使用有限的免费处理选项来完成认知搜索教程和快速入门练习。 
 
-> [!Important]
-> 从 2019 年 2 月 1 日开始，“免费(有限扩充)”选项将限制为每日 20 个文档。 
+**免费 （有限正）** 被限制为每一天，每个订阅 20 个文档。
 
 1. 打开“导入数据”向导。
 
@@ -56,15 +55,21 @@ AI 算法会驱动用于在 Azure 搜索编制索引操作过程中处理非结�
 
 只有调用认知服务 API 的技能才收费。 对于不基于 API 的技能，例如[自定义技能](cognitive-search-create-custom-skill-example.md)、[文本合并器](cognitive-search-skill-textmerger.md)、[文本拆分器](cognitive-search-skill-textsplit.md)和[整形程序](cognitive-search-skill-shaper.md)，则不收费。
 
-1. 在“导入数据”向导的“附加认知服务”中选择现有资源，或单击“创建新的认知服务资源”。
+1. 打开**导入数据**向导中，选择数据源，并继续**添加认知搜索 （可选）**。 
 
-1. 如果选择“创建新的认知服务资源”，则会打开一个新的选项卡用于创建资源。 为资源指定唯一名称。
+1. 展开**附加认知服务**，然后选择**创建新的认知服务资源**。 一个新选项卡将打开，以便您可以创建资源。 
 
-1. 创建新的认知服务资源，如果 **，选择同一区域**为 Azure 搜索资源。
+   ![创建认知服务资源](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "创建认知服务资源")
 
-1. 选择一体化定价层 **S0**。 此层提供视觉和语言功能，认知搜索中的预定义技能基于这些功能。
+1. 在位置中，选择与 Azure 搜索以避免跨区域的出站带宽的费用相同的区域。
 
-    ![创建新的认知服务资源](./media/cognitive-search-attach-cognitive-services/cog-services-create.png "创建新的认知服务资源")
+1. 在定价层中，选择**S0**若要获取的认知服务功能，包括返回 Azure 搜索使用的预定义的技能的视觉和语言功能的多功能一体集合。 
+
+   S0 层上，您可以找到费率针对特定工作负荷上[认知服务定价页面](https://azure.microsoft.com/pricing/details/cognitive-services/)。
+  
+   + 在中**选择产品/服务**，请确保*认知服务*处于选中状态。
+   + 在语言功能，针对的费率*文本分析标准*适用于 AI 的索引。 
+   + 在下，视觉功能，针对的费率*计算机视觉 S1*应用。
 
 1. 单击“创建”预配新的认知服务资源。 
 
