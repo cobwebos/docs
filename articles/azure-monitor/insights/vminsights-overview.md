@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/13/2019
 ms.author: magoedte
-ms.openlocfilehash: f7a0300619d82f760c0e307601efbd3987eb6067
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: a60413ee6614b638db58748ee2c0aea5d7ea32ea
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58004586"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59697883"
 ---
 # <a name="what-is-azure-monitor-for-vms-preview"></a>什么是用于 VM 的 Azure Monitor（预览版）？
 
-用于 VM 的 Azure Monitor 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它会分析性能和 Windows 和 Linux Vm 的运行状况，并监视其进程和依赖于其他资源和外部进程。 
+用于 VM 的 Azure Monitor 可以大规模监视 Azure 虚拟机 (VM) 和虚拟机规模集。 它分析 Windows 和 Linux VM 的性能和运行状况，并监视它们的进程及其对其他资源和外部进程的依赖关系。 
 
 作为一种解决方案，用于 VM 的 Azure Monitor 支持监视本地或其他云提供程序中托管的 VM 的性能和应用程序依赖关系。 三个主要功能提供深入的见解：
 
@@ -39,7 +39,7 @@ ms.locfileid: "58004586"
 * 映射
 
 >[!NOTE]
->目前，对于 Azure 虚拟机和虚拟机规模集，仅提供了运行状况功能。 性能和映射功能，支持 Azure 虚拟机和托管的虚拟机在你的环境或其他云提供商。
+>目前，仅适用于 Azure 虚拟机提供的运行状况的功能。 性能和映射功能，支持 Azure Vm、 Azure VM 规模集和托管的虚拟机在你的环境或其他云提供商。
 
 与 Azure Monitor 日志集成提供了强大的聚合和筛选功能，并可随时分析数据趋势。 单独使用 Azure Monitor 或服务映射无法实现此类全面的工作负荷监视。  
 

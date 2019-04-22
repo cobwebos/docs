@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.reviewer: sergkanz
 ms.author: lagayhar
-ms.openlocfilehash: cc2d45aee170517d7e41cbda6d92bc21067732d1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 565f08f0c69aef393a9296f3cce90570a3f0bc2c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493631"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683012"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights 中的遥测关联
 
@@ -64,8 +64,8 @@ Application Insights 定义了用于分配遥测关联的[数据模型](../../az
 
 我们正在开发[关联 HTTP 协议](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/HttpCorrelationProtocol.md)的 RFC 提案。 此提案定义两个标头：
 
-- `Request-Id`:承载调用的全局唯一 ID。
-- `Correlation-Context`:承载分布式跟踪属性的名称值对集合。
+- `Request-Id`：承载调用的全局唯一 ID。
+- `Correlation-Context`：承载分布式跟踪属性的名称值对集合。
 
 该标准还定义了 `Request-Id` 生成项的两个架构：平面和分层。 使用平面架构时，将为 `Correlation-Context` 集合定义一个已知的 `Id` 键。
 
@@ -75,8 +75,8 @@ Application Insights 为关联 HTTP 协议定义了[扩展](https://github.com/l
 
 我们正在转换为 [W3C 分布式跟踪格式](https://w3c.github.io/trace-context/)。 定义的内容：
 
-- `traceparent`:承载调用的全局唯一操作 ID 和唯一标识符。
-- `tracestate`:承载跟踪系统特定的上下文。
+- `traceparent`：承载调用的全局唯一操作 ID 和唯一标识符。
+- `tracestate`：承载跟踪系统特定的上下文。
 
 #### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>启用对经典 ASP.NET 应用的 W3C 分布式跟踪支持
 
@@ -102,7 +102,7 @@ public void ConfigureServices(IServiceCollection services)
 
 #### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>启用对 Java 应用的 W3C 分布式跟踪支持
 
-- **传入的配置**
+- **传入配置**
 
   - 对于 Java EE 应用，请将以下内容添加到 ApplicationInsights.xml 内的 `<TelemetryModules>` 标记中：
 
@@ -117,7 +117,7 @@ public void ConfigureServices(IServiceCollection services)
     - `azure.application-insights.web.enable-W3C=true`
     - `azure.application-insights.web.enable-W3C-backcompat-mode=true`
 
-- **传出的配置**
+- **传出配置**
 
   将以下代码添加到 AI-Agent.xml：
 
@@ -143,11 +143,11 @@ public void ConfigureServices(IServiceCollection services)
 
 | Application Insights                  | OpenTracing                                       |
 |------------------------------------   |-------------------------------------------------  |
-| `Request`， `PageView`                 | `Span` 替换为 `span.kind = server`                  |
-| `Dependency`                          | `Span` 替换为 `span.kind = client`                  |
-| `Id` `Request`和 `Dependency`    | `SpanId`                                          |
+| `Request`、`PageView`                 | 带 `span.kind = server` 的 `Span`                  |
+| `Dependency`                          | 带 `span.kind = client` 的 `Span`                  |
+| `Request` 和 `Dependency` 的 `Id`    | `SpanId`                                          |
 | `Operation_Id`                        | `TraceId`                                         |
-| `Operation_ParentId`                  | `Reference` 类型的`ChildOf`（父范围）   |
+| `Operation_ParentId`                  | `ChildOf` 类型的 `Reference`（父级范围）   |
 
 有关详细信息，请参阅 [Application Insights 遥测数据模型](../../azure-monitor/app/data-model.md)。 
 
@@ -157,18 +157,18 @@ public void ConfigureServices(IServiceCollection services)
 
 .NET 至今已定义了多种方式来关联遥测和诊断日志：
 
-- `System.Diagnostics.CorrelationManager` 允许跟踪[LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。 
-- `System.Diagnostics.Tracing.EventSource` 和事件跟踪 Windows (ETW) 定义[SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx)方法。
-- `ILogger` 使用[日志作用域](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 
+- `System.Diagnostics.CorrelationManager` 允许跟踪 [LogicalOperationStack 和 ActivityId](https://msdn.microsoft.com/library/system.diagnostics.correlationmanager.aspx)。 
+- `System.Diagnostics.Tracing.EventSource` 和 Windows 事件跟踪 (ETW) 定义了 [SetCurrentThreadActivityId](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid.aspx) 方法。
+- `ILogger` 使用[日志范围](https://docs.microsoft.com/aspnet/core/fundamentals/logging#log-scopes)。 
 - Windows Communication Foundation (WCF) 和 HTTP 将“当前”上下文传播关联到一起。
 
-但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 是一种方法，以支持自动跨计算机相关联。 .NET 库支持“DiagnosticSource”，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
+但是，这些方法并未实现自动分布式跟踪支持。 `DiagnosticSource` 是支持跨计算机自动关联的一种方式。 .NET 库支持“DiagnosticSource”，并允许通过 HTTP 等传输方法自动跨计算机传播关联上下文。
 
 `DiagnosticSource` 中的[指南活动](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)解释了跟踪活动的基础知识。
 
 ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 
-`System.Net.HttpClient`从版本 4.1.0，开始支持自动注入关联 HTTP 标头并在活动的 HTTP 调用的跟踪。
+从版本 4.1.0 开始，`System.Net.HttpClient` 支持自动注入关联 HTTP 标头和以活动形式跟踪 HTTP 调用。
 
 经典 ASP.NET 有一个新的 HTTP 模块 [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)。 此模块使用 `DiagnosticSource` 实现遥测关联。 它会基于传入的请求标头启动活动。 它还会关联不同请求处理阶段的遥测，即使 Internet Information Services (IIS) 处理的每个阶段在不同的托管线程上运行。
 
@@ -217,7 +217,7 @@ ASP.NET Core 2.0 支持提取 HTTP 标头和启动新的活动。
 ## <a name="next-steps"></a>后续步骤
 
 - 编写[自定义遥测](../../azure-monitor/app/api-custom-events-metrics.md)。
-- 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud_rolename)。
+- 详细了解如何为其他 SDK [设置 cloud_RoleName](../../azure-monitor/app/app-map.md#set-cloud-role-name)。
 - 在 Application Insights 中载入微服务的所有组件。 查看[支持的平台](../../azure-monitor/app/platforms.md)。
 - 有关 Application Insights 的类型，请参阅[数据模型](../../azure-monitor/app/data-model.md)。
 - 了解如何[扩展和筛选遥测](../../azure-monitor/app/api-filtering-sampling.md)。

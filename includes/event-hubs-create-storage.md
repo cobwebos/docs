@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: 690e0da160042b7ac432b1a36c024a8a8f439823
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b84b0a8e09bf739ce62dee167ff751b491765c66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125132"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684661"
 ---
-## <a name="create-a-storage-account-for-event-processor-host"></a>为事件处理程序主机创建存储帐户
+### <a name="create-a-storage-account-for-event-processor-host"></a>为事件处理程序主机创建存储帐户
 事件处理程序主机是一个智能代理，它通过管理持久性检查点和并行接收操作，来简化从事件中心接收事件的过程。 对于检查点，事件处理程序主机需要一个存储帐户。 以下示例演示如何创建存储帐户，以及如何获取其密钥以进行访问：
 
 1. 在 Azure 门户中，选择屏幕左上角的“创建资源”。

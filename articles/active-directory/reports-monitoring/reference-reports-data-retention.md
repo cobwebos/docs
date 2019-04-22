@@ -17,12 +17,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 126eee1664d810850f63e702abe78b241649d665
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: f1423fddc13a6912e90b6a239921cf2a4d2662ec
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438812"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683727"
 ---
 # <a name="azure-active-directory-report-retention-policies"></a>Azure Active Directory 报告保留策略
 
@@ -68,8 +68,8 @@ ms.locfileid: "58438812"
 
 | 报表                 | Azure AD Free | Azure AD Basic | Azure AD Premium P1 | Azure AD Premium P2 |
 | :--                    | :--           | :--            | :--                 | :--                 |
-| 目录审核        | 7 天        |  7 天        | 30 天             | 30 天             |
-| 登录活动       | 不适用           |  不适用           | 30 天             | 30 天             |
+| 审核日志             | 7 天        |  7 天        | 30 天             | 30 天             |
+| 登录               | 不适用           |  不适用           | 30 天             | 30 天             |
 | Azure MFA 使用情况        | 30 天       |  30 天       | 30 天             | 30 天             |
 
 通过使用 Azure Monitor 将审核和登录活动数据路由到 Azure 存储帐户，可以使这些活动数据的保留时间长于上述默认保留期限。 有关详细信息，请参阅[将 Azure AD 日志存档到 Azure 存储帐户](quickstart-azure-monitor-route-logs-to-storage-account.md)。

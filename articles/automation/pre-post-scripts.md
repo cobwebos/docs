@@ -1,22 +1,22 @@
 ---
-title: 在 Azure 上的更新管理部署中配置前脚本和后脚本（预览版）
+title: 配置更新管理部署在 Azure 中的 pre 和 post 脚本
 description: 本文介绍如何配置和管理更新部署的前脚本和后脚本
 services: automation
 ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/04/2019
+ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 76cd877380090ccad8b2f7b7dbe79957e0eab5bb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59263802"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698728"
 ---
-# <a name="manage-pre-and-post-scripts-preview"></a>管理前脚本和后脚本（预览版）
+# <a name="manage-pre-and-post-scripts"></a>管理 pre 和 post 脚本
 
 在执行更新部署之前（前任务）和之后（后任务），可以使用前脚本和后脚本在自动化帐户中运行 PowerShell Runbook。 前脚本和后脚本在 Azure 上下文中运行，而不是在本地运行。 操作前脚本运行更新部署的开始处。 后脚本在部署结束时以及在配置的任何重新启动之后运行。
 
@@ -26,7 +26,7 @@ ms.locfileid: "59263802"
 
 ## <a name="using-a-prepost-script"></a>使用前脚本/后脚本
 
-若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择“前脚本 + 后脚本(预览版)”。 此操作会打开“选择前脚本 + 后脚本”页面。  
+若要在更新部署中使用前脚本或后脚本，请先创建一个更新部署。 选择**操作前脚本 + 后处理脚本**。 此操作会打开“选择前脚本 + 后脚本”页面。  
 
 ![选择脚本](./media/pre-post-scripts/select-scripts.png)
 
@@ -206,7 +206,20 @@ $variable = Get-AutomationVariable -Name $runId
 #>      
 ```
 
-## <a name="interacting-with-non-azure-machines"></a>与非 Azure 计算机交互
+## <a name="interacting-with-machines"></a>与计算机交互
+
+Pre 和 post 的任务作为 runbook 在自动化帐户中并不是直接在你的部署在计算机上运行。 Pre 和 post 任务还 Azure 上下文中运行，并且不能访问非 Azure 计算机。 以下部分介绍了如何交互，与计算机直接它们是 Azure VM 或非 Azure 计算机：
+
+### <a name="interacting-with-azure-machines"></a>与 Azure 机交互
+
+Pre 和 post 的任务是以 runbook 的形式运行，在你的部署中的 Azure Vm 上不以本机方式运行。 若要与 Azure 虚拟机进行交互，必须具有以下各项：
+
+* 一个运行方式帐户
+* 你想要运行 runbook
+
+若要与 Azure 机交互时，应使用[Invoke-azurermvmruncommand](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) cmdlet 与 Azure 虚拟机进行交互。 有关如何执行此操作的示例，请参阅 runbook 示例[更新管理-具有运行命令运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-40f470dc)。
+
+### <a name="interacting-with-non-azure-machines"></a>与非 Azure 计算机交互
 
 前任务和后任务在 Azure 上下文中运行，无法访问非 Azure 计算机。 若要与非 Azure 计算机进行交互，必须具有以下项：
 
@@ -215,38 +228,7 @@ $variable = Get-AutomationVariable -Name $runId
 * 要在本地运行的 Runbook
 * 父 Runbook
 
-若要与非 Azure 计算机交互，需在 Azure 上下文中运行一个父 Runbook。 此 Runbook 使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 调用子 Runbook。 必须指定 `-RunOn` 参数，并提供运行脚本的混合 Runbook 辅助角色的名称。
-
-```powershell
-$ServicePrincipalConnection = Get-AutomationConnection -Name 'AzureRunAsConnection'
-
-Add-AzureRmAccount `
-    -ServicePrincipal `
-    -TenantId $ServicePrincipalConnection.TenantId `
-    -ApplicationId $ServicePrincipalConnection.ApplicationId `
-    -CertificateThumbprint $ServicePrincipalConnection.CertificateThumbprint
-
-$AzureContext = Select-AzureRmSubscription -SubscriptionId $ServicePrincipalConnection.SubscriptionID
-
-$resourceGroup = "AzureAutomationResourceGroup"
-$aaName = "AzureAutomationAccountName"
-
-$output = Start-AzureRmAutomationRunbook -Name "StartService" -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName -RunOn "hybridWorker"
-
-$status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-while ($status.status -ne "Completed")
-{ 
-    Start-Sleep -Seconds 5
-    $status = Get-AzureRmAutomationJob -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-}
-
-$summary = Get-AzureRmAutomationJobOutput -Id $output.jobid -ResourceGroupName $resourceGroup  -AutomationAccountName $aaName
-
-if ($summary.Type -eq "Error")
-{
-    Write-Error -Message $summary.Summary
-}
-```
+若要与非 Azure 计算机交互，需在 Azure 上下文中运行一个父 Runbook。 此 Runbook 使用 [Start-AzureRmAutomationRunbook](/powershell/module/azurerm.automation/start-azurermautomationrunbook) cmdlet 调用子 Runbook。 必须指定 `-RunOn` 参数，并提供运行脚本的混合 Runbook 辅助角色的名称。 有关如何执行此操作的示例，请参阅 runbook 示例[更新管理的本地运行脚本](https://gallery.technet.microsoft.com/Update-Management-Run-6949cc44)。
 
 ## <a name="abort-patch-deployment"></a>中止修补程序部署
 

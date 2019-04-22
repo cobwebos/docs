@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 02/22/2019
+ms.date: 04/16/2019
 ms.author: jingwang
-ms.openlocfilehash: c2257dac60ed92859e3df3360ce55558b176de91
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: e3fc5a3dc5dc40078ca3a4733f6a2ba11da450f1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010203"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681210"
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>使用 Azure 数据工厂将数据复制到 Azure SQL 数据仓库或从 Azure SQL 数据仓库复制数据 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you're using:"]
@@ -43,7 +43,7 @@ ms.locfileid: "58010203"
 > 如果使用 Azure 数据工厂集成运行时复制数据，请将 [Azure SQL Server 防火墙](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)配置为允许 Azure 服务访问服务器。
 > 如果使用自承载集成运行时复制数据，请将 Azure SQL Server 防火墙配置为允许合适的 IP 范围。 此范围包括用于连接 Azure SQL 数据库的计算机的 IP。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 > [!TIP]
 > 要实现最佳性能，请使用 PolyBase 将数据加载到 Azure SQL 数据仓库。 有关详细信息，请参阅[使用 PolyBase 将数据加载到 Azure SQL 数据仓库](#use-polybase-to-load-data-into-azure-sql-data-warehouse)部分。 有关带有用例的演练，请参阅[在不到 15 分钟的时间里通过 Azure 数据工厂将 1 TB 的数据加载到 Azure SQL 数据仓库](load-azure-sql-data-warehouse.md)。
@@ -136,21 +136,21 @@ Azure SQL 数据仓库链接服务支持以下属性：
     - 应用程序密钥
     - 租户 ID
 
-1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予托管标识为管理员角色的组，请跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
+2. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予托管标识为管理员角色的组，请跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
 
-1. 为服务主体**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
+3. 为服务主体**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL：
     
     ```sql
     CREATE USER [your application name] FROM EXTERNAL PROVIDER;
     ```
 
-1. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码：
+4. 像通常对 SQL 用户或其他用户所做的那样**向服务主体授予所需的权限**。 运行以下代码，或更多的选项是指[此处](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
     EXEC sp_addrolemember [role name], [your application name];
     ```
 
-1. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
+5. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
 
 
 #### <a name="linked-service-example-that-uses-service-principal-authentication"></a>使用服务主体身份验证的链接服务示例
@@ -184,36 +184,23 @@ Azure SQL 数据仓库链接服务支持以下属性：
 
 可将数据工厂与代表此特定工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以使用此托管的标识进行 Azure SQL 数据仓库身份验证。 指定工厂可使用此标识访问数据仓库数据并从或向其中复制数据。
 
-> [!IMPORTANT]
-> 请注意，PolyBase 目前不支持的管理身份验证。
-
 若要使用托管的标识身份验证，请执行以下步骤：
 
-1. 在 Azure AD 中创建组。 将托管的标识的组的成员。
+1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。 Azure AD 管理员可以是 Azure AD 用户，也可以是 Azure AD 组。 如果授予托管标识为管理员角色的组，请跳过步骤 3 和 4。 管理员拥有对数据库的完全访问权限。
 
-   1. 找到从 Azure 门户的数据工厂托管标识。 转到数据工厂的“属性”。 复制服务标识 ID。
-
-   1. 安装 [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) 模块。 使用 `Connect-AzureAD` 命令登录。 运行以下命令以创建组并添加为成员的托管的标识。
-      ```powershell
-      $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
-      Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory managed identity object ID>"
-      ```
-
-1. 为 Azure 门户上的 Azure SQL Server **[预配 Azure Active Directory 管理员](../sql-database/sql-database-aad-authentication-configure.md#provision-an-azure-active-directory-administrator-for-your-azure-sql-database-server)**（如果尚未这样做）。
-
-1. 为 Azure AD 组**[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)**。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。 
+2. **[创建包含的数据库用户](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)** 有关数据工厂托管标识。 使用 SSMS 等工具连接到要从中复制数据或要将数据复制到其中的数据仓库，其 Azure AD 标识至少具有 ALTER ANY USER 权限。 运行以下 T-SQL。 
     
     ```sql
-    CREATE USER [your Azure AD group name] FROM EXTERNAL PROVIDER;
+    CREATE USER [your Data Factory name] FROM EXTERNAL PROVIDER;
     ```
 
-1. 像通常对 SQL 用户和其他用户所做的那样**向 Azure AD 组授予所需的权限**。 例如，运行以下代码。
+3. **授予数据工厂托管标识所需的权限**按照通常的 SQL 用户和其他用户的方式。 运行以下代码，或更多的选项是指[此处](https://docs.microsoft.com/en-us/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?view=sql-server-2017)。
 
     ```sql
-    EXEC sp_addrolemember [role name], [your Azure AD group name];
+    EXEC sp_addrolemember [role name], [your Data Factory name];
     ```
 
-1. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
+5. 在 Azure 数据工厂中**配置 Azure SQL 数据仓库链接服务**。
 
 **示例：**
 
@@ -386,7 +373,7 @@ GO
 | rejectType | 指定 **rejectValue** 选项是文本值还是百分比。<br/><br/>允许的值为 **Value**（默认值）和 **Percentage**。 | 否 |
 | rejectSampleValue | 确定在 PolyBase 重新计算被拒绝行的百分比之前要检索的行数。<br/><br/>允许的值为 1、2 等。 | 如果 **rejectType** 是 **percentage**，则为“是” |
 | useTypeDefault | 指定 PolyBase 从文本文件检索数据时如何处理分隔文本文件中的缺失值。<br/><br/>有关此属性的详细信息，请参阅[创建外部文件格式 (Transact SQL)](https://msdn.microsoft.com/library/dn935026.aspx) 中的参数部分。<br/><br/>允许的值为 **True** 和 **False**（默认值）。 | 否 |
-| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会将数据插入到 SQL 表。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 | 不是。 默认值为 10000。 |
+| writeBatchSize | 缓冲区大小达到 writeBatchSize 时会将数据插入到 SQL 表。 仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **integer**（行数）。 | 不。 默认值为 10000。 |
 | writeBatchTimeout | 超时前等待批量插入操作完成的时间。仅在未使用 PolyBase 时适用。<br/><br/>允许的值为 **timespan**。 示例：“00:30:00”（30 分钟）。 | 否 |
 | preCopyScript | 每次运行时，将数据写入到 Azure SQL 数据仓库之前，指定复制活动要运行的 SQL 查询。 使用此属性清理预加载的数据。 | 否 |
 
@@ -415,9 +402,6 @@ GO
 * 如果源数据位于 Azure Blob 存储或 Azure Data Lake Store 中，并且格式与 PolyBase 兼容，请使用 PolyBase 直接复制到 Azure SQL 数据仓库。 有关详细信息，请参阅**[使用 PolyBase 直接复制](#direct-copy-by-using-polybase)**。
 * 如果 PolyBase 最初不支持源数据存储和格式，请改用**[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)** 功能。 暂存复制功能也能提供更高的吞吐量。 它自动将数据转换为 PolyBase 兼容的格式。 它将数据存储在 Azure Blob 存储中。 然后，它将数据载入 SQL 数据仓库。
 
-> [!IMPORTANT]
-> 请注意，基于 MSI 的 Azure AD 应用程序令牌身份验证目前不支持 PolyBase。
-
 ### <a name="direct-copy-by-using-polybase"></a>使用 PolyBase 直接复制
 
 SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 它使用服务主体作为源，并具有特定的文件格式要求。 如果源数据满足本部分所述的条件，请使用 PolyBase 从源数据存储直接复制到 Azure SQL 数据仓库。 否则，请改用[使用 PolyBase 的暂存复制](#staged-copy-by-using-polybase)。
@@ -427,7 +411,7 @@ SQL 数据仓库 PolyBase 直接支持 Azure Blob 和 Azure Data Lake Store。 �
 
 如果不满足要求，Azure 数据工厂会检查设置，并自动回退到 BULKINSERT 机制以进行数据移动。
 
-1. 源链接服务类型是具有帐户密钥身份验证的 Azure Blob 存储 (AzureBLobStorage/AzureStorage)，或具有服务主体身份验证的 Azure Data Lake Storage Gen1 (AzureDataLakeStore)。
+1. **源链接服务**类型是 Azure Blob 存储 (**AzureBLobStorage**/**AzureStorage**) 与**帐户密钥身份验证**或 Azure 数据湖存储 Gen1 (**AzureDataLakeStore**) 与**服务主体身份验证**。
 2. **输入数据集**类型为 **AzureBlob** 或 **AzureDataLakeStoreFile**。 `type` 属性下的格式类型为 **OrcFormat**、**ParquetFormat** 或 **TextFormat**，其配置如下：
 
    1. `fileName` 不包含通配符筛选器。
@@ -581,28 +565,28 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的 Blob 
 |:--- |:--- |
 | bigint | Int64 |
 | binary | Byte[] |
-| bit | Boolean |
+| bit | 布尔 |
 | char | String, Char[] |
-| date | DateTime |
+| 日期 | DateTime |
 | Datetime | DateTime |
 | datetime2 | DateTime |
 | Datetimeoffset | DateTimeOffset |
-| Decimal | Decimal |
-| FILESTREAM attribute (varbinary(max)) | Byte[] |
+| 小数 | 小数 |
+| FILESTREAM 特性 (varbinary(max)) | Byte[] |
 | Float | Double |
-| image | Byte[] |
+| 图像 | Byte[] |
 | int | Int32 |
-| money | Decimal |
+| money | 小数 |
 | nchar | String, Char[] |
 | ntext | String, Char[] |
-| numeric | Decimal |
+| numeric | 小数 |
 | nvarchar | String, Char[] |
 | real | Single |
 | rowversion | Byte[] |
 | smalldatetime | DateTime |
 | smallint | Int16 |
-| smallmoney | Decimal |
-| sql_variant | Object |
+| smallmoney | 小数 |
+| sql_variant | 对象 |
 | text | String, Char[] |
 | time | TimeSpan |
 | timestamp | Byte[] |

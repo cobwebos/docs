@@ -8,14 +8,14 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 03/04/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: c6cf3f188309891b0456b034e3809a0f0209c124
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.openlocfilehash: d84ebcdbd557a56c4c20600be67f26a084d43ed2
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489427"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681805"
 ---
 # <a name="container-support-in-azure-cognitive-services"></a>Azure 认知服务中的容器支持
 
@@ -25,7 +25,7 @@ Azure 认知服务中的容器支持让开发人员能够使用与 Azure 中可�
 
 以下视频演示如何使用认知服务容器。
 
-[![C认知服务的 ontainer 演示](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
+[![认知服务的容器演示](./media/index/containers-video-image.png)](https://azure.microsoft.com/resources/videos/containers-support-of-cognitive-services)
 
 [计算机视觉](Computer-vision/Home.md)、[人脸](Face/Overview.md)、[文本分析](text-analytics/overview.md)和[语言理解 (LUIS)](LUIS/what-is-luis.md) 服务在 [Microsoft Azure](https://azure.microsoft.com) 中可用。 登录到 [Azure 门户](https://portal.azure.com/)，创建和浏览适用于这些服务的 Azure 资源。
 
@@ -43,7 +43,7 @@ Azure 认知服务容器提供以下一组 Docker 容器，其中每个容器都
 
 | 服务 | 受支持的定价层 | 容器 | 描述 |
 |---------|----------|----------|-------------|
-|[计算机视觉](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|**识别文本** |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
+|[计算机视觉](Computer-vision/computer-vision-how-to-install-containers.md) |F0, S1|识别文本 |从具有不同表面和背景的各种对象的图像中提取打印文本，例如收据、海报和名片。<br/><br/>**重要提示：** 识别文本容器目前仅适用于英语。<br>[请求访问权限](Computer-vision/computer-vision-how-to-install-containers.md#request-access-to-the-private-container-registry)|
 |[人脸](Face/face-how-to-install-containers.md) |F0, S0|**人脸** |检测图像中的人脸并标识属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，人脸还可以使用置信分数检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。<br>[请求访问权限](Face/face-how-to-install-containers.md#request-access-to-the-private-container-registry) |
 |[LUIS](LUIS/luis-container-howto.md) |F0, S0|**LUIS**（[映像](https://go.microsoft.com/fwlink/?linkid=2043204)）|可将已训练或已发布的语言理解模型（也称为 LUIS 应用）加载到 docker 容器中并提供对容器的 API 终结点中的查询预测的访问权限。 可以从容器中收集查询日志并将这些日志上传回 [LUIS 门户](https://www.luis.ai)以提高应用的预测准确性。|
 |[文本分析](text-analytics/how-tos/text-analytics-how-to-install-containers.md) |F0 S|关键短语提取（[映像](https://go.microsoft.com/fwlink/?linkid=2018757)） |提取关键短语，以标识要点。 例如，针对输入文本“The food was delicious and there were wonderful staff”，该 API 会返回谈话要点：“food”和“wonderful staff”。 |
@@ -83,5 +83,5 @@ Azure 认知服务容器通过 Azure 订阅公开发布，并可以从 Microsoft
 
 * [安装和使用计算机视觉容器](Computer-vision/computer-vision-how-to-install-containers.md)
 * [安装和使用人脸容器](Face/face-how-to-install-containers.md)
-* [安装并使用文本分析容器](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
-* [安装并使用语言理解 (LUIS) 容器](LUIS/luis-container-howto.md)
+* [安装和使用文本分析容器](text-analytics/how-tos/text-analytics-how-to-install-containers.md)
+* [安装和使用语言理解 (LUIS) 容器](LUIS/luis-container-howto.md)

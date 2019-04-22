@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
 ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895590"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
@@ -65,9 +65,9 @@ ms.locfileid: "58895590"
 * [何时应启用非 SSL 端口来连接 Redis？](#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
 
 ## <a name="production-faqs"></a>生产常见问题
-* [生产的一些最佳做法是什么？](#what-are-some-production-best-practices)
+* [生产最佳做法有哪些？](#what-are-some-production-best-practices)
 * [使用常见 Redis 命令时要注意哪些问题？](#what-are-some-of-the-considerations-when-using-common-redis-commands)
-* [如何制定基准和测试缓存的性能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
+* [如何制定基准和测试缓存性能？](#how-can-i-benchmark-and-test-the-performance-of-my-cache)
 * [有关线程池增长的重要详细信息](#important-details-about-threadpool-growth)
 * [启用服务器 GC，以便在使用 StackExchange.Redis 时在客户端上获取更多吞吐量](#enable-server-gc-to-get-more-throughput-on-the-client-when-using-stackexchangeredis)
 * [围绕连接的性能注意事项](#performance-considerations-around-connections)
@@ -135,7 +135,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 
 | 定价层 | 大小 | CPU 核心数 | 可用带宽 | 1 KB 值大小 | 1 KB 值大小 |
 | --- | --- | --- | --- | --- | --- |
-| **标准缓存大小** | | |**兆位 / 秒 （Mb/秒） / 兆字节 / 秒 （MB/秒）** |**每秒 (RPS) 非 SSL 请求数** |**第二个 (RPS) SSL 请求数 /** |
+| **标准缓存大小** | | |**兆位/秒（Mb/秒）/兆字节/秒（MB/秒）** |**非 SSL 请求数/秒 (RPS)** |**SSL 请求数/秒 (RPS)** |
 | C0 |250 MB |共享 |100/12.5 |15,000 |7,500 |
 | C1 |1 GB |1 |500/62.5 |38,000 |20,720 |
 | C2 |2.5 GB |2 |500/62.5 |41,000 |37,000 |
@@ -143,7 +143,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 | C4 |13 GB |2 |500/62.5 |60,000 |55,000 |
 | C5 |26 GB |4 |1,000 / 125 |102,000 |93,000 |
 | C6 |53 GB |8 |2,000 / 250 |126,000 |120,000 |
-| **高级缓存大小** | |**每个分片的 CPU 核心数** | **兆位 / 秒 （Mb/秒） / 兆字节 / 秒 （MB/秒）** |**每秒 (RPS) 非-每分片 SSL 请求数** |**每分片每第二个 (RPS) SSL 请求数** |
+| **高级缓存大小** | |**每个分片的 CPU 核心数** | **兆位/秒（Mb/秒）/兆字节/秒（MB/秒）** |**每分片非 SSL 请求数/秒 (RPS)** |**每分片 SSL 请求数/秒 (RPS)** |
 | P1 |6 GB |2 |1,500 / 187.5 |180,000 |172,000 |
 | P2 |13 GB |4 |3,000 / 375 |350,000 |341,000 |
 | P3 |26 GB |4 |3,000 / 375 |350,000 |341,000 |
@@ -173,9 +173,9 @@ Azure Redis 缓存的定价在[此处](https://azure.microsoft.com/pricing/detai
 
 若要深入了解通过其他云使用 Azure Redis 缓存的注意事项，请参阅以下链接。
 
-- [Azure 政府版数据库-Azure Redis 缓存](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
-- [Azure 中国云-Azure Redis 缓存](https://www.azure.cn/home/features/redis-cache/)
-- [Microsoft Azure 德国](https://azure.microsoft.com/overview/clouds/germany/)
+- [Azure 政府数据库 - Azure Redis 缓存](../azure-government/documentation-government-services-database.md#azure-cache-for-redis)
+- [Azure 中国云 - Azure Redis 缓存](https://www.azure.cn/home/features/redis-cache/)
+- [Microsoft Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)
 
 有关通过 PowerShell 在 Azure 政府云、Azure 中国云和 Microsoft Azure 德国中使用 Azure Redis 缓存的信息，请参阅[如何连接到其他云 - Azure Redis 缓存 PowerShell](cache-howto-manage-redis-cache-powershell.md#how-to-connect-to-other-clouds)。
 
@@ -269,7 +269,7 @@ Microsoft Azure Redis 缓存基于热门的开源 Azure Redis 缓存，可以通
 >
 > `session.save_path = "tcp://mycache.redis.cache.windows.net:6379?auth=<url encoded primary or secondary key here>";`
 >
-> 如果密钥未进行 URL 编码，可能会收到类似这样的消息的异常： `Failed to parse session.save_path`
+> 如果未对密钥进行 URL 编码，可能会收到包含如下消息的异常：`Failed to parse session.save_path`
 >
 >
 
@@ -300,14 +300,14 @@ Redis 服务器本身不支持 SSL，但 Azure Redis 缓存可提供此支持。
 有关下载 Redis 工具的说明，请参阅[如何运行 Redis 命令？](#cache-commands)部分。
 
 ### <a name="what-are-some-production-best-practices"></a>生产的一些最佳做法是什么？
-* [StackExchange.Redis 的最佳做法](#stackexchangeredis-best-practices)
+* [StackExchange.Redis 最佳做法](#stackexchangeredis-best-practices)
 * [配置和概念](#configuration-and-concepts)
 * [性能测试](#performance-testing)
 
 #### <a name="stackexchangeredis-best-practices"></a>StackExchange.Redis 的最佳做法
 * 将 `AbortConnect` 设置为 false，然后使 ConnectionMultiplexer 自动重新连接。 [请参阅此处了解详细信息](https://gist.github.com/JonCole/36ba6f60c274e89014dd#file-se-redis-setabortconnecttofalse-md)。
 * 重复使用 ConnectionMultiplexer - 不要为每个请求创建一个新的 ConnectionMultiplexe。 建议使用[此处所示](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)的 `Lazy<ConnectionMultiplexer>` 模式。
-* 具有较小值的 Redis 工作性能最佳，因此请考虑将较大数据分成多个密钥。 [本次讨论的 Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) 为 100 kb，属于大型数据。 阅读 [](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size) 了解较大值可能引起的问题示例。
+* 具有较小值的 Redis 工作性能最佳，因此请考虑将较大数据分成多个密钥。 [本次讨论的 Redis](https://groups.google.com/forum/#!searchin/redis-db/size/redis-db/n7aa2A4DZDs/3OeEPHSQBAAJ) 为 100 kb，属于大型数据。 阅读[此文章](https://gist.github.com/JonCole/db0e90bedeb3fc4823c2#large-requestresponse-size)以了解较大值可能引起的问题示例。
 * 配置 [ThreadPool](#important-details-about-threadpool-growth) 设置，以免超时。
 * 将默认 connectTimeout 至少设置为 5 秒。 出现网络故障时，此间隔可以给 StackExchange.Redis 留出足够的时间来重新建立连接。
 * 请注意与正在运行的不同操作相关的性能成本。 例如，`KEYS` 命令是 O(n) 操作，应当避免。 [redis.io](https://redis.io/commands/) 站点具有关于其支持的每个操作的时间复杂性的详细信息。 单击每个命令以查看每个操作的复杂程度。
@@ -403,7 +403,7 @@ CLR 线程池具有两种类型的线程 —“辅助角色”和“I/O 完成�
 启用服务器 GC 可以在使用 StackExchange.Redis 时优化客户端并提供更好的性能和吞吐量。 有关服务器 GC 以及如何启用它的详细信息，请参阅以下文章：
 
 * [若要启用服务器 GC](/dotnet/framework/configure-apps/file-schema/runtime/gcserver-element)
-* [垃圾回收的基础知识](/dotnet/standard/garbage-collection/fundamentals)
+* [垃圾回收基础](/dotnet/standard/garbage-collection/fundamentals)
 * [垃圾回收和性能](/dotnet/standard/garbage-collection/performance)
 
 
@@ -467,12 +467,12 @@ Redis 取得成功的另一个重要方面是围绕它构建了健康而充满�
 有关如何开始使用 Azure Redis 缓存的详细信息，请参阅[如何使用 Azure Redis 缓存](cache-dotnet-how-to-use-azure-redis-cache.md)和 [Azure Redis 缓存文档](index.md)。
 
 ### <a name="managed-cache-service"></a>托管缓存服务
-[托管的缓存服务已于 2016 年 11 月 30 日停用。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[已于 2016 年 11 月 30 日停用托管缓存服务。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
 若要查看存档文档，请参阅[已存档托管缓存服务文档](/previous-versions/azure/azure-services/dn386094(v=azure.100))。
 
 ### <a name="in-role-cache"></a>角色中缓存
-[角色中缓存已于 2016 年 11 月 30 日停用。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[已于 2016 年 11 月 30 日停用角色中缓存。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
 
 若要查看存档文档，请参阅[已存档角色中缓存文档](/previous-versions/azure/azure-services/dn386103(v=azure.100))。
 

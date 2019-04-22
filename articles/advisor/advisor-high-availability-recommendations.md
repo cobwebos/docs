@@ -8,12 +8,12 @@ ms.author: kasparks
 ms.service: advisor
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 42627649145b568b2b25411d182e5a36cdb025b0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 793c881d08e8feb038cc6e7ac82b7e95384e1b55
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881182"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699298"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>使用 Azure 顾问提高应用程序的可用性
 
@@ -65,6 +65,10 @@ Azure 顾问可帮助确保并提高业务关键应用程序的连续性。 可�
 ## <a name="configure-your-vpn-gateway-to-active-active-for-connection-resiliency"></a>配置 VPN 网关为主动-主动以进行连接复原
 
 在主动-主动配置中，VPN 网关的两个实例将建立 S2S VPN 隧道与本地 VPN 设备。 当一个网关实例上发生计划内维护事件或计划外事件时，流量将自动切换到其他活动 IPsec 隧道。 Azure 顾问将识别未配置为主动-主动的 VPN 网关并建议将它们配置为高可用性。
+
+## <a name="use-production-vpn-gateways-to-run-your-production-workloads"></a>使用生产 VPN 网关运行生产工作负荷
+
+Azure 顾问将检查任何 VPN 网关的基本 SKU，并建议您改为使用生产 SKU。 基本 SKU 专为开发和测试目的。 生产 Sku 提供更多的隧道、 BGP 支持、 主动-主动配置选项、 自定义 Ipsec/IKE 策略和更高版本稳定性和可用性。
 
 ## <a name="how-to-access-high-availability-recommendations-in-advisor"></a>如何访问顾问中的高可用性建议
 

@@ -10,12 +10,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: magoedte
-ms.openlocfilehash: 32f2833b4c1ba77564d5388bc080a7cb32d90201
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
+ms.openlocfilehash: ade12225a470b64278b9d27676ceab768f64d904
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56243767"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698260"
 ---
 # <a name="azure-monitor-for-vms-preview-frequently-asked-questions"></a>用于 VM 的 Azure Monitor（预览版）常见问题解答
 本 Microsoft 常见问题解答列出了用于 VM 的 Azure Monitor 的常见问题。 如果对该解决方案还有其他任何问题，请访问[论坛](https://feedback.azure.com/forums/34192--general-feedback)并发布问题。 当某个问题经常被问到时，我们会将该问题添加到本文中，以便可以轻松快捷地找到该问题。
@@ -100,7 +100,7 @@ ms.locfileid: "56243767"
 * 受监视 VM 现在包含在客户端组节点中，圆环图显示该组中受监视与不受监视虚拟机的比例。  展开该组后，还可以在该图表中筛选计算机列表。
 * 受监视虚拟机现在包含在服务器端口组节点中，圆环图显示该组中受监视与不受监视虚拟机的比例。  展开该组后，还可以在该图表中筛选计算机列表。
 * 映射样式已更新，与 Application Insights 中的应用映射更一致。
-* 边侧面板已更新，但尚不包含服务映射中支持的整套集成功能 -“更新管理”、“更改跟踪”、“安全性”和“服务台”。 
+* 侧面板已更新，但没有集成的服务映射-更新管理、 更改跟踪、 安全性和 Service Desk 中支持的完整集。 
 * 用于选择要映射的组和计算机的选项已更新，现在支持订阅、资源组、Azure 虚拟机规模集和云服务。
 * 无法在用于 VM 的 Azure Monitor 映射功能中创建新的服务映射计算机组。  
 
@@ -125,6 +125,12 @@ ms.locfileid: "56243767"
 ## <a name="why-does-the-network-chart-on-the-performance-tab-look-different-than-the-network-chart-on-the-azure-vm-overview-page"></a>为何“性能”选项卡上的网络图表不同于 Azure VM“概述”页上的网络图表？
 
 Azure VM 的概述页基于来宾 VM 中的活动的主机度量值显示图表。  Azure VM“概述”中的网络图表仅显示计费的网络流量。  它不包括 VNet 间的流量。  为用于 VM 的 Azure Monitor 显示的数据和图表基于来宾 VM 中的数据，网络图表显示入站和出站到该 VM 的所有 TCP/IP 流量，包括 VNet 间的流量。
+
+## <a name="how-is-response-time-measured-for-data-stored-in-vmconnection-and-displayed-in-the-connection-panel-and-workbooks"></a>数据存储在 VMConnection 并显示在连接面板和工作簿中如何测量响应时间？
+
+响应时间是近似值。 由于我们未检测的应用程序代码，我们不真正知道请求开始时和响应到达时。 而是我们观察到的连接上发送的数据，然后返回的数据对该连接。 我们的代理会跟踪这些发送和接收并尝试对它们： 接收的发送后, 跟一系列序列解释为请求/响应对。 这些操作之间的时间是响应时间。 它包含的网络延迟和服务器处理时间。
+
+此近似值非常适合进行基于请求/响应的协议： 单个请求出在连接上，如果单个响应到达。 是这样的 HTTP (S) （而无需借助管道传输），但不是满足为其他协议。
 
 ## <a name="are-their-limitations-if-i-am-on-the-log-analytics-free-pricing-plan"></a>如果我使用的是 Log Analytics 免费定价计划，它们有何限制？
 如果已经为 Azure Monitor 配置了使用*免费*定价层的 Log Analytics 工作区，则用于 VM 的 Azure Monitor 的映射功能将仅支持已连接到工作区的五台计算机。 如果已有五台 VM 连接到免费工作区，你断开了其中一台 VM 的连接，然后连接到一台新的 VM，则新的 VM 将不受监视并且不会反映在“映射”页上。  

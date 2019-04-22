@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: d75deaca7ce052d40274f1f57a8f6603a3ecdfd2
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 9c97f23c2dfc2b1c0ff794aa20ffb58cd8b8741a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59046149"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683896"
 ---
 # <a name="set-up-compute-targets-for-model-training"></a>设置模型训练的计算目标
 
@@ -46,7 +46,7 @@ Azure 机器学习服务为不同的计算目标提供不同的支持。 典型�
 |[Azure Databricks](how-to-create-your-first-pipeline.md#databricks)| &nbsp; | &nbsp; | ✓ | ✓ |
 |[Azure Data Lake Analytics](how-to-create-your-first-pipeline.md#adla)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 |[Azure HDInsight](#hdinsight)| &nbsp; | &nbsp; | &nbsp; | ✓ |
-|[Azure 批处理](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
+|[Azure Batch](#azbatch)| &nbsp; | &nbsp; | &nbsp; | ✓ |
 
 **所有计算目标都可重复用于多个训练作业**。 例如，将远程 VM 附加到你的工作区后，可以将其重复用于多个作业。
 
@@ -361,8 +361,8 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
     > [!NOTE]
     > Microsoft 建议使用 SSH 密钥，因为它们比密码更安全。 密码很容易受到暴力破解攻击。 SSH 密钥依赖于加密签名。 若要了解如何创建用于 Azure 虚拟机的 SSH 密钥，请参阅以下文档：
     >
-    > * [创建和使用 Linux 或 macOS 上的 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
-    > * [创建和在 Windows 上使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
+    > * [在 Linux 或 macOS 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/mac-create-ssh-keys)
+    > * [在 Windows 上创建和使用 SSH 密钥](https://docs.microsoft.com/azure/virtual-machines/linux/ssh-from-windows)
 
 1. 选择“附加”。 
 1. 通过在列表中选择计算目标来查看附加操作的状态。
@@ -377,7 +377,6 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 
 有关详细信息，请参阅[资源管理](reference-azure-machine-learning-cli.md#resource-management)。
 
-
 ## <a id="submit"></a>提交训练运行
 
 创建运行配置后，可以使用它来运行试验。  对于所有类型的计算目标，用于提交训练运行的代码模式都是相同的：
@@ -385,6 +384,13 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 1. 创建要运行的试验
 1. 提交运行任务。
 1. 等待运行任务完成。
+
+> [!IMPORTANT]
+> 当提交培训运行时，快照包含训练脚本的目录的创建，并发送到计算目标。 它还存储为你的工作区中的实验的一部分。 如果更改文件和提交运行同样，将上载更改的文件。
+>
+> 若要防止文件被包含在快照中，创建[.gitignore](https://git-scm.com/docs/gitignore)或`.amlignore`文件的目录中，并向其中添加文件。 `.amlignore`文件使用相同的语法，作为模式[.gitignore](https://git-scm.com/docs/gitignore)文件。 如果这两个文件存在，`.amlignore`文件具有优先权。
+> 
+> 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshot)。
 
 ### <a name="create-an-experiment"></a>创建试验
 
@@ -399,8 +405,6 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * **source_directory**：包含训练脚本的源目录
 * **script**：标识训练脚本
 * **run_config**：运行配置，其中定义训练位置。
-
-提交训练运行时，将创建包含训练脚本的目录的快照，并将其发送到计算目标。 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshot)。
 
 例如，若要使用[本地目标](#local)配置：
 
@@ -428,4 +432,4 @@ myvm = ComputeTarget(workspace=ws, name='my-vm-name')
 * [教程：训练模型](tutorial-train-models-with-aml.md)使用一个托管计算目标来训练模型。
 * 训练模型后，了解[如何以及在何处部署模型](how-to-deploy-and-where.md)。
 * 查看 [RunConfiguration 类](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) SDK 参考。
-* [Azure 虚拟网络中使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)

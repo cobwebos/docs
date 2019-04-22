@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: article
-ms.date: 02/21/2019
+ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: d14e2897183a97da5e84a76b699def529f1d167e
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579404"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683567"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>获取一个使用 GenerateAnswer API 和元数据的知识答案
 
@@ -46,7 +46,7 @@ ms.locfileid: "59579404"
 发布知识库后，从 [QnA Maker 门户](https://www.qnamaker.ai)或使用 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) 都可以获取 GenerateAnswer 终结点的详细信息。
 
 获取终结点详细信息：
-1. 登录至 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
+1. 登录到 [https://www.qnamaker.ai](https://www.qnamaker.ai)。
 1. 在“我的知识库”中，单击知识库的“查看代码”。
     ![我的知识库](../media/qnamaker-how-to-metadata-usage/my-knowledge-bases.png)
 1. 获取 GenerateAnswer 终结点的详细信息。
@@ -64,7 +64,7 @@ ms.locfileid: "59579404"
 **请求 URL**采用以下格式： 
 
 ```
-https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer?isTest=true
+https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 ```
 
 |HTTP 请求属性|名称|Type|目的|
@@ -84,7 +84,7 @@ JSON 正文具有多个设置：
 |`top`|可选|integer|要包含在输出中的排序结果数。 默认值为 1。|
 |`userId`|可选|字符串|用于标识用户的唯一 ID。 此 ID 将记录在聊天日志中。|
 |`isTest`|可选|布尔值|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
-|`strictFilters`|可选|字符串|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。|
+|`strictFilters`|可选|字符串|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。 使用`none`以指示响应应具有任何元数据筛选器。 |
 
 一个 JSON 正文示例如下所示：
 

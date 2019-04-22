@@ -1,96 +1,89 @@
-items:
 - name: Azure Sentinel 预览版文档
   href: index.yml
 - name: 概述
   href: overview.md
 - name: 快速入门
-  items:
-  - name: 载入 Azure Sentinel
-    href: quickstart-onboard.md
-  - name: 了解警报
-    href: quickstart-get-visibility.md
   expanded: true
+  items:
+    - name: 载入 Azure Sentinel
+      href: quickstart-onboard.md
+    - name: 了解警报
+      href: quickstart-get-visibility.md
 - name: 教程
   items:
-  - name: 检测可疑威胁
-    href: tutorial-detect-threats.md
-  - name: 调查案例
-    href: tutorial-investigate-cases.md
-  - name: 应对威胁
-    href: tutorial-respond-threats-playbook.md
+    - name: 检测可疑威胁
+      href: tutorial-detect-threats.md
+    - name: 调查案例
+      href: tutorial-investigate-cases.md
+    - name: 应对威胁
+      href: tutorial-respond-threats-playbook.md
 - name: 操作指南
   items:
-  - name: 连接数据源
-    href: connect-data-sources.md
-    items:
-    - name: 连接 Microsoft 服务
+    - name: 连接数据源
+      href: connect-data-sources.md
       items:
-      - name: 连接 Azure AD
-        href: connect-azure-active-directory.md
-      - name: 连接 Office 365
-        href: connect-office-365.md
-      - name: 连接 Cloud App Security
-        href: connect-cloud-app-security.md
-      - name: 连接 Azure 活动日志
-        href: connect-azure-activity.md
-      - name: 连接 Azure AD Identity Protection
-        href: connect-azure-ad-identity-protection.md
-      - name: 连接 Azure 信息保护
-        href: connect-azure-information-protection.md
-      - name: 连接 Azure ATP
-        href: connect-azure-atp.md
-      - name: 连接 Azure 安全中心
-        href: connect-azure-security-center.md
-      - name: 连接 Microsoft Web 应用程序防火墙
-        href: connect-microsoft-waf.md
-      - name: 连接 Windows 防火墙
-        href: connect-windows-firewall.md
-      - name: 连接 Windows 安全事件
-        href: connect-windows-security-events.md
-    - name: 连接外部解决方案
+        - name: 连接 Microsoft 服务
+          items:
+            - name: 连接 Azure AD
+              href: connect-azure-active-directory.md
+            - name: 连接 Office 365
+              href: connect-office-365.md
+            - name: 连接 Cloud App Security
+              href: connect-cloud-app-security.md
+            - name: 连接 Azure 活动日志
+              href: connect-azure-activity.md
+            - name: 连接 Azure AD Identity Protection
+              href: connect-azure-ad-identity-protection.md
+            - name: 连接 Azure 信息保护
+              href: connect-azure-information-protection.md
+            - name: 连接 Azure ATP
+              href: connect-azure-atp.md
+            - name: 连接 Azure 安全中心
+              href: connect-azure-security-center.md
+            - name: 连接 Microsoft Web 应用程序防火墙
+              href: connect-microsoft-waf.md
+            - name: 连接 Windows 防火墙
+              href: connect-windows-firewall.md
+            - name: 连接 Windows 安全事件
+              href: connect-windows-security-events.md
+        - name: 连接外部解决方案
+          items:
+            - name: 连接通用 CEF
+              href: connect-common-event-format.md
+            - name: 连接 Barracuda
+              href: connect-barracuda.md
+            - name: 连接检查点
+              href: connect-checkpoint.md
+            - name: 连接 Palo Alto Networks
+              href: connect-paloalto.md
+            - name: 连接 Fortinet
+              href: connect-fortinet.md
+            - name: 连接 F5
+              href: connect-f5.md
+            - name: 连接 Syslog
+              href: connect-syslog.md
+            - name: 连接 Symantec ICDX
+              href: connect-symantec.md
+            - name: 连接 Cisco
+              href: connect-cisco.md
+        - name: 连接威胁智能
+          href: connect-threat-intelligence.md
+    - name: 搜寻
+      href: hunting.md
       items:
-      - name: 连接通用 CEF
-        href: connect-common-event-format.md
-      - name: 连接 Barracuda
-        href: connect-barracuda.md
-      - name: 连接检查点
-        href: connect-checkpoint.md
-      - name: 连接 Palo Alto Networks
-        href: connect-paloalto.md
-      - name: 连接 Fortinet
-        href: connect-fortinet.md
-      - name: 连接 F5
-        href: connect-f5.md
-      - name: 连接 Syslog
-        href: connect-syslog.md
-      - name: 连接 Symantec ICDX
-        href: connect-symantec.md
-      - name: 连接 Cisco
-        href: connect-cisco.md
-    - name: 连接威胁智能
-      href: connect-threat-intelligence.md
-  - name: 搜寻
-    href: hunting.md
-    items:
-    - name: 使用笔记本搜寻
-      href: notebooks.md
-    - name: 使用书签搜寻
-      href: bookmarks.md
-  - name: 启用融合
-    href: connect-fusion.md
+        - name: 使用笔记本搜寻
+          href: notebooks.md
+        - name: 使用书签搜寻
+          href: bookmarks.md
+    - name: 启用融合
+      href: connect-fusion.md
 - name: 资源
   items:
-  - name: 有用的资源
-    href: resources.md
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Azure 安全性、隐私性与合规性博客
-    href: https://blogs.msdn.com/b/azuresecurity/
-  - name: 区域可用性
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 886f07fa45e7795251d50880a977cfbc331dfb2b
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493974"
+    - name: 有用的资源
+      href: resources.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure 安全性、隐私性与合规性博客
+      href: 'https://blogs.msdn.com/b/azuresecurity/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'

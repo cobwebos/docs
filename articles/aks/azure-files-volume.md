@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 65e94a271fc8fc72ac74d51af3cf7b717f8410b0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59259144"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785238"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-files-share-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 文件共享手动创建并使用卷
 
@@ -137,7 +137,7 @@ Volumes:
 
 默认的 *fileMode* 和 *dirMode* 值的 Kubernetes 版本有差异，如下表所述。
 
-| 版本 | 值 |
+| 版本 | value |
 | ---- | ---- |
 | v1.6.x、v1.7.x | 0777 |
 | v1.8.0-v1.8.5 | 0700 |

@@ -12,11 +12,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58791603"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784477"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
@@ -24,11 +24,11 @@ ms.locfileid: "58791603"
 
 ## <a name="overview"></a>概述
 
-高级的数据安全 (ADS) 提供了一套高级 SQL 安全功能，其中包括数据发现和分类、 漏洞评估和高级威胁防护。
+高级数据安全性 (ADS) 提供一组高级 SQL 安全功能，包括数据发现和分类、漏洞评估和高级威胁防护。
 
 - [数据发现和分类](sql-database-data-discovery-and-classification.md)（当前为预览版）提供内置于 Azure SQL 数据库的功能，可用于发现、分类、标记和保护数据库中的敏感数据。 它可用于直观查看数据库分类状态，以及跟踪对数据库内和其边界外的敏感数据的访问。
 - [漏洞评估](sql-vulnerability-assessment.md)是一项易于配置的服务，可以发现、跟踪并帮助修正潜在的数据库漏洞。 它可直观查看安全状态，包括解决安全问题的可操作步骤，并可加强数据库的防御工事。
-- [高级威胁防护](sql-database-threat-detection-overview.md)可检测异常活动表示异常和潜在有害尝试访问或使用您的数据库。 它不断监视数据库的可疑活动，并针对潜在漏洞、SQL 注入攻击和异常数据库访问模式提供即时的安全警报。 高级威胁防护警报提供可疑活动的详细信息，以及建议如何帮助调查和缓解威胁的操作。
+- [高级威胁防护](sql-database-threat-detection-overview.md)检测异常活动，指出尝试访问或利用数据库的行为异常且可能有害。 它不断监视数据库的可疑活动，并针对潜在漏洞、SQL 注入攻击和异常数据库访问模式提供即时的安全警报。 高级威胁防护警报提供可疑活动的详细信息，并建议如何调查和缓解威胁。
 
 一旦启用 SQL ADS，其包含的所有功能都会启用。 只需单击一次，即可为 SQL 数据库服务器或托管实例上的所有数据库启用 ADS。 需要属于 [SQL 安全管理器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) 角色、SQL 数据库管理员角色或 SQL Server 管理员角色才能启用或管理 ADS 设置。 
 
@@ -43,7 +43,7 @@ ADS 定价遵循 Azure 安全中心标准层定价，其中每个受保护的 SQ
 若要启用 ADS，请导航到“安全”下的“高级数据安全”来访问 SQL 数据库服务器或托管实例。 若要为数据库服务器或托管实例上的所有数据库启用 ADS，请单击“在服务器上启用高级数据安全”。
 
 > [!NOTE]
-> 存储帐户上自动创建并配置为将存储您**漏洞评估**扫描结果。 如果已为同一资源组和区域中的另一台服务器启用了广告，则使用现有的存储帐户。
+> 系统会自动创建一个存储帐户用于存储**漏洞评估**的扫描结果。 如果为同一个资源组和区域中的另一台服务器启用了 ADS，则使用现有的存储帐户。
 
 ![启用 ADS](./media/sql-advanced-protection/enable_ads.png) 
 
@@ -64,7 +64,7 @@ ADS 定价遵循 Azure 安全中心标准层定价，其中每个受保护的 SQ
 
 要重写特定数据库的 ADS 设置，请勾选“在数据库级别启用高级数据安全”复选框。 使用此选项，仅当有特定要求接收单独的高级威胁防护警报或单独的数据库，来代替或除了警报和结果上收到的所有数据库的漏洞评估结果数据库服务器或托管的实例。
 
-一旦选中该复选框，可以然后配置此数据库的相关设置。
+选中该复选框后，可以配置此数据库的相关设置。
  
 ![数据库和高级威胁防护设置](./media/sql-advanced-protection/database_threat_detection_settings.png) 
 

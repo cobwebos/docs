@@ -1,7 +1,7 @@
 ---
 title: 在 Ubuntu 虚拟机上运行 Azure IoT Edge | Microsoft Docs
 description: 有关在 Ubuntu 16.04 Azure 市场虚拟机上设置 Azure IoT Edge 的说明
-author: gregman
+author: gregman-msft
 manager: arjmands
 ms.reviewer: kgremban
 ms.service: iot-edge
@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.author: gregman
-ms.openlocfilehash: 5cb15f45508b60a1b7f8c9049b8779c1b7d31150
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 7062bd2dbd8c375b8dd3fad348e5cc26de8f36d2
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757931"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698582"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>在 Ubuntu 虚拟机上运行 Azure IoT Edge
 
@@ -41,7 +41,7 @@ ms.locfileid: "58757931"
     1.  片刻之后，屏幕上应会显示一条成功消息，指出已成功设置了连接字符串。
 
 
-## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户部署
+## <a name="deploy-from-the-azure-portal"></a>从 Azure 门户进行部署
 在 Azure 门户中，搜索“Azure IoT Edge”并选择“Ubuntu Server 16.04 LTS + Azure IoT Edge 运行时”开始 VM 创建工作流。 在此处，请完成上述“从 Azure 市场部署”说明中的步骤 3 到 4。
 
 ## <a name="deploy-from-azure-cli"></a>从 Azure CLI 部署
@@ -95,6 +95,6 @@ ms.locfileid: "58757931"
 
 预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
-如果无法正确安装 Edge 运行时，请参阅[故障排除](troubleshoot.md)页。
+如果无法正确安装 IoT Edge 运行时，请参阅[故障排除](troubleshoot.md)页。
 
 若要将现有安装更新到最新版本的 IoT Edge，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。

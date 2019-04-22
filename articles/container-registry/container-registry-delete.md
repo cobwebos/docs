@@ -5,20 +5,20 @@ services: container-registry
 author: dlepow
 ms.service: container-registry
 ms.topic: article
-ms.date: 01/04/2019
+ms.date: 04/04/2019
 ms.author: danlep
-ms.openlocfilehash: f3206da25a3c0727e3f9fe12190580a6c28c81a3
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.openlocfilehash: 1e496002c869c5d2c072773d37ed5fd5d4a5841e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56983245"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683454"
 ---
 # <a name="delete-container-images-in-azure-container-registry"></a>删除 Azure 容器注册表中的容器映像
 
 要保持 Azure 容器注册表的大小不变，应定期删除过时的映像数据。 尽管部分部署到生产的容器映像可能需要存储更长时间，但通常可更快删除其他映像。 例如，在自动化生成和测试方案中，可使用从未部署的映像快速填充注册表，并可在完成生成和测试通过后不久即将其清除。
 
-因为可通过多种不同的方式删除映像数据，请务必了解每个删除操作如何影响存储使用情况。 本文首先介绍 Docker 注册表和容器映像的组件，然后介绍删除映像数据的多种方法。
+因为可通过多种不同的方式删除映像数据，请务必了解每个删除操作如何影响存储使用情况。 本文首先介绍 Docker 注册表和容器映像的组件，然后介绍删除映像数据的多种方法。 提供示例脚本来帮助自动执行删除操作。
 
 ## <a name="registry"></a>注册表
 
@@ -34,7 +34,7 @@ acr-helloworld:v1
 acr-helloworld:v2
 ```
 
-存储库名称还可包括[命名空间](container-registry-best-practices.md#repository-namespaces)。 借助命名空间，可使用正斜杠分隔的存储库名称分组映像，例如：
+存储库名称还可包括[命名空间](container-registry-best-practices.md#repository-namespaces)。 命名空间，可以使用正斜杠分隔的存储库名称，例如组映像：
 
 ```
 marketing/campaign10-18/web:v2
@@ -50,11 +50,11 @@ product-returns/legacy-integrator:20180715
 
 ### <a name="tag"></a>标记
 
-映像的标记指定其版本。 存储库中的单个映像可分配有一个或多个标记，但也可能“无标记”。 也就是说，可删除映像中的所有标记，而映像的数据（其层）保留注册表。
+映像的标记指定其版本。 存储库中的单个映像可分配有一个或多个标记，但也可能“无标记”。 也就是说，可以从一个映像，删除所有标记时图像的数据 （其层） 保留在注册表中。
 
 映像的名称由存储库（或存储库和命名空间）和标记进行定义。 在推送或拉取操作中指定映像名称，可以推送和拉取映像。
 
-在专用注册表（如 Azure 容器注册表）中，映像名称还包括注册表主机的完全限定的名称。 ACR 中映像的注册表主机采用 acrname.azurecr.io 格式。 例如，上一节中“市场营销”命名空间中第一个映像的完整名称为：
+在专用注册表（如 Azure 容器注册表）中，映像名称还包括注册表主机的完全限定的名称。 ACR 中映像的注册表主机的格式*acrname.azurecr.io* （全部小写）。 例如，将为在上一节中的"营销"命名空间中的第一个图像的完整名称：
 
 ```
 myregistry.azurecr.io/marketing/campaign10-18/web:v2
@@ -158,7 +158,7 @@ Are you sure you want to continue? (y/n): y
 ```
 
 > [!TIP]
-> 按标记删除不应与删除标记（取消标记）混淆。 可使用 Azure CLI 命令 [az acr repository untag][az-acr-repository-untag] 删除标记。 取消标记映像时不释放任何空间，因为其[清单](#manifest)和层数据仍保留在注册表中。 仅删除标记引用本身。
+> 按标记删除不应与删除标记（取消标记）混淆。 可使用 Azure CLI 命令 [az acr repository untag][az-acr-repository-untag] 删除标记。 因为取消标记图像时将没有空间被释放及其[清单](#manifest)和层数据保留在注册表中。 仅删除标记引用本身。
 
 ## <a name="delete-by-manifest-digest"></a>按清单摘要删除
 
@@ -201,7 +201,56 @@ This operation will delete the manifest 'sha256:3168a21b98836dda7eb7a846b3d73528
 Are you sure you want to continue? (y/n): y
 ```
 
-从注册表中删除“acr-helloworld:v2”映像，正如该映像的任何唯一的层数据一样。 如果清单与多个标记关联，还删除所有相关联的标记。
+`acr-helloworld:v2`也会删除映像从注册表中，因为是唯一的该映像的任何层数据。 如果清单与多个标记关联，还删除所有相关联的标记。
+
+### <a name="list-digests-by-timestamp"></a>按时间戳列表摘要
+
+若要维护的存储库或注册表的大小，可能需要定期删除早于特定日期的清单摘要。
+
+以下 Azure CLI 命令列出了在早于指定的时间戳，按升序排序的存储库中的所有清单摘要。 将 `<acrName>` 和 `<repositoryName>` 替换为适合环境的值。 时间戳可能是一个完整的日期时间表达式或为日期，如本例所示。
+
+```azurecli
+az acr repository show-manifests --name <acrName> --repository <repositoryName> \
+--orderby time_asc -o tsv --query "[?timestamp < '2019-04-05'].[digest, timestamp]"
+```
+
+### <a name="delete-digests-by-timestamp"></a>按时间戳删除摘要
+
+确定过时的清单摘要之后, 可以运行以下 Bash 脚本以删除保留时间超过指定时间戳的清单摘要。 它需要 Azure CLI 和 xargs。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
+
+> [!WARNING]
+> 使用下面的示例脚本时要注意-已删除的映像数据是无法恢复。 如果必须通过清单摘要 （而不是映像名称） 中提取映像的系统，不应运行这些脚本。 删除清单摘要将阻止这两个系统从注册表提取映像。 不按清单拉取，而是考虑采用[建议的最佳实践][，即唯一标记方案tagging-best-practices]。 
+
+```bash
+#!/bin/bash
+
+# WARNING! This script deletes data!
+# Run only if you do not have systems
+# that pull images via manifest digest.
+
+# Change to 'true' to enable image delete
+ENABLE_DELETE=false
+
+# Modify for your environment
+# TIMESTAMP can be a date-time string such as 2019-03-15T17:55:00.
+REGISTRY=myregistry
+REPOSITORY=myrepository
+TIMESTAMP=2019-04-05  
+
+# Delete all images older than specified timestamp.
+
+if [ "$ENABLE_DELETE" = true ]
+then
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+    --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].digest" -o tsv \
+    | xargs -I% az acr repository delete --name $REGISTRY --image $REPOSITORY@% --yes
+else
+    echo "No data deleted."
+    echo "Set ENABLE_DELETE=true to enable deletion of these images in $REPOSITORY:"
+    az acr repository show-manifests --name $REGISTRY --repository $REPOSITORY \
+   --orderby time_asc --query "[?timestamp < '$TIMESTAMP'].[digest, timestamp]" -o tsv
+fi
+```
 
 ## <a name="delete-untagged-images"></a>删除无标记的映像
 
@@ -245,7 +294,7 @@ Are you sure you want to continue? (y/n): y
    ]
    ```
 
-您可以看到的输出序列中的最后一个步骤中，现孤立清单其`"tags"`属性为空列表。 此清单仍与其引用的任何唯一层数据一起位于注册表中。 要删除此类孤立映像及其层数据，必须按清单摘要删除。
+正如上一步骤的输出中所示，现在存在一个 `"tags"` 属性为空列表的孤立清单。 此清单仍与其引用的任何唯一层数据一起位于注册表中。 要删除此类孤立映像及其层数据，必须按清单摘要删除。
 
 ### <a name="list-untagged-images"></a>列出无标记的映像
 
@@ -257,14 +306,12 @@ az acr repository show-manifests --name <acrName> --repository <repositoryName> 
 
 ### <a name="delete-all-untagged-images"></a>删除所有无标记的映像
 
-请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。
+> [!WARNING]
+> 请谨慎使用以下示例脚本，已删除映像数据是无法恢复的。 如果必须通过清单摘要 （而不是映像名称） 中提取映像的系统，不应运行这些脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳实践][，即唯一标记方案tagging-best-practices]。
 
 **Bash 中的 Azure CLI**
 
 以下 Bash 脚本会删除存储库中所有无标记的映像。 它需要 Azure CLI 和 xargs。 默认情况下，该脚本不执行任何删除。 将 `ENABLE_DELETE` 值改为 `true` 以启用映像删除。
-
-> [!WARNING]
-> 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行此脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳实践][，即唯一标记方案tagging-best-practices]。
 
 ```bash
 #!/bin/bash
@@ -293,9 +340,6 @@ fi
 **PowerShell 中的 Azure CLI**
 
 以下 PowerShell 脚本会删除存储库中所有无标记的映像。 它需要 PowerShell 和 Azure CLI。 默认情况下，该脚本不执行任何删除。 将 `$enableDelete` 值改为 `$TRUE` 以启用映像删除。
-
-> [!WARNING]
-> 如果系统按清单摘要（而不是映像名称）拉取映像，则不应运行此脚本。 删除无标的记映像后，这些系统即无法从注册表拉取映像。 不按清单拉取，而是考虑采用[建议的最佳实践][，即唯一标记方案tagging-best-practices]。
 
 ```powershell
 # WARNING! This script deletes data!

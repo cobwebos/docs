@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 03/26/2019
+ms.date: 04/17/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 374ffc3a9d181d0596b5a4af1cd8082023e227fe
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: ed18fd985173a4d978edccedc8b6e5cf527f16dd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498513"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698719"
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services 中支持的数据源
 
@@ -81,13 +81,14 @@ ms.locfileid: "58498513"
 |Salesforce 报表<sup>[1](#tab1400b)</sup> |
 |SAP HANA<sup>[1](#tab1400b)</sup>    |  
 |SAP Business Warehouse<sup>[1](#tab1400b)</sup>    |  
-|SharePoint<sup>[1](#tab1400b)</sup>     |   
+|SharePoint 列表<sup>[1](#tab1400b)</sup>， <sup> [2](#filesSP)</sup>     |   
 |Sybase 数据库     |  
 |TXT 文件  |
 |XML 表<sup>[1](#tab1400b)</sup>    |  
 ||
  
-<a name="tab1400b">1</a> 仅限表格 1400 和更高模型。
+<a name="tab1400b">1</a> - 仅限表格 1400 和更高模型。   
+<a name="filesSP">2</a> -不支持在本地 SharePoint 中的文件。
 
 ## <a name="specifying-a-different-provider"></a>指定不同的提供程序
 

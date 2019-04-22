@@ -12,12 +12,12 @@ ms.date: 11/15/2018
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f96a67fecead65af28a975267590ebb08c715d3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a787e896016b3230d389b2ec140ae6c03477d875
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852996"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684083"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>了解 Azure AD 应用程序代理连接器
 
@@ -74,6 +74,8 @@ Azure AD 为部署的所有连接器提供自动更新。 只要应用程序代�
 连接器更新时，可能会在以下情况下遭遇停机：  
 - 你只有一个连接器，我们建议你安装第二个连接器并[创建连接器组](application-proxy-connector-groups.md)。 这将避免停机时间，并提供更高的可用性。  
 - 更新开始时，连接器处于事务中间。 尽管初始事务已丢失，但浏览器应会自动重试操作，或者你可以自行刷新页面。 重新发送请求时，流量将路由到备份连接器。
+
+若要查看有关以前发布的版本和哪些更改它们的信息包括，请参阅[应用程序代理的版本发行历史记录](application-proxy-release-version-history.md)。
 
 ## <a name="creating-connector-groups"></a>创建连接器组
 

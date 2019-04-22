@@ -18,12 +18,12 @@ ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 453a3316288cbc0b07d82e2fad9ecc7c3d353e9b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: d517828b30629cd9dfba5459b1d90913d8bc4f77
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501308"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698446"
 ---
 # <a name="microsoft-identity-platform-and-implicit-grant-flow"></a>Microsoft 标识平台和隐式授权流
 
@@ -52,7 +52,7 @@ ms.locfileid: "59501308"
 
 ## <a name="send-the-sign-in-request"></a>发送登录请求
 
-若要将用户最初登录到您的应用程序，可以将[OpenID Connect](v2-protocols-oidc.md)授权请求并获取`id_token`从 Microsoft 标识平台终结点。
+若要将用户最初登录到您的应用程序，可以将[OpenID Connect](v2-protocols-oidc.md)身份验证请求并获取`id_token`从 Microsoft 标识平台终结点。
 
 > [!IMPORTANT]
 > 已成功请求的 ID 令牌，在应用注册[Azure 门户-应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页面都必须通过选择正确，启用隐式授权流**的访问令牌**和**ID 令牌**下**隐式授权**部分。 如果未启用，`unsupported_response`将返回错误：为输入参数“response_type”提供的值不允许用于此客户端。预期值为“code””
@@ -84,7 +84,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `response_mode` | 可选 |指定将生成的令牌送回到应用程序所应该使用的方法。 默认为查询访问令牌，但如果请求包括 id_token，则会进行分段。 |
 | `state` | 建议 |同样随令牌响应返回的请求中所包含的值。 它可以是你想要的任何内容的字符串。 随机生成的唯一值通常用于[防止跨站点请求伪造攻击](https://tools.ietf.org/html/rfc6749#section-10.12)。 该状态也用于在身份验证请求出现之前，于应用程序中编码用户的状态信息，例如之前所在的网页或视图。 |
 | `nonce` | 必填 |由应用程序生成且包含在请求中的值，以声明方式包含在生成的 id_token 中。 应用程序接着便可确认此值，以减少令牌重新执行攻击。 此值通常是随机的唯一字符串，可用以识别请求的来源。 只有请求 id_token 时才是必需的。 |
-| `prompt` | 可选 |表示需要的用户交互类型。 目前的有效值为“login”、“none”、“select_account”和“consent”。 `prompt=login` 将强制用户在该请求，从而单一登录上输入其凭据。 `prompt=none` 完全相反它将确保用户无法看到说明，否则任何交互提示。 如果请求无法通过单一登录静默完成，Microsoft 标识平台终结点将返回错误。 `prompt=select_account` 将用户发送到帐户选取器的所有已记住的会话中的帐户将出现。 `prompt=consent` 用户登录时，要求用户向应用授予权限后，会触发 OAuth 同意对话框。 |
+| `prompt` | 可选 |表示需要的用户交互类型。 目前的有效值为“login”、“none”、“select_account”和“consent”。 `prompt=login` 将强制用户在该请求上输入其凭据，从而使单一登录无效。 `prompt=none` 完全相反它将确保用户无法看到说明，否则任何交互提示。 如果请求无法通过单一登录静默完成，Microsoft 标识平台终结点将返回错误。 `prompt=select_account` 将用户发送到一个帐户选取器，其中将显示在会话中记住的所有帐户。 `prompt=consent` 在用户登录后将触发 OAuth 同意对话框，要求用户向应用授予权限。 |
 | `login_hint`  |可选 |如果事先知道其用户名称，可用于预先填充用户登录页面的用户名称/电子邮件地址字段。 通常，应用会在重新身份验证期间使用此参数，并且已经使用 `preferred_username` 声明从前次登录提取用户名。|
 | `domain_hint` | 可选 |可以是 `consumers` 或 `organizations` 之一。 如果包含，它将跳过的基于电子邮件的发现过程的用户上经历的登录页上，从而导致稍微更加流畅的用户体验。 通常，应用会在重新身份验证期间使用此参数，方法是从 id_token 提取 `tid` 声明。 如果 `tid` 声明值为 `9188040d-6c67-4c5b-b112-36a304b66dad`（Microsoft 帐户使用者租户），则应使用 `domain_hint=consumers`。 否则，可以在重新进行身份验证期间使用 `domain_hint=organizations`。 |
 

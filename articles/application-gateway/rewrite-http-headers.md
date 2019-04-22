@@ -7,21 +7,23 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 04/11/2019
 ms.author: absha
-ms.openlocfilehash: efb7b46919066beb1382d70b676a2115ea0fb8ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 20c484779e7ffe74ae01e33472b4cf8761d81b66
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544137"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682674"
 ---
-# <a name="rewrite-http-headers-with-application-gateway-public-preview"></a>使用应用程序网关（公共预览版）重写 HTTP 标头
+# <a name="rewrite-http-headers-with-application-gateway"></a>重写应用程序网关的 HTTP 标头
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可以帮助你完成几个重要方案，例如，添加与安全相关的标头字段，例如 HSTS/X XSS 保护，删除响应标头字段的可能会泄露敏感信息，从剥离端口信息X-转发-对于标头，等等。应用程序网关支持的功能来添加、 删除或更新时请求的 HTTP 请求和响应头和响应数据包将客户端和后端池之间移动。 它还提供的功能，若要添加条件以确保仅在满足某些条件时重新编写的指定标头。
+HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的信息。 重写这些 HTTP 标头可以帮助你完成几个重要方案，例如，添加与安全相关的标头字段，例如 HSTS/X XSS 保护，删除响应标头字段的可能会泄露敏感信息，删除中的端口信息X-转发-对于标头，等等。应用程序网关支持的功能来添加、 删除或更新时请求的 HTTP 请求和响应头和响应数据包将客户端和后端池之间移动。 它提供的功能，若要添加条件以确保仅在满足某些条件时重新编写的指定标头。 此功能还支持多个[服务器变量](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#server-variables)该帮助存储有关请求和响应，从而使你可以进行功能强大的重写规则的其他信息。
 > [!NOTE]
 >
 > HTTP 标头重写支持仅用于 [新的 SKU [Standard_V2\]](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+
+![重写的标头](media/rewrite-http-headers/rewrite-headers.png)
 
 ## <a name="headers-supported-for-rewrite"></a>支持的标头重写
 
@@ -35,7 +37,7 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 - 在响应中的 HTTP 标头
 - 应用程序网关服务器变量
 
-可以使用条件来评估指定的变量是否存在，是否与指定的变量，完全匹配的特定值，或是否与指定的变量，完全匹配的特定模式。 [Perl 兼容正则表达式 (PCRE) 库](https://www.pcre.org/)用于实现中的条件匹配的正则表达式模式。 若要了解有关正则表达式语法，请参阅[Perl 正则表达式手册页](http://perldoc.perl.org/perlre.html)。
+可以使用条件来评估指定的变量是否存在，是否与指定的变量，完全匹配的特定值，或是否与指定的变量，完全匹配的特定模式。 [Perl 兼容正则表达式 (PCRE) 库](https://www.pcre.org/)用于实现中的条件匹配的正则表达式模式。 若要了解有关正则表达式语法，请参阅[Perl 正则表达式手册页](https://perldoc.perl.org/perlre.html)。
 
 ## <a name="rewrite-actions"></a>重写操作
 
@@ -124,6 +126,18 @@ HTTP 标头可让客户端和服务器连同请求或响应一起传递附加的
 可以通过在应用程序响应中实现必要的标头修复多个安全漏洞。 部分这些安全标头包括 X XSS 保护、 严格传输安全性、 内容安全策略，等等。应用程序网关可用于设置这些标头的所有响应。
 
 ![安全标头](media/rewrite-http-headers/security-header.png)
+
+### <a name="delete-unwanted-headers"></a>删除不需要的标头
+
+您可能想要从披露敏感信息，例如后端服务器名称、 操作系统、 库详细信息，等等的 HTTP 响应中删除这些标头。应用程序网关可用于删除这些文字。
+
+![删除标头](media/rewrite-http-headers/remove-headers.png)
+
+### <a name="check-presence-of-a-header"></a>检查存在标头
+
+您可以评估标头或服务器变量存在的 HTTP 请求或响应标头。 若要执行标头重写，仅当存在特定标头时，这很有用。
+
+![检查存在标头](media/rewrite-http-headers/check-presence.png)
 
 ## <a name="limitations"></a>限制
 

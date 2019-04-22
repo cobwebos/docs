@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
-ms.openlocfilehash: 9d67a87b182758e37c9e379a8f96a6540797ce3e
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 95ee0a4d5d150741e59c0c2d20abebe9609e179f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482940"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699007"
 ---
 # <a name="configure-an-iot-edge-device-to-act-as-a-transparent-gateway"></a>将 IoT Edge 设备配置为充当透明网关
 
@@ -260,6 +260,18 @@ certificates:
    ```
 
 6. 在“审阅模板”页中选择“提交”。
+
+## <a name="open-ports-on-gateway-device"></a>网关设备上打开端口
+
+标准的 IoT Edge 设备不需要任何入站的连接到函数，因为与 IoT 中心的所有通信均都通过出站连接。 但是，网关设备则不同，因为它们需要能够从其下游设备接收消息。
+
+若要运行的网关方案，在至少一个 IoT Edge 中心支持的协议必须打开从下游设备的入站流量。 支持的 portocols 是 MQTT、 AMQP 和 HTTPS。
+
+| 端口 | 协议 |
+| ---- | -------- |
+| 8883 | MQTT |
+| 5671 | AMQP |
+| 443 | HTTPS <br> MQTT+WS <br> AMQP+WS | 
 
 ## <a name="route-messages-from-downstream-devices"></a>路由来自下游设备的消息
 IoT Edge 运行时可以像模块发送的消息一样路由从下游设备发送的消息。 这允许将任何数据发送到云之前在网关上运行的模块中执行分析。 

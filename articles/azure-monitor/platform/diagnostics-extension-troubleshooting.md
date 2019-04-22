@@ -4,17 +4,16 @@ description: 排查在 Azure 虚拟机、Service Fabric 或云服务中使用 Az
 services: azure-monitor
 author: rboucher
 ms.service: azure-monitor
-ms.devlang: dotnet
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.author: robb
 ms.subservice: diagnostic-extension
-ms.openlocfilehash: f92b2589afc8bf4eba1bfdf421ab27300b41aa91
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.topic: conceptual
+ms.date: 04/17/2019
+ms.author: robb
+ms.openlocfilehash: 81c93900acf2d75eeb8e4fdc8da7d563f3a59595
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55822130"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59699092"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 诊断故障排除
 本文介绍有关使用 Azure 诊断的故障排除信息。 有关 Azure 诊断的详细信息，请参阅 [Azure 诊断概述](diagnostics-extension-overview.md)。
@@ -82,7 +81,7 @@ Azure 诊断提供可在 Azure 门户中显示的指标数据。 如果无法查
 如果配置设置正确，但仍看不到指标数据，请按照以下指南进行故障排除。
 
 
-## <a name="azure-diagnostics-isnt-starting"></a>Azure Diagnostics 不启动
+## <a name="azure-diagnostics-is-not-starting"></a>Azure 诊断不启动
 有关为和 Azure 诊断无法启动的信息，请参阅之前提供的日志文件位置中的 DiagnosticsPluginLauncher.log 和 DiagnosticsPlugin.log 文件。
 
 如果这些日志指示 `Monitoring Agent not reporting success after launch`，则表示启动 MonAgentHost.exe 失败。 在之前部分中指示 `MonAgentHost log file` 的位置查看日志。
@@ -105,9 +104,16 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 解决方案：更正诊断配置，然后重新安装诊断。
 
-如果存储帐户配置正确，远程访问计算机，验证 DiagnosticsPlugin.exe 和 MonAgentCore.exe 是否正在运行。 如果未运行，请按照“Azure 诊断不启动”中的步骤进行操作。
+如果存储帐户是配置正确，远程访问计算机并确认*DiagnosticsPlugin.exe*并*MonAgentCore.exe*正在运行。 如果未运行，请按照 [Azure 诊断不启动](#azure-diagnostics-is-not-starting)中的步骤进行操作。
 
 如果进程正在运行，请转到[数据是否是本地捕获的？](#is-data-getting-captured-locally)并按此处的介绍进行操作。
+
+如果这不能解决问题，请尝试为：
+
+1. 卸载代理
+2. Remove directory C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics
+3. 重新安装代理
+
 
 ### <a name="part-of-the-data-is-missing"></a>部分数据丢失
 如果获得了部分数据，则表示数据收集/传输管道设置正确。 请按照此处的子节说明，缩小问题范围。
@@ -224,7 +230,7 @@ Azure 存储中保存 ETW 事件的表是使用以下代码命名的：
 ### <a name="azure-diagnostics-plugin-exit-codes"></a>Azure 诊断插件退出代码
 该插件返回以下退出代码：
 
-| 退出代码 | 说明 |
+| 退出代码 | 描述 |
 | --- | --- |
 | 0 |成功。 |
 | -1 |常规错误。 |
