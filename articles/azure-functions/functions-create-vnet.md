@@ -8,16 +8,16 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: f8ddcbcb25dc45ee71304ffa1bc5c0c4d3751b61
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 749e211c9844f644e04d5135f99d71918d65b66b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523726"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680330"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>将函数应用与 Azure 虚拟网络集成
 
-该分布教程展示如何使用 Azure Functions 连接 Azure VNET 中的资源。
+本教程演示如何使用 Azure Functions 连接到 Azure VNET 中的资源。
 
 本教程中我们将部署在专用非 internet 可访问，VNET 中的 VM 上的 WordPress 网站。 然后，部署一个可访问 Internet 和 VNET 的 Function。 我们将使用该函数能够从 VNET 内部部署的 WordPress 站点访问资源。
 

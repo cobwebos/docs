@@ -10,12 +10,12 @@ ms.subservice: consume
 ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
-ms.openlocfilehash: 3a0c675ac9c8a782b94d127e877646bf37af1371
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.openlocfilehash: 6860746a1b20fe06de2dafa6035ae560bde24a29
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621475"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678660"
 ---
 # <a name="sql-data-warehouse-business-intelligence-partners"></a>SQL 数据仓库商业智能合作伙伴
 若要创建端到端数据仓库解决方案，请从行业领先的各种工具中进行选择。  本文重点介绍的正式的商业智能 (BI) 解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。
@@ -26,7 +26,7 @@ ms.locfileid: "58621475"
 | ![Birst][1] |**Birst**<br>Birst 通过集成虚拟化 BI 实例之上的共享的通用分析结构的网络连接在整个组织|[产品页][birst_website]<br>[Azure Marketplace][birst_marketplace]<br> |
 | ![ClearStory Data][2] |**ClearStory Data （连续的业务见解）**<br>ClearStory Data 能够快速分析 SQL 数据仓库中存储的不同数据。 ClearStory 的基于 Spark 的集成式平台和分析应用程序可以加速数据访问并协调不同的数据集。 它们可让业务用户进行快速协作探索，以及独自获得见解。 |[产品页][clearstory_website]<br> |
 | ![Dundas][4] |**Dundas BI**<br>Dundas Data Visualization 是商业智能与数据可视化软件的全球领先提供商。  Dundas 仪表板、报告和可视化数据分析可以完美集成到业务应用程序，能够制定更好的决策，更快地发现见解。|[产品页][dundas_bi_website]<br>[Azure Marketplace][dundas_bi_marketplace]<br> |
-| ![IBM Cognos][3] |**IBM Cognos 分析**< brCognos 分析包括智能自助服务功能，使其简单、 清晰和易于使用无论您是经验丰富的业务分析人员检查 vast 供应链或优化营销中的解决单个营销活动。 Cognos 分析使用 AI 和其他智能功能来执行繁重的工作来指导数据浏览，并使用户更轻松地获得所需的答案|[产品页][cognosanalytics_website]<br>|
+| ![IBM Cognos][3] |**IBM Cognos 分析**<br>Cognos Analytics 包括智能自助服务功能，使其简单、 清晰和易于使用无论您是经验丰富的业务分析人员检查 vast 供应链或营销优化单个的市场活动中解决。 Cognos 分析使用 AI 和其他智能功能来执行繁重的工作来指导数据浏览，并使用户更轻松地获得所需的答案|[产品页][cognosanalytics_website]<br>|
 | ![信息构建者][13] |**信息构建者 (WebFOCUS)**<br>WebFOCUS 商业智能可帮助公司使用有策略地进行跨企业等更多的数据。 它允许用户和管理员快速创建仪表板，合并来自多个数据源和格式的内容并提供功能强大的安全和全面管理，使无缝的安全 diverly 和共享的任何 BI 和分析内容|[产品页][informationbuilders_website]<br> |
 ![Jinfonet][5] |**Jinfonet JReport**<br>JReport 是为企业打造的可内嵌 BI 解决方案。 该解决方案可让用户在云、大数据和事务数据源上创建报告、仪表板与数据分析。 通过数据可视化，用户可以自行进行报告和数据探索，实时制定灵活的决策。 |[产品页][jinfonet_website]<br> |
 | ![LogiAnalytics][6] |**Logi Analytics**<br>Logi Analytics 与 Azure SQL 数据仓库相结合，可以让组织收集、分析和立即应对全世界最大和最多样化的数据集。 |[产品页][logianalytics_website]<br>|

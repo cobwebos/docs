@@ -5,15 +5,15 @@ services: expressroute
 author: jaredr80
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/16/2019
 ms.author: jaredro
 ms.custom: seodec18
-ms.openlocfilehash: f3f013f2e3090b54846ebba94ef54506275d6311
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3c8a068e2f68dcd53ad7ee6cdf3a1f39524c0fa4
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59282859"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680479"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute 常见问题
 
@@ -116,6 +116,14 @@ ExpressRoute 对各种服务类型支持[三个路由域](expressroute-circuit-p
 ### <a name="will-i-lose-connectivity-if-one-of-my-expressroute-links-fail"></a>如果我的某个 ExpressRoute 链路出现故障，我会失去连接吗？
 
 如果其中一个交叉连接出现故障，不会失去连接。 可使用冗余连接，以支持网络负载和提供 ExpressRoute 线路的高可用性。 另外，还可以在不同对等位置创建一条线路以获得线路级恢复能力。
+
+### <a name="how-do-i-implement-redundancy-on-private-peering"></a>如何在专用对等互连上实现冗余？
+
+从不同的对等互连位置的多条 ExpressRoute 线路可以连接到同一虚拟网络提供高可用性在这种情况单个线路变得不可用。 然后，可以[较高权重分配](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-assign-a-high-weight-to-local-connection)倾向于选择的本地连接到首选特定的线路。 强烈建议客户安装至少两个 ExpressRoute 线路，以避免单点故障。 
+
+### <a name="how-i-do-implement-redundancy-on-microsoft-peering"></a>如何冗余实现 Microsoft 对等互连？
+
+强烈建议客户使用 Microsoft 对等互连才能访问 Azure 公共服务，如 Azure 存储或 Azure SQL，以及客户使用 Microsoft Office 365 它们不同对等互连中实现多条线路的对等互连时若要避免单点 faiure 的位置。 客户可以将这两个线路上相同的前缀播发并使用[AS PATH 追加](https://docs.microsoft.com/en-us/azure/expressroute/expressroute-optimize-routing#solution-use-as-path-prepending)或播发前缀不同，若要确定从本地路径。
 
 ### <a name="how-do-i-ensure-high-availability-on-a-virtual-network-connected-to-expressroute"></a>如何确保连接到 ExpressRoute 的虚拟网络上的高可用性？
 

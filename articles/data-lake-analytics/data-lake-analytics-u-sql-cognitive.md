@@ -10,10 +10,10 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/05/2018
 ms.openlocfilehash: b8d43188c337e0c12db60b51dee053ef7259701a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492934"
 ---
 # <a name="get-started-with-the-cognitive-capabilities-of-u-sql"></a>U-SQL 的认知功能入门
@@ -32,6 +32,6 @@ U-SQL 的认知功能使开发人员可以在其大数据程序中使用智能�
 在开始之前，请按照这篇文章在 U-SQL 中注册认知扩展中的步骤操作：[在 U-SQL 中注册认知扩展](/u-sql/objects-and-extensions/cognitive-capabilities-in#registeringExtensions)。
 
 ## <a name="next-steps"></a>后续步骤
-* [U SQL/认知示例](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
-* [开发 U-SQL 脚本用于 Visual Studio 的 Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md)
+* [U-SQL/认知示例](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)

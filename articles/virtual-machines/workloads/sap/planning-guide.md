@@ -18,10 +18,10 @@ ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501325"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
@@ -485,7 +485,7 @@ Azure 平台减少了采购前沿技术和基础结构的需要。 它可以按�
 >
 
 ### <a name="be80d1b9-a463-4845-bd35-f4cebdb5424a"></a>Azure 区域
-虚拟机将部署到所谓的 *Azure 区域*。 Azure 区域可以是位置很近的一个或多个数据中心。 针对全球大多数地缘政治区域，Microsoft 至少有两个 Azure 区域。 例如，在欧洲，有一个“北欧”和一个“西欧”Azure 区域。 一个地缘政治区域中的两个 Azure 区域之间相隔足够的距离，以确保自然或技术灾难不会同时影响同一地缘政治区域中的两个 Azure 区域。 由于 Microsoft 在全球不同的地缘政治区域中稳定扩建新的 Azure 区域，因此这些区域的数目稳定增长，截至 2015 年 12 月已达 20 个 Azure 区域，并且已声明了更多的区域。 客户可以将 SAP 系统部署到所有区域，包括中国的两个 Azure 区域。 有关 Azure 区域的最新信息，请参阅以下网站： <https://azure.microsoft.com/regions/>
+虚拟机将部署到所谓的 *Azure 区域*。 Azure 区域可以是位置很近的一个或多个数据中心。 针对全球大多数地缘政治区域，Microsoft 至少有两个 Azure 区域。 例如，在欧洲，有一个“北欧”和一个“西欧”Azure 区域。 一个地缘政治区域中的两个 Azure 区域之间相隔足够的距离，以确保自然或技术灾难不会同时影响同一地缘政治区域中的两个 Azure 区域。 由于 Microsoft 在全球不同的地缘政治区域中稳定扩建新的 Azure 区域，因此这些区域的数目稳定增长，截至 2015 年 12 月已达 20 个 Azure 区域，并且已声明了更多的区域。 客户可以将 SAP 系统部署到所有区域，包括中国的两个 Azure 区域。 有关 Azure 区域的最新信息，请参阅以下网站：<https://azure.microsoft.com/regions/>
 
 ### <a name="8d8ad4b8-6093-4b91-ac36-ea56d80dbf77"></a>Microsoft Azure 虚拟机的概念
 Microsoft Azure 提供基础结构即服务 (IaaS) 解决方案用于托管与本地虚拟化解决方案具有类似功能的虚拟机。 可以在 Azure 门户、PowerShell 或 CLI 中创建虚拟机，这些工具还提供部署和管理功能。
@@ -569,7 +569,7 @@ Azure 标准存储是 Azure IaaS 发布时可用的存储类型。 针对每个�
 * Azure 存储节点中的 SSD 磁盘使用方式
 * Azure 计算节点的本地 SSD 支持的新读取缓存
 
-在相比于功能中未更改的标准存储的大小的磁盘 （或 VHD），高级存储目前有三个不同的磁盘类别，本文中所示： <https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
+相比于标准存储的容量不随磁盘（或 VHD）的大小而更改，高级存储目前有 3 种不同的磁盘类别，如本文所示：<https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/>
 
 如你所见，IOPS/磁盘和磁盘吞吐量/磁盘依赖于磁盘的大小类别
 
@@ -581,7 +581,7 @@ Azure 标准存储是 Azure IaaS 发布时可用的存储类型。 针对每个�
 
 如果查看[此文 (Linux)][virtual-machines-sizes-linux] 和[此文 (Windows)][virtual-machines-sizes-windows] 中有关 DS 系列 VM 的部分，就可以发现高级存储磁盘对 VM 级别粒度的数据量有所限制。 不同的 DS 系列或 GS 系列 VM 对可装载的 数据磁盘数也有不同的限制。 上述文章也阐述了这些限制。 但基本上，这意味着如果将 32 x P30 磁盘装载到单个 DS14 VM，则无法获得 32 x P30 磁盘的最大吞吐量。 如文中所述，VM 级别的最大吞吐量会限制数据吞吐量。
 
-可以在此处找到高级存储的详细信息： <https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
+有关高级存储的详细信息，请参阅此处：<https://azure.microsoft.com/blog/2015/04/16/azure-premium-storage-now-generally-available-2>
 
 #### <a name="azure-storage-accounts"></a>Azure 存储帐户
 
@@ -628,7 +628,7 @@ Microsoft Azure 提供一种网络基础结构，允许映射想要使用 SAP �
 * 在客户的本地网络与 Azure 网络之间建立跨界连接
 * 在 Azure 站点之间建立跨 Azure 区域或数据中心的连接
 
-可以在此处查看详细信息： <https://azure.microsoft.com/documentation/services/virtual-network/>
+可在此处 <https://azure.microsoft.com/documentation/services/virtual-network/> 找到更多信息
 
 可以通过许多不同的方式配置 Azure 中的名称解析和 IP 解析。 此外，还可使用 Azure DNS 服务，而不是设置自己的 DNS 服务器。 有关详细信息，请参阅[此文][virtual-networks-manage-dns-in-vnet]的[此页](https://azure.microsoft.com/services/dns/)。
 
@@ -722,8 +722,7 @@ Azure 现在也可让为一个 Azure 订阅创建多站点 VPN 连接。 以前�
 #### <a name="forced-tunneling-in-case-of-cross-premises"></a>跨界方案中的强制隧道
 要使 VM 通过站点到站点连接、点到站点连接或 ExpressRoute 加入到本地域，还需要确保为这些 VM 中的所有用户部署 Internet 代理设置。 默认情况下，这些 VM 中运行的软件或者使用浏览器访问 Internet 的用户不会通过公司代理，而是直接通过 Azure 连接到 Internet。 但是，即使进行了代理设置，也不能完全保证能够通过公司代理定向流量，因为检查代理是软件和服务的责任。 如果 VM 中运行的软件不执行这种检查，或者由管理员处理这些设置，则定向到 Internet 的流量可能会再次直接通过 Azure 改道发往 Internet。
 
-若要避免此类直接 Internet 连接，可以在本地与 Azure 之间配置具有站点到站点连接的强制隧道。 发布了关于强制隧道功能的详细的说明
-<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>
+若要避免此类直接 Internet 连接，可以在本地与 Azure 之间配置具有站点到站点连接的强制隧道。 <https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/> 上发布了关于强制隧道功能的详细说明
 
 ExpressRoute 强制隧道由通过 ExpressRoute BGP 对等互连会话广告默认路由的客户启用。
 
@@ -754,8 +753,7 @@ ExpressRoute 强制隧道由通过 ExpressRoute BGP 对等互连会话广告默�
 
 **步骤 1**：首先要获取的最重要信息是有关给定 SAP 系统的 SAPS 要求。 需要将 SAPS 要求划分为 DBMS 部分和 SAP 应用程序部分，即使该 SAP 系统已部署在本地的双层配置中。 对于现有系统，通常可以根据现有的 SAP 基准来确定或估测使用中的硬件的相关 SAPS。 可在此处 <https://sap.com/about/benchmark.html> 找到结果。
 对于新部署的 SAP 系统，应该事先完成整个大小调整活动，该活动应得出系统的 SAPS 要求。
-另请参阅此博客及附加的文档进行 SAP 大小调整在 Azure 上：
-<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
+有关在 Azure 上调整 SAP 大小的信息，另请参阅此博客及附加文档：<https://blogs.msdn.com/b/saponsqlserver/archive/2015/12/01/new-white-paper-on-sizing-sap-solutions-on-azure-public-cloud.aspx>
 
 **步骤 2**：对于现有系统，应该度量 DBMS 服务器上的每秒 I/O 量和 I/O 运算次数。 对于新规划的系统，在针对新的系统完成选型活动后，应该也能给出 DBMS 端 I/O 要求的粗略观点。 如果对这种结果没有把握，最终需要开展概念认证。
 
@@ -800,8 +798,7 @@ Windows PowerShell 是一个功能强大的可扩展框架，在 Azure 中部署
 
 根据到目前为止的客户体验，PowerShell (PS) 绝对是用于部署 VM 以及在 VM 部署中创建自定义步骤的更强大工具。 在 Azure 中运行 SAP 实例的所有客户均使用 PS cmdlet 作为补充性手段来执行其在 Azure 门户中所能执行的管理任务，甚至专门使用 PS cmdlet 来管理 Azure 中的部署。 由于 Azure 专用的 cmdlet 与 2000 多个 Windows 相关 cmdlet 采用相同的命名约定，因此，Windows 管理员可以轻而易举地使用这些 cmdlet。
 
-请参阅此处的示例：
-<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
+请查阅此处的示例：<https://blogs.technet.com/b/keithmayer/archive/2015/07/07/18-steps-for-end-to-end-iaas-provisioning-in-the-cloud-with-azure-resource-manager-arm-powershell-and-desired-state-configuration-dsc.aspx>
 
 
 部署适用于 SAP 的 Azure 监视扩展（请参阅本文档中的[适用于 SAP 的 Azure 监视解决方案][planning-guide-9.1]一章）只能通过 PowerShell 或 CLI 完成。 因此，在 Azure 中部署或管理 SAP NetWeaver 系统时，必须安装并配置 PowerShell 或 CLI。  
@@ -1057,7 +1054,7 @@ Azure 基础结构即服务不仅能够上传 VHD 和 SAP 系统， 而且你还
 
 SAP 系统，甚至是支持 SAP 应用程序层的专用 DBMS 服务器，都有可能包括多个含有 OS 及二进制文件或者 SAP 数据库数据和日志文件的磁盘。 Azure 的复制磁盘功能以及 Azure 的保存磁盘至本地磁盘功能都没有同步机制用于以一致的方式创建多个磁盘的快照。 因此，即使已复制或已保存的磁盘是针对同一个 VM 装载的，它们的状态也会不同。 由于不同的磁盘包含不同的数据和日志文件这一铁定事实，最终的数据库也就无法保持一致。
 
-**结论：结论：若要复制或保存属于 SAP 系统配置的磁盘，需要停止该 SAP 系统，同时还需要关闭部署的 VM。 只有这样您可以复制或下载要在 Azure 中或者在本地创建 SAP 系统的副本的磁盘集。**
+**结论：结论：若要复制或保存属于 SAP 系统配置的磁盘，需要停止该 SAP 系统，同时还需要关闭部署的 VM。** 只有在执行此操作后，才可以复制或下载磁盘集，以便在 Azure 中或者在本地创建 SAP 系统的副本。
 
 数据磁盘作为 VHD 文件存储在 Azure 存储帐户中，并可直接附加到虚拟机或用作映像。 在本例中，VHD 将复制到另一个位置，再附加到虚拟机。 Azure 中 VHD 文件的完整名称必须在 Azure 中唯一。 如前所述，此名称由三个部分组成，如下所示：
 
@@ -1326,8 +1323,7 @@ Azure 异地复制在 VM 中的每个 VHD 上本地执行，并且不会跨 VM �
 
 #### <a name="configuration-of-the-sap-system-and-sap-gui-connectivity-over-the-internet"></a>Internet 上的 SAP 系统和 SAP GUI 连接的配置
 
-请参阅本文中，其中描述了本主题的详细信息：
-<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
+请参阅此文章了解关于本主题的详细信息：<https://blogs.msdn.com/b/saponsqlserver/archive/2014/06/24/sap-gui-connection-closed-when-connecting-to-sap-system-in-azure.aspx>
 
 #### <a name="changing-firewall-settings-within-vm"></a>更改 VM 中的防火墙设置
 
@@ -1585,7 +1581,7 @@ az vm disk attach --resource-group $rgName --vm-name SAPERPDemo --size-gb 1023 -
 
 * [简单的 Linux VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
 * [简单的 Windows VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-* [从映像的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
+* [来自映像的 VM](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image)
 
 ### <a name="implement-a-set-of-vms-that-communicate-within-azure"></a>实施一组需要在 Azure 中通信的 VM
 
@@ -1805,7 +1801,7 @@ Microsoft 已添加更多 VM 类型，这些类型在 vCPU 数量、内存，更
 
 ![适用于 SAP NetWeaver 的 Azure 监视解决方案][planning-guide-figure-2500]
 
-**有关具体的操作方法以及在部署期间使用这些 PowerShell cmdlet 或 CLI 命令的详细步骤，请遵循中提供的说明[部署指南][deployment-guide]。**
+**有关具体的操作方法以及在部署期间使用这些 PowerShell cmdlet 或 CLI 命令的详细步骤，请遵循[部署指南][deployment-guide]中提供的说明。**
 
 ### <a name="integration-of-azure-located-sap-instance-into-saprouter"></a>将 Azure 中的 SAP 实例集成到 SAProuter
 
@@ -1835,7 +1831,7 @@ Microsoft 已添加更多 VM 类型，这些类型在 vCPU 数量、内存，更
 如果想要自定义 SAP 企业门户的 URL 和/或端口，请查看以下文档：
 
 * [更改门户 URL](https://wiki.scn.sap.com/wiki/display/EP/Change+Portal+URL)
-* [更改默认端口号，门户端口号](https://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
+* [更改默认端口号和门户端口号](https://wiki.scn.sap.com/wiki/display/NWTech/Change+Default++port+numbers%2C+Portal+port+numbers)
 
 ## <a name="high-availability-ha-and-disaster-recovery-dr-for-sap-netweaver-running-on-azure-virtual-machines"></a>Azure 虚拟机上运行的 SAP NetWeaver 的高可用性 (HA) 和灾难恢复 (DR)
 
@@ -1878,7 +1874,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 * 计划内维护事件是指由 Microsoft 对底层 Azure平台进行定期更新，以改进虚拟机运行时所在的平台基础结构的总体可靠性、性能和安全性。
 * 计划外维护事件见于虚拟机所在硬件或物理基础结构出现某类故障的情况。 此类故障可能包括：本地网络故障、本地磁盘故障，或者其他机架级别的故障。 检测到此类故障时，Azure 平台会自动将虚拟机从所在的不健康物理服务器迁移到健康的物理服务器。 此类事件很少见，但也会导致虚拟机重启。
 
-可在本文档中找到更多详细信息： <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+可以在此文档中找到更多详细信息：<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -1886,7 +1882,7 @@ Azure 中的 SAP 高可用性与本地物理或虚拟环境中的 SAP 高可用�
 
 由于 Azure 存储默认保留 3 个数据映像，因此不需要部署跨多个 Azure 磁盘的 RAID5 或 RAID1。
 
-可在这篇文章中找到更多详细信息： <https://azure.microsoft.com/documentation/articles/storage-redundancy/>
+可以在此文章中找到更多详细信息：<https://azure.microsoft.com/documentation/articles/storage-redundancy/>
 
 #### <a name="utilizing-azure-infrastructure-vm-restart-to-achieve-higher-availability-of-sap-applications"></a>利用 Azure 基础结构 VM 重新启动来实现 SAP 应用程序的更高可用性
 
@@ -1945,7 +1941,7 @@ Azure 缩放单元内的 Azure 可用性集可使用不限数目的容错和升�
 
 ![Azure 中 SAP 应用程序服务器的 HA][planning-guide-figure-3000]
 
-可在本文档中找到更多详细信息： <https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
+可以在此文档中找到更多详细信息：<https://azure.microsoft.com/documentation/articles/virtual-machines-manage-availability>
 
 #### <a name="high-availability-for-sap-central-services-on-azure"></a>SAP Central Services on Azure 的高可用性
 
@@ -2005,9 +2001,9 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 
 有关自动启动 SAP 实例的其他信息，请参阅此处：
 
-* [启动/停止以及在 Unix 服务器启动/停止 SAP](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
+* [随 Unix 服务器启动/停止一起启动/停止 SAP](https://scn.sap.com/community/unix/blog/2012/08/07/startstop-sap-along-with-your-unix-server-startstop)
 * [启动和停止 SAP NetWeaver 管理代理](https://help.sap.com/saphelp_nwpi711/helpdata/en/49/9a15525b20423ee10000000a421938/content.htm)
-* [如何启用自动启动的 HANA 数据库](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
+* [如何启用 HANA 数据库的自动启动](http://www.freehanatutorials.com/2012/10/how-to-enable-auto-start-of-hana.html)
 
 ### <a name="larger-3-tier-sap-systems"></a>更大的第 3 层 SAP 系统
 上述部分已谈到第 3 层 SAP 配置的高可用性方面。 但如果 DBMS 服务器要求太高而无法位于 Azure，但可将 SAP 应用程序层部署到 Azure 的系统又该怎么办？
@@ -2021,12 +2017,10 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 根据所选的 SAP 配置（第 2 层或第 3 层），可能需要执行备份。 备份包括 VM 自身的内容以及数据库。 应该使用数据库方法执行 DBMS 相关的备份。 可以在 [DBMS Guide][dbms-guide]（DBMS 指南）中找到针对不同数据库的详细说明。 另外，SAP 数据可以通过本部分所述的脱机方式（也包括数据库内容）或者下一部分所述的联机方式来备份。
 
 简单而言，执行脱机备份要求通过 Azure 门户关闭 VM，并将基础 VM 磁盘以及所有附加磁盘复制到 VM。 这样就能保存 VM 及其关联磁盘的时间点映像。 建议将备份复制到一个不同的 Azure 存储帐户。 因此，可以应用本文档的[在 Azure 存储帐户之间复制磁盘][planning-guide-5.4.2]一章中所述的过程。
-除了关闭使用 Azure 门户还可以执行它通过 Powershell 或 CLI 如下所述：
-<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
+除了使用 Azure 门户关闭以外，还可以通过 PowerShell 或 CLI 执行此操作，如此处所述：<https://azure.microsoft.com/documentation/articles/virtual-machines-deploy-rmtemplates-powershell/>
 
 还原该状态需要删除基础 VM 以及基础 VM 的原始磁盘和装载的磁盘，将保存的磁盘复制回原始存储帐户或托管磁盘的资源组，然后重新部署系统。
-本文演示如何编写此过程的 Powershell 脚本示例：
-<http://www.westerndevs.com/azure-snapshots/>
+以下文章举例说明了如何使用 Powershell 编写此过程的脚本：<http://www.westerndevs.com/azure-snapshots/>
 
 请确保安装新的 SAP 许可证，因为按如上所述还原 VM 备份会创建新的硬件密钥。
 
@@ -2050,8 +2044,7 @@ SAP 提供了相应的功能，用于在启动 VM 中的 OS 后立即启动 SAP 
 >
 > ![Linux][Logo_Linux] Linux
 >
-> Windows VSS 在 Linux 中没有等效功能。 因此，只能执行文件一致性备份，而无法执行应用程序一致性备份。 SAP DBMS 备份应该使用 DBMS 功能来执行。 文件系统，它包含与 SAP 相关的数据可以保存，例如，使用 tar 此处所述：
-> <https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
+> Windows VSS 在 Linux 中没有等效功能。 因此，只能执行文件一致性备份，而无法执行应用程序一致性备份。 SAP DBMS 备份应该使用 DBMS 功能来执行。 例如，可以使用 tar 来保存包含 SAP 相关数据的文件系统，如此处所述：<https://help.sap.com/saphelp_nw70ehp2/helpdata/en/d3/c0da3ccbb04d35b186041ba6ac301f/content.htm>
 >
 >
 
@@ -2079,7 +2072,7 @@ Azure 中 SAP 系统的高可用性要点如下：
 ## <a name="next-steps"></a>后续步骤
 阅读以下文章：
 
-- [适用于 SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 - [Azure 上的 SAP HANA 基础结构配置和操作](https://docs.microsoft.com/
 - azure/virtual-machines/workloads/sap/hana-vm-operations)

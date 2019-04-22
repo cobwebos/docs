@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.openlocfilehash: 5b7c44d3ea3394ff728adfb9d9fd72293138fb2e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494638"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>使用 Azure 管道来生成和部署的 HPC 解决方案
@@ -506,5 +506,5 @@ az batch pool resize --pool-id <poolname> --target-dedicated-nodes 4
 
 除了本文中，有两个利用 ffmpeg，使用.NET 和 Python 的教程。 有关如何与 Batch 帐户，通过简单的应用程序进行交互，请参阅这些教程，详细信息。
 
-* [使用 Python API 通过 Azure Batch 运行并行工作负荷](tutorial-parallel-python.md)
-* [使用 .NET API 通过 Azure Batch 运行并行工作负荷](tutorial-parallel-dotnet.md)
+* [通过使用 Python API 的 Azure Batch 运行并行工作负荷](tutorial-parallel-python.md)
+* [通过使用.NET API 的 Azure Batch 运行并行工作负荷](tutorial-parallel-dotnet.md)

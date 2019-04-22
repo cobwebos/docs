@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 03/20/2019
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: 33e2ac136ae68ee0c0ce0109a6f6934727d3a6c5
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: e054456662af3ef9df0760af163ec5d09df18b21
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203675"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502930"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>从 Android 应用将用户登录并调用 Microsoft Graph
 
@@ -29,7 +29,7 @@ ms.locfileid: "58203675"
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>本指南生成的示例应用的工作原理
 
-![演示如何按本教程适用生成示例应用](media/active-directory-develop-guidedsetup-android-intro/android-intro-updated.png)
+![演示本教程生成的示例应用的工作原理](media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
 此示例中的应用会将用户登录并代表他们获取数据。  将通过一个远程 API（在本例中为 Microsoft Graph API）访问该数据，该 API 要求授权并且还受 Microsoft 标识平台保护。
 
@@ -42,7 +42,7 @@ ms.locfileid: "58203675"
 
 此示例使用 Android 的 Microsoft 身份验证库 (MSAL) 来协调以及帮助进行授权。MSAL 将自动续订令牌，在设备上的其他应用之间提供 SSO，帮助管理帐户，以及处理大多数条件访问案例。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 * 此指导式设置使用的是 Android Studio 3.0。
 * 必须使用 Android 21 或更高版本（建议使用 25+）。
@@ -52,6 +52,6 @@ ms.locfileid: "58203675"
 
 本指南使用以下身份验证库：
 
-|库|描述|
+|库|说明|
 |---|---|
 |[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft 身份验证库 (MSAL)|

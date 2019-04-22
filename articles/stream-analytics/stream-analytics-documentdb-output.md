@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.custom: seodec18
 ms.openlocfilehash: 734cf09869e5a2df5f9a505a3cb8ccc7bc2338d5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495970"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Cosmos DB 的 Azure 流分析输出  
@@ -88,5 +88,5 @@ ms.locfileid: "59495970"
 |帐户 ID      | Azure Cosmos DB 帐户的名称或终结点 URI。|
 |帐户密钥     | Azure Cosmos DB 帐户的共享访问密钥。|
 |数据库        | Azure Cosmos DB 数据库名称。|
-|集合名称模式 | 要使用的集合的集合名称。 `MyCollection` 是的有效示例输入-一个名为集合`MyCollection`必须存在。  |
+|集合名称模式 | 要使用的集合的集合名称。 `MyCollection` 是有效的输入示例 - 必须存在一个名为 `MyCollection` 的集合。  |
 |文档 ID     | 可选。 输出事件中用作唯一键的列名称，插入或更新操作必须基于该键。 如果留空，则插入所有事件，但不使用更新选项。|

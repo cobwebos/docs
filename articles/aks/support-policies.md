@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: jenoller
 ms.openlocfilehash: f173fc7c794729eae8c60cceefa88d153800a816
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59502168"
 ---
 # <a name="azure-kubernetes-service-aks-support-policies"></a>Azure Kubernetes 服务 (AKS) 支持策略
@@ -41,7 +41,7 @@ AKS 不是 100 %managed**群集**解决方案。 某些组件 （如辅助角色
  **托管**，意味着 Microsoft 和 AKS 团队将部署时，操作原理，并负责的可用性和这些服务的功能。 **客户无法更改这些组件**。 自定义受到限制，以确保一致且可缩放的用户体验。 完全可自定义解决方案，请参阅[AKS 引擎](https://github.com/Azure/aks-engine)。
 
 > [!NOTE]
-> 务必要了解 Azure Kubernetes 服务辅助角色节点显示在 Azure 门户中，为常规 Azure IaaS 资源，尽管这些虚拟机部署到自定义 Azure 资源组 (前缀为 MC\\*)。 用户可能会更改它们，SSH 到它们就像正常的虚拟机 （不能但是，更改基本的操作系统映像，并更改可能未在更新保持不变或重新启动），并可以将其他 Azure 资源连接到它们，或修改它们。 **但是，这样的带外管理和自定义项意味着 AKS 群集本身可能不支持。 除非 Microsoft 支持，请避免辅助角色节点更改类型。**
+> 务必要了解 Azure Kubernetes 服务辅助角色节点显示在 Azure 门户中，为常规 Azure IaaS 资源，尽管这些虚拟机部署到自定义 Azure 资源组 (前缀为 MC\\*)。 用户可能会更改它们，SSH 到它们就像正常的虚拟机 （不能但是，更改基本的操作系统映像，并更改可能未在更新保持不变或重新启动），并可以将其他 Azure 资源连接到它们，或修改它们。 **但是，这样的带外管理和自定义项意味着 AKS 群集本身可能不支持。除非 Microsoft 支持，请避免辅助角色节点更改类型。**
 
 ## <a name="what-is-shared-responsibility"></a>什么被共享责任
 

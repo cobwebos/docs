@@ -11,13 +11,13 @@ author: vainolo
 ms.author: arib
 ms.reviewer: vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 9fac8291799216b4ca4527b482aefee169f7fc59
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.date: 04/16/2019
+ms.openlocfilehash: add3521a3961f230188e04ff23dda5aac537571a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59361274"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680351"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL 数据库审核入门
 
@@ -25,7 +25,7 @@ ms.locfileid: "59361274"
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
 
-- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
 
 
 > [!NOTE] 
@@ -88,6 +88,9 @@ ms.locfileid: "59361274"
     ![导航窗格][3]
 
 5. **新建** - 现在有多个选项，可以用来配置写入审核日志的位置。 到 Azure 存储帐户、 Azure Monitor 日志由 Log Analytics 工作区或事件中心以便使用事件中心，可以编写日志。 可以将这些选项随意组合起来进行配置，审核日志会写入到每一个之中。
+
+   > [!WARNING]
+   > 启用审核到 Log Analytics 将产生成本基于引入速率。 请特别注意与使用此相关的开销[选项](https://azure.microsoft.com/en-us/pricing/details/monitor/)，或者考虑在 Azure 存储帐户中存储审核日志。
 
     ![存储选项](./media/sql-database-auditing-get-started/auditing-select-destination.png)
 
@@ -229,10 +232,10 @@ ms.locfileid: "59361274"
 
 **PowerShell cmdlet（包括对附加筛选的 WHERE 子句支持）**：
 
-- [创建或更新数据库审核策略 (设置 AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
-- [创建或更新服务器审核策略 (设置 AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
-- [获取数据库审核策略 (Get AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
-- [获取服务器审核策略 (Get AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
+- [创建或更新数据库审核策略 (Set-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabaseauditing)
+- [创建或更新服务器审核策略 (Set-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlserverauditing)
+- [获取数据库审核策略 (Get-AzSqlDatabaseAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabaseauditing)
+- [获取服务器审核策略 (Get-AzSqlServerAuditing)](https://docs.microsoft.com/powershell/module/az.sql/get-azsqlserverauditing)
 
 有关脚本示例，请参阅[使用 PowerShell 配置审核和威胁检测](scripts/sql-database-auditing-and-threat-detection-powershell.md)。
 
@@ -247,18 +250,18 @@ ms.locfileid: "59361274"
 
 支持使用 WHERE 子句执行附加筛选的扩展策略：
 
-- [创建或更新数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-- [创建或更新服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
-- [获取数据库*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
-- [获取服务器*扩展*审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
+- [创建或更新数据库扩展审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+- [创建或更新服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+- [获取数据库扩展审核策略](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+- [获取服务器扩展审核策略](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 ## <a id="subheading-10"></a>使用 ARM 模板管理 SQL 数据库审核
 
 可以使用 [Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)模板管理 Azure SQL 数据库审核，如以下示例所示：
 
-- [部署 Azure SQL 服务器启用审核以审核日志写入 Azure Blob 存储帐户与](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
-- [部署 Azure SQL 服务器启用审核以将审核日志写入到 Log Analytics 使用](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
-- [部署 Azure SQL 服务器启用审核以将审核日志写入到事件中心与](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
+- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Azure Blob 存储帐户](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-blob-storage)
+- [部署启用了审核的 Azure SQL Server，以将审核日志写入 Log Analytics](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-oms)
+- [部署启用了审核的 Azure SQL Server，以将审核日志写入事件中心](https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-auditing-server-policy-to-eventhub)
 
 > [!NOTE]
 > 链接的示例是在外部公共存储库上，将提供是，不含任何保证，和不受任何 Microsoft 支持程序/服务。

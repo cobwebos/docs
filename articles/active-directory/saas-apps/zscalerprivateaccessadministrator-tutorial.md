@@ -4,145 +4,152 @@ description: 了解如何在 Azure Active Directory 和 Zscaler Private Access A
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: femila
-ms.reviewer: joflore
+manager: mtillman
+ms.reviewer: barbkess
 ms.assetid: c87392a7-e7fe-4cdc-a8e6-afe1ed975172
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 02/08/2018
+ms.topic: tutorial
+ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d9cdb842c4cebe48f2f6534417a7fe6aa4686d1e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: ce75431de24886c038cd2eb4ee7db02d2b6cde31
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57894676"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563347"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-private-access-administrator"></a>教程：Azure Active Directory 与 Zscaler Private Access Administrator 集成
 
 本教程介绍如何将 Zscaler Private Access Administrator 与 Azure Active Directory (Azure AD) 集成。
-
 将 Zscaler Private Access Administrator 与 Azure AD 集成具有以下优势：
 
-- 可在 Azure AD 中控制谁有权访问 Zscaler Private Access Administrator
-- 可以让用户使用其 Azure AD 帐户自动登录到 Zscaler Private Access Administrator（单一登录）
-- 可在中心位置（即 Azure 门户）管理帐户。
+* 可在 Azure AD 中控制谁有权访问 Zscaler Private Access Administrator
+* 可让用户使用其 Azure AD 帐户自动登录到 Zscaler Private Access Administrator（单一登录）。
+* 可在中心位置（即 Azure 门户）管理帐户。
 
-如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
+如果要了解有关 SaaS 应用与 Azure AD 集成的更多详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)。
+如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 若要配置 Azure AD 与 Zscaler Private Access Administrator 的集成，需具备以下项：
 
-- Azure AD 订阅
-- 已启用 Zscaler Private Access Administrator 单一登录的订阅
-
-> [!NOTE]
-> 为了测试本教程中的步骤，我们不建议使用生产环境。
-
-测试本教程中的步骤应遵循以下建议：
-
-- 除非必要，请勿使用生产环境。
-- 如果没有 Azure AD 试用环境，可以[获取一个月的试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
+* 已启用 Zscaler Private Access Administrator 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
-1. 从库中添加 Zscaler Private Access Administrator
-1. 配置和测试 Azure AD 单一登录
+本教程会在测试环境中配置和测试 Azure AD 单一登录。
+
+* Zscaler Private Access Administrator 支持 SP 和 IDP 发起的 SSO
 
 ## <a name="adding-zscaler-private-access-administrator-from-the-gallery"></a>从库中添加 Zscaler Private Access Administrator
+
 要配置 Zscaler Private Access Administrator 与 Azure AD 的集成，需要从库中将 Zscaler Private Access Administrator 添加到托管 SaaS 应用列表。
 
 **若要从库中添加 Zscaler Private Access Administrator，请执行以下步骤：**
 
-1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
+1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
-    ![“Azure Active Directory”按钮][1]
+    ![“Azure Active Directory”按钮](common/select-azuread.png)
 
-1. 导航到“企业应用程序”。 然后转到“所有应用程序”。
+2. 转到“企业应用”，并选择“所有应用”选项。
 
-    ![“企业应用程序”边栏选项卡][2]
-    
-1. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
 
-    ![“新增应用程序”按钮][3]
+3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-1. 在搜索框中键入 **Zscaler Private Access Administrator**，从结果面板中选择“Zscaler Private Access Administrator”，然后单击“添加”按钮以添加该应用程序。
+    ![“新增应用程序”按钮](common/add-new-app.png)
 
-    ![结果列表中的 Zscaler Private Access Administrator](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addfromgallery.png)
+4. 在搜索框中键入 **Zscaler Private Access Administrator**，从结果面板中选择“Zscaler Private Access Administrator”，然后单击“添加”按钮以添加该应用程序。
+
+    ![结果列表中的 Zscaler Private Access Administrator](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
-在本部分中，基于名为“Britta Simon”的测试用户配置和测试 Zscaler Private Access Administrator 的 Azure AD 单一登录。
-
-若要运行单一登录，Azure AD 需要知道与 Azure AD 用户相对应的 Zscaler Private Access Administrator 用户。 换句话说，需要建立 Azure AD 用户与 Zscaler Private Access Administrator 中相关用户之间的链接关系。
+本部分将基于名为“Britta Simon”的测试用户配置和测试 Zscaler Private Access Administrator 的 Azure AD 单一登录。
+要正常进行单一登录，需要建立 Azure AD 用户与 Zscaler Private Access Administrator 中相关用户之间的链接关系。
 
 若要配置和测试 Zscaler Private Access Administrator 的 Azure AD 单一登录，需要完成以下构建基块：
 
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
-1. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-1. **[创建 Zscaler Private Access Administrator 测试用户](#create-a-zscaler-private-access-administrator-test-user)** - 在 Zscaler Private Access Administrator 中创建 Britta Simon 的对应用户，并将其链接到她的 Azure AD 表示形式。
-1. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
-1. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
+2. **[配置 Zscaler Private Access Administrator 单一登录](#configure-zscaler-private-access-administrator-single-sign-on)** - 在应用程序端配置单一登录。
+3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. **[创建 Zscaler Private Access Administrator 测试用户](#create-zscaler-private-access-administrator-test-user)** - 在 Zscaler Private Access Administrator 中创建 Britta Simon 的对应用户，并将其链接到用户的 Azure AD 表示形式。
+6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
 
-在本部分中，会在 Azure 门户中启用 Azure AD 单一登录并在 Zscaler Private Access Administrator 应用程序中配置单一登录。
+在本部分中，将在 Azure 门户中启用 Azure AD 单一登录。
 
-**若要配置 Zscaler Private Access Administrator 的 Azure AD 单一登录，请执行以下步骤：**
+若要配置 Zscaler Private Access Administrator 的 Azure AD 单一登录，请执行以下步骤：
 
-1. 在 Azure 门户的“Zscaler Private Access Administrator”应用程序集成页上，单击“单一登录”。
+1. 在 [Azure 门户](https://portal.azure.com/)中的 Zscaler Private Access Administrator 应用程序集成页上，选择“单一登录”。
 
-    ![配置单一登录链接][4]
+    ![配置单一登录链接](common/select-sso.png)
 
-1. 在“单一登录”对话框中，选择“基于 SAML 的单一登录”作为“模式”以启用单一登录。
- 
-    ![“单一登录”对话框](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_samlbase.png)
+2. 在**选择单一登录方法**对话框中，选择 **SAML/WS-Fed**模式以启用单一登录。
 
-1. 在“Zscaler Private Access Administrator 域和 URL”部分，如果希望在“IDP”启动模式下配置应用程序：
+    ![单一登录选择模式](common/select-saml-option.png)
 
-    ![Zscaler Private Access Administrator 域和 URL 单一登录信息](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_url.png)
+3. 在“使用 SAML 设置单一登录”页上，单击“编辑”图标以打开“基本 SAML 配置”对话框。
+
+    ![编辑基本 SAML 配置](common/edit-urls.png)
+
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
+
+    ![Zscaler Private Access Administrator 域和 URL 单一登录信息](common/idp-relay.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/metadata`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/sso`
 
-    c. 选中“显示高级 URL 设置”
+    c. 单击“设置其他 URL”。
 
-    d. 在“RelayState”文本框中，键入一个值：`idpadminsso`
+    d. 在“中继状态”文本框中键入 URL：`idpadminsso`
 
-1.  如果要在“SP 发起的模式”下配置应用程序，请执行以下步骤：
+5.  如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
-    在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.private.zscaler.com/auth/sso`
+    ![Zscaler Private Access Administrator 域和 URL 单一登录信息](common/both-signonurl.png)
 
-    > [!NOTE] 
-    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Zscaler Private Access Administrator 支持团队](https://help.zscaler.com/zpa-submit-ticket)。
- 
-1. 在“SAML 签名证书”部分中，单击“元数据 XML”，并在计算机上保存元数据文件。
+    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.private.zscaler.com/auth/sso`。   
 
-    ![证书下载链接](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_certificate.png) 
+    > [!NOTE]
+    > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Zscaler Private Access Administrator 客户端支持团队](https://help.zscaler.com/zpa-submit-ticket)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-1. 单击“保存”按钮。
+6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
-    ![配置单一登录“保存”按钮](./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_400.png)
+    ![证书下载链接](common/metadataxml.png)
 
-1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Zscaler Private AccessAdministrator 公司站点。
+7. 在“设置 Zscaler Private Access Administrator”部分，根据要求复制相应的 URL。
 
-1. 在顶部单击“管理”，导航到“身份验证”部分，单击“IdP 配置”。
+    ![复制配置 URL](common/copy-configuration-urls.png)
+
+    a. 登录 URL
+
+    b. Azure AD 标识符
+
+    c. 注销 URL
+
+### <a name="configure-zscaler-private-access-administrator-single-sign-on"></a>配置 Zscaler Private Access Administrator 单一登录
+
+1. 在另一个 Web 浏览器窗口中，以管理员身份登录 Zscaler Private Access Administrator。
+
+2. 在顶部单击“管理”，导航到“身份验证”部分，单击“IdP 配置”。
 
     ![Zscaler Private Access Administrator 管理](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-1. 在右上角，单击“添加 IdP 配置”。 
+3. 在右上角，单击“添加 IdP 配置”。 
 
     ![Zscaler Private Access Administrator addidp](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addpidp.png)
 
-1. 在“添加 IdP 配置”页面上，执行以下步骤：
+4. 在“添加 IdP 配置”页面上，执行以下步骤：
  
     ![Zscaler Private Access Administrator idpselect](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_idpselect.png)
 
@@ -158,42 +165,57 @@ ms.locfileid: "57894676"
     
     e. 单击“ **保存**”。
 
-> [!TIP]
-> 之后在设置应用时，就可以在 [Azure 门户](https://portal.azure.com)中阅读这些说明的简明版本了！  从“Active Directory”>“企业应用程序”部分添加此应用后，只需单击“单一登录”选项卡，即可通过底部的“配置”部分访问嵌入式文档。 可在此处阅读有关嵌入式文档功能的详细信息：[Azure AD 嵌入式文档]( https://go.microsoft.com/fwlink/?linkid=845985)
-
-### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户
+### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 
 本部分的目的是在 Azure 门户中创建名为 Britta Simon 的测试用户。
 
-   ![创建 Azure AD 测试用户][100]
+1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
+    ![“用户和组”以及“所有用户”链接](common/users.png)
 
-1. 在 Azure 门户的左窗格中，单击“Azure Active Directory”按钮。
+2. 选择屏幕顶部的“新建用户”。
 
-    ![“Azure Active Directory”按钮](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_01.png)
+    ![“新建用户”按钮](common/new-user.png)
 
-1. 若要显示用户列表，请转到“用户和组”，然后单击“所有用户”。
+3. 在“用户属性”中，按照以下步骤操作。
 
-    ![“用户和组”以及“所有用户”链接](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_02.png)
+    ![“用户”对话框](common/user-properties.png)
 
-1. 若要打开“用户”对话框，在“所有用户”对话框顶部单击“添加”。
-
-    ![“添加”按钮](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_03.png)
-
-1. 在“用户”对话框中，执行以下步骤：
-
-    ![“用户”对话框](./media/zscalerprivateaccessadministrator-tutorial/create_aaduser_04.png)
-
-    a. 在“姓名”框中，键入“BrittaSimon”。
-
-    b. 在“用户名”框中，键入用户 Britta Simon 的电子邮件地址。
+    a. 在“名称”字段中，输入 BrittaSimon。
+  
+    b. 在“用户名”字段中键入 `brittasimon@yourcompanydomain.extension`。 例如： BrittaSimon@contoso.com
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
     d. 单击“创建”。
-  
-### <a name="create-a-zscaler-private-access-administrator-test-user"></a>Create a Zscaler Private Access Administrator 测试用户
+
+### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
+
+在本部分中，通过授予 Britta Simon 访问 Zscaler Private Access Administrator 的权限，允许她使用 Azure 单一登录。
+
+1. 在 Azure 门户中，依次选择“企业应用程序”、“所有应用程序”、“Zscaler Private Access Administrator”。
+
+    ![“企业应用程序”边栏选项卡](common/enterprise-applications.png)
+
+2. 在应用程序列表中，选择“Zscaler Private Access Administrator”。
+
+    ![应用程序列表中的“Zscaler Private Access Administrator”链接](common/all-applications.png)
+
+3. 在左侧菜单中，选择“用户和组”。
+
+    ![“用户和组”链接](common/users-groups-blade.png)
+
+4. 单击“添加用户”按钮，然后在“添加分配”对话框中选择“用户和组”。
+
+    ![“添加分配”窗格](common/add-assign-user.png)
+
+5. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
+
+6. 如果你在 SAML 断言中需要任何角色值，请在“选择角色”对话框中从列表中为用户选择合适的角色，然后单击屏幕底部的“选择”按钮。
+
+7. 在“添加分配”对话框中，单击“分配”按钮。
+
+### <a name="create-zscaler-private-access-administrator-test-user"></a>创建 Zscaler Private Access Administrator 测试用户
 
 若要使 Azure AD 用户能够登录到 Zscaler Private Access Administrator，必须将他们预配到 Zscaler Private Access Administrator。 对于 Zscaler Private Access Administrator，需手动执行预配。
 
@@ -201,23 +223,23 @@ ms.locfileid: "57894676"
 
 1. 以管理员身份登录到 Zscaler Private Access Administrator 公司站点。
 
-1. 在顶部单击“管理”，导航到“身份验证”部分，单击“IdP 配置”。
+2. 在顶部单击“管理”，导航到“身份验证”部分，单击“IdP 配置”。
 
     ![Zscaler Private Access Administrator 管理](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_admin.png)
 
-1. 在菜单左侧单击“管理员”。
+3. 在菜单左侧单击“管理员”。
 
     ![Zscaler Private Access Administrator 管理员](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_adminstrator.png)
 
-1. 在右上角，单击“添加管理员”。
+4. 在右上角，单击“添加管理员”。
 
     ![Zscaler Private Access Administrator 添加管理员](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_addadmin.png)
 
-1. 在“添加管理员”页上执行以下步骤：
+5. 在“添加管理员”页上执行以下步骤：
 
     ![Zscaler Private Access Administrator 用户管理](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_useradmin.png)
 
-    a. 在中**用户名**文本框中，输入类似的用户的电子邮件**BrittaSimon\@contoso.com**。
+    a. 在“用户名”文本框中，键入用户的电子邮件地址（例如 BrittaSimon@contoso.com）。
 
     b. 在“密码”文本框中，键入密码。
 
@@ -225,69 +247,25 @@ ms.locfileid: "57894676"
 
     d. 在“角色”中选择“Zscaler Private Access Administrator”。
 
-    e. 在中**电子邮件**文本框中，输入类似的用户的电子邮件**BrittaSimon\@contoso.com**。
+    e. 在“电子邮件”文本框中，输入用户的电子邮件地址（例如 BrittaSimon@contoso.com）。
 
     f. 在“电话”文本框中，键入电话号码。
 
     g. 在“时区”文本框中，选择时区。
 
-    h. 单击“ **保存**”。  
+    h. 单击“ **保存**”。
 
-### <a name="assign-the-azure-ad-test-user"></a>分配 Azure AD 测试用户
-
-在本部分中，通过授予 Britta Simon 访问 Zscaler Private Access Administrator 的权限，允许她使用 Azure 单一登录。
-
-![分配用户角色][200] 
-
-**要将 Britta Simon 分配到 Zscaler Private Access Administrator，请执行以下步骤：**
-
-1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
-
-    ![分配用户][201] 
-
-1. 在应用程序列表中，选择“Zscaler Private Access Administrator”。
-
-    ![应用程序列表中的“Zscaler Private Access Administrator”链接](./media/zscalerprivateaccessadministrator-tutorial/tutorial_zscalerprivateaccessadministrator_app.png)  
-
-1. 在左侧菜单中，单击“用户和组”。
-
-    ![“用户和组”链接][202]
-
-1. 单击“添加”按钮。 然后在“添加分配”对话框中选择“用户和组”。
-
-    ![“添加分配”窗格][203]
-
-1. 在“用户和组”对话框的“用户”列表中，选择“Britta Simon”。
-
-1. 在“用户和组”对话框中单击“选择”按钮。
-
-1. 在“添加分配”对话框中单击“分配”按钮。
-    
-### <a name="test-single-sign-on"></a>测试单一登录
+### <a name="test-single-sign-on"></a>测试单一登录 
 
 在本部分中，使用访问面板测试 Azure AD 单一登录配置。
 
-在访问面板中单击“Zscaler Private Access Administrator”磁贴时，应会自动登录到 Zscaler Private Access Administrator 应用程序。
-有关访问面板的详细信息，请参阅[访问面板简介](../user-help/active-directory-saas-access-panel-introduction.md)。 
+在访问面板中单击“Zscaler Private Access Administrator”磁贴时，应该会自动登录到设置了 SSO 的 Zscaler Private Access Administrator 中。 有关访问面板的详细信息，请参阅 [Introduction to the Access Panel](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)（访问面板简介）。
 
 ## <a name="additional-resources"></a>其他资源
 
-* [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](tutorial-list.md)
-* [Azure Active Directory 的应用程序访问与单一登录是什么？](../manage-apps/what-is-single-sign-on.md)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-
-<!--Image references-->
-
-[1]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_01.png
-[2]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_02.png
-[3]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_03.png
-[4]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_04.png
-
-[100]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_100.png
-
-[200]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_200.png
-[201]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_201.png
-[202]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_202.png
-[203]: ./media/zscalerprivateaccessadministrator-tutorial/tutorial_general_203.png
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

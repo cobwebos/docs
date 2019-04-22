@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/09/2019
 ms.author: tomfitz
 ms.openlocfilehash: 264db79f5c934603004eb595930b44abc622efd5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492186"
 ---
 # <a name="understand-the-structure-and-syntax-of-azure-resource-manager-templates"></a>了解 Azure 资源管理器模板的结构和语法
@@ -44,13 +44,13 @@ ms.locfileid: "59492186"
 
 | 元素名称 | 需要 | 描述 |
 |:--- |:--- |:--- |
-| $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 资源组部署，请使用： `https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>为订阅部署，请使用： `https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
+| $schema |是 |描述模板语言版本的 JSON 架构文件所在的位置。<br><br> 对于资源组部署，请使用：`https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#`<br><br>对于订阅部署，请使用：`https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#` |
 | contentVersion |是 |模板的版本（例如 1.0.0.0）。 可为此元素提供任意值。 使用此值记录模板中的重要更改。 使用模板部署资源时，此值可用于确保使用正确的模板。 |
 | apiProfile |否 | 用作资源类型 API 版本集合的 API 版本。 使用此值可以避免为模板中的每个资源指定 API 版本。 如果你指定 API 配置文件版本但不指定资源类型的 API 版本，则资源管理器将使用配置文件中为该资源类型定义的 API 版本。<br><br>将模板部署到不同的环境（例如 Azure Stack 和全球 Azure）时，API 配置文件属性非常有用。 使用 API 配置文件版本可确保模板自动使用两个环境均支持的版本。 有关最新 API 配置文件版本以及配置文件中定义的资源 API 版本的列表，请参阅 [API 配置文件](https://github.com/Azure/azure-rest-api-specs/tree/master/profile)。<br><br>有关详细信息，请参阅[使用 API 配置文件跟踪版本](templates-cloud-consistency.md#track-versions-using-api-profiles)。 |
 | [parameters](#parameters) |否 |执行部署以自定义资源部署时提供的值。 |
 | [variables](#variables) |否 |在模板中用作 JSON 片段以简化模板语言表达式的值。 |
 | [functions](#functions) |否 |可在模板中使用的用户定义函数。 |
-| [资源](#resources) |是 |已在资源组或订阅中部署/更新的资源类型。 |
+| [resources](#resources) |是 |已在资源组或订阅中部署/更新的资源类型。 |
 | [outputs](#outputs) |否 |部署后返回的值。 |
 
 每个元素均有可设置的属性。 本文稍后将更详细地介绍模板的各个节。
@@ -267,7 +267,7 @@ ms.locfileid: "59492186"
 
 |模板  |描述  |
 |---------|---------|
-|[使用默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
+|[包含用于默认值的函数的参数](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterswithfunctions.json) | 演示了为参数定义默认值时如何使用模板函数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 |[参数对象](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/parameterobject.json) | 演示了将对象用于参数。 该模板不部署任何资源。 它构造参数值并返回这些值。 |
 
 ## <a name="variables"></a>变量
@@ -669,9 +669,9 @@ ms.locfileid: "59492186"
 
 当嵌套时，类型会设置为 `databases`，但其完整资源类型是 `Microsoft.Sql/servers/databases`。 可不提供 `Microsoft.Sql/servers/`，因为假设它继承父资源类型。 子资源名称设置为 `exampledatabase`，但完整名称包括父名称。 可不提供 `exampleserver`，因为假设它继承父资源。
 
-子资源类型的格式为： `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
+子资源类型的格式为：`{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`
 
-子资源名称的格式为： `{parent-resource-name}/{child-resource-name}`
+子资源名称的格式为：`{parent-resource-name}/{child-resource-name}`
 
 但是，无需在服务器内定义数据库。 可以定义顶级子资源。 如果父资源未部署在同一模板中，或者想要使用 `copy` 创建多个子资源，可以使用此方法。 使用此方法时，必须提供完整的资源类型，并在子资源名称中包括父资源名称。
 
@@ -700,7 +700,7 @@ ms.locfileid: "59492186"
 
 例如：
 
-`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确`Microsoft.Compute/virtualMachines/extensions/myVM/myExt`不正确
+`Microsoft.Compute/virtualMachines/myVM/extensions/myExt` 正确，`Microsoft.Compute/virtualMachines/extensions/myVM/myExt` 不正确
 
 ## <a name="outputs"></a>Outputs
 
@@ -725,7 +725,7 @@ ms.locfileid: "59492186"
 | outputName |是 |输出值的名称。 必须是有效的 JavaScript 标识符。 |
 | 条件 |否 | 指示此输出值是否返回的布尔值。 如果为 `true`，则该值包含在部署的输出中。 如果为 `false`，则此部署将跳过输出值。 如果未指定，则默认值为 `true`。 |
 | type |是 |输出值的类型。 输出值支持的类型与模板输入参数相同。 |
-| 值 |是 |评估并作为输出值返回的模板语言表达式。 |
+| value |是 |评估并作为输出值返回的模板语言表达式。 |
 
 ### <a name="define-and-use-output-values"></a>定义和使用输出值
 
@@ -786,7 +786,7 @@ az group deployment show -g <resource-group-name> -n <deployment-name> --query p
 |---------|---------|
 |[复制变量](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | 创建复杂变量，并输出这些值。 不部署任何资源。 |
 |[公共 IP 地址](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | 创建公共 IP 地址并输出资源 ID。 |
-|[负载均衡](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载均衡器时，请使用输出中的资源 ID。 |
+|[负载均衡器](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip-parentloadbalancer.json) | 链接到前面的模板。 创建负载均衡器时，请使用输出中的资源 ID。 |
 
 
 <a id="comments" />

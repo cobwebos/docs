@@ -11,7 +11,7 @@ ms.date: 02/28/2019
 ms.author: ellacroi
 ms.openlocfilehash: 29e64a02cd4af3e1679283ffddb4afab065f8747
 ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/16/2019
 ms.locfileid: "59609126"
@@ -141,7 +141,7 @@ ms.locfileid: "59609126"
 | 斯里兰卡                           | LK        | USD          |
 | 瑞典                              | SE        | SEK          |
 | 瑞士                         | CH        | CHF          |
-| 台湾                              | TW        | TWD          |
+| 中国台湾                              | TW        | TWD          |
 | 塔吉克斯坦                          | TJ        | USD          |
 | 坦桑尼亚                            | TZ        | USD          |
 | 泰国                            | TH        | USD          |

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: bd535aeb034a17f1844c1d19379c1811b43d27e5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: c9e62cf3dfc259d7064be9fd6b80cad0140336eb
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260219"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549263"
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>快速入门：在 Azure 门户中创建 SQL Server 2017 Windows 虚拟机
 
@@ -29,11 +29,10 @@ ms.locfileid: "59260219"
 
 本快速入门逐步讲解如何在 Azure 门户中创建 SQL Server 虚拟机。
 
-> [!TIP]
-> 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解其他 SQL VM 预配选择，请参阅 [Azure 门户中的 Windows SQL Server VM 预配指南](virtual-machines-windows-portal-sql-server-provision.md)。
 
-> [!TIP]
-> 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。
+  > [!TIP]
+  > - 本快速入门提供的路径适用于快速预配并连接到 SQL VM。 若要详细了解其他 SQL VM 预配选择，请参阅 [Azure 门户中的 Windows SQL Server VM 预配指南](virtual-machines-windows-portal-sql-server-provision.md)。
+  > - 如果对 SQL Server 虚拟机有任何疑问，请参阅[常见问题解答](virtual-machines-windows-sql-server-iaas-faq.md)。
 
 ## <a id="subscription"></a> 获取 Azure 订阅
 
@@ -47,12 +46,10 @@ ms.locfileid: "59260219"
 
 1. 在搜索框中键入 `SQL Server 2017 Developer on Windows Server 2016` 并按 ENTER。
 
-1. 选择“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”映像。
+1. 选择“免费 SQL Server 许可证：Windows Server 2016 上的 SQL Server 2017 Developer”映像。 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 有关完整的定价注意事项，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
    ![新搜索窗口](./media/quickstart-sql-vm-create-portal/newsearch.png)
 
-   > [!TIP]
-   > 本教程中使用 Developer 版，因为该版本是 SQL Server 的完整功能版本，并且可免费用于开发测试。 只需支付运行 VM 的成本。 有关完整的定价注意事项，请参阅 [SQL Server Azure VM 定价指南](virtual-machines-windows-sql-server-pricing-guidance.md)。
 
 1. 选择“创建”。
 
@@ -99,19 +96,14 @@ ms.locfileid: "59260219"
 
 在“查看 + 创建”选项卡中查看摘要，然后选择“创建”以创建为此 VM 指定的 SQL Server、资源组和资源。
 
-可以从 Azure 门户监视部署情况。 屏幕顶部的“ **通知** ”按钮显示部署的基本状态。
-
-> [!TIP]
-> 部署 Windows SQL Server VM 可能需要几分钟时间。
+可以从 Azure 门户监视部署情况。 屏幕顶部的“ **通知** ”按钮显示部署的基本状态。 部署可能需要几分钟的时间。 
 
 ## <a name="connect-to-sql-server"></a>连接到 SQL Server
 
 1. 在门户上虚拟机属性的“概述”部分，找到 SQL Server VM 的“公共 IP 地址”。
 
-1. 在连接到 Internet 的其他计算机上，打开 SQL Server Management Studio (SSMS)。
+1. 在连接到 Internet 的其他计算机上，打开 [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms)。
 
-   > [!TIP]
-   > 如果你没有 SQL Server Management Studio，可以从 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 下载。
 
 1. 在“连接到服务器”或“连接到数据库引擎”对话框中，编辑“服务器名称”值。 输入 VM 的公共 IP 地址。 添加一个逗号，然后添加配置新 VM 时指定的自定义端口 **1401**。 例如，`11.22.33.444,1401`。
 

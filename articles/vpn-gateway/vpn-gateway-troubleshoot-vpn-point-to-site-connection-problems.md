@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2018
 ms.author: genli
 ms.openlocfilehash: 174bc4895bbad4546392581c2c769aac762d6106
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492373"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>故障排除：Azure 点到站点连接问题
@@ -31,7 +31,7 @@ ms.locfileid: "59492373"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**找不到可用于此可扩展身份验证协议的证书。 （错误 798）**
+**找不到可用于此可扩展身份验证协议的证书。(错误 798)**
 
 ### <a name="cause"></a>原因
 
@@ -93,7 +93,7 @@ ms.locfileid: "59492373"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**收到的消息是意外或格式不正确。 （错误 0x80090326）**
+**收到意外或格式不当的消息。(错误 0x80090326)**
 
 ### <a name="cause"></a>原因
 
@@ -116,7 +116,7 @@ ms.locfileid: "59492373"
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**处理证书链，但是在不受信任提供程序的根证书中终止。**
+**已处理证书链，但是在不受信任提供程序信任的根证书中终止。**
 
 ### <a name="solution"></a>解决方案
 
@@ -136,7 +136,7 @@ ms.locfileid: "59492373"
 
 看到以下错误消息：
 
-**文件下载错误。 目标 URI 未指定。**
+**文件下载错误。未指定目标 URI。**
 
 ### <a name="cause"></a>原因 
 
@@ -152,7 +152,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试使用 VPN 客户端连接到 Azure 虚拟网络时，看到以下错误消息：
 
-**自定义脚本 （用于更新路由表） 失败。 （错误 8007026f）**
+**用于更新路由表的自定义脚本失败。(错误 8007026f)**
 
 ### <a name="cause"></a>原因
 
@@ -185,7 +185,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试在 Azure 门户中保存 VPN 网关的更改时，看到以下错误消息：
 
-**无法保存虚拟网络网关&lt;*网关名称*&gt;。 证书数据&lt;*证书 ID* &gt;无效。**
+无法保存虚拟网络网关 &lt;网关名称&gt;**。证书 &lt;证书 ID&gt; 的数据无效**。
 
 ### <a name="cause"></a>原因 
 
@@ -232,7 +232,7 @@ VPN 网关类型必须是 **VPN**，VPN 类型必须是 **RouteBased**。
 
 尝试下载 VPN 客户端配置包时，看到以下错误消息：
 
-**未能下载文件。 错误详细信息:错误 503。 服务器正忙。**
+**无法下载文件。错误详细信息:错误 503。服务器正忙。**
  
 ### <a name="solution"></a>解决方案
 

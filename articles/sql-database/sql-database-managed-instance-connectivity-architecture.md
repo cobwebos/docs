@@ -13,10 +13,10 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 02/26/2019
 ms.openlocfilehash: 82b533f7293e00469a5b92b02e8d58967379a585
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497060"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
@@ -67,7 +67,7 @@ SQL 数据库托管实例放置在专用于托管实例的 Azure 虚拟网络和
 
 ![虚拟群集的连接体系结构](./media/managed-instance-connectivity-architecture/connectivityarch003.png)
 
-客户端连接到托管实例使用主机名具有窗体`<mi_name>.<dns_zone>.database.windows.net`。 此主机名解析为专用 IP 地址，尽管它在公共域名系统 (DNS) 区域中注册并且是可公开解析。 `zone-id`在创建群集时自动生成。 如果新创建的群集承载第二个托管的实例，它与主群集共享其区域 ID。 有关详细信息，请参阅[使用自动故障转移组来启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)。
+客户端使用 `<mi_name>.<dns_zone>.database.windows.net` 格式的主机名连接到托管实例。 此主机名将解析为专用 IP 地址，不过，它将在公共域名系统 (DNS) 区域中注册，且可公开解析。 `zone-id` 是创建群集时自动生成的。 如果新建的群集托管辅助托管实例，它会将其区域 ID 与主群集共享。 有关详细信息，请参阅[使用自动故障转移组来启用多个数据库的透明和协调故障转移](sql-database-auto-failover-group.md##enabling-geo-replication-between-managed-instances-and-their-vnets)。
 
 此专用 IP 地址属于托管的实例的内部负载均衡器。 负载均衡器将流量定向到托管的实例的网关。 由于多个托管的实例可以运行在同一群集中，网关将使用的托管的实例的主机名来将流量重定向到正确的 SQL 引擎服务。
 
@@ -111,7 +111,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
 
 > [!IMPORTANT]
-> 确保没有为端口 9000，只有一个入站的规则 9003，为端口 80、 443、 12000 1438年、 1440年、 1452年和一个出站规则。 托管实例预配通过 Azure 资源管理器部署将失败，如果为每个端口分别配置入站和输出的规则。 如果这些端口是在单独的规则，则部署将失败，错误代码 `VnetSubnetConflictWithIntendedPolicy`
+> 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 托管实例预配通过 Azure 资源管理器部署将失败，如果为每个端口分别配置入站和输出的规则。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI SUBNET 是指子网的 IP 地址范围，采用 10.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 

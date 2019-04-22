@@ -12,12 +12,12 @@ ms.date: 03/12/2019
 ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fd494ffe6bc48495c882ed84062503bdc00ae9f4
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: fc454fdba6ec875c3d3b572a7aba91bb9d389845
+ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58917832"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59617203"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>教程：在 Azure Active Directory 中添加一个本地应用程序以通过应用程序代理进行远程访问
 
@@ -114,7 +114,7 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 ### <a name="general-remarks"></a>一般备注
 
-如果以前安装了连接器，请重新安装以获取最新版本。
+如果以前安装了连接器，请重新安装以获取最新版本。 要查看有关以前发布的版本及其包含的更改的信息，请参阅[应用程序代理 - 版本发布历史记录](application-proxy-release-version-history.md)。
 
 如果选择对本地应用程序使用多个 Windows 服务器，则需要在每个服务器上安装并注册连接器。 可将连接器组织成连接器组。 有关详细信息，请参阅[连接器组](application-proxy-connector-groups.md)。 
 
@@ -122,7 +122,6 @@ Azure Active Directory (Azure AD) 具有可让用户使用其 Azure AD 帐户登
 
 有关连接器、容量规划以及它们如何保持最新状态的信息，请参阅[了解 Azure AD 应用程序代理连接器](application-proxy-connectors.md)。 
 
-如果使用 Qlik Sense 应用程序，请始终安装最新的连接器。 Qlik Sense 使用 WebSocket，而只有 1.5.612.0 或更高版本的连接器才支持 WebSocket。
 
 ## <a name="verify-the-connector-installed-and-registered-correctly"></a>验证是否正确安装并注册了连接器
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: e228c49d4ad8e691e59f76a9b6fb9013f7b1bb3a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 68598d4bb7fb9fd928a7b664e6ce0c02220ca4bb
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58890865"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59502875"
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>使用 Microsoft 身份验证库 (MSAL) 登录用户
 
@@ -124,19 +124,19 @@ if (!isIE) {
 <!--start-collapse-->
 ### <a name="more-information"></a>更多信息
 
-用户首次单击“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以登录用户。 此方法导致使用 *Microsoft Azure Active Directory v2.0 终结点*打开一个弹出窗口，以提示用户输入凭据并验证该凭据。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
+用户首次单击“登录”按钮后，`signIn` 方法将调用 `loginPopup` 以登录用户。 此方法导致使用 Microsoft 标识平台终结点打开一个弹出窗口，以提示并验证用户的凭据。 登录成功后，用户被重定向回原始的 index.html 页面，并接收到一个由 `msal.js` 处理的令牌，令牌中包含的信息被缓存。 该令牌称为 ID令牌，并包含有关用户的基本信息，如用户显示名。 如果计划将此令牌提供的数据用于任何目的，则需确保此令牌已由后端服务器验证，以保证将令牌颁发给应用程序的有效用户。
 
 本指南生成的 SPA 调用 `acquireTokenSilent` 和/或 `acquireTokenPopup` 来获取用于查询 Microsoft Graph API 以获取用户配置文件信息的访问令牌。 如果需要验证 ID 令牌的示例，请查看 GitHub 中的[此](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "GitHub active-directory-javascript-singlepageapp-dotnet-webapi-v2 示例")示例应用程序 - 该示例使用 ASP.NET Web API 进行令牌验证。
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent 来获取令牌。 但有些情况下，需要强制用户与 Azure Active Directory v2.0 终结点交互，一些示例包括：
+初次登录后，你不希望在用户每次需要请求令牌访问资源时都要求其重新认证，因此大部分时间都应使用 acquireTokenSilent 来获取令牌。 但有些情况下，需要强制用户与 Microsoft 标识平台终结点交互，部分示例包括：
 
 - 由于密码已过期，用户可能需要重新输入凭据
 - 应用程序正在请求访问用户需要同意的资源
 - 需要双重身份验证
 
-调用 acquireTokenPopup(scope) 导致显示一个弹出窗口（或调用 acquireTokenRedirect(scope) 导致将用户重定向到 Azure Active Directory v2.0 终结点），在这种情况下，用户需要通过确认其凭据、同意所需资源或完成双因素身份验证来与之交互。
+调用 acquireTokenPopup(scope) 导致显示一个弹出窗口（调用 acquireTokenRedirect(scope) 则会导致将用户重定向到 Microsoft 标识平台终结点），在这种情况下，用户需要通过确认其凭据、同意所需资源或完成双因素身份验证来与之交互。
 
 #### <a name="getting-a-user-token-silently"></a>以静默方式获取用户令牌
 

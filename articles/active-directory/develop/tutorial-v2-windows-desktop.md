@@ -1,6 +1,6 @@
 ---
-title: Azure Active Directory v2.0 Windows 桌面入门 | Microsoft Docs
-description: Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Azure Active Directory v2.0 终结点保护的 API。
+title: Microsoft 标识平台 Windows 桌面入门 | Microsoft Docs
+description: 了解 Windows 桌面 .NET (XAML) 应用程序如何获取访问令牌并调用受 Microsoft 标识平台保护的 API。
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/20/2019
+ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27235236976e4bb651413129ec18b549c9389724
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: 5f80f5fa85bd66b1431d024d860a5986769b6347
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629349"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59492314"
 ---
 [!INCLUDE [1. Introduction](../../../includes/active-directory-develop-guidedsetup-windesktop-introduction.md)]
 [!INCLUDE [2. Setup](../../../includes/active-directory-develop-guidedsetup-windesktop-setup.md)]

@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 5247183f50301554a986fde474b27a9bfc67d91d
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540663"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680889"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL 超大规模数据库的 FAQ
 
@@ -216,7 +216,7 @@ SQL 超大规模数据库支持所有 SQL Server 工作负荷，但它主要针�
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>迁移到超大规模服务层后，是否会丢失一些功能
 
-可以。 Azure SQL 数据库功能不支持某些在超大规模公共预览期间，包括但不是限于对长时间术语保留备份。 将数据库迁移到超大规模服务层后，这些功能将停止运行。
+是的。 Azure SQL 数据库中的长期保留备份不支持在超大规模在公共预览期间。 将数据库迁移到超大规模后，此功能将停止工作。
 
 ### <a name="can-i-move-my--on-premises-sql-server-database-or-my-sql-server-virtual-machine-database-to-hyperscale"></a>能否将我的本地 SQL Server 数据库或 SQL Server 虚拟机数据库迁移到超大规模服务层
 
@@ -295,7 +295,7 @@ SQL Server 2005。 有关详细信息，请参阅[迁移到单一数据库或共
 
 ### <a name="do-i-lose-any-functionality-or-capabilities-after-migration-to-the-hyperscale-service-tier"></a>迁移到超大规模服务层后，是否会丢失一些功能
 
-可以。 公共预览期间，部分 Azure SQL 数据库功能不受支持，包括但不限于 TDE 和长期保留备份。 将数据库迁移到超大规模服务层后，这些功能将停止运行。
+是的。 Azure SQL 数据库中的长期保留备份不支持在超大规模在公共预览期间。 将数据库迁移到超大规模后，此功能将停止工作。
 
 ### <a name="will-polybase-work-with-sql-database-hyperscale"></a>Polybase 是否适用于 SQL 超大规模数据库
 

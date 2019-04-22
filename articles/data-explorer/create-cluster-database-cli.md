@@ -6,13 +6,13 @@ ms.author: radennis
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: quickstart
-ms.date: 03/25/2019
-ms.openlocfilehash: b1cc7d2966572da23a64e4555a0e94b440efa005
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.date: 04/10/2019
+ms.openlocfilehash: 1fb9027ab3301bb860d260aed737ab7674039d9b
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59043966"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524712"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-azure-cli"></a>使用 Azure CLI 创建 Azure 数据资源管理器群集和数据库
 
@@ -32,7 +32,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-如果选择在本地安装并使用 Azure CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest)。
+如果选择在本地安装并使用 Azure CLI，本快速入门要求 Azure CLI 2.0.4 或更高版本。 请运行 `az --version` 检查版本。 如需进行安装或升级，请参阅[安装 Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest)。
 
 ## <a name="configure-the-cli-parameters"></a>配置 CLI 参数
 
@@ -79,7 +79,7 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
 1. 请使用以下命令创建数据库：
 
     ```azurecli-interactive
-    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period 3650:00:00:00 --hot-cache-period 3650:00:00:00
+    az kusto database create --cluster-name azureclitest --name clidatabase --resource-group testrg --soft-delete-period P365D --hot-cache-period P31D
     ```
 
    |**设置** | **建议的值** | **字段说明**|
@@ -87,8 +87,8 @@ Azure 数据资源管理器是一项快速、完全托管的数据分析服务�
    | cluster-name | *azureclitest* | 将在其中创建数据库的群集的名称。|
    | 名称 | *clidatabase* | 数据库名称。|
    | resource-group | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft-delete-period | *3650:00:00:00* | 供查询使用的数据的保留时间。 |
-   | hot-cache-period | *3650:00:00:00* | 数据将在缓存中保留的时间。 |
+   | soft-delete-period | P365D | 表示供查询使用的数据的保留时间。 有关详细信息，请参阅[保留策略](/azure/kusto/concepts/retentionpolicy)。 |
+   | hot-cache-period | P31D | 表示数据将在缓存中保留的时间。 有关详细信息，请参阅[缓存策略](/azure/kusto/concepts/cachepolicy)。 |
 
 1. 若要查看已创建的数据库，请运行以下命令：
 

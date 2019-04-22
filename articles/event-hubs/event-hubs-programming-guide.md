@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.topic: article
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: e96abfbdbd9394d27fbffbcb64aa9cbfabbbcb69
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 29814cb8aef09a8ead30d6daa615554dd55135dd
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835429"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678575"
 ---
 # <a name="programming-guide-for-azure-event-hubs"></a>Azure 事件中心编程指南
 本文介绍使用 Azure 事件中心编写代码时的一些常见情况。 它假设你对事件中心已有初步的了解。 有关事件中心的概念概述，请参阅 [事件中心概述](event-hubs-what-is-event-hubs.md)。
@@ -25,7 +25,7 @@ ms.locfileid: "57835429"
 
 使用 .NET 托管 API 时，用于将数据发布到事件中心的主要构造是 [EventHubClient][] 和 [EventData][] 类。 [EventHubClient][] 提供 AMQP 信道，事件将通过该信道发送到事件中心。 [EventData][] 类表示一个事件，用于将消息发布到事件中心。 此类包括正文、一些元数据和有关事件的标头信息。 其他属性将在 [EventData][] 对象通过事件中心时添加到该对象。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 支持事件中心的 .NET 类在 [Microsoft.Azure.EventHubs](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) NuGet 包中提供。 可以通过 Visual Studio 解决方案资源管理器进行安装，也可以使用 Visual Studio 中的[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)来进行。 为此，请在 [“Package Manager Console”](https://docs.nuget.org/docs/start-here/using-the-package-manager-console) 窗口中发出以下命令：
 
 ```shell
@@ -110,7 +110,7 @@ for (var i = 0; i < numMessagesToSend; i++)
 若要开始处理事件，请实例化 [EventProcessorHost][]，为事件中心提供适当的参数。 例如：
 
 > [!NOTE]
-> 中提供了 EventProcessorHost 和及其相关的类**Microsoft.Azure.EventHubs.Processor**包。 将包添加到你的 Visual Studio 项目中的以下说明[此文](event-hubs-dotnet-framework-getstarted-receive-eph.md#add-the-event-hubs-nuget-package)或通过发出以下命令中的[程序包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口：`Install-Package Microsoft.Azure.EventHubs.Processor`。
+> EventProcessorHost 及其相关类在 **Microsoft.Azure.EventHubs.Processor** 包中提供。 按照[此文](event-hubs-dotnet-framework-getstarted-send.md#add-the-event-hubs-nuget-package)中的说明或在[包管理器控制台](https://docs.nuget.org/docs/start-here/using-the-package-manager-console)窗口中发出以下命令，将包添加到 Visual Studio 项目中：`Install-Package Microsoft.Azure.EventHubs.Processor`。
 
 ```csharp
 var eventProcessorHost = new EventProcessorHost(

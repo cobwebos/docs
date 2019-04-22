@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 12/10/2018
 ms.author: routlaw
 ms.custom: seodec18
-ms.openlocfilehash: bab6510af98b153ecb61db8fc49b5124aae04598
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.openlocfilehash: 5c9f70650f518c72a75d9a7826e7cbc30a95a00c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500458"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680870"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Linux 上的应用服务的 Java 开发人员指南
 
@@ -28,9 +28,9 @@ Linux 上的 Azure 应用服务可让 Java 开发人员在完全托管的基于 
 
 ## <a name="deploying-your-app"></a>部署应用
 
-可以使用 Maven 插件部署 .jar 和 .war 文件。 有关 Maven 插件的详细信息，请参阅[此文档](https://docs.microsoft.com/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme?view=azure-java-stable)。
+可以使用[适用于 Azure 应用服务的 Maven 插件](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme)部署.jar 和.war 文件。 使用流行的 Ide 部署也支持使用[用于 IntelliJ 的 Azure 工具包](/java/azure/intellij/azure-toolkit-for-intellij)或[用于 Eclipse 的 Azure 工具包](/java/azure/eclipse/azure-toolkit-for-eclipse)。
 
-如果不使用 Maven，则部署方法将取决于存档类型：
+否则，你的部署方法将取决于你的存档类型：
 
 - 若要将 .war 文件部署到 Tomcat，请使用 `/api/wardeploy/` 终结点对存档文件执行 POST 操作。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#deploy-war-file)。
 - 若要部署 Java SE 映像中的 .jar 文件，请使用 Kudu 站点的 `/api/zipdeploy/` 终结点。 有关此 API 的详细信息，请参阅[此文档](https://docs.microsoft.com/azure/app-service/deploy-zip#rest)。
@@ -79,7 +79,7 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 
 ## <a name="customization-and-tuning"></a>自定义和优化
 
-适用于 Linux 的 Azure 应用服务原生支持通过 Azure 门户和 CLI 进行优化和自定义。 请查看以下文章了解非特定于 Java 的 Web 应用配置：
+适用于 Linux 的 azure 应用服务支持带框优化并通过 Azure 门户和 CLI 进行自定义。 请查看以下文章了解非特定于 Java 的 Web 应用配置：
 
 - [配置应用服务设置](/azure/app-service/web-sites-configure?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 - [设置自定义域](/azure/app-service/app-service-web-tutorial-custom-domain?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
@@ -93,7 +93,7 @@ az webapp log tail --name webappname --resource-group myResourceGroup
 
 在 Azure 门户中 Web 应用的“应用程序设置”下，创建名为 `JAVA_OPTS` 且包含其他设置的新应用设置，例如 `-Xms512m -Xmx1204m`。
 
-若要配置的 Maven 插件中设置应用设置，请在 Azure 插件部分中添加设置/值标记。 以下示例设置特定的最小和最大 Java 堆大小：
+若要配置的 Maven 插件中设置应用设置，请在 Azure 插件部分中添加设置/值标记。 下面的示例设置特定最小值和最大 Java 堆大小：
 
 ```xml
 <appSettings>
@@ -156,7 +156,7 @@ az webapp start -n ${WEBAPP_NAME} -g ${WEBAPP_RESOURCEGROUP_NAME}
 
 ### <a name="authenticate-users"></a>对用户进行身份验证
 
-在 Azure 门户中使用“身份验证和授权”选项设置应用身份验证。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。  有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](/azure/app-service/configure-authentication-provider-aad)，以及其他标识提供者的相关文章。
+设置应用程序在 Azure 门户中使用的身份验证**身份验证和授权**选项。 在此处，可以使用 Azure Active Directory 或社交登录名（例如 Facebook、Google、或 GitHub）启用身份验证。 仅当配置单个身份验证提供程序时，Azure 门户配置才起作用。  有关详细信息，请参阅[将应用服务应用配置为使用 Azure Active Directory 登录](/azure/app-service/configure-authentication-provider-aad)，以及其他标识提供者的相关文章。
 
 如果需要启用多个登录提供程序，请遵照[自定义应用服务身份验证](https://docs.microsoft.com/azure/app-service/app-service-authentication-how-to)一文中的说明。
 

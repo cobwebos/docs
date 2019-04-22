@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: glenga
 ms.openlocfilehash: 84c578fdbcfb555bde23d6a9e6f8258259cff8de
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497094"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>使用 Azure Functions Core Tools
@@ -147,7 +147,7 @@ Writing C:\myfunctions\myMyFunctionProj\.vscode\extensions.json
 Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 ```
 
-`func init` 支持以下选项，除非另有说明是仅 2.x 版本：
+`func init` 支持以下选项，除非另有说明，否则这些选项仅限版本 2.x：
 
 | 选项     | 描述                            |
 | ------------ | -------------------------------------- |
@@ -203,9 +203,9 @@ Initialized empty Git repository in C:/myfunctions/myMyFunctionProj/.git/
 
 还可以在代码中将函数应用设置值读取为环境变量。 有关详细信息，请参阅以下特定于语言的参考主题的“环境变量”部分：
 
-* [C#预编译](functions-dotnet-class-library.md#environment-variables)
+* [预编译 C#](functions-dotnet-class-library.md#environment-variables)
 * [C# 脚本 (.csx)](functions-reference-csharp.md#environment-variables)
-* [F#脚本 (.fsx)](functions-reference-fsharp.md#environment-variables)
+* [F # 脚本 (.fsx)](functions-reference-fsharp.md#environment-variables)
 * [Java](functions-reference-java.md#environment-variables)
 * [JavaScript](functions-reference-node.md#environment-variables)
 
@@ -480,9 +480,9 @@ func deploy
 
 ## <a name="monitoring-functions"></a>监视函数
 
-监视你的函数执行的推荐的方法是通过与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，当使用 Azure CLI 创建 function app，不是完成在 Azure 中在函数应用中的集成。
+监视你的函数执行的推荐的方法是通过与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，当你使用 Azure CLI 创建函数应用时，Azure 的函数应用中的集成并未完成。
 
-若要为函数应用中启用 Application Insights:
+若要为函数应用启用 Application Insights，请执行以下操作：
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

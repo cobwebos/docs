@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: jmprieur
 ms.custom: include file
-ms.openlocfilehash: 701b08cafd2e6d38a68252ea5919c8f4cd7de9b4
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: dcfc341b89a3cfebcb5538f88481fd2fbb2936a7
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203592"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505787"
 ---
 ## <a name="set-up-your-project"></a>设置项目
 
@@ -31,7 +31,7 @@ ms.locfileid: "58203592"
 
 1. 在 Visual Studio 中：`File` > `New` > `Project`
 2. 在 *Visual C#\Web* 下，选择 `ASP.NET Web Application (.NET Framework)`。
-3. 命名应用程序，然后单击“确定”
+3. 命名应用程序，并单击“确定”
 4. 选择 `Empty` 并选中复选框，添加 `MVC` 引用
 
 ## <a name="add-authentication-components"></a>添加身份验证组件
@@ -51,12 +51,13 @@ ms.locfileid: "58203592"
 <!--end-collapse-->
 
 ## <a name="configure-the-authentication-pipeline"></a>配置身份验证管道
-下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，将自动执行此类。IIS 进程启动时，将自动执行此类。
+
+下面的步骤用于创建 OWIN 中间件 Startup 类，以配置 OpenID Connect 身份验证。 IIS 进程启动时，会自动执行此类。
 
 > [!TIP]
 > 如果项目的根文件夹中没有 `Startup.cs` 文件，请执行以下操作：
 > 1. 右键单击项目的根文件夹：> `Add` > `New Item...` > `OWIN Startup class`<br/>
-> 2. 将其命名为 `Startup.cs`
+> 2. 为其命名 `Startup.cs`
 >
 >> 确保选择的类是 OWIN Startup 类，而不是标准 C# 类。 通过检查是否在命名空间上看到 `[assembly: OwinStartup(typeof({NameSpace}.Startup))]` 来进行确认。
 
@@ -113,10 +114,10 @@ ms.locfileid: "58203592"
                     ResponseType = OpenIdConnectResponseType.IdToken,
                     // ValidateIssuer set to false to allow personal and work accounts from any organization to sign in to your application
                     // To only allow users from a single organizations, set ValidateIssuer to true and 'tenant' setting in web.config to the tenant name
-                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter 
+                    // To allow users from only a list of specific organizations, set ValidateIssuer to true and use ValidIssuers parameter
                     TokenValidationParameters = new TokenValidationParameters()
                     {
-                        ValidateIssuer = false
+                        ValidateIssuer = false // This is a simplification
                     },
                     // OpenIdConnectAuthenticationNotifications configures OWIN to send notification of failed authentications to OnAuthenticationFailed method
                     Notifications = new OpenIdConnectAuthenticationNotifications
@@ -140,6 +141,9 @@ ms.locfileid: "58203592"
         }
     }
     ```
+
+> [!NOTE]
+> 在本快速入门中，设置 `ValidateIssuer = false` 是一种简化操作。 在实际的应用程序中，需要验证证书颁发者。请参阅示例了解相关的操作方法。
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>更多信息

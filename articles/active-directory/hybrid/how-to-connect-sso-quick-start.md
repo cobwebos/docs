@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f8483eb0ce8f5ea890e453828d36afda61ef86f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 06566ab81b6af847a7eb174731105b7f43a7197f
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256883"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680888"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory 无缝单一登录：快速入门
 
@@ -93,7 +93,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 ![Azure 门户：“Azure AD Connect”窗格](./media/how-to-connect-sso-quick-start/sso10.png)
 
 >[!IMPORTANT]
-> 无缝 SSO 创建一个名为的计算机帐户`AZUREADSSOACC`中你的本地 Active Directory (AD) 中的每个 AD 林。 `AZUREADSSOACC`需要出于安全原因强保护的计算机帐户。 只有域管理员应该能够管理的计算机帐户。 请确保已禁用对计算机帐户的 Kerberos 委派。 将计算机帐户存储中组织单位 (OU)，其中它们的安全性不被意外删除，且只有域管理员具有访问权限。
+> 无缝 SSO 创建一个名为的计算机帐户`AZUREADSSOACC`中你的本地 Active Directory (AD) 中的每个 AD 林。 `AZUREADSSOACC`需要出于安全原因强保护的计算机帐户。 只有域管理员应该能够管理的计算机帐户。 请确保禁用了对计算机帐户的 Kerberos 委派，并且在 Active Directory 中的没有其他帐户具有委派权限`AZUREADSSOACC`计算机帐户。 将计算机帐户存储中组织单位 (OU)，其中它们的安全性不被意外删除，且只有域管理员具有访问权限。
 
 >[!NOTE]
 > 如果在您的本地环境中使用传递哈希和凭据被盗缓解体系结构，进行适当更改以确保`AZUREADSSOACC`计算机帐户的最终不会隔离容器中。 
@@ -132,7 +132,7 @@ Azure Active Directory (Azure AD) 无缝单一登录（无缝 SSO）可使登录
 
      结果如下所示：
 
-     值名称： `https://autologon.microsoftazuread-sso.com`
+     值名称：`https://autologon.microsoftazuread-sso.com`
   
      值（数据）：1
 

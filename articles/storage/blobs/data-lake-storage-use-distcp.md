@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: seguler
-ms.openlocfilehash: 8328ea5afb66bbecdafbb06dcbf6700194d62f9e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 3b58dc8dabc55ba428ce6e35091a6947e5f4a824
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55864054"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678371"
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-azure-data-lake-storage-gen2"></a>使用 DistCp 在 Azure 存储 Blob 与 Data Lake Storage Gen2 之间复制数据
 
@@ -21,13 +21,13 @@ ms.locfileid: "55864054"
 
 DistCp 提供了各种命令行参数，强烈建议你阅读本文以优化对 DistCp 的使用。 本文介绍了基本功能，同时重点介绍了如何使用 DistCp 将数据复制到支持分层命名空间的帐户。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * **未启用 Data Lake Storage Gen2 功能（分层命名空间）的现有 Azure 存储帐户**。
 * **已启用 Data Lake Storage Gen2 功能的 Azure 存储帐户**。 有关如何创建帐户的说明，请参阅[创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)
 * 在已启用分层命名空间的存储帐户中创建的**文件系统**。
-* 可以访问启用了 Data Lake Storage Gen2 的存储帐户的 **Azure HDInsight 群集**。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](data-lake-storage-use-hdi-cluster.md)。 请确保对该群集启用远程桌面。
+* 可以访问启用了 Data Lake Storage Gen2 的存储帐户的 **Azure HDInsight 群集**。 请参阅[配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。 请确保对该群集启用远程桌面。
 
 ## <a name="use-distcp-from-an-hdinsight-linux-cluster"></a>从 HDInsight Linux 群集使用 DistCp
 

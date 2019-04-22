@@ -10,10 +10,10 @@ ms.date: 02/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496584"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-azure-monitor-logs"></a>将作业状态和作业流从自动化转发到 Azure Monitor 日志
@@ -68,8 +68,7 @@ Get-AzResource -ResourceType "Microsoft.OperationalInsights/workspaces"
 
 运行此脚本后，可能需要一小时才能开始在 Azure Monitor 日志中看到写入新 JobLogs 或 JobStreams 的记录。
 
-若要查看日志，请在 log analytics 日志搜索中运行以下查询：
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+若要查看日志，请在 Log Analytics 日志搜索中运行以下查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="verify-configuration"></a>验证配置
 
@@ -137,8 +136,7 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 
 开始将自动化作业日志发送到 Azure Monitor 日志后，让我们看一下在 Azure Monitor 日志中可对这些日志执行哪些操作。
 
-若要查看日志，请运行以下查询：
-`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
+若要查看日志，请运行以下查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION"`
 
 ### <a name="send-an-email-when-a-runbook-job-fails-or-suspends"></a>Runbook 作业失败或暂停时发送电子邮件
 客户的主要诉求之一是，当 Runbook 作业出现问题时能够发送电子邮件或短信。   
@@ -146,7 +144,7 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 若要创建警报规则，首先请针对应该调用警报的 Runbook 作业记录创建日志搜索。 单击“警报”按钮以创建和配置警报的规则。
 
 1. 在“Log Analytics 工作区概述”页中，单击“查看日志”。
-2. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`  您还可以通过使用按 RunbookName 分组： `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
+2. 在查询字段中键入以下搜索，针对警报创建日志搜索查询：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended")`；也可以使用以下命令按 RunbookName 分组：`AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and (ResultType == "Failed" or ResultType == "Suspended") | summarize AggregatedValue = count() by RunbookName_s`
 
    如果设置了在工作区中收集来自多个自动化帐户或订阅的日志，则可以按照订阅或自动化帐户来为警报分组。 可以在 JobLogs 搜索中的“资源”字段中找到自动化帐户名称。
 3. 若要打开“创建规则”屏幕，请单击页面顶部的“+ 新建警报规则”。 有关用于配置警报的选项的详细信息，请参阅 [Azure 中的日志警报](../azure-monitor/platform/alerts-unified-log.md)。
@@ -166,7 +164,7 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 最后，可能需要随时间对作业历史记录进行可视化。 可以使用此查询来搜索作业在不同时间段的状态。
 
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
-<br> ![Log Analytics 历史作业状态图表](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
+<br> ![Log Analytics 历史作业状态图标](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
 ## <a name="remove-diagnostic-settings"></a>删除诊断设置
 

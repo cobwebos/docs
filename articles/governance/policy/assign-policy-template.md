@@ -7,12 +7,12 @@ ms.date: 03/13/2019
 ms.topic: quickstart
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 3b7ceb07fe874ebc012696f73c21d5c270cb3cee
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 1a811d3d0796b37053ffbabf56b63b4e4f68e203
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59268987"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59524066"
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-by-using-a-resource-manager-template"></a>使用资源管理器模板创建策略分配以识别不合规的资源
 
@@ -37,14 +37,14 @@ ms.locfileid: "59268987"
 
 1. 选择下图登录到 Azure 门户并打开模板：
 
-   [![D将策略模板部署到 Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
+   [![将策略模板部署到 Azure](./media/assign-policy-template/deploy-to-azure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-azurepolicy-assign-builtinpolicy-resourcegroup%2Fazuredeploy.json)
 
 1. 选择或输入以下值：
 
    | 名称 | 值 |
    |------|-------|
    | 订阅 | 选择 Azure 订阅。 |
-   | 资源组 | 选择“新建”，指定名称，然后选择“确定”。 在屏幕截图中，资源组名称为 *mypolicyquickstart<Date in MMDD>rg*。 |
+   | 资源组 | 选择“新建”，指定名称，然后选择“确定”。 在屏幕截图中，资源组名称为 mypolicyquickstart\<MMDD 格式的日期>rg。 |
    | 位置 | 选择区域。 例如“美国中部”。 |
    | 策略分配名称 | 指定策略分配名称。 如果需要，可以使用策略定义显示名称。 例如，“审核不使用托管磁盘的 VM”。 |
    | 资源组名称 | 指定要将策略分配到的资源组名称。 本快速入门使用默认值 **[resourceGroup().name]**。 **[resourceGroup()](../../azure-resource-manager/resource-group-template-functions-resource.md#resourcegroup)** 是检索资源组的模板函数。 |

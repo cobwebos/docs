@@ -1,6 +1,6 @@
 ---
 title: 教程：为 JSON Blob 中的半结构化数据编制索引 - Azure 搜索
-description: 了解如何使用 Azure 搜索和 Postman 为半结构化 Azure JSON Blob 编制索引以及搜索此类数据。
+description: 了解如何使用 Azure 搜索 REST API 和 Postman 为半结构化 Azure JSON Blob 编制索引以及搜索此类数据。
 author: HeidiSteen
 manager: cgronlun
 services: search
@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
-ms.openlocfilehash: 4df64595f83bd7280fa781f27f3030eda3729911
-ms.sourcegitcommit: 6e32f493eb32f93f71d425497752e84763070fad
+ms.openlocfilehash: 147f67f40a060f3e274fe1f3fa368ebfd01711b6
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/10/2019
-ms.locfileid: "59471454"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59525341"
 ---
-# <a name="tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>教程：在 Azure 搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据
+# <a name="rest-tutorial-index-and-search-semi-structured-data-json-blobs-in-azure-search"></a>REST 教程：在 Azure 搜索中为半结构化数据 (JSON Blob) 编制索引以及搜索此类数据
 
 Azure 搜索可使用一个知晓如何读取半结构化数据的[索引器](search-indexer-overview.md)来编制 Azure blob 存储中 JSON 文档和数组的索引。 半结构化数据包含用于分隔数据中的内容的标记或标签。 它的本质是提供必须全面索引的非结构化数据和符合数据模型的正式结构化数据之间的一个折中，例如可以按字段编制索引的关系数据库架构。
 
@@ -37,9 +37,9 @@ Azure 搜索可使用一个知晓如何读取半结构化数据的[索引器](se
 
 [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。 
 
-[创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)用于存储示例数据。
+[创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。
 
-使用 [Postman 桌面应用](https://www.getpostman.com/)将请求发送到 Azure 搜索。
+使用 [Postman 桌面应用](https://www.getpostman.com/)，将请求发送到 Azure 搜索。
 
 [Clinical-trials-json.zip](https://github.com/Azure-Samples/storage-blob-integration-with-cdn-search-hdi/raw/master/clinical-trials-json.zip) 包含本教程使用的数据。 请下载此文件并将其解压缩到其自身的文件夹。 数据源自 [clinicaltrials.gov](https://clinicaltrials.gov/ct2/results)，已为本教程转换为 JSON。
 
@@ -59,9 +59,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。
 
-1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 由于你将使用密钥和存储帐户名称进行连接，因此请确保容器的“公共访问级别”设置为“容器(对容器的匿名读取访问权限)”。
-
-   ![设置公共访问级别](media/search-semi-structured-data/container-public-access-level.png "设置公共访问级别")
+1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可以将“公共访问级别”设为任何有效值。
 
 1. 创建容器后，将其打开，然后在命令栏中选择“上传”。
 
@@ -295,7 +293,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 ## <a name="next-steps"></a>后续步骤
 
-可将基于 AI 的认知服务算法附加到索引器管道。 下一步，继续学习下面的教程。
+要编制 JSON Blob 的索引，有多种方法和多个选项。 下一步，查看并测试各种选项，找到最适合自己的方案。
 
 > [!div class="nextstepaction"]
-> [使用 AI 编制索引](cognitive-search-tutorial-blob.md)
+> [如何使用 Azure 搜索 Blob 索引器为 JSON blob 编制索引](search-howto-index-json-blobs.md)

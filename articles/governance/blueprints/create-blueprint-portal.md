@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 598df72bf9c37b8687e2122813609e165ae8c2fa
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 28fef394ee400949f9911983bdbca41d6bfcb458
+ms.sourcegitcommit: f24b62e352e0512dfa2897362021b42e0cb9549d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260657"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59505679"
 ---
 # <a name="define-and-assign-a-blueprint-in-the-portal"></a>在门户中定义和分配蓝图
 
@@ -41,116 +41,117 @@ ms.locfileid: "59260657"
 
    ![在“蓝图定义”页中创建蓝图](./media/create-blueprint-portal/create-blueprint-button.png)
 
-1. 提供**蓝图名称**，例如 **MyBlueprint**。 （最多使用 48 个字母和数字，但不要包含空格或特殊字符）。 暂时将“蓝图说明”留空。 
-   
+1. 提供**蓝图名称**，例如 **MyBlueprint**。 （最多使用 48 个字母和数字，但不要包含空格或特殊字符）。 暂时将“蓝图说明”留空。
+
 1. 在“定义位置”框中，选择右侧的省略号，选择要在其中保存蓝图的[管理组](../management-groups/overview.md)或订阅，然后选择“选择”。
 
 1. 确认信息是否正确。 稍后无法更改“蓝图名称”和“定义位置”字段。 然后选择页面底部的“下一步:项目”或页面顶部的“项目”选项卡。
 
-1. 添加订阅级别的角色分配： 
+1. 添加订阅级别的角色分配：
 
-   a. 在“订阅”下选择“+ 添加项目”行。 随即会在浏览器右侧打开“添加项目”窗口。 
-   
-   b. 为“项目类型”选择“角色分配”。 
-   
-   c. 在“角色”下，选择“参与者”。 保留选中“添加用户、应用或组”框，指示使用动态参数。 
-   
-   d. 选择“添加”将此项目添加到蓝图中。
+   1. 在“订阅”下选择“+ 添加项目”行。 随即会在浏览器右侧打开“添加项目”窗口。
+
+   1. 为“项目类型”选择“角色分配”。
+
+   1. 在“角色”下，选择“参与者”。 保留选中“添加用户、应用或组”框，指示使用动态参数。
+
+   1. 选择“添加”将此项目添加到蓝图中。
 
    ![蓝图项目的角色分配](./media/create-blueprint-portal/add-role-assignment.png)
 
    > [!NOTE]
    > 大多数项目支持参数。 在蓝图创建期间为其分配值的参数是静态参数。 如果在蓝图分配期间分配参数，则该参数是动态参数。 有关更多信息，请参阅[蓝图参数](./concepts/parameters.md)。
 
-1. 添加订阅级别的策略分配： 
+1. 添加订阅级别的策略分配：
 
-   a. 选择角色分配项目下的“+ 添加项目”行。 
-   
-   b. 为“项目类型”选择“策略分配”。 
-   
-   c. 将“类型”更改为“内置”。 在“搜索”中输入 **tag**。 
-   
-   d. 单击“搜索”以进行筛选。 选择“对资源组应用所需标记及其默认值”。 
-   
-   e. 选择“添加”将此项目添加到蓝图中。
+   1. 选择角色分配项目下的“+ 添加项目”行。
 
-1. 选择策略分配行“对资源组应用标记及其默认值”。 
+   1. 为“项目类型”选择“策略分配”。
+
+   1. 将“类型”更改为“内置”。 在“搜索”中输入 **tag**。
+
+   1. 单击“搜索”以进行筛选。 选择“对资源组应用所需标记及其默认值”。
+
+   1. 选择“添加”将此项目添加到蓝图中。
+
+1. 选择策略分配行“对资源组应用标记及其默认值”。
 
 1. 随即将打开作为蓝图定义一部分的向项目提供参数的窗口，并允许基于此蓝图而不是在分配期间（动态参数）设置所有分配的参数（静态参数）。 此示例在蓝图分配期间使用动态参数，因此请保留默认值并选择“取消”。
 
-1. 添加订阅级别的资源组： 
+1. 添加订阅级别的资源组：
 
-   a. 在“订阅”下选择“+ 添加项目”行。 
-   
-   b. 为“项目类型”选择“资源组”。 
-   
-   c. 将“项目显示名称”、“资源组名称”和“位置”框留空，但请确保在每个参数属性上选中该复选框，以使其成为动态参数。 
-   
-   d. 选择“添加”将此项目添加到蓝图中。
+   1. 在“订阅”下选择“+ 添加项目”行。
 
-1. 在资源组下添加模板： 
+   1. 为“项目类型”选择“资源组”。
 
-   a. 在“ResourceGroup”条目下选择“+ 添加项目”行。 
-   
-   b. 为“项目类型”选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空。 
-   
-   c. 在编辑器框的“模板”选项卡上，粘贴以下资源管理器模板。 粘贴模板后，选择“参数”选项卡，并注意已检测到模板参数 storageAccountType 和 location。 将自动检测并填充每个参数，但将其配置为“动态参数”。 
-   
-   > [!IMPORTANT]
-   > 如果导入模板，请确保该文件仅为 JSON 且不包含 HTML。 当指向 GitHub 上的 URL 时，请确保已选择“RAW”以获取纯 JSON 文件，而不是用 HTML 包装在 GitHub 上显示的文件。 如果导入的模板不是纯 JSON，则会出现错误。
+   1. 将“项目显示名称”、“资源组名称”和“位置”框留空，但请确保在每个参数属性上选中该复选框，以使其成为动态参数。
 
-   ```json
-   {
-       "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-       "contentVersion": "1.0.0.0",
-       "parameters": {
-           "storageAccountType": {
-               "type": "string",
-               "defaultValue": "Standard_LRS",
-               "allowedValues": [
-                   "Standard_LRS",
-                   "Standard_GRS",
-                   "Standard_ZRS",
-                   "Premium_LRS"
-               ],
-               "metadata": {
-                   "description": "Storage Account type"
-               }
-           },
-           "location": {
-               "type": "string",
-               "defaultValue": "[resourceGroups('ResourceGroup').location]",
-               "metadata": {
-                   "description": "Location for all resources."
-               }
-           }
-       },
-       "variables": {
-           "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
-       },
-       "resources": [{
-           "type": "Microsoft.Storage/storageAccounts",
-           "name": "[variables('storageAccountName')]",
-           "location": "[parameters('location')]",
-           "apiVersion": "2018-07-01",
-           "sku": {
-               "name": "[parameters('storageAccountType')]"
-           },
-           "kind": "StorageV2",
-           "properties": {}
-       }],
-       "outputs": {
-           "storageAccountName": {
-               "type": "string",
-               "value": "[variables('storageAccountName')]"
-           }
-       }
-   }
-   ```
+   1. 选择“添加”将此项目添加到蓝图中。
 
-   d. 清除该 storageAccountType 复选框，并请注意，下拉列表仅包含 allowedValues 下的资源管理器模板中包含的值。 选中此框将其重新设置为动态参数。 
-   
-   e. 选择“添加”将此项目添加到蓝图中。
+1. 在资源组下添加模板：
+
+   1. 在“ResourceGroup”条目下选择“+ 添加项目”行。
+
+   1. 为“项目类型”选择“Azure 资源管理器模板”，将“项目显示名称”设置为“StorageAccount”，并将“说明”保留为空。
+
+   1. 在编辑器框的“模板”选项卡上，粘贴以下资源管理器模板。
+      粘贴模板后，选择“参数”选项卡，并注意已检测到模板参数 storageAccountType 和 location。 将自动检测并填充每个参数，但将其配置为“动态参数”。
+
+      > [!IMPORTANT]
+      > 如果导入模板，请确保该文件仅为 JSON 且不包含 HTML。 当指向 GitHub 上的 URL 时，请确保已选择“RAW”以获取纯 JSON 文件，而不是用 HTML 包装在 GitHub 上显示的文件。 如果导入的模板不是纯 JSON，则会出现错误。
+
+      ```json
+      {
+          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "parameters": {
+              "storageAccountType": {
+                  "type": "string",
+                  "defaultValue": "Standard_LRS",
+                  "allowedValues": [
+                      "Standard_LRS",
+                      "Standard_GRS",
+                      "Standard_ZRS",
+                      "Premium_LRS"
+                  ],
+                  "metadata": {
+                      "description": "Storage Account type"
+                  }
+              },
+              "location": {
+                  "type": "string",
+                  "defaultValue": "[resourceGroup().location]",
+                  "metadata": {
+                      "description": "Location for all resources."
+                  }
+              }
+          },
+          "variables": {
+              "storageAccountName": "[concat('store', uniquestring(resourceGroup().id))]"
+          },
+          "resources": [{
+              "type": "Microsoft.Storage/storageAccounts",
+              "name": "[variables('storageAccountName')]",
+              "location": "[parameters('location')]",
+              "apiVersion": "2018-07-01",
+              "sku": {
+                  "name": "[parameters('storageAccountType')]"
+              },
+              "kind": "StorageV2",
+              "properties": {}
+          }],
+          "outputs": {
+              "storageAccountName": {
+                  "type": "string",
+                  "value": "[variables('storageAccountName')]"
+              }
+          }
+      }
+      ```
+
+   1. 清除该 storageAccountType 复选框，并请注意，下拉列表仅包含 allowedValues 下的资源管理器模板中包含的值。 选中此框将其重新设置为动态参数。
+
+   1. 选择“添加”将此项目添加到蓝图中。
 
    ![蓝图项目的资源管理器模板](./media/create-blueprint-portal/add-resource-manager-template.png)
 
@@ -172,16 +173,16 @@ ms.locfileid: "59260657"
 
 1. 选择“下一步:项目”或页面顶部的“项目”选项卡。
 
-1. 在资源组下添加角色分配： 
+1. 在资源组下添加角色分配：
 
-   a. 在“ResourceGroup”条目下选择“+ 添加项目”行。 
-   
-   b. 为“项目类型”选择“角色分配”。 
-   
-   c. 在“角色”下，选择“所有者”并清除“添加用户、应用或组”框下的复选框。 
-   
-   d. 搜索并选择要添加的用户、应用或组。 此项目使用每次分配此蓝图时以同样方式设置的静态参数。 
-   
+   1. 在“ResourceGroup”条目下选择“+ 添加项目”行。
+
+   1. 为“项目类型”选择“角色分配”。
+
+   1. 在“角色”下，选择“所有者”并清除“添加用户、应用或组”框下的复选框。
+
+   1. 搜索并选择要添加的用户、应用或组。 此项目使用每次分配此蓝图时以同样方式设置的静态参数。
+
    e. 选择“添加”将此项目添加到蓝图中。
 
    ![蓝图项目的第二个角色分配](./media/create-blueprint-portal/add-role-assignment-2.png)
@@ -217,15 +218,15 @@ ms.locfileid: "59260657"
 
    如果 [Azure 计费](../../billing/index.md)中提供了受支持的企业产品/服务，则会在“订阅”框下激活“新建”链接。 执行以下步骤:
 
-   a. 选择“新建”链接以创建新订阅，而不是选择现有订阅。
+   1. 选择“新建”链接以创建新订阅，而不是选择现有订阅。
 
-   b. 提供新订阅的“显示名称”。
+   1. 提供新订阅的“显示名称”。
 
-   c. 从下拉列表中选择可用“产品/服务”。
+   1. 从下拉列表中选择可用“产品/服务”。
 
-   d. 使用省略号选择[管理组](../management-groups/index.md)，订阅将是其子级。
+   1. 使用省略号选择[管理组](../management-groups/index.md)，订阅将是其子级。
 
-   e. 在页面底部选择“创建”。
+   1. 在页面底部选择“创建”。
 
    ![创建蓝图分配订阅的订阅](./media/create-blueprint-portal/assignment-create-subscription.png)
 
@@ -254,7 +255,8 @@ ms.locfileid: "59260657"
 1. 对于“ResourceGroup”，从下拉列表中提供“StorageAccount”的名称和“East US 2”的位置。
 
    > [!NOTE]
-   > 对于在蓝图定义期间在资源组下添加的每个项目，该项目将缩进以与将部署的资源组或对象对齐。 只有在上下文信息中才会列出无法获取参数或者在分配时没有要定义的参数的项目。
+   > 对于在蓝图定义期间在资源组下添加的每个项目，该项目将缩进以与将部署的资源组或对象对齐。
+   > 只有在上下文信息中才会列出无法获取参数或者在分配时没有要定义的参数的项目。
 
 1. 在 Azure 资源管理器模板“StorageAccount”上，为 storageAccountType 参数选择“Standard_GRS”。
 
@@ -294,7 +296,8 @@ ms.locfileid: "59260657"
 1. 右键单击要删除的蓝图，然后选择“删除蓝图”。 在确认对话框中选择“是”。
 
 > [!NOTE]
-> 删除此方法中的蓝图还会删除所选蓝图的所有已发布版本。 若要删除单个版本，请打开蓝图，选择“已发布版本”选项卡，选择要删除的版本，然后选择“删除此版本”。 另外，只有在删除蓝图定义的所有蓝图分配之后，才能删除该蓝图。
+> 删除此方法中的蓝图还会删除所选蓝图的所有已发布版本。
+> 若要删除单个版本，请打开蓝图，选择“已发布版本”选项卡，选择要删除的版本，然后选择“删除此版本”。 另外，只有在删除蓝图定义的所有蓝图分配之后，才能删除该蓝图。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 4b663047-7f88-443b-97bd-54224b232815
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 04/10/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 90c3d4731883991f867b49eb3d4884ee1b7d4a6b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9a0911588141552e616e8555380b14c910225840
+ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57882091"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59501346"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft"></a>教程：Azure Active Directory 与 JIRA SAML SSO by Microsoft 集成
 
@@ -65,6 +66,9 @@ ms.locfileid: "57882091"
 * JIRA 服务台：3.0.0 到 3.5.0
 * JIRA 还支持 5.2。 有关更多详细信息，请单击 [Microsoft Azure Active Directory single sign-on for JIRA 5.2](jira52microsoft-tutorial.md)
 
+> [!NOTE]
+> 请注意，JIRA 还支持 Linux Ubuntu 版本 16.04
+
 ## <a name="scenario-description"></a>方案描述
 
 本教程会在测试环境中配置和测试 Azure AD 单一登录。
@@ -75,7 +79,7 @@ ms.locfileid: "57882091"
 
 若要配置 JIRA SAML SSO by Microsoft 与 Azure AD 的集成，需要从库中将 JIRA SAML SSO by Microsoft 添加到托管 SaaS 应用列表。
 
-若要从库中添加 JIRA SAML SSO by Microsoft，请执行以下步骤：
+**若要从库中添加 JIRA SAML SSO by Microsoft，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -129,11 +133,11 @@ ms.locfileid: "57882091"
 
     ![JIRA SAML SSO by Microsoft 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`。
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
 
-    b. 在“标识符”框中，使用以下模式键入 URL：`https://<domain:port>/`
+    b. 在“标识符”框中，使用以下模式键入 URL： `https://<domain:port>/`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<domain:port>/plugins/servlet/saml/auth`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 端口可选，以防止其为命名 URL。 在配置 JIRA 插件的过程中，将接收这些值，这将在教程的后面部分进行说明。
@@ -186,7 +190,7 @@ ms.locfileid: "57882091"
 
     c. 在“登录按钮名”中键入组织希望用户在登录屏幕上看到的按钮名称。
 
-    d. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须为 JIRA 用户 ID。如果用户 ID 不匹配，系统将禁止用户登录。
+    d. 在“SAML 用户 ID 位置”中，选择“用户 ID 位于 Subject 语句的 NameIdentifier 元素之中”或“用户 ID 位于 Attribute 元素之中”。  此 ID 必须为 JIRA 用户 ID。 如果用户 ID 不匹配，系统将不允许用户登录。
 
     > [!Note]
     > 默认 SAML 用户 ID 位置是名称标识符。 可将其更改为属性选项，并输入适当的属性名称。
@@ -197,7 +201,7 @@ ms.locfileid: "57882091"
 
     g. 如果是基于 ADFS 的登录，请在“域名”中键入域名。
 
-    h. 如果希望用户从 JIRA 注销时你从 Azure AD 注销，请选择“启用单一注销”。
+    h. 当用户从 JIRA 注销时，如果要从 Azure AD 注销，请选择“启用单一注销”。
 
     i. 单击“保存”按钮保存设置。
 
@@ -222,8 +226,7 @@ ms.locfileid: "57882091"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -301,4 +304,4 @@ ms.locfileid: "57882091"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 3db2b810ba4ba96e492c6b6ba841d9cfa35418a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 125e0c4331eea105ffc201bd1f5f26bdbec1c553
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59260839"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549382"
 ---
 # <a name="search-nearby-points-of-interest-using-azure-maps"></a>使用 Azure Maps 搜索附近兴趣点
 
@@ -129,7 +129,7 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
     });
     ```
 
-   此段为 Azure Maps 帐户密钥初始化地图控件 API。 `atlas` 是包含 API 和相关视觉组件的命名空间。 `atlas.Map` 提供视觉对象和交互式 Web 地图的控件。
+   此段为 Azure Maps 帐户密钥初始化地图控件 API。 `atlas` 是包含 API 和相关视觉对象组件的命名空间。 `atlas.Map` 提供视觉对象和交互式 Web 地图的控件。
 
 4. 将更改保存到文件并在浏览器中打开 HTML 页。 这是使用帐户密钥调用 `atlas.Map` 所能生成的最基本的地图。
 
@@ -280,13 +280,13 @@ Map Control API 是一个方便的客户端库，使用它可以轻松将 Maps �
 > * 使用地图控件 API 创建新网页
 > * 使用搜索服务查找附近的兴趣点
 
-可以在此处访问本教程的代码示例：
+> [!div class="nextstepaction"]
+> [查看完整源代码](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
 
-> [使用 Azure Maps 搜索位置](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/search.html)
-
-[实时查看此处的示例](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
+> [!div class="nextstepaction"]
+> [查看实时示例](https://azuremapscodesamples.azurewebsites.net/?sample=Search%20for%20points%20of%20interest)
 
 下一教程演示如何显示两个地点之间的路线。
 
 > [!div class="nextstepaction"]
-> [规划目的地路线](./tutorial-route-location.md)
+> [目的地路线](./tutorial-route-location.md)

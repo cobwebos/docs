@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 2ae0aefe194ca8bca6ea62420314b4fbdb1e0187
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: 539a06398675dc7851017ec5d428e0942e54ce1f
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357929"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59564758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tableau-server"></a>教程：Azure Active Directory 与 Tableau Server 集成
 
@@ -105,11 +105,11 @@ ms.locfileid: "59357929"
 
     ![Tableau Server 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL： `https://azure.<domain name>.link`
+    b. 在“标识符”框中，使用以下模式键入 URL：`https://azure.<domain name>.link`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://azure.<domain name>.link/wg/saml/SSO/index.html`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://azure.<domain name>.link/wg/saml/SSO/index.html`
 
     > [!NOTE]
     > 上面的值不是实际值。 请使用来自 Tableau Server 配置页面的实际 URL 和标识符更新这些值，本教程下文中介绍了此页面。
@@ -256,9 +256,9 @@ ms.locfileid: "59357929"
 
 ## <a name="additional-resources"></a>其他资源
 
-- [ 有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表 ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [有关如何将 SaaS 应用与 Azure Active Directory 集成的教程列表](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Azure Active Directory 的应用程序访问与单一登录是什么？ ](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

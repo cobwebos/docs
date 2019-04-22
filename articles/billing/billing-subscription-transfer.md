@@ -14,15 +14,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/15/2018
+ms.date: 04/16/2019
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6d8baa5f10aeba179ef141cfea86fded8cf44dfc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: d9af3b1b9c267bc09b370717913722a6c53ad5a1
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878204"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678813"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>将 Azure 订阅所有权转让给其他帐户
 
@@ -30,7 +30,7 @@ ms.locfileid: "57878204"
 
 > [!IMPORTANT]
 > 
-> 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
+> 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。 您还必须手动重新创建 Azure 资源的管理的标识。 有关详细信息，请参阅[常见问题解答和已知的问题的托管标识](../active-directory/managed-identities-azure-resources/known-issues.md)。
 
 ## <a name="transfer-ownership-of-an-azure-subscription"></a>转让 Azure 订阅的所有权
 
@@ -52,7 +52,7 @@ ms.locfileid: "57878204"
 
    > [!IMPORTANT]
    > 
-   > 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。
+   > 如果将订阅转让给新的 Azure AD 租户，则[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中的所有角色分配都将从源租户中永久删除，不会迁移到目标租户。 您还必须手动重新创建 Azure 资源的管理的标识。 有关详细信息，请参阅[常见问题解答和已知的问题的托管标识](../active-directory/managed-identities-azure-resources/known-issues.md)。
 
    ![“转让订阅”对话框](./media/billing-subscription-transfer/image2.PNG)
 

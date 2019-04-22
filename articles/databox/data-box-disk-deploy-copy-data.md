@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 02/26/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 47c14379a01da86f547ac917472260a041b67f99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b5404f19a9b692b3984dafd6f029729822284dc
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58106893"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548740"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
 
@@ -44,14 +44,15 @@ ms.locfileid: "58106893"
 - 复制数据时，请确保数据大小符合 [Azure 存储和 Data Box 磁盘限制](data-box-disk-limits.md)中所述的大小限制。
 - 如果 Data Box 磁盘正在上传的数据同时已由 Data Box 磁盘外部的其他应用程序上传，则可能会导致上传作业失败和数据损坏。
 
-如果在订单中指定了托管磁盘，请查看以下其他注意事项：
+   > [!IMPORTANT]
+   >  如果已在创建订单的过程中将托管磁盘指定为存储目标之一，那么以下部分就是适用的。
 
 - 在所有预先创建的文件夹和所有 Data Box Disk 中，一个资源组只能包含一个具有给定名称的托管磁盘。 这意味着，上传到预先创建的文件夹的 VHD 应具有唯一的名称。 确保给定的名称与资源组中现有的托管磁盘不匹配。 如果 VHD 具有相同的名称，则只有一个 VHD 将转换为具有该名称的托管磁盘。 其他 VHD 作为页 blob 上传到临时存储帐户。
 - 始终将 VHD 复制到某个预先创建的文件夹。 如果将 VHD 复制到这些文件夹以外或者复制到你自己创建的文件夹中，则 VHD 作为页 Blob 而不是托管磁盘上传到 Azure 存储帐户中。
 - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
 
 
-执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
+## <a name="perform-the-following-steps-to-connect-and-copy-data-from-your-computer-to-the-data-box-disk"></a>执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
 
 1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
 
@@ -91,12 +92,12 @@ ms.locfileid: "58106893"
     |目标       | 指定目标目录的路径。        |
     |/E                  | 复制包括空目录的子目录。 |
     |/MT[:N]             | 使用 N 个线程创建多线程副本，其中 N 是介于 1 和 128 之间的整数。 <br>N 的默认值为 8。        |
-    |/R: <N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
-    |/W: <N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
+    |/R:\<N>             | 指定复制失败时的重试次数。 N 的默认值为 1,000,000（100 万次重试）。        |
+    |/W:\<N>             | 指定等待重试的间隔时间，以秒为单位。 N 的默认值为的 30（等待 30 秒）。        |
     |/NFL                | 指定不记录文件名。        |
     |/NDL                | 指定不记录目录名。        |
     |/FFT                | 采用 FAT 文件时间（精度为两秒）。        |
-    |/Log:<Log File>     | 将状态输出写入到日志文件（覆盖现有的日志文件）。         |
+    |/Log:\<Log File>     | 将状态输出写入到日志文件（覆盖现有的日志文件）。         |
 
     可以配合每个磁盘上运行的多个作业一起使用多个磁盘。
 

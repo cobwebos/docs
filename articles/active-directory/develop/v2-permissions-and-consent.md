@@ -19,10 +19,10 @@ ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 87103b1052b5d9168928193eacc78a935e68067f
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501240"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>权限和 Microsoft 标识平台终结点中的许可
@@ -38,9 +38,9 @@ ms.locfileid: "59501240"
 
 Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授权协议。 OAuth 2.0 是一种方法，通过此方法，第三方应用可以代表用户访问 Web 托管资源。 与 Microsoft 标识平台集成的任何 Web 托管资源都有一个资源标识符，也称为“应用程序 ID URI”。 例如，Microsoft 的某些 Web 托管资源包括：
 
-* Microsoft Graph: `https://graph.microsoft.com`
-* Office 365 邮件 API: `https://outlook.office.com`
-* Azure AD Graph： `https://graph.windows.net`
+* Microsoft Graph：`https://graph.microsoft.com`
+* Office 365 邮件 API：`https://outlook.office.com`
+* Azure AD Graph：`https://graph.windows.net`
 
 > [!NOTE]
 > 我们强烈建议使用 Microsoft Graph，而不要使用 Azure AD Graph、Office 365 邮件 API 等。
@@ -55,9 +55,9 @@ Microsoft 标识平台实现 [OAuth 2.0](active-directory-v2-protocols.md) 授�
 
 在 OAuth 2.0 中，这些类型的权限称为“范围”。 它们还通常被视为*权限*。 权限在 Microsoft 标识平台中以字符串值表示。 仍以 Microsoft Graph 为例，每个权限的字符串值为：
 
-* 通过使用读取用户的日历 `Calendars.Read`
-* 通过使用写入到用户的日历 `Calendars.ReadWrite`
-* 以用户使用的身份发送邮件 `Mail.Send`
+* 使用 `Calendars.Read` 读取用户的日历
+* 使用 `Calendars.ReadWrite` 写入用户的日历
+* 使用 `Mail.Send` 以用户身份发送邮件
 
 应用程序最常请求这些权限通过对 Microsoft 标识平台的请求中指定作用域的授权终结点。 但是，某些高特权权限只能通过管理员同意授予和使用请求/授予[管理员许可终结点](v2-permissions-and-consent.md#admin-restricted-permissions)。 请继续阅读了解更多信息。
 
@@ -140,9 +140,9 @@ https%3A%2F%2Fgraph.microsoft.com%2Fmail.send
 
 Microsoft 生态系统中的某些高特权权限可以设置为受管理员限制。 此类权限的示例包括：
 
-* 通过使用读取所有用户的完整配置文件 `User.Read.All`
-* 通过将数据写入到组织的目录 `Directory.ReadWrite.All`
-* 通过使用读取组织的目录中的所有组 `Groups.Read.All`
+* 使用 `User.Read.All` 读取所有用户的完整个人资料
+* 使用 `Directory.ReadWrite.All` 将数据写入组织的目录
+* 使用 `Groups.Read.All` 读取组织目录中的所有组
 
 虽然使用者用户可以授予应用程序对此类数据的访问权限，但组织用户会受到限制，无法授予对同一敏感公司数据集的访问权限。 如果你的应用程序从一个组织用户，这些权限之一请求访问权限，用户会收到错误消息，指出他们无权许可应用的权限。
 
@@ -285,7 +285,7 @@ Content-Type: application/json
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>示例 3：用户已同意且客户端请求了其他范围
 
-用户已针对客户端同意 `mail.read`。 客户端已在其注册中注册 `contacts.read` 范围。 当客户端使用 `scope=https://graph.microsoft.com/.default` 发出令牌请求，并通过 `prompt=consent` 请求许可时，用户将看到一个许可屏幕，该屏幕仅显示由应用程序注册的所有权限。 `contacts.read` 将会出现在许可屏幕，但`mail.read`将不会。 返回的令牌将用于 Microsoft Graph，并且将包含 `mail.read` 和 `contacts.read`。
+用户已针对客户端同意 `mail.read`。 客户端已在其注册中注册 `contacts.read` 范围。 当客户端使用 `scope=https://graph.microsoft.com/.default` 发出令牌请求，并通过 `prompt=consent` 请求许可时，用户将看到一个许可屏幕，该屏幕仅显示由应用程序注册的所有权限。 许可屏幕中将显示 `contacts.read`，但不会显示 `mail.read`。 返回的令牌将用于 Microsoft Graph，并且将包含 `mail.read` 和 `contacts.read`。
 
 ### <a name="using-the-default-scope-with-the-client"></a>对客户端使用 /.default 范围
 

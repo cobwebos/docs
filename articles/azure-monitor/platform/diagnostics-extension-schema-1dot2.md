@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: dae74e730d6e175fa3e447150adce4caecd3d7a3
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496482"
 ---
 # <a name="azure-diagnostics-12-configuration-schema"></a>Azure 诊断 1.2 配置架构
@@ -100,7 +100,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |------------------|-----------------|  
 |**WadCfg**|必需。 待收集的遥测数据的配置设置。|  
 |**StorageAccount**|用于存储数据的 Azure 存储帐户的名称。 执行 Set-AzureServiceDiagnosticsExtension cmdlet 时，还可能将其指定为参数。|  
-|**LocalResourceDirectory**|Monitoring Agent 要用于存储事件数据的虚拟机上的目录。 如果不设置，则使用默认目录：<br /><br /> 对于辅助线程 /web 角色： `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 为虚拟机： `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必需属性：<br /><br /> -                      **path** - Azure 诊断将使用的系统上的目录。<br /><br /> -                      **expandEnvironment** - 控制是否在路径名称中扩展环境变量。|  
+|**LocalResourceDirectory**|Monitoring Agent 要用于存储事件数据的虚拟机上的目录。 如果不设置，则使用默认目录：<br /><br /> 对于辅助角色/Web 角色：`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 对于虚拟机：`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必需属性：<br /><br /> -                      **path** - Azure 诊断将使用的系统上的目录。<br /><br /> -                      **expandEnvironment** - 控制是否在路径名称中扩展环境变量。|  
 
 ## <a name="wadcfg-element"></a>WadCFG 元素  
 定义待收集的遥测数据的配置设置。 下表介绍子元素：  
@@ -110,9 +110,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**DiagnosticMonitorConfiguration**|必需。 可选属性：<br /><br /> -                     **overallQuotaInMB** - 由 Azure 诊断收集的各类诊断数据使用的最大本地磁盘空间量。 默认设置是 5120 MB。<br /><br /> -                     **useProxyServer** - 将 Azure 诊断配置为使用在 IE 设置中设置的代理服务器设置。|  
 |**CrashDumps**|启用故障转储收集。 可选属性：<br /><br /> -                     **containerName** - Azure 存储帐户中用于存储故障转储的 Blob 容器的名称。<br /><br /> -                     **crashDumpType** - 将 Azure 诊断配置为收集少量或完整故障转储。<br /><br /> -                     **directoryQuotaPercentage** - 配置 VM 上为故障转储保留的 **overallQuotaInMB** 的百分比。|  
 |**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> -                     **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> -                     **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
-|**目录**|启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
+|**Directories**|启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**EtwProviders**|配置从基于 EventSource 和/或 ETW 清单的提供程序收集 ETW 事件。|  
-|**度量值**|此元素可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。 必需属性：<br /><br /> **resourceId** - 这是要将 Azure 诊断部署到的虚拟机的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。|  
+|**指标**|此元素可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。 必需属性：<br /><br /> **resourceId** - 这是要将 Azure 诊断部署到的虚拟机的资源 ID。 从 [Azure 门户](https://portal.azure.com)获取 **resourceID**。 选择“浏览” -> “资源组” -> “<名称\>”。 单击“属性”磁贴，并从“ID”字段复制值。|  
 |**PerformanceCounters**|启用性能计数器收集。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 |**WindowsEventLog**|启用收集 Windows 事件日志。 可选属性：<br /><br /> **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp)|  
 
@@ -130,7 +130,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素名称|描述|  
 |------------------|-----------------|  
-|**数据源**|要监视的目录的列表。|  
+|**DataSources**|要监视的目录的列表。|  
 |**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求的日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
 |**IISLogs**|在配置中包括此元素可启用收集 IIS 日志：<br /><br /> **containerName** - Azure 存储帐户中用于存储 IIS 日志的 blob 容器的名称。|  
 
@@ -146,7 +146,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素名称|描述|  
 |------------------|-----------------|  
-|**绝对**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> -                     **Path** - 要监视的目录的绝对路径。<br /><br /> -                      **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
+|**Absolute**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> -                     **Path** - 要监视的目录的绝对路径。<br /><br /> -                      **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
 |**LocalResource**|要监视的本地资源的相对路径。 必需属性：<br /><br /> -                     **Name** - 包含要监视的目录的本地资源<br /><br /> -                     **relativePath** - 包含要监视的目录的名称的相对路径|  
 
 ## <a name="etwproviders-element"></a>EtwProviders 元素  
@@ -163,7 +163,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |元素名称|描述|  
 |------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
-|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 元素  
  下表介绍子元素：  
@@ -171,7 +171,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |元素名称|描述|  
 |------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
-|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 ## <a name="metrics-element"></a>Metrics 元素  
  可以生成针对快速查询进行优化的性能计数器表。 下表介绍子元素：  
@@ -199,5 +199,5 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素名称|描述|  
 |------------------|-----------------|  
-|**数据源**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> 若要收集所有事件，请指定“*”。|
+|**DataSource**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level >= 3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level >= 3]]`<br /><br /> 若要收集所有事件，请指定“*”。|
 

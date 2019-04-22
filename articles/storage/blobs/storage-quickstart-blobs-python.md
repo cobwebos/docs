@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: 95b960245e00a353bb165e1f1d38db56bce62a8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
+ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57996725"
+ms.lasthandoff: 04/16/2019
+ms.locfileid: "59607392"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>快速入门：使用 Python 上传、下载和列出 Blob
 
-本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 
+本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 Blob 是简单的对象，可以保留任何数量的文本或二进制数据（例如图像、文档、流媒体、存档数据等），并在文件共享、无架构表格和消息队列方面与 Azure 存储有所不同。 （有关详细信息，请参阅 [Azure 存储简介](/azure/storage/common/storage-introduction.md)。）
 
 ## <a name="prerequisites"></a>先决条件
 

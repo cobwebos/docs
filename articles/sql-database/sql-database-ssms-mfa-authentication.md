@@ -13,10 +13,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 10/08/2018
 ms.openlocfilehash: ccb78e201b90dfc27f52523348e76da57087bcc8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59494895"
 ---
 # <a name="using-multi-factor-aad-authentication-with-azure-sql-database-and-azure-sql-data-warehouse-ssms-support-for-mfa"></a>使用多重身份 AAD 身份验证与 Azure SQL 数据库和 Azure SQL 数据仓库 （对 MFA 的 SSMS 支持）
@@ -32,8 +32,8 @@ Azure SQL 数据库和 Azure SQL 数据仓库支持使用 Active Directory 通�
 ## <a name="the-five-authentication-options"></a>五个身份验证选项  
 
 Active Directory 通用身份验证支持两种非交互式身份验证方法：
-    - `Active Directory - Password` authentication
-    - `Active Directory - Integrated` authentication
+    - `Active Directory - Password` 身份验证
+    - `Active Directory - Integrated` 身份验证
 
 有两种非交互式身份验证模型，可用于许多不同的应用程序 （ADO.NET、 JDCB、 ODC 等） 中。 这两种方法绝对不会产生弹出式对话框： 
 - `Active Directory - Password` 
@@ -72,7 +72,7 @@ Azure MFA 可帮助保护对数据和应用程序的访问，同时满足用户�
 - 向其他人授予对你数据库的访问权限：[SQL 数据库身份验证和授权：授予访问权限](sql-database-manage-logins.md)  
 - 确保其他人可以通过防火墙进行连接：[使用 Azure 门户配置 Azure SQL 数据库服务器级防火墙规则](sql-database-configure-firewall-settings.md)  
 - [使用 SQL 数据库或 SQL 数据仓库配置和管理 Azure Active Directory 身份验证](sql-database-aad-authentication-configure.md)  
-- [Microsoft SQL Server 数据层应用程序框架 (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
+- [Microsoft SQL Server Data-Tier Application Framework (17.0.0 GA)](https://www.microsoft.com/download/details.aspx?id=55088)  
 - [SQLPackage.exe](https://docs.microsoft.com/sql/tools/sqlpackage)  
 - [将 BACPAC 文件导入到新的 Azure SQL 数据库](../sql-database/sql-database-import.md)  
 - [将 Azure SQL 数据库导出到 BACPAC 文件](../sql-database/sql-database-export.md)  

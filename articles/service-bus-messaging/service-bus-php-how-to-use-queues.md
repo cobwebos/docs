@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: aschhab
 ms.openlocfilehash: 55eee839e24db2ad96eb635adc488e9a119c5907
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501189"
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>如何通过 PHP 使用服务总线队列
@@ -35,7 +35,7 @@ ms.locfileid: "59501189"
 
         > [!NOTE]
         > 您将创建**队列**本教程中使用 PHP 在服务总线命名空间中。 
-3. [内置 Web 服务器](../php-download-sdk.md)
+3. [用于 PHP 的 Azure SDK](../php-download-sdk.md)
 
 ## <a name="create-a-php-application"></a>创建 PHP 应用程序
 创建访问 Azure Blob 服务的 PHP 应用程序的唯一要求是从代码中引用[ Azure SDK for PHP](../php-download-sdk.md) 中的类。 可以使用任何开发工具或记事本创建应用程序。

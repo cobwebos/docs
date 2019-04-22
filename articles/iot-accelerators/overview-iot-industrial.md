@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: b4fbfc1d9c9441c6c9f12987de5feb1a90e9f17f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: bda40470e3ccf3a5d7b23dca38b21090e864b16a
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256373"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59491742"
 ---
 # <a name="what-is-industrial-iot-iiot"></a>什么是工业 IoT (IIoT)
 
@@ -23,7 +23,7 @@ IIoT 是指“工业物联网”。 IIoT 通过在制造业中应用 IoT 来增�
 
 通过互联工厂解决方案加速器来增强操作效率和盈利能力。 在云中连接并监视工业设施和设备，包括工厂车间中已在运转的机器。 分析 IoT 数据，从而获取有助于提高整个工厂车间绩效的见解。
 
-使用 Azure IoT OPC UA 设备管理（OPC 孪生）减少访问工厂车间机器的耗时流程，并专注于生成 IIoT 解决方案。 使用 Azure IoT OPC UA 证书管理（OPC 保管库）简化证书管理和工业资产集成，并确信资产连接受到保护。 这些微服务在 [Azure 工业 IoT 组件](https://github.com/Azure/azure-iiot-opc-ua)的顶层提供类似于 REST 的 API。 使用服务 API 可以控制边缘模块的功能。 
+使用 OPC 孪生减少访问工厂车间机器的耗时流程，并专注于生成 IIoT 解决方案。 使用 OPC 保管库简化证书管理和工业资产集成，并确信资产连接受到保护。 这些微服务在 [Azure 工业 IoT 组件](https://github.com/Azure/azure-iiot-opc-ua)的顶层提供类似于 REST 的 API。 使用服务 API 可以控制边缘模块的功能。 
 
 ![工业 IoT 概述](media/overview-iot-industrial/overview.png)
 
@@ -39,11 +39,11 @@ IIoT 是指“工业物联网”。 IIoT 通过在制造业中应用 IoT 来增�
 
 ## <a name="factory-floor-connectivity"></a>工厂车间连接
 
-Azure IoT OPC UA 设备管理也称为 OPC 孪生，是可以自动发现和注册设备的 IIoT 组件，它通过 REST API 提供工业设备的远程控制。 OPC 孪生使用 Azure IoT Edge 和 IoT 中心来连接云与工厂网络。 OPC 孪生使 IIoT 开发人员能够专注于生成 IIoT 应用程序，而无需担心如何安全访问本地机器。
+OPC 孪生是可以自动发现和注册设备的 IIoT 组件，并通过 REST API 提供工业设备的远程控制。 OPC 孪生使用 Azure IoT Edge 和 IoT 中心来连接云与工厂网络。 OPC 孪生使 IIoT 开发人员能够专注于生成 IIoT 应用程序，而无需担心如何安全访问本地机器。
 
 ## <a name="security"></a>安全
 
-Azure IoT OPC UA 证书管理（OPC 保管库）是 OPC UA 全局发现服务器 (GDS) 的一个实现，它可以配置、注册和管理云中 OPC UA 服务器和客户端应用程序的证书生命周期。 OPC 保管库简化了工业领域中安全资产连接的实现和维护。 通过自动化证书管理，OPC 保管库使工厂操作员无需执行与连接和证书管理相关的复杂手动流程。
+OPC 保管库是 OPC UA 全局发现服务器 (GDS) 的一个实现，它可以配置、注册和管理云中 OPC UA 服务器和客户端应用程序的证书生命周期。 OPC 保管库简化了工业领域中安全资产连接的实现和维护。 通过自动化证书管理，OPC 保管库使工厂操作员无需执行与连接和证书管理相关的复杂手动流程。
 
 ## <a name="next-steps"></a>后续步骤
 

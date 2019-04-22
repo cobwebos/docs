@@ -10,10 +10,10 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492713"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure 诊断 1.0 配置架构
@@ -154,7 +154,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**container**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs 元素  
@@ -166,7 +166,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**container**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ##  <a name="iislogs-element"></a>IISLogs 元素  
@@ -178,7 +178,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**container**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ## <a name="datasources-element"></a>DataSources 元素  
@@ -195,7 +195,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**container**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ## <a name="absolute-element"></a>Absolute 元素  
@@ -219,7 +219,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**名称**|字符串|必需。 包含要监视的目录的本地资源的名称。|  
+|name|字符串|必需。 包含要监视的目录的本地资源的名称。|  
 |**relativePath**|字符串|必需。 相对于要监视的本地资源的路径。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 元素  
@@ -269,5 +269,5 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**名称**|字符串|必需。 指定要收集的日志的 XPath 表达式。|  
+|name|字符串|必需。 指定要收集的日志的 XPath 表达式。|  
 

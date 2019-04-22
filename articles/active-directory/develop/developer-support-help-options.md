@@ -19,10 +19,10 @@ ms.reviewer: jmprieur, dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0de9b3e3535253724d068f806b219736f6889477
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501580"
 ---
 # <a name="support-and-help-options-for-developers"></a>开发人员的支持和帮助选项
@@ -55,7 +55,7 @@ ms.locfileid: "59501580"
 | 工具  | 描述  |
 |---------|---------|
 | [jwt.ms](https://jwt.ms) | 粘贴 ID 或访问令牌来解码声明名称和值。 |
-| [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
+| [Microsoft Graph 浏览器](https://developer.microsoft.com/graph/graph-explorer)| 用于针对 Microsoft Graph API 发出请求和查看响应的工具。 |
 
 ## <a name="post-a-question-to-stack-overflow"></a>在 Stack Overflow 上发布问题
 
@@ -70,13 +70,13 @@ Stack Overflow 是开发相关问题的首选渠道。 在这里，开发人员�
 | OWIN 中间件  | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 | [Azure B2B](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)  | [[azure-ad-b2b]](https://stackoverflow.com/questions/tagged/azure-ad-b2b) |
 | [Azure B2C](https://azure.microsoft.com/services/active-directory-b2c/)  | [[azure-ad-b2c]](https://stackoverflow.com/questions/tagged/azure-ad-b2c) |
-| [Microsoft Graph API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
+| [Microsoft 图形 API](https://developer.microsoft.com/graph/) | [[microsoft-graph]](https://stackoverflow.com/questions/tagged/microsoft-graph) |
 | 与身份验证或授权主题相关的其他任何方面 | [[azure-active-directory]](https://stackoverflow.com/questions/tagged/azure-active-directory) |
 
 Stack Overflow 中的以下帖子包含有关如何提问和如何添加源代码的提示。 遵循以下准则可提高社区成员快速评估和响应问题的可能性：
 
-* [如何提出的很好的问题](https://stackoverflow.com/help/how-to-ask)
-* [如何创建最小、 完整和可验证示例](https://stackoverflow.com/help/mcve)
+* [如何正确提问](https://stackoverflow.com/help/how-to-ask)
+* [How to create a minimal, complete, and verifiable example](https://stackoverflow.com/help/mcve)（如何创建最小、完整且可验证的示例）
 
 ## <a name="create-a-github-issue"></a>创建 GitHub 问题
 

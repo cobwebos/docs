@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/07/2018
 ms.author: barclayn
-ms.openlocfilehash: 9b905a81751ce5f4de4a4efbb9ff4c328269fe34
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.openlocfilehash: 288ad14110bd446955d6cec7439bfa40a750276c
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904842"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521639"
 ---
 # <a name="tutorial--deploying-hsms-into-an-existing-virtual-network-using-powershell"></a>教材 - 使用 PowerShell 将 HSM 部署到现有虚拟网络中
 
@@ -217,7 +217,7 @@ ssh 工具用于连接到虚拟机。 命令将如下所示，但使用在参数
 `ssh adminuser@hsmlinuxvm.westus.cloudapp.azure.com`
 
 要使用的密码是参数文件中的密码。
-登录到 Linux VM 以后，则可使用在门户中发现的资源 <prefix>hsm_vnic 的专用 IP 地址登录到 HSM。
+登录到 Linux VM 以后，则可使用在门户中发现的资源 \<prefix>hsm_vnic 的专用 IP 地址登录到 HSM。
 
 ```powershell
 

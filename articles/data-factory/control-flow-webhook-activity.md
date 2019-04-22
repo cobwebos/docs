@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495902"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
@@ -75,9 +75,9 @@ Azure 数据工厂将传入的其他属性"的 callBackUri"在正文中的 url �
 查看数据工厂支持的其他控制流活动：
 
 - [If Condition 活动](control-flow-if-condition-activity.md)
-- [执行管道活动](control-flow-execute-pipeline-activity.md)
+- [Execute Pipeline 活动](control-flow-execute-pipeline-activity.md)
 - [For Each 活动](control-flow-for-each-activity.md)
-- [获取元数据活动](control-flow-get-metadata-activity.md)
-- [查找活动](control-flow-lookup-activity.md)
+- [Get Metadata 活动](control-flow-get-metadata-activity.md)
+- [Lookup 活动](control-flow-lookup-activity.md)
 - [Web 活动](control-flow-web-activity.md)
 - [Until 活动](control-flow-until-activity.md)

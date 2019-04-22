@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: ade0444110dbb23e762a869dc79805872c0f0bf0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 3afea20fe02eafbf14b5162eef3a198d27140b9e
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281125"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59549129"
 ---
 # <a name="quickstart-use-your-own-notebook-server-to-get-started-with-azure-machine-learning"></a>快速入门：通过自己的 Notebook 服务器开始使用 Azure 机器学习
 
@@ -33,7 +33,7 @@ ms.locfileid: "59281125"
 
 * 一个安装了 Azure 机器学习 SDK 的 Python 3.6 Notebook 服务器
 * 一个 Azure 机器学习服务工作区
-* 一个工作区配置文件 (**aml_config/config.json**)。
+* 一个工作区配置文件 (.azureml/config.json)。
 
 从[创建 Azure 机器学习服务工作区](setup-create-workspace.md#portal)获取所有这些先决条件。
 
@@ -74,6 +74,6 @@ print(run.get_portal_url())
 在本文中，你创建了进行试验和部署模型所需的资源。 在 Notebook 中运行了代码，并在云端工作区中浏览了该代码的运行历史记录。
 
 > [!div class="nextstepaction"]
-> [教程：训练映像分类模型](tutorial-train-models-with-aml.md)
+> [教程：训练图像分类模型](tutorial-train-models-with-aml.md)
 
 还可以学习 [GitHub 中的更高级示例](https://aka.ms/aml-notebooks)或查看 [SDK 用户指南](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)。

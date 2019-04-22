@@ -8,12 +8,12 @@ ms.date: 06/14/2018
 ms.author: anshan
 manager: cshankar
 ms.custom: seodec18
-ms.openlocfilehash: a9baf36221c99ece0703e2caa3f3e6c3b9364480
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: fe8b6113646589e30ff839c8bd47968138d98b03
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312200"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521419"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-single-page-web-app"></a>教程：创建 Azure 时序见解单页 Web 应用
 
@@ -179,7 +179,7 @@ ms.locfileid: "58312200"
 错误代码/条件 | 说明
 ---------------------| -----------
 AADSTS50011：未为应用程序注册回复地址。 | Azure AD 注册缺少“回复 URL”属性。 转到 Azure AD 应用程序注册的“设置” / “回复 URL”页。 验证在[将应用程序注册到 Azure AD](#register-the-application-with-azure-ad) 的步骤 3 中指定的**登录** URL 是否存在。 
-AADSTS50011：在请求中指定的回复 URL 与为应用程序“<Application ID GUID>”配置的回复 URL 不匹配。 | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 4.b 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置” / “回复 URL”属性下指定的值匹配。 另外，请确保将“目标 URL”更改为使用 `https`，详见 [生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 5.e 中的说明。
+AADSTS50011：*在请求中指定的回复 URL 与为以下应用程序配置的回复 URL 不匹配：'\<Application ID GUID>'。* | 在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 4.b 中指定的 `postLogoutRedirectUri` 必须与 Azure AD 应用程序注册中“设置” / “回复 URL”属性下指定的值匹配。 另外，请确保将“目标 URL”更改为使用 `https`，详见 [生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 5.e 中的说明。
 Web 应用程序会加载，但登录页是未设置样式的纯文本页面，背景为白色。 | 验证在[生成并发布 Web 应用程序](#build-and-publish-the-web-application)的步骤 4.a 中论述的路径是否正确。 如果 Web 应用程序找不到 .css 文件，则页面无法正确设置样式。
 
 ## <a name="clean-up-resources"></a>清理资源

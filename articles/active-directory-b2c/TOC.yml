@@ -85,8 +85,8 @@ items:
     href: add-native-application.md
   - name: 配置年龄限制
     href: basic-age-gating.md
-  - name: 配置令牌
-    href: active-directory-b2c-token-session-sso.md
+  - name: 配置会话行为
+    href: session-behavior.md
   - name: 自定义语言
     href: active-directory-b2c-reference-language-customization.md
   - name: 自定义密码
@@ -111,8 +111,6 @@ items:
       href: active-directory-b2c-ui-customization-custom.md
     - name: 动态自定义 UI
       href: active-directory-b2c-ui-customization-custom-dynamic.md
-    - name: 自定义令牌
-      href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
     - name: 定义自定义属性
       href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
     - name: 启用“使我保持登录状态”
@@ -147,8 +145,6 @@ items:
         href: active-directory-b2c-custom-setup-twitter-idp.md
     - name: 页协定
       href: page-contract.md
-    - name: 传递访问令牌
-      href: idp-pass-through-custom.md
     - name: 密码复杂性
       href: active-directory-b2c-reference-password-complexity-custom.md
     - name: 密码更改
@@ -159,6 +155,12 @@ items:
         href: active-directory-b2c-custom-setup-adfs2016-idp.md
       - name: Salesforce
         href: active-directory-b2c-setup-sf-app-custom.md
+    - name: 令牌
+      items:
+      - name: 自定义令牌
+        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+      - name: 传递访问令牌
+        href: idp-pass-through-custom.md
     - name: 跟踪用户行为
       href: active-directory-b2c-custom-guide-eventlogger-appins.md
     - name: 引用
@@ -272,10 +274,6 @@ items:
       href: active-directory-b2c-devquickstarts-ios.md
     - name: 使用 App Auth 的 Android
       href: active-directory-b2c-devquickstarts-android.md
-  - name: 获取访问令牌
-    href: active-directory-b2c-access-tokens.md
-  - name: 传递访问令牌
-    href: idp-pass-through-user-flow.md
   - name: 报告使用情况
     href: active-directory-b2c-reference-usage-reporting-api.md
   - name: 资源所有者密码凭据
@@ -284,6 +282,14 @@ items:
     href: direct-signin.md
   - name: 设置自助密码重置
     href: active-directory-b2c-reference-sspr.md
+  - name: 令牌
+    items:
+    - name: 配置令牌
+      href: configure-tokens.md
+    - name: 传递访问令牌
+      href: idp-pass-through-user-flow.md
+    - name: 请求访问令牌
+      href: active-directory-b2c-access-tokens.md
   - name: 使用 b2clogin.com
     href: b2clogin.md
   - name: 使用 Azure AD 图形 API
@@ -326,9 +332,9 @@ items:
     href: active-directory-b2c-support.md
   - name: 视频
     href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: cebc59a7d10ce669fd8187687b80f291a07d1c06
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: de9ae82220bd464cbee7345b7f2421d02f0fc545
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886567"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681125"

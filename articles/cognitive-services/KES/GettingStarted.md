@@ -10,12 +10,12 @@ ms.subservice: knowledge-exploration
 ms.topic: sample
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: e2678200e2f8c55111e53ab0a341804fd17623a3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 00c5ed3e3ea5c083f727d06c2ed305fe35ed03db
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57994952"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523318"
 ---
 # <a name="get-started-with-the-knowledge-exploration-service"></a>知识探索服务入门
 
@@ -252,7 +252,7 @@ ms.locfileid: "57994952"
 
 将过渡槽的内容与生产槽进行[交换](../../../articles/cloud-services/cloud-services-nodejs-stage-application.md)，这样实时流量就会被定向到新部署的服务。 可以在使用新数据部署更新后的服务版本时重复这一过程。 与所有其他 Azure 云服务一样，可以选择使用 Azure 门户来配置[自动缩放](../../../articles/cloud-services/cloud-services-how-to-scale-portal.md)。
 
-在本例中，将学术索引部署到 <vm_size> VM 中现有云服务的过渡槽中。 请使用以下命令：
+在本例中，将学术索引部署到 \<vm_size> VM 中现有云服务的过渡槽中。 请使用以下命令：
 
 `kes.exe deploy_service http://<account>.blob.core.windows.net/<container>/Academic.grammar http://<account>.blob.core.windows.net/<container>/Academic.index <serviceName> <vm_size> --slot Staging`
 

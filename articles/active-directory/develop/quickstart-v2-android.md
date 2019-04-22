@@ -1,6 +1,6 @@
 ---
-title: Azure AD v2 Android 快速入门 | Microsoft Docs
-description: 了解 Android 应用程序如何才能通过 Azure Active Directory v2.0 终结点调用需要访问令牌的 API
+title: Microsoft 标识平台 Android 快速入门 | Azure
+description: 了解 Android 应用程序如何才能通过 Microsoft 标识平台终结点调用需要访问令牌的 API。
 services: active-directory
 documentationcenter: dev-center-name
 author: danieldobalian
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/01/2019
+ms.date: 04/11/2019
 ms.author: dadobali
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd78e6acd801f3b973cc45609b72f86b257f4d43
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: f1f174229da565627c0e5791f53031b338880cb3
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862754"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59495305"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>快速入门：从 Android 应用登录用户并调用 Microsoft Graph API
 
@@ -30,7 +30,7 @@ ms.locfileid: "58862754"
 
 本快速入门包含了一个代码示例，该示例演示了 Android 应用程序如何将个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
 
-![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-android/android-intro-updated.png)
+![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-android/android-intro.svg)
 
 > [!NOTE]
 > **先决条件**
@@ -47,7 +47,7 @@ ms.locfileid: "58862754"
 > ### <a name="option-1-register-and-auto-configure-your-app-and-then-download-your-code-sample"></a>选项 1：注册并自动配置应用，然后下载代码示例
 > #### <a name="step-1-register-your-application"></a>步骤 1：注册应用程序
 > 若要注册应用，请执行以下操作：
-> 1. 访问 [Azure 门户 - 应用程序注册（预览）](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs)
+> 1. 转到新的 [Azure 门户 - 应用注册](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/applicationsListBlade/quickStartType/AndroidQuickstartPage/sourceType/docs)窗格。
 > 1. 输入应用程序的名称并选择“注册”。
 > 1. 遵照说明下载内容，并只需单击一下自动配置新应用程序。
 >
@@ -58,7 +58,8 @@ ms.locfileid: "58862754"
 >
 > 1. 使用工作或学校帐户或个人 Microsoft 帐户登录到 [Azure 门户](https://portal.azure.com)。
 > 1. 如果你的帐户有权访问多个租户，请在右上角选择该帐户，并将门户会话设置为所需的 Azure AD 租户。
-> 1. 在左侧导航窗格中选择“Azure Active Directory”服务，然后选择“应用注册(预览版)” > “新建注册”。
+> 1. 导航到面向开发人员的 Microsoft 标识平台的[应用注册](https://go.microsoft.com/fwlink/?linkid=2083908)页。
+> 1. 选择“新注册”。
 > 1. 出现“注册应用程序”页后，请输入应用程序的注册信息：
 >      - 在“名称”部分输入一个会显示给应用用户的有意义的应用程序名称，例如 `Android-Quickstart`。
 >      - 点击“`Register`”按钮。
@@ -145,7 +146,7 @@ ms.locfileid: "58862754"
 
 ### <a name="msal"></a>MSAL
 
-MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 库用于用户登录和请求用于访问由 Microsoft Azure Active Directory (Azure AD) 保护的 API 的令牌库。 可以如下所述使用 Gradle 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
+MSAL ([com.microsoft.identity.client](https://javadoc.io/doc/com.microsoft.identity.client/msal)) 是一个库，用于用户登录和请求令牌，此类令牌用于访问受 Microsoft 标识平台保护的 API。 可以如下所述使用 Gradle 来安装它：在“依赖项”下的“Gradle 脚本” > “build.gradle (Module: app)”中添加以下内容：
 
 ```gradle  
 implementation 'com.android.volley:volley:1.1.1'
@@ -178,7 +179,7 @@ MSAL 使用两种方法来获取令牌：`acquireToken` 和 `acquireTokenSilentA
 
 #### <a name="getting-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-在某些情况下，需要强制用户与 Azure AD v2.0 终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
+在某些情况下，需要强制用户与 Microsoft 标识平台终结点进行交互，这将导致进行上下文切换以转到系统浏览器，以验证用户的凭据或表示同意。 示例包括：
 
 * 用户首次登录应用程序
 * 由于密码已过期，用户可能需要重新输入凭据的情况

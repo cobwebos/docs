@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: e1b584d38c4583e37b7c47535c836d1fa7d428f1
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.openlocfilehash: c4f94dd2730dd302951b4476a292b006041b7ee8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357245"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680853"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>自动训练时间序列预测的模型
 
@@ -34,27 +34,27 @@ ms.locfileid: "59357245"
 
 最重要的区别之间预测回归任务类型和回归任务自动化的机器学习中的类型表示有效的时间序列数据中包括一项功能。 固定的时间系列具有定义完善且一致的频率，此时，每个示例中的持续时间跨度值。 请考虑以下快照文件的`sample.csv`。
 
-    week_starting,store,sales_quantity,week_of_year
+    day_datetime,store,sales_quantity,week_of_year
     9/3/2018,A,2000,36
     9/3/2018,B,600,36
-    9/10/2018,A,2300,37
-    9/10/2018,B,550,37
-    9/17/2018,A,2100,38
-    9/17/2018,B,650,38
-    9/24/2018,A,2400,39
-    9/24/2018,B,700,39
-    10/1/2018,A,2450,40
-    10/1/2018,B,650,40
+    9/4/2018,A,2300,36
+    9/4/2018,B,550,36
+    9/5/2018,A,2100,36
+    9/5/2018,B,650,36
+    9/6/2018,A,2400,36
+    9/6/2018,B,700,36
+    9/7/2018,A,2450,36
+    9/7/2018,B,650,36
 
-此数据集是一个简单示例的每周销售数据的公司中有两个不同的存储，A 和 b。 此外，还有一项功能的`week_of_year`这将允许该模型以检测每周的季节性。 该字段`week_starting`每周频率，与该字段表示清理时间序列`sales_quantity`是运行预测的目标列。 将数据读入 Pandas 数据帧，然后使用`to_datetime`函数，以确保时序是`datetime`类型。
+此数据集是一个简单示例的每日销售数据的公司中有两个不同的存储，A 和 b。 此外，还有一项功能为`week_of_year`这将允许该模型以检测每周的季节性。 该字段`day_datetime`使用每日频率和字段表示清理时间序列`sales_quantity`是运行预测的目标列。 将数据读入 Pandas 数据帧，然后使用`to_datetime`函数，以确保时序是`datetime`类型。
 
 ```python
 import pandas as pd
 data = pd.read_csv("sample.csv")
-data["week_starting"] = pd.to_datetime(data["week_starting"])
+data["day_datetime"] = pd.to_datetime(data["day_datetime"])
 ```
 
-在这种情况下数据已排序按时间字段的升序`week_starting`。 但是，设置时试验，请确保所需的时间列按升序排序以生成有效的时间序列。 假定数据包含 1,000 条记录，并在要创建训练和测试数据集的数据进行确定性拆分。 然后单独的目标字段`sales_quantity`来创建预测训练和测试集。
+在这种情况下数据已排序按时间字段的升序`day_datetime`。 但是，设置时试验，请确保所需的时间列按升序排序以生成有效的时间序列。 假定数据包含 1,000 条记录，并在要创建训练和测试数据集的数据进行确定性拆分。 然后单独的目标字段`sales_quantity`来创建预测训练和测试集。
 
 ```python
 X_train = data.iloc[:950]
@@ -84,14 +84,18 @@ y_test = X_test.pop("sales_quantity").values
 |`time_column_name`|用于指定用于生成时间序列和推断其频率的输入数据中的日期时间列。|✓|
 |`grain_column_names`|在输入数据中定义每个序列组的名称。 如果未定义粒度，数据集被假定为一个时间序列。||
 |`max_horizon`|最大所需的时间序列的频率单位的预测时间范围。|✓|
+|`target_lags`|*n*本期截止到正向滞后目标在模型定型之前的值。||
+|`target_rolling_window_size`|*n*历史期间要用于生成预测的值 < = 定型集大小。 如果省略， *n*完整的定型集大小。||
 
-创建时间序列设置为字典对象。 设置`time_column_name`到`week_starting`字段中数据集。 定义`grain_column_names`参数，以确保**两个单独的时间序列组**为我们的数据; 一个用于存储 A 和 b。 最后，将创建`max_horizon`设置为 50 为整个测试的预测。
+创建时间序列设置为字典对象。 设置`time_column_name`到`day_datetime`字段中数据集。 定义`grain_column_names`参数，以确保**两个单独的时间序列组**的数据; 一个用于存储 A 和 b。 最后，设置为创建`max_horizon`设置为 50 为整个测试的预测。 将预测的时段设置为 10 个句点`target_rolling_window_size`，和目标值以 2 个期间的延隔`target_lags`参数。
 
 ```python
 time_series_settings = {
-    "time_column_name": "week_starting",
+    "time_column_name": "day_datetime",
     "grain_column_names": ["store"],
-    "max_horizon": 50
+    "max_horizon": 50,
+    "target_lags": 2,
+    "target_rolling_window_size": 10
 }
 ```
 
@@ -141,11 +145,11 @@ rmse = sqrt(mean_squared_error(y_actual, y_predict))
 rmse
 ```
 
-现在，整体确定模型精确度，大多数实际的下一步是使用模型来预测将来的未知的值。 只需提供作为测试集相同的格式中的数据集`X_test`但具有未来日期时间和生成预测集是每个时间序列步骤的预测的值。 假设在数据集中的最后一个时间序列记录了用于每周启动 2018 年 12 月 31 日。 预测下一步一周的需求 (或以预测，所需的任意多个段 < = `max_horizon`)，创建一个每周启动的每个存储时间系列记录 01/07/2019年。
+现在，整体确定模型精确度，大多数实际的下一步是使用模型来预测将来的未知的值。 只需提供作为测试集相同的格式中的数据集`X_test`但具有未来日期时间和生成预测集是每个时间序列步骤的预测的值。 假定在数据集中的最后一个时间序列记录已为 2018 年 12 月 31 日。 预测下一天的需求 (或以预测，所需的任意多个段 < = `max_horizon`)，创建单个系列记录的每个存储时间为 01/01/2019年。
 
-    week_starting,store,week_of_year
-    01/07/2019,A,2
-    01/07/2019,A,2
+    day_datetime,store,week_of_year
+    01/01/2019,A,1
+    01/01/2019,A,1
 
 重复此未来将数据加载到数据帧，然后运行的必要步骤`best_run.predict(X_test)`来预测将来值。
 

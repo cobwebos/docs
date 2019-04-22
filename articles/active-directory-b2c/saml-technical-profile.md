@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 12/21/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: d5120b7569acbe9735ea1a70fcb609d322d60793
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
+ms.openlocfilehash: c719bcaca91f9a6e77d79735283cf2c68404ef16
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55154365"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680530"
 ---
 # <a name="define-a-saml-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的 SAML 技术配置文件
 
@@ -81,21 +81,6 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
   </KeyInfo>
 </KeyDescriptor>
 ```
-
-## <a name="identity-provider-initiated-flow"></a>启动的身份提供程序流
-
-在由 IDP 发起的单一登录会话（未经请求的请求）中，未经请求的 SAML 响应将发送到服务提供程序，在本例中为 Azure AD B2C 技术配置文件。 在此流程中，用户不会首先浏览 Web 应用程序，而是被定向到身份提供程序。 当发送请求时，身份验证页是由身份提供程序提供给用户的。 用户完成登录后，然后请求被重定向到带有包含断言的 SAML 响应的 Azure AD B2C。 Azure AD B2C 读取断言并颁发新的 SAML 令牌，然后将用户重定向到信赖方应用。 重定向操作由 AssertionConsumerService 元素的“位置”属性完成。
-
-
-![启动的 SAML IDP](media/saml-technical-profile/technical-profile-idp-saml-idp-initiated.png) 
-
-创建启动身份提供程序的流时，请考虑以下策略要求：
-
-- 第一个业务流程步骤需要是指向 SAML 技术配置文件的单个声明交换。
-- 技术配置文件需要将名为 IdpInitiatedProfileEnabled 的元数据项设置为 `true`。
-- 信赖方策略必须是 SAML 信赖方。
-- 信赖方策略需要将名为 IdpInitiatedProfileEnabled 的元数据项设置为 `true`。
-- 未经请求的响应需发送到 `/your-tenant/your-policy/samlp/sso/assertionconsumer` 终结点。 响应中包含的任何中继状态都将转发到信赖方。 替换为以下值：将 your-tenant 替换为你的租户名称。 将 your-policy 替换为你的信赖方名称。
     
 ## <a name="protocol"></a>协议
 
@@ -136,7 +121,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 ## <a name="metadata"></a>元数据
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | PartnerEntity | 是 | SAML 身份提供程序的元数据的 URL。 复制身份提供程序元数据并将其添加到 CDATA 元素 `<![CDATA[Your IDP metadata]]>` |
 | WantsSignedRequests | 否 | 指示技术配置文件是否要求对所有传出身份验证请求进行签名。 可能的值：`true` 或 `false`。 默认值为 `true`。 当该值设置为 `true` 时，需要指定 SamlMessageSigning 加密密钥，并对所有传出的身份验证请求进行签名。 如果该值设置为 `false`，则请求中将省略 SigAlg 和 Signature 参数（查询字符串或 post 参数）。 此元数据还控制元数据的 AuthnRequestsSigned 属性，该属性在与身份提供程序共享的 Azure AD B2C 技术配置文件的元数据中输出。 如果技术配置文件元数据中的 **WantsSignedRequests** 设置为 `false`且标识提供者元数据 **WantAuthnRequestsSigned** 设置为 `false` 或未指定，则 Azure AD B2C 不会对请求签名。 |
@@ -155,7 +140,7 @@ https://your-tenant-name.b2clogin.com/your-tenant-name/your-policy/samlp/metadat
 
 <**CryptographicKeys**> 元素包含以下属性：
 
-| 属性 |必选 | 说明 |
+| 属性 |需要 | 描述 |
 | --------- | ----------- | ----------- |
 | SamlMessageSigning |是 | X509 证书（RSA 密钥集），用于对 SAML 消息进行签名。 Azure AD B2C 使用此密钥对请求进行签名并将其发送给身份提供程序。 |
 | SamlAssertionDecryption |是 | X509 证书（RSA 密钥集），用于解密 SAML 消息。 此证书应由身份提供程序提供。 Azure AD B2C 使用此证书解密身份提供程序发送的数据。 |

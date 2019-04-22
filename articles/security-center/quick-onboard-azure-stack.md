@@ -3,7 +3,7 @@ title: Azure 安全中心快速入门 - 将 Azure Stack 虚拟机载入安全中
 description: 本快速入门介绍如何在 Azure Stack 虚拟机上预配“Azure 监视、更新和配置管理”虚拟机扩展。
 services: security-center
 documentationcenter: na
-author: monhaber
+author: pipposera
 manager: dsavage
 editor: ''
 ms.assetid: 8982348a-0624-40c7-8a1e-642a523c7f6b
@@ -14,13 +14,13 @@ ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/02/2019
-ms.author: monhaber
-ms.openlocfilehash: 9efd6514b722168f8ecb1235159e7463ce318118
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.author: fiseraci
+ms.openlocfilehash: 7a630acee079301b95e7e05f5c5333dd116abb68
+ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58904009"
+ms.lasthandoff: 04/15/2019
+ms.locfileid: "59563788"
 ---
 # <a name="quickstart--onboard-your-azure-stack-virtual-machines-to-security-center"></a>快速入门：将 Azure Stack 虚拟机载入安全中心
 载入 Azure 订阅后，可以通过从 Azure Stack 市场添加“Azure 监视、更新和配置管理”虚拟机扩展，启用安全中心来保护 Azure Stack 上运行的虚拟机。
@@ -32,7 +32,7 @@ ms.locfileid: "58904009"
 
 在开始学习本快速入门之前，必须在安全中心的标准层上拥有一个 Azure 订阅。 有关升级说明，请参阅[将 Azure 订阅载入到安全中心标准版](security-center-get-started.md)。 可以免费试用安全中心标准层 30 天。 若要了解详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
-## <a name="add-an-azure-stack-virtual-machine"></a>添加 Azure Stack 虚拟机
+## <a name="select-your-workspace-in-azure-security-center"></a>在 Azure 安全中心中选择工作区
 
 1. 登录到 [Azure 门户](https://azure.microsoft.com/features/azure-portal/)。
 2. 在 **Microsoft Azure** 菜单上选择“安全中心”。 此时会打开“安全中心 - 概览”。 
@@ -65,8 +65,12 @@ ms.locfileid: "58904009"
 3. 选择“扩展”。 此时将显示此虚拟机上安装的虚拟机扩展列表。
 4. 单击“添加”选项卡。此时会打开“新建资源”菜单边栏选项卡，其中显示了可用虚拟机扩展的列表。 
 5. 选择“Azure 监视、更新和配置管理”扩展，然后单击“创建”。 此时会打开“安装扩展”配置边栏选项卡。
+
+>[!NOTE]
+> 如果在市场中没有看到“Azure Monitor、更新和配置管理”扩展，请联系 Azure Stack 操作员以将其列出。
+
 6. 在“安装扩展”配置边栏选项卡上，粘贴在前面步骤中复制到记事本的“工作区 ID” 和“工作区密钥(主密钥)”。
-7.  提供所需的配置设置后，单击“确定”。
+7.  提供所需的配置设置后，请单击“确定”。
 8. 扩展安装完成后，其状态将显示为“预配成功”。 最长可能需要经过一小时，该虚拟机才会显示在安全中心门户中。
 
 有关安装和配置 Windows 代理的详细信息，请参阅[连接 Windows 计算机](../azure-monitor/platform/agent-windows.md#install-the-agent-using-setup-wizard)。

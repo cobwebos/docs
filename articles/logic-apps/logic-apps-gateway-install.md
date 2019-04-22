@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: arthii, LADocs
 ms.topic: article
 ms.date: 10/01/2018
-ms.openlocfilehash: 91d1369b9197f6ef941d981aa9cf7539b4554d0c
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.openlocfilehash: 67a918b227ad3b33a2f63b17f86b94f36fbc9fa3
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54065794"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679119"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>为 Azure 逻辑应用安装本地数据网关
 
@@ -49,7 +49,7 @@ ms.locfileid: "54065794"
 
 <a name="requirements"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 具有[Azure 订阅](https://docs.microsoft.com/azure/architecture/cloud-adoption-guide/adoption-intro/subscription-explainer)的[工作或学校帐户](../active-directory/fundamentals/sign-up-organization.md) 
 
@@ -238,7 +238,7 @@ TcpTestSucceeded       : True
 
 网关使用以下完全限定的域名：
 
-| 域名 | 出站端口 | 说明 | 
+| 域名 | 出站端口 | 描述 | 
 | ------------ | -------------- | ----------- | 
 | *.analysis.windows.net | 443 | HTTPS | 
 | *.core.windows.net | 443 | HTTPS | 
@@ -435,26 +435,6 @@ TcpTestSucceeded       : True
 
    ![查看网关的事件日志](./media/logic-apps-gateway-install/event-viewer.png)
 
-### <a name="telemetry"></a>遥测
-
-如需其他监视和故障排除信息，可以启用遥测并收集遥测数据。 
-
-1. 浏览到本地数据网关客户端所在的位置，通常可在此处找到：```C:\Program Files\On-premises data gateway```
-
-   若要查找客户端位置，请在同一台计算机上打开服务控制台，找到“本地数据网关服务”，并查看“可执行文件的路径”属性。
-
-2. 打开以下配置文件：**Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config**
-
-3. 将 **SendTelemetry** 值更改为 **true**：
-
-   ```html
-   <setting name="SendTelemetry" serializeAs="String">
-      <value>true</value>
-   </setting>
-   ```
-
-4. 保存更改，然后重启 Windows 服务。
-
 ### <a name="review-slow-query-performance"></a>检查查询性能缓慢的问题
 
 如果你发现通过网关的查询运行速度缓慢，可以启用附加日志记录，用于输出查询及其持续时间。 这些日志可能有助于找出哪些查询速度缓慢或长时间运行。 若要优化查询性能，可能需要修改数据源，例如，调整 SQL Server 查询的索引。
@@ -505,7 +485,7 @@ TcpTestSucceeded       : True
 
    2. 若要查找某个查询，请搜索活动类型，例如： 
 
-      | 活动类型 | 说明 | 
+      | 活动类型 | 描述 | 
       |---------------|-------------| 
       | MGEQ | 通过 ADO.NET 运行的查询。 | 
       | MGEO | 通过 OLEDB 运行的查询。 | 
@@ -526,7 +506,7 @@ TcpTestSucceeded       : True
 
 ### <a name="trace-traffic-with-fiddler"></a>使用 Fiddler 跟踪流量
 
-[Fiddler](http://www.telerik.com/fiddler) 是 Telerik 提供的一种免费工具，可监视 HTTP 流量。 可在客户端计算机中查看 Power BI 服务发生的此流量。 此服务可能会显示错误和其他相关信息。
+[Fiddler](https://www.telerik.com/fiddler) 是 Telerik 提供的一种免费工具，可监视 HTTP 流量。 可在客户端计算机中查看 Power BI 服务发生的此流量。 此服务可能会显示错误和其他相关信息。
 
 ## <a name="next-steps"></a>后续步骤
     

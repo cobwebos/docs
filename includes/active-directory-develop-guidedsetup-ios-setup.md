@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/19/2018
 ms.author: dadobali
 ms.custom: include file
-ms.openlocfilehash: d8e249a788d80108d46a61f316b795ab04e541a2
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: e72c4b0cf8f77a057ff07f8bce7acae4e834e28d
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203474"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59503151"
 ---
 ## <a name="setting-up-your-ios-application"></a>设置 iOS 应用程序
 
@@ -61,7 +61,7 @@ echo "github \"AzureAD/microsoft-authentication-library-for-objc\" \"master\"" >
 carthage update
 ```
 
-> 上述过程用于下载和生成 MMicrosoft 身份验证库 (MSAL)。 MSAL 负责获取、缓存和刷新用于访问受 Azure Active Directory v2.0 保护的 API 的用户令牌。
+> 上述过程用于下载和生成 MMicrosoft 身份验证库 (MSAL)。 MSAL 负责获取、缓存和刷新用于访问受 Microsoft 标识平台保护的 API 的用户令牌。
 
 ## <a name="add-the-msal-framework-to-your-application"></a>将 MSAL framework 添加到应用程序
 
@@ -91,7 +91,7 @@ $(SRCROOT)/Carthage/Build/iOS/MSAL.framework
 
 项目模板中应自动创建了 Main.storyboard 文件。 请按照以下说明创建应用 UI：
 
-1.  按住 Control 键并单击 `Main.storyboard` 打开上下文菜单，然后单击：`Open As` > `Source Code`
+1.  按住 Ctrl 并单击 `Main.storyboard` 打开上下文菜单，然后单击：`Open As` > `Source Code`
 2.  用以下代码替换 `<scenes>` 节点：
 
 ```xml

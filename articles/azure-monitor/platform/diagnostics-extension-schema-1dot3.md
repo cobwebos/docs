@@ -10,10 +10,10 @@ ms.date: 09/20/2018
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: fa03017c35c76d986139eeee00eea8a9b4a00e62
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59497077"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure 诊断 1.3 及更高版本的配置架构
@@ -408,7 +408,7 @@ PublicConfig 和 PrivateConfig 是分开的，因为在大多数使用案例中�
 
 
 ## <a name="diagnosticsconfiguration-element"></a>DiagnosticsConfiguration 元素  
- *树：Root - DiagnosticsConfiguration*
+ *树：根 - DiagnosticsConfiguration*
 
 在版本 1.3 中添加。  
 
@@ -425,7 +425,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**IsEnabled**|布尔值。 在此页的其他位置查看说明。|  
 
 ## <a name="publicconfig-element"></a>PublicConfig 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig*
+ *树：根 - DiagnosticsConfiguration - PublicConfig*
 
  描述公共诊断配置。  
 
@@ -434,16 +434,16 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**WadCfg**|必需。 在此页的其他位置查看说明。|  
 |**StorageAccount**|用于存储数据的 Azure 存储帐户的名称。 执行 Set-AzureServiceDiagnosticsExtension cmdlet 时，还可能将其指定为参数。|  
 |**StorageType**|可以是 *Table*、*Blob* 或 *TableAndBlob*。 Table 是默认值。 当选择了 TableAndBlob 时，诊断数据将写入两次 -- 针对每种类型写入一次。|  
-|**LocalResourceDirectory**|Monitoring Agent 在其中存储事件数据的虚拟机上的目录。 如果不设置，则使用默认目录：<br /><br /> 对于辅助线程 /web 角色： `C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 为虚拟机： `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必需属性：<br /><br /> - **path** - Azure 诊断将使用的系统上的目录。<br /><br /> - **expandEnvironment** - 控制是否在路径名称中扩展环境变量。|  
+|**LocalResourceDirectory**|Monitoring Agent 在其中存储事件数据的虚拟机上的目录。 如果不设置，则使用默认目录：<br /><br /> 对于辅助角色/Web 角色：`C:\Resources\<guid>\directory\<guid>.<RoleName.DiagnosticStore\`<br /><br /> 对于虚拟机：`C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<WADVersion>\WAD<WADVersion>`<br /><br /> 必需属性：<br /><br /> - **path** - Azure 诊断将使用的系统上的目录。<br /><br /> - **expandEnvironment** - 控制是否在路径名称中扩展环境变量。|  
 
 ## <a name="wadcfg-element"></a>WadCFG 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG*
 
  标识并配置要收集的遥测数据。  
 
 
 ## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration 元素
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration*
 
  需要
 
@@ -460,9 +460,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumps**|在此页的其他位置查看说明。|  
 |**DiagnosticInfrastructureLogs**|启用收集 Azure 诊断生成的日志。 诊断基础结构日志可用于排查诊断系统本身的故障。 可选属性：<br /><br /> - **scheduledTransferLogLevelFilter** - 配置收集的日志的最低严重级别。<br /><br /> - **scheduledTransferPeriod** - 到存储空间的计划传输之间的时间间隔，向上舍入为最接近的分钟数。 值是 [XML“持续时间数据类型。”](https://www.w3schools.com/xml/schema_dtypes_date.asp) |  
-|**目录**|在此页的其他位置查看说明。|  
+|**Directories**|在此页的其他位置查看说明。|  
 |**EtwProviders**|在此页的其他位置查看说明。|  
-|**度量值**|在此页的其他位置查看说明。|  
+|**指标**|在此页的其他位置查看说明。|  
 |**PerformanceCounters**|在此页的其他位置查看说明。|  
 |**WindowsEventLog**|在此页的其他位置查看说明。|
 |**DockerSources**|在此页的其他位置查看说明。 |
@@ -470,7 +470,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="crashdumps-element"></a>CrashDumps 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - CrashDumps*
 
  启用故障转储收集。  
 
@@ -485,7 +485,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**CrashDumpConfiguration**|必需。 定义每个进程的配置值。<br /><br /> 还必需以下属性：<br /><br /> **processName** - 希望 Azure 诊断为其收集故障转储的进程的名称。|  
 
 ## <a name="directories-element"></a>Directories 元素
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration -  Directories*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories*
 
  启用收集目录内容、IIS 失败的访问请求日志和/或 IIS 日志。  
 
@@ -495,13 +495,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|在配置中包括此元素可启用收集 IIS 日志：<br /><br /> **containerName** - Azure 存储帐户中用于存储 IIS 日志的 blob 容器的名称。|   
 |**FailedRequestLogs**|在配置中包括此元素可启用收集有关对 IIS 站点或应用程序的失败请求的日志。 还必须在 **Web.config** 文件中的 **system.WebServer** 下启用跟踪选项。|  
-|**数据源**|要监视的目录的列表。|
+|**DataSources**|要监视的目录的列表。|
 
 
 
 
 ## <a name="datasources-element"></a>DataSources 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources*
 
  要监视的目录的列表。  
 
@@ -514,19 +514,19 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="directoryconfiguration-element"></a>DirectoryConfiguration 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources - DirectoryConfiguration*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Directories - DataSources - DirectoryConfiguration*
 
  可能包括 **Absolute** 或 **LocalResource** 元素，但不能同时包含两者。  
 
 |子元素|描述|  
 |--------------------|-----------------|  
-|**绝对**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> - **Path** - 要监视的目录的绝对路径。<br /><br /> - **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
+|**Absolute**|要监视的目录的绝对路径。 需要以下属性：<br /><br /> - **Path** - 要监视的目录的绝对路径。<br /><br /> - **expandEnvironment** - 配置是否在路径中扩展环境变量。|  
 |**LocalResource**|要监视的本地资源的相对路径。 必需属性：<br /><br /> - **Name** - 包含要监视的目录的本地资源<br /><br /> - **relativePath** - 包含要监视的目录的名称的相对路径|  
 
 
 
 ## <a name="etwproviders-element"></a>EtwProviders 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders*
 
  配置从基于 EventSource 和/或 ETW 清单的提供程序收集 ETW 事件。  
 
@@ -538,29 +538,29 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="etweventsourceproviderconfiguration-element"></a>EtwEventSourceProviderConfiguration 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders- EtwEventSourceProviderConfiguration*
 
  配置收集从 [EventSource 类](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)生成的事件。  
 
 |子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br/><br/> **eventDestination** -存储事件的表的名称|  
-|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 
 
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
 |子元素|描述|  
 |--------------------|-----------------|  
 |**DefaultEvents**|可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
-|**事件**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
+|**Event**|必需属性：<br /><br /> **id** - 事件 ID。<br /><br /> 可选属性：<br /><br /> **eventDestination** -存储事件的表的名称|  
 
 
 
 ## <a name="metrics-element"></a>Metrics 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Metrics*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Metrics*
 
  可以生成针对快速查询进行优化的性能计数器表。 在 **PerformanceCounters** 元素中定义的每个性能计数器除存储在性能计数器表内外，还存储在度量值表中。  
 
@@ -573,7 +573,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - PerformanceCounters*
 
  启用性能计数器收集。  
 
@@ -590,7 +590,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 元素
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
 
  启用收集 Windows 事件日志。  
 
@@ -598,13 +598,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子元素|描述|  
 |-------------------|-----------------|  
-|**数据源**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，请指定“*”|  
+|**DataSource**|要收集的 Windows 事件日志。 必需属性：<br /><br /> **name** - 描述要收集的 Windows 事件的 XPath 查询。 例如：<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> 若要收集所有事件，请指定“*”|  
 
 
 
 
 ## <a name="logs-element"></a>Logs 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - Logs*
 
  在 1.0 和 1.1 版本中提供。 1.2 中不提供。 在 1.3 中重新添加。  
 
@@ -613,21 +613,21 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|**字符串**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**scheduledTransferLogLevelFilter**|**string**|可选。 指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|**duration**|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
-|**sinks** |**字符串**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
+|**sinks** |**string**| 在 1.5 中添加。 可选。 指向同时要发送诊断数据的接收器位置。 例如，Application Insights 或事件中心。|  
 
 ## <a name="dockersources"></a>DockerSources
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - DockerSources*
 
  在 1.9 中添加的。
 
 |元素名称|描述|  
 |------------------|-----------------|  
-|**统计信息**|告诉系统收集 Docker 容器的统计信息|  
+|**Stats**|告诉系统收集 Docker 容器的统计信息|  
 
 ## <a name="sinksconfig-element"></a>SinksConfig 元素  
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig*
 
  向其中发送诊断数据的位置的列表以及与这些位置关联的配置。  
 
@@ -636,7 +636,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**接收器**|在此页的其他位置查看说明。|  
 
 ## <a name="sink-element"></a>Sink 元素
- *树：Root - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink*
 
  在版本 1.5 中添加。  
 
@@ -644,15 +644,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**名称**|字符串|标识 sinkname 的字符串。|  
+|name|字符串|标识 sinkname 的字符串。|  
 
 |元素|Type|描述|  
 |-------------|----------|-----------------|  
 |**Application Insights**|字符串|仅在将数据发送到 Application Insights 时使用。 包含有权访问的有效 Application Insights 帐户的检测密钥。|  
-|**声道**|字符串|每个对应一个流处理的其他筛选|  
+|**通道**|字符串|每个对应一个流处理的其他筛选|  
 
 ## <a name="channels-element"></a>Channels 元素  
- *树：根-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-Channels*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
 
  在版本 1.5 中添加。  
 
@@ -660,10 +660,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |元素|Type|描述|  
 |-------------|----------|-----------------|  
-|**通道**|字符串|在此页的其他位置查看说明。|  
+|**Channel**|字符串|在此页的其他位置查看说明。|  
 
 ## <a name="channel-element"></a>Channel 元素
- *树：根-DiagnosticsConfiguration-PublicConfig-WadCFG-SinksConfig-Sink-Channels-Channel*
+ *树：根 - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
 
  在版本 1.5 中添加。  
 
@@ -671,12 +671,12 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |----------------|----------|-----------------|  
-|**logLevel**|**字符串**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
-|**名称**|**字符串**|要引用的通道的唯一名称|  
+|**logLevel**|**string**|指定传输的日志条目的最低严重级别。 默认值是“未定义”，这会传输所有日志。 其他可能的值是（按信息严重级别从高到低排序）“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**name**|**string**|要引用的通道的唯一名称|  
 
 
 ## <a name="privateconfig-element"></a>PrivateConfig 元素
- *树：Root - DiagnosticsConfiguration - PrivateConfig*
+ *树：根 - DiagnosticsConfiguration - PrivateConfig*
 
  在版本 1.3 中添加。  
 
@@ -690,7 +690,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 
 ## <a name="isenabled-element"></a>IsEnabled 元素  
- *树：Root - DiagnosticsConfiguration - IsEnabled*
+ *树：根 - DiagnosticsConfiguration - IsEnabled*
 
  布尔值。 使用 `true` 启用诊断或使用 `false` 禁用诊断。
 

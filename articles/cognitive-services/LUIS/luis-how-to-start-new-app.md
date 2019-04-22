@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/28/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 72c4f23f47e0a2c6d9a96dbbe36716bc3ab665f1
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.openlocfilehash: daffbe3f3158bb232f7db7ac90d766661e937643
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58891423"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679633"
 ---
 # <a name="create-a-new-luis-app-in-the-luis-portal"></a>在 LUIS 门户中创建新的 LUIS 应用
 可通过多种方法创建 LUIS 应用。 可以在 [LUIS](https://www.luis.ai) 门户中创建 LUIS 应用，也可以通过 LUIS 创作 [API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) 创建。
@@ -67,10 +67,19 @@ ms.locfileid: "58891423"
 
 * 已存在具有该名称的应用。 重新导入应用程序中，并设置**可选名称**为新名称。 
 
-## <a name="export-app"></a>导出应用
+## <a name="export-app-for-backup"></a>导出应用备份
 
-1. 在“我的应用”页，选择“导入新应用”。
-1. 在“导入新应用”对话框中，选择定义 LUIS 应用的 JSON 文件。
+1. 上**我的应用**页上，选择**导出**。
+1. 选择**导出为 JSON**。 在浏览器下载活动版本的应用。
+1. 将此文件添加到您的备份系统进行存档该模型。
+
+## <a name="export-app-for-containers"></a>导出用于容器的应用
+
+1. 上**我的应用**页上，选择**导出**。
+1. 选择**导出为容器**然后选择你想要导出的已发布的槽 （生产或阶段）。
+1. 使用此文件和你[LUIS 容器](luis-container-howto.md)。 
+
+    如果您感兴趣但不是导出一个训练的但要使用 LUIS 容器使用的已发布的模型，请转到**版本**页和从中导出。 
 
 ## <a name="delete-app"></a>删除应用
 

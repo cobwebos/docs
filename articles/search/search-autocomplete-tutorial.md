@@ -11,10 +11,10 @@ ms.date: 04/04/2019
 ms.author: mcarter
 ms.custom: seodec2018
 ms.openlocfilehash: ed2e0bd352823a932cfea719c18e05ae6c913621
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59495730"
 ---
 # <a name="example-add-suggestions-or-autocomplete-to-your-azure-search-application"></a>示例：将建议或自动完成功能添加到 Azure 搜索应用程序
@@ -89,7 +89,7 @@ $(function () {
 });
 ```
 
-在页面加载配置的 jQuery UI 自动填充"example1a"输入框，在浏览器中运行上面的代码。  `minLength: 3` 可确保在搜索框中有至少三个字符时才会显示建议。  源值非常重要：
+在页面加载配置的 jQuery UI 自动填充"example1a"输入框，在浏览器中运行上面的代码。  `minLength: 3` 确保仅当搜索框中至少有三个字符时，才显示建议。  源值非常重要：
 
 ```javascript
 source: "/home/suggest?highlights=false&fuzzy=false&",

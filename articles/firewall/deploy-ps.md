@@ -7,15 +7,15 @@ ms.service: firewall
 ms.date: 4/10/2019
 ms.author: victorh
 ms.openlocfilehash: c2d49defa2e0fbbd12c5403ccca74e91cf4ec981
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59502108"
 ---
 # <a name="deploy-and-configure-azure-firewall-using-azure-powershell"></a>部署和配置 Azure 防火墙使用 Azure PowerShell
 
-控制出站网络访问是整个网络安全计划的重要组成部分。 例如，你可能想要限制对 web 站点的访问。 或者，你可能想要限制的出站 IP 地址和端口可访问。
+控制出站网络访问是整个网络安全计划的重要组成部分。 例如，你可能想要限制对网站的访问， 或者限制可以访问的出站 IP 地址和端口。
 
 可以控制 Azure 子网的出站网络访问的一种方法是使用 Azure 防火墙。 使用 Azure 防火墙，可以配置：
 
@@ -24,7 +24,7 @@ ms.locfileid: "59502108"
 
 将网络流量路由到用作子网默认网关的防火墙时，网络流量受到配置的防火墙规则的控制。
 
-在本文中，创建具有三个子网，以便于部署的简化单个 VNet。 对于生产部署，[中心辐射型模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)防火墙在其自身的 VNet 中的建议。 工作负荷服务器是与一个或多个子网在同一区域中的对等 Vnet 中。
+在本文中，创建具有三个子网，以便于部署的简化单个 VNet。 对于生产部署，我们建议使用[中心辐射模型](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)，其中，防火墙在其自身的 VNet 中。 工作负荷服务器在包含一个或多个子网的同一区域中的对等 VNet 内。
 
 * **AzureFirewallSubnet** - 防火墙在此子网中。
 * **Workload-SN** - 工作负荷服务器在此子网中。 此子网的网络流量通过防火墙。
@@ -38,7 +38,7 @@ ms.locfileid: "59502108"
 > * 设置测试网络环境
 > * 部署防火墙
 > * 创建默认路由
-> * 配置应用程序规则以允许访问 www.google.com
+> * 配置一个应用程序规则以允许访问 www.google.com
 > * 配置网络规则，以允许访问外部 DNS 服务器
 > * 测试防火墙
 
@@ -48,7 +48,7 @@ ms.locfileid: "59502108"
 
 ## <a name="prerequisites"></a>必备组件
 
-此过程要求在本地运行 PowerShell。 必须已安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Connect-AzAccount`，以便创建与 Azure 的连接。
+此过程要求在本地运行 PowerShell。 必须安装 Azure PowerShell 模块。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-Az-ps)。 验证 PowerShell 版本以后，请运行 `Connect-AzAccount`，以便创建与 Azure 的连接。
 
 ## <a name="set-up-the-network"></a>设置网络
 
@@ -212,7 +212,7 @@ $NIC | Set-AzNetworkInterface
 
 ## <a name="test-the-firewall"></a>测试防火墙
 
-现在，测试防火墙，以确认它按预期工作。
+现在测试防火墙，以确认它是否按预期方式工作。
 
 1. 请注意的专用 IP 地址**Srv 工作**虚拟机：
 
@@ -220,7 +220,7 @@ $NIC | Set-AzNetworkInterface
    $NIC.IpConfigurations.PrivateIpAddress
    ```
 
-1. 连接到远程桌面**Srv 跳转**虚拟机，并登录。 在此处，打开远程桌面连接到**Srv 工作**专用 IP 地址并登录。
+1. 将远程桌面连接到 **Srv-Jump** 虚拟机，然后登录。 在此处，打开远程桌面连接到**Srv 工作**专用 IP 地址并登录。
 
 3. 上**SRV 工作**，打开 PowerShell 窗口并运行以下命令：
 

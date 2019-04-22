@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/24/2018
 ms.author: andret
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 73d762e5bb358964b439d1dc6027abc01332da21
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a6119baf79b9323a5c1ad06d75e1410f632015f0
+ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58007615"
+ms.lasthandoff: 04/13/2019
+ms.locfileid: "59548539"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -32,7 +32,7 @@ ms.locfileid: "58007615"
 在本快速入门结束时，应用程序可接受与 Azure Active Directory (Azure AD) 集成的组织的工作和学校帐户登录。
 
 > [!NOTE]
-> 如果除了工作和学校帐户登录外，还需要启用个人帐户登录，可以使用 [v2.0 终结点](azure-ad-endpoint-comparison.md)。 有关详细信息，请参阅[此 v2.0 终结点的 ASP.NET 教程](tutorial-v2-asp-webapp.md)和[本文](active-directory-v2-limitations.md)，了解 v2.0 终结点的当前限制。
+> 如果除工作和学校帐户登录外，还需要启用个人帐户登录，可以使用 [Microsoft 标识平台终结点](azure-ad-endpoint-comparison.md)。 有关详细信息，请参阅[此 ASP.NET 教程](tutorial-v2-asp-webapp.md)以及[本文](active-directory-v2-limitations.md)对 Microsoft 标识平台终结点的解释。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -290,7 +290,7 @@ In this step, you will configure your project to use SSL, and then use the SSL U
 
 | 属性 | 值 | 说明 |
 |---|---|---|
-| Name | {用户全名} | 用户的名字和姓氏 |
+| 名称 | {用户全名} | 用户的名字和姓氏 |
 | 用户名 | <span>user@domain.com</span> | 用于标识已登录用户的用户名 |
 | 主题| {使用者} |一个唯一地标识 Web 上用户登录名的字符串 |
 | 租户 ID | {Guid} | 唯一表示用户的 Azure AD 组织的 guid |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2018
 ms.author: rkarlin
-ms.openlocfilehash: ee28bfebb6732c7bb3b689cf08b9b876adb74b1b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9f4e001909fb739aa368e5201649e85cce9906d3
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104669"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59521914"
 ---
 # <a name="quickstart-onboard-linux-computers-to-azure-security-center"></a>快速入门：将 Linux 计算机载入到安全中心
 载入 Azure 订阅之后，可以通过预配 Linux 代理为在 Azure 外部（例如，在本地或在其他云中）运行的 Linux 资源启用安全中心。
@@ -57,7 +57,7 @@ ms.locfileid: "58104669"
 
    ![安装代理][5]
 
-可以在以下位置找到适用于 Linux 的安全中心代理的 日志：*/var/opt/microsoft/omsagent/<workspace id>/log/*
+可在以下位置找到适用于 Linux 的安全中心代理的日志：/var/opt/microsoft/omsagent/\<workspace id>/log/
 
   ![代理的日志][6]
 

@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5a1034a55bc4d516244e11d035f17fcc3b94929
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: b648b8458c7f91cae6edb079fbd2ac78553dd969
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57855633"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59523777"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-netweaver"></a>教程：Azure Active Directory 与 SAP NetWeaver 集成
 
@@ -135,7 +135,7 @@ ms.locfileid: "57855633"
 6. 将“提供程序名称”从 T01122 替换为 `http://T01122`，然后单击“保存”。
 
     > [!NOTE]
-    > 默认情况下，提供程序名称为 <sid> <client> 格式，但 Azure AD 需要格式为 <protocol>://<name> 的名称，建议将提供程序名称保留为 https://<sid><client> 以允许在 Azure AD 中配置多个 SAP NetWeaver ABAP 引擎。
+    > 默认情况下，提供程序名称采用 `<sid><client>` 格式，但 Azure AD 需要格式为 `<protocol>://<name>` 的名称，建议将提供程序名称保留为 `https://<sid><client>` 以允许在 Azure AD 中配置多个 SAP NetWeaver ABAP 引擎。
 
     ![证书下载链接](./media/sapnetweaver-tutorial/tutorial_sapnetweaver_providername.png)
 

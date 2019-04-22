@@ -18,10 +18,10 @@ ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 253a5e247dbbea5fc7e0e556d8619328b43bff58
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59501053"
 ---
 # <a name="how-to-provide-optional-claims-to-your-azure-ad-app"></a>如何：提供向 Azure AD 应用程序的可选声明
@@ -103,8 +103,8 @@ ms.locfileid: "59501053"
 | 属性名称  | 附加属性名称 | 描述 |
 |----------------|--------------------------|-------------|
 | `upn`          |                          | 可用于 SAML 和 JWT 响应，以及 v1.0 和 v2.0 令牌。 |
-|                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如， `foo_hometenant.com#EXT#@resourcetenant.com` |             
-|                | `include_externally_authenticated_upn_without_hash` | 与上面相同，不同之处在于哈希标记 (`#`) 替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |
+|                | `include_externally_authenticated_upn`  | 包含资源租户中存储的来宾 UPN。 例如： `foo_hometenant.com#EXT#@resourcetenant.com` |             
+|                | `include_externally_authenticated_upn_without_hash` | 同上，不过，井号标记 (`#`) 已替换为下划线 (`_`)，例如 `foo_hometenant.com_EXT_@resourcetenant.com` |
 
 #### <a name="additional-properties-example"></a>附加属性示例
 
@@ -196,7 +196,7 @@ ms.locfileid: "59501053"
 
 在 JWT 中，将使用以下命名格式发出这些声明：`extn.<attributename>`。
 
-在 SAML 令牌中，将使用以下 URI 格式发出这些声明： `http://schemas.microsoft.com/identity/claims/extn.<attributename>`
+在 SAML 令牌中，将使用以下 URI 格式发出这些声明：`http://schemas.microsoft.com/identity/claims/extn.<attributename>`。
 
 ## <a name="optional-claims-example"></a>可选声明示例
 

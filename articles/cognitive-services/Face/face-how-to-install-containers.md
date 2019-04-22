@@ -9,30 +9,30 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: article
-ms.date: 03/22/2019
+ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3e6b220e7193c5e683fc8a6c06a6e9e3dd3e3f6e
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521612"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680717"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
 人脸识别服务提供适用于 Docker 的标准化 Linux 容器。该容器名为“人脸”，可检测图像中的人脸和识别属性，包括人脸特征（例如，鼻子和眼睛）、性别、年龄和其他计算机预测的面部特征。 除检测外，“人脸”还可以使用置信评分检查同一/不同图像中的两张人脸，或根据数据库比较人脸，以查看是否已存在类似或相同的人脸。 还可以使用共享视觉特征将类似人脸整理为许多组。
 
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 ## <a name="prerequisites"></a>必备组件
 
 使用人脸 API 容器之前，必须满足以下先决条件：
 
-|需要|用途|
+|需要|目的|
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|人脸 API 资源 |若要使用容器，必须具有：<br><br>_人脸 API_ Azure 资源，用于获取关联的计费密钥和计费终结点 URI。 这两个值可以从 Azure 门户中的“人脸 API 概述”和“密钥”页面获得，并且是启动容器时所必需的。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>一个_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 您需要添加`face/v1.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。 <br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
 
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
@@ -48,12 +48,12 @@ ms.locfileid: "58521612"
 
 下表显示了为每个人脸 API 容器分配的最小和建议的 CPU 核心数和内存。
 
-| 容器 | 最小值 | 推荐 | TPS<br>（最低配置，最大值）|
+| 容器 | 最小值 | 建议 | TPS<br>(最小值, 最大值)|
 |-----------|---------|-------------|--|
 |人脸 | 单核，2 GB 内存 | 单核，4 GB 内存 |10, 20|
 
 * 每个核心必须至少为 2.6 千兆赫 (GHz) 或更快。
-* TP-每秒事务数
+* TPS - 每秒事务数
 
 核心和内存对应于 `--cpus` 和 `--memory` 设置，用作 `docker run` 命令的一部分。
 
@@ -86,8 +86,10 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-face:latest
 
 | 占位符 | 值 |
 |-------------|-------|
-|{BILLING_KEY} | 此密钥用于启动容器，可以从 Azure 门户中的“人脸 API 密钥”页上获取该密钥。  |
-|{BILLING_ENDPOINT_URI} | 可以从 Azure 门户中的“人脸 API 概述”页上获得计费终结点 URI 值。|
+|{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 上`Cognitive Services`密钥页。  |
+|{BILLING_ENDPOINT_URI} | 计费终结点 URI 值是可在 Azure 上`Cognitive Services`概述页。 下面是示例： `https://westus.api.cognitive.microsoft.com/face/v1.0`|
+
+您需要添加`face/v1.0`BILLING_ENDPOINT_URI 上例中所示路由到终结点 URI。 
 
 在以下示例 `docker run` 命令中，请将这些参数替换为自己的值。
 

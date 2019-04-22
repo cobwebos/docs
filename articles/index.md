@@ -7,10 +7,10 @@ ms.topic: hub-page
 featureFlags:
 - clicktale
 ms.openlocfilehash: 3b35608c30262f633af073daacc8795f8eca1e7e
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496499"
 ---
 <div id="main" class="v2">
@@ -210,7 +210,7 @@ Go</a>
                                                 </ul>
                                                 <h4>AI 和认知服务</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/">机器学习 </a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/">机器学习</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/">认知服务</a></li>
                                                     <li><a class="barLink" href="/azure/notebooks/">Azure Notebook</a></li>
                                                 </ul>
@@ -262,7 +262,7 @@ Azure 移动应用 </a>
                                                     <li>
                                                         <a class="barLink" href="https://docs.microsoft.com/azure/devops">
                                                             <img src="https://docs.microsoft.com/media/logos/logo_vs-team-services.svg" alt="">
-Azure DevOps </a>
+Azure DevOps</a>
                                                     </li>
                                                     <li>
                                                         <a class="barLink" href="https://docs.microsoft.com/azure/devops/pipelines/index">
@@ -352,7 +352,7 @@ Azure DevOps Projects </a>
                 <a href="#products">产品</a>
                 <ul id="products">
                     <li>
-                        <a href="#all">All</a>
+                        <a href="#all">全部</a>
                         <ul id="all" class="directory">
                             <li>
                                 <div class="group">
@@ -2759,7 +2759,7 @@ Azure DevOps Projects </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#mobile">移动型</a>
+                        <a href="#mobile">移动</a>
                         <ul id="mobile" class="cardsA">
                             <li>
                                 <a href="/azure/app-service-mobile">
@@ -4616,7 +4616,7 @@ Azure DevOps Projects </a>
                         </ul>
                     </li>
                     <li>
-                        <a href="#security">安全</a>
+                        <a href="#security">安全性</a>
                         <ul id="security" class="cardsA">
                             <li>
                                 <a href="/azure/security/">
@@ -5951,7 +5951,7 @@ Azure DevOps Projects </a>
                 <a href="#sdkstools">SDK/工具</a>
                 <ul id="sdkstools">
                     <li>
-                        <a href="#sdkstools-all">本应返回的所有记录的总数，</a>
+                        <a href="#sdkstools-all">全部</a>
                         <ul id="sdkstools-all" class="cardsF">
                             <li>
                                 <div class="container">
@@ -6114,7 +6114,7 @@ Azure CLI </h3>
                                                     <a href="/cli/azure">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/cli/azure/reference-index">引用</a>
+                                                    <a href="/cli/azure/reference-index">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6136,7 +6136,7 @@ Azure CLI </h3>
                                                     <a href="/powershell/azure/get-started-azureps">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/powershell/azure/overview">引用</a>
+                                                    <a href="/powershell/azure/overview">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6262,7 +6262,7 @@ Docker </h3>
                                                     <a href="https://go.microsoft.com/fwlink/?LinkId=780681">适用于 Visual Studio Code 的下载项</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682">适用于 Azure DevOps 的下载项</a>
+                                                    <a href="https://go.microsoft.com/fwlink/?LinkId=780682">Azure DevOps 的下载</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6341,7 +6341,7 @@ Azure 资源管理器 </h3>
                                                     <a href="https://azure.microsoft.com/resources/templates/">示例模板</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/templates/">引用</a>
+                                                    <a href="https://docs.microsoft.com/azure/templates/">参考</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6400,7 +6400,7 @@ Service Fabric SDK and Tools 3.0.467 </h3>
                                                     <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac">下载 Mac OS X</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">下载 Service Fabric CLI </a>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">下载 Azure Service Fabric CLI</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -6420,7 +6420,7 @@ Service Fabric SDK and Tools 3.0.467 </h3>
                                                 <h3>
 SQL 工具 </h3>
                                                 <p>
-                                                    <a href="/sql/azure-data-studio/download">Azure Data Studio <sup>预览版</sup></a>
+                                                    <a href="/sql/azure-data-studio/download">Azure Data Studio <sup>预览</sup></a>
                                                 </p>
                                                 <p>
                                                     <a href="/sql/ssms/download-sql-server-management-studio-ssms">SQL Server Management Studio (SSMS)</a>
@@ -6450,13 +6450,13 @@ Azure Dev Spaces </h3>
                                                     <a href="https://docs.microsoft.com/azure/dev-spaces/azure-dev-spaces">入门</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">适用于 .NET Core 和 VS Code 的下载项</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore">适用于 .NET Core 和 VS Code 的下载</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">适用于 .NET Core 和 Visual Studio 的下载项</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-netcore-visualstudio">适用于 .NET Core 和 Visual Studio 的下载</a>
                                                 </p>
                                                 <p>
-                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">适用于 Node.js 的下载项</a>
+                                                    <a href="https://docs.microsoft.com/azure/dev-spaces/quickstart-nodejs">适用于 Node.js 的下载</a>
                                                 </p>
                                             </div>
                                         </div>

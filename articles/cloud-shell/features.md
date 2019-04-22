@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: damaerte
 ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59500611"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
@@ -60,7 +60,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |类别   |名称   |
 |---|---|
 |Linux 工具            |bash<br> zsh<br> sh<br> tmux<br> dig<br>               |
-|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
+|Azure 工具            |[Azure CLI](https://github.com/Azure/azure-cli) 和 [Azure 经典 CLI](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-linux?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#writing-your-first-azcopy-command)<br> [Service Fabric CLI](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli)<br> [批处理 Shipyard](https://github.com/Azure/batch-shipyard)<br> [blobxfer](https://github.com/Azure/blobxfer)|
 |文本编辑器           |代码（Cloud Shell 编辑器）<br> vim<br> nano<br> emacs    |
 |源代码管理         |git                    |
 |生成工具            |make<br> maven<br> npm<br> pip         |
@@ -80,7 +80,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 |Python     |2.7 和 3.5（默认）|
 
 ## <a name="next-steps"></a>后续步骤
-[Bash in Cloud Shell 快速入门](quickstart.md) <br>
-[PowerShell in Cloud Shell 快速入门](quickstart-powershell.md) <br>
+[Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>
+[Cloud Shell 中的 PowerShell 快速入门](quickstart-powershell.md) <br>
 [了解 Azure CLI](https://docs.microsoft.com/cli/azure/) <br>
-[了解有关 Azure PowerShell 的信息](https://docs.microsoft.com/powershell/azure/) <br>
+[了解 Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

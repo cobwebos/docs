@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 01/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: cc561bd88c18788be3ed1b9aef8a6a985af8a6f2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 2e6bc0fd9de4fdba1188b40c49ebf9459d684d38
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59278541"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679986"
 ---
 # <a name="create-and-run-a-machine-learning-pipeline-by-using-azure-machine-learning-sdk"></a>使用 Azure 机器学习 SDK 创建和运行机器学习管道
 
@@ -93,7 +93,7 @@ blob_input_data = DataReference(
     path_on_datastore="20newsgroups/20news.pkl")
 ```
 
-中间数据（或步骤输出）由 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象表示。 `output_data1` 生成步骤的输出为并用作一个或多个后续步骤的输入。 `PipelineData` 引入了数据依赖项之间的步骤，并在管道中创建的隐式执行顺序。
+中间数据（或步骤输出）由 [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) 对象表示。 `output_data1` 生成为步骤的输出，并用作一个或多个后续步骤的输入。 `PipelineData` 在步骤之间引入数据依赖项，并在管道中创建隐式执行顺序。
 
 ```python
 output_data1 = PipelineData(
@@ -253,8 +253,8 @@ trainStep = PythonScriptStep(
 
 定义步骤后，使用其中的部分或所有步骤生成管道。
 
->[!NOTE]
->定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习服务。
+> [!NOTE]
+> 定义步骤或生成管道时，不会将任何文件或数据上传到 Azure 机器学习服务。
 
 ```python
 # list of steps to run
@@ -289,8 +289,12 @@ pipeline1 = Pipeline(workspace=ws, steps=steps)
 
 ## <a name="submit-the-pipeline"></a>提交管道
 
-提交管道时，Azure 机器学习服务检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。
+提交管道时，Azure 机器学习服务检查每个步骤的依赖项，并上传指定的源目录的快照。 如果未指定源目录，则上传当前的本地目录。 快照也存储为你的工作区中的实验的一部分。
 
+> [!IMPORTANT]
+> 若要防止文件被包含在快照中，创建[.gitignore](https://git-scm.com/docs/gitignore)或`.amlignore`文件的目录中，并向其中添加文件。 `.amlignore`文件使用相同的语法，作为模式[.gitignore](https://git-scm.com/docs/gitignore)文件。 如果这两个文件存在，`.amlignore`文件具有优先权。
+>
+> 有关详细信息，请参阅[快照](concept-azure-machine-learning-architecture.md#snapshot)。
 
 ```python
 # Submit the pipeline to be run

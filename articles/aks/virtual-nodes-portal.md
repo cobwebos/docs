@@ -7,21 +7,21 @@ ms.topic: conceptual
 ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
-ms.openlocfilehash: fd538ce6821b35dc6e3932256090afdf70b4b232
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 4b9e9aeab6ed24dd2179f853def02ad194fe1b67
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755263"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681023"
 ---
-# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>预览-创建和配置在 Azure 门户中使用的虚拟节点的 Azure Kubernetes 服务 (AKS) 群集
+# <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>预览 - 创建 Azure Kubernetes 服务 (AKS) 群集并将其配置为使用 Azure 门户中的虚拟节点
 
 若要在 Azure Kubernetes 服务 (AKS) 群集中快速部署工作负荷，可以使用虚拟节点。 使用虚拟节点可快速预配 Pod，并且只需对其执行时间按秒付费。 在缩放方案中，无需等待 Kubernetes 群集自动缩放程序部署 VM 计算节点来运行其他 Pod。 本文介绍如何创建和配置虚拟网络资源以及启用了虚拟节点的 AKS 群集。
 
 > [!IMPORTANT]
-> AKS 预览版功能是自助服务和选择中。 预览版提供从我们的社区收集反馈和 bug。 但是，它们不受 Azure 技术支持。 如果创建群集，或将这些功能添加到现有群集，该群集是不受支持，直到此功能不再处于预览状态，为公开上市 (GA) 发布。
+> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
 >
-> 如果遇到问题的预览功能[打开在 AKS GitHub 存储库问题][ aks-github] bug 标题中的预览功能的名称。
+> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
 
 ## <a name="regional-availability"></a>区域可用性
 
@@ -32,6 +32,16 @@ ms.locfileid: "58755263"
 * 美国中西部 (westcentralus)
 * 西欧 (westeurope)
 * 美国西部 (westus)
+
+## <a name="known-limitations"></a>已知限制
+虚拟节点功能是很大程度取决于 ACI 的功能集。 尚不支持以下方案的虚拟节点
+
+* 使用服务主体来请求 ACR 映像。 [解决方法](https://github.com/virtual-kubelet/virtual-kubelet/blob/master/providers/azure/README.md#Private-registry)是使用[Kubernetes 机密](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line)
+* [虚拟网络限制](../container-instances/container-instances-vnet.md)包括 VNet 对等互连、 Kubernetes 网络策略和网络安全组与 internet 的出站流量。
+* Init 容器
+* [主机别名](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/)
+* [参数](../container-instances/container-instances-exec.md#restrictions)exec 在 ACI 中的
+* [Daemonset](concepts-clusters-workloads.md#statefulsets-and-daemonsets)将不将 pod 部署到虚拟节点
 
 ## <a name="sign-in-to-azure"></a>登录 Azure
 

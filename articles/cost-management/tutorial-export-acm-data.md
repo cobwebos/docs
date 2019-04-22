@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/13/2019
+ms.date: 04/10/2019
 ms.topic: tutorial
 ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
-ms.openlocfilehash: a0b50b86ca164199ca723354e39e194c6cd7423f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: df893683c387f8d694500ae1ace93a5a146ea352
+ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58014127"
+ms.lasthandoff: 04/11/2019
+ms.locfileid: "59496788"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>教程：创建和管理导出的数据
 
@@ -63,7 +63,7 @@ ms.locfileid: "58014127"
 
 ### <a name="export-schedule"></a>导出计划
 
-计划的导出受刚开始创建导出时的时间以及星期几的影响。 创建计划的导出以后，随后的每次导出都会在一天的同一时间运行。 例如，你创建了一个在每日下午 1:00 进行的导出。 下一次导出在第二天下午 1:00 运行。 当前时间以相同的方式影响所有其他的导出类型—它们始终在一天的同一时间运行，与刚开始创建导出时的运行时间一样。 在另一示例中，你创建一个在每周一下午 4:00 进行的导出。 下一次导出在下一个星期一的下午 4:00 运行。 导出的数据在运行导出后四小时内即可可用。
+计划的导出受刚开始创建导出时的时间以及星期几的影响。 创建计划的导出以后，随后的每次导出都会在一天的同一时间运行。 例如，你创建了一个在每日下午 1:00 进行的导出。 下一次导出在第二天下午 1:00 运行。 当前时间以相同的方式影响所有其他的导出类型—它们始终在一天的同一时间运行，与刚开始创建导出时的运行时间一样。 在另一示例中，你创建一个在每周一下午 4:00 进行的导出。 下一次导出在下一个星期一的下午 4:00 运行。 *导出的数据在运行导出后四小时内即可可用。*
 
 每次导出都会创建新文件，因此旧的导出不会被覆盖。
 
@@ -73,7 +73,11 @@ ms.locfileid: "58014127"
 
 **过去 7 天的每周导出成本** – 初始导出立即运行。 后续导出在每周的特定星期几运行，其时间与初始导出一样。 成本是过去七天的。
 
-**自定义** – 可以使用 week-to-date 和 month-to-date 选项计划每周和每月的导出。 初始导出会立即运行。
+**自定义** – 可以使用 week-to-date 和 month-to-date 选项计划每周和每月的导出。 *初始导出会立即运行。*
+
+如果有即用即付、MSDN 或 Visual Studio 订阅，则发票计费周期可能与日历月不一致。 对于这些类型的订阅和资源组，可以创建一个与发票周期或日历月一致的导出。 若要创建与发票月一致的导出，请导航到“自定义”，然后选择“计费周期至今”。  若要创建与日历月一致的导出，请选择“本月至今”。
+>
+>
 
 ![“新建导出 - 基本信息”选项卡，显示自定义的每周 week-to-date 选择](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
 
@@ -92,6 +96,7 @@ ms.locfileid: "58014127"
 该文件将通过设置为打开 CSV 文件扩展名的程序或应用程序打开。 下面是 Excel 中的一个示例。
 
 ![Excel 中显示的导出 CSV 数据示例](./media/tutorial-export-acm-data/example-export-data.png)
+
 
 ## <a name="access-exported-data-from-other-systems"></a>从其他系统访问导出的数据
 

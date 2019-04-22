@@ -9,10 +9,10 @@ ms.service: iot-industrialiot
 services: iot-industrialiot
 manager: philmea
 ms.openlocfilehash: 30eedd982fa0536ce45506c159de6d04132e9a14
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493979"
 ---
 # <a name="secure-the-communication-of-opc-client-and-opc-plc"></a>保护 OPC 客户端和 OPC PLC 的通信
@@ -47,7 +47,7 @@ OPC 保管库的脚本：
 docker-compose -f connecttest.yml up
 ```
 
-**验证**
+**确认**
 
 验证日志中有安装的第一个在没有证书。 此处 OPC PLC （类似显示 OPC 客户端注册） 的日志输出:...
 ```
@@ -92,7 +92,7 @@ opcclient-123456 | Opc.Ua.ServiceResultException: Certificate is not trusted.
     
 1. 转到[OPC 保管库网站](https://opcvault.azurewebsites.net/)。
 
-1. Select `Register New`
+1. 选择 `Register New`
 
 1. 从日志输出输入 OPC PLC 信息`CreateSigningRequest information`上相应的输入字段中的区域`Register New OPC UA Application`页上，选择`Server`为 ApplicationType。
 

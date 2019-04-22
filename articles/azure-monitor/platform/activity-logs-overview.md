@@ -9,10 +9,10 @@ ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
 ms.openlocfilehash: b84238e8a659358f2c065eb1533f0d21a5335d43
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496873"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
@@ -58,7 +58,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 
 
 * 在 **Azure 门户**中查询和查看活动日志。
-* [创建有关活动日志事件的警报。](../../azure-monitor/platform/activity-log-alerts.md)
+* [根据活动日志事件创建警报](../../azure-monitor/platform/activity-log-alerts.md)。
 * [到 Stream**事件中心**](../../azure-monitor/platform/activity-logs-stream-event-hubs.md) ，方便第三方服务或 Power BI 等自定义分析解决方案引入。
 * 在 Power BI 使用数据进行分析[ **Power BI 内容包**](https://powerbi.microsoft.com/documentation/powerbi-content-pack-azure-audit-logs/)。
 * [将活动日志保存到**存储帐户**进行存档或手动检查](../../azure-monitor/platform/archive-activity-log.md)。 可以使用“日志配置文件”指定保留时间（天）。
@@ -92,7 +92,7 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 **日志配置文件**控制如何导出活动日志。 可以使用日志配置文件配置：
 
 * 应将活动日志发送到何处：存储帐户或事件中心
-* 应发送哪些事件类别（写入、删除、操作）。 *日志配置文件和活动日志事件中的"类别"的含义是不同的。 在日志配置文件中，“类别”表示操作类型（写入、删除、操作）。 在活动日志事件"类别"属性表示源或类型的事件 （例如，管理、 ServiceHealth、 警报和详细信息）。*
+* 应发送哪些事件类别（写入、删除、操作）。 *日志配置文件中“类别”的含义与活动日志事件中不同。在日志配置文件中，“类别”表示操作类型（写入、删除、操作）。在活动日志事件中，“类别”属性表示事件的来源或类型（例如，管理、服务运行状况、警报，等等）。*
 * 应该导出哪些区域（位置）。 确保包含“全局”，因为活动日志中的事件多为全局事件。
 * 活动日志应当在存储帐户中保留多长时间。
     - 保留期为 0 天表示永久保留日志。 否则，值可以是任意数量的 1 至 365 天之间。
@@ -183,5 +183,5 @@ az monitor log-profiles delete --name <profile name>
 
 ## <a name="next-steps"></a>后续步骤
 
-* [了解有关活动日志 （以前称为审核日志） 的详细信息](../../azure-resource-manager/resource-group-audit.md)
+* [详细了解活动日志（以前称为审核日志）](../../azure-resource-manager/resource-group-audit.md)
 * [将 Azure 活动日志流式传输到事件中心](../../azure-monitor/platform/activity-logs-stream-event-hubs.md)

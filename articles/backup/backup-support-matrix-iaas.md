@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: raynew
 ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496089"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
@@ -28,7 +28,7 @@ ms.locfileid: "59496089"
 
 下面描述了使用 Azure 备份服务备份和还原 Azure VM 的方式。
 
-**场景** | **备份** | **代理** |**还原**
+**方案** | **备份** | **代理** |**Restore**
 --- | --- | --- | ---
 直接备份 Azure VM  | 备份整个虚拟机。  | 无需在 Azure VM 上安装代理。 Azure 备份安装和使用的扩展[Azure VM 代理](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-windows)在 VM 上运行。 | 按如下所述进行还原：<br/><br/> - **创建基本的 VM**。 这是很有用，如果 VM 不有多个 IP 地址等任何特殊配置。<br/><br/> - **还原 VM 磁盘**。 还原磁盘。 然后将其附加到现有 VM，或使用 PowerShell 从磁盘创建新的 VM。<br/><br/> - **替换 VM 磁盘**。 如果 VM 存在并使用托管磁盘（未加密），则你可以还原磁盘并使用它来替换 VM 上的现有磁盘。<br/><br/> - **还原特定的文件/文件夹**。 可以从 VM，而不是从整个 VM 还原文件/文件夹。
 Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。 | 安装[Azure 恢复服务代理](backup-azure-file-folder-backup-faq.md)。<br/><br/> 可将 MARS 代理与适用于 Azure VM 代理的备份扩展一同运行，以便在文件/文件夹级别备份 VM。 | 还原特定的文件夹/文件。
@@ -38,7 +38,7 @@ Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。
 
 ## <a name="supported-backup-actions"></a>支持的备份操作
 
-**操作** | **支持**
+**Action** | **支持**
 --- | ---
 创建 Windows Azure VM 时启用备份 | 支持：Windows Server 2019 （数据中心/数据中心核心）、 Windows Server 2016 （数据中心/数据中心核心）;Windows Server 2012 R2 数据中心;Windows Server 2008 R2 （RTM 和 SP1）
 创建 Linux VM 时启用备份 | 支持：<br/><br/> - Ubuntu Server：1710、1704、1604 (LTS)、1404 (LTS)<br/><br/> - Red Hat：RHEL 6.7、6.8、6.9、7.2、7.3、7.4<br/><br/> - SUSE Linux Enterprise Server：11 SP4，12 SP2，12 SP3，15 <br/><br/> - Debian：8、9<br/><br/> - CentOS：6.9、7.3<br/><br/> -Oracle Linux:6.7、6.8、6.9、7.2、7.3
@@ -59,7 +59,7 @@ Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。
 
 下表汇总了支持的操作系统，Windows Azure Vm 备份。
 
-**场景** | **OS 支持**
+**方案** | **OS 支持**
 --- | ---
 使用 Azure VM 代理扩展进行备份 | Windows 客户端：不支持<br/><br/> Windows Server 2019 （数据中心/数据中心核心）、 Windows Server 2016 （数据中心/数据中心核心）;Windows Server 2012 R2 数据中心;Windows Server 2008 R2 （RTM 和 SP1）
 使用 MARS 代理进行备份 | [支持](backup-support-matrix-mars-agent.md#support-for-direct-backups)的操作系统。
@@ -69,7 +69,7 @@ Azure Vm (仅 Windows) 的直接备份  | 备份特定的文件/文件夹/卷。
 
 下面是在需要备份 Linux 计算机的情况下的支持项目。
 
-**操作** | **支持**
+**Action** | **支持**
 --- | ---
 使用 Linux Azure VM 代理备份 Linux Azure VM | 文件一致性备份。<br/><br/> 使用[自定义脚本](backup-azure-linux-app-consistent.md)的应用一致性备份。<br/><br/> 还原过程中，可以创建新的 VM，还原磁盘并使用它来创建 VM，或还原磁盘并使用它来替换现有的 VM 上的磁盘。 还可以还原单个文件和文件夹。
 使用 MARS 代理备份 Linux Azure VM | 不支持。<br/><br/> MARS 代理只能安装在 Windows 计算机上。
@@ -100,7 +100,7 @@ DPM/MABS 磁盘上的恢复点数 | 对于文件服务器和应用程序服务�
 
 ## <a name="supported-restore-methods"></a>支持的还原方法
 
-**Restore 方法** | **详细信息**
+**还原方法** | **详细信息**
 --- | ---
 创建新 VM | 可以在还原过程中创建 VM。 <br/><br/> 此选项可以启动并运行一个基本的 VM。 可以指定 VM 名称、资源组、虚拟网络、子网和存储。  
 还原磁盘 | 可以还原磁盘并使用它来创建 VM。<br/><br/> 如果选择此选项，Azure 备份会将保管库中的数据复制到所选的存储帐户。 还原作业生成一个模板。 可以下载此模板，使用它来指定 VM 的自定义设置，并创建 VM。<br/><br/> 与前面用于创建 VM 的选项相比，使用此选项可以指定更多的设置。<br/><br/>
@@ -109,7 +109,7 @@ DPM/MABS 磁盘上的恢复点数 | 对于文件服务器和应用程序服务�
 
 ## <a name="support-for-file-level-restore"></a>文件级还原支持
 
-**还原** | **支持**
+**Restore** | **支持**
 --- | ---
 跨操作系统还原文件 | 可以在与备份的 VM 使用相同（或兼容）OS 的任何计算机上还原文件。 请参阅[兼容的 OS 表](backup-azure-restore-files-from-vm.md#system-requirements)。
 还原经典 VM 上的文件 | 不支持。
@@ -123,7 +123,7 @@ DPM/MABS 磁盘上的恢复点数 | 对于文件服务器和应用程序服务�
 
 下表汇总了在 VM 管理任务，例如添加或替换 VM 磁盘备份的支持。
 
-**还原** | **支持**
+**Restore** | **支持**
 --- | ---
 跨订阅/区域/局部区域还原。 | 不支持。
 还原到现有 VM | 使用“替换磁盘”选项。
@@ -154,7 +154,7 @@ VM 大小 |   至少有 2 个 CPU 核心和 1-GB RAM 的任意 Azure VM 大小�
 
 ## <a name="vm-storage-support"></a>VM 存储支持
 
-**组件** | **支持**
+组件 | **支持**
 --- | ---
 Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><br/> 最大支持 4 TB 的磁盘。
 数据磁盘大小 | 单个磁盘最大可以为 4095 GB。<br/><br/> 如果将保管库运行最新版本的 Azure 备份 （称为即时还原），磁盘大小，最多 4 TB 受支持。 [了解详细信息](backup-instant-restore-capability.md)。  
@@ -173,7 +173,7 @@ Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><
 
 ## <a name="vm-network-support"></a>VM 网络支持
 
-**组件** | **支持**
+组件 | **支持**
 --- | ---
 网络接口 (Nic) 数 | 特定 Azure VM 大小支持最大数量的 NIC。<br/><br/> NIC 是在还原过程中创建 VM 时创建的。<br/><br/> 已还原 VM 上的 NIC 数目与启用保护时 VM 上的 NIC 数目相同。 删除 Nic，在启用保护后不会影响该计数。
 内部/外部负载均衡器 |   。 <br/><br/> [详细了解](backup-azure-arm-restore-vms.md#restore-vms-with-special-configurations)如何还原使用特殊网络设置的 VM。

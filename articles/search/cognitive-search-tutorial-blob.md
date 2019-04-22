@@ -1,6 +1,6 @@
 ---
-title: 教程：在索引管道中调用认知服务 API - Azure 搜索
-description: 本教程通过一个例子逐步说明如何在 Azure 搜索索引中完成数据提取、自然语言和图像 AI 处理，以便基于 JSON Blob 实现数据提取和转换。
+title: 教程：在索引管道中调用认知服务 REST API - Azure 搜索
+description: 本教程通过一个例子逐步说明如何使用 Postman 和 REST API 在 Azure 搜索索引中完成数据提取、自然语言和图像 AI 处理，以便基于 JSON Blob 实现数据提取和转换。
 manager: pablocas
 author: luiscabrer
 services: search
@@ -10,14 +10,14 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: luisca
 ms.custom: seodec2018
-ms.openlocfilehash: 5fbcef1d8bc19df251a4d33cafa2fa7b5a7d9431
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: b6e3335ba78d29896c8a253ac710e6ec0da1829a
+ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59261915"
+ms.lasthandoff: 04/12/2019
+ms.locfileid: "59528367"
 ---
-# <a name="tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>教程：在 Azure 搜索索引管道中调用认知服务 API（预览版）
+# <a name="rest-tutorial-call-cognitive-services-apis-in-an-azure-search-indexing-pipeline-preview"></a>REST 教程：在 Azure 搜索索引管道中调用认知服务 API（预览版）
 
 本教程介绍使用认知技能在 Azure 搜索中扩充编程数据的机制。 技能由自然语言处理 (NLP) 和认知服务中的图像分析功能提供支持。 通过技能集组合和配置，可以提取图像或扫描的文档文件的文本和文本表示形式。 还可以检测语言、实体、关键短语等。 最终结果是 Azure 搜索索引中的丰富附加内容，由 AI 支持的索引编制管道创建。 
 
@@ -43,31 +43,37 @@ ms.locfileid: "59261915"
 
 ## <a name="prerequisites"></a>先决条件
 
+本教程使用了以下服务、工具和数据。 
+
 [创建 Azure 搜索服务](search-create-service-portal.md)或在当前订阅下[查找现有服务](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。 可在本教程中使用免费服务。
+
+[创建一个 Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)，用于存储示例数据。
 
 [Postman 桌面应用](https://www.getpostman.com/)用于对 Azure 搜索发出 REST 调用。
 
-### <a name="get-an-azure-search-api-key-and-endpoint"></a>获取 Azure 搜索 api-key 和终结点
+[示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)包括不同类型的小型文件集。 
+
+## <a name="get-a-key-and-url"></a>获取密钥和 URL
 
 REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服务是使用这二者创建的，因此，如果向订阅添加了 Azure 搜索，则请按以下步骤获取必需信息：
 
-1. 在 Azure 门户中的搜索服务“概述”页上，获取该 URL。 示例终结点可能类似于 `https://my-service-name.search.windows.net`。
+1. [登录到 Azure 门户](https://portal.azure.com/)，在搜索服务的“概述”页中获取 URL。 示例终结点可能类似于 `https://mydemo.search.windows.net`。
 
-2. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
+1. 在“设置” > “密钥”中，获取有关该服务的完全权限的管理员密钥。 有两个可交换的管理员密钥，为保证业务连续性而提供，以防需要滚动一个密钥。 可以在请求中使用主要或辅助密钥来添加、修改和删除对象。
 
 ![获取 HTTP 终结点和访问密钥](media/search-fiddler/get-url-key.png "Get an HTTP endpoint and access key")
 
 所有请求对发送到服务的每个请求都需要 API 密钥。 具有有效的密钥可以在发送请求的应用程序与处理请求的服务之间建立信任关系，这种信任关系以每个请求为基础。
 
-### <a name="set-up-azure-blob-service-and-load-sample-data"></a>设置 Azure Blob 服务并加载示例数据
+## <a name="prepare-sample-data"></a>准备示例数据
 
-扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 搜索索引器](search-indexer-overview.md)数据源类型。 请注意，认知搜索不支持 Azure 表存储。 本演练使用 Blob 存储来展示多种内容类型。
+扩充管道从 Azure 数据源提取数据。 源数据必须源自受支持的 [Azure 搜索索引器](search-indexer-overview.md)数据源类型。 Azure 表存储不支持认知搜索。 本演练使用 Blob 存储来展示多种内容类型。
 
-1. [下载示例数据](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4)，其中包括不同类型的小型文件集。 
+1. [登录到 Azure 门户](https://portal.azure.com)，导航到你的 Azure 存储帐户，单击“Blob”，然后单击“+ 容器”。
 
-1. [注册 Azure Blob 存储](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal)，创建存储帐户，打开 Blob 服务页并创建容器。 在 Azure 搜索所在的同一区域创建存储帐户。
+1. [创建一个 Blob 容器](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)用于包含示例数据。 可将“公共访问级别”设为任何有效值。
 
-1. 在创建的容器中，单击“上传”以上传在上一步中下载的示例文件。
+1. 创建容器后，请将其打开，在命令栏上选择“上传”，以上传在上一步骤中下载的示例文件。
 
    ![Azure Blob 存储中的源文件](./media/cognitive-search-quickstart-blob/sample-data.png)
 
@@ -81,11 +87,22 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 可通过其他方式指定连接字符串，例如，提供共享访问签名。 若要详细了解数据源凭据，请参阅[为 Azure Blob 存储编制索引](search-howto-indexing-azure-blob-storage.md#Credentials)。
 
+## <a name="set-up-postman"></a>设置 Postman
+
+启动 Postman 并设置 HTTP 请求。 如果不熟悉此工具，请参阅[使用 Postman 探索 Azure 搜索 REST API](search-fiddler.md) 了解详细信息。
+
+本教程中使用的请求方法是 **POST**、**PUT** 和 **GET**。 标头键是设置为“application/json”的“Content-type”，以及设置为 Azure 搜索服务管理密钥的“api-key”。 正文是调用的实际内容的放置位置。 
+
+  ![半结构化搜索](media/search-semi-structured-data/postmanoverview.png)
+
+我们将使用 Postman 向搜索服务发出四个 API 调用，以创建数据源、技能集、索引和索引器。 数据源包含指向存储帐户的指针以及 JSON 数据。 加载数据时，搜索服务会建立连接。
+
+
 ## <a name="create-a-data-source"></a>创建数据源
 
 准备好服务和源文件后，开始汇编索引管道的组件。 首先创建一个[数据源对象](https://docs.microsoft.com/rest/api/searchservice/create-data-source)，该对象告知 Azure 搜索如何检索外部源数据。
 
-本教程使用 REST API 以及一个可以构建和发送 HTTP 请求的工具，例如 PowerShell、Postman 或 Fiddler。 在请求标头中，提供创建 Azure 搜索服务时使用的服务名称，以及为搜索服务生成的 api-key。 在请求正文中，指定 Blob 容器名称和连接字符串。
+在请求标头中，提供创建 Azure 搜索服务时使用的服务名称，以及为搜索服务生成的 api-key。 在请求正文中，指定 Blob 容器名称和连接字符串。
 
 ### <a name="sample-request"></a>示例请求
 ```http
@@ -108,7 +125,7 @@ api-key: [admin key]
 ```
 发送请求。 Web 测试工具应返回状态代码 201，确认请求成功。 
 
-由于这是发出的第一个请求，请检查 Azure 门户，确认是否在 Azure 搜索中创建了数据源。 在搜索服务的仪表板页上，检查“数据源”磁贴中是否包含一个新项。 可能需要等待几分钟让门户页刷新。 
+由于这是发出的第一个请求，请检查 Azure 门户，确认是否在 Azure 搜索中创建了数据源。 在搜索服务的仪表板页上，检查“数据源”列表中是否包含一个新项。 可能需要等待几分钟让门户页刷新。 
 
   ![门户中的“数据源”磁贴](./media/cognitive-search-tutorial-blob/data-source-tile.png "门户中的“数据源”磁贴")
 
@@ -116,13 +133,13 @@ api-key: [admin key]
 
 ## <a name="create-a-skillset"></a>创建技能集
 
-此步骤定义一组要应用到数据的扩充步骤。 每个扩充步骤称为“技能”，一组扩充步骤称为“技能集”。 本教程对技能集使用以下[预定义的认知技能](cognitive-search-predefined-skills.md)：
+此步骤定义一组要应用到数据的扩充步骤。 每个扩充步骤称为“技能”，一组扩充步骤称为“技能集”。 本教程对技能集使用以下[内置认知技能](cognitive-search-predefined-skills.md)：
 
 + [语言检测](cognitive-search-skill-language-detection.md)：识别内容的语言。
 
 + [文本拆分](cognitive-search-skill-textsplit.md)：将大段内容拆分为较小区块，然后调用关键短语提取技能。 关键短语提取接受不超过 50,000 个字符的输入。 有几个示例文件需要拆分才能保留在此限制范围内。
 
-+ [命名实体识别](cognitive-search-skill-named-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
++ [实体识别](cognitive-search-skill-entity-recognition.md)：从 Blob 容器中的内容提取组织名称。
 
 + [关键短语提取](cognitive-search-skill-keyphrases.md)：取出最关键的短语。 
 
@@ -144,7 +161,7 @@ Content-Type: application/json
   "skills":
   [
     {
-      "@odata.type": "#Microsoft.Skills.Text.NamedEntityRecognitionSkill",
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
       "categories": [ "Organization" ],
       "defaultLanguageCode": "en",
       "inputs": [
@@ -217,7 +234,7 @@ Content-Type: application/json
 
 发送请求。 Web 测试工具应返回状态代码 201，确认请求成功。 
 
-#### <a name="about-the-request"></a>关于请求
+#### <a name="explore-the-request-body"></a>浏览请求正文
 
 注意对每个页面应用关键短语提取技能的方式。 将上下文设置为 ```"document/pages/*"```，对文档/页面数组的每个成员运行此扩充器（适用于文档中的每个页面）。
 
@@ -306,11 +323,13 @@ Content-Type: application/json
 
 ## <a name="create-an-indexer-map-fields-and-execute-transformations"></a>创建索引器，映射字段，并执行转换
 
-到目前为止，我们已创建数据源、技能集和索引。 这三个组件属于某个[索引器](search-indexer-overview.md)，该索引器将每个片段一同提取到单个多阶段操作。 若要在索引器中将这些组件捆绑在一起，必须定义字段映射。 字段映射是索引器定义的一部分，在提交请求时执行转换。
+到目前为止，我们已创建数据源、技能集和索引。 这三个组件属于某个[索引器](search-indexer-overview.md)，该索引器将每个片段一同提取到单个多阶段操作。 若要在索引器中将这些组件捆绑在一起，必须定义字段映射。 
 
-对于未扩充的索引，如果字段名称或数据类型不精确匹配，或者你要使用函数，则索引器定义会提供可选的 *fieldMappings* 节。
++ 先处理 fieldMapping，再处理技能集；将数据源中的源字段映射到索引中的目标字段。 如果两端的字段名称和类型相同，则无需映射。
 
-对于包含扩充管道的认知搜索工作负荷，索引器需要 *outputFieldMappings*。 当内部进程（扩充管道）是字段值的源时，将使用这些映射。 *outputFieldMappings* 特有的行为包括处理扩充过程中创建的复杂类型的能力（通过整形程序技能）。 此外，每个文档可能有许多元素（例如，文档中的多个组织）。 *outputFieldMappings* 构造可以指示系统将元素集合“平展”成单个记录。
++ 先处理技能集，再处理 outputFieldMapping；引用不存在的 sourceFieldName，直到文档破解或扩充功能创建了它们。 targetFieldName 是索引中的字段。
+
+除了将输入挂接到输出以外，还可以使用字段映射来平展数据结构。 有关详细信息，请参阅[如何将扩充字段映射到可搜索索引](cognitive-search-output-field-mapping.md)。
 
 ### <a name="sample-request"></a>示例请求
 
@@ -378,7 +397,7 @@ Content-Type: application/json
 > [!TIP]
 > 创建索引器会调用管道。 如果访问数据、映射输入和输出或操作顺序出现问题，此阶段会显示这些问题。 若要结合代码或脚本更改重新运行管道，可能需要先删除对象。 有关详细信息，请参阅[重置并重新运行](#reset)。
 
-### <a name="explore-the-request-body"></a>浏览请求正文
+#### <a name="explore-the-request-body"></a>浏览请求正文
 
 脚本将 ```"maxFailedItems"``` 设置为 -1，指示索引引擎在数据导入期间忽略错误。 此设置非常有用，因为演示数据源中的文档很少。 对于更大的数据源，请将值设置为大于 0。
 

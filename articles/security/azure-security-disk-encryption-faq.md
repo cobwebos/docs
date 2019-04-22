@@ -5,14 +5,14 @@ author: msmbaldwin
 ms.service: security
 ms.topic: article
 ms.author: mbaldwin
-ms.date: 04/05/2019
+ms.date: 04/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: d7ccf370ae2f3f9add2b73797e8938d4580d81dd
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.openlocfilehash: 2a5fb822a84792cec059aa6c78b66b3a628f25af
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59493138"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679272"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms-faq"></a>适用于 IaaS VM 的 Azure 磁盘加密常见问题解答
 
@@ -45,8 +45,9 @@ Azure 不认可的 Linux 服务器分发版不支持 Azure 磁盘加密，并且
 
 | Linux 分发版 | 版本 | 支持加密的卷类型|
 | --- | --- |--- |
+| Ubuntu | 18.04| OS 和数据磁盘 |
 | Ubuntu | 16.04| OS 和数据磁盘 |
-| Ubuntu | 14.04.5</br>[使用 Azure 优化内核更新为 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
+| Ubuntu | 14.04.5</br>[其 Azure 优化内核更新到 4.15 或更高版本](azure-security-disk-encryption-tsg.md#bkmk_Ubuntu14) | OS 和数据磁盘 |
 | RHEL | 7.6 | OS 和数据磁盘* |
 | RHEL | 7.5 | OS 和数据磁盘* |
 | RHEL | 7.4 | OS 和数据磁盘* |
@@ -171,5 +172,5 @@ Azure 备份提供了一种机制来备份和还原加密的 VM 的同一订阅�
 本文档详细描述了有关 Azure 磁盘加密的最常见问题。 有关此服务的详细信息，请参阅以下文章：
 
 - [Azure 磁盘加密概述](azure-security-disk-encryption-overview.md)
-- [在 Azure 安全中心中应用磁盘加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
-- [静态 azure 数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
+- [在 Azure 安全中心应用磁盘加密](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
+- [Azure 静态数据加密](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
