@@ -14,25 +14,25 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: b8c21b908ca9162a7e44c7af1e222babc6ee1eb7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265604"
 ---
 # <a name="your-profile-and-user-id-for-azure-notebooks"></a>用于 Azure Notebooks 的个人资料和用户 ID
 
 在 Azure Notebooks 强大的协作空间中，用户个人资料将向其他人提供公共图像：
 
-[![An Azure Notebooks 个人资料页](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
+[![Azure Notebooks 配置文件页](media/accounts/profile-page.png)](media/accounts/profile-page.png#lightbox)
 
 用于共享项目和笔记本的 URL 中包含用户 ID。 下表介绍了不同的 URL 模式：
 
-- `https://notebooks.azure.com/<user_id>`:个人资料页。
-- `https://notebooks.azure.com/<user_id>/projects`:项目。 你可查看所有项目；其他用户只能查看你的公共项目。
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>`:项目文件。
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`:特定项目的克隆。
-- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`:特定笔记本或文件的 HTML 预览。
+- `https://notebooks.azure.com/<user_id>`：个人资料页。
+- `https://notebooks.azure.com/<user_id>/projects`：项目。 你可查看所有项目；其他用户只能查看你的公共项目。
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>`：项目文件。
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/clones`：特定项目的克隆。
+- `https://notebooks.azure.com/<user_id>/projects/<project_id>/html/<notebook>.ipynb`：特定笔记本或文件的 HTML 预览。
 
 ## <a name="your-user-id"></a>用户 ID
 
@@ -69,4 +69,4 @@ ms.locfileid: "59265604"
 ## <a name="next-steps"></a>后续步骤  
 
 > [!div class="nextstepaction"]
-> [教程： 创建运行 Jupyter notebook 来执行线性回归](tutorial-create-run-jupyter-notebook.md)
+> [教程：创建并运行 Jupyter Notebook 以执行线性回归](tutorial-create-run-jupyter-notebook.md)

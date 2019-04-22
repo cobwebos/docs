@@ -11,10 +11,10 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: vamelech
 ms.openlocfilehash: 3531b43e6aee1eedef811e81e192873c5b5ed561
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274784"
 ---
 # <a name="ethereum-proof-of-authority-consortium"></a>Ethereum 权威证明联盟
@@ -220,7 +220,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 资源组|部署联盟网络的资源组。||NA
 位置|资源组的 Azure 区域。||NA
 
-如下所示的示例部署：![基本边栏选项卡](./media/ethereum-poa-deployment/basic-blade.png)
+示例部署如下所示：![基本边栏选项卡](./media/ethereum-poa-deployment/basic-blade.png)
 
 #### <a name="deployment-regions"></a>部署区域
 
@@ -237,7 +237,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
   第四个区域|部署联盟网络的第四个区域（仅在选择的区域数量为 4 时可见）|所有允许的 Azure 区域|NA
   第五个区域|部署联盟网络的第五个区域（仅在选择的区域数量为 5 时可见）|所有允许的 Azure 区域|NA
 
-如下所示的示例部署：![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
+示例部署如下所示：![部署区域](./media/ethereum-poa-deployment/deployment-regions.png)
 
 #### <a name="network-size-and-performance"></a>网络规模和性能
 
@@ -264,7 +264,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
   D2_v3|标准 SSD|中|中|中
   F16s|高级·SSD|高|高|低
 
-如下所示的示例部署：![网络大小和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
+示例部署如下所示：![网络大小和性能](./media/ethereum-poa-deployment/network-size-and-performance.png)
 
 #### <a name="ethereum-settings"></a>Ethereum 设置
 
@@ -283,7 +283,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 区块重新封装时间段（秒）|网络上没有事务时创建空区块的频率。 较高的频率将加快结束，但会增加存储成本。|任意数字|15
 事务权限协定（高级选项 = 启用）|事务权限协定的字节码。 将智能协定部署和执行的允许列表的以太坊帐户的限制。|协定字节码|NA
 
-如下所示的示例部署：![以太坊设置](./media/ethereum-poa-deployment/ethereum-settings.png)
+示例部署如下所示：![ethereum 设置](./media/ethereum-poa-deployment/ethereum-settings.png)
 
 #### <a name="monitoring"></a>监视
 
@@ -300,7 +300,7 @@ SSH 密钥（身份验证类型 = 公钥）|用于远程登录的安全 shell �
 现有 log analytics 主要密钥 (连接到现有的 Azure Monitor 日志 = 加入现有)|用于连接到现有的 Azure Monitor 日志实例的主要密钥||NA
 
 
-如下所示的示例部署： ![azure 监视器](./media/ethereum-poa-deployment/azure-monitor.png)
+示例部署如下所示：![azure monitor](./media/ethereum-poa-deployment/azure-monitor.png)
 
 #### <a name="summary"></a>摘要
 
@@ -760,7 +760,7 @@ Truffle 具有可用于调试智能合同的本地开发网络。 可在[此处]
 
 ## <a name="reference"></a>参考
 
-### <a name="faq"></a>常见问题
+### <a name="faq"></a>常见问题解答
 
 #### <a name="i-notice-there-are-many-transactions-on-the-network-that-i-didnt-send-where-are-these-coming-from"></a>我在网络上看到许多未发送的事务。 这些事务来自哪里？
 

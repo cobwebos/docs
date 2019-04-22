@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 10/12/2018
 ms.author: vturecek
 ms.openlocfilehash: 5a4b7514005da9e9a998dba014fa0ea6c014397a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268511"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric Reliable Services 中的 ASP.NET Core
@@ -134,7 +134,7 @@ protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceLis
 
 ### <a name="httpsys-in-a-stateful-service"></a>有状态服务中的 HttpSys
 
-`HttpSysCommunicationListener` 当前不设计用于有状态服务由于变得复杂的基础*http.sys*端口共享功能。 有关详细信息，请参阅以下关于 HttpSys 动态端口分配的部分。 对于有状态服务，建议使用 Kestrel Web 服务器。
+由于基本 *http.sys* 端口共享功能所具有的的复杂性，当前不能在有状态服务中使用 `HttpSysCommunicationListener`。 有关详细信息，请参阅以下关于 HttpSys 动态端口分配的部分。 对于有状态服务，建议使用 Kestrel Web 服务器。
 
 ### <a name="endpoint-configuration"></a>终结点配置
 

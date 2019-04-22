@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/08/2019
 ms.author: raynew
 ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361361"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery：常见问题解答 (FAQ)
@@ -186,8 +186,8 @@ Riverbed，我们的合作伙伴提供了有关如何使用 Azure Site Recovery 
 ### <a name="can-i-throttle-bandwidth-allotted-for-replication-traffic"></a>可以限制为复制流量所分配的带宽？
 是的。 你可以阅读更多有关限制带宽在这些文章中：
 
-* [复制 VMware Vm 和物理服务器容量规划](site-recovery-plan-capacity-vmware.md)
-* [容量规划的 HYPER-V Vm 复制到 Azure](site-recovery-capacity-planning-for-hyper-v-replication.md)
+* [复制 VMware VM 和物理服务器的容量规划](site-recovery-plan-capacity-vmware.md)
+* [将 Hyper-V VM 复制到 Azure 的容量规划](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
 
 
@@ -216,16 +216,16 @@ Azure 具有复原能力。 站点恢复已经能够故障转移到辅助 Azure 
 是，可以使用备用位置恢复从 Azure 故障回复到另一个主机。
 
 * [对于 VMware 虚拟机](concepts-types-of-failback.md#alternate-location-recovery-alr)
-* [对于 HYPER-V 虚拟机](hyper-v-azure-failback.md#perform-failback)
+* [针对 Hyper-V 虚拟机](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="automation"></a>自动化
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>是否可以使用 SDK 自动化 Site Recovery 方案？
 是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 当前支持的使用 PowerShell 部署站点恢复的方案：
 
-* [将 Vmm 云中的 HYPER-V Vm 复制到 Azure PowerShell 资源管理器](hyper-v-vmm-powershell-resource-manager.md)
-* [将不包含 VMM 的 HYPER-V Vm 复制到 Azure PowerShell 资源管理器](hyper-v-azure-powershell-resource-manager.md)
-* [将 VMware 复制到 Azure 中使用 PowerShell 资源管理器](vmware-azure-disaster-recovery-powershell.md)
+* [将 VMM 云中的 Hyper-V VM 复制到 Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
+* [将 Hyper-V VM 复制（不使用 VMM）到 Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)
+* [使用 PowerShell 资源管理器将 VMware 复制到 Azure](vmware-azure-disaster-recovery-powershell.md)
 
 ## <a name="componentprovider-upgrade"></a>组件/提供程序升级
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: glenga
 ms.openlocfilehash: 5d028768c062ef7df74d48f83ccc4e27a506f1ac
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270891"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>为 Azure Functions 中的函数应用自动执行资源部署
@@ -668,8 +668,8 @@ Linux 应用程序还应包括`linuxFxVersion`属性下的`siteConfig`。 如果
 
 深入了解如何开发和配置 Azure Functions。
 
-* [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
-* [如何配置 Azure function app 设置](functions-how-to-use-azure-function-app-settings.md)
+* [Azure Functions 开发人员参考](functions-reference.md)
+* [如何配置 Azure 函数应用设置](functions-how-to-use-azure-function-app-settings.md)
 * [创建第一个 Azure 函数](functions-create-first-azure-function.md)
 
 <!-- LINKS -->

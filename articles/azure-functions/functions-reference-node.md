@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 02/24/2019
 ms.author: glenga
 ms.openlocfilehash: 9ef7dd7603b93f6b15988cc4cca089f0486eb3b0
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010110"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript 开发人员指南
@@ -110,13 +110,13 @@ module.exports = async function (context, req) {
 
 ### <a name="inputs"></a>输入
 在 Azure Functions 中，输入分为两种类别：一种是触发器输入，另一种则是附加输入。 函数可通过三种方式读取触发器和其他输入绑定（`direction === "in"` 的绑定）：
- - **_[建议]_ 为参数传递给函数。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 *function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
+ - **_[建议]_ 以传递给函数的参数的形式。** 它们以与 function.json 中定义的顺序相同的顺序传递给函数。 *function.json* 中定义的 `name` 属性不需要与参数名称匹配，不过两者应该匹配。
  
    ```javascript
    module.exports = async function(context, myTrigger, myInput, myOtherInput) { ... };
    ```
    
- - **作为的成员[ `context.bindings` ](#contextbindings-property)对象。** 每个成员由 *function.json* 中定义的 `name` 属性命名。
+ - **以 [`context.bindings`](#contextbindings-property) 对象的成员的形式。** 每个成员由 *function.json* 中定义的 `name` 属性命名。
  
    ```javascript
    module.exports = async function(context) { 
@@ -126,7 +126,7 @@ module.exports = async function (context, req) {
    };
    ```
    
- - **作为输入使用 JavaScript [ `arguments` ](https://msdn.microsoft.com/library/87dw3w1k.aspx)对象。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
+ - **使用 JavaScript [`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) 对象以输入的形式。** 这实质上与作为参数传递输入相同，但可以动态处理输入。
  
    ```javascript
    module.exports = async function(context) { 
@@ -141,7 +141,7 @@ module.exports = async function (context, req) {
 
 可通过以下方式之一将数据分配到输出绑定（不要结合使用这些方法）：
 
-- **_[建议用于多个输出]_ 返回的对象。** 如果将异步/Promise 返回函数，可以返回具有分配的输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
+- **_[有多个输出时建议使用]_ 返回对象。** 如果将异步/Promise 返回函数，可以返回具有分配的输出数据的对象。 在以下示例中，*function.json* 中的输出绑定名为“httpResponse”和“queueOutput”。
 
   ```javascript
   module.exports = async function(context) {
@@ -156,7 +156,7 @@ module.exports = async function (context, req) {
   ```
 
   如果使用同步函数，可以使用 [`context.done`](#contextdone-method) 返回此对象（请参阅示例）。
-- **_[建议用于单个输出]_ 直接返回值和使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
+- **_[有单个输出时建议使用]_ 直接返回值，并使用 $return 绑定名称。** 这仅适用于异步函数/返回 Promise 的函数。 请参阅[导出异步函数](#exporting-an-async-function)中的示例。 
 - **向 `context.bindings` 赋值** 可以直接向 context.bindings 赋值。
 
   ```javascript
@@ -352,7 +352,7 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 一个包含请求正文的对象。               |
 | _headers_     | 一个包含请求标头的对象。                   |
-| _方法_      | 请求的 HTTP 方法。                                |
+| _method_      | 请求的 HTTP 方法。                                |
 | _originalUrl_ | 请求的 URL。                                        |
 | _params_      | 一个包含请求的路由参数的对象。 |
 | _query_       | 一个包含查询参数的对象。                  |
@@ -395,9 +395,9 @@ HTTP 和 webhook 触发器以及 HTTP 输出绑定使用请求和响应对象来
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
-+ **[仅响应] 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 隐式调用。
++ **_[仅响应]_ 通过调用 `context.res.send(body?: any)`。** 创建 HTTP 响应时使用输入 `body` 作为响应正文。 `context.done()` 是隐式调用的。
 
-+ **[仅响应] 通过调用 `context.done()`。** 有一种特殊的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
++ **_[仅响应]_ 通过调用 `context.done()`。** 有一种特殊的 HTTP 绑定可返回传递到 `context.done()` 方法的响应。 以下 HTTP 输出绑定定义了一个 `$return` 输出参数：
 
     ```json
     {
@@ -494,7 +494,7 @@ function GetEnvironmentVariable(name)
 
 默认情况下通过 `index.js`（与其对应的 `function.json` 共享相同父目录的文件）执行 JavaScript 函数。
 
-`scriptFile` 可用于获取文件夹结构，如以下示例所示：
+`scriptFile` 可用于获取以下示例所示的文件夹结构：
 
 ```
 FunctionApp
@@ -624,8 +624,8 @@ Azure Functions 应用程序中使用特定于服务的客户端时，不创建�
 
 有关详细信息，请参阅以下资源：
 
-+ [Azure Functions 最佳做法](functions-best-practices.md)
-+ [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
++ [Azure Functions 最佳实践](functions-best-practices.md)
++ [Azure Functions 开发人员参考](functions-reference.md)
 + [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
 
-[func azure functionapp 发布]: functions-run-local.md#project-file-deployment
+[`func azure functionapp publish`]: functions-run-local.md#project-file-deployment

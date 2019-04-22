@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sasubram
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e5a8d46f67553cc10bd9cdb31cf64511858948f
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046489"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Azure Active Directory B2B 协作邀请兑换
@@ -65,5 +65,5 @@ ms.locfileid: "59046489"
 - [什么是 Azure AD B2B 协作？](what-is-b2b.md)
 - [在 Azure 门户中添加 Azure Active Directory B2B 协作用户](add-users-administrator.md)
 - [信息工作者如何将 B2B 协作用户添加到 Azure Active Directory？](add-users-information-worker.md)
-- [使用 PowerShell 将 Azure Active Directory B2B 协作用户添加](customize-invitation-api.md#powershell)
+- [使用 PowerShell 添加 Azure Active Directory B2B 协作用户](customize-invitation-api.md#powershell)
 - [以来宾用户身份离开组织](leave-the-organization.md)

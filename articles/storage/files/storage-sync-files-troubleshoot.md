@@ -9,10 +9,10 @@ ms.date: 01/31/2019
 ms.author: jeffpatt
 ms.subservice: files
 ms.openlocfilehash: 328edac78624c192ee139c40fe0ed1853423c639
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051362"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>对 Azure 文件同步进行故障排除
@@ -107,7 +107,7 @@ Reset-StorageSyncServer
 <a id="server-endpoint-createjobfailed"></a>**服务器终结点创建失败，并出现以下错误：“MgmtServerJobFailed”（错误代码：-2134375898）**  
 如果服务器终结点路径位于系统卷上并启用了云分层，则会出现此问题。 系统卷上不支持云分层。 要在系统卷上创建服务器终结点，请在创建服务器终结点时禁用云分层。
 
-<a id="server-endpoint-deletejobexpired"></a>**服务器终结点删除失败，并出现以下错误："MgmtServerJobExpired"**                
+<a id="server-endpoint-deletejobexpired"></a>**服务器终结点删除失败，并出现以下错误：“MgmtServerJobExpired”**                
 如果服务器处于脱机状态或无网络连接，则会出现此问题。 如果服务器不再可用，请在门户中注销要删除服务器终结点的服务器。 要删除服务器终结点，请按照[使用 Azure 文件同步注销服务器](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)中所述的步骤操作。
 
 <a id="server-endpoint-provisioningfailed"></a>**无法打开服务器终结点属性页或更新云分层策略**  
@@ -164,12 +164,12 @@ Set-AzStorageSyncServerEndpoint `
 如果创建云终结点并使用包含数据的 Azure 文件共享，则可能会出现此问题。 在云与服务器终结点之间同步文件之前，扫描 Azure 文件共享中的更改的更改枚举作业必须已完成。 完成该作业所需的时间取决于 Azure 文件共享中命名空间的大小。 更改枚举作业完成后，服务器终结点运行状况应会更新。
 
 ### <a id="broken-sync"></a>如何监视同步运行状况？
-# [<a name="portal"></a>门户](#tab/portal1)
+# <a name="portaltabportal1"></a>[门户](#tab/portal1)
 在每个同步组中，可以向下钻取到单个服务器终结点，以查看最后几个已完成的同步会话的状态。 如果出现绿色的“运行状况”列，并且“文件未同步”的值为 0，则表示同步按预期工作。 否则，请参阅下面的常见同步错误列表，以及文件不同步问题的处理方法。 
 
 ![Azure 门户的屏幕截图](media/storage-sync-files-troubleshoot/portal-sync-health.png)
 
-# [<a name="server"></a>服务器](#tab/server)
+# <a name="servertabserver"></a>[服务器](#tab/server)
 转到服务器的遥测日志（可在事件查看器中通过 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry` 找到）。 事件 9102 对应于已完成的同步会话；有关最新同步状态，请查找 ID 为 9102 的最新事件。 SyncDirection 会告知此会话是上传还是下载。 如果 HResult 为 0，则表示同步会话已成功。 如果 HResult 不为 0，则表示同步期间出错；有关常见错误的列表，请参阅下文。 如果 PerItemErrorCount 大于 0，则表示某些文件或文件夹未正确同步。 有可能 HResult 为 0，但 PerItemErrorCount 大于 0。
 
 下面是成功上传的示例。 为简洁起见，下面只列出了每个 9102 事件中包含的某些值。 
@@ -201,10 +201,10 @@ TransferredFiles: 0, TransferredBytes: 0, FailedToTransferFiles: 0, FailedToTran
 ---
 
 ### <a name="how-do-i-monitor-the-progress-of-a-current-sync-session"></a>如何监视当前同步会话的进度？
-# [<a name="portal"></a>门户](#tab/portal1)
+# <a name="portaltabportal1"></a>[门户](#tab/portal1)
 在同步组中，转到有问题的服务器终结点，并在“同步活动”部分查看当前同步会话中已上传或下载的文件计数。 请注意，此状态会延迟大约 5 分钟，如果同步会话足够小，可在此时间段内完成，则可能不会在门户中报告此会话。 
 
-# [<a name="server"></a>服务器](#tab/server)
+# <a name="servertabserver"></a>[服务器](#tab/server)
 在服务器上的遥测日志中查看最近的 9302 事件（在事件查看器中，转到“应用程序和服务日志\Microsoft\FileSync\Agent\Telemetry”）。 此事件指示当前同步会话的状态。 TotalItemCount 表示要同步多少个文件，AppliedItemCount 表示到目前为止已同步的文件数，PerItemErrorCount 表示同步失败的文件数（请参阅下文了解如何处理此问题）。
 
 ```
@@ -219,14 +219,14 @@ PerItemErrorCount: 1006.
 ---
 
 ### <a name="how-do-i-know-if-my-servers-are-in-sync-with-each-other"></a>如何知道我的服务器是否已彼此同步？
-# [<a name="portal"></a>门户](#tab/portal1)
+# <a name="portaltabportal1"></a>[门户](#tab/portal1)
 对于给定同步组中的每个服务器，请确保：
 - 上传和下载会话的“上次尝试同步”时间戳是最近的时间。
 - 上传和下载会话的状态为绿色。
 - “同步活动”字段显示的要同步的剩余文件数很少或者为零。
 - 上传和下载会话的“文件未同步”字段值为 0。
 
-# [<a name="server"></a>服务器](#tab/server)
+# <a name="servertabserver"></a>[服务器](#tab/server)
 查看由每个服务器的遥测事件日志中的 9102 事件标记的已完成同步会话（在事件查看器中，转到 `Applications and Services Logs\Microsoft\FileSync\Agent\Telemetry`）。 
 
 1. 在任何给定的服务器上，需要确保最近的上传和下载会话已成功完成。 为此，请检查上传和下载操作的 HResult 与 PerItemErrorCount 是否为 0（SyncDirection 字段会指示给定的会话是上传还下载会话）。 请注意，如果未看到最近完成的同步会话，原因有可能是同步会话当前正在进行；如果刚刚添加或修改了大量数据，则这种情况符合预期。
@@ -243,7 +243,7 @@ PerItemErrorCount: 1006.
 若要查看这些错误，请运行 **FileSyncErrorsReport.ps1** PowerShell 脚本（位于 Azure 文件同步代理的代理安装目录中），以识别由于包含开放句柄、不支持的字符或存在其他问题而未能同步的文件。 ItemPath 字段告知相对于根同步目录的文件位置。 请参阅以下常见同步错误列表获取补救步骤。
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>根据文件/目录同步错误进行故障排除
-**ItemResults 日志-每个项同步错误**  
+**ItemResults 日志 - 按项列出的同步错误**  
 
 | HRESULT | HRESULT（十进制） | 错误字符串 | 问题 | 补救 |
 |---------|-------------------|--------------|-------|-------------|
@@ -278,7 +278,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x800704c7 |
 | **HRESULT（十进制）** | -2147023673 | 
 | **错误字符串** | ERROR_CANCELLED |
-| **所需的修正** | 否 |
+| **所需的补救措施** | 否 |
 
 同步会话可能出于各种原因失败，包括服务器正在重启或更新、VSS 快照，等等。尽管此错误看起来需要保持跟进，但可以放心地将其忽略，除非它持续了好几个小时。
 
@@ -289,7 +289,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80072ee7 |
 | **HRESULT（十进制）** | -2147012889 | 
 | **错误字符串** | WININET_E_NAME_NOT_RESOLVED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -300,7 +300,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8004c |
 | **HRESULT（十进制）** | -2134376372 |
 | **错误字符串** | ECS_E_USER_REQUEST_THROTTLED |
-| **所需的修正** | 否 |
+| **所需的补救措施** | 否 |
 
 无需采取措施；服务器会重试。 如果此错误持续了几个小时，请创建支持请求。
 
@@ -311,14 +311,14 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8305f |
 | **HRESULT（十进制）** | -2134364065 |
 | **错误字符串** | ECS_E_CANNOT_ACCESS_EXTERNAL_STORAGE_ACCOUNT |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 之所以发生此错误，是因为 Azure 文件同步代理无法访问 Azure 文件共享。无法访问的可能原因是 Azure 文件共享或托管它的存储帐户不再存在。 可以执行以下步骤来排查此错误：
 
-1. [验证存储帐户存在。](#troubleshoot-storage-account)
-2. [检查以确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
-3. [请确保 Azure 文件共享存在。](#troubleshoot-azure-file-share)
-4. [请确保 Azure 文件同步有权访问存储帐户。](#troubleshoot-rbac)
+1. [验证存储帐户是否存在。](#troubleshoot-storage-account)
+2. [检查并确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
+3. [确保 Azure 文件共享存在。](#troubleshoot-azure-file-share)
+4. [确保 Azure 文件同步有权访问存储帐户。](#troubleshoot-rbac)
 
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**无法解析所用的存储帐户名。**  
 
@@ -327,15 +327,15 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C83060 |
 | **HRESULT（十进制）** | -2134364064 |
 | **错误字符串** | ECS_E_STORAGE_ACCOUNT_NAME_UNRESOLVED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 1. 检查是否可从服务器解析存储 DNS 名称。
 
     ```powershell
     Test-NetConnection -ComputerName <storage-account-name>.file.core.windows.net -Port 443
     ```
-2. [验证存储帐户存在。](#troubleshoot-storage-account)
-3. [检查以确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
+2. [验证存储帐户是否存在。](#troubleshoot-storage-account)
+3. [检查并确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
 
 <a id="-1906441138"></a>**由于同步数据库出现问题，同步失败。**  
 
@@ -344,7 +344,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x8e5e044e |
 | **HRESULT（十进制）** | -1906441138 |
 | **错误字符串** | JET_errWriteConflict |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 如果 Azure 文件同步使用的内部数据库出现问题，则会发生此错误。出现此问题时，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 
@@ -355,7 +355,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C8306B |
 | **HRESULT（十进制）** | -2134364053 |
 | **错误字符串** | ECS_E_AGENT_VERSION_BLOCKED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 如果服务器上安装的 Azure 文件同步代理版本不受支持，则会出现此错误。 若要解决此问题，请[升级]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#upgrade-paths)到[受支持的代理版本]( https://docs.microsoft.com/azure/storage/files/storage-files-release-notes#supported-versions)。
 
@@ -366,7 +366,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8603e |
 | **HRESULT（十进制）** | -2134351810 |
 | **错误字符串** | ECS_E_AZURE_STORAGE_SHARE_SIZE_LIMIT_REACHED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 达到 Azure 文件共享存储限制时，将发生此错误。如果对 Azure 文件共享应用了配额，或者用量超过了 Azure 文件共享的限制，则可能会发生这种情况。 有关详细信息，请参阅 [Azure 文件共享的当前限制](storage-files-scale-targets.md)。
 
@@ -392,12 +392,12 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c86030 |
 | **HRESULT（十进制）** | -2134351824 |
 | **错误字符串** | ECS_E_AZURE_FILE_SHARE_NOT_FOUND |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 当 Azure 文件共享不可访问时，将发生此错误。 故障排除：
 
-1. [验证存储帐户存在。](#troubleshoot-storage-account)
-2. [请确保 Azure 文件共享存在。](#troubleshoot-azure-file-share)
+1. [验证存储帐户是否存在。](#troubleshoot-storage-account)
+2. [确保 Azure 文件共享存在。](#troubleshoot-azure-file-share)
 
 如果 Azure 文件共享已删除，则需要创建新的文件共享，然后重新创建同步组。 
 
@@ -408,7 +408,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C83076 |
 | **HRESULT（十进制）** | -2134364042 |
 | **错误字符串** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 当 Azure 订阅暂停时，将发生此错误。 还原 Azure 订阅后，会重新启用同步。 有关详细信息，请参阅[为何禁用我的 Azure 订阅？如何重新激活它？](../../billing/billing-subscription-become-disable.md)。
 
@@ -419,12 +419,12 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8306c |
 | **HRESULT（十进制）** | -2134364052 |
 | **错误字符串** | ECS_E_MGMT_STORAGEACLSNOTSUPPORTED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 如果由于设置了存储帐户防火墙或者存储帐户属于虚拟网络而导致 Azure 文件共享不可访问，则会发生此错误。 Azure 文件同步尚不支持此功能。 故障排除：
 
-1. [验证存储帐户存在。](#troubleshoot-storage-account)
-2. [检查以确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
+1. [验证存储帐户是否存在。](#troubleshoot-storage-account)
+2. [检查并确保存储帐户不包含任何网络规则。](#troubleshoot-network-rules)
 
 删除这些规则即可解决此问题。 
 
@@ -435,7 +435,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c80219 |
 | **HRESULT（十进制）** | -2134375911 |
 | **错误字符串** | ECS_E_SYNC_METADATA_WRITE_LOCK_TIMEOUT |
-| **所需的修正** | 否 |
+| **所需的补救措施** | 否 |
 
 此错误通常会自行解决，其原因包括：
 
@@ -451,7 +451,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x800b0109 |
 | **HRESULT（十进制）** | -2146762487 |
 | **错误字符串** | CERT_E_UNTRUSTEDROOT |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 如果组织使用 SSL 终止代理，或恶意实体正在截获服务器与 Azure 文件同步服务之间的通信，则会发生此错误。 如果确定这是预期行为（因为组织使用 SSL 终止代理），请跳过证书验证并改用注册表覆盖。
 
@@ -476,7 +476,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80072ee2 |
 | **HRESULT（十进制）** | -2147012894 |
 | **错误字符串** | WININET_E_TIMEOUT |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 [!INCLUDE [storage-sync-files-bad-connection](../../../includes/storage-sync-files-bad-connection.md)]
 
@@ -487,7 +487,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c80300 |
 | **HRESULT（十进制）** | -2134375680 |
 | **错误字符串** | ECS_E_SERVER_CREDENTIAL_NEEDED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 此错误可由以下原因引起：
 
@@ -516,12 +516,12 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x8e5e0211 |
 | **HRESULT（十进制）** | -1906441711 |
 | **错误字符串** | JET_errLogDiskFull |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c8031a |
 | **HRESULT（十进制）** | -2134375654 |
 | **错误字符串** | ECS_E_NOT_ENOUGH_LOCAL_STORAGE |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 此错误的原因是卷已填满。 此错误的常见原因是服务器终结点外部的文件用尽了卷上的空间。 请通过添加更多的服务器终结点、将文件移到其他卷，或增大服务器终结点所在卷的大小，来释放卷上的空间。
 
@@ -532,7 +532,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8300f |
 | **HRESULT（十进制）** | -2134364145 |
 | **错误字符串** | ECS_E_REPLICA_NOT_READY |
-| **所需的修正** | 否 |
+| **所需的补救措施** | 否 |
 
 此错误的原因是 Azure 文件共享上发生直接更改，并且更改检测正在进行。 更改检测完成后，将开始同步。
 
@@ -545,17 +545,17 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8023b |
 | **HRESULT（十进制）** | -2134364145 |
 | **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_SOFT_LIMIT_REACHED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c8021c |
 | **HRESULT（十进制）** | -2134375908 |
 | **错误字符串** | ECS_E_SYNC_METADATA_KNOWLEDGE_LIMIT_REACHED |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 | | |
 | **HRESULT** | 0x80c80253 |
 | **HRESULT（十进制）** | -2134375853 |
 | **错误字符串** | ECS_E_TOO_MANY_PER_ITEM_ERRORS |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 如果发生许多的文件同步错误，同步会话可能无法开始。 <!-- To troubleshoot this state, see [Troubleshooting per file/directory sync errors]().-->
 
@@ -569,7 +569,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c80019 |
 | **HRESULT（十进制）** | -2134376423 |
 | **错误字符串** | ECS_E_SYNC_INVALID_PATH |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 确保路径存在、位于本地 NTFS 卷上，且不是重新分析点或现有服务器终结点。
 
@@ -580,7 +580,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80C80277 |
 | **HRESULT（十进制）** | -2134375817 |
 | **错误字符串** | ECS_E_INCOMPATIBLE_FILTER_VERSION |
-| **所需的修正** | 是 |
+| **所需的补救措施** | 是 |
 
 发生此错误的原因是加载的云分层筛选器驱动程序 (StorageSync.sys) 版本与 Storage Sync Agent (FileSyncSvc) 服务不兼容。 如果已升级 Azure 文件同步代理，请重启服务器以完成安装。 如果错误继续发生，请卸载代理，重启服务器并重新安装 Azure 文件同步代理。
 
@@ -591,7 +591,7 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8004b |
 | **HRESULT（十进制）** | -2134376373 |
 | **错误字符串** | ECS_E_SERVICE_UNAVAILABLE |
-| **所需的修正** | 否 |
+| **所需的补救措施** | 否 |
 
 此错误的原因是 Azure 文件同步服务不可用。 当 Azure 文件同步服务再次可用时，此错误将自行解决。
 
@@ -602,20 +602,20 @@ PerItemErrorCount: 1006.
 | **HRESULT** | 0x80c8020e |
 | **HRESULT（十进制）** | -2134375922 |
 | **错误字符串** | ECS_E_SYNC_METADATA_WRITE_LEASE_LOST |
-| **所需的修正** | 否 |
+| **所需的补救措施** | 否 |
 
 此错误的原因是同步数据库出现内部问题。 当 Azure 文件同步重试同步时，此错误将自行解决。 如果此错误持续了较长时间，请创建支持请求，到时我们将与你取得联系，并帮助解决此问题。
 
 ### <a name="common-troubleshooting-steps"></a>常见故障排除步骤
 <a id="troubleshoot-storage-account"></a>**验证存储帐户是否存在。**  
-# [<a name="portal"></a>门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 1. 导航到存储同步服务中的同步组。
 2. 选择同步组中的云终结点。
 3. 记下打开的窗格中的 Azure 文件共享名称。
 4. 选择链接的存储帐户。 如果此链接不起作用，则表示引用的存储帐户已删除。
     ![显示云终结点详细信息窗格（包含存储帐户的链接）的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-1.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 # Variables for you to populate based on your configuration
 $agentPath = "C:\Program Files\Azure\StorageSyncAgent"
@@ -713,12 +713,12 @@ if ($storageAccount -eq $null) {
 ---
 
 <a id="troubleshoot-network-rules"></a>**检查并确保存储帐户不包含任何网络规则。**  
-# [<a name="portal"></a>门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 1. 进入存储帐户后，在存储帐户的左侧选择“防火墙和虚拟网络”。
 2. 在存储帐户中，“允许来自所有网络的访问”单选按钮应已选中。
-    ![屏幕截图显示禁用的存储帐户防火墙和网络规则。](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
+    ![显示已禁用存储帐户防火墙和网络规则的屏幕截图。](media/storage-sync-files-troubleshoot/file-share-inaccessible-2.png)
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 if ($storageAccount.NetworkRuleSet.DefaultAction -ne 
     [Microsoft.Azure.Commands.Management.Storage.Models.PSNetWorkRuleDefaultActionEnum]::Allow) {
@@ -729,12 +729,12 @@ if ($storageAccount.NetworkRuleSet.DefaultAction -ne
 ---
 
 <a id="troubleshoot-azure-file-share"></a>**确保 Azure 文件共享存在。**  
-# [<a name="portal"></a>门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 1. 在左侧目录中单击“概述”，返回存储帐户主页。
 2. 选择“文件”查看文件共享列表。
 3. 检查云终结点引用的文件共享是否显示在文件共享列表中（在上述步骤 1 中应已记下此共享名称）。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell
 $fileShare = Get-AzStorageShare -Context $storageAccount.Context | Where-Object {
     $_.Name -eq $cloudEndpoint.StorageAccountShareName -and
@@ -748,7 +748,7 @@ if ($fileShare -eq $null) {
 ---
 
 <a id="troubleshoot-rbac"></a>**确保 Azure 文件同步有权访问存储帐户。**  
-# [<a name="portal"></a>门户](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[门户](#tab/azure-portal)
 1. 在左侧的目录上单击“访问控制(IAM)”。
 1. 单击“角色分配”选项卡以列出有权访问你的存储帐户的用户和应用程序（*服务主体*）。
 1. 检查“混合文件同步服务”是否与“读取器和数据访问”角色一起显示在列表中。 
@@ -761,7 +761,7 @@ if ($fileShare -eq $null) {
     - 在“角色”字段中，选择“读者和数据访问”。
     - 在“选择”字段中，键入“混合文件同步服务”，选择角色并单击“保存”。
 
-# [<a name="powershell"></a>PowerShell](#tab/azure-powershell)
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
 $foundSyncPrincipal = $false
 Get-AzRoleAssignment -Scope $storageAccount.Id | ForEach-Object { 

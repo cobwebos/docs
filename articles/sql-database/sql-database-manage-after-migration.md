@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358419"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中单一和共用数据库
@@ -88,7 +88,7 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 
 不支持传统的 Windows 身份验证。 Azure Active Directory (AD) 是集中式标识和访问管理服务。 通过此服务可非常方便地为组织中的所有人员提供单一登录访问 (SSO)。 这意味着，所有 Azure 服务共享凭据，身份验证更容易。 AAD 支持 [MFA（多重身份验证）](sql-database-ssms-mfa-authentication.md)，只需[单击几次](../active-directory/hybrid/how-to-connect-install-express.md)，AAD 就可与 Windows Server Active Directory 集成。 SQL 身份验证的工作方式与之前完全相同。 提供用户名/密码后，即可对给定 SQL 数据库服务器上任何数据库的用户进行身份验证。 此外，还允许 SQL 数据库和 SQL 数据仓库在 Azure AD 域中提供多重身份验证和来宾用户帐户。 如果你已经有一个本地 Active Directory，则可以将该目录与 Azure Active Directory 联合在一起，以将目录扩展到 Azure。
 
-|**如果您...**|**SQL 数据库 /azure SQL 数据仓库**|
+|**如果你...**|**SQL 数据库/SQL 数据仓库**|
 |---|---|
 |不想在 Azure 中使用 Azure Active Directory (AD)|使用 [SQL 身份验证](sql-database-security-overview.md)|
 |在本地 SQL Server 上使用 AD|[将 AD 与 Azure AD 联合](../active-directory/hybrid/whatis-hybrid-identity.md)，并使用 Azure AD 身份验证。 借此，你可以使用单一登录。|
@@ -149,12 +149,12 @@ SQL 数据库中提供了[两种身份验证方法](sql-database-control-access.
 在 SQL 数据库中，存储子系统上数据和日志文件中的静态数据在默认情况下始终全部通过[透明数据加密 [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) 进行加密。 备份也进行了加密。 使用 TDE 时，访问这些数据的应用程序不需要进行任何更改。 加密和解密均以透明方式进行；因而得名“透明数据加密”。
 为了保护传输中的和静态的敏感数据，SQL 数据库提供了一个名为 [Always Encrypted (AE)](/sql/relational-databases/security/encryption/always-encrypted-database-engine) 的功能。 AE 是客户端加密的一种形式，它对数据库中的敏感列进行加密（因此，它们位于数据库管理员和未授权用户的已加密文本中）。 服务器会首先收到加密数据。 Always Encrypted 的密钥也存储在客户端，因此只有授权的客户端可以解密敏感列。 服务器和数据管理员无法看到敏感数据，因为加密密钥存储在客户端上。 AE 对表中的敏感列进行端到端加密，以防未经授权的客户端和物理磁盘对其进行访问。 AE 目前支持等式比较，因此数据库管理员可以继续查询加密列，这是其 SQL 命令的一部分。 Always Encrypted 可以与各种密钥存储选项结合使用，如 [Azure Key Vault](sql-database-always-encrypted-azure-key-vault.md)、Windows 证书存储和本地硬件安全模块。
 
-|**特征**|**始终加密**|**透明数据加密**|
+|**特征**|**Always Encrypted**|**透明数据加密**|
 |---|---|---|
 |**加密范围**|端到端|静态数据|
-|**数据库服务器可以访问敏感数据**|否|是，因为加密针对的是静态数据|
+|**数据库服务器可访问敏感数据**|否|是，因为加密针对的是静态数据|
 |**允许的 T-SQL 的操作**|相等性比较|所有 T-SQL 的外围应用都可用|
-|**若要使用的功能所需的应用程序更改**|轻微|很少|
+|**使用该功能所需的应用更改**|轻微|很少|
 |**加密粒度**|列级|数据库级|
 ||||
 
@@ -196,13 +196,13 @@ Always Encrypted 中还有[两个密钥层次结构](/sql/relational-databases/s
 组织和 SQL 数据库间的网络流量通常会通过公共网络进行路由。 但若要选择优化此路径并使其更安全，则可查看 Express Route。 Express Route 实质上是通过专用连接将公司网络扩展到 Azure 平台。 这样就不会浏览公共 Internet。 而且还可以提高安全性、可靠性并优化路由，相比浏览公共 Internet，降低了网络延迟并提高了速度。 如果计划在组织和 Azure 间传输大量数据，使用 Express Route 可提高成本效益。 从组织连接到 Azure 时，有三种不同连接模型可供选择：
 
 - [云交换归置](../expressroute/expressroute-connectivity-models.md#CloudExchange)
-- [任意到任意](../expressroute/expressroute-connectivity-models.md#IPVPN)
-- [Point-to-Point](../expressroute/expressroute-connectivity-models.md#Ethernet)
+- [任意位置到任意位置](../expressroute/expressroute-connectivity-models.md#IPVPN)
+- [点到点](../expressroute/expressroute-connectivity-models.md#Ethernet)
 
 Express Route 还允许激增高达 2 倍的带宽限制，无需额外付费。 还可以使用 Express Route 来配置跨区域连接。 若要查看 ER 连接提供商列表，请参阅：[Express Route 合作伙伴和对等互连位置](../expressroute/expressroute-locations.md)。 以下文章详细介绍了 Express Route：
 
 - [Express Route 简介](../expressroute/expressroute-introduction.md)
-- [必备组件](../expressroute/expressroute-prerequisites.md)
+- [先决条件](../expressroute/expressroute-prerequisites.md)
 - [工作流](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>SQL 数据库是否符合任何规章要求，这对我组织的符合性有什么帮助

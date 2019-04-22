@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 4af86025e714c65d0ae225b271a2d0970bb96ee8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281635"
 ---
 # <a name="azure-notification-hubs---diagnose-dropped-notifications"></a>Azure 通知中心-诊断丢弃的通知数
@@ -111,7 +111,7 @@ Azure 通知中心客户提出的最常见问题之一是如何排查以下问�
 
 如果推送通知服务尝试传递通知，但设备处于脱机状态，则推送通知服务会短暂存储通知。 等设备可用时再将通知传递到设备。
 
-对于每个应用，仅存储一个最新通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致前一个通知被放弃。 只保留最新通知方式被称为*合并通知*中 APN，并且*折叠*在 FCM （它使用折叠密钥）。 如果设备长时间处于脱机状态，则放弃为它存储的所有通知。 有关详细信息，请参阅 [APN 概述] 和[关于 FCM 消息]。
+对于每个应用，仅存储一个最新通知。 如果在设备处于脱机状态时发送了多个通知，则每个新通知将导致前一个通知被放弃。 只保留最新通知方式被称为*合并通知*中 APN，并且*折叠*在 FCM （它使用折叠密钥）。 如果设备长时间处于脱机状态，则放弃为它存储的所有通知。 有关详细信息，请参阅 [APN 概述] 和[About FCM messages]。
 
 在 Azure 通知中心，可以使用泛型 SendNotification API 通过 HTTP 标头来传递合并密钥。 例如，对于 .NET SDK，你会使用 `SendNotificationAsync`。 SendNotification API 还会将按原样传递的 HTTP 标头传递到各自的推送通知服务。
 
@@ -182,7 +182,7 @@ Azure 通知中心客户提出的最常见问题之一是如何排查以下问�
 
 * [查看通知中心的设备注册]
 * [深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]
-* [宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4 的发布]
+* [宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]
 
 ### <a name="debug-failed-notifications-and-review-notification-outcome"></a>调试失败的通知和查看通知结果
 
@@ -282,14 +282,14 @@ The Token obtained from the Token Provider is wrong
 
 <!-- LINKS -->
 [通知中心概述]: notification-hubs-push-notification-overview.md
-[使用 Azure 通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+[Azure 通知中心入门]: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
 [模板]: https://msdn.microsoft.com/library/dn530748.aspx
 [APNs overview]: https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/APNSOverview.html
-[关于 FCM 消息]: https://firebase.google.com/docs/cloud-messaging/concept-options
+[About FCM messages]: https://firebase.google.com/docs/cloud-messaging/concept-options
 [Export and modify registrations in bulk]: https://msdn.microsoft.com/library/dn790624.aspx
 [Service Bus Explorer code]: https://code.msdn.microsoft.com/windowsazure/Service-Bus-Explorer-f2abca5a
 [查看通知中心的设备注册]: https://msdn.microsoft.com/library/windows/apps/xaml/dn792122.aspx
 [深入探讨：Visual Studio 2013 Update 2 RC 和 Azure SDK 2.3]: https://azure.microsoft.com/blog/2014/04/09/deep-dive-visual-studio-2013-update-2-rc-and-azure-sdk-2-3/#NotificationHubs
-[宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4 的发布]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
+[宣布推出 Visual Studio 2013 Update 3 和 Azure SDK 2.4]: https://azure.microsoft.com/blog/2014/08/04/announcing-release-of-visual-studio-2013-update-3-and-azure-sdk-2-4/
 [EnableTestSend]: https://docs.microsoft.com/dotnet/api/microsoft.azure.notificationhubs.notificationhubclient.enabletestsend?view=azure-dotnet
 [以编程方式遥测访问]: https://msdn.microsoft.com/library/azure/dn458823.aspx

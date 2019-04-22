@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358105"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>规划基于云的 Azure 多重身份验证
@@ -198,7 +198,7 @@ Get-MsolUser -All | where {$_.StrongAuthenticationMethods.Count -eq 0} | Select-
     * 单击“选择”。
 1. 跳过“会话”部分。
 1. 将“启用策略”开关设置为“开”。
-1. 单击“创建”。
+1. 单击**创建**。
 
 ![创建条件访问策略，为试验组中的 Azure 门户用户启用 MFA](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 
@@ -315,5 +315,5 @@ Azure 多重身份验证提供了通过 Azure 门户中的报表：
 ## <a name="next-steps"></a>后续步骤
 
 * [有哪些身份验证方法？](concept-authentication-methods.md)
-* [启用 Azure 多重身份验证和 Azure AD 自助服务密码重置汇聚的注册](concept-registration-mfa-sspr-converged.md)
+* [针对 Azure 多重身份验证和 Azure AD 自助密码重置启用聚合注册](concept-registration-mfa-sspr-converged.md)
 * 为什么会提示或不会提示用户执行 MFA？ 请参阅[“Azure 多重身份验证中的报告”一文中的“Azure AD 登录报告”部分](howto-mfa-reporting.md#azure-ad-sign-ins-report)。

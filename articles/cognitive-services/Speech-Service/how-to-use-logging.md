@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: amishu
 ms.openlocfilehash: 75eaea22c4809eda78e54514961d13113b4a5f3a
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012444"
 ---
 # <a name="enable-logging-in-the-speech-sdk"></a>启用语音 SDK 中的日志记录
@@ -118,5 +118,5 @@ NSString *filePath = [
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在 GitHub 上浏览我们的示例](https://aka.ms/csspeech/samples)
+> [浏览 GitHub 上的示例](https://aka.ms/csspeech/samples)
 

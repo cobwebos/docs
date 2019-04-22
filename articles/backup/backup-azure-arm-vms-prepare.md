@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: raynew
 ms.openlocfilehash: 142ffdadf4adb1ee07f3592624cbdddfb310b580
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264550"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>将 Azure VM 备份到恢复服务保管库中
@@ -175,9 +175,9 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
 - 如果您遇到困难与 Vm 的连接，或如果你看到错误**ExtensionSnapshotFailedNoNetwork**在尝试连接时，应显式允许访问以便备份扩展可与 Azure 公共 IP 通信备份流量的地址。 下表总结了访问方法。
 
 
-**选项** | **操作** | **详细信息** 
+**选项** | **Action** | **详细信息** 
 --- | --- | --- 
-**为设置了 NSG 规则** | 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。<br/><br/> 而不是允许和管理每个地址范围，可以添加一个允许对 Azure 备份服务使用的访问规则[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)。 | [详细了解](../virtual-network/security-overview.md#service-tags)服务标记。<br/><br/> 服务标记简化访问管理，而不会产生额外成本。
+**设置 NSG 规则** | 允许 [Azure 数据中心 IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。<br/><br/> 而不是允许和管理每个地址范围，可以添加一个允许对 Azure 备份服务使用的访问规则[服务标记](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure)。 | [详细了解](../virtual-network/security-overview.md#service-tags)服务标记。<br/><br/> 服务标记简化访问管理，而不会产生额外成本。
 **部署代理** | 部署 HTTP 代理服务器来路由流量。 | 允许访问整个 Azure，而不只是存储。<br/><br/> 允许对存储 URL 进行精细控制。<br/><br/> 对 VM 进行单点 Internet 访问。<br/><br/> 代理不产生额外的成本。
 **设置 Azure 防火墙** | 使用 Azure 备份服务的 FQDN 标记允许流量通过 VM 上的 Azure 防火墙 | 易于使用，如果 VNet 子网中设置 Azure 防火墙。<br/><br/> 无法创建自己的 FQDN 标记，或修改在标记中的 Fqdn。<br/><br/> 如果 Azure Vm 使用托管磁盘，可能需要打开其他端口 (8443) 在防火墙上。
 
@@ -229,7 +229,7 @@ Azure 备份通过为在计算机上运行的 Azure VM 代理安装一个扩展�
      - 将以下代码行添加到 **/etc/environment** 文件：
        - **http_proxy = http: \/ /代理 IP 地址： 代理端口**
      - 将以下代码行添加到 **/etc/waagent.conf** 文件：
-         - **HttpProxy.Host=proxy IP 地址**
+         - **HttpProxy.Host=proxy IP address**
          - **HttpProxy.Port=proxy port**
    - 在 Windows 计算机上的浏览器设置中，指定要使用代理。 如果当前在用户帐户中使用代理，则可以使用此脚本在系统帐户级别应用该设置。
        ```powershell

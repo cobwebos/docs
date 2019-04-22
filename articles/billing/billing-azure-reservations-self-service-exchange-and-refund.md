@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 04/5/2019
 ms.author: banders
 ms.openlocfilehash: aa1a218fbf0bc7eacac65b50e4ee1f86791e2b3b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59281975"
 ---
 # <a name="self-service-exchanges-and-refunds-for-azure-reservations"></a>自助服务交换和退款 Azure 保留项
@@ -86,10 +86,10 @@ Money 添加到交换的货币承诺和退款如果原始购买了使用其中�
 
 - 若要了解如何管理预留，请参阅[管理 Azure 预留](billing-manage-reserved-vm-instance.md)。
 - 若要了解有关 Azure 预订的详细信息，请参阅以下文章：
-    - [什么是 Azure 预留项？](billing-save-compute-costs-reservations.md)
-    - [管理在 Azure 中的保留项](billing-manage-reserved-vm-instance.md)
-    - [了解如何应用预订折扣](billing-understand-vm-reservation-charges.md)
-    - [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
-    - [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
-    - [未包含的保留项的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
-    - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 azure 保留](/partner-center/azure-reservations)
+    - [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
+    - [管理 Azure 中的预留](billing-manage-reserved-vm-instance.md)
+    - [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
+    - [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
+    - [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
+    - [预留未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+    - [合作伙伴中心云解决方案提供商 (CSP) 计划中的 Azure 预订](/partner-center/azure-reservations)

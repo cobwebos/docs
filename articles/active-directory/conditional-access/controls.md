@@ -19,10 +19,10 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258736"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
@@ -77,8 +77,8 @@ ms.locfileid: "59258736"
 你的设备需要先注册到 Azure AD，然后才能将其标记为合规。 若要注册设备，你有三种选择： 
 
 - [Azure AD 注册设备](../devices/overview.md#azure-ad-registered-devices)
-- [Azure AD 加入设备](../devices/overview.md#azure-ad-joined-devices)  
-- [混合 Azure AD 加入设备](../devices/overview.md#hybrid-azure-ad-joined-devices)
+- [已加入 Azure AD 的设备](../devices/overview.md#azure-ad-joined-devices)  
+- [已加入混合 Azure AD 的设备](../devices/overview.md#hybrid-azure-ad-joined-devices)
 
 有关详细信息，请参阅[如何通过条件访问要求使用受管理设备进行云应用访问](require-managed-devices.md)。
 
@@ -123,9 +123,9 @@ ms.locfileid: "59258736"
 
 提供商当前提供的兼容服务包括：
 
-- [双重安全性](https://duo.com/docs/azure-ca)
-- [Entrust 安装 Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
-- [Ping Identity](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
+- [Duo Security](https://duo.com/docs/azure-ca)
+- [Entrust Datacard](https://www.entrustdatacard.com/products/authentication/intellitrust)
+- [Ping 标识](https://documentation.pingidentity.com/pingid/pingidAdminGuide/index.shtml#pid_c_AzureADIntegration.html)
 - RSA
 - [SecureAuth](https://docs.secureauth.com/pages/viewpage.action?pageId=47238992#)
 - [Silverfort](https://www.silverfort.io/company/using-silverfort-mfa-with-azure-active-directory/)
@@ -174,9 +174,9 @@ ms.locfileid: "59258736"
 
 若要了解更多信息，请参阅以下文章：
 
-- [启用 SharePoint Online 的受限的访问](https://aka.ms/spolimitedaccessdocs)
+- [使用 SharePoint Online 启用受限访问](https://aka.ms/spolimitedaccessdocs)
 
-- [启用 Exchange Online 的受限的访问](https://aka.ms/owalimitedaccess)
+- [使用 Exchange Online 启用受限访问](https://aka.ms/owalimitedaccess)
 
 ## <a name="next-steps"></a>后续步骤
 

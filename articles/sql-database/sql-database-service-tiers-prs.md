@@ -13,10 +13,10 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: f8fc1f7e338f69b42df69d9a8983e8ce3bb409e3
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359660"
 ---
 # <a name="azure-sql-database-premium-rs-service-tier-preview-is-being-retired---options-for-migration"></a>Azure SQL 数据库 Premium RS 服务层（预览版）即将停用 - 迁移选项
@@ -48,7 +48,7 @@ ms.locfileid: "59359660"
 
 ### <a name="premium-rs-databases"></a>Premium RS 数据库
 
-|**如果当前位于...**|**迁移到可比较基于 vCore 的...**|**迁移到可比较基于 DTU 的...**|
+|**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
 |Premium RS 1|常规用途 1 vCore（第 4 代）|标准 3|
 |Premium RS 2|常规用途 2 vCore（第 4 代）|标准 4|
@@ -57,7 +57,7 @@ ms.locfileid: "59359660"
 
 ### <a name="premium-rs-pools"></a>Premium RS 池
 
-|**如果当前位于...**|**迁移到可比较基于 vCore 的...**|**迁移到可比较基于 DTU 的...**|
+|**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
 |Premium RS 池 125 DTU|常规用途 1 vCore（第 4 代）|标准池 100 eDTU|
 |Premium RS 池 250 DTU|常规用途 2 vCore（第 4 代）|标准池 250 eDTU|
@@ -68,14 +68,14 @@ ms.locfileid: "59359660"
 
 我们建议将 IO 密集型单一数据库迁移到基于 vCore 的“超大规模”层（目前为预览版），将 IO 密集型数据库池迁移到正式版“业务关键”层，以同时获得最佳性能和成本。  以下基于 vCore 的选项将会维持或改善当前性能，如果将其与 Azure 混合权益和预留容量定价结合使用，则还可以节省成本。
 
-|**如果当前位于...**|**迁移到可比较基于 vCore 的...**|**迁移到可比较基于 DTU 的...**|
+|**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
 |Premium RS 1|（预览版）超大规模 1 vCore（第 4 代）或业务关键 1 vCore（第 4 代）|高级 1|
 |Premium RS 2|（预览版）超大规模 2 vCore（第 4 代）或业务关键 2 vCore（第 4 代|高级 2|
 |Premium RS 4|（预览版）超大规模 4 vCore（第 4 代）或业务关键 4 vCore（第 4 代）|高级 4
 |Premium RS 6|（预览版）超大规模 6 vCore（第 4 代）或业务关键 6 vCore（第 4 代）|高级 6|
 
-|**如果当前位于...**|**迁移到可比较基于 vCore 的...**|**迁移到可比较基于 DTU 的...**|
+|**如果当前使用…**|**迁移到对等的基于 vCore 的服务层...**|**迁移到对等的基于 DTU 的服务层...**|
 |---|---|---|
 |Premium RS 池 125 DTU|业务关键 2 vCore（第 4 代）|高级池 125 eDTU|
 |Premium RS 池 250 DTU|业务关键 2 vCore（第 4 代）|高级池 250 eDTU|

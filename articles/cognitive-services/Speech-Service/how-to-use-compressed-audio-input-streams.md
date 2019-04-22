@@ -1,7 +1,7 @@
 ---
 title: Stream 压缩音频和语音 SDK-语音服务
 titleSuffix: Azure Cognitive Services
-description: 了解如何将流式传输到 Azure 使用语音 SDK 的语音服务的压缩的音频。 适用于 c + +， C#，并适用于 Linux 的 Java。
+description: 了解如何将流式传输到 Azure 使用语音 SDK 的语音服务的压缩的音频。 适用于C++， C#，并适用于 Linux 的 Java。
 services: cognitive-services
 author: amitkumarshukla
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: amishu
 ms.openlocfilehash: 2066dc3e20ab9fc92b23fd071728ea6a920d3324
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012418"
 ---
 # <a name="stream-compressed-audio-with-the-speech-sdk"></a>使用语音 SDK Stream 压缩音频
@@ -22,7 +22,7 @@ ms.locfileid: "59012418"
 Speech SDK**压缩音频输入 Stream** API 提供了一种方法来流式传输到语音服务的压缩的音频使用 PullStream 或 PushStream。
 
 > [!IMPORTANT]
-> 流式处理压缩的音频仅适用于 c + +， C#，并在 Linux （Ubuntu 16.04 或 Ubuntu 18.04） 上的 Java。
+> 仅支持流式处理压缩的音频C++， C#，并在 Linux （Ubuntu 16.04 或 Ubuntu 18.04） 上的 Java。
 > 支持仅限于 MP3 和大作/OGG。
 
 ## <a name="prerequisites"></a>必备组件
@@ -59,4 +59,4 @@ var text = result.GetText();
 ## <a name="next-steps"></a>后续步骤
 
 * [获取语音试用订阅](https://azure.microsoft.com/try/cognitive-services/)
-* [请参阅如何识别中的语音C#](quickstart-csharp-dotnet-windows.md)
+* [了解如何在 C# 中识别语音](quickstart-csharp-dotnet-windows.md)

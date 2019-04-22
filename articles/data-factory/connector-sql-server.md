@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: cb1b8171dc45c286d3f87a3c33e366d818cfaad9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283403"
 ---
 # <a name="copy-data-to-and-from-sql-server-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 SQL Server 复制数据
@@ -64,7 +64,7 @@ SQL Server 链接服务支持以下属性：
 >[!TIP]
 >如果遇到错误（错误代码为“UserErrorFailedToConnectToSqlServer”，且消息如“数据库的会话限制为 XXX 且已达到。”），请将 `Pooling=false` 添加到连接字符串中，然后重试。
 
-**示例 1： 使用 SQL 身份验证**
+**示例 1：使用 SQL 身份验证**
 
 ```json
 {
@@ -85,7 +85,7 @@ SQL Server 链接服务支持以下属性：
 }
 ```
 
-**示例 2： 使用 SQL 身份验证使用 Azure 密钥保管库中的密码**
+**示例 2：在 Azure 密钥保管库中使用带有密码的 SQL 身份验证**
 
 ```json
 {
@@ -114,7 +114,7 @@ SQL Server 链接服务支持以下属性：
 }
 ```
 
-**示例 3： 使用 Windows 身份验证**
+**示例 3：使用 Windows 身份验证**
 
 ```json
 {
@@ -190,7 +190,7 @@ SQL Server 链接服务支持以下属性：
 - 如果为 SqlSource 指定 sqlReaderQuery，则复制活动针对 SQL Server 源运行此查询以获取数据。 此外，也可以通过指定 sqlReaderStoredProcedureName 和 storedProcedureParameters 来指定存储过程（如果存储过程使用参数）。
 - 如果不指定“sqlReaderQuery”或“sqlReaderStoredProcedureName”，则使用在数据集 JSON 的“结构”部分定义的列，构建针对 SQL Server 运行的查询 (`select column1, column2 from mytable`)。 如果数据集定义不具备该“结构”，则从表中选择所有列。
 
-**示例： 使用 SQL 查询**
+**示例：使用 SQL 查询**
 
 ```json
 "activities":[
@@ -222,7 +222,7 @@ SQL Server 链接服务支持以下属性：
 ]
 ```
 
-**示例： 使用存储的过程**
+**示例：使用存储过程**
 
 ```json
 "activities":[
@@ -258,7 +258,7 @@ SQL Server 链接服务支持以下属性：
 ]
 ```
 
-**存储的过程定义中：**
+**存储过程定义：**
 
 ```sql
 CREATE PROCEDURE CopyTestSrcStoredProcedureWithParameters
@@ -294,7 +294,7 @@ GO
 > [!TIP]
 > 将数据复制到 SQL Server 时，默认情况下复制活动将数据追加到接收器表。 要执行 UPSERT 或其他业务逻辑，请在 SqlSink 中使用存储过程。 参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。
 
-**示例 1： 追加数据**
+**示例 1：追加数据**
 
 ```json
 "activities":[
@@ -326,7 +326,7 @@ GO
 ]
 ```
 
-**示例 2： 在 upsert 的复制过程调用的存储的过程**
+**示例 2：在 upsert 的复制过程中调用存储过程**
 
 参阅[调用 SQL 接收器的存储过程](#invoking-stored-procedure-for-sql-sink)，了解更多详细信息。
 
@@ -513,28 +513,28 @@ CREATE TYPE [dbo].[MarketingType] AS TABLE(
 |:--- |:--- |
 | bigint |Int64 |
 | binary |Byte[] |
-| bit |Boolean |
+| bit |布尔 |
 | char |String, Char[] |
-| date |DateTime |
+| 日期 |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | Datetimeoffset |DateTimeOffset |
-| Decimal |Decimal |
-| FILESTREAM attribute (varbinary(max)) |Byte[] |
+| 小数 |小数 |
+| FILESTREAM 特性 (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| 图像 |Byte[] |
 | int |Int32 |
-| money |Decimal |
+| money |小数 |
 | nchar |String, Char[] |
 | ntext |String, Char[] |
-| numeric |Decimal |
+| numeric |小数 |
 | nvarchar |String, Char[] |
 | real |Single |
 | rowversion |Byte[] |
 | smalldatetime |DateTime |
 | smallint |Int16 |
-| smallmoney |Decimal |
-| sql_variant |Object |
+| smallmoney |小数 |
+| sql_variant |对象 |
 | text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: ramamill
 ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362155"
 ---
 # <a name="scale-for-failback-with-additional-process-servers"></a>为故障回复使用更多进程服务器进行扩展
@@ -31,7 +31,7 @@ ms.locfileid: "59362155"
 
 验证该表中汇总的调整大小要求。 通常，如果必须将部署扩大到 200 台以上的源计算机，或者每日总改动率超过 2 TB，则需要额外的进程服务器来处理流量。
 
-| **其他进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机** |
+| **额外的进程服务器** | **缓存磁盘大小** | **数据更改率** | **受保护的计算机** |
 | --- | --- | --- | --- |
 |4 个 vCPU（2 个插槽 * 2 个核心 \@ 2.5 GHz），8 GB 内存 |300 GB |250 GB 或更少 |复制 85 台或更少的计算机。 |
 |8 个 vCPU（2 个插槽 * 4 个核心 \@ 2.5 GHz），12 GB 内存 |600 GB |250 GB 到 1 TB |复制 85-150 台计算机。 |

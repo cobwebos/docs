@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283471"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件 
@@ -339,7 +339,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 移动浏览器版本 | %{wurfl_cap_mobile_browser_version} | 一个字符串，表示用于从设备请求内容的浏览器的版本。 | 31
 模型名称 | %{wurfl_cap_model_name} | 一个字符串，表示设备的模型名称。 | s3
 渐进式下载 | %{wurfl_cap_progressive_download} | 一个布尔值，表示设备是否允许音频和视频边下载边播放。 | true
-发布日期 | %{wurfl_cap_release_date} | 一个字符串，表示设备在何年何月添加到 WURFL 数据库。<br/><br/>格式： `yyyy_mm` | 2013_december
+发布日期 | %{wurfl_cap_release_date} | 一个字符串，表示设备在何年何月添加到 WURFL 数据库。<br/><br/>格式：`yyyy_mm` | 2013_december
 垂直分辨率 | %{wurfl_cap_resolution_height} | 一个整数，表示设备以像素为单位的高度。 | 768
 水平分辨率 | %{wurfl_cap_resolution_width} | 一个整数，表示设备以像素为单位的宽度。 | 1024
 
@@ -970,9 +970,9 @@ user=joe              | 当所请求 URL 的查询字符串为“?user=joe”时
 </br>
 
 ## <a name="next-steps"></a>后续步骤
-* [Azure 内容交付网络概述](cdn-overview.md)
+* [Azure 内容分发网络概述](cdn-overview.md)
 * [规则引擎参考](cdn-rules-engine-reference.md)
 * [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
 * [规则引擎功能](cdn-rules-engine-reference-features.md)
-* [重写默认 HTTP 行为使用规则引擎](cdn-rules-engine.md)
+* [使用规则引擎重写默认 HTTP 行为](cdn-rules-engine.md)
 

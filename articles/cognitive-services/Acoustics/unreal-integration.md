@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: c6baa9f8330338c1e5fdc9ee0b5a8cc8b344e871
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006485"
 ---
 # <a name="project-acoustics-unreal-and-wwise-integration"></a>项目噪声 Unreal 和 Wwise 集成
@@ -57,7 +57,7 @@ ms.locfileid: "59006485"
 ## <a name="2-redeploy-wwise-into-your-game"></a>2.（重新） 将 Wwise 部署到您的游戏
 即使已整合了 Wwise 重新部署 Wwise 到您的游戏。 这将提取项目噪声 Wwise 插件。
 
-* **引擎插件：** 如果必须 Wwise 作为 Unreal c + + 项目中的游戏插件安装，请跳过此步骤。 如果安装改成作为引擎插件实例，由于 Unreal 项目是使用我们 mixer 插件蓝图仅限 Wwise 部署已更复杂。 创建虚拟的空 Unreal c + + 项目、 Unreal 编辑器随即打开，如果将其关闭并按照部署到此虚拟项目 Wwise 的剩余步骤。 然后将复制出的已部署的 Wwise 插件。
+* **引擎插件：** 如果您有 Wwise 中 Unreal 的游戏插件作为安装C++项目中，跳过此步骤。 如果安装改成作为引擎插件实例，由于 Unreal 项目是使用我们 mixer 插件蓝图仅限 Wwise 部署已更复杂。 创建虚拟、 空 UnrealC++项目中，如果 Unreal 编辑器打开后，将其关闭并按照部署到此虚拟项目 Wwise 的剩余步骤。 然后将复制出的已部署的 Wwise 插件。
  
 * 在 Wwise Launcher 中，单击“Unreal Engine”选项卡，单击“最近的 Unreal Engine 项目”旁边的汉堡菜单，然后选择“浏览项目”。 打开您的游戏 Unreal 项目`.uproject`文件。
 
@@ -65,7 +65,7 @@ ms.locfileid: "59006485"
 
 * 然后单击**项目中集成 Wwise**或**项目中修改 Wwise**。 此步骤 （重新） 集成到你的项目，现在包括项目噪声 mixer 插件 Wwise 二进制文件。
 
-* **引擎插件：** 如果使用 Wwise 作为引擎插件并创建虚拟项目按上面所述复制文件夹 Wwise 部署：`[DummyUProject]\Plugins\Wwise`并将其粘贴到`[UESource]\Engine\Plugins\Wwise`。 `[DummyUProject]` 是空的 Unreal c + + 项目路径和`[UESource]`是您必须安装的 Unreal 引擎源。 一旦你完成了复制，可以删除 dummy 项目。
+* **引擎插件：** 如果使用 Wwise 作为引擎插件并创建虚拟项目按上面所述复制文件夹 Wwise 部署：`[DummyUProject]\Plugins\Wwise`并将其粘贴到`[UESource]\Engine\Plugins\Wwise`。 `[DummyUProject]` 是空的 UnrealC++项目路径，并`[UESource]`是您必须安装的 Unreal 引擎源。 一旦你完成了复制，可以删除 dummy 项目。
 
 ## <a name="3-add-the-project-acoustics-unreal-plugin-to-your-game"></a>3.将项目噪声 Unreal 插件添加到您的游戏
  
@@ -80,7 +80,7 @@ ms.locfileid: "59006485"
 
     ![资源管理器屏幕截图的 Windows 窗口突出显示提供修补 Wwise 脚本](media/patch-wwise-script.png)
 
-* 如果没有安装 DirectX SDK，将需要进行注释掉包含 DXSDK_DIR 中的行 `[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* 如果没有安装 DirectX SDK，则需要在 `[UProject]\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 DXSDK_DIR 的行
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 

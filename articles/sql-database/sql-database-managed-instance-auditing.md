@@ -15,10 +15,10 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 04/08/2019
 ms.openlocfilehash: 6ada2a5e505bfe37f4f9a956570d8b6f38f55e55
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357441"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>开始使用 Azure SQL 数据库托管实例审核
@@ -26,7 +26,7 @@ ms.locfileid: "59357441"
 [托管实例](sql-database-managed-instance.md)审核会跟踪数据库事件，并将事件写入 Azure 存储帐户中的审核日志。 审核还可：
 
 - 帮助保持合规性、了解数据库活动，以及深入了解可以指明业务考量因素或疑似安全违规的偏差和异常。
-- 实现并促进遵从合规标准，但不能保证合规性。 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
+- 实现并促进遵从合规标准，但不能保证合规性。 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
 
 ## <a name="set-up-auditing-for-your-server-to-azure-storage"></a>将服务器的审核设置为 Azure 存储
 
@@ -60,7 +60,7 @@ ms.locfileid: "59357441"
 
         ![Blob 容器属性按钮](./media/sql-managed-instance-auditing/4_container_properties_button.png)
 
-     1. 通过单击复制图标来复制容器 URL并保存该 URL（例如在记事本中）供将来使用。 容器 URL 格式应为 `https://<StorageName>.blob.core.windows.net/<ContainerName>`
+     1. 通过单击复制图标来复制容器 URL并保存该 URL（例如在记事本中）供将来使用。 容器 URL 格式应当为 `https://<StorageName>.blob.core.windows.net/<ContainerName>`
 
         ![Blob 容器复制 URL](./media/sql-managed-instance-auditing/5_container_copy_name.png)
 
@@ -135,7 +135,7 @@ ms.locfileid: "59357441"
 
      1. 从下拉列表中选择订阅、存储帐户和 Blob 容器，或者单击“创建”来创建自己的容器。 完成后，单击“确定”：
 
-        ![选择 Azure 订阅、 存储帐户和 blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
+        ![选择 Azure 订阅、存储帐户和 Blob 容器](./media/sql-managed-instance-auditing/13_mi_SSMS_select_subscription_account_container.png)
 
      1. 在“创建审核”对话框中单击“确定”。
 
@@ -154,13 +154,13 @@ ms.locfileid: "59357441"
 
 了解更多信息：
 
-- [审核 Azure SQL 数据库和 SQL Server 数据库中单一数据库、 弹性池、 s 和托管的实例之间的差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
-- [创建服务器审核](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
+- [Azure SQL 数据库中的单一数据库、弹性池和托管实例以及 SQL Server 中的数据库之间的审核差异](#auditing-differences-between-databases-in-azure-sql-database-and-databases-in-sql-server)
+- [CREATE SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
 - [ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 
-## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>为您的服务器到事件中心或 Azure Monitor 日志设置审核
+## <a name="set-up-auditing-for-your-server-to-event-hub-or-azure-monitor-logs"></a>将服务器的审核设置为事件中心或 Azure Monitor 日志
 
-从托管实例的审核日志可以发送到事件中心或 Azure Monitor 日志。 本部分介绍如何进行以下配置：
+可将托管实例的审核日志发送到事件中心或 Azure Monitor 日志。 本部分介绍如何进行以下配置：
 
 1. 在 [Azure 门户](https://portal.azure.com/)中导航到托管实例。
 
@@ -170,7 +170,7 @@ ms.locfileid: "59357441"
 
 4. 在日志列表中选择“SQLSecurityAuditEvents”。
 
-5. 选择审核事件的事件中心、 Azure Monitor 日志，或两者的目标。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
+5. 选择审核事件的目标 - 事件中心和/或 Azure Monitor 日志。 为每个目标配置所需的参数（例如，Log Analytics 工作区）。
 
 6. 单击“ **保存**”。
 
@@ -190,7 +190,7 @@ ms.locfileid: "59357441"
    - [创建服务器审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-specification-transact-sql)
    - [创建数据库审核规范 T-SQL 指南](https://docs.microsoft.com/sql/t-sql/statements/create-database-audit-specification-transact-sql)
 
-10. 启用在步骤 8 中创建服务器审核：
+10. 启用在步骤 8 中创建的服务器审核：
  
     ```SQL
     ALTER SERVER AUDIT [<your_audit_name>] WITH (STATE=ON);
@@ -234,15 +234,15 @@ Azure Monitor 日志可以使用集成的搜索和自定义仪表板轻松分析
 Azure Blob 存储审核的主要 `CREATE AUDIT` 语法差异为：
 
 - 提供了新语法 `TO URL`，该语法允许指定用于放置 `.xel` 文件的 Azure Blob 存储容器的 URL。
-- 一种新语法`TO EXTERNAL MONITOR`用于启用的事件中心和 Azure Monitor 日志目标。
+- 提供了新语法 `TO EXTERNAL MONITOR` 以启用事件中心和 Azure Monitor 日志这两个目标。
 - **不支持** `TO FILE` 语法，因为 SQL 数据库无法访问 Windows 文件共享。
 - **不支持**关闭选项。
-- `queue_delay` 0**不支持**。
+- **不支持** `queue_delay` 为 0。
 
 ## <a name="next-steps"></a>后续步骤
 
 - 有关审核日志使用方法的完整列表，请参阅 [SQL 数据库审核入门](sql-database-auditing.md)。
-- 有关该支持标准符合性计划 Azure 有关的详细信息，请参阅[Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)在哪里可以找到 SQL 数据库法规认证的最新列表。
+- 有关支持标准符合性的 Azure 程序的详细信息，请参阅 [Azure 信任中心](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)，可以从中找到 SQL 数据库符合性认证的最新列表。
 
 <!--Image references-->
 

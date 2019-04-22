@@ -17,10 +17,10 @@ ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a404b5e6769c7bb91b4f7b5830cea18372ec456d
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007150"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>使用跨域标识管理系统 (SCIM) 将用户和组从 Azure Active Directory 自动预配到应用程序
@@ -61,7 +61,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ### <a name="getting-started"></a>入门
 支持本文所述 SCIM 配置文件的应用程序可以使用 Azure AD 应用程序库中的“非库应用程序”功能连接到 Azure Active Directory。 连接后，Azure AD 将每隔 40 分钟运行同步过程，此过程将为分配的用户和组查询应用程序的 SCIM 终结点，并根据分配详细信息创建或修改这些用户和组。
 
-**若要连接支持 SCIM 的应用程序：**
+**连接到支持 SCIM 的应用程序：**
 
 1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com)。 
 
@@ -72,13 +72,13 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 1. 输入你的应用程序的名称并选择**添加**若要创建应用对象。 新的应用添加到企业应用程序的列表，并打开到其应用程序管理屏幕。
     
    ![][1]
-   *图 2:Azure AD 应用程序库*
+   *图 2：Azure AD 应用程序库*
     
 1. 在应用程序管理屏幕中，选择**预配**左侧面板中。
 1. 在“预配模式”菜单中，选择“自动”。
     
    ![][2]
-   *图 3:在 Azure 门户中配置预配*
+   *图 3：在 Azure 门户中配置预配*
     
 1. 在“租户 URL”字段中，输入应用程序的 SCIM 终结点的 URL。 示例： https://api.contoso.com/scim/v2/
 1. 如果 SCIM 终结点需要来自非 Azure AD 颁发者的 OAuth 持有者令牌，可将所需的 OAuth 持有者令牌复制到可选的“密钥令牌”字段。 如果此字段留空，Azure AD 包含从每个请求的 Azure AD 颁发的 OAuth 持有者令牌。 将 Azure AD 用作标识提供者的应用可以验证 Azure AD 颁发的此令牌。
@@ -263,7 +263,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 *GET /Users/5d48a0a8e9f04aa38008* 
 
 ###### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
@@ -294,7 +294,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 *GET /Users?filter=userName eq "Test_User_dfeef4c5-5681-4387-b016-bdf221e82081"*
 
 ##### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
@@ -333,7 +333,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 *GET/用户？ 筛选器 = 用户名 eq"不存在用户"*
 
 ##### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
@@ -368,7 +368,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
@@ -410,7 +410,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ```
 
 ##### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:User"],
@@ -493,7 +493,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 *GET/组/40734ae655284ad3abcc？ excludedAttributes = 成员 HTTP/1.1*
 
 ##### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:schemas:core:2.0:Group"],
@@ -514,7 +514,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 *GET /Groups？ excludedAttributes = 成员筛选器 = displayName eq"displayName"HTTP/1.1*
 
 ##### <a name="response"></a>响应
-*HTTP/1.1 200 OK*
+*HTTP/1.1 200 确定*
 ```json
 {
     "schemas": ["urn:ietf:params:scim:api:messages:2.0:ListResponse"],
@@ -617,12 +617,12 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 ### <a name="code-samples"></a>代码示例
 若要简化此过程[代码示例](https://github.com/Azure/AzureAD-BYOA-Provisioning-Samples/tree/master)提供其创建 SCIM web 服务终结点并演示自动预配。 该示例是维护一个文件，与表示用户和组以逗号分隔值的行的提供程序。    
 
-**必备组件**
+**先决条件**
 
 * Visual Studio 2013 或更高版本
 * [用于 .NET 的 Azure SDK](https://azure.microsoft.com/downloads/)
 * 支持将 ASP.NET Framework 4.5 用作 SCIM 终结点的 Windows 计算机。 此计算机必须是可从云访问。
-* [Azure 订阅与 Azure AD Premium 试用版或许可版本](https://azure.microsoft.com/services/active-directory/)
+* [具有 Azure AD Premium 试用版或许可版的 Azure 订阅](https://azure.microsoft.com/services/active-directory/)
 
 ### <a name="getting-started"></a>入门
 实现可以接受来自 Azure AD 的预配请求的 SCIM 终结点的最简单方法是构建和部署将预配的用户输出逗号分隔值 (CSV) 文件的代码示例。
@@ -664,7 +664,7 @@ Azure AD 支持的应用程序的许多[预先集成的自动用户预配](../sa
 1. 在“预配模式”菜单中，选择“自动”。
     
    ![][2]
-   *图 6:在 Azure 门户中配置预配*
+   *图 6：在 Azure 门户中配置预配*
     
 1. 在“租户 URL”字段中，输入面向 Internet 的 URL 和 SCIM 终结点的端口。 该条目类似于 http://testmachine.contoso.com:9000 或 http://\<ip-address>:9000/，其中 \<ip-address> 是 Internet 公开 IP 地址。 
 
@@ -1260,10 +1260,10 @@ Azure Active Directory 可将两种类型的资源预配到 SCIM Web 服务。  
 
 
 ## <a name="related-articles"></a>相关文章
-* [自动用户预配和取消预配 SaaS 应用](user-provisioning.md)
-* [自定义用户预配属性映射](customize-application-attributes.md)
+* [在 SaaS 应用中自动预配和取消预配用户](user-provisioning.md)
+* [为用户预配自定义属性映射](customize-application-attributes.md)
 * [为属性映射编写表达式](functions-for-customizing-application-data.md)
-* [用户预配范围筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
+* [用于用户预配的作用域筛选器](define-conditional-rules-for-provisioning-user-accounts.md)
 * [帐户预配通知](user-provisioning.md)
 * [有关如何集成 SaaS 应用的教程列表](../saas-apps/tutorial-list.md)
 

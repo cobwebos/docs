@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/04/2018
 ms.author: kraigb
 ms.openlocfilehash: 2ef327721fd42e5274381834721fd987ec7e9d75
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59263275"
 ---
 # <a name="use-azure-machine-learning-service-in-a-notebook"></a>在笔记本中使用 Azure 机器学习服务
@@ -47,9 +47,9 @@ Azure Notebooks 预先配置了使用 [Azure 机器学习服务](/azure/machine-
 
 Azure 机器学习服务文档包含各种其他资源，可利用这些资源了解如何在笔记本中使用机器学习服务：
 
-- [快速入门：使用 Python 进行 Azure 机器学习入门](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
-- [教程 1:使用 Azure 机器学习服务定型图像分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
-- [教程 2:部署图像分类模型在 Azure 容器实例 (ACI)](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
-- [教程：训练分类模型使用 Azure 机器学习服务中的自动化的机器学习](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
+- [快速入门：通过 Python 开始使用 Azure 机器学习](https://docs.microsoft.com/azure/machine-learning/service/quickstart-create-workspace-with-python)
+- [教程 #1：使用 Azure 机器学习服务训练图像分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-train-models-with-aml)
+- [教程 #2：在 Azure 容器实例 (ACI) 中部署映像分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-deploy-models-with-aml)
+- [教程：使用 Azure 机器学习服务中的自动化机器学习训练分类模型](https://docs.microsoft.com/azure/machine-learning/service/tutorial-auto-train-models)
 
 另请参阅[用于 Python 的 Azure 机器学习 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 一文。

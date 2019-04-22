@@ -9,17 +9,17 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 64559f653ba8a466de7bec10db34383b508e3e4b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361288"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>设置 VMM 云中的本地 Hyper-V VM 到 Azure 的灾难恢复
 
 本文介绍如何为管理由 System Center Virtual Machine Manager (VMM)，用于灾难恢复到 Azure 中使用的本地 HYPER-V Vm 启用复制[Azure Site Recovery](site-recovery-overview.md)服务。 如果不使用 VMM，然后[遵循本教程](hyper-v-azure-tutorial.md)。
 
-这是一系列，演示如何为在本地 VMware Vm 设置灾难恢复到 Azure 中的第三个教程。 在上一教程中，我们[准备好的本地 HYPER-V 环境](hyper-v-prepare-on-premises-tutorial.md)用于灾难恢复到 Azure。 
+本文是系列教程的第三篇文章，介绍如何为本地 VMware VM 设置到 Azure 的灾难恢复。 在上一教程中，我们[准备好的本地 HYPER-V 环境](hyper-v-prepare-on-premises-tutorial.md)用于灾难恢复到 Azure。 
 
 本教程介绍如何执行下列操作：
 
@@ -33,7 +33,7 @@ ms.locfileid: "59361288"
 
 
 > [!NOTE]
-> 教程介绍了一种方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看站点恢复表的内容的操作方法部分中文章。
+> 教程介绍了某个方案的最简单部署路径。 它们尽可能使用默认选项，并且不显示所有可能的设置和路径。 有关详细说明，请查看 Site Recovery 目录的“操作指南”部分所列的文章。
 
 ## <a name="before-you-begin"></a>开始之前
 
@@ -45,11 +45,11 @@ ms.locfileid: "59361288"
 
 ## <a name="select-a-replication-goal"></a>选择复制目标
 
-1. 在“恢复服务保管库”中，选择保管库。 我们准备好保管库**ContosoVMVault**前面的教程。
+1. 在“恢复服务保管库”中，选择保管库。 在前面的教程中，我们已准备好保管库 **ContosoVMVault**。
 2. 在“入门”中，单击“Site Recovery”。 然后单击“准备基础结构”
 3. 在中**保护目标** > **所在计算机所在？**，选择**本地**。
-4. 在中**要在其中将计算机复制？**，选择**到 Azure**。
-5. 在中**计算机虚拟化是否？** 选择**是，带有 HYPER-V**。
+4. 在“要将计算机复制到何处?”中，选择“复制到 Azure”。
+5. 在“计算机是否已虚拟化?”中，选择“是，带有 Hyper-V”。
 6. 在“是否使用 System Center VMM”中，选择“是”。 然后单击“确定”。
 
     ![复制目标](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
@@ -57,8 +57,8 @@ ms.locfileid: "59361288"
 
 ## <a name="confirm-deployment-planning"></a>确认部署规划
 
-1. 在中**部署规划**，如果您计划大型部署，下载页上的链接适用于 HYPER-V 部署规划器。 [了解详细信息](hyper-v-deployment-planner-overview.md)有关 HYPER-V 部署规划。
-2. 对于本教程的目的，我们不需要部署规划器。 在中**已完成部署规划？**，选择**我将稍后进行**。 然后单击“确定”。
+1. 在“部署规划”中，若要规划大型部署，请通过页面上的链接下载适用于 Hyper-V 的部署规划器。 [详细了解](hyper-v-deployment-planner-overview.md) Hyper-V 部署规划。
+2. 本教程不需要部署规划器。 在中**已完成部署规划？**，选择**我将稍后进行**。 然后单击“确定”。
 
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
@@ -119,7 +119,7 @@ Site Recovery 会检查是否有一个或多个兼容的 Azure 存储帐户和�
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
 
 1. 单击“准备基础结构” > “复制设置” > “+创建和关联”。
-2. 在“创建和关联策略”中指定策略名称。 我们将使用**ContosoReplicationPolicy**。
+2. 在“创建和关联策略”中指定策略名称。 我们将使用 **ContosoReplicationPolicy**。
 3. 保留默认设置，并单击“确定”。
     - **复制频率**指示增量数据（初始复制之后）每五分钟复制一次。
     - **恢复点保留期**指示为每个恢复点将保留两个小时。

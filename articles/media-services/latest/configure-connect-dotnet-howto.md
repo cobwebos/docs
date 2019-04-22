@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: juliako
 ms.openlocfilehash: 8f8a1434af768180e34afcaacd6e92ab402ad8cd
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361236"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>连接到媒体服务 v3 API-.NET
@@ -225,17 +225,17 @@ namespace ConsoleApp1
 
 ## <a name="next-steps"></a>后续步骤
 
-- [教程：上传、 编码和流式传输视频-.NET](stream-files-tutorial-with-api.md) 
-- [教程：使用媒体服务 v3-.NET live Stream](stream-live-tutorial-with-api.md)
-- [教程：分析视频使用媒体服务 v3-.NET](analyze-videos-tutorial-with-api.md)
-- [从本地文件的.NET 中创建作业输入](job-input-from-local-file-how-to.md)
-- [从 HTTPS URL-.NET 创建作业输入](job-input-from-http-how-to.md)
-- [使用自定义转换的.NET 进行编码](customize-encoder-presets-how-to.md)
-- [使用 AES-128 动态加密和密钥传送服务-.NET](protect-with-aes128.md)
-- [使用 DRM 动态加密和许可证传送服务的.NET](protect-with-drm.md)
-- [从现有策略-.NET 获取签名密钥](get-content-key-policy-dotnet-howto.md)
-- [使用媒体服务-.NET 创建筛选器](filters-dynamic-manifest-dotnet-howto.md)
-- [高级视频按需示例的 Azure Functions v2 使用媒体服务 v3](https://aka.ms/ams3functions)
+- [教程：对视频进行上传、编码和流式处理 - .NET](stream-files-tutorial-with-api.md) 
+- [教程：通过媒体服务 v3 进行实时流式传输 - .NET](stream-live-tutorial-with-api.md)
+- [教程：使用媒体服务 v3 来分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+- [从本地文件创建作业输入 - .NET](job-input-from-local-file-how-to.md)
+- [从 HTTPS URL 创建作业输入 - .NET](job-input-from-http-how-to.md)
+- [对自定义转换进行编码 - .NET](customize-encoder-presets-how-to.md)
+- [使用 AES-128 动态加密和密钥传递服务 - .NET](protect-with-aes128.md)
+- [使用 DRM 动态加密和许可证传送服务 - .NET](protect-with-drm.md)
+- [从现有策略获取签名密钥 - .NET](get-content-key-policy-dotnet-howto.md)
+- [使用媒体服务创建筛选器 - .NET](filters-dynamic-manifest-dotnet-howto.md)
+- [使用媒体服务 v3 的 Azure Functions v2 的高级视频点播示例](https://aka.ms/ams3functions)
 
 ## <a name="see-also"></a>另请参阅
 

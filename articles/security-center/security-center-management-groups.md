@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: rkarlin
 ms.openlocfilehash: 7e26dc37c5c4f85e3db634bd961bf9308e418a03
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045758"
 ---
 # <a name="gain-tenant-wide-visibility-for-azure-security-center"></a>在 Azure 安全中心内实现租户级公开范围
@@ -194,5 +194,5 @@ Azure Active Directory 租户管理员无权直接访问 Azure 订阅。 不过�
 > [在 Azure 安全中心进行安全运行状况监视](security-center-monitoring.md)
 
 > [!div class="nextstepaction"]
-> [管理和响应 Azure 安全中心的安全警报](security-center-managing-and-responding-alerts.md)
+> [在 Azure 安全中心内管理和响应安全警报](security-center-managing-and-responding-alerts.md)
 

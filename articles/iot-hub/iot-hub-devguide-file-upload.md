@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 11/07/2018
 ms.openlocfilehash: 217d348eacab30b90e06fe805d9cdb0cf32349ac
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050724"
 ---
 # <a name="upload-files-with-iot-hub"></a>使用 IoT 中心上传文件
@@ -148,7 +148,7 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 现在，你已了解了如何使用 IoT 中心从设备上传文件，接下来可以根据兴趣查看以下 IoT 中心开发人员指南主题：
 
-* [管理 IoT 中心中的设备标识](iot-hub-devguide-identity-registry.md)
+* [管理 IoT 中心的设备标识](iot-hub-devguide-identity-registry.md)
 
 * [控制对 IoT 中心的访问](iot-hub-devguide-security.md)
 
@@ -160,4 +160,4 @@ IoT 中心开发人员指南中的其他参考主题包括：
 
 要尝试本文中介绍的一些概念，请参阅以下 IoT 中心教程：
 
-* [如何将文件从设备到 IoT 中心与云上传](iot-hub-csharp-csharp-file-upload.md)
+* [如何通过 IoT 中心将文件从设备上传到云中](iot-hub-csharp-csharp-file-upload.md)

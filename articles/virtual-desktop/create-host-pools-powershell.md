@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: 2af9df4771d58f2288820dad8ef8d7ac84deb8ae
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258464"
 ---
 # <a name="create-a-host-pool-with-powershell"></a>使用 PowerShell 创建主机池
@@ -113,11 +113,11 @@ $token = (Export-RdsRegistrationInfo -TenantName <tenantname> -HostPoolName <hos
      - 选择绿色播放按钮来运行脚本。
 
 >[!IMPORTANT]
->若要帮助保护您的 Windows 虚拟桌面环境在 Azure 中，我们建议不在 Vm 上打开端口 3389 的入站。 Windows 虚拟桌面不需要开放的入站的端口 3389，用户可以访问主机池的 Vm。 如果您必须打开端口 3389 以进行故障排除，我们建议你使用[中实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。
+>为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。
 
 ## <a name="next-steps"></a>后续步骤
 
 现在，所做的主机池，可以用 RemoteApps 填充它。 若要详细了解如何在 Windows 虚拟桌面中管理应用，请参阅“管理应用组”教程。
 
 > [!div class="nextstepaction"]
-> [管理应用程序组教程](./manage-app-groups.md)
+> [管理应用组教程](./manage-app-groups.md)

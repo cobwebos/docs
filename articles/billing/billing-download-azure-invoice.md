@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: f71fe9b02765e0fc8fd5f3b7abbd54c87b08132f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59264057"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>查看和下载 Microsoft Azure 发票
@@ -135,10 +135,10 @@ ms.locfileid: "59264057"
 
 若要了解有关发票和费用的详细信息，请参阅：
 
-- [查看和下载 Microsoft Azure 使用情况与费用](billing-download-azure-daily-usage.md)
-- [了解 Microsoft Azure 帐单](billing-understand-your-bill.md)
+- [查看和下载你的 Microsoft Azure 使用情况和费用](billing-download-azure-daily-usage.md)
+- [了解 Microsoft Azure 账单](billing-understand-your-bill.md)
 - [了解有关 Azure 发票的术语](billing-understand-your-invoice.md)
-- [了解的术语在 Microsoft Azure 的详细使用情况](billing-understand-your-usage.md)
+- [了解 Microsoft Azure 详细使用条款](billing-understand-your-usage.md)
 - [查看你组织的 Azure 定价](billing-ea-pricing.md)
 
 如果你有 Microsoft 客户协议，请参阅：

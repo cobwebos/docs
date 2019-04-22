@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357407"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>将环境集成到你的 Azure DevOps CI/CD 管道
@@ -62,7 +62,7 @@ ms.locfileid: "59357407"
 4. 有关**模板名称**，选择已保存到您源代码存储库 * 的环境的名称。 
 5. **实验室名称**，**存储库名称**，并**模板名称**是 Azure 资源 Id 的友好的表示形式。 手动输入的友好名称将会导致失败，请使用下拉列表选择的信息。
 6. 有关**环境名称**，输入用于唯一地标识在实验室中的环境实例的名称。  它必须在实验室中唯一。
-7. **参数文件**并**参数**，允许自定义参数传递给环境。 或者两种方法可以用于设置参数值。 对于此示例中，将使用参数部分。 使用在环境中定义的变量的名称，例如： `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
+7. **参数文件**并**参数**，允许自定义参数传递给环境。 或者两种方法可以用于设置参数值。 对于此示例中，将使用参数部分。 使用在环境中，例如定义的变量名称： `-administratorLogin “$(administratorLogin)” -administratorLoginPassword “$(administratorLoginPassword)” -databaseName “$(databaseName)” -cacheSKUCapacity 1`
 8. 在模板的输出部分中，可以通过传递环境模板中的信息。 检查**创建基于环境模板输出的输出变量**以便其他任务可以使用的数据。 `$(Reference name.Output Name)` 是要遵循的模式。 例如，如果引用名称为 DTL 和模板中的输出名称为位置变量将为`$(DTL.location)`。
 
 ## <a name="delete-the-environment"></a>删除环境

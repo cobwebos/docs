@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: sujayt
 ms.openlocfilehash: c7c91a2cf9a25d0a5a4aeed6621e89f9c7cc18f0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269616"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-issues"></a>Azure 到 Azure VM 复制问题故障排除
@@ -22,7 +22,7 @@ ms.locfileid: "59269616"
 ## <a name="list-of-errors"></a>错误列表
 - **[Azure 资源配额问题（错误代码 150097）](#azure-resource-quota-issues-error-code-150097)**
 - **[受信任的根证书（错误代码 151066）](#trusted-root-certificates-error-code-151066)**
-- **[Site Recovery （错误代码 151195） 的出站连接](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
+- **[Site Recovery 的出站连接（错误代码 151195）](#issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br)**
 
 ## <a name="azure-resource-quota-issues-error-code-150097"></a>Azure 资源配额问题（错误代码 150097）
 应启用订阅，以在计划用作灾难恢复区域的目标区域中创建 Azure VM。 此外，订阅还应拥有创建特定大小的 VM 所需的足够配额。 默认情况下，Site Recovery 为目标 VM 选取与源 VM 相同的大小。 如果匹配大小不可用，则会自动选取最接近的大小。 如果没有支持源 VM 配置的匹配大小，系统会显示以下错误消息：
@@ -40,7 +40,7 @@ ms.locfileid: "59269616"
 
 如果 VM 上没有所有最新的受信任根证书，则“启用复制”作业可能会失败。 如果没有证书，来自 VM 的 Site Recovery 服务调用的身份验证和授权会失败。 系统会显示失败的“启用复制”Site Recovery 作业的错误消息：
 
-**错误代码** | **可能原因** | **建议**
+**错误代码** | 可能的原因 | **建议**
 --- | --- | ---
 151066<br></br>**消息**：Site Recovery 配置失败。 | 计算机上没有授权和身份验证所需的受信任的根证书。 | - 对于运行 Windows 操作系统的 VM，请确保虚拟机上存在受信任的根证书。 有关信息，请参阅[配置受信任的根和不允许的证书](https://technet.microsoft.com/library/dn265983.aspx)。<br></br>- 对于运行 Linux 操作系统的 VM，请按照 Linux 操作系统版本分销商发布的受信任根证书指南操作。
 
@@ -155,7 +155,7 @@ ms.locfileid: "59269616"
 若要 Site Recovery 复制正常运行，需要从 VM 到特定 URL 或 IP 范围的出站连接。 如果 VM 位于防火墙后或使用网络安全组 (NSG) 规则来控制出站连接，则可能会遇到以下问题之一。
 
 ### <a name="issue-1-failed-to-register-azure-virtual-machine-with-site-recovery-151195-br"></a>问题 1：未能向 Site Recovery 注册 Azure 虚拟机 (151195) </br>
-- **可能原因** </br>
+- **可能的原因** </br>
   - 由于 DNS 解析失败而无法建立到 Site Recovery 终结点的连接。
   - 在重新保护期间，对虚拟机进行故障转移但无法从 DR 区域访问 DNS 服务器时经常会出现此问题。
 
@@ -166,7 +166,7 @@ ms.locfileid: "59269616"
 
 
 ### <a name="issue-2-site-recovery-configuration-failed-151196"></a>问题 2：Site Recovery 配置失败 (151196)
-- **可能原因** </br>
+- **可能的原因** </br>
   - 无法建立到 Office 365 身份验证和标识 IP4 终结点的连接。
 
 - **解决方法**
@@ -178,7 +178,7 @@ ms.locfileid: "59269616"
 > 如果虚拟机位于后面**标准**内部负载均衡器，则不会有权访问 O365 Ip，即大于 默认情况下 login.micorsoftonline.com。 可以将其更改为**基本**内部负载均衡器类型或创建出绑定的访问，如中所述[一文](https://aka.ms/lboutboundrulescli)。
 
 ### <a name="issue-3-site-recovery-configuration-failed-151197"></a>问题 3：Site Recovery 配置失败 (151197)
-- **可能原因** </br>
+- **可能的原因** </br>
   - 无法建立到 Azure Site Recovery 服务终结点的连接。
 
 - **解决方法**
@@ -186,15 +186,15 @@ ms.locfileid: "59269616"
 
 
 ### <a name="issue-4-a2a-replication-failed-when-the-network-traffic-goes-through-on-premises-proxy-server-151072"></a>问题 4：A2A 复制失败时的网络流量会经过的本地代理服务器 (151072)
-- **可能原因** </br>
+- **可能的原因** </br>
   - 自定义代理设置无效，并且 ASR 移动服务代理未在 IE 中自动检测到代理设置
 
 
 - **解决方法**
   1. 移动服务代理通过 Windows 上的 IE 和 Linux 上的 /etc/environment 检测代理设置。
   2. 如果只想对 ASR 移动服务设置代理，可在位于以下路径的 ProxyInfo.conf 中提供代理详细信息：</br>
-     - ``/usr/local/InMage/config/`` 在***Linux***
-     - ``C:\ProgramData\Microsoft Azure Site Recovery\Config`` 在***Windows***
+     - ***Linux*** 上的 ``/usr/local/InMage/config/``
+     - ***Windows*** 上的 ``C:\ProgramData\Microsoft Azure Site Recovery\Config``
   3. ProxyInfo.conf 应包含采用以下 INI 格式的代理设置。</br>
                 *[proxy]*</br>
                 *Address=http://1.2.3.4*</br>
@@ -209,7 +209,7 @@ ms.locfileid: "59269616"
 
 必须初始化附加到 VM 的新磁盘。
 
-**错误代码** | **可能的原因** | **建议**
+**错误代码** | **可能的原因** | 建议
 --- | --- | ---
 150039<br></br>**消息**：Azure data disk (DiskName) (DiskURI) with logical unit number (LUN) (LUNValue) was not mapped to a corresponding disk being reported from within the VM that has the same LUN value.（具有逻辑单元号 (LUN) (LUNValue) 的 Azure 数据磁盘 (DiskName) (DiskURI) 未映射到具有相同 LUN 值的 VM 报告的相应磁盘。） | - 新数据磁盘已附加到 VM，但该磁盘未初始化。</br></br>- VM 内的数据磁盘未正确报告磁盘附加到 VM 时的 LUN 值。| 请确保数据磁盘已初始化，然后重试操作。</br></br>对于 Windows：[附加并初始化新的磁盘](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)。</br></br>对于 Linux：[在 Linux 中初始化新的数据磁盘](https://docs.microsoft.com/azure/virtual-machines/linux/add-disk)。
 
@@ -227,10 +227,10 @@ ms.locfileid: "59269616"
  **原因 1：资源组和源虚拟机位于不同的位置** <br>
 Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同一位置。 如果不是这种情况，那么在保护期间将无法找到虚拟机。
 
-**原因 2：资源组不属于所选订阅的一部分** <br>
+**原因 2：资源组不是所选订阅的一部分** <br>
 如果资源组不是给定订阅的一部分，则可能无法在保护期间找到该资源组。 确保资源组属于正在使用的订阅。
 
- **原因 3：过时的配置** <br>
+ **原因 3：过时配置** <br>
 如果看不到要为其启用复制的虚拟机，可能是因为有过时的 Site Recovery 配置保留在 Azure VM 中。 在以下情况中，过时配置可能会留在 Azure VM 上：
 
 - 使用 Site Recovery 为 Azure VM 启用复制，然后删除 Site Recovery 保管库，而不在 VM 上明确禁用复制。
@@ -245,7 +245,7 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 可使用[删除过时 ASR 配置脚本](https://gallery.technet.microsoft.com/Azure-Recovery-ASR-script-3a93f412)，删除 Azure VM 上的过时 Site Recovery 配置。 删除过时配置后，应能够看到该 VM。
 
 ## <a name="unable-to-select-virtual-machine-for-protection"></a>无法选择虚拟机进行保护
- **原因 1：虚拟机具有一些扩展安装失败或无响应状态** <br>
+ **原因 1：虚拟机安装的某些扩展处于失败或无响应状态** <br>
  转到“虚拟机”>“设置”>“扩展”，并检查是否存在任何失败状态的扩展。 卸载失败的扩展，然后重试保护虚拟机。<br>
  **原因 2：[VM 的预配状态无效](#vms-provisioning-state-is-not-valid-error-code-150019)**
 
@@ -266,12 +266,12 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 
 ## <a name="unable-to-select-target-virtual-network---network-selection-tab-is-grayed-out"></a>无法选择目标虚拟网络 - 网络选择选项卡灰显。
 
-**原因 1：如果 VM 已附加到已映射到目标网络的网络。**
+**原因 1：VM 附加到了已映射至“目标网络”的网络。**
 - 如果源 VM 在某个虚拟网络中，并且同一虚拟网络中的另一个 VM 已映射到目标资源组中的某个网络，则默认将禁用网络选择下拉列表。
 
 ![Network_Selection_greyed_out](./media/site-recovery-azure-to-azure-troubleshoot/unabletoselectnw.png)
 
-**原因 2：如果您以前受保护的 VM 使用 Azure Site Recovery 并禁用复制。**
+**原因 2：之前已使用 Azure Site Recovery 保护了 VM，并禁用了复制。**
  - 禁用 VM 复制不会删除网络映射。 必须从保护 VM 的恢复服务保管库中删除网络映射。 </br>
  导航到恢复服务保管库并选择“Site Recovery 基础结构”>“网络映射”。 </br>
  ![Delete_NW_Mapping](./media/site-recovery-azure-to-azure-troubleshoot/delete_nw_mapping.png)
@@ -300,7 +300,7 @@ Azure Site Recovery 当前强制要求源区域资源组和虚拟机应位于同
 
 ## <a name="enable-protection-failed-as-device-name-mentioned-in-the-grub-configuration-instead-of-uuid-error-code-151126"></a>启用保护失败，因为 GRUB 配置中提到了设备名，而不是 UUID（错误代码 151126）
 
-**可能的原因:** </br>
+**可能的原因：** </br>
 GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/boot/grub2/grub.cfg”或“/etc/default/grub”）可能包含参数“root”和“resume”的值作为实际设备名而非 UUID。 Site Recovery 要求 UUID 方法，因为设备名可能会在 VM 重启时发生更改，由于故障转移时 VM 可能不会出现相同的名称，从而导致问题。 例如： </br>
 
 
@@ -313,7 +313,7 @@ GRUB 配置文件（“/boot/grub/menu.lst”、“/boot/grub/grub.cfg”、“/
 
 如果发现上面的粗体字符串，GRUB 具有参数“root”和“resume”的实际设备名，而不是 UUID。
 
-**如何修复错误：**<br>
+**如何修复：**<br>
 设备名应替换为相应的 UUID。<br>
 
 

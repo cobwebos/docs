@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbullwin
 ms.openlocfilehash: c77b5810164aef7508f717a0f75d90cf6cba2089
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273101"
 ---
 # <a name="set-up-application-insights-dependency-tracking"></a>设置 Application Insights：依赖项跟踪
@@ -71,7 +71,7 @@ ms.locfileid: "59273101"
 “失败计数”显示在“失败”边栏选项卡上。 失败是指不在 200-399 范围内或者未知的返回代码。
 
 > [!NOTE]
-> **100%失败？** - 这可能表示只获取了部分依赖项数据。 需要[设置适用于平台的依赖项监视](#set-up-dependency-monitoring)。
+> **全部失败？** - 这可能表示只获取了部分依赖项数据。 需要[设置适用于平台的依赖项监视](#set-up-dependency-monitoring)。
 >
 >
 
@@ -166,6 +166,6 @@ ms.locfileid: "59273101"
 | Azure 云服务 |[使用启动任务](../../azure-monitor/app/cloudservices.md)或[安装 .NET framework 4.6+](../../cloud-services/cloud-services-dotnet-install-dotnet.md)。 |
 
 ## <a name="next-steps"></a>后续步骤
-* [例外](../../azure-monitor/app/asp-net-exceptions.md)
+* [异常](../../azure-monitor/app/asp-net-exceptions.md)
 * [用户和页面数据](../../azure-monitor/app/javascript.md)
 * [可用性](../../azure-monitor/app/monitor-web-app-availability.md)

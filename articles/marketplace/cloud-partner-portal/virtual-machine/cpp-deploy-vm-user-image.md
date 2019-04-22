@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/29/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 0885b187c4b9e9636144a3ab2a94b941008bec20
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046729"
 ---
 # <a name="deploy-an-azure-vm-from-a-user-vhd"></a>从用户 VHD 中部署 Azure VM
@@ -31,10 +31,10 @@ ms.locfileid: "59046729"
 
 将用于 [VHD 部署](cpp-deploy-json-template.md)的 Azure 资源管理器模板复制到名为 `VHDtoImage.json` 的本地文件。  编辑此文件以提供以下参数的值。 
 
-|  **参数**             |   **说明**                                                              |
+|  **Parameter**             |   **说明**                                                              |
 |  -------------             |   ---------------                                                              |
 | ResourceGroupName          | 现有 Azure 资源组名称。  通常使用与密钥保管库相关联的同一 RG  |
-| TemplateFile               | 文件的完整路径名 `VHDtoImage.json`                                    |
+| TemplateFile               | `VHDtoImage.json` 文件的完整路径                                    |
 | userStorageAccountName     | 存储帐户的名称                                                    |
 | sNameForPublicIP           | 公共 IP 的 DNS 名称。 必须为小写                                  |
 | subscriptionId             | Azure 订阅标识符                                                  |
@@ -42,7 +42,7 @@ ms.locfileid: "59046729"
 | vmName                     | 虚拟机名称                                                    |
 | vaultName                  | 密钥保管库的名称                                                          |
 | vaultResourceGroup         | 密钥保管库的资源组
-| certificateUrl             | Url 的证书，包括版本存储在密钥保管库，例如：  `https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
+| certificateUrl             | 证书的 URL，包括存储在密钥保管库中的版本，例如：`https://testault.vault.azure.net/secrets/testcert/b621es1db241e56a72d037479xab1r7` |
 | vhdUrl                     | 虚拟硬盘的 URL                                                   |
 | vmSize                     | 虚拟机实例的大小                                           |
 | publicIPAddressName        | 公共 IP 地址的名称                                                  |

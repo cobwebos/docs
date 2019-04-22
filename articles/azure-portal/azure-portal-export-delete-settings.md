@@ -11,10 +11,10 @@ ms.custom: ''
 manager: mtillman
 ms.author: kfollis
 ms.openlocfilehash: fde7ffbaa3ef4d47eea48302a99948932aeb4f00
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361954"
 ---
 # <a name="export-or-delete-user-settings"></a>导出或删除用户设置
@@ -56,4 +56,4 @@ ms.locfileid: "59361954"
 ## <a name="next-steps"></a>后续步骤
 
 * [创建并共享 Azure 仪表板](azure-portal-dashboard-share-access.md)
-* [对收藏夹执行添加、删除和排序操作](azure-portal-add-remove-sort-favorites.md)
+* [添加、 删除和排序收藏夹](azure-portal-add-remove-sort-favorites.md)

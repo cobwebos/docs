@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/11/2019
 ms.openlocfilehash: d9cd5ba0b697cbf67f943eb49d66010745d8561e
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360824"
 ---
 # <a name="choose-the-right-sql-server-option-in-azure"></a>在 Azure 中选择适当的 SQL Server 选项
@@ -66,7 +66,7 @@ ms.locfileid: "59360824"
 
 经过优化，可将预配和管理许多数据库的整体管理成本降到最低。 由于无需管理任何虚拟机、操作系统或数据库软件，因此可以持续降低管理成本。 用户不必管理升级、高可用性或 [备份](sql-database-automated-backups.md)。 一般而言，Azure SQL 数据库可以大幅增加由单个 IT 或开发资源管理的数据库数目。 [弹性池](sql-database-elastic-pool.md)也支持 SaaS 多租户应用程序体系结构，提供租户隔离等功能，并可以跨数据库共享资源，通过缩放来降低成本。 [托管实例](sql-database-managed-instance.md)支持面向实例的功能，可用于轻松迁移现有应用程序，以及在数据库之间共享资源。
 
-- **在 Azure Vm 上运行的 SQL Server**
+- **Azure VM 上运行的 SQL Server**
 
 已针对将现有应用程序迁移到 Azure 或将现有本地应用程序扩展到混合部署中的云进行了优化。 此外，还可以使用虚拟机中的 SQL Server 开发和测试传统的 SQL Server 应用程序。 有了 Azure VM 上的 SQL server，即拥有了专用 SQL Server 实例和基于云的 VM 的完全管理权限。 当组织拥有可用来维护虚拟机的 IT 资源时，此选项是最佳选择。 使用这些功能，可以构建高度定制的系统，以解决应用程序的特定性能和可用性要求。
 
@@ -91,7 +91,7 @@ ms.locfileid: "59360824"
 有多个因素可能会影响你决定选择 PaaS 或 IaaS 来托管 SQL 数据库：
 
 - [成本](#cost) - PaaS 和 IaaS 选项都包括基本价格，其中涵盖了底层基础结构和许可证的费用。 但是，使用 IaaS 选项时，需要投入额外的时间和资源来管理数据库，而 PaaS 的价格已包括这些管理功能的费用。 选择 IaaS 选项可以在不使用资源时将其关闭，以降低成本；对于 PaaS 版本，除非你删除资源，然后在需要时重新创建资源，否则它会一直运行。
-- [管理](#administration) - PaaS 选项可以减少管理数据库所要投入的时间量。 但是，它也会限制自定义的管理任务和脚本，您可以执行或运行的范围。 例如，CLR 不支持使用单个或共用数据库，但支持的托管实例。 此外，在 PaaS 中任何部署选项不支持使用跟踪标志。
+- [管理](#administration) - PaaS 选项可以减少管理数据库所要投入的时间量。 但是，它还会限制你可以执行或运行的自定义管理任务和脚本的范围。 例如，CLR 不支持使用单个或共用数据库，但支持的托管实例。 此外，在 PaaS 中任何部署选项不支持使用跟踪标志。
 - [服务级别协议](#service-level-agreement-sla) - IaaS 和 PaaS 都提供较高的行业标准 SLA。 在基础结构方面，PaaS 选项保证 99.99% 的 SLA，而 IaaS 保证 99.95% 的 SLA，这意味着，需要实施附加的机制才能确保数据库的可用性。 在极端情况下，若要实施与 PaaS 相当的高可用性解决方案，可能需要在 VM 中创建附加的 SQL Server 并配置 AlwaysOn 可用性组，而这可能会数据库成本翻倍。
 - [迁移到 Azure 所需的时间](#market) - Azure VM 中 SQL Server 与你的环境完全匹配，因此，从本地迁移到 Azure SQL VM，与在不同的本地服务器之间迁移数据库没有什么不同。 托管实例还可以实现极其轻松的迁移；但是，在迁移到托管实例之前，可能需要应用某些更改。
 
@@ -126,7 +126,7 @@ ms.locfileid: "59360824"
 - SQL 数据库服务成本
 - 无硬件购置成本
 
-**当使用 Azure Vm 上的 SQL Server:**
+**使用 Azure VM 上的 SQL Server 时：**
 
 - 更高的管理成本
 - 已迁移的应用程序的有限开发成本，甚至没有成本
@@ -135,9 +135,9 @@ ms.locfileid: "59360824"
 
 有关定价的详细信息，请参阅以下资源：
 
-- [SQL Database 定价](https://azure.microsoft.com/pricing/details/sql-database/)
+- [SQL 数据库定价](https://azure.microsoft.com/pricing/details/sql-database/)
 - 针对 [SQL](https://azure.microsoft.com/pricing/details/virtual-machines/#sql) 和 [Windows](https://azure.microsoft.com/pricing/details/virtual-machines/#windows) 的[虚拟机定价](https://azure.microsoft.com/pricing/details/virtual-machines/)
-- [Azure 定价计算器](https://azure.microsoft.com/pricing/calculator/)
+- [Azure 价格计算器](https://azure.microsoft.com/pricing/calculator/)
 
 ### <a name="administration"></a>管理
 

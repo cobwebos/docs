@@ -11,10 +11,10 @@ ms.service: sql-data-warehouse
 ms.topic: article
 ms.date: 04/03/2019
 ms.openlocfilehash: 1f645a9c9161fb2fd71b2fd9af9ade65bff0be94
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59361145"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>将数据仓库升级到 Gen2
@@ -30,7 +30,7 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  降低计算�
 
 \* 表示该区域的特定时间表当前不可用。
 
-| **区域** | **提供较低的第 2 代** | **自动升级开始** |
+| **区域** | **较低的 Gen2 可用** | **自动升级开始时间** |
 |:--- |:--- |:--- |
 | 澳大利亚东部 |可用 |2019 年 6 月 1日日 |
 | 澳大利亚东南部 |2019 年 4 月 15日日 |2019 年 5 月 1 日 |
@@ -101,7 +101,7 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  降低计算�
 
 ## <a name="migration-frequently-asked-questions"></a>迁移常见问题
 
-**问：第 2 代成本 Gen1 相同？**
+**问：Gen2 的成本与 Gen1 相同吗？**
 
 - 答：是的。
 
@@ -109,39 +109,39 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  降低计算�
 
 - 答：引用服务级别目标的任何自动化脚本都应更改为与 Gen2 等效项相对应。  详见[此处](upgrade-to-latest-generation.md#sign-in-to-the-azure-portal)。
 
-**问：自升级通常需要多长？**
+**问：自行升级通常需要多长时间？**
 
 - 答：可以就地升级或从还原点升级。  
    - 就地升级将导致数据仓库暂时暂停和继续。  数据仓库联机时，后台进程将继续。  
    - 如果要通过还原点进行升级，则需要更长时间，因为升级将完成整个还原过程。
 
-**问：将自动升级需要多长？**
+**问：自动升级需要多长时间？**
 
 - 答：升级的实际停机时间仅为暂停和恢复服务所需的时间，即 5 到 10 分钟。 在短暂的停机时间之后，后台进程将运行存储迁移。 后台进程的时间长度取决于数据仓库的大小。
 
-**问：何时此自动升级会进行？**
+**问：这种自动升级何时进行？**
 
 - 答：在维护计划期间。 利用选择的维护计划可以最大限度地减少对业务的干扰。
 
-**问：如果我背景升级过程似乎已停止，我该做什么？**
+**问：如果我的后台升级过程似乎被卡住了该怎么办？**
 
  - 答：开始为列存储表重新编制索引。 请注意，在此操作期间，为表重新编制索引将处于脱机状态。
 
-**问：如果第 2 代不具有服务级别目标必须 Gen1 上？**
+**问：如果 Gen2 没有 Gen1 上的服务级别目标怎么办？**
 - 答：如果在 Gen1 上运行 DW600 或 DW1200，建议分别使用 DW500c 或 DW1000c，因为 Gen2 提供的内存、资源和性能比 Gen1 更高。
 
-**问：可以禁用异地备份？**
+**问：我可以禁用异地备份吗？**
 - 答：不。 异地备份是一项企业功能，可在区域不可用时保留数据仓库的可用性。 若有其他疑虑，请创建[支持请求](sql-data-warehouse-get-started-create-support-ticket.md)。
 
-**问：是否有 Gen1 和第 2 代之间的 T-SQL 的语法差异？**
+**问：Gen1 和 Gen2 之间的 T-SQL 语法有区别吗？**
 
 - 答：从 Gen1 到 Gen2 的 T-SQL 语言语法没有变化。
 
-**问：第 2 代是否支持维护 Windows？**
+**问：Gen2 是否支持维护时段？**
 
 - 答：是的。
 
-**问：我将能够升级我的区域之后创建一个新的 Gen1 实例？**
+**问：在我的区域升级后，我能够创建新的 Gen1 实例吗？**
 
 - 答：不。 区域升级后，将禁用新 Gen1 实例的创建。
 
@@ -150,8 +150,8 @@ Microsoft 帮助降低运行数据仓库的入门级的成本。  降低计算�
 - [升级步骤](upgrade-to-latest-generation.md)
 - [维护时段](maintenance-scheduling.md)
 - [资源运行状况监视器](https://docs.microsoft.com/azure/service-health/resource-health-overview)
-- [在开始迁移之前，请查看](upgrade-to-latest-generation.md#before-you-begin)
-- [就地升级和升级从还原点](upgrade-to-latest-generation.md)
+- [开始迁移前查看](upgrade-to-latest-generation.md#before-you-begin)
+- [就地升级和从还原点升级](upgrade-to-latest-generation.md)
 - [创建用户定义的还原点](sql-data-warehouse-restore.md#restore-through-the-azure-portal)
-- [了解如何还原到第 2 代](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
-- [打开 SQL 数据仓库的支持请求](https://go.microsoft.com/fwlink/?linkid=857950)
+- [了解如何还原到 Gen2](sql-data-warehouse-restore.md#restore-an-active-or-paused-database-using-the-azure-portal)
+- [创建 SQL 数据仓库支持请求](https://go.microsoft.com/fwlink/?linkid=857950)

@@ -11,10 +11,10 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
 ms.openlocfilehash: 0a29d763ab54ee716e514df23576e9c3b294d792
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359657"
 ---
 # <a name="azure-machine-learning-studio-web-services-deployment-and-consumption"></a>Azure 机器学习工作室 Web 服务：部署和使用
@@ -37,7 +37,7 @@ ms.locfileid: "59359657"
 * 有关部署 Web 服务的特定示例，请参阅：
 
   * [教程 3：部署信用风险模型](tutorial-part3-credit-risk-deploy.md)
-  * [如何将 web 服务部署到多个区域](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
+  * [如何将 Web 服务部署到多个区域](/azure/machine-learning/studio/publish-a-machine-learning-web-service#multi-region)
 
 ### <a name="with-web-services-resource-provider-apis-azure-resource-manager-apis"></a>使用 Web 服务资源提供程序 API (Azure 资源管理器 API)
 
@@ -95,8 +95,8 @@ ms.locfileid: "59359657"
 
 可以下载使用 Web 服务的 Excel 模板：
 
-* [使用 Excel 中的 Azure 机器学习 web 服务](consuming-from-excel.md)
-* [Excel 外接程序的 Azure 机器学习 Web 服务](excel-add-in-for-web-services.md)
+* [从 Excel 使用 Azure 机器学习 Web 服务](consuming-from-excel.md)
+* [适用于 Azure 机器学习 Web 服务的 Excel 加载项](excel-add-in-for-web-services.md)
 
 ### <a name="from-a-rest-based-client"></a>从基于 REST 的客户端
 

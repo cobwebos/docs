@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
 ms.openlocfilehash: c2821890408e38d0d2be730da10b7926d77697d4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048293"
 ---
 # <a name="performance-considerations-for-traffic-manager"></a>流量管理器的性能注意事项
@@ -56,7 +56,7 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
     ![pulse2](./media/traffic-manager-performance-considerations/traffic-manager-web-site-pulse2.png)
 
-* [CA 应用综合监视器](https://asm.ca.com/en/checkit.php)
+* [CA App Synthetic Monitor](https://asm.ca.com/en/checkit.php)
 
     以前称为监视鼠标检查网站工具，此站点显示你的 DNS 解析时间从多个地理区域同时。 输入 URL 即可查看 DNS 解析时间、连接时间以及各个地理位置的连接速度。 使用此测试可以查看针对全球不同位置返回了哪些托管服务。
 
@@ -66,21 +66,21 @@ DNS 名称解析速度会加快，结果会被缓存。 初始 DNS 查找速度�
 
     此工具提供网页上每个元素的性能统计信息。 “Page Analysis”（页面分析）选项卡显示 DNS 查找花费的时间百分比。
 
-* [什么是我 DNS？](https://www.whatsmydns.net/)
+* [我的 DNS 是什么？](https://www.whatsmydns.net/)
 
     此站点从 20 个不同的位置执行 DNS 查找，并在地图上显示结果。
 
-* [深入了解 Web 界面](https://www.digwebinterface.com)
+* [深入了解 Web 接口](https://www.digwebinterface.com)
 
     此站点显示更详细的 DNS 信息，包括 CNAME 和 A 记录。 请确保在选项下选中“着色输出”和“统计信息”，并在 Nameservers 下选中“全部”。
 
 ## <a name="next-steps"></a>后续步骤
 
-[有关流量管理器流量路由方法](traffic-manager-routing-methods.md)
+[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)
 
 [测试流量管理器设置](traffic-manager-testing-settings.md)
 
-[Traffic Manager 的操作 （REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 
-[Azure 流量管理器 Cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
+[Azure 流量管理器 cmdlet](https://docs.microsoft.com/powershell/module/az.trafficmanager)
 

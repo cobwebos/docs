@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
 ms.openlocfilehash: 8a593e92d7f24885c35043b874528e881d2e021e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276093"
 ---
 # <a name="determine-causes-of-non-compliance"></a>确定导致非符合性的原因
@@ -20,7 +20,7 @@ ms.locfileid: "59276093"
 
 > [!div class="checklist"]
 > - [符合性详细信息](#compliance-details)
-> - [更改历史记录（预览版）](#change-history-preview)
+> - [更改历史记录 （预览版）](#change-history-preview)
 
 ## <a name="compliance-details"></a>符合性详细信息
 

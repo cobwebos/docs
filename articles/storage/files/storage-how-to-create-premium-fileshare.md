@@ -9,10 +9,10 @@ ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288421"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何创建 Azure 的高级文件共享
@@ -156,7 +156,7 @@ az login
 
 若要使用 CLI 的高级文件交互，您必须将扩展添加到你的 shell。
 
-为此，请使用 Cloud Shell 或本地 shell 中输入以下命令： `az extension add --name storage-preview`
+为此，请使用 Cloud Shell 或本地 shell 输入以下命令：`az extension add --name storage-preview`
 
 ### <a name="create-a-resource-group"></a>创建资源组
 

@@ -17,10 +17,10 @@ ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009362"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
@@ -80,7 +80,7 @@ ms.locfileid: "59009362"
 查看所示的不同属性，这些属性查找几乎不不同于 Azure VM 属性。 左侧标题中，它显示了资源组、 Azure 区域、 订阅名称和 ID 以及你添加一些标记。 默认情况下，在 HANA 大型实例单元有分配任何标记。 标头的右侧，部署已完成时所分配列出的单位的名称。 操作系统显示的 IP 地址及。 为 Vm 的 HANA 大型实例单元类型的 CPU 数量的线程和内存还会显示。 在不同的 HANA 大型实例单位，更多详细信息如下所示：
 
 - [对 HLI 可用的 SKU](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-available-skus)
-- [SAP HANA（大型实例）存储体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
+- [SAP HANA （大型实例） 存储体系结构](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-storage-architecture) 
 
 有关 HANA 大型实例单元的电源状态通知的标头的右列中的附加字段。
 
@@ -149,6 +149,6 @@ ms.locfileid: "59009362"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [如何监视 Azure 上的 SAP HANA（大型实例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
+- [如何监视 Azure 上的 SAP HANA （大型实例）](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/troubleshooting-monitoring)
 - [HANA 端的监视和故障排除](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-monitor-troubleshoot)
 

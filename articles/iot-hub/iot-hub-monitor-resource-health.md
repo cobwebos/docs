@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/27/2019
 ms.author: kgremban
 ms.openlocfilehash: 6dea1add1e329cfc894068732898a856a69c9b4c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274036"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>监视 Azure IoT 中心的运行状况并快速诊断问题
@@ -503,4 +503,4 @@ Azure IoT 中心指示区域级别的运行状况。 如果区域性服务中断
 ## <a name="next-steps"></a>后续步骤
 
 * [了解 IoT 中心指标](iot-hub-metrics.md)
-* [通过连接 IoT 中心和邮箱的 Azure 逻辑应用进行 IoT 远程监视并发送通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+* [IoT 远程监视和使用 Azure 逻辑应用通过连接 IoT 中心和邮箱的通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)

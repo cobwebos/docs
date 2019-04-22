@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7de46a534ea7920bcae4a5b2a3316117f090a7bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265060"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机高可用性
@@ -196,8 +196,8 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
     > 强烈建议为 SAP 安装使用 Azure 资源管理器部署模型。 它提供经典部署模型所不具备的多种优势。 详细了解 Azure [部署模型][virtual-machines-azure-resource-manager-architecture-benefits-arm]。   
     >
 * 以下操作系统上的 SAP 高可用性：
-  * ![Windows][Logo_Windows]**Windows**，并使用**Windows Server 故障转移群集 (WSFC)** 
-  * ![Linux][Logo_Linux] **Linux**，并使用**Linux 群集框架**
+  * ![Windows][Logo_Windows]  **Windows**，使用 **Windows Server 故障转移群集 (WSFC)**
+  * ![Linux][Logo_Linux] **Linux**，使用 **Linux 群集框架**
 
 这些文章介绍帮助保护单一故障点 (SPOF) 组件，例如 SAP 中心服务 (ASCS/SCS) 和数据库管理系统 (DBMS)。 此外，还介绍 Azure 中的冗余组件，例如 SAP 应用程序服务器。
 
@@ -218,11 +218,11 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 
 **更新时间：** 2019 年 3 月
 
-* ![Windows][Logo_Windows] [准备 Azure 基础结构通过使用 Windows 故障转移群集的 SAP 高可用性和**共享的磁盘**针对 SAP ASCS/SCS 实例][sap-high-availability-infrastructure-wsfc-shared-disk]
+* ![Windows][Logo_Windows][针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和**共享磁盘**准备 SAP 高可用性的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-shared-disk]
 
-* ![Windows][Logo_Windows] [准备 Azure 基础结构通过使用 Windows 故障转移群集的 SAP 高可用性和**文件共享**针对 SAP ASCS/SCS 实例][sap-high-availability-infrastructure-wsfc-file-share]
+* ![Windows][Logo_Windows][针对 SAP ASCS/SCS 实例使用 Windows 故障转移群集和**文件共享**准备 SAP 高可用性的 Azure 基础结构][sap-high-availability-infrastructure-wsfc-file-share]
 
-* ![Linux][Logo_Linux] [SAP 高可用性的针对 SAP ASCS/SCS 实例使用 SUSE Linux Enterprise Server 群集框架准备 Azure 基础结构][sap-suse-ascs-ha-setting-ha-nfs]
+* ![Linux][Logo_Linux][针对 SAP ASCS/SCS 实例使用 SUSE Linux Enterprise Server 群集框架准备 SAP 高可用性的 Azure 基础结构][sap-suse-ascs-ha-setting-ha-nfs]
 
 * ![Linux][Logo_Linux] [SAP 高可用性的 Azure NetApp 文件针对 SAP ASCS/SCS 实例使用 SUSE Linux Enterprise Server 群集框架准备 Azure 基础结构][sap-suse-ascs-ha-setting-ha-anf]
 
@@ -236,11 +236,11 @@ Azure 虚拟机是面向在最短时间内需要计算、存储和网络资源�
 
 **更新时间：** 2019 年 3 月
 
-* ![Windows][Logo_Windows] [通过使用 Windows 故障转移群集安装 SAP NetWeaver 高可用性和**共享的磁盘**针对 SAP ASCS/SCS 实例][sap-high-availability-installation-wsfc-shared-disk]
+* ![Windows][Logo_Windows][使用 Windows 故障转移群集和**共享磁盘**为 SAP ASCS/SCS 实例安装 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-shared-disk]
 
-* ![Windows][Logo_Windows] [通过使用 Windows 故障转移群集安装 SAP NetWeaver 高可用性和**文件共享**针对 SAP ASCS/SCS 实例][sap-high-availability-installation-wsfc-file-share]
+* ![Windows][Logo_Windows][使用 Windows 故障转移群集和**文件共享**为 SAP ASCS/SCS 实例安装 SAP NetWeaver 高可用性][sap-high-availability-installation-wsfc-file-share]
 
-* ![Linux][Logo_Linux] [由针对 SAP ASCS/SCS 实例使用 SUSE Linux Enterprise Server 群集框架安装 SAP NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation]
+* ![Linux][Logo_Linux][针对 SAP ASCS/SCS 实例使用 SUSE Linux Enterprise Server 群集框架安装 SAP NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation]
 
 * ![Linux][Logo_Linux] [使用 Azure NetApp 文件针对 SAP ASCS/SCS 实例使用 SUSE Linux Enterprise Server 群集框架安装 SAP NetWeaver 高可用性][sap-suse-ascs-ha-sap-installation-anf]
 

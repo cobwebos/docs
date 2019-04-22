@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/05/2019
 ms.author: monhaber
 ms.openlocfilehash: 3d9658a6b7501714a6aad0e8eaa30ce587284bfe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046185"
 ---
 # <a name="protect-your-network-resources-in-azure-security-center"></a>保护 Azure 安全中心的网络资源
@@ -101,7 +101,7 @@ Azure 安全中心不断分析 Azure 资源的安全状态，以实现网络安�
 1. 在映射上选择特定资源时，右侧窗格将打开，并提供有关资源、连接的安全解决方案（如果有）以及与资源相关的建议的常规信息。 对于选择的每种资源，它都是相同类型的行为。 
 2. 单击“流量”以查看资源上可能的出站和入站流量列表 - 这是一个全面的列表，列出谁可以与资源进行通信、可以与谁通信以及通过哪些协议和端口进行通信。 例如，当您选择显示 VM，它可以与进行通信的所有 Vm，而它们可以与进行通信的所有子网时选择的子网，将显示。
 
-**此数据基于分析的网络安全组以及高级的机器学习算法分析多个规则，以了解其 crossovers 和交互。** 
+此数据基于对网络安全组的分析以及分析多个规则以了解其交叉和交互的高级机器学习算法。 
 
 ![网络流量映射](./media/security-center-network-recommendations/network-map-traffic.png)
 

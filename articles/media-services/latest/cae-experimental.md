@@ -13,10 +13,10 @@ ms.date: 04/05/2019
 ms.author: sethm
 ms.custom: ''
 ms.openlocfilehash: 3c50502a8b873503ee937914fac5f2d92cb23a2b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288376"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>实验性识别内容的编码预设
@@ -33,21 +33,21 @@ ms.locfileid: "59288376"
 
 ![使用 PSNR 速率扭曲 (RD) 曲线](media/cae-experimental/msrv1.png)
 
-**图 1：为高的复杂性源使用 PSNR 指标的速率扭曲 (RD) 曲线**
+图 1：**为高的复杂性源使用 PSNR 指标的速率扭曲 (RD) 曲线**
 
 ![使用 VMAF 速率扭曲 (RD) 曲线](media/cae-experimental/msrv2.png)
 
-**图 2：为高的复杂性源使用 VMAF 指标的速率扭曲 (RD) 曲线**
+图 2：**为高的复杂性源使用 VMAF 指标的速率扭曲 (RD) 曲线**
 
 当前预设已优化了高的复杂性，高质量源视频 （电影、 电视节目）。 工作正在进行中以适应较低的复杂性内容 （例如，PowerPoint 演示文稿），以及不佳质量视频。 此预设还使用一组相同的解决方法，如自适应流式处理预设。 Microsoft 正致力于方法来选择最小的基于内容的解决方法集。 按如下所示是结果另一种类别的源内容编码器已能够确定输入是低质量 （许多由于低比特率压缩项目）。 请注意，进行实验性预设，编码器决定生成一个输出层 – 足够低的比特率，因此大多数客户端能够而无需停止播放流。
 
 ![使用 PSNR RD 曲线](media/cae-experimental/msrv3.png)
 
-**图 3：（在 1080p) 的低质量输入使用 PSNR RD 曲线**
+图 3：**（在 1080p) 的低质量输入使用 PSNR RD 曲线**
 
 ![使用 VMAF RD 曲线](media/cae-experimental/msrv4.png)
 
-**图 4：（在 1080p) 的低质量输入使用 VMAF RD 曲线**
+图 4：**（在 1080p) 的低质量输入使用 VMAF RD 曲线**
 
 ## <a name="use-the-experimental-preset"></a>使用实验性预设
 

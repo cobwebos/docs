@@ -13,10 +13,10 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 7db9c6400ac7d235153a59965e34e30d9b809a81
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359686"
 ---
 # <a name="how-to-use-azure-sql-database"></a>如何使用 Azure SQL 数据库
@@ -25,7 +25,7 @@ ms.locfileid: "59359686"
 
 ## <a name="load-data"></a>加载数据
 
-- [将单个数据库或入池的数据库并在 Azure 中复制](sql-database-copy.md)
+- [在 Azure 中复制单一数据库或入池数据库](sql-database-copy.md)
 - [从 BACPAC 导入 DB](sql-database-import.md)
 - [将 DB 导出到 BACPAC](sql-database-export.md)
 - [使用 BCP 加载数据](sql-database-load-from-csv-with-bcp.md)
@@ -51,9 +51,9 @@ ms.locfileid: "59359686"
 
 ### <a name="extended-events"></a>扩展的事件
 
-- [扩展的事件](sql-database-xevent-db-diff-from-svr.md)
-- [将扩展事件存储到事件文件](sql-database-xevent-code-event-file.md)
-- [将扩展事件存储到环形缓冲区](sql-database-xevent-code-ring-buffer.md)
+- [扩展事件](sql-database-xevent-db-diff-from-svr.md)
+- [将扩展的事件存储到事件文件](sql-database-xevent-code-event-file.md)
+- [将扩展的事件存储到环形缓冲区](sql-database-xevent-code-ring-buffer.md)
 
 ## <a name="configure-features"></a>配置功能
 
@@ -72,9 +72,9 @@ ms.locfileid: "59359686"
 
 - [连接](sql-database-libraries.md)
 - [使用 Spark 连接器](sql-database-spark-connector.md)
-- [应用身份验证](sql-database-client-id-keys.md)
+- [对应用进行身份验证](sql-database-client-id-keys.md)
 - [错误消息](sql-database-develop-error-messages.md)
-- [使用批处理以提高性能](sql-database-use-batching-to-improve-performance.md)
+- [使用批处理提高性能](sql-database-use-batching-to-improve-performance.md)
 - [连接指南](sql-database-connectivity-issues.md)
 - [DNS 别名](dns-alias-overview.md)
 - [设置 DNS 别名 PowerShell](dns-alias-powershell.md)
@@ -84,9 +84,9 @@ ms.locfileid: "59359686"
 
 ## <a name="design-applications"></a>设计应用程序
 
-- [灾难恢复设计](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
-- [弹性池设计](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
-- [应用升级设计](sql-database-manage-application-rolling-upgrade.md)
+- [设计灾难恢复](sql-database-designing-cloud-solutions-for-disaster-recovery.md)
+- [设计弹性池](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md)
+- [设计应用升级](sql-database-manage-application-rolling-upgrade.md)
 
 ### <a name="design-multi-tenant-saas-applications"></a>设计多租户 SaaS 应用程序
 

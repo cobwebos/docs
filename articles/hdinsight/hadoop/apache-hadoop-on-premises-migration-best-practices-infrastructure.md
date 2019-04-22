@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: hrasheed
 ms.openlocfilehash: 4fe47feff6ac3a58ba4db8c700a3e34b2cdc0df9
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59274683"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 基础结构最佳做法
@@ -168,7 +168,7 @@ Azure 虚拟网络可以筛选和路由网络流量，使 Azure 资源（例如 
 
 有关详细信息，请参阅以下文章：
 
-- [Azure 虚拟的网络-概述](../../virtual-network/virtual-networks-overview.md)
+- [Azure 虚拟网络概述](../../virtual-network/virtual-networks-overview.md)
 - [使用 Azure 虚拟网络扩展 Azure HDInsight](../hdinsight-extend-hadoop-virtual-network.md)
 
 ## <a name="securely-connect-to-azure-services-with-azure-virtual-network-service-endpoints"></a>使用 Azure 虚拟网络服务终结点安全地连接到 Azure 服务
@@ -178,7 +178,7 @@ HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-netw
 有关详细信息，请参阅以下文章：
 
 - [虚拟网络服务终结点](../../virtual-network/virtual-network-service-endpoints-overview.md)
-- [增强 HDInsight 安全性与服务终结点](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
+- [使用服务终结点增强 HDInsight 安全性](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)
 
 ## <a name="connect-hdinsight-to-the-on-premises-network"></a>将 HDInsight 连接到本地网络
 
@@ -194,4 +194,4 @@ HDInsight 支持[虚拟网络服务终结点](../../virtual-network/virtual-netw
 
 阅读本系列教程的下一篇文章：
 
-- [存储以实现本地到 Azure HDInsight Hadoop 迁移的最佳做法](apache-hadoop-on-premises-migration-best-practices-storage.md)
+- [有关从本地迁移到 Azure HDInsight Hadoop 的存储最佳做法](apache-hadoop-on-premises-migration-best-practices-storage.md)

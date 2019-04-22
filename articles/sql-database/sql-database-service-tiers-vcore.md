@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库服务 - vCore | Microsoft 文档
-description: 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源，匹配本地性能，以及优化价格。
+description: 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源、匹配本地性能，以及优化价格。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -13,15 +13,15 @@ ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357950"
 ---
 # <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层、Azure 混合权益和迁移
 
-使用基于 vCore 的购买模型，可以单独缩放计算和存储资源，匹配本地性能，以及优化价格。 它还允许你选择硬件世代：
+使用基于 vCore 的购买模型，可以单独缩放计算和存储资源、匹配本地性能，以及优化价格。 它还允许你选择硬件世代：
 
 - 第 4 代 - 最多 24 个基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器的逻辑 CPU，vCore = 1 PP（物理核心），每核心 7 GB，附加了 SSD
 - 第 5 代 - 最多 80 个基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器的逻辑 CPU，vCore=1 LP（超线程），每个核心 5.1 GB，快速 eNVM SSD
@@ -37,7 +37,7 @@ vCore 模型提供了三个服务层：常规用途、超大规模和业务关�
 
 下表可帮助你了解这三个层之间的差别：
 
-||**常规用途**|**业务关键**|**超大规模 （预览版）**|
+||**常规用途**|**业务关键**|**超大规模（预览版）**|
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。|IO 要求高的业务应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷|
 |计算|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|
@@ -54,7 +54,7 @@ vCore 模型提供了三个服务层：常规用途、超大规模和业务关�
 
 - 有关详细信息，请参阅[单一数据库中的 vCore 资源限制](sql-database-vcore-resource-limits-single-databases.md)和[托管实例中的 vCore 资源限制](sql-database-managed-instance.md#vcore-based-purchasing-model)。
 - 若要详细了解常规用途服务层和业务关键服务层，请参阅[常规用途服务层和业务关键服务层](sql-database-service-tiers-general-purpose-business-critical.md)。
-- 若要详细了解基于 vCore 的采购模型中的超大规模服务层，请参阅[超大规模服务层](sql-database-service-tier-hyperscale.md)。  
+- 若要详细了解基于 vCore 的购买模型中的超大规模服务层级，请参阅[超大规模服务层级](sql-database-service-tier-hyperscale.md)。  
 
 > [!IMPORTANT]
 > 如果所需的计算容量 vCore 数不超过一个，请使用基于 DTU 的购买模型。
@@ -76,17 +76,17 @@ vCore 模型提供了三个服务层：常规用途、超大规模和业务关�
 
 - 使用 Azure CLI 设置或更新许可证类型：
 
-  - [az sql db 创建](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
+  - [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-create)
   - [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az-sql-db-update)
-  - [az sql mi 创建](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
+  - [az sql mi create](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-create)
   - [az sql mi update](https://docs.microsoft.com/cli/azure/sql/mi#az-sql-mi-update)
 
 - 使用 REST API 设置或更新许可证类型：
 
-  - [数据库-创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
-  - [数据库-更新](https://docs.microsoft.com/rest/api/sql/databases/update)
-  - [托管实例的创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
-  - [托管的实例的更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
+  - [数据库 - 创建或更新](https://docs.microsoft.com/rest/api/sql/databases/createorupdate)
+  - [数据库 - 更新](https://docs.microsoft.com/rest/api/sql/databases/update)
+  - [托管实例 - 创建或更新](https://docs.microsoft.com/rest/api/sql/managedinstances/createorupdate)
+  - [托管实例 - 更新](https://docs.microsoft.com/rest/api/sql/managedinstances/update)
 
 ## <a name="migration-from-dtu-model-to-vcore-model"></a>从 DTU 模型迁移到 vCore 模型
 

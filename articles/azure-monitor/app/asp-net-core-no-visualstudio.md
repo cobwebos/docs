@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: cithomas
 ms.openlocfilehash: 8243523887ec9861459b2d196126237cf89bad97
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59288361"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>用于 ASP.NET Core 应用程序的 application Insights
@@ -268,7 +268,7 @@ Application Insights 支持通过 ILogger 发送的捕获日志。 阅读完整�
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-*1.我想要跟踪除自动收集遥测数据的一些其他遥测数据。 我该怎么办？*
+*1.我想要跟踪除自动收集遥测数据的一些其他遥测数据。我该怎么办？*
 
 * 获取的实例`TelemetryClient`通过使用构造函数注入和调用所需`TrackXXX()`方法。 不建议创建新`TelemetryClient`在 ASP.NET Core 应用程序，作为单一实例的实例`TelemetryClient`已在共享的 DI 容器中注册`TelemetryConfiguration`与遥测数据的其余部分。 创建一个新`TelemetryClient`实例建议仅当它必须有从遥测数据的其余部分不同的配置。 下面的示例演示如何从控制器跟踪的其他遥测数据。
 
@@ -293,11 +293,11 @@ public class HomeController : Controller
 
  请参阅[Application Insights 自定义指标 API 参考](https://docs.microsoft.com/azure/azure-monitor/app/api-custom-events-metrics/)有关 Application Insights 中的报表的自定义数据的说明。
 
-*2.某些 Visual Studio 模板上 IWebHostBuilder 使用 UseApplicationInsights() 扩展方法以启用 Application Insights。 这种用法是否仍然有效？*
+*2.某些 Visual Studio 模板上 IWebHostBuilder 使用 UseApplicationInsights() 扩展方法以启用 Application Insights。这种用法是否仍然有效？*
 
 * 使用此方法启用 Application Insights 是有效的并在 Visual Studio 入职和和中的 Azure Web 应用扩展插件使用。 但是，建议使用`services.AddApplicationInsightsTelemery()`因为它提供了重载，用于控制一些配置。 两者方法在内部执行相同操作，因此，如果要应用任何自定义配置，则调用或者是没问题。
 
-*3.我将部署到 Azure Web 应用我的 ASP.NET Core 应用程序。 仍应该启用从 Web 应用的 Application Insights 扩展*
+*3.我将部署到 Azure Web 应用我的 ASP.NET Core 应用程序。仍应该启用从 Web 应用的 Application Insights 扩展*
 
 * 如果这篇文章中所示，在生成时安装 SDK，，则无需启用 Web 应用门户中的 Application Insights 扩展。 即使已安装扩展，它将回退，当它检测到 SDK 已添加到应用程序。 启用 Application Insights 从扩展使您安装并更新到你的应用程序的 SDK。 但是，根据这篇文章中启用 Application Insights 会出于以下原因更加灵活。
     1. Application Insights 遥测数据将继续工作
@@ -313,11 +313,11 @@ public class HomeController : Controller
 
 * 不。 [状态监视器](https://docs.microsoft.com/azure/azure-monitor/app/monitor-performance-live-website-now)及其即将推出的替代[IISConfigurator](https://github.com/Microsoft/ApplicationInsights-Announcements/issues/21)目前仅支持 ASP.NET。 将更新文档时对 ASP.NET Core 应用程序可用的支持。
 
-*5.我有一个 ASP.NET Core 2.0 应用程序？ 不是 Application Insights 会自动为其启用而无需执行任何操作？*
+*5.我有一个 ASP.NET Core 2.0 应用程序？不是 Application Insights 会自动为其启用而无需执行任何操作？*
 
 * `Microsoft.AspNetCore.All` 2.0 元包包含 Application Insights SDK （版本 2.1.0），并运行 Visual Studio 调试器的应用程序，如果 Visual Studio 将允许 application insights 和本地本身在 IDE 中显示遥测数据。 遥测数据未发送到 Application Insights 服务，除非显式指定检测密钥。 我们建议按照这篇文章中的说明进行操作，以启用 Application Insights 中，即使对于 2.0 应用程序。
 
-*6.在 Linux 中运行我的应用程序。 所有功能在 Linux 中也都支持？*
+*6.在 Linux 中运行我的应用程序。所有功能在 Linux 中也都支持？*
 
 * 是的。 对 SDK 的功能支持是相同的所有平台，但存在以下例外：
     1. 在非 Windows 中尚不支持性能计数器。 添加 Linux 支持时，将更新本文档。

@@ -10,10 +10,10 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 483f9092d29fc40937ed9d54510269af2af30872
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59008640"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>在 Azure 自动化中计划 Runbook
@@ -25,7 +25,7 @@ ms.locfileid: "59008640"
 
 ## <a name="powershell-cmdlets"></a>PowerShell Cmdlet
 
-下表中的 cmdlet 用于创建和管理在 Azure 自动化中通过 PowerShell 的计划。 它们作为 [Azure PowerShell 模块](/powershell/azure/overview)的一部分提供。
+下表中的 cmdlet 用于在 Azure 自动化中通过 PowerShell 创建和管理计划。 它们作为 [Azure PowerShell 模块](/powershell/azure/overview)的一部分提供。
 
 | Cmdlet | 描述 |
 |:--- |:--- |
@@ -39,7 +39,7 @@ ms.locfileid: "59008640"
 
 ## <a name="creating-a-schedule"></a>创建计划
 
-在 Azure 门户或 PowerShell，可以创建新计划的 runbook。
+可以使用 Azure 门户或 PowerShell 为 Runbook 创建新计划。
 
 > [!NOTE]
 > 当运行新的计划作业时，Azure 自动化将在自动化帐户中使用最新模块。  为了避免影响 runbook 及其自动化进程，你应该首先测试已将计划与专用于测试的自动化帐户进行链接的 runbook。  这将验证计划的 runbook 是否继续正常运行，如果没有，则可以进一步排除故障并在将更新的 runbook 版本迁移到生产之前应用所需的任何更改。
@@ -51,23 +51,23 @@ ms.locfileid: "59008640"
 2. 单击页面顶部的“添加计划”。
 3. 在“新建计划”窗格中，键入新计划的“名称”和（可选）“说明”。
 4. 通过选择“一次”或“定期”来选择该计划是运行一次，还是按计划重复运行。 如果选择“一次”，请指定“开始时间”，并单击“创建”。 如果选择“定期”，请指定“开始时间”，并且在“重复间隔”中选择想要 runbook 重复运行的频率（按“小时”、按“天”、按“周”或按“月”）。
-    1. 如果选择**周**，将为你提供一系列可供选择星期日期。 根据需要选择天数。 计划的第一次运行将在开始时间之后选择的第一天进行。 例如，若要选择周末计划，选择**星期六**并**星期日**。
+    1. 如果选择“周”，则会显示一周中可供选择的日期列表。 根据需要选择天数。 计划的第一次运行将在开始时间之后选择的第一天进行。 例如，若要选择周末计划，请选择“星期六”和“星期日”。
 
-       ![设置周末定期计划](../media/schedules/week-end-weekly-recurrence.png)
+       ![设置周末重复计划](../media/schedules/week-end-weekly-recurrence.png)
 
-    2. 如果选择**月**，将向你提供不同的选项。 对于“每月进行次数”选项，请选择“每月天数”或“每周天数”。 如果愿意**每月天数**，日历显示一个可选择根据需要尽可能多天。 如果您选择如 31 号不会出现在当前月份的日期，不会运行该计划。 如果希望计划在最后一天运行，请在“在月份的最后一天运行”下选择“是”。 如果选择“每周天数”，则会显示“重复间隔”选项。 选择“第一”、“第二”、“第三”、“第四”或“最后”。 最后选择一天进行重复。
+    2. 如果选择“月”，则会看到不同的选项。 对于“每月进行次数”选项，请选择“每月天数”或“每周天数”。 如果选择“月份日期”，则会显示一个可根据需要选择天数的日历。 如果选择当月不存在的日期（例如 31 日），则计划将不会运行。 如果希望计划在最后一天运行，请在“在月份的最后一天运行”下选择“是”。 如果选择“每周天数”，则会显示“重复间隔”选项。 选择“第一”、“第二”、“第三”、“第四”或“最后”。 最后选择一天进行重复。
 
-       ![上个月的第一个、 第 15 个，和最后一天的每月计划](../media/schedules/monthly-first-fifteenth-last.png)
+       ![在每月 1 号、15 号和最后一天运行的计划](../media/schedules/monthly-first-fifteenth-last.png)
 
 5. 完成后，单击“创建”。
 
-### <a name="to-create-a-new-schedule-with-powershell"></a>若要使用 PowerShell 创建新计划
+### <a name="to-create-a-new-schedule-with-powershell"></a>使用 PowerShell 创建新计划
 
 可使用 [New-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/new-azurermautomationschedule) cmdlet 创建计划。 必须指定计划的开始时间以及运行频率。 以下示例演示如何创建许多不同的计划方案。
 
-#### <a name="create-a-one-time-schedule"></a>创建一个时间计划
+#### <a name="create-a-one-time-schedule"></a>创建一次性计划
 
-下面的示例命令创建一个时间计划。
+以下示例命令将创建一次性的计划。
 
 ```azurepowershell-interactive
 $TimeZone = ([System.TimeZoneInfo]::Local).Id
@@ -76,7 +76,7 @@ New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "
 
 #### <a name="create-a-recurring-schedule"></a>创建重复计划
 
-以下示例命令演示如何创建重复执行计划，每天运行一年下午 1:00。
+以下示例命令演示如何创建在一年中的每天下午 1:00 运行的重复计划。
 
 ```azurepowershell-interactive
 $StartTime = Get-Date "13:00:00"
@@ -84,9 +84,9 @@ $EndTime = $StartTime.AddYears(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Schedule02" -StartTime $StartTime -ExpiryTime $EndTime -DayInterval 1 -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-weekly-recurring-schedule"></a>创建每周重复执行的计划
+#### <a name="create-a-weekly-recurring-schedule"></a>创建每周重复计划
 
-以下示例命令演示如何创建在工作日仅运行的每周计划。
+以下示例命令演示如何创建仅在工作日运行的每周计划。
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "13:00:00").AddDays(1)
@@ -94,9 +94,9 @@ $StartTime = (Get-Date "13:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Schedule03" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekDays -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-weekly-recurring-schedule-for-weekends"></a>创建每周重复计划的周末
+#### <a name="create-a-weekly-recurring-schedule-for-weekends"></a>创建在工作日运行的每周重复计划
 
-以下示例命令演示如何创建在周末仅运行一个每周计划。
+以下示例命令演示如何创建仅在周末运行的每周计划。
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
@@ -104,9 +104,9 @@ $StartTime = (Get-Date "18:00:00").AddDays(1)
 New-AzureRmAutomationSchedule -AutomationAccountName "ContosoAutomation" -Name "Weekends 6PM" -StartTime $StartTime -WeekInterval 1 -DaysOfWeek $WeekendDays -ResourceGroupName "ResourceGroup01"
 ```
 
-#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>创建重复计划第一次、 月份中的 15 日和最后一天
+#### <a name="create-a-recurring-schedule-for-first-15th-and-last-days-of-the-month"></a>创建在当月 1 号、15 号和最后一天运行的重复计划
 
-以下示例命令演示如何创建一个月的第一个、 15 日和最后一天运行的定期计划。
+以下示例命令演示如何创建在某月的 1 号、15 号和最后一天运行的重复计划。
 
 ```azurepowershell-interactive
 $StartTime = (Get-Date "18:00:00").AddDays(1)
@@ -121,10 +121,10 @@ New-AzureRmAutomationSchedule -AutomationAccountName "TestAzureAuto" -Name "1st,
 
 1. 在 Azure 门户中，从你的自动化帐户中，在左侧的“流程自动化”部分下选择“Runbook”。
 2. 单击要计划的 Runbook 的名称。
-3. 如果 runbook 当前未链接到计划，然后被提供用于创建新计划或链接到现有计划的选项。
-4. 如果 runbook 有参数，则可以选择选项**修改运行的设置 (默认值： Azure)** 并**参数**窗格会显示您可以在其中输入信息。
+3. 如果 Runbook 当前未链接到计划，则系统会提供“创建新计划”或“链接到现有计划”选项。
+4. 如果 Runbook 有参数，可以选择选项“修改运行设置(默认值:Azure)”，此时会显示“参数”窗格，可在其中输入信息。
 
-### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>若要将计划链接到 runbook 中使用 PowerShell
+### <a name="to-link-a-schedule-to-a-runbook-with-powershell"></a>使用 PowerShell 将计划链接到 Runbook
 
 可使用 [Register-AzureRmAutomationScheduledRunbook](/powershell/module/azurerm.automation/register-azurermautomationscheduledrunbook) cmdlet 链接计划。 可以使用 Parameters 参数指定 Runbook 参数的值。 有关指定参数值的详细信息，请参阅[在 Azure 自动化中启动 Runbook](../automation-starting-a-runbook.md)。
 以下示例命令演示了如何使用带参数的 Azure 资源管理器 cmdlet 将计划链接到 Runbook。
@@ -149,7 +149,7 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 
 ## <a name="disabling-a-schedule"></a>禁用计划
 
-禁用计划后，链接到该计划的所有 Runbook 不再按该计划运行。 可以手动禁用计划，也可以在创建带频率的计划时设置其过期时间。 到达过期时间时，会禁用该计划。
+禁用计划后，链接到该计划的所有 Runbook 不再按该计划运行。 可以手动禁用计划，也可以在创建带频率的计划时设置其过期时间。 达到过期时间时，会禁用该计划。
 
 ### <a name="to-disable-a-schedule-from-the-azure-portal"></a>从 Azure 门户禁用计划
 
@@ -158,9 +158,9 @@ Register-AzureRmAutomationScheduledRunbook –AutomationAccountName $automationA
 3. 将“已启用”更改为“否”。
 
 > [!NOTE]
-> 如果你想要禁用具有在过去的开始时间的计划，必须更改之前将其保存在将来某个时间开始日期。
+> 若要禁用开始时间已过去的计划，必须将开始日期更改为将来的某个时间，然后保存计划。
 
-### <a name="to-disable-a-schedule-with-powershell"></a>若要使用 PowerShell 禁用计划
+### <a name="to-disable-a-schedule-with-powershell"></a>使用 PowerShell 禁用计划
 
 可使用 [Set-AzureRmAutomationSchedule](/powershell/module/azurerm.automation/set-azurermautomationschedule) cmdlet 更改现有计划的属性。 若要禁用计划，请为 **IsEnabled** 参数指定 **false**。
 

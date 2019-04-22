@@ -16,10 +16,10 @@ ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6ecbac8af86c3c2c76b7710eb61f71481b86291b
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009863"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>使用模板作为 Azure 虚拟机规模上配置的 Azure 资源管理的标识
@@ -123,11 +123,11 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 2. 将模板加载到[编辑器](#azure-resource-manager-templates)，并在 `resources` 部分找到相关的 `Microsoft.Compute/virtualMachineScaleSets` 资源。 如果 VM 只有系统分配的托管标识，则可以将标识类型更改为 `None` 来禁用它。
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**
 
    如果 apiVersion 为 `2018-06-01` 并且 VM 同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned` 并保留 `UserAssigned` 以及 userAssignedIdentities 字典值。
 
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**
 
    如果 apiVersion 为 `2017-12-01` 并且虚拟机规模集同时具有系统和用户分配的托管标识，请从标识类型中删除 `SystemAssigned`，并保留 `UserAssigned` 以及用户分配托管标识的 `identityIds` 数组。 
    
@@ -158,7 +158,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 1. 在 `resources` 元素下添加以下条目，向虚拟机规模集分配用户分配托管标识。  请务必将 `<USERASSIGNEDIDENTITY>` 替换为你创建的用户分配的托管标识的名称。
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**
 
    如果 apiVersion 为 `2018-06-01`，则用户分配托管标识以 `userAssignedIdentities` 字典格式存储，并且 `<USERASSIGNEDIDENTITYNAME>` 值必须存储在模板的 `variables` 节中定义的某个变量中。
 
@@ -177,7 +177,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    }
    ```   
 
-   **Microsoft.compute/virtualmachinescalesets API 版本 2017年-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2017-12-01**
     
    如果 `apiVersion` 为 `2017-12-01` 或早期版本，则用户分配托管标识存储在 `identityIds` 数组中，并且 `<USERASSIGNEDIDENTITYNAME>` 值必须存储在模板的 variables 节中定义的某个变量中。
 
@@ -200,7 +200,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
 
 3. 完成后，模板应当类似于以下示例：
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**   
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**   
 
    ```json
    "resources": [
@@ -243,7 +243,7 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
     ]
    ```
 
-   **Microsoft.compute/virtualmachines API 版本 2017年-12-01**
+   **Microsoft.Compute/virtualMachines API 版本 2017-12-01**
 
    ```json
    "resources": [
@@ -306,13 +306,13 @@ Azure 资源的托管标识在 Azure Active Directory 中为 Azure 服务提供�
    }
    ```
    
-   **Microsoft.Compute/virtualMachineScaleSets API version 2018-06-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2018-06-01**
     
    若要从虚拟机规模集中删除单个用户分配的托管标识，请将其从 `userAssignedIdentities` 字典中删除。
 
    如果具有系统分配的标识，请将其保持在 `identity` 值下的 `type` 值中。
 
-   **Microsoft.compute/virtualmachinescalesets API 版本 2017年-12-01**
+   **Microsoft.Compute/virtualMachineScaleSets API 版本 2017-12-01**
 
    要从虚拟机规模集中删除单个用户分配托管标识，请将其从 `identityIds` 数组中删除。
 

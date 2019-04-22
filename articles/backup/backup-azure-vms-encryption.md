@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/3/2019
 ms.author: geetha
 ms.openlocfilehash: 893a22fb9f325625707869c8f6571d572b8f6b33
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59358228"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>备份和还原加密的 Azure VM
@@ -30,7 +30,7 @@ Azure 备份支持已加密及其 OS/数据磁盘与 Azure 磁盘加密 (ADE) �
 
 Azure 备份可以备份和还原 Azure Vm 与 Azure AD 应用程序，而使用 ADE 下, 表中进行了总结。
 
-**VM 磁盘类型** | **ADE （BEK/数据挖掘的加密）** | **ADE 和 KEK**
+**VM 磁盘类型** | **ADE (BEK/dm-crypt)** | **ADE 和 KEK**
 --- | --- | ---
 **非托管** | 是 | 是
 **托管**  | 是 | 是

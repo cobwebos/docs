@@ -12,10 +12,10 @@ ms.date: 04/04/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f4a0cba18f27c9cabfc03d1934469e6899c5cd18
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010407"
 ---
 # <a name="monitor-resource-consumption-and-query-activity-in-azure-search"></a>在 Azure 搜索中监视资源使用情况和查询活动
@@ -96,7 +96,7 @@ Azure Monitor 日志和 Blob 存储都可用作一项免费共享服务，以便
 * insights-logs-operationlogs：用于搜索流量日志
 * insights-metrics-pt1m：用于指标
 
-**一个小时后，容器才会出现在 Blob 存储中。 每个容器每小时会有一个 blob。**
+**需要一个小时之前容器会在 Blob 存储中。没有一个 blob，每小时，每个容器。**
 
 可以使用 [Visual Studio Code](#download-and-open-in-visual-studio-code) 或其他 JSON 编辑器来查看文件。 
 

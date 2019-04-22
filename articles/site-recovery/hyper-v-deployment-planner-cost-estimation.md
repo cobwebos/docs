@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: e98ec71f0c21fe640666b9d34e170678ec23c1ff
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359029"
 ---
 # <a name="cost-estimation-report-by-azure-site-recovery-deployment-planner"></a>Azure Site Recovery 部署规划器成本估算报表 
@@ -107,17 +107,17 @@ Azure Site Recovery 部署规划器报表以[建议](hyper-v-deployment-planner-
 
 1. 根据与此配置相符的大致 VM 大小和 VM 数填充以下列： 
 
-    a. **Vm 数**
+    a. **VM 数**
 
-    b. **IaaS 大小 （你的选择）**
+    b. **IaaS 大小(你的选择)**
 
-    c. **存储类型的标准/高级**
+    c. **存储类型(标准/高级)**
 
     d. **VM 总存储大小(GB)**
 
     e. **一年的 DR 演练次数**
 
-    f. **每次 DR 演练的持续时间 （天）**
+    f. **每次 DR 演练的持续时间(天)**
 
     g. **OS 类型**
 

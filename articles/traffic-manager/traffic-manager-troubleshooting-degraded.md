@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: genli
 ms.openlocfilehash: f01dfe78d5d5e322258b0ee98cec314f9afe33c0
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050639"
 ---
 # <a name="troubleshooting-degraded-state-on-azure-traffic-manager"></a>Azure 流量管理器上的降级状态故障排除
@@ -80,7 +80,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 ## <a name="next-steps"></a>后续步骤
 
-[有关流量管理器流量路由方法](traffic-manager-routing-methods.md)
+[关于流量管理器流量路由方法](traffic-manager-routing-methods.md)
 
 [什么是流量管理器](traffic-manager-overview.md)
 
@@ -88,7 +88,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
 
 [Azure 应用服务](https://azure.microsoft.com/documentation/services/app-service/web/)
 
-[Traffic Manager 的操作 （REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
+[流量管理器上的操作（REST API 参考）](https://go.microsoft.com/fwlink/?LinkId=313584)
 
 [Azure 流量管理器 Cmdlet][1]
 

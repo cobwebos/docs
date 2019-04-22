@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 20c05bddddce4c7748e29551fe78d3e5609b2fa5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275889"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Key Vault 证书入门
@@ -132,4 +132,4 @@ ms.locfileid: "59275889"
 
 ## <a name="see-also"></a>另请参阅
 
-- [关于密钥、机密和证书](about-keys-secrets-and-certificates.md)
+- [关于键、密钥和证书](about-keys-secrets-and-certificates.md)

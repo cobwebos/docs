@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.openlocfilehash: 83d16071cbcac4199db9f3757121f9811db49727
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006336"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql"></a>使用适用于Azure Database for PostgreSQL 的虚拟网络服务终结点和规则
@@ -92,7 +92,7 @@ ms.locfileid: "59006336"
 - **网络管理员：**&nbsp; 启用终结点。
 - **数据库管理员：**&nbsp; 更新访问控制列表 (ACL)，将给定的子网添加到 Azure Database for PostgreSQL 服务器。
 
-*RBAC 备用：*
+RBAC 备用：
 
 网络管理员和数据库管理员角色的权限超出虚拟网络规则的管理需要， 只有部分权限是必需的。
 
@@ -107,7 +107,7 @@ ms.locfileid: "59006336"
 
 对于 Azure Database for PostgreSQL，虚拟网络规则功能具有以下限制：
 
-- Web 应用可以映射到 VNet/子网中的专用 IP。 即使已从给定 VNet/子网启用服务终结点，从 Web 应用到服务器的连接也将具有 Azure 公共 IP 源，而不是 VNet/子网源。 若要启用从 Web 应用连接到具有 VNet 防火墙规则的服务器，必须允许 Azure 服务访问服务器上的服务器。
+- Web 应用可以映射到 VNet/子网中的专用 IP。 即使已从给定 VNet/子网启用服务终结点，从 Web 应用到服务器的连接也将具有 Azure 公共 IP 源，而不是 VNet/子网源。 若要启用从 Web 应用到具有 VNet 防火墙规则的服务器的连接，必须在该服务器上允许 Azure 服务访问服务器。
 
 - 在 Azure Database for PostgreSQL 的防火墙中，每个虚拟网络规则都引用一个子网。 引用的所有这些子网都必须托管在同一个托管 Azure Database for PostgreSQL 的地理区域内。
 
@@ -141,8 +141,8 @@ ms.locfileid: "59006336"
 
 ## <a name="next-steps"></a>后续步骤
 有关创建 VNet 规则的文章，请参阅：
-- [创建和管理 Azure Database for PostgreSQL VNet 规则使用 Azure 门户](howto-manage-vnet-using-portal.md)
-- [创建和管理 Azure Database for PostgreSQL VNet 规则使用 Azure CLI](howto-manage-vnet-using-cli.md)
+- [使用 Azure 门户创建和管理 Azure Database for PostgreSQL VNet 规则](howto-manage-vnet-using-portal.md)
+- [使用 Azure CLI 创建和管理 Azure Database for PostgreSQL VNet 规则](howto-manage-vnet-using-cli.md)
 
 
 <!-- Link references, to text, Within this same GitHub repo. -->

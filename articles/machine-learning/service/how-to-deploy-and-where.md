@@ -12,10 +12,10 @@ ms.reviewer: larryfr
 ms.date: 04/02/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: a6ef53d56fa293791658b37b16cbaff94aee6ef3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280887"
 ---
 # <a name="deploy-models-with-the-azure-machine-learning-service"></a>使用 Azure 机器学习服务部署模型
@@ -151,9 +151,9 @@ image_config.base_image = run.properties["AzureML.DerivedImageName"]
 
 脚本包含两个函数，加载和运行模型：
 
-* `init()`:此函数通常将模型载入全局对象。 此函数只能在 Docker 容器启动时运行一次。
+* `init()`：此函数通常将模型载入全局对象。 此函数只能在 Docker 容器启动时运行一次。
 
-* `run(input_data)`:此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以在将数据发送到模型之前或者返回给客户端之前转换数据。
+* `run(input_data)`：此函数使用模型来基于输入数据预测值。 运行的输入和输出通常使用 JSON 进行序列化和反序列化。 也可以处理原始二进制数据。 可以在将数据发送到模型之前或者返回给客户端之前转换数据。
 
 #### <a name="working-with-json-data"></a>处理 JSON 数据
 
@@ -645,11 +645,11 @@ Azure IoT Edge 模块将从容器注册表部署到设备。 从模型创建映�
 
 * [部署故障排除](how-to-troubleshoot-deployment.md)
 * [使用 SSL 保护 Azure 机器学习 Web 服务](how-to-secure-web-service.md)
-* [使用机器学习模型部署为 web 服务](how-to-consume-web-service.md)
-* [如何运行批预测](how-to-run-batch-predictions.md)
+* [使用部署为 Web 服务的机器学习模型](how-to-consume-web-service.md)
+* [如何运行批量预测](how-to-run-batch-predictions.md)
 * [使用 Application Insights 监视 Azure 机器学习模型](how-to-enable-app-insights.md)
 * [为生产环境中的模型收集数据](how-to-enable-data-collection.md)
 * [Azure 机器学习服务 SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)
-* [Azure 虚拟网络中使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
-* [用于构建推荐系统的最佳实践](https://github.com/Microsoft/Recommenders)
+* [通过 Azure 虚拟网络使用 Azure 机器学习服务](how-to-enable-virtual-network.md)
+* [有关构建建议系统的最佳实践](https://github.com/Microsoft/Recommenders)
 * [在 Azure 上生成实时建议 API](https://docs.microsoft.com/azure/architecture/reference-architectures/ai/real-time-recommendation)

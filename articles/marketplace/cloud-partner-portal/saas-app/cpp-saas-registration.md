@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fbc542ea2ed76d99d551d668b00bad1fb3719a9f
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012930"
 ---
 # <a name="register-a-saas-application"></a>注册的 SaaS 应用程序
@@ -83,15 +83,15 @@ HTTP 方法
 
 *URI 参数*
 
-|  **参数名称**  | **需要**  | **描述**                               |
+|  **参数名称**  | **必需**  | **说明**                               |
 |  ------------------  | ------------- | --------------------------------------------- |
 | tenantId             | True          | 已注册的 AAD 应用程序的租户 ID   |
 |  |  |  |
 
 
-*请求标头*
+请求标头
 
-|  **标头名称**  | **需要** |  **描述**                                   |
+|  **标头名称**  | **必需** |  **说明**                                   |
 |  --------------   | ------------ |  ------------------------------------------------- |
 |  Content-Type     | True         | 与请求关联的内容类型。 默认值为 `application/x-www-form-urlencoded`。  |
 |  |  |  |
@@ -99,7 +99,7 @@ HTTP 方法
 
 *请求正文*
 
-| **属性名称**   | **需要** |  **描述**                                                          |
+| **属性名称**   | **必需** |  **说明**                                                          |
 | -----------------   | -----------  | ------------------------------------------------------------------------- |
 |  Grant_type         | True         | 授权类型。 默认值为 `client_credentials`。                    |
 |  Client_id          | True         |  与 Azure AD 应用关联的客户端/应用标识符。                  |
@@ -110,7 +110,7 @@ HTTP 方法
 
 *响应*
 
-|  **名称**  | **类型**       |  **描述**    |
+|  **名称**  | 类型       |  **说明**    |
 | ---------- | -------------  | ------------------- |
 | 200 正常    | TokenResponse  | 请求成功   |
 |  |  |  |

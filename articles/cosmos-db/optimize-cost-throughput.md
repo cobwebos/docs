@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: rimman
 ms.openlocfilehash: 280d389875d5ac951e0a846f3331ea727176b5e0
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59009761"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化预配的吞吐量成本
@@ -39,13 +39,13 @@ ms.locfileid: "59009761"
 
 4. 不针对单个容器设置特定的吞吐量，而是考虑如何在数据库中的一组容器之间获得聚合吞吐量。
 
-**如果设置为单个容器的吞吐量，请考虑：**
+**对于以下情况，考虑针对单个容器预配吞吐量：**
 
 1. Azure Cosmos 容器较少。 由于 Azure Cosmos DB 不区分架构，容器可以包含采用异构架构的项，无需客户创建多个容器类型 - 为每个实体各创建一个。 如果将 10 到 20 个容器划分到单个容器有利，则始终适合考虑这种做法。 如果容器的最低吞吐量为 400 RU，则将所有 10 到 20 个容器组建成一个池可能更具成本效益。 
 
 2. 想要控制特定容器的吞吐量，并使给定的容器获得有保证的、且有 SLA 作为保障的吞吐量。
 
-**请考虑混合上面的两种策略：**
+**考虑混合上面两种策略：**
 
 1. 如前所述，Azure Cosmos DB 允许混合搭配上述两种策略，因此，现在可以在 Azure Cosmos 数据库中创建一些容器（它们可以共享针对数据库预配的吞吐量），并可以在同一数据库中创建一些容器（它们可以获得专用的预配吞吐量）。 
 

@@ -10,10 +10,10 @@ ms.suite: integration
 ms.topic: article
 ms.date: 03/29/2019
 ms.openlocfilehash: 8445b67fa049116d93f3710ff108f904ca7ecd77
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010543"
 ---
 # <a name="authenticate-and-access-resources-with-managed-identities-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的托管标识进行身份验证并访问资源
@@ -113,7 +113,7 @@ ms.locfileid: "59010543"
 
 | 属性 | 值 | 描述 | 
 |----------|-------|-------------|
-| **principalId** | <*principal-ID*> | 全局唯一标识符 (GUID)，表示逻辑应用中的 Azure AD 租户，有时也显示为"对象 ID"或 `objectID` | 
+| **principalId** | <*principal-ID*> | 全局唯一标识符 (GUID)，表示 Azure AD 租户中的逻辑应用，有时显示为“object ID”或 `objectID` | 
 | **tenantId** | <*Azure-AD-tenant-ID*> | 全局唯一标识符 (GUID)，表示逻辑应用为其中成员的 Azure AD 租户。 在 Azure AD 租户内，服务主体与逻辑应用实例具有相同名称。 | 
 ||| 
 

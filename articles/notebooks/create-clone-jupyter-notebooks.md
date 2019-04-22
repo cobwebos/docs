@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/25/2019
 ms.author: kraigb
 ms.openlocfilehash: 0ee0c7162e26b875c74796b6d5379b414981e2d5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282315"
 ---
 # <a name="create-and-clone-projects"></a>创建和克隆项目
@@ -30,18 +30,18 @@ Azure Notebooks 将 Jupyter 笔记本和相关文件组织为称作“项目”�
 
 “我的项目”仪表板位于 `https://notebooks.azure.com/<userID>/projects`，用于查看、管理和创建项目：
 
-[![MAzure Notebook 中的 y 项目仪表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
+[![Azure Notebooks 中的“我的项目”仪表板](media/my-projects-dashboard.png)](media/my-projects-dashboard.png#lightbox)
 
 可在仪表板上执行的操作取决于你是否使用拥有用户 ID 的帐户登录：
 
 | 命令 | 适用对象 | 描述 |
 | --- | --- | --- |
-| **运行** | 所有者 | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
+| **Run** | 所有者 | 启动项目服务器并在 Jupyter 中打开项目文件夹。 （更常见的是：先导航到项目文件夹中，然后从中启动一个笔记本。） |
 | **下载** | 所有人 | 将选定项目的副本下载到一个 ZIP 文件中。 |
 | **共享** | 所有人 | 显示共享弹出窗口，你可以从中获取选定项目的 URL、共享到社交媒体、发送含该 URL 的电子邮件以及获取“启动笔记本”徽章的 HTML 或 Markdown 代码（参阅[获取启动徽章](#obtain-a-launch-badge)）。 |
 | **删除** | 所有者 | 删除选定的项目。 此操作不可撤消。 |
 | **终端** | 所有者 | 启动项目服务器，然后打开一个新的浏览器窗口，其中有该服务器的 Bash 终端。 |
-| **+ 新项目** | 所有者 | 新建一个项目。 请参阅[新建项目](#create-a-new-project)。 |
+| **+ 新建项目** | 所有者 | 新建一个项目。 请参阅[新建项目](#create-a-new-project)。 |
 | **上传 GitHub 存储库** | 所有者 | 从 GitHub 导入项目。 [从 GitHub 导入项目](#import-a-project-from-github)。 |
 | **克隆** | 所有人 | 将选定项目复制到自己的帐户中。 如果未登录，则提示你登录。 请参阅[克隆项目](#clone-a-project)。 |
 

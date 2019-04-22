@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: monhaber
 ms.openlocfilehash: 63ee603f83d0c2de3bc89b8792ada4a61edb7e00
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006740"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Azure 安全中心中的数据收集
@@ -137,7 +137,7 @@ ms.locfileid: "59006740"
     a.  在安全中心主菜单中，选择“安全策略”。
      
     b.  通过单击列表中所需订阅的“设置”列中的“编辑设置”，选择要在其中连接代理的所需工作区。
-        ![选择工作区][8]c。 设置定价层。
+        ![选择工作区][8] c. 设置定价层。
         ![选择定价层][9] 
    
    >[!NOTE]
@@ -263,7 +263,7 @@ ms.locfileid: "59006740"
 
 4. 若要使用资源管理器模板在新 VM 上部署代理，请安装 OMS 虚拟机扩展：
 
-   a.  [安装用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
+   a.  [安装适用于 Windows 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-windows.md)
     
    b.  [安装适用于 Linux 的 OMS 虚拟机扩展](../virtual-machines/extensions/oms-linux.md)
 5. 若要在现有 VM 上部署扩展，请遵照[收集有关 Azure 虚拟机的数据](../azure-monitor/learn/quick-collect-azurevm.md)中的说明。

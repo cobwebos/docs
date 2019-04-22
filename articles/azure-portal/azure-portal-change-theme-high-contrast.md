@@ -11,10 +11,10 @@ ms.service: azure-portal
 ms.custom: accessibility
 manager: mtillman
 ms.openlocfilehash: 59824c4a10c50265ea0a15be69755748b87d4a3f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357819"
 ---
 # <a name="turn-on-high-contrast-or-change-the-theme-in-the-azure-portal"></a>在 Azure 门户中启用高对比度或更改主题
@@ -52,5 +52,5 @@ ms.locfileid: "59357819"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [在 Azure 门户中的键盘快捷方式](azure-portal-keyboard-shortcuts.md)
+- [Azure 门户中的键盘快捷方式](azure-portal-keyboard-shortcuts.md)
 - [支持的浏览器和设备](../azure-preview-portal-supported-browsers-devices.md)

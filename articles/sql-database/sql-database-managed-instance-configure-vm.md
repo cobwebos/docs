@@ -13,10 +13,10 @@ ms.reviewer: sstein, carlrab, srbozovi, bonova
 manager: craigg
 ms.date: 02/18/2019
 ms.openlocfilehash: 59088ad53e923f1303c0e800df9c25f70e63812f
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59360500"
 ---
 # <a name="quickstart-configure-azure-vm-to-connect-to-an-azure-sql-database-managed-instance"></a>快速入门：配置 Azure VM，以便连接到 Azure SQL 数据库托管实例
@@ -45,10 +45,10 @@ ms.locfileid: "59360500"
 
 3. 根据此表中的信息填充窗体：
 
-   | 设置| 建议的值 | 描述 |
+   | 设置| 建议的值 | 说明 |
    | ---------------- | ----------------- | ----------- |
    | **名称** | 任何有效的名称|请参阅[命名规则和限制](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)，了解什么是有效的名称。|
-   | **地址范围（CIDR 块）** | 有效的范围 | 默认值适用于本快速入门。|
+   | **地址范围(CIDR 块)** | 有效的范围 | 默认值适用于本快速入门。|
    | **网络安全组** | 无 | 默认值适用于本快速入门。|
    | **路由表** | 无 | 默认值适用于本快速入门。|
    | **服务终结点** | 已选择 0 | 默认值适用于本快速入门。|
@@ -74,7 +74,7 @@ ms.locfileid: "59360500"
 
 2. 根据下表中的信息填充窗体：
 
-   | 设置| 建议的值 | 描述 |
+   | 设置| 建议的值 | Description |
    | ---------------- | ----------------- | ----------- |
    | **订阅** | 有效的订阅 | 必须是有权在其中创建新资源的订阅。 |
    | **资源组** |在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中指定的资源组。|此资源组必须是 VNet 所在的资源组。|

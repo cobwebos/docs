@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
 ms.openlocfilehash: 0302146634904ccf1d87220d3a24553149e10372
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59012960"
 ---
 # <a name="automatic-iot-device-management-at-scale-using-the-azure-cli"></a>在使用 Azure CLI 进行缩放的自动 IoT 设备管理
@@ -99,11 +99,11 @@ Azure IoT 中心中的自动设备管理自动执行许多管理大型设备群�
 
 * --config-id - 将在 IoT 中心内创建的配置的名称。 为配置指定不超过 128 个小写字母的唯一名称。 避免空格和以下无效字符：`& ^ [ ] { } \ | " < > /`。
 
-* --labels - 添加标签以帮助跟踪配置。 标签是描述部署的“名称, 值”对。 例如，`HostPlatform, Linux`或 `Version, 3.0.1`
+* --labels - 添加标签以帮助跟踪配置。 标签是描述部署的“名称, 值”对。 例如，`HostPlatform, Linux` 或 `Version, 3.0.1`
 
 * --content - 要设置为孪生所需属性的目标内容的内联 JSON 或文件路径。 
 
-* --hub-name - 将在其中创建配置的 IoT 中心的名称。 此中心必须在当前订阅中。 切换到使用该命令所需的订阅 `az account set -s [subscription name]`
+* --hub-name - 将在其中创建配置的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
 * --target-condition - 输入一个目标条件，用于确定哪些设备会成为此配置的目标。 条件基于设备孪生标记或设备孪生所需属性，并且应当与表达式格式匹配。 例如 `tags.environment='test'` 或 `properties.desired.devicemodel='4000x'`。 
 
@@ -122,7 +122,7 @@ az iot hub configuration show --config-id [configuration id] \
 
 * --config-id - 存在于 IoT 中心内的配置的名称。
 
-* --hub-name - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 切换到使用该命令所需的订阅 `az account set -s [subscription name]`
+* --hub-name - 配置所在的 IoT 中心的名称。 此中心必须在当前订阅中。 使用 `az account set -s [subscription name]` 命令切换到所需订阅
 
 在命令窗口中检查配置。 **metrics** 属性列出由每个中心评估的每个指标的计数：
 
@@ -172,7 +172,7 @@ az iot hub configuration update --config-id [configuration id] \
 
 * --set - 更新配置中的属性。 可以更新以下属性：
 
-    * targetCondition-例如 `targetCondition=tags.location.state='Oregon'`
+    * targetCondition - 例如 `targetCondition=tags.location.state='Oregon'`
 
     * 标签 
 

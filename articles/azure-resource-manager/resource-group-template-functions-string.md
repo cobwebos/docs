@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: bf9faa34c1f0923761ce583c22ba4084d7bd42a8
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278779"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>用于 Azure 资源管理器模板的字符串函数
@@ -33,7 +33,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 * [empty](#empty)
 * [endsWith](#endswith)
 * [first](#first)
-* [格式](#format)
+* [format](#format)
 * [guid](#guid)
 * [indexOf](#indexof)
 * [last](#last)
@@ -717,23 +717,23 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 `format(formatString, arg1, arg2, ...)`
 
-从输入值创建的格式化的字符串。
+基于输入值创建带格式的字符串。
 
 ### <a name="parameters"></a>parameters
 
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
-| formatString | 是 | 字符串 | 复合格式字符串中。 |
-| arg1 | 是 | 字符串、 整数或布尔值 | 要在带格式字符串中包含的值。 |
-| 其他参数 | 否 | 字符串、 整数或布尔值 | 带格式字符串中包含的其他值。 |
+| formatString | 是 | 字符串 | 复合格式字符串。 |
+| arg1 | 是 | 字符串、整数或布尔值 | 要包含在带格式字符串中的值。 |
+| 其他参数 | 否 | 字符串、整数或布尔值 | 要包含在带格式字符串中的附加值。 |
 
 ### <a name="remarks"></a>备注
 
-此函数用于设置格式的字符串在模板中。 它使用相同的格式设置选项[System.String.Format](/dotnet/api/system.string.format) .NET 中的方法。
+使用此函数来为模板中的字符串设置格式。 此函数使用的格式设置选项与 .NET 中的 [System.String.Format](/dotnet/api/system.string.format) 方法相同。
 
 ### <a name="examples"></a>示例
 
-下面的示例模板演示如何使用 format 函数。
+以下示例模板演示如何使用 format 函数。
 
 ```json
 {
@@ -768,7 +768,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 | 名称 | 类型 | 值 |
 | ---- | ---- | ----- |
-| formatTest | String | Hello，用户。 格式化的数字：8,175,133 |
+| formatTest | String | Hello, User。 带格式的数字：8,175,133 |
 
 ## <a name="guid"></a>guid
 
@@ -787,7 +787,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 当需要以全局唯一标识符格式创建值时，此功能十分有用。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。
 
-返回的值不是随机字符串，而不是对参数的哈希函数的结果。 返回的值长度为 36 个字符。 它不是全局唯一的。 若要创建新的 GUID 不是基于参数的该哈希值，请使用[newGuid](#newguid)函数。
+返回的值不是随机字符串，而是参数中哈希函数的结果。 返回的值长度为 36 个字符。 此值并非全局唯一。 若要创建不是基于该参数哈希值的新 GUID，请使用 [newGuid](#newguid) 函数。
 
 以下示例演示如何使用 guid 创建常用级别唯一值。
 
@@ -856,7 +856,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="return-value"></a>返回值
 
-一个整数，表示要查找的项的位置。 该值从零开始。 如果找不到该项，则返回-1。
+一个整数，表示要查找的项的位置。 该值从零开始。 如果未找到该项，则返回 -1。
 
 ### <a name="examples"></a>示例
 
@@ -969,7 +969,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 ### <a name="return-value"></a>返回值
 
-一个整数，表示要查找的项的最后一个位置。 该值从零开始。 如果找不到该项，则返回-1。
+一个整数，表示要查找的项的最后一个位置。 该值从零开始。 如果未找到该项，则返回 -1。
 
 ### <a name="examples"></a>示例
 
@@ -1078,7 +1078,7 @@ Resource Manager 提供以下用于处理字符串的函数：
 
 `newGuid()`
 
-以全局唯一标识符的格式返回一个值。 **此函数仅可在默认值为参数。**
+以全局唯一标识符的格式返回一个值。 **此函数只能在参数的默认值中使用。**
 
 ### <a name="remarks"></a>备注
 
@@ -1610,7 +1610,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 | 参数 | 需要 | Type | 描述 |
 |:--- |:--- |:--- |:--- |
 | originalValue |是 |数组或字符串 |要从中提取元素的数组或字符串。 |
-| numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定的数组或字符串的长度，则返回数组或字符串中的所有元素。 |
+| numberToTake |是 |int |要提取的元素或字符数。 如果此值小于或等于 0，则返回空数组或字符串。 如果此值大于给定数组或字符串的长度，则返回数组或字符串中的所有元素。 |
 
 ### <a name="return-value"></a>返回值
 
@@ -1832,7 +1832,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 
 当需要创建资源的唯一名称时，此函数很有帮助。 提供参数值，这些值用于限制结果的唯一性范围。 可以指定该名称对于订阅、资源组或部署是否唯一。 
 
-返回的值不是随机字符串，而不是哈希函数的结果。 返回的值长度为 13 个字符。 它不是全局唯一的。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
+返回的值不是随机字符串，而是哈希函数的结果。 返回的值长度为 13 个字符。 此值并非全局唯一。 可能需要根据命名约定使用前缀来组合值，以创建有意义的名称。 以下示例显示了返回值的格式。 实际值随提供的参数而变化。
 
     tcvhiyu5h2o5o
 
@@ -1856,7 +1856,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
 "[uniqueString(resourceGroup().id, deployment().name)]"
 ```
 
-以下示例演示显示如何根据资源组创建存储帐户的唯一名称。 在资源组中，名称不唯一，如果构造方式相同。
+以下示例演示显示如何根据资源组创建存储帐户的唯一名称。 在资源组中，如果构造方式相同，则名称不唯一。
 
 ```json
 "resources": [{ 
@@ -1865,7 +1865,7 @@ newGuid 函数不同于 [guid](#guid) 函数，因为它不采用任何参数。
     ...
 ```
 
-如果您需要创建新的唯一名称每次部署模板，并不想要更新的资源，可以使用[utcNow](#utcnow)使用 uniqueString 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](#utcnow)。
+如果每次部署模板都需要创建新的唯一名称并且不希望更新资源，可以结合 uniqueString 使用 [utcNow](#utcnow) 函数。 可以在测试环境中使用此方法。 有关示例，请参阅 [utcNow](#utcnow)。
 
 ### <a name="return-value"></a>返回值
 
@@ -2071,7 +2071,7 @@ URI 编码值的解码字符串。
 
 `utcNow(format)`
 
-以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数仅可在默认值为参数。**
+以指定的格式返回当前的 (UTC) 日期时间值。 如果未提供格式，则使用 ISO 8601 (yyyyMMddTHHmmssZ) 格式。 **此函数只能在参数的默认值中使用。**
 
 ### <a name="parameters"></a>parameters
 
