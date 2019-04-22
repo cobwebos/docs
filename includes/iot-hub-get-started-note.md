@@ -4,12 +4,12 @@ ms.author: robinsh
 ms.service: iot-hub
 ms.topic: include
 ms.date: 10/26/2018
-ms.openlocfilehash: a47c07c3a59b7dbb677d61de9765b570b7beefd5
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: e6ae89c8b14cfdcd1ac63863448d143b486be07b
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59055617"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59684559"
 ---
 > [!NOTE]
-> 开始本教程前，请[设置设备](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)。 在本文中，你将设置 Azure IoT 设备和 IoT 中心，并部署一个在设备上运行的示例应用程序。 该应用程序会将收集的传感器数据发送到 IoT 中心。
+> 在开始本教程之前，请完成[Raspberry Pi 联机模拟器](../articles/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started.md)教程或其中一个设备教程中; 例如， [Raspberry Pi 与 node.js 配合使用](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)。 在这些文章中，设置你的 Azure IoT 设备和 IoT 中心，并部署示例应用程序，在设备上运行。 该应用程序会将收集的传感器数据发送到 IoT 中心。

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2019
+ms.date: 04/16/2019
 ms.author: orspod
-ms.openlocfilehash: 6138fadd060051c1b4264cd844ca2a4b8c28116a
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58880026"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682485"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -38,6 +38,9 @@ Azure 数据资源管理器连接器可用来执行以下操作：
 * 作为接收器时，请将数据追加到目标表。
 
 ## <a name="getting-started"></a>入门
+
+>[!TIP]
+>有关使用 Azure 数据资源管理器连接器的演练，请参阅[向/从 Azure 数据资源管理器使用 Azure 数据工厂复制数据](../data-explorer/data-factory-load-data.md)。
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -72,7 +75,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 | servicePrincipalId | 指定应用程序的客户端 ID。 这是您通常称为"**AAD 应用程序客户端 ID**"中[Kusto 连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 这是您通常称为"**AAD 应用程序密钥**"中[Kusto 连接字符串](https://docs.microsoft.com/azure/kusto/api/connection-strings/kusto#application-authentication-properties)。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
 
-**链接的服务属性示例：**
+**链接服务属性示例：**
 
 ```json
 {

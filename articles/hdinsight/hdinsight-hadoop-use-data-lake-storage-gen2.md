@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: hrasheed
-ms.openlocfilehash: 186a9bafe70ab9644666868f11d5ddd865a66b8d
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.openlocfilehash: 7e21d4c6705213cb57f058c062fff0ff4957a52a
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802535"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681856"
 ---
 # <a name="use-azure-data-lake-storage-gen2-with-azure-hdinsight-clusters"></a>配合使用 Azure Data Lake Storage Gen2 和 Azure HDInsight 群集
 
@@ -26,11 +26,11 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 > [!Note] 
 > 选择 Data Lake Storage Gen2 作为**主要存储类型**后，无法选择 Data Lake Storage Gen1 帐户作为附加存储。
 
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>使用数据湖存储第 2 代通过 Azure 门户创建群集
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-portal"></a>通过 Azure 门户创建使用 Data Lake Storage Gen2 的群集
 
 若要创建将 Data Lake Storage Gen2 用作存储的 HDInsight 群集，请遵循以下步骤配置 Data Lake Storage Gen2 帐户。
 
-### <a name="create-a-user-managed-identity"></a>创建用户管理标识
+### <a name="create-a-user-managed-identity"></a>创建用户托管标识
 
 创建用户分配的托管标识（如果还没有）。 请参阅[使用 Azure 门户创建、列出、删除用户分配的托管标识或为其分配角色](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md#create-a-user-assigned-managed-identity)。 有关如何将托管在 Azure HDInsight 中的标识工作的详细信息，请参阅[托管在 Azure HDInsight 中的标识](hdinsight-managed-identities.md)。
 
@@ -42,7 +42,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
 
 ![显示 Azure 门户中存储帐户创建情况的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/azure-data-lake-storage-account-create-advanced.png)
 
-### <a name="setup-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>托管标识数据湖存储第 2 代帐户上设置权限
+### <a name="setup-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account"></a>在 Data Lake Storage Gen2 帐户中设置托管标识的权限
 
 将分配到的托管的标识**存储 Blob 数据所有者**角色上的存储帐户。 有关详细信息，请参阅[使用 RBAC 管理对 Azure Blob 和队列数据的访问权限（预览版）](../storage/common/storage-auth-aad-rbac.md)。
 
@@ -56,7 +56,7 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
     
     ![显示如何分配 RBAC 角色的屏幕截图](./media/hdinsight-hadoop-data-lake-storage-gen2/add-rbac-role3.png)
     
-1. 选择“其他安全性验证” 。 所选的用户分配标识现在列出在所选角色下。
+1. 选择“保存”。 现在，选定的用户分配的标识会列在选定的角色下。
 1. 此初始设置完成后，可通过门户创建群集。 群集必须与存储帐户位于同一 Azure 区域中。 在群集创建菜单的“存储”部分，选择以下选项：
         
     * 对于“主要存储类型”，请选择“Azure Data Lake Storage Gen2”。
@@ -69,11 +69,11 @@ Data Lake Storage Gen2 能够以默认存储和附加存储帐户的形式用作
         ![用于配合使用 Data Lake Storage Gen2 和 Azure HDInsight 的标识设置](./media/hdinsight-hadoop-data-lake-storage-gen2/managed-identity-cluster-creation.png)
         
 > [!Note]
-> 可以将一个或多个数据湖存储第 2 代帐户添加为同一个群集上的辅助存储。 请重复上述步骤在你想要添加使用相同的托管的标识每个数据湖存储第 2 代帐户。
+> 可将一个或多个 Data Lake Storage Gen2 帐户添加为同一个群集上的辅助存储。 只需在要添加的每个 Data Lake Storage Gen2 帐户中，使用相同的托管标识重复上述步骤。
 
-## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>使用数据湖存储第 2 代通过 Azure CLI 创建群集
+## <a name="create-a-cluster-with-data-lake-storage-gen2-through-the-azure-cli"></a>通过 Azure CLI 创建使用 Data Lake Storage Gen2 的群集
 
-可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 使用模板之前，请将字符串 `<SUBSCRIPTION_ID>` 替换为实际的 Azure 订阅 ID。 此外，替换字符串`<PASSWORD>`用您所选的密码设置的两个将用于登录到群集的密码和 SSH 密码。
+可以[下载示例模板文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/hdinsight-adls-gen2-template.json)并[下载示例参数文件](https://github.com/Azure-Samples/hdinsight-data-lake-storage-gen2-templates/blob/master/parameters.json)。 使用模板之前，请将字符串 `<SUBSCRIPTION_ID>` 替换为实际的 Azure 订阅 ID。 此外，请将字符串 `<PASSWORD>` 替换为所选的密码，以设置用于登录到群集的密码以及 SSH 密码。
 
 以下代码片段将会执行下述初始步骤：
 
@@ -139,6 +139,5 @@ Azure 服务有两种类型的托管标识：系统分配的托管标识和用�
 
 ## <a name="next-steps"></a>后续步骤
 
-* [将 Azure Data Lake Storage Gen2 预览版用于 Azure HDInsight 群集](../storage/blobs/data-lake-storage-use-hdi-cluster.md)
 * [Azure HDInsight 与 Data Lake Storage Gen2 预览版集成 - ACL 和安全更新](https://azure.microsoft.com/blog/azure-hdinsight-integration-with-data-lake-storage-gen-2-preview-acl-and-security-update/)
 * [Azure Data Lake Storage Gen2 预览版简介](../storage/blobs/data-lake-storage-introduction.md)

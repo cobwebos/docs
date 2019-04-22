@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 3/20/2019
 ms.author: yzheng
 ms.subservice: common
-ms.openlocfilehash: e6f4f1feb5c1c78e78ff5d71b08a0e8a40537d13
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.openlocfilehash: 2de194e501c05ba0bdb9971ca6045e67a42b0fd9
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58803234"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681720"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>管理 Azure Blob 存储生命周期
 
@@ -45,7 +45,7 @@ ms.locfileid: "58803234"
 可以添加、 编辑或删除策略通过使用 Azure 门户中， [Azure PowerShell](https://github.com/Azure/azure-powershell/releases)，Azure CLI [REST Api](https://docs.microsoft.com/en-us/rest/api/storagerp/managementpolicies)，或客户端工具。 本文介绍如何使用门户和 PowerShell 方法管理策略。  
 
 > [!NOTE]
-> 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过提供例外来取消阻止这些请求。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
+> 如果为存储帐户启用了防火墙规则，生命周期管理请求可能会被阻止。 可以通过提供例外来取消阻止这些请求。 需要绕过是： `Logging,  Metrics,  AzureServices`。 有关详细信息，请参阅[配置防火墙和虚拟网络](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions)中的“例外”部分。
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -113,12 +113,12 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 每个规则在策略中的有几个参数：
 
-| 参数名称 | 参数类型 | 说明 | 必选 |
+| 参数名称 | 参数类型 | 说明 | 需要 |
 |----------------|----------------|-------|----------|
-| name           | 字符串 |规则名称可以包含最多 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | TRUE |
-| 已启用 | Boolean | 可选的布尔值，以允许规则以将临时禁用。 默认值为 true，如果未设置。 | FALSE | 
-| 类型           | 枚举值 | 当前的有效类型是`Lifecycle`。 | TRUE |
-| 定义     | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | TRUE |
+| 名称           | String |规则名称可以包含最多 256 个字母数字字符。 规则名称区分大小写。  该名称必须在策略中唯一。 | True |
+| 已启用 | Boolean | 可选的布尔值，以允许规则以将临时禁用。 默认值为 true，如果未设置。 | False | 
+| type           | 枚举值 | 当前的有效类型是`Lifecycle`。 | True |
+| 定义     | 定义生命周期规则的对象 | 每个定义均由筛选器集和操作集组成。 | True |
 
 ## <a name="rules"></a>规则
 
@@ -167,7 +167,7 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 有效的筛选器包括：
 
-| 筛选器名称 | 筛选类型 | 说明 | 必需 |
+| 筛选器名称 | 筛选器类型 | 说明 | 是否必需 |
 |-------------|-------------|-------|-------------|
 | blobTypes   | 预定义枚举值的数组。 | 当前版本支持`blockBlob`。 | 是 |
 | prefixMatch | 要匹配的前缀字符串数组。 每个规则可以定义最多 10 个前缀。 前缀字符串必须以容器名称开头。 例如，如果要为某个规则匹配“https://myaccount.blob.core.windows.net/container1/foo/...”下的所有 Blob，则 prefixMatch 为 `container1/foo`。 | 如果未定义 prefixMatch，规则将适用于存储帐户中的所有 blob。  | 否 |
@@ -180,9 +180,9 @@ $policy = Set-AzStorageAccountManagementPolicy -ResourceGroupName $rgname -Stora
 
 | 操作        | 基本 Blob                                   | 快照      |
 |---------------|---------------------------------------------|---------------|
-| tierToCool    | 目前支持位于热层的 Blob         | 不受支持 |
-| tierToArchive | 目前支持位于热层或冷层的 Blob | 不受支持 |
-| 删除        | 受支持                                   | 受支持     |
+| tierToCool    | 目前支持位于热层的 Blob         | 不支持 |
+| tierToArchive | 目前支持位于热层或冷层的 Blob | 不支持 |
+| delete        | 支持                                   | 支持     |
 
 >[!NOTE] 
 >如果在同一 Blob 中定义了多个操作，生命周期管理将对该 Blob 应用开销最低的操作。 例如，操作 `delete` 的开销比 `tierToArchive` 更低。 操作 `tierToArchive` 的开销比 `tierToCool` 更低。
