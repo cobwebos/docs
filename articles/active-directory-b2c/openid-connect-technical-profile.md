@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: a13ca362bf08b86297641061992f0820f0b624c5
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916761"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OpenId Connect 的技术配置文件
@@ -104,9 +104,9 @@ Azure Active Directory (Azure AD) B2C 为 [OpenId Connect](https://openid.net/20
 
 示例：
 
-- [将 Microsoft 帐户 (MSA) 添加为标识提供程序使用自定义策略](active-directory-b2c-custom-setup-msa-idp.md)
+- [使用自定义策略添加 Microsoft Account (MSA) 作为标识提供者](active-directory-b2c-custom-setup-msa-idp.md)
 - [使用 Azure AD 帐户登录](active-directory-b2c-setup-aad-custom.md)
-- [允许用户在登录到使用自定义策略的多租户 Azure AD 标识提供者](active-directory-b2c-setup-commonaad-custom.md)
+- [让用户使用自定义策略登录到多租户 Azure AD 标识提供者](active-directory-b2c-setup-commonaad-custom.md)
 
  
 

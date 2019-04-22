@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: magoedte
 ms.openlocfilehash: 6f27aeb65cb9077011e662c165ca26202546db26
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905726"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>使用 Azure PowerShell 创建 Log Analytics 工作区
@@ -31,9 +31,9 @@ Azure PowerShell 模块用于从 PowerShell 命令行或脚本创建和管理 Az
  
 对于其他源，如环境中的 Azure VM 和 Windows VM 或 Linux VM，请参阅以下主题：
 
-* [从 Azure 虚拟机中收集数据](../learn/quick-collect-azurevm.md)
+* [从 Azure 虚拟机收集数据](../learn/quick-collect-azurevm.md)
 * [从混合 Linux 计算机收集数据](../learn/quick-collect-linux-computer.md)
-* [从混合 Windows 计算机中收集数据](quick-collect-windows-computer.md)
+* [从混合 Windows 计算机收集数据](quick-collect-windows-computer.md)
 
 如果还没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

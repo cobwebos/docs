@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: ee6317f61f95b19effd64308b88f53c027582b63
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883003"
 ---
 # <a name="understand-terms-on-your-microsoft-customer-agreement-invoice"></a>了解有关 Microsoft 客户协议发票的术语
@@ -110,6 +110,6 @@ You are invoiced on a monthly basis. You can find out which day of the month you
 ## <a name="next-steps"></a>后续步骤
 
 - [了解计费配置文件的发票费用](billing-mca-understand-your-bill.md)
-- [如何获取 Azure 帐单发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)
+- [如何获取 Azure 计费发票和每日使用数据](billing-download-azure-invoice-daily-usage-date.md)
 - [查看你组织的 Azure 定价](billing-ea-pricing.md)
 - [你计费的配置文件的的视图税务文档](billing-mca-download-tax-document.md)

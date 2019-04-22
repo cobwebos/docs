@@ -17,10 +17,10 @@ ms.date: 12/14/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5182b621779cf31f3c7da99674ab24fe6efe702d
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850805"
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-workload"></a>适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 部署
@@ -373,7 +373,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 最低配置如下： 
 
-| 组件 | 磁盘 | 缓存 | 存储池 |
+| 组件 | 磁盘 | 正在缓存 | 存储池 |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA & mirrlogB | 高级 | 无 | 无需 |
 | \oracle\<SID>\origlogaB & mirrlogA | 高级 | 无 | 无需 |
@@ -386,7 +386,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 性能配置如下：
 
-| 组件 | 磁盘 | 缓存 | 存储池 |
+| 组件 | 磁盘 | 正在缓存 | 存储池 |
 | --- | ---| --- | --- |
 | \oracle\<SID>\origlogaA | 高级 | 无 | 可使用  |
 | \oracle\<SID>\origlogaB | 高级 | 无 | 可使用 |
@@ -463,7 +463,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 最低配置：
 
-| 组件 | 磁盘 | 缓存 | 撤消* |
+| 组件 | 磁盘 | 正在缓存 | 撤消* |
 | --- | ---| --- | --- |
 | /oracle/\<SID > / origlogaA & mirrlogB | 高级 | 无 | 无需 |
 | /oracle/\<SID > / origlogaB & mirrlogA | 高级 | 无 | 无需 |
@@ -477,7 +477,7 @@ Azure 文件服务等网络驱动器或远程共享不支持 Oracle Database 文
 
 性能配置：
 
-| 组件 | 磁盘 | 缓存 | 撤消* |
+| 组件 | 磁盘 | 正在缓存 | 撤消* |
 | --- | ---| --- | --- |
 | /oracle/\<SID>/origlogaA | 高级 | 无 | 可使用  |
 | /oracle/\<SID > / origlogaB | 高级 | 无 | 可使用 |

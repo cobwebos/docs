@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: absha
 ms.openlocfilehash: cfc63349e20aa6dbef4e0d31e81842d325bd3ec6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905531"
 ---
 # <a name="configure-an-application-gateway-with-an-internal-load-balancer-ilb-endpoint"></a>使用内部负载均衡器 (ILB) 终结点配置应用程序网关
@@ -30,7 +30,7 @@ ms.locfileid: "58905531"
 
 ## <a name="log-in-to-azure"></a>登录 Azure
 
-登录到 Azure 门户 <https://portal.azure.com>
+在 <https://portal.azure.com> 登录 Azure 门户
 
 ## <a name="create-an-application-gateway"></a>创建应用程序网关
 
@@ -69,8 +69,8 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
 2. 单击“计算”，然后在“特色”列表中选择“Windows Server 2016 Datacenter”。
 3. 为虚拟机输入以下值：
    - *myVM* - 作为虚拟机的名称。
-   - *azureuser* - 管理员用户名。
-   - *Azure123456!* 密码。
+   - *azureuser* - 作为管理员用户名。
+   - *Azure123456!* - 密码。
    - 选择“使用现有资源组”，然后选择“myResourceGroupAG”。
 4. 单击“确定”。
 5. 选择“DS1_V2”作为虚拟机的大小，然后单击“选择”。

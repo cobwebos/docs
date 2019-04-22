@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 59bfa83ab3432adb7a4df5112367f87014a0b292
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917611"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>如何配置和运行云服务的启动任务
@@ -99,9 +99,9 @@ EXIT /B 0
 
 **executionContext** - 为启动任务指定权限级别。 权限级别可以为 limited 或 elevated：
 
-* **限制**  
+* **limited**  
   启动任务以与角色相同的权限运行。 当 [运行时] 元素的 **executionContext** 属性也是 **limited** 时，则使用用户权限。
-* **提升的**  
+* **elevated**  
   启动任务以管理员特权运行。 这会允许启动任务安装程序、更改 IIS 配置、执行注册表更改和其他管理员级别任务，而不会提高角色本身的权限级别。  
 
 > [!NOTE]
@@ -111,7 +111,7 @@ EXIT /B 0
 
 **taskType** - 指定启动任务的执行方式。
 
-* **简单**  
+* **simple**  
   任务按照 [ServiceDefinition.csdef] 文件中指定的顺序一次一个地以同步方式执行。 当一个 simple 启动任务以为零的 errorlevel 结束时，将执行下一个 simple 启动任务。 如果没有更多 **simple** 启动任务要执行，则将启动角色本身。   
   
   > [!NOTE]
@@ -122,7 +122,7 @@ EXIT /B 0
     要确保批处理文件以为零的 **errorlevel** 结束，请在批处理文件进程结束时执行命令 `EXIT /B 0`。
 * **background**  
   任务与角色同时启动，并以异步方式执行。
-* **前景色**  
+* **foreground**  
   任务与角色同时启动，并以异步方式执行。 **foreground** 任务与 **background** 任务之间的主要区别在于 **foreground** 任务阻止角色回收或关闭，直到任务结束。 **background** 任务没有此限制。
 
 ## <a name="environment-variables"></a>环境变量

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: alkohli
 ms.openlocfilehash: cac451634bfa357784f9fd3d3a24e06ef3a4ee19
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881760"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Azure 数据框网关系统要求
@@ -95,5 +95,5 @@ Data Box Gateway 的基础主机系统可以提供以下资源来预配虚拟设
 
 ## <a name="next-step"></a>后续步骤
 
-* [部署 Azure 数据框网关](data-box-gateway-deploy-prep.md)
+* [部署 Azure Data Box Gateway](data-box-gateway-deploy-prep.md)
 

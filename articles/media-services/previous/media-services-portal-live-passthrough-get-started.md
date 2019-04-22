@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9a8ab024443744f50482dd2ca1cfb33db43359e9
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58802807"
 ---
 # <a name="perform-live-streaming-with-on-premises-encoders-using-azure-portal"></a>使用 Azure 门户中使用的本地编码器实时传送视频
 > [!div class="op_single_selector"]
-> * [Portal](media-services-portal-live-passthrough-get-started.md)
+> * [门户](media-services-portal-live-passthrough-get-started.md)
 > * [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 > * [REST](https://docs.microsoft.com/rest/api/media/operations/channel)
 > 
@@ -32,9 +32,9 @@ ms.locfileid: "58802807"
 > [!NOTE]
 > 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
-本教程指导你完成相关步骤，使用 Azure 门户创建经配置后可直通传递的“通道”  。 
+本教程介绍了使用 Azure 门户创建经配置后可以进行直通传递的 **通道** 的步骤。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 以下是完成本教程所需具备的条件：
 
 * 一个 Azure 帐户。 有关详细信息，请参阅 [Azure 免费试用](https://azure.microsoft.com/pricing/free-trial/)。 
@@ -45,7 +45,7 @@ ms.locfileid: "58802807"
 
 * [Azure 媒体服务 RTMP 支持和实时编码器](https://azure.microsoft.com/blog/2014/09/18/azure-media-services-rtmp-support-and-live-encoders/)
 * [使用 Azure 媒体服务实时传送视频流概述](media-services-manage-channels-overview.md)
-* [使用可创建多比特率流的本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)
+* [使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)
 
 ## <a id="scenario"></a>常见实时流式处理方案
 
@@ -75,7 +75,7 @@ ms.locfileid: "58802807"
 1. 删除事件/节目（并选择性地删除资产）。     
 
 > [!IMPORTANT]
-> 请参阅[使用可创建多比特率流的本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)，了解与实时传送视频流（使用本地编码器和直通频道）相关的概念和注意事项。
+> 请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)，了解与实时传送视频流（使用本地编码器和直通通道）相关的概念和注意事项。
 > 
 > 
 
@@ -85,13 +85,13 @@ ms.locfileid: "58802807"
 ![通知](./media/media-services-portal-passthrough-get-started/media-services-notifications.png)
 
 ## <a name="create-and-start-pass-through-channels-and-events"></a>创建并启动直通通道和事件
-通道与事件/节目相关联，使用事件/节目，可控制实时流中的段的发布和存储。 通道管理事件。 
+频道与事件/节目相关联，使用事件/节目，可以控制实时流中的段的发布和存储。 通道管理事件。 
 
 可以通过设置 **存档窗口** 长度，指定希望保留节目录制内容的小时数。 此值的设置范围是最短 5 分钟，最长 25 小时。 存储时间窗口长度还决定了客户端能够从当前实时位置按时间向后搜索的最长时间。 超出指定时间长度后，事件也能够运行，但落在时间窗口长度后面的内容将不断被丢弃。 此属性的这个值还决定了客户端清单能够增加多长时间。
 
-每个事件都与某个资产关联。 若要发布事件，必须为关联的资产创建按需定位符。 此定位符可用于生成提供给客户端的流 URL。
+每个事件都与某个资产关联。 若要发布事件，必须为关联的资产创建按需定位符。 创建此定位符后，可以生成一个可提供给客户端的流 URL。
 
-一个通道最多支持三个并发运行的事件，因此可为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
+一个通道最多支持三个并发运行的事件，因此可以为同一传入流创建多个存档。 这样，便可以根据需要发布和存档事件的不同部分。 例如，业务要求是存档 6 小时的节目，但只广播过去 10 分钟的内容。 为了实现此目的，需要创建两个同时运行的节目。 一个节目设置为存档 6 小时的事件但不发布该节目。 另一个节目设置为存档 10 分钟的事件，并且要发布该节目。
 
 不应重复使用现有的实时事件。 与之相反，应针对每个事件创建并启动新事件。
 
@@ -106,7 +106,7 @@ ms.locfileid: "58802807"
 ### <a name="to-use-the-portal-to-create-a-channel"></a>使用门户来创建通道
 本部分演示如何使用“快速创建”  选项来创建直通通道。
 
-有关直通通道的详细信息，请参阅[使用可创建多比特率流的本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
+有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
 1. 在 [Azure 门户](https://portal.azure.com/)中，选择 Azure 媒体服务帐户。
 2. 在“设置”窗口中，单击“实时传送视频流”。 
@@ -114,7 +114,7 @@ ms.locfileid: "58802807"
     ![入门](./media/media-services-portal-passthrough-get-started/media-services-getting-started.png)
    
     此时会显示“实时传送视频流”  窗口。
-3. 单击“快速创建”  ，使用 RTMP 引入协议创建直通通道。
+3. 单击“快速创建”  ，即可使用 RTMP 引入协议创建直通通道。
    
     此时会显示“创建新通道”  窗口。
 4. 为新通道命名，并单击“创建” 。 
@@ -122,27 +122,27 @@ ms.locfileid: "58802807"
     此时会使用 RTMP 引入协议创建直通通道。
 
 ## <a name="create-events"></a>创建事件
-1. 选择要对其添加事件的通道。
+1. 选择要添加事件的通道。
 2. 按“实时事件”  按钮。
 
 ![事件](./media/media-services-portal-passthrough-get-started/media-services-create-events.png)
 
 ## <a name="get-ingest-urls"></a>获取引入 URL
-创建通道后，可以获得要提供给实时编码器的引入 URL。 编码器使用这些 URL 来输入实时流。
+创建通道后，可以获得要提供给实时编码器的引入 URL。 编码器将使用这些 URL 来输入实时流。
 
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-channel-created.png)
 
 ## <a name="watch-the-event"></a>观看事件
-如果要观看事件，请在 Azure 门户中单击“观看”  ，或者先复制流式处理 URL，然后使用所选播放器进行播放。 
+要观看事件，请在 Azure 门户中单击“观看”  ，或者先复制流式处理 URL，并使用选择的播放器进行播放。 
 
 ![已创建](./media/media-services-portal-passthrough-get-started/media-services-default-event.png)
 
 停止时，实时事件会自动转换为点播内容。
 
 ## <a name="clean-up"></a>清理
-有关直通通道的详细信息，请参阅[使用可创建多比特率流的本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
+有关直通通道的详细信息，请参阅[使用本地编码器实时传送视频流以创建多比特率流](media-services-live-streaming-with-onprem-encoders.md)。
 
-* 只有当频道中的所有事件/节目都已停止时，才能停止频道。  停止通道后，不会产生任何费用。 需要重新启动它时，它会采用相同的引入 URL，因此无需重新配置编码器。
+* 只有当频道中的所有事件/节目都已停止时，才能停止频道。  通道停止后，不会产生任何费用。 当需要重新启动它时，它会采用相同的引入 URL，因此，无需重新配置编码器。
 * 只有当频道中的所有实时事件都已删除时，才能删除频道。
 
 ## <a name="view-archived-content"></a>查看存档的内容

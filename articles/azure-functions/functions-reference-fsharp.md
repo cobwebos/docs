@@ -13,10 +13,10 @@ ms.topic: reference
 ms.date: 10/09/2018
 ms.author: syclebsc
 ms.openlocfilehash: 981ffce34c56f4becee2ed0c72da72baa220e395
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894349"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 开发人员参考
@@ -147,7 +147,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `System.Net.Http`
 * `System.Threading.Tasks`
 * `Microsoft.Azure.WebJobs`
-* `Microsoft.Azure.WebJobs.Host`.
+* `Microsoft.Azure.WebJobs.Host`。
 
 ## <a name="referencing-external-assemblies"></a>引用外部程序集
 与此类似，可以使用 `#r "AssemblyName"` 指令添加框架程序集引用。
@@ -166,7 +166,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 
 由 Azure 函数主机环境自动添加以下程序集：
 
-* `mscorlib`，
+* `mscorlib`,
 * `System`
 * `System.Core`
 * `System.Xml`
@@ -175,7 +175,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`.
+* `System.Net.Http.Formatting`。
 
 此外，以下程序集比较特殊，可能由 simplename 引用 (例如 `#r "AssemblyName"`)：
 
@@ -183,7 +183,7 @@ let Run(req: HttpRequestMessage, log: ILogger) =
 * `Microsoft.WindowsAzure.Storage`
 * `Microsoft.ServiceBus`
 * `Microsoft.AspNet.WebHooks.Receivers`
-* `Microsoft.AspNEt.WebHooks.Common`.
+* `Microsoft.AspNEt.WebHooks.Common`。
 
 如果需要引用私有程序集，可以将程序集文件上传到  `bin` 与功能相关的文件，并通过使用文件名（例如`#r "MyAssembly.dll"`）来引用它. 有关如何将文件上传到函数文件夹的信息，请参阅下一部分中有关程序包管理的信息。
 
@@ -285,18 +285,18 @@ let mylog(log: ILogger, text: string) =
 提供给 `#load` 指令的路径与`.fsx` 文件位置相关。
 
 * `#load "logger.fsx"` 加载函数文件夹中的文件。
-* `#load "package\logger.fsx"` 加载文件位于`package`函数文件夹中的文件夹。
-* `#load "..\shared\mylogger.fsx"` 加载文件位于`shared`成为函数文件夹，即，同一级别的文件夹下方`wwwroot`。
+* `#load "package\logger.fsx"` 加载文件 `package` 函数文件夹中的文件夹。
+* `#load "..\shared\mylogger.fsx"` 在同一级别（即 `wwwroot` 的正下方）加载 `shared` 文件夹中的文件，使其成为函数文件夹。
 
 `#load` 指令只适用于 `.fsx`（F # 脚本）文件，而不适用于 `.fs` 文件。
 
 ## <a name="next-steps"></a>后续步骤
 有关详细信息，请参阅以下资源：
 
-* [F#指南](/dotnet/articles/fsharp/index)
-* [Azure Functions 最佳做法](functions-best-practices.md)
-* [Azure Functions developer reference（Azure Functions 开发人员参考）](functions-reference.md)
+* [F # 指南](/dotnet/articles/fsharp/index)
+* [Azure Functions 最佳实践](functions-best-practices.md)
+* [Azure Functions 开发人员参考](functions-reference.md)
 * [Azure Functions 触发器和绑定](functions-triggers-bindings.md)
-* [Azure Functions 测试](functions-test-a-function.md)
+* [ Azure Functions 测试](functions-test-a-function.md)
 * [Azure Functions 缩放](functions-scale.md)
 

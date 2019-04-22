@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 29efa963a254913e3d4744ade1d161c5c8ce42e4
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893344"
 ---
 # <a name="create-a-xamarinandroid-app"></a>创建 Xamarin.Android 应用
@@ -72,7 +72,7 @@ ms.locfileid: "58893344"
 
 ## <a name="next-steps"></a>后续步骤
 * [向应用添加脱机同步](app-service-mobile-xamarin-android-get-started-offline-data.md)
-* [向应用程序添加身份验证](app-service-mobile-xamarin-android-get-started-users.md)
+* [向应用添加身份验证](app-service-mobile-xamarin-android-get-started-users.md)
 * [向 Xamarin.Android 应用添加推送通知](app-service-mobile-xamarin-android-get-started-push.md)
 * [如何使用 Azure 移动应用的托管客户端](app-service-mobile-dotnet-how-to-use-client-library.md)
 

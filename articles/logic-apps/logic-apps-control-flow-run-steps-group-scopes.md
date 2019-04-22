@@ -11,10 +11,10 @@ ms.reviewer: klam, LADocs
 ms.date: 10/03/2018
 ms.topic: article
 ms.openlocfilehash: 48fb2d14cd4cf99510fff88b25b9ae45814a92a8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882406"
 ---
 # <a name="run-actions-based-on-group-status-with-scopes-in-azure-logic-apps"></a>基于组状态，在 Azure 逻辑应用中的范围内运行操作
@@ -54,7 +54,7 @@ ms.locfileid: "58882406"
 
 1. 如果尚未登录到 <a href="https://portal.azure.com" target="_blank">Azure 门户</a>，请进行登录。 创建空白逻辑应用。
 
-1. 添加**日程安排-定期**触发器使用这些设置：**间隔**="1"和**频率**="Minute"
+1. 使用以下设置添加**计划 - 定期**触发器：**时间间隔** =“1”并且**频率** =“Minute”
 
    ![设置“计划 - 定期”触发器](./media/logic-apps-control-flow-run-steps-group-scopes/recurrence.png)
 
@@ -79,20 +79,20 @@ ms.locfileid: "58882406"
 
       | 设置 | 值 | 描述 |
       | ------- | ----- | ----------- |
-      | **Waypoint 1** | <*起点*> | 输入路线的起点。 | 
-      | **Waypoint 2** | <*终点*> | 输入路线的目的地。 | 
+      | **路标 1** | <*起点*> | 输入路线的起点。 | 
+      | **路标 2** | <*终点*> | 输入路线的目的地。 | 
       | **避免** | 无 | 输入路线上需要避免的项目，例如高速公路、收费站等。 有关可能的值，请参阅[计算路由](https://msdn.microsoft.com/library/ff701717.aspx)。 | 
       | **优化** | timeWithTraffic | 选择一个参数来优化路线，例如距离、时间（在使用当前交通信息的情况下），等等。 此示例使用以下值：timeWithTraffic | 
-      | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值："英里" | 
+      | **距离单位** | <*your-preference*> | 输入要用来计算路线的距离单位。 此示例使用以下值：“Mile” | 
       | **旅行模式** | 驾车 | 输入路线的旅行模式。 此示例使用以下值：Driving | 
-      | **运输日期 / 时间** | 无 | 仅适用于运输模式。 | 
-      | **传输日期 / 时间类型** | 无 | 仅适用于运输模式。 | 
+      | **运输日期/时间** | 无 | 仅适用于运输模式。 | 
+      | **运输日期/时间类型** | 无 | 仅适用于运输模式。 | 
       ||||  
 
 1. [添加条件](../logic-apps/logic-apps-control-flow-conditional-statement.md)，检查当前交通状况下的旅行时间是否超出了指定时间。 
    对于本示例，请遵循以下步骤：
 
-   1. 重命名条件并提供此说明：**如果流量时间超过指定的时间**
+   1. 使用此说明重命名条件：**如果交通时间超过指定时间**
 
    1. 在最左侧的列中，单击“选择值”框内部，会显示动态内容列表。 从该列表中，选择“旅行期间 - 交通”字段（以秒为单位）。 
 
@@ -151,7 +151,7 @@ ms.locfileid: "58882406"
   
        “正文”字段现在如下例所示：
 
-       ![完成的“正文”字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
+       ![已完成"正文"字段](./media/logic-apps-control-flow-run-steps-group-scopes/send-email-4.png)
    <!-- markdownlint-enable MD038 -->
 
 1. 保存逻辑应用。
@@ -176,14 +176,14 @@ ms.locfileid: "58882406"
 
 1. 现在，添加要在作用域内运行的步骤，或拖动要在作用域内运行的现有步骤。 对于本例，请将以下操作拖动到作用域中：
       
-   * **获取路由**
+   * **获取路线**
    * 交通时间是否超过指定时间，包括“true”和“false”分支
 
    现在，逻辑应用如下例所示：
 
    ![添加的作用域](./media/logic-apps-control-flow-run-steps-group-scopes/scope-added.png)
 
-1. 在作用域下，添加一个条件，用以检查作用域的状态。 重命名条件并提供此说明：**如果作用域已失败**
+1. 在作用域下，添加一个条件，用以检查作用域的状态。 使用此说明重命名条件：**如果范围已失败**
 
    ![添加用以检查作用域状态的条件](./media/logic-apps-control-flow-run-steps-group-scopes/add-condition-check-scope-status.png)
   
@@ -397,7 +397,7 @@ ms.locfileid: "58882406"
 
 ## <a name="next-steps"></a>后续步骤
 
-* [基于 （条件语句） 的条件运行步骤](../logic-apps/logic-apps-control-flow-conditional-statement.md)
-* [基于不同的值 （switch 语句） 运行步骤](../logic-apps/logic-apps-control-flow-switch-statement.md)
-* [运行并重复步骤 （循环）](../logic-apps/logic-apps-control-flow-loops.md)
-* [运行或合并并行步骤 （分支）](../logic-apps/logic-apps-control-flow-branches.md)
+* [基于条件运行步骤（条件语句）](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [基于不同的值运行步骤（switch 语句）](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [运行并重复执行步骤（循环）](../logic-apps/logic-apps-control-flow-loops.md)
+* [运行或合并并行步骤（分支）](../logic-apps/logic-apps-control-flow-branches.md)

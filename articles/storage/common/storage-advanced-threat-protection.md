@@ -9,15 +9,15 @@ ms.date: 04/03/2019
 ms.author: monhaber
 ms.manager: shaik
 ms.openlocfilehash: 78338ece1bc70d8410bd71183a34aaf1a52f2d1b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904111"
 ---
 # <a name="advanced-threat-protection-for-azure-storage"></a>Azure 存储的高级威胁防护
 
-Azure 存储的高级的威胁防护提供的附加安全智能层，用于检测异常和潜在有害尝试访问或使用存储帐户。 借助此保护层，用户无需成为安全专家，也无需管理安全监视系统便可以解决威胁。 
+Azure 存储高级威胁防护提供额外的一层安全智能，用于检测试图访问或利用存储帐户的异常或可能有害的企图。 借助此保护层，用户无需成为安全专家，也无需管理安全监视系统便可以解决威胁。 
 
 出现在活动中的异常情况时触发安全警报。  这些安全警报集成在一起[Azure 安全中心](https://azure.microsoft.com/services/security-center/)，还将发送通过电子邮件到订阅管理员，具有可疑活动和如何调查和修正的威胁的建议的详细信息。
 
@@ -80,7 +80,7 @@ Azure 存储的高级的威胁防护引入诊断日志的读取、 写入和删�
 
 使用以下 PowerShell cmdlet:
 
-  * [启用高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
+  * [启用高级的威胁防护](https://docs.microsoft.com/powershell/module/az.security/enable-azsecurityadvancedthreatprotection)
   * [获取高级威胁防护](https://docs.microsoft.com/powershell/module/az.security/get-azsecurityadvancedthreatprotection)
   * [禁用高级的威胁防护](https://docs.microsoft.com/powershell/module/az.security/disable-azsecurityadvancedthreatprotection)
 

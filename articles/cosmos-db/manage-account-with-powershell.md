@@ -8,10 +8,10 @@ ms.date: 12/06/2018
 ms.author: sngun
 ms.custom: seodec18
 ms.openlocfilehash: 01c351ad08399c0b42e831e325b3f818741d1d83
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904366"
 ---
 # <a name="manage-azure-cosmos-resources-using-powershell"></a>使用 PowerShell 管理 Azure Cosmos 资源
@@ -41,13 +41,13 @@ ms.locfileid: "58904366"
     
 * `<write-region-location>` 数据库帐户的写入区域位置名称。 此位置的故障转移优先级值必须为 0。 每个数据库帐户必须只有一个写入区域。
 * `<read-region-location>` 数据库帐户的读取区域位置名称。 此位置的故障转移优先级值必须大于 0。 每个数据库帐户可以有多个读取区域。
-* `<ip-range-filter>` 在 CIDR 格式，以将其包含在给定的数据库帐户的客户端 Ip 的允许列表中指定的 IP 地址或 IP 地址范围的集。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [Azure Cosmos DB 防火墙支持](firewall-support.md)
+* `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不得包含空格。 有关详细信息，请参阅 [Azure Cosmos DB 防火墙支持](firewall-support.md)
 * `<default-consistency-level>` Azure Cosmos DB 帐户的默认一致性级别。 有关详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
-* `<max-interval>` 当与有限过期一致性一起使用，此值表示容忍长过期时间 （以秒为单位） 的时间量。 此值的接受范围为 1 - 100。
-* `<max-staleness-prefix>` 当与有限过期一致性一起使用，此值表示允许的过期请求数。 此值的接受范围为 1 – 2,147,483,647。
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<max-interval>` 与有限过期一致性一起使用时，此值表示允许的过期时间（以秒为单位）。 此值的接受范围为 1 - 100。
+* `<max-staleness-prefix>` 与有限过期一致性一起使用时，此值表示允许的过期请求数。 此值的接受范围为 1 - 2,147,483,647。
+* `<resource-group-name>` 新的 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups] 的名称。
 * `<resource-group-location>` 新的 Azure Cosmos DB 数据库帐户所属的 Azure 资源组的位置。
-* `<database-account-name>` 若要创建的 Azure Cosmos DB 数据库帐户的名称。 只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。
+* `<database-account-name>` 要创建的 Azure Cosmos DB 数据库帐户的名称。 它只能使用小写字母、数字及“-”字符，且长度必须为 3 到 50 个字符。
 
 示例： 
 
@@ -66,7 +66,7 @@ ms.locfileid: "58904366"
 此命令可更新 Azure Cosmos DB 数据库帐户属性。 这包括一致性策略和数据库帐户所在的位置。
 
 > [!NOTE]
-> 此命令可添加和删除区域，但不可修改故障转移优先级。 若要修改故障转移优先级，请参阅[以下内容](#modify-failover-priority-powershell)。
+> 此命令可添加和删除区域，但不可修改故障转移优先级。 若要修改故障转移优先级，请参阅 [下文](#modify-failover-priority-powershell)。
 
     $locations = @(@{"locationName"="<write-region-location>"; "failoverPriority"=0}, @{"locationName"="<read-region-location>"; "failoverPriority"=1})
     $iprangefilter = "<ip-range-filter>"
@@ -77,11 +77,11 @@ ms.locfileid: "58904366"
 * `<write-region-location>` 数据库帐户的写入区域位置名称。 此位置的故障转移优先级值必须为 0。 每个数据库帐户必须只有一个写入区域。
 * `<read-region-location>` 数据库帐户的读取区域位置名称。 此位置的故障转移优先级值必须大于 0。 每个数据库帐户可以有多个读取区域。
 * `<default-consistency-level>` Azure Cosmos DB 帐户的默认一致性级别。 有关详细信息，请参阅 [Azure Cosmos DB 中的一致性级别](consistency-levels.md)。
-* `<ip-range-filter>` 在 CIDR 格式，以将其包含在给定的数据库帐户的客户端 Ip 的允许列表中指定的 IP 地址或 IP 地址范围的集。 IP 地址/范围必须以逗号分隔，且不能包含空格。 有关详细信息，请参阅 [Azure Cosmos DB 防火墙支持](firewall-support.md)
-* `<max-interval>` 当与有限过期一致性一起使用，此值表示容忍长过期时间 （以秒为单位） 的时间量。 此值的接受范围为 1 - 100。
-* `<max-staleness-prefix>` 当与有限过期一致性一起使用，此值表示允许的过期请求数。 此值的接受范围为 1 – 2,147,483,647。
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
-* `<resource-group-location>` 新的 Azure Cosmos DB 数据库帐户所属的 Azure 资源组的位置。
+* `<ip-range-filter>` 指定 CIDR 格式的 IP 地址集或 IP 地址范围，将这些地址纳入给定数据库帐户所允许的客户端 IP 列表内。 IP 地址/范围必须以逗号分隔，且不得包含空格。 有关详细信息，请参阅 [Azure Cosmos DB 防火墙支持](firewall-support.md)
+* `<max-interval>` 与有限过期一致性一起使用时，此值表示允许的过期时间（以秒为单位）。 此值的接受范围为 1 - 100。
+* `<max-staleness-prefix>` 与有限过期一致性一起使用时，此值表示允许的过期请求数。 此值的接受范围为 1 - 2,147,483,647。
+* `<resource-group-name>` 新的 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups] 的名称。
+* `<resource-group-location>` 新 Azure Cosmos DB 数据库帐户所属的 Azure 资源组的位置。
 * `<database-account-name>` 要更新的 Azure Cosmos DB 数据库帐户的名称。
 
 示例： 
@@ -98,7 +98,7 @@ ms.locfileid: "58904366"
 
     Remove-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
     
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<resource-group-name>` 新 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]的名称。
 * `<database-account-name>` 要删除的 Azure Cosmos DB 数据库帐户的名称。
 
 示例：
@@ -111,7 +111,7 @@ ms.locfileid: "58904366"
 
     Get-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<resource-group-name>` 新 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]的名称。
 * `<database-account-name>` Azure Cosmos DB 数据库帐户的名称。
 
 示例：
@@ -136,7 +136,7 @@ ms.locfileid: "58904366"
 
     $keys = Invoke-AzResourceAction -Action listKeys -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<resource-group-name>` 新 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]的名称。
 * `<database-account-name>` Azure Cosmos DB 数据库帐户的名称。
 
 示例：
@@ -149,7 +149,7 @@ ms.locfileid: "58904366"
 
     $keys = Invoke-AzResourceAction -Action listConnectionStrings -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>"
 
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<resource-group-name>` 新 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]的名称。
 * `<database-account-name>` Azure Cosmos DB 数据库帐户的名称。
 
 示例：
@@ -162,9 +162,9 @@ ms.locfileid: "58904366"
 
     Invoke-AzResourceAction -Action regenerateKey -ResourceType "Microsoft.DocumentDb/databaseAccounts" -ApiVersion "2015-04-08" -ResourceGroupName "<resource-group-name>" -Name "<database-account-name>" -Parameters @{"keyKind"="<key-kind>"}
 
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<resource-group-name>` 新 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]的名称。
 * `<database-account-name>` Azure Cosmos DB 数据库帐户的名称。
-* `<key-kind>` 四种类型的密钥之一: ["Primary"|"辅助"|"PrimaryReadonly"|"SecondaryReadonly"]，你想要重新生成。
+* `<key-kind>` 要重新生成的以下四种密钥类型之一：[“Primary”|“Secondary”|“PrimaryReadonly”|“SecondaryReadonly”]。
 
 示例：
 
@@ -179,7 +179,7 @@ ms.locfileid: "58904366"
 
 * `<write-region-location>` 数据库帐户的写入区域位置名称。 此位置的故障转移优先级值必须为 0。 每个数据库帐户必须只有一个写入区域。
 * `<read-region-location>` 数据库帐户的读取区域位置名称。 此位置的故障转移优先级值必须大于 0。 每个数据库帐户可以有多个读取区域。
-* `<resource-group-name>` 名称[Azure 资源组][ azure-resource-groups]所属的新的 Azure Cosmos DB 数据库帐户。
+* `<resource-group-name>` 新 Azure Cosmos DB 数据库帐户所属的 [Azure 资源组][azure-resource-groups]的名称。
 * `<database-account-name>` Azure Cosmos DB 数据库帐户的名称。
 
 示例：

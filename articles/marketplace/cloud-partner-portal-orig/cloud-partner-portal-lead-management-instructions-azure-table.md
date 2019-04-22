@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 2a8ae3ab71b258d92d9761cc813b168717e44d82
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878003"
 ---
 # <a name="lead-management-instructions-for-azure-table"></a>Azure 表的潜在客户管理说明
@@ -90,7 +90,7 @@ ms.locfileid: "58878003"
 
      ![为 Azure 表名选择自定义值](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-table-name.png)
 
-   - 筛选查询 - 单击此字段，弹出窗口中将显示“获取过去时间”图标。 选择“过去时间”，将其用作时间戳以筛选查询。 或者，您可以将此函数粘贴到该字段： `gt datetime'@{body('Get_past_time')}'`
+   - 筛选查询 - 单击此字段，弹出窗口中将显示“获取过去时间”图标。 选择“过去时间”，将其用作时间戳以筛选查询。 此外，也可以将此功能粘贴到以下字段：`gt datetime'@{body('Get_past_time')}'`
 
      ![设置筛选查询功能](./media/cloud-partner-portal-lead-management-instructions-azure-table/msflow-getentities-filterquery.png)
 
@@ -148,4 +148,4 @@ ms.locfileid: "58878003"
 
 ## <a name="next-steps"></a>后续步骤
 
-[配置潜在顾客](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)
+[配置潜在客户](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-get-customer-leads)

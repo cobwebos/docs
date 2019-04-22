@@ -12,10 +12,10 @@ ms.date: 05/01/2018
 ms.author: luisca
 ms.custom: seodec2018
 ms.openlocfilehash: f1491d6b87816dfc70e94e01653567bda101d045
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916965"
 ---
 #  <a name="how-to-process-and-extract-information-from-images-in-cognitive-search-scenarios"></a>如何处理和提取认知搜索方案中的图像中的信息
@@ -219,8 +219,8 @@ ms.locfileid: "58916965"
 
 ## <a name="see-also"></a>另请参阅
 + [创建索引器 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [分析图像技能](cognitive-search-skill-image-analysis.md)
++ [分析图像技术](cognitive-search-skill-image-analysis.md)
 + [OCR 技术](cognitive-search-skill-ocr.md)
-+ [文本合并技能](cognitive-search-skill-textmerger.md)
-+ [如何定义技能组合](cognitive-search-defining-skillset.md)
-+ [如何将丰富的字段映射](cognitive-search-output-field-mapping.md)
++ [文本合并技术](cognitive-search-skill-textmerger.md)
++ [如何定义技术集](cognitive-search-defining-skillset.md)
++ [如何映射扩充的字段](cognitive-search-output-field-mapping.md)

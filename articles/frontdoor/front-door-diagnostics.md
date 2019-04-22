@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
 ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862096"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>监视指标和 Azure 第一道防线服务中的日志
@@ -92,5 +92,5 @@ ms.locfileid: "58862096"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 Front Door 配置文件](quickstart-create-front-door.md)
+- [创建的第一道防线配置文件](quickstart-create-front-door.md)
 - [第一道防线的工作原理](front-door-routing-architecture.md)

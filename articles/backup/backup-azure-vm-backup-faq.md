@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: sogup
 ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885258"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>常见的问题-备份 Azure Vm
@@ -27,7 +27,7 @@ ms.locfileid: "58885258"
  
 ### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>备份成本包含在 VM 成本是多少？ 
 
-不是。 备份成本是独立于 VM 的成本。 详细了解如何[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+不。 备份成本是独立于 VM 的成本。 详细了解如何[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
  
 ### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>为 vm 启用备份需要哪些权限？ 
 
@@ -51,7 +51,7 @@ ms.locfileid: "58885258"
 审阅[支持矩阵](backup-support-matrix-iaas.md)支持详细信息和限制。
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否使用与计划备份相同的保留计划？
-不是。 指定的保持期为按需备份作业。 默认情况下，从门户触发时，该作业会保留 30 天。
+不。 指定的保持期为按需备份作业。 默认情况下，从门户触发时，该作业会保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
 提供有关 Azure 备份密钥保管库的访问权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限。
@@ -74,7 +74,7 @@ ms.locfileid: "58885258"
 用户需要删除锁，然后清除该资源组中的还原点集合以使将来的备份成功，[请按照下列步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)删除还原点集合。
 
 ### <a name="does-the-backup-policy-consider-daylight-saving-time-dst"></a>备份策略是否考虑夏令时 (DST)？
-不是。 本地计算机上的日期和时间是本地的，当前已应用夏令时。 由于 DST，为计划备份设置的时间可能与本地时间不同。
+不。 本地计算机上的日期和时间是本地的，当前已应用夏令时。 由于 DST，为计划备份设置的时间可能与本地时间不同。
 
 ### <a name="how-many-data-disks-can-i-attach-to-a-vm-backed-up-by-azure-backup"></a>可将多少个数据磁盘附加到 VM 以供 Azure 备份执行备份？
 Azure 备份可使用最多 16 个磁盘备份 VM。 [即时还原](backup-instant-restore-capability.md)中提供了对 16 个磁盘的支持。

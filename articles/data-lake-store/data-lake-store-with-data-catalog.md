@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877878"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
@@ -74,10 +74,10 @@ ms.locfileid: "58877878"
      ![在目录中搜索数据](./media/data-lake-store-with-data-catalog/search-data-in-catalog.png "在目录中搜索数据")
 1. 现在可以执行向数据添加批注和文档等操作。 有关详细信息，请参阅以下链接。
 
-    * [批注数据目录中的数据源](../data-catalog/data-catalog-how-to-annotate.md)
-    * [数据目录中的文档数据源](../data-catalog/data-catalog-how-to-documentation.md)
+    * [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
+    * [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
 
 ## <a name="see-also"></a>另请参阅
-* [批注数据目录中的数据源](../data-catalog/data-catalog-how-to-annotate.md)
-* [数据目录中的文档数据源](../data-catalog/data-catalog-how-to-documentation.md)
-* [与其他 Azure 服务集成数据湖存储 Gen1](data-lake-store-integrate-with-other-services.md)
+* [在数据目录中批注数据源](../data-catalog/data-catalog-how-to-annotate.md)
+* [在数据目录中阐述数据源](../data-catalog/data-catalog-how-to-documentation.md)
+* [将 Data Lake Storage Gen1 与其他 Azure 服务集成](data-lake-store-integrate-with-other-services.md)

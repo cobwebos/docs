@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: danlep
 ms.openlocfilehash: b6e26bfa476c5c13e6e478f40c39978af61d83e7
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894262"
 ---
 # <a name="azure-container-registry-roles-and-permissions"></a>Azure 容器注册表角色和权限
@@ -63,7 +63,7 @@ Azure 资源管理器访问权限是 Azure 门户和使用 [Azure CLI](/cli/azur
 
 ## <a name="delete-image-data"></a>删除映像数据
 
-能够[删除容器映像](container-registry-delete.md)，或删除其他[支持项目](container-registry-image-formats.md)Helm 图表，从注册表等。
+能够从注册表中[删除容器映像](container-registry-delete.md)或者删除其他[受支持的项目](container-registry-image-formats.md)，例如 Helm 图表。
 
 ## <a name="change-policies"></a>更改策略
 

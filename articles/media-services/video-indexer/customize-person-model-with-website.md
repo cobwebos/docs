@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: anzaman
 ms.openlocfilehash: 8dd535d97e40fe1dd4358d782db60940af1dd95d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892824"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义人员模型
@@ -201,4 +201,4 @@ ms.locfileid: "58892824"
 
 ## <a name="next-steps"></a>后续步骤
 
-[自定义个人模型使用 Api](customize-person-model-with-api.md)
+[使用 API 自定义人员模型](customize-person-model-with-api.md)

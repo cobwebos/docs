@@ -7,10 +7,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: 4fea787e7fe20d60de91761811e1b69bebf3a010
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896250"
 ---
 # <a name="move-mainframe-storage-to-azure"></a>将大型机存储移动到 Azure
@@ -107,15 +107,15 @@ Blob 存储在 Azure 上提供最大存储量。 除存储大小，Azure 还提�
 - [大型机迁移](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
 - [大型机重新托管在 Azure 虚拟机](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
 - [将大型机计算移动到 Azure](mainframe-compute-Azure.md)
-- [确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
+- [确定何时使用 Azure Blob、 Azure 文件或 Azure 磁盘](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
 - [标准 SSD 托管磁盘用于 Azure VM 工作负荷](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM 资源
 
 - [并行 Sysplex 上 IBM Z](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
 - [IBM CICS 和耦合设施：基础知识以外](http://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [创建 Db2 pureScale 功能安装必需的用户](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt-创建实例的命令](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [Creating required users for a Db2 pureScale Feature installation](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)（创建所需用户以安装 Db2 pureScale 功能）
+- [Db2icrt - Create instance command](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)（Db2icrt - 创建实例命令）
 - [Db2 pureScale Clustered 数据库解决方案](http://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
 - [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
@@ -127,5 +127,5 @@ Blob 存储在 Azure 上提供最大存储量。 除存储大小，Azure 还提�
 ### <a name="more-migration-resources"></a>更多迁移资源
 
 - [平台现代化联盟：在 Azure 上的 IBM Db2](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
-- [Azure 虚拟数据中心提升和 Shift 指南](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Azure Virtual Data Center Lift and Shift Guide](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)（Azure 虚拟数据中心提升和迁移指南）
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

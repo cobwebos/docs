@@ -10,10 +10,10 @@ ms.date: 09/27/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: 0641a097761530285c2dd9aa176ddd8c2c159001
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878734"
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>使用 Microsoft Azure 存储数据移动库传输数据
@@ -32,7 +32,7 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 - 将文件从 URL 复制到 Blob 存储。
 - 从 Blob 存储复制到 Blob 存储。
 
-**你的需要：**
+**准备工作：**
 
 * [Visual Studio Code](https://code.visualstudio.com/)
 * 一个 [Azure 存储帐户](storage-quickstart-create-account.md)
@@ -54,7 +54,7 @@ Microsoft Azure 存储数据移动库是一个高性能的跨平台开源库，�
 
 ## <a name="add-data-movement-library-to-your-project"></a>将数据移动库添加到项目
 
-1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在撰写本文时，此版本将为 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
+1. 将最新版本的数据移动库添加到 `<project-name>.csproj` 文件的 `dependencies` 节。 在编写本文时，最新的版本是 `"Microsoft.Azure.Storage.DataMovement": "0.6.2"`
 2. 此时应会显示一条提示，指出要还原项目。 请单击“还原”按钮。 也可以从命令行还原项目，在项目的根目录中键入 `dotnet restore` 命令即可。
 
 修改 `<project-name>.csproj`：

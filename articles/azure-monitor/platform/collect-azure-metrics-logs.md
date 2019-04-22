@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.openlocfilehash: d086b6f844deb06d98edec8d8ec0f5670d84f066
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006267"
 ---
 # <a name="collect-azure-service-logs-and-metrics-into-log-analytics-workspace-in-azure-monitor"></a>收集到 Log Analytics 工作区中 Azure Monitor 的 Azure 服务日志和指标
@@ -42,20 +42,20 @@ ms.locfileid: "59006267"
 | Data Lake Store         | Microsoft.DataLakeStore/accounts        | 诊断 |             | |
 | 事件中心命名空间     | Microsoft.EventHub/namespaces           | 诊断 | 诊断 | |
 | IoT 中心                | Microsoft.Devices/IotHubs               |             | 诊断 | |
-| Key Vault               | Microsoft.KeyVault/vaults               | 诊断 |             | [KeyVault Analytics](../insights/azure-key-vault.md) |
+| Key Vault               | Microsoft.KeyVault/vaults               | 诊断 |             | [密钥保管库分析](../insights/azure-key-vault.md) |
 | 负载均衡器          | Microsoft.Network/loadBalancers         | 诊断 |             |  |
 | 逻辑应用              | Microsoft.Logic/workflows <br> Microsoft.Logic/integrationAccounts | 诊断 | 诊断 | |
 | 网络安全组 | Microsoft.Network/networksecuritygroups | 诊断 |             | [Azure 网络安全组分析](../insights/azure-networking-analytics.md#azure-network-security-group-analytics-solution-in-azure-monitor) |
-| 恢复保管库         | Microsoft.RecoveryServices/vaults       |             |             | [Azure 恢复服务分析 （预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
+| 恢复保管库         | Microsoft.RecoveryServices/vaults       |             |             | [Azure 恢复服务分析（预览版）](https://github.com/krnese/AzureDeploy/blob/master/OMS/MSOMS/Solutions/recoveryservices/)|
 | 搜索服务         | Microsoft.Search/searchServices         | 诊断 | 诊断 | |
-| 服务总线命名空间   | Microsoft.ServiceBus/namespaces         | 诊断 | 诊断 | [服务总线分析 （预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
-| Service Fabric          |                                         | 存储     |             | [Service Fabric 分析 （预览版）](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
+| 服务总线命名空间   | Microsoft.ServiceBus/namespaces         | 诊断 | 诊断 | [Service Fabric 分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-servicebus-solution)|
+| Service Fabric          |                                         | 存储     |             | [Service Fabric 分析（预览版）](../../service-fabric/service-fabric-diagnostics-oms-setup.md) |
 | SQL (v12)               | Microsoft.Sql/servers/databases <br> Microsoft.Sql/servers/elasticPools |             | 诊断 | [Azure SQL Analytics（预览版）](../insights/azure-sql.md) |
-| 存储                 |                                         |             | 脚本      | [Azure 存储分析 （预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
+| 存储                 |                                         |             | 脚本      | [Azure 存储分析（预览版）](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution) |
 | 虚拟机        | Microsoft.Compute/virtualMachines       | 分机   | 分机 <br> 诊断  | |
 | 虚拟机规模集 | Microsoft.Compute/virtualMachines <br> Microsoft.Compute/virtualMachineScaleSets/virtualMachines |             | 诊断 | |
 | Web 服务器场        | Microsoft.Web/serverfarms               |             | 诊断 | |
-| 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | [Azure Web 应用分析(预览版)](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
+| 网站               | Microsoft.Web/sites <br> Microsoft.Web/sites/slots |             | 诊断 | [Azure Web 应用分析（预览版）](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-web-apps-analytics) |
 
 
 > [!NOTE]

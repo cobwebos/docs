@@ -11,10 +11,10 @@ ms.date: 08/07/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 0f380aa9f2efc1ae9636b7704f7eb75004bb71f9
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895048"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C：使用 Azure AD 图形 API
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) B2C 租户往往会非常大。 这意味着�
 3. 在左侧导航窗格中，选择“所有服务”，单击“应用注册”，并单击“添加”。
 4. 根据提示创建新的应用程序。 
     1. 选择“Web 应用/API”作为应用程序类型。    
-    2. 提供**任何单一登录 URL** (例如`https://B2CGraphAPI`) 因为它不是与此示例。  
+    2. 提供任一登录 URL（例如 `https://B2CGraphAPI`），因为它与此示例不相关。  
 5. 应用程序现在会显示在应用程序列表中，单击它以获取**应用程序 ID**（也称为客户端 ID）。 复制它，因为会在后面的部分用到它。
 6. 在“设置”菜单中，单击“密钥”。
 7. 在“密码”部分输入密钥说明，并选择持续时间，然后单击“保存”。 复制该密钥值（也称为客户端密码），便于在之后的章节中使用。
@@ -126,7 +126,7 @@ B2C Help
 此操作会显示每个命令的简要说明。 每次调用其中一个命令时，`B2CGraphClient` 都会向 Azure AD 图形 API 发出请求。
 
 ### <a name="get-an-access-token"></a>获取访问令牌
-对图形 API 的任何请求都需要访问令牌来进行身份验证。 `B2CGraphClient` 使用开放源 Active Directory 身份验证库 (ADAL) 帮助获取访问令牌。 通过提供简单的 API 并处理某些重要细节（如缓存访问令牌），ADAL 使令牌获取变得更容易。 不过，不必非得使用 ADAL 获得令牌。 也可以通过制作 HTTP 请求获取令牌。
+对图形 API 的任何请求都需要访问令牌来进行身份验证。 `B2CGraphClient` 使用开放源 Active Directory Authentication Library (ADAL) 来帮助获取访问令牌。 通过提供简单的 API 并处理某些重要细节（如缓存访问令牌），ADAL 使令牌获取变得更容易。 不过，不必非得使用 ADAL 获得令牌。 也可以通过制作 HTTP 请求获取令牌。
 
 > [!NOTE]
 > 此代码示例使用 ADAL v2 以便与图形 API 进行通信。  必须使用 ADAL v2 或 v3，获取可配合 Azure AD 图形 API 使用的访问令牌。
@@ -355,7 +355,7 @@ B2C Get-Extension-Attribute <object-id-in-the-output-of-the-above-command>
 B2C Update-User <object-id-of-user> <path-to-json-file>
 ```
 
-通过使用 `B2CGraphClient`，可以有一个能以编程方式管理 B2C 租户用户的服务应用程序。 `B2CGraphClient` 使用其自己的应用程序标识对 Azure AD 图形 API 进行身份验证。 它还会通过使用客户端密码获取令牌。 将此功能并入应用程序时，请记住 B2C 应用的几个要点：
+通过使用 `B2CGraphClient`，可以有一个能以编程方式管理 B2C 租户用户的服务应用程序。 `B2CGraphClient` 使用自己的应用程序标识，向 Azure AD 图形 API 进行验证。 它还会通过使用客户端密码获取令牌。 将此功能并入应用程序时，请记住 B2C 应用的几个要点：
 
 * 需要将租户中的适当权限授予应用程序。
 * 现在，需要使用 ADAL（而非 MSAL）获取访问令牌。 （也可以直接发送协议消息，而不使用库。）

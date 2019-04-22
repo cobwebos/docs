@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881012"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
@@ -29,9 +29,9 @@ ms.locfileid: "58881012"
 
 ## <a name="naming-convention"></a>命名约定
 
-默认终结点： `{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+对于默认终结点：`{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
 
-对于任何其他终结点： `{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
+对于任何其他终结点：`{EndpointName}-{AccountName}-{DatacenterAbbreviation}.streaming.media.azure.net`
 
 ## <a name="types"></a>类型  
 
@@ -42,7 +42,7 @@ ms.locfileid: "58881012"
 |Type|缩放单元|描述|
 |--------|--------|--------|  
 |**标准流式处理终结点**（推荐）|0|默认的流式处理终结点是**标准**类型，但可以更改为高级类型。<br/> 标准类型是几乎所有流式处理方案和受众规模的建议的选项。 标准类型会自动缩放出站带宽。 从这种流式处理终结点的吞吐量为最多 600 Mbps。 在 CDN 中缓存的视频片段不使用流式处理终结点的带宽。<br/>对于要求极高的客户，媒体服务提供高级流式处理终结点，可用于横向扩展适用于最大规模的 Internet 受众的容量。 如果您希望大型受众需求和并发查看器，请联系我们在 amsstreaming\@有关指导您是否需要将移动到 microsoft.com**高级**类型。 |
-|**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 为您提供可按照 200 Mbps 的增量购买的专用的出口容量。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
+|**高级流式处理终结点**|>0|高级流式处理终结点适合用于高级工作负载，同时提供可缩放的专用带宽容量。 可以通过调整 `scaleUnits` 移至高级类型。 `scaleUnits` 提供专用的出口容量，可以按照 200 Mbps 的增量购买。 使用高级类型时，每个启用的单元都为应用程序提供额外的带宽容量。 |
  
 ## <a name="comparing-streaming-types"></a>比较流式处理类型
 
@@ -77,7 +77,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
   - 检查返回的结果为`HTTP Error Code 412`(PreconditionFailed) 的消息的"流式处理终结点 CdnEnabled 属性不能设置为 true，因为 CDN 功能在当前区域中不可用。" 
 
     如果出现此错误，则数据中心不支持 Azure CDN 集成。 你应该尝试其他数据中心。
-- `cdnProfile` -当`cdnEnabled`设置为 true，你还可以传递`cdnProfile`值。 `cdnProfile` 是在其中创建的 CDN 终结点的点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，新的配置文件会自动创建。
+- `cdnProfile` -当`cdnEnabled`设置为 true，你还可以传递`cdnProfile`值。 `cdnProfile` 是将在其中创建 CDN 终结点的 CDN 配置文件的名称。 可以提供现有的 cdnProfile 或使用新的 cdnProfile。 如果值为 NULL 且 `cdnEnabled` 为 true，则使用默认值“AzureMediaStreamingPlatformCdnProfile”。 如果提供的 `cdnProfile` 已经存在，则在其下创建一个终结点。 如果该配置文件不存在，新的配置文件会自动创建。
 - `cdnProvider` -启用 CDN 后，你还可以传递`cdnProvider`值。 `cdnProvider` 控制将使用哪个提供程序。 目前，支持三个值：“StandardVerizon”、“PremiumVerizon”和“StandardAkamai”。 如果未不提供任何值和`cdnEnabled`为 true，"StandardVerizon"使用 （这是默认值）。
 - `crossSiteAccessPolicies` -用于为各种客户端指定跨站点访问策略。 有关详细信息，请参阅[跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)和[提供跨域边界的服务](https://msdn.microsoft.com/library/cc197955\(v=vs.95\).aspx)。<br/>设置仅适用于平滑流式处理。
 - `customHostNames` -用于配置流式处理终结点以接受定向到自定义主机名的流量。  此属性适用于标准和高级流式处理终结点和时可以设置`cdnEnabled`: false。

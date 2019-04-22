@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 6147616156bc192ffd8d38ddcc636734d8d5179c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915962"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-swift"></a>如何创建和定位在 Swift 中使用 Azure 空间的定位点的定位点
@@ -36,8 +36,8 @@ ms.locfileid: "58915962"
 
 若要完成本指南，请确保你有：
 
-- 通读[Azure 空间的定位点概述](../overview.md)。
-- 完成之一[5 分钟快速入门](../index.yml)。
+- 通读 [Azure 空间定位点概述](../overview.md)。
+- 完成 [5 分钟快速入门](../index.yml)之一。
 - Swift 的基本知识。
 - 有关的基本知识<a href="https://developer.apple.com/arkit/" target="_blank">ARKit</a>。
 

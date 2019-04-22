@@ -11,10 +11,10 @@ ms.date: 05/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: bcbda2464a4607aaa0b1bb96ef8f34c8713cb5f1
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918784"
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure 自动化中基于角色的访问控制
@@ -25,7 +25,7 @@ ms.locfileid: "58918784"
 
 在 Azure 自动化中，访问权限是通过将相应的 RBAC 角色分配给自动化帐户作用域的用户、组和应用程序来授予的。 以下是自动化帐户所支持的内置角色：
 
-| **角色** | **描述** |
+| **角色** | **说明** |
 |:--- |:--- |
 | 所有者 |“所有者”角色允许访问自动化帐户中的所有资源和操作，包括访问其他用户、组和应用程序以管理自动化帐户。 |
 | 参与者 |“参与者”角色允许管理所有事项，修改其他用户对自动化帐户的访问权限除外。 |
@@ -55,10 +55,10 @@ ms.locfileid: "58918784"
 
 参与者可管理访问权限以外的所有内容 下表显示了授予和拒绝角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/|创建和管理所有类型的资源|
-|**不操作**||
+|**无操作**||
 |Microsoft.Authorization/*/Delete| 删除角色和角色分配。       |
 |Microsoft.Authorization/*/Write     |  创建角色和角色分配。       |
 |Microsoft.Authorization/elevateAccess/Action    | 拒绝创建用户访问管理员。       |
@@ -67,7 +67,7 @@ ms.locfileid: "58918784"
 
 读者可以查看自动化帐户中的所有资源，但不能进行任何更改。
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/read|查看自动化帐户中的所有资源。 |
 
@@ -75,7 +75,7 @@ ms.locfileid: "58918784"
 
 自动化操作员能够针对某个自动化帐户中的所有 Runbook 创建和管理作业，以及读取 Runbook 名称和属性。  注意：如果希望针对个别 Runbook 控制操作员访问权限，则不要设置此角色，而是组合使用“自动化作业操作员”和“自动化 Runbook 操作员”角色。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Authorization/*/read|读取授权。|
 |Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/read|读取混合 Runbook 辅助角色资源。|
@@ -102,7 +102,7 @@ ms.locfileid: "58918784"
 
 自动化作业操作员角色是在自动化帐户范围内授予的。 这将向操作员授予权限来为帐户中的所有 Runbook 创建和管理作业。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Authorization/*/read|读取授权。|
 |Microsoft.Automation/automationAccounts/jobs/read|列出 runbook 的作业。|
@@ -120,7 +120,7 @@ ms.locfileid: "58918784"
 
 自动化 Runbook 操作员角色在 Runbook 范围授予。 自动化 Runbook 操作员可以查看 Runbook 的名称和属性。  将此角色与“自动化作业操作员”角色组合使用时，也会使操作员能够为 Runbook 创建和管理作业。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |Microsoft.Automation/automationAccounts/runbooks/read     | 列出 runbook。        |
 |Microsoft.Authorization/*/read      | 读取授权。        |
@@ -133,7 +133,7 @@ ms.locfileid: "58918784"
 
 Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 编辑监视设置包括向 VM 添加 VM 扩展、读取存储帐户密钥以便能够从 Azure 存储配置日志收集、创建和配置自动化帐户、添加解决方案以及配置所有 Azure 资源上的 Azure 诊断。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |*/read|读取除密码外的所有类型的资源。|
 |Microsoft.Automation/automationAccounts/*|管理自动化帐户。|
@@ -153,20 +153,20 @@ Log Analytics 参与者可以读取所有监视数据并编辑监视设置。 �
 
 Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置，其中包括查看所有 Azure 资源上的 Azure 诊断的配置。 下表显示了授予或拒绝角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |*/read|读取除密码外的所有类型的资源。|
 |Microsoft.OperationalInsights/workspaces/analytics/query/action|管理 Azure Monitor 日志中的查询。|
 |Microsoft.OperationalInsights/workspaces/search/action|搜索 Azure Monitor 日志数据。|
 |Microsoft.Support/*|创建和管理支持票证。|
-|**不操作**| |
+|**无操作**| |
 |Microsoft.OperationalInsights/workspaces/sharedKeys/read|无法读取共享访问密钥。|
 
 ### <a name="monitoring-contributor"></a>监视参与者
 
 监视参与者可以读取所有监视数据并更新监视设置。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |*/read|读取除密码外的所有类型的资源。|
 |Microsoft.AlertsManagement/alerts/*|管理警报。|
@@ -192,7 +192,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 监视读取者可以读取所有监视数据。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |*/read|读取除密码外的所有类型的资源。|
 |Microsoft.OperationalInsights/workspaces/search/action|搜索 Log Analytics 工作区。|
@@ -202,7 +202,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 用户访问管理员可管理 Azure 资源的用户访问权限。 下表显示了授予角色的权限：
 
-|**操作**  |**描述**  |
+|**操作**  |**说明**  |
 |---------|---------|
 |*/read|读取所有资源。|
 |Microsoft.Authorization/*|管理授权|
@@ -214,7 +214,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="onboarding-from-a-virtual-machine"></a>从虚拟机加入
 
-|**操作**  |**权限**  |**最小作用域**  |
+|**Action**  |权限  |**最小范围**  |
 |---------|---------|---------|
 |写入新部署      | Microsoft.Resources/deployments/*          |订阅          |
 |写入新资源组      | Microsoft.Resources/subscriptions/resourceGroups/write        | 订阅          |
@@ -237,7 +237,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 
 ### <a name="onboarding-from-automation-account"></a>从自动化帐户加入
 
-|**操作**  |**权限** |**最小作用域**  |
+|**Action**  |权限 |**最小范围**  |
 |---------|---------|---------|
 |新建部署     | Microsoft.Resources/deployments/*        | 订阅         |
 |新建资源组     | Microsoft.Resources/subscriptions/resourceGroups/write         | 订阅        |
@@ -251,7 +251,7 @@ Log Analytics 读者可以查看和搜索所有监视数据并查看监视设置
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |创建/编辑范围配置     | Microsoft.OperationalInsights/workspaces/write        | 工作区        |
 |将解决方案链接到范围配置      | Microsoft.OperationalInsights/workspaces/intelligencepacks/write         | 解决方案         |
-|**步骤 2-加入多个 Vm**     |         |         |
+|**步骤 2 - 加入多个 VM**     |         |         |
 |VMOnboarding 边栏选项卡 - 创建 MMA 扩展     | Microsoft.Compute/virtualMachines/write           | 虚拟机        |
 |创建/编辑保存的搜索     | Microsoft.OperationalInsights/workspaces/write           | 工作区        |
 |创建/编辑范围配置  | Microsoft.OperationalInsights/workspaces/write   | 工作区|

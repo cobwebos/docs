@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
 ms.openlocfilehash: f3ae69cb6c8e2a60488b4f1ff3df1bb8ab0c04ea
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861972"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT 安全警报的 azure 安全中心
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 适用于 IoT 的 azure 安全中心 (ASC) 会持续分析 IoT 解决方案是使用高级的分析和威胁智能用以提醒恶意活动。

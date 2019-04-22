@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 478c261bb909cbc931a7dbbaa9cb6c61152970e4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885519"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>比较 Azure Data Lake Storage Gen1 与 Azure Blob 存储
@@ -32,7 +32,7 @@ ms.locfileid: "58885519"
 | 关键概念 |Data Lake Storage Gen1 帐户包含文件夹，而这些文件夹也会相应地将数据存储为文件 |存储帐户包含容器，而这些容器也会相应地包含 blob 形式的数据 |
 | 结构 |分层文件系统 |具有平面命名空间的对象存储 |
 | API |基于 HTTPS 的 REST API |基于 HTTP/HTTPS 的 REST API |
-| 服务器端 API |[WebHDFS 兼容的 REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Azure Blob 存储 REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
+| 服务器端 API |[WebHDFS-compatible REST API](https://msdn.microsoft.com/library/azure/mt693424.aspx)（兼容 WebHDFS 的 REST API） |[Azure Blob Storage REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)（Azure blob 存储 REST API） |
 | Hadoop 文件系统客户端 |是 |是 |
 | 数据操作 - 身份验证 |基于 [Azure Active Directory 标识](../active-directory/develop/authentication-scenarios.md) |基于共享机密 - [帐户访问密钥](../storage/common/storage-account-manage.md#access-keys)和[共享访问签名密钥](../storage/common/storage-dotnet-shared-access-signature-part-1.md)。 |
 | 数据操作 - 身份验证协议 |OAuth 2.0。 调用必须包含 Azure Active Directory 发布的有效的 JWT（JSON Web 令牌） |基于哈希的消息身份验证代码 (HMAC)。 调用必须包含 Base64 编码的 SHA-256 哈希作为 HTTP 请求的一部分。 |

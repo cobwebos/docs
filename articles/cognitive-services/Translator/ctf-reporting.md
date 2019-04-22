@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
 ms.openlocfilehash: da321aa2a4db441fa5bb51e4986d00889cb7482d
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917390"
 ---
 # <a name="how-to-use-collaborative-translation-framework-ctf-reporting"></a>如何使用协作性翻译框架 (CTF) 报告
@@ -72,14 +72,14 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 >            int? take);
 > ```
 
-**parameters**
+**参数**
 
 | 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix | **可选**：一个包含翻译 URI 前缀的字符串。|
 | from | **可选**：一个表示翻译文本语言代码的字符串。 |
-| to | **可选**：一个字符串，表示要将文本翻译成的语言代码。|
+| 至 | **可选**：一个字符串，表示要将文本翻译成的语言代码。|
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | user | **可选**：一个字符串，用于根据提交发起方筛选结果。 |
@@ -105,7 +105,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 | Uri| AddTranslation() 方法调用中应用的 URI|
 | 用户| 用户名|
 
-**例外**
+**异常**
 
 | 异常 | 消息 | 条件 |
 |:---|:---|:---|
@@ -116,7 +116,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 > [!NOTE]
 > 将调整配额，以确保该服务的所有用户之间的公平性。
 
-**在 GitHib 上查看代码示例**
+**查看 GitHub 上的代码示例**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslationcounts-example-php.md)
 
@@ -143,17 +143,17 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 >             int? take);
 > ```
 
-**parameters**
+**参数**
 
 | 参数 | 描述 |
 |:---|:---|
 | appId | **必需**：如果使用授权标头，请将 appid 字段留空，否则请指定包含 "Bearer" + " " + access token 的字符串。|
 | uriPrefix| **可选**：一个包含翻译 URI 前缀的字符串。|
 | from| **可选**：一个表示翻译文本语言代码的字符串。|
-| to| **可选**：一个字符串，表示要将文本翻译成的语言代码。|
+| 至| **可选**：一个字符串，表示要将文本翻译成的语言代码。|
 | minRating| **可选**：一个整数值，表示已翻译文本的最低质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
 | maxRating| **可选**：一个整数值，表示已翻译文本的最高质量等级。 有效值介于 -10 和 10 之间。 默认值为 1。|
-| user| **可选。 一个字符串，用于筛选基于的提交创建者的结果**|
+| user| **可选。一个字符串，用于根据提交发起方筛选结果**|
 | category| **可选**：一个包含翻译类别或领域的字符串。 此参数仅支持默认选项 general。|
 | minDateUtc| **可选**：要检索翻译的起始日期。 日期必须采用 UTC 格式。|
 | maxDateUtc| **可选**：要检索翻译的结束日期。 日期必须采用 UTC 格式。|
@@ -178,7 +178,7 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 |Uri|   AddTranslation() 方法调用中应用的 URI|
 |用户   |用户名|
 
-**例外**
+**异常**
 
 | 异常 | 消息 | 条件 |
 |:---|:---|:---|
@@ -189,6 +189,6 @@ CTF 报告 API 的终结点为 https://api.microsofttranslator.com/v2/beta/ctfre
 > [!NOTE]
 > 将调整配额，以确保该服务的所有用户之间的公平性。
 
-**在 GitHib 上查看代码示例**
+**查看 GitHub 上的代码示例**
 * [C#](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-csharp.md)
 * [PHP](https://github.com/MicrosoftTranslator/Documentation-Code-TextAPI/blob/master/ctf/ctf-getusertranslations-example-php.md)

@@ -38,7 +38,7 @@ ms.locfileid: "58227540"
 
 请参阅此文章以了解如何[启用时创建新的应用程序网关的 SSL 终止](https://docs.microsoft.com/azure/application-gateway/create-ssl-portal)。
 
-### <a name="whitelist-certificates-for-backend-servers"></a>白名单后端服务器的证书
+### <a name="whitelist-certificates-for-backend-servers"></a>允许列表后端服务器的证书
 
 1. 选择“所有资源”，然后选择“myAppGateway”。
 
@@ -63,7 +63,7 @@ ms.locfileid: "58227540"
 
 若要使用的端到端 SSL 加密配置现有的应用程序网关，将需要在侦听器中的第一个启用 SSL 终止。 这将使客户端和应用程序网关之间的通信的 SSL 加密。 然后，将需要列入允许列表作为后端 HTTP 设置中的服务器证书启用应用程序网关和后端服务器，从而完成端到端 SSL 加密之间的通信的 SSL 加密。
 
-需要使用 HTTPS 协议和证书用于启用 SSL 终止的侦听器。 不能更改现有侦听器的协议。 因此，您可以选择使用现有侦听器使用 HTTPS 协议和证书，或创建一个新的侦听器。 如果选择前者，则可以忽略下面所述的步骤**启用 SSL 终止现有应用程序网关中**并直接移至**后端服务器的白名单证书**部分。 如果您选择后者，执行这些步骤。 
+需要使用 HTTPS 协议和证书用于启用 SSL 终止的侦听器。 不能更改现有侦听器的协议。 因此，您可以选择使用现有侦听器使用 HTTPS 协议和证书，或创建一个新的侦听器。 如果选择前者，则可以忽略下面所述的步骤**启用 SSL 终止现有应用程序网关中**并直接移至**后端服务器的允许列表证书**部分。 如果您选择后者，执行这些步骤。 
 
 ### <a name="enable-ssl-termination-in-existing-application-gateway"></a>启用现有应用程序网关的 SSL 终止
 
@@ -84,11 +84,11 @@ ms.locfileid: "58227540"
 
 7. 选择“确定”进行保存。
 
-### <a name="whitelist-certificates-for-backend-servers"></a>白名单后端服务器的证书
+### <a name="whitelist-certificates-for-backend-servers"></a>允许列表后端服务器的证书
 
 1. 选择“所有资源”，然后选择“myAppGateway”。
 
-2. 选择**HTTP 设置**从左侧菜单中。 可以是白名单证书中的现有后端 HTTP 设置或创建新的 HTTP 设置。 在下面步骤中，我们将默认 HTTP 设置的白名单证书**appGatewayBackendHttpSettings**。
+2. 选择**HTTP 设置**从左侧菜单中。 可以是允许列表证书中的现有后端 HTTP 设置或创建新的 HTTP 设置。 在下面步骤中，我们将默认 HTTP 设置的允许列表证书**appGatewayBackendHttpSettings**。
 
 3. 选择**appGatewayBackendHttpSettings**。
 

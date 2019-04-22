@@ -16,10 +16,10 @@ ms.date: 08/29/2016
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 67fba7a921868d0e5720216208cff7c298c926f6
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895007"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>使用 Visual Studio 对 Azure 应用服务中的应用进行故障排除
@@ -261,7 +261,7 @@ public ActionResult About()
   应用程序通过调用 [System.Diagnostics.Trace](/dotnet/api/system.diagnostics.trace) 类的方法创建这些日志。
 * **Web 服务器日志**<br/>
   Web 服务器为向应用发出的每个 HTTP 请求创建一个日志条目。
-* **详细的错误消息日志**<br/>
+* **详细错误消息日志**<br/>
   Web 服务器为失败的 HTTP 请求（导致状态代码 400 或更大数字的请求）创建带有一些额外信息的 HTML 页面。
 * **失败请求跟踪日志**<br/>
   Web 服务器为失败的 HTTP 请求创建带有详细跟踪信息的 XML 文件。 Web 服务器还可提供 XSL 文件以格式化浏览器中的 XML。
@@ -639,9 +639,9 @@ Storage accounts offer more storage and longer-lasting retention for logs compar
 有关应用服务应用和 WebJobs 远程调试的详细信息，请参阅以下资源：
 
 * [Azure 应用服务远程调试简介](https://azure.microsoft.com/blog/2014/05/06/introduction-to-remote-debugging-on-azure-web-sites/)。
-* [介绍远程调试 Azure 应用服务第 2 部分-远程调试洞析](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
-* [Azure 应用服务第 3 部分-多实例环境和 GIT 远程调试的简介](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
-* [WebJobs 调试 （视频）](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
+* [Azure 应用服务远程调试简介第 2 部分 - 远程调试洞析](https://azure.microsoft.com/blog/2014/05/07/introduction-to-remote-debugging-azure-web-sites-part-2-inside-remote-debugging/)
+* [Azure 应用服务远程调试简介第 3 部分 - 多实例环境和 GIT](https://azure.microsoft.com/blog/2014/05/08/introduction-to-remote-debugging-on-azure-web-sites-part-3-multi-instance-environment-and-git/)
+* [WebJobs 调试（视频）](https://www.youtube.com/watch?v=ncQm9q5ZFZs&list=UU_SjTh-ZltPmTYzAybypB-g&index=1)
 
 如果应用使用 Azure Web API 或移动服务后端且需要进行调试，请参阅[在 Visual Studio 中调试 .NET 后端](https://blogs.msdn.com/b/azuremobile/archive/2014/03/14/debugging-net-backend-in-visual-studio.aspx)。
 
@@ -654,7 +654,7 @@ Internet 上对于 ASP.NET 跟踪没有全面且最新的介绍。 最佳做法�
   内容过时，但不失为这一主题的优秀入门级资源。
 * [跟踪侦听器](/dotnet/framework/debug-trace-profile/trace-listeners)<br/>
   有关跟踪侦听器的信息，但未提及 [WebPageTraceListener](/dotnet/api/system.web.webpagetracelistener)。
-* [演练：集成 ASP.NET 跟踪与 System.Diagnostics 跟踪](/previous-versions/b0ectfxd(v=vs.140))<br/>
+* [演练：将 ASP.NET 跟踪与 System.Diagnostics 跟踪集成](/previous-versions/b0ectfxd(v=vs.140))<br/>
   此文章已过时，但包括一些介绍性文章未涵盖的额外信息。
 * [在 ASP.NET MVC Razor 视图中进行跟踪](https://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   除了在 Razor 视图中进行跟踪，文章还介绍了如何创建错误筛选器以便在 MVC 应用程序中记录所有未经处理的异常。 有关如何在 Web 窗体应用程序中记录所有未经处理的异常，请参阅 MSDN 上的[错误处理程序的完整示例](/previous-versions/bb397417(v=vs.140))中的 Global.asax 示例。 在 MVC 或 Web 窗体中，如果希望记录特定异常但想让默认框架对其进行处理，可捕获并重新引发异常，如下例所示：
@@ -671,7 +671,7 @@ catch (Exception ex)
 }
 ```
 
-* [通过 Azure 命令行（以及 Glimpse）执行流式诊断跟踪日志记录](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
+* [从 Azure 命令行流式传输诊断跟踪日志记录（加上 Glimpse！）](https://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   如何使用命令行实现本教程中通过 Visual Studio 完成的任务。 [Glimpse](https://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) 是一个用于调试 ASP.NET 应用程序的工具。
 * [使用 Web 应用日志记录和诊断 - 与 David Ebbo 协作完成](https://azure.microsoft.com/documentation/videos/azure-web-site-logging-and-diagnostics/)和[从 Azure Web 应用流式传输日志 - 与 David Ebbo 协作完成](https://azure.microsoft.com/documentation/videos/log-streaming-with-azure-web-sites/)<br>
   由 Scott Hanselman 和 David Ebbo 提供的视频。
@@ -687,8 +687,8 @@ catch (Exception ex)
   用于查看 Web 服务器日志（*.log* 文件）中的数据的工具。
 * [解决 IIS 性能问题或使用 logparser 解决应用程序错误](https://www.iis.net/learn/troubleshoot/performance-issues/troubleshooting-iis-performance-issues-or-application-errors-using-logparser)<br/>
   可用于分析 Web 服务器日志的 Log Parser 工具介绍。
-* [Robert McMurray 有关使用 LogParser 的博文](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
-* [IIS 7.0、IIS 7.5 和 IIS 8.0 中的 HTTP 状态代码](https://support.microsoft.com/kb/943891)
+* [Robert McMurray 有关 LogParser 使用的博客文章](https://blogs.msdn.com/b/robert_mcmurray/archive/tags/logparser/)<br/>
+* [IIS 7.0、IIS 7.5 以及 IIS 8.0 中的 HTTP 状态代码](https://support.microsoft.com/kb/943891)
 
 ### <a name="analyzing-failed-request-tracing-logs"></a>分析失败请求跟踪日志
 Microsoft TechNet 网站包含[使用失败请求跟踪](https://www.iis.net/learn/troubleshoot/using-failed-request-tracing)部分，有助于你了解如何使用这些日志。 然而，该文档主要着重于在 IIS 中配置失败请求跟踪，并不适用于 Azure 应用服务。

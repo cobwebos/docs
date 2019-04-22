@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/26/2019
 ms.author: diberry
 ms.openlocfilehash: 9a6f9d54c52f36b8f709eacaf25d3fea31dbe516
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895809"
 ---
 # <a name="best-practices-for-building-a-language-understanding-app-with-cognitive-services"></a>使用认知服务生成语言理解应用的最佳做法
@@ -36,14 +36,14 @@ ms.locfileid: "58895809"
 
 |操作|不要|
 |--|--|
-|[定义不同的意向](#do-define-distinct-intents) |[将多个示例语音样本添加到意向](#dont-add-many-example-utterances-to-intents) |
-|[每个意向太通用和过于具体之间找到最擅长的领域](#do-find-sweet-spot-for-intents)|[LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|
-|[以迭代方式构建您的应用程序](#do-build-the-app-iteratively)|[添加具有相同的格式，忽略其他格式的许多示例查询文本](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
-|[在后续迭代中添加短语列表和模式](#do-add-phrase-lists-and-patterns-in-later-iterations)|[组合的意图和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
-|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将示例言语添加到 None 意向](#do-add-example-utterances-to-none-intent)|[创建具有所有可能的值的短语列表](#dont-create-phrase-lists-with-all-the-possible-values)|
-|[利用主动学习的建议功能](#do-leverage-the-suggest-feature-for-active-learning)|[添加太多模式](#dont-add-many-patterns)|
-|[监视您的应用程序的性能](#do-monitor-the-performance-of-your-app)|[定型和发布与添加每个单个示例查询文本](#dont-train-and-publish-with-every-single-example-utterance)|
-|[对于每个应用迭代使用版本](#do-use-versions-for-each-app-iteration)||
+|[应定义不同的意向](#do-define-distinct-intents) |[将许多话语示例添加到意向](#dont-add-many-example-utterances-to-intents) |
+|[每个意向需采用合适的详细程度](#do-find-sweet-spot-for-intents)|[将 LUIS 用作培训平台](#dont-use-luis-as-a-training-platform)|
+|[以迭代方式生成应用](#do-build-the-app-iteratively)|[添加许多相同格式的话语示例，忽略其他格式](#dont-add-many-example-utterances-of-the-same-format-ignoring-other-formats)|
+|[在后续的迭代中添加短语列表和模式](#do-add-phrase-lists-and-patterns-in-later-iterations)|[混淆意向和实体的定义](#dont-mix-the-definition-of-intents-and-entities)|
+|[跨所有意向来平衡话语](#balance-your-utterances-across-all-intents)，None 意向除外。<br>[将话语示例添加到“None”意向](#do-add-example-utterances-to-none-intent)|[使用所有可能的值创建短语列表](#dont-create-phrase-lists-with-all-the-possible-values)|
+|[利用主动学习的建议功能](#do-leverage-the-suggest-feature-for-active-learning)|[添加的模式过多](#dont-add-many-patterns)|
+|[监视应用的性能](#do-monitor-the-performance-of-your-app)|[使用添加的每个话语示例进行训练和发布](#dont-train-and-publish-with-every-single-example-utterance)|
+|[将版本用于每个应用迭代](#do-use-versions-for-each-app-iteration)||
 
 ## <a name="do-define-distinct-intents"></a>应定义不同的意向
 确保每个意向的词汇特定于该意向，而不会与其他意向的词汇重叠。 例如，如果要创建一款处理行程安排（例如航班和酒店）的应用，可以选择将这些主题领域视作彼此独立的意向或视为同一意向，其中包含话语中特定数据的实体。

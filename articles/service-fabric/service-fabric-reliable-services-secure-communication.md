@@ -15,15 +15,15 @@ ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
 ms.openlocfilehash: f247142f26490e1899256917b64fbec7308fb281
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886261"
 ---
 # <a name="secure-service-remoting-communications-in-a-c-service"></a>保护 C# 服务的服务远程处理通信
 > [!div class="op_single_selector"]
-> * [C#在 Windows 上](service-fabric-reliable-services-secure-communication.md)
+> * [Windows 上的 C#](service-fabric-reliable-services-secure-communication.md)
 > * [Linux 上的 Java](service-fabric-reliable-services-secure-communication-java.md)
 >
 >
@@ -150,7 +150,7 @@ ms.locfileid: "58886261"
             };
         }
         ```
-3. 在安全服务上使用远程堆栈（而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类）调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
+3. 在安全服务上使用远程堆栈而不是使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxy` 类调用方法来创建服务代理时，请使用 `Microsoft.ServiceFabric.Services.Remoting.Client.ServiceProxyFactory`。 传入包含 `SecurityCredentials` 的 `FabricTransportRemotingSettings`。
 
     ```csharp
 

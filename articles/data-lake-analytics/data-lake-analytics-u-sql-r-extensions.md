@@ -10,10 +10,10 @@ ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
 ms.openlocfilehash: 59a52b2aeb83732a608f1fcf5bc4de907d25dfd1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885020"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中使用 R 代码扩展 U-SQL 脚本
@@ -93,7 +93,7 @@ ms.locfileid: "58885020"
 ### <a name="datatypes"></a>数据类型
 * U-SQL 中的字符串和数字列按原样在 R 数据框和 U-SQL 之间转换 [支持的类型：`double`、`string`、`bool`、`integer``byte`]。
 * U-SQL 不支持 `Factor` 数据类型。
-* `byte[]` 必须序列化为 base64 编码`string`。
+* `byte[]` 必须序列化为 base64 编码的 `string`。
 * U-SQL 创建 R 输入数据框或设置化简器参数 `stringsAsFactors: true`后，U-SQL 字符串可以转换为 R 代码中的因素。
 
 ### <a name="schemas"></a>架构
@@ -208,5 +208,5 @@ ms.locfileid: "58885020"
 
 ## <a name="next-steps"></a>后续步骤
 * [Microsoft Azure Data Lake Analytics 概述](data-lake-analytics-overview.md)
-* [开发 U-SQL 脚本用于 Visual Studio 的 Data Lake 工具](data-lake-analytics-data-lake-tools-get-started.md)
+* [使用用于 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本](data-lake-analytics-data-lake-tools-get-started.md)
 * [对 Azure Data Lake Analytics 作业使用 U-SQL 开窗函数](data-lake-analytics-use-window-functions.md)

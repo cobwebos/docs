@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/24/2019
 ms.author: mlottner
 ms.openlocfilehash: a0eb459391da65f8d0e2ae251809805924d07ad1
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862359"
 ---
 # <a name="azure-security-center-for-iot-architecture"></a>Azure 安全中心的 IoT 体系结构
@@ -26,7 +26,7 @@ ms.locfileid: "58862359"
 本文介绍了功能的系统体系结构有关的 IoT 解决方案的 Azure 安全中心 (ASC)。 
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="asc-for-iot-components"></a>ASC 为 IoT 组件的
@@ -55,7 +55,7 @@ ASC 为 IoT 建议和警报 （分析管道输出） 写入到 Log Analytics 工
 
 在本文中，您学习了基本体系结构和工作流的 ASC IoT 解决方案。 若要详细了解先决条件，如何开始并启用您在 IoT 中心的安全解决方案，请参阅以下文章：
 
-- [服务先决条件](service-prerequisites.md)
+- [服务的先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
 - [配置解决方案](quickstart-configure-your-solution.md)
 - [启用 IoT 中心内的安全性](quickstart-onboard-iot-hub.md)

@@ -13,10 +13,10 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58848385"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
@@ -131,15 +131,15 @@ ms.locfileid: "58848385"
   > 托管实例不支持多个故障转移组。
   
 ## <a name="permissions"></a>权限
-故障转移组的权限通过管理[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 [SQL Server 参与者](../role-based-access-control/built-in-roles.md#sql-server-contributor)角色具有所有必需的权限来管理故障转移组。 
+通过[基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 管理故障转移组的权限。 [SQL Server 参与者](../role-based-access-control/built-in-roles.md#sql-server-contributor)角色拥有管理故障转移组所需的全部权限。 
 
 ### <a name="create-failover-group"></a>创建故障转移组
-若要创建故障转移组，需要 RBAC 写访问这两个主要和辅助服务器，以及故障转移组中的所有数据库。 对于托管实例，你需要 RBAC 写访问权限这两个主要和次要托管实例，但对单个数据库的权限不相关，因为不能添加到各个托管的实例数据库，或将其从故障转移组中删除。 
+若要创建某个故障转移组，需要对主服务器和辅助服务器，以及该故障转移组中的所有数据库拥有 RBAC 写入访问权限。 对于托管实例，你需要 RBAC 写访问权限这两个主要和次要托管实例，但对单个数据库的权限不相关，因为不能添加到各个托管的实例数据库，或将其从故障转移组中删除。 
 
 ### <a name="update-a-failover-group"></a>更新故障转移组
 若要更新的故障转移组，您需要 RBAC 故障转移组和当前的主服务器或托管的实例上的所有数据库写入访问权限。  
 
-### <a name="failover-a-failover-group"></a>故障转移组进行故障转移
+### <a name="failover-a-failover-group"></a>对故障转移组进行故障转移
 若要故障转移的故障转移组，你需要 RBAC 到新的主服务器上的故障转移组的写访问权限或托管实例。 
 
 ## <a name="best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools"></a>有关将故障转移组与单一数据库和弹性池配合使用的最佳做法
@@ -282,9 +282,9 @@ ms.locfileid: "58848385"
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>升级或降级主数据库
 
-无需断开连接任何辅助数据库，即可将主数据库升级或降级到不同的计算大小（在相同的服务层中，但不在“常规用途”与“业务关键”类型之间）。 在升级时，我们建议您首先，升级所有辅助数据库，再升级主。 降级时，反转顺序： 首先，降级主数据库和再降级的所有辅助数据库。 将数据库升级或降级到不同服务层时，将强制执行此建议操作。
+无需断开连接任何辅助数据库，即可将主数据库升级或降级到不同的计算大小（在相同的服务层中，但不在“常规用途”与“业务关键”类型之间）。 升级时，建议先升级所有辅助数据库，再升级主数据库。 降级时，请反转顺序：先降级主数据库，再降级所有辅助数据库。 将数据库升级或降级到不同服务层时，将强制执行此建议操作。
 
-此序列建议专门来避免此问题，在更低版 SKU 辅助数据库变得超负荷，并且在升级或降级过程必须可重新设定种子。 您可以通过使主只读的代价是会影响对主数据库的所有读写工作负荷来避免此问题。 
+具体而言，建议采用此顺序的目的是避免较低 SKU 上的辅助数据库在过载时出现问题，并且必须在升级或降级过程中重新设定种子。 此外，可以通过将主数据库设为只读来避免问题，代价是针对主数据库的所有读写工作负荷会受到影响。 
 
 > [!NOTE]
 > 如果辅助数据库是作为故障转移组配置的一个部分创建的，则不建议对辅助数据库进行降级。 这是为了确保激活故障转移后，数据层有足够的容量来处理常规工作负荷。

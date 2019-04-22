@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: jeconnoc
 ms.openlocfilehash: a2eff2ca2e72ad263e3e23d0827e7603bca3fdcb
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917470"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Azure 云服务和 ASP.NET 入门
@@ -127,7 +127,7 @@ Azure 云服务是该应用程序将运行的环境。
 5. 选择要在其中部署该应用程序的区域。
 
     此字段指定云服务将托管在哪个数据中心。 对于生产应用程序，可以选择离客户最近的区域。 对于本教程，选择最近的区域。
-5. 单击“创建”。
+5. 单击**创建**。
 
     在下图中，使用 URL CSvccontosoads.cloudapp.net 创建了一个云服务。
 
@@ -156,7 +156,7 @@ Azure 云服务是该应用程序将运行的环境。
 9. 针对新服务器单击“选择”。
 
     ![新建 SQL 数据库服务器](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. 单击“创建”。
+10. 单击**创建**。
 
 ### <a name="create-an-azure-storage-account"></a>创建 Azure 存储帐户
 Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
@@ -179,7 +179,7 @@ Azure 存储帐户提供在云中存储队列和 Blob 数据的资源。
     当云服务和存储帐户位于不同的数据中心（不同区域）时，延迟将增加，并且需要为数据中心外的带宽付费。 数据中心内的带宽是免费的。
 
     Azure 地缘组实际上是一种机制，目的是最小化数据中心内不同资源之间的距离，这样可以降低延迟。 本教程不使用地缘组。 有关详细信息，请参阅 [如何在 Azure 中创建地缘组](/previous-versions/azure/reference/gg715317(v=azure.100))。
-7. 单击“创建”。
+7. 单击**创建**。
 
     ![新的存储帐户](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -703,7 +703,7 @@ public override void Run()
 
 有时队列消息的内容会在处理过程中导致错误。 这称为 *有害消息*，并且如果只记录了一个错误并重启循环，则可能无休止地尝试处理该消息。  因此，捕获块包括 if 语句检查应用程序尝试处理当前消息的次数，如果已超过 5 次，将从队列中删除该消息。
 
-`ProcessQueueMessage` 找到队列消息时调用。
+`ProcessQueueMessage` 。
 
 ```csharp
 private void ProcessQueueMessage(CloudQueueMessage msg)

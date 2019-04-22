@@ -9,10 +9,10 @@ ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918631"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
@@ -172,7 +172,7 @@ Windows Server 故障转移群集受 Azure 文件同步支持，用于“一般�
 **代理版本 5.0.2.0**   
 Windows Server 2016 和 Windows Server 2019 上启用了云分层的卷支持重复数据删除。 在启用了云分层的卷上启用重复数据删除后，即可在本地缓存更多文件，而无需预配更多存储。
 
-**Windows Server 2012 R2 或旧代理版本**  
+**Windows Server 2012 R2 或之前的代理版本**  
 对于未启用云分层的卷，Azure 文件同步支持在卷上启用 Windows Server 重复数据删除。
 
 ### <a name="distributed-file-system-dfs"></a>分布式文件系统 (DFS)
@@ -293,7 +293,7 @@ Azure 文件同步仅支持与存储同步服务所在区域中的 Azure 文件�
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>后续步骤
-* [请考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)
+* [考虑防火墙和代理设置](storage-sync-files-firewall-and-proxy.md)
 * [规划 Azure 文件部署](storage-files-planning.md)
 * [部署 Azure 文件](storage-files-deployment-guide.md)
 * [部署 Azure 文件同步](storage-sync-files-deployment-guide.md)

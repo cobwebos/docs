@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 01/22/2019
 ms.author: cwatson
 ms.openlocfilehash: fe0d0f0baa2b3d1c08e871541dce1511e00f7f87
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917050"
 ---
 # <a name="understand-how-the-red-hat-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解如何为 Azure 应用 Red Hat Linux Enterprise 软件预订计划折扣
@@ -158,12 +158,12 @@ Azure 门户商城名称：
 
 若要了解有关预留的详细信息，请参阅以下文章：
 
-- [什么是 Azure 的保留项](billing-save-compute-costs-reservations.md)
+- [什么是适用于 Azure 的预留](billing-save-compute-costs-reservations.md)
 - [预付款购买的 Red Hat 软件计划的 Azure 预订](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
-- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 9c9f7dfd9ecbf085da19fc010e497caef8c18629
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917305"
 ---
 # <a name="what-is-the-cloud-service-model-and-how-do-i-package-it"></a>什么是云服务模型以及如何将其打包？
@@ -92,7 +92,7 @@ ms.locfileid: "58917305"
 
 可以参阅[服务定义架构](/previous-versions/azure/reference/ee758711(v=azure.100))以更好地了解此处使用的 XML 架构，而以下是某些元素的快速说明：
 
-**站点**  
+**Sites**  
 包含 IIS7 中承载的网站或 Web 应用程序的定义。
 
 **InputEndpoints**  
@@ -104,7 +104,7 @@ ms.locfileid: "58917305"
 **ConfigurationSettings**  
 包含特定角色功能的设置定义。
 
-**证书**  
+**Certificates**  
 包含角色所需的证书的定义。 前面的代码示例显示了用于 Azure Connect 的配置的证书。
 
 **LocalResources**  
@@ -141,10 +141,10 @@ ms.locfileid: "58917305"
 </ServiceConfiguration>
 ```
 
-可以参考[服务配置架构](/previous-versions/azure/reference/ee758710(v=azure.100))更好了解此处使用的 XML 架构，不过以下是元素的快速说明：
+可以参考 [服务配置架构](/previous-versions/azure/reference/ee758710(v=azure.100)) 以更好了解此处使用的 XML 架构，而以下是元素的快速说明：
 
-**Instances**  
-为角色配置运行实例的数目。 若要防止云服务在升级期间可能变得不可用，建议部署面向 web 角色的多个实例。 部署多个实例即表示遵守 [Azure 计算服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/) 中的准则，此协议可以保证在为一个服务部署了两个或多个角色实例时，面向 Internet 的角色拥有 99.95% 的外部连接。
+**实例**  
+为角色配置运行角色实例数。 若要防止云服务在升级期间可能变得不可用，建议部署面向 web 角色的多个实例。 部署多个实例即表示遵守 [Azure 计算服务级别协议 (SLA)](https://azure.microsoft.com/support/legal/sla/) 中的准则，此协议可以保证在为一个服务部署了两个或多个角色实例时，面向 Internet 的角色拥有 99.95% 的外部连接。
 
 **ConfigurationSettings**  
 为角色配置运行实例的设置。 `<Setting>` 元素的名称必须与服务定义文件中的设置定义匹配。
@@ -210,9 +210,9 @@ Azure 仅允许 Web 角色有一个入口点。 即所有通信都通过一个 I
 ### <a name="handling-configuration-changes-with-service-runtime-events"></a>使用服务运行时事件处理配置更改
 [Azure 运行时库](/previous-versions/azure/reference/mt419365(v=azure.100))包括 [Microsoft.WindowsAzure.ServiceRuntime](/previous-versions/azure/reference/ee741722(v=azure.100)) 命名空间，它提供类用于与来自角色的 Azure 环境进行交互。 [RoleEnvironment](/previous-versions/azure/reference/ee773173(v=azure.100)) 类定义在配置更改前后引发的以下事件：
 
-* **[更改](/previous-versions/azure/reference/ee758134(v=azure.100))事件**  
+* **[Changing](/previous-versions/azure/reference/ee758134(v=azure.100)) 事件**  
   此事件发生在配置更改应用于某个角色的指定实例之前，使你有机会记下角色实例（如有必要）。
-* **[更改](/previous-versions/azure/reference/ee758129(v=azure.100))事件**  
+* **[Changed](/previous-versions/azure/reference/ee758129(v=azure.100)) 事件**  
   发生在配置更改已应用于某个角色的指定实例之后。
 
 > [!NOTE]

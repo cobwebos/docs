@@ -16,10 +16,10 @@ ms.date: 12/07/2018
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: ff3e95a603b8f9a188c7839578cd12287935de90
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918529"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>创建可高效列出 Batch 资源的查询
@@ -74,7 +74,7 @@ filter 字符串是一个表达式，用于减少返回的项数。 例如，只
 * 可以使用逻辑运算符 `and` 和 `or` 将多个表达式组合到一起。
 * 此示例性 filter 字符串仅列出正在运行的“呈现”任务：`(state eq 'running') and startswith(id, 'renderTask')`。
 
-### <a name="select"></a>Select
+### <a name="select"></a>选择
 select 字符串用于限制为每个项返回的属性值。 可以指定属性名称的列表，仅在查询结果中返回项目的这些属性值。
 
 * select 字符串包含逗号分隔的属性名称列表。 可以指定所查询实体类型的任意属性。
@@ -98,8 +98,8 @@ expand 字符串用于减少获取特定信息所需的 API 调用数。 使用 
 * 所有属性名称均区分大小写，但属性值不区分大小写。
 * 日期/时间字符串可以采用两种格式中的一种，并且必须在前面加上 `DateTime`。
   
-  * W3C-DTF 格式示例： `creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 格式示例： `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+  * W3C-DTF 格式示例：`creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 格式示例：`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
 * 布尔值字符串为 `true` 或 `false`。
 * 如果指定了无效的属性或运算符，则会导致 `400 (Bad Request)` 错误。
 

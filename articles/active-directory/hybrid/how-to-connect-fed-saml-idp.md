@@ -15,10 +15,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1870137505b3d00ee6ed31595050908c970c444
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878088"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>使用 SAML 2.0 标识提供者 (IdP) 进行单一登录
@@ -194,7 +194,7 @@ SAML 2.0 标识提供者需要遵循有关 Azure AD 信赖方的信息。 Azure 
 有关“Set-MsolDomainAuthentication”的详细信息，请参阅：[https://technet.microsoft.com/library/dn194112.aspx](https://technet.microsoft.com/library/dn194112.aspx)。
 
 >[!NOTE]
->您必须运行使用`$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"`仅当为标识提供者设置 ECP 扩展。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
+>仅当为标识提供者设置了 ECP 扩展时，才必须使用 `$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"` 来运行。 Exchange Online 客户端（不包括 Outlook Web 应用程序 (OWA)）依赖于基于 POST 的活动终结点。 如果 SAML 2.0 STS 实现的活动终结点类似于 Shibboleth 的 ECP 实现的活动终结点，这些富客户端则有可能与 Exchange Online 服务进行交互。
 
 配置联合后，可切换回“非联合”（或“托管”），但是此更改最长需要两个小时才能完成，并且需要为每个用户分配新的随机密码以用于基于云的登录。 某些情况下，可能需要切换回“托管”以重置设置中的错误。 有关域转换的详细信息，请参阅：[https://msdn.microsoft.com/library/windowsazure/dn194122.aspx](https://msdn.microsoft.com/library/windowsazure/dn194122.aspx)。
 
@@ -280,4 +280,4 @@ Microsoft 提供了一种工具，可用于测试基于 SAML 2.0 的标识提供
 
 - [使用 Azure AD Connect 进行 Active Directory 联合身份验证服务的管理和自定义](how-to-connect-fed-management.md)
 - [Azure AD 联合身份验证兼容性列表](how-to-connect-fed-compatibility.md)
-- [Azure AD Connect 自定义安装](how-to-connect-install-custom.md)
+- [Azure AD Connect 的自定义安装](how-to-connect-install-custom.md)

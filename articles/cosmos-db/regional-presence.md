@@ -8,10 +8,10 @@ ms.date: 03/31/2019
 ms.author: rimman
 ms.custom: seodec18
 ms.openlocfilehash: 851da72a308b164b9a01b7ccfa3d541fc06810ba
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762185"
 ---
 # <a name="regional-presence-with-azure-cosmos-db"></a>Azure Cosmos DB 的区域可用性
@@ -42,7 +42,7 @@ Azure Cosmos DB 是[全球分布式](distribute-data-globally.md)数据库服务
 
 你现在可以了解有关 Azure Cosmos DB 核心概念与以下文章：
 
-* [全局数据分布](distribute-data-globally.md)
+* [全球数据分布](distribute-data-globally.md)
 * [如何管理 Azure Cosmos DB 帐户](manage-account.md)
 * [为 Azure Cosmos 容器和数据库预配吞吐量](set-throughput.md)
 * [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_2/)

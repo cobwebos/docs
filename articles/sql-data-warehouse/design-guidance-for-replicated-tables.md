@@ -11,10 +11,10 @@ ms.date: 03/19/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: acea42f7f4ab986e9828000ab7cfc9e302ed92a3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885445"
 ---
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>在 Azure SQL 数据仓库中使用复制表的设计指南
@@ -32,13 +32,13 @@ ms.locfileid: "58885445"
 - 数据仓库中有事实数据表和维度表吗？   
 
 ## <a name="what-is-a-replicated-table"></a>什么是复制表？
-复制表是表的完整副本，可在每个计算节点上进行访问。 复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 因为表有多个副本，因此在压缩的表大小小于 2 GB 时，复制表效果最佳。  2 GB 不是硬性限制。  如果数据是静态的并且不会更改，则只能复制较大的表。
+复制表是表的完整副本，可在每个计算节点上进行访问。 复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 因为表有多个副本，因此在压缩的表大小小于 2 GB 时，复制表效果最佳。  2 GB 不是硬性限制。  如果数据为静态数据，不会更改，则可复制更大的表。
 
 下图显示了一个可在任意计算节点上访问的复制表。 在SQL 数据仓库中，复制表完整复制到每个计算节点上的分发数据库。 
 
 ![复制表](media/guidance-for-using-replicated-tables/replicated-table.png "复制表")  
 
-复制表非常适合星型架构中的维度表。 维度表通常联接到事实数据表与维度表不同分布的。  维度通常是使其可以存储和维护多个副本的大小。 维度用于存储变化缓慢的描述性数据，例如客户名称和地址以及产品详细信息。 数据变化缓慢，因此会导致较少的复制的表的维护。 
+复制的表比较适合星型架构中的维度表。 维度表通常联接到事实数据表，后者的分发不同于维度表。  通常情况下，维度的大小让存储并维护多个副本变得可行。 维度用于存储变化缓慢的描述性数据，例如客户名称和地址以及产品详细信息。 该数据的缓变本性使复制的表不会经历太多的维护。 
 
 在以下情况下，考虑使用复制表：
 
@@ -181,8 +181,8 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 ## <a name="next-steps"></a>后续步骤 
 若要创建复制表，请使用以下语句之一：
 
-- [CREATE TABLE （Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT （Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE (Azure SQL Data Warehouse)](/sql/t-sql/statements/create-table-azure-sql-data-warehouse)（创建表（Azure SQL 数据仓库））
+- [CREATE TABLE AS SELECT（Azure SQL 数据仓库）](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 有关分布式表的概述，请参阅[分布式表](sql-data-warehouse-tables-distribute.md)。
 

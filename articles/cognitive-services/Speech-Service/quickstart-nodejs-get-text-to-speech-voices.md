@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 62187ddbe587a81038f8424b079e3c0c313d1ae2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58887091"
 ---
 # <a name="quickstart-get-the-list-of-text-to-speech-voices-using-nodejs"></a>快速入门：获取文本到语音转换语音使用 Node.js 的列表
@@ -27,7 +27,7 @@ ms.locfileid: "58887091"
 
 本快速入门需要：
 
-* [节点 8.12.x 或更高版本](https://nodejs.org/en/)
+* [Node 8.12.x 或更高版本](https://nodejs.org/en/)
 * [Visual Studio](https://visualstudio.microsoft.com/downloads/)、[Visual Studio Code](https://code.visualstudio.com/download) 或你喜欢用的文本编辑器
 * 语音服务的 Azure 订阅密钥。 [免费获得一个！](get-started.md)
 
@@ -146,7 +146,7 @@ node get-voices.js
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [在 GitHub 上浏览 Node.js 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
+> [浏览 GitHub 上的 Node.js 示例](https://github.com/Azure-Samples/Cognitive-Speech-TTS/tree/master/Samples-Http/NodeJS)
 
 ## <a name="see-also"></a>另请参阅
 

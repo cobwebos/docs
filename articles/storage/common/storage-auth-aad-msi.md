@@ -9,10 +9,10 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: dfdb419a5c06dc50717c0a8a3bdaffb302db52d0
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793010"
 ---
 # <a name="authenticate-access-to-blobs-and-queues-with-managed-identities-for-azure-resources"></a>进行对 blob 和队列管理的标识访问 Azure 资源的身份验证
@@ -79,6 +79,6 @@ CloudBlockBlob blob = new CloudBlockBlob(new Uri("https://storagesamples.blob.co
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要了解有关 Azure 存储的 RBAC 角色的详细信息，请参阅[存储的数据使用 RBAC 管理访问权限](storage-auth-aad-rbac.md)。
+- 若要详细了解 Azure 存储中的 RBAC 角色，请参阅[使用 RBAC 管理存储数据的访问权限](storage-auth-aad-rbac.md)。
 - 若要了解如何从存储应用程序内授予容器和队列访问权限，请参阅[将 Azure AD 与存储应用程序配合使用](storage-auth-aad-app.md)。
 - 若要了解如何使用 Azure AD 标识登录到 Azure CLI 和 PowerShell，请参阅[使用 Azure AD 标识访问 Azure 存储使用 CLI 或 PowerShell](storage-auth-aad-script.md)。

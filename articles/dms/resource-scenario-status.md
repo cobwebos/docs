@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
 ms.openlocfilehash: f25bc9bc3a958b2fa97ae4d5ab3715b602110393
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915469"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>迁移方案支持的 Azure 数据库迁移服务的状态
@@ -39,9 +39,9 @@ Azure 数据库迁移服务旨在支持不同迁移方案 （源/目标对） �
 ### <a name="offline-one-time-migration-support"></a>脱机（一次性）迁移支持
 下表显示了 Azure 数据库迁移服务对脱机迁移的支持。
 
-| 目标  | 源 | 支持 | 状态 |
+| 确定目标  | 源 | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL 数据库** | SQL Server | ✔ | GA |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL |  |  |
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
@@ -50,7 +50,7 @@ Azure 数据库迁移服务旨在支持不同迁移方案 （源/目标对） �
 | **Azure SQL VM** | SQL Server | ✔ | GA |
 |   | Oracle |   |   |
 | **Azure Cosmos DB** | MongoDB | ✔ | 公共预览版 |
-| **用于 MySQL 的 Azure DB** | MySQL |   |   |
+| **Azure DB for MySQL** | MySQL |   |   |
 |   | RDS MySQL |   |   |
 | **用于 PostgreSQL 的 Azure DB** | PostgreSQL |  |
 |  | RDS PostgreSQL |   |   |
@@ -58,9 +58,9 @@ Azure 数据库迁移服务旨在支持不同迁移方案 （源/目标对） �
 ### <a name="online-continuous-sync-migration-support"></a>联机（连续同步）迁移支持
 下表显示了 Azure 数据库迁移服务对联机迁移的支持。
 
-| 目标  | 源 | 支持 | 状态 |
+| 确定目标  | 源 | 支持 | 状态 |
 | ------------- | ------------- |:-------------:|:-------------:|
-| **Azure SQL 数据库** | SQL Server | ✔ | GA |
+| **Azure SQL DB** | SQL Server | ✔ | GA |
 |   | RDS SQL | ✔ | GA |
 |   | Oracle |  |  |
 | **Azure SQL DB MI** | SQL Server | ✔ | GA |
@@ -69,7 +69,7 @@ Azure 数据库迁移服务旨在支持不同迁移方案 （源/目标对） �
 | **Azure SQL VM** | SQL Server |   |   |
 |   | Oracle  |  |  |
 | **Azure Cosmos DB** | MongoDB | ✔ | 公共预览版 |
-| **用于 MySQL 的 Azure DB** | MySQL | ✔ | GA |
+| **Azure DB for MySQL** | MySQL | ✔ | GA |
 |   | RDS MySQL | ✔ | GA |
 | **用于 PostgreSQL 的 Azure DB** | PostgreSQL | ✔ | GA |
 |   | RDS PostgreSQL | ✔ | GA |

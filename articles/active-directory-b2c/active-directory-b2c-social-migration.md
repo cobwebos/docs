@@ -11,10 +11,10 @@ ms.date: 03/03/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 12b464d9b6bd09acb9c93ab1de0ba178f28a778a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894895"
 ---
 # <a name="azure-active-directory-b2c-migrate-users-with-social-identities"></a>Azure Active Directory B2C：迁移具有社交标识的用户
@@ -29,11 +29,11 @@ ms.locfileid: "58894895"
 
 * **社交帐户**的标识存储在 `userIdentities` 集合中。 该条目指定 `issuer`（标识提供者名称，例如 facebook.com 和 `issuerUserId`），是颁发者的唯一用户标识符。 `userIdentities` 属性包含一个或多个 UserIdentity 记录，这些记录指定社交标识提供者中的社交帐户类型和唯一用户标识符。
 
-* **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames` 是用于本地帐户，而`userIdentities`适用于社交帐户。 单个 Azure AD B2C 帐户可以只是本地帐户、只是社交帐户，也可以在一条用户记录中结合本地帐户和社交标识。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
+* **将本地帐户与社交标识相结合**。 如前所述，本地帐户登录名和社交帐户标识存储在不同的属性中。 `signInNames` 用于本地帐户，`userIdentities` 用于社交帐户。 单个 Azure AD B2C 帐户可以只是本地帐户、只是社交帐户，也可以在一条用户记录中结合本地帐户和社交标识。 此行为允许你管理单个帐户，而用户可以使用本地帐户凭据或社交标识登录。
 
-* `UserIdentity` 类型-包含有关标识的 Azure AD B2C 租户中的社交帐户用户的信息：
-  * `issuer` 标识提供程序颁发用户标识符，例如 facebook.com 字符串表示形式。
-  * `issuerUserId` 使用 base64 格式中的社交标识提供程序的唯一用户标识符。
+* `UserIdentity` 类型 - 包含 Azure AD B2C 租户中社交帐户用户的标识信息：
+  * `issuer` - 颁发用户标识符的标识提供者的字符串表示形式，例如 facebook.com。
+  * `issuerUserId` - 社交标识提供者使用的唯一用户标识符，采用 base64 格式。
 
     ```JSON
     "userIdentities": [{

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 01/09/2019
 ms.author: diberry
 ms.openlocfilehash: f23cf78bfca48b3a78e234520d645abdb354038f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878462"
 ---
 # <a name="luis-bot-in-c-with-the-bot-framework-3x-and-the-azure-web-app-bot"></a>使用 Bot Framework 3.x 和 Azure Web 应用机器人的 C# 中的 LUIS 机器人
@@ -145,7 +145,7 @@ ms.locfileid: "58878462"
 
 ## <a name="test-the-bot"></a>测试机器人
 
-在 Azure 门户中，选择“通过网页聊天执行测试”以测试机器人。 键入“开灯”和“关掉暖气”以调用添加到其中的意向。
+在 Azure 门户中，选择“通过网上聊天执行测试”以测试机器人。 键入“开灯”和“关掉暖气”以调用添加到其中的意向。
 
    ![通过网上聊天测试 HomeAutomation 机器人](./media/luis-tutorial-cscharp-web-bot/bot-service-chat-results.png)
 

@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 09809270d6b42a5491d322628f1d98c580f65206
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58915915"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-cndk"></a>如何创建和定位在 C + 中使用 Azure 空间的定位点的定位点 + NDK
@@ -25,7 +25,7 @@ ms.locfileid: "58915915"
 > * [C++/NDK](create-locate-anchors-cpp-ndk.md)
 > * [C++/WinRT](create-locate-anchors-cpp-winrt.md)
 
-借助 Azure 空间定位点，可以在不同设备之间共享全球的定位点。 它支持多个不同的开发环境。 在本文中，我们将深入了解如何使用 Azure 空间的定位点 SDK 中，在 C + + /cli NDK 到：
+借助 Azure 空间定位点，可以在不同设备之间共享全球的定位点。 它支持多个不同的开发环境。 在本文中，我们将深入了解如何在中使用 Azure 空间的定位点 SDK 中， C++/NDK 到：
 
 - 正确设置和管理 Azure 空间的定位点会话。
 - 创建并设置本地的定位点的属性。
@@ -36,9 +36,9 @@ ms.locfileid: "58915915"
 
 若要完成本指南，请确保你有：
 
-- 通读[Azure 空间的定位点概述](../overview.md)。
-- 完成之一[5 分钟快速入门](../index.yml)。
-- 有关 c + + 的基本知识并<a href="https://developer.android.com/ndk/" target="_blank">Android 本机开发工具包</a>。
+- 通读 [Azure 空间定位点概述](../overview.md)。
+- 完成 [5 分钟快速入门](../index.yml)之一。
+- 有关的基本知识C++并<a href="https://developer.android.com/ndk/" target="_blank">Android Native Development Kit</a>。
 - 有关的基本知识<a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5。
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]

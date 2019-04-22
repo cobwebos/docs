@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/30/2019
 ms.author: banders
 ms.openlocfilehash: 340cba65a1faac247678cd187f106157ba566f3e
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918716"
 ---
 # <a name="software-costs-not-included-with-azure-reserved-vm-instances"></a>Azure 虚拟机预留实例未包含的软件成本
@@ -74,9 +74,9 @@ ms.locfileid: "58918716"
 - [什么是 Azure 的保留项？](billing-save-compute-costs-reservations.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [管理 Azure 的保留项](billing-manage-reserved-vm-instance.md)
-- [了解如何应用预订折扣](billing-understand-vm-reservation-charges.md)
-- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [了解预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
+- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

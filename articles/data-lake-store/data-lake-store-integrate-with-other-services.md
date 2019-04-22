@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: e28863f9980d6403bef1f88de01b7a9b5271b444
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879295"
 ---
 # <a name="integrating-azure-data-lake-storage-gen1-with-other-azure-services"></a>将 Azure Data Lake Storage Gen1 和其他 Azure 服务集成
@@ -27,9 +27,9 @@ Azure Data Lake Storage Gen1 可和其他 Azure 服务结合使用来实现更�
 
 有关如何设置具有 Data Lake Storage Gen1 的 HDInsight 群集，请参阅：
 
-* [预配使用 Azure 门户数据湖存储 Gen1 对 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [作为默认存储使用 Azure PowerShell 设置 HDInsight 群集使用的数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-* [作为附加存储使用 Azure PowerShell 设置 HDInsight 群集使用的数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [使用 Azure 门户预配包含 Data Lake Storage Gen1 的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用 Azure PowerShell 预配将 Data Lake Storage Gen1 作为默认存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+* [使用 Azure PowerShell 预配将 Data Lake Storage Gen1 作为额外存储的 HDInsight 群集](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 ## <a name="use-data-lake-storage-gen1-with-azure-data-lake-analytics"></a>配合使用 Data Lake Storage Gen1 和 Azure Data Lake Analytic
 [Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-overview.md) 允许处理云规模的的大数据。 它会动态预配资源，允许对储存在多种支持的数据源（其中之一便是 Data Lake Storage Gen1）中的兆兆字节甚至百亿亿字节大小的数据进行分析。 Data Lake Analytics 经过特别优化，可用于 Data Lake Storage Gen1，从而为大数据工作负荷提供最高级别的性能、吞吐量和并行化。
@@ -67,6 +67,6 @@ Azure Data Lake Storage Gen1 提供命令行工具 AdlCopy，可从 Azure 存储
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [开始使用数据湖存储 Gen1 使用门户](data-lake-store-get-started-portal.md)
-* [开始使用数据湖存储 Gen1 使用 PowerShell](data-lake-store-get-started-powershell.md)  
+* [通过门户实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* [通过 PowerShell 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-powershell.md)  
 

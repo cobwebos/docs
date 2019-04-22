@@ -8,10 +8,10 @@ ms.date: 11/20/2018
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: c3a3305197802906077dab330a6b51c1195c6c36
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879465"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 (TCO)
@@ -48,11 +48,11 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 
 * **可以尽最大限度利用预配的吞吐量：** 凭借 Azure Cosmos DB 的子核心多路复用优势，可在更高的程度充分利用预配的吞吐量，而 IaaS 托管选项或第三方产品/服务却做不到这一点。 与替代型解决方案相比，此方法可以节省大量的成本。
 
-* **Azure Cosmos db 与其他 Azure 服务深度集成。** Azure Cosmos DB 原生与网络、计算、Azure Functions（无服务器）、Azure IoT 和其他 Azure 服务相集成。 这种集成可以提供最佳的性能、全球范围内的数据复制速度优势，并保证可靠。 第三方解决方案做不到这一点，或者通常以付费型高级版的形式提供此类功能。
+* **Azure Cosmos DB 与其他 Azure 服务的深度集成。** Azure Cosmos DB 原生与网络、计算、Azure Functions（无服务器）、Azure IoT 和其他 Azure 服务相集成。 这种集成可以提供最佳的性能、全球范围内的数据复制速度优势，并保证可靠。 第三方解决方案做不到这一点，或者通常以付费型高级版的形式提供此类功能。
 
 * **默认情况下至少提供 10 到 20 个容错域，让你自动获得高可用性：** Azure Cosmos DB 支持跨容错域的工作负荷分布，这项功能对于高可用性至关重要。 它在全球的任何位置，在 99% 的时间内提供 99.999 的读写高可用性。 而你自行实现或通过第三方解决方案实现此类功能的成本则比较高。
 
-* **您会自动获取所有企业功能，无需额外付费。** Azure Cosmos DB 免费提供极其全面的合规性认证、安全性以及静态和动态加密（与我们的竞争产品相比）。 在全球任何位置都可自动获得区域可用性。 可让数据库跨越任意数目的 Azure 区域，并随时可以添加或删除区域。
+* **自动免费获得所有企业功能。** Azure Cosmos DB 免费提供极其全面的合规性认证、安全性以及静态和动态加密（与我们的竞争产品相比）。 在全球任何位置都可自动获得区域可用性。 可让数据库跨越任意数目的 Azure 区域，并随时可以添加或删除区域。
 
 * **通过预留容量将成本最多节省 65%：** 借助 Azure Cosmos DB [预留容量](cosmos-db-reserved-capacity.md)，可以通过预付为期一年或三年的 Azure Cosmos DB 资源费用来节省资金。 与采用一般定价相比，预付为期一年或三年的承诺费用可以享受 20-65% 的折扣，从而大幅节省成本。 对于任务关键型工作负荷，SLA 提供更有利的预配容量保障。
 

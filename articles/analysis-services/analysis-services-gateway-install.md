@@ -9,10 +9,10 @@ ms.date: 01/08/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 629a97048ceba4ac02e3aa1dd59310980e5a0c95
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894160"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>安装并配置本地数据网关
@@ -26,7 +26,7 @@ ms.locfileid: "58894160"
 * .NET 4.5 Framework
 * 64 位版本的 Windows 7/Windows Server 2008 R2（或更高版本）
 
-**建议：**
+**推荐：**
 
 * 8 核 CPU
 * 8 GB 内存

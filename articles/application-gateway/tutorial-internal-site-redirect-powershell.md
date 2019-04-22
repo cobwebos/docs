@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2018
 ms.author: victorh
 ms.openlocfilehash: 3b13e75694f17a8ea22fee1f025692b9c64d8fa4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877477"
 ---
 # <a name="create-an-application-gateway-with-internal-redirection-using-azure-powershell"></a>使用 Azure PowerShell 创建支持内部重定向的应用程序网关
@@ -316,4 +316,4 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 > * 在域中创建 CNAME 记录
 
 > [!div class="nextstepaction"]
-> [了解有关如何使用应用程序网关的详细信息](./application-gateway-introduction.md)
+> [详细了解应用程序网关的作用](./application-gateway-introduction.md)

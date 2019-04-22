@@ -16,10 +16,10 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: b5df69e9670c01b576afe242b39532acb1e1c526
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58849367"
 ---
 # <a name="azure-event-hubs-metrics-in-azure-monitor"></a>Azure Monitor 中的 Azure 事件中心指标
@@ -40,7 +40,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ![查看成功的指标][1]
 
-也可以直接通过命名空间来访问指标。 为此，请选择你的命名空间，然后单击**指标**。 若要显示筛选到事件中心范围的指标，请选择事件中心，然后单击“指标”。
+也可以直接通过命名空间来访问指标。 为此，请选择命名空间，然后单击“指标”。 若要显示筛选到事件中心范围的指标，请选择事件中心，然后单击“指标”。
 
 对于支持维度的指标，必须使用所需的维度值进行筛选，如以下示例所示：
 

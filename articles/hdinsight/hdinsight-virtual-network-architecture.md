@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
 ms.openlocfilehash: 6d92273298c0448d7377acab6f3b8ea1cc1ed908
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762916"
 ---
 # <a name="azure-hdinsight-virtual-network-architecture"></a>Azure HDInsight 虚拟网络体系结构
@@ -22,7 +22,7 @@ ms.locfileid: "58762916"
 
 Azure HDInsight 群集具有不同类型的虚拟机或节点。 每个节点类型系统的操作中起作用。 下表总结了这些节点类型和群集中的其角色。
 
-| 类型 | 描述 |
+| Type | 描述 |
 | --- | --- |
 | 头节点 |  除了 Apache Storm 的所有群集类型，头节点都托管的管理的分布式应用程序执行的进程。 头节点是还可以通过 ssh 连接到的节点，并执行应用程序，然后进行协调以运行跨群集资源。 头节点的数目被固定的两个用于所有群集类型。 |
 | ZooKeeper 节点 | Zookeeper 协调执行数据处理的节点之间的任务。 它还 does 头节点、 群首选举并跟踪哪个头节点正在运行特定的主服务。 ZooKeeper 节点数被固定的两个。 |
@@ -53,7 +53,7 @@ HDInsight 部署到 Azure 虚拟网络时存在的默认资源包括上表中，
 
 | 网络资源 | 数量 | 详细信息 |
 | --- | --- | --- |
-|负载平衡器 | three | |
+|负载均衡 | three | |
 |网络接口 | 9 | 此值基于标准群集，其中每个节点都有其自己的网络接口。 在两个头节点、 三个 zookeeper 节点、 两个辅助角色节点，和上一个表中提到的两个网关节点是九个接口。 |
 |公共 IP 地址 | two |    |
 

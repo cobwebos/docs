@@ -17,10 +17,10 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8eef15098eed8959655ae2904bf41a8c3dffc9f4
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882779"
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>使用应用程序代理和 PingAccess 通过基于标头的身份验证进行单一登录
@@ -157,7 +157,7 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
 2. 选择“Azure Active Directory” > “应用注册”。
 3. 选择应用程序 >“清单”。
 4. 选择“编辑”，搜索“acceptedMappedClaims”字段，将其值更改为“true”。
-![应用部件清单](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-ping-access-manifest.PNG)
+![应用清单](./media/application-proxy-configure-single-sign-on-with-ping-access/application-proxy-ping-access-manifest.PNG)
 1. 选择“保存”。
 
 >[!NOTE]
@@ -184,4 +184,4 @@ Ping Identity 文档 [Configure PingAccess for Azure AD](https://docs.pingidenti
 
 - [配置 PingAccess for Azure AD](https://docs.pingidentity.com/bundle/paaad_m_ConfigurePAforMSAzureADSolution_paaad43/page/pa_c_PAAzureSolutionOverview.html)
 - [Azure AD 应用程序代理如何提供单一登录？](application-proxy-single-sign-on.md)
-- [应用程序代理故障排除](application-proxy-troubleshoot.md)
+- [排查应用程序代理问题](application-proxy-troubleshoot.md)

@@ -17,10 +17,10 @@ ms.date: 11/29/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 025a9d7df16b2be5e22104010be057403ce53c25
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880621"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-cloudsuite"></a>教程：Azure Active Directory 与 Infor CloudSuite 集成
@@ -52,7 +52,7 @@ ms.locfileid: "58880621"
 
 ## <a name="scenario-description"></a>方案描述
 
-在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库添加 Infor CloudSuite
 2. 配置和测试 Azure AD 单一登录
@@ -61,7 +61,7 @@ ms.locfileid: "58880621"
 
 若要配置 Infor CloudSuite 与 Azure AD 的集成，需要从库中将 Infor CloudSuite 添加到托管 SaaS 应用列表。
 
-**若要从库添加 Infor CloudSuite，请执行以下步骤：**
+若要从库中添加 Infor CloudSuite，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -97,7 +97,7 @@ ms.locfileid: "58880621"
 
 在本部分中，将介绍如何在 Azure 门户中启用 Azure AD 单一登录并在 Infor CloudSuite 应用程序中配置单一登录。
 
-**若要配置 Azure AD 单一登录 Infor CloudSuite，请执行以下步骤：**
+若要配置 Infor CloudSuite 的 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 Azure 门户中的“Infor CloudSuite”应用程序集成页上，单击“单一登录”。
 

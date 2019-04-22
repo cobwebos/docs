@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
 ms.openlocfilehash: 40f0705cfa7f0e9bb45d300a629adebd0cc5be47
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883661"
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension-in-azure-monitor"></a>Azure Monitor 中的 Log Analytics VM 扩展故障排除
@@ -42,19 +42,19 @@ ms.locfileid: "58883661"
 如果 *Microsoft Monitoring Agent* VM 扩展未安装或未报告，可以执行以下步骤来解决此问题。
 
 1. 使用 [KB 2965986](https://support.microsoft.com/kb/2965986#mt1) 中的步骤检查是否已安装 Azure VM 代理或者其是否正常工作。
-   * 此外可以查看 VM 代理日志文件 `C:\WindowsAzure\logs\WaAppAgent.log`
+   * 还可以查看 VM 代理日志文件 `C:\WindowsAzure\logs\WaAppAgent.log`
    * 如果此日志不存在，则未安装 VM 代理。
    * [安装 Azure VM 代理](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
 2. 使用以下步骤确认 Microsoft Monitoring Agent 扩展检测信号任务正在运行：
    * 登录到虚拟机
    * 打开任务计划程序并找到 `update_azureoperationalinsight_agent_heartbeat` 任务
    * 确认任务已启用并且一直在运行
-   * 检查检测信号日志文件 `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log`
-3. 查看中的 Microsoft 监视代理 VM 扩展日志文件 `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent`
+   * 查看 `C:\WindowsAzure\Logs\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent\heartbeat.log` 中的检测信号日志文件
+3. 查看 `C:\Packages\Plugins\Microsoft.EnterpriseCloud.Monitoring.MicrosoftMonitoringAgent` 中的 Microsoft Monitoring Agent VM 扩展日志文件
 4. 确保虚拟机可以运行 PowerShell 脚本
 5. 确保 C:\Windows\temp 上的权限未被更改
-6. 通过键入以下命令在虚拟机上提升的 PowerShell 窗口中查看 Microsoft Monitoring Agent 的状态 `(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
-7. 查看 Microsoft Monitoring Agent 安装程序日志文件中 `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs`
+6. 通过在虚拟机上的 PowerShell 特权窗口中键入以下内容来查看 Microsoft Monitoring Agent 的状态：`(New-Object -ComObject 'AgentConfigManager.MgmtSvcCfg').GetCloudWorkspaces() | Format-List`
+7. 查看 `C:\Windows\System32\config\systemprofile\AppData\Local\SCOM\Logs` 中的 Microsoft Monitoring Agent 安装日志文件
 
 有关详细信息，请参阅 [Windows 扩展故障排除](../../virtual-machines/extensions/oms-windows.md)。
 
@@ -62,11 +62,11 @@ ms.locfileid: "58883661"
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 如果 Log Analytics Linux 代理 VM 扩展未安装或未报告，可以执行以下步骤来解决此问题。
 
-1. 如果扩展状态为*未知*检查是否已安装 Azure VM 代理且可通过查看 VM 代理日志文件正常工作 `/var/log/waagent.log`
+1. 如果扩展状态为“未知”，则查看 VM 代理日志文件 `/var/log/waagent.log`，检查 Azure VM 代理是否已安装且可正常工作
    * 如果此日志不存在，则未安装 VM 代理。
-   * [在 Linux Vm 上安装 Azure VM 代理](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
-2. 有关其他不正常状态，查看 Log Analytics 代理的 Linux VM 扩展日志文件`/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log`和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log`
-3. 如果扩展状态正常运行，但未上传数据查看适用于 Linux 日志文件中的 Log Analytics 代理 `/var/opt/microsoft/omsagent/log/omsagent.log`
+   * [在 Linux VM 上安装 Azure VM 代理](../../azure-monitor/learn/quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)
+2. 对于其他不正常状态，请查看 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/extension.log` 和 `/var/log/azure/Microsoft.EnterpriseCloud.Monitoring.OmsAgentForLinux/*/CommandExecution.log` 中的 Log Analytics Linux VM 代理扩展日志文件
+3. 如果扩展状态正常，但是未上传数据，则查看 `/var/opt/microsoft/omsagent/log/omsagent.log` 中的 Log Analytics Linux 代理日志文件
 
 有关详细信息，请参阅 [Linux 扩展故障排除](../../virtual-machines/extensions/oms-linux.md)。
 

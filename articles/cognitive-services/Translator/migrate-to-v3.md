@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: d3ffdcb79a56bf2f9f4a6eb192293bbc6bab7dab
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916710"
 ---
 # <a name="translator-text-api-v2-to-v3-migration"></a>将文本翻译 API V2 迁移到 V3
@@ -45,8 +45,8 @@ Microsoft Translator 团队已发布文本翻译 API 版本 3 (V3)。 此版本�
 |:----------- |:-------------|
 | `Translate`     | [Translate](reference/v3-0-translate.md)          |
 | `TranslateArray`      | [Translate](reference/v3-0-translate.md)        |
-| `GetLanguageNames`      | [Languages](reference/v3-0-languages.md)         |
-| `GetLanguagesForTranslate`     | [Languages](reference/v3-0-languages.md)       |
+| `GetLanguageNames`      | [语言](reference/v3-0-languages.md)         |
+| `GetLanguagesForTranslate`     | [语言](reference/v3-0-languages.md)       |
 | `GetLanguagesForSpeak`      | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech)         |
 | `Speak`     | [Microsoft 语音服务](https://docs.microsoft.com/azure/cognitive-services/speech-service/text-to-speech)          |
 | `Detect`     | [Detect](reference/v3-0-detect.md)         |
@@ -112,7 +112,7 @@ Microsoft Translator V3 的定价方式与 V2 相同：按字符（包括空格�
 > 
 > Microsoft Translator 中心将在 2019 年 4 月 30 日停用。 [查看重要迁移信息和日期](https://www.microsoft.com/translator/business/hub/)。   
 
-Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [了解有关自定义神经网络机器翻译的详细信息](custom-translator/overview.md)
+Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 Microsoft Translator Hub 一起使用。 Translator Hub 仅支持传统的统计机器翻译。 现在，可以使用 Custom Translator 对神经翻译进行自定义。 [详细了解如何自定义神经机器翻译](custom-translator/overview.md)
 
 使用 V3 文本 API 的神经翻译不支持使用标准类别（SMT、语音、技术、generalnn）。
 
@@ -140,9 +140,9 @@ Microsoft Translator V3 默认使用神经机器翻译。 因此，它不能与 
 
 ## <a name="links"></a>链接
 
-* [Microsoft 隐私策略](https://privacy.microsoft.com/privacystatement)
+* [Microsoft 隐私政策](https://privacy.microsoft.com/privacystatement)
 * [Microsoft Azure 法律信息](https://azure.microsoft.com/support/legal)
-* [联机服务条款](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
+* [联机服务术语](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)
 
 ## <a name="next-steps"></a>后续步骤
 

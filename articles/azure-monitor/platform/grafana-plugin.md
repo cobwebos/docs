@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: ''
 ms.openlocfilehash: 6ea8f4e591399e23b103871da115dbb937227ca9
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850690"
 ---
 # <a name="monitor-your-azure-services-in-grafana"></a>在 Grafana 中监控 Azure 服务
@@ -122,7 +122,7 @@ ms.locfileid: "58850690"
 
  - [使用 Grafana、InfluxDB 和 Telegraf 监控 Docker 资源指标](https://blog.vpetkov.net/2016/08/04/monitor-docker-resource-metrics-with-grafana-influxdb-and-telegraf/)
 
- - [用于 Docker 主机、容器和容器化服务的监控解决方案](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
+ - [用于 Docker 主机、容器和容器化服务的监视解决方案](https://stefanprodan.com/2016/a-monitoring-solution-for-docker-hosts-containers-and-containerized-services/)
 
 包含 Azure Monitor 和 Application Insights 指标的完整 Grafana 仪表板的图像如下。
 ![Grafana 示例指标](media/grafana-plugin/grafana8.png)

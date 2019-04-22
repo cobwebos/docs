@@ -19,10 +19,10 @@ ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6fe74852824c10d24729f785e5e33a17b793161
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878564"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>如何：为企业应用程序自定义 SAML 令牌中颁发的声明
@@ -62,10 +62,10 @@ ms.locfileid: "58878564"
 | NameID 格式 | 描述 |
 |---------------|-------------|
 | **默认** | Azure AD 将使用默认源格式。 |
-| **永久** | Azure AD 将使用的永久作为 NameID 格式。 |
-| **EmailAddress** | Azure AD 将使用电子邮件地址作为 NameID 格式。 |
-| **未设定** | Azure AD 将使用未指定作为 NameID 格式。 |
-| **暂时性** | Azure AD 将使用暂时性作为 NameID 格式。 |
+| **持久性** | Azure AD 将使用的永久作为 NameID 格式。 |
+| **电子邮件地址** | Azure AD 将使用电子邮件地址作为 NameID 格式。 |
+| **未指定** | Azure AD 将使用未指定作为 NameID 格式。 |
+| **暂时性故障** | Azure AD 将使用暂时性作为 NameID 格式。 |
 
 若要了解有关 NameIDPolicy 属性的详细信息，请参阅[单一登录 SAML 协议](single-sign-on-saml-protocol.md)。
 
@@ -114,7 +114,7 @@ ms.locfileid: "58878564"
 | **Join()** | 通过联接两个属性创建一个新值。 （可选） 可以使用两个属性之间的分隔符。 |
 | **ToLower()** | 将所选属性的字符转换为小写字符。 |
 | **ToUpper()** | 将所选属性的字符转换为大写字符。 |
-| **Contains （)** | 如果输入与匹配指定的值将输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的电子邮件地址，如果它包含在域"@contoso.com"，否则你想要输出的用户主体名称。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.email<br/>*值*:"@contoso.com"<br/>参数 2 （输出）： user.email<br/>参数 3 （如果没有匹配项，则为输出）： user.userprincipalname |
+| **Contains()** | 如果输入与匹配指定的值将输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的电子邮件地址，如果它包含在域"@contoso.com"，否则你想要输出的用户主体名称。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.email<br/>*值*:"@contoso.com"<br/>参数 2 （输出）： user.email<br/>参数 3 （如果没有匹配项，则为输出）： user.userprincipalname |
 | **EndWith()** | 如果输入结尾的指定值，则输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出的声明中，值是用户的 employeeid 如果 employeeid 结尾"000"，否则你想要输出的扩展属性。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.employeeid<br/>*值*："000"<br/>参数 2 （输出）： user.employeeid<br/>参数 3 （如果没有匹配项，则为输出）： user.extensionattribute1 |
 | **StartWith()** | 如果输入开头指定的值，则输出的属性或常量。 否则，可以指定另一个输出，如果没有匹配项。<br/>例如，如果你想要发出其中的值是用户的 employeeid，如果国家/地区开始使用"美国"的声明，否则你想要输出的扩展属性。 若要执行此操作，需要配置以下值：<br/>*参数 1(input)*: user.country<br/>*值*："我们"<br/>参数 2 （输出）： user.employeeid<br/>参数 3 （如果没有匹配项，则为输出）： user.extensionattribute1 |
 | **Extract （)-之后匹配** | 匹配指定的值后返回的子字符串。<br/>例如，如果输入的值为"Finance_BSimon"，匹配的值为"Finance_"，则声明的输出是"是 bsimon 作为用户名"。 |
@@ -132,5 +132,5 @@ ms.locfileid: "58878564"
 ## <a name="next-steps"></a>后续步骤
 
 * [Azure AD 中的应用程序管理](../manage-apps/what-is-application-management.md)
-* [不在 Azure AD 应用程序库中的应用程序上配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
-* [排查基于 SAML 的单一登录](howto-v1-debug-saml-sso-issues.md)
+* [针对不在 Azure AD 应用程序库中的应用程序配置单一登录](../manage-apps/configure-federated-single-sign-on-non-gallery-applications.md)
+* [排查基于 SAML 的单一登录的问题](howto-v1-debug-saml-sso-issues.md)

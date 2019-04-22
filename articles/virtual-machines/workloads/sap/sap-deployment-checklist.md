@@ -17,10 +17,10 @@ ms.date: 04/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: fef2d42282291bb0ea6afeea03e60234d3d47a4d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878717"
 ---
 # <a name="sap-workload-on-azure-planning-and-deployment-checklist"></a>Azure 上的 SAP 工作负荷规划和部署清单 
@@ -60,7 +60,7 @@ ms.locfileid: "58878717"
         2.  对于同一区域内的高可用性，请查看 Azure 中所需的 DBMS。 大多数 DBMS 提供同步热备用服务器的同步方法，我们建议将其用于生产系统。 另请查看不同数据库的 SAP 相关文档，从[部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)开始
             1.  对于 DBMS 层，**不**支持使用采用共享磁盘配置的 Windows 故障转移群集服务，如[此处](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server?view=sql-server-2017)的 SQL Server 文档所述。 替代的解决方案包括：
                 1.  [SQL Server AlwaysOn](https://docs.microsoft.com/azure/virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups) 
-                2.  [Oracle 数据防护](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
+                2.  [Oracle Data Guard](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/configure-oracle-dataguard)
                 3.  [HANA 系统复制](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.01/en-US/b74e16a9e09541749a745f41246a065e.html)
         3.  对于跨不同 Azure 区域的灾难恢复，请查看不同 DBMS 供应商提供的可能方案。 其中大部分都支持异步复制或日志传送
         4.  对于 SAP 应用层，请定义是否在同一 Azure 区域或 DR 区域中运行业务回归测试系统（理想情况下为生产部署的副本）。 在后一种情况下，你可以将该业务回归系统作为生产的 DR 目标
@@ -78,7 +78,7 @@ ms.locfileid: "58878717"
 6.  定义 Azure 订阅数和不同订阅的核心配额。 根据需要[打开支持请求以增加 Azure 订阅的配额](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request) 
 7.  用于将 SAP 数据迁移到 Azure 的数据缩减和数据迁移计划。 对于 SAP NetWeaver 系统，SAP 提供了有关如何限制大量数据量的指南。 SAP 发布了有关在 SAP ERP 系统中进行数据管理的[见解深刻的指南](https://help.sap.com/http.svc/rc/2eb2fba8f8b1421c9a37a8d7233da545/7.0/en-US/Data_Management_Guide_Version_70E.PDF)。 但是，某些内容通常适用于 NetWeaver 和 S/4HANA 系统。
 8.  定义并确定自动部署方法。 对于 Azure 上基础结构部署，其自动化目标是以确定性的方式进行部署，并获得确定性的结果。 许多客户都使用基于 Powershell 或 CLI 的脚本。 不过各种开源技术均可用于为 SAP 部署 Azure 基础结构，甚至可以安装 SAP 软件。 可以在 GitHub 中找到示例：
-    1.  [在 Azure 云自动化的 SAP 部署](https://github.com/Azure/sap-hana)
+    1.  [Azure 云中的自动 SAP 部署](https://github.com/Azure/sap-hana)
     2.  [SAP HANA 安装](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  定义客户、系统集成商、Microsoft 和其他相关各方之间的常规设计和部署评审节奏
 
@@ -271,6 +271,6 @@ ms.locfileid: "58878717"
 查阅文档：
 
 - [SAP NetWeaver 的 Azure 虚拟机规划和实施指南](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/planning-guide)
-- [适用于 SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
+- [SAP NetWeaver 的 Azure 虚拟机部署](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/deployment-guide)
 - [部署适用于 SAP 工作负荷的 Azure 虚拟机 DBMS 的注意事项](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general)
 

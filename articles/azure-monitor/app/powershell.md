@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 04/02/2017
 ms.author: mbullwin
 ms.openlocfilehash: 1c360d60a429f137c4b74ad4afe8ae9bba895b7d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883405"
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>使用 PowerShell 创建 Application Insights 资源
@@ -168,9 +168,9 @@ ms.locfileid: "58883405"
 
     ``` 
    
-   * `-ResourceGroupName` 是你想要创建新资源组。
+   * `-ResourceGroupName` 是要创建新资源的组。
    * `-TemplateFile` 必须在自定义参数前出现。
-   * `-appName` 要创建的资源的名称。
+   * `-appName` 是要创建的资源的名称。
 
 可添加其他参数，并且可在模板的参数部分找到说明。
 
@@ -428,7 +428,7 @@ ms.locfileid: "58883405"
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"` （小写） |`"[toLower(parameters('appName'))]"` |
+| `"myappname"`（小写） |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>删除 GUID 和 ID。 |
 
 ### <a name="set-dependencies-between-the-resources"></a>设置资源之间的依赖关系
@@ -448,8 +448,8 @@ Azure 应严格按顺序设置资源。 若要确保某一设置在下一设置�
 
 * [创建 Application Insights 资源](powershell-script-create-resource.md) - 不使用模板的快速方法。
 * [设置警报](powershell-alerts.md)
-* [创建 web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
+* [创建 Web 测试](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [将 Azure 诊断发送到 Application Insights](powershell-azure-diagnostics.md)
 * [从 GitHub 部署到 Azure](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
-* [创建版本批注](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [创建版本注释](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

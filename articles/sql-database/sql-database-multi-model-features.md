@@ -13,10 +13,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/17/2018
 ms.openlocfilehash: 4351017cc1848e29cca038f82fd96548ae3492e0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892460"
 ---
 # <a name="multi-model-capabilities-of-azure-sql-database"></a>Azure SQL 数据库的多模型功能
@@ -26,10 +26,10 @@ ms.locfileid: "58892460"
 ## <a name="when-to-use-multi-model-capabilities"></a>何时使用多模型功能
 
 Azure SQL 数据库设计为使用关系模型，在大多数情况下，该模型可为各种常规用途应用程序提供最佳性能。 但是，Azure SQL 数据库并不局限于关系数据。 Azure SQL 数据库允许使用各种与关系模型紧密集成的非关系格式。
-应考虑使用的 Azure SQL 数据库在以下情况下的多模型功能：
-- 有一些信息或结构的更好地适应用于 NoSQL 模型，您不想要使用单独的 NoSQL 数据库。
-- 大部分数据适合于关系模型，并且需要进行模型 NoSQL 样式中的数据的某些部分。
-- 你想要利用丰富的 Transact SQL 语言查询和分析关系和 NoSQL 数据，并将它与各种工具和应用程序可以使用 SQL 语言的集成。
+对于以下情况，应考虑使用 Azure SQL 数据库的多模型功能：
+- 某些信息或结构更适合 NoSQL 模型，并且你不想要使用独立的 NoSQL 数据库。
+- 大部分数据适合关系模型，并且你需要以 NoSQL 形式为某些数据部分建模。
+- 希望利用丰富的 Transact-SQL 语言来查询和分析关系数据与 NoSQL 数据，并将其集成到可以使用 SQL 语言的各种工具和应用程序。
 - 你想要应用的数据库功能，如[内存中技术](sql-database-in-memory.md)提高你分析性能或处理在 NoSQL 数据 strucutres，使用[事务复制](sql-database-managed-instance-transactional-replication.md)或[可读副本](sql-database-read-scale-out.md)上其他位置创建了数据的副本并卸载某些分析工作负荷从主数据库。
 
 ## <a name="overview"></a>概述

@@ -9,10 +9,10 @@ ms.date: 04/01/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 67a6c99253c549f0b8d3b55809b35b81756843eb
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58803487"
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表格模型的兼容性级别
@@ -53,7 +53,7 @@ Azure Analysis Services 支持 1200 和 1400 兼容性级别的表格模型。 �
  此属性指定在服务器上运行的数据库的最高兼容性级别（包括预览版）。 不可更改支持的兼容性级别。  
 
 > [!NOTE]
-> 在 SSMS 中，当连接到 Azure Analysis Services 服务器**支持的兼容级别**属性将显示**1200年**。 这是一个已知的问题，会在即将发布的 SSMS 中解决更新。 解析时，此属性将显示最高支持的兼容级别。
+> 在 SSMS 中，当连接到 Azure Analysis Services 服务器时，“支持的兼容性级别”属性将显示 **1200**。 这是一个已知问题，将在即将发布的 SSMS 更新中解决。 在解决后，此属性将显示所支持的最高兼容性级别。
 
 ## <a name="next-steps"></a>后续步骤
 

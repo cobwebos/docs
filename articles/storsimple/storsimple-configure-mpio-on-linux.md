@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bc1e8a5abc85af95448570497177030f17649d87
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877578"
 ---
 # <a name="configure-mpio-on-a-storsimple-host-running-centos"></a>在运行 CentOS 的 StorSimple 主机上配置 MPIO
@@ -438,12 +438,12 @@ A. 若要验证设备是否已列入允许列表，请使用以下故障排除�
 | &nbsp; |`chkconfig multipathd on` </br> 或 </br> `mpathconf –with_chkconfig y` |使多路径后台程序在引导时启动 |
 | &nbsp; |`multipathd –k` |启动交互式控制台进行故障排除 |
 | &nbsp; |`multipath –l` |列出多路径连接和设备 |
-| &nbsp; |`mpathconf --enable` |创建示例 mulitpath.conf 文件中 `/etc/mulitpath.conf` |
+| &nbsp; |`mpathconf --enable` |在 `/etc/mulitpath.conf` 中创建示例 mulitpath.conf 文件 |
 |  | | |
 
 ## <a name="next-steps"></a>后续步骤
 在 Linux 主机上配置 MPIO 时，可能还需要参考以下 CentoS 6.6 文档：
 
-* [CentOS 上的 MPIO 设置](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)
-* [Linux 培训指南](http://linux-training.be/linuxsys.pdf)
+* [Setting up MPIO on CentOS](http://www.centos.org/docs/5/html/5.1/DM_Multipath/setup_procedure.html)（在 CentOS 上设置 MPIO）
+* [Linux Training Guide](http://linux-training.be/linuxsys.pdf)（Linux 培训指南）
 

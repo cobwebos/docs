@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: cebdff5ed233516683df3330e8fd3332ded664e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885666"
 ---
 # <a name="securing-data-stored-in-azure-data-lake-storage-gen1"></a>保护 Azure Data Lake Storage Gen1 中存储的数据
@@ -149,10 +149,10 @@ Data Lake Storage Gen1 允许进一步在网络级别锁定访问权限。 可�
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [将数据从 Azure 存储 Blob 复制到数据湖存储 Gen1](data-lake-store-copy-data-azure-storage-blob.md)
-* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [将 Azure Data Lake Analytics 与 Data Lake Storage Gen1 配合使用](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [通过 PowerShell 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-powershell.md)
-* [开始使用数据湖存储 Gen1 使用.NET SDK](data-lake-store-get-started-net-sdk.md)
-* [数据湖存储 Gen1 访问诊断日志](data-lake-store-diagnostic-logs.md)
+* [通过 .NET SDK 实现 Data Lake Storage Gen1 入门](data-lake-store-get-started-net-sdk.md)
+* [访问 Data Lake Storage Gen1 的诊断日志](data-lake-store-diagnostic-logs.md)
 

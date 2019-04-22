@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 2372f49c7280ee5c817f3d2f98cc80a196dae5f5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58879193"
 ---
 # <a name="backends-and-backend-pools-in-azure-front-door-service"></a>Azure Front Door 服务中的后端和后端池
@@ -91,5 +91,5 @@ ms.locfileid: "58879193"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [创建 Front Door 配置文件](quickstart-create-front-door.md)
+- [创建的第一道防线配置文件](quickstart-create-front-door.md)
 - [第一道防线的工作原理](front-door-routing-architecture.md)

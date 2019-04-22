@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: mlottner
 ms.openlocfilehash: 49decb2d67c8ff16f9912fea8e8ece1a3bd9feb5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863026"
 ---
 # <a name="introducing-azure-security-center-for-iot"></a>Azure 安全中心简介 iot
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 ## <a name="secure-your-azure-iot-solution"></a>保护 Azure IoT 解决方案 
@@ -56,7 +56,7 @@ ms.locfileid: "58863026"
 在此概述中，您学习了有关功能和服务的 ASC 对 IoT。 若要详细了解 ASC 的 IoT 体系结构，系统必备组件，并了解如何开始，请参阅以下文章：
 
 - [体系结构](architecture.md)
-- [服务先决条件](service-prerequisites.md)
+- [服务的先决条件](service-prerequisites.md)
 - [入门](getting-started.md)
 - [定义你的解决方案](quickstart-configure-your-solution.md)
 - [ASC iot 常见问题](resources-frequently-asked-questions.md)

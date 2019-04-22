@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: crdun
 ms.openlocfilehash: 8f014f1cb40e1a629d1989f00805fc91015a3ae9
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886006"
 ---
 # <a name="how-to-use-the-managed-client-for-azure-mobile-apps"></a>如何使用 Azure 移动应用的托管客户端
@@ -98,9 +98,9 @@ var client = new MobileServiceClient("MOBILE_APP_URL");
 * [查询数据](#querying)
 * [筛选返回的数据](#filtering)
 * [对返回的数据进行排序](#sorting)
-* [返回多页的数据](#paging)
+* [在页中返回数据](#paging)
 * [选择特定列](#selecting)
-* [查找记录 id](#lookingup)
+* [按 ID 查找记录](#lookingup)
 * [处理非类型化查询](#untypedqueries)
 * [插入数据](#inserting)
 * 更新数据
@@ -130,7 +130,7 @@ IMobileServiceTable untypedTodoTable = client.GetTable("TodoItem");
 
 * [筛选返回的数据](#filtering)
 * [对返回的数据进行排序](#sorting)
-* [返回多页的数据](#paging)
+* [在页中返回数据](#paging)
 * [选择特定列](#selecting)
 * [按 ID 查找数据](#lookingup)
 
@@ -226,7 +226,7 @@ MobileServiceTableQuery<TodoItem> query = todoTable.Take(3);
 List<TodoItem> items = await query.ToListAsync();
 ```
 
-以下经过修改的查询将跳过前三个结果，返回后三个结果。 此查询会生成第二“页”数据，其中页面大小为三个项。
+以下经过修改的查询会跳过前三个结果，返回接下来的三个结果。 此查询会生成第二“页”数据，其中页面大小为三个项。
 
 ```csharp
 // Define a filtered query that skips the top 3 items and returns the next 3 items.
@@ -243,7 +243,7 @@ query = query.IncludeTotalCount();
 在实际应用中，可以搭配页导航控件或类似的 UI 使用类似于上述示例的查询，在页之间导航。
 
 > [!NOTE]
-> 要重写移动应用后端中的 50 行限制，还必须将 [EnableQueryAttribute] 应用到公共 GET 方法，并指定分页行为。 将以下语句应用到该方法后，最大返回行数将设置为 1000：
+> 要替代移动应用后端中的 50 行限制，还必须将 [EnableQueryAttribute] 应用到公共 GET 方法，并指定分页行为。 将以下语句应用到该方法后，最大返回行数将设置为 1000：
 >
 > `[EnableQuery(MaxTop=1000)]`
 
@@ -462,7 +462,7 @@ private async Task ResolveConflict(TodoItem localItem, TodoItem serverItem)
 }
 ```
 
-有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]主题。
+有关详细信息，请参阅 [Offline Data Sync in Azure Mobile Apps]主题。
 
 ### <a name="binding"></a>如何：将移动应用数据绑定到 Windows 用户界面
 本部分说明如何使用 Windows 应用中的 UI 元素显示返回的数据对象。  下面的代码示例绑定到列表的源，列表中包含对不完整项的查询。 [MobileServiceCollection] 创建移动应用支持的绑定集合。
@@ -618,8 +618,8 @@ var result = await client.InvokeApiAsync<MarkAllResult>("completeAll", System.Ne
 InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 以“/”开头。
 例如：
 
-* `InvokeApiAsync("completeAll",...)` 在后端调用 /api/completeAll
-* `InvokeApiAsync("/.auth/me",...)` 在后端调用 /.auth/me
+* `InvokeApiAsync("completeAll",...)` 在后端上调用 /api/completeAll
+* `InvokeApiAsync("/.auth/me",...)` 在后端上调用 /.auth/me
 
 可使用 InvokeApiAsync 调用任意 WebAPI，包括未使用 Azure 移动应用定义的 WebAPI。  使用 InvokeApiAsync() 时，将随请求一起发送相应的标头（包括身份验证标头）。
 
@@ -661,7 +661,7 @@ InvokeApiAsync() 方法在想要调用的 API 前附加“/api/”，除非 API 
 
      每个平台所需的代码如下：
 
-     **Windows:**
+     **Windows**：
 
      ```csharp
      private MobileServiceUser user;
@@ -986,7 +986,7 @@ private async void InsertTodoItem(TodoItem todoItem)
 }
 ```
 
-有关处理错误条件的另一示例可在[移动应用文件示例]中找到。 [LoggingHandler] 示例提供了日志记录委托处理程序，记录发送到后端的请求。
+有关处理错误条件的其他示例，可在 [Mobile Apps Files Sample]（移动应用文件示例）中找到。 [LoggingHandler] 示例提供了日志记录委托处理程序，记录发送到后端的请求。
 
 ### <a name="headers"></a>如何：自定义请求标头
 若要支持特定的应用程序方案，可能需要自定义与移动应用后端之间的通信。 例如，可能需要将一个自定义标头添加到每个传出请求，甚至要更改响应状态代码。 可以使用自定义 [DelegatingHandler] 来实现此目的，如以下示例中所示：
@@ -1039,9 +1039,9 @@ public class MyHandler : DelegatingHandler
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[向应用程序添加身份验证]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Azure 移动应用中的脱机数据同步]: app-service-mobile-offline-data-sync.md
-[向应用程序添加推送通知]: app-service-mobile-windows-store-dotnet-get-started-push.md
+[向应用添加身份验证]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Offline Data Sync in Azure Mobile Apps]: app-service-mobile-offline-data-sync.md
+[向应用添加推送通知]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Register your app to use a Microsoft account login]: ../app-service/configure-authentication-provider-microsoft.md
 [如何为 Active Directory 登录配置应用服务]: ../app-service/configure-authentication-provider-aad.md
 
@@ -1064,10 +1064,10 @@ public class MyHandler : DelegatingHandler
 [ReadAsync]: https://msdn.microsoft.com/library/azure/mt691741(v=azure.10).aspx
 [Take]: https://msdn.microsoft.com/library/azure/dn250574(v=azure.10).aspx
 [Select]: https://msdn.microsoft.com/library/azure/dn250569(v=azure.10).aspx
-[跳过]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
+[Skip]: https://msdn.microsoft.com/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: https://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[其中]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
+[Where]: https://msdn.microsoft.com/library/azure/dn250579(v=azure.10).aspx
 [Azure 门户]: https://portal.azure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/library/system.guid.newguid(v=vs.110).aspx
@@ -1076,8 +1076,8 @@ public class MyHandler : DelegatingHandler
 [DelegatingHandler]: https://msdn.microsoft.com/library/system.net.http.delegatinghandler(v=vs.110).aspx
 [PasswordVault]: https://msdn.microsoft.com/library/windows/apps/windows.security.credentials.passwordvault.aspx
 [ProtectedData]: https://msdn.microsoft.com/library/system.security.cryptography.protecteddata%28VS.95%29.aspx
-[通知中心 Api]: https://msdn.microsoft.com/library/azure/dn495101.aspx
-[移动应用文件示例]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
+[通知中心 API]: https://msdn.microsoft.com/library/azure/dn495101.aspx
+[Mobile Apps Files Sample]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files
 [LoggingHandler]: https://github.com/Azure-Samples/app-service-mobile-dotnet-todo-list-files/blob/master/src/client/MobileAppsFilesSample/Helpers/LoggingHandler.cs#L63
 
 <!-- External URLs -->

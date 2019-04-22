@@ -20,10 +20,10 @@ ms.reviewer: tanning
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cce60769ffae399062a50e1b2c28c1cd6e49a47e
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904247"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>在 Azure Active Directory 中排查企业状态漫游设置问题
@@ -164,8 +164,8 @@ ms.locfileid: "58904247"
 用户将需要断开联接并将设备重新加入到云中。 为此，请以本地管理员用户身份登录，并通过转到“设置” > “系统” > “关于”使设备脱离，再选择“从工作或学校管理或断开”。 清理以下文件，Azure AD 将通过以下方式再次联接设备：转到“设置” > “系统” > “关于”，并选择“连接到工作或学校”。 继续将设备加入到 Azure Active Directory 并完成该流。
 
 在清理步骤中，清除以下文件：
-- 中的 Settings.dat `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\`
-- 在文件夹下的所有文件 `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account`
+- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\Settings\` 中的 settings.dat
+- `C:\Users\<Username>\AppData\Local\Packages\Microsoft.AAD.BrokerPlugin_cw5n1h2txyewy\AC\TokenBroker\Account` 文件夹下的所有文件
 
 ---
 

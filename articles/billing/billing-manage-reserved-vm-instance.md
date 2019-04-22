@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/22/2019
 ms.author: banders
 ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904435"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
@@ -100,7 +100,7 @@ ms.locfileid: "58904435"
 
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](..//virtual-machines/windows/prepay-reserved-vm-instances.md#cancellations-and-exchanges)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md#cancellation-and-exchanges-not-allowed)
-- [通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
+- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md#cancellations-and-exchanges)
 
 ## <a name="change-optimize-setting-for-reserved-vm-instances"></a>更改预留 VM 实例的优化设置
 
@@ -130,18 +130,18 @@ ms.locfileid: "58904435"
 
 购买服务计划：
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
-- [预付款购买的 Azure Cosmos DB 资源与 Azure Cosmos DB 保留容量](../cosmos-db/cosmos-db-reserved-capacity.md)
+- [通过 Azure SQL 数据库保留容量预付 SQL 数据库计算资源费用](../sql-database/sql-database-reserved-capacity.md)
+- [通过 Azure Cosmos DB 保留容量预付 Azure Cosmos DB 资源费用](../cosmos-db/cosmos-db-reserved-capacity.md)
 
 购买的软件计划：
 - [预付款购买的 Red Hat 软件计划从 Azure 保留项](../virtual-machines/linux/prepay-rhel-software-charges.md)
 - [通过 Azure 预留为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
 
 了解折扣和使用情况：
-- [了解如何应用 VM 预订折扣](billing-understand-vm-reservation-charges.md)
+- [了解 VM 预留折扣的应用方式](billing-understand-vm-reservation-charges.md)
 - [了解如何应用 Red Hat Enterprise Linux 软件计划折扣](../billing/billing-understand-rhel-reservation-charges.md)
-- [了解 SUSE Linux Enterprise 软件计划折扣是如何应用的](../billing/billing-understand-suse-reservation-charges.md)
-- [了解如何应用其他预订折扣](billing-understand-reservation-charges.md)
-- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
-- [未包含的保留项的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)
+- [了解如何应用 SUSE Linux Enterprise 软件计划折扣](../billing/billing-understand-suse-reservation-charges.md)
+- [了解如何应用其他预留折扣](billing-understand-reservation-charges.md)
+- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [预订未包含的 Windows 软件成本](billing-reserved-instance-windows-software-costs.md)

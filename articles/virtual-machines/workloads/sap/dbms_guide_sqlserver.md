@@ -17,10 +17,10 @@ ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 0c12c75bd5c357613d55e04aed67c0cc901135e6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881080"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>适用于 SAP NetWeaver 的 SQL Server Azure 虚拟机 DBMS 部署
@@ -315,7 +315,7 @@ ms.locfileid: "58881080"
 
 
 > [!IMPORTANT]
-> 本文档的范围涵盖 SQL Server 上的 Windows 版本。 SAP 不支持带有任何 SAP 软件的 Linux 版 SQL Server。 本文档不讨论 Microsoft Azure Platform 的“平台即服务”产品 - Microsoft Azure SQL 数据库。 本文讨论的是如何运行 SQL Server 产品（已知适用于 Azure 虚拟机中的本地部署），以及如何运用 Azure 的“基础结构即服务”功能。 这两种产品的数据库性能与功能差异很大，不应混用。 另请参阅： <https://azure.microsoft.com/services/sql-database/>
+> 本文档的范围涵盖 SQL Server 上的 Windows 版本。 SAP 不支持带有任何 SAP 软件的 Linux 版 SQL Server。 本文档不讨论 Microsoft Azure Platform 的“平台即服务”产品 - Microsoft Azure SQL 数据库。 本文讨论的是如何运行 SQL Server 产品（已知适用于 Azure 虚拟机中的本地部署），以及如何运用 Azure 的“基础结构即服务”功能。 这两种产品的数据库性能与功能差异很大，不应混用。 另请参阅：<https://azure.microsoft.com/services/sql-database/>
 > 
 >
 
@@ -362,7 +362,7 @@ ms.locfileid: "58881080"
 ### <a name="formatting-the-disks"></a>格式化磁盘
 对于 SQL Server，包含 SQL Server 数据和日志文件的磁盘的 NTFS 块大小应该为 64KB。 不需要将 D:\ 驱动器格式化。 此驱动器已预先格式化。
 
-要确保还原或创建数据库时不会通过清空文件内容来初始化数据文件，应该确保 SQL Server 服务运行所在的用户上下文具有特定的权限。 通常，Windows 管理员组中的用户拥有这些权限。 如果 SQL Server 服务在非 Windows 管理员用户的用户上下文中运行，需要为该用户分配“执行卷维护任务”用户权限。  请参阅这篇 Microsoft 知识库文章中的详细信息： <https://support.microsoft.com/kb/2574695>
+要确保还原或创建数据库时不会通过清空文件内容来初始化数据文件，应该确保 SQL Server 服务运行所在的用户上下文具有特定的权限。 通常，Windows 管理员组中的用户拥有这些权限。 如果 SQL Server 服务在非 Windows 管理员用户的用户上下文中运行，需要为该用户分配“执行卷维护任务”用户权限。  请参阅这篇 Microsoft 知识库文章中的详细信息：<https://support.microsoft.com/kb/2574695>
 
 ### <a name="impact-of-database-compression"></a>数据库压缩的影响
 在 I/O 带宽可能变成限制因素的配置中，每个减少 IOPS 的度量值都可能有助于分散可以在 Azure 等 IaaS 方案中运行的工作负荷。 因此，SAP 和 Microsoft 建议先应用 SQL Server 页面压缩，然后再将现有 SAP 数据库上传到 Azure（如果尚未这么做）。
@@ -486,16 +486,16 @@ SAP 支持的数据库镜像（请参阅 SAP 说明 [965908]）依赖于在 SAP 
 
 至于仅限云的部署，最简单的方法是在 Azure 中设置另一个域，以便让这些 DBMS VM（最好是专用的 SAP VM）位于一个域中。
 
-如果域不可行，还可以使用证书数据库镜像终结点，如下所述： <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
+如果域不可行，也可以对数据库镜像终结点使用证书，如此处所述：<https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 
-若要设置数据库镜像在 Azure 中的教程可在此处找到： <https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
+有关如何在 Azure 中设置数据库镜像的教程，请参阅：<https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server> 
 
 ### <a name="sql-server-always-on"></a>SQL Server Always On
 由于 AlwaysOn 受本地 SAP 支持（请参阅 SAP 说明 [1772688]），因此，支持在 Azure 中将其与 SAP 搭配。 部署 SQL Server 可用性组侦听程序（请勿与 Azure 可用性集混淆）时有一些特殊注意事项，因为 Azure 目前不允许创建 AD/DNS 对象，而在本地是允许的。 因此，需要执行一些不同的安装步骤来克服 Azure 的特定行为。
 
 以下是使用可用性组侦听器的一些注意事项：
 
-* 只有将 Windows Server 2012 或更高版本作为 VM 的来宾 OS 时，才支持使用可用性组侦听器。 适用于 Windows Server 2012，您需要确保应用此补丁： <https://support.microsoft.com/kb/2854082> 
+* 只有将 Windows Server 2012 或更高版本作为 VM 的来宾 OS 时，才支持使用可用性组侦听器。 对于 Windows Server 2012，必须确保应用此补丁：<https://support.microsoft.com/kb/2854082> 
 * 对于 Windows Server 2008 R2，此补丁并不存在，而 Always On 需要通过与数据库镜像相同的方式来使用，即，在连接字符串中指定故障转移伙伴（通过 SAP default.pfl 参数 dbs/mss/server 完成 - 请参阅 SAP 说明 [965908]）。
 * 使用可用性组侦听器时，数据库 VM 需要连接到专用的负载均衡器。 为了避免 Azure 在这两个 VM 都意外关闭的情况下分配新的 IP 地址，应该在 Always On 配置中为这些 VM 的网络接口分配静态 IP 地址（有关如何定义静态 IP 地址的信息，请参阅[此文][virtual-networks-reserved-private-ip]）
 * 构建群集需要分配特殊 IP 地址的 WSFC 群集配置时，需执行一些特殊的步骤，因为 Azure 及其当前功能会为群集名称分配与创建群集所在的节点相同的 IP 地址。 这表示必须执行手动步骤，为群集分配不同的 IP 地址。

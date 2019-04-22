@@ -11,10 +11,10 @@ ms.date: 05/07/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b33b76175558c71720c15a2a4e206e26a60f1f95
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880638"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Azure AD B2C 自定义策略和标识体验框架故障排除
@@ -29,7 +29,7 @@ ms.locfileid: "58880638"
 设置自定义策略时最常见的错误是设置了不正确的 XML 格式。 好的 XML 编辑器可以说是必不可少。 好的 XML 编辑器能够原生显示 XML、对内容进行色彩编码、预先填充常用字词、保留 XML 元素的索引以及验证架构。 下面是我们偏好使用的两个 XML 编辑器：
 
 * [Visual Studio Code](https://code.visualstudio.com/)
-* [Notepad + +](https://notepad-plus-plus.org/)
+* [Notepad++](https://notepad-plus-plus.org/)
 
 XML 架构验证在上传 XML 文件之前会识别错误。 在初学者包的根文件夹中，获取 XML 架构定义 TrustFrameworkPolicy_0.3.0.0.xsd。 有关详细信息，请在 XML 编辑器的文档中查找 *XML 工具*和 *XML 验证*。
 
@@ -41,16 +41,16 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在初学者包的�
  
  常见的验证错误包括以下内容。
 
-错误代码片段： `... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
+错误代码片段：`... makes a reference to ClaimType with id "displaName" but neither the policy nor any of its base policies contain such an element`
 * ClaimType 值可能拼写错误，或者在架构中不存在。
 * 必须至少在策略中的一个文件内定义 ClaimType 值。 
     例如： `<ClaimType Id="socialIdpUserId">`
 * 如果 ClaimType 在扩展文件中定义，但同时用于基本文件中的 TechnicalProfile 值，则上传基本文件会导致错误。
 
-错误代码片段： `...makes a reference to a ClaimsTransformation with id...`
+错误代码片段：`...makes a reference to a ClaimsTransformation with id...`
 * 导致该错误的原因可能与导致 ClaimType 错误的原因相同。
 
-错误代码片段： `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+错误代码片段：`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 * 确保 **\<TrustFrameworkPolicy\>** 和 **\<BasePolicy\>** 元素中的 TenantId 值与目标 Azure AD B2C 租户匹配。  
 
 ## <a name="troubleshoot-the-runtime"></a>运行时故障排除
@@ -66,11 +66,11 @@ XML 架构验证在上传 XML 文件之前会识别错误。 在初学者包的�
 
 ## <a name="recommended-practices"></a>建议的做法
 
-**保留方案的多个版本。 将它们组合在与你的应用程序项目中。** 基本文件、扩展文件和信赖方文件直接相互依赖。 将它们保存为一个组。 保留单独的工作版本，因为会向策略添加新功能。 使用与工作版本交互的应用程序代码，将这些版本暂存在用户自己的文件系统中。  应用程序可能调用一个租户中的多个不同信赖方策略。 它们可能会开始依赖预期从 Azure AD B2C 策略获得的声明。
+**保留方案的多个版本。将这些版本连同应用程序一起分组到某个项目中。** 基本文件、扩展文件和信赖方文件直接相互依赖。 将它们保存为一个组。 保留单独的工作版本，因为会向策略添加新功能。 使用与工作版本交互的应用程序代码，将这些版本暂存在用户自己的文件系统中。  应用程序可能调用一个租户中的多个不同信赖方策略。 它们可能会开始依赖预期从 Azure AD B2C 策略获得的声明。
 
-**开发和测试使用已知的用户旅程的技术配置文件。** 使用经过测试的初学者包策略设置技术配置文件。 在合并到自己的用户旅程之前，单独对其进行测试。
+**使用已知的用户旅程开发并测试技术配置文件。** 使用经过测试的初学者包策略设置技术配置文件。 在合并到自己的用户旅程之前，单独对其进行测试。
 
-**开发和测试具有经过测试的技术配置文件的用户旅程。** 逐步更改用户旅程的业务流程步骤。 以渐进方式生成所需的方案。
+**使用经过测试的技术配置文件开发并测试用户旅程。** 逐步更改用户旅程的业务流程步骤。 以渐进方式生成所需的方案。
 
 ## <a name="next-steps"></a>后续步骤
 

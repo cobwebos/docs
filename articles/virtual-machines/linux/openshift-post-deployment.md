@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 02/02/2019
 ms.author: haroldw
 ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903669"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
@@ -39,11 +39,11 @@ ms.locfileid: "58903669"
 
 这些步骤使用 Azure CLI 创建应用注册，然后使用 GUI（门户）设置权限。 若要创建应用注册，需要提供以下五项信息：
 
-- 显示名称：应用注册名称 (例如 OCPAzureAD)
-- 主页上：OpenShift 控制台 URL （例如， https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 标识符 URI:OpenShift 控制台 URL （例如， https://masterdns343khhde.westus.cloudapp.azure.com/console)
-- 回复 URL:主机公共 URL 和应用注册名称 （例如， https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
-- 密码：安全密码 （使用强密码）
+- 显示名称：应用注册名称（例如 OCPAzureAD）
+- 主页：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- 标识符 URI：OpenShift 控制台 URL（例如 https://masterdns343khhde.westus.cloudapp.azure.com/console)
+- 答复 URL：主公用 URL 和应用注册名称（例如 https://masterdns343khhde.westus.cloudapp.azure.com/oauth2callback/OCPAzureAD)
+- 密码：安全密码（使用强密码）
 
 以下示例使用上述信息创建应用注册：
 
@@ -83,11 +83,11 @@ az ad app create --display-name OCPAzureAD --homepage https://masterdns343khhde.
 
    ![应用注册](media/openshift-post-deployment/app-registration.png)
 
-6. 单击步骤 1:选择 API，并单击**Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)**。 单击底部的“选择”。
+6. 依次单击“步骤 1:选择 API”、“Windows Azure Active Directory (Microsoft.Azure.ActiveDirectory)”。 单击底部的“选择”。
 
    ![应用注册选择 API](media/openshift-post-deployment/app-registration-select-api.png)
 
-7. 在步骤 2:选择权限中，选择**登录并读取用户个人资料**下**委托的权限**，然后单击**选择**。
+7. 在“步骤 2:选择权限”中，选择“委托的权限”下的“登录并读取用户配置文件”，并单击“选择”。
 
    ![应用注册访问权限](media/openshift-post-deployment/app-registration-access.png)
 
@@ -147,31 +147,31 @@ oauthConfig:
         token: https://login.microsoftonline.com/<tenant Id>/oauth2/token
 ```
 
-确保 identityProviders 下的文本正确对齐。 使用以下 CLI 命令查找租户 ID： ```az account show```
+确保 identityProviders 下的文本正确对齐。 使用以下 CLI 命令查找租户 ID：```az account show```
 
 在所有主节点上重启 OpenShift 主机服务：
 
-**具有多主机的 OpenShift 容器平台 (OCP)**
+**包含多个主节点的 OpenShift 容器平台 (OCP)**
 
 ```bash
 sudo systemctl restart atomic-openshift-master-api
 sudo systemctl restart atomic-openshift-master-controllers
 ```
 
-**具有单个主机的 OpenShift 容器平台**
+**包含单个主节点的 OpenShift 容器平台**
 
 ```bash
 sudo systemctl restart atomic-openshift-master
 ```
 
-**具有多主机 OKD**
+**包含多个主节点的 OKD**
 
 ```bash
 sudo systemctl restart origin-master-api
 sudo systemctl restart origin-master-controllers
 ```
 
-**具有单个主机 OKD**
+**包含单个主节点的 OKD**
 
 ```bash
 sudo systemctl restart origin-master
@@ -251,7 +251,7 @@ OpenShift 容器平台市场套餐还提供一个选项用于在安装群集期�
 
 使用部署期间提供的凭据，通过 SSH 连接到守护节点或第一个主节点（取决于所用的模板和分支）。 发出以下命令：
 
-**OpenShift 容器平台 3.7 及更早版本**
+**OpenShift 容器平台 3.7 和更低版本**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -275,7 +275,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
-**OKD 3.7 及更早版本**
+**OKD 3.7 和更低版本**
 
 ```bash
 ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -304,7 +304,7 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 使用部署期间提供的凭据，通过 SSH 连接到守护节点或第一个主节点（取决于所用的模板和分支）。 发出以下命令：
 
 
-**OpenShift 容器平台 3.7 及更早版本**
+**OpenShift 容器平台 3.7 和更低版本**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -324,7 +324,7 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-loggin
 -e openshift_logging_install_logging=True
 ```
 
-**OKD 3.7 及更早版本**
+**OKD 3.7 和更低版本**
 
 ```bash
 ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
@@ -352,4 +352,4 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 ## <a name="next-steps"></a>后续步骤
 
 - [OpenShift 容器平台入门](https://docs.openshift.com/container-platform)
-- [开始使用 OKD](https://docs.okd.io/latest)
+- [OKD 入门](https://docs.okd.io/latest)

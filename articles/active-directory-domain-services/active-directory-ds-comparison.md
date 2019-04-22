@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: ergreenl
 ms.openlocfilehash: fbd876ad46342dec7e2e73b92d3aafbd37cc205b
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892290"
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>如何确定 Azure AD 域服务是否适合具体的用例
@@ -34,12 +34,12 @@ ms.locfileid: "58892290"
 ## <a name="compare-azure-ad-domain-services-to-diy-ad-domain-in-azure"></a>Azure AD 域服务与 Azure 中 DIY AD 域的比较
 下表可帮助确定是要使用 Azure AD 域服务还是要在 Azure 中管理自己的 AD 基础结构。
 
-| **Feature** | **Azure AD 域服务** | **在 Azure Vm 中的自己动手 AD** |
+| **功能** | **Azure AD 域服务** | **Azure VM 中的 DIY AD** |
 | --- |:---:|:---:|
 | [**托管服务**](active-directory-ds-comparison.md#managed-service) |**&#x2713;** |**&#x2715;** |
 | [**安全部署**](active-directory-ds-comparison.md#secure-deployments) |**&#x2713;** |管理员需要保护部署。 |
 | [**DNS 服务器**](active-directory-ds-comparison.md#dns-server) |**&#x2713;**（托管服务） |**&#x2713;** |
-| [**域或企业管理员权限**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
+| [**域管理员或企业管理员权限**](active-directory-ds-comparison.md#domain-or-enterprise-administrator-privileges) |**&#x2715;** |**&#x2713;** |
 | [**域加入**](active-directory-ds-comparison.md#domain-join) |**&#x2713;** |**&#x2713;** |
 | [**使用 NTLM 和 Kerberos 进行域身份验证**](active-directory-ds-comparison.md#domain-authentication-using-ntlm-and-kerberos) |**&#x2713;** |**&#x2713;** |
 | [**Kerberos 约束委派**](active-directory-ds-comparison.md#kerberos-constrained-delegation)|基于资源|基于资源和基于帐户|
@@ -118,6 +118,6 @@ Azure AD 域服务托管域可在 Azure 的单个虚拟网络中使用。 对于
 我们已发布[在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)，帮助客户完成 DIY 安装。
 
 ## <a name="related-content"></a>相关内容
-* [功能-Azure AD 域服务](active-directory-ds-features.md)
-* [部署方案的 Azure AD 域服务](active-directory-ds-scenarios.md)
-* [在 Azure 虚拟机中部署 Windows Server Active Directory 的准则](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)
+* [功能 - Azure AD 域服务](active-directory-ds-features.md)
+* [部署方案 - Azure AD 域服务](active-directory-ds-scenarios.md)
+* [在 Azure 虚拟机上部署 Windows Server Active Directory 的指南](/windows-server/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)

@@ -13,17 +13,17 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 6f9064c6027499fff3a8551ee60722cd66c54dc2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883422"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-by-using-the-azure-portal"></a>使用 Azure 门户创建包含 Azure Data Lake Storage Gen1 的 HDInsight 群集
 > [!div class="op_single_selector"]
 > * [使用 Azure 门户](data-lake-store-hdinsight-hadoop-use-portal.md)
-> * [使用 PowerShell （对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-> * [使用 PowerShell （对于附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
+> * [使用 PowerShell（对于默认存储）](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+> * [使用 PowerShell（对于附加存储）](data-lake-store-hdinsight-hadoop-use-powershell.md)
 > * [使用资源管理器](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 >
 >
@@ -47,7 +47,7 @@ ms.locfileid: "58883422"
 
 ### <a name="create-a-cluster-with-data-lake-storage-gen1-as-default-storage"></a>创建使用 Data Lake Storage Gen1 作为默认存储的群集
 
-**若要创建 HDInsight 群集使用的数据湖存储 Gen1 帐户作为默认存储帐户**
+**创建使用 Data Lake Storage Gen1 帐户作为默认存储帐户的 HDInsight 群集**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 有关创建 HDInsight 群集的一般信息，请遵循[创建群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)。
@@ -67,7 +67,7 @@ ms.locfileid: "58883422"
 
 以下说明会创建一个 HDInsight 群集，该群集将 Azure 存储帐户作为默认存储，将 Data Lake Storage Gen1 帐户作为额外存储。
 
-**若要创建 HDInsight 群集具有数据湖存储 Gen1 帐户作为附加存储帐户**
+**创建使用 Data Lake Storage Gen1 帐户作为额外存储帐户的 HDInsight 群集**
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 有关创建 HDInsight 群集的一般信息，请遵循[创建群集](../hdinsight/hdinsight-hadoop-create-linux-clusters-portal.md#create-clusters)。
@@ -93,7 +93,7 @@ ms.locfileid: "58883422"
 
 在 Azure 门户中，可以使用现有的服务主体，或创建一个新的服务主体。
 
-**若要从 Azure 门户创建服务主体**
+**在 Azure 门户中创建服务主体**
 
 1. 从“存储”边栏选项卡中单击“Data Lake Store 访问”。
 2. 在“Data Lake Storage Gen1 访问”边栏选项卡中，单击“新建”。
@@ -105,7 +105,7 @@ ms.locfileid: "58883422"
 4. 单击“访问权限”配置文件夹访问权限。  请参阅[配置文件权限](#configure-file-permissions)。
 
 
-**若要使用现有服务主体从 Azure 门户**
+**使用 Azure 门户中的现有服务主体**
 
 1. 单击“Data Lake Store 访问”。
 1. 在“Data Lake Storage Gen1 访问”边栏选项卡中，单击“使用现有项”。
@@ -129,7 +129,7 @@ ms.locfileid: "58883422"
 
     - 需要文件访问权限的文件夹上的权限。
 
-**若要将数据湖存储 Gen1 帐户根级别的权限分配**
+**分配 Data Lake Storage Gen1 帐户根级别的权限**
 
 1. 在“Data Lake Storage Gen1 访问”边栏选项卡中，单击“访问”。 随即打开“选择文件权限”边栏选项卡。 其中列出了你订阅中的所有 Data Lake Storage Gen1 帐户。
 2. 将鼠标悬停（不要单击）在 Data Lake Storage Gen1 帐户的名称上，使复选框可见，然后选中复选框。
@@ -142,7 +142,7 @@ ms.locfileid: "58883422"
 4. 单击“运行”分配权限。
 5. 单击“完成”。
 
-**若要将 HDInsight 群集根级别的权限分配**
+**分配 HDInsight 群集根级别的权限**
 
 1. 在“Data Lake Storage Gen1 访问”边栏选项卡中，单击“访问”。 随即打开“选择文件权限”边栏选项卡。 其中列出了你订阅中的所有 Data Lake Storage Gen1 帐户。
 1. 从“选择文件权限”边栏选项卡中，单击 Data Lake Storage Gen1 帐户名显示其内容。
@@ -185,9 +185,9 @@ ms.locfileid: "58883422"
     CREATE EXTERNAL TABLE websitelog (str string) LOCATION 'adl://hdiadlsg1storage.azuredatalakestore.net/clusters/myhdiadlcluster/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/'
 
 说明：
-* `adl://hdiadlsg1storage.azuredatalakestore.net/` 是数据湖存储 Gen1 帐户的根。
-* `/clusters/myhdiadlcluster` 是你在创建群集时指定的群集数据的根。
-* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` 是在查询中使用的示例文件的位置。
+* `adl://hdiadlsg1storage.azuredatalakestore.net/` 是 Data Lake Storage Gen1 帐户的根。
+* `/clusters/myhdiadlcluster` 是在创建群集时指定的群集数据的根。
+* `/HdiSamples/HdiSamples/WebsiteLogSampleData/SampleLog/` 是查询中所用示例文件的位置。
 
 ### <a name="run-a-hive-query-against-data-in-a-data-lake-storage-gen1-account-as-additional-storage"></a>针对 Data Lake Storage Gen1 帐户（用作额外存储）中的数据运行 Hive 查询
 
@@ -195,8 +195,8 @@ ms.locfileid: "58883422"
 
 有关如何将数据从 Blob 存储复制到 Data Lake Storage Gen1 帐户的信息，请参阅以下文章：
 
-* [使用 Distcp 在 Azure 存储 blob 和数据湖存储 Gen1 之间复制数据](data-lake-store-copy-data-wasb-distcp.md)
-* [使用 AdlCopy 将数据从 Azure 存储 blob 复制到数据湖存储 Gen1](data-lake-store-copy-data-azure-storage-blob.md)
+* [使用 Distcp 在 Azure 存储 Blob 与 Data Lake Storage Gen1 之间复制数据](data-lake-store-copy-data-wasb-distcp.md)
+* [使用 AdlCopy 将数据从 Azure 存储 Blob 复制到 Data Lake Storage Gen1](data-lake-store-copy-data-azure-storage-blob.md)
 
 ### <a name="use-data-lake-storage-gen1-with-a-spark-cluster"></a>在 Spark 群集中使用 Data Lake Storage Gen1
 可以使用 Spark 群集对存储在 Data Lake Storage Gen1 帐户中的数据运行 Spark 作业。 有关详细信息，请参阅[使用 HDInsight Spark 群集分析 Data Lake Storage Gen1 中的数据](../hdinsight/spark/apache-spark-use-with-data-lake-store.md)。
@@ -207,7 +207,7 @@ ms.locfileid: "58883422"
 
 ## <a name="see-also"></a>另请参阅
 * [将 Data Lake Storage Gen1 与 Azure HDInsight 群集配合使用](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
-* [PowerShell：创建 HDInsight 群集以使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
+* [PowerShell：创建 HDInsight 群集以使用 Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx
 [pvk2pfx]: https://msdn.microsoft.com/library/windows/desktop/ff550672(v=vs.85).aspx

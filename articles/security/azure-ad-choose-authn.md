@@ -10,10 +10,10 @@ ms.topic: article
 ms.service: active-directory
 ms.workload: identity
 ms.openlocfilehash: 1f950841946b65d618c7335ea3d8d42993a89481
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58805255"
 ---
 # <a name="choose-the-right-authentication-method-for-your-azure-active-directory-hybrid-identity-solution"></a>为 Azure Active Directory 混合标识解决方案选择正确的身份验证方法 
@@ -177,7 +177,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 |除预配系统外的本地服务器要求是什么：Azure AD Connect？|无|为额外的每个身份验证代理提供一台服务器|两台或更多 AD FS 服务器<br><br>外围网络中的两台或更多 WAP 服务器|
 |除预配系统外的本地 Internet 和网络的要求是什么？|无|从运行身份验证代理的服务器进行[出站 Internet 访问](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-quick-start)|对外围网络中的 WAP 服务器进行[入站 Internet 访问](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-requirements)<br><br>从外围网络中的 WAP 服务器对 AD FS 服务器进行入站网络访问<br><br>网络负载均衡|
 |是否有 SSL 证书要求？|否|否|是|
-|是否有运行状况监视解决方案？|不需要|[Azure Active Directory 管理中心](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)提供的代理状态|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
+|是否有运行状况监视解决方案？|不是必需|[Azure Active Directory 管理中心](https://docs.microsoft.com/azure/active-directory/hybrid/tshoot-connect-pass-through-authentication)提供的代理状态|[Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-health-adfs)|
 |用户是否可在公司网络内从加入域的设备单一登录到云资源？|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|是，同时使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso)|是|
 |支持哪些登录类型？|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-custom)|UserPrincipalName + 密码<br><br>通过使用[无缝 SSO](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sso) 进行的 Windows 集成身份验证<br><br>[备用登录 ID](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-pta-faq)|UserPrincipalName + 密码<br><br>sAMAccountName + 密码<br><br>Windows 集成身份验证<br><br>[证书和智能卡身份验证](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-user-certificate-authentication)<br><br>[备用登录 ID](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configuring-alternate-login-id)|
 |是否支持 Windows Hello 企业版？|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br>*需要 Windows Server 2016 域功能级别*|[密钥信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification)<br><br>[证书信任模型](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-key-trust-adfs)|
@@ -210,7 +210,7 @@ Azure AD 支持以下适用于混合标识解决方案的身份验证方法。
 
 最后，根据 [Gartner](https://info.microsoft.com/landingIAMGartnerreportregistration.html) 提供的信息，Microsoft 拥有功能最完备的标识和访问管理功能集。 Microsoft 每月处理 [4,500 亿个身份验证请求](https://www.microsoft.com/en-us/security/intelligence-report)，几乎可从任何设备提供对数千个 SaaS 应用程序（如 Office 365）的访问权限。 
 
-## <a name="conclusion"></a>结论
+## <a name="conclusion"></a>结束语
 
 本文概述了多种身份验证选项，组织可以配置和部署它们以支持对云应用的访问。 为了满足各种业务、安全和技术要求，组织可以在密码哈希同步、直通身份验证和联合身份验证之间进行选择。 
 

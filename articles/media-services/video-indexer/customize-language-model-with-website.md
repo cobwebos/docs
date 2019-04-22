@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
 ms.openlocfilehash: 7b81b53c03104023823bef75beb4ac6077feede7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918682"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-website"></a>使用视频索引器网站自定义语言模型
@@ -147,4 +147,4 @@ ms.locfileid: "58918682"
 
 ## <a name="next-steps"></a>后续步骤
 
-[自定义使用 Api 的语言模型](customize-language-model-with-api.md)
+[使用 API 自定义语言模型](customize-language-model-with-api.md)

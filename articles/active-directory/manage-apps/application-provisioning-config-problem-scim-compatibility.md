@@ -16,10 +16,10 @@ ms.date: 12/03/2018
 ms.author: asmalser
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c2a2c1c415d0862b2631fa749241a9ae07df3b98
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880145"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Azure AD 用户预配服务 SCIM 2.0 协议合规性的已知问题和解决方法
@@ -35,7 +35,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="scim-20-compliance-issues-and-status"></a>SCIM 2.0 合规性问题和状态
 
-| **SCIM 2.0 合规性问题** |  **修复了？** | **解决日期**  |  
+| **SCIM 2.0 合规性问题** |  **是否已修复？** | **修复日期**  |  
 |---|---|---|
 | Azure AD 要求“/scim”位于应用程序的 SCIM 终结点 URL 的根路径中  | 是  |  2018 年 12 月 18 日 | 
 | 扩展属性在属性名称前使用圆点“.”表示法，而不使用冒号“:”表示法 |  是  | 2018 年 12 月 18 日  | 
@@ -44,7 +44,7 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 ## <a name="were-the-services-fixes-described-automatically-applied-to-my-pre-existing-scim-app"></a>所述服务修补程序是否会自动应用于预先存在的 SCIM 应用？
 
-不是。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
+不。 由于已构成对编码为与较旧行为配合使用的 SCIM 应用的重大更改，更改不会自动应用于现有应用。
 
 修补程序发布后，更改会应用于 Azure 门户中配置的所有新的[非库 SCIM 应用](configure-single-sign-on-non-gallery-applications.md)。
 
@@ -112,5 +112,5 @@ Azure AD 对 SCIM 2.0 协议的支持在[使用跨域身份管理系统 (SCIM) �
 
 
 ## <a name="next-steps"></a>后续步骤
-[了解有关预配和取消预配到 SaaS 应用程序的详细信息](user-provisioning.md)
+[了解关于 SaaS 应用程序预配和取消预配的详细信息](user-provisioning.md)
 

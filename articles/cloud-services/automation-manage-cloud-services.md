@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
 ms.openlocfilehash: b3660901c86dd644369e6d1913e825cbd5ea316b
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918461"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>使用 Azure 自动化管理 Azure 云服务
@@ -36,12 +36,12 @@ Azure 自动化能够提供高度可靠且长期可用的工作流执行引擎�
 
 使用 Azure 自动化管理 Azure 云服务的部分示例包括：
 
-* [云服务每次在 Azure Blob 存储中更新 cscfg 或 cspkg 时持续部署](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
-* [重新启动并行，一次一个升级域中的云服务实例](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
+* [每当在 Azure Blob 存储中更新了 cscfg 或 cspkg 时持续部署云服务](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
+* [并行重启云服务实例，每次重启一个升级域](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
 ## <a name="next-steps"></a>后续步骤
 了解 Azure 自动化以及如何使用它来管理 Azure 云服务的基础知识后，请点击以下链接了解有关 Azure 自动化的更多信息。
 
 * [Azure 自动化概述](../automation/automation-intro.md)
-* [我的第一个 Runbook](../automation/automation-first-runbook-graphical.md)
+* [第一个 Runbook](../automation/automation-first-runbook-graphical.md)
 * [Azure 自动化学习路线图](https://azure.microsoft.com/documentation/learning-paths/automation/)

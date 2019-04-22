@@ -10,10 +10,10 @@ ms.date: 02/21/2019
 ms.author: v-jansko
 ms.topic: conceptual
 ms.openlocfilehash: 0871cb7e4dcbe8cf71f35f174137396bde607c54
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916099"
 ---
 # <a name="data-filtering"></a>数据筛选
@@ -49,9 +49,9 @@ ms.locfileid: "58916099"
 
 ## <a name="unescaped-xml-tags"></a>非转义的 XML 标记
 筛选会将非转义的标记转换为转义的标记：
-* `&lt;` 将成为 `&amp;lt;`
-* `&gt;` 将成为 `&amp;gt;`
-* `&amp;` 将成为 `&amp;amp;`
+* `&lt;` 变为 `&amp;lt;`
+* `&gt;` 变为 `&amp;gt;`
+* `&amp;` 变为 `&amp;amp;`
 
 ## <a name="invalid-characters"></a>无效字符
 自定义翻译器会删除包含 Unicode 字符 U+FFFD 的句子。 字符 U+FFFD 表示编码转换失败。

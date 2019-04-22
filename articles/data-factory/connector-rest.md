@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: jingwang
 ms.openlocfilehash: ee47f464c59bd9deed98671f19cfcc6d2c3c1b39
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762474"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 REST 终结点复制数据
@@ -55,7 +55,7 @@ REST 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| 类型 | **类型**属性必须设置为**因此**。 | 是 |
+| type | **类型**属性必须设置为**因此**。 | 是 |
 | url | REST 服务的基 URL。 | 是 |
 | enableServerCertificateValidation | 连接到终结点时是否要验证服务器端 SSL 证书。 | 否<br /> （默认值为 true） |
 | authenticationType | 用于连接到 REST 服务的身份验证类型。 允许的值为 **Anonymous**、**Basic**、**AadServicePrincipal** 和 **ManagedServiceIdentity**。 有关其他属性和示例，请参阅下面的相应部分。 | 是 |
@@ -65,10 +65,10 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **Basic**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | userName | 用于访问 REST 终结点的用户名。 | 是 |
-| 密码 | 用户（userName 值）的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
+| password | 用户（userName 值）的密码。 将此字段标记为 SecureString 类型，以便安全地将其存储在数据工厂中。 此外，还可以[引用 Azure Key Vault 中存储的机密](store-credentials-in-key-vault.md)。 | 是 |
 
 **示例**
 
@@ -98,7 +98,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **AadServicePrincipal**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定 Azure Active Directory 应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定 Azure Active Directory 应用程序的密钥。 将此字段标记为 **SecureString** 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -135,7 +135,7 @@ REST 链接服务支持以下属性：
 
 将 **authenticationType** 属性设置为 **ManagedServiceIdentity**。 除了前面部分所述的通用属性，还指定以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 |:--- |:--- |:--- |
 | aadResourceId | 指定请求授权的 AAD 资源，例如 `https://management.core.windows.net`。| 是 |
 
@@ -169,7 +169,7 @@ REST 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| 类型 | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
+| type | 数据集的 **type** 属性必须设置为 **RestResource**。 | 是 |
 | relativeUrl | 包含数据的资源的相对 URL。 未指定此属性时，仅使用链接服务定义中指定的 URL。 | 否 |
 | requestMethod | HTTP 方法。 允许的值为 Get（默认值）和 Post。 | 否 |
 | additionalHeaders | 附加的 HTTP 请求标头。 | 否 |
@@ -232,7 +232,7 @@ REST 链接服务支持以下属性：
 
 | 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
-| 类型 | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
+| type | 复制活动源的 **type** 属性必须设置为 **RestSource**。 | 是 |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 该值是获取响应而不是读取响应数据的超时。 默认值为 00:01:40。  | 否 |
 | requestInterval | 发送下一页请求之前等待的时间。 默认值为 **00:00:01** |  否 |
 
@@ -285,7 +285,7 @@ REST 链接服务支持以下属性：
 
 分页规则中**支持的键**：
 
-| 钥匙 | 描述 |
+| 密钥 | 描述 |
 |:--- |:--- |
 | AbsoluteUrl | 指示用于发出下一个请求的 URL。 它可以是**绝对 URL 或相对 URL**。 |
 | QueryParameters.*request_query_parameter* 或 QueryParameters['request_query_parameter'] | “request_query_parameter”由用户定义，引用下一个 HTTP 请求 URL 中的一个查询参数名称。 |

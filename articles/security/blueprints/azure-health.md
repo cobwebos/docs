@@ -10,17 +10,17 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: rarangap
 ms.openlocfilehash: 70721b8bfbecaf554a9502b9ec3417fc8e561b3f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885938"
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI
 
 ## <a name="overview"></a>概述
 
-**Azure 安全性和符合性蓝图-HIPAA/HITRUST 健康数据和 AI 提供了一种 Azure PaaS 和 IaaS 的解决方案，以演示了如何引入、 存储、 分析、 进行交互，标识安全地使用和部署解决方案时的运行状况数据的统包式部署能够满足行业法规遵从性要求。 蓝图有助于他们加速采用和具有限制的数据的客户利用云。**
+**Azure 安全性与合规性蓝图 - HIPAA/HITRUST 健康数据和 AI 提供了包含 Azure PaaS 解决方案和 IaaS 解决方案在内的一整套部署，用于演示如何在遵循行业符合性要求的情况下，引入、存储、分析、识别健康数据并与之交互以及安全部署解决方案。对于其数据受到监管的客户来说，本蓝图有助于他们加速采用和利用云。**
 
 Azure 安全性和符合性蓝图 - HIPAA/HITRUST 健康数据和 AI 蓝图提供的工具和指南有助于部署安全且符合美国健康保险流通与责任法案 (HIPAA) 和健康信息信托联盟 (HITRUST) 规定的平台即服务 (PaaS) 环境，以便在安全的已部署为端到端解决方案的多层云环境中引入、存储、分析个人与非个人医疗记录并与之交互。 
 
@@ -46,7 +46,7 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 - 常见问题可参阅[常见问题解答](https://aka.ms/healthblueprintfaq)指南。
 
--   **体系结构关系图。** 此图显示了用于蓝图和示例用例方案的引用体系结构。
+-   **体系结构图。** 此图显示了用于蓝图和示例用例方案的引用体系结构。
 
 -   [IaaS 扩展](https://github.com/Azure/Health-Data-and-AI-Blueprint/blob/master/README%20IaaS.md)此解决方案将演示如何将本地基于 SQL 解决方案迁移到 Azure，以及如何实现特权访问工作站安全地管理基于云的服务和解决方案。 
 
@@ -59,7 +59,7 @@ IaaS 解决方案演示如何将本地基于 SQL 的解决方案迁移到 Azure�
 
 -   **[客户实现矩阵](https://aka.ms/healthcrmblueprint)**：一种 Microsoft Excel 工作簿，其中列出了相关的 HITRUST 要求，并说明了 Microsoft 和客户的相互责任。
 
--   **[运行状况检查。](https://aka.ms/healthreviewpaper)** 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，以及在将蓝图转换为生产就绪型部署过程中的注意事项。
+-   **[健康审核](https://aka.ms/healthreviewpaper)**。 此解决方案已由 Coalfire systems, Inc. 审核。有关健康符合性（HIPAA 和 HITRUST）实施方面的审核和指南提供了审核员对此解决方案的审核意见，以及在将蓝图转换为生产就绪型部署过程中的注意事项。
 
 ## <a name="architectural-diagram"></a>体系结构图
 
@@ -148,38 +148,38 @@ CMIO 有效地解决了医疗保健机构中医疗保健专业人员不懂信息
 ### <a name="users-and-roles"></a>用户和角色
 
 
-**站点管理员--Alex**
+**站点管理员 -- Alex**
 
 *电子邮件：Alex\_SiteAdmin*
 
 Alex 的工作是对那些能够减轻本地网络管理负担并降低管理成本的技术进行评估。 Alex 已经对 Azure 进行了一段时间的评估，但仍然在努力地根据 HiTrust 符合性要求配置所需的服务，以便将病人数据存储在云中。 Alex 选择了 Azure 健康 AI 来部署没有符合性问题的健康解决方案，满足客户在 HiTrust 方面的要求。
 
-**数据科学家--Debra**
+**数据科学家 -- Debra**
 
 *电子邮件：Debra\_DataScientist*
 
 Debra 负责创建和使用模型来分析医疗记录，以便深入了解病人护理。 Debra 使用 SQL 和 R 统计编程语言来创建其模型。
 
-**数据库分析师--Danny**
+**数据库分析师 -- Danny**
 
 *电子邮件：Danny\_DBAnalyst*
 
 有关 Microsoft SQL Server（用于存储 Contosoclinic 的所有病人数据）的事项，应主要联系 Danny。 Danny 是一位有经验的 SQL Server 管理员，最近开始熟悉 Azure SQL 数据库工作。
 
-**首席医疗信息官--Caroline**
+**首席医疗信息官 -- Caroline**
 
 Caroline 与医护管理员 Chris 以及数据科学家 Debra 一起合作，共同探讨影响病人住院时间的具体因素。
 Caroline 使用住院时间 (LOS) 解决方案的预测来确定是否已在医院网络中正确分配资源。 例如，使用此解决方案中提供的仪表板。
 
-**医护管理员-Chris**
+**医护管理员 -- Chris**
 
 *电子邮件：Chris\_CareLineManager*
 
 作为直接在 Contosoclinic 负责管理病人入院和出院的人员，Chris 使用 LOS 解决方案生成的预测来确保安排足够的人员为住院病人提供照护。
 
-**审核员--Han**
+**审核员 -- Han**
 
-*电子邮件：Han\_审核员*
+*电子邮件：Han\_Auditor*
 
 Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核经验。 雇佣 Han 是为了审核 Contosoclinc 的网络。 Han 可以审核解决方案随附的“客户责任矩阵”，确保蓝图和 LOS 解决方案可以用来存储、处理和显示敏感的个人数据。
 
@@ -202,7 +202,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 ### <a name="azure-active-directory-and-role-based-access-control-rbac"></a>Azure Active Directory 和基于角色的访问控制 (RBAC)
 
 
-**身份验证:**
+**身份验证：**
 
 -   [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/) 是 Microsoft \'提供的多租户、基于云的目录和标识管理服务。 解决方案的所有用户（包括访问 SQL 数据库的用户）都在 Azure Active Directory 中创建。
 
@@ -218,7 +218,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 -   如果在部署过程中启用了 -enableADDomainPasswordPolicy 开关，则密码会在 60 天后过期。
 
-**角色:**
+**角色：**
 
 -   解决方案利用[内置角色](/azure/role-based-access-control/built-in-roles)来管理对资源的访问。
 
@@ -249,7 +249,7 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 ### <a name="azure-functions"></a>Azure Functions
 根据设计，解决方案会使用 [Azure Functions](/azure/azure-functions/) 来处理在分析演示中使用的示例性的住院时间数据。 在函数中创建了三种功能。
 
-**1.大容量导入的客户数据 phi 数据**
+**1.批量导入客户数据 phi 数据**
 
 根据 “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientAdmission** 开关配合使用时，该脚本会执行以下处理管道：
 1. **Azure Blob 存储** - 病人数据 .csv 文件示例上传到存储
@@ -267,8 +267,8 @@ Han 是获得认证的审核员，拥有 ISO、SOC 和 HiTrust 方面的审核�
 
 **2.新病人入院**
 
-根据 ****“部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientadmission** 开关配合使用时，该脚本会执行以下处理管道：![](images/securetransact.png)
-**1.Azure Function[ 被触发，该函数从 Azure Active Directory 请求](/rest/api/)持有者令牌。
+根据 “部署和运行演示”中的概述，将演示脚本..\\HealthcareDemo.ps1 与 **BulkPatientadmission** 开关配合使用时，该脚本会执行以下处理管道：![](images/securetransact.png)
+**1.Azure Function** 被触发，该函数从 Azure Active Directory 请求[持有者令牌](/rest/api/)。
 
 **2.Key Vault** 请求获取与请求的令牌关联的机密。
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: bwren
 ms.openlocfilehash: dcac701f3c1b6d64a7017c31679c019b91103ba2
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904723"
 ---
 # <a name="analyze-log-data-in-azure-monitor"></a>在 Azure Monitor 中分析日志数据
@@ -37,7 +37,7 @@ Azure Monitor 收集的日志数据存储在 Log Analytics 工作区中，该工
 
 - **导出。**  将日志数据从 Azure Monitor 导入到 Excel 或 [Power BI](../platform/powerbi.md) 中时，请创建日志查询来定义要导出的数据。
 - **PowerShell。** 可以从命令行或使用的 Azure 自动化 runbook 运行的 PowerShell 脚本[Get AzOperationalInsightsSearchResults](/powershell/module/az.operationalinsights/get-azoperationalinsightssearchresults)以检索 Azure Monitor 中的日志数据。  此 cmdlet 需要一个查询来确定要检索的数据。
-- **Azure 监视器日志 API。**  [Azure Monitor 日志 API](../platform/alerts-overview.md) 允许任何 REST API 客户端从工作区中检索日志数据。  API 请求包括针对 Azure Monitor 运行的查询，用于确定要检索的数据。
+- **Azure Monitor 日志 API。**  [Azure Monitor 日志 API](../platform/alerts-overview.md) 允许任何 REST API 客户端从工作区中检索日志数据。  API 请求包括针对 Azure Monitor 运行的查询，用于确定要检索的数据。
 
 ![日志搜索](media/log-query-overview/queries-overview.png)
 

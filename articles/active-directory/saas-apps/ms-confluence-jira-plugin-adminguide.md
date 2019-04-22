@@ -15,10 +15,10 @@ ms.date: 11/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e2f06b884cb1213e9d2cabff4e6e2b97a60339a6
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862856"
 ---
 # <a name="atlassian-jira-and-confluence-admin-guide-for-azure-active-directory"></a>将 Atlassian Jira 和 Confluence 与 Azure Active Directory 结合使用的管理员指南
@@ -146,7 +146,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 * **如何禁用 WebSudo（禁用安全管理员会话）**：
 
-  * 对于 Jira，安全管理员会话（即，在访问管理功能之前需要确认密码）默认已启用。 如果你想要在 Jira 实例中删除此功能，请在 jira-config.properties 文件中指定以下行： `ira.websudo.is.disabled = true`
+  * 对于 Jira，安全管理员会话（即，在访问管理功能之前需要确认密码）默认已启用。 如果想要在 Jira 实例中禁用此功能，请在 jira-config.properties 文件中指定以下行：`ira.websudo.is.disabled = true`
 
   * 对于 Confluence，请遵循 [Confluence 支持站点](https://confluence.atlassian.com/doc/configuring-secure-administrator-sessions-218269595.html)中的步骤。
 
@@ -180,7 +180,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ### <a name="does-the-plug-in-work-on-cloud-versions"></a>此插件是否支持云版本？
 
-不是。 此插件仅支持 Jira 和 Confluence 的本地版本。
+不。 此插件仅支持 Jira 和 Confluence 的本地版本。
 
 ### <a name="which-versions-of-jira-and-confluence-does-the-plug-in-support"></a>此插件支持 Jira 和 Confluence 的哪些版本？
 
@@ -224,7 +224,7 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ### <a name="does-the-plug-in-work-with-idps-other-than-azure-ad"></a>此插件是否可以与除 Azure AD 之外的 IdP 配合工作？
 
-不是。 它仅可与 Azure AD 配合工作。
+不。 它仅可与 Azure AD 配合工作。
 
 ### <a name="what-version-of-saml-does-the-plug-in-work-with"></a>此插件与哪个版本的 SAML 配合工作？
 
@@ -232,12 +232,12 @@ Jira 和 Confluence 管理员可以使用该插件来启用通过 Azure AD 进�
 
 ### <a name="does-the-plug-in-do-user-provisioning"></a>此插件是否执行用户预配？
 
-不是。 此插件仅提供基于 SAML 2.0 的 SSO。 在进行 SSO 登录前，必须将用户预配到应用程序中。
+不。 此插件仅提供基于 SAML 2.0 的 SSO。 在进行 SSO 登录前，必须将用户预配到应用程序中。
 
 ### <a name="does-the-plug-in-support-cluster-versions-of-jira-and-confluence"></a>此插件是否支持 Jira 和 Confluence 的群集版本？
 
-不是。 此插件与 Jira 和 Confluence 的本地版本配合工作。
+不。 此插件与 Jira 和 Confluence 的本地版本配合工作。
 
 ### <a name="does-the-plug-in-work-with-http-versions-of-jira-and-confluence"></a>此插件是否可以与 Jira 和 Confluence 的 HTTP 版本配合工作？
 
-不是。 此插件仅可与已启用 HTTPS 的安装配合工作。
+不。 此插件仅可与已启用 HTTPS 的安装配合工作。

@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: jeffya
 ms.openlocfilehash: 80e4895e0b276e701a6d7f10d8fc67649db0f188
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904485"
 ---
 # <a name="use-azure-iot-hub-device-provisioning-service-auto-provisioning-to-register-the-mxchip-iot-devkit-with-iot-hub"></a>使用 Azure IoT 中心设备预配服务的自动预配功能将 MXChip IoT DevKit 注册到 IoT 中心
@@ -61,13 +61,13 @@ ms.locfileid: "58904485"
 1. 在 DevKit 上，按住**按钮 A** 不放，按下再松开**重置**按钮，然后松开**按钮 A**。DevKit 将进入配置模式。
 
 1. 单击 `F1` 打开命令面板，键入并选择“Azure IoT 设备 Workbench: **配置设备设置...”>“配置唯一设备字符串 (UDS)”**。
-  ![配置 UD](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
+  ![配置 UDS](media/how-to-connect-mxchip-iot-devkit/config-uds.png)
 
 1. 请记下生成的 UDS 字符串。 将需要该字符串来生成 X.509 证书。 然后按 `Enter`。
-  ![复制 UD](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
+  ![复制 UDS](media/how-to-connect-mxchip-iot-devkit/copy-uds.png)
 
 1. 从通知中确认已在 STSAFE 上成功配置 UDS。
-  ![配置 UD 成功](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
+  ![配置 UDS 成功](media/how-to-connect-mxchip-iot-devkit/config-uds-success.png)
 
 > [!NOTE]
 > 或者，可以使用 Putty 等实用程序通过串行端口配置 UDS。 请按照[使用配置模式](https://microsoft.github.io/azure-iot-developer-kit/docs/use-configuration-mode/)中的说明执行此操作。
@@ -111,7 +111,7 @@ ms.locfileid: "58904485"
   ![添加单个注册](media/how-to-connect-mxchip-iot-devkit/add-enrollment.png)
 
 1. 单击“主要证书 .pem 或 .cer 文件”旁边的文件图标，上传生成的文件 `.pem`。
-  ![上传.pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
+  ![上传 .pem](media/how-to-connect-mxchip-iot-devkit/upload-pem.png)
 
 ## <a name="verify-the-devkit-is-registered-with-azure-iot-hub"></a>验证 DevKit 是否已注册到 Azure IoT 中心
 
@@ -129,7 +129,7 @@ ms.locfileid: "58904485"
 如果遇到问题，请参阅 Iot DevKit [常见问题解答](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/)，或通过以下支持渠道联系我们：
 
 * [Gitter.im](https://gitter.im/Microsoft/azure-iot-developer-kit)
-* [堆栈溢出](https://stackoverflow.com/questions/tagged/iot-devkit)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/iot-devkit)
 
 ## <a name="next-steps"></a>后续步骤
 

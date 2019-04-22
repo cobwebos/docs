@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 108ead982529d2ac6549cceffd9d2177ab6456bf
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58863164"
 ---
 # <a name="azure-ad-password-protection-troubleshooting"></a>Azure AD 密码保护故障排除
@@ -152,6 +152,6 @@ Azure AD 密码保护有一个关键依赖项上提供的 Microsoft 密钥分发
 
 ## <a name="next-steps"></a>后续步骤
 
-[Azure AD 密码保护的常见问题](howto-password-ban-bad-on-premises-faq.md)
+[Azure AD 密码保护的常见问题解答](howto-password-ban-bad-on-premises-faq.md)
 
 有关全局和自定义禁止密码列表的详细信息，请参阅[禁止错误的密码](concept-password-ban-bad.md)一文

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/18/2019
 ms.author: glenga
 ms.openlocfilehash: 38d8bdfcba48d2080b434ebec192b41f3663ae6a
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895201"
 ---
 # <a name="how-to-use-the-azure-webjobs-sdk-for-event-driven-background-processing"></a>如何使用 Azure WebJobs SDK 进行事件驱动的后台处理
@@ -52,7 +52,7 @@ ms.locfileid: "58895201"
 
 在本地运行时，WebJobs SDK 在 local.settings.json 文件中查找 Azure 存储和 Azure 服务总线连接字符串；在 Azure 中运行时，它会在 WebJob 的环境中查找这些字符串。 默认情况下，需要名为 `AzureWebJobsStorage` 的存储连接字符串设置。  
 
-使用版本 2.*x* 的 SDK，可以对这些连接字符串使用自己的名称，或将其存储于其他位置。 可以在代码中使用设置名称[ `JobHostConfiguration` ]，如下所示：
+使用版本 2.*x* 的 SDK，可以对这些连接字符串使用自己的名称，或将其存储于其他位置。 可在代码中使用 [`JobHostConfiguration`] 设置名称，如下所示：
 
 ```cs
 static void Main(string[] args)
@@ -80,7 +80,7 @@ static void Main(string[] args)
 
 | 属性 | 开发设置 |
 | ------------- | ------------- |
-| `Tracing.ConsoleLevel` | `TraceLevel.Verbose` 若要最大化日志输出。 |
+| `Tracing.ConsoleLevel` | `TraceLevel.Verbose`：最大化日志输出。 |
 | `Queues.MaxPollingInterval`  | 使用较小的值可确保立即触发队列方法。  |
 | `Singleton.ListenerLockPeriod` | 使用 15 秒值有助于实现快速迭代开发。 |
 
@@ -672,7 +672,7 @@ Azure Functions 实现 `INameResolver` 以从应用设置中获取值，如以�
 
 如果需要在使用 `Queue`、`Blob` 或 `Table` 等绑定特性之前在函数中执行某项操作，可以使用 `IBinder` 接口。
 
-下述示例使用输入队列消息，并在输出队列中创建具有相同内容的新消息。 输出队列名称由函数正文中的代码设置。
+下面的示例采用一个输入队列消息，并在输出队列中创建具有相同内容的新消息。 输出队列名称由函数正文中的代码设置。
 
 ```cs
 public static void CreateQueueMessage(
@@ -1013,6 +1013,6 @@ config.LoggerFactory = new LoggerFactory()
 [`ExecutionContext`]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions/Extensions/Core/ExecutionContext.cs
 [`TelemetryClient`]: /dotnet/api/microsoft.applicationinsights.telemetryclient
 [`ConfigureServices`]: /dotnet/api/microsoft.extensions.hosting.hostinghostbuilderextensions.configureservices
-[ITelemetryInitializer]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
+[`ITelemetryInitializer`]: /dotnet/api/microsoft.applicationinsights.extensibility.itelemetryinitializer
 [`TelemetryConfiguration`]: /dotnet/api/microsoft.applicationinsights.extensibility.telemetryconfiguration
 [`JobHostConfiguration`]: https://github.com/Azure/azure-webjobs-sdk/blob/v2.x/src/Microsoft.Azure.WebJobs.Host/JobHostConfiguration.cs

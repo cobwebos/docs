@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 01/03/2018
 ms.author: hrasheed
 ms.openlocfilehash: 38f86bd19c85440fbad0e7fd56a3dd9ba836c7b8
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903296"
 ---
 # <a name="use-apache-phoenix-with-linux-based-apache-hbase-clusters-in-hdinsight"></a>将 Apache Phoenix 与 HDInsight 中基于 Linux 的 Apache HBase 群集配合使用
@@ -34,7 +34,7 @@ ms.locfileid: "58903296"
 
 在连接到 HBase 群集时，需要连接到 [Apache ZooKeeper](https://zookeeper.apache.org/) VM 之一。 每个 HDInsight 群集具有三个 ZooKeeper VM。
 
-**若要获取 ZooKeeper 主机名**
+获取 ZooKeeper 主机名
 
 1. 通过浏览到 **https://\<群集名称\>.azurehdinsight.net** 打开 [Apache Ambari](https://ambari.apache.org/)。
 2. 要登录，请输入 HTTP（群集）用户名和密码。

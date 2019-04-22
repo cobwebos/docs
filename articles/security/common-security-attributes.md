@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 2eb480e10ca3b674895d2d22cc44fb52f305f988
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007491"
 ---
 # <a name="common-security-attributes-for-azure-services"></a>常见的 Azure 服务的安全属性
@@ -23,7 +23,7 @@ ms.locfileid: "59007491"
 [!INCLUDE [Security Attributes Header](../../includes/security-attributes-header.md)]
 
 
-## [<a name="azure-backup"></a>Azure 备份](../backup/backup-security-attributes.md)
+## <a name="azure-backupbackupbackup-security-attributesmd"></a>[Azure 备份](../backup/backup-security-attributes.md)
 
 ### <a name="preventative"></a>预防
 
@@ -71,7 +71,7 @@ ms.locfileid: "59007491"
 |---|---|--|
 | 配置管理支持 （版本控制的配置，等等）。| 是|  |
 
-## [<a name="azure-key-vault"></a>Azure 密钥保管库](../key-vault/key-vault-security-attributes.md)
+## <a name="azure-key-vaultkey-vaultkey-vault-security-attributesmd"></a>[Azure Key Vault](../key-vault/key-vault-security-attributes.md)
 
 ### <a name="preventative"></a>预防
 
@@ -120,7 +120,7 @@ ms.locfileid: "59007491"
 | 控制/管理平面访问控制 | 是 | Azure Resource Manager 基于角色的访问控制 (RBAC) |
 | 数据平面访问控制（在每个服务级别） | 是 | 密钥保管库访问策略 |
 
-## [<a name="azure-service-fabric"></a>Azure Service Fabric](../service-fabric/service-fabric-security-attributes.md)
+## <a name="azure-service-fabricservice-fabricservice-fabric-security-attributesmd"></a>[Azure Service Fabric](../service-fabric/service-fabric-security-attributes.md)
 
 ### <a name="preventative"></a>预防
 

@@ -14,10 +14,10 @@ author: jpconnock
 ms.author: jeconnoc
 manager: timlt
 ms.openlocfilehash: 4e018af7df64c9ed8050a3c618cf2645d5509cdd
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918495"
 ---
 # <a name="azure-cloud-services-definition-schema-csdef-file"></a>Azure 云服务定义架构（.csdef 文件）
@@ -59,7 +59,7 @@ ms.locfileid: "58918495"
 
 - [LoadBalancerProbe 架构](schema-csdef-loadbalancerprobe.md)
 - [WebRole 架构](schema-csdef-webrole.md)
-- [WorkerRole 架构](schema-csdef-workerrole.md)
+- [WebRole 架构](schema-csdef-workerrole.md)
 - [NetworkTrafficRules 架构](schema-csdef-networktrafficrules.md)
 
 ##  <a name="ServiceDefinition"></a> ServiceDefinition 元素

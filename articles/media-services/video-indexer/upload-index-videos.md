@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
 ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893446"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
@@ -85,9 +85,9 @@ ms.locfileid: "58893446"
 
 如果原始的或外部的记录包含背景噪音，请使用此参数。 此参数用于配置索引编制过程。 可以指定以下值：
 
-- `Default` – 索引并提取使用音频和视频的见解
-- `AudioOnly` – 索引并提取见解使用音频唯一 （忽略视频）
-- `DefaultWithNoiseReduction` – 编制索引并应用在音频流上的干扰降低算法时从音频和视频中，提取见解
+- `Default` - 使用音频和视频编制见解的索引和提取见解
+- `AudioOnly` - 仅使用音频（忽略视频）编制见解的索引和提取见解
+- `DefaultWithNoiseReduction` - 通过音频和视频编制见解的索引和提取见解，同时对音频流应用降噪算法
 
 价格取决于所选索引编制选项。  
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: e021d8c056028c03ac71d2a27c9128272f374da6
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883575"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Storage Gen1
@@ -33,7 +33,7 @@ ms.locfileid: "58883575"
 ## <a name="prerequisites"></a>必备组件
 要阅读本教程，必须具备以下项：
 
-* **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
+* **一个 Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="create-a-data-lake-storage-gen1-account"></a>创建 Data Lake Storage Gen1 帐户
 
@@ -59,7 +59,7 @@ ms.locfileid: "58883575"
 
         有关详细信息，请参阅 [Azure Data Lake Storage Gen1 中的数据加密](./data-lake-store-encryption.md)。
 
-4. 单击“创建”。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Storage Gen1 帐户的进度。 预配 Data Lake Storage Gen1 帐户后，会显示帐户边栏选项卡。
+4. 单击**创建**。 如果选择将帐户固定到仪表板，将返回仪表板，在其中可以查看预配 Data Lake Storage Gen1 帐户的进度。 预配 Data Lake Storage Gen1 帐户后，会显示帐户边栏选项卡。
 
 ## <a name="assign-permissions-to-azure-key-vault"></a>分配对 Azure Key Vault 的权限
 如果使用 Azure Key Vault 中的密钥为 Data Lake Storage Gen1 帐户配置加密，必须配置 Data Lake Storage Gen1 帐户与 Azure Key Vault 帐户之间的访问权限。 为此，请执行以下步骤。
@@ -123,8 +123,8 @@ ms.locfileid: "58883575"
 ![删除 Data Lake Storage Gen1 帐户](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "删除 Data Lake Storage Gen1 帐户")
 
 ## <a name="next-steps"></a>后续步骤
-* [使用 Azure 数据湖存储 Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
-* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
-* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)
 

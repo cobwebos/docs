@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: 20ea2eb632a6d685351178691cc3d0f58a567902
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58891406"
 ---
 # <a name="authoring-and-publishing-regions-and-the-associated-keys"></a>创作和发布区域及关联的密钥
@@ -125,7 +125,7 @@ LUIS 当前具有 2 个终结点： 一个用于创作，一个用于查询预�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [预生成的实体引用](./luis-reference-prebuilt-entities.md)
+> [预生成实体参考](./luis-reference-prebuilt-entities.md)
 
  [www.luis.ai]: https://www.luis.ai
  [au.luis.ai]: https://au.luis.ai

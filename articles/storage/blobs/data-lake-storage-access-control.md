@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.openlocfilehash: 4ba8977180e33256bfdc6652811495a02a9ef19c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58802943"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 中的访问控制
@@ -60,7 +60,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 文件系统对象权限为“读取”、“写入”和“执行”，可对下表中所示的文件和目录使用这些权限：
 
-|            |    文件     |   目录 |
+|            |    文件     |   Directory |
 |------------|-------------|----------|
 | **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出目录内容 |
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在目录中创建子项 |
@@ -85,7 +85,7 @@ SAS 令牌本身就包含允许的权限。 它包含的权限有效地应用到
 
 下表列出了一些常见方案，可帮助你了解对 Data Lake Storage Gen2 帐户执行特定操作所需的权限。
 
-|    操作             |    /    | Oregon/ | Portland/ | Data.txt     |
+|    Operation             |    /    | Oregon/ | Portland/ | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
 | Read Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
 | Append to Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
@@ -245,7 +245,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-否。 只要开启了分层命名空间 (HNS) 功能，Data Lake Storage Gen2 帐户就能通过 ACL 进行访问控制。
+不。 只要开启了分层命名空间 (HNS) 功能，Data Lake Storage Gen2 帐户就能通过 ACL 进行访问控制。
 
 即使关闭了 HNS 功能，Azure RBAC 授权规则仍适用。
 
@@ -281,16 +281,16 @@ def set_default_acls_for_new_child(parent, child):
 
 如果条目表示一个用户且该用户不再位于 Azure AD 中，则显示 GUID。 当用户离职，或者其帐户已在 Azure AD 中删除时，往往会发生这种情况。 此外，服务主体和安全组没有用于标识它们的用户主体名称 (UPN)，因此用它们的 OID 属性（即一个 GUID）来表示它们。
 
-### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>如何设置 Acl 正确为服务主体？
+### <a name="how-do-i-set-acls-correctly-for-a-service-principal"></a>如何为服务主体正确设置 ACL？
 
-对于服务主体定义 Acl，时，一定要使用的对象 ID (OID)*服务主体*创建应用注册。 务必要注意，已注册的应用具有单独的服务主体中特定于 Azure AD 租户。 已注册的应用具有 OID，是在 Azure 门户中可见，但*服务主体*具有另一个 （不同） 的 OID。
+为服务主体定义 ACL 时，必须使用所创建应用注册的服务主体的对象 ID (OID)。 请务必注意，注册的应用在特定的 Azure AD 租户中具有独立的服务主体。 注册的应用会在 Azure 门户中显示一个 OID，但服务主体具有另一个（不同的）OID。
 
-若要获取其 OID 对应的应用注册的服务主体，可以使用`az ad sp show`命令。 指定应用程序 ID 作为参数。 下面是一个示例对应于应用程序 Id 的应用注册的服务主体获取 OID = 18218b12-1895年-43e9-ad80-6e8fc1ea88ce。 在 Azure CLI 中运行以下命令：
+若要获取其 OID 对应的应用注册的服务主体，可以使用`az ad sp show`命令。 指定应用程序 ID 作为参数。 以下示例获取服务主体的 OID，该 OID 对应于应用 ID 为 18218b12-1895-43e9-ad80-6e8fc1ea88ce 的应用注册。 在 Azure CLI 中运行以下命令：
 
 `az ad sp show --id 18218b12-1895-43e9-ad80-6e8fc1ea88ce --query objectId
 <<OID will be displayed>>`
 
-如果你拥有正确的 OID 的服务主体，请转到存储资源管理器**管理访问权限**页，添加 OID 并分配适当的 OID 的权限。 请确保选择**保存**。
+获取服务主体的正确 OID 后，转到存储资源管理器的“管理访问权限”页，以添加该 OID 并为其分配适当的的权限。 请务必选择“保存”。
 
 ### <a name="does-data-lake-storage-gen2-support-inheritance-of-acls"></a>Data Lake Storage Gen2 是否支持 ACL 继承？
 

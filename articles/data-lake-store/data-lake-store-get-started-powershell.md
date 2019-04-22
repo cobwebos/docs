@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: twooley
 ms.openlocfilehash: 6635b572d11339307083b8aa2aaaba69dc731101
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885853"
 ---
 # <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-powershell"></a>通过 Azure PowerShell 开始使用 Azure Data Lake Storage Gen1
@@ -122,7 +122,7 @@ ms.locfileid: "58885853"
 
 ## <a name="next-steps"></a>后续步骤
 * [将 PowerShell 与 Azure Data Lake Store Gen1 配合使用的性能优化指南](data-lake-store-performance-tuning-powershell.md)
-* [使用 Azure 数据湖存储 Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
-* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
-* [数据湖存储 Gen1 与使用 Azure Data Lake Analytics](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-* [Azure HDInsight 中使用数据湖存储 Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [使用 Azure Data Lake Storage Gen1 满足大数据要求](data-lake-store-data-scenarios.md) 
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
+* [配合使用 Azure Data Lake Analytics 和 Data Lake Storage Gen1](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
+* [将 Azure HDInsight 与 Data Lake Storage Gen1 配合使用](data-lake-store-hdinsight-hadoop-use-portal.md)

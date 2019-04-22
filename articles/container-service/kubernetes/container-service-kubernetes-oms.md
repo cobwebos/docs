@@ -10,10 +10,10 @@ ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877391"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>（已弃用）使用 Log Analytics 监视 Azure 容器服务群集
@@ -123,7 +123,7 @@ $ kubectl create -f oms-daemonset.yaml
   KEY:    88 bytes
   ```
 
-  - 创建 omsagent 守护程序集通过运行 ```kubectl create -f omsagent-ds-secrets.yaml```
+  - 通过运行 ```kubectl create -f omsagent-ds-secrets.yaml``` 创建 omsagent daemon-set
 
 ### <a name="conclusion"></a>结束语
 就这么简单！ 几分钟后，应该可以看到数据流向 Log Analytics 仪表板。

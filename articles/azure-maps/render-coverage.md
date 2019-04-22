@@ -10,7 +10,7 @@ services: azure-maps
 manager: ''
 ms.openlocfilehash: 536a74046f46c7f83907833846e9ec99e8d8a289
 ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/22/2019
 ms.locfileid: "58370272"
@@ -198,7 +198,7 @@ Azure Maps 使用光栅磁贴和矢量磁贴来创建地图。 采用其最低�
 | 新加坡                 | ✓ | ✓|
 | 斯里兰卡                 |   | Ø |
 | 阿拉伯叙利亚共和国      |   | Ø |
-| 台湾                    | ✓ | ✓ |
+| 中国台湾                    | ✓ | ✓ |
 | 塔吉克斯坦                |   | Ø |
 | 泰国                  | ✓ | ✓ |
 | 东帝汶               |   | Ø |

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: juliako
 ms.openlocfilehash: c9254c8dd629230a549dd95aba9afbd932746007
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58886448"
 ---
 # <a name="dynamic-packaging"></a>动态打包
@@ -92,7 +92,7 @@ Media Encoder Standard 格式和编解码器的列表，请参阅[格式和编�
 
 ## <a name="audio-codecs-supported-by-dynamic-packaging"></a>动态打包支持的音频编解码器
 
-动态打包支持 MP4 文件，其中包含使用编码的音频[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) (AAC-LC、 HE-AAC v1、 HE-AAC v2)， [Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（高级 ac-3 或 e-ac3） Dolby Atmos 或[DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)（DTS 速成版，DTS LBR、 DTS HD、 DTS HD 无损）。 标准像 MPEG DASH 协议，使用常见流格式 (CSF) 或常见媒体应用程序格式 (CMAF) 零碎的 MP4，以及通过 HTTP Live Streaming (HLS) 与 CMAF 支持 Dolby Atmos 内容的流式处理。
+动态打包支持 MP4 文件，其中包含使用 [AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding)（AAC-LC、HE-AAC v1、HE-AAC v2）、[Dolby Digital Plus](https://en.wikipedia.org/wiki/Dolby_Digital_Plus)（增强版 AC-3 或 E-AC3）、Dolby Atmos 或 [DTS](https://en.wikipedia.org/wiki/DTS_%28sound_system%29)（DTS Express、DTS LBR、DTS HD、DTS HD 无损）编码的音频。 流式传输 Dolby Atmos 内容适用于特定的标准（例如 MPEG-DASH 协议），采用通用流式传输格式 (CSF) 或通用媒体应用程序格式 (CMAF) 分段 MP4，在使用 CMAF 的情况通过 HTTP 实时传送视频流 (HLS) 来进行。
 
 > [!NOTE]
 > 动态打包不支持包含 [Dolby Digital](https://en.wikipedia.org/wiki/Dolby_Digital) (AC3) 音频（它是旧编解码器）的文件。
@@ -200,5 +200,5 @@ QualityLevels(128041)/Manifest(aac_eng_2_128041_2_1,format=m3u8-aapl)
 
 ## <a name="next-steps"></a>后续步骤
 
-[上传、 编码、 流视频](stream-files-tutorial-with-api.md)
+[上传、编码、流式处理视频](stream-files-tutorial-with-api.md)
 

@@ -6,10 +6,10 @@ ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
 ms.openlocfilehash: be94cf0367f93f14249239fce5e09c8635a01136
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58892477"
 ---
 # <a name="set-up-micro-focus-cics-bankdemo-for-micro-focus-enterprise-developer-40-on-azure"></a>为 Azure 上微焦点企业开发人员 4.0 设置 Micro 焦点 CICS BankDemo
@@ -78,7 +78,7 @@ CICs 代表客户信息控制系统，事务平台由许多联机大型机应用
 
     - **NetTcpPortSharing**
     - **Net.Pipe Listener Adapter**
-    - **Net.tcp Listener Adapter**
+    - **Net.tcp 侦听器适配器**
 
 10. 若要配置 IIS 和 WAS 支持，从菜单中找到**Micro 焦点企业开发人员命令提示 （64 位）** 运行**管理员**。
 
@@ -272,4 +272,4 @@ CICs 代表客户信息控制系统，事务平台由许多联机大型机应用
 - [大型机迁移-门户](https://blogs.msdn.microsoft.com/azurecat/2018/11/16/mainframe-migration-to-azure-portal/)
 - [虚拟机](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 - [故障排除](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/)
-- [有关将大型机迁移到 Azure 的介绍](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)
+- [揭秘大型机到 Azure 的迁移](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/en-us/)

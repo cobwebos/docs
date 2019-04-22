@@ -15,10 +15,10 @@ ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
 ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878139"
 ---
 # <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>管理的 Azure Monitor 中的 Log Analytics 使用情况和成本
@@ -92,7 +92,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
  
 1. 在工作区的左窗格中，选择“使用情况和预估成本”。
 2. 在“使用情况和预估成本”页面顶部，单击“数据量管理”。
-5. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。<br><br> ![更改工作区数据保留期设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
+5. 在窗格中，移动滑块以增加或减少天数，然后单击“确定”。  如果位于“免费”层，则不能修改数据保留期，需要升级到付费层才能控制这一项设置。<br><br> ![更改工作区数据保留设置](media/manage-cost-storage/manage-cost-change-retention-01.png)
 
 ## <a name="legacy-pricing-tiers"></a>旧版定价层
 
@@ -340,7 +340,7 @@ Azure 警报支持使用搜索查询的[日志警报](alerts-unified-log.md)。
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - **搜索查询**到 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
+   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize DataGB = sum((Quantity / 1024)) by Type | where DataGB > 100`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 1440 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：
@@ -354,7 +354,7 @@ Azure 警报支持使用搜索查询的[日志警报](alerts-unified-log.md)。
 - **定义警报条件**将 Log Analytics 工作区指定为资源目标。
 - **警报条件**指定下列项：
    - **信号名称**选择“自定义日志搜索”。
-   - **搜索查询**到 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
+   - 将“搜索查询”设置为 `union withsource = $table Usage | where QuantityUnit == "MBytes" and iff(isnotnull(toint(IsBillable)), IsBillable == true, IsBillable == "true") == true | extend Type = $table | summarize EstimatedGB = sum(((Quantity * 8) / 1024)) by Type | where EstimatedGB > 100`
    - **警报逻辑** **基于** *结果数*，**条件** *大于* **阈值** *0*
    - 将“时间段”设置为 180 分钟，“警报频率”设置为每 60 分钟，因为使用情况数据一小时才更新一次。
 - **定义警报详细信息**指定以下项：

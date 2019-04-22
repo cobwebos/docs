@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
 ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58906117"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
@@ -57,7 +57,7 @@ Azure 也会保留供内部使用的每个子网中的 5 个 IP 地址： 第一
 
 - 从流量**AzureLoadBalancer**必须允许标记。
 
-##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>将一些源 Ip 白名单应用程序网关访问
+##### <a name="whitelist-application-gateway-access-to-a-few-source-ips"></a>将应用程序网关列入允许列表以便能够访问一些源 IP
 
 对于此方案，应用程序网关子网使用 Nsg。 按此优先顺序的子网上放置以下限制：
 
@@ -67,7 +67,7 @@ Azure 也会保留供内部使用的每个子网中的 5 个 IP 地址： 第一
 4. 通过使用全部拒绝规则来阻止其他所有传入流量。
 5. 允许所有目的地的 Internet 出站流量。
 
-#### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>用户定义的路由应用程序网关子网支持
+#### <a name="user-defined-routes-supported-on-the-application-gateway-subnet"></a>应用程序网关子网支持用户定义的路由
 
 对于 v1 SKU 中，用户定义的路由 (Udr) 支持应用程序网关子网，只要它们不会改变的端到端请求/响应通信。 例如，可以设置在应用程序网关子网 UDR 来指向数据包检查防火墙设备。 但是，您必须确保将数据包可以完成检查后进入其预期的目标。 如果不这样做可能会导致不正确的运行状况探测或流量路由行为。 这包括了解到的路由或通过虚拟网络中的 Azure ExpressRoute 或 VPN 网关传播的默认 0.0.0.0/0 路由。
 
@@ -102,9 +102,9 @@ V2 sku，不支持应用程序网关子网 Udr。 有关详细信息，请参阅
 
 - 如果您正在托管单个站点应用程序网关后的，选择基本。 了解[如何创建基本侦听器的应用程序网关](https://docs.microsoft.com/azure/application-gateway/quick-create-portal)。
 
-- 如果同一应用程序网关实例上配置多个 web 应用程序或同一父域的多个子域，请选择多站点侦听器。 多站点侦听器，你还必须输入主机名。 这是因为应用程序网关依赖于 HTTP 1.1 主机标头来托管相同的公共 IP 地址和端口上的多个网站。
+- 如果同一应用程序网关实例上配置多个 web 应用程序或同一父域的多个子域，请选择多站点侦听器。 多站点侦听器，你还必须输入主机名。 这是因为，应用程序网关需要使用 HTTP 1.1 主机标头才能在相同的公共 IP 地址和端口上托管多个网站。
 
-#### <a name="order-of-processing-listeners"></a>处理侦听器的顺序
+#### <a name="order-of-processing-listeners"></a>侦听器的处理顺序
 
 V1 sku 中，按所列的顺序处理侦听器。 如果基本侦听器与匹配的传入请求，侦听器将先处理该请求。 因此，将配置多站点侦听器之前基本侦听器以确保流量将路由到正确的后端。
 
@@ -130,11 +130,11 @@ V2 sku，基本侦听器之前处理多站点侦听器。
 
 #### <a name="supported-certificates"></a>支持的证书
 
-请参阅[支持为 SSL 终端的证书](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
+请参阅[支持用于 SSL 终止的证书](https://docs.microsoft.com/azure/application-gateway/ssl-overview#certificates-supported-for-ssl-termination)。
 
 ### <a name="additional-protocol-support"></a>其他协议支持
 
-#### <a name="http2-support"></a>HTTP2 的支持
+#### <a name="http2-support"></a>HTTP2 支持
 
 HTTP/2 协议支持可供连接到应用程序网关侦听器的客户端。 通过 HTTP/1.1 到后端服务器池的通信。 默认情况下，HTTP/2 支持处于禁用状态。 以下 Azure PowerShell 代码片段演示如何启用此功能：
 
@@ -177,7 +177,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 - 如果你想要关联的侦听器上的所有请求都转发，请选择 basic (例如，*博客<i></i>.contoso.com/\*)* 到单个后端池。
 - 选择基于路径的-如果你想要将请求路由从特定的 URL 路径到特定的后端池。 路径模式仅应用到 URL 的路径，而不应用到该 URL 的查询参数。
 
-#### <a name="order-of-processing-rules"></a>处理规则的顺序
+#### <a name="order-of-processing-rules"></a>规则的处理顺序
 
 V1 sku，模式匹配的传入请求的处理路径基于路径的规则的 URL 路径映射中列出的顺序。 如果某个请求与匹配路径映射中的两个或多个路径中的模式，列出的路径首先将匹配。 并将请求转发到后端与该路径相关联。
 
@@ -267,7 +267,7 @@ V1 sku，模式匹配的传入请求的处理路径基于路径的规则的 URL 
 
 ### <a name="port"></a>端口
 
-此设置指定的后端服务器在其中侦听来自应用程序网关的流量的端口。 您可以配置 1 到 65535 范围内的端口。
+此设置指定的后端服务器在其中侦听来自应用程序网关的流量的端口。 可以配置 1 到 65535 的端口号。
 
 ### <a name="request-timeout"></a>请求超时
 
@@ -281,19 +281,19 @@ V1 sku，模式匹配的传入请求的处理路径基于路径的规则的 URL 
 
   | 原始请求  | 重写后端路径 | 请求转发到后端 |
   | ----------------- | --------------------- | ---------------------------- |
-  | /home/            | /override/            | 重写/home / /              |
-  | / home/secondhome / | /override/            | 重写/home/secondhome /   |
+  | /home/            | /override/            | /override/home/              |
+  | /home/secondhome/ | /override/            | /override/home/secondhome/   |
 
 - 当 HTTP 设置附加到基于路径的请求路由规则：
 
   | 原始请求           | 路径规则       | 重写后端路径 | 请求转发到后端 |
   | -------------------------- | --------------- | --------------------- | ---------------------------- |
-  | /pathrule/home /            | /pathrule*      | /override/            | 重写/home / /              |
-  | /pathrule/home/secondhome/ | /pathrule*      | /override/            | 重写/home/secondhome /   |
-  | /home/                     | /pathrule*      | /override/            | 重写/home / /              |
-  | / home/secondhome /          | /pathrule*      | /override/            | 重写/home/secondhome /   |
-  | /pathrule/home /            | pathrule/主页 * | /override/            | /override/                   |
-  | /pathrule/home/secondhome/ | pathrule/主页 * | /override/            | 重写/secondhome / /        |
+  | /pathrule/home/            | /pathrule*      | /override/            | /override/home/              |
+  | /pathrule/home/secondhome/ | /pathrule*      | /override/            | /override/home/secondhome/   |
+  | /home/                     | /pathrule*      | /override/            | /override/home/              |
+  | /home/secondhome/          | /pathrule*      | /override/            | /override/home/secondhome/   |
+  | /pathrule/home/            | /pathrule/home* | /override/            | /override/                   |
+  | /pathrule/home/secondhome/ | /pathrule/home* | /override/            | /override/secondhome/        |
 
 ### <a name="use-for-app-service"></a>对应用服务的使用
 
@@ -301,7 +301,7 @@ V1 sku，模式匹配的传入请求的处理路径基于路径的规则的 URL 
 
 ### <a name="use-custom-probe"></a>使用自定义探测
 
-此设置将相关联[自定义探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe)与 HTTP 设置。 可以将只有一个自定义探测的 HTTP 设置与相关联。 如果不显式相关联的自定义探测[默认探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings)用于监视后端的运行状况。 我们建议您创建更好地控制应用后端运行状况监视的自定义探测。
+此设置将相关联[自定义探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#custom-health-probe)与 HTTP 设置。 只能将一个自定义探测关联到某个 HTTP 设置。 如果不显式相关联的自定义探测[默认探测](https://docs.microsoft.com/azure/application-gateway/application-gateway-probe-overview#default-health-probe-settings)用于监视后端的运行状况。 我们建议您创建更好地控制应用后端运行状况监视的自定义探测。
 
 > [!NOTE]
 > 自定义探测不监视后端池的运行状况，除非相应的 HTTP 设置是显式与侦听器相关联。
@@ -321,7 +321,7 @@ V1 sku，模式匹配的传入请求的处理路径基于路径的规则的 URL 
 > [!NOTE]
 > 此设置不需要为 powerapps，应用服务环境是专门的部署。
 
-### <a name="host-name-override"></a>主机名称替代
+### <a name="host-name-override"></a>主机名替代
 
 此功能取代了*主机*上指定的主机名的应用程序网关传入的请求标头中。
 

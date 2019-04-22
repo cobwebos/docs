@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: a13d3b24cd7845de144183d9f2ea825e0e24219f
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883711"
 ---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure 流分析入门：实时欺诈检测
@@ -75,7 +75,7 @@ ms.locfileid: "58883711"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png" alt="Name event hub in Azure portal" width="400px"/>
     
  
-7. 单击“创建”。
+7. 单击**创建**。
 
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>授予对事件中心的访问权限，并获取连接字符串
 
@@ -92,7 +92,7 @@ ms.locfileid: "58883711"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png" alt="Create shared access policy for Stream Analytics" width="300px"/>
  
-4.  单击“创建”。
+4.  单击**创建**。
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -171,7 +171,7 @@ ms.locfileid: "58883711"
 
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png" alt="Create Stream Analytics job in portal" width="300px"/>
 
-3. 单击“创建”。
+3. 单击**创建**。
 
     创建作业后，门户就会显示作业详细信息。 尽管尚无任何应用正在运行，但必须先配置该作业，然后才能启动。
 
@@ -184,7 +184,7 @@ ms.locfileid: "58883711"
  
 3. 单击“添加流输入”并选择“事件中心”。 然后使用以下信息填充“新建输入”页：
 
-   |**设置**  |**建议的值**  |**描述**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输入别名  |  CallStream   |  输入一个名称，用于标识作业的输入。   |
    |订阅   |  用户的订阅\<\> |  选择包含创建的事件中心的 Azure 订阅。   |
@@ -196,7 +196,7 @@ ms.locfileid: "58883711"
     <img src="./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png" alt="Create Stream Analytics input in portal" width="300px"/>
 
 
-4. 单击“创建”。
+4. 单击**创建**。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>创建查询以转换实时数据
 
@@ -354,7 +354,7 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 
 4. 在“输出”窗格中，单击“添加”，然后选择“BIob 存储”。 使用以下信息填写“新建输出”页：
 
-   |**设置**  |**建议的值**  |**描述**  |
+   |**设置**  |**建议的值**  |**说明**  |
    |---------|---------|---------|
    |输出别名  |  CallStream-FraudulentCalls   |  输入一个名称，用于标识作业的输出。   |
    |订阅   |  用户的订阅\<\> |  选择包含已创建的存储帐户的 Azure 订阅。 存储帐户可以在同一订阅中，也可以在另一订阅中。 此示例假定已在同一订阅中创建存储帐户。 |
@@ -416,6 +416,6 @@ TelcoGenerator 应用正在将呼叫记录发送到事件中心，流分析作�
 有关常规流分析的详细信息，请查看以下文章：
 
 * [Azure 流分析简介](stream-analytics-introduction.md)
-* [缩放 Azure Stream Analytics 作业](stream-analytics-scale-jobs.md)
-* [Azure Stream Analytics 查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
-* [Azure Stream Analytics 管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [缩放 Azure 流分析作业](stream-analytics-scale-jobs.md)
+* [Azure 流分析查询语言参考](https://msdn.microsoft.com/library/azure/dn834998.aspx)
+* [Azure 流分析管理 REST API 参考](https://msdn.microsoft.com/library/azure/dn835031.aspx)

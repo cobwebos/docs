@@ -7,10 +7,10 @@ ms.service: dns
 ms.date: 4/3/2019
 ms.author: victorh
 ms.openlocfilehash: 25445415141372e1f231549c5b8f8575a89363c6
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905403"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>使用 Azure CLI 导入和导出 DNS 区域文件
@@ -67,9 +67,9 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 值：
 
-* `<resource group>` 是在 Azure DNS 中区域的资源组的名称。
-* `<zone name>` 是该区域的名称。
-* `<zone file name>` 是要导入区域文件的路径/名称。
+* `<resource group>` 是 Azure DNS 中区域的资源组名称。
+* `<zone name>` 是区域的名称。
+* `<zone file name>` 是要导入的区域文件的路径/名称。
 
 如果资源组中不存在具有此名称的区域，会为你创建一个。 如果区域已存在，则导入的记录集会与现有的记录集合并。 
 
@@ -161,8 +161,8 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 值：
 
-* `<resource group>` 是在 Azure DNS 中区域的资源组的名称。
-* `<zone name>` 是该区域的名称。
+* `<resource group>` 是 Azure DNS 中区域的资源组名称。
+* `<zone name>` 是区域的名称。
 * `<zone file name>` 是要导出的区域文件的路径/名称。
 
 和区域导入一样，必须先登录，选择订阅，然后配置 Azure CLI 以使用 Resource Manager 模式。

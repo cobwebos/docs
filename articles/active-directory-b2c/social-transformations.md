@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 53608654392d7efb73b6dadac14f01a94bb035a7
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893514"
 ---
 # <a name="social-accounts-claims-transformations"></a>社交帐户声明转换
@@ -81,7 +81,7 @@ ms.locfileid: "58893514"
 以下示例将新的社交标识与现有帐户相链接。 链接新的社交标识：
 1. 在 **AAD-UserReadUsingAlternativeSecurityId** 和 **AAD-UserReadUsingObjectId** 技术配置文件中，输出用户的 **alternativeSecurityIds** 声明。
 1. 要求用户使用某个不与此用户关联的标识提供者登录。
-1. 使用**CreateAlternativeSecurityId**声明转换，创建一个新**alternativeSecurityId**声明一个名为的类型 `AlternativeSecurityId2`
+1. 使用 **CreateAlternativeSecurityId** 声明转换创建名为 `AlternativeSecurityId2` 的新 **alternativeSecurityId** 声明类型
 1. 调用 **AddItemToAlternativeSecurityIdCollection** 声明转换，将 **AlternativeSecurityId2** 声明添加到现有的 **AlternativeSecurityIds** 声明。
 1. 将 **alternativeSecurityIds** 声明保存到用户帐户
 

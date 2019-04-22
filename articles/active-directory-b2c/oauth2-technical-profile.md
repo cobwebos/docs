@@ -11,10 +11,10 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: fde556c60f823f4bd287ca5672503158c7292f51
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918920"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OAuth2 技术配置文件
@@ -112,7 +112,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 
 示例：
 
-- [添加 Google + 作为 OAuth2 标识提供程序使用自定义策略](active-directory-b2c-custom-setup-goog-idp.md)
+- [使用自定义策略添加 Google+ 作为 OAuth2 标识提供者](active-directory-b2c-custom-setup-goog-idp.md)
 
 
 

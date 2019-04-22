@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/17/2018
 ms.author: barclayn
 ms.openlocfilehash: f872c61ad0597d2307cd244668fdfc258f7a45cb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895677"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure 标识管理和访问控制安全最佳实践
@@ -183,11 +183,11 @@ ms.locfileid: "58895677"
 
 [对于全局管理员帐户，请确保使用单独的用户帐户和邮件转发功能](../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
 
-[请确保管理帐户的密码最近已更改](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[确保最近更改过管理帐户的密码](../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
 [启用密码哈希同步](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
 
-[为所有特权角色中的用户，以及公开的用户需要多重身份验证](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[要求对所有特权角色用户和公开的用户进行多重身份验证](../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
 
 [获取 Office 365 安全功能分数（如果使用 Office 365）](../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
 
@@ -197,7 +197,7 @@ ms.locfileid: "58895677"
 
 [确定事件/紧急情况响应计划所有者](../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
 
-[安全的本地特权管理帐户](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[保护本地特权管理帐户](../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
 
 如果不保护特权访问，你可能会拥有过多高特权角色用户，并且更易受到攻击。 恶意操作者（包括网络攻击者）通常会以管理员帐户和特权访问的其他元素为目标，通过凭据窃取获得敏感数据和系统的访问权限。
 

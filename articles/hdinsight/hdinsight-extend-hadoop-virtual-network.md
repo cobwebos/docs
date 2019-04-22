@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
 ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883558"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
@@ -26,7 +26,7 @@ ms.locfileid: "58883558"
 * 直接访问无法通过 Internet 公开访问的 [Apache Hadoop](https://hadoop.apache.org/) 服务。 例如，[Apache Kafka](https://kafka.apache.org/) API 或 [Apache HBase](https://hbase.apache.org/) Java API。
 
 > [!IMPORTANT]  
-> 后 2019 年 2 月 28 日，在 VNET 中创建的新群集的网络资源 （例如 Nic、 LBs，等等），将配置相同的 HDInsight 群集资源组中。 以前，这些资源已预配的 VNET 资源组中。 不没有为当前正在运行群集和没有 VNET 的情况下创建这些群集的任何更改。
+> 2019 年 2 月 28 日以后，在 VNET 中创建的新群集的网络资源（例如 NIC、LB 等）会在同一 HDInsight 群集资源组中进行预配。 以前，这些资源在 VNET 资源组中预配。 当前运行的群集以及那些在没有 VNET 的情况下创建的群集没有任何更改。
 
 ## <a name="prerequisites-for-code-samples-and-examples"></a>有关代码示例和示例的先决条件
 
@@ -111,10 +111,10 @@ ms.locfileid: "58883558"
 
 4. 创建一个 HDInsight 群集，并在配置过程中选择 Azure 虚拟网络。 使用以下文档中的步骤了解群集创建过程：
 
-    * [创建使用 Azure 门户的 HDInsight](hdinsight-hadoop-create-linux-clusters-portal.md)
-    * [创建 HDInsight 使用 Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
-    * [创建 HDInsight 使用 Azure 经典 CLI](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
-    * [创建 HDInsight 使用 Azure 资源管理器模板](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+    * [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md)（使用 Azure 门户创建 HDInsight）
+    * [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)（使用 Azure PowerShell 创建 HDInsight）
+    * [使用 Azure 经典 CLI 创建 HDInsight](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [使用 Azure 资源管理器模板创建 HDInsight](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
    > [!IMPORTANT]  
    > 向虚拟网络添加 HDInsight 是一项可选的配置步骤。 请确保在配置群集时选择虚拟网络。
@@ -242,11 +242,11 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 * [网络安全组](../virtual-network/security-overview.md)
 
-* [用户定义路由](../virtual-network/virtual-networks-udr-overview.md)
+* [用户定义的路由](../virtual-network/virtual-networks-udr-overview.md)
 
 #### <a name="forced-tunneling-to-on-premise"></a>到本地的强制隧道
 
-强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight does__不__支持强制隧道连接到本地网络。 如果使用 Azure 防火墙或网络虚拟设备在 Azure 中托管时，可以使用 Udr 出于监视目的将流量路由到它，并允许所有传出流量。
+强制隧道是用户定义的路由配置，其中来自子网的所有流量都强制发往特定网络或位置，例如你的本地网络。 HDInsight does__不__支持强制隧道连接到本地网络。 如果使用托管在 Azure 中的 Azure 防火墙或网络虚拟设备，则可以使用 UDR 将流量路由到它以便进行监视并允许所有传出流量。
 
 ## <a id="hdinsight-ip"></a>需要的 IP 地址
 
@@ -314,7 +314,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     
 ## <a id="hdinsight-ports"></a>所需的端口
 
-如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入白名单。
+如果计划使用**防火墙**并在特定端口上从外部访问群集，则需要允许你的方案所需的那些端口上的流量。 默认情况下，只要允许上一部分中介绍的 Azure 管理流量在端口 443 上到达群集，则不需要特地将端口列入允许列表。
 
 对于特定服务的端口列表，请参阅 [HDInsight 上的 Apache Hadoop 服务所用的端口](hdinsight-hadoop-port-settings-for-services.md)文档。
 
@@ -328,10 +328,10 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 以下资源管理模板创建可限制入站流量的虚拟网络，但允许来自 HDInsight 所需的 IP 地址的流量。 此模板还在虚拟网络中创建 HDInsight 群集。
 
-* [部署受保护的 Azure 虚拟网络和 HDInsight Hadoop 群集](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
+* [部署安全的 Azure 虚拟网络和 HDInsight Hadoop 群集](https://azure.microsoft.com/resources/templates/101-hdinsight-secure-vnet/)
 
 > [!IMPORTANT]  
-> 更改本示例中使用的 IP 地址以匹配正在使用的 Azure 区域。 可以在[使用网络安全组和用户定义的路由的 HDInsight](#hdinsight-ip) 一节找到此信息。
+> 更改此示例中使用的 IP 地址，使之与要使用的 Azure 区域匹配。 可以在[使用网络安全组和用户定义的路由的 HDInsight](#hdinsight-ip) 一节找到此信息。
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
@@ -653,7 +653,7 @@ $vnet | Set-AzVirtualNetwork
 
     不是针对虚拟网络 DNS 后缀（例如，microsoft.com）的任何请求由 Azure 递归解析程序处理。
 
-4. 若要使用配置，请重新启动 Bind。 例如，在两个 DNS 服务器上运行 `sudo service bind9 restart`。
+4. 若要使用此配置，请重启 Bind。 例如，在两个 DNS 服务器上运行 `sudo service bind9 restart`。
 
 完成这些步骤后，就可以使用完全限定的域名 (FQDN) 连接到虚拟网络中的资源了。 现在可以将 HDInsight 安装到虚拟网络。
 

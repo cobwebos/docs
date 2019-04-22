@@ -13,10 +13,10 @@ ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
 ms.openlocfilehash: da93c60b52edf509900adf89fb688a0596d9763b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877799"
 ---
 # <a name="create-your-first-azure-function-with-java-and-intellij"></a>使用 Java 和 IntelliJ 中创建第一个 Azure 函数
@@ -68,7 +68,7 @@ Maven 在新文件夹中创建项目文件，文件名称与 _ArtifactId_ 值相
 1. 打开“Maven 项目”工具栏。
 1. 展开“生命周期”然后打开“包”。 该解决方案是在新创建的目标目录中生成和打包的。
 1. 展开“插件” > “azure-functions”，并打开“azure-functions:run”以启动 Azure Functions 本地运行时。  
-  ![Azure Functions 的 maven 工具栏](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
+  ![Azure Functions 的 Maven 工具栏](media/functions-create-first-java-intellij/functions-intellij-java-maven-toolbar.png)  
 
 1. 完成函数测试后关闭运行对话框。 一次只能有一个函数主机处于活动状态并在本地运行。
 

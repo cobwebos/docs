@@ -11,10 +11,10 @@ ms.date: 09/25/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 07865b2120aa91381d3711688e1a5c8e3187fab3
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793368"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>使用 HTTP 基本身份验证保护 RESTful 服务
@@ -27,11 +27,11 @@ ms.locfileid: "58793368"
 
 有关详细信息，请参阅 [ASP.NET Web API 中的基本身份验证](https://docs.microsoft.com/aspnet/web-api/overview/security/basic-authentication)。
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 
 完成[在 Azure AD B2C 用户旅程中集成 REST API 声明交换](active-directory-b2c-custom-rest-api-netfw.md)一文中所述的步骤。
 
-## <a name="step-1-add-authentication-support"></a>步骤 1:添加身份验证支持
+## <a name="step-1-add-authentication-support"></a>步骤 1：添加身份验证支持
 
 ### <a name="step-11-add-application-settings-to-your-projects-webconfig-file"></a>步骤 1.1：将应用程序设置添加到项目的 web.config 文件
 
@@ -193,7 +193,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 ### <a name="step-14-add-an-owin-startup-class"></a>步骤 1.4：添加 OWIN 启动类
 
 将名为 `Startup.cs` 的 OWIN 启动类添加到 API。 为此，请执行以下操作：
-1. 右键单击项目，选择“添加” > “新建项”，然后搜索“OWIN”。
+1. 右键单击项目，选择“添加” > “新建项”，并搜索“OWIN”。
 
    ![添加 OWIN 启动类](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-OWIN-startup.png)
 
@@ -222,7 +222,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 ![将 Authorize 标记添加到控制器](media/aadb2c-ief-rest-api-netfw-secure-basic/rest-api-netfw-secure-basic-authorize.png)
 
-## <a name="step-2-publish-to-azure"></a>步骤 2:发布到 Azure
+## <a name="step-2-publish-to-azure"></a>步骤 2：发布到 Azure
 
 若要发布项目，请在解决方案资源管理器中右键单击“Contoso.AADB2C.API”项目，选择“发布”。
 
@@ -237,7 +237,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
-3. 选择“设置” （应用程序对象和服务主体对象）。
+3. 选择 **添加** 。
 
 4. 对于“选项”，请选择“手动”。
 
@@ -248,7 +248,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择“创建” 。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientId` 密钥。
 
@@ -258,7 +258,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 2. 选择“策略密钥”，查看租户中的可用密钥。
 
-3. 选择“设置” （应用程序对象和服务主体对象）。
+3. 选择 **添加** 。
 
 4. 对于“选项”，请选择“手动”。
 
@@ -269,7 +269,7 @@ RESTful 服务受客户端 ID（用户名）和机密的保护后，必须将凭
 
 7. 对于“密钥用法”，请选择“签名”。
 
-8. 选择“创建” 。
+8. 选择“创建”。
 
 9. 确认已创建 `B2C_1A_B2cRestClientSecret` 密钥。
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: diberry
 ms.openlocfilehash: eb125133138c6de173fdeb90024a9e5d961a929d
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58895150"
 ---
 # <a name="export-and-delete-your-customer-data-in-language-understanding-luis-in-cognitive-services"></a>在认知服务中的语言理解 (LUIS) 中导出和删除客户数据
@@ -46,7 +46,7 @@ LUIS 用户具有完全控制权，以删除任何内容，通过 LUIS web 门�
 ## <a name="exporting-customer-data"></a>导出客户数据
 LUIS 用户拥有完全控制在门户中，查看数据，但必须要导出通过 LUIS 创作 （也称为以编程方式） Api。 下表显示通过 LUIS 创作 （也称为以编程方式） Api 的数据导出帮助的链接：
 
-| | **用户帐户** | **应用程序** | **Utterance(s)** | **最终用户查询** |
+| | **用户帐户** | **应用程序** | **陈述** | **最终用户查询** |
 | --- | --- | --- | --- | --- |
 | **API** | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c48) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c40) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c0a) | [链接](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c36) |
 
@@ -90,4 +90,4 @@ LUIS 用户拥有完全控制在门户中，查看数据，但必须要导出通
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [LUIS 区域引用](./luis-reference-regions.md)
+> [LUIS 区域参考](./luis-reference-regions.md)

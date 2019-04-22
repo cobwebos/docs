@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/05/2019
 ms.author: aschhab
 ms.openlocfilehash: a7e4282a176794fe885049173ba56ce2461cd6fa
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885547"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>如何将 Java 消息服务 (JMS) API 用于服务总线和 AMQP 1.0
@@ -341,16 +341,16 @@ MODIFIED_FAILED = 4; -> Abandon() which increases delivery count
 MODIFIED_FAILED_UNDELIVERABLE = 5; -> Defer()
 ```
 
-## <a name="jms-topics-vs-service-bus-topics"></a>JMS 主题 vs。服务总线主题
-使用 Azure 服务总线主题和订阅通过将 Java 消息服务 (JMS) API 提供了基本的发送和接收功能。 即使服务总线主题不同于 JMS 的主题，并且需要一些调整移植 JMS 符合 Api，与其他消息代理程序的应用程序时，它是一个方便的选择。 
+## <a name="jms-topics-vs-service-bus-topics"></a>JMS 主题与服务总线主题
+通过 Java 消息服务 (JMS) API 使用 Azure 服务总线主题和订阅可以提供基本的发送和接收功能。 从其他使用 JMS 兼容 API 的消息代理处移植应用程序时，这是一种很方便的选择，即使服务总线主题不同于 JMS 主题且需要一些调整。 
 
-Azure 服务总线主题将消息路由到通过 Azure 资源管理界面、 Azure 命令行工具，或通过 Azure 门户进行管理的命名、 共享、 持久订阅。 每个订阅允许的最多 2000 个选择规则，每个可能具有一个筛选条件，并且对于 SQL 筛选器，还在元数据转换操作。 每个筛选器条件匹配项选择要复制到 tehj 订阅的输入的消息。  
+Azure 服务总线主题将消息路由到已命名的、共享的、持久的订阅中，这些订阅通过 Azure 资源管理接口、Azure 命令行工具或 Azure 门户进行管理。 每个订阅允许使用最多 2000 条选择规则，每条规则可能有一个筛选器条件以及一项适用于 SQL 筛选器的元数据转换操作。 每次出现筛选器条件匹配的情况时，系统就会选择将要复制到订阅中的输入消息。  
 
-从订阅接收消息是从队列接收消息完全相同。 每个订阅具有关联的死信队列，以及自动将消息转发到另一个队列或主题的功能。 
+从订阅接收消息与从队列接收消息是相同的。 每个订阅都有一个关联的死信队列，并且可以将消息自动转发给其他队列或主题。 
 
-JMS 主题允许客户端动态创建非持久的持久订阅 （可选） 允许使用消息选择器进行筛选消息的服务器。 服务总线不支持这些非共享的实体。 但是，服务总线的 SQL 筛选器规则语法是支持 JMS 消息选择器语法非常相似。 
+JMS 主题允许客户端动态创建非持久的和持久的订阅者，这样就可以选择性地允许通过消息选择器来筛选消息。 服务总线不支持这些非共享的实体。 但是，服务总线的 SQL 筛选器规则语法非常类似于 JMS 支持的消息选择器语法。 
 
-JMS 主题发布程序端与服务总线兼容所示在此示例中，但动态订阅服务器不是。 服务总线不支持以下拓扑相关 JMS Api。 
+如此示例所示，JMS 主题发布者端兼容服务总线，但动态订阅者则不兼容。 不支持将下述与拓扑相关的 JMS API 与服务总线配合使用。 
 
 ## <a name="unsupported-features-and-restrictions"></a>不受支持的功能和限制
 在将 JMS over AMQP 1.0 用于 Service Bus 时存在以下限制，即：
@@ -382,7 +382,7 @@ JMS 主题发布程序端与服务总线兼容所示在此示例中，但动态�
 
 ## <a name="next-steps"></a>后续步骤
 * [Azure 服务总线中的 AMQP 1.0 支持](service-bus-amqp-overview.md)
-* [如何将 AMQP 1.0 与服务总线 .NET API 一起使用](service-bus-dotnet-advanced-message-queuing.md)
+* [如何将 AMQP 1.0 与服务总线 .NET API 配合使用](service-bus-dotnet-advanced-message-queuing.md)
 * [服务总线 AMQP 1.0 开发人员指南](service-bus-amqp-dotnet.md)
 * [服务总线队列入门](service-bus-dotnet-get-started-with-queues.md)
 * [Java 开发中心](https://azure.microsoft.com/develop/java/)

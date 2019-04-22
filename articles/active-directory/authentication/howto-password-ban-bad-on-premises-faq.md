@@ -12,27 +12,27 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8c3395345093ae9a3d35deb27a08f12d331c9f3
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58861898"
 ---
 # <a name="azure-ad-password-protection-on-premises---frequently-asked-questions"></a>本地 Azure AD 密码保护 - 常见问题解答
 
 ## <a name="general-questions"></a>一般问题
 
-**问：什么指导应为用户提供有关如何选择安全密码？**
+**问：在如何选择安全密码方面，你们为用户提供了哪些指导？**
 
 在以下链接中可以找到 Microsoft 当前为此主题提供的指导：
 
-[Microsoft 密码指南](https://www.microsoft.com/en-us/research/publication/password-guidance)
+[Microsoft 密码指导](https://www.microsoft.com/en-us/research/publication/password-guidance)
 
-**问：是在本地支持在非公共云中的 Azure AD 密码保护？**
+**问：非公有云是否支持本地 Azure AD 密码保护？**
 
 不支持 - 只有公有云才支持本地 Azure AD 密码保护。 对于何时可在非公有云中使用，我们没有具体的日程表。
 
-**问：如何将 Azure AD 密码保护优势应用于我的本地用户的子集**
+**问：如何将 Azure AD 密码保护权益应用到我的一部分本地用户？**
 
 不支持。 部署并启用后，Azure AD 密码保护不会区分对待 - 所有用户都会获得均等的安全权益。
 
@@ -44,41 +44,41 @@ ms.locfileid: "58861898"
 
 密码验证策略行为而不考虑是否完成密码更改一个或一组相同。 Azure AD 密码保护 DC 代理服务会记录不同的事件来通知你是否密码更改或设置操作已完成。  请参阅[Azure AD 密码保护监视和日志记录](https://docs.microsoft.com/en-us/azure/active-directory/authentication/howto-password-ban-bad-on-premises-monitor)。
 
-**问：是否支持安装其他筛选器基于密码的产品与 Azure AD 密码保护？**
+**问：是否支持与其他基于密码筛选器的产品一同安装 Azure AD 密码保护？**
 
 是的。 支持多个已注册的密码筛选器 dll 是一项 Windows 核心功能，并不特定于 Azure AD 密码保护。 在接受密码之前，所有已注册的密码筛选器 dll 必须同意。
 
-**问：如何部署和配置 Azure AD 密码保护我的 Active Directory 环境中而无需使用 Azure？**
+**问：在不使用 Azure 的情况下，如何在 Active Directory 环境中部署和配置 Azure AD 密码保护？**
 
 不支持。 Azure AD 密码保护是旨在扩展到本地 Active Directory 环境中的一项 Azure 功能。
 
-**问：如何修改 Active Directory 级别策略的内容？**
+**问：如何在 Active Directory 级别修改策略的内容？**
 
 不支持。 只能使用 Azure AD 管理门户管理策略。 另请参阅前面的问题。
 
-**问：DFSR 要求进行 sysvol 复制的原因？**
+**问：为何需要使用 DFSR 进行 sysvol 复制？**
 
 FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windows Server Active Directory 中完全不受支持。 Azure AD 密码保护的零测试将在配置了 FRS 的域上完成。
 
 有关详细信息，请参阅以下文章：
 
-[用于迁移到 DFSR sysvol 复制用例](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
+[将 sysvol 复制迁移到 DFSR 的用例](https://blogs.technet.microsoft.com/askds/2010/04/22/the-case-for-migrating-sysvol-to-dfsr)
 
-[是，结束 Nigh frs](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
+[FRS 即将终结](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs)
 
-**问：该功能在域 sysvol 共享需要多少磁盘空间？**
+**问：该功能需要占用域 sysvol 共享中的多少磁盘空间？**
 
 准确的空间用量根据多种因素而异，例如，Microsoft 全局受禁密码列表和租户自定义密码列表中的受禁令牌数目和长度，以及加密开销。 这些列表的内容将来可能会不断扩充。 考虑到这一点，合理的预期是该功能至少需要占用域 sysvol 共享中的 5 MB 空间。
 
-**问：为什么是需要重新启动以安装或升级 DC 代理软件？**
+**问：安装或升级 DC 代理软件后为何需要重新启动？**
 
 此项要求是核心 Windows 行为造成的。
 
-**问：是否有任何方法来配置 DC 代理以使用特定的代理服务器？**
+**问：是否有任何方法可将 DC 代理配置为使用特定的代理服务器？**
 
-不是。 由于代理服务器是无状态的，具体使用哪种代理服务器并不重要。
+不。 由于代理服务器是无状态的，具体使用哪种代理服务器并不重要。
 
-**问：是否可以将 Azure AD 密码保护代理服务与其他服务，例如 Azure AD Connect 并行部署？**
+**问：是否可与其他服务（例如 Azure AD Connect）一起部署 Azure AD 密码保护代理服务？**
 
 是的。 Azure AD 密码保护代理服务和 Azure AD Connect 永远不会直接相互冲突。
 
@@ -86,7 +86,7 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 支持的代理的代理安装、 DC 代理安装、 林注册和代理注册任何排序。
 
-**问：我应当考虑的性能影响部署此功能从域控制器上？**
+**问：部署此功能是否会导致域控制器上出现性能瓶颈？**
 
 在现有的正常 Active Directory 部署中，Azure AD 密码保护 DC 代理服务应该不会显著影响域控制器的性能。
 
@@ -94,21 +94,21 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 但是，如果当前域控制器已在性能限制级别运行（例如，达到了 CPU、磁盘空间、磁盘 I/O 等的上限），则我们建议添加更多的域控制器或扩展可用磁盘空间，然后再部署此功能。 另请参阅前面有关 sysvol 磁盘空间用量的问题。
 
-**问：我只想在域中的少量 DC 上测试 Azure AD 密码保护。 是否可以强制用户密码更改为使用这些特定 Dc？**
+**问：我只想在域中的少量 DC 上测试 Azure AD 密码保护。是否可以强制用户密码更改使用这些特定的 DC？**
 
-不是。 当用户更改其密码时，Windows 客户端 OS 会控制要使用的域控制器。 域控制器是根据 Active Directory 站点和子网分配、特定于环境的网络配置等因素选择的。Azure AD 密码保护不会控制这些因素，也不能对选择用来更改用户密码的域控制器施加影响。
+不。 当用户更改其密码时，Windows 客户端 OS 会控制要使用的域控制器。 域控制器是根据 Active Directory 站点和子网分配、特定于环境的网络配置等因素选择的。Azure AD 密码保护不会控制这些因素，也不能对选择用来更改用户密码的域控制器施加影响。
 
 在一定程度上实现此目标的方法之一是在给定 Active Directory 站点中的所有域控制器上部署 Azure AD 密码保护。 这种方法能够合理覆盖分配到该站点的 Windows 客户端，因此，也会合理覆盖登录到这些客户端并更改其密码的用户。
 
-**问：如果安装 Azure AD 密码保护 DC 代理服务上只是主域控制器 (PDC)，将在域中的所有其他域控制器也受到保护？**
+**问：如果只在主域控制器 (PDC) 上安装 Azure AD 密码保护 DC 代理服务，该域中的其他所有域控制器是否也会受到保护？**
 
-不是。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
+不。 如果在给定的非 PDC 域控制器上更改用户密码时，则明文密码永远不会发送到 PDC（这种想法是常见的错误认知）。 一旦在给定的 DC 上接受新密码，该 DC 将使用该密码来为该密码创建各种特定于身份验证协议的哈希，然后在目录中保存这些哈希。 不会保存明文密码。 然后，更新的哈希将复制到 PDC。 在某些情况下，用户密码可以直接在 PDC 上更改，同样，这取决于网络拓扑和 Active Directory 站点设计等多种因素。 （请参阅前面的问题。）
 
 总而言之，在 PDC 上部署 Azure AD 密码保护 DC 代理服务需要对整个跨中的功能实现 100% 的安全覆盖。 仅在 PDC 上部署该功能不能为域中的其他任何 DC 提供 Azure AD 密码保护安全优势。
 
-**问：是 System Center Operations Manager 管理包提供针对 Azure AD 密码保护？**
+**问：System Center Operations Manager 管理包是否适用于 Azure AD 密码保护？**
 
-不是。
+不。
 
 **问：为什么 Azure 仍拒绝弱密码即使我已配置为审核模式的策略？**
 
@@ -120,9 +120,9 @@ FRS（DFSR 以前的技术）存在很多已知问题，在较新版本的 Windo
 
 [Azure AD 密码保护现已公开发布 ！](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-is-now-generally-available/ba-p/377487)
 
-[通过电子邮件发送网页仿冒保护指南 – 第 15 部分：实现 Microsoft Azure AD 密码保护服务 (对于本地太 ！)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)
+[Email Phishing Protection Guide – Part 15:Implement the Microsoft Azure AD Password Protection Service (for On-Premises too!)](https://blogs.technet.microsoft.com/cloudready/2018/10/14/email-phishing-protection-guide-part-15-implement-the-microsoft-azure-ad-password-protection-service-for-on-premises-too/)（电子邮件网络钓鱼保护指南 – 第 15 部分：实施 Microsoft Azure AD 密码保护服务（也适用于本地部署！））
 
-[Azure AD 密码保护和智能锁定现在处于公共预览状态 ！](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)
+[Azure AD Password Protection and Smart Lockout are now in Public Preview!](https://techcommunity.microsoft.com/t5/Azure-Active-Directory-Identity/Azure-AD-Password-Protection-and-Smart-Lockout-are-now-in-Public/ba-p/245423#M529)（Azure AD 密码保护和智能锁定现已推出公共预览版！）
 
 ## <a name="microsoft-premierunified-support-training-available"></a>可用的 Microsoft Premier\Unified 支持培训
 

@@ -16,10 +16,10 @@ ms.date: 05/22/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2e8b334998983684d50c4faddceb03a0f30fd257
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58878156"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>教程：Azure Active Directory 与 Workpath 集成
@@ -50,7 +50,7 @@ ms.locfileid: "58878156"
 - 如果没有 Azure AD 试用环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
 
 ## <a name="scenario-description"></a>方案描述
-在本教程中，会在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
+在本教程中，将在测试环境中测试 Azure AD 单一登录。 本教程中概述的方案包括两个主要构建基块：
 
 1. 从库中添加 Workpath
 1. 配置和测试 Azure AD 单一登录
@@ -58,7 +58,7 @@ ms.locfileid: "58878156"
 ## <a name="adding-workpath-from-the-gallery"></a>从库中添加 Workpath
 若要配置 Workpath 与 Azure AD 的集成，需要从库中将 Workpath 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Workpath，请执行以下步骤：**
+若要从库中添加 Workpath，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
@@ -99,7 +99,7 @@ ms.locfileid: "58878156"
 
 在本部分中，将在 Azure 门户中启用 Azure AD 单一登录并在 Workpath 应用程序中配置单一登录。
 
-**若要配置 Azure AD 单一登录与 Workpath，请执行以下步骤：**
+若要配置 Workpath 的 Azure AD 单一登录，请执行以下步骤：
 
 1. 在 Azure 门户中的 Workpath 应用程序集成页上，单击“单一登录”。
 
@@ -113,9 +113,9 @@ ms.locfileid: "58878156"
 
     ![配置单一登录](./media/workpath-tutorial/tutorial_workpath_url.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://api.workpath.com/v1/saml/metadata/<instancename>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://api.workpath.com/v1/saml/metadata/<instancename>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://api.workpath.com/v1/saml/assert/<instancename>`
+    b. 在 **“回复 URL”** 文本框中，使用以下模式键入 URL：`https://api.workpath.com/v1/saml/assert/<instancename>`
 
 1. 选中“显示高级 URL 设置”。 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
@@ -175,7 +175,7 @@ ms.locfileid: "58878156"
 
 ![创建 Azure AD 用户][100]
 
-**若要在 Azure AD 中创建的测试用户，请执行以下步骤：**
+**若要在 Azure AD 中创建测试用户，请执行以下步骤：**
 
 1. 在 **Azure 门户**的左侧导航窗格中，单击“Azure Active Directory”图标。
 
@@ -199,7 +199,7 @@ ms.locfileid: "58878156"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-a-workpath-test-user"></a>创建 Workpath 测试用户
 
@@ -212,7 +212,7 @@ Workpath 支持实时用户预配。 进行身份验证后，会自动在应用�
 
 ![分配用户][200] 
 
-**若要将 Britta Simon 分配到 Workpath，请执行以下步骤：**
+若要将 Britta Simon 分配到 Workpath，请执行以下步骤：
 
 1. 在 Azure 门户中打开应用程序视图，导航到目录视图，接着转到“企业应用程序”，并单击“所有应用程序”。
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 5d6ec0197699f603c79f414e015cdebcde6b9f60
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905607"
 ---
 # <a name="azure-application-skus-tab"></a>Azure 应用程序 SKU 选项卡
@@ -57,7 +57,7 @@ ms.locfileid: "58905607"
   >[!NOTE] 
   >Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。
 
-- **这是一种专用的 SKU？** - 如果此 SKU 仅供一组特定客户使用，选择“是”。
+- **是否为专用 SKU?** - 如果此 SKU 仅供一组特定客户使用，选择“是”。
 
     ![解决方案模板的 SKU 详细信息窗体](./media/azureapp-sku-details-solutiontemplate.png)
 
@@ -80,7 +80,7 @@ ms.locfileid: "58905607"
   >[!NOTE] 
   >Microsoft Azure 政府是政府社区云，美国联邦、州、地方或部落客户和有资格服务于这些实体的合作伙伴对政府社区云具有受控访问权限。
 
-- **这是一种专用的 SKU？** - 如果此 SKU 仅供一组特定客户使用，选择“是”。
+- **是否为专用 SKU?** - 如果此 SKU 仅供一组特定客户使用，选择“是”。
 - **国家/地区可用性** - 通过“选择区域”查看可用的国家/地区的列表。 勾选国家/地区，然后选择“确定”保存你的选择。 
 
    ![国家/地区可用性列表](./media/azure-app-select-country-region.png)
@@ -124,7 +124,7 @@ ms.locfileid: "58905607"
   >此包应该包含预配此应用程序所需的任何嵌套模板或脚本。 以下文件必须位于根文件夹中：MainTemplate.json、applianceMainTemplate.json 和 applianceCreateUIDefinition.json。
 
 - **租户 Id** - 组织的 Azure Active Directory 租户的 ID。
-- **启用 JIT 访问？** - 选择“是”可通过此产品/服务为客户部署启用实时管理访问。
+- **启用 JIT 访问?** - 选择“是”可通过此产品/服务为客户部署启用实时管理访问。
 
   >[!NOTE] 
   >如果启用 JIT，你必须更新 CreateUiDefinition.json 文件以支持 JIT 访问。
@@ -144,7 +144,7 @@ ms.locfileid: "58905607"
 
    ![托管应用程序的授权和策略设置](./media/azureapp-sku-details-managedapp-auth-policy.png)
 
-**若要创建新的授权：**
+**新建授权：**
 
 1. 在“授权”下，选择“+ 新建授权”。
 2. 键入要授予对托管资源组的访问权限的用户、组或应用程序的 Azure Active Directory 标识符，作为“主体 ID”。 角色定义 ID 指示授予的权限。
@@ -153,7 +153,7 @@ ms.locfileid: "58905607"
 >[!NOTE] 
 >可以添加多个授权。 但建议创建一个 Active Directory 用户组并在 PrincipalId 中指定其 ID。 这样，可以向用户组中添加更多用户，而无需更新 SKU。
 
-**若要创建新的策略：**
+**创建新策略：**
 
 1. 在“策略设置”下，选择“+ 新建策略”。
 2. 在“策略名称”处输入策略的名称。 名称最长 50 个字符。

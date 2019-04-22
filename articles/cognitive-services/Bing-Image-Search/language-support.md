@@ -12,7 +12,7 @@ ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 92316d3f84f0a8d3cda0e98fd8ae751eb78b7e56
 ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/05/2019
 ms.locfileid: "57337696"
@@ -68,7 +68,7 @@ ms.locfileid: "57337696"
 |西班牙|ES|
 |瑞典|SE|
 |瑞士|CH|
-|台湾|TW|
+|中国台湾|TW|
 |土耳其|TR|
 |英国|GB|
 |美国|美国|
@@ -112,7 +112,7 @@ ms.locfileid: "57337696"
 |瑞典|瑞典语|sv-SE|
 |瑞士|法语|fr-CH|
 |瑞士|德语|de-CH|
-|台湾|繁体中文|zh-TW|
+|中国台湾|繁体中文|zh-TW|
 |土耳其|土耳其语|tr-TR|
 |英国|英语|en-GB|
 |美国|英语|en-US|

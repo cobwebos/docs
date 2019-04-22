@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 4a53bcf77696d3aa53a4a404bfacd6f6d468885b
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58862091"
 ---
 # <a name="deploy-azure-security-center-for-iot-c-based-security-agent-for-linux"></a>为 IoT 部署 Azure 安全中心C#-基于 Linux 的安全代理
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本指南介绍如何安装和部署 IoT Azure 安全中心 (ASC) C#-基于 Linux 的安全代理。
@@ -52,7 +52,7 @@ ms.locfileid: "58862091"
 
 1. 提取包的内容，并导航到 _/Install_ 文件夹。
 
-1. 正在运行将权限添加到**InstallSecurityAgent 脚本**通过运行 `chmod +x InstallSecurityAgent.sh` 
+1. 运行 `chmod +x InstallSecurityAgent.sh`，将运行权限添加到 **InstallSecurityAgent 脚本** 
 
 1. 然后运行： 
 
@@ -75,7 +75,7 @@ ms.locfileid: "58862091"
 - 使用提供的身份验证参数配置代理。
 
 
-如需更多帮助，请结合 -help 参数运行该脚本： `./InstallSecurityAgent.sh --help`
+如需更多帮助，请结合 -help 参数运行该脚本：`./InstallSecurityAgent.sh --help`
 
 ### <a name="uninstall-the-agent"></a>卸载代理
 
@@ -118,7 +118,7 @@ ms.locfileid: "58862091"
 
    1. 查看日志文件，了解有关故障的详细信息。  
 
-       日志文件的位置是： `/var/ASCIoTAgent/IotAgentLog.log`
+       日志文件位置为：`/var/ASCIoTAgent/IotAgentLog.log`
 
        根据你在步骤 2 中为 **logFilePath** 选择的名称，更改文件位置路径。 
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: v-jansko
 ms.openlocfilehash: c88eb56288d3a7cf46ce84430a53c12a4ee31c7a
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917407"
 ---
 # <a name="how-the-translator-text-api-counts-characters"></a>文本翻译 API 如何计算字符数
@@ -24,8 +24,8 @@ ms.locfileid: "58917407"
 计数对象为：
 
 * 在请求正文中传递到文本翻译 API 的文本
-   * `Text` 如果使用 Translate、 Transliterate 和字典查找方法
-   * `Text` 和`Translation`时使用 Dictionary 示例方法
+   * `Text`（如果使用 Translate、Transliterate 和 Dictionary Lookup 方法）
+   * `Text` 和 `Translation`（如果使用 Dictionary Examples 方法）
 * 所有标记：请求正文文本字段内的 HTML、XML 标记等。 用于生成请求的 JSON 表示法（例如，“Text:”）不计入。
 * 单个字母
 * 标点

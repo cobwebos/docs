@@ -14,16 +14,16 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b2c665de94750c4c6f41bda47960fdb9ba17e819
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905624"
 ---
 # <a name="move-data-from-an-odata-source-using-azure-data-factory"></a>移动数据使用 Azure 数据工厂从 OData 源
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [版本 1](data-factory-odata-connector.md)
-> * [版本 2 （当前版本）](../connector-odata.md)
+> * [版本 2（当前版本）](../connector-odata.md)
 
 > [!NOTE]
 > 本文适用于数据工厂版本 1。 如果使用数据工厂服务的当前版本，请参阅 [V2 中的 OData 连接器](../connector-odata.md)。

@@ -16,10 +16,10 @@ ms.date: 03/28/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
 ms.openlocfilehash: c3e2102b5794fb3770b1c77e241320fa7d2222c7
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58850787"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure 实例元数据服务
@@ -56,7 +56,7 @@ Azure 的实例元数据服务是一个 REST 终结点，可供通过 [Azure 资
 
 在添加更新的版本时，早期版本仍可供访问以保持兼容性（如果脚本依赖于特定的数据格式）。
 
-当不指定任何版本时，使用最新的受支持版本的列表被返回错误。
+如果未指定版本，则会返回错误并列出受支持的最新版本。
 
 > [!NOTE] 
 > 响应为 JSON 字符串。 以下示例响应显示清晰，可供阅读。
@@ -135,7 +135,7 @@ HTTP 状态代码 | 原因
 ### <a name="examples"></a>示例
 
 > [!NOTE]
-> 所有 API 响应均为 JSON 字符串。 以下所有示例响应都将显示清晰，以提高可读性。
+> 所有 API 响应均为 JSON 字符串。 以下所有响应示例都以美观的形式输出以提高可读性。
 
 #### <a name="retrieving-network-information"></a>检索网络信息
 
@@ -336,7 +336,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 数据 | 描述 | 引入的版本
 -----|-------------|-----------------------
-azEnvironment | 正在其中运行 VM 的 azure 环境 | 2018-10-01
+azEnvironment | VM 运行时所在的 Azure 环境 | 2018-10-01
 位置 | 正在运行 VM 的 Azure 区域 | 2017-04-02
 名称 | VM 的名称 | 2017-04-02
 offer | 为 VM 映像提供信息。 仅为从 Azure 映像库部署的映像显示此值。 | 2017-04-02
@@ -352,9 +352,9 @@ subscriptionId | 虚拟机的 Azure 订阅 | 2017-08-01
 标记 | 虚拟机的[标记](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
 resourceGroupName | 虚拟机的[资源组](../../azure-resource-manager/resource-group-overview.md) | 2017-08-01
 placementGroupId | 虚拟机规模集的[放置组](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-计划 | [计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)中为 vm 及其 Azure Marketplace 映像，包含名称、 产品和发布服务器 | 2018-04-02
-provider | 提供程序的 VM | 2018-10-01
-publicKeys | [公共键的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)分配给 VM 和路径 | 2018-04-02
+计划 | 在 Azure 市场映像中 VM 的[计划](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan)，包含名称、产品和发布者 | 2018-04-02
+provider | VM 的提供商 | 2018-10-01
+publicKeys | [公钥的集合](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey)，已分配给 VM 和路径 | 2018-04-02
 vmScaleSetName | 虚拟机规模集的[虚拟机规模集名称](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 区域 | 虚拟机的[可用性区域](../../availability-zones/az-overview.md) | 2017-12-01
 ipv4/privateIpAddress | VM 的本地 IPv4 地址 | 2017-04-02

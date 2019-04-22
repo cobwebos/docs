@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/28/2018
 ms.author: banders
 ms.openlocfilehash: 4305db991a8129b0ae4205300051391df893c52c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58917781"
 ---
 # <a name="understand-how-the-suse-linux-enterprise-software-reservation-plan-discount-is-applied-for-azure"></a>了解如何为 Azure 应用 SUSE Linux Enterprise 软件预订计划折扣
@@ -126,12 +126,12 @@ Azure 门户商城名称：
 
 若要了解有关预留的详细信息，请参阅以下文章：
 
-- [什么是 Azure 预留项？](billing-save-compute-costs-reservations.md)
-- [预付 Azure 预订 SUSE 软件计划](../virtual-machines/linux/prepay-suse-software-charges.md)
+- [什么是 Azure 预订？](billing-save-compute-costs-reservations.md)
+- [通过 Azure 预订为 SUSE 软件计划预付费](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [通过 Azure 虚拟机预留实例为虚拟机预付费](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [管理 Azure 保留项](billing-manage-reserved-vm-instance.md)
-- [了解即用即付订阅的预订使用情况](billing-understand-reserved-instance-usage.md)
-- [了解企业许可登记表的预订使用情况](billing-understand-reserved-instance-usage-ea.md)
+- [管理 Azure 预留项](billing-manage-reserved-vm-instance.md)
+- [了解即用即付订阅的预留使用情况](billing-understand-reserved-instance-usage.md)
+- [了解企业合约的预留使用情况](billing-understand-reserved-instance-usage-ea.md)
 
 ## <a name="need-help-contact-us"></a>需要帮助？ 联系我们
 

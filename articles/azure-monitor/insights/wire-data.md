@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 10/03/2018
 ms.author: magoedte
 ms.openlocfilehash: d295a5a7eae2bdc7983e7271aa11bce1840b92dd
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882066"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Azure Monitor 中的 wire Data 2.0 （预览版） 解决方案
@@ -58,7 +58,7 @@ ms.locfileid: "58882066"
 
 Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理依赖于 Log Analytics 代理连接到 Azure Monitor。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。 下表介绍了 Wire Data 解决方案支持的连接的源。
 
-| **连接的源** | **支持** | **描述** |
+| **连接的源** | **支持** | **说明** |
 | --- | --- | --- |
 | Windows 代理 | 是 | Wire Data 从 Windows 代理计算机分析和收集数据。 <br><br> 除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/agent-windows.md)外，Windows 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-windows-operating-systems)。 |
 | Linux 代理 | 是 | Wire Data 从 Linux 代理计算机分析和收集数据。<br><br> 除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/learn/quick-collect-linux-computer.md)外，Linux 代理还需要 Microsoft Dependency Agent。 有关完整的操作系统版本列表，请参阅[支持的操作系统](../../azure-monitor/insights/service-map-configure.md#supported-linux-operating-systems)。 |
@@ -112,7 +112,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 以下各节列出了 Linux 上的依赖关系代理支持的操作系统。  
 
 - 仅默认版本和 SMP Linux 内核版本受支持。
-- 任何 Linux 发行版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
+- 任何 Linux 分发版都不支持非标准内核版本（例如 PAE 和 Xen）。 例如，不支持版本字符串为“2.6.16.21-0.8-xen”的系统。
 - 不支持自定义内核（包括标准内核的重新编译）。
 
 ##### <a name="red-hat-linux-7"></a>Red Hat Linux 7
@@ -187,7 +187,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 使用以下步骤在运行 Windows 的每台计算机上安装依赖关系代理：
 
 1. 遵循[从托管在环境中的 Windows 计算机收集数据](../../azure-monitor/platform/agent-windows.md)所述步骤安装 Log Analytics 代理。
-2. 下载 Windows 依赖关系代理使用上一节中的链接，并运行通过使用以下命令： `InstallDependencyAgent-Windows.exe`
+2. 使用上一部分中的链接下载 Windows 依赖项代理，然后使用以下命令运行该代理：`InstallDependencyAgent-Windows.exe`
 3. 按照向导安装代理。
 4. 如果 Dependency Agent 无法启动，请检查日志以获取详细的错误信息。 对于 Windows 代理，日志目录是 %Programfiles%\Microsoft Dependency Agent\logs。
 
@@ -197,7 +197,7 @@ Wire Data 从 Microsoft 依赖关系代理获取其数据。 依赖关系代理�
 
 InstallDependencyAgent-Windows.exe /?
 
-| **标志** | **描述** |
+| **标志** | **说明** |
 | --- | --- |
 | <code>/?</code> | 获取命令行选项列表。 |
 | <code>/S</code> | 执行无提示安装，无用户提示。 |
@@ -222,7 +222,7 @@ InstallDependencyAgent-Windows.exe /?
 InstallDependencyAgent-Linux64.bin -help
 ```
 
-| **标志** | **描述** |
+| **标志** | **说明** |
 | --- | --- |
 | <code>-help</code> | 获取命令行选项列表。 |
 | <code>-s</code> | 执行无提示安装，无用户提示。 |
@@ -358,7 +358,7 @@ rpm -e dependency-agent dependency-agent-connector
 
 在 Azure 门户的 Log Analytics 工作区的“概览”页中，单击“Wire Data 2.0”磁贴打开 Wire Data 仪表板。 该仪表板包含下表中的边栏选项卡。 每个边栏选项卡按照指定范围和时间范围列出了匹配该边栏选项卡条件的最多 10 个项。 可通过单击边栏选项卡底部的“查看全部”或单击边栏选项卡标题，运行返回所有记录的日志搜索。
 
-| **边栏选项卡** | **描述** |
+| **边栏选项卡** | **说明** |
 | --- | --- |
 | 正在捕获网络流量的代理 | 显示正在捕获网络流量的代理数，并列出正在捕获流量的排名前 10 的计算机。 单击数字可以针对 <code>WireData \| summarize sum(TotalBytes) by Computer \| take 500000</code> 运行日志搜索。 单击列表中的某台计算机可运行日志搜索，将返回已捕获的总字节数。 |
 | 本地子网 | 显示代理已发现的本地子网数。  单击数字可以针对 <code>WireData \| summarize sum(TotalBytes) by LocalSubnet</code> 运行日志搜索，这将列出所有子网以及通过每个子网发送的字节数。 单击列表中的某个子网可运行日志搜索，将返回通过该子网发送的总字节数。 |

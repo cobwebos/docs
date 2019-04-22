@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/11/2019
 ms.author: magoedte
 ms.openlocfilehash: ef5ab3d4fe71f688a0b4f3879248ea1715874a0b
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58793714"
 ---
 # <a name="configure-service-map-in-azure"></a>在 Azure 中配置服务映射
@@ -33,8 +33,8 @@ ms.locfileid: "58793714"
 - 美国中西部
 - 加拿大中部
 - 英国南部
-- 欧洲西部
-- 亚洲东南部
+- 西欧
+- 东南亚
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 
@@ -91,7 +91,7 @@ ms.locfileid: "58793714"
 | 6.9 | 2.6.32-696.18.7<br>2.6.32-696.30.1 |
 | 6.10 | 2.6.32-696.30.1<br>2.6.32-754.3.5 |
 
-### <a name="ubuntu-server"></a>Ubuntu 服务器
+### <a name="ubuntu-server"></a>Ubuntu Server
 
 | OS 版本 | 内核版本 |
 |:--|:--|
@@ -115,16 +115,16 @@ ms.locfileid: "58793714"
 
 ## <a name="dependency-agent-downloads"></a>Dependency Agent 下载
 
-| 文件 | OS | 版本 | SHA-256 |
+| 文件 | 操作系统 | 版本 | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | 窗口 | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
 
 ## <a name="connected-sources"></a>连接的源
 
 服务映射从 Microsoft Dependency Agent 获取其数据。 Dependency Agent 依赖 Log Analytics 代理连接到 Log Analytics。 这意味着服务器必须首先安装和配置 Log Analytics 代理，然后再安装 Dependency Agent。  下表介绍了服务映射解决方案支持的连接的源。
 
-| 连接的源 | 受支持 | 描述 |
+| 连接的源 | 支持 | 描述 |
 |:--|:--|:--|
 | Windows 代理 | 是 | 服务映射从 Windows 计算机分析和收集数据。 <br><br>除[适用于 Windows 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Windows 代理还需要 Microsoft Dependency Agent。 查看支持的操作系统和完整的操作系统版本列表。 |
 | Linux 代理 | 是 | 服务映射从 Linux 代理计算机分析和收集数据。 <br><br>除[适用于 Linux 的 Log Analytics 代理](../../azure-monitor/platform/log-analytics-agent.md)外，Linux 代理还需要 Microsoft Dependency Agent。 查看支持的操作系统和完整的操作系统版本列表。 |
@@ -160,7 +160,7 @@ ms.locfileid: "58793714"
 
 Dependency Agent 通常消耗 0.1% 的系统内存和 0.1% 的系统 CPU。
 
-## <a name="diagnostic-and-usage-data"></a>诊断和使用数据
+## <a name="diagnostic-and-usage-data"></a>诊断和使用情况数据
 
 Microsoft 通过使用服务映射服务，自动收集使用情况和性能数据。 Microsoft 使用此数据提供和改进服务映射服务的质量、安全性和完整性。 数据包括有关软件配置的信息（如操作系统和版本）。 还包括 IP 地址、DNS 名称和工作站名称，能够准确高效地排除故障。 我们不收集姓名、地址或其他联系信息。
 
@@ -366,7 +366,7 @@ Ubuntu：
 sudo apt -y purge dependency-agent
 ```
 
-## <a name="troubleshooting"></a>疑难解答
+## <a name="troubleshooting"></a>故障排除
 
 如果安装或运行服务映射时遇到任何问题，可通过本部分内容获得帮助。 如果仍然无法解决问题，请联系 Microsoft 支持部门。
 
@@ -386,7 +386,7 @@ Microsoft Dependency Agent 基于 Microsoft Visual Studio 运行时库。 如果
 
 下表列出了代码号和建议的解决方法。
 
-| 代码 | 描述 | 解析 |
+| 代码 | 描述 | 解决方法 |
 |:--|:--|:--|
 | 0x17 | 库安装程序需要尚未安装的 Windows 更新。 | 查看最新的库安装程序日志。<br><br>如果对“Windows8.1-KB2999226-x64.msu”的引用后跟一行“错误 0x80240017:无法执行 MSU 包”，则没有安装 KB2999226 的先决条件。 请遵循 [Windows 中的 Universal C Runtime](https://support.microsoft.com/kb/2999226) 中必备组件部分的说明。 可能需要运行 Windows 更新并重新启动多次，才能安装好必备组件。<br><br>再次运行 Microsoft Dependency Agent 安装程序。 |
 

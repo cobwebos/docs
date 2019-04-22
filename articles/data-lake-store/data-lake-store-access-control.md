@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 211cb32298b17bb9e4023bf8bc74233c3916f58d
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877663"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的访问控制
@@ -47,7 +47,7 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 |            |    文件     |   Folder |
 |------------|-------------|----------|
-| **Read (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出文件夹内容|
+| **读取 (R)** | 可以读取文件内容 | 需有“读取”和“执行”权限才能列出文件夹内容|
 | **写入 (W)** | 可以在文件中写入或追加内容 | 需有“写入”和“执行”权限才能在文件夹中创建子项 |
 | **执行 (X)** | 不表示 Data Lake Storage Gen1 上下文中的任何内容 | 需要遍历文件夹的子项 |
 
@@ -130,12 +130,12 @@ Azure Data Lake Storage Gen1 实现派生自 HDFS 的访问控制模型，而 HD
 
 由于Data Lake Storage Gen1 中没有与用户关联的“主组”，因此将拥有组分配如下。
 
-**分配新文件或文件夹的拥有组**
+**为新文件或文件夹分配拥有组**
 
 * **情况 1**：根文件夹“/”。 此文件夹是创建 Data Lake Storage Gen1 帐户时创建的。 在这种情况下，拥有组设置为全零 GUID。  此值不允许任何访问。  在分配组之前，它是一个占位符。
 * **情况 2**（所有其他情况）：创建新项时，从父文件夹复制拥有组。
 
-**更改拥有组**
+**更改负责人组**
 
 拥有组可由以下用户更改：
 * 任何超级用户。
@@ -250,7 +250,7 @@ def set_default_acls_for_new_child(parent, child):
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>是否必须启用 ACL 的支持？
 
-不是。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
+不。 Data Lake Storage Gen1 帐户始终启用了通过 ACL 进行的访问控制。
 
 ### <a name="which-permissions-are-required-to-recursively-delete-a-folder-and-its-contents"></a>以递归方式删除文件夹及其内容需要哪些权限？
 
@@ -290,12 +290,12 @@ ACL 中的项存储为 GUID，它们对应于 Azure AD 中的用户。 API 将�
 
 * [Linux 上的 POSIX 访问控制列表](https://www.linux.com/news/posix-acls-linux)
 * [HDFS 权限指南](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html)
-* [POSIX 常见问题](https://www.opengroup.org/austin/papers/posix_faq.html)
+* [POSIX FAQ](https://www.opengroup.org/austin/papers/posix_faq.html)
 * [POSIX 1003.1 2008](https://standards.ieee.org/findstds/standard/1003.1-2008.html)
 * [POSIX 1003.1 2013](https://pubs.opengroup.org/onlinepubs/9699919799.2013edition/)
 * [POSIX 1003.1 2016](https://pubs.opengroup.org/onlinepubs/9699919799.2016edition/)
-* [在 Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
-* [在 Linux 上使用访问控制列表的 ACL](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
+* [Ubuntu 上的 POSIX ACL](https://help.ubuntu.com/community/FilePermissionsACLs)
+* [在 Linux 上使用访问控制列表 (ACL)](https://bencane.com/2012/05/27/acl-using-access-control-lists-on-linux/)
 
 ## <a name="see-also"></a>另请参阅
 

@@ -17,35 +17,35 @@ ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 71878d5d033f0005d2c8c36d9f59799e125a19dd
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762695"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-resource-manager"></a>使用 SQL Server 代理扩展 (Resource Manager) 在 Azure 虚拟机上自动完成管理任务
 > [!div class="op_single_selector"]
-> * [Resource Manager](virtual-machines-windows-sql-server-agent-extension.md)
+> * [资源管理器](virtual-machines-windows-sql-server-agent-extension.md)
 > * [经典](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
 SQL Server IaaS 代理扩展 (SqlIaasExtension) 在 Azure 虚拟机上运行，以自动执行管理任务。 本文概述了该扩展支持的服务以及有关安装、状态及删除的说明。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-若要查看本文的经典版，请参阅[适用于 SQL Server 经典 VM 的 SQL Server 代理扩展](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)。
+若要查看这篇文章的经典版，请参阅[适用于 SQL Server 经典 VM 的 SQL Server 代理扩展](../sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)。
 
 ## <a name="supported-services"></a>支持的服务
 SQL Server IaaS 代理扩展支持以下管理任务：
 
 | 管理功能 | 描述 |
 | --- | --- |
-| **SQL 自动备份** |自动执行计划的所有数据库的备份默认实例或[正确安装](virtual-machines-windows-sql-server-iaas-faq.md#administration)在 VM 上的 SQL Server 的命名实例。 有关详细信息，请参阅 [Azure 虚拟机 (Resource Manager) 中 SQL Server 的自动备份](virtual-machines-windows-sql-automated-backup.md)。 |
-| **SQL 自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 更新，避开工作负荷的高峰期。 有关详细信息，请参阅 [Azure 虚拟机 (Resource Manager) 中 SQL Server 的自动修补](virtual-machines-windows-sql-automated-patching.md)。 |
-| **Azure 密钥保管库集成** |可让你在 SQL Server VM 上自动安装和配置 Azure 密钥保管库。 有关详细信息，请参阅[为 Azure VM (Resource Manager) 上的 SQL Server 配置 Azure Key Vault 集成](virtual-machines-windows-ps-sql-keyvault.md)。 |
+| **SQL 自动备份** |对 VM 中 SQL Server 的默认实例或[已正确安装的](virtual-machines-windows-sql-server-iaas-faq.md#administration)命名实例自动执行所有数据库的备份计划。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动备份 (Resource Manager)](virtual-machines-windows-sql-automated-backup.md)。 |
+| **SQL 自动修补** |配置维护时段，可在此时段对 VM 进行重要的 Windows 更新，避开工作负荷的高峰期。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的自动修补 (Resource Manager)](virtual-machines-windows-sql-automated-patching.md)。 |
+| **Azure 密钥保管库集成** |可在 SQL Server VM 上自动安装和配置 Azure Key Vault。 有关详细信息，请参阅 [为 Azure VM 上的 SQL Server 配置 Azure 密钥保管库集成 (Resource Manager)](virtual-machines-windows-ps-sql-keyvault.md)。 |
 
 一旦安装和运行，SQL Server IaaS 代理扩展便可使这些管理功能在 Azure 门户中虚拟机的 SQL Server 面板上获得，也可通过 Azure PowerShell for SQL Server 市场映像和 Azure PowerShell 获得，以手动安装扩展。 
 
-## <a name="prerequisites"></a>系统必备
+## <a name="prerequisites"></a>必备组件
 在 VM 上使用 SQL Server IaaS 代理扩展的要求：
 
 **操作系统**：
@@ -67,7 +67,7 @@ SQL Server IaaS 代理扩展支持以下管理任务：
 [!INCLUDE [updated-for-az.md](../../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> 目前，Azure 上的 SQL Server FCI 不支持 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 建议从参与 FCI 的 VM 中卸载此扩展。 卸载代理以后，此扩展支持的功能将不可供 SQL VM 使用。
+> 目前，Azure 上的 SQL Server FCI 不支持 [SQL Server IaaS 代理扩展](virtual-machines-windows-sql-server-agent-extension.md)。 我们建议你从参与 FCI 的 VM 中卸载扩展。 卸载代理后，SQL VM 将无法使用扩展支持的功能。
 
 ## <a name="installation"></a>安装
 预配某个 SQL Server 虚拟机库映像时，系统会自动安装 SQL Server IaaS 代理扩展。 SQL IaaS 扩展提供了有关 SQL Server VM 上的单个实例的可管理性。 如果默认实例，该扩展会使用默认实例，并且它不支持管理其他实例。 如果没有默认实例，但只有一个命名的实例，它将管理该命名的实例。 如果没有默认实例，并且有多个命名的实例，然后该扩展将无法安装。 
@@ -90,7 +90,7 @@ Set-AzVMSqlServerExtension -ResourceGroupName "resourcegroupname" -VMName "vmnam
 如果正确，卸载默认实例和 IaaS 扩展重新安装，SQL IaaS 扩展将使用命名实例适用于 SQL Server 映像中。
 
 若要使用 SQL Server 的命名的实例，请执行以下操作：
-   1. 部署来自应用商店的 SQL Server VM。 
+   1. 从市场部署 SQL Server VM。 
    1. 在卸载 IaaS 扩展[Azure 门户](https://portal.azure.com)。
    1. 卸载 SQL Server 完全包含在 SQL Server 虚拟机。
    1. SQL Server VM 内的命名实例安装 SQL Server。 

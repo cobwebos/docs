@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/31/2019
 ms.author: rimman
 ms.openlocfilehash: 1f8bec6fbf0bce9a3ac272231058a96a5d9e84cc
-ms.sourcegitcommit: 09bb15a76ceaad58517c8fa3b53e1d8fec5f3db7
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58762491"
 ---
 # <a name="provision-throughput-on-containers-and-databases"></a>在容器和数据库上预配吞吐量
@@ -92,7 +92,7 @@ Azure Cosmos 数据库上的设置吞吐量可保证您在所有时间都接收�
 
 ## <a name="comparison-of-models"></a>模型比较
 
-|**参数**  |**对数据库的预配吞吐量**  |**对容器预配的吞吐量**|
+|**Parameter**  |**对数据库的预配吞吐量**  |**对容器预配的吞吐量**|
 |---------|---------|---------|
 |最小 RU 数 |400（前四个容器之后的每个容器均需要至少每秒 100 RU 的吞吐量。） |400|
 |每个容器的最小 RU 数|100|400|

@@ -14,10 +14,10 @@ ms.date: 01/22/2019
 ms.reviewer: sdash
 ms.author: lagayhar
 ms.openlocfilehash: 9f48303396d1ecd03fdffd2c6ab1e0c122615a21
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59005744"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>监视任何网站的可用性和响应能力
@@ -92,7 +92,7 @@ ms.locfileid: "59005744"
 
     ![在 Visual Studio Enterprise 版中，基于“Web 性能测试和负载测试”模板创建项目。](./media/monitor-web-app-availability/appinsights-71webtest-multi-vs-create.png)
 
-   * *看不到 Web 性能测试和负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
+   * *看不到 Web 性能与负载测试模板？* - 关闭 Visual Studio Enterprise。 打开 **Visual Studio 安装程序**，修改 Visual Studio Enterprise 安装。 在“各个组件”下，选择“Web 性能和负载测试工具”。
 
 2. 打开 .webtest 文件并开始录制。
 
@@ -175,7 +175,7 @@ Web 测试插件提供时间参数化方式。
 
 对服务执行维护时，可能需要禁用可用性测试或与这些测试关联的警报规则。
 
-![禁用 web 测试](./media/monitor-web-app-availability/6disable.png)
+![禁用 Web 测试](./media/monitor-web-app-availability/6disable.png)
 ![编辑测试](./media/monitor-web-app-availability/8edittest.png)
 
 ## <a name="failures"></a>如果看到失败
@@ -211,10 +211,10 @@ Web 测试插件提供时间参数化方式。
 >  使用[新的统一警报](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts)时，必须在警报体验中配置预警规则严重性和[操作组](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups)的通知首选项。 如果不执行以下步骤，则只会收到门户内通知。
 
 1. 保存可用性测试后，在详细信息选项卡上单击你刚才所做的测试旁边的省略号。 单击“编辑警报”。
-![编辑保存后](./media/monitor-web-app-availability/9editalert.png)
+![保存后编辑](./media/monitor-web-app-availability/9editalert.png)
 
 2. 设置所需的严重性级别、规则说明，最重要的是设置具有要用于此警报规则的通知首选项的操作组。
-![编辑保存后](./media/monitor-web-app-availability/10editalert.png)
+![保存后编辑](./media/monitor-web-app-availability/10editalert.png)
 
 
 > [!NOTE]
@@ -293,7 +293,7 @@ Web 测试插件提供时间参数化方式。
 
 ## <a name="qna"></a> FAQ
 
-* *站点看上去没什么问题，但看到测试失败？ 为什么 Application Insights 警报我？*
+* *站点看上去正常，但测试却失败？为什么 Application Insights 向我发出警报？*
 
     * 测试是否启用了“分析从属请求”？ 这会导致严格检查脚本、图像等资源。这类故障在浏览器上可能不明显。 检查所有图像、脚本、样式表和页面加载的任何其他文件。 如果其中有任何一个失败，即使 html 主页加载正常，测试也仍会报告为失败。 若要使测试对此类资源故障不再敏感，只需在测试配置中取消选中“分析从属请求”即可。 
 
@@ -305,44 +305,44 @@ Web 测试插件提供时间参数化方式。
 
     * 是所有位置都报告失败，还是只有部分位置报告失败？ 如果只有部分位置报告失败，则可能是由网络/CDN 问题引起的。 再次单击红点应该有助于了解该位置报告失败的原因。
 
-* *我未获得和 / 或警报触发，或已解决时的电子邮件？*
+* *警报触发和/或解决时，都没有收到电子邮件？*
 
     检查经典警报配置，确认是否已直接列出你的电子邮件，或者你所在的通讯组列表是否配置为接收通知。 如果是，则检查通讯组列表配置，确认它可以接收外部电子邮件。 另外，检查邮件管理员是否有可能配置了任何可能导致此问题的策略。
 
-* *我没有收到 webhook 通知？*
+* *我没有收到 Webhook 通知？*
 
     检查以确保接收 Webhook 通知的应用程序可用并成功处理 Webhook 请求。 有关详细信息，请参阅[此文](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook)。
 
-* *间歇性测试失败和违反协议错误？*
+* 出现间歇性测试失败和违反协议错误？
 
     错误（“违反协议: CR 必须后跟 LF”）表明服务器（或依赖项）存在问题。 在响应中设置的标头格式错误时，会发生这种情况。 可能是负载均衡器或 CDN 引发的。 具体说来，某些标头可能没有使用 CRLF 来指示行结束，这违反了 HTTP 规范，因此无法通过 .NET WebRequest 级别的验证。 请检查响应，找出可能违反规范的标头。
     
-    注意：在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
+    请注意:在 HTTP 标头验证比较宽松的浏览器上，URL 可能不会失败。 有关该问题的详细说明，请参阅此博客文章： http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
     
-* *我没有看到任何相关的服务器端遥测数据来诊断在测试故障？*
+* 看不到任何相关的、用于诊断测试失败的服务器端遥测数据？
     
     如果已为服务器端应用程序设置 Application Insights，则可能是因为[采样](../../azure-monitor/app/sampling.md)正在进行。 请选择其他可用性结果。
 
-* *可以从我的 web 测试调用代码？*
+* *是否可以从 Web 测试调用代码？*
 
-    不是。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
+    不。 测试步骤必须在 .webtest 文件中指定。 此外，不能调用其他 Web 测试或使用循环。 但是可以借助一些有用的插件。
 
 * *是否支持 HTTPS？*
 
     支持 TLS 1.1 和 TLS 1.2。 我们目前不会检查有 HTTPS 证书错误。  
 
-* *是否有"web 测试"和"可用性测试"之间的差异？*
+* *“Web 测试”与“可用性测试”之间是否有差异？*
 
     这两个术语可以互换引用。 可用性测试是更通用的术语，其中除了包含多步骤 Web 测试外，还包含单 URL ping 测试。
     
-* *我想要在防火墙后面运行的内部服务器上使用可用性测试。*
+* *如何在防火墙后面运行的内部服务器上使用可用性测试？*
 
     有两个可能的解决方案：
     
     * 请将防火墙配置为允许从[我们的 Web 测试代理 IP 地址](../../azure-monitor/app/ip-addresses.md)发出的传入请求。
     * 编写自己的代码，定期测试内部服务器。 在防火墙后的测试服务器上以后台进程的方式运行该代码。 测试进程可以通过核心 SDK 包中的 [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) API 将其结果发送到 Application Insights。 这要求测试服务器能够以传出访问的方式访问 Application Insights 引入终结点，但与允许传入请求相比，这种方式的安全风险要小得多。 结果不会显示在可用性 Web 测试边栏选项卡中，但会作为可用性结果显示在分析、搜索和指标资源管理器中。
 
-* *上传多步骤 web 测试失败*
+* *上传多步骤 Web 测试失败*
 
     可能导致此问题的一些原因包括：
     * 存在 300 K 大小限制。
@@ -350,7 +350,7 @@ Web 测试插件提供时间参数化方式。
     * 不支持对其他 Web 测试的引用。
     * 不支持数据源。
 
-* *我的多步骤测试无法完成*
+* *多步骤测试无法完成*
 
     存在每个测试 100 个请求的限制。 此外，如果运行时间超过两分钟，测试会停止。
 
@@ -380,7 +380,7 @@ Web 测试插件提供时间参数化方式。
 
 [故障排除][qna]
 
-[Web 测试代理的 IP 地址](../../azure-monitor/app/ip-addresses.md)
+[Web 测试代理 IP 地址](../../azure-monitor/app/ip-addresses.md)
 
 <!--Link references-->
 

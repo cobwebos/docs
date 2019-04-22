@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 7153a6ed4a91e59eea936f1e17d827a40bb99371
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883235"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Azure Service Fabric 中的灾难恢复
@@ -139,7 +139,7 @@ Service Fabric 具有种子节点的概念。 种子节点可以维护基础群�
 ## <a name="next-steps"></a>后续步骤
 - 了解如何使用[可测试性框架](service-fabric-testability-overview.md)模拟各种故障
 - 阅读有关灾难恢复和高可用性的其他资源。 Microsoft 已发布大量有关这些主题的指导。 尽管其中有些文档提到其他产品中使用的特定技术，但也包含了许多可在 Service Fabric 上下文中应用的一般性最佳实践：
-  - [可用性核对清单](../best-practices-availability-checklist.md)
+  - [可用性清单](../best-practices-availability-checklist.md)
   - [执行灾难恢复演练](../sql-database/sql-database-disaster-recovery-drills.md)
   - [Azure 应用程序的灾难恢复和高可用性][dr-ha-guide]
 - 了解 [Service Fabric 支持选项](service-fabric-support.md)

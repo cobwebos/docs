@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: 351c92f1e1a698893f61004d523ba79ebca253e8
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58877616"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 对 Azure Data Lake Storage Gen1 进行的文件系统操作
@@ -114,7 +114,7 @@ ms.locfileid: "58877616"
 * 首先，针对终结点 `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN`提交 GET 请求。 此调用返回要将下一个 GET 请求提交到的位置。
 * 然后，针对终结点 `https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN&read=true` 提交 GET 请求。 此调用显示文件的内容。
 
-但是，由于第一和第二个步骤之间的输入参数没有任何差异，因此可以使用 `-L` 参数来提交第一个请求。 `-L` 选项实质上是将两个请求合并成一个，让 cURL 对新位置请求的重做。 最后会显示所有请求调用的输出，如以下代码片段所示。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
+但是，由于第一和第二个步骤之间的输入参数没有任何差异，因此可以使用 `-L` 参数来提交第一个请求。 `-L` 选项本质上是将两个请求合并成一个，让 cURL 对新位置重做请求。 最后会显示所有请求调用的输出，如以下代码片段所示。 将 **\<yourstorename>** 替换为 Data Lake Storage Gen1 帐户名。
 
     curl -i -L GET -H "Authorization: Bearer <REDACTED>" 'https://<yourstorename>.azuredatalakestore.net/webhdfs/v1/mytempdir/myinputfile.txt?op=OPEN'
 
@@ -162,6 +162,6 @@ ms.locfileid: "58877616"
 * [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)。
 
 ## <a name="see-also"></a>另请参阅
-* [Azure Data Lake 存储 Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
-* [打开源大数据应用程序与 Azure 数据湖存储 Gen1 兼容](data-lake-store-compatible-oss-other-applications.md)
+* [Azure Data Lake Storage Gen1 REST API 参考](https://docs.microsoft.com/rest/api/datalakestore/)
+* [与 Azure Data Lake Storage Gen1 兼容的开源大数据应用程序](data-lake-store-compatible-oss-other-applications.md)
 

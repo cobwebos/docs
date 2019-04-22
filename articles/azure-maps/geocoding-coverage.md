@@ -10,7 +10,7 @@ services: azure-maps
 manager: timlt
 ms.openlocfilehash: 733d27549542d3ebdd0cfba429aeaaab9f8be473
 ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/22/2019
 ms.locfileid: "58370295"
@@ -138,7 +138,7 @@ ms.locfileid: "58370295"
 | 南千岛群岛                                     |        ✓        |                |              |      ✓     |          ✓         |
 | 南沙群岛                                     |                 |                |              |      ✓     |                    |
 | 斯里兰卡                                           |                 |                |              |      ✓     |          ✓         |
-| 台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| 中国台湾                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 泰国                                            |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | 托克劳                                             |                 |                |              |      ✓     |          ✓         |
 | 汤加                                               |                 |                |              |      ✓     |          ✓         |

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: c48f7d7608b2b70f4ae41e2af5792cff72bb0dd2
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58885717"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>使用 REST API 进行 Azure Data Lake Storage Gen1 服务到服务身份验证
@@ -52,6 +52,6 @@ ms.locfileid: "58885717"
 ## <a name="next-steps"></a>后续步骤
 本文介绍了如何通过 REST API 使用服务到服务身份验证进行 Data Lake Storage Gen1 身份验证。 现可查看以下介绍如何使用 REST API 在 Data Lake Storage Gen1 中执行操作的文章。
 
-* [数据在数据湖存储 Gen1 帐户管理操作使用 REST API](data-lake-store-get-started-rest-api.md)
-* [使用 REST API 对数据湖存储 Gen1 的数据操作](data-lake-store-data-operations-rest-api.md)
+* [使用 REST API 对 Data Lake Storage Gen1 进行的帐户管理操作](data-lake-store-get-started-rest-api.md)
+* [使用 REST API 在 Data Lake Storage Gen1 中进行的数据操作](data-lake-store-data-operations-rest-api.md)
 

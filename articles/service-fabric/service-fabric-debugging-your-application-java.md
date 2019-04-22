@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: suhuruli
 ms.openlocfilehash: 2f00636da2b29e7815569a683fdf51c6a4e3b0e0
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58880282"
 ---
 # <a name="debug-your-java-service-fabric-application-using-eclipse"></a>使用 Eclipse 调试 Java Service Fabric 应用程序
@@ -27,7 +27,7 @@ ms.locfileid: "58880282"
 > * [Eclipse/Java](service-fabric-debugging-your-application-java.md)
 > 
 
-1. 按照[设置 Service Fabric 开发环境](service-fabric-get-started-linux.md)中的步骤启动本地开发群集。
+1. 按 [设置 Service Fabric 开发环境](service-fabric-get-started-linux.md)中的步骤创建本地开发群集。
 
 2. 更新要调试的服务的 entryPoint.sh，以便使用远程调试参数启动 java 进程。 可以在以下位置找到此文件：`ApplicationName\ServiceNamePkg\Code\entrypoint.sh`。 在此示例中调试时，设置端口 8001。
 

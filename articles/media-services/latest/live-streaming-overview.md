@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: juliako
 ms.openlocfilehash: ad8e84d84665b20bfff53cf09473bc8bce9760d8
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916019"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>使用 Azure 媒体服务 v3 实时传送视频流
@@ -89,11 +89,11 @@ ms.locfileid: "58916019"
 
 - [推荐的实时编码器](recommended-on-premises-live-encoders.md)
 - [使用云 DVR](live-event-cloud-dvr.md)
-- [实时事件类型的功能比较](live-event-types-comparison.md)
+- [实时事件类型功能比较](live-event-types-comparison.md)
 - [状态和计费](live-event-states-billing.md)
-- [Latency](live-event-latency.md)
+- [延迟](live-event-latency.md)
 
 ## <a name="next-steps"></a>后续步骤
 
-* [实时流式处理的教程](stream-live-tutorial-with-api.md)
+* [实时传送视频流教程](stream-live-tutorial-with-api.md)
 * [有关从媒体服务 v2 迁移到 v3 的指导](migrate-from-v2-to-v3.md)

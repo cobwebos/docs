@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58894126"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
@@ -404,8 +404,8 @@ az acr run -f when-parallel-dependent.yaml https://github.com/Azure-Samples/acr-
 
 `when` 属性指定某个步骤对任务中其他一个或多个步骤的依赖。 它支持两个参数值：
 
-* `when: ["-"]` -表示不依赖于其他步骤。 指定 `when: ["-"]` 的步骤将立即执行，并启用并发步骤执行。
-* `when: ["id1", "id2"]` -指示的步骤是依赖于使用的步骤`id`"id1"和`id`"id2"。 在“id1”和“id2”步骤完成之前，此步骤不会执行。
+* `when: ["-"]` - 指示不依赖于其他步骤。 指定 `when: ["-"]` 的步骤将立即执行，并启用并发步骤执行。
+* `when: ["id1", "id2"]` - 指示该步骤依赖于使用 `id`“id1”和 `id`“id2”的步骤。 在“id1”和“id2”步骤完成之前，此步骤不会执行。
 
 如果未在某个步骤中指定 `when`，则该步骤依赖于 `acr-task.yaml` 文件中上一个步骤的完成。
 

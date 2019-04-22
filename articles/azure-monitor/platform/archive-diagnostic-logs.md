@@ -74,9 +74,9 @@ ms.locfileid: "58629359"
 Set-AzDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/testresourcegroup/providers/Microsoft.Network/networkSecurityGroups/testnsg -StorageAccountId /subscriptions/s1id1234-5679-0123-4567-890123456789/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Categories networksecuritygroupevent,networksecuritygrouprulecounter -Enabled $true -RetentionEnabled $true -RetentionInDays 90
 ```
 
-| 属性 | 需要 | 描述 |
+| properties | 需要 | 描述 |
 | --- | --- | --- |
-| ResourceId |是 |要设置诊断设置的资源的资源 ID。 |
+| resourceId |是 |要设置诊断设置的资源的资源 ID。 |
 | StorageAccountId |否 |诊断日志应保存到的存储帐户的资源 ID。 |
 | Categories |否 |要启用的日志类别的逗号分隔列表。 |
 | Enabled |是 |一个布尔值，表示此资源是启用还是禁用了诊断。 |

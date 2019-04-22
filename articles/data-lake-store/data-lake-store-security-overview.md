@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
 ms.openlocfilehash: 63e538ab43eaf4a34226b0084cf55334e2cc782b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58883287"
 ---
 # <a name="security-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的安全性
@@ -111,6 +111,6 @@ Data Lake Storage Gen1 还针对帐户中存储的数据提供加密。 可以�
 
 ## <a name="see-also"></a>另请参阅
 * [Azure Data Lake Storage Gen1 概述](data-lake-store-overview.md)
-* [开始使用数据湖存储 Gen1](data-lake-store-get-started-portal.md)
-* [数据湖存储 Gen1 中的安全数据](data-lake-store-secure-data.md)
+* [Data Lake Storage Gen1 入门](data-lake-store-get-started-portal.md)
+* [保护 Data Lake Storage Gen1 中的数据](data-lake-store-secure-data.md)
 

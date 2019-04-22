@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/13/2019
 ms.author: anuragm
 ms.openlocfilehash: db204c0e881200f667484daf4348c336f94a0ce7
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58916676"
 ---
 # <a name="troubleshoot-back-up-sql-server-on-azure"></a>排查在 Azure 上备份 SQL Server 的问题
@@ -49,7 +49,7 @@ ms.locfileid: "58916676"
 | 错误消息 | 可能的原因 | 建议的操作 |
 |---|---|---|
 | 此 SQL 数据库不支持所请求的备份类型。 | 当数据库恢复模式不允许所请求的备份类型时，会发生此错误。 在以下情况下，可能会发生此错误： <br/><ul><li>使用简单恢复模式的数据库不允许日志备份。</li><li>不允许对 Master 数据库执行差异备份和日志备份。</li></ul>有关详细信息，请参阅 [SQL 恢复模式](https://docs.microsoft.com/sql/relational-databases/backup-restore/recovery-models-sql-server)文档。 | 如果采用简单恢复模式的数据库的日志备份失败，请尝试以下选项之一：<ul><li>如果数据库处于简单恢复模式，请禁用日志备份。</li><li>使用 [SQL 文档](https://docs.microsoft.com/sql/relational-databases/backup-restore/view-or-change-the-recovery-model-of-a-database-sql-server)将数据库恢复模式更改为“完整”或“批量日志记录”。 </li><li> 如果不想要更改恢复模式，并使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份和差异备份会按计划进行。 在这种情况下，预期会跳过日志备份。</li></ul>如果备份的是 Master 数据库，并且已配置差异备份或日志备份，请使用以下任一步骤：<ul><li>使用门户将 Master 数据库的备份策略计划更改为“完整”。</li><li>如果使用标准策略来备份无法更改的多个数据库，请忽略此错误。 完整备份会按计划进行。 在这种情况下，预期不会发生差异备份或日志备份。</li></ul> |
-| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 请参阅[有关并行运行备份和还原时存在的限制的博客文章](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)。| [使用 SQL Server Management Studio (SSMS) 来监视备份作业。](manage-monitor-sql-database-backup.md) 有冲突的操作失败后，重启该操作。|
+| 操作将被取消，因为已对同一个数据库运行了某个有冲突的操作。 | 请参阅[有关并行运行备份和还原时存在的限制的博客文章](https://blogs.msdn.microsoft.com/arvindsh/2008/12/30/concurrency-of-full-differential-and-log-backups-on-the-same-database)。| [使用 SQL Server Management Studio (SSMS) 监视备份作业。](manage-monitor-sql-database-backup.md) 有冲突的操作失败后，重启该操作。|
 
 ### <a name="usererrorsqlpodoesnotexist"></a>UserErrorSQLPODoesNotExist
 
@@ -169,8 +169,7 @@ ms.locfileid: "58916676"
   * 由于该扩展配置在其上的已过期很长一段已关闭 VM
   * VM 已被删除，具有相同名称和已删除 VM 所在的资源组中创建另一个 VM
   * 其中一个 AG 节点未收到完整的备份配置，这可能是在可用性组注册到保管库时，或添加新节点获取  <br>
-   
-在上述情况下，建议触发在 VM 上的重新注册操作。 此选项仅可通过 PowerShell，并且很快就会在 Azure 门户中可用。
+    在上述情况下，建议触发在 VM 上的重新注册操作。 此选项仅可通过 PowerShell，并且很快就会在 Azure 门户中可用。
 
 
 ## <a name="next-steps"></a>后续步骤

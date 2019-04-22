@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: fe3803b7dc75ab13831a5e42d4b1a96f5aa894e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58882423"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>在 Linux 虚拟机上使用 Azure 自定义脚本扩展版本 1
@@ -133,11 +133,11 @@ ms.locfileid: "58882423"
 
 ### <a name="property-value-details"></a>属性值详细信息
 
-* `fileUris`: （可选，字符串数组) 的脚本的 uri 列表
-* `enableInternalDNSCheck`: (可选，bool) 默认值为 True，设置为 False 可禁用 DNS 检查。
-* `commandToExecute`: （可选，字符串) 要执行的入口点脚本
-* `storageAccountName`: （可选，字符串) 存储帐户的名称
-* `storageAccountKey`: （可选，字符串) 存储帐户的访问密钥
+* `fileUris`：（可选，字符串数组）脚本的 URI 列表
+* `enableInternalDNSCheck`：（可选，布尔型）默认为 True，设置为 False 可禁用 DNS 检查。
+* `commandToExecute`：（可选，字符串）要执行的入口点脚本
+* `storageAccountName`：（可选，字符串）存储帐户的名称
+* `storageAccountKey`：（可选，字符串）存储帐户的访问密钥
 
 可以在公共设置或受保护设置中设置以下值，但不得同时在公共设置和受保护设置中设置以下值。
 
@@ -149,7 +149,7 @@ ms.locfileid: "58882423"
 
 ## <a name="template-deployment"></a>模板部署
 
-可使用 Azure 资源管理器模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。
+可使用 Azure Resource Manager 模板部署 Azure VM 扩展。 可以在 Azure 资源管理器模板中使用上一部分中详细介绍的 JSON 架构，以便在 Azure 资源管理器模板部署过程中运行自定义脚本扩展。
 
 ```json
 {
@@ -304,7 +304,7 @@ az vm extension set
 /var/log/azure/<extension-name>/<version>/extension.log file.
 ```
 
-您应查找单个执行，它将如下所示：
+应该查找如下所示的个别执行：
 
 ```text
 2018/04/26 15:29:46 [Microsoft.OSTCExtensions.CustomScriptForLinux-1.5.2.2] Enable,transitioning,0,Launching the script...

@@ -9,10 +9,10 @@ ms.date: 12/19/2018
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: f13dd1282a6384a0acca4c6936fe7900a051795f
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58896017"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>使用本地数据网关连接到本地数据源
@@ -94,10 +94,10 @@ ms.locfileid: "58896017"
 ### <a name="general"></a>常规
 
 **问**：对于云中的数据源（如 Azure SQL 数据库），是否需要网关？ <br/>
-**答**：不是。 如果仅连接到本地数据源，则网关是必需的。
+**答**：不。 如果仅连接到本地数据源，则网关是必需的。
 
 **问**：网关是否必须安装在与数据源相同的计算机上？ <br/>
-**答**：不是。 网关只需能够连接到服务器即可，通常在同一个网络上。
+**答**：不。 网关只需能够连接到服务器即可，通常在同一个网络上。
 
 <a name="why-azure-work-school-account"></a>
 
@@ -118,7 +118,7 @@ ms.locfileid: "58896017"
 **答**：可通过 Azure 服务总线发送结果。
 
 **问**：是否存在从云到网关的入站连接？ <br/>
-**答**：不是。 网关使用与 Azure 服务总线之间的出站连接。
+**答**：不。 网关使用与 Azure 服务总线之间的出站连接。
 
 **问**：如果阻止出站连接，会发生什么情况？ 我需要打开什么？ <br/>
 **答**：查看网关使用的端口和主机。
@@ -127,7 +127,7 @@ ms.locfileid: "58896017"
 **答**：在“服务”中，网关名为“本地数据网关服务”。
 
 **问**：是否可以使用 Azure Active Directory 帐户运行网关 Windows 服务？ <br/>
-**答**：不是。 该 Windows 服务必须具有有效的 Windows 帐户。 默认情况下，服务使用服务 SID“NT SERVICE\PBIEgwService”来运行。
+**答**：不。 该 Windows 服务必须具有有效的 Windows 帐户。 默认情况下，服务使用服务 SID“NT SERVICE\PBIEgwService”来运行。
 
 **问**：如何接管网关？ <br/>
 **答**：要接管网关（通过在“控制面板”>“程序”中运行“设置/更改”），你需要成为 Azure 中网关资源的所有者并且需要拥有恢复密钥。 可在访问控制中配置网管资源所有者。
@@ -185,7 +185,7 @@ ms.locfileid: "58896017"
 ## <a name="telemetry"></a>遥测
 遥测可用于监视和排错。 默认情况下
 
-**若要启用遥测**
+**启用遥测**
 
 1.  查看计算机上的本地数据网关客户端目录。 通常为 %systemdrive%\Program Files\On-premises data gateway。 或者，可打开“服务”控制台并查看可执行文件的“路径”：“本地数据网关服务”的属性。
 2.  在客户端目录的 Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config 文件中， 将 SendTelemetry 设置更改为 true。
