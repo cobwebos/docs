@@ -11,11 +11,11 @@ ms.topic: quickstart
 ms.date: 4/02/2019
 ms.author: rosh
 ms.openlocfilehash: a0d7c1611f7c6851d98fea734dfdbd3940b59b89
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59048013"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59784699"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-go"></a>快速入门：使用必应视觉搜索 REST API 和 Go 获取图像见解
 

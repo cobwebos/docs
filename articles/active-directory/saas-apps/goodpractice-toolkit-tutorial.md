@@ -8,19 +8,20 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: 65b2979d-9e2f-4530-bc08-546975269ebc
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/19/2018
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9b847fd424e14eba492018887dbc28c44100f61
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.openlocfilehash: 5e55399337e06314a5079f9d0e692a771855f8ca
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58885343"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59683561"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-goodpractice-toolkit"></a>教程：Azure Active Directory 与 GoodPractice Toolkit 集成
 
@@ -69,7 +70,7 @@ ms.locfileid: "58885343"
 4. 在搜索框中键入“GoodPractice Toolkit”，在结果面板中选择“GoodPractice Toolkit”，然后单击“添加”按钮添加应用程序。
 
      ![结果列表中的 GoodPractice Toolkit](common/search-new-app.png)
-   ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
 在本部分中，将基于名为“Britta Simon”的测试用户配置和测试 GoodPractice Toolkit 的 Azure AD 单一登录。
 若要运行单一登录，需要在 Azure AD 用户与 GoodPractice Toolkit 相关用户之间建立链接关系。
@@ -79,8 +80,8 @@ ms.locfileid: "58885343"
 1. **[配置 Azure AD 单一登录](#configure-azure-ad-single-sign-on)** - 使用户能够使用此功能。
 2. **[配置 GoodPractice Toolkit 单一登录](#configure-goodpractice-toolkit-single-sign-on)** - 在应用程序端配置单一登录。
 3. **[创建 Azure AD 测试用户](#create-an-azure-ad-test-user)** - 使用 Britta Simon 测试 Azure AD 单一登录。
-4. [创建 GoodPractice Toolkit 测试用户](#create-goodpractice-toolkit-test-user) - 在 GoodPractice Toolkit 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
-5. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+4. **[分配 Azure AD 测试用户](#assign-the-azure-ad-test-user)** - 使 Britta Simon 能够使用 Azure AD 单一登录。
+5. [创建 GoodPractice Toolkit 测试用户](#create-goodpractice-toolkit-test-user) - 在 GoodPractice Toolkit 中创建 Britta Simon 的对应用户，并将其关联到用户的 Azure AD 表示形式。
 6. **[测试单一登录](#test-single-sign-on)** - 验证配置是否正常工作。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>配置 Azure AD 单一登录
@@ -146,8 +147,7 @@ ms.locfileid: "58885343"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -195,5 +195,5 @@ ms.locfileid: "58885343"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

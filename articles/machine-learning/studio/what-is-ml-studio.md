@@ -14,13 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 03/28/2018
-ms.openlocfilehash: 570f0a825f679ec5f0cc4c62b0608ec517148161
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.date: 04/20/2019
+ms.openlocfilehash: 7a2bd8ebf2e96cf2251d98501bbf42007d43a660
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57893996"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682995"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>什么是 Azure 机器学习工作室？
 Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用于根据数据构建、测试和部署预测分析解决方案。 机器学习工作室将模型发布为可让自定义应用或 BI 工具（如 Excel）方便使用的 Web 服务。
@@ -108,7 +108,7 @@ Microsoft Azure 机器学习工作室是一个协作型拖放式工具，可用�
 ## <a name="deploying-a-predictive-analytics-web-service"></a>部署预测分析 Web 服务
 准备好预测分析模型后，可以从机器学习工作室将它部署为 Web 服务。 有关此过程的详细信息，请参阅 [Deploy an Azure Machine Learning web service](publish-a-machine-learning-web-service.md)（部署 Azure 机器学习 Web 服务）。
 
-
+<a name="compare"></a>
 ## <a name="how-is-machine-learning-studio-different-from-azure-machine-learning-service"></a>机器学习工作室与 Azure 机器学习服务有什么区别？
 
 [Azure 机器学习服务](../service/overview-what-is-azure-ml.md)提供了 SDK 和服务，以用于快速准备数据并训练和部署机器学习模型。 可通过自动缩放计算和管道，提高生产效率并降低成本。 请将这些功能与开放源代码 Python 框架（如 PyTorch、TensorFlow 和 scikit-learn）配合使用。 

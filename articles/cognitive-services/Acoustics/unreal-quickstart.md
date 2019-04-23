@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 691f49e9be8aabe9a3e229bfd3b35ab183f9fed9
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492393"
 ---
 # <a name="project-acoustics-unrealwwise-quickstart"></a>项目音响效果 Unreal/Wwise 快速入门
@@ -50,7 +50,7 @@ ms.locfileid: "59492393"
 
     ![Windows 资源管理器窗口的屏幕截图，其中显示修补 Wwise 项目的脚本](media/patch-wwise-script.png)
 
-* 如果没有安装 DirectX SDK，则需要在以下项中注释掉包含 DXSDK_DIR 的行 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs`
+* 如果没有安装 DirectX SDK，则需要在 `AcousticsGame\Plugins\Wwise\Source\AkAudio\AkAudio.Build.cs` 中注释掉包含 DXSDK_DIR 的行
 
     ![显示注释掉 DXSDK 的代码编辑器的屏幕截图](media/directx-sdk-comment.png)
 

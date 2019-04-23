@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: peterpr
 ms.openlocfilehash: 201b438601c9929e5ca3d292f9fc3d7b7ff64de8
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425927"
 ---
 # <a name="tutorial-add-a-real-device-to-your-azure-iot-central-application"></a>教程：将真实设备添加到 Azure IoT Central 应用程序
@@ -362,4 +362,4 @@ ms.locfileid: "59425927"
 * [准备和连接 Raspberry Pi (Python)](howto-connect-raspberry-pi-python.md)
 * [准备和连接 Raspberry Pi (C#)](howto-connect-raspberry-pi-csharp.md)
 * [准备和连接 Windows 10 IoT Core 设备 (C#)](howto-connect-windowsiotcore.md)
-* [将通用 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)
+* [将泛型 Node.js 客户端连接到 Azure IoT Central 应用程序](howto-connect-nodejs.md)

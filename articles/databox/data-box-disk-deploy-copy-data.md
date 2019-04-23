@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 02/26/2019
+ms.date: 04/16/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: 5b5404f19a9b692b3984dafd6f029729822284dc
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 418b158b127a688314fb3a0a506d116cc27da98c
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548740"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678490"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>教程：将数据复制到 Azure Data Box Disk 并进行验证
 
@@ -52,7 +52,7 @@ ms.locfileid: "59548740"
 - 只能上传固定的 VHD 来创建托管磁盘。 不支持动态 VHD、差异 VHD 或 VHDX 文件。
 
 
-## <a name="perform-the-following-steps-to-connect-and-copy-data-from-your-computer-to-the-data-box-disk"></a>执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
+执行以下步骤，连接到计算机并将其上的数据复制到 Data Box 磁盘。
 
 1. 查看已解锁的驱动器的内容。 根据放置 Data Box Disk 顺序时选择的选项，驱动器中预先创建的文件夹和子文件夹的列表会有所不同。
 

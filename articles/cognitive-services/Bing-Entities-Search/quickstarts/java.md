@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: quickstart
 ms.date: 02/01/2019
 ms.author: aahi
-ms.openlocfilehash: d9001a10afdb92e2ebe469e3beb080c667e8559b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: e1799f2af89fd0498c11f3d695d84ccd93a9c857
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58097331"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681924"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>快速入门：使用 Java 向必应实体搜索 REST API 发送搜索请求
 
@@ -214,8 +214,6 @@ ms.locfileid: "58097331"
   }
 }
 ```
-
-[返回页首](#main)
 
 ## <a name="next-steps"></a>后续步骤
 

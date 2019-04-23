@@ -10,10 +10,10 @@ ms.date: 04/08/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
 ms.openlocfilehash: 7c62ec722e5bb909c13b21a7b98d86dd72d9e665
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59425944"
 ---
 # <a name="tutorial-return-azure-data-box-disk-and-verify-data-upload-to-azure"></a>教程：退回 Azure Data Box Disk 并验证到 Azure 的数据上传
@@ -156,8 +156,8 @@ Body:
 
 - Azure 存储帐户。 将数据复制到 Data Box 时，会根据类型将数据将上传到 Azure 存储帐户中的以下路径之一。
 
-  - 对于块 Blob 和页 Blob： `https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
-  - 对于 Azure 文件： `https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
+  - 对于块 blob 和页 blob：`https://<storage_account_name>.blob.core.windows.net/<containername>/files/a.txt`
+  - 对于 Azure 文件：`https://<storage_account_name>.file.core.windows.net/<sharename>/files/a.txt`
 
     或者，可以转到 Azure 门户中的 Azure 存储帐户并从那里导航。
 
@@ -200,6 +200,6 @@ Body:
 转到下一篇操作指南，了解如何通过 Azure 门户管理 Data Box 磁盘。
 
 > [!div class="nextstepaction"]
-> [使用 Azure 门户管理 Azure Data Box Disk](./data-box-portal-ui-admin.md)
+> [使用 Azure 门户管理 Azure Data Box 磁盘](./data-box-portal-ui-admin.md)
 
 

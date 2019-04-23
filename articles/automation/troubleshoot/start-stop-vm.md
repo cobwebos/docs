@@ -10,11 +10,11 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 03bad12b7fcba5a247e05884aa0eb0493163a5c4
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009778"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59785942"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>排除“在空闲时间启动/停止 VM”解决方案的故障
 
@@ -219,4 +219,4 @@ The scope '/subscriptions/000000000000-0000-0000-0000-00000000/resourcegroups/<R
 
 * 通过 [Azure 论坛](https://azure.microsoft.com/support/forums/)获取 Azure 专家的解答
 * 与 [@AzureSupport](https://twitter.com/azuresupport)（Microsoft Azure 官方帐户）联系，它可以将 Azure 社区引导至适当的资源来改进客户体验：提供解答、支持和专业化服务。
-* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择 **获取支持**。
+* 如需更多帮助，可以提交 Azure 支持事件。 请转到 [Azure 支持站点](https://azure.microsoft.com/support/options/)并选择“获取支持”。

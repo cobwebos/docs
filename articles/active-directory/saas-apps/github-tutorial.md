@@ -16,10 +16,10 @@ ms.date: 02/11/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25540d1f26fa6021ef05108f9743e77a6184f3b3
-ms.sourcegitcommit: ef20235daa0eb98a468576899b590c0bc1a38394
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59426318"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-github"></a>教程：Azure Active Directory 与 GitHub 集成
@@ -107,16 +107,16 @@ ms.locfileid: "59426318"
 
     ![GitHub 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://github.com/orgs/<entity-id>/sso`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>/sso`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://github.com/orgs/<entity-id>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://github.com/orgs/<entity-id>`
 
     > [!NOTE]
     > 请注意，这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 此处我们建议在“标识符”中使用字符串的唯一值。 转到“GitHub 管理”部分检索这些值。
 
 5. GitHub 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 GitHub 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -156,7 +156,7 @@ ms.locfileid: "59426318"
 
     d. 单击“编辑”图标，将“签名方法”和“摘要方法”从 **RSA-SHA1** 和 **SHA1** 编辑为 **RSA-SHA256** 和 **SHA256**，如下所示。
 
-    ![图像](./media/github-tutorial/tutorial_github_sha.png)
+    ![image](./media/github-tutorial/tutorial_github_sha.png)
 
 5. 单击“测试 SAML 配置”，确认在 SSO 期间未发生验证失败错误。
 
@@ -222,7 +222,7 @@ ms.locfileid: "59426318"
 
 本部分的目的是在 GitHub 中创建名为“Britta Simon”的用户。 GitHub 支持在默认情况下启用的自动用户预配。 有关如何配置自动用户预配的更多详细信息，请参见[此处](github-provisioning-tutorial.md)。
 
-**如果需要手动创建用户，请执行以下步骤：**
+如果需要手动创建用户，请执行以下步骤：
 
 1. 以管理员身份登录到 GitHub 公司站点。
 
@@ -259,4 +259,4 @@ ms.locfileid: "59426318"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

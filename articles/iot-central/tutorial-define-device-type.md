@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: e4c5942dfba62a2c869e4eeceb9018fc926d9de9
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.openlocfilehash: 884381cc3b9aaeec29f5697485cd90c28b2bd97e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259529"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681244"
 ---
-# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application-new-ui-design"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型（新 UI 设计）
+# <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>教程：在 Azure IoT Central 应用程序中定义新的设备类型
 
 本教程向构建人员介绍如何使用设备模板在 Microsoft Azure IoT Central 应用程序中定义新的设备类型。 设备模板定义设备类型的遥测、状态、属性和设置。
 

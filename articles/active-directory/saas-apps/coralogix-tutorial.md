@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 1/2/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26c25c57dec14a81e5bcfcfa044cf5d5302e1c88
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: d0095a825f5582dc795f5bebdcf08be07a92946e
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578809"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678286"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coralogix"></a>教程：Azure Active Directory 与 Coralogix 集成
 
@@ -120,7 +120,7 @@ ms.locfileid: "59578809"
 
 5. Coralogix 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，选择“编辑”按钮打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户声明”部分的“用户属性”对话框中，使用“编辑”图标编辑声明。 还可以使用“添加新声明”来添加声明，以配置 SAML 令牌属性，如上图所示。 然后执行以下步骤：
     

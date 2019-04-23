@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: dc3543af0a10c83d8ca212957a6345c8a70cd58b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 7fc42b24090b5fc68176fea2c7b993643ea24200
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279935"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59678218"
 ---
-# <a name="tutorial-customize-the-azure-iot-central-operators-view-new-ui-design"></a>教程：自定义 Azure IoT Central 操作员的视图（新 UI 设计）
+# <a name="tutorial-customize-the-azure-iot-central-operators-view"></a>教程：自定义 Azure IoT Central 操作员的视图
 
 本教程向构建人员介绍如何自定义应用程序的操作员视图。 以构建人员的身份对应用程序进行更改时，可在 Microsoft Azure IoT Central 应用程序中预览操作员的视图。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeconnoc
 ms.openlocfilehash: ba69a5aaffb39c26731ffd209587a8c8223b032a
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915351"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786235"
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>在 Azure 云服务中启用 Azure 诊断
 有关 Azure 诊断的背景信息，请参阅 [Azure 诊断概述](../azure-diagnostics.md)。

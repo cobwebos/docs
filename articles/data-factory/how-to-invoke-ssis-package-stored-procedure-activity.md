@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: sawinark
 ms.openlocfilehash: b71a954da746ba04aeaa0797c13bf2c81838179d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256288"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786704"
 ---
 # <a name="run-an-ssis-package-with-the-stored-procedure-activity-in-azure-data-factory"></a>在 Azure 数据工厂中使用存储过程活动运行 SSIS 包
 本文介绍如何使用存储过程活动在 Azure 数据工厂管道中运行 SSIS 包。 
@@ -59,7 +59,7 @@ ms.locfileid: "59256288"
 4. 选择“V2”作为“版本”。
 5. 选择数据工厂的**位置**。 下拉列表中仅显示数据工厂支持的位置。 数据工厂使用的数据存储（Azure 存储、Azure SQL 数据库等）和计算资源（HDInsight 等）可以位于其他位置。
 6. 选择“固定到仪表板”。     
-7. 单击“创建”。
+7. 单击**创建**。
 8. 在仪表板上，你会看状态如下的以下磁贴：“正在部署数据工厂”。 
 
      ![“正在部署数据工厂”磁贴](media//how-to-invoke-ssis-package-stored-procedure-activity/deploying-data-factory.png)

@@ -9,14 +9,14 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 096daa28b7548401adc857c3c6c8327ef1d1eb00
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.openlocfilehash: 2bd22dec13e2dba63c512276a0b36d4fc50e05f8
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769398"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59681550"
 ---
-# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central-new-ui-design"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作（新的 UI 设计）
+# <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>教程：在 Azure IoT Central 中配置用于设备的规则和操作
 
 *本文适用于操作员、构建者和管理员。*
 
@@ -50,7 +50,7 @@ ms.locfileid: "57769398"
 
     | 设置                                      | 值                             |
     | -------------------------------------------- | ------------------------------    |
-    | Name                                         | 空调温度警报 |
+    | 名称                                         | 空调温度警报 |
     | 为此此模板中的所有设备启用规则 | 启用                                |
     | 条件                                    | 温度大于 90    |
     | 聚合                                  | 无                              |

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, seodec18
 ms.openlocfilehash: f654f33fe03b29a3aa93386d49e8f5a43cffc9c8
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59493036"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-and-deploy-to-your-simulated-device"></a>教程：开发 Java IoT Edge 模块并将其部署到模拟设备
@@ -324,5 +324,5 @@ Azure IoT Edge 设备：
 在本教程中，你已创建一个 IoT Edge 模块，其中包含用于筛选 IoT Edge 设备生成的原始数据的代码。 可以继续阅读后续教程，了解如何使用 Azure IoT Edge 通过其他方式将数据转化为边缘业务见解。
 
 > [!div class="nextstepaction"]
-> [使用 SQL Server 数据库存储边缘中的数据](tutorial-store-data-sql-server.md)
+> [使用 SQL Server 数据库在边缘存储数据](tutorial-store-data-sql-server.md)
 

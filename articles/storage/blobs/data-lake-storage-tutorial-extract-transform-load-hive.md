@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jamesbak
-ms.openlocfilehash: cdb89b552d0e328e6685e2bd62ea135e15e4b074
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: a5e7fd200617661c38b65ebbd4473a1a729de457
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013451"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682349"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-apache-hive-on-azure-hdinsight"></a>教程：使用 Apache Hive on Azure HDInsight 提取、转换和加载数据
 
@@ -347,4 +347,4 @@ ms.locfileid: "58013451"
 若要了解使用 HDInsight 中的数据的更多方式，请参阅以下文章：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Databricks 提取、转换和加载数据](./data-lake-storage-use-hdi-cluster.md)
+> [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: db204a46-6460-4ace-bdbb-4353846723ad
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/17/2019
+ms.date: 04/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10ffd7207367d0bbdd670fb8402775b26952ae5d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 9d9f83e0b6136a27c0cd519a345e085040f47cc6
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852587"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680122"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-apex-portal"></a>教程：Azure Active Directory 与 Apex Portal 集成
 
@@ -68,7 +69,7 @@ ms.locfileid: "57852587"
 
 4. 在搜索框中，键入“Apex Portal”，在结果面板中选择“Apex Portal”，然后单击“添加”按钮添加该应用程序。
 
-     ![结果列表中的 Apex Portal](common/search-new-app.png)
+    ![结果列表中的 Apex Portal](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -106,21 +107,21 @@ ms.locfileid: "57852587"
 
     ![Apex Portal 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer name>.apexportal.net/saml/sso.aspx`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.apexanalytix.com/saml/sso.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.apexportal.net/saml/sso.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Apex Portal 客户端支持团队](mailto:support@apexanalytix.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. Apex Portal 应用程序需要采用特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
-    | Name | 源属性|
-    | ------------------- | -------------------- |
+    | 名称 | 源属性|
+    | -------- | --------- |
     | FIRSTNAME | user.givenname |
     | LASTNAME | user.surname |
     | MAIL | user.mail |
@@ -180,8 +181,7 @@ ms.locfileid: "57852587"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -233,4 +233,3 @@ ms.locfileid: "57852587"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-
