@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 2c15cac7897e25018057aa47cc2043050ed0ae5b
-ms.sourcegitcommit: b254db346732b64678419db428fd9eb200f3c3c5
+ms.openlocfilehash: cb5a08730b47cb5df3116aa4a54554ef0ee6f260
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/14/2018
-ms.locfileid: "53413194"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149744"
 ---
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>使用 Azure 资源管理器模板和 PowerShell 自动创建或修改实验室
 
@@ -28,7 +28,7 @@ ms.locfileid: "53413194"
 本文有助于指导用户完成使用这些模板和脚本自动创建、修改和部署实验室的过程。 本文还介绍在哪里可以找到关于如何在开发测试实验室中使用 PowerShell 执行一些常见任务的详细信息。
 
 ## <a name="step-1-gather-your-templates-and-scripts"></a>步骤 1：收集模板和脚本
-可以在公共 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中找到预制的 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates)和 [PowerShell 脚本](https://github.com/Azure/azure-devtestlab/tree/master/Scripts)。 按原样使用它们，或对它们进行自定义以满足需求，然后将它们存储在[专用 Git 存储库](devtest-lab-add-artifact-repo.md)中。
+可以在公共 [GitHub 存储库](https://github.com/Azure/azure-devtestlab)中找到预制的 [Azure 资源管理器模板](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)和 [PowerShell 脚本](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts)。 按原样使用它们，或对它们进行自定义以满足需求，然后将它们存储在[专用 Git 存储库](devtest-lab-add-artifact-repo.md)中。
 
 ## <a name="step-2-modify-your-azure-resource-manager-template"></a>步骤 2：修改 Azure 资源管理器模板
 如果之前从未创建过模板，则可以按照[创建第一个 Azure 资源管理器模板](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)中的步骤进行操作。

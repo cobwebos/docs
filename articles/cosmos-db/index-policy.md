@@ -1,76 +1,109 @@
 ---
 title: Azure Cosmos DB 索引编制策略
-description: 了解 Azure Cosmos DB 中索引的工作原理。 了解如何配置和更改索引策略，实现自动索引并提高性能。
-author: rimman
+description: 了解如何配置和更改的默认索引策略的自动索引并提高性能，Azure Cosmos DB 中。
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: 6998db1679e67f8ac4bf7c81ea9373c66a9618ee
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.author: thweiss
+ms.openlocfilehash: 67bc3076be91ade140b39b7dd8037299902546a9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278558"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005088"
 ---
-# <a name="index-policy-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
+# <a name="indexing-policies-in-azure-cosmos-db"></a>Azure Cosmos DB 中的索引策略
 
-可以通过配置以下参数来替代 Azure Cosmos 容器上的默认索引策略：
+在 Azure Cosmos DB 中，每个容器具有决定了应该如何建立容器的项的索引的索引策略。 默认的新索引策略创建了容器索引强制实施的任何字符串或数字，范围索引的每个项的每个属性，对于任何 GeoJSON 对象的空间索引键入点。 这样，您无需考虑索引和索引管理提前获取高查询性能。
 
-* **在索引中包括或排除项和路径**：可以排除或当插入或替换容器中的项时在索引中，包含特定项。 还可以包含或排除要跨容器编制索引的特定路径/属性。 路径可能包括通配符模式，例如 *。
+在某些情况下，你可能想要替代此自动行为，以更好地满足你的要求。 可以通过设置容器的索引策略来自定义其*索引模式*，并包括或排除*属性路径*。
 
-* **配置索引类型**：除了单元格区域建立索引的路径，你可以添加其他类型的索引，例如空间。
+## <a name="indexing-mode"></a>索引模式
 
-* **配置索引模式**：通过在容器上使用索引策略，可以配置不同的索引模式，例如“一致”或“无”。
+Azure Cosmos DB 支持两种索引模式：
 
-## <a name="indexing-modes"></a>索引模式
+- **一致**：如果容器的索引策略设置为一致，如创建、 更新或删除项的索引时同步更新。 这意味着将读取查询的一致性[为帐户配置的一致性](consistency-levels.md)。
 
-Azure Cosmos DB 支持两种索引模式，您可以通过索引策略的 Azure Cosmos 容器上配置：
+- **无**：如果容器的索引策略设置为 None，编制索引时有效地禁用了该容器。 这常用容器用作纯的键-值存储，而无需辅助索引时。 它还可以帮助加快大容量插入操作。
 
-* **一致**：如果 Azure Cosmos 容器的策略设置为*一致*，特定容器上的查询将按照为点读取指定的一致性级别 (例如，强、 有限过时、 会话或最终)。 
+## <a name="including-and-excluding-property-paths"></a>包括和排除属性路径
 
-  更新项时，会同步更新索引。 例如，对项执行插入、替换、更新和删除操作将导致更新索引。 一致索引支持一致的查询，但代价是影响写入吞吐量。 降低写入吞吐量取决于"路径包含在索引"和"一致性级别"。 一致索引模式旨在使索引保持最新实现所有更新并立即为查询提供服务。
+自定义索引策略可以指定显式包括或从索引中排除的属性路径。 通过优化的路径中编制索引的数量，可以降低您的容器使用的存储量并提高写入操作的延迟。 这些路径定义以下[索引的概述部分中所述的方法](index-overview.md#from-trees-to-property-paths)增加了以下信息：
 
-* **无**：索引模式为“无”的容器没有与之关联的索引。 如果 Azure Cosmos 数据库用作键值存储，并且只通过项的 ID 属性访问项，则通常使用该模式。
+- 通向标量值 （字符串或数字） 的路径结尾 `/?`
+- 通过一起讨论从数组的元素`/[]`表示法 (而不是`/0`，`/1`等。)
+- `/*`可以使用通配符来匹配节点下的任何元素
 
-  > [!NOTE]
-  > 配置索引模式作为*None*具有副作用的删除任何现有索引。 如果访问模式仅需要 ID 或自助链接，则应使用此选项。
+再次执行相同的示例：
 
-查询一致性级别的维护与常规读取操作的维护类似。 如果查询包含的容器的 azure Cosmos 数据库将返回错误*None*索引模式。 您可以查询作为扫描通过的显式**x-ms-documentdb-启用-扫描**REST API 中的标头或**EnableScanInQuery**使用.NET SDK 请求选项。 “EnableScanInQuery”当前不支持某些查询功能（如 ORDER BY），因为这些功能授权相应索引。
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 }
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
+
+- `headquarters`的`employees`路径是 `/headquarters/employees/?`
+- `locations``country`路径是 `/locations/[]/country/?`
+- 到下的任何内容的路径`headquarters`是 `/headquarters/*`
+
+中的索引策略明确包含路径，它也必须定义应应用于哪些索引类型，该路径，以及对于每个索引类型，此索引应用到的数据类型：
+
+| 索引类型 | 允许的目标数据类型 |
+| --- | --- |
+| 范围 | 字符串或数字 |
+| 空间 | 点、 LineString 或多边形 |
+
+例如，我们可以包括`/headquarters/employees/?`路径以及指定那些`Range`索引应适用于在该路径上两`String`和`Number`值。
+
+### <a name="includeexclude-strategy"></a>包括/排除策略
+
+任何索引策略必须包含的根路径`/*`为包含或排除的路径。
+
+- 包括要有选择性地排除不需要要编制索引的路径的根路径。 这是建议的方法，它可以让 Azure Cosmos DB 主动索引可能会添加到您的模型的任何新属性。
+- 排除要有选择性地包含需要编制索引的路径的根路径。
+
+请参阅[本节](how-to-manage-indexing-policy.md#indexing-policy-examples)为索引策略示例。
 
 ## <a name="modifying-the-indexing-policy"></a>修改索引策略
 
-在 Azure Cosmos DB 中，可以随时更新容器的索引策略。 索引策略对 Azure Cosmos 容器中的更改可能会导致索引形状中的更改。 此更改会影响可编制索引的路径、其精度以及索引本身的一致性模型。 索引策略的更改实际上要求将旧索引转换为新索引。
+可以在任意时间更新容器的索引策略[通过使用 Azure 门户或某个受支持的 Sdk](how-to-manage-indexing-policy.md)。 对索引策略的更新触发从旧索引转换为新密码，而执行联机就地 （因此，在操作期间会占用更多存储空间）。 旧策略索引有效地转换到新的策略不会影响的写入可用性或容器上预配的吞吐量。 索引转换是一个异步操作，并完成所需的时间取决于预配的吞吐量、 项的数目和其大小。 
 
-### <a name="index-transformations"></a>索引转换
+> [!NOTE]
+> 正在重新编制索引时，查询可能不会返回所有匹配的结果，并会进行截断而不返回任何错误。 这意味着查询结果可能不是一致，直到完成索引转换。 可以跟踪索引转换进度[通过使用某个 Sdk](how-to-manage-indexing-policy.md)。
 
-所有索引转换都是联机进行的。 不会影响的写入可用性或容器上预配的吞吐量可以按照新策略有效转换按照旧策略索引的项。 读取和编写通过使用 REST API、 Sdk，或使用执行的操作的存储过程和触发器在索引转换过程不受影响的一致性。
+如果新索引策略模式设置为一致，索引转换正在进行时，可以不应用任何其他索引策略更改。 通过索引策略模式设置为 None （它将立即删除索引），可以取消正在运行的索引转换。
 
-更改索引策略是一个异步操作，并完成该操作的时间取决于项数、 预配的吞吐量和的项的大小。 正在重新编制索引时，查询可能返回所有匹配的结果，如果使用的索引，它被修改，查询和查询不会返回任何错误/失败。 正在重新编制索引时，查询最终是一致而不考虑索引模式配置。 索引转换完成后，将继续看到一致的结果。 这适用于由 REST API、SDK 等接口或存储过程和触发器发出的查询。 以异步方式在后台，通过使用特定副本可用的备用资源在副本上执行索引转换。
+## <a name="indexing-policies-and-ttl"></a>索引策略和 TTL
 
-所有索引转换都已到位。 Azure Cosmos DB 不维护索引的两个副本。 因此，在索引转换发生时，容器中不需要也不占用额外的磁盘空间。
+[生存时间 (TTL) 功能](time-to-live.md)需要索引上开启的容器处于活动状态。 这意味着：
 
-更改索引策略时，更改应用的目的是从旧索引移动到新的索引和主要基于索引模式配置。 与其他属性（如包括/排除路径，索引种类和精度）相比，索引模式配置起主要作用。
+- 不能激活其中索引模式设置为无的容器上的 TTL
+- 不能将索引模式设置为无在容器上其中激活 TTL。
 
-如果新旧索引策略都使用“一致”索引，则 Azure Cosmos 数据库执行联机索引转换。 转换正在进行时，不能应用一致索引模式下的其他索引策略更改。 当切换到“无”索引模式时，会立即删除索引。 当想要取消正在进行的转换，并开始使用不同的索引策略时，切换到“无”模式非常有用。
+对于在没有属性路径需要编制索引，但 TTL 是必需的方案，可以使用带有索引策略：
 
-## <a name="modifying-the-indexing-policy---examples"></a>修改索引策略 - 示例
+- 索引编制模式设置为一致，并
+- 任何包含的路径，并
+- `/*` 作为唯一排除路径。
 
-以下是你想要更新的索引策略的最常见用例：
+## <a name="obsolete-attributes"></a>已过时的特性
 
-* 如果你想要正常操作期间，具有一致的结果，但若要故障回复到**None**在大容量数据导入期间的索引模式。
+使用索引策略时，可能会遇到现已过时的以下属性：
 
-* 如果要在当前 Azure Cosmos 容器上开始使用索引功能。 例如，可使用地理空间查询，这需要空间索引种类；或使用 ORDER BY/字符串范围查询，这需要字符串范围索引种类。
-
-* 如果要手动选择要编制索引的属性，并随时更改它们以适应工作负载。
-
-* 如果要调整索引精度，以提高查询性能或减少占用的存储。
+- `automatic` 一个布尔值定义索引策略的根目录。 它现在被忽略，并可以将设置为`true`，当你使用该工具需要它。
+- `precision` 在包括的路径的索引级别定义一个数字。 它现在被忽略，并可以将设置为`-1`，当你使用该工具需要它。
+- `hash` 是一种索引类型，将立即被替换为范围种类。
 
 ## <a name="next-steps"></a>后续步骤
 
 阅读以下文章中有关索引的详细信息：
 
-* [索引概览](index-overview.md)
-* [索引类型](index-types.md)
-* [索引路径](index-paths.md)
-* [如何管理索引策略](how-to-manage-indexing-policy.md)
+- [索引概述](index-overview.md)
+- [如何管理索引策略](how-to-manage-indexing-policy.md)

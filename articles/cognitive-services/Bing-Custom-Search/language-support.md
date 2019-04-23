@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: v-gedod
-ms.openlocfilehash: 942e61b0ee69402d516982c66a852d5e26304809
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.openlocfilehash: e395fc96c560c6c6c1671e472840ba0f2a316d98
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55859431"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006771"
 ---
 # <a name="language-and-region-support-for-the-bing-custom-search-api"></a>必应自定义搜索 API 的语言和区域支持
 
@@ -42,7 +42,7 @@ ms.locfileid: "55859431"
 |芬兰|FI|
 |法国|FR|
 |德国|DE|
-|香港特别行政区|HK|
+|中国香港特别行政区|HK|
 |印度|IN|
 |印度尼西亚|ID|
 |意大利|IT|
@@ -86,7 +86,7 @@ ms.locfileid: "55859431"
 |芬兰|芬兰语|fi-FI|
 |法国|法语|fr-FR|
 |德国|德语|de-DE|
-|香港特别行政区|繁体中文|zh-HK|
+|中国香港特别行政区|繁体中文|zh-HK|
 |印度|英语|en-IN|
 |印度尼西亚|英语|en-ID|
 |意大利|意大利语|it-IT|

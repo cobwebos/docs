@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: b938a2b3ea8ee4ab8bcc594b4b40db9384d22551
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679068"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149693"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -208,7 +208,7 @@ Heartbeat
 
 ## <a name="install-updates"></a>安装更新
 
-对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建的更新部署，必须具有到自动化帐户的写访问权限，并且写入访问权限的任何 Azure Vm 中部署的目标。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要了解有关计算机组的详细信息，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
+对工作区中的所有 Linux 和 Windows 计算机进行更新评估后，可以通过创建“更新部署”安装必需的更新。 若要创建更新部署，必须具有到自动化帐户的写访问权限和写入访问权限，并针对部署中的任何 Azure Vm。 更新部署是为一台或多台计算机计划的必需更新安装。 应当指定部署日期和时间，以及要在部署范围中包括的计算机或计算机组。 若要了解有关计算机组的详细信息，请参阅[Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md)。
 
 在更新部署中包括计算机组时，只会在创建计划时对组成员身份评估一次。 不会反映对组所做的后续更改。 若要解决这种用法[动态组](#using-dynamic-groups)，这些组在部署时解析和为 Azure Vm 或非 Azure Vm 的已保存的搜索查询定义。
 
@@ -223,7 +223,7 @@ Heartbeat
 
 | 属性 | 描述 |
 | --- | --- |
-| 名称 |用于标识更新部署的唯一名称。 |
+| Name |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 若要更新的组 |适用于 Azure 机定义的订阅、 资源组、 位置和标记来生成要在部署中包含的 Azure Vm 的动态组组合所基于的查询。 </br></br>对于非 Azure 计算机，选择现有的已保存搜索以选择要包括在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
@@ -333,8 +333,8 @@ $ServiceManager.AddService2($ServiceId,7,"")
 
 ## <a name="third-party"></a> Windows 上的第三方修补程序
 
-更新管理依赖于 WSUS 或 Windows 更新来修补受支持的 Windows 系统。 可以使用 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
-) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 在这种情况下，允许更新管理使用第三方软件来修补使用 WSUS 作为其更新存储库的计算机。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/sccm/sum/tools/install-updates-publisher)。
+更新管理依赖于要修补程序支持的 Windows 系统的本地配置的更新存储库。 这是 WSUS 或 Windows 更新。 可以使用 [System Center Updates Publisher](/sccm/sum/tools/updates-publisher
+) (Updates Publisher) 之类的工具将自定义更新发布到 WSUS 中。 这种情况下允许使用 System Center Configuration Manager 作为其更新存储库与第三方软件的修补程序计算机更新管理。 若要了解如何配置 Updates Publisher，请参阅[安装 Updates Publisher](/sccm/sum/tools/install-updates-publisher)。
 
 ## <a name="ports"></a>网络规划
 

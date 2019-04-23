@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 9d0a803f8a397d3c24f083188b6186acf4dde809
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 720a6c57d4f1a6079f78244559a25018349bd378
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122869"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011228"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>如何调用文本分析 REST API
 
@@ -26,7 +26,7 @@ ms.locfileid: "58122869"
 回想一下，文本分析是无状态的，因此，没有任何要管理的数据资产。 收到文本后将对其进行上传和分析，其结果会立即返回到调用应用程序。
 
 > [!Tip]
-> 对于一次性调用以了解 API 的工作原理，可以从内置 API 测试控制台发送 POST 请求，可在任何 [API 文档页](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)上使用。 没有任何设置，且唯一要求是将访问密钥和 JSON 文档粘贴到该请求。 
+> 对于一次性调用以了解 API 的工作原理，可以从内置 API 测试控制台发送 POST 请求，可在任何 [API 文档页](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6)上使用。 没有任何设置，且唯一要求是将访问密钥和 JSON 文档粘贴到该请求。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -43,7 +43,7 @@ ms.locfileid: "58122869"
 | 元素 | 有效值 | 必需？ | 使用情况 |
 |---------|--------------|-----------|-------|
 |`id` |数据类型为字符串，但实际上文档 ID 往往是整数。 | 需要 | 系统使用你提供的 ID 来构建输出。 为请求中的每个 ID 生成语言代码、关键短语和情绪分数。|
-|`text` | 非结构化的原始文本，最多 5,120 个字符。 | 需要 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../text-analytics-supported-languages.md)。 |
+|`text` | 非结构化原始文本，最多 5,120 个字符。 | 需要 | 对于语言检测，可以使用任何语言来表示文本。 对于情绪分析、关键短语提取和实体标识，此文本必须使用[支持的语言](../text-analytics-supported-languages.md)。 |
 |`language` | [支持语言](../text-analytics-supported-languages.md)的 2 字符 [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) 代码 | 多种多样 | 需要情绪分析、关键短语提取、实体链接；语言检测为可选。 排除语言检测不会有任何错误，但没有它会削弱分析。 语言代码应对应你提供的 `text`。 |
 
 有关限制的详细信息，请参阅[文本分析概述 > 数据限制](../overview.md#data-limits)。 
@@ -60,10 +60,10 @@ ms.locfileid: "58122869"
 
    资源终结点如下所示（你的区域可能有所不同）：
 
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyPhrases`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
-   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/keyPhrases`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
+   + `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 2. 设置三个请求标头：
 
@@ -81,10 +81,10 @@ ms.locfileid: "58122869"
 
 5. 采用对预期分析有效的格式粘贴某些 JSON 文档。 有关特定分析的详细信息，请参阅下面的主题：
 
-   + [语言检测](text-analytics-how-to-language-detection.md)  
-   + [关键短语提取](text-analytics-how-to-keyword-extraction.md)  
-   + [情绪分析](text-analytics-how-to-sentiment-analysis.md)  
-   + [实体识别（预览版）](text-analytics-how-to-entity-linking.md)  
+  + [语言检测](text-analytics-how-to-language-detection.md)  
+  + [关键短语提取](text-analytics-how-to-keyword-extraction.md)  
+  + [情绪分析](text-analytics-how-to-sentiment-analysis.md)  
+  + [实体识别](text-analytics-how-to-entity-linking.md)  
 
 
 6. 单击“发送”以提交请求。 每分钟可以提交多达 100 个请求。 

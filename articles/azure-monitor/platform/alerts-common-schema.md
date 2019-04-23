@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 8f8dcff0b72ea92e835c0702113a9cb6a7678e86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: c18227a491478d0d8010761440a54fd088344b39
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851695"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149370"
 ---
 # <a name="common-alert-schema"></a>常见警报架构
 
@@ -39,14 +39,14 @@ ms.locfileid: "58851695"
 |:---|:---|
 | SMS | 用于所有警报类型的一致的 SMS 模板。 |
 | 电子邮件 | 一致且详细的电子邮件模板，从而可以轻松地诊断问题一目了然。 嵌入的深度链接到门户和受影响的资源上的警报实例确保，你可以快速跳转到修正过程。 |
-| Webhook/逻辑应用/Azure 函数 | 一致 JSON 结构的所有警报类型，以便您可以轻松地跨不同的警报类型生成集成。 |
+| Webhook/逻辑应用/Azure 函数/自动化 Runbook | 一致 JSON 结构的所有警报类型，以便您可以轻松地跨不同的警报类型生成集成。 |
 
 新架构还可以实现更丰富的警报消费体验在 Azure 门户和 Azure 移动应用在不久的将来。 
 
-[了解有关 Webhook/逻辑应用/Azure 函数的架构定义的详细信息。](https://aka.ms/commonAlertSchemaDefinitions)
+[了解有关 Webhook/逻辑应用/Azure 函数/自动化 Runbook 的架构定义的详细信息。](https://aka.ms/commonAlertSchemaDefinitions)
 
 > [!NOTE]
-> 以下操作不支持常见的警报架构：ITSM 连接器，自动化 Runbook。
+> 以下操作不支持常见的警报架构：ITSM 连接器。
 
 ## <a name="how-do-i-enable-the-common-alert-schema"></a>如何启用常见警报架构？
 
@@ -54,11 +54,10 @@ ms.locfileid: "58851695"
 
 > [!NOTE]
 > 1. 以下警报类型默认情况下支持的常见架构 (不选择在所需):
->     * 失败异常警报
+>     * 智能检测警报
 > 1. 以下警报类型目前不支持公用架构：
->     * 服务运行状况警报
->     * 活动日志-安全警报
 >     * 生成的警报[Vm 的 Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-overview)
+>     * 生成的警报[Azure 成本管理](https://docs.microsoft.com/azure/billing/billing-cost-management-budget-scenario)
 
 ### <a name="through-the-azure-portal"></a>通过 Azure 门户
 
@@ -69,7 +68,7 @@ ms.locfileid: "58851695"
 
 ### <a name="through-the-action-groups-rest-api"></a>通过操作组 REST API
 
-此外可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups)可以选择将常见的警报架构。 同时让[创建或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)REST API 调用时，可以设置标志"useCommonAlertSchema"为 'true' （若要选择加入） 或 false （若要选择退出） 的任何以下操作的电子邮件/webhook/逻辑应用/Azure 函数。
+此外可以使用[操作组 API](https://docs.microsoft.com/rest/api/monitor/actiongroups)可以选择将常见的警报架构。 同时让[创建或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)REST API 调用时，可以设置标志"useCommonAlertSchema"为 'true' （若要选择加入） 或 false （若要选择退出） 的任何以下操作的电子邮件/webhook/逻辑应用/Azure 函数/自动化 runbook。
 
 例如，以下请求正文对所做[创建或更新](https://docs.microsoft.com/rest/api/monitor/actiongroups/createorupdate)REST API 将执行以下操作：
 
@@ -125,7 +124,7 @@ ms.locfileid: "58851695"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [Webhook/逻辑应用/Azure Functions 的常见警报架构定义。](https://aka.ms/commonAlertSchemaDefinitions)
+- [通用警报架构定义的 Webhook/逻辑应用/Azure 函数/自动化 Runbook。](https://aka.ms/commonAlertSchemaDefinitions)
 
 
 

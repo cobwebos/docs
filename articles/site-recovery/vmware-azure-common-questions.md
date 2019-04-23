@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/08/2019
+ms.date: 04/18/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 2ab29c6e41204104320f4c2f583a24e53786bf3c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360547"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004765"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -111,7 +111,7 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="can-i-change-the-managed-disk-type-after-machine-is-protected"></a>受保护计算机后是否可以更改托管的磁盘类型？
 
-是的您可以轻松地[更改托管磁盘的类型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)。 但是，如果可以将托管的磁盘类型，等待最新恢复点，如果您需要执行故障转移或测试故障转移在更改后生成。
+是的您可以轻松地[更改托管磁盘的类型](https://docs.microsoft.com/azure/virtual-machines/windows/convert-disk-storage)。 之前更改的类型，请确保你通过 Azure 门户上转到托管磁盘资源撤销磁盘 SAS URL。 概述边栏选项卡中，取消正在进行的任何导出。 撤消 SAS URL 后, 接下来的几分钟内更改磁盘类型。 但是，如果您更改托管的磁盘类型，请等待要生成的 Azure Site Recovery 的最新恢复点。 针对任何测试故障转移或故障转移今后使用新的恢复点。
 
 ### <a name="can-i-switch-replication-from-managed-disks-to-unmanaged-disks"></a>是否可以切换到非托管磁盘复制托管磁盘？
 
@@ -220,11 +220,11 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 ### <a name="when-im-setting-up-the-configuration-server-can-i-download-and-install-mysql-manually"></a>设置配置服务器时，是否可以手动下载并安装 MySQL？
 
-是的。 请下载 MySQL 并将其置于 **C:\Temp\ASRSetup** 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
+可以。 请下载 MySQL 并将其置于 **C:\Temp\ASRSetup** 文件夹中。 然后手动安装它。 设置配置服务器 VM 并接受条款后，MySQL 在“下载并安装”中将列出为“已安装”。
 
 ### <a name="can-i-avoid-downloading-mysql-but-let-site-recovery-install-it"></a>我是否可以避免下载 MySQL 但让 Site Recovery 安装它？
 
-是的。 请下载 MySQL 安装程序并将其置于 **C:\Temp\ASRSetup** 文件夹中。  如果设置了配置服务器 VM 时，接受条款，然后单击**下载并安装**。 门户将使用安装程序添加到安装 MySQL。
+可以。 请下载 MySQL 安装程序并将其置于 **C:\Temp\ASRSetup** 文件夹中。  如果设置了配置服务器 VM 时，接受条款，然后单击**下载并安装**。 门户将使用安装程序添加到安装 MySQL。
  
 ### <a name="can-i-use-the-configuration-server-vm-for-anything-else"></a>是否可以将配置服务器 VM 用于任何其他项？
 否，只能将该 VM 用于配置服务器。 
@@ -287,11 +287,11 @@ Azure 具有复原能力。 Site Recovery 能够根据 Azure SLA 故障转移到
 ## <a name="automation-and-scripting"></a>自动化和脚本
 
 ### <a name="can-i-set-up-replication-with-scripting"></a>是否可以使用脚本设置复制？
-是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。[了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
+可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将 Site Recovery 工作流自动化。[了解详细信息](vmware-azure-disaster-recovery-powershell.md)。
 
 ## <a name="performance-and-capacity"></a>性能和容量
 ### <a name="can-i-throttle-replication-bandwidth"></a>是否可以限制复制带宽？
-是的。 [了解详细信息](site-recovery-plan-capacity-vmware.md)。
+可以。 [了解详细信息](site-recovery-plan-capacity-vmware.md)。
 
 
 ## <a name="next-steps"></a>后续步骤

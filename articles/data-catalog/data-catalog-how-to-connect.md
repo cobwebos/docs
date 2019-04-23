@@ -2,21 +2,21 @@
 title: 如何连接到 Azure 数据目录中的数据源
 description: 操作指南文章重点说明如何使用 Azure 数据目录连接到发现的数据源。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 4e6b27a5-cf75-4012-b88c-333c1fe638e8
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 973077b56f1a777d917a94f9c1470e6f8c15a489
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: c64340491dba11870364610a6c2ff62e25c1328a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405048"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000566"
 ---
 # <a name="how-to-connect-to-data-sources"></a>如何连接到数据源
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 此方案的一个重要方面在于使用数据 - 用户发现数据源并了解其用途后，下一步就是连接到数据源将其数据投入使用。
 
 ## <a name="data-source-locations"></a>数据源位置

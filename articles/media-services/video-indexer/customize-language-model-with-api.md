@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
-ms.openlocfilehash: c2c722331c95e72bae5605606564a2083e2802e3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ca1e66d20b19c1a5b85a4f4ff1c433331116bee7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075026"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002028"
 ---
 # <a name="customize-a-language-model-with-the-video-indexer-apis"></a>使用视频索引器 API 自定义语言模型
 
@@ -47,17 +47,17 @@ curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cus
 --data-ascii "{body}" 
 ```
 
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-PersonModel?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?)。
 
 ### <a name="request-parameters"></a>请求参数
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|字符串|是|帐户的全局唯一标识符|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|modelName|字符串|是|语言模型的名称|
-|语言|字符串|是|语言模型的语言。 <br/>必须以“语言标记-区域”BCP-47 格式（例如“en-US”）为 **language** 参数指定语言。 支持的语言包括英语 (en-US)、德语 (de-DE)、西班牙语 (es-SP)、阿拉伯语 (ar-EG)、法语 (fr-FR)、印地语 (hi-HI)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、俄语 (ru-RU) 和中文 (zh-CN)。  |
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountId|string|是|帐户的全局唯一标识符|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|modelName|string|是|语言模型的名称|
+|语言|string|是|语言模型的语言。 <br/>必须以“语言标记-区域”BCP-47 格式（例如“en-US”）为 **language** 参数指定语言。 支持的语言包括英语 (en-US)、德语 (de-DE)、西班牙语 (es-SP)、阿拉伯语 (ar-EG)、法语 (fr-FR)、印地语 (hi-HI)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、俄语 (ru-RU) 和中文 (zh-CN)。  |
 
 ### <a name="request-body"></a>请求正文
 
@@ -118,16 +118,16 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Train?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5bac3cf761779a6c2ab27?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Train-Language-Model?&pattern=train)。
 
 ### <a name="request-parameters"></a>请求参数
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|语言模型 ID（创建语言模型时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -183,16 +183,16 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5ba53782606e91f65be9d?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model?&pattern=delete)。
 
 ### <a name="request-parameters"></a>请求参数 
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|语言模型 ID（创建语言模型时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -225,18 +225,18 @@ curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Cust
 --data-ascii "{body}" 
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b3ce85f4684240bdb78f?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model?&pattern=update)。
 
 ### <a name="request-parameters"></a>请求参数 
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|modelName|字符串|否|可为模型指定的新名称|
-|enable|布尔值|否|选择此模型下的所有文件是已启用 (true) 还是已禁用 (false)|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|语言模型 ID（创建语言模型时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|modelName|string|否|可为模型指定的新名称|
+|enable|boolean|否|选择此模型下的所有文件是已启用 (true) 还是已禁用 (false)|
 
 ### <a name="request-body"></a>请求正文
 
@@ -294,19 +294,19 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}?fileName={string}&enable={string}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b60547f33c1c2b2d1375?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Language-Model-file?&pattern=update)。
 
 ### <a name="request-parameters"></a>请求参数 
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountId|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
-|fileName|字符串|否|将文件名更新后的名称|
-|enable|布尔值|否|在语言模型中更新此文件的已启用 (true) 或已禁用 (false) 状态|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountId|string|是|帐户的全局唯一标识符|
+|modelId|string|是|保存文件的语言模型的 ID（创建语言模型时生成）|
+|fileId|string|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|fileName|string|否|将文件名更新后的名称|
+|enable|boolean|否|在语言模型中更新此文件的已启用 (true) 或已禁用 (false) 状态|
 
 ### <a name="request-body"></a>请求正文
 
@@ -344,16 +344,16 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b4fcbd9b437d27d53f16)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model?&pattern=get)。
 
 ### <a name="request-parameters-and-request-body"></a>请求参数和请求正文
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|语言模型 ID（创建语言模型时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|语言模型 ID（创建语言模型时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -409,15 +409,15 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b4979e6ecbd30faa6f75?)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Models?&pattern=get)。
 
 ### <a name="request-parameters"></a>请求参数
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -480,17 +480,17 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b57b5de51e64ee52242e)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Language-Model-File?&pattern=delete)。
 
 ### <a name="request-parameters"></a>请求参数 
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|保存文件的语言模型的 ID（创建语言模型时生成）|
+|fileId|string|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -517,17 +517,17 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Person
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b73f9e6416d7a9965b42)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Language-Model-File-Data?&pattern=get%20language%20model)。
 
 ### <a name="request-parameters"></a>请求参数 
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|保存文件的语言模型的 ID（创建语言模型时生成）|
+|fileId|string|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文
 
@@ -566,17 +566,17 @@ https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Langua
 curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/Language/{modelId}/Files/{fileId}/download?accessToken={accessToken}"
 ```
  
-[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/5ae5b99e522cb47bd9679122)。
+[使用视频索引器开发人员门户查看所需的参数并进行测试](https://api-portal.videoindexer.ai/docs/services/operations/operations/Download-Language-Model-File-Content?)。
 
 ### <a name="request-parameters"></a>请求参数 
 
 |**名称**|类型|**必需**|**说明**|
 |---|---|---|---|
-|位置|字符串|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
-|accountID|字符串|是|帐户的全局唯一标识符|
-|modelId|字符串|是|保存文件的语言模型的 ID（创建语言模型时生成）|
-|fileId|字符串|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
-|accessToken|字符串|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
+|位置|string|是|应将调用路由到的 Azure 区域。 有关详细信息，请参阅 [Azure 区域和视频索引器](regions.md)。|
+|accountID|string|是|帐户的全局唯一标识符|
+|modelId|string|是|保存文件的语言模型的 ID（创建语言模型时生成）|
+|fileId|string|是|正在更新的文件的 ID（在创建或更新语言模型的过程中上传文件时生成）|
+|accessToken|string|是|用于针对调用进行身份验证的访问令牌（必须是[帐户访问令牌](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)范围）。 访问令牌在 1 小时内过期。|
 
 ### <a name="request-body"></a>请求正文 
 

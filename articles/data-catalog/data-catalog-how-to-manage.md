@@ -2,21 +2,21 @@
 title: 管理 Azure 数据目录中的数据资产
 description: 本文重点说明如何控制在 Azure 数据目录中注册的数据资产的可见性和所有权。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 623f5ed4-8da7-48f5-943a-448d0b7cba69
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 46af78dae6d5c1607f56d36732adce5e677e0c65
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 0b155a5cdfa1c540e1cfb92147f6ebc7f88dd929
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407632"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000634"
 ---
 # <a name="manage-data-assets-in-azure-data-catalog"></a>管理 Azure 数据目录中的数据资产
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 数据目录设计用于发现数据源，使用户能够轻松发现和理解执行分析和做出决策所需的数据源。 当你和其他用户能够找到并了解最广泛的可用数据源时，这些发现功能可以产生最大的影响。 考虑到这些因素，数据目录的默认行为是让所有目录用户都能看见并发现所有已注册的数据源。
 
 数据目录不允许访问数据本身。 数据源的所有者控制数据访问权限。 使用数据目录可以发现数据源，以及查看与目录中注册的源相关的元数据。

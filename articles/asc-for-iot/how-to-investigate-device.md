@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 6182662cb0da7fa5bcd3f329ada9ca5851490724
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792211"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007876"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
@@ -43,7 +43,7 @@ ASC for IoT 默认将安全警报和建议存储在 Log Analytics 工作区中�
 查找 Log Analytics 工作区中的数据存储位置：
 
 1. 打开 IoT 中心， 
-1. 单击“安全性”，然后选择“设置”。
+1. 下**安全**，单击**概述**，然后选择**设置**。
 1. 更改 Log Analytics 工作区配置详细信息。 
 1. 单击“ **保存**”。 
 
@@ -94,7 +94,7 @@ ASC for IoT 默认将安全警报和建议存储在 Log Analytics 工作区中�
 
 ### <a name="open-ports"></a>打开端口
 
-若要查找设备中的哪些端口正在使用或使用了的扩展，请使用以下 kql 查询： 
+若要找出哪些端口的设备中当前正在使用或使用了，使用以下 kql 查询： 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -147,12 +147,12 @@ ASC for IoT 默认将安全警报和建议存储在 Log Analytics 工作区中�
 
     Use the query results to discover:
   1. 哪些用户登录到了设备？
-  2. 在中记录的用户应该以用户身份登录？
+  2. 是在中，记录的用户应该能够登录？
   3. 登录的用户是从预期还是意外的 IP 地址连接的？
   
 ### <a name="process-list"></a>进程列表
 
-若要查找的进程列表是否为预期使用以下 kql 查询： 
+若要查找的进程列表是否按预期方式，请使用以下 kql 查询： 
 
   ~~~
   let device = "YOUR_DEVICE_ID";
@@ -188,4 +188,5 @@ ASC for IoT 默认将安全警报和建议存储在 Log Analytics 工作区中�
   3. 所有命令行执行是否包含正确的预期参数？
 
 ## <a name="next-steps"></a>后续步骤
+
 调查设备并更好地了解风险后，可能需要考虑[配置自定义警报](quickstart-create-custom-alerts.md)，以改善 IoT 解决方案的安全态势。 如果没有设备代理，请考虑[部署安全代理](how-to-deploy-agent.md)或[更改现有设备代理的配置](how-to-agent-configuration.md)，以改善结果。 

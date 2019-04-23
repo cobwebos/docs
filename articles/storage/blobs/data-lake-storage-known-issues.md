@@ -8,20 +8,20 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: normesta
-ms.openlocfilehash: 89cfdbdaa034bae5ca736ccb9164255b833ed75d
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
-ms.translationtype: MT
+ms.openlocfilehash: d56fb411eb032e5e6227d68cd8abe02c0e30850b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57194702"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006856"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 的已知问题
 
 本文包含 Data Lake Storage Gen2 的已知问题和临时限制。
 
-## <a name="sdk-support-for-data-lake-storage-gen2-accounts"></a>SDK 支持的数据湖存储第 2 代帐户
+## <a name="sdk-support-for-data-lake-storage-gen2-accounts"></a>针对 Data Lake Storage Gen2 帐户的 SDK 支持
 
-Sdk 提供将使用数据湖存储第 2 代帐户不存在。
+没有可用于 Data Lake Storage Gen2 帐户的 SDK。
 
 ## <a name="blob-storage-apis"></a>Blob 存储 API
 
@@ -47,13 +47,13 @@ Data Lake Storage Gen2 帐户尚不能使用 Blob 存储 API。
 
 Blob 存储 API 和 Azure Data Lake Gen2 API 不能互操作。
 
-如果有使用 Blob API 的工具、应用程序、服务或脚本，并且希望使用它们处理上传到帐户的所有内容，则在 Blob API 与 Azure Data Lake Gen2 API 实现互操作之前，请勿在 Blob 存储帐户中启用分层命名空间。 使用未启用分层命名空间的存储帐户意味着无法访问 Data Lake Storage Gen2 特定的功能，例如目录和文件系统访问控制列表。
+如果有使用 Blob API 的工具、应用程序、服务或脚本，并且希望使用它们处理上传到帐户的所有内容，则在 Blob API 与 Azure Data Lake Gen2 API 实现互操作之前，请勿在 Blob 存储帐户中启用分层命名空间。 使用存储帐户没有分层命名空间，则意味着您然后不会访问数据湖存储第 2 代特定功能，例如目录和文件系统访问控制列表。
 
 ## <a name="azure-storage-explorer"></a>Azure 存储资源管理器
 
 若要使用 Azure 存储资源管理器查看或管理 Data Lake Storage Gen2 帐户，你必须至少具有可[免费下载](https://azure.microsoft.com/features/storage-explorer/)的此工具的版本 `1.6.0`。
 
-请注意，嵌入到 Azure 门户中的存储资源管理器的版本当前不支持查看或管理启用了分层命名空间功能的 Data Lake Storage Gen2 帐户。
+请注意，当前未嵌入到 Azure 门户的存储资源管理器的版本不支持查看或管理数据湖存储第 2 代帐户层次结构命名空间启用了功能。
 
 ## <a name="blob-viewing-tool"></a>Blob 查看工具
 

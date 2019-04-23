@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/07/2018
 ms.author: rkmanda
-ms.openlocfilehash: 192966eef20ac59ac3a6eb14d7d450357989b851
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7479d9a230bd28c2ed2e4c8c79ba9301028af36c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879686"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007621"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT 中心高可用性和灾难恢复
 
@@ -82,8 +82,6 @@ RTO 较高的原因是，Microsoft 必须代表该区域中所有受影响的客
 > - 不应针对生产环境中使用的 IoT 中心执行测试演练。
 >
 > - 不应使用手动故障转移作为在 Azure 异地配对区域之间永久迁移中心的机制。 否则，会增大从驻留在旧主要区域中的设备针对中心执行的操作的延迟。
->
-> - 手动故障转移目前以预览版提供，在以下 Azure 区域不可用。 美国东部、美国西部、北欧、西欧、巴西南部、美国中南部。
 
 ### <a name="failback"></a>故障回复
 

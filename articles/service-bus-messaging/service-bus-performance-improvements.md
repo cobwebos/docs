@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: edd7a397598bcb5941f3ac1b29d385d6eac40f8d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: f5ce8a237bc2ba7fe15acfcd6afa0edcda7ef713
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501631"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996010"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>使用服务总线消息传递改进性能的最佳实践
 
@@ -94,6 +94,15 @@ MessagingFactory messagingFactory = MessagingFactory.Create(namespaceUri, mfs);
 ```
 
 批处理不会影响可计费的消息操作的数目，且仅适用于使用 [Microsoft.ServiceBus.Messaging](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) 库的服务总线客户端协议。 HTTP 协议不支持批处理。
+
+> [!NOTE]
+> 设置 BatchFlushInterval 可确保进行隐式从应用程序的角度来看批处理。 应用程序即发出 sendasync （） 和 CompleteAsync() 调用并不会使特定的批处理调用。
+>
+> 可以通过利用实现显式客户端端批处理方法调用-下方 
+> ```csharp
+> Task SendBatchAsync (IEnumerable<BrokeredMessage> messages);
+> ```
+> 下面的消息的组合的大小必须小于支持的定价层的最大大小。
 
 ## <a name="batching-store-access"></a>批处理存储访问
 

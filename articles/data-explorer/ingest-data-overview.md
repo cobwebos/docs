@@ -7,12 +7,12 @@ ms.reviewer: mblythe
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.openlocfilehash: 6c9cb7282ba9d99ea643bbd023d876b8fbe3904c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 891d2acc42f8d6f03976f0553e2e3127bc6d16f7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045588"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011229"
 ---
 # <a name="azure-data-explorer-data-ingestion"></a>Azure 数据资源管理器数据引入
 
@@ -52,7 +52,7 @@ Azure 数据资源管理器目前支持：
 
 ### <a name="ingestion-using-integration-services"></a>使用集成服务的引入
 
-* Azure 数据工厂 (ADF)，一个完全托管的数据集成服务，在 Azure 中，若要向 / 从 Azure 数据资源管理器使用复制数据的分析工作负荷[支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)。 有关详细信息，请参阅[使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据](/azure/data-factory/connector-azure-data-explorer)。
+* Azure 数据工厂 (ADF)，一个完全托管的数据集成服务，在 Azure 中，若要向 / 从 Azure 数据资源管理器使用复制数据的分析工作负荷[支持的数据存储和格式](/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)。 有关详细信息，请参阅[将数据从 Azure 数据工厂复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。
 
 ### <a name="programmatic-ingestion"></a>编程引入
 

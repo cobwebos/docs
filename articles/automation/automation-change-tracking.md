@@ -10,18 +10,21 @@ ms.date: 03/05/2019
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 74b099c648fa4dd1c735cc76c82efbc102d9843c
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.openlocfilehash: 5e997d9e9f38fee52cd9fc007fe12cac68e3aa5a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443039"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008675"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>使用更改跟踪解决方案跟踪环境中的更改
 
 本文可帮助你使用更改跟踪解决方案轻松识别环境中的更改。 该解决方案会跟踪对 Windows 和 Linux 软件、Windows 和 Linux 文件、Windows 注册表项、Windows 服务和 Linux 守护程序进行的更改。 标识配置更改有助于确定操作问题。
 
 对已安装的软件、 Windows 服务、 Windows 注册表和文件，并受监视服务器上的 Linux 守护程序的更改发送到云中的 Azure Monitor 服务进行处理。 逻辑应用于接收的数据，云服务则记录数据。 通过使用“更改跟踪”仪表板上的信息，可以轻松查看服务器基础结构中所做的更改。
+
+> [!NOTE]
+> Azure 自动化更改跟踪跟踪虚拟机中的更改。 若要跟踪 Azure 资源管理器属性更改，请参阅 Azure 资源 Graph[更改历史记录](../governance/resource-graph/how-to/get-resource-changes.md)。
 
 ## <a name="supported-windows-operating-systems"></a>支持的 Windows 操作系统
 

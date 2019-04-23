@@ -5,15 +5,15 @@ services: storage
 author: xyh1
 ms.service: storage
 ms.topic: article
-ms.date: 03/26/2019
+ms.date: 04/18/2019
 ms.author: hux
 ms.subservice: blobs
-ms.openlocfilehash: 32328b89e8a220269f0d07c3700566db5b899d5b
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 7fd9992db79b2517256d85ca3fd8f3bf409afa48
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445690"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996012"
 ---
 # <a name="store-business-critical-data-in-azure-blob-storage"></a>在 Azure Blob 存储中存储业务关键型数据
 
@@ -41,7 +41,7 @@ Azure Blob 存储的不可变存储使用户能够将业务关键数据对象存
 
 - **容器级配置**：用户可在容器级别配置基于时间的保留策略和法定保留标记。 通过使用简单的容器级别设置，用户可以创建和锁定基于时间的保留策略、 扩展保留间隔、 设置和清除法定保留与的详细信息。 这些策略将应用到容器中的所有 Blob，不管是现有的还是新的 Blob。
 
-- **审核日志记录支持**：每个容器包括一个审核日志。 该日志显示针对锁定的基于时间的保留策略执行的最多五个基于时间的保留命令，最多可以延长三个日志的保留时间间隔。 对于基于时间的保留，日志包含用户 ID、命令类型、时间戳和保留时间间隔。 对于法定保留，日志包含用户 ID、命令类型、时间戳和法定保留标记。 根据 SEC 17a-4(f) 法规准则，此日志的保留时间就是容器的生存时间。 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)显示了更全面的日志的所有控制平面活动; 同时[Azure 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)中保留和显示数据平面操作。 由用户负责根据法规要求或其他要求永久存储这些日志。
+- **审核日志记录支持**：每个容器包括策略审核日志。 它显示为 7 基于时间的保留期为锁定的基于时间的保留策略的命令和包含用户 ID、 命令类型、 时间戳和保留间隔。 对于法定保留，日志包含用户 ID、命令类型、时间戳和法定保留标记。 此日志将保留策略，根据秒 17a-4 （f） 法规指导原则的生存期。 [Azure 活动日志](../../azure-monitor/platform/activity-logs-overview.md)显示了更全面的日志的所有控制平面活动; 同时[Azure 诊断日志](../../azure-monitor/platform/diagnostic-logs-overview.md)中保留和显示数据平面操作。 由用户负责根据法规要求或其他要求永久存储这些日志。
 
 ## <a name="how-it-works"></a>工作原理
 
@@ -82,6 +82,20 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 
 <sup>1</sup>的应用程序允许这些操作一次创建新的 blob。 所有后续覆盖不允许对现有 blob 路径中的不可变的容器上的操作。
 
+## <a name="supported-values"></a>支持的值
+
+### <a name="time-based-retention"></a>基于时间的保留期
+- 对于存储帐户，使用基于时间的不可变的锁定策略的容器的最大数目为 1000。
+- 最小保持期间隔为 1 天。 最大值为 146,000 天 （400 年）。
+- 对于容器，编辑扩展锁定基于时间的不可变的策略指定的保留间隔的最大数目为 5。
+- 对于容器，最多 7 基于时间的保留策略审核日志将保留策略的持续时间。
+
+### <a name="legal-hold"></a>法定保留
+- 对于某个存储帐户而言，使用法定保留设置的最大容器数为 1,000。
+- 对于某个容器而言，最大法定保留标记数为 10。
+- 合法保留标记的最小长度为 3 个字母数字字符。 最大长度为 23 的字母数字字符。
+- 对于容器，最多 10 合法保留策略审核日志将保留策略的持续时间。
+
 ## <a name="pricing"></a>定价
 
 使用此功能不会产生额外的费用。 不可变数据的定价方式与常规的可变数据相同。 有关 Azure Blob 存储的定价详细信息，请参阅 [Azure 存储定价页](https://azure.microsoft.com/pricing/details/storage/blobs/)。
@@ -90,7 +104,6 @@ Azure Blob 存储的不可变存储支持两类 WORM 或不可变策略：基于
 不可变的存储是仅适用于常规用途 v2 和 Blob 存储帐户。 必须通过管理这些帐户[Azure 资源管理器](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)。 有关升级现有的常规用途 v1 存储帐户的信息，请参阅[存储帐户升级](../common/storage-account-upgrade.md)。
 
 最新版本的[Azure 门户](https://portal.azure.com)， [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)，并[Azure PowerShell](https://github.com/Azure/azure-powershell/releases)支持 Azure Blob 存储的不可变的存储。 [客户端库支持](#client-libraries)还提供了。
-
 
 ### <a name="azure-portal"></a>Azure 门户
 
@@ -152,21 +165,11 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 - [Python 客户端库 2.0.0 候选发布版 2 和更高版本](https://pypi.org/project/azure-mgmt-storage/2.0.0rc2/)
 - [Java 客户端库](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/storage/resource-manager/Microsoft.Storage/preview/2018-03-01-preview)
 
-## <a name="supported-values"></a>支持的值
-
-- 最小保留时间间隔为 1 天。 最大值为 146,000 天 （400 年）。
-- 对于某个存储帐户而言，使用锁定的不可变策略的最大容器数为 1,000。
-- 对于某个存储帐户而言，使用法定保留设置的最大容器数为 1,000。
-- 对于某个容器而言，最大法定保留标记数为 10。
-- 法定保留标记的最大长度为 23 个字母数字字符。 最小长度为 3 个字符。
-- 对于某个容器而言，锁定的不可变策略允许的最大保留时间间隔延长次数为 3。
-- 对于使用锁定的不可变策略的容器而言，基于时间的保留策略日志的最大数目为 5，可以在容器生存期保留的法定保留策略日志的最大数目为 10。
-
 ## <a name="faq"></a>常见问题解答
 
 **你可以提供的蠕虫病毒符合性的文档？**
 
-是的。 文档符合性，Microsoft 保留前导独立评估公司，专注于记录管理和信息管理，Cohasset 相关联，若要评估 Azure 不可变的 Blob 存储和及其是否符合特定要求为金融服务行业。 Cohasset 验证 Azure 不可变的 Blob 存储，用于保留在蠕虫状态下，基于时间的 Blob 时满足的 CFTC 规则 1.31(c)-(d)、 FINRA 规则 4511 和 SEC Rule 17a-4 相关的存储要求。 Microsoft 针对这组规则，因为它们代表全局的金融机构记录保留期的最说明性指南。 Cohasset 报表现已推出[Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)。
+可以。 文档符合性，Microsoft 保留前导独立评估公司，专注于记录管理和信息管理，Cohasset 相关联，若要评估 Azure 不可变的 Blob 存储和及其是否符合特定要求为金融服务行业。 Cohasset 验证 Azure 不可变的 Blob 存储，用于保留在蠕虫状态下，基于时间的 Blob 时满足的 CFTC 规则 1.31(c)-(d)、 FINRA 规则 4511 和 SEC Rule 17a-4 相关的存储要求。 Microsoft 针对这组规则，因为它们代表全局的金融机构记录保留期的最说明性指南。 Cohasset 报表现已推出[Microsoft 服务信任中心](https://aka.ms/AzureWormStorage)。
 
 **此功能是只适用于块 Blob，还是也适用于页 Blob 和追加 Blob？**
 
@@ -178,7 +181,7 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 
 **可以将应用的合法保留和基于时间的保留策略？**
 
-容器可能会同时有法定保留策略和基于时间的保留策略。 该容器中的所有 Blob 会一直保持不可变状态，直至所有法定保留被清除，即使有效保留期已过。 与之相反，即使所有法定保留已被清除，Blob 也会保持不可变状态，直至有效保留期已过。
+是的一个容器可以同时具有合法保留和基于时间的保留策略。 该容器中的所有 Blob 会一直保持不可变状态，直至所有法定保留被清除，即使有效保留期已过。 与之相反，即使所有法定保留已被清除，Blob 也会保持不可变状态，直至有效保留期已过。
 
 **仅为法律诉讼程序是合法保留策略，或是否有其他使用方案？**
 
@@ -202,13 +205,13 @@ Az.Storage 预览版模块支持不可变存储。  若要启用该功能，请�
 
 **你们是否为只想试用此功能的用户提供试用期或宽限期？**
 
-是的。 基于时间的保留策略在首先创建时，将处于未锁定状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 此锁定的策略会阻止删除和修改在保留间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
+可以。 首先创建一个基于时间的保留策略后，它是在*解锁*状态。 在这种状态下，可以对保留时间间隔进行所需的更改，例如延长或缩短保留时间间隔，甚至可以删除策略。 策略被锁定后，它将保持锁定状态，直到保留时间间隔到期为止。 此锁定的策略会阻止删除和修改在保留间隔。 我们强烈建议仅在试用的情况下使用未锁定状态，并在 24 小时内锁定策略。 这种做法有助于遵守 SEC 17a-4(f) 及其他法规。
 
 **可以使用不可变的 blob 策略旁边的软删除？**
 
-是的。 [Azure Blob 存储的软删除](storage-blob-soft-delete.md)适用于存储帐户而不考虑为合法保留或基于时间的保留策略中的所有容器。 我们建议启用软删除额外的保护之前任何不可变的蠕虫病毒策略应用并确认。 
+可以。 [Azure Blob 存储的软删除](storage-blob-soft-delete.md)适用于存储帐户而不考虑为合法保留或基于时间的保留策略中的所有容器。 我们建议启用软删除额外的保护之前任何不可变的蠕虫病毒策略应用并确认。 
 
-**此功能在国家/地区及政府云中是否可用？**
+**其中提供了功能？**
 
 Azure 公共区域、中国区域和政府区域均提供不可变存储。 如果不可变的存储区域中不可用，请联系支持和电子邮件azurestoragefeedback@microsoft.com。
 

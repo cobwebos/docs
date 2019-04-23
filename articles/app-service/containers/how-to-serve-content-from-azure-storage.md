@@ -7,20 +7,19 @@ ms.service: app-service
 ms.workload: web
 ms.topic: article
 ms.date: 2/04/2019
-ms.author: msangapu
-ms.custom: seodec18
-ms.openlocfilehash: 29f2b725972f5ce92e756cb21621a19850ba9386
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.author: msangapu-msft
+ms.openlocfilehash: 02ebd0629fed9037054a5c22931f3e99c09073c4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732934"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998594"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>从 Linux 上的应用服务中的 Azure 存储提供内容
 
-本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。 在本指南中，你将学习如何通过[配置自定义存储](https://blogs.msdn.microsoft.com/appserviceteam/2018/09/24/announcing-bring-your-own-storage-to-app-service/)在 Azure 存储上提供内容。
+本指南展示了如何在 Linux 上的应用服务中使用 [Azure 存储](/azure/storage/common/storage-introduction)提供静态内容。 优势包括内容受保护，内容可移植，可以访问多个应用以及使用多种传输方法。 在本指南中，您将了解如何通过配置自定义存储在 Azure 存储空间提供的内容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 现有的 Web 应用（Linux 上的应用服务或用于容器的 Web 应用）。
 - [Azure CLI](/cli/azure/install-azure-cli)（2.0.46 或更高版本）。

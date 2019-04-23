@@ -6,12 +6,12 @@ ms.service: azure-resource-manager
 ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
-ms.openlocfilehash: b38b1af8c72b814813804a49642668c28f3898d6
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
+ms.openlocfilehash: fded37fee844a01f4d51518f2ca56dcf575704b2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56302607"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150143"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>针对完全模式部署的 Azure 资源删除
 本文描述了资源类型如何在不是以完全模式部署的模板中进行删除。
@@ -465,7 +465,7 @@ ms.locfileid: "56302607"
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | 资源类型 | 完整模式删除 |
 | ------------- | ----------- |
-| workspaces | 是 | 
+| 工作区 | 是 | 
 | workspaces/virtualNetworkPeerings | 否 | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -633,7 +633,7 @@ ms.locfileid: "56302607"
 ## <a name="microsofthdinsight"></a>Microsoft.HDInsight
 | 资源类型 | 完整模式删除 |
 | ------------- | ----------- |
-| clusters | 是 | 
+| clusters | 否 | 
 | clusters/applications | 否 | 
 
 ## <a name="microsoftimportexport"></a>Microsoft.ImportExport
@@ -766,7 +766,7 @@ ms.locfileid: "56302607"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | 资源类型 | 完整模式删除 |
 | ------------- | ----------- |
-| workspaces | 是 | 
+| 工作区 | 是 | 
 | workspaces/computes | 否 | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -914,7 +914,7 @@ ms.locfileid: "56302607"
 | devices | 否 | 
 | linkTargets | 否 | 
 | storageInsightConfigs | 否 | 
-| workspaces | 是 | 
+| 工作区 | 是 | 
 | workspaces/dataSources | 否 | 
 | workspaces/linkedServices | 否 | 
 | workspaces/query | 否 | 
@@ -924,7 +924,7 @@ ms.locfileid: "56302607"
 | ------------- | ----------- |
 | managementassociations | 否 | 
 | managementconfigurations | 是 | 
-| solutions | 是 | 
+| 解决方案 | 是 | 
 | 视图 | 是 | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights

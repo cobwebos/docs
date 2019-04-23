@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 49000d4fd61e7cd061b415d50545a7f5ee56f3fb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: afb97c1c14422f15a3fc2c00b2101c4a36675556
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579117"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002472"
 ---
 # <a name="call-a-function-from-powerapps"></a>从 PowerApps 调用函数
 [PowerApps](https://powerapps.microsoft.com) 平台专为商业专家设计，无需写入传统的应用程序代码即可生成应用。 专业开发人员可以使用 Azure Functions 扩展 PowerApps 的功能，同时使 PowerApps 应用构建者摆脱技术细节。
@@ -39,7 +39,10 @@ ms.locfileid: "45579117"
 > * 添加控件以调用函数并显示数据。
 > * 运行应用以确定修复是否经济高效。
 
-## <a name="prerequisites"></a>先决条件
+> [!IMPORTANT]
+> OpenAPI 功能目前为预览版，仅适用于 1.x 版 Azure Functions 运行时。
+
+## <a name="prerequisites"></a>必备组件
 
 + 一个有效的 [PowerApps 帐户](https://docs.microsoft.com/powerapps/maker/signup-for-powerapps)，其中登录凭据与 Azure 帐户相同。 
 + Excel 和将用作应用的数据源的 [Excel 示例文件](https://procsi.blob.core.windows.net/docs/turbine-data.xlsx)。

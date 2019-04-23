@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 3bb829e7cc99ee0d6e2d02f7ed3880d6c0226123
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.openlocfilehash: a758cce85645e72bfd9434a69393133d3da6b57d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486312"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011357"
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>在 Azure 虚拟机上配置 SQL Server 故障转移群集实例
 
@@ -74,7 +74,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 - [Windows 群集技术](https://docs.microsoft.com/windows-server/failover-clustering/failover-clustering-overview)
 - [SQL Server 故障转移群集实例](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
 
-一个重要区别是 Azure IaaS VM 来宾故障转移群集，我们建议每个服务器 （群集节点） 和单个子网的单个 NIC。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
+一个重要的差别在于，在 Azure IaaS VM 来宾故障转移群集上，我们建议每个服务器（群集节点）使用一个 NIC 和一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
 
 另外，应该对以下技术有大致的了解：
 
@@ -111,7 +111,7 @@ S2D 支持两种类型的体系结构 - 聚合与超聚合。 本文档中所述
 
    - 在 Azure 门户中，单击 **+** 打开 Azure 市场。 搜索“可用性集”。
    - 单击“可用性集”。
-   - 单击“创建”。
+   - 单击**创建**。
    - 在“创建可用性集”边栏选项卡中设置以下值：
       - **名称**：可用性集的名称。
       - **订阅**：Azure 订阅。
@@ -361,7 +361,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
 1. 单击“+ 添加”。 在市场中搜索“负载均衡器”。 单击“负载均衡器”。
 
-1. 单击“创建”。
+1. 单击**创建**。
 
 1. 为负载均衡器配置以下属性：
 
@@ -399,7 +399,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
 
    - **名称**：运行状况探测的名称。
    - **协议**：TCP。
-   - **端口**：设置为可用的 TCP 端口。 此端口需是打开的防火墙端口。 使用在防火墙中为运行状况探测设置的[同一端口](#ports)。
+   - **端口**：设置为在防火墙中的运行状况探测中创建的端口[此步骤](#ports)。 在本文中，该示例使用 TCP 端口`59999`。
    - **时间间隔**：5 秒。
    - **不正常阈值**：2 次连续失败。
 
@@ -421,7 +421,7 @@ S2D 的磁盘需是空的，不包含分区或其他数据。 若要清除磁盘
    - **运行状况探测**：使用前面配置的运行状况探测。
    - **会话持久性**：无。
    - **空闲超时(分钟)**：4.
-   - **浮动 IP (直接服务器返回)**：已启用
+   - **浮动 IP (直接服务器返回)**：Enabled
 
 1. 单击“确定”。
 

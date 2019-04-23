@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: c29d2e1df0979481c0c8a1e1f2cd4d22b013212a
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 2db588a0cf67d7826408139e8facb43a2e897951
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227547"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003439"
 ---
 # <a name="deploy-azure-databricks-in-your-virtual-network-preview"></a>在虚拟网络 （预览版） 中部署 Azure Databricks
 
@@ -37,7 +37,7 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 
 部署到 Azure Databricks 工作区的虚拟网络必须满足以下要求：
 
-### <a name="location"></a>位置
+### <a name="location"></a>Location
 
 虚拟网络必须位于与 Azure Databricks 工作区相同的位置。
 
@@ -97,13 +97,13 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 
 若要创建在一个虚拟网络、 网络安全组和 Azure Databricks 工作区，请使用[Databricks VNet 注入工作区的多功能一体模板](https://azure.microsoft.com/resources/templates/101-databricks-all-in-one-template-for-vnet-injection/)。
 
-当您使用此模板时，您不需要执行任何手动添加到的子网流量的允许列表。
+当您使用此模板时，您不需要执行任何手动添加到的子网流量的白名单。
 
 ### <a name="network-security-groups"></a>网络安全组
 
 若要使用现有的虚拟网络所需规则创建网络安全组，请使用[注入 Databricks VNet 的网络安全组模板](https://azure.microsoft.com/resources/templates/101-databricks-nsg-for-vnet-injection)。
 
-当您使用此模板时，您不需要执行任何手动添加到的子网流量的允许列表。
+当您使用此模板时，您不需要执行任何手动添加到的子网流量的白名单。
 
 ### <a name="virtual-network"></a>虚拟网络
 
@@ -117,11 +117,11 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 
 如果你使用此模板而不使用网络安全组模板，你必须手动添加到虚拟网络中使用的网络安全组的允许列表规则。
 
-## <a name="whitelisting-subnet-traffic"></a>列入允许列表子网流量
+## <a name="whitelisting-subnet-traffic"></a>列入白名单子网流量
 
-如果不使用[Azure 门户](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal)或[Azure 资源管理器模板](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)若要创建网络安全组，则必须手动以下流量的允许列表上您的子网。
+如果不使用[Azure 门户](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-portal)或[Azure 资源管理器模板](https://docs.azuredatabricks.net/administration-guide/cloud-configurations/azure/vnet-inject.html#vnet-inject-advanced)若要创建网络安全组，则必须手动以下流量的白名单上您的子网。
 
-|方向|协议|源|Source Port|目标|Destination Port|
+|Direction|协议|源|Source Port|目标|Destination Port|
 |---------|--------|------|-----------|-----------|----------------|
 |入站|\*|VirtualNetwork|\*|\*|\*|
 |入站|\*|控制平面 NAT IP|\*|\*|22|
@@ -131,7 +131,7 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 |出站|\*|\*|\*|存储 （服务标记）|\*|
 |出站|\*|\*|\*|VirtualNetwork|\*|
 
-解决了使用以下 IP 允许列表子网流量。 对于 SQL （元存储） 和存储 （项目和日志存储），应使用 Sql 和存储[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
+解决了使用以下 IP 白名单子网流量。 对于 SQL （元存储） 和存储 （项目和日志存储），应使用 Sql 和存储[服务标记](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)。
 
 |Azure Databricks 区域|服务|公共 IP|
 |-----------------------|-------|---------|
@@ -188,7 +188,7 @@ Azure Databricks 将资源部署到虚拟网络还允许您充分利用灵活的
 
 ### <a name="notebook-command-errors"></a>Notebook 命令错误
 
-**挂起命令**
+**命令未响应**
 
 可能的原因： 辅助角色到辅助角色通信将被阻止。 修复通过确保入站的安全规则满足要求。
 

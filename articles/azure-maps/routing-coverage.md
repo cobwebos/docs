@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 718eefc95384dde050a4a25e6850fe6db574d294
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ef62ec78bc7fc01bd2e6dd7c5561b15be85540d2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59258923"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007893"
 ---
 # <a name="azure-maps-routing-coverage"></a>Azure Maps 路由覆盖区域
 
@@ -136,12 +136,12 @@ ms.locfileid: "59258923"
 | 柬埔寨                       |        ✓       |                      |             |
 | 斐济                           |        ✓       |                      |             |
 | 关岛                           |        ✓       |                      |             |
-| 香港特别行政区                      |        ✓       |         ✓            |             |
+| 中国香港特别行政区                  |        ✓       |         ✓            |             |
 | 印度                          |        ✓       |         ✓            |             |
 | 印度尼西亚                      |        ✓       |         ✓            |             |
 | 韩国                          |        Ø       |                      |             |
 | 老挝                           |        ✓       |                      |             |
-| 澳门特别行政区                          |        ✓       |         ✓            |             |
+| 澳门特别行政区                      |        ✓       |         ✓            |             |
 | 马来西亚                       |        ✓       |         ✓            |             |
 | 缅甸                        |        ✓       |                      |             |
 | 新西兰                    |        ✓       |         ✓            |     ✓       | 
@@ -190,7 +190,7 @@ ms.locfileid: "59258923"
 | 列支敦士登                  |        ✓       |         ✓            |             |
 | 立陶宛                      |        ✓       |         ✓            |     ✓      | 
 | 卢森堡                     |        ✓       |         ✓            |     ✓      | 
-| 马其顿                      |        ✓       |                      |             |
+| 北马其顿                |        ✓       |                      |             |
 | 马耳他                          |        ✓       |         ✓            |             |
 | 摩尔多瓦                        |        ✓       |                      |             |
 | 摩纳哥                         |        ✓       |         ✓            |             |

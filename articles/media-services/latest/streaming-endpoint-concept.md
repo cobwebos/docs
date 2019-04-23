@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 04/16/2019
 ms.author: juliako
-ms.openlocfilehash: 2e715e5280794172451a333624a954340a1a60fe
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4a29da2b070133f87ca5fdab0be607368c83790f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58881012"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999444"
 ---
 # <a name="streaming-endpoints"></a>流式处理终结点
 
@@ -52,7 +52,6 @@ Feature|标准|高级
 ---|---|---
 前 15 天免费| 是 |否
 Throughput |未使用 Azure CDN 时，最多可达 600 Mbps。 使用 CDN 进行缩放。|每个流单元 (SU) 200 Mbps。 使用 CDN 进行缩放。
-SLA | 99.9|99.9（每个 SU 200 Mbps）。
 CDN|Azure CDN、第三方 CDN 或没有 CDN。|Azure CDN、第三方 CDN 或没有 CDN。
 按比例计费| 每日|每日
 动态加密|是|是
@@ -86,7 +85,7 @@ IP 筛选/G20/自定义主机<sup>1</sup>|是|是
 
     以下是预期的 DNS 区域，要用于的验证记录中不同 Azure 区域。
   
-  - 北美、欧洲、新加坡、香港特别行政区、日本：
+  - North America、 Europe、 新加坡、 香港特別行政区，日本：
       
     - `media.azure.net`
     - `verifydns.media.azure.net`

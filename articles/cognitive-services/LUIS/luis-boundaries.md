@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/18/2019
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: 51f5355e365d0dcf7a103deab3356f015e75641e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 58f6d6cf8bf16f7c35bab35a69cfcdf8759f66ae
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897499"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006822"
 ---
 # <a name="boundaries-for-your-luis-model-and-keys"></a>LUIS 模型和密钥的边界
 LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)，它可控制 LUIS 中的意向、实体和功能。 第二个是基于密钥类型的[配额限制](#key-limits)。 边界的第三个区域是用于控制 LUIS 网站的[键盘组合](#keyboard-controls)。 第四个是 LUIS 创作网站和 LUIS [终结点](luis-glossary.md#endpoint) API 之间的[世界区域映射](luis-reference-regions.md)。 
@@ -47,16 +47,16 @@ LUIS 具有多个边界区域。 第一个是[模型边界](#model-boundaries)�
 
 *默认最大字符长度为 50 个字符。 
 
-## <a name="intent-and-entity-naming"></a>意向和实体命名
-意向和实体名称中不要使用以下字符：
+<a name="intent-and-entity-naming"></a>
 
-|Character|名称|
+## <a name="object-naming"></a>对象命名
+
+以下名称中使用以下字符。
+
+|Object|排除的字符|
 |--|--|
-|`{`|左大括号|
-|`}`|右大括号|
-|`[`|左中括号|
-|`]`|右中括号|
-|`\`|反斜杠|
+|意向、 实体和角色名称|`:`<br>`$`|
+|版本名称|`\`<br> `/`<br> `:`<br> `?`<br> `&`<br> `=`<br> `*`<br> `+`<br> `(`<br> `)`<br> `%`<br> `@`<br> `$`<br> `~`<br> `!`<br> `#`|
 
 ## <a name="key-usage"></a>密钥使用情况
 

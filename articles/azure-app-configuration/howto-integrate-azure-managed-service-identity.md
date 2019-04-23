@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: c2afc96ca5f7e30d5474f66bdad0cfec88a89580
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 84dddf5ed9c31e8585480319af189d31e39163e5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59700187"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998985"
 ---
 # <a name="tutorial-integrate-with-azure-managed-identities"></a>教程：与 Azure 托管身份集成
 
@@ -75,7 +75,7 @@ Azure 应用程序配置及其 .NET Core、.NET 和 Java Spring 客户端库随�
 
 ## <a name="use-a-managed-identity"></a>使用托管标识
 
-1. 打开“appsettings.json”，并添加以下脚本。 替换 *\<service_endpoint >*，包括括号，应用程序配置存储区的 url:
+1. 打开“appsettings.json”，并添加以下脚本。 将 \<service_endpoint>（含括号）替换为应用配置存储区的 URL：
 
     ```json
     "AppConfig": {
@@ -194,8 +194,6 @@ http://<app_name>.azurewebsites.net
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
 ## <a name="next-steps"></a>后续步骤
-
-在本教程中，通过添加 Azure 托管服务标识简化了应用配置访问并改进了应用凭据管理。 若要了解有关如何使用应用程序配置的更多信息，请继续阅读 Azure CLI 示例。
 
 > [!div class="nextstepaction"]
 > [CLI 示例](./cli-samples.md)

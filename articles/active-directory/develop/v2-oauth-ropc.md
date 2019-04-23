@@ -1,5 +1,5 @@
 ---
-title: 使用 Microsoft 标识平台，以登录用户使用 ROPC |Azure
+title: 使用 Microsoft 标识平台，以便在使用资源所有者密码凭据 (ROPC) 授权的用户登录 |Azure
 description: 支持使用资源所有者密码凭据授予的无浏览器身份验证流。
 services: active-directory
 documentationcenter: ''
@@ -12,23 +12,24 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/20/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8c1372263bfa3f684d30ad583bfb6a9d434c3cc2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 9cfa28cae87c8a9a97e1c64b96f75ae4c6eab08d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59499931"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004935"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-resource-owner-password-credential"></a>Microsoft 标识平台和 OAuth 2.0 资源所有者密码凭据
 
-Microsoft 标识平台所支持[资源所有者密码凭据 (ROPC) 授予](https://tools.ietf.org/html/rfc6749#section-4.3)，让应用程序以登录用户，通过直接处理其密码。 ROPC 流需要的信任和用户公开程度很高，开发人员只能在其他更安全的流不能使用的情况下使用此流。
+Microsoft 标识平台所支持[资源所有者密码凭据 (ROPC) 授予](https://tools.ietf.org/html/rfc6749#section-4.3)，让应用程序以登录用户，通过直接处理其密码。 ROPC 流需要很高的信任和用户风险和不能使用其他、 更安全的流时，才应使用此流。
 
 > [!IMPORTANT]
+>
 > * Microsoft 标识平台终结点仅适用于 Azure AD 租户，不适用于个人帐户支持 ROPC。 这意味着，必须使用特定于租户的终结点 (`https://login.microsoftonline.com/{TenantId_or_Name}`) 或 `organizations` 终结点。
 > * 受邀加入 Azure AD 租户的个人帐户不能使用 ROPC。
 > * 没有密码的帐户不能通过 ROPC 登录。 对于这种情况，建议改用适合应用的其他流。
@@ -38,7 +39,7 @@ Microsoft 标识平台所支持[资源所有者密码凭据 (ROPC) 授予](https
 
 下图显示了 ROPC 流。
 
-![ROPC 流](media/v2-oauth2-ropc/v2-oauth-ropc.png)
+![ROPC 流](./media/v2-oauth2-ropc/v2-oauth-ropc.svg)
 
 ## <a name="authorization-request"></a>授权请求
 
@@ -69,11 +70,11 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | `grant_type` | 需要 | 必须设置为 `password`。 |
 | `username` | 需要 | 用户的电子邮件地址。 |
 | `password` | 需要 | 用户的密码。 |
-| `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 这些范围必须在交互流中提前获得管理员或用户的许可。 |
+| `scope` | 建议 | 以空格分隔的[范围](v2-permissions-and-consent.md)或权限的列表，这是应用需要的。 在交互式流中，管理员或用户必须同意到提前这些作用域中。 |
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
-下面显示的示例介绍了成功的令牌响应：
+下面的示例显示了成功的令牌响应：
 
 ```json
 {
@@ -105,7 +106,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 |------ | ----------- | -------------|
 | `invalid_grant` | 身份验证失败 | 凭据不正确，或者客户端没有所请求范围的许可。 如果作用域不授予，`consent_required`将返回错误。 如果发生这种情况，客户端应通过 Webview 或浏览器向用户发送交互式提示。 |
 | `invalid_request` | 请求的构造方式不正确 | 授权类型都不支持`/common`或`/consumers`身份验证上下文。  请改用 `/organizations`。 |
-| `invalid_client` | 应用未正确设置 | 如果发生这种情况`allowPublicClient`属性未设置为 true 中[应用程序清单](reference-app-manifest.md)。 之所以需要 `allowPublicClient` 属性，是因为 ROPC 授予没有重定向 URI。 在设置此属性之前，Azure AD 不能确定应用是公共客户端应用程序还是机密客户端应用程序。 请注意，ROPC 只能用于公共客户端应用。 |
+| `invalid_client` | 应用未正确设置 | 如果发生这种情况`allowPublicClient`属性未设置为 true 中[应用程序清单](reference-app-manifest.md)。 之所以需要 `allowPublicClient` 属性，是因为 ROPC 授予没有重定向 URI。 在设置此属性之前，Azure AD 不能确定应用是公共客户端应用程序还是机密客户端应用程序。 对于公共客户端应用仅支持 ROPC。 |
 
 ## <a name="learn-more"></a>了解详细信息
 

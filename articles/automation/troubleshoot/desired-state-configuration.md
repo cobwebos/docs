@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: ''
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/19/2018
+ms.date: 04/16/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c067d6f02ceeca9bf390ab5421dcfe463e9f758d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 63bb5c6338cf230c2bb47cb0a2c03810053f970a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699075"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002572"
 ---
 # <a name="troubleshoot-desired-state-configuration-dsc"></a>Desired State Configuration (DSC) 疑难解答
 
@@ -41,6 +41,31 @@ An error occurred while deleting the DSC configuration '<name>'.  Error-details:
 * 使用 Az Cmdlet "Remove-AzAutomationDscConfiguration" 删除配置。
 * 此 cmdlet 的文档尚未更新。  在此之前，请参阅 AzureRM 模块的文档。
   * [Remove-AzureRmAutomationDSCConfiguration](/powershell/module/azurerm.automation/Remove-AzureRmAutomationDscConfiguration)
+
+### <a name="failed-to-register-agent"></a>场景：无法注册 Dsc 代理
+
+#### <a name="issue"></a>问题
+
+当尝试运行`Set-DscLocalConfigurationManager`或另一个 DSC cmdlet，您会收到错误：
+
+```error
+Registration of the Dsc Agent with the server
+https://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000 failed. The
+underlying error is: Failed to register Dsc Agent with AgentId 00000000-0000-0000-0000-000000000000 with the server htt
+ps://<location>-agentservice-prod-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000/Nodes(AgentId='00000000-0000-0000-0000-000000000000'). .
+    + CategoryInfo          : InvalidResult: (root/Microsoft/...gurationManager:String) [], CimException
+    + FullyQualifiedErrorId : RegisterDscAgentCommandFailed,Microsoft.PowerShell.DesiredStateConfiguration.Commands.Re
+   gisterDscAgentCommand
+    + PSComputerName        : <computerName>
+```
+
+#### <a name="cause"></a>原因
+
+通过防火墙，被代理服务器或其他网络错误后面的计算机通常导致此错误。
+
+#### <a name="resolution"></a>解决方法
+
+验证你的计算机具有访问正确的终结点为 Azure 自动化 DSC，然后重试。 有关端口和所需地址的列表，请参阅[网络规划](../automation-dsc-overview.md#network-planning)
 
 ### <a name="failed-not-found"></a>场景：节点处于失败状态，出现“未找到”错误
 

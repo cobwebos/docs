@@ -2,21 +2,21 @@
 title: 如何在 Azure 数据目录中使用数据分析数据源
 description: 操作指南文章重点说明在“Azure 数据目录”中注册数据源时如何包括表和列级数据配置文件，以及如何使用数据配置文件来了解数据源。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: b40bbe7d1eb89f934d6ae07688e698f1949f8e76
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 64185a951b25b4e04ea5fc65aeede9b0e617d0c5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47410232"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004306"
 ---
 # <a name="data-profile-data-sources"></a>数据配置文件数据源
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。
 
 **Azure 数据目录**的“数据分析”功能检查目录中受支持数据源的数据，并收集有关该数据的统计信息和信息。 想要包括数据资产的配置文件很简单。 注册数据资产时，在数据源注册工具中选择“包括数据配置文件”。

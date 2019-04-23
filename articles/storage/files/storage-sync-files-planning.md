@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 2/7/2019
 ms.author: wgries
 ms.subservice: files
-ms.openlocfilehash: ad3b5a1d684c500eff3d20832d7aa290a13849b9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e5078176b14835938c190daa031c12055ba9ffc3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918631"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996350"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>规划 Azure 文件同步部署
 使用 Azure 文件同步，即可将组织的文件共享集中在 Azure 文件中，同时又不失本地文件服务器的灵活性、性能和兼容性。 Azure 文件同步可将 Windows Server 转换为 Azure 文件共享的快速缓存。 可以使用 Windows Server 上可用的任意协议本地访问数据，包括 SMB、NFS 和 FTPS。 并且可以根据需要在世界各地具有多个缓存。
@@ -113,7 +113,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 ### <a name="system-requirements"></a>系统要求
 - 运行 Windows Server 2012 R2、Windows Server 2016 或 Windows Server 2019 的服务器：
 
-    | 版本 | 支持的 SKU | 支持的部署选项 |
+    | Version | 支持的 SKU | 支持的部署选项 |
     |---------|----------------|------------------------------|
     | Windows Server 2019 | 数据中心和标准版 | 完全（带 UI 的服务器） |
     | Windows Server 2016 | 数据中心和标准版 | 完全（带 UI 的服务器） |
@@ -242,7 +242,7 @@ Azure 文件同步仅在以下区域中可用：
 | 加拿大东部 | 魁北克市 |
 | 印度中部 | 浦那 |
 | 美国中部 | 爱荷华州 |
-| 东亚 | 香港特别行政区 |
+| 东亚 | 中国香港特别行政区 |
 | 美国东部 | 弗吉尼亚州 |
 | 美国东部 2 | 弗吉尼亚州 |
 | 日本东部 | 东京都埼玉县 |

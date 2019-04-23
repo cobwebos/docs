@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 8b10cb0d66103410159a09ca156be3ea180c068b
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
-ms.translationtype: MT
+ms.openlocfilehash: 89e73a4578134493a25ec3cbd2385433a2b36156
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371921"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003490"
 ---
 # <a name="overview-of-the-azure-monitoring-agents"></a>Azure 监视代理概述 
 Microsoft Azure 提供多种方式用于从 Azure、数据中心或其他云提供商托管的，运行 Microsoft Windows 和 Linux 的虚拟机收集各种数据。 可用于监视 VM 的三种代理包括：
@@ -70,7 +70,7 @@ Microsoft Azure 提供多种方式用于从 Azure、数据中心或其他云提�
 * Azure 服务（例如 [Application Insights](https://docs.microsoft.com/azure/application-insights/) 和 [Azure 安全中心](https://docs.microsoft.com/azure/security-center/)）原生就会将其数据直接存储在 Log Analytics 中。  
 
 ## <a name="dependency-agent"></a>依赖关系代理
-依赖项代理开发为服务映射解决方案的一部分，最初是在 Microsoft 外部开发的。 [服务映射](../insights/service-map.md)和[用于 VM 的 Azure Monitor](../insights/vminsights-overview.md) 要求在 Windows 和 Linux 虚拟机上安装依赖项代理，并与 Log Analytics 代理集成，可收集有关虚拟机上运行的进程和外部进程依赖项的发现数据。 它将此数据存储在 Log Analytics 工作区中，并直观显示已发现的互连的组件。
+依赖关系代理是作为服务映射解决方案，最初并非由 Microsoft 开发的一部分开发的。 [服务映射](../insights/service-map.md)并[Vm 的 Azure Monitor](../insights/vminsights-overview.md)需要依赖关系代理在 Windows 和 Linux 上的虚拟机并进行了集成与 Log Analytics 代理来收集有关在虚拟运行的进程发现的数据计算机和外部进程依赖关系。 它将此数据存储在 Log Analytics 工作区中，并直观显示已发现的互连的组件。
 
 可能需要以某种形式组合使用这些代理才能监视 VM。 这些代理可与 Azure 扩展并列安装，但在 Linux 上，必须先安装 Log Analytics 代理，否则安装将会失败。 
 

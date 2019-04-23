@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/13/2019
+ms.date: 04/16/2019
 ms.author: aahi
-ms.openlocfilehash: dfbb31ce9f61ee28fef046120474a6a170906512
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59505569"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997302"
 ---
-# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>如何在文本分析（预览版）中使用命名实体识别
+# <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
-[实体识别 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) 需要使用非结构化文本，并对每个 JSON 文档返回已消除歧义的实体列表，其中包含网上（维基百科和必应）详细信息的链接。 
+[命名实体识别 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)采用非结构化的文本，并为每个 JSON 文档，返回一系列消除歧义具有链接的实体的详细信息 （维基百科和必应） 在 web 上。 
 
 ## <a name="entity-linking-and-named-entity-recognition"></a>实体链接和命名实体识别
 
@@ -28,12 +28,10 @@ ms.locfileid: "59505569"
 ### <a name="entity-linking"></a>实体链接
 实体链接是一种对文本中找到的实体的身份进行识别和消歧的功能（例如，确定“Mars”是用作行星还是用作罗马战神）。 此过程需要用到已识别实体链接到的知识库 — Wikipedia 用作 `entities` 终结点文本分析的知识库。
 
-文本分析[版本 2.0](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) 仅支持实体链接。
-
 ### <a name="named-entity-recognition-ner"></a>命名实体识别 (NER)
 命名实体识别 (NER) 是指识别文本中不同实体，并将它们分入预定义类别的能力。 下面列出了受支持的实体类型。
 
-文本分析[版本 2.1 预览版](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)支持实体链接和命名实体识别 (NER)。
+在文本分析[版本 2.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)，实体链接和命名的实体识别 (NER) 都可用。
 
 ### <a name="language-support"></a>语言支持
 
@@ -44,7 +42,7 @@ ms.locfileid: "59505569"
 | Type  | 子类型 | 示例 |
 |:-----------   |:------------- |:---------|
 | 人员        | 暂无\*         | “Jeff”、“Bill Gates”     |
-| 位置      | 暂无\*         | “Redmond, Washington”、“Paris”  |
+| Location      | 暂无\*         | “Redmond, Washington”、“Paris”  |
 | 组织  | 暂无\*         | “Microsoft”   |
 | 数量      | Number        | “6”、“six”     | 
 | 数量      | 百分比    | “50%”、“fifty percent”| 
@@ -55,7 +53,7 @@ ms.locfileid: "59505569"
 | 数量      | 维度     | “10 miles”、“40 cm”     | 
 | 数量      | 温度   | “32 degrees”    |
 | DateTime      | 暂无\*         | “6:30PM February 4, 2012”      | 
-| DateTime      | 日期          | “May 2nd, 2017”、“05/02/2017”   | 
+| DateTime      | date          | “May 2nd, 2017”、“05/02/2017”   | 
 | DateTime      | 时间          | “8am”、“8:00”  | 
 | DateTime      | DateRange     | “May 2nd to May 5th”    | 
 | DateTime      | TimeRange     | “6pm to 7pm”     | 
@@ -71,7 +69,7 @@ ms.locfileid: "59505569"
 
 ## <a name="preparation"></a>准备工作
 
-必须拥有以下格式的 JSON 文档：ID、文本、语言
+必须设置采用以下格式的 JSON 文档：ID、 文本、 语言
 
 有关当前支持的语言，请参阅[此列表](../text-analytics-supported-languages.md)。
 
@@ -94,16 +92,16 @@ ms.locfileid: "59505569"
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 查看此请求的 API 文档：[实体链接 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
++ 创建 POST 请求。 查看此请求的 API 文档：[实体链接 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
 
-+ 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
++ 设置用于实体提取的 HTTP 终结点。 它必须包含 `/entities` 资源：`https://[your-region].api.cognitive.microsoft.com/text/analytics/v2.1/entities`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
@@ -280,18 +278,16 @@ ms.locfileid: "59505569"
 
 在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 综上所述：
 
-+ [实体 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
-+ 请求正文中的 JSON 文档包括 ID、文本和语言代码。
++ [实体 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
++ 请求正文中的 JSON 文档包括 ID、 文本和语言代码。
 + POST 请求的目标是 `/entities` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
 + 响应输出由链接实体（包括每个文档 ID 的置信度分数、偏移量和 Web 链接）组成，可用于任何应用程序
-
-## <a name="see-also"></a>另请参阅 
-
- [文本分析概述](../overview.md)  
- [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
- [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712) 
 
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [文本分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)
+> [文本分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+
+* [文本分析概述](../overview.md)  
+* [常见问题解答 (FAQ)](../text-analytics-resource-faq.md)</br>
+* [文本分析产品页](//go.microsoft.com/fwlink/?LinkID=759712) 

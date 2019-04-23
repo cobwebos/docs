@@ -5,14 +5,14 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/17/2019
 ms.author: danlep
-ms.openlocfilehash: c311eea80c604366196a0725e4f9982bb43f8b5d
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 4a4b19338d96094f28b4f4bedd8042723f67f10a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606882"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994769"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>在容器实例中设置环境变量
 
@@ -143,18 +143,15 @@ Azure:\
 
 ## <a name="azure-portal-example"></a>Azure 门户示例
 
-在 Azure 门户中启动容器时，若要设置环境变量，请在创建容器时所在的“配置”页中指定它们。
+若要设置环境变量，在 Azure 门户中启动容器时，他们中指定**高级**页面时创建的容器。
 
-使用门户进行部署时，目前仅限使用三个变量，并且必须以 `"variableName":"value"` 格式输入它们
-
-若要查看示例，请启动[aci wordcount] [ aci-wordcount]容器*NumWords*并*MinLength*变量。
-
-1. 在“配置”中将“重启策略”设置为“在故障时”
-2. 为第一个变量输入 `"NumWords":"5"`，在“添加其他环境变量”下选择“是”，然后为第二个变量输入 `"MinLength":"8"`。 选择“确定”进行确认，然后部署容器。
+1. 上**高级**页上，将**重启策略**到*失败*
+2. 下**环境变量**，输入`NumWords`值为`5`的第一个变量，然后输入`MinLength`值为`8`第二个变量。 
+1. 选择**查看 + 创建**验证，然后将部署容器。
 
 ![门户页，显示环境变量“启用”按钮和文本框][portal-env-vars-01]
 
-若要查看容器的日志，请在“设置”下选择“容器”，然后选择“日志”。 可以查看通过环境变量对脚本行为进行的具体修改，这与在此前的 CLI 和 PowerShell 部分显示的输出类似。 仅显示了五个单词，每个的最小长度为八个字符。
+若要查看容器的日志，在**设置**选择**容器**，然后**日志**。 可以查看通过环境变量对脚本行为进行的具体修改，这与在此前的 CLI 和 PowerShell 部分显示的输出类似。 仅显示了五个单词，每个的最小长度为八个字符。
 
 ![显示容器日志输出的门户][portal-env-vars-02]
 

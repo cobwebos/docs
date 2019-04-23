@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan,moslake,josack
 manager: craigg
-ms.date: 03/01/2019
-ms.openlocfilehash: 5b11f9bc25cd0fcc8a83a2eeaf5cc1746a63200e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 04a5b98daf94275c6a95503c518248abeaeaeaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093882"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998271"
 ---
 # <a name="sql-database-resource-limits-for-azure-sql-database-server"></a>Azure SQL 数据库服务器的 SQL 数据库资源限制
 
@@ -75,32 +75,32 @@ ms.locfileid: "58093882"
 - 如果争用计算资源造成了辅助角色使用率上升，请优化查询，以降低每项查询的资源使用率。 有关详细信息，请参阅[查询优化/提示](sql-database-performance-guidance.md#query-tuning-and-hinting)。
 
 ## <a name="transaction-log-rate-governance"></a>事务日志速率调控 
-事务日志速率监管是用于限制高引入速率的工作负荷，例如大容量的 Azure SQL 数据库中的进程插入、 SELECT INTO 和索引生成。 这些限制进行跟踪，并在生成日志记录的速率为次秒级级别强制实施，而不考虑如何消耗了大量 Io 限制吞吐量可能会对数据文件发出。  事务日志生成速率当前增加而呈线性增长到依赖于硬件的点，与最大日志速率允许正在使用的购买模型的 vCore 48 MB/秒。 
+事务日志速率调控是 Azure SQL 数据库中的一个进程，用于限制批量插入、SELECT INTO 和索引生成等工作负荷的高引入速率。 无论针对数据文件发出多少 IO，系统都会对日志记录生成速率跟踪并实施这些限制，使其保持在亚秒级以下，并限制吞吐量。  事务日志生成速率当前增加而呈线性增长到依赖于硬件的点，与最大日志速率允许正在使用的购买模型的 vCore 96 MB/秒。 
 
 > [!NOTE]
-> 为事务日志文件的实际物理 Io 不控制或限制。 
+> 向事务日志文件发出的实际物理 IO 不会受到调控或限制。 
 
-日志速率设置，以便它们能够实现并持续在各种方案，而整个系统可以维护对用户负载的最小化影响其功能。 日志速率的监管可确保备份保留在已发布的可恢复性 Sla 内的事务日志。  这种管控还可以防止在辅助副本上过多的积压工作。
+日志速率的设置应该做到可在各种场合下实现并保持该速率，同时，整个系统可以在尽量减轻对用户负载造成的影响的前提下保持其功能。 日志速率调控可确保事务日志备份保留在已发布的可恢复性 SLA 范围内。  这种调控还可以防止次要副本带来过多的积压工作。
 
-生成日志记录后，每个操作计算，并评估它是否应延迟以维护所需的最大日志速率 （每秒 MB/秒）。 延迟时不会添加日志记录刷新到存储，而是在本身日志速率生成过程中应用日志速率管理。
+生成日志记录后，将评估每个操作，以确定是否要将其延迟，从而保持最大所需日志速率（MB/秒）。 将日志记录刷新到存储时不会增大延迟，日志速率调控是在日志速率生成期间应用的。
 
-实际的日志生成在运行时所规定的费率可能也会受反馈机制，暂时减少允许的日志费率，以便系统可以达到稳定状态。 日志文件空间管理，从而避免运行到带日志空间状况和可用性组的复制机制可能会暂时降低整体系统限制。 
+在运行时实施的实际日志生成速率还可能受到反馈机制（暂时降低允许的日志速率，使系统保持稳定）的影响。 日志文件空间管理可避免遇到日志空间不间的情况，可用性组复制机制可以暂时降低总体系统限制。 
 
-日志速率调控器流量整形通过以下等待类型显示 (在中公开[sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV):
+可通过以下 wait 类型（在 [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) DMV 中公开）查看日志速率调控器流量的形状：
 
-| 等待类型 | 说明 |
+| Wait 类型 | 说明 |
 | :--- | :--- |
 | LOG_RATE_GOVERNOR | 数据库限制 |
 | POOL_LOG_RATE_GOVERNOR | 池限制 |
-| INSTANCE_LOG_RATE_GOVERNOR | 实例级别限制 |  
-| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 反馈控件，在高级/企业严重未保持可用性组物理复制 |  
-| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制，限制率，以避免日志空间不足的情况 |
+| INSTANCE_LOG_RATE_GOVERNOR | 实例级限制 |  
+| HADR_THROTTLE_LOG_RATE_SEND_RECV_QUEUE_SIZE | 反馈控制。高级/业务关键型工作负荷中的可用性组物理复制不会保持 |  
+| HADR_THROTTLE_LOG_RATE_LOG_SIZE | 反馈控制。限制速率可以避免出现日志空间不足的情况 |
 |||
 
-当遇到牵制所需的可伸缩性日志速率限制，请考虑以下选项：
-- 为了获得最大的 48 MB/s 日志速率增加到更大的层。 
-- 如果正在加载的数据是暂时性的即暂存数据在 ETL 过程中，它可以被加载到 tempdb （这最小日志记录）。 
-- 对于分析方案，将加载到涵盖的聚集列存储表。 这将必要的日志的速率减少由于压缩。 此方法也会增加 CPU 使用率并特性仅适用于数据集，它们都受益于聚集列存储索引。 
+当日志速率限制阻碍实现所需的可伸缩性时，请考虑以下选项：
+- 为了获得最大的 96 MB/s 日志速率增加到更大的层。 
+- 如果加载的数据是暂时性的（即 ETL 过程中的暂存数据），可将其载入 tempdb（记录最少量的数据）。 
+- 对于分析方案，可将数据载入聚集列存储涵盖的表中。 这样，可以通过压缩来降低所需的日志速率。 此方法确实会增大 CPU 利用率，并且仅适用于可从聚集列存储索引受益的数据集。 
 
 ## <a name="next-steps"></a>后续步骤
 

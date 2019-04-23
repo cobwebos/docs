@@ -2,18 +2,18 @@
 title: Azure 数据目录常见方案
 description: Azure 数据目录常见方案概述（包括注册和发现高价值数据源、启用自助式商业智能和捕获有关数据源和进程的现有知识）。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 60930d78-d2d4-4d5d-9651-bdda50b0da0e
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 531c5890cb2164b51d7b383d0b1fdd1b92d9e8eb
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: e95cc64b9086a6fb4c5e2d42521a5fd3f44244ba
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405023"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010800"
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure 数据目录常见方案
 本文介绍 Azure 数据目录可帮助组织从现有数据源获取更多价值的常见方案。
@@ -34,7 +34,7 @@ Azure 数据目录可以为以上问题以及其他问题提供答案。 跨组�
 
 此方案还会提供机会批注高价值数据源，让其更易理解和访问。 这项工作的一个关键方面是包括有关用户如何请求访问数据源的信息。 使用 Azure 数据目录，可提供负责控制数据源访问、现有工具或文档链接、说明访问请求进程的自定义文本的用户或团队的电子邮件地址。 此信息可帮助发现已注册数据源但没有数据访问权限的成员使用数据源所有者定义和控制的进程轻松请求访问。
 
-## <a name="scenario-2-self-service-business-intelligence"></a>方案 2：自助式商业智能
+## <a name="scenario-2-self-service-business-intelligence"></a>方案 2：自助服务商业智能
 尽管传统公司商业智能解决方案将继续作为许多组织数据布局的重要组成部分，但商业节奏的改变让自助式 BI 越来越重要。 通过使用自助式 BI，信息工作者和分析人员可以创建自己的报表、工作簿和仪表板，而不依赖于中央 IT 团队，也不会因 IT 团队的时间安排而受到限制。
 
 在自助式 BI 方案中，用户经常将多个数据源中的数据进行结合，其中很多数据之前可能并未用于 BI 和分析。 虽然可能已知某些数据源，但发现和评估给定任务的潜在数据源仍然有挑战性。

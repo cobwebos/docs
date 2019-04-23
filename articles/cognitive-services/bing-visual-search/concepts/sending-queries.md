@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: article
 ms.date: 4/03/2019
 ms.author: aahi
-ms.openlocfilehash: 7c6fda2238aa53c4dc1a0f15ef1aaee263e4a8f8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 62d34b859a0cf71320c478b7cab4a2914e5ee308
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489342"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011684"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>向必应视觉搜索 API 发送搜索查询
 
@@ -73,7 +73,7 @@ ms.locfileid: "59489342"
 
 以下是请求应指定的查询参数。 至少应包括`mkt`查询参数：
 
-| 名称 | 值 | Type | 需要 |
+| Name | Value | Type | 需要 |
 | --- | --- | --- | --- |
 | <a name="cc" />cc  | 表示结果是从哪里来的双字符国家/地区代码。<br /><br /> 如果设置此参数，则还必须指定 [Accept-language](#acceptlanguage) 标头。 必应使用从语言列表中找到的第一个受支持语言，并将语言与指定的国家/地区代码相结合以确保从哪个市场返回结果。 如果语言列表不包括支持的语言，必应会查找最接近的语言和支持请求的市场。 或者，可以将聚合或默认市场用于结果，而不是指定一个。<br /><br /> 仅当指定多个语言时，才可以使用此查询参数和 `Accept-Language` 查询参数；否则，应使用 `mkt` 和 `setLang` 查询参数。<br /><br /> 此参数和 [mkt](#mkt) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 否       |
 | <a name="mkt" />mkt   | 产生结果的市场。 <br /><br /> **注意：** 如果已知，应始终指定市场。 指定市场有助于必应路由请求，并返回适当的最佳响应。<br /><br /> 此参数和 [cc](#cc) 查询参数相互排斥&mdash;不可同时指定两者。 | String | 是      |
@@ -98,7 +98,7 @@ ms.locfileid: "59489342"
 | <a name="location" />X-Search-Location   | 可选请求标头。<br /><br /> 以分号分隔的键/值对列表，描述客户端的地理位置。 必应使用位置信息来确定安全搜索行为并返回相关的本地内容。 以 \<键\>:\<值\> 形式指定键/值对。 以下是用于指定用户位置的键。<br /><br /><ul><li>lat&mdash;必需。 客户位置的纬度，以度为单位。 纬度必须大于或等于 -90.0 且小于或等于 +90.0。 负值表示南纬，正值表示北纬。<br /><br /></li><li>long&mdash;必需。 客户位置的经度，以度为单位。 经度必须大于或等于 -180.0 且小于或等于 +180.0。 负值表示西经，正值表示东经。<br /><br /></li><li>re&mdash;必需。 半径（以米为单位），指定坐标的水平准确性。 传递设备定位服务返回的值。 典型值可能是 22 m 的 GPS/Wi-fi、 380 m 的单元格塔三角测量和 18000 m 的反向 IP 查找。<br /><br /></li><li>ts&mdash;可选。 客户位于相应位置时的 UTC UNIX 时间戳。 （UNIX 时间戳是自 1970 年 1 月 1 日起的秒数。）<br /><br /></li><li>head&mdash;可选。 客户端的相对航向或旅行方向。 以度数指定旅行方向（从 0 到 360），相对于正北方向顺时针计数。 如果 `sp` 键为非零值，则指定此键。<br /><br /></li><li>sp&mdash;可选。 客户设备移动的水平速度（速度），以米/秒为单位。<br /><br /></li><li>alt&mdash;可选。 客户设备的高度，以米为单位。<br /><br /></li><li>are&mdash;可选。 半径（以米为单位），指定坐标的垂直准确性。 只有在指定 `alt` 键的情况下才指定此键。<br /><br /></li></ul> **注意：** 尽管许多键是可选的，但提供的信息越多，位置结果越精确。<br /><br /> **注意：** 尽管是可选的，但还是建议始终指定用户的地理位置。 如果客户端的 IP 地址未准确反映用户的物理位置（例如，如果客户端使用 VPN），则提供位置尤其重要。 为了获得最佳结果，应包括此标头和`X-MSEdge-ClientIP`标头，但至少应包含此标头。       |
 
 > [!NOTE]
-> 请记住，[必应搜索 API 使用和显示要求](/../bing-web-search/use-display-requirements.md)要求符合所有适用的法律，包括有关使用这些标头。 例如，在某些管辖区（如欧洲），在用户设备上放置某些跟踪设备之前，需要获得用户同意。
+> 请记住，[必应搜索 API 使用和显示要求](../../bing-web-search/use-display-requirements.md)要求符合所有适用的法律，包括有关使用这些标头。 例如，在某些管辖区（如欧洲），在用户设备上放置某些跟踪设备之前，需要获得用户同意。
 
 <a name="content-form-types" />
 

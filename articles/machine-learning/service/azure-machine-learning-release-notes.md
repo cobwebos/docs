@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: e58205e847dbfdae8a114221f9bd56102555eeef
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.openlocfilehash: 7fc0d3a2e29a2aaa06d88f25828ff676d615939d
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579149"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149557"
 ---
 # <a name="azure-machine-learning-service-release-notes"></a>Azure 机器学习服务发行说明
 
@@ -23,12 +23,39 @@ ms.locfileid: "59579149"
 + Azure 机器学习[适用于 Python 的主 SDK](https://aka.ms/aml-sdk)
 + Azure 机器学习[数据准备 SDK](https://aka.ms/data-prep-sdk)
 
+## <a name="2019-04-17"></a>2019-04-17
+
+### <a name="azure-machine-learning-data-prep-sdk-v112"></a>Azure 机器学习数据准备 SDK v1.1.2
+
+请注意:数据准备 Python SDK 将无法再安装`numpy`和`pandas`包。 请参阅[更新的安装说明](https://aka.ms/aml-data-prep-installation)。
+
++ **新功能**
+  + 现在可以使用透视转换。
+    + 操作方法指南：[Pivot notebook](https://aka.ms/aml-data-prep-pivot-nb)
+  + 现在可以本机函数中使用正则表达式。
+    + 示例：
+      + `dflow.filter(dprep.RegEx('pattern').is_match(dflow['column_name']))`
+      + `dflow.assert_value('column_name', dprep.RegEx('pattern').is_match(dprep.value))`
+  + 现在，您可以使用`to_upper` 并`to_lower` 表达式语言中的函数。
+  + 现在可以看到的数据配置文件中的每列的唯一值的数量。
+  + 对于某些常用的读取器步骤，您现在可以传递中`infer_column_types`参数。 如果设置为`True`，数据准备会尝试检测并自动将列类型的转换。
+    + `inference_arguments` 现已弃用。
+  + 现在，可以调用`Dataflow.shape`。
+
++ **Bug 修复和改进**
+  + `keep_columns` 现在接受一个附加的可选参数`validate_column_exists`，如果该检查的结果`keep_columns`将包含的任何列。
+  + （这从文件中读取） 的所有读取器步骤现在接受其他可选自变量`verify_exists`。
+  + 读取 pandas 数据帧和获取数据配置文件的改进了的性能。
+  + 修复了 bug，切片数据流中的单步失败，单个索引。
+
 ## <a name="2019-04-15"></a>2019-04-15
 
 ### <a name="azure-portal"></a>Azure 门户
++ **新功能**
   + 现在可以重新提交现有的远程计算群集上运行的现有脚本。 
   + 在管道选项卡上，现在可以使用新参数运行已发布的管道。 
   + 运行详细信息现在支持新的快照文件查看器。 提交特定运行时，您可以查看的目录的快照。 此外可以下载已提交启动运行 notebook。
+   + 现在可以取消父中的运行，从 Azure 门户。
 
 ## <a name="2019-04-08"></a>2019-04-08
 
