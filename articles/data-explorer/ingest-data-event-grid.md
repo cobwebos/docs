@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/30/2019
 ms.openlocfilehash: 19db47610449ced45fa61610bbe964042e815c7a
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59051846"
 ---
 # <a name="quickstart-ingest-blobs-into-azure-data-explorer-by-subscribing-to-event-grid-notifications"></a>快速入门：通过订阅事件网格通知将 Blob 引入 Azure 数据资源管理器
@@ -43,9 +43,9 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
     | 主题类型 | *存储帐户* | 事件网格主题的类型。 |
     | 主题资源 | *gridteststorage* | 你的存储帐户的名称。 |
     | 订阅所有事件类型 | *clear* | 不要获取有关所有事件的通知。 |
-    | 定义的事件类型 | *已创建 blob* | 要获取其通知的特定事件。 |
+    | 定义的事件类型 | *已创建 Blob* | 要获取其通知的特定事件。 |
     | 终结点类型 | *事件中心* | 要将事件发送到的终结点的类型。 |
-    | 终结点 | *test-hub* | 你创建的事件中心。 |
+    | 终结点 | test-hub | 你创建的事件中心。 |
     | | |
 
 1. 若要跟踪特定容器中的文件，请选择“其他功能”选项卡。 按如下所述设置通知筛选器：
@@ -99,21 +99,21 @@ Azure 数据资源管理器是一项快速且可缩放的数据探索服务，�
 
     **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 数据连接名称 | *test-hub-connection* | 要在 Azure 数据资源管理器中创建的连接的名称。|
+    | 数据连接名称 | test-hub-connection | 要在 Azure 数据资源管理器中创建的连接的名称。|
     | 存储帐户订阅 | 订阅 ID | 存储帐户所在的订阅 ID。|
     | 存储帐户 | *gridteststorage* | 前面创建的存储帐户的名称。|
     | 事件网格 | *test-grid-connection* | 已创建的事件网格的名称。 |
-    | 事件中心名称 | *test-hub* | 创建的事件中心。 选取事件网格时，会自动填充此字段。 |
-    | 使用者组 | *test-group* | 在创建的事件中心定义的使用者组。 |
+    | 事件中心名称 | test-hub | 创建的事件中心。 选取事件网格时，会自动填充此字段。 |
+    | 使用者组 | test-group | 在创建的事件中心定义的使用者组。 |
     | | |
 
     目标表：
 
      **设置** | **建议的值** | **字段说明**
     |---|---|---|
-    | 表 | *TestTable* | 在“TestDatabase”中创建的表。 |
+    | 表 | TestTable | 在“TestDatabase”中创建的表。 |
     | 数据格式 | *JSON* | 支持的格式为 Avro、CSV、JSON、多行 JSON、PSV、SOH、SCSV、TSV 和 TXT。 |
-    | 列映射 | *TestMapping* | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
+    | 列映射 | TestMapping | 在 **TestDatabase** 中创建的映射将传入的 JSON 数据映射到 **TestTable** 的列名称和数据类型。|
     | | |
 
 ## <a name="generate-sample-data"></a>生成示例数据

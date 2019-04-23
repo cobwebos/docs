@@ -16,10 +16,10 @@ ms.date: 01/31/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5a2472e78a9da223b0c651551d7cc8e05ab6eea9
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58905488"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>教程：Azure Active Directory 与 Slack 集成
@@ -107,16 +107,16 @@ ms.locfileid: "58905488"
 
     ![Slack 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<companyname>.slack.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.slack.com`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL： `https://slack.com`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`https://slack.com`
 
     > [!NOTE]
     > “登录 URL”值不是实际值。 请使用实际的登录 URL 更新此值。 请联系 [Slack 客户端支持团队](https://slack.com/help/contact)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. Slack 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
     > [!NOTE] 
     > 如果你有已分配的**电子邮件地址**不在 Office365 许可证上的用户，则 **User.Email** 声明不会出现在 SAML 令牌中。 在这种情况下，我们建议改用 **user.userprincipalname** 作为要映射为**唯一标识符**的 **User.Email** 属性值。
@@ -261,6 +261,6 @@ ms.locfileid: "58905488"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [配置用户预配](slack-provisioning-tutorial.md)

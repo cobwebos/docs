@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: alkohli
 ms.openlocfilehash: ec2013a793f766221a66912d6de9d8da8b8106dd
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282553"
 ---
 # <a name="tutorial-use-data-box-to-import-data-as-managed-disks-in-azure"></a>教程：在 Azure 中使用 Data Box 将数据导入为托管磁盘
@@ -151,9 +151,9 @@ Data Box 根据指定的资源组为每个关联的资源组创建一个共享�
 
 如果复制过程中出错，请从“连接和复制”页下载日志。
 
-- 如果复制的文件未经过 512 字节对齐，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会显示一条错误。 请删除该文件，并复制经过 512 字节对齐的文件。
+- 如果复制的文件未经过 512 字节对齐，该文件不会作为页 Blob 上传到临时存储帐户。 日志中会出现错误。 请删除该文件，并复制经过 512 字节对齐的文件。
 
-- 如果复制的 VHDX（不支持这些文件）使用很长的名称，日志中会显示一条错误。
+- 如果复制的 VHDX（不支持这些文件）使用很长的名称，日志中会出现错误。
 
     ![“连接和复制”页上的日志中的错误](media/data-box-deploy-copy-data-from-vhds/errors-connect-and-copy.png)
 

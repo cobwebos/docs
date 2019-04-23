@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 66fb18542fe35c586af11139dff3cd5dfb7bde73
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269310"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakopolis"></a>教程：Azure Active Directory 与 Trakopolis 集成
@@ -105,9 +105,9 @@ ms.locfileid: "59269310"
 
     ![Trakopolis 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<company name>.trakopolis.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<company name>.trakopolis.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<company name>.trakopolis.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<company name>.trakopolis.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Trakopolis 客户端支持团队](mailto:support@cantelematics.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -196,5 +196,5 @@ ms.locfileid: "59269310"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

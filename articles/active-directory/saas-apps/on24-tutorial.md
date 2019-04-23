@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: a0b5dd169d29dc392274ab5589931f37beb04e9b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273594"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-on24-virtual-environment-saml-connection"></a>教程：Azure Active Directory 与 ON24 Virtual Environment SAML Connection 集成
@@ -147,7 +147,7 @@ ms.locfileid: "59273594"
 
     c. 单击“设置其他 URL”。 
 
-    d. 在“中继状态”文本框中键入 URL： `https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
+    d. 在“中继状态”文本框中键入 URL：`https://vshow.on24.com/vshow/ms_azure_saml_test?r=<ID>`
 
 5.  如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
@@ -243,5 +243,5 @@ ms.locfileid: "59273594"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

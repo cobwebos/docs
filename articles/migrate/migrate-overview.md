@@ -8,10 +8,10 @@ ms.date: 04/04/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e0249535813c6b8d652775f68a696d8c25ead5a1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275436"
 ---
 # <a name="about-azure-migrate"></a>关于 Azure Migrate
@@ -37,7 +37,7 @@ Azure Migrate 有助于：
 - Azure Migrate 仅支持使用托管磁盘进行迁移评估。
 -  只能在以下地域创建 Azure Migrate 项目。 但是，这不会限制你为其他目标 Azure 位置创建评估。
 
-    **地理位置** | **存储位置**
+    **地域** | **存储位置**
     --- | ---
     Azure Government  | 美国政府弗吉尼亚州
     亚洲 | 东南亚或东亚
@@ -69,7 +69,7 @@ Azure Migrate 有助于：
 **货币** | 计费货币。 默认为美元。
 **折扣 (%)** | 基于 Azure 套餐获得的任何特定订阅的折扣。 默认设置是 0%。
 **VM 运行时间** | 如果 VM 不会在 Azure 中全天候运行，则可指定运行持续时间（每月的天数和每天的小时数），然后系统就会进行相应的成本估算。 默认值为“每月 31 天和每天 24 小时”。
-**Azure 套餐** | 加入的 [Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
+**Azure 产品/服务** | 加入的 [Azure 套餐](https://azure.microsoft.com/support/legal/offer-details/)。 Azure Migrate 会进行相应的成本估算。
 **Azure 混合权益** | 是否有软件保证，以及是否有资格享受带成本折扣的 [Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-use-benefit/)。
 
 ## <a name="how-does-azure-migrate-work"></a>Azure Migrate 工作原理

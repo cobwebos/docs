@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e1095cc2c5937fa5de762f91a9830161b8d2a5
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59362127"
 ---
 # <a name="tutorial-complete-an-azure-ad-self-service-password-reset-pilot-roll-out"></a>教程：完成 Azure AD 自助密码重置试点推广
@@ -60,7 +60,7 @@ ms.locfileid: "59362127"
 
 ## <a name="test-sspr-as-a-user"></a>以用户身份测试 SSPR
 
-使用非管理员测试用户（属于试点组的成员）测试自助密码重置。 **请注意，如果你使用的帐户分配了任何管理员角色，则身份验证方法和号码可能与你选择的身份验证方法和号码不同，因为由 Microsoft 管理管理员策略。**
+使用非管理员测试用户（属于试点组的成员）测试自助密码重置。 **使用非管理员测试用户（属于试点组的成员）测试自助密码重置。请注意，如果所使用的帐户具有任何管理员角色，那么身份验证方法和数量可能与所选的有所不同，因为由Microsoft管理管理员策略。**
 
 1. 打开一个新的 InPrivate 或 incognito 模式浏览器窗口。
 1. 通过 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) 中的注册门户使用测试用户注册自助密码重置。

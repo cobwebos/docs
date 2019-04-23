@@ -16,10 +16,10 @@ ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f1beb825eda7e4d6a59810aada7063863b48d8ec
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59260895"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appraisd"></a>教程：Azure Active Directory 与 Appraisd 集成
@@ -51,7 +51,7 @@ ms.locfileid: "59260895"
 
 要配置 Appraisd 与 Azure AD 的集成，需要将库中的 Appraisd 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Appraisd，请执行以下步骤：**
+**要从库中添加 Appraisd，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -107,16 +107,16 @@ ms.locfileid: "59260895"
 
     a. 单击“设置其他 URL”。
 
-    b. 在“中继状态”文本框中键入 URL： `<TENANTCODE>`
+    b. 在“中继状态”文本框中键入 URL：`<TENANTCODE>`
 
-    c. 如果要在 SP 发起的模式下配置应用程序，请在“登录 URL”文本框中使用以下模式键入一个 URL： `https://app.appraisd.com/saml/<TENANTCODE>`
+    c. 如果要在 SP 发起的模式下配置应用程序，请在“登录 URL”文本框中使用以下模式键入一个 URL：`https://app.appraisd.com/saml/<TENANTCODE>`
 
     > [!NOTE]
     > 在本教程稍后将介绍的“Appraisd SSO 配置”页面上，你获取了实际的登录 URL 和中继状态值。
 
 5. Appraisd 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
@@ -163,15 +163,15 @@ ms.locfileid: "59260895"
 
 2. 在页面的右上角，单击“设置”图标，然后导航到“配置”。
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_sett.png)
 
 3. 从菜单的左侧，单击“SAML 单一登录”。
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_single.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
 4. 在“SAML 2.0 单一登录配置”页面上，执行以下步骤：
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. 复制“默认中继状态”值，并将其粘贴到 Azure 门户的“基本 SAML 配置”中的“中继状态”文本框。
 
@@ -179,7 +179,7 @@ ms.locfileid: "59260895"
 
 5. 在同一页面上向下滚动，在“标识用户”下执行以下步骤：
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
     a. 在“标识提供者单一登录 URL”文本框中，粘贴从 Azure 门户复制的“登录 URL”值，然后单击“保存”。
 
@@ -248,15 +248,15 @@ ms.locfileid: "59260895"
 
 2. 在页面的右上角，单击“设置”图标，然后导航到“管理中心”。
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_admin.png)
 
 3. 在页面顶部的工具栏中，单击“人员”，再导航到“添加新用户”。
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_user.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_user.png)
 
 4. 在“添加新用户”页面上，执行以下步骤：
 
-    ![图像](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
+    ![image](./media/appraisd-tutorial/tutorial_appraisd_newuser.png)
 
     a. 在“名字”文本框中，输入用户的名字，例如 Britta。
 
@@ -278,4 +278,4 @@ ms.locfileid: "59260895"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

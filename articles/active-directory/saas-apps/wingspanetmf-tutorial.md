@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: a41bdda303c9e636929fba00a2fe4279002e42b3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-wingspan-etmf"></a>教程：Azure Active Directory 与 Wingspan eTMF 集成
@@ -105,11 +105,11 @@ ms.locfileid: "59280751"
 
     ![Wingspan eTMF 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<customer name>.<instance name>.mywingspan.com/saml`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.<instance name>.mywingspan.com/saml`。
 
-    b. 在“标识符”框中，使用以下模式键入 URL： `http://saml.<instance name>.wingspan.com/shibboleth`
+    b. 在“标识符”框中，使用以下模式键入 URL：`http://saml.<instance name>.wingspan.com/shibboleth`
 
-    c. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<customer name>.<instance name>.mywingspan.com/`
+    c. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer name>.<instance name>.mywingspan.com/`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际登录 URL、标识符和回复 URL 更新这些值。 请联系 [Wingspan eTMF 客户端支持团队](http://www.wingspan.com/contact-us/)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -198,5 +198,5 @@ ms.locfileid: "59280751"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

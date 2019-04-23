@@ -10,10 +10,10 @@ ms.date: 03/25/2018
 ms.author: robinsh
 ms.custom: mvc
 ms.openlocfilehash: 1417ecdaf6a85f491e1accfb9564e27d15e13445
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045827"
 ---
 # <a name="tutorial-part-2---view-the-routed-messages"></a>教程：第 2 部分 - 查看路由的消息
@@ -274,7 +274,7 @@ ms.locfileid: "59045827"
 
 ### <a name="use-the-azure-cli-to-clean-up-resources"></a>使用 Azure CLI 清理资源
 
-若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 `$resourceGroup` 在本教程的开头，已重新设置为将其 **ContosoResources**。
+若要删除资源组，请使用 [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-delete) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurecli-interactive
 az group delete --name $resourceGroup
@@ -282,7 +282,7 @@ az group delete --name $resourceGroup
 
 ### <a name="use-powershell-to-clean-up-resources"></a>使用 PowerShell 清理资源
 
-若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令。 `$resourceGroup` 在本教程的开头，已重新设置为将其 **ContosoResources**。
+若要删除资源组，请使用 [Remove-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/remove-azresourcegroup) 命令。 在本教程的开头，`$resourceGroup` 已设置为 **ContosoResources**。
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name $resourceGroup
@@ -292,7 +292,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 本教程的第 2 部分（即本文）已介绍如何通过执行以下任务，使用消息路由将 IoT 中心消息路由到不同的目标。  
 
-**第 I 部分：创建资源、设置消息路由**
+**第 I 部分：创建资源并设置消息路由**
 > [!div class="checklist"]
 > * 创建资源 - IoT 中心、存储帐户、服务总线队列和模拟设备。
 > * 在 IoT 中心为存储帐户和服务总线队列配置终结点和消息路由。
@@ -310,4 +310,4 @@ Remove-AzResourceGroup -Name $resourceGroup
 转到下一教程，了解如何管理 IoT 设备的状态。 
 
 > [!div class="nextstepaction"]
-> [通过 IoT 中心设置并使用指标和诊断](tutorial-use-metrics-and-diags.md)
+> [通过 IoT 中心设置和使用指标和诊断](tutorial-use-metrics-and-diags.md)

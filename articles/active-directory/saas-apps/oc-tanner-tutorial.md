@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 21cbef1532928d51ba0c9f11e80304933df505b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59261745"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-oc-tanner---appreciatehub"></a>教程：Azure Active Directory 与 O.C. Tanner - AppreciateHub
@@ -51,7 +51,7 @@ ms.locfileid: "59261745"
 
 要通过配置将 O.C. Tanner - AppreciateHub 集成到 Azure AD 中，需要从库将 O.C. Tanner - AppreciateHub 添加到托管式 SaaS 应用的列表中。
 
-**若要从库中添加 O.C. Tanner - AppreciateHub，请执行以下步骤：**
+**若要从库添加 O.C.Tanner - AppreciateHub，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -193,7 +193,7 @@ ms.locfileid: "59261745"
 
 本部分的目的是在 O.C. Tanner - AppreciateHub 中创建名为“Britta Simon”的用户。
 
-**若要在 O.C. Tanner - AppreciateHub 中创建名为“Britta Simon”的用户，请执行以下步骤：**
+**若要在 O.C.Tanner - AppreciateHub 中创建名为“Britta Simon”的用户，请执行以下步骤：**
 
 要求 [O.C. Tanner - AppreciateHub 支持团队](mailto:sso@octanner.com)创建一个用户，该用户的 nameID 属性值与 Azure AD 中 Britta Simon 的用户名相同。
 
@@ -209,4 +209,4 @@ ms.locfileid: "59261745"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

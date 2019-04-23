@@ -11,10 +11,10 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: a1cf72d9e3f5c2c6e919304d4d886a607c54f359
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282655"
 ---
 # <a name="quickstart-use-built-in-portal-tools-for-azure-search-import-indexing-and-queries"></a>快速入门：使用内置门户工具在 Azure 搜索中进行导入、索引编制和查询
@@ -274,4 +274,4 @@ ms.locfileid: "59282655"
 
 * [使用 .NET SDK 创建索引](https://docs.microsoft.com/azure/search/search-create-index-dotnet)
 * [使用 REST API 创建索引](https://docs.microsoft.com/azure/search/search-create-index-rest-api)
-* [使用 Postman/Fiddler 和 Azure 搜索 REST API 创建索引](search-fiddler.md)
+* [使用 Postman/Fiddler 和 Azure 搜索 REST Api 创建索引](search-fiddler.md)

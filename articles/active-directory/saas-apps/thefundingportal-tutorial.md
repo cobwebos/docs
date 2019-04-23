@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 4f7edd13c07d24d5d5a12fb9973083db44f0211f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257733"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-the-funding-portal"></a>教程：Azure Active Directory 与 The Funding Portal 集成
@@ -105,16 +105,16 @@ ms.locfileid: "59257733"
 
     ![The Funding Portal 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.regenteducation.net/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<subdomain>.regenteducation.net`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.regenteducation.net`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [The Funding Portal 客户端支持团队](mailto:info@regenteducation.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. The Funding Portal 应用程序需要 SAML 断言包含名为“externalId1”的属性。 “externalId1”的值应为已识别的 studentID。 为此应用程序配置“externalId1”声明。 可从应用程序的“用户属性”下管理这些属性的值。 以下屏幕截图显示一个示例。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
 
@@ -226,4 +226,4 @@ ms.locfileid: "59257733"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

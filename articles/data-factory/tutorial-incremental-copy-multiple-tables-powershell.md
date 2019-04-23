@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: yexu
 ms.openlocfilehash: 244779e647c4b184b036b1a5ea77aac199be5994
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269395"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>以增量方式将数据从 SQL Server 中的多个表加载到 Azure SQL 数据库
@@ -730,7 +730,7 @@ END
 ## <a name="review-the-results"></a>查看结果
 在 SQL Server Management Studio 中对目标 SQL 数据库运行以下查询，验证数据是否已从源表复制到目标表： 
 
-**Query** 
+**查询** 
 ```sql
 select * from customer_table
 ```
@@ -747,7 +747,7 @@ PersonID    Name    LastModifytime
 5           Anny    2017-09-05 08:06:00.000
 ```
 
-**Query**
+**查询**
 
 ```sql
 select * from project_table
@@ -764,7 +764,7 @@ project2    2016-02-02 01:23:00.000
 project3    2017-03-04 05:16:00.000
 ```
 
-**Query**
+**查询**
 
 ```sql
 select * from watermarktable
@@ -816,7 +816,7 @@ VALUES
 ## <a name="review-the-final-results"></a>查看最终结果
 在 SQL Server Management Studio 中对目标数据库运行以下查询，验证更新的/全新的数据是否已从源表复制到目标表。 
 
-**Query** 
+**查询** 
 ```sql
 select * from customer_table
 ```
@@ -835,7 +835,7 @@ PersonID    Name    LastModifytime
 
 请注意 **PersonID** 为 3 时对应的 **Name** 和 **LastModifytime** 的新值。 
 
-**Query**
+**查询**
 
 ```sql
 select * from project_table
@@ -855,7 +855,7 @@ NewProject  2017-10-01 00:00:00.000
 
 请注意，已将 **NewProject** 条目添加到 project_table。 
 
-**Query**
+**查询**
 
 ```sql
 select * from watermarktable

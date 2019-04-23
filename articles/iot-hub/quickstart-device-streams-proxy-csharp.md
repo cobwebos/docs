@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
 ms.openlocfilehash: d36737e6007f247777689e2afa9f47b3ad5bf107
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59006662"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-c-proxy-applications-preview"></a>快速入门：使用 C# 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
@@ -52,7 +52,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-  - **美国中部**
+  - 美国中部
   - **美国中部 EUAP**
 
 本快速入门中运行的两个示例应用程序是使用 C# 编写的。 开发计算机上需要有 .NET Core SDK 2.1.0 或更高版本。
@@ -262,7 +262,7 @@ dotnet run %serviceConnectionString% MyDevice 2222
 
 在本快速入门中，你设置了一个 IoT 中心、注册了一个设备、部署了一个设备和一个用于通过 IoT 中心建立设备流的服务本地代理程序，并使用了代理通过隧道传输 SSH 或 RDP 流量。 相同的模式可以适应其他客户端/服务器协议（其中的服务器（例如 SSH 守护程序）在设备上运行）。
 
-使用以下链接详细了解设备流：
+请使用以下链接详细了解设备流：
 
 > [!div class="nextstepaction"]
 > [设备流概述](./iot-hub-device-streams-overview.md)

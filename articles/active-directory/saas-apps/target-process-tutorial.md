@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: ffb5da8abd9673d4922aeb4854b3dfa80349f284
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268324"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>教程：Azure Active Directory 与 TargetProcess 的集成
@@ -106,9 +106,9 @@ ms.locfileid: "59268324"
 
     ![TargetProcess 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.tpondemand.com/`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://<subdomain>.tpondemand.com/`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<subdomain>.tpondemand.com/`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [TargetProcess 客户端支持团队](mailto:support@targetprocess.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -131,7 +131,7 @@ ms.locfileid: "59268324"
 
 1. 必须通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展”，才能在 **TargetProcess** 中自动执行配置。
 
-    ![图像](./media/target-process-tutorial/install_extension.png)
+    ![image](./media/target-process-tutorial/install_extension.png)
 
 2. 将扩展添加到浏览器后，单击“安装 TargetProcess”会定向到 TargetProcess 应用程序。 随后，提供管理员凭据，以登录到 TargetProcess。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
 
@@ -235,4 +235,4 @@ ms.locfileid: "59268324"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 03/25/2019
 ms.openlocfilehash: 408b34db16f0d6d22340f0483b90ce5d72ffa613
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59045195"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>使用 Python 创建 Azure 数据资源管理器群集和数据库
@@ -65,7 +65,7 @@ pip install azure-mgmt-kusto
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | cluster_name | *mykustocluster* | 所需的群集名称。|
+   | cluster_name | mykustocluster | 所需的群集名称。|
    | sku | *D13_v2* | 将用于群集的 SKU。 |
    | resource_group_name | *testrg* | 将在其中创建群集的资源组名称。 |
 
@@ -103,11 +103,11 @@ pip install azure-mgmt-kusto
 
    |**设置** | **建议的值** | **字段说明**|
    |---|---|---|
-   | cluster_name | *mykustocluster* | 将在其中创建数据库的群集的名称。|
-   | database_name | *mykustodatabase* | 数据库名称。|
+   | cluster_name | mykustocluster | 将在其中创建数据库的群集的名称。|
+   | database_name | mykustodatabase | 数据库名称。|
    | resource_group_name | *testrg* | 将在其中创建群集的资源组名称。 |
-   | soft_delete_period | *3650 天，0:00:00* | 供查询使用的数据的保留时间。 |
-   | hot_cache_period | *3650 天，0:00:00* | 数据将在缓存中保留的时间。 |
+   | soft_delete_period | 3650 天，0:00:00 | 供查询使用的数据的保留时间。 |
+   | hot_cache_period | 3650 天，0:00:00 | 数据将在缓存中保留的时间。 |
 
 1. 若要查看已创建的数据库，请运行以下命令：
 

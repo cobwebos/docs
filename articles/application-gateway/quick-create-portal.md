@@ -9,10 +9,10 @@ ms.date: 1/8/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: 42d3bd2285574b4416ec06af13006353880a7ca5
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58903516"
 ---
 # <a name="quickstart-direct-web-traffic-with-azure-application-gateway---azure-portal"></a>快速入门：使用 Azure 应用程序网关定向 Web 流量 - Azure 门户
@@ -108,9 +108,9 @@ Azure 需要一个虚拟网络才能在创建的资源之间通信。 可以创�
     - **虚拟机名称**：输入 *myVM* 作为虚拟机的名称。
     - **用户名**：输入 *azureuser* 作为管理员用户名。
     - **密码**：输入 *Azure123456!* 作为管理员密码。
-4. 接受其他默认值，然后选择“下一步:**磁盘”。  
-5. 接受“磁盘”选项卡的默认值，然后选择“下一步:**网络”。
-6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP连接。 
+4. 接受其他默认值，然后选择“下一步:**磁盘”**。  
+5. 接受“磁盘”选项卡的默认值，然后选择“下一步:**网络”**。
+6. 在“网络”选项卡上，验证是否已选择 **myVNet** 作为**虚拟网络**，以及是否已将“子网”设置为 **myBackendSubnet**。 接受其他默认值，然后选择“下一步:**管理”**。<br>应用程序网关可与其所在的虚拟网络外部的实例进行通信，但需要确保已建立 IP连接。 
 7. 在“管理”选项卡上，将“启动诊断”设置为“关闭”。 接受其他默认值，然后选择“复查 + 创建”。
 8. 在“复查 + 创建”选项卡上复查设置，更正任何验证错误，然后选择“创建”。
 9. 等待虚拟机创建完成，然后再继续操作。

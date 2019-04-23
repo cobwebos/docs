@@ -10,7 +10,7 @@ ms.author: scottwhi
 ms.custom: include file
 ms.openlocfilehash: 6016b13fe7d3e1f3b673bd2446d2f68b04878cd6
 ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 01/10/2019
 ms.locfileid: "54193292"
@@ -27,7 +27,7 @@ ms.locfileid: "54193292"
 
 ## <a name="accessing-your-analytics"></a>访问分析
 
-若要访问分析仪表板，请转到 https://bingapistatistics.com。 确保使用购买付费订阅时所用的同一 Microsoft 帐户 (MSA) 登录。
+若要访问分析仪表板，请转到 https://bingapistatistics.com 。 确保使用购买付费订阅时所用的同一 Microsoft 帐户 (MSA) 登录。
 
 ## <a name="filtering-the-data"></a>筛选数据
 

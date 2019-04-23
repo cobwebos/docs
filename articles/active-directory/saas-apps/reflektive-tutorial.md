@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b8d7b6fee973379516e7dbf58b27cfafe1e1edc0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276535"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-reflektive"></a>教程：Azure Active Directory 与 Reflektive 集成
@@ -51,7 +51,7 @@ ms.locfileid: "59276535"
 
 若要配置 Reflektive 与 Azure AD 的集成，需要从库中将 Reflektive 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Reflektive，请执行以下步骤：**
+若要从库中添加 Reflektive，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -115,7 +115,7 @@ ms.locfileid: "59276535"
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    ![图像](common/both-preintegrated-signon.png)
+    ![image](common/both-preintegrated-signon.png)
 
     在“登录 URL”文本框中，键入 URL：`https://www.reflektive.com/app`
 
@@ -206,5 +206,5 @@ ms.locfileid: "59276535"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

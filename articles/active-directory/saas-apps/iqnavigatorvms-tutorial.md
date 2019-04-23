@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: ad6bf2576d7f033f8ae029338dc94635dbba0fe7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267423"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>教程：Azure Active Directory 与 IQNavigator VMS 集成
@@ -51,7 +51,7 @@ ms.locfileid: "59267423"
 
 若要配置 IQNavigator VMS 与 Azure AD 的集成，需要从库中将 IQNavigator VMS 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 IQNavigator VMS，请执行以下步骤：**
+若要从库中添加 IQNavigator VMS，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,20 +105,20 @@ ms.locfileid: "59267423"
 
     ![IQNavigator VMS 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a. 在“标识符”文本框中键入 URL： `iqn.com`
+    a. 在“标识符”文本框中键入 URL：`iqn.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.iqnavigator.com/security/login?client_name=https://sts.window.net/<instance name>`
 
     c. 单击“设置其他 URL”。
 
-    d. 在“中继状态”文本框中，使用以下模式键入 URL： `https://<subdomain>.iqnavigator.com`
+    d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://<subdomain>.iqnavigator.com`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际回复 URL 和中继状态更新这些值。 请联系 [IQNavigator VMS 客户端支持团队](https://www.beeline.com/iqn-product-support/)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
 5. IQNavigator 应用程序希望在名称标识符声明中的用户标识符是唯一的。 用户可以为名称标识符声明映射正确的值。 在这种情况下，出于演示目的，我们映射了 user.UserPrincipalName。 但是你应该根据组织设置映射正确的值。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“设置 SAML 单一登录”页的“SAML 签名证书”部分中，单击“复制”按钮，以复制“应用联合元数据 URL”，并将它保存在计算机上。
 
@@ -195,4 +195,4 @@ ms.locfileid: "59267423"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

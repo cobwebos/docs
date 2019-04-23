@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: rezas
 ms.openlocfilehash: a459473e04f9cbf3b11b75f3b9dbea2732455084
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59005431"
 ---
 # <a name="quickstart-sshrdp-over-iot-hub-device-streams-using-nodejs-proxy-application-preview"></a>快速入门：使用 Node.js 应用程序代理通过 IoT 中心设备流实现 SSH/RDP 方案（预览）
@@ -35,7 +35,7 @@ Microsoft Azure IoT 中心目前支持设备流作为[预览版功能](https://a
 
 目前仅以下区域中创建的 IoT 中心支持设备流预览：
 
-  - **美国中部**
+  - 美国中部
   - **美国中部 EUAP**
 
 若要运行本快速入门中所述的服务本地应用程序，需要在开发计算机上安装 Node.js v4.x.x 或更高版本。
@@ -151,7 +151,7 @@ SSH 客户端程序的控制台输出（SSH 客户端通过连接到服务本地
 
 在本快速入门中，你设置了一个 IoT 中心、注册了一个设备，并部署了一个用于通过 RDP 和 SSH 连接到 IoT 设备的服务代理程序。 将使用设备流通过 IoT 中心以隧道方式传输 RDP 和 SSH 流量。 这样就无需与设备建立直接连接。
 
-使用以下链接详细了解设备流：
+请使用以下链接详细了解设备流：
 
 > [!div class="nextstepaction"]
 > [设备流概述](./iot-hub-device-streams-overview.md)

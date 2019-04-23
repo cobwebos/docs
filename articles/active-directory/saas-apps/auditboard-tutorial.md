@@ -16,10 +16,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b5a54fb179b9baac9e72e003b1f9b0c6697ae74b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59258787"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-auditboard"></a>教程：Azure Active Directory 与 AuditBoard 集成
@@ -51,7 +51,7 @@ ms.locfileid: "59258787"
 
 若要配置 AuditBoard 与 Azure AD 的集成，需从库中将 AuditBoard 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 AuditBoard，请执行以下步骤：**
+**若要从库添加 AuditBoard，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,13 +105,13 @@ ms.locfileid: "59258787"
 
     ![AuditBoard 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/metadata.xml`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/api/v1/sso/saml/assert`
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-    d. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.auditboardapp.com/`
+    d. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.auditboardapp.com/`。
 
     ![AuditBoard 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
@@ -192,4 +192,4 @@ ms.locfileid: "59258787"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

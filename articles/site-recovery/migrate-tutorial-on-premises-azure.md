@@ -9,10 +9,10 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: fc15db91b8f4cc6dbdecd0e7321abdbf81744f08
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357970"
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>将本地计算机迁移到 Azure
@@ -59,7 +59,7 @@ ms.locfileid: "59357970"
 
 ## <a name="set-up-the-source-environment"></a>设置源环境
 
-**场景** | **详细信息**
+**方案** | **详细信息**
 --- | --- 
 VMware | 设置[源环境](vmware-azure-set-up-source.md)和[配置服务器](vmware-azure-deploy-configuration-server.md)。
 物理机 | [设置](physical-azure-set-up-source.md)源环境和配置服务器。
@@ -78,7 +78,7 @@ Hyper-V | 设置[源环境](hyper-v-azure-tutorial.md#set-up-the-source-environm
 
 ## <a name="set-up-a-replication-policy"></a>设置复制策略
 
-**场景** | **详细信息**
+**方案** | **详细信息**
 --- | --- 
 VMware | 为 VMware VM 设置[复制策略](vmware-azure-set-up-replication.md)。
 物理机 | 为物理机设置[复制策略](physical-azure-disaster-recovery.md#create-a-replication-policy)。
@@ -86,7 +86,7 @@ Hyper-V | 设置[复制策略](hyper-v-azure-tutorial.md#set-up-a-replication-po
 
 ## <a name="enable-replication"></a>启用复制
 
-**场景** | **详细信息**
+**方案** | **详细信息**
 --- | --- 
 VMware | 为 VMware VM [启用复制](vmware-azure-enable-replication.md)。
 物理机 | 为物理机[启用复制](physical-azure-disaster-recovery.md#enable-replication)。

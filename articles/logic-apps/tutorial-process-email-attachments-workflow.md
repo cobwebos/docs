@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 07/20/2018
 ms.openlocfilehash: 57d7fecfa9bf2b27a54387072b080ed95f4e87e5
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58881205"
 ---
 # <a name="tutorial-automate-handling-emails-and-attachments-with-azure-logic-apps"></a>教程：使用 Azure 逻辑应用自动处理电子邮件和附件
@@ -62,7 +62,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    |---------|-------|-------------| 
    | **名称** | attachmentstorageacct | 存储帐户的名称 | 
    | **部署模型** | 资源管理器 | 用于管理资源部署的[部署模型](../azure-resource-manager/resource-manager-deployment-model.md) | 
-   | **帐户类型** | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
+   | **帐户种类** | 常规用途 | [存储帐户类型](../storage/common/storage-introduction.md#types-of-storage-accounts) | 
    | **位置** | 美国西部 | 用于存储存储帐户信息的区域 | 
    | **复制** | 本地冗余存储 (LRS) | 此设置指定如何复制、存储、管理和同步数据。 请参阅[本地冗余存储 (LRS)：适用于 Azure 存储的低成本数据冗余](../storage/common/storage-redundancy-lrs.md)。 | 
    | **性能** | 标准 | 此设置指定支持的数据类型以及用于存储数据的介质。 请参阅[存储帐户的类型](../storage/common/storage-introduction.md#types-of-storage-accounts)。 | 
@@ -139,7 +139,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **应用程序名称** | CleanTextFunctionApp | 函数应用的全局唯一的描述性名称 | 
+   | **应用名称** | CleanTextFunctionApp | 函数应用的全局唯一的描述性名称 | 
    | **订阅** | <*your-Azure-subscription-name*> | 以前使用过的同一 Azure 订阅 | 
    | **资源组** | LA-Tutorial-RG | 以前使用过的同一 Azure 资源组 | 
    | **托管计划** | 使用计划 | 此设置决定了如何分配和缩放用于运行函数应用的资源，例如计算能力。 请参阅[托管计划比较](../azure-functions/functions-scale.md)。 | 
@@ -271,8 +271,8 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       | 设置 | 值 | 说明 | 
       | ------- | ----- | ----------- | 
-      | **Folder** | Inbox | 要检查的电子邮件文件夹 | 
-      | **时间间隔** | 1 | 在两次检查之间需等待的时间间隔数 | 
+      | **文件夹** | Inbox | 要检查的电子邮件文件夹 | 
+      | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
       | **频率** | 分钟 | 两次检查的间隔的时间单位 | 
       |  |  |  | 
   
@@ -395,8 +395,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![选择 Azure 函数](./media/tutorial-process-email-attachments-workflow/add-action-select-azure-function.png)
 
-5. 重命名函数形状并提供以下说明：
-```Call RemoveHTMLFunction to clean email body```
+5. 重命名函数形状并提供以下说明：```Call RemoveHTMLFunction to clean email body```
 
 6. 现在，请指定函数要处理的输入。 
 
@@ -410,7 +409,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
       此外，将光标置于“请求正文”框中时，会显示动态内容列表，以便可以选择前述操作中可用的属性值。 
       
-   2. 在动态内容列表中的“收到新电子邮件时”下，选择“正文”属性。 请记得在此属性的后面添加右大括号： ```}```
+   2. 在动态内容列表中的“收到新电子邮件时”下，选择“正文”属性。 请记得在此属性的后面添加右大括号：```}```
 
       ![指定要传递到函数的请求正文](./media/tutorial-process-email-attachments-workflow/add-email-body-for-function-processing.png)
 
@@ -440,8 +439,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
    | **存储帐户** | attachmentstorageacct | 以前创建的用于保存附件的存储帐户的名称 | 
    |||| 
 
-4. 重命名“创建 Blob”操作并提供以下说明：
-```Create blob for email body```
+4. 重命名“创建 Blob”操作并提供以下说明：```Create blob for email body```
 
 5. 在“创建 Blob”操作中，按如下所示和所述提供信息，并选择创建 Blob 所需的字段：
 
@@ -507,8 +505,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![添加“for each”循环](./media/tutorial-process-email-attachments-workflow/add-for-each-loop.png)
 
-2. 重命名循环并提供以下说明：
-```For each email attachment```
+2. 重命名循环并提供以下说明：```For each email attachment```
 
 3. 现在指定供循环处理的数据。 单击“从先前的步骤中选择一个输出”框的内部以打开动态内容列表，然后选择“附件”。 
 
@@ -531,8 +528,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    ![添加用于创建 Blob 的操作](./media/tutorial-process-email-attachments-workflow/create-blob-action-for-attachments.png)
 
-3. 重命名“创建 Blob 2”操作并提供以下说明：
-```Create blob for each email attachment```
+3. 重命名“创建 Blob 2”操作并提供以下说明：```Create blob for each email attachment```
 
 4. 在“为每个电子邮件附件创建 Blob”操作中，按如下所示和所述提供信息，并为要创建的每个 Blob 选择属性：
 
@@ -597,8 +593,7 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
 3. 如果系统要求提供凭据，请登录电子邮件帐户，这样逻辑应用就可以创建到该电子邮件帐户的连接了。
 
-4. 重命名“发送电子邮件”操作并提供以下说明：
-```Send email for review```
+4. 重命名“发送电子邮件”操作并提供以下说明：```Send email for review```
 
 5. 提供此操作的信息，然后选择要包含在电子邮件中的字段，如下所示。 若要在编辑框中添加空行，请按 Shift + Enter。  
 
@@ -608,9 +603,9 @@ Azure 逻辑应用有助于跨 Azure 服务、Microsoft 服务、其他软件即
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----- | 
-   | **Body** | ```Please review new applicant:``` <p>```Applicant name:``` **源** <p>```Application file location:``` **路径** <p>```Application email content:``` **Body** | 电子邮件的正文内容。 单击此框的内部，输入示例文本，然后从动态内容列表中选择以下字段： <p>-“收到新电子邮件时”下的“发件人”字段 </br>-“创建用于电子邮件正文的 Blob”下的“路径”字段 </br>-“调用 RemoveHTMLFunction 来清除电子邮件正文”下的“正文”字段 | 
+   | **正文** | ```Please review new applicant:``` <p>```Applicant name:``` **发件人** <p>```Application file location:``` **路径** <p>```Application email content:``` **正文** | 电子邮件的正文内容。 单击此框的内部，输入示例文本，然后从动态内容列表中选择以下字段： <p>-“收到新电子邮件时”下的“发件人”字段 </br>-“创建用于电子邮件正文的 Blob”下的“路径”字段 </br>-“调用 RemoveHTMLFunction 来清除电子邮件正文”下的“正文”字段 | 
    | **主题**  | ```ASAP - Review applicant for position:``` **主题** | 要包括的电子邮件主题。 单击此框的内部，输入示例文本，然后在动态内容列表中，选择“收到新电子邮件时”下面的“主题”字段。 | 
-   | **目标** | <*recipient-email-address*> | 为进行测试，可以使用自己的电子邮件地址。 | 
+   | **收件人** | <*recipient-email-address*> | 为进行测试，可以使用自己的电子邮件地址。 | 
    |||| 
 
    > [!NOTE] 

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: b599eaf36eed69cd693e0dc4e20ef2123e42e60b
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59270738"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-manager"></a>教程：Azure Active Directory 与 Skills Manager 的集成
@@ -105,9 +105,9 @@ ms.locfileid: "59270738"
 
     ![Skills Manager 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.skills-manager.com/kennametal`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.skills-manager.com/kennametal`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.skills-manager.com/public/SamlLogin2.aspx`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.skills-manager.com/public/SamlLogin2.aspx`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 请联系 [Skills Manager 客户端支持团队](https://www.ibm.com/support/uk/?lnk=msu_uk)来获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -197,4 +197,4 @@ ms.locfileid: "59270738"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

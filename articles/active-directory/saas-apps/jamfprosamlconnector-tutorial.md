@@ -16,10 +16,10 @@ ms.date: 12/19/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 18b575b74c80499f2ddd6648bf051b5245077d2f
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58906134"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jamf-pro"></a>教程：Azure Active Directory 与 Jamf Pro 集成
@@ -51,7 +51,7 @@ ms.locfileid: "58906134"
 
 要配置 Jamf Pro 与 Azure AD 的集成，需要从库中将 Jamf Pro 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Jamf Pro，请执行以下步骤：**
+若要从库中添加 Jamf Pro，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,11 +105,11 @@ ms.locfileid: "58906134"
 
     ![Jamf Pro 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<subdomain>.jamfcloud.com/saml/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.jamfcloud.com/saml/SSO`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com/saml/SSO`
 
-5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
+5. 如果要在 SP 发起的模式下配置应用程序，请点击“设置其他 URL”，并执行以下步骤：
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.jamfcloud.com`
 
@@ -126,11 +126,11 @@ ms.locfileid: "58906134"
 
 1. 必须通过单击“安装扩展”来安装“我的应用安全登录浏览器扩展”，才能在 Jamf Pro 中自动执行配置。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/install_extension.png)
+    ![image](./media/jamfprosamlconnector-tutorial/install_extension.png)
 
 2. 将扩展添加到浏览器后，单击“安装 Jamf Pro”会定向到 Jamf Pro 应用程序。 随后，提供管理员凭据，以登录 Jamf Pro。 浏览器扩展会自动配置应用程序，并自动执行第 3-7 步。
 
-    ![图像](./media/jamfprosamlconnector-tutorial/d1_saml.png)
+    ![image](./media/jamfprosamlconnector-tutorial/d1_saml.png)
 
 3. 若要手动安装 Jamf Pro，请打开新的 Web 浏览器窗口，以管理员身份登录 Jamf Pro 公司网站，并按照以下步骤操作：
 
@@ -278,4 +278,4 @@ ms.locfileid: "58906134"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: fc0ef38193bbd6e5044764a26a5793a4d115348d
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59278133"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>教程：Azure Active Directory 与 Grovo 集成
@@ -106,13 +106,13 @@ ms.locfileid: "59278133"
 
     ![Grovo 域和 URL 单一登录信息](common/idp-relay.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<subdomain>.grovo.com/sso/saml2/metadata`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com/sso/saml2/metadata`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com/sso/saml2/saml-assertion`
 
     c. 单击“设置其他 URL”。
 
-    d. 在“中继状态”文本框中，使用以下模式键入 URL： `https://<subdomain>.grovo.com`
+    d. 在“中继状态”文本框中，使用以下模式键入 URL：`https://<subdomain>.grovo.com`
 
 5. 如果要在“SP”发起的模式下配置应用程序，请执行以下步骤：
 
@@ -125,7 +125,7 @@ ms.locfileid: "59278133"
 
 6. Grovo 应用程序需要特定格式的 SAML 断言，因此，需要在 SAML 令牌属性配置中添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Grovo 应用程序要求通过 **user.mail** 对 **nameidentifier** 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 7. 除上述属性以外，Grovo 应用程序还要求在 SAML 响应中传回其他几个属性。 在“用户属性”对话框的“用户声明”部分执行以下步骤，以便添加 SAML 令牌属性，如下表所示：
 
@@ -264,5 +264,5 @@ ms.locfileid: "59278133"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

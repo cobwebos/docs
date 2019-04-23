@@ -16,10 +16,10 @@ ms.date: 02/06/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 62a4495667dc7c934883bfed0a8f07d7b2d653f7
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266539"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>教程：Azure Active Directory 与 BeeLine 集成
@@ -105,7 +105,7 @@ ms.locfileid: "59266539"
 
     ![BeeLine 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://projects.beeline.net/<instancename>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://projects.beeline.net/<instancename>`
 
     b. 在“回复 URL”文本框中，使用以下模式键入 URL：
     
@@ -119,7 +119,7 @@ ms.locfileid: "59266539"
 
 5. BeeLine 应用程序需要采用特定格式的 SAML 断言。 请先与 [BeeLine 支持团队](https://www.beeline.com/contact-us/)协作，识别将映射到该应用程序的正确用户标识符。 此外，请接受 [BeeLine 支持团队](https://www.beeline.com/contact-us/)的指导，了解其要用于此映射的属性。 可从应用程序的“用户属性”选项卡管理此属性的值。 以下屏幕截图显示一个示例。 此处我们已映射了带有“userprincipalname”属性的“用户标识符”声明，这可提供唯一用户 ID，也将在每个后续 SAML 响应中发送到 Beeline 应用程序。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
 6. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分，单击“下载”以根据要求下载从给定选项提供的“联合元数据 XML”并将其保存在计算机上。
 
@@ -206,4 +206,4 @@ ms.locfileid: "59266539"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

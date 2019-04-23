@@ -16,10 +16,10 @@ ms.date: 02/20/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 499cbcada19728a0d0eba1831460ea38245b7f5c
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267406"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>教程：Azure Active Directory 与 ChronicX® 集成
@@ -106,9 +106,9 @@ ms.locfileid: "59267406"
 
     ![ChronicX® 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<subdomain>.chronicx.com/ups/processlogonSSO.jsp`
 
-    b. 在“标识符(实体 ID)”文本框中，键入 URL： `ups.chronicx.com`
+    b. 在“标识符(实体 ID)”文本框中，键入 URL：`ups.chronicx.com`
 
     > [!NOTE]
     >登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 请联系 [ChronicX® 客户端支持团队](https://www.casebank.com/contact-us/)获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -201,4 +201,4 @@ ms.locfileid: "59267406"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.openlocfilehash: ebc6388f1ebc7546ffda07095ead50797bde4e8b
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58884680"
 ---
 # <a name="check-traffic-on-a-schedule-with-azure-logic-apps"></a>使用 Azure 逻辑应用按计划检查流量
@@ -78,8 +78,7 @@ ms.locfileid: "58884680"
 
    ![找到并添加“计划 - 定期”触发器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/add-schedule-recurrence-trigger.png)
 
-2. 在“定期”形状中选择**省略号** (**...**) 按钮，然后选择“重命名”。 重命名触发器并提供以下说明：
-```Check travel time every weekday morning```
+2. 在“定期”形状中选择**省略号** (**...**) 按钮，然后选择“重命名”。 重命名触发器并提供以下说明：```Check travel time every weekday morning```
 
    ![重命名触发器](./media/tutorial-build-scheduled-recurring-logic-app-workflow/rename-recurrence-schedule-trigger.png)
 
@@ -91,7 +90,7 @@ ms.locfileid: "58884680"
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
-   | **时间间隔** | 1 | 在两次检查之间需等待的时间间隔数 | 
+   | 间隔 | 1 | 在两次检查之间需等待的时间间隔数 | 
    | **频率** | 周次 | 用于定期触发的时间单位 | 
    | **时区** | 无 | 仅在指定开始时间的情况下适用。 用于指定非本地时区。 | 
    | **开始时间** | 无 | 将定期触发延迟到指定的日期和时间。 有关详细信息，请参阅[计划定期运行的任务和工作流](../connectors/connectors-native-recurrence.md)。 | 
@@ -130,8 +129,7 @@ ms.locfileid: "58884680"
    | **API 密钥** | <*your-Bing-Maps-key*> | 输入以前接收的必应地图密钥。 如果没有必应地图密钥，请了解<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">如何获取密钥</a>。 | 
    | | | |  
 
-4. 重命名操作并提供以下说明：
-```Get route and travel time with traffic```
+4. 重命名操作并提供以下说明：```Get route and travel time with traffic```
 
 5. 提供“获取路线”操作的详细信息，如以下示例所示：
 
@@ -139,8 +137,8 @@ ms.locfileid: "58884680"
 
    | 设置 | 值 | 说明 |
    | ------- | ----- | ----------- |
-   | **航点 1** | <*start-location*> | 路线起点 | 
-   | **航点 2** | <*end-location*> | 路由终点 | 
+   | **路标 1** | <*start-location*> | 路线起点 | 
+   | **路标 2** | <*end-location*> | 路由终点 | 
    | **避免** | 无 | 路线上需要避免的任何项目，例如高速公路、收费站等 | 
    | **优化** | timeWithTraffic | 一个参数，用于优化路线，例如距离、当前交通状况下的行程时间，等等。 选择“timeWithTraffic”参数 | 
    | **距离单位** | <*your-preference*> | 路线的距离单位。 本文使用的单位为“英里”  | 
@@ -167,15 +165,14 @@ ms.locfileid: "58884680"
 
    ![选择“变量 - 初始化变量”操作](./media/tutorial-build-scheduled-recurring-logic-app-workflow/select-initialize-variable-action.png)
 
-3. 重命名此操作并提供以下说明：
-```Create variable to store travel time```
+3. 重命名此操作并提供以下说明：```Create variable to store travel time```
 
 4. 提供变量的详细信息，如下所述：
 
    | 设置 | 值 | 说明 | 
    | ------- | ----- | ----------- | 
    | **名称** | travelTime | 变量的名称 | 
-   | **Type** | Integer | 变量的数据类型 | 
+   | 类型 | Integer | 变量的数据类型 | 
    | **值** | 一个表达式，可将当前的行程时间从秒转换为分钟（参见此表下面的步骤）。 | 变量的初始值 | 
    |||| 
 
@@ -193,7 +190,7 @@ ms.locfileid: "58884680"
       如果浏览器宽，则会显示动态内容列表。 
       如果浏览器窄，则会在当前聚焦的编辑框下显示一个内联形式的参数列表。
 
-   2. 在表达式编辑器中，输入此表达式： ```div(,60)```
+   2. 在表达式编辑器中，输入此表达式：```div(,60)```
 
       ![输入此表达式：“div(,60)”](./media/tutorial-build-scheduled-recurring-logic-app-workflow/initialize-variable-action-settings-2.png)
 
@@ -222,7 +219,7 @@ ms.locfileid: "58884680"
 
 1. 在上一操作下，选择“+ 新建步骤” > “添加条件”。 
 
-2. 重命名条件并提供以下说明： ```If travel time exceeds limit```
+2. 重命名条件并提供以下说明：```If travel time exceeds limit```
 
 3. 生成一个条件，用于检查 **travelTime** 是否超过指定的限制，如下所示：
 
@@ -259,8 +256,7 @@ ms.locfileid: "58884680"
 
    逻辑应用创建到电子邮件帐户的连接。
 
-4. 重命名操作并提供以下说明：
-```Send email with travel time```
+4. 重命名操作并提供以下说明：```Send email with travel time```
 
 5. 在“收件人”框中，输入收件人的电子邮件地址。 出于测试目的，请使用你的电子邮件地址。
 

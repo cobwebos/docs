@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 10/05/2018
 ms.author: sharadag
 ms.openlocfilehash: b99132cceb8981a93a8f1c10ccc488d5806f7254
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59050971"
 ---
 # <a name="tutorial-configure-https-on-a-front-door-custom-domain"></a>教程：在 Front Door 自定义域中配置 HTTPS
@@ -241,23 +241,23 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
-1. *谁是证书提供者？使用哪种类型的证书？*
+1. 谁是证书提供者？使用哪种类型的证书？
 
     Digicert 提供的专用/单一证书用于自定义域。 
 
-2. *使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？*
+2. 使用基于 IP 的 TLS/SSL 还是 SNI TLS/SSL？
 
     Azure Front Door 服务使用 SNI TLS/SSL。
 
-3. *如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？*
+3. 如果我未收到 DigiCert 发来的域验证电子邮件，怎么办？
 
     如果自定义域的 CNAME 条目直接指向终结点主机名（并且你未使用 afdverify 子域名称），则你不会收到域验证电子邮件。 验证会自动进行。 否则，如果你没有 CNAME 条目，并且在 24 小时内未收到电子邮件，请联系 Microsoft 支持部门。
 
-4. *使用 SAN 证书是否没有使用专用证书安全？*
+4. 使用 SAN 证书是否没有使用专用证书安全？
     
     SAN 证书遵循与专用证书相同的加密和安全标准。 所有颁发的 SSL 证书都使用 SHA-256 来增强服务器安全性。
 
-5. *我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？*
+5. 我是否需要通过我的 DNS 提供商获得证书颁发机构授权记录？
 
     否，当前不需要证书颁发机构授权记录。 但是，如果你确实有一个，则必须包含 DigiCert 作为一个有效的 CA。
 

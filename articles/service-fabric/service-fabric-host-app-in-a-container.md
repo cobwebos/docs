@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/18/2018
 ms.author: aljo
 ms.openlocfilehash: 33f742c7de340df41f5d946c891e9896d7d2a012
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59048463"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>教程：将 Windows 容器中的 .NET 应用程序部署到 Azure Service Fabric
@@ -149,7 +149,7 @@ $registry = New-AzContainerRegistry -ResourceGroupName $acrresourcegroupname -Na
 
 可以：
 - 通过 Visual Studio 创建一个测试群集。 可以通过此选项使用首选的配置直接从 Visual Studio 创建安全的群集。 
-- [从模板创建安全的群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+- [模板创建安全的群集](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 
 本教程通过 Visual Studio 创建群集，这非常适合测试方案。 如果通过其他方式创建群集或使用现有的群集，可复制粘贴连接终结点或从订阅中选择连接终结点。 
 

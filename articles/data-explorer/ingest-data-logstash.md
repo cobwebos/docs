@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: quickstart
 ms.date: 01/14/2019
 ms.openlocfilehash: e0d81454e6036d09bb74af6f522063a1aed5fffe
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59046404"
 ---
 # <a name="quickstart-ingest-data-from-logstash-to-azure-data-explorer"></a>快速入门：将数据从 Logstash 引入 Azure 数据资源管理器
@@ -112,7 +112,7 @@ output {
 | **ingest_url** | 用于进行引入相关通信的 Kusto 终结点。|
 | **app_id**、**app_key** 和 **app_tenant**| 连接到 Azure 数据资源管理器所需的凭据。 请务必使用具有引入特权的应用程序。 |
 | **database**| 要将事件放入到的数据库的名称。 |
-| **表** | 要将事件放入到的目标表的名称。 |
+| **table** | 要将事件放入到的目标表的名称。 |
 | **mapping** | mapping（映射）用于将传入事件的 json 字符串映射为正确的行格式（定义哪些属性要进入哪个列）。 |
 
 ## <a name="run-logstash"></a>运行 Logstash

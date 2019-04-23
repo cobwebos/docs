@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/04/2019
 ms.author: jeedes
 ms.openlocfilehash: d16aa8442f71845e7b46377c6c290212f9c400a3
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-myworkdrive"></a>教程：Azure Active Directory 与 MyWorkDrive 集成
@@ -115,7 +115,7 @@ ms.locfileid: "59280496"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“回复 URL”和“注销 URL”更新这些值。 输入你自己公司的 MyWorkDrive 服务器主机名，例如：
     > 
-    > 回复 URL： `https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
+    > 回复 URL：`https://yourserver.yourdomain.com/SAML/AssertionConsumerService.aspx`
     > 
     > 登录 URL：`https://yourserver.yourdomain.com/Account/Login-saml`
     > 
@@ -211,5 +211,5 @@ ms.locfileid: "59280496"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

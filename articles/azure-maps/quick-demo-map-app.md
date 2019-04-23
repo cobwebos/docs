@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc
 ms.openlocfilehash: 6afe76aca388f1f6bd479f53eb4e18cc62c10584
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59268664"
 ---
 # <a name="create-an-interactive-search-map-by-using-azure-maps"></a>使用 Azure Maps 创建交互式搜索地图
@@ -73,7 +73,7 @@ ms.locfileid: "59268664"
 在本快速入门中，你创建了 Azure Maps 帐户和演示版应用。 请查看以下教程以了解有关 Azure Maps 的信息：
 
 > [!div class="nextstepaction"]
-> [使用 Azure Maps 搜索附近的兴趣点](tutorial-search-location.md)
+> [使用 Azure Maps 搜索附近兴趣点](tutorial-search-location.md)
 
 有关更多代码示例和交互式编码体验，请参阅以下指南：
 

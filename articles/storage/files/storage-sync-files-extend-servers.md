@@ -9,10 +9,10 @@ ms.date: 10/23/2018
 ms.author: wgries
 ms.subservice: files
 ms.openlocfilehash: 9d7162eca3c2979b1dd333bdaf95c7c43e875b9d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59049132"
 ---
 # <a name="tutorial-extend-windows-file-servers-with-azure-file-sync"></a>教程：使用 Azure 文件同步扩展 Windows 文件服务器
@@ -253,7 +253,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
 
 向存储同步服务注册 Windows Server 可在服务器（或群集）与存储同步服务之间建立信任关系。 一个服务器只能注册到一个存储同步服务。 它可以与存储同步服务所关联的其他服务器和 Azure 文件共享同步。
 
-服务器注册 UI 会在 Azure 文件同步代理安装后自动打开。 如果没有，可以从其文件位置手动将其打开： `C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
+服务器注册 UI 会在 Azure 文件同步代理安装后自动打开。 如果没有，可以从其文件位置手动将其打开：`C:\Program Files\Azure\StorageSyncAgent\ServerRegistration.exe.`
 
 1. 服务器注册 UI 在 VM 中打开后，请选择“确定”。
 1. 选择“登录”即可开始操作。
@@ -307,7 +307,7 @@ Azure 文件同步代理是一个可下载包，可实现 Windows 服务器与 A
    | | |
    | ----- | ----- |
    | 值 | 说明 |
-   | **已注册服务器** | 创建的服务器的名称。 就本教程来说，请使用 *afsvm101918*。 |
+   | **已注册的服务器** | 创建的服务器的名称。 就本教程来说，请使用 *afsvm101918*。 |
    | **路径** | 创建的驱动器的 Windows Server 路径。 在本教程中，请使用 *f:\filestosync*。 |
    | **云分层** | 在本教程中，保留为禁用状态。 |
    | **卷可用空间** | 在本教程中，保留为空白。 |

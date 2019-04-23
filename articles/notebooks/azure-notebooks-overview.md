@@ -14,17 +14,17 @@ ms.topic: overview
 ms.date: 04/05/2019
 ms.author: kraigb
 ms.openlocfilehash: 4840a9839fe1f2a31470d4a67b3755b82077fd90
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280096"
 ---
 # <a name="overview-of-azure-notebooks"></a>Azure Notebooks 概述
 
 Azure Notebooks 是免费的托管服务，用于在云中开发和运行 Jupyter 笔记本而无需进行安装。 [Jupyter](https://jupyter.org/)（以前称为 IPython）是一个开放源代码项目，可让你将 Markdown 文本、可执行代码、持久性数据、图形和可视化效果轻松合并到单个可共享画布，即笔记本（jupyter.org 提供的图片）：
 
-[![EJupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
+[![Jupyter 笔记本的示例](https://jupyter.org/assets/jupyterpreview.png)](https://jupyter.org/assets/jupyterpreview.png#lightbox)
 
 由于代码、图形和说明性文本的这种组合功能强大，因此 Jupyter 在许多方面已变得很常用，例如数据科学指令、数据清理和转换、数值模拟、统计建模，以及机器学习模型的开发。
 
@@ -115,7 +115,7 @@ Azure Notebooks 预配置了以下 Jupyter 扩展：
   
   - [创建和克隆项目](create-clone-jupyter-notebooks.md)
   - [配置和管理项目](configure-manage-azure-notebooks-projects.md)
-  - [从笔记本内安装包](install-packages-jupyter-notebook.md)
+  - [从笔记本中安装包](install-packages-jupyter-notebook.md)
   - [演示幻灯片放映](present-jupyter-notebooks-slideshow.md)
   - [处理数据文件](work-with-project-data-files.md)
   - [访问数据资源](access-data-resources-jupyter-notebooks.md)

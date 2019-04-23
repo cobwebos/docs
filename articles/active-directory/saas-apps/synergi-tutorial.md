@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e6916cc96f9d9778cc829e39f82ef7204e137bc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-synergi"></a>教程：Azure Active Directory 与 Synergi 的集成
@@ -105,9 +105,9 @@ ms.locfileid: "59269463"
 
     ![Synergi 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<company name>.irmsecurity.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<company name>.irmsecurity.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<company name>.irmsecurity.com/sso/<organization id>`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<company name>.irmsecurity.com/sso/<organization id>`
 
     > [!NOTE]
     > 这些不是实际值。 请使用实际标识符和回复 URL 更新这些值。 要获取这些值，请联系 [Synergi 客户端支持团队](https://www.irmsecurity.com/contact/)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -197,5 +197,5 @@ ms.locfileid: "59269463"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -12,10 +12,10 @@ ms.author: garye
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: 26248616c6b490de00028d8ecc8a0e225da0c0a6
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257104"
 ---
 # <a name="what-is-azure-machine-learning-service"></a>什么是 Azure 机器学习服务？
@@ -32,7 +32,7 @@ Azure 机器学习服务是一项云服务，可以使用它来训练、部署�
 
 Azure 机器学习服务提供了一个基于云的环境，你可以使用这一环境来准备数据、培训、测试、部署、管理和跟踪机器学习模型。
 
-[![AAzure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
+[![Azure 机器学习服务工作流](./media/overview-what-is-azure-ml/aml.png)](./media/overview-what-is-azure-ml/aml.png#lightbox)
 
 Azure 机器学习服务完全支持开源技术。 因此，你可以使用几万个包含机器学习组件的开源 Python 包， 例如 PyTorch、TensorFlow 和 scikit-learn。
 它支持丰富的工具，可让你以交互方式轻松浏览和准备数据，然后开发和测试模型。 工具示例包括 [Jupyter Notebook](https://jupyter.org) 或[适用于 Visual Studio Code 的 Azure 机器学习](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai#overview)扩展。
@@ -89,7 +89,7 @@ Azure 机器学习服务还可以自动训练模型和自动优化模型。
 - [创建机器学习服务工作区](setup-create-workspace.md)以开始使用。
 
 - 按照完整的教程进行操作： 
-  + [使用 Azure 机器学习服务定型图像分类模型](tutorial-train-models-with-aml.md) 
+  + [使用 Azure 机器学习服务训练图像分类模型](tutorial-train-models-with-aml.md) 
   + [准备数据并使用自动化机器学习来自动训练回归模型](tutorial-data-prep.md)
 
 - 使用 [Azure 机器学习数据准备 SDK](https://aka.ms/data-prep-sdk) 准备数据。

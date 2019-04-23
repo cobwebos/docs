@@ -16,10 +16,10 @@ ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 35f9a8949f5b51f88b9297890fc5562e7b8dd591
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273373"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>教程：Azure Active Directory 与 Help Scout 集成
@@ -52,7 +52,7 @@ ms.locfileid: "59273373"
 
 要配置 Help Scout 与 Azure AD 的集成，需要从库中将 Help Scout 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 Help Scout，请执行以下步骤：**
+**要从库中添加 Help Scout，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -106,9 +106,9 @@ ms.locfileid: "59273373"
 
     ![Help Scout 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，开头为 `urn:`
+    a. “标识符”是 Help Scout 的“受众 URI (服务提供程序实体 ID)”，以 `urn:` 开头
 
-    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，开头为 `https://` 
+    b. “回复 URL”是 Help Scout 的“发回 URL (断言使用者服务 URL)”，以 `https://` 开头 
 
     > [!NOTE]
     > 这些 URL 中的值仅用于演示。 需要使用实际回复 URL 和标识符更新这些值。 可从“身份验证”部分下面的“单一登录”选项卡获取这些值，本教程稍后将会介绍。
@@ -117,7 +117,7 @@ ms.locfileid: "59273373"
 
     ![Help Scout 域和 URL 单一登录信息](common/metadata-upload-additional-signon.png)
 
-    在“登录 URL”文本框中，键入 URL： `https://secure.helpscout.net/members/login/`
+    在“登录 URL”文本框中，键入 URL `https://secure.helpscout.net/members/login/`
 
 6. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -234,4 +234,4 @@ ms.locfileid: "59273373"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

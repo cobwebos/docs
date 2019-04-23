@@ -8,10 +8,10 @@ ms.service: data-explorer
 ms.topic: tutorial
 ms.date: 04/07/2019
 ms.openlocfilehash: 9f4b7ee0dcc87ca03fd051be0dacedf0912b5320
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59262901"
 ---
 # <a name="tutorial-ingest-data-in-azure-data-explorer-without-one-line-of-code"></a>教程：在 Azure 数据资源管理器中不使用任何代码引入数据
@@ -268,7 +268,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
 1. 在 Azure 门户中使用 Azure 资源管理器模板创建事件中心。 若要执行本文的剩余步骤，请右键单击“部署到 Azure”，然后选择“在新窗口中打开”。 单击“部署到 Azure”按钮可转到 Azure 门户。
 
-    [![D“部署到 Azure”按钮](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
+    [![“部署到 Azure”按钮](media/ingest-data-no-code/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-event-hubs-create-event-hub-and-consumer-group%2Fazuredeploy.json)
 
 1. 为诊断日志创建事件中心命名空间和事件中心。
 
@@ -278,7 +278,7 @@ Azure Monitor 日志的结构不是表格。 你将操纵数据并将每个事�
 
     **设置** | **建议的值** | **说明**
     |---|---|---|
-    | **订阅** | *订阅* | 选择要用于事件中心的 Azure 订阅。|
+    | **订阅** | 用户的订阅 | 选择要用于事件中心的 Azure 订阅。|
     | **资源组** | *test-resource-group* | 创建新的资源组。 |
     | **位置** | 选择最符合需求的区域。 | 在其他资源所在的同一位置创建事件中心命名空间。
     | **命名空间名称** | *AzureMonitoringData* | 选择用于标识命名空间的唯一名称。

@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 79223a7f5c1f16eaf09de8efd05e0ec096ac73ab
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59279442"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-smartrecruiters"></a>教程：Azure Active Directory 与 SmartRecruiters 的集成
@@ -51,7 +51,7 @@ ms.locfileid: "59279442"
 
 要配置 SmartRecruiters 与 Azure AD 的集成，需要从库中将 SmartRecruiters 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 SmartRecruiters，请执行以下步骤：**
+**若要从库添加 SmartRecruiters，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -105,9 +105,9 @@ ms.locfileid: "59279442"
 
     ![SmartRecruiters 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://www.smartrecruiters.com/web-sso/saml/<companyname>`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://www.smartrecruiters.com/web-sso/saml/<companyname>/callback`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -225,5 +225,5 @@ ms.locfileid: "59279442"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

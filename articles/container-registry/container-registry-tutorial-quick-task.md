@@ -9,10 +9,10 @@ ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: seodec18, mvc
 ms.openlocfilehash: ed5df09d492bbf6123e76f73717a1738a23a066c
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58893701"
 ---
 # <a name="tutorial-build-and-deploy-container-images-in-the-cloud-with-azure-container-registry-tasks"></a>教程：使用 Azure 容器注册表任务在云中生成并部署容器映像
@@ -220,8 +220,8 @@ az keyvault secret set \
 
 现已创建 Azure Key Vault 并在其中存储了两个机密：
 
-* `$ACR_NAME-pull-usr`:用作容器注册表**用户名**的服务主体 ID。
-* `$ACR_NAME-pull-pwd`:用作容器注册表**密码**的服务主体密码。
+* `$ACR_NAME-pull-usr`：用作容器注册表**用户名**的服务主体 ID。
+* `$ACR_NAME-pull-pwd`：用作容器注册表**密码**的服务主体密码。
 
 现在，当你或你的应用程序和服务从注册表提取映像时，可以按名称引用这些机密。
 

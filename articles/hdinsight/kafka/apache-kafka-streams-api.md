@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 04/02/2019
 ms.openlocfilehash: 1e02eaeae4757a9a41ec59be81c3d9510d035232
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59273815"
 ---
 # <a name="tutorial-apache-kafka-streams-api"></a>教程：Apache Kafka Streams API
@@ -51,8 +51,8 @@ ms.locfileid: "59273815"
 
 示例应用程序位于 `Streaming` 子目录的 [https://github.com/Azure-Samples/hdinsight-kafka-java-get-started](https://github.com/Azure-Samples/hdinsight-kafka-java-get-started) 中。 应用程序由两个文件组成：
 
-* `pom.xml`:此文件定义项目依赖项、Java 版本和打包方法。
-* `Stream.java`:此文件实现流式处理逻辑。
+* `pom.xml`：此文件定义项目依赖项、Java 版本和打包方法。
+* `Stream.java`：此文件实现流式处理逻辑。
 
 ### <a name="pomxml"></a>Pom.xml
 
@@ -74,8 +74,8 @@ ms.locfileid: "59273815"
 
 * 插件：Maven 插件提供各种功能。 此项目使用了以下插件：
 
-    * `maven-compiler-plugin`:用于将项目使用的 Java 版本设置为 8。 HDInsight 3.6 需要 Java 8。
-    * `maven-shade-plugin`:用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
+    * `maven-compiler-plugin`：用于将项目使用的 Java 版本设置为 8。 HDInsight 3.6 需要 Java 8。
+    * `maven-shade-plugin`：用于生成包含此应用程序以及任何依赖项的 uber jar。 它还用于设置应用程序的入口点，以便直接运行 Jar 文件，而无需指定主类。
 
 ### <a name="streamjava"></a>Stream.java
 
@@ -202,10 +202,10 @@ public class Stream
 
     主题用于以下目的：
 
-   * `test`:本主题是接收记录的位置。 流式处理应用程序从此处读取。
-   * `wordcounts`:本主题是流式处理应用程序存储其输出的位置。
-   * `RekeyedIntermediateTopic`:本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
-   * `wordcount-example-Counts-changelog`:本主题是 `countByKey` 操作使用的状态存储
+   * `test`：本主题是接收记录的位置。 流式处理应用程序从此处读取。
+   * `wordcounts`：本主题是流式处理应用程序存储其输出的位置。
+   * `RekeyedIntermediateTopic`：本主题用于在 `countByKey` 运算符更新计数时对数据进行重新分区。
+   * `wordcount-example-Counts-changelog`：本主题是 `countByKey` 操作使用的状态存储
 
      > [!IMPORTANT]  
      > Kafka on HDInsight 也可以配置为自动创建主题。 有关详细信息，请参阅[配置自动主题创建](apache-kafka-auto-create-topics.md)文档。

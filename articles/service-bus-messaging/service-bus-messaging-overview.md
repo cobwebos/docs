@@ -12,10 +12,10 @@ ms.date: 09/22/2018
 ms.custom: mvc
 ms.author: aschhab
 ms.openlocfilehash: dd73fd8105de2a5fd24ffa8ad5db85da5e52228c
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58918835"
 ---
 # <a name="what-is-azure-service-bus"></a>什么是 Azure 服务总线？

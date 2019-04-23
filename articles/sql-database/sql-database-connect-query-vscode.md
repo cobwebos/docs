@@ -14,10 +14,10 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/25/2019
 ms.openlocfilehash: 8901855ad68a5edb4710853dcde9311216fa2d61
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357102"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query-an-azure-sql-database"></a>快速入门：使用 Visual Studio Code 连接和查询 Azure SQL 数据库
@@ -48,7 +48,7 @@ ms.locfileid: "59357102"
 
 ## <a name="configure-visual-studio-code"></a>配置 Visual Studio Code
 
-### **<a name="mac-os"></a>Mac OS**
+### <a name="mac-os"></a>**Mac OS**
 
 对于 macOS，需安装 OpenSSL，这是 mssql 扩展所使用的 .NET Core 的先决条件。 打开终端并输入以下命令，以便安装 **brew** 和 **OpenSSL**。
 
@@ -61,11 +61,11 @@ ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
 ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
 ```
 
-### **<a name="linux-ubuntu"></a>Linux (Ubuntu)**
+### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
 
 无需特殊配置。
 
-### **<a name="windows"></a>Windows**
+### <a name="windows"></a>**Windows**
 
 无需特殊配置。
 
@@ -110,11 +110,11 @@ ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
    | ------------ | ------------------ | ------------------------------------------------- |
    | **服务器名称** | 完全限定的服务器名称 | 类似于：mynewserver20170313.database.windows.net。 |
    | **数据库名称** | mySampleDatabase | 要连接到的数据库。 |
-   | **Authentication** | SQL 登录名| 本教程使用 SQL 身份验证。 |
+   | **身份验证** | SQL 登录名| 本教程使用 SQL 身份验证。 |
    | **用户名** | 用户名 | 用于创建服务器的服务器管理员帐户的用户名。 |
    | **密码(SQL 登录名)** | 密码 | 用于创建服务器的服务器管理员帐户的密码。 |
    | **保存密码?** | 是或否 | 如果不希望每次都输入密码，则请选择“是”。 |
-   | **输入此配置文件的名称** | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
+   | 输入此配置文件的名称 | 配置文件名称，例如 mySampleProfile | 保存配置文件可以在后续登录时加快连接速度。 |
 
    如果成功，会显示通知，指出已创建并连接配置文件。
 

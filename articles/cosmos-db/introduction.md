@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: a965db4334e88d032f767bd7b855dea6f3ff174f
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59280938"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>欢迎使用 Azure Cosmos DB
@@ -98,7 +98,7 @@ Cosmos DB 提供多种 API 来处理存储在 Cosmos 数据库中的数据。 �
 请通过阅读以下快速入门文章之一，来开始使用 Azure Cosmos DB：
 
 * [Azure Cosmos DB SQL API 入门](create-sql-api-dotnet.md)
-* [Azure Cosmos DB 的 API for MongoDB 入门](create-mongodb-nodejs.md)
+* [Azure Cosmos DB 的用于 MongoDB 的 API 入门](create-mongodb-nodejs.md)
 * [Azure Cosmos DB Cassandra API 入门](create-cassandra-dotnet.md)
 * [Azure Cosmos DB Gremlin API 入门](create-graph-dotnet.md)
 * [Azure Cosmos DB 表 API 入门](create-table-dotnet.md)

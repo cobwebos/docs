@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: ab4a36fa117793724a897de4f6d8f03d7f46504e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59276297"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lean"></a>教程：Azure Active Directory 与 Lean 集成
@@ -52,7 +52,7 @@ ms.locfileid: "59276297"
 
 要配置 Lean 与 Azure AD 的集成，需要将库中的 Lean 添加到托管 SaaS 应用列表中。
 
-**若要从库中添加 Lean，请执行以下步骤：**
+**要从库中添加 Lean，请执行以下步骤：**
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -106,9 +106,9 @@ ms.locfileid: "59276297"
 
     ![Lean 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://<SUBDOMAIN>.goodpractice.net/api/gpsso`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.goodpractice.net/api/gpsso`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `bloom-goodpractice-<SUBDOMAIN>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`bloom-goodpractice-<SUBDOMAIN>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Lean 客户端支持团队](mailto:support@goodpractice.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -198,5 +198,5 @@ ms.locfileid: "59276297"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -11,10 +11,10 @@ ms.date: 04/05/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: c421d99f1071c7a38cfe315cc3054136f81598e0
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59265962"
 ---
 # <a name="what-is-cognitive-search-in-azure-search"></a>什么是 Azure 搜索中的“认知搜索”？
@@ -76,7 +76,7 @@ Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：
 
 | 概念 | 说明| 链接 |
 |---------|------------|-------|
-| 技能集 | 包含技能集合的顶级命名资源。 技能集是扩充管道。 在索引编制期间索引器会调用它。 | [定义技能组合](cognitive-search-defining-skillset.md) |
+| 技能集 | 包含技能集合的顶级命名资源。 技能集是扩充管道。 在索引编制期间索引器会调用它。 | [定义技能集](cognitive-search-defining-skillset.md) |
 | 认知技能 | 扩充管道中的原子转换。 通常，它是提取或推断结构的组件，因此增强了我们对输入数据的理解。 输出几乎总是基于文本，处理是自然语言处理，或者从图像输入提取或生成文本的图像处理。 技能的输出可映射到索引中的字段，或用作下游扩充组件的输入。 技能是预定义的、由 Microsoft 提供的或自定义的（由你创建并部署）。 | [预定义技能](cognitive-search-predefined-skills.md) |
 | 数据提取 | 涵盖多种多样的处理，但与认知搜索相关，命名实体识别技能主要用于从原生不提供相关信息的源中提取数据（实体）。 | [命名实体识别技能](cognitive-search-skill-named-entity-recognition.md)| 
 | 图像处理 | 从图像推断文本，例如识别某个地标，或者从图像提取文本。 常见示例包括从扫描的文档 (JPEG) 文件中提取字符的 OCR，或者在包含街道标志的照片中识别街道名称。 | [图像分析技能](cognitive-search-skill-image-analysis.md)或 [OCR 技能](cognitive-search-skill-ocr.md)
@@ -109,7 +109,7 @@ Azure 搜索中的认知技能基于认知服务 API 中的机器学习模型：
 | REST API | 说明 |
 |-----|-------------|
 | [创建数据源](https://docs.microsoft.com/rest/api/searchservice/create-data-source)  | 标识外部数据源的资源，提供用于创建扩充文档的源数据。  |
-| [创建技能组合 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在索引编制期间协调扩充管道中所用[预定义技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的使用的资源。 |
+| [创建技能集 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 在索引编制期间协调扩充管道中所用[预定义技能](cognitive-search-predefined-skills.md)和[自定义认知技能](cognitive-search-custom-skill-interface.md)的使用的资源。 |
 | [创建索引](https://docs.microsoft.com/rest/api/searchservice/create-index)  | 表示 Azure 搜索索引的架构。 索引中的字段映射到源数据中的字段，或扩充阶段生成的字段（例如，实体识别创建的组织名称的字段）。 |
 | [创建索引器 (api-version=2017-11-11-Preview)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)  | 定义索引编制期间使用的组件（包括数据源、技能、从源和中间数据结构到目标索引的字段关联，以及索引本身）的资源。 运行索引器会触发数据引入和扩充。 输出是基于索引架构的搜索集，其中填充了源数据，并已通过技能集扩充。  |
 

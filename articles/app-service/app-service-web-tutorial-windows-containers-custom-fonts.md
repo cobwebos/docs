@@ -15,10 +15,10 @@ ms.date: 04/03/2019
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 27102cd6b8e98b0f8b2b4940b92d4e4c4580a9cd
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58904060"
 ---
 # <a name="migrate-an-aspnet-app-to-azure-app-service-using-a-windows-container-preview"></a>使用 Windows 容器将 ASP.NET 应用迁移到 Azure 应用服务（预览）
@@ -29,7 +29,7 @@ ms.locfileid: "58904060"
 
 ## <a name="prerequisites"></a>先决条件
 
-完成本教程：
+完成本教程需要：
 
 - <a href="https://hub.docker.com/" target="_blank">注册 Docker 中心帐户</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">安装用于 Windows 的 Docker</a>。
@@ -142,9 +142,9 @@ RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 
 | 设置  | 建议的值 | 更多信息 |
 | ----------------- | ------------ | ----|
-|**应用程序名称**| 键入唯一名称。 | Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。 |
+|**应用名称**| 键入唯一名称。 | Web 应用的 URL 为 `http://<app_name>.azurewebsites.net`，其中 `<app_name>` 是应用名称。 |
 |**资源组**| 选择“使用现有资源组”，键入“myResourceGroup”。 |  |
-|**操作系统**| Windows（预览） | |
+|**OS**| Windows（预览） | |
 
 ### <a name="configure-app-service-plan"></a>配置应用服务计划
 
@@ -180,7 +180,7 @@ Azure 操作完成后，会显示通知框。
 
 ![](media/app-service-web-tutorial-windows-containers-custom-fonts/app-running.png)
 
-**祝贺你！** 你已通过 Windows 容器将 ASP.NET 应用程序迁移到 Azure 应用服务。
+祝贺你！ 你已通过 Windows 容器将 ASP.NET 应用程序迁移到 Azure 应用服务。
 
 ## <a name="see-container-start-up-logs"></a>查看容器启动日志
 
