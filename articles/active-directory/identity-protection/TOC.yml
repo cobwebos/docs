@@ -1,83 +1,76 @@
-items:
 - name: Identity Protection 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是 Azure AD Identity Protection？
-    href: overview.md
+    - name: 什么是 Azure AD Identity Protection？
+      href: overview.md
 - name: 快速入门
   items:
-  - name: 检测到会话风险时阻止访问
-    href: quickstart-sign-in-risk-policy.md
+    - name: 检测到会话风险时阻止访问
+      href: quickstart-sign-in-risk-policy.md
 - name: 概念
-  items:
-  - name: 什么是漏洞？
-    href: vulnerabilities.md
-  - name: 什么是通知？
-    href: notifications.md
-  - name: 你的登录体验是怎样的？
-    href: flows.md
   expanded: false
-- name: 操作指南
   items:
-  - name: 标识保护
-    items:
-    - name: 启用 Azure AD Identity Protection
-      href: enable.md
-    - name: 配置 MFA 注册策略
-      href: howto-mfa-policy.md
-    - name: 配置登录风险策略
-      href: howto-sign-in-risk-policy.md
-    - name: 配置用户风险策略
-      href: howto-user-risk-policy.md
-    - name: 关闭活动风险事件
-      href: howto-close-active-risk-events.md
-    - name: 取消阻止用户
-      href: howto-unblock-user.md
-    - name: 模拟风险事件
-      href: playbook.md
-    - name: 常见问题解答
-      href: faqs.md
-  - name: Identity Protection（已刷新）
-    items:
-    - name: 概述
-      href: overview-v2.md
-    - name: 安全概述
-      href: security-overview.md
-    - name: 调查有风险的用户和登录
-      href: howto-investigate-risky-users-signins.md
-    - name: 配置风险策略
-      href: howto-configure-risk-policies.md
-    - name: 提高检测精度
-      href: howto-improve-detection-accuracy.md
-    - name: 反馈和已知问题
-      href: known-issues.md
+    - name: 什么是漏洞？
+      href: vulnerabilities.md
+    - name: 什么是通知？
+      href: notifications.md
+    - name: 你的登录体验是怎样的？
+      href: flows.md
+- name: 操作指南
   expanded: true
+  items:
+    - name: 标识保护
+      items:
+        - name: 启用 Azure AD Identity Protection
+          href: enable.md
+        - name: 配置 MFA 注册策略
+          href: howto-mfa-policy.md
+        - name: 配置登录风险策略
+          href: howto-sign-in-risk-policy.md
+        - name: 配置用户风险策略
+          href: howto-user-risk-policy.md
+        - name: 关闭活动风险事件
+          href: howto-close-active-risk-events.md
+        - name: 取消阻止用户
+          href: howto-unblock-user.md
+        - name: 模拟风险事件
+          href: playbook.md
+        - name: 常见问题解答
+          href: faqs.md
+    - name: Identity Protection（已刷新）
+      items:
+        - name: 概述
+          href: overview-v2.md
+        - name: 安全概述
+          href: security-overview.md
+        - name: 调查有风险的用户和登录
+          href: howto-investigate-risky-users-signins.md
+        - name: 配置风险策略
+          href: howto-configure-risk-policies.md
+        - name: 提高检测精度
+          href: howto-improve-detection-accuracy.md
+        - name: 反馈和已知问题
+          href: known-issues.md
 - name: 引用
   items:
-  - name: 使用 Microsoft Graph API
-    href: graph-get-started.md
-  - name: 风险事件
-    href: risk-events-reference.md
-  - name: 术语表
-    href: glossary.md
+    - name: 使用 Microsoft Graph API
+      href: graph-get-started.md
+    - name: 风险事件
+      href: risk-events-reference.md
+    - name: 术语表
+      href: glossary.md
 - name: 资源
   items:
-  - name: Azure 反馈论坛
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: 服务更新
-    href: ../fundamentals/whats-new.md
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 8c48b383ccd2ac30dc9598cd2da0f043afae43dc
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54910940"
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: 服务更新
+      href: ../fundamentals/whats-new.md
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

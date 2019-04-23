@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7eba9c526f26254a400eaee1a00644399d3979a8
-ms.sourcegitcommit: b62f138cc477d2bd7e658488aff8e9a5dd24d577
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2018
-ms.locfileid: "51612094"
 documentType: LandingData
 title: Azure 服务总线中继文档
 metadata:
   title: Azure 服务总线中继文档
-  meta.description: Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.
+  meta.description: 'Learn how the Azure Relay service work in a hybrid cloud and on-premises environment, complete with how to, Tutorials, videos, API references, and more.'
   services: service-bus-relay
   author: spelluru
   manager: femila
@@ -22,42 +16,42 @@ metadata:
 abstract:
   description: Azure 中继服务可在无需打开防火墙连接或者对企业网络基础结构进行侵入式改造的情况下，为企业网络和公有云中的本地环境与云环境之间的混合应用程序提供便利。
 sections:
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: <b>混合连接：</b>
-  - type: list
-    style: ordered
+  - title: 分步教程
     items:
-    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started">发送和接收消息 - .NET Web Socket</a>
-    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started">发送和接收消息 - .NET HTTP</a>
-    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-node-get-started">发送和接收消息 - Node.js Web Socket</a>
-    - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started">发送和接收消息 - Node.js HTTP</a>
-  - type: paragraph
-    text: <b>Windows Communication Foundation (WCF) 中继：</b>
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: <b>混合连接：</b>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-dotnet-get-started">发送和接收消息 - .NET Web Socket</a>
+          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-dotnet-get-started">发送和接收消息 - .NET HTTP</a>
+          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-node-get-started">发送和接收消息 - Node.js Web Socket</a>
+          - html: <a href="/azure/service-bus-relay/relay-hybrid-connections-http-requests-node-get-started">发送和接收消息 - Node.js HTTP</a>
+      - type: paragraph
+        text: <b>Windows Communication Foundation (WCF) 中继：</b>
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">向云中的 Web 应用程序公开本地 WCF 服务</a>
+          - html: <a href="/azure/service-bus-relay/service-bus-relay-tutorial">向网络外部的 WCF 客户端公开本地 WCF 服务</a>
+          - html: <a href="/azure/service-bus-relay/service-bus-relay-rest-tutorial">向网络外部的应用程序公开本地 WCF 服务</a>
+  - title: 示例
     items:
-    - html: <a href="/azure/service-bus-relay/service-bus-dotnet-hybrid-app-using-service-bus-relay">向云中的 Web 应用程序公开本地 WCF 服务</a>
-    - html: <a href="/azure/service-bus-relay/service-bus-relay-tutorial">向网络外部的 WCF 客户端公开本地 WCF 服务</a>
-    - html: <a href="/azure/service-bus-relay/service-bus-relay-rest-tutorial">向网络外部的应用程序公开本地 WCF 服务</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: GitHub 上的示例
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: GitHub 上的示例
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections">混合连接</a>'
+          - html: '<a href="https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay">Windows Communication Foundation (WCF)</a>'
+  - title: 引用
     items:
-    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples/hybrid-connections">混合连接</a>
-    - html: <a href="https://github.com/Azure/azure-relay/tree/master/samples/wcf-relay">Windows Communication Foundation (WCF)</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 语言
-      html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET Framework</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/servicebus/">REST API 参考</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Languages
+            html: <p><a href="/dotnet/api/microsoft.azure.relay?view=azure-dotnet">.NET Framework</a></p>
+          - title: REST
+            html: <p><a href="/rest/api/servicebus/">REST API 参考</a></p>

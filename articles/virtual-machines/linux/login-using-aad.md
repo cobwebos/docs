@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: a1743e677e1005e5b4479c1d431b6b8bdbe77c8f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: d1db228f4c73cc00cd32ca6ae5b86056db68f05b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57848688"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148945"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>使用 Azure Active Directory 身份验证（预览版）登录到 Azure 中的 Linux 虚拟机
 
@@ -43,7 +43,7 @@ ms.locfileid: "57848688"
 
 下面是目前（此功能的预览期间）受支持的 Linux 发行版：
 
-| 分发 | 版本 |
+| 分发 | Version |
 | --- | --- |
 | CentOS | CentOS 6，CentOS 7 |
 | Debian | Debian 9 |
@@ -83,7 +83,7 @@ az vm create \
 
 ## <a name="install-the-azure-ad-login-vm-extension"></a>安装 Azure AD 登录 VM 扩展
 
-若要使用 Azure AD 凭据登录到 Linux VM，请安装 VM 扩展中的 Azure Active Directory 日志。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
+若要登录到 Linux VM 使用 Azure AD 凭据，请安装 Azure Active Directory 登录 VM 扩展。 VM 扩展是小型应用程序，可在 Azure 虚拟机上提供部署后配置和自动化任务。 请使用 [az vm extension set](/cli/azure/vm/extension#az-vm-extension-set) 在 *myResourceGroup* 资源组中名为 *myVM* 的 VM 上安装 *AADLoginForLinux* 扩展：
 
 ```azurecli-interactive
 az vm extension set \

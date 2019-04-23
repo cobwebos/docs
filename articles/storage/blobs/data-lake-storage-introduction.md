@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: b25a47e929ef540ad3a74a86d431962d37cde434
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 8777a7504c48b22d0e670dd9f0d28016ac8918db
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58009428"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009457"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2 简介
 
@@ -43,7 +43,7 @@ Data Lake Storage Gen2 的一个基本部分是向 Blob 存储添加[分层命�
 
 -   经济高效：Data Lake Storage Gen2 提供低成本的存储容量和事务。 随着数据在其整个生命周期中的转换，记帐费率变化通过诸如 [Azure Blob 存储生命周期](storage-lifecycle-management-concepts.md)的内置功能使成本保持在最低水平。
 
--   已优化的驱动程序：ABFS 驱动程序专门针对大数据分析进行了[优化](data-lake-storage-abfs-driver.md)。 相应的 REST API 通过 dfs 终结点 dfs.core.windows.net 进行显示。
+-   已优化的驱动程序：ABFS 驱动程序是[专门优化](data-lake-storage-abfs-driver.md)进行大数据分析。 相应的 REST Api 提供通过终结点`dfs.core.windows.net`。
 
 ### <a name="scalability"></a>可伸缩性
 

@@ -1,52 +1,45 @@
-items:
 - name: 项目音响效果文档
 - name: 概述
   items:
-  - name: 什么是项目音响效果？
-    href: what-is-acoustics.md
+    - name: 什么是项目音响效果？
+      href: what-is-acoustics.md
 - name: 快速入门
   items:
-  - name: 包含 Unity 的快速入门
-    href: unity-quickstart.md
-  - name: 包含 Unreal 的快速入门
-    href: unreal-quickstart.md
+    - name: 包含 Unity 的快速入门
+      href: unity-quickstart.md
+    - name: 包含 Unreal 的快速入门
+      href: unreal-quickstart.md
 - name: 教程
   items:
-  - name: Unity
-    items:
-    - name: 使用 Unity 烘培音效
-      href: unity-baking.md
-    - name: Unity 设计工作流
-      href: unity-workflow.md
-  - name: Unreal/Wwise
-    items:
-    - name: 使用 Unreal/Wwise 烘培音效
-      href: unreal-baking.md
-    - name: Unreal/Wwise 设计工作流
-      href: unreal-workflow.md
+    - name: Unity
+      items:
+        - name: 使用 Unity 烘培音效
+          href: unity-baking.md
+        - name: Unity 设计工作流
+          href: unity-workflow.md
+    - name: Unreal/Wwise
+      items:
+        - name: 使用 Unreal/Wwise 烘培音效
+          href: unreal-baking.md
+        - name: Unreal/Wwise 设计工作流
+          href: unreal-workflow.md
 - name: 概念
   items:
-  - name: 包含音效模拟的设计概念
-    href: design-process.md
-  - name: 烘培解析
-    href: bake-resolution.md
+    - name: 包含音效模拟的设计概念
+      href: design-process.md
+    - name: 烘培解析
+      href: bake-resolution.md
 - name: 操作方法
   items:
-  - name: 创建 Azure Batch 帐户
-    href: create-azure-account.md
-  - name: 将项目音响效果集成到 Unity 中
-    href: unity-integration.md
-  - name: 将项目音响效果集成到 Unreal/Wwise 中
-    href: unreal-integration.md
+    - name: 创建 Azure Batch 帐户
+      href: create-azure-account.md
+    - name: 将项目音响效果集成到 Unity 中
+      href: unity-integration.md
+    - name: 将项目音响效果集成到 Unreal/Wwise 中
+      href: unreal-integration.md
 - name: 资源
   items:
-  - name: 常见问题
-    href: faq.md
-  - name: 已知问题
-    href: known-issues.md
-ms.openlocfilehash: 0a445890369e48f61dfa545d7107f46e3d0675a1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787877"
+    - name: 常见问题
+      href: faq.md
+    - name: 已知问题
+      href: known-issues.md

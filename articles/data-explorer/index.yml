@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 34de58f7a3f9307714ccc4594d9ac92523c55f69
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482211"
 documentType: LandingData
 title: Azure 数据资源管理器文档
 metadata:
@@ -19,65 +13,65 @@ abstract:
   description: <p>Azure 数据资源管理器是一项快速、完全托管的数据分析服务，用于实时分析从应用程序、网站和 IoT 设备等资源流式传输的海量数据。 可以使用 Azure 数据资源管理器收集、存储和分析不同的数据来改进产品、增强客户体验、监视设备并提升操作水平。</p><p>通过我们的快速入门、教程和参考内容，了解如何使用 Azure 数据资源管理器。</p>
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: 什么是 Azure 数据资源管理器？ (19:47)
-    href: https://youtu.be/D_AJk2lAepw
+    title: '什么是 Azure 数据资源管理器？ (19:47)'
+    href: 'https://youtu.be/D_AJk2lAepw'
     width: 250
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何预配和使用 Azure 数据资源管理器：
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: 创建群集和数据库
-      href: /azure/data-explorer/create-cluster-database-portal
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: 从事件中心引入流数据
-      href: /azure/data-explorer/ingest-data-event-hub
-    - image:
-        src: /azure/data-explorer/media/index/portal.svg
-      text: 使用 Web UI 查询数据
-      href: /azure/data-explorer/web-query-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: 使用 Python 引入排队数据
-      href: /azure/data-explorer/python-ingest-data
-    - image:
-        src: /azure/data-explorer/media/index/logo-python.svg
-      text: 使用 Python 查询数据
-      href: /azure/data-explorer/python-query-data
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何构建端到端解决方案：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何预配和使用 Azure 数据资源管理器：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: 创建群集和数据库
+            href: /azure/data-explorer/create-cluster-database-portal
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: 从事件中心引入流数据
+            href: /azure/data-explorer/ingest-data-event-hub
+          - image:
+              src: /azure/data-explorer/media/index/portal.svg
+            text: 使用 Web UI 查询数据
+            href: /azure/data-explorer/web-query-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: 使用 Python 引入排队数据
+            href: /azure/data-explorer/python-ingest-data
+          - image:
+              src: /azure/data-explorer/media/index/logo-python.svg
+            text: 使用 Python 查询数据
+            href: /azure/data-explorer/python-query-data
+  - title: 分步教程
     items:
-    - html: <a href="/azure/data-explorer/visualize-power-bi">在 Power BI 中可视化 Azure 数据资源管理器中的数据</a>
-- title: 免费 Pluralsight 视频培训
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 了解如何构建端到端解决方案：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/data-explorer/visualize-power-bi">在 Power BI 中可视化 Azure 数据资源管理器中的数据</a>
+  - title: 免费 Pluralsight 视频培训
     items:
-    - title: Azure 数据资源管理器的查询语言
-      href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-      image:
-        src: /azure/data-explorer/media/index/logo-pluralsight.svg
-        href: https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 数据资源管理器的查询语言
+            href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+            image:
+              src: /azure/data-explorer/media/index/logo-pluralsight.svg
+              href: 'https://app.pluralsight.com/library/courses/kusto-query-language-kql-from-scratch'
+  - title: 引用
     items:
-    - title: 语言和 API
-      html: <p><a href="https://aka.ms/kustolangref">查询语言、管理命令和 API</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 语言和 API
+            html: '<p><a href="https://aka.ms/kustolangref">查询语言、管理命令和 API</a>'

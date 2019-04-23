@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 0203/26/2019
 ms.author: bwren
-ms.openlocfilehash: 59213c5391b5b652eeead05c4a5af761571fcece
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ec037b16840afe669ac3934beaa832f850cdcfb0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798940"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003677"
 ---
 # <a name="logs-in-azure-monitor"></a>Azure Monitor 中的日志
 
@@ -112,7 +112,7 @@ Azure Monitor 可从 Azure 和本地资源中的各种源收集日志数据。 �
 
 | 数据 | 描述 |
 |:---|:---|
-| 用于容器的 azure 监视器 | 清单和性能数据收集[容器的 Azure Monitor](../insights/container-insights-overview.md)。 请参阅[容器数据收集详细信息](../insights/container-insights-analyze.md#container-data-collection-details)的表的列表。 |
+| 用于容器的 Azure Monitor | 清单和性能数据收集[容器的 Azure Monitor](../insights/container-insights-overview.md)。 请参阅[容器数据收集详细信息](../insights/container-insights-log-search.md#container-records)的表的列表。 |
 | 用于 VM 的 Azure Monitor | 映射和性能数据收集[Vm 的 Azure Monitor](../insights/vminsights-overview.md)。 请参阅[如何为虚拟机中查询 Azure Monitor 中的日志](../insights/vminsights-log-search.md)有关查询此数据的详细信息。 |
 
 ### <a name="custom"></a>“自定义” 

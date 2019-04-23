@@ -1,81 +1,74 @@
-items:
 - name: 条件访问文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是条件访问？
-    href: overview.md
+    - name: 什么是条件访问？
+      href: overview.md
 - name: 快速入门
   items:
-  - name: 要求对特定应用执行 MFA
-    href: app-based-mfa.md
-  - name: 要求接受使用条款
-    href: require-tou.md
-  - name: 检测到会话风险时阻止访问
-    href: app-sign-in-risk.md
+    - name: 要求对特定应用执行 MFA
+      href: app-based-mfa.md
+    - name: 要求接受使用条款
+      href: require-tou.md
+    - name: 检测到会话风险时阻止访问
+      href: app-sign-in-risk.md
 - name: 教程
   items:
-  - name: 迁移经典 MFA 策略
-    href: policy-migration-mfa.md
+    - name: 迁移经典 MFA 策略
+      href: policy-migration-mfa.md
 - name: 概念
-  items:
-  - name: 基线保护
-    href: baseline-protection.md
-  - name: 条件
-    href: conditions.md
-  - name: 位置条件
-    href: location-condition.md
-  - name: 控制
-    href: controls.md
-  - name: 服务依赖项
-    href: service-dependencies.md
-  - name: 假设分析工具
-    href: what-if-tool.md
   expanded: false
-- name: 操作指南
   items:
-  - name: 计划条件访问部署
-    href: plan-conditional-access.md
-  - name: 最佳做法
-    href: best-practices.md
-  - name: 阻止传统身份验证
-    href: block-legacy-authentication.md
-  - name: 控制对 Exchange Online 和 SharePoint Online 的访问
-    href: conditional-access-for-exo-and-spo.md
-  - name: 迁移经典策略
-    href: policy-migration.md
-  - name: 需要已批准的客户端应用
-    href: app-based-conditional-access.md
-  - name: 需要应用保护策略
-    href: app-protection-based-conditional-access.md
-  - name: 需要托管设备
-    href: require-managed-devices.md
-  - name: 要求对来自不受信任网络的访问尝试执行 MFA
-    href: untrusted-networks.md
-  - name: 需要使用条款
-    href: terms-of-use.md
+    - name: 基线保护
+      href: baseline-protection.md
+    - name: 条件
+      href: conditions.md
+    - name: 位置条件
+      href: location-condition.md
+    - name: 控制
+      href: controls.md
+    - name: 服务依赖项
+      href: service-dependencies.md
+    - name: 假设分析工具
+      href: what-if-tool.md
+- name: 操作指南
   expanded: true
+  items:
+    - name: 计划条件访问部署
+      href: plan-conditional-access.md
+    - name: 最佳做法
+      href: best-practices.md
+    - name: 阻止传统身份验证
+      href: block-legacy-authentication.md
+    - name: 控制对 Exchange Online 和 SharePoint Online 的访问
+      href: conditional-access-for-exo-and-spo.md
+    - name: 迁移经典策略
+      href: policy-migration.md
+    - name: 需要已批准的客户端应用
+      href: app-based-conditional-access.md
+    - name: 需要应用保护策略
+      href: app-protection-based-conditional-access.md
+    - name: 需要托管设备
+      href: require-managed-devices.md
+    - name: 要求对来自不受信任网络的访问尝试执行 MFA
+      href: untrusted-networks.md
+    - name: 需要使用条款
+      href: terms-of-use.md
 - name: 引用
   items:
-  - name: 技术参考
-    href: technical-reference.md
+    - name: 技术参考
+      href: technical-reference.md
 - name: 资源
   items:
-  - name: Azure 反馈论坛
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: 服务更新
-    href: ../fundamentals/whats-new.md
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 1db270043ea996b72f47ee00dbd07f1bd33a1e48
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787026"
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: 服务更新
+      href: ../fundamentals/whats-new.md
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

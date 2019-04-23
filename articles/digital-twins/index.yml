@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 65845d3f46732772a0e181b6409554b64075fe30
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52274364"
 documentType: LandingData
 title: Azure 数字孪生文档
 metadata:
@@ -20,18 +14,18 @@ metadata:
 abstract:
   description: 了解如何使用 Azure 数字孪生来连接人员、地点等，以及如何使用空间智能构建 IoT 解决方案。 逐步完成快速入门和教程，以监视假想的智能建筑、了解深入的概念并创建用于为物理环境建模的下一代 IoT 解决方案。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何<a href="quickstart-view-occupancy-dotnet">使用 Azure 数字孪生 .NET 示例查找空气质量良好的可用房间</a>。
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何自定义和使用 Azure 数字孪生解决方案以监视设施。
-  - type: list
-    style: ordered
+  - title: 5 分钟快速入门
     items:
-    - html: <a href="/azure/digital-twins/tutorial-facilities-setup">预配示例建筑</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-udf">监视建筑中的状况</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-events">从建筑接收通知</a>
-    - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">分析来自建筑的事件</a>
+      - type: paragraph
+        text: 了解如何<a href="quickstart-view-occupancy-dotnet">使用 Azure 数字孪生 .NET 示例查找空气质量良好的可用房间</a>。
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何自定义和使用 Azure 数字孪生解决方案以监视设施。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/digital-twins/tutorial-facilities-setup">预配示例建筑</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-udf">监视建筑中的状况</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-events">从建筑接收通知</a>
+          - html: <a href="/azure/digital-twins/tutorial-facilities-analyze">分析来自建筑的事件</a>

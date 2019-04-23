@@ -5,22 +5,27 @@ services: virtual-machines
 author: jonbeck7
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 04/02/2019
+ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: c5e6a44409e082f10a532759e3403f6b5801fdca
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 6c83298b102d6782647f3baebf6f98e43cb3ad7f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551598"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011837"
 ---
 存储优化 VM 大小可提供较高的磁盘吞吐量和 IO，非常适合用于大数据、SQL 和 NoSQL 数据库、数据仓库和大型事务数据库。  示例包括 Cassandra、MongoDB、Cloudera 和 Redis。 本文介绍关于 vCPU、数据磁盘和 NIC 的数量以及每个优化大小的本地存储吞吐量和网络带宽的信息。
 
 Lsv2 系列具有高吞吐量、低延迟、在 [AMD EPYC &trade; 7551 处理器](https://www.amd.com/en/products/epyc-7000-series)上运行的直接映射的本地 NVMe 存储，且所有核心提升 2.55GHz，最大提升 3.0GHz。 Lsv2 系列 VM 提供同时进行的多线程配置中的 8 到 80 个 vCPU。  每个 vCPU 有 8 GiB 内存，每 8 个 vCPU 有一个 1.92TB 的 NVMe SSD M.2 设备，并且在 L80s v2 上可以使用最多 19.2TB (10x1.92TB)。
 
 > [!NOTE]
-> Lsv2 系列 Vm 进行了优化以使用直接附加到 VM，而不是使用持久性数据磁盘的节点上的本地磁盘。 这可实现工作负载的更大的 IOPS/吞吐量。 Lsv2 系列不支持本地缓存以提高可实现的 IOPS 的持久性数据磁盘的创建。 高吞吐量和 IOPS 的本地磁盘使 Lsv2 系列 Vm 适合 NoSQL 存储 Apache Cassandra 和 MongoDB 等跨多个 Vm 以实现持久性发生的单一 vm 故障时复制数据。
+> Lsv2 系列 Vm 进行了优化以使用直接附加到 VM，而不是使用持久性数据磁盘的节点上的本地磁盘。 这可实现工作负载的更大的 IOPS/吞吐量。 Lsv2 和 Ls 系列不支持以增加持久性数据磁盘的 IOPs 可实现本地缓存的创建。
+>
+> 高吞吐量和 IOPs 的本地磁盘使得 Lsv2 和 Ls 系列 Vm 非常适合用于 NoSQL 存储 Apache Cassandra 和 MongoDB 等跨多个 Vm 以实现持久性发生的单一 vm 故障时复制数据。
+>
+> 若要了解详细信息，请参阅[优化 Lsv2 系列虚拟机上的性能](../articles/virtual-machines/linux/storage-performance.md)。  
+
 
 ## <a name="lsv2-series"></a>Lsv2 系列
 

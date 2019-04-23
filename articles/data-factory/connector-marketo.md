@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 94ecf05272ecb29f914bb00fa407a564fef96c17
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: d6d6517a85997265021573b2f9d481c81283c216
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562073"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148826"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Marketo 复制数据
 
@@ -33,7 +33,7 @@ ms.locfileid: "55562073"
 Azure 数据工厂提供内置的驱动程序用于启用连接，因此无需使用此连接器手动安装任何驱动程序。
 
 >[!NOTE]
->此 Marketo 连接器基于 Marketo REST API 构建。 请注意，Marketo 在服务端具有[并发请求限制](http://developers.marketo.com/rest-api/)。 如果遇到错误消息“尝试使用 REST API 时出现错误：在 20 秒内超过最大速率限制 100 (606)”或“尝试使用 REST API 时出现错误：达到并发访问限制 10 (615)”，请考虑减少并发复制活动运行以减少对服务的请求数。
+>此 Marketo 连接器基于 Marketo REST API 构建。 请注意，Marketo 在服务端具有[并发请求限制](https://developers.marketo.com/rest-api/)。 如果遇到错误消息“尝试使用 REST API 时出现错误：在 20 秒内超过最大速率限制 100 (606)”或“尝试使用 REST API 时出现错误：达到并发访问限制 10 (615)”，请考虑减少并发复制活动运行以减少对服务的请求数。
 
 ## <a name="getting-started"></a>入门
 

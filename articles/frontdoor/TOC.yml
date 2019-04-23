@@ -1,107 +1,100 @@
-items:
 - name: Front Door 服务文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是 Azure Front Door 服务？
-    href: front-door-overview.md
+    - name: 什么是 Azure Front Door 服务？
+      href: front-door-overview.md
 - name: 快速入门
   items:
-  - name: 创建 Front Door
-    href: quickstart-create-front-door.md
+    - name: 创建 Front Door
+      href: quickstart-create-front-door.md
 - name: 教程
   items:
-  - name: 将自定义域添加到 Front Door
-    href: front-door-custom-domain.md
-  - name: 为自定义域启用 HTTPS
-    href: front-door-custom-domain-https.md
-  - name: 为 Front Door 设置地区筛选策略
-    href: front-door-tutorial-geo-filtering.md
+    - name: 将自定义域添加到 Front Door
+      href: front-door-custom-domain.md
+    - name: 为自定义域启用 HTTPS
+      href: front-door-custom-domain-https.md
+    - name: 为 Front Door 设置地区筛选策略
+      href: front-door-tutorial-geo-filtering.md
 - name: 示例
   items:
-  - name: 资源管理器模板
-    href: front-door-quickstart-template-samples.md
+    - name: 资源管理器模板
+      href: front-door-quickstart-template-samples.md
 - name: 概念
   items:
-  - name: 后端和后端池
-    href: front-door-backend-pool.md
-  - name: 使用 Front Door 进行缓存
-    href: front-door-caching.md
-  - name: 地区筛选
-    href: front-door-geo-filtering.md
-  - name: 运行状况探测
-    href: front-door-health-probes.md
-  - name: Front Door 如何匹配请求的路由
-    href: front-door-route-matching.md
-  - name: HTTP/2 支持
-    href: front-door-http2.md
-  - name: HTTP 标头协议支持
-    href: front-door-http-headers-protocol.md
-  - name: 使用 Azure 的应用程序传送套件进行负载均衡
-    href: front-door-lb-with-azure-app-delivery-suite.md
-  - name: 监视
-    href: front-door-diagnostics.md
-  - name: 路由体系结构
-    href: front-door-routing-architecture.md
-  - name: 流量路由方法
-    href: front-door-routing-methods.md
-  - name: URL 重写
-    href: front-door-url-rewrite.md
-  - name: WAF
-    items:
-    - name: 概述
-      href: waf-overview.md
-    - name: 自定义规则
-      href: waf-front-door-custom-rules.md
-    - name: 策略设置
-      href: waf-front-door-policy-settings.md
-    - name: 监视和日志记录
-      href: waf-front-door-monitor.md
+    - name: 后端和后端池
+      href: front-door-backend-pool.md
+    - name: 使用 Front Door 进行缓存
+      href: front-door-caching.md
+    - name: 地区筛选
+      href: front-door-geo-filtering.md
+    - name: 运行状况探测
+      href: front-door-health-probes.md
+    - name: Front Door 如何匹配请求的路由
+      href: front-door-route-matching.md
+    - name: HTTP/2 支持
+      href: front-door-http2.md
+    - name: HTTP 标头协议支持
+      href: front-door-http-headers-protocol.md
+    - name: 使用 Azure 的应用程序传送套件进行负载均衡
+      href: front-door-lb-with-azure-app-delivery-suite.md
+    - name: 监视
+      href: front-door-diagnostics.md
+    - name: 路由体系结构
+      href: front-door-routing-architecture.md
+    - name: 流量路由方法
+      href: front-door-routing-methods.md
+    - name: URL 重写
+      href: front-door-url-rewrite.md
+    - name: WAF
+      items:
+        - name: 概述
+          href: waf-overview.md
+        - name: 自定义规则
+          href: waf-front-door-custom-rules.md
+        - name: 策略设置
+          href: waf-front-door-policy-settings.md
+        - name: 监视和日志记录
+          href: waf-front-door-monitor.md
 - name: 操作指南
   items:
-  - name: 故障排除
-    items:
-    - name: 排查路由问题
-      href: front-door-troubleshoot-routing.md
-    - name: 允许的证书颁发机构
-      href: front-door-troubleshoot-allowed-ca.md
-  - name: 配置 WAF
-    items:
-    - name: 配置 WAF 策略 - 门户
-      href: waf-front-door-create-portal.md
-    - name: 配置 WAF 策略 - Azure PowerShell
-      href: waf-front-door-custom-rules-powershell.md
-    - name: 配置自定义响应代码
-      href: waf-front-door-configure-custom-response-code.md
-    - name: 配置 WAF 速率限制 - Azure PowerShell
-      href: waf-front-door-rate-limit-powershell.md
+    - name: 故障排除
+      items:
+        - name: 排查路由问题
+          href: front-door-troubleshoot-routing.md
+        - name: 允许的证书颁发机构
+          href: front-door-troubleshoot-allowed-ca.md
+    - name: 配置 WAF
+      items:
+        - name: 配置 WAF 策略 - 门户
+          href: waf-front-door-create-portal.md
+        - name: 配置 WAF 策略 - Azure PowerShell
+          href: waf-front-door-custom-rules-powershell.md
+        - name: 配置自定义响应代码
+          href: waf-front-door-configure-custom-response-code.md
+        - name: 配置 WAF 速率限制 - Azure PowerShell
+          href: waf-front-door-rate-limit-powershell.md
 - name: 常见问题解答
   items:
-  - name: Front Door 常见问题解答
-    href: front-door-faq.md
-  - name: WAF 常见问题解答
-    href: waf-faq.md
+    - name: Front Door 常见问题解答
+      href: front-door-faq.md
+    - name: WAF 常见问题解答
+      href: waf-faq.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/ext/front-door/
-  - name: Azure PowerShell
-    href: /powershell/module/az.frontdoor
-  - name: REST API
-    href: /rest/api/frontdoor
+    - name: Azure CLI
+      href: /cli/azure/ext/front-door/
+    - name: Azure PowerShell
+      href: /powershell/module/az.frontdoor
+    - name: REST API
+      href: /rest/api/frontdoor
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/frontdoor/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=frontdoor
-ms.openlocfilehash: 7ac4e84bf714dabdbfb0c587122287d02b6b3bbe
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680105"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/frontdoor/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=frontdoor'

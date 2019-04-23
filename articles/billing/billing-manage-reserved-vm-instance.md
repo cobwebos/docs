@@ -1,24 +1,23 @@
 ---
 title: 管理 Azure 预留 | Microsoft Docs
 description: 了解如何为 Azure 预留更改订阅范围以及管理访问权限。
-services: billing
+ms.service: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
 editor: ''
-ms.service: billing
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/22/2019
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 1edc15261520d1c2cbf9bf85a62249826edc045b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9a5b200ffb9441b90875c7764786004ff5f1e8a1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58904435"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994935"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>管理 Azure 资源的预留
 
@@ -29,7 +28,19 @@ ms.locfileid: "58904435"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="change-the-scope-for-a-reservation"></a>更改预订范围
+## <a name="reservation-order-and-reservation"></a>预订订单和保留
+
+当你购买的预订时，创建两个对象：**预订订单**并**预订**。
+
+在购买时，预订订单具有其下的有一个保留项。 操作，例如拆分、 合并、 部分退款或 exchange 创建下的新保留**预订订单**。
+
+若要查看保留顺序，请转到**预订**> 选择保留项，并单击**预订订单 ID**。
+
+![显示预订订单 ID 的预订订单详细信息的示例 ](./media/billing-manage-reserved-vm-instance/reservation-order-details.png)
+
+保留从其预订订单继承权限。
+
+## <a name="change-the-reservation-scope"></a>更改预订范围
 
  预订折扣适用于虚拟机、 SQL 数据库、 Azure Cosmos DB 或与预订匹配并在预订范围中运行的其他资源。 计费上下文依赖于用于购买预订的订阅。
 
@@ -47,9 +58,12 @@ ms.locfileid: "58904435"
 
 ## <a name="add-or-change-users-who-can-manage-a-reservation"></a>添加或更改可以管理预订的用户
 
-可以通过将用户添加到预订的角色来委托预订管理。 默认情况下，购买了预订的人员和帐户管理员有该预订的“所有者”角色。
+你可以通过将用户添加到角色预订订单或预订委托预订管理。 默认情况下，将预订订单和帐户管理员的人员具有保留顺序和预订所有者角色。
 
-可以独立于获取预订折扣的订阅来管理对预订的访问权限。 如果为某人提供管理预订的权限，这不会向其提供管理订阅的权限。 如果为某人提供管理预订范围内的订阅的权限，这不会向其提供管理预订的权限。
+你可以管理对预订订单和预订独立于获取预订折扣的订阅的访问。 如果您为某人提供管理预订订单或预订的权限，它不会向其提供管理订阅的权限。 同样，如果您为某人提供管理预订的范围中的订阅的权限，它无法提供管理预订订单或预订的权限。
+
+若要执行的 exchange 或退款，用户必须有权预订订单。 授予用户权限时，最好以保留顺序，不保留对授予权限。
+
 
 若要委托预订的访问管理，请执行以下操作：
 

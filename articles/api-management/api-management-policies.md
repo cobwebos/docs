@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: f617abc164761b4839b188822585eaa4eb0aacd6
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 7f1352b018fe9ea46b0f0824ba53ee0204c7dc7c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33936889"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005513"
 ---
 # <a name="api-management-policies"></a>API 管理策略
 本部分提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](api-management-howto-policies.md)。  
@@ -41,7 +41,7 @@ ms.locfileid: "33936889"
     -   [控制流](api-management-advanced-policies.md#choose) - 根据布尔表达式的求值，有条件地应用策略语句。  
     -   [转发请求](api-management-advanced-policies.md#ForwardRequest) - 将请求转发到后端服务。  
     -   [记录到事件中心](api-management-advanced-policies.md#log-to-eventhub) - 将指定格式的消息发送到记录器实体定义的消息目标。  
-    -   [重试](api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会根据指定的时间间隔重复，直到执行指定的重试计数为止。  
+    -   [重试](api-management-advanced-policies.md#Retry) - 重试执行括住的策略语句，直到符合条件为止。 系统会按指定的时间间隔重复执行，直到达到指定的重试计数为止。  
     -   [返回响应](api-management-advanced-policies.md#ReturnResponse) - 中止管道执行，将指定的响应直接返回给调用方。  
     -   [发送单向请求](api-management-advanced-policies.md#SendOneWayRequest) - 将请求发送到指定的 URL，无需等待响应。  
     -   [发送请求](api-management-advanced-policies.md#SendRequest) - 将请求发送到指定的 URL。  
@@ -53,12 +53,13 @@ ms.locfileid: "33936889"
 -   [身份验证策略](api-management-authentication-policies.md#AuthenticationPolicies)  
     -   [使用基本方法进行身份验证](api-management-authentication-policies.md#Basic) - 使用基本身份验证方法对后端服务进行身份验证。  
     -   [使用客户端证书进行身份验证](api-management-authentication-policies.md#ClientCertificate) - 使用客户端证书对后端服务进行身份验证。  
+    -   [使用托管标识进行身份验证](api-management-authentication-policies.md#ManagedIdentity)-使用客户端证书向后端服务进行身份验证。  
 -   [缓存策略](api-management-caching-policies.md#CachingPolicies)  
     -   [从缓存中获取](api-management-caching-policies.md#GetFromCache) - 执行缓存查找，并返回有效的缓存响应（如果有）。  
     -   [存储到缓存](api-management-caching-policies.md#StoreToCache) - 根据指定的缓存控制配置来缓存响应。  
-    -   [从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey) - 根据密钥检索缓存的项。  
+    -   [从缓存中获取值](api-management-caching-policies.md#GetFromCacheByKey) - 按密钥检索缓存项。  
     -   [在缓存中存储值](api-management-caching-policies.md#StoreToCacheByKey) - 根据密钥在缓存中存储项。  
-    -   [从缓存中删除值](api-management-caching-policies.md#RemoveCacheByKey) - 根据密钥在缓存中删除项。  
+    -   [从缓存中删除值](api-management-caching-policies.md#RemoveCacheByKey) - 按密钥在缓存中删除项。  
 -   [跨域策略](api-management-cross-domain-policies.md#CrossDomainPolicies)  
     -   [允许跨域调用](api-management-cross-domain-policies.md#AllowCrossDomainCalls) - 使 API 能够通过 Adobe Flash 和基于 Microsoft Silverlight 浏览器的客户端进行访问。  
     -   [CORS](api-management-cross-domain-policies.md#CORS) - 向操作或 API 添加跨源资源共享 (CORS) 支持，允许从基于浏览器的客户端进行跨域调用。  

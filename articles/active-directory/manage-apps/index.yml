@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3d7b9dff034aca6c7602ea72fadfcdc53b11fe15
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58335872"
 documentType: LandingData
 title: 应用程序管理文档
 metadata:
@@ -14,7 +8,7 @@ metadata:
   author: barbkess
   manager: daveba
   layout: LandingPage
-  ms.assetid: 
+  ms.assetid: null
   ms.service: active-directory
   ms.topic: landing-page
   ms.date: 09/14/2018
@@ -23,35 +17,35 @@ abstract:
   description: 通过 Azure Active Directory 可以对云和本地应用程序进行安全无缝的访问。 此外，还无需管理密码。 最终用户一次登录即可访问 Office 365 和数以千计的其他应用程序。 使用我们的快速入门、教程和指南了解如何管理和部署应用程序。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: 使用 Azure AD 确保对应用程序的访问安全 (1:47)
-    href: https://youtu.be/BSUuXXcJKCk/
+    title: '使用 Azure AD 确保对应用程序的访问安全 (1:47)'
+    href: 'https://youtu.be/BSUuXXcJKCk/'
     width: 250
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何添加应用程序以使用户可以通过 Azure Active Directory 对其进行访问。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: 添加应用程序
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal
-    - image:
-        src: https://docs.microsoft.com/media/common/i_protect.svg
-      text: 查看应用程序
-      href: https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何为应用程序启用简单、安全的登录过程。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何添加应用程序以使用户可以通过 Azure Active Directory 对其进行访问。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: 添加应用程序
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/add-application-portal'
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_protect.svg'
+            text: 查看应用程序
+            href: 'https://docs.microsoft.com/azure/active-directory/manage-apps/view-applications-portal'
+  - title: 分步教程
     items:
-    - html: <a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">SaaS 应用程序教程</a>
-    - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">配置单一登录</a>
+      - type: paragraph
+        text: 了解如何为应用程序启用简单、安全的登录过程。
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://docs.microsoft.com/azure/active-directory/saas-apps/">SaaS 应用程序教程</a>'
+          - html: <a href="/azure/active-directory/manage-apps/configure-single-sign-on-portal">配置单一登录</a>

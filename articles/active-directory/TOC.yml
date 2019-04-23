@@ -1,614 +1,607 @@
-items:
 - name: Azure Active Directory 文档
   href: index.md
 - name: 概述
   items:
-  - name: 什么是 Azure Active Directory？
-    href: fundamentals/active-directory-whatis.md
-  - name: 关于 Azure 标识管理
-    href: fundamentals/identity-fundamentals.md
-  - name: 了解 Azure 标识解决方案
-    href: fundamentals/understand-azure-identity-solutions.md
-  - name: 关联 Azure 订阅
-    href: fundamentals/active-directory-how-subscriptions-associated-directory.md
-  - name: 驻留和数据注意事项
-    href: fundamentals/active-directory-data-storage-eu.md
-  - name: 常见问题解答
-    href: fundamentals/active-directory-faq.md
-  - name: 新增功能
-    href: fundamentals/whats-new.md
+    - name: 什么是 Azure Active Directory？
+      href: fundamentals/active-directory-whatis.md
+    - name: 关于 Azure 标识管理
+      href: fundamentals/identity-fundamentals.md
+    - name: 了解 Azure 标识解决方案
+      href: fundamentals/understand-azure-identity-solutions.md
+    - name: 关联 Azure 订阅
+      href: fundamentals/active-directory-how-subscriptions-associated-directory.md
+    - name: 驻留和数据注意事项
+      href: fundamentals/active-directory-data-storage-eu.md
+    - name: 常见问题解答
+      href: fundamentals/active-directory-faq.md
+    - name: 新增功能
+      href: fundamentals/whats-new.md
 - name: 入门
   items:
-  - name: 注册 Azure AD Premium
-    href: fundamentals/active-directory-get-started-premium.md
-  - name: 添加自定义域名
-    href: fundamentals/add-custom-domain.md
-  - name: 配置公司品牌
-    href: fundamentals/customize-branding.md
-  - name: 将用户添加到 Azure AD
-    href: fundamentals/add-users-azure-active-directory.md
-  - name: 将许可证分配给用户
-    href: fundamentals/license-users-groups.md
-  - name: 配置自助密码重置
-    href: authentication/quickstart-sspr.md
-  - name: 在 Azure AD 中添加组织的隐私信息
-    href: active-directory-properties-area.md
-  - name: 访问 Azure Active Directory 以创建新租户
-    href: fundamentals/active-directory-access-create-new-tenant.md
+    - name: 注册 Azure AD Premium
+      href: fundamentals/active-directory-get-started-premium.md
+    - name: 添加自定义域名
+      href: fundamentals/add-custom-domain.md
+    - name: 配置公司品牌
+      href: fundamentals/customize-branding.md
+    - name: 将用户添加到 Azure AD
+      href: fundamentals/add-users-azure-active-directory.md
+    - name: 将许可证分配给用户
+      href: fundamentals/license-users-groups.md
+    - name: 配置自助密码重置
+      href: authentication/quickstart-sspr.md
+    - name: 在 Azure AD 中添加组织的隐私信息
+      href: active-directory-properties-area.md
+    - name: 访问 Azure Active Directory 以创建新租户
+      href: fundamentals/active-directory-access-create-new-tenant.md
 - name: 如何
   items:
-  - name: 规划和设计
-    items:
-    - name: 了解 Azure AD 体系结构
-      href: fundamentals/active-directory-architecture.md
-    - name: Azure Active Directory 中的声明映射
-      href: develop/active-directory-claims-mapping.md
-    - name: 部署混合标识解决方案
-      href: hybrid/plan-hybrid-identity-design-considerations-overview.md
+    - name: 规划和设计
       items:
-      - name: 确定要求
-        items:
-        - name: 标识
-          href: hybrid/plan-hybrid-identity-design-considerations-business-needs.md
-        - name: 目录同步
-          href: hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md
-        - name: 多重身份验证
-          href: hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
-        - name: 标识生命周期策略
-          href: hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
-      - name: 数据安全性规划
-        href: hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md
-        items:
-        - name: 数据保护
-          href: hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md
-        - name: 内容管理
-          href: hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md
-        - name: 访问控制
-          href: hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
-        - name: 事件响应
-          href: hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md
-      - name: 规划标识生命周期
-        items:
+        - name: 了解 Azure AD 体系结构
+          href: fundamentals/active-directory-architecture.md
+        - name: Azure Active Directory 中的声明映射
+          href: develop/active-directory-claims-mapping.md
+        - name: 部署混合标识解决方案
+          href: hybrid/plan-hybrid-identity-design-considerations-overview.md
+          items:
+            - name: 确定要求
+              items:
+                - name: 标识
+                  href: hybrid/plan-hybrid-identity-design-considerations-business-needs.md
+                - name: 目录同步
+                  href: hybrid/plan-hybrid-identity-design-considerations-directory-sync-requirements.md
+                - name: 多重身份验证
+                  href: hybrid/plan-hybrid-identity-design-considerations-multifactor-auth-requirements.md
+                - name: 标识生命周期策略
+                  href: hybrid/plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md
+            - name: 数据安全性规划
+              href: hybrid/plan-hybrid-identity-design-considerations-data-protection-strategy.md
+              items:
+                - name: 数据保护
+                  href: hybrid/plan-hybrid-identity-design-considerations-dataprotection-requirements.md
+                - name: 内容管理
+                  href: hybrid/plan-hybrid-identity-design-considerations-contentmgt-requirements.md
+                - name: 访问控制
+                  href: hybrid/plan-hybrid-identity-design-considerations-accesscontrol-requirements.md
+                - name: 事件响应
+                  href: hybrid/plan-hybrid-identity-design-considerations-incident-response-requirements.md
+            - name: 规划标识生命周期
+              items:
+                - name: 任务
+                  href: hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
+                - name: 采用策略
+                  href: hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
+            - name: 后续步骤
+              href: hybrid/plan-hybrid-identity-design-considerations-nextsteps.md
+            - name: 工具比较
+              href: hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md
+    - name: 管理用户
+      items:
+        - name: 将新用户添加到 Azure AD
+          href: fundamentals/add-users-azure-active-directory.md
+        - name: 管理用户个人资料
+          href: fundamentals/active-directory-users-profile-azure-portal.md
+        - name: 重置用户密码
+          href: fundamentals/active-directory-users-reset-password-azure-portal.md
+        - name: 将用户分配到管理员角色
+          href: fundamentals/active-directory-users-assign-role-azure-portal.md
+        - name: 添加另一个目录中的来宾用户 (B2B)
+          href: b2b/what-is-b2b.md
+          items:
+            - name: 管理员添加 B2B 用户
+              href: b2b/add-users-administrator.md
+            - name: 信息工作者添加 B2B 用户
+              href: b2b/add-users-information-worker.md
+            - name: API 和自定义
+              href: b2b/customize-invitation-api.md
+            - name: Google 联合身份验证
+              href: b2b/google-federation.md
+            - name: 代码和 Azure PowerShell 示例
+              href: b2b/code-samples.md
+            - name: 自助注册门户示例
+              href: b2b/self-service-portal.md
+            - name: 邀请电子邮件
+              href: b2b/invitation-email-elements.md
+            - name: 邀请兑换
+              href: b2b/redemption-experience.md
+            - name: 在没有邀请的情况下添加 B2B 用户
+              href: b2b/add-user-without-invite.md
+            - name: 允许或阻止邀请
+              href: b2b/allow-deny-list.md
+            - name: 用于 B2B 的条件访问
+              href: b2b/conditional-access.md
+            - name: B2B 共享策略
+              href: b2b/delegate-invitations.md
+            - name: 将 B2B 用户添加到角色
+              href: b2b/add-guest-to-role.md
+            - name: 动态组和 B2B 用户
+              href: b2b/use-dynamic-groups.md
+            - name: 离开组织
+              href: b2b/leave-the-organization.md
+            - name: 审核和报表
+              href: b2b/auditing-and-reporting.md
+            - name: 适用于混合组织的 B2B
+              href: b2b/hybrid-organizations.md
+              items:
+                - name: 授予 B2B 用户对本地应用的访问权限
+                  href: b2b/hybrid-cloud-to-on-premises.md
+                - name: 授予本地用户对云应用的访问权限
+                  href: b2b/hybrid-on-premises-to-cloud.md
+            - name: B2B 和 Office 365 外部共享
+              href: b2b/o365-external-user.md
+            - name: B2B 许可
+              href: b2b/licensing-guidance.md
+            - name: 当前限制
+              href: b2b/current-limitations.md
+            - name: 常见问题解答
+              href: b2b/faq.md
+            - name: 对 B2B 进行故障排除
+              href: b2b/troubleshoot.md
+            - name: 了解 B2B 用户
+              href: b2b/user-properties.md
+            - name: B2B 用户令牌
+              href: b2b/user-token.md
+            - name: 用于 Azure AD 集成应用的 B2B
+              href: b2b/configure-saas-apps.md
+            - name: B2B 用户声明映射
+              href: b2b/claims-mapping.md
+            - name: B2B 协作与 B2C 的比较
+              href: b2b/compare-with-b2c.md
+            - name: 获取 B2B 支持
+              href: b2b/get-support.md
+    - name: 管理组和成员
+      href: fundamentals/active-directory-manage-groups.md
+      items:
+        - name: 管理组
+          href: fundamentals/active-directory-groups-create-azure-portal.md
+        - name: 删除组及其成员
+          href: fundamentals/active-directory-groups-delete-group.md
+        - name: 管理组设置
+          href: fundamentals/active-directory-groups-settings-azure-portal.md
+    - name: 管理报表
+      href: reports-monitoring/overview-reports.md
+      items:
+        - name: 登录活动
+          href: reports-monitoring/concept-sign-ins.md
+        - name: 审核活动
+          href: reports-monitoring/concept-audit-logs.md
+        - name: 有风险的用户
+          href: reports-monitoring/concept-user-at-risk.md
+        - name: 有风险的登录
+          href: reports-monitoring/concept-risky-sign-ins.md
+        - name: 风险事件
+          href: reports-monitoring/concept-risk-events.md
+        - name: 使用 Azure Monitor 监视日志
+          href: reports-monitoring/concept-activity-logs-in-azure-monitor.md
+        - name: 常见问题解答
+          href: reports-monitoring/reports-faq.md
         - name: 任务
-          href: hybrid/plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md
-        - name: 采用策略
-          href: hybrid/plan-hybrid-identity-design-considerations-identity-adoption-strategy.md
-      - name: 后续步骤
-        href: hybrid/plan-hybrid-identity-design-considerations-nextsteps.md
-      - name: 工具比较
-        href: hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md
-  - name: 管理用户
-    items:
-    - name: 将新用户添加到 Azure AD
-      href: fundamentals/add-users-azure-active-directory.md
-    - name: 管理用户个人资料
-      href: fundamentals/active-directory-users-profile-azure-portal.md
-    - name: 重置用户密码
-      href: fundamentals/active-directory-users-reset-password-azure-portal.md
-    - name: 将用户分配到管理员角色
-      href: fundamentals/active-directory-users-assign-role-azure-portal.md
-    - name: 添加另一个目录中的来宾用户 (B2B)
-      href: b2b/what-is-b2b.md
+          items:
+            - name: 下载登录报表
+              href: reports-monitoring/quickstart-download-sign-in-report.md
+            - name: 下载审核报表
+              href: reports-monitoring/quickstart-download-audit-report.md
+            - name: 配置命名位置
+              href: reports-monitoring/quickstart-configure-named-locations.md
+            - name: 查找活动报表
+              href: reports-monitoring/howto-find-activity-reports.md
+            - name: 使用 Azure AD Power BI 内容包
+              href: reports-monitoring/howto-power-bi-content-pack.md
+            - name: 修复已标记为存在风险的用户
+              href: reports-monitoring/howto-remediate-users-flagged-for-risk.md
+            - name: 将活动日志路由到 Azure 事件中心
+              href: reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md
+            - name: 将活动日志存档到 Azure 存储帐户
+              href: reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md
+            - name: 使用 Azure Monitor 将活动日志与 Splunk 集成
+              href: reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md
+            - name: 使用 Azure Monitor 将活动日志与 SumoLogic 集成
+              href: reports-monitoring/howto-integrate-activity-logs-with-sumologic.md
+            - name: 使用 Azure Monitor 将活动日志与 Log Analytics 集成
+              href: reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md
+        - name: 引用
+          items:
+            - name: 保留
+              href: reports-monitoring/reference-reports-data-retention.md
+            - name: 延迟
+              href: reports-monitoring/reference-reports-latencies.md
+            - name: 审核活动参考
+              href: reports-monitoring/reference-audit-activities.md
+            - name: 登录活动错误代码
+              href: reports-monitoring/reference-sign-ins-error-codes.md
+            - name: 解释 Azure Monitor 中的审核日志架构
+              href: reports-monitoring/reference-azure-monitor-audit-log-schema.md
+            - name: 解释 Azure Monitor 中的登录日志架构
+              href: reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md
+        - name: 故障排除
+          items:
+            - name: 在 Azure AD 活动日志中缺少数据
+              href: reports-monitoring/troubleshoot-missing-audit-data.md
+            - name: 在下载项中缺少数据
+              href: reports-monitoring/troubleshoot-missing-data-download.md
+            - name: Azure AD 活动日志内容包错误
+              href: reports-monitoring/troubleshoot-content-pack.md
+            - name: Azure AD 报告 API 中的错误
+              href: reports-monitoring/troubleshoot-graph-api.md
+        - name: 以编程方式访问
+          href: reports-monitoring/concept-reporting-api.md
+          items:
+            - name: 先决条件
+              href: reports-monitoring/howto-configure-prerequisites-for-reporting-api.md
+            - name: 使用证书
+              href: reports-monitoring/tutorial-access-api-with-certificates.md
+    - name: 管理密码
+      href: authentication/concept-sspr-howitworks.md
+    - name: 管理应用
       items:
-      - name: 管理员添加 B2B 用户
-        href: b2b/add-users-administrator.md
-      - name: 信息工作者添加 B2B 用户
-        href: b2b/add-users-information-worker.md
-      - name: API 和自定义
-        href: b2b/customize-invitation-api.md
-      - name: Google 联合身份验证
-        href: b2b/google-federation.md
-      - name: 代码和 Azure PowerShell 示例
-        href: b2b/code-samples.md
-      - name: 自助注册门户示例
-        href: b2b/self-service-portal.md
-      - name: 邀请电子邮件
-        href: b2b/invitation-email-elements.md
-      - name: 邀请兑换
-        href: b2b/redemption-experience.md
-      - name: 在没有邀请的情况下添加 B2B 用户
-        href: b2b/add-user-without-invite.md
-      - name: 允许或阻止邀请
-        href: b2b/allow-deny-list.md
-      - name: 用于 B2B 的条件访问
-        href: b2b/conditional-access.md
-      - name: B2B 共享策略
-        href: b2b/delegate-invitations.md
-      - name: 将 B2B 用户添加到角色
-        href: b2b/add-guest-to-role.md
-      - name: 动态组和 B2B 用户
-        href: b2b/use-dynamic-groups.md
-      - name: 离开组织
-        href: b2b/leave-the-organization.md
-      - name: 审核和报表
-        href: b2b/auditing-and-reporting.md
-      - name: 适用于混合组织的 B2B
-        href: b2b/hybrid-organizations.md
-        items:
-        - name: 授予 B2B 用户对本地应用的访问权限
-          href: b2b/hybrid-cloud-to-on-premises.md
-        - name: 授予本地用户对云应用的访问权限
-          href: b2b/hybrid-on-premises-to-cloud.md
-      - name: B2B 和 Office 365 外部共享
-        href: b2b/o365-external-user.md
-      - name: B2B 许可
-        href: b2b/licensing-guidance.md
-      - name: 当前限制
-        href: b2b/current-limitations.md
-      - name: 常见问题解答
-        href: b2b/faq.md
-      - name: 对 B2B 进行故障排除
-        href: b2b/troubleshoot.md
-      - name: 了解 B2B 用户
-        href: b2b/user-properties.md
-      - name: B2B 用户令牌
-        href: b2b/user-token.md
-      - name: 用于 Azure AD 集成应用的 B2B
-        href: b2b/configure-saas-apps.md
-      - name: B2B 用户声明映射
-        href: b2b/claims-mapping.md
-      - name: B2B 协作与 B2C 的比较
-        href: b2b/compare-with-b2c.md
-      - name: 获取 B2B 支持
-        href: b2b/get-support.md
-  - name: 管理组和成员
-    href: fundamentals/active-directory-manage-groups.md
-    items:
-    - name: 管理组
-      href: fundamentals/active-directory-groups-create-azure-portal.md
-    - name: 删除组及其成员
-      href: fundamentals/active-directory-groups-delete-group.md
-    - name: 管理组设置
-      href: fundamentals/active-directory-groups-settings-azure-portal.md
-  - name: 管理报表
-    href: reports-monitoring/overview-reports.md
-    items:
-    - name: 登录活动
-      href: reports-monitoring/concept-sign-ins.md
-    - name: 审核活动
-      href: reports-monitoring/concept-audit-logs.md
-    - name: 有风险的用户
-      href: reports-monitoring/concept-user-at-risk.md
-    - name: 有风险的登录
-      href: reports-monitoring/concept-risky-sign-ins.md
-    - name: 风险事件
-      href: reports-monitoring/concept-risk-events.md
-    - name: 使用 Azure Monitor 监视日志
-      href: reports-monitoring/concept-activity-logs-in-azure-monitor.md
-    - name: 常见问题解答
-      href: reports-monitoring/reports-faq.md
-    - name: 任务
-      items:
-      - name: 下载登录报表
-        href: reports-monitoring/quickstart-download-sign-in-report.md
-      - name: 下载审核报表
-        href: reports-monitoring/quickstart-download-audit-report.md
-      - name: 配置命名位置
-        href: reports-monitoring/quickstart-configure-named-locations.md
-      - name: 查找活动报表
-        href: reports-monitoring/howto-find-activity-reports.md
-      - name: 使用 Azure AD Power BI 内容包
-        href: reports-monitoring/howto-power-bi-content-pack.md
-      - name: 修复已标记为存在风险的用户
-        href: reports-monitoring/howto-remediate-users-flagged-for-risk.md
-      - name: 将活动日志路由到 Azure 事件中心
-        href: reports-monitoring/quickstart-azure-monitor-stream-logs-to-event-hub.md
-      - name: 将活动日志存档到 Azure 存储帐户
-        href: reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md
-      - name: 使用 Azure Monitor 将活动日志与 Splunk 集成
-        href: reports-monitoring/tutorial-integrate-activity-logs-with-splunk.md
-      - name: 使用 Azure Monitor 将活动日志与 SumoLogic 集成
-        href: reports-monitoring/howto-integrate-activity-logs-with-sumologic.md
-      - name: 使用 Azure Monitor 将活动日志与 Log Analytics 集成
-        href: reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md
-    - name: 引用
-      items:
-      - name: 保留
-        href: reports-monitoring/reference-reports-data-retention.md
-      - name: 延迟
-        href: reports-monitoring/reference-reports-latencies.md
-      - name: 审核活动参考
-        href: reports-monitoring/reference-audit-activities.md
-      - name: 登录活动错误代码
-        href: reports-monitoring/reference-sign-ins-error-codes.md
-      - name: 解释 Azure Monitor 中的审核日志架构
-        href: reports-monitoring/reference-azure-monitor-audit-log-schema.md
-      - name: 解释 Azure Monitor 中的登录日志架构
-        href: reports-monitoring/reference-azure-monitor-sign-ins-log-schema.md
-    - name: 故障排除
-      items:
-      - name: 在 Azure AD 活动日志中缺少数据
-        href: reports-monitoring/troubleshoot-missing-audit-data.md
-      - name: 在下载项中缺少数据
-        href: reports-monitoring/troubleshoot-missing-data-download.md
-      - name: Azure AD 活动日志内容包错误
-        href: reports-monitoring/troubleshoot-content-pack.md
-      - name: Azure AD 报告 API 中的错误
-        href: reports-monitoring/troubleshoot-graph-api.md
-    - name: 以编程方式访问
-      href: reports-monitoring/concept-reporting-api.md
-      items:
-      - name: 先决条件
-        href: reports-monitoring/howto-configure-prerequisites-for-reporting-api.md
-      - name: 使用证书
-        href: reports-monitoring/tutorial-access-api-with-certificates.md
-  - name: 管理密码
-    href: authentication/concept-sspr-howitworks.md
-  - name: 管理应用
-    items:
-    - name: 概述
-      href: manage-apps/what-is-application-management.md
-    - name: 入门
-      href: manage-apps/plan-an-application-integration.md
-    - name: SaaS 应用集成教程
-      href: saas-apps/tutorial-list.md
-    - name: 对 SaaS 应用进行用户预配和取消预配
-      href: manage-apps/user-provisioning.md
-      items:
-      - name: 应用集成教程
-        href: saas-apps/tutorial-list.md
-      - name: 对启用 SCIM 的应用自动执行预配
-        href: manage-apps/use-scim-to-provision-users-and-groups.md
-      - name: 自定义属性映射
-        href: manage-apps/customize-application-attributes.md
-      - name: 为属性映射编写表达式
-        href: manage-apps/functions-for-customizing-application-data.md
-      - name: 使用范围筛选器
-        href: manage-apps/define-conditional-rules-for-provisioning-user-accounts.md
-      - name: 针对自动用户预配进行报告
-        href: manage-apps/check-status-user-account-provisioning.md
-      - name: 排查用户预配问题
-        href: active-directory-application-provisioning-content-map.md
-    - name: 使用应用代理远程访问应用
-      href: manage-apps/application-proxy.md
-      items:
-      - name: 入门
-        items:
-        - name: 启用应用代理
-          href: manage-apps/application-proxy-enable.md
-        - name: 发布应用
-          href: manage-apps/application-proxy-publish-azure-portal.md
-        - name: 自定义域
-          href: manage-apps/application-proxy-configure-custom-domain.md
-      - name: 单一登录
-        href: manage-apps/application-proxy-single-sign-on.md
-        items:
-        - name: 使用 KCD 执行 SSO
-          href: manage-apps/application-proxy-configure-single-sign-on-with-kcd.md
-        - name: 使用标头执行 SSO
-          href: manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md
-        - name: 将 SSO 与密码保管配合使用
-          href: manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md
-      - name: 概念
-        items:
-        - name: 连接器
-          href: manage-apps/application-proxy-connectors.md
-        - name: 安全
-          href: manage-apps/application-proxy-security.md
-        - name: 网络
-          href: manage-apps/application-proxy-network-topology.md
-        - name: 从 TMG 或 UAG 升级
-          href: manage-apps/application-proxy-migration.md
-      - name: 高级配置
-        items:
-        - name: 在单独的网络上发布
-          href: manage-apps/application-proxy-connector-groups.md
-        - name: 代理服务器
-          href: manage-apps/application-proxy-configure-connectors-with-proxy-servers.md
-        - name: 声明感知应用
-          href: manage-apps/application-proxy-configure-for-claims-aware-applications.md
-        - name: 本机客户端应用
-          href: manage-apps/application-proxy-configure-native-client-application.md
-        - name: 无提示安装
-          href: manage-apps/application-proxy-register-connector-powershell.md
-        - name: 自定义主页
-          href: manage-apps/application-proxy-configure-custom-home-page.md
-        - name: 转换内联链接
-          href: manage-apps/application-proxy-configure-hard-coded-link-translation.md
-        - name: 通配符
-          href: manage-apps/application-proxy-wildcard.md
-        - name: 删除个人数据
-          href: manage-apps/application-proxy-remove-personal-data.md
-      - name: 发布演练
-        items:
-        - name: 远程桌面
-          href: manage-apps/application-proxy-integrate-with-remote-desktop-services.md
-        - name: SharePoint
-          href: manage-apps/application-proxy-integrate-with-sharepoint-server.md
-        - name: Microsoft Teams
-          href: manage-apps/application-proxy-integrate-with-teams.md
-        - name: Tableau
-          href: manage-apps/application-proxy-integrate-with-tableau.md
-        - name: Qlik
-          href: manage-apps/application-proxy-qlik.md
-      - name: PowerShell
-        href: https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management
-      - name: 故障排除
-        href: manage-apps/application-proxy-troubleshoot.md
-    - name: 管理企业应用
-      items:
-      - name: 添加应用程序
-        href: manage-apps/add-application-portal.md
-      - name: 查看租户应用
-        href: manage-apps/view-applications-portal.md
-      - name: 配置单一登录
-        href: manage-apps/configure-single-sign-on-portal.md
-      - name: 分配用户
-        href: manage-apps/assign-user-or-group-access-portal.md
-      - name: 自定义品牌
-        href: manage-apps/change-name-or-logo-portal.md
-      - name: 禁用用户登录
-        href: manage-apps/disable-user-sign-in-portal.md
-      - name: 删除用户
-        href: manage-apps/remove-user-or-group-access-portal.md
-      - name: 管理用户帐户预配
-        href: manage-apps/configure-automatic-user-provisioning-portal.md
-      - name: SAML 应用的高级证书签名
-        href: manage-apps/certificate-signing-options.md
-      - name: 从用户体验中隐藏应用程序
-        href: manage-apps/hide-application-from-user-portal.md
-    - name: 使用 HRD 策略配置登录自动加速
-      href: manage-apps/configure-authentication-for-federated-users-portal.md
-    - name: 将 AD FS 应用迁移到 Azure AD
-      href: manage-apps/migrate-adfs-apps-to-azure.md
-    - name: 管理对应用的访问权限
-      href: manage-apps/what-is-access-management.md
-      items:
-      - name: SSO 访问
-        href: manage-apps/what-is-single-sign-on.md
-      - name: SSO 证书
-        href: manage-apps/manage-certificates-for-federated-single-sign-on.md
-      - name: 租户限制
-        href: manage-apps/tenant-restrictions.md
-      - name: 使用 SCIM 预配用户
-        href: manage-apps/use-scim-to-provision-users-and-groups.md
-    - name: 了解 Azure AD 应用程序许可体验
-      href: develop/application-consent-experience.md
-    - name: 故障排除
-      items:
-      - name: 访问面板
-        items:
-        - name: 应用未出现
-          href: manage-apps/access-panel-troubleshoot-application-not-appearing.md
-        - name: 出现意外的应用
-          href: manage-apps/access-panel-troubleshoot-unexpected-application.md
-        - name: 无法登录
-          href: manage-apps/access-panel-troubleshoot-web-sign-in-problem.md
-        - name: 安装浏览器扩展时出错
-          href: manage-apps/access-panel-extension-problem-installing.md
-        - name: 如何使用自助服务应用访问权限
-          href: manage-apps/access-panel-manage-self-service-access.md
-        - name: 使用自助服务应用访问权限时出错
-          href: manage-apps/access-panel-troubleshoot-self-service-access.md
-      - name: 添加应用
-        items:
-        - name: 选择应用类型
-          href: manage-apps/choose-application-type.md
-        - name: 常见问题 - 库应用
-          href: manage-apps/adding-gallery-app-common-problems.md
-        - name: 常见问题 - 非库应用
-          href: manage-apps/adding-non-gallery-app-common-problems.md
-      - name: 应用程序代理
-        items:
-        - name: 显示应用页时出现问题
-          href: manage-apps/application-proxy-page-appearance-broken-problem.md
-        - name: 应用程序加载时间过长
-          href: manage-apps/application-proxy-page-load-speed-problem.md
-        - name: 应用程序页上的链接不起作用
-          href: manage-apps/application-proxy-page-links-broken-problem.md
-        - name: 要为应用打开哪些端口
-          href: manage-apps/application-proxy-connectivity-ports-how-to.md
-        - name: 应用的连接器组中没有正常工作的连接器
-          href: manage-apps/application-proxy-connectivity-no-working-connector.md
-        - name: 在管理门户中配置
-          href: manage-apps/application-proxy-config-how-to.md
-        - name: 为应用配置单一登录
-          href: manage-apps/application-proxy-config-sso-how-to.md
-        - name: 在管理门户中创建应用时出现问题
-          href: manage-apps/application-proxy-config-problem.md
-        - name: 配置 Kerberos 约束委派
-          href: manage-apps/application-proxy-back-end-kerberos-constrained-delegation-how-to.md
-        - name: 使用 PingAccess 配置
-          href: manage-apps/application-proxy-back-end-ping-access-how-to.md
-        - name: “无法访问此企业应用程序”错误
-          href: manage-apps/application-proxy-sign-in-bad-gateway-timeout-error.md
-        - name: 安装应用程序代理程序连接器时出现问题
-          href: manage-apps/application-proxy-connector-installation-problem.md
-      - name: 应用程序注册
-        items:
-        - name: 为应用程序对象填写字段
-          href: develop/registration-config-specific-application-property-how-to.md
-        - name: 更改令牌生存期默认值
-          href: develop/registration-config-change-token-lifetime-how-to.md
-      - name: Authentication
-        items:
-        - name: 配置终结点
-          href: develop/registration-config-how-to.md
-      - name: 条件性访问
-        items:
-        - name: 客户不符合设备注册先决条件
-          href: active-directory-conditional-access.md
-        - name: 企业网络外部规则如何以及何时生效？
-          href: https://aka.ms/calocation
-        - name: 如何增加允许用户在 Azure AD 中注册的设备数？
-          href: active-directory-azureadjoin-setup.md
-        - name: 如何为 Exchange Online 设置条件访问？
-          href: https://aka.ms/csforexchange
-        - name: 如何为 Windows 7 设备设置条件访问？
-          href: active-directory-conditional-access.md#device-based-conditional-access
-        - name: 哪些应用程序支持条件访问？
-          href: active-directory-conditional-access-supported-apps.md
-      - name: 查找 API
-        items:
-        - name: 查找 API
-          href: develop/api-find-an-api-how-to.md
-      - name: 管理访问权限
-        items:
-        - name: 为应用分配用户和组
-          href: manage-apps/methods-for-assigning-users-and-groups.md
-        - name: 删除对应用的用户访问权限
-          href: manage-apps/methods-for-removing-user-access.md
-        - name: 配置自助服务应用分配
-          href: manage-apps/manage-self-service-access.md
-        - name: 分配了意外的用户
-          href: manage-apps/ways-users-get-assigned-to-applications.md
-        - name: 应用程序列表中的意外应用
-          href: manage-apps/application-types.md
-      - name: 多租户应用
-        items:
-        - name: 配置新应用
-          href: develop/setup-multi-tenant-app.md
-        - name: 添加到应用库
-          href: develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md
-      - name: 权限
-        items:
-        - name: 选择 API 的权限
-          href: develop/perms-for-given-api.md
-        - name: 委派权限与应用程序权限
-          href: develop/delegated-and-app-perms.md
-        - name: 应用程序许可
-          href: develop/consent-framework.md
-      - name: 设置
-        items:
-        - name: 花费多长时间
-          href: manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md
-        - name: 花费数小时 - 库应用
-          href: manage-apps/application-provisioning-when-will-provisioning-finish.md
-        - name: 配置用户预配 - 库应用
-          href: manage-apps/application-provisioning-config-how-to.md
-        - name: 配置用户预配时出现问题 - 库应用
-          href: manage-apps/application-provisioning-config-problem.md
-        - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
-          href: manage-apps/application-provisioning-config-problem-storage-limit.md
-        - name: 未预配用户 - 库应用
-          href: manage-apps/application-provisioning-config-problem-no-users-provisioned.md
-        - name: 预配了错误的用户 - 库应用
-          href: manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md
-        - name: SCIM 兼容性问题 - 非库应用
-          href: manage-apps/application-provisioning-config-problem-scim-compatibility.md
-      - name: 单一登录
-        items:
-        - name: 选择方法
-          href: manage-apps/single-sign-on-modes.md
-        - name: 配置
-          href: develop/registration-config-sso-how-to.md
-        - name: 配置联合单一登录 - 库应用
-          href: manage-apps/configure-federated-single-sign-on-gallery-applications.md
-        - name: 配置联合单一登录时常见的问题 - 库应用
-          href: manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md
-        - name: 配置联合单一登录 - 非库应用
-          href: manage-apps/configure-federated-single-sign-on-non-gallery-applications.md
-        - name: 配置联合单一登录时常见的问题 - 非库应用
-          href: manage-apps/configure-federated-single-sign-on-non-gallery-applications-problems.md
-        - name: 配置密码 - 库应用
-          href: manage-apps/configure-password-single-sign-on-gallery-applications.md
-        - name: 配置密码时常见的问题 - 库应用
-          href: manage-apps/configure-password-single-sign-on-gallery-applications-problems.md
-        - name: 配置密码 - 非库应用
-          href: manage-apps/configure-password-single-sign-on-non-gallery-applications.md
-        - name: 配置密码时常见的问题 - 非库应用
-          href: manage-apps/configure-password-single-sign-on-non-gallery-applications-problems.md
-      - name: 用户登录问题
-        items:
-        - name: 意外的许可提示
-          href: manage-apps/application-sign-in-unexpected-user-consent-prompt.md
-        - name: “用户同意”错误
-          href: manage-apps/application-sign-in-unexpected-user-consent-error.md
-        - name: 从自定义门户登录时出现问题
-          href: manage-apps/application-sign-in-other-problem-deeplink.md
-        - name: 从访问面板登录时出现问题
-          href: manage-apps/application-sign-in-other-problem-access-panel.md
-        - name: 应用程序登录页上的错误
-          href: manage-apps/application-sign-in-problem-application-error.md
-        - name: 使用密码单一登录时出现的问题 - 非库应用
-          href: manage-apps/application-sign-in-problem-password-sso-non-gallery.md
-        - name: 使用密码单一登录时出现的问题 - 库应用
-          href: manage-apps/application-sign-in-problem-password-sso-gallery.md
-        - name: 登录到 Microsoft 应用时出现问题
-          href: manage-apps/application-sign-in-problem-first-party-microsoft.md
-        - name: 使用联合单一登录时出现的问题 - 非库应用
-          href: manage-apps/application-sign-in-problem-federated-sso-non-gallery.md
-        - name: 使用联合单一登录时出现的问题 - 库应用
-          href: manage-apps/application-sign-in-problem-federated-sso-gallery.md
-        - name: 登录自定义开发的应用时出现的问题
-          href: manage-apps/application-sign-in-problem-custom-dev.md
-        - name: 登录本地应用时出现的问题 - 应用程序代理
-          href: manage-apps/application-sign-in-problem-on-premises-application-proxy.md
-  - name: 管理目录
-    items:
-    - name: Azure AD Connect
-      href: hybrid/whatis-hybrid-identity.md
-    - name: 自定义域名
-      items:
-      - name: 快速入门
-        href: fundamentals/add-custom-domain.md
+        - name: 概述
+          href: manage-apps/what-is-application-management.md
+        - name: 入门
+          href: manage-apps/plan-an-application-integration.md
+        - name: SaaS 应用集成教程
+          href: saas-apps/tutorial-list.md
+        - name: 对 SaaS 应用进行用户预配和取消预配
+          href: manage-apps/user-provisioning.md
+          items:
+            - name: 应用集成教程
+              href: saas-apps/tutorial-list.md
+            - name: 对启用 SCIM 的应用自动执行预配
+              href: manage-apps/use-scim-to-provision-users-and-groups.md
+            - name: 自定义属性映射
+              href: manage-apps/customize-application-attributes.md
+            - name: 为属性映射编写表达式
+              href: manage-apps/functions-for-customizing-application-data.md
+            - name: 使用范围筛选器
+              href: manage-apps/define-conditional-rules-for-provisioning-user-accounts.md
+            - name: 针对自动用户预配进行报告
+              href: manage-apps/check-status-user-account-provisioning.md
+            - name: 排查用户预配问题
+              href: active-directory-application-provisioning-content-map.md
+        - name: 使用应用代理远程访问应用
+          href: manage-apps/application-proxy.md
+          items:
+            - name: 入门
+              items:
+                - name: 启用应用代理
+                  href: manage-apps/application-proxy-enable.md
+                - name: 发布应用
+                  href: manage-apps/application-proxy-publish-azure-portal.md
+                - name: 自定义域
+                  href: manage-apps/application-proxy-configure-custom-domain.md
+            - name: 单一登录
+              href: manage-apps/application-proxy-single-sign-on.md
+              items:
+                - name: 使用 KCD 执行 SSO
+                  href: manage-apps/application-proxy-configure-single-sign-on-with-kcd.md
+                - name: 使用标头执行 SSO
+                  href: manage-apps/application-proxy-configure-single-sign-on-with-ping-access.md
+                - name: 将 SSO 与密码保管配合使用
+                  href: manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md
+            - name: 概念
+              items:
+                - name: 连接器
+                  href: manage-apps/application-proxy-connectors.md
+                - name: 安全
+                  href: manage-apps/application-proxy-security.md
+                - name: 网络
+                  href: manage-apps/application-proxy-network-topology.md
+                - name: 从 TMG 或 UAG 升级
+                  href: manage-apps/application-proxy-migration.md
+            - name: 高级配置
+              items:
+                - name: 在单独的网络上发布
+                  href: manage-apps/application-proxy-connector-groups.md
+                - name: 代理服务器
+                  href: manage-apps/application-proxy-configure-connectors-with-proxy-servers.md
+                - name: 声明感知应用
+                  href: manage-apps/application-proxy-configure-for-claims-aware-applications.md
+                - name: 本机客户端应用
+                  href: manage-apps/application-proxy-configure-native-client-application.md
+                - name: 无提示安装
+                  href: manage-apps/application-proxy-register-connector-powershell.md
+                - name: 自定义主页
+                  href: manage-apps/application-proxy-configure-custom-home-page.md
+                - name: 转换内联链接
+                  href: manage-apps/application-proxy-configure-hard-coded-link-translation.md
+                - name: 通配符
+                  href: manage-apps/application-proxy-wildcard.md
+                - name: 删除个人数据
+                  href: manage-apps/application-proxy-remove-personal-data.md
+            - name: 发布演练
+              items:
+                - name: 远程桌面
+                  href: manage-apps/application-proxy-integrate-with-remote-desktop-services.md
+                - name: SharePoint
+                  href: manage-apps/application-proxy-integrate-with-sharepoint-server.md
+                - name: Microsoft Teams
+                  href: manage-apps/application-proxy-integrate-with-teams.md
+                - name: Tableau
+                  href: manage-apps/application-proxy-integrate-with-tableau.md
+                - name: Qlik
+                  href: manage-apps/application-proxy-qlik.md
+            - name: PowerShell
+              href: 'https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management'
+            - name: 故障排除
+              href: manage-apps/application-proxy-troubleshoot.md
+        - name: 管理企业应用
+          items:
+            - name: 添加应用程序
+              href: manage-apps/add-application-portal.md
+            - name: 查看租户应用
+              href: manage-apps/view-applications-portal.md
+            - name: 配置单一登录
+              href: manage-apps/configure-single-sign-on-portal.md
+            - name: 分配用户
+              href: manage-apps/assign-user-or-group-access-portal.md
+            - name: 自定义品牌
+              href: manage-apps/change-name-or-logo-portal.md
+            - name: 禁用用户登录
+              href: manage-apps/disable-user-sign-in-portal.md
+            - name: 删除用户
+              href: manage-apps/remove-user-or-group-access-portal.md
+            - name: 管理用户帐户预配
+              href: manage-apps/configure-automatic-user-provisioning-portal.md
+            - name: SAML 应用的高级证书签名
+              href: manage-apps/certificate-signing-options.md
+            - name: 从用户体验中隐藏应用程序
+              href: manage-apps/hide-application-from-user-portal.md
+        - name: 使用 HRD 策略配置登录自动加速
+          href: manage-apps/configure-authentication-for-federated-users-portal.md
+        - name: 将 AD FS 应用迁移到 Azure AD
+          href: manage-apps/migrate-adfs-apps-to-azure.md
+        - name: 管理对应用的访问权限
+          href: manage-apps/what-is-access-management.md
+          items:
+            - name: SSO 访问
+              href: manage-apps/what-is-single-sign-on.md
+            - name: SSO 证书
+              href: manage-apps/manage-certificates-for-federated-single-sign-on.md
+            - name: 租户限制
+              href: manage-apps/tenant-restrictions.md
+            - name: 使用 SCIM 预配用户
+              href: manage-apps/use-scim-to-provision-users-and-groups.md
+        - name: 了解 Azure AD 应用程序许可体验
+          href: develop/application-consent-experience.md
+        - name: 故障排除
+          items:
+            - name: 访问面板
+              items:
+                - name: 应用未出现
+                  href: manage-apps/access-panel-troubleshoot-application-not-appearing.md
+                - name: 出现意外的应用
+                  href: manage-apps/access-panel-troubleshoot-unexpected-application.md
+                - name: 无法登录
+                  href: manage-apps/access-panel-troubleshoot-web-sign-in-problem.md
+                - name: 安装浏览器扩展时出错
+                  href: manage-apps/access-panel-extension-problem-installing.md
+                - name: 如何使用自助服务应用访问权限
+                  href: manage-apps/access-panel-manage-self-service-access.md
+                - name: 使用自助服务应用访问权限时出错
+                  href: manage-apps/access-panel-troubleshoot-self-service-access.md
+            - name: 添加应用
+              items:
+                - name: 选择应用类型
+                  href: manage-apps/choose-application-type.md
+                - name: 常见问题 - 库应用
+                  href: manage-apps/adding-gallery-app-common-problems.md
+                - name: 常见问题 - 非库应用
+                  href: manage-apps/adding-non-gallery-app-common-problems.md
+            - name: 应用程序代理
+              items:
+                - name: 显示应用页时出现问题
+                  href: manage-apps/application-proxy-page-appearance-broken-problem.md
+                - name: 应用程序加载时间过长
+                  href: manage-apps/application-proxy-page-load-speed-problem.md
+                - name: 应用程序页上的链接不起作用
+                  href: manage-apps/application-proxy-page-links-broken-problem.md
+                - name: 要为应用打开哪些端口
+                  href: manage-apps/application-proxy-connectivity-ports-how-to.md
+                - name: 应用的连接器组中没有正常工作的连接器
+                  href: manage-apps/application-proxy-connectivity-no-working-connector.md
+                - name: 在管理门户中配置
+                  href: manage-apps/application-proxy-config-how-to.md
+                - name: 为应用配置单一登录
+                  href: manage-apps/application-proxy-config-sso-how-to.md
+                - name: 在管理门户中创建应用时出现问题
+                  href: manage-apps/application-proxy-config-problem.md
+                - name: 配置 Kerberos 约束委派
+                  href: manage-apps/application-proxy-back-end-kerberos-constrained-delegation-how-to.md
+                - name: 使用 PingAccess 配置
+                  href: manage-apps/application-proxy-back-end-ping-access-how-to.md
+                - name: “无法访问此企业应用程序”错误
+                  href: manage-apps/application-proxy-sign-in-bad-gateway-timeout-error.md
+                - name: 安装应用程序代理程序连接器时出现问题
+                  href: manage-apps/application-proxy-connector-installation-problem.md
+            - name: 应用程序注册
+              items:
+                - name: 为应用程序对象填写字段
+                  href: develop/registration-config-specific-application-property-how-to.md
+                - name: 更改令牌生存期默认值
+                  href: develop/registration-config-change-token-lifetime-how-to.md
+            - name: Authentication
+              items:
+                - name: 配置终结点
+                  href: develop/registration-config-how-to.md
+            - name: 条件性访问
+              items:
+                - name: 客户不符合设备注册先决条件
+                  href: active-directory-conditional-access.md
+                - name: 企业网络外部规则如何以及何时生效？
+                  href: 'https://aka.ms/calocation'
+                - name: 如何增加允许用户在 Azure AD 中注册的设备数？
+                  href: active-directory-azureadjoin-setup.md
+                - name: 如何为 Exchange Online 设置条件访问？
+                  href: 'https://aka.ms/csforexchange'
+                - name: 如何为 Windows 7 设备设置条件访问？
+                  href: 'active-directory-conditional-access.md#device-based-conditional-access'
+                - name: 哪些应用程序支持条件访问？
+                  href: active-directory-conditional-access-supported-apps.md
+            - name: 查找 API
+              items:
+                - name: 查找 API
+                  href: develop/api-find-an-api-how-to.md
+            - name: 管理访问权限
+              items:
+                - name: 为应用分配用户和组
+                  href: manage-apps/methods-for-assigning-users-and-groups.md
+                - name: 删除对应用的用户访问权限
+                  href: manage-apps/methods-for-removing-user-access.md
+                - name: 配置自助服务应用分配
+                  href: manage-apps/manage-self-service-access.md
+                - name: 分配了意外的用户
+                  href: manage-apps/ways-users-get-assigned-to-applications.md
+                - name: 应用程序列表中的意外应用
+                  href: manage-apps/application-types.md
+            - name: 多租户应用
+              items:
+                - name: 配置新应用
+                  href: develop/setup-multi-tenant-app.md
+                - name: 添加到应用库
+                  href: develop/registration-config-multi-tenant-application-add-to-gallery-how-to.md
+            - name: 权限
+              items:
+                - name: 选择 API 的权限
+                  href: develop/perms-for-given-api.md
+                - name: 委派权限与应用程序权限
+                  href: develop/delegated-and-app-perms.md
+                - name: 应用程序许可
+                  href: develop/consent-framework.md
+            - name: 设置
+              items:
+                - name: 花费多长时间
+                  href: manage-apps/application-provisioning-when-will-provisioning-finish-specific-user.md
+                - name: 花费数小时 - 库应用
+                  href: manage-apps/application-provisioning-when-will-provisioning-finish.md
+                - name: 配置用户预配 - 库应用
+                  href: manage-apps/application-provisioning-config-how-to.md
+                - name: 配置用户预配时出现问题 - 库应用
+                  href: manage-apps/application-provisioning-config-problem.md
+                - name: 配置用户预配时保存管理员凭据出现问题 - 库应用
+                  href: manage-apps/application-provisioning-config-problem-storage-limit.md
+                - name: 未预配用户 - 库应用
+                  href: manage-apps/application-provisioning-config-problem-no-users-provisioned.md
+                - name: 预配了错误的用户 - 库应用
+                  href: manage-apps/application-provisioning-config-problem-wrong-users-provisioned.md
+                - name: SCIM 兼容性问题 - 非库应用
+                  href: manage-apps/application-provisioning-config-problem-scim-compatibility.md
+            - name: 单一登录
+              items:
+                - name: 选择方法
+                  href: manage-apps/single-sign-on-modes.md
+                - name: 配置
+                  href: develop/registration-config-sso-how-to.md
+                - name: 配置联合单一登录 - 库应用
+                  href: manage-apps/configure-federated-single-sign-on-gallery-applications.md
+                - name: 配置联合单一登录时常见的问题 - 库应用
+                  href: manage-apps/configure-federated-single-sign-on-gallery-applications-problems.md
+                - name: 配置联合单一登录 - 非库应用
+                  href: manage-apps/configure-federated-single-sign-on-non-gallery-applications.md
+                - name: 配置联合单一登录时常见的问题 - 非库应用
+                  href: manage-apps/configure-federated-single-sign-on-non-gallery-applications-problems.md
+                - name: 配置密码 - 库应用
+                  href: manage-apps/configure-password-single-sign-on-gallery-applications.md
+                - name: 配置密码时常见的问题 - 库应用
+                  href: manage-apps/configure-password-single-sign-on-gallery-applications-problems.md
+                - name: 配置密码 - 非库应用
+                  href: manage-apps/configure-password-single-sign-on-non-gallery-applications.md
+                - name: 配置密码时常见的问题 - 非库应用
+                  href: manage-apps/configure-password-single-sign-on-non-gallery-applications-problems.md
+            - name: 用户登录问题
+              items:
+                - name: 意外的许可提示
+                  href: manage-apps/application-sign-in-unexpected-user-consent-prompt.md
+                - name: “用户同意”错误
+                  href: manage-apps/application-sign-in-unexpected-user-consent-error.md
+                - name: 从自定义门户登录时出现问题
+                  href: manage-apps/application-sign-in-other-problem-deeplink.md
+                - name: 从访问面板登录时出现问题
+                  href: manage-apps/application-sign-in-other-problem-access-panel.md
+                - name: 应用程序登录页上的错误
+                  href: manage-apps/application-sign-in-problem-application-error.md
+                - name: 使用密码单一登录时出现的问题 - 非库应用
+                  href: manage-apps/application-sign-in-problem-password-sso-non-gallery.md
+                - name: 使用密码单一登录时出现的问题 - 库应用
+                  href: manage-apps/application-sign-in-problem-password-sso-gallery.md
+                - name: 登录到 Microsoft 应用时出现问题
+                  href: manage-apps/application-sign-in-problem-first-party-microsoft.md
+                - name: 使用联合单一登录时出现的问题 - 非库应用
+                  href: manage-apps/application-sign-in-problem-federated-sso-non-gallery.md
+                - name: 使用联合单一登录时出现的问题 - 库应用
+                  href: manage-apps/application-sign-in-problem-federated-sso-gallery.md
+                - name: 登录自定义开发的应用时出现的问题
+                  href: manage-apps/application-sign-in-problem-custom-dev.md
+                - name: 登录本地应用时出现的问题 - 应用程序代理
+                  href: manage-apps/application-sign-in-problem-on-premises-application-proxy.md
     - name: 管理目录
-      href: fundamentals/active-directory-administer.md
-    - name: 使用 Azure AD Connect 集成本地标识
-      href: hybrid/whatis-hybrid-identity.md
-    - name: 配置令牌生存期
-      href: develop/active-directory-configurable-token-lifetimes.md
-  - name: 保护标识
-    items:
-    - name: Privileged Identity Management
-      href: privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json
-  - name: 故障排除
-    href: fundamentals/active-directory-troubleshooting-support-howto.md
-  - name: 部署 Azure AD 概念证明 (PoC)
-    items:
-    - name: PoC Playbook：介绍
-      href: active-directory-playbook-intro.md
-    - name: PoC Playbook：要素
-      href: active-directory-playbook-ingredients.md
-    - name: PoC Playbook：实现
-      href: active-directory-playbook-implementation.md
-    - name: PoC Playbook：构建基块
-      href: active-directory-playbook-building-blocks.md
+      items:
+        - name: Azure AD Connect
+          href: hybrid/whatis-hybrid-identity.md
+        - name: 自定义域名
+          items:
+            - name: 快速入门
+              href: fundamentals/add-custom-domain.md
+        - name: 管理目录
+          href: fundamentals/active-directory-administer.md
+        - name: 使用 Azure AD Connect 集成本地标识
+          href: hybrid/whatis-hybrid-identity.md
+        - name: 配置令牌生存期
+          href: develop/active-directory-configurable-token-lifetimes.md
+    - name: 保护标识
+      items:
+        - name: Privileged Identity Management
+          href: privileged-identity-management/pim-configure.md?toc=%2fazure%2factive-directory%2ftoc.json
+    - name: 故障排除
+      href: fundamentals/active-directory-troubleshooting-support-howto.md
+    - name: 部署 Azure AD 概念证明 (PoC)
+      items:
+        - name: PoC Playbook：介绍
+          href: active-directory-playbook-intro.md
+        - name: PoC Playbook：要素
+          href: active-directory-playbook-ingredients.md
+        - name: PoC Playbook：实现
+          href: active-directory-playbook-implementation.md
+        - name: PoC Playbook：构建基块
+          href: active-directory-playbook-building-blocks.md
 - name: 引用
   items:
-  - name: 代码示例
-    href: https://azure.microsoft.com/resources/samples/?service=active-directory
-  - name: Azure PowerShell cmdlet
-    href: /powershell/azure/overview
-  - name: Java API 参考
-    href: /java/api
-  - name: .NET API
-    href: /active-directory/adal/microsoft.identitymodel.clients.activedirectory
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
+    - name: Azure PowerShell cmdlet
+      href: /powershell/azure/overview
+    - name: Java API 参考
+      href: /java/api
+    - name: .NET API
+      href: /active-directory/adal/microsoft.identitymodel.clients.activedirectory
 - name: 相关内容
   items:
-  - name: 多重身份验证
-    href: /azure/multi-factor-authentication/
-  - name: Azure AD Connect
-    href: hybrid/whatis-hybrid-identity.md
-  - name: Azure AD Connect Health
-    href: hybrid/whatis-hybrid-identity-health.md
-  - name: 适用于开发人员的 Azure AD
-    href: ./develop/active-directory-how-to-integrate.md
-  - name: Azure AD 特权标识管理
-    href: ./privileged-identity-management/pim-configure.md
+    - name: 多重身份验证
+      href: /azure/multi-factor-authentication/
+    - name: Azure AD Connect
+      href: hybrid/whatis-hybrid-identity.md
+    - name: Azure AD Connect Health
+      href: hybrid/whatis-hybrid-identity-health.md
+    - name: 适用于开发人员的 Azure AD
+      href: ./develop/active-directory-how-to-integrate.md
+    - name: Azure AD 特权标识管理
+      href: ./privileged-identity-management/pim-configure.md
 - name: 资源
   items:
-  - name: Azure AD 部署计划
-    href: ./fundamentals/active-directory-deployment-plans.md
-  - name: Azure 反馈论坛
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/active-directory/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=active-directory
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-active-directory
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: 91b16e11806ca9c7f5fc931110ae337ddc2ecec3
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341554"
+    - name: Azure AD 部署计划
+      href: ./fundamentals/active-directory-deployment-plans.md
+    - name: Azure 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
-ms.openlocfilehash: 61e76369a4d73bd171c9e5c2462b3f261681ba00
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551377"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996605"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Azure 开发测试实验室-企业参考体系结构
 本文提供参考体系结构部署在企业中的 Azure 开发测试实验室所基于的解决方案。 它包括通过 Express Route 的远程登录到虚拟机的远程桌面网关、 连接到专用的项目，并在实验室中使用其他 PaaS 服务的项目存储库的本地连接。
@@ -37,7 +37,7 @@ ms.locfileid: "59551377"
     - 强制所有传入和传出通过安全/法规遵从性目的的本地防火墙在云环境的网络流量
 - **网络安全组**：若要将流量限制到云环境 （或云环境中） 的常用方法基于源和目标 IP 地址是使用[网络安全组](../virtual-network/security-overview.md)。 例如，允许从企业网络发起到实验室的网络的网络流量。
 - **远程桌面网关**:企业通常阻止传出远程桌面连接在企业防火墙。 若要启用连接到开发测试实验室中基于云的环境，有几个选项 （例如） 使用[远程桌面网关](/windows-server/remote/remote-desktop-services/desktop-hosting-logical-architecture)（网关负载均衡器的静态 IP 白名单） 或[定向所有传入RDP 流量](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md)通过 Express Route/站点到站点 VPN 连接。 规划部署在企业中的开发测试实验室时，它是一个常见的注意事项。
-- **Azure 网络 （Vnet、 子网）**:[Azure 网络](../networking/networking-overview.md)拓扑是在整个开发测试实验室体系结构中的另一个关键元素。 它使从实验中进行通信 （与否），访问在本地 （或不） 和 （或不） 可以访问 internet 资源。 体系结构关系图中包括客户使用开发测试实验室的最常见方法 (通过连接的所有实验室[VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)使用[中心辐射型模型](/architecture/reference-architectures/hybrid-networking/hub-spoke)到 Express Route/站点到站点 VPN 连接为在本地），但由于开发测试实验室将使用 Azure 网络直接没有关于如何设置网络基础结构的任何限制。
+- **Azure 网络 （Vnet、 子网）**:[Azure 网络](../networking/networking-overview.md)拓扑是在整个开发测试实验室体系结构中的另一个关键元素。 它使从实验中进行通信 （与否），访问在本地 （或不） 和 （或不） 可以访问 internet 资源。 体系结构关系图中包括客户使用开发测试实验室的最常见方法 (通过连接的所有实验室[VNet 对等互连](../virtual-network/virtual-network-peering-overview.md)使用[中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)到 Express Route/站点到站点 VPN 连接为在本地），但由于开发测试实验室将使用 Azure 网络直接没有关于如何设置网络基础结构的任何限制。
 - **开发测试实验室**:开发测试实验室是整体体系结构的关键部分。 若要了解有关服务，请参阅[有关开发测试实验室](devtest-lab-overview.md)。
 - **虚拟机和其他资源 (SaaS、 PaaS、 IaaS)**:支持的开发测试实验室的关键工作负荷之一为虚拟机以及其他 Azure 资源。  开发测试实验室可快捷和方便企业可以让 Azure 资源 （包括虚拟机和其他 Azure 资源） 的访问。  详细了解适用于 Azure 的访问[开发人员](devtest-lab-developer-lab.md)并[测试人员](devtest-lab-test-env.md)。
 

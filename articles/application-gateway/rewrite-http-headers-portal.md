@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: absha
 ms.custom: mvc
-ms.openlocfilehash: 9d52114f5d01beca53ed48ee2114dc98cc20f3a2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6afc07f98905469b06622e7829ec4a215b94845e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682418"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994599"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>重写 HTTP 请求和响应标头与 Azure 应用程序网关-Azure 门户
 
@@ -26,7 +26,7 @@ ms.locfileid: "59682418"
 
 ## <a name="before-you-begin"></a>开始之前
 
-需要 v1 SKU 不支持 SKU，因为标头重写功能的应用程序网关 v2。 如果您没有 v2 SKU，创建[应用程序网关 v2 SKU](<https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps>)在开始之前。
+需要 v1 SKU 不支持 SKU，因为标头重写功能的应用程序网关 v2。 如果您没有 v2 SKU，创建[应用程序网关 v2 SKU](https://docs.microsoft.com/azure/application-gateway/tutorial-autoscale-ps)在开始之前。
 
 ## <a name="what-is-required-to-rewrite-a-header"></a>重写一个标头的要求
 

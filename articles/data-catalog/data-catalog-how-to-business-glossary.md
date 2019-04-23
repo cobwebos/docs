@@ -1,17 +1,17 @@
 ---
 title: 设置在 Azure 数据目录业务术语表
 description: 操作指南文章重点说明了 Azure 数据目录中的业务术语表，用于定义和使用通用业务词汇来标记已注册的数据资产。
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 0337b2a7a228052dacfb35982ee6e8d62372fb29
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 649a842c8c8890713bda938c8e11740c5c8be7aa
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264210"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009697"
 ---
 # <a name="set-up-the-business-glossary-for-governed-tagging"></a>为管控标记设置业务术语表
 

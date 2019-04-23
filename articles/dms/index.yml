@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 62d81da206e60c90c636e8c7dd0193d7761ba9b4
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183588"
 documentType: LandingData
 title: Azure 数据库迁移服务文档
 metadata:
@@ -24,57 +18,57 @@ abstract:
   description: 使用 Azure 数据库迁移服务可从多个数据库源无缝迁移到 Azure 数据平台，且会尽量缩短停机时间。 该服务使用数据迁移助手生成评估报告，这些报告提供建议以指导你在执行迁移之前完成所需的更改。 准备好开始迁移过程时，Azure 数据库迁移服务会执行所有必需步骤。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/video-thumb-intro2dms.png
       width: 250
-    title: Azure DMS 简介 (1:30)
-    href: https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu
+    title: 'Azure DMS 简介 (1:30)'
+    href: 'https://www.microsoft.com/en-us/videoplayer/embed/RE2IqVu'
     width: 250
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何使用数据库迁移服务将本地 SQL Server 迁移到 Azure SQL 数据库：
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Azure 门户
-      href: /azure/dms/quickstart-create-data-migration-service-portal
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用数据库迁移服务迁移数据库：
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何使用数据库迁移服务将本地 SQL Server 迁移到 Azure SQL 数据库：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/common/i_portal.svg'
+            text: Azure 门户
+            href: /azure/dms/quickstart-create-data-migration-service-portal
+  - title: 分步教程
     items:
-    - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库</a>
-    - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库</a>
-    - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例</a>
-    - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例</a>
-    - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例</a>
-    - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL</a>
-    - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL</a>
-    - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API</a>
-    - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB Mongo API</a>
-- title: 示例
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 了解如何使用数据库迁移服务迁移数据库：
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/dms/tutorial-sql-server-to-azure-sql">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-azure-sql-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-to-managed-instance">使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库托管实例</a>
+          - html: <a href="/azure/dms/tutorial-sql-server-managed-instance-online">使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库托管实例</a>
+          - html: <a href="/azure/dms/tutorial-rds-sql-server-azure-sql-and-managed-instance-online">使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例</a>
+          - html: <a href="/azure/dms/tutorial-mysql-azure-mysql-online">使用 DMS 以联机方式将 MySQL 迁移到 Azure Database for MySQL</a>
+          - html: <a href="/azure/dms/tutorial-postgresql-azure-postgresql-online">使用 DMS 以联机方式将 PostgreSQL 迁移到 Azure Database for PostgreSQL</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db">使用 DMS 将 MongoDB 脱机迁移到 Azure Cosmos DB Mongo API</a>
+          - html: <a href="/azure/dms/tutorial-mongodb-cosmos-db-online">使用 DMS 将 MongoDB 联机迁移到 Azure Cosmos DB Mongo API</a>
+  - title: 示例
     items:
-    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB</a>
-    - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL DB 托管实例</a>
-- title: 引用
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-powershell">使用 Azure PowerShell 从本地 SQL Server 迁移到 Azure SQL DB</a>
+          - html: <a href="/azure/dms/howto-sql-server-to-azure-sql-mi-powershell">使用 Azure PowerShell 将本地 SQL Server 迁移到 Azure SQL DB 托管实例</a>
+  - title: 引用
     items:
-    - html: <a href="/azure/dms/resource-scenario-status">Azure 数据库迁移服务支持的迁移方案的状态</a>
-    - html: <a href="/azure/dms/pre-reqs">使用 Azure 数据库迁移服务的先决条件概述</a>
-    - html: <a href="/azure/dms/faq">有关使用 Azure 数据库迁移服务的常见问题解答</a>
-    - html: <a href="/azure/dms/known-issues-azure-sql-online">联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制</a>
-    - html: <a href="/azure/dms/dms-tools-matrix">用于数据迁移方案的服务和工具</a>
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/dms/resource-scenario-status">Azure 数据库迁移服务支持的迁移方案的状态</a>
+          - html: <a href="/azure/dms/pre-reqs">使用 Azure 数据库迁移服务的先决条件概述</a>
+          - html: <a href="/azure/dms/faq">有关使用 Azure 数据库迁移服务的常见问题解答</a>
+          - html: <a href="/azure/dms/known-issues-azure-sql-online">联机迁移到 Azure SQL 数据库时存在的已知问题/迁移限制</a>
+          - html: <a href="/azure/dms/dms-tools-matrix">用于数据迁移方案的服务和工具</a>

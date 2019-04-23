@@ -1,154 +1,147 @@
-items:
 - name: Azure AD 域服务文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是 Azure AD 域服务？
-    href: active-directory-ds-overview.md
-  - name: 常见问题解答
-    href: active-directory-ds-faqs.md
-  - name: 它是否适合你？
-    items:
-    - name: 与 Windows Server AD 进行比较
-      href: active-directory-ds-comparison.md
-    - name: 与 Azure AD 加入进行比较
-      href: active-directory-ds-compare-with-azure-ad-join.md
-  - name: 新增功能
-    href: https://azure.microsoft.com/updates/?product=active-directory-ds
-  - name: 功能
-    href: active-directory-ds-features.md
-  - name: 方案
-    href: active-directory-ds-scenarios.md
-  - name: 同步的工作原理
-    href: active-directory-ds-synchronization.md
-  - name: 兼容的第三方软件
-    href: active-directory-ds-compatible-software.md
+    - name: 什么是 Azure AD 域服务？
+      href: active-directory-ds-overview.md
+    - name: 常见问题解答
+      href: active-directory-ds-faqs.md
+    - name: 它是否适合你？
+      items:
+        - name: 与 Windows Server AD 进行比较
+          href: active-directory-ds-comparison.md
+        - name: 与 Azure AD 加入进行比较
+          href: active-directory-ds-compare-with-azure-ad-join.md
+    - name: 新增功能
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'
+    - name: 功能
+      href: active-directory-ds-features.md
+    - name: 方案
+      href: active-directory-ds-scenarios.md
+    - name: 同步的工作原理
+      href: active-directory-ds-synchronization.md
+    - name: 兼容的第三方软件
+      href: active-directory-ds-compatible-software.md
 - name: 入门
   items:
-  - name: 任务 1：配置基本设置
-    href: active-directory-ds-getting-started.md
-  - name: 任务 2：配置网络设置
-    href: active-directory-ds-getting-started-network.md
-  - name: 任务 3：配置管理员组并启用 Azure AD 域服务
-    href: active-directory-ds-getting-started-admingroup.md
-  - name: 任务 4：更新虚拟网络的 DNS 设置
-    href: active-directory-ds-getting-started-dns.md
-  - name: 任务 5：启用密码哈希同步
-    href: active-directory-ds-getting-started-password-sync.md
+    - name: 任务 1：配置基本设置
+      href: active-directory-ds-getting-started.md
+    - name: 任务 2：配置网络设置
+      href: active-directory-ds-getting-started-network.md
+    - name: 任务 3：配置管理员组并启用 Azure AD 域服务
+      href: active-directory-ds-getting-started-admingroup.md
+    - name: 任务 4：更新虚拟网络的 DNS 设置
+      href: active-directory-ds-getting-started-dns.md
+    - name: 任务 5：启用密码哈希同步
+      href: active-directory-ds-getting-started-password-sync.md
 - name: 如何
   items:
-  - name: 检查托管域的运行状况
-    href: active-directory-ds-check-health.md
-  - name: 使用 Azure CSP 订阅中的 Azure AD 域服务
-    href: active-directory-ds-csp.md
-  - name: 使用 PowerShell 启用 Azure AD 域服务
-    href: active-directory-ds-enable-using-powershell.md
-  - name: 配置从 Azure AD 到托管域的作用域内同步
-    href: active-directory-ds-scoped-synchronization.md
-  - name: 保护托管域
-    href: active-directory-ds-secure-your-domain.md
-  - name: 在托管域上创建 OU
-    href: active-directory-ds-admin-guide-create-ou.md
-  - name: 在托管域上创建组托管服务帐户
-    href: active-directory-ds-create-gmsa.md
-  - name: 管理托管域上的组策略
-    href: active-directory-ds-admin-guide-administer-group-policy.md
-  - name: 配置托管域上的密码策略
-    href: active-directory-ds-password-policy.md
-  - name: 选择虚拟网络
-    href: active-directory-ds-networking.md
-  - name: 部署应用程序
-    items:
-    - name: 为 SharePoint Server 配置对配置文件同步的支持
-      href: active-directory-ds-enable-sharepoint-profile-sync.md
-    - name: 配置 Kerberos 约束委派
-      href: active-directory-ds-enable-kcd.md
-    - name: 部署 Azure AD 应用程序代理
-      href: active-directory-ds-deploy-azure-app-proxy.md
-  - name: 删除托管域
-    href: active-directory-ds-disable-aadds.md
+    - name: 检查托管域的运行状况
+      href: active-directory-ds-check-health.md
+    - name: 使用 Azure CSP 订阅中的 Azure AD 域服务
+      href: active-directory-ds-csp.md
+    - name: 使用 PowerShell 启用 Azure AD 域服务
+      href: active-directory-ds-enable-using-powershell.md
+    - name: 配置从 Azure AD 到托管域的作用域内同步
+      href: active-directory-ds-scoped-synchronization.md
+    - name: 保护托管域
+      href: active-directory-ds-secure-your-domain.md
+    - name: 在托管域上创建 OU
+      href: active-directory-ds-admin-guide-create-ou.md
+    - name: 在托管域上创建组托管服务帐户
+      href: active-directory-ds-create-gmsa.md
+    - name: 管理托管域上的组策略
+      href: active-directory-ds-admin-guide-administer-group-policy.md
+    - name: 配置托管域上的密码策略
+      href: active-directory-ds-password-policy.md
+    - name: 选择虚拟网络
+      href: active-directory-ds-networking.md
+    - name: 部署应用程序
+      items:
+        - name: 为 SharePoint Server 配置对配置文件同步的支持
+          href: active-directory-ds-enable-sharepoint-profile-sync.md
+        - name: 配置 Kerberos 约束委派
+          href: active-directory-ds-enable-kcd.md
+        - name: 部署 Azure AD 应用程序代理
+          href: active-directory-ds-deploy-azure-app-proxy.md
+    - name: 删除托管域
+      href: active-directory-ds-disable-aadds.md
 - name: 加入托管域
   items:
-  - name: Windows Server VM
-    href: active-directory-ds-admin-guide-join-windows-vm-portal.md
-  - name: 通过模板将 Windows Server VM 加入托管域
-    href: active-directory-ds-join-windows-vm-template.md
-  - name: CentOS
-    href: active-directory-ds-join-centos-linux-vm.md
-  - name: CoreOS
-    href: active-directory-ds-join-coreos-linux-vm.md
-  - name: Red Hat Enterprise Linux
-    href: active-directory-ds-join-rhel-linux-vm.md
-  - name: Ubuntu Server
-    href: active-directory-ds-join-ubuntu-linux-vm.md
+    - name: Windows Server VM
+      href: active-directory-ds-admin-guide-join-windows-vm-portal.md
+    - name: 通过模板将 Windows Server VM 加入托管域
+      href: active-directory-ds-join-windows-vm-template.md
+    - name: CentOS
+      href: active-directory-ds-join-centos-linux-vm.md
+    - name: CoreOS
+      href: active-directory-ds-join-coreos-linux-vm.md
+    - name: Red Hat Enterprise Linux
+      href: active-directory-ds-join-rhel-linux-vm.md
+    - name: Ubuntu Server
+      href: active-directory-ds-join-ubuntu-linux-vm.md
 - name: 管理托管域
   items:
-  - name: 管理托管域
-    href: active-directory-ds-admin-guide-administer-domain.md
-  - name: 管理托管域上的 DNS
-    href: active-directory-ds-admin-guide-administer-dns.md
-  - name: 更新电子邮件通知
-    href: active-directory-ds-notifications.md
+    - name: 管理托管域
+      href: active-directory-ds-admin-guide-administer-domain.md
+    - name: 管理托管域上的 DNS
+      href: active-directory-ds-admin-guide-administer-dns.md
+    - name: 更新电子邮件通知
+      href: active-directory-ds-notifications.md
 - name: 为托管域配置安全 LDAP
   items:
-  - name: 任务 1：获取安全 LDAP 的证书
-    href: active-directory-ds-admin-guide-configure-secure-ldap.md
-  - name: 任务 2：导出安全 LDAP 证书
-    href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
-  - name: 任务 3：使用 Azure 门户为托管域启用安全 LDAP
-    href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
-  - name: 任务 4：配置 DNS 以便从 Internet 访问托管域
-    href: active-directory-ds-ldaps-configure-dns.md
-  - name: 任务 5：绑定到托管域和锁定安全 LDAP 访问
-    href: active-directory-ds-ldaps-bind-lockdown.md
-  - name: 排查安全 LDAP 问题
-    href: active-directory-ds-ldaps-troubleshoot.md
+    - name: 任务 1：获取安全 LDAP 的证书
+      href: active-directory-ds-admin-guide-configure-secure-ldap.md
+    - name: 任务 2：导出安全 LDAP 证书
+      href: active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md
+    - name: 任务 3：使用 Azure 门户为托管域启用安全 LDAP
+      href: active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md
+    - name: 任务 4：配置 DNS 以便从 Internet 访问托管域
+      href: active-directory-ds-ldaps-configure-dns.md
+    - name: 任务 5：绑定到托管域和锁定安全 LDAP 访问
+      href: active-directory-ds-ldaps-bind-lockdown.md
+    - name: 排查安全 LDAP 问题
+      href: active-directory-ds-ldaps-troubleshoot.md
 - name: 故障排除
   items:
-  - name: 故障排除指南
-    href: active-directory-ds-troubleshooting.md
-  - name: 排查警报问题
-    href: active-directory-ds-troubleshoot-alerts.md
-    items:
-    - name: 修复存在问题的 NSG 配置
-      href: active-directory-ds-troubleshoot-nsg.md
-    - name: 还原缺少的服务主体
-      href: active-directory-ds-troubleshoot-service-principals.md
-    - name: 安全 LDAP 错误
-      href: active-directory-ds-troubleshoot-ldaps.md
-  - name: 解决“不匹配的租户”错误
-    href: active-directory-ds-mismatched-tenant-error.md
-  - name: 挂起的域
-    href: active-directory-ds-suspension.md
+    - name: 故障排除指南
+      href: active-directory-ds-troubleshooting.md
+    - name: 排查警报问题
+      href: active-directory-ds-troubleshoot-alerts.md
+      items:
+        - name: 修复存在问题的 NSG 配置
+          href: active-directory-ds-troubleshoot-nsg.md
+        - name: 还原缺少的服务主体
+          href: active-directory-ds-troubleshoot-service-principals.md
+        - name: 安全 LDAP 错误
+          href: active-directory-ds-troubleshoot-ldaps.md
+    - name: 解决“不匹配的租户”错误
+      href: active-directory-ds-mismatched-tenant-error.md
+    - name: 挂起的域
+      href: active-directory-ds-suspension.md
 - name: 引用
   items:
-  - name: 代码示例
-    href: https://azure.microsoft.com/resources/samples/?service=active-directory
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=active-directory'
 - name: 相关内容
   items:
-  - name: Azure Active Directory
-    href: ../active-directory/fundamentals/active-directory-whatis.md
-  - name: Azure Active Directory B2C
-    href: ../active-directory-b2c/active-directory-b2c-overview.md
-  - name: 多重身份验证
-    href: ../active-directory/authentication/multi-factor-authentication.md
+    - name: Azure Active Directory
+      href: ../active-directory/fundamentals/active-directory-whatis.md
+    - name: Azure Active Directory B2C
+      href: ../active-directory-b2c/active-directory-b2c-overview.md
+    - name: 多重身份验证
+      href: ../active-directory/authentication/multi-factor-authentication.md
 - name: 资源
   items:
-  - name: Azure AD 反馈论坛
-    href: https://feedback.azure.com/forums/169401-azure-active-directory
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: 联系我们
-    href: active-directory-ds-contact-us.md
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/active-directory-ds/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=active-directory-ds
-ms.openlocfilehash: 8559569df09bf611286730868f50d0bf1878182b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341112"
+    - name: Azure AD 反馈论坛
+      href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 联系我们
+      href: active-directory-ds-contact-us.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory-ds/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-ds'

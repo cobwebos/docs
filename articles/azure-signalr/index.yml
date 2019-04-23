@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2b7bbac4de56bce7696b543c07bd40028db5e7a0
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57533062"
 documentType: LandingData
 title: Azure SignalR 服务文档
 metadata:
@@ -22,60 +16,60 @@ metadata:
 abstract:
   description: Azure SignalR 服务是一项 Azure 托管服务，可帮助开发者轻松开发具有实时功能的 Web 应用程序。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何使用 Azure SignalR 服务开发第一个进行实时通信的 Web 应用程序：
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_NETcore.svg
-      text: ASP.NET Core
-      href: /azure/azure-signalr/signalr-quickstart-dotnet-core
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_js.svg
-      text: JavaScript
-      href: /azure/azure-signalr/signalr-quickstart-azure-functions-javascript
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_Csharp.svg
-      text: C#
-      href: /azure/azure-signalr/signalr-quickstart-azure-functions-csharp
-    - image:
-        src: https://docs.microsoft.com/azure/media/index/logo_java.svg
-      text: Java
-      href: /azure/azure-signalr/signalr-quickstart-azure-functions-java
-    - image:
-        src: https://docs.microsoft.com/media/logos/logo_REST.svg
-      text: REST API
-      href: /azure/azure-signalr/signalr-quickstart-rest-api
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何开发 Azure SignalR 服务应用程序
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用 Azure SignalR 服务开发第一个进行实时通信的 Web 应用程序：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_NETcore.svg'
+            text: ASP.NET Core
+            href: /azure/azure-signalr/signalr-quickstart-dotnet-core
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_js.svg'
+            text: JavaScript
+            href: /azure/azure-signalr/signalr-quickstart-azure-functions-javascript
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_Csharp.svg'
+            text: 'C#'
+            href: /azure/azure-signalr/signalr-quickstart-azure-functions-csharp
+          - image:
+              src: 'https://docs.microsoft.com/azure/media/index/logo_java.svg'
+            text: Java
+            href: /azure/azure-signalr/signalr-quickstart-azure-functions-java
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_REST.svg'
+            text: REST API
+            href: /azure/azure-signalr/signalr-quickstart-rest-api
+  - title: 分步教程
     items:
-    - html: <a href="/azure/azure-signalr/signalr-authenticate-oauth">将 Azure SignalR 服务与 ASP.NET Core Identity 集成</a>
-    - html: <a href="/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions">生成带身份验证的无服务器实时应用</a>
-- title: 示例
-  items:
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 了解如何开发 Azure SignalR 服务应用程序
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/azure-signalr/signalr-authenticate-oauth">将 Azure SignalR 服务与 ASP.NET Core Identity 集成</a>
+          - html: <a href="/azure/azure-signalr/signalr-tutorial-authenticate-azure-functions">生成带身份验证的无服务器实时应用</a>
+  - title: 示例
     items:
-    - html: <a href="https://github.com/aspnet/AzureSignalR-samples">Azure SignalR 代码示例</a>
-    - html: <a href="/azure/azure-signalr/signalr-cli-samples">Azure CLI</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/aspnet/AzureSignalR-samples">Azure SignalR 代码示例</a>'
+          - html: <a href="/azure/azure-signalr/signalr-cli-samples">Azure CLI</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="signalr-reference-cli.md">Azure CLI</a></p>
-    - title: Languages
-      html: >
-        <p><a href="https://docs.microsoft.com/aspnet/core">ASP.NET Core 服务器 SDK</a></p> <p><a href="/azure/azure-functions/functions-bindings-signalr-service">Azure Functions 绑定</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/javascript-client">JavaScript 客户端</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/dotnet-client">.NET Standard 客户端</a></p> <p><a href="https://github.com/aspnet/SignalR/tree/release/2.2/clients/java/signalr">Java 客户端</a></p>
-    - title: REST
-      html: <p><a href="https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="signalr-reference-cli.md">Azure CLI</a></p>
+          - title: Languages
+            html: |
+              <p><a href="https://docs.microsoft.com/aspnet/core">ASP.NET Core 服务器 SDK</a></p> <p><a href="/azure/azure-functions/functions-bindings-signalr-service">Azure Functions 绑定</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/javascript-client">JavaScript 客户端</a></p> <p><a href="https://docs.microsoft.com/aspnet/core/signalr/dotnet-client">.NET Standard 客户端</a></p> <p><a href="https://github.com/aspnet/SignalR/tree/release/2.2/clients/java/signalr">Java 客户端</a></p>
+          - title: REST
+            html: '<p><a href="https://github.com/Azure/azure-signalr/blob/dev/docs/rest-api.md">REST API</a></p>'

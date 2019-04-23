@@ -1,104 +1,97 @@
-items:
 - name: Azure 复原
   items:
-  - name: Azure 复原功能页
-    href: https://azure.microsoft.com/features/resiliency
-  - name: 设计适用于 Azure 的可复原应用程序
-    href: https://docs.microsoft.com/azure/architecture/resiliency/
+    - name: Azure 复原功能页
+      href: 'https://azure.microsoft.com/features/resiliency'
+    - name: 设计适用于 Azure 的可复原应用程序
+      href: 'https://docs.microsoft.com/azure/architecture/resiliency/'
 - name: 高可用性
   items:
-  - name: Azure 应用程序的高可用性
-    href: https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications
-  - name: 可用性区域文档
-    items:
-    - name: 什么是可用性区域？
-      href: az-overview.md
-    - name: 虚拟机
+    - name: Azure 应用程序的高可用性
+      href: 'https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications'
+    - name: 可用性区域文档
       items:
-      - name: 使用 CLI 在可用性区域中创建 Linux VM
-        href: ../virtual-machines/linux/create-cli-availability-zone.md
-      - name: 使用 PowerShell 在可用性区域中创建 Windows VM
-        href: ../virtual-machines/windows/create-powershell-availability-zone.md
-      - name: 使用 Azure 门户在可用性区域中创建 Windows VM
-        href: ../virtual-machines/windows/create-portal-availability-zone.md
-    - name: 托管磁盘
-      items:
-      - name: 使用 CLI 在可用性区域中添加托管磁盘
-        href: ../virtual-machines/linux/add-disk.md#use-managed-disks
-      - name: 使用 PowerShell 在可用性区域中添加托管磁盘
-        href: ../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine
-    - name: 虚拟机规模集
-      items:
-      - name: 在可用性区域中创建规模集
-        href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
-    - name: 负载均衡器
-      items:
-      - name: 什么是负载均衡器？
-        href: ../load-balancer/load-balancer-standard-overview.md
-      - name: 负载均衡器标准版和可用性区域
-        href: ../load-balancer/load-balancer-standard-availability-zones.md
-      - name: 创建区域冗余的公共标准负载均衡器
-        href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
-        items:
-        - name: 创建区域冗余的公共标准负载均衡器 (PowerShell)
-          href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
-        - name: 创建区域冗余的公共标准负载均衡器 (CLI)
-          href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
-      - name: 创建区域的公共标准负载均衡器
-        href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
-        items:
-        - name: 创建区域的公共标准负载均衡器 (PowerShell)
-          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
-        - name: 创建区域冗余的公共标准负载均衡器 (CLI)
-          href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
-      - name: 跨可用性区域对 VM 进行负载均衡
-        href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
-        items:
-        - name: 使用 Azure 跨可用性区域对 VM 进行负载均衡 (CLI)
-          href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
-    - name: 公共 IP 地址
-      href: ../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address
-    - name: SQL 数据库
-      items:
-      - name: 将可用性区域与 SQL 数据库配合使用
-        href: ../sql-database/sql-database-high-availability.md#zone-redundant-configuration
-    - name: 存储
-      items:
-      - name: 区域冗余存储
-        href: ../storage/common/storage-redundancy-zrs.md
-    - name: 事件中心
-      items:
-      - name: 事件中心异地灾难恢复
-        href: ../event-hubs/event-hubs-geo-dr.md#availability-zones-preview
-    - name: 服务总线
-      items:
-      - name: 服务总线异地灾难恢复
-        href: ../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview
-    - name: VPN 网关
-      items:
-      - name: 创建区域冗余的虚拟网关
-        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
-    - name: ExpressRoute
-      items:
-      - name: 创建区域冗余的虚拟网关
-        href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: 什么是可用性区域？
+          href: az-overview.md
+        - name: 虚拟机
+          items:
+            - name: 使用 CLI 在可用性区域中创建 Linux VM
+              href: ../virtual-machines/linux/create-cli-availability-zone.md
+            - name: 使用 PowerShell 在可用性区域中创建 Windows VM
+              href: ../virtual-machines/windows/create-powershell-availability-zone.md
+            - name: 使用 Azure 门户在可用性区域中创建 Windows VM
+              href: ../virtual-machines/windows/create-portal-availability-zone.md
+        - name: 托管磁盘
+          items:
+            - name: 使用 CLI 在可用性区域中添加托管磁盘
+              href: '../virtual-machines/linux/add-disk.md#use-managed-disks'
+            - name: 使用 PowerShell 在可用性区域中添加托管磁盘
+              href: '../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine'
+        - name: 虚拟机规模集
+          items:
+            - name: 在可用性区域中创建规模集
+              href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones.md
+        - name: 负载均衡器
+          items:
+            - name: 什么是负载均衡器？
+              href: ../load-balancer/load-balancer-standard-overview.md
+            - name: 负载均衡器标准版和可用性区域
+              href: ../load-balancer/load-balancer-standard-availability-zones.md
+            - name: 创建区域冗余的公共标准负载均衡器
+              href: ../load-balancer/load-balancer-get-started-internet-az-portal.md
+              items:
+                - name: 创建区域冗余的公共标准负载均衡器 (PowerShell)
+                  href: ../load-balancer/load-balancer-get-started-internet-az-powershell.md
+                - name: 创建区域冗余的公共标准负载均衡器 (CLI)
+                  href: ../load-balancer/load-balancer-get-started-internet-az-cli.md
+            - name: 创建区域的公共标准负载均衡器
+              href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md
+              items:
+                - name: 创建区域的公共标准负载均衡器 (PowerShell)
+                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md
+                - name: 创建区域冗余的公共标准负载均衡器 (CLI)
+                  href: ../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md
+            - name: 跨可用性区域对 VM 进行负载均衡
+              href: ../load-balancer/load-balancer-standard-public-availability-zones-portal.md
+              items:
+                - name: 使用 Azure 跨可用性区域对 VM 进行负载均衡 (CLI)
+                  href: ../load-balancer/load-balancer-standard-public-zone-redundant-cli.md
+        - name: 公共 IP 地址
+          href: '../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address'
+        - name: SQL 数据库
+          items:
+            - name: 将可用性区域与 SQL 数据库配合使用
+              href: '../sql-database/sql-database-high-availability.md#zone-redundant-configuration'
+        - name: 存储
+          items:
+            - name: 区域冗余存储
+              href: ../storage/common/storage-redundancy-zrs.md
+        - name: 事件中心
+          items:
+            - name: 事件中心异地灾难恢复
+              href: '../event-hubs/event-hubs-geo-dr.md#availability-zones-preview'
+        - name: 服务总线
+          items:
+            - name: 服务总线异地灾难恢复
+              href: '../service-bus-messaging/service-bus-geo-dr.md#availability-zones-preview'
+        - name: VPN 网关
+          items:
+            - name: 创建区域冗余的虚拟网关
+              href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
+        - name: ExpressRoute
+          items:
+            - name: 创建区域冗余的虚拟网关
+              href: ../vpn-gateway/create-zone-redundant-vnet-gateway.md
 - name: 灾难恢复
   items:
-  - name: 使用 Azure Site Recovery
-    href: https://docs.microsoft.com/azure/site-recovery/
+    - name: 使用 Azure Site Recovery
+      href: 'https://docs.microsoft.com/azure/site-recovery/'
 - name: Azure 备份
   items:
-  - name: 使用 Azure 备份
-    href: https://docs.microsoft.com/azure/backup/
+    - name: 使用 Azure 备份
+      href: 'https://docs.microsoft.com/azure/backup/'
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: Azure 区域
-    href: https://azure.microsoft.com/regions/
-ms.openlocfilehash: 45a73ec4d5e3649be38133e5ce055f206ecf80ab
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340670"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure 区域
+      href: 'https://azure.microsoft.com/regions/'

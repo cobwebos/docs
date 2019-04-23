@@ -9,11 +9,11 @@ ms.date: 09/20/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 0eb47c8ec470ef05f3c6ae37bdc75e5bb1043eb0
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55736058"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60187665"
 ---
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 若要激活调试模式，可以通过 CLI 来传递 **-debug** 开关，通过 PowerShell 来传递 **-Debug** 开关。 确定错误的位置以后，请按本文档的说明来排查错误。
 

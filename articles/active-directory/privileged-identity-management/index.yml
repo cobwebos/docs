@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: f87b76c1d6629fff93ec6eba45a66f837d9737c9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579659"
 documentType: LandingData
 title: Privileged Identity Management 文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure AD Privileged Identity Management (PIM) 文档 | Microsoft Docs
   description: 了解如何使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 以限制对特权角色的现有管理员访问权限，发现谁具有访问权限以及查看特权访问。
   services: active-directory
@@ -24,51 +18,51 @@ abstract:
   description: 使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 可以限制对特权角色的现有管理员访问权限，发现谁具有访问权限以及查看特权访问。
   aside:
     image:
-      alt: 
+      alt: null
       height: 112
       src: media/index/video-thumb-pim.png
       width: 200
-    title: 保护通往你王国的钥匙 (42:45)
-    href: https://www.youtube.com/embed/w7wTpZYJJeQ
+    title: '保护通往你王国的钥匙 (42:45)'
+    href: 'https://www.youtube.com/embed/w7wTpZYJJeQ'
     width: 200
 sections:
-- title: 符合条件且处于活动状态的角色用户的操作指南
-  items:
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/Azure Active Directory_COLOR.svg
-      title: Azure AD 角色
-    - image:
-        src: media/index/Cubes.svg
-      title: Azure 资源
-    rows:
-    - title: 激活我的角色
-      values:
-      - href: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
-      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-activate-your-roles
-- title: 管理员的操作指南
-  items:
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/Azure Active Directory_COLOR.svg
-      title: Azure AD 角色
-    - image:
-        src: media/index/Cubes.svg
-      title: Azure 资源
-    rows:
-    - title: 分配角色
-      values:
-      - href: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
-      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-assign-roles
-    - title: 审批请求
-      values:
-      - href: /azure/active-directory/privileged-identity-management/azure-ad-pim-approval-workflow
-      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-approval-workflow
-    - title: 配置角色设置
-      values:
-      - href: /azure/active-directory/privileged-identity-management/pim-how-to-change-default-settings
-      - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-configure-role-settings
+  - title: 符合条件且处于活动状态的角色用户的操作指南
+    items:
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/Azure Active Directory_COLOR.svg
+            title: Azure AD 角色
+          - image:
+              src: media/index/Cubes.svg
+            title: Azure 资源
+        rows:
+          - title: 激活我的角色
+            values:
+              - href: /azure/active-directory/privileged-identity-management/pim-how-to-activate-role
+              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-activate-your-roles
+  - title: 管理员的操作指南
+    items:
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/Azure Active Directory_COLOR.svg
+            title: Azure AD 角色
+          - image:
+              src: media/index/Cubes.svg
+            title: Azure 资源
+        rows:
+          - title: 分配角色
+            values:
+              - href: /azure/active-directory/privileged-identity-management/pim-how-to-add-role-to-user
+              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-assign-roles
+          - title: 审批请求
+            values:
+              - href: /azure/active-directory/privileged-identity-management/azure-ad-pim-approval-workflow
+              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-approval-workflow
+          - title: 配置角色设置
+            values:
+              - href: /azure/active-directory/privileged-identity-management/pim-how-to-change-default-settings
+              - href: /azure/active-directory/privileged-identity-management/pim-resource-roles-configure-role-settings

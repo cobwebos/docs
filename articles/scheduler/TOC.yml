@@ -1,69 +1,62 @@
-items:
 - name: 计划程序文档
   href: index.md
 - name: 概述
   items:
-  - name: 什么是 Azure 计划程序？
-    href: scheduler-intro.md
+    - name: 什么是 Azure 计划程序？
+      href: scheduler-intro.md
 - name: 入门
   items:
-  - name: 创建和管理作业 - 门户
-    href: scheduler-get-started-portal.md
-  - name: 从计划程序迁移到逻辑应用
-    href: migrate-from-scheduler-to-logic-apps.md
+    - name: 创建和管理作业 - 门户
+      href: scheduler-get-started-portal.md
+    - name: 从计划程序迁移到逻辑应用
+      href: migrate-from-scheduler-to-logic-apps.md
 - name: 概念
   items:
-  - name: 概念、术语和实体
-    href: scheduler-concepts-terms.md
+    - name: 概念、术语和实体
+      href: scheduler-concepts-terms.md
 - name: 操作指南
   items:
-  - name: 规划和设计
-    items:
-    - name: 计划和计费
-      href: scheduler-plans-billing.md
-    - name: 限制、配额和默认值
-      href: scheduler-limits-defaults-errors.md
-    - name: 高可用性和可靠性
-      href: scheduler-high-availability-reliability.md
-  - name: 开发
-    items:
-    - name: 构建复杂的计划和高级的重复周期
-      href: scheduler-advanced-complexity.md
-    - name: 创建和管理计划 - Azure PowerShell
-      href: scheduler-powershell-reference.md
-  - name: 安全
-    items:
-    - name: 出站调用身份验证
-      href: scheduler-outbound-authentication.md
+    - name: 规划和设计
+      items:
+        - name: 计划和计费
+          href: scheduler-plans-billing.md
+        - name: 限制、配额和默认值
+          href: scheduler-limits-defaults-errors.md
+        - name: 高可用性和可靠性
+          href: scheduler-high-availability-reliability.md
+    - name: 开发
+      items:
+        - name: 构建复杂的计划和高级的重复周期
+          href: scheduler-advanced-complexity.md
+        - name: 创建和管理计划 - Azure PowerShell
+          href: scheduler-powershell-reference.md
+    - name: 安全
+      items:
+        - name: 出站调用身份验证
+          href: scheduler-outbound-authentication.md
 - name: 引用
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.scheduler
-  - name: REST API
-    href: /rest/api/scheduler
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.scheduler/allversions
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.scheduler
+    - name: REST API
+      href: /rest/api/scheduler
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.scheduler/allversions
 - name: 资源
   items:
-  - name: Azure 计划程序路线图
-    href: https://azure.microsoft.com/updates/?product=scheduler
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/updates/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-scheduler
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/scheduler/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=scheduler
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=scheduler
-ms.openlocfilehash: fa4c53b0061f9ef23f8086cdcd6bcc73fc55986c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341469"
+    - name: Azure 计划程序路线图
+      href: 'https://azure.microsoft.com/updates/?product=scheduler'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/updates/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=azurescheduler'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-scheduler'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/scheduler/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=scheduler'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=scheduler'

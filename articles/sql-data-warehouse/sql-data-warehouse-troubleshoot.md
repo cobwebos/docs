@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 12/04/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: a5b4d9fac1d2fb3ec1a45f34784552b2d41f2cf1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: dc78fbc93d625b39379e07f240eef7fbad10d194
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679323"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003847"
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>排查 Azure SQL 数据仓库问题
 本文列出了常见的故障排除问题。
@@ -33,7 +33,7 @@ ms.locfileid: "59679323"
 | 问题                                                        | 解决方法                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Visual Studio 对象资源管理器缺少 AAD 用户           | 这是已知问题。  解决方法是在 [sys.database_principals][sys.database_principals] 中查看这些用户。  要了解有关将 Azure Active Directory 用于 SQL 数据仓库的详细信息，请参阅[向 Azure SQL 数据仓库进行身份验证][Authentication to Azure SQL Data Warehouse]。 |
-| 使用脚本向导进行手动脚本编写或通过 SSMS 进行连接时出现缓慢、挂起或产生错误的情况 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
+| 手动编写脚本、 使用脚本向导，或通过 SSMS 连接速度较慢，没有响应，或者生成错误 | 请确保已在 master 数据库中创建用户。 在脚本选项中，同时需确保引擎版本设置为“Microsoft Azure SQL 数据仓库版本”，且引擎类型为“Microsoft Azure SQL 数据库”。 |
 | 在 SSMS 中生成脚本失败                             | 如果将“为从属对象生成脚本”选项设置为“True”，则为 SQL 数据仓库生成脚本失败。 解决方法是，用户必须手动转到“工具”->“选项”->“SQL Server 对象资源管理器”->“为从属选项生成脚本”并设置为 false |
 
 ## <a name="performance"></a>性能

@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 854e944d91c5d43131cf6a9c05e69d5684267022
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55161794"
 documentType: LandingData
 title: Azure Active Directory 报表和监视
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory 报表和监视文档 - 教程、快速入门和概念 | Microsoft Docs
   description: 了解如何配置并测试 Azure Active Directory 报表和监视解决方案
   services: active-directory
@@ -24,31 +18,31 @@ metadata:
 abstract:
   description: 了解如何查看你的环境的安全性和审核报表，或者如何在一段时间内监视它们以深入了解使用模式。 使用 Azure Active Directory (Azure AD) 报表，可以深入了解环境中的安全性和使用模式。 例如，可以回答以下问题：<ul><li>用户如何利用应用程序或服务？</li><li>什么是影响环境运行状况的潜在风险</li><li>如何排查妨碍用户完成其工作的问题</li>
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何下载活动报表并将日志路由到 Azure 存储帐户
-  - type: list
-    style: unordered
+  - title: 5 分钟快速入门
     items:
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">下载登录报表</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">下载审核报表</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">安装用于报表的 Power BI 内容包</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">将日志路由到存储帐户</a>
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何访问报表以及将活动日志流式传输到所选监视系统
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何下载活动报表并将日志路由到 Azure 存储帐户
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-sign-in-report">下载登录报表</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-download-audit-report">下载审核报表</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-install-power-bi-content-pack">安装用于报表的 Power BI 内容包</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account">将日志路由到存储帐户</a>
+  - title: 分步教程
     items:
-    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">使用证书以编程方式访问报告 API</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">将活动日志流式传输到事件中心</a>
-- title: 引用
-  items:
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何访问报表以及将活动日志流式传输到所选监视系统
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-access-api-with-certificates">使用证书以编程方式访问报告 API</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub">将活动日志流式传输到事件中心</a>
+  - title: 引用
     items:
-    - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">登录错误代码</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure Monitor 中的 Azure AD 审核日志架构</a>
-    - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure Monitor 中的 Azure AD 登录架构</a>
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/reports-monitoring/reference-sign-ins-error-codes">登录错误代码</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-audit-log-schema">Azure Monitor 中的 Azure AD 审核日志架构</a>
+          - html: <a href="/azure/active-directory/reports-monitoring/reference-azure-monitor-sign-ins-log-schema">Azure Monitor 中的 Azure AD 登录架构</a>

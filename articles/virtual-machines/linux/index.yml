@@ -74,7 +74,7 @@ sections:
         style: cards
         className: cardsFTitle
         items:
-          - title: ' 在 Azure 中创建 Linux 虚拟机'
+          - title: "\_在 Azure 中创建 Linux 虚拟机"
             href: /learn/modules/create-linux-virtual-machine-in-azure/
             image:
               src: /learn/achievements/create-linux-virtual-machine-in-azure.svg

@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: afe1deb23efcdad88965364aca6ce1d1741117f4
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55103838"
 documentType: LandingData
 title: Azure Active Directory 基础知识文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory 基础知识文档
   description: 了解使用 Azure Active Directory 时可用的基本概念和过程。
   services: active-directory
@@ -22,32 +16,32 @@ metadata:
 abstract:
   description: 了解基本的 Azure Active Directory (Azure AD) 概念和过程，包括如何创建基本的用户、组，以及如何创建基本环境以开始使用。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何开始使用 Azure Active Directory 门户。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: ./media/index/i_portal.png
-      text: 访问 Azure AD 以创建租户
-      href: active-directory-access-create-new-tenant.md
-    - image:
-        src: ./media/index/i_tasks.png
-      text: 查看组和成员
-      href: active-directory-groups-view-azure-portal.md
-- title: 分步指南
-  items:
-  - type: paragraph
-    text: 了解如何执行基本任务以在 Azure Active Directory 环境中进行设置
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何开始使用 Azure Active Directory 门户。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_portal.png
+            text: 访问 Azure AD 以创建租户
+            href: active-directory-access-create-new-tenant.md
+          - image:
+              src: ./media/index/i_tasks.png
+            text: 查看组和成员
+            href: active-directory-groups-view-azure-portal.md
+  - title: 分步指南
     items:
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">注册 Azure AD Premium</a>
-    - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">如何添加自定义域名</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">如何创建基本组并添加成员</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">如何添加组所有者</a>
-    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">如何添加新用户</a>
-    - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">如何向用户分配角色</a>
-    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">如何向用户分配许可证</a>
+      - type: paragraph
+        text: 了解如何执行基本任务以在 Azure Active Directory 环境中进行设置
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">注册 Azure AD Premium</a>
+          - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">如何添加自定义域名</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">如何创建基本组并添加成员</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">如何添加组所有者</a>
+          - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">如何添加新用户</a>
+          - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">如何向用户分配角色</a>
+          - html: <a href="/azure/active-directory/fundamentals/license-users-groups">如何向用户分配许可证</a>

@@ -4,7 +4,7 @@ description: 部署 OpenShift 群集之后的附加任务。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: haroldwongms
-manager: joraio
+manager: mdotson
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 02/02/2019
+ms.date: 04/19/2019
 ms.author: haroldw
-ms.openlocfilehash: cf3a3ca1f751ce9eed5ee5c5397c1d9c864a1dd6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fba29cd55f2d765faa107de3a8961032ef44deec
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58903669"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997388"
 ---
 # <a name="post-deployment-tasks"></a>部署后任务
 
@@ -151,30 +151,9 @@ oauthConfig:
 
 在所有主节点上重启 OpenShift 主机服务：
 
-**包含多个主节点的 OpenShift 容器平台 (OCP)**
-
 ```bash
-sudo systemctl restart atomic-openshift-master-api
-sudo systemctl restart atomic-openshift-master-controllers
-```
-
-**包含单个主节点的 OpenShift 容器平台**
-
-```bash
-sudo systemctl restart atomic-openshift-master
-```
-
-**包含多个主节点的 OKD**
-
-```bash
-sudo systemctl restart origin-master-api
-sudo systemctl restart origin-master-controllers
-```
-
-**包含单个主节点的 OKD**
-
-```bash
-sudo systemctl restart origin-master
+sudo /usr/local/bin/master-restart api
+sudo /usr/local/bin/master-restart controllers
 ```
 
 在 OpenShift 控制台中，现在可以看到两个身份验证选项：“htpasswd_auth”和“[应用注册]”。
@@ -186,7 +165,7 @@ sudo systemctl restart origin-master
 - 每个 OpenShift 节点上启用 Azure 监视器 VM 扩展
 - 安装 Log Analytics 代理作为 OpenShift daemon-set
 
-https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift 中提供了完整说明。
+阅读整[说明](https://docs.microsoft.com/azure/log-analytics/log-analytics-containers#configure-a-log-analytics-agent-for-red-hat-openshift)的更多详细信息。
 
 ## <a name="configure-metrics-and-logging"></a>配置指标和日志记录
 
@@ -196,74 +175,9 @@ OpenShift 容器平台市场套餐还提供一个选项用于在安装群集期�
 
 如果在安装群集期间未启用指标/日志记录，事后可以轻松启用。
 
-### <a name="ansible-inventory-pre-work"></a>Ansible 库存准备工作
-
-验证 Ansible 库存文件 (/etc/ansible/hosts) 是否包含指标/日志记录的相应变量。 可以根据所用的模板，在不同的主机上找到库存文件。
-
-对于 OpenShift 容器模板和市场套餐，库存文件位于守护主机上。 对于 OKD 模板，库存文件位于 master-0 主机或守护主机上，具体取决于所用的分支。
-
-1. 编辑 /etc/ansible/hosts file 并将以下行添加到标识提供者节的后面 (# Enable HTPasswdPasswordIdentityProvider)。 如果这些行已存在，请不要再次添加。
-
-   OpenShift/OKD 3.9 和更低版本
-
-   ```yaml
-   # Setup metrics
-   openshift_hosted_metrics_deploy=false
-   openshift_metrics_cassandra_storage_type=dynamic
-   openshift_metrics_start_cluster=true
-   openshift_metrics_hawkular_nodeselector={"type":"infra"}
-   openshift_metrics_cassandra_nodeselector={"type":"infra"}
-   openshift_metrics_heapster_nodeselector={"type":"infra"}
-   openshift_hosted_metrics_public_url=https://metrics.$ROUTING/hawkular/metrics
-
-   # Setup logging
-   openshift_hosted_logging_deploy=false
-   openshift_hosted_logging_storage_kind=dynamic
-   openshift_logging_fluentd_nodeselector={"logging":"true"}
-   openshift_logging_es_nodeselector={"type":"infra"}
-   openshift_logging_kibana_nodeselector={"type":"infra"}
-   openshift_logging_curator_nodeselector={"type":"infra"}
-   openshift_master_logging_public_url=https://kibana.$ROUTING
-   ```
-
-   OpenShift/OKD 3.10 和更高版本
-
-   ```yaml
-   # Setup metrics
-   openshift_metrics_install_metrics=false
-   openshift_metrics_start_cluster=true
-   openshift_metrics_hawkular_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_metrics_cassandra_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_metrics_heapster_nodeselector={"node-role.kubernetes.io/infra":"true"}
-
-   # Setup logging
-   openshift_logging_install_logging=false
-   openshift_logging_fluentd_nodeselector={"logging":"true"}
-   openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_kibana_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_curator_nodeselector={"node-role.kubernetes.io/infra":"true"}
-   openshift_logging_master_public_url=https://kibana.$ROUTING
-   ```
-
-3. 将 $ROUTING 替换为同一 /etc/ansible/hosts 文件中的 openshift_master_default_subdomain 选项所用的字符串。
-
 ### <a name="azure-cloud-provider-in-use"></a>使用中的 Azure 云提供程序
 
 使用部署期间提供的凭据，通过 SSH 连接到守护节点或第一个主节点（取决于所用的模板和分支）。 发出以下命令：
-
-**OpenShift 容器平台 3.7 和更低版本**
-
-```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True \
--e openshift_hosted_logging_storage_kind=dynamic
-```
-
-**OpenShift 容器平台 3.9 和更高版本**
 
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
@@ -271,75 +185,17 @@ ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metric
 -e openshift_metrics_cassandra_storage_type=dynamic
 
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
--e openshift_logging_install_logging=True \
--e openshift_logging_es_pvc_dynamic=true
-```
-
-**OKD 3.7 和更低版本**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True \
--e openshift_hosted_logging_storage_kind=dynamic
-```
-
-**OKD 3.9 和更高版本**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True \
--e openshift_metrics_cassandra_storage_type=dynamic
-
-ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 -e openshift_logging_install_logging=True \
 -e openshift_logging_es_pvc_dynamic=true
 ```
 
 ### <a name="azure-cloud-provider-not-in-use"></a>未在使用中的 Azure 提供程序
 
-使用部署期间提供的凭据，通过 SSH 连接到守护节点或第一个主节点（取决于所用的模板和分支）。 发出以下命令：
-
-
-**OpenShift 容器平台 3.7 和更低版本**
-
-```bash
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-
-ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True
-```
-
-**OpenShift 容器平台 3.9 和更高版本**
-
 ```bash
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-metrics/config.yml \
 -e openshift_metrics_install_metrics=True
 
 ansible-playbook /usr/share/ansible/openshift-ansible/playbooks/openshift-logging/config.yml \
--e openshift_logging_install_logging=True
-```
-
-**OKD 3.7 和更低版本**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-logging.yml \
--e openshift_logging_install_logging=True
-```
-
-**OKD 3.9 和更高版本**
-
-```bash
-ansible-playbook ~/openshift-ansible/playbooks/byo/openshift-cluster/openshift-metrics.yml \
--e openshift_metrics_install_metrics=True
-ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 -e openshift_logging_install_logging=True
 ```
 
@@ -348,8 +204,9 @@ ansible-playbook ~/openshift-ansible/playbooks/openshift-logging/config.yml \
 打开 Service Broker for Azure (OSBA)，以便直接从 OpenShift 预配 Azure 云服务。 OSBA 是适用于 Azure 的 Open Service Broker API 实现。 Open Service Broker API 是为云提供程序定义通用语言的一种规范。云本机应用程序可以使用这些云提供程序来管理云服务，而不会发生锁定。
 
 若要在 OpenShift 中安装 OSBA，请遵照 https://github.com/Azure/open-service-broker-azure#openshift-project-template 中的说明。 
+> [!NOTE]
+> 仅完成 OpenShift 项目模板部分并不是整个安装部分中的步骤。
 
 ## <a name="next-steps"></a>后续步骤
 
 - [OpenShift 容器平台入门](https://docs.openshift.com/container-platform)
-- [OKD 入门](https://docs.okd.io/latest)

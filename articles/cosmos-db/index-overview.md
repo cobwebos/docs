@@ -1,64 +1,99 @@
 ---
 title: Azure Cosmos DB 中的索引
 description: 了解 Azure Cosmos DB 中索引的工作原理。
-author: rimman
+author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2019
-ms.author: rimman
-ms.openlocfilehash: ecf53251020ce1b639a5bf8da65f5d31ff699db9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.author: thweiss
+ms.openlocfilehash: 3bb8913725acf04f71aba8b4c4350235f2c44dfb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59265689"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996724"
 ---
-# <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB 中的索引 - 概述
+# <a name="indexing-in-azure-cosmos-db---overview"></a>Azure Cosmos DB-概述中编制索引
 
-Azure Cosmos DB 是一种架构不可知的数据库，使你能够快速迭代应用程序，而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 自动对容器中的所有项编制索引，而无需来自开发人员的架构或辅助索引。
+Azure Cosmos DB 不限架构的数据库，可用于循环访问你的应用程序而无需处理架构或索引管理。 默认情况下，Azure Cosmos DB 自动索引中的所有项的每个属性您[容器](databases-containers-items.md#azure-cosmos-containers)而无需定义任何架构或配置辅助索引。
 
-## <a name="items-as-trees"></a>树形式的项
+本文的目的是说明 Azure Cosmos DB 数据的索引以及是如何使用索引来提高查询性能。 建议为通过本部分探讨如何自定义之前[索引策略](index-policy.md)。
 
-通过投影为 JSON 文档在容器中的项，并代表它们树，Azure Cosmos DB 会将标准化的结构和实例值项为统一的概念**动态编码路径结构**. 在这种表示形式，在 JSON 文档，其中包含属性名称及其值，每个标签将成为树的节点。 在树的叶包含实际值和中间节点包含的架构信息。 下图表示两个创建的树中的 Azure Cosmos 容器的项 （1 和 2）：
+## <a name="from-items-to-trees"></a>从项到树
 
-![Azure Cosmos 容器中两个不同项的树表示形式](./media/index-overview/indexing-as-tree.png)
+每次项存储在一个容器，其内容是投影为一个 JSON 文档，然后转换为树表示形式。 这意味着该项的每个属性获取表示为树中的一个节点。 伪根节点创建为项目的所有第一级别属性的父级。 叶节点包含的项执行的实际标量值。
 
-伪根节点创建为对应于下面的 JSON 文档中的标签的实际节点的父级。 嵌套数据结构驱动树中的层次结构。 标有数字值（例如，0、1、...）的中间人工节点用于表示枚举和数组索引。
+作为示例，请考虑此项：
 
-## <a name="index-paths"></a>索引路径
+    {
+        "locations": [
+            { "country": "Germany", "city": "Berlin" },
+            { "country": "France", "city": "Paris" }
+        ],
+        "headquarters": { "country": "Belgium", "employees": 250 },
+        "exports": [
+            { "city": "Moscow" },
+            { "city": "Athens" }
+        ]
+    }
 
-Azure Cosmos DB 项目项中的 Azure Cosmos 容器作为 JSON 文档和索引为树。 然后，您可以调整树中路径的索引策略。 可以选择在索引中包括或排除路径。 如果事先已知查询模式，这可以提高写入性能并减少方案所需的索引存储。 若要了解详细信息，请参阅[索引路径](index-paths.md)。
+它将可以由以下树表示:
 
-## <a name="indexing-under-the-hood"></a>索引：揭秘
+![上一项表示为一个树](./media/index-overview/item-as-tree.png)
 
-Azure Cosmos 数据库适用*自动索引编制*到数据，其中树中的每个路径编制了索引，除非你配置它们以排除某些路径。
+请注意如何对数组进行编码在树中： 在数组中的每个条目获取带有该条目的数组中的索引的中间节点 (0、 1 等等。)。
 
-Azure Cosmos 数据库采用倒排索引数据结构存储每个项的信息，以及促进用于查询的有效表示形式。 在索引树是使用所有表示容器中的各个项的树的联合构造的文档。 在索引树会随着，添加新项或在容器中更新现有项。 不同于关系数据库索引编制，Azure Cosmos DB 不会重启索引从零开始，引入新的字段。 新项将添加到现有的索引结构。 
+## <a name="from-trees-to-property-paths"></a>从树属性路径
 
-在索引树的每个节点都包含名为的标签和位置值的索引条目*术语*，和的项，称为 Id*帖子*。 在大括号中的发布内容 (例如{1,2}) 在倒排的索引图中的项对应如*Document1*并*Document2*包含给定的标签值。 统一处理架构标签和实例值的重要意义是所有内容打包内较大的索引。 仍在叶中的实例值不会重复，该值可位于各项中的不同角色中，并且可附带不同架构标签，但它是相同的值。 下图显示了两个不同项的倒排索引：
+为什么 Azure Cosmos DB 会将项转换为树的原因是因为它允许通过这些树内的其路径中引用的属性。 若要获取的属性的路径，我们可以从根节点到该属性，遍历树，并将连接每个遍历节点的标签。
 
-![深入了解索引、倒排索引](./media/index-overview/inverted-index.png)
+以下是上面所述的示例项目的每个属性的路径：
 
-> [!NOTE]
-> 倒排索引似乎类似于在信息检索域的搜索引擎中使用的索引结构。 凭借此方法，Azure Cosmos DB 允许搜索数据库中的任何项，而无需考虑其架构结构。
+    /locations/0/country: "Germany"
+    /locations/0/city: "Berlin"
+    /locations/1/country: "France"
+    /locations/1/city: "Paris"
+    /headquarters/country: "Belgium"
+    /headquarters/employees: 250
+    /exports/0/city: "Moscow"
+    /exports/1/city: "Athens"
 
-对于标准化路径，该索引将从根到值编码转发路径，以及值的类型信息。 路径和值进行编码，提供各种类型的等范围，空间索引。值编码旨在提供唯一值或一组路径的组合。
+时写入某个项，Azure Cosmos DB 有效地索引中每个属性的路径和及其对应的值。
+
+## <a name="index-kinds"></a>索引种类
+
+Azure Cosmos DB 目前支持两种类型的索引：
+
+**范围**用于索引种类：
+
+- 等式查询： `SELECT * FROM container c WHERE c.property = 'value'`
+- 范围查询： `SELECT * FROM container c WHERE c.property > 'value'` (适用于`>`， `<`， `>=`， `<=`， `!=`)
+- `ORDER BY` 查询： `SELECT * FROM container c ORDER BY c.property`
+- `JOIN` 查询： `SELECT child FROM container c JOIN child IN c.properties WHERE child = 'value'`
+
+标量值 （字符串或数字），可以使用范围索引。
+
+**空间**用于索引种类：
+
+- 地理空间距离查询： `SELECT * FROM container c WHERE ST_DISTANCE(c.property, { "type": "Point", "coordinates": [0.0, 10.0] }) < 40`
+- 在查询中的地理空间信息： `SELECT * FROM container c WHERE ST_WITHIN(c.property, {"type": "Point", "coordinates": [0.0, 10.0] } })`
+
+空间索引可应用于的格式正确[GeoJSON](geospatial.md)对象。 目前支持点、 Linestring 和多边形。
 
 ## <a name="querying-with-indexes"></a>使用索引进行查询
 
-倒排索引允许查询快速标识匹配查询谓词的文档。 通过将架构和实例的值在路径方面均衡，倒排的索引也是一个树。 因此，可将索引和结果序列化为有效 JSON 文档，并在树表示形式中返回时作为文档本身返回。 此方法支持通过其他查询的结果进行递归。 下图是点查询中的索引示例：  
+提取数据编制索引时的路径使其易于查找索引，当处理查询时。 通过匹配`WHERE`建立索引的路径的列表查询的子句，则可以标识非常快速地匹配查询谓词的项。
 
-![点查询示例](./media/index-overview/index-point-query.png)
+例如，请考虑以下查询： `SELECT location FROM location IN company.locations WHERE location.country = 'France'`。 查询谓词 （筛选项，其中的任何位置及其国家/地区与具有"France"） 与中以红色突出显示的路径相匹配：
 
-对于范围查询， *GermanTax*是[用户定义函数](stored-procedures-triggers-udfs.md#udfs)作为查询处理的一部分执行。 用户定义函数是可以提供丰富的编程逻辑集成到查询任何已注册，JavaScript 函数。 下图是范围查询中的索引示例：
+![匹配一个树内的特定路径](./media/index-overview/matching-path.png)
 
-![范围查询示例](./media/index-overview/index-range-query.png)
+> [!NOTE]
+> `ORDER BY`子句*始终*需要范围索引，并且如果它所引用的路径没有任何一个将失败。
 
 ## <a name="next-steps"></a>后续步骤
 
 阅读以下文章中有关索引的详细信息：
 
 - [索引策略](index-policy.md)
-- [索引类型](index-types.md)
-- [索引路径](index-paths.md)
 - [如何管理索引策略](how-to-manage-indexing-policy.md)

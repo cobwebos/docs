@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2018
 ms.author: sharadag
-ms.openlocfilehash: 98aabf5330589bf80f1653bb2882c015a4bc133c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 16770ea0a320b3d9f081cc21a102ab050a6467f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862096"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009746"
 ---
 # <a name="monitoring-metrics-and-logs-in-azure-front-door-service"></a>监视指标和 Azure 第一道防线服务中的日志
 
@@ -65,7 +65,7 @@ ms.locfileid: "58862096"
 
 若要配置你的第一道防线服务诊断日志：
 
-1. 选择你的 Azure API 管理服务。
+1. 选择 Azure 第一道防线服务。
 
 2. 选择**诊断设置**。
 

@@ -7,12 +7,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: raynew
-ms.openlocfilehash: f0959ff8b8ea5ce8d5516d25fdf0faf29dbcd994
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: 62ad2e2b294a0589c9d52ddbce1339b8d55062e4
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629599"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149030"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>备份和还原使用 PowerShell 的 Azure Vm
 
@@ -31,7 +31,6 @@ ms.locfileid: "58629599"
 - [了解详细信息](backup-azure-recovery-services-vault-overview.md)有关恢复服务保管库。
 - [查看](backup-architecture.md#architecture-direct-backup-of-azure-vms)Azure VM 备份的体系结构[了解如何](backup-azure-vms-introduction.md)备份过程中，和[查看](backup-support-matrix-iaas.md)支持、 限制和先决条件。
 - 查看恢复服务的 PowerShell 对象层次结构。
-
 
 ## <a name="recovery-services-object-hierarchy"></a>恢复服务对象层次结构
 
@@ -54,7 +53,7 @@ ms.locfileid: "58629599"
     ```powershell
     Get-Command *azrecoveryservices*
     ```
- 
+
     将会显示 Azure 备份、Azure Site Recovery 和恢复服务保管库的别名和 cmdlet。 下图是你将看到的示例。 这不是 cmdlet 的完整列表。
 
     ![恢复服务列表](./media/backup-azure-vms-automation/list-of-recoveryservices-ps.png)
@@ -77,9 +76,11 @@ ms.locfileid: "58629599"
     ```
 
 6. 可使用以下命令验证提供程序是否已成功注册：
+
     ```powershell
     Get-AzResourceProvider -ProviderNamespace "Microsoft.RecoveryServices"
     ```
+
     在命令输出中，RegistrationState 应更改为 Registered。 如果不是，只需运行**[寄存器 AzResourceProvider](https://docs.microsoft.com/powershell/module/az.resources/register-azresourceprovider)** 再次 cmdlet。
 
 
@@ -152,7 +153,7 @@ Set-AzRecoveryServicesBackupProperties -Vault $vault -BackupStorageRedundancy Ge
 ```
 
 > [!NOTE]
-> 仅当没有备份保管库中受保护的项，则可以修改存储冗余。
+> 只有在没有受保管库保护的备份项的情况下，才能修改存储冗余性。
 
 ### <a name="create-a-protection-policy"></a>创建保护策略
 
@@ -241,9 +242,49 @@ Enable-AzRecoveryServicesBackupProtection -Policy $pol -Name "V2VM" -ResourceGro
 > 如果要使用 Azure 政府版云，则使用值 ff281ffe-705c-4f53-9f37-a40e6f2c68f3 参数 ServicePrincipalName 中[集 AzKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy) cmdlet。
 >
 
+## <a name="monitoring-a-backup-job"></a>监视备份作业
+
+可以在不使用 Azure 门户的情况下监视长时间运行的操作，例如备份作业。 若要获取正在进行中作业的状态，请使用[Get AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。 此 cmdlet 获取特定保管库的备份作业，并且该保管库是在保管库上下文中指定的。 以下示例将正在进行的作业的状态获取为数组，并将状态存储在 $joblist 变量中。
+
+```powershell
+$joblist = Get-AzRecoveryservicesBackupJob –Status "InProgress"
+$joblist[0]
+```
+
+输出类似于以下示例：
+
+```
+WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
+------------     ---------            ------               ---------                 -------                   ----------
+V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+```
+
+使用而不是轮询这些作业的完成-这是不必要的其他代码-[等待 AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) cmdlet。 该 cmdlet 暂停操作的执行，直到作业完成或达到了指定的超时值。
+
+```powershell
+Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
+```
+
+## <a name="manage-azure-vm-backups"></a>管理 Azure VM 备份
+
 ### <a name="modify-a-protection-policy"></a>修改保护策略
 
 若要修改的保护策略，请使用[集 AzRecoveryServicesBackupProtectionPolicy](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesbackupprotectionpolicy)修改 SchedulePolicy 或 RetentionPolicy 对象。
+
+#### <a name="modifying-scheduled-time"></a>修改计划的时间
+
+创建保护策略时，它是默认情况下分配开始时间。 下面的示例演示如何修改保护策略的开始时间。
+
+````powershell
+$SchPol = Get-AzRecoveryServicesBackupSchedulePolicyObject -WorkloadType "AzureVM"
+$UtcTime = Get-Date -Date "2019-03-20 01:00:00Z" (This is the time that the customer wants to start the backup)
+$UtcTime = $UtcTime.ToUniversalTime()
+$SchPol.ScheduleRunTimes[0] = $UtcTime
+$pol = Get-AzRecoveryServicesBackupProtectionPolicy -Name "NewPolicy"
+Set-AzRecoveryServicesBackupProtectionPolicy -Policy $pol  -SchedulePolicy $SchPol
+````
+
+#### <a name="modifying-retention"></a>修改保留期
 
 以下示例将恢复点保留期更改为 365 天。
 
@@ -267,14 +308,15 @@ PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 
 默认值为 2，用户可以设置的值与 1 的最小值和最多 5 个。 有关每周备份策略，该期间设置为 5 并不能更改。
 
-## <a name="trigger-a-backup"></a>触发备份
+### <a name="trigger-a-backup"></a>触发备份
 
-使用[备份 AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem)触发备份作业。 如果是初始备份，则其为完整备份。 后续备份将创建增量副本。 请务必使用**[集 AzRecoveryServicesVaultContext](https://docs.microsoft.com/powershell/module/az.recoveryservices/set-azrecoveryservicesvaultcontext)** 触发备份作业之前设置保管库上下文。 以下示例假定已设置保管库上下文。
+使用[备份 AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/backup-azrecoveryservicesbackupitem)触发备份作业。 如果是初始备份，则其为完整备份。 后续备份将创建增量副本。 下面的示例将 VM 备份将保留 60 天。
 
 ```powershell
 $namedContainer = Get-AzRecoveryServicesBackupContainer -ContainerType "AzureVM" -Status "Registered" -FriendlyName "V2VM"
 $item = Get-AzRecoveryServicesBackupItem -Container $namedContainer -WorkloadType "AzureVM"
-$job = Backup-AzRecoveryServicesBackupItem -Item $item
+$endDate = (Get-Date).AddDays(60).ToUniversalTime()
+$job = Backup-AzRecoveryServicesBackupItem -Item $item -VaultId $targetVault.ID -ExpiryDateTimeUTC $endDate
 ```
 
 输出类似于以下示例：
@@ -290,28 +332,42 @@ V2VM              Backup              InProgress          4/23/2016             
 >
 >
 
-## <a name="monitoring-a-backup-job"></a>监视备份作业
+### <a name="change-policy-for-backup-items"></a>更改备份项策略
 
-可以在不使用 Azure 门户的情况下监视长时间运行的操作，例如备份作业。 若要获取正在进行中作业的状态，请使用[Get AzRecoveryservicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob) cmdlet。 此 cmdlet 获取特定保管库的备份作业，并且该保管库是在保管库上下文中指定的。 以下示例将正在进行的作业的状态获取为数组，并将状态存储在 $joblist 变量中。
+用户可以修改现有策略或更改备份项的策略从 Policy1 到策略 2。 若要切换的备份项策略，只需提取相关的策略和备份项并使用[启用 AzRecoveryServices](https://docs.microsoft.com/powershell/module/az.recoveryservices/Enable-AzRecoveryServicesBackupProtection?view=azps-1.5.0)命令作为参数的备份项。
+
+````powershell
+$TargetPol1 = Get-AzRecoveryServicesBackupProtectionPolicy -Name <PolicyName>
+$anotherBkpItem = Get-AzRecoveryServicesBackupItem -WorkloadType AzureVM -BackupManagementType AzureVM -Name "<BackupItemName>"
+Enable-AzRecoveryServicesBackupProtection -Item $anotherBkpItem -Policy $TargetPol1
+````
+
+此命令等待，直到配置备份已完成并返回以下输出。
 
 ```powershell
-$joblist = Get-AzRecoveryservicesBackupJob –Status "InProgress"
-$joblist[0]
-```
-
-输出类似于以下示例：
-
-```
 WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   ----------
-V2VM             Backup               InProgress            4/23/2016                5:00:30 PM                cf4b3ef5-2fac-4c8e-a215-d2eba4124f27
+------------     ---------            ------               ---------                 -------                   -----
+TestVM           ConfigureBackup      Completed            3/18/2019 8:00:21 PM      3/18/2019 8:02:16 PM      654e8aa2-4096-402b-b5a9-e5e71a496c4e
 ```
 
-使用而不是轮询这些作业的完成-这是不必要的其他代码-[等待 AzRecoveryServicesBackupJob](https://docs.microsoft.com/powershell/module/az.recoveryservices/wait-azrecoveryservicesbackupjob) cmdlet。 该 cmdlet 暂停操作的执行，直到作业完成或达到了指定的超时值。
+### <a name="stop-protection"></a>停止保护
 
-```powershell
-Wait-AzRecoveryServicesBackupJob -Job $joblist[0] -Timeout 43200
-```
+#### <a name="retain-data"></a>保留数据
+
+如果用户想要停止保护，他们可以使用[禁用 AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/Disable-AzRecoveryServicesBackupProtection?view=azps-1.5.0) PS cmdlet。 这会停止计划的备份，但才备份数据现在永久保留。
+
+````powershell
+$bkpItem = Get-AzRecoveryServicesBackupItem -BackupManagementType AzureVM -WorkloadType AzureVM -Name "<backup item name>" -VaultId $targetVault.ID
+Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID
+````
+
+#### <a name="delete-backup-data"></a>删除备份数据
+
+若要在保管库中完全删除备份数据存储，只需添加-RemoveRecoveryPoints' 标志/切换到['disable' 保护命令](#retain-data)。
+
+````powershell
+Disable-AzRecoveryServicesBackupProtection -Item $bkpItem -VaultId $targetVault.ID -RemoveRecoveryPoints
+````
 
 ## <a name="restore-an-azure-vm"></a>还原 Azure VM
 

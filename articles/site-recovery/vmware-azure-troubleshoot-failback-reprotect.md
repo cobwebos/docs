@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: 57630d1fa95c2133e592f691add8c515ca718afb
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
+ms.openlocfilehash: 20cb7a446befb1d31f0e069d91d0230fc4a2a901
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52833425"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999461"
 ---
 # <a name="troubleshoot-failback-to-on-premises-from-azure"></a>排查从 Azure 到本地的故障回复问题
 
@@ -56,7 +56,7 @@ VM 未运行，它处于挂起状态或无法访问。
 
 若要解决此问题，请执行以下操作：
 
-若要重新保护已故障转移的 VM，必须运行 Azure VM，以便移动服务向本地配置服务器注册，并通过与进程服务器通信来启动复制。 如果计算机位于错误的网络中或者未在运行（处于挂起或关闭状态），则配置服务器将无法访问 VM 中的移动服务，从而无法开始重新保护。
+若要重新保护已故障转移的 VM，必须运行 Azure VM，以便移动服务向本地配置服务器注册，并通过与进程服务器通信来启动复制。 如果计算机位于错误的网络，或者未运行 （无响应或关闭的情况下），配置服务器无法访问 vm 以开始重新保护的移动服务。
 
 * 重新启动 VM，使其重新与本地通信。
 * 启动 Azure 虚拟机后，重启重新保护作业。

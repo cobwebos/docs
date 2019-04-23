@@ -1,55 +1,48 @@
-items:
 - name: Azure Notebooks 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是 Azure Notebooks？
-    href: azure-notebooks-overview.md
+    - name: 什么是 Azure Notebooks？
+      href: azure-notebooks-overview.md
 - name: 快速入门
   items:
-  - name: 登录并设置用户 ID
-    href: quickstart-sign-in-azure-notebooks.md
-  - name: 创建和共享笔记本
-    href: quickstart-create-share-jupyter-notebook.md
-  - name: 克隆笔记本
-    href: quickstart-clone-jupyter-notebook.md
-  - name: 迁移本地 Jupyter 笔记本
-    href: quickstart-migrate-local-jupyter-notebook.md
-  - name: 使用自定义环境
-    href: quickstart-create-jupyter-notebook-project-environment.md
+    - name: 登录并设置用户 ID
+      href: quickstart-sign-in-azure-notebooks.md
+    - name: 创建和共享笔记本
+      href: quickstart-create-share-jupyter-notebook.md
+    - name: 克隆笔记本
+      href: quickstart-clone-jupyter-notebook.md
+    - name: 迁移本地 Jupyter 笔记本
+      href: quickstart-migrate-local-jupyter-notebook.md
+    - name: 使用自定义环境
+      href: quickstart-create-jupyter-notebook-project-environment.md
 - name: 教程
   items:
-  - name: 创建和运行笔记本
-    href: tutorial-create-run-jupyter-notebook.md
+    - name: 创建和运行笔记本
+      href: tutorial-create-run-jupyter-notebook.md
 - name: 示例
   items:
-  - name: 示例笔记本
-    href: azure-notebooks-samples.md
+    - name: 示例笔记本
+      href: azure-notebooks-samples.md
 - name: 概念
   items:
-  - name: 帐户
-    href: azure-notebooks-user-account.md
-  - name: 配置文件
-    href: azure-notebooks-user-profile.md
+    - name: 帐户
+      href: azure-notebooks-user-account.md
+    - name: 配置文件
+      href: azure-notebooks-user-profile.md
 - name: 操作指南
   items:
-  - name: 创建和克隆项目
-    href: create-clone-jupyter-notebooks.md
-  - name: 管理和配置项目
-    href: configure-manage-azure-notebooks-projects.md
-  - name: 从笔记本中安装包
-    href: install-packages-jupyter-notebook.md
-  - name: 演示幻灯片放映
-    href: present-jupyter-notebooks-slideshow.md
-  - name: 处理数据文件
-    href: work-with-project-data-files.md
-  - name: 访问数据资源
-    href: access-data-resources-jupyter-notebooks.md
-  - name: 使用 Azure 机器学习服务
-    href: use-machine-learning-services-jupyter-notebooks.md
-ms.openlocfilehash: 95122e9ec45fb606e07a29e474e411d6e49278c0
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52852381"
+    - name: 创建和克隆项目
+      href: create-clone-jupyter-notebooks.md
+    - name: 管理和配置项目
+      href: configure-manage-azure-notebooks-projects.md
+    - name: 从笔记本中安装包
+      href: install-packages-jupyter-notebook.md
+    - name: 演示幻灯片放映
+      href: present-jupyter-notebooks-slideshow.md
+    - name: 处理数据文件
+      href: work-with-project-data-files.md
+    - name: 访问数据资源
+      href: access-data-resources-jupyter-notebooks.md
+    - name: 使用 Azure 机器学习服务
+      href: use-machine-learning-services-jupyter-notebooks.md

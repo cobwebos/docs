@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 4b98648325eaf434d675bfdc1cdd704870912bc3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517209"
 documentType: LandingData
 title: Azure AD Identity Protection
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory Identity Protection 文档 - 快速入门、概念和参考 | Microsoft Docs
   description: 了解如何配置和测试 Azure Active Directory Identity Protection。
   services: active-directory
@@ -25,22 +19,22 @@ abstract:
   description: 了解可能已泄露标识的检测工作原理以及如何实现自动响应以解决它们。 Azure Active Directory Identity Protection 是 Azure AD Premium P2 版本的功能，支持：<ul><li>检测影响组织标识的潜在漏洞</li><li>配置条件访问策略以自动响应与组织标识相关的可疑操作</li><li>调查可疑事件，并采取适当的措施解决</li></ul><br> 以下资源可帮助你快速入门。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ./media/index/video.png
       width: 246
     title: Azure AD Identity Protection 简介
-    href: https://www.youtube.com/watch?v=zI3jn_G0_Ns
+    href: 'https://www.youtube.com/watch?v=zI3jn_G0_Ns'
     width: 246
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何为常见访问方案配置登录风险条件访问策略。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: ./media/index/i_security-management.png
-      text: 检测到会话风险时阻止访问
-      href: quickstart-sign-in-risk-policy.md
+      - type: paragraph
+        text: 了解如何为常见访问方案配置登录风险条件访问策略。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: ./media/index/i_security-management.png
+            text: 检测到会话风险时阻止访问
+            href: quickstart-sign-in-risk-policy.md

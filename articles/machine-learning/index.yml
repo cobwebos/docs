@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2f8e833088ffdf819e387fd28ae88508d5fe6d00
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519913"
 abstract:
   description: 了解如何使用这些 Azure 机器学习产品在应用和网站中构建智能算法。  教程、快速入门、API 参考和示例演示了操作方法。
 documentType: LandingData
@@ -21,84 +15,84 @@ metadata:
   services: machine-learning
   title: Azure 机器学习文档 - 教程和 API 参考 | Microsoft 文档
 sections:
-- items:
-  - className: cardsM
-    columns: 2
-    items:
-    - href: /azure/machine-learning/service/overview-what-is-azure-ml
-      html: <p>了解该服务如何使用 CLI 和 Python 工具和库以及各种 Azure 数据和计算服务，使<br/> 数据科学家得以实现 AI 解决方案的开发和管理。 了解详细信息...</p>
-      image:
-        src: /azure/machine-learning/media/index/i_machine-learning.svg
-      title: Azure 机器学习服务
-    style: cards
-    type: list
-- items:
-  - text: 进行设置并开始使用 Azure 机器学习服务：
-    type: paragraph
-  - text: <b>快速入门：</b>
-    type: paragraph
   - items:
-    - html: <a href="service/quickstart-run-cloud-notebook">在云中运行试验</a>（不需要进行安装）
-    - html: <a href="service/quickstart-run-local-notebook">使用本地 Notebook 服务器运行试验</a>（本地 SDK 安装）
-    style: unordered
-    type: list
-  - text: <b>MNIST 数据的图像分类教程：</b>
-    type: paragraph
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/machine-learning/service/overview-what-is-azure-ml
+            html: <p>了解该服务如何使用 CLI 和 Python 工具和库以及各种 Azure 数据和计算服务，使<br/> 数据科学家得以实现 AI 解决方案的开发和管理。 了解详细信息...</p>
+            image:
+              src: /azure/machine-learning/media/index/i_machine-learning.svg
+            title: Azure 机器学习服务
+        style: cards
+        type: list
   - items:
-    - html: 第 1 部分：<a href="service/tutorial-train-models-with-aml">训练自己的模型</a>
-    - html: 第 2 部分：<a href="service/tutorial-deploy-models-with-aml">部署该模型</a>
-    style: unordered
-    type: list
-  - text: <b>使用纽约市出租车数据的回归建模教程：</b>
-    type: paragraph
+      - text: 进行设置并开始使用 Azure 机器学习服务：
+        type: paragraph
+      - text: <b>快速入门：</b>
+        type: paragraph
+      - items:
+          - html: <a href="service/quickstart-run-cloud-notebook">在云中运行试验</a>（不需要进行安装）
+          - html: <a href="service/quickstart-run-local-notebook">使用本地 Notebook 服务器运行试验</a>（本地 SDK 安装）
+        style: unordered
+        type: list
+      - text: <b>MNIST 数据的图像分类教程：</b>
+        type: paragraph
+      - items:
+          - html: 第 1 部分：<a href="service/tutorial-train-models-with-aml">训练自己的模型</a>
+          - html: 第 2 部分：<a href="service/tutorial-deploy-models-with-aml">部署该模型</a>
+        style: unordered
+        type: list
+      - text: <b>使用纽约市出租车数据的回归建模教程：</b>
+        type: paragraph
+      - items:
+          - html: 第 1 部分：<a href="service/tutorial-data-prep">准备建模的数据</a>
+          - html: 第 2 部分：<a href="service/tutorial-auto-train-models">让自动化 ML 为你训练模型</a>
+        style: unordered
+        type: list
+      - text: <b>使用模型：</b>
+        type: paragraph
+      - items:
+          - html: <a href="service/how-to-consume-web-service">使用请求-响应模型</a>
+          - html: <a href="service/how-to-run-batch-predictions">使用 ML 管道进行批量预测</a>
+        style: unordered
+        type: list
+    title: 快速入门和教程
   - items:
-    - html: 第 1 部分：<a href="service/tutorial-data-prep">准备建模的数据</a>
-    - html: 第 2 部分：<a href="service/tutorial-auto-train-models">让自动化 ML 为你训练模型</a>
-    style: unordered
-    type: list
-  - text: <b>使用模型：</b>
-    type: paragraph
-  - items:
-    - html: <a href="service/how-to-consume-web-service">使用请求-响应模型</a>
-    - html: <a href="service/how-to-run-batch-predictions">使用 ML 管道进行批量预测</a>
-    style: unordered
-    type: list
-  title: 快速入门和教程
-- items:
-  - className: cardsM
-    columns: 2
-    items:
-    - href: /azure/cognitive-services/
-      html: <p>为应用、网站和机器人提供智能算法的 API。</p>
-      image:
-        src: /azure/machine-learning/media/index/cognitive-services.png
-      title: 认知服务
-    - href: /azure/machine-learning/studio/
-      html: <p>一项协作型拖放式工具，可以使用 R 或 Python 根据数据生成、测试和部署预测分析解决方案。 </p>
-      image:
-        src: /azure/machine-learning/media/index/machine-learning-studio.svg
-      title: Azure 机器学习工作室
-    - href: /sql/advanced-analytics/r/r-services
-      html: <p>数据库内分析，支持 R 和 Python。</p>
-      image:
-        src: /azure/machine-learning/media/index/logo_sql.png
-      title: SQL Server 机器学习服务
-    - href: /machine-learning-server/
-      html: <p>灵活的企业机器学习平台，支持 Windows、Linux 以及 HDInsight Spark 和 Hadoop 群集上的 R 和 Python 部署。</p>
-      image:
-        src: /azure/machine-learning/media/index/ml-server.png
-      title: Microsoft 机器学习服务器
-    - href: /azure/machine-learning/team-data-science-process
-      html: <p>一种协作型数据科学方法，可帮助团队高效交付预测分析解决方案和智能应用程序。</p>
-      image:
-        src: /azure/machine-learning/media/index/tdsp.png
-      title: Team Data Science Process
-    - href: /azure/machine-learning/data-science-virtual-machine/
-      html: <p>使用 Data Science Virtual Machine (DSVM) 和深度学习 (DLVM) 虚拟机，无需安装或配置软件即可进行实验。 它已预装了常用的数据分析、机器学习和 AI 工具。</p>
-      image:
-        src: /azure/machine-learning/media/index/virtualmachine.svg
-      title: 数据科学虚拟机
-    style: cards
-    type: list
-  title: 其他 Microsoft 机器学习技术
+      - className: cardsM
+        columns: 2
+        items:
+          - href: /azure/cognitive-services/
+            html: <p>为应用、网站和机器人提供智能算法的 API。</p>
+            image:
+              src: /azure/machine-learning/media/index/cognitive-services.png
+            title: 认知服务
+          - href: /azure/machine-learning/studio/
+            html: "<p>一项协作型拖放式工具，可以使用 R 或 Python 根据数据生成、测试和部署预测分析解决方案。\_</p>"
+            image:
+              src: /azure/machine-learning/media/index/machine-learning-studio.svg
+            title: Azure 机器学习工作室
+          - href: /sql/advanced-analytics/r/r-services
+            html: <p>数据库内分析，支持 R 和 Python。</p>
+            image:
+              src: /azure/machine-learning/media/index/logo_sql.png
+            title: SQL Server 机器学习服务
+          - href: /machine-learning-server/
+            html: <p>灵活的企业机器学习平台，支持 Windows、Linux 以及 HDInsight Spark 和 Hadoop 群集上的 R 和 Python 部署。</p>
+            image:
+              src: /azure/machine-learning/media/index/ml-server.png
+            title: Microsoft 机器学习服务器
+          - href: /azure/machine-learning/team-data-science-process
+            html: <p>一种协作型数据科学方法，可帮助团队高效交付预测分析解决方案和智能应用程序。</p>
+            image:
+              src: /azure/machine-learning/media/index/tdsp.png
+            title: Team Data Science Process
+          - href: /azure/machine-learning/data-science-virtual-machine/
+            html: <p>使用 Data Science Virtual Machine (DSVM) 和深度学习 (DLVM) 虚拟机，无需安装或配置软件即可进行实验。 它已预装了常用的数据分析、机器学习和 AI 工具。</p>
+            image:
+              src: /azure/machine-learning/media/index/virtualmachine.svg
+            title: 数据科学虚拟机
+        style: cards
+        type: list
+    title: 其他 Microsoft 机器学习技术
 title: Azure 机器学习文档

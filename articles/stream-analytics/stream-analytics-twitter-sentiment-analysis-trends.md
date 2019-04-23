@@ -9,14 +9,17 @@ manager: kfile
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
-ms.openlocfilehash: b5ad1a790f79b11b978c32c5751a6b9333f24c85
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994932"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003694"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
+
+> [!IMPORTANT] 
+> 创建 twitter 应用程序不再是可通过[apps.twitter.com](https://apps.twitter.com/)。 本教程是在更新以包括新的 Twitter API 的过程中。
 
 了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 然后，可以编写 Azure 流分析查询来分析数据，并存储结果以供将来使用，或者使用仪表板和 [Power BI](https://powerbi.com/) 提供实时见解。
 
@@ -64,7 +67,7 @@ ms.locfileid: "57994932"
 
     ![用于创建新事件中心的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-eventhub.png)
  
-7. 单击“创建”。
+7. 单击**创建**。
 
 
 ### <a name="grant-access-to-the-event-hub"></a>授予对事件中心的访问权限
@@ -82,7 +85,7 @@ ms.locfileid: "57994932"
 
     ![用于创建新事件中心访问策略的边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-shared-access-policy-manage.png)
  
-4.  单击“创建”。
+4.  单击**创建**。
 
 5.  部署策略后，在共享访问策略列表中单击该策略。
 
@@ -203,7 +206,7 @@ ms.locfileid: "57994932"
 
     ![创建新的流分析作业](./media/stream-analytics-twitter-sentiment-analysis-trends/newjob.png)
 
-3. 单击“创建”。
+3. 单击**创建**。
 
     创建作业后，门户就会显示作业详细信息。
 
@@ -224,7 +227,7 @@ ms.locfileid: "57994932"
 
      ![为流分析作业创建新输入](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-twitter-new-input.png)
 
-3. 单击“创建”。
+3. 单击**创建**。
 
 
 ## <a name="specify-the-job-query"></a>指定作业查询
@@ -282,7 +285,7 @@ ms.locfileid: "57994932"
 |主题 | 与指定的关键字匹配的主题|
 |SentimentScore | Sentiment140 的观点分数|
 |作者 | 发送推文的 Twitter 句柄|
-|文本 | 推文的完整正文|
+|Text | 推文的完整正文|
 
 
 ## <a name="create-an-output-sink"></a>创建输出接收器
@@ -309,7 +312,7 @@ ms.locfileid: "57994932"
     
      ![流分析作业的“新建输出”边栏选项卡](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-create-output-blob-storage.png)
     
-4. 单击“创建”。 
+4. 单击**创建**。 
 
     Azure 创建存储帐户，并自动生成密钥。 
 

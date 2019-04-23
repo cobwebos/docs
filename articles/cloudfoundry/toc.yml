@@ -1,40 +1,33 @@
-items:
 - name: Cloud Foundry 文档
   href: index.md
 - name: 快速入门
-  items:
-  - name: 市场模板
-    href: https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry
   expanded: true
+  items:
+    - name: 市场模板
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
 - name: 教程
   items:
-  - name: 在 Azure 上创建 CF
-    href: /azure/cloudfoundry/create-cloud-foundry-on-azure
-  - name: 将 CF 应用部署到 Azure
-    href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
-  - name: 将 OSBA 与 PCF 上的应用配合使用
-    href: /azure/cloudfoundry/use-osba-pcf-app
-  - name: Azure 上的 CloudFoundry
-    href: /azure/virtual-machines/linux/cloudfoundry-get-started
-  - name: 部署 CF OMS Nozzle
-    href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
-  - name: 将 Cloud Foundry 与 Azure 集成
-    href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
+    - name: 在 Azure 上创建 CF
+      href: /azure/cloudfoundry/create-cloud-foundry-on-azure
+    - name: 将 CF 应用部署到 Azure
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: 将 OSBA 与 PCF 上的应用配合使用
+      href: /azure/cloudfoundry/use-osba-pcf-app
+    - name: Azure 上的 CloudFoundry
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: 部署 CF OMS Nozzle
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+    - name: 将 Cloud Foundry 与 Azure 集成
+      href: /azure/cloudfoundry/how-cloud-foundry-integrates-with-azure
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: Cloud Foundry 站点
-    href: https://docs.cloudfoundry.org/
-  - name: 在 Azure 上安装 CF
-    href: https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html
-  - name: Pivotal 和 Azure
-    href: https://pivotal.io/partners/microsoft
-  - name: 用于 CF 的 Azure DevOps 插件
-    href: https://github.com/Microsoft/vsts-cloudfoundry
-ms.openlocfilehash: b702d42142bd809e678792f1f07a3e104f1e21c1
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54229211"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cloud Foundry 站点
+      href: 'https://docs.cloudfoundry.org/'
+    - name: 在 Azure 上安装 CF
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal 和 Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: 用于 CF 的 Azure DevOps 插件
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

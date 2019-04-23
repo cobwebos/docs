@@ -1,126 +1,119 @@
-items:
 - name: Azure Active Directory B2B 文档
   href: index.yml
   items:
-  - name: 概述
-    items:
-    - name: 什么是 B2B 来宾用户访问权限？
-      href: what-is-b2b.md
-    - name: 比较 B2B 与 B2C
-      href: compare-with-b2c.md
-  - name: 快速入门
-    items:
-    - name: 在门户中添加来宾用户
-      href: b2b-quickstart-add-guest-users-portal.md
-    - name: 使用 PowerShell 添加来宾用户
-      href: b2b-quickstart-invite-powershell.md
-  - name: 教程
-    items:
-    - name: 批量邀请 B2B 来宾用户
-      href: tutorial-bulk-invite.md
-    - name: 实施多重身份验证
-      href: b2b-tutorial-require-mfa.md
-  - name: 示例
-    items:
-    - name: 自助注册门户示例
-      href: self-service-portal.md
-    - name: 代码和 Azure PowerShell 示例
-      href: code-samples.md
-  - name: 概念
-    items:
-    - name: B2B 许可
-      href: licensing-guidance.md
-    - name: B2B 和 Office 365 外部共享
-      href: o365-external-user.md
-    - name: 邀请兑换
-      href: redemption-experience.md
-    - name: 邀请电子邮件
-      href: invitation-email-elements.md
-    - name: 了解 B2B 用户
-      href: user-properties.md
-    - name: B2B 用户声明映射
-      href: claims-mapping.md
-    - name: B2B 用户令牌
-      href: user-token.md
-    - name: 用于 B2B 的条件访问
-      href: conditional-access.md
-    - name: 适用于混合组织的 B2B
-      href: hybrid-organizations.md
-    - name: 当前限制
-      href: current-limitations.md
-    expanded: false
-  - name: 操作指南
-    items:
-    - name: 管理邀请
+    - name: 概述
       items:
-      - name: 管理员添加 B2B 用户
-        href: add-users-administrator.md
-      - name: 信息工作者添加 B2B 用户
-        href: add-users-information-worker.md
-      - name: Google 联合身份验证
-        href: google-federation.md
-      - name: 一次性密码身份验证
-        href: one-time-passcode.md
-      - name: B2B 共享策略
-        href: delegate-invitations.md
-      - name: 允许或阻止邀请
-        href: allow-deny-list.md
-      - name: 在没有邀请的情况下添加 B2B 用户
-        href: add-user-without-invite.md
-      - name: API 和自定义
-        href: customize-invitation-api.md
-    - name: 管理来宾帐户
+        - name: 什么是 B2B 来宾用户访问权限？
+          href: what-is-b2b.md
+        - name: 比较 B2B 与 B2C
+          href: compare-with-b2c.md
+    - name: 快速入门
       items:
-      - name: 将 B2B 用户添加到角色
-        href: add-guest-to-role.md
-      - name: 动态组和 B2B 用户
-        href: use-dynamic-groups.md
-      - name: 了解 B2B 用户
-        href: user-properties.md
-      - name: 用于 Azure AD 集成应用的 B2B
-        href: configure-saas-apps.md
-    - name: 管理混合组织中的访问权限
+        - name: 在门户中添加来宾用户
+          href: b2b-quickstart-add-guest-users-portal.md
+        - name: 使用 PowerShell 添加来宾用户
+          href: b2b-quickstart-invite-powershell.md
+    - name: 教程
       items:
-      - name: 授予本地用户对云应用的访问权限
-        href: hybrid-on-premises-to-cloud.md
-      - name: 授予 B2B 用户对本地应用的访问权限
-        href: hybrid-cloud-to-on-premises.md
-    - name: 离开组织
-      href: leave-the-organization.md
-    - name: 审核和报表
-      href: auditing-and-reporting.md
-    - name: 对 B2B 进行故障排除
-      href: troubleshoot.md
-    expanded: true
-  - name: 引用
-    items:
-    - name: 邀请管理器 API
-      href: customize-invitation-api.md
-  - name: 资源
-    items:
-    - name: 常见问题解答
-      href: faq.md
-    - name: 获取 B2B 支持
-      href: get-support.md
-    - name: Azure 反馈论坛
-      href: https://feedback.azure.com/forums/169401-azure-active-directory
-    - name: Azure 路线图
-      href: https://azure.microsoft.com/roadmap/?category=security-identity
-    - name: MSDN 论坛
-      href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD
-    - name: 定价
-      href: https://azure.microsoft.com/pricing/details/active-directory/
-    - name: 定价计算器
-      href: https://azure.microsoft.com/pricing/calculator/
-    - name: 服务更新
-      href: https://azure.microsoft.com/updates/?product=active-directory
-    - name: 堆栈溢出
-      href: https://stackoverflow.com/questions/tagged/azure-active-directory
-    - name: 视频
-      href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
-ms.openlocfilehash: cbd7c39f4c44675896075068697da79643174be4
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407827"
+        - name: 批量邀请 B2B 来宾用户
+          href: tutorial-bulk-invite.md
+        - name: 实施多重身份验证
+          href: b2b-tutorial-require-mfa.md
+    - name: 示例
+      items:
+        - name: 自助注册门户示例
+          href: self-service-portal.md
+        - name: 代码和 Azure PowerShell 示例
+          href: code-samples.md
+    - name: 概念
+      expanded: false
+      items:
+        - name: B2B 许可
+          href: licensing-guidance.md
+        - name: B2B 和 Office 365 外部共享
+          href: o365-external-user.md
+        - name: 邀请兑换
+          href: redemption-experience.md
+        - name: 邀请电子邮件
+          href: invitation-email-elements.md
+        - name: 了解 B2B 用户
+          href: user-properties.md
+        - name: B2B 用户声明映射
+          href: claims-mapping.md
+        - name: B2B 用户令牌
+          href: user-token.md
+        - name: 用于 B2B 的条件访问
+          href: conditional-access.md
+        - name: 适用于混合组织的 B2B
+          href: hybrid-organizations.md
+        - name: 当前限制
+          href: current-limitations.md
+    - name: 操作指南
+      expanded: true
+      items:
+        - name: 管理邀请
+          items:
+            - name: 管理员添加 B2B 用户
+              href: add-users-administrator.md
+            - name: 信息工作者添加 B2B 用户
+              href: add-users-information-worker.md
+            - name: Google 联合身份验证
+              href: google-federation.md
+            - name: 一次性密码身份验证
+              href: one-time-passcode.md
+            - name: B2B 共享策略
+              href: delegate-invitations.md
+            - name: 允许或阻止邀请
+              href: allow-deny-list.md
+            - name: 在没有邀请的情况下添加 B2B 用户
+              href: add-user-without-invite.md
+            - name: API 和自定义
+              href: customize-invitation-api.md
+        - name: 管理来宾帐户
+          items:
+            - name: 将 B2B 用户添加到角色
+              href: add-guest-to-role.md
+            - name: 动态组和 B2B 用户
+              href: use-dynamic-groups.md
+            - name: 了解 B2B 用户
+              href: user-properties.md
+            - name: 用于 Azure AD 集成应用的 B2B
+              href: configure-saas-apps.md
+        - name: 管理混合组织中的访问权限
+          items:
+            - name: 授予本地用户对云应用的访问权限
+              href: hybrid-on-premises-to-cloud.md
+            - name: 授予 B2B 用户对本地应用的访问权限
+              href: hybrid-cloud-to-on-premises.md
+        - name: 离开组织
+          href: leave-the-organization.md
+        - name: 审核和报表
+          href: auditing-and-reporting.md
+        - name: 对 B2B 进行故障排除
+          href: troubleshoot.md
+    - name: 引用
+      items:
+        - name: 邀请管理器 API
+          href: customize-invitation-api.md
+    - name: 资源
+      items:
+        - name: 常见问题解答
+          href: faq.md
+        - name: 获取 B2B 支持
+          href: get-support.md
+        - name: Azure 反馈论坛
+          href: 'https://feedback.azure.com/forums/169401-azure-active-directory'
+        - name: Azure 路线图
+          href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+        - name: MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD'
+        - name: 定价
+          href: 'https://azure.microsoft.com/pricing/details/active-directory/'
+        - name: 定价计算器
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: 服务更新
+          href: 'https://azure.microsoft.com/updates/?product=active-directory'
+        - name: 堆栈溢出
+          href: 'https://stackoverflow.com/questions/tagged/azure-active-directory'
+        - name: 视频
+          href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory'

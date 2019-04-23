@@ -15,12 +15,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/11/2019
 ms.author: jowargo
-ms.openlocfilehash: 60dbef0f0d6532c9cd30c59902236b7ae4e70b0e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524185"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998917"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>使用 Azure 通知中心推送通知：常见问题
 
@@ -53,17 +53,6 @@ Azure 通知中心有两个资源级别：中心和命名空间。 中心是单�
 
 > [!NOTE]
 > 由于推送通知取决于第三方平台通知系统（例如 Apple APNS、Google FCM 等），所以这些消息的发送不具有 SLA 保证。 在通知中心将批处理发送到平台通知系统（有 SLA 保证）后，平台通知系统将负责执行推送（无 SLA 保证）。
-
-### <a name="which-customers-are-using-notification-hubs"></a>哪些客户在使用通知中心？
-
-许多客户在使用通知中心。 下面列出了一些知名的客户：
-
-* Sochi 2014：数百个兴趣组、300 多万台设备、2 周内发出的通知超过了 1.5 亿条。 [案例研究：Sochi]
-* Skanska：[案例研究：Skanska]
-* Seattle Times：[案例研究：Seattle Times]
-* Mural.ly：[案例研究：Mural.ly]
-* 7Digital：[案例研究：7Digital]
-* 必应应用：数千万台设备，每天发送 300 万条通知。
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>如何将中心升级或降级到不同层的命名空间？
 
@@ -194,7 +183,7 @@ Azure 通知中心使用基于[共享访问签名](../storage/common/storage-dot
 
 ### <a name="is-there-audit-log-capability"></a>是否有审核日志功能？
 
-是的。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
+可以。 所有通知中心管理操作都会更新 [Azure 门户]中公开的 Azure 活动日志。 Azure 活动日志可使用户了解对订阅中的资源执行的操作。 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的内容、执行者和时间。 还可以了解操作和其他相关属性的状态。 但是， 活动日志不包括读取 (GET) 操作。
 
 ## <a name="monitoring-and-troubleshooting"></a>监视和故障排除
 
@@ -219,11 +208,6 @@ Azure 通知中心支持在 [Azure 门户]中查看遥测数据。 可以在[通
 [Azure 门户]: https://portal.azure.com
 [通知中心定价]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
-[案例研究：Sochi]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=7942
-[案例研究：Skanska]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=5847
-[案例研究：Seattle Times]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=8354
-[案例研究：Mural.ly]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=11592
-[案例研究：7Digital]: https://customers.microsoft.com/Pages/CustomerStory.aspx?recid=3684
 [通知中心 REST API]: https://msdn.microsoft.com/library/azure/dn530746.aspx
 [通知中心入门教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Chrome 应用教程]: https://azure.microsoft.com/documentation/articles/notification-hubs-chrome-get-started/

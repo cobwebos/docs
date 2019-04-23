@@ -1,256 +1,249 @@
-items:
 - name: 用于 MySQL 的 Azure DB 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是用于 MySQL 的 Azure DB？
-    href: overview.md
+    - name: 什么是用于 MySQL 的 Azure DB？
+      href: overview.md
 - name: 快速入门
-  items:
-  - name: 创建 DB - 门户
-    href: quickstart-create-mysql-server-database-using-azure-portal.md
-  - name: 创建 DB - Azure CLI
-    href: quickstart-create-mysql-server-database-using-azure-cli.md
-  - name: 创建 DB - Azure CLI up 命令
-    href: quickstart-create-server-up-azure-cli.md
-  - name: 连接和查询
-    items:
-    - name: PHP
-      href: connect-php.md
-    - name: Java
-      href: connect-java.md
-    - name: .Net
-      href: connect-csharp.md
-    - name: Python
-      href: connect-python.md
-    - name: Node.js
-      href: connect-nodejs.md
-    - name: Ruby
-      href: connect-ruby.md
-    - name: C++
-      href: connect-cpp.md
-    - name: Go
-      href: connect-go.md
-    - name: MySQL Workbench
-      href: connect-workbench.md
   expanded: true
+  items:
+    - name: 创建 DB - 门户
+      href: quickstart-create-mysql-server-database-using-azure-portal.md
+    - name: 创建 DB - Azure CLI
+      href: quickstart-create-mysql-server-database-using-azure-cli.md
+    - name: 创建 DB - Azure CLI up 命令
+      href: quickstart-create-server-up-azure-cli.md
+    - name: 连接和查询
+      items:
+        - name: PHP
+          href: connect-php.md
+        - name: Java
+          href: connect-java.md
+        - name: .Net
+          href: connect-csharp.md
+        - name: Python
+          href: connect-python.md
+        - name: Node.js
+          href: connect-nodejs.md
+        - name: Ruby
+          href: connect-ruby.md
+        - name: C++
+          href: connect-cpp.md
+        - name: Go
+          href: connect-go.md
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: 教程
   items:
-  - name: 1 - 设计数据库
-    items:
-    - name: Azure 门户
-      href: tutorial-design-database-using-portal.md
-    - name: Azure CLI
-      href: tutorial-design-database-using-cli.md
-    - name: Azure 资源管理器模板
-      href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
-  - name: 2 - 创建 Web 应用
-    items:
-    - name: 将 Wordpress 与 MySQL 配合使用创建多容器应用
-      href: ../app-service/containers/tutorial-multi-container-app.md
-      maintainContext: true
-    - name: 将 PHP 与 MySQL 配合使用
-      href: ../app-service/app-service-web-tutorial-php-mysql.md
-      maintainContext: true
+    - name: 1 - 设计数据库
+      items:
+        - name: Azure 门户
+          href: tutorial-design-database-using-portal.md
+        - name: Azure CLI
+          href: tutorial-design-database-using-cli.md
+        - name: Azure 资源管理器模板
+          href: tutorial-provision-mysql-server-using-Azure-Resource-Manager-templates.md
+    - name: 2 - 创建 Web 应用
+      items:
+        - name: 将 Wordpress 与 MySQL 配合使用创建多容器应用
+          href: ../app-service/containers/tutorial-multi-container-app.md
+          maintainContext: true
+        - name: 将 PHP 与 MySQL 配合使用
+          href: ../app-service/app-service-web-tutorial-php-mysql.md
+          maintainContext: true
 - name: 示例
   items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+    - name: Azure CLI
+      href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-  - name: 数据库和服务器
-    items:
-    - name: 服务器
-      href: concepts-servers.md
-    - name: 支持的版本
-      href: concepts-supported-versions.md
-    - name: 高可用性
-      href: concepts-high-availability.md
-  - name: 资源
-    items:
-    - name: 定价层
-      href: concepts-pricing-tiers.md
-    - name: 限制
-      href: concepts-limits.md
-  - name: 数据访问和安全性
-    items:
-    - name: 防火墙规则
-      href: concepts-firewall-rules.md
-    - name: 配置 SSL
-      href: concepts-ssl-connection-security.md
-    - name: 高级威胁防护
-      href: concepts-data-access-and-security-threat-protection.md
-    - name: VNet
-      href: concepts-data-access-and-security-vnet.md
-  - name: 业务连续性
-    items:
-    - name: 概述
-      href: concepts-business-continuity.md
-    - name: 备份和还原
-      href: concepts-backup.md
-  - name: 监视
-    items:
-    - name: 监视
-      href: concepts-monitoring.md
-    - name: 服务器日志
-      href: concepts-server-logs.md
-  - name: 开发
-    items:
-    - name: 驱动程序和工具兼容性
-      href: concepts-compatibility.md
-    - name: 应用程序开发
-      href: concepts-database-application-development.md
-    - name: 连接复原
-      href: concepts-connectivity.md
-    - name: 使用 Azure Kubernetes 服务 (AKS) 进行开发
-      href: concepts-aks.md
-    - name: Java
+    - name: 数据库和服务器
       items:
-      - name: 配置 Spring Data JDBC
-        href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
-      - name: 配置 Spring Data JPA
-        href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
-  - name: 复制
-    items:
-    - name: 复制中数据
-      href: concepts-data-in-replication.md
-    - name: 只读副本
-      href: concepts-read-replicas.md
+        - name: 服务器
+          href: concepts-servers.md
+        - name: 支持的版本
+          href: concepts-supported-versions.md
+        - name: 高可用性
+          href: concepts-high-availability.md
+    - name: 资源
+      items:
+        - name: 定价层
+          href: concepts-pricing-tiers.md
+        - name: 限制
+          href: concepts-limits.md
+    - name: 数据访问和安全性
+      items:
+        - name: 防火墙规则
+          href: concepts-firewall-rules.md
+        - name: 配置 SSL
+          href: concepts-ssl-connection-security.md
+        - name: 高级威胁防护
+          href: concepts-data-access-and-security-threat-protection.md
+        - name: VNet
+          href: concepts-data-access-and-security-vnet.md
+    - name: 业务连续性
+      items:
+        - name: 概述
+          href: concepts-business-continuity.md
+        - name: 备份和还原
+          href: concepts-backup.md
+    - name: 监视
+      items:
+        - name: 监视
+          href: concepts-monitoring.md
+        - name: 服务器日志
+          href: concepts-server-logs.md
+    - name: 开发
+      items:
+        - name: 驱动程序和工具兼容性
+          href: concepts-compatibility.md
+        - name: 应用程序开发
+          href: concepts-database-application-development.md
+        - name: 连接复原
+          href: concepts-connectivity.md
+        - name: 使用 Azure Kubernetes 服务 (AKS) 进行开发
+          href: concepts-aks.md
+        - name: Java
+          items:
+            - name: 配置 Spring Data JDBC
+              href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-mysql
+            - name: 配置 Spring Data JPA
+              href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-mysql
+    - name: 复制
+      items:
+        - name: 复制中数据
+          href: concepts-data-in-replication.md
+        - name: 只读副本
+          href: concepts-read-replicas.md
 - name: 操作指南
   items:
-  - name: 管理服务器
-    items:
-    - name: Azure 门户
-      href: howto-create-manage-server-portal.md
-  - name: 防火墙规则
-    items:
-    - name: Azure 门户
-      href: howto-manage-firewall-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-firewall-using-cli.md
-  - name: 还原服务器
-    items:
-    - name: Azure 门户
-      href: howto-restore-server-portal.md
-    - name: Azure CLI
-      href: howto-restore-server-cli.md
-  - name: 迁移数据库
-    items:
-    - name: 转储和还原
-      href: concepts-migrate-dump-restore.md
-    - name: 导入和导出
-      href: concepts-migrate-import-export.md
-    - name: 停机时间最短的迁移
-      href: howto-migrate-online.md
-  - name: 连接应用程序
-    items:
-    - name: 创建用户
-      href: howto-create-users.md
-    - name: 连接字符串
-      href: howto-connection-string.md
-    - name: 配置 SSL
-      href: howto-configure-ssl.md
-    - name: Web 应用
-      href: howto-connect-webapp.md
-  - name: 配置服务器参数
-    items:
-    - name: Azure 门户
-      href: howto-server-parameters.md
-    - name: Azure CLI
-      href: howto-configure-server-parameters-using-cli.md
-  - name: 访问服务器日志
-    items:
-    - name: Azure 门户
-      href: howto-configure-server-logs-in-portal.md
-    - name: Azure CLI
-      href: howto-configure-server-logs-in-cli.md
-  - name: 监视
-    items:
-    - name: 针对指标创建警报
-      href: howto-alert-on-metric.md
-  - name: 复制
-    items:
-    - name: 配置复制中数据
-      href: howto-data-in-replication.md
-    - name: 创建只读副本 Azure 门户
-      href: howto-read-replicas-portal.md
-    - name: 创建只读副本 Azure CLI
-      href: howto-read-replicas-cli.md
-  - name: 故障排除
-    items:
-    - name: 排查连接错误
-      href: howto-troubleshoot-common-connection-issues.md
-    - name: 查询性能故障排除
-      href: howto-troubleshoot-query-performance.md
-    - name: 如何使用 sys 架构中的视图
-      href: howto-troubleshoot-sys-schema.md
-  - name: 高级威胁防护
-    items:
-    - name: Azure 门户
-      href: howto-database-threat-protection-portal.md
-  - name: 虚拟网络
-    items:
-    - name: Azure 门户
-      href: howto-manage-vnet-using-portal.md
-    - name: Azure CLI
-      href: howto-manage-vnet-using-cli.md
-  - name: 重新启动服务器
-    items:
-    - name: Azure 门户
-      href: howto-restart-server-portal.md
-    - name: Azure CLI
-      href: howto-restart-server-cli.md
+    - name: 管理服务器
+      items:
+        - name: Azure 门户
+          href: howto-create-manage-server-portal.md
+    - name: 防火墙规则
+      items:
+        - name: Azure 门户
+          href: howto-manage-firewall-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-firewall-using-cli.md
+    - name: 还原服务器
+      items:
+        - name: Azure 门户
+          href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
+    - name: 迁移数据库
+      items:
+        - name: 转储和还原
+          href: concepts-migrate-dump-restore.md
+        - name: 导入和导出
+          href: concepts-migrate-import-export.md
+        - name: 停机时间最短的迁移
+          href: howto-migrate-online.md
+    - name: 连接应用程序
+      items:
+        - name: 创建用户
+          href: howto-create-users.md
+        - name: 连接字符串
+          href: howto-connection-string.md
+        - name: 配置 SSL
+          href: howto-configure-ssl.md
+        - name: Web 应用
+          href: howto-connect-webapp.md
+    - name: 配置服务器参数
+      items:
+        - name: Azure 门户
+          href: howto-server-parameters.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-using-cli.md
+    - name: 访问服务器日志
+      items:
+        - name: Azure 门户
+          href: howto-configure-server-logs-in-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-logs-in-cli.md
+    - name: 监视
+      items:
+        - name: 针对指标创建警报
+          href: howto-alert-on-metric.md
+    - name: 复制
+      items:
+        - name: 配置复制中数据
+          href: howto-data-in-replication.md
+        - name: 创建只读副本 Azure 门户
+          href: howto-read-replicas-portal.md
+        - name: 创建只读副本 Azure CLI
+          href: howto-read-replicas-cli.md
+    - name: 故障排除
+      items:
+        - name: 排查连接错误
+          href: howto-troubleshoot-common-connection-issues.md
+        - name: 查询性能故障排除
+          href: howto-troubleshoot-query-performance.md
+        - name: 如何使用 sys 架构中的视图
+          href: howto-troubleshoot-sys-schema.md
+    - name: 高级威胁防护
+      items:
+        - name: Azure 门户
+          href: howto-database-threat-protection-portal.md
+    - name: 虚拟网络
+      items:
+        - name: Azure 门户
+          href: howto-manage-vnet-using-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-using-cli.md
+    - name: 重新启动服务器
+      items:
+        - name: Azure 门户
+          href: howto-restart-server-portal.md
+        - name: Azure CLI
+          href: howto-restart-server-cli.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/mysql
-  - name: REST API
-    href: /rest/api/mysql
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.dbformysql/allversions
-  - name: 复制中数据存储过程
-    href: reference-data-in-stored-procedures.md
+    - name: Azure CLI
+      href: /cli/azure/mysql
+    - name: REST API
+      href: /rest/api/mysql
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.dbformysql/allversions
+    - name: 复制中数据存储过程
+      href: reference-data-in-stored-procedures.md
 - name: 资源
   items:
-  - name: 部署模板
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/mysql/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-database-mysql
-  - name: 视频
-    items:
-    - name: 产品视频
-      href: videos.md
-    - name: 操作方法视频系列
+    - name: 部署模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformysql'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/mysql/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/forums/security/en-US/home?forum=AzureDatabaseforMySQL'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-mysql'
+    - name: 视频
       items:
-      - name: 了解产品功能和优势
-        href: https://aka.ms/mysql-intro-vid
-      - name: 将 MySQL 应用迁移到 Azure
-        href: https://aka.ms/mysql-migrate-vid
-      - name: 生成和部署 Web 应用
-        href: https://aka.ms/mysql-webapps-vid
-      - name: 使用 OSBA 连接容器
-        href: https://aka.ms/mysql-osba-vid
-  - name: 请求功能
-    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
-  - name: 上市区域
-    href: https://azure.microsoft.com/regions/services/
-  - name: 支持选项
-    href: https://azure.microsoft.com/support/options/
-  - name: 客户案例
-    href: https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"
-  - name: 合作伙伴
-    href: partners-migration-mysql.md
-  - name: 数据库迁移指南
-    href: https://datamigration.microsoft.com/
-ms.openlocfilehash: 625316fef2cba47dd2d718b22f8ca4f922e74793
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620200"
+        - name: 产品视频
+          href: videos.md
+        - name: 操作方法视频系列
+          items:
+            - name: 了解产品功能和优势
+              href: 'https://aka.ms/mysql-intro-vid'
+            - name: 将 MySQL 应用迁移到 Azure
+              href: 'https://aka.ms/mysql-migrate-vid'
+            - name: 生成和部署 Web 应用
+              href: 'https://aka.ms/mysql-webapps-vid'
+            - name: 使用 OSBA 连接容器
+              href: 'https://aka.ms/mysql-osba-vid'
+    - name: 请求功能
+      href: 'https://feedback.azure.com/forums/597982-azure-database-for-mysql'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支持选项
+      href: 'https://azure.microsoft.com/support/options/'
+    - name: 客户案例
+      href: 'https://customers.microsoft.com/en-us/search?sq="Azure%20Database%20for%20MySQL%20"'
+    - name: 合作伙伴
+      href: partners-migration-mysql.md
+    - name: 数据库迁移指南
+      href: 'https://datamigration.microsoft.com/'

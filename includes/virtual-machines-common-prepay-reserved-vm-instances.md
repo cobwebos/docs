@@ -3,13 +3,13 @@ author: yashesvi
 ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
-ms.date: 03/22/2019
-ms.openlocfilehash: 32d5d0d25c843be1cba1916e7679faa930e8e645
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.date: 04/13/2019
+ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671893"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118396"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
 
@@ -35,6 +35,12 @@ ms.locfileid: "58671893"
 - Azure 顾问提供了单独的订阅的购买建议。  
 - 可以使用 Api 以获得共享作用域和单个订阅范围内的购买建议。 有关详细信息，请参阅[保留实例购买建议 Api 适用于企业客户](/rest/api/billing/enterprise/billing-enterprise-api-reserved-instance-recommendation)。
 - EA 客户的购买建议的共享和单个订阅作用域是附带[Azure 使用情况见解 Power BI 内容包](/power-bi/service-connect-to-azure-consumption-insights)。
+
+### <a name="classic-vms-and-cloud-services"></a>经典虚拟机和云服务
+
+虚拟机保留实例会自动将应用于这两个经典 Vm 和云服务，启用实例大小灵活性。 没有任何特殊的 Sku 为经典 Vm 或云服务。 相同的 VM Sku 适用于它们。
+
+例如，您可能将经典 Vm 或云服务转换为基于 Azure 资源管理器的 Vm。 在此示例中，预订折扣会自动适用于匹配的 Vm。 无需*exchange*现有的保留的实例-它会自动应用。
 
 ### <a name="analyze-your-usage-information"></a>分析使用情况信息
 您应分析你的使用情况信息以帮助确定应该购买的预订。
@@ -66,7 +72,7 @@ ms.locfileid: "58671893"
 
     | 字段      | 描述|
     |------------|--------------|
-    |名称        |此预订的名称。|
+    |Name        |此预订的名称。|
     |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
     |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |区域    |预订涵盖的 Azure 区域。|    
@@ -74,14 +80,8 @@ ms.locfileid: "58671893"
     |优化对象     |VM 实例大小可以灵活调整，因此可将预留折扣应用到同一 [VM 大小组](https://aka.ms/RIVMGroups)中的其他 VM。 容量优先级可以对部署优先使用数据中心容量。 使你在需要时能够更加有把握地启动 VM 实例。 仅当预留范围为单个订阅时，容量优先级才可用。 |
     |术语        |一年或三年。|
     |数量    |预订中购买的实例数。 数量是可以获得计费折扣的正在运行的 VM 实例数。 例如，如果正在美国东部运行 10 个 Standard_D2 VM，则会将数量指定为 10，以将所有正在运行的虚拟机的权益最大化。 |
-5. 选择“计算成本”时，可以查看预订的成本。
 
-    ![提交预留购买之前的屏幕截图](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvminstance-purchase.png)
-
-6. 选择“购买”。
-7. 选择“查看此预订”以查看购买的状态。
-
-    ![提交预留购买之后的屏幕截图](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE2PjmT]
 
 ## <a name="change-a-reservation-after-purchase"></a>更改预订购买后
 

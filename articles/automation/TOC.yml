@@ -1,295 +1,288 @@
-items:
 - name: Azure 自动化用户文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是自动化？
-    href: automation-intro.md
+    - name: 什么是自动化？
+      href: automation-intro.md
 - name: 快速入门
-  items:
-  - name: 创建自动化帐户
-    href: automation-quickstart-create-account.md
-  - name: 创建 runbook
-    href: automation-quickstart-create-runbook.md
-  - name: 创建 DSC 配置
-    displayName: DSC, state configuration, config, node configuration, node
-    href: automation-quickstart-dsc-configuration.md
   expanded: true
+  items:
+    - name: 创建自动化帐户
+      href: automation-quickstart-create-account.md
+    - name: 创建 runbook
+      href: automation-quickstart-create-runbook.md
+    - name: 创建 DSC 配置
+      href: automation-quickstart-dsc-configuration.md
+      displayName: 'DSC, state configuration, config, node configuration, node'
 - name: 教程
   items:
-  - name: 通过观察程序任务跟踪更新的文件
-    displayName: hybrid runbook worker, hybrid worker, trigger
-    href: automation-watchers-tutorial.md
-  - name: 管理 VM 的更新
-    displayName: alert, patch
-    href: automation-tutorial-update-management.md
-  - name: 通过 Runbook 载入更新和更改跟踪
-    href: automation-onboard-solutions.md
-  - name: 标识环境中的软件
-    displayName: inventory
-    href: automation-tutorial-installed-software.md
-  - name: 排查 VM 上的更改问题
-    displayName: inventory
-    href: automation-tutorial-troubleshoot-changes.md
+    - name: 通过观察程序任务跟踪更新的文件
+      href: automation-watchers-tutorial.md
+      displayName: 'hybrid runbook worker, hybrid worker, trigger'
+    - name: 管理 VM 的更新
+      href: automation-tutorial-update-management.md
+      displayName: 'alert, patch'
+    - name: 通过 Runbook 载入更新和更改跟踪
+      href: automation-onboard-solutions.md
+    - name: 标识环境中的软件
+      href: automation-tutorial-installed-software.md
+      displayName: inventory
+    - name: 排查 VM 上的更改问题
+      href: automation-tutorial-troubleshoot-changes.md
+      displayName: inventory
 - name: 操作指南
   items:
-  - name: 在非工作时间启动/停止 VM
-    href: automation-solution-vm-management.md
-  - name: 登记
-    items:
-    - name: 从门户载入多个 VM
-      href: automation-onboard-solutions-from-browse.md
-    - name: 从 Azure VM 载入
-      href: automation-onboard-solutions-from-vm.md
-    - name: 从自动化帐户加入
-      href: automation-onboard-solutions-from-automation-account.md
-  - name: 更新管理
-    items:
-    - name: 更新管理概述
-      displayName: dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion
-      href: automation-update-management.md
-    - name: 管理多个 VM 的更新
-      href: manage-update-multi.md
-    - name: 前脚本和后脚本
-      href: pre-post-scripts.md
-    - name: 将 OMS 更新部署迁移到 Azure
-      href: migrate-oms-update-deployments.md
-    - name: 将 SCCM 与更新管理集成
-      displayName: Configuration Manager
-      href: oms-solution-updatemgmt-sccmintegration.md
-  - name: 更改跟踪
-    items:
-    - name: 更改跟踪概述
-      displayName: wildcard, recursion, environment variables, registry
-      href: automation-change-tracking.md
-    - name: 查看所跟踪文件的文件内容
-      displayName: change tracking, hash
-      href: change-tracking-file-contents.md
-  - name: 清单
-    items:
-    - name: 使用清单集合管理 VM
-      href: automation-vm-inventory.md
-  - name: 身份验证和安全性
-    items:
-    - name: 创建独立的自动化帐户
-      href: automation-create-standalone-account.md
-    - name: 管理自动化运行方式帐户
-      displayName: certificate renewal
-      href: manage-runas-account.md
-    - name: 配置使用 AWS 进行的身份验证
-      href: automation-config-aws-account.md
-    - name: 管理基于角色的访问控制
-      displayName: RBAC
-      href: automation-role-based-access-control.md
-  - name: Runbook
-    items:
-    - name: 管理 runbook
-      href: manage-runbooks.md
-    - name: Runbook 类型
-      displayName: graphical, python, powershell, powershell workflow
-      href: automation-runbook-types.md
-    - name: 创建 Runbook
+    - name: 在非工作时间启动/停止 VM
+      href: automation-solution-vm-management.md
+    - name: 登记
       items:
-      - name: 图形 Runbook
-        href: automation-first-runbook-graphical.md
-      - name: PowerShell runbook
-        href: automation-first-runbook-textual-powershell.md
-      - name: 创建 PowerShell 工作流 runbook
-        href: automation-first-runbook-textual.md
-      - name: Python runbook
-        href: automation-first-runbook-textual-python2.md
-      - name: 使用Graphical runbook SDK 创建 runbook
-        href: graphical-runbook-sdk.md
-    - name: 编辑 runbook
+        - name: 从门户载入多个 VM
+          href: automation-onboard-solutions-from-browse.md
+        - name: 从 Azure VM 载入
+          href: automation-onboard-solutions-from-vm.md
+        - name: 从自动化帐户加入
+          href: automation-onboard-solutions-from-automation-account.md
+    - name: 更新管理
       items:
-      - name: 编辑文本 Runbook
-        displayName: powershell
-        href: automation-edit-textual-runbook.md
-      - name: 编辑图形 Runbook
-        href: automation-graphical-authoring-intro.md
-    - name: 启动 Runbook
-      href: start-runbooks.md
-    - name: 从 Webhook 启动 Runbook
-      href: automation-webhooks.md
-    - name: Runbook 输入参数
-      displayName: input,json
-      href: runbook-input-parameters.md
-    - name: 图形 Runbook 中的错误处理
-      href: automation-runbook-graphical-error-handling.md
-    - name: Runbook 执行
-      displayName: fair share, activity log, job
-      href: automation-runbook-execution.md
-    - name: 管理 Azure 自动化数据
-      displayName: backup
-      href: automation-managing-data.md
-    - name: 了解 PowerShell 工作流
-      href: automation-powershell-workflow.md
-    - name: 子 Runbook
-      href: automation-child-runbooks.md
-    - name: Runbook 输出
-      displayName: message streams, progress records, preference
-      href: automation-runbook-output-and-messages.md
-    - name: 源代码管理集成
-      displayName: github, vsts, azure devops, personal access token
-      href: source-control-integration.md
-    - name: 源代码管理集成 - 传统
-      href: source-control-integration-legacy.md
-      displayname: github
-  - name: 混合 Runbook 辅助角色
-    items:
-    - name: 混合 Runbook 辅助角色概述
-      href: automation-hybrid-runbook-worker.md
-    - name: 部署 Windows 混合 Runbook 辅助角色
-      href: automation-windows-hrw-install.md
-    - name: 部署 Linux 混合 Runbook 辅助角色
-      displayName: signature validation
-      href: automation-linux-hrw-install.md
-    - name: 在混合 Runbook 辅助角色中运行 Runbook
-      displayName: signed runbooks
-      href: automation-hrw-run-runbooks.md
-  - name: 状态配置
-    displayName: DSC
-    items:
-    - name: 状态配置概述
+        - name: 更新管理概述
+          href: automation-update-management.md
+          displayName: 'dynamic groups, pre scripts, post scripts, reboot control, first party, pre download, inclusion'
+        - name: 管理多个 VM 的更新
+          href: manage-update-multi.md
+        - name: 前脚本和后脚本
+          href: pre-post-scripts.md
+        - name: 将 OMS 更新部署迁移到 Azure
+          href: migrate-oms-update-deployments.md
+        - name: 将 SCCM 与更新管理集成
+          href: oms-solution-updatemgmt-sccmintegration.md
+          displayName: Configuration Manager
+    - name: 更改跟踪
+      items:
+        - name: 更改跟踪概述
+          href: automation-change-tracking.md
+          displayName: 'wildcard, recursion, environment variables, registry'
+        - name: 查看所跟踪文件的文件内容
+          href: change-tracking-file-contents.md
+          displayName: 'change tracking, hash'
+    - name: 清单
+      items:
+        - name: 使用清单集合管理 VM
+          href: automation-vm-inventory.md
+    - name: 身份验证和安全性
+      items:
+        - name: 创建独立的自动化帐户
+          href: automation-create-standalone-account.md
+        - name: 管理自动化运行方式帐户
+          href: manage-runas-account.md
+          displayName: certificate renewal
+        - name: 配置使用 AWS 进行的身份验证
+          href: automation-config-aws-account.md
+        - name: 管理基于角色的访问控制
+          href: automation-role-based-access-control.md
+          displayName: RBAC
+    - name: Runbook
+      items:
+        - name: 管理 runbook
+          href: manage-runbooks.md
+        - name: Runbook 类型
+          href: automation-runbook-types.md
+          displayName: 'graphical, python, powershell, powershell workflow'
+        - name: 创建 Runbook
+          items:
+            - name: 图形 Runbook
+              href: automation-first-runbook-graphical.md
+            - name: PowerShell runbook
+              href: automation-first-runbook-textual-powershell.md
+            - name: 创建 PowerShell 工作流 runbook
+              href: automation-first-runbook-textual.md
+            - name: Python runbook
+              href: automation-first-runbook-textual-python2.md
+            - name: 使用Graphical runbook SDK 创建 runbook
+              href: graphical-runbook-sdk.md
+        - name: 编辑 runbook
+          items:
+            - name: 编辑文本 Runbook
+              href: automation-edit-textual-runbook.md
+              displayName: powershell
+            - name: 编辑图形 Runbook
+              href: automation-graphical-authoring-intro.md
+        - name: 启动 Runbook
+          href: start-runbooks.md
+        - name: 从 Webhook 启动 Runbook
+          href: automation-webhooks.md
+        - name: Runbook 输入参数
+          href: runbook-input-parameters.md
+          displayName: 'input,json'
+        - name: 图形 Runbook 中的错误处理
+          href: automation-runbook-graphical-error-handling.md
+        - name: Runbook 执行
+          href: automation-runbook-execution.md
+          displayName: 'fair share, activity log, job'
+        - name: 管理 Azure 自动化数据
+          href: automation-managing-data.md
+          displayName: backup
+        - name: 了解 PowerShell 工作流
+          href: automation-powershell-workflow.md
+        - name: 子 Runbook
+          href: automation-child-runbooks.md
+        - name: Runbook 输出
+          href: automation-runbook-output-and-messages.md
+          displayName: 'message streams, progress records, preference'
+        - name: 源代码管理集成
+          href: source-control-integration.md
+          displayName: 'github, vsts, azure devops, personal access token'
+        - name: 源代码管理集成 - 传统
+          href: source-control-integration-legacy.md
+          displayname: github
+    - name: 混合 Runbook 辅助角色
+      items:
+        - name: 混合 Runbook 辅助角色概述
+          href: automation-hybrid-runbook-worker.md
+        - name: 部署 Windows 混合 Runbook 辅助角色
+          href: automation-windows-hrw-install.md
+        - name: 部署 Linux 混合 Runbook 辅助角色
+          href: automation-linux-hrw-install.md
+          displayName: signature validation
+        - name: 在混合 Runbook 辅助角色中运行 Runbook
+          href: automation-hrw-run-runbooks.md
+          displayName: signed runbooks
+    - name: 状态配置
       displayName: DSC
-      href: automation-dsc-overview.md
-    - name: 入门
-      displayName: DSC
-      href: automation-dsc-getting-started.md
-    - name: 使用状态配置将服务器配置为所需状态并管理偏移
-      displayName: DSC, compliance
-      href: tutorial-configure-servers-desired-state.md
-    - name: 载入用于管理的计算机
-      displayName: DSC, state configuration
-      href: automation-dsc-onboarding.md
-    - name: 编译 DSC 配置
-      displayName: state configuration, composite resources, configurationData
-      href: automation-dsc-compile.md
-    - name: 使用复合资源编写 DSC 配置
-      href: compose-configurationwithcompositeresources.md
-    - name: 使用 Chocolatey 进行连续部署
-      displayName: dsc, state configuration
-      href: automation-dsc-cd-chocolatey.md
-    - name: 将状态配置报告数据转发到 Azure Monitor 日志
-      displayName: DSC
-      href: automation-dsc-diagnostics.md
-  - name: 管理共享资源
-    items:
-    - name: 计划
-      href: shared-resources/schedules.md
-    - name: 模块
-      href: shared-resources/modules.md
-    - name: 管理 Python 2 程序包
-      href: python-packages.md
-    - name: 凭据
-      href: shared-resources/credentials.md
-    - name: 连接
-      href: automation-connections.md
-    - name: 证书
-      href: shared-resources/certificates.md
-    - name: 变量
-      href: shared-resources/variables.md
-    - name: 更新 Azure PowerShell 模块
-      href: automation-update-azure-modules.md
-    - name: runbook 中的 Az 模块
-      href: az-modules.md
-  - name: 方案
-    items:
-    - name: Runbook 库
-      href: automation-runbook-gallery.md
-    - name: 使用指标警报监视 Runbook
-      href: automation-alert-metric.md
-    - name: 从 Azure 警报启动 Runbook
-      displayName: Monitor, Azure Monitor
-      href: automation-create-alert-triggered-runbook.md
-    - name: 创建 Amazon Web 服务 VM
-      href: automation-scenario-aws-deployment.md
-    - name: 在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
-      href: automation-deploy-template-runbook.md
-    - name: 将 Azure 自动化与事件网格和 Microsoft Teams 相集成
-      href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
-    - name: 将自动化帐户移到另一个订阅
-      href: how-to/move-account.md
-  - name: 监视
-    items:
-    - name: 将 Azure 自动化作业数据转发到 Azure Monitor 日志
-      href: automation-manage-send-joblogs-log-analytics.md
-  - name: 迁移
-    items:
-    - name: 从 Orchestrator 迁移
-      displayName: SCORCH, runbooks
-      href: automation-orchestrator-migration.md
+      items:
+        - name: 状态配置概述
+          href: automation-dsc-overview.md
+          displayName: DSC
+        - name: 入门
+          href: automation-dsc-getting-started.md
+          displayName: DSC
+        - name: 使用状态配置将服务器配置为所需状态并管理偏移
+          href: tutorial-configure-servers-desired-state.md
+          displayName: 'DSC, compliance'
+        - name: 载入用于管理的计算机
+          href: automation-dsc-onboarding.md
+          displayName: 'DSC, state configuration'
+        - name: 编译 DSC 配置
+          href: automation-dsc-compile.md
+          displayName: 'state configuration, composite resources, configurationData'
+        - name: 使用复合资源编写 DSC 配置
+          href: compose-configurationwithcompositeresources.md
+        - name: 使用 Chocolatey 进行连续部署
+          href: automation-dsc-cd-chocolatey.md
+          displayName: 'dsc, state configuration'
+        - name: 将状态配置报告数据转发到 Azure Monitor 日志
+          href: automation-dsc-diagnostics.md
+          displayName: DSC
+    - name: 管理共享资源
+      items:
+        - name: 计划
+          href: shared-resources/schedules.md
+        - name: 模块
+          href: shared-resources/modules.md
+        - name: 管理 Python 2 程序包
+          href: python-packages.md
+        - name: 凭据
+          href: shared-resources/credentials.md
+        - name: 连接
+          href: automation-connections.md
+        - name: 证书
+          href: shared-resources/certificates.md
+        - name: 变量
+          href: shared-resources/variables.md
+        - name: 更新 Azure PowerShell 模块
+          href: automation-update-azure-modules.md
+        - name: runbook 中的 Az 模块
+          href: az-modules.md
+    - name: 方案
+      items:
+        - name: Runbook 库
+          href: automation-runbook-gallery.md
+        - name: 使用指标警报监视 Runbook
+          href: automation-alert-metric.md
+        - name: 从 Azure 警报启动 Runbook
+          href: automation-create-alert-triggered-runbook.md
+          displayName: 'Monitor, Azure Monitor'
+        - name: 创建 Amazon Web 服务 VM
+          href: automation-scenario-aws-deployment.md
+        - name: 在 Azure 自动化 PowerShell Runbook 中部署 Azure 资源管理器模板
+          href: automation-deploy-template-runbook.md
+        - name: 将 Azure 自动化与事件网格和 Microsoft Teams 相集成
+          href: ../event-grid/ensure-tags-exists-on-new-virtual-machines.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: 将自动化帐户移到另一个订阅
+          href: how-to/move-account.md
+    - name: 监视
+      items:
+        - name: 将 Azure 自动化作业数据转发到 Azure Monitor 日志
+          href: automation-manage-send-joblogs-log-analytics.md
+    - name: 迁移
+      items:
+        - name: 从 Orchestrator 迁移
+          href: automation-orchestrator-migration.md
+          displayName: 'SCORCH, runbooks'
 - name: 故障排除
   items:
-  - name: 登记
-    displayName: troubleshoot
-    href: troubleshoot/onboarding.md
-  - name: Runbook
-    displayName: troubleshoot
-    href: troubleshoot/runbooks.md
-  - name: 状态配置 (DSC)
-    displayName: Desired State Configuration, troubleshoot
-    href: troubleshoot/desired-state-configuration.md
-  - name: 混合 Runbook 辅助角色
-    displayName: troubleshoot, HRW, hybrid worker
-    href: troubleshoot/hybrid-runbook-worker.md
-  - name: 更改跟踪和库存
-    displayName: troubleshoot
-    href: troubleshoot/change-tracking.md
-  - name: 更新管理
-    displayName: troubleshoot
-    href: troubleshoot/update-management.md
-  - name: 启动/停止 VM
-    displayName: start,stop
-    href: troubleshoot/start-stop-vm.md
-  - name: 共享资源
-    displayName: module, import
-    href: troubleshoot/shared-resources.md
-  - name: 排查更新代理问题
-    items:
-    - name: Windows
-      displayName: update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows
-      href: troubleshoot/update-agent-issues.md
-    - name: Linux
-      displayName: update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux
-      href: troubleshoot/update-agent-issues-linux.md
+    - name: 登记
+      href: troubleshoot/onboarding.md
+      displayName: troubleshoot
+    - name: Runbook
+      href: troubleshoot/runbooks.md
+      displayName: troubleshoot
+    - name: 状态配置 (DSC)
+      href: troubleshoot/desired-state-configuration.md
+      displayName: 'Desired State Configuration, troubleshoot'
+    - name: 混合 Runbook 辅助角色
+      href: troubleshoot/hybrid-runbook-worker.md
+      displayName: 'troubleshoot, HRW, hybrid worker'
+    - name: 更改跟踪和库存
+      href: troubleshoot/change-tracking.md
+      displayName: troubleshoot
+    - name: 更新管理
+      href: troubleshoot/update-management.md
+      displayName: troubleshoot
+    - name: 启动/停止 VM
+      href: troubleshoot/start-stop-vm.md
+      displayName: 'start,stop'
+    - name: 共享资源
+      href: troubleshoot/shared-resources.md
+      displayName: 'module, import'
+    - name: 排查更新代理问题
+      items:
+        - name: Windows
+          href: troubleshoot/update-agent-issues.md
+          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, windows'
+        - name: Linux
+          href: troubleshoot/update-agent-issues-linux.md
+          displayName: 'update agent, issue, hybrid runbook worker, hybrid worker, troubleshoot, linux'
 - name: 引用
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/azurerm.automation
-  - name: Azure PowerShell（经典）
-    href: /powershell/module/azure/?view=azuresmps-3.7.0
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.automation
-  - name: REST
-    href: /rest/api/automation
-  - name: REST（经典）
-    href: https://msdn.microsoft.com/library/azure/mt163781
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.automation/allversions
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.automation
+    - name: Azure PowerShell（经典）
+      href: /powershell/module/azure/?view=azuresmps-3.7.0
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.automation
+    - name: REST
+      href: /rest/api/automation
+    - name: REST（经典）
+      href: 'https://msdn.microsoft.com/library/azure/mt163781'
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.automation/allversions
 - name: 资源
   items:
-  - name: 自动化简介视频
-    href: https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=management-tools&query=automation
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/automation/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 发行说明
-    href: https://azure.microsoft.com/updates/?product=automation
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=automation
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-automation
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=automation
-ms.openlocfilehash: adcd48e69f2a51df9964fb6c2fb0800d7509340d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546308"
+    - name: 自动化简介视频
+      href: 'https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=management-tools&query=automation'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/automation/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 发行说明
+      href: 'https://azure.microsoft.com/updates/?product=automation'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=automation'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-automation'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=automation'

@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3399ed71635434bc38d0c989118afb68de9fbd4c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338490"
 documentType: LandingData
 title: Azure Active Directory B2B 文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure Active Directory B2B 文档 - Azure Active Directory | Microsoft Docs
   description: 使用我们的教程、快速入门和操作指南，了解如何使用 B2B 来宾用户访问权限与外部伙伴进行共享和协作。
   services: active-directory
@@ -30,32 +24,32 @@ abstract:
       src: ./media/index/video.png
       width: 246
     title: Azure AD B2B 说明
-    href: https://www.youtube.com/watch?v=AhwrweCBdsc
+    href: 'https://www.youtube.com/watch?v=AhwrweCBdsc'
     width: 246
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何邀请来宾用户并开始使用 B2B 协作。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        alt: 
-        src: ./media/index/i_security-management.png
-      text: 在 Azure 门户中添加来宾用户
-      href: b2b-quickstart-add-guest-users-portal.md
-    - image:
-        alt: 
-        src: ./media/index/i_security-management.png
-      text: 使用 PowerShell 添加来宾用户
-      href: b2b-quickstart-invite-powershell.md
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解有关设置 B2B 协作和保护公司资源的详细信息。
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何邀请来宾用户并开始使用 B2B 协作。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              alt: null
+              src: ./media/index/i_security-management.png
+            text: 在 Azure 门户中添加来宾用户
+            href: b2b-quickstart-add-guest-users-portal.md
+          - image:
+              alt: null
+              src: ./media/index/i_security-management.png
+            text: 使用 PowerShell 添加来宾用户
+            href: b2b-quickstart-invite-powershell.md
+  - title: 分步教程
     items:
-    - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">使用 PowerShell 批量邀请 B2B 来宾用户</a>
-    - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">对 B2B 用户强制执行多重身份验证</a>
+      - type: paragraph
+        text: 了解有关设置 B2B 协作和保护公司资源的详细信息。
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/active-directory/b2b/tutorial-bulk-invite">使用 PowerShell 批量邀请 B2B 来宾用户</a>
+          - html: <a href="/azure/active-directory/b2b/b2b-tutorial-require-mfa">对 B2B 用户强制执行多重身份验证</a>

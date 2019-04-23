@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: 87e1e57a969fc5e65302dcce44231773f7e74b3a
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 33d8e18dcec98710443623c03651aa568aa37009
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548813"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010375"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -121,7 +121,7 @@ y_valid |   Pandas 数据帧或 Numpy 数组 | data_train、label | （可选）
 sample_weight | Pandas 数据帧或 Numpy 数组 |   data_train、label、columns| （可选）每个样本的权重值。 需要为数据点分配不同的权重时使用
 sample_weight_valid | Pandas 数据帧或 Numpy 数组 | data_train、label、columns |    （可选）每个验证样本的权重值。 如果未指定，则在 train 与 validate 之间拆分 sample_weight
 data_train |    Pandas 数据帧 |  X、y、X_valid、y_valid |    用于训练的所有数据（特征+标签）
-label | 字符串  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
+label | string  | X、y、X_valid、y_valid |  data_train 中的哪个列表示标签
 列 | 字符串数组  ||  （可选）用于特征的列的白名单
 cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行交叉验证的索引列表
 
@@ -179,7 +179,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 ## <a name="configure-your-experiment-settings"></a>配置试验设置
 
-可以使用多个选项来配置自动化机器学习试验。 通过实例化 `AutoMLConfig` 对象来设置这些参数。 有关参数的完整列表，请参阅 [AutoMLConfig 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py)。  
+可以使用多个选项来配置自动化机器学习试验。 通过实例化 `AutoMLConfig` 对象来设置这些参数。 有关参数的完整列表，请参阅 [AutoMLConfig 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)。  
 
 示例包括：
 
@@ -210,7 +210,7 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
         n_cross_validations=5)
     ```
 
-三种不同`task`参数值确定算法要应用的列表。  使用 `whitelist` 或 `blacklist` 参数可进一步修改迭代，从而包含或排除可用算法。 可以在中找到的受支持的模式列表[SupportedAlgorithms 类](https://docs.microsoft.com/en-us/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)
+三种不同`task`参数值确定算法要应用的列表。  使用 `whitelist` 或 `blacklist` 参数可进一步修改迭代，从而包含或排除可用算法。 可以在中找到支持的型号的列表[SupportedAlgorithms 类](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.constants.supportedalgorithms?view=azure-ml-py)。
 
 ## <a name="primary-metric"></a>主要指标
 主要指标;如中所示上面的示例将确定该度量值以用于在模型定型过程进行优化。 可以选择的主要指标取决于您选择任务类型。 下面是可用的度量值的列表。
@@ -240,43 +240,6 @@ y = dprep.read_csv(simple_example_data_root + 'y.csv').to_long(dprep.ColumnSelec
 
 ## <a name="ensemble-models"></a>系综模型
 系综学习的项而不是使用单个模型的多个模型，改进了机器学习结果和预测性能。 时使用自动完成机器学习，可以使用的系综模型定型[Caruana 系综选择算法与已排序的系综初始化](http://www.niculescu-mizil.org/papers/shotgun.icml04.revised.rev2.pdf)。 系综迭代将显示为您运行的最后一个迭代。
-
-## <a name="time-series-forecasting"></a>时间序列预测
-对于时间序列预测任务类型必须要定义的其他参数。
-1. time_column_name-这是列的一个必需的参数，用于训练数据包含日期/时间序列中定义的名称。 
-1. max_horizon-这将定义您希望预测出基于定型数据的周期的时间长度。 例如如果必须使用每日的时间粒度的定型数据，则定义延伸的范围缩小天内你想要用于定型模型。
-1. grain_column_names-这将定义包含定型数据中的各个时序数据的列的名称。 例如，如果预测的特定品牌的应用商店的销售额，您将应用商店和品牌的列定义为粒度列。
-
-这些示例，请参阅以下正在使用的设置，提供了 notebook 示例[此处](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-orange-juice-sales/auto-ml-forecasting-orange-juice-sales.ipynb)。
-
-```python
-# Setting Store and Brand as grains for training.
-grain_column_names = ['Store', 'Brand']
-nseries = data.groupby(grain_column_names).ngroups
-
-# View the number of time series data with defined grains
-print('Data contains {0} individual time-series.'.format(nseries))
-```
-
-```python
-time_series_settings = {
-    'time_column_name': time_column_name,
-    'grain_column_names': grain_column_names,
-    'drop_column_names': ['logQuantity'],
-    'max_horizon': n_test_periods
-}
-
-automl_config = AutoMLConfig(task='forecasting',
-                             debug_log='automl_oj_sales_errors.log',
-                             primary_metric='normalized_root_mean_squared_error',
-                             iterations=10,
-                             X=X_train,
-                             y=y_train,
-                             n_cross_validations=5,
-                             path=project_folder,
-                             verbosity=logging.INFO,
-                             **time_series_settings)
-```
 
 ## <a name="run-experiment"></a>运行试验
 

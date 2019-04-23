@@ -9,11 +9,11 @@ ms.date: 12/10/2018
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 91889971e1ab8a9ea8341f6bc57735d973ea0e89
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58114931"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60188304"
 ---
 ## <a name="launch-azure-cloud-shell"></a>启动 Azure Cloud Shell
 

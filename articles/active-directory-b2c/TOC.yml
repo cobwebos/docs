@@ -1,340 +1,333 @@
-items:
 - name: Azure AD B2C 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Azure AD B2C
-    href: active-directory-b2c-overview.md
-    expanded: true
+    - name: 关于 Azure AD B2C
+      expanded: true
+      href: active-directory-b2c-overview.md
 - name: 快速入门
-  items:
-  - name: 设置登录 - ASP.NET
-    href: active-directory-b2c-quickstarts-web-app.md
-  - name: 设置登录 - 桌面
-    href: active-directory-b2c-quickstarts-desktop-app.md
-  - name: 设置登录 - 单页
-    href: active-directory-b2c-quickstarts-spa.md
   expanded: true
+  items:
+    - name: 设置登录 - ASP.NET
+      href: active-directory-b2c-quickstarts-web-app.md
+    - name: 设置登录 - 桌面
+      href: active-directory-b2c-quickstarts-desktop-app.md
+    - name: 设置登录 - 单页
+      href: active-directory-b2c-quickstarts-spa.md
 - name: 教程
   items:
-  - name: 1 - 创建 B2C 租户
-    href: tutorial-create-tenant.md
-  - name: 2 - 注册应用程序
-    href: tutorial-register-applications.md
-  - name: 3 - 创建用户流
-    href: tutorial-create-user-flows.md
-  - name: 添加标识提供程序
-    href: tutorial-add-identity-providers.md
-  - name: 自定义 UI
-    href: tutorial-customize-ui.md
-  - name: 对帐户进行身份验证
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-tutorials-web-app.md
-    - name: 桌面型
-      href: active-directory-b2c-tutorials-desktop-app.md
-    - name: 单页
-      href: active-directory-b2c-tutorials-spa.md
-  - name: 授予 API 访问权限
-    items:
-    - name: ASP.NET
-      href: active-directory-b2c-tutorials-web-api.md
-    - name: 桌面型
-      href: active-directory-b2c-tutorials-desktop-app-webapi.md
-    - name: 单页
-      href: active-directory-b2c-tutorials-spa-webapi.md
+    - name: 1 - 创建 B2C 租户
+      href: tutorial-create-tenant.md
+    - name: 2 - 注册应用程序
+      href: tutorial-register-applications.md
+    - name: 3 - 创建用户流
+      href: tutorial-create-user-flows.md
+    - name: 添加标识提供程序
+      href: tutorial-add-identity-providers.md
+    - name: 自定义 UI
+      href: tutorial-customize-ui.md
+    - name: 对帐户进行身份验证
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-app.md
+        - name: 桌面型
+          href: active-directory-b2c-tutorials-desktop-app.md
+        - name: 单页
+          href: active-directory-b2c-tutorials-spa.md
+    - name: 授予 API 访问权限
+      items:
+        - name: ASP.NET
+          href: active-directory-b2c-tutorials-web-api.md
+        - name: 桌面型
+          href: active-directory-b2c-tutorials-desktop-app-webapi.md
+        - name: 单页
+          href: active-directory-b2c-tutorials-spa-webapi.md
 - name: 示例
   href: code-samples.md
 - name: 概念
   items:
-  - name: 应用程序类型
-    href: active-directory-b2c-apps.md
-  - name: 身份验证协议
-    href: active-directory-b2c-reference-protocols.md
-  - name: 标识体验框架
-    items:
-    - name: 自定义策略
-      href: active-directory-b2c-overview-custom.md
-    - name: 用户访问权限
-      href: manage-user-access.md
-  - name: OAuth 2.0
-    href: active-directory-b2c-reference-oauth-code.md
-  - name: OpenId Connect
-    href: active-directory-b2c-reference-oidc.md
-  - name: 单页登录
-    href: active-directory-b2c-reference-spa.md
-  - name: 令牌
-    href: active-directory-b2c-reference-tokens.md
-  - name: 用户帐户
-    href: user-overview.md
-  - name: 用户数据
-    href: manage-user-data.md
-  - name: 用户流
-    href: active-directory-b2c-reference-policies.md
-  - name: 在用户流中使用 JavaScript
-    href: user-flow-javascript-overview.md
-  - name: 用户界面自定义
-    href: customize-ui-overview.md
+    - name: 应用程序类型
+      href: active-directory-b2c-apps.md
+    - name: 身份验证协议
+      href: active-directory-b2c-reference-protocols.md
+    - name: 标识体验框架
+      items:
+        - name: 自定义策略
+          href: active-directory-b2c-overview-custom.md
+        - name: 用户访问权限
+          href: manage-user-access.md
+    - name: OAuth 2.0
+      href: active-directory-b2c-reference-oauth-code.md
+    - name: OpenId Connect
+      href: active-directory-b2c-reference-oidc.md
+    - name: 单页登录
+      href: active-directory-b2c-reference-spa.md
+    - name: 令牌
+      href: active-directory-b2c-reference-tokens.md
+    - name: 用户帐户
+      href: user-overview.md
+    - name: 用户数据
+      href: manage-user-data.md
+    - name: 用户流
+      href: active-directory-b2c-reference-policies.md
+    - name: 在用户流中使用 JavaScript
+      href: user-flow-javascript-overview.md
+    - name: 用户界面自定义
+      href: customize-ui-overview.md
 - name: 操作指南
   items:
-  - name: 访问审核日志
-    href: active-directory-b2c-reference-audit-logs.md
-  - name: 添加 Web API 应用程序
-    href: add-web-application.md
-  - name: 添加本机客户端应用程序
-    href: add-native-application.md
-  - name: 配置年龄限制
-    href: basic-age-gating.md
-  - name: 配置会话行为
-    href: session-behavior.md
-  - name: 自定义语言
-    href: active-directory-b2c-reference-language-customization.md
-  - name: 自定义密码
-    href: active-directory-b2c-reference-password-complexity.md
-  - name: 定义自定义属性
-    href: active-directory-b2c-reference-custom-attr.md
-  - name: 禁用电子邮件验证
-    href: active-directory-b2c-reference-disable-ev.md
-  - name: 启用 MFA
-    href: active-directory-b2c-reference-mfa.md
-  - name: 标识体验框架
-    items:
-    - name: 使用 Application Insights 收集日志
-      href: active-directory-b2c-troubleshoot-custom.md
-    - name: 配置 ROPC
-      href: ropc-custom.md
-    - name: 配置用户输入
-      href: active-directory-b2c-configure-signup-self-asserted-custom.md
-    - name: 创建自定义策略
-      href: active-directory-b2c-get-started-custom.md
-    - name: 自定义 UI
-      href: active-directory-b2c-ui-customization-custom.md
-    - name: 动态自定义 UI
-      href: active-directory-b2c-ui-customization-custom-dynamic.md
+    - name: 访问审核日志
+      href: active-directory-b2c-reference-audit-logs.md
+    - name: 添加 Web API 应用程序
+      href: add-web-application.md
+    - name: 添加本机客户端应用程序
+      href: add-native-application.md
+    - name: 配置年龄限制
+      href: basic-age-gating.md
+    - name: 配置会话行为
+      href: session-behavior.md
+    - name: 自定义语言
+      href: active-directory-b2c-reference-language-customization.md
+    - name: 自定义密码
+      href: active-directory-b2c-reference-password-complexity.md
     - name: 定义自定义属性
-      href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
-    - name: 启用“使我保持登录状态”
-      href: active-directory-b2c-reference-kmsi-custom.md
-    - name: 集成 RESTful API
+      href: active-directory-b2c-reference-custom-attr.md
+    - name: 禁用电子邮件验证
+      href: active-directory-b2c-reference-disable-ev.md
+    - name: 启用 MFA
+      href: active-directory-b2c-reference-mfa.md
+    - name: 标识体验框架
       items:
-      - name: 验证用户输入
-        href: active-directory-b2c-rest-api-validation-custom.md
-      - name: 获取其他声明
-        href: active-directory-b2c-rest-api-step-custom.md
-      - name: 添加自己的 RESTful API
-        href: active-directory-b2c-custom-rest-api-netfw.md
-      - name: 使用基本身份验证保护 RESTful API
-        href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
-      - name: 使用证书身份验证保护 RESTful API
-        href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
-    - name: OIDC/OAUTH 提供程序
+        - name: 使用 Application Insights 收集日志
+          href: active-directory-b2c-troubleshoot-custom.md
+        - name: 配置 ROPC
+          href: ropc-custom.md
+        - name: 配置用户输入
+          href: active-directory-b2c-configure-signup-self-asserted-custom.md
+        - name: 创建自定义策略
+          href: active-directory-b2c-get-started-custom.md
+        - name: 自定义 UI
+          href: active-directory-b2c-ui-customization-custom.md
+        - name: 动态自定义 UI
+          href: active-directory-b2c-ui-customization-custom-dynamic.md
+        - name: 定义自定义属性
+          href: active-directory-b2c-create-custom-attributes-profile-edit-custom.md
+        - name: 启用“使我保持登录状态”
+          href: active-directory-b2c-reference-kmsi-custom.md
+        - name: 集成 RESTful API
+          items:
+            - name: 验证用户输入
+              href: active-directory-b2c-rest-api-validation-custom.md
+            - name: 获取其他声明
+              href: active-directory-b2c-rest-api-step-custom.md
+            - name: 添加自己的 RESTful API
+              href: active-directory-b2c-custom-rest-api-netfw.md
+            - name: 使用基本身份验证保护 RESTful API
+              href: active-directory-b2c-custom-rest-api-netfw-secure-basic.md
+            - name: 使用证书身份验证保护 RESTful API
+              href: active-directory-b2c-custom-rest-api-netfw-secure-cert.md
+        - name: OIDC/OAUTH 提供程序
+          items:
+            - name: Amazon
+              href: setup-amazon-custom.md
+            - name: Azure AD（单租户）
+              href: active-directory-b2c-setup-aad-custom.md
+            - name: Azure AD（多租户）
+              href: active-directory-b2c-setup-commonaad-custom.md
+            - name: Google
+              href: active-directory-b2c-custom-setup-goog-idp.md
+            - name: LinkedIn
+              href: active-directory-b2c-custom-setup-li-idp.md
+            - name: Microsoft 帐户
+              href: active-directory-b2c-custom-setup-msa-idp.md
+            - name: Twitter
+              href: active-directory-b2c-custom-setup-twitter-idp.md
+        - name: 页协定
+          href: page-contract.md
+        - name: 密码复杂性
+          href: active-directory-b2c-reference-password-complexity-custom.md
+        - name: 密码更改
+          href: active-directory-b2c-reference-password-change-custom.md
+        - name: SAML 提供程序
+          items:
+            - name: ADFS
+              href: active-directory-b2c-custom-setup-adfs2016-idp.md
+            - name: Salesforce
+              href: active-directory-b2c-setup-sf-app-custom.md
+        - name: 令牌
+          items:
+            - name: 自定义令牌
+              href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
+            - name: 传递访问令牌
+              href: idp-pass-through-custom.md
+        - name: 跟踪用户行为
+          href: active-directory-b2c-custom-guide-eventlogger-appins.md
+        - name: 引用
+          items:
+            - name: 声明解析程序
+              href: claim-resolver-overview.md
+            - name: 标识体验框架架构
+              items:
+                - name: TrustFrameworkPolicy
+                  href: trustframeworkpolicy.md
+                - name: BuildingBlocks
+                  href: buildingblocks.md
+                  items:
+                    - name: ClaimsSchema
+                      href: claimsschema.md
+                    - name: ClaimsTransformations
+                      href: claimstransformations.md
+                      items:
+                        - name: Boolean
+                          href: boolean-transformations.md
+                        - name: 日期
+                          href: date-transformations.md
+                        - name: 常规
+                          href: general-transformations.md
+                        - name: Integer
+                          href: integer-transformations.md
+                        - name: JSON
+                          href: json-transformations.md
+                        - name: 社交帐户
+                          href: social-transformations.md
+                        - name: StringCollection
+                          href: stringcollection-transformations.md
+                        - name: String
+                          href: string-transformations.md
+                    - name: 谓词
+                      href: predicates.md
+                    - name: ContentDefinitions
+                      href: contentdefinitions.md
+                    - name: 本地化
+                      href: localization.md
+                      items:
+                        - name: 本地化字符串 Id
+                          href: localization-string-ids.md
+                - name: ClaimsProviders
+                  href: claimsproviders.md
+                  items:
+                    - name: TechnicalProfiles
+                      href: technicalprofiles.md
+                      items:
+                        - name: 关于技术配置文件
+                          href: technical-profiles-overview.md
+                        - name: Azure Active Directory
+                          href: active-directory-technical-profile.md
+                        - name: 声明转换
+                          href: claims-transformation-technical-profile.md
+                        - name: JWT 令牌颁发者
+                          href: jwt-issuer-technical-profile.md
+                        - name: OAuth1
+                          href: oauth1-technical-profile.md
+                        - name: OAuth2
+                          href: oauth2-technical-profile.md
+                        - name: OpenId Connect
+                          href: openid-connect-technical-profile.md
+                        - name: REST
+                          href: restful-technical-profile.md
+                        - name: SAML
+                          href: saml-technical-profile.md
+                        - name: 自断言
+                          href: self-asserted-technical-profile.md
+                        - name: SSO 会话
+                          href: active-directory-b2c-reference-sso-custom.md
+                        - name: 验证
+                          href: validation-technical-profile.md
+                - name: UserJourneys
+                  href: userjourneys.md
+                - name: RelyingParty
+                  href: relyingparty.md
+            - name: JavaScript 示例
+              href: javascript-samples.md
+            - name: 开发人员注意事项
+              href: active-directory-b2c-developer-notes-custom.md
+            - name: 信任框架定义
+              href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
+    - name: 标识提供者
       items:
-      - name: Amazon
-        href: setup-amazon-custom.md
-      - name: Azure AD（单租户）
-        href: active-directory-b2c-setup-aad-custom.md
-      - name: Azure AD（多租户）
-        href: active-directory-b2c-setup-commonaad-custom.md
-      - name: Google
-        href: active-directory-b2c-custom-setup-goog-idp.md
-      - name: LinkedIn
-        href: active-directory-b2c-custom-setup-li-idp.md
-      - name: Microsoft 帐户
-        href: active-directory-b2c-custom-setup-msa-idp.md
-      - name: Twitter
-        href: active-directory-b2c-custom-setup-twitter-idp.md
-    - name: 页协定
-      href: page-contract.md
-    - name: 密码复杂性
-      href: active-directory-b2c-reference-password-complexity-custom.md
-    - name: 密码更改
-      href: active-directory-b2c-reference-password-change-custom.md
-    - name: SAML 提供程序
+        - name: Amazon
+          href: active-directory-b2c-setup-amzn-app.md
+        - name: Azure AD（单租户）
+          href: active-directory-b2c-setup-oidc-azure-active-directory.md
+        - name: Microsoft 帐户
+          href: active-directory-b2c-setup-msa-app.md
+        - name: Facebook
+          href: active-directory-b2c-setup-fb-app.md
+        - name: GitHub
+          href: active-directory-b2c-setup-github-app.md
+        - name: Google
+          href: active-directory-b2c-setup-goog-app.md
+        - name: LinkedIn
+          href: active-directory-b2c-setup-li-app.md
+        - name: OpenID Connect
+          href: active-directory-b2c-setup-oidc-idp.md
+        - name: Twitter
+          href: active-directory-b2c-setup-twitter-app.md
+    - name: 迁移用户
+      href: active-directory-b2c-user-migration.md
+    - name: 迁移具有社交标识的用户
+      href: active-directory-b2c-social-migration.md
+    - name: 移动应用和桌面应用
       items:
-      - name: ADFS
-        href: active-directory-b2c-custom-setup-adfs2016-idp.md
-      - name: Salesforce
-        href: active-directory-b2c-setup-sf-app-custom.md
+        - name: 使用 App Auth 的 iOS ObjC
+          href: active-directory-b2c-devquickstarts-ios.md
+        - name: 使用 App Auth 的 Android
+          href: active-directory-b2c-devquickstarts-android.md
+    - name: 报告使用情况
+      href: active-directory-b2c-reference-usage-reporting-api.md
+    - name: 资源所有者密码凭据
+      href: configure-ropc.md
+    - name: 设置直接登录
+      href: direct-signin.md
+    - name: 设置自助密码重置
+      href: active-directory-b2c-reference-sspr.md
     - name: 令牌
       items:
-      - name: 自定义令牌
-        href: active-directory-b2c-reference-manage-sso-and-token-configuration.md
-      - name: 传递访问令牌
-        href: idp-pass-through-custom.md
-    - name: 跟踪用户行为
-      href: active-directory-b2c-custom-guide-eventlogger-appins.md
+        - name: 配置令牌
+          href: configure-tokens.md
+        - name: 传递访问令牌
+          href: idp-pass-through-user-flow.md
+        - name: 请求访问令牌
+          href: active-directory-b2c-access-tokens.md
+    - name: 使用 b2clogin.com
+      href: b2clogin.md
+    - name: 使用 Azure AD 图形 API
+      href: active-directory-b2c-devquickstarts-graph-dotnet.md
     - name: 引用
       items:
-      - name: 声明解析程序
-        href: claim-resolver-overview.md
-      - name: 标识体验框架架构
-        items:
-        - name: TrustFrameworkPolicy
-          href: trustframeworkpolicy.md
-        - name: BuildingBlocks
-          href: buildingblocks.md
-          items:
-          - name: ClaimsSchema
-            href: claimsschema.md
-          - name: ClaimsTransformations
-            href: claimstransformations.md
-            items:
-            - name: Boolean
-              href: boolean-transformations.md
-            - name: 日期
-              href: date-transformations.md
-            - name: 常规
-              href: general-transformations.md
-            - name: Integer
-              href: integer-transformations.md
-            - name: JSON
-              href: json-transformations.md
-            - name: 社交帐户
-              href: social-transformations.md
-            - name: StringCollection
-              href: stringcollection-transformations.md
-            - name: String
-              href: string-transformations.md
-          - name: 谓词
-            href: predicates.md
-          - name: ContentDefinitions
-            href: contentdefinitions.md
-          - name: 本地化
-            href: localization.md
-            items:
-            - name: 本地化字符串 Id
-              href: localization-string-ids.md
-        - name: ClaimsProviders
-          href: claimsproviders.md
-          items:
-          - name: TechnicalProfiles
-            href: technicalprofiles.md
-            items:
-            - name: 关于技术配置文件
-              href: technical-profiles-overview.md
-            - name: Azure Active Directory
-              href: active-directory-technical-profile.md
-            - name: 声明转换
-              href: claims-transformation-technical-profile.md
-            - name: JWT 令牌颁发者
-              href: jwt-issuer-technical-profile.md
-            - name: OAuth1
-              href: oauth1-technical-profile.md
-            - name: OAuth2
-              href: oauth2-technical-profile.md
-            - name: OpenId Connect
-              href: openid-connect-technical-profile.md
-            - name: REST
-              href: restful-technical-profile.md
-            - name: SAML
-              href: saml-technical-profile.md
-            - name: 自断言
-              href: self-asserted-technical-profile.md
-            - name: SSO 会话
-              href: active-directory-b2c-reference-sso-custom.md
-            - name: 验证
-              href: validation-technical-profile.md
-        - name: UserJourneys
-          href: userjourneys.md
-        - name: RelyingParty
-          href: relyingparty.md
-      - name: JavaScript 示例
-        href: javascript-samples.md
-      - name: 开发人员注意事项
-        href: active-directory-b2c-developer-notes-custom.md
-      - name: 信任框架定义
-        href: active-directory-b2c-reference-trustframeworks-defined-ief-custom.md
-  - name: 标识提供者
-    items:
-    - name: Amazon
-      href: active-directory-b2c-setup-amzn-app.md
-    - name: Azure AD（单租户）
-      href: active-directory-b2c-setup-oidc-azure-active-directory.md
-    - name: Microsoft 帐户
-      href: active-directory-b2c-setup-msa-app.md
-    - name: Facebook
-      href: active-directory-b2c-setup-fb-app.md
-    - name: GitHub
-      href: active-directory-b2c-setup-github-app.md
-    - name: Google
-      href: active-directory-b2c-setup-goog-app.md
-    - name: LinkedIn
-      href: active-directory-b2c-setup-li-app.md
-    - name: OpenID Connect
-      href: active-directory-b2c-setup-oidc-idp.md
-    - name: Twitter
-      href: active-directory-b2c-setup-twitter-app.md
-  - name: 迁移用户
-    href: active-directory-b2c-user-migration.md
-  - name: 迁移具有社交标识的用户
-    href: active-directory-b2c-social-migration.md
-  - name: 移动应用和桌面应用
-    items:
-    - name: 使用 App Auth 的 iOS ObjC
-      href: active-directory-b2c-devquickstarts-ios.md
-    - name: 使用 App Auth 的 Android
-      href: active-directory-b2c-devquickstarts-android.md
-  - name: 报告使用情况
-    href: active-directory-b2c-reference-usage-reporting-api.md
-  - name: 资源所有者密码凭据
-    href: configure-ropc.md
-  - name: 设置直接登录
-    href: direct-signin.md
-  - name: 设置自助密码重置
-    href: active-directory-b2c-reference-sspr.md
-  - name: 令牌
-    items:
-    - name: 配置令牌
-      href: configure-tokens.md
-    - name: 传递访问令牌
-      href: idp-pass-through-user-flow.md
-    - name: 请求访问令牌
-      href: active-directory-b2c-access-tokens.md
-  - name: 使用 b2clogin.com
-    href: b2clogin.md
-  - name: 使用 Azure AD 图形 API
-    href: active-directory-b2c-devquickstarts-graph-dotnet.md
-  - name: 引用
-    items:
-    - name: 代码示例
-      href: https://azure.microsoft.com/resources/samples/?service=active-directory-b2c
-    - name: Cookie 定义
-      href: cookie-definitions.md
-    - name: 上市区域和数据驻留
-      href: active-directory-b2c-reference-tenant-type.md
-    - name: 启用计费
-      href: active-directory-b2c-how-to-enable-billing.md
-    - name: 威胁管理
-      href: active-directory-b2c-reference-threat-management.md
-    - name: 扩展应用
-      href: active-directory-b2c-reference-extensions-app.md
-    - name: 用户流版本
-      href: user-flow-versions.md
+        - name: 代码示例
+          href: 'https://azure.microsoft.com/resources/samples/?service=active-directory-b2c'
+        - name: Cookie 定义
+          href: cookie-definitions.md
+        - name: 上市区域和数据驻留
+          href: active-directory-b2c-reference-tenant-type.md
+        - name: 启用计费
+          href: active-directory-b2c-how-to-enable-billing.md
+        - name: 威胁管理
+          href: active-directory-b2c-reference-threat-management.md
+        - name: 扩展应用
+          href: active-directory-b2c-reference-extensions-app.md
+        - name: 用户流版本
+          href: user-flow-versions.md
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: 常见问题
-    href: active-directory-b2c-faqs.md
-  - name: 获取帮助
-    href: /azure/active-directory/develop/developer-support-help-options
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/active-directory-b2c/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=active-directory-b2c
-  - name: 解决方案和培训
-    href: solution-articles.md
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework
-  - name: 支持
-    href: active-directory-b2c-support.md
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c
-ms.openlocfilehash: de9ae82220bd464cbee7345b7f2421d02f0fc545
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681125"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: 常见问题
+      href: active-directory-b2c-faqs.md
+    - name: 获取帮助
+      href: /azure/active-directory/develop/developer-support-help-options
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/active-directory-b2c/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=active-directory-b2c'
+    - name: 解决方案和培训
+      href: solution-articles.md
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-ad-b2c+identity-experience-framework'
+    - name: 支持
+      href: active-directory-b2c-support.md
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c'

@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 3fd2f257119595311e9d31ad2068fd12c8cf51ee
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683370"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005842"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -36,7 +36,7 @@ ms.locfileid: "59683370"
 |--|--|
 |Docker 引擎| 需要在[主计算机](#the-host-computer)上安装 Docker 引擎。 Docker 提供用于在 [macOS](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/) 和 [Linux](https://docs.docker.com/engine/installation/#supported-platforms) 上配置 Docker 环境的包。 有关 Docker 和容器的基础知识，请参阅 [Docker 概述](https://docs.docker.com/engine/docker-overview/)。<br><br> 必须将 Docker 配置为允许容器连接 Azure 并向其发送账单数据。 <br><br> 在 Windows 上，还必须将 Docker 配置为支持 Linux 容器。<br><br>|
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
-|`Cognitive Services` 资源 |若要使用容器，必须具有：<br><br>一个[_认知服务_](text-analytics-how-to-access-key.md) Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值都可在 Azure 门户的认知服务概述和密钥页上，并且要求来启动该容器。 您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|`Cognitive Services` 资源 |若要使用容器，必须具有：<br><br>一个[_认知服务_](text-analytics-how-to-access-key.md) Azure 资源以获取对关联的帐单密钥和计费终结点 URI。 这两个值都可在 Azure 门户的认知服务概述和密钥页上，并且要求来启动该容器。 您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。<br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -110,7 +110,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数：
 
-| 占位符 | 值 |
+| 占位符 | Value |
 |-------------|-------|
 |{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 门户上`Cognitive Services`密钥页。  |
 |{BILLING_ENDPOINT_URI} | 计费终结点 URI 值是可在 Azure 上`Cognitive Services`概述页。 <br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|

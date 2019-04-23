@@ -1,62 +1,55 @@
-items:
 - name: Azure 治理文档
   href: index.yml
 - name: 概述
-  items:
-  - name: Azure 管理
-    href: azure-management.md
   expanded: true
+  items:
+    - name: Azure 管理
+      href: azure-management.md
 - name: 组件和服务
-  items:
-  - name: 管理组
-    items:
-    - name: 概述
-      href: management-groups/index.md
-    - name: 创建
-      href: management-groups/create.md
-    - name: 管理
-      href: management-groups/manage.md
-  - name: Resource Graph
-    href: resource-graph/overview.md
-  - name: 策略
-    href: policy/overview.md
-  - name: 蓝图
-    href: blueprints/overview.md
   expanded: true
+  items:
+    - name: 管理组
+      items:
+        - name: 概述
+          href: management-groups/index.md
+        - name: 创建
+          href: management-groups/create.md
+        - name: 管理
+          href: management-groups/manage.md
+    - name: Resource Graph
+      href: resource-graph/overview.md
+    - name: 策略
+      href: policy/overview.md
+    - name: 蓝图
+      href: blueprints/overview.md
 - name: 实现形式
-  items:
-  - name: 企业云的采用
-    items:
-    - name: 什么是云资源调控？
-      href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
-    - name: Azure 中的资源访问调控
-      href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
-    - name: 适用于单个团队的调控设计
-      href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
-    - name: 适用于多个团队的调控设计
-      href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
-  - name: Azure 企业基架
-    items:
-    - name: 出于合规目的监管订阅
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
-    - name: 实施 Azure 企业基架
-      href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
   expanded: true
+  items:
+    - name: 企业云的采用
+      items:
+        - name: 什么是云资源调控？
+          href: /azure/architecture/cloud-adoption/getting-started/what-is-governance?toc=/azure/governance/toc.json
+        - name: Azure 中的资源访问调控
+          href: /azure/architecture/cloud-adoption/getting-started/azure-resource-access?toc=/azure/governance/toc.json
+        - name: 适用于单个团队的调控设计
+          href: /azure/architecture/cloud-adoption/governance/governance-single-team?toc=/azure/governance/toc.json
+        - name: 适用于多个团队的调控设计
+          href: /azure/architecture/cloud-adoption/governance/governance-multiple-teams?toc=/azure/governance/toc.json
+    - name: Azure 企业基架
+      items:
+        - name: 出于合规目的监管订阅
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+        - name: 实施 Azure 企业基架
+          href: /azure/architecture/cloud-adoption/appendix/azure-scaffold-examples?toc=/azure/governance/toc.json
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 用户之声
-    href: https://feedback.azure.com/forums/915958-azure-governance
-  - name: “治理”视频
-    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
-  - name: 治理 YouTube 频道
-    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-ms.openlocfilehash: 1d6a62a682762060898d8599c5cee18929ef86e1
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56673898"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 用户之声
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'
+    - name: “治理”视频
+      href: 'https://www.youtube.com/watch?v=MhGbKjlmuRs'
+    - name: 治理 YouTube 频道
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'

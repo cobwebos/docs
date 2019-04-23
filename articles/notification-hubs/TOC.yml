@@ -1,174 +1,167 @@
-items:
 - name: 通知中心文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于通知中心
-    href: notification-hubs-push-notification-overview.md
+    - name: 关于通知中心
+      href: notification-hubs-push-notification-overview.md
 - name: 快速入门
   items:
-  - name: 创建通知中心 - Azure 门户
-    href: create-notification-hub-portal.md
-  - name: 配置通知中心 - Azure 门户
-    href: configure-notification-hub-portal-pns-settings.md
+    - name: 创建通知中心 - Azure 门户
+      href: create-notification-hub-portal.md
+    - name: 配置通知中心 - Azure 门户
+      href: configure-notification-hub-portal-pns-settings.md
 - name: 教程
   items:
-  - name: Android
-    items:
-    - name: 使用 Firebase Cloud Messaging 推送通知
-      href: notification-hubs-android-push-notification-google-fcm-get-started.md
-    - name: 使用 Google Cloud Messaging 推送通知
-      href: notification-hubs-android-push-notification-google-gcm-get-started.md
-    - name: 向特定设备推送通知
-      href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-    - name: 向特定用户推送通知
-      href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
-    - name: 向 Xamarin Android 应用推送通知
-      href: xamarin-notification-hubs-push-notifications-android-gcm.md
-  - name: 百度
-    items:
-    - name: 使用百度云推送来推送通知
-      href: notification-hubs-baidu-china-android-notifications-get-started.md
-  - name: Chrome
-    items:
-    - name: 向 Chrome 应用推送通知
-      href: notification-hubs-chrome-push-notifications-get-started.md
-  - name: iOS
-    items:
-    - name: 向 iOS 应用推送通知
-      href: notification-hubs-ios-apple-push-notification-apns-get-started.md
-    - name: 向特定设备推送通知
-      href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-    - name: 向特定用户推送通知
-      href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-    - name: 向 Xamarin iOS 应用推送通知
-      href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
-    - name: 向 iOS 设备推送本地化通知
-      href: notification-hubs-ios-xplat-localized-apns-push-notification.md
-  - name: Kindle
-    items:
-    - name: 使用 Amazon Device Messaging 推送通知
-      href: notification-hubs-kindle-amazon-adm-push-notification.md
-  - name: Windows Phone
-    items:
-    - name: 向应用推送通知
-      href: notification-hubs-windows-mobile-push-notifications-mpns.md
-    - name: 向特定设备推送通知
-      href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
-  - name: Windows
-    items:
-    - name: 向通用 Windows 平台应用推送通知
-      href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-    - name: 向特定设备推送通知
-      href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-    - name: 向应用推送本地化通知
-      href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
-    - name: 向特定用户推送通知
-      href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-    - name: 推送基于位置的通知
-      href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
+    - name: Android
+      items:
+        - name: 使用 Firebase Cloud Messaging 推送通知
+          href: notification-hubs-android-push-notification-google-fcm-get-started.md
+        - name: 使用 Google Cloud Messaging 推送通知
+          href: notification-hubs-android-push-notification-google-gcm-get-started.md
+        - name: 向特定设备推送通知
+          href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
+        - name: 向特定用户推送通知
+          href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
+        - name: 向 Xamarin Android 应用推送通知
+          href: xamarin-notification-hubs-push-notifications-android-gcm.md
+    - name: 百度
+      items:
+        - name: 使用百度云推送来推送通知
+          href: notification-hubs-baidu-china-android-notifications-get-started.md
+    - name: Chrome
+      items:
+        - name: 向 Chrome 应用推送通知
+          href: notification-hubs-chrome-push-notifications-get-started.md
+    - name: iOS
+      items:
+        - name: 向 iOS 应用推送通知
+          href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+        - name: 向特定设备推送通知
+          href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
+        - name: 向特定用户推送通知
+          href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
+        - name: 向 Xamarin iOS 应用推送通知
+          href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
+        - name: 向 iOS 设备推送本地化通知
+          href: notification-hubs-ios-xplat-localized-apns-push-notification.md
+    - name: Kindle
+      items:
+        - name: 使用 Amazon Device Messaging 推送通知
+          href: notification-hubs-kindle-amazon-adm-push-notification.md
+    - name: Windows Phone
+      items:
+        - name: 向应用推送通知
+          href: notification-hubs-windows-mobile-push-notifications-mpns.md
+        - name: 向特定设备推送通知
+          href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
+    - name: Windows
+      items:
+        - name: 向通用 Windows 平台应用推送通知
+          href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
+        - name: 向特定设备推送通知
+          href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
+        - name: 向应用推送本地化通知
+          href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
+        - name: 向特定用户推送通知
+          href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
+        - name: 推送基于位置的通知
+          href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: 示例
   items:
-  - name: 代码示例
-    href: samples.md
-  - name: PowerShell
-    href: samples-powershell.md
+    - name: 代码示例
+      href: samples.md
+    - name: PowerShell
+      href: samples-powershell.md
 - name: 概念
   items:
-  - name: 企业推送体系结构指南
-    href: notification-hubs-enterprise-push-notification-architecture.md
-  - name: 设备注册数
-    href: notification-hubs-push-notification-registration-management.md
-    items:
-    - name: 注册标记
-      href: notification-hubs-tags-segment-push-message.md
-    - name: 模板注册
-      href: notification-hubs-templates-cross-platform-push-messages.md
-  - name: 安全模型
-    href: notification-hubs-push-notification-security.md
+    - name: 企业推送体系结构指南
+      href: notification-hubs-enterprise-push-notification-architecture.md
+    - name: 设备注册数
+      href: notification-hubs-push-notification-registration-management.md
+      items:
+        - name: 注册标记
+          href: notification-hubs-tags-segment-push-message.md
+        - name: 模板注册
+          href: notification-hubs-templates-cross-platform-push-messages.md
+    - name: 安全模型
+      href: notification-hubs-push-notification-security.md
 - name: 操作指南
   items:
-  - name: 更改定价层
-    href: change-pricing-tier.md
-  - name: 发送跨平台通知
-    href: notification-hubs-aspnet-cross-platform-notification.md
-  - name: 向设备推送丰富的内容
-    href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
-  - name: 发送预定通知
-    href: notification-hubs-send-push-notifications-scheduled.md
-  - name: 使用 Azure PowerShell 部署和管理通知中心
-    href: notification-hubs-deploy-and-manage-powershell.md
-  - name: 安全地向用户推送通知
-    href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
-  - name: 批量导出和导入注册数据
-    href: export-modify-registrations-bulk.md
-  - name: 使用 SDK 创建通知中心
-    items:
-    - name: 创建通知中心 - .NET
-      href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
-    - name: 创建通知中心 - Node.js
-      href: notification-hubs-nodejs-push-notification-tutorial.md
-    - name: 创建通知中心 - Java
-      href: notification-hubs-java-push-notification-tutorial.md
-    - name: 创建通知中心 - PHP
-      href: notification-hubs-php-push-notification-tutorial.md
-    - name: 创建通知中心 - Python
-      href: notification-hubs-python-push-notification-tutorial.md
-  - name: 配置平台通知服务设置
-    items:
-    - name: 配置 Apple Push Notification 服务设置
-      href: configure-apple-push-notification-service.md
-    - name: 配置 Google Firebase Cloud Messaging 设置
-      href: configure-google-firebase-cloud-messaging.md
-    - name: 配置 Windows 推送通知服务
-      href: configure-windows-push-notification-service.md
-    - name: 配置 Microsoft 推送通知服务
-      href: configure-microsoft-push-notification-service.md
-    - name: 配置 Android Device Messaging
-      href: configure-android-device-messaging.md
-    - name: 配置百度云推送
-      href: configure-baidu-cloud-push.md
-  - name: 使用应用程序后端注册
-    href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
-  - name: 在 Apple 设备中使用基于令牌的身份验证
-    href: notification-hubs-push-notification-http2-token-authentification.md
-  - name: 排查通知丢弃问题
-    href: notification-hubs-push-notification-fixer.md
+    - name: 更改定价层
+      href: change-pricing-tier.md
+    - name: 发送跨平台通知
+      href: notification-hubs-aspnet-cross-platform-notification.md
+    - name: 向设备推送丰富的内容
+      href: notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+    - name: 发送预定通知
+      href: notification-hubs-send-push-notifications-scheduled.md
+    - name: 使用 Azure PowerShell 部署和管理通知中心
+      href: notification-hubs-deploy-and-manage-powershell.md
+    - name: 安全地向用户推送通知
+      href: notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md
+    - name: 批量导出和导入注册数据
+      href: export-modify-registrations-bulk.md
+    - name: 使用 SDK 创建通知中心
+      items:
+        - name: 创建通知中心 - .NET
+          href: /dotnet/api/overview/azure/notification-hubs?view=azure-dotnet
+        - name: 创建通知中心 - Node.js
+          href: notification-hubs-nodejs-push-notification-tutorial.md
+        - name: 创建通知中心 - Java
+          href: notification-hubs-java-push-notification-tutorial.md
+        - name: 创建通知中心 - PHP
+          href: notification-hubs-php-push-notification-tutorial.md
+        - name: 创建通知中心 - Python
+          href: notification-hubs-python-push-notification-tutorial.md
+    - name: 配置平台通知服务设置
+      items:
+        - name: 配置 Apple Push Notification 服务设置
+          href: configure-apple-push-notification-service.md
+        - name: 配置 Google Firebase Cloud Messaging 设置
+          href: configure-google-firebase-cloud-messaging.md
+        - name: 配置 Windows 推送通知服务
+          href: configure-windows-push-notification-service.md
+        - name: 配置 Microsoft 推送通知服务
+          href: configure-microsoft-push-notification-service.md
+        - name: 配置 Android Device Messaging
+          href: configure-android-device-messaging.md
+        - name: 配置百度云推送
+          href: configure-baidu-cloud-push.md
+    - name: 使用应用程序后端注册
+      href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
+    - name: 在 Apple 设备中使用基于令牌的身份验证
+      href: notification-hubs-push-notification-http2-token-authentification.md
+    - name: 排查通知丢弃问题
+      href: notification-hubs-push-notification-fixer.md
 - name: 引用
   items:
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.notificationhubs
-  - name: PowerShell
-    href: /powershell/module/az.notificationhubs
-  - name: REST
-    href: /rest/api/notificationhubs/
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.notificationhubs/allversions
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.notificationhubs
+    - name: PowerShell
+      href: /powershell/module/az.notificationhubs
+    - name: REST
+      href: /rest/api/notificationhubs/
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.notificationhubs/allversions
 - name: 资源
   items:
-  - name: 常见问题解答
-    href: notification-hubs-push-notification-faq.md
-  - name: 从 Google GCM 迁移到 FCM
-    href: notification-hubs-gcm-to-fcm.md
-  - name: SDK
-    href: notification-hubs-sdks.md
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/notification-hubs/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-notificationhub
-  - name: 请求功能
-    href: https://feedback.azure.com/forums/218849-notification-hubs
-  - name: 上市区域
-    href: https://azure.microsoft.com/regions/services/
-  - name: 支持选项
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 1a62b954144db057a19fc39069538f208a1bf035
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521795"
+    - name: 常见问题解答
+      href: notification-hubs-push-notification-faq.md
+    - name: 从 Google GCM 迁移到 FCM
+      href: notification-hubs-gcm-to-fcm.md
+    - name: SDK
+      href: notification-hubs-sdks.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/notification-hubs/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=notificationhubs'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-notificationhub'
+    - name: 请求功能
+      href: 'https://feedback.azure.com/forums/218849-notification-hubs'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支持选项
+      href: 'https://azure.microsoft.com/support/options/'

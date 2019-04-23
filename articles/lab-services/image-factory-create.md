@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
-ms.openlocfilehash: e51c56f54a4e30b5e9094388ed92aa0a62ba0840
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: cf1bb31614c04d6073bc40c510fc43b2f8e4e189
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796304"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60148979"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中创建自定义映像工厂
-本文介绍如何使用示例脚本中可用设置的自定义映像工厂[Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/Scripts/ImageFactory)。
+本文介绍如何使用示例脚本中可用设置的自定义映像工厂[Git 存储库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)。
 
 ## <a name="whats-an-image-factory"></a>映像工厂是什么？
 映像工厂是一种配置即代码解决方案，生成和分发映像自动定期使用所有所需的配置。 映像工厂中的映像是始终保持最新，正在进行维护几乎为零后可以自动完成整个过程。 和，因为所有所需的配置已在映像中，它保存使用基本 OS 创建 VM 后手动配置系统中的时间。
@@ -39,7 +39,7 @@ ms.locfileid: "59796304"
 
 ![该解决方案的高级视图](./media/create-image-factory/high-level-view-of-solution.png)
 
-没有[适用于开发测试实验室的 VSTS 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)，可用于执行这些单独的步骤： 
+没有[适用于开发测试实验室的 VSTS 扩展](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks)，可用于执行这些单独的步骤：
 
 - 创建自定义映像
 - 创建 VM

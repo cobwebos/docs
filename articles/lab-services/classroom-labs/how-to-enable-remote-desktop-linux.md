@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
-ms.openlocfilehash: 28f963ab807cbd679b7efe8b034ab91f2893198e
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 6985bd0bbae858ad258e723ef4d6d6d687b2c86e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659450"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005343"
 ---
 # <a name="enable-and-use-remote-desktop-for-linux-virtual-machines-in-a-lab-in-azure-lab-services"></a>启用和使用 Azure 实验室服务中的实验室中的 Linux 虚拟机的远程桌面
 本文介绍如何执行以下任务：
@@ -35,6 +35,7 @@ ms.locfileid: "58659450"
 > [!IMPORTANT] 
 > 启用**远程桌面连接**仅打开**RDP** Linux 计算机上的端口。 您作为一名教师，连接到 Linux 计算机首次使用 SSH 和安装 RDP 和 GUI 包，以便可以连接到更高版本使用 RDP 的 Linux 计算机。 然后，你**发布**图像，以便学生可以通过中的 RDP 连接到 Linux Vm 的学生。 
 
+## <a name="supported-operating-systems"></a>支持的操作系统
 目前，以下操作系统支持远程桌面连接：
 
 - openSUSE Leap 42.3

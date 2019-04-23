@@ -10,12 +10,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: raynew
-ms.openlocfilehash: 8269cde7c1be5ba5671bafdae850d88c43db27ea
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.openlocfilehash: d3a2ffdedda7f541fb1a3f37a8b40bc7af3dcb57
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497921"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996503"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>在 Azure Stack 上安装 Azure 备份服务器
 
@@ -61,7 +61,7 @@ Azure Stack 工作负荷中使用的所有虚拟机都必须属于同一 Azure �
 每个 Azure Stack 虚拟机都附带临时磁盘存储，该磁盘存储可作为卷 `D:\` 供用户使用。 可将 Azure 备份所需的本地临时区域配置为位于 `D:\` 中，并且可将缓存位置置于 `C:\` 上。 这样，就不需要从附加到 Azure 备份服务器虚拟机的数据磁盘划分出任何存储。
 
 ### <a name="storing-backup-data-on-local-disk-and-in-azure"></a>将备份数据存储在本地磁盘和 Azure 中
-Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘上，以便进行操作恢复。 将磁盘和存储空间附加到虚拟机后，Azure 备份服务器将为你管理存储。 备份数据存储量取决于附加到每个 [Azure Stack 虚拟机](../azure-stack/user/azure-stack-storage-overview.md)的磁盘的数量和大小。 Azure Stack VM 的每个大小都有可以附加到虚拟机的最大磁盘数。 例如，A2 是四个磁盘。 A3 是八个磁盘。 A4 是 16 个磁盘。 同样，磁盘的大小和数量决定了整个备份存储池。
+Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘上，以便进行操作恢复。 将磁盘和存储空间附加到虚拟机后，Azure 备份服务器将为你管理存储。 备份数据存储量取决于附加到每个 [Azure Stack 虚拟机](/azure-stack/user/azure-stack-storage-overview)的磁盘的数量和大小。 Azure Stack VM 的每个大小都有可以附加到虚拟机的最大磁盘数。 例如，A2 是四个磁盘。 A3 是八个磁盘。 A4 是 16 个磁盘。 同样，磁盘的大小和数量决定了整个备份存储池。
 
 > [!IMPORTANT]
 > **不**应在 Azure 备份服务器附加的磁盘上保留操作恢复（备份）数据超过 5 天。
@@ -73,7 +73,7 @@ Azure备份服务器将备份数据存储在附加到虚拟机的 Azure 磁盘�
  
 ### <a name="scaling-deployment"></a>扩展部署
 如果想要扩展部署，可以使用以下选项：
-  - 纵向扩展 - 将 Azure 备份服务器虚拟机的大小从 A 系列增加到 D 系列，并[根据 Azure Stack 虚拟机说明](../azure-stack/user/azure-stack-manage-vm-disks.md)增加本地存储。
+  - 纵向扩展 - 将 Azure 备份服务器虚拟机的大小从 A 系列增加到 D 系列，并[根据 Azure Stack 虚拟机说明](/azure-stack/user/azure-stack-manage-vm-disks)增加本地存储。
   - 卸载数据 - 将旧数据发送到 Azure，并仅保留附加到 Azure 备份服务器的存储上的最新数据。
   - 横向扩展 - 添加更多 Azure 备份服务器来保护工作负荷。
 
@@ -327,7 +327,7 @@ Azure 备份服务器需要连接到 Azure 备份服务才能成功运行。 若
 | 连续 |已过期 |已停止 |已停止 |允许 |允许 |
 | 连续 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 | 连接断开超过 15 天 |活动 |已停止 |已停止 |允许 |允许 |
-| 连接断开超过 15 天 |已过期 |已停止 |已停止 |允许 |允许 |
+| 连接断开超过 15 天 |Expired |已停止 |已停止 |允许 |允许 |
 | 连接断开超过 15 天 |已取消预配 |已停止 |已停止 |已停止且已删除 Azure 恢复点 |已停止 |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>连接断开后进行恢复

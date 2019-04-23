@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: d5e17b3618d179354c9f2a467250b8eb489827ac
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460703"
 documentType: LandingData
 title: Azure 防火墙文档
 metadata:
   title: Azure 防火墙文档 - 教程和 API 参考
-  meta.description: Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.
+  meta.description: 'Learn how to create Azure Firewalls. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: firewall
   author: vhorne
   ms.service: firewall
@@ -19,35 +13,35 @@ metadata:
 abstract:
   description: 了解如何部署 Azure 防火墙（一种基于云的网络安全服务）。 教程、API 参考和其他文档介绍了如何设置应用程序级策略和网络级策略以保护 Azure 虚拟网络资源。
 sections:
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何部署 Azure 防火墙
-  - type: list
-    style: unordered
+  - title: 分步教程
     items:
-    - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">使用 Azure 门户部署和配置 Azure 防火墙</a>
-    - html: <a href="/azure/firewall/tutorial-hybrid-ps">在混合网络中部署</a>
-    - html: <a href="/azure/firewall/tutorial-firewall-dnat">使用 DNAT 筛选入站流量</a>
-    - html: <a href="/azure/firewall/tutorial-diagnostics">监视 Azure 防火墙日志</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 常见任务的脚本示例。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 了解如何部署 Azure 防火墙
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/firewall/tutorial-firewall-deploy-portal">使用 Azure 门户部署和配置 Azure 防火墙</a>
+          - html: <a href="/azure/firewall/tutorial-hybrid-ps">在混合网络中部署</a>
+          - html: <a href="/azure/firewall/tutorial-firewall-dnat">使用 DNAT 筛选入站流量</a>
+          - html: <a href="/azure/firewall/tutorial-diagnostics">监视 Azure 防火墙日志</a>
+  - title: 示例
     items:
-    - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 常见任务的脚本示例。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/firewall/sample-powershell">Azure PowerShell</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/firewall/">计算 REST API 参考</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/powershell/module/az.network/new-azfirewall">Azure PowerShell</a></p><p><a href="/cli/azure/ext/azure-firewall/network/firewall">Azure CLI</a></p>
+          - title: Languages
+            html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
+          - title: REST
+            html: '<p><a href="https://docs.microsoft.com/rest/api/firewall/">计算 REST API 参考</a></p>'
