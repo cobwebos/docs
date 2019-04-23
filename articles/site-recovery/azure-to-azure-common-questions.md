@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 03/29/2019
 ms.topic: conceptual
 ms.author: asgang
-ms.openlocfilehash: 66d57677b216130316c6a3ddd9a6cff993540808
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: 52a5022b49bac990321c3cf8661aa2a04e93b39a
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649877"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149727"
 ---
 # <a name="common-questions-azure-to-azure-replication"></a>常见问题：Azure 到 Azure 的复制
 
@@ -67,7 +67,7 @@ Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队�
 
 否，Site Recovery 不需要建立 Internet 连接。 但它需要访问 Site Recovery URL 和 IP 范围，如[此文](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-about-networking#outbound-connectivity-for-ip-address-ranges)中所述。
 
-### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>是否可以为不同的层复制具有不同资源组的应用程序？ 
+### <a name="can-i-replicate-the-application-having-separate-resource-group-for-separate-tiers"></a>是否可以为不同的层复制具有不同资源组的应用程序？
 是的，你可以复制应用程序并且也在另一个资源组中保留灾难恢复配置。
 例如，如果你有一个应用程序，并且每层的应用、数据库和 Web 位于不同的资源组中，则必须三次单击[复制向导](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-enable-replication#enable-replication)来保护所有层。 ASR 会将这三个层复制到三个不同的资源组中。
 
@@ -89,11 +89,12 @@ Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队�
 ### <a name="what-is-the-frequency-of-crash-consistent-recovery-point-generation"></a>崩溃一致性恢复点生成的频率是多少？
 Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。
 
-### <a name="what-is-an-application-consistent-recovery-point"></a>什么是应用程序一致性恢复点？ 
-应用程序一致性恢复点是从应用程序一致性快照创建的。 应用程序一致性恢复点捕获的数据与崩溃一致性快照相同，此外还会加上内存中的数据，以及所有正在进行的事务。 由于包含额外的内容，应用程序一致性快照涉及的操作最多，且执行时间最长。 我们建议对数据库操作系统以及 SQL Server 等应用程序使用应用程序一致性恢复点。
+### <a name="what-is-an-application-consistent-recovery-point"></a>什么是应用程序一致性恢复点？
+应用程序一致性恢复点是从应用程序一致性快照创建的。 应用程序一致性恢复点捕获的数据与崩溃一致性快照相同，此外还会加上内存中的数据，以及所有正在进行的事务。
+由于包含额外的内容，应用程序一致性快照涉及的操作最多，且执行时间最长。 我们建议对数据库操作系统以及 SQL Server 等应用程序使用应用程序一致性恢复点。
 
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>应用程序一致性恢复点对应用程序性能有何影响？
-由于应用程序一致性恢复点会捕获内存中的以及正在处理的所有数据，因此它会要求框架（例如 Windows 上的 VSS）静止应用程序。 当工作负荷已经非常繁忙时，如果非常频繁地这样做，可能会影响性能。 对于非数据库工作负荷，通常建议不要对应用程序一致性恢复点使用低频率，即使对于数据库工作负荷，采用 1 小时的频率也足够了。 
+由于应用程序一致性恢复点会捕获内存中的以及正在处理的所有数据，因此它会要求框架（例如 Windows 上的 VSS）静止应用程序。 当工作负荷已经非常繁忙时，如果非常频繁地这样做，可能会影响性能。 对于非数据库工作负荷，通常建议不要对应用程序一致性恢复点使用低频率，即使对于数据库工作负荷，采用 1 小时的频率也足够了。
 
 ### <a name="what-is-the-minimum-frequency-of-application-consistent-recovery-point-generation"></a>应用程序一致性恢复点生成的最低频率是多少？
 在 1 小时，site Recovery 可以使用的最小频率创建的应用程序一致的恢复点。
@@ -124,7 +125,7 @@ Site Recovery 每隔 5 分钟创建崩溃一致性恢复点。 用户无法更�
 生成的第一个恢复点包含完整副本。 任何后续恢复点包含增量更改。
 
 ### <a name="does-increasing-the-retention-period-of-recovery-points-increase-the-storage-cost"></a>增大恢复点保留期是否会增加存储成本？
-是的。 如果将保留期从 24 小时增大到 72 小时，则 Site Recovery 将保存额外 48 小时的恢复点。 增加的时间会产生存储费用。 例如，如果单个恢复点包含 10 GB 的增量更改，每 GB 费用为 0.16 美元/月，则每月会产生 1.6 美元 * 48 的额外费用。
+可以。 如果将保留期从 24 小时增大到 72 小时，则 Site Recovery 将保存额外 48 小时的恢复点。 增加的时间会产生存储费用。 例如，如果单个恢复点包含 10 GB 的增量更改，每 GB 费用为 0.16 美元/月，则每月会产生 1.6 美元 * 48 的额外费用。
 
 ## <a name="multi-vm-consistency"></a>多 VM 一致性
 
@@ -169,7 +170,7 @@ Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队�
 “最新(最低 RPO)”选项首先处理已发送到 Site Recovery 服务的所有数据，为每个 VM 创建恢复点，然后将其故障转移到该恢复点。 此选项提供最低的恢复点目标 (RPO)，因为故障转移后创建的 VM 具有触发故障转移时复制到 Site Recovery 的所有数据。
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>**最新（最低 RPO）** 恢复点是否影响故障转移 RTO？
-是的。 Site Recovery 在故障转移之前需要处理所有挂起的数据，因此，此选项的恢复时间目标 (RTO) 比其他选项更高。
+可以。 Site Recovery 在故障转移之前需要处理所有挂起的数据，因此，此选项的恢复时间目标 (RTO) 比其他选项更高。
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>恢复点中的“最新处理”选项指的是什么？
 “最新处理”选项将计划中的所有 VM 故障转移到 Site Recovery 处理的最新恢复点。 若要查看特定 VM 的最新恢复点，请检查 VM 设置中的“最新恢复点”。 此选项提供低的 RTO，因为无需费时处理未经处理的数据。
@@ -207,7 +208,7 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 ## <a name="reprotection-and-failback"></a>重新保护和故障回复
 
 ### <a name="after-a-failover-from-the-primary-region-to-a-disaster-recovery-region-are-vms-in-a-dr-region-protected-automatically"></a>从主要区域故障转移到灾难恢复区域后，灾难恢复区域中的 VM 是否自动受到保护？
-不是。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
+不。 将 Azure VM 从一个区域[故障转移](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-failover-failback)到另一个区域后，VM 将在灾难恢复区域中启动，但处于不受保护状态。 若要将 VM 故障回复到主要区域，需要[重新保护](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect)次要区域中的 VM。
 
 ### <a name="at-the-time-of-reprotection-does-site-recovery-replicate-complete-data-from-the-secondary-region-to-the-primary-region"></a>重新保护时，Site Recovery 是否将完整的数据从次要区域复制到主要区域？
 这取决于具体的情况。 例如，如果源区域 VM 存在，则只会同步源磁盘与目标磁盘之间的更改。 Site Recovery 将通过比较磁盘来计算差异，然后传输数据。 此过程通常需要几个小时。 有关重新保护期间所发生情况的详细信息，请参阅[在主要区域中重新保护已故障转移的 Azure VM]( https://docs.microsoft.com/azure/site-recovery/azure-to-azure-how-to-reprotect#what-happens-during-reprotection)。
@@ -216,7 +217,11 @@ Site Recovery 中的恢复计划可以协调 VM 的故障转移恢复。 它有�
 完成重新保护后，故障回复所需的时间通常类似于从主要区域故障转移到次要区域所需的时间。
 
 ## <a name="capacity"></a>容量
-### <a name="does-site-recovery-work-with-reserved-instance"></a>Site Recovery 的工作与保留的实例？
+
+### <a name="how-is-capacity-assured-in-target-region-for-azure-vms"></a>如何为容量确保在目标区域中的 Azure Vm？
+Azure Site Recovery (ASR) 团队的工作方式与 Azure 的容量管理团队合作规划足够的基础结构容量，以试图确保 Vm 受 asr 保护的灾难恢复将成功部署在灾难恢复 (DR) 区域中，每当启动 ASR 故障转移操作。
+
+### <a name="does-site-recovery-work-with-reserved-instances"></a>Site Recovery 的工作与预订实例？
 是的可以购买[保留实例](https://azure.microsoft.com/pricing/reserved-vm-instances/)在 DR 区域和 ASR 故障转移操作将使用它们。 </br> 需要从客户无需额外配置。
 
 

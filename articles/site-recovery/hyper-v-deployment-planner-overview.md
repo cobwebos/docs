@@ -2,17 +2,17 @@
 title: 关于用于将 Hyper-V VM 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器 | Microsoft Docs
 description: 了解用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器。
 author: mayurigupta13
-manager: garavd
+manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/18/2019
 ms.author: mayg
-ms.openlocfilehash: 43431c401f13117af1f60d3affd284fc125be7eb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e40a6b69b1cc4785b3055eaa31905c9ee88170e2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59360284"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001501"
 ---
 # <a name="about-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>关于用于将 Hyper-V 灾难恢复到 Azure 的 Azure Site Recovery 部署规划器
 
@@ -73,7 +73,7 @@ Azure Site Recovery 部署规划器是一个命令行工具，适用于 Hyper-V 
 | | **VMware 到 Azure** |**Hyper-V 到 Azure**|**Azure 到 Azure**|**Hyper-V 到辅助站点**|**VMware 到辅助站点**
 --|--|--|--|--|--
 支持的方案 |是|是|否|是*|否
-支持的版本 | vCenter 6.5、6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
+支持的版本 | vCenter 6.7、 6.5、 6.0 或 5.5| Windows Server 2016、Windows Server 2012 R2 | NA |Windows Server 2016、Windows Server 2012 R2|NA
 支持的配置|vCenter、ESXi| Hyper-V 群集、Hyper-V 主机|NA|Hyper-V 群集、Hyper-V 主机|NA|
 可以按 Azure Site Recovery 部署规划器的运行实例进行分析的服务器数 |单个（一次只能分析属于一个 vCenter Server 或一个 ESXi 服务器的 VM）|多个（一次可以分析多个主机或主机群集的 VM）| NA |多个（一次可以分析多个主机或主机群集的 VM）| NA
 
@@ -132,7 +132,7 @@ E:\ASR Deployment Planner_v2.3\ASRDeploymentPlanner.exe
   >每个新的 Deployment Planner 都是 .zip 文件的累积更新。 不需将最新文件复制到旧文件夹。 可以创建和使用新文件夹。
 
 ## <a name="version-history"></a>版本历史记录
-最新的 Azure Site Recovery 部署规划器工具版本为 2.3。
+最新的 Azure Site Recovery 部署规划器工具版本为 2.4。
 请参阅[Azure 站点恢复部署规划器版本历史记录](https://social.technet.microsoft.com/wiki/contents/articles/51049.asr-deployment-planner-version-history.aspx)了解每个更新中增加的修补程序页。
 
 

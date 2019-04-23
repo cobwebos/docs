@@ -2,21 +2,21 @@
 title: 如何在 Azure 数据目录中批注数据源
 description: 操作方法文章强调如何在 Azure 数据目录中批注数据资产，包括友好名称、标记、说明和专家。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 39fd84882b42a1890358991b62afc1e393f6daa9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 3a66c8c5963972828723dd74ffe560a0e2240165
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407826"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011124"
 ---
 # <a name="how-to-annotate-data-sources"></a>如何批注数据源
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，“数据目录”旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 数据源在“数据目录”中注册时，该服务将复制数据源的元数据并为其建立索引，但事情并未就此结束。 用户可使用数据目录提供自己的描述性元数据（例如说明和标记）补充从数据源中提取的元数据并让数据源更易于理解。
 
 ## <a name="annotation-and-crowdsourcing"></a>批注和众包
@@ -37,7 +37,7 @@ ms.locfileid: "47407826"
 | 批注 | 说明 |
 | --- | --- |
 | 友好名称 |可在数据资产级别提供友好名称让数据资产更易于理解。 基础对象名称有隐晦的含义、缩写形式或对于用户来说无意义时，友好名称会非常有用。 |
-| Description |可在数据资产和属性/列级别中提供说明。 说明可为任意格式的简短文本批注，说明用户在数据资产及其用法方面的观点。 |
+| 描述 |可在数据资产和属性/列级别中提供说明。 说明可为任意格式的简短文本批注，说明用户在数据资产及其用法方面的观点。 |
 | 标记（用户标记） |可在数据资产和属性/列级别中提供标记。 用户标记是用户定义的标签，用于对数据资产或属性进行分类。 |
 | 标记（术语表标记） |可在数据资产和属性/列级别中提供标记。 术语表标记是集中定义的术语表术语，可用于通过常见业务分类对数据资产或属性进行分类。 有关详细信息，请参阅[如何设置受管标记的业务术语表](data-catalog-how-to-business-glossary.md) |
 | 专家 |可在数据资产级别提供专家。 专家会使用数据方面的专业观点来标识用户或用户组，还可作为发现已注册数据源和具有现有批注未解问题的用户的联系点。 |

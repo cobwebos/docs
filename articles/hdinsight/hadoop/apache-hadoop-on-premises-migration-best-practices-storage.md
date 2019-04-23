@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: ae435c379a55ee2b3246cb3e757b79295c57988e
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338286"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000056"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 
@@ -89,9 +89,9 @@ Azure Data Lake Storage 实现了 HDFS 和 POSIX 样式的访问控制模型。 
 - [使用 Azure 门户创建包含 Data Lake Storage 的 HDInsight 群集](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)
 - [配合使用 Data Lake Storage 和 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-store.md)
 
-### <a name="azure-data-lake-storage-gen2-preview"></a>Azure Data Lake Storage Gen2（预览版）
+### <a name="azure-data-lake-storage-gen2"></a>Azure Data Lake Storage Gen2
 
-Azure Data Lake Storage Gen2 是最新的存储产品/服务，在撰写本文时正处于预览阶段。 它统一了第一代 Azure Data Lake Storage 的核心功能和直接集成到 Azure Blob 存储中的 Hadoop 兼容文件系统。 此增强功能将对象存储的规模和成本优势与通常仅与本地文件系统相关联的可靠性和性能相结合。
+Azure 数据湖存储第 2 代是最新的存储产品/服务。 它统一了第一代 Azure Data Lake Storage 的核心功能和直接集成到 Azure Blob 存储中的 Hadoop 兼容文件系统。 此增强功能将对象存储的规模和成本优势与通常仅与本地文件系统相关联的可靠性和性能相结合。
 
 ADLS Gen 2 基于  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)构建，可使用文件系统和对象存储范例与数据进行交互。  [Azure Data Lake Storage Gen1](../../data-lake-store/index.md) 的功能（如文件系统语义、文件级安全性和规模）可与低成本的分层存储、高可用性/灾难恢复功能以及  [Azure Blob 存储](../../storage/blobs/storage-blobs-introduction.md)中的大量 SDK/工具生态系统结合使用。 在 Data Lake Storage Gen2 中，在添加针对分析工作负载优化的文件系统接口的优点的同时，还保留了对象存储的所有功能。
 
@@ -115,7 +115,7 @@ Data Lake Storage Gen2 的一个基本功能是，在 Blob 存储服务中添加
 
 有关详细信息，请参阅以下文章：
 
-- [Azure Data Lake Storage Gen2 预览版简介](../../storage/data-lake-storage/introduction.md)
+- [Azure Data Lake Storage Gen2 简介](../../storage/data-lake-storage/introduction.md)
 - [Azure Blob FileSystem 驱动程序 (ABFS.md)](../../storage/data-lake-storage/abfs-driver.md)
 - [将 Azure Data Lake Storage Gen2 用于 Azure HDInsight 群集](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
 

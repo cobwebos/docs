@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 01/22/2019
 ms.author: diberry
-ms.openlocfilehash: 3541376331725fddcd58d94625f5d761ef159c97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 95ba3c905541d2168dcbbc1bb2c1bc1d05468cb5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526483"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006414"
 ---
 # <a name="deploy-the-language-detection-container-to-azure-kubernetes-service"></a>将语言检测容器部署到 Azure Kubernetes 服务
 
@@ -325,7 +325,7 @@ ms.locfileid: "59526483"
     |第 78 行<br> `image` 属性|容器注册表中语言映像的映像位置<br>`<container-registry-name>.azurecr.io/language:1.1.006770001-amd64-preview`|
     |第 95 行<br> `name` 属性|映像的容器注册表机密，在上一节中称为 `<client-secret>`。|
     |第 91 行<br> `apiKey` 属性|文本分析资源密钥|
-    |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+    |第 92 行<br> `billing` 属性|文本分析资源的账单终结点。<br>`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
     由于 apiKey 和账单终结点已设置为 Kubernetes 业务流程定义的一部分，因此网站容器无需了解这些内容或将其作为请求的一部分传递。 网站容器按其业务流程协调程序名称 `language` 引用语言检测容器。 
 

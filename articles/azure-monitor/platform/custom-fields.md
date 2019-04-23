@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
-ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789716"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002861"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中的 Log Analytics 工作区中创建自定义字段
 
@@ -81,7 +81,7 @@ ms.locfileid: "59789716"
 有两种方法可以删除自定义字段。  第一种方法是在查看上述完整列表时，对每个字段使用“删除”选项。  另一种方法是检索记录，并单击字段左侧的按钮。  菜单中将有一个选项可用于删除自定义字段。
 
 ## <a name="sample-walkthrough"></a>示例演练
-以下部分演示创建自定义字段的完整示例。  此示例会提取指示服务更改状态的 Windows 事件中的服务名称。  这是因为在 Windows 计算机上的系统号中创建的服务控制管理器中的事件。  如果想要遵循此示例，必须[收集系统日志的信息事件](data-sources-windows-events.md)。
+以下部分演示创建自定义字段的完整示例。  此示例会提取指示服务更改状态的 Windows 事件中的服务名称。  这是因为在 Windows 计算机上的系统启动期间创建的服务控制管理器中的事件。  如果想要遵循此示例，必须[收集系统日志的信息事件](data-sources-windows-events.md)。
 
 我们输入以下查询从服务控制管理器中返回事件 ID 为 7036 的所有事件（即指示服务启动或停止的事件）。
 

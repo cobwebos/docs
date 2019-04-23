@@ -12,14 +12,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/14/2019
+ms.date: 03/18/2019
 ms.author: juliako
-ms.openlocfilehash: aeaf8fb5112fe9f6d8f2ca77ed9c1fd244fd9603
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 1347e28fe36ffe9595516252aea102d817a705a7
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877065"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60000039"
 ---
 # <a name="azure-media-services-community"></a>Azure 媒体服务社区  
 
@@ -37,10 +37,13 @@ ms.locfileid: "57877065"
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
 ## <a name="discussion"></a>讨论区
+
 ### <a name="twitter"></a>Twitter
+
 使用 [@MSFTAzureMedia](https://twitter.com/MSFTAzureMedia) twitter 句柄，请与我们联系，或在 Twitter 上关注更新。 可以在 Twitter 上使用 [@AzureSupport](https://twitter.com/azuresupport) Twitter 用户名请求支持。  
 
 ### <a name="online-forums"></a>在线论坛
+
 可以使用以下论坛提问有关当前产品和功能的问题。
 
 目前，MSDN 为媒体服务团队的主社区论坛。
@@ -48,9 +51,11 @@ ms.locfileid: "57877065"
 [![MSDN](./media/media-services-community/msdn.png)](https://social.msdn.microsoft.com/forums/azure/home?forum=MediaServices) 
 
 团队还可以监控使用 Azure 媒体服务标记 Stack Overflow 的问题。
+
 [![StackOverflow](./media/media-services-community/stack-overflow.png)](https://stackoverflow.com/questions/tagged/azure-media-services) 
 
 ## <a name="contact-the-team"></a>与团队联系
+
 Azure 媒体服务主要支持电子邮件是： **amshelp\@microsoft.com**。
 
 下表列出了功能子团队的电子邮件：

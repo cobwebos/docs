@@ -2,21 +2,21 @@
 title: 如何在 Azure 数据目录中记录数据源
 description: 操作指南文章重点说明如何在 Azure 数据目录中记录数据资产。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 053b1701-b848-4ada-b726-6f485caa9961
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: a7379ffea173cdae3b10a751b0d83e06e679e3c5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 9049e0b25db37f296e27476fbb93418d13c4dcc1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406203"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005260"
 ---
 # <a name="document-data-sources"></a>记录数据源
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 换而言之，**Azure 数据目录**旨在帮助人们发现、了解,和使用数据源，并帮助组织从其现有数据中获取更多价值。
 
 数据源向 **Azure 数据目录**注册时，该服务将复制其元数据并为其建立索引，但并不仅仅只是这样。 **Azure 数据目录**还允许用户提供自己的完整文档，以描述数据源的使用情况和常见方案。
@@ -39,8 +39,8 @@ ms.locfileid: "47406203"
 
 文档级别范围可以从描述数据资产的特性和值到容器中表架构的详细说明。 应根据业务需求提供相应的文档级别。 但通常情况下，记录数据资产存在以下几种利弊：
 
-* 只记录容器：所有内容都在同一位置，但可能缺少必要的详细信息让用户做出明智的决策。
-* 只记录表：内容特定于相应对象，但用户有多个用于放置文档的位置。
+* 文档只是一个容器：所有内容都在同一位置，但可能缺少必要的详细信息，让用户做出明智的决策。
+* 只记录表：内容是特定于该对象，但你的用户有多个放置文档的位置。
 * 记录容器和表：最全面的方法，但可能会需要更多的文档维护。
 
 ## <a name="summary"></a>摘要

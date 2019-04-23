@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 0e68958070e9c35e12dd9446b351f880dfea6f69
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: a9629cd14c71a163612c2c4ba3c7b109a52b91ad
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793243"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008352"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用开发测试实验室使用 Azure PowerShell 创建虚拟机
 本文介绍如何使用 Azure PowerShell 在 Azure 开发测试实验室中创建虚拟机。 PowerShell 脚本可用于自动创建的 Azure 开发测试实验室中的实验室中的虚拟机。 
@@ -27,10 +27,10 @@ ms.locfileid: "59793243"
 开始之前：
 
 - [创建实验室](devtest-lab-create-lab.md)如果不想要使用现有实验室来测试这篇文章中的脚本或命令。 
-- [安装 Azure PowerShell](/powershell/azure/azurerm/other-install)或使用已集成到 Azure 门户的 Azure Cloud Shell。 
+- [安装 Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0)或使用已集成到 Azure 门户的 Azure Cloud Shell。 
 
 ## <a name="powershell-script"></a>PowerShell 脚本
-本部分中的示例脚本使用[Invoke-azurermresourceaction](/powershell/module/azurerm.resources/invoke-azurermresourceaction) cmdlet。  此 cmdlet 使用实验室的资源 ID，要执行的操作的名称 (`createEnvironment`)，和必需的参数执行该操作。 参数是包含所有虚拟机描述属性的哈希表中。 
+本部分中的示例脚本使用[Invoke AzResourceAction](/powershell/module/az.resources/invoke-azresourceaction?view=azps-1.7.0) cmdlet。  此 cmdlet 使用实验室的资源 ID，要执行的操作的名称 (`createEnvironment`)，和必需的参数执行该操作。 参数是包含所有虚拟机描述属性的哈希表中。 
 
 ```powershell
 [CmdletBinding()]
@@ -48,11 +48,11 @@ pushd $PSScriptRoot
 
 try {
     if ($SubscriptionId -eq $null) {
-        $SubscriptionId = (Get-AzureRmContext).Subscription.SubscriptionId
+        $SubscriptionId = (Get-AzContext).Subscription.SubscriptionId
     }
 
     $API_VERSION = '2016-05-15'
-    $lab = Get-AzureRmResource -ResourceId "/subscriptions/$SubscriptionId/resourceGroups/$LabResourceGroup/providers/Microsoft.DevTestLab/labs/$LabName"
+    $lab = Get-AzResource -ResourceId "/subscriptions/$SubscriptionId/resourceGroups/$LabResourceGroup/providers/Microsoft.DevTestLab/labs/$LabName"
 
     if ($lab -eq $null) {
        throw "Unable to find lab $LabName resource group $LabResourceGroup in subscription $SubscriptionId."
@@ -61,9 +61,9 @@ try {
     #For this example, we are getting the first allowed subnet in the first virtual network
     #  for the lab.
     #If a specific virtual network is needed use | to find it. 
-    #ie $virtualNetwork = @(Get-AzureRmResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION) | Where-Object Name -EQ "SpecificVNetName"
+    #ie $virtualNetwork = @(Get-AzResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION) | Where-Object Name -EQ "SpecificVNetName"
 
-    $virtualNetwork = @(Get-AzureRmResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION)[0]
+    $virtualNetwork = @(Get-AzResource -ResourceType  'Microsoft.DevTestLab/labs/virtualnetworks' -ResourceName $LabName -ResourceGroupName $lab.ResourceGroupName -ApiVersion $API_VERSION)[0]
 
     $labSubnetName = $virtualNetwork.properties.allowedSubnets[0].labSubnetName
 
@@ -107,7 +107,7 @@ try {
     #The following line is the same as invoking
     # https://azure.github.io/projects/apis/#!/Labs/Labs_CreateEnvironment rest api
 
-    Invoke-AzureRmResourceAction -ResourceId $lab.ResourceId -Action 'createEnvironment' -Parameters $parameters -ApiVersion $API_VERSION -Force -Verbose
+    Invoke-AzResourceAction -ResourceId $lab.ResourceId -Action 'createEnvironment' -Parameters $parameters -ApiVersion $API_VERSION -Force -Verbose
 }
 finally {
    popd

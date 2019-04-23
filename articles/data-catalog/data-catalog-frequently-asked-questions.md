@@ -2,18 +2,18 @@
 title: Azure 数据目录常见问题
 description: 有关 Azure 数据目录的常见问题，包括为数据源发现功能、批注功能和管理功能。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 5c7e209a-458c-4bb4-96bb-7ed178f9528a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f08825c17c1ba61fc09edc1d8f2c226af8d4266f
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.openlocfilehash: 7c5241b9df23bb0334a39f2c684fd1bdff40b4c2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51231458"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998442"
 ---
 # <a name="azure-data-catalog-frequently-asked-questions"></a>Azure 数据目录常见问题
 本文将解答有关 Azure 数据目录服务的常见问题。
@@ -27,10 +27,10 @@ ms.locfileid: "51231458"
 ## <a name="what-are-its-target-audiences"></a>其目标受众是什么？
 数据目录专为技术用户和非技术用户而设计，包括：
 
-* 数据开发人员、BI 和专业分析师（负责生成数据和分析内容，供他人使用）。
-* 数据专员（了解数据的含义、用法和用途）。
-* 数据使用者（需要能够使用所需工具轻松发现、理解和连接数据来完成相应的作业）。
-* 中央 IT（需要让数以百计的数据源可被业务用户发现，需监督数据的使用方式和使用人员）。
+* 数据开发人员、 BI 和专业分析：负责生成数据和分析内容，供他人使用的人。
+* 数据专员：具有有关的数据、 它的含义，以及如何它旨在使用知识的人员。
+* 数据使用者：员工需要能够轻松发现、 理解和连接到使用所选工具完成其作业所需的数据。
+* 中央 IT:谁需要让数以百计的数据源可被业务用户，并需要维护监督数据的使用方式和通过其用户的人员。
 
 ## <a name="what-is-its-availability-by-region"></a>各个区域的可用性如何？
 数据目录服务当前在以下数据中心可用：

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 1a575a172e4ff567cc20442c7a9779e1d52dbbba
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 635b45fe7f0108795c34f51081fa374c604036b2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58099978"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996114"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Azure 数据工厂中数据移动的安全注意事项
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -137,9 +137,9 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 | 源      | 目标                              | 网络配置                    | 集成运行时安装                |
 | ----------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
-| 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 可在本地或虚拟网络中的 Azure 虚拟机上安装自承载集成运行时。 |
-| 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 可在本地或虚拟网络中的 Azure 虚拟机上安装自承载集成运行时。 |
-| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute（公共对等互连）            | 必须在本地安装自承载集成运行时。 |
+| 本地 | 虚拟网络中部署的虚拟机和云服务 | IPSec VPN（点到站点或站点到站点） | 应在虚拟网络中的 Azure 虚拟机上安装自承载的集成运行时。  |
+| 本地 | 虚拟网络中部署的虚拟机和云服务 | ExpressRoute（专用对等互连）           | 应在虚拟网络中的 Azure 虚拟机上安装自承载的集成运行时。  |
+| 本地 | 具有公共终结点的基于 Azure 的服务 | ExpressRoute （Microsoft 对等互连）            | 自承载的集成运行时可安装在本地或 Azure 虚拟机上。 |
 
 下图显示了如何使用自承载集成运行时通过 ExpressRoute 和 IPSec VPN（具有 Azure 虚拟网络）在本地数据库和 Azure 服务之间移动数据：
 
@@ -174,7 +174,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 | 入站端口 | 描述                              |
 | ------------- | ---------------------------------------- |
-| 8050 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
+| 8060 (TCP)    | PowerShell 加密 cmdlet（参阅[在 Azure 数据工厂中加密本地数据存储的凭据](encrypt-credentials-self-hosted-integration-runtime.md)）和凭据管理器应用程序需要使用此端口在自承载集成运行时中安全设置本地数据存储的凭据。 |
 
 ![网关端口要求](media/data-movement-security-considerations/gateway-port-requirements.png) 
 
@@ -193,7 +193,7 @@ Azure 虚拟网络是网络在云中的逻辑表示形式。 可以通过设置 
 
 **是否可在不同的数据工厂之间共享自承载集成运行时？**
 
-我们尚不支持此功能。 我们正致力于解决该问题。
+可以。 [此处](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/)提供了更多详细信息。
 
 **需要满足哪些端口要求才能让自承载集成运行时正常工作？**
 

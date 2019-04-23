@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: wesmc
-ms.openlocfilehash: 0214fbbe1ecc0d0b6b20b740ec898f24cf5b58ec
-ms.sourcegitcommit: e89b9a75e3710559a9d2c705801c306c4e3de16c
-ms.translationtype: MT
+ms.openlocfilehash: 8be2e59898ea5fcca1dbf1710974d0420941973e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59571288"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002130"
 ---
 # <a name="choose-the-right-iot-hub-tier-for-your-solution"></a>选择适用于解决方案的 IoT 中心层
 
@@ -83,7 +83,7 @@ IoT 中心基本层和标准层所支持的功能存在差异，也就是说，�
 | [发送设备事件](https://docs.microsoft.com/rest/api/iothub/device/senddeviceevent) | 是 | 是 |
 | 发送模块事件 | 是 | 是 |
 | [更新文件上传状态](https://docs.microsoft.com/rest/api/iothub/device/updatefileuploadstatus) | 是 | 是 |
-| [批量设备操作](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentoperation) | 是的，IoT Edge 功能除外 | 是 | 
+| [批量设备操作](/rest/api/iot-dps/runbulkenrollmentoperation/runbulkenrollmentgroupoperation) | 是的，IoT Edge 功能除外 | 是 | 
 | [清除命令队列](https://docs.microsoft.com/rest/api/iothub/service/purgecommandqueue) |   | 是 |
 | [获取设备孪生](https://docs.microsoft.com/rest/api/iothub/service/gettwin) |   | 是 |
 | 获取模块孪生 |   | 是 |

@@ -9,18 +9,18 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/14/2018
 ms.author: aschhab
-ms.openlocfilehash: ccf0ddfd42d6617634ce4a230ba88b76552afef3
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: 24611e265788cf046aa0733bc423917aaf305427
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692825"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003014"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>使应用程序免受服务总线中断和灾难影响的最佳实践
 
 任务关键型应用程序必须连续运行，即使是在计划外中断或灾难发生时。 本文介绍可用于保护服务总线应用程序免受潜在的服务中断和灾难影响的技术。
 
-中断定义为 Azure 服务总线暂时不可用。 中断会影响服务总线的一些组件，例如消息存储空间，甚至整个数据中心。 问题解决后，服务总线将恢复可用。 通常情况下，中断不会导致消息或其他数据丢失。 组件故障的一个示例是特定的消息存储空间不可用。 数据中心范围中断的示例有数据中心电源故障或数据中心网络交换机故障。 中断可能会持续几分钟到几天的时间。
+中断定义为 Azure 服务总线暂时不可用。 中断会影响服务总线的一些组件，例如消息存储空间，甚至整个数据中心。 问题解决后，服务总线恢复可用。 通常情况下，中断不会导致消息或其他数据丢失。 组件故障的一个示例是特定的消息存储空间不可用。 数据中心范围中断的示例有数据中心电源故障或数据中心网络交换机故障。 中断可能会持续几分钟到几天的时间。
 
 灾难定义为服务总线缩放单元或数据中心永久丢失。 数据中心可能会也可能不会恢复可用。 通常，灾难将导致消息或其他数据的部分或全部丢失。 灾难的示例包括火灾、洪灾或地震。
 
@@ -36,7 +36,7 @@ ms.locfileid: "55692825"
 服务总线高级 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在同一 Azure 区域内提供故障隔离位置。
 
 > [!NOTE]
-> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)。
+> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#services-support-by-region)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 
@@ -80,7 +80,7 @@ ms.locfileid: "55692825"
 ## <a name="protecting-relay-endpoints-against-datacenter-outages-or-disasters"></a>保护中继终结点免受数据中心中断或灾难的影响
 中继终结点的异地复制使得公开中继终结点的服务在服务总线中断时可用。 若要实现异地复制，该服务必须在不同的命名空间中创建两个中继终结点。 命名空间必须位于不同的数据中心，且两个终结点必须具有不同的名称。 例如，可在 **contosoPrimary.servicebus.windows.net/myPrimaryService** 下访问主要终结点，而在 **contosoSecondary.servicebus.windows.net/mySecondaryService** 下访问其辅助终结点。
 
-该服务随后侦听两个终结点，客户端可通过其中任一终结点调用服务。 客户端应用程序随机选取一个中继作为主要终结点，并向活动终结点发送请求。 如果操作失败并返回错误代码，此故障指示中继终结点不可用。 应用程序将打开通向备份终结点的通道并重新发送请求。 此时，活动终结点与备份终结点将互换角色：客户端应用程序会将旧的活动终结点认定为新的备份终结点，而将旧的备份终结点认定为新的活动终结点。 如果两次发送操作都失败，则两个实体的角色将保持不变并返回错误。
+该服务随后侦听两个终结点，客户端可通过其中任一终结点调用服务。 客户端应用程序随机选取一个中继作为主要终结点，并向活动终结点发送请求。 如果操作失败并返回错误代码，此故障指示中继终结点不可用。 应用程序会打开通向备份终结点的通道并重新发送请求。 此时，活动终结点与备份终结点将互换角色：客户端应用程序会将旧的活动终结点认定为新的备份终结点，而将旧的备份终结点认定为新的活动终结点。 如果两次发送操作都失败，则两个实体的角色将保持不变并返回错误。
 
 ## <a name="next-steps"></a>后续步骤
 若要了解有关灾难恢复的详细信息，请参阅这些文章：

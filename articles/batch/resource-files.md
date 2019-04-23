@@ -8,12 +8,12 @@ ms.service: batch
 ms.topic: article
 ms.date: 03/14/2019
 ms.author: lahugh
-ms.openlocfilehash: f6693de861658c7174614e80906ee83633fcb313
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
-ms.translationtype: MT
+ms.openlocfilehash: 679a1c60e44694bde86cafba21d7f1d2c6fb94d9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58501086"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995619"
 ---
 # <a name="creating-and-using-resource-files"></a>创建和使用资源文件
 
@@ -72,7 +72,7 @@ ResourceFile inputFile = ResourceFile.FromStorageContainerUrl(containerSasUrl);
 
 无需配置和创建的 SAS URL，可以使用 Azure 存储容器的名称以访问 blob 数据。 存储容器中链接到 Batch 帐户，称为自动存储帐户的 Azure 存储帐户使用到的需求。 使用自动存储帐户的存储容器名称，可以绕过配置，创建一个用于访问存储容器的 SAS URL。
 
-在此示例中，我们假定数据要用于创建资源文件已在 Azure 存储帐户链接到 Batch 帐户。 如果还没有自动存储帐户，请参阅中的步骤[创建 Batch 帐户](/create-a-batch-account.md)有关如何创建和将帐户链接的详细信息。
+在此示例中，我们假定数据要用于创建资源文件已在 Azure 存储帐户链接到 Batch 帐户。 如果还没有自动存储帐户，请参阅中的步骤[创建 Batch 帐户](batch-account-create-portal.md)有关如何创建和将帐户链接的详细信息。
 
 通过使用链接的存储帐户，无需创建和配置指向存储容器的 SAS URL。 相反，提供链接的存储帐户中的存储容器的名称。
 

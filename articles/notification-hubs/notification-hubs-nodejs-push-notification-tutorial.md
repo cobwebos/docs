@@ -15,12 +15,12 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
-ms.openlocfilehash: d90f23f52ca4c0cce3d853114acf673aa085d3c5
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: bdeba401e99ad16555b9f6ea00017fc525302983
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889772"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994991"
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>使用 Azure 通知中心和 Node.js 发送推送通知
 
@@ -63,25 +63,24 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 > 可以在官方 [NPM 博客](https://blog.npmjs.org/post/85484771375/how-to-install-npm)中了解有关安装 NPM 的详细信息。
 
 ### <a name="import-the-module"></a>导入模块
-
 使用文本编辑器将以下内容添加到应用程序的 `server.js` 文件的顶部：
 
-    ```javascript
-    var azure = require('azure');
-    ```
+```javascript
+var azure = require('azure-sb');
+```
 
 ### <a name="set-up-an-azure-notification-hub-connection"></a>设置 Azure 通知中心连接
 
 可以通过 `NotificationHubService` 对象使用通知中心。 以下代码为名为 `hubname` 的通知中心创建 `NotificationHubService` 对象。 将它添加到靠近 `server.js` 文件顶部、用于导入 Azure 模块的语句之后的位置：
 
-    ```javascript
-    var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
-    ```
+```javascript
+var notificationHubService = azure.createNotificationHubService('hubname','connectionstring');
+```
 
 通过执行以下步骤从 [Azure 门户] 获取连接 `connectionstring` 值：
 
 1. 在左侧导航窗格中，单击“浏览”。
-2. 选择“通知中心”，并找到要用于示例的中心。 如果在创建新通知中心时需要获得帮助，可以参阅 [Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)。
+2. 选择“通知中心”，并找到要用于示例的中心。 您可以参考[Windows 应用商店入门教程](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)如果您需要创建新的通知中心的帮助。
 3. 选择“设置”。
 4. 单击“访问策略”。 会看到共享连接字符串和完全访问连接字符串。
 
@@ -111,18 +110,18 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 以下代码使用由 `NotificationHubService` 公开的 `GcmService` 实例将推送通知发送到所有已注册的客户端。
 
-    ```javascript
-    var payload = {
-      data: {
-        message: 'Hello!'
-      }
-    };
-    notificationHubService.gcm.send(null, payload, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = {
+  data: {
+    message: 'Hello!'
+  }
+};
+notificationHubService.gcm.send(null, payload, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-ios-applications"></a>如何：向 iOS 应用程序发送推送通知
 
@@ -136,16 +135,16 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 以下代码使用由 `NotificationHubService` 公开的 `ApnsService` 实例将警报消息发送给所有客户端：
 
-    ```javascript
-    var payload={
-        alert: 'Hello!'
-      };
-    notificationHubService.apns.send(null, payload, function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload={
+    alert: 'Hello!'
+  };
+notificationHubService.apns.send(null, payload, function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-windows-phone-applications"></a>如何：向 Windows Phone 应用程序发送推送通知
 
@@ -162,14 +161,14 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 以下示例代码使用由 `NotificationHubService` 公开的 `MpnsService` 实例发送 toast 推送通知：
 
-    ```javascript
-    var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
-    notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
-      if(!error){
-        //notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<?xml version="1.0" encoding="utf-8"?><wp:Notification xmlns:wp="WPNotification"><wp:Toast><wp:Text1>string</wp:Text1><wp:Text2>string</wp:Text2></wp:Toast></wp:Notification>';
+notificationHubService.mpns.send(null, payload, 'toast', 22, function(error){
+  if(!error){
+    //notification sent
+  }
+});
+```
 
 ### <a name="how-to-send-push-notifications-to-universal-windows-platform-uwp-applications"></a>如何：向通用 Windows 平台 (UWP) 应用程序发送推送通知
 
@@ -185,14 +184,14 @@ Azure 通知中心提供用于向移动设备发送推送通知的易于使用�
 
 以下示例代码使用由 `NotificationHubService` 公开的 `WnsService` 实例将 toast 推送通知发送给 UWP 应用：
 
-    ```javascript
-    var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
-    notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
-      if(!error){
-         // notification sent
-      }
-    });
-    ```
+```javascript
+var payload = '<toast><visual><binding template="ToastText01"><text id="1">Hello!</text></binding></visual></toast>';
+notificationHubService.wns.send(null, payload , 'wns/toast', function(error){
+  if(!error){
+      // notification sent
+  }
+});
+```
 
 ## <a name="next-steps"></a>后续步骤
 

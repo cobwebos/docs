@@ -2,18 +2,18 @@
 title: Azure 数据目录开发人员概念
 description: Azure 数据目录概念模型中关键概念的简介，如目录 REST API 中所示。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: bca006ab33379f52281f77fb5a04a24022bac373
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 42e4b545a48bcbd0ad4b7faf077ebdbfe21648b1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314547"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006686"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure 数据目录开发人员概念
 Microsoft **Azure 数据目录** 是一种完全托管的云服务，提供了数据源发现和众包数据源元数据的功能。 开发人员可通过其 REST API 使用此服务。 了解在服务中实现的概念对于开发人员能成功与 **Azure 数据目录**集成非常重要。
@@ -115,13 +115,13 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td>注释类型（嵌套视图名称）<b></b></td><td>附加属性<b></b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr>
 
 <tr><td>说明</td><td></td><td></td><td>此属性包含资产的说明。 系统的每个用户都可添加自己的说明。  只允许该用户编辑描述对象。  （管理员和资产所有者可删除描述对象，但无法编辑它）。 系统会单独维护用户的说明。  因此每个资产上都有一个说明的数组：为每个对资产贡献知识的用户提供的数组和一个包含派生自数据源的信息的数组（可能具有）。</td></tr>
-<tr><td></td><td>description</td><td>字符串</td><td>资产的简短说明（2-3 行）</td></tr>
+<tr><td></td><td>description</td><td>string</td><td>资产的简短说明（2-3 行）</td></tr>
 
 <tr><td>标记</td><td></td><td></td><td>此属性定义资产的标记。 系统的每个用户都可为资产添加多个标记。  只有创建了标记对象的用户可以编辑它们。  （管理员和资产所有者可删除标记对象，但无法编辑它）。 系统会单独维护用户的标记。  这样，每个资产都会有一个标记对象的数组。</td></tr>
-<tr><td></td><td>标记</td><td>字符串</td><td>描述资产的标记。</td></tr>
+<tr><td></td><td>标记</td><td>string</td><td>描述资产的标记。</td></tr>
 
 <tr><td>FriendlyName（“friendlyName”）</td><td></td><td></td><td>此属性包含资产的友好名称。 FriendlyName 是单一批注 - 仅可向一个资产添加一个 FriendlyName。  只有创建 FriendlyName 对象的用户可以编辑它。 （管理员和资产所有者可删除 FriendlyName 对象，但无法编辑它）。 系统会单独维护用户的友好名称。</td></tr>
-<tr><td></td><td>friendlyName</td><td>字符串</td><td>资产的友好名称。</td></tr>
+<tr><td></td><td>friendlyName</td><td>string</td><td>资产的友好名称。</td></tr>
 
 <tr><td>架构</td><td></td><td></td><td>架构描述数据的结构。  它将列出属性（列、属性、字段等）名称、类型以及其他元数据。  此信息全部派生自数据源。  架构是单一批注 - 仅可向一个资产添加一个架构。</td></tr>
 <tr><td></td><td>列</td><td>列[]</td><td>列对象的数组。 它们使用派生自数据源的信息对列进行描述。</td></tr>
@@ -141,14 +141,14 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>预览</td><td>对象[]</td><td>表示某一列的对象的数组。  每个对象都具有映射到列上的属性和行的该列的值。</td></tr>
 
 <tr><td>AccessInstruction（“accessInstructions”）</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>mimeType</td><td>字符串</td><td>内容的 mime 类型。</td></tr>
-<tr><td></td><td>内容</td><td>字符串</td><td>如何获取数据资产访问权限的说明。 内容可以是 URL、电子邮件地址或一组指令。</td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>内容的 mime 类型。</td></tr>
+<tr><td></td><td>内容</td><td>string</td><td>如何获取数据资产访问权限的说明。 内容可以是 URL、电子邮件地址或一组指令。</td></tr>
 
 <tr><td>TableDataProfile（“tableDataProfiles”）</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>numberOfRows</td></td><td>int</td><td>数据集中的行数</td></tr>
 <tr><td></td><td>size</td><td>long</td><td>以字节为单位的数据集大小。  </td></tr>
-<tr><td></td><td>schemaModifiedTime</td><td>字符串</td><td>最后一次修改架构的时间</td></tr>
-<tr><td></td><td>dataModifiedTime</td><td>字符串</td><td>上次修改数据集的时间（已添加，修改或删除数据）</td></tr>
+<tr><td></td><td>schemaModifiedTime</td><td>string</td><td>最后一次修改架构的时间</td></tr>
+<tr><td></td><td>dataModifiedTime</td><td>string</td><td>上次修改数据集的时间（已添加，修改或删除数据）</td></tr>
 
 <tr><td>ColumnsDataProfile（“columnsDataProfiles”）</td><td></td><td></td><td></td></tr>
 <tr><td></td><td>列</td></td><td>ColumnDataProfile[]</td><td>列数据配置文件的数组。</td></tr>
@@ -158,8 +158,8 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <tr><td></td><td>分类</td><td>String</td><td>此列中数据的分类。</td></tr>
 
 <tr><td>文档</td><td></td><td></td><td>一个给定资产仅能具有与其联系的一个文档。</td></tr>
-<tr><td></td><td>mimeType</td><td>字符串</td><td>内容的 mime 类型。</td></tr>
-<tr><td></td><td>内容</td><td>字符串</td><td>文档内容。</td></tr>
+<tr><td></td><td>mimeType</td><td>string</td><td>内容的 mime 类型。</td></tr>
+<tr><td></td><td>内容</td><td>string</td><td>文档内容。</td></tr>
 
 </table>
 
@@ -169,34 +169,34 @@ Azure 数据目录的一个重要方面是它如何在系统中支持元数据�
 <table>
 <tr><td>通用类型<b></b></td><td><b>属性</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr>
 <tr><td>DataSourceInfo</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>sourceType</td><td>字符串</td><td>描述数据源的类型。  例如：SQL Server、 Oracle 数据库等。  </td></tr>
-<tr><td></td><td>objectType</td><td>字符串</td><td>描述数据源中对象的类型。 例如：表、 视图适用于 SQL Server。</td></tr>
+<tr><td></td><td>sourceType</td><td>string</td><td>描述数据源的类型。  例如：SQL Server、 Oracle 数据库等。  </td></tr>
+<tr><td></td><td>objectType</td><td>string</td><td>描述数据源中对象的类型。 例如：表、 视图适用于 SQL Server。</td></tr>
 
 <tr><td>DataSourceLocation</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>协议</td><td>字符串</td><td>必需。 说明用于与数据源通信的协议。 例如：SQl Server 的 “tds”、Oracle 的“oracle”等。请参阅<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">数据源引用规范 - DSL 结构</a>来查看目前支持的协议列表。</td></tr>
+<tr><td></td><td>协议</td><td>string</td><td>必需。 说明用于与数据源通信的协议。 例如：SQl Server 的 “tds”、Oracle 的“oracle”等。请参阅<a href="https://docs.microsoft.com/azure/data-catalog/data-catalog-dsr">数据源引用规范 - DSL 结构</a>来查看目前支持的协议列表。</td></tr>
 <tr><td></td><td>地址</td><td>Dictionary<string, object></td><td>必需。 地址是一组特定于协议的数据，用于识别引用的数据源。 地址数据作用域为特定协议，意味着如果不知道协议，其将无意义。</td></tr>
-<tr><td></td><td>authentication</td><td>字符串</td><td>可选。 用于与数据源通信的身份验证方案。 例如：windows、oauth 等。</td></tr>
+<tr><td></td><td>authentication</td><td>string</td><td>可选。 用于与数据源通信的身份验证方案。 例如：windows、oauth 等。</td></tr>
 <tr><td></td><td>connectionProperties</td><td>Dictionary<string, object></td><td>可选。 有关如何连接到数据源的其他信息。</td></tr>
 
 <tr><td>SecurityPrincipal</td><td></td><td></td><td>后端在发布期间不针对 AAD 对提供的属性执行任何验证。</td></tr>
-<tr><td></td><td>upn</td><td>字符串</td><td>用户的唯一电子邮件地址。 如果不提供 objectId 或 在“lastRegisteredBy”属性上下文中必须进行指定，否则为可选。</td></tr>
+<tr><td></td><td>upn</td><td>string</td><td>用户的唯一电子邮件地址。 如果不提供 objectId 或 在“lastRegisteredBy”属性上下文中必须进行指定，否则为可选。</td></tr>
 <tr><td></td><td>objectId</td><td>Guid</td><td>用户或安全组 AAD 标识。 可选。 如果未提供 upn 则必须进行指定，否则为可选。</td></tr>
-<tr><td></td><td>firstName</td><td>字符串</td><td>用户的名字（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
-<tr><td></td><td>lastName</td><td>字符串</td><td>用户的姓氏（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
+<tr><td></td><td>firstName</td><td>string</td><td>用户的名字（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
+<tr><td></td><td>lastName</td><td>string</td><td>用户的姓氏（用于显示）。 可选。 仅在“lastRegisteredBy”属性的上下文中有效。 为“角色”、“权限”和“专家”提供安全主体。</td></tr>
 
 <tr><td>列</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>列或属性的名称。</td></tr>
-<tr><td></td><td>type</td><td>字符串</td><td>列或属性的数据类型。 允许的类型取决于资产的数据源类型。  仅支持类型的子集。</td></tr>
+<tr><td></td><td>名称</td><td>string</td><td>列或属性的名称。</td></tr>
+<tr><td></td><td>type</td><td>string</td><td>列或属性的数据类型。 允许的类型取决于资产的数据源类型。  仅支持类型的子集。</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>列或属性允许的最大长度。 派生自数据源。 仅适用于某些源类型。</td></tr>
 <tr><td></td><td>精度</td><td>字节</td><td>列或属性的精度。 派生自数据源。 仅适用于某些源类型。</td></tr>
 <tr><td></td><td>isNullable</td><td>Boolean</td><td>是否允许列具有 null 值。 派生自数据源。 仅适用于某些源类型。</td></tr>
-<tr><td></td><td>表达式</td><td>字符串</td><td>如果值为计算的列，此字段将包括表达该值的表达式。 派生自数据源。 仅适用于某些源类型。</td></tr>
+<tr><td></td><td>表达式</td><td>string</td><td>如果值为计算的列，此字段将包括表达该值的表达式。 派生自数据源。 仅适用于某些源类型。</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName </td><td>字符串</td><td>列的名称</td></tr>
-<tr><td></td><td>type </td><td>字符串</td><td>列的类型</td></tr>
-<tr><td></td><td>min </td><td>字符串</td><td>数据集中的最小值</td></tr>
-<tr><td></td><td>max </td><td>字符串</td><td>数据集中的最大值</td></tr>
+<tr><td></td><td>columnName </td><td>string</td><td>列的名称</td></tr>
+<tr><td></td><td>type </td><td>string</td><td>列的类型</td></tr>
+<tr><td></td><td>min </td><td>string</td><td>数据集中的最小值</td></tr>
+<tr><td></td><td>max </td><td>string</td><td>数据集中的最大值</td></tr>
 <tr><td></td><td>平均值 </td><td>double</td><td>数据集中的平均值</td></tr>
 <tr><td></td><td>stdev </td><td>double</td><td>数据集的标准偏差</td></tr>
 <tr><td></td><td>nullCount </td><td>int</td><td>数据集中 null 值的计数</td></tr>
@@ -216,20 +216,20 @@ Azure 数据目录提供了多个内置数据源协议，其列于[数据源引�
 <tr><td>类型<b></b></td><td><b>属性</b></td><td>数据类型<b></b></td><td><b>注释</b></td></tr>
 
 <tr><td>DataSourceProtocol</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>命名空间</td><td>字符串</td><td>协议的命名空间。 命名空间的字符长度必须介于 1 到 255 个字符之间，包括由点 (.) 分隔的一个或多个非空部分。 每个部分的长度必须介于 1 到 255 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
+<tr><td></td><td>命名空间</td><td>string</td><td>协议的命名空间。 命名空间的字符长度必须介于 1 到 255 个字符之间，包括由点 (.) 分隔的一个或多个非空部分。 每个部分的长度必须介于 1 到 255 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
+<tr><td></td><td>名称</td><td>string</td><td>协议的名称。 名称的字符长度必须介于 1 到 255 之间，以字母开始且只能包含字母、数字和短划线 (-) 字符。</td></tr>
 <tr><td></td><td>identityProperties</td><td>DataSourceProtocolIdentityProperty[]</td><td>标识属性列表必须包含至少 1 个且不超过 20 个属性。 例如：“服务器”、“数据库”、“架构”和“对象”为“tds”协议的标识属性。</td></tr>
 <tr><td></td><td>identitySets</td><td>DataSourceProtocolIdentitySet[]</td><td>标识集列表。 定义标识属性集，其表示有效资产标识。 必须包含至少 1 个且不超过 20 个集。 例如：{“server”、“数据库”、“架构”和“对象”}是“tds”协议的标识集，其定义 Sql Server 表资产的标识。</td></tr>
 
 <tr><td>DataSourceProtocolIdentityProperty</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
-<tr><td></td><td>type</td><td>字符串</td><td>属性类型。 支持的值：“bool”、“Boolean”、“字节”、“guid”、“int”、“整数”、“long”、“字符串”、“url”</td></tr>
+<tr><td></td><td>名称</td><td>string</td><td>属性的名称。 名称的长度必须介于 1 到 100 个字符之间，以字母开始且只能包括字母和数字。</td></tr>
+<tr><td></td><td>type</td><td>string</td><td>属性类型。 支持的值：“bool”、“Boolean”、“字节”、“guid”、“int”、“整数”、“long”、“字符串”、“url”</td></tr>
 <tr><td></td><td>ignoreCase</td><td>bool</td><td>指示使用属性的值时是否应忽略大小写。 只能为具有“字符串”类型的属性指定。 默认值为 false。</td></tr>
 <tr><td></td><td>urlPathSegmentsIgnoreCase</td><td>bool[]</td><td>指示是否应忽略 url 路径每个段的大小写。 只能为具有“url”类型的属性指定。 默认值为 [false]。</td></tr>
 
 <tr><td>DataSourceProtocolIdentitySet</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>名称</td><td>字符串</td><td>标识集的名称。</td></tr>
-<tr><td></td><td>属性</td><td>string[]</td><td>包括在此标识集的标识属性列表。 它不能包含重复项。 由标识集引用的每个属性必须在协议的“identityProperties”列表中定义。</td></tr>
+<tr><td></td><td>名称</td><td>string</td><td>标识集的名称。</td></tr>
+<tr><td></td><td>properties</td><td>string[]</td><td>包括在此标识集的标识属性列表。 它不能包含重复项。 由标识集引用的每个属性必须在协议的“identityProperties”列表中定义。</td></tr>
 
 </table>
 

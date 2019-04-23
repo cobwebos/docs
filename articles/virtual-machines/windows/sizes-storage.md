@@ -13,23 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 01/15/2019
+ms.date: 04/17/2019
 ms.author: jonbeck
-ms.openlocfilehash: 517e3b7d6a0ad81e1afb6664a0b9b2f59a0479da
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.openlocfilehash: 6bf073356137588075da3d9dcc220eee36ac59cf
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54350364"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006653"
 ---
 # <a name="storage-optimized-virtual-machine-sizes"></a>存储优化虚拟机大小
 
-
-
 [!INCLUDE [virtual-machines-common-sizes-general](../../../includes/virtual-machines-common-sizes-storage.md)]
 
-
 ## <a name="other-sizes"></a>其他大小
+
 - [常规用途](sizes-general.md)
 - [计算优化](sizes-compute.md)
 - [内存优化](sizes-memory.md)
@@ -38,5 +36,7 @@ ms.locfileid: "54350364"
 - [前几代](sizes-previous-gen.md)
 
 ## <a name="next-steps"></a>后续步骤
+
 了解有关 [Azure 计算单元 (ACU)](acu.md) 如何帮助你跨 Azure SKU 比较计算性能的详细信息。
 
+了解如何[优化 Lsv2 系列虚拟机上的性能](storage-performance.md)。

@@ -2,21 +2,21 @@
 title: 在 Azure 数据目录中保存搜索并固定数据资产
 description: 操作指南文章重点说明 Azure 数据目录中保存数据源和数据资产供以后使用的功能。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 6bd00a81-820d-4b7c-91fa-ab09e575474c
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: f22dd0911a8e86e6a9e370c7e08add935c31e936
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: df3220ddb80ebc329ed6b0024ca4eefd2bdfb321
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409926"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002011"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>在 Azure 数据目录中保存搜索并固定数据资产
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 数据目录提供数据源发现功能。 可快速搜索并筛选目录，找到数据源并了解其用途，更轻松地找到适合手头作业的数据。
 
 但如果需要经常使用相同数据呢？ 如果你和其他用户经常将知识应用到目录中的相同数据源呢？ 在这些情况下，反复发出相同的搜索可能会降低效率。 此时便是已保存搜索和固定数据资产大显身手的时候。

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 manager: craigg
-ms.date: 04/08/2019
-ms.openlocfilehash: 15b7bfc9e1d747fcefdbba03ca254a9604197b5f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: 46c6972e20df69da236c151516d7d889f9db6084
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361820"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002742"
 ---
 # <a name="use-sql-database-advanced-data-security-with-virtual-networks-and-near-100-compatibility"></a>使用具有虚拟网络和近 100% 兼容性的 SQL 数据库高级数据安全性
 
@@ -126,7 +126,7 @@ ms.locfileid: "59361820"
 使用托管实例可以进一步实现与 Azure 云中其他租户的安全隔离。 安全隔离包括：
 
 - 使用 Azure Express Route 或 VPN 网关[实现本机虚拟网络](sql-database-managed-instance-connectivity-architecture.md)并连接到本地环境。
-- 仅通过专用 IP 地址公开 SQL 终结点，以便从专用 Azure 或混合网络建立安全连接。
+- 在默认部署中，只能通过专用 IP 地址，允许从专用 Azure 或混合网络建立安全连接公开 SQL 终结点。
 - 具有专用底层基础结构（计算、存储）的单一租户。
 
 下图概述了应用程序的各种连接选项：
@@ -226,7 +226,7 @@ Azure 数据库迁移服务是一项完全托管的服务，旨在实现从多�
 
 下表显示了可通过 Transact SQL 访问的几个属性。使用这些属性可以检测应用程序是否正在使用托管实例和检索重要属性。
 
-|属性|值|注释|
+|属性|Value|注释|
 |---|---|---|
 |`@@VERSION`|Microsoft SQL Azure (RTM) - 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|此值与 SQL 数据库中的值相同。|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|此值与 SQL 数据库中的值相同。|

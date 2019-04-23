@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8558168b7eb35743c0fd590ded17ef13446533c4
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: MT
+ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617812"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006176"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -24,7 +24,7 @@ ms.locfileid: "59617812"
 若要完成本文中的步骤，需要以下资源：
 
 1. 基于“示例 Devkit”应用程序模板创建的 Azure IoT Central 应用程序。 有关详细信息，请参阅[创建应用程序快速入门](quick-deploy-iot-central.md)。
-1. DevKit 设备。 若要购买 DevKit 设备，请访问 [MXChip IoT DevKit](http://mxchip.com/az3166)。
+1. DevKit 设备。 若要购买 DevKit 设备，请访问 [MXChip IoT DevKit](https://microsoft.github.io/azure-iot-developer-kit/)。
 
 ## <a name="sample-devkits-application"></a>示例 Devkits 应用程序
 
@@ -208,12 +208,12 @@ git clone https://github.com/Azure/iot-central-firmware
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>States 
-| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
+| Name          | 显示名称   | 正常 | 小心 | 危险 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
 
 #### <a name="events"></a>活动 
-| 名称             | 显示名称      | 
+| Name             | 显示名称      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | 按钮 B 已按下  | 
 
@@ -239,13 +239,13 @@ git clone https://github.com/Azure/iot-central-firmware
 | --------------- | ------------ | ---------- | --------- |
 | 设备属性 | 模具号   | dieNumber  | 数字    |
 | 设备属性 | 设备位置   | 位置  | 位置    |
-| 文本            | 制造于     | manufacturedIn   | 不适用       |
+| Text            | 制造于     | manufacturedIn   | 不适用       |
 
 ### <a name="commands"></a>命令
 
 | 显示名称 | 字段名 | 返回类型 | 输入的字段显示名称 | 输入的字段名称 | 输入的字段类型 |
 | ------------ | ---------- | ----------- | ------------------------ | ---------------- | ---------------- |
-| echo         | echo       | text        | 若要显示的值         | displayedValue   | text             |
+| echo         | echo       | Text        | 若要显示的值         | displayedValue   | Text             |
 | 倒计时    | 倒计时  | 数字      | 从计数               | countFrom        | 数字           |
 
 ## <a name="next-steps"></a>后续步骤

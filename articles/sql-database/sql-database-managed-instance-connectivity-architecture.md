@@ -11,13 +11,13 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
-ms.date: 02/26/2019
-ms.openlocfilehash: 82b533f7293e00469a5b92b02e8d58967379a585
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/16/2019
+ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59497060"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006125"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -97,7 +97,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| 名称       |端口                        |协议|源           |目标|操作|
+| Name       |端口                        |协议|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -105,13 +105,13 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| 名称       |端口          |协议|源           |目标|操作|
+| Name       |端口          |协议|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |允许 |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
 
 > [!IMPORTANT]
-> 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 托管实例预配通过 Azure 资源管理器部署将失败，如果为每个端口分别配置入站和输出的规则。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
+> 确保端口 9000、9003、1438、1440、1452 只有一个入站规则，端口 80、443、12000 只有一个出站规则。 托管实例预配通过 Azure 资源管理器部署将失败，如果为每个端口单独配置入站和出站规则。 如果这些端口在单独的规则中，则部署将会失败并出现错误代码 `VnetSubnetConflictWithIntendedPolicy`
 
 \* MI SUBNET 是指子网的 IP 地址范围，采用 10.x.x.x/y 格式。 可以在 Azure 门户上的子网属性中找到此信息。
 
@@ -122,7 +122,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|名称|地址前缀|下一跃点|
+|Name|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

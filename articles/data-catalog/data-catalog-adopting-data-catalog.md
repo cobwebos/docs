@@ -1,17 +1,17 @@
 ---
 title: 采用 Azure 数据目录的方法和过程
 description: 本文介绍组织考虑采用 Azure 数据目录时可用的方法和过程，包括定义愿景、识别关键业务用例，以及选择试运行项目。
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/05/2019
-ms.openlocfilehash: 86b8e4a6d2e976c706acea6eab608504ad31a5b9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 62eb51e48ab688abcf39ba3c8d57aaccf6f47cb6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263258"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60003422"
 ---
 # <a name="approach-and-process-for-adopting-azure-data-catalog"></a>采用 Azure 数据目录的方法和过程
 

@@ -1,6 +1,6 @@
 ---
-title: Webhook/逻辑应用/Azure Functions 的常见警报架构定义
-description: 了解 Webhook/逻辑应用/Azure Functions 的常见警报架构定义
+title: 通用警报架构定义的 Webhook/逻辑应用/Azure 函数/自动化 Runbook
+description: 了解 Webhook/逻辑应用/Azure 函数/自动化 Runbook 的常见警报架构定义
 author: anantr
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: anantr
 ms.component: alerts
-ms.openlocfilehash: 0ca9d63f62de6a0b2385b3fb9651c34379b846d7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e29a1f5d1e258ab66540010dc12f9326b8fd57a2
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59010390"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149404"
 ---
 # <a name="common-alert-schema-definitions"></a>常见警报架构定义
 
-本文介绍[常见警报架构定义](https://aka.ms/commonAlertSchemaDocs)Webhook/逻辑应用/Azure functions。 
+本文介绍[常见警报架构定义](https://aka.ms/commonAlertSchemaDocs)的 Webhook/逻辑应用/Azure 函数/自动化 Runbook。 
 
 ## <a name="overview"></a>概述
 

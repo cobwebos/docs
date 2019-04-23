@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: conceptual
-ms.date: 04/16/2019
+ms.date: 04/19/2019
 ms.author: jingwang
-ms.openlocfilehash: 5e37d9c0c242de1bd95a93f12171a2a4271b064d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 6056df9aa9079887bfb06ca20ad564eb52baff38
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680700"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008692"
 ---
 # <a name="copy-data-from-and-to-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Salesforce 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ ms.locfileid: "59680700"
 - Salesforce 开发人员版、专业版、企业版或不受限制版。
 - 从/向 Salesforce 生产、沙盒和自定义域复制数据。
 
-Salesforce 连接器具有基于 Salesforce REST API [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)有关的数据复制和[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)用于将数据复制到。
+Salesforce 连接器具有基于 Salesforce REST/大容量 API， [v45](https://developer.salesforce.com/docs/atlas.en-us.218.0.api_rest.meta/api_rest/dome_versions.htm)有关的数据复制并[v40](https://developer.salesforce.com/docs/atlas.en-us.208.0.api_asynch.meta/api_asynch/asynch_api_intro.htm)用于将数据复制到。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -318,7 +318,7 @@ Salesforce 链接服务支持以下属性。
 | 自动编号 |String |
 | 复选框 |Boolean |
 | 货币 |Decimal |
-| 日期 |DateTime |
+| date |DateTime |
 | 日期/时间 |DateTime |
 | 电子邮件 |String |
 | ID |String |
@@ -328,7 +328,7 @@ Salesforce 链接服务支持以下属性。
 | 百分比 |Decimal |
 | 电话 |String |
 | 选择列表 |String |
-| 文本 |String |
+| Text |String |
 | 文本区域 |String |
 | 文本区域（长型值） |String |
 | 文本区域（丰富） |String |

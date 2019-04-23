@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 78508c1227c0b278041b86c3fdd698c6ad27c132
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
-ms.translationtype: MT
+ms.openlocfilehash: 1e637f58b392b2de67a5ead9d57a6a87ab705b93
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608173"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007232"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>用于从 StorSimple 5000-7000 系列迁移数据的选项 
 
@@ -43,7 +43,7 @@ StorSimple 5000-7000 系列将在 2019 年 7 月[终止支持](https://support.m
 
 此全新迁移选项可让客户在 Azure 文件中存储其组织的文件共享。 然后可以集中这些文件共享，以使用 Azure 文件同步 (AFS) 进行本地访问。 可在 Windows Server 主机上部署 AFS。 然后，可以通过主机复制或迁移工具执行实际的数据迁移。
 
-有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅[将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](https://aka.ms/StorSimpleMigrationAFS)。
+有关如何将数据迁移到 Azure 文件同步的详细信息，请参阅[将数据从 StorSimple 5000-7000 系列迁移到 Azure 文件同步](storsimple-5000-7000-afs-migration.md)。
 
 ### <a name="third-party-options"></a>第三方选项
 
@@ -102,7 +102,7 @@ A. 根据具体的方案，StorSimple 5000-7000 系列用户可以使用以下�
 
 ### <a name="q-is-migration-to-other-storage-solutions-supported"></a>问： 是否支持迁移到其他存储解决方案？
 
-A. 是的。 支持迁移到使用数据主机复制的其他存储解决方案。
+A. 可以。 支持迁移到使用数据主机复制的其他存储解决方案。
 
 ### <a name="q-is-migration-supported-by-microsoft"></a>问： Microsoft 是否为迁移提供支持？ 
 

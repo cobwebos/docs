@@ -8,14 +8,14 @@ tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
 ms.topic: article
-ms.date: 12/10/2018
+ms.date: 04/19/2019
 ms.author: byvinyal
-ms.openlocfilehash: a32ebb3fc2448b189aa5970446e2ceb29aed51e2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: b09de67cddcec26a1083bb64d13b9bbc47c3d5e5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838776"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998475"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure 订阅和服务限制、配额和约束
 本文列出了一些最常见的 Microsoft Azure 限制，有时也称为配额。 本文当前并不涵盖所有 Azure 服务。 随着时间推移，将扩展和更新，包含更多服务列表。
@@ -23,7 +23,7 @@ ms.locfileid: "57838776"
 若要了解有关 Azure 定价的详细信息，请参阅[Azure 定价概述](https://azure.microsoft.com/pricing/)。 可通过使用评估你的成本[定价计算器](https://azure.microsoft.com/pricing/calculator/)。 您也可以转到特定服务的定价详细信息页等[Windows Vm](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)。 有关帮助管理成本的提示，请参阅[通过 Azure 计费和成本管理来防止意外成本](billing/billing-getting-started.md)。
 
 > [!NOTE]
-> 如果你想要提高限制或配额超出默认限制[打开免费的联机客户支持请求](azure-resource-manager/resource-manager-quota-errors.md)。 限制不能将提高到超过下表中显示的最大限制值。 如果没有最大限制列，该资源不具有可调整的限制。
+> 如果你想要提高限制或配额超出默认限制[打开免费的联机客户支持请求](azure-resource-manager/resource-manager-quota-errors.md)。 限制不能将提高到超过下表中显示的最大限制值。 如果没有最大限制列，则资源没有可调整的限制。
 >
 > [免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)不符合增加限制或配额。 如果有[免费试用版订阅](https://azure.microsoft.com/offers/ms-azr-0044p)，可将其升级到[即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)订阅。 有关详细信息，请参阅[将 Azure 免费试用版订阅升级到即用即付订阅](billing/billing-upgrade-azure-subscription.md)并[免费试用版订阅常见问题解答](https://azure.microsoft.com/free/free-account-faq)。
 >
@@ -36,7 +36,7 @@ ms.locfileid: "57838776"
 > [!NOTE]
 > Azure 资源组中的资源配额是每个区域由你的订阅，不根据订阅可访问的服务管理配额一样。 让我们以 vCPU 配额为例。 若要请求增加配额对 Vcpu 的支持，您必须决定你想要在哪些区域中使用多少 Vcpu。 您然后进行 Azure 资源组 vCPU 配额的特定请求的数量和所需的区域。 如果需要使用在西欧的 30 个 Vcpu 那里运行应用程序，则专门请求在西欧的 30 个 Vcpu。 只有西欧具有 30 个 vCPU 配额，不是任何其他区域-增加 vCPU 配额。
 > <!-- -->
-> 因此，决定在 Azure 资源组配额必须是工作的任何一个区域中的工作负荷。 然后请求你想要部署到其中的每个区域中的数量。 有关如何确定您的当前配额的特定区域中的帮助，请参阅[排查部署问题](resource-manager-common-deployment-errors.md)。
+> 因此，请考虑针对任意区域中的工作负荷来确定所需的 Azure 资源组配额， 然后在需将内容部署到其中的每个区域中请求相应的量。 若要了解如何确定特定区域的当前配额，请参阅[排查部署问题](resource-manager-common-deployment-errors.md)。
 >
 >
 

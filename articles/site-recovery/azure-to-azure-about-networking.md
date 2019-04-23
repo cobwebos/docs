@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sujayt
-ms.openlocfilehash: 42db22d39a7c87363cf97f874c85955a09cbe653
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.openlocfilehash: a6c9c690efe8b75cd1a939de1c68cf4e5bd40d70
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651537"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149308"
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>关于 Azure 到 Azure 复制的网络
 
@@ -48,7 +48,7 @@ ms.locfileid: "58651537"
 
 **URL** | **详细信息**  
 --- | ---
-* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道所有缓存存储帐户的 Vm，则可以加入允许列表的特定的存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *。 blob.core.windows.net
+* .blob.core.windows.net | 必需，以便从 VM 将数据写入到源区域中的缓存存储帐户。 如果您知道所有缓存存储帐户的 Vm，则可以加入允许列表的特定存储帐户 Url (例如： cache1.blob.core.windows.net 和 cache2.blob.core.windows.net) 而不是 *。 blob.core.windows.net
 login.microsoftonline.com | 必需，用于向 Site Recovery 服务 URL 进行授权和身份验证。
 *.hypervrecoverymanager.windowsazure.com | 必需，以便从 VM 进行 Site Recovery 服务通信。 如果您的防火墙代理服务器支持的 Ip，可以使用相应的 Site Recovery IP。
 * .servicebus.windows.net | 必需，以便从 VM 写入 Site Recovery 监视和诊断数据。 如果您的防火墙代理服务器支持的 Ip，可以使用相应 Site Recovery 监视 IP。
@@ -96,13 +96,19 @@ Site Recovery IP 地址范围如下：
    英国南部 2 | 13.87.37.4| 13.87.34.139
    英国北部 | 51.142.209.167 | 13.87.102.68
    韩国中部 | 52.231.28.253 | 52.231.32.85
-   韩国南部 | 52.231.298.185 | 52.231.200.144
+   韩国南部 | 52.231.198.185 | 52.231.200.144
    法国中部 | 52.143.138.106 | 52.143.136.55
    法国南部 | 52.136.139.227 |52.136.136.62
    澳大利亚中部| 20.36.34.70 | 20.36.46.142
    澳大利亚中部 2| 20.36.69.62 | 20.36.74.130
    南非西部 | 102.133.72.51 | 102.133.26.128
    南非北部 | 102.133.160.44 | 102.133.154.128
+   美国政府弗吉尼亚州 | 52.227.178.114 | 23.97.0.197
+   US Gov 爱荷华州 | 13.72.184.23 | 23.97.16.186
+   美国亚利桑那州政府 | 52.244.205.45 | 52.244.48.85
+   美国德克萨斯州政府 | 52.238.119.218 | 52.238.116.60
+   美国 DoD 东部 | 52.181.164.103 | 52.181.162.129
+   美国 DoD 中部 | 52.182.95.237 | 52.182.90.133
 ## <a name="example-nsg-configuration"></a>NSG 配置示例
 
 此示例演示如何为要复制的 VM 配置 NSG 规则。

@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 manager: craigg
-ms.date: 03/12/2019
-ms.openlocfilehash: cf163b2b01b4205a4a3d2123263988998130c42a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.date: 04/19/2019
+ms.openlocfilehash: f382cc547640969f934b94405b635c9e84f10791
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58848385"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009049"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>使用自动故障转移组可以实现多个数据库的透明、协调式故障转移
 
@@ -40,7 +40,7 @@ ms.locfileid: "58848385"
 
 ## <a name="auto-failover-group-terminology-and-capabilities"></a>自动故障转移组的术语和功能
 
-- **故障转移组**
+- **故障转移组 （模糊）**
 
   故障转移组是由一个 SQL 数据库服务器管理或位于一个托管实例中的一组数据库，当主要区域的服务中断导致所有或部分主要数据库不可用时，这组数据库可作为单元故障转移到另一区域。
 
@@ -77,11 +77,11 @@ ms.locfileid: "58848385"
 
   - **读写侦听器的 SQL 数据库服务器 DNS CNAME 记录**
 
-     在 SQL 数据库服务器上，指向当前主要数据库 URL 的故障转移组 DNS CNAME 记录格式为 `failover-group-name.database.windows.net`。
+     在 SQL 数据库服务器上，指向当前主要数据库 URL 的故障转移组 DNS CNAME 记录格式为 `<fog-name>.database.windows.net`。
 
   - **读写侦听器的托管实例 DNS CNAME 记录**
 
-     在托管实例上，指向当前主要节点 URL 的故障转移组 DNS CNAME 记录格式为 `failover-group-name.zone_id.database.windows.net`。
+     在托管实例上，指向当前主要节点 URL 的故障转移组 DNS CNAME 记录格式为 `<fog-name>.zone_id.database.windows.net`。
 
 - **故障转移组只读侦听器**
 
@@ -89,11 +89,11 @@ ms.locfileid: "58848385"
 
   - **只读侦听器的 SQL 数据库服务器 DNS CNAME 记录**
 
-     在 SQL 数据库服务器上，指向辅助数据库 URL 的只读侦听器 DNS CNAME 记录格式为 `failover-group-name.secondary.database.windows.net`。
+     在 SQL 数据库服务器上，指向辅助数据库 URL 的只读侦听器 DNS CNAME 记录格式为 `'.secondary.database.windows.net`。
 
   - **只读侦听器的托管实例 DNS CNAME 记录**
 
-     在托管实例上，指向辅助节点 URL 的只读侦听器 DNS CNAME 记录格式为 `failover-group-name.zone_id.database.windows.net`。
+     在托管实例上，指向辅助节点 URL 的只读侦听器 DNS CNAME 记录格式为 `<fog-name>.zone_id.database.windows.net`。
 
 - **自动故障转移策略**
 
@@ -156,11 +156,11 @@ ms.locfileid: "58848385"
 
 - **使用读写侦听器处理 OLTP 工作负荷**
 
-  执行 OLTP 操作时，请使用 `failover-group-name.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 请注意，故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主数据库。
+  执行 OLTP 操作时，请使用 `<fog-name>.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 请注意，故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主数据库。
 
 - **使用只读侦听器处理只读工作负荷**
 
-  如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `failover-group-name.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用 **ApplicationIntent=ReadOnly** 在连接字符串中指示读取意向。
+  如果你有一个在逻辑上隔离的只读工作负荷，且它允许存在一些过时数据，则可在应用程序中使用辅助数据库。 对于只读的会话，请使用 `<fog-name>.secondary.database.windows.net` 作为服务器 URL，连接将自动定向到辅助节点。 此外，还建议使用 **ApplicationIntent=ReadOnly** 在连接字符串中指示读取意向。
 
 - **可应对性能下降的问题**
 
@@ -206,7 +206,7 @@ ms.locfileid: "58848385"
 
 - **使用读写侦听器处理 OLTP 工作负荷**
 
-  执行 OLTP 操作时，请使用 `failover-group-name.zone_id.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主要节点。 由于辅助实例与主要实例共享 DNS 区域，客户端应用程序可以使用相同的 SAN 证书重新连接到辅助实例。
+  执行 OLTP 操作时，请使用 `<fog-name>.zone_id.database.windows.net` 作为服务器 URL，连接将自动定向到主要节点。 此 URL 在故障转移后不会更改。 故障转移涉及更新 DNS 记录，以便仅在刷新客户端 DNS 缓存后，客户端连接才会重定向到新的主要节点。 由于辅助实例与主要实例共享 DNS 区域，客户端应用程序可以使用相同的 SAN 证书重新连接到辅助实例。
 
 - **直接连接到异地复制的辅助节点以进行只读查询**
 
@@ -214,8 +214,8 @@ ms.locfileid: "58848385"
 
   > [!NOTE]
   > 在某些服务层中，Azure SQL 数据库支持通过[只读副本](sql-database-read-scale-out.md)使用只读副本的容量和连接字符串中的 `ApplicationIntent=ReadOnly` 参数对只读查询工作负荷进行负载均衡。 如果配置了异地复制的辅助节点，则可以使用此功能连接到主要位置或异地复制位置中的只读副本。
-  > - 若要连接到主要位置中的只读副本，请使用 `failover-group-name.zone_id.database.windows.net`。
-  > - 若要连接到辅助位置中的只读副本，请使用`failover-group-name.secondary.zone_id.database.windows.net`。
+  > - 若要连接到主要位置中的只读副本，请使用 `<fog-name>.zone_id.database.windows.net`。
+  > - 若要连接到辅助位置中的只读副本，请使用`<fog-name>.secondary.zone_id.database.windows.net`。
 
 - **可应对性能下降的问题**
 

@@ -2,21 +2,21 @@
 title: 在 Azure 数据目录中注册数据源
 description: 本文重点说明如何在 Azure 数据目录中注册数据源，包括在注册过程中提取的元数据字段。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: bab89906-186f-4d35-9ffd-61b1d903905d
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 413f9340432f39d60ccdb43557616b4123132873
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 57b9a040b875c584b126e2062e4938b37875a31b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47404888"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002980"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>在 Azure 数据目录中注册数据源
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure 数据目录是一个完全托管的云服务，充当企业数据源的注册和发现系统。 换而言之，数据目录可帮助人们发现、了解和使用数据源，并帮助组织从其现有数据中获取更多价值。 通过数据目录使数据源可被发现的第一步是注册该数据源。
 
 ## <a name="register-data-sources"></a>注册数据源

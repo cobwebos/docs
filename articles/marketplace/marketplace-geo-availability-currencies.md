@@ -9,12 +9,12 @@ ms.service: marketplace
 ms.topic: article
 ms.date: 02/28/2019
 ms.author: ellacroi
-ms.openlocfilehash: 29e64a02cd4af3e1679283ffddb4afab065f8747
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 5a07ea4d1d27dcc054d64cb4ce8893a13adc4aad
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609126"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007655"
 ---
 # <a name="geographic-availability-and-currency-support"></a>上市地区和货币支持
 
@@ -42,7 +42,7 @@ ms.locfileid: "59609126"
 | 玻利维亚                             | BO        | USD          |
 | 波斯尼亚和黑塞哥维那              | BA        | USD          |
 | 博茨瓦纳                            | BW        | USD          |
-| 巴西                              | BR        | BRL          |
+| 巴西                              | BR        | BRL\*        |
 | 文莱                              | BN        | USD          |
 | 保加利亚                            | BG        | EUR          |
 | 喀麦隆                            | CM        | USD          |
@@ -164,3 +164,5 @@ ms.locfileid: "59609126"
 | 赞比亚                              | ZM        | USD          |
 | 津巴布韦                            | ZW        | USD          |
 |   |   |   |
+
+\* 对于在巴西的客户，Marketplace 通过云解决方案提供商 (CSP) 使用美元。

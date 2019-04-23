@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ajaycode
-ms.openlocfilehash: 617dbae67c71eac4bfc38de4e63c1ba05516ff61
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
-ms.translationtype: MT
+ms.openlocfilehash: 42fb5d69a1f32d669ad5191e342b3f2f880b8c98
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984044"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006654"
 ---
 # <a name="network-monitoring-solutions"></a>网络监视解决方案 
 
@@ -86,7 +86,7 @@ Azure 提供了许多解决方案来监视网络资产。 Azure 具有相应的�
 
 有关详细信息，请参阅以下文章：
 
-* [配置用于监视服务终结点的网络性能监视器](https://aka.ms/applicationconnectivitymonitorguide)
+* [配置用于监视服务终结点的网络性能监视器](../azure-monitor/insights/network-performance-monitor-service-connectivity.md#configuration)
 * [博客文章](https://aka.ms/svcendptmonitor)
 
 ## <a name="traffic-analytics"></a>流量分析

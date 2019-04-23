@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: a89a7e3abbb94465a2ea5eb61eda3e967c26d1f0
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: fcff4ff141dbac84d0b96c166c36018b0cc09d8e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680820"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997557"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -117,7 +117,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
-是的。 但是，配置 Udr，将在同一 VNET 中的子网之间的流量重定向，需要多加注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
+可以。 但是，配置 Udr，将在同一 VNET 中的子网之间的流量重定向，需要多加注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
 
 ## <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>强制隧道/链接到支持网络虚拟设备？
 
@@ -131,13 +131,13 @@ Azure 防火墙必须具有直接 Internet 连接。 默认情况下，AzureFire
 
 ## <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
-是的。 防火墙、子网、VNet 和公共 IP 地址都必须位于同一资源组中。
+可以。 防火墙、子网、VNet 和公共 IP 地址都必须位于同一资源组中。
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
 不。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](/articles/firewall/rule-processing.md)。
 
-## <a name="how-to-wildcards-work-in-an-application-rule-target-fqdn"></a>与通配符在如何工作的应用程序规则目标 FQDN？
+## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>通配符应用程序规则目标 FQDN 中如何工作？
 
 如果配置 ***。 contoso.com**，它允许*anyvalue*。 contoso.com，但不是 contoso.com （域顶点）。 如果你想要允许域顶点，您必须显式配置它作为目标 FQDN。
 

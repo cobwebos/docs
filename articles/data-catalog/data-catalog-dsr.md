@@ -2,17 +2,17 @@
 title: Azure 数据目录中支持的数据源
 description: 本文列出当前支持的数据源的规范。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: d859fc92c4adbcd224d49601678804445a313ef7
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.openlocfilehash: 8b584e06697f9f4212fe0d1d59c29e4670a87eda
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579387"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008607"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Azure 数据目录中支持的数据源
 

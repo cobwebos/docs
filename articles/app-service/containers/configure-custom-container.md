@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
-ms.openlocfilehash: 7f850cdfe99fce81c9be045b4882dc42bf2aa5f0
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 1e5faa8d356b891d825586414c0a1a1b9fa47090
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551092"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001875"
 ---
 # <a name="configure-a-custom-linux-container-for-azure-app-service"></a>为 Azure 应用服务配置自定义 Linux 容器
 
@@ -121,7 +121,9 @@ WordPress 等的多容器应用程序需要持久性存储区才能正常工作�
 az webapp config appsettings set --resource-group <resource-group-name> --name <app-name> --settings WEBSITES_ENABLE_APP_SERVICE_STORAGE=TRUE
 ```
 
-在你*docker-compose.yml*文件中，映射`volumes`选项设为`${WEBAPP_STORAGE_HOME}`。 `WEBAPP_STORAGE_HOME` 是应用服务中已映射到应用持续性存储的环境变量。 例如：
+在你*docker-compose.yml*文件中，映射`volumes`选项设为`${WEBAPP_STORAGE_HOME}`。 
+
+`WEBAPP_STORAGE_HOME` 是应用服务中已映射到应用持续性存储的环境变量。 例如：
 
 ```yaml
 wordpress:
@@ -130,6 +132,19 @@ wordpress:
   - ${WEBAPP_STORAGE_HOME}/site/wwwroot:/var/www/html
   - ${WEBAPP_STORAGE_HOME}/phpmyadmin:/var/www/phpmyadmin
   - ${WEBAPP_STORAGE_HOME}/LogFiles:/var/log
+```
+
+### <a name="use-custom-storage-in-docker-compose"></a>使用自定义存储在 Docker Compose
+
+Azure 存储 （Azure 文件或 Azure Blob） 可以装载的多容器应用使用自定义 id。若要查看自定义 id 名称，请运行[ `az webapp config storage-account list --name <app_name> --resource-group <resource_group>` ](/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-list)。
+
+在你*docker-compose.yml*文件中，映射`volumes`选项设为`custom-id`。 例如：
+
+```yaml
+wordpress:
+  image: wordpress:latest
+  volumes:
+  - <custom-id>:<path_in_container>
 ```
 
 ### <a name="preview-limitations"></a>预览版限制
@@ -148,7 +163,7 @@ wordpress:
 - command
 - entrypoint
 - 环境
-- 图像
+- image
 - ports
 - restart
 - services
@@ -172,7 +187,7 @@ Kubernetes 支持以下配置选项：
 - args
 - command
 - containers
-- 图像
+- image
 - 名称
 - ports
 - spec

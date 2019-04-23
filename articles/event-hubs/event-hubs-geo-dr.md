@@ -14,12 +14,12 @@ ms.topic: article
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 3a7cc7703a6b33eef4c7a10f927b4747bc1d417c
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
+ms.openlocfilehash: 56077d018c1ae62809d51fc66d7f5aff93fb4c02
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55562175"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002691"
 ---
 # <a name="azure-event-hubs---geo-disaster-recovery"></a>Azure 事件中心 - 异地灾难恢复 
 
@@ -107,7 +107,7 @@ Azure 事件中心的异地灾难恢复功能是一种灾难恢复解决方案�
 事件中心标准 SKU 支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。 
 
 > [!NOTE]
-> Azure 事件中心标准版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)。
+> Azure 事件中心标准版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#services-support-by-region)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 事件中心不支持现有命名空间的迁移。 在命名空间上启用区域冗余之后，不能将其禁用。
 

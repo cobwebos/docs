@@ -1,17 +1,17 @@
 ---
 title: 启用 VMware Vm 复制到 Azure 中使用 Azure Site Recovery 的灾难恢复 |Microsoft Docs
 description: 本文介绍如何使用 Azure Site Recovery 复制到 Azure 的灾难恢复启用 VMware Vm。
-author: mayurigupta13
+author: Rajeswari-Mamilla
 ms.service: site-recovery
-ms.date: 3/6/2019
+ms.date: 4/18/2019
 ms.topic: conceptual
-ms.author: mayg
-ms.openlocfilehash: 472ff7810852bd03ef322cd5eb647c3d61f09b01
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
-ms.translationtype: MT
+ms.author: ramamill
+ms.openlocfilehash: ba55afbd62bbbc2290d1daaebf77becc249c1d8b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58418102"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004731"
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>为 VMware VM 启用到 Azure 的复制
 
@@ -89,7 +89,7 @@ ms.locfileid: "58418102"
     ![计算和网络属性窗口](./media/vmware-azure-enable-replication/vmproperties.png)
 
     * Azure VM 名称：如有必要，请修改名称，以便满足 Azure 要求。
-    * 目标 VM 大小或 VM 类型：默认 VM 大小是选择基于源 VM 大小。 可以选择根据故障转移之前的任何时候需要不同的 VM 大小。 请注意，VM 磁盘大小还取决于源磁盘大小，并故障转移后可以只更改。 了解有关磁盘大小和 IOPS 速率[Windows 上的 VM 磁盘的可伸缩性和性能目标](../virtual-machines/windows/disk-scalability-targets.md)。
+    * 目标 VM 大小或 VM 类型：根据包含在目标 Azure 区域中的磁盘数、 NIC 计数、 CPU 核心计数、 内存和可用的 VM 角色大小的几个参数选择的默认 VM 大小。 Azure Site Recovery 会选择第一个的可用 VM 大小这样可满足所有条件。 可以选择根据故障转移之前的任何时候需要不同的 VM 大小。 请注意，VM 磁盘大小还取决于源磁盘大小，并故障转移后可以只更改。 了解有关磁盘大小和 IOPS 速率[Windows 上的 VM 磁盘的可伸缩性和性能目标](../virtual-machines/windows/disk-scalability-targets.md)。
 
     *  资源组：可以选择[资源组](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)，从虚拟机成为故障转移后的一部分。 您可以更改此设置在故障转移之前的任何时间。 故障转移后，如果虚拟机迁移到不同的资源组，该虚拟机的保护设置会中断。
     * 可用性集：可以选择[可用性集](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)如果你的虚拟机需要故障转移后的一部分。 当选择一个可用性集时，请记住以下信息：

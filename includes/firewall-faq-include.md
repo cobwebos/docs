@@ -9,11 +9,11 @@ ms.date: 3/26/2019
 ms.author: victorh
 ms.custom: include file
 ms.openlocfilehash: b8842ab4bcaf16b7345b25fa9ac4998981d9c458
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803392"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60013485"
 ---
 ### <a name="what-is-azure-firewall"></a>什么是 Azure 防火墙？
 
@@ -123,19 +123,19 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network-or-peered-virtual-networks"></a>Azure 防火墙能否转发和筛选同一虚拟网络或对等互连虚拟网络中子网之间的网络流量？
 
-是的。 但是，配置 Udr，将在同一 VNET 中的子网之间的流量重定向，需要多加注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
+可以。 但是，配置 Udr，将在同一 VNET 中的子网之间的流量重定向，需要多加注意。 虽然使用 VNET 地址范围作为 UDR 的目标前缀就足够了，但这也会通过 Azure 防火墙实例将所有流量从一台计算机路由到同一子网中的另一台计算机。 为避免这种情况，请在 UDR 中包含下一跃点类型为 **VNET** 的子网路由。 管理这些路由可能很麻烦并且容易出错。 建议的内部网络分段方法是使用不需要 UDR 的网络安全组。
 
 ### <a name="is-forced-tunnelingchaining-to-a-network-virtual-appliance-supported"></a>强制隧道/链接到支持网络虚拟设备？
 
-是的。
+可以。
 
 Azure 防火墙必须具有直接 Internet 连接。 默认情况下，AzureFirewallSubnet 0.0.0.0/0 路由的 NextHopType 值设置为**Internet**。
 
-如果启用强制隧道连接到本地通过 ExpressRoute 或 VPN 网关，可能需要显式配置为 Internet 设置的 NextHopType 值 0.0.0.0/0 用户定义的路由 (UDR) 并将其与你 AzureFirewallSubnet 关联。 此设置将替代的潜在默认网关返回到你的本地网络的 BGP 播发。 如果你的组织要求 Azure 防火墙，以将你的本地网络上返回到默认网关通信的强制隧道，请联系支持。 我们可以维护你的订阅以确保所需的 Internet 连接防火墙的允许列表。
+如果启用强制隧道连接到本地通过 ExpressRoute 或 VPN 网关，可能需要显式配置为 Internet 设置的 NextHopType 值 0.0.0.0/0 用户定义的路由 (UDR) 并将其与你 AzureFirewallSubnet 关联。 此设置将替代的潜在默认网关返回到你的本地网络的 BGP 播发。 如果你的组织要求 Azure 防火墙，以将你的本地网络上返回到默认网关通信的强制隧道，请联系支持。 我们可以维护你的订阅以确保所需的 Internet 连接防火墙的白名单。
 
 ### <a name="are-there-any-firewall-resource-group-restrictions"></a>是否有任何防火墙资源组限制？
 
-是的。 防火墙、子网、VNet 和公共 IP 地址都必须位于同一资源组中。
+可以。 防火墙、子网、VNet 和公共 IP 地址都必须位于同一资源组中。
 
 ### <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 02/25/2019
 ms.author: jaredro
 ms.custom: include file
-ms.openlocfilehash: 6a0d84a2aaf4b52c7fb0163231574eaea63c18c3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 41f62d095c1a0cbdd0a888326b263a3294066637
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803394"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60118395"
 ---
 ### <a name="what-is-expressroute-direct"></a>什么是 ExpressRoute Direct？
 
@@ -32,7 +32,7 @@ ms.locfileid: "59803394"
 * 芝加哥
 * 华盛顿特区
 * 达拉斯 
-* 香港特别行政区
+* 中国香港特别行政区
 * 洛杉矶
 * New York City
 * 巴黎

@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: absha
-ms.openlocfilehash: 40c5444a54f4e483a9dcacb958c18f66da45019a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4b8e04babfffaf49d3719d8a7e90af16598814f4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58906117"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998900"
 ---
 # <a name="application-gateway-configuration-overview"></a>应用程序网关配置概述
 
@@ -228,9 +228,9 @@ V1 sku，模式匹配的传入请求的处理路径基于路径的规则的 URL 
 ![应用程序网关组件对话框](./media/configuration-overview/configure-redirection.png)
 
 有关 HTTP 到 HTTPS 重定向的详细信息，请参阅：
-- [使用 Azure 门户的 HTTP 到 HTTP 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
-- [使用 PowerShell 的 HTTP 到 HTTP 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
-- [使用 Azure CLI 的 HTTP 到 HTTP 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
+- [使用 Azure 门户的 HTTP 到 HTTPS 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-portal)
+- [使用 PowerShell 的 HTTP 到 HTTPS 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-powershell)
+- [使用 Azure CLI 的 HTTP 到 HTTPS 重定向](https://docs.microsoft.com/azure/application-gateway/redirect-http-to-https-cli)
 
 ##### <a name="external-site"></a>外部站点
 

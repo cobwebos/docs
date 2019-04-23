@@ -4,17 +4,17 @@ description: 了解如何排查更新管理代理问题。
 services: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 12/14/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: automation
 ms.subservice: update-management
 manager: carmonm
-ms.openlocfilehash: d4331942526b3dbda376605db2618ceeaec3f60a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 864fe70d7702680f21234a1a15c02515b19f770b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58165992"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149608"
 ---
 # <a name="understand-the-windows-agent-check-results-in-update-management"></a>了解更新管理中的 Windows 代理检查结果
 
@@ -25,6 +25,9 @@ ms.locfileid: "58165992"
 * **就绪** - 更新代理已部署且距上次查看不超过 1 小时。
 * **断开连接** - 更新代理已部署且距上次查看超过 1 小时。
 * **未配置** - 未找到更新代理或尚未完成载入。
+
+> [!NOTE]
+> 可能有 Azure 门户显示与计算机的当前状态之间稍有延迟。
 
 ## <a name="start-the-troubleshooter"></a>启动“故障排除”
 

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
-ms.openlocfilehash: 3b354492778426d1e3c31e53e277fd9be1e22c93
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 929a4e4366c9e94ed4e1915406914991624f6baa
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048106"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149625"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>关于适用于 VMware VM 和物理服务器的移动服务
 
@@ -115,7 +115,7 @@ ms.locfileid: "59048106"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
+使用情况 | UnifiedAgent.exe /Role <MS/MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 安装程序日志 | 位于 %ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log 下。
 /Role | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 /InstallLocation| 可选参数。 指定移动服务的安装位置（任意文件夹）。
@@ -154,7 +154,7 @@ ms.locfileid: "59048106"
 #### <a name="installation-settings"></a>安装设置
 **设置** | **详细信息**
 --- | ---
-使用情况 | 。 / 安装-d\<安装位置 >-r < MS|MT> -v VmWare -q
+使用情况 | ./install -d <Install Location> -r <MS/MT> -v VmWare -q
 -r | 必需的安装参数。 指定是要安装移动服务 (MS) 还是主目标 (MT)。
 -d | 可选参数。 指定移动服务的安装位置：/usr/local/ASR。
 -v | 必需。 指定一个平台，以便在其上安装移动服务。 对于 VMware VM/物理服务器，请指定 **VMware**；对于 Azure VM，请指定 **Azure**。

@@ -1,6 +1,6 @@
 ---
 title: 将 Azure Functions 与 Azure 虚拟网络集成
-description: 该分布教程演示如何将 Function 连接到 Azure 虚拟网络
+description: 分步教程演示如何将函数连接到 Azure 虚拟网络
 services: functions
 author: alexkarcher-msft
 manager: jehollan
@@ -8,119 +8,122 @@ ms.service: azure-functions
 ms.topic: article
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: 749e211c9844f644e04d5135f99d71918d65b66b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 96ab479d3373eb6e575a00898f7007a4df252e39
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680330"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002763"
 ---
 # <a name="integrate-a-function-app-with-an-azure-virtual-network"></a>将函数应用与 Azure 虚拟网络集成
 
-本教程演示如何使用 Azure Functions 连接到 Azure VNET 中的资源。
+本教程演示如何使用 Azure Functions 连接到 Azure 虚拟网络中的资源。
 
-本教程中我们将部署在专用非 internet 可访问，VNET 中的 VM 上的 WordPress 网站。 然后，部署一个可访问 Internet 和 VNET 的 Function。 我们将使用该函数能够从 VNET 内部部署的 WordPress 站点访问资源。
+对于本教程，我们将部署在不能从 internet 访问的虚拟网络中的 VM 上的 WordPress 网站。 然后，我们将对 internet 和虚拟网络部署具有访问权限的函数。 我们将使用该函数从虚拟网络内部署的 WordPress 站点访问的资源。
 
-若要深入了解系统的工作原理、故障排除和高级配置，请参阅文档[将应用与 Azure 虚拟网络集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)。 高级版计划中的 azure 函数具有与 web 应用相同的托管功能，因此所有的功能和该文档中的限制适用于函数以及。
+有关系统的工作原理的详细信息，故障排除和高级的配置，请参阅[将应用与 Azure 虚拟网络集成](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)。 高级版计划中的 azure 函数具有与 web 应用相同的托管功能，因此所有的功能和限制该文章中的适用于函数。
 
 ## <a name="topology"></a>拓扑
 
- ![VNet 集成 UI][1]
+ ![虚拟网络集成的用户界面][1]
 
-## <a name="creating-a-vm-inside-of-a-vnet"></a>在 VNET 中创建 VM
+## <a name="create-a-vm-inside-a-virtual-network"></a>创建虚拟网络中的 VM
 
-首先，在 VNET 中创建运行 Wordpress 的预配置 VM。 
+若要开始，我们将创建虚拟网络中运行 WordPress 的预配置的 VM。 
 
-选择 VM 上的 Wordpress 是因为它是可以在 VNET 内部署的最便宜的资源之一。 请注意，这种情况下还可以使用 VNET，例如 REST Api、 应用服务环境和其他 Azure 服务中的任何资源。
+我们选择了 VM 上的 WordPress，因为它是一个可以部署在虚拟网络的开销最少资源。 请注意，这种情况下还可以使用虚拟网络，如 REST Api、 应用服务环境和其他 Azure 服务中的任何资源。
 
-1. 转到 Azure 门户
-2. 打开“创建资源”边栏选项卡，添加新资源
-3. 搜索"[CentOS 上的 WordPress LEMP7 最大性能](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure)"并打开其创建边栏选项卡 
-4. 在创建边栏选项卡中，使用以下信息配置 VM：
-    1. 为此 VM 创建新的资源组，以便在本教程结束时更轻松地清理资源。 将我的资源组命名为“Function-VNET-教程”
-    1. 为虚拟机提供唯一名称。 将其命名为“VNET-Wordpress”
-    1. 选择离你最近的区域
-    1. 选择大小为 B1s（1 vcpu、1 GB 内存）
-    1. 对于管理员帐户，选择密码验证并输入惟一的用户名和密码。 在本教程中，除非需要进行故障排除，否则不需要登录 VM。
+1. 转到 Azure 门户。
+2. 通过打开添加新的资源**创建资源**边栏选项卡。
+3. 搜索"[CentOS 上的 WordPress LEMP7 最大性能](https://jetware.io/appliances/jetware/wordpress4_lemp7-170526/profile?us=azure)"并打开其创建边栏选项卡。 
+4. 上**基础知识**选项卡上，将 VM 配置的以下信息：
+    1. 为此 VM 创建新的资源组，以便在本教程结束时更轻松地清理资源。 在这里，我们将使用"函数-VNET-Tutorial"作为示例。
+    1. 为虚拟机提供唯一名称。 我们使用"VNET Wordpress"作为示例。
+    1. 选择离你最近的区域。
+    1. B1s 作为选择的大小 （1 个 vCPU，1 GB 内存）。
+    1. 对于管理员帐户，选择密码验证并输入惟一的用户名和密码。 对于本教程，您不需要登录到 VM，除非需要进行故障排除。
     
-        ![创建虚拟机基础知识选项卡](./media/functions-create-vnet/create-vm-1.png)
+        ![用于创建 VM 的基础知识选项卡](./media/functions-create-vnet/create-vm-1.png)
 
-1. 移动到网络选项卡并输入以下信息：
-    1.  创建新的虚拟网络
-    1.  输入所需专用地址范围和该地址范围内的子网。 子网大小将决定可在应用服务计划中使用的 VM 数量。 如果不熟悉 IP 地址和子网设置，请参阅[涵盖这些基础知识的文档](https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 IP 地址和子网设置在此方案中非常重要，因此建议先阅读一些文章并观看在线视频，理解这些内容。 
-        1. 在此示例中，选择使用 10.10.0.0/16 网络，子网为 10.10.1.0/24。 选择过度预配并使用 /16 子网，因为这样更容易计算 10.10.0.0/16 网络中可用的子网。
+1. 将移动到**网络**选项卡并输入以下信息：
+    1.  创建新的虚拟网络。
+    1.  输入的专用地址范围和相应的地址范围中的子网。 子网大小将决定可在应用服务计划中使用的 VM 数量。 如果 IP 寻址和子网不熟悉，还有[介绍了基础知识的文档](https://support.microsoft.com/en-us/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics)。 IP 寻址和子网非常重要在此方案中，因此，我们建议你阅读几篇文章，并观看一些视频联机，直到有意义。 
+    
+        此示例中，我们要选择 10.10.0.0/16 网络用于 10.10.1.0/24 的子网。 我们正在过度预配和使用 / 16 子网因为很容易计算哪些子网是 10.10.0.0/16 网络中可用。
         
         <img src="./media/functions-create-vnet/create-vm-2.png" width="700">
 
-1. 回到“网络”选项卡，将公共 IP 设置为“无”。 这将部署只可访问 VNET 的 VM。
+1. 重新**联网**选项卡上，将公共 IP 设置为**None**。 此步骤中将部署到仅在虚拟网络的 VM 具有访问权限。
        
     <img src="./media/functions-create-vnet/create-vm-2-1.png" width="700">
 
-7. 创建 VM。 此过程花费的时间约为 5 分钟。
-8. 创建 VM 后，访问其“网络”选项卡并记录专用 IP 地址以供之后使用。 该 VM 不应有公共 IP。
+7. 创建 VM。 该过程大约需要 5 分钟。
+8. 创建 VM 后，请转到其**网络**选项卡并记下为更高版本的专用 IP 地址。 该 VM 不应有公共 IP。
 
     ![14]
 
-现在即可拥有完全部署在虚拟网络中的 Wordpress 站点。 本站点不能从公共 Internet 访问。
+现可在虚拟网络内完全部署的 WordPress 网站。 本站点不能从公共 Internet 访问。
 
-## <a name="create-a-premium-plan-function-app"></a>创建 Function App 的高级计划
+## <a name="create-a-function-app-in-a-premium-plan"></a>在高级版计划中创建函数应用
 
-下一步是在高级版计划中创建函数应用。 高级计划是对新产品/服务将使用的所有专用应用服务计划权益的无服务器缩放。 消耗计划函数应用不支持 VNet 集成。
+下一步是在高级版计划中创建函数应用。 高级计划提供的专用应用服务计划的所有优势的无服务器规模。 消耗计划通过创建函数应用不支持虚拟网络集成。
 
 [!INCLUDE [functions-premium-create](../../includes/functions-premium-create.md)]  
 
-## <a name="connect-your-function-app-to-your-vnet"></a>将 Function App 连接到 VNET
+## <a name="connect-your-function-app-to-your-virtual-network"></a>将函数应用连接到虚拟网络
 
-与承载在 VNET 中的文件的 WordPress 站点，现在可以到 VNET 连接的函数应用。
+与托管文件从虚拟网络中的 WordPress 站点，您现在可以连接函数应用到虚拟网络。
 
-1.  在上一步骤的 Function App 门户中，选择“平台功能”，然后选择“网络”
+1.  在上一步中将函数应用门户中，选择**平台功能**。 然后选择**网络**。
 
     <img src="./media/functions-create-vnet/networking-0.png" width="850">
 
-1.  在“VNet 集成”下选择“单击进行配置”
+1.  选择**单击这里以配置**下**VNet 集成**。
 
-    ![配置网络功能状态](./media/functions-create-vnet/Networking-1.png)
+    ![用于配置网络功能状态](./media/functions-create-vnet/Networking-1.png)
 
-1. 在 VNET 集成页上，选择“添加 VNet (预览)”
+1. 在虚拟网络集成页中，选择**添加 VNet （预览版）**。
 
     <img src="./media/functions-create-vnet/networking-2.png" width="600"> 
     
-1.  为 Function 和应用服务计划创建要用的新子网。 请注意，子网大小将限制可添加到应用服务计划的 VM 总数。 VNET 将自动在 VNET 中的子网之间路由流量，因此 Function 与 VM 位于不同子网并不重要。 
+1.  创建函数和应用服务计划以使用新的子网。 请注意，子网大小会限制你可以将其添加到你的应用服务计划的 Vm 总数。 你的虚拟网络将自动路由虚拟网络，因此它并不重要函数已从你的 VM 的不同子网中的子网之间的流量。 
     
     <img src="./media/functions-create-vnet/networking-3.png" width="600">
 
-## <a name="create-a-function-that-accesses-a-resource-in-your-vnet"></a>创建访问 VNET 中的资源的 Function
+## <a name="create-a-function-that-accesses-a-resource-in-your-virtual-network"></a>创建访问你的虚拟网络中的资源的函数
 
-现在，Function App 可以通过 Wordpress 站点访问 VNET，所以我们将使用 Function 访问该文件并将其返回给用户。 在此示例中，我们将使用 Wordpress 站点作为 API，Function 代理作为调用 Functions（因为它们都易于设置和可视化）。 可以轻松地使用部署在 VNET 中的任何其他 API，并使用另一个 Function 通过代码调用部署在 VNET 中该 API。 部署在 VNET 中的 SQL 服务器就是很好的示例。
+函数应用现在可以访问我们的 WordPress 站点使用的虚拟网络。 因此我们将使用该函数来访问该文件，并为其返回给用户提供服务。 此示例中，我们将使用 WordPress 站点作为 API 和代理为调用函数因为它们是易于设置和可视化。 
 
-1. 在门户中，打开上一步骤中的 Function App
-1. 选择“代理” > “+”，创建代理
+可以轻松地使用虚拟网络内部署的任何其他 API。 此外可以使用虚拟网络内部署的 API 的 API 调用的代码使用另一个函数。 虚拟网络内部署的 SQL Server 实例是一个完美示例。
+
+1. 在门户中，打开上一步中的函数应用。
+1. 通过选择创建的代理**代理** > **+**。
 
     <img src="./media/functions-create-vnet/new-proxy.png" width="250">
 
-1. 配置代理名称和路由。 选择 /plant 作为路由。
-1. 填写前面创建的 Wordpress 站点的 IP，并将后端 URL 设置为 `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
+1. 配置代理名称和路由。 此示例使用"/ 计划"为路由。
+1. 填写从之前的 WordPress 站点的 IP，并设置**后端 URL**到 `http://{YOUR VM IP}/wp-content/themes/twentyseventeen/assets/images/header.jpg`
     
     <img src="./media/functions-create-vnet/create-proxy.png" width="900">
 
-现在，如果尝试通过将后端 URL 粘贴到新的浏览器选项卡来直接访问它，则页面将超时。这种情况在意料之中，因为 Wordpress 站点只连接到 VNET，而未连接到 Internet。 如果将代理 URL 粘贴到浏览器中，可看到漂亮的植物图片，这是从 VNET 的 Wordpress 站点中获取的。 
+现在，如果您试图访问后端 URL 直接通过将其粘贴到新的浏览器选项卡，页将会超时。这是因为您的 WordPress 网站连接到仅在虚拟网络和不是 internet。 如果你的代理 URL 粘贴到浏览器中时，应在虚拟网络内部查看工厂图片 （提取从你的 WordPress 站点）。 
 
-将 Function App 连接到 Internet 和 VNET。 代理通过公共 Internet 接收请求，然后作为简单的 HTTP 代理将该请求转发到虚拟网络。 随后，代理通过公共 Internet 将响应转回给你。 
+函数应用连接到 internet 和虚拟网络。 代理通过公共 Internet 接收请求，然后作为简单的 HTTP 代理将该请求转发到虚拟网络。 随后，代理通过公共 Internet 将响应转回给你。 
 
 <img src="./media/functions-create-vnet/plant.png" width="900">
 
 ## <a name="next-steps"></a>后续步骤
 
-在高级版计划中运行的函数共享相同基础应用服务基础结构，因为 PV2 上的 Web 应用计划。 这意味着，所有的 Web 应用文档适用于高级计划函数。
+在高级版计划中运行的函数共享相同的基础应用服务基础结构即高级 V2 计划上的 web 应用。 Web 应用的所有文档都适用于高级计划函数。
 
-1. [了解有关此处的函数中的网络选项的详细信息](./functions-networking-options.md)
-1. [读取网络常见问题此处函数](./functions-networking-faq.md)
-1. [深入了解 Azure 中的 VNET](../virtual-network/virtual-networks-overview.md)
-1. [启用网络功能和使用应用服务环境的控制](../app-service/environment/intro.md)
-1. [使用混合连接连接到单独的本地资源而无需更改防火墙](../app-service/app-service-hybrid-connections.md)
-1. [了解有关 Function 代理的详细信息](./functions-proxies.md)
+* [了解有关在函数中的网络选项的详细信息](./functions-networking-options.md)
+* [读取网络常见问题函数](./functions-networking-faq.md)
+* [了解有关 Azure 中的虚拟网络的详细信息](../virtual-network/virtual-networks-overview.md)
+* [启用网络功能和使用应用服务环境的控制](../app-service/environment/intro.md)
+* [使用混合连接连接到独立的本地资源，而无需防火墙更改](../app-service/app-service-hybrid-connections.md)
+* [了解有关 Functions 代理的详细信息](./functions-proxies.md)
 
-<!--Image references-->
+<!--Image references -->
 [1]: ./media/functions-create-vnet/topology.png
 [2]: ./media/functions-create-vnet/create-function-app.png
 [3]: ./media/functions-create-vnet/create-app-service-plan.png

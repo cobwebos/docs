@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 850d8bbb525763e0e7d0c0441173180b7c469dd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 4cc9b0051eaa12eee07f067352126ad159107a83
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085144"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007468"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>将 Azure 时序见解与远程监视集成
 
@@ -236,6 +236,9 @@ docker pull azureiotpcs/pcs-remote-monitoring-webui:1.0.2
 1. 导航到“ASA 管理器服务”并通过添加 `PCS_TELEMETRY_STORAGE_TYPE` 编辑 docker compose 文件。
 
 1. 使用 VM 中的 `sudo ./start.sh` 重启 docker 容器。
+
+> [!NOTE]
+> 以上配置的环境变量适用于远程监视 1.0.2 之前的版本
 
 ### <a name="standard-deployments"></a>标准部署
 

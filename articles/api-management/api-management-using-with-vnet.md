@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/01/2019
 ms.author: apimpm
-ms.openlocfilehash: db48db5ce9402267570ac9e41f9f4b5bec2781ad
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: 532c1051522410c496fb3809c06c7e3a74340adb
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527942"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006040"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>如何在虚拟网络中使用 Azure API 管理
 使用 Azure 虚拟网络 (VNET) 可将你的任何 Azure 资源置于可以控制其访问权限但无法通过 Internet 路由的网络中。 然后，可以使用各种 VPN 技术将这些网络连接到本地网络。 若要了解有关 Azure 虚拟网络的详细信息，请先了解以下信息：[Azure 虚拟网络概述](../virtual-network/virtual-networks-overview.md)。
@@ -32,7 +32,7 @@ ms.locfileid: "59527942"
 
 [!INCLUDE [premium-dev.md](../../includes/api-management-availability-premium-dev.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要执行本文中所述的步骤，必须具有：
 
@@ -74,7 +74,8 @@ ms.locfileid: "59527942"
 
      ![选择 VPN][api-management-setup-vpn-select]
 
-5. 单击屏幕顶部的“保存”。
+5. 单击**保存**顶部导航栏中。
+6. 单击**应用网络配置**顶部导航栏中。
 
 > [!NOTE]
 > 每次启用或禁用 VNET 时，API 管理实例的 VIP 地址都会更改。
@@ -106,9 +107,9 @@ ms.locfileid: "59527942"
 
 * **API 管理所需的端口**：可以使用[网络安全组][Network Security Group]控制其中部署了 API 管理的子网的入站和出站流量。 如果其中的任一端口不可用，API 管理可能无法正常工作且不可访问。 在 VNET 中使用 API 管理时，另一个常见的错误配置问题是阻止了这些端口中的一个或多个。
 
-<a name="required-ports"> </a> 当 API 管理服务实例托管在 VNET 中时，使用下表中的端口。
+<a name="required-ports"> </a>在 VNET 中托管 API 管理服务实例时，将使用下表中的端口。
 
-| 源 / 目标端口 | 方向          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
+| 源 / 目标端口 | Direction          | 传输协议 |   [服务标记](../virtual-network/security-overview.md#service-tags) <br> 源/目标   | 用途 ( * )                                                 | 虚拟网络类型 |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
 | * / 80, 443                  | 入站            | TCP                | INTERNET / VIRTUAL_NETWORK            | 客户端与 API 管理的通信                      | 外部             |
 | * / 3443                     | 入站            | TCP                | ApiManagement / VIRTUAL_NETWORK       | Azure 门户和 Powershell 的管理终结点         | 外部和内部  |
@@ -154,7 +155,7 @@ ms.locfileid: "59527942"
     
     > 13.84.189.17/32、13.85.22.63/32、23.96.224.175/32、23.101.166.38/32、52.162.110.80/32、104.214.19.224/32、13.64.39.16/32、40.81.47.216/32、51.145.179.78/32、52.142.95.35/32、40.90.185.46/32、20.40.125.155/32
 
-  * 对于其他 API 管理服务依赖关系是强制通过隧道发送，应该是一种方法来解析主机名，并向该终结点。 其中包括：
+  * 对于进行强制隧道传输的其他 API 管理服务依赖项，应该可以通过某种方式解析主机名并访问终结点。 其中包括：
       - 指标和运行状况监视
       - Azure 门户诊断
       - SMTP 中继

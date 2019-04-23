@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: b84238e8a659358f2c065eb1533f0d21a5335d43
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: be2f5fdebc5ae4f779fe6e3da74ad7ea583226ef
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496873"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995653"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>使用 Azure 活动日志监视订阅活动
 
@@ -65,6 +65,9 @@ Azure 活动日志是一种方便用户深入了解 Azure 中发生的订阅级�
 * 通过 PowerShell Cmdlet、CLI 或 REST API 查询活动日志。
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>在 Azure 门户中查询活动日志
+
+> [!NOTE] 
+> 活动日志将日志保留 90 天后端中。 如果你想要保留的数据超出此限制，请配置**日志配置文件**如下所述。 
 
 在 Azure 门户中，可在多个位置查看活动日志：
 * 可通过在左侧导航窗格中的“所有服务”下搜索活动日志进行访问的“活动日志”。
@@ -145,7 +148,7 @@ Add-AzLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resour
 | serviceBusRuleId |否 |服务总线命名空间（需在其中创建事件中心）的服务总线规则 ID。 是以下格式的字符串：`{service bus resource ID}/authorizationrules/{key name}`。 |
 | Location |是 |要为其收集活动日志事件的逗号分隔区域的列表。 |
 | RetentionInDays |是 |事件的保留天数，介于 1 到 2147483647 之间。 值为零时，将无限期（永久）存储日志。 |
-| Category |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。 |
+| 类别 |否 |应收集的事件类别的逗号分隔列表。 可能值包括：Write、Delete 和 Action。 |
 
 #### <a name="remove-a-log-profile"></a>删除日志配置文件
 

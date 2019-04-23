@@ -13,14 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2016
+ms.date: 04/18/2019
 ms.author: kasing
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: abbbcce2ae72ac77ba6f6c21e626b34bcded7909
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 44243f97b6c431578185fcdeb1ddcabc548d927f
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/06/2018
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011735"
 ---
 # <a name="vertically-scale-windows-vms-with-azure-automation"></a>使用 Azure 自动化垂直缩放 Windows VM
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 04/06/2018
 4. 添加针对虚拟机的警报
 
 > [!NOTE]
-> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。
+> 由于第一个虚拟机的大小有限制，它可以调整到的大小可能会由于当前虚拟机部署到的群集的其他大小而受到限制。 在本文中使用的已发布自动化 Runbook 中，我们将遵循这种限制，只在以下 VM 大小对的范围内进行缩放。 这意味着，Standard_D1v2 虚拟机不会突然间扩展到 Standard_G5，或者突然间缩减到 Basic_A0。 也不支持受约束的虚拟机大小增加/减少。 可以选择在以下大小对之间缩放：
 > 
 > | VM 大小缩放对 |  |
 > | --- | --- |
@@ -46,14 +47,43 @@ ms.lasthandoff: 04/06/2018
 > | Standard_A5 |Standard_A7 |
 > | Standard_A8 |Standard_A9 |
 > | Standard_A10 |Standard_A11 |
+> | Standard_A1_v2 |Standard_A8_v2 |
+> | Standard_A2m_v2 |Standard_A8m_v2  |
+> | Standard_B1s |Standard_B2s |
+> | Standard_B1ms |Standard_B8ms |
 > | Standard_D1 |Standard_D4 |
 > | Standard_D11 |Standard_D14 |
 > | Standard_DS1 |Standard_DS4 |
 > | Standard_DS11 |Standard_DS14 |
-> | Standard_D1v2 |Standard_D5v2 |
-> | Standard_D11v2 |Standard_D14v2 |
+> | Standard_D1_v2 |Standard_D5_v2 |
+> | Standard_D11_v2 |Standard_D14_v2 |
+> | Standard_DS1_v2 |Standard_DS5_v2 |
+> | Standard_DS11_v2 |Standard_DS14_v2 |
+> | Standard_D2_v3 |Standard_D64_v3 |
+> | Standard_D2s_v3 |Standard_D64s_v3 |
+> | Standard_DC2s |Standard_DC4s |
+> | Standard_E2v3 |Standard_E64v3 |
+> | Standard_E2sv3 |Standard_E64sv3 |
+> | Standard_F1 |Standard_F16 |
+> | Standard_F1s |Standard_F16s |
+> | Standard_F2sv2 |Standard_F72sv2 |
 > | Standard_G1 |Standard_G5 |
 > | Standard_GS1 |Standard_GS5 |
+> | Standard_H8 |Standard_H16 |
+> | Standard_H8m |Standard_H16m |
+> | Standard_L4s |Standard_L32s |
+> | Standard_L8s_v2 |Standard_L80s_v2 |
+> | Standard_M8ms  |Standard_M128ms |
+> | Standard_M32ls  |Standard_M64ls |
+> | Standard_M64s  |Standard_M128s |
+> | Standard_M64  |Standard_M128 |
+> | Standard_M64m  |Standard_M128m |
+> | Standard_NC6 |Standard_NC24 |
+> | Standard_NC6s_v2 |Standard_NC24s_v2 |
+> | Standard_NC6s_v3 |Standard_NC24s_v3 |
+> | Standard_ND6s |Standard_ND24s |
+> | Standard_NV6 |Standard_NV24 |
+> | Standard_NV6s_v2 |Standard_NV24s_v2 |
 > 
 > 
 

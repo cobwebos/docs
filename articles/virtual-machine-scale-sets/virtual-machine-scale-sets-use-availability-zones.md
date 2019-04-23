@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 24cff3a2ec4d0bed7a030ca430eaa698eb4a7325
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 7fa903f65a6c7d244ff424eae4a0def258b50bbc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278762"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59994701"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>创建使用可用性区域的虚拟机规模集
 
@@ -62,7 +62,7 @@ ms.locfileid: "59278762"
 
 在单个区域中创建规模集时，可控制要运行所有这些 VM 实例的区域，规模集仅在该区域中进行托管和自动缩放。 使用区域冗余规模集，可创建跨越多个区域的单个规模集。 创建 VM 实例时，默认其在各区域中同等均衡。 如果其中一个区域中发生中断，规模集不会自动扩大以增加容量。 最佳做法是基于 CPU 或内存使用情况配置自动缩放规则。 借助自动缩放规则，规模集能够通过在其余可操作区域中横向扩展新实例，来应对该区域中的 VM 实例损失。
 
-若要使用可用性区域，必须在[受支持的 Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)中创建规模集。 可以使用下列方法之一创建使用可用性区域的规模集：
+若要使用可用性区域，必须在[受支持的 Azure 区域](../availability-zones/az-overview.md#services-support-by-region)中创建规模集。 可以使用下列方法之一创建使用可用性区域的规模集：
 
 - [Azure 门户](#use-the-azure-portal)
 - Azure CLI

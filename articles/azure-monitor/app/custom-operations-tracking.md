@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 06/30/2017
 ms.reviewer: sergkanz
 ms.author: mbullwin
-ms.openlocfilehash: 8e082f15cff616b9dc63fbf4ad51e94d078a04f3
-ms.sourcegitcommit: 9f87a992c77bf8e3927486f8d7d1ca46aa13e849
-ms.translationtype: MT
+ms.openlocfilehash: ae6e0e186f5cc0c9e3f0cd02d45d57c079eb3539
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/28/2018
-ms.locfileid: "53811284"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995534"
 ---
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>使用 Application Insights .NET SDK 跟踪自定义操作
 
@@ -384,12 +384,13 @@ public async Task Process(MessagePayload message)
 每条消息都应在自己的异步控制流中处理。 有关详细信息，请参阅[传出依赖项跟踪](#outgoing-dependencies-tracking)部分。
 
 ## <a name="long-running-background-tasks"></a>长时间运行后台任务
+
 某些应用程序可能因用户请求而启动长时间运行的操作。 从跟踪/检测的角度来看，它与请求或依赖项检测没有区别： 
 
 ```csharp
 async Task BackgroundTask()
 {
-    var operation = telemetryClient.StartOperation<RequestTelemetry>(taskName);
+    var operation = telemetryClient.StartOperation<DependencyTelemetry>(taskName);
     operation.Telemetry.Type = "Background";
     try
     {
@@ -414,9 +415,9 @@ async Task BackgroundTask()
 }
 ```
 
-在此示例中，`telemetryClient.StartOperation` 创建 `RequestTelemetry` 并填充相关上下文。 假设有一个父操作，它是由计划操作的传入请求创建的。 只要在与传入请求相同的异步控制流中启动 `BackgroundTask`，它就会与该父操作相关联。 `BackgroundTask` 和所有嵌套的遥测项自动与引发此项的请求相关联，即使请求结束也一样。
+在此示例中，`telemetryClient.StartOperation` 创建 `DependencyTelemetry` 并填充相关上下文。 假设有一个父操作，它是由计划操作的传入请求创建的。 只要在与传入请求相同的异步控制流中启动 `BackgroundTask`，它就会与该父操作相关联。 `BackgroundTask` 和所有嵌套的遥测项自动与引发此项的请求相关联，即使请求结束也一样。
 
-从不含与之关联的任何操作 (`Activity`) 的后台线程启动任务时，`BackgroundTask` 没有任何父级。 但是，它可以具有嵌套操作。 从任务报告的所有遥测项与 `BackgroundTask` 中创建的 `RequestTelemetry` 相关联。
+从不含与之关联的任何操作 (`Activity`) 的后台线程启动任务时，`BackgroundTask` 没有任何父级。 但是，它可以具有嵌套操作。 从任务报告的所有遥测项与 `BackgroundTask` 中创建的 `DependencyTelemetry` 相关联。
 
 ## <a name="outgoing-dependencies-tracking"></a>传出依赖项跟踪
 用户可以跟踪自己的依赖项类型或不受 Application Insights 支持的操作。

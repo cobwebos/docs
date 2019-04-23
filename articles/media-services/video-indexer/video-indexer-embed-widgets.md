@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
-ms.openlocfilehash: 73ceb0a92b97e90b1fdb0c5562d623505e86b870
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: fe3466dcccf6381f26c823ce3deb2126c9534548
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784886"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006482"
 ---
 # <a name="embed-video-indexer-widgets-into-your-applications"></a>将视频索引器小组件嵌入应用程序
 
@@ -28,7 +28,7 @@ ms.locfileid: "59784886"
 
 **认知见解**小组件包括从视频索引过程中提取的所有视觉见解。 见解小组件支持以下可选的 URL 参数：
 
-|名称|定义|描述|
+|Name|定义|描述|
 |---|---|---|
 |widgets|用逗号分隔的字符串|用于控制要呈现的见解。 <br/>示例：`https://www.videoindexer.ai/embed/insights/<accountId>/<videoId>/?widgets=people,search` 只呈现人物和品牌 UI 的见解<br/>可用选项：people、keywords、annotations、brands、sentiments、transcript、search。<br/>使用版本 2 时不支持在 URL 中提供<br/><br/>**注意：** 在版本 2 中不支持小组件 URL 参数。 |
 
@@ -36,7 +36,7 @@ ms.locfileid: "59784886"
 
 **播放器**小组件用于通过自适应比特率来流式传输视频。 播放器小组件支持以下可选的 URL 参数：
 
-|名称|定义|描述|
+|Name|定义|描述|
 |---|---|---|
 |t|距离开始的秒数|让播放器从给定时间点开始播放。<br/>示例：t=60|
 |captions|语言代码|在小组件加载过程中提取给定语言的字幕，使之在字幕菜单中可用。<br/>示例：captions=en-US|
@@ -69,9 +69,9 @@ ms.locfileid: "59784886"
 
 `https://www.videoindexer.ai/embed/[insights | player]/<accountId>/<videoId>/?accessToken=<accessToken>`
     
-使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?) API 获取认知见解小组件内容，或者使用[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并将其作为查询参数添加到 URL，如上所示。 将此 URL 指定为 **iframe** 的 **src** 值。
+使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget) API 获取认知见解小组件内容，或者使用[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并将其作为查询参数添加到 URL，如上所示。 将此 URL 指定为 **iframe** 的 **src** 值。
 
-若要在嵌入式小组件中提供编辑见解功能（就像我们在 Web 应用程序中拥有的功能一样），需传递具有编辑权限的访问令牌。 请使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-insights-widget?)或[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并设置 **&allowEdit=true**。 
+若要在嵌入式小组件中提供编辑见解功能（就像我们在 Web 应用程序中拥有的功能一样），需传递具有编辑权限的访问令牌。 请使用[**获取见解小组件**](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Video-Insights-Widget?&pattern=widget)或[**获取视频访问令牌**](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Video-Access-Token?)并设置 **&allowEdit=true**。 
 
 ## <a name="widgets-interaction"></a>小组件交互
 

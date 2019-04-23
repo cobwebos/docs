@@ -2,21 +2,21 @@
 title: 如何在 Azure 数据目录中处理“大数据”数据源
 description: 操作指南文章着重说明通过“大数据”数据源使用 Azure 数据目录的模式，包括 Azure Blob 存储、Azure Data Lake 和 Hadoop HDFS。
 services: data-catalog
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.assetid: 626d1568-0780-4726-bad1-9c5000c6b31a
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 42b002e3494d84084979f2f5b27e9679e61cbeb5
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: b6b419d575e2164fc683b8e6b5020572db74d1b4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47407716"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998662"
 ---
 # <a name="how-to-work-with-big-data-sources-in-azure-data-catalog"></a>如何在 Azure 数据目录中处理“大数据”源
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 **Microsoft Azure 数据目录**是一个完全托管的云服务，充当企业数据源的注册系统和发现系统。 它旨在帮助人们发现、了解和使用数据源，并帮助组织从其现有数据源（包括大数据）中获取更多价值。
 
 **Azure 数据目录** 支持 Azure Blog 存储 blob 和目录以及 Hadoop HDFS 文件和目录的注册。 这些数据源的半结构化特性提供了极大的灵活性。 但是，若要通过使用 **Azure 数据目录**注册它们来获取最大的价值，用户必须考虑如何组织数据源。

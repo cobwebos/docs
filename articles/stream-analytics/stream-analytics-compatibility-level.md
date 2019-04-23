@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2019
-ms.openlocfilehash: b5c833798f8533e7c6fbe3595a726ac6ce56e2d2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: e4bbfdbcf7a295089570d4c8b77b07fd7270b3fd
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682808"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998254"
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure 流分析作业的兼容性级别
 
@@ -75,7 +75,7 @@ Azure Stream Analytics 支持地理空间引用数据编制索引。 包含地�
 
 **上一级别：** Upsert 行为*插入或合并*。
 
-**1.2 级别：** CosmosDB 输出与本机大容量 API 集成最大化吞吐量，并有效地处理限制请求。
+**1.2 级别：** CosmosDB 输出与本机大容量 API 集成最大化吞吐量，并有效地处理限制请求。 有关详细信息，请参阅[Azure Stream Analytics 输出到 Azure Cosmos DB 页](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-documentdb-output#improved-throughput-with-compatibility-level-12)。
 
 Upsert 行为*插入或替换*。
 

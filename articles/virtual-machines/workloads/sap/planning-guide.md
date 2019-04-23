@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9e12171a8596bc9caba3bf9065bbb943139ccde
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59501325"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999529"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -1141,8 +1141,8 @@ az vm disk attach --disk <new disk name or managed disk id> --resource-group <re
 
 PS cmdlet 逻辑的基本流程如下所示：
 
-* 创建的存储帐户上下文**源**使用的存储帐户*新建 AzStorageContext* -请参阅 <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
-* 创建的存储帐户上下文**目标**使用的存储帐户*新建 AzStorageContext* -请参阅 <https://docs.microsoft.com/powershell/module/azure.storage/new-AzStoragecontext>
+* 创建的存储帐户上下文**源**使用的存储帐户*新建 AzStorageContext* -请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
+* 创建的存储帐户上下文**目标**使用的存储帐户*新建 AzStorageContext* -请参阅 <https://docs.microsoft.com/powershell/module/az.storage/new-AzStoragecontext>
 * 开始复制
 
 ```powershell

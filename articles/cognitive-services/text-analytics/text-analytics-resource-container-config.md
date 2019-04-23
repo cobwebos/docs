@@ -11,12 +11,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 137d7aa48595e3f21ee99c6ebe23babd7a2d32b5
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59677759"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011752"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -51,9 +51,9 @@ ms.locfileid: "59677759"
 
 您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
 
-|需要| 名称 | 数据类型 | 描述 |
+|需要| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
-|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0` |
+|是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
 ## <a name="eula-setting"></a>Eula 设置
 
@@ -79,7 +79,7 @@ ms.locfileid: "59677759"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| Name | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 文本分析容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -95,18 +95,18 @@ ms.locfileid: "59677759"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | Value | 格式或示例 |
 |-------------|-------|---|
 |{BILLING_KEY} | 为终结点密钥的`Cognitive Services`可在 Azure 上的资源`Cognitive Services`密钥页。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
-|{BILLING_ENDPOINT_URI} | 计费的终结点值是可在 Azure 上`Cognitive Services`概述页。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
+|{BILLING_ENDPOINT_URI} | 计费的终结点值是可在 Azure 上`Cognitive Services`概述页。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|
 
 > [!IMPORTANT]
 > 必须指定 `Eula`、`Billing` 和 `ApiKey` 选项运行容器；否则，该容器不会启动。  有关详细信息，请参阅[计费](how-tos/text-analytics-how-to-install-containers.md#billing)。
 > ApiKey 当值**键**从 Azure`Cognitive Services`资源密钥页。 
 
-## <a name="keyphrase-extraction-container-docker-examples"></a>keyPhrase 提取容器 docker 示例
+## <a name="key-phrase-extraction-container-docker-examples"></a>关键短语提取容器 docker 示例
 
-以下 docker 示例适用于 Keyphrase 提取容器。 
+以下 docker 示例适用于关键短语提取容器。 
 
 ### <a name="basic-example"></a>基本示例 
 
