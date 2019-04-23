@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: robinsh
 ms.custom: mvc
-ms.openlocfilehash: ff8ef576a0dae0f03cc0c80f83ce0c24cf3945a2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 40a7bba99068ebc2368e413199cf966bd2e4f25c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58093729"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002895"
 ---
 # <a name="tutorial-perform-manual-failover-for-an-iot-hub-public-preview"></a>教程：为 IoT 中心执行手动故障转移（公共预览版）
 
@@ -49,9 +49,6 @@ ms.locfileid: "58093729"
 
     **区域**：选择离你近的属于预览版一部分的区域。 本教程使用 `westus2`。 只能在 Azure 异地配对区域之间执行故障转移。 与 westus2 异地配对的区域是 WestCentralUS。
     
-   > [!NOTE]
-   > 手动故障转移目前为公共预览版，在以下 Azure 区域中不可用：美国东部、美国西部、北欧、西欧、巴西南部和美国中南部。
-
    **Iot 中心名称**：指定 IoT 中心的名称。 该中心名称必须在全局中独一无二。 
 
    ![显示用于创建 IoT 中心的“基本信息”窗格的屏幕截图](./media/tutorial-manual-failover/create-hub-02-basics.png)
