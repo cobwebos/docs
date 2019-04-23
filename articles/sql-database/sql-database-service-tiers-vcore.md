@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/07/2019
 ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357950"
@@ -33,7 +33,7 @@ ms.locfileid: "59357950"
 
 ## <a name="service-tier-characteristics"></a>服务层特征
 
-vCore 模型提供了三个服务层：常规用途、超大规模和业务关键。 服务层根据一系列计算大小、高可用性设计、故障隔离、存储类型和大小以及 IO 范围进行区分。 必须单独配置所需的存储和备份保持期。 在 Azure 门户中，转到“服务器”（而不是数据库）>“托管备份”>“配置策略”>“时间点还原配置”>“7 - 35 天”。
+vCore 模型提供了三个服务层级：“常规用途”、“业务关键”和“超大规模”。 服务层根据一系列计算大小、高可用性设计、故障隔离、存储类型和大小以及 IO 范围进行区分。 必须单独配置所需的存储和备份保持期。 在 Azure 门户中，转到“服务器”（而不是数据库）>“托管备份”>“配置策略”>“时间点还原配置”>“7 - 35 天”。
 
 下表可帮助你了解这三个层之间的差别：
 
