@@ -203,7 +203,7 @@ ms.locfileid: "57403645"
     botFileSecret=
     ```
 
-    将环境变量的值设置为在执行**[下载 Web 应用机器人](#download-the-web-app-bot)** 部分步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的值。
+    将环境变量的值设置为在执行 **[下载 Web 应用机器人](#download-the-web-app-bot)** 部分步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的值。
 
 4. 在监视模式下启动机器人。 启动后，对代码进行任何更改都会导致应用自动重启。
 
@@ -232,7 +232,7 @@ ms.locfileid: "57403645"
 
     [![机器人模拟器 v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
-3. 输入在执行**[下载 Web 应用机器人](#download-the-web-app-bot)** 部分的步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的机器人机密。 这样，模拟器便可以访问 .bot 文件中所有已加密的字段。
+3. 输入在执行 **[下载 Web 应用机器人](#download-the-web-app-bot)** 部分的步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的机器人机密。 这样，模拟器便可以访问 .bot 文件中所有已加密的字段。
 
     ![机器人模拟器机密 v4](../../../includes/media/cognitive-services-luis/bfv4/bot-secret.png)
 

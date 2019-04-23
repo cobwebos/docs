@@ -55,7 +55,7 @@ LUIS 应用包含一个特定于域的自然语言模型。 可通过预构建�
 ## <a name="build-the-luis-model"></a>构建 LUIS 模型
 使用[创作](https://aka.ms/luis-authoring-apis) API 或 LUIS 门户构建模型。
 
-LUIS 模型从称为**[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户**[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过**[实体](luis-concept-entity-types.md)** 来提取。 
+LUIS 模型从称为 **[意向](luis-concept-intent.md)** 的用户意向的类别开始。 每个意向都需要用户 **[话语](luis-concept-utterance.md)** 的示例。 每个话语都可以提供各种数据，这些数据需要通过 **[实体](luis-concept-entity-types.md)** 来提取。 
 
 |示例用户话语|意向|实体|
 |-----------|-----------|-----------|

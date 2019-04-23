@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0249d47bad38e29e073e86f89d6ad453950bad44
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56726102"
 documentType: LandingData
 title: 必应新闻搜索 API 文档
 titleSuffix: Azure Cognitive Services
@@ -24,83 +18,83 @@ metadata:
 abstract:
   description: 必应新闻搜索 API 可用于将必应的新闻搜索功能集成到应用程序中。 通过使用 API 发送搜索查询，可以从多个类别和源（类似于 bing.com/news）获取相关新闻文章。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-news-search/search-the-web
+            html: <p>了解必应新闻搜索 API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是必应新闻搜索 API？
+          - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
+            html: <p>了解如何将搜索请求发送到必应新闻搜索 API。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 发送搜索查询
+          - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
+            html: <p>了解如何搜索多个类型和类别的新闻。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 搜索新闻
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/bing-news-search/search-the-web
-      html: <p>了解必应新闻搜索 API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是必应新闻搜索 API？
-    - href: /azure/cognitive-services/bing-news-search/concepts/send-search-queries
-      html: <p>了解如何将搜索请求发送到必应新闻搜索 API。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 发送搜索查询
-    - href: /azure/cognitive-services/bing-news-search/concepts/search-for-news
-      html: <p>了解如何搜索多个类型和类别的新闻。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 搜索新闻
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 使用以下语言在 Web 中搜索新闻：
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 使用以下语言在 Web 中搜索新闻：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: news-search-sdk-quickstart
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: news-sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: news-search-sdk-node-quickstart
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: news-sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: ruby
+            text: Ruby
+  - title: 分步教程
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: news-search-sdk-quickstart
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: news-sdk-java-quickstart
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: news-search-sdk-node-quickstart
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: news-sdk-python-quickstart
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: ruby
-      text: Ruby
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 使用必应新闻搜索 API 开发应用程序：
-  - type: paragraph
-    text: <a href="tutorial-bing-news-search-single-page-app">单页 Web 应用</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找必应新闻搜索 API 的示例：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 使用必应新闻搜索 API 开发应用程序：
+      - type: paragraph
+        text: <a href="tutorial-bing-news-search-single-page-app">单页 Web 应用</a>
+  - title: 示例
     items:
-    - html: <a href="sdk.md">代码示例</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 查找必应新闻搜索 API 的示例：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">代码示例</a>
+  - title: 引用
     items:
-    - title: API
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">必应新闻搜索 API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">必应新闻搜索 API v5</a></p>
-    - title: SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v7-reference">必应新闻搜索 API v7</a></p><p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-news-api-v5-reference">必应新闻搜索 API v5</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingnews?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/newssearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/newssearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-newssearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/newssearch">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

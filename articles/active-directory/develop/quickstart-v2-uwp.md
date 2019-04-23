@@ -17,18 +17,18 @@ ms.date: 04/12/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7ed2830b704d379e2ecc5a5e548f831800af56d
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: d9d2e9aa5e5e805b302763f5417110cdd078eb3b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526378"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997591"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>快速入门：从通用 Windows 平台 (UWP) 应用程序调用 Microsoft Graph API
 
 [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
-本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用个人、工作和学校帐户进行登录，获取访问令牌以及调用 Microsoft Graph API。
+本快速入门包含了一个代码示例，该示例演示了通用 Windows 平台 (UWP) 应用程序如何让用户使用个人帐户或工作和学校帐户进行登录，如何获取访问令牌以及如何调用 Microsoft Graph API。
 
 ![显示本快速入门生成的示例应用的工作原理](media/quickstart-v2-uwp/uwp-intro.svg)
 
@@ -72,7 +72,7 @@ ms.locfileid: "59526378"
 
 #### <a name="step-2-download-your-visual-studio-project"></a>步骤 2：下载 Visual Studio 项目
 
- - [下载 Visual Studio 2017 项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
+ - [下载 Visual Studio 项目](https://github.com/Azure-Samples/active-directory-dotnet-native-uwp-v2/archive/msal3x.zip)
 
 #### <a name="step-3-configure-your-visual-studio-project"></a>步骤 3：配置 Visual Studio 项目
 
@@ -89,7 +89,7 @@ ms.locfileid: "59526378"
 > - `Enter_the_Application_Id_here` - 是已注册应用程序的应用程序 ID。
 >
 > > [!TIP]
-> > 若要查找“应用程序 ID”的值，请转到“概览”页
+> > 若要查找“应用程序 ID”的值，请转到门户中的“概览”部分
 
 #### <a name="step-4-run-your-application"></a>步骤 4：运行应用程序
 
@@ -119,7 +119,7 @@ Install-Package Microsoft.Identity.Client -IncludePrerelease
 using Microsoft.Identity.Client;
 ```
 
-然后，使用以下代码对 MSAL 进行初始化：
+然后，系统将使用以下代码对 MSAL 进行初始化：
 
 ```csharp
 public static IPublicClientApplication PublicClientApp;
@@ -133,11 +133,11 @@ PublicClientApp = new PublicClientApplicationBuilder.Create(ClientId)
 
 ### <a name="requesting-tokens"></a>请求令牌
 
-MSAL 有两种用来以交互方式获取令牌的方法：`AcquireTokenInteractive` 和 `AcquireTokenSilent`。
+MSAL 有两种在 UWP 应用中获取令牌的方法：`AcquireTokenInteractive` 和 `AcquireTokenSilent`。
 
 #### <a name="get-a-user-token-interactively"></a>以交互方式获取用户令牌
 
-某些情况下需要强制用户通过弹出窗口与 Microsoft 标识平台终结点进行交互，以验证其凭据或进行许可。 示例包括：
+在某些情况下需要强制用户通过弹出窗口与 Microsoft 标识平台终结点进行交互，以验证其凭据或进行许可。 示例包括：
 
 - 用户首次登录应用程序
 - 由于密码已过期，用户可能需要重新输入凭据的情况
@@ -155,7 +155,7 @@ authResult = await App.PublicClientApp.AcquireTokenInteractive(scopes)
 
 #### <a name="get-a-user-token-silently"></a>以无提示方式获取用户令牌
 
-你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数情况下，你希望在无需任何用户交互的情况下进行令牌获取和续订。 可以使用 `AcquireTokenSilent` 方法获取令牌，以在初始 `AcquireTokenAsync` 方法后访问受保护资源：
+使用 `AcquireTokenSilent` 方法可获取令牌，以在初始 `AcquireTokenAsync` 方法后访问受保护资源。 你不希望在用户每次需要访问资源时都要求其验证其凭据。 大多数时候，你希望在无需任何用户交互的情况下进行令牌获取和续订
 
 ```csharp
 var accounts = await App.PublicClientApp.GetAccountsAsync();

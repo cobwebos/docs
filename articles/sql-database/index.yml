@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 3217d1cd5585443534dbcc91ae3a12bb01db9a52
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444547"
 documentType: LandingData
 title: Azure SQL 数据库文档
 metadata:
@@ -17,7 +11,7 @@ metadata:
   ms.service: sql-database
   ms.subservice: service
   ms.tgt_pltfrm: na
-  ms.devlang: 
+  ms.devlang: null
   ms.topic: overview
   ms.date: 03/04/2019
   ms.author: carlrab
@@ -25,162 +19,162 @@ abstract:
   description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的通用关系数据库即服务 (DBaaS)。 SQL 数据库是高性能、可靠且安全的云数据库，可用于以所选编程语言构建数据驱动的应用程序和网站，而无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png
+      src: 'https://docs.microsoft.com/azure/sql-database/media/index/create-sql-database-on-azure.png'
       width: 250
-    title: 在 Azure 上创建 SQL 数据库。 (3:12)
-    href: https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/
+    title: '在 Azure 上创建 SQL 数据库。 (3:12)'
+    href: 'https://azure.microsoft.com/resources/videos/create-sql-database-on-azure/'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/sql-database/sql-database-technical-overview
+            html: <p>一种 PaaS 数据库，它始终运行于最新稳定版 SQL Server 数据库引擎和具有 99.99% 可用性的已修补 OS 之上。</p>
+            image:
+              src: media/index/i_managed.svg
+            title: 完全托管
+          - href: /azure/sql-database/sql-database-service-tiers
+            html: <p>通过灵活的服务层（跨度从经济实惠的 $5/月的数据库到功能强大的 80 核数据库）定制符合你的需求的价格/性能比。</p>
+            image:
+              src: media/index/i_perftier.svg
+            title: 价格/服务层
+          - href: /azure/sql-database/sql-database-scalability-index
+            html: <p>轻松地对数据库进行纵向扩展、横向扩展或分片，具体取决于提高应用程序性能的需求。</p>
+            image:
+              src: media/index/i_scale.svg
+            title: 可伸缩性
+          - href: /azure/sql-database/sql-database-single-index
+            html: <p>如果你的 SaaS 应用程序和微服务需要一个具有可预测性能的单一数据库，请为其使用 SQL 数据库服务器托管的单一数据库。</p>
+            image:
+              src: media/index/i_db.svg
+            title: 单一数据库
+          - href: /azure/sql-database/sql-database-elastic-pool
+            html: <p>SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管理和缩放具有不断变化且不可预测的使用需求的多个数据库。</p>
+            image:
+              src: media/index/i_elasticpool.svg
+            title: 弹性池
+          - href: /azure/sql-database/sql-database-managed-instance-index
+            html: <p>使用托管实例可使完全托管的 SQL Server 数据库引擎实例托管在 Azure 云中，而无需为从本地数据库进行迁移做出任何数据库代码更改或只需做出极少的数据库代码更改。</p>
+            image:
+              src: media/index/i_mi.svg
+            title: 托管实例
+          - href: /azure/sql-database/sql-database-paas
+            html: <p>内置的高可用性、自动备份和异地复制将防止维护操作、基础结构或硬件故障停止你的业务。</p>
+            image:
+              src: media/index/gear.svg
+            title: 平台即服务
+          - href: /azure/sql-database/sql-database-security-index
+            html: <p>使用 Azure AD 身份验证、虚拟网络、防火墙、Always Encrypted 连接保护数据库。 通过内置的安全功能识别威胁和漏洞。</p>
+            image:
+              src: media/index/i_security.svg
+            title: 高级安全
+          - href: /azure/sql-database/sql-database-monitoring-tuning-index
+            html: <p>内置监视和智能优化将帮助你大幅降低运行和管理数据库的成本，并最大程度地提高应用程序的性能。</p>
+            image:
+              src: media/index/i_intelligence.svg
+            title: 监视和优化
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/sql-database/sql-database-technical-overview
-      html: <p>一种 PaaS 数据库，它始终运行于最新稳定版 SQL Server 数据库引擎和具有 99.99% 可用性的已修补 OS 之上。</p>
-      image:
-        src: media/index/i_managed.svg
-      title: 完全托管
-    - href: /azure/sql-database/sql-database-service-tiers
-      html: <p>通过灵活的服务层（跨度从经济实惠的 $5/月的数据库到功能强大的 80 核数据库）定制符合你的需求的价格/性能比。</p>
-      image:
-        src: media/index/i_perftier.svg
-      title: 价格/服务层
-    - href: /azure/sql-database/sql-database-scalability-index
-      html: <p>轻松地对数据库进行纵向扩展、横向扩展或分片，具体取决于提高应用程序性能的需求。</p>
-      image:
-        src: media/index/i_scale.svg
-      title: 可伸缩性
-    - href: /azure/sql-database/sql-database-single-index
-      html: <p>如果你的 SaaS 应用程序和微服务需要一个具有可预测性能的单一数据库，请为其使用 SQL 数据库服务器托管的单一数据库。</p>
-      image:
-        src: media/index/i_db.svg
-      title: 单一数据库
-    - href: /azure/sql-database/sql-database-elastic-pool
-      html: <p>SQL 数据库弹性池是一种简单且经济高效的解决方案，用于管理和缩放具有不断变化且不可预测的使用需求的多个数据库。</p>
-      image:
-        src: media/index/i_elasticpool.svg
-      title: 弹性池
-    - href: /azure/sql-database/sql-database-managed-instance-index
-      html: <p>使用托管实例可使完全托管的 SQL Server 数据库引擎实例托管在 Azure 云中，而无需为从本地数据库进行迁移做出任何数据库代码更改或只需做出极少的数据库代码更改。</p>
-      image:
-        src: media/index/i_mi.svg
-      title: 托管实例
-    - href: /azure/sql-database/sql-database-paas
-      html: <p>内置的高可用性、自动备份和异地复制将防止维护操作、基础结构或硬件故障停止你的业务。</p>
-      image:
-        src: media/index/gear.svg
-      title: 平台即服务
-    - href: /azure/sql-database/sql-database-security-index
-      html: <p>使用 Azure AD 身份验证、虚拟网络、防火墙、Always Encrypted 连接保护数据库。 通过内置的安全功能识别威胁和漏洞。</p>
-      image:
-        src: media/index/i_security.svg
-      title: 高级安全
-    - href: /azure/sql-database/sql-database-monitoring-tuning-index
-      html: <p>内置监视和智能优化将帮助你大幅降低运行和管理数据库的成本，并最大程度地提高应用程序的性能。</p>
-      image:
-        src: media/index/i_intelligence.svg
-      title: 监视和优化
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 可以通过 Azure 门户、Azure CLI 和 Azure PowerShell 使用 Azure SQL 数据库轻松地执行基本的管理任务。 了解如何使用以下快速入门示例执行基本的管理任务：
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/portal.svg
-      title: Azure 门户
-    - image:
-        src: media/index/cli.svg
-      title: Azure CLI
-    - image:
-        src: media/index/logo_powershell.svg
-      title: PowerShell
-    - image:
-        src: media/index/logo_arm.svg
-      title: Azure 资源管理器模板
-    rows:
-    - title: 创建单一数据库
-      values:
-      - href: /azure/sql-database/sql-database-single-database-get-started
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create
-    - title: 创建弹性池
-      values:
-      - href: /azure/sql-database/sql-database-elastic-pool-manage
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
-      - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create
-    - title: 创建托管实例
-      values:
-      - href: /azure/sql-database/sql-database-managed-instance-get-started
-      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
-      - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell.md
-      - href: https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用 SQL 数据库创建、管理和迁移数据库
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 可以通过 Azure 门户、Azure CLI 和 Azure PowerShell 使用 Azure SQL 数据库轻松地执行基本的管理任务。 了解如何使用以下快速入门示例执行基本的管理任务：
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/portal.svg
+            title: Azure 门户
+          - image:
+              src: media/index/cli.svg
+            title: Azure CLI
+          - image:
+              src: media/index/logo_powershell.svg
+            title: PowerShell
+          - image:
+              src: media/index/logo_arm.svg
+            title: Azure 资源管理器模板
+        rows:
+          - title: 创建单一数据库
+            values:
+              - href: /azure/sql-database/sql-database-single-database-get-started
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
+              - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/201-sql-database-transparent-encryption-create'
+          - title: 创建弹性池
+            values:
+              - href: /azure/sql-database/sql-database-elastic-pool-manage
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-cli
+              - href: /azure/sql-database/scripts/sql-database-move-database-between-pools-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-elastic-pool-create'
+          - title: 创建托管实例
+            values:
+              - href: /azure/sql-database/sql-database-managed-instance-get-started
+              - href: 'https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44'
+              - href: /azure/sql-database/scripts/sql-database-create-configure-managed-instance-powershell
+              - href: 'https://github.com/Azure/azure-quickstart-templates/tree/master/101-sqlmi-new-vnet'
+  - title: 分步教程
     items:
-    - html: 借助我们的快速入门指南，开始使用<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">单一数据库</a>和<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">托管实例</a>。
-    - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新单一数据库的架构
-    - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机 SQL Server 备份文件</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或<a href="/azure/sql-database/sql-database-import">通过导入 BACPAC 文件</a>将现有数据库迁移到 Azure 中
-    - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
-    - html: 使用<a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理分散的数据库</a>在全球分布数据
-- title: 利用 Microsoft Learn 掌握技能
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 了解如何使用 SQL 数据库创建、管理和迁移数据库
+      - type: list
+        style: ordered
+        items:
+          - html: 借助我们的快速入门指南，开始使用<a href="/azure/sql-database/sql-database-single-database-quickstart-guide">单一数据库</a>和<a href="/azure/sql-database/sql-database-managed-instance-quickstart-guide">托管实例</a>。
+          - html: 使用 <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> 或 <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a> 创建和设计新单一数据库的架构
+          - html: 使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机 SQL Server 备份文件</a>、<a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">数据库迁移助手</a>或<a href="/azure/sql-database/sql-database-import">通过导入 BACPAC 文件</a>将现有数据库迁移到 Azure 中
+          - html: <a href="/azure/sql-database/sql-database-security-tutorial">保护 SQL 数据库</a>
+          - html: 使用<a href="/azure/sql-database/sql-database-implement-geo-distributed-database">地理分散的数据库</a>在全球分布数据
+  - title: 利用 Microsoft Learn 掌握技能
     items:
-    - title: 预配用于存储应用程序数据的 Azure SQL 数据库
-      href: /learn/modules/provision-azure-sql-db/
-      image:
-        src: /learn/achievements/provision-azure-sql-db.svg
-        href: /learn/modules/provision-azure-sql-db/
-  - type: paragraph
-    text: <a href="/learn/browse/?products=azure-sql-database">更多交互式学习...</a>
-- title: 免费 Pluralsight 视频培训
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 预配用于存储应用程序数据的 Azure SQL 数据库
+            href: /learn/modules/provision-azure-sql-db/
+            image:
+              src: /learn/achievements/provision-azure-sql-db.svg
+              href: /learn/modules/provision-azure-sql-db/
+      - type: paragraph
+        text: <a href="/learn/browse/?products=azure-sql-database">更多交互式学习...</a>
+  - title: 免费 Pluralsight 视频培训
     items:
-    - title: 在 Azure 上使用 .NET 进行开发
-      href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_pluralsight.svg
-        href: https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找脚本来管理常见任务。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 在 Azure 上使用 .NET 进行开发
+            href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_pluralsight.svg'
+              href: 'https://www.pluralsight.com/courses/developing-dotnet-microsoft-azure-getting-started?twoid=FEED65A23CB221A7'
+  - title: 示例
     items:
-    - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
-    - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 查找脚本来管理常见任务。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
+          - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell（弹性 DB）</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>
-    - title: Languages
-      html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/sql/">REST API 参考</a></p>
-    - title: SQL Server 工具
-      html: <p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL 数据库管理库包</a></p>
-    - title: SQL Server 驱动程序
-      html: <p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: '<p><a href="/powershell/module/Az.Sql/">Azure PowerShell</a></p><p><a href="/powershell/module/elasticdatabasejobs/#elasticdatabasejobs">Azure PowerShell（弹性 DB）</a></p><p><a href="/cli/azure/sql">Azure CLI</a></p>'
+          - title: Languages
+            html: '<p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/sql/">REST API 参考</a></p>
+          - title: SQL Server 工具
+            html: '<p><a href="https://msdn.microsoft.com/library/mt238365.aspx">SQL Server工具</a></p><p><a href="https://msdn.microsoft.com/library/mt238290.aspx">SQL Server Management Studio (SSMS)</a></p><p><a href="https://msdn.microsoft.com/library/mt204009.aspx">SQL Server Data Tools (SSDT)</a></p><p><a href="https://msdn.microsoft.com/library/ms162802.aspx">BCP</a></p><p><a href="https://msdn.microsoft.com/library/ms162773.aspx">SQLCMD</a></p><p><a href="https://docs.microsoft.com/sql/tools/sqlpackage">SqlPackage</a></p><p><a href="https://www.nuget.org/packages/Microsoft.Azure.Management.Sql">SQL 数据库管理库包</a></p>'
+          - title: SQL Server 驱动程序
+            html: '<p><a href="https://msdn.microsoft.com/library/mt654049.aspx">SQL Server 驱动程序</a></p><p><a href="https://msdn.microsoft.com/library/mt657768.aspx">ADO.NET</a></p><p><a href="https://msdn.microsoft.com/library/mt484311.aspx">JDBC</a></p><p><a href="https://msdn.microsoft.com/library/mt654048.aspx">ODBC</a></p>'

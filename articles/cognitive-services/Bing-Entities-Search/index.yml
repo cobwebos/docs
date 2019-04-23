@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5f02bb073ee541edb66d61632241aa57a778dcb0
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731661"
 documentType: LandingData
 title: 必应实体搜索文档
 metadata:
@@ -23,83 +17,83 @@ metadata:
 abstract:
   description: 必应实体搜索 API 使应用程序能够在搜索查询中获取有关检测到的实体的信息。 实体可以是个人、地点、媒体标题，等等。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-entities-search/overview
+            html: <p>了解必应实体搜索 API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 搜索实体
+          - href: /azure/cognitive-services/bing-entities-search/concepts/search-for-entities
+            html: <p>了解如何使用必应实体搜索 API 搜索实体。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 发送搜索请求
+          - href: /azure/cognitive-services/bing-custom-search/hosted-ui
+            html: <p>了解如何将搜索请求发送到该 API。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 发送搜索查询
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/bing-entities-search/overview
-      html: <p>了解必应实体搜索 API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 搜索实体
-    - href: /azure/cognitive-services/bing-entities-search/concepts/search-for-entities
-      html: <p>了解如何使用必应实体搜索 API 搜索实体。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 发送搜索请求
-    - href: /azure/cognitive-services/bing-custom-search/hosted-ui
-      html: <p>了解如何将搜索请求发送到该 API。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 发送搜索查询
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过发出查询并查看 JSON 响应，开始使用必应实体搜索 API：
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 通过发出查询并查看 JSON 响应，开始使用必应实体搜索 API：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: quickstarts/entity-sdk-csharp-quickstart
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/entity-sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: quickstarts/entity-sdk-node-quickstart
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: quickstarts/php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: quickstarts/entity-sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: quickstarts/ruby
+            text: Ruby
+  - title: 分步教程
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: quickstarts/entity-sdk-csharp-quickstart
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: quickstarts/entity-sdk-java-quickstart
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: quickstarts/entity-sdk-node-quickstart
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: quickstarts/php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: quickstarts/entity-sdk-python-quickstart
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: quickstarts/ruby
-      text: Ruby
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用必应实体搜索 API 开发应用程序：
-  - type: paragraph
-    text: <a href="tutorial-bing-entities-search-single-page-app">单页 Web 应用</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找必应实体搜索 API 的示例：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用必应实体搜索 API 开发应用程序：
+      - type: paragraph
+        text: <a href="tutorial-bing-entities-search-single-page-app">单页 Web 应用</a>
+  - title: 示例
     items:
-    - html: <a href="sdk.md">代码示例</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 查找必应实体搜索 API 的示例：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">代码示例</a>
+  - title: 引用
     items:
-    - title: API
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference">必应实体搜索 API v7</a></p>
-    - title: SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/entitysearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch">Go</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference">必应实体搜索 API v7</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingentitysearchapi?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/entitysearch?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/entitysearch?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-entitysearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/entitysearch">Go</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: daeb5bcbfbc609c293a6b3f55e61aaa29566b768
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728516"
 documentType: LandingData
 title: 必应视频搜索 API 文档
 metadata:
@@ -23,83 +17,83 @@ metadata:
 abstract:
   description: 必应视频搜索 API 可用于将必应的视频搜索功能集成到应用程序中。 通过向此 API 发送搜索查询，可以获取并显示与 bing.com/videos 类似的相关高质量视频。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/bing-video-search/overview
+            html: <p>了解必应视频搜索 API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是必应视频搜索 API？
+          - href: /azure/cognitive-services/bing-video-search/concepts/sending-requests
+            html: <p>了解如何向必应发送视频搜索查询</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 发送搜索查询
+          - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
+            html: <p>了解如何筛选搜索结果、获取视频缩略图以及展开搜索查询</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 从 Web 获取视频
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/bing-video-search/overview
-      html: <p>了解必应视频搜索 API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是必应视频搜索 API？
-    - href: /azure/cognitive-services/bing-video-search/concepts/sending-requests
-      html: <p>了解如何向必应发送视频搜索查询</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 发送搜索查询
-    - href: /azure/cognitive-services/bing-image-search/concepts/bing-image-search-get-images
-      html: <p>了解如何筛选搜索结果、获取视频缩略图以及展开搜索查询</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 从 Web 获取视频
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 使用以下语言在 Web 中搜索视频：
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 使用以下语言在 Web 中搜索视频：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            href: quickstarts/sdk-csharp-quickstart
+            text: 'C&#35;'
+          - image:
+              src: media/index/logo_java.svg
+            href: quickstarts/sdk-java-quickstart
+            text: Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            href: quickstarts/nodejs
+            text: Node.js
+          - image:
+              src: media/index/logo_php.svg
+            href: quickstarts/php
+            text: PHP
+          - image:
+              src: media/index/logo_python.svg
+            href: quickstarts/sdk-python-quickstart
+            text: Python
+          - image:
+              src: media/index/logo_ruby.svg
+            href: quickstarts/ruby
+            text: Ruby
+  - title: 分步教程
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      href: quickstarts/sdk-csharp-quickstart
-      text: C&#35;
-    - image:
-        src: media/index/logo_java.svg
-      href: quickstarts/sdk-java-quickstart
-      text: Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      href: quickstarts/nodejs
-      text: Node.js
-    - image:
-        src: media/index/logo_php.svg
-      href: quickstarts/php
-      text: PHP
-    - image:
-        src: media/index/logo_python.svg
-      href: quickstarts/sdk-python-quickstart
-      text: Python
-    - image:
-        src: media/index/logo_ruby.svg
-      href: quickstarts/ruby
-      text: Ruby
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 使用必应视频搜索 API 开发应用程序：
-  - type: paragraph
-    text: <a href="tutorial-bing-video-search-single-page-app">单页 Web 应用</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找必应视频搜索 API 的示例：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 使用必应视频搜索 API 开发应用程序：
+      - type: paragraph
+        text: <a href="tutorial-bing-video-search-single-page-app">单页 Web 应用</a>
+  - title: 示例
     items:
-    - html: <a href="sdk.md">代码示例</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 查找必应视频搜索 API 的示例：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="sdk.md">代码示例</a>
+  - title: 引用
     items:
-    - title: API
-      html: <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference">必应视频搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference/">必应视频搜索 API v5</a></p>
-    - title: SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideo?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/videosearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/videosearch?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v7-reference">必应视频搜索 API v7</a></p> <p><a href="https://docs.microsoft.com/rest/api/cognitiveservices/bing-video-api-v5-reference/">必应视频搜索 API v5</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/bingvideo?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-videosearch?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/videosearch?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/videosearch">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/videosearch?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

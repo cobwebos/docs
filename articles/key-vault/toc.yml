@@ -1,185 +1,184 @@
-items:
 - name: 密钥保管库文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Key Vault
-    href: key-vault-overview.md
+    - name: 关于 Key Vault
+      href: key-vault-overview.md
 - name: 快速入门
-  items:
-  - name: 设置和检索机密 - CLI
-    href: quick-create-cli.md
-  - name: 设置和检索机密 - PowerShell
-    href: quick-create-powershell.md
-  - name: 设置和检索机密 - 门户
-    href: quick-create-portal.md
-  - name: 设置和检索机密 - .NET
-    href: quick-create-net.md
-  - name: 设置和检索机密 - Node.js
-    href: quick-create-node.md
-  - name: 设置和检索机密 - 资源管理器模板
-    displayName: resource manager, resource manager template, arm
-    href: quick-create-template.md
   expanded: true
+  items:
+    - name: 设置和检索机密 - CLI
+      href: quick-create-cli.md
+    - name: 设置和检索机密 - PowerShell
+      href: quick-create-powershell.md
+    - name: 设置和检索机密 - 门户
+      href: quick-create-portal.md
+    - name: 设置和检索机密 - .NET
+      href: quick-create-net.md
+    - name: 设置和检索机密 - Node.js
+      href: quick-create-node.md
+    - name: 设置和检索机密 - 资源管理器模板
+      displayName: 'resource manager, resource manager template, arm'
+      href: quick-create-template.md
 - name: 教程
   items:
-  - name: Azure Web 应用
-    items:
-    - name: 将 Azure Key Vault 与以 .NET 编写的 Azure Web 应用配合使用
-      href: tutorial-net-create-vault-azure-web-app.md
-  - name: Azure 虚拟机
-    items:
-    - name: Linux 虚拟机
+    - name: Azure Web 应用
       items:
-      - name: .NET
-        href: tutorial-net-linux-virtual-machine.md
-      - name: Python
-        href: tutorial-python-linux-virtual-machine.md
-    - name: Windows 虚拟机
+        - name: 将 Azure Key Vault 与以 .NET 编写的 Azure Web 应用配合使用
+          href: tutorial-net-create-vault-azure-web-app.md
+    - name: Azure 虚拟机
       items:
-      - name: .NET
-        href: tutorial-net-windows-virtual-machine.md
-      - name: Python
-        href: tutorial-python-windows-virtual-machine.md
-  - name: 存储帐户密钥
-    items:
-    - name: 将 Azure CLI 用于托管存储帐户密钥
-      href: key-vault-ovw-storage-keys.md
-    - name: 将 PowerShell 用于托管存储帐户密钥
-      href: key-vault-overview-storage-keys-powershell.md
-  - name: Azure 容器
-    href: ../container-instances/container-instances-managed-identity.md
-  - name: Azure 资源管理器模板
-    href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
-  - name: 设置密钥轮换和审核
-    href: key-vault-key-rotation-log-monitoring.md
+        - name: Linux 虚拟机
+          items:
+            - name: .NET
+              href: tutorial-net-linux-virtual-machine.md
+            - name: Python
+              href: tutorial-python-linux-virtual-machine.md
+        - name: Windows 虚拟机
+          items:
+            - name: .NET
+              href: tutorial-net-windows-virtual-machine.md
+            - name: Python
+              href: tutorial-python-windows-virtual-machine.md
+    - name: 存储帐户密钥
+      items:
+        - name: 将 Azure CLI 用于托管存储帐户密钥
+          href: key-vault-ovw-storage-keys.md
+        - name: 将 PowerShell 用于托管存储帐户密钥
+          href: key-vault-overview-storage-keys-powershell.md
+    - name: Azure 容器
+      href: ../container-instances/container-instances-managed-identity.md
+    - name: Azure 资源管理器模板
+      href: ../azure-resource-manager/resource-manager-keyvault-parameter.md
+    - name: 设置密钥轮换和审核
+      href: key-vault-key-rotation-log-monitoring.md
 - name: 示例
   items:
-  - name: 代码示例
-    href: https://azure.microsoft.com/resources/samples/?service=key-vault
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=key-vault'
 - name: 概念
   items:
-  - name: 什么是密钥保管库？
-    href: key-vault-whatis.md
-  - name: 保护密钥保管库
-    href: key-vault-secure-your-key-vault.md
-  - name: 安全体系
-    href: key-vault-ovw-security-worlds.md
-  - name: 软删除
-    href: key-vault-ovw-soft-delete.md
-  - name: 限制
-    href: key-vault-ovw-throttling.md
-  - name: 虚拟网络服务终结点
-    href: key-vault-overview-vnet-service-endpoints.md
-  - name: 身份验证、请求和响应
-    href: authentication-requests-and-responses.md
-  - name: 常见参数和标头
-    href: common-parameters-and-headers.md
-  - name: 证书
-    items:
-    - name: 关于密钥、机密和证书
-      href: about-keys-secrets-and-certificates.md
-    - name: 证书入门
-      href: certificate-scenarios.md
-    - name: 证书创建方法
-      href: create-certificate.md
-    - name: 监视和管理证书创建
-      href: create-certificate-scenarios.md
-  - name: Azure 的常见安全属性
-    href: key-vault-security-attributes.md
+    - name: 安全
+      items:
+        - name: 安全概述
+          href: overview-security.md
+        - name: 常见安全属性
+          href: key-vault-security-attributes.md
+        - name: 安全体系
+          href: key-vault-ovw-security-worlds.md
+        - name: 保护密钥保管库
+          href: key-vault-secure-your-key-vault.md
+    - name: 什么是密钥保管库？
+      href: key-vault-whatis.md
+    - name: 软删除
+      href: key-vault-ovw-soft-delete.md
+    - name: 限制
+      href: key-vault-ovw-throttling.md
+    - name: 虚拟网络服务终结点
+      href: key-vault-overview-vnet-service-endpoints.md
+    - name: 身份验证、请求和响应
+      href: authentication-requests-and-responses.md
+    - name: 常见参数和标头
+      href: common-parameters-and-headers.md
+    - name: 证书
+      items:
+        - name: 关于密钥、机密和证书
+          href: about-keys-secrets-and-certificates.md
+        - name: 证书入门
+          href: certificate-scenarios.md
+        - name: 证书创建方法
+          href: create-certificate.md
+        - name: 监视和管理证书创建
+          href: create-certificate-scenarios.md
+    - name: Azure 的常见安全属性
+      href: key-vault-security-attributes.md
 - name: 操作指南
   items:
-  - name: Azure Key Vault 日志记录
-    href: key-vault-logging.md
-  - name: 防火墙背后的访问
-    href: key-vault-access-behind-firewall.md
-  - name: 可用性和冗余
-    href: key-vault-disaster-recovery-guidance.md
-  - name: 更改租户 ID
-    href: key-vault-subscription-move-fix.md
-  - name: 使用 Azure CLI 进行创建和管理
-    href: key-vault-manage-with-cli2.md
-  - name: 将 Key Vault 软删除与 CLI 配合使用
-    href: key-vault-soft-delete-cli.md
-  - name: 将 Key Vault 软删除与 Azure PowerShell 配合使用
-    href: key-vault-soft-delete-powershell.md
-  - name: 使用组授予访问权限
-    href: key-vault-group-permissions-for-apps.md
-  - name: 配置防火墙和虚拟网络
-    href: key-vault-network-security.md
-  - name: Java 开发
-    items:
-    - name: 使用 Spring Boot Starter
-      href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
+    - name: Azure Key Vault 日志记录
+      href: key-vault-logging.md
+    - name: 防火墙背后的访问
+      href: key-vault-access-behind-firewall.md
+    - name: 可用性和冗余
+      href: key-vault-disaster-recovery-guidance.md
+    - name: 更改租户 ID
+      href: key-vault-subscription-move-fix.md
+    - name: 使用 Azure CLI 进行创建和管理
+      href: key-vault-manage-with-cli2.md
+    - name: 将 Key Vault 软删除与 CLI 配合使用
+      href: key-vault-soft-delete-cli.md
+    - name: 将 Key Vault 软删除与 Azure PowerShell 配合使用
+      href: key-vault-soft-delete-powershell.md
+    - name: 使用组授予访问权限
+      href: key-vault-group-permissions-for-apps.md
+    - name: 配置防火墙和虚拟网络
+      href: key-vault-network-security.md
+    - name: Java 开发
+      items:
+        - name: 使用 Spring Boot Starter
+          href: /java/azure/spring-framework/configure-spring-boot-starter-java-app-with-azure-key-vault
 - name: 引用
   items:
-  - name: Azure PowerShell
-    href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
-  - name: Azure CLI
-    href: /cli/azure/keyvault
-  - name: .NET
-    href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
-  - name: Java
-    href: /java/api/overview/azure/keyvault?view=azure-java-stable
-  - name: Node.js
-    href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
-  - name: Python
-    href: /python/api/overview/azure/key-vault?view=azure-python
-  - name: REST
-    href: /rest/api/keyvault
-  - name: 最佳实践
-    href: key-vault-best-practices.md
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.keyvault/allversions
-  - name: 身份验证、请求和响应
-    href: authentication-requests-and-responses.md
-  - name: 常见参数和标头
-    href: common-parameters-and-headers.md
-  - name: 开发
-    items:
-    - name: 开发人员指南
-      href: key-vault-developers-guide.md
-    - name: HSM 保护的密钥
-      href: key-vault-hsm-protected-keys.md
-    - name: 迁移到 .NET 2.0
-      href: key-vault-dotnet2api-release-notes.md
-    - name: 保存 Web 应用机密
-      href: vs-secure-secret-appsettings.md
-    - name: 使用 .NET 进行服务身份验证
-      href: service-to-service-authentication.md
-    - name: 使用 Key Vault 连接服务
-      href: vs-key-vault-add-connected-service.md
+    - name: Azure PowerShell
+      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+    - name: Azure CLI
+      href: /cli/azure/keyvault
+    - name: .NET
+      href: /dotnet/api/overview/azure/key-vault?view=azure-dotnet
+    - name: Java
+      href: /java/api/overview/azure/keyvault?view=azure-java-stable
+    - name: Node.js
+      href: /javascript/api/overview/azure/key-vault?view=azure-node-latest
+    - name: Python
+      href: /python/api/overview/azure/key-vault?view=azure-python
+    - name: REST
+      href: /rest/api/keyvault
+    - name: 最佳实践
+      href: key-vault-best-practices.md
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.keyvault/allversions
+    - name: 身份验证、请求和响应
+      href: authentication-requests-and-responses.md
+    - name: 常见参数和标头
+      href: common-parameters-and-headers.md
+    - name: 开发
+      items:
+        - name: 开发人员指南
+          href: key-vault-developers-guide.md
+        - name: HSM 保护的密钥
+          href: key-vault-hsm-protected-keys.md
+        - name: 迁移到 .NET 2.0
+          href: key-vault-dotnet2api-release-notes.md
+        - name: 保存 Web 应用机密
+          href: vs-secure-secret-appsettings.md
+        - name: 使用 .NET 进行服务身份验证
+          href: service-to-service-authentication.md
+        - name: 使用 Key Vault 连接服务
+          href: vs-key-vault-add-connected-service.md
 - name: 资源
   items:
-  - name: 利用 Microsoft Learn 掌握技能
-    href: /learn/browse/?products=azure-key-vault
-  - name: 身份验证、请求和响应
-    href: authentication-requests-and-responses.md
-  - name: 常见参数和标头
-    href: common-parameters-and-headers.md
-  - name: 客户数据
-    href: key-vault-customer-data.md
-  - name: 发行说明
-    href: key-vault-versions.md
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/key-vault/
-  - name: 上市区域
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=key-vault
-  - name: 服务级别协议 (SLA)
-    href: https://azure.microsoft.com/support/legal/sla/key-vault/
-  - name: 服务限制
-    href: key-vault-service-limits.md
-  - name: 服务状态
-    href: https://azure.microsoft.com/status/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=key-vault
-  - name: 博客
-    href: https://blogs.technet.com/b/kv/
-  - name: 产品反馈
-    href: https://feedback.azure.com/forums/906355-azure-key-vault
-ms.openlocfilehash: 884ea065833d34da17084fcee966ff34e4da02c2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678507"
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-key-vault
+    - name: 身份验证、请求和响应
+      href: authentication-requests-and-responses.md
+    - name: 常见参数和标头
+      href: common-parameters-and-headers.md
+    - name: 客户数据
+      href: key-vault-customer-data.md
+    - name: 发行说明
+      href: key-vault-versions.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/key-vault/'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=key-vault'
+    - name: 服务级别协议 (SLA)
+      href: 'https://azure.microsoft.com/support/legal/sla/key-vault/'
+    - name: 服务限制
+      href: key-vault-service-limits.md
+    - name: 服务状态
+      href: 'https://azure.microsoft.com/status/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=key-vault'
+    - name: 博客
+      href: 'https://blogs.technet.com/b/kv/'
+    - name: 产品反馈
+      href: 'https://feedback.azure.com/forums/906355-azure-key-vault'

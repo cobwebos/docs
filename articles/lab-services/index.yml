@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: eec0d8284163811354edd14b2b1b6b3ea8e12af4
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56960116"
 documentType: LandingData
 title: Azure 实验室服务和 Azure 开发测试实验室文档
 metadata:
@@ -12,7 +6,7 @@ metadata:
   description: 了解如何使用 Azure 实验室服务为云中的团队或学生快速设置开发、测试、编程马拉松或教室实验室。 Azure 教程、示例和其他资源演示了如何创建、管理和保护实验室。
   services: lab-services
   author: spelluru
-  manager: 
+  manager: null
   ms.service: lab-services
   ms.tgt_pltfrm: na
   ms.devlang: na
@@ -22,41 +16,41 @@ metadata:
 abstract:
   description: 了解如何使用 Azure 实验室服务为云中的团队或学生快速设置开发、测试、编程马拉松或教室实验室。 Azure 教程、示例和其他资源演示了如何创建、管理和保护实验室。
 sections:
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何通过 Azure 实验室服务来创建和使用<b>教室实验室</b>。
-  - type: list
-    style: ordered
+  - title: 分步教程
     items:
-    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">设置实验室帐户</a>
-    - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">设置教室实验室</a>
-    - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">访问教室实验室</a>
-  - type: paragraph
-    text: 了解如何通过 Azure 开发测试实验室来创建和使用<b>实验室</b>。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何通过 Azure 实验室服务来创建和使用<b>教室实验室</b>。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-lab-account">设置实验室帐户</a>
+          - html: <a href="/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab">设置教室实验室</a>
+          - html: <a href="/azure/lab-services/classroom-labs/tutorial-connect-virtual-machine-classroom-lab">访问教室实验室</a>
+      - type: paragraph
+        text: 了解如何通过 Azure 开发测试实验室来创建和使用<b>实验室</b>。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/lab-services/tutorial-create-custom-lab">设置实验室</a>
+          - html: <a href="/azure/lab-services/tutorial-use-custom-lab">访问实验室</a>
+  - title: 示例
     items:
-    - html: <a href="/azure/lab-services/tutorial-create-custom-lab">设置实验室</a>
-    - html: <a href="/azure/lab-services/tutorial-use-custom-lab">访问实验室</a>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 参考以下示例来使用实验室服务。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 参考以下示例来使用实验室服务。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates">资源管理器模板</a>'
+          - html: <a href="/azure/lab-services/samples-cli">Azure CLI</a>
+          - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
+  - title: 引用
     items:
-    - html: <a href="https://github.com/Azure/azure-devtestlab/tree/master/Samples">资源管理器模板</a>
-    - html: <a href="/azure/lab-services/samples-cli">Azure CLI</a>
-    - html: <a href="/azure/lab-services/samples-powershell">Azure PowerShell</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 命令行
-      html: <p><a href="/cli/azure/lab">Azure CLI</a></p><p><a href="/powershell/module/az.devtestlabs/#devtest_labs">Azure PowerShell</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/dtl">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: '<p><a href="/cli/azure/lab">Azure CLI</a></p><p><a href="/powershell/module/az.devtestlabs/#devtest_labs">Azure PowerShell</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/dtl">REST API</a></p>

@@ -16,12 +16,12 @@ ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b83f5e6735f5b2554af2f5e6c74a7c9095d23fd
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 786ace2ef88fc4b94372041cbdd5bc16586b5193
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579472"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682553"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>快速入门：向 ASP.NET Web 应用添加 Microsoft 登录功能
 
@@ -74,6 +74,7 @@ ms.locfileid: "59579472"
 
 1. 将 zip 文件提取到更靠近根文件夹的本地文件夹（例如，**C:\Azure-Samples**）
 1. 在 Visual Studio 中打开解决方案 (AppModelv2-WebApp-OpenIDConnect-DotNet.sln)
+1. 你可能需要右键单击项目 `AppModelv2-WebApp-OpenIDConnect-DotNet` 和“还原 NuGet 包”，具体取决于 Visual Studio 的版本
 1. 编辑 **Web.config**，将参数 `ClientId` 和 `Tenant` 替换为：
 
     ```xml
@@ -103,7 +104,7 @@ ms.locfileid: "59579472"
 ```powershell
 Install-Package Microsoft.Owin.Security.OpenIdConnect
 Install-Package Microsoft.Owin.Security.Cookies
-Install-Package Microsoft.Owin.Host.SystemWeb
+Install-Package Microsoft.Owin.Host.SystemWeb  
 ```
 
 ### <a name="owin-startup-class"></a>OWIN 启动类

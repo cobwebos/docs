@@ -195,7 +195,7 @@ ms.locfileid: "56960287"
     }
     ```
 
-    将变量的值设置为在执行**[下载 Web 应用机器人](#download-the-web-app-bot)** 部分步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的值。
+    将变量的值设置为在执行 **[下载 Web 应用机器人](#download-the-web-app-bot)** 部分步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的值。
 
 3. 在 Visual Studio 中，启动机器人。 此时将打开一个浏览器窗口，其中会显示 Web 应用机器人的网站，网址为 `http://localhost:3978/`。
 
@@ -207,7 +207,7 @@ ms.locfileid: "56960287"
 
     [![机器人模拟器 v4](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png)](../../../includes/media/cognitive-services-luis/bfv4/bot-emulator-v4.png#lightbox)
 
-3. 输入在执行**[下载 Web 应用机器人](#download-the-web-app-bot)** 部分的步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的机器人机密。 这样，模拟器便可以访问 `.bot` 文件中所有已加密的字段。
+3. 输入在执行 **[下载 Web 应用机器人](#download-the-web-app-bot)** 部分的步骤 1 时从 Azure 机器人服务的“应用程序设置”中复制的机器人机密。 这样，模拟器便可以访问 `.bot` 文件中所有已加密的字段。
 
     ![机器人模拟器机密 v4](../../../includes/media/cognitive-services-luis/bfv4/bot-secret.png)
 

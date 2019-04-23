@@ -1,112 +1,105 @@
-items:
 - name: 文本分析 API 文档
   href: index.yml
 - name: 概述
-  items:
-  - name: 什么是文本分析 API？
-    href: overview.md
-  - name: 示例用户方案
-    href: text-analytics-user-scenarios.md
   expanded: true
+  items:
+    - name: 什么是文本分析 API？
+      href: overview.md
+    - name: 示例用户方案
+      href: text-analytics-user-scenarios.md
 - name: 快速入门
   items:
-  - name: C#
-    href: quickstarts/csharp.md
-  - name: Go
-    href: quickstarts/go.md
-  - name: Java
-    href: quickstarts/java.md
-  - name: Node.js
-    href: quickstarts/nodejs.md
-  - name: PHP
-    href: quickstarts/php.md
-  - name: Python
-    href: quickstarts/python.md
-  - name: Ruby
-    href: quickstarts/ruby.md
+    - name: 'C#'
+      href: quickstarts/csharp.md
+    - name: Go
+      href: quickstarts/go.md
+    - name: Java
+      href: quickstarts/java.md
+    - name: Node.js
+      href: quickstarts/nodejs.md
+    - name: PHP
+      href: quickstarts/php.md
+    - name: Python
+      href: quickstarts/python.md
+    - name: Ruby
+      href: quickstarts/ruby.md
 - name: 教程
   items:
-  - name: 集成 Power BI 以分析客户反馈
-    href: Tutorials/tutorial-power-bi-key-phrases.md
-  - name: Power Apps 中的文本分析
-    href: https://powerapps.microsoft.com/tutorials/cognitive-services-api/
-  - name: 使用 Azure Databricks 针对流数据执行情绪分析
-    href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
-    maintainContext: true
-  - name: 使用 Flask 翻译文本、分析情绪以及合成语音
-    href: https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis
-    maintainContext: true
+    - name: 集成 Power BI 以分析客户反馈
+      href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Power Apps 中的文本分析
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
+    - name: 使用 Azure Databricks 针对流数据执行情绪分析
+      maintainContext: true
+      href: ../../azure-databricks/databricks-sentiment-analysis-cognitive-services.md
+    - name: 使用 Flask 翻译文本、分析情绪以及合成语音
+      maintainContext: true
+      href: 'https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis'
 - name: 操作指南
   items:
-  - name: 注册
-    href: How-tos/text-analytics-how-to-signup.md
-  - name: 获取访问密钥
-    href: How-tos/text-analytics-how-to-access-key.md
-  - name: 调用文本分析 API
-    href: How-tos/text-analytics-how-to-call-api.md
-  - name: 检测语言
-    href: How-tos/text-analytics-how-to-language-detection.md
-  - name: 分析情绪
-    href: How-tos/text-analytics-how-to-sentiment-analysis.md
-  - name: 提取关键短语
-    href: How-tos/text-analytics-how-to-keyword-extraction.md
-  - name: 调用命名实体识别
-    href: How-tos/text-analytics-how-to-entity-linking.md
-  - name: 使用容器
-    items:
-    - name: 安装并运行容器
-      href: how-tos/text-analytics-how-to-install-containers.md
-    - name: 配置容器
-      href: text-analytics-resource-container-config.md
-    - name: 如何在 Azure Kubernetes 服务上运行
-      href: How-tos/text-analytics-how-to-use-container-instance.md
-  - name: 使用文本分析连接服务
-    href: vs-text-connected-service.md
+    - name: 注册
+      href: How-tos/text-analytics-how-to-signup.md
+    - name: 获取访问密钥
+      href: How-tos/text-analytics-how-to-access-key.md
+    - name: 调用文本分析 API
+      href: How-tos/text-analytics-how-to-call-api.md
+    - name: 检测语言
+      href: How-tos/text-analytics-how-to-language-detection.md
+    - name: 分析情绪
+      href: How-tos/text-analytics-how-to-sentiment-analysis.md
+    - name: 提取关键短语
+      href: How-tos/text-analytics-how-to-keyword-extraction.md
+    - name: 调用命名实体识别
+      href: How-tos/text-analytics-how-to-entity-linking.md
+    - name: 使用容器
+      items:
+        - name: 安装并运行容器
+          href: how-tos/text-analytics-how-to-install-containers.md
+        - name: 配置容器
+          href: text-analytics-resource-container-config.md
+        - name: 如何在 Azure Kubernetes 服务上运行
+          href: How-tos/text-analytics-how-to-use-container-instance.md
+    - name: 使用文本分析连接服务
+      href: vs-text-connected-service.md
 - name: 引用
   items:
-  - name: CLI 参考
-    href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
-  - name: PowerShell 参考
-    href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: 文本分析 API
-    href: https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7
-  - name: SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest
-    - name: Go
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics
+    - name: CLI 参考
+      href: 'https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list'
+    - name: PowerShell 参考
+      href: 'https://aka.ms/azure-powershell-cognitiveservices'
+    - name: 文本分析 API
+      href: 'https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7'
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest'
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
 - name: 资源
   items:
-  - name: 使用 MS Flow 识别 Yammer 组中的评论情绪
-    href: https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure
-  - name: 外部和社区内容
-    href: text-analytics-resource-external-community.md
-  - name: 常见问题解答
-    href: text-analytics-resource-faq.md
-  - name: 语言和区域支持
-    href: language-support.md
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/
-  - name: 区域可用性
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/text-analytics-api
-  - name: 订阅密钥
-    href: https://azure.microsoft.com/try/cognitive-services/?api=text-analytics
-  - name: 试试看！
-    href: https://azure.microsoft.com/services/cognitive-services/text-analytics/
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/555922-text-analytics
-ms.openlocfilehash: 6c25fe6b6fa10c592cb9462e9fb712575f61bdd1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788133"
+    - name: 使用 MS Flow 识别 Yammer 组中的评论情绪
+      href: 'https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure'
+    - name: 外部和社区内容
+      href: text-analytics-resource-external-community.md
+    - name: 常见问题解答
+      href: text-analytics-resource-faq.md
+    - name: 语言和区域支持
+      href: language-support.md
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: 订阅密钥
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=text-analytics'
+    - name: 试试看！
+      href: 'https://azure.microsoft.com/services/cognitive-services/text-analytics/'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'
