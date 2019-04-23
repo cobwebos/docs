@@ -80,9 +80,9 @@ ms.locfileid: "52443621"
   
 |属性|类型|Description|  
 |--------------|----------|-----------------|  
-|分页|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
-|筛选|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
-|产品|[产品](api-management-template-data-model-reference.md#Product)实体的集合。|对当前用户可见的产品。|  
+|Paging|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
+|Filtering|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
+|Products|[产品](api-management-template-data-model-reference.md#Product)实体的集合。|对当前用户可见的产品。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   
@@ -205,14 +205,14 @@ ms.locfileid: "52443621"
   
 |属性|类型|Description|  
 |--------------|----------|-----------------|  
-|产品|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
+|Product|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
 |IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
-|限制|数组|此属性已弃用，不应使用。|  
+|Limits|数组|此属性已弃用，不应使用。|  
 |DelegatedSubscriptionEnabled|布尔值|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
 |DelegatedSubscriptionUrl|字符串|委派的订阅 URL（如果启用了委派）。|  
 |IsAgreed|布尔值|如果产品有条款，当前用户是否已同意这些条款。|  
-|订阅|[订阅摘要](api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
+|Subscriptions|[订阅摘要](api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) 实体的集合。|此产品中的 API。|  
 |CannotAddBecauseSubscriptionNumberLimitReached|布尔值|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
 |CannotAddBecauseMultipleSubscriptionsNotAllowed|布尔值|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
