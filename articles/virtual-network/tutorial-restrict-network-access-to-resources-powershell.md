@@ -18,17 +18,17 @@ ms.date: 03/14/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: bf69fe0b817011f63ef0a792e01084aedfb83ddc
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58881273"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795128"
 ---
 # <a name="restrict-network-access-to-paas-resources-with-virtual-network-service-endpoints-using-powershell"></a>使用 PowerShell 通过虚拟网络服务终结点限制对 PaaS 资源的网络访问
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-通过虚拟网络服务终结点，可将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
+通过虚拟网络服务终结点，可以将某些 Azure 服务资源限制为仅允许某个虚拟网络子网通过网络进行访问。 还可以删除对资源的 Internet 访问。 服务终结点提供从虚拟网络到受支持 Azure 服务的直接连接，使你能够使用虚拟网络的专用地址空间访问 Azure 服务。 通过服务终结点发往 Azure 资源的流量始终保留在 Microsoft Azure 主干网络上。 在本文中，学习如何：
 
 * 创建包含一个子网的虚拟网络
 * 添加子网并启用服务终结点
@@ -368,7 +368,7 @@ Get-AzStorageFile `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
 ```azurepowershell-interactive 
 Remove-AzResourceGroup -Name myResourceGroup -Force

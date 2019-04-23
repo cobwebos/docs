@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: ba98328002cafbcede855b1187881d39f1de8fc5
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59279221"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59796420"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建主机池
 
@@ -77,4 +77,4 @@ Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -Use
 完成这些步骤后，添加到桌面应用程序组的用户可以使用支持的远程桌面客户端登录到 Windows 虚拟桌面，并且可以看到会话桌面的资源。
 
 >[!IMPORTANT]
->若要帮助保护您的 Windows 虚拟桌面环境在 Azure 中，我们建议不在 Vm 上打开端口 3389 的入站。 Windows 虚拟桌面不需要开放的入站的端口 3389，用户可以访问主机池的 Vm。 如果您必须打开端口 3389 以进行故障排除，我们建议你使用[中实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。
+>为了帮助保护 Azure 中的 Windows 虚拟桌面环境，我们建议你不要在 VM 上打开入站端口 3389。 Windows 虚拟机不需要打开入站端口 3389，用户就可以访问主机池的 VM。 如果必须打开端口 3389 以进行故障排除，我们建议你使用[实时 VM 访问](https://docs.microsoft.com/en-us/azure/security-center/security-center-just-in-time)。

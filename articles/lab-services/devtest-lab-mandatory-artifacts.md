@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: spelluru
 ms.openlocfilehash: 090236ec3647c7c3e38eb862780a615f854e952b
-ms.sourcegitcommit: 9f4eb5a3758f8a1a6a58c33c2806fa2986f702cb
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58905794"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795400"
 ---
 # <a name="specify-mandatory-artifacts-for-your-lab-in-azure-devtest-labs"></a>为 Azure 开发测试实验室中的实验室指定必需项目
 作为实验室的所有者，可以指定应用于在实验室中创建的每台计算机的必填项目。 假设你要将实验室中的每台计算机连接到企业网络。 在这种情况下，每个实验室用户必须在创建虚拟机期间添加一个域加入项目，以确保其计算机连接到企业域。 换而言之，实验室用户最起码要重新创建一个计算机，以防忘记在计算机上应用必需的项目。 实验室的所有者可将域加入项目指定为实验室中的必需项目。 此步骤可确保每台计算机连接到企业网络，并节省实验室用户的时间和精力。

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/28/2018
 ms.author: spelluru
 ms.openlocfilehash: bd62624406adb006fdcd7d59f72db3fb5e1848a0
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58848566"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798005"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor 中的 Azure 中继指标（预览版）
 Azure 中继指标提供 Azure 订阅中的资源的状态。 通过一组丰富的指标数据，可在命名空间和实体级别评估中继资源的总体运行状况。 这些统计信息非常重要，因为它们能够帮助监视 Azure 中继的状态。 另外，指标也可帮助解决由根本原因造成的问题，而无需联系 Azure 支持。
@@ -47,7 +47,7 @@ Azure Monitor 提供多种访问指标的方法。 可从 [Azure 门户](https:/
 
 ## <a name="billing"></a>计费
 
-在预览版中，目前可免费使用 Azure Monitor 中的指标。 但是，如果使用引入指标数据的其他解决方案，可能就需要收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 如果流式传输到 Azure Monitor 日志以便进行高级分析的指标数据，也会收费的 Azure Monitor 日志。
+在预览版中，目前可免费使用 Azure Monitor 中的指标。 但是，如果使用引入指标数据的其他解决方案，可能就需要收费。 例如，如果将指标数据存档到 Azure 存储帐户，则 Azure 存储会收费。 或者，如果将指标数据流式传输到 Azure Monitor 日志进行高级分析，则 Azure Monitor 日志会收费。
 
 以下指标可提供服务运行状况的概述。 
 

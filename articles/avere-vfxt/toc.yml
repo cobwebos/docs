@@ -1,57 +1,50 @@
-items:
 - name: Avere vFXT 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是 Avere vFXT for Azure？
-    href: avere-vfxt-overview.md
+    - name: 什么是 Avere vFXT for Azure？
+      href: avere-vfxt-overview.md
 - name: 概念
   items:
-  - name: 规划 Avere vFXT 系统
-    href: avere-vfxt-deploy-plan.md
-  - name: Avere vFXT 部署概述
-    href: avere-vfxt-deploy-overview.md
+    - name: 规划 Avere vFXT 系统
+      href: avere-vfxt-deploy-plan.md
+    - name: Avere vFXT 部署概述
+      href: avere-vfxt-deploy-overview.md
 - name: 操作指南
   items:
-  - name: 准备创建 Avere vFXT
-    href: avere-vfxt-prereqs.md
-  - name: 部署 vFXT 群集
-    href: avere-vfxt-deploy.md
-  - name: 访问群集配置工具
-    href: avere-vfxt-cluster-gui.md
-  - name: 启用支持上传
-    href: avere-vfxt-enable-support.md
-  - name: 配置存储
-    href: avere-vfxt-add-storage.md
-  - name: 装载 Avere vFXT 群集
-    href: avere-vfxt-mount-clients.md
-  - name: 将数据移到 Avere vFXT 群集
-    href: avere-vfxt-data-ingest.md
-  - name: 管理 Avere vFXT 群集
-    href: avere-vfxt-manage-cluster.md
-  - name: 自定义群集优化
-    href: avere-vfxt-tuning.md
+    - name: 准备创建 Avere vFXT
+      href: avere-vfxt-prereqs.md
+    - name: 部署 vFXT 群集
+      href: avere-vfxt-deploy.md
+    - name: 访问群集配置工具
+      href: avere-vfxt-cluster-gui.md
+    - name: 启用支持上传
+      href: avere-vfxt-enable-support.md
+    - name: 配置存储
+      href: avere-vfxt-add-storage.md
+    - name: 装载 Avere vFXT 群集
+      href: avere-vfxt-mount-clients.md
+    - name: 将数据移到 Avere vFXT 群集
+      href: avere-vfxt-data-ingest.md
+    - name: 管理 Avere vFXT 群集
+      href: avere-vfxt-manage-cluster.md
+    - name: 自定义群集优化
+      href: avere-vfxt-tuning.md
 - name: 资源
   items:
-  - name: 获得有关系统的帮助
-    href: avere-vfxt-open-ticket.md
-  - name: 演示项目
-    href: avere-vfxt-demo-links.md
-  - name: Avere vFXT for Azure 常见问题解答
-    href: avere-vfxt-faq.md
-  - name: 其他文档
-    items:
-    - name: 补充文档
-      href: avere-vfxt-additional-resources.md
-    - name: Avere 群集 DNS 配置
-      href: avere-vfxt-configure-dns.md
-    - name: 授权非所有者部署 Avere vFXT
-      href: avere-vfxt-non-owner.md
-  - name: 白皮书
-    href: avere-vfxt-whitepapers.md
-ms.openlocfilehash: df511c29ca2477206e2e4ddf9e1fd440da47dedc
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59257546"
+    - name: 获得有关系统的帮助
+      href: avere-vfxt-open-ticket.md
+    - name: 演示项目
+      href: avere-vfxt-demo-links.md
+    - name: Avere vFXT for Azure 常见问题解答
+      href: avere-vfxt-faq.md
+    - name: 其他文档
+      items:
+        - name: 补充文档
+          href: avere-vfxt-additional-resources.md
+        - name: Avere 群集 DNS 配置
+          href: avere-vfxt-configure-dns.md
+        - name: 授权非所有者部署 Avere vFXT
+          href: avere-vfxt-non-owner.md
+    - name: 白皮书
+      href: avere-vfxt-whitepapers.md

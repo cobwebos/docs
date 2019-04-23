@@ -11,11 +11,11 @@ ms.date: 02/11/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 1d7874d7c8d04e3d3565cdfe2e52e49c538b3091
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009795"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795808"
 ---
 # <a name="configure-complexity-requirements-for-passwords-in-azure-active-directory-b2c"></a>配置 Azure Active Directory B2C 中的密码复杂性要求
 
