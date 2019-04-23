@@ -34,7 +34,7 @@ ms.locfileid: "57568985"
 | :------------ |:------------: |:---------------:| :-----|
 | startTime | Datetime  | true | 有效时段的开始日期时间。 |
 | endTime   | Datetime  | true |  有效时段的结束日期时间。 |
-| recurrenceType | 字符串 | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值为 `Daily`。|
+| recurrenceType | string | false |   时段的重复类型。 值可为 `Daily`、`Weekly`、`Monthly` 或 `Yearly`。 默认值为 `Daily`。|
 | businessDayOnly | Boolean | false |  指示数据是否仅在工作日有效。 默认值为 `false`。|
 
 
