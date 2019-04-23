@@ -26,7 +26,7 @@ HDInsight 还为 Apache Hadoop 群集提供了 Starburst Presto 应用程序。 
 > 本文中的步骤需要使用 Linux 的 HDInsight 3.5 Hadoop 群集。 Linux 是 HDInsight 3.4 或更高版本上使用的唯一操作系统。 有关详细信息，请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。
 
 ## <a name="what-is-presto"></a>什么是 Presto？
-[Presto](https://prestodb.io/overview.html) 是适用于大数据的快速分布式 SQL 查询引擎。 Presto 适合用于对 PB 量级的数据进行交互式查询。 有关 Presto 的组件及其如何配合工作的详细信息，请参阅 [Presto 的概念](https://github.com/prestodb/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst)。
+[Presto](https://prestosql.io/overview.html) 是适用于大数据的快速分布式 SQL 查询引擎。 Presto 适合用于对 PB 量级的数据进行交互式查询。 有关 Presto 的组件及其如何配合工作的详细信息，请参阅 [Presto 的概念](https://github.com/prestosql/presto/blob/master/presto-docs/src/main/sphinx/overview/concepts.rst)。
 
 > [!WARNING]  
 > HDInsight 群集提供的组件受到完全支持。 Microsoft 支持部门会帮助找出并解决与这些组件相关的问题。
