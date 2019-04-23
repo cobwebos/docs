@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: b97db09c477a940ca36129316613f5ceb4eb13b1
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59256186"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789102"
 ---
 # <a name="automate-os-and-framework-patching-with-acr-tasks"></a>使用 ACR 任务自动执行 OS 和框架修补
 
@@ -99,7 +99,7 @@ ACR 任务旨在用作容器生命周期基元。 例如，将 ACR 任务集成�
 
 如果你已准备好自动执行操作系统和 framework 修补通过生成容器映像在云中，请查看由三部分[ACR 任务教程系列](container-registry-tutorial-quick-task.md)。
 
-（可选） 安装[适用于 Visual Studio Code 的 Docker 扩展](https://code.visualstudio.com/docs/azure/docker)并[Azure 帐户](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)扩展可以使用 Azure 容器注册表。 拉取和将映像推送到 Azure 容器注册表，或运行 ACR 任务，在 Visual Studio Code。
+可以选择安装[适用于 Visual Studio Code 的 Docker 扩展](https://code.visualstudio.com/docs/azure/docker)以及适用于 Azure 容器注册表的 [Azure 帐户](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)扩展。 通过 Azure 容器注册表拉取和推送映像，或者运行 ACR 任务，这一切都可以在 Visual Studio Code 中进行。
 
 <!-- LINKS - External -->
 [base-alpine]: https://hub.docker.com/_/alpine/

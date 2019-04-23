@@ -13,11 +13,11 @@ ms.reviewer: sstein, carlrab, bonova, jovanpop
 manager: craigg
 ms.date: 03/13/2019
 ms.openlocfilehash: 9ca9506ad9ca826349b2815e504e9ba8bf976faa
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359675"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59788049"
 ---
 # <a name="quickstart-configure-a-point-to-site-connection-to-an-azure-sql-database-managed-instance-from-on-premises"></a>快速入门：配置从本地到 Azure SQL 数据库托管实例的点到站点连接
 
@@ -28,12 +28,12 @@ ms.locfileid: "59359675"
 本快速入门：
 
 - 从[创建托管实例](sql-database-managed-instance-get-started.md)中创建的资源着手。
-- 需要 PowerShell 5.1 和 AZ PowerShell 1.4.0 或更高版本上的本地客户端计算机。 如有必要，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)的说明。
+- 本地客户端计算机需要 PowerShell 5.1 和 AZ PowerShell 1.4.0 或更高版本。 如有必要，请参阅[安装 Azure PowerShell 模块](https://docs.microsoft.com/powershell/azure/install-az-ps#install-the-azure-powershell-module)的说明。
 - 本地客户端计算机需要最新版本的 [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/sql-server-management-studio-ssms) (SSMS)。
 
 ## <a name="attach-a-vpn-gateway-to-your-managed-instance-virtual-network"></a>将 VPN 网关附加到托管实例虚拟网络
 
-1. 你的本地客户端计算机上打开 PowerShell。
+1. 在本地客户端计算机上打开 PowerShell。
 
 2. 复制此 PowerShell 脚本。 此脚本将 VPN 网关附加到在[创建托管实例](sql-database-managed-instance-get-started.md)快速入门中创建的托管实例虚拟网络。 此脚本执行以下任务：
 
@@ -56,14 +56,14 @@ ms.locfileid: "59359675"
      ```
 
      > [!IMPORTANT]
-     > 若要使用 Azure PowerShell Resource Manager 模块，而不是 Az 模块，请使用以下 cmdlet:`attachVPNGateway.ps1`而不是`attachVPNGatewayAz.ps1`cmdlet。
+     > 若要使用 Azure PowerShell 资源管理器模块而不是 Az 模块，请使用 `attachVPNGateway.ps1` cmdlet 而不是 `attachVPNGatewayAz.ps1` cmdlet。
 
 3. 将该脚本粘贴到 PowerShell 窗口并提供所需的参数。 `<subscriptionId>`、`<resourceGroup>`、`<virtualNetworkName>` 的值应匹配用于[创建托管实例](sql-database-managed-instance-get-started.md)快速入门的值。 `<certificateNamePrefix>` 的值可以是所选字符串。
 
 4. 执行 PowerShell 脚本。
 
 > [!IMPORTANT]
-> 执行操作之前，请继续完成 PowerShell 脚本。
+> 在 PowerShell 脚本完成前，请勿继续操作。
 
 ## <a name="create-a-vpn-connection-to-your-managed-instance"></a>创建连接到托管实例的 VPN 连接
 
@@ -72,17 +72,17 @@ ms.locfileid: "59359675"
 3. 选择“点到站点配置”，然后选择“下载 VPN 客户端”。
 
     ![下载 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/download-vpn-client.png)  
-4. 你的本地客户端计算机上，从 zip 文件中提取文件，然后使用提取的文件打开文件夹。
-5. 打开**WindowsAmd64**文件夹，然后打开**VpnClientSetupAmd64.exe**文件。
+4. 在本地客户端计算机上，从 zip 文件中提取文件，然后打开包含已提取文件的文件夹。
+5. 打开 **WindowsAmd64** 文件夹，然后打开 **VpnClientSetupAmd64.exe** 文件。
 6. 如果收到“Windows 已保护你的电脑”消息，请单击“更多信息”，然后单击“仍然运行”。
 
     ![安装 VPN 客户端](./media/sql-database-managed-instance-configure-p2s/vpn-client-defender.png)\
-7. 在用户帐户控制对话框中，单击**是**以继续。
-8. 在引用虚拟网络对话框中，选择**是**来安装你的虚拟网络的 VPN 客户端。
+7. 在“用户帐户控制”对话框中单击“是”，继续下一步。
+8. 在引用虚拟网络的对话框中选择“是”，为虚拟网络安装 VPN 客户端。
 
 ## <a name="connect-to-the-vpn-connection"></a>连接到 VPN 连接
 
-1. 转到**VPN**中**网络和 Internet**的本地客户端计算机上，选择托管实例虚拟网络以建立与此 VNet 的连接。 在下图中，VNet 命名为 **MyNewVNet**。
+1. 在本地客户端计算机上的“网络和 Internet”中转到“VPN”，选择“托管实例”虚拟网络，以便建立到此 VNet 的连接。 在下图中，VNet 命名为 **MyNewVNet**。
 
     ![VPN 连接](./media/sql-database-managed-instance-configure-p2s/vpn-connection.png)  
 2. 选择“连接”。

@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: cd9e77e09e2a2fd5fe1108e98da028d26fc623c7
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58863043"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59786814"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>适用于 IoT 的 azure 安全中心常见问题  
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文提供适用于 IoT 的一些常见问题和解答有关 Azure 安全中心 (ASC) 列表。 
