@@ -1,55 +1,48 @@
-items:
 - name: Azure 门户文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于 Azure 门户
-    href: azure-portal-overview.md
-  - name: 支持的浏览器和设备
-    href: azure-portal-supported-browsers-devices.md
+    - name: 关于 Azure 门户
+      href: azure-portal-overview.md
+    - name: 支持的浏览器和设备
+      href: azure-portal-supported-browsers-devices.md
 - name: 概念
   items:
-  - name: 创建并共享 Azure 仪表板
-    href: azure-portal-dashboards.md
-  - name: 使用基于角色的访问控制共享仪表板
-    href: azure-portal-dashboard-share-access.md
-  - name: 以编程方式创建 Azure 仪表板
-    href: azure-portal-dashboards-create-programmatically.md
+    - name: 创建并共享 Azure 仪表板
+      href: azure-portal-dashboards.md
+    - name: 使用基于角色的访问控制共享仪表板
+      href: azure-portal-dashboard-share-access.md
+    - name: 以编程方式创建 Azure 仪表板
+      href: azure-portal-dashboards-create-programmatically.md
 - name: 操作指南
   items:
-  - name: 启用高对比度或更改主题
-    href: azure-portal-change-theme-high-contrast.md
-  - name: 对收藏夹执行添加、删除和排序操作
-    href: azure-portal-add-remove-sort-favorites.md
-  - name: 使用自定义 markdown 磁贴
-    href: azure-portal-markdown-tile.md
-  - name: 导出或删除用户设置
-    href: azure-portal-export-delete-settings.md
-  - name: Azure 门户“操作说明”视频系列
-    href: https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR
+    - name: 启用高对比度或更改主题
+      href: azure-portal-change-theme-high-contrast.md
+    - name: 对收藏夹执行添加、删除和排序操作
+      href: azure-portal-add-remove-sort-favorites.md
+    - name: 使用自定义 markdown 磁贴
+      href: azure-portal-markdown-tile.md
+    - name: 导出或删除用户设置
+      href: azure-portal-export-delete-settings.md
+    - name: Azure 门户“操作说明”视频系列
+      href: 'https://www.youtube.com/playlist?list=PLLasX02E8BPBKgXP4oflOL29TtqTzwhxR'
 - name: 引用
   items:
-  - name: 键盘快捷方式
-    href: azure-portal-keyboard-shortcuts.md
-  - name: Azure 仪表板结构
-    href: azure-portal-dashboards-structure.md
+    - name: 键盘快捷方式
+      href: azure-portal-keyboard-shortcuts.md
+    - name: Azure 仪表板结构
+      href: azure-portal-dashboards-structure.md
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/updates/
-  - name: 利用 Microsoft Learn 掌握技能
-    href: /learn/browse/?products=azure-portal
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 区域可用性
-    href: https://azure.microsoft.com/regions/services/
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-management-portal
-  - name: Azure 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest
-ms.openlocfilehash: 3846b9198d79be1a9580919a97e568c6a2467b12
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047979"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/updates/'
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-portal
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-management-portal'
+    - name: Azure 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=azure-portal&sort=newest'

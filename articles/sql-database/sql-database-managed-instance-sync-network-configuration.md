@@ -13,11 +13,11 @@ ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 12/13/2018
 ms.openlocfilehash: 0d7920080fd61389741fbe785f5141003bef5251
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358789"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797260"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan"></a>Azure 应用服务托管计划的同步网络配置
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: sogup
 ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59359961"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794771"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 

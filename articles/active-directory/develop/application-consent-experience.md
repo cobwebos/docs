@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: zachowd
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7de892143e1c69953cc60429ea0d24df194f0df
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59500475"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59795179"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>了解 Azure AD 应用程序许可体验
 
