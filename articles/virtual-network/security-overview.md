@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2018
 ms.author: malop;kumud
 ms.openlocfilehash: 6b100846ec08ca1bdda49d0d7bce9eb78ecf019b
-ms.sourcegitcommit: 41015688dc94593fd9662a7f0ba0e72f044915d6
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59501121"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798683"
 ---
 # <a name="security-groups"></a>安全组
 <a name="network-security-groups"></a>
@@ -96,19 +96,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|优先度|源|源端口|目标|目标端口|协议|Access|
+|优先度|源|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|All|允许|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|优先度|源|源端口|目标|目标端口|协议|Access|
+|优先度|源|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|All|允许|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|优先度|源|源端口|目标|目标端口|协议|Access|
+|优先度|源|源端口|目标|目标端口|协议|访问|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|All|拒绝|
 
@@ -116,19 +116,19 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | All | 允许 |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | Internet | 0-65535 | All | 允许 |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | All | 拒绝 |
 
@@ -148,7 +148,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 若要让流量从 Internet 流到 Web 服务器，此规则是必需的。 由于来自 Internet 的入站流量被 [DenyAllInbound](#denyallinbound) 默认安全规则拒绝，因此 *AsgLogic* 或 *AsgDb* 应用程序安全组不需更多规则。
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 100 | Internet | * | AsgWeb | 80 | TCP | 允许 |
 
@@ -156,7 +156,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 由于 [AllowVNetInBound](#allowvnetinbound) 默认安全规则允许在同一虚拟网络中的资源之间进行的所有通信，因此需要使用此规则来拒绝来自所有资源的流量。
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 120 | * | * | AsgDb | 1433 | All | 拒绝 |
 
@@ -164,7 +164,7 @@ Azure 在你所创建的每个网络安全组中创建以下默认规则：
 
 此规则允许从 *AsgLogic* 应用程序安全组到 *AsgDb* 应用程序安全组的流量。 此规则的优先级高于 *Deny-Database-All* 规则的优先级。 因此，此规则在 *Deny-Database-All* 规则之前处理，这样系统就会允许来自 *AsgLogic* 应用程序安全组的流量，而阻止所有其他流量。
 
-|优先度|源|源端口| 目标 | 目标端口 | 协议 | Access |
+|优先度|源|源端口| 目标 | 目标端口 | 协议 | 访问 |
 |---|---|---|---|---|---|---|
 | 110 | AsgLogic | * | AsgDb | 1433 | TCP | 允许 |
 

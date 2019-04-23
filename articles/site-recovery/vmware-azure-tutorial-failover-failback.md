@@ -10,11 +10,11 @@ ms.date: 04/08/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 9206e751fadab7a09c696fbe262aecdde002ae74
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357211"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59797659"
 ---
 # <a name="fail-over-and-fail-back-vmware-vms"></a>故障转移和故障回复 VMware VM
 
@@ -35,7 +35,7 @@ ms.locfileid: "59357211"
 ## <a name="before-you-start"></a>开始之前
 完成前一篇教程：
 
-1. 确保已[设置 Azure](tutorial-prepare-azure.md)，以便能够将本地 VMware VM、Hyper-V VM 和物理机灾难恢复到 Azure。
+1. 确保已[设置 Azure](tutorial-prepare-azure.md)，以便能够将本地 VMware VM、Hyper-V VM 和物理计算机灾难恢复到 Azure。
 2. 准备本地 [VMware](vmware-azure-tutorial-prepare-on-premises.md) 或 [Hyper-V](hyper-v-prepare-on-premises-tutorial.md) 环境，以实现灾难恢复。 若要为物理服务器设置灾难恢复，请查看[支持矩阵](vmware-physical-secondary-support-matrix.md)。
 3. 为 [VMware VM](vmware-azure-tutorial.md)、[Hyper-V VM](hyper-v-azure-tutorial.md) 或[物理机](physical-azure-disaster-recovery.md)设置灾难恢复。
 4. 运行[灾难恢复演练](tutorial-dr-drill-azure.md)，以确保一切按预期方式进行。

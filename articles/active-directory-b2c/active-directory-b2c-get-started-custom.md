@@ -11,11 +11,11 @@ ms.date: 04/03/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: b414529d7756812f1e1e16d2d0184c8472c0c55f
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58916744"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59798054"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的自定义策略入门
 
@@ -42,7 +42,7 @@ ms.locfileid: "58916744"
 3. 在“名称”中，请输入 `TokenSigningKeyContainer`。 可能会自动添加前缀 `B2C_1A_`。
 4. 对于“密钥类型”，请选择“RSA”。
 5. 对于“密钥用法”，请选择“签名”。
-6. 单击“创建”。
+6. 单击**创建**。
 
 ### <a name="create-the-encryption-key"></a>创建加密密钥
 
@@ -51,7 +51,7 @@ ms.locfileid: "58916744"
 3. 在“名称”中，请输入 `TokenEncryptionKeyContainer`。 可能会自动添加前缀 `B2C_1A`_。
 4. 对于“密钥类型”，请选择“RSA”。
 5. 对于“密钥用法”，请选择“加密”。
-6. 单击“创建”。
+6. 单击**创建**。
 
 ### <a name="create-the-facebook-key"></a>创建 Facebook 密钥
 
@@ -62,7 +62,7 @@ ms.locfileid: "58916744"
 3. 对于“名称”，请输入 `FacebookSecret`。 可能会自动添加前缀 `B2C_1A_`。
 4. 在“机密”中，输入 developers.facebook.com 提供的 Facebook 机密，或输入 `0` 作为占位符。 此值是密码，而不是应用程序 id。
 5. 对于“密钥用法”，请选择“签名”。
-6. 单击“创建”。
+6. 单击**创建**。
 
 ## <a name="register-identity-experience-framework-applications"></a>注册标识体验框架应用程序
 
@@ -75,7 +75,7 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 3. 对于“名称”，请输入 `IdentityExperienceFramework`。
 4. 对于“应用程序类型”，请选择“Web 应用/API”。
 5. 对于“登录 URL”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `your-tenant-name` 是你的 Azure AD B2C 租户域名。
-6. 单击“创建”。 
+6. 单击**创建**。 
 7. 创建后，复制应用程序 ID 并将其保存以供日后使用。
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>注册 ProxyIdentityExperienceFramework 应用程序
@@ -84,7 +84,7 @@ Azure AD B2C 要求注册两个用于注册和登录用户的应用程序：Iden
 2. 对于“名称”，请输入 `ProxyIdentityExperienceFramework`。
 3. 对于“应用程序类型”，请选择“本机”。
 4. 对于“重定向 URI”，请输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com`，其中 `yourtenant` 是你的 Azure AD B2C 租户。
-5. 单击“创建”。 创建后，复制应用程序 ID 并将其保存以供日后使用。
+5. 单击**创建**。 创建后，复制应用程序 ID 并将其保存以供日后使用。
 6. 在“设置”页上，选择“所需权限”，然后选择“添加”。
 7. 选择**选择 API**，搜索并选择**IdentityExperienceFramework**，然后单击**选择**。
 9. 选择“访问 IdentityExperienceFramework”旁边的复选框，单击“选择”，然后单击“完成”。

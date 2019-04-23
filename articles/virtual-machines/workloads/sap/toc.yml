@@ -1,239 +1,232 @@
-items:
 - name: 概述
   items:
-  - name: 入门
-    href: get-started.md
-  - name: 认证
-    href: sap-certifications.md
+    - name: 入门
+      href: get-started.md
+    - name: 认证
+      href: sap-certifications.md
 - name: Azure 上的 SAP HANA（大型实例）
   items:
-  - name: 概述
-    items:
-    - name: 什么是 Azure 上的 SAP HANA（大型实例）？
-      href: hana-overview-architecture.md
-    - name: 了解术语
-      href: hana-know-terms.md
-    - name: 认证
-      href: hana-certification.md
-    - name: 对 HLI 可用的 SKU
-      href: hana-available-skus.md
-    - name: 调整大小
-      href: hana-sizing.md
-    - name: 加入要求
-      href: hana-onboarding-requirements.md
-    - name: SAP HANA 数据分层和扩展节点
-      href: hana-data-tiering-extension-nodes.md
-    - name: 操作模型和责任
-      href: hana-operations-model.md
-  - name: 体系结构
-    items:
-    - name: 一般体系结构
-      href: hana-architecture.md
-    - name: 网络体系结构
-      href: hana-network-architecture.md
-    - name: 存储体系结构
-      href: hana-storage-architecture.md
-    - name: HLI 支持的方案
-      href: hana-supported-scenario.md
-  - name: 基础结构和连接
-    items:
-    - name: HLI 部署
-      href: hana-overview-infrastructure-connectivity.md
-    - name: 将 Azure VM 连接到 HANA 大型实例
-      href: hana-connect-azure-vm-large-instances.md
-    - name: 将 VNet 连接到 HANA 大型实例 ExpressRoute
-      href: hana-connect-vnet-express-route.md
-    - name: 其他网络要求
-      href: hana-additional-network-requirements.md
-  - name: 安装 SAP HANA
-    items:
-    - name: 验证配置
-      href: hana-installation.md
-    - name: 示例 HANA 安装
-      href: hana-example-installation.md
-  - name: 高可用性和灾难恢复
-    items:
-    - name: 选项和注意事项
-      href: hana-overview-high-availability-disaster-recovery.md
-    - name: 备份和还原
-      href: hana-backup-restore.md
-    - name: 原则和准备工作
-      href: hana-concept-preparation.md
-    - name: 灾难恢复故障转移过程
-      href: hana-failover-procedure.md
-  - name: 故障排除和监视
-    items:
-    - name: 监视 HLI
-      href: troubleshooting-monitoring.md
-    - name: HANA 端的监视和故障排除
-      href: hana-monitor-troubleshoot.md
-  - name: 如何
-    items:
-    - name: 通过 Azure 门户控制 Azure HANA 大型实例
-      href: hana-li-portal.md
-    - name: 使用 STONITH 进行 HA 设置
-      href: ha-setup-with-stonith.md
-    - name: 类型 II SKU 的 OS 备份
-      href: os-backup-type-ii-skus.md
-    - name: HANA 大型实例的 OS 升级
-      href: os-upgrade-hana-large-instance.md
-    - name: 为 SUSE Linux 安装 SMT 服务器
-      href: hana-setup-smt.md
+    - name: 概述
+      items:
+        - name: 什么是 Azure 上的 SAP HANA（大型实例）？
+          href: hana-overview-architecture.md
+        - name: 了解术语
+          href: hana-know-terms.md
+        - name: 认证
+          href: hana-certification.md
+        - name: 对 HLI 可用的 SKU
+          href: hana-available-skus.md
+        - name: 调整大小
+          href: hana-sizing.md
+        - name: 加入要求
+          href: hana-onboarding-requirements.md
+        - name: SAP HANA 数据分层和扩展节点
+          href: hana-data-tiering-extension-nodes.md
+        - name: 操作模型和责任
+          href: hana-operations-model.md
+    - name: 体系结构
+      items:
+        - name: 一般体系结构
+          href: hana-architecture.md
+        - name: 网络体系结构
+          href: hana-network-architecture.md
+        - name: 存储体系结构
+          href: hana-storage-architecture.md
+        - name: HLI 支持的方案
+          href: hana-supported-scenario.md
+    - name: 基础结构和连接
+      items:
+        - name: HLI 部署
+          href: hana-overview-infrastructure-connectivity.md
+        - name: 将 Azure VM 连接到 HANA 大型实例
+          href: hana-connect-azure-vm-large-instances.md
+        - name: 将 VNet 连接到 HANA 大型实例 ExpressRoute
+          href: hana-connect-vnet-express-route.md
+        - name: 其他网络要求
+          href: hana-additional-network-requirements.md
+    - name: 安装 SAP HANA
+      items:
+        - name: 验证配置
+          href: hana-installation.md
+        - name: 示例 HANA 安装
+          href: hana-example-installation.md
+    - name: 高可用性和灾难恢复
+      items:
+        - name: 选项和注意事项
+          href: hana-overview-high-availability-disaster-recovery.md
+        - name: 备份和还原
+          href: hana-backup-restore.md
+        - name: 原则和准备工作
+          href: hana-concept-preparation.md
+        - name: 灾难恢复故障转移过程
+          href: hana-failover-procedure.md
+    - name: 故障排除和监视
+      items:
+        - name: 监视 HLI
+          href: troubleshooting-monitoring.md
+        - name: HANA 端的监视和故障排除
+          href: hana-monitor-troubleshoot.md
+    - name: 如何
+      items:
+        - name: 通过 Azure 门户控制 Azure HANA 大型实例
+          href: hana-li-portal.md
+        - name: 使用 STONITH 进行 HA 设置
+          href: ha-setup-with-stonith.md
+        - name: 类型 II SKU 的 OS 备份
+          href: os-backup-type-ii-skus.md
+        - name: HANA 大型实例的 OS 升级
+          href: os-upgrade-hana-large-instance.md
+        - name: 为 SUSE Linux 安装 SMT 服务器
+          href: hana-setup-smt.md
 - name: Azure 虚拟机上的 SAP HANA
   items:
-  - name: 单实例 SAP HANA 安装
-    href: hana-get-started.md
-  - name: S/4 HANA 或 BW/4 HANA SAP CAL 部署指南
-    href: cal-s4h.md
-  - name: Azure 上的 SAP HANA 基础结构配置和操作
-    href: hana-vm-operations.md
-  - name: Azure 虚拟机中的 SAP HANA 可用性
-    items:
-    - name: Azure SAP HANA 可用性概述
-      href: sap-hana-availability-overview.md
-    - name: 一个 Azure 区域内的 Azure SAP HANA 可用性
-      href: sap-hana-availability-one-region.md
-    - name: 跨 Azure 区域的 Azure SAP HANA 可用性
-      href: sap-hana-availability-across-regions.md
-    - name: 在 SLES 上设置 SAP HANA 系统复制
-      href: sap-hana-high-availability.md
-    - name: 在 RHEL 上设置 SAP HANA 系统复制
-      href: sap-hana-high-availability-rhel.md
-    - name: 排查 SAP HANA 横向扩展和 SLES 上的 Pacemaker 问题
-      href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
-  - name: SAP HANA 备份概述
-    href: sap-hana-backup-guide.md
-  - name: SAP HANA 文件级备份
-    href: sap-hana-backup-file-level.md
-  - name: SAP HANA 存储快照备份
-    href: sap-hana-backup-storage-snapshots.md
-- name: Azure 虚拟机上的 SAP NetWeaver 和 Business One
-  items:
-  - name: SAP 工作负荷规划和部署清单
-    href: sap-deployment-checklist.md
-  - name: 在 Azure 上规划和实施 SAP NetWeaver
-    href: planning-guide.md
-  - name: SAP NetWeaver 部署指南
-    href: deployment-guide.md
-  - name: 适用于 SAP 工作负荷的 DBMS 部署指南
-    items:
-    - name: 适用于 SAP 工作负荷的常规 Azure 虚拟机 DBMS 部署
-      href: dbms_guide_general.md
-    - name: 适用于 SAP 工作负荷的 SQL Server Azure 虚拟机 DBMS 部署
-      href: dbms_guide_sqlserver.md
-    - name: 适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署
-      href: dbms_guide_oracle.md
-    - name: 适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
-      href: dbms_guide_ibm.md
-    - name: SUSE Linux Enterprise Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
-      href: dbms-guide-ha-ibm.md
-    - name: 适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
-      href: dbms_guide_sapase.md
-    - name: Azure 上的 SAP MaxDB、liveCache 和内容服务器部署
-      href: dbms_guide_maxdb.md
+    - name: 单实例 SAP HANA 安装
+      href: hana-get-started.md
+    - name: S/4 HANA 或 BW/4 HANA SAP CAL 部署指南
+      href: cal-s4h.md
+    - name: Azure 上的 SAP HANA 基础结构配置和操作
+      href: hana-vm-operations.md
     - name: Azure 虚拟机中的 SAP HANA 可用性
       items:
-      - name: Azure SAP HANA 可用性概述
-        href: sap-hana-availability-overview.md
-      - name: 一个 Azure 区域内的 Azure SAP HANA 可用性
-        href: sap-hana-availability-one-region.md
-      - name: 跨 Azure 区域的 Azure SAP HANA 可用性
-        href: sap-hana-availability-across-regions.md
-  - name: Azure 虚拟机上的 SAP Business One
-    href: business-one-azure.md
-  - name: Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南
-    href: cal-ides-erp6-erp7-sp3-sql.md
-  - name: 适用于 Azure 的 SAP LaMa 连接器
-    href: lama-installation.md
-  - name: Windows 和 Linux 上的高可用性 (HA)
-    items:
-    - name: 概述
-      href: sap-high-availability-guide-start.md
-    - name: 高可用性体系结构
+        - name: Azure SAP HANA 可用性概述
+          href: sap-hana-availability-overview.md
+        - name: 一个 Azure 区域内的 Azure SAP HANA 可用性
+          href: sap-hana-availability-one-region.md
+        - name: 跨 Azure 区域的 Azure SAP HANA 可用性
+          href: sap-hana-availability-across-regions.md
+        - name: 在 SLES 上设置 SAP HANA 系统复制
+          href: sap-hana-high-availability.md
+        - name: 在 RHEL 上设置 SAP HANA 系统复制
+          href: sap-hana-high-availability-rhel.md
+        - name: 排查 SAP HANA 横向扩展和 SLES 上的 Pacemaker 问题
+          href: hana-vm-troubleshoot-scale-out-ha-on-sles.md
+    - name: SAP HANA 备份概述
+      href: sap-hana-backup-guide.md
+    - name: SAP HANA 文件级备份
+      href: sap-hana-backup-file-level.md
+    - name: SAP HANA 存储快照备份
+      href: sap-hana-backup-storage-snapshots.md
+- name: Azure 虚拟机上的 SAP NetWeaver 和 Business One
+  items:
+    - name: SAP 工作负荷规划和部署清单
+      href: sap-deployment-checklist.md
+    - name: 在 Azure 上规划和实施 SAP NetWeaver
+      href: planning-guide.md
+    - name: SAP NetWeaver 部署指南
+      href: deployment-guide.md
+    - name: 适用于 SAP 工作负荷的 DBMS 部署指南
       items:
-      - name: HA 体系结构和方案
-        href: sap-high-availability-architecture-scenarios.md
-      - name: 更高可用性体系结构和方案
-        href: sap-higher-availability-architecture-scenarios.md
-      - name: 使用 Azure 可用性区域的 SAP 工作负荷配置
-        href: sap-ha-availability-zones.md
-      - name: 使用共享磁盘在 Windows 上为 (A)SCS 实例提供 HA
-        href: sap-high-availability-guide-wsfc-shared-disk.md
-      - name: 使用 SOFS 文件共享在 Windows 上为 (A)SCS 实例提供 HA
-        href: sap-high-availability-guide-wsfc-file-share.md
-      - name: 在 SUSE Linux 上为 (A)SCS 实例提供 HA
-        href: high-availability-guide-suse.md
-      - name: 通过 Azure NetApp 文件实现用于 (A)SCS 实例的 SUSE Linux 上的 HA
-        href: high-availability-guide-suse-netapp-files.md
-      - name: 在 Red Hat Enterprise Linux 上为 (A)SCS 实例提供 HA
-        href: high-availability-guide-rhel.md
-    - name: Azure 基础结构准备
+        - name: 适用于 SAP 工作负荷的常规 Azure 虚拟机 DBMS 部署
+          href: dbms_guide_general.md
+        - name: 适用于 SAP 工作负荷的 SQL Server Azure 虚拟机 DBMS 部署
+          href: dbms_guide_sqlserver.md
+        - name: 适用于 SAP 工作负荷的 Oracle Azure 虚拟机 DBMS 部署
+          href: dbms_guide_oracle.md
+        - name: 适用于 SAP 工作负荷的 IBM Db2 Azure 虚拟机 DBMS 部署
+          href: dbms_guide_ibm.md
+        - name: SUSE Linux Enterprise Server 上 Azure VM 中 IBM Db2 LUW 的高可用性
+          href: dbms-guide-ha-ibm.md
+        - name: 适用于 SAP 工作负荷的 SAP ASE Azure 虚拟机 DBMS 部署
+          href: dbms_guide_sapase.md
+        - name: Azure 上的 SAP MaxDB、liveCache 和内容服务器部署
+          href: dbms_guide_maxdb.md
+        - name: Azure 虚拟机中的 SAP HANA 可用性
+          items:
+            - name: Azure SAP HANA 可用性概述
+              href: sap-hana-availability-overview.md
+            - name: 一个 Azure 区域内的 Azure SAP HANA 可用性
+              href: sap-hana-availability-one-region.md
+            - name: 跨 Azure 区域的 Azure SAP HANA 可用性
+              href: sap-hana-availability-across-regions.md
+    - name: Azure 虚拟机上的 SAP Business One
+      href: business-one-azure.md
+    - name: Windows/SQL Server SAP CAL 上的 SAP IDES 部署指南
+      href: cal-ides-erp6-erp7-sp3-sql.md
+    - name: 适用于 Azure 的 SAP LaMa 连接器
+      href: lama-installation.md
+    - name: Windows 和 Linux 上的高可用性 (HA)
       items:
-      - name: Windows 以及用于 (A)SCS 实例的共享磁盘
-        href: sap-high-availability-infrastructure-wsfc-shared-disk.md
-      - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享
-        href: sap-high-availability-infrastructure-wsfc-file-share.md
-      - name: SLES 中 Azure VM 上的 NFS 的高可用性
-        href: high-availability-guide-suse-nfs.md
-      - name: 适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
-        href: high-availability-guide-rhel-glusterfs.md
-      - name: SLES 上的 Pacemaker
-        href: high-availability-guide-suse-pacemaker.md
-      - name: RHEL 上的 Pacemaker
-        href: high-availability-guide-rhel-pacemaker.md
-    - name: SAP 安装
-      items:
-      - name: Windows 以及用于 (A)SCS 实例的共享磁盘
-        href: sap-high-availability-installation-wsfc-shared-disk.md
-      - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享
-        href: sap-high-availability-installation-wsfc-file-share.md
-      - name: SUSE Linux 以及用于 (A)SCS 实例的 NFS
-        href: high-availability-guide-suse.md
-      - name: 通过 Azure NetApp 文件为 (A)SCS 实例将 SUSE Linux 与 NFS 配合使用
-        href: high-availability-guide-suse-netapp-files.md
-      - name: Red Hat Enterprise Linux 上的 SAP NetWeaver 的高可用性
-        href: high-availability-guide-rhel.md
-    - name: SAP 多 SID
-      items:
-      - name: Windows 以及用于 (A)SCS 实例的共享磁盘
-        href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
-      - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享
-        href: sap-ascs-ha-multi-sid-wsfc-file-share.md
-  - name: 使用 Azure Site Recovery 进行 SAP 灾难恢复
-    href: ../../../site-recovery/site-recovery-workload.md#protect-sap
+        - name: 概述
+          href: sap-high-availability-guide-start.md
+        - name: 高可用性体系结构
+          items:
+            - name: HA 体系结构和方案
+              href: sap-high-availability-architecture-scenarios.md
+            - name: 更高可用性体系结构和方案
+              href: sap-higher-availability-architecture-scenarios.md
+            - name: 使用 Azure 可用性区域的 SAP 工作负荷配置
+              href: sap-ha-availability-zones.md
+            - name: 使用共享磁盘在 Windows 上为 (A)SCS 实例提供 HA
+              href: sap-high-availability-guide-wsfc-shared-disk.md
+            - name: 使用 SOFS 文件共享在 Windows 上为 (A)SCS 实例提供 HA
+              href: sap-high-availability-guide-wsfc-file-share.md
+            - name: 在 SUSE Linux 上为 (A)SCS 实例提供 HA
+              href: high-availability-guide-suse.md
+            - name: 通过 Azure NetApp 文件实现用于 (A)SCS 实例的 SUSE Linux 上的 HA
+              href: high-availability-guide-suse-netapp-files.md
+            - name: 在 Red Hat Enterprise Linux 上为 (A)SCS 实例提供 HA
+              href: high-availability-guide-rhel.md
+        - name: Azure 基础结构准备
+          items:
+            - name: Windows 以及用于 (A)SCS 实例的共享磁盘
+              href: sap-high-availability-infrastructure-wsfc-shared-disk.md
+            - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享
+              href: sap-high-availability-infrastructure-wsfc-file-share.md
+            - name: SLES 中 Azure VM 上的 NFS 的高可用性
+              href: high-availability-guide-suse-nfs.md
+            - name: 适用于 SAP NetWeaver 的 Red Hat Enterprise Linux 上的 Azure VM 上的 GlusterFS
+              href: high-availability-guide-rhel-glusterfs.md
+            - name: SLES 上的 Pacemaker
+              href: high-availability-guide-suse-pacemaker.md
+            - name: RHEL 上的 Pacemaker
+              href: high-availability-guide-rhel-pacemaker.md
+        - name: SAP 安装
+          items:
+            - name: Windows 以及用于 (A)SCS 实例的共享磁盘
+              href: sap-high-availability-installation-wsfc-shared-disk.md
+            - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享
+              href: sap-high-availability-installation-wsfc-file-share.md
+            - name: SUSE Linux 以及用于 (A)SCS 实例的 NFS
+              href: high-availability-guide-suse.md
+            - name: 通过 Azure NetApp 文件为 (A)SCS 实例将 SUSE Linux 与 NFS 配合使用
+              href: high-availability-guide-suse-netapp-files.md
+            - name: Red Hat Enterprise Linux 上的 SAP NetWeaver 的高可用性
+              href: high-availability-guide-rhel.md
+        - name: SAP 多 SID
+          items:
+            - name: Windows 以及用于 (A)SCS 实例的共享磁盘
+              href: sap-ascs-ha-multi-sid-wsfc-shared-disk.md
+            - name: Windows 以及用于 (A)SCS 实例的 SOFS 文件共享
+              href: sap-ascs-ha-multi-sid-wsfc-file-share.md
+    - name: 使用 Azure Site Recovery 进行 SAP 灾难恢复
+      href: '../../../site-recovery/site-recovery-workload.md#protect-sap'
 - name: AAD SAP 标识集成和单一登录
   items:
-  - name: 与 SAP 云集成
-    href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD 与 SAP Cloud Platform Identity Authentication 集成
-    href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: 设置与 SAP Cloud Platform 配合使用的单一登录
-    href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD 与 SAP NetWeaver 集成
-    href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD 与 SAP Business ByDesign 集成
-    href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: AAD 与 SAP HANA DBMS 集成
-    href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
-  - name: 通过 Azure AD 执行的 SAP Fiori Launchpad SAML 单一登录
-    href: https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad
+    - name: 与 SAP 云集成
+      href: ../../../active-directory/saas-apps/sap-customer-cloud-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD 与 SAP Cloud Platform Identity Authentication 集成
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-identity-authentication-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 设置与 SAP Cloud Platform 配合使用的单一登录
+      href: ../../../active-directory/saas-apps/sap-hana-cloud-platform-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD 与 SAP NetWeaver 集成
+      href: ../../../active-directory/saas-apps/sap-netweaver-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD 与 SAP Business ByDesign 集成
+      href: ../../../active-directory/saas-apps/sapbusinessbydesign-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: AAD 与 SAP HANA DBMS 集成
+      href: ../../../active-directory/saas-apps/saphana-tutorial.md?toc=%2fazure%2fvirtual-machines%2fworkloads%2fsap%2ftoc.json
+    - name: 通过 Azure AD 执行的 SAP Fiori Launchpad SAML 单一登录
+      href: 'https://blogs.sap.com/2017/02/20/your-s4hana-environment-part-7-fiori-launchpad-saml-single-sing-on-with-azure-ad'
 - name: 将 Azure 服务集成到 SAP 中
   items:
-  - name: 在 Power BI Desktop 中使用 SAP HANA
-    href: https://docs.microsoft.com/power-bi/desktop-sap-hana
-  - name: DirectQuery 和 SAP HANA
-    href: https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana
-  - name: 在 Power BI Desktop 中使用 SAP BW 连接器
-    href: https://docs.microsoft.com/power-bi/desktop-sap-bw-connector
-  - name: Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成
-    href: https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration
+    - name: 在 Power BI Desktop 中使用 SAP HANA
+      href: 'https://docs.microsoft.com/power-bi/desktop-sap-hana'
+    - name: DirectQuery 和 SAP HANA
+      href: 'https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana'
+    - name: 在 Power BI Desktop 中使用 SAP BW 连接器
+      href: 'https://docs.microsoft.com/power-bi/desktop-sap-bw-connector'
+    - name: Azure 数据工厂提供 SAP HANA 和业务数据仓库数据集成
+      href: 'https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration'
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: b91931661ad91f813ca84e0c9b7bef4b22e2e975
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489030"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

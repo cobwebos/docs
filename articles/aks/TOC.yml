@@ -1,330 +1,324 @@
-items:
 - name: Azure Kubernetes 服务 (AKS)
   href: ./index.yml
 - name: 概述
   items:
-  - name: 关于 AKS
-    href: intro-kubernetes.md
+    - name: 关于 AKS
+      href: intro-kubernetes.md
 - name: 快速入门
-  items:
-  - name: 创建 AKS 群集 - CLI
-    href: kubernetes-walkthrough.md
-  - name: 创建 AKS 群集 - 门户
-    href: kubernetes-walkthrough-portal.md
-  - name: 开发应用程序
-    items:
-    - name: 使用 Java（VS Code 和 CLI）
-      href: ../dev-spaces/quickstart-java.md
-      maintainContext: true
-    - name: 使用 .NET Core（VS Code 和 CLI）
-      href: ../dev-spaces/quickstart-netcore.md
-      maintainContext: true
-    - name: 使用 .NET Core (Visual Studio 2017)
-      href: ../dev-spaces/quickstart-netcore-visualstudio.md
-      maintainContext: true
-    - name: 使用 Node.js（VS Code 和 CLI）
-      href: ../dev-spaces/quickstart-nodejs.md
-      maintainContext: true
-    expanded: true
   expanded: true
+  items:
+    - name: 创建 AKS 群集 - CLI
+      href: kubernetes-walkthrough.md
+    - name: 创建 AKS 群集 - 门户
+      href: kubernetes-walkthrough-portal.md
+    - name: 开发应用程序
+      expanded: true
+      items:
+        - name: 使用 Java（VS Code 和 CLI）
+          href: ../dev-spaces/quickstart-java.md
+          maintainContext: true
+        - name: 使用 .NET Core（VS Code 和 CLI）
+          href: ../dev-spaces/quickstart-netcore.md
+          maintainContext: true
+        - name: 使用 .NET Core (Visual Studio 2017)
+          href: ../dev-spaces/quickstart-netcore-visualstudio.md
+          maintainContext: true
+        - name: 使用 Node.js（VS Code 和 CLI）
+          href: ../dev-spaces/quickstart-nodejs.md
+          maintainContext: true
 - name: 教程
   items:
-  - name: 1 - 为 AKS 准备应用程序
-    href: tutorial-kubernetes-prepare-app.md
-  - name: 2 - 创建容器注册表
-    href: tutorial-kubernetes-prepare-acr.md
-  - name: 3 - 创建 Kubernetes 群集
-    href: tutorial-kubernetes-deploy-cluster.md
-  - name: 4 - 运行应用程序
-    href: tutorial-kubernetes-deploy-application.md
-  - name: 5 - 缩放应用程序
-    href: tutorial-kubernetes-scale.md
-  - name: 6 - 更新应用程序
-    href: tutorial-kubernetes-app-update.md
-  - name: 7 - 升级群集
-    href: tutorial-kubernetes-upgrade-cluster.md
+    - name: 1 - 为 AKS 准备应用程序
+      href: tutorial-kubernetes-prepare-app.md
+    - name: 2 - 创建容器注册表
+      href: tutorial-kubernetes-prepare-acr.md
+    - name: 3 - 创建 Kubernetes 群集
+      href: tutorial-kubernetes-deploy-cluster.md
+    - name: 4 - 运行应用程序
+      href: tutorial-kubernetes-deploy-application.md
+    - name: 5 - 缩放应用程序
+      href: tutorial-kubernetes-scale.md
+    - name: 6 - 更新应用程序
+      href: tutorial-kubernetes-app-update.md
+    - name: 7 - 升级群集
+      href: tutorial-kubernetes-upgrade-cluster.md
 - name: 概念
   items:
-  - name: 群集和工作负荷
-    href: concepts-clusters-workloads.md
-  - name: 访问和标识
-    href: concepts-identity.md
-  - name: 安全
-    href: concepts-security.md
-  - name: 网络
-    href: concepts-network.md
-  - name: 存储
-    href: concepts-storage.md
-  - name: 缩放
-    href: concepts-scale.md
-  - name: 最佳做法
-    href: best-practices.md
-    items:
-    - name: 适用于群集操作员
+    - name: 群集和工作负荷
+      href: concepts-clusters-workloads.md
+    - name: 访问和标识
+      href: concepts-identity.md
+    - name: 安全
+      href: concepts-security.md
+      items: null
+    - name: 网络
+      href: concepts-network.md
+    - name: 存储
+      href: concepts-storage.md
+    - name: 缩放
+      href: concepts-scale.md
+    - name: 最佳做法
+      href: best-practices.md
       items:
-      - name: 多租户和群集隔离
-        href: operator-best-practices-cluster-isolation.md
-      - name: 基本计划程序功能
-        href: operator-best-practices-scheduler.md
-      - name: 高级计划程序功能
-        href: operator-best-practices-advanced-scheduler.md
-      - name: 身份验证和授权
-        href: operator-best-practices-identity.md
-      - name: 群集安全性
-        href: operator-best-practices-cluster-security.md
-      - name: 容器映像管理
-        href: operator-best-practices-container-image-management.md
-      - name: 网络
-        href: operator-best-practices-network.md
-      - name: 存储
-        href: operator-best-practices-storage.md
-      - name: 业务连续性 (BC) 和灾难恢复 (DR)
-        href: operator-best-practices-multi-region.md
-    - name: 适用于应用程序开发人员
-      items:
-      - name: 资源管理
-        href: developer-best-practices-resource-management.md
-      - name: Pod 安全性
-        href: developer-best-practices-pod-security.md
-  - name: 配额和区域限制
-    href: container-service-quotas.md
-  - name: 从 ACS 迁移到 AKS
-    href: acs-aks-migration.md
-  - name: 受支持的 Kubernetes 版本
-    href: supported-kubernetes-versions.md
+        - name: 适用于群集操作员
+          items:
+            - name: 多租户和群集隔离
+              href: operator-best-practices-cluster-isolation.md
+            - name: 基本计划程序功能
+              href: operator-best-practices-scheduler.md
+            - name: 高级计划程序功能
+              href: operator-best-practices-advanced-scheduler.md
+            - name: 身份验证和授权
+              href: operator-best-practices-identity.md
+            - name: 群集安全性
+              href: operator-best-practices-cluster-security.md
+            - name: 容器映像管理
+              href: operator-best-practices-container-image-management.md
+            - name: 网络
+              href: operator-best-practices-network.md
+            - name: 存储
+              href: operator-best-practices-storage.md
+            - name: 业务连续性 (BC) 和灾难恢复 (DR)
+              href: operator-best-practices-multi-region.md
+        - name: 适用于应用程序开发人员
+          items:
+            - name: 资源管理
+              href: developer-best-practices-resource-management.md
+            - name: Pod 安全性
+              href: developer-best-practices-pod-security.md
+    - name: 配额和区域限制
+      href: container-service-quotas.md
+    - name: 从 ACS 迁移到 AKS
+      href: acs-aks-migration.md
+    - name: 受支持的 Kubernetes 版本
+      href: supported-kubernetes-versions.md
 - name: 操作指南
   items:
-  - name: 群集操作
-    items:
-    - name: 创建 AKS 群集
-      href: /cli/azure/aks#az-aks-create
-      maintainContext: true
-    - name: 缩放 AKS 群集
-      href: scale-cluster.md
-    - name: 升级 AKS 群集
-      href: upgrade-cluster.md
-    - name: 处理节点 OS 更新
-      href: node-updates-kured.md
-    - name: 删除 AKS 群集
-      href: /cli/azure/aks#az-aks-delete
-      maintainContext: true
-    - name: 启用了 Azure AD 的 AKS
-      href: aad-integration.md
-    - name: 创建虚拟节点（预览版）
+    - name: 群集操作
       items:
-      - name: Azure CLI
-        href: virtual-nodes-cli.md
-      - name: Azure 门户
-        href: virtual-nodes-portal.md
-    - name: 使用虚拟 Kubelet
-      href: virtual-kubelet.md
-    - name: 使用群集自动缩放程序（预览版）
-      href: cluster-autoscaler.md
-    - name: 使用 Terraform 部署 AKS
-      href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
-      maintainContext: true
-  - name: 配置数据卷
-    items:
-    - name: Azure 磁盘 - 动态
-      href: azure-disks-dynamic-pv.md
-    - name: Azure 磁盘 - 静态
-      href: azure-disk-volume.md
-    - name: Azure 文件 - 动态
-      href: azure-files-dynamic-pv.md
-    - name: Azure 文件 - 静态
-      href: azure-files-volume.md
-  - name: 配置网络
-    items:
-    - name: 创建虚拟网络或使用现有虚拟网络
+        - name: 创建 AKS 群集
+          href: '/cli/azure/aks#az-aks-create'
+          maintainContext: true
+        - name: 缩放 AKS 群集
+          href: scale-cluster.md
+        - name: 升级 AKS 群集
+          href: upgrade-cluster.md
+        - name: 处理节点 OS 更新
+          href: node-updates-kured.md
+        - name: 删除 AKS 群集
+          href: '/cli/azure/aks#az-aks-delete'
+          maintainContext: true
+        - name: 启用了 Azure AD 的 AKS
+          href: aad-integration.md
+        - name: 创建虚拟节点（预览版）
+          items:
+            - name: Azure CLI
+              href: virtual-nodes-cli.md
+            - name: Azure 门户
+              href: virtual-nodes-portal.md
+        - name: 使用虚拟 Kubelet
+          href: virtual-kubelet.md
+        - name: 使用群集自动缩放程序（预览版）
+          href: cluster-autoscaler.md
+        - name: 使用 Terraform 部署 AKS
+          href: ../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md
+          maintainContext: true
+    - name: 配置数据卷
       items:
-      - name: 使用 kubenet
-        href: configure-kubenet.md
-      - name: 使用 Azure-CNI
-        href: configure-azure-cni.md
-    - name: 创建内部负载均衡器
-      href: internal-lb.md
-    - name: 使用静态 IP 地址
-      href: static-ip.md
-    - name: 流入量
+        - name: Azure 磁盘 - 动态
+          href: azure-disks-dynamic-pv.md
+        - name: Azure 磁盘 - 静态
+          href: azure-disk-volume.md
+        - name: Azure 文件 - 动态
+          href: azure-files-dynamic-pv.md
+        - name: Azure 文件 - 静态
+          href: azure-files-volume.md
+    - name: 配置网络
       items:
-      - name: 创建基本控制器
-        href: ingress-basic.md
-      - name: 使用 HTTP 应用程序路由
-        href: http-application-routing.md
-      - name: 使用内部网络
-        href: ingress-internal-ip.md
-      - name: 将 TLS 与自己的证书配合使用
-        href: ingress-own-tls.md
-      - name: 将 TLS 与Let's Encrypt 配合使用
-        href: ingress-tls.md
-        items:
-        - name: 使用静态公共 IP
-          href: ingress-static-ip.md
-    - name: 出口流量
-      href: egress.md
-    - name: 自定义 CoreDNS
-      href: coredns-custom.md
-  - name: 安全性和身份验证
-    items:
-    - name: 创建服务主体
-      href: kubernetes-service-principal.md
-    - name: 限制对群集配置文件的访问
-      href: control-kubeconfig-access.md
-    - name: 使用网络策略保护 Pod 流量（预览版）
-      href: use-network-policies.md
-    - name: 更新群集服务主体凭据
-      href: update-credentials.md
-    - name: 使用 ACR 进行身份验证
-      href: ../container-registry/container-registry-auth-aks.md
-      maintainContext: true
-  - name: 监视和日志记录
-    items:
-    - name: 用于容器的 Azure Monitor
-      href: ../azure-monitor/insights/container-insights-overview.md
-      maintainContext: true
-    - name: 查看主组件日志
-      href: view-master-logs.md
-    - name: 查看 kubelet 日志
-      href: kubelet-logs.md
-    - name: 查看实时容器日志（预览版）
-      href: ../azure-monitor/insights/container-insights-live-logs.md
-      maintainContext: true
-  - name: 开发和运行应用程序
-    items:
-    - name: 使用 Dev Spaces 进行开发
-      href: ../dev-spaces/azure-dev-spaces.md
+        - name: 创建虚拟网络或使用现有虚拟网络
+          items:
+            - name: 使用 kubenet
+              href: configure-kubenet.md
+            - name: 使用 Azure-CNI
+              href: configure-azure-cni.md
+        - name: 创建内部负载均衡器
+          href: internal-lb.md
+        - name: 使用静态 IP 地址
+          href: static-ip.md
+        - name: 流入量
+          items:
+            - name: 创建基本控制器
+              href: ingress-basic.md
+            - name: 使用 HTTP 应用程序路由
+              href: http-application-routing.md
+            - name: 使用内部网络
+              href: ingress-internal-ip.md
+            - name: 将 TLS 与自己的证书配合使用
+              href: ingress-own-tls.md
+            - name: 将 TLS 与Let's Encrypt 配合使用
+              href: ingress-tls.md
+              items:
+                - name: 使用静态公共 IP
+                  href: ingress-static-ip.md
+        - name: 出口流量
+          href: egress.md
+        - name: 自定义 CoreDNS
+          href: coredns-custom.md
+    - name: 安全性和身份验证
       items:
-      - name: Java（VS Code 和 CLI）
-        items:
-        - name: 1 - 入门
-          href: ../dev-spaces/get-started-java.md
+        - name: 创建服务主体
+          href: kubernetes-service-principal.md
+        - name: 限制对群集配置文件的访问
+          href: control-kubeconfig-access.md
+        - name: 使用网络策略保护 Pod 流量（预览版）
+          href: use-network-policies.md
+        - name: 更新群集服务主体凭据
+          href: update-credentials.md
+        - name: 使用 ACR 进行身份验证
+          href: ../container-registry/container-registry-auth-aks.md
           maintainContext: true
-        - name: 2 - 多服务开发
-          href: ../dev-spaces/multi-service-java.md
-          maintainContext: true
-        - name: 3 - 团队开发
-          href: ../dev-spaces/team-development-java.md
-          maintainContext: true
-      - name: .NET Core（VS Code 和 CLI）
-        items:
-        - name: 1 - 入门
-          href: ../dev-spaces/get-started-netcore.md
-          maintainContext: true
-        - name: 2 - 多服务开发
-          href: ../dev-spaces/multi-service-netcore.md
-          maintainContext: true
-        - name: 3 - 团队开发
-          href: ../dev-spaces/team-development-netcore.md
-          maintainContext: true
-      - name: .NET Core (Visual Studio 2017)
-        items:
-        - name: 1 - 入门
-          href: ../dev-spaces/get-started-netcore-visualstudio.md
-          maintainContext: true
-        - name: 2 - 多服务开发
-          href: ../dev-spaces/multi-service-netcore-visualstudio.md
-          maintainContext: true
-        - name: 3 - 团队开发
-          href: ../dev-spaces/team-development-netcore-visualstudio.md
-          maintainContext: true
-      - name: Node.js（VS Code 和 CLI）
-        items:
-        - name: 1 - 入门
-          href: ../dev-spaces/get-started-nodejs.md
-          maintainContext: true
-        - name: 2 - 多服务开发
-          href: ../dev-spaces/multi-service-nodejs.md
-          maintainContext: true
-        - name: 3 - 团队开发
-          href: ../dev-spaces/team-development-nodejs.md
-          maintainContext: true
-      maintainContext: true
-    - name: 使用 Helm 运行应用程序
-      href: kubernetes-helm.md
-    - name: 使用 Draft 开发应用程序
-      href: kubernetes-draft.md
-    - name: 使用 Open Service Broker for Azure
-      href: integrate-azure.md
-    - name: 将用于 MongoDB 的 Cosmos DB API 与 OSBA 配合使用
-      href: use-cosmosdb-osba-mongo-app.md
-    - name: 使用 OpenFaaS
-      href: openfaas.md
-    - name: 运行 Spark 作业
-      href: spark-job.md
-    - name: 使用 GPU
-      href: gpu-cluster.md
-    - name: 使用 Istio
+    - name: 监视和日志记录
       items:
-      - name: 安装和配置
-        href: istio-install.md
-      - name: 智能路由和 Canary 发布
-        href: istio-scenario-routing.md
-    - name: 使用 Azure Database for PostgreSQL
-      href: ../postgresql/concepts-aks.md
-      maintainContext: true
-  - name: DevOps
-    items:
-    - name: 使用 Ansible 创建 AKS 群集
-      href: /azure/ansible/ansible-create-configure-aks
-      maintainContext: true
-    - name: Jenkins 持续部署
-      href: jenkins-continuous-deployment.md
-    - name: Azure DevOps 项目
-      href: ../devops-project/azure-devops-project-aks.md
-      maintainContext: true
-  - name: Kubernetes 基础知识
-    items:
-    - name: 使用 Kubernetes 仪表板
-      href: kubernetes-dashboard.md
-  - name: 故障排除
-    items:
-    - name: 常见问题
-      href: troubleshooting.md
-    - name: 查找最佳实践
-      href: kube-advisor-tool.md
-    - name: SSH 节点访问权限
-      href: ssh.md
+        - name: 用于容器的 Azure Monitor
+          href: ../azure-monitor/insights/container-insights-overview.md
+          maintainContext: true
+        - name: 查看主组件日志
+          href: view-master-logs.md
+        - name: 查看 kubelet 日志
+          href: kubelet-logs.md
+        - name: 查看实时容器日志（预览版）
+          href: ../azure-monitor/insights/container-insights-live-logs.md
+          maintainContext: true
+    - name: 开发和运行应用程序
+      items:
+        - name: 使用 Dev Spaces 进行开发
+          href: ../dev-spaces/azure-dev-spaces.md
+          maintainContext: true
+          items:
+            - name: Java（VS Code 和 CLI）
+              items:
+                - name: 1 - 入门
+                  href: ../dev-spaces/get-started-java.md
+                  maintainContext: true
+                - name: 2 - 多服务开发
+                  href: ../dev-spaces/multi-service-java.md
+                  maintainContext: true
+                - name: 3 - 团队开发
+                  href: ../dev-spaces/team-development-java.md
+                  maintainContext: true
+            - name: .NET Core（VS Code 和 CLI）
+              items:
+                - name: 1 - 入门
+                  href: ../dev-spaces/get-started-netcore.md
+                  maintainContext: true
+                - name: 2 - 多服务开发
+                  href: ../dev-spaces/multi-service-netcore.md
+                  maintainContext: true
+                - name: 3 - 团队开发
+                  href: ../dev-spaces/team-development-netcore.md
+                  maintainContext: true
+            - name: .NET Core (Visual Studio 2017)
+              items:
+                - name: 1 - 入门
+                  href: ../dev-spaces/get-started-netcore-visualstudio.md
+                  maintainContext: true
+                - name: 2 - 多服务开发
+                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
+                  maintainContext: true
+                - name: 3 - 团队开发
+                  href: ../dev-spaces/team-development-netcore-visualstudio.md
+                  maintainContext: true
+            - name: Node.js（VS Code 和 CLI）
+              items:
+                - name: 1 - 入门
+                  href: ../dev-spaces/get-started-nodejs.md
+                  maintainContext: true
+                - name: 2 - 多服务开发
+                  href: ../dev-spaces/multi-service-nodejs.md
+                  maintainContext: true
+                - name: 3 - 团队开发
+                  href: ../dev-spaces/team-development-nodejs.md
+                  maintainContext: true
+        - name: 使用 Helm 运行应用程序
+          href: kubernetes-helm.md
+        - name: 使用 Draft 开发应用程序
+          href: kubernetes-draft.md
+        - name: 使用 Open Service Broker for Azure
+          href: integrate-azure.md
+        - name: 将用于 MongoDB 的 Cosmos DB API 与 OSBA 配合使用
+          href: use-cosmosdb-osba-mongo-app.md
+        - name: 使用 OpenFaaS
+          href: openfaas.md
+        - name: 运行 Spark 作业
+          href: spark-job.md
+        - name: 使用 GPU
+          href: gpu-cluster.md
+        - name: 使用 Istio
+          items:
+            - name: 安装和配置
+              href: istio-install.md
+            - name: 智能路由和 Canary 发布
+              href: istio-scenario-routing.md
+        - name: 使用 Azure Database for PostgreSQL
+          href: ../postgresql/concepts-aks.md
+          maintainContext: true
+    - name: DevOps
+      items:
+        - name: 使用 Ansible 创建 AKS 群集
+          href: /azure/ansible/ansible-create-configure-aks
+          maintainContext: true
+        - name: Jenkins 持续部署
+          href: jenkins-continuous-deployment.md
+        - name: Azure DevOps 项目
+          href: ../devops-project/azure-devops-project-aks.md
+          maintainContext: true
+    - name: Kubernetes 基础知识
+      items:
+        - name: 使用 Kubernetes 仪表板
+          href: kubernetes-dashboard.md
+    - name: 故障排除
+      items:
+        - name: 常见问题
+          href: troubleshooting.md
+        - name: 查找最佳实践
+          href: kube-advisor-tool.md
+        - name: SSH 节点访问权限
+          href: ssh.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/aks
-  - name: REST
-    href: /rest/api/aks
-  - name: PowerShell
-    href: /powershell/module/az.aks#aks
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerservice
-  - name: Python
-    href: /python/api/overview/azure/containerservice
-  - name: Java
-    href: /java/api/overview/azure/containerservice
-  - name: Node.js
-    href: /javascript/api/overview/azure/container-service
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.containerservice/managedclusters
+    - name: Azure CLI
+      href: /cli/azure/aks
+    - name: REST
+      href: /rest/api/aks
+    - name: PowerShell
+      href: '/powershell/module/az.aks#aks'
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerservice
+    - name: Python
+      href: /python/api/overview/azure/containerservice
+    - name: Java
+      href: /java/api/overview/azure/containerservice
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-service
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.containerservice/managedclusters
 - name: 资源
   items:
-  - name: 利用 Microsoft Learn 掌握技能
-    href: /learn/browse/?products=azure-container-instances&azure-container-registry
-  - name: 上市区域
-    href: https://azure.microsoft.com/regions/services/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/container-service/
-  - name: 支持策略
-    href: support-policies.md
-  - name: 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 提供产品反馈
-    href: https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-container-service
-  - name: 视频
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest
-  - name: 常见问题解答
-    href: faq.md
-ms.openlocfilehash: 900af8f0b09ee19b6f49cbec39bb535e9ba3b385
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59488996"
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-container-instances&azure-container-registry
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 支持策略
+      href: support-policies.md
+    - name: 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 提供产品反馈
+      href: 'https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'
+    - name: 常见问题解答
+      href: faq.md

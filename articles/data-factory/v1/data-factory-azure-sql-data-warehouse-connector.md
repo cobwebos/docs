@@ -313,12 +313,12 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | Money | Money |
 | Real | Real |
 | SmallMoney | SmallMoney |
-| Binary | Binary |
+| 二进制 | 二进制 |
 | Varbinary | Varbinary（最多 8000） |
-| Date | Date |
+| date | date |
 | DateTime | DateTime |
 | DateTime2 | DateTime2 |
-| Time | Time |
+| 时间 | 时间 |
 | DateTimeOffset | DateTimeOffset |
 | SmallDateTime | SmallDateTime |
 | Text | Varchar（最多 8000） |
@@ -369,7 +369,7 @@ NULL 值是特殊形式的默认值。 如果列可为 null，则该列的输入
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| text |String, Char[] |
+| Text |String, Char[] |
 | time |TimeSpan |
 | timestamp |Byte[] |
 | tinyint |Byte |

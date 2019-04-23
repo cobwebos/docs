@@ -1,90 +1,83 @@
-items:
 - name: 空间定位点文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于空间定位点
-    href: overview.md
+    - name: 关于空间定位点
+      href: overview.md
 - name: 快速入门
   items:
-  - name: 创建 Unity 应用
-    href: unity-overview.yml
-    items:
-    - name: HoloLens
-      href: quickstarts/get-started-unity-hololens.md
-    - name: Android
-      href: quickstarts/get-started-unity-android.md
-    - name: iOS
-      href: quickstarts/get-started-unity-ios.md
-    expanded: true
-  - name: 创建 iOS 应用
-    href: quickstarts/get-started-ios.md
-  - name: 创建 Android 应用
-    href: quickstarts/get-started-android.md
-  - name: 创建 HoloLens 应用
-    href: quickstarts/get-started-hololens.md
+    - name: 创建 Unity 应用
+      href: unity-overview.yml
+      expanded: true
+      items:
+        - name: HoloLens
+          href: quickstarts/get-started-unity-hololens.md
+        - name: Android
+          href: quickstarts/get-started-unity-android.md
+        - name: iOS
+          href: quickstarts/get-started-unity-ios.md
+    - name: 创建 iOS 应用
+      href: quickstarts/get-started-ios.md
+    - name: 创建 Android 应用
+      href: quickstarts/get-started-android.md
+    - name: 创建 HoloLens 应用
+      href: quickstarts/get-started-hololens.md
 - name: 教程
   items:
-  - name: 在 Unity 中共享
-    href: tutorials/tutorial-share-anchors-across-devices.md
-  - name: 使用 Azure Cosmos DB 在 Unity 中共享
-    href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
-  - name: 开始创建新的 Android 应用
-    href: tutorials/tutorial-new-android-app.md
+    - name: 在 Unity 中共享
+      href: tutorials/tutorial-share-anchors-across-devices.md
+    - name: 使用 Azure Cosmos DB 在 Unity 中共享
+      href: tutorials/tutorial-use-cosmos-db-to-store-anchors.md
+    - name: 开始创建新的 Android 应用
+      href: tutorials/tutorial-new-android-app.md
 - name: 操作说明
   items:
-  - name: 创建并找到定位点
-    href: create-locate-anchors-overview.md
-    items:
-    - name: 在 Unity 中
-      href: how-tos/create-locate-anchors-unity.md
-    - name: 在 Objective-C 中
-      href: how-tos/create-locate-anchors-objc.md
-    - name: 在 Swift 中
-      href: how-tos/create-locate-anchors-swift.md
-    - name: 在 Java 中
-      href: how-tos/create-locate-anchors-java.md
-    - name: 在 C ++/NDK 中
-      href: how-tos/create-locate-anchors-cpp-ndk.md
-    - name: 在 C++/WinRT 中
-      href: how-tos/create-locate-anchors-cpp-winrt.md
+    - name: 创建并找到定位点
+      href: create-locate-anchors-overview.md
+      items:
+        - name: 在 Unity 中
+          href: how-tos/create-locate-anchors-unity.md
+        - name: 在 Objective-C 中
+          href: how-tos/create-locate-anchors-objc.md
+        - name: 在 Swift 中
+          href: how-tos/create-locate-anchors-swift.md
+        - name: 在 Java 中
+          href: how-tos/create-locate-anchors-java.md
+        - name: 在 C ++/NDK 中
+          href: how-tos/create-locate-anchors-cpp-ndk.md
+        - name: 在 C++/WinRT 中
+          href: how-tos/create-locate-anchors-cpp-winrt.md
 - name: 示例
   items:
-  - name: Azure 空间定位点示例 (GitHub)
-    href: https://github.com/Azure/azure-spatial-anchors-samples
+    - name: Azure 空间定位点示例 (GitHub)
+      href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: 概念
   items:
-  - name: 定位点关系
-    href: concepts/anchor-relationships-way-finding.md
-  - name: 体验指南
-    href: concepts/guidelines-effective-anchor-experiences.md
-  - name: 日志记录和诊断
-    href: concepts/logging-diagnostics.md
+    - name: 定位点关系
+      href: concepts/anchor-relationships-way-finding.md
+    - name: 体验指南
+      href: concepts/guidelines-effective-anchor-experiences.md
+    - name: 日志记录和诊断
+      href: concepts/logging-diagnostics.md
 - name: 参考
   items:
-  - name: 适用于 Unity 的 SDK
-    href: https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/
-  - name: 适用于 iOS Objective-C 的 SDK
-    href: https://docs.microsoft.com/objectivec/api/spatial-anchors/
-  - name: 适用于 Android Java 的 SDK
-    href: https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/
-  - name: 适用于 Android NDK 的 SDK
-    href: https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/
-  - name: 适用于 HoloLens C++/WinRT 的 SDK
-    href: https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/
+    - name: 适用于 Unity 的 SDK
+      href: 'https://docs.microsoft.com/dotnet/api/Microsoft.Azure.SpatialAnchors/'
+    - name: 适用于 iOS Objective-C 的 SDK
+      href: 'https://docs.microsoft.com/objectivec/api/spatial-anchors/'
+    - name: 适用于 Android Java 的 SDK
+      href: 'https://docs.microsoft.com/java/api/com.microsoft.azure.spatialanchors/'
+    - name: 适用于 Android NDK 的 SDK
+      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
+    - name: 适用于 HoloLens C++/WinRT 的 SDK
+      href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
 - name: 资源
   items:
-  - name: 常见问题解答
-    href: spatial-anchor-faq.md
-  - name: 提供产品反馈
-    href: https://feedback.azure.com/forums/919252-azure-spatial-anchors
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-spatial-anchors
-  - name: 支持
-    href: spatial-anchor-support.md
-ms.openlocfilehash: 69465b1f2184476f8c18738474a6585fdd681bb2
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58915843"
+    - name: 常见问题解答
+      href: spatial-anchor-faq.md
+    - name: 提供产品反馈
+      href: 'https://feedback.azure.com/forums/919252-azure-spatial-anchors'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-spatial-anchors'
+    - name: 支持
+      href: spatial-anchor-support.md
