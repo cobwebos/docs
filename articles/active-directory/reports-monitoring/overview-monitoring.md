@@ -1,5 +1,5 @@
 ---
-title: 什么是 Azure Active Directory 监视？ （预览版）| Microsoft Docs
+title: 什么是 Azure Active Directory 监视？ | Microsoft Docs
 description: 简要介绍 Azure Active Directory 监视。
 services: active-directory
 documentationcenter: ''
@@ -13,18 +13,18 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de416d18505d0258da446318b3dc6a9853ff13e7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d63f8440ca527a746f73574bc156037d85fc3599
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58434851"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009017"
 ---
-# <a name="what-is-azure-active-directory-monitoring-preview"></a>什么是 Azure Active Directory 监视？ （预览版）
+# <a name="what-is-azure-active-directory-monitoring"></a>什么是 Azure Active Directory 监视？
 
 现在可以使用 Azure Active Directory (Azure AD) 监视将 Azure AD 活动日志路由到不同的终结点。 然后，可以将其保存以供长期使用，或者将其与第三方安全信息和事件管理 (SIEM) 工具集成，以便获取有关环境的见解。
 
@@ -63,7 +63,7 @@ ms.locfileid: "58434851"
 
 [Azure Monitor 日志](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview)是一项解决方案，可以将不同源的监视数据合并，并提供查询语言和分析引擎，让你深入了解应用程序和资源的操作。 通过将 Azure AD 活动日志发送到 Azure Monitor 日志，可以快速检索和监视收集的数据以及针对其发出警报。 了解如何[将数据发送到 Azure Monitor 日志](howto-integrate-activity-logs-with-log-analytics.md)。
 
-也可安装针对 Azure AD 活动日志预生成的视图，以便监视涉及登录和审核事件的常见场景。 了解如何[安装和使用 Azure AD 活动日志的日志分析视图](howto-install-use-log-analytics-views.md)。
+也可安装针对 Azure AD 活动日志预生成的视图，以便监视涉及登录和审核事件的常见场景。 了解如何[安装和使用用于 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

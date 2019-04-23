@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/22/2019
 ms.author: yegu
 ms.custom: include file
-ms.openlocfilehash: 0f066915046e363932652c104fabe96ed0a9d4c4
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.openlocfilehash: 9b86f2e05e2cb42470061bd6398b4200607f2418
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227178"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60012279"
 ---
 1. 要创建新应用程序配置存储区，请登录 [Azure 门户](https://aka.ms/azconfig/portal)。 在页面的左上角，选择“+ 创建资源”。 在“搜索市场”框中，输入“应用程序配置”并按 Enter。
 
@@ -35,14 +35,3 @@ ms.locfileid: "58227178"
 4. 选择“创建”。 部署可能需要几分钟时间才能完成。
 
 5. 部署完成后，选择“设置” > “访问密钥”。 记下只读主键或读写主键连接字符串。 稍后将使用此连接字符串来配置应用程序，以与创建的应用程序配置存储区进行通信。
-
-6. 选择“键/值资源管理器” > “+创建”来添加以下键值对：
-
-    | 密钥 | 值 |
-    |---|---|
-    | TestApp:Settings:BackgroundColor | 白色 |
-    | TestApp:Settings:FontSize | 24 |
-    | TestApp:Settings:FontColor | 黑色 |
-    | TestApp:Settings:Message | Azure 应用配置的数据 |
-
-    暂时将“标签”和“内容类型”保留为空。
