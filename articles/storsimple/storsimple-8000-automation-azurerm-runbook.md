@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 10/23/2017
 ms.author: alkohli
 ms.openlocfilehash: 30d70bb7e1f868060e3b287a0cdfb117c585b9ba
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793503"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790070"
 ---
 # <a name="use-azure-automation-runbooks-to-manage-storsimple-devices"></a>使用 Azure 自动化 Runbook 管理 StorSimple 设备
 
@@ -30,7 +30,7 @@ ms.locfileid: "58793503"
 
 本部分采用一个适用于 StorSimple 的示例 Windows PowerShell 脚本，详细演示将脚本导入 Runbook，然后发布并执行该 Runbook 所要执行的各个步骤。
 
-### <a name="prerequisites"></a>系统必备
+### <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保具备以下条件：
 
@@ -202,7 +202,7 @@ ms.locfileid: "58793503"
 
 4. 在新建的帐户中，转到“共享资源”>“模块”并单击“+ 添加模块”。
 
-5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。 单击 **“确定”**。
+5. 在“添加模块”边栏选项卡中，浏览到压缩的模块所在的位置，选择并打开该模块。 单击“确定”。
 
     ![add-module](./media/storsimple-8000-automation-azurerm-runbook/add-module.png)
 

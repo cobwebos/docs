@@ -9,11 +9,11 @@ ms.date: 08/14/2017
 ms.author: johnkem
 ms.subservice: alerts
 ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006791"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794110"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>将管理事件的 Azure 警报迁移到活动日志警报
 

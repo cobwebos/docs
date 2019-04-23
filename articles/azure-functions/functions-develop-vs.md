@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/08/2018
 ms.author: glenga
 ms.openlocfilehash: 4e67e91e93ef3a2e2acf88a87b97eaab56ca6479
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59489548"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793753"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>使用 Visual Studio 开发 Azure Functions  
 
@@ -207,9 +207,9 @@ For an example of how to test a queue triggered function, see the [queue trigger
 
 ## <a name="monitoring-functions"></a>监视函数
 
-监视你的函数执行的建议的方法是通过将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。
+监视函数执行的建议方法是将函数应用与 Azure Application Insights 集成。 在 Azure 门户中创建函数应用时，默认情况下会为你完成此集成。 但是，在 Visual Studio 发布期间创建函数应用时，Azure 中的函数应用集成未完成。
 
-若要为函数应用中启用 Application Insights:
+若要为函数应用启用 Application Insights，请执行以下操作：
 
 [!INCLUDE [functions-connect-new-app-insights.md](../../includes/functions-connect-new-app-insights.md)]
 

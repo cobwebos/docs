@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: 882d4e0592b74e8af30ff5bf110a41e403c3bf7d
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494024"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789645"
 ---
 # <a name="manage-endpoint-protection-issues-with-azure-security-center"></a>使用 Azure 安全中心管理 Endpoint Protection 问题
 Azure 安全中心监视反恶意软件保护状态，并在“Endpoint Protection 问题”边栏选项卡下报告此状态。 安全中心会突出显示此类问题，如检测到威胁和保护不充分，这可能会导致虚拟机 (VM) 和计算机容易受到反恶意软件威胁的攻击。 参考“Endpoint Protection 问题”下的信息，可以制定计划来解决发现的任何问题。

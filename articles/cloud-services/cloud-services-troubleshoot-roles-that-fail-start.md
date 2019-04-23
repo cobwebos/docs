@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: d2daae2a3317d3b48748262d87ab8d7f7e13f2b0
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918410"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792770"
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>对无法启动的云服务角色进行故障排除
 以下是一些与无法启动的 Azure 云服务角色相关的常见问题和解决方案。

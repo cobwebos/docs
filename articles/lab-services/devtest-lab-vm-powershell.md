@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: 0e68958070e9c35e12dd9446b351f880dfea6f69
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59009336"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793243"
 ---
 # <a name="create-a-virtual-machine-with-devtest-labs-using-azure-powershell"></a>使用开发测试实验室使用 Azure PowerShell 创建虚拟机
 本文介绍如何使用 Azure PowerShell 在 Azure 开发测试实验室中创建虚拟机。 PowerShell 脚本可用于自动创建的 Azure 开发测试实验室中的实验室中的虚拟机。 

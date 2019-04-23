@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: cd10c503c6e65f68d063deb5f8a537fc9f3c9f0f
-ms.sourcegitcommit: 04716e13cc2ab69da57d61819da6cd5508f8c422
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58846322"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794145"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>适用于 Windows 的 azure 监视器依赖关系的虚拟机扩展
 

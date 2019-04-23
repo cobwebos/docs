@@ -11,11 +11,11 @@ ms.date: 03/29/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: 658b35163e20d024118bc7a3142c86614540f00c
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58804694"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790240"
 ---
 # <a name="rest-apis-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的 REST API
 用于管理 Azure SQL 数据仓库中的计算的 REST API。
@@ -36,7 +36,7 @@ Content-Type: application/json; charset=UTF-8
 
 ## <a name="pause-compute"></a>暂停计算
 
-若要暂停数据库，请使用[暂停数据库](/rest/api/sql/databases/pause) REST API。 以下示例暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
+若要暂停数据库，请使用[暂停数据库](/rest/api/sql/databases/pause) REST API。 以下示例将暂停 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/pause?api-version=2014-04-01-preview HTTP/1.1
@@ -44,7 +44,7 @@ POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups
 
 ## <a name="resume-compute"></a>恢复计算
 
-若要启动数据库，请使用[恢复数据库](/rest/api/sql/databases/resume) REST API。 以下示例启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
+若要启动数据库，请使用[恢复数据库](/rest/api/sql/databases/resume) REST API。 以下示例将启动 Server01 服务器上托管的 Database02 数据库。 该服务器位于名为 ResourceGroup1 的 Azure 资源组中。 
 
 ```
 POST https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/Microsoft.Sql/servers/{server-name}/databases/{database-name}/resume?api-version=2014-04-01-preview HTTP/1.1

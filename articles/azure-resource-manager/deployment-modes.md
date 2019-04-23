@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 04/08/2019
 ms.author: tomfitz
 ms.openlocfilehash: d2de802b2170feb6130cdce8007e16cc37561f5e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59265383"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791278"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure 资源管理器部署模式
 
@@ -28,13 +28,13 @@ ms.locfileid: "59265383"
 
 在完整模式下，资源管理器删除资源组中已存在但尚未在模板中指定的资源。 由于[条件](resource-group-authoring-templates.md#condition)的计算结果为 false，因此不会删除模板中指定但未部署的资源。
 
-有一些差异中的资源类型如何处理完成模式删除操作。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
+资源类型处理完整模式删除的方式有所不同。 当父资源不在以完整模式部署的模板中时，将自动删除该资源。 而某些子资源不在模板中时，不会将其自动删除。 但是，如果删除父资源，则会删除这些子资源。 
 
-例如，如果资源组包含 DNS 区域（Microsoft.Network/dnsZones 资源类型）和 CNAME 记录（Microsoft.Network/dnsZones/CNAME 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域，但不包括该 CNAME 记录，CNAME 不会被删除。 
+例如，如果资源组包含 DNS 区域（Microsoft.Network/dnsZones 资源类型）和 CNAME 记录（Microsoft.Network/dnsZones/CNAME 资源类型），则 DNS 区域是 CNAME 记录的父资源。 如果使用完整模式部署并且模板中不包含 DNS 区域，则 DNS 区域和 CNAME 记录都将被删除。 如果在模板中包含 DNS 区域但不包含 CNAME 记录，则不会删除 CNAME。 
 
 有关资源类型如何处理删除的列表，请参阅[针对完全模式部署的 Azure 资源删除](complete-mode-deletion.md)。
 
-如果资源组是[锁定](resource-group-lock-resources.md)，完整模式不会删除资源。
+如果资源组被[锁定](resource-group-lock-resources.md)，则完整模式不会删除资源。
 
 > [!NOTE]
 > 仅根级别模板支持完整部署模式。 对于[链接模板或嵌套模板](resource-group-linked-templates.md)，必须使用增量模式。 

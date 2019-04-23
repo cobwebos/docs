@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 4/9/2019
 ms.author: mayg
 ms.openlocfilehash: 58e360bb355c7faf9608b00dd65b14f27aca4367
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59358045"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790523"
 ---
 # <a name="set-up-disaster-recovery-for-active-directory-and-dns"></a>为 Active Directory 和 DNS 设置灾难恢复
 

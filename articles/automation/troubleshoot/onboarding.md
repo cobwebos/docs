@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.openlocfilehash: eaafee304f606ae4d511a6cea1824c26db838635
-ms.sourcegitcommit: 3341598aebf02bf45a2393c06b136f8627c2a7b8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58802025"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793140"
 ---
 # <a name="troubleshoot-errors-when-onboarding-solutions"></a>排查加入解决方案时发生的错误
 
@@ -39,7 +39,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 在虚拟机，工作区中，或用户的不正确或缺少权限导致此错误。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 请确保你有加入虚拟机所需的权限。 查看[加入计算机所需的权限](../automation-role-based-access-control.md#onboarding)并尝试重新加入解决方案。 如果收到错误`The solution cannot be enabled on this VM because the permission to read the workspace is missing`，确保您具有`Microsoft.OperationalInsights/workspaces/read`能够找到 VM 是否加入工作区的权限。
 
@@ -53,7 +53,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 你可能已更改了该查询，或者系统可能已更改了该查询。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 可以删除对此解决方案的查询，重新载入解决方案，这会重新创建查询。 可以在你的工作区内找到此查询，它位于“保存的搜索”下。 查询名称是 **MicrosoftDefaultComputerGroup**，查询类别是与此查询关联的解决方案的名称。 如果启用了多个解决方案，则 **MicrosoftDefaultComputerGroup** 会在“保存的搜索”下显示多次。
 
@@ -67,7 +67,7 @@ The solution cannot be enabled on this VM because the permission to read the wor
 
 实施的某个策略正在阻止操作完成。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 为了成功部署解决方案，需要考虑更改指示的策略。 由于可以定义许多不同类型的策略，因此所需的特定更改取决于所违反的策略。 例如，如果在某个资源组上定义了一个拒绝更改该资源组中某些类型的资源内容的权限的策略，则可以（例如）执行以下任一操作：
 
@@ -113,7 +113,7 @@ Please verify the VM has a running VM agent, and can establish outbound connecti
 
 * 某个防火墙设置已阻止访问所需的端口和地址。
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 确保已打开正确的端口和地址用于通信。 有关端口和地址的列表，请参阅[规划网络](../automation-hybrid-runbook-worker.md#network-planning)。
 
@@ -144,7 +144,7 @@ The Microsoft Monitoring Agent failed to install on this machine. Please try to 
 * 另一项安装正在进行
 * 系统会触发将模板部署期间重新启动
 
-#### <a name="resolution"></a>解析
+#### <a name="resolution"></a>解决方法
 
 此错误是暂时性的。 请重试部署，以安装该扩展。
 
@@ -164,7 +164,7 @@ Install failed for plugin (name: Microsoft.EnterpriseCloud.Monitoring.MicrosoftM
 
 此错误是因为在安装过程中要在高负载下的虚拟机。
 
-### <a name="resolution"></a>解析
+### <a name="resolution"></a>解决方法
 
 请尝试在 VM 的负载降低时安装 MMA 扩展。
 

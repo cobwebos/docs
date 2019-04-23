@@ -11,11 +11,11 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 8875674b0f9c621a573dda591b4dc2b6f018a83c
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59494776"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790223"
 ---
 # <a name="project-acoustics-unity-bake-tutorial"></a>项目音响效果 Unity 烘焙教程
 本教程介绍了在 Unity 中使用项目音响效果进行音效烘焙。

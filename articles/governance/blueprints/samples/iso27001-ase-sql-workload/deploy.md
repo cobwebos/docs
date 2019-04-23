@@ -8,11 +8,11 @@ ms.topic: sample
 ms.service: blueprints
 manager: carmonm
 ms.openlocfilehash: 78f608aedd53aa1071eaf88864f5a63f8f9e6072
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59281193"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59791005"
 ---
 # <a name="deploy-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>部署 ISO 27001 应用服务环境/SQL 数据库工作负荷蓝图示例
 
@@ -102,12 +102,12 @@ ms.locfileid: "59281193"
 
    - 项目参数
 
-     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters)，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table)。
+     在本部分定义的参数将应用到定义了这些参数的项目。 这些参数属于[动态参数](../../concepts/parameters.md#dynamic-parameters) ，因为它们是在分配蓝图期间定义的。 有关完整列表或项目参数及其说明，请参阅[项目参数表](#artifact-parameters-table) 。
 
 1. 输入所有参数后，选择页面底部的“分配”。 随后将创建蓝图分配，并开始部署项目。 部署过程大约需要一小时。 若要检查部署状态，请打开蓝图分配。
 
 > [!WARNING]
-> Azure 蓝图服务和内置蓝图示例是**免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/)。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/)可以估算运行此蓝图示例部署的资源所需的成本。
+> Azure 蓝图服务和内置蓝图示例是**免费的**。 Azure 资源[按产品定价](https://azure.microsoft.com/pricing/) 。 使用[定价计算器](https://azure.microsoft.com/pricing/calculator/) 可以估算运行此蓝图示例部署的资源所需的成本。
 
 ## <a name="artifact-parameters-table"></a>项目参数表
 

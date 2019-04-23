@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: ac0e4e9019a35d3fdb35c0b7af9cb1289f4bceeb
-ms.sourcegitcommit: 0a3efe5dcf56498010f4733a1600c8fe51eb7701
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58895439"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792466"
 ---
 # <a name="run-multi-step-build-test-and-patch-tasks-in-acr-tasks"></a>在 ACR 任务中运行多步骤生成、测试和修补任务
 

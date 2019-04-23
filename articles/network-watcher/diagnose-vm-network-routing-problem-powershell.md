@@ -18,11 +18,11 @@ ms.date: 04/20/2018
 ms.author: jdial
 ms.custom: ''
 ms.openlocfilehash: 6624ded670ef506dfef225a8b595da2e5ea19427
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051608"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59794391"
 ---
 # <a name="diagnose-a-virtual-machine-network-routing-problem---azure-powershell"></a>诊断虚拟机网络路由问题 - Azure PowerShell
 
@@ -63,7 +63,7 @@ $vM = New-AzVm `
 
 ## <a name="enable-network-watcher"></a>启用网络观察程序
 
-如果已在美国东部区域启用网络观察程序，请使用[Get AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher)检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_eastus 的现有网络观察程序：
+如果已在美国东部区域启用了网络观察程序，请使用 [Get-AzNetworkWatcher](/powershell/module/az.network/get-aznetworkwatcher) 来检索网络观察程序。 以下示例检索 NetworkWatcherRG 资源组中名为 NetworkWatcher_eastus 的现有网络观察程序：
 
 ```azurepowershell-interactive
 $networkWatcher = Get-AzNetworkWatcher `
@@ -71,7 +71,7 @@ $networkWatcher = Get-AzNetworkWatcher `
   -ResourceGroupName NetworkWatcherRG
 ```
 
-如果还没有在美国东部区域启用网络观察程序，使用[新建 AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher)在美国东部区域中创建网络观察程序：
+如果还没有在美国东部区域启用网络观察程序，请使用 [New-AzNetworkWatcher](/powershell/module/az.network/new-aznetworkwatcher) 在美国东部区域创建网络观察程序：
 
 ```azurepowershell-interactive
 $networkWatcher = New-AzNetworkWatcher `
@@ -135,7 +135,7 @@ Name State  Source  AddressPrefix           NextHopType NextHopIpAddress
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 6644b6ae3a9482a1bd3f840a814d3bb6361517fc
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006504"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59790053"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MariaDB VNet 服务终结点和 VNet 规则
 
@@ -24,7 +24,7 @@ ms.locfileid: "59006504"
 
 1. 在 MariaDB 服务器页面上，在“设置”标题下，单击“连接安全性”，以打开 Azure Database for MariaDB 的“连接安全性”窗格。
 
-2. 确保允许访问 Azure 服务控件设置为**OFF**。
+2. 确保将“允许访问 Azure 服务”控件设置为“关闭”。
 
 > [!Important]
 > 如果将其设置为 ON 时，Azure MariaDB 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 协调与虚拟网络规则功能的 Azure Database for MariaDB 中的 Microsoft Azure 虚拟网络服务终结点功能，可以降低安全风险。

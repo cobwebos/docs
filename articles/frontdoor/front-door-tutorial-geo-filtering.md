@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 8a1fb0c3270d4899f05190fb1745075584f613ab
-ms.sourcegitcommit: 43b85f28abcacf30c59ae64725eecaa3b7eb561a
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/09/2019
-ms.locfileid: "59357164"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793580"
 ---
 # <a name="how-to-set-up-a-geo-filtering-waf-policy-for-your-front-door"></a>如何为 Front Door 设置地区筛选 WAF 策略
 本教程介绍如何使用 Azure PowerShell 创建简单的地区筛选策略并将该策略与现有的 Front Door 前端主机相关联。 此示例地区筛选策略会阻止除美国之外的所有其他国家/地区的请求。

@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: 3d35860452aabb6aecc4e8549c7b5ce4447d7aa4
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59047664"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789850"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>使用 Azure 网络观察程序安全组视图自动进行 NSG 审核
 

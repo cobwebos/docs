@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: 9224ecebed35a631514c5254703ad2694675d40e
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59049614"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793808"
 ---
 # <a name="infrastructure-as-code"></a>基础结构即代码
 

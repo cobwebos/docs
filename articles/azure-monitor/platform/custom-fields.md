@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
 ms.openlocfilehash: eebf3709657382eb403041e6637e32e5f5d43b15
-ms.sourcegitcommit: ad3e63af10cd2b24bf4ebb9cc630b998290af467
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58793333"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59789716"
 ---
 # <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中的 Log Analytics 工作区中创建自定义字段
 
@@ -85,7 +85,7 @@ ms.locfileid: "58793333"
 
 我们输入以下查询从服务控制管理器中返回事件 ID 为 7036 的所有事件（即指示服务启动或停止的事件）。
 
-![查询](media/custom-fields/query.png)
+![Query](media/custom-fields/query.png)
 
 然后，我们将选择并展开与事件 ID 为 7036 的任何记录。
 

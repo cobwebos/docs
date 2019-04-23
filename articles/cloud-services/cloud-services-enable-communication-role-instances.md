@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/14/2016
 ms.author: jeconnoc
 ms.openlocfilehash: 8b521ebe869210b66ac3b3efeebda873f7c0e50b
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58918155"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792465"
 ---
 # <a name="enable-communication-for-role-instances-in-azure"></a>为 Azure 中的角色实例启用通信
 云服务角色通过内部和外部连接进行通信。 外部连接称为**输入终结点**，内部连接称为**内部终结点**。 本主题介绍如何修改[服务定义](cloud-services-model-and-package.md#csdef)来创建终结点。

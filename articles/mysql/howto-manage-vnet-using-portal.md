@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/22/2018
 ms.openlocfilehash: 96404298b0c13fa3f8c4d9664cf4293aa6dafb22
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "59006463"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59793770"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-vnet-service-endpoints-and-vnet-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL VNet 服务终结点和 VNet 规则
 虚拟网络 (VNet) 服务终结点和规则将虚拟网络的专用地址空间扩展到 Azure Database for MySQL 服务器。 若要概览 Azure Database for MySQL VNet 服务终结点（包括限制），请参阅 [Azure Database for MySQL 服务器 VNet 服务终结点](concepts-data-access-and-security-vnet.md)。 在 Azure Database for MySQL 的所有支持区域中，VNet 服务终结点均可用。
@@ -24,10 +24,10 @@ ms.locfileid: "59006463"
 
 1. 在 MySQL 服务器页面上的“设置”标题下，单击“连接安全性”，以打开 Azure Database for MySQL 的“连接安全性”窗格。 
 
-2. 确保允许访问 Azure 服务控件设置为**OFF**。
+2. 确保将“允许访问 Azure 服务”控件设置为“关闭”。
 
 > [!Important]
-> 如果将此控件设置为 ON 时，Azure MySQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 Microsoft Azure 虚拟网络服务终结点功能与结合使用虚拟网络规则功能的 Azure Database for MySQL，可以降低安全风险。
+> 如果将此控件设置为“启用”，则 Azure MySQL 数据库服务器接受来自任何子网的通信。 从安全角度来看，将此控件设置为“启用”可能会导致过度访问。 Microsoft Azure 虚拟网络服务终结点功能与结合使用虚拟网络规则功能的 Azure Database for MySQL，可以降低安全风险。
 
 3. 接下来，单击“+ 添加现有虚拟网络”。 若无现有 VNet，可以单击“+ 新建虚拟网络”来创建一个。 请参阅[快速入门：使用 Azure 门户创建虚拟网络](../virtual-network/quick-create-portal.md)
 

@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/27/2019
 ms.author: mlottner
 ms.openlocfilehash: 56378e94bf448da4c3047c30be3ae25887f113b5
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
-ms.translationtype: MT
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862618"
+ms.lasthandoff: 04/18/2019
+ms.locfileid: "59792211"
 ---
 # <a name="investigate-a-suspicious-iot-device"></a>调查可疑的 IoT 设备
 
 > [!IMPORTANT]
-> IoT 的 azure 安全中心当前处于公共预览状态。
+> 适用于 IoT 的 Azure 安全中心目前为公共预览版。
 > 此预览版不附带服务级别协议，我们不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 IoT 服务警报和证据的 azure 安全中心 (ASC) 提供明确的指示时涉及的可疑活动或迹象存在设备受到怀疑 IoT 设备。 
