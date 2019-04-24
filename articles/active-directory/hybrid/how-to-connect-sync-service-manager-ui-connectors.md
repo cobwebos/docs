@@ -18,11 +18,11 @@ ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ae932191c7b76590ea217386dfd729add5566f87
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431166"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384061"
 ---
 # <a name="using-connectors-with-the-azure-ad-connect-sync-service-manager"></a>将连接器与 Azure AD Connect Sync Service Manager 配合使用
 
@@ -86,7 +86,7 @@ ms.locfileid: "57431166"
 3. 选择配置为使用 AD DS 帐户的 AD 连接器。
 4. 在“操作”下，选择“属性”。
 5. 在弹出对话框中，选择“连接到 Active Directory 林”：
-6. 林名称指示相应在本地 AD。
+6. 林名称指示相应的本地 AD。
 7. 用户名指示用于同步的 AD DS 帐户。
 8. 在密码文本框 ![Azure AD Connect 同步加密密钥实用程序](./media/how-to-connect-sync-service-manager-ui-connectors/key6.png)中输入 AD DS 帐户的新密码
 9. 单击“确定”以保存新密码，并重启 Synchronization Service 以从内存缓存中删除旧密码。

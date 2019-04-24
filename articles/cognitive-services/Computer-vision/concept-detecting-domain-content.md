@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 92859667e1dc53b9c6ca9e46a2db1c6dc335ae37
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.openlocfilehash: e4b64e00f71768a8821c83a73b019f77089e1b3a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57339005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368063"
 ---
 # <a name="detect-domain-specific-content"></a>检测特定于域的内容
 
@@ -30,7 +30,7 @@ ms.locfileid: "57339005"
 
 以下是 **models/celebrities/analyze** API 为给定图像返回的示例 JSON 响应：
 
-![Satya Nadella 的站立图](./images/satya.jpeg)
+![Satya Nadella 站着、 微笑](./images/satya.jpeg)
 
 ```json
 {
@@ -100,7 +100,7 @@ ms.locfileid: "57339005"
 
 目前，计算机视觉支持以下特定于域的模型：
 
-| 名称 | 描述 |
+| Name | 描述 |
 |------|-------------|
 | 名人 | 名人识别，支持属于 `people_` 类别的图像 |
 | 地标 | 地标识别，支持属于 `outdoor_` 或 `building_` 类别的图像 |

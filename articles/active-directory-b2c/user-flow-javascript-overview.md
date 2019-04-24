@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 02/07/2019
-ms.author: davidmu
+origin.date: 02/07/2019
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 5102755c9e830f43fa92e8546e5125960e0a2f9a
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360212"
 ---
 # <a name="about-using-javascript-and-page-contract-versions-in-a-user-flow"></a>关于如何在用户流中使用 JavaScript 和页面协定版本
 
@@ -30,13 +31,14 @@ Azure AD B2C 提供一组打包的内容，其中包含的 HTML、CSS 和 JavaSc
 
 在用户流属性中，可以启用 JavaScript，这样也会强制使用页面协定。 然后就可以设置页面协定版本，如下一部分所述。
 
-![启用 JavaScript 设置](media/user-flow-javascript-overview/javascript-settings.PNG)
+![启用 JavaScript 设置](./media/user-flow-javascript-overview/javascript-settings.PNG)
 
 ## <a name="specify-a-page-contract-version"></a>指定页面协定版本
 
 不管是否在用户流的属性中启用 JavaScript，都可以为用户流页面指定页面协定版本。 打开用户流，然后选择“页面布局”。 在“布局名称”下选择一个用户流页面，然后选择“页面协定版本”。
 
-![启用 JavaScript 设置](media/user-flow-javascript-overview/page-contract-version.PNG)
+![启用 JavaScript 设置](./media/user-flow-javascript-overview/page-contract-version.PNG)
 
 ## <a name="next-steps"></a>后续步骤
 请参阅[用于 Azure Active Directory B2C 中的 JavaScript 示例](javascript-samples.md)。
+

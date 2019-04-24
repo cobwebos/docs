@@ -12,11 +12,11 @@ ms.date: 06/05/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: b67028562a2c377e1dd99635bdf04cad14782341
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793129"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326545"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>机器学习异常情况检测 API
 
@@ -169,7 +169,7 @@ ScoreWithSeasonality API 用于对具有季节性模式的时序运行异常情�
 | negtrenddetector.sensitivity |负面发展趋势检测程序敏感度。 |3.25 |double |无 |3.25-5（值越小，敏感度越高） |
 | tspikedetector.sensitivity |TSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
 | zspikedetector.sensitivity |ZSpike 检测程序的敏感度 |3 |integer |1-10 |3-5（值越小，敏感度越高） |
-| seasonality.enable |是否要执行季节性分析 |true |布尔值 |true、false |时间序列依赖项 |
+| seasonality.enable |是否要执行季节性分析 |true |boolean |true、false |时间序列依赖项 |
 | seasonality.numSeasonality |检测到的定期周期的最大数量 |1 |integer |1, 2 |1-2 |
 | seasonality.transform |是否应在应用异常检测前删除季节性（和）趋势组件 |deseason |枚举 |none, deseason, deseasontrend |不适用 |
 | postprocess.tailRows |保留输出结果中的最新数据点的数量 |0 |integer |0（保留所有数据点），或指定要保留在结果中的点的数量 |不适用 |

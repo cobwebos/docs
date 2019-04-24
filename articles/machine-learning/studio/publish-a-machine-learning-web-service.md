@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: 2ffc9055f23b8221a6f711f741b6146545ff0821
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57895716"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60333903"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-web-service"></a>部署 Azure 机器学习工作室 Web 服务
 
@@ -139,7 +139,7 @@ RRS 测试页显示你为试验定义的输入、输出和任何全局参数。 
 6. 从“资源组”下拉列表中，选择适用于该计划的资源组。 有关资源组的详细信息，请参阅 [Azure 资源管理器概述](../../azure-resource-manager/resource-group-overview.md)。
 7. 在“计划名称”中，键入计划的名称。
 8. 在“计划选项”中，单击新计划的计费级别。
-9. 单击“创建”。
+9. 单击**创建**。
 
 #### <a name="deploy-the-web-service-to-another-region"></a>将 Web 服务部署到另一个区域
 

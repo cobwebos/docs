@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: ergreenl
 ms.openlocfilehash: d4f50ea89f2623d387fb77acb09e609def547468
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55178930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359426"
 ---
 # <a name="choose-between-azure-active-directory-join-and-azure-active-directory-domain-services"></a>在 Azure Active Directory Join 与 Azure Active Directory 域服务之间进行选择
 本文介绍 Azure Active Directory (AD) Join 与 Azure AD 域服务之间的差异，帮助根据用例做出选择。
@@ -58,7 +58,7 @@ Azure AD 域服务在 Azure 虚拟网络中提供 AD 托管域。 可以使用�
 |:---| --- | --- |
 | 设备控制方 | Azure AD | Azure AD 域服务托管域 |
 | 在目录中的表示形式 | Azure AD 目录中的设备对象。 | AAD-DS 托管域中的计算机对象。 |
-| 身份验证 | 基于 OAuth/OpenID Connect 的协议 | Kerberos、NTLM 协议 |
+| Authentication | 基于 OAuth/OpenID Connect 的协议 | Kerberos、NTLM 协议 |
 | 管理 | Intune 等移动设备管理 (MDM) 软件 | 组策略 |
 | 网络 | 通过 Internet 工作 | 要求计算机与托管域位于同一虚拟网络。|
 | 非常适合用于... | 最终用户移动设备或台式机设备 | Azure 中部署的服务器虚拟机 |

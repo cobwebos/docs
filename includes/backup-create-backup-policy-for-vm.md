@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: raynew
 ms.openlocfilehash: 3631d2e9beaa7c0d9ee018a32981a278381a7d86
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58115789"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406820"
 ---
 ## <a name="defining-a-backup-policy"></a>定义备份策略
 备份策略定义由数据快照创建时间和这些快照的保留时间长度构成的矩阵。 定义 VM 的备份策略时，可以 *一天一次*地触发备份作业。 创建新策略时，该策略将应用到保管库。 备份策略界面如下所示：

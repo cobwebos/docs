@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 105b8481486c088a05e3acb95081d3ee55b55f52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371971"
 ---
 # <a name="create-an-additional-azure-subscription-for-microsoft-customer-agreement"></a>为 Microsoft 客户协议创建其他 Azure 订阅
 
@@ -63,11 +63,11 @@ ms.locfileid: "57897091"
 
    ![搜索显示在门户中订阅的屏幕截图](./media/billing-mca-create-subscription/billing-search-cost-management-billing.png)
 
-3. 请转到发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。 从计费帐户或配置文件中选择**发票部分**，然后发票部分。
+3. 转到发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。 从计费帐户或配置文件中选择**发票部分**，然后发票部分。
 
 4. 选择**访问管理 (IAM)** 从左上方。
 
-5. 从页面顶部，选择**添加**。
+5. 在页面顶部选择“添加”。
 
 6. 选择**Azure 订阅创建者**角色。
 

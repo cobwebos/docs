@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/17/2018
 ms.author: ergreenl
 ms.openlocfilehash: 503e52266c1c6be71e60a751c40ef0a54f0d9b12
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416411"
 ---
 # <a name="troubleshoot-invalid-networking-configuration-for-your-managed-domain"></a>排查托管域的无效网络配置问题
 本文可帮助你排查和解决导致以下警报消息的与网络相关的配置错误：

@@ -16,16 +16,16 @@ ms.date: 03/22/2019
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acf17971bde840743d17dd0b66078630c2d4e7c1
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: af10596fb1ddf4a4f9eba2b8265eb77221a19f4c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353119"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory 设备管理常见问题解答
 
-###<a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备。 但为什么在 Azure 门户中我的用户信息下看不到该设备？ 或者为什么设备所有者标记为已加入混合 Azure Active Directory (Azure AD) 的不适用的设备？
+### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>问：我最近注册了设备。 但为什么在 Azure 门户中我的用户信息下看不到该设备？ 或者为什么设备所有者标记为已加入混合 Azure Active Directory (Azure AD) 的不适用的设备？
 
 **答:** 已加入混合 Azure AD 的 Windows 10 设备不显示在“USER 设备”下。
 使用 Azure 门户中的“所有设备”视图。 还可以使用 PowerShell [Get-MsolDevice](https://docs.microsoft.com/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) cmdlet。
@@ -63,15 +63,15 @@ ms.locfileid: "58518782"
 
 1.  以管理员身份打开命令提示符。
 
-2.  输入 `dsregcmd.exe /debug /leave`。
+2.  输入 `dsregcmd.exe /debug /leave` 。
 
 3.  注销并再次登录，以触发可以将设备注册到 Azure AD 的计划任务。 
 
 对于加入本地 Active Directory 域的低级别 Windows 操作系统版本，请执行以下步骤：
 
 1.  以管理员身份打开命令提示符。
-2.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`。
-3.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`。
+2.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"` 。
+3.  输入 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"` 。
 
 ---
 

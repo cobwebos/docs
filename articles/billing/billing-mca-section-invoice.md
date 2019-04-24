@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 21d6c1671c57341d785c002f360c05cc5c610657
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57551613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371563"
 ---
 # <a name="create-sections-on-your-invoice-to-organize-your-costs"></a>在你开发票来组织你的成本创建部分
 
@@ -38,7 +38,7 @@ ms.locfileid: "57551613"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-section-invoice/billing-mca-list-invoice-sections.png)
 
-4. 从页面顶部，选择**添加**。
+4. 在页面顶部选择“添加”。
 
 5. 输入的发票节的名称。
 

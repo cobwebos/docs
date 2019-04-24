@@ -1,5 +1,5 @@
 ---
-title: IOS-Azure Active Directory 上基于证书的身份验证
+title: iOS 上基于证书的身份验证 - Azure Active Directory
 description: 了解 iOS 设备的解决方案中配置基于证书的身份验证的支持方案和要求
 services: active-directory
 ms.service: active-directory
@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cda1b1c2a484f3aa627b8b9cf486528d13f27be8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60415987"
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS 上 Azure Active Directory 基于证书的身份验证
 
@@ -35,16 +35,16 @@ ms.locfileid: "58369422"
 
 | 应用 | 支持 |
 | --- | --- |
-| Azure 信息保护应用 |![选中标记，表明此应用程序支持][1] |
-| Intune 公司门户 |![选中标记，表明此应用程序支持][1] |
-| Microsoft Teams |![选中标记，表明此应用程序支持][1] |
-| OneNote |![选中标记，表明此应用程序支持][1] |
-| OneDrive |![选中标记，表明此应用程序支持][1] |
-| Outlook |![选中标记，表明此应用程序支持][1] |
-| Power BI |![选中标记，表明此应用程序支持][1] |
-| Skype for Business |![选中标记，表明此应用程序支持][1] |
-| Word/Excel/PowerPoint |![选中标记，表明此应用程序支持][1] |
-| Yammer |![选中标记，表明此应用程序支持][1] |
+| Azure 信息保护应用 |![对号，表示支持此应用程序][1] |
+| Intune 公司门户 |![对号，表示支持此应用程序][1] |
+| Microsoft Teams |![对号，表示支持此应用程序][1] |
+| OneNote |![对号，表示支持此应用程序][1] |
+| OneDrive |![对号，表示支持此应用程序][1] |
+| Outlook |![对号，表示支持此应用程序][1] |
+| Power BI |![对号，表示支持此应用程序][1] |
+| Skype for Business |![对号，表示支持此应用程序][1] |
+| Word/Excel/PowerPoint |![对号，表示支持此应用程序][1] |
+| Yammer |![对号，表示支持此应用程序][1] |
 
 ## <a name="requirements"></a>要求
 

@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+origin.date: 09/10/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 88d447f86dd54fc9479a6d7d2006b9a8639ad09e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396841"
 ---
 # <a name="json-claims-transformations"></a>JSON 声明转换
 
@@ -29,9 +30,9 @@ ms.locfileid: "58089227"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | 字符串 | 由声明转换用于获取项的 ClaimTypes。 |
-| InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
-| OutputClaim | extractedClaim | 字符串 | 调用此声明转换后生成的 ClaimType，即 claimToExtract 输入参数中指定的元素值。 |
+| InputClaim | inputJson | string | 由声明转换用于获取项的 ClaimTypes。 |
+| InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
+| OutputClaim | extractedClaim | string | 调用此声明转换后生成的 ClaimType，即 claimToExtract 输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `emailAddress` 元素：`{"emailAddress": "someone@example.com", "displayName": "Someone"}`
 
@@ -65,11 +66,11 @@ ms.locfileid: "58089227"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | jsonSourceClaim | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
-| InputParameter | errorOnMissingClaims | 布尔值 | 指定如果缺少一个声明是否引发错误。 |
-| InputParameter | includeEmptyClaims | 字符串 | 指定是否包含空声明。 |
-| InputParameter | jsonSourceKeyName | 字符串 | 元素键名称 |
-| InputParameter | jsonSourceValueName | 字符串 | 元素值名称 |
+| InputClaim | jsonSourceClaim | string | 由声明转换用于获取声明的 ClaimTypes。 |
+| InputParameter | errorOnMissingClaims | boolean | 指定如果缺少一个声明是否引发错误。 |
+| InputParameter | includeEmptyClaims | string | 指定是否包含空声明。 |
+| InputParameter | jsonSourceKeyName | string | 元素键名称 |
+| InputParameter | jsonSourceValueName | string | 元素值名称 |
 | OutputClaim | 集合 | 字符串、int、布尔值，和日期时间 |要提取的声明列表。 声明名称应等于 jsonSourceClaim 输入声明中指定的名称。 |
 
 在以下示例中，声明转换从 JSON 数据中提取以下声明：email（字符串）、displayName（字符串）、membershipNum (int)、active（布尔值）和 birthdate（日期时间）。
@@ -119,8 +120,8 @@ ms.locfileid: "58089227"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJson | 字符串 | 由声明转换用于获取声明的 ClaimTypes。 |
-| InputParameter | claimToExtract | 字符串 | 要提取的 JSON 元素的名称。 |
+| InputClaim | inputJson | string | 由声明转换用于获取声明的 ClaimTypes。 |
+| InputParameter | claimToExtract | string | 要提取的 JSON 元素的名称。 |
 | OutputClaim | extractedClaim | long | 调用此 ClaimsTransformation 后生成的 ClaimType，即 claimToExtract 输入参数中指定的元素值。 |
 
 在以下示例中，声明转换提取 JSON 数据中的 `id` 元素。
@@ -162,8 +163,8 @@ ms.locfileid: "58089227"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | inputJsonClaim | 字符串 | 由声明转换用于从 JSON 数组中获取项的 ClaimTypes。 |
-| OutputClaim | extractedClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即 JSON 数组中的第一个元素。 |
+| InputClaim | inputJsonClaim | string | 由声明转换用于从 JSON 数组中获取项的 ClaimTypes。 |
+| OutputClaim | extractedClaim | string | 调用此 ClaimsTransformation 后生成的 ClaimType，即 JSON 数组中的第一个元素。 |
 
 在以下示例中，声明转换提取 JSON 数组 `["someone@example.com", "Someone", 6353399]` 中的第一个元素（电子邮件地址）。
 
@@ -191,8 +192,8 @@ ms.locfileid: "58089227"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | xml | 字符串 | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
-| OutputClaim | json | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |
+| InputClaim | xml | string | 由声明转换用于将数据从 XML 转换为 JSON 格式的 ClaimTypes。 |
+| OutputClaim | json | string | 调用此 ClaimsTransformation 后生成的 ClaimType，即采用 JSON 格式的数据。 |
 
 ```XML
 <ClaimsTransformation Id="ConvertXmlToJson" TransformationMethod="XmlStringToJsonString">
@@ -227,4 +228,5 @@ ms.locfileid: "58089227"
   }
 }
 ```
+
 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: fca78c86849ef8210bb3aaeb8ad96e1fba3d7c05
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 2fe31271fa84bc4170bd431a4aadbcafc0df9086
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57542482"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311450"
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>在 Azure 开发测试实验室中向实验室发布通告
 
@@ -37,8 +37,8 @@ ms.locfileid: "57542482"
 
 1. 登录到 [Azure 门户](https://go.microsoft.com/fwlink/p/?LinkID=525040)。
 1. 如果需要，请选择“所有服务”，并从列表中选择“开发测试实验室”。 （实验室可能已显示在“所有资源”下的“仪表板”上）。
-1. 从实验室列表中选择要在其中发布通告的实验室。  
-1. 在实验室的“概览”区域中，选择“配置和策略”。  
+1. 从实验室列表中选择要在其中发布通告的实验室。
+1. 在实验室的“概览”区域中，选择“配置和策略”。
 
     ![“配置和策略”按钮](./media/devtest-lab-announcements/devtestlab-config-and-policies.png)
 
@@ -83,7 +83,7 @@ ms.locfileid: "57542482"
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
 ## <a name="azure-resource-manager-template"></a>Azure 资源管理器模板
-可以将公告指定为 Azure 资源管理器模板的一部分，如以下示例所示： 
+可以将公告指定为 Azure 资源管理器模板的一部分，如以下示例所示：
 
 ```json
 {
@@ -119,7 +119,7 @@ ms.locfileid: "57542482"
                 "support": {
                     "markdown": "",
                     "enabled": "Enabled"
-                }                
+                }
             },
             "resources": [
                 {
@@ -167,4 +167,4 @@ ms.locfileid: "57542482"
 
 ## <a name="next-steps"></a>后续步骤
 * 如果更改或设置了实验室策略，可以发布通告来告知用户。 [设置策略和计划](devtest-lab-set-lab-policy.md)提供了有关使用自定义策略对整个订阅应用限制和约定的信息。
-* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/Samples)。
+* 浏览[开发测试实验室 Azure 资源管理器快速入门模板库](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)。

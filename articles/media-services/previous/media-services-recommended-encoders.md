@@ -10,14 +10,14 @@ ms.date: 03/20/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 373ce1d10af87603b1bdd6339c94891187c35d8c
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332646"
 ---
 # <a name="recommended-on-premises-encoders"></a>推荐的本地编码器
-使用 Azure 媒体服务实时传送视频流时，可以指定通道接收输入流的方式。 如果您选择要用于实时编码通道上的本地编码器，则编码器应推送高质量单比特率流作为输出。 如果选择使用在本地编码器与直通通道，则编码器应推送多比特率流作为输出，其中所有所需的输出质量。 有关详细信息，请参阅[实时传送视频流使用在本地编码器](media-services-live-streaming-with-onprem-encoders.md)。
+使用 Azure 媒体服务实时传送视频流时，可以指定通道接收输入流的方式。 如果选择将本地编码器与实时编码通道结合使用，则编码器应推送高质量单比特率流作为输出。 如果选择将本地编码器与直通通道结合使用，则编码器应推送具备所有所需输出质量的多比特率流作为输出。 有关详细信息，请参阅[使用本地编码器实时传送视频流](media-services-live-streaming-with-onprem-encoders.md)。
 
 Azure 媒体服务建议使用下列将 RTMP 作为输出的实时编码器之一：
 - Adobe Flash 媒体实时编码器 3.2
@@ -44,8 +44,8 @@ Azure 媒体服务建议使用下列将多比特率片段 MP4（平滑流式处�
 > [!NOTE]
 > 实时编码器可以将单比特率流发送到直通通道，但并不建议此配置，因为它不允许对客户端进行自适应比特率流式处理。
 
-## <a name="how-to-become-an-on-premises-encoder-partner"></a>如何成为上的本地编码器合作伙伴
-作为 Azure 媒体服务在本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来推广你的产品。 若要成为上的本地编码器合作伙伴，必须验证与媒体服务上的本地编码器的兼容性。 为此，请完成以下验证：
+## <a name="how-to-become-an-on-premises-encoder-partner"></a>如何成为本地编码器合作伙伴
+作为 Azure 媒体服务本地编码器合作伙伴，媒体服务通过向企业客户推荐编码器来推广你的产品。 若要成为本地编码器合作伙伴，必须验证本地编码器与媒体服务的兼容性。 为此，请完成以下验证：
 
 直通通道验证
 1. 创建或访问 Azure 媒体服务帐户

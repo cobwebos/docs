@@ -11,11 +11,11 @@ ms.author: billmath
 ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 554bb99121190198982f64deb6ee0674aa8831ed
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56162384"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381189"
 ---
 # <a name="azure-ad-connect--adsyncconfig-powershell-reference"></a>Azure AD Connect：ADSyncConfig PowerShell 参考
 以下文档提供了 Azure AD Connect 附带的 ADSyncConfig.psm1 PowerShell 模块的参考信息。
@@ -1082,10 +1082,10 @@ Set-ADSyncRestrictedPermissions [-ADConnectorAccountDN] <String> [-Credential] <
 Set-ADSyncRestrictedPermissions 函数将增强所提供帐户的权限。
 限制权限操作包括以下步骤：
 1.
-在指定对象上禁用继承
+禁用指定对象上的继承
 2.
-删除特定对象上的所有 ACE，特定于 SELF 的 ACE 除外。
-当涉及到 SELF 时，我们希望保持默认权限不变。
+删除特定对象上的所有 ACE，但特定于 SELF 的 ACE 除外。
+我们希望在处理 SELF 时默认权限保持不变。
 3.
 分配以下特定权限：
 
@@ -1130,7 +1130,7 @@ Accept wildcard characters: False
 ```
 
 #### <a name="-credential"></a>-Credential
-管理员凭据，拥有限制 ADConnectorAccountDN 帐户权限的必要特权。 这通常为企业或域管理员。 使用管理员帐户的完全限定的域名以避免查找帐户失败。
+管理员凭据，拥有限制 ADConnectorAccountDN 帐户权限的必要特权。 这通常为企业或域管理员。 使用管理员帐户的完全限定域名来避免帐户查找失败。
 示例：CONTOSO\admin
 
 ```yaml

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 6b25da9b2569b0185d41684c45a22a3eb3377511
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.openlocfilehash: ff7af2204f9e05a1ba4ef800c63c3ad462242350
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56313069"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368552"
 ---
 # <a name="detect-color-schemes-in-images"></a>检测图像中的配色方案
 
@@ -30,7 +30,7 @@ ms.locfileid: "56313069"
 
 下面的示例说明了检测示例图像的配色方案时，计算机视觉所返回的 JSON 响应。 在这种情况下，示例图不是黑色和白色的图像，但主导的前景色和背景色为黑色，并且图像的整体主导色为黑色和白色。
 
-![户外山脉](./Images/mountain_vista.png)
+![在停止服务，与某个人的轮廓的户外山地](./Images/mountain_vista.png)
 
 ```json
 {
@@ -54,7 +54,7 @@ ms.locfileid: "56313069"
 
 下表显示了针对每个示例图像返回的前景、背景和图像颜色。
 
-| 映像 | 主色 |
+| Image | 主色 |
 |-------|-----------------|
 |![具有绿色背景的白色花卉](./Images/flower.png)| 前景色：黑色<br/>背景色：白色<br/>颜色：黑色、白色、绿色|
 ![穿过车站的火车](./Images/train_station.png) | 前景色：黑色<br/>背景色：黑色<br/>颜色：黑色 |
@@ -63,7 +63,7 @@ ms.locfileid: "56313069"
 
  下表显示返回的十六进制 HTML 值形式的每个示例图像的主题色。
 
-| 映像 | 主题色 |
+| Image | 主题色 |
 |-------|--------------|
 |![日落时站在山岩上的人](./Images/mountain_vista.png) | #BB6D10 |
 |![具有绿色背景的白色花卉](./Images/flower.png) | #C6A205 |
@@ -73,7 +73,7 @@ ms.locfileid: "56313069"
 
 下表显示示例图像中的计算机视觉的黑色和白色计算。
 
-| 映像 | 黑色还是白色？ |
+| Image | 黑色还是白色？ |
 |-------|----------------|
 |![曼哈顿建筑的黑白照片](./Images/bw_buildings.png) | true |
 |![一座蓝色的房子和前院](./Images/house_yard.png) | false |

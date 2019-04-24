@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: 1e8c3e6863b9cd8f2f5ced18a57918c32c865e75
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57544590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372209"
 ---
 # <a name="track-azure-credit-balance-for-microsoft-customer-agreement"></a>跟踪的 Microsoft 客户协议的 Azure 信用额度余额
 
@@ -37,7 +37,7 @@ ms.locfileid: "57544590"
 
    ![有关成本管理 + 计费门户中显示搜索的屏幕截图](./media/billing-mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
-3. 请转到计费的配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。 从计费帐户，选择**计费配置文件**，然后计费配置文件。
+3. 转到计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 从计费帐户，选择**计费配置文件**，然后计费配置文件。
 
 4. 选择**Azure 额度**。
 

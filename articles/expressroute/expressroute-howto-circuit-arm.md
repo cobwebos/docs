@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: ganesr;cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 2b32c97f636cc6b918a883ea3e2a2b540890084f
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.openlocfilehash: 7594261fc8af4e7b392e2f229b28cfee36a52115
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57409845"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60366311"
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>使用 PowerShell 创建和修改 ExpressRoute 线路
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ ms.locfileid: "57409845"
 ### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2.获取支持的提供商、位置和带宽的列表
 在创建 ExpressRoute 线路之前，需要支持的连接服务提供商、位置和带宽选项的列表。
 
-PowerShell cmdlet **Get AzExpressRouteServiceProvider**返回此信息将在后面的步骤中使用：
+PowerShell cmdlet **Get-AzExpressRouteServiceProvider** 会返回此信息，将在后续步骤中使用此信息：
 
 ```azurepowershell-interactive
 Get-AzExpressRouteServiceProvider
@@ -52,7 +52,7 @@ Get-AzExpressRouteServiceProvider
 
 检查连接服务提供商是否已在该处列出。 请记下以下信息，稍后在创建线路时需要用到：
 
-* 名称
+* Name
 * PeeringLocations
 * BandwidthsOffered
 
@@ -89,7 +89,7 @@ get-help New-AzExpressRouteCircuit -detailed
 
 
 ### <a name="4-list-all-expressroute-circuits"></a>4.列出所有 ExpressRoute 线路
-若要获取你创建的所有 ExpressRoute 线路的列表，请运行**Get AzExpressRouteCircuit**命令：
+若要获取已创建的所有 ExpressRoute 线路的列表，请运行 **Get-AzExpressRouteCircuit** 命令：
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
@@ -215,7 +215,7 @@ Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 接下来，将虚拟网络链接到 ExpressRoute 线路。 使用资源管理器部署模式时，请参阅[将虚拟网络链接到 ExpressRoute 线路](expressroute-howto-linkvnet-arm.md)一文。
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>获取 ExpressRoute 线路的状态
-可以使用来检索此信息在任何时候**Get AzExpressRouteCircuit** cmdlet。 进行不带任何参数的调用将列出所有线路。
+可以随时使用 **Get-AzExpressRouteCircuit** cmdlet 检索此信息。 进行不带任何参数的调用将列出所有线路。
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit

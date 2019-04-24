@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 5aa118815146287d00a3bb8ee7d5fce57a6ad9ca
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58120289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397768"
 ---
 <a name="how-to-fill-out-the-technical-info-form"></a>如何填写“技术信息”窗体
 ===========================================

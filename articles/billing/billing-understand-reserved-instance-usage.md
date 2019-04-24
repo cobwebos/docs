@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: 14bd7b61038bf938f7d370eaf6e16d71b5da43ca
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370306"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>了解即用即付订阅的 Azure 预留使用情况
 
@@ -33,10 +33,10 @@ ms.locfileid: "58652529"
 
 以下部分假设在美国东部区域中运行 Standard_DS1_v2 Windows VM，并且虚拟机预留实例信息如下表中所示：
 
-| 字段 | 值 |
+| 字段 | Value |
 |---| :---: |
 |预订 ID |8117adfb-1d94-4675-be2b-f3c1bca808b6|
-|数量 |第|
+|数量 |1|
 |SKU | Standard_DS1_v2|
 |区域 | eastus |
 
@@ -68,7 +68,7 @@ CSV 文件的此部分显示预留的总体使用情况。 将筛选器应用到
 
 假设在美国东部地区运行 SQL 数据库第 4 代，你的预留信息将类似于下表所示：
 
-| 字段 | 值 |
+| 字段 | Value |
 |---| --- |
 |预订 ID |446ec809-423d-467c-8c5c-bbd5d22906b1|
 |数量 |2|

@@ -9,11 +9,11 @@ ms.date: 02/24/2019
 ms.topic: troubleshooting
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: c372b86861452c48b2114073419d4ed709ff115c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58109876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303327"
 ---
 # <a name="azure-spatial-anchors-support-options"></a>Azure 空间的定位点支持选项
 
@@ -32,7 +32,7 @@ ms.locfileid: "58109876"
 1. 完成后的支持票证字段： 
 
 - 问题类型：技术方面
-- 服务：空间的定位点
+- 服务：空间定位点
 
 ![Azure 门户支持票证字段](./media/spatial-anchor-support3.png)
 

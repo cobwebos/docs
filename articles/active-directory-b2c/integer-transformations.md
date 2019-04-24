@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+origin.date: 09/10/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 358ee07b8fd32edded084d406e490cae9f557fdd
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55159499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397135"
 ---
 # <a name="integer-claims-transformations"></a>整数声明转换
 
@@ -30,7 +31,7 @@ ms.locfileid: "55159499"
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | long | 要转换为字符串的 ClaimType。 |
-| OutputClaim | outputClaim | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
+| OutputClaim | outputClaim | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
 在此示例中，值类型为 long 的 `numericUserId` 声明将转换为值类型为字符串的 `UserId` 声明。
 
@@ -51,4 +52,5 @@ ms.locfileid: "55159499"
     - **inputClaim**：12334 (long)
 - 输出声明： 
     - **outputClaim**："12334" (string)
+
 

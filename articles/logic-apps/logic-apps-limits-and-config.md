@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 11/16/2018
 ms.openlocfilehash: c211d479efe086bb739b91034c6d9e349358b2d7
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565897"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60303666"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Azure 逻辑应用的限制和配置信息
 
@@ -26,7 +26,7 @@ ms.locfileid: "59565897"
 
 下面是针对单个逻辑应用定义的限制：
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 每个工作流的操作数 | 500 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
 | 操作的允许嵌套深度 | 8 | 要对此限制进行扩展，可根据需要添加嵌套工作流。 |
@@ -48,7 +48,7 @@ ms.locfileid: "59565897"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 |------|-------|-------|
 | 运行持续时间 | 90 天 | 若要更改此限制，请参阅[更改运行持续时间](#change-duration)。 |
 | 最小重复间隔 | 1 秒 | |
@@ -75,7 +75,7 @@ ms.locfileid: "59565897"
 
 下面是针对单个逻辑应用运行的限制：
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 触发器并发 | * 在并发控制关闭时无限制 <p><p>* 在并发控制打开时，25 是默认限制（在打开控制之后无法撤消）。 可以将默认值更改为介于 1 与 50（含）之间的值。 | 此限制描述可以在同一时间或并行运行的逻辑应用实例的最大数。 <p><p>若要将默认限制更改为介于 1 到 50 之间（含）的值，请参阅[更改触发器并发限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency)或[按顺序触发实例](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger)。 |
 | 最大等待运行数 | 并发控制打开时，最小等待运行数是 10 加上并发运行（触发器并发）数。 可以将最大数更改为多达 100 个（含）。 | 此限制描述当逻辑应用已在运行最大数量并发实例时，可等待运行的最大逻辑应用实例数。 <p><p>若要更改此默认限制，请参阅[更改等待的运行限制](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs)。 |
@@ -91,11 +91,11 @@ ms.locfileid: "59565897"
 
 下面是针对单个逻辑应用运行的限制：
 
-### <a name="global-logic-apps-service"></a>逻辑应用的全球服务
+### <a name="global-logic-apps-service"></a>全局逻辑应用服务
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
-| 操作：每 5 分钟执行的次数 | 100,000 的默认限制，但 300,000 的最大限制。 | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
+| 操作：每 5 分钟执行的次数 | 默认限制为 100,000，最大限制为 300,000。 | 若要更改此默认限制，请参阅处于预览阶段的[在“高吞吐量”模式下运行逻辑应用](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode)。 或者，你可根据需要在多个逻辑应用之间分配工作负荷。 |
 | 操作：并发传出调用数 | ~2,500 | 你可减少并发请求数，或根据需要减少持续时间。 |
 | 运行时终结点：并发传入调用数 | ~1,000 | 你可减少并发请求数，或根据需要减少持续时间。 |
 | 运行时终结点：每 5 分钟读取调用  | 60,000 | 可根据需要在多个应用中分发工作负荷。 |
@@ -105,7 +105,7 @@ ms.locfileid: "59565897"
 
 ### <a name="integration-service-environment-ise"></a>集成服务环境 (ISE)
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 |------|-------|-------|
 | 基本单位执行限制 | 10,000 次操作执行每 5 分钟 <br>这是每月大约 80 万个操作执行 | |
 | 扩展单元执行限制 | 5,000 个操作执行每 5 分钟 <br>这是每月约 40 亿个操作执行 | |
@@ -124,7 +124,7 @@ ms.locfileid: "59565897"
 
 某些连接器操作会进行异步调用或侦听 Webhook 请求，因此，这些操作的超时时间可能会长于以下限制。 有关详细信息，请参阅特定连接器的技术详细信息以及[工作流触发器和操作](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)。
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 传出的请求 | 120 秒 | 对于运行时间较长的操作，请使用[异步轮询模式](../logic-apps/logic-apps-create-api-app.md#async-pattern)或 [until 循环](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action)。 |
 | 同步响应 | 120 秒 | 要使原始请求能够获得响应，则除非以嵌套工作流的形式调用其他逻辑应用，否则必须在限制内完成响应的所有步骤。 有关详细信息，请参阅[调用、触发器或嵌套逻辑应用](../logic-apps/logic-apps-http-endpoint.md)。 |
@@ -132,7 +132,7 @@ ms.locfileid: "59565897"
 
 #### <a name="message-size"></a>消息大小
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 消息大小 | 100 MB | 若要解决此限制问题，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 但是，某些连接器和 API 可能不支持分块，甚至不支持默认限制。 |
 | 使用分块的消息大小 | 1 GB | 此限制适用于本机支持分块或可以在其运行时配置中启用分块的操作。 有关详细信息，请参阅[使用分块处理大型消息](../logic-apps/logic-apps-handle-large-messages.md)。 |
@@ -141,7 +141,7 @@ ms.locfileid: "59565897"
 
 #### <a name="retry-policy"></a>重试策略
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | 重试次数 | 90 | 默认值为 4。 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
 | 重试最大延迟 | 1 天 | 若要更改默认值，请使用[重试策略参数](../logic-apps/logic-apps-workflow-actions-triggers.md)。 |
@@ -154,7 +154,7 @@ ms.locfileid: "59565897"
 
 下面介绍对可通过 Web API 创建的自定义连接器的限制。
 
-| 名称 | 限制 |
+| Name | 限制 |
 | ---- | ----- |
 | 自定义连接器数 | 每个 Azure 订阅 1,000 |
 | 每分钟的请求数量（对于自定义连接器创建的每个连接） | 每个连接 500 个请求 |
@@ -164,7 +164,7 @@ ms.locfileid: "59565897"
 
 ## <a name="managed-identities"></a>托管标识
 
-| 名称 | 限制 |
+| Name | 限制 |
 | ---- | ----- |
 | 每个 Azure 订阅中具有系统分配的托管标识的逻辑应用数量 | 10 |
 |||
@@ -245,7 +245,7 @@ ms.locfileid: "59565897"
 
 以下限制适用于 B2B 协议：
 
-| 名称 | 限制 | 说明 |
+| Name | 限制 | 说明 |
 | ---- | ----- | ----- |
 | AS2 | 50 MB | 适用于解码和编码 |
 | X12 | 50 MB | 适用于解码和编码 |
@@ -256,7 +256,7 @@ ms.locfileid: "59565897"
 
 ## <a name="disabling-or-deleting-logic-apps"></a>禁用或删除逻辑应用
 
-禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行继续，直到它们完成，这可能需要时间才能完成。
+禁用逻辑应用后，任何新运行都不会实例化。 所有正在进行的和挂起的运行将继续进行，直到完成，这可能要花费一些时间才能完成。
 
 删除逻辑应用后，任何新运行都不会实例化。 所有正在进行和挂起的运行都将取消。 如果有成千上万个运行，取消操作可能需要很长时间才能完成。
 

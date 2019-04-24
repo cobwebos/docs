@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e84324456aef12070cf9355fb17e132f9f99b80
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56202785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383299"
 ---
 # <a name="user-sign-in-with-azure-active-directory-pass-through-authentication"></a>使用 Azure Active Directory 传递身份验证的用户登录
 
@@ -35,11 +35,11 @@ ms.locfileid: "56202785"
 
 ![Azure AD 直通身份验证](./media/how-to-connect-pta/pta1.png)
 
-可将传递身份验证与[无缝单一登录](how-to-connect-sso.md)功能结合使用。 这样一来，如果用户在企业网络中的企业计算机上访问应用程序，他们不需要键入密码便可登录。
+可将传递身份验证与[无缝单一登录](how-to-connect-sso.md)功能结合使用。 这样一来，当用户在其企业计算机上访问位于你的企业网络中的应用程序时，不需要键入密码即可登录。
 
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>使用 Azure AD 传递身份验证的主要优势
 
-- 出色的用户体验
+- *更好的用户体验*
   - 用户使用同样的密码登录本地和基于云的应用程序。
   - 用户花费在联系 IT 支持人员解决密码相关问题上的时间更少。
   - 用户可以完成云中的[自助服务密码管理](../authentication/active-directory-passwords-overview.md)任务。
