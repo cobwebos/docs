@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5068692d5f12b5b6c8b0476a789123ef9fd1dc75
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.openlocfilehash: 2d862d07a65c3fb28b49a82692ea575f787b9750
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55508804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313845"
 ---
 # <a name="claimsproviders"></a>ClaimsProviders
 
@@ -41,7 +41,7 @@ ms.locfileid: "55508804"
 
 ClaimsProviders 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | ClaimsProvider | 1:n | 经认可的声明提供程序，可在各种用户旅程中使用。 |
 
@@ -49,13 +49,13 @@ ClaimsProviders 元素包含以下元素：
 
 ClaimsProvider 元素包含以下子元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ---------- | ----------- |
 | 域 | 0:1 | 一个字符串，包含声明提供程序的域名。 例如，如果声明提供程序包含 Facebook 技术配置文件，则域名为 Facebook.com。 此域名用于声明提供程序中定义的所有技术配置文件，除非被技术配置文件覆盖。 域名也可以在 **domain_hint** 中引用。 有关详细信息，请参阅[使用 Azure Active Directory B2C 设置直接登录](direct-signin.md)的**将登录重定向到社交提供者**部分。 |
 | DisplayName | 0:1 | 一个字符串，其中包含可以向用户显示的声明提供程序的名称。 |
 | [技术配置文件](technicalprofiles.md) | 0:1 | 声明提供程序支持的一组技术配置文件 |
 
-**ClaimsProvider** 可组织与声明提供程序相关的技术配置文件。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
+**ClaimsProvider**组织技术配置文件如何与声明提供程序相关联。 以下示例显示了使用 Azure Active Directory 技术配置文件的 Azure Active Directory 声明提供程序：
 
 ```XML
 <ClaimsProvider>

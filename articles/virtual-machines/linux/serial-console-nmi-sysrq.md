@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 6ca4156c19adbeea72ae268fe62638d40919b08f
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.openlocfilehash: 5a97a40ba48db9f73471d5fd778ceb5cb9070964
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55699610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542639"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>使用串行控制台发出 SysRq 和 NMI 调用
 
 ## <a name="system-request-sysrq"></a>系统请求 (SysRq)
-SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 无法通过传统的管理界面执行虚拟机故障排除或恢复时（例如，VM 挂起），往往会使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
+SysRq 是 Linux 操作系统内核识别的按键序列，可以触发一组预定义的操作。 （例如，如果 VM 未响应） 不能通过传统管理执行虚拟机进行故障排除或恢复时，通常使用这些命令。 使用 Azure 串行控制台的 SysRq 功能时，将会模拟 SysRq 按键，以及物理键盘上的字符输入。
 
 传送 SysRq 序列后，内核配置将控制系统的响应方式。 有关启用和禁用 SysRq 的信息，请参阅 *SysRq 管理员指南* [text](https://aka.ms/kernelorgsysreqdoc) | [markdown](https://aka.ms/linuxsysrq)。  
 
@@ -99,7 +99,7 @@ echo "1" >/proc/sys/kernel/sysrq
 - [收集崩溃日志](https://coreos.com/os/docs/latest/collecting-crash-logs.html)
 
 ## <a name="non-maskable-interrupt-nmi"></a>不可屏蔽的中断 (NMI) 
-不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  现在，程序员和系统管理员通常使用 NMI 作为用来对挂起的系统进行调试或故障排除的机制。
+不可屏蔽的中断 (NMI) 旨在创建虚拟机上的软件不会忽略的信号。 过去，NMI 用来监视要求实现特定响应时间的系统上的硬件问题。  通常，今天、 程序员和系统管理员使用 NMI 作为一种机制，若要调试或故障排除系统未响应。
 
 可以使用下面显示的命令栏上的键盘图标通过串行控制台向 Azure 虚拟机发送 NMI。 传送 NMI 后，虚拟机配置将控制系统的响应方式。  可将 Linux 操作系统配置为在收到 NMI 时发生崩溃并创建内存转储。
 

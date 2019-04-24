@@ -7,12 +7,12 @@ services: virtual-wan
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 815b91295540e93f8f0ffbc002fcf02ce1c13365
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: cb91c1364a91c101ecf8362acd7aab01440143fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46992665"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60458573"
 ---
 # <a name="office-365-control-plane-in-virtual-wan"></a>虚拟 WAN 中的 Office 365 控制平面
 
@@ -21,7 +21,7 @@ ms.locfileid: "46992665"
 - 避免流量逆转和迂回，因此节省 WAN 成本。
 - 按 O365 连接原则传递。
 
-## <a name="faqs"></a>常见问题
+## <a name="faqs"></a>常见问题解答
 ### <a name="what-is-the-customer-benefit"></a>客户权益有哪些？
 在虚拟 WAN 中使用此功能时，客户现在可以指定自己信任的可以直接进行 Internet 突围的 Office 365 流量类别。 这种受信任的 O365 流量将绕过代理，直接从用户位置路由到最近的 Microsoft POP。 这样就避免了流量逆转和迂回，因此可以提供最佳用户体验并节省 WAN 成本。 
 

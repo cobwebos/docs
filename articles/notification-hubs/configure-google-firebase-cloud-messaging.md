@@ -11,24 +11,24 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: d200f5746d5f7c62ff3a52873d5d5d6c3e1322dc
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488208"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60239189"
 ---
 # <a name="configure-google-firebase-cloud-messaging-fcm-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中配置通知中心的 Google Firebase Cloud Messaging (FCM) 设置
 本文介绍如何使用 Azure 门户配置 Azure 通知中心的 Google Firebase Cloud Messaging (FCM) 设置。  
 
 ## <a name="prerequisites"></a>必备组件
-如果你尚未创建通知中心，现在请创建一个。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。 
+如果尚未创建通知中心，请立即创建。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。 
 
 ## <a name="configure-google-firebase-cloud-messaging-fcm"></a>配置 Google Firebase Cloud Messaging (FCM)
 
 以下过程提供配置通知中心的 Google Firebase Cloud Messaging (FCM) 设置的步骤： 
 
 1. 在 Azure 门户中，在**通知中心**页上，选择**Google (GCM/FCM)** 在左侧菜单中。 
-2. 粘贴前面保存的 FCM 项目“API 密钥”。 
+2. 为之前保存的 FCM 项目粘贴“API 密钥”。 
 3. 选择“保存”。 
 
    ![显示如何为 Google FCM 配置通知中心的屏幕截图](./media/notification-hubs-android-push-notification-google-fcm-get-started/fcm-server-key.png)

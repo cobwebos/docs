@@ -12,11 +12,11 @@ ms.date: 04/11/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: 8104497a1808aa4e92d62f45e37525dba2f47742
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607157"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60233867"
 ---
 # <a name="frequently-asked-questions-for-qna-maker"></a>QnA Maker 常见问题解答
 
@@ -26,7 +26,7 @@ QnA Maker 服务相关的最常见问题的特选的列表将帮助你更快、 
 
 QnA Maker 提供**帮助**QnA Maker 门户，以帮助您的智能机器人应用程序。 每个网页上提供了帮助机器人。 智能机器人应用程序使用 QnA Maker 回答，并提供[ C# Bot Framework 代码项目](https://github.com/Microsoft/BotBuilder-Samples/tree/master/experimental/csharp_dotnetcore/qnamaker-support-bot)到智能机器人即可快速启动并运行与答案智能机器人。 
 
-![![QnA Maker 提供了 * * 帮助 * * 智能机器人应用程序以帮助您在 QnA Maker 门户中的。](。 / media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
+![![QnA Maker 提供了 * * 帮助 * * 智能机器人应用程序以帮助您在 QnA Maker 门户中的。](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png)](./media/qnamaker-faq/use-qna-maker-help-bot-to-learn-qna-maker-service.png#lightbox)
 
 ## <a name="manage-the-knowledge-base"></a>管理知识库
 

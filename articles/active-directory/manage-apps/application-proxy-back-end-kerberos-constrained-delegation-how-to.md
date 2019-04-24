@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b83b08c442a7f10d6b29122fe7959bedf8f3cff0
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56177523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440867"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>排查应用程序代理的 Kerberos 约束委派配置问题
 
@@ -41,7 +41,7 @@ ms.locfileid: "56177523"
 
 -   主体应用程序在启用了预身份验证的 Azure 租户中发布。 用户需要通过基于窗体的身份验证进行 Azure 身份验证。 本文不介绍丰富的客户端身份验证方案。 可能会在未来某个时候添加这些方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 Azure AD 应用程序代理可以部署到许多类型的基础结构或环境中。 不同组织的体系结构有所不同。 与 KCD 相关的问题的最常见原因并非环境。 造成大多数问题的原因可能是简单的配置错误或常规错误。
 

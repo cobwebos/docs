@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: peterpr
 ms.openlocfilehash: dd6148d2d817b1f2465b6beaba5fd488b16ead21
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57315956"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60518434"
 ---
 # <a name="manage-your-application-preferences"></a>管理应用程序首选项
 

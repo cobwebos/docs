@@ -15,11 +15,11 @@ ms.date: 01/21/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ed081b32fd8ac464f7ec66f97c6867708a6f8533
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60291426"
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>在 Azure Active Directory 中编写属性映射的表达式
 将预配配置到 SaaS 应用程序时，表达式映射是可指定的属性映射类型之一。 为此，必须编写一个类似于脚本的表达式，允许将用户的数据转换为 SaaS 应用程序更可接受的格式。
@@ -48,7 +48,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是来自源对象的属性的名称。 |
 | **suffix** |需要 |String |要附加到源值末尾的字符串。 |
@@ -61,7 +61,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是来自源对象的属性的名称。 |
 | **inputFormat** |需要 |String |源值的预期格式。 有关支持的格式，请参阅 [https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)。 |
@@ -77,7 +77,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **separator** |需要 |String |用于在将源值连接为一个字符串时分隔源值的字符串。 如果不需要分隔符，则可以是 ""。 |
 | **source1  … sourceN** |必选，次数可变 |String |要联接在一起的字符串值。 |
@@ -90,7 +90,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是属性的名称。 |
 | **start** |需要 |integer |**source** 字符串中的索引，子字符串应从此处开始。 字符串中第一个字符的索引为 1，第二个字符的索引为 2，依此类推。 |
@@ -104,7 +104,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String | 通常是名字或姓氏属性。 |
 
@@ -116,7 +116,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |布尔型字符串 |预期的 **source** 值为“True”或“False”。 |
 
@@ -143,7 +143,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是来自源对象的属性的名称。 |
 | **oldValue** |可选 |String |要在 **source** 或 **template** 中替换的值。 |
@@ -166,7 +166,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **uniqueValueRule1  … uniqueValueRuleN** |需要至少 2 个，没有上限 |String | 要评估的唯一值生成规则的列表。 |
 
@@ -179,7 +179,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **[appRoleAssignments]** |需要 |String |**[appRoleAssignments]** 对象。 |
 
@@ -191,7 +191,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |要更新的 **source** 值。 |
 | **delimiter** |需要 |String |指定将用来拆分字符串的字符（示例：“,”） |
@@ -204,7 +204,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |要更新的 **source** 值。 |
 
@@ -216,7 +216,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |要更新的 **source** 值。 |
 | **defaultValue** |可选 |String |当 source 不匹配任何 key 时使用的默认值。 可以是空字符串 ("")。 |
@@ -231,7 +231,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是来自源对象的属性的名称 |
 | **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|
@@ -244,7 +244,7 @@ ms.locfileid: "56991474"
 
 **参数：**<br> 
 
-| 名称 | 必选/重复 | Type | 说明 |
+| Name | 必选/重复 | Type | 说明 |
 | --- | --- | --- | --- |
 | **source** |需要 |String |通常是来自源对象的属性的名称。 |
 | **区域性** |可选 |String |基于 RFC 4646 的区域性名称格式是 languagecode2-country/regioncode2，其中 languagecode2 是两个字母的语言代码，country/regioncode2 是两个字母的子区域性代码。 示例包括代表日语（日本）的 ja-JP 和代表英语（美国）的 en-US。 在双字母语言代码不可用的情况下，使用派生自 ISO 639-2 的三字母代码。|

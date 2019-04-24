@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: lastcoolnameleft
 ms.openlocfilehash: 926f470b8a4dbdb6d6cbfe09ee61349a819600e7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464513"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中实现业务连续性和灾难恢复的最佳做法
 
@@ -62,7 +62,7 @@ AKS 区域可用性和配对区域是共同考虑的因素。 将 AKS 群集部�
 
 ### <a name="layer-7-application-routing-with-azure-front-door"></a>第 7 层应用程序路由与 Azure Front Door
 
-Azure 流量管理器使用 DNS（第 3 层）来塑造流量。 [（目前处于预览状态） 的 azure 前门](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供了一个 HTTP/HTTPS （第 7 层） 路由选项。 Front Door 的附加功能包括 SSL 终止、自定义域、Web 应用程序防火墙、URL 重写和会话相关性。
+Azure 流量管理器使用 DNS（第 3 层）来塑造流量。 [Azure Front Door（目前为预览版）](https://docs.microsoft.com/azure/frontdoor/front-door-overview)提供了一个 HTTP/HTTPS（第 7 层）路由选项。 Front Door 的附加功能包括 SSL 终止、自定义域、Web 应用程序防火墙、URL 重写和会话相关性。
 
 查看应用程序流量的需求，以了解哪种解决方案是最合适。
 

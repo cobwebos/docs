@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: v-erkell
 ms.openlocfilehash: 6d35d5cdeafb80a36f910d71393802a3affb4df8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58078800"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515940"
 ---
 # <a name="configure-storage"></a>配置存储
 
@@ -49,7 +49,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
 1. 单击左侧的“核心文件管理器” > “管理核心文件管理器”。
 
-1. 单击“创建”。
+1. 单击**创建**。
 
    ![“添加新核心文件”页的屏幕截图，其中光标位于“创建”按钮上](media/avere-vfxt-add-core-filer-start.png)
 
@@ -118,7 +118,7 @@ NAS 核心文件管理器可以是本地 NetApp 或 Isilon，也可以是云中�
 
 1. 填写以下信息以创建云核心文件管理器的凭据： 
 
-   | 字段 | 值 |
+   | 字段 | Value |
    | --- | --- |
    | 凭据名称 | 任何描述性名称 |
    | 服务类型 | （选择 Azure 存储访问密钥） |

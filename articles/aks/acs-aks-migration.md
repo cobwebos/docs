@@ -10,11 +10,11 @@ ms.date: 06/13/2018
 ms.author: nobun
 ms.custom: mvc
 ms.openlocfilehash: 910c96988ec0a8b8aa7b6ac8ce287c4fdc59e177
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467555"
 ---
 # <a name="migrating-from-azure-container-service-acs-to-azure-kubernetes-service-aks"></a>从 Azure 容器服务 (ACS) 迁移到 Azure Kubernetes 服务 (AKS)
 
@@ -48,10 +48,10 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 
 示例：
 
-| 名称 | Count | VM 大小 | 操作系统 |
+| Name | Count | VM 大小 | 操作系统 |
 | --- | --- | --- | --- |
 | agentpool0 | 3 | Standard_D8_v2 | Linux |
-| agentpool1 | 第 | Standard_D2_v2 | Windows |
+| agentpool1 | 1 | Standard_D2_v2 | Windows |
 
 由于在迁移期间要将其他虚拟机部署到订阅中，因此，应该检查配额和限制是否足以应对这些资源。 可以查看 [Azure 订阅和服务限制](https://docs.microsoft.com/azure/azure-subscription-service-limits)来了解详细信息。 若要查看当前配额，请在 Azure 门户中转到[订阅边栏选项卡](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)，选择自己的订阅，然后选择 `Usage + quotas`。
 
@@ -91,7 +91,7 @@ ACS 与 AKS 之间存在一些会影响迁移的重要差异。 在执行任何�
 7. 验证
 8. 将流量指向 AKS 群集
 
-> **重要说明**：如果选择不暂停写入，则需要将数据复制到新部署，因为你将丢失自创建磁盘快照以来写入的数据
+> **重要**：如果选择不暂停写入，则需要将数据复制到新部署，因为你将丢失自创建磁盘快照以来写入的数据
 
 可以借助一些开源工具来创建托管磁盘，并在 Kubernetes 群集之间迁移卷。
 

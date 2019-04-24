@@ -13,11 +13,11 @@ ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e6f94ba30c06fc6975ab212c895cecefe5d383fa
-ms.sourcegitcommit: 75fef8147209a1dcdc7573c4a6a90f0151a12e17
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56453641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473900"
 ---
 # <a name="add-your-non-microsoft-accounts"></a>添加非 Microsoft 帐户
 将非 Microsoft 帐户（例如 Google 帐户、Facebook 帐户或 GitHub 帐户）添加到 Microsoft Authenticator 应用，以进行双因素验证。 Microsoft Authenticator 应用可与使用双因素验证的任何应用以及支持基于时间的一次性密码 (TOTP) 标准的任何帐户配合使用。
@@ -178,7 +178,7 @@ ms.locfileid: "56453641"
 
 8. 在计算机的“添加备份验证方法”页上，键入备份验证方法为 Amazon 帐户提供的六位数验证码，然后选择“验证验证码并继续”。
 
-9. 在“即将完成”页上，决定是否让计算机成为受信任的设备，然后选择“知道了。启用双因素验证”。
+9. 在“即将完成”页上，决定是否让计算机成为受信任的设备，然后选择“知道了。启用双因素验证”**。
 
     此时，“高级安全设置”页显示，其中包含更新后的双因素验证详细信息。
 

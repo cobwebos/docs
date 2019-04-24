@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: 68655ea03f53fe7100f67d111fcd3c8595bdf4c9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58109386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362148"
 ---
 # <a name="example-1--build-a-simple-dmz-using-nsgs-with-an-azure-resource-manager-template"></a>示例 1 – 使用 NSG 和 Azure 资源管理器模板构建简单的外围网络
 [返回安全边界最佳实践页面][HOME]

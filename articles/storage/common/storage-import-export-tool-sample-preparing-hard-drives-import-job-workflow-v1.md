@@ -9,18 +9,18 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: b80ba1cbe168270ec591bdd38859408eae387bbf
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311707"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320578"
 ---
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器的示例工作流
 本主题讲解如何完成为导入作业准备驱动器的整个过程。  
   
 本示例将以下数据导入到名为 `mystorageaccount` 的 Microsoft Azure 存储帐户：  
   
-|位置|描述|  
+|Location|描述|  
 |--------------|-----------------|  
 |H:\Video|视频集合，总共 5 TB。|  
 |H:\Photo|照片集合，总共 30 GB。|  
@@ -44,7 +44,7 @@ ms.locfileid: "58311707"
   
 对于本示例，两个 3-TB 硬盘驱动器应该足够。 但是，由于源目录 `H:\Video` 包含 5 TB 数据，而单个硬盘驱动器的容量仅为 3 TB，因此在运行 Microsoft Azure 导入/导出工具之前，需要将 `H:\Video` 分解为两个小目录：`H:\Video1` 和 `H:\Video2`。 此步骤将生成以下源目录：  
   
-|位置|大小|目标虚拟目录或 Blob|  
+|Location|大小|目标虚拟目录或 Blob|  
 |--------------|----------|-------------------------------------------|  
 |H:\Video1|2.5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  
 |H:\Video2|2.5 TB|https:\//mystorageaccount.blob.core.windows.net/video|  

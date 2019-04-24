@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2fcc400f952cc89f5fb4bf6e8d6f0f331483868e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298268"
 ---
 # <a name="whats-new-for-authentication"></a>身份验证的新增功能 
 
@@ -45,23 +45,23 @@ ms.locfileid: "58401298"
 
 ## <a name="march-2019"></a>2019 年 3 月
 
-### <a name="looping-clients-will-be-interrupted"></a>将中断循环的客户端
+### <a name="looping-clients-will-be-interrupted"></a>循环客户端将会中断
 
-**生效日期**：2019 年 3 月 25日日
+**生效日期**：2019 年 3 月 25 日
 
 **受影响的终结点**：v1.0 和 v2.0
 
 **受影响的协议**：所有流
 
-客户端应用程序可以有时错误行为，通过短时间内发出数百个相同的登录请求。  这些请求可能会或可能不会成功，但它们都会影响用户体验不佳和更高的工作负荷的 IDP，增加的所有用户的延迟时间并减少，IDP 的可用性。  这些应用程序正常使用的边界之外运行，并且应更新为正常运行。  
+客户端应用程序有时可能会出现行为异常，在短时间内发出数百个相同的登录请求。  这些请求不一定会成功，但会导致用户体验变得糟糕，增大 IDP 的工作负荷，增大所有用户的延迟，并降低 IDP 的可用性。  这些应用程序的工作范围超过了正常的使用边界，应予以更新才能让其保持正常的行为。  
 
-发出多个时间的重复请求的客户端将发送`invalid_grant`错误： `AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
+将为多次发出重复请求的客户端设置 `invalid_grant` 错误：`AADSTS50196: The server terminated an operation because it encountered a loop while processing a request`。 
 
-大多数客户端将不需要更改行为，以避免此错误。  只有配置错误的客户端 （不带令牌缓存或那些已暴露提示循环） 将受此错误。  客户端根据每个实例本地 （通过 cookie) 跟踪于以下因素：
+大多数客户端无需改变行为即可避免此错误。  此错误只会影响配置不当的客户端（没有令牌缓存的客户端，或已经出现提示循环的客户端）。  根据以下因素，在本地按实例跟踪客户端（通过 Cookie）：
 
-* 用户提示，如果有
+* 用户提示（如果有）
 
-* 作用域或所请求资源
+* 请求的范围或资源
 
 * 客户端 ID
 
@@ -69,9 +69,9 @@ ms.locfileid: "58401298"
 
 * 响应类型和模式
 
-在短时间的时间 （5 分钟） 发出多个请求 （15 +） 的应用将收到`invalid_grant`错误，它们将循环。  正在请求具有足够长的生存期 （10 分钟最小值，默认为 60 分钟），因此重复请求此时间段内的令牌是不必要的。  
+在短时间（5 分钟）内发出多个请求（15 个以上）的应用将会收到 `invalid_grant` 错误，指出它们正在循环。  所请求的令牌具有足够长的生存期（最短 10 分钟，默认为 60 分钟），因此，在此时间段内发出的重复请求都是没有必要的。  
 
-所有应用程序应处理`invalid_grant`通过显示交互式提示，而不是以无提示方式请求令牌。  若要避免此错误，客户端应确保它们正确缓存他们收到的令牌。
+所有应用应该通过显示交互式提示来处理 `invalid_grant`，而不是以静默方式请求令牌。  若要避免此错误，客户端应确保正确缓存它们收到的令牌。
 
 
 ## <a name="october-2018"></a>2018 年 10 月

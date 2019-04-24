@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 7b47d4fc3aa4a1a50e441e668a856703c67045ae
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: 3ceaed2b1e27a1f5b910865f6e9d0e70ef347b71
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59581003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515398"
 ---
 # <a name="webhooks-for-speech-services"></a>语音服务的 Webhook
 
@@ -38,6 +38,8 @@ Webhook 就像允许应用程序接受语音服务中的数据变为可用时的
 ## <a name="create-a-webhook"></a>创建 Webhook
 
 让我们创建脱机的脚本的 webhook。 方案： 用户已是他们想要使用 Batch 脚本 API 以异步方式转录的长时间运行音频文件。 
+
+若要创建 web 挂钩 POST https://<region>.cris.ai/api/speechtotext/v2.1/transcriptions/hooks
 
 请求的配置参数以 JSON 形式提供：
 
@@ -133,6 +135,50 @@ public async Task<IActionResult> PostAsync([FromHeader(Name = EventTypeHeaderNam
 ### <a name="run-a-test"></a>运行测试
 
 可进行快速测试使用网站 https://bin.webhookrelay.com。 在这里，你可以获取调用后将作为参数传递给用于创建文档中前面所述的 webhook HTTP POST 的 Url。
+
+单击创建存储桶，然后按照屏幕说明进行操作以获取挂钩。 然后使用此页中提供的信息来注册语音服务挂钩。 中继的有效负载消息的响应的脚本看起来完成，如下所示：
+
+```json
+{
+    "results": [],
+    "recordingsUrls": [
+        "my recording URL"
+    ],
+    "models": [
+        {
+            "modelKind": "AcousticAndLanguage",
+            "datasets": [],
+            "id": "a09c8c8b-1090-443c-895c-3b1cf442dec4",
+            "createdDateTime": "2019-03-26T12:48:46Z",
+            "lastActionDateTime": "2019-03-26T14:04:47Z",
+            "status": "Succeeded",
+            "locale": "en-US",
+            "name": "v4.13 Unified",
+            "description": "Unified",
+            "properties": {
+                "Purpose": "OnlineTranscription,BatchTranscription,LanguageAdaptation",
+                "ModelClass": "unified-v4"
+            }
+        }
+    ],
+    "statusMessage": "None.",
+    "id": "d41615e1-a60e-444b-b063-129649810b3a",
+    "createdDateTime": "2019-04-16T09:35:51Z",
+    "lastActionDateTime": "2019-04-16T09:38:09Z",
+    "status": "Succeeded",
+    "locale": "en-US",
+    "name": "Simple transcription",
+    "description": "Simple transcription description",
+    "properties": {
+        "PunctuationMode": "DictatedAndAutomatic",
+        "ProfanityFilterMode": "Masked",
+        "AddWordLevelTimestamps": "True",
+        "AddSentiment": "True",
+        "Duration": "00:00:02"
+    }
+}
+```
+该消息包含录制 URL 和模型用于转录该录制。
 
 ## <a name="next-steps"></a>后续步骤
 

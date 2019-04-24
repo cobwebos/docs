@@ -6,30 +6,29 @@ documentationcenter: ''
 author: CelesteDG
 manager: mtillman
 editor: ''
-ms.assetid: 780eec4d-7ee1-48b7-b29f-cd0b8cb41ed3
 ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/12/2019
+ms.date: 04/20/2019
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 14291a6e8f9c4cde3c8777969047ebaa77e42b59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 703416788d123798774802613d71b30e8fbdaa9b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299392"
 ---
 # <a name="microsoft-identity-platform-and-the-oauth-20-device-code-flow"></a>Microsoft 标识平台和 OAuth 2.0 设备代码流
 
 [!INCLUDE [active-directory-develop-applies-v2](../../../includes/active-directory-develop-applies-v2.md)]
 
-Microsoft 标识平台所支持[设备代码授予](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)，它允许用户登录到输入受限的设备，例如智能电视、 IoT 设备或打印机。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
+Microsoft 标识平台支持[设备代码授予](https://tools.ietf.org/html/draft-ietf-oauth-device-flow-12)，它允许用户登录到输入受限的设备，例如智能电视、 IoT 设备或打印机。  若要启用此流，设备会让用户在另一台设备上的浏览器中访问一个网页，以进行登录。  用户登录后，设备可以获取所需的访问令牌和刷新令牌。  
 
 > [!IMPORTANT]
 > 在此期间，Microsoft 标识平台终结点仅支持设备流用于 Azure AD 租户，但不适用于个人帐户。  这意味着，您必须使用将设置为一个租户的终结点或`organizations`终结点。  
@@ -43,11 +42,11 @@ Microsoft 标识平台所支持[设备代码授予](https://tools.ietf.org/html/
 
 整个设备代码流如下图所示。 本文稍后介绍每个步骤。
 
-![设备代码流](media/v2-oauth2-device-flow/v2-oauth-device-flow.png)
+![设备代码流](./media/v2-oauth2-device-code/v2-oauth-device-flow.svg)
 
 ## <a name="device-authorization-request"></a>设备授权请求
 
-客户端必须先在身份验证服务器中检查用于发起身份验证的设备代码和用户代码。  客户端从 `/devicecode` 终结点收集此请求。 在此请求中，客户端应包含需要从用户获取的权限。  从发送此请求的那一刻起，用户只有 15 分钟的时间（通常是 `expires_in` 的值）完成登录，因此，仅在用户指出他们已准备好登录时才发出此请求。
+客户端首先必须检查与用于启动身份验证的设备和用户代码的身份验证服务器。 客户端从 `/devicecode` 终结点收集此请求。 在此请求中，客户端应包含需要从用户获取的权限。 从发送此请求的那一刻起，用户只有 15 分钟的时间（通常是 `expires_in` 的值）完成登录，因此，仅在用户指出他们已准备好登录时才发出此请求。
 
 > [!TIP]
 > 尝试在 Postman 中执行此请求！
@@ -76,13 +75,13 @@ scope=user.read%20openid%20profile
 
 | 参数 | 格式 | 描述 |
 | ---              | --- | --- |
-|`device_code`     | String | 一个长字符串，用于验证客户端与授权服务器之间的会话。  客户端使用此字符串从授权服务器请求访问令牌。 |
-|`user_code`       | String | 向用户显示的短字符串，用于标识辅助设备上的会话。|
+|`device_code`     | String | 一个长字符串，用于验证客户端与授权服务器之间的会话。 客户端使用此参数从授权服务器请求访问令牌。 |
+|`user_code`       | String | 用于标识的辅助设备上的会话的用户显示一个短字符串。|
 |`verification_uri`| URI | 用户在登录时应使用 `user_code` 转到的 URI。 |
-|`verification_uri_complete`|URI| 结合了 `user_code` 和 `verification_uri` 的 URI，用于与用户之间进行非文本传输（例如，通过设备蓝牙或 QR 码）。  |
-|`expires_in`      |  int| `device_code` 和 `user_code` 过期之前的秒数。 |
+|`verification_uri_complete`| URI | 一个 URI，它结合了`user_code`和`verification_uri`，用于非文本发送给用户 （例如，通过蓝牙到一台设备，或通过 QR 码）。  |
+|`expires_in`      | int | `device_code` 和 `user_code` 过期之前的秒数。 |
 |`interval`        | int | 在发出下一个轮询请求之前客户端应等待的秒数。 |
-| `message`        | String | 用户可读的字符串，包含面向用户的说明。  可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
+| `message`        | String | 用户可读的字符串，包含面向用户的说明。 可以通过在请求中包含 `?mkt=xx-XX` 格式的**查询参数**并填充相应的语言区域性代码，将此字符串本地化。 |
 
 ## <a name="authenticating-the-user"></a>对用户进行身份验证
 
@@ -107,15 +106,14 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 
 ### <a name="expected-errors"></a>预期错误
 
-由于设备代码流是一个轮询协议，因此，客户端必须预料到在用户完成身份验证之前会收到错误。  
+设备代码流是轮询协议，因此必须预料到您的客户端要在用户进行身份验证完成之前收到错误。  
 
 | 错误 | 描述 | 客户端操作 |
 | ------ | ----------- | -------------|
-| `authorization_pending` | 用户尚未完成身份验证，但未取消流。 | 在至少 `interval` 秒之后重复请求。 |
+| `authorization_pending` | 用户尚未完成身份验证，但尚未取消流。 | 在至少 `interval` 秒之后重复请求。 |
 | `authorization_declined` | 最终用户拒绝了授权请求。| 停止轮询，并恢复到未经过身份验证状态。  |
-| `bad_verification_code`|未识别已发送到 `/token` 终结点的 `device_code`。 | 验证客户端是否在请求中发送了正确的 `device_code`。 |
-| `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询，并恢复到未经过身份验证状态。 |
-
+| `bad_verification_code`| `device_code`发送到`/token`终结点无法识别。 | 验证客户端是否在请求中发送了正确的 `device_code`。 |
+| `expired_token` | 至少已经过去了 `expires_in` 秒，不再可以使用此 `device_code` 进行身份验证。 | 停止轮询并恢复到未经过身份验证的状态。 |
 
 ### <a name="successful-authentication-response"></a>成功的身份验证响应
 
@@ -141,4 +139,4 @@ device_code: GMMhmHCXhWEzkobqIHGG_EnNYYsAkukHspeYUk9E8
 | `id_token`   | JWT | 如果原始 `scope` 参数包含 `openid` 范围，则颁发。  |
 | `refresh_token` | 不透明字符串 | 如果原始 `scope` 参数包含 `offline_access`，则颁发。  |
 
-可以运行 [OAuth 代码流文档](v2-oauth2-auth-code-flow.md#refresh-the-access-token)中详述的同一个流，使用刷新令牌来获取新的访问令牌和刷新令牌。  
+可以使用刷新令牌获取新访问令牌和刷新令牌使用相同的流中所述[OAuth 代码流文档](v2-oauth2-auth-code-flow.md#refresh-the-access-token)。  

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b42a6b667a8708aeb2edeb0c80a5ab747b6c60a9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57891131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60246193"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect 同步：了解默认配置
 本文介绍现成的配置规则。 其中将说明这些规则及其对配置有何影响。 此外还将逐步介绍如何完成 Azure AD Connect 同步的默认配置。其目的是让读者了解配置模型（名为声明性预配）在实际示例中的运行情形。 本文假设已使用安装向导安装并配置了 Azure AD Connect 同步。
@@ -95,7 +95,7 @@ ms.locfileid: "57891131"
 * 成员必须少于 50,000 个。 该计数为本地组中的成员数目。
   * 如果组在首次同步启动之前包含更多的成员，该组不会进行同步。
   * 如果成员数目在组最初创建之后有所增加，在达到 50,000 个成员时，组将停止同步，直到成员资格计数再次低于 50,000。
-  * 注意：Azure AD 也强制实施 50,000 个成员身份计数。 无法同步包含更多成员的组，即使修改或删除此规则，也是如此。
+  * 请注意:Azure AD 也强制实施 50,000 个成员身份计数。 无法同步包含更多成员的组，即使修改或删除此规则，也是如此。
 * 如果组是**通讯组**，则还必须启用邮件。 请参阅 [Contact out-of-box rules](#contact-out-of-box-rules)（联系人的现成规则），了解实施此规则的情况。
 
 以下组对象**不会**同步到 Azure AD：
@@ -220,7 +220,7 @@ NULL
 ### <a name="putting-it-all-together"></a>汇总
 我们现在对同步规则已有足够的认识，能够了解配置如何在不同的同步规则下运行。 如果观察某个用户和提供给 metaverse 的属性，会发现规则按以下顺序应用：
 
-| 名称 | 注释 |
+| Name | 注释 |
 |:--- |:--- |
 | In from AD – User Join |联接连接器空间对象与 Metaverse 的规则。 |
 | In from AD – UserAccount Enabled |登录 Azure AD 和 Office 365 所需的属性。 我们可以从已启用的帐户获取这些属性。 |

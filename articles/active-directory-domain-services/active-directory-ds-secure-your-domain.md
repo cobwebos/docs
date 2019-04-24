@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
 ms.openlocfilehash: 3797c76f1537f86357f7ca68ffed4758eb1bdc9a
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55173756"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416494"
 ---
 # <a name="secure-your-azure-ad-domain-services-managed-domain"></a>保护 Azure AD 域服务托管域
 本文可帮助你保护托管域。 你可以禁用弱密码套件和 NTLM 凭据哈希同步。

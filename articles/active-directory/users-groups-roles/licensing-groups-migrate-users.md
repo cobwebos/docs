@@ -17,11 +17,11 @@ ms.reviewer: sumitp
 ms.custom: seohack1;it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b6fd2eb51c7178421b0656e3b1d0e0ea36176c16
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60470991"
 ---
 # <a name="how-to-add-migrate-users-with-individual-licenses-to-groups-for-licensing"></a>如何添加迁移各个许可证的用户到组的许可
 

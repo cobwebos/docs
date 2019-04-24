@@ -5,15 +5,16 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/07/2019
-ms.openlocfilehash: ecd6466d8d7a7e4497d076ced0c9f2375d5dfb7f
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.date: 3/13/2019
+ms.openlocfilehash: e7e81632b2be135fb74d375ab8a11f1b4b3ef39d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54106029"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60525930"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>支持的 Azure Database for MySQL 服务器版本
+
 使用 InnoDB 引擎通过 [MySQL Community Edition](https://www.mysql.com/products/community/) 开发 Azure Database for MySQL。
 
 MySQL 使用 X.Y.Z 命名方案。 X 是主版本，Y 是次版本，Z 是 bug 修复版本。 有关方案的详细信息，请参阅 [MySQL 文档](https://dev.mysql.com/doc/refman/5.7/en/which-version.html)。
@@ -22,15 +23,15 @@ Azure Database for MySQL 目前支持以下版本：
 
 ## <a name="mysql-version-56"></a>MySQL 版本 5.6
 
-Bug 修复版本：5.6.39
+Bug 修复版本：5.6.42
 
-要详细了解 MySQL 5.6.39 中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-39.html)。
+要详细了解 MySQL 5.6.42 中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-42.html)。
 
 ## <a name="mysql-version-57"></a>MySQL 版本 5.7
 
-Bug 修复版本：5.7.21
+Bug 修复版本：5.7.24
 
-要了解 MySQL 5.7.21 中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-21.html)。
+要了解 MySQL 5.7.24 中的改进和修复，请参阅 MySQL [发行说明](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-24.html)。
 
 > [!NOTE]
 > 在服务中，网关用于将连接重定向到服务器实例。 建立连接后，MySQL 客户端显示网关中设置的 MySQL 版本，而不是 MySQL 服务器实例上运行的实际版本。 若要确定 MySQL 服务器实例的版本，可在 MySQL 提示符处使用 `SELECT VERSION();` 命令。

@@ -1,5 +1,5 @@
 ---
-title: 使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据 | Microsoft Docs
+title: 使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 description: 了解如何通过在 Azure 数据工厂管道中使用复制活动来向/从 Azure 数据资源管理器复制数据。
 services: data-factory
 documentationcenter: ''
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2019
-ms.author: orspod
-ms.openlocfilehash: 756ede9cc90655163d6d53aa3ca920d2a15fb43d
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.author: orspodek
+ms.openlocfilehash: f501257903f3b7c621512f06d1c8c7109e22db1e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682485"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394500"
 ---
 # <a name="copy-data-to-or-from-azure-data-explorer-using-azure-data-factory"></a>使用 Azure 数据工厂向/从 Azure 数据资源管理器复制数据
 
@@ -219,4 +219,7 @@ Azure 数据资源管理器链接服务支持以下属性：
 ```
 
 ## <a name="next-steps"></a>后续步骤
-有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+
+* 有关 Azure 数据工厂中复制活动支持作为源和接收器的数据存储的列表，请参阅[支持的数据存储](copy-activity-overview.md#supported-data-stores-and-formats)。
+
+* 详细了解如何[将数据从 Azure 数据工厂复制到 Azure 数据资源管理器](/azure/data-explorer/data-factory-load-data)。

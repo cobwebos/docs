@@ -1,20 +1,19 @@
 ---
-title: Azure 数据工厂数据流派生列转换
-description: Azure 数据工厂数据流派生列转换
+title: Azure 数据工厂映射数据流派生列转换
+description: 如何将大规模使用 Azure 数据工厂映射数据流派生列转换的数据
 author: kromerm
 ms.author: makromer
-ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 10/08/2018
-ms.openlocfilehash: 1335b86431bcf345f452ead0c95926d295ae185f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.openlocfilehash: f53e122eb1b2a5b6dabb9a44aef42394d0c7edb6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478682"
 ---
-# <a name="azure-data-factory-data-flow-derived-column-transformation"></a>Azure 数据工厂数据流派生列转换
+# <a name="mapping-data-flow-derived-column-transformation"></a>映射数据流派生列转换
 
 [!INCLUDE [notes](../../includes/data-factory-data-flow-preview.md)]
 
@@ -27,3 +26,13 @@ ms.locfileid: "56728754"
 在列字段中，可以选择新派生值要覆盖的现有列，或者单击“新建列”生成具有新派生值的新列。
 
 表达式文本框将打开表达式生成器，可以在其中使用表达式函数为派生列生成表达式。
+
+## <a name="column-patterns"></a>列模式
+
+如果列名称是从你的源的变量，您可能希望构建内部派生列转换使用而不使用名为列的列模式。 请参阅[架构偏差](concepts-data-flow-schema-drift.md)一文，了解更多详细信息。
+
+![列模式](media/data-flow/columnpattern.png "列模式")
+
+## <a name="next-steps"></a>后续步骤
+
+详细了解如何[数据工厂进行转换的表达式语言](http://aka.ms/dataflowexpressions)和[表达式生成器](concepts-data-flow-expression-builder.md)

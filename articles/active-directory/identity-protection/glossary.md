@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5def46b6c12dc08c273ea7334516b63b7606477f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452817"
 ---
 # <a name="azure-active-directory-identity-protection-glossary"></a>Azure Active Directory Identity Protection 术语表
 ### <a name="at-risk-user"></a>有风险（用户）
@@ -34,7 +34,7 @@ ms.locfileid: "58521935"
 ### <a name="azure-ad-identity-protection"></a>Azure AD Identity Protection
 Azure Active Directory 的安全模块，提供合并的视图用于洞察影响组织标识的风险事件和潜在漏洞。
 
-### <a name="conditional-access"></a>条件访问
+### <a name="conditional-access"></a>条件性访问
 用于保护资源访问的策略。 条件性访问规则存储在 Azure Active Directory 中，在授予资源访问权限之前由 Azure AD 评估。  示例规则包括根据用户的位置、设备运行状况或用户身份验证方法来限制访问。
 
 ### <a name="credentials"></a>凭据
@@ -94,7 +94,7 @@ Identity Protection 用户手动设置的风险事件状态，表示此风险事
 ### <a name="remediated-risk-event"></a>已补救（风险事件）
 Identity Protection 自动设置的风险事件状态，指示已使用此风险事件类型的标准补救措施来补救此风险事件。 例如，当用户密码重置时，指示以前的密码已遭入侵的风险事件可自动补救。
 
-### <a name="remediation"></a>更正
+### <a name="remediation"></a>补救
 保护以前疑似或已知遭到入侵的标识或设备的措施。 补救措施可让标识或设备还原到安全状态，解决以前与标识或设备关联的风险事件。
 
 ### <a name="resolved-risk-event"></a>已解决（风险事件）

@@ -18,11 +18,11 @@ ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b477171be0f306431b0f7c5965ebede4f4680c22
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56201901"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60249934"
 ---
 # <a name="web-api"></a>Web API
 
@@ -57,7 +57,7 @@ Web API 应用是需要通过 Web API 获取资源的 Web 应用。 在此方案
 
 1. 用户已登录到 Web 应用程序，该应用程序的身份验证机制独立于 Azure AD。
 1. Web 应用程序需要一个授权代码来获取访问令牌，因此，在成功进行身份验证后，它通过浏览器向 Azure AD 的授权终结点发出一个请求，其中提供了应用程序 ID 和 Web 应用程序的重定向 URI。 用户登录到 Azure AD。
-1. 如果 Web 应用程序的用户尚未许可允许 Web 应用程序代表自己调用 Web API，则需要用户表示许可。 应用程序会显示它要求的权限，并且如果这些权限中有任何一个是管理员级权限，则目录中的普通用户将无法表示许可。 此许可适用于单租户和多租户应用程序。 在单租户情况下，管理员可以代表其用户对许可执行管理员同意。 可使用 [Azure 门户](https://portal.azure.com)中的 `Grant Permissions` 按钮完成此操作。 
+1. 如果 Web 应用程序的用户尚未许可允许 Web 应用程序代表自己调用 Web API，则需要用户许可。 应用程序会显示它要求的权限，并且如果这些权限中有任何一个是管理员级权限，则目录中的普通用户将无法表示许可。 此许可适用于单租户和多租户应用程序。 在单租户情况下，管理员可以代表其用户对许可执行管理员同意。 可使用 [Azure 门户](https://portal.azure.com)中的 `Grant Permissions` 按钮完成此操作。 
 1. 在用户表示许可后，Web 应用程序将收到它获取访问令牌所需的授权代码。
 1. 使用由 Azure AD 颁发的授权代码，Web 应用程序向 Azure AD 的令牌终结点发送请求，请求中包括授权代码、关于客户端应用程序的详细信息（应用程序 ID 和重定向 URI）以及所需的资源（Web API 的应用程序 ID URI）。
 1. Azure AD 对授权代码和关于 Web 应用程序和 Web API 的信息进行验证。 当验证成功时，Azure AD 返回两个令牌：一个 JWT 访问令牌和一个 JWT 刷新令牌。

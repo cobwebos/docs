@@ -16,17 +16,17 @@ ms.date: 01/26/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 607d538a2a2636e17265e95195000a777f162dc4
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60263377"
 ---
 # <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>教程：为 Jive 配置自动用户预配
 
 本教程旨在介绍为了从 Azure AD 自动将用户帐户预配到 Jive 和取消其预配而需要在 Jive 和 Azure 中执行的步骤。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在本教程中概述的方案假定已有以下各项：
 

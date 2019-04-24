@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 060c176b97966816d421ddbe0d8017ad8558710a
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 05a7c52dca420f97252c68445398fb3959be8804
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113833"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445696"
 ---
 # <a name="a-practical-guide-to-designing-secure-health-care-solutions-in-azure"></a>在 Azure 中设计安全卫生保健解决方案的实用指南
 考虑迁移到 Azure 的健康行业初创公司、系统集成商 (SI)、独立软件供应商 (ISV) 和医疗保健组织，无一不在寻找能够帮助他们纳入安全控制，以满足其合规性要求的指南。

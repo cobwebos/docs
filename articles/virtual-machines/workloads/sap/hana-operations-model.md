@@ -15,11 +15,11 @@ ms.date: 09/04/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 36a648e2d46cce96a8ff663f45ccf45326898a84
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56417000"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477864"
 ---
 # <a name="operations-model-and-responsibilities"></a>操作模型和责任
 

@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 95fd00608be9cfafb4c703c32ec3ed4713855ca5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 29a45c0d32e35b5d321670bf25334a2976b93e56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38670960"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482684"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>打开或关闭 StorSimple 8000 系列设备
 

@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+origin.date: 09/10/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: 8f252b536c80ad997f3c0eb10b10d5cb8c330fc6
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60401742"
 ---
 # <a name="localization"></a>本地化
 
@@ -39,13 +40,13 @@ ms.locfileid: "55187549"
 
 **Localization** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| 已启用 | 否 | 可能的值：`true` 或 `false`。 |
+| Enabled | 否 | 可能的值：`true` 或 `false`。 |
 
 **Localization** 元素包含以下 XML 元素
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | SupportedLanguages | 1:n | 支持的语言列表。 | 
 | LocalizedResources | 0:n | 本地化资源列表。 |
@@ -54,7 +55,7 @@ ms.locfileid: "55187549"
 
 **SupportedLanguages** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | DefaultLanguage | 是 | 用作本地化资源默认值的语言。 |
 | MergeBehavior | 否 | 与父策略中具有相同标识符的任何 ClaimType 合并在一起的值的枚举值。 覆盖基本策略中指定的声明时，请使用此属性。 可能的值：`Append`、`Prepend` 或 `ReplaceAll`。 `Append` 值指定应将现有数据集合追加到父策略中指定的集合的末尾。 `Prepend` 值指定应将现有数据集合添加到父策略中指定的集合的前面。 `ReplaceAll` 值指定应忽略父策略中定义的数据集合，改用当前策略中定义的数据。 |
@@ -63,7 +64,7 @@ ms.locfileid: "55187549"
 
 **SupportedLanguages** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | SupportedLanguage | 1:n | 显示符合 RFC 5646“用于标识语言的标记”中所述语言标记的内容。 | 
 
@@ -71,13 +72,13 @@ ms.locfileid: "55187549"
 
 **LocalizedResources** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ID | 是 | 用于唯一标识本地化资源的标识符。 |
 
 **LocalizedResources** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | LocalizedCollections | 0:n | 在各种区域性中定义整个集合。 一个集合可以包含不同的项数，以及适用于各种区域性的不同字符串。 集合的示例包括声明类型中显示的枚举。 例如，在下拉列表中向用户显示国家/地区列表。 |
 | LocalizedStrings | 0:n | 在各种区域性中定义所有字符串，但集合中出现的字符串除外。 |
@@ -86,7 +87,7 @@ ms.locfileid: "55187549"
 
 **LocalizedCollections** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | LocalizedCollection | 1:n | 支持的语言列表。 |
 
@@ -94,7 +95,7 @@ ms.locfileid: "55187549"
 
 **LocalizedCollection** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 引用策略文件中的 ClaimType 元素或用户界面元素。 |
 | ElementId | 是 | 一个字符串，包含当 **ElementType** 设置为 ClaimType 时使用的 ClaimsSchema 节中已定义的声明类型的引用。 |
@@ -102,16 +103,16 @@ ms.locfileid: "55187549"
 
 **LocalizedCollection** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | Item | 0:n | 定义可让用户在用户界面中为声明选择的可用选项，例如下拉列表中的值。 |
 
 **Item** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
-| 文本 | 是 | 应在用户界面中向用户显示的此选项的用户友好字符串。 |
-| 值 | 是 | 与此选项关联的字符串声明值。 |
+| Text | 是 | 应在用户界面中向用户显示的此选项的用户友好字符串。 |
+| Value | 是 | 与此选项关联的字符串声明值。 |
 
 以下示例演示了 **LocalizedCollections** 元素的用法。 其中包含两个 **LocalizedCollection** 元素，一个元素适用于英语区域设置，另一个元素适用于西班牙语区域设置。 这两个元素都设置了声明 `Gender` 的 **Restriction** 集合，以及适用于英语和西班牙语的项列表。
 
@@ -138,13 +139,13 @@ ms.locfileid: "55187549"
 
 **LocalizedStrings** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
 | LocalizedString | 1:n | 一个本地化字符串。 |
 
 **LocalizedString** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --------- | -------- | ----------- |
 | ElementType | 是 | 对策略中声明类型元素或用户界面元素的引用。 可能的值：`ClaimType`、`UxElement`、`ErrorMessage`、`Predicate` 或 `ClaimType` 值用于本地化 StringId 中指定的某个声明属性。 `UxElement` 值用于本地化 StringId 中指定的某个用户界面元素。 `ErrorMessage` 值用于本地化 StringId 中指定的某个系统错误消息。 `Predicate` 值用于本地化 StringId 中指定的某个 [Predicate](predicates.md) 错误消息。 `InputValidation` 值用于本地化 StringId 中指定的某个 [PredicateValidation](predicates.md) 组错误消息。 |
 | ElementId | 是 | 如果 **ElementType** 设置为 `ClaimType`、`Predicate` 或 `InputValidation`，此元素包含对 ClaimsSchema 节中已定义的声明类型的引用。 | 
@@ -222,7 +223,7 @@ ms.locfileid: "55187549"
 
 每个 **LocalizedResources** 元素包含所有必需的 **LocalizedStrings** 元素（其中包含多个 **LocalizedString** 元素）和 **LocalizedCollections** 元素（其中包含多个 **LocalizedCollection** 元素）。  以下示例添加注册页面英语本地化： 
 
-注意：此示例引用 `Gender` 和 `City` 声明类型。 若要使用此示例，请务必定义这些声明。 有关详细信息，请参阅 [ClaimsSchema](claimsschema.md)。
+请注意:此示例引用 `Gender` 和 `City` 声明类型。 若要使用此示例，请务必定义这些声明。 有关详细信息，请参阅 [ClaimsSchema](claimsschema.md)。
 
 ```XML
 <LocalizedResources Id="api.localaccountsignup.en">
@@ -363,6 +364,7 @@ ms.locfileid: "55187549"
   </Localization>
 </BuildingBlocks>
 ```
+
 
 
 

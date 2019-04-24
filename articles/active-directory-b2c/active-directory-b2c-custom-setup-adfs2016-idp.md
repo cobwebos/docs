@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 0462ae68194fa22d99339b2ef369e3bbe3deabb2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 85a339d2638e2223815a4ae539f37c439a4eac91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58077456"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387088"
 ---
 # <a name="add-adfs-as-a-saml-identity-provider-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略添加 ADFS 作为 SAML 标识提供者
 
@@ -33,14 +33,14 @@ ms.locfileid: "58077456"
 需要将你的证书存储在 Azure AD B2C 租户中。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 在“概述”页上，选择“标识体验框架 - 预览”。
 5. 选择“策略密钥”，然后选择“添加”。
 6. 对于“选项”，请选择 `Upload`。
 7. 输入策略密钥的**名称**。 例如，`SamlCert`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 浏览并选择带有私钥的证书 .pfx 文件。
-9. 单击“创建”。
+9. 单击**创建**。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -71,7 +71,7 @@ ms.locfileid: "58077456"
             <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ADFSSamlCert"/>
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="userPrincipalName" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="userPrincipalName" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
@@ -128,13 +128,13 @@ ms.locfileid: "58077456"
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 ADFS 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
+2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML
     <ClaimsExchange Id="ContosoExchange" TechnicalProfileReferenceId="Contoso-SAML2" />
     ```
     
-    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`Contoso-SAML2`。
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 ID。 例如，`Contoso-SAML2`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -151,7 +151,7 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 
 - 将 your-tenant 替换为你的租户名称，例如 your-tenant.onmicrosoft.com。
 - 将 your-policy 替换为你的策略名称。 例如，B2C_1A_signup_signin_adfs。
-- 将 your-technical-profile 替换为 SAML 标识提供者技术配置文件的名称。 例如，Contoso-SAML2。
+- **您配置技术文件**SAML 标识提供程序技术配置文件的名称。 例如，Contoso-SAML2。
  
 打开浏览器并导航到此 URL。 确保键入正确的 URL 并且你有权访问 XML 元数据文件。 要通过使用 ADFS 管理管理单元添加新的依赖方信任并手动配置设置，请在联合服务器上执行以下过程。 本地计算机上“管理员”中的成员身份或同等身份是完成此过程所需的最低要求。
 
@@ -189,7 +189,7 @@ https://login.microsoftonline.com/te/your-tenant/your-policy/samlp/metadata?idpt
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
 6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
-7. 单击“创建”。
+7. 单击**创建**。
 
 ### <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 

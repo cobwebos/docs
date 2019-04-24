@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1a61de6b0b6f73e112dd69108272ded3a67497e8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661694"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516694"
 ---
 # <a name="managing-resource-consumption-and-load-in-service-fabric-with-metrics"></a>在 Service Fabric 中使用指标管理资源消耗和负载
 指标是服务关切的、由群集中的节点提供的资源。 指标是要进行管理以提升或监视服务性能的任何信息。 例如，可能需要监视内存消耗量以了解服务是否过载。 另一个用途是确定服务是否可以移动到内存较少受限的其他位置，以便获得更佳性能。
@@ -35,9 +35,9 @@ ms.locfileid: "58661694"
 
 | 指标 | 无状态实例负载 | 有状态辅助负载 | 有状态主要负载 | 重量 |
 | --- | --- | --- | --- | --- |
-| PrimaryCount |0 |0 |第 |高 |
-| ReplicaCount |0 |1 |第 |中型 |
-| Count |第 |1 |第 |低 |
+| PrimaryCount |0 |0 |1 |高 |
+| ReplicaCount |0 |1 |1 |中型 |
+| Count |1 |1 |1 |低 |
 
 
 对于脚本工作负荷，默认指标实现群集中的适当工作分布。 在下面的示例中，让我们看看创建两个服务并依赖默认指标进行平衡时会发生什么情况。 第一个服务是具有 3 个分区的有状态服务，目标副本集大小为 3。 第二个服务是具有 1 个分区的无状态服务，实例数为 3。
@@ -217,7 +217,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![使用默认和自定义指标平衡的群集][Image2]
+![使用默认和自定义指标均衡的群集][Image2]
 </center>
 
 有几个问题值得注意：
@@ -242,7 +242,7 @@ New-ServiceFabricService -ApplicationName $applicationName -ServiceName $service
 
 <center>
 
-![指标权重示例和及其对平衡解决方案的影响][Image3]
+![指标权重示例及其对均衡解决方案的影响][Image3]
 </center>
 
 此示例中有 4 种不同的服务，所有服务都针对两个不同指标 MetricA 和 MetricB 报告不同的值。 在其中一个用例中，所有服务定义 MetricA 为最重要的指标（权重 = 高），MetricB 为不重要的指标（权重 = 低）。 因此会看到群集资源管理器在放置服务时会采用使得 MetricA 比 MetricB 更均衡的方式。 “更均衡”意味着 MetricA 具有比 MetricB 更小的标准偏差。 在第二个方案中，我们反转指标权重。 结果，群集资源管理器会交换服务 A 与 B，以产生 MetricB 比 MetricA 更加均衡的分配。

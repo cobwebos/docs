@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: diberry
 ms.openlocfilehash: 7315c80ad74eae07e41577fb2ac13742002e729e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57781691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198528"
 ---
 # <a name="using-subscription-keys-with-your-luis-app"></a>将订阅密钥与 LUIS 应用配合使用
 
@@ -122,7 +122,7 @@ ms.locfileid: "57781691"
 
     此 POST API 需要以下设置：
 
-    |标头|值|
+    |标头|Value|
     |--|--|
     |`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。| 
     |`Ocp-Apim-Subscription-Key`|你的[创作密钥](luis-how-to-account-settings.md)。|
@@ -133,7 +133,7 @@ ms.locfileid: "57781691"
 
     此 POST API 需要以下设置：
 
-    |Type|设置|值|
+    |Type|设置|Value|
     |--|--|--|
     |标头|`Authorization`|`Authorization` 的值为 `Bearer {token}`。 请注意，单词 `Bearer` 和空格前面必须是令牌值。|
     |标头|`Ocp-Apim-Subscription-Key`|你的[创作密钥](luis-how-to-account-settings.md)。|

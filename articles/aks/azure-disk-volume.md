@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: iainfou
 ms.openlocfilehash: 02a863a4ddf59fb36c5f2ae7f3092896d2e1d860
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467521"
 ---
 # <a name="manually-create-and-use-a-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中通过 Azure 磁盘手动创建并使用卷
 
@@ -21,13 +21,13 @@ ms.locfileid: "57337985"
 > [!NOTE]
 > Azure 磁盘一次只能装载到单个 Pod 中。 如果需要在多个 Pod 之间共享永久性卷，请使用 [Azure 文件][azure-files-volume]。
 
-有关 Kubernetes 卷的详细信息，请参阅[AKS 中的应用程序的存储选项][concepts-storage]。
+有关 Kubernetes 卷的详细信息，请参阅 [AKS 中应用程序的存储选项][concepts-storage]。
 
 ## <a name="before-you-begin"></a>开始之前
 
 本文假定你拥有现有的 AKS 群集。 如果需要 AKS 群集，请参阅 AKS 快速入门[使用 Azure CLI][aks-quickstart-cli] 或[使用 Azure 门户][aks-quickstart-portal]。
 
-您还需要 Azure CLI 版本 2.0.59 或更高版本安装和配置。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
+还需安装并配置 Azure CLI 2.0.59 或更高版本。 运行  `az --version` 即可查找版本。 如果需要进行安装或升级，请参阅 [安装 Azure CLI][install-azure-cli]。
 
 ## <a name="create-an-azure-disk"></a>创建 Azure 磁盘
 
@@ -126,7 +126,7 @@ Events:
 
 ## <a name="next-steps"></a>后续步骤
 
-关联的最佳做法，请参阅[存储和备份在 AKS 中的最佳做法][operator-best-practices-storage]。
+如需相关的最佳做法，请参阅[在 AKS 中存储和备份的最佳做法][operator-best-practices-storage]。
 
 有关 AKS 群集与 Azure 磁盘进行交互的详细信息，请参阅 [Azure 磁盘的 Kubernetes 插件][kubernetes-disks]。
 

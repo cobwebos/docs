@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: alch
 ms.openlocfilehash: a228c5b90e47c9c24c5da70484a1a28f9a3054b1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60498822"
 ---
 # <a name="calchistogram-method"></a>CalcHistogram 方法
 
@@ -30,7 +30,7 @@ https:// westus.api.cognitive.microsoft.com/academic/v1.0/calchistogram?
 
 ## <a name="request-parameters"></a>请求参数
 
-名称  |值 | 必需？  |描述
+Name  |Value | 必需？  |描述
 -----------|----------|--------|----------
 **expr**    |文本字符串 | 是  |指定计算哪些实体的直方图的查询表达式。
 **model** |文本字符串 | 否 |选择要查询的模型的名称。  默认值暂为“latest”。
@@ -41,7 +41,7 @@ timeout  |Number | 否<br>默认值：1000 |超时（以毫秒为单位）。 �
 
 ## <a name="response-json"></a>响应 (JSON)
 
-名称 | 描述
+Name | 描述
 --------|---------
 **expr**  |请求中的 expr 参数。
 **num_entities** | 匹配实体总数。

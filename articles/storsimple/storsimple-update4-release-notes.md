@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: f4db5a49b71b0c384da7af2b90bd5426a4f35c72
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: HT
+ms.openlocfilehash: ef95ca7b9f94690b607e37fbf5d9378c2f2bcfda
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34058142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60530991"
 ---
 # <a name="storsimple-8000-series-update-4-release-notes"></a>StorSimple 8000 系列 Update 4 发行说明
 
@@ -66,7 +66,7 @@ Update 4 中进行了以下重大改进和 bug 修复。
 
 下表提供在 Update 4 中已修复问题的摘要。    
 
-| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |故障转移 |在早期版本中，当故障转移后，会在客户站点观察到与清理相关的问题。 在此版本中已修复了此问题。 |是 |是 |
 | 2 |本地固定卷 |在之前版本中，为本地固定卷创建卷时会出现导致卷创建失败的问题。 在此版本中已找到此问题的根本原因并进行了修复。 |是 |否 |

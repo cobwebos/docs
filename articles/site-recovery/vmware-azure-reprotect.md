@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 3/12/2019
 ms.author: mayg
 ms.openlocfilehash: 4202d95b540efb98b526f8a8abd17da22a908ebe
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57771803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482896"
 ---
 # <a name="reprotect-and-fail-back-machines-to-an-on-premises-site-after-failover-to-azure"></a>故障转移到 Azure 后，将计算机重新保护并故障回复到本地站点
 

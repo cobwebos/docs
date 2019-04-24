@@ -10,11 +10,11 @@ ms.date: 07/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 4d11dfcb66a545cbecc80b6bdad558ca6d328ed2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57999674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499160"
 ---
 # <a name="migrate-your-oms-update-deployments-to-azure"></a>将 OMS 更新部署迁移到 Azure
 
@@ -59,7 +59,7 @@ Operations Management Suite (OMS) 门户已被[弃用](../azure-monitor/platform
 
 | 属性 | 描述 |
 | --- | --- |
-|名称 |用于标识更新部署的唯一名称。 |
+|Name |用于标识更新部署的唯一名称。 |
 |操作系统| 选择 **Linux** 或 **Windows**。|
 |要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |
 |更新分类|选择所需的所有更新分类。 CentOS 不能现成地支持此功能。|

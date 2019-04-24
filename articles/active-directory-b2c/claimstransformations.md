@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: bc6cc7b07d3dce43a666b3e5b0a958b41cdd3131
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58651502"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313811"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -33,7 +33,7 @@ ClaimsTransformations 元素包含一个可在用户旅程中用作[自定义策
 </ClaimsTransformations>
 ```
 
-**ClaimsTransformation**元素包含以下属性：
+ClaimsTransformation 元素包含以下属性：
 
 | 属性 |需要 | 描述 |
 | --------- |-------- | ----------- |
@@ -96,7 +96,7 @@ InputParameters 元素包含以下元素：
 | --------- | ----------- |----------- |
 | ID | 是 | 是对声明转换方法的参数的引用的标识符。 每个声明转换方法都有其自己的值。 有关可用值的完整列表，请参阅声明转换表。 |
 | 数据类型 | 是 | 参数的数据类型，例如根据自定义策略 XML 架构中的 DataType 枚举的字符串、布尔值、Int 或 DateTime。 此类型用于正确执行算术操作。 每个声明转换都有其自己的值。 有关可用值的完整列表，请参阅[声明转换引用](#claims-transformations-reference)。 |
-| 值 | 是 | 将逐字字符串传递到传递的一个值。 某些值是任意的，某些值是从声明转换方法中选择的。 |
+| Value | 是 | 将逐字字符串传递到传递的一个值。 某些值是任意的，某些值是从声明转换方法中选择的。 |
 
 ### <a name="outputclaims"></a>OutputClaims
 

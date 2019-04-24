@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 08/18/2018
 tags: connectors
 ms.openlocfilehash: b81efba0ce860bea5fd68dd99ce52980e6816b7e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310568"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313586"
 ---
 # <a name="manage-dynamics-365-records-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Dynamics 365 记录
 

@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: d6601f57d87b518b2061df64174818432b822755
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58076184"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515324"
 ---
 # <a name="bing-speech-websocket-protocol"></a>必应语音 WebSocket 协议
 
@@ -78,7 +78,7 @@ Content-Length: 0
 
 令牌访问需要以下标头信息。
 
-| 名称 | 格式 | 描述 |
+| Name | 格式 | 描述 |
 |----|----|----|
 | Ocp-Apim-Subscription-Key | ASCII | 订阅密钥 |
 
@@ -150,7 +150,7 @@ Content-Length: 0
 
 所有客户端发起的消息都需要以下标头。
 
-| 标头 | 值 |
+| 标头 | Value |
 |----|----|
 | 路径 | 本文档中指定的消息路径 |
 | X-RequestId | 采用“无连字符”格式的 UUID |
@@ -174,12 +174,12 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 | 字段 | 描述 |
 |----|----|
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | Body | 有效负载作为 JSON 结构 |
 
 #### <a name="required-message-headers"></a>必需的消息标头
 
-| 标头名称 | 值 |
+| 标头名称 | Value |
 |----|----|
 | 路径 | `speech.config` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
@@ -250,7 +250,7 @@ X-Timestamp 标头值的格式必须为 'yyyy'-'MM'-'dd'T'HH':'mm':'ss'.'fffffff
 
 所有 `audio` 消息都需要以下标头。
 
-| 标头         |  值     |
+| 标头         |  Value     |
 | ------------- | ---------------- |
 | 路径 | `audio` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
@@ -307,7 +307,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `telemetry` |
 | X-Timestamp | 采用 ISO 8601 格式的客户端 UTC 时钟时间戳 |
 | Content-Type | `application/json` |
@@ -329,7 +329,7 @@ return SDK.CreateRecognizerWithCustomAudioSource(
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `speech.startDetected` |
 | Content-Type | application/json; charset=utf-8 |
 | Body | JSON 结构，包含检测到语音开始时的条件信息。 此结构中的 Offset 字段指定在音频流中检测到语音时的位置相对于流开始位置的偏移（以 100 纳秒为单位）。 |
@@ -354,7 +354,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `speech.hypothesis` |
 | X-RequestId | 采用“无连字符”格式的 UUID |
 | Content-Type | application/json |
@@ -386,7 +386,7 @@ Duration 元素指定该语音短语的持续时间（以 100 纳秒为单位）
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `speech.phrase` |
 | Content-Type | application/json |
 | Body | 语音短语 JSON 结构 |
@@ -414,7 +414,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `speech.endDetected` |
 | Body | 包含检测到语音结束时的偏移的 JSON 结构。 偏移从用于识别的音频开始位置计算，以 100 纳秒为单位表示。 |
 | Content-Type | application/json; charset=utf-8 |
@@ -439,7 +439,7 @@ Offset 元素指定识别出短语时的位置相对于音频流开头位置的�
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `turn.start` |
 | Content-Type | application/json; charset=utf-8 |
 | Body | JSON 结构 |
@@ -466,7 +466,7 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 | 字段 | 描述 |
 | ------------- | ---------------- |
-| WebSocket 消息编码 | 文本 |
+| WebSocket 消息编码 | Text |
 | 路径 | `turn.end` |
 | Body | 无 |
 
@@ -508,7 +508,7 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 | 字段 | 描述 | 使用情况 |
 | ----- | ----------- | ----- |
-| 名称 | `Connection` | 需要 |
+| Name | `Connection` | 需要 |
 | ID | 此连接请求的 X-ConnectionId 标头中使用的连接标识符值 | 需要 |
 | 开始 | 客户端发出连接请求的时间 | 需要 |
 | 结束 | 客户端收到成功建立连接的通知时间，或出错时收到拒绝、弃用或失败的通知时间 | 需要 |
@@ -548,7 +548,7 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 | 字段 | 描述 | 使用情况 |
 | ----- | ----------- | ----- |
-| 名称 | 麦克风 | 需要 |
+| Name | 麦克风 | 需要 |
 | 开始 | 客户端开始使用来自麦克风或其他音频流的音频输入或从关键字监视器收到触发时的时间 | 需要 |
 | 结束 | 客户端停止使用麦克风或音频流时的时间 | 需要 |
 | 错误 | 已发生错误的描述（如有）。 如果麦克风操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |
@@ -568,7 +568,7 @@ telemetry 消息的正文是 JSON 结构，其中包含有关轮次或尝试连�
 
 | 字段 | 描述 | 使用情况 |
 | ----- | ----------- | ----- |
-| 名称 | ListeningTrigger | 可选 |
+| Name | ListeningTrigger | 可选 |
 | 开始 | 客户端侦听触发开始时的时间 | 需要 |
 | 结束 | 客户端侦听触发完成时的时间 | 需要 |
 | 错误 | 已发生错误的描述（如有）。 如果触发操作成功，客户端应省略此字段。 此字段的最大长度为 50 个字符。 | 出错时必填，否则省略 |

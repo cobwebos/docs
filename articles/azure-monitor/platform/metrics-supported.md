@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 55258dc0c99a918a6314be8317f19c03576a95f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: b49c6733fd148fc6fb8b9fe535ac839f5b7402f9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851187"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255855"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor 支持的指标
 
@@ -84,7 +84,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |FailedRequests|失败的网关请求数|Count|总计|失败的网关请求数|位置、主机名|
 |OtherRequests|其他网关请求数|Count|总计|其他网关请求数|位置、主机名|
 |Duration|网关请求的总持续时间|毫秒|平均值|网关请求的总持续时间，以毫秒为单位|位置、主机名|
-|容量|容量|百分比|平均值|ApiManagement 服务的利用率指标|位置|
+|容量|容量|百分比|平均值|ApiManagement 服务的利用率指标|Location|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -506,10 +506,10 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |---|---|---|---|---|---|
 |JobEndedSuccess|成功作业数|Count|总计|成功作业计数。|无维度|
 |JobEndedFailure|失败作业数|Count|总计|失败作业计数。|无维度|
-|JobEndedCancelled|取消的作业数|Count|总计|取消的作业计数。|无维度|
+|JobEndedCanceled|已取消的作业|Count|总计|已取消的作业的计数。|无维度|
 |JobAUEndedSuccess|成功 AU 时间|秒|总计|成功作业的总 AU 时间。|无维度|
 |JobAUEndedFailure|失败的 AU 时间|秒|总计|失败作业的总 AU 时间。|无维度|
-|JobAUEndedCancelled|已取消的 AU 时间|秒|总计|取消的作业的总 AU 时间。|无维度|
+|JobAUEndedCanceled|已取消的 AU 时间|秒|总计|已取消的作业的总 AU 时间。|无维度|
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
 
@@ -657,16 +657,16 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
 |---|---|---|---|---|---| ---| ---| ---|
-| TotalRequests |   请求总数| Count   | Count | 已发出的请求数|  DatabaseName, CollectionName, Region, StatusCode|   All |   TotalRequests、Http 2xx、Http 3xx、Http 400、Http 401、内部服务器错误、服务不可用、受限制的请求数、每秒平均请求数 |    用来按状态代码监视请求，以分钟为粒度进行收集。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。 |
-| MetadataRequests |    元数据请求   |Count| Count   | 元数据请求的计数。 Azure Cosmos DB 为每个帐户维护系统元数据集合，允许你免费枚举集合、数据库及其配置等等。    | DatabaseName, CollectionName, Region, StatusCode| All|  |用于监视由于元数据请求而导致的限制。|
-| MongoRequests |   Mongo 请求| Count | Count|  已发出的 Mongo 请求数   | DatabaseName, CollectionName, Region, CommandName, ErrorCode| All |Mongo 查询请求速率、Mongo 更新请求速率、Mongo 删除请求速率、Mongo 插入请求速率、Mongo 计数请求速率|   用于监视 Mongo 请求错误以及每个命令类型的使用情况。 |
+| TotalRequests |   请求总数| Count   | Count | 已发出的请求数|  DatabaseName, CollectionName, Region, StatusCode|   全部 |   TotalRequests、Http 2xx、Http 3xx、Http 400、Http 401、内部服务器错误、服务不可用、受限制的请求数、每秒平均请求数 |    用来按状态代码监视请求，以分钟为粒度进行收集。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。 |
+| MetadataRequests |    元数据请求   |Count| Count   | 元数据请求的计数。 Azure Cosmos DB 为每个帐户维护系统元数据集合，允许你免费枚举集合、数据库及其配置等等。    | DatabaseName, CollectionName, Region, StatusCode| 全部|  |用于监视由于元数据请求而导致的限制。|
+| MongoRequests |   Mongo 请求| Count | Count|  已发出的 Mongo 请求数   | DatabaseName, CollectionName, Region, CommandName, ErrorCode| 全部 |Mongo 查询请求速率、Mongo 更新请求速率、Mongo 删除请求速率、Mongo 插入请求速率、Mongo 计数请求速率|   用于监视 Mongo 请求错误以及每个命令类型的使用情况。 |
 
 ### <a name="request-unit-metrics"></a>请求单位指标
 
 |指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 旧指标映射 | 使用情况 |
 |---|---|---|---|---|---| ---| ---| ---|
-| MongoRequestCharge|   Mongo 请求费用 |  Count   |总计  |Mongo 已消耗的请求单位|  DatabaseName, CollectionName, Region, CommandName, ErrorCode|   All |Mongo 查询请求费用、Mongo 更新请求费用、Mongo 删除请求费用、Mongo 插入请求费用、Mongo 计数请求费用| 用于监视一分钟内的 Mongo 资源 RU。|
-| TotalRequestUnits |总请求单位数|   Count|  总计|  已消耗的请求单位| DatabaseName, CollectionName, Region, StatusCode    |All|   TotalRequestUnits|  用于在分钟粒度监视总的 RU 使用量。 若要获取每秒平均使用的 RU，请在分钟级别使用“总计”聚合并除以 60。|
+| MongoRequestCharge|   Mongo 请求费用 |  Count   |总计  |Mongo 已消耗的请求单位|  DatabaseName, CollectionName, Region, CommandName, ErrorCode|   全部 |Mongo 查询请求费用、Mongo 更新请求费用、Mongo 删除请求费用、Mongo 插入请求费用、Mongo 计数请求费用| 用于监视一分钟内的 Mongo 资源 RU。|
+| TotalRequestUnits |总请求单位数|   Count|  总计|  已消耗的请求单位| DatabaseName, CollectionName, Region, StatusCode    |全部|   TotalRequestUnits|  用于在分钟粒度监视总的 RU 使用量。 若要获取每秒平均使用的 RU，请在分钟级别使用“总计”聚合并除以 60。|
 | ProvisionedThroughput |预配的吞吐量|    Count|  最大值 |在集合粒度预配的吞吐量|  DatabaseName、CollectionName|   5M| |   用于监视每个集合的预配吞吐量。|
 
 ### <a name="storage-metrics"></a>存储度量值
@@ -683,7 +683,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 使用情况 |
 |---|---|---|---|---|---| ---| ---|
-| ReplicationLatency    | 复制延迟|  毫秒|   最小值、最大值、平均值 | 启用了异地复制的帐户的源和目标区域之间的 P99 复制延迟| SourceRegion、TargetRegion| All | 用于监视异地复制帐户在任何两个区域之间的 P99 复制延迟。 |
+| ReplicationLatency    | 复制延迟|  毫秒|   最小值、最大值、平均值 | 启用了异地复制的帐户的源和目标区域之间的 P99 复制延迟| SourceRegion、TargetRegion| 全部 | 用于监视异地复制帐户在任何两个区域之间的 P99 复制延迟。 |
 
 ### <a name="availability-metrics"></a>可用性指标
 
@@ -695,9 +695,9 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 
 |指标|指标显示名称|单位|聚合类型|说明|维度| 时间粒度| 使用情况 |
 |---|---|---|---|---|---| ---| ---|
-| CassandraRequests | Cassandra 请求数 |  Count|  Count|  发出的 Cassandra API 请求数|  DatabaseName、CollectionName、ErrorCode、Region、OperationType、ResourceType|   All| 用于按分钟粒度监视 Cassandra 请求。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。|
-| CassandraRequestCharges|  Cassandra 请求费用| Count|   合计、最小值、最大值、平均值| Cassandra API 请求已消耗的请求单位数|   DatabaseName、CollectionName、Region、OperationType、ResourceType|  All| 用于监视 Cassandra API 帐户每分钟使用的 RU。|
-| CassandraConnectionClosures   | Cassandra 连接关闭数 |Count| Count   |关闭的 Cassandra 连接数|    ClosureReason、Region|  All | 用于监视客户端与 Azure Cosmos DB Cassandra API 之间的连接。|
+| CassandraRequests | Cassandra 请求数 |  Count|  Count|  发出的 Cassandra API 请求数|  DatabaseName、CollectionName、ErrorCode、Region、OperationType、ResourceType|   全部| 用于按分钟粒度监视 Cassandra 请求。 若要获取每秒的平均请求数，请在分钟级别使用“计数”聚合并除以 60。|
+| CassandraRequestCharges|  Cassandra 请求费用| Count|   合计、最小值、最大值、平均值| Cassandra API 请求已消耗的请求单位数|   DatabaseName、CollectionName、Region、OperationType、ResourceType|  全部| 用于监视 Cassandra API 帐户每分钟使用的 RU。|
+| CassandraConnectionClosures   | Cassandra 连接关闭数 |Count| Count   |关闭的 Cassandra 连接数|    ClosureReason、Region|  全部 | 用于监视客户端与 Azure Cosmos DB Cassandra API 之间的连接。|
 
 ## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
 
@@ -876,7 +876,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |RunsCompleted|已完成的运行数|Count|总计|已完成的工作流运行数目。|无维度|
 |RunsSucceeded|成功的运行数|Count|总计|成功的工作流运行数目。|无维度|
 |RunsFailed|失败的运行数|Count|总计|失败的工作流运行数目。|无维度|
-|RunsCancelled|取消的运行数|Count|总计|已取消的工作流运行数目。|无维度|
+|RunsCanceled|取消的运行|Count|总计|已取消运行工作流的数目。|无维度|
 |RunLatency|运行延迟|秒|平均值|已完成的工作流运行的延迟。|无维度|
 |RunSuccessLatency|运行成功延迟|秒|平均值|已成功的工作流运行的延迟。|无维度|
 |RunThrottledEvents|运行限制事件数|Count|总计|工作流操作或触发器限制事件数目。|无维度|
@@ -1092,8 +1092,8 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |registration.get|注册读取操作数|Count|总计|所有成功的注册查询操作的计数。|无维度|
 |registration.delete|注册删除操作数|Count|总计|所有成功的注册删除操作的计数。|无维度|
 |incoming|传入消息数|Count|总计|所有成功的发送 API 调用的计数。 |无维度|
-|incoming.scheduled|已发送的已安排推送通知数|Count|总计|已取消的已安排推送通知数|无维度|
-|incoming.scheduled.cancel|已取消的已安排推送通知数|Count|总计|已取消的已安排推送通知数|无维度|
+|incoming.scheduled|已发送的已安排推送通知数|Count|总计|取消已安排的推送通知|无维度|
+|incoming.scheduled.cancel|取消已安排的推送通知|Count|总计|取消已安排的推送通知|无维度|
 |scheduled.pending|挂起的已安排通知数|Count|总计|挂起的已安排通知数|无维度|
 |installation.all|安装管理操作数|Count|总计|安装管理操作数|无维度|
 |installation.get|获取安装操作数目|Count|总计|获取安装操作数|无维度|
@@ -1513,7 +1513,7 @@ Azure Monitor 提供多种方式来与指标交互，包括在门户中制作指
 |Http5xx|Http 服务器错误|Count|总计|Http 服务器错误|实例|
 |MemoryWorkingSet|内存工作集|字节|平均值|内存工作集|实例|
 |AverageMemoryWorkingSet|平均内存工作集|字节|平均值|平均内存工作集|实例|
-|FunctionExecutionUnits|函数执行单位数|Count|总计|函数执行单位数|实例|
+|FunctionExecutionUnits|函数执行单位数|MB / 毫秒为单位|总计|[函数执行单位数](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|实例|
 |FunctionExecutionCount|函数执行计数|Count|总计|函数执行计数|实例|
 |PrivateBytes|专用字节|字节|平均值|专用字节|实例|
 |IoReadBytesPerSecond|IO 每秒读取字节数|每秒字节数|总计|IO 每秒读取字节数|实例|

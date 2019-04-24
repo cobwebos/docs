@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/11/2018
 ms.author: iainfou
 ms.openlocfilehash: 4bd934c710d6300e95c60742d5873f5b71bdae59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002185"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466508"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>在 Azure Kubernetes 服务 (AKS) 中配置 Azure CNI 网络
 
@@ -139,11 +139,11 @@ az aks create \
 
 * 是否可以在群集子网中部署 VM？
 
-  不是。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
+  不。 不支持在 Kubernetes 群集使用的子网中部署 VM。 可将 VM 部署在同一虚拟网络中，但必须部署在不同的子网中。
 
 * *是否可以配置基于 Pod 的网络策略？*
 
-  Kubernetes 网络策略是一项预览功能在 AKS 中当前可用。 若要开始，请参阅[保护在 AKS 中使用网络策略的 pod 之间的流量][network-policy]。
+  Kubernetes 网络策略目前在 AKS 中作为预览功能提供。 若要开始使用，请参阅[在 AKS 中使用网络策略保护 Pod 之间的流量][network-policy]。
 
 * 可部署到节点的 Pod 数上限是否可配置？
 

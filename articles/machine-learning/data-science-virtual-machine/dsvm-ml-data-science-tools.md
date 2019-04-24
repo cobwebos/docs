@@ -17,11 +17,11 @@ ms.topic: conceptual
 ms.date: 03/16/2018
 ms.author: gokuma
 ms.openlocfilehash: e8876306e4ffbd0fa9a8aafc6d5d757fd3c9c614
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57847359"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60502075"
 ---
 # <a name="machine-learning-and-data-science-tools"></a>机器学习和数据科学工具
 Azure Data Science Virtual Machine 拥有丰富的用于机器学习 (ML) 的工具和库，这些工具和库以 Python、R 和 Julia 等热门语言提供。 

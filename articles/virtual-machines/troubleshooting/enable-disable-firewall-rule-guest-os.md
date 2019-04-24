@@ -15,13 +15,13 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: ed3d89bc15f960947a48ac4364bd14f3fdf50cc2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505531"
 ---
-# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>启用或禁用 Azure VM 来宾 OS 上的防火墙规则
+# <a name="enable-or-disable-a-firewall-rule-on-an-azure-vm-guest-os"></a>在 Azure VM 来宾 OS 中启用或禁用防火墙规则
 
 本文为排查以下问题提供参考：你怀疑来宾操作系统防火墙正在筛选虚拟机 (VM) 上的部分流量。 使用这些参考信息的原因如下：
 

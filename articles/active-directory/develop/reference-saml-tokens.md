@@ -19,11 +19,11 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77118edd08faf6d40897a916ee85e2b6e20d3bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60298251"
 ---
 # <a name="azure-ad-saml-token-reference"></a>Azure AD SAML 令牌参考
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 ## <a name="claims-in-saml-tokens"></a>SAML 令牌中的声明
 
 > [!div class="mx-codeBreakAll"]
-> | 名称 | 等效 JWT 声明 | 描述 | 示例 |
+> | Name | 等效 JWT 声明 | 描述 | 示例 |
 > | --- | --- | --- | ------------|
 > |目标受众 | `aud` |令牌的目标接收方。 接收令牌的应用程序必须验证受众值是否正确，并拒绝任何针对其他受众的令牌。 | `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>`  |
 > | 即时身份验证 | |记录身份验证发生的日期和时间。 | `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | 
@@ -44,10 +44,10 @@ Azure Active Directory (Azure AD) 在每个身份验证流的处理中发出多�
 > |IssuedAt | `iat` |存储颁发令牌的时间。 通常用于度量令牌新鲜度。 | `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` |
 > |颁发者 | `iss` |标识构造并返回令牌的安全令牌服务 (STS)。 在 Azure AD 返回的令牌中，颁发者是 sts.windows.net。 颁发者声明值中的 GUID 是 Azure AD 目录的租户 ID。 租户 ID 是目录的固定不变且可靠的标识符。 | `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` |
 > |姓氏 | `family_name` |按照 Azure AD 用户对象中的定义，指定用户的姓氏。 | `<Attribute Name=" http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname">`<br>`<AttributeValue>Miller<AttributeValue>` |
-> |名称 | `unique_name` |提供一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，且仅供显示。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
+> |Name | `unique_name` |提供一个用户可读值，用于标识令牌使用者。 此值不一定在租户中唯一，且仅供显示。 | `<Attribute Name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name">`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>`|
 > |对象 ID | `oid` |包含 Azure AD 中的对象的唯一标识符。 此值是固定不变的，无法重新分配或重复使用。 在对 Azure AD 进行的查询中，可使用对象 ID 来标识对象。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` |
 > |角色 | `roles` |表示直接和间接通过组成员身份授予使用者的所有应用程序角色，可用于实施基于角色的访问控制。 可通过应用程序清单的 `appRoles` 属性，对每个应用程序定义应用程序角色。 每个应用程序角色的 `value` 属性是角色声明中显示的值。 | `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`|
-> |主题 | `sub` |标识令牌断言信息的主体，例如应用程序的用户。 此值不可变且不能重新分配或重复使用，因此可以使用它来安全地执行授权检查。 因为使用者始终会在 Azure AD 颁发的令牌中存在，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是声明。 它描述如何对令牌的使用者进行验证。 `Bearer` 表示通过对令牌的持有来确认使用者。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
+> |Subject | `sub` |标识令牌断言信息的主体，例如应用程序的用户。 此值不可变且不能重新分配或重复使用，因此可以使用它来安全地执行授权检查。 因为使用者始终会在 Azure AD 颁发的令牌中存在，我们建议在通用授权系统中使用此值。 <br> `SubjectConfirmation` 不是声明。 它描述如何对令牌的使用者进行验证。 `Bearer` 表示通过对令牌的持有来确认使用者。 | `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>`|
 > |租户 ID | `tid` |一个不可变且不能重复使用的标识符，用于标识颁发令牌的目录租户。 可以使用此值访问多租户应用程序中特定于租户的目录资源。 例如，可以在调用图形 API 时使用此值标识租户。 | `<Attribute Name="http://schemas.microsoft.com/identity/claims/tenantid">`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>`|
 > |令牌生存期 | `nbf`、`exp` |定义令牌保持有效状态的时间间隔。 服务验证令牌的当前日期是否在令牌生存期内，如果不是，则拒绝令牌。 考虑到 Azure AD 与服务之间可能存在时钟时间差异（“时间偏差”），服务可能允许超出令牌生存期最多五分钟。 | `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br>|
 

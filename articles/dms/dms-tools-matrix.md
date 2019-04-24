@@ -12,11 +12,11 @@ ms.custom: mvc
 ms.topic: article
 ms.date: 03/12/2019
 ms.openlocfilehash: 3b3bbe45c4850d1bb37a4d991e323d5f6d9a8a0a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58180766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532414"
 ---
 # <a name="services-and-tools-available-for-data-migration-scenarios"></a>可用于数据迁移方案的服务和工具
 
@@ -47,7 +47,7 @@ ms.locfileid: "58180766"
 | PostgreSQL | 用于 PostgreSQL 的 Azure DB | [Azure Migrate](https://azure.microsoft.com/services/azure-migrate/) |  | [TCO 计算器](https://azure.microsoft.com/pricing/tco/calculator/) |
 | RDS PostgreSQL | 用于 PostgreSQL 的 Azure DB |  |  | [TCO 计算器](https://azure.microsoft.com/pricing/tco/calculator/) |
 | DB2 | Azure SQL DB、MI、VM |  |  |  |
-| Access | Azure SQL DB、MI、VM |  |  |  |
+| 访问 | Azure SQL DB、MI、VM |  |  |  |
 | Sybase | Azure SQL DB、MI、VM |  |  |  |
 | | | | | |
 
@@ -71,7 +71,7 @@ ms.locfileid: "58180766"
 | PostgreSQL | 用于 PostgreSQL 的 Azure DB |  |  |  |
 | RDS PostgreSQL | 用于 PostgreSQL 的 Azure DB |  |  |  |
 | DB2 | Azure SQL DB、MI、VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
-| Access | Azure SQL DB、MI、VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
+| 访问 | Azure SQL DB、MI、VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | Sybase | Azure SQL DB、MI、VM |  | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |  |
 | | | | | |
 
@@ -95,7 +95,7 @@ ms.locfileid: "58180766"
 | PostgreSQL | 用于 PostgreSQL 的 Azure DB | [PG dump*](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | RDS PostgreSQL | 用于 PostgreSQL 的 Azure DB | [PG dump*](https://www.postgresql.org/docs/11/static/app-pgdump.html) | [DMS](https://azure.microsoft.com/services/database-migration/) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | DB2 | Azure SQL DB、MI、VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
-| Access | Azure SQL DB、MI、VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
+| 访问 | Azure SQL DB、MI、VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) |
 | Sybase | Azure SQL DB、MI、VM | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [SSMA](https://docs.microsoft.com/sql/ssma/sql-server-migration-assistant?view=sql-server-2017) | [DMS](https://azure.microsoft.com/services/database-migration/)<br/>[Attunity*](https://www.attunity.com/products/replicate/)<br/>[Striim*](https://www.striim.com/partners/striim-for-microsoft-azure/) |
 | | | | | |
 
@@ -119,7 +119,7 @@ ms.locfileid: "58180766"
 | PostgreSQL | 用于 PostgreSQL 的 Azure DB |  |
 | RDS PostgreSQL | 用于 PostgreSQL 的 Azure DB |  |
 | DB2 | Azure SQL DB、MI、VM |  |
-| Access | Azure SQL DB、MI、VM |  |
+| 访问 | Azure SQL DB、MI、VM |  |
 | Sybase | Azure SQL DB、MI、VM |  |
 | | | |
 

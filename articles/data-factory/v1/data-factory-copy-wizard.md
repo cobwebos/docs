@@ -15,11 +15,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90f78428601d7b039d00d39c1ca8339ab3ace9ba
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60487867"
 ---
 # <a name="copy-or-move-data-easily-with-azure-data-factory-copy-wizard"></a>使用 Azure 数据工厂复制向导轻松复制或移动数据
 > [!NOTE]

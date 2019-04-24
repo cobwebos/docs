@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 516a2d3b0f81bcef1ed636be9d1da9a270cc7069
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60297220"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
 

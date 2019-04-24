@@ -10,17 +10,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
 ms.topic: article
-ms.date: 01/31/2019
+ms.date: 03/18/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9aba12a2bca882b5f0e6e95d8e4f6014b318a12e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 58ca814551d8c7d309328f236052e1d07ac6f035
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119716"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469121"
 ---
 # <a name="delegate-app-administrator-roles-in-azure-active-directory"></a>在 Azure Active Directory 中委托应用管理员角色
 
@@ -58,7 +58,7 @@ ms.locfileid: "58119716"
 
 ## <a name="delegate-app-ownership"></a>委托应用所有权
 
-应用所有者和应用注册所有者可以分别仅管理他们拥有的应用或应用注册。 例如，如果你添加 Salesforce 应用的所有者，此所有者可以管理对 Salesforce 的访问权限和配置，但无法管理其他任何应用。 一个应用可以有多个所有者，一个用户可以是多个应用的所有者。
+应用所有者和应用注册所有者只能分别管理他们拥有的应用程序或应用注册。 例如，如果你添加 Salesforce 应用的所有者，此所有者可以管理对 Salesforce 的访问权限和配置，但无法管理其他任何应用。 一个应用可以有多个所有者，一个用户可以是多个应用的所有者。
 
 应用所有者可以：
 

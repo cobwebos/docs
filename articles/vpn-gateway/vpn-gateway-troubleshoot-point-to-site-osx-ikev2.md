@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2018
 ms.author: alzam
 ms.openlocfilehash: 0c058cb6547d67469d3138dc331b6181c07e6e65
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087518"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457010"
 ---
 # <a name="troubleshoot-point-to-site-vpn-connections-from-mac-os-x-vpn-clients"></a>对 Mac OS X VPN 客户端的点到站点 VPN 连接进行故障排除
 

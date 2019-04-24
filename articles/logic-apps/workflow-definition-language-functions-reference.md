@@ -10,11 +10,11 @@ ms.reviewer: klam, LADocs
 ms.topic: reference
 ms.date: 08/15/2018
 ms.openlocfilehash: d7ea62c51065cbe85a905b4ff78743fdc11c1e10
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618203"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60502241"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps-and-microsoft-flow"></a>Azure 逻辑应用和 Microsoft Flow 中的工作流定义语言的函数参考
 
@@ -641,14 +641,14 @@ addProperty(<object>, '<property>', <value>)
 
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要将属性添加到的 JSON 对象 |
+| <*object*> | 是 | Object | 要将属性添加到的 JSON 对象 |
 | <*property*> | 是 | String | 要添加的属性的名称 |
 | <*value*> | 是 | 任意 | 属性的值 |
 |||||
 
 | 返回值 | Type | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 具有指定属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 具有指定属性的更新后 JSON 对象 |
 ||||
 
 *示例*
@@ -3002,13 +3002,13 @@ removeProperty(<object>, '<property>')
 
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要从中删除属性的 JSON 对象 |
+| <*object*> | 是 | Object | 要从中删除属性的 JSON 对象 |
 | <*property*> | 是 | String | 要删除的属性的名称 |
 |||||
 
 | 返回值 | Type | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 不具有指定属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 不具有指定属性的更新后 JSON 对象 |
 ||||
 
 *示例*
@@ -3032,14 +3032,14 @@ setProperty(<object>, '<property>', <value>)
 
 | 参数 | 需要 | Type | 描述 |
 | --------- | -------- | ---- | ----------- |
-| <*object*> | 是 | 对象 | 要设置其属性的 JSON 对象 |
+| <*object*> | 是 | Object | 要设置其属性的 JSON 对象 |
 | <*property*> | 是 | String | 要设置的现有属性或新属性的名称 |
 | <*value*> | 是 | 任意 | 要为指定属性设置的值 |
 |||||
 
 | 返回值 | Type | 描述 |
 | ------------ | ---- | ----------- |
-| <*updated-object*> | 对象 | 设置了其属性的更新后 JSON 对象 |
+| <*updated-object*> | Object | 设置了其属性的更新后 JSON 对象 |
 ||||
 
 *示例*
@@ -3251,7 +3251,7 @@ startsWith('hello world', 'greetings')
 
 <a name="string"></a>
 
-### <a name="string"></a>字符串
+### <a name="string"></a>string
 
 返回值的字符串版本。
 
@@ -4106,7 +4106,7 @@ xml('<value>')
 
 | 返回值 | Type | 描述 |
 | ------------ | ---- | ----------- |
-| <*xml-version*> | 对象 | 指定的字符串或 JSON 对象的编码 XML |
+| <*xml-version*> | Object | 指定的字符串或 JSON 对象的编码 XML |
 ||||
 
 *示例 1*

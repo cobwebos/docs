@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: cbe14066cfd7493806176e834373e952daf19339
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59610190"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537643"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>若要重写默认命令行操作的容器实例中设置命令行
 
@@ -63,7 +63,7 @@ ms.locfileid: "59610190"
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer1 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --environment-variables NumWords=3 MinLength=5 \
     --restart-policy OnFailure
 ```
@@ -88,7 +88,7 @@ az container logs --resource-group myResourceGroup --name mycontainer1
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer2 \
-    --image microsoft/aci-wordcount:latest \
+    --image mcr.microsoft.com/azuredocs/aci-wordcount:latest \
     --restart-policy OnFailure \
     --environment-variables NumWords=3 MinLength=5 \
     --command-line "python wordcount.py http://shakespeare.mit.edu/romeo_juliet/full.html"
@@ -111,7 +111,7 @@ az container logs --resource-group myResourceGroup --name mycontainer2
 基于任务的情况下，例如批处理具有多个容器的大型数据集可以受益于在运行时的自定义命令行。 有关正在运行的基于任务的容器的详细信息，请参阅[重启策略运行容器化的任务](container-instances-restart-policy.md)。
 
 <!-- LINKS - External -->
-[aci-wordcount]: https://hub.docker.com/r/microsoft/aci-wordcount/
+[aci-wordcount]: https://hub.docker.com/_/microsoft-azuredocs-aci-wordcount
 
 <!-- LINKS Internal -->
 [az-container-create]: /cli/azure/container#az-container-create

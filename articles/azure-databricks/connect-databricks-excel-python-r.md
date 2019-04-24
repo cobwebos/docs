@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
 ms.openlocfilehash: c57550a8b683ad8f184884374c4f09216417fc40
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52995620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236389"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>从 Excel、Python 或 R 连接到 Azure Databricks
 
 在本文中，你将学习如何使用 Microsoft Excel、Python 或 R 语言通过 Databricks ODBC 驱动程序来连接 Azure Databricks。 在建立连接后，可以从 Excel、Python 或 R 客户端访问 Azure Databricks 中的数据。 还可以使用这些客户端来进一步分析数据。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 必须具有 Azure Databricks 工作区、Spark 群集以及与群集关联的示例数据。 如果尚不具备这些先决条件，请完成[使用 Azure 门户在 Azure Databricks 上运行 Spark 作业](quickstart-create-databricks-workspace-portal.md)中的快速入门。
 
@@ -54,7 +54,7 @@ ms.locfileid: "52995620"
 
     下表提供了有关要在对话框中提供的值的信息。
     
-    |字段  | 值  |
+    |字段  | Value  |
     |---------|---------|
     |**数据源名称**     | 为数据源提供一个名称。        |
     |**主机**     | 提供从 Databricks 工作区中为*服务器主机名*复制的值。        |

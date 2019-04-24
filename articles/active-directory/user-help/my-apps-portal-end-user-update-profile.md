@@ -14,19 +14,19 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa6de024758d16b99569261e10d46f9328241427
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482951"
 ---
 # <a name="update-your-profile-and-account-info-from-the-my-apps-portal"></a>更新我的应用门户从你配置文件和帐户信息
-可以使用基于 web 的使用工作或学校帐户**我的应用**门户中，来查看和启动很多组织的基于云的应用，以更新您的部分配置文件和帐户信息，若要查看你**组**信息，并执行**访问评审**应用和组。 如果您不能访问**我的应用**门户中，您必须与支持人员联系的权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以找到有关如何设置和管理基于云的应用程序中的详细信息[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)。
+>此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="view-your-organization-related-profile-information"></a>查看你的组织相关的配置文件的信息
 具体取决于什么你的组织已选择要包括在你**配置文件**页**我的应用**门户中，您可能会看到你特定与工作相关的详细信息，以及你的设备和活动，和任何您所属的其他组织。

@@ -10,11 +10,11 @@ ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 84df04a6d3fbd634524d3819657860c6a3448d65
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698728"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499755"
 ---
 # <a name="manage-pre-and-post-scripts"></a>管理 pre 和 post 脚本
 
