@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: alkohli
 ms.openlocfilehash: 067bb6b806ddd9b83d4ea755876a980ca45d76e9
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57407615"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387462"
 ---
 # <a name="azure-data-box-disk-system-requirements"></a>Azure Data Box Disk 系统要求
 
@@ -68,9 +68,9 @@ ms.locfileid: "57407615"
 > 不支持 Azure Data Lake Storage Gen 2 帐户。
 
 
-## <a name="supported-storage-types-for-upload"></a>上传的受支持的存储类型
+## <a name="supported-storage-types-for-upload"></a>支持的用于上传的存储类型
 
-下面是上传到 Azure 中使用 Data Box 磁盘支持的存储类型的列表。
+下面是一个列表，其中的存储类型可以使用 Data Box Disk 上传到 Azure。
 
 | **文件格式** | **说明** |
 | --- | --- |

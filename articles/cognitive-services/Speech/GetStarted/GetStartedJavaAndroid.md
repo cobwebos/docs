@@ -12,11 +12,11 @@ ms.date: 09/18/2018
 ms.author: zhouwang
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 147042e300e629dd7e354d4e9079cc4855a8146c
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515181"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-java-on-android"></a>快速入门：在 Android 上的 Java 中使用必应语音识别 API
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: 249ed7b1be2731fc8165ca7f205ba1d94066818e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: fc05c5c5917667d4bd9c869c9370ac952893ab26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456201"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Microsoft Azure 存储资源管理器发行说明
 
@@ -31,36 +31,36 @@ ms.locfileid: "58088037"
 3/5/2019
 
 ### <a name="download-azure-storage-explorer-170"></a>下载 Azure 存储资源管理器 1.7.0
-- [有关 Windows azure 存储资源管理 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Azure 存储资源管理器 1.7.0 for Mac](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [适用于 Linux 的 azure 存储资源管理 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
+- [适用于 Windows 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [适用于 Mac 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [适用于 Linux 的 Azure 存储资源管理器 1.7.0](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新建
 
-* 你现在可以更改的所有者和管理 ADLS 第 2 代容器、 文件或文件夹的访问权限时，拥有组。
-* 在 Windows 中，在产品内更新从存储资源管理器现已增量安装。 这会导致更快的更新体验。 如果您喜欢的全新安装，则可以下载[安装程序](https://azure.microsoft.com/en-us/features/storage-explorer/)自己然后手动安装。 #1089
+* 现在，在管理 ADLS Gen2 容器、文件或文件夹的访问权限时，可以更改所有者和拥有组。
+* 在 Windows 上，从产品内部更新存储资源管理器现在属于增量安装操作。 这样应该可以加快更新的速度。 如果你偏向于全新安装，可以自行下载[安装程序](https://azure.microsoft.com/en-us/features/storage-explorer/)并手动安装。 #1089
 
 ### <a name="preview-features"></a>预览功能
 
-* 设备代码流登录现已可供预览。 要启用它，请转到"预览"→"使用设备代码流登录"。 我们鼓励所有用户有问题的空白登录 windows，若要试用此功能，因为它可能会证明是更可靠的登录窗体。 #938
-* 存储资源管理器集成在一起 AzCopy 目前，若要预览。 若要启用它，请转到"预览"→"使用 AzCopy 的改进了 Blob 上传和下载"。 Blob 传输已完成，但 AzCopy 应更快和更高的性能。
+* 设备代码流登录现在可供预览。 若要启用此功能，请转到“预览”→“使用设备代码流登录”。 我们鼓励所有在空白登录窗口中遇到问题的用户试用此功能，因为经过证实，它是一种更可靠的登录方式。 #938
+* 与 AzCopy 集成的存储资源管理器目前可供预览。 若要启用此功能，请转到“预览”→“使用 AzCopy 来改善 Blob 上传和下载”。 使用 AzCopy 应该可以更快且更有效地完成 Blob 传输。
 
 ### <a name="fixes"></a>修复项
 
-* 现在可以选择想要启用 AzCopy 作为上传的 blob 类型。 #1111
-* 以前，如果你启用 ADLS 第 2 代存储帐户的静态网站，然后将其附加名称和密钥，存储资源管理器将不具有检测到该层次结构的命名空间已启用。 此问题已解决。 #1081
-* 在 blob 编辑器中，按剩余的保留天数或状态进行排序的中断。 此问题已解决。 #1106
-* 后 1.5.0，存储资源管理器不再等待服务器端副本来进行重命名或复制期间报告成功之前完成的操作和粘贴。 此问题已解决。 #976
-* 使用实验性的 AzCopy 功能时，单击"将命令复制到剪贴板"后复制该命令不是始终可在其自身上运行。 现在，手动运行传输所需的所有命令将被都复制。 #1079
-* 以前，ADLS 第 2 代的 blob 不是可访问，如果您在代理的。 这是由于存储 SDK 使用新的网络库中的 bug。 在 1.7.0，已尝试缓解此问题，但有些人可能会继续，请参阅问题。 完整的修补程序将在未来更新中发布。 #1090
-* 在 1.7.0，保存文件对话框现在正确记住保存到文件的最后一个位置。 #16
-* 在属性窗格中，已为该帐户的类型显示存储帐户的 SKU 层。 此问题已解决。 #654
-* 有时，这是 blob 的 blob 的不可能以中断的租约，即使你输入的名称正确。 此问题已解决。 #1070
+* 现在，在启用 AzCopy 后，可以选择要上传的 Blob 类型。 #1111
+* 以前，如果为 ADLS Gen2 存储帐户启用了静态网站，然后在该帐户中附加名称和密钥，则存储资源管理器将检测不到已启用该分层命名空间。 此问题已解决。 #1081
+* 在 Blob 编辑器中，不再能够按剩余保留天数或状态进行排序。 此问题已解决。 #1106
+* 在版本 1.5.0 之后，存储资源管理器不再会先等待服务器端复制完成，然后在重命名或复制/粘贴操作期间报告成功结果。 此问题已解决。 #976
+* 使用试验性的 AzCopy 功能时，单击“将命令复制到剪贴板”后复制的命令本身不一定始终可运行。 现在，将会复制手动运行传输所需的所有命令。 #1079
+* 以前，如果在代理后面操作，则无法访问 ADLS Gen2 Blob。 这是因为存储 SDK 使用的新网络库中存在一个 bug。 1.7.0 会尝试缓解此问题，但有些人仍可能会遇到问题。 在将来的更新中会发布完整修复措施。 #1090
+* 在 1.7.0 中，“保存文件”对话框现在会正确记住文件的上次保存位置。 #16
+* 在“属性”窗格中，存储帐户的 SKU 层显示为帐户类型。 此问题已解决。 #654
+* 有时，即使正确输入 Blob 的名称，也无法中断该 Blob 的租约。 此问题已解决。 #1070
 
 ### <a name="known-issues"></a>已知问题
 
-* 使用 RBAC 时，存储资源管理器将需要一些管理层的权限才能访问你的存储资源。 请参阅[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting)的详细信息。
-* 尝试访问代理时的 ADLS 第 2 代 Blob 可能会失败。
+* 使用 RBAC 时，存储资源管理器需要一些管理层权限才能访问存储资源。 有关详细信息，请参阅[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting)。
+* 在代理后面尝试访问 ADLS Gen2 Blob 可能会失败。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 从通过 SAS URI 附加的资源（例如 Blob 容器）进行分离可能会导致一个错误，该错误会阻止其他附件正确显示。 若要解决此问题，只需刷新组节点。 有关详细信息，请参阅 #537。
 * 如果使用用于 Mac 的 VS 并曾经创建过自定义 AAD 配置，可能无法登录。 若要解决此问题，请删除 ~/.IdentityService/AadConfigurations 的内容。 如果这样做不能对你解除阻止，请对此问题发表评论。

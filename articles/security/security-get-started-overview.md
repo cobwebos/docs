@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/19/2018
 ms.author: terrylan
-ms.openlocfilehash: 1b89679d88e3e4ce9912da81faebfccfcf23096f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: cd29ec2f2d27a01abeb001cb49cb2c3cd372497d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56110279"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444378"
 ---
 # <a name="azure-security-overview"></a>Azure 安全概述
 
 Azure.com 上的 Microsoft Azure 安全信息站点针对 Azure 安全问题提供了技术解答。 如果对 Azure 合规性以及 Azure 如何保护其专属基础结构感兴趣，请访问 [Microsoft 信任中心](https://microsoft.com/en-us/trustcenter/default.aspx)。
 
-我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 为应用程序和服务使用 Azure 其中一个最合理原因就是：可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。
+我们知道，安全是云中的首要任务，及时找到有关 Azure 安全性的准确信息极其重要。 针对应用程序和服务使用 Azure 的最合理原因之一是可以利用各种可用的安全工具和功能。 这些工具和功能可帮助在安全的 Azure 平台上创建安全的解决方案。
 
-此网页与此站点会随着新 Azure 服务推出以及现有服务的更新而不断演进。 我们的安全产品不断改善，会在此处分享这些增强功能的技术详细信息。 建议定期光顾此站点查看最新消息！
+此网页与此站点会随着新 Azure 服务推出以及现有服务的更新而不断演进。 我们的安全产品不断改善，会在此处分享这些增强功能的技术详细信息。 建议定期返回此站点查看最新消息！
 
 ## <a name="using-the-azure-security-information-site"></a>使用 Azure 安全信息站点
 
@@ -53,4 +53,4 @@ Azure 安全信息站点目前包括以下类别：
 >
 >
 
-请不吝发表意见！ 如果想要添加其他类别，请告诉我们！ 如果想要在现有类别中添加文章，也请告诉我们！ 可以在下面的“意见”部分留下意见，或向我们写信：[azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com)，我们会将建议添加到我们的计划中。
+请不吝发表意见！ 如果想要添加其他类别，请告诉我们！ 如果想要在现有类别中添加文章，也请告诉我们！ 可以使用下面的“意见”部分，或向我们写信：[azsecinfosite@microsoft.com](mailto:azsecinfosite@microsoft.com)，我们会将建议添加到我们的计划中。

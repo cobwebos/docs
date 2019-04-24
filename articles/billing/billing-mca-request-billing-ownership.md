@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: be8c7fcebca224196d9eac7d22387989b1bdfd46
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890927"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371873"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-from-other-users"></a>获取计费的其他用户的 Azure 订阅的所有权
 
@@ -39,12 +39,12 @@ ms.locfileid: "57890927"
 
    ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 请转到发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。 从计费帐户或配置文件中选择**发票部分**，然后发票部分。
+3. 转到发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。 从计费帐户或配置文件中选择**发票部分**，然后发票部分。
    <!-- Todo - Add a screenshot -->
 
 4. 选择**转移请求**从左下方。
 
-5. 从页面顶部，选择**添加**。
+5. 在页面顶部选择“添加”。
 
 6. 输入正在请求从计费所有权的用户的电子邮件地址。 用户必须是 Microsoft 在线服务计划的计费帐户的帐户管理员或企业协议的帐户所有者。 有关详细信息，请参阅[在 Azure 门户中查看计费帐户](billing-view-all-accounts.md)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "57890927"
 
    ![显示有关成本管理 + 计费的 Azure 门户搜索的屏幕截图](./media/billing-mca-request-billing-ownership/billing-search-cost-management-billing.png)
 
-3. 请转到发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。 从计费帐户或配置文件中选择**发票部分**，然后发票部分。
+3. 转到发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。 从计费帐户或配置文件中选择**发票部分**，然后发票部分。
    <!-- Todo - Add a screenshot -->
 
 4. 选择**转移请求**从左下方。

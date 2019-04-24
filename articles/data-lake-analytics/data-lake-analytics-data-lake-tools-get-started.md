@@ -10,11 +10,11 @@ ms.assetid: ad8a6992-02c7-47d4-a108-62fc5a0777a3
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.openlocfilehash: b463946402eee40d0de0942eeaf37a6f9ea59990
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58083056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60509979"
 ---
 # <a name="develop-u-sql-scripts-by-using-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 U-SQL 脚本
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -39,7 +39,7 @@ Azure Data Lake 和流分析工具包括与两项 Azure 服务相关的功能：
 
 ## <a name="prerequisites"></a>必备组件
 
-* **Visual Studio**:支持除 Express 之外的所有版本。
+* **Visual Studio**：支持除 Express 之外的所有版本。
     * Visual Studio 2017
     * Visual Studio 2015
     * Visual Studio 2013

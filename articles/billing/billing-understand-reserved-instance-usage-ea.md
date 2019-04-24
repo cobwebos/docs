@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/13/2019
 ms.author: banders
 ms.openlocfilehash: daa7f6a116578fa8d1f2b5bf825a6f4cd48f7f64
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370645"
 ---
 # <a name="understand-azure-reservation-usage-for-your-enterprise-enrollment"></a>了解适用于企业合约的 Azure 预留使用情况
 
@@ -31,10 +31,10 @@ ms.locfileid: "58648293"
 
 在以下部分中，假定在美国东部区域运行 Standard_D1_v2 Windows VM，则预留信息如下表所示：
 
-| 字段 | 值 |
+| 字段 | Value |
 |---| --- |
 |预订 ID |8f82d880-d33e-4e0d-bcb5-6bcb5de0c719|
-|数量 |第|
+|数量 |1|
 |SKU | Standard_D1|
 |区域 | eastus |
 
@@ -57,7 +57,7 @@ ms.locfileid: "58648293"
 
 假设在美国东部地区运行 SQL 数据库第 4 代，你的预留信息将类似于下表所示：
 
-| 字段 | 值 |
+| 字段 | Value |
 |---| --- |
 |预订 ID |8244e673-83e9-45ad-b54b-3f5295d37cae|
 |数量 |2|

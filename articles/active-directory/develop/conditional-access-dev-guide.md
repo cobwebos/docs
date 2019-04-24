@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c02f094def3828d0839025f4b7dea48ee64adcc8
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.openlocfilehash: 3346f7a5af2a22cb7b7ece312fc367a874095668
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57543180"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410690"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问的开发人员指南
 
@@ -104,7 +104,7 @@ Azure AD 条件性访问是 [Azure AD Premium](https://docs.microsoft.com/azure/
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>场景：执行代理流的应用
 
-在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 从而，此服务将执行“代理”流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件性访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
+在此应用场景中，我们将演示本机应用调用 Web 服务/API 时的场景。 反过来，此服务将执行"上的代理"流来调用下游服务。 在本示例中，我们已向下游服务 (Web API 2) 应用条件性访问策略，并且使用的是本机应用，而非服务器/守护程序应用。 
 
 ![执行代理流的应用示意图](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -145,9 +145,9 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 ![访问多个请求新令牌的服务的应用](./media/conditional-access-dev-guide/app-accessing-multiple-services-new-token.png)
 
-如果应用使用 ADAL 库，将始终以交互方式重新尝试获取令牌并失败。 发生此交互式请求时，最终用户有机会符合条件访问策略。 上述说法是正确的，但当请求是 `AcquireTokenSilentAsync` 或 `PromptBehavior.Never` 时，应用需要执行交互式 ```AcquireToken``` 请求来为最终用户提供符合策略的机会。
+如果应用使用 ADAL 库，将始终以交互方式重新尝试获取令牌并失败。 发生此交互式请求时，最终用户有机会符合条件访问策略。 这是 true，除非该请求是`AcquireTokenSilentAsync`或`PromptBehavior.Never`在这种情况下，应用需要执行交互式```AcquireToken```请求以便最终用户有机会以符合策略。
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>方案：使用 ADAL.js 的单页应用 (SPA)
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>场景：使用 ADAL.js 的单页应用 (SPA)
 
 在此应用场景中，我们将演示单页应用 (SPA) 使用 ADAL.js 调用条件访问保护的 Web API 时的场景。 这是一个简单的体系结构，但围绕条件性访问进行开发时需要注意一些细微差异。
 

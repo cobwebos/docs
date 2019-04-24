@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 610668768c7baca13cb60caf1d810cced31ebec3
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516427"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452923"
 ---
 # <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection - 安全概览
 
@@ -35,7 +35,7 @@ ms.locfileid: "58516427"
 - 磁贴：位于右侧，突出显示组织中正在发生的关键问题，并建议如何快速采取措施。
 
 
-![安全性概述](./media/security-overview/01.png)
+![安全概述](./media/security-overview/01.png)
   
 ## <a name="trends"></a>趋势
 
@@ -47,13 +47,13 @@ ms.locfileid: "58516427"
 
 此图表显示在选定时间段内检测到的有风险登录数。 可以按登录风险类型（实时或聚合）和登录风险级别（低、中、高）筛选此图表视图。 未保护的登录是指未接受 MFA 质询的成功实时风险登录。 （注意：无法使用登录风险策略为脱机检测到有风险的登录提供实时保护）。 将鼠标悬停在 UTC 日期增量之上可以查看当天检测到的有风险登录数。 单击此图表会转到“有风险登录”报告。
 
-## <a name="tiles"></a>平铺
+## <a name="tiles"></a>磁贴
  
 ### <a name="high-risk-users"></a>高风险用户
 
 “高风险用户”磁贴显示标识遭入侵可能性高的用户的最新计数。 应最优先调查这些用户。 单击“高风险用户”磁贴会重定向到“有风险用户”报告的筛选后视图，其中只显示高风险级别用户。 使用此报告，可以了解详细信息，并通过重置密码来修正这些用户。
 
-![安全性概述](./media/security-overview/02.png)
+![安全概述](./media/security-overview/02.png)
 
 
 ### <a name="medium-risk-users"></a>中等风险用户
@@ -64,7 +64,7 @@ ms.locfileid: "58516427"
 “未保护的有风险登录”磁贴显示上周成功实时有风险登录数，这些登录既没有遭阻止，也没有受到条件访问策略、Identity Protection 风险策略或每用户 MFA 的 MFA 质询。 这些是成功但没有接受 MFA 质询的潜在遭入侵登录。 为了今后保护此类登录，请应用登录风险策略。 单击“未保护的有风险登录”磁贴会重定向到“登录风险策略配置”边栏选项卡，在其中可以将登录风险策略配置为，必须对指定风险级别的登录进行 MFA。
 
 
-### <a name="legacy-authentication"></a>旧身份验证
+### <a name="legacy-authentication"></a>旧式身份验证
 
 “旧身份验证”磁贴显示上周组织中的旧身份验证数。 旧身份验证协议不支持 MFA 等新式安全方法。 为了防止使用旧身份验证，可以应用条件访问策略。 单击“旧身份验证”磁贴会重定向到“标识安全功能分数”。
 

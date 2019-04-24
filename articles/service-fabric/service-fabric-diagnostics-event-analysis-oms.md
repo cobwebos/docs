@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/21/2019
 ms.author: srrengar
 ms.openlocfilehash: ba4923edbc59f0e6650fda1a71e1c4f79b884cf2
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662153"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60393360"
 ---
 # <a name="event-analysis-and-visualization-with-azure-monitor-logs"></a>使用 Azure Monitor 日志事件分析和可视化
  Azure Monitor 日志收集并分析云中托管的应用程序和服务的遥测，并提供分析工具以帮助最大限度地提高其可用性和性能。 本文概述了如何在 Azure Monitor 日志以获取见解并排查群集中发生的情况中运行查询。 本文解决以下常见问题：

@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 518e3fa842c5283dc20a6111773bd55451f026b6
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485843"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486820"
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure 数据工厂 - 常见问题解答
 > [!NOTE]
@@ -59,10 +59,10 @@ ms.locfileid: "58485843"
 * **Azure 资源管理器模板** 有关详细信息，请参阅[教程：使用 Azure 资源管理器模板构建第一个 Azure 数据工厂](data-factory-build-your-first-pipeline-using-arm.md)。
 
 ### <a name="can-i-rename-a-data-factory"></a>是否可以重命名数据工厂？
-不是。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
+不。 和其他 Azure 资源一样，不可以更改 Azure 数据工厂的名称。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>是否可以将数据工厂从一个 Azure 订阅移动到另一个？
-是的。 使用数据工厂边栏选项卡上的“移动”按钮，如下面的关系图所示：
+可以。 使用数据工厂边栏选项卡上的“移动”按钮，如下面的关系图所示：
 
 ![移动数据工厂](media/data-factory-faq/move-data-factory.png)
 

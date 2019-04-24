@@ -10,15 +10,15 @@ ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
 ms.openlocfilehash: 5ed6e0b21b00ede3f78a102fd004e5706ae3cea5
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57571212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464849"
 ---
 # <a name="using-openfaas-on-aks"></a>在 AKS 上使用 OpenFaaS
 
-[OpenFaaS] [ open-faas]是用于构建无服务器函数通过使用容器的框架。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
+[OpenFaaS][open-faas] 是一个框架，适用于通过容器构建无服务器函数。 作为一个开源项目，它在社区中大规模采用。 本文档详细介绍了如何在 Azure Kubernetes 服务 (AKS) 群集上安装和使用 OpenFaas。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -29,9 +29,9 @@ ms.locfileid: "57571212"
 * 已在开发系统上安装 Azure CLI。
 * 已在系统上安装 Git 命令行工具。
 
-## <a name="add-the-openfaas-helm-chart-repo"></a>将 OpenFaaS helm 图表存储库添加
+## <a name="add-the-openfaas-helm-chart-repo"></a>添加 OpenFaaS helm 图表存储库
 
-OpenFaaS 维护其自己的 helm 图表，以保持最新的所有最新更改。
+OpenFaaS 保留有自己的 helm 图表，可以通过所有最新的更改来更新内容。
 
 ```azurecli-interactive
 helm repo add openfaas https://openfaas.github.io/faas-netes/
@@ -42,7 +42,7 @@ helm repo update
 
 作为一种良好做法，OpenFaaS 和 OpenFaaS 函数应分别存储在其自己的 Kubernetes 命名空间中。
 
-创建的 OpenFaaS 系统和函数的命名空间：
+为 OpenFaaS 系统和函数创建一个命名空间：
 
 ```azurecli-interactive
 kubectl apply -f https://raw.githubusercontent.com/openfaas/faas-netes/master/namespaces.yml
@@ -59,9 +59,9 @@ kubectl -n openfaas create secret generic basic-auth \
 --from-literal=basic-auth-password="$PASSWORD"
 ```
 
-你可以获取与机密的值`echo $PASSWORD`。
+可以通过 `echo $PASSWORD` 获取机密的值。
 
-我们在这里创建的密码将 helm 图表，用于启用基本身份验证在 OpenFaaS 网关，它通过云负载均衡器向 Internet 公开。
+我们在此处创建的密码将由 helm 图表用来在 OpenFaaS 网关上启用基本的身份验证，该网关通过云 LoadBalancer 公开给 Internet。
 
 克隆的存储库中包括了 OpenFaaS 的一个 Helm chart。 可以使用此图表将 OpenFaaS 部署到 AKS 群集。
 
@@ -109,7 +109,7 @@ gateway            ClusterIP      10.0.156.194   <none>         8080/TCP        
 gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP   7m
 ```
 
-若要测试 OpenFaaS 系统，请在端口 8080 上浏览到外部 IP 地址，在本例中为 `http://52.186.64.52:8080`。 系统将提示您登录。 若要提取你的密码，输入`echo $PASSWORD`。
+若要测试 OpenFaaS 系统，请在端口 8080 上浏览到外部 IP 地址，在本例中为 `http://52.186.64.52:8080`。 系统会提示你登录。 若要获取密码，请输入 `echo $PASSWORD`。
 
 ![OpenFaaS UI](media/container-service-serverless/openfaas.png)
 
@@ -119,9 +119,9 @@ gateway-external   LoadBalancer   10.0.28.18     52.186.64.52   8080:30800/TCP  
 brew install faas-cli
 ```
 
-设置`$OPENFAAS_URL`到上面找到的公共 IP。
+将 `$OPENFAAS_URL` 设置为上面发现的公共 IP。
 
-Azure CLI 登录：
+使用 Azure CLI 登录：
 
 ```azurecli-interactive
 export OPENFAAS_URL=http://52.186.64.52:8080
@@ -247,7 +247,7 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ## <a name="next-steps"></a>后续步骤
 
-您可以继续使用通过一系列动手实验，涵盖了主题，如如何创建你自己的 GitHub 机器人，OpenFaaS 研讨会了解使用机密，查看度量值，并自动缩放。
+可以在 OpenFaaS 研讨会中通过一系列动手实验室继续学习。这些实验室涵盖的主题包括：如何创建自己的 GitHub 机器人、如何使用机密、如何查看指标，以及如何进行自动缩放。
 
 <!-- LINKS - external -->
 [install-mongo]: https://docs.mongodb.com/manual/installation/

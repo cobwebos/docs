@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: f372c2a85a9a03c7ead779bd4db64722891c9a4c
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54321562"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60201480"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>使用流分析构建 IoT 解决方案
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 本解决方案演示如何使用 Azure 流分析从数据获得实时见解。 开发人员可以轻松将数据流（例如点击流、日志和设备生成的时间）与历史记录或参考数据结合起来，获取业务信息。 由 Microsoft Azure 托管的 Azure 流分析是可完全管理的实时流计算服务，它提供内置冗余、低延迟及伸缩性，可让用户在几分钟之内就立刻上手。
 
 完成后此解决方案，你将可以：
@@ -29,7 +29,7 @@ ms.locfileid: "54321562"
 * 自信地使用流分析为客户开发流解决方案。
 * 使用监视和日志记录体验来排解问题。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要完成本解决方案，需要满足以下先决条件：
 * [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -55,11 +55,11 @@ ms.locfileid: "54321562"
 
 下面是每个列的简短说明：
 
-| 列 | Description |
+| 列 | 描述 |
 | --- | --- |
 | TollID |唯一标识收费亭的收费亭 ID |
 | EntryTime |汽车进入收费亭的日期和时间（世界协调时） |
-| LicensePlate |汽车的牌照号码 |
+| LicensePlate |车辆的牌照号码 |
 | 状态 |美国的某个州 |
 | 制造商 |汽车制造商 |
 | 模型 |汽车型号 |
@@ -82,7 +82,7 @@ ms.locfileid: "54321562"
 
 下面是每个列的简短说明：
 
-| 列 | Description |
+| 列 | 描述 |
 | --- | --- |
 | TollID |唯一标识收费亭的收费亭 ID |
 | ExitTime |汽车离开收费亭的日期和时间（世界协调时） |
@@ -102,7 +102,7 @@ ms.locfileid: "54321562"
 
 下面是每个列的简短说明：
 
-| 列 | Description |
+| 列 | 描述 |
 | --- | --- |
 | LicensePlate |汽车的牌照号码 |
 | RegistrationId |汽车的注册 ID |

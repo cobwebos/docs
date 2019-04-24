@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: shlo
 ms.openlocfilehash: 8f1320db0af85f6c83a9daf8e17a691336c9b251
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58164453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335466"
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>使用“更新资源”活动更新 Azure 机器学习模型
 本文是对主要 Azure 数据工厂 - Azure 机器学习集成文章的补充：[使用 Azure 机器学习和 Azure 数据工厂创建预测管道](transform-data-using-machine-learning.md)。 如果尚未执行此操作，请在阅读本文之前查阅此主要文章。
@@ -35,7 +35,7 @@ ms.locfileid: "58164453"
 
 ## <a name="azure-machine-learning-update-resource-activity"></a>Azure 机器学习“更新资源”活动
 
-以下 JSON 代码片段定义了一个 Azure 机器学习“批处理执行”活动。
+以下 JSON 代码片段定义 Azure 机器学习批处理执行活动。
 
 ```json
 {

@@ -11,11 +11,11 @@ ms.date: 10/05/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: f62238543f1c24d05702ee0679610934d308538d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55182534"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360378"
 ---
 # <a name="set-up-sign-in-with-an-amazon-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置 Amazon 帐户登录
 
@@ -23,7 +23,7 @@ ms.locfileid: "55182534"
 
 本文介绍如何让 Amazon 帐户的用户在 Azure Active Directory (Azure AD) B2C 中使用[自定义策略](active-directory-b2c-overview-custom.md)登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 完成[自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 - 如果还没有 Amazon 帐户，请在 [https://www.amazon.com/](https://www.amazon.com/) 上创建一个。
@@ -53,7 +53,7 @@ ms.locfileid: "55182534"
 7. 输入策略密钥的**名称**。 例如，`AmazonSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
 9. 在“密钥用法”处选择 `Signature`。
-10. 单击“创建”。
+10. 单击**创建**。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -162,7 +162,7 @@ ms.locfileid: "55182534"
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
 6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
-7. 单击“创建”。
+7. 单击**创建**。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 

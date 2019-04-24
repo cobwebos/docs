@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/03/2019
 ms.author: aschhab
 ms.openlocfilehash: 85d24a9e7c753ec5dba80c4f259dd3fb51d9c14b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58910040"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402779"
 ---
 # <a name="amqp-errors-in-azure-service-bus"></a>Azure 服务总线中 AMQP 错误
 本文提供了一些用于 Azure 服务总线使用 AMQP 时收到的错误。 它们是服务的所有标准行为。 您可以避免使用它们连接/链接，这会自动重新创建连接/链接上，从而发送/接收调用。

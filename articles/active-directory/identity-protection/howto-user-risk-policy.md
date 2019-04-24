@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b94e9b7267c956c07f4171f8cce46c6159affd90
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459659"
 ---
 # <a name="how-to-configure-the-user-risk-policy"></a>如何：配置用户风险策略
 
@@ -72,13 +72,13 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 
 策略配置对话框提供了一个选项用于评估配置的影响。
 
-![估计影响](./media/howto-user-risk-policy/15.png)
+![估计的影响](./media/howto-user-risk-policy/15.png)
 
 ## <a name="what-you-should-know"></a>要点
 
 可以设置用户风险安全策略，根据风险级别阻止用户登录。
 
-![正在阻止](./media/howto-user-risk-policy/16.png)
+![阻止](./media/howto-user-risk-policy/16.png)
 
 
 阻止登录：
@@ -86,7 +86,7 @@ Azure AD 会分析用户的每次登录。 分析的目的是检测伴随登录�
 * 避免针对受影响用户生成新的用户风险事件
 * 允许管理员手动补救影响用户标识的风险事件，并将它还原到安全状态
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 选择“高”阈值可减少触发策略的次数，最大程度地降低对用户的影响。
 但是，这会从策略中排除标记为“低”和“中”风险的用户，因而无法保护以前疑似或已知遭到入侵的标识或设备。

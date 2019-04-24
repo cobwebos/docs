@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2018
 ms.author: magoedte
-ms.openlocfilehash: 2abec4d9d74cf58503dec667080f478b1fec06ff
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.openlocfilehash: 0c654070e2bbeb8ee5dbc64fe9b4f58ee97f2e47
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404072"
 ---
 # <a name="using-service-map-solution-in-azure"></a>使用 Azure 中的服务映射解决方案
 服务映射自动发现 Windows 和 Linux 系统上的应用程序组件并映射服务之间的通信。 使用服务映射，可按所需方式查看服务器：将其视为提供重要服务的互连系统。 服务映射显示 TCP 连接的任何体系结构中服务器、进程、入站和出站连接延迟和端口之间的连接，只需安装代理，无需任何其他配置。
@@ -299,22 +299,22 @@ Linux：
 
 | 属性 | 描述 |
 |:--|:--|
-|方向 |连接方向，值为 *inbound* 或 *outbound* |
-|计算机 |计算机 FQDN |
-|进程 |进程或进程组的标识，状态为正在启动/接受连接 |
-|SourceIp |源的 IP 地址 |
-|DestinationIp |目标的 IP 地址 |
-|DestinationPort |目标的端口号 |
-|协议 |用于连接的协议。  值为 *tcp*。 |
+| `Direction` |连接方向，值为 *inbound* 或 *outbound* |
+| `Machine` |计算机 FQDN |
+| `Process` |进程或进程组的标识，状态为正在启动/接受连接 |
+| `SourceIp` |源的 IP 地址 |
+| `DestinationIp` |目标的 IP 地址 |
+| `DestinationPort` |目标的端口号 |
+| `Protocol` |用于连接的协议。  值为 *tcp*。 |
 
 为了帮助你权衡分组造成的影响，以下记录属性中提供了有关分组的物理连接数的信息：
 
 | 属性 | 描述 |
 |:--|:--|
-|LinksEstablished |在报告时间范围内建立的物理网络连接数 |
-|LinksTerminated |在报告时间范围内终止的物理网络连接数 |
-|LinksFailed |在报告时间范围内失败的物理网络连接数 此信息目前仅适用于出站连接。 |
-|LinksLive |在报告时间范围结束时打开的物理网络连接数|
+| `LinksEstablished` |在报告时间范围内建立的物理网络连接数 |
+| `LinksTerminated` |在报告时间范围内终止的物理网络连接数 |
+| `LinksFailed` |在报告时间范围内失败的物理网络连接数 此信息目前仅适用于出站连接。 |
+| `LinksLive` |在报告时间范围结束时打开的物理网络连接数|
 
 #### <a name="metrics"></a>度量值
 
@@ -322,12 +322,12 @@ Linux：
 
 | 属性 | 描述 |
 |:--|:--|
-|BytesSent |在报告时间范围内发送的字节总数 |
-|BytesReceived |在报告时间范围内接收的字节总数 |
-|响应 |在报告时间范围内观测到的响应数。 
-|ResponseTimeMax |在报告时间范围内观测到的最大响应时间（毫秒）。  如果无值，则该属性为空。|
-|ResponseTimeMin |在报告时间范围内观测到的最小响应时间（毫秒）。  如果无值，则该属性为空。|
-|ResponseTimeSum |在报告时间范围内观测到的所有响应时间的和（毫秒）。  如果无值，则该属性为空|
+| `BytesSent` |在报告时间范围内发送的字节总数 |
+| `BytesReceived` |在报告时间范围内接收的字节总数 |
+| `Responses` |在报告时间范围内观测到的响应数。 
+| `ResponseTimeMax` |在报告时间范围内观测到的最大响应时间（毫秒）。  如果无值，则该属性为空。|
+| `ResponseTimeMin` |在报告时间范围内观测到的最小响应时间（毫秒）。  如果无值，则该属性为空。|
+| `ResponseTimeSum` |在报告时间范围内观测到的所有响应时间的和（毫秒）。  如果无值，则该属性为空|
 
 报告的第三种数据类型是响应时间 - 调用方花费了多长时间来等待通过连接发送请求进行处理，并收到远程终结点的响应。 报告的响应时间是底层应用程序协议的真实响应时间的估算值。 它是基于物理网络连接的源与目标端之间的数据流观测结果，使用试探法计算出来的。 从概念上讲，它是请求的最后一个字节离开发送方的时间，与发送方收到响应的最后一个字节的时间的差。 这两个时间戳用于描述给定物理连接上的请求和响应事件。 两者的差表示单个请求的响应时间。 
 
@@ -348,26 +348,26 @@ Linux：
 
 | 属性 | 描述 |
 |:--|:--|
-|RemoteCountry |RemoteIp 所在的国家/地区的名称。  例如 *United States* |
-|RemoteLatitude |地理位置的纬度。  例如 *47.68* |
-|RemoteLongitude |地理位置的经度。  例如 *-122.12* |
+| `RemoteCountry` |RemoteIp 所在的国家/地区的名称。  例如 *United States* |
+| `RemoteLatitude` |地理位置的纬度。  例如 *47.68* |
+| `RemoteLongitude` |地理位置的经度。  例如 *-122.12* |
 
 #### <a name="malicious-ip"></a>恶意 IP
 将会根据一组 IP 检查 *VMConnection* 表中的每个 RemoteIp 属性，以识别已知的恶意活动。 如果 RemoteIp 识别为恶意，则会在以下记录属性中填充以下属性（如果未将该 IP 视为恶意，则这些属性为空）：
 
 | 属性 | 描述 |
 |:--|:--|
-|MaliciousIp |RemoteIp 地址 |
-|IndicatorThreadType |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
-|描述 |观察到的威胁说明。 |
-|TLPLevel |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
-|置信度 |值介于 0 和 100 之间。 |
-|严重性 |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
-|FirstReportedDateTime |提供程序第一次报告指标。 |
-|LastReportedDateTime |Interflow 最后一次看到指标。 |
-|IsActive |使用值 True 或 False 指明是否停用标志。 |
-|ReportReferenceLink |与给定可观测结果相关的报告的链接。 |
-|AdditionalInformation |提供观测到的威胁的其他信息（若有）。 |
+| `MaliciousIp` |RemoteIp 地址 |
+| `IndicatorThreadType` |检测到的威胁标志是以下值之一：Botnet、C2、CryptoMining、Darknet、DDos、MaliciousUrl、Malware、Phishing、Proxy、PUA 和 Watchlist。   |
+| `Description` |观察到的威胁说明。 |
+| `TLPLevel` |交通信号灯协议 (TLP) 级别是以下定义值之一：White、Green、Amber 和 Red。 |
+| `Confidence` |值介于 0 和 100 之间。 |
+| `Severity` |值介于 0 和 5 之间，其中 5 表示最严重，0 表示毫不严重。 默认值为 3。  |
+| `FirstReportedDateTime` |提供程序第一次报告指标。 |
+| `LastReportedDateTime` |Interflow 最后一次看到指标。 |
+| `IsActive` |使用值 True 或 False 指明是否停用标志。 |
+| `ReportReferenceLink` |与给定可观测结果相关的报告的链接。 |
+| `AdditionalInformation` |提供观测到的威胁的其他信息（若有）。 |
 
 ### <a name="servicemapcomputercl-records"></a>ServiceMapComputer_CL 记录
 类型为 *ServiceMapComputer_CL* 的记录包含具有服务映射代理的服务器的清单数据。 这些记录的属性在下表中列出：
@@ -399,7 +399,7 @@ Linux：
 
 | 属性 | 描述 |
 |:--|:--|
-| `Type | *ServiceMapProcess_CL* |
+| `Type` | *ServiceMapProcess_CL* |
 | `SourceSystem` | *OpsManager* |
 | `ResourceId` | 工作区中进程的唯一标识符 |
 | `ResourceName_s` | 进程在运行它的计算机中的唯一标识符|

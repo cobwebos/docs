@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.openlocfilehash: 97d8d6fac93ebabac8fb319ce2f1ab8719f5f86b
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452647"
 ---
 # <a name="azure-monitor-for-service-providers"></a>Azure 监视的服务提供商
 Azure Monitor 中的 log Analytics 工作区可以帮助托管的服务提供商 (Msp)、 大型企业、 独立软件供应商 (Isv) 和托管服务提供程序管理和监视客户本地或云基础结构中的服务器。 

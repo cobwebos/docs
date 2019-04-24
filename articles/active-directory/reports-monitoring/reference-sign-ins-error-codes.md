@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 11/18/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4bf777917bc2e09f08cbfaac6334bf9bda198f01
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: a8fefc2eb2e642b5c7ac93b8a1cfc25a54c3b646
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437124"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>登录活动报告错误代码 
 
@@ -174,9 +174,11 @@ ms.locfileid: "58439375"
 |81012|这不是错误条件。 它指示尝试登录到 Azure AD 的用户不同于已登录到设备的用户。 可以放心地忽略日志中的此代码。|
 |90010|出于各种原因，不支持该请求。 例如，该请求是使用不受支持的请求方法（仅支持 POST 方法）发出的，或者不支持请求的令牌签名算法。 请与应用程序开发人员联系。|
 |90014| 协议消息的必填字段缺失，请与应用程序所有者联系。 如果你是应用程序所有者，请确保具有登录请求所需的所有参数。 |
+|90051| 无效的委派令牌。 指定无效的国家/地区云 ID ({cloudId})。|
 |90072| 该帐户需要先作为外部用户添加到租户中。 注销并使用其他 Azure AD 帐户重新登录。|
 |90094| 该授权需要管理员权限。 让租户管理员同意此应用程序。|
 |500133| 断言不在其有效时间范围内。 确保访问令牌在用于用户断言或请求新令牌之前没有过期。|
+|530021|应用程序不符合批准条件访问应用程序要求。|
 
 ## <a name="next-steps"></a>后续步骤
 

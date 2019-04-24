@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/03/2019
 ms.author: tamram
-ms.openlocfilehash: 86bb7e736754cbc6a93bba5fff5d8d1877b1e3b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: e85cfb6d7b44924ce7f17fdedb7f1b52350ab598
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58916574"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392392"
 ---
 # <a name="set-and-retrieve-properties-and-metadata"></a>设置和检索属性与元数据
 
@@ -27,7 +27,7 @@ Azure 存储中的对象支持系统属性和用户定义的元数据，除了�
 > [!IMPORTANT]
 > 如果发现尚未填充存储资源的属性或元数据值，请检查代码是否调用了 FetchAttributes 或 FetchAttributesAsync 方法。
 >
-> 元数据名称/值对是有效的 HTTP 标头，且因此应遵循控制 HTTP 标头的所有限制。 元数据名称必须是有效的 HTTP 标头名称、 可能只能包含 ASCII 字符，并且应被视为区分大小写。 包含非 ASCII 字符的元数据值应为 Base64 编码或 URL 编码。
+> 元数据名称/值对是有效的 HTTP 标头，且因此应遵循控制 HTTP 标头的所有限制。 元数据名称必须是有效的 HTTP 标头名称和有效C#标识符，只能包含 ASCII 字符，并应被视为区分大小写。 包含非 ASCII 字符的元数据值应为 Base64 编码或 URL 编码。
 
 ## <a name="setting-and-retrieving-properties"></a>设置和检索属性
 要检索属性值，请对 blob 或容器调用 FetchAttributesAsync 方法来填充这些属性，然后读取它们的值。

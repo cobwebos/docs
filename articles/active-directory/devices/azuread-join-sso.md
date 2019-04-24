@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 45941de6a90a5824ebc1e5d31b18b68f5fd9d493
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520541"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353187"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>本地资源的 SSO 在已加入 Azure AD 的设备上的工作原理
 
@@ -30,7 +30,7 @@ ms.locfileid: "58520541"
 
 本文介绍它的工作原理。
 
-## <a name="how-it-works"></a>如何运作 
+## <a name="how-it-works"></a>工作原理 
 
 因为你只需记住一个用户名和密码，因此 SSO 简化了资源访问，并提高了环境的安全性。 使用已加入 Azure AD 的设备，用户已在环境享有云应用的 SSO 体验。 如果环境具有一个 Azure AD 和一个本地 AD，建议将 SSO 体验的范围扩展到本地业务线 (LOB) 应用、文件共享和打印机。  
 
@@ -54,7 +54,7 @@ ms.locfileid: "58520541"
 
 Windows Hello for Business 需要其他配置才能支持已加入 Azure AD 的设备的本地 SSO。 有关详细信息，请参阅[使用 Windows Hello for Business 配置已加入 Azure AD 的设备进行本地单一登录](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base)。 
 
-## <a name="what-you-get"></a>你获得的权益
+## <a name="what-you-get"></a>用户所得
 
 通过 SSO，在已加入 Azure AD 的设备上，可以： 
 

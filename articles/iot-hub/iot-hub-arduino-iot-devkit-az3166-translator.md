@@ -10,11 +10,11 @@ ms.tgt_pltfrm: arduino
 ms.date: 12/19/2018
 ms.author: liydu
 ms.openlocfilehash: df7e7b426a8c85c8051d7f588c706a6f8811e183
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58085739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60518904"
 ---
 # <a name="use-iot-devkit-az3166-with-azure-functions-and-cognitive-services-to-make-a-language-translator"></a>将 IoT DevKit AZ3166 与 Azure Functions 和认知服务配合使用生成语言翻译
 
@@ -54,7 +54,7 @@ ms.locfileid: "58085739"
 
    记录创建的 Azure IoT 中心设备的名称。
 
-1. 打开`Functions\DevKitTranslatorFunction.cs`并使用设备名称并记下的语音服务密钥更新以下代码行。
+1. 打开 `Functions\DevKitTranslatorFunction.cs` 并使用记录的设备名称和语音服务密钥更新以下代码行。
    ```csharp
    // Subscription Key of Speech Service
    const string speechSubscriptionKey = "";

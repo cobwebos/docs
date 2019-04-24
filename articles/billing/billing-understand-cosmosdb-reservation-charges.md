@@ -6,19 +6,25 @@ author: rimman
 manager: kfile
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 04/13/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 8386d1c43761cfb27746b003d136419f72d7d4ae
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: d5a13e4466234d73bafe8dbe76cae92955cf64bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370741"
 ---
 # <a name="understand-how-the-reservation-discount-is-applied-to-azure-cosmos-db"></a>了解如何将预留折扣应用于 Azure Cosmos DB
 
 购买 Azure Cosmos DB 保留容量后，预留折扣会自动应用到与预留属性和数量匹配的 Azure Cosmos DB 资源。 预留涵盖为 Azure Cosmos DB 资源预配的吞吐量。 它不涵盖软件、网络、存储或预定义的容器费用。
+
+## <a name="how-reservation-discount-is-applied"></a>如何应用预订折扣
+
+预订折扣是"*使用-it-或-丢失-it*"。 因此，如果任何小时内没有匹配的资源，然后您丢失预订数量的该小时。 不能执行将转发未使用保留的小时数。
+
+在关闭资源时，将预订折扣将自动应用于指定范围内的另一个匹配的资源。 如果没有匹配找到资源在指定范围内，则保留的时间为*丢失*。
 
 ## <a name="reservation-discount-applied-to-azure-cosmos-db-accounts"></a>预留折扣应用于 Azure Cosmos DB 帐户
 
@@ -33,25 +39,25 @@ ms.locfileid: "58648531"
 
 |计量描述  |区域 |比率  |
 |---------|---------|---------|
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   第      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    第     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    第     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      第   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       第  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    第     |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     第    |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      第   |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       第  |
-|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  第       |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   第      |
-|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    第     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东南部  |  亚太东南部    |   1      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 亚太东部 |   亚太东部   |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲北部|  欧洲北部       |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国南部|    韩国南部     |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 欧洲西部|    欧洲西部     |      1   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 韩国中部|   韩国中部    |       1  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部|   英国南部      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国西部|   英国西部      |    1     |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国北部 |   英国北部    |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 英国南部 2|   英国南部 2      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部 2|  美国东部 2     |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中北部|   美国中北部      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部|   美国西部      |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中部| 美国中部        |     1    |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国西部 2|   美国西部 2      |      1   |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国中西部|   美国中西部      |       1  |
+|Azure Cosmos DB - 100 RU/秒/小时 - 美国东部|   美国东部      |  1       |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非北部|     南非北部    |   1      |
+|Azure Cosmos DB - 100 RU/秒/小时 - 南非西部 |    南非西部      |    1     |
 |Azure Cosmos DB - 100 RU/秒/小时 - 印度南部|    印度南部     |    1.0375    |
 |Azure Cosmos DB - 100 RU/秒/小时 - 加拿大东部|   加拿大东部      |    1.1      |
 |Azure Cosmos DB - 100 RU/秒/小时 - 日本东部|   日本东部      |    1.125     |

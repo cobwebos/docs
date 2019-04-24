@@ -2,14 +2,15 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/27/2018
-ms.author: wolfma
+origin.date: 07/27/2018
+ms.date: 04/01/2019
+ms.author: v-biyu
 ms.openlocfilehash: f2898f5cdc817a10d1083325a9a7d1b54443fdef
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "58115460"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531315"
 ---
 ## <a name="speech-recognition-with-a-customized-model"></a>使用自定义模型进行语音识别
 

@@ -7,12 +7,12 @@ ms.date: 04/16/2019
 ms.author: maquaran
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 5416c576e6392b7c5714ef83f152453aeff8d964
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 40d9aba4ff8fd78f6369729ddc16238e65bfc169
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60404683"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-trigger-in-azure-functions"></a>诊断并解决问题时在 Azure Functions 中使用 Azure Cosmos DB 触发器
 
@@ -31,7 +31,7 @@ ms.locfileid: "59685708"
 
 扩展包的关键功能是 Azure Cosmos DB 触发器和绑定提供支持。 它还包括[Azure Cosmos DB.NET SDK](sql-api-sdk-dotnet-core.md)，这都很有用，如果你想要使用 Azure Cosmos DB 以编程方式而无需使用触发器和绑定交互。
 
-如果想为要使用 Azure Cosmos DB SDK，请确保不要添加到你的项目另一个 NuGet 包引用。 相反，**允许通过 Azure Functions 的扩展包解析的 SDK 引用**。
+如果想要使用 Azure Cosmos DB SDK，请确保不要添加到你的项目另一个 NuGet 包引用。 相反，**允许通过 Azure Functions 的扩展包解析的 SDK 引用**。
 
 此外，如果要手动创建的实例[Azure Cosmos DB SDK 客户端](./sql-api-sdk-dotnet-core.md)，应遵循的模式的客户端的一个实例[使用单一实例模式方法](../azure-functions/manage-connections.md#documentclient-code-example-c). 此过程将避免潜在的套接字问题，在您的操作。
 

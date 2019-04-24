@@ -17,11 +17,11 @@ ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: acccc553c5b63b2acd0f9793b0397b25145449dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60477374"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Azure 上的 SAP HANA 基础结构配置和操作
 本文指导如何配置 Azure 基础结构和操作 Azure 本机虚拟机 (Vm) 部署的 SAP HANA 系统。 本文还包含 M128s VM SKU 的 SAP HANA 横向扩展的配置信息。 本文并不旨在取代标准 SAP 文档，其中包括以下内容：

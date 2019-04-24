@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: 85bce59563cf0424816661c97406060bcbb423ec
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402798"
 ---
 # <a name="connect-to-azure-sql-data-warehouse"></a>连接到 Azure SQL 数据仓库
 连接到 Azure SQL 数据仓库。
@@ -61,7 +61,7 @@ jdbc:sqlserver://yourserver.database.windows.net:1433;database=yourdatabase;user
 ## <a name="connection-settings"></a>连接设置
 SQL 数据仓库在连接和创建对象期间标准化一些设置。 这些设置不能重写，其中包括：
 
-| 数据库设置 | 值 |
+| 数据库设置 | Value |
 |:--- |:--- |
 | [ANSI_NULLS][ANSI_NULLS] |ON |
 | [QUOTED_IDENTIFIERS][QUOTED_IDENTIFIERS] |ON |

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 174edc2bb1424264ac9e82983669ed775b1ea330
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58181514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60398563"
 ---
 <a name="publish-an-azure-management-solution-to-azure-marketplace"></a>将 Azure 管理解决方案发布到 Azure Marketplace 
 ========================================================

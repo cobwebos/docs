@@ -1,24 +1,25 @@
 ---
 title: 在 Azure Kubernetes 服务 (AKS) 中查看 kubelet 日志
-description: 了解如何在 kubelet 日志从 Azure Kubernetes 服务 (AKS) 节点中查看疑难解答信息
+description: 了解如何在 Azure Kubernetes 服务 (AKS) 节点的 kubelet 日志中查看故障排除信息
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: article
-ms.date: 03/05/2019
-ms.author: iainfou
+origin.date: 03/05/2019
+ms.date: 04/08/2019
+ms.author: v-yeche
 ms.openlocfilehash: b381145fef7e6fb399fac3387ab01fdc9a51b154
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57534014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60465013"
 ---
 # <a name="get-kubelet-logs-from-azure-kubernetes-service-aks-cluster-nodes"></a>从 Azure Kubernetes 服务 (AKS) 群集节点获取 kubelet 日志
 
-作为操作系统的 AKS 群集的一部分，您可能需要查看日志，排查问题。 内置到 Azure 门户是能够查看日志[AKS 主组件][ aks-master-logs]或[AKS 群集中的容器][azure-container-logs]。 有时，您可能需要获取*kubelet* AKS 节点以进行故障排除的日志。
+在操作 AKS 群集的过程中，可能需要查看日志来排查问题。 Azure 门户内置了查看 [AKS 主组件][aks-master-logs]或 [AKS 群集中容器][azure-container-logs]的日志的功能。 有时，可能需要从 AKS 节点获取 *kubelet* 日志以进行故障排除。
 
-本文演示了如何使用`journalctl`以查看*kubelet* AKS 节点上的日志。
+本文介绍如何在 AJS 节点上使用 `journalctl` 查看 *kubelet* 日志。
 
 ## <a name="before-you-begin"></a>开始之前
 

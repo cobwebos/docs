@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
-ms.openlocfilehash: a3d6f84de103596e27c22cbb11d709bb1a85dc91
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.openlocfilehash: ea6d969ed6612f947e3c73c438738bd98ac2bb30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52836827"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362265"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>将 VMM 脚本添加到还原计划
 
@@ -20,7 +20,7 @@ ms.locfileid: "52836827"
 
 请在本文底部或在 [Azure 还原服务论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)上发布评论或填写疑惑。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 可在恢复计划中使用 PowerShell 脚本。 必须编写脚本并将脚本置于 VMM 库中，才可从还原计划中进行访问。 编写脚本时，请记住以下注意事项：
 
@@ -49,7 +49,7 @@ ms.locfileid: "52836827"
 
   1. 使用与 VMM 服务帐户处于同一用户权限级别的用户帐户测试脚本。 使用这些用户权限验证经过测试的独立脚本按在还原计划中运行的方式运行。 在 VMM 服务器上，将执行策略设置为绕过，如下所示：
 
-     a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 以管理员身份打开 64 位 Windows PowerShell 控制台。
+     a. 以管理员身份打开 64 位 Windows PowerShell 控制台。
      
      b. 输入 Set-executionpolicy bypass。 有关详细信息，请参阅[使用 Set-ExecutionPolicy cmdlet](https://technet.microsoft.com/library/ee176961.aspx)。
 

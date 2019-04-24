@@ -16,15 +16,15 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0cfc31705909710e6a60e0d2fd3963e74e9397ee
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58201256"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472243"
 ---
 # <a name="what-is-self-service-signup-for-azure-active-directory"></a>什么是 Azure Active Directory 的自助服务注册？
 
-此文章介绍了如何使用自助服务注册来填充 Azure Active Directory (Azure AD) 中的组织。 如果你想要接管域名从非托管 Azure AD 的组织，请参阅[接管非托管目录，以管理员身份](domains-admin-takeover.md)。
+此文章介绍了如何使用自助服务注册填充 Azure Active Directory (Azure AD) 中的组织。 如果你想要接管域名从非托管 Azure AD 的组织，请参阅[接管非托管目录，以管理员身份](domains-admin-takeover.md)。
 
 ## <a name="why-use-self-service-signup"></a>为何使用自助服务注册？
 * 让客户更快获得所需的服务

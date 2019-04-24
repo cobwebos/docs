@@ -11,11 +11,11 @@ ms.date: 01/25/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 44ac4a5fd14d262fdbd1f6fcd36bb2351d08f754
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55692436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313828"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>关于 Azure Active Directory B2C 自定义策略中的声明解析程序
 
@@ -45,7 +45,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="culture"></a>环境
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
 | {Culture:LanguageName} | 语言的两字母 ISO 代码。 | en |
 | {Culture:LCID}   | 语言代码的 LCID。 | 1033 |
@@ -54,7 +54,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="policy"></a>策略
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
 | {Policy:PolicyId} | 信赖方策略名称。 | B2C_1A_signup_signin |
 | {Policy:RelyingPartyTenantId} | 信赖方策略的租户 ID。 | your-tenant.onmicrosoft.com |
@@ -63,7 +63,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="openid-connect"></a>OpenID Connect
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
 | {OIDC:AuthenticationContextReferences} |`acr_values` 查询字符串参数。 | 不适用 |
 | {OIDC:ClientId} |`client_id` 查询字符串参数。 | 00000000-0000-0000-0000-000000000000 |
@@ -77,7 +77,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="context"></a>上下文
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------- | --------|
 | {Context:BuildNumber} | 标识体验框架版本（内部版本号）。  | 1.0.507.0 |
 | {Context:CorrelationId} | 相关 ID。  | 00000000-0000-0000-0000-000000000000 |
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 可以将 OIDC 或 OAuth2 请求中包括的任何参数名称映射到用户旅程中的某个声明， 例如，来自应用程序的请求可能包括名为 `app_session`、`loyalty_number` 的查询字符串参数或任何自定义查询字符串。
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------------------- | --------|
 | {OAUTH-KV:campaignId} | 查询字符串参数。 | hawaii |
 | {OAUTH-KV:app_session} | 查询字符串参数。 | A3C5R |
@@ -99,7 +99,7 @@ Azure Active Directory (Azure AD) B2C [自定义策略](active-directory-b2c-ove
 
 ### <a name="oauth2"></a>OAuth2
 
-| 声明 | 说明 | 示例 |
+| 声明 | 描述 | 示例 |
 | ----- | ----------------------- | --------|
 | {oauth2:access_token} | 访问令牌。 | 不适用 |
 

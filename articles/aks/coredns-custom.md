@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/15/2019
 ms.author: jnoller
 ms.openlocfilehash: 9186c5ff7c6fbc68487a1ccff0fc1d2d1478df79
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58405837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60466438"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>自定义 CoreDNS 与 Azure Kubernetes 服务
 

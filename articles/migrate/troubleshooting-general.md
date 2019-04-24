@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: raynew
 ms.openlocfilehash: dff3c96cf3ac8eea7c1160ee1834cc70390c0333
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533179"
 ---
 # <a name="troubleshoot-azure-migrate"></a>排查 Azure Migrate 问题
 
@@ -82,7 +82,7 @@ ms.locfileid: "58652631"
 
 ### <a name="performance-data-for-cpu-memory-and-disks-is-showing-up-as-zeroes"></a>CPU、 内存和磁盘的性能数据显示为零
 
-Azure Migrate 持续配置文件的本地环境收集的本地 Vm 的性能数据。 如果你只是开始该发现您的环境，需要等待至少一天的性能数据收集执行时间。 如果无需等待一天创建评估后，性能度量值将显示为零。 等待一天之后, 可以创建新的评估或通过使用评估报表中的重新计算选项来更新现有的评估中。
+Azure Migrate 持续分析本地环境，以便收集本地 VM 的性能数据。 如果刚启动环境发现操作，则要完成性能数据收集，需等待至少一天。 如果没有等待一天就创建评估，则性能指标会显示为零。 在等待一天以后，可以创建新评估，也可以使用评估报告中的“重新计算”选项更新现有评估。
 
 ### <a name="i-specified-an-azure-geography-while-creating-a-migration-project-how-do-i-find-out-the-exact-azure-region-where-the-discovered-metadata-would-be-stored"></a>创建迁移项目时，我已指定 Azure 地理位置，如何找到将存储所发现元数据的确切 Azure 区域？
 

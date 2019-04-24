@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: ea625a61ed600dbaa22fef85987e9570a6fb7dbc
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57337407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371440"
 ---
 # <a name="get-started-with-your-billing-account-for-a-microsoft-customer-agreement"></a>开始使用您的计费帐户的 Microsoft 客户协议
 
@@ -30,7 +30,7 @@ ms.locfileid: "57337407"
 
 您的 Microsoft 客户协议的计费帐户包含一个或多个计费的配置文件让你管理你的发票和付款方法。 每个计费的配置文件包含一个或多个发票部分，可以将组织计费配置文件的发票上的成本。
 
-下图显示了计费帐户、 计费配置文件和发票部分之间的关系。
+下图显示了计费帐户、计费配置文件与发票部分之间的关系。
 
 ![显示 Microsoft 客户协议的计费层次结构的关系图](./media/billing-mca-overview/mca-billing-hierarchy.png)
 

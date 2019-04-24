@@ -14,11 +14,11 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6e87ae0a8adf28176d9a97cbf1b78943179884a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340104"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475021"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>我的应用门户的疑难解答
 如果遇到登录或使用的问题**我的应用**门户中，请尝试以下故障排除提示之前联系支持人员或管理员获取帮助。

@@ -10,11 +10,11 @@ ms.date: 12/27/2018
 ms.author: alinast
 ms.custom: seodec18
 ms.openlocfilehash: d309765e6c4b0b0cc8a7e92977134d4135a69a13
-ms.sourcegitcommit: fd488a828465e7acec50e7a134e1c2cab117bee8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/03/2019
-ms.locfileid: "53995463"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535577"
 ---
 # <a name="user-defined-functions-client-library-reference"></a>用户定义函数客户端库参考
 
@@ -30,7 +30,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 空间标识符 |
 
@@ -40,7 +40,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ---------- | ------------------- | ------------ |
 | *id*  | `guid` | 传感器标识符 |
 
@@ -50,7 +50,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *id* | `guid` | 设备标识符 |
 
@@ -60,7 +60,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *sensorId*  | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
@@ -71,7 +71,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId*  | `guid` | 空间标识符 |
 | *valueName* | `string` | 空间属性名称 |
@@ -82,7 +82,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType* | `string` | 传感器数据类型 |
@@ -93,7 +93,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *valueName* | `string` | 空间属性名称 |
@@ -104,7 +104,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -114,7 +114,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -124,7 +124,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 
@@ -134,7 +134,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | 设备标识符 |
 
@@ -144,7 +144,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childSpaceId* | `guid` | 空间标识符 |
 
@@ -154,7 +154,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -164,7 +164,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childDeviceId* | `guid` | 设备标识符 |
 
@@ -174,7 +174,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *childSensorId* | `guid` | 传感器标识符 |
 
@@ -184,7 +184,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *propertyName* | `string` | 空间属性名称 |
@@ -195,7 +195,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *propertyName* | `string` | 传感器属性名称 |
@@ -206,7 +206,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *deviceId* | `guid` | 设备标识符 |
 | *propertyName* | `string` | 设备属性名称 |
@@ -217,11 +217,11 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *sensorId* | `guid` | 传感器标识符 |
 | *dataType*  | `string` | 传感器数据类型 |
-| *值*  | `string` | 值 |
+| *值*  | `string` | Value |
 
 ### <a name="setspacevaluespaceid-datatype-value"></a>setSpaceValue(spaceId, dataType, value)
 
@@ -229,11 +229,11 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *spaceId* | `guid` | 空间标识符 |
 | *dataType* | `string` | 数据类型 |
-| *值* | `string` | 值 |
+| *值* | `string` | Value |
 
 ### <a name="logmessage"></a>log(message)
 
@@ -241,7 +241,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *message* | `string` | 要记录的消息 |
 
@@ -251,7 +251,7 @@ ms.locfileid: "53995463"
 
 **类型**：全局函数
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *topologyObjectId*  | `guid` | 图形对象标识符。 例如，空格、传感器和设备 ID。|
 | *topologyObjectType*  | `string` | 例如，空格、传感器和设备。|
@@ -292,7 +292,7 @@ ms.locfileid: "53995463"
 
 此函数将返回当前空间的扩展属性及其值。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 
@@ -300,7 +300,7 @@ ms.locfileid: "53995463"
 
 此函数将返回当前空间的值。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | 值的名称 |
 
@@ -308,7 +308,7 @@ ms.locfileid: "53995463"
 
 此函数将返回当前空间的历史值。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *valueName* | `string` | 值的名称 |
 
@@ -316,7 +316,7 @@ ms.locfileid: "53995463"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -352,7 +352,7 @@ ms.locfileid: "53995463"
 
 此函数返回当前设备的扩展属性及其值。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 
@@ -360,7 +360,7 @@ ms.locfileid: "53995463"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
@@ -400,7 +400,7 @@ ms.locfileid: "53995463"
 
 此函数返回当前传感器的扩展属性及其值。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *propertyName* | `string` | 扩展属性的名称 |
 
@@ -416,11 +416,11 @@ ms.locfileid: "53995463"
 
 此函数发送具有指定有效负载的通知。
 
-| 参数  | 类型                | Description  |
+| 参数  | Type                | 描述  |
 | ------ | ------------------- | ------------ |
 | *payload* | `string` | 要包含在通知中的 JSON 有效负载 |
 
-### <a name="value"></a>值
+### <a name="value"></a>Value
 
 ```JSON
 {

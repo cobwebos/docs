@@ -13,11 +13,11 @@ ms.date: 05/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f7e070788d2fc11addcafc30d9f232f194f44782
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54017253"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318472"
 ---
 # <a name="move-data-from-an-http-source-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 HTTP 源移动数据
 
@@ -39,7 +39,7 @@ ms.locfileid: "54017253"
 
 从本地 HTTP 终结点复制数据时，必须在本地环境或 Azure VM 中安装数据管理网关。 若要了解数据管理网关以及有关如何设置网关的分步说明，请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 可以使用各种工具或 API 创建包含复制活动的管道，用于从 HTTP 源移动数据：
 
@@ -66,7 +66,7 @@ ms.locfileid: "54017253"
 
 将“authenticationType”设置为“基本”、“摘要式”或“Windows”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | username | 用于访问 HTTP 终结点的用户名。 | 是 |
 | password | 用户 (**username**) 的密码。 | 是 |
@@ -94,7 +94,7 @@ ms.locfileid: "54017253"
 
 若要使用基本身份验证，请将“authenticationType”设置为“ClientCertificate”。 除了前面部分所述的通用 HTTP 连接器属性，还设置以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | embeddedCertData | PFX 文件的二进制数据的 Base64 编码内容。 | 指定是 **embeddedCertData**，还是 **certThumbprint** |
 | certThumbprint | 在网关计算机的证书存储中安装的证书的指纹。 仅当从本地 HTTP 源复制数据时才适用。 | 指定是 **embeddedCertData**，还是 **certThumbprint** |
@@ -221,7 +221,7 @@ ms.locfileid: "54017253"
 
 目前，如果复制活动中的源为 **HttpSource** 类型，则支持以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | -------- | ----------- | -------- |
 | httpRequestTimeout | 用于获取响应的 HTTP 请求的超时 （TimeSpan 值）。 这是获取响应而不是读取响应数据的超时。 | 否<br />（默认值：**00:01:40**） |
 

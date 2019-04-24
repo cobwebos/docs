@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+origin.date: 09/10/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: c312433832f7402eaff8b40c4e0a2a61397f6f87
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58123498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360344"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection 声明转换
 
@@ -29,7 +30,7 @@ ms.locfileid: "58123498"
 
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
-| InputClaim | item | 字符串 | 要添加到输出声明的 ClaimType。 |
+| InputClaim | item | string | 要添加到输出声明的 ClaimType。 |
 | InputClaim | 集合 | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
 | OutputClaim | 集合 | stringCollection | 调用此 ClaimsTransformation 后生成的 ClaimType。 |
 
@@ -64,7 +65,7 @@ ms.locfileid: "58123498"
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 集合 | stringCollection | [可选] 如果已指定，则声明转换会复制此集合中的项，并将该项添加到输出集合声明的末尾。 |
-| InputParameter | item | 字符串 | 要添加到输出声明的值。 |
+| InputParameter | item | string | 要添加到输出声明的值。 |
 | OutputClaim | 集合 | stringCollection | 调用此 ClaimsTransformation 后将生成的 ClaimTypes。 |
 
 使用此声明转换将字符串值添加到新的或现有的 stringCollection。 以下示例将常量电子邮件地址 (admin@contoso.com) 添加到 **otherMails** 声明。 
@@ -99,7 +100,7 @@ ms.locfileid: "58123498"
 | Item | TransformationClaimType | 数据类型 | 说明 |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | 集合 | stringCollection | 由声明转换用于获取项的 ClaimTypes。 |
-| OutputClaim | extractedItem | 字符串 | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
+| OutputClaim | extractedItem | string | 调用此 ClaimsTransformation 后生成的 ClaimType。 集合中的第一项。 |
 
 以下示例读取 otherMails 声明，并将第一项返回到 email 声明中。 
 
@@ -120,4 +121,5 @@ ms.locfileid: "58123498"
   - **collection**: ["someone@outlook.com", "someone@contoso.com"]
 - 输出声明： 
   - **extractedItem**: "someone@outlook.com"
+
 

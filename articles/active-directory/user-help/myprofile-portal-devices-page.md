@@ -13,11 +13,11 @@ ms.date: 02/19/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b303a1cd3da7010573ce34dd4762616f4b6581d0
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57729106"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475818"
 ---
 # <a name="manage-your-connected-devices-from-the-my-profile-preview-portal"></a>从“我的个人资料”（预览版）门户管理连接的设备
 从“我的个人资料”门户的“设备”页，可以管理使用工作或学校帐户连接到的设备，禁用不再拥有的任何设备。

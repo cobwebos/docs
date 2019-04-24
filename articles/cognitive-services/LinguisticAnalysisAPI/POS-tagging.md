@@ -11,11 +11,11 @@ ms.date: 09/27/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 0269397b0f8da66d2bafecfb427ba705fdfff001
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55883145"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394483"
 ---
 # <a name="part-of-speech-tagging"></a>词性标记
 
@@ -30,7 +30,7 @@ ms.locfileid: "55883145"
 
 ## <a name="list-of-part-of-speech-tags"></a>词性标记列表
 
-| 标记 | 说明 | 示例字词 |
+| 标记 | 描述 | 示例字词 |
 |-----|-------------|---------------|
 | $ | 美元 | $ |
 | \`\` | 左引号 | \` \`\` |
@@ -65,7 +65,7 @@ ms.locfileid: "55883145"
 | RBS | 副词的最高级 | best biggest bluntest earliest farthest first furthest hardest heartiest highest largest least less most nearest second tightest worst |
 | RP | 小品词 | on off up out about |
 | SYM | 符号 | % & |
-| TO | “to”作为介词或不定式标记 | to |
+| TO | “to”作为介词或不定式标记 | 至 |
 | UH | 感叹词 | uh hooray howdy hello |
 | VB | 谓词的基本形式 | give assign fly |
 | VBD | 谓词的过去时 | gave assigned flew |

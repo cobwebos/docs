@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/04/2018
 ms.author: b-juche
 ms.openlocfilehash: 86c016a5dbcc0d78378e59bc6b3606ddf2c54f64
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452753"
 ---
 # <a name="register-for-azure-netapp-files"></a>注册 Azure NetApp 文件
 在使用 Azure NetApp 文件之前，必须提交请求以在 Azure NetApp 文件服务中进行登记。  在登记后，进行注册以使用该服务。

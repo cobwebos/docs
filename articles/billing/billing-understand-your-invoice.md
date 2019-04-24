@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 77c1a85136b2117af7396b8eec2d8b92b335d61d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369913"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>了解 Microsoft Azure 发票的条款
 
@@ -99,7 +99,7 @@ ms.locfileid: "57897446"
 
 | 术语 |描述 |
 | --- | --- |
-| 名称 |标识该次使用的最上层服务 |
+| Name |标识该次使用的最上层服务 |
 | Type |定义 Azure 服务类型，该类型可能会影响费率 |
 | 资源 |标识已使用计量的度量单位 |
 | 区域 |标识某些服务的数据中心的位置，这些服务根据数据中心位置进行定价 |
@@ -107,7 +107,7 @@ ms.locfileid: "57897446"
 | 附送 |当前计费周期中免费附送的计量的量 |
 | 可计费 |显示已耗用数量和已包含数量之间的差异。 将根据此数量对你计费。 对于不附送任何数量的即用即付产品/服务，此总数与已耗用数量相同 |
 | 费率 |为每个可付费单位支付的费率 |
-| 值 |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
+| Value |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
 | 小计 |对此计费周期的税前收费总额 |
 | 总计 |对此计费周期的税后收费总额 |
 

@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4f5127342f97a90103ef56efbd7465832440ec0f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381773"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-identity-protection"></a>快速入门：使用 Azure Active Directory Identity Protection 检测到会话风险后阻止访问  
 
@@ -33,7 +33,7 @@ ms.locfileid: "58521799"
 ![创建策略](./media/quickstart-sign-in-risk-policy/1004.png)
 
 
-如果没有 Azure 订阅，可以在开始前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
+如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
 
 
@@ -67,7 +67,7 @@ ms.locfileid: "58521799"
 
 此部分介绍如何创建所需的登录风险条件访问策略。 在策略中，设置：
 
-|设置 |值|
+|设置 |Value|
 |---     | --- |
 | 用户  | Alain Charon  |
 | 条件 | 登录风险，中等及以上 |

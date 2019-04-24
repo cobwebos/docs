@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 11/30/2017
 ms.author: jdial
 ms.openlocfilehash: 88cb7e2cd04d13ade5c581a1ff2dc09669d89ab2
-ms.sourcegitcommit: 11d8ce8cd720a1ec6ca130e118489c6459e04114
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52837998"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60532590"
 ---
 # <a name="introduction-to-ip-flow-verify-in-azure-network-watcher"></a>Azure 网络观察程序中的“IP 流验证”简介
 

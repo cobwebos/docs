@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0e87a4c7ebafd8ddcfa54c87b189316b0ce98b0f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301186"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory 条件访问设置参考
 
@@ -142,7 +142,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |    |    |
 | --- | --- |
 | 路径 | HKEY_LOCAL_MACHINE\Software\Policies\Google\Chrome\ExtensionInstallForcelist |
-| 名称 | 1 |
+| Name | 1 |
 | Type | REG_SZ (String) |
 | 数据 | ppnbnpeolgkicgegkbkbjmhlideopiji; https://clients2.google.com/service/update2/crx |
 
@@ -151,7 +151,7 @@ Windows 7、 iOS、 Android 和 macOS 上 Azure AD 标识使用客户端证书�
 |    |    |
 | --- | --- |
 | 路径 | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
-| 名称 | 1 |
+| Name | 1 |
 | Type | REG_SZ (String) |
 | 数据 | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}} |
 

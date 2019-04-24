@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 01/23/2019
 ms.author: diberry
 ms.openlocfilehash: d546951cf283cf15874b1b6d95da75549a8a93ac
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884930"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60496552"
 ---
 # <a name="add-luis-results-to-application-insights-with-a-bot-in-c"></a>通过 C# 中的机器人将 LUIS 结果添加到 Application Insights
 
@@ -31,7 +31,7 @@ ms.locfileid: "55884930"
 > * 捕获 LUIS 查询结果并发送给 Application Insights
 > * 查询 Application Insights，获取首要意向、分数和表述
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 使用[上一教程](luis-csharp-tutorial-build-bot-framework-sample.md)中已启用 Application Insights 的 LUIS Web 应用机器人。
 * 计算机上已本地安装 [Visual Studio 2017](https://www.visualstudio.com/downloads/)。

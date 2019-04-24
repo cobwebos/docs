@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: 48f439a566a8067e153aab4fb789937d2f91268d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302972"
 ---
 # <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>使用 StorSimple Snapshot Manager 中的 MMC 菜单操作
 
@@ -87,7 +87,7 @@ ms.locfileid: "23109965"
    1. 在“**文件名**”框中，键入 CSV 文件的名称或者单击箭头在下拉列表中选择。
    2. 在“**保存类型**”框中，单击箭头在下拉列表中选择一种文件类型。
    3. 要只保存已选定的项，则选定相应的行并单击“**只保存选定行**”复选框。 若要保存导出的所有列表，则清除“**只保存选定行**”复选框。
-   4. 单击“保存” 。
+   4. 单击“ **保存**”。
       
       ![将列表导出为逗号分隔值文件](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 

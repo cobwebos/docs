@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: aa740cfb203f50dc97a06359774dae367a20252b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "58113883"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406489"
 ---
 ## <a name="about-vhds"></a>关于 VHD
 

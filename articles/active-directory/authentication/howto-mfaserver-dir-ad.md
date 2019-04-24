@@ -13,11 +13,11 @@ ms.reviewer: michmcla
 ms.custom: seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f97b4ee364ecadde7738b8fe077f21d5732365f6
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58371798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60358367"
 ---
 # <a name="directory-integration-between-azure-mfa-server-and-active-directory"></a>Azure MFA 服务器与 Active Directory 之间的目录集成
 
@@ -31,17 +31,17 @@ ms.locfileid: "58371798"
 
 | Feature | 描述 |
 | --- | --- |
-| 使用 Active Directory |选择“使用 Active Directory”选项可使用 Active Directory 进行导入和同步。  此设置为默认设置。 <br>注意：要正常完成 Active Directory 集成，请将计算机加入域并使用域帐户登录。 |
+| 使用 Active Directory |选择“使用 Active Directory”选项可使用 Active Directory 进行导入和同步。  此设置为默认设置。 <br>请注意:要正常完成 Active Directory 集成，请将计算机加入域并使用域帐户登录。 |
 | 包括受信任域 |选中“包括受信任域”可让代理尝试连接到当前域、林中其他域或林信任涉及的域所信任的域。  当不从任何受信任域导入或同步用户时，请取消选中该复选框以提高性能。  默认处于选中状态。 |
-| 使用特定 LDAP 配置 |选择“使用 LDAP”选项可使用指定的 LDAP 设置进行导入和同步。 注意：选择“使用 LDAP”时，用户界面会将引用从 Active Directory 更改为 LDAP。 |
+| 使用特定 LDAP 配置 |选择“使用 LDAP”选项可使用指定的 LDAP 设置进行导入和同步。 请注意:选择“使用 LDAP”时，用户界面会将引用从 Active Directory 更改为 LDAP。 |
 | 编辑按钮 |使用“编辑”按钮可以修改当前 LDAP 配置设置。 |
-| 使用属性范围查询 |指示是否应使用属性范围查询。  属性范围查询允许根据其他记录的属性中的条目，实现对符合条件的记录的高效目录搜索。  Azure 多重身份验证服务器使用属性范围查询有效地查询属于安全组的用户。   <br>注意：在某些情况下，系统支持属性范围查询，但不应使用。  例如，如果安全组包含来自多个域的成员，Active Directory 可能在使用属性范围查询时出现问题。 在这种情况下，请取消选中该复选框。 |
+| 使用属性范围查询 |指示是否应使用属性范围查询。  属性范围查询允许根据其他记录的属性中的条目，实现对符合条件的记录的高效目录搜索。  Azure 多重身份验证服务器使用属性范围查询有效地查询属于安全组的用户。   <br>请注意:在某些情况下，系统支持属性范围查询，但不应使用。  例如，如果安全组包含来自多个域的成员，Active Directory 可能在使用属性范围查询时出现问题。 在这种情况下，请取消选中该复选框。 |
 
 下表描述了 LDAP 配置设置。
 
 | Feature | 描述 |
 | --- | --- |
-| 服务器 |输入运行 LDAP 目录的服务器的主机名或 IP 地址。  还可以以分号分隔形式指定备份服务器。 <br>注意：当绑定类型是 SSL 时，需要输入完全限定的主机名。 |
+| 服务器 |输入运行 LDAP 目录的服务器的主机名或 IP 地址。  还可以以分号分隔形式指定备份服务器。 <br>请注意:当绑定类型是 SSL 时，需要输入完全限定的主机名。 |
 | 基 DN |输入要从中启动所有目录查询的基目录对象的可分辨名称。  例如，dc=abc,dc=com。 |
 | 绑定类型 - 查询 |选择在绑定搜索 LDAP 目录时要使用的相应绑定类型。  这会用于导入、同步和用户名解析。 <br><br>  匿名 - 执行匿名绑定。  不使用绑定 DN 和绑定密码。  仅当 LDAP 目录允许匿名绑定，并且权限允许查询相应的记录和属性时，此项才适用。  <br><br> 简单 - 用于绑定到 LDAP 目录的绑定 DN 和绑定密码以纯文本的形式传递。  此选项用于测试目的，验证是否能够访问服务器，以及绑定帐户是否具有适当的访问权限。 安装适当的证书后，请改用 SSL。  <br><br> SSL - 用于绑定到 LDAP 目录的绑定 DN 和绑定密码将使用 SSL 加密。  在本地安装 LDAP 目录信任的证书。  <br><br> Windows - 使用绑定用户名和绑定密码安全连接到 Active Directory 域控制器或 ADAM 目录。  如果将“绑定用户名”留空，已登录用户的帐户用于绑定。 |
 | 绑定类型 - 身份验证 |选择在执行 LDAP 绑定身份验证时要使用的相应绑定类型。  请参阅“绑定类型 - 查询”下的绑定类型说明。  例如，这样一来，在使用 SSL 绑定来确保 LDAP 绑定身份验证安全的同时，就可以对查询使用匿名绑定。 |
@@ -58,9 +58,9 @@ ms.locfileid: "58371798"
 
 Azure 多重身份验证提供以下三个筛选选项：
 
-* **容器筛选器** - 指定用于在执行目录搜索时限定容器记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (|(objectClass=organizationalUnit)(objectClass=container))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的容器对象的筛选条件。  <br>注意：如果留空，将默认使用 ((objectClass=organizationalUnit)(objectClass=container))。
-* **安全组筛选器** - 指定用于在执行目录搜索时限定安全组记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的安全组对象的筛选条件。  <br>注意：如果留空，将默认使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。
-* **用户筛选器** - 指定用于在执行目录搜索时限定用户记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectClass=user)(objectCategory=person))。  对于其他 LDAP 目录，请根据目录架构使用 (objectClass=inetOrgPerson) 或类似语句。 <br>注意：如果留空，将默认使用 (&(objectCategory=person)(objectClass=user))。
+* **容器筛选器** - 指定用于在执行目录搜索时限定容器记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (|(objectClass=organizationalUnit)(objectClass=container))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的容器对象的筛选条件。  <br>请注意:如果留空，将默认使用 ((objectClass=organizationalUnit)(objectClass=container))。
+* **安全组筛选器** - 指定用于在执行目录搜索时限定安全组记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。  对于其他 LDAP 目录，请根据目录架构使用限定每种类型的安全组对象的筛选条件。  <br>请注意:如果留空，将默认使用 (&(objectCategory=group)(groupType:1.2.840.113556.1.4.804:=-2147483648))。
+* **用户筛选器** - 指定用于在执行目录搜索时限定用户记录的筛选条件。  对于 Active Directory 和 ADAM，通常使用 (&(objectClass=user)(objectCategory=person))。  对于其他 LDAP 目录，请根据目录架构使用 (objectClass=inetOrgPerson) 或类似语句。 <br>请注意:如果留空，将默认使用 (&(objectCategory=person)(objectClass=user))。
 
 ## <a name="attributes"></a>属性
 
@@ -117,8 +117,8 @@ Multi-Factor Auth AdSync 服务使用 Microsoft 提供的 DirSync LDAP 服务器
 
 | Feature | 描述 |
 | --- | --- |
-| 启用与 Active Directory 的同步 |如果选中此项，多重身份验证服务器服务将定期轮询 Active Directory 的更改。 <br><br>注意：必须先至少添加一个同步项并且必须执行“立即同步”，然后 Multi-Factor Auth 服务器服务才会开始处理更改。 |
-| 同步间隔 |指定 Multi-Factor Auth 服务器服务在轮询和处理更改之间需要等待的时间间隔。 <br><br> 注意：指定的时间间隔是每个周期开始之间的时间。  如果处理更改的时间超过了此时间间隔，该服务将立即重新轮询。 |
+| 启用与 Active Directory 的同步 |如果选中此项，多重身份验证服务器服务将定期轮询 Active Directory 的更改。 <br><br>请注意:必须先至少添加一个同步项并且必须执行“立即同步”，然后 Multi-Factor Auth 服务器服务才会开始处理更改。 |
+| 同步间隔 |指定 Multi-Factor Auth 服务器服务在轮询和处理更改之间需要等待的时间间隔。 <br><br> 请注意:指定的时间间隔是每个周期开始之间的时间。  如果处理更改的时间超过了此时间间隔，该服务将立即重新轮询。 |
 | 删除不再在 Active Directory 中的用户 |选中此项时，Multi-Factor Auth 服务器服务将处理 Active Directory 已删除用户的逻辑删除并删除相关的 Multi-Factor Auth 服务器用户。 |
 | 始终执行完全同步 |选中此项时，Multi-Factor Auth服务器服务将始终执行完全同步。  未选中此项时，Multi-Factor Auth 服务器服务将通过只查询已更改的用户来执行增量同步。  默认情况下处于未选中状态。 <br><br>如果未选中此项，仅当目录支持 DirSync 控件并且用于绑定到目录的帐户有权执行 DirSync 增量查询时，Azure MFA 服务器才执行增量同步。  如果该帐户没有相应的权限或者同步操作涉及多个域，Azure MFA 服务器将执行完全同步。 |
 | 将禁用或删除 X 个以上的用户时，需要管理员批准 |可以配置同步项以禁用或删除不再属于该项的容器或安全组的用户。  为安全起见，可以规定当要禁用或删除的用户的数量超过阈值时，必须获得管理员的批准。  如果选中此项，需要审批指定的阈值。  默认值为 5，范围为 1 到 999。 <br><br> 可以先向管理员发送电子邮件通知以加快批准速度。 电子邮件通知为审阅和批准用户禁用和删除操作提供说明。  启动 Multi-Factor Auth 服务器用户界面时，会提示需要进行审批。 |

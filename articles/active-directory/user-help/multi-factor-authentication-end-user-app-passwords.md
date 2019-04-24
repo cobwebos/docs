@@ -15,11 +15,11 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c6790fa1cbb10999a751b31bcb27db2edcb67b4a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517745"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60334900"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>管理双重验证的应用密码
 
@@ -55,7 +55,7 @@ ms.locfileid: "58517745"
 
 2. 选择右上角的姓名，然后选择“个人资料”。
 
-3. 选择“其他安全性验证” 。
+3. 选择“其他安全性验证”。
 
    ![选择“其他安全性验证”- 屏幕截图](./media/multi-factor-authentication-end-user-app-passwords/myapps1.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "58517745"
 
 6. 键入应用密码的名称，然后选择“下一步”。
 
-7. 将应用密码复制到剪贴板，并将它粘贴到用户的应用。
+7. 将应用密码复制到剪贴板，并将它粘贴到你的应用。
    
     ![创建应用密码](./media/multi-factor-authentication-end-user-app-passwords/create2.png)
 

@@ -1,7 +1,6 @@
 ---
 title: 适用于 Azure 预留自动化的 API | Microsoft Docs
 description: 了解 Azure API，以便通过它以编程方式获取预留信息。
-services: billing
 documentationcenter: ''
 author: yashesvi
 manager: yashesvi
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 04/13/2019
 ms.author: banders
-ms.openlocfilehash: 7e5697073b9406d915eda99a5e71e3123c48073a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 246278df61d4f13e2634a1cdfc5ff6b635cecbbf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880206"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371200"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>适用于 Azure 预留自动化的 API
 
@@ -55,7 +54,7 @@ ms.locfileid: "57880206"
 
 - 确保组织创建的虚拟机数与预留的 VM 大小相匹配。
 - 确保已启用实例大小灵活性。 有关详细信息，请参阅[管理预留 - 更改预留 VM 实例的优化设置](billing-manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances)。
-- 将预留范围更改为共享，使其应用得更广。 有关详细信息，请参阅[管理预留 - 更改预留的范围](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation)。
+- 将预留范围更改为共享，使其应用得更广。 有关详细信息，请参阅[管理预留 - 更改预留的范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
 - 交换未使用的数量。 有关详细信息，请参阅[管理预留 - 取消和交换](billing-manage-reserved-vm-instance.md#cancellations-and-exchanges)。
 
 ## <a name="give-access-to-reservations"></a>授予对预留的访问权限
@@ -68,7 +67,7 @@ ms.locfileid: "57880206"
 
 ## <a name="split-or-merge-reservation"></a>拆分或合并预留
 
-购买一个预留中的多个资源实例后，可能会希望将一个预留中的实例分配给其他订阅。 可以更改预留范围，使之适用于同一计费上下文中的所有订阅。 但出于成本管理或预算目的，可能需要将范围保留为“单个订阅”，将预留实例分配给特定的订阅。 
+购买一个预留中的多个资源实例后，可能会希望将一个预留中的实例分配给其他订阅。 可以更改预留范围，使之适用于同一计费上下文中的所有订阅。 但出于成本管理或预算目的，可能需要将范围保留为“单个订阅”，将预留实例分配给特定的订阅。
 
 若要拆分某个预留，请使用 API [预留 - 拆分](/rest/api/reserved-vm-instances/reservation/split)。 也可使用 PowerShell 来拆分预留。 有关详细信息，请参阅[管理预留 - 将一个预留拆分成两个预留](billing-manage-reserved-vm-instance.md#split-a-single-reservation-into-two-reservations)。
 
@@ -76,7 +75,7 @@ ms.locfileid: "57880206"
 
 ## <a name="change-scope-for-a-reservation"></a>更改预留范围
 
-预订范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留将与所选订阅中正在运行的资源匹配。 如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预留的订阅。 有关详细信息，请参阅[管理预留 - 更改范围](billing-manage-reserved-vm-instance.md#change-the-scope-for-a-reservation)。
+预订范围可以是计费上下文中的单个订阅或所有订阅。 如果将范围设置为单个订阅，预留将与所选订阅中正在运行的资源匹配。 如果将范围设置为共享，Azure 会将预留与计费上下文内所有订阅中运行的资源匹配。 计费上下文依赖于用于购买预留的订阅。 有关详细信息，请参阅[管理预留 - 更改范围](billing-manage-reserved-vm-instance.md#change-the-reservation-scope)。
 
 若要以编程方式更改范围，请使用 API [预留 - 更新](/rest/api/reserved-vm-instances/reservation/update)。
 

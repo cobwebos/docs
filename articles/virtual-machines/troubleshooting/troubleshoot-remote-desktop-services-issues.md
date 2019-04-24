@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/23/2018
 ms.author: genli
-ms.openlocfilehash: c9accf09da240f6d3235edd3c9da1876529d8654
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.openlocfilehash: 5458a02c09a3600875c7300b27c5a87a735b2f1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318865"
 ---
 # <a name="remote-desktop-services-isnt-starting-on-an-azure-vm"></a>远程桌面服务在 Azure VM 上不启动
 
@@ -57,8 +57,8 @@ ms.locfileid: "58650736"
 之所以发生此问题，是因为远程桌面服务未在 VM 上运行。 未运行的原因取决于以下情况： 
 
 - TermService 服务设置为“已禁用”。 
-- TermService 服务崩溃或挂起。 
-- 不开始 TermService 由于配置不正确。
+- TermService 服务崩溃或没有响应。 
+- 错误的配置导致 TermService 不启动。
 
 ## <a name="solution"></a>解决方案
 

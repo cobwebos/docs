@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 9e2a4075436145a0cc185b7ab1b406fa8d27b8e3
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55867828"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309328"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>使用排名显示实体搜索结果  
 
@@ -24,7 +24,7 @@ ms.locfileid: "55867828"
 在每个组中，[项](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items)数组标识了内容必须显示的顺序。 每个项提供两种方法来标识答案中的结果。  
  
 
-|字段 | 说明  |
+|字段 | 描述  |
 |---------|---------|
 |`answerType` 和 `resultIndex` | `answerType` 标识答案（实体或位置），`resultIndex` 标识该答案中的结果（例如某个实体）。 索引从 0 开始。|
 |`value`    | `value` 包含一个 ID，它与答案或答案中结果的 ID 匹配。 答案或结果包含 ID，而不是同时包含。 |

@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f795571de275453738d23e80885f4d9006ca3a20
-ms.sourcegitcommit: 7f7c2fe58c6cd3ba4fd2280e79dfa4f235c55ac8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/25/2019
-ms.locfileid: "56804444"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60195007"
 ---
 # <a name="custom-roles-for-azure-resources"></a>Azure 资源的自定义角色
 
@@ -72,7 +72,7 @@ ms.locfileid: "56804444"
 
 1. 确定所需的权限
 
-    创建自定义角色时，需要知道可用于定义权限的资源提供程序操作。 若要查看操作的列表，请参阅[Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。 你将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
+    创建自定义角色时，需要知道可用于定义权限的资源提供程序操作。 若要查看操作列表，请参阅 [Azure 资源管理器资源提供程序操作](resource-provider-operations.md)。 你将操作添加到[角色定义](role-definitions.md)的 `Actions` 或 `NotActions` 属性。 如果有数据操作，请将这些操作添加到 `DataActions` 或 `NotDataActions` 属性。
 
 1. 创建自定义角色
 

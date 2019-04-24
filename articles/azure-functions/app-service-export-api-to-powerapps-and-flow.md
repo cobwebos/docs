@@ -12,15 +12,15 @@ ms.date: 12/15/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.openlocfilehash: 9f4bbf91b09abeb917fd9f49482881e33bf788ec
-ms.sourcegitcommit: 82cdc26615829df3c57ee230d99eecfa1c4ba459
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/19/2019
-ms.locfileid: "54413928"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499483"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>将 Azure 托管的 API 导出到 PowerApps 和 Microsoft Flow
 
-[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 是用于构建和使用可跨平台连接到数据和工作的自定义商业应用程序的服务。 通过 [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/)，可在喜爱的应用和服务之间轻松自动执行工作流和业务流程。 PowerApps 和 Microsoft Flow 都附带了连接到数据源（如 Office 365、Dynamics 365、Salesforce 等）的各种内置连接器。 在某些情况下，应用和流生成器也希望连接到其组织构建的数据源和 API。
+[PowerApps](https://powerapps.microsoft.com/guided-learning/learning-introducing-powerapps/) 是用于构建和使用可跨平台连接到数据和工作的自定义商业应用程序的服务。 [Microsoft Flow](https://flow.microsoft.com/guided-learning/learning-introducing-flow/) 可在偏好的应用与服务之间轻松自动执行工作流和业务流程。 PowerApps 和 Microsoft Flow 都附带了连接到数据源（如 Office 365、Dynamics 365、Salesforce 等）的各种内置连接器。 在某些情况下，应用和流生成器也希望连接到其组织构建的数据源和 API。
 
 同样，希望在组织内较大范围公开其 API 的开发人员可向应用和流生成器提供其 API。 本主题说明如何导出使用 [Azure Functions](../azure-functions/functions-overview.md) 或 [Azure App Service](../app-service/overview.md) 生成的 API。 导出的 API 将成为自定义连接器，它在 PowerApps 和 Microsoft Flow 中的用法与内置连接器类似。
 
@@ -66,7 +66,7 @@ ms.locfileid: "54413928"
 
 2. 使用表中指定的设置。
 
-    |设置|说明|
+    |设置|描述|
     |--------|------------|
     |**环境**|选择自定义连接器应保存到的环境。 有关详细信息，请参阅[环境概述](https://powerapps.microsoft.com/tutorials/environments-overview/)。|
     |**自定义 API 名称**|输入名称，PowerApps 和 Microsoft Flow 生成器将在其连接器列表中看到。|

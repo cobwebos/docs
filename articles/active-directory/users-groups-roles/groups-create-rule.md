@@ -15,11 +15,11 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f828ff83e6b9c60eb08edef7f47e88185fb5aef8
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199675"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472104"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>创建动态组并检查状态
 
@@ -50,7 +50,7 @@ ms.locfileid: "58199675"
 
 ## <a name="turn-on-or-off-welcome-email"></a>打开或关闭欢迎电子邮件
 
-创建新的 Office 365 组后，欢迎使用的通知将发送的用户添加到组。 更高版本，如果用户或设备的任何属性发生更改，在组织中的所有动态组规则处理的成员身份更改。 然后添加的用户还收到欢迎使用通知。 您可以关闭此行为[Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)。 
+创建新的 Office 365 组后，欢迎使用的通知将发送的用户添加到组。 更高版本，如果用户或设备的任何属性发生更改，在组织中的所有动态组规则处理的成员身份更改。 添加的用户也会收到欢迎通知。 您可以关闭此行为[Exchange PowerShell](https://docs.microsoft.com/powershell/module/exchange/users-and-groups/Set-UnifiedGroup?view=exchange-ps)。 
 
 ## <a name="check-processing-status-for-a-rule"></a>检查规则的处理状态
 

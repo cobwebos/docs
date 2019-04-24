@@ -17,11 +17,11 @@ ms.date: 07/25/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0a9c1d13c1d51eeadae3ef9dad71e64618d1a5fe
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57444695"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60523028"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workstars"></a>教程：Azure Active Directory 与 Workstars 集成
 
@@ -193,7 +193,7 @@ ms.locfileid: "57444695"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
   
 ### <a name="create-a-workstars-test-user"></a>创建 Workstars 测试用户
 

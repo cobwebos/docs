@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: f5e3186a4271e0be781f367fa75ada195c58c960
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 51632b8b68640814fc113a94925b6d6deaca4c5c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111435"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482463"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>使用 StorSimple Snapshot Manager 连接和管理 StorSimple 设备
 ## <a name="overview"></a>概述
@@ -27,15 +27,15 @@ ms.locfileid: "23111435"
 
 ![已连接的设备](./media/storsimple-snapshot-manager-manage-devices/HCS_SSM_connect_devices.png)
 
-**图 1：StorSimple Snapshot Manager 已连接的设备** 
+图 1：**StorSimple Snapshot Manager 连接的设备** 
 
 根据“**查看**”选择，“**结果**”窗格中会显示有关每个设备的以下信息。 有关配置视图的详细信息，请转到 [“查看”菜单](storsimple-use-snapshot-manager.md#view-menu)。
 
-| 结果列 | 说明 |
+| 结果列 | 描述 |
 |:--- |:--- |
 | Name |在 Azure 经典门户中配置的设备的名称 |
 | 模型 |设备的型号 |
-| 版本 |在设备上安装的软件的版本 |
+| Version |在设备上安装的软件的版本 |
 | 状态 |设备是否可用 |
 | 上次同步时间 |上次同步设备时的日期和时间 |
 | 序列号 |设备的序列号 |
@@ -182,7 +182,7 @@ ms.locfileid: "23111435"
 如果 StorSimple 设备发生故障而且已由备用（故障转移）设备替换，请使用以下步骤连接到新设备并查看关联的备份。
 
 #### <a name="to-connect-to-a-new-device-after-failover"></a>在故障转移后连接到新设备
-1. 重新配置到新设备的 iSCSI 连接。 有关说明，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)中的“步骤 7：装载、初始化和格式化卷”。
+1. 重新配置到新设备的 iSCSI 连接。 有关说明，请转到"步骤 7:装载、 初始化和格式化卷"中[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。
 
 > [!NOTE]
 > 如果新 StorSimple 设备与旧设备具有相同的 IP 地址，则可以连接旧配置。
@@ -204,7 +204,7 @@ ms.locfileid: "23111435"
    2. 在“服务”窗口中，选择“Microsoft StorSimple Management Service”。
    3. 在右窗格的“Microsoft StorSimple Management Service”下，单击“重新启动服务”。
 4. 启动 StorSimple Snapshot Manager。
-5. 若要配置新 StorSimple 设备，请完成[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md) 中“第 2 步：连接 StorSimple 设备”中的步骤。
+5. 若要配置新的 StorSimple 设备，完成步骤 2 中的步骤：连接在 StorSimple 设备[部署 StorSimple Snapshot Manager](storsimple-snapshot-manager-deployment.md)。
 6. 右键单击“**作用域**”窗格中的顶级节点（示例中为 StorSimple Snapshot Manager），并单击“**切换导入显示**”。 
 7. 当导入的卷组和备份在 StorSimple Snapshot Manager 中可见时，则会出现一条消息。 单击“确定”。
 

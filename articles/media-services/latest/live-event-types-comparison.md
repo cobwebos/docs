@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: juliako
 ms.openlocfilehash: 9952a7bbac1eb79de0d3425f839e3bd30196844e
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322278"
 ---
 # <a name="live-event-types-comparison"></a>实时事件类型比较
 
@@ -57,7 +57,7 @@ ms.locfileid: "57243884"
 
 ## <a name="system-presets"></a>系统预设
 
-使用实时编码时 (实时事件设置为**标准**)，编码预设定义如何将传入流编码为多个比特率或图层。 目前，唯一允许的值为预设*Default720p* （默认值）。
+使用实时编码（实时事件设置为**标准**）时，编码预设定义了如何将传入的流编码为多个比特率或图层。 目前，唯一允许的值为预设*Default720p* （默认值）。
 
 Default720p 会将视频编码为以下 6 层。
 
@@ -73,7 +73,7 @@ Default720p 会将视频编码为以下 6 层。
 | 200 |340 |192 |30 |高 |Video_340x192_200kbps |
 
 > [!NOTE]
-> 如果您需要使用自定义的实时编码预设，请联系amshelp@microsoft.com。 您应指定所需的表的分辨率和比特率。 不要验证只有一个图层 720p 和最多 6 层。
+> 如果你需要使用自定义的实时编码预设，请联系 amshelp@microsoft.com。 你应当指定所需的分辨率和比特率的表。 请确认只有一个 720p 的图层，最多有 6 个图层。
 
 ### <a name="output-audio-stream"></a>输出音频流
 

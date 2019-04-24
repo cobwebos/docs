@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: 8f71f42386ce49d4d7178cb03d28d74edacd7e39
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57836940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371302"
 ---
 # <a name="understand-terms-on-your-azure-usage-and-charges-csv-for-a-microsoft-customer-agreement"></a>了解 Microsoft 客户协议的条款 Azure 使用情况和费用 CSV
 
@@ -38,10 +38,10 @@ Azure 使用情况和费用 CSV 文件包含当前计费期间的每日和测定
 
 | EA Azure 使用情况 CSV | Microsoft 客户协议 Azure 使用情况和费用 CSV |
 | --- | --- |
-| 日期 | 日期 |
-| 月份| 日期 |
-| 日期 | 日期 |
-| 年龄 | 日期 |
+| date | date |
+| 月份| date |
+| 日期 | date |
+| 年龄 | date |
 | 产品 | product |
 | 计量 ID | meterID |
 | 计量类别 | meterCategory |
@@ -86,7 +86,7 @@ billingPeriodStartDate | 为其生成发票的计费周期开始日期
 billingPeriodEndDate | 为其生成发票的计费周期结束日期
 servicePeriodStartDate | 分级周期的开始日期的已定义和锁定的已使用或购买服务的定价
 servicePeriodEndDate | 分级周期的结束日期的已定义和锁定的已使用或购买服务的定价
-日期 | 对于 Azure 和 Marketplace 基于使用量的费用，这是分级日期。 对于一次性购买 （预订、 Marketplace） 或固定周期性费用 （支持产品/服务），这是在购买日期。
+date | 对于 Azure 和 Marketplace 基于使用量的费用，这是分级日期。 对于一次性购买 （预订、 Marketplace） 或固定周期性费用 （支持产品/服务），这是在购买日期。
 serviceFamily | 服务所属的服务系列
 productOrderId | 产品订单的唯一标识符
 productOrderName | 产品订单的唯一名称

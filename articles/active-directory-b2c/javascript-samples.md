@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: ea1b4bd904a9936c401f6b0ea6ac9663c20bc92b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: 3645945400bcc58cdf11721458bfab529d89f0b7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400040"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397084"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
@@ -140,7 +140,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-在代码中，将 `terms-of-use-url` 替换使用条款协议的链接。 为目录创建一个名为“termsOfUse”的属性，然后将它作为用户工作流的用户属性。
+在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 为目录创建一个名为“termsOfUse”的属性，然后将它作为用户工作流的用户属性。
 
 ## <a name="next-steps"></a>后续步骤
 

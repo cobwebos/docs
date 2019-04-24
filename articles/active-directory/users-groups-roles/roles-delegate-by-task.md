@@ -16,11 +16,11 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 59c06ae83327683942885190e4b401617dc020f9
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58361364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60468311"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>在 Azure Active Directory 中按管理员任务委托管理员角色
 
@@ -150,8 +150,8 @@ ms.locfileid: "58361364"
 管理组到期时间 | 用户管理员 | 
 管理组设置 | 全局管理员角色 | 
 读取所有配置（隐藏成员身份除外） | 目录读者 | 默认用户角色（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)）
-读取隐藏成员身份 | 组成员 | 组所有者、 密码管理员、 Exchange 管理员、 SharePoint 管理员、 团队管理员、 用户管理员
-读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户管理员、 团队管理员
+读取隐藏成员身份 | 组成员 | 组所有者、密码管理员、Exchange 管理员、SharePoint 管理员、Teams 管理员、用户管理员
+读取具有隐藏成员身份的组的成员身份 | 支持管理员 | 用户管理员、Teams 管理员
 撤销许可证 | 许可证管理员 | 用户管理员
 更新组成员身份 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员
 更新组所有者 | 组所有者（[请参阅文档](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)） | 用户管理员

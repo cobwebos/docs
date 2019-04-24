@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04-04-2019
 ms.author: barbaraselden
 ms.reviewer: ''
-ms.openlocfilehash: fe8f9f271599d688878d61aee64273690d02c2b8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
+ms.openlocfilehash: 44393f80ab6ea01f0c2f52cb01dcd6241fab3d2d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685705"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60442524"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>计划的 Azure AD 应用程序代理部署
 
@@ -158,7 +158,7 @@ Azure Active Directory (Azure AD) 应用程序代理是在本地应用程序的�
 3. 然后添加你的应用程序的 SSO 方法，并再次测试来验证的访问。
 4. 将条件性访问和所需的 MFA 策略的应用。 测试和验证的访问。
 
-**故障排除工具**:故障排除时，应始终首先从连接器主机上的浏览器验证到已发布的应用程序的访问，并确认应用程序能按预期方式。 越简单设置，更轻松地以确定根本原因，因此请考虑尝试重现问题的最小配置，如使用单个连接器和任何 SSO。 在某些情况下，web 调试 Telerik 的 Fiddler 等工具可以证明不可或缺通过代理访问的应用程序中的访问权限或内容问题进行疑难解答。 Fiddler 还可以充当代理来帮助跟踪和调试适用于 iOS 和 Android 等移动平台的流量，几乎任何内容，可以进行配置为通过代理路由。 请参阅[故障排除指南](/application-proxy-troubleshoot.md)有关详细信息。
+**故障排除工具**:故障排除时，应始终首先从连接器主机上的浏览器验证到已发布的应用程序的访问，并确认应用程序能按预期方式。 越简单设置，更轻松地以确定根本原因，因此请考虑尝试重现问题的最小配置，如使用单个连接器和任何 SSO。 在某些情况下，web 调试 Telerik 的 Fiddler 等工具可以证明不可或缺通过代理访问的应用程序中的访问权限或内容问题进行疑难解答。 Fiddler 还可以充当代理来帮助跟踪和调试适用于 iOS 和 Android 等移动平台的流量，几乎任何内容，可以进行配置为通过代理路由。 请参阅[故障排除指南](application-proxy-troubleshoot.md)有关详细信息。
 
 ## <a name="implement-your-solution"></a>实现你的解决方案
 

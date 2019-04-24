@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 11/03/2017
 ms.openlocfilehash: 0d79bc167ea0416218a4d4822bcd6221699643ca
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60346994"
 ---
 # <a name="manage-azure-machine-learning-studio-web-services-using-api-management"></a>使用 API 管理以管理 Azure 机器学习工作室 Web 服务
 ## <a name="overview"></a>概述
@@ -38,12 +38,12 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 选择“+ 创建资源”。
 3. 在搜索框中键入“API 管理”，然后选择“API 管理”资源。
-4. 单击“创建”。
+4. 单击**创建**。
 5. “名称”值用于创建唯一 URL（本示例使用“demoazureml”）。
 6. 为服务实例选择**订阅**、**资源组**和**位置**。
 7. 指定“组织名称”的值（本示例使用“demoazureml”）。
 8. 输入“管理员电子邮件”- 此电子邮件用于接收 API 管理系统发出的通知。
-9. 单击“创建”。
+9. 单击**创建**。
 
 创建新服务最多可能需要 30 分钟。
 
@@ -168,7 +168,7 @@ Azure API 管理是一项 Azure 服务，支持通过定义用户访问权限、
 ### <a name="creating-the-experiment"></a>创建实验
 下面是创建简单 AzureML 实验并将其部署为 Web 服务的步骤。 采用任意文本列作为输入，并返回以整数形式表示的功能集。 例如：
 
-| 文本 | 经过哈希处理的文本 |
+| Text | 经过哈希处理的文本 |
 | --- | --- |
 | 今天天气不错 |1 1 2 2 0 2 0 1 |
 

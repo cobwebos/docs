@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d982ea49bdc24ccd9894c98435f1e3012d9dd156
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.openlocfilehash: f6877c3e547d625cf58129a546dae798b37a24ae
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59581041"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60469088"
 ---
 # <a name="assign-azure-active-directory-admin-roles-using-powershell"></a>将使用 PowerShell 的 Azure Active Directory 管理员角色分配
 
-您可以自动化如何将角色分配给用户帐户使用 Azure PowerShell。 本文使用[Azure Active Directory PowerShell 版本 2](https:/docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles)模块。
+您可以自动化如何将角色分配给用户帐户使用 Azure PowerShell。 本文使用[Azure Active Directory PowerShell 版本 2](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0#directory_roles)模块。
 
 ## <a name="prepare-powershell"></a>准备 PowerShell
 

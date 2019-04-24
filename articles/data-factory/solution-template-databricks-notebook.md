@@ -13,11 +13,11 @@ ms.date: 12/10/2018
 ms.author: abnarain
 ms.reviewer: douglasl
 ms.openlocfilehash: 562ce675acc43002ce468d60f8a8c412410be86c
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60395141"
 ---
 # <a name="transform-data-by-using-databricks-in-azure-data-factory"></a>在 Azure 数据工厂中使用 Databricks 转换数据
 
@@ -31,7 +31,7 @@ ms.locfileid: "58630813"
 
 模板不会创建计划的触发器，以确保此模板简单好用。 如有必要，可添加触发器。
 
-![第](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
+![1](media/solution-template-Databricks-notebook/Databricks-tutorial-image01.png)
 
 ## <a name="prerequisites"></a>必备组件
 

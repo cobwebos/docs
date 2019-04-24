@@ -1,7 +1,6 @@
 ---
 title: 在 Azure HDInsight 中使用 Power BI 直观显示交互式查询 Hive 数据
 description: 在 Azure HDInsight 中使用 Microsoft Power BI 直观显示交互式查询 Hive 数据
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/25/2018
 ms.openlocfilehash: d9639a4a116e06e17005ebddbb26379882491b33
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867824"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483686"
 ---
 # <a name="visualize-interactive-query-apache-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>在 Azure HDInsight 中使用 Microsoft Power BI 通过直接查询直观显示交互式查询 Apache Hive 数据
 
@@ -48,7 +47,7 @@ ms.locfileid: "56867824"
 
 6. 在中**HDInsight 交互式查询**窗口中，输入以下信息，然后选择**确定**:
 
-    |属性 | 值 |
+    |属性 | Value |
     |---|---|
     |服务器 |输入群集名称，例如*myiqcluster.azurehdinsight.net*。|
     |数据库 |输入**默认**本文。|

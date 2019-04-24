@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: 6436193dadb5933074fdce861a31672a0f4849de
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55227329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313118"
 ---
 # <a name="demo-password-reset"></a>演示：密码重置
 本教程展示了一个简单的技术支持机器人，它可以帮助进行密码重置（由 Conversation Learner 提供的功能）。 此机器人的模型可以学习重要的对话流和多轮序列，包括域外类。 此任务可以在没有代码或实体的情况下完成。

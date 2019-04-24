@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: sewatson
-ms.openlocfilehash: 13fe8d81c656aeb07947fcd8b2c8a9157b810ca6
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: bd5951fe86bde7e71c77d5564216421c1d2d1ea4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61227107"
 ---
 # <a name="azure-cosmos-db-documentation"></a>Azure Cosmos DB 文档
 
@@ -51,10 +51,10 @@ Azure Cosmos DB 是一个全球分布式数据库服务，使用它可以跨任�
 
 了解如何使用 Azure Cosmos DB 开发应用：
 
-- 使用 Cosmos DB 开发应用：[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [表](/azure/cosmos-db/tutorial-develop-table-dotnet) | [图](/azure/cosmos-db/tutorial-develop-graph-dotnet)
+- 使用 Cosmos DB 开发应用：[SQL](/azure/cosmos-db/tutorial-develop-sql-api-dotnet) | [MongoDB](/azure/cosmos-db/tutorial-develop-mongodb-nodejs) | [表](/azure/cosmos-db/tutorial-develop-table-dotnet) | [图形](/azure/cosmos-db/tutorial-develop-graph-dotnet)
 - 将数据导入 Cosmos DB [SQL](/azure/cosmos-db/sql-api-import-data) | [MongoDB](/azure/cosmos-db/mongodb-migrate) 
 - 使用 Cosmos DB 查询数据：[SQL](/azure/cosmos-db/tutorial-query-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-query-mongodb) | [表](/azure/cosmos-db/tutorial-query-table) | [图形](/azure/cosmos-db/tutorial-query-graph)
-- 通过 Cosmos DB 进行的全局数据库复制：[SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [表](/azure/cosmos-db/tutorial-global-distribution-table | [图](/azure/cosmos-db/tutorial-global-distribution-graph)
+- 使用 Cosmos DB 进行全局数据库复制：[SQL](/azure/cosmos-db/tutorial-global-distribution-sql-api) | [MongoDB](/azure/cosmos-db/tutorial-global-distribution-mongodb) | [表](/azure/cosmos-db/tutorial-global-distribution-table | [图形](/azure/cosmos-db/tutorial-global-distribution-graph)
 - [使用仿真程序本地开发应用程序](/azure/cosmos-db/local-emulator)
 
 ## <a name="samples"></a>示例

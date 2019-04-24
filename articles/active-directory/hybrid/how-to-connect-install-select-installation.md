@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 90a624a6b3b4696899af0d8606f653df260cc201
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60348274"
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>选择 Azure AD Connect 使用的安装类型
 Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定义安装。 本主题帮助用户确定安装期间要使用哪种选项。
@@ -53,7 +53,7 @@ Azure AD Connect 为全新安装提供两种安装类型：快速安装和自定
 使用时机：
 
 - 无法访问 Active Directory 中的企业管理员帐户。
-- 有多个林，或者计划将来要同步多个林。
+- 有多个林，或者计划在将来同步多个林。
 - 无法通过 Connect 服务器访问林中的域。
 - 计划对用户登录使用联合身份验证或传递身份验证。
 - 对象超过 100,000 个，并且需要使用完整的 SQL Server。

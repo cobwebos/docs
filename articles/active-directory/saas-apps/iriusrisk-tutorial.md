@@ -17,11 +17,11 @@ ms.date: 12/21/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2c862628fb05e7518166d8e782c2e64538de785e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60270257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iriusrisk"></a>教程：Azure Active Directory 与 IriusRisk 集成
 
@@ -162,7 +162,7 @@ ms.locfileid: "58652393"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-an-iriusrisk-test-user"></a>创建 IriusRisk 测试用户
 

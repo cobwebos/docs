@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 8ac0fbb1c62e4162e1c4ad040365a16d055e4552
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483155"
 ---
 # <a name="setup-your-application-in-the-publishing-portal"></a>在发布门户中设置应用程序
 
@@ -59,7 +59,7 @@ ms.locfileid: "58310011"
 
 通过此下拉列表，可以选择要在其下发布此产品/服务的发布者个人资料。 此字段在套餐推出后处于锁定状态。
 
-### <a name="name"></a>名称
+### <a name="name"></a>Name
 
 这是产品/服务的显示名称。 这是显示在 [AppSource](https://appsource.microsoft.com/) 中的名称。 该名称不能超过 50 个字符。
 
@@ -90,7 +90,7 @@ ms.locfileid: "58310011"
 
 在此部分，选择可以使用该包的 CRM 区域。 有关哪些区域为哪些国家/地区提供服务的信息，请参阅以下链接：[https://o365datacentermap.azurewebsites.net/](https://o365datacentermap.azurewebsites.net/)
 
-注意：部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
+请注意:部署到德国主权云和 US Gov 主权云需要特殊权限，且在认证期间需要验证
 
 ## <a name="storefront-details"></a>店面详细信息
 
@@ -106,7 +106,7 @@ ms.locfileid: "58310011"
 
 选择应用最适合的行业。 如果应用与多个行业相关，可将此字段留空。
 
-### <a name="categories"></a>类别
+### <a name="categories"></a>Categories
 
 选择与应用相关的类别。 最多选择 3 个类别。
 
@@ -193,4 +193,4 @@ AppSource 允许客户基于关键字执行搜索。 可以输入关键字集，
 
 ## <a name="storefront-details"></a>店面详细信息
 
-联系人详细信息仅用于合作伙伴与 Microsoft 之间的内部通信。 注意：必须在这些字段中使用受监视的电子邮件地址。 我们将使用此电子邮件来告知 AppSource 发布进度。 客户只会看到支持 URL。
+联系人详细信息仅用于合作伙伴与 Microsoft 之间的内部通信。 请注意:必须在这些字段中使用受监视的电子邮件地址。 我们将使用此电子邮件来告知 AppSource 发布进度。 客户只会看到支持 URL。

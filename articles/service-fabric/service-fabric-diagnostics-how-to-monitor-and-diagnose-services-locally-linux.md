@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: f0b850038a29dd0949def97b359b2b7a5ce920bc
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58659740"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60392851"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>在本地计算机开发安装过程中监视和诊断服务
 
@@ -37,7 +37,7 @@ ms.locfileid: "58659740"
 
 对于 Java 应用程序，可以使用[多个记录框架](https://en.wikipedia.org/wiki/Java_logging_framework)。 由于 `java.util.logging` 是 JRE 的默认选项，因此也适用于 [GitHub 中的代码示例](https://github.com/Azure-Samples/service-fabric-java-getting-started)。 以下内容说明如何配置 `java.util.logging` 框架。
 
-使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以通过创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
+使用 java.util.logging 可将应用程序日志重定向到内存、输出流、控制台文件或套接字。 对于其中的每个选项，框架中已提供默认处理程序。 可以创建 `app.properties` 文件来配置应用程序的文件处理程序，将所有日志重定向到本地文件。
 
 以下代码片段包含一个示例配置：
 
@@ -131,7 +131,7 @@ internal class ServiceEventListener : EventListener
 ```
 
 
-上述代码片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下代码片段：
+上述片段将日志输出到 `/tmp/MyServiceLog.txt` 中的文件。 需要相应地更新此文件名。 如果要将日志重定向到控制台，请在自定义的 EventListener 类中使用以下片段：
 
 ```csharp
 public static TextWriter Out = Console.Out;

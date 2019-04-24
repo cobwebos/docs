@@ -11,11 +11,11 @@ ms.date: 04/16/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 11361bc6ab75e873e1b4081dcfc6492abc093b54
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680258"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316929"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的令牌的概述
 
@@ -50,18 +50,18 @@ ID 令牌中的声明不按任何特定顺序返回。 新的声明可以在任�
 
 下表列出了可期望在 ID 令牌并访问由 Azure AD B2C 颁发的令牌的声明。
 
-| 名称 | 声明 | 示例值 | 描述 |
+| Name | 声明 | 示例值 | 描述 |
 | ---- | ----- | ------------- | ----------- |
 | 目标受众 | `aud` | `90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6` | 标识令牌的目标接收方。 对于 Azure AD B2C，受众是应用程序 id。 你的应用程序应验证此值，并拒绝该令牌，如果不匹配。 受众是资源的同义词。 |
 | 颁发者 | `iss` |`https://{tenant}.b2clogin.com/775527ff-9a37-4307-8b3d-cc311f58d925/v2.0/` | 标识构造并返回令牌的安全令牌服务 (STS)。 它还标识用户进行身份验证的目录。 你的应用程序应该验证颁发者声明，以确保令牌来自相应的终结点。 |
 | 颁发时间 | `iat` | `1438535543` | 颁发令牌的时间，以纪元时间表示。 |
 | 过期时间 | `exp` | `1438539443` | 令牌失效的时间，以纪元时间表示。 应用程序应使用此声明来验证令牌的生存期的有效性。 |
 | 生效时间 | `nbf` | `1438535543` | 令牌生效的时间，以纪元时间表示。 此时间通常是颁发令牌的时间相同。 应用程序应使用此声明来验证令牌的生存期的有效性。 |
-| 版本 | `ver` | `1.0` | ID 令牌，由 Azure AD B2C 定义的版本。 |
+| Version | `ver` | `1.0` | ID 令牌，由 Azure AD B2C 定义的版本。 |
 | 代码哈希 | `c_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 仅当令牌随 OAuth 2.0 授权代码一起颁发时包含在 ID 令牌代码哈希。 代码哈希可用于验证授权代码的真实性。 有关如何执行此验证的详细信息，请参阅[OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)。  |
 | 访问令牌哈希 | `at_hash` | `SGCPtt01wxwfgnYZy2VJtQ` | 访问令牌哈希仅当令牌随 OAuth 2.0 访问令牌一起颁发时包含在 ID 令牌。 访问令牌哈希可用于验证访问令牌的真实性。 有关如何执行此验证的详细信息，请参阅[OpenID Connect 规范](https://openid.net/specs/openid-connect-core-1_0.html)  |
 | Nonce | `nonce` | `12345` | Nonce 是缓和令牌重放攻击的策略。 你的应用程序可以通过使用授权请求中指定 nonce`nonce`查询参数。 在请求中提供的值，将发出未修改的形式在`nonce`仅在 ID 令牌的声明。 此声明允许应用程序以根据在请求上指定的值验证此值。 你的应用程序应执行此验证 ID 令牌验证过程。 |
-| 主题 | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 有关哪些令牌断言信息，例如应用程序的用户的主体。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
+| Subject | `sub` | `884408e1-2918-4cz0-b12d-3aa027d7563b` | 有关哪些令牌断言信息，例如应用程序的用户的主体。 此值是固定不变的，无法重新分配或重复使用。 可使用它安全地执行授权检查，例如，使用令牌访问资源时。 默认情况下，将使用目录中用户的对象 ID 填充使用者声明。 |
 | 身份验证上下文类引用 | `acr` | 不适用 | 仅与较旧的策略一起使用。 |
 | 信任框架策略 | `tfp` | `b2c_1_signupsignin1` | 用于获取 ID 令牌策略的名称。 |
 | 身份验证时间 | `auth_time` | `1438535543` | 用户上次输入凭据，以纪元时间表示。 |

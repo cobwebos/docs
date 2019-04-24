@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 02/19/2019
 ms.author: banders
 ms.openlocfilehash: eb6184e10d38cdcfad7070663e36f6610d009cdb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57880749"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371353"
 ---
 # <a name="understand-the-terms-in-your-price-sheet-for-a-microsoft-customer-agreement"></a>了解 Microsoft 客户协议的价格表中的条款
 
@@ -53,7 +53,7 @@ ms.locfileid: "57880749"
 | tierMinimumUnits  | 定义为其定义价格层范围的下限。 例如，如果该范围是 0 到 100，tierMinimumUnits 将为 0。  |
 | effectiveStartDate  | 开始价格生效的日期。 |
 | effectiveEndDate  | 有效的价格的结束日期。 |
-| unitPrice  | 每个单位时的计费 （不有效混合的价格） 的价格为特定于计量，并在产品的订单名称。  注意：单位价格与不相同时在层之间的差异的价格的服务下载使用情况详细信息中的有效价格。  如果使用多层定价的服务，发生有效价格跨层是混合型的速率并不会显示特定于层的单价。 混合的价格或有效的价格是已使用的数量可以扩展到多个层 （其中每个层都有特定的单价） 的 net 价格。 |
+| unitPrice  | 每个单位时的计费 （不有效混合的价格） 的价格为特定于计量，并在产品的订单名称。  请注意:单位价格与不相同时在层之间的差异的价格的服务下载使用情况详细信息中的有效价格。  如果使用多层定价的服务，发生有效价格跨层是混合型的速率并不会显示特定于层的单价。 混合的价格或有效的价格是已使用的数量可以扩展到多个层 （其中每个层都有特定的单价） 的 net 价格。 |
 | basePrice  | 客户登录时市场价格或市场价格时服务测定仪启动如果晚于单一登录。   |
 
 ## <a name="check-access-to-a-microsoft-customer-agreement"></a>检查与 Microsoft 客户协议的访问权限

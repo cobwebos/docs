@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: lyrana
 ms.openlocfilehash: 4ea4479d77e06940bed50859341952ffbcbbda46
-ms.sourcegitcommit: a4e4e0236197544569a0a7e34c1c20d071774dd6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51711049"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533820"
 ---
 # <a name="connect-and-authenticate-to-apis"></a>连接 API 并对其进行身份验证
 
@@ -25,11 +25,11 @@ Azure 数字孪生使用 Azure Active Directory (Azure AD) 对用户进行身份
 
 Azure AD 支持[五种主要应用程序方案](https://docs.microsoft.com/azure/active-directory/develop/v2-app-types)：
 
-* 单页应用程序 (SPA)：用户需要登录到受 Azure AD 保护的单页应用程序。
-* Web 浏览器到 Web 应用程序：用户需要登录到受 Azure AD 保护的 Web 应用程序。
-* 本机应用程序到 Web API：在手机、平板电脑或电脑上运行的本机应用程序需要对用户进行身份验证以通过受 Azure AD 保护的 Web API 获取资源。
-* Web 应用程序到 Web API：Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
-* 守护程序或服务器应用程序到 Web API：没有 Web UI 的守护程序应用程序或服务器应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
+* 单页面应用程序 (SPA):用户需要登录到由 Azure AD 保护的单页面应用程序。
+* Web 浏览器到 web 应用程序：用户需要登录到由 Azure AD 保护的 web 应用程序。
+* 本机应用程序到 web API:在手机、 平板电脑或电脑运行的本机应用程序需要进行身份验证以从 web API 获取资源的 Azure AD 所保护的用户。
+* Web 应用程序到 web API:Web 应用程序需要通过受 Azure AD 保护的 Web API 获取资源。
+* 后台或服务器应用程序到 web API:后台应用程序或任何 web 服务器应用程序 UI 将需要从 Azure AD 所保护的 web API 获取资源。
 
 Microsoft Azure 身份验证库提供多种方法，用于获取 Active Directory 令牌。 有关库和代码示例的详细信息，请参阅[此文](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki)。
 

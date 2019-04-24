@@ -122,7 +122,7 @@ ms.locfileid: "52443621"
 }  
 ```  
   
-##  <a name="Product"></a> 产品  
+##  <a name="Product"></a> Product  
  **产品**模板可用于自定义开发人员门户中产品页的正文。  
   
  ![开发人员门户产品页](./media/api-management-product-templates/APIM_ProductPage.png "APIM_ProductPage")  
@@ -205,7 +205,7 @@ ms.locfileid: "52443621"
   
 |属性|类型|Description|  
 |--------------|----------|-----------------|  
-|Product|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
+|Products|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
 |IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |Limits|数组|此属性已弃用，不应使用。|  

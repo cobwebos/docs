@@ -17,11 +17,11 @@ ms.date: 09/19/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
 ms.openlocfilehash: 08c7e84a27a4c8e9527083360dbd08296bd86775
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54190039"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542455"
 ---
 # <a name="preview-create-a-shared-image-gallery-with-the-azure-cli"></a>预览版：使用 Azure CLI 创建共享映像库
 
@@ -33,7 +33,7 @@ ms.locfileid: "54190039"
 
 共享映像库功能具有多种资源类型。 我们将在本文中使用或生成这些资源类型：
 
-| 资源 | Description|
+| 资源 | 描述|
 |----------|------------|
 | **托管映像** | 这是基本映像，可以单独使用，也可用于在映像库中创建“映像版本”。 托管映像是从通用 VM 创建的。 托管映像是一种特殊的 VHD 类型，可用于生成多个 VM，并且现在可用于创建共享映像版本。 |
 | **映像库** | 与 Azure 市场一样，**映像库**是用于管理和共享映像的存储库，但你可以控制谁有权访问这些映像。 |

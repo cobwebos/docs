@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/29/2017
 ms.author: yizhon
 ms.openlocfilehash: dd3b693271326c85688a275a65b67ad6257220e3
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024746"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60400688"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关 IoTHubClient 的详细信息
 
@@ -66,7 +66,7 @@ IoTHubClient_Destroy(iotHubClientHandle);
 
 这些函数的 API 名称中都包含“LL”。 除了名称的 **LL** 部分之外，其中每个函数的参数都与其非 LL 的对应项相同。 但是，这些函数的行为有一个重要的差异。
 
-调用 **IoTHubClient\_CreateFromConnectionString** 时，基础库将创建在后台运行的新线程。 此线程将事件发送到 IoT 中心以及从 IoT 中心接收消息。 使用 **LL** API 时不会创建此类线程。 创建后台线程是为了给开发人员提供方便。 无需担心如何明确与 IoT 中心相互发送和接收消息 -- 此操作会在后台自动进行。 相比之下，**LL** API 可让你根据需要显式控制与 IoT 中心的通信。
+当你调用 **IoTHubClient\_CreateFromConnectionString** 时，基础库将创建在后台运行的新线程。 此线程将事件发送到 IoT 中心以及从 IoT 中心接收消息。 使用 **LL** API 时不会创建此类线程。 创建后台线程是为了给开发人员提供方便。 无需担心如何明确与 IoT 中心相互发送和接收消息 -- 此操作会在后台自动进行。 相比之下，**LL** API 可让你根据需要显式控制与 IoT 中心的通信。
 
 为了更好地理解此概念，让我们看一个示例：
 
@@ -86,7 +86,7 @@ message.messageHandle = IoTHubMessage_CreateFromByteArray((const unsigned char*)
 IoTHubClient_LL_SendEventAsync(iotHubClientHandle, message.messageHandle, SendConfirmationCallback, &message)
 ```
 
-前三行创建消息，最后一行发送事件。 但是，如前所述，发送事件意味着数据只是放在缓冲区中。 当我们调用 **IoTHubClient\_LL\_SendEventAsync** 时，不会在网络上传输任何内容。 要实际将数据引入 IoT 中心，必须调用 **IoTHubClient\_LL\_DoWork**，如以下示例所示：
+前三行创建消息，最后一行发送事件。 但是，如前所述，发送事件意味着数据只是放在缓冲区中。 当我们调用 **IoTHubClient\_LL\_SendEventAsync** 时，不会在网络上传输任何内容。 若要实际将数据引入 IoT 中心，必须调用 **IoTHubClient\_LL\_DoWork**，如以下示例所示：
 
 ```C
 while (1)
@@ -96,7 +96,7 @@ while (1)
 }
 ```
 
-此代码（来自 **iothub\_client\_sample\_http** 应用程序）反复调用 **IoTHubClient\_LL\_DoWork**。 每次 **IoTHubClient\_LL\_DoWork** 被调用时，会将某些事件从缓冲区发送到 IoT 中心，并检索正在发送到设备的排队消息。 对于后一种情况，意味着如果已注册消息的回调函数，则调用回调（假设所有消息都已加入队列）。 使用如下代码来注册此类回调函数：
+此代码（来自 **iothub\_client\_sample\_http** 应用程序）反复调用 **IoTHubClient\_LL\_DoWork**。 每次 **IoTHubClient\_LL\_DoWork** 被调用时，它会将某些事件从缓冲区发送到 IoT 中心，并检索正在发送到设备的排队消息。 对于后一种情况，意味着如果已注册消息的回调函数，则调用回调（假设所有消息都已加入队列）。 使用如下代码来注册此类回调函数：
 
 ```C
 IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallback, &receiveContext)
@@ -216,7 +216,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT ReceiveMessageCallback(IOTHUB_MESSAGE_HA
 
 对于前两个返回代码，**IoTHubClient** 库会将消息发送到 IoT 中心，指示应该从设备队列中删除消息且不再传送。 最终结果一样（从设备队列删除消息），但仍记录是已接受还是已拒绝消息。  对于可听取反馈并了解设备是已接受还是拒绝特定消息的消息发送者而言，记录这种区分信息的功能非常有用。
 
-在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 如果遇到了错误但想要再次尝试处理消息，通常会放弃消息。 相比之下，遇到不可恢复的错误（或者只是决定你不想要处理消息）时，拒绝消息是适当的方式。
+在最后一个案例中，消息也会发送到 IoT 中心，但指示应重新传送消息。 如果遇到了错误但想要再次尝试处理消息，通常会放弃消息。 相比之下，当遇到不可恢复的错误（或者只是决定你不想要处理消息）时，拒绝消息是适当的方式。
 
 在任何情况下，请留意不同的返回代码，以便能够推测 **IoTHubClient** 库的行为。
 
@@ -235,7 +235,7 @@ iotHubClientHandle = IoTHubClient_CreateFromConnectionString(connectionString, A
 HostName=IOTHUBNAME.IOTHUBSUFFIX;DeviceId=DEVICEID;SharedAccessKey=SHAREDACCESSKEY
 ```
 
-此字符串包含四个信息片段：IoT 中心名称、IoT 中心后缀、设备 ID 和共享访问密钥。 在 Azure 门户中创建 IoT 中心实例时，可以获取 IoT 中心的完全限定域名 (FQDN) - 它提供了 IoT 中心名称（FQDN 的第一个部分）和 IoT 中心后缀（FQDN 的其余部分）。 向 IoT 中心注册设备时，可以获取设备 ID 和共享访问密钥（如[前一篇文章](iot-hub-device-sdk-c-intro.md)中所述）。
+有四个部分的此字符串中的信息：IoT 中心名称、 IoT 中心后缀、 设备 ID 和共享的访问密钥。 在 Azure 门户中创建 IoT 中心实例时，可以获取 IoT 中心的完全限定域名 (FQDN) - 它提供了 IoT 中心名称（FQDN 的第一个部分）和 IoT 中心后缀（FQDN 的其余部分）。 向 IoT 中心注册设备时，可以获取设备 ID 和共享访问密钥（如[前一篇文章](iot-hub-device-sdk-c-intro.md)中所述）。
 
 **IoTHubClient\_CreateFromConnectionString** 提供了初始化库的方式。 如果需要，可以使用其中的每个参数而不是设备连接字符串来创建新的 **IOTHUB\_CLIENT\_HANDLE**。 使用以下代码即可实现此目的：
 
@@ -251,7 +251,7 @@ IOTHUB_CLIENT_HANDLE iotHubClientHandle = IoTHubClient_LL_Create(&iotHubClientCo
 
 结果将与使用 **IoTHubClient\_CreateFromConnectionString** 相同。
 
-显然，更想要使用 **IoTHubClient\_CreateFromConnectionString**，而不是这种更繁琐的初始化方法。 但请记住，在 IoT 中心注册设备时，获得的是设备 ID 和设备密钥（而不是连接字符串）。 [前一篇文章](iot-hub-device-sdk-c-intro.md)中介绍的设备资源管理器 SDK 工具使用 **Azure IoT 服务 SDK** 中的库，通过设备 ID、设备密钥和 IoT 中心主机名创建设备连接字符串。 因此调用 **IoTHubClient\_LL\_Create** 可能更好，因为这样可以免除生成连接字符串的步骤。 使用任何一种方法都很方便。
+显然，更想要使用 **IoTHubClient\_CreateFromConnectionString**，而不是这种更繁琐的初始化方法。 但请记住，当在 IoT 中心注册设备时，获得的是设备 ID 和设备密钥（而不是连接字符串）。 [前一篇文章](iot-hub-device-sdk-c-intro.md)中介绍的设备资源管理器 SDK 工具使用 **Azure IoT 服务 SDK** 中的库，通过设备 ID、设备密钥和 IoT 中心主机名创建设备连接字符串。 因此调用 **IoTHubClient\_LL\_Create** 可能更好，因为这样可以免除生成连接字符串的步骤。 使用任何一种方法都很方便。
 
 ## <a name="configuration-options"></a>配置选项
 

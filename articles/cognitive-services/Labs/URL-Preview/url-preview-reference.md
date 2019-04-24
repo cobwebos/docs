@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 03/29/2018
 ms.author: rosh
 ms.openlocfilehash: 69db722295c9c81d45913bd078fe9cc5ab74c512
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58104703"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60462582"
 ---
 # <a name="project-url-preview-v7-reference"></a>项目 URL 预览 v7 参考
 
@@ -73,7 +73,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="query-parameters"></a>查询参数
 请求可以包含以下查询参数。 请查看所需参数的“必需”列。 必须对查询参数进行 URL 编码。 查询必须是使用 http 或 https 方案的绝对 URL；我们不支持相对 URL 或其他方案（如 ftp://）
 
-|名称|值|Type|需要|
+|Name|Value|Type|需要|
 |----------|-----------|----------|--------------|
 |<a name="mkt" />mkt|产生结果的市场。 <br /><br />如需获取可能的市场值列表，请参阅“市场代码”。<br /><br /> **注意：** URL 预览 API 目前仅支持美国地理和英语。<br /><br />|String|是|
 |<a name="query" />q|要预览的 URL|String|是|
@@ -83,7 +83,7 @@ q - 标识要预览的 URL 的查询
 ## <a name="response-objects"></a>响应对象
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
-|对象|描述|
+|Object|描述|
 |------------|-----------------|
 |[WebPage](#webpage)|包含预览属性的顶级 JSON 对象。|
 
@@ -102,7 +102,7 @@ q - 标识要预览的 URL 的查询
 ### <a name="errorresponse"></a>ErrorResponse
 请求失败时响应包含的顶级对象。
 
-|名称|值|Type|
+|Name|Value|Type|
 |----------|-----------|----------|
 |_type|类型提示。|String|
 |<a name="errors" />errors|错误的列表，用于说明请求失败原因。|[Error](#error)[]|
@@ -110,16 +110,16 @@ q - 标识要预览的 URL 的查询
 ### <a name="webpage"></a>WebPage
 定义预览版网页的信息。
 
-|名称|值|Type|
+|Name|Value|Type|
 |----------|-----------|----------|
 |名称|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|
 |description|对页面和内容的简要说明|String|
-|isFamilyFriendly|对 Web 索引中的项来说最准确；实时提取完全根据 URL 而非页面内容来执行此检测|布尔值|
+|isFamilyFriendly|对 Web 索引中的项来说最准确；实时提取完全根据 URL 而非页面内容来执行此检测|boolean|
 |primaryImageOfPage/contentUrl|将包括在预览版中的代表性图像的 URL|String|
 
 ### <a name="identifiable"></a>Identifiable
-|名称|值|Type|
+|Name|Value|Type|
 |-------------|-----------------|----------|
 |id|一个资源标识符|String|
 

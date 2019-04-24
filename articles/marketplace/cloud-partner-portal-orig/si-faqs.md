@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ec7fc3a7877cf0bffac0043a74c34d6f0f04826b
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362367"
 ---
 <a name="seller-insights-faq"></a>Seller Insights FAQ
 ===================
@@ -36,7 +36,7 @@ ms.locfileid: "48805831"
 <a name="see-customer-details-of-transactions-for-which-ive-been-paid"></a>查看已付款交易的客户详细信息
 -------------------------------------------------------------
 
-从“付款”模块下载交易后，找到“付款状态”列，再应用筛选器，以筛选出“已付款”值。 此时，系统会显示以下包含客户详细信息的列：“公司名称”、“客户电子邮件地址”、“客户所在国家/地区”、“客户所在州/省/自治区/直辖市”和“客户邮政编码”。
+从“付款”模块下载交易后，找到“付款状态”列，再应用筛选器，以筛选出“已付款”值。 以下各列将出现包含客户详细信息：**公司名称**，**客户电子邮件**，**客户所在国家/地区**，**客户状态**，并且**客户邮政编码**。
 
 
 <a name="calculate-my-open-accounts-receivable"></a>计算我的未结应收帐款
@@ -48,7 +48,7 @@ ms.locfileid: "48805831"
 <a name="calculate-revenue-by-customer-usage-period"></a>按客户使用期计算收入
 ------------------------------------------
 
-从“付款”模块下载交易后，找到“交易状态”列，再筛选出“已付款”值。   对于列出的每个交易，“付款金额(PC)”列表示已付款金额。  若要估算与交易关联的使用期，请使用“收费日期”列，它表示交易适用的使用期的最后一日近似值。
+下载后您的交易记录付款模块中，找到标记为的列 **事务状态**，并筛选"付费"的值。   为列出的每个事务，标记为的列 **付款金额 (PC)** 表示已支付的金额。  若要估计与事务相关联的使用期限，请使用该列 **收费日期**，这是近似的事务应用于段内的最后一天的使用情况。
 
 
 <a name="calculate-your-bad-debt"></a>计算呆帐
@@ -104,5 +104,5 @@ ms.locfileid: "48805831"
 
 - [Seller Insights 定义](./si-insights-definitions-v4.md) - 查找指标和数据的定义
 
-- [Seller Insights 入门](./si-getting-started.md) - Seller Insights 功能介绍。
+- [Seller Insights 入门](./si-getting-started.md) - Seller Insights 功能简介。
 
