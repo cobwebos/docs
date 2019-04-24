@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 11/14/2018
 ms.openlocfilehash: 712ccfa71c85629111428a4e0c7acaea050942b8
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58483737"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331328"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>在 Azure SQL 数据同步中自动复制架构更改
 

@@ -15,11 +15,11 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91ac6b4530414850c52605bac8cb701aa2b877d4
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607290"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60473063"
 ---
 # <a name="delete-a-directory-in-azure-active-directory"></a>删除 Azure Active Directory 的目录中
 
@@ -42,11 +42,11 @@ ms.locfileid: "59607290"
 
 3. 切换到你想要删除的目录。
   
-   ![确认删除之前的组织](./media/directory-delete-howto/delete-directory-command.png)
+   ![在删除之前确认组织](./media/directory-delete-howto/delete-directory-command.png)
 
 4. 选择“删除目录”。
   
-   ![选择要删除的组织的命令](./media/directory-delete-howto/delete-directory-list.png)
+   ![选择用于删除组织的命令](./media/directory-delete-howto/delete-directory-list.png)
 
 5. 如果你的目录不会通过一个或多个检查，你要提供如何将传递的详细信息的链接。 通过所有检查后，选择“删除”以完成此过程。
 
@@ -111,23 +111,23 @@ Deleted | 删除的数据 | 用户不能访问自助服务注册产品、 文件
 
 2. 选择**许可证**，然后选择 **自助服务注册产品**。 您可以看到所有自助服务注册中的产品单独基于席位的订阅。 选择你想要永久删除的产品。 下面是在 Microsoft Power BI 中的示例：
 
-    ![键入了错误或找不到用户名](./media/directory-delete-howto/licenses-page.png)
+    ![键入错误的用户名，或者找不到该用户名](./media/directory-delete-howto/licenses-page.png)
 
 3. 选择 **删除** 若要删除的产品并接受条款删除数据后，立即且不可撤销。 此删除操作将删除所有用户，并都删除对该产品的组织访问权限。 单击是以继续进行删除。  
 
-    ![键入了错误或找不到用户名](./media/directory-delete-howto/delete-product.png)
+    ![键入错误的用户名，或者找不到该用户名](./media/directory-delete-howto/delete-product.png)
 
 4. 当选择**是**，将启动自助服务产品的删除操作。 没有将告诉您删除正在进行中的通知。  
 
-    ![键入了错误或找不到用户名](./media/directory-delete-howto/progress-message.png)
+    ![键入错误的用户名，或者找不到该用户名](./media/directory-delete-howto/progress-message.png)
 
 5. 现在，自助服务注册产品状态已更改为**已删除**。 刷新页面时，应从删除产品**自助服务注册产品**页。  
 
-    ![键入了错误或找不到用户名](./media/directory-delete-howto/product-deleted.png)
+    ![键入错误的用户名，或者找不到该用户名](./media/directory-delete-howto/product-deleted.png)
 
 6. 后已删除所有产品，可以返回到 Azure AD 管理员中心再次注册，并且应该没有所需的操作和阻止目录删除任何产品。 您应能够成功地删除你的 Azure AD 目录。
 
-    ![键入了错误或找不到用户名](./media/directory-delete-howto/delete-organization.png)
+    ![键入错误的用户名，或者找不到该用户名](./media/directory-delete-howto/delete-organization.png)
 
 ## <a name="next-steps"></a>后续步骤
 

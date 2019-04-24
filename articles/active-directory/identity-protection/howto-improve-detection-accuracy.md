@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7724d69a9294b420ca061d5ad26ad64826372203
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517668"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60453203"
 ---
 # <a name="how-to-improve-the-detection-accuracy"></a>如何：提高检测精度 
 
@@ -126,7 +126,7 @@ Identity Protection 提供了可将环境中的风险检测反馈给 Azure AD �
 
 
 
-## <a name="best-practices"></a>最佳实践
+## <a name="best-practices"></a>最佳做法
 
 如果此举被用户风险策略阻止，并且由于未启用密码重置和/或 MFA 而无法自我修复，那么消除用户风险是一种解除阻止的方法。 在此情况下，最好确保用户随后注册了密码重置和 MFA，以便在将来能够自行修复任何风险事件。
 

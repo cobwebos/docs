@@ -16,11 +16,11 @@ ms.date: 02/26/2019
 ms.author: kumud
 ms.custom: seodec18
 ms.openlocfilehash: fe095b8f5a0080c0f28ec570303c9dc23962dfc8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57869806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60507854"
 ---
 # <a name="quickstart-create-a-basic-load-balancer-by-using-the-azure-portal"></a>快速入门：使用 Azure 门户创建基本负载均衡器
 
@@ -37,11 +37,11 @@ ms.locfileid: "57869806"
 1. 在屏幕的左上方，单击“创建资源” > “网络” > “负载均衡器”。
 2. 在“创建负载均衡器”页的“基本”选项卡中输入或选择以下信息，接受其余的默认设置，然后选择“查看 + 创建”：
 
-    | 设置                 | 值                                              |
+    | 设置                 | Value                                              |
     | ---                     | ---                                                |
     | 订阅               | 选择订阅。    |    
     | 资源组         | 选择“新建”并在文本框中键入 MyResourceGroupLB。|
-    | 名称                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | 区域         | 选择“西欧”。                                        |
     | Type          | 选择“公共”。                                        |
     | SKU           | 选择“基本”。                          |
@@ -81,7 +81,7 @@ ms.locfileid: "57869806"
      1. 在下拉列表中选择“可用性集”。 
      2. 选择“新建”，键入 *MyAvailabilitySet*，然后选择“确定”。
   
-1. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:****网络”。 
+1. 选择“网络”选项卡，或选择“下一步: **磁盘”，然后选择“下一步:****网络”**。 
    
    确保选中以下项：
    - **虚拟网络**：**MyVnet**

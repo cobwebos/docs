@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 1bd049e6f929b6c3247ca1842412d5527605e643
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669973"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516600"
 ---
 # <a name="service-movement-cost"></a>服务移动成本
 尝试确定要对群集进行哪些更改时，Service Fabric 群集资源管理器考虑的一个因素是这些更改的成本。 “成本”这一概念根据能够改进的群集量而权衡。 移动服务以满足均衡、碎片整理和其他要求时，成本是一项考虑因素。 目标是以最稳妥或最便宜的方式满足这些要求。 
@@ -80,7 +80,7 @@ MoveCost 有四个级别：零、低、中和高。 MoveCost 是相对于彼此�
 
 <center>
 
-![选择要移动的副本的一个因素到移动成本][Image1]
+![选择要移动的副本时考虑到移动成本因素][Image1]
 </center>
 
 MoveCost 可帮助我们在达成对等的均衡时，查找整体导致最少中断且最容易实现的解决方案。 服务的成本概念可以相对于许多事项。 计算移动成本时的最常见因素包括：

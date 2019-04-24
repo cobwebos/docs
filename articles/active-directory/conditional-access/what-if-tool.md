@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6271c7a99e82fb1fff2815167b0149c74212f260
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521867"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60354281"
 ---
 # <a name="what-is-the-what-if-tool-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的模拟工具是什么？
 
@@ -31,13 +31,13 @@ ms.locfileid: "58521867"
 
 本文介绍如何使用此工具来测试条件访问策略。
 
-## <a name="what-it-is"></a>描述
+## <a name="what-it-is"></a>作用
 
 通过“条件访问模拟策略工具”，可了解条件访问策略对环境的影响。 通过此工具，可以评估模拟的用户登录，而不是通过手动执行多个登录来驱动策略的测试。 该模拟会估计此登录对策略的影响并生成模拟报表。 报表不仅列出应用的条件访问策略，还列出[经典策略](policy-migration.md#classic-policies)（如果存在）。    
 
 此外，模拟工具还提供一种方法，用于快速确定应用于特定用户的策略。 如果需要解决问题等，则可以使用此信息。  
 
-## <a name="how-it-works"></a>如何运作
+## <a name="how-it-works"></a>工作原理
 
 在“条件访问模拟工具”中，首先需要配置想要模拟的登录方案的设置。 这些设置包括：
 
@@ -102,7 +102,7 @@ IP 地址为单个 IPv4 地址，用于模拟[位置条件](location-condition.m
 此设置模拟[登录风险条件](conditions.md#sign-in-risk)。   
 
 
-## <a name="evaluation"></a>评估 
+## <a name="evaluation"></a>计算 
 
 通过单击“模拟”启动评估。 评估结果提供包含以下内容的报表： 
 

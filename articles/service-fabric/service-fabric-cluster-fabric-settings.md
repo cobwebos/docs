@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 04/10/2019
 ms.author: aljo
 ms.openlocfilehash: 46c9b37e9bb8613b34dea6705320f5689eeb51d8
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386816"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>自定义 Service Fabric 群集设置
 本文介绍可以自定义的 Service Fabric 群集的各种结构设置。 对于 Azure 中托管的群集，可以通过 [Azure 门户](https://portal.azure.com)或使用 Azure 资源管理器模板自定义设置。 有关详细信息，请参阅[升级 Azure 群集配置](service-fabric-cluster-config-upgrade-azure.md)。 对于独立群集，可通过更新 ClusterConfig.json 文件并对群集执行配置升级来自定义设置。 有关详细信息，请参阅[升级独立群集的配置](service-fabric-cluster-config-upgrade-windows-server.md)。
@@ -378,7 +378,7 @@ ms.locfileid: "59526531"
 
 | **Parameter** | **允许的值** | **升级策略** | **指导或简短说明** |
 | --- | --- | --- | --- |
-|已启用 |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
+|Enabled |Bool，默认值为 false |静态|ImageStoreService 的已启用标志。 默认值：false |
 |MinReplicaSetSize | Int，默认值为 3 |静态|ImageStoreService 的 MinReplicaSetSize。 |
 |PlacementConstraints | string，默认值为“” |静态| ImageStoreService 的 PlacementConstraints。 |
 |QuorumLossWaitDuration | 以秒为单位的时间，默认值为 MaxValue |静态| 指定以秒为单位的时间范围。 ImageStoreService 的 QuorumLossWaitDuration。 |

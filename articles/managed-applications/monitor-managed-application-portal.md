@@ -10,11 +10,11 @@ ms.tgt_pltfrm: na
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: 754d2a246a86585e9f05f8a070c51e158f73affd
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342589"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253595"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>监视部署的托管应用程序实例
 

@@ -20,11 +20,11 @@ ms.reviewer: sureshja
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2dfbf920a0e1fc002f3bcbe90164e1fd13a0b978
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56168036"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60411483"
 ---
 # <a name="how-to-use-the-azure-ad-graph-api"></a>如何：使用 Azure AD 图形 API
 
@@ -56,7 +56,7 @@ Azure Active Directory (Azure AD) 图形 API 通过 OData REST API 终结点提�
 
 [Azure AD 图形 API 常见查询](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries)列出了可与 Azure AD Graph 配合使用的常见查询，包括可用于访问目录中的顶层资源的查询，以及用于在目录中执行操作的查询。
 
-例如，`https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` 将返回目录 contoso.com 的公司信息。
+例如， `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` 返回目录 contoso.com 的公司信息。
 
 `https://graph.windows.net/contoso.com/users?api-version=1.6` 将列出目录 contoso.com 中的所有用户对象。
 

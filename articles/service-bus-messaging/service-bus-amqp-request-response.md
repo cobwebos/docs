@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c22ba0b57ed1161e1f7e2082d2ba21f27b656da1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60402677"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure 服务总线：基于请求-响应的操作中的 AMQP 1.0
 
@@ -154,7 +154,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败。|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -189,7 +189,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -226,10 +226,10 @@ properties: {
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|message-id|字符串|是|`amqpMessage.Properties.MessageId`，充当字符串|  
-|session-id|字符串|否|`amqpMessage.Properties.GroupId as string`|  
-|partition-key|字符串|否|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
-|via-partition-key|字符串|否|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
+|message-id|string|是|`amqpMessage.Properties.MessageId`，充当字符串|  
+|session-id|string|否|`amqpMessage.Properties.GroupId as string`|  
+|partition-key|string|否|`amqpMessage.MessageAnnotations.”x-opt-partition-key"`|
+|via-partition-key|string|否|`amqpMessage.MessageAnnotations."x-opt-via-partition-key"`|
 |message|字节数组|是|AMQP 1.0 连线编码消息。|  
   
 #### <a name="response"></a>响应  
@@ -239,7 +239,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败。|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -273,7 +273,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败。|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -300,7 +300,7 @@ properties: {
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|字符串|是|会话 ID。|  
+|session-id|string|是|会话 ID。|  
   
 #### <a name="response"></a>响应  
 
@@ -309,7 +309,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -336,7 +336,7 @@ properties: {
 |---------|----------------|--------------|--------------------|  
 |from-sequence-number|long|是|从其开始速览的序列号。|  
 |message-count|int|是|要扫视的消息的最大数目。|  
-|session-id|字符串|是|会话 ID。|  
+|session-id|string|是|会话 ID。|  
   
 #### <a name="response"></a>响应  
 
@@ -345,7 +345,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -376,7 +376,7 @@ properties: {
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|字符串|是|会话 ID。|  
+|session-id|string|是|会话 ID。|  
 |session-state|字节数组|是|不透明的二进制数据。|  
   
 #### <a name="response"></a>响应  
@@ -386,7 +386,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 ### <a name="get-session-state"></a>获取会话状态  
 
@@ -405,7 +405,7 @@ properties: {
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|session-id|字符串|是|会话 ID。|  
+|session-id|string|是|会话 ID。|  
   
 #### <a name="response"></a>响应  
 
@@ -414,7 +414,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -450,7 +450,7 @@ properties: {
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 有更多消息<br /><br /> 204：无内容 – 没有更多消息|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -476,7 +476,7 @@ properties: {
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|字符串|是|规则名称，不包括订阅和主题名称。|  
+|rule-name|string|是|规则名称，不包括订阅和主题名称。|  
 |rule-description|map|是|规则说明，详见下一部分。|  
   
 rule-description 映射必须包含以下条目，其中 sql-filter 和 correlation-filter 互斥：  
@@ -491,27 +491,27 @@ sql-filter 映射必须包含以下条目：
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|expression|字符串|是|Sql 筛选器表达式。|  
+|expression|string|是|Sql 筛选器表达式。|  
   
 correlation-filter 映射至少必须包含以下条目之一：  
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|correlation-id|字符串|否||  
-|message-id|字符串|否||  
-|to|字符串|否||  
-|reply-to|字符串|否||  
-|label|字符串|否||  
-|session-id|字符串|否||  
-|reply-to-session-id|字符串|否||  
-|content-type|字符串|否||  
-|属性|map|否|映射到服务总线 [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。|  
+|correlation-id|string|否||  
+|message-id|string|否||  
+|至|string|否||  
+|reply-to|string|否||  
+|label|string|否||  
+|session-id|string|否||  
+|reply-to-session-id|string|否||  
+|content-type|string|否||  
+|properties|map|否|映射到服务总线 [BrokeredMessage.Properties](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)。|  
   
 sql-rule-action 映射必须包含以下条目：  
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|expression|字符串|是|Sql 操作表达式。|  
+|expression|string|是|Sql 操作表达式。|  
   
 #### <a name="response"></a>响应  
 
@@ -520,7 +520,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 ### <a name="remove-rule"></a>删除规则  
   
@@ -537,7 +537,7 @@ sql-rule-action 映射必须包含以下条目：
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|rule-name|字符串|是|规则名称，不包括订阅和主题名称。|  
+|rule-name|string|是|规则名称，不包括订阅和主题名称。|  
   
 #### <a name="response"></a>响应  
 
@@ -546,7 +546,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 ### <a name="get-rules"></a>获取规则
 
@@ -586,12 +586,12 @@ sql-rule-action 映射必须包含以下条目：
 |索引|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 | 0 | 所描述对象的数组 | 是 | `filter` 如下所述。 |
-| 第 | 所描述对象的数组 | 是 | `ruleAction` 如下所述。 |
-| 2 | 字符串 | 是 | 规则名称。 |
+| 1 | 所描述对象的数组 | 是 | `ruleAction` 如下所述。 |
+| 2 | string | 是 | 规则名称。 |
 
 `filter` 可以是以下任一类型：
 
-| 描述符名称 | 描述符代码 | 值 |
+| 描述符名称 | 描述符代码 | Value |
 | --- | --- | ---|
 | `com.microsoft:sql-filter:list` | 0x000001370000006 | SQL 筛选器 |
 | `com.microsoft:correlation-filter:list` | 0x000001370000009 | 关联筛选器 |
@@ -602,25 +602,25 @@ sql-rule-action 映射必须包含以下条目：
 
 |索引|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-| 0 | 字符串 | 是 | SQL 筛选表达式 |
+| 0 | string | 是 | SQL 筛选表达式 |
 
 `com.microsoft:correlation-filter:list` 是描述数组，它包括：
 
 |索引（如果存在）|值类型|值内容|  
 |---------|----------------|--------------|
-| 0 | 字符串 | 相关性 ID |
-| 第 | 字符串 | 消息 ID |
-| 2 | 字符串 | 目标 |
-| 3 | 字符串 | 回复 |
-| 4 | 字符串 | Label |
-| 5 | 字符串 | 会话 ID |
-| 6 | 字符串 | 会话 ID 回复|
-| 7 | 字符串 | 内容类型 |
+| 0 | string | 相关性 ID |
+| 1 | string | 消息 ID |
+| 2 | string | 目标 |
+| 3 | string | 回复 |
+| 4 | string | Label |
+| 5 | string | 会话 ID |
+| 6 | string | 会话 ID 回复|
+| 7 | string | 内容类型 |
 | 8 | 映射 | 定义属性的应用程序的映射 |
 
 `ruleAction` 可以是以下任一类型：
 
-| 描述符名称 | 描述符代码 | 值 |
+| 描述符名称 | 描述符代码 | Value |
 | --- | --- | ---|
 | `com.microsoft:empty-rule-action:list` | 0x0000013700000005 | 空规则操作 - 不存在任何规则操作 |
 | `com.microsoft:sql-rule-action:list` | 0x0000013700000006 | SQL 规则操作 |
@@ -656,7 +656,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
-|statusDescription|字符串|否|状态的说明。|  
+|statusDescription|string|否|状态的说明。|  
   
 响应消息正文必须包含 amqp-value 部分，其中所含映射必须包括以下条目：  
   
@@ -688,10 +688,10 @@ sql-rule-action 映射必须包含以下条目：
   
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
-|disposition-status|字符串|是|已完成<br /><br /> 已放弃<br /><br /> 已暂停|  
+|disposition-status|string|是|已完成<br /><br /> 已放弃<br /><br /> 已暂停|  
 |lock-tokens|uuid 数组|是|消息锁定标记，用于更新处理状态。|  
-|deadletter-reason|字符串|否|如果处理状态设置为“已暂停”，则可进行设置。|  
-|deadletter-description|字符串|否|如果处理状态设置为“已暂停”，则可进行设置。|  
+|deadletter-reason|string|否|如果处理状态设置为“已暂停”，则可进行设置。|  
+|deadletter-description|string|否|如果处理状态设置为“已暂停”，则可进行设置。|  
 |properties-to-modify|map|否|要修改的服务总线中转消息属性的列表。|  
   
 #### <a name="response"></a>响应  
@@ -701,7 +701,7 @@ sql-rule-action 映射必须包含以下条目：
 |密钥|值类型|必须|值内容|  
 |---------|----------------|--------------|--------------------|  
 |statusCode|int|是|HTTP 响应代码 [RFC2616]<br /><br /> 200：正常 – 成功，其他表示失败|  
-|statusDescription|字符串|否|状态的说明。|
+|statusDescription|string|否|状态的说明。|
 
 ## <a name="next-steps"></a>后续步骤
 

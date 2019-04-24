@@ -2,18 +2,18 @@
 title: Azure 文件同步本地防火墙和代理设置 | Microsoft Docs
 description: Azure 文件同步本地网络配置
 services: storage
-author: fauhse
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 11/26/2018
-ms.author: fauhse
+ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 35904c3854ddbcf3648c8a226d56f73be890b6ad
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58481491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60460475"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Azure 文件同步代理和防火墙设置
 Azure 文件同步可以将本地服务器连接到 Azure 文件，启用多站点同步和云分层功能。 因此，本地服务器必须连接到 Internet。 IT 管理员需确定服务器访问 Azure 云服务的最佳路径。
@@ -86,7 +86,7 @@ Set-StorageSyncProxyConfiguration -Address <url> -Port <port number> -ProxyCrede
 
       net stop filesyncsvc
 
-      注意：存储同步代理 (filesyncsvc) 服务在停止后会自动启动。
+      请注意:存储同步代理 (filesyncsvc) 服务在停止后会自动启动。
 
 ## <a name="firewall"></a>防火墙
 如前面的部分所述，端口 443 需对外开放。 可能需要进一步对通过此端口流向特定域的流量进行限制，具体取决于所在数据中心、分支或区域的策略。

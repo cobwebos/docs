@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 3c7eace7c643286575e2625cb81f84d858bbaa8f
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55172742"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317915"
 ---
 # <a name="azure-ad-b2c-sign-in-using-an-ios-application"></a>Azure AD B2C：使用 iOS 应用程序登录
 

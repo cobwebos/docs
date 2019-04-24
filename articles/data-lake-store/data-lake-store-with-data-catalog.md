@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
 ms.openlocfilehash: fd887560c0011fb1ec2141e33f02f7e3d8a39c81
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877878"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60196488"
 ---
 # <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>在 Azure 数据目录中从 Azure Data Lake Storage Gen1 注册数据
 本文介绍如何将 Azure Data Lake Storage Gen1 与 Azure 数据目录集成，以便通过将其与数据目录集成，使数据在组织内可发现。 了解对数据进行分类的详细信息，请参阅 [Azure 数据目录](../data-catalog/data-catalog-what-is-data-catalog.md)。 若要了解可以在其中使用数据目录的方案，请参阅 [Azure 数据目录常见方案](../data-catalog/data-catalog-common-scenarios.md)。

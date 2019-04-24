@@ -5,37 +5,37 @@ services: active-directory
 keywords: AD DS 帐户, Active Directory 帐户, 密码
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.subservice: hybrid
-ms.author: billmath
-ms.collection: M365-identity-device-management
+ms.topic: article
+origin.date: 07/12/2017
+ms.date: 11/09/2018
+ms.component: hybrid
+ms.author: v-junlch
 ms.openlocfilehash: 35e04be046e20883f60c576745a29342add68a81
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196355"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60241590"
 ---
 # <a name="changing-the-ad-ds-account-password"></a>更改 AD DS 帐户密码
-AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，Synchronization 不再能正确与本地 Active Directory 同步，且会遇到以下错误：
+AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用户帐户。 如果更改 AD DS 帐户的密码，则必须使用新密码更新 Azure AD Connect Synchronization Service。 否则，同步服务将再也不能正确地通过本地 Active Directory 进行同步，会遇到以下错误：
 
-* 在 Synchronization Service Manager 中，本地 AD 的导入/导出操作失败，出现 **no-start-credentials** 错误。
+- 在 Synchronization Service Manager 中，本地 AD 的导入/导出操作失败，出现 **no-start-credentials** 错误。
 
-* 在 Windows 事件查看器下，应用程序事件日志包含一个错误，**事件 ID 为 6000**，消息为 **“管理代理‘contoso.com’未能运行，因为凭据无效”**。
+- 在 Windows 事件查看器下，应用程序事件日志包含一个错误，**事件 ID 为 6000**，消息为 **“管理代理‘contoso.com’未能运行，因为凭据无效”**。
 
 
 ## <a name="how-to-update-the-synchronization-service-with-new-password-for-ad-ds-account"></a>如何使用 AD DS 帐户的新密码更新 Synchronization Service
 使用新密码更新 Synchronization Service：
 
-1. 启动 Synchronization Service Manager（“开始”→ 同步服务）。
+1. 启动 Synchronization Service Manager（“开始”→“同步服务”）。
 </br>![Sync Service Manager](./media/how-to-connect-sync-change-addsacct-pass/startmenu.png)  
 
 2. 转到“连接器”选项卡。
@@ -55,6 +55,7 @@ AD DS 帐户指 Azure AD connect 用来与本地 Active Directory 通信的用�
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
+- [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
 
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+- [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: e51061dc781e4ec6e822cde9cc450887ff3b1368
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 9aee881844e9338cc1da2484a94c8355f2516c82
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061179"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252008"
 ---
 # <a name="microsoftcommonoptionsgroup-ui-element"></a>Microsoft.Common.OptionsGroup UI 元素
 一个具有一行可用选项的选择控件。

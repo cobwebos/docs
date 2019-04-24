@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: f3bc1789d0b521b0d91ca42ebe472fed0225d87b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.openlocfilehash: 0996c64acaa5e65061d80974fc428bad2dd8d4ad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360267"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>教程：在 Azure Active Directory B2C 中自定义用户界面体验
 
@@ -30,7 +30,7 @@ ms.locfileid: "55752375"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 [创建用户流](tutorial-create-user-flows.md)以便用户注册并登录到你的应用程序。
 

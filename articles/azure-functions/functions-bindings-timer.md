@@ -14,11 +14,11 @@ ms.date: 09/08/2018
 ms.author: cshoe
 ms.custom: ''
 ms.openlocfilehash: 0779ca2083691949821999322a3d732aed7b2694
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57760761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60310037"
 ---
 # <a name="timer-trigger-for-azure-functions"></a>Azure Functions 的计时器触发器 
 
@@ -50,7 +50,7 @@ ms.locfileid: "57760761"
 
 ### <a name="c-example"></a>C# 示例
 
-下面的示例演示[C#函数](functions-dotnet-class-library.md)分钟具有整除值每次执行的五个 (例如如果函数起始于 18:57:00，则下一步性能将会在 19:00:00)。 [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象传递到函数。
+以下示例显示了一个 [C# 函数](functions-dotnet-class-library.md)，每当分钟的值可被 5 整除时，就执行该函数（例如，如果函数起始于 18:57:00，则下一次执行函数的时间为 19:00:00）。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) 对象将传递到函数中。
 
 ```cs
 [FunctionName("TimerTriggerCSharp")]
@@ -66,7 +66,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ### <a name="c-script-example"></a>C# 脚本示例
 
-以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象传递到函数。
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [C# 脚本函数](functions-reference-csharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) 对象将传递到函数中。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -94,7 +94,7 @@ public static void Run(TimerInfo myTimer, ILogger log)
 
 ### <a name="f-example"></a>F# 示例
 
-以下示例演示了 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [ `TimerInfo` ](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs)对象传递到函数。
+以下示例演示了 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [F# 脚本函数](functions-reference-fsharp.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [`TimerInfo`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerInfo.cs) 对象将传递到函数中。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -119,7 +119,7 @@ let Run(myTimer: TimerInfo, log: ILogger ) =
 
 ### <a name="javascript-example"></a>JavaScript 示例
 
-以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 一个[计时器对象](#usage)传递到函数。
+以下示例演示 *function.json* 文件中的一个计时器触发器绑定以及使用该绑定的 [JavaScript 函数](functions-reference-node.md)。 该函数将写入日志信息，指示调用此函数是由于错过了计划发生时间。 [计时器对象](#usage)将传递到函数中。
 
 下面是 function.json 文件中的绑定数据：
 
@@ -201,7 +201,7 @@ public static void Run([TimerTrigger("0 */5 * * * *")]TimerInfo myTimer, ILogger
 
 ## <a name="usage"></a>使用情况
 
-调用计时器触发器函数时，计时器对象传递到函数。 以下 JSON 是计时器对象的示例表示形式。
+调用计时器触发器函数时，计时器对象将传递到函数中。 以下 JSON 是计时器对象的示例表示形式。
 
 ```json
 {

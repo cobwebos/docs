@@ -4,18 +4,18 @@ description: 在带有 Enterprise Integration Pack 的 Azure 逻辑应用中使�
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, LADocs
+author: ecfan
+ms.author: estfan
+ms.reviewer: jonfan, divswa, LADocs
 ms.topic: article
 ms.assetid: 4fd48d2d-2008-4080-b6a1-8ae183b48131
 ms.date: 01/27/2017
-ms.openlocfilehash: e3d2a458c2cece5e3f01fdb9e3d403b3fb78dd2b
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: a952685353214e116219fc63c4acbeac188765ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43121639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427334"
 ---
 # <a name="decode-x12-messages-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中解码 X12 消息
 
@@ -89,13 +89,13 @@ X12 解码连接器执行以下任务：
   * 针对交换中的其他组控制编号检查组控制编号。
   * 针对该组中的其他事务集控制编号检查事务集控制编号。
 * 将交换拆分为事务集，或保留整个交换：
-  * 将交换拆分为交易集 - 出错时暂停交易集：将交换拆分为交易集并分析每个交易集。 
+  * 将交换拆分为事务集-出错时挂起事务集：将交换拆分为事务集并分析每个事务集。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 将交换拆分为交易集 - 出错时暂停交换：将交换拆分为交易集并分析每个交易集。 
+  * 将交换拆分为事务集-出错时挂起交换：将交换拆分为事务集并分析每个事务集。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。
-  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  * 保留交换-出错时挂起事务集：保留交换并处理整个批量的交换。 
   X12 解码操作仅将未通过验证的事务集输出到 `badMessages`，并将剩余事务集输出到 `goodMessages`。
-  * 保留交换 - 出错时暂停交易集：保留交换并处理整个批量交换。 
+  * 保留交换-出错时挂起交换：保留交换并处理整个批量的交换。 
   如果交换中的一个或多个交易集未能通过验证，X12 解码操作会将该交换中的所有交易集输出到 `badMessages`。 
 * 生成技术和/或功能确认（如果已配置）。
   * 技术确认作为标头验证的结果生成。 技术确认报告地址接收方进行的交换标头和尾部处理的状态。

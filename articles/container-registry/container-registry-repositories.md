@@ -8,22 +8,22 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: cristyg
-ms.openlocfilehash: 171593483fc94c1c67013ab520b0085ca98f3a82
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: 685c978ff206e75d770918f2528a826ad522b706
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33768322"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427085"
 ---
 # <a name="view-container-registry-repositories-in-the-azure-portal"></a>在 Azure 门户中查看容器注册表存储库
 
 使用 Azure 容器注册表可将 Docker 容器映像存储在存储库中。 通过将映像存储在存储库中，可以将映像组（或映像版本）存储在隔离环境中。 将映像推送到注册表时，可以指定这些存储库，并可在 Azure 门户中查看其内容。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* **容器注册表**：在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
-* **Docker CLI**：在本地计算机上安装 [Docker][docker-install]，该应用可为你提供 Docker 命令行接口。
-* **容器映像**：将映像推送到容器注册表。 有关如何推送和拉取映像的指南，请参阅[推送和拉取映像](container-registry-get-started-docker-cli.md)。
+* **容器注册表**:在 Azure 订阅中创建容器注册表。 例如，使用 [Azure 门户](container-registry-get-started-portal.md)或 [Azure CLI](container-registry-get-started-azure-cli.md)。
+* **Docker CLI**:安装[Docker] [ docker-install]在本地计算机上，此大小提供 Docker 命令行接口。
+* **容器映像**:将映像推送到容器注册表。 有关如何推送和拉取映像的指南，请参阅[推送和拉取映像](container-registry-get-started-docker-cli.md)。
 
 ## <a name="view-repositories-in-azure-portal"></a>在 Azure 门户中查看存储库
 

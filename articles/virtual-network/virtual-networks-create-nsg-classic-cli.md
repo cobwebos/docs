@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: genli
-ms.openlocfilehash: 5e81fa709589e5fa4a109cdf7709b87bc446ac3c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 454d17ac4f4c3723d7b7ee1ac2c639b885f3fff9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46947228"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309914"
 ---
 # <a name="create-a-network-security-group-classic-using-the-azure-classic-cli"></a>使用 Azure 经典 CLI 创建网络安全组（经典）
 [!INCLUDE [virtual-networks-create-nsg-selectors-classic-include](../../includes/virtual-networks-create-nsg-selectors-classic-include.md)]

@@ -10,11 +10,11 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: fd109a72b092e963bc4fda7894bf67f998b7d0c5
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309797"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60511587"
 ---
 # <a name="deprecated-dcos-container-management-through-the-marathon-rest-api"></a>（已弃用）通过 Marathon REST API 管理 DC/OS 容器
 

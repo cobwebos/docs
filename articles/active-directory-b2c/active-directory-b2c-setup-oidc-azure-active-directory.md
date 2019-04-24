@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 0da27c5ce872d1b4e1b4c63f6f4207bb5ca4d6ef
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56428067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316351"
 ---
 # <a name="set-up-sign-in-for-a-specific-azure-active-directory-organization-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中设置登录特定 Azure Active Directory 组织
 
@@ -42,7 +42,7 @@ ms.locfileid: "56428067"
 
     现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
 
-8. 单击“创建”。 复制“应用程序 ID”供后续使用。
+8. 单击**创建**。 复制“应用程序 ID”供后续使用。
 9. 选择应用程序，然后选择“设置”。
 10. 选择“密钥”，输入密钥说明，选择持续时间，然后单击“保存”。 复制显示的密钥值供后续使用。
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 5dad12596dde13cfa7e0c2031d58f605061b0e20
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 5bf1126a7015e668f3770835535b81c93d01cbda
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387071"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录
 
@@ -94,7 +94,7 @@ ms.locfileid: "58862788"
             <Key Id="client_secret" StorageReferenceId="B2C_1A_LinkedInSecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="lastName" />
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="linkedin.com" />
@@ -192,13 +192,13 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 LinkedIn 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
+2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     ```
     
-    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`LinkedIn-OAUTH`。
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 ID。 例如，`LinkedIn-OAUTH`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -207,7 +207,7 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
@@ -252,13 +252,13 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 LinkedIn 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
+2. 添加以下 **ClaimsExchange** 元素，确保在 ID 和 **TargetClaimsExchangeId** 处使用相同的值：
 
     ```XML
     <ClaimsExchange Id="LinkedInExchange" TechnicalProfileReferenceId="LinkedIn-OAUTH" />
     ```
     
-    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`LinkedIn-OAUTH`。
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 ID。 例如，`LinkedIn-OAUTH`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -267,7 +267,7 @@ LinkedIn 技术配置文件需要**ExtractGivenNameFromLinkedInResponse**并**Ex
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。

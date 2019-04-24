@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 67378a5911e5bd83888342aa3773f7f5ed4ccf29
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60453910"
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>使用 Azure 自动化 runbook 收集 Log Analytics 中的数据
 
@@ -65,9 +65,9 @@ ms.locfileid: "58102578"
 
 | 属性 | 工作区 ID 值 | 工作区密钥值 |
 |:--|:--|:--|
-| 名称 | WorkspaceId | WorkspaceKey |
+| Name | WorkspaceId | WorkspaceKey |
 | Type | String | String |
-| 值 | 粘贴在 Log Analytics 工作区的“工作区 ID”中。 | 粘贴在 Log Analytics 工作区的“主密钥”或“辅助密钥”中。 |
+| Value | 粘贴在 Log Analytics 工作区的“工作区 ID”中。 | 粘贴在 Log Analytics 工作区的“主密钥”或“辅助密钥”中。 |
 | 加密 | 否 | 是 |
 
 ## <a name="3-create-runbook"></a>3.创建 Runbook
@@ -179,9 +179,9 @@ Azure 自动化包含用于[测试 runbook](../../automation/automation-testing-
 2. 单击“添加计划” > “将计划链接到 runbook” > “创建新计划”。
 5. 为计划键入下列值，然后单击“创建”。
 
-| 属性 | 值 |
+| 属性 | Value |
 |:--|:--|
-| 名称 | AutomationJobs-Hourly |
+| Name | AutomationJobs-Hourly |
 | 启动 | 选择至少晚于当前时间 5 分钟的任何时间。 |
 | 定期 | 重复执行 |
 | 执行间隔 | 1 小时	 |

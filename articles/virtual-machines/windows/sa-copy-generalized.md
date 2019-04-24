@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7181c91424e1d905329eefd13f926d0b2700081
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.openlocfilehash: e1ed419892412c1fb9334fed74b82c53154723ed
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56864968"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252426"
 ---
 # <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>如何从 Azure VM 创建非托管 VM 映像
 
@@ -29,7 +29,7 @@ ms.locfileid: "56864968"
 
 本文介绍如何通过 Azure PowerShell 使用存储帐户创建通用化 Azure VM 的映像。 然后可以使用该映像创建另一个 VM。 该映像包含 OS 磁盘和附加到虚拟机的数据磁盘。 该映像不包含虚拟网络资源，因此，创建新 VM 时需要设置这些资源。 
 
-[!INCLUDE [updated-for-az-vm.md](../../../includes/updated-for-az-vm.md)]
+[!INCLUDE [updated-for-az.md](../../../includes/updated-for-az.md)]
 
 ## <a name="generalize-the-vm"></a>一般化 VM 
 本部分说明如何通用化可用作映像的 Windows 虚拟机。 通用化 VM 将删除所有个人帐户信息及其他某些数据，并准备好要用作映像的计算机。 有关 Sysprep 的详细信息，请参阅[如何使用 Sysprep：简介](https://technet.microsoft.com/library/bb457073.aspx)。
@@ -41,7 +41,7 @@ ms.locfileid: "56864968"
 > 
 > 
 
-还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何通用化和捕获使用 Azure CLI 为 Linux 虚拟机](../linux/capture-image.md)。
+还可以使用 `sudo waagent -deprovision+user` 通用化 Linux VM，并使用 PowerShell 捕获该 VM。 有关使用 CLI 捕获 VM 的信息，请参阅[如何使用 Azure CLI 通用化和捕获 Linux 虚拟机](../linux/capture-image.md)。
 
 
 1. 登录到 Windows 虚拟机。

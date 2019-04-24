@@ -12,24 +12,24 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 37cdac16a51a30bdaf1ba0266bab7fdd1f2990f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895441"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60368273"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>使用计算机视觉检测图像类型
 
-与[分析图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)API，计算机视觉可以分析图像的内容类型，该值指示图像是否为剪贴画或线条绘图。
+利用[分析图像](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API，计算机视觉可以分析图像的内容类型，指示图像是剪贴画还是线条图。
 
 ## <a name="detecting-clip-art"></a>检测剪贴画
 
 计算机视觉可分析图像，并通过 0-3 的量表对图像为剪贴画的可能性进行评级，如下表中所示。
 
-| 值 | 含义 |
+| Value | 含义 |
 |-------|---------|
 | 0 | 非剪贴画 |
-| 第 | 不明确 |
+| 1 | 不明确 |
 | 2 | 正常剪贴画 |
 | 3 | 良好剪贴画 |
 

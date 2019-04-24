@@ -1,6 +1,6 @@
 ---
 title: 使用自定义策略在 Azure Active Directory B2C 中设置 Google 帐户登录 | Microsoft Docs
-description: 使用自定义策略在 Azure Active Directory B2C 中设置 Google 帐户登录。
+description: 在 Azure Active Directory B2C 中使用自定义策略设置使用 LinkedIn 帐户的登录。
 services: active-directory-b2c
 author: davidmu1
 manager: daveba
@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: a958650a80df9eba27b99e11cce72a1ad62db14c
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: 30f3301fd404f23705e8ba04dc750cb82eed89b7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55153056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387093"
 ---
 # <a name="set-up-sign-in-with-a-google-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用 Azure Active Directory B2C 中的自定义策略设置 Google 帐户登录
 
@@ -23,7 +23,7 @@ ms.locfileid: "55153056"
 
 本文介绍如何让 Google 帐户的用户使用 Azure Active Directory (Azure AD) B2C 中的[自定义策略](active-directory-b2c-overview-custom.md)登录。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 完成 [Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 - 如果没有 Google 帐户，请根据[创建 Google 帐户](https://accounts.google.com/SignUp)中所述创建一个帐户。
@@ -40,7 +40,7 @@ ms.locfileid: "55153056"
 6. 在“应用程序类型”下，选择“Web 应用程序”。
 7. 输入应用程序的**名称**。
 8. 在“授权的 JavaScript 来源”中输入 `https://your-tenant-name.b2clogin.com`，然后在“授权的重定向 URI”中输入 `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`。 将 your-tenant-name 替换为租户的名称。 输入租户名称时，必须全部使用小写字母，即使租户是使用大写字母在 Azure AD B2C 中定义的，也是如此。
-8. 单击“创建”。
+8. 单击**创建**。
 9. 复制“客户端 ID”和“客户端密码”的值。 将 Google 配置为租户中的标识提供者时需要这两项。 客户端机密是一个重要的安全凭据。
 
 ## <a name="create-a-policy-key"></a>创建策略密钥
@@ -48,7 +48,7 @@ ms.locfileid: "55153056"
 你需要存储前面在 Azure AD B2C 租户中记录的客户端机密。
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 在“概述”页上，选择“标识体验框架 - 预览”。
 5. 选择“策略密钥”，然后选择“添加”。
@@ -56,7 +56,7 @@ ms.locfileid: "55153056"
 7. 输入策略密钥的**名称**。 例如，`GoogleSecret`。 前缀 `B2C_1A_` 会自动添加到密钥名称。
 8. 在“机密”中，输入前面记录的应用程序机密。
 9. 在“密钥用法”处选择 `Signature`。
-10. 单击“创建”。
+10. 单击**创建**。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -90,7 +90,7 @@ ms.locfileid: "55153056"
             <Key Id="client_secret" StorageReferenceId="B2C_1A_GoogleSecret" />
           </CryptographicKeys>
           <OutputClaims>
-            <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="id" />
+            <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="id" />
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email" />
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name" />
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name" />
@@ -147,13 +147,13 @@ ms.locfileid: "55153056"
 准备好按钮后，需将它链接到某个操作。 在本例中，Azure AD B2C 使用该操作来与 Google 帐户通信以接收令牌。
 
 1. 在用户旅程中找到包含 `Order="2"` 的 **OrchestrationStep**。
-2. 添加以下 **ClaimsExchange** 元素，确保在 **Id** 和 **TargetClaimsExchangeId** 处使用相同的值：
+2. 添加以下**ClaimsExchange**并确保你用于 ID 使用相同的值的元素**TargetClaimsExchangeId**:
 
     ```XML
     <ClaimsExchange Id="GoogleExchange" TechnicalProfileReferenceId="Google-OAuth" />
     ```
     
-    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 **Id**。 例如，`Google-OAuth`。
+    将 **TechnicalProfileReferenceId** 的值更新为先前创建的技术配置文件的 ID。 例如，`Google-OAuth`。
 
 3. 保存 *TrustFrameworkExtensions.xml* 文件，并再次上传以进行验证。
 
@@ -162,12 +162,12 @@ ms.locfileid: "55153056"
 通过在租户中创建的应用程序与 Azure AD B2C 进行通信。 本部分列出了可用于创建测试应用程序的可选步骤（如果尚未创建）。
 
 1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 请确保使用包含 Azure AD B2C 租户的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含租户的目录。
+2. 请确保使用包含 Azure AD B2C 租户的目录。 选择**目录和订阅筛选器**顶部菜单中选择包含你的租户的目录。
 3. 选择 Azure 门户左上角的“所有服务”，然后搜索并选择“Azure AD B2C”。
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
 6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
-7. 单击“创建”。
+7. 单击**创建**。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 

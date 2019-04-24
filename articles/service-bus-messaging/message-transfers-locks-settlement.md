@@ -3,22 +3,23 @@ title: Azure 服务总线消息传输、锁定和处置 | Microsoft Docs
 description: 服务总线消息传输和处置操作概述
 services: service-bus-messaging
 documentationcenter: ''
-author: axisc
-manager: timlt
-editor: spelluru
+author: lingliw
+manager: digimobile
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
-ms.author: aschhab
+origin.date: 09/25/2018
+ms.date: 10/31/2018
+ms.author: v-lingwu
 ms.openlocfilehash: a78409a15acb4e60fc4200778d0f33b3fb566e85
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54846433"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403935"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>消息传输、锁定和处置
 
@@ -88,7 +89,7 @@ await Task.WhenAll(tasks);
 for (int i = 0; i < 100; i++)
 {
 
-  client.SendAsync(message); // DON’T DO THIS
+  client.SendAsync(message); // DON'T DO THIS
 }
 ```
 

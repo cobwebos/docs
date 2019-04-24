@@ -9,11 +9,11 @@ ms.date: 11/27/2017
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: bac57b18ec5474cfe3c27ad1079c5af7e1d2c451
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60453057"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor 的角色、权限和安全入门
 

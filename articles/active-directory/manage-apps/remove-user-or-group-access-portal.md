@@ -17,11 +17,11 @@ ms.reviewer: asteen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97759ae992ebe38aa85e9b4724edeebb5285db4b
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60443073"
 ---
 # <a name="remove-a-user-or-group-assignment-from-an-enterprise-app-in-azure-active-directory"></a>在 Azure Active Directory 中删除企业应用的用户或组分配
 若要删除用户或组从已分配的访问，与 Azure Active Directory (Azure AD) 中对企业应用程序的容易。 需要适当的权限来管理企业应用。 并且，你必须是目录全局管理员。

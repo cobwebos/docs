@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: jingwang
 ms.openlocfilehash: b43532ade35e4e01573abbd3f47d009beadd9c60
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267712"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387836"
 ---
 # <a name="copy-data-from-or-to-azure-file-storage-by-using-azure-data-factory"></a>使用 Azure 数据工厂从/向 Azure 文件存储复制数据
 

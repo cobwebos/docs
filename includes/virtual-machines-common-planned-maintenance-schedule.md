@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: c7fe0d6f8e03501cca7a8b98f95286b6a21c0476
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "58114505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232793"
 ---
 ## <a name="multi-and-single-instance-vms"></a>多实例和单实例 VM
 对于在 Azure 上运行的许多客户而言，在 VM 进行计划内维护时可以计划是非常重要的，因为在维护期间会停机约 15 分钟。 可以在预配的 VM 接收计划内维护时，使用可用性集帮助控制。

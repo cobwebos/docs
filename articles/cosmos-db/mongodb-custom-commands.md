@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: sngun
 ms.openlocfilehash: aef77f121f20d867c8ec5e764d8c9639c961713d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58876882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60446578"
 ---
 # <a name="use-mongodb-extension-commands-to-manage-data-stored-in-azure-cosmos-dbs-api-for-mongodb"></a>使用 MongoDB 扩展命令来管理存储在 Azure Cosmos DB API for MongoDB 数据 
 
@@ -45,7 +45,7 @@ Azure Cosmos DB 由 Microsoft 提供，是全球分布的多模型数据库服�
 
 |**字段**|类型 |**说明** |
 |---------|---------|---------|
-| customAction   |  字符串  |   名称的自定义命令，它必须是"CreateDatabase"。      |
+| customAction   |  string  |   名称的自定义命令，它必须是"CreateDatabase"。      |
 | offerThroughput | int  | 在数据库设置的预配的吞吐量。 此参数是可选的。 |
 
 ### <a name="output"></a>输出
@@ -87,7 +87,7 @@ db.runCommand({customAction: "CreateDatabase", offerThroughput: 1000 });
 
 |**字段**|类型 |**说明** |
 |---------|---------|---------|
-| customAction    |    字符串     |   自定义命令的名称。 必须是"UpdateDatabase"。      |
+| customAction    |    string     |   自定义命令的名称。 必须是"UpdateDatabase"。      |
 |  offerThroughput   |  int       |     你想要在数据库上设置的新预配的吞吐量。    |
 
 ### <a name="output"></a>输出
@@ -120,7 +120,7 @@ db.runCommand({customAction: "UpdateDatabase", offerThroughput: 1200 });
 
 |**字段**|类型 |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是"GetDatabase"|
+|  customAction   |   string      |   自定义命令的名称。 必须是"GetDatabase"|
         
 ### <a name="output"></a>输出
 
@@ -162,10 +162,10 @@ db.runCommand({customAction: "GetDatabase"});
 
 |**字段**|类型 |**说明** |
 |---------|---------|---------|
-| customAction    | 字符串 | 自定义命令的名称。 必须是"CreateDatabase"     |
-| collection      | 字符串 | 集合的名称                                   |
+| customAction    | string | 自定义命令的名称。 必须是"CreateDatabase"     |
+| collection      | string | 集合的名称                                   |
 | offerThroughput | int    | 若要在数据库上设置的预配的吞吐量。 它是一个可选参数 |
-| shardKey        | 字符串 | 要创建分片集合的分片键路径。 它是一个可选参数 |
+| shardKey        | string | 要创建分片集合的分片键路径。 它是一个可选参数 |
 
 ### <a name="output"></a>输出
 
@@ -207,8 +207,8 @@ db.runCommand({customAction: "CreateCollection", collection: "testCollection", o
 
 |**字段**|类型 |**说明** |
 |---------|---------|---------|
-|  customAction   |   字符串      |   自定义命令的名称。 必须是"UpdateCollection"。      |
-|  collection   |   字符串      |   集合的名称。       |
+|  customAction   |   string      |   自定义命令的名称。 必须是"UpdateCollection"。      |
+|  collection   |   string      |   集合的名称。       |
 | offerThroughput   |int|   若要将集合设置的预配的吞吐量。|
 
 ## <a name="output"></a>输出
@@ -242,8 +242,8 @@ db.runCommand({customAction: "UpdateCollection", collection: "testCollection", o
 
 |**字段**|类型 |**说明** |
 |---------|---------|---------|
-| customAction    |   字符串      |   自定义命令的名称。 必须是"GetCollection"。      |
-| collection    |    字符串     |    集合的名称。     |
+| customAction    |   string      |   自定义命令的名称。 必须是"GetCollection"。      |
+| collection    |    string     |    集合的名称。     |
 
 ### <a name="output"></a>输出
 

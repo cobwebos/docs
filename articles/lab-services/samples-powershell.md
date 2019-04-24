@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2018
 ms.author: spelluru
-ms.openlocfilehash: 5b126ac5d5cadaa1f81cce955ff5b76883103c3c
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 09b93cc1d1f05e185a1550fb8141423447e802b5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34637389"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60236864"
 ---
 # <a name="azure-powershell-samples-for-azure-lab-services"></a>用于 Azure 实验室服务的 Azure PowerShell 示例
 

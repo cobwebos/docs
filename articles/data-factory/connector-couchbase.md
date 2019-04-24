@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 27f327493fbf3d7856b9488ecd0dd2509976ccfc
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55657131"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60533957"
 ---
 # <a name="copy-data-from-couchbase-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）从 Couchbase 复制数据
 

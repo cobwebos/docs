@@ -11,11 +11,11 @@ ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: d504635121c5153367cd0b89ce593b093bb3cd39
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198734"
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure 搜索中全文搜索的工作原理
 
@@ -255,7 +255,7 @@ Spacious,||air-condition*+"Ocean view"
 
 | 术语 | 文档列表 |
 |------|---------------|
-| atman | 第 |
+| atman | 1 |
 | beach | 2 |
 | hotel | 1, 3 |
 | ocean | 4  |
@@ -271,10 +271,10 @@ Spacious,||air-condition*+"Ocean view"
 |------|---------------|
 | air | 3
 | and | 4
-| beach | 第
+| beach | 1
 | conditioned | 3
 | comfortable | 3
-| distance | 第
+| distance | 1
 | island | 2
 | kauaʻi | 2
 | located | 2
@@ -286,11 +286,11 @@ Spacious,||air-condition*+"Ocean view"
 | rooms  | 1, 3
 | secluded | 4
 | shore | 2
-| spacious | 第
+| spacious | 1
 | the | 1, 2
-| to | 第
+| 至 | 1
 | view | 1, 2, 3
-| walking | 第
+| walking | 1
 | 替换为 | 3
 
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/14/2019
 ms.author: cherylmc
 ms.openlocfilehash: 54b89b74017b8d5d6e4bd1b52c6b3986d2802702
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58118793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457183"
 ---
 # <a name="reset-a-vpn-gateway"></a>重置 VPN 网关
 
@@ -56,7 +56,7 @@ VPN 网关由在活动备用配置中运行的两个 VM 实例组成。 重置�
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-用于重置网关的 cmdlet 是 Reset-AzVirtualNetworkGateway。 在执行之前重置，请确保具有最新版本[PowerShell Az cmdlet](https://docs.microsoft.com/powershell/module/az.network)。 以下示例将重置 TestRG1 资源组中名为 VNet1GW 的虚拟网络网关：
+用于重置网关的 cmdlet 是 Reset-AzVirtualNetworkGateway。 进行重置前，请确保拥有最新版本的 [PowerShell Az cmdlet](https://docs.microsoft.com/powershell/module/az.network)。 以下示例将重置 TestRG1 资源组中名为 VNet1GW 的虚拟网络网关：
 
 ```powershell
 $gw = Get-AzVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1

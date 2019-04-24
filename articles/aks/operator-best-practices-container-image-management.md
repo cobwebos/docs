@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: iainfou
 ms.openlocfilehash: 1cc91f55d3895f06176875cb9ae620685dc09a26
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53605545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464794"
 ---
 # <a name="best-practices-for-container-image-management-and-security-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中容器映像管理和安全性的最佳做法
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: yushwang
 ms.openlocfilehash: d0060d81ae44bd54ab193eb77e3117b7afbfbf73
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59281043"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456413"
 ---
 # <a name="vpn-gateway-faq"></a>VPN 网关常见问题
 
@@ -20,11 +20,11 @@ ms.locfileid: "59281043"
 
 ### <a name="can-i-connect-virtual-networks-in-different-azure-regions"></a>能否连接不同 Azure 区域中的虚拟网络？
 
-是的。 事实上，没有任何区域约束。 一个虚拟网络可以连接到同一区域中的其他虚拟网络，也可以连接到其他 Azure 区域中的其他虚拟网络。 
+可以。 事实上，没有任何区域约束。 一个虚拟网络可以连接到同一区域中的其他虚拟网络，也可以连接到其他 Azure 区域中的其他虚拟网络。 
 
 ### <a name="can-i-connect-virtual-networks-in-different-subscriptions"></a>能否连接不同订阅中的虚拟网络？
 
-是的。
+可以。
 
 ### <a name="can-i-connect-to-multiple-sites-from-a-single-virtual-network"></a>能否从一个虚拟网络连接到多个站点？
 
@@ -79,7 +79,7 @@ VPN 网关是一类虚拟网关。 VPN 网关可跨公共连接在虚拟网络�
 
 ### <a name="do-i-need-a-gatewaysubnet"></a>是否需要 'GatewaySubnet'？
 
-是的。 网关子网包含虚拟网络网关服务使用的 IP 地址。 若要配置虚拟网关，需要先为 VNet 创建网关子网。 所有网关子网都必须命名为 'GatewaySubnet' 才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
+可以。 网关子网包含虚拟网络网关服务使用的 IP 地址。 若要配置虚拟网关，需要先为 VNet 创建网关子网。 所有网关子网都必须命名为 'GatewaySubnet' 才能正常工作。 不要对网关子网使用其他名称。 此外，不要在网关子网中部署 VM 或其他组件。
 
 创建网关子网时，需指定子网包含的 IP 地址数。 网关子网中的 IP 地址分配到网关服务。 某些配置相对于其他配置需要将更多 IP 地址分配到网关服务。 需确保网关子网包含足够多的 IP 地址，以便应对将来的业务增长以及可能会添加的新连接配置。 因此，尽管网关子网最小可创建为 /29，但建议创建 /27 或更大（/27、/26 和 /25 等）的网关子网。 查看要创建的配置的要求，并验证所拥有的网关子网是否可满足这些要求。
 
@@ -120,7 +120,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 
 ### <a name="can-i-configure-force-tunneling"></a>是否可以配置强制隧道？
 
-是的。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
+可以。 请参阅[配置强制隧道](vpn-gateway-about-forced-tunneling.md)。
 
 ### <a name="can-i-set-up-my-own-vpn-server-in-azure-and-use-it-to-connect-to-my-on-premises-network"></a>能否在 Azure 中设置自己的 VPN 服务器，并使用该服务器连接到本地网络？
 
@@ -183,7 +183,7 @@ Azure VPN 使用 PSK（预共享密钥）身份验证。 我们在创建 VPN 网
 ### <a name="can-i-use-azure-vpn-gateway-to-transit-traffic-between-my-on-premises-sites-or-to-another-virtual-network"></a>能否使用 Azure VPN 网关在我的本地站点之间传输流量或将流量传输到其他虚拟网络？
 
 **Resource Manager 部署模型**<br>
-是的。 有关详细信息，请参阅 [BGP](#bgp) 部分。
+可以。 有关详细信息，请参阅 [BGP](#bgp) 部分。
 
 **经典部署模型**<br>
 使用经典部署模型通过 Azure VPN 网关传输流量是可行的，但需要依赖网络配置文件中静态定义的地址空间。 使用经典部署模型的 Azure 虚拟网络和 VPN 网关尚不支持 BGP。 没有 BGP，手动定义传输地址空间很容易出错，不建议这样做。

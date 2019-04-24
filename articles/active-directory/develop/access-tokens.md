@@ -18,11 +18,11 @@ ms.reviewer: hirsin
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 07e140ef9f561625bb89498c6b6591734e8a9b10
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563753"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60411397"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft 标识平台访问令牌
 
@@ -108,7 +108,7 @@ JWT 拆分成三个部分：
 | `oid` | 字符串，GUID | 在 Microsoft 标识平台中，对象的不可变标识符在这种情况下是用户帐户。 此外可以使用此执行授权检查，安全地和作为数据库表中的键。 此 ID 唯一标识应用程序中的用户 - 同一个用户登录两个不同的应用程序会在 `oid` 声明中收到相同值。 因此，对 Microsoft 联机服务（例如 Microsoft Graph）发出查询时可以使用 `oid`。 Microsoft Graph 将返回此 ID 作为给定用户帐户的 `id` 属性。 因为`oid`允许多个应用关联用户，`profile`接收此声明所需的作用域。 如果单个用户存在于多个租户，该用户将包含每个租户中是不同的对象 ID-它们被视为不同的帐户，即使在用户登录到每个帐户使用相同的凭据。 |
 | `rh` | 不透明字符串 | Azure 用来重新验证令牌的内部声明。 资源不应使用此声明。 |
 | `scp` | 字符串，范围的空格分隔列表 | 应用程序公开的、客户端应用程序已请求（和接收）其许可的范围集。 应用应该验证这些范围是否为应用公开的有效范围，并根据这些范围的值做出授权决策。 仅为[用户令牌](#user-and-application-tokens)包含此值。 |
-| `roles` | 字符串数组，权限的列表 | 应用程序公开的、请求方应用程序有权调用的权限集。 有关[应用程序令牌](#user-and-application-tokens)，此过程中使用[客户端凭据](v1-oauth2-client-creds-grant-flow.md)代替用户作用域的流。  有关[的用户令牌](#user-and-application-tokens)这填充的用户分配到目标应用程序的角色。 |
+| `roles` | 字符串数组，权限列表 | 应用程序公开的、请求方应用程序有权调用的权限集。 对于[应用程序令牌](#user-and-application-tokens)，在执行[客户端凭据](v1-oauth2-client-creds-grant-flow.md)流期间，将使用此值来取代用户范围。  对于[用户令牌](#user-and-application-tokens)，此值将填充为在目标应用程序上分配给用户的角色。 |
 | `sub` | 字符串，GUID | 令牌针对其断言信息的主体，例如应用的用户。 此值是固定不变，无法重新分配或重复使用。 此外可以使用此执行授权检查，如该令牌用于访问资源、 和可以用作数据库表中的键。 由于使用者始终存在于 Azure AD 颁发的令牌中，因此建议在通用授权系统中使用此值。 主题是，但是，成对标识符-它是唯一的特定应用程序 id。 因此，如果单个用户使用两个不同的客户端 ID 登录到两个不同的应用，这些应用将收到两个不同的使用者声明值。 这不一定是所需的，具体取决于体系结构和隐私要求。 |
 | `tid` | 字符串，GUID | 表示用户所在的 Azure AD 租户。 对于工作和学校帐户，此 GUID 就是用户所属组织的不可变租户 ID。 对于个人帐户，该值为 `9188040d-6c67-4c5b-b112-36a304b66dad`。 `profile`接收此声明所需的作用域。 |
 | `unique_name` | String | 仅在 v1.0 令牌中提供。 提供了一个用户可读值，用于标识令牌使用者。 此值不能保证在租户中唯一，应仅用于显示目的。 |
@@ -125,7 +125,7 @@ JWT 拆分成三个部分：
 | `onprem_sid`| 字符串，采用 [SID 格式](https://docs.microsoft.com/windows/desktop/SecAuthZ/sid-components) | 如果用户使用了本地身份验证，则此声明会提供其 SID。 可在旧版应用程序中将 `onprem_sid` 用于授权。|
 | `pwd_exp`| int，UNIX 时间戳 | 指示用户的密码何时过期。 |
 | `pwd_url`| String | 可向用户发送的，以重置其密码的 URL。 |
-| `in_corp`| 布尔值 | 表示客户端是否从企业网络登录。 如果它们不是，该声明不包括。 |
+| `in_corp`| boolean | 表示客户端是否从企业网络登录。 如果它们不是，该声明不包括。 |
 | `nickname`| String | 用户的附加名称，不同于名字或姓氏。|
 | `family_name` | String | 根据用户对象中的定义提供用户的姓氏。 |
 | `given_name` | String | 根据用户对象中的设置提供用户的名字。 |
@@ -135,7 +135,7 @@ JWT 拆分成三个部分：
 
 Microsoft 标识可以在不同的方式，可能会涉及到您的应用程序进行身份验证。 `amr` 声明是可以包含多个项（例如 `["mfa", "rsa", "pwd"]`）的数组，适用于使用密码和 Authenticator 应用的身份验证。
 
-| 值 | 描述 |
+| Value | 描述 |
 |-----|-------------|
 | `pwd` | 密码身份验证，用户的 Microsoft 密码或应用的客户端机密。 |
 | `rsa` | 身份验证基于 RSA 密钥的证明，例如，使用 [Microsoft Authenticator 应用](https://aka.ms/AA2kvvu)。 这包括如果身份验证通过自签名 JWT 与服务拥有的 X509 证书。 |

@@ -1,19 +1,19 @@
 ---
 title: 将管理事件的 Azure 警报迁移到活动日志警报
 description: 有关管理事件的警报将于 10 月 1 日删除。 通过迁移现有警报进行准备。
-author: johnkemnetz
+author: lingliw
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 08/14/2017
-ms.author: johnkem
+ms.date: 04/12/19
+ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: fb54e11c9da6bec2a1e0354317df6343140cbf09
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794110"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60255911"
 ---
 # <a name="migrate-azure-alerts-on-management-events-to-activity-log-alerts"></a>将管理事件的 Azure 警报迁移到活动日志警报
 
@@ -32,7 +32,7 @@ Azure Monitor（以前称为 Azure Insights）提供了创建警报的功能，�
 以下 PowerShell 脚本将返回订阅中所具有的有关管理事件的所有警报列表，以及每个警报所设置的条件。
 
 ```powershell
-Connect-AzAccount
+Connect-AzAccount -Environment AzureChinaCloud
 $alerts = $null
 foreach ($rg in Get-AzResourceGroup ) {
   $alerts += Get-AzAlertRule -ResourceGroup $rg.ResourceGroupName
@@ -115,4 +115,3 @@ ResourceUri          : /subscriptions/<subscription-id>/resourceGroups/<resource
 * 查看[活动日志警报 webhook 架构](../../azure-monitor/platform/activity-log-alerts-webhook.md)
 * 详细了解[服务通知](../../azure-monitor/platform/service-notifications.md)
 * 详细了解[操作组](../../azure-monitor/platform/action-groups.md)
-

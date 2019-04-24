@@ -12,16 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+origin.date: 07/13/2017
+ms.date: 04/09/2019
 ms.subservice: hybrid
-ms.author: billmath
+ms.author: v-junlch
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 10a4078f49abbdf431f42c6cde7cf882112e5848
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839162"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384693"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同步服务影子属性
 大多数属性在 Azure AD 中的表示方式与在本地 Active Directory 中相同。 但某些属性有一些特殊处理，并且 Azure AD 中的属性值可能不同于 Azure AD Connect 同步的值。
@@ -38,11 +39,11 @@ ms.locfileid: "57839162"
 ### <a name="userprincipalname"></a>userPrincipalName
 用户在非已验证域中具有以下属性值：
 
-| 属性 | 值 |
+| 属性 | Value |
 | --- | --- |
 | 本地 userPrincipalName | lee.sperry@fabrikam.com |
 | Azure AD shadowUserPrincipalName | lee.sperry@fabrikam.com |
-| Azure AD userPrincipalName | lee.sperry@fabrikam.onmicrosoft.com |
+| Azure AD userPrincipalName | lee.sperry@fabrikam.partner.onmschina.cn |
 
 userPrincipalName 属性是在使用 PowerShell 时显示的值。
 
@@ -53,12 +54,12 @@ userPrincipalName 属性是在使用 PowerShell 时显示的值。
 
 对于邮箱用户（不管是在本地还是在 Exchange Online 中），仅显示验证域的值。 它可能如下所示：
 
-| 属性 | 值 |
+| 属性 | Value |
 | --- | --- |
 | 本地 proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-在这种情况下**smtp:abbie.spencer\@fabrikam.com**已删除，因为该域尚未验证。 不过，还添加了 Exchange **SIP:abbie.spencer\@fabrikamonline.com**。 Fabrikam 未使用本地 Lync/Skype，但 Azure AD 和 Exchange Online 准备使用它。
+在本例中，**smtp:abbie.spencer\@fabrikam.com** 已删除，因为该域尚未验证。 但是，Exchange 还添加了 **SIP:abbie.spencer\@fabrikamonline.com**。 Fabrikam 未使用本地 Lync/Skype，但 Azure AD 和 Exchange Online 准备使用它。
 
 proxyAddresses 的此逻辑称为 **ProxyCalc**。 每当出现以下情况，导致用户出现变化时，就会调用 ProxyCalc：
 
@@ -77,3 +78,5 @@ ProxyCalc 可能需要一些时间来处理用户更改，并且不会与 Azure 
 ## <a name="see-also"></a>另请参阅
 * [Azure AD Connect 同步](how-to-connect-sync-whatis.md)
 * [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)。
+
+<!-- Update_Description: wording update -->

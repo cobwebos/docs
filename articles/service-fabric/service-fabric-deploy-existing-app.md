@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/02/2017
 ms.author: aljo
 ms.openlocfilehash: bfac14c598b405a398cad916787aa3312589bfd1
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58669939"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60393520"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>打包现有可执行文件并将其部署到 Service Fabric
 将现有可执行文件打包为[来宾可执行文件](service-fabric-guest-executables-introduction.md)时，可以选择是使用 Visual Studio 项目模板，还是[手动创建应用程序包](#manually)。 使用 Visual Studio 时，新的项目模板会创建应用程序包结构和清单文件。

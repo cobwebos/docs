@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c0afc31bf08a5037d91885bc6a85c6aeaf858825
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57436646"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60386539"
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>使用 Azure AD Connect 排查连接问题
 本文说明 Azure AD Connect 与 Azure AD 之间的连接的工作方式，以及如何排查连接问题。 这些问题很有可能出现在包含代理服务器的环境中。
@@ -109,7 +109,7 @@ Azure AD Connect 向 Azure AD 发送导出请求时，在生成响应之前，Az
 * 终结点 adminwebservice 和 provisioningapi 是发现终结点，用于找出要使用的实际终结点。 这些终结点根据区域而有所不同。
 
 ### <a name="reference-proxy-logs"></a>引用代理日志
-下面是实际代理日志中的转储以及从中获取此信息的安装向导页（已删除同一终结点的重复条目）。 可以使用此部分作为自己的代理和网络日志的参考。 环境中的实际终结点可能有所不同（尤其是以*斜体*显示的 URL）。
+下面是实际代理日志中的转储以及从中获取此信息的安装向导页（已删除同一终结点的重复条目）。 本部分可用作自己的代理和网络日志的参考。 环境中的实际终结点可能有所不同（尤其是以*斜体*显示的 URL）。
 
 **连接到 Azure AD**
 

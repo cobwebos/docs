@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: da7147439bba668c6c614c19d91a22ee78275c69
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
-ms.translationtype: HT
+ms.openlocfilehash: c3d4d764b1076c8705cfa64d6c0b38e3b8c1a801
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357337"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60390091"
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>解决存储帐户名称错误
 

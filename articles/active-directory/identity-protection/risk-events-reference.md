@@ -17,11 +17,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d009022d4ec03990d3ed0321ebcb13c72c674ed8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516546"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60294202"
 ---
 # <a name="azure-active-directory-identity-protection-risk-events-reference"></a>Azure Active Directory Identity Protection 风险事件参考
 
@@ -41,7 +41,7 @@ ms.locfileid: "58516546"
 ## <a name="atypical-travel"></a>异常位置登录
 
 **检测类型：** 脱机  
-**旧名称：** 不可能前往这些异常位置
+**旧名称：** 不可能前往异常位置
 
 
 此风险事件类型可标识从相距遥远的地理位置进行的两次登录，根据用户以往的行为，其中至少有一个位置属于异常。 除了若干其他因素外，此机器学习算法还考虑两次登录之间相隔的时间以及用户从第一个位置前往第二个位置所需的时间，因为这指示有不同的用户在使用相同的凭据。
@@ -52,7 +52,7 @@ ms.locfileid: "58516546"
 ## <a name="leaked-credentials"></a>凭据泄漏
 
 **检测类型：** 脱机  
-**旧名称：** 凭据泄漏的用户
+**旧名称：** 具有已泄漏凭据的用户
 
 
 此风险事件类型指示用户的有效凭据已泄漏。

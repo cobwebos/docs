@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: tomfitz
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 12bfcea70c80929ade656bc5e23f8b95fce44a54
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312151"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60410376"
 ---
 # <a name="how-to-use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>如何：通过 Azure PowerShell 使用证书创建服务主体
 
@@ -39,7 +39,7 @@ ms.locfileid: "56312151"
 
 [!INCLUDE [az-powershell-update](../../../includes/updated-for-az.md)]
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 
 若要完成本文，必须在 Azure AD 和 Azure 订阅中均有足够的权限。 具体而言，必须能够在 Azure AD 中创建应用并向角色分配服务主体。
 

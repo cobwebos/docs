@@ -10,12 +10,13 @@ ms.subservice: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 61bd1879a4b1bf8281ac03c8254fb3d48c07a139
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ROBOTS: NOINDEX,NOFOLLOW
+ms.openlocfilehash: a046bec5d81d828d88716d31c84e9cbcdcea1a08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55215854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60515420"
 ---
 # <a name="bing-text-to-speech-api"></a>必应文本转语音 API
 
@@ -40,7 +41,7 @@ Content-Length: 0
 
 令牌访问所需的标头信息如下所示。
 
-Name| 格式 | 说明
+Name| 格式 | 描述
 ----|----|----
 Ocp-Apim-Subscription-Key | ASCII | 订阅密钥
 
@@ -59,7 +60,7 @@ Ocp-Apim-Subscription-Key | ASCII | 订阅密钥
 
 下表展示了用于语音合成请求的 HTTP 标头。
 
-标头 |值 |注释
+标头 |Value |注释
 ----|----|----
 Content-Type | application/ssml+xml | 输入内容类型。
 X-Microsoft-OutputFormat | **1.** ssml-16khz-16bit-mono-tts <br> **2.** raw-16khz-16bit-mono-pcm <br>**3.** audio-16khz-16kbps-mono-siren <br> **4.** riff-16khz-16kbps-mono-siren <br> **5.** riff-16khz-16bit-mono-pcm <br> **6.** audio-16khz-128kbitrate-mono-mp3 <br> **7.** audio-16khz-64kbitrate-mono-mp3 <br> **8.** audio-16khz-32kbitrate-mono-mp3 | 输出音频格式。
@@ -70,7 +71,7 @@ User-Agent | 应用程序名称 | 应用程序名称必填，且长度不得超�
 
 ### <a name="InputParam"></a>输入参数
 
-使用 HTTP POST 调用请求必应文本转语音 API。 标头在上一部分中指定。 正文包含语音合成标记语言 (SSML) 输入，表示要合成的文本。 有关用于控制语音各方面（例如说话人的语言和性别）的标记的说明，请参阅 [SSML W3C 规范](http://www.w3.org/TR/speech-synthesis/)。
+使用 HTTP POST 调用请求必应文本转语音 API。 标头在上一部分中指定。 正文包含语音合成标记语言 (SSML) 输入，表示要合成的文本。 有关用于控制语音各方面（例如说话人的语言和性别）的标记的说明，请参阅 [SSML W3C 规范](https://www.w3.org/TR/speech-synthesis/)。
 
 >[!NOTE]
 >支持的最大 SSML 输入大小为 1,024 个字符，其中包括所有标记。
@@ -121,7 +122,7 @@ Content-Length: 0
 
 ### <a name="ErrorResponse"></a>错误响应
 
-错误 | 说明
+错误 | 描述
 ----|----
 HTTP/400 错误的请求 | 必需参数缺失、为空或为 null，或者传递给必需参数或可选参数的值无效。 获得“无效”响应的一个原因是正在传递一个超过允许长度的字符串值。 对有问题的参数的简要说明包含在内。
 HTTP/401 未授权 | 未对请求授权。
@@ -140,43 +141,43 @@ Voice name not supported
 
 ## <a name="ChangeSSML"></a>通过 SSML 更改语音输出
 
-Microsoft 文本转语音 API 支持 W3C [语音合成标记语言 (SSML) 版本 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) 中定义的 SSML 1.0。 此部分展示使用 SSML 标记更改生成的语音输出的某些特征（如语速、发音等）的示例。
+Microsoft 文本转语音 API 支持 W3C [语音合成标记语言 (SSML) 版本 1.0](https://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) 中定义的 SSML 1.0。 此部分展示使用 SSML 标记更改生成的语音输出的某些特征（如语速、发音等）的示例。
 
 1. 添加休息时间
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, BenjaminRUS)'> Welcome to use Microsoft Cognitive Services <break time="100ms" /> Text-to-Speech API.</voice> </speak>
+   ```
 
 2. 更改语速
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody rate="+30.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 3. 发音
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'> <phoneme alphabet="ipa" ph="t&#x259;mei&#x325;&#x27E;ou&#x325;"> tomato </phoneme></voice> </speak>
+   ```
 
 4. 更改音量
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody volume="+20.00%">Welcome to use Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 5. 更改音调
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'>Welcome to use <prosody pitch="high">Microsoft Cognitive Services Text-to-Speech API.</prosody></voice> </speak>
+   ```
 
 6. 更改韵律轮廓
 
-  ```
-  <speak version='1.0' xmlns="http://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
-  ```
+   ```
+   <speak version='1.0' xmlns="https://www.w3.org/2001/10/synthesis" xml:lang='en-US'><voice  name='Microsoft Server Speech Text to Speech Voice (en-US, JessaRUS)'><prosody contour="(80%,+20%) (90%,+30%)" >Good morning.</prosody></voice> </speak>
+   ```
 
 > [!NOTE]
 > 请注意，音频数据必须是以下列格式提交的 8k 或 16k wav：**CRC 代码** (CRC-32)：有效范围为 0x00000000 ~ 0xFFFFFFFF 的 4 字节 (DWORD)；**音频格式标志**：有效范围为 0x00000000 ~ 0xFFFFFFFF 的 4 字节 (DWORD)；**样品计数**：有效范围为 0x00000000 ~ 0x7FFFFFFF 的 4 字节 (DWORD)；**二进制主体大小**：有效范围为 0x00000000 ~ 0x7FFFFFFF 的 4 字节 (DWORD)；**二进制主体**：n 个字节。
@@ -269,6 +270,7 @@ zh-HK | 男 | “Microsoft 服务器语音的文本转语音（zh-HK，Danny，A
 zh-TW | 女 | “Microsoft 服务器语音的文本转语音（zh-TW，Yating，Apollo）”
 zh-TW | 女 | “Microsoft 服务器语音的文本转语音（zh-TW，HanHanRUS）”
 zh-TW | 男 | “Microsoft 服务器语音的文本转语音（zh-TW，Zhiwei，Apollo）”
+
  *ar-EG 支持现代标准阿拉伯语 (MSA)。
 
 > [!NOTE]

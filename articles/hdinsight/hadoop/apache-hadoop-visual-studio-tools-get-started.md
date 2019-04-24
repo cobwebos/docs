@@ -2,7 +2,6 @@
 title: 使用用于 Visual Studio 的 Data Lake 工具连接到 Apache Hadoop - Azure HDInsight
 description: 了解如何安装针对 Visual Studio 的 Data Lake 工具并用其连接到 Azure HDInsight 中的 Apache Hadoop 群集，然后运行 Hive 查询。
 keywords: hadoop 工具,hive 查询,visual studio,visual studio hadoop
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -11,11 +10,11 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 02/21/2019
 ms.openlocfilehash: cf392bb254e38b2e07a92e87927b12e144b26f16
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447478"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343840"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>使用针对 Visual Studio 的 Data Lake 工具连接到 Azure HDInsight 并运行 Apache Hive 查询
 

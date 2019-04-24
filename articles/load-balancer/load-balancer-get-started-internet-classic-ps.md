@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: genli
-ms.openlocfilehash: dbb8708f8872c8d16baa13725edbff6de37ac171
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.openlocfilehash: 54ef8782620a387d60454023d0e446279e467a99
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53139822"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60517012"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-classic-in-powershell"></a>开始在 PowerShell 中创建面向 Internet 的负载均衡器（经典）
 

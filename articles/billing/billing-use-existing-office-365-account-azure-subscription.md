@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: banders
 ms.openlocfilehash: 44ff08c84b3e95a5b598ebf4279fc2ffc46313e3
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57863434"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369471"
 ---
 # <a name="sign-up-for-an-azure-subscription-with-your-office-365-account"></a>使用 Office 365 帐户注册 Azure 订阅
 如果具有 Office 365 订阅，可以使用 Office 365 帐户创建 Azure 订阅。 使用 Office 365 用户名和密码登录 [Azure 门户](https://portal.azure.com/)。 如果想要设置虚拟机或使用其他 Azure 服务，则必须注册 Azure 订阅。 可以与他人共享 Azure 订阅并[使用基于角色的访问控制来管理对 Azure 订阅和资源的访问](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)

@@ -9,11 +9,11 @@ ms.date: 06/29/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: d2ce6c409ae9cbf99589d11dfc850e2324d1b0c9
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55452407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60320459"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>设置 Azure 导入/导出工具
 
@@ -23,7 +23,7 @@ Microsoft Azure 导入/导出工具是可与 Microsoft Azure 导入/导出服务
 * 完成某个导入作业后，可以使用此工具修复已损坏、丢失或与其他 Blob 冲突的任何 Blob。
 * 通过某个已完成的导出作业收到驱动器后，可以使用此工具修复这些驱动器上已损坏或丢失的任何文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要为导入作业准备驱动器，必须满足以下先决条件：
 

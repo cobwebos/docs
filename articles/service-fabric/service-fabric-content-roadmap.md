@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: atsenthi
-ms.openlocfilehash: adbe101455bc200bc6be439920736b756f08b695
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: dfe08152f986ccac3dabe7b3bb21e7653ee812a4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667984"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394368"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>想要了解 Service Fabric 吗？
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。  不过，Service Fabric 的外围应用领域广泛，有很多东西需要学习。  本文简要说明了 Service Fabric，并介绍了核心概念、编程模型、应用程序生命周期、测试、群集和运行状况监视。 请参阅[概述](service-fabric-overview.md)和[什么是微服务？](service-fabric-overview-microservices.md)，概览相关信息，并了解如何使用 Service Fabric 创建微服务。 本文包含的内容列表虽不完整，但确实提供了 Service Fabric 每个应用领域的概述和入门文章链接。 
@@ -165,7 +165,7 @@ Service Fabric 报告器可监视感兴趣的已标识条件。 它们会根据�
 * 在 Service Fabric 节点上运行，但未以 Service Fabric 服务形式实现的内部监视器。
 * 从 Service Fabric 群集外探测资源的外部监视器（例如，诸如 Gomez 之类的监视服务）。
 
-Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统运行状况报告](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)提供有关群集和应用程序功能的可见性，并且通过运行状况标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 运行时的角度验证实体得到实现并且正常运行。 报告不对服务的业务逻辑进行任何运行状况监视，也不检测暂停的进程。 若要添加特定于服务逻辑的运行状况信息，请在服务中[执行自定义运行状况报告](service-fabric-report-health.md)。
+Service Fabric 组件报告包含群集中所有实体的运行状况。 [系统运行状况报告](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)提供有关群集和应用程序功能的可见性，并且通过运行状况标记问题。 对于应用程序和服务，系统运行状况报告从 Service Fabric 运行时的角度验证实体得到实现并且正常运行。 报表不要进行任何运行状况监视的服务的业务逻辑或检测已停止响应的进程。 若要添加特定于服务逻辑的运行状况信息，请在服务中[执行自定义运行状况报告](service-fabric-report-health.md)。
 
 Service Fabric 提供了多种方式查看在运行状况存储中聚合的[运行状况报告](service-fabric-view-entities-aggregated-health.md)：
 * [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) 或其他可视化工具。

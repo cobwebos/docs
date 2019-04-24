@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5b3d8b1daef9f780bbba53f33ae451c63f80249b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519759"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60354978"
 ---
 # <a name="what-is-baseline-protection-preview"></a>何为基线保护（预览）？  
 
@@ -70,13 +70,13 @@ ms.locfileid: "58519759"
 
 3. 在“Azure Active Directory”页的“安全性”部分中，单击“条件性访问”。
 
-    ![条件访问](./media/baseline-protection/05.png)
+    ![条件性访问](./media/baseline-protection/05.png)
 
 4. 在策略列表中，单击以 **Baseline policy:** 开头的某个策略。 
 
 5. 若要启用策略，请单击“立即使用策略”。
 
-6. 单击“保存” 。 
+6. 单击“ **保存**”。 
  
   
  

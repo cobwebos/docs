@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/01/2019
 ms.author: dekapur
 ms.openlocfilehash: 6d5169d8ea4480e95e09228f9eb02bd78fdd0be8
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58661321"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60393497"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>将 Azure Service Fabric 群集与 Windows Server 和 Linux 上的独立 Service Fabric 群集进行比较
 Service Fabric 群集是一组通过网络连接在一起的虚拟机或物理计算机，微服务会在其中部署和管理。 群集中的计算机或 VM 称为群集节点。 群集可以扩展到数千个节点。 如果向群集添加新节点，Service Fabric 会在新增加的节点间重新平衡服务分区副本和实例。 应用程序总体性能提高，访问内存的争用减少。 如果没有高效使用群集中的节点，可以减少群集中节点的数量。 Service Fabric 会再次在减少的节点间重新平衡分区副本和实例以更加充分利用每个节点上的硬件。

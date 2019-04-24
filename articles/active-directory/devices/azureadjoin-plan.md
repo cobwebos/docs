@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b59471cd8af02513186fa4437a2249b056cc324
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60354393"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>如何：计划 Azure AD 加入实现
 
@@ -38,19 +38,19 @@ ms.locfileid: "58518926"
 
 
 
-## <a name="plan-your-implementation"></a>计划实施
+## <a name="plan-your-implementation"></a>规划实施
 
 若要规划您的 Azure AD 联接实现，您应熟悉：
 
 |   |   |
 |---|---|
-|![检查][1]|查看方案|
-|![检查][1]|查看标识基础结构|
-|![检查][1]|评估设备管理|
-|![检查][1]|了解有关应用程序和资源的注意事项|
-|![检查][1]|了解预配选项|
-|![检查][1]|配置企业状态漫游|
-|![检查][1]|配置条件访问|
+|![勾选标记][1]|查看方案|
+|![勾选标记][1]|查看标识基础结构|
+|![勾选标记][1]|评估设备管理|
+|![勾选标记][1]|了解有关应用程序和资源的注意事项|
+|![勾选标记][1]|了解预配选项|
+|![勾选标记][1]|配置企业状态漫游|
+|![勾选标记][1]|配置条件访问|
 
 
 
@@ -350,7 +350,7 @@ MAM 不适用于 Azure AD 联接。
 
 如果为 Azure AD 联接设备配置的 MDM 提供程序，只要该设备处于管理状态，提供程序就将其标记为符合。 
 
-![兼容设备](./media/azureadjoin-plan/46.png)
+![合规的设备](./media/azureadjoin-plan/46.png)
 
 可使用此实现[通过条件访问要求使用托管设备进行云应用访问](../conditional-access/require-managed-devices.md)。
 

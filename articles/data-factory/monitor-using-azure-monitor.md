@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/11/2018
 ms.author: shlo
 ms.openlocfilehash: e96e462709ab0c715c831bd10c628869d5c617fe
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013311"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319061"
 ---
 # <a name="alert-and-monitor-data-factories-using-azure-monitor"></a>使用 Azure Monitor 发警报和监视数据工厂
 云应用程序很复杂，包含很多移动部件。 监视可以为用户提供数据，确保应用程序始终处于健康运行状态。 监视还有助于避免潜在问题，或者解决过去的问题。 此外，还可以利用监视数据深入了解应用程序的情况。 了解这些情况有助于改进应用程序的性能或可维护性，或者实现本来需要手动干预的操作的自动化。

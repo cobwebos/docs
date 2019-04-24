@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: 6778df746a64f944b51570f8774c0e84c7d88658
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.openlocfilehash: ad905f93a8c4b03fd6ccc9edb93b52f23bcb2c58
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55194689"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417420"
 ---
 # <a name="enable-password-hash-synchronization-to-azure-active-directory-domain-services"></a>允许将密码哈希同步到 Azure Active Directory 域服务
 在前述任务中，你为 Azure Active Directory (Azure AD) 租户启用了 Azure Active Directory 域服务。 下一个任务是使 NT LAN Manager (NTLM) 和 Kerberos 身份验证所需的密码哈希同步到 Azure AD 域服务。 设置密码哈希同步以后，用户即可使用其公司凭据登录到托管域。
@@ -28,6 +28,7 @@ ms.locfileid: "55194689"
 对于仅限云的用户帐户来说，所涉及的步骤不同于使用 Azure AD Connect 从本地目录同步的用户帐户。 
 
 <br>
+
 | **用户帐户的类型** | **要执行的步骤** |
 | --- |---|
 | **在 Azure AD 中创建的云用户帐户** |**&#x2713;** [按此文中的说明操作](active-directory-ds-getting-started-password-sync.md#task-5-enable-password-hash-synchronization-to-your-managed-domain-for-cloud-only-user-accounts) |

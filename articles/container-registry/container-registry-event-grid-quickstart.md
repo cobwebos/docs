@@ -9,11 +9,11 @@ ms.date: 08/23/2018
 ms.author: danlep
 ms.custom: seodec18
 ms.openlocfilehash: f5c075942a29968ea57c684cd817e578df951989
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427626"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>快速入门：将事件从私有容器注册表发送到事件网格
 

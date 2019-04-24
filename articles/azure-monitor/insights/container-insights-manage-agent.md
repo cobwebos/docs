@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 12/06/2018
 ms.author: magoedte
 ms.openlocfilehash: c8a5c839d6d662f9d330099f89c97eb83c4fe516
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577078"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494688"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>如何管理用于容器的 Azure Monitor 代理
 用于容器的 Azure Monitor 使用适用于 Linux 的 Log Analytics 代理的容器化版本。 初始部署之后，在其生命周期内可能需要执行一些例程或可选任务。 本文详细介绍如何手动升级代理并禁用来自特定容器的环境变量集合。 

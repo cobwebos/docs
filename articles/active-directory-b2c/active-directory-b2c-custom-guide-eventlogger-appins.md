@@ -11,11 +11,11 @@ ms.date: 10/12/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 51342a7544295b465d1f2dfc3e1b27d8285b3588
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384780"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>使用 Application Insights 在 Azure Active Directory B2C 中跟踪用户行为
 
@@ -47,11 +47,11 @@ Application Insights 可以使用关联 ID 来记录用户会话，以便统一�
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 2. 请确保使用包含 Azure 订阅的目录，方法是单击顶部菜单中的“目录和订阅筛选器”，然后选择包含订阅的目录。 此租户不是 Azure AD B2C 租户。
 3. 选择 Azure 门户左上角的“创建资源”，然后搜索并选择“Application Insights”。
-4. 单击“创建”。
+4. 单击**创建**。
 5. 输入此资源的名称。
 6. 在“应用程序类型”下，选择“ASP.NET web 应用程序”。
 7. 对于资源组，选择现有的组，或输入新组的名称。
-8. 单击“创建”。
+8. 单击**创建**。
 4. 创建 Application Insights 资源后，将其打开，展开“Essentials”并复制检测密钥。
 
 ![Application Insights 概览和检测密钥](./media/active-directory-b2c-custom-guide-eventlogger-appins/app-insights.png)

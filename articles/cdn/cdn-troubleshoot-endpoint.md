@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 66ee211856bb451caad7af02103aa306d76e8f97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59799229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323633"
 ---
 # <a name="troubleshooting-azure-cdn-endpoints-that-return-a-404-status-code"></a>排查 Azure CDN 终结点返回 404 状态代码的问题
 本文帮助你排查 Azure 内容分发网络 (CDN) 终结点返回 404 HTTP 响应状态代码的问题。

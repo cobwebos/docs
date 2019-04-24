@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 09/06/2016
 ms.author: yizhon
 ms.openlocfilehash: 0a7e30be374ae5095e206ce0e519e51bb58f1f00
-ms.sourcegitcommit: f6050791e910c22bd3c749c6d0f09b1ba8fccf0c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/25/2018
-ms.locfileid: "50024848"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399185"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>适用于 C 语言的 Azure IoT 设备 SDK - 有关序列化程序的详细信息
 
@@ -56,7 +56,7 @@ END_NAMESPACE(WeatherStation);
 本示例并未演示 SDK 支持的其他数据类型。 我们会在稍后讨论。
 
 > [!NOTE]
-> IoT 中心将设备发送到它的数据作为*事件*，而建模语言将其作为*数据*（使用 **WITH_DATA** 进行定义）。 同样，IoT 中心你将发送到设备的数据作为*消息*，而建模语言将其作为*操作*（使用 **WITH_ACTION** 进行定义）。 请注意，本文中可能会换用这些术语。
+> IoT 中心将设备发送到它的数据作为*事件*，而建模语言将其作为*数据*（使用 **WITH_DATA** 进行定义）。 同样，IoT 中心将你发送到设备的数据作为*消息*，而建模语言将其作为*操作*（使用 **WITH_ACTION** 进行定义）。 请注意，本文中可能会换用这些术语。
 > 
 > 
 
@@ -64,7 +64,7 @@ END_NAMESPACE(WeatherStation);
 
 在使用**序列化程序**库创建的模型中支持以下数据类型：
 
-| 类型 | Description |
+| Type | 描述 |
 | --- | --- |
 | double |双精度浮点数 |
 | int |32 位整数 |
@@ -194,7 +194,7 @@ EDM_DATE_TIME_OFFSET GetDateTimeOffset(time_t time)
 {"aDouble":1.100000000000000, "aInt":2, "aFloat":3.000000, "aLong":4, "aInt8":5, "auInt8":6, "aInt16":7, "aInt32":8, "aInt64":9, "aBool":true, "aAsciiCharPtr":"ascii string 1", "aDateTimeOffset":"2015-09-14T21:18:21Z", "aGuid":"00010203-0405-0607-0809-0A0B0C0D0E0F", "aBinary":"AQID"}
 ```
 
-请注意，序列化采用 JSON，这是由**序列化程序**库生成的格式。 此外请注意，序列化 JSON 对象的每个成员与我们的模型中定义的 **TestType** 成员相匹配。 值也与代码中使用的值完全匹配。 不过请注意，二进制数据采用 base64 编码：“AQID”是 {0x01, 0x02, 0x03} 的 base64 编码。
+请注意，序列化采用 JSON，这是由**序列化程序**库生成的格式。 此外请注意，序列化 JSON 对象的每个成员与我们的模型中定义的 **TestType** 成员相匹配。 值也与代码中使用的值完全匹配。 但请注意，二进制数据采用 base64 编码："AQID"是 base64 编码的 {0x01，0x02，0x03}。
 
 此示例演示使用**序列化程序**库的优点 - 它支持我们将 JSON 发送到云中，而无需在应用程序中显式处理序列化。 我们只需考虑如何在模型中设置数据事件的值，然后调用简单的 API 将这些事件发送到云。
 
@@ -233,7 +233,7 @@ WITH_DATA(HumidityEvent, Humidity)
 END_NAMESPACE(Contoso);
 ```
 
-请注意，该模型包含两个数据事件：**Temperature** 和 **Humidity**。 与上述示例不同，每个事件的类型是使用 **DECLARE\_STRUCT** 定义的结构。 **TemperatureEvent** 包括温度测量和时间戳；**HumidityEvent** 包含湿度度量和时间戳。 此模型可让我们以自然的方式为上述方案的数据建模。 将事件发送到云时，将发送温度/时间戳对或湿度/时间戳对。
+请注意，该模型包含两个数据事件：**温度**并**湿度**。 与上述示例不同，每个事件的类型是使用 **DECLARE\_STRUCT** 定义的结构。 **TemperatureEvent** 包括温度测量和时间戳；**HumidityEvent** 包含湿度度量和时间戳。 此模型可让我们以自然的方式为上述方案的数据建模。 将事件发送到云时，将发送温度/时间戳对或湿度/时间戳对。
 
 可以使用类似于下面的代码将温度事件发送到云：
 
@@ -425,13 +425,13 @@ if (SERIALIZE(&destination, &destinationSize, thermostat->Temperature, thermosta
 {"Temperature":75, "Humidity":45, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-有时，可能只想将模型的*某些*属性发送到云（特别是当模型包含大量数据事件时）。 这时，只发送数据事件的子集相当有用，就像前面的示例一样：
+有时，你可能只想将模型的*某些*属性发送到云（特别是当模型包含大量数据事件时）。 这时，只发送数据事件的子集相当有用，就像前面的示例一样：
 
 ```C
 {"Temperature":75, "Time":"2015-09-17T18:45:56Z"}
 ```
 
-这会生成完全相同的序列化的事件，就像我们在模型 1 中定义带有 **Temperature** 和 **Time** 成员的 **TemperatureEvent** 一样。 在本例中，我们可以使用不同的模型（模型 2）来生成完全相同的序列化事件，因为我们以不同的方式调用了 **SERIALIZE**。
+这将生成完全相同的序列化的事件，就像我们在模型 1 中定义带有 **Temperature** 和 **Time** 成员的 **TemperatureEvent** 一样。 在本例中，我们可以使用不同的模型（模型 2）来生成完全相同的序列化事件，因为我们以不同的方式调用了 **SERIALIZE**。
 
 重点是，如果将多个数据事件传递给 **SERIALIZE,**，则它会假设每个事件都是单个 JSON 对象中的一个属性。
 
@@ -487,7 +487,7 @@ static IOTHUBMESSAGE_DISPOSITION_RESULT IoTHubMessage(IOTHUB_MESSAGE_HANDLE mess
 }
 ```
 
-**IoTHubMessage** 的这种实现将针对模型中的每个操作调用特定的函数。 例如，如果模型定义了此操作：
+**IoTHubMessage** 的这种实现会针对模型中的每个操作调用特定的函数。 例如，如果模型定义了此操作：
 
 ```C
 WITH_ACTION(SetAirResistance, int, Position)
@@ -504,7 +504,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 }
 ```
 
-然后，会在该消息被发送到设备时调用 **SetAirResistance**。
+**SetAirResistance** 。
 
 我们还没有说明消息序列化版本的外观。 换言之，如果要将 **SetAirResistance** 消息发送到设备，该消息的外观是怎样的？
 
@@ -514,7 +514,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 {"Name" : "", "Parameters" : "" }
 ```
 
-将使用两个属性来发送序列化的 JSON 对象：**Name** 是操作（消息）的名称，**Parameters** 包含该操作的参数。
+要将发送具有两个属性的序列化的 JSON 对象：**名称**是操作 （消息） 的名称和**参数**包含该操作的参数。
 
 例如，要调用 **SetAirResistance**，可以将以下消息发送给设备：
 
@@ -543,7 +543,7 @@ EXECUTE_COMMAND_RESULT SetAirResistance(ContosoAnemometer* device, int Position)
 .\\c-utility
 ```
 
-如果没有克隆此库，则可以在[此处](https://github.com/Azure/azure-c-shared-utility)找到它。
+如果没有克隆此库，则可以在 [此处](https://github.com/Azure/azure-c-shared-utility)找到它。
 
 在此共享的实用程序库中，可找到以下文件夹：
 
@@ -581,11 +581,11 @@ WITH_DATA(int, MyData)
 
   ![宏参数编译器错误的屏幕截图](media/iot-hub-device-sdk-c-serializer/02-nMacroParametersCompilerErrors.png)
 
-**nArithmetic** 参数主要与宏语言的内部工作有关，而与应用程序没有太大的关系。  该参数可以控制在模型中（包括 **DECLARE_STRUCT** 宏）指定的成员总数。 如果开始看到这样的编译器错误，应该尝试增大 **nArithmetic** 的值：
+**nArithmetic** 参数主要与宏语言的内部工作有关，而与应用程序没有太大的关系。  该参数控制可以在模型中（包括 **DECLARE_STRUCT** 宏）指定的成员总数。 如果开始看到这样的编译器错误，应该尝试增大 **nArithmetic** 的值：
 
    ![算术编译器错误的屏幕截图](media/iot-hub-device-sdk-c-serializer/03-nArithmeticCompilerErrors.png)
 
-如果想要更改这些参数，请修改 macro\_utils.tt 文件中的值，重新编译 macro\_utils\_h\_generator.sln 解决方案并运行已编译的程序。 这么做时，将生成一个新的 macro\_utils.h 文件，该文件置于 .\\common\\inc 目录中。
+如果想要更改这些参数，请修改 macro\_utils.tt 文件中的值，重新编译 macro\_utils\_h\_generator.sln 解决方案并运行已编译的程序。 当你这么做时，将生成一个新的 macro\_utils.h 文件，该文件置于 .\\common\\inc 目录中。
 
 为了使用新版本的 macro\_utils.h，从解决方案中删除**序列化程序** NuGet 包，在其位置放置了**序列化程序** Visual Studio 项目。 这样，便可以让代码针对序列化程序库的源代码进行编译。 这包括更新的 macro\_utils.h。 如果想要针对 **simplesample\_amqp** 执行此操作，首先从解决方案中删除序列化程序库的 NuGet 包：
 
@@ -603,7 +603,7 @@ WITH_DATA(int, MyData)
 
 现在编译解决方案时，二进制文件中包含已更新的 macro\_utils.h。
 
-请注意，将这些值增大到足够高的数目可能会超出编译器限制。 因此，**nMacroParameters** 是需要关注的主要参数。 C99 规范规定，宏定义中至少允许 127 个参数。 Microsoft 编译器完全遵循规范（个数限制为 127），因此，不能将 **nMacroParameters** 提高到超出默认值。 其他编译器可能允许这么做（例如 GNU 编译器支持更高的限制）。
+请注意，将这些值增大到足够高的数目可能会超出编译器限制。 因此，**nMacroParameters** 是需要关注的主要参数。 C99 规范规定，宏定义中至少允许 127 个参数。 Microsoft 编译器完全遵循规范（个数限制为 127），因此不能将 **nMacroParameters** 提高到超出默认值。 其他编译器可能允许这么做（例如 GNU 编译器支持更高的限制）。
 
 到目前为止，我们已经介绍了使用**序列化程序**库编写代码所需了解的所有内容。 结束前，来回顾下前面文章中可能感兴趣的一些主题。
 
@@ -663,7 +663,7 @@ serializer_deinit();
 
 ## <a name="next-steps"></a>后续步骤
 
-本文详细介绍了**适用于 C 语言的 Azure IoT 设备 SDK** 中包含的**序列化程序**库的独特方面。通过文中提供的信息，应该能充分了解如何使用模型来发送事件和接收来自 IoT 中心的消息。
+本文详细介绍了**适用于 C 语言的 Azure IoT 设备 SDK** 中包含的**序列化程序**库的独特方面。通过文中提供的信息，你应该能充分了解如何使用模型来发送事件和接收来自 IoT 中心的消息。
 
 本文也是通过**适用于 C 语言的 Azure IoT 设备 SDK** 开发应用程序这一系列教程（由三部分组成）的最后一部分。这些信息应该不仅足以让你入门，还能让你彻底了解 API 的工作原理。 请了解其他信息，因为还有一些 SDK 中的示例未涵盖在本文中。 除此之外，[Azure IoT SDK 文档](https://github.com/Azure/azure-iot-sdk-c)也是获取其他信息的绝佳资源。
 

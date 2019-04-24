@@ -11,14 +11,14 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/01/2019
+ms.date: 04/17/2019
 ms.author: magoedte
-ms.openlocfilehash: ebe2c2b488e3d71597dd24f5504a14dd7ce6671e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: bbd7c733c7c089328d2fbe016426fe9de3a6b5ce
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791535"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60494620"
 ---
 # <a name="how-to-set-up-alerts-for-performance-problems-in-azure-monitor-for-containers"></a>如何为 Azure Monitor 中的容器的性能问题设置警报
 用于容器的 azure 监视器监视将部署到 Azure 容器实例，或若要管理 Kubernetes 群集托管在 Azure Kubernetes 服务 (AKS) 的容器工作负荷的性能。
@@ -285,5 +285,5 @@ let endDateTime = now();
 
 ## <a name="next-steps"></a>后续步骤
 
-* 视图[记录查询示例](container-insights-analyze.md#search-logs-to-analyze-data)若要了解有关预定义的查询和示例，以评估或自定义的其他警报方案。
-* 若要了解有关 Azure Monitor 和如何监视你的 AKS 群集的其他方面的详细信息，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
+- 视图[记录查询示例](container-insights-log-search.md#search-logs-to-analyze-data)若要查看预定义的查询和示例，以评估或自定义的警报、 可视化，或分析你的群集。
+- 若要了解有关 Azure Monitor 和如何监视你的 AKS 群集的其他方面的详细信息，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。

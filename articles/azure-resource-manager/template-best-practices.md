@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 03/05/2019
 ms.author: tomfitz
 ms.openlocfilehash: bcc529b02505359e6e4e320d4991a082797c5261
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57440466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60389570"
 ---
 # <a name="azure-resource-manager-template-best-practices"></a>Azure 资源管理器模板最佳做法
 
@@ -42,9 +42,9 @@ ms.locfileid: "57440466"
 
 ## <a name="resource-group"></a>资源组
 
-在资源部署到资源组时，资源组存储有关的资源的元数据。 元数据存储在资源组的位置。
+将资源部署到资源组时，资源组会存储与资源有关的元数据。 元数据存储在资源组的位置中。
 
-如果资源组的区域是暂时不可用，则无法更新资源组中的资源，因为元数据不可用。 在其他区域中的资源将仍然正常运行，但是不能更新它们。 若要风险降至最低，找到在同一区域中的资源组和资源。
+如果资源组的区域临时不可用，则不能更新资源组中的资源，因为元数据不可用。 其他区域中的资源仍将按预期运行，但你无法更新它们。 若要将风险降至最低，请将资源组和资源定位在同一区域中。
 
 ## <a name="parameters"></a>parameters
 使用[参数](resource-group-authoring-templates.md#parameters)时，本部分中的信息可以提供帮助。

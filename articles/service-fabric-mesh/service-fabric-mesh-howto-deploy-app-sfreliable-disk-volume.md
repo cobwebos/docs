@@ -16,11 +16,11 @@ ms.date: 12/03/2018
 ms.author: asnegi
 ms.custom: mvc, devcenter
 ms.openlocfilehash: b5e4ad30a65b25140cfb2c80dd15d8cd28fb827b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57850847"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419214"
 ---
 # <a name="mount-highly-available-service-fabric-reliable-disk-based-volume-in-a-service-fabric-mesh-application"></a>在 Service Fabric 网格应用程序中装载高度可用的基于 Service Fabric Reliable Disk 的卷 
 使用容器应用保存状态的常用方法是使用远程存储，例如 Azure 文件存储或 Azure Cosmos DB 等数据库。 这会对远程存储造成长时间读取和写入网络延迟。

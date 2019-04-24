@@ -17,11 +17,11 @@ ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5fb57052cc550a659dcd8a514fbb71ad0f7d8df5
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192398"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60442317"
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory 应用程序代理中的通配符应用程序 
 
@@ -53,7 +53,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 创建通配符应用程序的过程基于适用于其他所有应用程序的相同[应用程序发布流](application-proxy-add-on-premises-application.md)。 唯一的区别在于，需在 URL 中包含通配符，有时可以在 SSO 配置中包含通配符。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 ### <a name="custom-domains"></a>自定义域
 
@@ -169,7 +169,7 @@ Azure Active Directory (Azure AD) 中配置大量的本地应用程序后，如�
 
 ![AppId](./media/application-proxy-wildcard/05.png)
 
-| 颜色 | 说明 |
+| 颜色 | 描述 |
 | ---   | ---         |
 | 蓝色  | 显式发布并在 Azure 门户中可见的应用程序。 |
 | 灰色  | 可通过父应用程序访问的应用程序。 |

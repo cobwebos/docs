@@ -11,11 +11,11 @@ ms.date: 12/13/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: e8e3157bc9dfc97d364effee2ea90cfad85d18ff
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55167814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317133"
 ---
 # <a name="configure-password-complexity-using-custom-policies-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中使用自定义策略配置密码复杂性
 
@@ -23,7 +23,7 @@ ms.locfileid: "55167814"
 
 在 Azure Active Directory (Azure AD) B2C 中，可配置由用户在创建帐户时提供的密码的复杂性要求。 默认情况下，Azure AD B2C 使用“强”密码。 本文介绍如何在[自定义策略](active-directory-b2c-overview-custom.md)中配置密码复杂性。 还有可能在[用户流](active-directory-b2c-reference-password-complexity.md)中配置密码复杂性。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成 [Active Directory B2C 中的自定义策略入门](active-directory-b2c-get-started-custom.md)中的步骤。
 

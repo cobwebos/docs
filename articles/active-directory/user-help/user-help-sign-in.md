@@ -14,11 +14,11 @@ ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60e4d9a4cb555dfbc9f05961487a8f794d19e1bf
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59268347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60472952"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>使用双重验证或安全信息登录
 设置双重验证或安全信息后，可以使用指定的身份验证方法登录到你的帐户。

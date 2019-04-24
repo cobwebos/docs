@@ -11,11 +11,11 @@ ms.date: 04/10/2017
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 928c6316ea964472faadc82213c4c1ff81c3e038
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608232"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60317069"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C：上市区域和数据驻留
 区域可用性和数据驻留是两个截然不同的概念，它们以不同方式应用到 Azure AD B2C 和 Azure 的其余部分。 本文介绍这两个概念之间的区别，并对它们应用到 Azure 和 Azure AD B2C 的方式进行比较。

@@ -8,12 +8,12 @@ ms.author: ramonarguelles
 ms.date: 02/24/2019
 ms.topic: how-to
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 163edd544a2d93e380b8906df3e0055711321c95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 09736396342505c8ec44cc83bf66f7c0ef893f80
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58918852"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60333599"
 ---
 # <a name="how-to-create-and-locate-anchors-using-azure-spatial-anchors-in-java"></a>如何创建和查找使用 Azure，Java 中的空间定位点的定位点
 
@@ -39,7 +39,7 @@ ms.locfileid: "58918852"
 - 通读 [Azure 空间定位点概述](../overview.md)。
 - 完成 [5 分钟快速入门](../index.yml)之一。
 - 在 Java 上的基本知识。
-- 有关的基本知识<a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.5。
+- 有关的基本知识<a href="https://developers.google.com/ar/discover/" target="_blank">ARCore</a> 1.7。
 
 [!INCLUDE [Start](../../../includes/spatial-anchors-create-locate-anchors-start.md)]
 

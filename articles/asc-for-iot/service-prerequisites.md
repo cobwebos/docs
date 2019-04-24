@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: mlottner
 ms.openlocfilehash: f09d768c0c6c1d351f737b053da9fd3282867099
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60505336"
 ---
 # <a name="azure-security-center-for-iot-prerequisites"></a>Azure 安全中心，IoT 系统必备组件
 

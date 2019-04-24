@@ -2,17 +2,18 @@
 title: 操作员最佳做法 - Azure Kubernetes 服务 (AKS) 中的高级计划程序功能
 description: 了解有关使用 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能（例如排斥 (taint) 和容许 (toleration)、节点选择器和关联，或 pod 间关联和反关联）的群集操作员最佳做法
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/26/2018
-ms.author: iainfou
+origin.date: 11/26/2018
+ms.date: 04/08/2019
+ms.author: v-yeche
 ms.openlocfilehash: 27c9c872f4dfb82b4a1389189d62c4e1f06ee272
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58175975"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60464962"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>有关 Azure Kubernetes 服务 (AKS) 中的高级计划程序功能的最佳做法
 
@@ -52,7 +53,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
   resources:
     requests:
       cpu: 0.5
@@ -95,7 +96,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -125,7 +126,7 @@ metadata:
 spec:
   containers:
   - name: tf-mnist
-    image: microsoft/samples-tf-mnist-demo:gpu
+    image: dockerhub.azk8s.cn/microsoft/samples-tf-mnist-demo:gpu
     resources:
       requests:
         cpu: 0.5
@@ -151,7 +152,7 @@ spec:
 
 Kubernetes 计划程序逻辑隔离工作负荷的最终方法之一是使用 pod 间关联或反关联。 这些设置定义不应在具有现有匹配 pod 的节点上计划 pod，或者应该计划 pod。 默认情况下，Kubernetes 计划程序会尝试在跨节点的副本集3中计划多个 pod。 可围绕此行为定义更具体的规则。
 
-同时使用 Azure Redis 缓存的 Web 应用程序就是一个很好的例子。 可以使用 pod 反关联规则来请求 Kubernetes 计划程序跨节点分配副本。 然后可以使用关联规则以确保每个 web 应用程序组件安排在相应的缓存的同一主机上。 跨节点的 pod 分配如以下示例所示：
+同时使用 Azure Redis 缓存的 Web 应用程序就是一个很好的例子。 可以使用 pod 反关联规则来请求 Kubernetes 计划程序跨节点分配副本。 然后，可以使用关联规则来确保在相应缓存所在的同一主机上计划每个 Web 应用组件。 跨节点的 pod 分配如以下示例所示：
 
 | **节点 1** | **节点 2** | **节点 3** |
 |------------|------------|------------|

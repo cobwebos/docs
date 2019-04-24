@@ -10,18 +10,18 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 86de73394d96d1122abce44504d2b0fd99a01841
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 3fe839de8cbaa0b321b0b0602b000b7575224dde
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60361092"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 OAuth1 技术配置文件
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.org/html/rfc5849)标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，可以与基于 OAuth1 的标识提供者（例如 Twitter）联合，方便用户使用其现有的社交或企业标识登录。
+Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.org/html/rfc5849)标识提供者提供支持。 本文介绍了与支持此标准化协议的声明提供程序进行交互的技术配置文件的详细信息。 使用 OAuth1 技术配置文件，您可以联合使用 OAuth1 基于的标识提供程序，如 Twitter。 与标识提供者联合允许用户使用其现有的社交登录或企业标识。
 
 ## <a name="protocol"></a>协议
 
@@ -46,7 +46,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 以下示例演示 Twitter 标识提供者返回的声明：
 
-- 映射到 **socialIdpUserId** 声明的 **user_id** 声明。
+- **User_id**映射到声明**issuerUserId**声明。
 - 映射到 **displayName** 声明的 **screen_name** 声明。
 - 没有名称映射的 **email** 声明。
 
@@ -57,7 +57,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 ```xml
 <OutputClaims>
-  <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="user_id" />
+  <OutputClaim ClaimTypeReferenceId="issuerUserId" PartnerClaimType="user_id" />
   <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="screen_name" />
   <OutputClaim ClaimTypeReferenceId="email" />
   <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="twitter.com" />
@@ -87,7 +87,7 @@ Azure Active Directory (Azure AD) B2C 为 [OAuth 1.0 协议](https://tools.ietf.
 
 ## <a name="redirect-uri"></a>重定向 URI
 
-配置标识提供者的重定向 URL 时，请输入 `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`。 确保将 **tenant** 替换为租户名称（例如 contosob2c.onmicrosoft.com），将 **policyId** 替换为策略的标识符（例如 b2c_1a_policy）。 重定向 URI 需要采用全小写形式。 应该为使用标识提供者登录名的所有策略添加重定向 URI。 
+配置标识提供者的重定向 URL 时，请输入 `https://login.microsoftonline.com/te/tenant/policyId/oauth1/authresp`。 确保将 **tenant** 替换为租户名称（例如 contosob2c.onmicrosoft.com），将 **policyId** 替换为策略的标识符（例如 b2c_1a_policy）。 重定向 URI 需要采用全小写形式。 添加使用的标识提供程序登录名的所有策略的重定向 URL。 
 
 如果使用 **b2clogin.com** 域而不是 **login.microsoftonline.com**，请确保使用 b2clogin.com 而不是 login.microsoftonline.com。
 

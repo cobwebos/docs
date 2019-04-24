@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 03/04/2019
 ms.author: diberry
 ms.openlocfilehash: c173152d0a59e391fe77ee855311a867a1b2b6c0
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57338427"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198352"
 ---
 # <a name="model-and-usage-statistics-in-the-dashboard"></a>仪表板中的模型和使用情况统计信息
 应用仪表板可让你一目了然地监视应用。 通过单击“我的应用”页中的应用程序名称打开应用，然后选择顶部面板中的“仪表板”，仪表板将随即显示。 

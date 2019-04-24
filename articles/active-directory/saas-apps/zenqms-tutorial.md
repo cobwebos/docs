@@ -16,11 +16,11 @@ ms.date: 08/21/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5d2e734ff9bd34a176d08e36019c826dac355bb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58003781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60239583"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zenqms"></a>教程：Azure Active Directory 与 ZenQMS 的集成
 
@@ -170,7 +170,7 @@ ms.locfileid: "58003781"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
 
 ### <a name="create-a-zenqms-test-user"></a>创建 ZenQMS 测试用户
 

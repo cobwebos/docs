@@ -13,11 +13,11 @@ ms.date: 02/13/2018
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 55dfab0c60e77b86157a005db34c37917a5e08d2
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57341096"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60475046"
 ---
 # <a name="manage-app-passwords-from-your-security-info-preview-page"></a>从“安全信息”（预览版）页面管理应用密码
 某些应用（例如 Outlook 2010）不支持双重验证。 缺少这种支持意味着，如果你在组织中使用双重验证，该应用将不会正常工作。 若要解决此问题，可以创建一个与普通密码不同的自动生成的密码，并在每个非浏览器应用中使用该密码。

@@ -8,14 +8,14 @@ ms.reviewer: jasonh
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/15/2019
-ms.openlocfilehash: c3c5484d865c73a6f478ffc9ad4c3fc86c2c8170
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 64856d53168a7676cf279da2d8675ce81e1985f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60447724"
 ---
-# <a name="copy-data-from-azure-data-factory-to-azure-data-explorer"></a>将数据从 Azure 数据工厂复制到 Azure 数据资源管理器
+# <a name="copy-data-to-azure-data-explorer-using-azure-data-factory"></a>将数据复制到 Azure 数据资源管理器使用 Azure 数据工厂 
 
 Azure 数据资源管理器是对很多来源，如应用程序、 网站和 IoT 设备流式处理的数据量很大的实时分析的快速、 完全托管的数据分析服务。 以迭代方式浏览数据并标识模式和异常情况以改进产品，增强客户体验，监视设备，并提升操作。 探索新问题并在几分钟内获得答案。 Azure 数据工厂是一个完全托管的基于云的数据集成服务。 该服务可用于在 Azure 数据资源管理器用数据填充数据库从现有系统和节省时间时生成分析解决方案。
 
@@ -32,7 +32,7 @@ Azure 数据工厂提供了用于将数据加载到 Azure 数据资源管理器�
 
 * 如果还没有 Azure 订阅，可以在开始前创建一个[免费 Azure 帐户](https://azure.microsoft.com/free/)。
 * [Azure 数据资源管理器群集和数据库](create-cluster-database-portal.md)
-* Amazon S3.
+* 数据源。
 
 ## <a name="create-a-data-factory"></a>创建数据工厂
 
@@ -147,10 +147,6 @@ Azure 数据资源管理器中新建链接的服务创建要复制到 Azure 数�
 
     ![ADX 目标数据存储](media/data-factory-load-data/destination-data-store.png)
 
-1. 在中**选择输出文件或文件夹**，输入输出文件夹的名称，确定设置，并选择**下一步**。
-
-    ![指定输出文件夹](media/data-factory-load-data/specify-path.png)
-
 1. 在中**表映射**，请设置目标表名称，然后选择**下一步**。
 
     ![目标数据集表映射](media/data-factory-load-data/destination-dataset-table-mapping.png)
@@ -186,6 +182,8 @@ Azure 数据资源管理器中新建链接的服务创建要复制到 Azure 数�
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解如何编辑链接的服务、 数据集和管道中的[数据工厂 UI](/azure/data-factory/quickstart-create-data-factory-portal)
+* 了解如何[Azure 数据资源管理器连接器](/azure/data-factory/connector-azure-data-explorer)Azure 数据工厂中。
+
+* 详细了解如何编辑链接的服务、 数据集、 和中的管道[数据工厂 UI](/azure/data-factory/quickstart-create-data-factory-portal)。
 
 * 了解如何[Azure 数据资源管理器查询](/azure/data-explorer/web-query-data)用于数据查询。

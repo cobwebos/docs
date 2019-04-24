@@ -5,15 +5,15 @@ author: johnkemnetz
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 04/18/2019
 ms.author: johnkem
 ms.subservice: logs
-ms.openlocfilehash: 33d8f2e7c65a786d1ecb389574fe186efb6fb705
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: b17978da3195b364f868d33ab7ad9faa1544e9ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60238022"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics-workspace-in-azure-monitor"></a>Stream Azure 诊断日志到 Azure Monitor 中的 Log Analytics 工作区
 
@@ -124,7 +124,7 @@ Azure 数据工厂中，由于一组非常详细的日志，而是已知会特�
 - *针对你的管道中的任何活动定义的用户参数*： 将为每个唯一命名的用户参数与任何活动创建一个新列。 
 - *活动输入和输出*： 这些不同活动活动并生成大量的由于其详细特性的列。 
  
-作为与更广泛的解决方法建议，建议将 ADF 日志隔离到其自己的工作区以影响其他日志类型，在您的工作区中收集这些日志的可能性降到最低。 我们希望策划准备了日志用于 Azure 数据工厂可按年 4 月中旬 2019年。
+作为与更广泛的解决方法建议，建议将 ADF 日志隔离到其自己的工作区以影响其他日志类型，在您的工作区中收集这些日志的可能性降到最低。 我们希望策划准备了日志用于 Azure 数据工厂提供推出。
  
 #### <a name="workarounds"></a>解决方法
 短期来看，直到重新定义的 500 列限制，建议将隔离到单独的工作区以减少可能达到的限制的详细数据类型。

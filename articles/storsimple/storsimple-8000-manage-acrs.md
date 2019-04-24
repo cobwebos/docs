@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: alkohli
-ms.openlocfilehash: 9173e34f889ce1c082b20bb382cb6ca9a03dd797
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: ade7da25d2307a382c17e7a3cbb26b601c34ef78
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38597491"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321492"
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-access-control-records"></a>使用 StorSimple Manager 服务管理访问控制记录
 

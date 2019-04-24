@@ -14,11 +14,11 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: aac1ed82a01477b081f4bc146f199eba87d97859
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309141"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>使用 Azure 数据工厂从 Salesforce 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -289,7 +289,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 | 自动编号 |String |
 | 复选框 |Boolean |
 | 货币 |Decimal |
-| 日期 |DateTime |
+| date |DateTime |
 | 日期/时间 |DateTime |
 | 电子邮件 |String |
 | ID |String |
@@ -299,7 +299,7 @@ Salesforce 对 API 请求总数和并发 API 请求均有限制。 请注意以�
 | 百分比 |Decimal |
 | 电话 |String |
 | 选择列表 |String |
-| 文本 |String |
+| Text |String |
 | 文本区域 |String |
 | 文本区域（长型值） |String |
 | 文本区域（丰富） |String |

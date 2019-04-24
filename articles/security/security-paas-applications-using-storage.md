@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: TomShinder
 ms.openlocfilehash: 3ad97c7adb5901c1da1d174d12d5d6a91831cc74
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445411"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>使用 Azure 存储保护 PaaS Web 和移动应用程序的最佳做法
 本文介绍 Azure 存储安全在保护平台即服务 (PaaS) Web 和移动应用程序方面的最佳做法。 这些最佳实践衍生自我们的 Azure 经验和客户经验。

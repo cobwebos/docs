@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: ambapat
 ms.openlocfilehash: 36b431d07ad517d495316963fd6710dafab6c297
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60305418"
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>访问防火墙保护下的 Azure 密钥保管库
 
@@ -42,9 +42,9 @@ ms.locfileid: "56108630"
 
 | 主体类型 | 终结点：端口 |
 | --- | --- |
-| 使用 Microsoft 帐户的用户<br> （例如，user@hotmail.com） |**全球：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
-| 使用 Azure AD 的工作或学校帐户的用户或服务主体（例如，user@contoso.com） |**全球：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443 |
-| 使用工作或学校帐户，以及 Active Directory 联合身份验证服务 (AD FS) 或其他联合终结点的用户或服务主体（例如，user@contoso.com） |工作或学校帐户的所有终结点，以及 AD FS 或其他联合终结点 |
+| 使用 Microsoft 帐户的用户<br> （例如：user@hotmail.com） |**全球：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443<br><br> 和 <br>login.live.com:443 |
+| 使用 Azure AD 的工作或学校帐户的用户或服务主体（如 user@contoso.com） |**全球：**<br> login.microsoftonline.com:443<br><br> **Azure China：**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government：**<br> login.microsoftonline.us:443<br><br>**Azure Germany：**<br> login.microsoftonline.de:443 |
+| 使用工作或学校帐户，以及 Active Directory 联合身份验证服务 (AD FS) 或其他联合终结点的用户或服务主体（如 user@contoso.com） |工作或学校帐户的所有终结点，以及 AD FS 或其他联合终结点 |
 
 还可能存在一些其他复杂情况。 有关其他信息，请参阅 [Azure Active Directory 身份验证流](../active-directory/develop/authentication-scenarios.md)、[将应用程序与 Azure Active Directory 集成](../active-directory/develop/active-directory-how-to-integrate.md)和 [Active Directory 身份验证协议](https://msdn.microsoft.com/library/azure/dn151124.aspx)。  
 

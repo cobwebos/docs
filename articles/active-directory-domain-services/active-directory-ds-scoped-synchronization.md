@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: ergreenl
 ms.openlocfilehash: ac11244b87c87285722b4922da69530fab98c299
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60416477"
 ---
 # <a name="configure-scoped-synchronization-from-azure-ad-to-your-managed-domain"></a>配置从 Azure AD 到托管域的范围内同步
 本文介绍了如何仅将特定用户帐户配置为从 Azure AD 目录同步到 Azure AD 域服务托管域。

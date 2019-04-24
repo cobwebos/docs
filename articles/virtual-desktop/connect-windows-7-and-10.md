@@ -8,15 +8,15 @@ ms.topic: how-to
 ms.date: 03/27/2019
 ms.author: helohr
 ms.openlocfilehash: 8b5a649d767dae9ae9c0fb077f550451a7f83601
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630385"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328844"
 ---
 # <a name="connect-with-windows-7-and-windows-10"></a>使用 Windows 7 和 Windows 10 进行连接
 
-> 适用于Windows 7 和 Windows 10。
+> 适用对象：Windows 7 和 Windows 10。
 
 提供可下载的客户端，提供对访问的 Windows 虚拟桌面预览资源从运行 Windows 7 和 Windows 10 的设备。
 

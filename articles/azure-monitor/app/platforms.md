@@ -14,11 +14,11 @@ ms.date: 09/01/2016
 ms.reviewer: olegan
 ms.author: mbullwin
 ms.openlocfilehash: 5a7fbeafe74926c7d89ac76dc2964756b3582d61
-ms.sourcegitcommit: 8ca6cbe08fa1ea3e5cdcd46c217cfdf17f7ca5a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/22/2019
-ms.locfileid: "56671142"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254512"
 ---
 # <a name="developer-analytics-languages-platforms-and-integrations"></a>开发人员分析：语言、平台和集成
 这些项是我们听说过的 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 的实现，包括第三方的一些实现。

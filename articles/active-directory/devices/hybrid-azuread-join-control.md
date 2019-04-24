@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 93afc6f748ca9f464261c59e037a603ab6113bf8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353102"
 ---
 # <a name="control-the-hybrid-azure-ad-join-of-your-devices"></a>控制设备的混合 Azure AD 加入
 
@@ -73,7 +73,7 @@ ms.locfileid: "58518161"
 
 4.  输入组策略对象的名称（例如，混合 Azure AD 联接）。 
 
-5.  选择“确定” 。
+5.  选择“确定”。
 
 6.  右键单击新建的 GPO，并选择“编辑”。
 
@@ -89,7 +89,7 @@ ms.locfileid: "58518161"
     - **已禁用**：防止自动注册设备。
     - **已启用**：启用自动设备注册功能。
 
-10. 选择“确定” 。
+10. 选择“确定”。
 
 需要将 GPO 链接到所选位置。 例如，若要对组织中所有已加入域的当前设备设置此策略，请将 GPO 链接到域。 若要执行受控部署，请对组织单位或安全组中已加入域的 Windows 当前设备设置此策略。
 
@@ -108,7 +108,7 @@ ms.locfileid: "58518161"
     - **否**：防止自动注册设备。
     - **是**：启用自动设备注册功能。
 
-4.  选择“确定” 。
+4.  选择“确定”。
 
 需要将此客户端设置链接到所选位置。 例如，若要对组织中的所有 Window 当前设备配置此客户端设置，请将客户端设置链接到域。 若要执行受控部署，请对组织单位或安全组中已加入域的 Windows 当前设备配置此客户端设置。
 

@@ -12,11 +12,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: cc37109eda2690b4407f9cd0c92851b7c0e3f915
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835220"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399697"
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake 中可缩放的数据科学：端到端演练
 此演练介绍如何使用 Azure Data Lake 对 NYC 出租车行程和车费数据集的示例进行数据浏览和二进制分类任务，以预测小费是否是按车费所支付的。 它指导端到端完成 [Team Data Science Process](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/) 的步骤，从数据采集到模型训练，再到部署发布模型的 Web 服务。

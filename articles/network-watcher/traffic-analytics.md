@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: yagup;jdial
-ms.openlocfilehash: cb61366a672a48cdc84e14f40d889e646e0e23b8
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 2f283421a851914822f5b0c9d05ed6bc929d28c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60429716"
 ---
 # <a name="traffic-analytics"></a>流量分析
 
@@ -130,14 +130,6 @@ Log Analytics 工作区必须存在于以下区域中：
 ### <a name="enable-network-watcher"></a>启用网络观察程序
 
 若要分析流量，需要提供现有的网络观察程序，或者在要分析其流量的 NSG 所在的每个区域[启用网络观察程序](network-watcher-create.md)。 可对任一[受支持区域](#supported-regions)中托管的 NSG 启用流量分析。
-
-### <a name="re-register-the-network-resource-provider"></a>重新注册网络资源提供程序
-
-在使用流量分析之前，必须重新注册网络资源提供程序。 在以下代码框中单击“试用”打开 Azure Cloud Shell。 Cloud Shell 会自动使你登录到你的 Azure 订阅。 打开 Cloud Shell 之后，输入以下命令重新注册网络资源提供程序：
-
-```azurepowershell-interactive
-Register-AzResourceProvider -ProviderNamespace "Microsoft.Network"
-```
 
 ### <a name="select-a-network-security-group"></a>选择网络安全组
 

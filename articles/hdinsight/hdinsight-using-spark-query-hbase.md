@@ -1,7 +1,6 @@
 ---
 title: 使用 Spark 读取和写入 HBase 数据 - Azure HDInsight
 description: 使用 Spark HBase 连接器将 Spark 群集中的数据读写到 HBase 群集。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/12/2019
 ms.openlocfilehash: 200691f7af16e82d554d0e1e019b6a4e5c75949f
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60484932"
 ---
 # <a name="use-apache-spark-to-read-and-write-apache-hbase-data"></a>使用 Apache Spark 读取和写入 Apache HBase 数据
 
@@ -22,10 +21,10 @@ ms.locfileid: "58260122"
 
 ## <a name="prerequisites"></a>必备组件
 
-* 两个单独的 HDInsight 群集、 一个 HBase 和一个 Spark 和至少安装了 Spark 2.1 (HDInsight 3.6)。
+* 两个独立的 HDInsight 群集、一个HBase、一个至少装有 Spark 2.1 (HDInsight 3.6) 的 Spark。
 * Spark 集群需要按最低延迟直接与 HBase 集群进行通信，因此推荐的配置是将两个集群都部署在同一个虚拟网络中。 有关详细信息，请参阅[使用 Azure 门户在 HDInsight 中创建基于 Linux 的群集](hdinsight-hadoop-create-linux-clusters-portal.md)。
 * SSH 客户端。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight (Apache Hadoop)](hdinsight-hadoop-linux-use-ssh-unix.md)。
-* [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)群集主存储。 这将是 wasb: / / Azure Blob 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Blob 存储或数据湖存储第 2 代启用了安全传输，则 URI 将为 wasbs: / / 或 abfss: / / 分别另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
+* 群集主存储的 [URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme)。 这将是 wasb: / / Azure Blob 存储，abfs: / / 用于 Azure 数据湖存储第 2 代或 adl: / / 用于 Azure 数据湖存储 Gen1。 如果为 Blob 存储或 Data Lake Storage Gen2 启用了安全传输，则 URI 分别是 wasbs:// 或 abfss://。另请参阅[安全传输](../storage/common/storage-require-secure-transfer.md)。
 
 
 ## <a name="overall-process"></a>整体进程
@@ -43,21 +42,21 @@ ms.locfileid: "58260122"
 
 此步骤中，在 Apache HBase 中创建并填充一个简单的表，然后可使用 Spark 来查询。
 
-1. 使用 SSH 连接到 HBase 集群的头节点。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)。  通过替换来编辑下面的命令`HBASECLUSTER`HBase 群集的名称与`sshuser`使用 ssh 用户帐户名称，并输入命令。
+1. 使用 SSH 连接到 HBase 集群的头节点。 有关详细信息，请参阅[使用 SSH 连接到 HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)。  编辑以下命令，将 `HBASECLUSTER` 替换为 HBase 群集的名称，将 `sshuser` 替换为 SSH 用户帐户名，然后输入该命令。
 
     ```
     ssh sshuser@HBASECLUSTER-ssh.azurehdinsight.net
     ```
 
-2. 输入以下命令来启动 HBase shell:
+2. 输入以下命令，以启动 HBase shell：
 
         hbase shell
 
-3. 输入以下命令以创建`Contacts`表包含列系列`Personal`和`Office`:
+3. 输入以下命令，以创建包含列系列 `Personal` 和 `Office` 的 `Contacts` 表：
 
         create 'Contacts', 'Personal', 'Office'
 
-4. 输入以下命令来加载数据的几个示例行：
+4. 输入以下命令，以加载几行示例数据：
 
         put 'Contacts', '1000', 'Personal:Name', 'John Dole'
         put 'Contacts', '1000', 'Personal:Phone', '1-425-000-0001'
@@ -68,16 +67,16 @@ ms.locfileid: "58260122"
         put 'Contacts', '8396', 'Office:Phone', '230-555-0191'
         put 'Contacts', '8396', 'Office:Address', '5415 San Gabriel Dr.'
 
-5. 输入以下命令以退出 HBase shel:
+5. 输入以下命令，以退出 HBase shell：
 
         exit 
 
 ## <a name="copy-hbase-sitexml-to-spark-cluster"></a>将 hbase-site.xml 复制到 Spark 群集
-将 hbase-site.xml 从本地存储复制到 Spark 群集的默认存储的根目录。  编辑以下命令以反映你的配置。  然后，从打开到 HBase 群集的 SSH 会话，输入命令：
+将 hbase-site.xml 从本地存储复制到 Spark 群集默认存储所在的根目录。  编辑以下命令以反映配置。  然后，在与 HBase 群集建立的 SSH 会话中输入该命令：
 
 | 语法值 | 新值|
 |---|---|
-|[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改以反映你的存储。  下面的语法是适用于 blob 存储启用安全传输。|
+|[URI 方案](hdinsight-hadoop-linux-information.md#URI-and-scheme) | 修改此值以反映存储。  以下语法适用于启用了安全传输的 Blob 存储。|
 |`SPARK_STORAGE_CONTAINER`|替换为 Spark 群集使用的默认存储容器名称。|
 |`SPARK_STORAGE_ACCOUNT`|替换为 Spark 群集使用的默认存储帐户名称。|
 
@@ -89,13 +88,13 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 1. 使用 SSH 连接到 Spark 集群的头节点。
 
-2. 输入以下命令以复制`hbase-site.xml`从 Spark 群集的默认存储到群集的本地存储上的 Spark 2 配置文件夹：
+2. 输入以下命令，将 `hbase-site.xml` 从 Spark 群集的默认存储复制到群集本地存储上的 Spark 2 配置文件夹中：
 
         sudo hdfs dfs -copyToLocal /hbase-site.xml /etc/spark2/conf
 
 ## <a name="run-spark-shell-referencing-the-spark-hbase-connector"></a>运行 Spark Shell，引用 Spark HBase 连接器
 
-1. 从打开到 Spark 群集的 SSH 会话，输入以下命令以启动 spark shell:
+1. 在与 Spark 群集建立的 SSH 会话中，输入以下命令以启动 Spark shell：
 
     ```
     spark-shell --packages com.hortonworks:shc-core:1.1.1-2.1-s_2.11 --repositories https://repo.hortonworks.com/content/groups/public/
@@ -107,7 +106,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
 
 在此步骤中，定义一个将架构从 Apache Spark 映射到 Apache HBase 的目录对象。  
 
-1. 在打开 Spark Shell 中，输入以下`import`语句：
+1. 在打开的 Spark Shell 中，输入以下 `import` 语句：
 
     ```scala
     import org.apache.spark.sql.{SQLContext, _}
@@ -116,7 +115,7 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     import spark.sqlContext.implicits._
     ```  
 
-2. 输入以下命令以定义联系人表的目录在 HBase 中创建：
+2. 输入以下命令，以定义在 HBase 中创建的 Contacts 表的目录：
 
     ```scala
     def catalog = s"""{
@@ -132,13 +131,13 @@ hdfs dfs -copyFromLocal /etc/hbase/conf/hbase-site.xml wasbs://SPARK_STORAGE_CON
     |}""".stripMargin
     ```
 
-    代码执行下列任务：  
+    该代码执行以下操作：  
 
      a. 定义名为 `Contacts` 的 HBase 表的目录架构。  
      b. 将 rowkey 标识为 `key`，并将 Spark 中使用的列名映射到 HBase 中使用的列族、列名和列类型。  
      c. Rowkey 还必须详细定义为具有 `rowkey` 的特定列族 `cf` 的命名列 (`rowkey`)。  
 
-3. 输入以下命令来定义提供围绕数据帧的方法在`Contacts`在 HBase 表：
+3. 输入以下命令，以定义一个在 HBase 中提供围绕 `Contacts` 表的 DataFrame 的方法：
 
     ```scala
     def withCatalog(cat: String): DataFrame = {

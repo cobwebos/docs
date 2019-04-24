@@ -1,5 +1,5 @@
 ---
-title: 管理员管理用户和设备-Azure MFA 的 Azure Active Directory
+title: 管理员管理用户和设备 - Azure MFA - Azure Active Directory
 description: 本文介绍如何更改用户设置，例如，强制用户再次完成验证过程。
 services: multi-factor-authentication
 ms.service: active-directory
@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c78d6d901c050f6d1df8b53b34f0088d3ad8b0f8
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60415055"
 ---
 # <a name="manage-user-settings-with-azure-multi-factor-authentication-in-the-cloud"></a>管理云中 Azure 多重身份验证的用户设置
 

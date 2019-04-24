@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: v-erkell
 ms.openlocfilehash: 69921300163bd9a326f3baedd3182da887ad02c4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59264448"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60409936"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Avere vFXT for Azure FAQ
 
@@ -122,7 +122,7 @@ Avere vFXT 不支持虚拟机规模集的部署。 仅针对参与群集的原�
 
 ### <a name="do-the-avere-vfxt-vms-count-against-my-compute-quota"></a>Avere vFXT VM 是否会消耗计算配额？
 
-是的。 请确保在区域中有足够的配额以支持群集。  
+可以。 请确保在区域中有足够的配额以支持群集。  
 
 ### <a name="can-i-run-the-avere-vfxt-cluster-machines-in-different-availability-zones"></a>是否可以在不同的可用性区域中运行 Avere vFXT 群集计算机？
 
@@ -177,7 +177,7 @@ Avere vFXT for Azure 当前不支持本地 SSD。 用于 Avere vFXT 的磁盘必
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>Avere vFXT 是否需要自己的子网？
 
-是的。 Avere vFXT 严格作为高可用性 (HA) 群集中运行，并且要求多个 IP 地址进行操作。 如果群集位于自己的子网中，则可以避免 IP 地址冲突的风险，冲突可能导致安装和正常操作出现问题。 只要 IP 地址没有重叠，群集的子网就可以位于现有的虚拟网络中。
+可以。 Avere vFXT 严格作为高可用性 (HA) 群集中运行，并且要求多个 IP 地址进行操作。 如果群集位于自己的子网中，则可以避免 IP 地址冲突的风险，冲突可能导致安装和正常操作出现问题。 只要 IP 地址没有重叠，群集的子网就可以位于现有的虚拟网络中。
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>可否在 InfiniBand 上运行 Avere vFXT？
 

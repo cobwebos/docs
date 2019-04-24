@@ -1,7 +1,6 @@
 ---
 title: 使用扩展的 Spark History Server 调试和诊断 Spark 应用程序 - Azure HDInsight
 description: 使用扩展的 Spark History Server 调试和诊断 Spark 应用程序 - Azure HDInsight。
-services: hdinsight
 ms.service: hdinsight
 author: jejiang
 ms.author: jejiang
@@ -10,11 +9,11 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.openlocfilehash: 96c2f1c021e27a8f5a0f4d2af2b34970b9d44e80
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524168"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60484164"
 ---
 # <a name="use-extended-apache-spark-history-server-to-debug-and-diagnose-apache-spark-applications"></a>使用扩展的 Apache Spark History Server 调试和诊断 Apache Spark 应用程序
 
@@ -199,7 +198,7 @@ Spark History Server Web UI 如下所示：
     ![选择图表](./media/apache-azure-spark-history-server/sparkui-diagnosis-select-chart.png)
 
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 ### <a name="1-revert-to-community-version"></a>1.还原到社区版本
 

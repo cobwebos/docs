@@ -15,11 +15,11 @@ ms.workload: tbd
 ms.date: 5/21/2017
 ms.author: raiye
 ms.openlocfilehash: d6429766b6aac547fd99279659acb1067298e77c
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51244672"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60518968"
 ---
 # <a name="guest-os-family-1-retirement-notice"></a>来宾 OS 系列 1 停用通知
 我们已在 2013 年 6 月 1 日宣布停用 OS 系列 1。
@@ -37,7 +37,7 @@ ms.locfileid: "51244672"
 2. 未在云服务的 ServiceConfiguration.cscfg 文件中显式指定 osFamily 的值。 当前，系统对此情况使用默认值“1”。
 3. Azure 门户将来宾操作系统系列值列为“Windows Server 2008”。
 
-要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 有关该脚本的详细信息，请参阅 [Azure 来宾 OS 系列 1 生命周期终结：2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
+要了解哪个云服务在运行哪个 OS 系列，可以在 Azure PowerShell 中运行以下脚本，但必须首先[设置 Azure PowerShell](/powershell/azureps-cmdlets-docs)。 该脚本的详细信息，请参阅[Azure 来宾 OS 系列 1 生命：2014 年 6 月](https://blogs.msdn.com/b/ryberry/archive/2014/04/02/azure-guest-os-family-1-end-of-life-june-2014.aspx)。
 
 ```Powershell
 foreach($subscription in Get-AzureSubscription) {
@@ -57,7 +57,7 @@ foreach($subscription in Get-AzureSubscription) {
 基于 Windows Server 2012 R2 的**来宾 OS 系列 4.x***（建议）*
 
 1. 确保应用程序使用了 SDK 2.1 或更高版本以及 .NET framework 4.0、4.5 或 4.5.1。
-2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“4”，然后重新部署云服务。
+2. 在 ServiceConfiguration.cscfg 文件中将 osFamily 特性设置为“4”，并重新部署云服务。
 
 基于 Windows Server 2012 的**来宾 OS 系列 3.x**
 

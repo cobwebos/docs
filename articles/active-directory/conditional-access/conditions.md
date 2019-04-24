@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f95fd85b5a0fd9e905b93b9b90f18f963dbf1690
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60355645"
 ---
 # <a name="what-are-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的条件是什么？ 
 
@@ -174,7 +174,7 @@ ms.locfileid: "58518229"
 
 - 未在策略中配置其他条件。 但是，可以缩小此条件的范围，使之仅应用到[支持的平台](technical-reference.md#device-platform-condition)。
  
-    ![将策略仅应用到受支持的平台](./media/conditions/33.png)
+    ![仅将策略应用到支持的平台](./media/conditions/33.png)
 
 
 如果系统因为要求使用[托管设备](require-managed-devices.md)而阻止某些用户的访问，则受影响的用户会收到一封引导他们使用 Intune 的邮件。 

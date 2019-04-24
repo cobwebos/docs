@@ -14,11 +14,11 @@ ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ec8c58e4ced0d8df958e242b9c1671aeed8c2ee6
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812083"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60488158"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>复制活动性能和优化指南
 
@@ -414,7 +414,7 @@ Azure 提供了一组企业级数据存储和数据仓库解决方案，并且�
 
 ![方案 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
-## <a name="reference"></a>引用
+## <a name="reference"></a>参考
 下面是有关一些受支持数据存储的性能监视和优化参考：
 
 * Azure 存储（包括 Blob 存储和表存储）：[Azure 存储可伸缩性目标](../../storage/common/storage-scalability-targets.md)和 [Azure存储性能和可伸缩性清单](../../storage/common/storage-performance-checklist.md)

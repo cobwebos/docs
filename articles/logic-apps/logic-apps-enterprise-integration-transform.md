@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: add01429-21bc-4bab-8b23-bc76ba7d0bde
 ms.date: 07/08/2016
 ms.openlocfilehash: 4ebd96613378bbd907beb5109343a2427b1300b0
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095662"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60427207"
 ---
 # <a name="create-maps-that-transform-xml-between-formats-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中创建用于在格式之间转换 XML 的映射
 
@@ -32,7 +32,7 @@ ms.locfileid: "55095662"
 
 **下面是使用转换的步骤**：
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * 创建集成帐户并向其中添加映射  
 

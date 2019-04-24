@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 558e9c3a3bfd43f6ceb958bc3be55d58e1eb7f91
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55150231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360450"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -38,7 +38,7 @@ ms.locfileid: "55150231"
 
 **TrustFrameworkPolicy** 元素包含以下属性：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 |---------- | -------- | ----------- |
 | PolicySchemaVersion | 是 | 用于执行策略的架构版本。 值必须是 `0.3.0.0` |
 | TenantObjectId | 否 | Azure Active Directory (Azure AD) B2C 租户的唯一对象标识符。 |
@@ -88,7 +88,7 @@ ms.locfileid: "55150231"
 
 **BasePolicy** 元素包含以下元素：
 
-| 元素 | 出现次数 | 说明 |
+| 元素 | 出现次数 | 描述 |
 | ------- | ----------- | --------|
 | TenantId | 1:1 | Azure AD B2C 租户的标识符。 |
 | PolicyId | 1:1 | 父策略的标识符。 |

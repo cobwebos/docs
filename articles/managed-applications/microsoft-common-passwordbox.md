@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/27/2018
 ms.author: tomfitz
-ms.openlocfilehash: adaece4a450f758c22ffecb356826962806d9d9b
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
-ms.translationtype: HT
+ms.openlocfilehash: 944f59da680c3a058a3cd245cca48d903e44ab87
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37060097"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251963"
 ---
 # <a name="microsoftcommonpasswordbox-ui-element"></a>Microsoft.Common.PasswordBox UI 元素
 一个可以用来提供和确认密码的控件。

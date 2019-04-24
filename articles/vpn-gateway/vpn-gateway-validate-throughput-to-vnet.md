@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2018
 ms.author: radwiv;chadmat;genli
 ms.openlocfilehash: 819415712d8e605825957aa602fc99dcf6902d82
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56821655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60457502"
 ---
 # <a name="how-to-validate-vpn-throughput-to-a-virtual-network"></a>如何验证到达虚拟网络的 VPN 吞吐量
 
@@ -49,7 +49,7 @@ VPN 网关连接涉及以下组件：
 ## <a name="calculate-the-maximum-expected-ingressegress"></a>计算最大的预期流入/流出量
 
 1.  确定应用程序的基准吞吐量需求。
-2.  确定 Azure VPN 网关的吞吐量限制。 有关帮助，请参阅的"网关 Sku"部分[关于 VPN 网关](vpn-gateway-about-vpngateways.md#gwsku)。
+2.  确定 Azure VPN 网关的吞吐量限制。 如需帮助，请参阅[关于 VPN 网关](vpn-gateway-about-vpngateways.md#gwsku)的“网关 SKU”部分。
 3.  确定与 VM 大小相应的 [Azure VM 吞吐量指南](../virtual-machines/virtual-machines-windows-sizes.md)。
 4.  确定 Internet 服务提供商 (ISP) 的带宽。
 5.  计算预期吞吐量 -（VM、网关、ISP）的最小带宽 * 0.8。
@@ -89,7 +89,7 @@ VPN 网关连接涉及以下组件：
     netsh advfirewall firewall delete rule name="Open Port 5001" protocol=TCP localport=5001
     ```
      
-    **Azure Linux:** Azure Linux 映像都具有宽松的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
+    **Azure Linux：** Azure Linux 映像具有限制性较低的防火墙。 如果有应用程序在侦听某个端口，则流量会被允许通过。 受保护的自定义映像可能需要显式打开端口。 常见的 Linux 操作系统层防火墙包括 `iptables`、`ufw` 或 `firewalld`。
 
 3. 在服务器节点上，更改为从中提取 iperf3.exe 的目录。 然后，在服务器模式下运行 iPerf 并将其设置为侦听端口 5001，如以下命令所示：
 

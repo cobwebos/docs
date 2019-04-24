@@ -13,20 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/19/2019
+ms.date: 04/17/2019
 ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b563b0fb8dc12cbdcdd256a97134f9ff02988915
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: abd1049551d7dbc4823636dfdc00f64afab72cdf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698956"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60294824"
 ---
 # <a name="how-to-configure-the-multi-factor-authentication-registration-policy"></a>如何：配置多重身份验证注册策略
 
-Azure AD Identity Protection 可帮助你管理通过配置一个策略需要 MFA 注册多重身份验证 (MFA) 注册的推出。 本文介绍了可以使用该策略来做什么以及如何配置它。
+Azure AD Identity Protection 可帮助你管理通过配置一个策略需要 MFA 注册多重身份验证 (MFA) 注册的推出。 本文介绍策略可以用途以及如何对其进行配置。
 
 ## <a name="what-is-the-multi-factor-authentication-registration-policy"></a>什么是多重身份验证注册策略？
 

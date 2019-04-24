@@ -10,11 +10,11 @@ ms.date: 03/22/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 6879dd975f97ba2746165e87a135e5d90e8b229f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620625"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308701"
 ---
 # <a name="scale-partitions-and-replicas-for-query-and-indexing-workloads-in-azure-search"></a>扩展分区和副本用于查询和索引工作负荷在 Azure 搜索中
 [选择定价层](search-sku-tier.md)并[预配搜索服务](search-create-service-portal.md)后，下一步是有选择性地增加服务使用的副本或分区数目。 每一层提供固定数量的计费单位。 本文介绍如何通过分配这些单位来实现最佳配置，根据查询执行、索引和存储的要求做出平衡。

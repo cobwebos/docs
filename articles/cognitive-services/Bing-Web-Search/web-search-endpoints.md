@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 11/14/2018
 ms.author: v-gedod
 ms.openlocfilehash: 8c3fd0fc091edbc4323315f636ed2f4fea7d822a
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55880782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60499709"
 ---
 # <a name="web-search-endpoint"></a>Web 搜索终结点
 

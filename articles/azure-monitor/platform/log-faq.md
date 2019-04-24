@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: magoedte
 ms.openlocfilehash: dcd546b4b4d8e47395535cd37e1629166c8c2e7f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58002335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60394823"
 ---
 # <a name="log-analytics-faq"></a>Log Analytics 常见问题解答
 

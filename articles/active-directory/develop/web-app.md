@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: celested
+origin.date: 09/24/2018
+ms.date: 04/08/2019
+ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0337f3de40e75ada86c0a5265fc99b34f1c2ecae
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58367909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60296805"
 ---
 # <a name="web-apps"></a>Web 应用
 
@@ -58,3 +59,5 @@ Web 应用是在 Web 浏览器到 Web 应用方案中对用户进行身份验证
 
 * 详细了解其他[应用程序类型和方案](app-types.md)
 * 了解 Azure AD [身份验证基础知识](authentication-scenarios.md)
+
+<!-- Update_Description: wording update -->

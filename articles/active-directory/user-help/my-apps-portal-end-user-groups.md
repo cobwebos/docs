@@ -13,20 +13,20 @@ ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5af86ad12eed4901e577149b9f20216d5004663b
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.openlocfilehash: 578ca5fa1de338a92280e2dc7cc252fb616e2111
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340456"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60483281"
 ---
 # <a name="update-your-groups-info-from-the-my-apps-portal"></a>更新你的组信息从我的应用门户
-可以使用基于 web 的使用工作或学校帐户**我的应用**门户中，来查看和启动很多组织的基于云的应用，以更新您的部分配置文件和帐户信息，若要查看你**组**信息，并执行**访问评审**应用和组。 如果您不能访问**我的应用**门户中，您必须与支持人员联系的权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以找到有关如何设置和管理基于云的应用程序中的详细信息[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)。
+>此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="view-your-groups-information"></a>查看组信息
 如果管理员已授予权限以查看**组**磁贴中，你可以：
@@ -58,6 +58,8 @@ ms.locfileid: "58340456"
     - **编辑现有的组。** 编辑任何你自己的组的详细信息。 有关特定步骤，请参阅[编辑现有的组](#edit-an-existing-group)本文的部分。
 
     - **添加或删除成员。** 添加或删除自己拥有的组的成员。 有关特定步骤，请参阅[添加或删除成员](#add-or-remove-a-member)本文的部分。
+
+    - **续订 Office 365 组。** 如果你的组织允许它，可以续订 Office 365 组。 有关特定步骤，请参阅[续订 Office 365 组](#renew-an-office-365-group)本文的部分。 
 
     - **删除的组。** 删除任何你拥有的组。 有关特定步骤，请参阅[删除组](#delete-a-group)本文的部分。
 
@@ -117,6 +119,18 @@ ms.locfileid: "58340456"
 3. 如果错误地添加了成员，或者如果成员已从组织离职，可以通过选择中删除该成员**删除成员**上的成员的名称旁边*&lt;group_name&gt;* 页。
 
     ![删除成员，但突出显示的删除链接](media/my-apps-portal/my-apps-portal-remove-member-link.png)
+
+## <a name="renew-an-office-365-group"></a>续订 Office 365 组
+如果你的组织允许它，可以续订 Office 365 组，扩展到期日期。
+
+### <a name="to-renew-a-group"></a>若要续订组
+1. 选择你想要续订，然后选择 Office 365 组**续订组**。
+
+    ![续订 Office 365 组，扩展的到期日期](media/my-apps-portal/my-apps-portal-renew-group-link.png)
+
+2. 单击**确定**关闭确认消息。
+
+    刷新页面后，你将看到更新后**上次续订**并**组过期**日期。
 
 ## <a name="delete-a-group"></a>删除组
 您可以在任何时候删除任何你自己的组。 但是，如果错误地删除了某个组你必须创建它并再次添加成员。

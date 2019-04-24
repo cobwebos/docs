@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
 ms.openlocfilehash: 5e893d597c2193676cb350fc80d7baa694ad6fd1
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55734116"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478253"
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>创建虚拟网络接口卡，以及在 Azure 上使用内部 DNS 进行 VM 名称解析
 
@@ -49,7 +49,7 @@ az network nic create \
 ```
 
 ### <a name="deploy-a-vm-and-connect-the-vnic"></a>部署 VM 并连接 vNic
-使用 [az vm create](/cli/azure/vm) 创建 VM。 在部署到 Azure 期间，`--nics` 标志将 VNic 连接到 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
+使用 [az vm create](/cli/azure/vm)创建 VM。 在部署到 Azure 期间，`--nics` 标志将 VNic 连接到 VM。 以下示例使用 Azure 托管磁盘创建名为 `myVM` 的 VM，并附加上一步中名为 `myNic` 的 vNic：
 
 ```azurecli
 az vm create \
@@ -103,7 +103,7 @@ az network nsg create \
 ```
 
 ## <a name="add-an-inbound-rule-to-allow-ssh"></a>添加入站规则以允许 SSH
-使用 [az network nsg rule create](/cli/azure/network/nsg/rule) 为网络安全组添加入站规则。 以下示例创建一个名为 `myRuleAllowSSH` 的规则：
+使用 [az network nsg rule create](/cli/azure/network/nsg/rule)为网络安全组添加入站规则。 以下示例创建名为 `myRuleAllowSSH`的规则：
 
 ```azurecli
 az network nsg rule create \
@@ -161,7 +161,7 @@ az vm create \
     --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。 再说一遍，部署 VNet 和子网以后，即可将其作为静态资源或永久资源留在 Azure 区域。  
+使用 CLI 标志调用现有资源是为了指示 Azure 将 VM 部署到现有网络中。 重述一遍，VNet 和子网一经部署，便可在 Azure 区域内保留为静态或永久资源。  
 
 ## <a name="next-steps"></a>后续步骤
 * [直接使用 Azure CLI 命令创建自定义的 Linux VM 环境](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

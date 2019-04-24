@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 176b8509892ef16b631697a686471e7fa52bb380
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57196123"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381550"
 ---
 # <a name="azure-ad-connect-staging-server-and-disaster-recovery"></a>Azure AD Connect：暂存服务器和灾难恢复
 使用处于暂存模式的服务器，可以在激活服务器之前更改配置和预览更改。 它还允许运行完全导入和完全同步，以便在生产环境中应用所有更改之前验证这些更改是否符合预期。

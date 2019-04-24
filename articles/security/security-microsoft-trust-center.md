@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 794c78e6e31c58563b68a58774db90af98a44d95
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.openlocfilehash: 289b9b0cb2532069c01fc9c687c844bd917355f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445679"
 ---
 # <a name="microsoft-trust-center"></a>Microsoft 信任中心
 Azure.com 上的 Azure 安全信息站点可提供所需的信息，用于规划、设计、部署、配置和安全地管理云解决方案。 借助 Microsoft 信任中心，还可获得所需的信息，让你确信运行服务的 Azure 平台是安全的。
 
 我们知道，在将应用程序和数据委托给 Azure 时，会有一些疑问。 它们托管在哪个位置？ 谁可以访问它们？ Microsoft 采取哪些措施来保护它？ 如何验证 Microsoft 是否遵守诺言？
 
-我们很乐意提供解答。 因为这是你的数据，因此，谁可以访问它由你决定，它的托管位置由你与我们共同决定。 为了保护数据，我们使用前沿安全技术和顶级加密法。 我们的合规性由独立部门审核，在许多层面都是透明的，包括有关如何处理客户数据的法规要求，以及我们代码的安全性。
+我们很乐意提供解答。 由于这是你的数据，因此谁可以访问它由你决定，它的托管位置由你与我们共同决定。 为了保护数据，我们使用前沿安全技术和顶级加密法。 我们的合规性由独立部门审核，在许多层面都是透明的，包括有关如何处理客户数据的法规要求，以及我们代码的安全性。
 
 以下是可在 Microsoft 信任中心找到的信息：
 

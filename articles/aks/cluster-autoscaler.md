@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/29/2019
 ms.author: iainfou
 ms.openlocfilehash: d8e095303161002d10914ca7c3213ac0c6894e5d
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58444025"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467115"
 ---
 # <a name="preview---automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>预览-自动缩放以满足应用程序的需求在 Azure Kubernetes 服务 (AKS) 群集
 
@@ -21,9 +21,9 @@ ms.locfileid: "58444025"
 本文演示如何在 AKS 群集中启用和管理群集自动缩放程序。
 
 > [!IMPORTANT]
-> AKS 预览版功能是自助服务和选择中。 预览版提供从我们的社区收集反馈和 bug。 但是，它们不受 Azure 技术支持。 如果创建群集，或将这些功能添加到现有群集，该群集是不受支持，直到此功能不再处于预览状态，为公开上市 (GA) 发布。
+> AKS 预览功能是自助服务和可以选择加入的功能。 提供预览是为了从我们的社区收集反馈和 bug。 但是，Azure 技术支持部门不为其提供支持。 如果你创建一个群集，或者将这些功能添加到现有群集，则除非该功能不再为预览版并升级为公开发布版 (GA)，否则该群集不会获得支持。
 >
-> 如果遇到问题的预览功能[打开在 AKS GitHub 存储库问题][ aks-github] bug 标题中的预览功能的名称。
+> 如果遇到预览版功能的问题，请[在 AKS GitHub 存储库中提交问题][aks-github]，并在 Bug 标题中填写预览版功能的名称。
 
 ## <a name="before-you-begin"></a>开始之前
 

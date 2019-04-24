@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 10/26/2018
 ms.openlocfilehash: 42e1ef3e311633f9631163bc9d3df212b608ef3a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578367"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60450754"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视、创建和管理 SFTP 文件
 

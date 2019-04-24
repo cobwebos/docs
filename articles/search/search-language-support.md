@@ -10,11 +10,11 @@ ms.date: 04/20/2018
 ms.author: jlembicz
 ms.custom: seodec2018
 ms.openlocfilehash: a198fa7fe5e1ed81e30987990359f9ecedbe225b
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53631543"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60197246"
 ---
 # <a name="create-an-index-for-documents-in-multiple-languages-in-azure-search"></a>在 Azure 搜索中为多语言文档创建索引
 > [!div class="op_single_selector"]

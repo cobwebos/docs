@@ -13,11 +13,11 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4d4466e4ac7a4e818da6332254e3094eccbaf2b4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59257597"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60355477"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Azure Active Directory B2B 协作用户的属性
 
@@ -101,7 +101,7 @@ ms.locfileid: "59257597"
 ![用户设置中显示的外部用户选项的屏幕截图](media/user-properties/remove-guest-limitations.png)
 
 ## <a name="can-i-make-guest-users-visible-in-the-exchange-global-address-list"></a>能否在 Exchange 全局地址列表中显示来宾用户？
-是的。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)中的**能否在全局地址列表中显示来宾对象？**。 
+可以。 默认情况下，来宾对象在组织的全局地址列表中不可见，但可使用 Azure Active Directory PowerShell 使其可见。 有关详细信息，请参阅[在 Office 365 组中管理来宾访问权限](https://docs.microsoft.com/office365/admin/create-groups/manage-guest-access-in-groups?redirectSourcePath=%252fen-us%252farticle%252fmanage-guest-access-in-office-365-groups-9de497a9-2f5c-43d6-ae18-767f2e6fe6e0&view=o365-worldwide#faq)中的**能否在全局地址列表中显示来宾对象？**。 
 
 ## <a name="next-steps"></a>后续步骤
 

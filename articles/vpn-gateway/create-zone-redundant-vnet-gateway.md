@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: cherylmc
-ms.openlocfilehash: 00c50f95324e18f738740a9bec572ca676ab9165
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2b459ccfd7e3f513b9b6526864321ce247ae7aa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58010613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405832"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关
 
@@ -154,7 +154,7 @@ New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 
 
 ### <a name="what-regions-are-available-for-me-to-use-the-new-skus"></a>我可以在哪些区域中使用新 SKU？
 
-请参阅[可用性区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)有关可用区域的最新列表。
+请参阅[可用性区域](../availability-zones/az-overview.md#services-support-by-region)有关可用区域的最新列表。
 
 ### <a name="can-i-changemigrateupgrade-my-existing-virtual-network-gateways-to-zone-redundant-or-zonal-gateways"></a>我能否将现有虚拟网络网关更改/迁移/升级为区域冗余网关或区域网关？
 

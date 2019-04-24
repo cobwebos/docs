@@ -15,11 +15,11 @@ ms.date: 05/23/2017
 ms.author: lizross
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 433c2d712ca4867a5ec59f86c333511070b6d507
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58665043"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60334452"
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>管理双重验证设置
 本文解答了有关如何更新双重验证或多重身份验证设置的问题。 如果在登录帐户时遇到问题，请参阅[使用双重验证时遇到问题](multi-factor-authentication-end-user-troubleshoot.md)获取疑难解答帮助。

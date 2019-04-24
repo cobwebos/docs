@@ -9,11 +9,11 @@ ms.date: 11/01/2018
 ms.author: johnkem
 ms.subservice: ''
 ms.openlocfilehash: ab439eb77113c53ab046256dd8d448a18b63f887
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850072"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60452665"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>将 Azure 监视数据流式传输到事件中心以便外部工具使用
 

@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bc2acaa24637c3297af8e91f01b67e5d30f2931
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59577961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60357524"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>用于 Azure AD 密码管理的报告选项
 
