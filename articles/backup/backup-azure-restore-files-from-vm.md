@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 3/01/2019
 ms.author: pullabhk
 ms.openlocfilehash: 22ada6f9bb614bdc3698c58c6aa8ec3dd5def868
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240080"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>从 Azure 虚拟机备份恢复文件
 
@@ -213,7 +213,7 @@ $ mount [RAID Disk Path] [/mountpath]
 
 该脚本还需要 Python 和 bash 组件才能执行并安全地连接到恢复点。
 
-|组件 | 版本  |
+|组件 | Version  |
 | --------------- | ---- |
 | bash | 4 及更高版本 |
 | Python | 2.6.6 及更高版本  |

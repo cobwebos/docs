@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f727fc7133ebc9ee124e63253e8a266862b0d908
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522024"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60354345"
 ---
 # <a name="what-are-service-dependencies-in-azure-active-directory-conditional-access"></a>什么是 Azure Active Directory 条件访问中的服务依赖项？ 
 
@@ -34,7 +34,7 @@ ms.locfileid: "58522024"
 直接访问的网站或服务，相关策略的影响时，通常容易评估。 例如，如果您有一个策略，要求适用于 SharePoint Online 配置 MFA，MFA 将强制为每次登录到 SharePoint web 门户。 但是，它并不总是直接以评估策略的影响，因为云应用程序的其他云应用的依赖项。 例如，Microsoft Teams 利用了 SharePoint online。 因此，在 Microsoft Teams 访问在我们当前的方案时，您还将受 SharePoint MFA 策略约束。   
 
 
-## <a name="policy-enforcement"></a>策略实施 
+## <a name="policy-enforcement"></a>策略强制执行 
 
 如果已配置的服务依赖项，可能会使用早期绑定或后期绑定强制应用的策略。 
 
@@ -59,20 +59,20 @@ ms.locfileid: "58522024"
 | 客户端应用         | 下游服务                          | 强制 |
 | :--                 | :--                                         | ---         | 
 | Azure Data Lake     | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
-| Microsoft 教室 | 交换                                    | 早期绑定 |
+| Microsoft 教室 | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定  |
-| Microsoft Teams     | 交换                                    | 早期绑定 |
+| Microsoft Teams     | Exchange                                    | 早期绑定 |
 |                     | MS 规划器                                  | 后期绑定  |
 |                     | SharePoint                                  | 早期绑定 |
 |                     | Skype for Business Online                   | 早期绑定 |
-| Office 门户       | 交换                                    | 后期绑定  |
+| Office 门户       | Exchange                                    | 后期绑定  |
 |                     | SharePoint                                  | 后期绑定  |
-| Outlook 组      | 交换                                    | 早期绑定 |
+| Outlook 组      | Exchange                                    | 早期绑定 |
 |                     | SharePoint                                  | 早期绑定 |
-| PowerApp           | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
+| PowerApps           | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
 |                     | Microsoft Azure Active Directory              | 早期绑定 |
-| 项目             | Dynamics CRM                                | 早期绑定 |
-| Skype for Business  | 交换                                    | 早期绑定 |
+| Project             | Dynamics CRM                                | 早期绑定 |
+| Skype for Business  | Exchange                                    | 早期绑定 |
 | Visual Studio       | Microsoft Azure 管理 （门户和 API） | 早期绑定 |
 
 

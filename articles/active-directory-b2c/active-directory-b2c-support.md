@@ -11,11 +11,11 @@ ms.date: 12/06/2016
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: c40c1357b74b05f54bb2c2837554d9375e06f246
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55163358"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60384841"
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C：文件支持请求
 可以使用以下步骤在 Azure 门户上提出对 Azure Active Directory (Azure AD) B2C 的支持请求：
@@ -49,7 +49,7 @@ ms.locfileid: "55163358"
    * 在“文件上传”下，上传所有你认为有助于解决问题的屏幕截图和文件。
      
      ![支持 - 问题](./media/active-directory-b2c-support/support-problem.png)
-7. 在“联系人信息”边栏选项卡中，添加联系人信息。 单击“创建”。
+7. 在“联系人信息”边栏选项卡中，添加联系人信息。 单击**创建**。
    
     ![支持 - 联系人](./media/active-directory-b2c-support/support-contact.png)
 8. 提交支持请求后，可以单击启动板上的“帮助 + 支持”，并点击“管理支持请求”进行监控。

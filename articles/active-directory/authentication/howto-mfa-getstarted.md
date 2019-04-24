@@ -12,11 +12,11 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c2c5006eb050b70b783ab8199724e0e98766381
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358105"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60359296"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication"></a>规划基于云的 Azure 多重身份验证
 
@@ -304,7 +304,7 @@ NPS 扩展充当 RADIUS 和基于云的 Azure MFA 提供身份验证的第二个
 
 Azure 多重身份验证提供了通过 Azure 门户中的报表：
 
-| 报表 | 位置 | 描述 |
+| 报表 | Location | 描述 |
 | --- | --- | --- |
 | 使用情况和欺诈警报 | Azure AD > 登录 | 提供有关总体使用情况、用户摘要和用户详细信息的信息；以及指定日期范围内提交的欺诈警报的历史记录。 |
 

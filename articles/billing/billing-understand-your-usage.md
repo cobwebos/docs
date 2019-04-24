@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: banders
 ms.openlocfilehash: a143fc6d9dbd78ae365f943a00ac9f8492d5e51c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57897140"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60369618"
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>了解 Microsoft Azure 详细使用费条款 
 
@@ -57,7 +57,7 @@ ms.locfileid: "57897140"
 |超额 |显示超过与你的 6 或 12 个月产品/服务关联的承诺金额的测定仪费用 |
 |承诺费率 |显示基于与你的 6 或 12 个月产品/服务关联的总承诺金额的承诺费率 |
 |费率 |为每个可付费单位支付的费率 |
-|值 |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
+|Value |显示将“超额数量”列与“费率”列相乘的结果。 如果已耗用数量未超过已包含数量，则此列中没有费用。 |
 
 ### <a name="daily-usage"></a>每日使用情况
 

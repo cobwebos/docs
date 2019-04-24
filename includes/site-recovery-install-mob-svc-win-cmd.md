@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 9fe3b66de83ebc2cd0bf3a56a45456668c069191
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116244"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301152"
 ---
 1. 将安装程序复制到要保护的服务器上的某个本地文件夹（例如 C:\Temp）。 以管理员身份在命令提示符处运行以下命令：
 

@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: tomfitz
 ms.openlocfilehash: 520aeb8e47b5e94e6346e682f21f46cb0814f8f3
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58445447"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60389601"
 ---
 # <a name="azure-resource-providers-and-types"></a>Azure 资源提供程序和类型
 
@@ -30,7 +30,7 @@ ms.locfileid: "58445447"
 * 查看资源类型的有效位置
 * 查看资源类型的有效 API 版本
 
-您可以执行这些步骤通过 Azure 门户、 Azure PowerShell 或 Azure CLI。
+可以通过 Azure 门户、Azure PowerShell 或 Azure CLI 执行这些步骤。
 
 ## <a name="azure-portal"></a>Azure 门户
 
@@ -46,9 +46,9 @@ ms.locfileid: "58445447"
 
     ![显示资源提供程序](./media/resource-manager-supported-services/show-resource-providers.png)
 
-6. 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，您必须有权执行`/register/action`资源提供程序的操作。 此操作包含在“参与者”和“所有者”角色中。 若要注册资源提供程序，请选择“注册”。 在上面的屏幕截图中，对于“Microsoft.Blueprint”突出显示了“注册”链接。
+6. 通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。 若要注册资源提供程序，请选择“注册”。 在上面的屏幕截图中，对于“Microsoft.Blueprint”突出显示了“注册”链接。
 
-    您仍然可以从该资源提供程序的资源类型在订阅中时，不能取消注册资源提供程序。
+    当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 查看特定资源提供程序的信息：
 
@@ -96,7 +96,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，您必须有权执行`/register/action`资源提供程序的操作。 此操作包含在“参与者”和“所有者”角色中。
+通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
 
 ```azurepowershell-interactive
 Register-AzResourceProvider -ProviderNamespace Microsoft.Batch
@@ -111,7 +111,7 @@ ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
 
-您仍然可以从该资源提供程序的资源类型在订阅中时，不能取消注册资源提供程序。
+当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 若要查看特定资源提供程序的信息，请使用：
 
@@ -201,7 +201,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，您必须有权执行`/register/action`资源提供程序的操作。 此操作包含在“参与者”和“所有者”角色中。
+通过注册资源提供程序来配置订阅，以供资源提供程序使用。 注册的作用域始终是订阅。 默认情况下，将自动注册许多资源提供程序。 但可能需要手动注册某些资源提供程序。 若要注册资源提供程序，必须具备为资源提供程序执行 `/register/action` 操作的权限。 此操作包含在“参与者”和“所有者”角色中。
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
@@ -209,7 +209,7 @@ az provider register --namespace Microsoft.Batch
 
 这将返回“注册正在进行中”的信息。
 
-您仍然可以从该资源提供程序的资源类型在订阅中时，不能取消注册资源提供程序。
+当订阅中仍有某个资源提供程序的资源类型时，不能注销该资源提供程序。
 
 若要查看特定资源提供程序的信息，请使用：
 

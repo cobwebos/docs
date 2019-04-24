@@ -7,15 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/10/2018
-ms.author: davidmu
+origin.date: 09/10/2018
+ms.date: 04/03/2019
+ms.author: v-junlch
 ms.subservice: B2C
 ms.openlocfilehash: afa064232c10d3e84e9c301d44b82faae4904253
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55152971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60383943"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -29,9 +30,9 @@ BuildingBlocks 元素添加到 [TrustFrameworkPolicy](trustframeworkpolicy.md) �
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
   xmlns="http://schemas.microsoft.com/online/cpim/schemas/2013/06"
   PolicySchemaVersion="0.3.0.0"
-  TenantId="mytenant.onmicrosoft.com"
+  TenantId="mytenant.partner.onmschina.cn"
   PolicyId="B2C_1A_TrustFrameworkBase"
-  PublicPolicyUri="http://mytenant.onmicrosoft.com/B2C_1A_TrustFrameworkBase">
+  PublicPolicyUri="http://mytenant.partner.onmschina.cn/B2C_1A_TrustFrameworkBase">
 
   <BuildingBlocks>
     <ClaimsSchema>
@@ -71,5 +72,6 @@ BuildingBlocks 元素包含以下元素，必须按照定义的顺序指定：
 - [ContentDefinitions](contentdefinitions.md) - 包含在用户旅程中使用的 HTML5 模板的 URL。 在自定义策略中，内容定义定义用于用户旅程中指定 UI 步骤的 HTML5 页面 URI。 例如，登录或注册、密码重置或错误页面。 可以通过重写 HTML5 文件的 LoadUri 来修改外观。 也可根据需要创建新的内容定义。 此元素可能包含使用本地化 ID 的本地化资源引用。
 
 - [Localization](localization.md) - 使你能够支持多种语言。 策略中的本地化支持允许你在策略中设置支持语言列表并选择默认语言。 此外支持特定于语言的字符串和集合。
+
 
 

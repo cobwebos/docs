@@ -18,11 +18,11 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a77cf89b7697b7b6b08dead34339ae50dbba8518
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60296310"
 ---
 # <a name="settings-and-data-roaming-faq"></a>设置和数据漫游常见问题
 本文将解答 IT 管理员可能会遇到的一些设置和应用数据同步问题。

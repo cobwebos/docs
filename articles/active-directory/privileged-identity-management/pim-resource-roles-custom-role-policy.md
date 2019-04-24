@@ -15,11 +15,11 @@ ms.date: 03/30/2018
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13aef9b180a671a9b42bbc6319c487be36652093
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58574869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437344"
 ---
 # <a name="use-custom-roles-for-azure-resources-in-pim"></a>在 PIM 中为 Azure 资源使用自定义角色
 

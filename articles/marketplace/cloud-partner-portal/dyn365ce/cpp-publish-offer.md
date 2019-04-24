@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/28/2018
 ms.author: pbutlerm
 ms.openlocfilehash: eeb0fa84e8cd5ac6a499e02edd5879c5bbdd8ead
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081576"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308769"
 ---
 # <a name="publish-a-dynamics-365-for-customer-engagement-offer"></a>发布 Dynamics 365 for Customer Engagement 产品/服务
 
@@ -36,7 +36,7 @@ ms.locfileid: "54081576"
 下表介绍了每个发布步骤。 还给出了完成每个步骤的估计时间。
 
 
-|    发布步骤             |   时间      |   Description                                                              |
+|    发布步骤             |   时间      |   描述                                                              |
 |  -------------------           | --------    | ---------------                                                            |
 | 验证先决条件         | 15 分钟   | 验证套餐信息和套餐设置。                        |
 | 认证                  | 1 周 | Azure 认证团队对套餐进行分析。 针对病毒、恶意软件、安全合规性和安全问题对产品/服务进行扫描。 检查产品/服务，以了解它是否满足所有资格条件。 有关详细信息，请参阅[先决条件](./cpp-prerequisites.md)。 如果发现了问题，则提供反馈。 |

@@ -9,11 +9,11 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: seodec18
 ms.openlocfilehash: 2d7fb060896de8df266489451a11ba343760c747
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079953"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367466"
 ---
 # <a name="router-configuration-samples-to-set-up-and-manage-routing"></a>用于设置和管理路由的路由器配置示例
 本页提供处理 ExpressRoute 时适用于 Cisco IOS XE 和 Juniper MX 系列路由器的接口与路由配置示例。 这些示例仅供指导，不能按原样使用。 可以与供应商合作，以便为网络指定适当的配置。 
@@ -205,5 +205,5 @@ ms.locfileid: "53079953"
     }
 
 ## <a name="next-steps"></a>后续步骤
-有关详细信息，请参阅 [ExpressRoute 常见问题](expressroute-faqs.md) 。
+有关更多详细信息，请参阅 [ExpressRoute 常见问题解答](expressroute-faqs.md)。
 

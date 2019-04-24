@@ -16,11 +16,11 @@ ms.date: 06/17/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e5d83ab0c14da772551a8f33704e0e776be5ebb6
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56171377"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60274864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-icertis-contract-management-platform"></a>教程：Azure Active Directory 与 Icertis 合同管理平台集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56171377"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Icertis 合同管理平台的集成，需要以下项：
 
@@ -167,7 +167,7 @@ ms.locfileid: "56171377"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-an-icertis-contract-management-platform-test-user"></a>创建 Icertis 合同管理平台测试用户
 

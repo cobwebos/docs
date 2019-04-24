@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: 2ac43b472758f3403bc87bf3d64321eb97109f53
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49092378"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60335510"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-rules-engine"></a>使用 Azure CDN 规则引擎重写 HTTP 行为
 [!INCLUDE [cdn-premium-feature](../../includes/cdn-premium-feature.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "49092378"
 ## <a name="overview"></a>概述
 Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，阻止传送某些内容类型、定义缓存策略或修改 HTTP 标头。 本教程演示如何创建一个用于更改 CDN 资产缓存行为的规则。 有关规则引擎语法的详细信息，请参阅 [Azure CDN 规则引擎参考](cdn-rules-engine-reference.md)。
 
-## <a name="access"></a>Access
+## <a name="access"></a>访问
 若要访问规则引擎，必须先从“CDN 配置文件”页顶部选择“管理”以访问 Azure CDN 管理页。 然后根据是否终结点已针对动态站点加速 (DSA) 进行优化，使用适用于终结点类型的规则集访问规则引擎：
 
 - 已针对常规 Web 交付优化的终结点或已进行其他非 DSA 优化的终结点： 
@@ -102,4 +102,4 @@ Azure CDN 规则引擎允许你自定义处理 HTTP 请求的方式。 例如，
 * [规则引擎匹配条件](cdn-rules-engine-reference-match-conditions.md)
 * [规则引擎条件表达式](cdn-rules-engine-reference-conditional-expressions.md)
 * [规则引擎功能](cdn-rules-engine-reference-features.md)
-* [Azure Fridays：Azure CDN 强大的新高级功能](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/)（视频）
+* [Azure Fridays:Azure CDN 强大的新高级功能](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/)（视频）

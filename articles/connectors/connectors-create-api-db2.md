@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 08/23/2018
 tags: connectors
 ms.openlocfilehash: 7785d1788e8d5e9b432a8189345f293ebf05ef7c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878394"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313908"
 ---
 # <a name="manage-ibm-db2-resources-with-azure-logic-apps"></a>使用 Azure 逻辑应用管理 IBM DB2 资源
 
@@ -29,7 +29,7 @@ DB2 连接器包含一个可以通过 TCP/IP 网络来与远程 DB2 服务器通
 
 IBM DB2 连接器支持以下 IBM DB2 平台和版本，以及支持分布式关系数据库结构 (DRDA) SQL 访问管理器 (SQLAM) 版本 10 和 11 的 IBM DB2 兼容产品（例如 IBM Bluemix dashDB）：
 
-| 平台 | 版本 | 
+| 平台 | Version | 
 |----------|---------|
 | IBM DB2 for z/OS | 11.1、10.1 |
 | IBM DB2 for i | 7.3、7.2、7.1 |

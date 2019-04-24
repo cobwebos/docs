@@ -18,11 +18,11 @@ ms.topic: article
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 646119f223067fac5ee36574fb10273819251cce
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59547050"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60295828"
 ---
 # <a name="how-to-investigate-risky-users-and-sign-ins"></a>如何：调查有风险的用户和登录 
 
@@ -46,7 +46,7 @@ ms.locfileid: "59547050"
 
 “有风险用户”报告的默认视图显示以下信息：
 
-- 名称
+- Name
 
 - 风险状态
 
@@ -105,7 +105,7 @@ ms.locfileid: "59547050"
 
 若要将报告数据的范围缩小到适当级别，可使用下面的默认字段来筛选有风险用户数据：
 
-- 名称
+- Name
 
 - 用户名
 
@@ -185,7 +185,7 @@ ms.locfileid: "59547050"
 
 “有风险登录”报告的默认视图显示以下信息：
 
-- 日期
+- date
 
 - 用户
 
@@ -258,7 +258,7 @@ ms.locfileid: "59547050"
 - 风险级别(总计)
 - 风险级别(实时)
 - 条件性访问
-- 日期
+- date
 - 风险级别类型
 
 ![风险登录报告](./media/howto-investigate-risky-users-signins/14.png)
@@ -300,7 +300,7 @@ ms.locfileid: "59547050"
 
 使用“条件访问”筛选器，可以选择：
 
-- All
+- 全部
 - 未应用
 - Success
 - 失败

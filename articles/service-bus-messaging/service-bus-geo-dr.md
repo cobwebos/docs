@@ -1,5 +1,5 @@
 ---
-title: Azure 服务总线异地灾难恢复 | Microsoft Docs
+title: Azure 服务总线异地灾难恢复 | Microsoft 文档
 description: 如何使用地理区域进行故障转移并在 Azure 服务总线中执行灾难恢复
 services: service-bus-messaging
 author: axisc
@@ -9,12 +9,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 9446bbd4783aaf20f1bc9079ec43f7050274bf11
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: a0581ef43e8a3c02126612a21122db559a941370
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311161"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure 服务总线异地灾难恢复
 
@@ -129,7 +129,7 @@ Azure 服务总线的异地灾难恢复功能是一项面向灾难恢复的解�
 服务总线高级 SKU 还支持[可用性区域](../availability-zones/az-overview.md)，在 Azure 区域内提供故障隔离位置。
 
 > [!NOTE]
-> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#regions-that-support-availability-zones)。
+> Azure 服务总线高级版的可用性区域支持仅适用于存在可用性区域的 [Azure 区域](../availability-zones/az-overview.md#services-support-by-region)。
 
 可以使用 Azure 门户仅在新的命名空间上启用可用性区域。 服务总线不支持迁移现有命名空间。 在命名空间上启用区域冗余之后，不能将其禁用。
 

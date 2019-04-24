@@ -17,11 +17,11 @@ ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 43c0f1c041bfed1b041a9926efd869d167c6f1e9
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58577257"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60246036"
 ---
 # <a name="manage-programs-and-controls-for-azure-ad-access-reviews"></a>管理程序和控件的 Azure AD 访问评审
 

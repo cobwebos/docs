@@ -18,11 +18,11 @@ ms.reviewer: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: dd39ee1dc22fb6143a8d098276172c453388170b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60297167"
 ---
 # <a name="about-v10"></a>关于 v1.0
 
@@ -37,7 +37,7 @@ Azure Active Directory (Azure AD) 是一个云标识服务，开发人员可以�
 |[应用程序的类型](app-types.md) | Azure AD 支持的身份验证方案概述。 |
 | | |
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 v1.0 快速入门和教程将逐步讲解如何使用 Azure AD 身份验证库 (ADAL) SDK 在偏好的平台上生成应用。 若要开始使用，请参阅 [Microsoft 标识平台（面向开发人员的 Azure Active Directory）](index.yml)中的 **v1.0 快速入门**和 **v1.0 教程**。
 

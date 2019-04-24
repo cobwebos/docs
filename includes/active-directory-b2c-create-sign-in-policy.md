@@ -2,14 +2,15 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/30/2018
-ms.author: patricka
+origin.date: 11/30/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 0ab34d6234db9c13ffe82ccd0e8580217085f631
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "58114916"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456020"
 ---
 如果仅希望在应用程序上启用登录，请使用**登录**用户流。 此用户流描述了客户在登录过程中将经历的体验以及应用程序在成功登录时会接收到的令牌内容。
 
@@ -28,7 +29,7 @@ ms.locfileid: "58114916"
 
 在“返回声明”列中，可以选择希望在成功登录体验后发回到应用程序的令牌中返回的声明。 例如，选择“显示名称”、“标识提供者”、“邮政编码”和“用户的对象 ID”。 单击“确定”。
 
-单击“创建”。 请注意，刚刚创建的用户流显示为“B2C_1_SiIn”（自动添加 **B2C\_1\_** 片段）。
+单击**创建**。 请注意，刚刚创建的用户流显示为“B2C_1_SiIn”（自动添加 **B2C\_1\_** 片段）。
 
 单击“运行用户流”。
 
@@ -39,3 +40,4 @@ ms.locfileid: "58114916"
 > [!NOTE]
 > 用户流创建和更新最多需要一分钟才能生效。
 >
+

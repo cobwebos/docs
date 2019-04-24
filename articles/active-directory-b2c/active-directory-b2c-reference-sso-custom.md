@@ -11,11 +11,11 @@ ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: d1d76e3ac995d4ee63e36ac3560d20f473d3ea2d
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55187210"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316963"
 ---
 # <a name="single-sign-on-session-management-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的单一登录会话管理
 
@@ -89,7 +89,7 @@ SSO 管理类是使用技术配置文件的 `<UseTechnicalProfileForSessionManag
 
 技术配置文件中有两个元数据项：
 
-| Item | 默认值 | 可能的值 | 说明
+| Item | 默认值 | 可能的值 | 描述
 | --- | --- | --- | --- |
 | IncludeSessionIndex | true | true/false | 向提供程序指出应存储会话索引。 |
 | RegisterServiceProviders | true | true/false | 指示提供程序应注册已颁发断言的所有 SAML 服务提供程序。 |

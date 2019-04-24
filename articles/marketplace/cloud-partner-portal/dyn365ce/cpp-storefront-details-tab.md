@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: pbutlerm
 ms.openlocfilehash: f9cbf5033d0ffb84959de94db052626dd1d131c8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311246"
 ---
 # <a name="dynamics-365-for-customer-engagement-storefront-details-tab"></a>Dynamics 365 Customer Engagement “店面详细信息”选项卡
 
@@ -52,7 +52,7 @@ ms.locfileid: "57997949"
 |    **字段**          |  **说明**               |
 |  ---------------      |  ---------------               |
 |  行业           | 选择应用最适用的行业（最多两个）。 如果都不适用，可以不选。  |
-|  类别           | 选择与应用相关的类别。 选择一到三个选项。  |
+|  Categories           | 选择与应用相关的类别。 选择一到三个选项。  |
 |  应用类型             | 选择在 AppSource 中为应用启用的试用类型。 “免费”表示可不付费使用；“试用”表示客户可免费试用应用一段时间；“与我联系”表示客户可在 AppSource 上请求试用该应用。  |
 | 应用的帮助链接 | 应用的联机文档或其他帮助资源的 URL。  |
 | 支持的国家/地区 | 弹出窗口，可在其中选择面向哪些地理区域提供该应用。  默认值为在全球范围内分发。 |

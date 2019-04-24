@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/20/2019
 ms.author: juliako
 ms.openlocfilehash: 394370738bc7996a221300540e68404986d91310
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58850630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322244"
 ---
 # <a name="diagnostic-logs-schemas"></a>诊断日志架构
 
@@ -38,7 +38,7 @@ ms.locfileid: "58850630"
 
 这些属性是特定于密钥传送日志架构。
 
-|名称|描述|
+|Name|描述|
 |---|---|
 |keyId|请求的项的 ID。|
 |keyType|可以是以下值之一："清除"（不加密）、"FairPlay"、"PlayReady"或者"Widevine"。|

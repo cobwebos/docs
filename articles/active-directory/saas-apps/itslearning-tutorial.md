@@ -16,11 +16,11 @@ ms.date: 06/17/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1a12fb0123e96c592a8af9fe04f6ff17f8fea62a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900754"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60269887"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>教程：Azure Active Directory 与 itslearning 的集成
 
@@ -165,7 +165,7 @@ ms.locfileid: "57900754"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-an-itslearning-test-user"></a>创建 itslearning 测试用户
 

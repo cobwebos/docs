@@ -19,11 +19,11 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8bd46bb820c7127c4fa6105fcc0be73bb66024c6
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57446633"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245698"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>使用 Azure AD Connect 管理 AD FS 与 Azure AD 之间的信任关系
 
@@ -105,7 +105,7 @@ Azure AD Connect 确保始终使用适当的建议声明规则集来配置 Azure
 
 每当对 Azure AD 信任设置进行更新时，Azure AD Connect 1.1.873.0 或更高版本都会创建 Azure AD 信任设置的备份。 Azure AD 信任设置将备份到 **%ProgramData%\AADConnect\ADFS**。 文件名采用以下格式：AadTrust-&lt;日期&gt;-&lt;时间&gt;.txt，例如 AadTrust-20180710-150216.txt
 
-![示例的屏幕截图备份的 Azure AD 信任](./media/how-to-connect-azure-ad-trust/backup.png)
+![Azure AD 信任示例备份的快照](./media/how-to-connect-azure-ad-trust/backup.png)
 
 可以使用下面建议的步骤还原颁发转换规则
 

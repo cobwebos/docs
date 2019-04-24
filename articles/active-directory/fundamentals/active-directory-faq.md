@@ -14,11 +14,11 @@ ms.author: lizross
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f602b5f9809e5bbe0b1efb52cfa66877a31a2170
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58183333"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60249551"
 ---
 # <a name="frequently-asked-questions-about-azure-active-directory"></a>有关 Azure Active Directory 的常见问题
 Azure Active Directory (Azure AD) 是综合性的标识即服务 (IDaaS) 解决方案，涉及到标识、访问管理和安全的方方面面。
@@ -59,7 +59,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：是否可以通过报表来查看我的 Azure AD 用户许可证何时会过期？**
 
-**答:** 不是。  此功能目前不可用。
+**答:** 不。  此功能目前不可用。
 
 - - -
 
@@ -95,7 +95,7 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：Azure AD 是否可以帮助我管理本地基础结构？**
 
-**答:** 是的。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
+**答:** 可以。 Azure AD Premium Edition 提供 Azure AD Connect Health。 Azure AD Connect Health 可帮助你监视和深入了解本地标识基础结构和同步服务。  
 
 有关详细信息，请参阅[在云中监视本地标识基础结构和同步服务](../hybrid/whatis-hybrid-identity-health.md)。  
 
@@ -210,4 +210,4 @@ Azure AD 付费型服务（例如企业移动性 + 安全性）可通过综合�
 - - -
 **问：是否可以通过 Azure AD 设置安全的 LDAP 连接？**
 
-**答:** 不是。 Azure AD 不支持 LDAP 协议。 但是，可以使用 Azure AD 域服务配置安全 LDAP。
+**答:** 不。 Azure AD 不支持 LDAP 协议。 但是，可以使用 Azure AD 域服务配置安全 LDAP。

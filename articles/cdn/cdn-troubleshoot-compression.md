@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: b885098ff0efeb4d723cbaaac46fbb57cb40f2ea
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: 4df8e5d4560a813c47319833a8cd91726abcb8e6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59790978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323735"
 ---
 # <a name="troubleshooting-cdn-file-compression"></a>排查 CDN 文件压缩问题
 本文将帮助你排查 [CDN 文件压缩](cdn-improve-performance.md)问题。
@@ -117,5 +117,5 @@ ms.locfileid: "59790978"
 **Via** HTTP 标头指明了由代理服务器正在将请求传递到的 web 服务器。  默认情况下，当请求包含 **Via** 标头时，Microsoft IIS Web 服务器不会压缩响应。  要覆盖此行为，请执行以下操作：
 
 * **IIS 6**:[设置 HcNoCompressionForProxies ="FALSE"，在 IIS 元数据库属性](/previous-versions/iis/6.0-sdk/ms525390(v=vs.90))
-* **IIS 7 及更高版本**:[同时设置**noCompressionForHttp10**并**noCompressionForProxies**为 False 的服务器配置中](http://www.iis.net/configreference/system.webserver/httpcompression)
+* **IIS 7 及更高版本**:[同时设置**noCompressionForHttp10**并**noCompressionForProxies**为 False 的服务器配置中](https://www.iis.net/configreference/system.webserver/httpcompression)
 

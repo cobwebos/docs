@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/25/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 373312b4c7f05fe41c9ca8165b8ff6f1b0e56f1b
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60322819"
 ---
 # <a name="dynamics-365-for-customer-engagement-application-test-drive-tab"></a>Dynamics 365 for Customer Engagement 应用程序“体验版”选项卡
 
@@ -47,7 +47,7 @@ Dynamics 365 应用程序体验版将作为 Microsoft 托管解决方案自动�
 |    ---------                  |  ---------------                |
 |      描述              |   介绍可以在体验版上执行的操作 可以使用基本 HTML 标记来设置此说明的格式。 例如，&lt;p&gt;、&lt;em&gt;、&lt;ul&gt;、&lt;li&gt;、&lt;ol&gt;、标题。  |
 |  用户手册                  |   上传客户进行体验版体验时可以使用的用户手册。 此文档必须是 .pdf 文件。              |
-|  体验版演示视频（可选） |  可以提供体验版的视频演示。 客户在进行体验之前，可以观看此视频。 提供在 YouTube 或 Vimeo 上的视频的 URL。 如果选择“+ 添加视频”，系统会提示你提供以下信息：<ul><li>名称</li><li>代码</li><li>缩略图（PNG 格式，533 x 324 像素）</li></ul>  |
+|  体验版演示视频（可选） |  可以提供体验版的视频演示。 客户在进行体验之前，可以观看此视频。 提供在 YouTube 或 Vimeo 上的视频的 URL。 如果选择“+ 添加视频”，系统会提示你提供以下信息：<ul><li>Name</li><li>代码</li><li>缩略图（PNG 格式，533 x 324 像素）</li></ul>  |
 |   |   |
 
 

@@ -1,6 +1,6 @@
 ---
-title: 使用 Azure Monitor 日志（预览版）分析 Azure Active Directory 活动日志 | Microsoft Docs
-description: 了解如何使用 Azure Monitor 日志（预览版）分析 Azure Active Directory 活动日志
+title: 分析使用 Azure Monitor 日志的 Azure Active Directory 活动日志 |Microsoft Docs
+description: 了解如何分析使用 Azure Monitor 日志的 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,18 +13,18 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
-ms.author: markvi
-ms.reviewer: dhanyahk
+ms.date: 04/18/2019
+ms.author: priyamo
+ms.reviewer: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6e195dd0e52b4938e829ea0aec1f4cc3ef7107c0
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 1651bb2898a2bd1e3e0c3fbbce77dc4106d76e7a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436798"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60438157"
 ---
-# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs-preview"></a>使用 Azure Monitor 日志（预览版）分析 Azure AD 活动日志
+# <a name="analyze-azure-ad-activity-logs-with-azure-monitor-logs"></a>分析 Azure AD 活动日志与 Azure Monitor 日志
 
 [将 Azure AD 活动日志与 Azure Monitor 日志集成](howto-integrate-activity-logs-with-log-analytics.md)之后，可以使用 Azure Monitor 日志的强大功能来深入了解自己的环境。 此外，可以安装[用于 Azure AD 活动日志的 Log Analytics 视图](howto-install-use-log-analytics-views.md)，访问有关环境中审核和登录事件的预建报表。
 

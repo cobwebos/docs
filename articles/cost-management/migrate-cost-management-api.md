@@ -11,11 +11,11 @@ ms.service: cost-management
 manager: micflan
 ms.custom: ''
 ms.openlocfilehash: e4c5607089efb247620766fb311b97cae3772770
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279867"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60311926"
 ---
 # <a name="migrate-from-enterprise-agreement-to-microsoft-customer-agreement-apis"></a>企业协议从迁移到 Microsoft 客户协议 Api
 
@@ -180,14 +180,14 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | 已使用的服务 | consumedService | 确切的字符串值可能不同。 |
 | 已使用的服务 ID | 无 | &nbsp; |
 | CostCenter | costCenter | &nbsp; |
-| 日期和 usageStartDate | 日期 | &nbsp;  |
+| 日期和 usageStartDate | date | &nbsp;  |
 | 日期 | 无 | 分析日期的一天。 |
 | 部门 ID | invoiceSectionId | 确切的值不同。 |
 | DepartmentName | invoiceSectionName | 确切的字符串值可能不同。 如果需要请配置发票部分以匹配部门。 |
 | ExtendedCost 和成本 | costInBillingCurrency | &nbsp;  |
 | InstanceId | resourceId | &nbsp;  |
 | 为周期性费用 | 无 | &nbsp;  |
-| 位置 | 位置 | &nbsp;  |
+| Location | 位置 | &nbsp;  |
 | 计量类别 | meterCategory | 确切的字符串值可能不同。 |
 | 计量 ID | meterId | 确切的字符串值而有所不同。 |
 | 计量名称 | meterName | 确切的字符串值可能不同。 |
@@ -218,7 +218,7 @@ EA Api 使用 API 密钥身份验证和授权。 MCA Api 使用 Azure AD 身份�
 | SubscriptionName | subscriptionName | &nbsp;  |
 | 标记 | 标记 | 标记属性适用于根对象，而不是嵌套的属性属性。 |
 | 度量单位 | unitOfMeasure | 确切的字符串值而有所不同。 |
-| usageEndDate | 日期 | &nbsp;  |
+| usageEndDate | date | &nbsp;  |
 | 年龄 | 无 | 分析日期的年份。 |
 | (新建) | billingCurrency | 使用付费的货币。 |
 | (新建) | billingProfileId | 计费 （相同的注册） 的配置文件的唯一 ID。 |

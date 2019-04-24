@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 09/11/2017
 ms.author: rkarlin
 ms.openlocfilehash: 6cbf3d70bd835ce1b838b19c93507f7d9487a418
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58074499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332553"
 ---
 # <a name="azure-security-center-search"></a>Azure 安全中心搜索
 Azure 安全中心使用[Azure Monitor 日志搜索](../log-analytics/log-analytics-log-searches.md)来检索和分析安全数据。 Azure Monitor 日志提供用于快速检索和整合数据的查询语言。 从安全中心，您可以利用 Azure Monitor 日志搜索来构造查询并分析收集的数据。

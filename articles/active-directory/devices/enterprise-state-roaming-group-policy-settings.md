@@ -18,11 +18,11 @@ ms.date: 10/25/2018
 ms.author: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5f1b23862edeabbf8e03d4589fa3f22a3fab9f72
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520983"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60353153"
 ---
 # <a name="group-policy-and-mdm-settings"></a>组策略和 MDM 设置
 仅在公司自有设备上使用这些组策略和移动设备管理 (MDM) 设置，因为这些策略将应用于用户的整个设备。 应用 MDM 策略禁用个人设备和用户自有设备的设置同步，这会对该设备的使用产生负面影响。 此外，设备上的其他用户帐户也将受到该策略的影响。
@@ -33,7 +33,7 @@ ms.locfileid: "58520983"
 ## <a name="mdm-settings"></a>MDM 设置
 MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移动版支持仅适用于通过用户的 OneDrive 帐户进行的基于 Microsoft 帐户的漫游。  有关支持基于 Azure AD 的同步的设备的详细信息，请参阅[设备和终结点](enterprise-state-roaming-windows-settings-reference.md)。
 
-| 名称 | 描述 |
+| Name | 描述 |
 | --- | --- |
 | 允许 Microsoft 帐户连接 |允许用户使用设备上的 Microsoft 帐户进行身份验证 |
 | 允许同步我的设置 |允许用户漫游 Windows 设置和应用数据；停用此政策会停用移动设备上的同步和备份 |
@@ -43,7 +43,7 @@ MDM 策略设置适用于 Windows 10 和 Windows 10 移动版。  Windows 10 移
 
 这些设置位于以下位置：`Computer Configuration > Administrative Templates > Windows Components > Sync your settings` 
 
-| 名称 | 描述 |
+| Name | 描述 |
 | --- | --- |
 | 帐户：阻止 Microsoft 帐户 |此策略设置阻止用户在此计算机上添加新的 Microsoft 帐户 |
 | 不同步 |防止用户漫游 Windows 设置和应用数据 |

@@ -16,12 +16,12 @@ ms.date: 11/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 02fc505c8f14f4cc0e486502060a16af47c68bbc
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 4afcbffa778c902c1b32979c69ca91ab0955f739
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439016"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286824"
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory 风险事件
 
@@ -52,7 +52,7 @@ ms.locfileid: "58439016"
 从检测到的风险事件获得的见解会绑定到 Azure AD 订阅。 
 
 * 使用 **Azure AD Premium P2 版本**时，可以获取有关所有基础检测的最详细的信息。 
-* 使用 **Azure AD Premium P1 版本**时，许可证未涵盖的检测项会显示为风险事件“登录时检测到其他风险”。
+* 与**Azure AD Premium P1 版本**的高级检测 （如不熟悉登录属性） 不受你的许可证，将显示在名称下**中检测到其他风险的登录**. 此外，隐藏的风险级别和风险详细信息字段。
 
 已检测的风险事件表示保护身份的一个重要方面，还可以选择手动解决它们，或者通过配置条件性访问策略来实现自动响应。 有关详细信息，请参阅 [Azure Active Directory Identity Protection](../active-directory-identityprotection.md)。
 

@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/26/2017
 ms.author: manuaery
 ms.openlocfilehash: aa69d8b07d31b5cf0386e34c113475cbf4191891
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58013799"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319541"
 ---
 # <a name="storsimple-locally-pinned-volumes-frequently-asked-questions-faq"></a>StorSimple 本地固定卷：常见问题 (FAQ)
 ## <a name="overview"></a>概述
@@ -201,5 +201,5 @@ ms.locfileid: "58013799"
 
 **问：** 是否可以将包含本地固定卷的卷容器故障转移到云设备？
 
-**答：** 可以。 本地固定卷将作为分层卷故障转移。 有关[对跨版本地固定卷进行故障转移和灾难恢复](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)的详细信息
+**答：** 是的，你可以。 本地固定卷将作为分层卷故障转移。 有关[对跨版本地固定卷进行故障转移和灾难恢复](storsimple-8000-device-failover-disaster-recovery.md#common-considerations-for-device-failover)的详细信息
 

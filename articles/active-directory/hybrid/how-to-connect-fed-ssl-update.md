@@ -2,26 +2,26 @@
 title: Azure AD Connect - 更新 AD FS 场的 SSL 证书 | Microsoft Docs
 description: 本文档详述了使用 Azure AD Connect 更新 AD FS 场的 SSL 证书的步骤。
 services: active-directory
-manager: daveba
+manager: mtillman
 editor: billmath
 ms.assetid: 7c781f61-848a-48ad-9863-eb29da78f53c
 ms.service: active-directory  
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/09/2018
-ms.subservice: hybrid
+ms.topic: article
+origin.date: 07/09/2018
+ms.date: 11/09/2018
+ms.component: hybrid
 author: billmath
 ms.custom: seohack1
-ms.author: billmath
-ms.collection: M365-identity-device-management
+ms.author: v-junlch
 ms.openlocfilehash: 39ac0e9cf11a0c6c212c4beadb6635ad2b6b056d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244717"
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>更新 Active Directory 联合身份验证服务 (AD FS) 场的 SSL 证书
 
@@ -38,8 +38,8 @@ ms.locfileid: "56734704"
 
 ## <a name="prerequisites"></a>必备组件
 
-* **AD FS 场**：确保 AD FS 场基于 Windows Server 2012 R2 或更高版本。
-* **Azure AD Connect**：确保 Azure AD Connect 的版本为 1.1.553.0 或更高版本。 将使用任务“更新 AD FS SSL 证书”。
+- **AD FS 场**：确保 AD FS 场基于 Windows Server 2012 R2 或更高版本。
+- **Azure AD Connect**：确保 Azure AD Connect 的版本为 1.1.553.0 或更高版本。 将使用任务“更新 AD FS SSL 证书”。
 
 ![更新 SSL 任务](./media/how-to-connect-fed-ssl-update/updatessltask.png)
 
@@ -85,23 +85,23 @@ Azure AD Connect 会尝试通过以下方式自动获取有关 AD FS 场的信�
 
 ## <a name="faqs"></a>常见问题解答
 
-* **对于新的 AD FS SSL 证书，证书的使用者名称应该是什么？**
+- **对于新的 AD FS SSL 证书，证书的使用者名称应该是什么？**
 
     Azure AD Connect 会检查证书的使用者名称/备用使用者名称是否包含联合身份验证服务名称。 例如，如果联合身份验证服务名称为 fs.contoso.com，则使用者名称/备用使用者名称必须为 fs.contoso.com。  也接受通配符证书。
 
-* **为什么在 WAP 服务器页上又要求我提供凭据？**
+- **为什么在 WAP 服务器页上又要求我提供凭据？**
 
     如果连接到 AD FS 服务器时提供的凭据也没有管理 WAP 服务器的特权，则 Azure AD Connect 会要求用户提供在 WAP 服务器上具有管理特权的凭据。
 
-* **该服务器会显示为脱机。我该怎样做？**
+- **该服务器会显示为脱机。我该怎样做？**
 
     如果该服务器处于脱机状态，Azure AD Connect 将无法执行任何操作。 如果该服务器属于 AD FS 场，则检查与该服务器的连接。 解决该问题之后，请按“刷新”图标以更新向导中的状态。 如果该服务器此前属于场，但现在不再存在，请单击“删除”，将其从 Azure AD Connect 保留的服务器列表中删除。 从 Azure AD Connect 的列表中删除服务器不会变更 AD FS 本身的配置。 如果使用的是 Windows Server 2016 或更高版本中的 AD FS，该服务器将保留在配置设置中，并会在下次运行此任务时再次显示该服务器。
 
-* **能否使用新的 SSL 证书更新一部分场服务器？**
+- **能否使用新的 SSL 证书更新一部分场服务器？**
 
-    是的。 始终可以再次运行“更新 SSL 证书”任务，以更新剩余的服务器。 在“选择要更新 SSL 证书的服务器”页上，可以根据“SSL 到期日期”对服务器列表进行排序，以轻松访问尚未更新的服务器。
+    可以。 始终可以再次运行“更新 SSL 证书”任务，以更新剩余的服务器。 在“选择要更新 SSL 证书的服务器”页上，可以根据“SSL 到期日期”对服务器列表进行排序，以轻松访问尚未更新的服务器。
 
-* **我在上次运行时删除了服务器，但该服务器仍显示为脱机并且在“AD FS 服务器”页中列出。为什么该脱机服务器在删除后仍显示在那儿？**
+- **我在上次运行时删除了服务器，但该服务器仍显示为脱机并且在“AD FS 服务器”页中列出。为什么该脱机服务器在删除后仍显示在那儿？**
 
     从 Azure AD Connect 的列表中删除服务器并不会将其从 AD FS 配置中删除。 Azure AD Connect 引用 AD FS（Windows Server 2016 或更高版本）中有关场的任何信息。 如果服务器仍然存在于 AD FS 配置中，它将列回到列表中。  
 

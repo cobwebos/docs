@@ -11,19 +11,19 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: jowargo
 ms.openlocfilehash: 0d79e53f731c20777ffa2fb57b3b8149fe4e60ab
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58488177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60239961"
 ---
 # <a name="configure-android-device-messaging-adm-settings-for-a-notification-hub-in-the-azure-portal"></a>在 Azure 门户中配置通知中心 Android Device Messaging (ADM) 设置
 本文介绍如何使用 Azure 门户配置 Azure 通知中心 Android Device Messaging (ADM) 设置。 
 
 ## <a name="prerequisites"></a>必备组件
-如果你尚未创建通知中心，现在请创建一个。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。 
+如果尚未创建通知中心，请立即创建。 有关详细信息，请参阅[在 Azure 门户中创建 Azure 通知中心](create-notification-hub-portal.md)。 
 
-## <a name="configure-android-device-messaging"></a>配置 Android 设备的消息传送
+## <a name="configure-android-device-messaging"></a>配置 Android Device Messaging
 
 以下过程提供配置通知中心的 Amazon Device Messaging (ADM) 设置的步骤： 
 

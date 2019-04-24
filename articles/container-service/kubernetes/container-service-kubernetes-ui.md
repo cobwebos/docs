@@ -10,11 +10,11 @@ ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
 ms.openlocfilehash: c3a79b2e4fab807613a54d2792f5f5b97570293b
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996138"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309606"
 ---
 # <a name="deprecated-using-the-kubernetes-web-ui-with-azure-container-service"></a>（已弃用）在 Azure 容器服务中使用 Kubernetes Web UI
 
@@ -23,7 +23,7 @@ ms.locfileid: "52996138"
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 本演练假定用户已[使用 Azure 容器服务创建 Kubernetes 群集](container-service-kubernetes-walkthrough.md)，
 
 
@@ -67,7 +67,7 @@ $ az acs kubernetes browse -g [Resource Group] -n [Container service instance na
 
     此时会打开一个对话框，用户可以开始在其中创建应用程序。
 
-2. 将其命名为 `hello-nginx`。 使用 [`nginx`Docker 中的容器](https://hub.docker.com/_/nginx/)，部署此 Web 服务的三个副本。
+2. 将其命名为 `hello-nginx`。 使用[`nginx` Docker 中的容器](https://hub.docker.com/_/nginx/)，部署此 Web 服务的三个副本。
 
     ![Kubernetes Pod“创建”对话框](./media/container-service-kubernetes-ui/nginx.png)
 

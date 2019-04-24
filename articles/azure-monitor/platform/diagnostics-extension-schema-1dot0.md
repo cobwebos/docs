@@ -10,11 +10,11 @@ ms.date: 05/15/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: ac2b79d670b803573a359dfc9f8738f972f2d9b5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59492713"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60237857"
 ---
 # <a name="azure-diagnostics-10-configuration-schema"></a>Azure 诊断 1.0 配置架构
 > [!NOTE]
@@ -116,7 +116,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|Type|描述|  
 |---------|----|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|字符串|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**scheduledTransferLogLevelFilter**|string|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|duration|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 
 ## <a name="logs-element"></a>Logs 元素  
@@ -129,7 +129,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|字符串|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**scheduledTransferLogLevelFilter**|string|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|duration|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 
 ## <a name="directories-element"></a>Directories 元素  
@@ -154,7 +154,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|string|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ## <a name="failedrequestlogs-element"></a>FailedRequestLogs 元素  
@@ -166,7 +166,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|string|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ##  <a name="iislogs-element"></a>IISLogs 元素  
@@ -178,7 +178,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|string|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ## <a name="datasources-element"></a>DataSources 元素  
@@ -195,7 +195,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**容器**|字符串|容器的名称，将要传输容器中的目录内容。|  
+|**容器**|string|容器的名称，将要传输容器中的目录内容。|  
 |**directoryQuotaInMB**|unsignedInt|可选。 指定目录的大小上限（以兆字节为单位）。<br /><br /> 默认值为 0。|  
 
 ## <a name="absolute-element"></a>Absolute 元素  
@@ -207,8 +207,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**路径**|字符串|必需。 要监视的目录的绝对路径。|  
-|**expandEnvironment**|布尔值|必需。 如果设置为 **true**，则扩展路径中的环境变量。|  
+|**路径**|string|必需。 要监视的目录的绝对路径。|  
+|**expandEnvironment**|boolean|必需。 如果设置为 **true**，则扩展路径中的环境变量。|  
 
 ## <a name="localresource-element"></a>LocalResource 元素  
  定义服务定义中定义的本地资源的相对路径。
@@ -219,8 +219,8 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|name|字符串|必需。 包含要监视的目录的本地资源的名称。|  
-|**relativePath**|字符串|必需。 相对于要监视的本地资源的路径。|  
+|name|string|必需。 包含要监视的目录的本地资源的名称。|  
+|**relativePath**|string|必需。 相对于要监视的本地资源的路径。|  
 
 ## <a name="performancecounters-element"></a>PerformanceCounters 元素  
  定义要收集的性能计数器的路径。
@@ -244,7 +244,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|**counterSpecifier**|字符串|必需。 要收集的性能计数器的路径。|  
+|**counterSpecifier**|string|必需。 要收集的性能计数器的路径。|  
 |**sampleRate**|duration|必需。 应收集性能计数器的速率。|  
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog 元素  
@@ -257,7 +257,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|unsignedInt|可选。 指定可用于存储指定数据的文件系统存储最大容量。<br /><br /> 默认值为 0。|  
-|**scheduledTransferLogLevelFilter**|字符串|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
+|**scheduledTransferLogLevelFilter**|string|可选。 指定传输的日志条目的最低严重级别。 默认值为“未定义”。 其他可能的值为“详细”、“信息”、“警告”、“错误”和“严重”。|  
 |**scheduledTransferPeriod**|duration|可选。 指定计划的数据传输之间的时间间隔，向上舍入为最接近的分钟数。<br /><br /> 默认是 PT0S。|  
 
 ## <a name="datasource-element"></a>DataSource 元素  
@@ -269,5 +269,5 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |属性|Type|描述|  
 |---------------|----------|-----------------|  
-|name|字符串|必需。 指定要收集的日志的 XPath 表达式。|  
+|name|string|必需。 指定要收集的日志的 XPath 表达式。|  
 

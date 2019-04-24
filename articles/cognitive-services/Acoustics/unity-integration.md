@@ -11,17 +11,17 @@ ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: aa7c5c513d65310bf9bffab29c1d18e7e7a85b49
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316280"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60389442"
 ---
 # <a name="project-acoustics-unity-integration"></a>项目噪声 Unity 集成
 本操作指南介绍了与你的 Unity 项目的项目噪声 Unity 插件集成。
 
-软件要求：
-* [Unity 2018.2 +](http://unity3d.com)的 Windows
+所需软件：
+* 用于 Windows 的 [Unity 2018.2 及更高版本](http://unity3d.com)
 * [项目噪声 Unity 包](https://www.microsoft.com/download/details.aspx?id=57346)
 
 ## <a name="import-the-plugin"></a>导入插件
@@ -30,16 +30,16 @@ ms.locfileid: "58316280"
 
     ![Unity 导入包的屏幕截图菜单](media/import-package.png)  
 
-* 选择**ProjectAcoustics.unitypackage**
+* 选择 ProjectAcoustics.unitypackage
 
 如果要将插件导入现有的项目，项目根目录下可能已具有 mcs.rsp 文件，该文件指定 C# 编译器选项。 需要将该文件与 Project Acoustics 插件附带的 mcs.rsp 文件的内容合并。
 
 ## <a name="enable-the-plugin"></a>启用插件
 音效工具包的制作部分需要 .NET 4.x 脚本编写运行时版本。 包导入将更新 Unity 播放器设置。 重启 Unity，使此设置生效。
 
-![Unity 播放器设置的屏幕截图面板](media/player-settings.png)
+![Unity 播放器设置面板的屏幕截图](media/player-settings.png)
 
-![Unity 播放器设置的屏幕截图面板中的所选的.NET 4.5](media/net45.png)
+![选中了 .NET 4.5 的 Unity 播放器设置面板的屏幕截图](media/net45.png)
 
 ## <a name="set-up-audio-dsp"></a>设置音频 DSP
 项目噪声包括音频运行时将集成到 Unity 音频引擎 spatializer 框架的 DSP。 它包括基于 HRTF 和平移 spatialization。 通过打开使用 Unity 音频设置启用项目噪声 DSP**编辑 > 项目设置 > 音频**，然后选择**项目噪声**作为**Spatializer 插件**为你的项目。 请确保**DSP 缓冲区大小**设置为获得最佳性能。
@@ -60,7 +60,7 @@ ms.locfileid: "58316280"
 ## <a name="enable-acoustic-design"></a>启用声学设计
 附加脚本**AcousticsAdjust**到场景中，从而通过单击启用其他源设计参数中的声音源**添加组件**，然后选择**脚本 > 噪声调整**:
 
-![屏幕截图的 Unity AcousticsAdjust 脚本](media/acoustics-adjust.png)
+![Unity AcousticsAdjust 脚本的屏幕截图](media/acoustics-adjust.png)
 
 ## <a name="next-steps"></a>后续步骤
 * [制作您的场景使用 Unity 的项目噪声](unity-baking.md)

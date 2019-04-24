@@ -19,11 +19,11 @@ ms.reviewer: hirsin, dastrock
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fcabf51b3a368841f7f135a32c4824eb3db571ee
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57864926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299815"
 ---
 # <a name="federation-metadata"></a>联合元数据
 对于配置为接受 Azure Active Directory 颁发的安全令牌的服务，Azure Active Directory (Azure AD) 发布了一个联合元数据文档。 在扩展了 [OASIS 安全断言标记语言 (SAML) v2.0 元数据](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf)的 [Web 服务联合语言（WS 联合身份验证）版本 1.2](https://docs.oasis-open.org/wsfed/federation/v1.2/os/ws-federation-1.2-spec-os.html) 中描述了联合元数据文档格式。
@@ -73,7 +73,7 @@ entityID="https://sts.windows.net/{tenant}/">
 ```
 
 ### <a name="token-signing-certificates"></a>令牌签名证书
-当服务收到由 Azure AD 租户颁发的令牌时，必须使用联合身份验证元数据文档中发布的签名密钥验证令牌的签名。 联合元数据包含租户用来进行令牌签名的证书的公共部分。 证书原始字节显示在 `KeyDescriptor` 元素中。 仅当 `use` 属性值为 `signing` 时，才可以使用令牌签名证书进行签名。
+当服务收到 Azure AD 租户颁发的令牌时，必须使用联合元数据文档中发布的签名密钥来验证该令牌的签名。 联合元数据包含租户用来进行令牌签名的证书的公共部分。 证书原始字节显示在 `KeyDescriptor` 元素中。 仅当 `use` 属性值为 `signing` 时，才可以使用令牌签名证书进行签名。
 
 Azure AD 发布的联合元数据文档可以包含多个签名密钥，例如，当 Azure AD 准备更新签名证书时。 如果联合元数据文档包含多个证书，验证令牌的服务应该支持文档中的所有证书。
 

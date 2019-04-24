@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.author: raynew
 manager: carmonm
 ms.openlocfilehash: 050e3032d47b8215ae1aef8492c247031275ab86
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094637"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60237618"
 ---
 # <a name="azure-backup-server-protection-matrix"></a>Azure 备份服务器保护矩阵
 
@@ -22,7 +22,7 @@ ms.locfileid: "58094637"
 
 ## <a name="protection-support-matrix"></a>保护支持矩阵
 
-|工作负荷|版本|Azure 备份服务器</br> installation|Azure 备份</br> 服务器 V3|Azure 备份</br> 服务器 V2|保护和恢复|
+|工作负荷|Version|Azure 备份服务器</br> installation|Azure 备份</br> 服务器 V3|Azure 备份</br> 服务器 V2|保护和恢复|
 |------------|-----------|---------------|--------------|---------------|-----------------|
 |客户端计算机（64 位和 32 位）|Windows 10|物理服务器<br /><br />Hyper-V 虚拟机<br /><br />VMware 虚拟机|Y|Y|卷、共享、文件夹、文件、重复删除的卷<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 DPM 使用卷影复制服务 (VSS) 获取数据快照，且只有卷至少为 1GB 时，快照才有效。|
 |客户端计算机（64 位和 32 位）|Windows 8.1|物理服务器<br /><br />Hyper-V 虚拟机|Y|Y|文件<br /><br />受保护的卷必须是 NTFS。 不支持保护 FAT 和 FAT32。<br /><br />卷必须至少为 1GB。 DPM 使用卷影复制服务 (VSS) 获取数据快照，且只有卷至少为 1GB 时，快照才有效。|

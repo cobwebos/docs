@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/09/2018
 ms.author: magattus
 ms.openlocfilehash: 205a8dae55394a82a60f54ed32bad95324a59517
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996926"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324226"
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN 规则引擎功能
 本文列出 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用功能的详细说明。
@@ -30,7 +30,7 @@ ms.locfileid: "57996926"
 
 以下功能旨在控制对内容的访问。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [拒绝访问 (403)](#deny-access-403) | 通过“403 禁止访问”响应确定是否拒绝了所有请求。
 [令牌身份验证](#token-auth) | 确定是否会向请求应用基于令牌的身份验证。
@@ -43,7 +43,7 @@ ms.locfileid: "57996926"
 
 这些功能旨在自定义内容的缓存时间和方式。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [带宽参数](#bandwidth-parameters) | 确定是否会启用带宽限制参数（例如 ec_rate 和 ec_prebuf）。
 [带宽限制](#bandwidth-throttling) | 限制接入点 (POP) 提供的响应的带宽。
@@ -73,7 +73,7 @@ ms.locfileid: "57996926"
 
 此功能用于在规则中提供附加信息。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [评论](#comment) | 允许在规则中添加注释。
  
@@ -81,7 +81,7 @@ ms.locfileid: "57996926"
 
 以下功能旨在添加、修改或删除请求或响应中的标头。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [Age 响应标头](#age-response-header) | 确定是否在发送给请求者的响应中包括 Age 响应标头。
 [调试缓存响应标头](#debug-cache-response-headers) | 确定是否在响应中包括 X-EC-Debug 响应标头，用于说明所请求资产的缓存策略。
@@ -94,7 +94,7 @@ ms.locfileid: "57996926"
 
 这些功能旨在自定义存储在原始日志文件中的数据。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [自定义日志字段 1](#custom-log-field-1) | 确定分配给原始日志文件中自定义日志字段的格式和内容。
 [日志查询字符串](#log-query-string) | 确定是否将查询字符串和 URL 一起存储在访问日志中。
@@ -148,7 +148,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能旨在控制 CDN 与源服务器的通信方式。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [最大 Keep-Alive 请求数](#maximum-keep-alive-requests) | 定义 Keep-Alive 连接在关闭前的最大请求数。
 [代理特殊标头](#proxy-special-headers) | 定义一组特定于 CDN 的请求标头，这些标头将从 POP 转发给源服务器。
@@ -158,7 +158,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能为高级用户提供高级功能。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [可缓存的 HTTP 方法](#cacheable-http-methods) | 确定一组可以在我们的网络上缓存的其他 HTTP 方法。
 [可缓存请求正文大小](#cacheable-request-body-size) | 定义的阈值用于确定 POST 响应是否可以缓存。
@@ -169,7 +169,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 以下功能允许将请求重定向到其他 URL 或者将其重写。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [遵循重定向](#follow-redirects) | 确定是否可以将请求重定向到在客户源服务器返回的 Location 标头中定义的主机名。
 [URL 重定向](#url-redirect) | 通过 Location 标头重定向请求。
@@ -183,9 +183,9 @@ If the desired site does not appear in the list, then you should edit its config
 ### <a name="age-response-header"></a>Age 响应标头
 **用途**:确定是否在发送给请求者的响应中包括 Age 响应标头。
 
-值|结果
+Value|结果
 --|--
-已启用 | 将在发送给请求者的响应中包括 Age 响应标头。
+Enabled | 将在发送给请求者的响应中包括 Age 响应标头。
 已禁用 | 将在发送给请求者的响应中排除 Age 响应标头。
 
 **默认行为**:已禁用。
@@ -200,9 +200,9 @@ If the desired site does not appear in the list, then you should edit its config
 
 带宽限制参数决定了客户端请求的数据传输速率是否受自定义速率限制。
 
-值|结果
+Value|结果
 --|--
-已启用|允许 POP 遵循带宽限制请求。
+Enabled|允许 POP 遵循带宽限制请求。
 已禁用|导致 POP 忽略带宽限制参数。 请求的内容将正常提供（即没有带宽限制）。
 
 **默认行为：** 启用。
@@ -232,9 +232,9 @@ If the desired site does not appear in the list, then you should edit its config
 ### <a name="bypass-cache"></a>绕过缓存
 **目的：** 确定是否请求应绕过缓存。
 
-值|结果
+Value|结果
 --|--
-已启用|导致所有请求被转到源服务器，即使此前已在 POP 上缓存了内容。
+Enabled|导致所有请求被转到源服务器，即使此前已在 POP 上缓存了内容。
 已禁用|导致 POP 根据响应标头中定义的缓存策略缓存资产。
 
 **默认行为：**
@@ -294,7 +294,7 @@ If the desired site does not appear in the list, then you should edit its config
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Cache-Control 标头处理”功能置于同一语句中。
 
-值|结果
+Value|结果
 --|--
 覆盖|确保会执行以下操作：<br/> -覆盖 `Cache-Control` 标头，源服务器生成。 <br/>-添加 `Cache-Control` 到响应外部最大有效期功能生成标头。
 传递|可确保 `Cache-Control` 外部最大有效期功能生成标头永远不会添加到响应。 <br/> 如果源服务器生成 `Cache-Control` 标头，它会传递给最终用户。 <br/> 如果源服务器不会产生 `Cache-Control` 标头，则此选项可能会导致响应标头不包含 `Cache-Control` 标头。
@@ -431,9 +431,9 @@ This feature is not available for the ADN platform. The typical traffic on this
 
 保留 HTTP Large 平台的默认配置，因为这样会减少客户源服务器的负载，提高客户下载内容的速度。
 
-值|结果
+Value|结果
 --|--
-已启用|还原默认行为。 默认行为是强制 POP 启动对源服务器中资产的后台获取。 然后，资产将位于 POP 的本地缓存中。
+Enabled|还原默认行为。 默认行为是强制 POP 启动对源服务器中资产的后台获取。 然后，资产将位于 POP 的本地缓存中。
 已禁用|防止 POP 执行资产的后台获取操作。 结果是，下次从该区域请求此资产时，会导致 POP 从客户源服务器请求此资产。
 
 **默认行为：** 启用。
@@ -534,9 +534,9 @@ application/javascript|Javascript
 
 X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
-值|结果
+Value|结果
 -|-
-已启用|调试缓存响应标头的请求将返回包含 X EC 调试标头的响应。
+Enabled|调试缓存响应标头的请求将返回包含 X EC 调试标头的响应。
 已禁用|X-EC-调试响应标头将从响应中排除。
 
 **默认行为：** 已禁用。
@@ -591,9 +591,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 ### <a name="deny-access-403"></a>拒绝访问 (403)
 **用途**:通过“403 禁止访问”响应确定是否拒绝了所有请求。
 
-值 | 结果
+Value | 结果
 ------|-------
-已启用| 导致系统发送“403 禁止访问”响应，拒绝满足匹配条件的所有请求。
+Enabled| 导致系统发送“403 禁止访问”响应，拒绝满足匹配条件的所有请求。
 已禁用| 还原默认行为。 默认行为是允许源服务器确定将返回的响应类型。
 
 **默认行为**:已禁用
@@ -611,7 +611,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 要实现此类配置，最简单的方式是将“外部最大有效期”和“Expires 标头处理”功能置于同一语句中。
 
-值|结果
+Value|结果
 --|--
 覆盖|确保会执行以下操作：<br/>-覆盖 `Expires` 标头，源服务器生成。<br/>-添加 `Expires` 到响应外部最大有效期功能生成标头。
 传递|可确保 `Expires` 外部最大有效期功能生成标头永远不会添加到响应。 <br/> 如果源服务器生成 `Expires` 标头，它会传递给最终用户。 <br/>如果源服务器不会产生 `Expires` 标头，则此选项可能会导致响应标头不包含 `Expires` 标头。
@@ -651,9 +651,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 - 只能将请求重定向到与同一平台相对应的边缘 CNAME。
 
-值|结果
+Value|结果
 -|-
-已启用|可以重定向请求。
+Enabled|可以重定向请求。
 已禁用|不会重定向请求。
 
 **默认行为：** 已禁用。
@@ -724,9 +724,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 当 HTTP 客户端发送 no-cache 请求时发生 `Cache-Control: no-cache` 和/或 `Pragma: no-cache` HTTP 请求标头中的。
 
-值|结果
+Value|结果
 --|--
-已启用|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然后源服务器就会将响应标头和正文通过 POP 返回给 HTTP 客户端。
+Enabled|允许将 HTTP 客户端的 no-cache 请求转发给源服务器，然后源服务器就会将响应标头和正文通过 POP 返回给 HTTP 客户端。
 已禁用|还原默认行为。 默认行为是为了防止系统将 no-cache 请求转发到源服务器。
 
 对于所有生产流量，强烈建议将此功能保留为默认禁用状态。 否则，如果最终用户在刷新网页时无意触发多个 no-cache 请求，或者多个常用媒体播放器根据编码在每次进行视频请求时都发送 no-cache 标头，源服务器就会受到影响。 尽管如此，仍可将此功能应用到某些非生产性的分段或测试目录，以便根据需要从源服务器拉取全新的内容。
@@ -786,9 +786,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 默认情况下，当 pop 无法满足指定的字节范围请求以及当 If-range 请求标头字段未被指定时返回此状态代码。
 
-值|结果
+Value|结果
 -|-
-已启用|防止 Pop 响应带有 416 无法满足的范围无法满足请求的状态代码的无效的字节范围请求。 而是服务器会提供所请求的资产，并返回 200 正常客户端。
+Enabled|防止 Pop 响应带有 416 无法满足的范围无法满足请求的状态代码的无效的字节范围请求。 而是服务器会提供所请求的资产，并返回 200 正常客户端。
 已禁用|还原默认行为。 默认行为是遵循 416 无法满足的范围无法满足请求的状态代码。
 
 **默认行为：** 已禁用。
@@ -847,9 +847,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 ### <a name="log-query-string"></a>日志查询字符串
 **目的：** 确定是否会将查询字符串存储以及在访问日志的 URL。
 
-值|结果
+Value|结果
 -|-
-已启用|在访问日志中记录 URL 时，允许存储查询字符串。 如果 URL 中不含查询字符串，则此选项无效。
+Enabled|在访问日志中记录 URL 时，允许存储查询字符串。 如果 URL 中不含查询字符串，则此选项无效。
 已禁用|还原默认行为。 默认行为是将 URL 记录到访问日志中时忽略查询字符串。
 
 **默认行为：** 已禁用。
@@ -945,7 +945,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
     - content-encoding
     - content-length
     - content-range
-    - 日期
+    - date
     - server
     - trailer
     - transfer-encoding
@@ -965,9 +965,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 然后，可以使用这个部分缓存履行对该内容的新请求，直到所请求的内容完全缓存。
 
-值|结果
+Value|结果
 -|-
-已启用|请求可以生成部分缓存的内容。
+Enabled|请求可以生成部分缓存的内容。
 已禁用|请求只能生成所请求内容的完全缓存版本。
 
 **默认行为：** 已禁用。
@@ -1023,9 +1023,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 有效值是：
 
-值|结果
+Value|结果
 --|--
-已启用|导致 POP 重新获取源服务器的资产。
+Enabled|导致 POP 重新获取源服务器的资产。
 已禁用|还原默认行为。 默认行为是在收到请求后提供有效的缓存资产。
 
 此功能不是正确地进行缓存和内容交付所必需的，但可用作一种解决方法。 例如，源服务器上的动态内容生成器可能会意外地导致 0 字节响应被发送到 POP。 这些类型的响应通常由 POP 缓存。 如果确定 0 字节响应不是此类内容 
@@ -1086,9 +1086,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 ### <a name="stale-content-delivery-on-error"></a>在出错时交付过时的内容
 **目的：** 确定错误发生在缓存重新验证或在从客户源服务器检索请求的内容时是否交付到期的缓存的内容。
 
-值|结果
+Value|结果
 -|-
-已启用|如果在连接到源服务器的过程中发生错误，则会向请求者提供过时的内容。
+Enabled|如果在连接到源服务器的过程中发生错误，则会向请求者提供过时的内容。
 已禁用|源服务器的错误将转发给请求者。
 
 **默认行为：** 已禁用
@@ -1126,9 +1126,9 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 除了 URL 重写功能之外，此功能优先于大多数功能。
 
-值 | 结果
+Value | 结果
 ------|---------
-已启用 | 通过基于令牌的身份验证保护请求的内容。 只遵循客户端发出的提供了有效令牌且符合其要求的请求。 FTP 事务不进行基于令牌的身份验证。
+Enabled | 通过基于令牌的身份验证保护请求的内容。 只遵循客户端发出的提供了有效令牌且符合其要求的请求。 FTP 事务不进行基于令牌的身份验证。
 已禁用| 还原默认行为。 默认行为是允许基于令牌的身份验证配置，以便确定是否要对请求进行保护。
 
 #### <a name="compatibility"></a>兼容性
@@ -1198,9 +1198,9 @@ Www-authenticate 标头是仅适用于 401 响应代码。
 
 有效值是：
 
-值|结果
+Value|结果
 ---|----
-已启用|导致 POP 在比较基于令牌的身份验证参数的 URL 时忽略大小写。
+Enabled|导致 POP 在比较基于令牌的身份验证参数的 URL 时忽略大小写。
 已禁用|还原默认行为。 默认行为是在针对令牌身份验证进行 URL 比较时区分大小写。
 
 **默认行为：** 已禁用。
@@ -1219,9 +1219,9 @@ Www-authenticate 标头是仅适用于 401 响应代码。
 - 无法将值选项设置为"ec_token"。
 - 确保值选项中定义的名称包含唯一有效的 URL 字符。
 
-值|结果
+Value|结果
 ----|----
-已启用|值选项定义应通过其定义令牌的查询字符串参数名称。
+Enabled|值选项定义应通过其定义令牌的查询字符串参数名称。
 已禁用|可将令牌指定为请求 URL 中未定义的查询字符串参数。
 
 **默认行为：** 已禁用。 可将令牌指定为请求 URL 中未定义的查询字符串参数。

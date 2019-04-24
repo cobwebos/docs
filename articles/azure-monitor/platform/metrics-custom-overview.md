@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 8602027431fdf2c1378834419977606bab5c6921
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58287258"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60254064"
 ---
 # <a name="custom-metrics-in-azure-monitor"></a>Azure Monitor 中的自定义指标
 
@@ -38,7 +38,7 @@ ms.locfileid: "58287258"
 > [!NOTE]  
 > 请求用于发出自定义指标的 Azure AD 令牌时，请确保请求该令牌的受众或资源是 https://monitoring.azure.com/。 请务必包含尾部的“/”。
 
-### <a name="subject"></a>主题
+### <a name="subject"></a>Subject
 此属性捕获自定义指标报告的 Azure 资源 ID。 将在 API 调用的 URL 中为此信息编码。 每个 API 只能提交单个 Azure 资源的指标值。
 
 > [!NOTE]  
@@ -60,7 +60,7 @@ ms.locfileid: "58287258"
 ### <a name="namespace"></a>命名空间
 命名空间可将类似的指标分类或分组到一起。 使用命名空间能够在可收集不同见解或性能指标的指标组之间实现隔离。 例如，可以使用名为 **ContosoMemoryMetrics** 的命名空间来跟踪用于分析应用的内存用量指标， 并使用名为 **ContosoAppTransaction** 的另一个命名空间来跟踪有关应用程序中用户事务的所有指标。
 
-### <a name="name"></a>名称
+### <a name="name"></a>Name
 “名称”是正在报告的指标的名称。 通常，该名称具有足够的自述性，可帮助识别所要测量的指标。 以测量给定 VM 上所用内存字节数的指标为例， 该指标可以使用类似于“已使用内存字节数”的名称。
 
 ### <a name="dimension-keys"></a>维度键
@@ -102,7 +102,7 @@ Azure Monitor 以一分钟粒度间隔存储所有指标。 我们知道，在�
 * 最小值：12
 * 最大值：12
 * 总和：12
-* 计数：第
+* 计数：1
 
 使用此过程可以发出在给定的分钟内，相同指标与维度的组合的多个值。 然后，Azure Monitor 将会提取在给定分钟内发出的所有原始值，并将其聚合在一起。
 

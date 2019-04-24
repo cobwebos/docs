@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: genli
 ms.openlocfilehash: c84d015da907c8792f09d1d60e6bc8eddb7e2957
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "51005592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60444286"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>使用 Azure 中的嵌套虚拟化排查问题 Azure VM
 
 本文介绍如何在 Microsoft Azure 中创建一个嵌套虚拟化环境，以便能在 Hyper-V 主机（救援 VM）上装载问题 VM 的磁盘来进行故障排除。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要装载问题 VM，救援 VM 必须满足以下先决条件：
 
@@ -35,13 +35,13 @@ ms.locfileid: "51005592"
 
 -   救援 VM 与问题 VM 必须使用相同类型的存储帐户（标准或高级）。
 
-## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>步骤 1：创建救援 VM 并安装 Hyper-V 角色
+## <a name="step-1-create-a-rescue-vm-and-install-hyper-v-role"></a>步骤 1：创建救援 VM 并安装 HYPER-V 角色
 
 1.  创建一台新的救援 VM：
 
     -  操作系统：Windows Server 2016 Datacenter
 
-    -  大小：任何支持嵌套虚拟化的 V3 系列至少具有双核。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
+    -  大小：具有至少两个内核支持嵌套虚拟化的任何 V3 系列。 有关详细信息，请参阅[引入新的 Dv3 和 Ev3 VM 大小](https://azure.microsoft.com/blog/introducing-the-new-dv3-and-ev3-vm-sizes/)。
 
     -  与问题 VM 相同的位置、存储帐户和资源组。
 
@@ -71,7 +71,7 @@ ms.locfileid: "51005592"
 
 13. 允许服务器安装 Hyper-V 角色。 这需要几分钟的时间，服务器将自动重新启动。
 
-## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：在救援 VM 的 Hyper-V 服务器上创建问题 VM
+## <a name="step-2-create-the-problem-vm-on-the-rescue-vms-hyper-v-server"></a>步骤 2：救援 VM 的 HYPER-V 服务器上创建问题 VM
 
 1.  记录问题 VM 中的磁盘名称，然后删除问题 VM。 请确保已保留所有附加磁盘。 
 
@@ -87,7 +87,7 @@ ms.locfileid: "51005592"
 
 4.  打开磁盘管理 (diskmgmt.msc)。 请确保将问题 VM 的磁盘设置为“离线”。
 
-5.  打开 Hyper-V 管理器：在“服务器管理器”中，选择“Hyper-V 角色”。 右键单击服务器，然后选择“Hyper-V 管理器”。
+5.  打开 HYPER-V 管理器：在中**服务器管理器**，选择**HYPER-V 角色**。 右键单击服务器，然后选择“Hyper-V 管理器”。
 
 6.  在 HYPER-V 管理器中，右键单击救援 VM，然后选择“新建” > “虚拟机” > “下一步”。
 
@@ -122,7 +122,7 @@ ms.locfileid: "51005592"
 
 19. 现在你可以将此 VM 作为本地 VM 进行操作。 你可以按照所需的任何故障排除步骤操作。
 
-## <a name="step-3-re-create-your-azure-vm-in-azure"></a>步骤 3：在 Azure 中重新创建 Azure VM
+## <a name="step-3-re-create-your-azure-vm-in-azure"></a>步骤 3：重新创建在 Azure 中的 Azure VM
 
 1.  重新在线获得 VM 后，关闭 Hyper-V 管理器中的 VM。
 

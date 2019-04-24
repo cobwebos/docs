@@ -18,11 +18,11 @@ ms.author: joflore
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 449f808e98c4e0db2972071e160f5335153a88f2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520116"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60295176"
 ---
 # <a name="sign-in-experiences-with-azure-ad-identity-protection"></a>Azure AD Identity Protection 中的登录体验
 使用 Azure Active Directory Identity Protection 时，可以：
@@ -104,7 +104,7 @@ ms.locfileid: "58520116"
 
 ![补救](./media/flows/104.png "补救")
 
-## <a name="reset-password"></a>重新设置密码
+## <a name="reset-password"></a>重置密码
 如果遭到入侵的用户已被阻止登录，管理员可以为其生成临时密码。 在下一次登录期间，用户必须更改其密码。
 
 ![补救](./media/flows/160.png "补救")

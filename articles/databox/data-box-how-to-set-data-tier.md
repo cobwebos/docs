@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: alkohli
 ms.openlocfilehash: 44fa81ddf6b0892c6d900fd065589b3d6ac5a0bd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789109"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326660"
 ---
 # <a name="use-azure-data-box-to-send-data-to-appropriate-azure-storage-blob-tier"></a>使用 Azure Data Box 将数据发送到合适的 Azure 存储 Blob 层
 

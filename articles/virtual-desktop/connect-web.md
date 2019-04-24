@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 231dc2b777ce7fa37f445215863a55e93562e411
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403742"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328861"
 ---
 # <a name="connect-with-the-web-client"></a>使用 Web 客户端进行连接
 

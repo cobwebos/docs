@@ -1,5 +1,5 @@
 ---
-title: Microsoft 基因组学：常见问题 - 常见问题解答 | Microsoft Docs
+title: Microsoft 基因组学：常见问题-常见问题 |Microsoft Docs
 titleSuffix: Azure
 description: 有关 Microsoft 基因组学的用户常见问题解答。
 services: genomics
@@ -9,12 +9,12 @@ ms.author: grhuynh
 ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
-ms.openlocfilehash: 56256a6c10ecb0d06dfd6194668b9c32c5540c0e
-ms.sourcegitcommit: db2cb1c4add355074c384f403c8d9fcd03d12b0c
-ms.translationtype: HT
+ms.openlocfilehash: 7198e64a11a3aa23643cc2bfb5ecff884c6a1b48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/15/2018
-ms.locfileid: "51683894"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445543"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft 基因组学：常见问题
 
@@ -73,6 +73,7 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 ## <a name="what-genome-references-can-i-use"></a>可以使用哪些基因组引用？
 
 支持以下这些引用：
+
  |引用              | `-pa/--process-args` 的值 |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
@@ -84,15 +85,15 @@ Microsoft 基因组学将按每个工作流处理的千兆碱基数计费。 有
 
 msgen 可识别采用以下格式的配置文件：
 * 所有选项都以键值对的形式提供，值与密钥之间用冒号隔开。
-忽略空格。
+  忽略空格。
 * 忽略以 `#` 开头的行。
 * 可通过去除任何长格式命令行参数单词之间的前导短划线并将短划线替换为下划线，将其转换为密钥。 此处是一些转换示例：
 
- |命令行参数            | 配置文件行 |
- |:-------------                   |:-------------                 |
- |`-u/--api-url-base https://url`  | api_url_base:https://url    |
- |`-k/--access-key KEY`            | access_key:KEY              |      
- |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
+  |命令行参数            | 配置文件行 |
+  |:-------------                   |:-------------                 |
+  |`-u/--api-url-base https://url`  | api_url_base:https://url    |
+  |`-k/--access-key KEY`            | access_key:KEY              |      
+  |`-pa/--process-args R=B37m1`     | process_args:R-b37m1        |  
 
 ## <a name="next-steps"></a>后续步骤
 

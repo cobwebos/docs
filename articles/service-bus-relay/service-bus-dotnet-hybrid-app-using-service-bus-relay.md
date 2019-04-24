@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 11/01/2018
 ms.author: spelluru
 ms.openlocfilehash: 145960db27247a8535eb96640000b86d810619c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57838402"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419765"
 ---
 # <a name="expose-an-on-premises-wcf-service-to-a-web-application-in-the-cloud-by-using-azure-relay"></a>使用 Azure 中继向云中的 Web 应用程序公开本地 WCF 服务 
 本文演示如何使用 Microsoft Azure 和 Visual Studio 生成混合云应用程序。 创建一个使用多个 Azure 资源的应用程序，让其在云中启动并运行。
@@ -185,7 +185,7 @@ ms.locfileid: "57838402"
         }
     }
     ```
-12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在底部`<system.ServiceModel>`元素 (但仍在`<system.ServiceModel>`)，添加以下 XML 代码：确保将 yourServiceNamespace 替换为命名空间的名称，并将 yourKey 替换为之前从门户中检索到的 SAS 密钥：
+12. 在“解决方案资源管理器”中，双击“App.config”文件以在 Visual Studio 编辑器中将其打开。 在 `<system.ServiceModel>` 元素的底部（仍在 `<system.ServiceModel>` 中）添加以下 XML 代码：确保将 yourServiceNamespace 替换为命名空间的名称，并将 yourKey 替换为之前从门户中检索到的 SAS 密钥：
 
     ```xml
     <system.serviceModel>
@@ -350,7 +350,7 @@ ms.locfileid: "57838402"
 
    ![添加为链接][24]
 
-6. 现在，打开**HomeController.cs**文件在 Visual Studio 编辑器中，命名空间定义替换为以下代码：确保将 yourServiceNamespace 替换为服务命名空间的名称，并将 yourKey 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
+6. 现在，在 Visual Studio 编辑器中打开 **HomeController.cs** 文件，并将命名空间定义替换为以下代码：确保将 yourServiceNamespace 替换为服务命名空间的名称，并将 yourKey 替换为 SAS 密钥。 这会使客户端能够调用本地服务，并返回调用的结果。
 
    ```csharp
    namespace ProductsWeb.Controllers
@@ -448,7 +448,7 @@ ms.locfileid: "57838402"
 
 ## <a name="run-the-application"></a>运行应用程序
 
-1. 按 F5 生成并运行应用程序。 在本地服务器 ( **ProductsServer**控制台应用程序) 应该会先启动，则**ProductsPortal**应用程序应该在浏览器窗口中，启动，如以下屏幕截图中所示：再次提请注意，产品库存列表会列出从产品服务本地系统检索到的数据，并在 Web 应用中显示该数据。 请检查 URL，确保 **ProductsPortal** 正在云中以 Azure Web 应用的形式运行。
+1. 按 F5 生成并运行应用程序。 本地服务器（**ProductsServer** 控制台应用程序）应该会先启动，然后 **ProductsPortal** 应用程序应该会在浏览器窗口中启动，如以下屏幕截图所示：再次提请注意，产品库存列表会列出从产品服务本地系统检索到的数据，并在 Web 应用中显示该数据。 请检查 URL，确保 **ProductsPortal** 正在云中以 Azure Web 应用的形式运行。
 
    ![在 Azure 上运行 Web 应用][1]
 

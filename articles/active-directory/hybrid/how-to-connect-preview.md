@@ -17,21 +17,21 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b7def733a80aea1be77825bb9069217f5f43e003
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56173328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60347798"
 ---
 # <a name="more-details-about-features-in-preview"></a>有关预览版功能的详细信息
 本主题介绍如何使用当前以预览版形式提供的功能。
 
 ## <a name="group-writeback"></a>组写回
-可选功能中的组写回选项允许用户将“Office 365 组”写回到装有 Exchange 的林。 这是永远在云中受控制的组。 如果有本地 Exchange，则可以将这些组写回到本地，使具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。
+使用可选功能中的组写回选项可将 **Office 365 组**写回到安装有 Exchange 的林。 这是永远在云中受控制的组。 如果有本地 Exchange，则可以将这些组写回到本地，使具有本地 Exchange 邮箱的用户可以从这些组发送和接收电子邮件。
 
-可在[此处](https://aka.ms/O365g)找到有关 Office 365 组及其用法的详细信息。
+可在 [此处](https://aka.ms/O365g)找到有关 Office 365 组及其用法的详细信息。
 
-Office 365 组会在本地 AD DS 中表示为分发组。 本地 Exchange 服务器必须是 Exchange 2013 累积更新 8（2015 年 3 月发行）或 Exchange 2016，才能识别这个新的组类型。
+Office 365 组在本地 AD DS 中显示为分发组。 本地 Exchange 服务器必须是 Exchange 2013 累积更新 8（2015 年 3 月发行）或 Exchange 2016，才能识别这个新的组类型。
 
 **预览期注意事项**
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
 ms.openlocfilehash: 83834104dd73e4381947903196ad35c3497b64a1
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52425670"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337555"
 ---
 # <a name="create-php-web-and-worker-roles"></a>创建 PHP Web 角色和辅助角色
 
@@ -26,13 +26,13 @@ ms.locfileid: "52425670"
 
 本指南将说明如何执行以下操作：在 Windows 开发环境中创建 PHP Web 角色或辅助角色，从提供的“内置”版本中选择特定版本的 PHP，更改 PHP 配置，启用扩展，最后部署到 Azure。 它还介绍了如何将 Web 角色或辅助角色配置为使用提供的 PHP 运行时（带自定义配置和扩展）。
 
-Azure 提供了三种计算模型以运行应用程序：Azure 应用服务、Azure 虚拟机和 Azure 云服务。 这三种模型都支持 PHP。 云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。 在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。 辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
+Azure 提供了三种用于运行应用程序的计算模型：Azure 应用服务、 Azure 虚拟机和 Azure 云服务。 这三种模型都支持 PHP。 云服务（包括 Web 角色和辅助角色）提供了*平台即服务 (PaaS)*。 在云服务中，Web 角色提供专门用于托管前端 Web 应用程序的 Internet Information Services (IIS) Web 服务器。 辅助角色可运行独立于用户交互或输入的异步任务、运行时间较长的任务或永久性任务。
 
 有关这些选项的详细信息，请参阅 [Azure 提供的计算托管选项](cloud-services/cloud-services-choose-me.md)。
 
 ## <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
 
-[用于 PHP 的 Azure SDK](php-download-sdk.md) 由多个组件构成。 本文将使用其中两个：Azure PowerShell 和 Azure 模拟器。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+[用于 PHP 的 Azure SDK](php-download-sdk.md) 由多个组件构成。 本文将使用其中两个：Azure PowerShell 和 Azure 仿真程序。 可以通过 Microsoft Web 平台安装程序安装这两个组件。 有关详细信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="create-a-cloud-services-project"></a>创建云服务项目
 
@@ -79,7 +79,7 @@ PHP 5.3.17          http://nodertncu.blob.core...   True
 PHP 5.4.0           http://nodertncu.blob.core...   False
 ```
 
-可以将 PHP 运行时版本设置为列出的任意 PHP 版本。 例如，要将 PHP 版本（对于名为 `roleName` 的角色）设置为 5.4.0，请使用以下命令：
+可以将 PHP 运行时版本设置为列出的任意 PHP 版本。 例如，若要将 PHP 版本（对于名为 `roleName` 的角色）设置为 5.4.0，请使用以下命令：
 
     PS C:\myProject> Set-AzureServiceProjectRole roleName php 5.4.0
 
@@ -96,7 +96,7 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 
 1. 将一个名为 `php` 的新文件夹添加到 Web 角色的 `bin` 目录。 对于辅助角色，将该文件夹添加到角色的根目录。
 2. 在 `php` 文件夹中，创建另一个名为 `ext` 的文件夹。 将要启用的任何扩展名为 `.dll` 的文件（例如，`php_mongo.dll`）置于此文件夹中。
-3. 将 `php.ini` 文件添加到 `php` 文件夹中。 启用任何自定义扩展，并在此文件中设置任何 PHP 指令。 例如，要打开 `display_errors` 并启用 `php_mongo.dll` 扩展，则 `php.ini` 文件的内容将如下所示：
+3. 将 `php.ini` 文件添加到 `php` 文件夹中。 启用任何自定义扩展，并在此文件中设置任何 PHP 指令。 例如，若要打开 `display_errors` 并启用 `php_mongo.dll` 扩展，则 `php.ini` 文件的内容将如下所示：
 
         display_errors=On
         extension=php_mongo.dll
@@ -108,7 +108,7 @@ PHP 5.4.0           http://nodertncu.blob.core...   False
 
 ## <a name="use-your-own-php-runtime"></a>使用自己的 PHP 运行时
 
-在某些情况下，可能需要提供自己的 PHP 运行时，而不是如上所述那样选择并配置内置 PHP 运行时。 例如，可以在 Web 角色或辅助角色中使用在开发环境中使用的 PHP 运行时， 以便更轻松地确保应用程序不会更改生产环境中的行为。
+在某些情况下，可能需要提供自己的 PHP 运行时，而不是如上所述那样选择并配置内置 PHP 运行时。 例如，可以在 Web 角色或辅助角色中使用你在开发环境中使用的 PHP 运行时， 以便更轻松地确保应用程序不会更改生产环境中的行为。
 
 ### <a name="configure-a-web-role-to-use-your-own-php-runtime"></a>将 Web 角色配置为使用自己的 PHP 运行时
 
@@ -211,7 +211,7 @@ Azure 模拟器提供了一个本地环境，可在将 Azure 应用程序部署�
 
 ## <a name="publish-your-application"></a>发布应用程序
 
-若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) cmdlet 发布应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
+若要发布应用程序，需要先使用 [Import-AzurePublishSettingsFile](https://docs.microsoft.com/powershell/module/servicemanagement/azure/import-azurepublishsettingsfile) cmdlet 导入发布设置。 然后使用 [Publish-AzureServiceProject](https://docs.microsoft.com/powershell/module/servicemanagement/azure/publish-azureserviceproject) cmdlet 发布用户的应用程序。 有关登录的信息，请参阅[如何安装和配置 Azure PowerShell](/powershell/azure/overview)。
 
 ## <a name="next-steps"></a>后续步骤
 

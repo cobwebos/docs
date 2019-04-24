@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2018
 ms.author: kumud
 ms.openlocfilehash: 6fb6b3e4476efec87b15d175d354afab777e6830
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54228820"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60330135"
 ---
 # <a name="nested-traffic-manager-profiles"></a>嵌套式流量管理器配置文件
 
@@ -87,7 +87,7 @@ ms.locfileid: "54228820"
 
 ## <a name="example-5-per-endpoint-monitoring-settings"></a>示例 5：基于终结点的监视设置
 
-假设希望使用流量管理器来顺利地将流量从旧的本地网站迁移到基于云的新版网站（托管在 Azure 中）。 对于旧站点，想要使用主页 URI 监视站点运行状况。 但对于基于云的新版站点，要实现一个包含附加检查的自定义监视页面（路径为“/monitor.aspx”）。
+假设希望使用流量管理器来顺利地将流量从旧的本地网站迁移到基于云的新版网站（托管在 Azure 中）。 对于旧站点，想要使用主页 URI 监视站点运行状况。 但对于基于云的新版站点，你要实现一个包含附加检查的自定义监视页面（路径为“/monitor.aspx”）。
 
 ![流量管理器终结点监视（默认行为）][9]
 

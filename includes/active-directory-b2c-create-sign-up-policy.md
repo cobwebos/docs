@@ -2,14 +2,15 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/30/2018
-ms.author: patricka
+origin.date: 11/30/2018
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 17c0213d63879687e9c6d5f8dca06b9113c44af8
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "58114917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456896"
 ---
 如果仅希望在应用程序上启用注册，请使用**注册**用户流。 此用户流描述了客户在注册过程中将经历的体验以及应用程序在成功注册之后会接收到的令牌内容。
 
@@ -33,7 +34,7 @@ ms.locfileid: "58114917"
 
 单击“确定”。
 
-单击“创建”。 创建的用户流将显示为 **B2C_1_SiUp**（**B2C\_1\_** 片段是自动添加的）。
+单击**创建**。 创建的用户流将显示为 **B2C_1_SiUp**（**B2C\_1\_** 片段是自动添加的）。
 
 单击“运行用户流”。
 
@@ -44,3 +45,4 @@ ms.locfileid: "58114917"
 > [!NOTE]
 > 用户流创建和更新最多需要一分钟才能生效。
 >
+

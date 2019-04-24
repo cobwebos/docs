@@ -13,12 +13,12 @@ ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3322e49c6fdc590b785806f67b5081700bf8b37b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: b141de4c22ba1ba1325982d8e027fa46e0909fbb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788614"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60248790"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>将 Azure 订阅关联或添加到 Azure Active Directory 租户
 
@@ -76,7 +76,7 @@ Azure 订阅已与 Azure Active Directory (Azure AD)，这意味着该订阅信�
 
 1. 如果你有任何密钥保管库，则必须更改密钥保管库租户 id。 有关详细信息，请参阅[订阅移动后更改密钥保管库租户 ID](../../key-vault/key-vault-subscription-move-fix.md)。
 
-2. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](../../azure-stack/azure-stack-registration.md)。
+2. 如果你注册 Azure Stack 使用此订阅，则必须重新注册。 有关详细信息，请参阅[使用 Azure 注册 Azure Stack](/azure-stack/operator/azure-stack-registration)。
 
 
 

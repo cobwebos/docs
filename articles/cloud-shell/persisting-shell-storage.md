@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/04/2018
 ms.author: damaerte
 ms.openlocfilehash: 0aa00af543a3d21db9b8ad0ed808a8bff0b534e1
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57246264"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60200137"
 ---
 [!INCLUDE [PersistingStorage-introblock](../../includes/cloud-shell-persisting-shell-storage-introblock.md)]
 
@@ -102,7 +102,7 @@ justin@Azure:~$
 
 [!INCLUDE [PersistingStorage-endblock](../../includes/cloud-shell-persisting-shell-storage-endblock.md)]
 
-注意：如果需要在文件中定义函数并从 PowerShell cmdlet 调用，则必须包含点运算符。 例如： .\MyFunctions.ps1
+请注意:如果需要在文件中定义函数并从 PowerShell cmdlet 调用，则必须包含点运算符。 例如： .\MyFunctions.ps1
 
 ## <a name="next-steps"></a>后续步骤
 [Cloud Shell 中的 Bash 快速入门](quickstart.md) <br>

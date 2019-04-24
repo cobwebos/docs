@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
 ms.openlocfilehash: 3163b33f69f4cc2d6cd4127253c7b6fadfddd6b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994233"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324024"
 ---
 # <a name="azure-cdn-rules-engine-reference"></a>Azure CDN 规则引擎参考
 本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件和功能的详细说明。

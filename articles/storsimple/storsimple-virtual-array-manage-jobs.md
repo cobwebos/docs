@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: dbab2aaab2c12bef07748f54e5864d042f1c982a
-ms.sourcegitcommit: 922f7a8b75e9e15a17e904cc941bdfb0f32dc153
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52333558"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60302464"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务查看 StorSimple 虚拟阵列的作业
 ## <a name="overview"></a>概述
@@ -59,7 +59,7 @@ ms.locfileid: "52333558"
 #### <a name="job-failures-when-the-virtual-machine-is-paused-in-the-hypervisor"></a>在虚拟机监控程序中暂停虚拟机时的作业失败
 当作业正在 StorSimple 虚拟阵列上运行且设备（在虚拟机监控程序中预配的虚拟机）暂停超过 15 分钟时，作业会失败。 这是由于 StorSimple 虚拟阵列时间与 Microsoft Azure 时间不同步。 
 
-会看到以下错误：“设备时间与 Microsoft Azure 时间不同步已超过 15 分钟。 确保虚拟机监控程序和设备时间与 NTP 服务器同步。 验证是否没有连接问题。 若要解决连接问题，请从虚拟设备的本地 Web UI 运行诊断测试。”
+将出现以下错误："设备时间是与 Microsoft Azure 时间超过 15 分钟不同步。 确保虚拟机监控程序和设备时间与 NTP 服务器同步。 验证是否没有连接问题。 若要解决连接问题，请从虚拟设备的本地 Web UI 运行诊断测试。”
 
 这些失败适用于备份、还原、更新和故障转移作业。 如果在 Hyper-V 中预配了虚拟机，则虚拟机最终将与虚拟机监控程序同步时间。 一旦同步后，可重新启动作业。
 

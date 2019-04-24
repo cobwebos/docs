@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/04/2019
+ms.date: 04/19/2019
 ms.author: tomfitz
-ms.openlocfilehash: f5ff43102c42823891f2035c3f577e7def87fcb7
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: dfe2a103005cc48860c7bbeb3036afe94ff3a559
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60239145"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>将资源移到新资源组或订阅中
 
@@ -49,7 +49,7 @@ ms.locfileid: "59528231"
 
 ## <a name="services-that-can-be-moved"></a>可以移动的服务
 
-以下列表汇总提供了可移动到新资源组和订阅的 Azure 服务。 列表中的哪些资源类型支持移动，请参阅[移动对资源的操作支持](move-support-resources.md)。
+以下列表汇总提供了可移动到新资源组和订阅的 Azure 服务。 对于支持移动的资源类型列表，请参阅[支持移动操作的资源](move-support-resources.md)。
 
 * Analysis Services
 * API 管理
@@ -63,7 +63,7 @@ ms.locfileid: "59528231"
 * Azure Database for MariaDB
 * Azure Database for MySQL
 * Azure Database for PostgreSQL
-* Azure DevOps - 具有非 Microsoft 扩展购买的 Azure DevOps 组织必须先[取消其购买](https://go.microsoft.com/fwlink/?linkid=871160)，然后才能跨订阅移动帐户。
+* Azure DevOps-请按照步骤[更改用于计费的 Azure 订阅](/azure/devops/organizations/billing/change-azure-subscription?view=azure-devops)。
 * Azure Maps
 * Azure Monitor 日志
 * Azure 中继
@@ -74,7 +74,7 @@ ms.locfileid: "59528231"
 * CDN
 * 云服务 - 请参阅[经典部署限制](#classic-deployment-limitations)
 * 认知服务
-* 容器注册表 - 启用异地复制后无法移动容器注册表。
+* 容器注册表
 * 内容审查器
 * 成本管理
 * Customer Insights

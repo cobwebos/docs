@@ -17,11 +17,11 @@ ms.reviewer: jlu
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 534c0463cd8aee9fccfa183586b946032dada722
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58094552"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60299683"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>如何：重新激活禁用的访问控制服务命名空间
 
@@ -93,7 +93,7 @@ ms.locfileid: "58094552"
 1. 请登录到 Azure 门户，并创建[新的支持请求](https://portal.azure.com/#create/Microsoft.Support)。
 1. 如下面的示例所示，填写新的支持请求表单。
 
-    | 支持请求字段 | 值 |
+    | 支持请求字段 | Value |
     |-----------------------|--------------------|
     | **问题类型** | `Technical` |
     | **订阅** | 设置为你的订阅 |

@@ -13,11 +13,11 @@ ms.reviewer: genemi
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: e76b5ecd3d6401c317f6500ec376fc25d3fa55b8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997690"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331122"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>如何使用批处理来改善 SQL 数据库应用程序的性能
 
@@ -100,7 +100,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 | 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
-| 第 |130 |402 |
+| 1 |130 |402 |
 | 10 |1208 |1226 |
 | 100 |12662 |10395 |
 | 1000 |128852 |102917 |
@@ -109,7 +109,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 | 操作 | 无事务（毫秒） | 事务（毫秒） |
 | --- | --- | --- |
-| 第 |21 |26 |
+| 1 |21 |26 |
 | 10 |220 |56 |
 | 100 |2145 |341 |
 | 1000 |21479 |2756 |
@@ -168,7 +168,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-在上一示例中， **SqlCommand**对象将行插入表值参数 **\@TestTvp**。 使用 **SqlCommand.Parameters.Add** 方法以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
+在前一示例中，**SqlCommand** 对象从表值参数 **\@TestTvp** 插入行。 使用 **SqlCommand.Parameters.Add** 方法以前创建的 **DataTable** 对象分配到此参数。 对一个调用中的插入进行批处理将显著提高顺序插入的性能。
 
 若要进一步改进前一个示例，请使用存储过程来替代基于文本的命令。 以下 Transact-SQL 命令创建一个采用 **SimpleTestTableType** 表值参数的存储过程。
 
@@ -192,11 +192,11 @@ cmd.CommandType = CommandType.StoredProcedure;
 
 在大多数情况下，表值参数具有与其他批处理方法等效或更高的性能。 人们通常使用表值参数，因为它们比其他选项更灵活。 例如，其他方法（如 SQL 大容量复制）仅允许插入新行。 但是使用表值参数，可以在存储过程中使用逻辑来决定更新哪些行和插入哪些行。 还可以修改表类型来包含“操作”列，该列指示指定的行应插入、更新还是删除。
 
-下表显示使用表值参数的即席测试结果以毫秒为单位。
+下表显示使用表值参数的即席测试结果（毫秒）。
 
 | 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
-| 第 |124 |32 |
+| 1 |124 |32 |
 | 10 |131 |25 |
 | 100 |338 |51 |
 | 1000 |2615 |382 |
@@ -232,11 +232,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 在某些情况下，批量复制的效果好于表值参数。 请参阅文章[表值参数](https://msdn.microsoft.com/library/bb510489.aspx)中“表值参数与 BULK INSERT 操作的对比表”。
 
-以下即席测试结果显示的批处理性能**SqlBulkCopy**以毫秒为单位。
+以下即席测试结果显示具有 **SqlBulkCopy** 的批处理性能（毫秒）。
 
 | 操作 | 本地到 Azure（毫秒） | 同一 Azure 数据中心（毫秒） |
 | --- | --- | --- |
-| 第 |433 |57 |
+| 1 |433 |57 |
 | 10 |441 |32 |
 | 100 |636 |53 |
 | 1000 |2535 |341 |
@@ -277,11 +277,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 此示例用于演示基本概念。 一个更现实的方案是对所需的实体执行循环，以同时构造查询字符串和命令参数。 最多可使用 2100 个查询参数，因此这限制了可以此方式处理的总行数。
 
-以下即席测试结果以毫秒为单位显示此类型的 insert 语句的性能。
+以下即席测试结果显示此类插入语句的性能（毫秒）。
 
 | 操作 | 表值参数（毫秒） | 单语句 INSERT（毫秒） |
 | --- | --- | --- |
-| 第 |32 |20 |
+| 1 |32 |20 |
 | 10 |30 |25 |
 | 100 |33 |51 |
 
@@ -328,7 +328,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 
 | 批大小 | 迭代 | 表值参数（毫秒） |
 | --- | --- | --- |
-| 1000 |第 |347 |
+| 1000 |1 |347 |
 | 500 |2 |355 |
 | 100 |10 |465 |
 | 50 |20 |630 |

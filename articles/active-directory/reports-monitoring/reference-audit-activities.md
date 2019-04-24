@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 66dd017e8f78f1e93c96262b42dc084c165cdef7
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60285491"
 ---
 # <a name="azure-ad-audit-activity-reference"></a>Azure AD 审核活动参考
 
@@ -32,7 +32,7 @@ Azure AD 中的报告体系结构由以下部分组成：
 
 - **活动报告** 
     - [登录](concept-sign-ins.md) - 提供有关托管应用程序的使用情况和用户登录活动的信息
-    - [审核日志](concept-audit-logs.md) - 针对 Azure AD 中的各种功能所做的所有更改进行日志记录，通过这些日志提供可跟踪性。 
+    - [审核日志](concept-audit-logs.md) - 通过日志为 Azure AD 中的各种功能所做的所有更改提供可跟踪性。 
     
 - **安全报表** 
     - [风险登录](concept-risky-sign-ins.md) - 风险登录是指可能由非用户帐户合法拥有者进行的登录尝试。 
