@@ -14,12 +14,12 @@ ms.tgt_pltfrm: .NET
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: b4cb571653cbe69939a1cbdc92338663e4e7125f
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 33deea0805ffa89bcc6a64f34a97a4e080690da9
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576066"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60008811"
 ---
 # <a name="quickstart-create-a-net-framework-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 .NET Framework 应用
 
@@ -36,6 +36,14 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. 选择“键/值资源管理器” > “+创建”来添加以下键值对：
+
+    | 密钥 | 值 |
+    |---|---|
+    | TestApp:Settings:Message | Azure 应用配置的数据 |
+
+    暂时将“标签”和“内容类型”保留为空。
 
 ## <a name="create-a-net-console-app"></a>创建 .NET 控制台应用
 
@@ -106,4 +114,4 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 在本快速入门中，你已经创建了一个新的应用程序配置存储区，并将其用于 .NET Framework 控制台应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
 
 > [!div class="nextstepaction"]
-> [用于 Azure 资源集成的托管标识](./integrate-azure-managed-service-identity.md)
+> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)

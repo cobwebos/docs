@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/21/2019
 ms.author: kumud;tyao
-ms.openlocfilehash: a7b4975a81c0966e5cbff0c8b940c9231e66f32b
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.openlocfilehash: 1d6343705e8d27fb2d22827cf792de332861456e
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407634"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007961"
 ---
 # <a name="what-is-geo-filtering-on-a-domain-for-azure-front-door"></a>什么是 Azure Front Door 的域中的地区筛选？
 
@@ -97,7 +97,7 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | GR | 希腊|
 | GT | 危地马拉|
 | GY | 圭亚那|
-| HK | 香港特别行政区|
+| HK | 中国香港特别行政区|
 | HN | 洪都拉斯|
 | HR | 克罗地亚|
 | HT | 海地|
@@ -132,15 +132,15 @@ WAF 策略通常包括一组自定义规则。 规则由匹配条件、操作和
 | LT | 立陶宛|
 | LU | 卢森堡|
 | LV | 拉脱维亚|
-| LY | 利比亚|
+| LY | 利比亚 |
 | MA | 摩洛哥|
 | MD | 摩尔多瓦共和国|
 | MG | 马达加斯加岛|
-| MK | 马其顿|
+| MK | 北马其顿|
 | ML | 马里|
 | MM | 缅甸|
 | MN | 蒙古|
-| MO | 中国澳门|
+| MO | 澳门特别行政区|
 | MQ | 马提尼克岛|
 | MR | 毛利塔尼亚|
 | MT | 马耳他|

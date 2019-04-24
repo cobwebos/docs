@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 03/11/2019
-ms.openlocfilehash: 0f324d39db38b17d436583277d60d87b2878d131
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: f2f207b62522ceef9fe72d47026f4c2f8ed02e3b
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880783"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149591"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>通过 .NET SDK 开始使用 Azure Cosmos DB 表 API 和 Azure 表存储
 
@@ -170,7 +170,7 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
 
 实体使用派生自 [TableEntity](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tableentity.aspx)的自定义类映射到 C# 对象。 要将实体添加到表，请创建用于定义实体的属性的类。
 
-右键单击项目“CosmosTableSamples”。 选择“添加”、“新建文件夹”并将其命名为“模型”。 在“模型”文件夹中添加名为“CustimerEntity.cs”的类，并向其添加以下代码。
+右键单击项目“CosmosTableSamples”。 选择“添加”、“新建文件夹”并将其命名为“模型”。 在“模型”文件夹中添加名为“CustomerEntity.cs”的类，并向其添加以下代码。
 
 ```csharp
 namespace CosmosTableSamples.Model

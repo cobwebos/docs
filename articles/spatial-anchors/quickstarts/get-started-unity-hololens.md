@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 56b164d9612fd1bef8caf9ae0de679f65595bc39
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.openlocfilehash: ce9bca3f11911677a6009b4cfe0c3f6413b9f837
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629483"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60009236"
 ---
 # <a name="quickstart-create-a-hololens-unity-app-that-uses-azure-spatial-anchors"></a>快速入门：使用 Azure 空间定位点创建 HoloLens Unity 应用
 
@@ -78,6 +78,8 @@ ms.locfileid: "58629483"
 在文件夹中，双击 HelloAR U3D.sln 以在 Visual Studio 中打开项目。
 
 将“解决方案配置”更改为“发布”，将“解决方案平台”更改为 x86，并从部署目标选项中选择“设备”。
+
+如果使用 HoloLens 2，请使用 **ARM** 作为**解决方案平台**，而不是 **x86**。
 
    ![Visual Studio 配置](./media/get-started-unity-hololens/visual-studio-configuration.png)
 

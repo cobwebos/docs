@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/01/2018
 ms.author: ghogen
 ms.custom: seodec18
-ms.openlocfilehash: 6a576f2817069d7095ea863198168be083d0c6b5
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 3e83c1629848083ae4d899ae01ae32c2c946b2b3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57450936"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995058"
 ---
 # <a name="use-connected-services-in-visual-studio-to-connect-to-the-computer-vision-api"></a>使用 Visual Studio 中的连接服务连接到计算机视觉 API
 
@@ -38,15 +38,15 @@ ms.locfileid: "57450936"
 1. 在“解决方案资源管理器”中，选择“添加” > “连接服务”。
    此时会显示“连接服务”页，其中包含可添加到项目的服务。
 
-   ![Visual Studio 项目上右键单击菜单的屏幕截图：“添加”>“连接服务”](../media/vs-common/Connected-Service-Menu.PNG)
+   ![右键单击 Visual Studio 项目上的菜单：“添加”>“连接服务”](../media/vs-common/Connected-Service-Menu.PNG)
 
 1. 在可用服务菜单中，选择“认知服务计算机视觉 API”。
 
-   ![“连接服务”菜单，其中突出显示了“使用计算机视觉分析图像”](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
+   ![“连接的服务”菜单：列出“分析图像...”](./media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-0.PNG)
 
    如果已登录到 Visual Studio，并且有与帐户关联的 Azure 订阅，则会显示一个页面，其中提供了订阅下拉列表。
 
-   ![“计算机视觉 API”Visual Studio 窗口，其中突出显示了“订阅”下拉列表](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
+   ![“计算机视觉 API”窗口，其中突出显示了“订阅”下拉列表](media/vs-computer-vision-connected-service/Cog-Vision-Connected-Service-1.PNG)
 
 1. 选择要使用的订阅，然后选择计算机视觉 API 的名称，或选择“编辑”链接以修改自动生成的名称，选择资源组和定价层。
 
@@ -256,7 +256,7 @@ ms.locfileid: "57450936"
 
 不再需要资源组时，可将其删除。 这会删除认知服务及相关资源。 要通过门户删除资源组，请执行以下操作：
 
-1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，请将其选中。
+1. 在门户顶部的“搜索”框中输入资源组的名称。 在搜索结果中看到在本快速入门中使用的资源组后，将其选中。
 2. 选择“删除资源组”。
 3. 在“键入资源组名称:”框中，键入资源组的名称，然后选择“删除”。
 

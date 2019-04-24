@@ -9,10 +9,10 @@ ms.date: 4/9/2019
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: cd7797ae3b79fb874bafc89437943b084020d800
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59492305"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>教程：使用 Azure 门户部署和配置 Azure 防火墙
@@ -108,16 +108,16 @@ ms.locfileid: "59492305"
    |虚拟机名称     |**Srv-Jump**|
    |区域     |与前面相同|
    |管理员用户名     |**azureuser**|
-   |密码     |**Azure123456!**|
+   |密码     |**Azure123456!** -|
 
 4. 在“入站端口规则”下，对于 **“公共入站端口”**，请选择“允许所选端口”。
 5. 对于“选择入站端口”，请选择“RDP (3389)”。
 
-6. 接受其他默认值，然后选择“下一步:**磁盘”**。
+6. 接受其他默认值，然后选择“下一步:**磁盘”。
 7. 接受磁盘默认值，然后选择“下一步:网络”。
 8. 请确保选择 **Test-FW-VN** 作为虚拟网络，子网是 **Jump-SN**。
 9. 对于“公共 IP”，请接受默认的新公共 IP 地址名称 (Srv-Jump-ip)。
-11. 接受其他默认值，然后选择“下一步:**管理”**。
+11. 接受其他默认值，然后选择“下一步:**管理”。
 12. 选择“关闭”以禁用启动诊断。 接受其他默认值，然后选择“查看 + 创建”。
 13. 检查摘要页上的设置，然后选择“创建”。
 
@@ -126,8 +126,8 @@ ms.locfileid: "59492305"
 |设置  |值  |
 |---------|---------|
 |子网|**Workload-SN**|
-|公共 IP|**无**|
-|公共入站端口|**无**|
+|公共 IP|无|
+|公共入站端口|无|
 
 ## <a name="deploy-the-firewall"></a>部署防火墙
 

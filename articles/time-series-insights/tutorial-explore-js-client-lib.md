@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 06/05/2018
 ms.author: anshan
 ms.custom: seodec18
-ms.openlocfilehash: 8ed3213a40370b1ab2beb15a989a22017b058d65
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 5e3005eb8f548e562e037431ae5fd89f82ec2100
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55812066"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60150075"
 ---
 # <a name="tutorial-explore-the-azure-time-series-insights-javascript-client-library"></a>教程：探索 Azure 时序见解 JavaScript 客户端库
 
@@ -28,6 +28,9 @@ ms.locfileid: "55812066"
 > * TSI 示例应用程序。
 > * TSI JavaScript 客户端库。
 > * 示例应用程序如何使用该库来可视化 TSI 数据。
+
+> [!NOTE]
+> 时序见解示例应用程序源文件可以在提供的 [GitHub 示例存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)中找到。
 
 ## <a name="video"></a>视频： 
 
@@ -57,7 +60,7 @@ ms.locfileid: "55812066"
 
 ### <a name="page-source-and-structure"></a>页面源代码和结构
 
-首先，让我们查看浏览器中呈现的页面背后的 HTML 和 JavaScript 源代码。 我们不会逐个浏览所有的元素，而是了解主要的节，以便对页面工作原理有个大致的体会：
+首先，让我们查看浏览器中呈现的页面背后的 [HTML 和 JavaScript 源代码](https://github.com/Microsoft/tsiclient/blob/tutorial/pages/tutorial/index.html)。 我们不会逐个浏览所有的元素，而是了解主要的节，以便对页面工作原理有个大致的体会：
 
 1. 在浏览器中打开“开发人员工具”。 查看构成当前页面的 HTML 元素（也称为 HTML 或 DOM 树）。
 
@@ -101,7 +104,7 @@ ms.locfileid: "55812066"
 
 以下概念是通用的，广泛适用于 TSI 客户端库 API。
 
-### <a name="authentication"></a>身份验证
+### <a name="authentication"></a>Authentication
 
 如前所述，本示例是一个 SPA，它使用 ADAL 中的 OAuth 2.0 支持进行用户身份验证。 下面是此脚本节中的一些关注点：
 
@@ -109,7 +112,7 @@ ms.locfileid: "55812066"
 
 2. 稍后，应用程序会从 Azure AD 请求“访问令牌”。 将会针对特定的服务/API 标识符 https://api.timeseries.azure.com 颁发拥有有限权限集的访问令牌。 服务/API 标识符也称为令牌“受众”。 令牌权限是代表登录用户颁发的。 服务/API 的标识符是包含在应用程序的 Azure AD 注册中的另一个属性。 ADAL 向应用程序返回访问令牌后，在访问 TSI 服务 API 时，系统会将该令牌作为“持有者令牌”传递。
 
-   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=145-204&highlight=4-9,36-39)]
+   [!code-javascript[head-sample](~/samples-javascript/pages/tutorial/index.html?range=147-204&highlight=4-9,36-39)]
 
 ### <a name="control-identification"></a>控制标识
 
@@ -191,7 +194,7 @@ TSI 客户端库目前公开 8 个独特的分析控件：折线图、饼图、�
 
 回顾[“页面源代码和结构”部分](#page-source-and-structure)所述的步骤 #3，图表控件在页面上按行排列，每个控件都有一个描述性的标题行。 在本示例中，要填充的三个图表都位于“同一数据中的多个图表类型”标题 `<div>` 元素下面，并已绑定到标题下面的三个 `<div>` 元素：
 
-[!code-javascript[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
+[!code-html[code-sample1-line-bar-pie](~/samples-javascript/pages/tutorial/index.html?range=59-73&highlight=1,5,9,13)]
 
 以下 JavaScript 代码节使用前面所述的模式：生成 TSI 聚合表达式，使用它们来查询 TSI 数据，然后呈现三个图表。 请注意使用了 `tsiClient.ux` 命名空间中的三个类型 `LineChart`、`BarChart` 和 `PieChart` 创建并呈现了相应图表。 另请注意，所有三个图表都可以使用相同的聚合表达式数据 `transformedResult`：
 
@@ -288,4 +291,7 @@ TSI 客户端库还会公开一些可按需使用的可选高级功能。
 > [!div class="nextstepaction"]
 > [教程：创建 Azure 时序见解环境](tutorial-create-populate-tsi-environment.md)
 
+或查看 TSI 示例应用程序源文件：
 
+> [!div class="nextstepaction"]
+> [TSI 示例应用存储库](https://github.com/Microsoft/tsiclient/tree/tutorial/pages/tutorial)

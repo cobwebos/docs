@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/15/2019
 ms.author: wesmc
-ms.openlocfilehash: e3b0c0703cb46087db38121055117b50f97ad03f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4f9f4ccb53f9530122f0a2463f8f45b596856282
+ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006568"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60149676"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-android"></a>快速入门：控制连接到 IoT 中心的设备 (Android)
 
@@ -125,15 +125,13 @@ az iot hub show-connection-string --name YourIoTHubName --output table
    > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
    > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
 
-
 4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 
 5. 待应用加载以后，请单击“启动”按钮，开始将遥测数据发送到 IoT 中心：
 
-    ![应用程序](media/quickstart-send-telemetry-android/sample-screenshot.png)
+    ![客户端设备 android 应用的示例屏幕截图](media/quickstart-control-device-android/sample-screenshot.png)
 
 在运行时期间执行服务 SDK 示例以更新遥测时间间隔时，需要让此应用在物理设备或模拟器上运行。
-
 
 ## <a name="read-the-telemetry-from-your-hub"></a>从中心读取遥测数据
 
@@ -146,12 +144,12 @@ az iot hub show-connection-string --name YourIoTHubName --output table
     ```azurecli-interactive
     az iot hub monitor-events --hub-name YourIoTHubName --output table
     ```
+
     以下屏幕截图显示了 IoT 中心接收 Android 设备发送的遥测数据后的输出：
 
-      ![使用 Azure CLI 读取设备消息](media/quickstart-send-telemetry-android/read-data.png)
+      ![使用 Azure CLI 读取设备消息](media/quickstart-control-device-android/read-data.png)
 
 默认情况下，遥测应用每 5 秒钟从 Android 设备发送一次遥测数据。 在下一部分，将使用直接方法调用更新 Android IoT 设备的遥测时间间隔。
-
 
 ## <a name="call-the-direct-method"></a>调用直接方法
 
@@ -180,7 +178,6 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
    > * 项目中引用的 Android Gradle 插件和 Gradle 的版本对于 Android Studio 版本来说已经过时。 请按照[这些说明](https://developer.android.com/studio/releases/gradle-plugin)操作，以引用并安装正确版本的插件和 Gradle 以进行安装。
    > * Android SDK 的许可协议尚未签署。 请按照 Build 输出中的说明签署许可协议并下载 SDK。
 
-
 4. 生成完成以后，请单击“运行” > “运行‘应用’”。 将应用配置为在单独的物理 Android 设备或 Android 模拟器上运行。 若要详细了解如何在物理设备或模拟器上运行 Android 应用，请参阅[运行您的应用](https://developer.android.com/training/basics/firstapp/running-app)。
 
 5. 待应用加载以后，将“设置消息传送时间间隔”值更新为 **1000**，然后单击“调用”。
@@ -192,8 +189,6 @@ IoT 中心后端服务应用程序通常在云中运行，这样可以更轻松�
 6. 应用会收到一个表明方法是否已成功执行的确认。
 
     ![直接方法确认](media/quickstart-control-device-android/direct-method-ack.png)
-
-
 
 ## <a name="clean-up-resources"></a>清理资源
 

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 03/12/2019
 ms.author: glenga
 ms.custom: include file, fasttrack-edit
-ms.openlocfilehash: 3b0be31afbce78c0de8dc919245e92bee7af04b0
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 5b009fafc818a06bdda309b3e025251cc0997e47
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57964071"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59736876"
 ---
 ## <a name="update-the-function"></a>更新函数
 
@@ -33,7 +33,7 @@ public static async Task<IActionResult> Run(
 
 ### <a name="javascript"></a>JavaScript
 
-打开新函数的 function.json 文件（在文本编辑器中打开），将 **bindings.httpTrigger** 中的 **authLevel** 属性更新为 `anonymous`，然后保存所做的更改。
+在文本编辑器中打开新函数的 function.json 文件，将 **bindings** 中的 **authLevel** 属性更新为 `anonymous`，然后保存所做的更改。
 
 ```json
   "bindings": [

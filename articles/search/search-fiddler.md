@@ -11,10 +11,10 @@ ms.date: 04/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 0e14131ce45d20b99c1b5d5885cb1eb24c975d03
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59269106"
 ---
 # <a name="quickstart-explore-azure-search-rest-apis-using-postman"></a>快速入门：使用 Postman 探索 Azure 搜索 REST API
@@ -228,7 +228,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 
 ## <a name="get-index-properties"></a>获取索引属性
-还可以查询系统信息，以获取文档计数和存储消耗量： `https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
+还可以查询系统信息，获取文档计数和存储使用量：`https://mydemo.search.windows.net/indexes/hotels/stats?api-version=2017-11-11`
 
 在 Postman 中，请求应如下所示，响应包括文档计数和所用空间（以字节为单位）。
 
@@ -247,7 +247,7 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 构建如以下屏幕截图所示的请求。 选择“GET”作为谓词。 Fiddler 添加 `User-Agent=Fiddler`。 可以在其下的新行中粘贴这两个额外的请求标头。 使用服务的管理员访问密钥，包括适用于服务的 content-type 和 api-key。
 
-对于目标，请复制以下 URL 的修改版本： `https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
+对于目标，请复制以下 URL 的修改版本：`https://<placeholder-for-your-service-name>.search.windows.net/indexes?api-version=2017-11-11`
 
 ![Fiddler 请求标头][1]
 
@@ -270,11 +270,11 @@ REST 调用需要在每个请求中使用服务 URL 和访问密钥。 搜索服
 
 以下示例查询取自 [Search Index operation (Azure Search API)](https://docs.microsoft.com/rest/api/searchservice/Search-Documents)（搜索索引操作（Azure 搜索 API））一文。 本问中的许多示例查询包含空格，这在 Fiddler 中是不允许的。 在粘贴查询字符串前，请将每个空格替换为“+”字符，然后再在 Fiddler 中尝试查询。
 
-**替换空格之前 (lastRenovationDate desc)：**
+替换空格之前 (lastRenovationDate desc)：
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2017-11-11
 
-**将空格替换为 + 之后 (lastRenovationDate+desc)：**
+将空格替换为 + 之后 (lastRenovationDate+desc)：
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2017-11-11
 

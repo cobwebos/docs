@@ -1,206 +1,201 @@
-items:
 - name: 云服务文档
   href: index.md
 - name: 概述
   items:
-  - name: 什么是云服务？
-    href: cloud-services-choose-me.md
-  - name: 云服务配置文件和打包
-    href: cloud-services-model-and-package.md
+    - name: 什么是云服务？
+      href: cloud-services-choose-me.md
+    - name: 云服务配置文件和打包
+      href: cloud-services-model-and-package.md
 - name: 入门
   items:
-  - name: .NET 云服务示例
-    href: cloud-services-dotnet-get-started.md
-  - name: Visual Studio 云服务的 Python 示例
-    href: cloud-services-python-ptvs.md
+    - name: .NET 云服务示例
+      href: cloud-services-dotnet-get-started.md
+    - name: Visual Studio 云服务的 Python 示例
+      href: cloud-services-python-ptvs.md
 - name: 如何
   items:
-  - name: 计划
-    items:
-    - name: 虚拟机大小
-      href: cloud-services-sizes-specs.md
-    - name: 更新
-      href: cloud-services-update-azure-service.md
-  - name: 开发
-    items:
-    - name: 创建 PHP Web 角色和辅助角色
-      href: ../cloud-services-php-create-web-role.md
-    - name: 构建和部署 Node.js 应用程序
-      href: cloud-services-nodejs-develop-deploy-app.md
-    - name: 使用 Express 构建 Node.js Web 应用程序
-      href: cloud-services-nodejs-develop-deploy-express-app.md
-    - name: 存储和 Visual Studio
+    - name: 计划
       items:
-      - name: Blob 存储和连接的服务
-        href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
-      - name: 队列存储和连接的服务
-        href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
-      - name: 表存储和连接的服务
-        href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
-    - name: 配置角色的流量规则
-      href: cloud-services-enable-communication-role-instances.md
-    - name: 处理云服务生命周期事件
-      href: cloud-services-role-lifecycle-dotnet.md
-    - name: Socket.io (Node.js)
-      href: cloud-services-nodejs-chat-app-socketio.md
-    - name: 使用 Twilio 拨打电话 (.NET)
-      href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
-    - name: 配置启动任务
+        - name: 虚拟机大小
+          href: cloud-services-sizes-specs.md
+        - name: 更新
+          href: cloud-services-update-azure-service.md
+    - name: 开发
       items:
-      - name: 创建启动任务
-        href: cloud-services-startup-tasks.md
-      - name: 常见启动任务
-        href: cloud-services-startup-tasks-common.md
-      - name: 使用任务在云服务角色上安装 .NET
-        href: cloud-services-dotnet-install-dotnet.md
-    - name: 配置远程桌面
+        - name: 创建 PHP Web 角色和辅助角色
+          href: ../cloud-services-php-create-web-role.md
+        - name: 构建和部署 Node.js 应用程序
+          href: cloud-services-nodejs-develop-deploy-app.md
+        - name: 使用 Express 构建 Node.js Web 应用程序
+          href: cloud-services-nodejs-develop-deploy-express-app.md
+        - name: 存储和 Visual Studio
+          items:
+            - name: Blob 存储和连接的服务
+              href: ../visual-studio/vs-storage-cloud-services-getting-started-blobs.md
+            - name: 队列存储和连接的服务
+              href: ../visual-studio/vs-storage-cloud-services-getting-started-queues.md
+            - name: 表存储和连接的服务
+              href: ../visual-studio/vs-storage-cloud-services-getting-started-tables.md
+        - name: 配置角色的流量规则
+          href: cloud-services-enable-communication-role-instances.md
+        - name: 处理云服务生命周期事件
+          href: cloud-services-role-lifecycle-dotnet.md
+        - name: Socket.io (Node.js)
+          href: cloud-services-nodejs-chat-app-socketio.md
+        - name: 使用 Twilio 拨打电话 (.NET)
+          href: ../partner-twilio-cloud-services-dotnet-phone-call-web-role.md
+        - name: 配置启动任务
+          items:
+            - name: 创建启动任务
+              href: cloud-services-startup-tasks.md
+            - name: 常见启动任务
+              href: cloud-services-startup-tasks-common.md
+            - name: 使用任务在云服务角色上安装 .NET
+              href: cloud-services-dotnet-install-dotnet.md
+        - name: 配置远程桌面
+          items:
+            - name: 门户
+              href: cloud-services-role-enable-remote-desktop-new-portal.md
+            - name: PowerShell
+              href: cloud-services-role-enable-remote-desktop-powershell.md
+            - name: Visual Studio
+              href: cloud-services-role-enable-remote-desktop-visual-studio.md
+    - name: 部署
       items:
-      - name: 门户
-        href: cloud-services-role-enable-remote-desktop-new-portal.md
-      - name: PowerShell
-        href: cloud-services-role-enable-remote-desktop-powershell.md
-      - name: Visual Studio
-        href: cloud-services-role-enable-remote-desktop-visual-studio.md
-  - name: 部署
-    items:
-    - name: 在门户中创建和部署云服务
-      href: cloud-services-how-to-create-deploy-portal.md
-    - name: 在 PowerShell 中创建空云服务容器
-      href: cloud-services-powershell-create-cloud-container.md
-    - name: 配置自定义域名
-      href: cloud-services-custom-domain-name-portal.md
-    - name: 连接到自定义域控制器
-      href: cloud-services-connect-to-custom-domain.md
-  - name: 管理服务
-    items:
-    - name: 常见管理任务
-      href: cloud-services-how-to-manage-portal.md
-    - name: 配置云服务
-      href: cloud-services-how-to-configure-portal.md
-    - name: 使用 Azure 自动化管理云服务
-      href: automation-manage-cloud-services.md
-    - name: 配置自动缩放
-      href: cloud-services-how-to-scale-portal.md
-    - name: 使用 Python 管理 Azure 资源
-      href: cloud-services-python-how-to-use-service-management.md
-    - name: 缓解推理执行
-      href: mitigate-se.md
-    - name: 来宾 OS 修补程序
-      href: cloud-services-guestos-msrc-releases.md
-    - name: 来宾 OS 停用
+        - name: 在门户中创建和部署云服务
+          href: cloud-services-how-to-create-deploy-portal.md
+        - name: 在 PowerShell 中创建空云服务容器
+          href: cloud-services-powershell-create-cloud-container.md
+        - name: 配置自定义域名
+          href: cloud-services-custom-domain-name-portal.md
+        - name: 连接到自定义域控制器
+          href: cloud-services-connect-to-custom-domain.md
+    - name: 管理服务
       items:
-      - name: 停用策略
-        href: cloud-services-guestos-retirement-policy.md
-      - name: 系列 1 停用通知
-        href: cloud-services-guestos-family1-retirement.md
-    - name: 来宾 OS 发行动态
-      href: cloud-services-guestos-update-matrix.md
-    - name: 云服务角色配置 XPath 备忘单
-      href: cloud-services-role-config-xpath.md
-  - name: 管理证书
-    items:
-    - name: 云服务和管理证书
-      href: cloud-services-certs-create.md
-    - name: 配置 SSL
-      href: cloud-services-configure-ssl-certificate-portal.md
-  - name: 监视
-    items:
-    - name: 监视云服务
-      href: cloud-services-how-to-monitor.md
-    - name: 使用性能计数器
-      href: diagnostics-performance-counters.md
-    - name: 测试性能
-      href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+        - name: 常见管理任务
+          href: cloud-services-how-to-manage-portal.md
+        - name: 配置云服务
+          href: cloud-services-how-to-configure-portal.md
+        - name: 使用 Azure 自动化管理云服务
+          href: automation-manage-cloud-services.md
+        - name: 配置自动缩放
+          href: cloud-services-how-to-scale-portal.md
+        - name: 使用 Python 管理 Azure 资源
+          href: cloud-services-python-how-to-use-service-management.md
+        - name: 缓解推理执行
+          href: mitigate-se.md
+        - name: 来宾 OS 修补程序
+          href: cloud-services-guestos-msrc-releases.md
+        - name: 来宾 OS 停用
+          items:
+            - name: 停用策略
+              href: cloud-services-guestos-retirement-policy.md
+            - name: 系列 1 停用通知
+              href: cloud-services-guestos-family1-retirement.md
+        - name: 来宾 OS 发行动态
+          href: cloud-services-guestos-update-matrix.md
+        - name: 云服务角色配置 XPath 备忘单
+          href: cloud-services-role-config-xpath.md
+    - name: 管理证书
       items:
-      - name: 使用 Visual Studio 探查器测试
-        href: cloud-services-performance-testing-visual-studio-profiler.md
-    - name: 启用诊断
+        - name: 云服务和管理证书
+          href: cloud-services-certs-create.md
+        - name: 配置 SSL
+          href: cloud-services-configure-ssl-certificate-portal.md
+    - name: 监视
       items:
-      - name: Azure PowerShell
-        href: cloud-services-diagnostics-powershell.md
-      - name: .NET
-        href: cloud-services-dotnet-diagnostics.md
-      - name: Visual Studio
-        href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
-    - name: 在 Azure 存储中存储和查看诊断数据
-      href: ../azure-monitor/platform/diagnostics-extension-to-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json
-    - name: 使用诊断跟踪云服务
-      href: cloud-services-dotnet-diagnostics-trace-flow.md
-  - name: 故障排除
-    items:
-    - name: 调试
+        - name: 监视云服务
+          href: cloud-services-how-to-monitor.md
+        - name: 使用性能计数器
+          href: diagnostics-performance-counters.md
+        - name: 测试性能
+          href: /visualstudio/azure/vs-azure-tools-performance-profiling-cloud-services?toc=/azure/cloud-services/toc.json
+          items:
+            - name: 使用 Visual Studio 探查器测试
+              href: cloud-services-performance-testing-visual-studio-profiler.md
+        - name: 启用诊断
+          items:
+            - name: Azure PowerShell
+              href: cloud-services-diagnostics-powershell.md
+            - name: .NET
+              href: cloud-services-dotnet-diagnostics.md
+            - name: Visual Studio
+              href: /visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?toc=/azure/cloud-services/toc.json
+        - name: 在 Azure 存储中存储和查看诊断数据
+          href: ../azure-monitor/platform/diagnostics-extension-to-storage.md?toc=%2fazure%2fcloud-services%2ftoc.json
+        - name: 使用诊断跟踪云服务
+          href: cloud-services-dotnet-diagnostics-trace-flow.md
+    - name: 故障排除
       items:
-      - name: 云服务的选项
-        href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
-      - name: 使用 Visual Studio 调试本地云服务
-        href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
-      - name: 使用 Visual Studio 调试已发布的云服务
-        href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
-    - name: 云服务分配失败
-      href: cloud-services-allocation-failures.md
-    - name: 云服务角色回收的常见原因
-      href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
-    - name: TEMP 文件夹的默认大小太小，不能用于角色
-      href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
-    - name: 常见部署问题
-      href: cloud-services-troubleshoot-deployment-problems.md
-    - name: 角色未能启动
-      href: cloud-services-troubleshoot-roles-that-fail-start.md
-    - name: 恢复指南
-      href: cloud-services-disaster-recovery-guidance.md
-    - name: 云服务常见问题
-      items:
-      - name: 应用程序和服务可用性常见问题解答
-        href: cloud-services-application-and-service-availability-faq.md
-      - name: 配置和管理常见问题解答
-        href: cloud-services-configuration-and-management-faq.md
-      - name: 连接和网络常见问题解答
-        href: cloud-services-connectivity-and-networking-faq.md
-      - name: 部署常见问题解答
-        href: cloud-services-deployment-faq.md
+        - name: 调试
+          items:
+            - name: 云服务的选项
+              href: /visualstudio/azure/vs-azure-tools-debugging-cloud-services-overview?toc=/azure/cloud-services/toc.json
+            - name: 使用 Visual Studio 调试本地云服务
+              href: /visualstudio/azure/vs-azure-tools-debug-cloud-services-virtual-machines?toc=/azure/cloud-services/toc.json
+            - name: 使用 Visual Studio 调试已发布的云服务
+              href: /visualstudio/azure/vs-azure-tools-intellitrace-debug-published-cloud-services?toc=/azure/cloud-services/toc.json
+        - name: 云服务分配失败
+          href: cloud-services-allocation-failures.md
+        - name: 云服务角色回收的常见原因
+          href: cloud-services-troubleshoot-common-issues-which-cause-roles-recycle.md
+        - name: TEMP 文件夹的默认大小太小，不能用于角色
+          href: cloud-services-troubleshoot-default-temp-folder-size-too-small-web-worker-role.md
+        - name: 常见部署问题
+          href: cloud-services-troubleshoot-deployment-problems.md
+        - name: 角色未能启动
+          href: cloud-services-troubleshoot-roles-that-fail-start.md
+        - name: 恢复指南
+          href: cloud-services-disaster-recovery-guidance.md
+        - name: 经典 VM 体系结构的工作流
+          href: cloud-services-workflow-process.md
+        - name: 云服务常见问题
+          items:
+            - name: 应用程序和服务可用性常见问题解答
+              href: cloud-services-application-and-service-availability-faq.md
+            - name: 配置和管理常见问题解答
+              href: cloud-services-configuration-and-management-faq.md
+            - name: 连接和网络常见问题解答
+              href: cloud-services-connectivity-and-networking-faq.md
+            - name: 部署常见问题解答
+              href: cloud-services-deployment-faq.md
 - name: 引用
   items:
-  - name: 代码示例
-    href: https://azure.microsoft.com/resources/samples/?service=cloud-services
-  - name: .csdef XML 架构
-    href: schema-csdef-file.md
-    items:
-    - name: LoadBalancerProbe 架构
-      href: schema-csdef-loadbalancerprobe.md
-    - name: WebRole 架构
-      href: schema-csdef-webrole.md
-    - name: WorkerRole 架构
-      href: schema-csdef-workerrole.md
-    - name: NetworkTrafficRules 架构
-      href: schema-csdef-networktrafficrules.md
-  - name: .cscfg XML 架构
-    href: schema-cscfg-file.md
-    items:
-    - name: Role 架构
-      href: schema-cscfg-role.md
-    - name: NetworkConfiguration 架构
-      href: schema-cscfg-networkconfiguration.md
-  - name: REST
-    href: /rest/api/compute/cloudservices/
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/resources/samples/?service=cloud-services'
+    - name: .csdef XML 架构
+      href: schema-csdef-file.md
+      items:
+        - name: LoadBalancerProbe 架构
+          href: schema-csdef-loadbalancerprobe.md
+        - name: WebRole 架构
+          href: schema-csdef-webrole.md
+        - name: WorkerRole 架构
+          href: schema-csdef-workerrole.md
+        - name: NetworkTrafficRules 架构
+          href: schema-csdef-networktrafficrules.md
+    - name: .cscfg XML 架构
+      href: schema-cscfg-file.md
+      items:
+        - name: Role 架构
+          href: schema-cscfg-role.md
+        - name: NetworkConfiguration 架构
+          href: schema-cscfg-networkconfiguration.md
+    - name: REST
+      href: /rest/api/compute/cloudservices/
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: 学习路径
-    href: https://azure.microsoft.com/documentation/learning-paths/cloud-services/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/cloud-services/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=cloud-services
-ms.openlocfilehash: 426de5d59de97e949996a1484d44276f8cf6e9aa
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390532"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 学习路径
+      href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/cloud-services/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform='
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cloud-services'

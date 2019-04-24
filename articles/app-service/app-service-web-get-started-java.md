@@ -15,27 +15,30 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: cephalin;robmcm
 ms.custom: seodec18
-ms.openlocfilehash: 6bf0562d222bce07f74ef5355ad0e3d6b8844c33
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 3af585ede27536dfb644dd374e54183c3539d585
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096616"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60007349"
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>在 Azure 中创建第一个 Java Web 应用
 
 [Azure 应用服务](overview.md)提供高度可缩放、自修补的 Web 托管服务。 本快速入门演示如何使用[面向 Java EE 开发者的 Eclipse IDE](https://www.eclipse.org/) 将 Java Web 应用部署到应用服务。
 
-> [!NOTE]
->
-> 本快速入门中的步骤演示了如何使用 Eclipse IDE 将 Java Web 应用发布到应用服务，但你可以使用 IntelliJ IDEA 旗舰版或社区版。 有关详细信息，请参阅[使用 IntelliJ 创建 Azure 的 Hello World Web 应用](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)。
->
+> [!IMPORTANT]
+> Linux 上的 Azure 应用服务也是使用托管 Tomcat、Java SE 和 WildFly 产品/服务在 Linux 上本机托管 Java Web 应用的一个选项。 如果你对 Linux 上的应用服务入门感兴趣，请参阅[快速入门：在 Linux 上的应用服务中创建 Java 应用](containers/quickstart-java.md)。
 
 完成本快速入门后，应用程序会在 Web 浏览器中如下图所示：
 
 ![“你好，Azure！” 示例 Web 应用](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+> [!NOTE]
+>
+> 本快速入门中的步骤演示了如何使用 Eclipse IDE 将 Java Web 应用发布到应用服务，但你可以使用 IntelliJ IDEA 旗舰版或社区版。 有关详细信息，请参阅[使用 IntelliJ 创建 Azure 的 Hello World Web 应用](/java/azure/intellij/azure-toolkit-for-intellij-create-hello-world-web-app)。
+>
 
 ## <a name="prerequisites"></a>先决条件
 

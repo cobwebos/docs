@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.openlocfilehash: fd49cc6810f4a3a479748180ddb0c44aedf04e89
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59275549"
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB Gremlin 图形支持
@@ -158,9 +158,9 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | `addV` | 将顶点添加到图形 | [addV 步骤](https://tinkerpop.apache.org/docs/current/reference/#addvertex-step) |
 | `and` | 确保所有遍历都返回值 | [and 步骤](https://tinkerpop.apache.org/docs/current/reference/#and-step) |
 | `as` | 用于向步骤的输出分配变量的步骤调制器 | [as 步骤](https://tinkerpop.apache.org/docs/current/reference/#as-step) |
-| `by` | 步骤调制器，与以下步骤配合使用：`group` 和 `order` | [by 步骤](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
+| `by` | 与 `group` 和 `order` 配合使用的步骤调制器 | [by 步骤](https://tinkerpop.apache.org/docs/current/reference/#by-step) |
 | `coalesce` | 返回第一个返回结果的遍历 | [coalesce 步骤](https://tinkerpop.apache.org/docs/current/reference/#coalesce-step) |
-| `constant` | 返回常量值。 与以下步骤配合使用： `coalesce`| [constant 步骤](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
+| `constant` | 返回常量值。 与 `coalesce` 配合使用| [constant 步骤](https://tinkerpop.apache.org/docs/current/reference/#constant-step) |
 | `count` | 从遍历返回计数 | [count 步骤](https://tinkerpop.apache.org/docs/current/reference/#count-step) |
 | `dedup` | 返回已删除重复内容的值 | [dedup 步骤](https://tinkerpop.apache.org/docs/current/reference/#dedup-step) |
 | `drop` | 丢弃值（顶点/边缘） | [drop 步骤](https://tinkerpop.apache.org/docs/current/reference/#drop-step) |
@@ -173,7 +173,7 @@ TinkerPop 是涵盖多种图形技术的标准。 因此，它使用标准的术
 | `limit` | 用于限制遍历中的项数| [limit 步骤](https://tinkerpop.apache.org/docs/current/reference/#limit-step) |
 | `local` | 本地包装遍历的某个部分，类似于子查询 | [local 步骤](https://tinkerpop.apache.org/docs/current/reference/#local-step) |
 | `not` | 用于生成筛选器的求反结果 | [not 步骤](https://tinkerpop.apache.org/docs/current/reference/#not-step) |
-| `optional` | 如果生成了某个结果，则返回指定遍历的结果，否则返回调用元素 | [可选步骤](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
+| `optional` | 如果生成了某个结果，则返回指定遍历的结果，否则返回调用元素 | [optional 步骤](https://tinkerpop.apache.org/docs/current/reference/#optional-step) |
 | `or` | 确保至少有一个遍历会返回值 | [or 步骤](https://tinkerpop.apache.org/docs/current/reference/#or-step) |
 | `order` | 按指定的排序顺序返回结果 | [order 步骤](https://tinkerpop.apache.org/docs/current/reference/#order-step) |
 | `path` | 返回遍历的完整路径 | [path 步骤](https://tinkerpop.apache.org/docs/current/reference/#path-step) |

@@ -1,17 +1,17 @@
 ---
 title: 创建 Azure 数据目录
 description: 有关如何创建 Azure 数据目录的快速入门。
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: quickstart
 ms.date: 04/05/2019
-ms.openlocfilehash: 66d178497f3403579990340b88a1153905b2a2bf
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: f00e9eaf56f3973b357792a8d1923a4b5998e0a2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59271027"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59997727"
 ---
 # <a name="quickstart-create-an-azure-data-catalog"></a>快速入门：创建 Azure 数据目录
 

@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure 通知中心向通用 Windows 平台应用发送通知 | Microsoft Docs
-description: 在本教程中，将了解如何使用 Azure 通知中心将通知推送到通用 Windows 平台应用程序。
+description: 了解如何使用 Azure 通知中心将通知推送到 Windows 通用平台应用程序。
 services: notification-hubs
 documentationcenter: windows
 author: jwargo
@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/22/2019
 ms.author: jowargo
-ms.openlocfilehash: 093528dff09c71b999d58f0285044340fa0ec360
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.openlocfilehash: b9fa54a24c5d96f0d3ad48034907f2c6fe5cb385
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403198"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006924"
 ---
 # <a name="tutorial-send-notifications-to-universal-windows-platform-apps-by-using-azure-notification-hubs"></a>教程：使用 Azure 通知中心向通用 Windows 平台应用发送通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "58403198"
 > [!NOTE]
 > 可以在 [GitHub](https://github.com/Azure/azure-notificationhubs-samples/tree/master/dotnet/GetStartedWindowsUniversal) 上找到本教程的已完成代码。
 
-在本教程中，我们将执行以下步骤：
+执行以下步骤：
 
 > [!div class="checklist"]
 > * 在 Windows 应用商店中创建应用
@@ -45,6 +45,11 @@ ms.locfileid: "58403198"
 - [Microsoft Visual Studio Community 2015](https://www.visualstudio.com/products/visual-studio-community-vs) 或更高版本。
 - [已安装 UWP 应用开发工具](https://msdn.microsoft.com/windows/uwp/get-started/get-set-up)
 - 有效的 Windows 应用商店帐户
+- 确认已启用“从应用和其他发送方获取通知”设置。 
+    - 在计算机上启动“设置”窗口。
+    - 选择“系统”磁贴。
+    - 从左侧菜单中选择“通知和操作”。 
+    - 确认已启用“从应用和其他发送方获取通知”设置。 如果未启用，请启用它。 
 
 完成本教程是学习有关 UWP 应用的所有其他通知中心教程的先决条件。
 
@@ -170,8 +175,7 @@ ms.locfileid: "58403198"
     ![通知消息](./media/notification-hubs-windows-store-dotnet-get-started/test-notification-message.png)
 
 ## <a name="next-steps"></a>后续步骤
-
-本教程使用门户或控制台应用将广播通知发送到所有 Windows 设备。 若要了解如何向特定的设备推送通知，请转到以下教程：
+使用门户或控制台应用将广播通知发送到所有 Windows 设备。 若要了解如何向特定的设备推送通知，请转到以下教程：
 
 > [!div class="nextstepaction"]
 >[向特定设备推送通知](

@@ -1,149 +1,142 @@
-items:
 - name: Azure 数据资源管理器文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是数据资源管理器？
-    href: data-explorer-overview.md
+    - name: 什么是数据资源管理器？
+      href: data-explorer-overview.md
 - name: 快速入门
-  items:
-  - name: 创建群集和数据库
-    items:
-    - name: Azure 门户
-      href: create-cluster-database-portal.md
-    - name: Azure CLI
-      href: create-cluster-database-cli.md
-    - name: PowerShell
-      href: create-cluster-database-powershell.md
-    - name: C#
-      href: create-cluster-database-csharp.md
-    - name: Python
-      href: create-cluster-database-python.md
-  - name: 引入数据
-    items:
-    - name: 流式处理数据 - 事件中心
-      href: ingest-data-event-hub.md
-    - name: 流式处理数据 - 事件网格
-      href: ingest-data-event-grid.md
-    - name: 流式处理数据 - Kafka
-      href: ingest-data-kafka.md
-    - name: 批处理数据 - Python
-      href: python-ingest-data.md
-    - name: 批处理数据 - Node SDK
-      href: node-ingest-data.md
-    - name: 批处理数据 - .NET 标准 SDK
-      href: net-standard-ingest-data.md
-    - name: 批处理数据 - Logstash
-      href: ingest-data-logstash.md
-  - name: 查询数据
-    items:
-    - name: Web UI
-      href: web-query-data.md
-    - name: Python
-      href: python-query-data.md
-  - name: 可视化数据
-    items:
-    - name: Power BI - 连接器
-      href: power-bi-connector.md
-    - name: Power BI - 导入的查询
-      href: power-bi-imported-query.md
-    - name: Power BI - SQL 查询
-      href: power-bi-sql-query.md
   expanded: true
+  items:
+    - name: 创建群集和数据库
+      items:
+        - name: Azure 门户
+          href: create-cluster-database-portal.md
+        - name: Azure CLI
+          href: create-cluster-database-cli.md
+        - name: PowerShell
+          href: create-cluster-database-powershell.md
+        - name: 'C#'
+          href: create-cluster-database-csharp.md
+        - name: Python
+          href: create-cluster-database-python.md
+    - name: 引入数据
+      items:
+        - name: 流式处理数据 - 事件中心
+          href: ingest-data-event-hub.md
+        - name: 流式处理数据 - 事件网格
+          href: ingest-data-event-grid.md
+        - name: 流式处理数据 - Kafka
+          href: ingest-data-kafka.md
+        - name: 批处理数据 - Python
+          href: python-ingest-data.md
+        - name: 批处理数据 - Node SDK
+          href: node-ingest-data.md
+        - name: 批处理数据 - .NET 标准 SDK
+          href: net-standard-ingest-data.md
+        - name: 批处理数据 - Logstash
+          href: ingest-data-logstash.md
+    - name: 查询数据
+      items:
+        - name: Web UI
+          href: web-query-data.md
+        - name: Python
+          href: python-query-data.md
+    - name: 可视化数据
+      items:
+        - name: Power BI - 连接器
+          href: power-bi-connector.md
+        - name: Power BI - 导入的查询
+          href: power-bi-imported-query.md
+        - name: Power BI - SQL 查询
+          href: power-bi-sql-query.md
 - name: 教程
   items:
-  - name: 引入数据而无需使用代码
-    href: ingest-data-no-code.md
-  - name: 在 Power BI 中将数据可视化
-    href: visualize-power-bi.md
+    - name: 引入数据而无需使用代码
+      href: ingest-data-no-code.md
+    - name: 在 Power BI 中将数据可视化
+      href: visualize-power-bi.md
 - name: 概念
   items:
-  - name: 数据引入概述
-    displayName: pipelines, connectors, plugins, Python, .NET, Java, Node, REST
-    href: ingest-data-overview.md
-  - name: 时序分析
-    href: time-series-analysis.md
+    - name: 数据引入概述
+      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+      href: ingest-data-overview.md
+    - name: 时序分析
+      href: time-series-analysis.md
 - name: 操作指南
   items:
-  - name: 入门
-    items:
-    - name: 编写查询
-      href: write-queries.md
-    - name: 引入示例数据
-      href: ingest-sample-data.md
-  - name: 管理
-    items:
-    - name: 管理数据库权限
-      href: manage-database-permissions.md
-    - name: 检查群集运行状况
-      href: check-cluster-health.md
-    - name: 管理群集横向扩展
-      href: manage-cluster-scale-out.md
-    - name: 管理群集纵向扩展
-      href: manage-cluster-scale-up.md
-    - name: 删除数据
-      href: delete-data.md
-    - name: 处理重复数据
-      href: dealing-with-duplicates.md
-  - name: 监视
-    items:
-    - name: 使用指标来监视群集运行状况
-      href: using-metrics.md
-  - name: 与其他工具配合使用
-    items:
-    - name: 使用 Python 从 Databricks 连接
-      href: connect-from-databricks.md
-    - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
-      href: kqlmagic.md
-    - name: 复制 Azure 数据工厂中的数据
-      href: data-factory-load-data.md
-    - name: 在 Grafana 中将数据可视化
-      href: grafana.md
-    - name: 与 ODBC 连接
-      href: connect-odbc.md
-  - name: 故障排除
-    items:
-    - name: 创建群集
-      href: troubleshoot-create-cluster.md
-    - name: 连接到群集
-      href: troubleshoot-connect-cluster.md
-    - name: 使用数据库和表
-      href: troubleshoot-database-table.md
+    - name: 入门
+      items:
+        - name: 编写查询
+          href: write-queries.md
+        - name: 引入示例数据
+          href: ingest-sample-data.md
+    - name: 管理
+      items:
+        - name: 管理数据库权限
+          href: manage-database-permissions.md
+        - name: 检查群集运行状况
+          href: check-cluster-health.md
+        - name: 管理群集横向扩展
+          href: manage-cluster-scale-out.md
+        - name: 管理群集纵向扩展
+          href: manage-cluster-scale-up.md
+        - name: 删除数据
+          href: delete-data.md
+        - name: 处理重复数据
+          href: dealing-with-duplicates.md
+    - name: 监视
+      items:
+        - name: 使用指标来监视群集运行状况
+          href: using-metrics.md
+    - name: 与其他工具配合使用
+      items:
+        - name: 使用 Python 从 Databricks 连接
+          href: connect-from-databricks.md
+        - name: 在 Jupyter Notebook 和 Kqlmagic 中分析数据
+          href: kqlmagic.md
+        - name: 使用 Azure 数据工厂复制数据
+          href: data-factory-load-data.md
+        - name: 在 Grafana 中将数据可视化
+          href: grafana.md
+        - name: 与 ODBC 连接
+          href: connect-odbc.md
+    - name: 故障排除
+      items:
+        - name: 创建群集
+          href: troubleshoot-create-cluster.md
+        - name: 连接到群集
+          href: troubleshoot-connect-cluster.md
+        - name: 使用数据库和表
+          href: troubleshoot-database-table.md
 - name: 引用
   items:
-  - name: 查询语言
-    href: /azure/kusto/query/
-  - name: 管理命令
-    href: /azure/kusto/management/
-  - name: API
-    href: /azure/kusto/api/
-  - name: 工具
-    href: /azure/kusto/tools/
-  - name: 概念
-    href: /azure/kusto/concepts/
+    - name: 查询语言
+      href: /azure/kusto/query/
+    - name: 管理命令
+      href: /azure/kusto/management/
+    - name: API
+      href: /azure/kusto/api/
+    - name: 工具
+      href: /azure/kusto/tools/
+    - name: 概念
+      href: /azure/kusto/concepts/
 - name: 资源
   items:
-  - name: 博客
-    href: https://azure.microsoft.com/blog/tag/azure-data-explorer/
-  - name: 论坛
-    items:
-    - name: 堆栈溢出
-      href: https://stackoverflow.com/questions/tagged/azure-data-explorer
-    - name: Microsoft 技术社区
-      href: https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto
-    - name: MSDN 论坛
-      href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto
-  - name: 产品反馈
-    href: https://aka.ms/adefeedback
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/data-explorer/
-  - name: 成本估算器
-    href: https://aka.ms/adecostestimator
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=data-explorer
-ms.openlocfilehash: c582b82f4b4caf0ee3bb007934cc4d50163fe139
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616801"
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/tag/azure-data-explorer/'
+    - name: 论坛
+      items:
+        - name: 堆栈溢出
+          href: 'https://stackoverflow.com/questions/tagged/azure-data-explorer'
+        - name: Microsoft 技术社区
+          href: 'https://techcommunity.microsoft.com/t5/Azure-Data-Explorer/bd-p/Kusto'
+        - name: MSDN 论坛
+          href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureKusto'
+    - name: 产品反馈
+      href: 'https://aka.ms/adefeedback'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/data-explorer/'
+    - name: 成本估算器
+      href: 'https://aka.ms/adecostestimator'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=data-explorer'

@@ -6,17 +6,17 @@ keywords: ''
 author: mrbullwinkle
 ms.author: mbullwin
 ms.reviewer: lagayhar
-ms.date: 07/11/2018
+ms.date: 04/18/2019
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 25335081e594c64b8d8cee02eebec6119e609618
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
+ms.openlocfilehash: e1574b55f9f14daba1831ba7f73b7f9ebde4c7f6
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891492"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60006890"
 ---
 # <a name="start-monitoring-your-java-web-application"></a>开始监视 Java Web 应用程序
 
@@ -36,9 +36,9 @@ ms.locfileid: "55891492"
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费](https://azure.microsoft.com/free/)帐户。
 
-如果你更喜欢 Spring 框架，请尝试[配置 Spring Boot 初始值设定程序以使用 Application Insights 指南](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+如果你更喜欢 Spring 框架，请尝试[配置 Spring Boot Initializer 应用以使用 Application Insights 指南](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
-## <a name="log-in-to-the-azure-portal"></a>登录到 Azure 门户
+## <a name="sign-in-to-the-azure-portal"></a>登录到 Azure 门户
 
 登录到 [Azure 门户](https://portal.azure.com/)。
 
@@ -46,9 +46,11 @@ ms.locfileid: "55891492"
 
 Application Insights 可以从任何连接 Internet 的应用程序收集遥测数据，而不考虑它是在本地运行还是在云中运行。 按照以下步骤开始查看此数据。
 
-1. 选择“创建资源” > “监视 + 管理” > “Application Insights”。
+1. 选择“创建资源” > “开发人员工具” > “Application Insights”。
 
-   ![添加 Application Insights 资源](./media/java-quick-start/001-j.png)
+   ![添加 Application Insights 资源](./media/java-quick-start/1createresourseappinsights.png)
+
+   ![添加 Application Insights 资源](./media/java-quick-start/2createjavaapp.png)
 
    此时会显示配置对话框，请使用下表填写输入字段。
 
@@ -90,21 +92,21 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 ## <a name="start-monitoring-in-the-azure-portal"></a>开始在 Azure 门户中监视
 
-1. 现在可以在 Azure 门户中重新打开 Application Insights“概述”页（已在其中检索到检测密钥），查看有关当前正在运行的应用程序的详细信息。
+1. 现在可以在 Azure 门户中重新打开 Application Insights“概览”页，查看当前正在运行的应用程序的相关详细信息。
 
-   ![Application Insights 概述菜单](./media/java-quick-start/overview-001.png)
+   ![Application Insights 概述菜单](./media/java-quick-start/3overview.png)
 
 2. 单击“应用程序映射”以获取应用程序组件之间依赖关系的可视布局。 每个组件均显示 KPI，如负载、性能、失败和警报。
 
-   ![应用程序地图](./media/java-quick-start/application-map-001.png)
+   ![应用程序地图](./media/java-quick-start/4appmap.png)
 
-3. 单击“应用分析”图标 ![“应用程序映射”图标](./media/java-quick-start/006.png)。 这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
+3.  单击“应用分析”图标 ![“应用程序映射”图标](./media/java-quick-start/006.png) “在 Analytics 中查看”。  这将打开“Application Insights Analytics”，该软件提供丰富的查询语言，可用于分析 Application Insights 收集的所有数据。 在本示例中，将生成以图表形式呈现请求计数的查询。 可以编写自己的查询来分析其他数据。
 
-   ![一段时间内用户请求的分析图](./media/java-quick-start/0010-j.png)
+   ![一段时间内用户请求的分析图](./media/java-quick-start/5analytics.png)
 
-4. 返回到“概述”页并检查 KPI 图形。  此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。
+4. 返回到“概述”页并检查 KPI 图形。 此仪表板提供有关应用程序运行状况的统计信息，包括传入请求数、这些请求的持续时间，以及发生的任何故障。
 
-   ![“运行状况概述时间线”图](./media/java-quick-start/overview-perf.png)
+   ![“运行状况概述时间线”图](./media/java-quick-start/6kpidashboards.png)
 
    若要启用“页面视图加载时间”图表以填充“客户端遥测”数据，请将此脚本添加到要跟踪的每一页：
 
@@ -130,13 +132,13 @@ Application Insights 可以从任何连接 Internet 的应用程序收集遥测�
 
 5. 单击“实时流”。 在此处可找到与 Java Web 应用性能相关的实时指标。 **实时指标流**包括与以下项相关的数据：传入请求数、这些请求的持续时间和发生的任何故障。 还可以实时监视处理器和内存等关键性能指标。
 
-   ![“服务器指标”图](./media/java-quick-start/livemetricsjava.png)
+   ![“服务器指标”图](./media/java-quick-start/7livemetrics.png)
 
 若要了解有关监视 Java 的详细信息，请查看[其他 App Insights Java 文档](./../../azure-monitor/app/java-get-started.md)。
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果计划继续使用后续的快速入门或相关教程，请勿清除在本快速入门中创建的资源。 如果不打算继续，请在 Azure 门户中执行以下步骤，删除通过此快速入门创建的所有资源。
+完成测试后，即可删除资源组和所有相关的资源。 为此，请执行以下步骤。
 
 1. 在 Azure 门户的左侧菜单中，单击“资源组”，然后单击“myResourceGroup”。
 2. 在资源组页上单击“删除”，在文本框中键入 **myResourceGroup**，然后单击“删除”。

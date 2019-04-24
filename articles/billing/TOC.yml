@@ -1,228 +1,223 @@
-items:
 - name: Azure 计费 + 成本管理文档
   href: index.md
 - name: 了解 Azure 计费
-  items:
-  - name: 了解帐单
-    href: billing-understand-your-bill.md
-  - name: 了解 EA 帐单
-    href: billing-understand-your-bill-ea.md
-  - name: 了解帐单 - 仅限 Microsoft 客户协议
-    href: billing-mca-understand-your-bill.md
-  - name: 查看和下载 Microsoft Azure 发票
-    href: billing-download-azure-invoice.md
-  - name: 查看和下载 Microsoft Azure 使用情况与费用
-    href: billing-download-azure-daily-usage.md
-  - name: 查看和下载 Microsoft 客户协议税单
-    href: billing-mca-download-tax-document.md
-  - name: 第三方服务费用
-    href: billing-understand-your-azure-marketplace-charges.md
-  - name: 使用条款介绍
-    href: billing-understand-your-usage.md
-  - name: 使用情况术语介绍 - 仅限 Microsoft 客户协议
-    href: billing-mca-understand-your-usage.md
-  - name: 发票条款介绍
-    href: billing-understand-your-invoice.md
-  - name: 发票术语介绍 - 仅限 Microsoft 客户协议
-    href: billing-mca-understand-your-invoice.md
-  - name: Microsoft 客户协议的计费帐户
-    href: billing-mca-overview.md
   expanded: true
+  items:
+    - name: 了解帐单
+      href: billing-understand-your-bill.md
+    - name: 了解 EA 帐单
+      href: billing-understand-your-bill-ea.md
+    - name: 了解帐单 - 仅限 Microsoft 客户协议
+      href: billing-mca-understand-your-bill.md
+    - name: 查看和下载 Microsoft Azure 发票
+      href: billing-download-azure-invoice.md
+    - name: 查看和下载 Microsoft Azure 使用情况与费用
+      href: billing-download-azure-daily-usage.md
+    - name: 查看和下载 Microsoft 客户协议税单
+      href: billing-mca-download-tax-document.md
+    - name: 第三方服务费用
+      href: billing-understand-your-azure-marketplace-charges.md
+    - name: 使用条款介绍
+      href: billing-understand-your-usage.md
+    - name: 使用情况术语介绍 - 仅限 Microsoft 客户协议
+      href: billing-mca-understand-your-usage.md
+    - name: 发票条款介绍
+      href: billing-understand-your-invoice.md
+    - name: 发票术语介绍 - 仅限 Microsoft 客户协议
+      href: billing-mca-understand-your-invoice.md
+    - name: Microsoft 客户协议的计费帐户
+      href: billing-mca-overview.md
 - name: 管理成本
   items:
-  - name: 防止意外成本
-    href: billing-getting-started.md
-  - name: 查看和下载组织的定价
-    href: billing-ea-pricing.md
-  - name: 价目表术语介绍 - 仅限 Microsoft 客户协议
-    href: billing-mca-understand-pricesheet.md
-  - name: 使用资源标记
-    href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
-  - name: 开始分析成本
-    href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
-  - name: 创建并管理预算
-    href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
-  - name: 优化建议
-    href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
-  - name: 跟踪 Microsoft 客户协议的额度余额
-    href: billing-mca-check-azure-credits-balance.md
-  - name: 计算定价
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 了解支出限制
-    href: billing-spending-limit.md
-  - name: 通过 Azure 预留项进行保存
-    items:
-    - name: 什么是 Azure 预留项？
-      href: billing-save-compute-costs-reservations.md
-    - name: 购买预留项
+    - name: 防止意外成本
+      href: billing-getting-started.md
+    - name: 查看和下载组织的定价
+      href: billing-ea-pricing.md
+    - name: 价目表术语介绍 - 仅限 Microsoft 客户协议
+      href: billing-mca-understand-pricesheet.md
+    - name: 使用资源标记
+      href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+    - name: 开始分析成本
+      href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
+    - name: 创建并管理预算
+      href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
+    - name: 优化建议
+      href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+    - name: 跟踪 Microsoft 客户协议的额度余额
+      href: billing-mca-check-azure-credits-balance.md
+    - name: 计算定价
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 了解支出限制
+      href: billing-spending-limit.md
+    - name: 通过 Azure 预留项进行保存
       items:
-      - name: 虚拟机
-        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
-      - name: Cosmos DB
-        href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
-      - name: RedHat Linux 软件
-        href: ../virtual-machines/linux/prepay-rhel-software-charges.md?toc=/azure/billing/TOC.json
-      - name: SQL 数据库
-        href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
-      - name: SUSE Linux 软件
-        href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
-    - name: 如何应用折扣
-      items:
-      - name: 虚拟机预留实例
-        href: billing-understand-vm-reservation-charges.md
-      - name: Cosmos DB 保留容量
-        href: billing-understand-cosmosdb-reservation-charges.md
-      - name: SQL 数据库预留容量
-        href: billing-understand-reservation-charges.md
-      - name: SUSE Linux 软件计划
-        href: billing-understand-suse-reservation-charges.md
-    - name: 未包括软件成本
-      href: billing-reserved-instance-windows-software-costs.md
-    - name: 即用即付使用情况
-      href: billing-understand-reserved-instance-usage.md
-    - name: Enterprise 使用情况
-      href: billing-understand-reserved-instance-usage-ea.md
-    - name: 预留交换和退款
-      href: billing-azure-reservations-self-service-exchange-and-refund.md
-    - name: 管理预留项
-      href: billing-manage-reserved-vm-instance.md
-    - name: 查看预留
-      href: billing-view-reservations.md
-    - name: 预留 API
-      href: billing-reservation-apis.md
+        - name: 什么是 Azure 预留项？
+          href: billing-save-compute-costs-reservations.md
+        - name: 购买预留项
+          items:
+            - name: SQL 数据仓库
+              href: billing-prepay-sql-data-warehouse-charges-with-reserved-capacity.md
+            - name: 虚拟机
+              href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+            - name: Cosmos DB
+              href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+            - name: SQL 数据库
+              href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+            - name: Azure 软件计划
+              href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: 如何应用折扣
+          items:
+            - name: 虚拟机预留实例
+              href: billing-understand-vm-reservation-charges.md
+            - name: Cosmos DB 保留容量
+              href: billing-understand-cosmosdb-reservation-charges.md
+            - name: SQL 数据库预留容量
+              href: billing-understand-reservation-charges.md
+            - name: SQL 数据仓库
+              href: billing-how-reservation-discount-is-applied-to-azure-sql-dw.md
+            - name: Azure 软件计划
+              href: billing-understand-suse-reservation-charges.md
+        - name: 未包括软件成本
+          href: billing-reserved-instance-windows-software-costs.md
+        - name: 即用即付使用情况
+          href: billing-understand-reserved-instance-usage.md
+        - name: Enterprise 使用情况
+          href: billing-understand-reserved-instance-usage-ea.md
+        - name: 预留交换和退款
+          href: billing-azure-reservations-self-service-exchange-and-refund.md
+        - name: 管理预留项
+          href: billing-manage-reserved-vm-instance.md
+        - name: 查看预留
+          href: billing-view-reservations.md
+        - name: 预留 API
+          href: billing-reservation-apis.md
 - name: 管理帐户
   items:
-  - name: 免费帐户
-    items:
-    - name: 创建免费服务
-      href: billing-create-free-services-included-free-account.md
-    - name: 避免产生费用
-      href: billing-avoid-charges-free-account.md
-    - name: 查看使用情况
-      href: billing-check-free-service-usage.md
-    - name: 升级订阅
-      href: billing-upgrade-azure-subscription.md
-    - name: 了解计量映射
-      href: billing-understand-free-service-meter-mapping.md
-  - name: 编辑个人资料
-    href: billing-how-to-change-azure-account-profile.md
-  - name: 授予对计费信息的访问权限
-    href: billing-manage-access.md
-  - name: Azure 中的 EA 角色
-    href: billing-understand-ea-roles.md
-  - name: Azure 中的 Microsoft 客户协议角色
-    href: billing-understand-mca-roles.md
-  - name: 链接合作伙伴 ID
-    href: billing-partner-admin-link-started.md
-  - name: 查看计费帐户
-    href: billing-view-all-accounts.md
-  - name: 按发票科目管理成本
-    href: billing-mca-section-invoice.md
-  - name: Microsoft 客户协议中的 EA 任务
-    href: billing-mca-enterprise-operations.md
-  - name: 处理逾期未付余额
-    href: billing-azure-subscription-past-due-balance.md
-  - name: 为 Microsoft 客户协议设置计费帐户
-    href: billing-mca-setup-account.md
-  - name: 使用 Office 365 帐户注册
-    href: billing-use-existing-office-365-account-azure-subscription.md
-  - name: 使用 Azure 帐户注册 Office 365
-    href: billing-use-existing-azure-account-for-office-365-subscription.md
+    - name: 免费帐户
+      items:
+        - name: 创建免费服务
+          href: billing-create-free-services-included-free-account.md
+        - name: 避免产生费用
+          href: billing-avoid-charges-free-account.md
+        - name: 查看使用情况
+          href: billing-check-free-service-usage.md
+        - name: 升级订阅
+          href: billing-upgrade-azure-subscription.md
+        - name: 了解计量映射
+          href: billing-understand-free-service-meter-mapping.md
+    - name: 编辑个人资料
+      href: billing-how-to-change-azure-account-profile.md
+    - name: 授予对计费信息的访问权限
+      href: billing-manage-access.md
+    - name: Azure 中的 EA 角色
+      href: billing-understand-ea-roles.md
+    - name: Azure 中的 Microsoft 客户协议角色
+      href: billing-understand-mca-roles.md
+    - name: 链接合作伙伴 ID
+      href: billing-partner-admin-link-started.md
+    - name: 查看计费帐户
+      href: billing-view-all-accounts.md
+    - name: 按发票科目管理成本
+      href: billing-mca-section-invoice.md
+    - name: Microsoft 客户协议中的 EA 任务
+      href: billing-mca-enterprise-operations.md
+    - name: 处理逾期未付余额
+      href: billing-azure-subscription-past-due-balance.md
+    - name: 为 Microsoft 客户协议设置计费帐户
+      href: billing-mca-setup-account.md
+    - name: 使用 Office 365 帐户注册
+      href: billing-use-existing-office-365-account-azure-subscription.md
+    - name: 使用 Azure 帐户注册 Office 365
+      href: billing-use-existing-azure-account-for-office-365-subscription.md
 - name: 管理订阅
   items:
-  - name: 重新激活订阅
-    href: billing-subscription-become-disable.md
-  - name: 转让所有权
-    href: billing-subscription-transfer.md
-  - name: 请求所有权 - Microsoft 客户协议
-    href: billing-mca-request-billing-ownership.md
-  - name: 取消订阅
-    href: billing-how-to-cancel-azure-subscription.md
-  - name: 更改信用卡
-    href: billing-how-to-change-credit-card.md
-  - name: 更改管理员
-    href: billing-add-change-azure-subscription-administrator.md
-  - name: 切换订阅套餐
-    href: billing-how-to-switch-azure-offer.md
-  - name: 按发票付款
-    href: billing-how-to-pay-by-invoice.md
-  - name: 创建管理组
-    href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
-  - name: 移动 Azure 资源
-    href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
-  - name: 创建更多订阅
-    href: billing-create-subscription.md
-  - name: 创建更多订阅 - Microsoft 客户协议
-    href: billing-mca-create-subscription.md
-  - name: 以编程方式创建 Enterprise 订阅
-    href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
-  - name: 导出订阅信息
-    href: billing-export-subscriptions.md
-  - name: 链接 Azure AD 租户
-    href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
-  - name: 限制和配额
-    href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
+    - name: 重新激活订阅
+      href: billing-subscription-become-disable.md
+    - name: 转让所有权
+      href: billing-subscription-transfer.md
+    - name: 请求所有权 - Microsoft 客户协议
+      href: billing-mca-request-billing-ownership.md
+    - name: 取消订阅
+      href: billing-how-to-cancel-azure-subscription.md
+    - name: 更改信用卡
+      href: billing-how-to-change-credit-card.md
+    - name: 更改管理员
+      href: billing-add-change-azure-subscription-administrator.md
+    - name: 切换订阅套餐
+      href: billing-how-to-switch-azure-offer.md
+    - name: 按发票付款
+      href: billing-how-to-pay-by-invoice.md
+    - name: 创建管理组
+      href: ../azure-resource-manager/management-groups-create.md?toc=/azure/billing/TOC.json
+    - name: 移动 Azure 资源
+      href: ../azure-resource-manager/resource-group-move-resources.md?toc=/azure/billing/TOC.json
+    - name: 创建更多订阅
+      href: billing-create-subscription.md
+    - name: 创建更多订阅 - Microsoft 客户协议
+      href: billing-mca-create-subscription.md
+    - name: 以编程方式创建 Enterprise 订阅
+      href: ../azure-resource-manager/programmatically-create-subscription.md?toc=/azure/billing/TOC.json
+    - name: 导出订阅信息
+      href: billing-export-subscriptions.md
+    - name: 链接 Azure AD 租户
+      href: ../active-directory/active-directory-how-subscriptions-associated-directory.md?toc=/azure/billing/TOC.json
+    - name: 限制和配额
+      href: ../azure-subscription-service-limits.md?toc=/azure/billing/TOC.json
 - name: 故障排除
   items:
-  - name: 找不到任何订阅
-    href: billing-no-subscriptions-found.md
-  - name: 银行卡被拒绝
-    href: https://support.microsoft.com/en-us/help/4042960
-  - name: 注册问题
-    href: https://support.microsoft.com/en-us/help/4042959
-  - name: 登录问题
-    href: https://support.microsoft.com/en-us/help/4042961
-  - name: 企业成本视图已禁用
-    href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
-  - name: 联系支持人员
-    href: ../azure-supportability/how-to-create-azure-support-request.md
+    - name: 找不到任何订阅
+      href: billing-no-subscriptions-found.md
+    - name: 银行卡被拒绝
+      href: 'https://support.microsoft.com/en-us/help/4042960'
+    - name: 注册问题
+      href: 'https://support.microsoft.com/en-us/help/4042959'
+    - name: 登录问题
+      href: 'https://support.microsoft.com/en-us/help/4042961'
+    - name: 企业成本视图已禁用
+      href: billing-enterprise-mgmt-grp-troubleshoot-cost-view.md
+    - name: 联系支持人员
+      href: ../azure-supportability/how-to-create-azure-support-request.md
 - name: 示例
   items:
-  - name: REST API
-    items:
-    - name: 查看企业成本
-      href: billing-review-enterprise-billing.md
-    - name: 查看订阅使用情况
-      href: billing-review-subscription-billing.md
-    - name: 查看资源使用情况
-      href: billing-review-service-usage-api.md
-  - name: .NET 示例
-    items:
-    - name: 发票 API 代码示例
-      href: https://github.com/Azure-Samples/billing-dotnet-core-invoice-download
-    - name: 使用情况 API 代码示例
-      href: https://github.com/Azure-Samples/billing-dotnet-usage-api
-    - name: RateCard API 代码示例
-      href: https://github.com/Azure-Samples/billing-dotnet-ratecard-api
+    - name: REST API
+      items:
+        - name: 查看企业成本
+          href: billing-review-enterprise-billing.md
+        - name: 查看订阅使用情况
+          href: billing-review-subscription-billing.md
+        - name: 查看资源使用情况
+          href: billing-review-service-usage-api.md
+    - name: .NET 示例
+      items:
+        - name: 发票 API 代码示例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-core-invoice-download'
+        - name: 使用情况 API 代码示例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-usage-api'
+        - name: RateCard API 代码示例
+          href: 'https://github.com/Azure-Samples/billing-dotnet-ratecard-api'
 - name: 引用
   items:
-  - name: 计费自动化方案
-    href: billing-cost-management-automation-scenarios.md
-    items:
-    - name: 使用 Azure 预算管理成本
-      href: billing-cost-management-budget-scenario.md
-  - name: Azure 计费 API 概述
-    href: billing-usage-rate-card-overview.md
-    items:
-    - name: Azure 计费 REST API
-      href: https://docs.microsoft.com/rest/api/billing
-  - name: Azure 使用情况 API 概述
-    href: billing-consumption-api-overview.md
-    items:
-    - name: Azure 使用情况 REST API
-      href: https://docs.microsoft.com/rest/api/consumption
-    - name: RateCard REST API
-      href: https://msdn.microsoft.com/library/azure/mt219005.aspx
-    - name: 使用情况 REST API
-      href: https://msdn.microsoft.com/library/azure/mt219003.aspx
-  - name: Enterprise Reporting 概述
-    href: billing-enterprise-api.md
-    items:
-    - name: Enterprise Reporting REST API
-      href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: aa60036ccc8f24bc8a847db8873102c348b1fba9
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652359"
+    - name: 计费自动化方案
+      href: billing-cost-management-automation-scenarios.md
+      items:
+        - name: 使用 Azure 预算管理成本
+          href: billing-cost-management-budget-scenario.md
+    - name: Azure 计费 API 概述
+      href: billing-usage-rate-card-overview.md
+      items:
+        - name: Azure 计费 REST API
+          href: 'https://docs.microsoft.com/rest/api/billing'
+    - name: Azure 使用情况 API 概述
+      href: billing-consumption-api-overview.md
+      items:
+        - name: Azure 使用情况 REST API
+          href: 'https://docs.microsoft.com/rest/api/consumption'
+        - name: RateCard REST API
+          href: 'https://msdn.microsoft.com/library/azure/mt219005.aspx'
+        - name: 使用情况 REST API
+          href: 'https://msdn.microsoft.com/library/azure/mt219003.aspx'
+    - name: Enterprise Reporting 概述
+      href: billing-enterprise-api.md
+      items:
+        - name: Enterprise Reporting REST API
+          href: 'https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary'

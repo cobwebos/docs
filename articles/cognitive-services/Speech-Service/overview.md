@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 04/03/2019
 ms.author: erhopf
 ms.openlocfilehash: 61f22568aa6e6cf04963b40ad7c47163e87b9800
-ms.sourcegitcommit: e43ea344c52b3a99235660960c1e747b9d6c990e
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59010186"
 ---
 # <a name="what-are-the-speech-services"></a>什么是语音服务？
@@ -50,10 +50,10 @@ Azure 语音服务在单个 Azure 订阅中统合了语音转文本、文本转�
 
 | 语音转文本 (SDK) | 翻译 (SDK) | 文本转语音 (REST) | 文本转语音 (SDK) |
 |-------------------|-------------------|-----------------------|-----------------------|
-| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java (Windows、Linux)](quickstart-translate-speech-java-jre.md) | [Python（Windows、Linux、macOS）](quickstart-python-text-to-speech.md) | [C#、.NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) |
-| [JavaScript (Browser)](quickstart-js-browser.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#、.NET Core（Windows、Linux、macOS）](quickstart-dotnet-text-to-speech.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) |
+| [C#、.NET Core (Windows)](quickstart-csharp-dotnet-windows.md) | [Java（Windows、Linux）](quickstart-translate-speech-java-jre.md) | [Python（Windows、Linux、macOS）](quickstart-python-text-to-speech.md) | [C#、.NET Framework (Windows)](quickstart-text-to-speech-dotnet-windows.md) |
+| [JavaScript（浏览器）](quickstart-js-browser.md) | [C#、.NET Core (Windows)](quickstart-translate-speech-dotnetcore-windows.md) | [C#、.NET Core（Windows、Linux、macOS）](quickstart-dotnet-text-to-speech.md) | [C++ (Windows)](quickstart-text-to-speech-cpp-windows.md) |
 | [Python（Windows、Linux、macOS）](quickstart-python.md) | [C#、.NET Framework (Windows)](quickstart-translate-speech-dotnetframework-windows.md) | [Node.js（Windows、Linux、macOS）](quickstart-nodejs-text-to-speech.md) | [C++ (Linux)](quickstart-text-to-speech-cpp-linux.md) |
-| [Java (Windows、Linux)](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
+| [Java（Windows、Linux）](quickstart-java-jre.md) | [C++ (Windows)](quickstart-translate-speech-cpp-windows.md) | |
 
 有机会使用语音服务后，请尝试学习有关如何使用语音 SDK 和 LUIS 从语音中识别意向的教程。
 

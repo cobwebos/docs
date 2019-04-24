@@ -1,5 +1,5 @@
 ---
-title: 教程：生成 Azure 存储图像的元数据
+title: 教程：生成 Azure 图像的元数据
 titleSuffix: Azure Cognitive Services
 description: 本教程介绍如何将 Azure 计算机视觉服务集成到 Web 应用中，以便生成图像的元数据。
 services: cognitive-services
@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: tutorial
-ms.date: 01/03/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: e5124b07a5aff67d53213149565ddae4ea6dda33
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: a755a0bada0dbf6797465ea40ddbb30a84e3f289
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447993"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60005973"
 ---
 # <a name="tutorial-use-computer-vision-to-generate-image-metadata-in-azure-storage"></a>教程：使用计算机视觉在 Azure 存储中生成图像元数据
 
@@ -52,11 +52,11 @@ ms.locfileid: "57447993"
 
 1. 返回到资源组的菜单，单击刚创建的计算机视觉 API 订阅。 将“终结点”下的 URL 复制到可以随后轻松地进行检索的某个位置。 然后，单击“显示访问密钥”。
 
-    ![查看访问密钥](../Images/copy-vision-endpoint.png)
+    ![Azure 门户页面，其中列出了终结点 URL 和访问密钥链接](../Images/copy-vision-endpoint.png)
 
 1. 在下一窗口中，将“密钥 1”的值复制到剪贴板。
 
-    ![复制访问密钥](../Images/copy-vision-key.png)
+    ![“管理密钥”对话框，其中列出了“复制”按钮](../Images/copy-vision-key.png)
 
 ## <a name="add-computer-vision-credentials"></a>添加计算机视觉凭据
 
@@ -136,7 +136,7 @@ ms.locfileid: "57447993"
 
 若要查看所有附加的元数据，请使用 Azure 存储资源管理器来查看用于图像的存储容器。 右键单击容器中的任意 Blob，然后选择“属性”。 在对话框中，会看到键值对的列表。 计算机生成的图像说明存储在“Caption”项中，搜索关键字存储在“Tag0”、“Tag1”之类的项中。 完成后，单击**取消**即可关闭对话框。
 
-![Blob 元数据](../Images/blob-metadata.png)
+![“图像属性”对话框窗口，其中列出了元数据标记](../Images/blob-metadata.png)
 
 ## <a name="clean-up-resources"></a>清理资源
 

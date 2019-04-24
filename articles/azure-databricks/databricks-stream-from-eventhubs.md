@@ -10,14 +10,17 @@ ms.topic: tutorial
 ms.workload: Active
 ms.date: 06/21/2018
 ms.author: alehall
-ms.openlocfilehash: bc712885169730aa9cbbd8de35b96e645ff1cea2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 1265a97b8902d69dd260d8e9e0191180f2eb4379
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087119"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60004833"
 ---
 # <a name="tutorial-stream-data-into-azure-databricks-using-event-hubs"></a>教程：使用事件中心将数据流式传输到 Azure Databricks
+
+> [!IMPORTANT]
+> 通过 [apps.twitter.com](https://apps.twitter.com/) 不再可以创建 Twitter 应用程序。 本教程正在进行更新，以包含新的 Twitter API。
 
 在本教程中，我们要将数据引入系统连接到 Azure Databricks，以便以近乎实时的速度将数据流式传输到 Apache Spark 群集。 我们将使用 Azure 事件中心设置数据引入系统，然后将此系统连接到 Azure Databricks 以处理传入的消息。 若要访问数据流，可以使用 Twitter API 将推文引入事件中心。 在 Azure Databricks 中准备好数据后，可以运行分析作业来进一步分析数据。 
 
@@ -41,7 +44,7 @@ ms.locfileid: "58087119"
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
 > [!Note]
-> 不能使用 **Azure 免费试用订阅**完成本教程。
+> 不能使用 Azure 免费试用订阅完成本教程。
 > 若要使用免费帐户创建 Azure Databricks 群集，请在创建群集前转到你的配置文件并将订阅更改为**即用即付**。 有关详细信息，请参阅 [Azure 免费帐户](https://azure.microsoft.com/free/)。
 
 ## <a name="prerequisites"></a>先决条件

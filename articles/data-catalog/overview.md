@@ -1,17 +1,17 @@
 ---
 title: Azure 数据目录简介
 description: 本文概述 Microsoft Azure 数据目录，包括其功能和旨在解决的问题。 使用数据目录，任何用户均可注册、发现、了解和使用数据源。
-author: markingmyname
-ms.author: maghan
+author: JasonWHowell
+ms.author: jasonh
 ms.service: data-catalog
 ms.topic: overview
 ms.date: 04/05/2019
-ms.openlocfilehash: cd20fc6ae71a0dd96a0006de8c81050bb0646905
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.openlocfilehash: 87c86ddeaa24693d393d250e1dc699b9a15ea84b
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
-ms.locfileid: "59288976"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010154"
 ---
 # <a name="what-is-azure-data-catalog"></a>什么是 Azure 数据目录？
 
@@ -58,14 +58,14 @@ Azure 数据目录是完全托管的云服务。 有了它，用户可以发现�
 
 若要了解有关数据目录功能的详细信息，请参阅：
 
-* [如何注册数据源](data-catalog-how-to-register.md)
-* [如何发现数据源](data-catalog-how-to-discover.md)
-* [如何批注数据源](data-catalog-how-to-annotate.md)
-* [如何记录数据源](data-catalog-how-to-documentation.md)
-* [如何连接到数据源](data-catalog-how-to-connect.md)
-* [如何处理大数据](data-catalog-how-to-big-data.md)
-* [如何管理数据资产](data-catalog-how-to-manage.md)
-* [如何设置业务术语表](data-catalog-how-to-business-glossary.md)
+* [How to register data sources](data-catalog-how-to-register.md)
+* [How to discover data sources](data-catalog-how-to-discover.md)
+* [How to annotate data sources](data-catalog-how-to-annotate.md)
+* [How to document data sources](data-catalog-how-to-documentation.md)
+* [How to connect to data sources](data-catalog-how-to-connect.md)
+* [How to work with big data](data-catalog-how-to-big-data.md)
+* [How to manage data assets](data-catalog-how-to-manage.md)
+* [How to set up the Business Glossary](data-catalog-how-to-business-glossary.md)
 * [常见问题](data-catalog-frequently-asked-questions.md)
 
 ## <a name="next-steps"></a>后续步骤

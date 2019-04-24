@@ -8,16 +8,16 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 12/14/2018
 ms.author: tamram
-ms.openlocfilehash: a1a931573967f12eb7abc791bd951dc6e1e9e60b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 8dff81d3f3594798a1b08184af0098f3bd86c12c
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607392"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011038"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-python"></a>快速入门：使用 Python 上传、下载和列出 Blob
 
-本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 Blob 是简单的对象，可以保留任何数量的文本或二进制数据（例如图像、文档、流媒体、存档数据等），并在文件共享、无架构表格和消息队列方面与 Azure 存储有所不同。 （有关详细信息，请参阅 [Azure 存储简介](/azure/storage/common/storage-introduction.md)。）
+本快速入门介绍如何使用 Python 上传、下载和列出 Azure Blob 存储的容器中的块 Blob。 Blob 是简单的对象，可以保留任何数量的文本或二进制数据（例如图像、文档、流媒体、存档数据等），并在文件共享、无架构表格和消息队列方面与 Azure 存储有所不同。 （有关详细信息，请参阅 [Azure 存储简介](/azure/storage/common/storage-introduction)。）
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -45,7 +45,7 @@ git clone https://github.com/Azure-Samples/storage-blobs-python-quickstart.git
 在应用程序中，请提供存储帐户名称和帐户密钥，以创建 `BlockBlobService` 对象。 从 IDE 中的解决方案资源管理器打开 *example.py* 文件。 将 `accountname` 和 `accountkey` 值替换为自己的帐户名和密钥。 
 
 ```python 
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
 ```
 
 ## <a name="run-the-sample"></a>运行示例
@@ -92,11 +92,11 @@ Downloading blob to C:\Users\azureuser\Documents\QuickStart_9f4ed0f9-22d3-43e1-9
 此部分将实例化对象，新建容器，然后设置容器的权限，以便 blob 成为公共 blob。 容器名称为 quickstartblobs。 
 
 ```python 
-# Create the BlockBlockService that is used to call the Blob service for the storage account
-block_blob_service = BlockBlobService(account_name='accountname', account_key='accountkey') 
+# Create the BlockBlockService that is used to call the Blob service for the storage account.
+block_blob_service = BlockBlobService(account_name = 'accountname', account_key = 'accountkey') 
  
 # Create a container called 'quickstartblobs'.
-container_name ='quickstartblobs'
+container_name = 'quickstartblobs'
 block_blob_service.create_container(container_name) 
 
 # Set the permission so the blobs are public.
@@ -106,29 +106,29 @@ block_blob_service.set_container_acl(container_name, public_access=PublicAccess.
 
 Blob 存储支持块 blob、追加 blob 和页 blob。 块 blob 最常用，此快速入门中也使用块 blob。  
 
-若要将文件上传到 Blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取完整的文件路径。 然后可以使用 `create\_blob\_from\_path` 方法将文件上传到指定的路径。 
+若要将文件上传到 Blob，请通过将本地驱动器上的目录名称和文件名称联接在一起来获取完整的文件路径。 然后可以使用 `create_blob_from_path` 方法将文件上传到指定的路径。 
 
-示例代码创建一个用于上传和下载的本地文件，将要上传的文件存储为 `file\_path\_to\_file`，将 Blob 的名称存储为 `local\_file\_name`。 以下示例将文件上传到名为“quickstartblobs”的容器。
+示例代码将创建一个本地文件，以供上传和下载，并将要上传的此文件存储为 full_path_to_file，将 blob 的名称存储为 local_file_name。 以下示例将文件上传到名为“quickstartblobs”的容器。
 
 ```python
 # Create a file in Documents to test the upload and download.
-local_path=os.path.expanduser("~\Documents")
-local_file_name ="QuickStart_" + str(uuid.uuid4()) + ".txt"
-full_path_to_file =os.path.join(local_path, local_file_name)
+local_path = os.path.expanduser("~\Documents")
+local_file_name = "QuickStart_" + str(uuid.uuid4()) + ".txt"
+full_path_to_file = os.path.join(local_path, local_file_name)
 
 # Write text to the file.
-file = open(full_path_to_file,  'w')
+file = open(full_path_to_file, 'w')
 file.write("Hello, World!")
 file.close()
 
 print("Temp file = " + full_path_to_file)
 print("\nUploading to Blob storage as blob" + local_file_name)
 
-# Upload the created file, use local_file_name for the blob name
+# Upload the created file, use local_file_name for the blob name.
 block_blob_service.create_blob_from_path(container_name, local_file_name, full_path_to_file)
 ```
 
-Blob 存储支持多种上传方法。 例如，若有一个内存流，则可使用 `create\_blob\_from\_stream` 方法而不是 `create\_blob\_from\_path` 方法。 
+Blob 存储支持多种上传方法。 例如，若有一个内存流，则可使用 `create_blob_from_stream` 方法而不是 `create_blob_from_path` 方法。 
 
 块 blob 最大可以为 4.7 TB，并且可以是从 Excel 电子表格到大视频文件的任何内容。 页 Blob 主要用于支持 IaaS VM 的 VHD 文件。 追加 blob 用于日志记录，例如有时需要写入到文件，再继续添加更多信息。 存储在 Blob 存储中的大多数对象都是块 blob。
 
@@ -137,7 +137,7 @@ Blob 存储支持多种上传方法。 例如，若有一个内存流，则可�
 使用 `list_blobs` 方法获取容器中文件的列表。 此方法会返回一个生成器。 下面的代码检索 Blob 列表，然后循环访问它们，显示在容器中找到的 Blob 的名称。  
 
 ```python
-# List the blobs in the container
+# List the blobs in the container.
 print("\nList blobs in the container")
 generator = block_blob_service.list_blobs(container_name)
 for blob in generator:
@@ -146,21 +146,21 @@ for blob in generator:
 
 ### <a name="download-the-blobs"></a>下载 Blob
 
-使用 `the get\_blob\_to\_path` 方法将 Blob 下载到本地磁盘。 以下代码将下载前面部分所上传的 blob。 将 *_DOWNLOADED* 添加为 Blob 名称的前缀后，就可以在本地磁盘上同时看到这两个文件。 
+使用 `get_blob_to_path` 方法将 Blob 下载到本地磁盘。 以下代码将下载前面部分所上传的 blob。 将 *_DOWNLOADED* 添加为 Blob 名称的前缀后，就可以在本地磁盘上同时看到这两个文件。 
 
 ```python
 # Download the blob(s).
 # Add '_DOWNLOADED' as prefix to '.txt' so you can see both files in Documents.
-full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name ,'.txt', '_DOWNLOADED.txt'))
+full_path_to_file2 = os.path.join(local_path, string.replace(local_file_name, '.txt', '_DOWNLOADED.txt'))
 print("\nDownloading blob to " + full_path_to_file2)
 block_blob_service.get_blob_to_path(container_name, local_file_name, full_path_to_file2)
 ```
 
 ### <a name="clean-up-resources"></a>清理资源
-如果不再需要本快速入门中上传的 Blob，可使用 `delete\_container` 方法删除整个容器。 若要改为删除单个文件，请使用 `delete\_blob` 方法。
+如果不再需要本快速入门中上传的 Blob，可使用 `delete_container` 方法删除整个容器。 若要改为删除单个文件，请使用 `delete_blob` 方法。
 
 ```python
-# Clean up resources. This includes the container and the temp files
+# Clean up resources. This includes the container and the temp files.
 block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)

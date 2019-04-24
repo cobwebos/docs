@@ -17,6 +17,8 @@
   items:
     - name: 查询在 Docker 容器中运行的 SQL Server
       href: vnet-injection-sql-server.md
+    - name: 使用 Cosmos DB 服务终结点
+      href: service-endpoint-cosmosdb.md
     - name: 执行 ETL 操作
       href: databricks-extract-load-sql-data-warehouse.md
     - name: 使用事件中心对数据进行流式传输

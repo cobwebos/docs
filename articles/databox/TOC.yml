@@ -1,130 +1,127 @@
-items:
 - name: Azure Data Box 文档 - 脱机传输
   href: /azure/databox
   items:
-  - name: Data Box
-    items:
-    - name: 概述
+    - name: Data Box
       items:
-      - name: 什么是 Data Box？
-        href: data-box-overview.md
-    - name: 快速入门
+        - name: 概述
+          items:
+            - name: 什么是 Data Box？
+              href: data-box-overview.md
+        - name: 快速入门
+          expanded: true
+          items:
+            - name: 设置 - Azure 门户
+              href: data-box-quickstart-portal.md
+        - name: 教程
+          items:
+            - name: 1 - 顺序
+              href: data-box-deploy-ordered.md
+            - name: 2 - 设置
+              href: data-box-deploy-set-up.md
+            - name: 3 - 连接和复制
+              items:
+                - name: 通过 SMB
+                  href: data-box-deploy-copy-data.md
+                - name: 通过 NFS
+                  href: data-box-deploy-copy-data-via-nfs.md
+                - name: 通过 REST
+                  href: data-box-deploy-copy-data-via-rest.md
+                - name: 通过数据复制服务
+                  href: data-box-deploy-copy-data-via-copy-service.md
+                - name: 到托管磁盘
+                  href: data-box-deploy-copy-data-from-vhds.md
+            - name: 4 - 返回、上传、验证
+              href: data-box-deploy-picked-up.md
+        - name: 概念
+          items:
+            - name: 阅读安全指南
+              href: data-box-safety.md
+            - name: 审查要求
+              items:
+                - name: 对于 Data Box
+                  href: data-box-system-requirements.md
+                - name: 对于 Data Box Blob 存储
+                  href: data-box-system-requirements-rest.md
+            - name: 了解限制
+              href: data-box-limits.md
+            - name: 检查安全性
+              href: data-box-security.md
+            - name: 常见问题解答
+              href: data-box-faq.md
+        - name: 如何
+          items:
+            - name: 通过 Azure 门户管理
+              href: data-box-portal-admin.md
+            - name: 通过本地 Web UI 进行管理
+              href: data-box-local-web-ui-admin.md
+            - name: 将数据移到 blob 层
+              href: data-box-how-to-set-data-tier.md
+            - name: 为设备布线
+              href: data-box-cable-options.md
+            - name: 联系支持人员
+              href: data-box-disk-contact-microsoft-support.md
+            - name: 迁移
+              items:
+                - name: 到 Sharepoint Online
+                  href: 'https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context'
+                - name: 到 Azure 文件同步
+                  href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+                - name: 从 HDFS 存储
+                  href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
+            - name: 故障排除
+              items:
+                - name: Data Box Blob 存储问题
+                  href: data-box-troubleshoot-rest.md
+    - name: Data Box Disk
       items:
-      - name: 设置 - Azure 门户
-        href: data-box-quickstart-portal.md
-      expanded: true
-    - name: 教程
+        - name: 概述
+          items:
+            - name: 什么是 Data Box Disk？
+              href: data-box-disk-overview.md
+        - name: 快速入门
+          expanded: true
+          items:
+            - name: 设置 - Azure 门户
+              href: data-box-disk-quickstart-portal.md
+        - name: 教程
+          items:
+            - name: 1 - 顺序
+              href: data-box-disk-deploy-ordered.md
+            - name: 2 - 设置
+              href: data-box-disk-deploy-set-up.md
+            - name: 3 - 复制和验证
+              href: data-box-disk-deploy-copy-data.md
+            - name: 4 - 返回、上传、验证
+              href: data-box-disk-deploy-picked-up.md
+        - name: 概念
+          items:
+            - name: 审查要求
+              href: data-box-disk-system-requirements.md
+            - name: 了解限制
+              href: data-box-disk-limits.md
+            - name: 检查安全性
+              href: data-box-disk-security.md
+            - name: 常见问题解答
+              href: data-box-disk-faq.md
+        - name: 如何
+          items:
+            - name: 通过 Azure 门户管理
+              href: data-box-portal-ui-admin.md
+            - name: 排查磁盘问题
+              href: data-box-disk-troubleshoot.md
+            - name: 联系支持人员
+              href: data-box-disk-contact-microsoft-support.md
+    - name: Data Box Heavy
       items:
-      - name: 1 - 顺序
-        href: data-box-deploy-ordered.md
-      - name: 2 - 设置
-        href: data-box-deploy-set-up.md
-      - name: 3 - 连接和复制
-        items:
-        - name: 通过 SMB
-          href: data-box-deploy-copy-data.md
-        - name: 通过 NFS
-          href: data-box-deploy-copy-data-via-nfs.md
-        - name: 通过 REST
-          href: data-box-deploy-copy-data-via-rest.md
-        - name: 通过数据复制服务
-          href: data-box-deploy-copy-data-via-copy-service.md
-        - name: 到托管磁盘
-          href: data-box-deploy-copy-data-from-vhds.md
-      - name: 4 - 返回、上传、验证
-        href: data-box-deploy-picked-up.md
-    - name: 概念
+        - name: 概述
+          items:
+            - name: 什么是 Data Box Heavy？
+              href: data-box-heavy-overview.md
+    - name: 资源
       items:
-      - name: 阅读安全指南
-        href: data-box-safety.md
-      - name: 审查要求
-        items:
-        - name: 对于 Data Box
-          href: data-box-system-requirements.md
-        - name: 对于 Data Box Blob 存储
-          href: data-box-system-requirements-rest.md
-      - name: 了解限制
-        href: data-box-limits.md
-      - name: 检查安全性
-        href: data-box-security.md
-      - name: 常见问题解答
-        href: data-box-faq.md
-    - name: 如何
-      items:
-      - name: 通过 Azure 门户管理
-        href: data-box-portal-admin.md
-      - name: 通过本地 Web UI 进行管理
-        href: data-box-local-web-ui-admin.md
-      - name: 将数据移到 blob 层
-        href: data-box-how-to-set-data-tier.md
-      - name: 为设备布线
-        href: data-box-cable-options.md
-      - name: 联系支持人员
-        href: data-box-disk-contact-microsoft-support.md
-      - name: 迁移
-        items:
-        - name: 到 Sharepoint Online
-          href: https://docs.microsoft.com/sharepointmigration/how-to-migrate-file-share-content-to-spo-using-azuredatabox?context=/azure/databox/context/context
-        - name: 到 Azure 文件同步
-          href: ../storage/files/storage-sync-offline-data-transfer.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-        - name: 从 HDFS 存储
-          href: ../storage/blobs/data-lake-storage-migrate-on-premises-hdfs-cluster.md?toc=/azure/databox/toc.json&bc=/azure/databox/breadcrumb/toc.json
-  - name: Data Box Disk
-    items:
-    - name: 概述
-      items:
-      - name: 什么是 Data Box Disk？
-        href: data-box-disk-overview.md
-    - name: 快速入门
-      items:
-      - name: 设置 - Azure 门户
-        href: data-box-disk-quickstart-portal.md
-      expanded: true
-    - name: 教程
-      items:
-      - name: 1 - 顺序
-        href: data-box-disk-deploy-ordered.md
-      - name: 2 - 设置
-        href: data-box-disk-deploy-set-up.md
-      - name: 3 - 复制和验证
-        href: data-box-disk-deploy-copy-data.md
-      - name: 4 - 返回、上传、验证
-        href: data-box-disk-deploy-picked-up.md
-    - name: 概念
-      items:
-      - name: 审查要求
-        href: data-box-disk-system-requirements.md
-      - name: 了解限制
-        href: data-box-disk-limits.md
-      - name: 检查安全性
-        href: data-box-disk-security.md
-      - name: 常见问题解答
-        href: data-box-disk-faq.md
-    - name: 如何
-      items:
-      - name: 通过 Azure 门户管理
-        href: data-box-portal-ui-admin.md
-      - name: 排查磁盘问题
-        href: data-box-disk-troubleshoot.md
-      - name: 联系支持人员
-        href: data-box-disk-contact-microsoft-support.md
-  - name: Data Box Heavy
-    items:
-    - name: 概述
-      items:
-      - name: 什么是 Data Box Heavy？
-        href: data-box-heavy-overview.md
-  - name: 资源
-    items:
-    - name: Data Box 产品
-      href: https://azure.microsoft.com/services/storage/databox/data/
-    - name: Data Box 定价
-      href: https://azure.microsoft.com/pricing/details/storage/databox/
-    - name: Data Box Disk 定价
-      href: https://azure.microsoft.com/pricing/details/storage/databox/disk/
-ms.openlocfilehash: 159fbf5782e51cc316e2b7f4474a5ddc94cf8a59
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794000"
+        - name: Data Box 产品
+          href: 'https://azure.microsoft.com/services/storage/databox/data/'
+        - name: Data Box 定价
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/'
+        - name: Data Box Disk 定价
+          href: 'https://azure.microsoft.com/pricing/details/storage/databox/disk/'

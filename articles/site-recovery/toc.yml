@@ -29,6 +29,8 @@
           href: azure-to-azure-tutorial-migrate.md
         - name: 将 Azure VM 移动到可用性区域
           href: move-Azure-VMs-AVset-Azone.md
+        - name: 在“政府”区域和“公用”区域之间移动 Azure VM
+          href: region-move-cross-geos.md
     - name: VMware VM 灾难恢复到 Azure
       items:
         - name: 准备 Azure
@@ -175,6 +177,10 @@
               href: azure-to-azure-autoupdate.md
             - name: Azure Site Recovery 中的更新
               href: service-updates-how-to.md
+            - name: 删除服务器并禁用保护
+              href: site-recovery-manage-registration-and-protection.md
+            - name: 删除保管库
+              href: delete-vault.md
     - name: VMware 到 Azure 的灾难恢复
       items:
         - name: 设置网络

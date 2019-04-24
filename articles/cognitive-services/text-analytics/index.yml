@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 77c69ea24adeef7960b1f16670a2e34ffaf5aca7
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56728247"
 documentType: LandingData
 title: 文本分析 API 文档
 metadata:
   title: 文本分析 API 文档 - 教程和 API 参考 - Azure 认知服务| Microsoft Docs
-  description: 了解如何使用文本分析 API 对文本执行高级自然语言处理。 教程介绍如何编写代码以利用文本分析服务。
+  description: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、命名实体识别和语言检测。
   services: cognitive-services
   author: nitinme
   manager: cgronlun
@@ -22,76 +16,76 @@ metadata:
   ms.date: 09/24/2018
   ms.author: nitinme
 abstract:
-  description: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含三项主要功能：情绪分析、关键短语提取和语言检测。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
+  description: 文本分析 API 是一种基于云的服务，它对原始文本提供高级自然语言处理，并且包含四项主要功能：情绪分析、关键短语提取、命名实体识别和语言检测。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/text-analytics/overview
+            html: <p>了解文本分析 API。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是文本分析？
+          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
+            html: <p>了解如何注册文本分析 API。</p>
+            image:
+              src: ../media/index/i_get-started.svg
+            title: 注册文本分析 API
+          - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
+            html: <p>了解如何获取文本分析 API 的访问密钥和终结点。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 文本分析 API 的访问密钥
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/text-analytics/overview
-      html: <p>了解文本分析 API。</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是文本分析？
-    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-signup
-      html: <p>了解如何注册文本分析 API。</p>
-      image:
-        src: ../media/index/i_get-started.svg
-      title: 注册文本分析 API
-    - href: /azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-access-key
-      html: <p>了解如何获取文本分析 API 的访问密钥和终结点。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: 文本分析 API 的访问密钥
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过检测语言、分析情绪和提取关键短语开始使用文本分析 API：
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 通过检测语言、分析情绪和提取关键短语以及识别实体，开始使用文本分析 API：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_csharp.svg
+            text: 'C&#35;'
+            href: quickstarts/csharp
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: quickstarts/java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: quickstarts/nodejs
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: quickstarts/python
+          - image:
+              src: media/index/logo_go.svg
+            text: Go
+            href: quickstarts/go
+  - title: 分步教程
     items:
-    - image:
-        src: media/index/logo_csharp.svg
-      text: C&#35;
-      href: quickstarts/csharp
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: quickstarts/java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: quickstarts/nodejs
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: quickstarts/python
-    - image:
-        src: media/index/logo_go.svg
-      text: Go
-      href: quickstarts/go
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用文本分析 API 开发应用程序：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用文本分析 API 开发应用程序：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">使用 Power BI 进行文本分析</a>
+          - html: '<a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">PowerApps 中的文本分析</a>'
+  - title: 引用
     items:
-    - html: <a href="tutorials/tutorial-power-bi-key-phrases.md">使用 Power BI 进行文本分析</a>
-    - html: <a href="https://powerapps.microsoft.com/tutorials/cognitive-services-api/">PowerApps 中的文本分析</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: REST
-      html: <p><a href="https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7">API 参考</a></p>
-    - title: SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/overview/azure/cognitiveservices/textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/textanalytics">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable">Java</a></p>
-    - title: PowerShell
-      html: <p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: '<p><a href="https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7">API 参考</a></p>'
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-textanalytics?view=azure-node-latest">Node.js</a></p> <p><a href="https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics">Go</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/textanalytics?view=azure-java-stable">Java</a></p>'
+          - title: PowerShell
+            html: '<p><a href=https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

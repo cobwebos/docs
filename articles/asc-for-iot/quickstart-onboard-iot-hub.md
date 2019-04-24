@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/25/2019
+ms.date: 04/18/2019
 ms.author: mlottner
-ms.openlocfilehash: 59021d09f2af9d430b118acdeb8aa977094e683e
-ms.sourcegitcommit: d83fa82d6fec451c0cb957a76cfba8d072b72f4f
+ms.openlocfilehash: cac2f740c1b2ae109f29ce44cd035fc6a83dd148
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/02/2019
-ms.locfileid: "58862380"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60010554"
 ---
 # <a name="quickstart-enable-service-in-iot-hub"></a>快速入门：在 IoT 中心启用服务
 
@@ -44,8 +44,8 @@ ms.locfileid: "58862380"
 
 若要在 IoT 中心启用安全性，请执行以下操作： 
 
-1. 在 Azure 门户中打开 **IoT 中心**。 
-2. 在左侧菜单中选择并打开“安全性”。 
+1. 在 Azure 门户中打开你的 **IoT 中心**。 
+2. 在“安全性”菜单上，单击“概述”，然后单击“开始预览”。 
 3. 选择“启用 IoT 安全性”。 
 4. 提供 Log Analytics 工作区详细信息。 
    - 选择存储除默认存储信息类型之外的“原始事件”，方法是让“原始事件”开关保持“打开”状态。 

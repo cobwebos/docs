@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 8197d091763709282c42379a7ca0ea802e5c6fdf
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 4ccb8665c9880e21897c81ed4b4ff534e52bb6d1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56886758"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60002266"
 ---
 # <a name="example-how-to-detect-language-with-text-analytics"></a>示例：如何通过文本分析检测语言
 
-[语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) 评估每个文档的文本输入，并返回带有指示分析强度分数的语言标识符。 文本分析可识别多达 120 种语言。
+[语言检测 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) 评估每个文档的文本输入，并返回带有指示分析强度分数的语言标识符。 文本分析可识别多达 120 种语言。
 
 此功能对于用于收集语言未知的任意文本的内容存储非常有用。 可以解析此分析的结果，确定输入文档中使用的语言。 响应还返回一个分数，反映模型的置信度（介于 0 到 1 之间的值）。
 
@@ -62,16 +62,16 @@ ms.locfileid: "56886758"
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 查看此请求的 API 文档：[语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)
++ 创建 POST 请求。 查看此请求的 API 文档：[语言检测 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便检测语言。 它必须包含 `/languages` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/languages`
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便检测语言。 它必须包含 `/languages` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/languages`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7)中的“API 测试控制台”来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
@@ -206,7 +206,7 @@ ms.locfileid: "56886758"
 
 本文介绍了使用认知服务中的文本分析进行语言检测的概念和工作流。 以下是对前面解释和演示的要点的快速提醒：
 
-+ [语言检测 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7) 可用于 120 种语言。
++ [语言检测 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7) 可用于 120 种语言。
 + 请求正文中的 JSON 文档包括 ID 和文本。
 + POST 请求的目标是 `/languages` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
 + 响应输出包含每个文档 ID 的语言标识符，可以流式传输到接受 JSON 的任何应用，包括 Excel 和 Power BI（仅举几例）。
