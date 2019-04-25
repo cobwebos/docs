@@ -189,11 +189,11 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | durationMs | integer | 从网关收到请求到响应全部发送出去经过的时间（毫秒） |
 | callerIpAddress | 字符串 | 直接网关调用方（可以是中介）的 IP 地址 |
 | correlationId | 字符串 | 由 API 管理分配的唯一 http 请求标识符 |
-| 位置 | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
+| location | 字符串 | 处理请求的网关所在 Azure 区域的名称 |
 | httpStatusCodeCategory | 字符串 | http 响应状态代码的类别：成功（301 或以下，或者 304 或 307）、未授权（401、403、429）、错误（400、500 到 600）、其他 |
 | resourceId | 字符串 | API 管理资源 /SUBSCRIPTIONS/\<subscription>/RESOURCEGROUPS/\<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/\<name> 的 ID |
-| 属性 | 对象 | 当前请求的属性 |
-| 方法 | 字符串 | 传入请求的 HTTP 方法 |
+| properties | 对象 | 当前请求的属性 |
+| method | 字符串 | 传入请求的 HTTP 方法 |
 | url | 字符串 | 传入请求的 URL |
 | clientProtocol | 字符串 | 传入请求的 HTTP 协议版本 |
 | responseCode | integer | 发送到客户端的 HTTP 响应的状态代码 |
@@ -213,12 +213,12 @@ API 管理每分钟发出一次指标，几乎可让你实时了解 API 的状�
 | userId | 字符串 | 当前请求的用户实体标识符 | 
 | apimSubscriptionId | 字符串 | 当前请求的订阅实体标识符 | 
 | backendId | 字符串 | 当前请求的后端实体标识符 | 
-| LastError | 对象 | 上一个请求处理错误 | 
-| 已用时间 | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
-| 源 | 字符串 | 导致错误的策略或内部处理程序的名称 | 
-| 作用域 | 字符串 | 导致错误的策略所在策略文档的范围 | 
+| lastError | 对象 | 上一个请求处理错误 | 
+| elapsed | integer | 从网关收到请求到发生错误经过的时间（毫秒） | 
+| source | 字符串 | 导致错误的策略或内部处理程序的名称 | 
+| scope | 字符串 | 导致错误的策略所在策略文档的范围 | 
 | section | 字符串 | 导致错误的策略所在策略文档的节 | 
-| 原因 | 字符串 | 错误原因 | 
+| reason | 字符串 | 错误原因 | 
 | message | 字符串 | 错误消息 | 
 
 ## <a name="next-steps"></a>后续步骤
