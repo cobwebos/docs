@@ -9,12 +9,12 @@ ms.reviewer: klam
 ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 42d6ec93a3382f494b49fb574c4aee5e8eec142a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46993316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60344341"
 ---
 # <a name="outbound-authentication-for-azure-scheduler"></a>Azure 计划程序的出站身份验证
 
@@ -44,7 +44,7 @@ Azure 计划程序作业必须调用需要进行身份验证的服务，例如�
 
 使用 `ClientCertificate` 模型添加身份验证时，请在请求正文中指定以下附加元素。  
 
-| 元素 | 必选 | Description |
+| 元素 | 需要 | 描述 |
 |---------|----------|-------------|
 | authentication（父元素） | 用于使用 SSL 客户端证书的身份验证对象 |
 | type | 是 | 身份验证类型。 对于 SSL 客户端证书，该值为 `ClientCertificate`。 |
@@ -56,7 +56,7 @@ Azure 计划程序作业必须调用需要进行身份验证的服务，例如�
 
 发送包含身份验证信息的请求时，响应将包含以下身份验证元素。
 
-| 元素 | Description | 
+| 元素 | 描述 | 
 |---------|-------------| 
 | authentication（父元素） | 用于使用 SSL 客户端证书的身份验证对象 |
 | type | 身份验证类型。 对于 SSL 客户端证书，该值为 `ClientCertificate`。 |
@@ -164,7 +164,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 使用 `Basic` 模型添加身份验证时，请在请求正文中指定以下附加元素。
 
-| 元素 | 必选 | Description |
+| 元素 | 需要 | 描述 |
 |---------|----------|-------------|
 | authentication（父元素） | 用于使用基本身份验证的身份验证对象 | 
 | type | 是 | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 | 
@@ -176,7 +176,7 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 发送包含身份验证信息的请求时，响应将包含以下身份验证元素。
 
-| 元素 | Description | 
+| 元素 | 描述 | 
 |---------|-------------|
 | authentication（父元素） | 用于使用基本身份验证的身份验证对象 |
 | type | 身份验证类型。 对于基本身份验证，该值为 `Basic`。 |
@@ -282,7 +282,7 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 使用 `ActiveDirectoryOAuth` 模型添加身份验证时，请在请求正文中指定以下附加元素。
 
-| 元素 | 必选 | Description |
+| 元素 | 需要 | 描述 |
 |---------|----------|-------------|
 | authentication（父元素） | 是 | 用于使用 ActiveDirectoryOAuth 身份验证的身份验证对象 |
 | type | 是 | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 |
@@ -296,7 +296,7 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 发送包含身份验证信息的请求时，响应将包含以下身份验证元素。
 
-| 元素 | Description |
+| 元素 | 描述 |
 |---------|-------------|
 | authentication（父元素） | 用于使用 ActiveDirectoryOAuth 身份验证的身份验证对象 |
 | type | 身份验证类型。 对于 ActiveDirectoryOAuth 身份验证，该值为 `ActiveDirectoryOAuth`。 | 

@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58487308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60243506"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Azure AD Connect 同步：配置筛选
 使用筛选功能可以控制本地目录中的哪些对象应该出现在 Azure Active Directory (Azure AD) 中。 默认配置会采用配置的林中所有域内的所有对象。 我们一般建议使用这种配置。 使用 Exchange Online 和 Skype for Business 等 Office 365 工作负荷的用户将受益于完整的全局地址列表，因为这样可以发送电子邮件和呼叫每个联系人。 使用默认配置时，用户获得的体验与使用 Exchange 或 Lync 的本地实现获得的相同。
@@ -99,12 +99,12 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 3. [应用并验证更改](#apply-and-verify-changes)。
 
 ### <a name="select-the-domains-to-be-synchronized"></a>选择要同步的域
-有两种方法来选择要同步的域：
+可以采用两种方法选择要同步的域：
     - 使用同步服务
     - 使用 Azure AD Connect 向导。
 
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>选择要使用同步服务同步的域
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>使用同步服务选择要同步的域
 若要设置域筛选器，请执行以下步骤：
 
 1. 通过使用属于 **ADSyncAdmins** 安全组的成员的帐户，登录到正在运行 Azure AD Connect 同步的服务器。
@@ -119,15 +119,15 @@ Azure AD Connect 只删除其曾经认为在范围中的对象。 如果 Azure A
 6. 完成后，请单击“确定”关闭“属性”对话框。 如果在林中删除了域，屏幕上会弹出消息，指出已删除域且将清除配置。
 7. 继续调整运行配置文件。
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>选择要使用 Azure AD Connect 向导同步的域
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>使用 Azure AD Connect 向导选择要同步的域
 若要设置域筛选器，请执行以下步骤：
 
 1.  启动 Azure AD Connect 向导
 2.  单击 **“配置”**。
-3.  选择**自定义同步选项**然后单击**下一步**。
+3.  选择“自定义同步选项”，然后单击“下一步”。
 4.  输入 Azure AD 凭据
-5.  上**连接目录**屏幕单击**下一步**。
-6.  上**域和 OU 筛选页面**单击**刷新**。  现在会出现不良的新域，已删除的域会消失。
+5.  在“连接的目录”屏幕上，单击“下一步”。
+6.  在“域和 OU 筛选”页上，单击“刷新”。  新域现在将显示，删除的域会消失。
    ![分区](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
 ### <a name="update-the-run-profiles"></a>更新运行配置文件
@@ -278,7 +278,7 @@ Azure AD Connect 安装向导始终创建此配置。
 4. 查找名为“同步到 AAD - 用户加入”或“同步到 AAD - 用户加入 SOAInAD”的规则（具体视使用的 Connect 版本而定），再单击“编辑”。
 5. 在弹出窗口中，回答“是”创建规则的副本。
 6. 在“说明”页上，将“优先顺序”更改为某个尚未使用的值，例如 50。
-7. 单击左侧导航栏中的“范围筛选器”，并单击“添加子句”。 在“属性”中选择“mail”。 在“运算符”中选择“ENDSWITH”。 在中**值**，类型 **\@contoso.com**，然后单击**添加子句**。 在“属性”中选择“userPrincipalName”。 在“运算符”中选择“ENDSWITH”。 在中**值**，类型 **\@contoso.com**。
+7. 单击左侧导航栏中的“范围筛选器”，并单击“添加子句”。 在“属性”中选择“mail”。 在“运算符”中选择“ENDSWITH”。 在“值”中键入 **\@contoso.com**，然后单击“添加子句”。 在“属性”中选择“userPrincipalName”。 在“运算符”中选择“ENDSWITH”。 在“值”中，键入 **\@contoso.com**。
 8. 单击“ **保存**”。
 9. 若要完成配置，需要运行**完全同步**。继续阅读[应用并验证更改](#apply-and-verify-changes)部分。
 

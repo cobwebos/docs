@@ -10,11 +10,11 @@ ms.date: 07/13/2017
 ms.author: robb
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: c2d577bd4c89046136a3465ff554e9662dd0ce19
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54478121"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60396151"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>使用事件中心流式处理热路径中的 Azure 诊断数据
 Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) 的指标和日志，并将结果传输到 Azure 存储。 从 2016 年 3 月 (SDK 2.9) 这一时间范围开始，可以将诊断发送到自定义数据源，并使用 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)在数秒内传输热路径数据。
@@ -34,7 +34,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 * 如何查看事件中心流数据
 * 如何排查连接问题  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 从 Azure SDK 2.9 和相应的 Azure Tools for Visual Studio 开始，云服务、VM、虚拟机规模集和 Service Fabric 将支持事件中心接收来自 Azure 诊断的数据。
 
 * Azure 诊断扩展 1.6（[Azure SDK for .NET 2.9 或更高版本](https://azure.microsoft.com/downloads/)默认以此为目标）
@@ -75,7 +75,7 @@ Azure 诊断提供了灵活的方法用于收集来自云服务虚拟机 (VM) �
 “接收器”名称可以设置为任何有效的字符串，前提是在整个配置文件中一致地使用相同的值。
 
 > [!NOTE]
-> 该部分中可能配置了其他接收器，例如 *applicationInsights*。 如果 **PrivateConfig** 部分中还对每个接收器进行了声明，Azure 诊断将允许定义一个或多个接收器。  
+> 该部分中可能配置了其他接收器，例如 *applicationInsights*。 Azure 诊断允许定义一个或多个接收器，前提是每个接收器也已在 **PrivateConfig** 节中声明。  
 >
 >
 

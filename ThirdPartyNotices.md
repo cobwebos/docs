@@ -1,10 +1,10 @@
 ---
 ms.openlocfilehash: 493ba7cb198d7eb33b96156b96389a036db6476b
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58191656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318659"
 ---
 ## <a name="legal-notices"></a>法律声明
 Microsoft 和任何参与者向您授予 Microsoft 文档和其他内容，在此存储库中的许可证[Creative Commons Attribution 4.0 国际公共许可证](https://creativecommons.org/licenses/by/4.0/legalcode)，请参阅[许可证](LICENSE)文件，并授予你对在存储库中的任何代码[MIT 许可证](https://opensource.org/licenses/MIT)，请参阅[许可证代码](LICENSE-CODE)文件。

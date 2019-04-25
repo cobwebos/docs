@@ -3,7 +3,7 @@ title: 教程 - 将标识提供程序添加到应用程序 - Azure Active Direct
 description: 了解如何使用 Azure 门户向 Azure Active Directory B2C 应用程序添加标识提供程序。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
@@ -11,11 +11,11 @@ ms.date: 02/01/2019
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: ef264622be1e66c98f8c7f17cf3e04b3239e8553
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60360089"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>教程：将标识提供程序添加到 Azure Active Directory B2C 应用程序
 
@@ -60,7 +60,7 @@ ms.locfileid: "58338269"
     
     现在，所有 URL 都应使用 [b2clogin.com](b2clogin.md)。
 
-8. 单击“创建”。 复制“应用程序 ID”供后续使用。
+8. 单击**创建**。 复制“应用程序 ID”供后续使用。
 9. 选择应用程序，然后选择“设置”。
 10. 选择“密钥”，输入密钥说明，选择持续时间，然后单击“保存”。 复制密钥值，以便稍后在本教程中使用。
 

@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d2841d3be584cae45ef49ad9ff20da8a232c366
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60355069"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>如何：使用条件访问策略来阻止旧身份验证   
 
@@ -86,7 +86,7 @@ Azure AD 支持多个最广泛使用的身份验证和授权协议，包括旧�
 - 阻止访问
  
 
-![作业](./media/block-legacy-authentication/03.png)
+![分配](./media/block-legacy-authentication/03.png)
 
 
 

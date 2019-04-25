@@ -12,11 +12,11 @@ ms.date: 4/5/2019
 ms.author: wolfma
 ms.custom: seodec18
 ms.openlocfilehash: e40d9a2ac0e95ae72aed927f8a527eb1e092079d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59549399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60480463"
 ---
 # <a name="release-notes"></a>发行说明
 
@@ -250,7 +250,7 @@ ms.locfileid: "59549399"
 * 在 Windows 上支持 .NET Standard 2.0。 查看 [.NET Core 快速入门](quickstart-csharp-dotnetcore-windows.md)。
 * 试验：在 Windows 上支持 UWP（版本 1709 或更高版本）。
   * 请查看 [UWP 快速入门](quickstart-csharp-uwp.md)。
-  * 注意：使用语音 SDK 生成的 UWP 应用尚未通过 Windows 应用认证工具包 (WACK)。
+  * 请注意:使用语音 SDK 生成的 UWP 应用尚未通过 Windows 应用认证工具包 (WACK)。
 * 通过自动重新连接支持识别功能长时间运行。
 
 **功能性更改**

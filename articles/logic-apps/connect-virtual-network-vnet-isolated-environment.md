@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 03/12/2019
-ms.openlocfilehash: 6be897cc1ae11b8d3032e3ffc669eac05dafe5b2
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 8cbc02f80244b02b397162309fa5ae047f3f460a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60511314"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>使用集成服务环境 (ISE) 从 Azure 逻辑应用连接到 Azure 虚拟网络
 
@@ -67,30 +67,31 @@ ms.locfileid: "58522309"
 
 若要保持正常运行且可供访问，集成服务环境 (ISE) 需要使用虚拟网络中的特定端口。 否则，如果其中的任一端口不可用，ISE 可能会停止运行，使你无法访问 ISE。 在虚拟网络中使用 ISE 时，常见的设置问题是一个或多个端口被阻止。 对于 ISE 与目标系统之间的连接，所用的连接器还可能有其自身的端口要求。 例如，如果使用 FTP 连接器来与 FTP 系统通信，请确保在该 FTP 系统上使用的端口（例如用于发送命令的端口 21）可用。
 
-若要跨虚拟网络的子网，你将部署在 ISE 控制的流量，您可以设置[网络安全组](../virtual-network/security-overview.md)对由这些子网[筛选网络流量跨子网](../virtual-network/tutorial-filter-network-traffic.md)。 下列表格描述了 ISE 在虚拟网络中使用的端口，以及这些端口的使用位置。 [服务标记](../virtual-network/security-overview.md#service-tags)表示一组 IP 地址前缀，在创建安全规则时，这些前缀有助于尽量降低复杂性。
+若要跨虚拟网络的子网，你将部署在 ISE 控制的流量，您可以设置[网络安全组](../virtual-network/security-overview.md)对由这些子网[筛选网络流量跨子网](../virtual-network/tutorial-filter-network-traffic.md)。 下列表格描述了 ISE 在虚拟网络中使用的端口，以及这些端口的使用位置。 [资源管理器服务标记](../virtual-network/security-overview.md#service-tags)表示一组 IP 地址前缀，可帮助创建安全规则时最小化复杂性。
 
 > [!IMPORTANT]
 > 对于子网内的内部通信，ISE 需要打开这些子网中的所有端口。
 
-| 用途 | 方向 | 端口 | 源服务标记 | 目标服务标记 | 说明 |
+| 目的 | Direction | 端口 | 源服务标记 | 目标服务标记 | 说明 |
 |---------|-----------|-------|--------------------|-------------------------|-------|
-| 从 Azure 逻辑应用通信 | 出站 | 80 和 443 | VIRTUAL_NETWORK | INTERNET | 端口取决于逻辑应用服务与之通信的外部服务 |
-| Azure Active Directory | 出站 | 80 和 443 | VIRTUAL_NETWORK | AzureActiveDirectory | |
-| Azure 存储依赖项 | 出站 | 80 和 443 | VIRTUAL_NETWORK | 存储 | |
-| Intersubnet 通信 | 入站和出站 | 80 和 443 | VIRTUAL_NETWORK | VIRTUAL_NETWORK | 子网之间的通信 |
-| 与 Azure 逻辑应用通信 | 入站 | 443 | INTERNET  | VIRTUAL_NETWORK | 计算机或调用任何请求触发器或 webhook 在逻辑应用中存在的服务的 IP 地址。 关闭或阻止此端口可防止对具有请求触发器的逻辑应用的 HTTP 调用。  |
-| 逻辑应用运行历史记录 | 入站 | 443 | INTERNET  | VIRTUAL_NETWORK | 从中查看逻辑应用的计算机的 IP 地址的运行历史记录。 虽然关闭或阻止此端口不会阻止你查看运行历史记录，但不能查看输入和输出中的每个步骤的运行历史记录。 |
-| 连接管理 | 出站 | 443 | VIRTUAL_NETWORK  | INTERNET | |
-| 发布诊断日志和指标 | 出站 | 443 | VIRTUAL_NETWORK  | AzureMonitor | |
-| 逻辑应用设计器 - 动态属性 | 入站 | 454 | INTERNET  | VIRTUAL_NETWORK | 请求来自逻辑应用[访问终结点在该区域中的 IP 地址的入站](../logic-apps/logic-apps-limits-and-config.md#inbound)。 |
-| 应用服务管理依赖项 | 入站 | 454 和 455 | AppServiceManagement | VIRTUAL_NETWORK | |
-| 连接器部署 | 入站 | 454 & 3443 | INTERNET  | VIRTUAL_NETWORK | 所需的部署和更新连接器。 关闭或阻止此端口将导致 ISE 部署失败，并防止连接器更新或修补程序。 |
-| Azure SQL 依赖关系 | 出站 | 1433 | VIRTUAL_NETWORK | SQL |
-| Azure 资源运行状况 | 出站 | 1886 | VIRTUAL_NETWORK | INTERNET | 发布到资源运行状况的运行状况状态 |
-| API 管理 - 管理终结点 | 入站 | 3443 | APIManagement  | VIRTUAL_NETWORK | |
-| “记录到事件中心”策略和监视代理中的依赖项 | 出站 | 5672 | VIRTUAL_NETWORK  | EventHub | |
-| 访问角色实例之间的 Azure Redis 缓存实例 | 入站 <br>出站 | 6379-6383 | VIRTUAL_NETWORK  | VIRTUAL_NETWORK | 此外，对于要使用 Azure 缓存适用于 Redis 的 ISE，则必须打开这些[Redis 常见问题解答针对 Azure 缓存中所述的出站和入站端口](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
-| Azure 负载均衡器 | 入站 | * | AZURE_LOAD_BALANCER | VIRTUAL_NETWORK |  |
+| 从 Azure 逻辑应用通信 | 出站 | 80 和 443 | VirtualNetwork | Internet | 端口取决于逻辑应用服务与之通信的外部服务 |
+| Azure Active Directory | 出站 | 80 和 443 | VirtualNetwork | AzureActiveDirectory | |
+| Azure 存储依赖项 | 出站 | 80 和 443 | VirtualNetwork | 存储 | |
+| Intersubnet 通信 | 入站和出站 | 80 和 443 | VirtualNetwork | VirtualNetwork | 子网之间的通信 |
+| 与 Azure 逻辑应用通信 | 入站 | 443 | Internet  | VirtualNetwork | 计算机或调用任何请求触发器或 webhook 在逻辑应用中存在的服务的 IP 地址。 关闭或阻止此端口可防止对具有请求触发器的逻辑应用的 HTTP 调用。  |
+| 逻辑应用运行历史记录 | 入站 | 443 | Internet  | VirtualNetwork | 从中查看逻辑应用的计算机的 IP 地址的运行历史记录。 虽然关闭或阻止此端口不会阻止你查看运行历史记录，但不能查看输入和输出中的每个步骤的运行历史记录。 |
+| 连接管理 | 出站 | 443 | VirtualNetwork  | Internet | |
+| 发布诊断日志和指标 | 出站 | 443 | VirtualNetwork  | AzureMonitor | |
+| 从 Azure 流量管理器的通信 | 入站 | 443 | AzureTrafficManager | VirtualNetwork | |
+| 逻辑应用设计器 - 动态属性 | 入站 | 454 | Internet  | VirtualNetwork | 请求来自逻辑应用[访问终结点在该区域中的 IP 地址的入站](../logic-apps/logic-apps-limits-and-config.md#inbound)。 |
+| 应用服务管理依赖项 | 入站 | 454 和 455 | AppServiceManagement | VirtualNetwork | |
+| 连接器部署 | 入站 | 454 & 3443 | Internet  | VirtualNetwork | 所需的部署和更新连接器。 关闭或阻止此端口将导致 ISE 部署失败，并防止连接器更新或修补程序。 |
+| Azure SQL 依赖关系 | 出站 | 1433 | VirtualNetwork | SQL |
+| Azure 资源运行状况 | 出站 | 1886 | VirtualNetwork | Internet | 发布到资源运行状况的运行状况状态 |
+| API 管理 - 管理终结点 | 入站 | 3443 | APIManagement  | VirtualNetwork | |
+| “记录到事件中心”策略和监视代理中的依赖项 | 出站 | 5672 | VirtualNetwork  | EventHub | |
+| 访问角色实例之间的 Azure Redis 缓存实例 | 入站 <br>出站 | 6379-6383 | VirtualNetwork  | VirtualNetwork | 此外，对于要使用 Azure 缓存适用于 Redis 的 ISE，则必须打开这些[Redis 常见问题解答针对 Azure 缓存中所述的出站和入站端口](../azure-cache-for-redis/cache-how-to-premium-vnet.md#outbound-port-requirements)。 |
+| Azure 负载均衡器 | 入站 | * | AzureLoadBalancer | VirtualNetwork |  |
 ||||||
 
 <a name="create-environment"></a>

@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: 2bdcd4c504822a2e60156b0ac565465e0cf23a85
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54358516"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388805"
 ---
 # <a name="use-habitat-to-deploy-your-application-to-azure"></a>使用 Habitat 将应用程序部署到 Azure
 [Habitat](https://www.habitat.sh/) 是一种应用程序打包和运行时系统，用于将应用程序及其自动化功能捆绑在一起，作为部署单元。 这将实现应用程序的终极可移植性，使其在不执行重写或重新打包操作的情况下，即可部署到容器、虚拟机、祼机或 PaaS。

@@ -9,11 +9,11 @@ ms.date: 02/21/2019
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 4a1f9556413df7ad8954171d2b446419d3bc2975
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58092304"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60366438"
 ---
 # <a name="configure-expressroute-and-site-to-site-coexisting-connections-using-powershell"></a>使用 PowerShell 配置 ExpressRoute 和站点到站点共存连接
 > [!div class="op_single_selector"]
@@ -220,7 +220,7 @@ ms.locfileid: "58092304"
 
 ## <a name="to-add-point-to-site-configuration-to-the-vpn-gateway"></a>将点到站点配置添加到 VPN 网关
 
-可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。 若要上载 VPN 根证书，必须在计算机上本地安装 PowerShell 或使用 Azure 门户。
+可以按照下面的步骤将点到站点配置添加到共存设置中的 VPN 网关。 若要上传 VPN 根证书，必须以本地方式将 PowerShell 安装到计算机，或者使用 Azure 门户。
 
 1. 添加 VPN 客户端地址池。
 
@@ -228,7 +228,7 @@ ms.locfileid: "58092304"
    $azureVpn = Get-AzVirtualNetworkGateway -Name "VPNGateway" -ResourceGroupName $resgrp.ResourceGroupName
    Set-AzVirtualNetworkGatewayVpnClientConfig -VirtualNetworkGateway $azureVpn -VpnClientAddressPool "10.251.251.0/24"
    ```
-2. 为 VPN 网关将 VPN 根证书上传到 Azure。 在此示例中，假定根证书存储中，运行以下 PowerShell cmdlet 在本地计算机和本地运行 PowerShell。 你还可以上载使用 Azure 门户的证书。
+2. 为 VPN 网关将 VPN 根证书上传到 Azure。 在此示例中，假定根证书存储在运行以下 PowerShell cmdlet 的本地计算机中，并且你在本地运行 PowerShell。 也可使用 Azure 门户来上传证书。
 
    ```powershell
    $p2sCertFullName = "RootErVpnCoexP2S.cer" 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
 ms.openlocfilehash: 479e6d222c9fc7d007252bab12e807ec337ea9e6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58880774"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332414"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>在 Azure 安全中心保护 Azure SQL 服务和数据
 Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别潜在的安全漏洞时，它会创建一些建议，这些建议会指导完成配置所需控件的过程。  适用于 Azure 资源类型的建议：虚拟机 (VM)、网络、SQL 和数据，以及应用程序。
@@ -65,7 +65,7 @@ Azure 安全中心可分析 Azure 资源的安全状态。 在安全中心识别
 |SQL|30|修复 SQL 数据库中的漏洞|SQL 漏洞评估会扫描数据库中的安全漏洞，并显示与最佳实践之间的任何偏差，如配置错误、权限过多和敏感数据未受保护。 解决发现的漏洞可以极大地改善数据库安全态势。|
 |SQL|20|预配 SQL Server 的 Azure AD 管理员|预配 SQL Server 的 Azure AD 管理员以启用 Azure AD 身份验证。 使用 Azure AD 身份验证可以简化权限管理，以及集中化数据库用户和其他 Microsoft 服务的标识管理。|
 |存储帐户|15|禁用对存储帐户进行无限制的网络访问|在存储帐户防火墙设置中审核无限制的网络访问权限。 应该配置网络规则，以便只有来自许可网络的应用程序才能访问存储帐户。 若要允许来自特定 Internet 或本地客户端连接，可以授予对来自特定 Azure 虚拟网络的流量或公共 Internet IP 地址范围访问。|
-|存储帐户|1|将存储帐户迁移到 Azure 资源管理器模型资源|使用新的 Azure 资源管理器 v2 为存储帐户提供的安全增强功能，例如： 更强的访问控制 (RBAC)、 更好地审核、 基于资源管理器的部署和管理，访问管理的标识，访问密钥保管库的权限机密和 Azure 基于 AD 的身份验证和对标记的支持和简化安全管理的资源组。|
+|存储帐户|第|将存储帐户迁移到 Azure 资源管理器模型资源|使用新的 Azure 资源管理器 v2 为存储帐户提供的安全增强功能，例如： 更强的访问控制 (RBAC)、 更好地审核、 基于资源管理器的部署和管理，访问管理的标识，访问密钥保管库的权限机密和 Azure 基于 AD 的身份验证和对标记的支持和简化安全管理的资源组。|
 
 ## <a name="see-also"></a>另请参阅
 若要了解有关适用于其他 Azure 资源类型的建议的详细信息，请参阅以下内容：

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
 ms.openlocfilehash: 727379edb60756ca8cb3e5ebdc29cd38858945e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57857549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60345585"
 ---
 # <a name="enable-logging-for-azure-machine-learning-studio-web-services"></a>为 Azure 机器学习工作室 Web 服务启用日志记录
 本文档提供有关机器学习工作室 Web 服务的日志记录功能的信息。 日志记录可提供错误编号和消息以外的其他信息，这些信息有助于对调用机器学习工作室 API 进行故障排除。  

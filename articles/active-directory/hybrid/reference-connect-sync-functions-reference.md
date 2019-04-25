@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b33e993dbddc9c1567a1a6f7d3dca28af240a000
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650659"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60381138"
 ---
 # <a name="azure-ad-connect-sync-functions-reference"></a>Azure AD Connect 同步：函数引用
 在 Azure AD Connect 中，函数用于在同步期间操作属性值。  
@@ -1166,7 +1166,7 @@ RTrim 函数从字符串中删除尾随空格。
 返回“Test”。
 
 - - -
-### <a name="select"></a>Select
+### <a name="select"></a>选择
 **说明：**  
 根据指定函数处理多值属性（或表达式输出）中的所有值。
 
@@ -1273,7 +1273,7 @@ UCase 函数将字符串中的所有字符都转换为大写形式。
 返回“TEST”。
 
 - - -
-### <a name="where"></a>其中
+### <a name="where"></a>Where
 
 **说明：**  
 根据指定条件，从多值属性（或表达式输出）中返回值子集。

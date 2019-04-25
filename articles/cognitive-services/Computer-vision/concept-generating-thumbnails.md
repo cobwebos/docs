@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: cea8522a9f3eb8fa98821c1cb08d92a9524d5ce4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 8bbc86f5c6fe0f30968a1ba5bd5fa28160ef6963
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60372810"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>使用计算机视觉生成智能裁剪的缩略图
 
@@ -38,15 +38,15 @@ ms.locfileid: "57876793"
 
 生成的缩略图可能会根据指定的高度、宽度和智能裁剪的不同而有很大差异，如下图所示。
 
-![缩略图](./Images/thumbnail-demo.png)
+![各种裁剪配置旁边 mountain 图像](./Images/thumbnail-demo.png)
 
 下表说明了计算机视觉为示例图像生成的典型缩略图。 生成缩略图的指定目标高度和宽度为 50 像素，并且启用了智能裁剪。
 
-| 映像 | 缩略图 |
+| Image | 缩略图 |
 |-------|-----------|
-|![日落时站在山岩上的人](./Images/mountain_vista.png) | ![户外山脉缩略图](./Images/mountain_vista_thumbnail.png) |
+|![在停止服务，与某个人的轮廓的户外山地](./Images/mountain_vista.png) | ![在停止服务，与某个人的轮廓的 Outdoor Mountain 的缩略图](./Images/mountain_vista_thumbnail.png) |
 |![具有绿色背景的白色花卉](./Images/flower.png) | ![视觉分析花缩略图](./Images/flower_thumbnail.png) |
-|![在公寓楼顶上的一个女人](./Images/woman_roof.png) | ![女士屋顶缩略图](./Images/woman_roof_thumbnail.png) |
+|![在公寓楼顶上的一个女人](./Images/woman_roof.png) | ![单元构建的屋顶的女人的缩略图](./Images/woman_roof_thumbnail.png) |
 
 ## <a name="next-steps"></a>后续步骤
 

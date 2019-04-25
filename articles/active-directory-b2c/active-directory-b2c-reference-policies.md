@@ -3,7 +3,7 @@ title: Azure Active Directory B2C 中的用户流 | Microsoft Docs
 description: 详细了解 Azure Active Directory B2C 的可扩展策略框架以及如何创建各种用户流。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 67db13c8a36977f2614ba7b0e263919bd0405bc7
-ms.sourcegitcommit: 7723b13601429fe8ce101395b7e47831043b970b
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56585587"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316946"
 ---
 # <a name="user-flows-in-azure-active-directory-b2c"></a>Azure Active Directory B2C 中的用户流
 

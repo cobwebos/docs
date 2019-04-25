@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/19/2019
 ms.author: mbaldwin
 ms.openlocfilehash: ecc87e03a80ce10bedbe26b3ebb452ec704eefcb
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60461359"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>如何将 Key Vault 软删除与 PowerShell 配合使用
 
@@ -34,7 +34,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 有关适用于 PowerShell 的密钥保管库特定引用信息，请参阅 [Azure 密钥保管库 PowerShell 引用](/powershell/module/az.keyvault)。
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
@@ -232,17 +232,17 @@ Remove-AzKeyVault -VaultName ContosoVault -InRemovedState -Location westus
 
 ## <a name="enabling-purge-protection"></a>启用清除保护
 
-清除保护开启时，一个保管库或中的对象已删除超过 90 天的保留期后，才可以清除状态。 仍可以恢复此类保管库或对象。 此功能可以提高的可靠性，保管库或对象可以永远不会永久删除之前保留期已过。
+启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。
 
-仅当还启用软删除时，可以启用清除保护。 
+只有启用了软删除，才能启用清除保护。 
 
-若要启用这两个软删除和清除保护，创建一个保管库时，使用[新建 AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet:
+若要在创建保管库时同时启用软删除和清除保护，请使用 [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault?view=azps-1.5.0) cmdlet：
 
 ```powershell
 New-AzKeyVault -Name ContosoVault -ResourceGroupName ContosoRG -Location westus -EnableSoftDelete -EnablePurgeProtection
 ```
 
-若要将清除保护添加到现有的保管库 （即已启用软删除），请使用[Get AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0)， [Get AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0)，并[集 AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) cmdlet:
+若要向现有保管库（已启用软删除）添加清除保护，请使用 [Get-AzKeyVault](/powershell/module/az.keyvault/Get-AzKeyVault?view=azps-1.5.0)、[Get-AzResource](/powershell/module/az.resources/get-azresource?view=azps-1.5.0) 和 [Set-AzResource](/powershell/module/az.resources/set-azresource?view=azps-1.5.0) cmdlet：
 
 ```
 ($resource = Get-AzResource -ResourceId (Get-AzKeyVault -VaultName "ContosoVault").ResourceId).Properties | Add-Member -MemberType "NoteProperty" -Name "enablePurgeProtection" -Value "true"

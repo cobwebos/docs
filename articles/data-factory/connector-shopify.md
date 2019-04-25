@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: jingwang
 ms.openlocfilehash: c25232abf20bbe3d01672b7620e5d2f5e31d5c8a
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54019599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343505"
 ---
 # <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>使用 Azure 数据工厂从 Shopify 复制数据（预览）
 

@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: nigu
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f3246a7efa36e6c6ef0dac93e659a73dac17090a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58516869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301516"
 ---
 # <a name="what-is-a-policy-migration-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的策略迁移是什么？ 
 
@@ -84,7 +84,7 @@ ms.locfileid: "58516869"
 
 对于 Azure 门户中的条件访问，可以在一个中心位置管理所有策略。 由于条件访问的实现方式已发生很大变化，在迁移经典策略之前，应熟悉基本的概念。
 
-请参阅:
+请参阅：
 
 - [Azure Active Directory 中的条件访问是什么](../active-directory-conditional-access-azure-portal.md)，了解基本概念和术语。
 

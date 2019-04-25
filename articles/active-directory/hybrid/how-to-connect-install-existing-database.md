@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286085"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60245140"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>使用现有 ADSync 数据库安装 Azure AD Connect
 Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使用随 Azure AD Connect 一起安装的默认 SQL Server 2012 Express LocalDB，也可以使用自己的完整版本 SQL。 以前，当安装 Azure AD Connect 时，始终会创建一个名为 ADSync 的新数据库。 使用 Azure AD Connect 版本 1.1.613.0（或更高版本），可以选择通过将 Azure AD Connect 指向现有的 ADSync 数据库来安装 Azure AD Connect。
@@ -62,7 +62,7 @@ Azure AD Connect 要求使用 SQL Server 数据库来存储数据。 可以使�
 3.  启动新的命令提示符或 PowerShell 会话。 导航到"C:\Program Files\Microsoft Azure Active Directory Connect"的文件夹。 运行命令 .\AzureADConnect.exe /useexistingdatabase，在“使用现有数据库”安装模式下启动 Azure AD Connect 向导。
 
 > [!NOTE]
-> 只有当数据库已包含来自早期 Azure AD Connect 安装的数据时，才应使用 **/UseExistingDatabase** 开关。 例如，当从本地数据库移动到完整 SQL Server 数据库时，或者当重建 Azure AD Connect 服务器并且从早期 Azure AD Connect 安装还原了 ADSync 数据库的 SQL 备份时。 如果数据库为空，也就是说，它不包含任何数据从以前的 Azure AD Connect 安装，，跳过此步骤。
+> 只有当数据库已包含来自早期 Azure AD Connect 安装的数据时，才应使用 **/UseExistingDatabase** 开关。 例如，当从本地数据库移动到完整 SQL Server 数据库时，或者当重建 Azure AD Connect 服务器并且从早期 Azure AD Connect 安装还原了 ADSync 数据库的 SQL 备份时。 如果数据库为空（即不包含前面的 Azure AD Connect 安装的任何数据），请跳过此步骤。
 
 ![PowerShell](./media/how-to-connect-install-existing-database/db2.png)
 1. 出现“欢迎使用 Azure AD Connect”屏幕。 同意许可条款和隐私声明后，单击“继续”。

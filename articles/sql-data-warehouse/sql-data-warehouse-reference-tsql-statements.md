@@ -11,11 +11,11 @@ ms.date: 06/13/2018
 ms.author: twounder
 ms.reviewer: igorstan
 ms.openlocfilehash: 8922d4399f52937710f111c3c8ad4c9af91b6bb7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57890094"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309882"
 ---
 # <a name="t-sql-statements-supported-in-azure-sql-data-warehouse"></a>Azure SQL 数据仓库中支持的 T-SQL 语句
 有关 Azure SQL 数据仓库中支持的 T-SQL 语句文档的链接。

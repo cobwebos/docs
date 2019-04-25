@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: reference
 ms.date: 10/18/2018
-ms.openlocfilehash: 38b283ed666b39b4e090bd95051a4454a9b47e62
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 4b193dd41c137907e56e2bf38b18ebcf2f2b481a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975655"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326849"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB 表 .NET Standard API：下载和发行说明
 > [!div class="op_single_selector"]
@@ -33,6 +33,9 @@ ms.locfileid: "57975655"
 |**当前受支持的框架**|[Microsoft .NET Standard 2.0](https://www.nuget.org/packages/NETStandard.Library)|
 
 ## <a name="release-notes"></a>发行说明
+
+### <a name="a-name101101"></a><a name="1.0.1"/>1.0.1
+* Bug 修复
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * 正式发布版
@@ -60,8 +63,9 @@ ms.locfileid: "57975655"
 ## <a name="release-and-retirement-dates"></a>发布日期和停用日期
 Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利转换为更高版本/受支持版本。
 
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
+| [1.0.1](#1.0.1) |2019 年 4 月 19日日 |--- |
 | [1.0.0](#1.0.0) |2019 年 3 月 13 日 |--- |
 | [0.11.0-preview](#0.11.0-preview) |2019 年 3 月 5 日 |--- |
 | [0.10.1 预览版](#0.10.1-preview) |2019 年 1 月 22 日 |--- |

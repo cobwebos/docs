@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 3/28/2019
 ms.openlocfilehash: 51b3011c040db8576c13868f9fac26cb1e431515
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58623283"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60420285"
 ---
 # <a name="restart-azure-database-for-postgresql-server-using-the-azure-cli"></a>使用 Azure CLI 的 PostgreSQL 服务器的重新启动 Azure 数据库
 本主题介绍如何重启 Azure Database for PostgreSQL 服务器。 出于维护原因，可能需要重启服务器，这会在服务器执行操作时导致短暂中断。
@@ -32,7 +32,7 @@ ms.locfileid: "58623283"
 
 ## <a name="restart-the-server"></a>重启服务器
 
-重新启动服务器使用以下命令：
+使用以下命令重启服务器：
 
 ```azurecli-interactive
 az postgres server restart --name mydemoserver --resource-group myresourcegroup
@@ -40,4 +40,4 @@ az postgres server restart --name mydemoserver --resource-group myresourcegroup
 
 ## <a name="next-steps"></a>后续步骤
 
-了解有关[如何在 Azure Database for PostgreSQL 设置参数](howto-configure-server-parameters-using-cli.md)
+了解[如何在 Azure Database for PostgreSQL 中设置参数](howto-configure-server-parameters-using-cli.md)

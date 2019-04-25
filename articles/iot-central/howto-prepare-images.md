@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: c8444fd57fe939dfb212d88c22a071c13dac691e
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57767322"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60519225"
 ---
 # <a name="prepare-and-upload-images-to-your-azure-iot-central-application"></a>准备图像并将其上传到 Azure IoT Central 应用程序
 
@@ -56,7 +56,7 @@ ms.locfileid: "57767322"
 
 下表汇总了可以使用的图像大小：
 
-| 位置 | 大小 |
+| Location | 大小 |
 | -------- | ------ |
 | 应用程序管理器 | 268x160 像素 |
 | 设备模板 | 64x64 像素 |

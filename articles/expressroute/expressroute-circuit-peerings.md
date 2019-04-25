@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: mialdridm
 ms.custom: seodec18
-ms.openlocfilehash: 095d637eac5478c65ca3f15cc845518a94aa5149
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.openlocfilehash: 35cee297156cf64deeef8c9c6b514ec8176f9ca5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53080327"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60367691"
 ---
 # <a name="expressroute-circuits-and-peering"></a>ExpressRoute 线路和对等互连
 
@@ -56,6 +56,10 @@ ExpressRoute 线路不会映射到任何物理实体。 线路由称为服务密
 有关支持的服务、费用和配置的详细信息，请参阅[常见问题解答页](expressroute-faqs.md)。 有关提供 Microsoft 对等互连支持的连接提供商列表的信息，请参阅 [ExpressRoute Locations](expressroute-locations.md) （ExpressRoute 位置）页。
 
 ### <a name="publicpeering"></a>Azure 公共对等互连（新的线路已弃用）
+
+> [!Note]
+> Azure 公共对等互连有 1 个 NAT IP 地址关联到每个 BGP 会话。 超过 2 个 NAT IP 地址，请转为[Microsoft 对等互连](https://docs.microsoft.com/en-us/azure/expressroute/how-to-move-peering)，其中你可以配置自己的 NAT 分配，以及用于选择性前缀播发的路由筛选器。 
+>
 
 Azure 存储、SQL 数据库和网站等服务是通过公共 IP 地址提供的。 可以通过公共对等路由域私下连接到公共 IP 地址（包括云服务的 VIP）上托管的服务。 可以将公共对等域连接到外围网络，并从 WAN 连接到公共 IP 地址上的所有 Azure 服务，而无需通过 Internet 连接。
 

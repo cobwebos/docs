@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 3/11/2019
 ms.author: victorh
 ms.openlocfilehash: 4ef9089c94d9e806cc519c4f8243cdcb7e73953a
-ms.sourcegitcommit: 1902adaa68c660bdaac46878ce2dec5473d29275
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/11/2019
-ms.locfileid: "57730529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60194017"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering---public-preview"></a>Azure 防火墙威胁智能基于筛选-公共预览版
 
-可以为你的防火墙以发出警报并拒绝流量从/向已知恶意 IP 地址和域启用威胁智能基于筛选。 源自 Microsoft 威胁智能源的 IP 地址和域。 [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence)为 Microsoft 威胁智能提供支持，并由多个服务，包括 Azure 安全中心。
+可以为防火墙启用基于威胁智能的筛选，以提醒和拒绝来自/到达已知恶意 IP 地址和域的流量。 IP 地址和域源自 Microsoft 威胁智能源。 [Intelligent Security Graph](https://www.microsoft.com/en-us/security/operations/intelligence)为 Microsoft 威胁智能提供支持，并由多个服务，包括 Azure 安全中心。
 
 ![防火墙威胁智能](media/threat-intel/firewall-threat.png)
 

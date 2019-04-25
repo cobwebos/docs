@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
 ms.openlocfilehash: 877d994968dbc575c8baa7ac4c8a40b76f6d617f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283471"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60323818"
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN 规则引擎匹配条件 
 本文列出了 Azure 内容分发网络 (CDN) [规则引擎](cdn-rules-engine.md)的可用匹配条件的详细说明。
@@ -35,7 +35,7 @@ ms.locfileid: "59283471"
 
 “始终”匹配条件向所有请求应用默认的一组功能。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [始终](#always) | 向所有请求应用默认的一组功能。
 
@@ -43,7 +43,7 @@ ms.locfileid: "59283471"
 
 “设备”匹配条件用于根据属性标识来自移动设备的请求。  
 
-名称 | 目的
+Name | 目的
 -----|--------
 [设备](#device) | 根据设备属性标识来自移动设备的请求。
 
@@ -51,7 +51,7 @@ ms.locfileid: "59283471"
 
 “位置”匹配条件根据请求者的位置标识请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [AS 编号](#as-number) | 标识源自特定网络的请求。
 [国家/地区](#country) | 标识源自指定国家/地区的请求。
@@ -60,7 +60,7 @@ ms.locfileid: "59283471"
 
 “源”匹配条件标识指向内容分发网络存储或客户源服务器的请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [CDN 源](#cdn-origin) | 标识对存储在内容分发网络存储中的内容的请求。
 [客户源](#customer-origin) | 标识存储在特定客户源服务器上的内容的请求。
@@ -69,7 +69,7 @@ ms.locfileid: "59283471"
 
 “请求”匹配条件根据属性标识请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [客户端 IP 地址](#client-ip-address) | 标识源自特定 IP 地址的请求。
 [Cookie 参数](#cookie-parameter) | 查看与每个针对指定值的请求关联的 Cookie。
@@ -86,7 +86,7 @@ ms.locfileid: "59283471"
 
 “URL”匹配条件根据 URL 标识请求。
 
-名称 | 目的
+Name | 目的
 -----|--------
 [URL 路径目录](#url-path-directory) | 按相对路径标识请求。
 [URL 路径扩展名](#url-path-extension) | 按文件扩展名标识请求。
@@ -752,7 +752,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
 下表中的示例配置假设当某个请求与指定的 URL 模式匹配时满足此匹配条件：
 
-值                   | 相对于    | 结果 
+Value                   | 相对于    | 结果 
 ------------------------|----------------|-------
 \*/test.html \*/test.php  | 根或源 | 针对任何文件夹中名为“test.html”或“test.php”的资产发出的请求匹配此模式。
 /80ABCD/origin/text/*   | 根           | 当请求的资产满足以下条件时匹配此模式： <br />- 该资产必须位于名为“origin”的客户来源位置。 <br />- 相对路径必须以名为“text”的文件夹开头。 即，请求的资产可以位于“text”文件夹中，或者位于该文件夹的某个递归子文件夹中。
@@ -868,7 +868,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 #### <a name="sample-scenarios"></a>示例方案
 以下示例演示此选项在特定场合下的工作方式：
 
-名称  | 值 |  结果
+Name  | Value |  结果
 ------|-------|--------
 用户  | Joe   | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
 用户  | *     | 当所请求 URL 的查询字符串包含 User 参数时匹配此模式。
@@ -895,7 +895,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
     
 - 某些字符需要 URL 编码。 使用百分比符号对以下字符进行 URL 编码：
 
-   Character | URL 编码 | 值
+   Character | URL 编码 | Value
    ----------|--------------|------
    空格     | %20          | \%20
    &         | %25          | \%25
@@ -906,7 +906,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 
    例如：
 
-   值 | 解释为 
+   Value | 解释为 
    ------|---------------
    \\+    | +
    \\\\+   | \\+
@@ -960,7 +960,7 @@ HTML 首选 DTD | %{wurfl_cap_html_preferred_dtd} | 一个字符串，表示移�
 #### <a name="sample-scenarios"></a>示例方案
 以下示例演示此选项在特定场合下的工作方式：
 
- 名称                 | 描述
+ Name                 | 描述
  ---------------------|------------
 user=joe              | 当所请求 URL 的查询字符串为“?user=joe”时匹配此模式。
 \*user=\* \*optout=\* | 当 CDN URL 查询包含 user 或 optout 参数时匹配此模式。
