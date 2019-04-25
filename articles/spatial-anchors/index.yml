@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: df4684f9e7fd57c5a7600b26505413d60417043e
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753364"
 documentType: LandingData
 title: Azure 空间定位点文档
 metadata:
@@ -23,49 +17,49 @@ metadata:
 abstract:
   description: 空间定位点是一种跨平台开发人员服务。通过该服务，可以使用能够随时间推移跨设备保存自己位置的对象创建混合的现实体验。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何使用 Azure 空间定位点创建你的第一个应用程序：
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: /media/logos/logo_android.svg
-        alt: 
-      text: Android
-      href: quickstarts/get-started-android.md
-    - image:
-        src: /media/logos/logo_Windows.svg
-        alt: 
-      text: HoloLens
-      href: quickstarts/get-started-hololens.md
-    - image:
-        src: /media/logos/logo_ios.svg
-        alt: 
-      text: iOS
-      href: quickstarts/get-started-ios.md
-    - image:
-        src: /media/logos/logo_android.svg
-        alt: 
-      text: Unity Android
-      href: quickstarts/get-started-unity-android.md
-    - image:
-        src: /media/logos/logo_Windows.svg
-        alt: 
-      text: Unity HoloLens
-      href: quickstarts/get-started-unity-hololens.md
-    - image:
-        src: /media/logos/logo_ios.svg
-        alt: 
-      text: Unity iOS
-      href: quickstarts/get-started-unity-ios.md
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用 Azure 空间定位点设置、管理、生成和部署应用。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何使用 Azure 空间定位点创建你的第一个应用程序：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Android
+            href: quickstarts/get-started-android.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: HoloLens
+            href: quickstarts/get-started-hololens.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: iOS
+            href: quickstarts/get-started-ios.md
+          - image:
+              src: /media/logos/logo_android.svg
+              alt: null
+            text: Unity Android
+            href: quickstarts/get-started-unity-android.md
+          - image:
+              src: /media/logos/logo_Windows.svg
+              alt: null
+            text: Unity HoloLens
+            href: quickstarts/get-started-unity-hololens.md
+          - image:
+              src: /media/logos/logo_ios.svg
+              alt: null
+            text: Unity iOS
+            href: quickstarts/get-started-unity-ios.md
+  - title: 分步教程
     items:
-    - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">在 Unity 中共享。</a>
-    - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">使用 Azure Cosmos DB 在 Unity 中共享。</a>
+      - type: paragraph
+        text: 了解如何使用 Azure 空间定位点设置、管理、生成和部署应用。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-share-anchors-across-devices">在 Unity 中共享。</a>
+          - html: <a href="/azure/spatial-anchors/tutorials/tutorial-use-cosmos-db-to-store-anchors">使用 Azure Cosmos DB 在 Unity 中共享。</a>

@@ -1,55 +1,48 @@
-items:
 - name: 大型机重新托管
   items:
-  - name: 概述
-    items:
-    - name: 入门
-      href: overview.md
-    - name: 工作负荷
-      href: partner-workloads.md
-  - name: 概念
-    items:
-    - name: 计算
-      href: concepts/mainframe-compute-azure.md
-    - name: 存储
-      href: concepts/mainframe-storage-azure.md
-  - name: Micro Focus
-    items:
-    - name: 入门
-      href: microfocus/get-started.md
-    - name: 安装 Enterprise Server
-      href: microfocus/set-up-micro-focus-azure.md
-    - name: 运行 CICS BankDemo
-      href: microfocus/demo.md
-    - name: 容器中的 Enterprise Server
-      href: microfocus/run-enterprise-server-container.md
-  - name: TmaxSoft OpenFrame
-    items:
-    - name: 入门
-      href: tmaxsoft/get-started.md
-    - name: 安装 OpenFrame
-      href: tmaxsoft/install-openframe-azure.md
-  - name: IBM
-    items:
-    - name: 入门
-      href: ibm/get-started.md
-    - name: 安装 IBM zD&T
-      href: ibm/install-ibm-z-environment.md
-    - name: 在 zD&T 中设置 ADCD
-      href: ibm/demo.md
-    - name: IBM DB2 pureScale
-      href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-    - name: 部署 IBM DB2 pureScale
-      href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
-  - name: 资源
-    items:
-    - name: 白皮书
-      href: mainframe-white-papers.md
-    - name: Azure 路线图
-      href: https://azure.microsoft.com/updates/
-ms.openlocfilehash: c0cec35997d398045f9c34904c8ee07755724572
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788847"
+    - name: 概述
+      items:
+        - name: 入门
+          href: overview.md
+        - name: 工作负荷
+          href: partner-workloads.md
+    - name: 概念
+      items:
+        - name: 计算
+          href: concepts/mainframe-compute-azure.md
+        - name: 存储
+          href: concepts/mainframe-storage-azure.md
+    - name: Micro Focus
+      items:
+        - name: 入门
+          href: microfocus/get-started.md
+        - name: 安装 Enterprise Server
+          href: microfocus/set-up-micro-focus-azure.md
+        - name: 运行 CICS BankDemo
+          href: microfocus/demo.md
+        - name: 容器中的 Enterprise Server
+          href: microfocus/run-enterprise-server-container.md
+    - name: TmaxSoft OpenFrame
+      items:
+        - name: 入门
+          href: tmaxsoft/get-started.md
+        - name: 安装 OpenFrame
+          href: tmaxsoft/install-openframe-azure.md
+    - name: IBM
+      items:
+        - name: 入门
+          href: ibm/get-started.md
+        - name: 安装 IBM zD&T
+          href: ibm/install-ibm-z-environment.md
+        - name: 在 zD&T 中设置 ADCD
+          href: ibm/demo.md
+        - name: IBM DB2 pureScale
+          href: /azure/virtual-machines/linux/ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+        - name: 部署 IBM DB2 pureScale
+          href: /azure/virtual-machines/linux/deploy-ibm-db2-purescale-azure?toc=/azure/virtual-machines/workloads/mainframe-rehosting/toc.json
+    - name: 资源
+      items:
+        - name: 白皮书
+          href: mainframe-white-papers.md
+        - name: Azure 路线图
+          href: 'https://azure.microsoft.com/updates/'

@@ -1,80 +1,73 @@
-items:
 - name: Azure Blockchain Workbench（公共预览版）
   href: index.yml
 - name: 概述
-  items:
-  - name: 关于 Azure Blockchain Workbench
-    href: overview.md
   expanded: true
+  items:
+    - name: 关于 Azure Blockchain Workbench
+      href: overview.md
 - name: 教程
-  items:
-  - name: 创建区块链应用
-    href: create-app.md
-  - name: 使用区块链应用
-    href: use.md
   expanded: true
+  items:
+    - name: 创建区块链应用
+      href: create-app.md
+    - name: 使用区块链应用
+      href: use.md
 - name: 概念
   items:
-  - name: 体系结构
-    href: architecture.md
-  - name: 集成模式
-    href: integration-patterns.md
+    - name: 体系结构
+      href: architecture.md
+    - name: 集成模式
+      href: integration-patterns.md
 - name: 操作指南
-  items:
-  - name: 部署 Workbench
-    href: deploy.md
-  - name: 管理 Workbench 用户
-    href: manage-users.md
-  - name: 版本控制应用
-    href: version-app.md
-  - name: 使用 Workbench API
-    href: use-api.md
-  - name: 排查应用问题
-    href: troubleshooting.md
-  - name: 使用 Workbench 数据
-    items:
-    - name: 配置 DB 防火墙
-      href: database-firewall.md
-    - name: 获取 DB 详细信息
-      href: getdb-details.md
-    - name: 使用 Excel 中的数据
-      href: data-excel.md
-    - name: 使用 Power BI 中的数据
-      href: data-powerbi.md
-    - name: 使用 SQL Management Studio 中的数据
-      href: data-sql-management-studio.md
   expanded: true
+  items:
+    - name: 部署 Workbench
+      href: deploy.md
+    - name: 管理 Workbench 用户
+      href: manage-users.md
+    - name: 版本控制应用
+      href: version-app.md
+    - name: 使用 Workbench API
+      href: use-api.md
+    - name: 排查应用问题
+      href: troubleshooting.md
+    - name: 使用 Workbench 数据
+      items:
+        - name: 配置 DB 防火墙
+          href: database-firewall.md
+        - name: 获取 DB 详细信息
+          href: getdb-details.md
+        - name: 使用 Excel 中的数据
+          href: data-excel.md
+        - name: 使用 Power BI 中的数据
+          href: data-powerbi.md
+        - name: 使用 SQL Management Studio 中的数据
+          href: data-sql-management-studio.md
 - name: 引用
   items:
-  - name: 配置
-    href: configuration.md
-  - name: 数据库视图
-    href: database-views.md
-  - name: 消息传送 API
-    href: messages-overview.md
-  - name: REST API
-    href: https://docs.microsoft.com/rest/api/azure-blockchain-workbench
+    - name: 配置
+      href: configuration.md
+    - name: 数据库视图
+      href: database-views.md
+    - name: 消息传送 API
+      href: messages-overview.md
+    - name: REST API
+      href: 'https://docs.microsoft.com/rest/api/azure-blockchain-workbench'
 - name: 资源
   items:
-  - name: 博客
-    href: https://azure.microsoft.com/blog/topics/blockchain/
-  - name: 代码示例
-    href: https://github.com/Azure-Samples/blockchain
-  - name: 社区
-    href: https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain
-  - name: 论坛
-    href: https://aka.ms/workbenchforum
-  - name: 产品反馈
-    href: https://aka.ms/blockchainuservoice
+    - name: 博客
+      href: 'https://azure.microsoft.com/blog/topics/blockchain/'
+    - name: 代码示例
+      href: 'https://github.com/Azure-Samples/blockchain'
+    - name: 社区
+      href: 'https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain'
+    - name: 论坛
+      href: 'https://aka.ms/workbenchforum'
+    - name: 产品反馈
+      href: 'https://aka.ms/blockchainuservoice'
 - name: 解决方案模板
   items:
-  - name: Ethereum 权威证明联盟
-    href: ../templates/ethereum-poa-deployment.md
-  - name: Hyperledger Fabric 联盟
-    href: ../templates/hyperledger-fabric-consortium-blockchain.md
-ms.openlocfilehash: b0426cc5dfbac62657ad172f5fa73586e6214601
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001923"
+    - name: Ethereum 权威证明联盟
+      href: ../templates/ethereum-poa-deployment.md
+    - name: Hyperledger Fabric 联盟
+      href: ../templates/hyperledger-fabric-consortium-blockchain.md

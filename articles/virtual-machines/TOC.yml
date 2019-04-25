@@ -1,4 +1,3 @@
-items:
 - name: 虚拟机文档
   href: index.yml
 - name: Azure 中的 Linux 虚拟机
@@ -9,29 +8,23 @@ items:
   href: extensions/overview.md
 - name: 工作负荷
   items:
-  - name: Oracle
-    href: workloads/oracle/oracle-considerations.md
-  - name: SAP
-    href: workloads/sap/get-started.md
-  - name: 大型机重新托管
-    href: workloads/mainframe-rehosting/overview.md
+    - name: Oracle
+      href: workloads/oracle/oracle-considerations.md
+    - name: SAP
+      href: workloads/sap/get-started.md
+    - name: 大型机重新托管
+      href: workloads/mainframe-rehosting/overview.md
 - name: 经典部署
   items:
-  - name: 使用经典部署的 Linux VM
-    href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
-  - name: 使用经典部署的 Windows VM
-    href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
+    - name: 使用经典部署的 Linux VM
+      href: linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json
+    - name: 使用经典部署的 Windows VM
+      href: windows/overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json
 - name: 资源
   items:
-  - name: 利用 Microsoft Learn 掌握技能
-    href: /learn/browse/?products=azure-virtual-machines
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 7f253c1ed2b4910e18acd65367cd8e0e10574c0d
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56737741"
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-virtual-machines
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'

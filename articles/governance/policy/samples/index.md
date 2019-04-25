@@ -1,18 +1,20 @@
 ---
 title: 策略示例索引
 description: Azure Policy 的示例索引。 类别包括命名、标记、Key Vault、网络、存储，等等。
+services: azure-policy
 author: DCtheGeek
 manager: carmonm
 ms.service: azure-policy
 ms.topic: sample
-ms.date: 03/19/2019
-ms.author: dacoulte
+origin.date: 01/17/2018
+ms.date: 04/15/2019
+ms.author: v-biyu
 ms.openlocfilehash: 5a39614d544157695b8b2f02ab5f1fe4427d5ca5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796895"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60865740"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy 示例
 
@@ -23,8 +25,6 @@ ms.locfileid: "59796895"
 [!INCLUDE [azure-policy-samples-compute](../../../../includes/azure-policy-samples-compute.md)]
 
 [!INCLUDE [azure-policy-samples-datalake](../../../../includes/azure-policy-samples-datalake.md)]
-
-[!INCLUDE [azure-policy-samples-guest-configuration](../../../../includes/azure-policy-samples-guest-configuration.md)]
 
 [!INCLUDE [azure-policy-samples-keyvault](../../../../includes/azure-policy-samples-keyvault.md)]
 

@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0a1c495362ef38723c61eace25ebb13ec9ed3a6a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57883638"
 documentType: LandingData
 title: Azure Databricks 文档
 metadata:
@@ -20,45 +14,45 @@ abstract:
   description: 了解如何使用 Azure Databricks（一种基于 Apache Spark 的分析平台，它提供了一键设置，简化了工作流，并提供了一个交互工作区，使数据科学家、数据工程师和商业分析师可以相互协作）。 快速入门和教程介绍了如何开始使用 Azure Databricks 以及如何与其他 Azure 服务集成。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: media/index/video.png
       width: 250
-    title: Azure Databricks 简介 (3:38)
-    href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
+    title: 'Azure Databricks 简介 (3:38)'
+    href: 'https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/'
     width: 250
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何创建 Azure Databricks 工作区、Spark 群集以及如何通过以下方式运行作业：
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: /azure/azure-databricks/media/index/portal.svg
-      text: Azure 门户
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-    - image:
-        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
-      text: 资源管理器模板
-      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用 Azure Databricks：
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何创建 Azure Databricks 工作区、Spark 群集以及如何通过以下方式运行作业：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/azure-databricks/media/index/portal.svg
+            text: Azure 门户
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+          - image:
+              src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+            text: 资源管理器模板
+            href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
+  - title: 分步教程
     items:
-    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">提取、转换和加载数据</a>
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">从事件中心对数据进行流式传输</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">使用认知服务进行情绪分析</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">从 HDInsight Kafka 对数据进行流式传输</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 了解如何使用 Azure Databricks：
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">提取、转换和加载数据</a>
+          - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">从事件中心对数据进行流式传输</a>
+          - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">使用认知服务进行情绪分析</a>
+          - html: '<a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">从 HDInsight Kafka 对数据进行流式传输</a>'
+  - title: 引用
     items:
-    - title: REST
-      html: <p><a href="/rest/api/databricks">REST API</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: REST
+            html: <p><a href="/rest/api/databricks">REST API</a></p>

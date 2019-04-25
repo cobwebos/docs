@@ -1,288 +1,281 @@
-items:
 - name: Azure 备份文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是 Azure 备份？
-    href: backup-overview.md
+    - name: 什么是 Azure 备份？
+      href: backup-overview.md
 - name: 快速入门
-  items:
-  - name: 备份 VM - 门户
-    href: quick-backup-vm-portal.md
-  - name: 备份 VM - PowerShell
-    href: quick-backup-vm-powershell.md
-  - name: 备份 VM - CLI
-    href: quick-backup-vm-cli.md
   expanded: true
+  items:
+    - name: 备份 VM - 门户
+      href: quick-backup-vm-portal.md
+    - name: 备份 VM - PowerShell
+      href: quick-backup-vm-powershell.md
+    - name: 备份 VM - CLI
+      href: quick-backup-vm-cli.md
 - name: 教程
   items:
-  - name: 大规模备份 Azure VM
-    href: tutorial-backup-vm-at-scale.md
-  - name: 还原磁盘
-    href: tutorial-restore-disk.md
-  - name: 还原单个文件
-    href: tutorial-restore-files.md
-  - name: 备份 Windows Server
-    href: tutorial-backup-windows-server-to-azure.md
-  - name: 将文件还原到 Windows Server
-    href: tutorial-backup-restore-files-windows-server.md
+    - name: 大规模备份 Azure VM
+      href: tutorial-backup-vm-at-scale.md
+    - name: 还原磁盘
+      href: tutorial-restore-disk.md
+    - name: 还原单个文件
+      href: tutorial-restore-files.md
+    - name: 备份 Windows Server
+      href: tutorial-backup-windows-server-to-azure.md
+    - name: 将文件还原到 Windows Server
+      href: tutorial-backup-restore-files-windows-server.md
 - name: 示例
   items:
-  - name: Azure PowerShell
-    href: powershell-backup-samples.md
-  - name: 资源管理器模板
-    href: backup-rm-template-samples.md
+    - name: Azure PowerShell
+      href: powershell-backup-samples.md
+    - name: 资源管理器模板
+      href: backup-rm-template-samples.md
 - name: 概念
   items:
-  - name: 支持矩阵
-    items:
-    - name: Azure 备份支持矩阵
-      href: backup-support-matrix.md
-    - name: Azure VM 备份支持矩阵
-      href: backup-support-matrix-iaas.md
-    - name: DPM/Azure 备份服务器 (MABS) 支持矩阵
-      href: backup-support-matrix-mabs-dpm.md
-    - name: MARS 代理支持矩阵
-      href: backup-support-matrix-mars-agent.md
-  - name: 常见问题 (FAQ)
-    items:
-    - name: 常见问题解答 - 恢复服务保管库
-      href: backup-azure-backup-faq.md
-    - name: 常见问题解答 - Azure VM 备份
-      href: backup-azure-vm-backup-faq.md
-    - name: 常见问题解答 - MARS 代理
-      href: backup-azure-file-folder-backup-faq.md
-    - name: 常见问题解答 - 备份 Azure 文件
-      href: backup-azure-files-faq.md
-    - name: 常见问题解答 - 备份 Azure VM 上的 SQL Server 数据库
-      href: faq-backup-sql-server.md
-  - name: 备份体系结构
-    href: backup-architecture.md
-  - name: 基于角色的访问控制
-    href: backup-rbac-rs-vault.md
-  - name: 混合备份的安全性
-    href: backup-azure-security-feature.md
-  - name: 配置脱机备份
-    href: backup-azure-backup-import-export.md
-  - name: DPM 和 Azure 备份服务器的脱机备份
-    href: backup-azure-backup-server-import-export-.md
-  - name: 更换磁带库
-    href: backup-azure-backup-cloud-as-tape.md
-  - name: Azure 的常见安全属性
-    href: backup-security-attributes.md
+    - name: 支持矩阵
+      items:
+        - name: Azure 备份支持矩阵
+          href: backup-support-matrix.md
+        - name: Azure VM 备份支持矩阵
+          href: backup-support-matrix-iaas.md
+        - name: DPM/Azure 备份服务器 (MABS) 支持矩阵
+          href: backup-support-matrix-mabs-dpm.md
+        - name: MARS 代理支持矩阵
+          href: backup-support-matrix-mars-agent.md
+    - name: 常见问题 (FAQ)
+      items:
+        - name: 常见问题解答 - 恢复服务保管库
+          href: backup-azure-backup-faq.md
+        - name: 常见问题解答 - Azure VM 备份
+          href: backup-azure-vm-backup-faq.md
+        - name: 常见问题解答 - MARS 代理
+          href: backup-azure-file-folder-backup-faq.md
+        - name: 常见问题解答 - 备份 Azure 文件
+          href: backup-azure-files-faq.md
+        - name: 常见问题解答 - 备份 Azure VM 上的 SQL Server 数据库
+          href: faq-backup-sql-server.md
+    - name: 备份体系结构
+      href: backup-architecture.md
+    - name: 基于角色的访问控制
+      href: backup-rbac-rs-vault.md
+    - name: 混合备份的安全性
+      href: backup-azure-security-feature.md
+    - name: 配置脱机备份
+      href: backup-azure-backup-import-export.md
+    - name: DPM 和 Azure 备份服务器的脱机备份
+      href: backup-azure-backup-server-import-export-.md
+    - name: 更换磁带库
+      href: backup-azure-backup-cloud-as-tape.md
+    - name: Azure 的常见安全属性
+      href: backup-security-attributes.md
 - name: 如何
   items:
-  - name: Azure 备份服务器
-    items:
-    - name: Azure 备份服务器保护矩阵
-      href: backup-mabs-protection-matrix.md
-    - name: 安装或升级
-      items:
-      - name: 安装 Azure 备份服务器
-        href: backup-azure-microsoft-azure-backup.md
-      - name: 添加存储
-        href: backup-mabs-add-storage.md
-      - name: MABS 中的新增功能
-        href: backup-mabs-whats-new-mabs.md
-      - name: 发行说明 MABS V3
-        href: backup-mabs-release-notes-v3.md
-      - name: 无人参与的安装
-        href: backup-mabs-unattended-install.md
-    - name: 保护工作负荷
-      items:
-      - name: VMware 服务器
-        href: backup-azure-backup-server-vmware.md
-      - name: Exchange
-        href: backup-azure-exchange-mabs.md
-      - name: SharePoint 场
-        href: backup-azure-backup-sharepoint-mabs.md
-      - name: SQL Server
-        href: backup-azure-sql-mabs.md
-      - name: 保护系统状态和裸机恢复
-        href: backup-mabs-system-state-and-bmr.md
-    - name: 从 Azure 备份服务器恢复数据
-      href: backup-azure-alternate-dpm-server.md
-  - name: Azure Stack 上的 Azure 备份服务器
-    items:
-    - name: 安装 Azure 备份服务器
-      href: backup-mabs-install-azure-stack.md
-    - name: 保护文件和应用程序
-      href: backup-mabs-files-applications-azure-stack.md
-    - name: 保护 SharePoint 场
-      href: backup-mabs-sharepoint-azure-stack.md
-    - name: 保护 SQL Server 数据库
-      href: backup-mabs-sql-azure-stack.md
-  - name: Azure 文件共享
-    items:
-    - name: 备份 Azure 文件共享
-      href: backup-azure-files.md
-  - name: 备份 Azure VM
-    items:
-    - name: 关于 Azure VM 备份
-      href: backup-azure-vms-introduction.md
-    - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
-      href: backup-instant-restore-capability.md
-    - name: 备份 Azure VM
-      items:
-      - name: 在创建 Azure VM 时启用备份
-        href: backup-during-vm-creation.md
-      - name: 通过 VM 设置备份 Azure VM
-        href: backup-azure-vms-first-look-arm.md
-      - name: 设置保管库并为 Azure VM 启用备份
-        href: backup-azure-arm-vms-prepare.md
-      - name: 备份加密 Azure VM
-        href: backup-azure-vms-encryption.md
-      - name: 配置运行 Linux 的 Azure VM 的应用一致备份
-        href: backup-azure-linux-app-consistent.md
-    - name: 管理和监视 Azure VM 备份
-      items:
-      - name: 管理 Azure VM 备份
-        href: backup-azure-manage-vms.md
-      - name: 监视 Azure VM 备份警报
-        href: backup-azure-monitor-vms.md
-    - name: 还原 Azure VM
-      items:
-      - name: 在门户中还原 Azure VM
-        href: backup-azure-arm-restore-vms.md
-      - name: 从 Azure VM 备份恢复文件
-        href: backup-azure-restore-files-from-vm.md
-      - name: 还原加密 VM
-        href: backup-azure-vms-encryption.md
-      - name: 还原已加密 VM 的密钥和机密
-        href: backup-azure-restore-key-secret.md
-  - name: 配置 Azure 备份报表
-    items:
-    - name: 配置 Azure 备份报表
-      href: backup-azure-configure-reports.md
-    - name: Azure 备份报表的数据模型
-      href: backup-azure-reports-data-model.md
-    - name: Azure 备份的 Log Analytics 数据模型
-      href: backup-azure-log-analytics-data-model.md
-    - name: 更新 Azure 备份中心报告内容包
-      href: backup-azure-central-reporting-updates.md
-  - name: 数据保护管理器
-    items:
-    - name: 在 Azure 门户中准备 DPM 工作负荷
-      href: backup-azure-dpm-introduction.md
-    - name: 使用 DPM 备份 Exchange 服务器
-      href: backup-azure-backup-exchange-server.md
-    - name: 将数据恢复到备用 DPM 服务器
-      href: backup-azure-alternate-dpm-server.md
-    - name: 使用 DPM 备份 SQL Server 工作负荷
-      href: backup-azure-backup-sql.md
-    - name: 使用 DPM 备份 SharePoint 场
-      href: backup-azure-backup-sharepoint.md
-  - name: 使用 Azure PowerShell
-    items:
-    - name: Azure 门户中的 Azure VM
-      href: backup-azure-vms-automation.md
-    - name: Azure 门户的 DPM
-      href: backup-dpm-automation.md
-    - name: Azure 门户中的 Windows Server
-      href: backup-client-automation.md
-    - name: Azure 门户中的 Azure 文件共享
-      href: backup-azure-afs-automation.md
-    - name: Azure VM 备份中的 SQL
-      href: backup-azure-sql-automation.md
-  - name: 使用 Azure 备份 REST API
-    items:
-    - name: 创建恢复服务保管库
-      href: backup-azure-arm-userestapi-createorupdatevault.md
-    - name: 创建和更新备份策略
-      href: backup-azure-arm-userestapi-createorupdatepolicy.md
-    - name: 备份 Azure VM
-      href: backup-azure-arm-userestapi-backupazurevms.md
-    - name: 还原 Azure VM
-      href: backup-azure-arm-userestapi-restoreazurevms.md
-    - name: 管理 Azure 备份作业
-      href: backup-azure-arm-userestapi-managejobs.md
-  - name: Azure VM 上的备份 SQL Server 数据库
-    items:
-    - name: 关于 Azure VM 中的 SQL Server 备份
-      href: backup-azure-sql-database.md
-    - name: 备份 Azure VM 中的 SQL Server 数据库
-      href: backup-sql-server-database-azure-vms.md
-    - name: 还原 Azure VM 中的 SQL Server 数据库
-      href: restore-sql-database-azure-vm.md
-    - name: 管理已备份的 SQL Server 数据库
-      href: manage-monitor-sql-database-backup.md
-  - name: Windows Server
-    items:
-    - name: 备份 Windows Server 文件和文件夹
-      href: backup-configure-vault.md
-    - name: 备份 Windows Server 系统状态
-      href: backup-azure-system-state.md
-    - name: 将文件从 Azure 恢复到 Windows Server
-      href: backup-azure-restore-windows-server.md
-    - name: 还原 Windows Server 系统状态
-      href: backup-azure-restore-system-state.md
-    - name: 监视和管理恢复服务保管库
-      href: backup-azure-manage-windows-server.md
-  - name: 恢复服务保管库
-    items:
-    - name: 恢复服务保管库概述
-      href: backup-azure-recovery-services-vault-overview.md
-    - name: 将备份保管库升级到恢复服务保管库
-      href: backup-azure-upgrade-backup-to-recovery-services.md
-    - name: 删除恢复服务保管库
-      href: backup-azure-delete-vault.md
-    - name: 移动恢复服务保管库
-      href: backup-azure-move-recovery-services-vault.md
-  - name: 故障排除
-    items:
-    - name: Azure VM
-      href: backup-azure-vms-troubleshoot.md
-    - name: Azure 备份代理或 VM 扩展超时
-      href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
-    - name: 文件和文件夹备份速度慢
-      href: backup-azure-troubleshoot-slow-backup-performance-issue.md
     - name: Azure 备份服务器
-      href: backup-azure-mabs-troubleshoot.md
-    - name: System Center DPM
-      href: backup-azure-scdpm-troubleshooting.md
-    - name: Azure 备份代理
-      href: backup-azure-mars-troubleshoot.md
+      items:
+        - name: Azure 备份服务器保护矩阵
+          href: backup-mabs-protection-matrix.md
+        - name: 安装或升级
+          items:
+            - name: 安装 Azure 备份服务器
+              href: backup-azure-microsoft-azure-backup.md
+            - name: 添加存储
+              href: backup-mabs-add-storage.md
+            - name: MABS 中的新增功能
+              href: backup-mabs-whats-new-mabs.md
+            - name: 发行说明 MABS V3
+              href: backup-mabs-release-notes-v3.md
+            - name: 无人参与的安装
+              href: backup-mabs-unattended-install.md
+        - name: 保护工作负荷
+          items:
+            - name: VMware 服务器
+              href: backup-azure-backup-server-vmware.md
+            - name: Exchange
+              href: backup-azure-exchange-mabs.md
+            - name: SharePoint 场
+              href: backup-azure-backup-sharepoint-mabs.md
+            - name: SQL Server
+              href: backup-azure-sql-mabs.md
+            - name: 保护系统状态和裸机恢复
+              href: backup-mabs-system-state-and-bmr.md
+        - name: 从 Azure 备份服务器恢复数据
+          href: backup-azure-alternate-dpm-server.md
+    - name: Azure Stack 上的 Azure 备份服务器
+      items:
+        - name: 安装 Azure 备份服务器
+          href: backup-mabs-install-azure-stack.md
+        - name: 保护文件和应用程序
+          href: backup-mabs-files-applications-azure-stack.md
+        - name: 保护 SharePoint 场
+          href: backup-mabs-sharepoint-azure-stack.md
+        - name: 保护 SQL Server 数据库
+          href: backup-mabs-sql-azure-stack.md
     - name: Azure 文件共享
-      href: troubleshoot-azure-files.md
-    - name: SQL Server
-      href: backup-sql-server-azure-troubleshoot.md
-  - name: 监视 Azure 备份工作负荷
-    items:
-    - name: 使用 Azure 门户
-      href: backup-azure-monitoring-built-in-monitor.md
-    - name: 使用 Azure Monitor
-      href: backup-azure-monitoring-use-azuremonitor.md
+      items:
+        - name: 备份 Azure 文件共享
+          href: backup-azure-files.md
+    - name: 备份 Azure VM
+      items:
+        - name: 关于 Azure VM 备份
+          href: backup-azure-vms-introduction.md
+        - name: 使用 Azure 备份即时还原来备份和还原 Azure VM
+          href: backup-instant-restore-capability.md
+        - name: 备份 Azure VM
+          items:
+            - name: 在创建 Azure VM 时启用备份
+              href: backup-during-vm-creation.md
+            - name: 通过 VM 设置备份 Azure VM
+              href: backup-azure-vms-first-look-arm.md
+            - name: 设置保管库并为 Azure VM 启用备份
+              href: backup-azure-arm-vms-prepare.md
+            - name: 备份加密 Azure VM
+              href: backup-azure-vms-encryption.md
+            - name: 配置运行 Linux 的 Azure VM 的应用一致备份
+              href: backup-azure-linux-app-consistent.md
+        - name: 管理和监视 Azure VM 备份
+          items:
+            - name: 管理 Azure VM 备份
+              href: backup-azure-manage-vms.md
+            - name: 监视 Azure VM 备份警报
+              href: backup-azure-monitor-vms.md
+        - name: 还原 Azure VM
+          items:
+            - name: 在门户中还原 Azure VM
+              href: backup-azure-arm-restore-vms.md
+            - name: 从 Azure VM 备份恢复文件
+              href: backup-azure-restore-files-from-vm.md
+            - name: 还原加密 VM
+              href: backup-azure-vms-encryption.md
+            - name: 还原已加密 VM 的密钥和机密
+              href: backup-azure-restore-key-secret.md
+    - name: 配置 Azure 备份报表
+      items:
+        - name: 配置 Azure 备份报表
+          href: backup-azure-configure-reports.md
+        - name: Azure 备份报表的数据模型
+          href: backup-azure-reports-data-model.md
+        - name: Azure 备份的 Log Analytics 数据模型
+          href: backup-azure-log-analytics-data-model.md
+        - name: 更新 Azure 备份中心报告内容包
+          href: backup-azure-central-reporting-updates.md
+    - name: 数据保护管理器
+      items:
+        - name: 在 Azure 门户中准备 DPM 工作负荷
+          href: backup-azure-dpm-introduction.md
+        - name: 使用 DPM 备份 Exchange 服务器
+          href: backup-azure-backup-exchange-server.md
+        - name: 将数据恢复到备用 DPM 服务器
+          href: backup-azure-alternate-dpm-server.md
+        - name: 使用 DPM 备份 SQL Server 工作负荷
+          href: backup-azure-backup-sql.md
+        - name: 使用 DPM 备份 SharePoint 场
+          href: backup-azure-backup-sharepoint.md
+    - name: 使用 Azure PowerShell
+      items:
+        - name: Azure 门户中的 Azure VM
+          href: backup-azure-vms-automation.md
+        - name: Azure 门户的 DPM
+          href: backup-dpm-automation.md
+        - name: Azure 门户中的 Windows Server
+          href: backup-client-automation.md
+        - name: Azure 门户中的 Azure 文件共享
+          href: backup-azure-afs-automation.md
+        - name: Azure VM 备份中的 SQL
+          href: backup-azure-sql-automation.md
+    - name: 使用 Azure 备份 REST API
+      items:
+        - name: 创建恢复服务保管库
+          href: backup-azure-arm-userestapi-createorupdatevault.md
+        - name: 创建和更新备份策略
+          href: backup-azure-arm-userestapi-createorupdatepolicy.md
+        - name: 备份 Azure VM
+          href: backup-azure-arm-userestapi-backupazurevms.md
+        - name: 还原 Azure VM
+          href: backup-azure-arm-userestapi-restoreazurevms.md
+        - name: 管理 Azure 备份作业
+          href: backup-azure-arm-userestapi-managejobs.md
+    - name: Azure VM 上的备份 SQL Server 数据库
+      items:
+        - name: 关于 Azure VM 中的 SQL Server 备份
+          href: backup-azure-sql-database.md
+        - name: 备份 Azure VM 中的 SQL Server 数据库
+          href: backup-sql-server-database-azure-vms.md
+        - name: 还原 Azure VM 中的 SQL Server 数据库
+          href: restore-sql-database-azure-vm.md
+        - name: 管理已备份的 SQL Server 数据库
+          href: manage-monitor-sql-database-backup.md
+    - name: Windows Server
+      items:
+        - name: 备份 Windows Server 文件和文件夹
+          href: backup-configure-vault.md
+        - name: 备份 Windows Server 系统状态
+          href: backup-azure-system-state.md
+        - name: 将文件从 Azure 恢复到 Windows Server
+          href: backup-azure-restore-windows-server.md
+        - name: 还原 Windows Server 系统状态
+          href: backup-azure-restore-system-state.md
+        - name: 监视和管理恢复服务保管库
+          href: backup-azure-manage-windows-server.md
+    - name: 恢复服务保管库
+      items:
+        - name: 恢复服务保管库概述
+          href: backup-azure-recovery-services-vault-overview.md
+        - name: 将备份保管库升级到恢复服务保管库
+          href: backup-azure-upgrade-backup-to-recovery-services.md
+        - name: 删除恢复服务保管库
+          href: backup-azure-delete-vault.md
+        - name: 移动恢复服务保管库
+          href: backup-azure-move-recovery-services-vault.md
+    - name: 故障排除
+      items:
+        - name: Azure VM
+          href: backup-azure-vms-troubleshoot.md
+        - name: Azure 备份代理或 VM 扩展超时
+          href: backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md
+        - name: 文件和文件夹备份速度慢
+          href: backup-azure-troubleshoot-slow-backup-performance-issue.md
+        - name: Azure 备份服务器
+          href: backup-azure-mabs-troubleshoot.md
+        - name: System Center DPM
+          href: backup-azure-scdpm-troubleshooting.md
+        - name: Azure 备份代理
+          href: backup-azure-mars-troubleshoot.md
+        - name: Azure 文件共享
+          href: troubleshoot-azure-files.md
+        - name: SQL Server
+          href: backup-sql-server-azure-troubleshoot.md
+    - name: 监视 Azure 备份工作负荷
+      items:
+        - name: 使用 Azure 门户
+          href: backup-azure-monitoring-built-in-monitor.md
+        - name: 使用 Azure Monitor
+          href: backup-azure-monitoring-use-azuremonitor.md
 - name: 引用
   items:
-  - name: .NET
-    href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
-  - name: Azure CLI
-    href: /cli/azure/backup?view=azure-cli-latest
-  - name: PowerShell
-    href: /powershell/module/az.recoveryservices
-  - name: REST - 备份
-    href: /rest/api/backup/
-  - name: REST - 恢复服务保管库
-    href: /rest/api/recoveryservices/
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.recoveryservices/allversions
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.recoveryservices.backup
+    - name: Azure CLI
+      href: /cli/azure/backup?view=azure-cli-latest
+    - name: PowerShell
+      href: /powershell/module/az.recoveryservices
+    - name: REST - 备份
+      href: /rest/api/backup/
+    - name: REST - 恢复服务保管库
+      href: /rest/api/recoveryservices/
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.recoveryservices/allversions
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/backup/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=backup
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=backup
-ms.openlocfilehash: b9fa6548951ca06a8568a00bbafe5c24518923ab
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59681074"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/backup/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=backup'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=backup'

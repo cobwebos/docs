@@ -1,17 +1,11 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 89376bf654a23b37e004a1b9b00e32a0c2ac3e2a
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495066"
 documentType: LandingData
 title: 适用于容器的 Azure
 metadata:
-  document_id: 
+  document_id: null
   title: 适用于容器的 Azure - 快速入门、教程和 API 参考
   description: 使用用于容器的快速入门、教程和工具，开始通过 Azure 管理和部署容器应用。
-  keywords: Azure, 容器, Docker, API, Kubernetes
+  keywords: 'Azure, 容器, Docker, API, Kubernetes'
   author: dlepow
   ms.author: danlep
   manager: jeconnoc
@@ -19,68 +13,69 @@ metadata:
   ms.topic: article
   ms.prod: azure
   featureFlags:
-  - clicktale
+    - clicktale
   ms.technology: azure
   ms.devlang: multiple
   ms.service: multiple
 sections:
-- items:
-  - type: markdown
-    text: "使用适用于容器的 Azure 工具和服务，开始部署和管理容器应用。 \n"
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何将容器与 Azure 服务配合使用。
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 2
+  - items:
+      - type: markdown
+        text: |
+          使用适用于容器的 Azure 工具和服务，开始部署和管理容器应用。 
+  - title: 5 分钟快速入门
     items:
-    - href: ../aks/kubernetes-walkthrough.md
-      title: 使用 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
-      image:
-        src: /azure/media/index/ContainerService.svg
-    - href: https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers
-      title: 在 Service Fabric 上部署 Windows 容器应用程序
-      image:
-        src: /azure/media/index/Fabric.svg
-    - href: https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go
-      title: 使用容器的 Azure Web 应用创建容器化的应用
-      image:
-        src: https://docs.microsoft.com/media/logos/logo_linux.svg
-    - href: https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli
-      title: 在 Azure 容器注册表中创建专用 Docker 注册表
-      image:
-        src: /azure/media/index/container-registry.svg
-    - href: https://docs.microsoft.com/azure/container-instances/container-instances-quickstart
-      title: 在 Azure 容器实例中按需运行容器应用
-      image:
-        src: /azure/media/index/containerinstances.svg
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用 Azure 服务部署、管理和更新容器应用
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何将容器与 Azure 服务配合使用。
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 2
+        items:
+          - href: ../aks/kubernetes-walkthrough.md
+            title: 使用 Azure Kubernetes 服务 (AKS) 创建 Kubernetes 群集
+            image:
+              src: /azure/media/index/ContainerService.svg
+          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
+            title: 在 Service Fabric 上部署 Windows 容器应用程序
+            image:
+              src: /azure/media/index/Fabric.svg
+          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
+            title: 使用容器的 Azure Web 应用创建容器化的应用
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+            title: 在 Azure 容器注册表中创建专用 Docker 注册表
+            image:
+              src: /azure/media/index/container-registry.svg
+          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
+            title: 在 Azure 容器实例中按需运行容器应用
+            image:
+              src: /azure/media/index/containerinstances.svg
+  - title: 分步教程
     items:
-    - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">生成容器并将其部署到 Azure Kubernetes 服务</a>
-    - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">生成 .NET 容器应用并将其部署到 Azure Service Fabric</a>
-    - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">在用于容器的 Web 应用中创建多容器应用</a>
-    - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">使用 Azure 容器注册表任务生成并部署容器映像</a>
-    - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">生成容器并将其部署到 Azure 容器实例</a>
-- title: 利用 Microsoft Learn 掌握技能
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 了解如何使用 Azure 服务部署、管理和更新容器应用
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">生成容器并将其部署到 Azure Kubernetes 服务</a>
+          - html: <a href="/azure/service-fabric/service-fabric-host-app-in-a-container">生成 .NET 容器应用并将其部署到 Azure Service Fabric</a>
+          - html: <a href="/azure/app-service/containers/tutorial-multi-container-app">在用于容器的 Web 应用中创建多容器应用</a>
+          - html: <a href="/azure/container-registry/container-registry-tutorial-quick-task">使用 Azure 容器注册表任务生成并部署容器映像</a>
+          - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">生成容器并将其部署到 Azure 容器实例</a>
+  - title: 利用 Microsoft Learn 掌握技能
     items:
-    - title: 通过 Azure 容器实例运行 Docker 容器
-      href: /learn/modules/run-docker-with-azure-container-instances/
-      image:
-        src: /learn/achievements/run-docker-with-azure-container-instances.svg
-        href: /learn/modules/run-docker-with-azure-container-instances/
-    - title: 使用 Azure 容器注册表生成并存储容器映像
-      href: /learn/modules/build-and-store-container-images/
-      image:
-        src: /learn/achievements/build-and-store-container-images.svg
-        href: /learn/modules/build-and-store-container-images/
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: 通过 Azure 容器实例运行 Docker 容器
+            href: /learn/modules/run-docker-with-azure-container-instances/
+            image:
+              src: /learn/achievements/run-docker-with-azure-container-instances.svg
+              href: /learn/modules/run-docker-with-azure-container-instances/
+          - title: 使用 Azure 容器注册表生成并存储容器映像
+            href: /learn/modules/build-and-store-container-images/
+            image:
+              src: /learn/achievements/build-and-store-container-images.svg
+              href: /learn/modules/build-and-store-container-images/

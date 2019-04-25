@@ -7,5 +7,5 @@
 - name: 资源
   expanded: true
   items:
-    - name: 常见问题
+    - name: 常见问题解答
       href: faq.md

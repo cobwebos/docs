@@ -1,325 +1,318 @@
-items:
 - name: SQL 数据仓库文档
   href: index.md
 - name: 概述
   items:
-  - name: 什么是 SQL 数据仓库？
-    href: sql-data-warehouse-overview-what-is.md
-  - name: SQL 数据仓库体系结构
-    href: massively-parallel-processing-mpp-architecture.md
-  - name: 数据仓库单位数
-    href: what-is-a-data-warehouse-unit-dwu-cdwu.md
-  - name: 备忘单
-    href: cheat-sheet.md
-  - name: 最佳做法
-    href: sql-data-warehouse-best-practices.md
-  - name: 容量限制
-    href: sql-data-warehouse-service-capacity-limits.md
-  - name: 常见问题解答
-    href: sql-data-warehouse-overview-faq.md
+    - name: 什么是 SQL 数据仓库？
+      href: sql-data-warehouse-overview-what-is.md
+    - name: SQL 数据仓库体系结构
+      href: massively-parallel-processing-mpp-architecture.md
+    - name: 数据仓库单位数
+      href: what-is-a-data-warehouse-unit-dwu-cdwu.md
+    - name: 备忘单
+      href: cheat-sheet.md
+    - name: 最佳做法
+      href: sql-data-warehouse-best-practices.md
+    - name: 容量限制
+      href: sql-data-warehouse-service-capacity-limits.md
+    - name: 常见问题解答
+      href: sql-data-warehouse-overview-faq.md
 - name: 发行说明
   href: release-notes.md
   items:
-  - name: 最新版本
-    href: release-notes-10-0-10106-0.md
-  - name: 第 2 代区域升级计划
-    href: gen2-migration-schedule.md
-  - name: 已存档的发行说明
-    items:
-    - name: 2018 年 9 月
-      href: release-notes-september-2018.md
-    - name: 2018 年 8 月
-      href: release-notes-august-2018.md
-    - name: 2018 年 7 月
-      href: release-notes-july-2018.md
-    - name: 2018 年 6 月
-      href: release-notes-june-2018.md
-    - name: 2018 年 5 月
-      href: release-notes-may-2018.md
-    - name: 2018 年 4 月
-      href: release-notes-april-2018.md
-- name: 快速入门
-  items:
-  - name: 创建和连接
-    items:
-    - name: 门户
-      href: create-data-warehouse-portal.md
-    - name: PowerShell
-      href: create-data-warehouse-powershell.md
-  - name: 暂停和恢复
-    items:
-    - name: 门户
-      href: pause-and-resume-compute-portal.md
-    - name: PowerShell
-      href: pause-and-resume-compute-powershell.md
-  - name: 缩放
-    items:
-    - name: 门户
-      href: quickstart-scale-compute-portal.md
-    - name: PowerShell
-      href: quickstart-scale-compute-powershell.md
-    - name: T-SQL
-      href: quickstart-scale-compute-tsql.md
-  - name: 工作负荷管理
-    items:
-    - name: 创建工作负荷分类器（预览版）
+    - name: 最新版本
+      href: release-notes-10-0-10106-0.md
+    - name: 第 2 代区域升级计划
+      href: gen2-migration-schedule.md
+    - name: 已存档的发行说明
       items:
-      - name: T-SQL
-        href: quickstart-create-a-workload-classifier-tsql.md
+        - name: 2018 年 9 月
+          href: release-notes-september-2018.md
+        - name: 2018 年 8 月
+          href: release-notes-august-2018.md
+        - name: 2018 年 7 月
+          href: release-notes-july-2018.md
+        - name: 2018 年 6 月
+          href: release-notes-june-2018.md
+        - name: 2018 年 5 月
+          href: release-notes-may-2018.md
+        - name: 2018 年 4 月
+          href: release-notes-april-2018.md
+- name: 快速入门
   expanded: true
+  items:
+    - name: 创建和连接
+      items:
+        - name: 门户
+          href: create-data-warehouse-portal.md
+        - name: PowerShell
+          href: create-data-warehouse-powershell.md
+    - name: 暂停和恢复
+      items:
+        - name: 门户
+          href: pause-and-resume-compute-portal.md
+        - name: PowerShell
+          href: pause-and-resume-compute-powershell.md
+    - name: 缩放
+      items:
+        - name: 门户
+          href: quickstart-scale-compute-portal.md
+        - name: PowerShell
+          href: quickstart-scale-compute-powershell.md
+        - name: T-SQL
+          href: quickstart-scale-compute-tsql.md
+    - name: 工作负荷管理
+      items:
+        - name: 创建工作负荷分类器（预览版）
+          items:
+            - name: T-SQL
+              href: quickstart-create-a-workload-classifier-tsql.md
 - name: 概念
   items:
-  - name: 安全
-    items:
-    - name: 概述
-      href: sql-data-warehouse-overview-manage-security.md
-    - name: 访问控制
-      href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 防火墙规则
-      href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 虚拟网络服务终结点
-      href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Authentication
-      href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: Azure AD
-      href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 登录名和用户
-      href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 多重身份验证
-      href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 审核
-      href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 数据发现和分类
-      href: https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json
-    - name: 行级别安全性
-      href: column-level-security.md
-    - name: 行级别安全性
-      href: https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json
-  - name: 数据加载
-    items:
-    - name: 概述
-      href: design-elt-data-loading.md
-    - name: 最佳做法
-      href: guidance-for-loading-data.md
-    - name: 列存储压缩
-      href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
-  - name: 开发
-    items:
-    - name: 概述
-      href: sql-data-warehouse-overview-develop.md
-    - name: 最佳做法
-      href: sql-data-warehouse-best-practices-development.md
-    - name: 表
+    - name: 安全
       items:
-      - name: 概述
-        href: sql-data-warehouse-tables-overview.md
-      - name: CTAS
-        href: sql-data-warehouse-develop-ctas.md
-      - name: 数据类型
-        href: sql-data-warehouse-tables-data-types.md
-      - name: 分布式表
-        href: sql-data-warehouse-tables-distribute.md
-      - name: 索引
-        href: sql-data-warehouse-tables-index.md
-      - name: 标识
-        href: sql-data-warehouse-tables-identity.md
-      - name: 分区
-        href: sql-data-warehouse-tables-partition.md
-      - name: 复制表
-        href: design-guidance-for-replicated-tables.md
-      - name: 统计信息
-        href: sql-data-warehouse-tables-statistics.md
-      - name: 临时
-        href: sql-data-warehouse-tables-temporary.md
-    - name: T-SQL 语言元素
+        - name: 概述
+          href: sql-data-warehouse-overview-manage-security.md
+        - name: 访问控制
+          href: ../sql-database/sql-database-control-access.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 防火墙规则
+          href: ../sql-database/sql-database-firewall-configure.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 虚拟网络服务终结点
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Authentication
+          href: sql-data-warehouse-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: Azure AD
+          href: ../sql-database/sql-database-aad-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 登录名和用户
+          href: ../sql-database/sql-database-manage-logins.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 多重身份验证
+          href: ../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 审核
+          href: ../sql-database/sql-database-auditing.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 数据发现和分类
+          href: 'https://docs.microsoft.com/azure/sql-database/sql-database-data-discovery-and-classification?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc.json'
+        - name: 行级别安全性
+          href: column-level-security.md
+        - name: 行级别安全性
+          href: 'https://docs.microsoft.com/sql/relational-databases/security/row-level-security?toc=/azure/sql-data-warehouse/toc.json'
+    - name: 数据加载
       items:
-      - name: 循环
-        href: sql-data-warehouse-develop-loops.md
-      - name: 存储过程
-        href: sql-data-warehouse-develop-stored-procedures.md
-      - name: 事务
-        href: sql-data-warehouse-develop-transactions.md
-      - name: 事务最佳实践
-        href: sql-data-warehouse-develop-best-practices-transactions.md
-      - name: 用户定义的架构
-        href: sql-data-warehouse-develop-user-defined-schemas.md
-      - name: 变量赋值
-        href: sql-data-warehouse-develop-variable-assignment.md
-      - name: 视图
-        href: sql-data-warehouse-develop-views.md
-  - name: 查询
-    items:
-    - name: 动态 SQL
-      href: sql-data-warehouse-develop-dynamic-sql.md
-    - name: Group By 选项
-      href: sql-data-warehouse-develop-group-by-options.md
-    - name: 标签
-      href: sql-data-warehouse-develop-label.md
-  - name: 工作负荷管理
-    items:
-    - name: 资源类和工作负荷管理
-      href: resource-classes-for-workload-management.md
-    - name: 工作负荷分类（预览版）
-      href: sql-data-warehouse-workload-classification.md
-    - name: 工作负荷重要性（预览版）
-      href: sql-data-warehouse-workload-importance.md
-    - name: 内存和并发限制
-      href: memory-and-concurrency-limits.md
-  - name: 可管理性和监视
-    items:
-    - name: 概述
-      href: sql-data-warehouse-overview-manageability-monitoring.md
-    - name: 缩放, 暂停, 恢复
-      href: sql-data-warehouse-manage-compute-overview.md
-    - name: 资源利用率和查询活动
-      href: sql-data-warehouse-concept-resource-utilization-query-activity.md
-    - name: 数据保护
-      href: backup-and-restore.md
-    - name: 建议
-      href: sql-data-warehouse-concept-recommendations.md
-    - name: 故障排除
-      href: sql-data-warehouse-troubleshoot.md
-  - name: 维护计划
-    items:
-    - name: 概述
-      href: maintenance-scheduling.md
-    - name: 查看维护计划
-      href: viewing-maintenance-schedule.md
-    - name: 更改维护计划
-      href: changing-maintenance-schedule.md
-  - name: 集成
-    items:
-    - name: 概述
-      href: sql-data-warehouse-overview-integrate.md
+        - name: 概述
+          href: design-elt-data-loading.md
+        - name: 最佳做法
+          href: guidance-for-loading-data.md
+        - name: 列存储压缩
+          href: sql-data-warehouse-memory-optimizations-for-columnstore-compression.md
+    - name: 开发
+      items:
+        - name: 概述
+          href: sql-data-warehouse-overview-develop.md
+        - name: 最佳做法
+          href: sql-data-warehouse-best-practices-development.md
+        - name: 表
+          items:
+            - name: 概述
+              href: sql-data-warehouse-tables-overview.md
+            - name: CTAS
+              href: sql-data-warehouse-develop-ctas.md
+            - name: 数据类型
+              href: sql-data-warehouse-tables-data-types.md
+            - name: 分布式表
+              href: sql-data-warehouse-tables-distribute.md
+            - name: 索引
+              href: sql-data-warehouse-tables-index.md
+            - name: 标识
+              href: sql-data-warehouse-tables-identity.md
+            - name: 分区
+              href: sql-data-warehouse-tables-partition.md
+            - name: 复制表
+              href: design-guidance-for-replicated-tables.md
+            - name: 统计信息
+              href: sql-data-warehouse-tables-statistics.md
+            - name: 临时
+              href: sql-data-warehouse-tables-temporary.md
+        - name: T-SQL 语言元素
+          items:
+            - name: 循环
+              href: sql-data-warehouse-develop-loops.md
+            - name: 存储过程
+              href: sql-data-warehouse-develop-stored-procedures.md
+            - name: 事务
+              href: sql-data-warehouse-develop-transactions.md
+            - name: 事务最佳实践
+              href: sql-data-warehouse-develop-best-practices-transactions.md
+            - name: 用户定义的架构
+              href: sql-data-warehouse-develop-user-defined-schemas.md
+            - name: 变量赋值
+              href: sql-data-warehouse-develop-variable-assignment.md
+            - name: 视图
+              href: sql-data-warehouse-develop-views.md
+    - name: 查询
+      items:
+        - name: 动态 SQL
+          href: sql-data-warehouse-develop-dynamic-sql.md
+        - name: Group By 选项
+          href: sql-data-warehouse-develop-group-by-options.md
+        - name: 标签
+          href: sql-data-warehouse-develop-label.md
+    - name: 工作负荷管理
+      items:
+        - name: 资源类和工作负荷管理
+          href: resource-classes-for-workload-management.md
+        - name: 工作负荷分类（预览版）
+          href: sql-data-warehouse-workload-classification.md
+        - name: 工作负荷重要性（预览版）
+          href: sql-data-warehouse-workload-importance.md
+        - name: 内存和并发限制
+          href: memory-and-concurrency-limits.md
+    - name: 可管理性和监视
+      items:
+        - name: 概述
+          href: sql-data-warehouse-overview-manageability-monitoring.md
+        - name: '缩放, 暂停, 恢复'
+          href: sql-data-warehouse-manage-compute-overview.md
+        - name: 资源利用率和查询活动
+          href: sql-data-warehouse-concept-resource-utilization-query-activity.md
+        - name: 数据保护
+          href: backup-and-restore.md
+        - name: 建议
+          href: sql-data-warehouse-concept-recommendations.md
+        - name: 故障排除
+          href: sql-data-warehouse-troubleshoot.md
+    - name: 维护计划
+      items:
+        - name: 概述
+          href: maintenance-scheduling.md
+        - name: 查看维护计划
+          href: viewing-maintenance-schedule.md
+        - name: 更改维护计划
+          href: changing-maintenance-schedule.md
+    - name: 集成
+      items:
+        - name: 概述
+          href: sql-data-warehouse-overview-integrate.md
 - name: 操作指南
   items:
-  - name: 安全
-    items:
-    - name: 配置 Azure AD 身份验证
-      href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 条件性访问
-      href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 通过 PowerShell 配置虚拟网络规则
-      href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json
-    - name: 启用加密 - 门户
-      href: sql-data-warehouse-encryption-tde.md
-    - name: 启用加密 - T-SQL
-      href: sql-data-warehouse-encryption-tde-tsql.md
-    - name: 威胁检测
-      href: sql-data-warehouse-security-threat-detection.md
-  - name: 加载数据
-    items:
-    - name: 纽约出租车数据
-      href: load-data-from-azure-blob-storage-using-polybase.md
-    - name: Contoso 公共数据
-      href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
-    - name: Azure Data Lake Storage Gen1
-      href: sql-data-warehouse-load-from-azure-data-lake-store.md
-    - name: Azure Databricks
-      href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
-    - name: 数据工厂
-      href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
-    - name: SSIS
-      href: /sql/integration-services/load-data-to-sql-data-warehouse
-    - name: 加载 WideWorldImporters
-      href: load-data-wideworldimportersdw.md
-  - name: 开发
-    items:
-    - name: 概述
-      href: sql-data-warehouse-connect-overview.md
-    - name: 连接字符串
-      href: sql-data-warehouse-connection-strings.md
-    - name: sqlcmd
-      href: sql-data-warehouse-get-started-connect-sqlcmd.md
-    - name: 使用 SSMS 进行查询
-      href: sql-data-warehouse-query-ssms.md
-    - name: 使用 Visual Studio 进行查询
-      href: sql-data-warehouse-query-visual-studio.md
-    - name: 安装 Visual Studio
-      href: sql-data-warehouse-install-visual-studio.md
-  - name: 管理工作负荷
-    items:
-    - name: 分析工作负荷
-      href: analyze-your-workload.md
-  - name: 管理和监视
-    items:
-    - name: 升级到第 2 代
-      href: upgrade-to-latest-generation.md
-    - name: 还原数据仓库
-      href: sql-data-warehouse-restore.md
-    - name: 监视工作负荷 - 门户
-      href: sql-data-warehouse-monitor-workload-portal.md
-    - name: 监视工作负荷 - DMV
-      href: sql-data-warehouse-manage-monitor.md
-    - name: 监视 Gen2 缓存
-      href: sql-data-warehouse-how-to-monitor-cache.md
-  - name: 集成
-    items:
-    - name: 使用机器学习
-      href: sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
-    - name: 构建数据管道
+    - name: 安全
       items:
-      - name: 使用 Fivetran 连接
-        href: fivetran-quickstart.md
-      - name: Striim 入门
-        href: striim-quickstart.md
-      - name: 添加 Azure 流分析作业
-        href: sql-data-warehouse-integrate-azure-stream-analytics.md
-    - name: 构建仪表板和报表
+        - name: 配置 Azure AD 身份验证
+          href: ../sql-database/sql-database-aad-authentication-configure.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 条件性访问
+          href: ../sql-database/sql-database-conditional-access.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 通过 PowerShell 配置虚拟网络规则
+          href: ../sql-database/sql-database-vnet-service-endpoint-rule-powershell.md?toc=/azure/sql-data-warehouse/toc.json
+        - name: 启用加密 - 门户
+          href: sql-data-warehouse-encryption-tde.md
+        - name: 启用加密 - T-SQL
+          href: sql-data-warehouse-encryption-tde-tsql.md
+        - name: 威胁检测
+          href: sql-data-warehouse-security-threat-detection.md
+    - name: 加载数据
       items:
-      - name: 使用 Power BI 进行可视化
-        href: sql-data-warehouse-get-started-visualize-with-power-bi.md
-  - name: 故障排除
-    items:
-    - name: 连接
-      href: sql-data-warehouse-troubleshoot-connectivity.md
+        - name: 纽约出租车数据
+          href: load-data-from-azure-blob-storage-using-polybase.md
+        - name: Contoso 公共数据
+          href: sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md
+        - name: Azure Data Lake Storage Gen1
+          href: sql-data-warehouse-load-from-azure-data-lake-store.md
+        - name: Azure Databricks
+          href: /azure/azure-databricks/databricks-extract-load-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
+        - name: 数据工厂
+          href: /azure/data-factory/load-azure-sql-data-warehouse?toc=/azure/sql-data-warehouse/toc.json
+        - name: SSIS
+          href: /sql/integration-services/load-data-to-sql-data-warehouse
+        - name: 加载 WideWorldImporters
+          href: load-data-wideworldimportersdw.md
+    - name: 开发
+      items:
+        - name: 概述
+          href: sql-data-warehouse-connect-overview.md
+        - name: 连接字符串
+          href: sql-data-warehouse-connection-strings.md
+        - name: sqlcmd
+          href: sql-data-warehouse-get-started-connect-sqlcmd.md
+        - name: 使用 SSMS 进行查询
+          href: sql-data-warehouse-query-ssms.md
+        - name: 使用 Visual Studio 进行查询
+          href: sql-data-warehouse-query-visual-studio.md
+        - name: 安装 Visual Studio
+          href: sql-data-warehouse-install-visual-studio.md
+    - name: 管理工作负荷
+      items:
+        - name: 分析工作负荷
+          href: analyze-your-workload.md
+    - name: 管理和监视
+      items:
+        - name: 升级到第 2 代
+          href: upgrade-to-latest-generation.md
+        - name: 还原数据仓库
+          href: sql-data-warehouse-restore.md
+        - name: 监视工作负荷 - 门户
+          href: sql-data-warehouse-monitor-workload-portal.md
+        - name: 监视工作负荷 - DMV
+          href: sql-data-warehouse-manage-monitor.md
+        - name: 监视 Gen2 缓存
+          href: sql-data-warehouse-how-to-monitor-cache.md
+    - name: 集成
+      items:
+        - name: 使用机器学习
+          href: sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md
+        - name: 构建数据管道
+          items:
+            - name: 使用 Fivetran 连接
+              href: fivetran-quickstart.md
+            - name: Striim 入门
+              href: striim-quickstart.md
+            - name: 添加 Azure 流分析作业
+              href: sql-data-warehouse-integrate-azure-stream-analytics.md
+        - name: 构建仪表板和报表
+          items:
+            - name: 使用 Power BI 进行可视化
+              href: sql-data-warehouse-get-started-visualize-with-power-bi.md
+    - name: 故障排除
+      items:
+        - name: 连接
+          href: sql-data-warehouse-troubleshoot-connectivity.md
 - name: 引用
   items:
-  - name: T-SQL
-    items:
-    - name: 完整的参考信息
-      href: https://docs.microsoft.com/sql/t-sql/language-reference/
-    - name: SQL DW 语言元素
-      href: sql-data-warehouse-reference-tsql-language-elements.md
-    - name: SQL DW 语句
-      href: sql-data-warehouse-reference-tsql-statements.md
-  - name: 系统视图
-    href: sql-data-warehouse-reference-tsql-system-views.md
-  - name: PowerShell cmdlet
-    href: sql-data-warehouse-reference-powershell-cmdlets.md
-  - name: REST API
-    href: sql-data-warehouse-manage-compute-rest-api.md
+    - name: T-SQL
+      items:
+        - name: 完整的参考信息
+          href: 'https://docs.microsoft.com/sql/t-sql/language-reference/'
+        - name: SQL DW 语言元素
+          href: sql-data-warehouse-reference-tsql-language-elements.md
+        - name: SQL DW 语句
+          href: sql-data-warehouse-reference-tsql-statements.md
+    - name: 系统视图
+      href: sql-data-warehouse-reference-tsql-system-views.md
+    - name: PowerShell cmdlet
+      href: sql-data-warehouse-reference-powershell-cmdlets.md
+    - name: REST API
+      href: sql-data-warehouse-manage-compute-rest-api.md
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: 论坛
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 功能请求
-    href: https://feedback.azure.com/forums/307516-sql-data-warehouse/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=sql-data-warehouse
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-sqldw/
-  - name: 支持
-    href: sql-data-warehouse-get-started-create-support-ticket.md
-  - name: 视频
-    href: sql-data-warehouse-videos.md
-  - name: 合作伙伴
-    items:
-    - name: 商业智能
-      href: sql-data-warehouse-partner-business-intelligence.md
-    - name: 数据集成
-      href: sql-data-warehouse-partner-data-integration.md
-    - name: 数据管理
-      href: sql-data-warehouse-partner-data-management.md
-ms.openlocfilehash: 52d14867099b85b2d03cc3c536026032fc56263f
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620491"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/sql-data-warehouse/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 功能请求
+      href: 'https://feedback.azure.com/forums/307516-sql-data-warehouse/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=sql-data-warehouse'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-sqldw/'
+    - name: 支持
+      href: sql-data-warehouse-get-started-create-support-ticket.md
+    - name: 视频
+      href: sql-data-warehouse-videos.md
+    - name: 合作伙伴
+      items:
+        - name: 商业智能
+          href: sql-data-warehouse-partner-business-intelligence.md
+        - name: 数据集成
+          href: sql-data-warehouse-partner-data-integration.md
+        - name: 数据管理
+          href: sql-data-warehouse-partner-data-management.md

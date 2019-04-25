@@ -1,4 +1,3 @@
-items:
 - name: 如何创建 Azure 支持请求
   href: how-to-create-azure-support-request.md
 - name: 上传支持请求文件
@@ -11,19 +10,13 @@ items:
   href: sku-series-unavailable.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure
-  - name: Azure PowerShell
-    href: /powershell/azure
+    - name: Azure CLI
+      href: /cli/azure
+    - name: Azure PowerShell
+      href: /powershell/azure
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=monitoring-management
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-ms.openlocfilehash: 31120ea857d0e080bc9629d781ac2cdd73d31bc0
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340908"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'

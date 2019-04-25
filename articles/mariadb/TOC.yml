@@ -1,174 +1,167 @@
-items:
 - name: Azure DB for MariaDB 文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是用于 MariaDB 的 Azure DB？
-    href: overview.md
+    - name: 什么是用于 MariaDB 的 Azure DB？
+      href: overview.md
 - name: 快速入门
-  items:
-  - name: 创建 DB - 门户
-    href: quickstart-create-mariadb-server-database-using-azure-portal.md
-  - name: 创建 DB - Azure CLI
-    href: quickstart-create-mariadb-server-database-using-azure-cli.md
-  - name: 连接和查询
-    items:
-    - name: MySQL Workbench
-      href: connect-workbench.md
   expanded: true
+  items:
+    - name: 创建 DB - 门户
+      href: quickstart-create-mariadb-server-database-using-azure-portal.md
+    - name: 创建 DB - Azure CLI
+      href: quickstart-create-mariadb-server-database-using-azure-cli.md
+    - name: 连接和查询
+      items:
+        - name: MySQL Workbench
+          href: connect-workbench.md
 - name: 教程
   items:
-  - name: 设计数据库
-    items:
-    - name: Azure 门户
-      href: tutorial-design-database-using-portal.md
-    - name: Azure CLI
-      href: tutorial-design-database-cli.md
+    - name: 设计数据库
+      items:
+        - name: Azure 门户
+          href: tutorial-design-database-using-portal.md
+        - name: Azure CLI
+          href: tutorial-design-database-cli.md
 - name: 示例
   items:
-  - name: Azure CLI
-    href: sample-scripts-azure-cli.md
+    - name: Azure CLI
+      href: sample-scripts-azure-cli.md
 - name: 概念
   items:
-  - name: 数据库和服务器
-    items:
-    - name: 服务器
-      href: concepts-servers.md
-    - name: 支持的版本
-      href: concepts-supported-versions.md
-    - name: 高可用性
-      href: concepts-high-availability.md
-  - name: 资源
-    items:
-    - name: 定价层
-      href: concepts-pricing-tiers.md
-    - name: 限制
-      href: concepts-limits.md
-  - name: 数据访问和安全性
-    items:
-    - name: 防火墙规则
-      href: concepts-firewall-rules.md
-    - name: 配置 SSL
-      href: concepts-ssl-connection-security.md
-    - name: VNet
-      href: concepts-data-access-security-vnet.md
-  - name: 业务连续性
-    items:
-    - name: 概述
-      href: concepts-business-continuity.md
-    - name: 备份和还原
-      href: concepts-backup.md
-  - name: 监视
-    items:
+    - name: 数据库和服务器
+      items:
+        - name: 服务器
+          href: concepts-servers.md
+        - name: 支持的版本
+          href: concepts-supported-versions.md
+        - name: 高可用性
+          href: concepts-high-availability.md
+    - name: 资源
+      items:
+        - name: 定价层
+          href: concepts-pricing-tiers.md
+        - name: 限制
+          href: concepts-limits.md
+    - name: 数据访问和安全性
+      items:
+        - name: 防火墙规则
+          href: concepts-firewall-rules.md
+        - name: 配置 SSL
+          href: concepts-ssl-connection-security.md
+        - name: VNet
+          href: concepts-data-access-security-vnet.md
+    - name: 业务连续性
+      items:
+        - name: 概述
+          href: concepts-business-continuity.md
+        - name: 备份和还原
+          href: concepts-backup.md
     - name: 监视
-      href: concepts-monitoring.md
-    - name: 服务器日志
-      href: concepts-server-logs.md
-  - name: 开发
-    items:
-    - name: 驱动程序和工具兼容性
-      href: concepts-compatibility.md
-    - name: 连接复原
-      href: concepts-connectivity.md
-  - name: 复制
-    items:
-    - name: 复制中数据
-      href: concepts-data-in-replication.md
+      items:
+        - name: 监视
+          href: concepts-monitoring.md
+        - name: 服务器日志
+          href: concepts-server-logs.md
+    - name: 开发
+      items:
+        - name: 驱动程序和工具兼容性
+          href: concepts-compatibility.md
+        - name: 连接复原
+          href: concepts-connectivity.md
+    - name: 复制
+      items:
+        - name: 复制中数据
+          href: concepts-data-in-replication.md
 - name: 操作指南
   items:
-  - name: 防火墙规则
-    items:
-    - name: Azure 门户
-      href: howto-manage-firewall-portal.md
-    - name: Azure CLI
-      href: howto-manage-firewall-cli.md
-  - name: 还原服务器
-    items:
-    - name: Azure 门户
-      href: howto-restore-server-portal.md
-    - name: Azure CLI
-      href: howto-restore-server-cli.md
-  - name: 迁移数据库
-    items:
-    - name: 转储和还原
-      href: howto-migrate-dump-restore.md
-  - name: 连接应用程序
-    items:
-    - name: 创建用户
-      href: howto-create-users.md
-    - name: 连接字符串
-      href: howto-connection-string.md
-    - name: 配置 SSL
-      href: howto-configure-ssl.md
-  - name: 配置服务器参数
-    items:
-    - name: Azure 门户
-      href: howto-server-parameters.md
-    - name: Azure CLI
-      href: howto-configure-server-parameters-cli.md
-  - name: 访问服务器日志
-    items:
-    - name: Azure 门户
-      href: howto-configure-server-logs-portal.md
-    - name: Azure CLI
-      href: howto-configure-server-logs-cli.md
-  - name: 监视
-    items:
-    - name: 针对指标创建警报
-      href: howto-alert-metric.md
-  - name: 复制
-    items:
-    - name: 配置复制中数据
-      href: howto-data-in-replication.md
-  - name: 故障排除
-    items:
-    - name: 排查连接错误
-      href: howto-troubleshoot-common-connection-issues.md
-    - name: 查询性能故障排除
-      href: howto-troubleshoot-query-performance.md
-  - name: 虚拟网络
-    items:
-    - name: Azure 门户
-      href: howto-manage-vnet-portal.md
-    - name: Azure CLI
-      href: howto-manage-vnet-cli.md
-  - name: 重新启动服务器
-    items:
-    - name: Azure 门户
-      href: howto-restart-server-portal.md
-    - name: Azure CLI
-      href: howto-restart-server-cli.md
+    - name: 防火墙规则
+      items:
+        - name: Azure 门户
+          href: howto-manage-firewall-portal.md
+        - name: Azure CLI
+          href: howto-manage-firewall-cli.md
+    - name: 还原服务器
+      items:
+        - name: Azure 门户
+          href: howto-restore-server-portal.md
+        - name: Azure CLI
+          href: howto-restore-server-cli.md
+    - name: 迁移数据库
+      items:
+        - name: 转储和还原
+          href: howto-migrate-dump-restore.md
+    - name: 连接应用程序
+      items:
+        - name: 创建用户
+          href: howto-create-users.md
+        - name: 连接字符串
+          href: howto-connection-string.md
+        - name: 配置 SSL
+          href: howto-configure-ssl.md
+    - name: 配置服务器参数
+      items:
+        - name: Azure 门户
+          href: howto-server-parameters.md
+        - name: Azure CLI
+          href: howto-configure-server-parameters-cli.md
+    - name: 访问服务器日志
+      items:
+        - name: Azure 门户
+          href: howto-configure-server-logs-portal.md
+        - name: Azure CLI
+          href: howto-configure-server-logs-cli.md
+    - name: 监视
+      items:
+        - name: 针对指标创建警报
+          href: howto-alert-metric.md
+    - name: 复制
+      items:
+        - name: 配置复制中数据
+          href: howto-data-in-replication.md
+    - name: 故障排除
+      items:
+        - name: 排查连接错误
+          href: howto-troubleshoot-common-connection-issues.md
+        - name: 查询性能故障排除
+          href: howto-troubleshoot-query-performance.md
+    - name: 虚拟网络
+      items:
+        - name: Azure 门户
+          href: howto-manage-vnet-portal.md
+        - name: Azure CLI
+          href: howto-manage-vnet-cli.md
+    - name: 重新启动服务器
+      items:
+        - name: Azure 门户
+          href: howto-restart-server-portal.md
+        - name: Azure CLI
+          href: howto-restart-server-cli.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/mariadb
-  - name: REST API
-    href: /rest/api/mariadb
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.dbformariadb/allversions
-  - name: 复制中数据存储过程
-    href: reference-data-in-stored-procedures.md
+    - name: Azure CLI
+      href: /cli/azure/mariadb
+    - name: REST API
+      href: /rest/api/mariadb
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.dbformariadb/allversions
+    - name: 复制中数据存储过程
+      href: reference-data-in-stored-procedures.md
 - name: 资源
   items:
-  - name: 部署模板
-    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=databases
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/mariadb/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-database-mariadb
-  - name: 请求功能
-    href: https://feedback.azure.com/forums/915439-azure-database-for-mariadb
-  - name: 上市区域
-    href: https://azure.microsoft.com/regions/services/
-  - name: 支持选项
-    href: https://azure.microsoft.com/support/options/
-ms.openlocfilehash: 1ad8ddc0cf189189b9457dabe6c2c2d665c838c3
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621119"
+    - name: 部署模板
+      href: 'https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=databases'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/mariadb/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-database-mariadb'
+    - name: 请求功能
+      href: 'https://feedback.azure.com/forums/915439-azure-database-for-mariadb'
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 支持选项
+      href: 'https://azure.microsoft.com/support/options/'

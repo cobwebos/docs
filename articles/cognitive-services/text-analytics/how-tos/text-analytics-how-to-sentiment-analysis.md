@@ -7,18 +7,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 02/13/2019
+ms.date: 02/26/2019
 ms.author: aahi
-ms.openlocfilehash: 7287a9ddbd84960dcde790d813a6204e9e790094
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.openlocfilehash: 0c42e7f8b1fffb9cf998f4cee8d30405a8df74a4
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887414"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011293"
 ---
 # <a name="example-how-to-detect-sentiment-with-text-analytics"></a>示例：如何使用文本分析检测情绪
 
-[情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) 评估每个文档的文本输入并返回情绪分数，分数范围从 0（消极）到 1（积极）。
+[情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) 评估每个文档的文本输入并返回情绪分数，分数范围从 0（消极）到 1（积极）。
 
 此功能对于检测社交媒体、客户评论和论坛中的积极和消极情绪非常有用。 用户提供内容；服务提供模型和定型数据。
 
@@ -77,16 +77,16 @@ ms.locfileid: "56887414"
 
 有关请求定义的详细信息，请参阅[如何调用文本分析 API](text-analytics-how-to-call-api.md)。 为方便起见，特重申以下几点：
 
-+ 创建 POST 请求。 查看此请求的 API 文档：[情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)
++ 创建 POST 请求。 查看此请求的 API 文档：[情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)
 
-+ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/sentiment`
++ 使用 Azure 上的文本分析资源或实例化的[文本分析容器](text-analytics-how-to-install-containers.md)设置 HTTP 终结点，以便进行情绪分析。 它必须包含 `/sentiment` 资源：`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1/sentiment`
 
 + 设置请求头以包含文本分析操作的访问密钥。 有关详细信息，请参阅[如何查找终结点和访问密钥](text-analytics-how-to-access-key.md)。
 
 + 在请求正文中，提供为此分析准备的 JSON 文档集合。
 
 > [!Tip]
-> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9)中的 API 测试控制台来构造请求并将其 POST 到该服务。
+> 使用 [Postman](text-analytics-how-to-call-api.md) 或打开[文档](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9)中的 API 测试控制台来构造请求并将其 POST 到该服务。
 
 ## <a name="step-2-post-the-request"></a>步骤 2：发布请求
 
@@ -135,7 +135,7 @@ ms.locfileid: "56887414"
 
 本文介绍了使用认知服务中的文本分析进行情绪分析的概念和工作流。 综上所述：
 
-+ [情绪分析 API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c9) 适用于选定的语言。
++ [情绪分析 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c9) 适用于选定的语言。
 + 请求正文中的 JSON 文档包括 ID、文本和语言代码。
 + POST 请求的目标是 `/sentiment` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
 + 响应输出包含每个文档 ID 的情绪得分，可流式传输到接受 JSON 的任何应用，包括 Excel 和 Power BI（仅举几例）。

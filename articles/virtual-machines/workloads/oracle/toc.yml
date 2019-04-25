@@ -1,35 +1,28 @@
-items:
 - name: 概述
   items:
-  - name: 有关 Oracle VM 的注意事项
-    href: oracle-considerations.md
+    - name: 有关 Oracle VM 的注意事项
+      href: oracle-considerations.md
 - name: 快速入门
   items:
-  - name: 创建 Oracle DB
-    href: oracle-database-quick-create.md
+    - name: 创建 Oracle DB
+      href: oracle-database-quick-create.md
 - name: 教程
   items:
-  - name: 配置 Oracle ASM
-    href: configure-oracle-asm.md
-  - name: 配置 Oracle DataGuard
-    href: configure-oracle-dataguard.md
-  - name: 配置 Oracle GoldenGate
-    href: configure-oracle-golden-gate.md
+    - name: 配置 Oracle ASM
+      href: configure-oracle-asm.md
+    - name: 配置 Oracle DataGuard
+      href: configure-oracle-dataguard.md
+    - name: 配置 Oracle GoldenGate
+      href: configure-oracle-golden-gate.md
 - name: 概念
   items:
-  - name: 设计 Oracle DB
-    href: oracle-design.md
-  - name: Oracle DB 的备份策略
-    href: oracle-backup-recovery.md
-  - name: Oracle 灾难恢复选项
-    href: oracle-disaster-recovery.md
+    - name: 设计 Oracle DB
+      href: oracle-design.md
+    - name: Oracle DB 的备份策略
+      href: oracle-backup-recovery.md
+    - name: Oracle 灾难恢复选项
+      href: oracle-disaster-recovery.md
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: 9c8aba887e728904aed51d3db2db5bb02c03d7b8
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340602"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'

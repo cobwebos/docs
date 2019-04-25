@@ -1,139 +1,132 @@
-items:
 - name: Durable Functions 文档
 - name: 概述
   items:
-  - name: 关于 Azure Functions
-    href: ../functions-overview.md
-  - name: 关于 Durable Functions
-    href: durable-functions-overview.md
-  - name: 无服务器计算
-    href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: 关于 Azure Functions
+      href: ../functions-overview.md
+    - name: 关于 Durable Functions
+      href: durable-functions-overview.md
+    - name: 无服务器计算
+      href: ../functions-compare-logic-apps-ms-flow-webjobs.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
 - name: 快速入门
-  items:
-  - name: 创建持久函数 - C#
-    displayName: get started, chaining
-    href: durable-functions-create-first-csharp.md
-  - name: 创建持久函数 - JavaScript
-    displayName: get started, chaining
-    href: quickstart-js-vscode.md
   expanded: true
+  items:
+    - name: '创建持久函数 - C#'
+      href: durable-functions-create-first-csharp.md
+      displayName: 'get started, chaining'
+    - name: 创建持久函数 - JavaScript
+      displayName: 'get started, chaining'
+      href: quickstart-js-vscode.md
 - name: 教程
   items:
-  - name: 扇入/扇出
-    href: durable-functions-cloud-backup.md
-  - name: 监视器
-    href: durable-functions-monitor.md
-  - name: 人机交互
-    href: durable-functions-phone-verification.md
-  - name: 发布到事件网格
-    href: durable-functions-event-publishing.md
+    - name: 扇入/扇出
+      href: durable-functions-cloud-backup.md
+    - name: 监视器
+      href: durable-functions-monitor.md
+    - name: 人机交互
+      href: durable-functions-phone-verification.md
+    - name: 发布到事件网格
+      href: durable-functions-event-publishing.md
 - name: 示例
   items:
-  - name: 代码示例
-    href: https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+
-  - name: Azure CLI
-    href: ../functions-cli-samples.md
+    - name: 代码示例
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=functions&sort=0&term=durable+'
+    - name: Azure CLI
+      href: ../functions-cli-samples.md
 - name: 概念
   items:
-  - name: 模式和概念
-    href: durable-functions-concepts.md
-  - name: 函数类型和功能
-    href: durable-functions-types-features-overview.md
-  - name: 绑定
-    href: durable-functions-bindings.md
-  - name: 计时器
-    href: durable-functions-timers.md
-  - name: 外部事件
-    href: durable-functions-external-events.md
-  - name: 子业务流程
-    href: durable-functions-sub-orchestrations.md
-  - name: 任务中心
-    href: durable-functions-task-hubs.md
-  - name: 可靠的执行
-    href: durable-functions-checkpointing-and-replay.md
-  - name: 版本控制
-    href: durable-functions-versioning.md
+    - name: 模式和概念
+      href: durable-functions-concepts.md
+    - name: 函数类型和功能
+      href: durable-functions-types-features-overview.md
+    - name: 绑定
+      href: durable-functions-bindings.md
+    - name: 计时器
+      href: durable-functions-timers.md
+    - name: 外部事件
+      href: durable-functions-external-events.md
+    - name: 子业务流程
+      href: durable-functions-sub-orchestrations.md
+    - name: 任务中心
+      href: durable-functions-task-hubs.md
+    - name: 可靠的执行
+      href: durable-functions-checkpointing-and-replay.md
+    - name: 版本控制
+      href: durable-functions-versioning.md
 - name: 操作指南
   items:
-  - name: 规划和设计
-    items:
-    - name: 函数链
-      href: durable-functions-sequence.md
-    - name: 永久业务流程
-      href: durable-functions-eternal-orchestrations.md
-    - name: 单独业务流程
-      href: durable-functions-singletons.md
-    - name: 性能和缩放性
-      href: durable-functions-perf-and-scale.md
-    - name: 高可用性
-      href: durable-functions-disaster-recovery-geo-distribution.md
-  - name: 开发
-    items:
-    - name: 在 Azure 门户中创建
-      href: durable-functions-create-portal.md
-    - name: 管理连接
-      href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: 错误处理。
-      href: durable-functions-error-handling.md
-    - name: 单元测试
-      href: durable-functions-unit-testing.md
-    - name: 创建为 WebJobs
-      href: durable-functions-webjobs-sdk.md
-  - name: 部署
-    items:
-    - name: 连续部署
-      href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: Zip 部署
-      href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: 从程序包运行
-      href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-  - name: 管理
-    items:
-    - name: 实例管理
-      href: durable-functions-instance-management.md
-  - name: 监视
-    items:
-    - name: 监视函数
-      href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
-    - name: 自定义业务流程状态
-      href: durable-functions-custom-orchestration-status.md
-  - name: 故障排除
-    items:
-    - name: 诊断
-      href: durable-functions-diagnostics.md
+    - name: 规划和设计
+      items:
+        - name: 函数链
+          href: durable-functions-sequence.md
+        - name: 永久业务流程
+          href: durable-functions-eternal-orchestrations.md
+        - name: 单独业务流程
+          href: durable-functions-singletons.md
+        - name: 性能和缩放性
+          href: durable-functions-perf-and-scale.md
+        - name: 高可用性
+          href: durable-functions-disaster-recovery-geo-distribution.md
+    - name: 开发
+      items:
+        - name: 在 Azure 门户中创建
+          href: durable-functions-create-portal.md
+        - name: 管理连接
+          href: ../manage-connections.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: 错误处理。
+          href: durable-functions-error-handling.md
+        - name: 单元测试
+          href: durable-functions-unit-testing.md
+        - name: 创建为 WebJobs
+          href: durable-functions-webjobs-sdk.md
+    - name: 部署
+      items:
+        - name: 连续部署
+          href: ../functions-continuous-deployment.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: Zip 部署
+          href: ../deployment-zip-push.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: 从程序包运行
+          href: ../run-functions-from-deployment-package.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+    - name: 管理
+      items:
+        - name: 实例管理
+          href: durable-functions-instance-management.md
+    - name: 监视
+      items:
+        - name: 监视函数
+          href: ../functions-monitoring.md?toc=%2fazure%2fazure-functions%2fdurable%2ftoc.json
+        - name: 自定义业务流程状态
+          href: durable-functions-custom-orchestration-status.md
+    - name: 故障排除
+      items:
+        - name: 诊断
+          href: durable-functions-diagnostics.md
 - name: 引用
   items:
-  - name: HTTP API
-    href: durable-functions-http-api.md
+    - name: HTTP API
+      href: durable-functions-http-api.md
 - name: 资源
   items:
-  - name: 利用 Microsoft Learn 掌握技能
-    href: /learn/browse/?products=azure-functions
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=compute
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/functions/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 区域可用性
-    href: https://azure.microsoft.com/regions/services/
-  - name: 视频
-    href: https://www.youtube.com/c/AzureFunctions
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-functions
-  - name: Twitter
-    href: https://twitter.com/hashtag/DurableFunctions?src=hash
-  - name: 提供产品反馈
-    href: https://feedback.azure.com/forums/355860-azure-functions
-  - name: Durable Functions GitHub 存储库
-    href: https://github.com/Azure/azure-functions-durable-extension
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=functions&updatetype=&platform=
-ms.openlocfilehash: 7056804d4c84bccf3335e9a5913989083d013115
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54102527"
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-functions
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=compute'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/functions/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 视频
+      href: 'https://www.youtube.com/c/AzureFunctions'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureFunctions'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-functions'
+    - name: Twitter
+      href: 'https://twitter.com/hashtag/DurableFunctions?src=hash'
+    - name: 提供产品反馈
+      href: 'https://feedback.azure.com/forums/355860-azure-functions'
+    - name: Durable Functions GitHub 存储库
+      href: 'https://github.com/Azure/azure-functions-durable-extension'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=functions&updatetype=&platform='

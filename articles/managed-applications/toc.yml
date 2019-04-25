@@ -1,115 +1,108 @@
-items:
 - name: Azure 托管应用程序文档
   href: index.yml
 - name: 概述
   items:
-  - name: 关于托管应用程序
-    href: overview.md
+    - name: 关于托管应用程序
+      href: overview.md
 - name: 快速入门
-  items:
-  - name: 发布应用程序定义
-    href: publish-managed-app-definition-quickstart.md
-  - name: 部署服务目录应用
-    href: deploy-service-catalog-quickstart.md
   expanded: true
+  items:
+    - name: 发布应用程序定义
+      href: publish-managed-app-definition-quickstart.md
+    - name: 部署服务目录应用
+      href: deploy-service-catalog-quickstart.md
 - name: 教程
   items:
-  - name: 创建定义文件
-    href: publish-service-catalog-app.md
-  - name: 发布市场应用程序
-    href: publish-marketplace-app.md
+    - name: 创建定义文件
+      href: publish-service-catalog-app.md
+    - name: 发布市场应用程序
+      href: publish-marketplace-app.md
 - name: 示例
   items:
-  - name: Azure CLI
-    href: cli-samples.md
-  - name: Azure PowerShell
-    href: powershell-samples.md
-  - name: 托管应用程序解决方案
-    href: sample-projects.md
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
+    - name: 托管应用程序解决方案
+      href: sample-projects.md
 - name: 操作指南
   items:
-  - name: 发布者
-    items:
-    - name: 创建门户界面
-      href: create-uidefinition-overview.md
-    - name: 测试门户界面
-      href: test-createuidefinition.md
-    - name: 更新托管资源
-      href: update-managed-resources.md
-    - name: 使用门户发布应用程序定义
-      href: publish-portal.md
-    - name: 使用来自 Key Vault 的机密
-      href: key-vault-access.md
-  - name: 使用者
-    items:
-    - name: 监视托管应用程序
-      href: monitor-managed-application-portal.md
+    - name: 发布者
+      items:
+        - name: 创建门户界面
+          href: create-uidefinition-overview.md
+        - name: 测试门户界面
+          href: test-createuidefinition.md
+        - name: 更新托管资源
+          href: update-managed-resources.md
+        - name: 使用门户发布应用程序定义
+          href: publish-portal.md
+        - name: 使用来自 Key Vault 的机密
+          href: key-vault-access.md
+    - name: 使用者
+      items:
+        - name: 监视托管应用程序
+          href: monitor-managed-application-portal.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/managedapp
-  - name: PowerShell
-    href: /powershell/module/az.resources
-  - name: REST
-    href: /rest/api/resources/
-  - name: 用户界面函数
-    href: create-uidefinition-functions.md
-  - name: 用户界面元素
-    href: create-uidefinition-elements.md
-    items:
-    - name: 常见
+    - name: Azure CLI
+      href: /cli/azure/managedapp
+    - name: PowerShell
+      href: /powershell/module/az.resources
+    - name: REST
+      href: /rest/api/resources/
+    - name: 用户界面函数
+      href: create-uidefinition-functions.md
+    - name: 用户界面元素
+      href: create-uidefinition-elements.md
       items:
-      - name: DropDown
-        href: microsoft-common-dropdown.md
-      - name: FileUpload
-        href: microsoft-common-fileupload.md
-      - name: InfoBox
-        href: microsoft-common-infobox.md
-      - name: OptionsGroup
-        href: microsoft-common-optionsgroup.md
-      - name: PasswordBox
-        href: microsoft-common-passwordbox.md
-      - name: 部分
-        href: microsoft-common-section.md
-      - name: TextBlock
-        href: microsoft-common-textblock.md
-      - name: TextBox
-        href: microsoft-common-textbox.md
-    - name: 计算
-      items:
-      - name: CredentialsCombo
-        href: microsoft-compute-credentialscombo.md
-      - name: SizeSelector
-        href: microsoft-compute-sizeselector.md
-      - name: UserNameTextBox
-        href: microsoft-compute-usernametextbox.md
-    - name: 网络
-      items:
-      - name: PublicIPAddressCombo
-        href: microsoft-network-publicipaddresscombo.md
-      - name: VirtualNetworkCombo
-        href: microsoft-network-virtualnetworkcombo.md
-    - name: 存储
-      items:
-      - name: MultiStorageAccountCombo
-        href: microsoft-storage-multistorageaccountcombo.md
-      - name: StorageAccountSelector
-        href: microsoft-storage-storageaccountselector.md
+        - name: 常见
+          items:
+            - name: DropDown
+              href: microsoft-common-dropdown.md
+            - name: FileUpload
+              href: microsoft-common-fileupload.md
+            - name: InfoBox
+              href: microsoft-common-infobox.md
+            - name: OptionsGroup
+              href: microsoft-common-optionsgroup.md
+            - name: PasswordBox
+              href: microsoft-common-passwordbox.md
+            - name: 部分
+              href: microsoft-common-section.md
+            - name: TextBlock
+              href: microsoft-common-textblock.md
+            - name: TextBox
+              href: microsoft-common-textbox.md
+        - name: 计算
+          items:
+            - name: CredentialsCombo
+              href: microsoft-compute-credentialscombo.md
+            - name: SizeSelector
+              href: microsoft-compute-sizeselector.md
+            - name: UserNameTextBox
+              href: microsoft-compute-usernametextbox.md
+        - name: 网络
+          items:
+            - name: PublicIPAddressCombo
+              href: microsoft-network-publicipaddresscombo.md
+            - name: VirtualNetworkCombo
+              href: microsoft-network-virtualnetworkcombo.md
+        - name: 存储
+          items:
+            - name: MultiStorageAccountCombo
+              href: microsoft-storage-multistorageaccountcombo.md
+            - name: StorageAccountSelector
+              href: microsoft-storage-storageaccountselector.md
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/managed-applications/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 资源管理器模板最佳做法
-    href: https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md
-  - name: 堆栈溢出
-    href: http://stackoverflow.com/questions/tagged/azure-managedapps
-ms.openlocfilehash: e5ed2bab25c8140d12517e4757c028a7c6dd85d9
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58402008"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 资源管理器模板最佳做法
+      href: 'https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md'
+    - name: 堆栈溢出
+      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'

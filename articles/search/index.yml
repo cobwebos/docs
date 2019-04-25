@@ -1,14 +1,8 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 8385fe5ecb9a6e17d872795ba4eff5c038e4df47
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199863"
 documentType: LandingData
 title: Azure 搜索文档
 metadata:
-  document_id: 
+  document_id: null
   title: Azure 搜索文档 – 教程、快速入门和 API 参考
   description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。
   services: search
@@ -23,52 +17,52 @@ abstract:
   description: 了解如何使用 Azure 搜索创建基于专用异类内容的企业搜索解决方案。 教程、API 参考和其他文档介绍了如何将从简单到高级的语法用于各种方案，以便将可搜索内容整合到单个可查询的快速索引中。 <p/><a href="/azure/search/cognitive-search-concept-intro"><b>新的认知搜索预览版。</b></a> 使用预发行的 REST API 将 AI 驱动的算法绑定到索引编制管道。 提取数据，然后调用自然语言和图像处理功能，将原始的非结构化内容转换成 Azure 搜索索引中的可搜索内容。 <p/>使用<a href="/azure/search/cognitive-search-quickstart-blob">资源和示例数据</a>来探索认知搜索，或者在<a href="/azure/search/cognitive-search-concept-intro">概念</a>中了解详细信息。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
-      src: https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png
+      src: 'https://docs.microsoft.com/azure/search/media/index/search-page-callouts3.png'
       width: 250
-    title: 什么是 Azure 搜索 (1:27)
-    href: https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player
+    title: '什么是 Azure 搜索 (1:27)'
+    href: 'https://channel9.msdn.com/Blogs/Azure/What-is-Azure-Search/player'
     width: 250
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 开始在门户中使用搜索服务，然后使用 C# 或 REST 来定义、加载和查询索引。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: /azure/search/media/index/portal.svg
-      text: Azure 门户
-      href: https://docs.microsoft.com/azure/search/search-create-service-portal
-    - image:
-        src: /azure/search/media/index/logo_Csharp.svg
-      text: .NET
-      href: https://docs.microsoft.com/azure/search/search-create-index-dotnet
-    - image:
-        src: /azure/search/media/index/rest.svg
-      text: REST
-      href: https://docs.microsoft.com/azure/search/search-fiddler
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 使用 .NET 或 REST 编写代码，或者尝试使用门户进行快速的概念测试。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: '开始在门户中使用搜索服务，然后使用 C# 或 REST 来定义、加载和查询索引。'
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: /azure/search/media/index/portal.svg
+            text: Azure 门户
+            href: 'https://docs.microsoft.com/azure/search/search-create-service-portal'
+          - image:
+              src: /azure/search/media/index/logo_Csharp.svg
+            text: .NET
+            href: 'https://docs.microsoft.com/azure/search/search-create-index-dotnet'
+          - image:
+              src: /azure/search/media/index/rest.svg
+            text: REST
+            href: 'https://docs.microsoft.com/azure/search/search-fiddler'
+  - title: 分步教程
     items:
-    - html: <a href="/azure/search/cognitive-search-tutorial-blob">使用 AI（认知服务）编制索引</a>
-    - html: <a href="/azure/search/search-howto-dotnet-sdk">如何将 Azure 搜索与 .NET 配合使用</a>
-    - html: <a href="/azure/search/search-indexer-tutorial">通过 .NET 对 Azure SQL 数据库内容进行索引</a>
-    - html: <a href="/azure/search/search-semi-structured-data">通过 REST 对 Azure Blob 存储中的半结构化数据进行索引</a>
-    - html: <a href="/azure/search/search-get-started-portal">使用门户编制索引并进行查询测试</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 使用 .NET 或 REST 编写代码，或者尝试使用门户进行快速的概念测试。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/search/cognitive-search-tutorial-blob">使用 AI（认知服务）编制索引</a>
+          - html: <a href="/azure/search/search-howto-dotnet-sdk">如何将 Azure 搜索与 .NET 配合使用</a>
+          - html: <a href="/azure/search/search-indexer-tutorial">通过 .NET 对 Azure SQL 数据库内容进行索引</a>
+          - html: <a href="/azure/search/search-semi-structured-data">通过 REST 对 Azure Blob 存储中的半结构化数据进行索引</a>
+          - html: <a href="/azure/search/search-get-started-portal">使用门户编制索引并进行查询测试</a>
+  - title: 引用
     items:
-    - title: Languages
-      html: <p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET（管理）</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python（管理）</a></p>
-    - title: REST
-      html: <p><a href="/rest/api/searchservice">服务 API 参考</a></p><p><a href="/rest/api/searchmanagement">管理 API 参考</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Languages
+            html: '<p><a href="/dotnet/api/?term=microsoft.azure.search">.NET</a></p><p><a href="/dotnet/api/?term=microsoft.azure.management.search">.NET（管理）</a></p><p><a href="https://docs.microsoft.com/python/api/?view=azure-python&term=search">Python（管理）</a></p>'
+          - title: REST
+            html: <p><a href="/rest/api/searchservice">服务 API 参考</a></p><p><a href="/rest/api/searchmanagement">管理 API 参考</a></p>

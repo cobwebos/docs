@@ -1,150 +1,143 @@
-items:
 - name: Azure 容器注册表
   href: ./index.yml
 - name: 概述
   items:
-  - name: 关于容器注册表
-    href: container-registry-intro.md
+    - name: 关于容器注册表
+      href: container-registry-intro.md
 - name: 快速入门
-  items:
-  - name: 创建容器注册表 - CLI
-    href: container-registry-get-started-azure-cli.md
-  - name: 创建容器注册表 - 门户
-    href: container-registry-get-started-portal.md
-  - name: 创建容器注册表 - PowerShell
-    href: container-registry-get-started-powershell.md
-  - name: 生成并运行映像 - CLI
-    href: container-registry-quickstart-task-cli.md
-  - name: 将事件发送到事件网格 - CLI
-    href: container-registry-event-grid-quickstart.md
   expanded: true
+  items:
+    - name: 创建容器注册表 - CLI
+      href: container-registry-get-started-azure-cli.md
+    - name: 创建容器注册表 - 门户
+      href: container-registry-get-started-portal.md
+    - name: 创建容器注册表 - PowerShell
+      href: container-registry-get-started-powershell.md
+    - name: 生成并运行映像 - CLI
+      href: container-registry-quickstart-task-cli.md
+    - name: 将事件发送到事件网格 - CLI
+      href: container-registry-event-grid-quickstart.md
 - name: 教程
   items:
-  - name: 生成容器映像
-    items:
-    - name: 1 - 在 Azure 中生成映像
-      href: container-registry-tutorial-quick-task.md
-    - name: 2 - 自动生成映像
-      href: container-registry-tutorial-build-task.md
-    - name: 3 - 基础映像更新生成
-      href: container-registry-tutorial-base-image-update.md
-  - name: 异地复制注册表
-    items:
-    - name: 1 - 准备容器注册表
-      href: container-registry-tutorial-prepare-registry.md
-    - name: 2 - 部署 Web 应用程序
-      href: container-registry-tutorial-deploy-app.md
-    - name: 3 - 更新 Web 应用程序
-      href: container-registry-tutorial-deploy-update.md
+    - name: 生成容器映像
+      items:
+        - name: 1 - 在 Azure 中生成映像
+          href: container-registry-tutorial-quick-task.md
+        - name: 2 - 自动生成映像
+          href: container-registry-tutorial-build-task.md
+        - name: 3 - 基础映像更新生成
+          href: container-registry-tutorial-base-image-update.md
+    - name: 异地复制注册表
+      items:
+        - name: 1 - 准备容器注册表
+          href: container-registry-tutorial-prepare-registry.md
+        - name: 2 - 部署 Web 应用程序
+          href: container-registry-tutorial-deploy-app.md
+        - name: 3 - 更新 Web 应用程序
+          href: container-registry-tutorial-deploy-update.md
 - name: 概念
   items:
-  - name: 容器注册表 SKU
-    href: container-registry-skus.md
-  - name: 图像存储
-    href: container-registry-storage.md
-  - name: 内容格式
-    href: container-registry-image-formats.md
-  - name: 异地复制
-    href: container-registry-geo-replication.md
-  - name: 角色和权限
-    href: container-registry-roles.md
-  - name: 注册最佳做法
-    href: container-registry-best-practices.md
+    - name: 容器注册表 SKU
+      href: container-registry-skus.md
+    - name: 图像存储
+      href: container-registry-storage.md
+    - name: 内容格式
+      href: container-registry-image-formats.md
+    - name: 异地复制
+      href: container-registry-geo-replication.md
+    - name: 角色和权限
+      href: container-registry-roles.md
+    - name: 注册最佳做法
+      href: container-registry-best-practices.md
 - name: 操作指南
   items:
-  - name: 注册表操作
-    items:
-    - name: 推送和拉取映像
-      href: container-registry-get-started-docker-cli.md
-    - name: 查看存储库
-      href: container-registry-repositories.md
-    - name: 导入容器映像
-      href: container-registry-import-images.md
-    - name: 锁定容器映像
-      href: container-registry-image-lock.md
-    - name: 删除容器映像
-      href: container-registry-delete.md
-    - name: 升级经典注册表
-      href: container-registry-upgrade.md
-    - name: 使用 ACR webhook
-      href: container-registry-webhook.md
-    - name: Helm 图表存储库（预览版）
-      href: container-registry-helm-repos.md
-  - name: 安全性和身份验证
-    items:
-    - name: 使用虚拟网络限制访问（预览版）
-      href: container-registry-vnet.md
-    - name: 身份验证概述
-      href: container-registry-authentication.md
+    - name: 注册表操作
       items:
-      - name: 服务主体身份验证
-        href: container-registry-auth-service-principal.md
-      - name: 托管标识身份验证
-        href: container-registry-authentication-managed-identity.md
-      - name: 从 Azure 容器实例进行身份验证
-        href: container-registry-auth-aci.md
-      - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
-        href: container-registry-auth-aks.md
-    - name: 内容信任（预览版）
-      href: container-registry-content-trust.md
-  - name: 生成并修补
-    items:
-    - name: ACR 任务
-      href: container-registry-tasks-overview.md
-    - name: 多步骤任务
-      href: container-registry-tasks-multi-step.md
-  - name: 注册表和其他 Azure 服务
-    items:
-    - name: Azure 容器实例
-      href: ../container-instances/container-instances-tutorial-prepare-app.md
-    - name: Azure Kubernetes 服务 (AKS)
-      href: ../aks/tutorial-kubernetes-prepare-app.md
-    - name: Service Fabric
-      href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+        - name: 推送和拉取映像
+          href: container-registry-get-started-docker-cli.md
+        - name: 查看存储库
+          href: container-registry-repositories.md
+        - name: 导入容器映像
+          href: container-registry-import-images.md
+        - name: 锁定容器映像
+          href: container-registry-image-lock.md
+        - name: 删除容器映像
+          href: container-registry-delete.md
+        - name: 升级经典注册表
+          href: container-registry-upgrade.md
+        - name: 使用 ACR webhook
+          href: container-registry-webhook.md
+        - name: Helm 图表存储库（预览版）
+          href: container-registry-helm-repos.md
+    - name: 安全性和身份验证
+      items:
+        - name: 使用虚拟网络限制访问（预览版）
+          href: container-registry-vnet.md
+        - name: 身份验证概述
+          href: container-registry-authentication.md
+          items:
+            - name: 服务主体身份验证
+              href: container-registry-auth-service-principal.md
+            - name: 托管标识身份验证
+              href: container-registry-authentication-managed-identity.md
+            - name: 从 Azure 容器实例进行身份验证
+              href: container-registry-auth-aci.md
+            - name: 从 Azure Kubernetes 服务 (AKS) 进行身份验证
+              href: container-registry-auth-aks.md
+        - name: 内容信任（预览版）
+          href: container-registry-content-trust.md
+    - name: 生成并修补
+      items:
+        - name: ACR 任务
+          href: container-registry-tasks-overview.md
+        - name: 多步骤任务
+          href: container-registry-tasks-multi-step.md
+    - name: 注册表和其他 Azure 服务
+      items:
+        - name: Azure 容器实例
+          href: ../container-instances/container-instances-tutorial-prepare-app.md
+        - name: Azure Kubernetes 服务 (AKS)
+          href: ../aks/tutorial-kubernetes-prepare-app.md
+        - name: Service Fabric
+          href: ../service-fabric/service-fabric-tutorial-create-container-images.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/acr
-  - name: REST
-    href: /rest/api/containerregistry
-  - name: PowerShell
-    href: /powershell/module/az.containerregistry
-  - name: .NET
-    href: /dotnet/api/overview/azure/containerregistry
-  - name: Python
-    href: /python/api/overview/azure/container-registry
-  - name: Java
-    href: /java/api/overview/azure/containerregistry
-  - name: Node.js
-    href: /javascript/api/overview/azure/container-registry
-  - name: 资源管理器模板
-    href: /azure/templates/microsoft.containerregistry/registries
-  - name: ACR 任务 YAML
-    href: container-registry-tasks-reference-yaml.md
-  - name: Webhook 架构
-    href: container-registry-webhook-reference.md
-  - name: 事件网格架构
-    href: ../event-grid/event-schema-container-registry.md
-    maintainContext: true
+    - name: Azure CLI
+      href: /cli/azure/acr
+    - name: REST
+      href: /rest/api/containerregistry
+    - name: PowerShell
+      href: /powershell/module/az.containerregistry
+    - name: .NET
+      href: /dotnet/api/overview/azure/containerregistry
+    - name: Python
+      href: /python/api/overview/azure/container-registry
+    - name: Java
+      href: /java/api/overview/azure/containerregistry
+    - name: Node.js
+      href: /javascript/api/overview/azure/container-registry
+    - name: 资源管理器模板
+      href: /azure/templates/microsoft.containerregistry/registries
+    - name: ACR 任务 YAML
+      href: container-registry-tasks-reference-yaml.md
+    - name: Webhook 架构
+      href: container-registry-webhook-reference.md
+    - name: 事件网格架构
+      href: ../event-grid/event-schema-container-registry.md
+      maintainContext: true
 - name: 资源
   items:
-  - name: 利用 Microsoft Learn 掌握技能
-    href: /learn/browse/?products=azure-container-registry
-  - name: 上市区域
-    href: https://azure.microsoft.com/regions/services/
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/container-registry/
-  - name: 路线图
-    href: https://aka.ms/acr/roadmap
-  - name: 提供产品反馈
-    href: https://feedback.azure.com/forums/903958-azure-container-registry
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-container-registry
-  - name: 视频
-    href: https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest
-ms.openlocfilehash: 987b70f527afe9b9d09eeef70c7fa706c3e58932
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787643"
+    - name: 利用 Microsoft Learn 掌握技能
+      href: /learn/browse/?products=azure-container-registry
+    - name: 上市区域
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/container-registry/'
+    - name: 路线图
+      href: 'https://aka.ms/acr/roadmap'
+    - name: 提供产品反馈
+      href: 'https://feedback.azure.com/forums/903958-azure-container-registry'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-container-registry'
+    - name: 视频
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-registry&sort=newest'

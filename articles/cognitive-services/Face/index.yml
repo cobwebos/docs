@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0d2f7ad1f4c3603a831268d2ef7d6b881896fb2f
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731253"
 documentType: LandingData
 title: 人脸 API 文档
 metadata:
@@ -23,82 +17,82 @@ metadata:
 abstract:
   description: 使用基于云的人脸 API，开发人员可以访问高级人脸算法。 Microsoft 人脸算法支持人脸属性检测和人脸识别。 使用快速入门、教程和示例，了解如何以不同的方式分析内容。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/face/overview
+            html: <p>了解人脸 API。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是人脸 API？
+          - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
+            html: <p>了解如何检测图像中的人脸。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 检测图像中的人脸
+          - href: /azure/cognitive-services/face/face-how-to-install-containers
+            html: <p>了解如何在容器中使用人脸 API。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 在容器中使用人脸 API
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/face/overview
-      html: <p>了解人脸 API。</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是人脸 API？
-    - href: /azure/cognitive-services/face/face-api-how-to-topics/howtodetectfacesinimage
-      html: <p>了解如何检测图像中的人脸。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: 检测图像中的人脸
-    - href: /azure/cognitive-services/face/face-how-to-install-containers
-      html: <p>了解如何在容器中使用人脸 API。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: 在容器中使用人脸 API
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过以下途径分析图像、生成缩略图并从图像提取文本：
-  - type: list
-    style: icon48
+      - type: paragraph
+        text: 通过以下途径分析图像、生成缩略图并从图像提取文本：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/logo_Csharp.svg
+            text: 'C&#35;'
+            href: QuickStarts/CSharp
+          - image:
+              src: media/index/logo_java.svg
+            text: Java
+            href: QuickStarts/Java
+          - image:
+              src: media/index/logo_nodejs.svg
+            text: Node.js
+            href: QuickStarts/node
+          - image:
+              src: media/index/logo_python.svg
+            text: Python
+            href: QuickStarts/Python
+          - image:
+              src: media/index/logo_go.svg
+            text: Go
+            href: QuickStarts/Go
+  - title: 分步教程
     items:
-    - image:
-        src: media/index/logo_Csharp.svg
-      text: C&#35;
-      href: QuickStarts/CSharp
-    - image:
-        src: media/index/logo_java.svg
-      text: Java
-      href: QuickStarts/Java
-    - image:
-        src: media/index/logo_nodejs.svg
-      text: Node.js
-      href: QuickStarts/node
-    - image:
-        src: media/index/logo_python.svg
-      text: Python
-      href: QuickStarts/Python
-    - image:
-        src: media/index/logo_go.svg
-      text: Go
-      href: QuickStarts/Go
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何使用人脸 API 开发应用程序：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 了解如何使用人脸 API 开发应用程序：
+      - type: list
+        style: unordered
+        items:
+          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">在 Windows 上检测和定格图像中的人脸</a></li>
+          - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">在 Android 上检测和定格图像中的人脸</a></li>
+  - title: 示例
     items:
-    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial">在 Windows 上检测和定格图像中的人脸</a></li>
-    - html: <a href="/azure/cognitive-services/Face/Tutorials/FaceAPIinJavaForAndroidTutorial">在 Android 上检测和定格图像中的人脸</a></li>
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找人脸 API 示例：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 查找人脸 API 示例：
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">代码示例</a>'
+  - title: 引用
     items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=Face&sort=Relevance">代码示例</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: API
-      html: <p><a href="APIReference">人脸 API</a></p>
-    - title: SDK
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: <p><a href="APIReference">人脸 API</a></p>
+          - title: SDK
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/face?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/faceapi?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python">Python</a></p> <p><a href="https://docs.microsoft.com/javascript/api/azure-cognitiveservices-face/?view=azure-node-latest">Node</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face">Go</a></p> <p><a href="https://github.com/Microsoft/Cognitive-Face-iOS">iOS</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

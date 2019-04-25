@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 5f1d6005dd94bc700682e749f08c47356fcdc829
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56993327"
 documentType: LandingData
 title: Azure Sentinel 预览版文档
 metadata:
@@ -22,47 +16,47 @@ metadata:
 abstract:
   description: Azure Sentinel 预览版是一种云原生 SIEM，它以云规模为整个企业提供智能安全性分析。 获得无限制的云速度和规模，以便帮助专注于真正重要的内容。 轻松地从所有自己的云或本地资产、Office 365、Azure 资源和其他云收集数据。 使用 Microsoft 安全分析专家提供的内置机器学习功能有效检测威胁。 使用内置的协调和自动化 playbook 自动做出威胁响应。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何将数据载入到 Azure Sentinel，以及如何清晰了解数据和潜在的威胁。
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: media/index/deploy.svg
-      text: 载入 Azure Sentinel
-      href: /azure/sentinel/quickstart-onboard
-    - image:
-        src: media/index/get-started.svg
-      text: Azure Sentinel 入门
-      href: /azure/sentinel/quickstart-get-visibility
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何定义安全策略，如何保护资源免受恶意活动侵害，以及如何响应安全警报和事件。
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何将数据载入到 Azure Sentinel，以及如何清晰了解数据和潜在的威胁。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/index/deploy.svg
+            text: 载入 Azure Sentinel
+            href: /azure/sentinel/quickstart-onboard
+          - image:
+              src: media/index/get-started.svg
+            text: Azure Sentinel 入门
+            href: /azure/sentinel/quickstart-get-visibility
+  - title: 分步教程
     items:
-    - html: <a href="/azure/sentinel/tutorial-detect-threats">使用 Azure Sentinel 检测威胁</a>
-    - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">设置自动的威胁响应</a>
-- title: 利用 Microsoft Learn 掌握技能
-  items:
-  - type: list
-    style: cards
-    className: cardsFTitle
+      - type: paragraph
+        text: 了解如何定义安全策略，如何保护资源免受恶意活动侵害，以及如何响应安全警报和事件。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/sentinel/tutorial-detect-threats">使用 Azure Sentinel 检测威胁</a>
+          - html: <a href="/azure/sentinel/tutorial-respond-threats-playbook">设置自动的威胁响应</a>
+  - title: 利用 Microsoft Learn 掌握技能
     items:
-    - title: Azure 安全性简介
-      href: https://docs.microsoft.com/learn/azure
-      image:
-        src: media/index/tutorial.svg
-        href: https://docs.microsoft.com/learn/azure
-  - type: paragraph
-    text: <a href="/learn/browse/?term=security">更多交互式学习...</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: list
+        style: cards
+        className: cardsFTitle
+        items:
+          - title: Azure 安全性简介
+            href: 'https://docs.microsoft.com/learn/azure'
+            image:
+              src: media/index/tutorial.svg
+              href: 'https://docs.microsoft.com/learn/azure'
+      - type: paragraph
+        text: <a href="/learn/browse/?term=security">更多交互式学习...</a>
+  - title: 引用
     items:
-    - html: <a href="https://azure.microsoft.com/updates/?product=sentinel">服务更新</a>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - html: '<a href="https://azure.microsoft.com/updates/?product=sentinel">服务更新</a>'

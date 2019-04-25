@@ -1,322 +1,315 @@
-items:
 - name: 移动应用文档
   href: index.md
 - name: 概述
   items:
-  - name: 什么是移动应用？
-    href: app-service-mobile-value-prop.md
-  - name: 应用服务计划
-    href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 什么是移动应用？
+      href: app-service-mobile-value-prop.md
+    - name: 应用服务计划
+      href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
 - name: 快速入门
   items:
-  - name: Android
-    href: app-service-mobile-android-get-started.md
-  - name: Cordova
-    href: app-service-mobile-cordova-get-started.md
-  - name: iOS
-    href: app-service-mobile-ios-get-started.md
-  - name: Windows
-    href: app-service-mobile-windows-store-dotnet-get-started.md
-  - name: Xamarin.Android
-    href: app-service-mobile-xamarin-android-get-started.md
-  - name: Xamarin.Forms
-    href: app-service-mobile-xamarin-forms-get-started.md
-  - name: Xamarin.iOS
-    href: app-service-mobile-xamarin-ios-get-started.md
+    - name: Android
+      href: app-service-mobile-android-get-started.md
+    - name: Cordova
+      href: app-service-mobile-cordova-get-started.md
+    - name: iOS
+      href: app-service-mobile-ios-get-started.md
+    - name: Windows
+      href: app-service-mobile-windows-store-dotnet-get-started.md
+    - name: Xamarin.Android
+      href: app-service-mobile-xamarin-android-get-started.md
+    - name: Xamarin.Forms
+      href: app-service-mobile-xamarin-forms-get-started.md
+    - name: Xamarin.iOS
+      href: app-service-mobile-xamarin-ios-get-started.md
 - name: 如何
   items:
-  - name: 规划和设计
-    items:
-    - name: Azure 移动应用中的身份验证和授权
-      href: app-service-mobile-auth.md
-    - name: Azure 移动应用中的脱机数据同步
-      href: app-service-mobile-offline-data-sync.md
-    - name: 有关 Azure 应用服务的最佳实践
-      href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 应用服务计划深度介绍
-      href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 高密度托管
-      href: ../app-service/manage-scale-per-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 应用服务环境
-      href: ../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 开发
-    items:
-    - name: Android
+    - name: 规划和设计
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-android-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-android-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-android-get-started-push.md
-      - name: 使用客户端 SDK
-        href: app-service-mobile-android-how-to-use-client-library.md
-    - name: Cordova
+        - name: Azure 移动应用中的身份验证和授权
+          href: app-service-mobile-auth.md
+        - name: Azure 移动应用中的脱机数据同步
+          href: app-service-mobile-offline-data-sync.md
+        - name: 有关 Azure 应用服务的最佳实践
+          href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 应用服务计划深度介绍
+          href: ../app-service/overview-hosting-plans.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 高密度托管
+          href: ../app-service/manage-scale-per-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 应用服务环境
+          href: ../app-service/environment/app-service-app-service-environment-intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 开发
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-cordova-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-cordova-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-cordova-get-started-push.md
-      - name: 使用客户端 SDK
-        items:
+        - name: Android
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-android-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-android-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-android-get-started-push.md
+            - name: 使用客户端 SDK
+              href: app-service-mobile-android-how-to-use-client-library.md
         - name: Cordova
-          href: app-service-mobile-cordova-how-to-use-client-library.md
-        - name: JavaScript/HTML
-          href: app-service-mobile-html-how-to-use-client-library.md
-    - name: iOS
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-cordova-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-cordova-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-cordova-get-started-push.md
+            - name: 使用客户端 SDK
+              items:
+                - name: Cordova
+                  href: app-service-mobile-cordova-how-to-use-client-library.md
+                - name: JavaScript/HTML
+                  href: app-service-mobile-html-how-to-use-client-library.md
+        - name: iOS
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-ios-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-ios-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-ios-get-started-push.md
+            - name: 使用客户端 SDK
+              href: app-service-mobile-ios-how-to-use-client-library.md
+        - name: Windows
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-windows-store-dotnet-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-windows-store-dotnet-get-started-push.md
+            - name: 使用客户端 SDK
+              href: app-service-mobile-dotnet-how-to-use-client-library.md
+        - name: Xamarin.Android
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-xamarin-android-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-xamarin-android-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-xamarin-android-get-started-push.md
+            - name: 使用客户端 SDK
+              href: app-service-mobile-dotnet-how-to-use-client-library.md
+        - name: Xamarin.Forms
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-xamarin-forms-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-xamarin-forms-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-xamarin-forms-get-started-push.md
+            - name: 使用客户端 SDK
+              href: app-service-mobile-dotnet-how-to-use-client-library.md
+        - name: Xamarin.iOS
+          items:
+            - name: 启用脱机同步
+              href: app-service-mobile-xamarin-ios-get-started-offline-data.md
+            - name: 添加身份验证
+              href: app-service-mobile-xamarin-ios-get-started-users.md
+            - name: 添加推送通知
+              href: app-service-mobile-xamarin-ios-get-started-push.md
+            - name: 使用客户端 SDK
+              href: app-service-mobile-dotnet-how-to-use-client-library.md
+        - name: 使用服务器 SDK
+          items:
+            - name: .NET 后端
+              href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
+            - name: Node.js backend
+              href: app-service-mobile-node-backend-how-to-use-server-sdk.md
+            - name: 客户端和服务器版本控制
+              href: app-service-mobile-client-and-server-versioning.md
+        - name: 应用服务环境
+          items:
+            - name: 在应用服务环境中创建 Web 应用
+              href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 创建和使用内部负载均衡器
+              href: ../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 使用模板创建 ASE
+              href: ../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 部署
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-ios-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-ios-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-ios-get-started-push.md
-      - name: 使用客户端 SDK
-        href: app-service-mobile-ios-how-to-use-client-library.md
-    - name: Windows
+        - name: 云同步部署
+          href: ../app-service/deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 连续部署
+          href: ../app-service/deploy-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 过渡环境
+          href: ../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 本地 Git 部署
+          href: ../app-service/deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: Azure 资源管理器部署
+          href: ../app-service/deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 缩放
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-windows-store-dotnet-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-windows-store-dotnet-get-started-push.md
-      - name: 使用客户端 SDK
-        href: app-service-mobile-dotnet-how-to-use-client-library.md
-    - name: Xamarin.Android
+        - name: 扩展应用
+          href: ../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 应用服务环境
+          href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+          items:
+            - name: 应用服务环境的异地分布式缩放
+              href: ../app-service/environment/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 在应用服务环境中缩放应用
+              href: ../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md
+            - name: 在应用服务环境中自动缩放
+              href: ../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 管理
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-xamarin-android-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-xamarin-android-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-xamarin-android-get-started-push.md
-      - name: 使用客户端 SDK
-        href: app-service-mobile-dotnet-how-to-use-client-library.md
-    - name: Xamarin.Forms
+        - name: 配置
+          href: ../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 自定义域
+          items:
+            - name: 购买和配置自定义域
+              href: ../app-service/manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 映射自己的自定义域
+              href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 在流量管理器中使用自定义域
+              href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 克隆现有应用
+          href: ../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: Azure 虚拟网络
+          href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 资源组
+          href: '../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations'
+          items:
+            - name: 使用 Web 作业运行后台任务
+              href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 配置
+              href: ../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 自定义配置设置
+              href: ../app-service/environment/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 如何控制入站流量
+              href: ../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 网络体系结构概述
+              href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 使用 ExpressRoute 的网络配置详细信息
+              href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 迁移
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-xamarin-forms-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-xamarin-forms-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-xamarin-forms-get-started-push.md
-      - name: 使用客户端 SDK
-        href: app-service-mobile-dotnet-how-to-use-client-library.md
-    - name: Xamarin.iOS
+        - name: 应用服务与移动服务的比较
+          href: app-service-mobile-value-prop-migration-from-mobile-services.md
+        - name: 将现有移动服务迁移到应用服务
+          href: app-service-mobile-migrating-from-mobile-services.md
+        - name: 将现有移动服务升级到应用服务
+          items:
+            - name: .NET 后端
+              href: app-service-mobile-net-upgrading-from-mobile-services.md
+            - name: Node.js backend
+              href: app-service-mobile-node-backend-upgrading-from-mobile-services.md
+    - name: 安全
       items:
-      - name: 启用脱机同步
-        href: app-service-mobile-xamarin-ios-get-started-offline-data.md
-      - name: 添加身份验证
-        href: app-service-mobile-xamarin-ios-get-started-users.md
-      - name: 添加推送通知
-        href: app-service-mobile-xamarin-ios-get-started-push.md
-      - name: 使用客户端 SDK
-        href: app-service-mobile-dotnet-how-to-use-client-library.md
-    - name: 使用服务器 SDK
+        - name: 使用标识提供者进行身份验证
+          items:
+            - name: Azure Active Directory 身份验证
+              href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: Facebook 身份验证
+              href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: Google 身份验证
+              href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: Microsoft 帐户身份验证
+              href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: Twitter 身份验证
+              href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: HTTPS
+          items:
+            - name: 配置 TLS 相互身份验证
+              href: ../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 在 Azure 中购买 SSL 证书
+              href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 使用在其他位置获取的 SSL 证书
+              href: ../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 保护应用服务环境
+          items:
+            - name: 配置 Web 应用程序防火墙
+              href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 实施分层的安全体系结构
+              href: ../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+            - name: 安全连接到后端资源
+              href: ../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 备份
       items:
-      - name: .NET 后端
-        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
-      - name: Node.js backend
-        href: app-service-mobile-node-backend-how-to-use-server-sdk.md
-      - name: 客户端和服务器版本控制
-        href: app-service-mobile-client-and-server-versioning.md
-    - name: 应用服务环境
+        - name: 在 Azure 中备份应用
+          href: ../app-service/manage-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 在 Azure 中还原应用
+          href: ../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 监视
+      href: ../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
       items:
-      - name: 在应用服务环境中创建 Web 应用
-        href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 创建和使用内部负载均衡器
-        href: ../app-service/environment/create-ilb-ase.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 使用模板创建 ASE
-        href: ../app-service/environment/create-from-template.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 部署
-    items:
-    - name: 云同步部署
-      href: ../app-service/deploy-content-sync.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 连续部署
-      href: ../app-service/deploy-continuous-deployment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 过渡环境
-      href: ../app-service/deploy-staging-slots.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 本地 Git 部署
-      href: ../app-service/deploy-local-git.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: Azure 资源管理器部署
-      href: ../app-service/deploy-complex-application-predictably.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 缩放
-    items:
-    - name: 扩展应用
-      href: ../app-service/web-sites-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 应用服务环境
-      href: ../app-service/environment/intro.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 启用诊断日志记录
+          href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 使用 Visual Studio 排除故障
+          href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 集成
       items:
-      - name: 应用服务环境的异地分布式缩放
-        href: ../app-service/environment/app-service-app-service-environment-geo-distributed-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 在应用服务环境中缩放应用
-        href: ../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md
-      - name: 在应用服务环境中自动缩放
-        href: ../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 管理
-    items:
-    - name: 配置
-      href: ../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 自定义域
+        - name: 如何在 Azure 中使用 SendGrid 发送电子邮件
+          href: ../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 导出到 PowerApps 和 Microsoft Flow
+          href: ../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 使用托管标识
+          href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: 故障排除
       items:
-      - name: 购买和配置自定义域
-        href: ../app-service/manage-custom-dns-buy-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 映射自己的自定义域
-        href: ../app-service/app-service-web-tutorial-custom-domain.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 在流量管理器中使用自定义域
-        href: ../app-service/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 克隆现有应用
-      href: ../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: Azure 虚拟网络
-      href: ../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 资源组
-      href: ../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations
-      items:
-      - name: 使用 Web 作业运行后台任务
-        href: ../app-service/webjobs-create.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 配置
-        href: ../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 自定义配置设置
-        href: ../app-service/environment/app-service-app-service-environment-custom-settings.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 如何控制入站流量
-        href: ../app-service/environment/app-service-app-service-environment-control-inbound-traffic.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 网络体系结构概述
-        href: ../app-service/environment/app-service-app-service-environment-network-architecture-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 使用 ExpressRoute 的网络配置详细信息
-        href: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 迁移
-    items:
-    - name: 应用服务与移动服务的比较
-      href: app-service-mobile-value-prop-migration-from-mobile-services.md
-    - name: 将现有移动服务迁移到应用服务
-      href: app-service-mobile-migrating-from-mobile-services.md
-    - name: 将现有移动服务升级到应用服务
-      items:
-      - name: .NET 后端
-        href: app-service-mobile-net-upgrading-from-mobile-services.md
-      - name: Node.js backend
-        href: app-service-mobile-node-backend-upgrading-from-mobile-services.md
-  - name: 安全
-    items:
-    - name: 使用标识提供者进行身份验证
-      items:
-      - name: Azure Active Directory 身份验证
-        href: ../app-service/configure-authentication-provider-aad.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: Facebook 身份验证
-        href: ../app-service/configure-authentication-provider-facebook.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: Google 身份验证
-        href: ../app-service/configure-authentication-provider-google.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: Microsoft 帐户身份验证
-        href: ../app-service/configure-authentication-provider-microsoft.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: Twitter 身份验证
-        href: ../app-service/configure-authentication-provider-twitter.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: HTTPS
-      items:
-      - name: 配置 TLS 相互身份验证
-        href: ../app-service/app-service-web-configure-tls-mutual-auth.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 在 Azure 中购买 SSL 证书
-        href: ../app-service/web-sites-purchase-ssl-web-site.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 使用在其他位置获取的 SSL 证书
-        href: ../app-service/app-service-web-tutorial-custom-ssl.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 保护应用服务环境
-      items:
-      - name: 配置 Web 应用程序防火墙
-        href: ../app-service/environment/app-service-app-service-environment-web-application-firewall.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 实施分层的安全体系结构
-        href: ../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-      - name: 安全连接到后端资源
-        href: ../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 备份
-    items:
-    - name: 在 Azure 中备份应用
-      href: ../app-service/manage-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 在 Azure 中还原应用
-      href: ../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 监视
-    href: ../app-service/web-sites-monitor.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    items:
-    - name: 启用诊断日志记录
-      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 使用 Visual Studio 排除故障
-      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 集成
-    items:
-    - name: 如何在 Azure 中使用 SendGrid 发送电子邮件
-      href: ../sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 导出到 PowerApps 和 Microsoft Flow
-      href: ../azure-functions/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 使用托管标识
-      href: ../app-service/overview-managed-identity.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: 故障排除
-    items:
-    - name: 移动应用的一般故障排除
-      items:
-      - name: .NET 后端
-        href: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk
-      - name: Node.JS 后端
-        href: app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging
-    - name: 启用诊断日志记录
-      href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-    - name: 使用 Visual Studio 排除故障
-      href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 移动应用的一般故障排除
+          items:
+            - name: .NET 后端
+              href: 'app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#how-to-debug-and-troubleshoot-the-net-server-sdk'
+            - name: Node.JS 后端
+              href: 'app-service-mobile-node-backend-how-to-use-server-sdk.md#Debugging'
+        - name: 启用诊断日志记录
+          href: ../app-service/troubleshoot-diagnostic-logs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+        - name: 使用 Visual Studio 排除故障
+          href: ../app-service/troubleshoot-dotnet-visual-studio.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
 - name: 引用
   items:
-  - name: .NET 后端 SDK
-    href: https://msdn.microsoft.com/library/azure/dn961176.aspx
-  - name: Node.js 后端 SDK
-    href: https://azure.github.io/azure-mobile-apps-node/
-  - name: Android 客户端 SDK
-    href: https://azure.github.io/azure-mobile-apps-android-client/
-  - name: iOS 客户端 SDK
-    href: https://azure.github.io/azure-mobile-apps-ios-client/
-  - name: JavaScript/Cordova 客户端 SDK
-    href: https://azure.github.io/azure-mobile-apps-js-client/
-  - name: Windows/Xamarin 客户端 SDK
-    href: https://msdn.microsoft.com/library/azure/mt419521.aspx
+    - name: .NET 后端 SDK
+      href: 'https://msdn.microsoft.com/library/azure/dn961176.aspx'
+    - name: Node.js 后端 SDK
+      href: 'https://azure.github.io/azure-mobile-apps-node/'
+    - name: Android 客户端 SDK
+      href: 'https://azure.github.io/azure-mobile-apps-android-client/'
+    - name: iOS 客户端 SDK
+      href: 'https://azure.github.io/azure-mobile-apps-ios-client/'
+    - name: JavaScript/Cordova 客户端 SDK
+      href: 'https://azure.github.io/azure-mobile-apps-js-client/'
+    - name: Windows/Xamarin 客户端 SDK
+      href: 'https://msdn.microsoft.com/library/azure/mt419521.aspx'
 - name: 相关内容
   items:
-  - name: GitHub 存储库
-    href: https://github.com/Azure/azure-mobile-apps
+    - name: GitHub 存储库
+      href: 'https://github.com/Azure/azure-mobile-apps'
 - name: 资源
   items:
-  - name: 应用服务最佳实践
-    href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: MSDN 论坛
-    href: https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/app-service/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: 服务更新
-    href: https://azure.microsoft.com/updates/?product=mobile-services
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/azure-mobile-services
-  - name: 视频
-    href: https://azure.microsoft.com/documentation/videos/index/?services=mobile-services
-  - name: 示例
-    items:
-    - name: 现场工程师
-      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/
-    - name: 结构化数据同步
-      href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/
-    - name: 快速入门已完成
+    - name: 应用服务最佳实践
+      href: ../app-service/app-service-best-practices.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN 论坛
+      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=azuremobile'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/app-service/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: 服务更新
+      href: 'https://azure.microsoft.com/updates/?product=mobile-services'
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/azure-mobile-services'
+    - name: 视频
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=mobile-services'
+    - name: 示例
       items:
-      - name: .NET 后端
-        href: https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/
-      - name: Node.js backend
-        href: https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/
-      - name: Windows
-        href: https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/
-      - name: Xamarin.Android
-        href: https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/
-ms.openlocfilehash: b7aa7664e7261233cda211b3d206432f388c4e87
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58341197"
+        - name: 现场工程师
+          href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-fieldengineer/'
+        - name: 结构化数据同步
+          href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-todo-list-files/'
+        - name: 快速入门已完成
+          items:
+            - name: .NET 后端
+              href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-dotnet-backend-quickstart/'
+            - name: Node.js backend
+              href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-nodejs-backend-quickstart/'
+            - name: Windows
+              href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-windows-quickstart/'
+            - name: Xamarin.Android
+              href: 'https://azure.microsoft.com/resources/samples/app-service-mobile-xamarin-android-quickstart/'

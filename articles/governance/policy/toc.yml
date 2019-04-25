@@ -1,351 +1,344 @@
-items:
 - name: Azure Policy 文档
   href: index.yml
 - name: 概述
   items:
-  - name: Azure Policy 概述
-    displayName: rbac, assign, initiative, parameters, count
-    href: overview.md
+    - name: Azure Policy 概述
+      displayName: 'rbac, assign, initiative, parameters, count'
+      href: overview.md
 - name: 快速入门
-  items:
-  - name: 分配策略 - 门户
-    displayName: assign, compliance
-    href: assign-policy-portal.md
-  - name: 分配策略 - PowerShell
-    displayName: assign, compliance
-    href: assign-policy-powershell.md
-  - name: 分配策略 - Azure CLI
-    displayName: assign, compliance
-    href: assign-policy-azurecli.md
-  - name: 分配策略 - 模板
-    displayName: assign, compliance, resource manager, ARM
-    href: assign-policy-template.md
   expanded: true
+  items:
+    - name: 分配策略 - 门户
+      displayName: 'assign, compliance'
+      href: assign-policy-portal.md
+    - name: 分配策略 - PowerShell
+      displayName: 'assign, compliance'
+      href: assign-policy-powershell.md
+    - name: 分配策略 - Azure CLI
+      displayName: 'assign, compliance'
+      href: assign-policy-azurecli.md
+    - name: 分配策略 - 模板
+      displayName: 'assign, compliance, resource manager, ARM'
+      href: assign-policy-template.md
 - name: 教程
   items:
-  - name: 创建和管理 Azure Policy
-    displayName: assign, definition, compliance, exempt, exclusion
-    href: ./tutorials/create-and-manage.md
-  - name: 创建自定义策略定义
-    displayName: disabled, parameters, rule, mode
-    href: ./tutorials/create-custom-policy-definition.md
-  - name: 动手实验室 - 探索 Azure Policy
-    displayName: create, policy, training, learn
-    href: https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy
+    - name: 创建和管理 Azure Policy
+      displayName: 'assign, definition, compliance, exempt, exclusion'
+      href: ./tutorials/create-and-manage.md
+    - name: 创建自定义策略定义
+      displayName: 'disabled, parameters, rule, mode'
+      href: ./tutorials/create-custom-policy-definition.md
+    - name: 动手实验室 - 探索 Azure Policy
+      displayName: 'create, policy, training, learn'
+      href: 'https://handsonlabs.microsoft.com/handsonlabs/SelfPacedLabs?storyId=story://content-private/content/sp-azuregovernance/1-azpolicy/a-policy'
 - name: 示例
   items:
-  - name: 索引
-    displayName: list, examples
-    href: ./samples/index.md
-  - name: 常规
-    items:
-    - name: 命名
+    - name: 索引
+      displayName: 'list, examples'
+      href: ./samples/index.md
+    - name: 常规
       items:
-      - name: 允许多名称模式
-        displayName: deny, indexed
-        href: samples/allow-multiple-name-patterns.md
-      - name: 需要类似模式
-        displayName: deny, indexed
-        href: samples/enforce-like-pattern.md
-      - name: 需要匹配模式
-        displayName: deny, indexed
-        href: samples/enforce-match-pattern.md
-      - name: 需要标记匹配模式
-        displayName: deny, all
-        href: samples/enforce-tag-match-pattern.md
-    - name: 标记
+        - name: 命名
+          items:
+            - name: 允许多名称模式
+              displayName: 'deny, indexed'
+              href: samples/allow-multiple-name-patterns.md
+            - name: 需要类似模式
+              displayName: 'deny, indexed'
+              href: samples/enforce-like-pattern.md
+            - name: 需要匹配模式
+              displayName: 'deny, indexed'
+              href: samples/enforce-match-pattern.md
+            - name: 需要标记匹配模式
+              displayName: 'deny, all'
+              href: samples/enforce-tag-match-pattern.md
+        - name: 标记
+          items:
+            - name: 应用标记及其默认值
+              displayName: 'append, builtin, concat'
+              href: samples/apply-tag-default-value.md
+            - name: 计费标记策略计划
+              href: samples/billing-tags-policy-initiative.md
+            - name: 强制实施标记和值
+              displayName: 'deny, concat, builtin'
+              href: samples/enforce-tag-value.md
+            - name: 在资源组强制执行标记及其值
+              displayName: 'deny, concat'
+              href: samples/enforce-tag-on-resource-groups.md
+        - name: 位置
+          items:
+            - name: 允许的位置
+              displayName: 'deny, builtin, location'
+              href: samples/allowed-locations.md
+        - name: 资源类型
+          items:
+            - name: 允许的资源类型
+              displayName: 'deny, builtin, resourceTypes'
+              href: samples/allowed-resource-types.md
+            - name: 不允许的资源类型
+              displayName: 'deny, builtin, resourceTypes'
+              href: samples/not-allowed-resource-types.md
+    - name: 计算
       items:
-      - name: 应用标记及其默认值
-        displayName: append, builtin, concat
-        href: samples/apply-tag-default-value.md
-      - name: 计费标记策略计划
-        href: samples/billing-tags-policy-initiative.md
-      - name: 强制实施标记和值
-        displayName: deny, concat, builtin
-        href: samples/enforce-tag-value.md
-      - name: 在资源组强制执行标记及其值
-        displayName: deny, concat
-        href: samples/enforce-tag-on-resource-groups.md
-    - name: 位置
+        - name: 虚拟机
+          items:
+            - name: 允许使用来自资源组的自定义 VM 映像
+              displayName: 'deny, concat, ExistingResourceGroups'
+              href: samples/allow-custom-vm-image.md
+            - name: 允许用于存储帐户和虚拟机的 SKU
+              displayName: 'initiative, vmSKUs, storageSKUs'
+              href: samples/allowed-skus-storage.md
+            - name: 已批准的 VM 映像
+              displayName: deny
+              href: samples/allowed-custom-images.md
+            - name: 如果扩展不存在，则进行审核
+              displayName: auditIfNotExists
+              href: samples/audit-extension-not-exist.md
+            - name: 不允许的 VM 扩展
+              displayName: deny
+              href: samples/not-allowed-vm-extension.md
+        - name: 虚拟机规模集
+          items:
+            - name: 在 VM 未使用托管磁盘时审核
+              displayName: audit
+              href: samples/create-vm-managed-disk.md
+            - name: 使用托管磁盘创建 VM
+              displayName: deny
+              href: samples/use-managed-disk-vm.md
+            - name: 拒绝混合使用权益
+              displayName: deny
+              href: samples/deny-hybrid-use.md
+            - name: 只允许某个特定的 VM 平台映像
+              displayName: deny
+              href: samples/allow-certain-vm-image.md
+    - name: Data Lake
       items:
-      - name: 允许的位置
-        displayName: deny, builtin, location
-        href: samples/allowed-locations.md
-    - name: 资源类型
+        - name: 强制执行 Data Lake Store 加密
+          displayName: deny
+          href: samples/enforce-data-lake-store-encryption.md
+    - name: 来宾配置
       items:
-      - name: 允许的资源类型
-        displayName: deny, builtin, resourceTypes
-        href: samples/allowed-resource-types.md
-      - name: 不允许的资源类型
-        displayName: deny, builtin, resourceTypes
-        href: samples/not-allowed-resource-types.md
-  - name: 计算
-    items:
-    - name: 虚拟机
+        - name: 审核在 Linux 上安装的应用程序
+          displayName: 'audit, vm'
+          href: samples/guest-configuration-applications-installed-linux.md
+    - name: 密钥保管库
       items:
-      - name: 允许使用来自资源组的自定义 VM 映像
-        displayName: deny, concat, ExistingResourceGroups
-        href: samples/allow-custom-vm-image.md
-      - name: 允许用于存储帐户和虚拟机的 SKU
-        displayName: initiative, vmSKUs, storageSKUs
-        href: samples/allowed-skus-storage.md
-      - name: 已批准的 VM 映像
-        displayName: deny
-        href: samples/allowed-custom-images.md
-      - name: 如果扩展不存在，则进行审核
-        displayName: auditIfNotExists
-        href: samples/audit-extension-not-exist.md
-      - name: 不允许的 VM 扩展
-        displayName: deny
-        href: samples/not-allowed-vm-extension.md
-    - name: 虚拟机规模集
+        - name: 审核保管库是否没有虚拟网络终结点
+          displayName: 'audit, KeyVault, indexed'
+          href: samples/keyvault-no-vnet-rules.md
+    - name: 监视
       items:
-      - name: 在 VM 未使用托管磁盘时审核
-        displayName: audit
-        href: samples/create-vm-managed-disk.md
-      - name: 使用托管磁盘创建 VM
-        displayName: deny
-        href: samples/use-managed-disk-vm.md
-      - name: 拒绝混合使用权益
-        displayName: deny
-        href: samples/deny-hybrid-use.md
-      - name: 只允许某个特定的 VM 平台映像
-        displayName: deny
-        href: samples/allow-certain-vm-image.md
-  - name: Data Lake
-    items:
-    - name: 强制执行 Data Lake Store 加密
-      displayName: deny
-      href: samples/enforce-data-lake-store-encryption.md
-  - name: 来宾配置
-    items:
-    - name: 审核在 Linux 上安装的应用程序
-      displayName: audit, vm
-      href: samples/guest-configuration-applications-installed-linux.md
-  - name: 密钥保管库
-    items:
-    - name: 审核保管库是否没有虚拟网络终结点
-      displayName: audit, KeyVault, indexed
-      href: samples/keyvault-no-vnet-rules.md
-  - name: 监视
-    items:
-    - name: 审核诊断设置
-      displayName: auditIfNotExists, resourceTypes
-      href: samples/audit-diagnostic-setting.md
-  - name: 网络
-    items:
-    - name: 网络接口
+        - name: 审核诊断设置
+          displayName: 'auditIfNotExists, resourceTypes'
+          href: samples/audit-diagnostic-setting.md
+    - name: 网络
       items:
-      - name: 每个 NIC 上的 NSG X
-        displayName: deny
-        href: samples/nsg-on-nic.md
-      - name: 为 VM 网络接口使用已批准的子网
-        displayName: deny
-        href: samples/use-approved-subnet-vm-nics.md
-      - name: 对 VM 网络接口使用已批准的 vNet
-        displayName: deny, concat
-        href: samples/use-approved-vnet-vm-nics.md
-    - name: 虚拟网络
+        - name: 网络接口
+          items:
+            - name: 每个 NIC 上的 NSG X
+              displayName: deny
+              href: samples/nsg-on-nic.md
+            - name: 为 VM 网络接口使用已批准的子网
+              displayName: deny
+              href: samples/use-approved-subnet-vm-nics.md
+            - name: 对 VM 网络接口使用已批准的 vNet
+              displayName: 'deny, concat'
+              href: samples/use-approved-vnet-vm-nics.md
+        - name: 虚拟网络
+          items:
+            - name: 允许的应用程序网关 SKU
+              displayName: deny
+              href: samples/allowed-app-gateway-sku.md
+            - name: 允许的 vNet 网关 SKU
+              displayName: deny
+              href: samples/allowed-vnet-gateway-sku.md
+            - name: 允许的负载均衡器 SKU
+              displayName: deny
+              href: samples/allowed-load-balancer-skus.md
+            - name: 没有与 ER 网络的网络对等互连
+              displayName: 'deny, all, concat, ExistingResourceGroups'
+              href: samples/no-peering-express-route-network.md
+            - name: 无用户定义的路由表
+              displayName: 'deny, all'
+              href: samples/no-user-defined-route-table.md
+            - name: 每个子网上的 NSG X
+              displayName: 'deny, all'
+              href: samples/nsg-on-subnet.md
+            - name: 为 VM 网络接口使用已批准的子网
+              displayName: deny
+              href: samples/use-approved-subnet-vm-nics.md
+            - name: 对 VM 网络接口使用已批准的 vNet
+              displayName: deny
+              href: samples/use-approved-vnet-vm-nics.md
+        - name: 网络安全组
+          items:
+            - name: 每个 NIC 上的 NSG X
+              displayName: deny
+              href: samples/nsg-on-nic.md
+            - name: 每个子网上的 NSG X
+              displayName: 'deny, all'
+              href: samples/nsg-on-subnet.md
+        - name: ExpressRoute
+          items:
+            - name: 允许的 ExpressRoute 带宽
+              displayName: deny
+              href: samples/allowed-express-route-bandwidth.md
+            - name: 允许的 ExpressRoute SKU
+              displayName: deny
+              href: samples/allowed-express-route-skus.md
+            - name: 允许的 ExpressRoute 对等位置
+              displayName: 'deny, Location'
+              href: samples/allowed-express-route-peering.md
+        - name: 网络观察程序
+          items:
+            - name: 如果未对区域启用网络观察程序，则进行审核
+              displayName: 'auditIfNotExists, Location'
+              href: samples/network-watcher-not-enabled.md
+        - name: 应用程序网关数
+          items:
+            - name: 允许的应用程序网关 SKU
+              displayName: deny
+              href: samples/allowed-app-gateway-sku.md
+    - name: SQL
       items:
-      - name: 允许的应用程序网关 SKU
-        displayName: deny
-        href: samples/allowed-app-gateway-sku.md
-      - name: 允许的 vNet 网关 SKU
-        displayName: deny
-        href: samples/allowed-vnet-gateway-sku.md
-      - name: 允许的负载均衡器 SKU
-        displayName: deny
-        href: samples/allowed-load-balancer-skus.md
-      - name: 没有与 ER 网络的网络对等互连
-        displayName: deny, all, concat, ExistingResourceGroups
-        href: samples/no-peering-express-route-network.md
-      - name: 无用户定义的路由表
-        displayName: deny, all
-        href: samples/no-user-defined-route-table.md
-      - name: 每个子网上的 NSG X
-        displayName: deny, all
-        href: samples/nsg-on-subnet.md
-      - name: 为 VM 网络接口使用已批准的子网
-        displayName: deny
-        href: samples/use-approved-subnet-vm-nics.md
-      - name: 对 VM 网络接口使用已批准的 vNet
-        displayName: deny
-        href: samples/use-approved-vnet-vm-nics.md
-    - name: 网络安全组
+        - name: SQL Server
+          items:
+            - name: 无 Azure Active Directory 管理员时审核
+              displayName: auditIfNotExists
+              href: samples/audit-no-aad-admin.md
+            - name: 审核服务器级别的威胁检测设置
+              displayName: auditIfNotExists
+              href: samples/audit-sql-server-threat-detection-setting.md
+            - name: 审核 SQL Server 审核设置
+              displayName: 'auditIfNotExists, builtin'
+              href: samples/sql-server-audit.md
+            - name: 审核 SQL Server 级别的审核设置
+              displayName: auditIfNotExists
+              href: samples/audit-sql-server-audit-setting.md
+            - name: 需要 SQL Server 版本 12.0
+              displayName: 'deny, builtin'
+              href: samples/require-sql-12.md
+        - name: SQL 数据库
+          items:
+            - name: 允许的 SQL DB SKU
+              displayName: deny
+              href: samples/allowed-sql-db-skus.md
+            - name: 审核 SQL DB 级别的威胁检测设置
+              displayName: auditIfNotExists
+              href: samples/audit-db-threat-detection-setting.md
+            - name: 审核 SQL DB 加密
+              displayName: 'auditIfNotExists, disabled, indexed, builtin'
+              href: samples/sql-database-encryption-audit.md
+            - name: 审核 SQL DB 级别审核设置
+              displayName: auditIfNotExists
+              href: samples/audit-sql-db-audit-setting.md
+    - name: 存储
       items:
-      - name: 每个 NIC 上的 NSG X
-        displayName: deny
-        href: samples/nsg-on-nic.md
-      - name: 每个子网上的 NSG X
-        displayName: deny, all
-        href: samples/nsg-on-subnet.md
-    - name: ExpressRoute
-      items:
-      - name: 允许的 ExpressRoute 带宽
-        displayName: deny
-        href: samples/allowed-express-route-bandwidth.md
-      - name: 允许的 ExpressRoute SKU
-        displayName: deny
-        href: samples/allowed-express-route-skus.md
-      - name: 允许的 ExpressRoute 对等位置
-        displayName: deny, Location
-        href: samples/allowed-express-route-peering.md
-    - name: 网络观察程序
-      items:
-      - name: 如果未对区域启用网络观察程序，则进行审核
-        displayName: auditIfNotExists, Location
-        href: samples/network-watcher-not-enabled.md
-    - name: 应用程序网关数
-      items:
-      - name: 允许的应用程序网关 SKU
-        displayName: deny
-        href: samples/allowed-app-gateway-sku.md
-  - name: SQL
-    items:
-    - name: SQL Server
-      items:
-      - name: 无 Azure Active Directory 管理员时审核
-        displayName: auditIfNotExists
-        href: samples/audit-no-aad-admin.md
-      - name: 审核服务器级别的威胁检测设置
-        displayName: auditIfNotExists
-        href: samples/audit-sql-server-threat-detection-setting.md
-      - name: 审核 SQL Server 审核设置
-        displayName: auditIfNotExists, builtin
-        href: samples/sql-server-audit.md
-      - name: 审核 SQL Server 级别的审核设置
-        displayName: auditIfNotExists
-        href: samples/audit-sql-server-audit-setting.md
-      - name: 需要 SQL Server 版本 12.0
-        displayName: deny, builtin
-        href: samples/require-sql-12.md
-    - name: SQL 数据库
-      items:
-      - name: 允许的 SQL DB SKU
-        displayName: deny
-        href: samples/allowed-sql-db-skus.md
-      - name: 审核 SQL DB 级别的威胁检测设置
-        displayName: auditIfNotExists
-        href: samples/audit-db-threat-detection-setting.md
-      - name: 审核 SQL DB 加密
-        displayName: auditIfNotExists, disabled, indexed, builtin
-        href: samples/sql-database-encryption-audit.md
-      - name: 审核 SQL DB 级别审核设置
-        displayName: auditIfNotExists
-        href: samples/audit-sql-db-audit-setting.md
-  - name: 存储
-    items:
-    - name: 允许用于存储帐户和 VM 的 SKU
-      displayName: initiative, vmSKUs, storageSKUs
-      href: samples/allowed-skus-storage.md
-    - name: 允许的存储帐户 SKU
-      displayName: deny, builtin, storageSKUs
-      href: samples/allowed-storage-account-skus.md
-    - name: 拒绝对存储帐户使用冷访问层
-      displayName: deny, all
-      href: samples/deny-cool-access-tiering.md
-    - name: 确保 HTTPS 流量仅用于存储帐户
-      displayName: deny, all
-      href: samples/ensure-https-storage-account.md
-    - name: 确保存储文件加密
-      displayName: deny, all
-      href: samples/ensure-storage-file-encryption.md
-    - name: 需要存储帐户加密
-      displayName: deny, builtin
-      href: samples/require-storage-account-encryption.md
+        - name: 允许用于存储帐户和 VM 的 SKU
+          displayName: 'initiative, vmSKUs, storageSKUs'
+          href: samples/allowed-skus-storage.md
+        - name: 允许的存储帐户 SKU
+          displayName: 'deny, builtin, storageSKUs'
+          href: samples/allowed-storage-account-skus.md
+        - name: 拒绝对存储帐户使用冷访问层
+          displayName: 'deny, all'
+          href: samples/deny-cool-access-tiering.md
+        - name: 确保 HTTPS 流量仅用于存储帐户
+          displayName: 'deny, all'
+          href: samples/ensure-https-storage-account.md
+        - name: 确保存储文件加密
+          displayName: 'deny, all'
+          href: samples/ensure-storage-file-encryption.md
+        - name: 需要存储帐户加密
+          displayName: 'deny, builtin'
+          href: samples/require-storage-account-encryption.md
 - name: 概念
   items:
-  - name: Azure Policy 定义结构
-    displayName: parameters, location, rule, alias, initiatives
-    href: ./concepts/definition-structure.md
-  - name: 了解 Policy 效果
-    displayName: order, evaluation
-    href: ./concepts/effects.md
-  - name: 使用来宾配置审核 VM
-    displayName: provider, tools, definition
-    href: ./concepts/guest-configuration.md
+    - name: Azure Policy 定义结构
+      displayName: 'parameters, location, rule, alias, initiatives'
+      href: ./concepts/definition-structure.md
+    - name: 了解 Policy 效果
+      displayName: 'order, evaluation'
+      href: ./concepts/effects.md
+    - name: 使用来宾配置审核 VM
+      displayName: 'provider, tools, definition'
+      href: ./concepts/guest-configuration.md
 - name: 操作指南
   items:
-  - name: 以编程方式创建策略
-    displayName: assign, definition
-    href: ./how-to/programmatically-create.md
-  - name: 为数组属性创作策略
-    displayName: array property, alias, aliases, in, notIn, type, defaultValue
-    href: ./how-to/author-policies-for-arrays.md
-  - name: 获取符合性数据
-    displayName: evaluation, scan, summarize, query, events, log analytics
-    href: ./how-to/get-compliance-data.md
-  - name: 确定导致非符合性的原因
-    displayName: reasons, compliance details
-    href: ./how-to/determine-non-compliance.md
-  - name: 修正不符合资源
-    displayName: managed identity, task, definition, roleDefinitionIds
-    href: ./how-to/remediate-resources.md
+    - name: 以编程方式创建策略
+      displayName: 'assign, definition'
+      href: ./how-to/programmatically-create.md
+    - name: 为数组属性创作策略
+      displayName: 'array property, alias, aliases, in, notIn, type, defaultValue'
+      href: ./how-to/author-policies-for-arrays.md
+    - name: 获取符合性数据
+      displayName: 'evaluation, scan, summarize, query, events, log analytics'
+      href: ./how-to/get-compliance-data.md
+    - name: 确定导致非符合性的原因
+      displayName: 'reasons, compliance details'
+      href: ./how-to/determine-non-compliance.md
+    - name: 修正不符合资源
+      displayName: 'managed identity, task, definition, roleDefinitionIds'
+      href: ./how-to/remediate-resources.md
 - name: 引用
   items:
-  - name: Azure CLI
-    href: /cli/azure/policy
-  - name: Azure PowerShell
-    items:
-    - name: 策略
-      href: /powershell/module/az.resources/#policies
-    - name: 策略见解
-      href: /powershell/module/az.policyinsights#policy_insights
-    - name: 来宾配置
-      href: https://www.powershellgallery.com/packages/Az.GuestConfiguration
-  - name: REST
-    items:
-    - name: 活动
-      href: /rest/api/policy-insights/policyevents
-    - name: States
-      href: /rest/api/policy-insights/policystates
-    - name: 分配
-      href: /rest/api/resources/policyassignments
-    - name: 策略定义
-      href: /rest/api/resources/policydefinitions
-    - name: 计划定义
-      href: /rest/api/resources/policysetdefinitions
-    - name: 策略受跟踪的资源
-      href: /rest/api/policy-insights/policytrackedresources
-    - name: 修正
-      href: /rest/api/policy-insights/remediations
-    - name: 来宾配置
-      href: /rest/api/guestconfiguration/
-  - name: 资源管理器模板
-    items:
-    - name: 分配
-      href: /azure/templates/microsoft.authorization/policyassignments
-    - name: 策略定义
-      href: /azure/templates/microsoft.authorization/policydefinitions
-    - name: 计划定义
-      href: /azure/templates/microsoft.authorization/policysetdefinitions
+    - name: Azure CLI
+      href: /cli/azure/policy
+    - name: Azure PowerShell
+      items:
+        - name: 策略
+          href: '/powershell/module/az.resources/#policies'
+        - name: 策略见解
+          href: '/powershell/module/az.policyinsights#policy_insights'
+        - name: 来宾配置
+          href: 'https://www.powershellgallery.com/packages/Az.GuestConfiguration'
+    - name: REST
+      items:
+        - name: 活动
+          href: /rest/api/policy-insights/policyevents
+        - name: States
+          href: /rest/api/policy-insights/policystates
+        - name: 分配
+          href: /rest/api/resources/policyassignments
+        - name: 策略定义
+          href: /rest/api/resources/policydefinitions
+        - name: 计划定义
+          href: /rest/api/resources/policysetdefinitions
+        - name: 策略受跟踪的资源
+          href: /rest/api/policy-insights/policytrackedresources
+        - name: 修正
+          href: /rest/api/policy-insights/remediations
+        - name: 来宾配置
+          href: /rest/api/guestconfiguration/
+    - name: 资源管理器模板
+      items:
+        - name: 分配
+          href: /azure/templates/microsoft.authorization/policyassignments
+        - name: 策略定义
+          href: /azure/templates/microsoft.authorization/policydefinitions
+        - name: 计划定义
+          href: /azure/templates/microsoft.authorization/policysetdefinitions
 - name: 资源
   items:
-  - name: GitHub - Azure Policy 示例
-    href: https://github.com/Azure/azure-policy
-  - name: 视频 - Build 2018
-    href: https://channel9.msdn.com/events/Build/2018/THR2030
-  - name: 治理 YouTube 频道
-    href: https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ
-  - name: 来宾配置视频
-    items:
-    - name: 入门
-      href: https://www.youtube.com/watch?v=mjJw9_EIyHo
-    - name: 了解计划
-      href: https://www.youtube.com/watch?v=4JZH3kuG8bI
-    - name: 分配策略
-      href: https://www.youtube.com/watch?v=fbZBaxcjA-Y
-    - name: 修正任务
-      href: https://www.youtube.com/watch?v=URE4DUYMgmg
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-  - name: 定价计算器
-    href: https://azure.microsoft.com/pricing/calculator/
-  - name: UserVoice
-    href: https://feedback.azure.com/forums/915958-azure-governance
-ms.openlocfilehash: 730222484658019c78fb2dfef94c474f3031769b
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226124"
+    - name: GitHub - Azure Policy 示例
+      href: 'https://github.com/Azure/azure-policy'
+    - name: 视频 - Build 2018
+      href: 'https://channel9.msdn.com/events/Build/2018/THR2030'
+    - name: 治理 YouTube 频道
+      href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
+    - name: 来宾配置视频
+      items:
+        - name: 入门
+          href: 'https://www.youtube.com/watch?v=mjJw9_EIyHo'
+        - name: 了解计划
+          href: 'https://www.youtube.com/watch?v=4JZH3kuG8bI'
+        - name: 分配策略
+          href: 'https://www.youtube.com/watch?v=fbZBaxcjA-Y'
+        - name: 修正任务
+          href: 'https://www.youtube.com/watch?v=URE4DUYMgmg'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 定价计算器
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: UserVoice
+      href: 'https://feedback.azure.com/forums/915958-azure-governance'

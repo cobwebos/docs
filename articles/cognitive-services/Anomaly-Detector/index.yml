@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 7b7305a84ac8600629ce27551c0243c427082e5e
-ms.sourcegitcommit: fbfe56f6069cba027b749076926317b254df65e5
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58473357"
 documentType: LandingData
 title: 异常检测器 API 文档
 metadata:
@@ -23,43 +17,43 @@ metadata:
 abstract:
   description: 异常检测器 API 可帮助你轻松将异常情况检测功能嵌入到应用中，以便你的用户可以快速确定问题，从而最大程度地降低损失和客户影响。 无需任何机器学习背景。 通过单个 API 调用，可以激活此预先训练的 AI 模型，从而引入所有类型和数量的时序数据、选择最适合你的数据的异常情况检测模型以确保高准确性，并自动在事件发生后立即提供其相关信息。 可以自定义该服务以检测各种规模的异常情况。  使用异常检测器可识别业务事件、监视 IoT 设备流量、管理欺诈、应对不断变化的市场，等等。
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/anomaly-detector/overview
+            html: <p>了解异常检测器 API</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是异常检测器 API？
+          - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
+            html: <p>通过将最佳做法与该 API 配合使用来优化异常情况检测结果</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 使用异常检测器 API 时的最佳做法
+          - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
+            html: <p>调整异常情况检测灵敏度、使用不同的检测模式，等等。</p>
+            image:
+              src: ../media/index/i_guidelines.svg
+            title: 使用异常情况检测 API
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/anomaly-detector/overview
-      html: <p>了解异常检测器 API</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是异常检测器 API？
-    - href: /azure/cognitive-services/anomaly-detector/concepts/anomaly-detection-best-practices
-      html: <p>通过将最佳做法与该 API 配合使用来优化异常情况检测结果</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 使用异常检测器 API 时的最佳做法
-    - href: /azure/cognitive-services/anomaly-detector/how-to/identify-anomalies
-      html: <p>调整异常情况检测灵敏度、使用不同的检测模式，等等。</p>
-      image:
-        src: ../media/index/i_guidelines.svg
-      title: 使用异常情况检测 API
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 使用以下语言检测时序数据中的异常：
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: media/logo_Csharp.svg
-      href: quickstarts/detect-data-anomalies-csharp
-      text: C#
-    - image:
-        src: media/logo_Java.svg
-      href: quickstarts/detect-data-anomalies-java
-      text: Java
-    - image:
-        src: media/logo_python.svg
-      href: quickstarts/detect-data-anomalies-python
-      text: Python
+      - type: paragraph
+        text: 使用以下语言检测时序数据中的异常：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: media/logo_Csharp.svg
+            href: quickstarts/detect-data-anomalies-csharp
+            text: 'C#'
+          - image:
+              src: media/logo_Java.svg
+            href: quickstarts/detect-data-anomalies-java
+            text: Java
+          - image:
+              src: media/logo_python.svg
+            href: quickstarts/detect-data-anomalies-python
+            text: Python

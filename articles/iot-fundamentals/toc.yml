@@ -1,25 +1,18 @@
-items:
 - name: Azure 物联网
   href: index.md
 - name: 概述
   items:
-  - name: 介绍
-    href: iot-introduction.md
-  - name: Azure IoT 服务与技术
-    href: iot-services-and-technologies.md
+    - name: 介绍
+      href: iot-introduction.md
+    - name: Azure IoT 服务与技术
+      href: iot-services-and-technologies.md
 - name: 安全
   items:
-  - name: 安全体系结构
-    href: iot-security-architecture.md
-  - name: 安全最佳实践
-    href: iot-security-best-practices.md
-  - name: 保护部署
-    href: iot-security-deployment.md
-  - name: 安全基础知识
-    href: iot-security-ground-up.md
-ms.openlocfilehash: dc5c08ea2a3376b4213e83495ff1dce697338d82
-ms.sourcegitcommit: 8b41b86841456deea26b0941e8ae3fcdb2d5c1e1
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57336710"
+    - name: 安全体系结构
+      href: iot-security-architecture.md
+    - name: 安全最佳实践
+      href: iot-security-best-practices.md
+    - name: 保护部署
+      href: iot-security-deployment.md
+    - name: 安全基础知识
+      href: iot-security-ground-up.md

@@ -1,15 +1,9 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 9b3a65446a6f55101e93fdee4c437cde7408b7ca
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53973071"
 documentType: LandingData
 title: 应用程序网关文档
 metadata:
   title: Azure 应用程序网关文档 - 教程和 API 参考
-  meta.description: Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.
+  meta.description: 'Learn how to create application gateways. Documentation helps you plan, deploy, and manage web traffic to your Azure resources.'
   services: application-gateway
   author: davidmu1
   manager: jeconnocfte
@@ -20,57 +14,57 @@ metadata:
 abstract:
   description: 了解如何部署应用程序网关 - 服务形式的应用程序传送控制器 (ADC)。 教程、API 参考和其他文档介绍了如何设置应用程序级别的路由和负载均衡服务，以便构建高度可用的可缩放 Web 前端。
 sections:
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何使用应用程序网关管理到资源的 Web 流量：
-  - type: list
-    style: icon48
+  - title: 5 分钟快速入门
     items:
-    - image:
-        src: https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg
-      text: Azure 门户
-      href: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
-    - image:
-        src: https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg
-      text: Azure PowerShell
-      href: https://docs.microsoft.com/azure/application-gateway/quick-create-powershell
-    - image:
-        src: https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg
-      text: Azure CLI
-      href: https://docs.microsoft.com/azure/application-gateway/quick-create-cli
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何在 Azure 上部署、管理和监视应用程序网关
-  - type: list
-    style: ordered
+      - type: paragraph
+        text: 了解如何使用应用程序网关管理到资源的 Web 流量：
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/portal.svg'
+            text: Azure 门户
+            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-portal'
+          - image:
+              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/logo_powershell.svg'
+            text: Azure PowerShell
+            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-powershell'
+          - image:
+              src: 'https://docs.microsoft.com/azure/application-gateway/media/index/cli.svg'
+            text: Azure CLI
+            href: 'https://docs.microsoft.com/azure/application-gateway/quick-create-cli'
+  - title: 分步教程
     items:
-    - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">使用应用程序网关管理 Web 流量</a>。
-    - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">在应用程序网关上通过 Web 应用程序防火墙限制 Web 流量</a>。
-    - html: <a href="/azure/application-gateway/tutorial-ssl-cli">在应用程序网关上启用 SSL 终止</a>。
-    - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">使用应用程序网关托管多个网站</a>。
-    - html: <a href="/azure/application-gateway/tutorial-url-route-cli">在应用程序网关中根据 URL 路由流量</a>。
-    - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">在应用程序网关池中将流量重定向到特定服务器</a>。
-- title: 示例
-  items:
-  - type: paragraph
-    text: 使用应用程序网关管理 Web 流量。
-  - type: list
-    style: unordered
-    className: spaced noBullet
+      - type: paragraph
+        text: 了解如何在 Azure 上部署、管理和监视应用程序网关
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="/azure/application-gateway/tutorial-manage-web-traffic-cli">使用应用程序网关管理 Web 流量</a>。
+          - html: <a href="/azure/application-gateway/tutorial-restrict-web-traffic-cli">在应用程序网关上通过 Web 应用程序防火墙限制 Web 流量</a>。
+          - html: <a href="/azure/application-gateway/tutorial-ssl-cli">在应用程序网关上启用 SSL 终止</a>。
+          - html: <a href="/azure/application-gateway/tutorial-multiple-sites-cli">使用应用程序网关托管多个网站</a>。
+          - html: <a href="/azure/application-gateway/tutorial-url-route-cli">在应用程序网关中根据 URL 路由流量</a>。
+          - html: <a href="/azure/application-gateway/tutorial-url-redirect-cli">在应用程序网关池中将流量重定向到特定服务器</a>。
+  - title: 示例
     items:
-    - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
-    - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 使用应用程序网关管理 Web 流量。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: <a href="/azure/application-gateway/cli-samples">Azure CLI</a>
+          - html: <a href="/azure/application-gateway/powershell-samples">Azure PowerShell</a>
+  - title: 引用
     items:
-    - title: 命令行
-      html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
-    - title: 语言
-      html: <p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.application_gateways_operations.applicationgatewaysoperations?view=azure-python">Python</a></p>
-    - title: REST
-      html: <p><a href="https://msdn.microsoft.com/library/mt684941">完整的 REST API 参考</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 命令行
+            html: <p><a href="/powershell/resourcemanager">Azure PowerShell</a></p><p><a href="/cli/azure/network/application-gateway">Azure CLI</a></p>
+          - title: Languages
+            html: '<p><a href="/dotnet/api">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p><p><a href="/javascript/api/azure-arm-network/ApplicationGateways">Node.js</a></p><p><a href="https://docs.microsoft.com/python/api/azure-mgmt-network/azure.mgmt.network.v2018_08_01.operations.application_gateways_operations.applicationgatewaysoperations?view=azure-python">Python</a></p>'
+          - title: REST
+            html: '<p><a href="https://msdn.microsoft.com/library/mt684941">完整的 REST API 参考</a></p>'

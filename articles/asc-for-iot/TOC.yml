@@ -1,77 +1,70 @@
-items:
 - name: 适用于 IoT 的 Azure 安全中心 (ASC) 预览版文档
   href: index.yml
 - name: 概述
   href: overview.md
   items:
-  - name: 解决方案体系结构
-    href: architecture.md
-  - name: 安全代理
-    href: security-agent-architecture.md
-  - name: Edge 安全模块
-    href: security-edge-architecture.md
-  - name: 服务先决条件
-    href: service-prerequisites.md
-  - name: 适用于 IoT 的 ASC 入门
-    href: getting-started.md
+    - name: 解决方案体系结构
+      href: architecture.md
+    - name: 安全代理
+      href: security-agent-architecture.md
+    - name: Edge 安全模块
+      href: security-edge-architecture.md
+    - name: 服务先决条件
+      href: service-prerequisites.md
+    - name: 适用于 IoT 的 ASC 入门
+      href: getting-started.md
 - name: 快速入门
-  items:
-  - name: 在 IoT 中心启用适用于 IoT 的 ASC
-    href: quickstart-onboard-iot-hub.md
-  - name: 配置解决方案
-    href: quickstart-configure-your-solution.md
-  - name: 创建适用于 IoT 的 ASC 模块孪生
-    href: quickstart-create-security-twin.md
-  - name: 创建自定义安全警报
-    href: quickstart-create-custom-alerts.md
   expanded: true
+  items:
+    - name: 在 IoT 中心启用适用于 IoT 的 ASC
+      href: quickstart-onboard-iot-hub.md
+    - name: 配置解决方案
+      href: quickstart-configure-your-solution.md
+    - name: 创建适用于 IoT 的 ASC 模块孪生
+      href: quickstart-create-security-twin.md
+    - name: 创建自定义安全警报
+      href: quickstart-create-custom-alerts.md
 - name: 概念
   items:
-  - name: 安全代理身份验证
-    href: concept-security-agent-authentication-methods.md
-  - name: 安全模块
-    href: concept-security-module.md
-  - name: 安全警报
-    href: concept-security-alerts.md
-  - name: 安全建议
-    href: concept-recommendations.md
-  - name: 定价和关联的成本
-    href: concept-pricing.md
+    - name: 安全代理身份验证
+      href: concept-security-agent-authentication-methods.md
+    - name: 安全模块
+      href: concept-security-module.md
+    - name: 安全警报
+      href: concept-security-alerts.md
+    - name: 安全建议
+      href: concept-recommendations.md
+    - name: 定价和关联的成本
+      href: concept-pricing.md
 - name: 操作指南
   items:
-  - name: 我应该部署哪个代理？
-    items:
-    - name: 选择要部署的代理
-      href: how-to-deploy-agent.md
-    - name: 在 Windows 设备上部署基于 C# 的安全代理
-      href: how-to-deploy-windows-cs.md
-    - name: 在 Linux 设备上部署基于 C# 的安全代理
-      href: how-to-deploy-linux-cs.md
-    - name: 在 Linux 设备上部署基于 C 的安全代理
-      href: how-to-deploy-linux-c.md
-  - name: 部署 Edge 安全模块
-    href: how-to-deploy-edge.md
-  - name: 配置安全代理
-    href: how-to-agent-configuration.md
-  - name: 发送自己的安全消息
-    href: how-to-send-security-messages.md
-  - name: 访问原始安全数据
-    href: how-to-security-data-access.md
-  - name: 调查设备
-    href: how-to-investigate-device.md
+    - name: 我应该部署哪个代理？
+      items:
+        - name: 选择要部署的代理
+          href: how-to-deploy-agent.md
+        - name: '在 Windows 设备上部署基于 C# 的安全代理'
+          href: how-to-deploy-windows-cs.md
+        - name: '在 Linux 设备上部署基于 C# 的安全代理'
+          href: how-to-deploy-linux-cs.md
+        - name: 在 Linux 设备上部署基于 C 的安全代理
+          href: how-to-deploy-linux-c.md
+    - name: 部署 Edge 安全模块
+      href: how-to-deploy-edge.md
+    - name: 配置安全代理
+      href: how-to-agent-configuration.md
+    - name: 发送自己的安全消息
+      href: how-to-send-security-messages.md
+    - name: 访问原始安全数据
+      href: how-to-security-data-access.md
+    - name: 调查设备
+      href: how-to-investigate-device.md
 - name: 资源
   items:
-  - name: 常见问题
-    href: resources-frequently-asked-questions.md
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=security-identity
-  - name: Azure 安全性、隐私性与合规性博客
-    href: http://blogs.msdn.com/b/azuresecurity/
-  - name: 区域可用性
-    href: https://azure.microsoft.com/regions/services/
-ms.openlocfilehash: 1d9d2b51fb1a07081c4ac2f4b115363c74cca6d0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58754584"
+    - name: 常见问题
+      href: resources-frequently-asked-questions.md
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=security-identity'
+    - name: Azure 安全性、隐私性与合规性博客
+      href: 'http://blogs.msdn.com/b/azuresecurity/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
