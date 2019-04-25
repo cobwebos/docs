@@ -7,22 +7,22 @@ author: CelesteDG
 manager: mtillman
 editor: ''
 ms.service: active-directory
-ms.subservice: develop
+ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: celested
+origin.date: 09/24/2018
+ms.date: 11/07/2018
+ms.author: v-junlch
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
 ms.openlocfilehash: e0ced89ce97d5f22270d9968fdeb0ddb3fad1e4e
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56194982"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60252037"
 ---
 # <a name="service-to-service-apps"></a>服务到服务应用
 
@@ -63,8 +63,8 @@ ms.locfileid: "56194982"
 
 ## <a name="app-registration"></a>应用注册
 
-* 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托用户标识类型，则服务器应用程序需要从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
-* 多租户 - 首先，守护程序或服务器应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，会在其目录中注册这两个 Web API。
+- 单租户 - 对于应用程序标识和委托用户标识这两种情况，守护程序或服务器应用程序都必须在 Azure AD 的同一个目录中进行注册。 可以对 Web API 进行配置以公开一组权限，并使用这些权限来限制后台或服务器对其资源的访问。 如果使用的是委托用户标识类型，则服务器应用程序需要从 Azure 门户的“对其他应用程序的权限”下拉菜单中选择所需的权限。 如果使用的是应用程序标识类型，则不需要此步骤。
+- 多租户 - 首先，守护程序或服务器应用程序在配置后会指示它在正常运行时所需的权限。 当目标目录中的用户或管理员表示许可应用程序的要求时（这会使应用程序可供其组织使用），此必需权限列表会显示在一个对话框中。 某些应用程序只需要用户级权限，组织中的任何用户都可以表示许可。 另外一些应用程序需要管理员级权限，组织中的用户无法表示许可。 只有目录管理员可以对需要此级别的权限的应用程序表示许可。 当用户或管理员表示许可后，会在其目录中注册这两个 Web API。
 
 ## <a name="token-expiration"></a>令牌过期
 
@@ -74,3 +74,4 @@ ms.locfileid: "56194982"
 
 - 详细了解其他[应用程序类型和方案](app-types.md)
 - 了解 Azure AD [身份验证基础知识](authentication-scenarios.md)
+

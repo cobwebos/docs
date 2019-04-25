@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 02/13/2019
 ms.author: tomfitz
 ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56270379"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60388057"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。
@@ -461,7 +461,7 @@ ms.locfileid: "56270379"
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | 资源类型 | 支持标记 |
 | ------------- | ----------- |
-| workspaces | 是 | 
+| 工作区 | 是 | 
 | workspaces/virtualNetworkPeerings | 否 | 
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
@@ -762,7 +762,7 @@ ms.locfileid: "56270379"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | 资源类型 | 支持标记 |
 | ------------- | ----------- |
-| workspaces | 是 | 
+| 工作区 | 是 | 
 | workspaces/computes | 否 | 
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
@@ -910,7 +910,7 @@ ms.locfileid: "56270379"
 | devices | 否 | 
 | linkTargets | 否 | 
 | storageInsightConfigs | 否 | 
-| workspaces | 是 | 
+| 工作区 | 是 | 
 | workspaces/dataSources | 否 | 
 | workspaces/linkedServices | 否 | 
 | workspaces/query | 否 | 
@@ -920,7 +920,7 @@ ms.locfileid: "56270379"
 | ------------- | ----------- |
 | managementassociations | 否 | 
 | managementconfigurations | 是 | 
-| solutions | 是 | 
+| 解决方案 | 是 | 
 | 视图 | 是 | 
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft.PolicyInsights

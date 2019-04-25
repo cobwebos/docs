@@ -15,11 +15,11 @@ ms.author: rolyon
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c080173af8ddd31b077bb820ea19d82eb2b29300
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58576133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60440777"
 ---
 # <a name="view-audit-history-for-azure-ad-roles-in-pim"></a>在 PIM 中的 Azure AD 角色查看审核历史记录
 可以使用 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) 审核历史记录以查看所有特权角色的在给定的时间段内的所有用户分配和激活。 如果想要在租户中查看活动的完整审核历史记录（包括管理员、最终用户和同步活动），可以使用 [Azure Active Directory 访问和使用情况报告。](../reports-monitoring/overview-reports.md)

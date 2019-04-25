@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 01/26/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: abeca204296bcb3933013f2b7434b8c558f62e50
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.openlocfilehash: d32beaa51471ccab19804122bfbcb33a6b1a5e3d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58496581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203004"
 ---
-# <a name="brand-detection"></a>品牌检测
+# <a name="detect-popular-brands-in-images"></a>检测图像中的流行品牌
 
 品牌检测是[对象检测](concept-object-detection.md)的一种专用模式，使用包含全球数千个徽标的数据库来标识图像或视频中的商业品牌。 可以使用此功能来执行特定的操作，例如，发现哪些品牌在社交媒体上最受欢迎，或者哪些品牌在社交产品排名上最靠前。
 

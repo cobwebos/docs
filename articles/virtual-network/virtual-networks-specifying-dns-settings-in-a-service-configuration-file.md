@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2016
 ms.author: genli
 ms.openlocfilehash: 0ac488a67d8b9debf6539d199395997cf44cf1e4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51247171"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60232742"
 ---
 # <a name="specifying-dns-settings-in-a-service-configuration-file"></a>在服务配置文件中指定 DNS 设置
 ## <a name="dns-elements"></a>DNS 元素

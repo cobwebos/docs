@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeconnoc
 ms.openlocfilehash: 2255004ae8cd92473b5fe71b44cccb79021a8bf7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59267134"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337440"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>为 Azure 云服务配置自定义域名
 创建云服务时，Azure 会将其分配给 **cloudapp.net** 的子域。 例如，如果云服务名为“contoso”，则用户能够在 URL（如 http://contoso.cloudapp.net）上访问应用程序。 Azure 还会将分配一个虚拟 IP 地址。

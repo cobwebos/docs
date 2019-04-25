@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: kumud
 ms.openlocfilehash: cd026c9be2b1519d473ba02811d9e1ee90fe7a3e
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526208"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329864"
 ---
 # <a name="manage-an-azure-traffic-manager-profile"></a>管理 Azure 流量管理器配置文件
 
@@ -37,7 +37,7 @@ ms.locfileid: "59526208"
     3. 在**订阅**中，选择要创建此配置文件的订阅
     4. 在**资源组**中，创建新的资源组，以在其下放置此配置文件。
     5. 在**资源组位置**中，选择资源组的位置。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。
-    6. 单击“创建”。
+    6. 单击**创建**。
     7. 流量管理器配置文件的全局部署完成后，它会在相应的资源组中作为资源之一列出。
 
 ## <a name="disable-enable-or-delete-a-profile"></a>禁用、启用或删除配置文件

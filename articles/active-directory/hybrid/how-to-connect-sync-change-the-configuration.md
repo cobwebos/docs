@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 31fe3877fd6098b18686b9d99a012cbfbef7c300
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58122971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60244335"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect 同步：更改默认配置
 本文旨在介绍如何对 Azure Active Directory (Azure AD) Connect 同步中的默认配置进行更改。其中提供了一些常见方案的步骤。 了解这些知识后，用户应该能够根据自己的业务规则对自己的配置进行简单的更改。
@@ -266,9 +266,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮创建新的入站规则。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | 属性 | Value | 详细信息 |
     | --- | --- | --- |
-    | 名称 | *提供名称* | 例如 *In from AD – User UserType* |
+    | Name | *提供名称* | 例如 *In from AD – User UserType* |
     | 描述 | *提供说明* |  |
     | 连接的系统 | *选择本地 AD 连接器* |  |
     | 连接的系统对象类型 | **User** |  |
@@ -278,7 +278,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 5. 转到“范围筛选器”选项卡，并添加包含以下子句的**单个范围筛选器组**：
 
-    | 属性 | 运算符 | 值 |
+    | 属性 | 运算符 | Value |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | 用户\_ |
 
@@ -308,9 +308,9 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 3. 单击“添加新规则”按钮。
 4. 在“说明”选项卡下面提供以下配置：
 
-    | 属性 | 值 | 详细信息 |
+    | 属性 | Value | 详细信息 |
     | ----- | ------ | --- |
-    | 名称 | *提供名称* | 例如 *Out to AAD – User UserType* |
+    | Name | *提供名称* | 例如 *Out to AAD – User UserType* |
     | 描述 | *提供说明* ||
     | 连接的系统 | *选择 AAD 连接器* ||
     | 连接的系统对象类型 | **User** ||
@@ -320,7 +320,7 @@ Azure AD Connect 支持 1.1.524.0 及更高版本中 **User** 对象的 **UserTy
 
 5. 转到“范围筛选器”选项卡，并添加包含两个子句的**单个范围筛选器组**：
 
-    | 属性 | 运算符 | 值 |
+    | 属性 | 运算符 | Value |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |

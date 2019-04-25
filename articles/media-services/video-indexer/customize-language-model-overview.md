@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: anzaman
 ms.openlocfilehash: c4ccc189c0f8ed3de868c9965d7068ad9670cbcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60535404"
 ---
 # <a name="customize-a-language-model-with-video-indexer"></a>自定义视频索引器中的语言模型
 

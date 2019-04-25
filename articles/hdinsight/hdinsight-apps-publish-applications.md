@@ -1,7 +1,6 @@
 ---
 title: 发布 Azure HDInsight 应用程序
 description: 了解如何创建 HDInsight 应用程序，然后在 Azure 市场中进行发布。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,11 +9,11 @@ ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
 ms.openlocfilehash: fd6d47d8300872f5bcdf36aec492289f93858504
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55814176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60253510"
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>在 Azure 市场中发布 HDInsight 应用程序
 可在基于 Linux 的 HDInsight 群集上安装 Azure HDInsight 应用程序。 在本文中，你将了解如何在 Azure 市场中发布 HDInsight 应用程序。 有关在 Azure 市场中发布的一般信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/marketplace-publishers-guide.md)。
@@ -26,7 +25,7 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 * [安装 HDInsight 应用程序](hdinsight-apps-install-applications.md). 了解如何在群集上安装 HDInsight 应用程序。
 * [安装自定义 HDInsight 应用程序](hdinsight-apps-install-custom-applications.md)。 了解如何安装和测试自定义 HDInsight 应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要在市场中提交自定义应用程序，首先需[创建并测试该自定义应用程序](hdinsight-apps-install-custom-applications.md)。
 
 还必须注册开发人员帐户。 有关详细信息，请参阅[在 Azure 市场中发布产品/服务](../marketplace/marketplace-publishers-guide.md)和[创建 Microsoft 开发人员帐户](../marketplace/marketplace-publishers-guide.md)。
@@ -45,7 +44,7 @@ HDInsight 应用程序使用自带许可 (BYOL) 模型。 在 BYOL 方案中，�
 }
 ```
 
-| 字段 | 说明 | 可能的值 |
+| 字段 | 描述 | 可能的值 |
 | --- | --- | --- |
 | types |与应用程序兼容的群集类型。 |Hadoop、HBase、Storm、Spark（或这些类型的任意组合） |
 | versions |与应用程序兼容的 HDInsight 群集类型。 |3.4 |

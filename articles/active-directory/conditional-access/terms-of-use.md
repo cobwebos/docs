@@ -16,11 +16,11 @@ ms.date: 04/03/2019
 ms.author: rolyon
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1f03cd518a15d08971968e04fa69954951c77e0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59052352"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60356719"
 ---
 # <a name="azure-active-directory-terms-of-use-feature"></a>Azure Active Directory 使用条款功能
 组织可以通过 Azure AD 使用条款这种简单的方法向最终用户显示信息。 可以通过这样的呈现方式确保用户看到法律要求或符合性要求的相关免责声明。 本文介绍如何快速了解使用条款。
@@ -364,7 +364,7 @@ Azure AD 使用条款包括审核日志，方便你查看其他活动。 每次�
 答：该 PDF 默认呈现为 JPEG，因此无法单击超链接。 用户可以选择“查看时遇到问题? 请单击此处”**，以本机方式呈现该 PDF（支持超链接）**。
 
 **问：使用条款是否支持多种语言？**<br />
-答：是的。 目前，管理员可以为单个使用条款配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
+答：可以。 目前，管理员可以为单个使用条款配置 108 种不同的语言。 管理员可以上传多个 PDF 文档，并使用相应的语言（最多 108 种）标记这些文档。 当最终用户登录时，我们会查看其浏览器语言首选项，并显示匹配的文档。 如果没有匹配项，我们将显示默认文档，即上传的第一个文档。
 
 **问：什么时候会触发使用条款？**<br />
 答：在登录体验期间触发使用条款。

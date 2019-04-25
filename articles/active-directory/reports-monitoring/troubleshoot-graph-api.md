@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8b517204fb650020bdebf8172186f30fff58f722
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438540"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60285011"
 ---
 # <a name="troubleshoot-errors-in-azure-active-directory-reporting-api"></a>对 Azure Active Directory 报告 API 中的错误进行故障排除
 

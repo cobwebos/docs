@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: ergreenl
 ms.openlocfilehash: deaa6a9ff49fea2093c94a039aab0d7de0c95359
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55177111"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60417893"
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>管理 Azure AD 域服务托管域上的组策略
 Azure Active Directory 域服务包括“AADDC 用户”和“AADDC 计算机”容器的内置组策略对象 (GPO)。 可以自定义这些内置 GPO，以便在托管域上配置组策略。 另外，“AAD DC 管理员”组的成员可以在托管域中创建自己的自定义 OU。 他们还可以创建自定义 GPO，并将其链接到这些自定义 OU。 需向属于“AAD DC 管理员”组的用户授予对托管域的“组策略管理”权限。

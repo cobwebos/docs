@@ -17,11 +17,11 @@ ms.author: celested
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d2bb3b7385467d2606a2a4fa0afb43b9440ab79
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56163098"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60293692"
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>找出特定的用户何时可以访问某个应用程序
 当会自动化用户预配用于应用程序时，Azure AD 会根据类似[用户和组分配](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)，定期（通常每 10 分钟）自动预配并更新应用中的用户帐户。

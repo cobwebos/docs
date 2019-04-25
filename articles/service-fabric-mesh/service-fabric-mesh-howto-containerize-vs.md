@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.service: service-fabric-mesh
 manager: chakdan
 ms.openlocfilehash: cb4e327e1c8c0a653cb94233f568b4847494c439
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57779872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419422"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>容器化用于 Service Fabric 网格的现有 .NET 应用
 

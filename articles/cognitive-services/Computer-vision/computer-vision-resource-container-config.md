@@ -12,11 +12,11 @@ ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: 42c08864c6908e92a7ecea336f8b1bd0606760db
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678677"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203457"
 ---
 # <a name="configure-recognize-text-docker-containers"></a>配置“识别文本”Docker 容器
 
@@ -51,7 +51,7 @@ ms.locfileid: "59678677"
 
 请记住添加`vision/v1.0`路由到终结点 URI 下, 表中所示。 
 
-|需要| 名称 | 数据类型 | 描述 |
+|需要| Name | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westcentralus.api.cognitive.microsoft.com/vision/v1.0` |
 
@@ -79,7 +79,7 @@ ms.locfileid: "59678677"
 
 主机确切语法的安装位置因主机操作系统不同而异。 另外，由于 Docker 服务帐户使用的权限与主机装载位置权限之间有冲突，因此可能无法访问[主计算机](computer-vision-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| 名称 | 数据类型 | 描述 |
+|可选| Name | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | “计算机视觉”容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -95,7 +95,7 @@ ms.locfileid: "59678677"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | 值 | 格式或示例 |
+| 占位符 | Value | 格式或示例 |
 |-------------|-------|---|
 |{BILLING_KEY} | 认知服务资源终结点密钥。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | 包括区域的账单终结点值。|`https://westcentralus.api.cognitive.microsoft.com/vision/v1.0`|

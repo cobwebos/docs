@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: ergreenl
 ms.openlocfilehash: f2c4f73af00e0093ce98f2de37e9c3a0ba381eda
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60419027"
 ---
 # <a name="enable-azure-active-directory-domain-services-using-powershell"></a>使用 PowerShell 启用 Azure Active Directory 域服务
 本文介绍如何使用 PowerShell 来启用 Azure Active Directory (AD) 域服务。

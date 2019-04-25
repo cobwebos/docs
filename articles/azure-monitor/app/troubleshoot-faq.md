@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 12/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6834ab15f3d46b8b7116a48b0e970f553eb65ba8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.openlocfilehash: 46c387ab175bfd3613e00be8e7b3a899aa025a7f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60373311"
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights：常见问题
 
@@ -106,7 +106,7 @@ ms.locfileid: "58521808"
 * [异常](asp-net-exceptions.md)和堆栈跟踪。
 * [性能计数器](performance-counters.md) - 如果使用[状态监视器](monitor-performance-live-website-now.md)、[Azure 监视](azure-web-apps.md)或 [Application Insights 收集编写器](java-collectd.md)。
 * [自定义编码的事件和指标](api-custom-events-metrics.md)。
-* 如果配置相应的收集器，则会[跟踪日志](asp-net-trace-logs.md)。
+* [跟踪日志](asp-net-trace-logs.md)（如果配置相应的收集器）。
 
 从[客户端网页](javascript.md)：
 
@@ -134,7 +134,7 @@ ms.locfileid: "58521808"
 
 ## <a name="how-are-city-country-and-other-geo-location-data-calculated"></a>如何计算市/县/区、国家/地区和其他地理位置数据？
 
-使用 [GeoLite2](http://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
+使用 [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/) 查找 Web 客户端的 IP 地址（IPv4 或 IPv6）。
 
 * 浏览器遥测：收集发送方的 IP 地址。
 * 服务器遥测：Application Insights 模块收集客户端 IP 地址。 如果设置了 `X-Forwarded-For`，则不会进行收集。

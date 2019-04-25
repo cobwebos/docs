@@ -17,11 +17,11 @@ ms.reviewer: tomfitz
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9affec9ccc1b87f36d6f30aff4795d85532be8c1
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60300689"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>如何：使用门户创建可访问资源的 Azure AD 应用程序和服务主体
 
@@ -119,7 +119,7 @@ ms.locfileid: "59565914"
 
    ![保存的密钥](./media/howto-create-service-principal-portal/copy-key.png)
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 
 必须具有足够的权限向 Azure AD 租户注册应用程序，并将应用程序分配到 Azure 订阅中的角色。
 

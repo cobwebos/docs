@@ -14,11 +14,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ee64fe8643362c6a75e288d78e163317fd8a44d8
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60243698"
 ---
 # <a name="azure-ad-connect-and-azure-ad-connect-health-installation-roadmap"></a>Azure AD Connect 和 Azure AD Connect Health 安装路线图
 
@@ -79,7 +79,7 @@ Azure AD Connect 随附了多个可以选择启用或已按默认启用的功能
 | --- | --- |
 |配置筛选 | [Azure AD Connect 同步：配置筛选](how-to-connect-sync-configure-filtering.md)|
 |密码哈希同步 | [密码哈希同步](how-to-connect-password-hash-synchronization.md)|
-|直通身份验证 | [直通身份验证](how-to-connect-pta.md)
+|传递身份验证 | [直通身份验证](how-to-connect-pta.md)
 |密码写回 | [密码管理入门](../authentication/quickstart-sspr.md)|
 |设备写回 | [在 Azure AD Connect 中启用设备写回](how-to-connect-device-writeback.md)|
 |防止意外删除 | [Azure AD Connect 同步：防止意外删除](how-to-connect-sync-feature-prevent-accidental-deletes.md)|

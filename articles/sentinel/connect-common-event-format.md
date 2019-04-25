@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/02/2019
 ms.author: rkarlin
 ms.openlocfilehash: 18eb305beb79913713898b939ef840ca9ffab014
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59489393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60445496"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>连接外部解决方案是使用通用事件格式
 
