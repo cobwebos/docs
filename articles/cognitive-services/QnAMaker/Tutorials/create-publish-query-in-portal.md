@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/08/2019
 ms.author: diberry
 ms.openlocfilehash: 299dd61055503f0b5a11cbe97e137e4760edadda
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59266925"
 ---
 # <a name="tutorial-from-qna-maker-portal-create-a-knowledge-base"></a>教程：通过 QnA Maker 门户创建知识库
@@ -67,7 +67,7 @@ ms.locfileid: "59266925"
     |设置名称|设置值|目的|
     |--|--|--|
     |代码|`https://docs.microsoft.com/azure/cognitive-services/qnamaker/faqs` |该 URL 中常见问题解答内容的格式为一个问题接一个答案。 QnA Maker 可以通过解释此格式来提取问题和相关联的答案。|
-    |文件 |_不在本教程中使用_|此项上传用于问题和答案的文件。 |
+    |文件 |不在本教程中使用|此项上传用于问题和答案的文件。 |
     |聊天个性化内容|好友|此项为常见问题和解答提供友好且随和的个性化内容。 可以稍后编辑这些问题和解答。 |
 
     ![KB 创建过程的步骤 4](../media/qnamaker-tutorial-create-publish-query-in-portal/create-kb-step-4.png)

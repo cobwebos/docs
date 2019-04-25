@@ -15,10 +15,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: 4b022d3a51a6a1ef16c7d02aa76c5313e1a94e7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-connect"></a>教程：Azure Active Directory 与 Mitel Connect 的集成
@@ -104,9 +104,9 @@ ms.locfileid: "59283948"
 
     ![Mitel Connect 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL： `https://auth.mitel.io/authorize?client_id=<CLIENT ID>`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://auth.mitel.io/authorize?client_id=<CLIENT ID>`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL： `https://authentication.api.mitel.io/2017-09-01/saml2/<account-uui>`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://authentication.api.mitel.io/2017-09-01/saml2/<account-uui>`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [Mitel Connect 客户端支持团队](https://www.mitel.com/support/mitel-technical-support)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
@@ -195,5 +195,5 @@ ms.locfileid: "59283948"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

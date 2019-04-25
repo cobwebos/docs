@@ -14,12 +14,12 @@ ms.tgt_pltfrm: ASP.NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 6c9b257ab88b3564253b0f48d953094f84a1d71d
-ms.sourcegitcommit: 8313d5bf28fb32e8531cdd4a3054065fa7315bfd
+ms.openlocfilehash: 29cea7e72d6bd7f64f6cf2a68b7620090ea4eef3
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/05/2019
-ms.locfileid: "59051433"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995925"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>快速入门：使用 Azure 应用配置创建 ASP.NET Core 应用
 
@@ -38,6 +38,17 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. 选择“键/值资源管理器” > “+创建”来添加以下键值对：
+
+    | 密钥 | 值 |
+    |---|---|
+    | TestApp:Settings:BackgroundColor | 白色 |
+    | TestApp:Settings:FontSize | 24 |
+    | TestApp:Settings:FontColor | 黑色 |
+    | TestApp:Settings:Message | Azure 应用配置的数据 |
+
+    暂时将“标签”和“内容类型”保留为空。
 
 ## <a name="create-an-aspnet-core-web-app"></a>创建一个 ASP.NET Core Web 应用
 
@@ -191,4 +202,4 @@ ASP.NET Core 使用由应用程序指定的一个或多个数据源的设置，�
 在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 ASP.NET Core Web 应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
 
 > [!div class="nextstepaction"]
-> [用于 Azure 资源集成的托管标识](./integrate-azure-managed-service-identity.md)
+> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)

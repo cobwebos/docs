@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: erhopf
 ms.openlocfilehash: 69e6797e91fc645e3bd3e3b300cea6852a662214
-ms.sourcegitcommit: 045406e0aa1beb7537c12c0ea1fbf736062708e8
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59007400"
 ---
 # <a name="tutorial-build-a-flask-app-with-azure-cognitive-services"></a>教程：生成使用 Azure 认知服务的 Flask 应用
@@ -667,7 +667,7 @@ flask run
 
 ### <a name="call-the-text-to-speech-api"></a>调用文本转语音 API
 
-让我们编写一个函数用于将文本转换为语音。 此函数采用两个参数：`input_text` 和 `voice_font`。 每当用户在该应用中按下“将文本转换为语音”按钮时，就会调用此函数。 `input_text` 是调用“翻译文本”后返回的翻译输出，`voice_font` 是语音字体选择器中的 HTML 值。
+让我们编写一个函数用于将文本转换为语音。 此函数采用两个参数：`input_text` 和 `voice_font`。 每当用户在该应用中按下“将文本转换为语音”按钮时，就会调用此函数。 `input_text`是调用“翻译文本”后返回的翻译输出，`voice_font` 是语音字体选择器中的 HTML 值。
 
 1. 在工作目录的根目录中创建名为 `synthesize.py` 的文件。
 

@@ -4,12 +4,12 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 12/13/2018
 ms.author: crtreasu
-ms.openlocfilehash: dc8d3c2d400204f53b05bb5536af95679541f3f6
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.openlocfilehash: 32f4545a45eda8acddd7c93cc4917dbadca9ad4d
+ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305273"
+ms.lasthandoff: 03/29/2019
+ms.locfileid: "58632957"
 ---
 ## <a name="create-a-spatial-anchors-resource"></a>创建空间定位点资源
 
@@ -25,7 +25,7 @@ ms.locfileid: "58305273"
 
 在“空间定位点帐户”对话框中：
 
-- 输入唯一的资源名称。
+- 使用常规字母数字字符输入唯一的资源名称。
 - 选择想要将资源附加到的订阅。
 - 选择“新建”可创建资源组。 将其命名为 myResourceGroup 并选择“确定”。
       [!INCLUDE [resource group intro text](resource-group.md)]
@@ -34,7 +34,11 @@ ms.locfileid: "58305273"
 
    ![创建资源](./media/spatial-anchors-get-started-create-resource/create-resource-form.png)
 
-创建资源后，可查看资源属性。 将资源的“帐户 ID”值复制到文本编辑器，因为稍后需要用它。
+创建资源后，Azure 门户将显示部署已完成。 单击“转到资源”。
+
+![部署完毕](./media/spatial-anchors-get-started-create-resource/deployment-complete.png)
+
+然后，可以查看资源属性。 将资源的“帐户 ID”值复制到文本编辑器，因为稍后需要用它。
 
    ![资源属性](./media/spatial-anchors-get-started-create-resource/view-resource-properties.png)
 

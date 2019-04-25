@@ -8,12 +8,12 @@ ms.author: rgarcia
 ms.date: 04/03/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 64f78b04d433c81302499addf15c3d19621bbf9f
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.openlocfilehash: 9838add4f83434848d61f3ae86db71765efdc59a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
-ms.locfileid: "58919870"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995721"
 ---
 # <a name="tutorial-step-by-step-instructions-to-create-a-new-android-app-using-azure-spatial-anchors"></a>教程：有关使用 Azure 空间定位点创建新 Android 应用的分步说明
 
@@ -57,12 +57,12 @@ ms.locfileid: "58919870"
 </application>
 ```
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码将确保应用面向 ARCore 版本 1.5（不久后，Azure 空间定位点将会支持 ARCore 1.6+）。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码确保应用面向 ARCore 版本 1.7。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
 
 ```
 dependencies {
     ...
-    implementation 'com.google.ar:core:1.5.0'
+    implementation 'com.google.ar:core:1.7.0'
     ...
 }
 ```
@@ -71,7 +71,7 @@ dependencies {
 
 使用 <a href="https://developers.google.com/ar/develop/java/sceneform/" target="_blank">_Sceneform_</a> 能够轻松地在增强现实应用中渲染逼真的 3D 场景，且无需学习 OpenGL。
 
-修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码允许应用使用 Java 8 中的语言构造，而 `Sceneform` 要求使用此类构造。 它还确保应用面向 `Sceneform` 版本 1.5，该版本应该与应用使用的 ARCore 版本相匹配。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
+修改 `Gradle Scripts\build.gradle (Module: app)` 以包含以下条目。 此代码允许应用使用 Java 8 中的语言构造，而 `Sceneform` 要求使用此类构造。 它还确保应用面向 `Sceneform` 版本 1.7，该版本应该与应用使用的 ARCore 版本相匹配。 完成此项更改后，Gradle 可能会发出一条通知，询问是否要同步：请单击“立即同步”。
 
 ```
 android {
@@ -85,7 +85,7 @@ android {
 
 dependencies {
     ...
-    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.5.0'
+    implementation 'com.google.ar.sceneform.ux:sceneform-ux:1.7.0'
     ...
 }
 ```

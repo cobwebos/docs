@@ -1,21 +1,21 @@
 ---
 title: 如何在 Azure Cosmos DB 中配置多主数据库
 description: 了解如何在 Azure Cosmos DB 中配置应用程序中的多主数据库
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 2/12/2019
-ms.author: mjbrown
-ms.openlocfilehash: 84c8e2921602bb653c0b1ef0adffd3d89e91bd78
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
+ms.date: 04/15/2019
+ms.author: rimman
+ms.openlocfilehash: b862c59002369662d37b6d6a9de28370b0000497
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56312134"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59682264"
 ---
 # <a name="how-to-configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>如何在使用 Azure Cosmos DB 的应用程序配置多主数据库
 
-要在应用程序中使用多主数据库功能，需要启用多区域写入并配置多宿主功能。 通过设置部署应用程序的当前区域来配置多宿主功能。
+要在应用程序中使用多主数据库功能，需要启用多区域写入并在 Azure Cosmos DB 中配置多宿主功能。 可通过设置部署应用程序的区域来配置多宿主功能。
 
 ## <a id="netv2"></a>.NET SDK v2
 
@@ -43,7 +43,7 @@ CosmosClient client = new CosmosClient(config);
 
 ## <a id="java"></a>Java 异步 SDK
 
-若要在应用程序中启用多主数据库，请将 `policy.setUsingMultipleWriteLocations(true)` 设置为 true，并将 `policy.setPreferredLocations` 配置为在其中部署应用程序并复制 Cosmos DB 的区域。
+若要在应用程序中启用多主数据库，请设置 `policy.setUsingMultipleWriteLocations(true)`，并将 `policy.setPreferredLocations` 配置为在其中部署应用程序并复制 Cosmos DB 的区域。
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -89,14 +89,14 @@ client = cosmos_client.CosmosClient(self.account_endpoint, {'masterKey': self.ac
 
 ## <a name="next-steps"></a>后续步骤
 
-详细了解 Azure Cosmos DB 中的多主数据库、全局分发和一致性。 请参阅以下文章：
+接下来可以阅读以下文章：
 
 * [利用可以在 Azure Cosmos DB 中管理一致性的会话令牌](how-to-manage-consistency.md#utilize-session-tokens)
-
 * [Azure Cosmos DB 中的冲突类型和解决策略](conflict-resolution-policies.md)
-
 * [Azure Cosmos DB 中的高可用性](high-availability.md)
-
+* [Azure Cosmos DB 中的一致性级别](consistency-levels.md)
 * [在 Azure Cosmos DB 中选择适当的一致性级别](consistency-levels-choosing.md)
-
 * [Azure Cosmos DB 中的一致性、可用性和性能权衡](consistency-levels-tradeoffs.md)
+* [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
+* [全局缩放预配的吞吐量](scaling-throughput.md)
+* [全球分布 - 揭秘](global-dist-under-the-hood.md)

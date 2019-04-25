@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 04/02/2019
 ms.author: jeedes
 ms.openlocfilehash: ac21071b958942d7d689f1e9c2c49f02a3599ac4
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257886"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-trakstar"></a>教程：Azure Active Directory 与 Trakstar 集成
@@ -107,9 +107,9 @@ ms.locfileid: "59257886"
 
     ![Trakstar 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，复制在 Trakstar 的“ACS (使用者) URL”中找到的值（“设置”>“身份验证和 SSO”），格式为： `https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
+    a. 在“登录 URL”文本框中，复制在 Trakstar 的“ACS (使用者) URL”中找到的值（“设置”>“身份验证”和“SSO”），格式为：`https://app.trakstar.com/auth/saml/callback?namespace=<YOUR_NAMESPACE>`
 
-    b. 在“标识符(实体 ID)”文本框中保留默认值： `https://app.trakstar.com`
+    b. 在“标识符(实体 ID)”文本框中保留默认值：`https://app.trakstar.com`
 
     > [!NOTE]
     > 这些不是实际值。 必须使用实际登录 URL 和标识符更新这些值。 以管理员身份登录到 Trakstar 以获取这些值。
@@ -199,5 +199,5 @@ ms.locfileid: "59257886"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
-ms.openlocfilehash: 14732b02e56d56baa032b8a3728ca892f4ad7d2f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: af849fa6790dfdb57d8073b17f6d31a3f59a532d
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563569"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999751"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-foresee-cx-suite"></a>教程：Azure Active Directory 与 ForeSee CX Suite 的集成
 
@@ -119,7 +119,7 @@ ms.locfileid: "59563569"
 
     a. 在“登录 URL”文本框中，键入 URL：`https://cxsuite.foresee.com/`
 
-    b. 在“标识符”文本框中，使用以下模式键入 URL： https://www.okta.com/saml2/service-provider/<UniqueID>
+    b. 在“标识符”文本框中，使用以下模式键入 URL：https:\//www.okta.com/saml2/service-provider/<UniqueID>
 
     > [!Note]
     > 如果“标识符”值未自动填充，请根据上述模式手动填充该值。 标识符非实际值。 请使用实际标识符更新此值。 请联系 [ForeSee CX Suite 客户端支持团队](mailto:support@foresee.com)来获取此值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。

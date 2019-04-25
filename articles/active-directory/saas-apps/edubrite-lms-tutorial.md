@@ -17,10 +17,10 @@ ms.date: 04/03/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 262daaa46db66545dfe44a5b433a2a2995c6a3b2
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59283848"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-edubrite-lms"></a>教程：Azure Active Directory 与 EduBrite LMS 的集成
@@ -108,9 +108,9 @@ ms.locfileid: "59283848"
 
     ![EduBrite LMS 域和 URL 单一登录信息](common/idp-intiated.png)
 
-    a. 在“标识符”文本框中，使用以下模式键入 URL： `https://<customer-specific>.edubrite.com`
+    a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<customer-specific>.edubrite.com`
 
-    b. 在“回复 URL”文本框中，使用以下模式键入 URL： `https://<customer-specific>.edubrite.com/oltpublish/site/samlLoginResponse.do`
+    b. 在“回复 URL”文本框中，使用以下模式键入 URL：`https://<customer-specific>.edubrite.com/oltpublish/site/samlLoginResponse.do`
 
 5. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
@@ -205,5 +205,5 @@ ms.locfileid: "59283848"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

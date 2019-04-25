@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: sngun
-ms.openlocfilehash: a8d144b2cb8ee18c69dc4c4768b09422d44bade2
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 64aef17663fdc28a467172bbe8954fc06fdb7ff0
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617306"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680361"
 ---
 # <a name="build-a-net-console-app-to-manage-data-in-azure-cosmos-db-sql-api-account"></a>生成一个用于在 Azure Cosmos DB SQL API 帐户中管理数据的 .NET 控制台应用
 
@@ -91,7 +91,10 @@ Azure 订阅，或免费的 Cosmos DB 试用帐户：
 1. 找到并选择 Microsoft.Azure.DocumentDB，然后选择“安装”（如果尚未安装）。
    
    Azure Cosmos DB SQL API 客户端库的程序包 ID 是 [Microsoft Azure Cosmos DB 客户端库](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)。
-   
+
+   > [!NOTE]
+   > 若正使用 .NET Core，请参阅 [.NET Core 文档](./sql-api-dotnetcore-get-started.md)。
+
    ![用于查找 Azure Cosmos DB 客户端 SDK 的 NuGet 菜单的屏幕截图](./media/sql-api-get-started/nosql-tutorial-manage-nuget-pacakges-2.png)
    
    如果收到有关查看解决方案更改的消息，请选择“确定”。 如果收到有关接受许可证的消息，请选择“我接受”。

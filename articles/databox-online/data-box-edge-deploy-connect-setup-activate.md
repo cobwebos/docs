@@ -5,18 +5,18 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Data Box Edge so I can use it to transfer data to Azure.
-ms.openlocfilehash: ad288067fdd40dbfa84352916e84fa1e3ab9af8e
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: b97334ae60715f021cce387f9d73b5ea69eea7fc
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58629140"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998101"
 ---
-# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>教程：连接、 设置，并激活 Azure 数据框边缘 
+# <a name="tutorial-connect-set-up-and-activate-azure-data-box-edge"></a>教程：连接、设置和激活 Azure Data Box Edge 
 
 本教程介绍如何才能使用本地 Web UI 连接到 Azure Data Box Edge 设备并设置和激活它。
 
@@ -28,7 +28,7 @@ ms.locfileid: "58629140"
 > * 连接到物理设备
 > * 设置和激活物理设备
 
-## <a name="prerequisites"></a>必备组件
+## <a name="prerequisites"></a>先决条件
 
 配置和设置 Data Box Edge 设备之前，请确保：
 
@@ -37,9 +37,9 @@ ms.locfileid: "58629140"
 
 ## <a name="connect-to-the-local-web-ui-setup"></a>连接到本地 Web UI 设置 
 
-1. 若要连接到数据框边缘设备具有静态 IP 地址 192.168.100.5 和子网 255.255.255.0 在计算机上配置以太网适配器。
+1. 在计算机上配置以太网适配器，以通过静态 IP 地址 192.168.100.5 和子网 255.255.255.0 连接到 Data Box Edge 设备。
 
-2. 将计算机连接到设备上的端口 1。 使用下图标识你的设备上的端口 1。
+2. 将计算机连接到设备上的端口 1。 使用下图标识设备上的端口 1。
 
     ![已布线设备的背板](./media/data-box-edge-deploy-install/backplane-cabled.png)
 
@@ -59,7 +59,7 @@ ms.locfileid: "58629140"
     ![Data Box Edge 设备登录页](./media/data-box-edge-deploy-connect-setup-activate/image3.png)
 
 6. 出现提示时，请更改设备管理员密码。  
-    新密码必须包含 8 到 16 个字符之间。 它必须包含以下字符中的三项：大写字母、小写字母、数字和特殊字符。
+    新的密码必须包含 8 到 16 个字符。 它必须包含以下字符中的三项：大写字母、小写字母、数字和特殊字符。
 
 现在位于设备的仪表板中。
 
@@ -67,17 +67,17 @@ ms.locfileid: "58629140"
  
 仪表板显示的各种设置是配置物理设备并将其注册到 Data Box Edge 服务所需的。 “设备名”、“网络设置”、“Web 代理设置”和“时间设置”为可选设置。 只有“云设置”是必需设置。
    
-![本地 web UI"仪表板"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
+![本地 Web UI“仪表板”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-1.png)
 
 1. 在左窗格中选择“设备名称”，然后输入设备的友好名称。  
-    友好名称必须包含 1 到 15 个字符，包含字母、 数字和连字符。
+    友好名称必须包含 1 到 15 个字符，并且包含字母、数字和连字符。
 
-    ![本地 web UI"设备名称"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
+    ![本地 Web UI“设备名”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-2.png)
 
 2. （可选）在左窗格中选择“网络设置”，然后配置设置。  
-    在你的物理设备有 6 个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3，4 端口、 端口 5 和端口 6 是还可以充当 10 Gbps 网络接口的所有 25 Gbps 网络接口。 系统自动将端口 1 配置为仅用于管理的端口，而端口 2 到端口 6 都是数据端口。 **网络设置**页是如下所示。
+    在物理设备上有六个网络接口。 端口 1 和端口 2 是 1 Gbps 网络接口。 端口 3、端口 4、端口 5 和端口 6 都是 25 Gbps 网络接口，也可用作 10 Gbps 网络接口。 系统自动将端口 1 配置为仅用于管理的端口，而端口 2 到端口 6 都是数据端口。 “网络设置”页如下所示。
     
-    ![本地 web UI"网络设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
+    ![本地 Web UI“网络设置”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-3.png)
    
     配置网络设置时，请记住：
 
@@ -90,7 +90,7 @@ ms.locfileid: "58629140"
 
 3. （可选）在左窗格中选择“Web 代理设置”，然后配置 Web 代理服务器。 尽管这一配置为可选操作，但如果使用 Web 代理，则只能在此页上进行配置。
    
-   ![本地 web UI"Web 代理设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
+   ![本地 Web UI“Web 代理设置”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-4.png)
    
    在“Web 代理设置”页上，执行以下操作：
    
@@ -115,33 +115,33 @@ ms.locfileid: "58629140"
 
     3. （可选）在“辅助 NTP 服务器”框中，为设备输入辅助服务器。
 
-    4. 若要验证并应用配置的时间设置，请选择**应用设置**。
+    4. 若要验证并应用配置的时间设置，请选择“应用设置”。
 
-        ![本地 web UI"时间设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
+        ![本地 Web UI“时间设置”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-5.png)
 
-5. （可选）在左窗格中，选择**存储设置**你设备上配置存储复原能力。 此功能目前处于预览状态。 默认情况下，存储在设备上的可复原并不在设备上的数据磁盘时不会丢失数据。 启用时可复原的选项，将重新配置在设备上的存储和设备可以承受一个数据磁盘，而无数据丢失的故障。 配置为具有弹性的存储将减少你的设备的可用容量。
+5. （可选）在左窗格中，选择“存储设置”以配置设备上的存储复原能力。 此功能目前处于预览状态。 默认情况下，设备上的存储不可复原，如果设备上的数据磁盘出现故障，则会导致数据丢失。 启用可复原选项后，将重新配置设备上的存储，并且设备可以承受一个数据磁盘的故障而不会丢失数据。 将存储配置为可复原将减少设备的可用容量。
 
     > [!IMPORTANT] 
-    > 在激活该设备之前，可以仅配置复原能力。 
+    > 只能在激活设备之前配置复原能力。 
 
-    ![本地 web UI"存储设置"页](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
+    ![本地 Web UI“存储设置”页](./media/data-box-edge-deploy-connect-setup-activate/storage-settings.png)
 
 6. 在左窗格中选择“云设置”，然后通过 Azure 门户中的 Data Box Edge 服务激活设备。
     
     1. 在“激活密钥”框中，为 Data Box Edge 输入你在[获取激活密钥](data-box-edge-deploy-prep.md#get-the-activation-key)中获取的激活密钥。
     2. 选择“应用”。
        
-        ![本地 web UI"云设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
+        ![本地 Web UI“云设置”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-6.png)
 
-    3. 第一次激活设备。 然后，设备扫描的任何关键更新和如果可用，会自动应用更新。 请参阅该结果的通知。
+    3. 首先激活设备。 然后扫描设备以查找任何关键更新，如果可用，则自动应用更新。 你可看到有关此影响的通知。
 
-        该对话框还具有恢复密钥，你应复制，并将其保存在安全的位置。 此密钥用于恢复数据，以防设备无法启动。
+        该对话框还具有恢复密钥，应将其复制并保存在安全的位置。 此密钥用于在设备无法启动时恢复数据。
 
-        ![更新本地 web UI"云设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
+        ![更新本地 Web UI“云设置”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-7.png)
 
-    4. 您可能需要等待几分钟后更新成功完成。 该页会更新以指示设备已成功激活。
+    4. 更新成功完成后，可能需要等待几分钟。 页面更新以指示设备已成功激活。
 
-        ![更新本地 web UI"云设置"页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![更新本地 Web UI“云设置”页](./media/data-box-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
 已完成设备设置。 现在可以在设备上添加共享。
 

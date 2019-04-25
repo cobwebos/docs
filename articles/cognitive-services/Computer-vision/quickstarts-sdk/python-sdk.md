@@ -1,21 +1,21 @@
 ---
 title: 快速入门：Python SDK
 titleSuffix: Azure Cognitive Services
-description: 本快速入门介绍如何使用 Python SDK 完成常见任务。
+description: 此快速入门中介绍了如何使用 Python SDK 执行常见任务，如分析图像、获取描述、识别文本和生成缩略图。
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 04/10/2019
+ms.date: 04/17/2019
 ms.author: pafarley
-ms.openlocfilehash: c9b30eb89080137e17042feb4458f2601bf48a05
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.openlocfilehash: 95705e7b7a372867e33c86826f44e380407dfee1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59617965"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999308"
 ---
 # <a name="azure-cognitive-services-computer-vision-sdk-for-python"></a>适用于 Python 的 Azure 认知服务计算机视觉 SDK
 

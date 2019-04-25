@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 67299955e00f2bb5fb409420dd951357f89e1996
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49384916"
 documentType: LandingData
 title: Azure IoT Central 文档
 metadata:
@@ -20,23 +14,23 @@ metadata:
 abstract:
   description: Azure IoT Central 是完全托管的 SaaS（软件即服务）解决方案，借助此解决方案可轻松连接、监视以及管理大规模的 IoT 资产。 Azure IoT Central 简化了 IoT 解决方案的初始设置，并减少了典型 IoT 项目的管理负担、运营成本和开销。 通过我们的快速入门和教程了解如何创建、自定义、管理和使用 Azure IoT Central 应用程序。
 sections:
-- title: 功能警报
-  items:
-  - type: paragraph
-    text: Azure IoT Central 已过渡到对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)。 你将需要使用 DPS SDK 注册设备并将设备连接到 Azure IoT Central 应用程序。 <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">详细了解 Azure IoT Central 中的设备连接。</a> 所有使用连续数据导出功能和/或 Power BI 解决方案模板的应用程序将需要更改目标存储容器并创建新的解决方案模板。
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 了解如何<a href="quick-deploy-iot-central">创建新的 Azure IoT Central 应用程序</a>。
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 了解如何自定义并使用 Azure IoT Central 应用程序。
-  - type: list
-    style: ordered
+  - title: 功能警报
     items:
-    - html: <a href="tutorial-define-device-type">定义新设备类型</a>
-    - html: <a href="tutorial-configure-rules">配置规则</a>
-    - html: <a href="tutorial-customize-operator">自定义操作员的视图</a>
-    - html: <a href="tutorial-monitor-devices">监视设备</a>
-    - html: <a href="tutorial-add-device">添加真实设备</a>
+      - type: paragraph
+        text: 'Azure IoT Central 已过渡到对所有设备连接使用 Azure IoT 中心设备预配服务 (DPS)。 你将需要使用 DPS SDK 注册设备并将设备连接到 Azure IoT Central 应用程序。 <a href="https://docs.microsoft.com/azure/iot-central/concepts-connectivity">详细了解 Azure IoT Central 中的设备连接。</a> 所有使用连续数据导出功能和/或 Power BI 解决方案模板的应用程序将需要更改目标存储容器并创建新的解决方案模板。'
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 了解如何<a href="quick-deploy-iot-central">创建新的 Azure IoT Central 应用程序</a>。
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 了解如何自定义并使用 Azure IoT Central 应用程序。
+      - type: list
+        style: ordered
+        items:
+          - html: <a href="tutorial-define-device-type">定义新设备类型</a>
+          - html: <a href="tutorial-configure-rules">配置规则</a>
+          - html: <a href="tutorial-customize-operator">自定义操作员的视图</a>
+          - html: <a href="tutorial-monitor-devices">监视设备</a>
+          - html: <a href="tutorial-add-device">添加真实设备</a>

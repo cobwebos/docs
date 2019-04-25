@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 04/03/2019
-ms.openlocfilehash: 4990b5f42291856c3695b4bf0eb6ec4084e9214e
-ms.sourcegitcommit: a60a55278f645f5d6cda95bcf9895441ade04629
+ms.date: 04/20/2019
+ms.openlocfilehash: 7294236a7b79ad093480e9063d886dd30ccf7fc1
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/03/2019
-ms.locfileid: "58886397"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998968"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-database-managed-instance-online-using-dms"></a>教程：使用 DMS 将 RDS SQL Server 联机迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例
 可以使用 Azure 数据库迁移服务将数据库从 RDS SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)或 [Azure SQL 数据库托管实例](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-index)，且几乎不用停机。 在本教程中，我们使用 Azure 数据库迁移服务，将还原到 SQL Server 2012（或更高版本） RDS SQL Server 实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库或 Azure SQL 数据库托管实例。
@@ -187,7 +187,14 @@ ms.locfileid: "58886397"
  
 3. 选择“+ 新建迁移项目”。
 4. 在“新建迁移项目”屏幕上指定项目名称，在“源服务器类型”文本框中选择“AWS RDS for SQL Server”，在“目标服务器类型”文本框中选择“Azure SQL 数据库”。
+
+    > [!NOTE]
+    > 对于目标服务器类型，请选择“Azure SQL 数据库”以同时迁移到 Azure SQL 数据库单一数据库以及 Azure SQL 数据库托管实例。
+
 5. 在“选择活动类型”部分选择“联机数据迁移”。
+
+    > [!IMPORTANT]
+    > 请确保选择“联机数据迁移”；此方案不支持脱机迁移。
 
     ![创建数据库迁移服务项目](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-create-project4.png)
 

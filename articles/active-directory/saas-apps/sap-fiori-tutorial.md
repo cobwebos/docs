@@ -16,10 +16,10 @@ ms.topic: tutorial
 ms.date: 03/11/2019
 ms.author: jeedes
 ms.openlocfilehash: e94fe3156677a507eab91eee339ed29bf7b4ad2e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59257631"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-fiori"></a>教程：Azure Active Directory 与 SAP Fiori 的集成
@@ -52,7 +52,7 @@ ms.locfileid: "59257631"
 
 若要配置 SAP Fiori 与 Azure AD 的集成，需要从库中将 SAP Fiori 添加到托管 SaaS 应用列表。
 
-**若要从库中添加 SAP Fiori，请执行以下步骤：**
+若要从库中添加 SAP Fiori，请执行以下步骤：
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。
 
@@ -175,8 +175,7 @@ ms.locfileid: "59257631"
 
     ![SAP Fiori 域和 URL 单一登录信息](common/sp-identifier-reply.png)
 
-    d. 在“登录 URL”文本框中，使用以下模式键入 URL：
-    `https://<your company instance of SAP Fiori>`
+    d. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<your company instance of SAP Fiori>`。
 
     > [!NOTE]
     > 我们发现很少有客户报告“为其实例配置了错误的回复 URL”错误。 如果你收到任何此类错误，可以使用以下 PowerShell 脚本作为解决方案为实例设置正确的回复 URL：
@@ -193,7 +192,7 @@ ms.locfileid: "59257631"
 
     a. 单击“编辑图标”，打开“管理用户声明”对话框。
 
-    ![图像](./media/sapfiori-tutorial/nameidattribute.png)
+    ![image](./media/sapfiori-tutorial/nameidattribute.png)
 
     ![图像](./media/sapfiori-tutorial/nameidattribute1.png)
 
@@ -380,4 +379,4 @@ ms.locfileid: "59257631"
 
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Azure Active Directory 中的条件访问是什么？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)

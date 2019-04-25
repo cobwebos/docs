@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: fb684a59362e0f7b6ccdc2ca05fda1b89def2835
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.openlocfilehash: feafb983a7b9e4aea6091753842b03a65ccd3ca5
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351841"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60001552"
 ---
 # <a name="how-to-analyze-videos-in-real-time"></a>如何实时分析视频
 
@@ -194,7 +194,7 @@ namespace VideoFrameConsoleApplication
 
 在大多数模式中，左侧的实时视频和右侧的可视化分析之间会有明显的延迟。 此延迟是进行 API 调用所需的时间。 例外情况是“EmotionsWithClientFaceDetect”模式，它使用 OpenCV 在客户端计算机上本地执行人脸检测，然后将全部图像提交给认知服务。 通过这样做，我们可以立即可视化检测到的人脸，然后在 API 调用返回后更新情感。 这证明了“混合”方法的可行性，即，可以在客户端上执行一些简单的处理，然后在必要时使用认知服务 API 通过更高级的分析进行补充。
 
-![LiveCameraSample 应用的屏幕截图，其中显示带有标签的图像](../../Video/Images/FramebyFrame.jpg)
+![LiveCameraSample 应用的屏幕截图，其中显示了带有标签的图像](../../Video/Images/FramebyFrame.jpg)
 
 ### <a name="integrating-into-your-codebase"></a>集成到基本代码中
 
@@ -216,7 +216,7 @@ VideoFrameAnalyzer 的图像、语音、视频或文本理解功能使用 Azure 
 
 ## <a name="summary"></a>摘要
 
-在本指南中，你已了解如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。 你可以在 [Microsoft 认知服务注册页面](https://azure.microsoft.com/try/cognitive-services/)上使用免费 API 密钥开始构建应用。 
+在本指南中，你已了解如何使用人脸 API、计算机视觉 API 和情感 API 对实时视频流运行近实时分析，以及如何使用我们的示例代码开始操作。 你可以在 [Azure 认知服务注册页](https://azure.microsoft.com/try/cognitive-services/)上使用免费 API 密钥开始构建应用。 
 
 请随时在 [GitHub 存储库](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)中提供反馈和建议，或者在我们的  [UserVoice 站点](https://cognitive.uservoice.com/)上提供更广泛的 API 反馈。
 

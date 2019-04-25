@@ -14,18 +14,20 @@ ms.tgt_pltfrm: .NET Core
 ms.workload: tbd
 ms.date: 02/24/2019
 ms.author: yegu
-ms.openlocfilehash: 7c84a5c39b1a3b4a52505c053fdcfc92030237c3
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.openlocfilehash: 34eafe8a13d126ebdbb08084d8820646ca43534a
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58575550"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59998084"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>快速入门：使用应用程序配置创建 .NET Core 应用
 
 Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码即可在一个位置轻松存储和管理所有应用程序设置。 本快速入门将介绍如何将服务合并到 .NET Core 控制台应用中。
 
 你可使用任意代码编辑器来执行该快速入门中的步骤。 [Visual Studio Code](https://code.visualstudio.com/) 是 Windows、macOS 和 Linux 平台上提供的一个卓越选项。
+
+![快速入门应用运行](./media/quickstarts/dotnet-core-app-run.png)
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -36,6 +38,14 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 ## <a name="create-an-app-configuration-store"></a>创建应用配置存储区
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
+
+6. 选择“键/值资源管理器” > “+创建”来添加以下键值对：
+
+    | 密钥 | 值 |
+    |---|---|
+    | TestApp:Settings:Message | Azure 应用配置的数据 |
+
+    暂时将“标签”和“内容类型”保留为空。
 
 ## <a name="create-a-net-core-console-app"></a>创建 .NET Core 控制台应用
 
@@ -99,8 +109,6 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 
         dotnet run
 
-    ![快速入门应用运行](./media/quickstarts/dotnet-core-app-run.png)
-
 ## <a name="clean-up-resources"></a>清理资源
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
@@ -110,4 +118,4 @@ Azure 应用配置是 Azure 中的托管配置服务。 借助它，无需代码
 在本快速入门中，你创建了一个新的应用配置存储区，并通过[应用配置提供程序](https://go.microsoft.com/fwlink/?linkid=2074664)将其用于 .NET Core 控制台应用。 若要深入了解如何使用应用程序配置，请继续学习下一个教程，其中将介绍如何进行身份验证。
 
 > [!div class="nextstepaction"]
-> [用于 Azure 资源集成的托管标识](./integrate-azure-managed-service-identity.md)
+> [托管标识集成](./howto-integrate-azure-managed-service-identity.md)

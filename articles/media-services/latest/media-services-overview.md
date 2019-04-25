@@ -13,17 +13,17 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 03/29/2019
+ms.date: 04/18/2019
 ms.author: juliako
 ms.custom: mvc
-ms.openlocfilehash: c65c797612e179a9f3c02696d827131f5c830b3c
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.openlocfilehash: 6876ffd76c5a7ba5745e8014bca2abdc5e5264a2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755906"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999818"
 ---
-# <a name="what-is-azure-media-services-v3"></a>什么是 Azure 媒体服务 v3？
+# <a name="azure-media-services-v3-overview"></a>Azure 媒体服务 v3 概述
 
 Azure 媒体服务是一个基于云的平台，用于生成解决方案，以便实现广播质量的视频流、增强可访问性和分发、分析内容，等等。 无论你是应用程序开发者、呼叫中心、政府机构还是娱乐公司，媒体服务都能帮助你创建应用程序，通过当今最热门的移动设备和浏览器向广大受众提供品质卓越的媒体体验。 
 
@@ -79,6 +79,10 @@ Azure 媒体服务是一个基于云的平台，用于生成解决方案，以�
 * [监视事件 - 门户](monitor-events-portal-how-to.md)
 * [通过多重 DRM 进行动态加密 - .NET](protect-with-drm.md) 
 * [如何对自定义转换进行编码 - CLI](custom-preset-cli-howto.md)
+
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

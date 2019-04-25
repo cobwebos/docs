@@ -1,24 +1,24 @@
 ---
-title: 创建托管多个网站的应用程序网关 - Azure 门户
-description: 了解如何使用 Azure 门户创建托管多个网站的应用程序网关。
+title: 教程 - 使用 Azure 门户创建托管多个网站的应用程序网关
+description: 本教程介绍了如何使用 Azure 门户创建托管多个网站的应用程序网关。
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
-ms.date: 2/20/2019
+ms.topic: tutorial
+ms.date: 4/18/2019
 ms.author: victorh
-ms.openlocfilehash: 86be94404e7ab492beeebd6a467d23e68e7bce6b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 3e27a79c7a6e3d39679118f532dd464a32463d69
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58080161"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999019"
 ---
-# <a name="create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>使用 Azure 门户创建和配置托管多个网站的应用程序网关
+# <a name="tutorial-create-and-configure-an-application-gateway-to-host-multiple-web-sites-using-the-azure-portal"></a>教程：使用 Azure 门户创建和配置托管多个网站的应用程序网关
 
-创建[应用程序网关](overview.md)时，可以使用 Azure 门户[配置多个网站的托管](multiple-site-overview.md)。 本文使用虚拟机定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本文假定你拥有多个域，使用示例 www.contoso.com 和 www.fabrikam.com。
+创建[应用程序网关](overview.md)时，可以使用 Azure 门户[配置多个网站的托管](multiple-site-overview.md)。 本教程使用虚拟机定义后端地址池。 然后，基于所拥有的域配置侦听器和规则，以确保 Web 流量可到达池中的相应服务器。 本教程假定你拥有多个域，并使用示例 *www.contoso.com* 和 *www.fabrikam.com*。
 
-在本文中，学习如何：
+本教程介绍如何执行下列操作：
 
 > [!div class="checklist"]
 > * 创建应用程序网关
@@ -115,7 +115,7 @@ ms.locfileid: "58080161"
       -Settings $publicSettings
     ```
 
-3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 在 Set-AzVMExtension 中输入 *fabrikamVM* 作为名称，并输入 VMName 值。
+3. 使用刚刚完成的步骤创建第二个虚拟机并安装 IIS。 在 Set-AzVMExtension 中输入 fabrikamVM 作为名称，并输入 VMName 值。
 
 ## <a name="create-backend-pools-with-the-virtual-machines"></a>使用虚拟机创建后端池
 
@@ -146,7 +146,7 @@ ms.locfileid: "58080161"
 
 规则按其列出的顺序进行处理，并且流量使用匹配的第一个规则进行定向，而无论特殊性如何。 例如，如果在同一端口上同时有使用基本侦听器的规则和使用多站点侦听器的规则，则使用多站点侦听器的规则必须在使用基本侦听器的规则之前列出，多站点规则才能正常运行。 
 
-在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。 
+在此示例中，将创建两个新规则并删除在创建应用程序网关时创建的默认规则。
 
 1. 依次单击“规则”、“基本”。
 2. 输入 *contosoRule* 作为名称。
@@ -179,6 +179,18 @@ ms.locfileid: "58080161"
 
     ![在应用程序网关中测试 fabrikam 站点](./media/create-multiple-sites-portal/application-gateway-iistest2.png)
 
+## <a name="clean-up-resources"></a>清理资源
+
+如果不再需要通过应用程序网关创建的资源，请删除资源组。 删除资源组时，也会删除应用程序网关和及其所有的相关资源。
+
+若要删除资源组，请执行以下操作：
+
+1. 在 Azure 门户的左侧菜单上选择“资源组”。
+2. 在“资源组”页的列表中搜索“myResourceGroupAG”，然后将其选中。
+3. 在“资源组”页上，选择“删除资源组”。
+4. 在“键入资源组名称”字段中输入“myResourceGroupAG”，然后选择“删除”
+
 ## <a name="next-steps"></a>后续步骤
 
-[使用应用程序网关配置应用服务](create-web-app.md)
+> [!div class="nextstepaction"]
+> [详细了解 Azure 应用程序网关的作用](application-gateway-introduction.md)

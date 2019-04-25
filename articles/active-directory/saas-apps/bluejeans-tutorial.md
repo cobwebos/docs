@@ -8,6 +8,7 @@ manager: daveba
 ms.reviewer: barbkess
 ms.assetid: dfc634fd-1b55-4ba8-94a8-b8288429b6a9
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b22a7a86862f02c3320b7c14cc1ed878a57bd23d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 0d1c10d9df85b04cf7b8ea7e0020bc8e802a0d5d
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57901944"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698922"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bluejeans"></a>教程：Azure Active Directory 与 BlueJeans 集成
 
@@ -38,7 +39,7 @@ ms.locfileid: "57901944"
 
 若要配置 Azure AD 与 BlueJeans 的集成，需要以下项：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
 * 已启用 BlueJeans 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
@@ -105,14 +106,16 @@ ms.locfileid: "57901944"
 
 4. 在“基本 SAML 配置”部分中，按照以下步骤操作：
 
-    ![BlueJeans 域和 URL 单一登录信息](common/sp-signonurl.png)
+    ![BlueJeans 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.BlueJeans.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<companyname>.BlueJeans.com`。
+
+    b. 在“标识符”文本框中键入 URL：`http://samlsp.bluejeans.com`
 
     > [!NOTE]
-    > 此值不是真实值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BlueJeans 客户端支持团队](https://support.bluejeans.com/contact)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
+    > 登录 URL 值不是实际值。 请使用实际登录 URL 更新此值。 若要获取此值，请与 [BlueJeans 客户端支持团队](https://support.bluejeans.com/contact)联系。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-4. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
+5. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
     ![证书下载链接](common/certificatebase64.png)
 
@@ -132,11 +135,11 @@ ms.locfileid: "57901944"
 
 2. 依次转到“管理”\>“组设置”\>“安全”。
 
-    ![管理员](./media/bluejeans-tutorial/IC785868.png "管理员")
+    ![管理员](./media/bluejeans-tutorial/ic785868.png "管理员")
 
 3. 在“安全”部分中，执行以下步骤：
 
-    ![SAML 单一登录](./media/bluejeans-tutorial/IC785869.png "SAML 单一登录")
+    ![SAML 单一登录](./media/bluejeans-tutorial/ic785869.png "SAML 单一登录")
 
     a. 选择“SAML 单一登录”。
 
@@ -144,7 +147,7 @@ ms.locfileid: "57901944"
 
 4. 使用以下步骤继续：
 
-    ![证书路径](./media/bluejeans-tutorial/IC785870.png "证书路径")
+    ![证书路径](./media/bluejeans-tutorial/ic785870.png "证书路径")
 
     a. 单击“选择文件”，上传从 Azure 门户下载的 base-64 编码的证书。
 
@@ -156,7 +159,7 @@ ms.locfileid: "57901944"
 
 5. 使用以下步骤继续：
 
-    ![保存更改](./media/bluejeans-tutorial/IC785874.png "保存更改")
+    ![保存更改](./media/bluejeans-tutorial/ic785874.png "保存更改")
 
     a. 在“用户 ID”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`。
 
@@ -182,8 +185,7 @@ ms.locfileid: "57901944"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
-    例如： BrittaSimon@contoso.com
+    b. 在“用户名”字段中键入 `brittasimon\@yourcompanydomain.extension`。 例如，BrittaSimon@contoso.com。
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
@@ -221,22 +223,22 @@ ms.locfileid: "57901944"
 
 如果需要手动创建用户，请执行以下步骤：
 
-1. 以管理员身份登录到 **BlueJeans** 公司站点。
+1. 以管理员身份登录到 BlueJeans 公司站点。
 
 2. 转到“管理”\>“管理用户”\>“添加用户”。
 
-    ![管理员](./media/bluejeans-tutorial/IC785877.png "管理员")
+    ![管理员](./media/bluejeans-tutorial/ic785877.png "管理员")
 
-    >[!IMPORTANT]
-    >“添加用户”选项卡仅在“安全”选项卡中的的“启用自动预配”处于未选中状态时可用。 
+    > [!IMPORTANT]
+    > “添加用户”选项卡仅在“安全”选项卡中的的“启用自动预配”处于未选中状态时可用。
 
 3. 在“添加用户”部分中，执行以下步骤：
 
-    ![添加用户](./media/bluejeans-tutorial/IC785886.png "添加用户")
+    ![添加用户](./media/bluejeans-tutorial/ic785886.png "添加用户")
 
     a. 在“名字”文本框中，输入用户的名字，如 Britta。
 
-    b. 在“姓氏”文本框中，输入用户的姓氏，例如 **simon**。
+    b. 在“姓氏”文本框中，输入用户的名字，如 Simon。
 
     c. 在“选取 BlueJeans 用户名”文本框中，输入用户的用户名，例如 **Brittasimon**
 
@@ -244,7 +246,7 @@ ms.locfileid: "57901944"
 
     e. 在“公司”文本框中，输入你的公司。
 
-    f. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 brittasimon\@contoso.com。
+    f. 在“电子邮件地址”文本框中，输入用户的电子邮件地址，例如 `brittasimon\@contoso.com`。
 
     g. 在“创建 BlueJeans 会议 ID”文本框中，输入你的会议 ID。
 
@@ -252,7 +254,7 @@ ms.locfileid: "57901944"
 
     i. 单击“继续”。
 
-    ![添加用户](./media/bluejeans-tutorial/IC785887.png "添加用户")
+    ![添加用户](./media/bluejeans-tutorial/ic785887.png "添加用户")
 
     J. 单击“添加用户”。
 
@@ -272,4 +274,3 @@ ms.locfileid: "57901944"
 - [Azure Active Directory 的应用程序访问与单一登录是什么？](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [什么是 Azure Active Directory 中的条件访问？](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
-

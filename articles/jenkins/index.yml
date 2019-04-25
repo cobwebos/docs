@@ -1,17 +1,11 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e94a667cb67e4812984d4a338e763ebeaa1d3205
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54073214"
 documentType: LandingData
 title: Azure 上的 Jenkins
 metadata:
   title: “Azure 上的 Jenkins”文档 - 教程、示例、参考和资源
   description: 在 Azure 上部署 Jenkins 并将其与 Azure 集成
   ms.service: jenkins
-  keywords: jenkins, azure, devops, 教程, 示例, 参考
+  keywords: 'jenkins, azure, devops, 教程, 示例, 参考'
   author: tomarchermsft
   manager: jeconnoc
   ms.author: tarcher
@@ -25,45 +19,45 @@ abstract:
       height: 133
       width: 110
       src: media/Jenkins.png
-    title: 
+    title: null
 sections:
-- title: 5 分钟快速入门
-  items:
+  - title: 5 分钟快速入门
+    items:
+      - type: paragraph
+        text: 在 Azure 中创建 Jenkins 系统并生成应用。
+      - type: list
+        style: icon48
+        items:
+          - image:
+              src: 'https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg'
+            text: Azure 门户
+            href: 'https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template'
+  - title: 分步教程
+    items:
+      - type: paragraph
+        text: 为应用设置持续集成、在云中运行代理，以及在作业中使用 Azure 服务。
+      - type: list
+        style: ordered
+        items:
+          - html: 设置到 <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure 应用服务</a>、<a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> 或 <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Linux VM</a> 的 CI。
+          - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">预配管道作业中的资源</a>。
+          - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">使用 Azure VM 代理进行缩放</a>。
+  - title: 示例
+    items:
+      - type: paragraph
+        text: 管道的示例脚本和阶段。
+      - type: list
+        style: unordered
+        className: spaced noBullet
+        items:
+          - html: '<a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Jenkinsfile 阶段和代码片段</a>'
+  - title: 引用
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: 插件
+            html: '<p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a>（Azure VM 代理）<p><a href="https://plugins.jenkins.io/azure-app-service">Azure 应用服务</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure 存储</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a>（Azure 容器代理）<p><a href="https://plugins.jenkins.io/azure-function">Azure Function 插件</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service plugin</a>（Azure 容器服务插件）'
   - type: paragraph
-    text: 在 Azure 中创建 Jenkins 系统并生成应用。
-  - type: list
-    style: icon48
-    items:
-    - image:
-        src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/portal.svg
-      text: Azure 门户
-      href: https://docs.microsoft.com/azure/jenkins/install-jenkins-solution-template
-- title: 分步教程
-  items:
-  - type: paragraph
-    text: 为应用设置持续集成、在云中运行代理，以及在作业中使用 Azure 服务。
-  - type: list
-    style: ordered
-    items:
-    - html: 设置到 <a href="/azure/jenkins/java-deploy-webapp-tutorial">Azure 应用服务</a>、<a href="/azure/container-service/kubernetes/container-service-kubernetes-jenkins">Kubernetes</a> 或 <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">Linux VM</a> 的 CI。
-    - html: <a href="/azure/jenkins/execute-cli-jenkins-pipeline">预配管道作业中的资源</a>。
-    - html: <a href="/azure/jenkins/jenkins-azure-vm-agents">使用 Azure VM 代理进行缩放</a>。
-- title: 示例
-  items:
-  - type: paragraph
-    text: 管道的示例脚本和阶段。
-  - type: list
-    style: unordered
-    className: spaced noBullet
-    items:
-    - html: <a href="https://github.com/Azure/azure-devops-utils/tree/master/jenkins">Jenkinsfile 阶段和代码片段</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: 插件
-      html: <p><a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents</a>（Azure VM 代理）<p><a href="https://plugins.jenkins.io/azure-app-service">Azure 应用服务</a></p><p><a href="https://plugins.jenkins.io/windows-azure-storage">Azure 存储</a></p><p><a href="https://plugins.jenkins.io/azure-container-agents">Azure Container Agents</a>（Azure 容器代理）<p><a href="https://plugins.jenkins.io/azure-function">Azure Function 插件</a><p><a href="https://plugins.jenkins.io/azure-acs">Azure Container Service plugin</a>（Azure 容器服务插件）
-- type: paragraph
-  text: <h4>Jenkins® 是 Public Interest, Inc. 的软件的注册商标。[Jenkins® 徽标](https://wiki.jenkins.io/display/JENKINS/Logo)已根据 [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) 从 [Jenkins 项目](https://jenkins.io)进行了授权。</h4>
+    text: '<h4>Jenkins® 是 Public Interest, Inc. 的软件的注册商标。[Jenkins® 徽标](https://wiki.jenkins.io/display/JENKINS/Logo)已根据 [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) 从 [Jenkins 项目](https://jenkins.io)进行了授权。</h4>'

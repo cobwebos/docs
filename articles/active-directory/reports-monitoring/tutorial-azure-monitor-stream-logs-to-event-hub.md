@@ -1,6 +1,6 @@
 ---
-title: 教程 - 将 Azure Active Directory 日志流式传输到 Azure 事件中心（预览版）| Microsoft Docs
-description: 了解如何设置 Azure 诊断，以便将 Azure Active Directory 日志推送到事件中心（预览版）
+title: 教程 - 将 Azure Active Directory 日志流式传输到 Azure 事件中心 | Microsoft Docs
+description: 了解如何设置 Azure 诊断，以便将 Azure Active Directory 日志推送到事件中心
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,24 +13,24 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85a3c43054aeb758eb1e0da9ce1086bfa653180
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: 906da7ac6b0086e4efca7c38171668a08f687d19
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436925"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995586"
 ---
-# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub-preview"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心（预览版）
+# <a name="tutorial-stream-azure-active-directory-logs-to-an-azure-event-hub"></a>教程：将 Azure Active Directory 日志流式传输到 Azure 事件中心
 
 本教程介绍如何设置 Azure Monitor 诊断设置，以便将 Azure Active Directory (Azure AD) 日志流式传输到 Azure 事件中心。 根据此机制将日志与 Splunk 和 QRadar 等第三方安全信息和事件管理 (SIEM) 工具集成。
 
 ## <a name="prerequisites"></a>先决条件 
 
-若要使用此功能，需满足以下条件：
+若要使用此功能，需满足以下条件:
 
 * Azure 订阅。 如果没有 Azure 订阅，可以[注册免费试用版](https://azure.microsoft.com/free/)。
 * Azure AD 租户。

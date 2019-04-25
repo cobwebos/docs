@@ -1,5 +1,5 @@
 ---
-title: Azure HDInsight 4.0 概述
+title: HDInsight 4.0 概述 - Azure
 description: 比较 HDInsight 3.6 与 HDInsight 4.0 的功能、限制和升级建议。
 ms.service: hdinsight
 author: hrasheed-msft
@@ -7,18 +7,18 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.topic: overview
 ms.date: 04/15/2019
-ms.openlocfilehash: af9f8a9e4d67c74910f60c70a0aee5c2439d6209
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.openlocfilehash: 553f50897afaaf9c677e84f9cfffbff7d2c1e607
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609194"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59679664"
 ---
-# <a name="azure-hdinsight-40-overview"></a>Azure HDInsight 4.0 概述
+# <a name="hdinsight-40-overview"></a>HDInsight 4.0 概述
 
-Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。 HDInsight (HDI) 4.0 是 [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) 提供的 Apache Hadoop 组件的云分发版。 本文提供有关最新 Azure HDInsight 版本以及如何升级的信息。
+Azure HDInsight 是 Azure 中最受企业客户青睐的开源 Apache Hadoop 和 Apache Spark 分析服务之一。 HDInsight 4.0 是 [Hortonworks Data Platform (HDP) 3.0](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/relnotes.html) 提供的 Apache Hadoop 组件的云分发版。 本文提供有关最新 Azure HDInsight 版本以及如何升级的信息。
 
-## <a name="whats-new-in-hdi-40"></a>HDI 4.0 中有哪些新增功能？
+## <a name="whats-new-in-hdinsight-40"></a>HDInsight 4.0 中有哪些新功能？
 
 ### <a name="apache-hive-30-and-llap"></a>Apache Hive 3.0 和 LLAP
 
@@ -67,7 +67,7 @@ HDInsight 4.0 上的 Apache Spark 支持以下方案：
 * 从 Hive 流式处理表对更改源运行 Spark 流式处理作业。
 * 直接从 Spark 结构化流式处理作业创建 ORC 文件。
 
-不必再担心意外尝试直接从 Spark 访问 Hive 事务表，从而导致结果不一致、数据重复或数据损坏。 在 HDI 4.0 中，Spark 表和 Hive 表保留在单独的元存储中。 使用 Hive 数据仓库连接器将 Hive 事务表显式注册为 Spark 外部表。
+不必再担心意外尝试直接从 Spark 访问 Hive 事务表，从而导致结果不一致、数据重复或数据损坏。 在 HDInsight 4.0 中，Spark 表和 Hive 表保留在单独的元存储中。 使用 Hive 数据仓库连接器将 Hive 事务表显式注册为 Spark 外部表。
 
 详细了解 [Apache Spark](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/spark-overview/content/analyzing_data_with_apache_spark.html)。
 
@@ -82,22 +82,19 @@ Apache Oozie 4.3.1 包含在 HDI 4.0 中，并进行了以下更改：
 
 详细了解 [Apache Oozie](https://docs.hortonworks.com/HDPDocuments/HDP3/HDP-3.0.0/release-notes/content/patch_oozie.html)。
 
-## <a name="how-to-upgrade-to-hdi-40"></a>如何升级到 HDI 4.0
+## <a name="how-to-upgrade-to-hdinsight-40"></a>如何升级到 HDInsight 4.0
 
-对于任何主要版本，在生产环境中实现最新版本前，全面测试组件十分重要。 HDI 4.0 可供你开始升级过程，但 HDI 3.6 是默认选项，可防止意外事故。
+对于任何主要版本，在生产环境中实现最新版本前，全面测试组件十分重要。 HDInsight 4.0 可供你开始升级过程，但 HDInsight 3.6 是默认选项，可防止意外事故。
 
-从先前版本的 HDI 到 HDI 4.0 尚无支持的升级路径。 由于元存储和 blob 数据格式已更改，因此 HDI 4.0 与先前版本不兼容。 将新 HDI 4.0 环境与当前生产环境保持分离至关重要。 如果将 HDI 4.0 部署到当前环境，则元存储将升级，并且无法撤消。  
+从先前版本的 HDInsight 到 HDInsight 4.0 尚无支持的升级路径。 由于元存储和 blob 数据格式已发生更改，因此 HDInsight 4.0 与先前版本不兼容。 将新 HDInsight 4.0 环境与当前生产环境保持分离至关重要。 如果将 HDInsight 4.0 部署到当前环境，则元存储将升级，并且无法撤消。  
 
 ## <a name="limitations"></a>限制
 
-* HDI 4.0 不支持 MapReduce。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
-
-* HDI 4.0 中不再提供 Hive 视图。 
-
+* HDInsight 4.0 不支持 MapReduce。 改为使用 Apache Tez。 详细了解 [Apache Tez](https://tez.apache.org/)。
+* HDInsight 4.0 不支持 Apache Storm。 
+* HDInsight 4.0 中不再提供 Hive 视图。 
 * Spark 和交互式查询群集不支持 Apache Zeppelin 中的 Shell 解释器。
-
 * 无法在 Spark-LLAP 群集上*禁用* LLAP。 只能关闭 LLAP。
-
 * Azure Data Lake Storage Gen2 无法在 Spark 群集中保存 Juypter Notebook。
 
 ## <a name="next-steps"></a>后续步骤

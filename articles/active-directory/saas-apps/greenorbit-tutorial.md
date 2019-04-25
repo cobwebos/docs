@@ -13,15 +13,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/08/2019
+ms.date: 04/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: df6720d888aae313a2e6ad2ce4df458adba8742f
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: b05c91138f3140abe6a08964fa06caef988e5f49
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565353"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59999257"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-greenorbit"></a>教程：Azure Active Directory 与 GreenOrbit 的集成
 
@@ -68,7 +68,7 @@ ms.locfileid: "59565353"
 
     ![“新增应用程序”按钮](common/add-new-app.png)
 
-4. 在搜索框中键入 **GreenOrbit**，在结果面板中选择“GreenOrbit”，然后单击“添加”按钮添加该应用程序。
+4. 在搜索框中键入“GreenOrbit”，在结果面板中选择“GreenOrbit”，然后单击“添加”按钮添加该应用程序。
 
     ![结果列表中的“GreenOrbit”](common/search-new-app.png)
 
@@ -108,9 +108,9 @@ ms.locfileid: "59565353"
 
     ![GreenOrbit 域和 URL 单一登录信息](common/sp-identifier.png)
 
-    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.GreenOrbit.com`
+    a. 在“登录 URL”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.yourcompanydomain.extension`
 
-    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`http://<SUBDOMAIN>.trial.GreenOrbit.com`
+    b. 在“标识符(实体 ID)”文本框中，使用以下模式键入 URL：`https://<SUBDOMAIN>.yourcompanydomain.extension`
 
     > [!NOTE]
     > 这些不是实际值。 使用实际登录 URL 和标识符更新这些值。 请联系 [GreenOrbit 客户端支持团队](mailto:support@greenorbit.com)获取这些值。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。

@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 02/24/2019
 ms.topic: quickstart
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 42528038b5744f001422620031a1e5300bb4146d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 7a9eedfe851bb8b5519d0831f47cf6787345a1f8
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898255"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59996282"
 ---
 # <a name="quickstart-create-a-hololens-app-with-azure-spatial-anchors-in-cwinrt-and-directx"></a>快速入门：在 C++/WinRT 和 DirectX 中使用 Azure 空间定位点创建 HoloLens 应用
 
@@ -58,6 +58,8 @@ ms.locfileid: "57898255"
 ## <a name="deploy-the-app-to-your-hololens"></a>将应用部署到 HoloLens
 
 将“解决方案配置”更改为“发布”，将“解决方案平台”更改为 x86，并从部署目标选项中选择“设备”。
+
+如果使用 HoloLens 2，请使用“ARM”作为“解决方案平台”，而不是“x86”。
 
 ![Visual Studio 配置](./media/get-started-hololens/visual-studio-configuration.png)
 

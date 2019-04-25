@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 04/08/2019
 ms.author: rimman
 ms.openlocfilehash: b2b5e58ca480aa3abaa0766319977b8d1160ebeb
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59282995"
 ---
 # <a name="manage-an-azure-cosmos-account"></a>管理 Azure Cosmos 帐户
@@ -286,7 +286,7 @@ az cosmosdb failover-priority-change --name <Azure Cosmos account name> --resour
 * [管理一致性](how-to-manage-consistency.md)
 * [管理区域之间的冲突](how-to-manage-conflicts.md)
 * [全球分布 - 揭秘](global-dist-under-the-hood.md)
-* [如何在应用程序中配置多主数据库](how-to-multi-master.md)
+* [如何配置应用程序中的多主数据库](how-to-multi-master.md)
 * [配置多宿主客户端](how-to-manage-database-account.md#configure-clients-for-multi-homing)
 * [在 Azure Cosmos DB 帐户中添加或删除区域](how-to-manage-database-account.md#addremove-regions-from-your-database-account)
 * [创建自定义冲突解决策略](how-to-manage-conflicts.md#create-a-custom-conflict-resolution-policy)

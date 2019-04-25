@@ -1,148 +1,141 @@
-items:
 - name: 内容审查器文档
   href: index.yml
 - name: 概述
   items:
-  - name: 什么是内容审查器？
-    href: overview.md
-    expanded: true
+    - name: 什么是内容审查器？
+      href: overview.md
+      expanded: true
 - name: 快速入门
   items:
-  - name: 尝试在 Web 上使用内容审查器
-    href: quick-start.md
-  - name: 使用客户端 SDK
-    items:
-    - name: C#
+    - name: 尝试在 Web 上使用内容审查器
+      href: quick-start.md
+    - name: 使用客户端 SDK
       items:
-      - name: 分析图像内容
-        href: image-moderation-quickstart-dotnet.md
-      - name: 分析文本内容
-        href: text-moderation-quickstart-dotnet.md
-    - name: Python
-      items:
-      - name: 分析文本内容
-        href: text-moderation-quickstart-python.md
+        - name: 'C#'
+          items:
+            - name: 分析图像内容
+              href: image-moderation-quickstart-dotnet.md
+            - name: 分析文本内容
+              href: text-moderation-quickstart-dotnet.md
+        - name: Python
+          items:
+            - name: 分析文本内容
+              href: text-moderation-quickstart-python.md
 - name: 教程
   items:
-  - name: 审查电子商务映像
-    href: ecommerce-retail-catalog-moderation.md
-  - name: 审查 Facebook 内容
-    href: facebook-post-moderation.md
-  - name: 视频和脚本审查
-    href: video-transcript-moderation-review-tutorial-dotnet.md
+    - name: 审查电子商务映像
+      href: ecommerce-retail-catalog-moderation.md
+    - name: 审查 Facebook 内容
+      href: facebook-post-moderation.md
+    - name: 视频和脚本审查
+      href: video-transcript-moderation-review-tutorial-dotnet.md
 - name: 概念
   items:
-  - name: 图像审查
-    href: image-moderation-api.md
-  - name: 文本审查
-    href: text-moderation-api.md
-  - name: 视频审查
-    href: video-moderation-human-review.md
-  - name: 审阅工具
-    href: Review-Tool-User-Guide/human-in-the-loop.md
-  - name: 审阅、工作流和作业
-    href: review-api.md
+    - name: 图像审查
+      href: image-moderation-api.md
+    - name: 文本审查
+      href: text-moderation-api.md
+    - name: 视频审查
+      href: video-moderation-human-review.md
+    - name: 审阅工具
+      href: Review-Tool-User-Guide/human-in-the-loop.md
+    - name: 审阅、工作流和作业
+      href: review-api.md
 - name: 操作指南
   items:
-  - name: 审查内容
-    items:
-    - name: REST API
+    - name: 审查内容
       items:
-      - name: 图像 - API 控制台
-        href: try-image-api.md
-      - name: 自定义图像 - API 控制台
-        href: try-image-list-api.md
-      - name: 文本 - API 控制台
-        href: try-text-api.md
-      - name: 自定义术语 - API 控制台
-        href: try-terms-list-api.md
-    - name: .NET SDK
+        - name: REST API
+          items:
+            - name: 图像 - API 控制台
+              href: try-image-api.md
+            - name: 自定义图像 - API 控制台
+              href: try-image-list-api.md
+            - name: 文本 - API 控制台
+              href: try-text-api.md
+            - name: 自定义术语 - API 控制台
+              href: try-terms-list-api.md
+        - name: .NET SDK
+          items:
+            - name: 检查视频内容
+              href: video-moderation-api.md
+            - name: 针对自定义列表检查图像
+              href: image-lists-quickstart-dotnet.md
+            - name: 针对自定义字词检查文本
+              href: term-lists-quickstart-dotnet.md
+    - name: 定义和使用审阅
       items:
-      - name: 检查视频内容
-        href: video-moderation-api.md
-      - name: 针对自定义列表检查图像
-        href: image-lists-quickstart-dotnet.md
-      - name: 针对自定义字词检查文本
-        href: term-lists-quickstart-dotnet.md
-  - name: 定义和使用审阅
-    items:
-    - name: 审阅工具（浏览器）
-      href: Review-Tool-User-Guide/Review-Moderated-Images.md
-    - name: REST API
-      href: try-review-api-review.md
-    - name: .NET SDK
-      href: moderation-reviews-quickstart-dotnet.md
-    - name: 视频审阅 (.NET)
-      href: video-reviews-quickstart-dotnet.md
-    - name: 视频脚本审阅 (.NET)
-      href: video-transcript-reviews-quickstart-dotnet.md
-  - name: 定义和使用工作流
-    items:
-    - name: 审阅工具（浏览器）
-      href: Review-Tool-User-Guide/Workflows.md
-    - name: REST API
-      href: try-review-api-workflow.md
-  - name: 定义和使用作业
-    items:
-    - name: REST API
-      href: try-review-api-job.md
-    - name: .NET SDK
-      href: moderation-jobs-quickstart-dotnet.md
-  - name: 配置审阅工具
-    href: Review-Tool-User-Guide/Configure.md
-  - name: 导出或删除帐户数据
-    href: ./export-delete-data.md
+        - name: 审阅工具（浏览器）
+          href: Review-Tool-User-Guide/Review-Moderated-Images.md
+        - name: REST API
+          href: try-review-api-review.md
+        - name: .NET SDK
+          href: moderation-reviews-quickstart-dotnet.md
+        - name: 视频审阅 (.NET)
+          href: video-reviews-quickstart-dotnet.md
+        - name: 视频脚本审阅 (.NET)
+          href: video-transcript-reviews-quickstart-dotnet.md
+    - name: 定义和使用工作流
+      items:
+        - name: 审阅工具（浏览器）
+          href: Review-Tool-User-Guide/Workflows.md
+        - name: REST API
+          href: try-review-api-workflow.md
+    - name: 定义和使用作业
+      items:
+        - name: REST API
+          href: try-review-api-job.md
+        - name: .NET SDK
+          href: moderation-jobs-quickstart-dotnet.md
+    - name: 配置审阅工具
+      href: Review-Tool-User-Guide/Configure.md
+    - name: 导出或删除帐户数据
+      href: ./export-delete-data.md
 - name: 引用
   items:
-  - name: 内容审查器 API
-    href: api-reference.md
-  - name: SDK
-    items:
-    - name: .NET
-      href: https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet
-    - name: Java
-      href: https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable
-    - name: Node.js
-      href: https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest
-    - name: Python
-      href: https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python
-    - name: Go
-      href: https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator
+    - name: 内容审查器 API
+      href: api-reference.md
+    - name: SDK
+      items:
+        - name: .NET
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet'
+        - name: Java
+          href: 'https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-java-stable'
+        - name: Node.js
+          href: 'https://docs.microsoft.com/javascript/api/azure-cognitiveservices-contentmoderator/?view=azure-node-latest'
+        - name: Python
+          href: 'https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/contentmoderator?view=azure-python'
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/contentmoderator'
 - name: 资源
   items:
-  - name: 示例
-    items:
-    - name: .NET SDK 示例
-      href: samples-dotnet.md
-    - name: Python SDK 示例
-      href: https://github.com/Azure-Samples/cognitive-services-python-sdk-samples
-    - name: Node.js SDK 示例
-      href: https://github.com/Azure-Samples/cognitive-services-node-sdk-samples
-    - name: 以 C# 编写的 REST API 示例
-      href: samples-rest.md
-    - name: 其他 Azure 示例
-      href: https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator
-  - name: Azure 网络研讨会系列
-    href: https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html
-  - name: 常见问题解答
-    href: FAQs.md
-  - name: 定价和限制
-    href: https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator
-  - name: UserVoice
-    href: https://cognitive.uservoice.com/forums/559960-content-moderator
-  - name: 知识库
-    href: https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator
-  - name: 语言支持
-    href: language-support.md
-  - name: 堆栈溢出
-    href: https://stackoverflow.com/questions/tagged/microsoft-cognitive
-  - name: 区域可用性
-    href: https://azure.microsoft.com/global-infrastructure/services/
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services
-ms.openlocfilehash: 8948caa31d1fa464f13295a4dd4c1174b88543f5
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758147"
+    - name: 示例
+      items:
+        - name: .NET SDK 示例
+          href: samples-dotnet.md
+        - name: Python SDK 示例
+          href: 'https://github.com/Azure-Samples/cognitive-services-python-sdk-samples'
+        - name: Node.js SDK 示例
+          href: 'https://github.com/Azure-Samples/cognitive-services-node-sdk-samples'
+        - name: '以 C# 编写的 REST API 示例'
+          href: samples-rest.md
+        - name: 其他 Azure 示例
+          href: 'https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=content+moderator'
+    - name: Azure 网络研讨会系列
+      href: 'https://info.microsoft.com/cognitive-services-content-moderator-ondemand.html'
+    - name: 常见问题解答
+      href: FAQs.md
+    - name: 定价和限制
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/content-moderator'
+    - name: UserVoice
+      href: 'https://cognitive.uservoice.com/forums/559960-content-moderator'
+    - name: 知识库
+      href: 'https://cognitive.uservoice.com/knowledgebase/topics/132073-content-moderator'
+    - name: 语言支持
+      href: language-support.md
+    - name: 堆栈溢出
+      href: 'https://stackoverflow.com/questions/tagged/microsoft-cognitive'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/global-infrastructure/services/'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'

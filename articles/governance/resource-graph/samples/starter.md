@@ -9,10 +9,10 @@ ms.service: resource-graph
 manager: carmonm
 ms.custom: seodec18
 ms.openlocfilehash: 2ba48e2a21bdee0c5698bdfa314dd3bf462c1c7e
-ms.sourcegitcommit: 62d3a040280e83946d1a9548f352da83ef852085
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/08/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "59267763"
 ---
 # <a name="starter-resource-graph-queries"></a>初学者资源图表查询
@@ -94,7 +94,7 @@ Search-AzGraph -Query "project name, location, type| where type =~ 'Microsoft.Co
 
 ## <a name="show-sorted"></a>按名称及其 OS 类型显示前五个虚拟机
 
-此查询将使用 `limit` 仅检索按名称排序的五条匹配记录。 Azure 资源的类型为 `Microsoft.Compute/virtualMachines`。 `project` 告诉 Azure Resource Graph 要包含哪些属性。
+此查询将使用 `limit` 仅检索按名称排序的五条匹配记录。 Azure 资源的类型为 `Microsoft.Compute/virtualMachines`。 `project` 告诉 Azure 资源图表要包含哪些属性。
 
 ```Query
 where type =~ 'Microsoft.Compute/virtualMachines'
@@ -166,8 +166,8 @@ Search-AzGraph -Query "where type contains 'storage' | distinct type"
 ## <a name="list-publicip"></a>列出所有公共 IP 地址
 
 与上一查询类似，查找包含单词“publicIPAddresses”的所有类型。
-此查询扩展了该模式，以仅包括 **properties.ipAddress** 为 
-`isnotempty` 的结果，仅返回 **properties.ipAddress**，并将结果`limit`为前 100 名
+此查询扩展了该模式，以仅包括 properties.ipAddress 为
+`isnotempty` 的结果，仅返回 properties.ipAddress，并将结果`limit`为前 100 名
 100. 根据所选 shell，可能需要转义引号。
 
 ```Query

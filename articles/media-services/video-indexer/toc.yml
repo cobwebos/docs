@@ -1,97 +1,90 @@
-items:
 - name: 视频索引器文档
   href: ./index.yml
 - name: 概述
   items:
-  - name: 什么是视频索引器？
-    href: video-indexer-overview.md
+    - name: 什么是视频索引器？
+      href: video-indexer-overview.md
 - name: 快速入门
-  items:
-  - name: 入门
-    href: video-indexer-get-started.md
   expanded: true
+  items:
+    - name: 入门
+      href: video-indexer-get-started.md
 - name: 教程
   items:
-  - name: 使用视频索引器 API
-    href: video-indexer-use-apis.md
+    - name: 使用视频索引器 API
+      href: video-indexer-use-apis.md
 - name: 概念
   href: video-indexer-concepts.md
   items:
-  - name: 比较视频索引器和媒体服务预设
-    href: compare-video-indexer-with-media-services-presets.md
-  - name: 管理多个租户
-    href: manage-multiple-tenants.md
-  - name: 自定义内容模型
-    items:
-    - name: 品牌
-      href: customize-brands-model-overview.md
-    - name: 语言
-      href: customize-language-model-overview.md
-    - name: 人员
-      href: customize-person-model-overview.md
+    - name: 比较视频索引器和媒体服务预设
+      href: compare-video-indexer-with-media-services-presets.md
+    - name: 管理多个租户
+      href: manage-multiple-tenants.md
+    - name: 自定义内容模型
+      items:
+        - name: 品牌
+          href: customize-brands-model-overview.md
+        - name: 语言
+          href: customize-language-model-overview.md
+        - name: 人员
+          href: customize-person-model-overview.md
 - name: 操作方法指南
   items:
-  - name: 连接到 Azure
-    href: connect-to-azure.md
-  - name: 管理连接到 Azure 的帐户
-    href: manage-account-connected-to-azure.md
-  - name: 使用 API 上传和索引视频
-    href: upload-index-videos.md
-  - name: 检查视频索引器输出
-    href: video-indexer-output-json-v2.md
-  - name: 在视频中查找确切的时刻
-    href: video-indexer-search.md
-  - name: 场景、镜头和关键帧
-    href: scenes-shots-keyframes.md
-  - name: 查看和编辑视频索引器见解
-    href: video-indexer-view-edit.md
-  - name: 使用编辑器来创建项目
-    href: use-editor-create-project.md
-  - name: 从现有视频创建视频见解
-    href: video-indexer-create-new.md
-  - name: 将小组件嵌入应用程序
-    href: video-indexer-embed-widgets.md
-  - name: 自定义内容模型
-    items:
-    - name: 人员
+    - name: 连接到 Azure
+      href: connect-to-azure.md
+    - name: 管理连接到 Azure 的帐户
+      href: manage-account-connected-to-azure.md
+    - name: 使用 API 上传和索引视频
+      href: upload-index-videos.md
+    - name: 检查视频索引器输出
+      href: video-indexer-output-json-v2.md
+    - name: 在视频中查找确切的时刻
+      href: video-indexer-search.md
+    - name: 场景、镜头和关键帧
+      href: scenes-shots-keyframes.md
+    - name: 查看和编辑视频索引器见解
+      href: video-indexer-view-edit.md
+    - name: 使用编辑器来创建项目
+      href: use-editor-create-project.md
+    - name: 从现有视频创建视频见解
+      href: video-indexer-create-new.md
+    - name: 将小组件嵌入应用程序
+      href: video-indexer-embed-widgets.md
+    - name: 自定义内容模型
       items:
-      - name: 使用视频索引器网站
-        href: customize-person-model-with-website.md
-      - name: 使用视频索引器 API
-        href: customize-person-model-with-api.md
-    - name: 品牌
-      items:
-      - name: 使用视频索引器网站
-        href: customize-brands-model-with-website.md
-      - name: 使用视频索引器 API
-        href: customize-brands-model-with-api.md
-    - name: 语言
-      items:
-      - name: 使用视频索引器网站
-        href: customize-language-model-with-website.md
-      - name: 使用视频索引器 API
-        href: customize-language-model-with-api.md
+        - name: 人员
+          items:
+            - name: 使用视频索引器网站
+              href: customize-person-model-with-website.md
+            - name: 使用视频索引器 API
+              href: customize-person-model-with-api.md
+        - name: 品牌
+          items:
+            - name: 使用视频索引器网站
+              href: customize-brands-model-with-website.md
+            - name: 使用视频索引器 API
+              href: customize-brands-model-with-api.md
+        - name: 语言
+          items:
+            - name: 使用视频索引器网站
+              href: customize-language-model-with-website.md
+            - name: 使用视频索引器 API
+              href: customize-language-model-with-api.md
 - name: 引用
   items:
-  - name: 视频索引器 API
-    href: https://api-portal.videoindexer.ai/
+    - name: 视频索引器 API
+      href: 'https://api-portal.videoindexer.ai/'
 - name: 资源
   items:
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/?category=web-mobile
-  - name: 定价
-    href: https://azure.microsoft.com/pricing/details/media-services/
-  - name: 区域可用性
-    href: https://azure.microsoft.com/regions/services/
-  - name: 区域
-    href: regions.md
-  - name: 常见问题解答
-    href: faq.md
-  - name: 合规性
-    href: https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942
-ms.openlocfilehash: f6caade807d37dfbf38e3f0dd47ab7f801c36a9a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793330"
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/?category=web-mobile'
+    - name: 定价
+      href: 'https://azure.microsoft.com/pricing/details/media-services/'
+    - name: 区域可用性
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: 区域
+      href: regions.md
+    - name: 常见问题解答
+      href: faq.md
+    - name: 合规性
+      href: 'https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942'

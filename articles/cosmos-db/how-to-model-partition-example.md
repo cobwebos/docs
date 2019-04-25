@@ -7,10 +7,10 @@ ms.topic: sample
 ms.date: 3/27/2019
 ms.author: thweiss
 ms.openlocfilehash: ac1b94de4b439aab202d53b23b0d0da616a9f851
-ms.sourcegitcommit: f093430589bfc47721b2dc21a0662f8513c77db1
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/04/2019
+ms.lasthandoff: 04/18/2019
 ms.locfileid: "58919890"
 ---
 # <a name="how-to-model-and-partition-data-on-azure-cosmos-db-using-a-real-world-example"></a>如何使用真实示例为 Azure Cosmos DB 中的数据建模和分区
@@ -124,7 +124,7 @@ ms.locfileid: "58919890"
 
 ![将单个项写入用户容器](./media/how-to-model-partition-example/V1-C1.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 7 毫秒 | 5.71 RU | ✅ |
 
@@ -134,7 +134,7 @@ ms.locfileid: "58919890"
 
 ![从用户容器检索单个项](./media/how-to-model-partition-example/V1-Q1.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -144,7 +144,7 @@ ms.locfileid: "58919890"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 9 毫秒 | 8.76 RU | ✅ |
 
@@ -156,7 +156,7 @@ ms.locfileid: "58919890"
 
 每个附加查询根据相应容器的分区键进行筛选，而我们恰好需要使用分区来最大化性能和可伸缩性。 但是，我们最终需要执行四个操作才能返回一个帖子，因此，我们将在下一次迭代中改进此方法。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 9 毫秒 | 19.54 RU | ⚠ |
 
@@ -171,7 +171,7 @@ ms.locfileid: "58919890"
 - 必须针对第一个查询返回的每个帖子，发出用于聚合评论数和点赞数的查询；
 - 主查询不会根据 `posts` 容器的分区键进行筛选，导致扇出并在整个容器中进行分区扫描。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 130 毫秒 | 619.41 RU | ⚠ |
 
@@ -181,7 +181,7 @@ ms.locfileid: "58919890"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 7 毫秒 | 8.57 RU | ✅ |
 
@@ -193,7 +193,7 @@ ms.locfileid: "58919890"
 
 尽管主查询会根据容器的分区键进行筛选，但单独聚合用户名会降低总体性能。 稍后我们将会改进。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 23 毫秒 | 27.72 RU | ⚠ |
 
@@ -203,7 +203,7 @@ ms.locfileid: "58919890"
 
 ![将单个项写入帖子容器](./media/how-to-model-partition-example/V1-C2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 6 毫秒 | 7.05 RU | ✅ |
 
@@ -213,7 +213,7 @@ ms.locfileid: "58919890"
 
 ![检索帖子的所有点赞并聚合其附加数据](./media/how-to-model-partition-example/V1-Q5.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 59 毫秒 | 58.92 RU | ⚠ |
 
@@ -225,7 +225,7 @@ ms.locfileid: "58919890"
 
 同样，我们的初始查询不会根据 `posts` 容器的分区键进行筛选，这会触发高开销的扇出。但这一次情况更糟，因为我们的目标是一个大得多的结果集，并要使用 `ORDER BY` 子句将结果排序，因此会消耗更多的请求单位。
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 306 毫秒 | 2063.54 RU | ⚠ |
 
@@ -370,7 +370,7 @@ function updateUsernames(userId, username) {
 
 ![从帖子容器检索单个项](./media/how-to-model-partition-example/V2-Q2.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 2 毫秒 | 1 RU | ✅ |
 
@@ -380,7 +380,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有评论](./media/how-to-model-partition-example/V2-Q4.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 4 毫秒 | 7.72 RU | ✅ |
 
@@ -390,7 +390,7 @@ function updateUsernames(userId, username) {
 
 ![检索帖子的所有点赞](./media/how-to-model-partition-example/V2-Q5.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 4 毫秒 | 8.92 RU | ✅ |
 
@@ -450,7 +450,7 @@ function updateUsernames(userId, username) {
 
 ![检索用户的所有帖子](./media/how-to-model-partition-example/V3-Q3.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 4 毫秒 | 6.46 RU | ✅ |
 
@@ -534,7 +534,7 @@ function truncateFeed() {
 
 ![检索最近的帖子](./media/how-to-model-partition-example/V3-Q6.png)
 
-| **Latency** | **RU 开销** | **性能** |
+| **延迟** | **RU 开销** | **性能** |
 | --- | --- | --- |
 | 9 毫秒 | 16.97 RU | ✅ |
 

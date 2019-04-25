@@ -11,7 +11,7 @@ ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 82baef7ce0d91713c8bef202ab0ea0925d290f3a
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59496584"
@@ -97,9 +97,9 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- New（新）<br>- Started（已启动）<br>- Stopped（已停止）<br>- Suspended（已暂停）<br>- Failed（失败）<br>- Completed（已完成） |
-| Category | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobLogs。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
-| Resource | 自动化帐户的名称 |
+| 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
 | ResultDescription |描述 Runbook 作业结果状态。 可能的值包括：<br>- 作业已启动<br>- 作业失败<br>- 作业已完成 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |
@@ -120,9 +120,9 @@ Get-AzDiagnosticSetting -ResourceId $automationAccountId
 | Tenant_g | GUID，用于为 Caller 标识租户。 |
 | JobId_g |用作 Runbook 作业 ID 的 GUID。 |
 | ResultType |Runbook 作业的状态。 可能的值包括：<br>- In Progress |
-| Category | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
+| 类别 | 数据类型的分类。 对于自动化，该值为 JobStreams。 |
 | OperationName | 指定在 Azure 中执行的操作类型。 对于自动化，该值为 Job。 |
-| Resource | 自动化帐户的名称 |
+| 资源 | 自动化帐户的名称 |
 | SourceSystem | Azure Monitor 日志收集数据的方式。 对于 Azure 诊断，始终为 Azure。 |
 | ResultDescription |包括来自 Runbook 的输出流。 |
 | CorrelationId |用作 Runbook 作业相关性 ID 的 GUID。 |

@@ -8,19 +8,20 @@ manager: mtillman
 ms.reviewer: barbkess
 ms.assetid: 8264159a-11a2-4a8c-8285-4efea0adac8c
 ms.service: active-directory
+ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 01/21/2019
+ms.date: 04/16/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4aa6a88971ca69fa910435d00722dcdf12db44f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: cf2576aa112d58e499f0c4a16bf8e9261114974b
+ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57880885"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59698973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>教程：Azure Active Directory 与 Clear Review 集成
 
@@ -38,7 +39,7 @@ ms.locfileid: "57880885"
 
 若要配置 Azure AD 与 Clear Review 的集成，需要以下项目：
 
-* 一个 Azure AD 订阅。 如果你没有 Azure AD 环境，可以在[此处](https://azure.microsoft.com/pricing/free-trial/)获取一个月的试用版。
+* 一个 Azure AD 订阅。 如果没有 Azure AD 环境，可以获取一个[免费帐户](https://azure.microsoft.com/free/)
 * 已启用 Clear Review 单一登录的订阅
 
 ## <a name="scenario-description"></a>方案描述
@@ -101,7 +102,7 @@ ms.locfileid: "57880885"
 
     ![编辑基本 SAML 配置](common/edit-urls.png)
 
-4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
+4. 如果要在 **IDP** 发起的模式下配置应用程序，请在“基本 SAML 配置”部分执行以下步骤：
 
     ![Clear Review 域和 URL 单一登录信息](common/idp-intiated.png)
 
@@ -118,33 +119,21 @@ ms.locfileid: "57880885"
     > [!NOTE]
     > 这些不是实际值。 请使用实际的“标识符”、“回复 URL”和“登录 URL”更新这些值。 若要获取这些值，请联系 [Clear Review 客户端支持团队](https://clearreview.com/contact/)。 还可以参考 Azure 门户中的“基本 SAML 配置”部分中显示的模式。
 
-6. Clear Review 应用程序需要特定格式的 SAML 断言。 请为此应用程序配置以下声明。 可以在应用程序集成页的“用户属性”部分管理这些属性的值。 在“使用 SAML 设置单一登录”页上，单击“编辑”按钮以打开“用户属性”对话框。
+6. Clear Review 应用程序需要特定格式的 SAML 断言，这要求向 SAML 令牌属性配置添加自定义属性映射。 以下屏幕截图显示了默认属性的列表，其中的 **nameidentifier** 通过 **user.userprincipalname** 进行映射。 Clear Review 应用程序要求通过 user.mail 对 nameidentifier 进行映射，因此需单击“编辑”图标对属性映射进行编辑，然后更改属性映射。
 
-    ![图像](common/edit-attribute.png)
+    ![image](common/edit-attribute.png)
 
-7. 在“用户属性”对话框的“用户声明”部分中，通过使用“编辑图标”编辑声明或使用“添加新声明”添加声明，按上图所示配置 SAML 令牌属性，并执行以下步骤：
-    
-    | Name | 源属性 | 
-    | ---------------| --------------- |
-    | 名称标识符值   | user.mail |
+7. 在“用户属性和声明”对话框中，执行以下步骤：
 
-    a. 单击“添加新声明”以打开“管理用户声明”对话框。
+    a. 单击“名称标识符值”右侧的“编辑”图标。
 
-    ![图像](common/new-save-attribute.png)
+    ![image](./media/clearreview-tutorial/attribute02.png)
 
-    ![图像](common/new-attribute-details.png)
+    ![图像](./media/clearreview-tutorial/attribute01.png)
 
-    b. 在“名称”文本框中，键入为该行显示的属性名称。
+    b. 在“源属性”列表中，选择该行的 user.mail 属性值。
 
-    c. 将“命名空间”留空。
-
-    d. 选择“源”作为“属性”。
-
-    e. 在“源属性”列表中，键入为该行显示的属性值。
-
-    f. 单击“确定”
-
-    g. 单击“ **保存**”。
+    c. 单击“ **保存**”。
 
 8. 在“使用 SAML 设置单一登录”页上，在“SAML 签名证书”部分中，单击“下载”以根据要求从给定的选项下载**证书(Base64)** 并将其保存在计算机上。
 
@@ -168,7 +157,7 @@ ms.locfileid: "57880885"
 
     ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. 在页面底部选择“更改”。
+3. 在页面底部的“集成”部分中，单击“单一登录设置”右侧的“更改”按钮。
 
     ![配置单一登录“保存”按钮](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
@@ -184,7 +173,7 @@ ms.locfileid: "57880885"
 
     d. 在记事本中打开下载的证书，将其内容粘贴到“X.509 证书”文本框中。   
 
-5. 单击“ **保存**”。
+    e. 单击“ **保存**”。
 
 ### <a name="create-an-azure-ad-test-user"></a>创建 Azure AD 测试用户 
 

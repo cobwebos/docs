@@ -5,15 +5,15 @@ services: container-instances
 author: dlepow
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 03/21/2019
+ms.date: 04/17/2019
 ms.author: danlep
 ms.custom: seodec18, mvc
-ms.openlocfilehash: f4d232d4d6043ede3979db67e5cd35130d931bef
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.openlocfilehash: 008d6d2a9a4a20e9fd083e9e2f009396a7f14df2
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58369439"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995908"
 ---
 # <a name="quickstart-deploy-a-container-instance-in-azure-using-the-azure-portal"></a>快速入门：使用 Azure 门户在 Azure 中部署容器实例
 
@@ -35,31 +35,29 @@ ms.locfileid: "58369439"
 
 ![开始在 Azure 门户中创建新的容器实例][aci-portal-01]
 
-在“容器名称”、“容器映像”和“资源组”文本框中输入以下值。 将其他值保留为默认值，然后选择“确定”。
+在“基本信息”页的“资源组”、“容器名称”和“容器映像”文本框中输入以下值。 将其他值保留为默认值，然后选择“确定”。
 
+* 资源组：“新建” > `myresourcegroup`
 * 容器名称：`mycontainer`
 * 容器映像：`mcr.microsoft.com/azuredocs/aci-helloworld`
-* 资源组：“新建” > `myResourceGroup`
 
 ![在 Azure 门户中配置新的容器实例的基本设置][aci-portal-03]
 
-对于本快速入门，请保留默认设置“公共”以部署公共 Microsoft `aci-helloworld` 映像。 此映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
+对于本快速入门，使用“公共”的默认“映像类型”设置以部署公共 Microsoft `aci-helloworld` 映像。 此 Linux 映像打包了一个用 Node.js 编写的小型 Web 应用程序，该应用程序提供静态 HTML 页面。
 
-在“配置”下，为容器指定一个 **DNS 名称标签**。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
-
-将“配置”中的其他设置保留为各自的默认设置，然后选择“确定”来验证配置。
+在“网络”页，为容器指定一个“DNS 名称标签”。 该名称在创建容器实例的 Azure 区域中必须是唯一的。 容器将可通过 `<dns-name-label>.<region>.azurecontainer.io` 公开访问。 如果收到“DNS 名称标签不可用”错误消息，请尝试使用一个不同的 DNS 名称标签。
 
 ![在 Azure 门户中配置新的容器实例][aci-portal-04]
 
-完成验证后，将显示容器的设置摘要。 选择“确定”提交容器部署请求。
+将其他设置保留为默认设置，然后选择“查看 + 创建”。
+
+完成验证后，将显示容器的设置摘要。 选择“创建”提交容器部署请求。
 
 ![Azure 门户中新的容器实例的设置摘要][aci-portal-05]
 
 当部署启动时，会显示一个通知，指明部署正在进行。 部署了容器组后，会显示另一个通知。
 
-![Azure 门户中新的容器实例的创建进度][aci-portal-08]
-
-通过导航到“资源组” > “myResourceGroup” > “mycontainer”打开容器组的概述。 记下容器实例的 **FQDN**（完全限定的域名）及其**状态**。
+通过导航到“资源组” > “myresourcegroup” > “mycontainer”打开容器组的概述。 记下容器实例的 **FQDN**（完全限定的域名）及其**状态**。
 
 ![Azure 门户中的容器组概述][aci-portal-06]
 

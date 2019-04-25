@@ -1,36 +1,36 @@
 ---
 title: 在 Azure Cosmos DB 中创建容器
 description: 了解如何在 Azure Cosmos DB 中创建容器
-author: markjbrown
+author: rimman
 ms.service: cosmos-db
 ms.topic: sample
-ms.date: 11/06/2018
-ms.author: mjbrown
-ms.openlocfilehash: 8ce890500c31c1966254e5bca9d23c8fcdd7bb67
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.date: 04/17/2019
+ms.author: rimman
+ms.openlocfilehash: c075a801a877309709258dd6466e68e46d802eff
+ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58258286"
+ms.lasthandoff: 04/17/2019
+ms.locfileid: "59680428"
 ---
 # <a name="create-an-azure-cosmos-container"></a>创建 Azure Cosmos 容器
 
-本文介绍如何通过不同方式来创建容器（集合、表或图形）。 用户可以使用 Azure 门户、Azure CLI 或支持的 SDK。 本文演示如何创建容器、指定分区键和预配吞吐量。
+本文介绍如何通过不同方式来创建 Azure Cosmos 容器（集合、表或图形）。 为此，用户可以使用 Azure 门户、Azure CLI 或支持的 SDK。 本文演示如何创建容器、指定分区键和预配吞吐量。
 
-## <a name="create-a-container-by-using-azure-portal"></a>使用 Azure 门户创建容器
+## <a name="create-a-container-using-azure-portal"></a>使用 Azure 门户创建容器
 
 ### <a id="portal-sql"></a>SQL API
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos 帐户](create-sql-api-dotnet.md#create-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入集合 ID。
    * 输入分区键。
-   * 输入吞吐量（例如 1000 RU）。
+   * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
 ![“数据资源管理器”窗格的屏幕截图，突出显示“新建集合”](./media/how-to-create-container/partitioned-collection-create-sql.png)
@@ -39,15 +39,14 @@ ms.locfileid: "58258286"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-mongodb-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos 帐户](create-mongodb-dotnet.md#create-a-database-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建集合”。 接下来，请提供以下详细信息：
 
    * 表明要创建新数据库还是使用现有数据库。
    * 输入集合 ID。
-   * 对于“无限制”存储容量。
    * 输入分片键。
-   * 输入吞吐量（例如 1000 RU）。
+   * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
 ![用于 MongoDB 的 Azure Cosmos DB API 的屏幕截图，突出显示“添加集合”对话框](./media/how-to-create-container/partitioned-collection-create-mongodb.png)
@@ -56,14 +55,14 @@ ms.locfileid: "58258286"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-cassandra-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos 帐户](create-cassandra-dotnet.md#create-a-database-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建表”。 接下来，请提供以下详细信息：
 
    * 表明要创建新密钥空间还是使用现有密钥空间。
    * 输入表名称。
    * 输入属性并指定一个主键。
-   * 输入吞吐量（例如 1000 RU）。
+   * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
 ![Cassandra API 的屏幕截图，突出显示“添加表”对话框](./media/how-to-create-container/partitioned-collection-create-cassandra.png)
@@ -75,7 +74,7 @@ ms.locfileid: "58258286"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-graph-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos 帐户](create-graph-dotnet.md#create-a-database-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建图形”。 接下来，请提供以下详细信息：
 
@@ -83,7 +82,7 @@ ms.locfileid: "58258286"
    * 输入图形 ID。
    * 对于“无限制”存储容量。
    * 输入顶点的分区键。
-   * 输入吞吐量（例如 1000 RU）。
+   * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
 ![Gremlin API 的屏幕截图，突出显示“添加图形”对话框](./media/how-to-create-container/partitioned-collection-create-gremlin.png)
@@ -92,13 +91,12 @@ ms.locfileid: "58258286"
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 
-1. [创建新的 Azure Cosmos DB 帐户](create-table-dotnet.md#create-a-database-account)或选择现有的帐户。
+1. [创建新的 Azure Cosmos 帐户](create-table-dotnet.md#create-a-database-account)或选择现有的帐户。
 
 1. 打开“数据资源管理器”窗格，然后选择“新建表”。 接下来，请提供以下详细信息：
 
    * 输入表 ID。
-   * 对于“无限制”存储容量。
-   * 输入吞吐量（例如 1000 RU）。
+   * 输入要进行预配的吞吐量（例如，1000 RU）。
    * 选择“确定”。
 
 ![表 API 的屏幕截图，突出显示“添加表”对话框](./media/how-to-create-container/partitioned-collection-create-table.png)
@@ -106,7 +104,7 @@ ms.locfileid: "58258286"
 > [!Note]
 > 就表 API 来说，每次添加新行时，都会指定分区键。
 
-## <a name="create-a-container-by-using-azure-cli"></a>使用 Azure CLI 创建容器
+## <a name="create-a-container-using-azure-cli"></a>使用 Azure CLI 创建容器
 
 ### <a id="cli-sql"></a>SQL API
 
@@ -174,7 +172,7 @@ az cosmosdb collection create \
     --throughput 1000
 ```
 
-## <a name="create-a-container-by-using-net-sdk"></a>使用 .NET SDK 创建容器
+## <a name="create-a-container-using-net-sdk"></a>使用 .NET SDK 创建容器
 
 ### <a id="dotnet-sql-graph"></a>SQL API 和 Gremlin API
 
@@ -198,7 +196,7 @@ db.runCommand( { shardCollection: "myDatabase.myCollection", key: { myShardKey: 
 ```
 
 > [!Note]
-> MongoDB 网络协议不需请求单位。 若要创建新的包含吞吐量的集合，请使用 Azure 门户或 SQL API。
+> MongoDB 网络协议不能理解[请求单位](request-units.md)的概念。 要创建一个新集合，并在其上提供吞吐量，请使用 Azure 门户或用于 SQL API 的 Cosmos DB SDK。
 
 ### <a id="dotnet-cassandra"></a>Cassandra API
 
@@ -213,3 +211,6 @@ session.Execute(CREATE TABLE myKeySpace.myTable(
 ## <a name="next-steps"></a>后续步骤
 
 - [Azure Cosmos DB 中的分区](partitioning-overview.md)
+- [Azure Cosmos DB 中的请求单位](request-units.md)
+- [在容器和数据库上预配吞吐量](set-throughput.md)
+- [使用 Azure Cosmos 帐户](account-overview.md)

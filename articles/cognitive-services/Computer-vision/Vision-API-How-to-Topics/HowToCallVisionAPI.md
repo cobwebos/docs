@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/21/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: e6ebd4ff465565be49d98162cd9ca67c194593a4
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.openlocfilehash: 0e2767660edf2a9dbcb8617b07a6b9f71fedb743
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59563364"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "60011226"
 ---
 # <a name="example-how-to-call-the-computer-vision-api"></a>示例：如何调用计算机视觉 API
 
@@ -47,8 +47,7 @@ ms.locfileid: "59563364"
 
 每次调用计算机视觉 API 都需要订阅密钥。 此密钥需要通过查询字符串参数传递，或者在请求头中指定。
 
-要获取订阅密钥，请参阅[如何获取订阅密钥](../Vision-API-How-to-Topics/HowToSubscribe.md
-)。
+要获取免费试用的密钥，请参阅[试用认知服务](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision)。 或者，按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明订阅计算机视觉并获取密钥。
 
 1. 通过查询字符串传递订阅密钥，将以下内容视为计算机视觉 API 示例：
 

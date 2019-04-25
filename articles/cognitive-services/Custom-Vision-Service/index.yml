@@ -1,10 +1,4 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: dfe42cf71c036cec8e1744e0b7983cd4417610f6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852182"
 documentType: LandingData
 title: 自定义视觉 API 文档
 metadata:
@@ -24,78 +18,78 @@ abstract:
   description: 基于云的自定义视觉 API 使开发人员能够构建、部署和改进自定义图像分类器。 图像分类器是一种 AI 服务，用于根据某些特征将图像按标记分类。
   aside:
     image:
-      alt: 
+      alt: null
       height: 110
       src: ../media/index/custom-vision-landing-page-video.png
       width: 250
-    title: 训练和识别独特图像 (26:10)
-    href: https://channel9.msdn.com/Shows/AI-Show/Azure-Custom-Vision-How-to-Train-and-Identify-Unique-Designs-or-Image-Content
+    title: '训练和识别独特图像 (26:10)'
+    href: 'https://channel9.msdn.com/Shows/AI-Show/Azure-Custom-Vision-How-to-Train-and-Identify-Unique-Designs-or-Image-Content'
     width: 250
 sections:
-- items:
-  - type: list
-    style: cards
-    className: cardsM
-    columns: 3
+  - items:
+      - type: list
+        style: cards
+        className: cardsM
+        columns: 3
+        items:
+          - href: /azure/cognitive-services/Custom-Vision-Service/home
+            html: <p>了解自定义视觉 API。</p>
+            image:
+              src: ../media/index/i_overview.svg
+            title: 什么是自定义视觉？
+          - href: /azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier
+            html: <p>了解如何构建分类器。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 生成分类器
+          - href: /azure/cognitive-services/Custom-Vision-Service/export-your-model
+            html: <p>了解如何将模型导出到移动设备。</p>
+            image:
+              src: ../media/index/i_tasks.svg
+            title: 将模型导出到移动设备
+  - title: 5 分钟快速入门
     items:
-    - href: /azure/cognitive-services/Custom-Vision-Service/home
-      html: <p>了解自定义视觉 API。</p>
-      image:
-        src: ../media/index/i_overview.svg
-      title: 什么是自定义视觉？
-    - href: /azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier
-      html: <p>了解如何构建分类器。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: 生成分类器
-    - href: /azure/cognitive-services/Custom-Vision-Service/export-your-model
-      html: <p>了解如何将模型导出到移动设备。</p>
-      image:
-        src: ../media/index/i_tasks.svg
-      title: 将模型导出到移动设备
-- title: 5 分钟快速入门
-  items:
-  - type: paragraph
-    text: 通过选择箭头链接了解如何开始使用自定义视觉 <img src="media/index/link.jpg" height="15" width="15"></img>
-  - type: table
-    style: dataMatrix
-    columns:
-    - image:
-        src: media/index/logo_csharp.svg
-    - image:
-        src: media/index/logo_python.svg
-    - image:
-        src: media/index/logo_java.svg
-    rows:
-    - title: 图像分类
-      values:
-      - href: csharp-tutorial
-      - href: python-tutorial
-      - href: java-tutorial
-    - title: 对象检测
-      values:
-      - href: csharp-tutorial-od
-      - href: python-tutorial-od
-      - href: java-tutorial-od
-- title: 示例
-  items:
-  - type: paragraph
-    text: 查找自定义视觉 API 示例：
-  - type: list
-    style: unordered
+      - type: paragraph
+        text: 通过选择箭头链接了解如何开始使用自定义视觉 <img src="media/index/link.jpg" height="15" width="15"></img>
+      - type: table
+        style: dataMatrix
+        columns:
+          - image:
+              src: media/index/logo_csharp.svg
+          - image:
+              src: media/index/logo_python.svg
+          - image:
+              src: media/index/logo_java.svg
+        rows:
+          - title: 图像分类
+            values:
+              - href: csharp-tutorial
+              - href: python-tutorial
+              - href: java-tutorial
+          - title: 对象检测
+            values:
+              - href: csharp-tutorial-od
+              - href: python-tutorial-od
+              - href: java-tutorial-od
+  - title: 示例
     items:
-    - html: <a href="https://azure.microsoft.com/resources/samples/?sort=Relevance&service=cognitive-services&term=Custom+Vision">代码示例</a>
-- title: 引用
-  items:
-  - type: list
-    style: cards
-    className: cardsD
+      - type: paragraph
+        text: 查找自定义视觉 API 示例：
+      - type: list
+        style: unordered
+        items:
+          - html: '<a href="https://azure.microsoft.com/resources/samples/?sort=Relevance&service=cognitive-services&term=Custom+Vision">代码示例</a>'
+  - title: 引用
     items:
-    - title: API
-      html: <p><a href="https://go.microsoft.com/fwlink/?linkid=865446">培训</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=865445">预测</a></p>
-    - title: SDK 中 IsInRole 中的声明
-      html: <p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training">Go - 训练</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction">Go - 预测</a></p>
-    - title: PowerShell
-      html: <p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>
-    - title: CLI
-      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: API
+            html: '<p><a href="https://go.microsoft.com/fwlink/?linkid=865446">培训</a></p> <p><a href="https://go.microsoft.com/fwlink/?linkid=865445">预测</a></p>'
+          - title: SDK 中 IsInRole 中的声明
+            html: '<p><a href="https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/customvision?view=azure-dotnet">.NET</a></p> <p><a href="https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/customvision?view=azure-java-stable">Java</a></p> <p><a href="https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-customvision/?view=azure-python">Python</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/customvision/training">Go - 训练</a></p> <p><a href="https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.1/customvision/prediction">Go - 预测</a></p>'
+          - title: PowerShell
+            html: '<p><a href="https://docs.microsoft.com/powershell/module/az.cognitiveservices/#cognitive_services">Azure PowerShell</a></p>'
+          - title: CLI
+            html: '<p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest">Azure CLI</a></p>'

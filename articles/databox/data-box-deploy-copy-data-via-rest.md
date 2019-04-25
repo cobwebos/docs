@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 01/24/2019
+ms.date: 04/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 79854c71410c7e796961f23c8c31a4d0809cd69c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 2a4c4c7431752ade60161af84b4cc15f010af656
+ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527976"
+ms.lasthandoff: 04/22/2019
+ms.locfileid: "59995738"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-blob-storage-via-rest-apis"></a>教程：通过 REST API 将数据复制到 Azure Data Box Blob 存储  
 
@@ -39,9 +39,14 @@ ms.locfileid: "59527976"
 5. 在主机上[下载 AzCopy 7.1.0](https://aka.ms/azcopyforazurestack20170417)。 稍后要使用 AzCopy 将数据从主机复制到 Azure Data Box Blob 存储。
 
 
-## <a name="connect-to-data-box-blob-storage"></a>连接到 Data Box Blob 存储
+## <a name="connect-via-http-or-https"></a>通过 http 或 https 进行连接
 
-可以通过 *http* 或 *https* 连接到 Data Box Blob 存储。 一般而言，*https* 比较安全，是连接到 Data Box Blob 存储的推荐方法。 通过受信任的网络连接时，可以使用 *http*。 根据是要通过 *http* 还是 *https* 连接到 Data Box Blob 存储，步骤可能有所不同。
+可以通过 *http* 或 *https* 连接到 Data Box Blob 存储。
+
+- Https 比较安全，是连接到 Data Box Blob 存储的推荐方法。
+- 通过受信任的网络连接时，可以使用 *http*。
+
+通过 http 或 https 连接到 Data Box Blob 存储时，连接步骤会有所不同，
 
 ## <a name="connect-via-http"></a>通过 http 进行连接
 
@@ -52,11 +57,11 @@ ms.locfileid: "59527976"
 
 后续部分将介绍其中的每个步骤。
 
-#### <a name="add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>将设备 IP 地址和 Blob 服务终结点添加到远程主机
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>添加设备 IP 地址和 Blob 服务终结点
 
 [!INCLUDE [data-box-add-device-ip](../../includes/data-box-add-device-ip.md)]
 
-#### <a name="configure-partner-software-and-verify-connection"></a>配置合作伙伴软件并验证连接
+### <a name="configure-partner-software-and-verify-connection"></a>配置合作伙伴软件并验证连接
 
 [!INCLUDE [data-box-configure-partner-software](../../includes/data-box-configure-partner-software.md)]
 
@@ -67,8 +72,8 @@ ms.locfileid: "59527976"
 通过 https 连接到 Azure Blob 存储 REST API 需要执行以下步骤：
 
 - 从 Azure 门户下载证书
-- 为远程管理准备主机
-- 将设备 IP 和 Blob 服务终结点添加到远程主机
+- 在客户端或远程主机上导入证书
+- 将设备 IP 和 Blob 服务终结点添加到客户端或远程主机
 - 配置第三方软件并验证连接
 
 后续部分将介绍其中的每个步骤。
@@ -83,20 +88,15 @@ ms.locfileid: "59527976"
 
     ![在 Azure 门户中下载证书](media/data-box-deploy-copy-data-via-rest/download-cert-1.png)
  
-### <a name="prepare-the-host-for-remote-management"></a>为远程管理准备主机
+### <a name="import-certificate"></a>导入证书 
 
-遵循以下步骤准备 Windows 客户端，以使用 *https* 会话建立远程连接：
+通过 HTTPS 访问 Data Box Blob 存储需要设备的 SSL 证书。 客户端应用程序可以使用此证书的方式因应用程序以及操作系统和分发而异。 一些应用程序可以在将证书导入系统的证书存储后访问该证书，而其他应用程序则不使用该机制。
 
-- 将 .cer 文件导入到客户端或远程主机的根存储中。
-- 将设备 IP 地址和 Blob 服务终结点添加到 Windows 客户端上的 hosts 文件中。
+本部分提到了某些应用程序的特定信息。 有关其他应用程序的详细信息，请参阅应用程序和所用操作系统的文档。
 
-下面描述了上述每个过程。
+按照以下步骤将 `.cer` 文件导入 Windows 或 Linux 客户端的根存储中。 在 Windows 系统中，可以使用 Windows PowerShell 或 Windows Server UI 在系统上导入并安装该证书。
 
-#### <a name="import-the-certificate-on-the-remote-host"></a>在远程主机上导入证书
-
-可以使用 Windows PowerShell 或 Windows Server UI 在主机系统上导入并安装该证书。
-
-**使用 PowerShell**
+#### <a name="use-windows-powershell"></a>使用 Windows PowerShell
 
 1. 以管理员身份启动 Windows PowerShell 会话。
 2. 在命令提示符处，键入：
@@ -105,9 +105,9 @@ ms.locfileid: "59527976"
     Import-Certificate -FilePath C:\temp\localuihttps.cer -CertStoreLocation Cert:\LocalMachine\Root
     ```
 
-**使用 Windows Server UI**
+#### <a name="use-windows-server-ui"></a>使用 Windows Server UI
 
-1.  右键单击 .cer 文件并选择“安装证书”。 这会启动证书导入向导。
+1.  右键单击 `.cer` 文件并选择“安装证书”。 该操作会启动证书导入向导。
 2.  对于“存储位置”，选择“本地计算机”，并单击“下一步”。
 
     ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-1.png)
@@ -120,13 +120,29 @@ ms.locfileid: "59527976"
 
     ![使用 PowerShell 导入证书](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
-### <a name="to-add-device-ip-address-and-blob-service-endpoint-to-the-remote-host"></a>将设备 IP 地址和 Blob 服务终结点添加到远程主机
+#### <a name="use-a-linux-system"></a>使用 Linux 系统
 
-要遵循的步骤与通过 *http* 进行连接时使用的步骤相同。
+导入证书的方法因分发而异。
 
-### <a name="configure-partner-software-to-establish-connection"></a>配置合作伙伴软件以建立连接
+例如 Ubuntu 和Debian 等使用 `update-ca-certificates` 命令。  
 
-要遵循的步骤与通过 *http* 进行连接时使用的步骤相同。 唯一的差别在于，应将“使用 http 选项”保留未选中状态。
+- 将 Base64 编码的证书文件重命名为 `.crt` 扩展并将其复制到 `/usr/local/share/ca-certificates directory`。
+- 运行命令 `update-ca-certificates`。
+
+最新版本的 RHEL、Fedora 和 CentOS 使用 `update-ca-trust` 命令。
+
+- 将证书文件复制到 `/etc/pki/ca-trust/source/anchors` 目录中。
+- 运行 `update-ca-trust`。
+
+有关详细信息，请参阅特定于分发的文档。
+
+### <a name="add-device-ip-address-and-blob-service-endpoint"></a>添加设备 IP 地址和 Blob 服务终结点 
+
+在 http 上进行连接时，请按照相同的步骤[添加设备 IP 地址和 blob 服务终结点](#add-device-ip-address-and-blob-service-endpoint)。
+
+### <a name="configure-partner-software-and-verify-connection"></a>配置合作伙伴软件并验证连接
+
+按照通过 http 进行连接时使用的步骤[配置合作伙伴软件](#configure-partner-software-and-verify-connection)， 唯一的差别在于，应将“使用 http 选项”保留未选中状态。
 
 ## <a name="copy-data-to-data-box"></a>将数据复制到 Data Box
 
@@ -199,7 +215,6 @@ ms.locfileid: "59527976"
 #### <a name="windows"></a>Windows
 
     AzCopy /Source:C:\myfolder /Dest:https://data-box-storage-account-name.blob.device-serial-no.microsoftdatabox.com/container-name/files/ /DestKey:<key> /S /XO
-
 
 下一步是准备好要交付的设备。
 

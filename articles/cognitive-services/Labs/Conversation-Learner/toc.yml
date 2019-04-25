@@ -1,77 +1,70 @@
-items:
 - name: 对话学习器文档
 - name: 概述
-  items:
-  - name: 什么是对话学习器？
-    href: overview.md
-  - name: 支持的语言
-    href: languages-supported.md
   expanded: true
+  items:
+    - name: 什么是对话学习器？
+      href: overview.md
+    - name: 支持的语言
+      href: languages-supported.md
 - name: 概念
   items:
-  - name: 控制流
-    href: control-flow.md
-  - name: 默认值和边界
-    href: cl-values-and-boundaries.md
+    - name: 控制流
+      href: control-flow.md
+    - name: 默认值和边界
+      href: cl-values-and-boundaries.md
 - name: 操作指南
   items:
-  - name: 对话学习器入门
-    href: quickstart.md
-  - name: Hello world
-    href: tutorials/01-hello-world.md
-  - name: 训练简介
-    href: tutorials/02-intro-to-training.md
-  - name: 等待与非等待操作
-    href: tutorials/03-wait-vs-nonwait-actions.md
-  - name: 实体简介
-    href: tutorials/04-introduction-to-entities.md
-  - name: 预期的实体
-    href: tutorials/05-expected-entity.md
-  - name: 可否定的实体
-    href: tutorials/06-negatable-entities.md
-  - name: 多值实体
-    href: tutorials/07-multi-value-entities.md
-  - name: 预先训练的实体
-    href: tutorials/08-pre-trained-entities.md
-  - name: 实体解析程序
-    href: tutorials/09-entity-resolvers.md
-  - name: 备用输入
-    href: tutorials/10-alternative-inputs.md
-  - name: 记录对话
-    href: tutorials/11-log-dialogs.md
-  - name: 实体检测回调
-    href: tutorials/12-entity-detection-callback.md
-  - name: 会话回调
-    href: tutorials/13-session-callbacks.md
-  - name: API 调用
-    href: tutorials/14-api-calls.md
-  - name: 卡片
-    href: tutorials/15-cards.md
-  - name: 混合机器人
-    href: tutorials/16-hybrid-bots.md
-  - name: 分支和撤消
-    href: tutorials/17-branch-undo.md
-  - name: 版本控制和标记
-    href: tutorials/18-version-tag.md
-  - name: 演示 - 密码重置
-    href: tutorials/demo-password-reset.md
-  - name: 演示 - 披萨订单
-    href: tutorials/demo-pizza-order.md
-  - name: 部署会话学习器机器人
-    href: deploy-to-bf.md
-  - name: 如何训练对话学习器
-    href: how-to-teach-cl.md
-  - name: 如何管理用户数据
-    href: managing-data.md
+    - name: 对话学习器入门
+      href: quickstart.md
+    - name: Hello world
+      href: tutorials/01-hello-world.md
+    - name: 训练简介
+      href: tutorials/02-intro-to-training.md
+    - name: 等待与非等待操作
+      href: tutorials/03-wait-vs-nonwait-actions.md
+    - name: 实体简介
+      href: tutorials/04-introduction-to-entities.md
+    - name: 预期的实体
+      href: tutorials/05-expected-entity.md
+    - name: 可否定的实体
+      href: tutorials/06-negatable-entities.md
+    - name: 多值实体
+      href: tutorials/07-multi-value-entities.md
+    - name: 预先训练的实体
+      href: tutorials/08-pre-trained-entities.md
+    - name: 实体解析程序
+      href: tutorials/09-entity-resolvers.md
+    - name: 备用输入
+      href: tutorials/10-alternative-inputs.md
+    - name: 记录对话
+      href: tutorials/11-log-dialogs.md
+    - name: 实体检测回调
+      href: tutorials/12-entity-detection-callback.md
+    - name: 会话回调
+      href: tutorials/13-session-callbacks.md
+    - name: API 调用
+      href: tutorials/14-api-calls.md
+    - name: 卡片
+      href: tutorials/15-cards.md
+    - name: 混合机器人
+      href: tutorials/16-hybrid-bots.md
+    - name: 分支和撤消
+      href: tutorials/17-branch-undo.md
+    - name: 版本控制和标记
+      href: tutorials/18-version-tag.md
+    - name: 演示 - 密码重置
+      href: tutorials/demo-password-reset.md
+    - name: 演示 - 披萨订单
+      href: tutorials/demo-pizza-order.md
+    - name: 部署会话学习器机器人
+      href: deploy-to-bf.md
+    - name: 如何训练对话学习器
+      href: how-to-teach-cl.md
+    - name: 如何管理用户数据
+      href: managing-data.md
 - name: 资源
   items:
-  - name: 对话学习器示例机器人
-    href: https://github.com/Microsoft/ConversationLearner-Samples
-  - name: Azure 路线图
-    href: https://azure.microsoft.com/roadmap/
-ms.openlocfilehash: ac1c54259fd7660bc0ebf51fc44936577f5dab61
-ms.sourcegitcommit: 295babdcfe86b7a3074fd5b65350c8c11a49f2f1
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 12/27/2018
-ms.locfileid: "53792079"
+    - name: 对话学习器示例机器人
+      href: 'https://github.com/Microsoft/ConversationLearner-Samples'
+    - name: Azure 路线图
+      href: 'https://azure.microsoft.com/roadmap/'
