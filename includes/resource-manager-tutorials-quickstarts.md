@@ -15,11 +15,11 @@ ms.date: 01/15/2019
 ms.author: jgao
 ms.custom: include file
 ms.openlocfilehash: 8c5347b412475b86222acabb76b88baaceb7645a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59291812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589377"
 ---
 ## <a name="quickstarts-and-tutorials"></a>快速入门和教程
 
@@ -27,7 +27,7 @@ ms.locfileid: "59291812"
 
 - 快速入门
 
-    |标题|描述|
+    |标题|说明|
     |------|-----|
     |[使用 Azure 门户](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)|使用门户生成模板，并了解模板的编辑和部署过程。|
     |[使用 Visual Studio Code](../articles/azure-resource-manager/resource-manager-quickstart-create-templates-use-visual-studio-code.md)|使用 Visual Studio Code 创建和编辑模板，以及如何使用 Azure Cloud Shell 部署模板。|
@@ -35,7 +35,7 @@ ms.locfileid: "59291812"
 
 - 教程
 
-    |标题|描述|
+    |标题|说明|
     |------|-----|
     |[利用模板参考](../articles/azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md)|利用模板参考文档来开发模板。 在本教程中，找到存储帐户架构，并使用相关信息来创建加密的存储帐户。|
     |[创建多个实例](../articles/azure-resource-manager/resource-manager-tutorial-create-multiple-instances.md)|创建多个 Azure 资源的实例。 在本教程中，将创建多个存储帐户实例。|

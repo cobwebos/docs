@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 29ebcfcaf1bae3586eb5141e3a379cd5201be301
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081643"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60308956"
 ---
 # <a name="dynamics-365-for-customer-engagement-offer-settings-tab"></a>Dynamics 365 for Customer Engagement 产品/服务的“设置”选项卡
 
@@ -35,7 +35,7 @@ Dynamics 365 for Customer Engagement 的“新建产品/服务”页打开时聚
 
 下表描述了此选项卡中的字段。 
 
-|    字段         |       Description                                                            |
+|    字段         |       描述                                                            |
 |  ---------       |     ---------------                                                          |
 | **产品/服务 ID**       | 产品/服务的唯一标识符（在发布者配置文件内）。 此标识符将显示在产品 URL 和见解报表中。 它的最大长度为 50 个字符，并且可以使用小写字母数字字符和短划线 (-)。 （标识符不能以短划线结尾。）**注意：** 产品/服务推出后，此字段无法更改，因为它与产品/服务的市场基 URL 相关联。  |
 | **发布者 ID**     | 你的组织在 Azure 市场中的唯一标识符。 你的所有产品/服务都应当与你的发布者 ID 相关联。 保存产品/服务后，无法更改此值。 |

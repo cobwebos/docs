@@ -9,11 +9,11 @@ ms.date: 02/08/2018
 ms.author: kumud
 ms.custom: include file
 ms.openlocfilehash: 1d3ce900f7354b31e999c12b8e1eb0e23d391fcb
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56078490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60734502"
 ---
 | | 标准 SKU | 基本 SKU |
 | --- | --- | --- |

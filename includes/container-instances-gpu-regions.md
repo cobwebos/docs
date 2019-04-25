@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/01/2019
 ms.author: danlep
 ms.openlocfilehash: d5491784dd27843ebbb13f692d8426c2b7edeec5
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57552251"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60537715"
 ---
 ### <a name="supported-regions"></a>支持的区域
 

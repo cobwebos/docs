@@ -9,11 +9,11 @@ ms.date: 03/28/2018
 ms.author: wesmc
 ms.custom: include file
 ms.openlocfilehash: 0f1decae5fb3ec4a07f01c5bff7475f3d73a3cbb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53111955"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60527761"
 ---
 1. 若要创建缓存，请首先登录到 [Azure 门户](https://portal.azure.com)。 然后选择“创建资源” > “数据库” > “用于 Redis 的 Azure 缓存”。
 
@@ -21,7 +21,7 @@ ms.locfileid: "53111955"
 
 2. 在“新建用于 Redis 的 Azure 缓存”中，配置新缓存的设置。
 
-    | 设置      | 建议的值  | Description |
+    | 设置      | 建议的值  | 说明 |
     | ------------ |  ------- | -------------------------------------------------- |
     | **DNS 名称** | 全局唯一名称 | 缓存名称。 必须是 1 到 63 个字符的字符串，只能包含数字、字母和 `-` 字符。 缓存名称的开头或末尾不能是 `-` 字符，并且连续的 `-` 字符无效。  | 
     | **订阅** | 订阅 | 要在其下创建此新的用于 Redis 的 Azure 缓存实例的订阅。 | 
