@@ -14,11 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: v-sharos
-ms.openlocfilehash: 0667c62e2ee2039c2b96b8c4ba81619969c3611b
-ms.sourcegitcommit: d28bba5fd49049ec7492e88f2519d7f42184e3a8
-ms.translationtype: HT
+ms.openlocfilehash: f23a507ab631be553613e22cafa037291548a8aa
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/11/2018
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60530854"
 ---
 # <a name="storsimple-8000-series-update-2-release-notes"></a>StorSimple 8000 系列 Update 2 发行说明
 
@@ -52,18 +53,18 @@ Update 2 推出以下新功能。
   * 路由改进，具有已启用云块的固定指标。
   * 在故障转移之前的出现故障的资源上重新尝试联机。
   * 服务故障的新警报。
-* **更新改进** – 在 Update 1.2 和更早版本中，StorSimple 8000 系列通过两个渠道更新：针对群集、iSCSI 等的 Windows Update，以及针对二进制文件和固件的 Microsoft Update。
+* **更新改进**– 在 Update 1.2 和更早版本，StorSimple 8000 系列更新通过两个通道：聚类分析、 iSCSI 和等等和二进制文件和固件的 Microsoft 更新的 Windows 更新。
     Update 2 对针对所有更新包使用 Microsoft Update。 这应该会使安装补丁或执行故障转移所需的时间更少。 
 * **固件更新**：包括以下固件更新：
   
   * LSI: lsi_sas2.sys 产品版本 2.00.72.10
-  * 仅 SSD（没有 HDD 更新）：XMGG、XGEG、KZ50、F6C2 和 VR08
+  * 仅 SSD （没有 HDD 更新）：XMGG、 XGEG、 KZ50、 F6C2 和 VR08
 * **主动支持** – Update 2 使 Microsoft 可以从设备中提取其他诊断信息。 当运营团队标识有问题的设备时，我们可以更好地从设备中收集信息并诊断问题。 **通过接受 Update 2，我们就能够提供此主动支持**。    
 
 ## <a name="issues-fixed-in-update-2"></a>在 Update 2 中修复的问题
 下表提供在 Updates 2 中已修复问题的摘要。    
 
-| 不会。 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 不。 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
 | 1 |网络接口 |升级到 Update 1 之后，StorSimple Manager 服务报告在一个控制器上报告 Data2 和 Data3 端口出现故障。 现在已修复此问题。 |是 |否 |
 | 2 |更新 |升级到 Update 1 之后，在多个设备上的 Azure 经典门户中出现有声警报通知。 现在已修复此问题。 |是 |否 |
@@ -72,7 +73,7 @@ Update 2 推出以下新功能。
 ## <a name="known-issues-in-update-2"></a>Update 2 中的已知问题
 下表提供了此版本中已知问题的摘要。
 
-| 不会。 | 功能 | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
+| 不。 | Feature | 问题 | 注释/解决方法 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- | --- |
 | 1 |磁盘仲裁 |在极少数情况下，如果 8600 设备的 EBOD 机箱中的大部分磁盘断开连接，导致没有磁盘仲裁，则会使存储池脱机。 即使磁盘重新连接，存储池也将保持脱机状态。 |需要重新启动设备。 如果问题仍然存在，请联系 Microsoft 支持部门以了解后续步骤。 |是 |否 |
 | 2 |控制器 ID 错误 |更换控制器后，控制器 0 可能显示为控制器 1。 在更换控制器的过程中，从对等节点加载映像时，控制器 ID 刚开始可能显示为对等控制器的 ID。 在极少数情况下，此行为也可能在系统重新启动后出现。 |不需要用户操作。 控制器更换过程完成后，这种情况会自动解决。 |是 |否 |
@@ -82,7 +83,7 @@ Update 2 推出以下新功能。
 | 6 |Web 代理 |如果 Web 代理配置将 HTTPS 作为指定的协议，则设备到服务通信将受到影响，并且设备将进入脱机状态。 在此过程中会生成支持包，从而耗用设备上的大量资源。 |请确保 Web 代理 URL 将 HTTP 作为指定的协议。 有关详细信息，请转至[配置设备的 Web 代理](storsimple-configure-web-proxy.md)。 |是 |否 |
 | 7 |Web 代理 |如果在注册的设备上配置并启用 Web 代理，将需要重新启动设备上的主动控制器。 | |是 |否 |
 | 8 |云高延迟和高 I/O 工作负载 |当 StorSimple 设备同时遇到非常高的云延迟（秒级）和高 I/O 工作负载情况时，设备卷将进入降级状态，并且 I/O 可能会出现故障，发生“设备未就绪”错误。 |需要手动重新启动设备控制器或执行设备故障转移，才可以从这种情况中恢复。 |是 |否 |
-| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |将该 cmdlet 放在括号中，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
+| 9 |Azure PowerShell |使用 StorSimple cmdlet **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object -First 1 -Wait** 选择第一个对象以便创建新的 **VolumeContainer** 对象时，该 cmdlet 将返回所有对象。 |使用括号包装该 cmdlet，如下所示：**(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |是 |是 |
 | 10 |迁移 |当传递多个卷容器进行迁移时，只有第一个卷容器的最新备份的 ETA 准确。 此外，在迁移第一个卷容器中的前 4 个备份后，将开始并行迁移。 |建议一次迁移一个卷容器。 |是 |否 |
 | 11 |迁移 |还原后，不会将卷添加到备份策略或虚拟磁盘组。 |需要将这些卷添加到备份策略以创建备份。 |是 |是 |
 | 12 |迁移 |迁移完成后，5000/7000 系列设备不得访问已迁移的数据容器。 |建议在迁移完成并提交之后删除迁移的数据容器。 |是 |否 |

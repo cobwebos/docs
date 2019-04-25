@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: d8640881e83084dac7f4725115f48dcf7d29e787
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 2e580a94e568f201587c06efa827006386cd6bd9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58007607"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60327674"
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>创建 OpenBSD 磁盘映像并上传到 Azure
 本文说明如何创建和上传包含 OpenBSD 操作系统的虚拟硬盘 (VHD)。 将其上传后，可以通过 Azure CLI 使用它作为你自己的映像在 Azure 中创建虚拟机 (VM)。
@@ -31,7 +31,7 @@ ms.locfileid: "58007607"
 
 * **Azure 订阅** - 如果没有帐户，只需几分钟即可创建一个。 如果有 MSDN 订阅，请参阅 [Visual Studio 订户的每月 Azure 信用额度](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)。 否则，请了解如何[创建一个免费试用帐户](https://azure.microsoft.com/pricing/free-trial/)。  
 * Azure CLI - 确保已安装了最新的 [Azure CLI](/cli/azure/install-azure-cli) 并已使用 [az login](/cli/azure/reference-index) 登录到 Azure 帐户。
-* **安装在 .vhd 文件中的 OpenBSD 操作系统** - 必须将受支持的 OpenBSD 操作系统（[6.1 版本 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.1/amd64/)）安装到虚拟硬盘中。 可使用多个工具创建 .vhd 文件。 例如，可使用虚拟化解决方案（如 Hyper-V）创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 和创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
+* **安装在.vhd 文件中的 OpenBSD 操作系统**-受支持的 OpenBSD 操作系统 ([6.2 版本 AMD64](https://ftp.openbsd.org/pub/OpenBSD/6.2/amd64/)) 必须安装到虚拟硬盘。 可使用多个工具创建 .vhd 文件。 例如，可使用虚拟化解决方案（如 Hyper-V）创建 .vhd 文件并安装操作系统。 有关如何安装和使用 Hyper-V 的说明，请参阅[安装 Hyper-V 和创建虚拟机](https://technet.microsoft.com/library/hh846766.aspx)。
 
 
 ## <a name="prepare-openbsd-image-for-azure"></a>为 Azure 准备 OpenBSD 映像
@@ -96,7 +96,7 @@ ms.locfileid: "58007607"
 
 
 ## <a name="prepare-the-vhd"></a>准备 VHD
-Azure 不支持 VHDX 格式，仅支持**固定大小的 VHD**。 可使用 Hyper-V 管理器或 Powershell [convert-vhd](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) cmdlet 将磁盘转换为固定 VHD 格式。 下面是一个示例。
+Azure 不支持 VHDX 格式，仅支持 **固定大小的 VHD**。 可使用 Hyper-V 管理器或 Powershell [convert-vhd](https://technet.microsoft.com/itpro/powershell/windows/hyper-v/convert-vhd) cmdlet 将磁盘转换为固定 VHD 格式。 下面是一个示例。
 
 ```powershell
 Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed

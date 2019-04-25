@@ -7,17 +7,17 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: juliemsft
-ms.author: jrasnick
+author: stevestein
+ms.author: sstein
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 03/20/2019
-ms.openlocfilehash: c6dc49204c0a7e1cb0d1116e29746eed2fe52f8d
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
-ms.translationtype: MT
+ms.date: 04/18/2019
+ms.openlocfilehash: 471ded9cd94623929630155f1a3c613bf00576a8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286255"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60331806"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>在 Azure SQL 数据库中缩放单一数据库资源
 
@@ -25,11 +25,11 @@ ms.locfileid: "58286255"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
-## <a name="change-compute-resources-vcores-or-dtus"></a>更改计算资源 （Vcore 或 Dtu）
+## <a name="change-compute-size-vcores-or-dtus"></a>更改计算大小 （Vcore 或 Dtu）
 
-首先选择 Vcore 或 Dtu 数，你可以缩放单一数据库向上或向下根据实际体验使用动态[Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)， [TRANSACT-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)， [PowerShell](/powershell/module/az.sql/set-azsqldatabase)，则[Azure CLI](/cli/azure/sql/db#az-sql-db-update)，则[REST API](https://docs.microsoft.com/rest/api/sql/databases/update)。
+最初选择 vCore 或 DTU 数量后，可以使用 [Azure 门户](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server)、[Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1)、 [PowerShell](/powershell/module/az.sql/set-azsqldatabase)、[Azure CLI](/cli/azure/sql/db#az-sql-db-update) 或 [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)，根据实际体验动态扩展或缩减单一数据库。
 
 下面的视频演示了如何动态更改服务层和计算大小以增加单一数据库的可用 DTU。
 
@@ -39,35 +39,66 @@ ms.locfileid: "58286255"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层或重新缩放计算实例大小的影响
+### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小的影响
 
-更改服务层或计算单个数据库的大小主要涉及服务执行以下步骤：
+更改单一数据库的服务层级或计算大小主要涉及到由服务执行的以下步骤：
 
-1. 创建新的计算实例的数据库  
+1. 为数据库创建新的计算实例  
 
-    请求的服务层和计算实例大小被创建新的计算实例的数据库。 对于服务层和计算大小更改的某些组合，数据库的副本必须这涉及到将数据复制到新的计算实例中创建，并且可以会对总体延迟。 无论如何，在此步骤中，数据库保持联机状态并连接继续指向原始的计算实例中的数据库。
+    使用请求的服务层级和计算大小为数据库创建新的计算实例。 更改后，对于服务层级和计算大小的某些组合，必须在新的计算实例中创建数据库的副本，此过程涉及到数据复制，可能会对总体延迟造成很大的影响。 无论如何，在执行此步骤期间，数据库会保持联机，并且连接会继续定向到原始计算实例中的数据库。
 
-2. 切换到新的计算实例的连接的路由
+2. 将连接路由切换到新的计算实例
 
-    将删除原始的计算实例中的数据库的现有连接。 任何新的连接建立到数据库中新的计算实例。 对于服务层和计算大小更改的某些组合，数据库文件分离再重新附加在切换期间。  无论如何，交换机可能会导致短暂的服务中断时通常为 30 秒内，通常只有几秒钟，数据库将不可用。 如果有长时间运行的运行时将删除连接的事务，此步骤的持续时间可能需要更长时间才能恢复中止的事务数。 [加速数据库恢复](sql-database-accelerated-database-recovery.md)可以减少从中止长时间运行的事务的影响。
+    将删除与原始计算实例中的数据库建立的现有连接。 将与新计算实例中的数据库建立任何新的连接。 更改后，对于服务层级和计算大小的某些组合，在切换期间会分离再重新附加数据库文件。  无论如何，切换操作都可能会导致服务出现短暂的中断，此时，数据库一般会出现 30 秒以下的不可用情况（通常只有几秒钟）。 如果连接断开时有长时间运行的事务正在运行，则此步骤的持续时间可能会变长，以便恢复中止的事务。 [加速数据库恢复](sql-database-accelerated-database-recovery.md)可以减少从中止长时间运行的事务的影响。
 
 > [!IMPORTANT]
-> 在工作流中的任何步骤期间不会丢失任何数据。
+> 执行工作流中的任何步骤期间都不会丢失数据。
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层或重新缩放计算实例大小的滞后时间
+### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小所造成的延迟
 
-若要更改服务层或重新缩放单一数据库或弹性池的计算大小的延迟是参数化，如下所示：
+可根据如下所述，将更改服务层级或者重新缩放单一数据库或弹性池的计算大小所造成的延迟参数化：
 
-|服务层|基本单一数据库</br>标准 (S0-S1)|基本弹性池</br>标准 (S2-S12) </br>超大规模， </br>常规用途的单一数据库或弹性池|高级或业务关键的单个数据库或弹性池|
+|服务层|基本单一数据库，</br>标准 (S0-S1)|基本弹性池，</br>标准 (S2-S12)， </br>超大规模， </br>常规用途单一数据库或弹性池|高级或业务关键型单一数据库或弹性池|
 |:---|:---|:---|:---|
-|**基本单一数据库</br>标准 (S0-S1)**|&bull; &nbsp;常量时间内延迟独立使用的空间</br>&bull; &nbsp;通常情况下，小于 5 分钟|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|
-|**基本弹性池</br>标准 (S2-S12)</br>超大规模，</br>常规用途单一数据库或弹性池**|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|&bull; &nbsp;常量时间内延迟独立使用的空间</br>&bull; &nbsp;通常情况下，小于 5 分钟|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|
-|**高级或业务关键的单个数据库或弹性池**|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|&bull; &nbsp;使用，因为如果数据复制的数据库空间成比例的延迟</br>&bull; &nbsp;通常情况下，小于 1 GB 的空间使用每分钟|
+|**基本单一数据库，</br>标准 (S0-S1)**|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
+|**基本弹性池</br>标准 (S2-S12)</br>超大规模，</br>常规用途单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;延迟时间较为恒定，与已用空间无关</br>&bull; &nbsp;通常小于 5 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
+|**高级或业务关键型单一数据库或弹性池**|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|&bull; &nbsp;由于数据复制，延迟与已用数据库空间成比例</br>&bull; &nbsp;对于每 GB 的已用空间，延迟通常小于 1 分钟|
 
 > [!TIP]
-> 要监视进行中的操作，请参阅：[使用 SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 T-SQL 监视操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)以及这两个 PowerShell 命令：[Get AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity)并[停止 AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
+> 要监视进行中的操作，请参阅：[使用 SQL REST API 管理操作](https://docs.microsoft.com/rest/api/sql/operations/list)、[使用 CLI 管理操作](/cli/azure/sql/db/op)、[使用 T-SQL 监视操作](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database)以及这两个 PowerShell 命令：[Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) 和 [Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity)。
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>其他注意事项时更改服务层或重新缩放的计算大小
+### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>正在取消服务层更改或重新缩放操作的计算
+
+服务层更改或计算可以取消重新缩放操作。
+
+#### <a name="azure-portal"></a>Azure 门户
+
+在数据库概述边栏选项卡，导航到**通知**，然后单击磁贴，指示没有正在进行的操作：
+
+![正在进行的操作](media/sql-database-single-database-scale/ongoing-operations.png)
+
+接下来，单击标记为按钮**取消此操作**。
+
+![取消正在进行的操作](media/sql-database-single-database-scale/cancel-ongoing-operation.png)
+
+#### <a name="powershell"></a>PowerShell
+
+从 PowerShell 命令提示符下设置`$ResourceGroupName`， `$ServerName`，和`$DatabaseName`，然后运行以下命令：
+
+```PowerShell
+$OperationName = (az sql db op list --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --query "[?state=='InProgress'].name" --out tsv)
+if(-not [string]::IsNullOrEmpty($OperationName))
+    {
+        (az sql db op cancel --resource-group $ResourceGroupName --server $ServerName --database $DatabaseName --name $OperationName)
+        "Operation " + $OperationName + " has been canceled"
+    }
+    else
+    {
+        "No service tier change or compute rescaling operation found"
+    }
+```
+
+### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>更改服务层级或重新缩放计算大小时的其他注意事项
 
 - 如果要升级到更高的服务层或计算大小，除非显式指定了更大的大小（最大），否则，最大数据库大小不会增大。
 - 若要对数据库进行降级，数据库所用空间必须小于目标服务层和计算大小允许的最大大小。
@@ -77,7 +108,7 @@ ms.locfileid: "58286255"
 - 各服务层的还原服务不同。 如果要降级到基本层，则备份保持期也将缩短。 请参阅 [Azure SQL 数据库备份](sql-database-automated-backups.md)。
 - 所做的更改完成之前不会应用数据库的新属性。
 
-### <a name="billing-during-rescaling"></a>计费期间重新缩放
+### <a name="billing-during-compute-rescaling"></a>计费期间重新缩放计算
 
 将根据使用最高服务层的数据库存在的每个小时 + 在该小时适用的计算大小进行计费，无论使用方式或数据库处于活动状态是否少于一小时。 例如，如果创建了单一数据库，五分钟后删除了它，则将按该数据库存在一小时收费。
 
@@ -102,9 +133,9 @@ ms.locfileid: "58286255"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-## <a name="dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb"></a>基于 DTU 的购买模型：当最大大小超过 1 TB 时，P11 和 P15 的限制
+## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 和 P15 约束时最大大小超过 1 TB
 
-除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。 有关详细信息，请参阅[P11-P15 当前限制](sql-database-single-database-scale.md#dtu-based-purchasing-model-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
+除以下区域外，其他所有区域的高级层目前均可提供超过 1 TB 的存储：中国东部、中国北部、德国中部、德国东北部、美国中西部、US DoD 区域和美国政府中部。 在这些区域，高级层中的最大存储限制为 1 TB。 对于最大大小超过 1 TB 的 P11 和 P15 数据库，存在以下注意事项和限制：
 
 - 如果 P11 或 P15 数据库的最大大小曾经设置为一个值大于 1 TB，则它只能还原或复制到 P11 或 P15 数据库。  随后，提供在缩放操作时分配的空间量不超过新的计算大小的最大大小限制为不同的计算大小重新缩放数据库。
 - 对于“活动异地复制”方案：

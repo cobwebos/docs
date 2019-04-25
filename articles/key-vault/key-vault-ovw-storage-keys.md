@@ -9,12 +9,12 @@ author: prashanthyv
 ms.author: prashanthyv
 manager: barbkess
 ms.date: 03/01/2019
-ms.openlocfilehash: 99b37a9b12c4b66e9b254156dfe4b59c7ab6594c
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 0812d1523c6db077bf93a16a9a14771f5534d712
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526266"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60304908"
 ---
 # <a name="azure-key-vault-managed-storage-account---cli"></a>Azure Key Vault 托管存储帐户 - CLI
 
@@ -49,7 +49,7 @@ Key Vault 托管存储帐户功能代你执行多种管理功能：
 > - Azure 政府云中的 Azure AD 租户使用应用程序 ID `7e7c393b-45d0-48b1-a35e-2905ddf8183c`。
 > - Azure 公有云及所有其他云中的 Azure AD 租户使用应用程序 ID `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`。
 
-<a name="prerequisites"></a>先决条件
+<a name="prerequisites"></a>必备组件
 --------------
 1. [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) 安装 Azure CLI   
 2. [创建存储帐户](https://azure.microsoft.com/services/storage/)

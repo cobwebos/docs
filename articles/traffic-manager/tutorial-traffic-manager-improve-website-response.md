@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
 ms.openlocfilehash: 6dea36afd3a426bbbd0c28a96f21ccad1a82ea88
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57997994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60329802"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>教程：使用流量管理器改善网站响应
 
@@ -57,11 +57,11 @@ ms.locfileid: "57997994"
 
     |设置|值|
     |---|---|
-    |名称|myIISVMEastUS|
+    |Name|myIISVMEastUS|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“新建”，然后键入 *myResourceGroupTM1*。|
-    |位置| 选择“美国东部”。|
+    |Location| 选择“美国东部”。|
     |||
 
 4. 在“选择大小”下选择 VM 大小。
@@ -78,10 +78,10 @@ ms.locfileid: "57997994"
 
 7. 再次完成步骤 1-6，并做出以下更改：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |资源组 | 选择“新建”，然后键入 *myResourceGroupTM2*|
-    |位置|西欧|
+    |Location|西欧|
     |VM 名称 | myIISVMWEurope|
     |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。|
     |||
@@ -134,7 +134,7 @@ ms.locfileid: "57997994"
 
     |设置|值|
     |---|---|
-    |名称|myVMEastUS|
+    |Name|myVMEastUS|
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“现有”，然后选择“myResourceGroupTM1”。|
@@ -154,7 +154,7 @@ ms.locfileid: "57997994"
 
 7. 再次完成步骤 1-5，但需要做出以下更改：
 
-    |设置|值|
+    |设置|Value|
     |---|---|
     |VM 名称 | *myVMWEurope*|
     |资源组 | 选择“现有”，然后键入 *myResourceGroupTM2*|
@@ -171,11 +171,11 @@ ms.locfileid: "57997994"
 
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
-    | 名称                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
+    | Name                   | 此名称必须在 trafficmanager.net 区域中唯一，并可生成用于访问流量管理器配置文件的 DNS 名称 (trafficmanager.net)。                                   |
     | 路由方法          | 选择“性能”路由方法。                                       |
     | 订阅            | 选择订阅。                          |
     | 资源组          | 选择“新建”，然后输入 *myResourceGroupTM1*。 |
-    | 位置                | 选择“美国东部”。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
+    | Location                | 选择“美国东部”。 此设置指的是资源组的位置，对将全局部署的流量管理器配置文件没有影响。                              |
     |
 
     ![创建流量管理器配置文件](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
@@ -191,7 +191,7 @@ ms.locfileid: "57997994"
     | 设置                 | 值                                              |
     | ---                     | ---                                                |
     | Type                    | Azure 终结点                                   |
-    | 名称           | myEastUSEndpoint                                        |
+    | Name           | myEastUSEndpoint                                        |
     | 目标资源类型           | 公共 IP 地址                          |
     | 目标资源          | **选择公共 IP 地址**以显示同一订阅下具有公共 IP 地址的资源列表。 在“资源”中，选择名为 *myIISVMEastUS-ip* 的公共 IP 地址。 这是美国东部的 IIS 服务器 VM 的公共 IP 地址。|
     |        |           |

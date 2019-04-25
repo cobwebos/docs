@@ -8,11 +8,11 @@ ms.date: 03/19/2018
 ms.author: snmuvva
 ms.subservice: alerts
 ms.openlocfilehash: 3c47404826d5055d4a82d4842523f790fb11f000
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58632030"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60346865"
 ---
 # <a name="prepare-your-logic-apps-and-run-books-for-classic-alert-rules-migration"></a>准备在逻辑应用并运行迁移经典警报规则的书籍
 
@@ -60,7 +60,7 @@ Api 用于创建/管理经典警报规则 (`microsoft.insights/alertrules`) 不�
 | 受影响资源的类型 | context.resourceType | data.context.resourceType |
 |  受影响资源的资源 ID | context.resourceId | data.context.resourceId |
 | 指向门户资源摘要页的直接链接 | context.portalLink | data.context.portalLink|
-| 要传递给 webhook 或逻辑应用的自定义有效负载字段 | 属性 |data.properties |
+| 要传递给 webhook 或逻辑应用的自定义有效负载字段 | properties |data.properties |
 
 正如您所看到的这两个负载很相似。 以下部分包含示例逻辑应用的详细信息和示例 runbook，以分析新警报的通知有效负载。
 

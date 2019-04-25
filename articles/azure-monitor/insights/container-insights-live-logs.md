@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: magoedte
-ms.openlocfilehash: 6fe8cccf60e60ada34e3b7847964958cf6e03c4a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.openlocfilehash: c8baa4d2355adf99ce188d632ac50901db29a758
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788829"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60497624"
 ---
 # <a name="how-to-view-container-logs-real-time-with-azure-monitor-for-containers-preview"></a>如何使用用于容器的 Azure Monitor（预览版）实时查看容器日志
 此功能目前为预览版，可以实时查看 Azure Kubernetes 服务 (AKS) 容器日志 (stdout/stderr)，不需运行 kubectl 命令。 选择此选项后，“容器”视图上的容器性能数据表下方将显示新窗格。  它显示了容器引擎生成的实时日志记录，以进一步帮助实时解决问题。 **参与者**需要即可使用此功能的访问权限的群集资源。
@@ -65,7 +65,7 @@ ms.locfileid: "59788829"
 2. 运行以下命令以创建群集规则绑定：`kubectl create -f LogReaderRBAC.yaml`。 
 
 ## <a name="configure-aks-with-azure-active-directory"></a>为 AKS 配置 Azure Active Directory
-可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果是第一次进行此项配置，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/aad-integration.md)。 在创建[客户端应用程序](../../aks/aad-integration.md#create-client-application)并指定“重定向 URI”的过程中，需向列表添加另一个 URI `https://ininprodeusuxbase.microsoft.com/*`。  
+可将 AKS 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 如果是第一次进行此项配置，请参阅[将 Azure Active Directory 与 Azure Kubernetes 服务集成](../../aks/azure-ad-integration.md)。 在创建[客户端应用程序](../../aks/azure-ad-integration.md#create-client-application)并指定“重定向 URI”的过程中，需向列表添加另一个 URI `https://ininprodeusuxbase.microsoft.com/*`。  
 
 >[!NOTE]
 >通过 Azure Active Directory 配置身份验证以便实现单一登录的操作只能在初次部署新 AKS 群集过程中完成。 不能为已部署的 AKS 群集配置单一登录。  
@@ -92,4 +92,5 @@ ms.locfileid: "59788829"
 ![实时日志窗格的暂停实时视图](./media/container-insights-live-logs/live-logs-pane-pause-01.png)
 
 ## <a name="next-steps"></a>后续步骤
-若要继续学习如何使用 Azure Monitor 以及如何监视 AKS 群集的其他方面，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
+- 若要继续学习如何使用 Azure Monitor 以及如何监视 AKS 群集的其他方面，请参阅[查看 Azure Kubernetes 服务运行状况](container-insights-analyze.md)。
+- 视图[记录查询示例](container-insights-log-search.md#search-logs-to-analyze-data)若要查看预定义的查询和示例，以评估或自定义的警报、 可视化，或分析你的群集。

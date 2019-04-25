@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
 ms.openlocfilehash: b9977965dc076ec36aa90680a1732b6640b1e41a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60325795"
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>介绍 Azure 虚拟机上的 SQL Server Always On 可用性组 #
 
@@ -34,14 +34,14 @@ Azure 虚拟机上的 Always On 可用性组类似于本地的 Always On 可用�
 
 Azure 虚拟机中可用性组的主要区别是 Azure 虚拟机需要[负载均衡器](../../../load-balancer/load-balancer-overview.md)。 负载均衡器保留可用性组侦听器的 IP 地址。 如果有多个可用性组，则每个组都需要一个侦听器。 一个负载均衡器可以支持多个侦听器。
 
-此外上的 Azure IaaS VM 来宾故障转移群集，我们建议每个服务器 （群集节点） 的单个 NIC 和单个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
+此外，在 Azure IaaS VM 来宾故障转移群集上，我们建议每个服务器（群集节点）使用一个 NIC 和一个子网。 Azure 网络具有物理冗余，这使得在 Azure IaaS VM 来宾群集上不需要额外的 NIC 和子网。 虽然群集验证报告将发出警告，指出节点只能在单个网络上访问，但在 Azure IaaS VM 来宾故障转移群集上可以安全地忽略此警告。 
 
-|  | Windows Server 版本 | SQL Server 版本 | SQL Server 版本 | WSFC 仲裁配置 | 使用多区域灾难恢复 | 多子网支持 | 支持现有 AD | 使用多区域相同区域的灾难恢复 | Dist AG 支持没有 AD 域 | Dist AG 支持与任何群集 |  
+|  | Windows Server 版本 | SQL Server 版本 | SQL Server 版本 | WSFC 仲裁配置 | 使用多区域进行灾难恢复 | 多子网支持 | 支持现有 AD | 使用具有多个区域的相同区域进行灾难恢复 | Dist-AG 支持，没有 AD 域 | Dist-AG 支持，没有群集 |  
 | :------ | :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----| :-----|
 | [SQL VM CLI](virtual-machines-windows-sql-availability-group-cli.md) | 2016 | 2017 </br>2016   | Ent | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
 | [快速入门模板](virtual-machines-windows-sql-availability-group-quickstart-template.md) | 2016 | 2017</br>2016  | Ent | 云见证 | 否 | 是 | 是 | 是 | 否 | 否 |
 | [门户模板](virtual-machines-windows-portal-sql-alwayson-availability-groups.md) | 2016 </br>2012 R2 | 2016</br>2014 | Ent | 文件共享 | 否 | 否 | 否 | 否 | 否 | 否 |
-| [手动](virtual-machines-windows-portal-sql-availability-group-prereq.md) | All | All | All | All | 是 | 是 | 是 | 是 | 是 | 是 |
+| [手动](virtual-machines-windows-portal-sql-availability-group-prereq.md) | 全部 | 全部 | 全部 | 全部 | 是 | 是 | 是 | 是 | 是 | 是 |
 | &nbsp; | &nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |&nbsp; |
 
 准备好在 Azure 虚拟机上生成 SQL Server 可用性组时，请参阅这些教程。
@@ -62,7 +62,7 @@ Azure 快速入门模板利用 SQL 虚拟机资源提供程序来部署 Windows 
 [在 Azure VM 中自动配置 Always On 可用性组 - Resource Manager](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)
 
 
-## <a name="manually-in-azure-portal"></a>在 Azure 门户中手动
+## <a name="manually-in-azure-portal"></a>在 Azure 门户中手动操作
 
 还可以不使用模板自行创建虚拟机。 首先完成先决条件，然后创建可用性组。 请参阅以下主题： 
 

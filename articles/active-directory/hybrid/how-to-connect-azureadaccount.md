@@ -5,24 +5,24 @@ services: active-directory
 keywords: AADSTS70002、AADSTS50054：如何重置 Azure AD Connect 同步连接器服务帐户的密码
 documentationcenter: ''
 author: billmath
-manager: daveba
+manager: mtillman
 editor: ''
 ms.assetid: 6077043a-27f1-4304-a44b-81dc46620f24
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
-ms.date: 07/12/2017
-ms.subservice: hybrid
-ms.author: billmath
-ms.collection: M365-identity-device-management
+ms.topic: article
+origin.date: 07/12/2017
+ms.date: 11/08/2018
+ms.component: hybrid
+ms.author: v-junlch
 ms.openlocfilehash: f88318c87e29567b40b5eacf10f3b6f259adee8b
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56196344"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60350996"
 ---
 # <a name="azure-ad-connect-sync-how-to-manage-the-azure-ad-service-account"></a>Azure AD Connect 同步：如何管理 Azure AD 服务帐户
 Azure AD 连接器所使用的服务帐户应该是免费服务。 但如果需要重置其凭据，则可以参阅本主题。 例如，全局管理员错误地使用 PowerShell 对服务帐户重置了密码。
@@ -53,6 +53,7 @@ AADSTS70002：验证凭据时出错。 AADSTS50054：使用了旧密码进行身
 ## <a name="next-steps"></a>后续步骤
 **概述主题**
 
-* [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
-* [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+- [Azure AD Connect 同步：了解和自定义同步](how-to-connect-sync-whatis.md)
+- [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)
+
 

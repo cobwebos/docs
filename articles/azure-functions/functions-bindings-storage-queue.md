@@ -13,11 +13,11 @@ ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 8b9cc112f51840a6bf2cf659863f61ab5962f6e6
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652240"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306843"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure 队列存储绑定
 
@@ -151,7 +151,7 @@ function.json 文件如下所示：
 [配置](#trigger---configuration)部分解释了这些属性。
 
 > [!NOTE]
-> Name 参数在包含队列项有效负载的 JavaScript 代码中反映为 `context.bindings.<name>`。 此有效负载也作为第二个参数传递给函数。
+> name 参数在 JavaScript 代码中反映为 `context.bindings.<name>`，其中包含队列项有效负载。 此有效负载也作为第二个参数传递给函数。
 
 JavaScript 代码如下所示：
 
@@ -252,7 +252,7 @@ module.exports = async function (context, message) {
 |---------|---------|----------------------|
 |类型 | 不适用| 必须设置为 `queueTrigger`。 在 Azure 门户中创建触发器时，会自动设置此属性。|
 |direction| 不适用 | 只能在 *function.json* 文件中设置。 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置此属性。 |
-|name | 不适用 |包含功能代码中的队列项有效负载的变量的名称。  |
+|name | 不适用 |函数代码中包含队列项有效负载的变量的名称。  |
 |**queueName** | **QueueName**| 要轮询的队列的名称。 |
 |**连接** | **Connection** |包含要用于此绑定的存储连接字符串的应用设置的名称。 如果应用设置名称以“AzureWebJobs”开始，则只能在此处指定该名称的余下部分。 例如，如果将 `connection` 设置为“MyStorage”，函数运行时将会查找名为“AzureWebJobsMyStorage”的应用设置。 如果将 `connection` 留空，函数运行时将使用名为 `AzureWebJobsStorage` 的应用设置中的默认存储连接字符串。|
 
@@ -305,7 +305,7 @@ module.exports = async function (context, message) {
 
 ## <a name="trigger---hostjson-properties"></a>触发器 - host.json 属性
 
-[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 请参阅[host.json 设置](#hostjson-settings)部分，了解有关可用设置的详细信息。
+[host.json](functions-host-json.md#queues) 文件包含控制队列触发器行为的设置。 有关可用设置的详细信息，请参阅 [host.json 设置](#hostjson-settings)部分。
 
 ## <a name="output"></a>输出
 

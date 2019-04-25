@@ -15,11 +15,11 @@ ms.author: celested
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e57a953f99a5e0259c346836c156a0e4fe3e4c03
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56170884"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60293342"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>使用连接器组在单独的网络和位置上发布应用程序。
 
@@ -32,7 +32,7 @@ ms.locfileid: "56170884"
 >[!TIP] 
 >如果有大型应用程序代理部署，则不向默认连接器组分配任何应用程到。 这样一来，将新连接器分配给活动的连接器组之前，新连接器不接收任何实时流量。 此配置还可以通过将连接器移回默认组，让它们处于空闲模式，从而你可以在不会影响用户的状态下执行维护。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 为了为连接器分组，必须先确保[已安装多个连接器](application-proxy-add-on-premises-application.md)。 安装新的连接器时，该连接器会自动加入**默认**连接器组。
 
 ## <a name="create-connector-groups"></a>创建连接器组

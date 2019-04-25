@@ -1,6 +1,6 @@
 ---
-title: 解释 Azure Monitor（预览版）中的 Azure Active Directory 审核日志架构 | Microsoft Docs
-description: 介绍在 Azure Monitor（预览版）中使用的 Azure AD 审核日志架构
+title: 解释 Azure Monitor 中的 Azure Active Directory 审核日志架构 |Microsoft Docs
+description: 描述在 Azure Monitor 中使用的 Azure AD 审核日志架构
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 12/14/2018
+ms.date: 04/18/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4832776dee7c478996bcfc2a903a6d8e2a3c4426
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.openlocfilehash: d9f58b213e50a021651f35112a48d8f74ae59571
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60437067"
 ---
 # <a name="interpret-the-azure-ad-audit-logs-schema-in-azure-monitor-preview"></a>解释 Azure Monitor 中的 Azure AD 审核日志架构（预览版）
 
@@ -163,7 +163,7 @@ ms.locfileid: "58436959"
 | identity | 发出请求时提供的令牌中的标识。 标识可以是用户帐户、系统帐户或服务主体。 |
 | 级别 | 消息类型。 对于审核日志，此级别始终为“信息”。 |
 | 位置 | 数据中心的位置。 |
-| 属性 | 列出与审核日志相关的受支持属性。 有关详细信息，请参阅下一个表格。 | 
+| properties | 列出与审核日志相关的受支持属性。 有关详细信息，请参阅下一个表格。 | 
 
 <br>
 
