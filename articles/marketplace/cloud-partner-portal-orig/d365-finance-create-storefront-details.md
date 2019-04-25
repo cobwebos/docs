@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: f69a7f9ca94c0a83098300f01e9413b342bd4ae8
-ms.sourcegitcommit: f20e43e436bfeafd333da75754cd32d405903b07
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/17/2018
-ms.locfileid: "49389356"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60397891"
 ---
 <a name="how-to-fill-out-the-storefront-details-form"></a>如何填写“店面详细信息”窗体
 ===========================================
@@ -42,7 +42,7 @@ ms.locfileid: "49389356"
 
 选择应用最适合的行业。 如果应用与多个行业相关，可将此字段留空
 
-### <a name="categories"></a>类别
+### <a name="categories"></a>Categories
 
 选择与应用相关的类别。 至少选择一个类别，最多选择三个。 请谨慎选择，因为客户可能根据类别在 AppSource 上进行搜索
 
@@ -119,7 +119,7 @@ ms.locfileid: "49389356"
 
 ### <a name="lead-destination"></a>潜在顾客目标
 
-选择用于存储潜在顾客的 CRM 系统。 如果有以下 CRM 系统之一，请在此处选择\"Azure 表\"：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息
+选择用于存储潜在顾客的 CRM 系统。 选择\"Azure 表\"此处为具有以下的 CRM 系统中的一个：Salesforce、Marketo、Microsoft Dynamics CRM。 在 AppSource 中试用应用的最终用户（潜在顾客）的详细信息将写入到此处所选的 CRM 系统。 根据选择的 CRM 系统，单击以下相应 URL，以获取有关如何完成下一组字段的信息
 
 -   [Azure 表](./cloud-partner-portal-lead-management-instructions-azure-table.md)
 -   [Marketo](./cloud-partner-portal-lead-management-instructions-marketo.md)

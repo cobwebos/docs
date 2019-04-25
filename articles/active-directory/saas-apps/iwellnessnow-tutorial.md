@@ -17,11 +17,11 @@ ms.date: 05/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 02b831df98db5b9d63873a0da93e603cd7cbf308
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456034"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60269162"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iwellnessnow"></a>教程：Azure Active Directory 与 iWellnessNow 集成
 
@@ -176,7 +176,7 @@ ms.locfileid: "57456034"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-an-iwellnessnow-test-user"></a>创建 iWellnessNow 测试用户
 

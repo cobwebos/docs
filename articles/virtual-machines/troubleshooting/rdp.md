@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 12/13/2018
 ms.author: genli
 ms.openlocfilehash: 96e0b0b03643143064e52d1f05ee37b58559f607
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53439814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60306996"
 ---
 # <a name="troubleshoot-rdp-issues"></a>排查 RDP 问题
 

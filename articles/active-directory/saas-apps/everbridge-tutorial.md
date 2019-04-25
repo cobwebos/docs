@@ -17,11 +17,11 @@ ms.date: 11/29/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1bb62c9a11971f72a6c96c4652b136c19812cb3
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57839315"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60279504"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>教程：Azure Active Directory 与 EverBridge 集成
 
@@ -200,7 +200,7 @@ ms.locfileid: "57839315"
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。

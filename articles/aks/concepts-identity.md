@@ -2,17 +2,18 @@
 title: 概念 - Azure Kubernetes 服务 (AKS) 中的访问和标识
 description: 了解 Azure Kubernetes 服务 (AKS) 中的访问和标识，包括 Azure Active Directory 集成、Kubernetes 基于角色的访问控制 (RBAC) 以及角色和绑定。
 services: container-service
-author: iainfoulds
+author: rockboyfor
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 02/28/2019
-ms.author: iainfou
-ms.openlocfilehash: 64150438560d48575b4b65db4cdaf61aa0ada240
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+origin.date: 02/28/2019
+ms.date: 04/08/2019
+ms.author: v-yeche
+ms.openlocfilehash: 3432ba671431c25b7cd9ee58decc638861e884c3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57243816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60467034"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 的访问和标识选项
 
@@ -30,7 +31,7 @@ ms.locfileid: "57243816"
 
 Kubernetes 中的一个主要用户类型是“服务帐户”。 服务帐户存在于 Kubernetes API 中并由 Kubernetes API 进行管理。 服务帐户的凭据存储为 Kubernetes 机密，可供得到授权的 Pod 用于与 API 服务器进行通信。 大多数 API 请求都会提供服务帐户或普通用户帐户的身份验证令牌。
 
-普通用户帐户允许人工管理员或开发人员进行更为传统的访问，而不仅仅是服务和进程。 Kubernetes 本身不提供常规用户帐户和密码的存储位置的标识管理解决方案。 而是将外部标识解决方案集成到 Kubernetes 中。 对于 AKS 群集，此集成标识解决方案就是 Azure Active Directory。
+普通用户帐户允许人工管理员或开发人员进行更为传统的访问，而不仅仅是服务和进程。 Kubernetes 本身不提供存储常规用户帐户和密码的标识管理解决方案。 而是将外部标识解决方案集成到 Kubernetes 中。 对于 AKS 群集，此集成标识解决方案就是 Azure Active Directory。
 
 若要详细了解 Kubernetes 中的标识选项，请参阅 [Kubernetes 身份验证][kubernetes-authentication]。
 
@@ -75,7 +76,7 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 
 若要开始使用 Azure AD 和 Kubernetes RBAC，请参阅[将 Azure Active Directory 与 AKS 集成][aks-aad]。
 
-关联的最佳做法，请参阅[身份验证和授权在 AKS 中的最佳做法][operator-best-practices-identity]。
+有关相关的最佳做法，请参阅[在 AKS 中进行身份验证和授权的最佳做法][operator-best-practices-identity]。
 
 有关核心 Kubernetes 和 AKS 概念的详细信息，请参阅以下文章：
 
@@ -92,7 +93,7 @@ ClusterRoleBinding 的工作原理与向用户绑定角色相同，但前者可�
 
 <!-- LINKS - Internal -->
 [openid-connect]: ../active-directory/develop/v1-protocols-openid-connect-code.md
-[az-aks-get-credentials]: /cli/azure/aks#az-aks-get-credentials
+[az-aks-get-credentials]: https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
 [azure-rbac]: ../role-based-access-control/overview.md
 [aks-aad]: aad-integration.md
 [aks-concepts-clusters-workloads]: concepts-clusters-workloads.md

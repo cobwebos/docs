@@ -16,11 +16,11 @@ ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 22bf80c13ef3b18ab3119b6b35e529c8ad32f504
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58285088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60248058"
 ---
 # <a name="find-help-and-open-a-support-ticket-for-azure-active-directory"></a>查找帮助并打开 Azure Active Directory 的支持票证
 Microsoft 针对 Azure Active Directory (Azure AD) 提供全球技术支持、售前、计费和订阅支持。 对于 Microsoft Azure 付费版和试用版订阅，将通过在线服务和电话提供支持。 电话支持和在线计费支持以更多的语言提供。 

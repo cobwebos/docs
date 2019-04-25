@@ -12,11 +12,11 @@ ms.date: 04/16/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: aba8f9b2b4e62420ed5d318be40bbc4ada544866
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679595"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60203083"
 ---
 # <a name="install-and-run-recognize-text-containers"></a>安装和运行识别文本容器
 
@@ -89,7 +89,7 @@ docker pull containerpreview.azurecr.io/microsoft/cognitive-services-recognize-t
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行容器。 该命令使用以下参数：
 
-| 占位符 | 值 |
+| 占位符 | Value |
 |-------------|-------|
 |{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 上`Cognitive Services`密钥页。  |
 |{BILLING_ENDPOINT_URI} | 帐单终结点 URI 值。 下面是示例： `https://westus.api.cognitive.microsoft.com/vision/v2.0`|

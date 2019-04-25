@@ -4,20 +4,22 @@ description: 如何配置 Azure 云服务应用程序以允许远程桌面连接
 services: cloud-services
 author: ghogen
 manager: douge
+editor: ''
 ms.assetid: f5727ebe-9f57-4d7d-aff1-58761e8de8c1
-ms.prod: visual-studio-dev15
-ms.technology: vs-azure
-ms.custom: vs-azure
-ms.topic: conceptual
-ms.workload: azure-vs
-ms.date: 03/06/2018
-ms.author: ghogen
-ms.openlocfilehash: 703e969fe31def329be60037cceba27864063b4e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.service: multiple
+ms.devlang: multiple
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: na
+origin.date: 03/06/2018
+ms.date: 10/22/2018
+ms.author: v-yiso
+ms.openlocfilehash: 924719a8371f4d41cb9ead09252d8f3d3424326a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304044"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406440"
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services-using-visual-studio"></a>使用 Visual Studio 为 Azure 云服务中的角色启用远程桌面连接
 
@@ -46,6 +48,8 @@ Visual Studio 为云服务提供的发布向导中包括一个选项，用于在
 
    > [!Note]
    > 用于建立远程桌面连接的证书与用于其他 Azure 操作的证书不同。 远程访问证书必须有一个私钥。
+   >
+   >
 
 5. 从列表中选择一个证书，或选择“&lt;创建...&gt;”。 如果创建新证书，请在出现提示时提供新证书的友好名称，并选择“确定”。 新证书将显示在下拉列表框中。
 
@@ -95,7 +99,7 @@ Certificate with thumbprint [thumbprint] doesn't exist.
 
 1. 在生成步骤的后面，添加“Azure 云服务部署”步骤并设置其属性。
 
-1. 在部署步骤的后面，添加“Azure Powershell”步骤，将其“显示名称”属性设置为“Azure 部署: 启用 RDP 扩展”（或其他适当的名称），然后选择相应的 Azure订阅。
+1. 在部署步骤中之后, 添加**Azure Powershell**步骤中，设置其**显示名称**属性设置为"Azure 部署：启用 RDP 扩展"（或其他适合名称），然后选择相应的 Azure 订阅。
 
 1. 将“脚本类型”设置为“内联”，并在“内联脚本”字段中粘贴以下代码。 （也可以使用此脚本在项目中创建 `.ps1` 文件，将“脚本类型”设置为“脚本文件路径”，并将“脚本路径”设置为指向该文件。）
 

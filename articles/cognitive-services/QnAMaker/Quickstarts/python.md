@@ -12,11 +12,11 @@ ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: e732417daada836dc7de58fadf69e8edb4ebcb14
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60240734"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-python"></a>如何将 QnA Maker REST API 与 Python 配合使用
 <a name="HOLTop"></a>
@@ -40,7 +40,7 @@ ms.locfileid: "56244634"
 
 [!INCLUDE [Code is available in Azure-Samples GitHub repo](../../../../includes/cognitive-services-qnamaker-python-repo-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要使用 [Python 3.x](https://www.python.org/downloads/) 来运行此代码。
 

@@ -13,13 +13,13 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 03/26/2019
 ms.openlocfilehash: ca53f4bfa80d6fdead24dc7d562c2240bb3fa86d
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58498479"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387415"
 ---
-# <a name="creating-and-using-active-geo-replication"></a>创建和使用活动异地复制
+# <a name="creating-and-using-active-geo-replication"></a>创建并使用活动异地复制
 
 活动异地复制是 Azure SQL 数据库的一项功能，使用此功能可以在相同或不同数据中心（区域）的 SQL 数据库服务器上创建单个数据库的可读辅助数据库。
 
@@ -78,7 +78,7 @@ ms.locfileid: "58498479"
 > [!NOTE]
 > 如果主数据库上有架构更新，则日志重播会在辅助数据库上延迟。 因为架构更新需要在辅助数据库上有架构锁。
 > [!IMPORTANT]
-> 可以使用异地复制在主数据库所在的同一区域中创建辅助数据库。 可以在同一区域中使用此辅助数据库的负载平衡的只读工作负荷。 但是，同一区域中的辅助数据库不提供其他故障恢复能力，并因此不是灾难恢复的合适的故障转移目标。 它也不会保证 avaialability 区域隔离。 使用业务关键或具有高级服务层[区域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)以实现 avaialability 区域隔离。   
+> 可以使用异地复制在与主数据库相同的区域中创建辅助数据库。 可以使用此辅助数据库对同一区域中的只读工作负荷进行负载均衡。 但是，同一区域中的辅助数据库不能提供额外的故障恢复能力，因此不适合用作灾难恢复的故障转移目标。 它也不会保证 avaialability 区域隔离。 使用业务关键或具有高级服务层[区域冗余配置](sql-database-high-availability.md#zone-redundant-configuration)以实现 avaialability 区域隔离。   
 >
 
 - **计划内故障转移**
@@ -110,7 +110,7 @@ ms.locfileid: "58498479"
 
 - **保持凭据和防火墙规则同步**
 
-我们建议使用[数据库级别 IP 防火墙规则](sql-database-firewall-configure.md)的异地复制数据库，以便这些规则，可以使用数据库，以确保所有辅助数据库具有相同的 IP 防火墙规则的主数据库复制。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
+建议对异地复制数据库使用[数据库级 IP 防火墙规则](sql-database-firewall-configure.md)，以便这些规则可与数据库一起复制，确保所有辅助数据库具有与主数据库相同的 IP 防火墙规则。 此方法不再需要客户手动配置和维护承载主数据库和辅助数据库的服务器上的防火墙规则。 同样，将[包含的数据库用户](sql-database-manage-logins.md)用于数据访问可确保主数据库和辅助数据库始终具有相同的用户凭据，以便在故障转移期间，不会因登录名和密码不匹配而产生中断。 通过添加 [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)，客户可以管理主数据库和辅助数据库的用户访问权限，且不再需要同时管理数据库中的凭据。
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>升级或降级主数据库
 
@@ -120,7 +120,7 @@ ms.locfileid: "58498479"
 > 如果辅助数据库是作为故障转移组配置的一个部分创建的，则不建议对辅助数据库进行降级。 这是为了确保激活故障转移后，数据层有足够的容量来处理常规工作负荷。
 
 > [!IMPORTANT]
-> 故障转移组中的主数据库不能缩放到更高的层，除非辅助数据库第一次扩展到更高的层。 如果你尝试缩放主数据库，辅助数据库进行缩放之前，可能会收到以下错误：
+> 不能将故障转移组中的主数据库扩展到更高的层，除非已先将辅助数据库扩展到该层。 如果尝试在扩展辅助数据库之前扩展主数据库，可能会收到以下错误：
 >
 > `Error message: The source database 'Primaryserver.DBName' cannot have higher edition than the target database 'Secondaryserver.DBName'. Upgrade the edition on the target before upgrading the source.`
 >
@@ -134,12 +134,12 @@ ms.locfileid: "58498479"
 
 ## <a name="monitoring-geo-replication-lag"></a>监视异地复制延迟
 
-若要监视延隔时间相对于 RPO，使用*replication_lag_sec*的列[sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database)主数据库上。 它显示在主数据库上提交，并保留在辅助数据库上的事务之间的秒数的延隔时间。 例如 如果滞后的值为 1 秒，这意味着如果在此时间点，主受到服务中断和故障转移是采取，1 秒的最新 transtions 将不会保存。 
+若要监视与 RPO 相关的延迟，请使用主数据库中 [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database) 的 *replication_lag_sec* 列。 它显示在主数据库上提交的事务与在辅助数据库上保留的事务之间的延迟（以秒为单位）。 例如 如果延迟值为 1 秒，则意味着如果主数据库现在受到某个中断的影响并启动了故障转移，则不会保存最近 1 秒执行的事务。 
 
-若要测量滞后时间相对于主数据库上已应用于辅助数据库，即可以从辅助副本时，读取的更改进行比较*last_commit*时间在辅助数据库上具有相同值在主计算机上数据库。
+若要以在主数据库上所做的更改应用到辅助数据库（即可以从辅助数据库读取）所需的时间来衡量延迟，请将辅助数据库上的 *last_commit* 时间与主数据库上的同一值进行比较。
 
 > [!NOTE]
-> 有时*replication_lag_sec*主数据库上具有 NULL 值，这意味着，主要目前不知道距离辅助数据库是。   这通常发生后重新启动进程，并应是一种暂时情况。 如果警报应用程序，请考虑*replication_lag_sec*的长时间内，返回 NULL。 它将指示辅助数据库无法与主数据库因永久连接故障而进行通信。 此外，还有可能会导致之间的差异的条件*last_commit*时间在次要副本上和在主数据库变得非常大。 例如 如果在长时间的任何更改，如果在主计算机上进行提交，不同之处将快速返回到 0 之前，跳到较大的值。 它的错误条件时考虑这两个值之间的差异很长时间仍然很大。
+> 有时候，主数据库上的 *replication_lag_sec* 的值为 NULL，这意味着主数据库目前不知道辅助数据库辅助数据库有多远。   这通常发生在进程重启之后，应该是一个暂时情况。 如果 *replication_lag_sec* 在长时间内一直返回 NULL，考虑向应用程序报警。 这表示辅助数据库因永久连接故障而无法与主数据库通信。 此外还有情况可能会导致辅助数据库上的 *last_commit* 时间与主数据库上的该时间的差异变得很大。 例如 如果在长期没有进行更改的情况下进行提交，则该差异会突然变成一个很大的值，然后快速回到 0。 如果这两个值之间的差异长时间保持很大，可将其视为一种错误情况。
 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>以编程方式管理活动异地复制
@@ -166,7 +166,7 @@ ms.locfileid: "58498479"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 > [!IMPORTANT]
-> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
+> PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库的支持，但所有未来的开发都是针对 Az.Sql 模块的。 若要了解这些 cmdlet，请参阅 [AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 Az 模块和 AzureRm 模块中的命令参数大体上是相同的。
 
 | Cmdlet | 描述 |
 | --- | --- |

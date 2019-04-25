@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/11/2018
 ms.author: magattus
 ms.openlocfilehash: f0dab3dc81c626e3e7f8c79b4142e5eb4f2a1276
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60324736"
 ---
 # <a name="control-azure-cdn-caching-behavior-with-query-strings---standard-tier"></a>使用查询字符串控制 Azure CDN 缓存行为 - 标准层
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ ms.locfileid: "49093793"
 
 - **忽略查询字符串**：默认模式。 在此模式下，CDN 接入点 (POP) 节点将来自请求者的查询字符串传递到第一个请求上的源服务器并缓存该资产。 所有由 POP 处理的该资产的后续请求将忽略查询字符串，直至缓存的资产到期。
 
-- **绕过查询字符串的缓存**：在此模式下，包含查询字符串的请求不会被缓存在 CDN POP 节点。 POP 节点直接从源服务器检索资产，并将其传递给每个请求的请求者。
+- **绕过查询字符串的缓存**:在此模式下，包含查询字符串的请求不会被缓存在 CDN POP 节点。 POP 节点直接从源服务器检索资产，并将其传递给每个请求的请求者。
 
 - **缓存每个唯一的 URL**：在此模式下，包含唯一 URL 的每个请求（包括查询字符串）将视为具有其自己的缓存的唯一资产。 例如，源服务器对 .ashx?q=test1 的请求做出的响应将缓存在 POP 节点，并为具有同一查询字符串的后续缓存返回该响应。 例如，.ashx?q=test2 的请求将作为具有其自己的生存时间设置的单独资产来缓存。
    

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli;
 ms.openlocfilehash: fb8cfd4767f6bb9afe1b5731d3b4db1c68a73056
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58107121"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60362517"
 ---
 # <a name="contact-microsoft-support"></a>联系 Microsoft 支持部门
 
@@ -65,7 +65,7 @@ StorSimple Device Manager 在“服务摘要”边栏选项卡中提供**记录�
 
    1. 在“联系人选项”中，提供首选的联系方式（电话或电子邮件）和语言。 系统会根据订阅计划自动选择响应时间。
    2. 在“联系人信息”中提供姓名、电子邮件、可选联系人和国家/地区。 选中“保存联系人更改以便将其用于将来的支持请求”复选框。
-   3. 单击“创建”。
+   3. 单击**创建**。
    
        ![通过新门户联系 MS 支持部门](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 

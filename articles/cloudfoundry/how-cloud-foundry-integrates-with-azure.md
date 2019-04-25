@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: 7cbffdd40e574c7e906a9388b70ca9d32fd84649
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57550167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60198951"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>将 Cloud Foundry 与 Azure 集成
 

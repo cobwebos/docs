@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: helohr
 ms.openlocfilehash: 0c4702dada17e759d89c33be99b3155f4b15ad9e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399862"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60328878"
 ---
 # <a name="configure-the-windows-virtual-desktop-preview-load-balancing-method"></a>配置 Windows 虚拟桌面预览负载平衡方法
 
@@ -25,7 +25,7 @@ ms.locfileid: "58399862"
 
 广度优先的负载均衡是新的非永久性主机池的默认配置。 广度优先的负载均衡分布在主机池中的所有可用的会话主机的新用户会话。 在配置广度优先的负载平衡，您可能主机池中设置每个会话主机的最大会话限制。
 
-首先，[下载并导入的 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)如果尚未在 PowerShell 会话中使用。
+首先[下载并导入 Windows 虚拟桌面 PowerShell 模块](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview)（如果尚未这样做），以便在 PowerShell 会话中使用。
 
 若要配置一个主机的池来执行广度优先的负载平衡而无需调整最大会话限制，请运行以下 PowerShell cmdlet:
 

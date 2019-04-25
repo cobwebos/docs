@@ -1,5 +1,5 @@
 ---
-title: 访问管理对 Azure 资源使用 RBAC 和 REST API-Azure |Microsoft Docs
+title: 使用 RBAC 和 REST API 管理对 Azure 资源的访问 - Azure | Microsoft Docs
 description: 了解如何使用基于角色的访问控制 (RBAC) 和 REST API 来管理用户、组和应用程序对 Azure 资源的访问。 这包括如何列出访问权限、授予访问权限以及删除访问权限。
 services: active-directory
 documentationcenter: na
@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 06/20/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: a66969504dee5ba526cdccbbb39471ef5af971c0
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.openlocfilehash: 0e0c83d411242be38992dd763dea72eda70ffbf4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439326"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531841"
 ---
 # <a name="manage-access-to-azure-resources-using-rbac-and-the-rest-api"></a>使用 RBAC 和 REST API 管理对 Azure 资源的访问权限
 
@@ -28,7 +28,7 @@ ms.locfileid: "57439326"
 
 ## <a name="list-access"></a>列出访问权限
 
-在 RBAC 中，若要列出访问权限，请列出角色分配。 若要列出角色分配，可以使用其中一个[角色分配 - List](/rest/api/authorization/roleassignments/list) REST API。 若要优化结果，请指定一个范围和可选的筛选器。 若要调用 API，必须具有对指定范围的 `Microsoft.Authorization/roleAssignments/read` 操作的访问权限。 多个 [Azure 资源的内置角色](built-in-roles.md)具有对此操作的访问权限。
+在 RBAC 中，若要列出访问权限，请列出角色分配。 若要列出角色分配，可以使用其中一个[角色分配 - List](/rest/api/authorization/roleassignments/list) REST API。 若要优化结果，请指定一个范围和可选的筛选器。
 
 1. 从下面的请求开始：
 

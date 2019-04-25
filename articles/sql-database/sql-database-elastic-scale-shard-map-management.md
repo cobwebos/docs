@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: a9c857ab9e9a3cfc0d1314600b612c4e6293173d
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60332263"
 ---
 # <a name="scale-out-databases-with-the-shard-map-manager"></a>使用分片映射管理器扩大数据库
 
@@ -72,7 +72,7 @@ ms.locfileid: "55476785"
 
 | 密钥 | 分片位置 |
 | --- | --- |
-| 1 |Database_A |
+| 第 |Database_A |
 | 3 |Database_B |
 | 4 |Database_C |
 | 6 |Database_B |
@@ -227,7 +227,7 @@ public static RangeShardMap<T> CreateOrGetRangeShardMap<T>(ShardMapManager shard
 
 分片映射管理器主要由需要数据库连接的应用程序用来执行特定于应用的数据操作。 这些连接必须与正确的数据库关联。 这称为**数据相关的路由**。 对于这些应用程序，通过使用在 GSM 数据库上具有只读访问权限的凭据，实例化来自工厂的分片映射管理器对象。 以后，单独的连接请求将提供连接相应分片数据库时所需的凭据。
 
-请注意，这些应用程序（使用具有只读权限的凭据打开的 **ShardMapManager**）将无法对映射进行更改。 为了满足这些需求，请创建特定于管理的应用程序或 PowerShell 脚本，以提供如前所述的更高级别权限的凭据。 请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
+请注意，这些应用程序（使用具有只读权限的凭据打开的 ShardMapManager）无法对映射进行更改。 为了满足这些需求，请创建特定于管理的应用程序或 PowerShell 脚本，以提供如前所述的更高级别权限的凭据。 请参阅[用于访问弹性数据库客户端库的凭据](sql-database-elastic-scale-manage-credentials.md)。
 
 有关详细信息，请参阅[数据依赖型路由](sql-database-elastic-scale-data-dependent-routing.md)。
 

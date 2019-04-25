@@ -3,7 +3,7 @@ title: 使用自定义策略在 Azure Active Directory B2C 中设置 Azure Activ
 description: 使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 09/20/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: 966ed0732ce807377693917eeab588bb55a9abdb
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56867671"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60316827"
 ---
 # <a name="set-up-sign-in-with-an-azure-active-directory-account-using-custom-policies-in-azure-active-directory-b2c"></a>使用自定义策略在 Azure Active Directory B2C 中设置 Azure Active Directory 帐户登录 
 
@@ -45,7 +45,7 @@ ms.locfileid: "56867671"
 
     例如，`https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`。
 
-8. 单击“创建”。 复制“应用程序 ID”供后续使用。
+8. 单击**创建**。 复制“应用程序 ID”供后续使用。
 9. 选择应用程序，然后选择“设置”。
 10. 选择“密钥”，输入密钥说明，选择持续时间，然后单击“保存”。 复制显示的密钥值供后续使用。
 
@@ -61,7 +61,7 @@ ms.locfileid: "56867671"
 6. 输入策略密钥的**名称**。 例如，`ContosoAppSecret`。  前缀 `B2C_1A_` 会自动添加到密钥名称。
 7. 在“机密”中，输入之前记录的应用程序密钥。
 8. 在“密钥用法”处选择 `Signature`。
-9. 单击“创建”。
+9. 单击**创建**。
 
 ## <a name="add-a-claims-provider"></a>添加声明提供程序
 
@@ -188,7 +188,7 @@ ms.locfileid: "56867671"
 4. 选择“应用程序”，然后选择“添加”。
 5. 输入应用程序的名称，例如 *testapp1*。
 6. 对于“Web 应用/Web API”，请选择 `Yes`，然后为“回复 URL”输入 `https://jwt.ms`。
-7. 单击“创建”。
+7. 单击**创建**。
 
 ## <a name="update-and-test-the-relying-party-file"></a>更新和测试信赖方文件
 

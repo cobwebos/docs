@@ -13,18 +13,18 @@ ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 11/03/2017
 ms.author: ghogen
-ms.openlocfilehash: d5fd6041f21700ffddd3b2c4755b7ce01691681e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
-ms.translationtype: HT
+ms.openlocfilehash: 5298721b7f60cec677c22faf1b35011aab02defb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60204280"
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>通过 Visual Studio 将 ASP.NET Web 应用发布到 Azure VM
 
 本文档介绍如何使用 Visual Studio 2017 中的 **Microsoft Azure 虚拟机**发布功能，将 ASP.NET Web 应用程序发布到 Azure 虚拟机 (VM)。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用 Visual Studio 将 ASP.NET 项目发布到某个 Azure VM，必须正确设置该 VM。
 
 - 计算机必须配置为运行 ASP.NET Web 应用程序，并且必须装有 WebDeploy。
@@ -106,7 +106,7 @@ ms.locfileid: "44304067"
 
 - 如果想要确保每次上传后 Web 服务器包含 Web 应用程序的干净副本（不包含先前部署留下的其他混杂文件），可以在“设置”选项卡中选中“删除目标中的其他文件”复选框。
 
-- 警告：使用此设置进行发布会删除 Web 服务器上存在的所有文件（包括 wwwroot 目录）。 在启用此选项的情况下进行发布之前，请务必了解计算机的状态。 
+- 警告：使用此设置进行发布删除 web 服务器 （包括 wwwroot 目录） 存在的所有文件。 在启用此选项的情况下进行发布之前，请务必了解计算机的状态。 
 
 ![发布设置 -“设置”页]
 

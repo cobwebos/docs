@@ -8,17 +8,17 @@ ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
 ms.openlocfilehash: 7773a2f43eb076075be484d92fde31094a2b584b
-ms.sourcegitcommit: 3ba9bb78e35c3c3c3c8991b64282f5001fd0a67b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/15/2019
-ms.locfileid: "54320032"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318115"
 ---
 # <a name="fail-back-vmware-vms-and-physical-servers-from-azure-to-an-on-premises-site"></a>将 VMware VM 和物理服务器从 Azure 故障回复到本地站点
 
 本文介绍如何将虚拟机从 Azure 虚拟机故障回复到本地 VMware 环境。 根据[在 Azure Site Recovery 中故障转移](site-recovery-failover.md)教程将 VMware 虚拟机或 Windows/Linux 物理服务器从本地站点故障转移到 Azure 以后，请按本文中的说明进行故障回复。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 - 确保你已阅读有关[不同类型的故障回复](concepts-types-of-failback.md)和相应注意事项的详细信息。
 
 > [!WARNING]

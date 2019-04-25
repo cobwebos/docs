@@ -9,11 +9,11 @@ ms.date: 10/20/2018
 ms.author: cherylmc;ganesr
 ms.custom: seodec18
 ms.openlocfilehash: 16f3ad1aa037dca2e7b8c3e68ae952c27b952711
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58103020"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60366431"
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路
 
@@ -84,19 +84,19 @@ ms.locfileid: "58103020"
 创建新的 ExpressRoute 线路时，线路将为以下状态：
 
 提供程序状态：未预配<BR>
-线路状态：已启用
+线路状态：Enabled
 
 ![启动预配过程](./media/expressroute-howto-circuit-portal-resource-manager/status.png)
 
 当连接服务提供商正在为你启用线路时，线路将更改为以下状态：
 
 提供程序状态：设置<BR>
-线路状态：已启用
+线路状态：Enabled
 
 只有 ExpressRoute 线路处于以下状态时，才能使用它。
 
 提供程序状态：已预配<BR>
-线路状态：已启用
+线路状态：Enabled
 
 ### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5.定期检查线路密钥的状态
 

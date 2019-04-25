@@ -14,19 +14,19 @@ ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 551bbe4e994e15688c59fd395ab762e14927dfda
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58340194"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482798"
 ---
 # <a name="perform-an-access-review-from-the-my-apps-portal"></a>从我的应用门户中执行访问评审
-可以使用基于 web 的使用工作或学校帐户**我的应用**门户中，来查看和启动很多组织的基于云的应用，以更新您的部分配置文件和帐户信息，若要查看你**组**信息，并执行**访问评审**应用和组。 如果您不能访问**我的应用**门户中，您必须与支持人员联系的权限。
+可以在基于 Web 的“我的应用”门户中使用工作或学校帐户，以便查看并启动组织的许多基于云的应用、更新你的部分配置文件和帐户信息、查看**组**信息，以及为应用和组执行“访问评审”。 如果无法访问“我的应用”门户，则必须联系支持人员以获取相关权限。
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
 >[!Important]
->此内容适用于用户。 如果你是管理员，可以找到有关如何设置和管理基于云的应用程序中的详细信息[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)。
+>此内容适用于用户。 如果你是管理员，可以在[应用程序管理文档](https://docs.microsoft.com/azure/active-directory/manage-apps)中查找有关如何设置和管理基于云的应用的详细信息。
 
 ## <a name="manage-access-reviews"></a>管理访问评审
 如果你的管理员已授予权限以执行你自己的访问评审，你可以管理从您的组或应用程序的访问权限**访问评审**磁贴**我的应用**门户页。

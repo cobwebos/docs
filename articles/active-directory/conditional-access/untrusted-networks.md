@@ -19,11 +19,11 @@ ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ebf8cb1c3b49975356389c7c9444aff319326f74
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518858"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60301088"
 ---
 # <a name="how-to-require-mfa-for-access-from-untrusted-networks-with-conditional-access"></a>如何：使用条件访问要求来自不受信任网络的访问进行 MFA   
 
@@ -73,11 +73,11 @@ Azure Active Directory (Azure AD) 允许从任何位置以单一登录方式登�
 
 - 包括任何位置 
 
-    ![条件访问](./media/untrusted-networks/02.png)
+    ![条件性访问](./media/untrusted-networks/02.png)
 
 - 排除所有受信任的位置 
 
-    ![条件访问](./media/untrusted-networks/01.png)
+    ![条件性访问](./media/untrusted-networks/01.png)
 
 
 

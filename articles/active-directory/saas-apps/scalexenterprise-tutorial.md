@@ -16,11 +16,11 @@ ms.date: 04/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 64edf2aa47211c1d2a598417a7b2edc00f260075
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56208565"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60321055"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scalex-enterprise"></a>教程：Azure Active Directory 与 ScaleX Enterprise 的集成
 
@@ -34,7 +34,7 @@ ms.locfileid: "56208565"
 
 若要了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅。 [Azure Active Directory](../manage-apps/what-is-single-sign-on.md) 的应用程序访问与单一登录是什么。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 ScaleX Enterprise 的集成，需要具有以下项：
 
@@ -216,7 +216,7 @@ ms.locfileid: "56208565"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-a-scalex-enterprise-test-user"></a>创建 ScaleX Enterprise 测试用户
 

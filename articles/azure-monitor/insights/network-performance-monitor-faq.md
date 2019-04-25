@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 10/12/2018
 ms.author: vinynigam
 ms.openlocfilehash: d216a26dc01ae3a6946c57138bb124b41f50a151
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59546226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60401438"
 ---
 # <a name="network-performance-monitor-solution-faq"></a>网络性能监视器解决方案常见问题解答
 
@@ -107,7 +107,7 @@ NPM 根据每个网络路径、网段和构成网络跃点所属的不正常路�
 NPM 只能识别源与目标 IP 之间的底层网络跃点（交换机、路由器、服务器等）的 IP 和主机名。 此外，它还能识别这些已识别的跃点之间的延迟。 它不会单独监视这些底层跃点。
 
 ### <a name="can-npm-be-used-to-monitor-network-connectivity-between-azure-and-aws"></a>是否可以使用 NPM 来监视 Azure 与 AWS 之间的网络连接？
-是的。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
+可以。 有关详细信息，请参阅[使用 NPM 监视 Azure、AWS 和本地网络](https://blogs.technet.microsoft.com/msoms/2016/08/30/monitor-on-premises-cloud-iaas-and-hybrid-networks-using-oms-network-performance-monitor/)一文。
 
 ### <a name="is-the-expressroute-bandwidth-usage-incoming-or-outgoing"></a>ExpressRoute 带宽用量是指传入还是传出带宽？
 带宽用量是传入和传出带宽的总计。 它以“位/秒”为单位表示。

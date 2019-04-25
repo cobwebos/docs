@@ -3,7 +3,7 @@ title: 在 Azure Active Directory B2C 中配置资源所有者密码凭据流 | 
 description: 了解如何在 Azure AD B2C 中配置资源所有者密码凭据流。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
@@ -11,11 +11,11 @@ ms.date: 11/30/2018
 ms.author: davidmu
 ms.subservice: B2C
 ms.openlocfilehash: ca3fd76cfeb09fe4e18a04bff38e166928ef38b2
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401779"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60313337"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-ad-b2c"></a>在 Azure AD B2C 中配置资源所有者密码凭据流
 
@@ -39,7 +39,7 @@ ms.locfileid: "58401779"
 1. 以 Azure AD B2C 租户的全局管理员身份登录 Azure 门户。
 2. 若要切换到 Azure AD B2C 租户，请在门户右上角选择 B2C 目录。
 3. 单击“用户流”，然后选择“新建用户流”。
-4. 单击**所有**选项卡并选择**登录使用 ROPC**。
+4. 单击“全部”选项卡，然后选择“使用 ROPC 登录”。
 5. 提供用户流名称，例如 ROPC_Auth。
 6. 在“应用程序声明”下，单击“显示更多”。
 7. 选择应用程序所需的应用程序声明，例如“显示名称”、“电子邮件”和“标识提供者”。
@@ -68,7 +68,7 @@ ms.locfileid: "58401779"
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 密钥 | 值 |
+| 密钥 | Value |
 | --- | ----- |
 | username | leadiocl@outlook.com |
 | password | Passxword1 |
@@ -108,7 +108,7 @@ username=leadiocl%40trashmail.ws&password=Passxword1&grant_type=password&scope=o
 
 `https://yourtenant.b2clogin.com/<yourtenant.onmicrosoft.com>/oauth2/v2.0/token?p=B2C_1_ROPC_Auth`
 
-| 密钥 | 值 |
+| 密钥 | Value |
 | --- | ----- |
 | grant_type | refresh_token |
 | response_type | id_token |

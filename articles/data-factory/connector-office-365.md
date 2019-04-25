@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: jingwang
-ms.openlocfilehash: b86aef7de048690d689a87d4fb844f77ea986445
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.openlocfilehash: 5d2d5948d817cbe80d00b74ef104ebaffcb511fb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55297453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60405964"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>使用 Azure 数据工厂（预览版）将数据从 Office 365 复制到 Azure 
 
@@ -27,7 +27,7 @@ Azure 数据工厂允许你以可缩放的方式将 Office 365 租户中的丰�
 
 ## <a name="supported-capabilities"></a>支持的功能
 
-目前，在单次复制活动中，只能采用 JSON 格式（键入 setOfObjects）将数据从 Office 365 复制到 [Azure Blob 存储](connector-azure-blob-storage.md)、[Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md) 和 [Azure Data Lake Storage Gen2（预览版）](connector-azure-data-lake-storage.md)。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
+现在，在单次复制活动可以只**将数据复制到 Office 365 [Azure Blob 存储](connector-azure-blob-storage.md)， [Azure 数据湖存储 Gen1](connector-azure-data-lake-store.md)，并[Azure 数据湖存储第 2 代](connector-azure-data-lake-storage.md)采用 JSON 格式**（键入 setOfObjects）。 如果要将 Office 365 加载到其他类型的或其他格式的数据存储，可以将第一个副本活动与后续复制活动链接在一起，以进一步将数据加载到任何[支持的 ADF 目标存储](copy-activity-overview.md#supported-data-stores-and-formats)（请参阅“支持的数据存储和格式”表中的“作为接收器支持”列）。
 
 >[!IMPORTANT]
 >- 包含数据工厂和接收器数据存储的 Azure 订阅必须位于与 Office 365 租户相同的 Azure Active Directory (Azure AD) 租户下。
@@ -35,7 +35,7 @@ Azure 数据工厂允许你以可缩放的方式将 Office 365 租户中的丰�
 >-  如果要将 Office 365 数据加载到作为目标的 Azure Blob 存储，请确保在定义到 Azure Blob 存储的链接服务时，使用[服务主体身份验证](connector-azure-blob-storage.md#service-principal-authentication)，而不是使用[帐户密钥](connector-azure-blob-storage.md#account-key-authentication)、[共享访问签名](connector-azure-blob-storage.md#shared-access-signature-authentication)或 [Azure 资源的托管标识](connector-azure-blob-storage.md#managed-identity)身份验证。
 >-  如果要将 Office 365 数据加载到作为目标的 **Azure Data Lake Storage Gen1**，请确保在定义到 Azure Data Lake Storage Gen1 的链接服务时，使用[**服务主体身份验证**](connector-azure-data-lake-store.md#use-service-principal-authentication)，而不是使用 [Azure 资源的托管标识身份验证](connector-azure-data-lake-store.md#managed-identity)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要将数据从 Office 365 复制到 Azure，需要完成下列必备步骤：
 

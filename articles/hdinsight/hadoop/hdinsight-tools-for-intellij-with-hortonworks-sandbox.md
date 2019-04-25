@@ -2,7 +2,6 @@
 title: 将 Azure Toolkit for IntelliJ 与 Hortonworks 沙盒配合使用
 description: 了解如何将用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具与 Hortonworks 沙盒配合使用。
 keywords: hadoop 工具,hive 查询,intellij,hortonworks 沙盒,用于 intellij 的 azure 工具包
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -11,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
 ms.openlocfilehash: 98f22f531ca15bf88cd7d0a9add2851651e2eec7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58118317"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60343275"
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>将用于 IntelliJ 的 HDInsight 工具与 Hortonworks 沙盒配合使用
 

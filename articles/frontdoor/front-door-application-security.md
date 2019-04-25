@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: c7b99548e2fe1ad0c1cab39953e28a97e7ebff4b
-ms.sourcegitcommit: 1afd2e835dd507259cf7bb798b1b130adbb21840
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56984375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60193911"
 ---
 # <a name="application-layer-security-with-front-door"></a>通过 Front Door 实现应用程序层安全性
 Azure Front Door 服务提供 Web 应用程序保护功能，可以确保 Web 应用程序不受网络攻击和常见的 Web 漏洞攻击，例如 SQL 注入或跨站点脚本 (XSS)。 为 HTTP(S) 前端启用的 Front Door 的应用程序层安全性分布在全球并始终处于启用状态，可以阻止攻击者在 Azure 的网络边缘发动恶意攻击，使之远离你的后端。 Front Door 在安全性和性能优化方面进行了强化，可以为最终用户提供快速且安全的 Web 体验。

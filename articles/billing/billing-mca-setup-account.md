@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/28/2019
 ms.author: banders
 ms.openlocfilehash: 90f832319fa2343003af58bd99eb64c0cbd94dd8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57894540"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60371677"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>为 Microsoft 客户协议设置计费帐户
 
@@ -209,7 +209,7 @@ ms.locfileid: "57894540"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 选择计费的配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。 从计费帐户，选择**计费配置文件**，然后计费的配置文件。
+3. 选择计费的配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。 从计费帐户，选择**计费配置文件**，然后计费的配置文件。
 
 4. 选择**Azure 订阅**从左侧和右侧。
 
@@ -225,7 +225,7 @@ ms.locfileid: "57894540"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 选择发票部分。 具体取决于您的访问权限，可能需要选择计费帐户或帐单的配置文件。  从计费帐户或帐单的配置文件中，选择**发票部分**，然后发票部分。
+3. 选择发票部分。 根据你拥有的访问权限，可能需要选择一个计费帐户或计费配置文件。  从计费帐户或帐单的配置文件中，选择**发票部分**，然后发票部分。
 
     ![显示的发票部分 post 转换列表的屏幕截图](./media/billing-mca-setup-account/billing-mca-invoice-sections-post-transition.png)
 
@@ -245,7 +245,7 @@ ms.locfileid: "57894540"
 
    ![显示了 Azure 门户搜索的屏幕截图](./media/billing-mca-setup-account/billing-search-cost-management-billing.png)
 
-3. 选择创建你的注册的计费配置文件。 具体取决于您的访问权限，可能需要选择计费帐户。  从计费帐户，选择**计费配置文件**，然后计费的配置文件。
+3. 选择创建你的注册的计费配置文件。 根据你拥有的访问权限，可能需要选择一个计费帐户。  从计费帐户，选择**计费配置文件**，然后计费的配置文件。
 
 4. 选择**访问控制 (IAM)** 从左侧和右侧。
 

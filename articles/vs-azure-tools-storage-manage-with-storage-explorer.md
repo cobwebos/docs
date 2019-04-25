@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
 ms.author: cawa
-ms.openlocfilehash: 61bb5601cf20e9f6e4fba1300d8f84c9d039e564
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225087"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60459147"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -61,7 +61,7 @@ Azure 存储资源管理器是一款独立应用，可用于在 Windows、macOS 
 
 Azure 存储资源管理器也许可以在其他发行版上使用，但只有上面列出的是正式受支持的。
 
-在 Linux 上安装存储资源管理器的更多帮助，请参阅[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)。
+如需如何在 Linux 上安装存储资源管理器的更多帮助，请参阅[故障排除指南](https://docs.microsoft.com/en-us/azure/storage/common/storage-explorer-troubleshooting#linux-dependencies)。
 
 Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)包含用于某些发行版的特定步骤。
 
@@ -99,7 +99,7 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 
 2. 左窗格随即显示已登录的所有 Azure 帐户。 若要连接到另一个帐户，请选择“添加帐户”。
 
-3. 若要登录到某个国家/地区云或 Azure Stack，请单击“Azure 环境”下拉列表并选择要使用的 Azure 云。 选择环境后，单击“登录...”按钮。 若要登录到 Azure Stack，请参阅[将存储资源管理器连接到 Azure Stack 订阅](azure-stack/user/azure-stack-storage-connect-se.md)了解详细信息。
+3. 若要登录到某个国家/地区云或 Azure Stack，请单击“Azure 环境”下拉列表并选择要使用的 Azure 云。 选择环境后，单击“登录...”按钮。 若要登录到 Azure Stack，请参阅[将存储资源管理器连接到 Azure Stack 订阅](/azure-stack/user/azure-stack-storage-connect-se)了解详细信息。
 
     ![登录选项][2]
 

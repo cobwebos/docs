@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: philmea
 ms.openlocfilehash: 857d747fa691d1ec2b386d5931a7edea08b7e609
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58522888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60517226"
 ---
 # <a name="group-multiple-actions-to-run-from-one-or-more-rules"></a>若要从一个或多个规则运行的多个操作进行分组
 
@@ -51,7 +51,7 @@ ms.locfileid: "58522888"
 
 ![选择操作组](media/howto-use-action-groups/chooseactiongroup.png)
 
-选择“其他安全性验证” 。 操作组现在显示在运行时触发此规则的操作列表中：
+选择“保存”。 操作组现在显示在运行时触发此规则的操作列表中：
 
 ![保存操作组](media/howto-use-action-groups/savedactiongroup.png)
 
@@ -60,7 +60,7 @@ ms.locfileid: "58522888"
 | 操作类型 | 输出格式 |
 | ----------- | -------------- |
 | 电子邮件       | 标准 IoT 中心电子邮件模板 |
-| 短信         | Azure IoT Central 警报: ${applicationName} 的"${ruleName}"上"${deviceName}"${triggerDate} ${triggerTime} 在触发 |
+| SMS         | Azure IoT Central 警报: ${applicationName} 的"${ruleName}"上"${deviceName}"${triggerDate} ${triggerTime} 在触发 |
 | 语音       | Azure I.O.T Central 警报： 应用程序 ${applicationName} 中的规则"${ruleName}"${triggerDate} ${triggerTime} 的设备"${deviceName}"上触发 |
 | Webhook     | {"schemaId":"AzureIoTCentralRuleWebhook"，"数据": {[正则 webhook 有效负载](#payload)}} |
 

@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor 中的 Azure Active Directory 活动日志（预览版）| Microsoft Docs
-description: Azure Monitor（预览版）中的 Azure Active Directory 活动日志简介
+title: Azure Monitor 中的 azure Active Directory 活动日志 |Microsoft Docs
+description: 在 Azure Monitor 中介绍了 Azure Active Directory 活动日志
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,20 +13,20 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 11/13/2018
+ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0469f69f026c578de9598401e69262279669d19f
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
-ms.translationtype: MT
+ms.openlocfilehash: 894c42e4102a3565ff43798d33afb4046fda76bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436296"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60286689"
 ---
-# <a name="azure-ad-activity-logs-in-azure-monitor-preview"></a>Azure Monitor（预览版）中的 Azure AD 活动日志
+# <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 azure AD 活动日志
 
-现在可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点以便长期保留以及获取数据见解。 使用 Azure Monitor 中的 Azure AD 日志公共预览版可以：
+可以将 Azure Active Directory (Azure AD) 活动日志路由到多个终结点的长时间术语保持期、 数据见解。 此功能可以：
 
 * 将 Azure AD 活动日志存档到 Azure 存储帐户，以便长期保留数据
 * 使用常用的安全信息和事件管理 (SIEM) 工具（例如 Splunk 和 QRadar）将 Azure AD 活动日志流式传输到 Azure 事件中心进行分析。
@@ -72,14 +72,14 @@ ms.locfileid: "58436296"
 
 每个审核日志事件使用大约 2 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
 
-下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。 
+下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。 此表仅包括处理/存储成本和不将订阅费用。 
 
-| 日志类别 | 用户数 | 每日事件数 | 每月数据量（估算） | 每月成本（估算） | 每年成本（估算） |
-|--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
-| 审核 | 100,000 | 150&nbsp;万 | 90 GB | $1.93 | $23.12 |
-| 审核 | 1,000 | 15,000 | 900 MB | $0.02 | $0.24 |
-| 登录 | 1,000 | 34,800 | 4 GB | $0.13 | $1.56 |
-| 登录 | 100,000 | 1,500&nbsp;万 | 1.7 TB | $35.41 | $424.92 | 
+
+| 日志类别       | 用户数 | 每日事件数 | 每月 （30 天） 的事件 | 每月以美元 (est)。 |
+| ---                | ---             | ---            | ---                        | ---                          | 
+| 审核和登录名 | 100,000         | 16,500,000     | 495,000,000                | $1093                        |
+| 审核              | 100,000         | 1,500,000      | 45,000,000                 | $246.66                      |
+| 登录           | 100,000         | 15,000,000     | 450,000,000                | $847.28                      |
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>活动日志的事件中心消息

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/03/2019
+ms.date: 04/19/2019
 ms.author: pareshmu
-ms.openlocfilehash: 01e48a7f78be16d51878b5458174a35253841539
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 9dfa0c620162ba2f0f1bfa8897dc2f34a226ed93
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59006529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60364033"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -44,8 +44,8 @@ ms.locfileid: "59006529"
 | --- | --- | --- | --- |
 | **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
 | **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |Amsterdam, Amsterdam2, Dublin, London, London2, Marseille, Newport(Wales), Paris, Zurich |
-| **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、芝加哥、达拉斯、丹佛、拉斯维加斯、洛杉矶、迈阿密、纽约、圣安东尼奥、西雅图、硅谷、华盛顿特区、华盛顿特区 2、蒙特利尔、魁北克市、多伦多 |
-| **亚洲** | 2 |东亚、东南亚 |香港特别行政区、吉隆坡、新加坡、新加坡 2、台北 |
+| **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、 芝加哥、 达拉斯、 丹佛、 拉斯维加斯、 洛杉矶、 迈阿密、 纽约、 圣安东尼奥、 西雅图、 硅谷、 硅 Valley2、 华盛顿 DC，华盛顿 DC2、 蒙特利尔、 魁北克市、 多伦多 |
+| **亚洲** | 2 |东亚、东南亚 |中国香港特别行政区，吉隆坡、 新加坡、 新加坡 2 台北 |
 | **澳大利亚** | 2 |澳大利亚东南部、澳大利亚东部 |墨尔本、珀斯、悉尼 | 
 | **印度** | 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
 | **日本** | 2 |日本西部、日本东部 |大坂、东京 |
@@ -88,7 +88,7 @@ ms.locfileid: "59006529"
 | **丹佛** | CoreSite | CoreSite、 Megaport、 Zayo |
 | **Dubai** | Etisalat 阿拉伯联合酋长国 | Etisalat 阿拉伯联合酋长国 |
 | **都柏林** | Equinix | Colt、eir、Equinix、Interxion、Megaport |
-| **香港** | Equinix | Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
+| **香港特別行政区** | Equinix | Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **约翰内斯堡** | Teraco | Internet Solutions - Cloud Connect、Liquid Telecom、Teraco |
 | **吉隆坡** | TIME dotCom | TIME dotCom |
 | **拉斯维加斯** | Switch | CenturyLink Cloud Connect、Megaport |
@@ -112,6 +112,7 @@ ms.locfileid: "59006529"
 | **西雅图** | Equinix | Aryaka Networks、Equinix、Level 3 Communications、Megaport、Zayo |
 | **首尔** | KINX | KINX、LG CNS、Sejong Telecom |
 | **硅谷** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink Cloud Connect、Comcast、Coresite、Equinix、InterCloud、IX Reach、PacketFabric、Level 3 Communications、Megaport、Orange、Sprint、Tata Communications、Verizon、Zayo |
+| **硅谷 Valley2** | Coresite | Coresite | 
 | **新加坡** | Equinix | Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Telstra Corporation、Verizon、Vodafone |
 | **新加坡 2** | Global Switch | Colt、 Epsilon 全局 Communications、 Megaport、 SingTel |
 | **悉尼** | Equinix | AARNet、 AT 和 T NetBond，英属电信，Equinix，Kordia、 Megaport、 NEXTDC、 NTT 通信，Optus，橙色，Telstra Corporation、 Verizon |
@@ -136,7 +137,7 @@ ms.locfileid: "59006529"
 | **圣安东尼奥** | Megaport |
 | **硅谷** | Equinix、Level 3 Communications、Verizon |
 | **西雅图** | Equinix、Megaport |
-| **华盛顿特区** |AT&T NetBond、Equinix、Level 3 Communications、Verizon |
+| **华盛顿特区** |At&t netbond、 Equinix、 Level 3 Communications、 Megaport、 Verizon |
 
 ### <a name="china"></a>中国
 | **位置** | **服务提供商** |
@@ -180,7 +181,7 @@ ms.locfileid: "59006529"
 | **达拉斯** | Equinix、Megaport | Axtel、C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
 | **法兰克福** | Telecity | BICS、Cinia、Nianet、QSC AG |
 | **汉堡** | Equinix | Cinia |
-| **香港** | Equinix | Chief、Macroview Telecom |
+| **香港特別行政区** | Equinix | Chief、Macroview Telecom |
 | **约翰内斯堡** | Teraco | MTN |
 | **伦敦** | BICS、Equinix、euNetworks、Telecity | Bezeq International Ltd.、 CoreAzure，Telecommunications Limited、 Exponential E、 HSO、 NexGen Networks、 Proximus、 Tamares Telecom、 Zain |
 | **洛杉矶** | Equinix |Transtelco |

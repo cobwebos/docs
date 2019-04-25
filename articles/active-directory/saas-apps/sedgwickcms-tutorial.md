@@ -17,11 +17,11 @@ ms.date: 02/09/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4c42b7010a6586e4845d3a58b9a47b01143f5b1d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60339403"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sedgwick-cms"></a>教程：Azure Active Directory 与 Sedgwick CMS 集成
 
@@ -172,7 +172,7 @@ ms.locfileid: "57904825"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
   
 ### <a name="create-a-sedgwick-cms-test-user"></a>创建 Sedgwick CMS 测试用户
 
