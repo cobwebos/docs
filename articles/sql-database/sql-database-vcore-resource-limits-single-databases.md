@@ -23,7 +23,7 @@ ms.locfileid: "60331105"
 
 本文提供针对使用基于 vCore 的购买模型的 Azure SQL 数据库的单一数据库的详细资源限制。
 
-有关 SQL 数据库服务器上单一数据库的 DTU 购买模型限制，请参阅 [SQL 数据库服务器上的资源限制概述](sql-database-resource-limits-database-server.md)。
+有关 SQL 数据库服务器上单一数据库基于 DTU 的购买模型限制，请参阅 [SQL 数据库服务器上的资源限制概述](sql-database-resource-limits-database-server.md)。
 
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
@@ -33,9 +33,9 @@ ms.locfileid: "60331105"
 > [!IMPORTANT]
 > 有关缩放指南和注意事项，请参阅[缩放单一数据库](sql-database-single-database-scale.md)。
 
-## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>常规用途服务层：存储大小和计算大小
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>“常规用途”服务层级：存储大小和计算大小
 
-### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>常规用途服务层：第 4 代计算平台（第 1 部分）
+### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>“常规用途”服务层级：第 4 代计算平台（第 1 部分）
 
 |计算大小|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -58,7 +58,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>常规用途服务层：第 4 代计算平台（第 2 部分）
+### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>“常规用途”服务层级：第 4 代计算平台（第 2 部分）
 
 |计算大小|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -81,7 +81,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>常规用途服务层：第 5 代计算平台（第 1 部分）
+### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>“常规用途”服务层级：第 5 代计算平台（第 1 部分）
 
 |计算大小|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -104,7 +104,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>常规用途服务层：第 5 代计算平台（第 2 部分）
+### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>“常规用途”服务层级：第 5 代计算平台（第 2 部分）
 
 |计算大小|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -127,9 +127,9 @@ ms.locfileid: "60331105"
 |读取横向扩展|不适用|不适用|不适用|不适用|不适用|不适用|不适用|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>“业务关键”服务层：存储大小和计算大小
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>“业务关键”服务层级：存储大小和计算大小
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层：第 4 代计算平台（第 1 部分）
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层级：第 4 代计算平台（第 1 部分）
 
 |计算大小|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -153,7 +153,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>“业务关键”服务层：第 4 代计算平台（第 2 部分）
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>“业务关键”服务层级：第 4 代计算平台（第 2 部分）
 
 |计算大小|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -177,7 +177,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>“业务关键”服务层：第 5 代计算平台（第 1 部分）
+### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>“业务关键”服务层级：第 5 代计算平台（第 1 部分）
 
 |计算大小|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -201,7 +201,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|是|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>“业务关键”服务层：第 5 代计算平台（第 2 部分）
+### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>“业务关键”服务层级：第 5 代计算平台（第 2 部分）
 
 |计算大小|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -225,7 +225,7 @@ ms.locfileid: "60331105"
 |读取横向扩展|是|是|是|是|是|是|是|
 |随附的备份存储|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|1 倍数据库大小|
 
-## <a name="hyperscale-service-tier-preview"></a>“超大规模”服务层（预览版）
+## <a name="hyperscale-service-tier-preview"></a>“超大规模”服务层级（预览版）
 
 ### <a name="generation-4-compute-platform-storage-sizes-and-compute-sizes"></a>第 4 代计算平台：存储大小和计算大小
 
