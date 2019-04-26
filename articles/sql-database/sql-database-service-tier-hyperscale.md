@@ -27,7 +27,7 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 - 业务关键/高级
 - 超大规模
 
-Azure SQL 数据库中的超大规模服务层级是基于 vCore 的购买模型中的最新服务层级。 此服务层是一个高度可缩放的存储和计算性能层，它利用 Azure 体系结构来扩大 Azure SQL 数据库的存储和计算资源，远远超出了常规用途和业务关键服务层的可用限制。
+Azure SQL 数据库中的超大规模服务层级是基于 vCore 的购买模型中的最新服务层级。 此服务层级是一个高度可缩放的存储和计算性能层，它利用 Azure 体系结构来横向扩展 Azure SQL 数据库的存储和计算资源，远远超出了“常规用途”和“业务关键”服务层级的可用限制。
 
 > [!IMPORTANT]
 > “超大规模”服务层级目前提供公共预览版，仅可在有限的 Azure 区域中使用。 要获取完整的区域列表，请参阅[“超大规模”服务层级可用区域](#available-regions)。 我们尚不建议在“超大规模”数据库中运行任何生产工作负荷。 无法将“超大规模”数据库更新到其他服务层级。 出于测试目的，我们建议创建当前数据库的副本，并将副本更新为“超大规模”服务层级。
@@ -62,7 +62,7 @@ Azure SQL 数据库中的“超大规模”服务层级提供了以下附加功�
 
 ## <a name="hyperscale-pricing-model"></a>“超大规模”定价模型
 
-仅 [vCore 模型](sql-database-service-tiers-vcore.md)提供“超大规模”服务层级。 为了适应新的体系结构，它的定价模型与常规用途或业务关键服务层略有不同：
+仅 [vCore 模型](sql-database-service-tiers-vcore.md)提供“超大规模”服务层级。 为了适应新的体系结构，它的定价模型与“常规用途”或“业务关键”服务层级略有不同：
 
 - **计算**：
 
@@ -160,7 +160,7 @@ Server=tcp:<myserver>.database.windows.net;Database=<mydatabase>;ApplicationInte
 ## <a name="next-steps"></a>后续步骤
 
 - 有关“超大规模”的常见问题，请参阅[“超大规模”常见问题解答](sql-database-service-tier-hyperscale-faq.md)。
-- 有关服务层的信息，请参阅[服务层](sql-database-purchase-models.md)
+- 有关服务层级的信息，请参阅[服务层级](sql-database-purchase-models.md)
 - 有关服务器和订阅级别限制的信息，请参阅 [SQL 数据库服务器资源限制概述](sql-database-resource-limits-database-server.md)。
 - 有关单一数据库的购买模型限制的信息，请参阅 [适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制](sql-database-vcore-resource-limits-single-databases.md)。
 - 有关功能和比较列表，请参阅 [SQL 常用功能](sql-database-features.md)。

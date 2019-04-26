@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 04/17/2019
 ms.openlocfilehash: 255f118d6dc6873364c2f8d4569e23c3e54ea83e
 ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/17/2019
 ms.locfileid: "59680513"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>管理 Azure SQL 数据库长期备份保留
 
-在 Azure SQL 数据库中，可以使用[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单一数据库或入池数据库，以自动将备份在 Azure Blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
+在 Azure SQL 数据库中，可以使用[长期备份保留](sql-database-long-term-retention.md)策略 (LTR) 配置单一数据库或共用数据库，以自动将备份在 Azure Blob 存储中保留最多 10 年。 然后，可以通过 Azure 门户或 PowerShell 使用这些备份来恢复数据库。
 
 > [!IMPORTANT]
 > [Azure SQL 数据库托管实例](sql-database-managed-instance.md)目前不支持长期备份保留。
@@ -32,7 +32,7 @@ ms.locfileid: "59680513"
 
 ### <a name="configure-long-term-retention-policies"></a>配置长期保留策略
 
-可以对 SQL 数据库进行配置，使其[保留自动备份](sql-database-long-term-retention.md)的时间长于你的服务层的保留期。 
+可以对 SQL 数据库进行配置，使其[保留自动备份](sql-database-long-term-retention.md)的时间长于你的服务层级的保留期。 
 
 1. 在 Azure 门户中，选择你的 SQL Server，然后单击“管理备份”。 在“配置策略”选项卡上，选中要为其设置或修改长期备份保留策略的数据库所对应的复选框。 如果未选中数据库旁边的复选框，则策略的更改将不会应用于该数据库。  
 

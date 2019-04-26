@@ -5,15 +5,16 @@ services: functions
 author: ggailey777
 ms.service: azure-functions
 ms.topic: include
-ms.date: 03/05/2019
-ms.author: glenga
+origin.date: 03/05/2019
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 6c430f22a9d4fa0fad95bcaa41675545fffd91ec
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58227212"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403568"
 ---
 Visual Studio 中的 Azure Functions 项目模板创建一个项目，该项目可发布到 Azure 中的函数应用。 可使用函数应用将函数分组为一个逻辑单元，以用于管理、部署和共享资源。
 
@@ -38,3 +39,4 @@ Visual Studio 中的 Azure Functions 项目模板创建一个项目，该项目�
     > 确保将“访问权限”设置为 `Anonymous`。 如果选择默认级别为 `Function`，需要在请求中提供[函数密钥](../articles/azure-functions/functions-bindings-http-webhook.md#authorization-keys)才能访问函数终结点。
     
 4. 选择“确定”以创建函数项目和 HTTP 触发的函数。
+
