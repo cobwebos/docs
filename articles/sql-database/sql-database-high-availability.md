@@ -32,7 +32,7 @@ Azure SQL 数据库中的高可用性体系结构的目标是时间的保证您�
 
 Azure SQL 数据库在 SQL Server 数据库引擎和 Windows OS 的最新稳定版本上运行和大多数用户不会察觉到连续执行升级。
 
-## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>基本、标准和常规用途服务层可用性
+## <a name="basic-standard-and-general-purpose-service-tier-availability"></a>“基本”、“标准”和“常规用途”服务层级可用性
 
 这些服务层利用标准可用性体系结构。 下图显示了具有单独的计算和存储层的四个不同节点。
 
@@ -45,7 +45,7 @@ Azure SQL 数据库在 SQL Server 数据库引擎和 Windows OS 的最新稳定�
 
 每次数据库引擎或操作系统升级时，或检测到故障，Azure Service Fabric 将无状态的 SQL Server 进程到另一个无状态计算节点具有足够的可用容量。 在移动后，不会影响 Azure Blob 存储中的数据和数据/日志文件附加到新初始化的 SQL Server 进程。 此过程可保证 99.99%的可用性，但繁重的工作负荷可能会遇到一些在转换期间的性能下降，因为使用冷缓存启动新的 SQL Server 实例。
 
-## <a name="premium-and-business-critical-service-tier-availability"></a>“高级”或“业务关键”服务层可用性
+## <a name="premium-and-business-critical-service-tier-availability"></a>“高级”或“业务关键”服务层级可用性
 
 高级和业务关键服务层利用集成的高级可用性模型计算资源 （SQL Server 数据库引擎进程） 和单个节点上的存储 (本地附加的 SSD)。 复制到其他节点创建三到四个节点群集的计算和存储，从而实现高可用性。 
 

@@ -9,11 +9,11 @@ ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: 3ac7d8cc4705fe1b6e80f1e0c7e26d847d761cf6
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54357028"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403569"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。
 
@@ -32,7 +32,7 @@ ms.locfileid: "54357028"
 
     ![“创建应用服务”对话框](./media/functions-vstools-publish/functions-visual-studio-publish.png)
 
-    | 设置      | 建议的值  | Description                                |
+    | 设置      | 建议的值  | 说明                                |
     | ------------ |  ------- | -------------------------------------------------- |
     | **应用名称** | 全局唯一名称 | 用于唯一标识新 Function App 的名称。 |
     | **订阅** | 选择订阅 | 要使用的 Azure 订阅。 |
