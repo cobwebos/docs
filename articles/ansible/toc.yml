@@ -1,89 +1,110 @@
-items:
 - name: “Azure 上的 Ansible”文档
   href: ./index.yml
 - name: 概述
   items:
-  - name: 关于 Azure 上的 Ansible
-    href: ./ansible-overview.md
+    - name: 关于 Azure 上的 Ansible
+      href: ./ansible-overview.md
 - name: 快速入门
-  items:
-  - name: 部署 Ansible 解决方案模板
-    href: ./ansible-deploy-solution-template.md
-  - name: 在 Linux VM 上安装 Ansible
-    href: /azure/virtual-machines/linux/ansible-install-configure
-    maintainContext: true
-  - name: 创建 Linux VM
-    href: /azure/virtual-machines/linux/ansible-create-vm
-    maintainContext: true
-  - name: 管理 Linux VM
-    href: /azure/virtual-machines/linux/ansible-manage-linux-vm
-    maintainContext: true
-  - name: 在 Cloud Shell 中运行 Playbook
-    href: ./ansible-run-playbook-in-cloudshell.md
   expanded: true
+  items:
+    - name: 将 Ansible 解决方案模板部署到 CentOS
+      href: ./ansible-deploy-solution-template.md
+    - name: 在 Linux 虚拟机上安装 Ansible
+      href: /azure/virtual-machines/linux/ansible-install-configure
+      maintainContext: true
+    - name: 配置 Linux 虚拟机
+      href: /azure/virtual-machines/linux/ansible-create-vm
+      maintainContext: true
+    - name: 管理 Linux 虚拟机
+      href: /azure/virtual-machines/linux/ansible-manage-linux-vm
+      maintainContext: true
+    - name: 在 Cloud Shell 中运行 Playbook
+      href: ./ansible-run-playbook-in-cloudshell.md
 - name: 教程
   items:
-  - name: AKS
-    items:
-    - name: 创建并配置 AKS 群集
-      href: ./ansible-create-configure-aks.md
-  - name: 应用服务
-    items:
-    - name: 创建和配置 Azure Web 应用
-      href: ./ansible-create-configure-azure-web-apps.md
-    - name: 缩放 Azure Web 应用
-      href: ./ansible-scale-azure-web-apps.md
-  - name: 应用程序网关
-    items:
-    - name: 创建和配置 Azure 应用程序网关
-      href: ./ansible-create-configure-application-gateway.md
-  - name: 数据库
-    items:
-    - name: 创建和配置用于 MySQL 的 Azure DB
-      href: ./ansible-create-configure-mysql.md
-  - name: 动态库存
-    items:
-    - name: 管理动态库存
-      href: ./ansible-manage-azure-dynamic-inventories.md
-  - name: 虚拟网络
-    items:
-    - name: 创建和配置路由表
-      href: ./ansible-create-configure-route-table.md
-  - name: VMSS
-    items:
-    - name: 创建并配置 VMSS
-      href: ./ansible-create-configure-vmss.md
-    - name: 将应用部署到 VMSS
-      href: ./ansible-deploy-app-vmss.md
-    - name: 自动缩放 VMSS
-      href: ./ansible-auto-scale-vmss.md
+    - name: Azure 应用程序网关
+      items:
+        - name: 管理 Web 流量
+          href: ./ansible-create-configure-application-gateway.md
+    - name: Azure 应用服务
+      items:
+        - name: 配置应用
+          href: ./ansible-create-configure-azure-web-apps.md
+        - name: 缩放应用
+          href: ./ansible-scale-azure-web-apps.md
+    - name: Azure 开发测试实验室
+      items:
+        - name: 配置实验室
+          href: ./ansible-devtest-labs-configure.md
+    - name: Azure Kubernetes 服务 (AKS)
+      items:
+        - name: 配置 AKS 群集
+          href: ./ansible-create-configure-aks.md
+        - name: 配置 Azure CNI 网络
+          href: ./ansible-aks-configure-cni-networking.md
+        - name: 配置 kubenet 网络
+          href: ./ansible-aks-configure-kubenet-networking.md
+        - name: 在 AKS 群集中配置 RBAC 角色
+          href: ./ansible-aks-configure-rbac.md
+    - name: Azure HDInsight
+      items:
+        - name: 配置群集
+          href: ./ansible-azure-hdinsight-configure.md
+    - name: Azure 服务总线
+      items:
+        - name: 配置队列
+          href: ./ansible-service-bus-queue-configure.md
+        - name: 配置主题
+          href: ./ansible-service-bus-topic-configure.md
+    - name: 数据库
+      items:
+        - name: 配置 Azure Database for MySQL
+          href: ./ansible-create-configure-mysql.md
+        - name: 配置 Azure Cosmos DB 帐户
+          href: ./ansible-data-cosmos-configure.md
+        - name: 配置 Azure Redis 缓存
+          href: ./ansible-data-cache-for-redis-configure.md
+    - name: 动态库存
+      items:
+        - name: 管理 Azure 资源
+          href: ./ansible-manage-azure-dynamic-inventories.md
+    - name: 虚拟机规模集
+      items:
+        - name: 配置
+          href: ./ansible-create-configure-vmss.md
+        - name: 部署
+          href: ./ansible-deploy-app-vmss.md
+        - name: 自动缩放
+          href: ./ansible-auto-scale-vmss.md
+        - name: 更新自定义映像
+          href: ./ansible-vmss-update-image.md
+    - name: 虚拟网络
+      items:
+        - name: 配置对等互连
+          href: ./ansible-vnet-peering-configure.md
+        - name: 配置路由表
+          href: ./ansible-create-configure-route-table.md
 - name: 引用
   items:
-  - name: Playbook 角色
-    items:
-    - name: azure_module
-      href: https://galaxy.ansible.com/Azure/azure_modules/
-    - name: azure_preview_module
-      href: https://galaxy.ansible.com/Azure/azure_preview_modules
-  - name: 发行版和功能
-    href: ./ansible-matrix.md
-  - name: Azure 容器实例
-    href: https://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html
-  - name: Azure Functions
-    href: https://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html
-  - name: 负载均衡器
-    href: https://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html
-  - name: 虚拟机
-    href: https://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html
-  - name: 适用于 Azure 的所有模块
-    href: https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure
+    - name: Playbook 角色
+      items:
+        - name: azure_module
+          href: 'https://galaxy.ansible.com/Azure/azure_modules/'
+        - name: azure_preview_module
+          href: 'https://galaxy.ansible.com/Azure/azure_preview_modules'
+    - name: 发行版和功能
+      href: ./ansible-matrix.md
+    - name: Azure 容器实例
+      href: 'https://docs.ansible.com/ansible/latest/azure_rm_containerinstance_module.html'
+    - name: Azure Functions
+      href: 'https://docs.ansible.com/ansible/latest/azure_rm_functionapp_module.html'
+    - name: 负载均衡器
+      href: 'https://docs.ansible.com/ansible/latest/azure_rm_loadbalancer_module.html'
+    - name: 虚拟机
+      href: 'https://docs.ansible.com/ansible/latest/azure_rm_virtualmachine_module.html'
+    - name: 适用于 Azure 的所有模块
+      href: 'https://docs.ansible.com/ansible/latest/modules/list_of_cloud_modules#azure'
 - name: 工具
   items:
-  - name: 适用于 Ansible 的 Visual Studio Code 扩展
-    href: https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible
-ms.openlocfilehash: a3f1dcf9c7672938b35ba5615c8d901cbd1d1332
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
-ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55226632"
+    - name: 适用于 Ansible 的 Visual Studio Code 扩展
+      href: 'https://marketplace.visualstudio.com/items?itemName=vscoss.vscode-ansible'

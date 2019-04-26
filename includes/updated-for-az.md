@@ -9,7 +9,7 @@ ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188305"
+ms.locfileid: "62087592"
 ---
 > [!NOTE]
 > 本文进行了更新，以便使用新的 Azure PowerShell Az 模块。 你仍然可以使用 AzureRM 模块，至少在 2020 年 12 月之前，它将继续接收 bug 修补程序。
