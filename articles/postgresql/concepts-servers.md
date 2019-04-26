@@ -64,6 +64,6 @@ PostgreSQL 服务器参数可确定服务器的配置。 在 Azure Database for 
 
 ## <a name="next-steps"></a>后续步骤
 - 有关该服务的概述，请参阅  [Azure Database for PostgreSQL 概述](overview.md)。
-- 有关基于服务层 **** 的具体资源配额和限制的信息，请参阅 [服务层](concepts-pricing-tiers.md)。
+- 有关基于服务层级 **** 的具体资源配额和限制的信息，请参阅 [服务层级](concepts-pricing-tiers.md)。
 - 有关连接到服务的信息，请参阅  [Azure Database for PostgreSQL 的连接库](concepts-connection-libraries.md)。
 - 通过 [Azure 门户](howto-configure-server-parameters-using-portal.md)或 [Azure CLI](howto-configure-server-parameters-using-cli.md) 查看和编辑服务器参数。
