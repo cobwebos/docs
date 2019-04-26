@@ -164,7 +164,7 @@ bootstrap.servers=dummynamespace.servicebus.windows.net:9093 request.timeout.ms=
 
 ### <a name="do-brokered-connection-charges-apply-to-event-hubs"></a>中转连接费用是否适用于事件中心？
 
-连接费用只在使用 AMQP 协议时适用。 使用 HTTP 发送事件没有连接费用，无论发送系统或设备的数量是多少。 如果计划使用 AMQP（例如，为了实现更高效的事件流式传输，或者为了对 IoT 命令和控制方案启用双向通信），请参阅[事件中心定价信息](https://azure.microsoft.com/pricing/details/event-hubs/)页，了解有关每个服务层中包括多少连接的详细信息。
+连接费用只在使用 AMQP 协议时适用。 使用 HTTP 发送事件没有连接费用，无论发送系统或设备的数量是多少。 如果计划使用 AMQP（例如，为了实现更高效的事件流式传输，或者为了对 IoT 命令和控制方案启用双向通信），请参阅[事件中心定价信息](https://azure.microsoft.com/pricing/details/event-hubs/)页，了解有关每个服务层级中包括多少连接的详细信息。
 
 ### <a name="how-is-event-hubs-capture-billed"></a>事件中心捕获如何计费？
 

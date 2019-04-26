@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: ec9bd3ee106571484c513c2d005a374a90c1d17e
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59359699"
@@ -55,7 +55,7 @@ ms.locfileid: "59359699"
     |范围       |vCore 预留范围可以包括一个订阅或多个订阅（共享范围）。 如果选择： <br/><br/>**单个订阅** - vCore 预留折扣将应用到此订阅中的 SQL 数据库实例。 <br/><br/>**共享订阅** - vCore 预留折扣将应用到计费上下文中任何订阅中运行的 SQL 数据库实例。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。|
     |区域      |预订的 SQL 数据库预留容量涵盖的 Azure 区域。|
     |部署类型|要为其购买预留容量的 SQL 资源类型。|
-    |性能层|SQL 数据库实例的服务层。
+    |性能层|SQL 数据库实例的服务层级。
     |术语        |一年或三年。|
     |数量    |在 SQL 数据库预留容量预订中购买的实例数。 该数量是可以获得计费折扣的运行中 SQL 数据库实例数。 例如，如果在美国东部运行 10 个 SQL 数据库实例，则将数量指定为 10，以将所有正在运行的虚拟机的权益最大化。 |
     |||
