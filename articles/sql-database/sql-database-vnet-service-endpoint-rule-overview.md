@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 中的单一和池化数据库的 VNet 终结点和规则的 PowerShell | Microsoft Docs
+title: Azure SQL 中的单一数据库和共用数据库的 VNet 终结点和规则 | Microsoft Docs
 description: 将子网标记为虚拟网络服务终结点。 然后将终结点标记为适用于 Azure SQL 数据库 ACL 的虚拟网络规则。 然后，SQL 数据库就会接受来自子网上所有虚拟机和其他节点的通信。
 services: sql-database
 ms.service: sql-database
