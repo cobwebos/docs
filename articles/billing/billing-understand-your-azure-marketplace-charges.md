@@ -50,7 +50,7 @@ ms.locfileid: "60370454"
 3. 在“订阅”边栏选项卡中，选择要查看的订阅，并选择“外部服务”。
    
     ![在计费边栏选项卡中选择订阅](./media/billing-understand-your-azure-marketplace-charges/select-sub-external-services.png)
-4. 此时会看到每个外部服务订单、发布者名称、购买的服务层、提供给资源的名称，以及当前订单状态。 若要查看过去的帐单，请选择一项外部服务。
+4. 此时会看到每个外部服务订单、发布者名称、购买的服务层级、提供给资源的名称，以及当前订单状态。 若要查看过去的帐单，请选择一项外部服务。
    
     ![选择外部服务](./media/billing-understand-your-azure-marketplace-charges/external-service-blade2.png)
 5. 在此处可查看过去的帐单金额，包括税款明细。

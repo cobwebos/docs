@@ -35,9 +35,9 @@ ms.locfileid: "60331088"
 > [!NOTE]
 > 弹性池中单个数据库的资源限制通常与池外部具有相同计算大小的单一数据库相同。 例如，GP_Gen4_1 数据库的最大并发工作进程数为 200 个。 因此，GP_Gen4_1 池中数据库的最大并发工作进程数也是 200 个。 请注意，GP_Gen4_1 池中的并发工作进程总数为 210 个。
 
-## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>常规用途服务层：存储大小和计算大小
+## <a name="general-purpose-service-tier-storage-sizes-and-compute-sizes"></a>“常规用途”服务层级：存储大小和计算大小
 
-### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>常规用途服务层：第 4 代计算平台（第 1 部分）
+### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>“常规用途”服务层级：第 4 代计算平台（第 1 部分）
 
 |计算大小|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -65,7 +65,7 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>常规用途服务层：第 4 代计算平台（第 2 部分）
+### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>“常规用途”服务层级：第 4 代计算平台（第 2 部分）
 
 |计算大小|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -93,7 +93,7 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>常规用途服务层：第 5 代计算平台（第 1 部分）
+### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>“常规用途”服务层级：第 5 代计算平台（第 1 部分）
 
 |计算大小|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -121,7 +121,7 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>常规用途服务层：第 5 代计算平台（第 2 部分）
+### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>“常规用途”服务层级：第 5 代计算平台（第 2 部分）
 
 |计算大小|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -148,9 +148,9 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>“业务关键”服务层：存储大小和计算大小
+## <a name="business-critical-service-tier-storage-sizes-and-compute-sizes"></a>“业务关键”服务层级：存储大小和计算大小
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层：第 4 代计算平台（第 1 部分）
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>“业务关键”服务层级：第 4 代计算平台（第 1 部分）
 
 |计算大小|BC_Gen4_1|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -178,7 +178,7 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>“业务关键”服务层：第 4 代计算平台（第 2 部分）
+### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>“业务关键”服务层级：第 4 代计算平台（第 2 部分）
 
 |计算大小|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
@@ -206,7 +206,7 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-#### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>“业务关键”服务层：第 5 代计算平台（第 1 部分）
+#### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>“业务关键”服务层级：第 5 代计算平台（第 1 部分）
 
 |计算大小|BC_Gen5_2|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -234,7 +234,7 @@ ms.locfileid: "60331088"
 
 \*如需了解任何单个数据库的最大并发辅助角色数（请求数），请参阅[单一数据库资源限制](sql-database-vcore-resource-limits-single-databases.md)。 例如，如果弹性池使用 Gen5 且其每个数据库的最大 vCore 数为 2，则最大并发辅助角色数为 200。  如果每个数据库的最大 vCore 数为 0.5，则最大并发辅助角色数为 50，因为 Gen5 上每个 vCore 的最大并发辅助角色数为 100。  对于每个数据库的最大 vCore 设置小于 1 个 vCore 或更少的其他情况，最大并发辅助角色数会相应重新缩放。
 
-#### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>“业务关键”服务层：第 5 代计算平台（第 2 部分）
+#### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>“业务关键”服务层级：第 5 代计算平台（第 2 部分）
 
 |计算大小|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
@@ -264,15 +264,15 @@ ms.locfileid: "60331088"
 
 如果弹性池的所有 vCore 繁忙，则池中的每个数据库将接收相同数量的计算资源来处理查询。 SQL 数据库服务通过确保相等的计算时间片，在数据库之间提供资源共享的公平性。 弹性池资源共享公平性是在将每个数据库的 vCore 最小值设为非零值时，对另外为每个数据库保证的任意资源量的补充。
 
-## <a name="database-properties-for-pooled-databases"></a>入池数据库的数据库属性
+## <a name="database-properties-for-pooled-databases"></a>共用数据库的数据库属性
 
-下表介绍了入池数据库的属性。
+下表介绍了共用数据库的属性。
 
 | 属性 | 描述 |
 |:--- |:--- |
 | 每个数据库的最大 vCore 数 |根据池中其他数据库的 vCore 使用率，池中任何数据库可以使用的 vCore 的最大数目。 每个数据库的 vCore 上限并不是数据库的资源保障。 此设置是应用于池中所有数据库的全局设置。 将每个数据库的最大 vCore 数设置得足够高，以处理数据库使用高峰情况。 因为池通常会假定数据库存在热使用模式和冷使用模式，在这些模式中并非所有数据库同时处于高峰使用状态，所以预期会存在某种程度的过量使用情况。|
 | 每个数据库的最小 vCore 数 |池中任何数据库可以保证的 vCore 最小数目。 此设置是应用于池中所有数据库的全局设置。 每个数据库的最小 vCore 可能设为 0，这也是默认值。 该属性值可以设置为介于 0 和每个数据库的平均 vCore 使用量之间的任意值。 池中数据库数目和每个数据库的 vCore 下限的积不能超过每个池的 vCore 数。|
-| 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 入池数据库共享分配的池存储，因此数据库可以访问的大小限制为剩余的池存储与数据库大小中的较小者。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
+| 每个数据库的最大存储 |用户为池中的数据库设置的最大数据库大小。 共用数据库共享分配的池存储，因此数据库可以访问的大小限制为剩余的池存储与数据库大小中的较小者。 最大数据库大小是指数据文件的最大大小，不包括日志文件使用的空间。 |
 |||
 
 ## <a name="next-steps"></a>后续步骤
