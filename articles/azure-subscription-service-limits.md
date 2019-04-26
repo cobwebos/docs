@@ -129,7 +129,7 @@ ms.locfileid: "59998475"
 [!INCLUDE [container-instances-limits](../includes/container-instances-limits.md)]
 
 ### <a name="container-registry-limits"></a>容器注册表限制
-下表详细介绍了基本、标准和高级[服务层](./container-registry/container-registry-skus.md)的功能和限制。
+下表详细介绍了“基本”、“标准”和“高级”[服务层级](./container-registry/container-registry-skus.md)的功能和限制。
 
 [!INCLUDE [container-registry-limits](../includes/container-registry-limits.md)]
 

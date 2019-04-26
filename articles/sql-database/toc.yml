@@ -118,19 +118,20 @@
           href: sql-database-purchase-models.md
         - name: 基于 vCore 的模型
           href: sql-database-service-tiers-vcore.md
-        - name: DTU 服务层
+        - name: DTU 服务层级
           href: sql-database-service-tiers-dtu.md
         - name: 为预留容量预付费
           href: sql-database-reserved-capacity.md
-        - name: 从高级 RS 服务层迁移
+        - name: 从“高级 RS”服务层级迁移
           href: sql-database-service-tiers-prs.md
     - name: 计算和存储
       items:
         - name: 概述
           href: sql-database-service-tiers-general-purpose-business-critical.md
-        - name: 常规用途/标准服务层
+          displayName: provisioned compute tier
+        - name: “常规用途”/“标准”服务层级
           href: sql-database-service-tier-general-purpose.md
-        - name: 业务关键/高级服务层
+        - name: “业务关键”/“高级”服务层级
           href: sql-database-service-tier-business-critical.md
         - name: “超大规模”服务层级
           href: sql-database-service-tier-hyperscale.md

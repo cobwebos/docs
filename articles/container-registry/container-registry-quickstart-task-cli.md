@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location eastus
 az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
 ```
 
-此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。 有关可用服务层的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
+此示例创建一个基本注册表，该注册表已针对成本进行优化，可让开发人员了解 Azure 容器注册表。 有关可用服务层级的详细信息，请参阅[容器注册表 SKU][container-registry-skus]。
 
 ## <a name="build-an-image-from-a-dockerfile"></a>基于 Dockerfile 生成映像
 

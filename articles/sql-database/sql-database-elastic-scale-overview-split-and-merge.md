@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 2127c05d7e52b0103d91ecfac4fb5977a4815f31
 ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57901927"
@@ -248,7 +248,7 @@ ms.locfileid: "57901927"
 
 ## <a name="performance"></a>性能
 
-通常，Azure SQL 数据库中更高、更可执行的服务层应具有更好的性能。 为更高服务层分配更高的 IO、CPU 和内存有利于拆分/合并服务在使用的批量复制和删除操作。 因此，在定义的有限时间段内仅为这些数据库提高服务层。
+通常，Azure SQL 数据库中更高、更可执行的服务层级应具有更好的性能。 为更高服务层级分配更高的 IO、CPU 和内存有利于拆分/合并服务在使用的批量复制和删除操作。 因此，在定义的有限时间段内仅为这些数据库提高服务层级。
 
 该服务也会会验证查询作为其常规操作的一部分来执行。 除此之外，这些验证查询还会检查目标范围中数据的异常存在，确保任何拆分/合并/移动操作都从一致状态开始进行。 这些查询在操作范围定义的分片键范围和作为请求定义的一部分而提供的批大小上都有效。 当使用分片键作为起始列的索引存在时，这些查询表现最好。
 

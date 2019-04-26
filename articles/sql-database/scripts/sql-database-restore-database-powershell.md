@@ -49,11 +49,11 @@ Remove-AzResourceGroup -ResourceGroupName $resourcegroupname
 |---|---|
 | [New-AzResourceGroup](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroup) | 创建用于存储所有资源的资源组。 |
 | [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | 创建托管单一数据库或弹性池的 SQL 数据库服务器。 |
-| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 在 SQL 数据库服务器中创建数据库作为独立数据库或入池数据库。 |
-[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | 获取独立数据库或入池数据库的异地冗余备份。 |
-| [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | 还原 SQL 独立数据库或入池数据库。 |
-|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | 删除 Azure SQL 独立数据库或入池数据库。 |
-| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | 获取可以还原的已删除的独立数据库或入池数据库。 |
+| [New-AzSqlDatabase](/powershell/module/az.sql/new-azsqldatabase) | 在 SQL 数据库服务器中创建数据库作为独立数据库或共用数据库。 |
+[Get-AzSqlDatabaseGeoBackup](/powershell/module/az.sql/get-azsqldatabasegeobackup) | 获取独立数据库或共用数据库的异地冗余备份。 |
+| [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase) | 还原 SQL 独立数据库或共用数据库。 |
+|[Remove-AzSqlDatabase](/powershell/module/az.sql/remove-azsqldatabase) | 删除 Azure SQL 独立数据库或共用数据库。 |
+| [Get-AzSqlDeletedDatabaseBackup](/powershell/module/az.sql/get-azsqldeleteddatabasebackup) | 获取可以还原的已删除的独立数据库或共用数据库。 |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | 删除资源组，包括所有嵌套的资源。 |
 
 ## <a name="next-steps"></a>后续步骤

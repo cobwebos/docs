@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60331464"
 ---
-# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>针对单一数据库或入池数据库的 Azure SQL 数据库威胁检测
+# <a name="azure-sql-database-threat-detection-for-single-or-pooled-databases"></a>针对单一数据库或共用数据库的 Azure SQL 数据库威胁检测
 
 针对单一数据库或入池数据库的[威胁检测](sql-database-threat-detection-overview.md)可以检测异常活动，这些活动指示对数据库的异常和可能有害的访问或利用企图。 威胁检测可以识别**潜在的 SQL 注入**、**来自异常位置或数据中心的访问**、**来自陌生主体或可能有害的应用程序的访问**以及**暴力攻击 SQL 凭据** - 请在[威胁检测警报](sql-database-threat-detection-overview.md#advanced-threat-protection-alerts)中查看更多详细信息。
 

@@ -1,6 +1,6 @@
 ---
 title: 创建服务器级防火墙规则 - Azure SQL 数据库 | Microsoft Docs
-description: 为单一数据库和入池数据库创建 SQL 数据库服务器级防火墙规则
+description: 为单一数据库和共用数据库创建 SQL 数据库服务器级防火墙规则
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -19,9 +19,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 02/12/2019
 ms.locfileid: "56108953"
 ---
-# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>快速入门：使用 Azure 门户为单一数据库和入池数据库创建服务器级防火墙规则
+# <a name="quickstart-create-a-server-level-firewall-rule-for-single-and-pooled-databases-using-the-azure-portal"></a>快速入门：使用 Azure 门户为单一数据库和共用数据库创建服务器级防火墙规则
 
-本快速入门详细介绍如何使用 Azure 门户为 Azure SQL 数据库中的单一数据库和入池数据库创建[服务器级防火墙规则](sql-database-firewall-configure.md)，以便能够连接到数据库服务器、单一数据库、弹性池及其数据库。 若要从其他 Azure 资源和本地资源进行连接，必须使用防火墙规则。
+本快速入门详细介绍如何使用 Azure 门户为 Azure SQL 数据库中的单一数据库和共用数据库创建[服务器级防火墙规则](sql-database-firewall-configure.md)，以便能够连接到数据库服务器、单一数据库、弹性池及其数据库。 若要从其他 Azure 资源和本地资源进行连接，必须使用防火墙规则。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -33,12 +33,12 @@ ms.locfileid: "56108953"
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>创建服务器级 IP 防火墙规则
 
-SQL 数据库服务在数据库服务器级别为单一数据库和入池数据库创建防火墙。 此防火墙阻止客户端应用程序和工具连接到服务器或其任何单一数据库或入池数据库，除非你创建 IP 防火墙规则来打开防火墙。 对于从 Azure 外部的 IP 地址进行的连接，请针对要连接到的特定 IP 地址或地址范围创建防火墙规则。 有关服务器级和数据库级 IP 防火墙规则的详细信息，请参阅 [SQL 数据库服务器级和数据库级 IP 防火墙规则](sql-database-firewall-configure.md)。
+SQL 数据库服务在数据库服务器级别为单一数据库和共用数据库创建防火墙。 此防火墙阻止客户端应用程序和工具连接到服务器或其任何单一数据库或共用数据库，除非你创建 IP 防火墙规则来打开防火墙。 对于从 Azure 外部的 IP 地址进行的连接，请针对要连接到的特定 IP 地址或地址范围创建防火墙规则。 有关服务器级和数据库级 IP 防火墙规则的详细信息，请参阅 [SQL 数据库服务器级和数据库级 IP 防火墙规则](sql-database-firewall-configure.md)。
 
 > [!NOTE]
 > 通过端口 1433 进行的 SQL 数据库通信。 如果尝试从企业网络内部进行连接，则该网络的防火墙可能不允许经端口 1433 的出站流量。 如果是这样，则无法连接到 Azure SQL 数据库服务器，除非 IT 部门打开了端口 1433。
 > [!IMPORTANT]
-> 0.0.0.0 防火墙规则可让所有 Azure 服务通过服务器级防火墙规则，并尝试通过服务器连接到单一数据库或入池数据库。 若要了解如何使用虚拟网络规则，请参阅[使用虚拟网络规则替代 IP 规则](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules)。
+> 0.0.0.0 防火墙规则可让所有 Azure 服务通过服务器级防火墙规则，并尝试通过服务器连接到单一数据库或共用数据库。 若要了解如何使用虚拟网络规则，请参阅[使用虚拟网络规则替代 IP 规则](sql-database-firewall-configure.md#virtual-network-rules-as-alternatives-to-ip-rules)。
 
 按照以下步骤为客户端 IP 地址创建服务器级 IP 防火墙规则，只允许通过 SQL 数据库防火墙进行外部连接，而该防火墙只对 IP 地址开放。
 

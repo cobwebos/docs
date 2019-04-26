@@ -325,7 +325,7 @@ write-host("If any cmdlet is unsuccessful, please consider using -Debug option f
 ```
 
 ## <a name="join-azure-ssis-ir-to-a-virtual-network"></a>将 Azure-SSIS IR 加入虚拟网络
-如果将 Azure SQL 数据库与可以通过加入虚拟网络来托管 SSISDB 的虚拟网络服务器终结点/托管实例配合使用，则还必须将 Azure-SSIS 集成运行时加入同一虚拟网络。 使用 Azure 数据工厂可将 Azure-SSIS 集成运行时加入虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS 集成运行时加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
+如果将 Azure SQL 数据库与可以通过加入虚拟网络来托管 SSISDB 的虚拟网络服务终结点/托管实例配合使用，则还必须将 Azure-SSIS 集成运行时加入同一虚拟网络。 使用 Azure 数据工厂可将 Azure-SSIS 集成运行时加入虚拟网络。 有关详细信息，请参阅[将 Azure-SSIS 集成运行时加入虚拟网络](join-azure-ssis-integration-runtime-virtual-network.md)。
 
 如需完整脚本来创建可加入虚拟网络的 Azure-SSIS 集成运行时，请参阅[创建 Azure-SSIS 集成运行时](create-azure-ssis-integration-runtime.md)。
 

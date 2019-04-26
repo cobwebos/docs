@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 6d794fb14b7f581c9e9b92dc581de97e0a236630
 ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59786466"
@@ -498,7 +498,7 @@ JobTaskExecution 对象包括任务生命周期的属性以及 Message 属性。
 
 ### <a name="cost"></a>成本
 
-使用弹性数据库查询功能不会产生额外的费用。 但是，目前此功能只能在作为终结点的高级和业务关键数据库和弹性池上使用，但分片可以属于任何服务层。
+使用弹性数据库查询功能不会产生额外的费用。 但是，目前此功能只能在作为终结点的“高级”和“业务关键”数据库和弹性池上使用，但分片可以属于任何服务层级。
 
 有关价格信息，请参阅 [SQL 数据库定价详细信息](https://azure.microsoft.com/pricing/details/sql-database/)。
 

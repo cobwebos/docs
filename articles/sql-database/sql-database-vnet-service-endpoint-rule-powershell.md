@@ -1,5 +1,5 @@
 ---
-title: 适用于 Azure SQL 中的单一和池化数据库的 VNet 终结点和规则的 PowerShell | Microsoft Docs
+title: 适用于 Azure SQL 中的单一数据库和共用数据库的 VNet 终结点和规则的 PowerShell | Microsoft Docs
 description: 提供 PowerShell 脚本，用于创建和管理 Azure SQL 数据库和 SQL 数据仓库的虚拟服务终结点。
 services: sql-database
 ms.service: sql-database

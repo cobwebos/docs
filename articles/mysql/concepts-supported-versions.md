@@ -43,4 +43,4 @@ Bug 修复版本：5.7.24
 
 ## <a name="next-steps"></a>后续步骤
 
-有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](./concepts-pricing-tiers.md)
+有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)

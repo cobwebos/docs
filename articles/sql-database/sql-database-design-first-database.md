@@ -77,9 +77,9 @@ Azure SQL 数据库是 Microsoft 云 (Azure) 中的关系型数据库即服务 (
     ![创建数据库 - 服务器](./media/sql-database-design-first-database/create-database-server.png)
 
 5. 单击“选择”。
-6. 单击“定价层”，指定服务层、DTU 或 vCore 数，以及存储量。 可以浏览相关选项，了解每个服务层可提供的 DTU/vCore 数和存储。
+6. 单击“定价层”，指定服务层级、DTU 或 vCore 数，以及存储量。 可以浏览相关选项，了解每个服务层级可提供的 DTU/vCore 数和存储。
 
-    选择服务层、DTU 数或 vCore 数以及存储量后，然后单击“应用”。
+    选择服务层级、DTU 数或 vCore 数以及存储量后，然后单击“应用”。
 
 7. 输入空白数据库的“排序规则”（就本教程来说，请使用默认值）。 有关排序规则的详细信息，请参阅 [Collations](/sql/t-sql/statements/collations)（排序规则）
 

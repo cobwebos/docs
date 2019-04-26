@@ -53,5 +53,5 @@ Azure Database for MySQL 服务器：
 ## <a name="next-steps"></a>后续步骤
 
 - 有关该服务的概述，请参阅 [Azure Database for MySQL 概述](./overview.md)
-- 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](./concepts-service-tiers.md)
+- 有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-service-tiers.md)
 - 有关连接到服务的信息，请参阅 [Azure Database for MySQL 的连接库](./concepts-connection-libraries.md)。

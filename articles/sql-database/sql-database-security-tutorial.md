@@ -1,5 +1,5 @@
 ---
-title: 在 Azure SQL 数据库中确保单一数据库或入池数据库的安全 | Microsoft Docs
+title: 在 Azure SQL 数据库中确保单一数据库或共用数据库的安全 | Microsoft Docs
 description: 一个教程，介绍在 Azure SQL 数据库中保护单一数据库或入池数据库的技术和功能。
 services: sql-database
 ms.service: sql-database
@@ -18,7 +18,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/11/2019
 ms.locfileid: "59496431"
 ---
-# <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或入池数据库
+# <a name="tutorial-secure-a-single-or-pooled-database"></a>教程：保护单一数据库或共用数据库
 
 本教程介绍如何执行下列操作：
 
@@ -28,7 +28,7 @@ ms.locfileid: "59496431"
 > - 通过 SQL 身份验证、Azure AD 身份验证和安全的连接字符串管理用户访问
 > - 启用安全功能，例如高级数据安全、审核、数据掩码和加密
 
-Azure SQL 数据库允许你通过以下方式确保单一数据库或入池数据库中数据的安全：
+Azure SQL 数据库允许你通过以下方式确保单一数据库或共用数据库中数据的安全：
 
 - 使用防火墙规则限制访问
 - 使用需要标识的身份验证机制

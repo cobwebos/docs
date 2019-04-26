@@ -19,7 +19,7 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59357950"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层、Azure 混合权益和迁移
+# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层级、Azure 混合权益和迁移
 
 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源、匹配本地性能，以及优化价格。 它还允许你选择硬件世代：
 
@@ -29,11 +29,11 @@ ms.locfileid: "59357950"
 第 4 代为每个 vCore 提供的内存要大得多。 但是，第 5 代硬件允许以高得多的力度纵向扩展计算资源。
 
 > [!NOTE]
-> 有关基于 DTU 的服务层的信息，请参阅[基于 DTU 的服务层](sql-database-service-tiers-dtu.md)。 若要了解如何区分基于 DTU 的服务层和基于 vCore 的服务层，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
+> 有关基于 DTU 的服务层级的信息，请参阅[基于 DTU 的服务层级](sql-database-service-tiers-dtu.md)。 有关区分基于 DTU 的服务层级和基于 vCore 的服务层级的信息，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
 
 ## <a name="service-tier-characteristics"></a>服务层特征
 
-vCore 模型提供了三个服务层级：“常规用途”、“业务关键”和“超大规模”。 服务层根据一系列计算大小、高可用性设计、故障隔离、存储类型和大小以及 IO 范围进行区分。 必须单独配置所需的存储和备份保持期。 在 Azure 门户中，转到“服务器”（而不是数据库）>“托管备份”>“配置策略”>“时间点还原配置”>“7 - 35 天”。
+vCore 模型提供了三个服务层级：“常规用途”、“业务关键”和“超大规模”。 服务层级根据一系列计算大小、高可用性设计、故障隔离、存储类型和大小以及 IO 范围进行区分。 必须单独配置所需的存储和备份保持期。 在 Azure 门户中，转到“服务器”（而不是数据库）>“托管备份”>“配置策略”>“时间点还原配置”>“7 - 35 天”。
 
 下表可帮助你了解这三个层之间的差别：
 
@@ -53,7 +53,7 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 > 在配合 Azure 免费帐户探索 Azure 中的基本服务层，可以获取免费的 Azure SQL 数据库。 有关信息，请参阅[使用 Azure 免费帐户创建托管的云数据库](https://azure.microsoft.com/free/services/sql-database/)。
 
 - 有关详细信息，请参阅[单一数据库中的 vCore 资源限制](sql-database-vcore-resource-limits-single-databases.md)和[托管实例中的 vCore 资源限制](sql-database-managed-instance.md#vcore-based-purchasing-model)。
-- 若要详细了解常规用途服务层和业务关键服务层，请参阅[常规用途服务层和业务关键服务层](sql-database-service-tiers-general-purpose-business-critical.md)。
+- 若要详细了解“常规用途”服务层级和“业务关键”服务层级，请参阅[“常规用途”服务层级和“业务关键”服务层级](sql-database-service-tiers-general-purpose-business-critical.md)。
 - 若要详细了解基于 vCore 的购买模型中的超大规模服务层级，请参阅[超大规模服务层级](sql-database-service-tier-hyperscale.md)。  
 
 > [!IMPORTANT]
@@ -102,7 +102,7 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 
 下表提供具体迁移场景的指导：
 
-|当前服务层|目标服务层|迁移类型|用户操作|
+|当前服务层级|目标服务层级|迁移类型|用户操作|
 |---|---|---|---|
 |标准|常规用途|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
 |高级|业务关键|横向|可按任意顺序迁移，但需确保 vCore 大小适当*|
@@ -122,7 +122,7 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>创建异地复制辅助数据库
 
-只能使用与主数据库相同的服务层来创建异地辅助数据库。 对于日志生成速率较高的数据库，建议使用与主数据库相同的计算大小来创建辅助数据库。 如果在弹性池中为单个主数据库创建异地辅助数据库，建议对该池使用与主数据库计算大小匹配的 `maxVCore` 设置。 如果在弹性池中为另一个弹性池的主数据库创建异地辅助数据库，建议对该池使用相同的 `maxVCore` 设置
+只能使用与主数据库相同的服务层级来创建异地辅助数据库。 对于日志生成速率较高的数据库，建议使用与主数据库相同的计算大小来创建辅助数据库。 如果在弹性池中为单个主数据库创建异地辅助数据库，建议对该池使用与主数据库计算大小匹配的 `maxVCore` 设置。 如果在弹性池中为另一个弹性池的主数据库创建异地辅助数据库，建议对该池使用相同的 `maxVCore` 设置
 
 ### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>使用数据库复制将基于 DTU 的数据库转换为基于 vCore 的数据库
 

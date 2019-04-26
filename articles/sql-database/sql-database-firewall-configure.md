@@ -1,6 +1,6 @@
 ---
 title: Azure SQL 数据库和数据仓库 IP 防火墙规则 | Microsoft Docs
-description: 了解如何为 SQL 数据库或 SQL 数据仓库防火墙配置可管理访问权限的服务器级别 IP 防火墙规则，以及如何为单一数据库或入池数据库配置数据库级别 IP 防火墙规则。
+description: 了解如何为 SQL 数据库或 SQL 数据仓库防火墙配置可管理访问权限的服务器级别 IP 防火墙规则，以及如何为单一数据库或共用数据库配置数据库级别 IP 防火墙规则。
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -14,7 +14,7 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 513836257a292069da709ad7a71e480f2b4d069d
 ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/13/2019
 ms.locfileid: "59549723"

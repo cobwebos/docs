@@ -1,6 +1,6 @@
 ---
-title: 教程：使用 Azure 数据库迁移服务从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一/入池数据库 | Microsoft Docs
-description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或入池数据库。
+title: 教程：使用 Azure 数据库迁移服务从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一/共用数据库 | Microsoft Docs
+description: 了解如何使用 Azure 数据库迁移服务从本地 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -18,9 +18,9 @@ ms.contentlocale: zh-CN
 ms.lasthandoff: 04/18/2019
 ms.locfileid: "59797238"
 ---
-# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或入池数据库
+# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>教程：使用 DMS 将 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库
 
-可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库中的单一数据库或入池数据库。
+可以使用 Azure 数据库迁移服务将数据库从本地 SQL Server 实例迁移到 [Azure SQL 数据库](https://docs.microsoft.com/azure/sql-database/)。 在本教程中，将通过使用 Azure 数据库迁移服务，将还原到 SQL Server 2016（或更高版本）本地实例的 Adventureworks2012 数据库迁移到 Azure SQL 数据库中的单一数据库或共用数据库。
 
 本教程介绍如何执行下列操作：
 > [!div class="checklist"]
@@ -34,7 +34,7 @@ ms.locfileid: "59797238"
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
-本文介绍如何从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或入池数据库。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)。
+本文介绍如何从 SQL Server 脱机迁移到 Azure SQL 数据库中的单一数据库或共用数据库。 有关联机迁移，请参阅[使用 DMS 将 SQL Server 联机迁移到 Azure SQL 数据库](tutorial-sql-server-azure-sql-online.md)。
 
 ## <a name="prerequisites"></a>先决条件
 
@@ -69,12 +69,12 @@ ms.locfileid: "59797238"
 
 ## <a name="assess-your-on-premises-database"></a>访问本地数据库
 
-在将数据从本地 SQL Server 实例迁移到 Azure SQL 数据库中的单一数据库或入池数据库之前，需要对 SQL Server 数据库进行评估，了解任何可能会阻止迁移的阻碍性问题。 使用数据迁移助手 v3.3 或更高版本，按照[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的步骤，完成对本地数据库的评估。 所需步骤汇总如下：
+在将数据从本地 SQL Server 实例迁移到 Azure SQL 数据库中的单一数据库或共用数据库之前，需要对 SQL Server 数据库进行评估，了解任何可能会阻止迁移的阻碍性问题。 使用数据迁移助手 v3.3 或更高版本，按照[执行 SQL Server 迁移评估](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)一文中所述的步骤，完成对本地数据库的评估。 所需步骤汇总如下：
 
 1. 在数据迁移助手中，选择“新建 (+)”图标，然后选择“评估”项目类型。
 2. 指定项目名称，在“源服务器类型”文本框中，选择“SQL Server”，在“目标服务器类型”文本框中，选择“Azure SQL 数据库”，然后选择“创建”，从而创建项目。
 
-    评估迁移到 Azure SQL 数据库中的单一数据库或入池数据库的源 SQL Server 数据库时，可以选择以下一种或两种评估报告类型：
+    评估迁移到 Azure SQL 数据库中的单一数据库或共用数据库的源 SQL Server 数据库时，可以选择以下一种或两种评估报告类型：
 
    - 检查数据库兼容性
    - 检查功能奇偶校验
@@ -92,7 +92,7 @@ ms.locfileid: "59797238"
 
     ![评估数据迁移](media/tutorial-sql-server-to-azure-sql/dma-assessments.png)
 
-    对于 Azure SQL 数据库中国的单一数据库或入池数据库，评估结果可标识出在部署到单一数据库或入池数据库时会出现的功能奇偶一致性问题和迁移阻塞性问题。
+    对于 Azure SQL 数据库中国的单一数据库或共用数据库，评估结果可标识出在部署到单一数据库或共用数据库时会出现的功能奇偶一致性问题和迁移阻塞性问题。
 
     - SQL Server 功能奇偶校验类别在 Azure 中提供了一套全面的建议、可用的替代方法和缓解步骤，以帮助你在迁移项目中规划工作。
     - 兼容性问题类别说明了部分支持或完全不支持的功能，这些功能反映了可能会阻止本地 SQL Server 数据库迁移到 Azure SQL 数据库的兼容性问题。 此外，还提供了一些建议来帮助你解决这些问题。
@@ -101,7 +101,7 @@ ms.locfileid: "59797238"
 
 ## <a name="migrate-the-sample-schema"></a>迁移示例架构
 
-如果对评估感到满意，并确信所选数据库适合迁移到 Azure SQL 数据库中的单一数据库或入池数据库，请使用 DMA 将架构迁移到 Azure SQL 数据库。
+如果对评估感到满意，并确信所选数据库适合迁移到 Azure SQL 数据库中的单一数据库或共用数据库，请使用 DMA 将架构迁移到 Azure SQL 数据库。
 
 > [!NOTE]
 > 在数据迁移助手中创建迁移项目之前，请确保已按照先决条件中的说明预配了 Azure SQL 数据库。 出于本教程的目的，假设 Azure SQL 数据库的名称是“AdventureWorksAzure”，但是你可按照自己意愿使用任意名称命名。

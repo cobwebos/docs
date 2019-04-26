@@ -16,7 +16,7 @@ ms.locfileid: "60480299"
 ---
 # <a name="upgrade-a-classic-container-registry"></a>升级经典容器注册表
 
-Azure 容器注册表 (ACR) 分为多个服务层（[称为“SKU”](container-registry-skus.md)）。 ACR 的初始版本提供的单一 SKU（即经典 SKU）缺乏基本 SKU、标准 SKU 和高级 SKU（统称托管注册表）固有的多项功能。
+Azure 容器注册表 (ACR) 分为多个服务层级（[称为“SKU”](container-registry-skus.md)）。 ACR 的初始版本提供的单一 SKU（即经典 SKU）缺乏基本 SKU、标准 SKU 和高级 SKU（统称托管注册表）固有的多项功能。
 
 经典 SKU 即将弃用，2019 年 4 月之后将不可用。 本文详述了如何将非托管的经典注册表迁移到某个托管的 SKU，以便利用其增强的功能集。
 

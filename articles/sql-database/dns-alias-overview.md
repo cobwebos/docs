@@ -14,21 +14,21 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 9704acee2ca8bad7437ae22ff5041e2253916dce
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57880426"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL 数据库的 DNS 别名
 
-Azure SQL 数据库有一个域名系统 (DNS) 服务器。 PowerShell 和 REST API 允许[使用相应的调用来创建和管理 SQL 数据库服务器的别名](#anchor-powershell-code-62x)。
+Azure SQL 数据库有一个域名系统 (DNS) 服务器。 PowerShell 和 REST API 允许[使用相应的调用来创建和管理 SQL 数据库服务器的 DNS 别名](#anchor-powershell-code-62x)。
 
 可以使用 DNS 别名来取代 Azure SQL 数据库服务器名称。 客户端程序可在其连接字符串中使用别名。 DNS 别名提供一个转换层，用于将客户端程序重定向到不同的服务器。 使用此层无需查找和编辑所有客户端及其连接字符串，因此降低了复杂性。
 
 DNS 别名的常见用途包括：
 
 - 为 Azure SQL Server 创建易记的名称。
-- 在初始开发期间，别名可以引用测试 SQL 数据库服务器。 应用程序上线后，你可以修改别名以引用生产服务器。 从测试到生产的转换不需要对连接到数据库服务器的多个客户端的配置进行任何修改。
+- 在初始开发期间，别名可以指向测试 SQL 数据库服务器。 应用程序上线后，你可以修改别名以引用生产服务器。 从测试到生产的转换不需要对连接到数据库服务器的多个客户端的配置进行任何修改。
 - 假设只将应用程序中的唯一数据库移到了另一个 SQL 数据库服务器。 此时，可以修改别名，而无需修改多个客户端的配置。
 
 ## <a name="domain-name-system-dns-of-the-internet"></a>Internet 的域名系统 (DNS)
@@ -49,7 +49,7 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 
 ### <a name="cross-region-support"></a>跨区域支持
 
-灾难恢复可将 SQL 数据库服务器转移到不同的地理区域。 对于使用 DNS 别名的系统，不需要查找并更新所有客户端的所有连接字符串。 可将别名更新为引用现在正在托管数据库的新 SQL 数据库服务器。
+灾难恢复可将 SQL 数据库服务器转移到不同的地理区域。 对于使用 DNS 别名的系统，不需要查找并更新所有客户端的所有连接字符串。 可将别名更新为指向现在正在托管数据库的新 SQL 数据库服务器。
 
 ## <a name="properties-of-a-dns-alias"></a>DNS 别名的属性
 
@@ -57,8 +57,8 @@ Azure SQL 数据库的 DNS 别名功能有助于实现以下方案：
 
 - 唯一的名称：像服务器名称一样，创建的每个别名在所有 Azure SQL 数据库服务器上保持唯一。
 - 需要服务器：除非 DNS 别名恰好引用一个服务器，并且该服务器存在，否则无法创建该别名。 更新的别名必须始终恰好引用一个现有服务器。
-  - 删除某个 SQL 数据库服务器时，Azure 系统也会删除引用该服务器的所有 DNS 别名。
-- 不受限于任一区域：DNS 别名不受限于某一区域。 可以更新任何 DNS 别名，以引用位于任何地理区域中的 Azure SQL 数据库服务器。
+  - 删除某个 SQL 数据库服务器时，Azure 系统也会删除指向该服务器的所有 DNS 别名。
+- 不受限于任一区域：DNS 别名不受限于某一区域。 可以将任何 DNS 别名更新为指向位于任何地理区域中的 Azure SQL 数据库服务器。
   - 但是，将别名更新为引用另一台服务器时，这两台服务器必须位于同一个 Azure 订阅中。
 - 权限：管理 DNS 别名的用户必须拥有“服务器参与者”权限或更高权限。 有关详细信息，请参阅 [Azure 门户中基于角色的访问控制入门](../role-based-access-control/overview.md)。
 
@@ -99,7 +99,7 @@ Comment as of:  2018-01-26
 
 代码示例中使用的 cmdlet 如下：
 
-- [新 AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias):在 Azure SQL 数据库服务系统中创建新的 DNS 别名。 该别名引用 Azure SQL 数据库服务器 1。
+- [新 AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/New-azSqlServerDnsAlias):在 Azure SQL 数据库服务系统中创建新的 DNS 别名。 该别名指向 Azure SQL 数据库服务器 1。
 - [Get-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Get-azSqlServerDnsAlias):获取并列出分配给 SQL 数据库服务器 1 的所有 DNS 别名。
 - [Set-AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Set-azSqlServerDnsAlias):从服务器1 到 SQL 数据库服务器 2 修改别名配置为引用的服务器名称。
 - [删除 AzSqlServerDNSAlias](https://docs.microsoft.com/powershell/module/az.Sql/Remove-azSqlServerDnsAlias):使用别名从 SQL 数据库服务器 2 删除 DNS 别名。

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库单一/池化数据库文件空间管理 | Microsoft Docs
-description: 本页介绍了如何管理 Azure SQL 数据库中的单一和池化数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一或池化数据库，以及如何执行数据库收缩操作。
+title: Azure SQL 数据库单一/共用数据库文件空间管理 | Microsoft Docs
+description: 本页介绍了如何管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间，并提供了代码示例来演示如何确定是否需要收缩单一数据库或共用数据库，以及如何执行数据库收缩操作。
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -14,14 +14,14 @@ manager: craigg
 ms.date: 03/12/2019
 ms.openlocfilehash: 043ceb6c46155ed169c080d08f37688b47e3e4b9
 ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 03/18/2019
 ms.locfileid: "57881157"
 ---
-# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一和池化数据库的文件空间
+# <a name="manage-file-space-for-single-and-pooled-databases-in-azure-sql-database"></a>管理 Azure SQL 数据库中的单一数据库和共用数据库的文件空间
 
-本文介绍了 Azure SQL 数据库中单一和池化数据库的各种类型的存储空间，以及当需要显式管理分配给数据库和弹性池的文件空间时可以执行的步骤。
+本文介绍了 Azure SQL 数据库中单一数据库和共用数据库的各种类型的存储空间，以及当需要显式管理分配给数据库和弹性池的文件空间时可以执行的步骤。
 
 > [!NOTE]
 > 本文不适用于 Azure SQL 数据库中的托管实例部署选项。
@@ -32,13 +32,13 @@ ms.locfileid: "57881157"
 > [!IMPORTANT]
 > PowerShell Azure 资源管理器模块仍受 Azure SQL 数据库，但未来的所有开发都不适用于 Az.Sql 模块。 有关这些 cmdlet，请参阅[AzureRM.Sql](https://docs.microsoft.com/powershell/module/AzureRM.Sql/)。 命令在 Az 模块和 AzureRm 模块中的参数是大体上相同的。
 
-使用 Azure SQL 数据库中的单一和池化数据库时，可能存在如下所述的工作负荷模式：其中数据库基础数据文件的分配可能会大于已使用数据页的数量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
+使用 Azure SQL 数据库中的单一数据库和共用数据库时，可能存在如下所述的工作负荷模式：其中数据库基础数据文件的分配可能会大于已使用数据页的数量。 如果使用的空间不断增大，并且后续删除了数据，则可能会出现这种情况。 这是因为分配的文件空间不会自动回收。
 
 在以下情况下，可能需要监视文件空间用量并收缩数据文件：
 
 - 当分配给数据库的文件空间达到池的最大大小时，允许在弹性池中增大数据。
 - 允许减少单一数据库或弹性池的最大大小。
-- 允许将单一数据库或弹性池更改为最大大小更小的其他服务层或性能层。
+- 允许将单一数据库或弹性池更改为最大大小更小的其他服务层级或性能层。
 
 ### <a name="monitoring-file-space-usage"></a>监视文件空间用量
 
