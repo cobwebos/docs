@@ -69,7 +69,7 @@ QnA Maker 限制的完整列表。
 
 ## <a name="next-steps"></a>后续步骤
 
-了解何时以及如何更改服务层：
+了解何时以及如何更改服务层级：
 
 * [QnA Maker](how-to/upgrade-qnamaker-service.md#upgrade-qna-maker-management-sku):当您需要更多源文件或 QnA Maker 服务定价层中您的知识库，超出了当前的层，更大的文档升级。
 * [应用服务](how-to/upgrade-qnamaker-service.md#upgrade-app-service):当知识库需要处理来自客户端应用的更多请求时，请升级应用服务定价层。
