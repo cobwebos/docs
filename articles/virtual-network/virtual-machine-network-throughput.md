@@ -3,8 +3,8 @@ title: Azure 虚拟机网络吞吐量 | Microsoft Docs
 description: 了解 Azure 虚拟机网络吞吐量。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
-ms.author: jdial
-ms.openlocfilehash: f22b6f361f0c5bea547721309bb0f75b62f18d92
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.author: kumud
+ms.openlocfilehash: 29c4926f56070874fe17622170e697986df0fbc3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/12/2018
-ms.locfileid: "27778949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743068"
 ---
 # <a name="virtual-machine-network-bandwidth"></a>虚拟机网络带宽
 
@@ -39,10 +39,10 @@ Azure 虚拟机必须有一个（但也可能有多个）连接的网络接口�
 若要详细了解每种 VM 大小支持的预期出站吞吐量和网络接口数，请查看 Azure [Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 和 [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) VM 大小。 选择一个类型（例如“通用”），然后在生成的页面上选择一个大小系列（例如“Dv2 系列”）。 每个系统都有一个表，在最后一列（名为“最大 NIC 数/预期网络性能(Mbps)”）中包含网络规格。 
 
 吞吐量限制适用于虚拟机。 吞吐量不受以下因素影响：
-- **网络接口数**：带宽限制是源自虚拟机的所有出站流量的累积。
-- **加速网络**：尽管此功能有助于流量达到已发布的限制，但不会更改限制。
-- **流量目标**：所有目标都计入出站限制。
-- **协议**：基于所有协议的所有出站流量都计入限制。
+- **网络接口数**:带宽限制都是累积的所有出站流量从虚拟机。
+- **加速网络**:尽管该功能可以有助于流量达到已发布的限制，它不会更改此限制。
+- **流量目标**:所有目标都计入出站限制。
+- **协议**：所有协议的所有出站流量将计入此限制。
 
 ## <a name="next-steps"></a>后续步骤
 

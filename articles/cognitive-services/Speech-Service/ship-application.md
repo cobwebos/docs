@@ -12,11 +12,11 @@ ms.date: 12/18/2018
 ms.author: wolfma
 ms.custom: seodec18
 ms.openlocfilehash: f3522f065d22ce276174fbd165c37df3914e32b9
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56962020"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456166"
 ---
 # <a name="ship-an-application"></a>交付应用程序
 
@@ -45,7 +45,7 @@ ms.locfileid: "56962020"
 | `Microsoft.CognitiveServices.Speech.csharp.dll` | 对于托管部署是必需的
 
 >[!NOTE]
-> 从版本 1.3.0 文件`Microsoft.CognitiveServices.Speech.csharp.bindings.dll`（在早期版本中已发货） 不再需要。 功能现已集成 SDK 的核心。
+> 从版本 1.3.0 开始，不再需要 `Microsoft.CognitiveServices.Speech.csharp.bindings.dll` 文件（在以前的版本中提供）。 此功能现在集成到核心 SDK 中。
 
 ## <a name="linux"></a>Linux
 

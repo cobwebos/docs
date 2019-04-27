@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: 88776e2f4167c950d60c0405dcf950b5173fb989
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870920"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814130"
 ---
 # <a name="interpret-method"></a>interpret 方法
 
@@ -25,7 +25,7 @@ interpret 方法采用自然语言查询字符串，并根据语法和索引数�
 
 `http://<host>/interpret?query=<query>[&<options>]`
 
-Name|值| 说明
+名称|值| 描述
 ----|----|----
 query    | 文本字符串 | 用户输入的查询。  如果 complete 设置为 1，查询将被解释为生成查询自动完成建议的前缀。        
 complete | 0（默认值）或 1 | 1 意味着自动完成建议是基于语法和索引数据生成的。         
@@ -37,7 +37,7 @@ timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅
 
 ## <a name="response-json"></a>响应 (JSON)
 
-JSONPath     | 说明
+JSONPath     | 描述
 ---------|---------
 $.query |query 参数来自请求。
 $.interpretations   |将输入查询与语法相匹配的 0 种或多种方法数组。

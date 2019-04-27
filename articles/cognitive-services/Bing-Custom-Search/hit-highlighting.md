@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: bf87db232484a8ba4fa1e3b8e4de921f152e2345
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56237495"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110112"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>使用修饰标记来突出显示文本
 
@@ -31,7 +31,7 @@ ms.locfileid: "56237495"
   
 如果 `textDecorations` 为 **true**，必应会在答案的显示字符串中包括以下标记。 如果没有 HTML 等效项，则 HTML 表单元格为空。
 
-|Unicode|HTML|说明
+|Unicode|HTML|描述
 |-|-|-
 |U+E000|\<b>|表示查询词的开头（命中词突出显示）
 |U+E001|\</b>|表示查询词的结尾

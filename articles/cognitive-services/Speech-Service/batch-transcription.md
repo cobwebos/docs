@@ -12,11 +12,11 @@ ms.date: 2/20/2019
 ms.author: panosper
 ms.custom: seodec18
 ms.openlocfilehash: b389d86fe4d23e3f4ee1c66e4270a74351098129
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579353"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61059599"
 ---
 # <a name="why-use-batch-transcription"></a>为何使用 Batch 听录？
 

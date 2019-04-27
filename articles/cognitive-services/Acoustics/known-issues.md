@@ -11,11 +11,11 @@ ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kylestorck
 ms.openlocfilehash: 50de4d983ed24440d655cf5b9ba3fb5e33d8d7cd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309939"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61335341"
 ---
 # <a name="project-acoustics-known-issues"></a>项目噪声的已知问题
 针对 Project Acoustics 使用设计器预览时，可能会遇到以下已知问题。

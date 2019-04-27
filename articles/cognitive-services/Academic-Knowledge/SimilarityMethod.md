@@ -10,12 +10,12 @@ ms.subservice: academic-knowledge
 ms.topic: conceptual
 ms.date: 01/18/2017
 ms.author: alch
-ms.openlocfilehash: 44930ad0f941ea174d95658f220db7aa95012133
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.openlocfilehash: 7f692c08f8af322bf7e6ab576e2e6f516594a6c4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61336511"
 ---
 # <a name="similarity-method"></a>相似性方法
 
@@ -28,26 +28,34 @@ https://westus.api.cognitive.microsoft.com/academic/v1.0/similarity?
 ```
 
 ## <a name="request-parameters"></a>请求参数
-参数        |数据类型      |必选 | 说明
+
+参数        |数据类型      |需要 | 描述
 ----------|----------|----------|------------
 s1        |String   |是  |要比较的字符串*
 s2        |String   |是  |要比较的字符串*
+
 <sub> *要比较的字符串的最大长度为 1 MB。</sub>
 <br>
+
 ## <a name="response"></a>响应
-Name | 说明
+
+名称 | 描述
 --------|---------
 SimilarityScore        |浮点值表示 s1 和 s2 的余弦相似性，值接近 1.0 表示更相似，值接近 -1.0 表示不那么相似
+
 <br>
 
 ## <a name="successerror-conditions"></a>成功/错误条件
+
 HTTP 状态 | 原因 | 响应
 -----------|----------|--------
 **200**         |Success | 浮点数
 **400**         | 错误的请求或请求无效 | 错误消息      
 **500**         |内部服务器错误 | 错误消息
 已超时     | 请求已超时。  | 错误消息
+
 <br>
+
 ## <a name="example-calculate-similarity-of-two-partial-abstracts"></a>示例：计算两个部分摘要的相似性
 #### <a name="request"></a>请求：
 ```

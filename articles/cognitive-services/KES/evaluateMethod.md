@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: dcfa9bb7931cf3b682bacf722b67acd6d4a370c0
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814105"
 ---
 # <a name="evaluate-method"></a>evaluate 方法
 
@@ -27,7 +27,7 @@ evaluate 方法根据索引数据，计算并返回结构化查询表达式的�
 
 `http://<host>/evaluate?expr=<expr>&attributes=<attrs>[&<options>]`   
 
-Name|值|说明
+名称|值|描述
 ----|----|----
 expr       | 文本字符串 | 选择索引实体子集的结构化查询表达式。
 attributes | 文本字符串 | 要在响应中包含的属性的逗号分隔列表。
@@ -39,7 +39,7 @@ timeout  | 数字（默认值为 1000） | 超时（以毫秒为单位）。 仅
 使用 count 和 offset 参数，可以通过多个请求以递增方式获取大量结果。
   
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath|说明
+JSONPath|描述
 ----|----
 $.expr | 请求中的 expr 参数。
 $.entities | 一组与结构化查询表达式匹配的 0 个或多个对象实体。 

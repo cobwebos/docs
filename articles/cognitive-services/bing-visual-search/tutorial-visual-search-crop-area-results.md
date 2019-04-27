@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/03/2019
 ms.author: rosh
 ms.openlocfilehash: a6a98d9ddf76e86feb35c6d3d71f7777b0edd51d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59491128"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109972"
 ---
 # <a name="tutorial-crop-an-image-with-the-bing-visual-search-sdk-for-c"></a>教程：使用适用于 C# 的必应视觉搜索 SDK 裁剪图像
 
@@ -110,7 +110,7 @@ Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " 
 
 ## <a name="next-steps"></a>后续步骤
 > [!div class="nextstepaction"]
-> [创建视觉搜索的单页 web 应用](tutorial-bing-visual-search-single-page-app.md)
+> [创建视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app.md)
 
 ## <a name="see-also"></a>另请参阅
 > [必应视觉搜索 API 是什么？](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview)

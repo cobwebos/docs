@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: e0e8b9f767376db8028a3ac4a2d8659bab69268b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60005842"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829950"
 ---
 # <a name="install-and-run-text-analytics-containers"></a>安装和运行文本分析容器
 
@@ -110,7 +110,7 @@ docker pull mcr.microsoft.com/azure-cognitive-services/sentiment:latest
 
 使用 [docker run](https://docs.docker.com/engine/reference/commandline/run/) 命令运行三个容器中的任意一个。 该命令使用以下参数：
 
-| 占位符 | Value |
+| 占位符 | 值 |
 |-------------|-------|
 |{BILLING_KEY} | 此密钥用于启动此容器，并可在 Azure 门户上`Cognitive Services`密钥页。  |
 |{BILLING_ENDPOINT_URI} | 计费终结点 URI 值是可在 Azure 上`Cognitive Services`概述页。 <br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.0`|
