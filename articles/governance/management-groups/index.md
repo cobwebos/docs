@@ -4,15 +4,15 @@ description: 了解管理组、其权限的工作方式以及如何使用它们�
 author: rthorn17
 ms.assetid: 482191ac-147e-4eb6-9655-c40c13846672
 ms.service: azure-resource-manager
-ms.date: 04/17/2019
+ms.date: 04/22/2019
 ms.author: rithorn
 ms.topic: overview
-ms.openlocfilehash: 157701e826d6a281a60393e1ec270cf061be8214
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: ceb606f2243ef723866e485c6580a6323c1c92ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699369"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60874313"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>使用 Azure 管理组来组织资源
 
@@ -47,9 +47,8 @@ ms.locfileid: "59699369"
 
 ### <a name="important-facts-about-the-root-management-group"></a>关于根管理组的重要事实
 
-- 默认情况下，已提供根管理组的名称和 ID。 随时可以更新此显示名称，以便在 Azure 门户中显示其他名称。 若要[更改名称](manage.md#change-the-name-of-a-management-group)，必须在根管理组中为帐户分配“所有者”或“参与者”角色。
-  - 该名称将为“租户根组”。
-  - ID 将为 Azure Active Directory ID。
+- 默认情况下，根管理组的显示名称是**租户根组**。 ID 是 Azure Active Directory ID。
+- 若要更改显示名称，必须在根管理组中为帐户分配“所有者”或“参与者”角色。 有关更改名称的步骤，请参阅[更改管理组名称](manage.md#change-the-name-of-a-management-group)。
 - 无法像操作其他管理组一样移动或删除根管理组。  
 - 所有订阅和管理组归并到目录中的一个根管理组下。
   - 目录中的所有资源归并到根管理组进行全局管理。

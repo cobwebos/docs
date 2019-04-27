@@ -5,18 +5,18 @@ author: DCtheGeek
 manager: carmonm
 ms.service: blueprints
 ms.topic: sample
-ms.date: 03/14/2019
+ms.date: 04/22/2019
 ms.author: dacoulte
-ms.openlocfilehash: ed7afa695ab13540f5f571d94b23133133ffe59f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 03813bb440e90dd7a1d2caec543756f7fffc221b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59255948"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60876131"
 ---
 # <a name="azure-blueprints-samples"></a>Azure 蓝图示例
 
-下表包含 Azure 蓝图示例的链接。
+下表包含 Azure 蓝图示例的链接。 每个示例都可投入实际生产运行，并且现在已可供部署，以便帮助满足你的各种符合性需求。
 
 ## <a name="standards-based-blueprint-samples"></a>基于标准的蓝图示例
 
