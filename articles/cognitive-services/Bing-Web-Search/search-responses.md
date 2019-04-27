@@ -12,11 +12,11 @@ ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: seodec2018
 ms.openlocfilehash: 07fb655af25fe590effcb885e7b366346724b50a
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56232886"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60642790"
 ---
 # <a name="bing-web-search-api-response-structure-and-answer-types"></a>必应 Web 搜索 API 响应结构和答案类型  
 
@@ -288,7 +288,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下符号：
 
-|符号|说明|
+|符号|描述|
 |------------|-----------------|
 |+|加|
 |-|减|
@@ -302,7 +302,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下常量：
 
-|符号|说明|
+|符号|描述|
 |------------|-----------------|
 |Pi|3.14159...|
 |Degree|度|
@@ -312,7 +312,7 @@ Encoded query: 8^2%2B11^2-2*8*11*cos%2837%29
 
 数学表达式可包含以下函数：
 
-|符号|说明|
+|符号|描述|
 |------------|-----------------|
 |排序|平方根|
 |Sin[x]、Cos[x]、Tan[x]<br />Csc[x]、Sec[x]、Cot[x]|三角函数（以弧度为单位的参数）|
