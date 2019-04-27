@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
 ms.openlocfilehash: aaa5b3a85c08f11d821557257de451b8ffc8a3fc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860450"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814170"
 ---
 # <a name="calchistogram-method"></a>calchistogram 方法
 calchistogram 方法可计算与结构化查询表达式匹配的对象，并计算其属性值的分布。
@@ -23,7 +23,7 @@ calchistogram 方法可计算与结构化查询表达式匹配的对象，并计
 ## <a name="request"></a>请求
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
-Name|值|说明
+名称|值|描述
 ----|-----|-----------
 expr | 文本字符串 | 指定用于计算直方图的索引实体的结构化查询表达式。
 attributes | 文本字符串（默认值为 ""） | 要包含在响应中的以逗号分隔的属性列表。
@@ -31,7 +31,7 @@ attributes | 文本字符串（默认值为 ""） | 要包含在响应中的以�
 offset  | 数字（默认值为 0） | 要返回的第一个结果的索引。
 
 ## <a name="response-json"></a>响应 (JSON)
-JSONPath | 说明
+JSONPath | 描述
 ----|----
 $.expr | expr 参数来自请求。
 $.num_entities | 匹配实体的总数。

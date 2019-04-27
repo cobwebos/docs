@@ -4,20 +4,21 @@ titlesuffix: Azure Virtual Network
 description: 了解如何在 Azure 中使用公共和专用 IP 地址
 services: virtual-network
 documentationcenter: na
-author: jimdial
+author: KumudD
+manager: twooley
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/05/2019
-ms.author: jdial
-ms.openlocfilehash: 929c8808721140d5275cba4bcf3fbaa567f961e0
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.author: kumud
+ms.openlocfilehash: 69fd70fc45f734f8267db6d770d09b14f3a071f5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108138"
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure 中的 IP 地址类型和分配方法
 
@@ -78,6 +79,9 @@ ms.locfileid: "58652019"
  
 > [!NOTE]
 > 在创建并关联[网络安全组](security-overview.md#network-security-groups)且显式允许所需入站流量之前，到标准 SKU 资源的入站通信将会失败。
+
+> [!NOTE]
+> 仅使用时，使用基本 SKU 公共 IP 地址都可用[实例元数据服务 IMDS](../virtual-machines/windows/instance-metadata-service.md)。 不支持标准 SKU。
 
 ### <a name="allocation-method"></a>分配方法
 

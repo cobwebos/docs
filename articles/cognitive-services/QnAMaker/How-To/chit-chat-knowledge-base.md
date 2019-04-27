@@ -12,11 +12,11 @@ ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55858036"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61376028"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
@@ -24,7 +24,8 @@ ms.locfileid: "55858036"
 
 此数据集有大约 100 个场景的聊天内容，使用三种角色（专业、友好、有趣）的口音。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。 
 
-不同个性的一些示例：<!-- added quotes so acrolinx doesn't score these sentences -->
+不同的个性的一些示例：
+<!-- added quotes so acrolinx doesn't score these sentences -->
 |用户查询|专业|友好|有趣|
 |--|--|--|--|
 |`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|

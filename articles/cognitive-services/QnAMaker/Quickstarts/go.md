@@ -12,11 +12,11 @@ ms.date: 02/13/2019
 ms.author: diberry
 ms.custom: seodec18
 ms.openlocfilehash: f16909a9504b2868c1eecf849b9a1fd537cd6048
-ms.sourcegitcommit: b3d74ce0a4acea922eadd96abfb7710ae79356e0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56244252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60913542"
 ---
 # <a name="how-to-use-the-qna-maker-rest-api-with-go"></a>如何将 QnA Maker REST API 与 Go 配合使用 
 <a name="HOLTop"></a>
@@ -38,7 +38,7 @@ ms.locfileid: "56244252"
 - [获取当前区分大小写的字词变更集。](#GetAlterations)
 - [替换当前区分大小写的字词变更集。](#PutAlterations)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要使用 [Go 1.10.1](https://golang.org/dl/) 来运行此代码。
 

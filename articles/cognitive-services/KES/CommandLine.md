@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
 ms.openlocfilehash: 018552982a8ece3bbbaea2d60e2a6e64f681f822
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55860110"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815144"
 ---
 # <a name="command-line-interface"></a>命令行接口
 
@@ -36,7 +36,7 @@ build_index 命令可从架构定义文件和要编制索引对象的数据文�
 
 `kes.exe build_index <schemaFile> <dataFile> <indexFile> [options]`
 
-| 参数      | 说明               |
+| 参数      | 描述               |
 |----------------|---------------------------|
 | `<schemaFile>` | 输入架构路径 |
 | `<dataFile>`   | 输入数据路径   |
@@ -61,7 +61,7 @@ build_grammar 命令可将指定的 XML 格式的语法编译为二进制语法�
 
 `kes.exe build_grammar <xmlFile> <grammarFile>`
 
-| 参数       | 说明               |
+| 参数       | 描述               |
 |-----------------|---------------------------|
 | `<xmlFile>`     | 输入 XML 语法规范路径 |
 | `<grammarFile>` | 输出已编译语法路径         |
@@ -76,7 +76,7 @@ host_service 命令在本地计算机上承载 KES 服务实例。
 
 `kes.exe host_service <grammarFile> <indexFile> [options]`
 
-| 参数       | 说明                |
+| 参数       | 描述                |
 |-----------------|----------------------------|
 | `<grammarFile>` | 输入二进制语法路径         |
 | `<indexFile>`   | 输入二进制索引路径           |
@@ -94,7 +94,7 @@ deploy_service 命令可将 KES 服务实例部署到 Azure 云服务。
 
 `kes.exe deploy_service <grammarFile> <indexFile> <serviceName> <vmSize>[options]`
 
-| 参数       | 说明                  |
+| 参数       | 描述                  |
 |-----------------|------------------------------|
 | `<grammarFile>` | 输入二进制语法路径           |
 | `<indexFile>`   | 输入二进制索引路径             |
@@ -114,7 +114,7 @@ describe_index 命令可输出有关索引文件的信息（包括架构和说�
 
 `kes.exe describe_index <indexFile>`
 
-| 参数     | 说明      |
+| 参数     | 描述      |
 |---------------|------------------|
 | `<indexFile>` | 输入索引路径 |
 
@@ -128,7 +128,7 @@ describe_grammar 命令输出用来生成二进制语法的原始语法规范。
 
 `kes.exe describe_grammar <grammarFile>`
 
-| 参数       | 说明      |
+| 参数       | 描述      |
 |-----------------|------------------|
 | `<grammarFile>` | 输入语法路径 |
 

@@ -12,11 +12,11 @@ ms.date: 03/25/2019
 ms.author: tulasim
 ms.custom: seodec18
 ms.openlocfilehash: ae278ac3e0fd9f93e080da8f52b9728e9c22a436
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61373487"
 ---
 # <a name="quickstart-create-a-knowledge-base-using-the-qna-maker-api-service-portal"></a>快速入门：创建使用 QnA Maker API 服务门户的知识库
 

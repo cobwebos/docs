@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 7a7f5f6738b4bc96b6248deb062c7b3f63048148
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58309667"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61335580"
 ---
 # <a name="project-acoustics-azure-batch-account-setup"></a>项目噪声 Azure 批处理帐户设置
 本操作指南介绍了如何设置与项目噪声 Unity 和 Unreal 引擎集成一起使用的 Azure Batch 帐户。

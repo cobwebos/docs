@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 05/10/2018
 ms.author: marossi
 ms.openlocfilehash: b5f8c853218a1db53f4dd23e7254b35990a7132b
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55870259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829168"
 ---
 # <a name="experimentation"></a>试验
 
@@ -52,7 +52,7 @@ ms.locfileid: "55870259"
 
 有关上述参数的深入说明，请参阅 [Vowpal Wabbit 命令行参数](https://github.com/JohnLangford/vowpal_wabbit/wiki/Command-line-arguments)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 - Vowpal Wabbit：已安装并在你的路径上。
   - Windows:[使用 `.msi` 安装程序](https://github.com/eisber/vowpal_wabbit/releases)。
   - 其他平台：[获取源代码](https://github.com/JohnLangford/vowpal_wabbit/releases)。
@@ -77,10 +77,10 @@ python Experimentation.py [-h] -f FILE_PATH [-b BASE_COMMAND] [-p N_PROC]
 结果日志追加到 mwt-ds/DataScience/experiments.csv 文件。
 
 ### <a name="parameters"></a>parameters
-| 输入 | 说明 | 默认 |
+| 输入 | 描述 | 默认 |
 | --- | --- | --- |
 | `-h`、`--help` | 显示帮助消息并退出。 | |
-| `-f FILE_PATH`、`--file_path FILE_PATH` | 数据文件路径（`.json` 或 `.json.gz` 格式- 每行都是 `dsjson`）。 | 必选 |  
+| `-f FILE_PATH`、`--file_path FILE_PATH` | 数据文件路径（`.json` 或 `.json.gz` 格式- 每行都是 `dsjson`）。 | 需要 |  
 | `-b BASE_COMMAND`、`--base_command BASE_COMMAND` | 基本 Vowpal Wabbit 命令。  | `vw --cb_adf --dsjson -c` |  
 | `-p N_PROC`、`--n_proc N_PROC` | 要使用的并行进程数。 | 逻辑处理器 |  
 | `-s SHARED_NAMESPACES, --shared_namespaces SHARED_NAMESPACES` | 共享功能命名空间（例如，`abc` 意味着命名空间 `a`、`b` 和`c`）。  | 从数据文件自动检测 |  

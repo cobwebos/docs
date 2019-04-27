@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: diberry
 ms.openlocfilehash: 1333aefc145e95223624f42a28ec0bb31ab70065
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60011752"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60828116"
 ---
 # <a name="configure-text-analytics-docker-containers"></a>配置文本分析 docker 容器
 
@@ -51,7 +51,7 @@ ms.locfileid: "60011752"
 
 您需要添加`text/analytics/v2.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。
 
-|需要| Name | 数据类型 | 描述 |
+|需要| 名称 | 数据类型 | 描述 |
 |--|------|-----------|-------------|
 |是| `Billing` | String | 账单终结点 URI<br><br>示例：<br>`Billing=https://westus.api.cognitive.microsoft.com/text/analytics/v2.1` |
 
@@ -79,7 +79,7 @@ ms.locfileid: "60011752"
 
 主机确切语法的安装位置因主机操作系统不同而异。 此外，由于 docker 服务帐户使用的权限与主机安装位置权限之间的冲突，可能无法访问[主计算机](how-tos/text-analytics-how-to-install-containers.md#the-host-computer)的装载位置。 
 
-|可选| Name | 数据类型 | 描述 |
+|可选| 名称 | 数据类型 | 描述 |
 |-------|------|-----------|-------------|
 |不允许| `Input` | String | 文本分析容器不使用此项。|
 |可选| `Output` | String | 输出装入点的目标。 默认值为 `/output`。 这是日志的位置。 这包括容器日志。 <br><br>示例：<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -95,7 +95,7 @@ ms.locfileid: "60011752"
 
 将 {_argument_name_} 替换为为你自己的值：
 
-| 占位符 | Value | 格式或示例 |
+| 占位符 | 值 | 格式或示例 |
 |-------------|-------|---|
 |{BILLING_KEY} | 为终结点密钥的`Cognitive Services`可在 Azure 上的资源`Cognitive Services`密钥页。 |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|
 |{BILLING_ENDPOINT_URI} | 计费的终结点值是可在 Azure 上`Cognitive Services`概述页。|`https://westus.api.cognitive.microsoft.com/text/analytics/v2.1`|

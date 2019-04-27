@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: diberry
 ms.openlocfilehash: f59f281b1bf7fa2851ab7759a0167b5d39ef44c1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678983"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61372647"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>使用 active 学习来改善您的知识库
 
@@ -171,10 +171,10 @@ Content-Type: application/json
 
 |HTTP 请求属性|名称|Type|目的|
 |--|--|--|--|
-|URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
-|主机子域|QnAMaker 资源名称|字符串|在 Azure 订阅中将 QnA Maker 的主机名。 这是可在设置页上后发布该知识库。 |
-|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
-|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|URL 路由参数|知识库 ID|string|知识库的 GUID。|
+|主机子域|QnAMaker 资源名称|string|在 Azure 订阅中将 QnA Maker 的主机名。 这是可在设置页上后发布该知识库。 |
+|标头|Content-Type|string|发送到 API 的正文的媒体类型。 默认值为： `application/json`|
+|标头|授权|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|培训反馈|
 
 JSON 正文具有多个设置：
@@ -182,8 +182,8 @@ JSON 正文具有多个设置：
 |JSON 正文属性|Type|目的|
 |--|--|--|--|
 |`feedbackRecords`|数组|反馈的列表。|
-|`userId`|字符串|接受建议的问题的人员的用户 ID。 用户 ID 格式是由您决定。 例如，电子邮件地址可以是您的体系结构中的有效用户 ID。 可选。|
-|`userQuestion`|字符串|问题的确切文本。 必需。|
+|`userId`|string|接受建议的问题的人员的用户 ID。 用户 ID 格式是由您决定。 例如，电子邮件地址可以是您的体系结构中的有效用户 ID。 可选。|
+|`userQuestion`|string|问题的确切文本。 必需。|
 |`qnaID`|数字|在中找到的问题的 ID [GenerateAnswer 响应](metadata-generateanswer-usage.md#generateanswer-response-properties)。 |
 
 一个 JSON 正文示例如下所示：

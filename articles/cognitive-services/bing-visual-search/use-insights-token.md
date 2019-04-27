@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 4/05/2019
 ms.author: scottwhi
 ms.openlocfilehash: e42e56e6361b1fde7ab13655d3c57a90d7235938
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831922"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>使用 insights 标记图像中获取见解
 
@@ -475,7 +475,7 @@ if __name__ == '__main__':
 
 ## <a name="next-steps"></a>后续步骤
 
-[创建视觉搜索的单页 web 应用](tutorial-bing-visual-search-single-page-app.md)  
+[创建视觉搜索单页 Web 应用](tutorial-bing-visual-search-single-page-app.md)  
 [必应视觉搜索 API 是什么？](overview.md)  
 [试用认知服务](https://aka.ms/bingvisualsearchtryforfree)  
 [获取免费试用访问密钥](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  

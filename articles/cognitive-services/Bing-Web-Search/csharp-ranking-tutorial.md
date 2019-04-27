@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: bking
 ms.openlocfilehash: 7c074d5d25453e2b2a1ddfc32422790235815f1c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55872510"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61431151"
 ---
 # <a name="build-a-console-app-search-client-in-c"></a>使用 C# 生成控制台应用搜索客户端
 
@@ -27,7 +27,7 @@ ms.locfileid: "55872510"
 - 对必应 Web 搜索 API 进行简单查询
 - 按排名顺序显示查询结果
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要跟随本教程进行学习，你需要：
 

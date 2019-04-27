@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: sajagtap
 ms.openlocfilehash: df8d957fc2de620d63567a9cc1b14b24b73052bb
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61268896"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -37,9 +37,9 @@ ms.locfileid: "58351127"
 
 ### <a name="can-i-use-content-moderator-to-screen-for-illegal-child-exploitation-images"></a>我能否使用内容审查器筛查非法儿童剥削图像？
 
-不是。 不过，合格组织可以使用 [PhotoDNA 云服务](https://www.microsoft.com/photodna "Microsoft PhotoDNA 云服务")筛查此类内容。
+不。 不过，合格组织可以使用 [PhotoDNA 云服务](https://www.microsoft.com/photodna "Microsoft PhotoDNA 云服务")筛查此类内容。
 
-### <a name="how-many-review-teams-can-a-user-join-can-the-user-switch-between-teams"></a>多少查看团队可以用户联接？ 用户能否切换团队？
+### <a name="how-many-review-teams-can-a-user-join-can-the-user-switch-between-teams"></a>用户最多可以加入多少个评审团队？ 用户能否切换团队？
 
 用户一次只能加入一个团队。
 
@@ -53,4 +53,4 @@ ms.locfileid: "58351127"
 
 ### <a name="how-many-team-members-can-i-have-in-my-review-team"></a>我的审阅团队可以有多少名团队成员？
 
-您可以最多 5 名团队成员，包括管理员，在团队中。
+团队中最多可以有 5 名成员（包括管理员在内）。

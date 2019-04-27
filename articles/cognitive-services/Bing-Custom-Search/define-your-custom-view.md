@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c4cb93e39a67e13646a339af6ac999a8fd96b383
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56234809"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129632"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>配置必应自定义搜索体验
 
@@ -25,7 +25,7 @@ ms.locfileid: "56234809"
 
 定义 Web 切片时，请使用以下各项：
 
-| 切片名称 | 说明                                                                                                                                                                                                                                                                                                |
+| 切片名称 | 描述                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | 域     | 域切片包括在 Internet 域中找到的所有内容。 例如，`www.microsoft.com`。 省略 `www.` 会导致必应同时搜索该域的子域。 例如，如果指定  `microsoft.com`，则必应还会返回来自  `support.microsoft.com` 或 `technet.microsoft.com` 的结果。 |
 | 子页面    | 子页面切片包括在子页面及其下面的路径中找到的所有内容。 最多可在路径中指定两个子页面。 例如： `www.microsoft.com/en-us/windows/`                                                                                                                       |
@@ -129,7 +129,7 @@ ms.locfileid: "56234809"
 > [!NOTE]
 > 用户搜索查询之间的所有比较以及固定项的搜索查询不区分大小写。
 
-| 值 | 说明                                                                          |
+| 值 | 描述                                                                          |
 |---------------|----------------------------------------------------------------------------------|
 | 开头为 | 如果用户的查询字符串以固定项的查询字符串开头，则固定项为匹配项 |
 | 结尾为   | 如果用户的查询字符串以固定项的查询字符串结尾，则固定项为匹配项。  |

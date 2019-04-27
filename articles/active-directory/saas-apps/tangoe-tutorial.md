@@ -17,11 +17,11 @@ ms.date: 07/20/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8c9f410fa890df7aac3c3bf4d89468b92e69ba38
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56883226"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869081"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>教程：Azure Active Directory 与 Tangoe Command Premium Mobile 集成
 
@@ -169,7 +169,7 @@ ms.locfileid: "56883226"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-a-tangoe-command-premium-mobile-test-user"></a>创建 Tangoe Command Premium Mobile 测试用户
 

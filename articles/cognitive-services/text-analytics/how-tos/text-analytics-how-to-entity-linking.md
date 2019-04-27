@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/16/2019
 ms.author: aahi
 ms.openlocfilehash: c179620d6858658dface5f706f7994d51f1a199b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829712"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>如何在文本分析中使用命名实体识别
 
@@ -69,7 +69,7 @@ ms.locfileid: "59997302"
 
 ## <a name="preparation"></a>准备工作
 
-必须设置采用以下格式的 JSON 文档：ID、 文本、 语言
+必须拥有以下格式的 JSON 文档：ID、文本、语言
 
 有关当前支持的语言，请参阅[此列表](../text-analytics-supported-languages.md)。
 
@@ -279,7 +279,7 @@ ms.locfileid: "59997302"
 在本文中，你已了解使用认知服务中的文本分析进行实体链接的概念和工作流。 综上所述：
 
 + [实体 API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634) 适用于选定语言。
-+ 请求正文中的 JSON 文档包括 ID、 文本和语言代码。
++ 请求正文中的 JSON 文档包括 ID、文本和语言代码。
 + POST 请求的目标是 `/entities` 终结点，方法是使用对订阅有效的个性化[访问密钥和终结点](text-analytics-how-to-access-key.md)。
 + 响应输出由链接实体（包括每个文档 ID 的置信度分数、偏移量和 Web 链接）组成，可用于任何应用程序
 

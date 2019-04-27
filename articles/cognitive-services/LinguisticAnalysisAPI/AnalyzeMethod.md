@@ -12,11 +12,11 @@ ms.date: 12/13/2016
 ms.author: lesun
 ROBOTS: NOINDEX
 ms.openlocfilehash: 02c41e2510fd77f4bb65143faf62737f0985d2b7
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57431132"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61401179"
 ---
 # <a name="analyze-method"></a>分析方法
 
@@ -40,9 +40,9 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 名称 | Type | 需要 | 描述
 -----|-------|----------|------------
-**语言**    | 字符串 | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
+**语言**    | string | 是 | 将用于分析的两个字母的 ISO 语言编码。 例如，English 为“en”。
 **analyzerIds** | 字符串列表 | 是 | 要应用的分析器的 GUID 列表。 有关详细信息，请参阅分析器文档。
-**text**        | 字符串 | 是 | 要分析的原始输入。 这可能是一个短字符串，如单词或短语、完整的句子或完整的段落或语篇。
+**text**        | string | 是 | 要分析的原始输入。 这可能是一个短字符串，如单词或短语、完整的句子或完整的段落或语篇。
 
 ## <a name="response-json"></a>响应 (JSON)
 
@@ -52,7 +52,7 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 名称 | 类型 | 描述
 -----|------|--------------
-analyzerId | 字符串 | 指定分析器的 GUID
+analyzerId | string | 指定分析器的 GUID
 结果 | 对象 | 分析器结果
 
 请注意，结果的类型取决于输入分析器类型。
@@ -67,8 +67,8 @@ result[x].Len | int | 每个句子的字符长度 |
 result[x].Tokens | 令牌对象列表 | 句子内确定的令牌边界 |
 result[x].Tokens[y].Offset | int | 令牌的起始字符偏移量 |
 result[x].Tokens[y].Len | int | 令牌的字符长度 |
-result[x].Tokens[y].RawToken | 字符串 | 规范化前，令牌内的字符 |
-result[x].Tokens[y].NormalizedToken | 字符串 | 字符的规范化形式，可在[分析树](Constituency-Parsing.md)中安全使用；例如，左括号字符“(”变为“-LRB-” |
+result[x].Tokens[y].RawToken | string | 规范化前，令牌内的字符 |
+result[x].Tokens[y].NormalizedToken | string | 字符的规范化形式，可在[分析树](Constituency-Parsing.md)中安全使用；例如，左括号字符“(”变为“-LRB-” |
 
 示例输入：`This is a test. Hello.'
 示例 JSON 响应：

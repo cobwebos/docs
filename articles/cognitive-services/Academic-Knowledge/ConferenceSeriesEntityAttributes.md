@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alch
 ms.openlocfilehash: 38b4aa4c899668a68041f042ce6981ddd8c58219
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55884913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61340190"
 ---
 # <a name="conference-series-entity"></a>会议录实体
 
 <sub> *以下属性为会议录实体专用属性。(Ty = '3') </sub>
 
-Name    |说明                            |Type       | 操作
+名称    |描述                            |Type       | 操作
 ------- | ------------------------------------- | --------- | ----------------------------
 ID      |实体 ID                              |Int64      |等于
 CN      |会议录规范化名称      |String     |等于

@@ -11,11 +11,11 @@ ms.topic: resources
 ms.date: 03/20/2019
 ms.author: kegodin
 ms.openlocfilehash: 3426681aad19bbe01c0f7e88ca16e79c0b490c36
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317300"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61335324"
 ---
 # <a name="project-acoustics-frequently-asked-questions"></a>项目噪声方面的常见问题
 
@@ -45,7 +45,7 @@ ms.locfileid: "58317300"
  
 ## <a name="do-i-need-to-simplify-the-level-geometry-control-triangle-count-make-meshes-watertight"></a>是否需要简化水平几何体？ 控制三角形计数？ 使网格严密？
 
-不是。 系统将直接引入详细的水平几何体。 它将体素化，以便进行内部处理。
+不。 系统将直接引入详细的水平几何体。 它将体素化，以便进行内部处理。
  
 ## <a name="whats-in-the-runtime-lookup-table"></a>运行时查找表中是什么？
 
@@ -57,11 +57,11 @@ ACE 文件包括是大量源和侦听器位置对，以及用于参数内插 vox
  
 ## <a name="can-project-acoustics-handle-dynamic-geometry-closing-doors-walls-blown-away"></a>项目噪声可以处理动态 geometry？ 关门？ 墙壁被吹走了？
 
-不是。 声学参数是根据静态的游戏级别预先计算出来的。 我们建议保留从噪声，门几何图形，然后将应用其他封闭根据易损坏的状态，并且使用可移动的游戏对象建立技术。
+不。 声学参数是根据静态的游戏级别预先计算出来的。 我们建议保留从噪声，门几何图形，然后将应用其他封闭根据易损坏的状态，并且使用可移动的游戏对象建立技术。
  
 ## <a name="does-project-acoustics-use-acoustic-materials"></a>项目噪声是否使用声学资料？
 
-是的。 材料从你所处级别的物理材料名称中选取，促进吸音能力。
+可以。 材料从你所处级别的物理材料名称中选取，促进吸音能力。
  
 ## <a name="what-do-the-probes-represent"></a>“探测”代表什么？
 

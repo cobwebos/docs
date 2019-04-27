@@ -12,11 +12,11 @@ ms.date: 03/13/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: 95682612b4b0fdb1baa5038039630e74abddb1a9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57890461"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61460314"
 ---
 # <a name="what-is-speech-translation"></a>语音翻译是什么？
 
@@ -67,9 +67,9 @@ Speech SDK 的示例代码位于 GitHub 上提供。 这些示例涵盖了从文
 
 * [语音 SDK](speech-sdk-reference.md)
 * [语音设备 SDK](speech-devices-sdk.md)
-* [REST API：语音到文本](rest-speech-to-text.md)
-* [REST API：Text-to-speech](rest-text-to-speech.md)
-* [REST API：批处理脚本和自定义](https://westus.cris.ai/swagger/ui/index)
+* [REST API：语音转文本](rest-speech-to-text.md)
+* [REST API：文本转语音](rest-text-to-speech.md)
+* [REST API：批量听录和自定义](https://westus.cris.ai/swagger/ui/index)
 
 ## <a name="next-steps"></a>后续步骤
 

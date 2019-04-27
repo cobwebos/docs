@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.date: 04/01/2019
 ms.author: diberry
 ms.openlocfilehash: 5fa922cb91d34483256faf4dcf70569aa2f17b97
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813831"
 ---
 # <a name="entity-roles-for-contextual-subtypes"></a>上下文的子类型的实体角色
 
-角色允许实体具有名为的子类型。 角色可以用于任何预生成或自定义实体类型，并在示例语音样本和模式中使用。 
+角色允许实体具有名为的子类型。 角色可与任何预生成的或自定义的实体类型配合使用，并可在示例言语和模式中使用。 
 
 <a name="example-role-for-entities"></a>
 <a name="roles-with-prebuilt-entities"></a>
@@ -37,8 +37,8 @@ buy a ticket from New York to London
 
 |实体类型|实体名称|角色|目的|
 |--|--|--|--|
-|简单|位置|origin|飞机起飞地|
-|简单|位置|目标|飞机降落地|
+|简单|Location|origin|飞机起飞地|
+|简单|Location|目标|飞机降落地|
 
 ## <a name="non-machine-learned-entity-example-of-roles"></a>非机器学习了实体的角色的示例
 
