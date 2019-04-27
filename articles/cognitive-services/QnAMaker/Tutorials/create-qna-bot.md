@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 04/08/2019
 ms.author: tulasim
 ms.openlocfilehash: 85b0004288a06a834b61f6e3d50017d35d66ce86
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59263870"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599035"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>教程：创建与 Azure 的 QnA 机器人智能机器人应用程序服务 v4
 
@@ -52,7 +52,7 @@ ms.locfileid: "59263870"
     |机器人名称|`my-tutorial-kb-bot`|这是智能机器人应用程序的 Azure 资源名称。|
     |订阅|请参阅用途。|选择作为您用来创建 QnA Maker 资源相同的订阅。|
     |资源组|`my-tutorial-rg`|使用所有的智能机器人应用程序相关 Azure 资源的资源组。|
-    |位置|`west us`|智能机器人应用程序的 Azure 资源位置。|
+    |Location|`west us`|智能机器人应用程序的 Azure 资源位置。|
     |定价层|`F0`|Azure 机器人服务免费层。|
     |应用程序名称|`my-tutorial-kb-bot-app`|这是一个 web 应用以支持仅智能机器人。 这不应是相同的应用名称，因为已在使用 QnA Maker 服务。 不支持与任何其他资源共享 QnA Maker 提供的 web 应用。|
     |SDK 语言|C#|这是使用 bot framework SDK 的基础编程语言。 您可以选择C#或 Node.js。|

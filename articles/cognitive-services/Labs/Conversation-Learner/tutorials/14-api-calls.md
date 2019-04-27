@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: aba3c2eb925370704ea52364891502a7a09cc9ec
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55212505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635711"
 ---
 # <a name="how-to-add-api-calls-to-a-conversation-learner-model"></a>如何将 API 调用添加到对话学习器模型
 

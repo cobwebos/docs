@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: bc38b4457179c11f9d6b2656aacb8aa66848c444
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57992474"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60581031"
 ---
 # <a name="bing-local-business-search-api-v7-reference"></a>必应当地企业搜索 API v7 参考
 
@@ -86,7 +86,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 以下是响应中可以包含的 JSON 响应对象。 如果请求成功，则响应中的顶级对象是 [SearchResponse](#searchresponse) 对象。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
 
-|对象|描述|  
+|Object|描述|  
 |------------|-----------------|  
 |[Place](#place)|定义有关餐厅或酒店等当地企业的信息。|  
 
@@ -129,7 +129,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
-|text|显示文本。|String|  
+|Text|显示文本。|String|  
 |url|一个 URL。 使用 URL 和显示文本创建超链接。|String|  
   
 
@@ -193,7 +193,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
 |textualIndex|textualAnswers 中要显示的答案的索引。| 无符号整数|
-|值|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
+|value|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 定义应将内容置于搜索结果页的何处以及应采用什么顺序。  

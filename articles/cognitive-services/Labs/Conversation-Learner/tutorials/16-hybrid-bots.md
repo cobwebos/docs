@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: v-jaswel
 ms.openlocfilehash: b90fc42aa56bfc813ec464670336dea75cff0f0e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58117432"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640250"
 ---
 # <a name="how-to-use-conversation-learner-with-other-bot-building-technologies"></a>如何将对话学习器与其他机器人构建技术结合使用
 

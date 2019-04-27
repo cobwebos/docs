@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
 ms.openlocfilehash: dade442cb04f79ef75e65d6eb29128b105e72b40
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60707691"
 ---
 # <a name="how-to-add-pre-trained-entities"></a>如何添加预先训练的实体
 本教程展示了如何向 Conversation Learner 模型添加预先训练的实体。

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: nitinme
 ms.openlocfilehash: 2464424b537f6187542fb612626cff115711d6e5
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336280"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60608971"
 ---
 # <a name="what-are-azure-cognitive-services"></a>什么是 Azure 认知服务？
 
@@ -94,11 +94,11 @@ Azure 认知服务是 API、SDK 和服务，可帮助开发人员生成智能应
 
  认知服务提供用于在 Azure 云或本地部署的容器。 详细了解[认知服务容器](cognitive-services-container-support.md)。
 
-## <a name="certifications-and-compliance"></a>认证和法规遵从性
+## <a name="certifications-and-compliance"></a>认证和符合性
 
-认知服务已被授予如 CSA STAR 认证、 FedRAMP 中等和 HIPAA BAA 的认证。 
+认知服务已获得多种认证，例如 CSA STAR Certification、FedRAMP Moderate 和 HIPAA BAA。 
 
-你可以[下载](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)认证审核和安全检查。 
+可以[下载](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942)认证自行进行审核和安全审查。 
 
 若要了解隐私和数据管理，请转到[信任中心](https://servicetrust.microsoft.com/)。 
 

@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/28/2019
 ms.author: panosper
 ms.openlocfilehash: 24b98ce8cd2c587f0d39390954eb8a64747ca2ab
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55868321"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60653957"
 ---
 # <a name="creating-custom-voice-fonts"></a>创建自定义语音字体
 
@@ -25,7 +25,7 @@ ms.locfileid: "55868321"
 
 一开始可以使用少量数据进行概念证明。 不过，提供的数据越多，语音听起来越自然，越专业。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要一个 Azure 帐户和语音服务的订阅。 如果还没有该订阅，请[创建一个](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started)。 将订阅连接到自定义语音门户，如此处所示。
 

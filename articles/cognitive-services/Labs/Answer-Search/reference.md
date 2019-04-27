@@ -11,11 +11,11 @@ ms.topic: reference
 ms.date: 04/13/2018
 ms.author: rosh, v-gedod
 ms.openlocfilehash: 09fab691ea04ad98472abc4f4dee5ecb4d22e660
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60721005"
 ---
 # <a name="project-answer-search-v7-reference"></a>项目答案搜索 v7 参考
 
@@ -96,7 +96,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 就像在 Web 搜索 API 中一样，响应架构为 [WebPage] 或 ErrorResponse。 如果请求失败，则顶级对象为 [ErrorResponse](#errorresponse) 对象。
 
 
-|对象|描述|  
+|Object|描述|  
 |------------|-----------------|  
 |[WebPage]|包含预览属性的顶级 JSON 对象。|  
 |[Fact]|包含事实的顶级 JSON 对象。| 
@@ -153,7 +153,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |名称|值|Type|  
 |----------|-----------|----------|  
 |_type|类型提示。|String|  
-|text|显示文本。|String|  
+|Text|显示文本。|String|  
 |url|一个 URL。 使用 URL 和显示文本创建超链接。|String|  
   
 
@@ -165,7 +165,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |_type|一种类型提示，设置为 LinkAttribution。|String|  
 |mustBeCloseToContent|一个布尔值，确定是否必须将规则的内容置于规则所应用到的字段的附近。 如果为 **true**，则必须将内容置于附近。 如果为 **false**，或者此字段不存在，则内容可由调用方随意放置。|Boolean|  
 |targetPropertyName|规则应用到的字段的名称。<br /><br /> 如果目标未指定，则此属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本和链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。 例如，“数据来自 <提供者名称 1\> &#124; <提供者名称 2\>”。|String|  
-|text|属性文本。|String|  
+|Text|属性文本。|String|  
 |url|提供者网站的 URL。 使用 `text` 和 URL 创建超链接。|String|  
   
   
@@ -201,7 +201,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |名称|页面标题，不一定是 HTML 标题|String|
 |url|进行了实际爬网的 URL（请求可能已随之进行了重定向）|String|  
 |description|对页面和内容的简要说明|String|  
-|isFamilyFriendly|对 Web 索引中的项来说最准确；实时提取完全根据 URL 而非页面内容来执行此检测|布尔值|
+|isFamilyFriendly|对 Web 索引中的项来说最准确；实时提取完全根据 URL 而非页面内容来执行此检测|boolean|
 |primaryImageOfPage/contentUrl|将包括在预览版中的代表性图像的 URL|String| 
   
   
@@ -237,7 +237,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |resultIndex|要显示答案中的项的从零开始的索引。 如果项不包含此字段，则显示答案中的所有项。 例如，显示“新闻”答案中的所有新闻文章。|Integer|
 |answerType|一个答案，包含要显示的项。 例如，新闻。<br /><br />使用此类型查找 SearchResponse 对象中的答案。 此类型是 SearchResponse 字段的名称。<br /><br /> 不过，只有在此对象包含值字段的情况下，才使用答案类型；否则，请忽略它。|String|
 |textualIndex|textualAnswers 中要显示的答案的索引。| 无符号整数|
-|值|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
+|value|一个 ID，用于标识要显示的答案或要显示的答案的项。 如果此 ID 标识某个答案，则显示该答案的所有项。|Identifiable|
 
 ### <a name="rankingresponse"></a>RankingResponse  
 定义应将内容置于搜索结果页的何处以及应采用什么顺序。  
@@ -257,7 +257,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 SearchResponse。|String|  
-|WebPage|一个 JSON 对象，用于定义预览版|字符串|  
+|WebPage|一个 JSON 对象，用于定义预览版|string|  
   
   
 ### <a name="textattribution"></a>TextAttribution  
@@ -266,7 +266,7 @@ https://api.labs.cognitive.microsoft.com/answerSearch/v7.0/search?q=<searchTerm>
 |名称|值|Type|  
 |----------|-----------|----------|  
 |_type|一种类型提示，设置为 TextAttribution。|String|  
-|text|属性文本。<br /><br /> 文本属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本或链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。|String| 
+|Text|属性文本。<br /><br /> 文本属性适用于整个实体，会在实体呈现后立即显示。 如果有多个文本或链接属性规则未指定目标，则应将它们连接起来，并使用“数据来自: ”标签来显示它们。|String| 
 
 
 ## <a name="error-codes"></a>错误代码

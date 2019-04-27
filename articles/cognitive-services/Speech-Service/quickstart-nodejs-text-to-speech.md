@@ -12,11 +12,11 @@ ms.date: 01/11/2019
 ms.author: erhopf
 ms.custom: seodec18
 ms.openlocfilehash: a7713576565ca2632d7d91857040ece4d02c411b
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621941"
 ---
 # <a name="quickstart-convert-text-to-speech-using-nodejs"></a>快速入门：使用 Node.js 将文本转换为语音
 
@@ -136,9 +136,9 @@ function textToSpeech(accessToken, text) {
 
 ## <a name="put-it-all-together"></a>将其放在一起
 
-即将完成。 最后一步是创建异步函数。 此函数将读取你的订阅密钥从环境变量，提示输入文本，获取令牌，等待请求完成，然后将文本到语音转换并将音频保存为.wav。
+即将完成。 最后一步是创建异步函数。 此函数会从环境变量中读取订阅密钥，提示你输入文本，接着获取令牌，等待请求完成，然后将文本转换为语音，再将音频另存为 .wav。
 
-如果您熟悉环境变量，或想测试与你的订阅密钥硬编码字符串形式，将为`process.env.SPEECH_SERVICE_KEY`与你的订阅密钥作为一个字符串。
+如果不熟悉环境变量，或者首选在测试时将订阅密钥硬编码为字符串，请将 `process.env.SPEECH_SERVICE_KEY` 替换为字符串形式的订阅密钥。
 
 ```javascript
 // Use async and await to get the token before attempting
