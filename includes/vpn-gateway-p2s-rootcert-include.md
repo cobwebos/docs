@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/11/2018
-ms.author: cherylmc
+origin.date: 12/11/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 4c8e7e5272f180c482ca7fdd44302f49eb888b25
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319991"
 ---
 使用通过企业解决方案生成的根证书（推荐），或者生成自签名证书。 创建根证书后，将公共证书数据（不是私钥）作为 Base64 编码的 X.509 .cer 文件导出。 然后，将公共证书数据上传到 Azure 服务器。
 

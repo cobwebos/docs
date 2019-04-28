@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 072864d565e2edbddd4b7df851ad0e30daf7e5fa
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58505711"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60387925"
 ---
 若要诊断 Microsoft Azure 云服务的问题，需要在问题发生时收集虚拟机上该服务的日志文件。 可以使用 AzureLogCollector 扩展按需从一个或多个云服务 VM（通过 Web 角色和辅助角色）执行一次性日志收集，并将收集到的文件传输到 Azure 存储帐户 - 所有这些操作都无需远程登录到任何 VM。
 

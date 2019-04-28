@@ -13,7 +13,7 @@ ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60187665"
+ms.locfileid: "60418638"
 ---
 如果在对共享映像库、映像定义和映像版本执行任何操作时遇到问题，请在调试模式下再次运行失败的命令。 若要激活调试模式，可以通过 CLI 来传递 **-debug** 开关，通过 PowerShell 来传递 **-Debug** 开关。 确定错误的位置以后，请按本文档的说明来排查错误。
 

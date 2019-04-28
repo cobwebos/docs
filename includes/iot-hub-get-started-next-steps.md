@@ -9,11 +9,11 @@ ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 9f7f71f47fadd7cfe2364acf1a8505e1967a78e5
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56333961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60399505"
 ---
 若要继续了解 Azure IoT 中心入门知识并浏览所有扩展的 IoT 方案，请参阅：
 

@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 80503ad154a9fc4d01614ffd2816f9d5fd497fdb
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228879"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309479"
 ---
 <a name="paths"></a>
 ## <a name="paths"></a>路径
@@ -29,14 +29,14 @@ POST /anomalydetection
 
 #### <a name="parameters"></a>parameters
 
-|Type|Name|说明|架构|
+|Type|名称|描述|架构|
 |---|---|---|---|
 |**正文**|**body**  <br>（必需）|时序数据点和周期（如需）。|[请求](#request)|
 
 
 #### <a name="responses"></a>响应
 
-|HTTP 代码|说明|架构|
+|HTTP 代码|描述|架构|
 |---|---|---|
 |**200**|成功的操作。|< [响应](#response) > 数组|
 |**400**|无法分析 JSON 请求。|无内容|

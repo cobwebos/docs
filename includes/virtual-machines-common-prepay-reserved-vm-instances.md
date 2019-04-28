@@ -5,11 +5,11 @@ ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 04/13/2019
 ms.openlocfilehash: d9b9aae8bea323e5aac74a2e317b82d4cb43568f
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60118396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60406857"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>通过 Azure 虚拟机预留实例为虚拟机预付费
 
@@ -72,7 +72,7 @@ ms.locfileid: "60118396"
 
     | 字段      | 描述|
     |------------|--------------|
-    |Name        |此预订的名称。|
+    |名称        |此预订的名称。|
     |订阅|用于支付预订费用的订阅。 将向订阅的付款方式收取预订的预付费用。 订阅类型必须为企业协议（套餐编号：MS-AZR-0017P 或 MS-AZR-0148P），或即用即付（产品/服务编号：MS-AZR-0003P 或 MS-AZR-0023P）。 对于企业订阅，从注册的货币承诺余额中扣除费用或作为超额收取费用。 对于即用即付订阅，将向订阅的信用卡或发票付款方式收取费用。|    
     |范围       |预订的范围可以包含一个订阅或多个订阅（共享范围）。 如果选择： <ul><li>单个订阅 - 预订折扣将应用到此订阅中的 VM。 </li><li>共享 - 预订折扣将应用到计费上下文中任何订阅中运行的 VM。 对于企业客户，共享范围是注册范围，包括注册中的所有订阅。 对于即用即付客户，共享范围是由帐户管理员创建的所有即用即付订阅。</li></ul>|
     |区域    |预订涵盖的 Azure 区域。|    

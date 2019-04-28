@@ -9,11 +9,11 @@ ms.date: 04/06/2019
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: b6cafcfe6c892cd43f056458fe3586da834c2fd1
-ms.sourcegitcommit: 1a19a5845ae5d9f5752b4c905a43bf959a60eb9d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/11/2019
-ms.locfileid: "59497334"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60403572"
 ---
 可以通过 Functions 轻松地将 Application Insights 集成从 [Azure 门户]添加到某个函数应用。
 

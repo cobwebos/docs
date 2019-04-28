@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 3c008e77116a9b42a2ea137069529c5e241adddd
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56212943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61456836"
 ---
 使用[虚拟机规模集](../articles/virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)和 [Azure Monitor 的自动缩放功能](../articles/azure-monitor/platform/autoscale-overview.md)时，可以轻松[自动缩放](../articles/azure-monitor/platform/autoscale-best-practices.md)[虚拟机 (VM)](../articles/virtual-machines/windows/overview.md)。 VM 需要成为规模集的成员才能自动缩放。 本文提供了用于更好地了解如何使用自动和手动方法以纵向方式和横向方式缩放 VM 的信息。
 

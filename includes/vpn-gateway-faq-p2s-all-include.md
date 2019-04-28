@@ -9,11 +9,11 @@ ms.date: 01/18/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: f72ce02a8655ea97497098dc1412f69e07686861
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59284903"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319995"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以有多少 VPN 客户端终结点？
 
@@ -54,7 +54,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>对于同一虚拟网络，站点到站点和点到站点配置能否共存？
 
-是的。 对于资源管理器部署模型，必须为网关使用 RouteBased VPN 类型。 对于经典部署模型，需要一个动态网关。 不支持将点到站点配置用于静态路由 VPN 网关或 PolicyBased VPN 网关。
+可以。 对于资源管理器部署模型，必须为网关使用 RouteBased VPN 类型。 对于经典部署模型，需要一个动态网关。 不支持将点到站点配置用于静态路由 VPN 网关或 PolicyBased VPN 网关。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
@@ -76,7 +76,7 @@ Azure 支持两种类型的点到站点 VPN 选项：
 
 1. 安装更新。
 
-   | OS 版本 | 日期 | 编号/链接 |
+   | OS 版本 | date | 编号/链接 |
    |---|---|---|
    | Windows Server 2016<br>Windows 10 版本 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10 版本 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |

@@ -5,18 +5,18 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571832"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60309129"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>指定矩形数据集的结构定义
 数据集 JSON 中的结构部分是矩形表（包括行与列）的**可选**部分，其中包含该表的列集合。 结构部分用于提供类型转换的类型信息或执行列映射。 以下部分更详细说明了这些功能。 
 
 每个列包含以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | 名称 |列的名称。 |是 |
 | type |列的数据类型。 有关何时应指定类型信息，请参阅下面的类型转换部分 |否 |
@@ -51,7 +51,7 @@ ms.locfileid: "51571832"
 * Int64
 * Single
 * Double
-* 小数
+* Decimal
 * Byte[]
 * Bool
 * String 

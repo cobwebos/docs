@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.author: chliang
 ms.custom: include file
 ms.openlocfilehash: 3cc0e521e43f6855397a19fe34fce99da3e20494
-ms.sourcegitcommit: 95822822bfe8da01ffb061fe229fbcc3ef7c2c19
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55228844"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60408258"
 ---
 借助[异常查找器 API](https://labs.cognitive.microsoft.com/en-us/project-anomaly-finder) 可将 JSON 格式的时序数据上传到 API 终结点，然后从 API 响应中读取结果。 可上传时序数据，每个数据点包括：  
 * 时间戳 - 数据点的时间戳。 请确保时间戳使用 UTC 日期时间字符串，例如“2017-08-01T00:00:00Z”

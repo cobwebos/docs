@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: d35da4f1eaed91411c015ed7665944d886f9d79c
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53443995"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407501"
 ---
 若要使用 Azure 门户在 Resource Manager 部署模型中创建 VNet，请执行以下步骤。 如果是在教程中使用这些步骤，请使用[示例值](#values)。 如果并非在教程中使用这些步骤，请务必将其中的值替换为自己的值。 有关使用虚拟网络的详细信息，请参阅 [虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
 
@@ -36,4 +36,4 @@ ms.locfileid: "53443995"
    - **位置**：选择 VNet 的位置。 该位置确定要部署到此 VNet 的资源所在的位置。
    - **子网**：添加首个子网名和子网地址范围。 创建此 VNet 后，可以再添加其他子网和网关子网。 
 
-5. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，并单击“创建”。 单击“创建”后，将看到仪表板上的磁贴反映了 VNet 的进度。 创建 VNet 时，该磁贴会更改。
+5. 如果希望能够在仪表板上轻松查找 VNet，请选择“固定到仪表板”，并单击“创建”。 单击“创建”后，会看到仪表板上的磁贴反映了 VNet 的进度。 创建 VNet 时，该磁贴会更改。

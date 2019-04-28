@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
 ms.openlocfilehash: d3dfe51ce65aa24cf3d0a4d1fa4b6a9cd203b7e4
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57250084"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60370838"
 ---
 检查以确定是否有权访问计费帐户的 Microsoft 客户协议的协议类型。
 

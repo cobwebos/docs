@@ -2,24 +2,25 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
-ms.author: cherylmc
+origin.date: 03/21/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 97d33bfcc8251b10ba121b7fb013800904450563
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
-ms.translationtype: HT
+ms.openlocfilehash: e2e91dc91cf0fbe6827808785a4c3cc25b06542b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "30197039"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60319994"
 ---
 [!INCLUDE [P2S FAQ All](vpn-gateway-faq-p2s-all-include.md)]
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>能否将我自己的内部 PKI 根 CA 用于点到站点连接？
 
-是的。 以前只可使用自签名根证书。 仍可上传 20 个根证书。
+可以。 以前只可使用自签名根证书。 仍可上传 20 个根证书。
 
 ### <a name="what-tools-can-i-use-to-create-certificates"></a>可以使用哪些工具来创建证书？
 

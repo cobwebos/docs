@@ -9,11 +9,11 @@ ms.date: 04/04/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 9132cf438cab518e20e6c2ddfdb7d0928753bd19
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53443993"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60407497"
 ---
 1. 在门户中，导航到要为其创建虚拟网关的虚拟网络。
 2. 在 VNet 页的“设置”部分单击“子网”，展开“子网”页。

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/14/2018
 ms.author: cynthn;kareni
 ms.custom: include file
-ms.openlocfilehash: 4c5b4c5eacd4be751004af551e3753a61873c7a7
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: cbd86571cbdcd600ef3acdea3833568a34657931
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60337918"
 ---
 **上次文档更新**:14 年 8 月 2018 太平洋标准时间上午 10:00。
 

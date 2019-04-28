@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/18/2018
 ms.author: priyamo
 ms.openlocfilehash: d97aa34f8e76a1ea49841f26534b6a5403e6b5d7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58114596"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60251641"
 ---
 ## <a name="register-your-application-with-your-ad-tenant"></a>将应用程序注册到 AD 租户
 首先，需要将应用程序注册到 Azure Active Directory (Azure AD) 租户。 这会为应用程序分配一个应用程序 ID，并且使该应用程序可以接收令牌。
