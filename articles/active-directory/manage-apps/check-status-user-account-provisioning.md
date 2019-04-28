@@ -15,12 +15,12 @@ ms.date: 09/09/2018
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0a6d1684c4bc0031978fb5e76548a3112b0f1ef2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e293eb555269a1f8beeeccd74000358abe1ef5c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60441980"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759762"
 ---
 # <a name="tutorial-reporting-on-automatic-user-account-provisioning"></a>教程：针对自动用户帐户预配进行报告
 
@@ -43,7 +43,7 @@ Azure Active Directory 包含一个[用户帐户预配服务](user-provisioning.
 
 * **源系统** - Azure AD 预配服务从中同步的用户存储库。 Azure Active Directory 是大多数预先集成的预配连接器的源系统，但有一些例外（示例：Workday 入站同步）。
 
-* **目标系统** - Azure AD 预配服务要同步到的用户存储库。 这通常是一个 SaaS 应用程序（示例：Salesforce、ServiceNow、Google Apps、Dropbox for Business），但在某些情况下，也可以是诸如 Active Directory 的本地系统（示例：到 Active Directory 的 Workday 入站同步）。
+* **目标系统** - Azure AD 预配服务要同步到的用户存储库。 这通常是一个 SaaS 应用程序（示例：Salesforce、 ServiceNow、 G Suite、 Dropbox for Business），但在某些情况下可以是 Active Directory 等本地系统 (示例：到 Active Directory 的 Workday 入站同步）。
 
 
 ## <a name="getting-provisioning-reports-from-the-azure-management-portal"></a>从 Azure 管理门户获取预配报告

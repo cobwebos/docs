@@ -6,14 +6,14 @@ author: laurenhughes
 manager: jeconnoc
 ms.service: batch
 ms.topic: article
-ms.date: 10/04/2018
+ms.date: 04/15/2019
 ms.author: lahugh
-ms.openlocfilehash: 0bc43b82a987ab065677bdbb56de73ef341c249d
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.openlocfilehash: 233b26b330fabe7da8664114ba1857f74feea4bc
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752120"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764278"
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>使用自定义映像创建虚拟机池 
 
@@ -35,7 +35,7 @@ ms.locfileid: "55752120"
 - **扩大池的大小。** 使用托管的自定义映像创建池时，该池可以扩大，而无需创建映像 Blob VHD 的副本。 
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - **托管映像资源**。 若要使用自定义映像创建虚拟机池，需在 Batch 帐户所在的同一 Azure 订阅和区域中使用或创建托管映像资源。 应该基于 VM 的 OS 磁盘快照及其附加的数据磁盘（可选）创建该映像。 有关准备托管映像的详细信息和步骤，请参阅以下部分。 
   - 对创建的每个池使用唯一的自定义映像。
@@ -48,9 +48,9 @@ ms.locfileid: "55752120"
 
 在 Azure 中，可以基于 Azure VM 的 OS 和数据磁盘快照、包含托管磁盘的通用化 Azure VM 或者上传的通用化本地 VHD 来准备托管映像。 若要使用自定义映像可靠缩放 Batch 池，我们建议仅使用第一种方法创建托管映像：使用 VM 磁盘的快照。 参阅以下步骤来准备 VM、创建快照，然后基于该快照创建映像。 
 
-### <a name="prepare-a-vm"></a>准备 VM 
+### <a name="prepare-a-vm"></a>准备 VM
 
-若要为映像创建新 VM，请使用 Batch 支持的 Azure 市场映像作为托管映像的基础映像，然后对其进行自定义。  若要获取 Azure Batch 支持的 Azure 市场映像参考列表，请参阅[列出节点代理 SKU](/rest/api/batchservice/account/listnodeagentskus) 操作。 
+如果要创建新的 VM 映像，使用托管映像的基本映像的 as 支持的批处理的第一方 Azure Marketplace 映像。 仅第一方映像可以用作基本映像。 若要获取 Azure Batch 支持的 Azure Marketplace 映像引用的完整列表，请参阅[列出节点代理 Sku](/rest/api/batchservice/account/listnodeagentskus)操作。
 
 > [!NOTE]
 > 不能使用具有附加许可和购买条款的第三方映像作为基础映像。 有关这些市场映像的信息，请参阅 [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
@@ -78,6 +78,7 @@ ms.locfileid: "55752120"
 > [!NOTE]
 > 若要使用某个 Batch API 创建池，请确保用于 AAD 身份验证的标识对映像资源拥有权限。 请参阅[使用 Active Directory 对 Batch 服务解决方案进行身份验证](batch-aad-auth.md)。
 >
+> 池的生存期必须存在的托管映像资源。 如果删除基础资源，则不能缩放池。 
 
 1. 导航到 Azure 门户中的批处理帐户。 此帐户必须与包含自定义映像的资源组在同一订阅和区域中。 
 2. 在左侧的“设置”窗口中，选择“池”菜单项。
@@ -109,6 +110,16 @@ ms.locfileid: "55752120"
 - **调整超时** - 如果池包含固定数目的节点（不会自动缩放），请增大 resizeTimeout 属性的值，例如 20-30 分钟。 如果在超时期限内池未达到其目标大小，请再次执行[调整大小操作](/rest/api/batchservice/pool/resize)。
 
   如果你打算创建包含 300 个以上的计算节点的池，可能需要多次调整池大小才能达到目标大小。
+
+## <a name="considerations-for-using-packer"></a>使用 Packer 的注意事项
+
+直接使用 Packer 创建托管的映像资源只能通过用户订阅模式批处理帐户完成。 批处理服务模式下帐户，您需要创建 VHD，然后将 VHD 导入到托管的映像资源。 具体取决于你池分配模式 （用户订阅或 Batch 服务），你的步骤来创建托管的映像资源而异。
+
+请确保用于创建托管的映像资源存在的任何引用自定义映像的池的生存期。 如果不这样做可以导致池分配失败和/或调整大小失败。 
+
+如果删除的图像或基础资源，则您可能会遇到错误类似于： `There was an error encountered while performing the last resize on the pool. Please try resizing the pool again. Code: AllocationFailed`。 如果发生这种情况，请确保尚未删除基础资源。
+
+使用 Packer 创建 VM 的详细信息，请参阅[Linux 使用 Packer 生成映像](../virtual-machines/linux/build-image-with-packer.md)或[Windows 使用 Packer 生成映像](../virtual-machines/windows/build-image-with-packer.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

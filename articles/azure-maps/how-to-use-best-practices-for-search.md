@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: f7a14e975a5ca3aee5588f55f43b28081c100074
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e60b202a32745062d2078d9721dfeba7aba69bda
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358142"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763908"
 ---
 # <a name="best-practices-to-use-azure-maps-search-service"></a>使用 Azure 地图搜索服务的最佳做法
 
@@ -132,9 +132,9 @@ https://atlas.microsoft.com/search/address/reverse/json?api-version=1.0&subscrip
 
 ### <a name="predictive-mode-auto-suggest"></a>预测模式 （自动建议）
 
-若要查找更多匹配项的部分查询`typeHead`参数应设置为 'true'。 该查询将被解释为部分输入和搜索将在进入预测的模式。 否则该服务将假定传入的所有相关信息。
+若要查找更多匹配项的部分查询`typeahead`参数应设置为 'true'。 该查询将被解释为部分输入和搜索将在进入预测的模式。 否则该服务将假定传入的所有相关信息。
 
-在此示例下面的查询可以看到"Microso"中，查询搜索地址服务与`typehead`参数设置为**true**。 如果发现响应，可以看到，搜索服务解释作为部分查询的查询和响应包含的自动建议查询的结果。
+在此示例下面的查询可以看到"Microso"中，查询搜索地址服务与`typeahead`参数设置为**true**。 如果发现响应，可以看到，搜索服务解释作为部分查询的查询和响应包含的自动建议查询的结果。
 
 **示例查询：**
 

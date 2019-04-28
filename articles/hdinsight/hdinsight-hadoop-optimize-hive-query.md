@@ -1,7 +1,6 @@
 ---
 title: 优化 Azure HDInsight 中的 Hive 查询
 description: 本文介绍如何优化 HDInsight 中的 Hadoop 的 Apache Hive 查询。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/21/2019
-ms.openlocfilehash: 63def1464c3c219b5181a31bf19cc80a1e487025
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 1610678b0ae1d94c3f3b8f91913beceb211d08d6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521731"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761190"
 ---
 # <a name="optimize-apache-hive-queries-in-azure-hdinsight"></a>优化 Azure HDInsight 中的 Apache Hive 查询
 
@@ -50,7 +49,7 @@ Tez 速度更快，因为：
 * **避免不必要的写入**。 多个作业用于处理 MapReduce 引擎中的同一 Hive 查询。 每个 MapReduce 作业的输出将作为中间数据写入 HDFS。 Tez 最大程度地减少了对每个 Hive 查询运行的作业数，因此能够避免不必要的写入。
 * **最大限度地降低启动延迟**。 Tez 可以减少需要启动的映射器数目，同时还能提高优化吞吐量，因此，更有利于最大限度地降低启动延迟。
 * **重复使用容器**。 Tez 会尽可能地重复使用容器，以确保降低由于启动容器而产生的延迟。
-* **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，由于可以提供有关输入的详细信息，因此可以在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
+* **连续优化技术**。 传统上，优化是在编译阶段完成的。 但是，这可以提供有关输入的详细信息，以便在运行时更好地进行优化。 Tez 使用连续优化技术，从而可以在运行时阶段进一步优化计划。
 
 有关这些概念的详细信息，请参阅 [Apache TEZ](https://hortonworks.com/hadoop/tez/)。
 
@@ -62,7 +61,7 @@ Tez 速度更快，因为：
 
 ## <a name="hive-partitioning"></a>Hive 分区
 
-I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要读取的数据量，即可改善性能。 默认情况下，Hive 查询会扫描整个 Hive 表。 但是，对于只需扫描少量数据的查询（例如，使用筛选进行查询），此行为会产生不必要的开销。 使用 Hive 分区，Hive 查询只需访问 Hive 表中必要的数据量。
+I/O 操作是运行 Hive 查询的主要性能瓶颈。 如果可以减少需要读取的数据量，即可改善性能。 默认情况下，Hive 查询扫描整个 Hive 表。 但是，对于只需扫描少量数据的查询（例如，使用筛选进行查询），此行为会产生不必要的开销。 使用 Hive 分区，Hive 查询只需访问 Hive 表中必要的数据量。
 
 Hive 分区的实现方法是将原始数据重新组织成新目录。 每个分区都有自身的文件目录。 分区由用户定义。 下图说明如何根据年列来分区 Hive 表。 每年都会创建新的目录。
 
@@ -72,9 +71,9 @@ Hive 分区的实现方法是将原始数据重新组织成新目录。 每个�
 
 * **不要分区不足** - 根据仅包含少量值的列进行分区可能会导致创建很少的分区。 例如，根据性别（男性和女性）分区只会创建两个分区，从而最多只会将延迟降低一半。
 * **不要创建过多分区** - 另一种极端情况是，根据包含唯一值的列（例如，userid）创建分区会导致创建多个分区。 创建过多分区会给群集 namenode 带来很大压力，因为它必须处理大量的目录。
-* **避免数据倾斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
+* **避免数据偏斜** - 明智选择分区键，以便所有分区的大小均等。 例如，按“州”列分区可能会导致数据分布出现偏斜。 因为加利福尼亚州的人口几乎是佛蒙特州的 30 倍，分区大小可能会出现偏差，性能可能有极大的差异。
 
-要创建分区表，请使用 *Partitioned By* 子句：
+若要创建分区表，请使用 *Partitioned By* 子句：
 
    ```hive
    CREATE TABLE lineitem_part
@@ -102,7 +101,7 @@ Hive 分区的实现方法是将原始数据重新组织成新目录。 每个�
    LOCATION ‘wasb://sampledata@ignitedemo.blob.core.windows.net/partitions/5_23_1996/'
    ```
    
-* **动态分区** 表示希望 Hive 自动创建分区。 由于已基于暂存表创建了分区表，因此需要做的就是将数据插入分区表：
+* **动态分区**表示希望 Hive 自动创建分区。 由于已基于暂存表创建了分区表，因此需要做的就是将数据插入分区表：
   
    ```hive
    SET hive.exec.dynamic.partition = true;
@@ -135,7 +134,7 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
 * 每 10,000 行编制一次索引并允许跳过行。
 * 大幅减少运行时执行时间。
 
-要启用 ORC 格式，请先使用 *Stored as ORC*子句创建一个表：
+若要启用 ORC 格式，请先使用 *Stored as ORC* 子句创建一个表：
 
    ```hive
    CREATE TABLE lineitem_orc_part
@@ -183,17 +182,17 @@ ORC（优化行纵栏式）格式是存储 Hive 数据的高效方式。 与其�
     set hive.vectorized.execution.enabled = true;
    ```
 
-有关详细信息，请参阅 [向量化查询执行](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution)。
+有关详细信息，请参阅[向量化查询执行](https://cwiki.apache.org/confluence/display/Hive/Vectorized+Query+Execution)。
 
 ## <a name="other-optimization-methods"></a>其他优化方法
 还可以考虑使用其他一些高级优化方法，例如：
 
-* **Hive 装桶：** 将大型数据集群集化或分段以优化查询性能的技术。
-* **联接优化：** Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅 [联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
+* **Hive 存储桶：** 将大型数据集群集化或分段以优化查询性能的技术。
+* **联接优化**：Hive 的查询执行计划优化，可改善联接的效率并减少用户提示的需要。 有关详细信息，请参阅 [联接优化](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)。
 * **增加化简器**。
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，学习了几种常见的 Hive 查询优化方法。 要了解更多信息，请参阅下列文章：
+在本文中，已学习了几种常见的 Hive 查询优化方法。 若要了解更多信息，请参阅下列文章：
 
 * [使用 HDInsight 中的 Apache Hive](hadoop/hdinsight-use-hive.md)
 * [使用 HDInsight 中的 Apache Hive 分析航班延误数据](hdinsight-analyze-flight-delay-data-linux.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/06/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: 16e2a9cfbd9f08428fddade290117b27bc3401f7
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: a8f0e61a953a2e2471e49d571063f6202b7ab76d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540468"
 ---
 Azure H 系列虚拟机是最新的高性能计算 VM，旨在处理批处理、分析、分子建模和流体动力学等工作负载。 这些 8 vCPU 和 16 vCPU 的 VM 基于采用 DDR4 内存和基于 SSD 的临时存储的 Intel Haswell E5-2667 V3 处理器技术构建。 
 
@@ -29,7 +29,7 @@ ACU：290-300
 
 高级存储缓存：不支持
 
-| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 磁盘最大吞吐量：IOPS | 最大 NIC 数 |
+| 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大磁盘吞吐量：IOPS | 最大 NIC 数 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 |8 |56 |1000 |32 |32 x 500 |2  |
 | Standard_H16 |16 |112 |2000 |64 |64 x 500 |4 |

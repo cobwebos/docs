@@ -9,11 +9,11 @@ ms.date: 01/22/2019
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 6eae536bd19a2c0e5707d8e0b379774b6eb2707a
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58395627"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618012"
 ---
 # <a name="what-disk-types-are-available-in-azure"></a>Azure 有哪些可用的磁盘类型？
 
@@ -28,7 +28,7 @@ Azure 托管磁盘目前提供四种磁盘类型，三种已正式发布 (GA)，
 |磁盘类型   |SSD   |SSD   |SSD   |HDD   |
 |场景   |SAP HANA、顶层数据库等 IO 密集型工作负荷（例如，SQL、Oracle），以及其他事务密集型工作负荷。   |生产和性能敏感型工作负荷   |Web 服务器、不常使用的企业应用程序和开发/测试   |备份、非关键、不常访问   |
 |磁盘大小   |65,536 GB (GiB)（预览版）   |32,767 GiB    |32,767 GiB   |32,767 GiB   |
-|最大吞吐量   |2,000 MiB/秒（预览版）   |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|最大吞吐量   |2,000 MiB/秒（预览版）   |900 MiB/秒   |750 MiB/秒   |500 MiB/秒   |
 |最大 IOPS   |160,000（预览版）   |20,000   |6,000   |2,000   |
 
 ## <a name="ultra-ssd-preview"></a>超级 SSD（预览版）

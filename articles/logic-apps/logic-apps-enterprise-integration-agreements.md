@@ -1,6 +1,6 @@
 ---
-title: B2B 通信协议 - Azure 逻辑应用 | Microsoft Docs
-description: 为 Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 贸易合作伙伴通信创建协议
+title: 创建和管理贸易合作伙伴协议-Azure 逻辑应用
+description: 创建和管理通过使用 Azure 逻辑应用和 Enterprise Integration Pack 贸易合作伙伴之间的协议
 services: logic-apps
 ms.service: logic-apps
 ms.suite: integration
@@ -9,67 +9,100 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 447ffb8e-3e91-4403-872b-2f496495899d
-ms.date: 06/29/2016
-ms.openlocfilehash: 09bee10649e2bc0d745e42b8aa13ae9c21df35aa
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.date: 04/05/2019
+ms.openlocfilehash: 26d653b873e959f0804e0456ed87ee68c39413e5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128821"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761338"
 ---
-# <a name="partner-agreements-for-b2b-communication-with-azure-logic-apps-and-enterprise-integration-pack"></a>Azure 逻辑应用和 Enterprise Integration Pack 的 B2B 通信的合作伙伴协议
+# <a name="create-and-manage-trading-partner-agreements-by-using-azure-logic-apps-and-enterprise-integration-pack"></a>创建和使用 Azure 逻辑应用和 Enterprise Integration Pack 中管理贸易合作伙伴协议
 
-协议允许企业实体使用行业标准协议进行无缝通信，是企业对企业 (B2B) 通信的基石。 为 Enterprise Integration Pack 中的逻辑应用启用 B2B 方案时，协议是 B2B 贸易合作伙伴之间的通信约定。 此协议基于合作伙伴希望建立的通信，是特定于协议 (protocol) 或传输的。
+一个[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md) 
+*协议*可帮助组织和企业无缝地相互通信通过定义要使用交换时的特定行业标准协议企业到企业 (B2B) 消息。 协议提供常见的优势，例如：
 
-企业集成支持三种协议或传输标准：
+* 使组织能够通过使用熟知的格式交换信息。
+* 执行 b2b 业务时提高效率。
+* 可轻松地创建、 管理和使用用于生成企业集成解决方案。
 
-* [AS2](logic-apps-enterprise-integration-as2.md)
-* [X12](logic-apps-enterprise-integration-x12.md)
-* [EDIFACT](logic-apps-enterprise-integration-edifact.md)
+本文介绍如何创建 AS2、 EDIFACT 或 X12 协议时通过使用构建企业 B2B 方案的集成解决方案，可以使用[Enterprise Integration Pack](../logic-apps/logic-apps-enterprise-integration-overview.md)和[Azure 逻辑应用](../logic-apps/logic-apps-overview.md). 创建协议后，你可以使用 AS2、 EDIFACT 或 X12 交换 B2B 消息的连接器。
 
-## <a name="why-use-agreements"></a>为什么要使用协议
+## <a name="prerequisites"></a>必备组件
 
-使用协议的一些常见好处包括：
+* Azure 订阅。 如果没有 Azure 订阅，请[注册一个免费 Azure 帐户](https://azure.microsoft.com/free/)。
 
-* 使不同的组织和企业能以熟知的格式交换信息。
-* 执行 B2B 业务时可提高效率
-* 创建企业集成应用时可轻松创建、管理和使用
+* [集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)用于存储你的协议和其他 B2B 项目。 此集成帐户必须与你的 Azure 订阅相关联。
 
-## <a name="how-to-create-agreements"></a>如何创建协议
+* 在至少两台[贸易合作伙伴](../logic-apps/logic-apps-enterprise-integration-partners.md)，已创建集成帐户中。 协议需要主机合作伙伴和来宾合作伙伴。 这两个伙伴都必须使用相同的"业务标识"限定符作为你想要创建，如 AS2、 x12，或 EDIFACT 的协议。
 
-* [创建 AS2 协议](logic-apps-enterprise-integration-as2.md)
-* [创建 X12 协议](logic-apps-enterprise-integration-x12.md)
-* [创建 EDIFACT 协议](logic-apps-enterprise-integration-edifact.md)
+* 可选：你想要使用你的协议和启动逻辑应用的工作流的触发器。 该逻辑应用。 若要只需创建集成帐户和 B2B 项目，不需要的逻辑应用。 但是，逻辑应用集成帐户中使用 B2B 项目之前，你必须将集成帐户链接到逻辑应用。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="how-to-use-an-agreement"></a>如何使用协议
+## <a name="create-agreements"></a>创建协议
 
-可使用创建的协议来创建具有 B2B 功能的[逻辑应用](logic-apps-overview.md "了解逻辑应用")。
+1. 登录到 [Azure 门户](https://portal.azure.com)。
+在 Azure 主菜单中，选择“所有服务”。 在搜索框中，输入作为筛选器"集成"。 从结果中，选择此资源：**集成帐户**
 
-## <a name="how-to-edit-an-agreement"></a>如何编辑协议
+   ![查找集成帐户](./media/logic-apps-enterprise-integration-agreements/find-integration-accounts.png)
 
-可以按照以下步骤编辑任何协议：
+1. 下**集成帐户**，选择你想要创建协议的集成帐户。
 
-1. 选择包含想要更新的协议的集成帐户。
+   ![选择要在其中创建协议的集成帐户](./media/logic-apps-enterprise-integration-agreements/select-integration-account.png)
 
-2. 选择“协议”磁贴。
+1. 在右侧窗格中下,**组件**，选择**协议**磁贴。
 
-3. 在“协议”边栏选项卡上，选择协议。
+   ![选择"协议"](./media/logic-apps-enterprise-integration-agreements/agreement-1.png)
 
-4. 选择“编辑”。 进行更改。
+1. 在“协议”下，选择“添加”。 在中**添加**窗格中，提供有关你的协议的信息，例如：
 
-5. 选择“确定”保存更改。
+   ![选择“添加”](./media/logic-apps-enterprise-integration-agreements/agreement-2.png)
 
-## <a name="how-to-delete-an-agreement"></a>如何删除协议
+   | 属性 | 需要 | Value | 说明 |
+   |----------|----------|-------|-------------|
+   | **名称** | 是 | <*agreement-name*> | 协议的名称 |
+   | **协议类型** | 是 | **AS2**， **X12**，或**EDIFACT** | 你的协议的协议类型。 在创建协议文件时，该文件中的内容必须与协议类型匹配。 | |  
+   | **主机合作伙伴** | 是 | <*host-partner-name*> | 主机合作伙伴代表指定的协议的组织 |
+   | **主机标识** | 是 | <*host-partner-identifier*> | 主机合作伙伴标识符 |
+   | **来宾合作伙伴** | 是 | <*guest-partner-name*> | 托管方代表与管理方进行交易的组织 |
+   | **来宾标识** | 是 | <*guest-partner-identifier*> | 来宾合作伙伴的标识符 |
+   | **接收设置** | 多种多样 | 多种多样 | 这些属性指定如何处理接收的协议的所有传入消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
+   | **发送设置** | 多种多样 | 多种多样 | 这些属性指定如何处理协议发送的所有传出消息。 有关详细信息，请参阅相应的协议类型： <p>- [AS2 消息设置](../logic-apps/logic-apps-enterprise-integration-as2-message-settings.md) <br>- [EDIFACT 消息设置](logic-apps-enterprise-integration-edifact.md) <br>- [X12 消息设置](logic-apps-enterprise-integration-x12.md) |
+   |||||
 
-可以按照以下步骤删除任何协议：
+1. 完成后在创建你的协议**外**页上，选择**确定**，并返回到集成帐户。
 
-1. 选择包含想要删除的协议的集成帐户。
-2. 选择“协议”磁贴。
-3. 在“协议”边栏选项卡上，选择协议。
-4. 选择“删除”。
-5. 确认要删除所选协议。
+   **协议**列表现在显示在新的协议。
 
-    “协议”边栏选项卡不再显示已删除的协议。
+## <a name="edit-agreements"></a>编辑协议
+
+1. 在中[Azure 门户](https://portal.azure.com)，在主 Azure 菜单中，选择**的所有服务**。
+
+1. 在搜索框中，输入作为筛选器"集成"。 从结果中，选择此资源：**集成帐户**
+
+1. 下**集成帐户**，选择包含你想要编辑的协议的集成帐户。
+
+1. 在右侧窗格中下,**组件**，选择**协议**磁贴。
+
+1. 下**协议**，选择你的协议，然后选择**编辑**。
+
+1. 请然后保存所做的更改。
+
+## <a name="delete-agreements"></a>删除协议
+
+1. 在中[Azure 门户](https://portal.azure.com)，在主 Azure 菜单中，选择**的所有服务**。
+
+1. 在搜索框中，输入作为筛选器"集成"。 从结果中，选择此资源：**集成帐户**
+
+1. 下**集成帐户**，选择包含你想要删除的协议的集成帐户。
+
+1. 在右侧窗格中下,**组件**，选择**协议**磁贴。
+
+1. 下**协议**，选择你的协议，然后选择**删除**。
+
+1. 确认要删除所选协议。
 
 ## <a name="next-steps"></a>后续步骤
-* [创建 AS2 协议](logic-apps-enterprise-integration-as2.md)
+
+* [交换 AS2 消息](logic-apps-enterprise-integration-as2.md)
+* [交换 EDIFACT 消息](logic-apps-enterprise-integration-edifact.md)
+* [交换 X12 消息](logic-apps-enterprise-integration-x12.md)

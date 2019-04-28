@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 89d5483347f93cd3b57a02ced19b1e8b099a5ab0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58919158"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60486821"
 ---
 ## <a name="specifying-formats"></a>指定格式
 Azure 数据工厂支持以下格式类型：
@@ -339,7 +339,7 @@ Azure 数据工厂支持以下格式类型：
 
 | id | order_date | order_price | order_by |
 | --- | --- | --- | --- |
-| 1 | 20170119 | 2000 | David |
+| 第 | 20170119 | 2000 | David |
 | 2 | 20170120 | 3500 | Patrick |
 | 3 | 20170121 | 4000 | Jason |
 
