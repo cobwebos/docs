@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/19/2018
 ms.author: pbutlerm
 ms.openlocfilehash: fd68846b9144c3efcc71dec369d64119427758a3
-ms.sourcegitcommit: 17633e545a3d03018d3a218ae6a3e4338a92450d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/22/2018
-ms.locfileid: "49638863"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744465"
 ---
 # <a name="connect-to-your-azure-based-virtual-machine"></a>连接到基于 Azure 的虚拟机
 
@@ -29,7 +29,7 @@ ms.locfileid: "49638863"
 
 使用远程桌面客户端连接到托管在 Azure 上的基于 Windows 的 VM。  大多数 Windows 版本原生包含对远程桌面协议 (RDP) 的支持。  对于其他计算机，可在[远程桌面客户端](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients)中找到有关客户端的详细信息。  
 
-以下文章详细介绍了如何使用内置 Windows RDP 支持连接到 VM：[如何连接并登录到运行 Windows 的 Azure 虚拟机](../../../virtual-machines/windows/connect-logon.md)。  
+以下文章详细介绍了如何使用内置 Windows RDP 支持连接到 VM:[如何连接并登录到运行 Windows 的 Azure 虚拟机](../../../virtual-machines/windows/connect-logon.md)。  
 
 >[!TIP]
 > 在此过程中，你可能会收到安全警告，例如，.rdp 文件来自未知的发布者，或无法验证你的用户凭据。  可以放心忽略这些警告。
@@ -54,7 +54,7 @@ ms.locfileid: "49638863"
 7. 单击“打开”以打开 PuTTY 终端。  
 8. 出现提示时，请输入 Linux VM 帐户的帐户名称和密码。 
 
-   如果遇到连接问题，请参阅 SSH 客户端的文档，例如[第 10 章：常见错误消息](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors)。
+   如果遇到连接问题，请参阅文档 SSH 客户端，例如[第 10 章：常见的错误消息](https://www.ssh.com/ssh/putty/putty-manuals/0.68/Chapter10.html#errors)。
 
 有关详细信息，包括如何将桌面添加到预配的 Linux VM，请参阅[安装并配置远程桌面以连接到 Azure 中的 Linux VM](../../../virtual-machines/linux/use-remote-desktop.md)。
 

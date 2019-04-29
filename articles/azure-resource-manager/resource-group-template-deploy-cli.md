@@ -13,11 +13,11 @@ ms.workload: na
 ms.date: 03/28/2019
 ms.author: tomfitz
 ms.openlocfilehash: 92476f9ac48c168c3bbe85d4da49b6afe034c117
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648650"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730313"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>使用 Resource Manager 模板和 Azure CLI 部署资源
 
@@ -29,21 +29,21 @@ ms.locfileid: "58648650"
 
 ## <a name="deployment-scope"></a>部署范围
 
-你可以面向你部署到 Azure 订阅或在订阅中的资源组。 在大多数情况下，将目标部署到资源组。 使用订阅部署在订阅中应用策略和角色分配。 此外可以使用订阅部署创建资源组和将资源部署到它。 具体取决于部署的范围，您可以使用不同的命令。
+可将部署目标设定为 Azure 订阅或订阅中的资源组。 大多数情况下，我们会将以资源组指定为部署目标。 可以使用订阅部署在整个订阅中应用策略和角色分配。 还可以使用订阅部署创建资源组并向其部署资源。 根据部署范围使用不同的命令。
 
-若要将部署到**资源组**，使用[az 组部署创建](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create):
+若要部署到**资源组**，请使用 [az group deployment create](/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)：
 
 ```azurecli
 az group deployment create --resource-group <resource-group-name> --template-file <path-to-template>
 ```
 
-若要将部署到**订阅**，使用[az 部署创建](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create):
+若要部署到**订阅**，请使用 [az deployment create](/cli/azure/deployment?view=azure-cli-latest#az-deployment-create)：
 
 ```azurecli
 az deployment create --location <location> --template-file <path-to-template>
 ```
 
-在本文中的示例使用的资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
+本文中的示例使用资源组部署。 有关订阅部署的详细信息，请参阅[在订阅级别创建资源组和资源](deploy-to-subscription.md)。
 
 ## <a name="deploy-local-template"></a>部署本地模板
 
@@ -102,12 +102,12 @@ az group deployment create --resource-group examplegroup \
 
 ## <a name="redeploy-when-deployment-fails"></a>部署失败时，重新部署
 
-此功能是也称为*错误时回滚*。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `--rollback-on-error` 参数。 如果已为你的基础结构部署了已知的良好状态并需要此选项以将还原为此功能很有用。 有许多需要注意的问题和限制：
+此功能也称为“出错时回滚”。 部署失败时，可以自动重新部署部署历史记录中先前成功的部署。 若要指定重新部署，请在部署命令中使用 `--rollback-on-error` 参数。 如果基础结构部署存在一个已知良好的状态，并且你希望还原到此状态，则此功能非常有用。 有许多需要注意的问题和限制：
 
-- 完全按照以前已运行具有相同的参数运行重新部署。 可以更改参数。
-- 使用运行以前的部署[完整模式](./deployment-modes.md#complete-mode)。 以前的部署中不包含任何资源被删除，并且任何资源配置设置为其以前的状态。 请确保完全了解[部署模式之一下](./deployment-modes.md)。
-- 重新部署只会影响资源，任何数据更改不会受到影响。
-- 在订阅级别部署的资源组部署仅支持此功能。 有关订阅级别部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
+- 重新部署使用与以前运行它时相同的参数以相同的方式运行。 无法更改参数。
+- 以前的部署是使用[完整模式](./deployment-modes.md#complete-mode)运行的。 以前的部署中未包括的任何资源都将被删除，任何资源配置都将设置为以前的状态。 请确保你完全理解[部署模式](./deployment-modes.md)。
+- 重新部署只会影响资源，不会影响任何数据更改。
+- 只有资源组部署支持此功能，订阅级部署不支持此功能。 有关订阅级部署的详细信息，请参阅[在订阅级别创建资源组和资源](./deploy-to-subscription.md)。
 
 若要使用此选项，部署必须具有唯一的名称，以便可以在历史记录中标识它们。 如果没有唯一名称，则当前失败的部署可能会覆盖历史记录中以前成功的部署。 只能将此选项用于根级别部署。 从嵌套模板进行的部署不可用于重新部署。
 

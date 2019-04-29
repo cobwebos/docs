@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: virtual-network
-author: genlin
+author: rockboyfor
 ms.service: virtual-network
 ms.topic: include
-ms.date: 04/13/2018
-ms.author: genli
+origin.date: 04/13/2018
+ms.date: 06/11/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b91ae155761f6357e286f4742d57b97cf96d909a
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 40b81904daabfdad7e45571d8ab86cf32cac8964
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805146"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743341"
 ---
 ## <a name="scenario"></a>场景
 为了更好地说明如何创建 UDR，本文档使用以下方案：
@@ -28,4 +29,3 @@ ms.locfileid: "31805146"
   * **RouteToFrontend**。 此路由将目的地是前端子网的所有流量发送到 **FW1** 虚拟机。
 
 这些路由的组合将确保从一个子网发送到另一个子网的所有流量都将路由到正用作虚拟设备的 **FW1** 虚拟机。 还需要为 **FW1** VM 开启 IP 转发，以确保它可以接收目的地是其他 VM 的流量。
-

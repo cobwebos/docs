@@ -14,11 +14,11 @@ ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.author: mbullwin
 ms.openlocfilehash: b1a3b04427839736359c88f8ad6a8db5eedf8488
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121237"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61294029"
 ---
 # <a name="smart-detection---performance-anomalies"></a>智能检测 - 性能异常
 
@@ -69,7 +69,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 ## <a name="faq"></a>常见问题解答
 
 * *那么，Microsoft 员工会查看我的数据？*
-  * 不是。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
+  * 不。 该服务完全是自动的。 只有你会收到通知。 数据是[私有](../../azure-monitor/app/data-retention-privacy.md)数据。
 * *是否分析由 Application Insights 收集的所有数据？*
   * 目前不会。 目前，我们分析请求响应时间、依赖项响应时间和页面加载时间。 其他指标的分析功能正在规划中，今后有望推出。
 
@@ -85,7 +85,7 @@ Application Insights 已根据以下依据之一检测到应用程序出现性�
 
   * 我们每天针对前一天（UTC 时区整天）的遥测数据运行分析。
 * *那么这是否会替换[指标警报](../../azure-monitor/app/alerts.md)？*
-  * 不是。  我们不确定检测用户视为异常的每个行为。
+  * 不。  我们不确定检测用户视为异常的每个行为。
 
 
 * *如果不执行任何操作来响应通知，是否会收到提醒？*

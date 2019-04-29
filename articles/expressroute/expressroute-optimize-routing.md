@@ -9,11 +9,11 @@ ms.date: 12/07/2018
 ms.author: charwen
 ms.custom: seodec18
 ms.openlocfilehash: 65c23b05cfcb623f8e2870df813f5516b3039d5c
-ms.sourcegitcommit: 78ec955e8cdbfa01b0fa9bdd99659b3f64932bba
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53140925"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883471"
 ---
 # <a name="optimize-expressroute-routing"></a>优化 ExpressRoute 路由
 有多个 ExpressRoute 线路时，可以通过多个路径连接到 Microsoft。 结果就是，所采用的路由可能不是最理想的 - 也就是说，流量可能会经历较长的路径才能到达 Microsoft，而 Microsoft 的流量也可能会经历较长的路径才能到达网络。 网络路径越长，延迟越严重。 延迟对应用程序性能和用户体验有直接影响。 本文将详述此问题，并说明如何使用标准路由技术来优化路由。
@@ -41,7 +41,7 @@ ms.locfileid: "53140925"
 ### <a name="solution-use-as-path-prepending"></a>解决方案：使用 AS PATH 追加
 此问题有两种解决方案。 第一种解决方案是，直接你将洛杉矶办公室的本地前缀 177.2.0.0/31 播发到美国西部的 ExpressRoute 线路上，你将纽约办公室的本地前缀 177.2.0.2/31 播发到美国东部的 ExpressRoute 线路上。 结果就是，Microsoft 只能通过一个路径连接到每个办公室。 路径不再模拟两可，路由得到了优化。 使用此设计时，需要考虑故障转移策略。 在通过 ExpressRoute 连接到 Microsoft 的路径断开的情况下，需确保 Exchange Online 仍能连接到本地服务器。 
 
-第二种解决方案是，继续将两种前缀播发到两个 ExpressRoute 线路上，但除此之外你还需提示我们哪个前缀靠近你的哪个办公室。 由于我们支持 BGP AS Path 追加，因此可以对前缀的 AS Path 进行配置，使之影响路由。 在此示例中，可以延长美国东部 172.2.0.0/31 的 AS PATH，这样我们就会首选美国西部的 ExpressRoute 线路来传送目标为该前缀的流量（因为我们的网络会认为在西部，到此前缀的路径较短）。 类似地，可以延长美国西部 172.2.0.2/31 的 AS PATH，这样我们就会首选美国东部的 ExpressRoute 线路。 路由是针对这两处办公室进行优化的。 根据此设计，如果一个 ExpressRoute 线路断开，Exchange Online 仍可通过其他 ExpressRoute 线路以及 WAN 访问你。 
+第二种解决方案是，继续将两种前缀播发到两个 ExpressRoute 线路上，但除此之外你还需提示我们哪个前缀靠近哪个办公室。 由于我们支持 BGP AS Path 追加，因此可以对前缀的 AS Path 进行配置，使之影响路由。 在此示例中，可以延长美国东部 172.2.0.0/31 的 AS PATH，这样我们就会首选美国西部的 ExpressRoute 线路来传送目标为该前缀的流量（因为我们的网络会认为在西部，到此前缀的路径较短）。 类似地，可以延长美国西部 172.2.0.2/31 的 AS PATH，这样我们就会首选美国东部的 ExpressRoute 线路。 路由是针对这两处办公室进行优化的。 根据此设计，如果一个 ExpressRoute 线路断开，Exchange Online 仍可通过其他 ExpressRoute 线路以及 WAN 访问你。 
 
 > [!IMPORTANT]
 > 对于在 Microsoft 对等互连上接收的前缀，我们会删除 AS PATH 中的专用 AS 数字。 需在 AS PATH 中追加公共 AS 数字才能影响 Microsoft 对等互连的路由。
@@ -61,7 +61,7 @@ ms.locfileid: "53140925"
 ![ExpressRoute 案例 3 - 虚拟网络之间的路由欠佳](./media/expressroute-optimize-routing/expressroute-case3-problem.png)
 
 ### <a name="solution-assign-a-high-weight-to-local-connection"></a>解决方法：将高权重分配给本地连接
-解决方法很简单。 由于你知道 VNet 和线路的位置，因此可以告诉我们，每个 VNet 应该优先使用哪条路径。 具体而言，在本示例中，可向本地连接分配一个比远程连接更高的权重（请参阅[此处](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection)的配置示例）。 当 VNet 收到多个连接上的另一个 VNet 的前缀时，将优先选择具有最高权重的连接将流量发送到该前缀。
+解决方法很简单。 由于你知道 VNet 和线路的位置，因此可以告诉我们，每个 VNet 应该优先使用哪条路径。 具体而言，在本示例中，可向本地连接分配一个比远程连接更高的权重（请参阅[此处](expressroute-howto-linkvnet-arm.md#modify-a-virtual-network-connection)的配置示例）。 当 VNet 收到多个连接上的另一个 VNet 的前缀时，会优先选择具有最高权重的连接将流量发送到该前缀。
 
 ![ExpressRoute 案例 3 解决方法 - 将高权重分配给本地连接](./media/expressroute-optimize-routing/expressroute-case3-solution.png)
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/21/2019
 ms.author: spelluru
 ms.openlocfilehash: 87599b05a3569bf6f28880352185a131f48a7f52
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54470610"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61436165"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>了解事件网格订阅的事件筛选
 
@@ -109,7 +109,7 @@ ms.locfileid: "54470610"
 
 * ID
 * 主题
-* 主题
+* Subject
 * EventType
 * DataVersion
 * 事件数据（如 Data.key1）
@@ -129,8 +129,8 @@ ms.locfileid: "54470610"
 值可以是：
 
 * 数字
-* 字符串
-* 布尔值
+* string
+* boolean
 * 数组
 
 ### <a name="limitations"></a>限制

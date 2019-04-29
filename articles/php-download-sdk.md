@@ -15,24 +15,24 @@ ms.topic: article
 ms.date: 06/01/2016
 ms.author: allclark;yaqiyang
 ms.openlocfilehash: 4f2c242e27d8a0ed6687eb4a3510bbce6e07694f
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52421481"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457628"
 ---
 # <a name="download-the-azure-sdk-for-php"></a>下载 Azure SDK for PHP
 
 ## <a name="overview"></a>概述
 
-Azure SDK for PHP 包括允许针对 Azure 开发、部署和管理 PHP 应用程序的组件。 具体而言，Azure SDK for PHP 包括以下组件：
+Azure SDK for PHP 包括允许你针对 Azure 开发、部署和管理 PHP 应用程序的组件。 具体而言，Azure SDK for PHP 包括以下组件：
 
 * **Azure 的 PHP 客户端库**。 这些类库提供用于访问 Azure 功能（例如数据管理服务和云服务）的接口。
 * **适用于 Mac、Linux 和 Windows 的 Azure 命令行接口 (Azure CLI)**。 这是一组用于部署和管理 Azure 服务（例如 Azure 网站和 Azure 虚拟机）的命令。 Azure CLI 可在任何平台（包括 Mac、Linux 和 Windows）上使用。
 * **Azure PowerShell（仅限 Windows）**。 这是一组用于部署和管理 Azure 服务（例如云服务和虚拟机）的 PowerShell cmdlet。
 * **Azure 模拟器（仅限 Windows）**。 计算和存储模拟器是一系列云服务和数据管理服务的本地模拟器，允许在本地测试应用程序。 Azure 模拟器仅在 Windows 上运行。
 
-以下各节介绍如何下载和安装上述组件。
+以下各节将介绍如何下载和安装上述组件。
 
 本主题中的说明假定用户已安装 [PHP][install-php]。
 

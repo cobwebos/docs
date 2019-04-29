@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: 487c142400dc2bfa6f44e17963535051af017196
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58116175"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60817780"
 ---
 # <a name="tutorial-stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>教程：流分析和 Power BI：针对流式处理数据的实时分析仪表板
 Azure 流分析使你可以利用其中一种领先的商业智能工具 [Microsoft Power BI](https://powerbi.com/)。 本文将介绍如何使用 Power BI 作为 Azure 流分析作业的输出，以创建商业智能工具。 此外，还将介绍如何创建和使用实时仪表板。
@@ -67,7 +67,7 @@ Azure 流分析使你可以利用其中一种领先的商业智能工具 [Micros
      > 建议不要在 Power BI 帐户中显式创建此数据集和表。 在启动流分析作业，并且该作业开始向 Power BI 发送输出时，这些文件会自动创建。 如果作业查询没有返回任何结果，则无法创建数据集和表。
      >
 
-8. 单击“创建”。
+8. 单击**创建**。
 
 数据集是使用以下设置创建的；
 

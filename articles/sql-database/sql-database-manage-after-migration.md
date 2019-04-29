@@ -1,5 +1,5 @@
 ---
-title: 迁移后管理单一和共用数据库 - Azure SQL 数据库 | Microsoft Docs
+title: 迁移后管理单一数据库和共用数据库 - Azure SQL 数据库 | Microsoft Docs
 description: 了解如何在迁移到 Azure SQL 数据库后管理数据库。
 services: sql-database
 ms.service: sql-database
@@ -13,21 +13,21 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: a83bc6518409add8a0732e5a0b17ab46c36564af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59358419"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703244"
 ---
-# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中单一和共用数据库
+# <a name="new-dba-in-the-cloud--managing-your-single-and-pooled-databases-in-azure-sql-database"></a>云中的新 DBA - 管理 Azure SQL 数据库中的单一数据库和共用数据库
 
-从传统的自主管理、自主控制环境迁移到 PaaS 环境似乎在开始的时候让人有点不知所措。 作为应用开发人员或 DBA，你需要了解该平台的核心功能，有助于应用程序始终保持可用性、高性能、安全性和复原性。 这也是本文的主旨。 本文简要地整理了一下资源，并指导如何充分利用单一和共用 SQL 数据库的主要功能在云中管理应用程序，使应用程序保持高效运行并获得最佳效果。 本文主要面向：
+从传统的自主管理、自主控制环境迁移到 PaaS 环境似乎在开始的时候让人有点不知所措。 作为应用开发人员或 DBA，你需要了解该平台的核心功能，有助于应用程序始终保持可用性、高性能、安全性和复原性。 这也是本文的主旨。 本文简要地整理了一下资源，并指导如何充分利用单一数据库和共用 SQL 数据库的主要功能在云中管理应用程序，使应用程序保持高效运行并获得最佳效果。 本文主要面向：
 
 - 正在评估向 Azure SQL 数据库迁移应用程序的人员 - 应用程序现代化。
 - 正在迁移应用程序的人员 - 正在进行的迁移方案。
 - 最近完成了向 Azure SQL DB 迁移的人员 - 云中新的 DBA。
 
-本文讨论 Azure SQL 数据库的一些核心特性，作为在弹性池中使用单一数据库和共用数据库时可以轻松利用的平台。 这些特点为：
+本文讨论 Azure SQL 数据库的一些核心特性。作为一个平台，Azure SQL 数据库非常便于你在使用单一数据库和弹性池中的共用数据库时加以利用。 这些特点为：
 
 - 业务连续性和灾难恢复 (BCDR)
 - 安全和符合性
@@ -43,7 +43,7 @@ ms.locfileid: "59358419"
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>如何在 SQL 数据库中创建和管理备份
 
-无需在 Azure SQL DB 上创建备份，因为没这个必要。 SQL 数据库会自动备份数据库，因此不再需要操心去计划、执行和管理备份。 该平台每周执行一次完整备份，每隔几小时执行一次差异备份，每 5 分钟执行一次日志备份，确保高效的灾难恢复，将数据丢失降至最低。 创建数据库后，首先会执行完整备份。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层而有所不同。 凭借 SQL 数据库，可使用[时点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
+无需在 Azure SQL DB 上创建备份，因为没这个必要。 SQL 数据库会自动备份数据库，因此不再需要操心去计划、执行和管理备份。 该平台每周执行一次完整备份，每隔几小时执行一次差异备份，每 5 分钟执行一次日志备份，确保高效的灾难恢复，将数据丢失降至最低。 创建数据库后，首先会执行完整备份。 在称为“保留期”的某段时间内，这些备份均可用，可用情况因所选服务层级而有所不同。 凭借 SQL 数据库，可使用[时点恢复 (PITR)](sql-database-recovery-using-backups.md#point-in-time-restore) 还原到此保留期内的任意时间点。
 
 |服务层|保留天数|
 |---|:---:|
@@ -273,13 +273,13 @@ Azure 门户通过选择数据库并单击“概述”窗格中的图表来显�
 
 进行性能故障排除时，请务必确定是应用程序，还是支持它的数据库影响了应用程序的性能。 性能问题往往存在于应用程序层。 问题可能出现在体系结构或是数据访问模式上。 例如，假设你有一个对网络延迟敏感的聊天应用程序。 在这种情况下，应用程序会受到影响，因为在应用程序和服务器间往返出现了许多短请求（“聊天”），在网络拥塞时，这些往返请求会快速增加。 要在这种情况下提高性能，可使用[批量查询](sql-database-performance-guidance.md#batch-queries)。 批量查询会为你带来极大的帮助，因为此时会对请求进行批处理，帮助你减少往返请求的延迟，提高应用程序的性能。
 
-此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能会需要根据工作负荷需求的增加和减少来更改计算大小和/或服务层。
+此外，如果注意到数据库总体性能下降，则可以监视 [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) 和 [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) 动态管理视图，了解 CPU、IO 和内存消耗情况。 应用性能可能会受到影响，因为数据库缺乏资源。 你可能会需要根据工作负荷需求的增加和减少来更改计算大小和/或服务层级。
 
 有关优化性能问题的全套建议，请参阅：[优化数据库](sql-database-performance-guidance.md#tune-your-database)。
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>如何确保我使用的是适当的服务层和计算大小
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>如何确保我使用的是适当的服务层级和计算大小
 
-SQL 数据库提供了各种服务层：基本、标准和高级。 在每个服务层，将获得与该服务层对应的有保障且可预测的性能。 根据工作负荷情况，活动可能会激增，资源利用率可能会达到当前所处计算大小的上限。 在这种情况下，最好先评估进行优化是否会有所帮助（例如，添加或更改索引等）。 如果仍然存在限制问题，请考虑转移到更高的服务层或计算大小。
+SQL 数据库提供了各种服务层级：“基本”、“标准”和“高级”。 在每个服务层级，将获得与该服务层级对应的有保障且可预测的性能。 根据工作负荷情况，活动可能会激增，资源利用率可能会达到当前所处计算大小的上限。 在这种情况下，最好先评估进行优化是否会有所帮助（例如，添加或更改索引等）。 如果仍然存在限制问题，请考虑转移到更高的服务层级或计算大小。
 
 |**服务层**|**常见用例方案**|
 |---|---|

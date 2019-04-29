@@ -1,6 +1,6 @@
 ---
-title: 分析时序数据使用 Azure 数据资源管理器
-description: 了解如何分析时序数据在云中使用 Azure 数据资源管理器。
+title: 使用 Azure 数据资源管理器分析时序数据
+description: 了解如何使用 Azure 数据资源管理器分析云中的时序数据。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59273067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827331"
 ---
 # <a name="time-series-analysis-in-azure-data-explorer"></a>Azure 数据资源管理器中的时序分析
 
@@ -72,7 +72,7 @@ demo_make_series1
 在本部分，我们将执行典型的时序处理函数。
 创建一组时序后，ADX 支持使用[时序文档](/azure/kusto/query/machine-learning-and-tsa)中所述的一系列函数（该列表不断扩充）来处理和分析这些时序。 下面将介绍几个用于处理和分析时序的有代表性函数。
 
-### <a name="filtering"></a>筛选
+### <a name="filtering"></a>Filtering
 
 在信号处理中，筛选是常见的活动，可用于完成时序处理任务（例如，平滑化干扰信号、变化检测）。
 - 有两个泛型筛选函数：

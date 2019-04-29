@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7cd4a54a62d7304587c55338f088c504e40a74af
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.openlocfilehash: ff291bda87ca4b2b4055e36989b035cf410b3b0f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58670664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60744218"
 ---
 # <a name="describing-a-service-fabric-cluster"></a>描述 Service Fabric 群集
 Service Fabric 群集 Resource Manager 提供多种用于描述群集的的机制。 在运行时，群集 Resource Manager 使用此信息来确保群集中运行的服务的高可用性。 实施这些重要规则时，群集资源管理器还会尝试优化群集中的资源消耗。
@@ -61,7 +61,7 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 
 <center>
 
-![两个不同的群集布局][Image2]
+![两种不同的群集布局][Image2]
 </center>
 
 在 Azure 中，系统将做出哪个节点位于哪个容错域的选择。 但是，根据预配的节点数目，某些容错域包含的节点可能仍然比其他容错域要多。 例如，假设群集中有 5 个容错域，但针对给定的 NodeType 预配了 7 个节点。 在这种情况下，前两个容错域最终包含的节点要比其他容错域多。 如果继续部署更多的、只包含几个实例的 NodeType，问题会变得更糟。 因此，建议将每个节点类型中的节点数配置为容错域数的倍数。
@@ -75,7 +75,7 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 
 <center>
 
-![包含容错域和升级域布局][Image3]
+![包含容错域和升级域的布局][Image3]
 </center>
 
 使用大量升级域既有利也有弊。 更多升级域意味着升级的每个步骤更细微，因此会给较少的节点或服务造成影响。 这样一来，每次只需移动较少的服务，进而降低系统中的流动。 这往往会提高可靠性，因为在升级过程中发生的任何问题所影响到的服务更少。 更多升级域也意味着处理升级的影响时，在其他节点上占用的缓冲区更少。 例如，如果有 5 个升级域，每个升级域中的节点要处理大约 20% 的流量。 如果需要关闭升级域进行升级，则通常需要将负载转移到某个位置。 由于剩余有 4 个升级域，因此每个升级域必须具有可供 5% 的总流量使用的空间。 更多升级域意味着群集中节点上所需占用的缓冲区更少。 例如，考虑一下有 10 个升级域的情况。 在此情况下，每个 UD 仅处理约 10% 的总流量。 当开始升级群集时，每个域只需具有约 1.1% 的总流量空间即可。 使用更多升级域通常能够以更高的利用率运行节点，因为需要保留的容量更少。 这同样适用于容错域。  
@@ -141,8 +141,8 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | **UD1** |R5 | | | | |第 |
 | **UD2** | | |R2 | | |第 |
 | **UD3** | | | |R3 | |第 |
-| **UD4** | | | | |R4 |第 |
-| **FDTotal** |2 |0 |1 |1 |第 |- |
+| **UD4** | | | | |R4 |1 |
+| **FDTotal** |2 |0 |1 |1 |1 |- |
 
 *布局 2*
 
@@ -234,7 +234,7 @@ Service Fabric 群集 Resource Manager 不考虑容错域层次结构中有多�
 | **UD2** | |R3 |R4 | | |2 |
 | **UD3** | | | |R1 | |第 |
 | **UD4** | | | | |R5 |第 |
-| **FDTotal** |第 |1 |1 |1 |第 |- |
+| **FDTotal** |第 |1 |1 |1 |1 |- |
 
 *布局 5*
 
@@ -349,7 +349,7 @@ ClusterManifest.xml
 
 <center>
 
-![群集布局不同工作负荷][Image5]
+![群集布局中的不同工作负荷][Image5]
 </center>
 
 ### <a name="built-in-node-properties"></a>内置节点属性

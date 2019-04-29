@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: pbutlerm
 ms.openlocfilehash: e15b20c4b874e68c09321e00604aed24b7970371
-ms.sourcegitcommit: fbf0124ae39fa526fc7e7768952efe32093e3591
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54081631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60873658"
 ---
 # <a name="azure-application-contacts-tab"></a>Azure 应用程序“联系人”选项卡
 
@@ -32,7 +32,7 @@ ms.locfileid: "54081631"
 
 提供以下值以定义主要“工程联系人以及产品/服务的“工程联系人”。
 
-|    字段        |  Description                    |
+|    字段        |  描述                    |
 |    ---------    |  ---------------                |
 |  **名称**       |  应用的工程联系人姓名。 此联系人将收到来自 Microsoft 的技术邮件。   |
 |  **电子邮件**      |  工程联系人的电子邮件地址  |
@@ -41,7 +41,7 @@ ms.locfileid: "54081631"
 
 提供以下值以定义主要“支持联系人”以及产品/服务的“支持联系人”。
 
-|    字段        |   Description                   |
+|    字段        |   描述                   |
 |    ---------    |  ---------------                |
 |  **名称**       |  应用的客户支持联系人姓名。 此联系人将收到来自 Microsoft 的支持相关邮件。   |
 |  **电子邮件**      |  客户支持联系人的电子邮件地址  |

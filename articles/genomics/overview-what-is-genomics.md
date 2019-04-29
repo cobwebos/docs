@@ -10,11 +10,11 @@ ms.service: genomics
 ms.topic: article
 ms.date: 12/07/2017
 ms.openlocfilehash: 1b52f47d692cf2fb2925ebb2a9882b9c79c29a87
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57452634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60780889"
 ---
 # <a name="what-is-microsoft-genomics"></a>什么是 Microsoft 基因组学？
 Microsoft 基因组学提供 Burrows-Wheeler Aligner (BWA) 的云实现以及用于辅助分析的基因组分析工具包 (GATK)。 该服务已通过 ISO 认证并符合 HIPAA 法规，并针对基因组排序需求提供价格可预测性。 了解如何通过阅读快速入门、教程和文档使用 Microsoft 基因组学服务并将其与 API 集成。

@@ -13,11 +13,11 @@ ms.custom: ''
 ms.date: 03/12/2019
 ms.author: juliako
 ms.openlocfilehash: b0329c8c0bfa56e5ae36c5f4223edca91e6510a0
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58755604"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733107"
 ---
 # <a name="how-to-encode-with-a-custom-transform---cli"></a>如何使用自定义转换-CLI 进行编码
 

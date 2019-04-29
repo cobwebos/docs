@@ -9,11 +9,11 @@ ms.date: 09/17/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 3459ef4caa99a2147144354165bef7d2852e87cc
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54433336"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777808"
 ---
 # <a name="alerts-on-activity-log"></a>根据活动日志发出警报 
 
@@ -65,5 +65,4 @@ ms.locfileid: "54433336"
 - 了解如何[创建和修改活动日志警报](../../azure-monitor/platform/alerts-activity-log.md)。
 - 查看[活动日志警报 webhook 架构](activity-log-alerts-webhook.md)。
 - 了解[服务运行状况通知](../../azure-monitor/platform/service-notifications.md)。
-
 

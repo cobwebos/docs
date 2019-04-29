@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/17/2018
+ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 7c6d8fbe54d89fc587c8841b8983d7fdcba29b7d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 0cc00b4f2075ba77490d310080b9968bedb8dc1f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59787964"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61304933"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>部署 Windows 混合 Runbook 辅助角色
 
@@ -91,9 +91,13 @@ Windows 混合 Runbook 辅助角色的最低要求如下：
 
 #### <a name="2-add-the-automation-solution-to-the-log-analytics-workspace"></a>2.向 Log Analytics 工作区添加自动化解决方案
 
-解决方案将功能添加到 Azure Monitor 日志。 自动化解决方案增加 Azure 自动化的功能，包括支持混合 Runbook 辅助角色。 将解决方案添加到工作区时，它会自动将辅助角色组件推送到在下一步要安装的代理计算机。
+自动化 Azure Monitor 日志解决方案添加 Azure 自动化，包括对混合 Runbook 辅助角色支持的功能。 将解决方案添加到工作区时，它会自动将辅助角色组件推送到在下一步要安装的代理计算机。
 
-若要将自动化解决方案添加到 Log Analytics 工作区，请参阅[使用解决方案库添加解决方案](../log-analytics/log-analytics-add-solutions.md)中的说明。
+若要添加**自动化**Azure Monitor 记录到工作区中，运行以下 PowerShell 解决方案。
+
+```powershell-interactive
+Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName <logAnalyticsResourceGroup> -WorkspaceName <LogAnalyticsWorkspaceName> -IntelligencePackName "AzureAutomation" -Enabled $true
+```
 
 #### <a name="3-install-the-microsoft-monitoring-agent"></a>3.安装 Microsoft Monitoring Agent
 

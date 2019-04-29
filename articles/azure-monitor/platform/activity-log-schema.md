@@ -9,11 +9,11 @@ ms.date: 1/16/2019
 ms.author: dukek
 ms.subservice: logs
 ms.openlocfilehash: 93e74eb6aefbaeeddf7c4f15d62f4a9ee3d617d4
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58622206"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777383"
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure 活动日志事件架构
 通过 Azure 活动日志，可以深入了解 Azure 中发生的任何订阅级别事件。 本文介绍了每种数据类别的事件架构。 数据架构各有不同，具体取决于是在门户、PowerShell、CLI，或直接通过 REST API 读取数据，还是[使用日志配置文件将数据流式传输到存储或事件中心](./../../azure-monitor/platform/activity-logs-overview.md#export-the-activity-log-with-a-log-profile)。 以下示例显示的是通过门户、PowerShell、CLI 和 REST API 获得的架构。 本文末尾提供了这些属性到 [Azure 诊断日志架构](./diagnostic-logs-schema.md)的映射。
@@ -119,17 +119,17 @@ ms.locfileid: "58622206"
 | correlationId |通常为字符串格式的 GUID。 共享 correlationId 的事件属于同一 uber 操作。 |
 | description |事件的静态文本说明。 |
 | eventDataId |事件的唯一标识符。 |
-| eventName | 管理事件的友好名称。 |
-| category | 始终"管理" |
+| eventName | 管理事件的易记名称。 |
+| category | 始终为“Administrative” |
 | httpRequest |描述 Http 请求的 Blob。 通常包括“clientRequestId”、“clientIpAddress”和“method”（HTTP 方法。 例如 PUT）。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称 |
-| resourceType | 管理事件受影响的资源的类型。 |
+| resourceType | 受“管理”事件影响的资源类型。 |
 | resourceId |受影响资源的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 | 状态 |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus |通常是相应 REST 调用的 HTTP 状态代码，但也可以包含描述子状态的其他字符串，例如以下常见值：正常(HTTP 状态代码:200)、已创建(HTTP 状态代码:201)、已接受(HTTP 状态代码:202)、没有任何内容(HTTP 状态代码:204)、错误的请求(HTTP 状态代码:400)、找不到(HTTP 状态代码:404)、冲突(HTTP 状态代码:409)、内部服务器错误(HTTP 状态代码:500)、服务不可用(HTTP 状态代码:503)、网关超时(HTTP 状态代码: 504)。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -276,7 +276,7 @@ ms.locfileid: "58622206"
 | subStatus | 对警报而言通常为 NULL。 |
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。|
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。|
 | properties.title | 用于描述资源运行状况的用户友好字符串。 |
 | properties.details | 用于描述有关事件的更多详细信息的用户友好字符串。 |
 | properties.currentHealthStatus | 资源的当前运行状况。 以下值之一：“Available”、“Unavailable”、“Degraded”和“Unknown”。 |
@@ -358,14 +358,14 @@ ms.locfileid: "58622206"
 | correlationId | 字符串格式的 GUID。 |
 | description |警报事件的静态文本说明。 |
 | eventDataId |警报事件的唯一标识符。 |
-| category | 始终"警报" |
+| category | 始终为“Alert” |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”和“Informational” |
 | resourceGroupName |受影响资源的资源组的名称（如果是指标警报）。 对于其他警报类型，它是包含警报本身的资源组的名称。 |
 | resourceProviderName |受影响资源的资源提供程序的名称（如果是指标警报）。 对于其他警报类型，它是警报本身的资源提供程序的名称。 |
 | resourceId | 受影响资源的资源 ID 的名称（如果是指标警报）。 对于其他警报类型，它是警报资源本身的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 | 状态 |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对警报而言通常为 NULL。 |
 | eventTimestamp |处理与事件对应的请求的 Azure 服务生成事件时的时间戳。 |
@@ -474,7 +474,7 @@ ms.locfileid: "58622206"
 | resourceId |自动缩放设置的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 |
 | properties.Description | 有关自动缩放引擎执行的操作的详细说明。 |
 | properties.ResourceName | 受影响资源（正在执行缩放操作的资源）的资源 ID |
 | properties.OldInstancesCount | 自动缩放操作生效前的实例数量。 |
@@ -557,7 +557,7 @@ ms.locfileid: "58622206"
 | description |安全事件的静态文本说明。 |
 | eventDataId |安全事件的唯一标识符。 |
 | eventName |安全事件的友好名称。 |
-| category | 始终"安全性" |
+| category | 始终为“Security” |
 | id |安全事件的唯一资源标识符。 |
 | 级别 |事件的级别。 以下值之一：“Critical”、“Error”、“Warning”或“Informational” |
 | resourceGroupName |资源的资源组名称。 |
@@ -566,7 +566,7 @@ ms.locfileid: "58622206"
 | resourceId |安全警报的资源 ID。 |
 | operationId |在多个事件（对应于单个操作）之间共享的 GUID。 |
 | operationName |操作的名称。 |
-| 属性 |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 这些属性将因安全警报的类型而异。 有关来自安全中心的警报类型的说明，请参阅[此页](../../security-center/security-center-alerts-type.md)。 |
+| properties |`<Key, Value>` 对集合（即字典），描述事件的详细信息。 这些属性将因安全警报的类型而异。 有关来自安全中心的警报类型的说明，请参阅[此页](../../security-center/security-center-alerts-type.md)。 |
 | properties.Severity |严重性级别。 可能的值为“High”、“Medium”或“Low”。 |
 | status |描述操作状态的字符串。 一些常见值如下：Started、In Progress、Succeeded、Failed、Active、Resolved。 |
 | subStatus | 对于安全事件通常为 null。 |
@@ -648,7 +648,7 @@ ms.locfileid: "58622206"
 | status | 始终为“Active” |
 | submissionTimestamp |事件可供查询的时间戳。 |
 | subscriptionId |Azure 订阅 ID。 |
-| 属性 |`<Key, Value>` 对集（即字典），描述建议的详细信息。|
+| properties |`<Key, Value>` 对集（即字典），描述建议的详细信息。|
 | properties.recommendationSchemaVersion| 在活动日志条目中发布的建议属性的架构版本 |
 | properties.recommendationCategory | 建议的类别。 可能的值为“High Availability”、“Performance”、“Security”和“Cost” |
 | properties.recommendationImpact| 建议的影响。 可能的值为“High”、“Medium”、“Low” |
@@ -794,7 +794,7 @@ ms.locfileid: "58622206"
 | properties.eventCategory | category | 如果不存在 properties.eventCategory，则 category 是“管理” |
 | properties.eventName | eventName |  |
 | properties.operationId | operationId |  |
-| properties.eventProperties | 属性 |  |
+| properties.eventProperties | properties |  |
 
 
 ## <a name="next-steps"></a>后续步骤

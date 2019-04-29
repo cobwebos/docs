@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
 ms.custom: ''
-ms.openlocfilehash: b48c507e38eb7cadff56259f617e336e4efe5708
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 46225e5a332e035e4d1cc256e71c4b5d8686fd47
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23113525"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845063"
 ---
 # <a name="use-storsimple-snapshot-manager-user-interface-to-manage-backup-jobs-and-backup-catalog"></a>使用 StorSimple Snapshot Manager 用户界面管理备份作业和备份目录
 
@@ -67,7 +67,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“**文件**”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| 菜单项 | 描述 |
 |:--- |:--- |
 | 新建 |单击“**新建**”可基于 StorSimple Snapshot Manager 新建控制台。 |
 | 打开 |单击“**打开**”可打开现有的控制台。 |
@@ -107,7 +107,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 > 
 > 
 
-| 操作 | 导航 | 说明 |
+| 操作 | 导航 | 描述 |
 |:--- |:--- |:--- |
 | 身份验证 |单击“**设备**”节点，并右键单击“**结果**”窗格中的设备。 |单击“**验证**”可输入为设备配置的密码。 |
 | 克隆 |依次展开“**备份目录**”、“**云快照**”，单击带日期的备份，并在“**结果**”窗格中选择卷。 |单击“**克隆**”可创建云快照的副本并将其存储在指定的位置。 |
@@ -139,7 +139,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“**视图**”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| 菜单项 | 描述 |
 |:--- |:--- |
 | 添加/删除列 |单击“**添加/删除列**”可在“**结果**”窗格中添加或删除列。 |
 | 自定义 |单击“**自定义**”可显示或隐藏 StorSimple Snapshot Manager 控制台窗口中的项。 |
@@ -155,7 +155,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“**收藏夹**”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| 菜单项 | 描述 |
 |:--- |:--- |
 | 添加到收藏夹 |单击“**添加到收藏夹**”可将当前视图添加到收藏夹列表。 |
 | 整理收藏夹 |单击“**整理收藏夹**”可整理收藏夹文件夹的内容。 |
@@ -173,7 +173,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“窗口”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| 菜单项 | 描述 |
 |:--- |:--- |
 | 新建窗口 |单击“**新建窗口**”可打开新的控制台窗口（除现有窗口之外）。 |
 | 级联 |单击“**级联**”可以级联方式显示打开的控制台窗口。 |
@@ -190,7 +190,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 #### <a name="menu-description"></a>菜单说明
 下表介绍了“帮助”菜单上显示的项目。
 
-| 菜单项 | 说明 |
+| 菜单项 | 描述 |
 |:--- |:--- |
 | 有关 StorSimple Snapshot Manager 的帮助 |单击“**有关 StorSimple Snapshot Manager 的帮助**”可在一个单独的窗口中打开 StorSimple Snapshot Manager 帮助。 |
 | 帮助主题 |单击“**帮助主题**”可在一个单独的窗口中打开 MMC 联机帮助。 |
@@ -204,7 +204,7 @@ StorSimple Snapshot Manager 用户界面支持 Windows 操作系统和 Microsoft
 ### <a name="icon-descriptions"></a>图标说明
 下表介绍了工具栏上显示的图标。 
 
-| 图标 | 说明 |
+| 图标 | 描述 |
 |:--- |:--- |
 | ![向左键](./media/storsimple-use-snapshot-manager/HCS_SSM_LeftArrow.png) |单击向左键图标可返回上一页。 |
 | ![向右键](./media/storsimple-use-snapshot-manager/HCS_SSM_RightArrow.png) |单击向右键可转到下一页（如果箭头为灰色，则操作不可用）。 |

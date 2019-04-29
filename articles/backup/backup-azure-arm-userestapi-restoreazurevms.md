@@ -11,11 +11,11 @@ ms.date: 09/12/2018
 ms.author: pullabhk
 ms.assetid: b8487516-7ac5-4435-9680-674d9ecf5642
 ms.openlocfilehash: 4a65e8a855b9be797c1ceeacf4b74fea74697d00
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55100185"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60646639"
 ---
 # <a name="restore-azure-virtual-machines-using-rest-api"></a>使用 REST API 还原 Azure 虚拟机
 
@@ -37,7 +37,7 @@ GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{
 
 ### <a name="responses"></a>响应
 
-|Name  |类型  |说明  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
 |200 正常     |   [RecoveryPointResourceList](https://docs.microsoft.com/rest/api/backup/recoverypoints/list#recoverypointresourcelist)      |       OK  |
 
@@ -137,9 +137,9 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 若要触发从 Azure VM 备份还原磁盘的操作，需在请求正文中包含以下组成部分。
 
-|Name  |类型  |说明  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
-|属性     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
+|properties     | [IaaSVMRestoreRequest](https://docs.microsoft.com/rest/api/backup/restores/trigger#iaasvmrestorerequest)        |    RestoreRequestResourceProperties     |
 
 有关请求正文的完整定义列表和其他详细信息，请参阅[“触发还原”REST API 文档](https://docs.microsoft.com/rest/api/backup/restores/trigger#request-body)。
 
@@ -171,7 +171,7 @@ POST https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/
 
 它将返回两个响应：创建另一个操作时为 202（已接受），该操作完成时为 200（正常）。
 
-|Name  |类型  |说明  |
+|名称  |类型  |描述  |
 |---------|---------|---------|
 |202 已接受     |         |     已接受    |
 

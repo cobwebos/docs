@@ -11,11 +11,11 @@ ms.date: 11/14/2018
 ms.author: anvang
 ms.reviewer: igorstan
 ms.openlocfilehash: 3ed1f251c8c09a52def517f4c94ed2ca1420eda8
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999631"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60778280"
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL 数据仓库容量限制
 Azure SQL 数据仓库的各个组件允许的最大值。
@@ -54,7 +54,7 @@ Azure SQL 数据仓库的各个组件允许的最大值。
 ## <a name="loads"></a>加载
 | 类别 | 描述 | 最大值 |
 |:--- |:--- |:--- |
-| Polybase 加载 |每行 MB 数 |1<br/><br/>Polybase 仅加载到小于 1 MB 的行，并且无法加载到 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。<br/><br/> |
+| Polybase 加载 |每行 MB 数 |第<br/><br/>Polybase 仅加载到小于 1 MB 的行，并且无法加载到 VARCHAR(MAX)、NVARCHAR(MAX) 或 VARBINARY(MAX)。<br/><br/> |
 
 ## <a name="queries"></a>查询
 | 类别 | 描述 | 最大值 |

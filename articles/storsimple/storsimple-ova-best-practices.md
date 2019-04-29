@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/08/2018
 ms.author: alkohli
 ms.openlocfilehash: b8e9f12a549f71971c2da3b9865f6a74dad58f61
-ms.sourcegitcommit: d372d75558fc7be78b1a4b42b4245f40f213018c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/09/2018
-ms.locfileid: "51300908"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630132"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple 虚拟阵列最佳实践
 ## <a name="overview"></a>概述
@@ -75,9 +75,9 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 120 GB 的本地预留空间（用于 1 TB 分层卷/共享）
 * 330 GB 用于本地固定卷或共享（在 300 GB 预配大小的基础上增加 10% 的本地预留空间）
 
-到目前为止，本地层所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
+到目前为止本地层上所需的总空间是：240 GB + 120 GB + 330 GB = 690 GB。
 
-其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在本示例中，最大本地预留空间是 330 GB （包括文件系统的预留空间），因此，要为 690 GB 加上该空间量：690 GB + 330 GB = 1020 GB。
+其次，本地层所需的空间至少要与最大的单个预留空间一样大。 需要从云快照还原时，就要用到此额外空间量。 在此示例中，最大本地保留空间是 330 GB （包括文件系统的保留），因此会将其添加到 690 GB:690 GB + 330 GB = 1020 GB。
 在执行其他后续还原操作时，始终可以释放以前还原操作的空间。
 
 第三，需要本地总空间的 15% 来存储本地快照，因此只剩 85% 的空间可供使用。 在本示例中，这大约是 1020 GB，即 0.85 &ast; 预配的数据磁盘 TB 数。 因此，预配的数据磁盘是 (1020&ast;(1/0.85))= 1200 GB = 1.20 TB ~ 1.25 TB（四舍五入为最接近的四分位数）
@@ -99,7 +99,7 @@ StorSimple 虚拟阵列是在主机服务器虚拟机监控程序（Hyper-V 或 
 * 240 GB 本地预留空间（用于 2 TB 分层卷/共享）
 * 330 GB 用于本地固定卷或共享（在 300 GB 预配空间的基础上增加 10% 的本地预留空间）
 
-本地层所需的总空间是：240 GB + 330 GB = 570 GB
+在本地层所需的总空间是：240 GB + 330 GB = 570 GB
 
 还原所需的最小本地空间是 330 GB。
 

@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: f5d1c66cb049ab9ec52db619d55a4bb3e485e4b2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60588354"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Azure 公有云中的隔离
-##  <a name="introduction"></a>介绍
+##  <a name="introduction"></a>简介
 ### <a name="overview"></a>概述
 为了协助当前和潜在的 Azure 客户了解和利用 Azure 平台中和围绕 Azure 平台提供的各种安全相关的功能，Microsoft 制定了一系列白皮书、安全概述、最佳实践以及清单。
 这些主题涵盖各类不同宽度和深度的内容，并且定期更新。 本文档属于下面摘要部分中总结的系列的一部分。
@@ -85,7 +85,7 @@ Azure Active Directory 在其自己受保护的容器中托管每个租户，使
 
 Azure RBAC 有三种适用于所有资源类型的基本角色：
 
-- **所有者**具有对所有资源的完全访问权限，包括将访问权限委派给其他用户的权限。
+- **所有者**对所有资源具有完全访问权限，包括将访问权限委派给其他用户的权限。
 
 - **参与者**可以创建和管理所有类型的 Azure 资源，但不能将访问权限授予其他用户。
 

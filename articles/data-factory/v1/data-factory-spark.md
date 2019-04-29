@@ -15,11 +15,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 95c49eec6964984894f75ecd0a9e50c9c947683b
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54015808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61257499"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>从 Azure 数据工厂管道调用 Spark 程序
 
@@ -38,7 +38,7 @@ ms.locfileid: "54015808"
 > [!NOTE]
 > 本文适用于 Azure 数据工厂第 1 版（即正式版）。 如果使用数据工厂服务的当前版本，请参阅[在数据工厂中使用 Apache Spark 活动转换数据](../transform-data-using-spark.md)。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-transformation-activities.md)之一。 此活动在 Azure HDInsight 中 Spark 群集上运行指定的 Spark 程序。 
 
 > [!IMPORTANT]
@@ -54,7 +54,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 * 创建引用存储链接服务的数据集。 目前，即使不生成任何输出，也必须为活动指定输出数据集。 
 * 创建一个包含 Spark 活动的管道，使该活动引用创建的 HDInsight 链接服务。 该活动配置为使用上一步骤中创建的数据集作为输出数据集。 输出数据集驱动计划（每小时、每日）。 因此，即使该活动实际上不生成任何输出，也必须指定输出数据集。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 1. 遵循[创建存储帐户](../../storage/common/storage-quickstart-create-account.md)中的说明创建一个常规用途存储帐户。
 
 1. 遵循[在 HDInsight 中创建 Spark 群集](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)教程中的说明在 HDInsight 中创建一个 Spark 群集。 将在步骤 1 中创建的存储帐户与此群集相关联。
@@ -224,7 +224,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
     c. **entryFilePath** 属性设置为 **test.py**，这是 Python 文件。
 
-    d. **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（无论成功还是失败）。
+    d. **getDebugInfo** 属性设置为 **Always**，表示始终生成日志文件（成功或失败）。
 
     > [!IMPORTANT]
     > 在生产环境中，除非要排查问题，否则我们不建议将此属性设置为 `Always`。
@@ -267,7 +267,8 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
     ![Jupyter 查询结果](media/data-factory-spark/jupyter-notebook-results.png)
 
-<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article --> 有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)部分。 
+<!-- Removed bookmark #run-a-hive-query-using-spark-sql since it doesn't exist in the target article -->
+有关详细说明，请参阅[运行 Spark SQL 查询](../../hdinsight/spark/apache-spark-jupyter-spark-sql.md)部分。 
 
 ### <a name="troubleshooting"></a>故障排除
 由于 getDebugInfo 设置为 **Always**，因此 Blob 容器的 pyFiles 文件夹中会出现一个 log 子文件夹。 log 文件夹中的日志文件提供了更多信息。 当发生错误时，此日志文件尤其有用。 在生产环境中，可将其设置为 **Failure**。
@@ -326,7 +327,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 下表描述了 JSON 定义中使用的 JSON 属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | -------- | ----------- | -------- |
 | 名称 | 管道中活动的名称。 | 是 |
 | description | 描述活动用途的文本。 | 否 |
@@ -346,7 +347,7 @@ Spark 活动是数据工厂支持的[数据转换活动](data-factory-data-trans
 
 在 HDInsight 链接服务引用的 Blob 存储中创建以下文件夹结构。 然后，将依赖文件上传到 **entryFilePath** 表示的根文件夹中的相应子文件夹。 例如，将 Python 文件上传到根文件夹的 pyFiles 子文件夹，将 jar 文件上传到根文件夹的 jars 子文件夹。 在运行时，数据工厂服务需要 Blob 存储中的以下文件夹结构： 
 
-| 路径 | Description | 必选 | 类型 |
+| 路径 | 描述 | 需要 | Type |
 | ---- | ----------- | -------- | ---- |
 | . | Spark 作业在存储链接服务中的根路径。 | 是 | Folder |
 | &lt;用户定义&gt; | 指向 Spark 作业入口文件的路径。 | 是 | 文件 |

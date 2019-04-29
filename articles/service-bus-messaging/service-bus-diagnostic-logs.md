@@ -16,11 +16,11 @@ ms.workload: data-services
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 7d4cb8e55c5d1561c09cf85122550a66e3671f17
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57216333"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60714098"
 ---
 # <a name="service-bus-diagnostic-logs"></a>服务总线诊断日志
 
@@ -46,7 +46,7 @@ ms.locfileid: "57216333"
 
     ![更改诊断日志的状态](./media/service-bus-diagnostic-logs/image3.png)
 
-5.  设置所需; 的存档目标例如，存储帐户、 事件中心或 Azure Monitor 的日志。
+5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Monitor 日志。
 
 6.  保存新的诊断设置。
 

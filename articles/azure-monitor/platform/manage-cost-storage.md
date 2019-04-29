@@ -15,20 +15,20 @@ ms.date: 03/29/2018
 ms.author: magoedte
 ms.subservice: ''
 ms.openlocfilehash: a2f90c52823664df5fdc71c55220cc660c2f68e3
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782830"
 ---
-# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>管理的 Azure Monitor 中的 Log Analytics 使用情况和成本
+# <a name="manage-usage-and-costs-for-log-analytics-in-azure-monitor"></a>管理 Azure Monitor 中的 Log Analytics 的使用情况和成本
 
 > [!NOTE]
 > 本文介绍如何通过设置数据保留期来控制 Log Analytics 中的成本。  相关信息请参阅以下文章。
 > - [在 Log Analytics 中分析数据使用情况](manage-cost-storage.md)介绍了如何根据数据使用情况进行分析和警告。
 > - [监视使用情况及预估成本](usage-estimated-costs.md)介绍了如何针对不同的定价模型查看多个 Azure 监视功能的使用情况及预估成本。 它还介绍了如何更改定价模型。
 
-Azure Monitor 中的 log Analytics 设计为规模和支持收集、 索引和存储巨量的每日来自任何源的数据在企业中或在 Azure 中部署。  尽管这可能是组织的主要驱动力，但成本效益最终是基本驱动力。 为此，必须了解 Log Analytics 工作区的成本不仅仅是基于收集的数据量，而且也取决于所选的计划，以及连接源生成的数据的存储时间长短。  
+Azure Monitor 中的 Log Analytics 用于调整和支持来自任何源的巨量数据的每日收集、索引和存储，这些源部署在企业或 Azure 中。  尽管这可能是组织的主要驱动力，但成本效益最终是基本驱动力。 为此，必须了解 Log Analytics 工作区的成本不仅仅是基于收集的数据量，而且也取决于所选的计划，以及连接源生成的数据的存储时间长短。  
 
 本文介绍如何主动监视数据量和存储增长，以及定义限制来控制这些关联的成本。 
 
@@ -139,9 +139,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 - 将数据发送到 Log Analytics 的节点数超出预期
 - 发送到 Log Analytics 的数据量超出预期
 
-下一步部分资源管
+后续部分介绍
 
-## <a name="understanding-nodes-sending-data"></a>了解节点发送数据
+## <a name="understanding-nodes-sending-data"></a>了解发送数据的节点
 
 若要了解在上个月每天报告数据的计算机（节点）数，请使用：
 
@@ -157,9 +157,9 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 | where computerName != ""
 | summarize TotalVolumeBytes=sum(_BilledSize) by computerName`
 
-请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。 此查询将替换旧方法的查询使用的数据类型的每台计算机信息。  
+请谨慎使用这些 `union withsource = tt *` 查询，因为跨数据类型执行扫描的开销很大。 此查询将使用 Usage 数据类型替换旧的查询单个计算机信息的方式。  
 
-这可以扩展以返回每小时发送的计算机数计费数据类型 （这是 Log Analytics 如何计算可计费的节点定价层的旧每个节点）：
+这可以扩展为返回每小时发送计费数据类型的计算机数量（这是 Log Analytics 为旧版“按节点”定价层计算可计费节点的方式）：
 
 `union withsource = tt * 
 | where _IsBillable == true 
@@ -184,7 +184,7 @@ Log Analytics 费用将添加到 Azure 帐单。 可以在 Azure 门户的“计
 
 ### <a name="data-volume-by-computer"></a>按计算机的数据量
 
-若要查看**大小**的可计费事件引入每台计算机，使用`_BilledSize`属性 ([日志标准属性 #_billedsize.md](learn more)) 提供以字节为单位的大小：
+若要查看每台计算机引入的可计费事件的**大小**，请使用 `_BilledSize` 属性 ([log-standard-properties#_billedsize.md](learn more))（以字节为单位提供大小）：
 
 ```
 union withsource = tt * 
@@ -192,7 +192,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by  Computer | sort by Bytes nulls last
 ```
 
-`_IsBillable`属性指定引入的数据是否会产生费用 ([日志标准 properties.md #_isbillable](Learn more)。)
+`_IsBillable` 属性指定引入的数据是否会收费（[log-standard-properties.md#_isbillable](Learn more)。）
 
 若要查看每台计算机引入的事件数，请使用：
 
@@ -214,9 +214,9 @@ union withsource = tt *
 | summarize count() by tt | sort by count_ nulls last
 ```
 
-### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>通过 Azure 资源、 资源组或订阅的数据量
+### <a name="data-volume-by-azure-resource-resource-group-or-subscription"></a>按 Azure 资源、资源组或订阅计算的数据量
 
-对于在 Azure 中托管的节点中的数据可以获取**大小**的可计费事件引入__每台计算机__，使用`_ResourceId`属性提供对资源的完整路径 ([日志标准 properties.md #_resourceid](learn more)):
+对于托管在 Azure 中的节点中的数据，可以__按计算机__获取引入的可计费事件的**大小**，以及使用 `_ResourceId` 属性，该属性提供资源的完整路径 ([log-standard-properties.md#_resourceid](learn more))：
 
 ```
 union withsource = tt * 
@@ -224,7 +224,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by _ResourceId | sort by Bytes nulls last
 ```
 
-对于在 Azure 中托管的节点中的数据可以获取**大小**的可计费事件引入__每个 Azure 订阅__，分析`_ResourceId`属性设置为：
+对于托管在 Azure 中的节点中的数据，可以__按 Azure 订阅__获取引入的可计费事件的**大小**，并可将 `_ResourceId` 属性解析为：
 
 ```
 union withsource = tt * 
@@ -234,13 +234,13 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last
 ```
 
-更改`subscriptionId`到`resourceGroup`将显示按 Azure resouurce 组列出的可计费引入的数据量。 
+将 `subscriptionId` 更改为 `resourceGroup` 后，就会显示可计费的已引入数据量（按 Azure 资源组计算）。 
 
 
 > [!NOTE]
 > 使用情况数据类型的某些字段虽然仍在架构中，但已弃用，其值将不再填充。 这些是**计算机**以及与引入相关的字段（**TotalBatches**、**BatchesWithinSla**、**BatchesOutsideSla**、**BatchesCapped** 和 **AverageProcessingTimeMs**）。
 
-### <a name="querying-for-common-data-types"></a>通用数据类型的查询
+### <a name="querying-for-common-data-types"></a>查询常见的数据类型
 
 若要更深入地了解特定数据类型的数据源，请使用下面这些有用的示例查询：
 
@@ -273,7 +273,7 @@ union withsource = tt *
 | AzureDiagnostics           | 更改资源日志集合，以便： <br> - 减少向 Log Analytics 发送日志的资源数目 <br> - 仅收集必需的日志 |
 | 不需解决方案的计算机中的解决方案数据 | 使用[解决方案目标](../insights/solution-targeting.md)，只从必需的计算机组收集数据。 |
 
-### <a name="getting-security-and-automation-node-counts"></a>获取安全和自动化节点计数 
+### <a name="getting-security-and-automation-node-counts"></a>获取安全性和自动化节点计数 
 
 如果你位于“按节点(OMS)”定价层，则根据所用节点和解决方案数收费，需付费的 Insights and Analytics 节点数将显示在“使用情况和预估成本”页的表中。  
 

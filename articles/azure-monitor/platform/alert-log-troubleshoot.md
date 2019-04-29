@@ -9,19 +9,19 @@ ms.date: 10/29/2018
 ms.author: vinagara
 ms.subservice: alerts
 ms.openlocfilehash: 0c7189f1d43a114532b30b0c1aabe6f7cd4402d8
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578707"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60775924"
 ---
 # <a name="troubleshooting-log-alerts-in-azure-monitor"></a>在 Azure Monitor 中排查日志警报问题  
 
 ## <a name="overview"></a>概述
 
-本文介绍如何解决常见过程设置 Azure Monitor 中的日志警报时的问题。 并提供有关日志警报功能或配置的常见问题的解决方法。 
+本文介绍如何解决在 Azure Monitor 中设置日志警报时出现的常见问题， 并提供有关日志警报功能或配置的常见问题的解决方法。 
 
-术语**日志警报**介绍了激发，基于一个日志查询中的警报[Log Analytics 工作区](../learn/tutorial-viewdata.md)或[Application Insights](../../azure-monitor/app/analytics.md)。 在[日志警报 - 概述](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
+术语“日志警报”描述基于 [Log Analytics 工作区](../learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 中的日志查询激发的警报。 在[日志警报 - 概述](../platform/alerts-unified-log.md)中详细了解功能、术语和类型。
 
 > [!NOTE]
 > 本文不考虑 Azure 门户中显示警报规则已触发以及通过关联的操作组执行通知的情况。 对于这种情况，请参阅有关[操作组](../platform/action-groups.md)的文章中的详细信息。
@@ -32,7 +32,7 @@ ms.locfileid: "59578707"
 
 ### <a name="data-ingestion-time-for-logs"></a>日志的数据引入时间
 
-日志警报基于 [Log Analytics](../learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 定期运行查询。 由于 Azure 监视器在世界各地处理数万亿字节的数千个客户从各种源中的数据，该服务是易受不同的时间延迟。 有关详细信息，请参阅[在 Azure Monitor 日志中的数据引入时间](../platform/data-ingestion-time.md)。
+日志警报基于 [Log Analytics](../learn/tutorial-viewdata.md) 或 [Application Insights](../../azure-monitor/app/analytics.md) 定期运行查询。 由于 Azure Monitor 需要处理来自数千个客户以及全球各种源的若干 TB 的数据，因此，该服务很容易发生不同的时间延迟。 有关详细信息，请参阅 [Azure Monitor 日志中的数据引入时间](../platform/data-ingestion-time.md)
 
 如果系统发现所需的数据尚未引入，为了缓解数据引入延迟，它会等待一段时间，并重试警报查询多次。 为系统设置的等待时间呈指数级递增。 日志警报只会在数据可用后才会触发，因此，延迟可能是日志数据引入速度缓慢造成的。 
 
@@ -83,7 +83,7 @@ ms.locfileid: "59578707"
 
 ### <a name="alert-triggered-by-partial-data"></a>部分数据触发了警报
 
-为 Log Analytics 和 Application Insights 提供功能支持的 Analytics 可能会发生引入和处理延迟；因此，在运行提供的日志警报查询时，可能存在没有任何数据可用或者只有部分数据可用的情况。 有关详细信息，请参阅[Azure Monitor 中的日志数据引入时间](../platform/data-ingestion-time.md)。
+为 Log Analytics 和 Application Insights 提供功能支持的 Analytics 可能会发生引入和处理延迟；因此，在运行提供的日志警报查询时，可能存在没有任何数据可用或者只有部分数据可用的情况。 有关详细信息，请参阅 [Azure Monitor 中的日志数据引入时间](../platform/data-ingestion-time.md)。
 
 根据警报规则的配置方式，如果在执行警报时日志中没有数据或者只有部分数据，则可能会错误地激发警报。 在这种情况下，我们建议你更改警报查询或配置。 
 
@@ -184,4 +184,4 @@ ms.locfileid: "59578707"
 
 - 了解 [Azure 警报中的日志警报](../platform/alerts-unified-log.md)
 - 详细了解 [Application Insights](../../azure-monitor/app/analytics.md)
-- 详细了解[记录的查询](../log-query/log-query-overview.md)
+- 了解有关[日志查询](../log-query/log-query-overview.md)的详细信息

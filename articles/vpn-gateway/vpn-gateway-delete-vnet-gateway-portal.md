@@ -3,17 +3,17 @@ title: 删除虚拟网络网关：Azure 门户：资源管理器 | Microsoft Doc
 description: 在 Resource Manager 部署模型中使用 Azure 门户删除虚拟网络网关。
 services: vpn-gateway
 documentationcenter: na
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
-ms.date: 10/23/2018
-ms.author: cherylmc
-ms.topic: conceptual
+origin.date: 10/23/2018
+ms.date: 03/04/2019
+ms.author: v-jay
 ms.openlocfilehash: 387b4e982772f22453876e1ea8b9e7c4039601c4
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57790571"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845677"
 ---
 # <a name="delete-a-virtual-network-gateway-using-the-portal"></a>使用门户删除虚拟网络网关
 
@@ -63,3 +63,5 @@ ms.locfileid: "57790571"
 1. 在“所有资源”中，找到该资源组并单击以打开边栏选项卡。
 2. 单击“删除” 。 在“删除”边栏选项卡上，查看受影响的资源。 请确保要删除所有这些资源。 否则使用本文开头“删除 VPN 网关”中的步骤。
 3. 要继续，请键入要删除的资源组的名称，并单击“删除”。
+
+<!--Update_Description: wording update-->

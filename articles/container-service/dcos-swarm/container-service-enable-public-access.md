@@ -10,11 +10,11 @@ ms.date: 08/26/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 3e4ba15fa1925ca40ad7760acbd14331fbdd1343
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996601"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457184"
 ---
 # <a name="deprecated-enable-public-access-to-an-azure-container-service-application"></a>（已弃用）启用对 Azure 容器服务应用程序的公共访问
 
@@ -35,19 +35,19 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
     ![Azure 容器服务负载均衡器探测](./media/container-service-enable-public-access/add-probe.png)
 5. 填写探测窗体，并单击“确定”。
    
-   | 字段 | Description |
+   | 字段 | 描述 |
    | --- | --- |
    | 名称 |探测的描述性名称。 |
    | 端口 |要测试的容器端口。 |
    | 路径 |（处于 HTTP 模式时）探测的相对网站路径。 不支持 HTTPS。 |
-   | 时间间隔 |探测尝试之间的时间量（秒）。 |
+   | Interval |探测尝试之间的时间量（秒）。 |
    | 不正常阈值 |将容器视为运行不正常前，连续探测尝试的次数。 |
 6. 返回到代理负载均衡器的属性，单击“负载均衡规则”，并单击“添加”。
    
     ![Azure 容器服务负载均衡器规则](./media/container-service-enable-public-access/add-balancer-rule.png)
 7. 填写负载均衡器窗体，并单击“确定”。
    
-   | 字段 | Description |
+   | 字段 | 描述 |
    | --- | --- |
    | 名称 |负载均衡器的描述性名称。 |
    | 端口 |公共传入端口。 |
@@ -70,7 +70,7 @@ ACS [公共代理池](container-service-mesos-marathon-ui.md#deploy-a-docker-for
     ![Azure 容器服务网络安全组规则](./media/container-service-enable-public-access/add-firewall-rule.png)
 5. 填写防火墙规则以允许公共端口，并单击“确定”。
    
-   | 字段 | Description |
+   | 字段 | 描述 |
    | --- | --- |
    | 名称 |防火墙规则的描述性名称。 |
    | 优先度 |规则的优先级等级。 编号越低，优先级越高。 |

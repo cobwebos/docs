@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 5f488811e57ee20cb25db56b2d9e04202b17ffb2
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60869455"
 ---
 # <a name="deploy-azure-blockchain-workbench"></a>部署 Azure Blockchain Workbench
 
@@ -86,7 +86,7 @@ Azure Blockchain Workbench 需要 Azure AD 配置和应用程序注册。 可以
     | 部署区域 | 指定部署 Blockchain Workbench 资源的位置。 为了尽可能提高可用性，此位置应与“位置”设置相符。 |
     | 订阅 | 指定要用于部署的 Azure 订阅。 |
     | 资源组 | 选择“新建”创建新资源组，并指定唯一的资源组名称。 |
-    | 位置 | 指定要将框架部署到的区域。 |
+    | Location | 指定要将框架部署到的区域。 |
 
 7. 选择“确定”完成基本设置配置部分。
 

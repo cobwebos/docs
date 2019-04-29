@@ -58,7 +58,7 @@ sections:
             html: <p>Azure PaaS 使实例的可用性高达 99.99% 且管理量最少。</p>
           - title: 服务层
             href: /azure/sql-database/sql-database-service-tiers-general-purpose-business-critical
-            html: <p>根据业务需求，在常规用途和业务关键服务层之间作出选择。</p>
+            html: <p>根据业务需求，在“常规用途”和“业务关键”服务层级之间做出选择。</p>
           - title: 高级安全
             href: /azure/sql-database/sql-database-security-index
             html: <p>使用内置的 Azure SQL 数据库安全功能保护实例和数据库。<p>
@@ -143,7 +143,7 @@ sections:
           - html: '验证可以使用<a href="https://www.microsoft.com/download/details.aspx?id=53595">数据迁移助手</a>或<a href="https://blogs.msdn.microsoft.com/datamigration/20../../release-database-experimentation-assistant-dea-v2-6/">数据库实验助手</a>迁移数据库。'
           - html: 使你的数据库托管的实例使用<a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">本机还原</a>或<a href="/azure/dms/tutorial-sql-server-managed-instance-online">数据迁移服务</a>。
           - html: '将 SSIS 包迁移到 <a href="/azure/data-factory/tutorial-deploy-ssis-packages-azure">Azure 数据工厂</a>，将 SSAS 表格模型迁移到 <a href="https://azure.microsoft.com/resources/videos/azure-analysis-services-moving-models/">Azure 分析服务</a>，并将 SSRS 报表迁移到<a href="https://docs.microsoft.com/business-applications-release-notes/april18/power-bi/service/sql-server-reporting-services-ssrs-reports-power-bi-premium">Power BI Premium</a>。'
-          - html: '了解<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">常规用途层</a>中的存储层以及应用<a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">针对常规用途服务层的存储性能最佳做法和注意事项</a>。'
+          - html: '了解<a href="https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c">“常规用途”层级</a>中的存储层以及应用<a href="https://techcommunity.microsoft.com/t5/DataCAT/Storage-performance-best-practices-and-considerations-for-Azure/ba-p/305525">针对“常规用途”服务层级的存储性能最佳做法和注意事项</a>。'
           - html: '找到<a href="https://www.youtube.com/watch?v=vO6k05Ox1iI">保护实例</a>的最佳做法和建议。'
           - html: 查找可以帮助你配置托管实例的更多<a href="sql-database-howto-managed-instance.md">操作指南</a>。
   - title: 参考

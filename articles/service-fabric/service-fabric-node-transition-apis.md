@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 6/12/2017
 ms.author: lemai
 ms.openlocfilehash: df0e53736c08fd2c26c467def7328e85f2989f26
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55752936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60718132"
 ---
 # <a name="replacing-the-start-node-and-stop-node-apis-with-the-node-transition-api"></a>将启动节点 API 和停止节点 API 替换为节点转换 API
 
@@ -53,10 +53,10 @@ ms.locfileid: "55752936"
 **有限持续时间**使用节点转换 API 停止某个节点时，必须使用 *stopNodeDurationInSeconds* 参数，表示将该节点保持*停止*状态的秒数。  此值必须在允许的范围内，最小为 600，最大为 14400。  经过这段时间后，该节点将自行重新启动，自动进入 Up（启动）状态。  有关用法示例，请参阅下面的“示例 1”。
 
 > [!WARNING]
-> 避免将节点转换 API 与停止节点 API 和启动节点 API 混合使用。  建议只使用节点转换 API。  > 如果已使用停止节点 API 停止某个节点，应先使用启动节点 API 将它启动，> 再使用节点转换 API。
+> 避免将节点转换 API 与停止节点 API 和启动节点 API 混合使用。  建议只使用节点转换 API。  > 如果已使用停止节点 API 停止某个节点，应先使用启动节点 API 将它启动，> 然后再使用节点转换 API。
 
 > [!WARNING]
-> 不能同时针对同一个节点执行多次节点转换 API 调用。  否则，节点转换 API 将    > 引发 FabricException 并返回 ErrorCode 属性值 NodeTransitionInProgress。  在特定的节点上启动  > 节点转换后，应等到该操作进入终止状态（Completed、Faulted 或 ForceCancelled），然后在同一节点上启动  > 新的转换。  允许同时针对不同的节点执行节点转换调用。
+> 不能同时针对同一个节点执行多次节点转换 API 调用。  否则，节点转换 API 将    > 引发 FabricException 并返回 ErrorCode 属性值 NodeTransitionInProgress。  在特定的节点上启动  > 节点转换后，应等到该操作进入终止状态（Completed、Faulted 或 ForceCancelled），> 然后在同一节点上启动新的转换。  允许同时针对不同的节点执行节点转换调用。
 
 
 #### <a name="sample-usage"></a>示例用法
@@ -207,7 +207,7 @@ ms.locfileid: "55752936"
         }
 ```
 
-**示例 3** - 以下示例显示错误的用法。  这种用法之所以不正确，是因为提供的 *stopDurationInSeconds* 超出了允许的范围。  由于 StartNodeTransitionAsync() 会失败并返回严重错误，因此该操作未被接受。不应调用进度 API。  此示例使用第一个示例中的某些帮助器方法。
+**示例 3** - 以下示例显示错误的用法。  这种用法之所以不正确，是因为提供的 *stopDurationInSeconds* 超出了允许的范围。  由于 StartNodeTransitionAsync() 将会失败并返回严重错误，因此该操作未被接受。不应调用进度 API。  此示例使用第一个示例中的某些帮助器方法。
 
 ```csharp
         static async Task StopNodeWithOutOfRangeDurationAsync(FabricClient fc, string nodeName)

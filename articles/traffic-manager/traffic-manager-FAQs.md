@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: kumud
 ms.openlocfilehash: 6086c182763885b62f28ab093be2a7f3f8282b8a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60803033"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>流量管理器常见问题解答 (FAQ)
 
@@ -59,7 +59,7 @@ ms.locfileid: "59788421"
 如[流量管理器工作原理](../traffic-manager/traffic-manager-how-it-works.md)中所述，流量管理器在 DNS 级别工作。 完成 DNS 查找以后，客户端会直接连接到应用程序终结点，不通过流量管理器进行连接。 因此，连接可以使用任何应用程序协议。 如果选择 TCP 作为监视协议，则无需使用任何应用程序协议，就可以完成对流量管理器终结点运行状况的监视。 如果选择使用应用程序协议来验证运行状况，则要求终结点能够响应 HTTP 或 HTTPS GET 请求。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>是否可以对“裸”域名使用流量管理器？
-是的。 若要了解如何创建域名称顶点处以引用 Azure 流量管理器配置文件的别名记录，请参阅[配置以支持顶点域名使用流量管理器的别名记录](../dns/tutorial-alias-tm.md)。
+可以。 若要了解如何创建域名称顶点处以引用 Azure 流量管理器配置文件的别名记录，请参阅[配置以支持顶点域名使用流量管理器的别名记录](../dns/tutorial-alias-tm.md)。
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>处理 DNS 查询时流量管理器是否会考虑客户端子网地址？ 
 会，除了其收到的 DNS 查询的源 IP 地址（通常是 DNS 解析器的 IP 地址）以外，在执行地理、性能和子网路由方法的查找时，流量管理器还会考虑客户端子网地址（如果它通过代表最终用户发起请求的解析器包含在查询中）。  
@@ -274,7 +274,7 @@ Azure 流量管理器提供的 DNS 查询考虑了 ECS 信息以提高路由的�
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>能否将流量管理器用于云服务的“过渡”槽？
 
-是的。 可以在流量管理器中将云服务的“过渡”槽配置为“外部”终结点。 运行状况检查仍按 Azure 终结点费率计费。 由于使用的是“外部”终结点类型，系统不会自动拾取对基础服务所做的更改。 使用外部终结点时，流量管理器无法检测停止或删除云服务的时间。 因此，在禁用或删除终结点之前，流量管理器会一直对运行状况检查计费。
+可以。 可以在流量管理器中将云服务的“过渡”槽配置为“外部”终结点。 运行状况检查仍按 Azure 终结点费率计费。 由于使用的是“外部”终结点类型，系统不会自动拾取对基础服务所做的更改。 使用外部终结点时，流量管理器无法检测停止或删除云服务的时间。 因此，在禁用或删除终结点之前，流量管理器会一直对运行状况检查计费。
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>流量管理器是否支持 IPv6 终结点？
 
@@ -315,7 +315,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="can-i-monitor-https-endpoints"></a>能否监视 HTTPS 终结点？
 
-是的。 流量管理器支持通过 HTTPS 进行探测。 在监视配置中将 **HTTPS** 配置为协议。
+可以。 流量管理器支持通过 HTTPS 进行探测。 在监视配置中将 **HTTPS** 配置为协议。
 
 流量管理器无法提供任何证书验证，包括：
 
@@ -371,7 +371,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>如果应用程序不支持 HTTP 或 HTTPS，是否仍可使用流量管理器？
 
-是的。 可以将 TCP 指定为监视协议，而流量管理器可发起一个 TCP 连接，并等待来自终结点的响应。 如果终结点在超时期限内以建立连接为响应答复了连接请求，则将该终结点标记为正常。
+可以。 可以将 TCP 指定为监视协议，而流量管理器可发起一个 TCP 连接，并等待来自终结点的响应。 如果终结点在超时期限内以建立连接为响应答复了连接请求，则将该终结点标记为正常。
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>使用 TCP 监视时，需要终结点的哪些特定响应？
 
@@ -424,7 +424,7 @@ Azure 资源管理器要求所有资源组指定一个位置，这决定了部�
 
 ### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>能否在同一流量管理器配置文件中将其他终结点类型与嵌套式子配置文件混合在一起使用？
 
-是的。 至于如何在一个配置文件中组合使用不同类型的终结点，并无任何限制。
+可以。 至于如何在一个配置文件中组合使用不同类型的终结点，并无任何限制。
 
 ### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>嵌套式配置文件如何应用计费模型？
 

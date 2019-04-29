@@ -15,11 +15,11 @@ ms.topic: article
 ms.author: jowargo
 ms.date: 04/08/2019
 ms.openlocfilehash: 64c2cd0ed1572fdaaa42f4731519ba6d5c320f1c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149123"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61457700"
 ---
 # <a name="registration-management"></a>注册管理
 
@@ -45,7 +45,7 @@ ms.locfileid: "60149123"
 以下是使用安装的一些主要优点：
 
 - 创建或更新安装是完全幂等的。 因此可以重试该操作，而不需要顾虑重复注册的情况。
-- 安装模型支持特殊的标记格式 (`$InstallationId:{INSTALLATION_ID}`)，使直接向特定设备发送通知。 例如，如果应用程序的代码设置的安装 ID`joe93developer`对于此特定设备，开发人员可以针对此设备发送到通知时`$InstallationId:{joe93developer}`标记。 这使您可以针对特定的设备，而无需进行任何其他编码。
+- 此安装模型支持特殊的标记格式 (`$InstallationId:{INSTALLATION_ID}`)，该格式允许将通知直接发送到特定的设备。 例如，如果应用的代码为此特定设备设置了安装 ID `joe93developer`，则开发人员在向 `$InstallationId:{joe93developer}` 标记发送通知时，可以将此设备作为目标。 这样，无需编写任何额外的代码，就能将特定设备作为目标。
 - 使用安装还能执行部分注册更新。 可以使用 [JSON-Patch standard](https://tools.ietf.org/html/rfc6902) 以 PATCH 方法来请求安装部分更新。 想要更新注册中的标记时，此方法很有用。 不需要删除整个注册，并重新发送前面的所有标记。
 
 安装可包含以下属性。 有关完整的安装属性列表，请参阅[使用 REST API 创建或覆盖安装](https://docs.microsoft.com/en-us/rest/api/notificationhubs/create-overwrite-installation)或[安装属性](https://msdn.microsoft.com/library/azure/microsoft.azure.notificationhubs.installation_properties.aspx)。

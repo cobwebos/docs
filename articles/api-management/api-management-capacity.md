@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 06/18/2018
 ms.author: apimpm
 ms.openlocfilehash: fe77361c4c9bed9310f8443ed4ff37faf7ea53a9
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57454501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60658282"
 ---
 # <a name="capacity-of-an-azure-api-management-instance"></a>Azure API 管理实例的容量
 
@@ -78,7 +78,7 @@ ms.locfileid: "57454501"
 4. 在绿色部分选择“位置”，以便按维度拆分指标。
 5. 从该部分的顶部栏中选择所需的时间范围。
 
-    可以设置指标警报，以便在发生意外的情况时收到通知。 例如，在自己的 APIM 实例具有已超出预期的峰值容量的 20 多分钟时收到通知。
+    可以设置指标警报，以便在发生意外的情况时收到通知。 例如，当 APIM 实例超出预期峰值容量有 20 分钟以上时收到通知。
 
     >[!TIP]
     > 可以配置警报，以便在服务容量不足时知道这种状况；或者使用 Azure Monitor 自动缩放功能自动添加 Azure API 管理单元。 缩放操作可能需要大约 30 分钟，因此请相应地安排规则。  

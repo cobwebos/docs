@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 02/07/2018
 ms.author: jingwang
 ms.openlocfilehash: e9fd818990c8a985a77c2e7eeea19bf63c440e4e
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54018987"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61347643"
 ---
 # <a name="copy-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,7 +35,7 @@ ms.locfileid: "54018987"
 - **12 版本和更高版本**的 Teradata。
 - 使用**基本**或 **Windows** 身份验证复制数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要使用此 Teradata 连接器，需要：
 
@@ -169,8 +169,8 @@ Teradata 链接的服务支持以下属性：
 | ByteInt |Int16 |
 | Char |String |
 | Clob |String |
-| 日期 |DateTime |
-| 小数 |小数 |
+| date |DateTime |
+| Decimal |Decimal |
 | Double |Double |
 | Graphic |String |
 | Integer |Int32 |

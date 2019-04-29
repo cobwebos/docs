@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.openlocfilehash: 3b5da6c9046fc694bd5eb0f55cf031b82b6d0103
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58370527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60919738"
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-azure-monitor"></a>使用 Azure Monitor 中的 Active Directory 运行状况检查解决方案优化 Active Directory 环境
 
@@ -128,7 +128,7 @@ Active Directory 运行状况检查使用已启用的代理收集以下来源的
 ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
 ```
 
-下面是显示日志查询的屏幕截图：<br><br> ![失败的建议](media/ad-assessment/ad-failed-recommendations.png)
+下面是一个显示了日志查询的屏幕截图：<br><br> ![失败的建议](media/ad-assessment/ad-failed-recommendations.png)
 
 选择要忽略的建议。 将 RecommendationId 的值用于接下来的过程。
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: 82301a17bb461b6d8733d5f046fe791ffbcf3ecb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885700"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749251"
 ---
 # <a name="use-service-bus-from-net-with-amqp-10"></a>使用 AMQP 1.0 通过 .NET 使用服务总线
 
@@ -63,7 +63,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 
 | .NET 正文对象类型 | 映射的 AMQP 类型 | AMQP 正文部分类型 |
 | --- | --- | --- |
-| bool |布尔值 |AMQP 值 |
+| bool |boolean |AMQP 值 |
 | 字节 |ubyte |AMQP 值 |
 | ushort |ushort |AMQP 值 |
 | uint |uint |AMQP 值 |
@@ -79,7 +79,7 @@ AMQP 1.0 支持在服务总线包 2.1 版或更高版本中提供。 为确保�
 | DateTime |timestamp |AMQP 值 |
 | Guid |uuid |AMQP 值 |
 | byte[] |binary |AMQP 值 |
-| 字符串 |字符串 |AMQP 值 |
+| string |string |AMQP 值 |
 | System.Collections.IList |list |AMQP 值：集合中包含的项只能是此表中定义的类型。 |
 | System.Array |数组 |AMQP 值：集合中包含的项只能是此表中定义的类型。 |
 | System.Collections.IDictionary |map |AMQP 值：集合中包含的项只能是此表中定义的类型。注意：仅支持字符串键。 |

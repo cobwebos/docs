@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: ca7bed26d91c28304638e85d6da93708bfcfcada
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58170303"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60914106"
 ---
 # <a name="update-an-existing-iot-edge-module-offer"></a>更新现有的 IoT Edge 模块套餐
 

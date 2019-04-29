@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 02/24/2019
 ms.custom: seodec18
 ms.openlocfilehash: 720f984feb5675281510962d4ebee63f638d696d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60820010"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>配置 Azure 机器学习的开发环境
 
@@ -66,7 +66,7 @@ ms.locfileid: "59548880"
 
 使用[Azure 门户](https://portal.azure.com)若要开始使用 Azure Notebook。  打开你的工作区以及从**概述**部分中，选择**开始使用 Azure Notebook**。
 
-默认情况下，Azure Notebooks 使用限制为 4GB 内存和 1GB 数据的免费服务层。 不过，可以通过向 Azure Notebooks 项目附加 Data Science Virtual Machine 实例来解除这些限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。    
+默认情况下，Azure Notebooks 使用限制为 4GB 内存和 1GB 数据的免费服务层级。 不过，可以通过向 Azure Notebooks 项目附加 Data Science Virtual Machine 实例来解除这些限制。 有关详细信息，请参阅[管理和配置 Azure Notebooks 项目 - 计算层](/azure/notebooks/configure-manage-azure-notebooks-projects#compute-tier)。    
 
 
 ## <a id="dsvm"></a>Data Science Virtual Machine

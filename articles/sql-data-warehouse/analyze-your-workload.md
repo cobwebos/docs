@@ -2,28 +2,29 @@
 title: 分析工作负荷 - Azure SQL 数据仓库 | Microsoft Docs
 description: 分析针对 Azure SQL 数据仓库中工作负荷的查询优化的技巧。
 services: sql-data-warehouse
-author: ronortloff
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/13/2019
-ms.author: rortloff
+origin.date: 03/13/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: 434cbb18a109308844dbc7ff219d40948678e86e
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310721"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679092"
 ---
 # <a name="analyze-your-workload-in-azure-sql-data-warehouse"></a>分析 Azure SQL 数据仓库中的工作负荷
 
-用于分析 Azure SQL 数据仓库中的工作负荷的技术。
+分析 Azure SQL 数据仓库中工作负荷的技巧。
 
 ## <a name="resource-classes"></a>资源类
 
-SQL 数据仓库提供系统资源分配给查询的资源类。  资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要更多的资源比当前可用的查询将一直等待。
+SQL 数据仓库提供资源类，可以将系统资源分配给查询。  有关资源类的详细信息，请参阅[资源类和工作负荷管理](resource-classes-for-workload-management.md)。  如果分配给查询的资源类需要的资源超出目前能够提供的量，则查询会等待。
 
 ## <a name="queued-query-detection-and-other-dmvs"></a>对排队的查询进行的检测，以及其他 DMV
 
@@ -67,7 +68,7 @@ SQL 数据仓库具有以下等待类型：
 * **LocalQueriesConcurrencyResourceType**：位于并发槽框架外部的查询。 DMV 查询和 `SELECT @@VERSION` 等系统函数是本地查询的示例。
 * **UserConcurrencyResourceType**：位于并发槽框架内部的查询。 针对最终用户表的查询代表使用此资源类型的示例。
 * **DmsConcurrencyResourceType**：数据移动操作导致的等待。
-* **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。 一般情况下，我们建议为 10 分钟的连续快照之间最短时间。 
+* **BackupConcurrencyResourceType**：此等待表明正在备份数据库。 此资源类型的最大值为 1。 如果同时请求了多个备份，则其他备份会排队。 通常情况下，建议连续快照的最小间隔时间为 10 分钟。 
 
 可以使用 `sys.dm_pdw_waits` DMV 来查看请求所等待的具体资源。
 
@@ -106,7 +107,7 @@ WHERE    w.[session_id] <> SESSION_ID()
 ;
 ```
 
-`sys.dm_pdw_resource_waits` DMV 显示给定查询的等待信息。 资源等待时间度量等待提供资源的时间。 信号等待时间为基础的 SQL server，若要将查询调度到 CPU 所需的时间。
+`sys.dm_pdw_resource_waits` DMV 显示给定查询的等待信息。 资源等待时间度量等待提供资源的时间。 信号等待时间是基础 SQL Server 将查询调度到 CPU 所需的时间。
 
 ```sql
 SELECT  [session_id]

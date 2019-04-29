@@ -15,11 +15,11 @@ ms.date: 02/19/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: a19153677e691d2681c131df67100a43ef9532a0
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56889318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709459"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Azure 经典订阅管理员
 
@@ -91,7 +91,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="azure-portal"></a>Azure 门户
 
-1. 请确保你的方案支持通过检查服务管理员变更限制。
+1. 请查看服务管理员变更限制，确保自己的方案受支持。
 
 1. 以帐户管理员身份登录到 [Azure 门户](https://portal.azure.com)。
 
@@ -109,7 +109,7 @@ Microsoft 建议使用基于角色的访问控制 (RBAC) 管理对 Azure 资源�
 
 ### <a name="account-center"></a>帐户中心
 
-1. 请确保你的方案支持通过检查服务管理员变更限制。
+1. 请查看服务管理员变更限制，确保自己的方案受支持。
 
 1. 以帐户管理员身份登录到[帐户中心](https://account.windowsazure.com/subscriptions)。
 

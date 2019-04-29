@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 03/19/2019
 ms.openlocfilehash: d2c852b48c219283bba2304a993dd26e802b3252
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58226974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61036491"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>在 SQL 数据库中使用内存中技术优化性能
 
@@ -83,7 +83,7 @@ Azure SQL 数据库采用以下内存中技术：
 
 - **内存优化的行存储**格式：每个行是一个独立的内存对象。 这是针对高性能 OLTP 工作负荷优化的经典内存中 OLTP 格式。 在内存优化的行存储格式中可以使用两种类型的内存优化表：
   - 持久性表 (SCHEMA_AND_DATA)：服务器重启后会保留内存中的行。 此类表的行为类似于传统的行存储表，同时具有内存中优化的附加优势。
-  - *非持久表*(SCHEMA_ONLY) 其中的行是不保留后重新启动。 此类表适用于临时数据（例如，取代临时表），或者需要快速加载其中的数据，然后将数据移到某个持久性表（称为临时表）的表。
+  - 非持久性表 (SCHEMA_ONLY)：重启后不保留行。 此类表适用于临时数据（例如，取代临时表），或者需要快速加载其中的数据，然后将数据移到某个持久性表（称为临时表）的表。
 - **内存优化的列存储**格式：其中的数据以纵栏表的格式进行组织。 此结构适用于 HTAP 方案，其中，需要针对运行 OLTP 工作负荷的同一数据结构运行分析查询。
 
 > [!Note]
@@ -130,7 +130,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 - 为低于池的 eDTU 或 vCore 计数的数据库整体配置 `Max-eDTU` 或 `MaxvCore`。 此最大值将池中任意数据库中的内存中 OLTP 存储利用率限制为与 eDTU 计数对应的大小。
 - 配置大于 0 的 `Min-eDTU` 或 `MinvCore`。 此最小值可保证池中的每个数据库都有与配置的 `Min-eDTU` 或 `vCore` 对应的可用内存中 OLTP 存储量。
 
-### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>更改使用内存中 OLTP 技术的数据库的服务层
+### <a name="changing-service-tiers-of-databases-that-use-in-memory-oltp-technologies"></a>更改使用内存中 OLTP 技术的数据库的服务层级
 
 始终可以将数据库或实例升级到更高的层，例如，从“常规用途”层升级到“业务关键”层（或者从“标准”层升级到“高级”层）。 可用的功能和资源只会增加。
 
@@ -168,7 +168,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 使用非聚集列存储索引时，仍以传统行存储格式存储基础表。 因此节省的存储小于使用聚集列存储索引节省的空间。 但是，如果使用单个列存储索引取代众多传统非聚集索引，则仍可整体减少表的存储占用。
 
-### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>更改包含列存储索引的数据库的服务层
+### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>更改包含列存储索引的数据库的服务层级
 
 如果目标层低于 S3，可能无法将单一数据库降级到“基本”或“标准”层。 只有“业务关键”/“高级”定价层、“标准”层、“S3”及更高的层支持列存储索引，“基本”层则不支持。 将数据库降级到不受支持的层或级别时后，列存储索引不可用。 系统会保留列存储索引，但永远不会利用索引。 如果后来又升级回到受支持的层或级别，列存储索引立即可供再次利用。
 

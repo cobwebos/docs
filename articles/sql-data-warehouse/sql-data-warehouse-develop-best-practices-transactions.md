@@ -11,11 +11,11 @@ ms.date: 04/19/2018
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: f5e0b2b75ac111f3221108936f84e5883aebfc1a
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55476258"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478821"
 ---
 # <a name="optimizing-transactions-in-azure-sql-data-warehouse"></a>优化 Azure SQL 数据仓库中的事务
 了解如何在尽量降低长时间回退风险的情况下优化 Azure SQL 数据仓库中的事务性代码的性能。

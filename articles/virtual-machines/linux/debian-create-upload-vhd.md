@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 11/13/2018
 ms.author: szark
 ms.openlocfilehash: 6ef0a9f6efbf5f8398ba242150b2eb6102875f7e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000321"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60799284"
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>为 Azure 准备 Debian VHD
 ## <a name="prerequisites"></a>必备组件
@@ -50,7 +50,7 @@ ms.locfileid: "58000321"
 
 ## <a name="manually-prepare-a-debian-vhd"></a>手动准备 Debian VHD
 1. 在 Hyper-V 管理器中，选择虚拟机。
-2. 单击“连接”打开该虚拟机的控制台窗口。
+2. 单击“连接”  以打开该虚拟机的控制台窗口。
 3. 如果用 ISO 安装了 OS，请注释掉与 `/etc/apt/source.list` 中的“`deb cdrom`”相关的任何行。
 
 4. 编辑 `/etc/default/grub` 文件并按如下方式修改 **GRUB_CMDLINE_LINUX** 参数，包含用于 Azure 的其他内核参数。

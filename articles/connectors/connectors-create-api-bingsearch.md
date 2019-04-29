@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: 7146e59eabf9e30fa263f957f1c546414ad0fe26
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313543"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60952511"
 ---
 # <a name="find-news-with-bing-search-and-azure-logic-apps"></a>使用必应搜索和 Azure 逻辑应用查找新闻
 
@@ -56,8 +56,8 @@ ms.locfileid: "58313543"
    | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
    | Search Query | 是 | <search-words> | 输入要使用的搜索关键字。 |
-   | Market | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
-   | Safe Search | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
+   | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
+   | 安全搜索 | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
    | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
    | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||
@@ -94,7 +94,7 @@ ms.locfileid: "58313543"
 3. 在搜索框中，输入“必应搜索”作为筛选器。
 从操作列表中选择所需的操作。
 
-   此示例使用此操作：
+   此示例使用以下操作：
 
    **必应搜索的查询列表新闻**
 
@@ -107,8 +107,8 @@ ms.locfileid: "58313543"
    | 属性 | 需要 | Value | 描述 |
    |----------|----------|-------|-------------|
    | Search Query | 是 | <search-expression> | 输入用于查询触发器结果的表达式。 可以从动态内容列表的字段中进行选择，或使用表达式生成器创建表达式。 |
-   | Market | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
-   | Safe Search | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
+   | 市场 | 是 | <区域设置> | 搜索区域设置。 默认为“zh-CN”，但可以选择另一个值。 |
+   | 安全搜索 | 是 | <search-level> | 用于排除成人内容的筛选级别。 默认为“中等”，但可以选择另一个级别。 |
    | Count | 否 | <results-count> | 返回指定数量的结果。 默认为 20，但可以指定另一个值。 实际返回的结果数可能会少于指定的数量。 |
    | Offset | 否 | <skip-value> | 返回结果前要跳过的结果数 |
    |||||

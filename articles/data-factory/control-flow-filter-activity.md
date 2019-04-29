@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: shlo
 ms.openlocfilehash: 787c9393e2700bd7ed349b501e70abc4a0687b9c
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54021826"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60554841"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Filter 活动
 可以在管道中使用 Filter 活动将筛选器表达式应用到输入数组。 
@@ -37,11 +37,11 @@ ms.locfileid: "54021826"
 
 ## <a name="type-properties"></a>Type 属性
 
-属性 | 说明 | 允许的值 | 必选
+属性 | 说明 | 允许的值 | 需要
 -------- | ----------- | -------------- | --------
-name | `Filter` 活动的名称。 | String | 是
+名称 | `Filter` 活动的名称。 | String | 是
 type | 必须设置为“filter”。 | String | 是
-condition | 要用于筛选输入的条件。 | 表达式 | 是
+条件 | 要用于筛选输入的条件。 | 表达式 | 是
 items | 应该应用筛选器的输入数组。 | 表达式 | 是
 
 ## <a name="example"></a>示例

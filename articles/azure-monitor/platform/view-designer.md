@@ -1,6 +1,6 @@
 ---
 title: 创建视图来分析 Azure Monitor 中的日志数据 |Microsoft Docs
-description: 通过 Azure Monitor 中使用视图设计器，可以创建自定义视图，在 Azure 门户中显示并包含各种上 Log Analytics 工作区中数据的可视化效果。 本文包含视图设计器的概述，并提供了创建和编辑自定义视图的过程。
+description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文包含视图设计器的概述，并提供了创建和编辑自定义视图的过程。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.openlocfilehash: f07fc2f03ad72e7ee0fd408782b8fe845c88e780
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341952"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>在 Azure Monitor 中使用视图设计器创建自定义视图
-通过 Azure Monitor 中使用视图设计器，可以在可帮助你可视化 Log Analytics 工作区中的数据在 Azure 门户中创建各种自定义视图。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
+在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文概述了视图设计器以及创建和编辑自定义视图的过程。
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -44,7 +44,7 @@ ms.locfileid: "58286561"
 | 自定义视图 | 在选择磁贴时显示。 每个视图包含一个或多个可视化部件。 |
 | 可视化部件 | 显示基于一个或多个 Log Analytics 工作区中数据的可视化效果[记录查询](../log-query/log-query-overview.md)。 大多数部件会包括提供高级可视化效果的标头，以及显示最匹配结果的列表。 每个部件类型提供了 Log Analytics 工作区中记录的不同可视化效果。 在执行获取详细的记录的日志查询的部分中选择元素。 |
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 至少需要[参与者级别权限](manage-access.md#manage-accounts-and-users)要创建或修改视图的 Log Analytics 工作区中。 如果没有此权限，视图设计器选项不会显示在菜单中。
 
 

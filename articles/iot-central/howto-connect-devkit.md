@@ -9,11 +9,11 @@ ms.service: iot-central
 services: iot-central
 manager: philmea
 ms.openlocfilehash: 82222dd927f46761941a6a750d96222cc626e71b
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60887172"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>将 MXChip IoT DevKit 设备连接到 Azure IoT Central 应用程序
 
@@ -208,12 +208,12 @@ git clone https://github.com/Azure/iot-central-firmware
 | gyroscopeZ     | mdps   | -2000   | 2000    | 0              |
 
 #### <a name="states"></a>States 
-| Name          | 显示名称   | 正常 | 小心 | 危险 | 
+| 名称          | 显示名称   | 正常 | 小心 | 危险 | 
 | ------------- | -------------- | ------ | ------- | ------ | 
 | DeviceState   | 设备状态   | 绿色  | 橙色  | 红色    | 
 
 #### <a name="events"></a>活动 
-| Name             | 显示名称      | 
+| 名称             | 显示名称      | 
 | ---------------- | ----------------- | 
 | ButtonBPressed   | 按钮 B 已按下  | 
 

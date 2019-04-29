@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9802296170f07bb8599058e230798f647e900d4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49093691"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636211"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>通过 Azure CDN 进行媒体流式处理优化 
  
@@ -77,7 +77,7 @@ ms.locfileid: "49093691"
  
 创建 CDN 终结点后，它会将优化应用于符合特定条件的所有文件。 以下部分介绍了此过程。 
 
-### <a name="caching"></a>缓存
+### <a name="caching"></a>正在缓存
 
 如果 **Akamai 的 Azure CDN 标准版**检测到资产属于流式处理清单或片段，则使用与常规 Web 交付不同的缓存到期时间。 （请参阅下表中的完整列表。）与往常一样，遵循从源发送的 Cache-Control 或 Expires 标头。 如果该资产不是媒体资产，则通过用于常规 Web 交付的过期时间进行缓存。
 

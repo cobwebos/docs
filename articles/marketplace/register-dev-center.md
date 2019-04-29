@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: 682c9e209c4fa4a9f4971af5da901faf1ec58c22
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57889737"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60735718"
 ---
 # <a name="register-in-dev-center"></a>在开发人员中心内注册  
 若要帮助确认你登录的不是个人浏览器帐户，请打开一个新的 Internet Explorer InPrivate 或 Chrome Incognito 浏览会话。  
@@ -187,7 +187,7 @@ ms.locfileid: "57889737"
   > 如果未在开发人员中心帐户中填写税务和银行信息，则无法发布事务处理产品/服务。  有关添加帐户信息的详细信息，请访问[如何添加银行和税务信息](https://docs.microsoft.com/azure/marketplace/register-dev-center)。
 
 * **是否可以更改开发人员中心 Microsoft 登录帐户？**
-  > 不是。 创建开发人员中心后，无法更改所有者帐户。 必须使用所需的 Microsoft 帐户重新开始创建新的开发人员中心帐户。
+  > 不。 创建开发人员中心后，无法更改所有者帐户。 必须使用所需的 Microsoft 帐户重新开始创建新的开发人员中心帐户。
 
 * **遇到开发人员中心注册相关的问题时，在哪里可以联系支持人员？**
   若要访问支持，请访问位于 [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) 的 Windows 开发人员支持页面。 

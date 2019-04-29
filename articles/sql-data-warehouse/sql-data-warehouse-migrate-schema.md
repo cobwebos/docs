@@ -2,20 +2,21 @@
 title: 将架构迁移到 SQL 数据仓库 | Microsoft 文档
 description: 有关在开发解决方案时会架构迁移到 Azure SQL 数据仓库的技巧。
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
-ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+ms.component: implement
+origin.date: 04/17/2018
+ms.date: 10/15/2018
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 4139ea776f6947eeacf4620c3676606d6535dd2b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55461678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748146"
 ---
 # <a name="migrate-your-schemas-to-sql-data-warehouse"></a>将架构迁移到 SQL 数据仓库
 有关如何将 SQL 架构迁移到 SQL 数据仓库的指南。 
@@ -40,13 +41,6 @@ ms.locfileid: "55461678"
 
 对于表行的宽度，PolyBase 设定的上限为 1MB。  如果打算使用 PolyBase 将数据加载到 SQL 数据仓库中，请将表更新为最大行宽不超过 1MB。 
 
-<!--
-- For example, this table uses variable length data but the largest possible size of the row is still less than 1 MB. PolyBase will load data into this table.
-
-- This table uses variable length data and the defined row width is less than one MB. When loading rows, PolyBase allocates the full length of the variable-length data. The full length of this row is greater than one MB.  PolyBase will not load data into this table.  
-
--->
-
 ## <a name="specify-the-distribution-option"></a>指定分布选项
 SQL 数据仓库是分布式数据库系统。 每个表都是跨计算节点进行分布或复制。 可以使用表选项来指定如何分布数据。 这些选项包括“轮循机制”、“已复制”或“已哈希分布”。 每个选项都有各自的利与弊。 如果不指定分布选项，SQL 数据仓库将使用“轮循机制”这一默认选项。
 
@@ -55,7 +49,6 @@ SQL 数据仓库是分布式数据库系统。 每个表都是跨计算节点进
 - “已哈希分布”通过哈希函数跨所有节点分布行。 哈希分布式表是 SQL 数据仓库的核心，因为它们旨在确保大型表具有高查询性能。 若要使用此选项，需要进行一些计划，以选择最适合对其分布数据的列。 不过，如果没有第一时间选择最适合的列，可以轻松地对其他列重新分布数据。 
 
 若要选择最适合每个表的分布选项，请参阅[分布式表](sql-data-warehouse-tables-distribute.md)。
-
 
 ## <a name="next-steps"></a>后续步骤
 成功将数据库架构迁移到 SQL 数据仓库后，请继续阅读下列文章之一：
@@ -78,5 +71,6 @@ SQL 数据仓库是分布式数据库系统。 每个表都是跨计算节点进
 
 <!--MSDN references-->
 
-
 <!--Other Web references-->
+
+<!--Update_Description: update meta properties, add new content about Migrate schemas to SQL Data Warehouse -->

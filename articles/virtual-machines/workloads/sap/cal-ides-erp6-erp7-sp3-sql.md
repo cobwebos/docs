@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2016
 ms.author: hermannd
 ms.openlocfilehash: 413e449f005d288f66da0257f5b800733e58eb94
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011277"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60836426"
 ---
 # <a name="deploy-sap-ides-ehp7-sp3-for-sap-erp-60-on-azure"></a>在 Azure 上为 SAP ERP 6.0 部署 SAP IDES EHP7 SP3
 本文介绍如何通过 SAP Cloud Appliance Library (SAP CAL) 3.0 在 Azure 上部署与 SQL Server 和 Windows 操作系统一起运行的 SAP IDES 系统。 屏幕截图将逐步显示此过程。 若要部署另一种解决方案，请按照相同的步骤操作。
@@ -106,7 +106,7 @@ ms.locfileid: "58011277"
 
     ![SAP CAL 基本模式：创建实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic10a.png)
 
-1. 单击“创建”。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
+1. 单击**创建**。 一段时间后，根据解决方案的大小和复杂性（SAP CAL 提供估算值），状态将显示为“活动”并可供使用： 
 
     ![SAP CAL 实例](./media/cal-ides-erp6-ehp7-sp3-sql/ides-pic12a.png)
 

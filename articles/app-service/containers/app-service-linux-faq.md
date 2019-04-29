@@ -17,11 +17,11 @@ ms.date: 10/30/2018
 ms.author: yili
 ms.custom: seodec18
 ms.openlocfilehash: e3b6eed6f70eb2803ef4fa4e6b5d32fb0a4d843a
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60851147"
 ---
 # <a name="azure-app-service-on-linux-faq"></a>Linux 上的 Azure 应用服务常见问题解答
 
@@ -73,7 +73,7 @@ ms.locfileid: "59525120"
 
 **是否支持过渡环境？**
 
-是的。
+可以。
 
 **是否可以使用 *WebDeploy/MSDeploy* 来部署 Web 应用？**
 
@@ -107,7 +107,7 @@ const io = require('socket.io')(server,{
 
 **是否支持未编译的 .NET Core 应用？**
 
-是的。
+可以。
 
 **是否支持将 Composer 用作 PHP 应用的依赖关系管理器？**
 

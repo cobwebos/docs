@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 1a6843fb1668307aa442011233999c648901d404
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60714534"
 ---
 # <a name="connect-your-symantec-icdx-appliance"></a>连接你的 Symantec ICDX 设备 
 

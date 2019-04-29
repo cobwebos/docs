@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: spelluru
 ms.openlocfilehash: 93136c7d685bd9fc8ec4bcdea3a900b28029059b
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58652936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60695143"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>使用 Azure 实验室服务中共享的映像库
 本文介绍如何教师/实验室管理员可以将保存模板的虚拟机映像，以便其他人重复使用。 这些映像保存在 Azure 中[共享的映像库](../../virtual-machines/windows/shared-image-galleries.md)。 第一步，实验室管理员将一个现有的共享的映像库附加到实验室帐户。 一旦将附加的共享的映像库，实验室的实验室帐户中创建可以将图像保存到共享的映像库。 其他教师可以从共享的映像库创建它们的类模板中选择此映像。 

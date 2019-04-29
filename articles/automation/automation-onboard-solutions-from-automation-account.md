@@ -10,11 +10,11 @@ ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
 ms.openlocfilehash: 41f0607908cde94ca08a4c4dfce0a47032eefbb3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578435"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60739154"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>载入更新管理、更改跟踪和清单解决方案
 
@@ -32,7 +32,7 @@ Azure 自动化提供了解决方案来管理操作系统安全性更新、跟�
 
 ![载入清单解决方案](media/automation-onboard-solutions-from-automation-account/onboardsolutions.png)
 
-在启用解决方案时，只有特定区域支持链接的 Log Analytics 工作区和自动化帐户。
+在启用解决方案时，只有某些区域支持链接 Log Analytics 工作区和自动化帐户。
 
 下表显示了受支持的映射：
 

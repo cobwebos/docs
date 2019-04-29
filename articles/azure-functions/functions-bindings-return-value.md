@@ -8,14 +8,15 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 01/14/2019
-ms.author: cshoe
+origin.date: 01/14/2019
+ms.date: 03/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 4ccfe192eaea94cb9b199bd3c6f0bdacf1685519
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56740176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437712"
 ---
 # <a name="using-the-azure-function-return-value"></a>使用 Azure 函数返回值
 
@@ -23,8 +24,8 @@ ms.locfileid: "56740176"
 
 在支持返回值的语言中，可以将函数[输出绑定](./functions-triggers-bindings.md#binding-direction)绑定到返回值：
 
-* 在 C# 类库，请将输出绑定特性应用到方法返回值。
-* 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
+- 在 C# 类库，请将输出绑定特性应用到方法返回值。
+- 在其他语言中，请将 *function.json* 中的 `name` 属性设置为 `$return`。
 
 如果有多个输出绑定，请只使用其中一个绑定的返回值。
 
@@ -32,11 +33,11 @@ ms.locfileid: "56740176"
 
 请参阅演示如何使用返回值的特定于语言的示例：
 
-* [C#](#c-example)
-* [C# 脚本 (.csx)](#c-script-example)
-* [F#](#f-example)
-* [JavaScript](#javascript-example)
-* [Python](#python-example)
+- [C#](#c-example)
+- [C# 脚本 (.csx)](#c-script-example)
+- [F#](#f-example)
+- [JavaScript](#javascript-example)
+- [Python](#python-example)
 
 ## <a name="c-example"></a>C# 示例
 
@@ -169,3 +170,4 @@ def main(input: azure.functions.InputStream) -> str:
 
 > [!div class="nextstepaction"]
 > [处理 Azure Functions 绑定错误](./functions-bindings-errors.md)
+

@@ -9,11 +9,11 @@ ms.date: 10/24/2018
 ms.author: jeking
 ms.subservice: common
 ms.openlocfilehash: ab3984b29b3bdfac7599c68c14bd6cc5b671cdf4
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731377"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>区域冗余存储 (ZRS)：具有高可用性的 Azure 存储应用程序
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]

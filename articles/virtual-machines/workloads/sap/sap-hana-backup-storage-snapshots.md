@@ -14,15 +14,15 @@ ms.workload: infrastructure-services
 ms.date: 07/05/2018
 ms.author: rclaus
 ms.openlocfilehash: 74f47344afff630a8633b340ea4ce21db28db7ca
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54159921"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60936505"
 ---
 # <a name="sap-hana-backup-based-on-storage-snapshots"></a>基于存储快照的 SAP HANA 备份
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 本文是有关 SAP HANA 备份的系列教程所包含的三篇文章中的一篇。 [Azure 虚拟机上的 SAP HANA 备份指南](sap-hana-backup-guide.md)提供概述和入门信息，[文件级别的 SAP HANA Azure 备份](sap-hana-backup-file-level.md)介绍基于文件的备份选项。
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 1/4/2018
 ms.author: sogup
 ms.openlocfilehash: b4ecebc6bef7f49a23455c7a85f25680df087a95
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530750"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848331"
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>将备份保管库升级到恢复服务保管库
 
@@ -113,7 +113,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="does-the-upgrade-plan-affect-my-ongoing-backups"></a>升级计划是否影响正在进行的备份？
-不是。 升级期间和之后，正在进行的备份都会继续，而不会中断。
+不。 升级期间和之后，正在进行的备份都会继续，而不会中断。
 
 ### <a name="if-i-dont-plan-on-upgrading-soon-what-happens-to-my-vaults"></a>如果不尽快计划升级，保管库会发生什么情况？
 由于所有新功能仅适用于恢复服务保管库，我们强烈建议升级保管库。 自 2017 年 9 月 1 日起，Microsoft 会将备份保管库自动升级为恢复服务保管库。 2017 年 11 月 30 日后，将不再能够使用 PowerShell 创建备份保管库。 保管库可在其间任何时间自动升级。 Microsoft 建议尽快升级保管库。
@@ -125,16 +125,16 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 这取决于要升级的资源数量。 对于小型部署（几十个受保护的实例），整个升级过程应会不到 20 分钟内完成。 对于大型部署，最长需要一小时。
 
 ### <a name="can-i-roll-back-after-upgrading"></a>升级后是否可以回滚？
-不是。 成功升级资源后，就不支持回滚。
+不。 成功升级资源后，就不支持回滚。
 
 ### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>是否可以验证订阅或资源，确定它们是否可升级？
-是的。 升级过程的第一个步骤是验证资源是否可升级。 如果先决条件验证失败，会收到消息，其中包含无法完成升级的所有原因。
+可以。 升级过程的第一个步骤是验证资源是否可升级。 如果先决条件验证失败，会收到消息，其中包含无法完成升级的所有原因。
 
 ### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>是否可以升级基于 CSP 的备份保管库？
-不是。 目前无法升级基于 CSP 的备份保管库。 我们将在下一版本中添加对升级基于 CSP 的备份保管库的支持。
+不。 目前无法升级基于 CSP 的备份保管库。 我们将在下一版本中添加对升级基于 CSP 的备份保管库的支持。
 
 ### <a name="can-i-view-my-classic-vault-post-upgrade"></a>升级后是否可以查看经典保管库？
-不是。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
+不。 升级后无法查看或管理经典保管库。 只能使用新式 Azure 门户针对保管库执行所有管理操作。
 
 ### <a name="my-upgrade-failed-but-the-machine-that-held-the-agent-requiring-updating-doesnt-exist-anymore-what-do-i-do-in-such-a-case"></a>升级失败，但保存需要升级的代理的计算机不再存在。 对于这种情况，该怎么办？
 如果需要存储此计算机的备份以便长期保留，则无法升级保管库。 在将来版本中，我们将添加对升级此类保管库的支持。

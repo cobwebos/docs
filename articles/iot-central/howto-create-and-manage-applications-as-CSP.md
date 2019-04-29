@@ -9,11 +9,11 @@ ms.date: 04/03/2019
 ms.topic: conceptual
 manager: philmea
 ms.openlocfilehash: 8c73c55b059b4d3ca7136889122c11ab332b3f76
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59270500"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60886296"
 ---
 # <a name="as-a-csp-create-and-manage-an-azure-iot-central-application-on-behalf-of-your-customer"></a>作为 CSP，代表客户创建和管理 Azure IoT Central 应用程序 
 

@@ -1,6 +1,6 @@
 ---
-title: Azure SQL 数据库服务层 - 基于 DTU 的购买模型 | Microsoft Docs
-description: 了解单一和池化数据库的基于 DTU 的购买模型中的服务层，以提供计算大小和存储大小。
+title: Azure SQL 数据库服务层级 - 基于 DTU 的购买模型 | Microsoft Docs
+description: 了解单一数据库和共用数据库的基于 DTU 的购买模型中的服务层级，以提供计算大小和存储大小。
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -13,24 +13,24 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/25/2019
 ms.openlocfilehash: 57a20ac29ec3a15db26e0ab2c0b61b57ab3a5882
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004000"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60709053"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>基于 DTU 的购买模型中的服务层
 
-基于 DTU 的购买模型中的服务层根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层都允许灵活更改计算大小，无需停机。 单一数据库和弹性池根据服务层和计算大小按小时计费。
+基于 DTU 的购买模型中的服务层级根据一系列具有固定随附存储量、固定备份保留期和固定价格的计算大小进行区分。 基于 DTU 的购买模型中的所有服务层级都允许灵活更改计算大小，无需停机。 单一数据库和弹性池根据服务层级和计算大小按小时计费。
 
 > [!IMPORTANT]
 > SQL 数据库托管实例不支持基于 DTU 的购买模型。 有关详细信息，请参阅 [Azure SQL 数据库托管实例](sql-database-managed-instance.md)。
 > [!NOTE]
-> 有关基于 vCore 的服务层的信息，请参阅[基于 vCore 的服务层](sql-database-service-tiers-vcore.md)。 有关区分基于 DTU 的服务层和基于 vCore 的服务层的信息，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
+> 有关基于 vCore 的服务层级的信息，请参阅[基于 vCore 的服务层级](sql-database-service-tiers-vcore.md)。 有关区分基于 DTU 的服务层级和基于 vCore 的服务层级的信息，请参阅 [Azure SQL 数据库购买模型](sql-database-purchase-models.md)。
 
-## <a name="compare-the-dtu-based-service-tiers"></a>比较基于 DTU 的服务层
+## <a name="compare-the-dtu-based-service-tiers"></a>比较基于 DTU 的服务层级
 
-选择服务层首要考虑的是业务连续性、存储和性能需求。
+选择服务层级首要考虑的是业务连续性、存储和性能需求。
 
 ||基本|标准|高级|
 | :-- | --: |--:| --:|
@@ -60,7 +60,7 @@ ms.locfileid: "60004000"
 > [!IMPORTANT]
 > 在某些情况下，可能需要收缩数据库来回收未使用的空间。 有关详细信息，请参阅[管理 Azure SQL 数据库中的文件空间](sql-database-file-space-management.md)。
 
-## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和已共用数据库限制
+## <a name="elastic-pool-edtu-storage-and-pooled-database-limits"></a>弹性池 eDTU、存储和共用数据库限制
 
 | | **基本** | **标准** | **高级** |
 | :-- | --: | --: | --: |

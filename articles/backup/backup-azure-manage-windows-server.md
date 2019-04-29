@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: raynew
 ms.openlocfilehash: 6a29aeda52fe599ec7e2ee3b3ea1846e05b73d7d
-ms.sourcegitcommit: f715dcc29873aeae40110a1803294a122dfb4c6a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/14/2019
-ms.locfileid: "56268866"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61231663"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>监视和管理恢复服务保管库
 
@@ -270,7 +270,7 @@ ms.locfileid: "56268866"
 Azure 备份失败后，会在 20 分钟内引发警报。
 
 ### <a name="is-there-a-case-where-an-email-wont-be-sent-if-notifications-are-configured"></a>是否存在配置了通知却不发送电子邮件的情况？
-是的。 在以下情况下，不会发送通知：
+可以。 在以下情况下，不会发送通知：
 
 * 已将通知配置为每小时发送，并且在一小时内引发并解决了警报
 * 取消了作业

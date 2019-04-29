@@ -9,11 +9,11 @@ ms.date: 04/11/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 0ffbffc788baaffd4a0532c3918ed82cc3eaf5c3
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61023533"
 ---
 # <a name="analysis-services-resource-and-object-limits"></a>Azure Analysis Services 资源和对象限制
 
@@ -58,7 +58,7 @@ ms.locfileid: "59527806"
 
 以下限制是理论限制。 性能会随以下数值的降低而降低。
 
-|对象|最大大小/数量|  
+|Object|最大大小/数量|  
 |------------|----------------------------|  
 |实例中的数据库数|16,000|  
 |数据库中表和列的总数|16,000|  

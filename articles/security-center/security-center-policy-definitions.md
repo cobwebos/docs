@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 1/15/2019
 ms.author: rkarlin
 ms.openlocfilehash: 9d9369afd36f64c27cd2222cab0de5912aa913de
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57877490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60909190"
 ---
 # <a name="azure-security-policies-monitored-by-security-center"></a>通过安全中心监视的 azure 安全策略
 本文提供了一系列可在 Azure 安全中心中监视的 Azure 策略定义。 有关安全策略的详细信息，请参阅[使用安全策略](tutorial-security-policy.md)。
@@ -62,7 +62,7 @@ ms.locfileid: "57877490"
 |\[预览]:监视 Azure 安全中心内系统更新的缺失情况|Azure 安全中心监视缺失的安全系统更新，在服务器上的建议。|
 |\[预览]:审核存储帐户是否缺少 blob 加密|审核不使用 blob 加密的存储帐户。 这仅适用于 Microsoft 存储资源类型，不存储来自其他提供程序。 Azure 安全中心监视可能的网络中实时访问的建议。|
 |\[预览]:监视 Azure 安全中心中的可能的网络中实时访问|Azure 安全中心监视可能的网络中实时访问的建议。|
-|\[预览]:监视 Azure 安全中心内列入允许列表的可能的应用|Azure 安全中心监视可能的应用程序允许列表配置。|
+|\[预览]:监视 Azure 安全中心内列入允许列表的可能的应用|Azure 安全中心监视可能的应用程序白名单配置。|
 |\[预览]:监视 Azure 安全中心内规则较宽松的网络访问|Azure 安全中心监视网络安全组，具有规则过于宽松，建议。|
 |\[预览]:监视 Azure 安全中心的 OS 漏洞|Azure 安全中心监视不满足配置的基线的建议的服务器。| 
 |\[预览]:监视 Azure 安全中心 Endpoint Protection 的缺失情况|Azure 安全中心监视服务器没有安装的 Microsoft System Center Endpoint Protection 代理的建议。|

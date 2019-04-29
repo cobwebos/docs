@@ -10,11 +10,11 @@ ms.date: 03/18/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: f9cadfcf0c027f4aec4f9d4928872709ee7d3e99
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59008963"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61281771"
 ---
 # <a name="example-add-synonyms-for-azure-search-in-c"></a>示例：使用 C# 为 Azure 搜索添加同义词
 
