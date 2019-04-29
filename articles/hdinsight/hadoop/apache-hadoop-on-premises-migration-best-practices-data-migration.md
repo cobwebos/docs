@@ -1,7 +1,6 @@
 ---
 title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的数据迁移最佳做法。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: hrasheed
-ms.openlocfilehash: 02c7f53c090559ca0ada46ec90de3a44b0518a29
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 732cb118b7a0eebdbf28c7d7fe6ced435ce7920e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683560"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129240"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---data-migration-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 数据迁移最佳做法
 

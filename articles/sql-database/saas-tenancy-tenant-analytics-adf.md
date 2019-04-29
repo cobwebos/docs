@@ -13,11 +13,11 @@ ms.reviewer: MightyPen, sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: a658e2fe32ec95dfabad54684a0c9095af7a341d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57850286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61484832"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>探索如何使用 Azure SQL 数据库、SQL 数据仓库、数据工厂和 Power BI 运行 SaaS 分析
 
@@ -227,7 +227,7 @@ SQL 数据仓库用作分析存储，对租户数据执行聚合。 本示例中
 
 此绘图显示 Contoso Concert Hall 举办的每场活动在不同时间的累积门票销量，从中可以看出，并非所有活动都出现了销量剧增的情况。 请体验不同的筛选选项，以浏览其他会场的销量趁势。
 
-门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
+门票销售模式的见解可以引导 Wingtip Tickets 优化其业务模式。 Wingtip 也许可以不向所有租户收取相同的费用，而是推出具有不同计算大小的服务层级。 可以根据更高的服务级别协议 (SLA)，向每日售出较多门票的大型会场提供更高的层。 这些会场可将数据库放在具有更高的数据库资源限制的池中。 每个服务层级可以采用按小时售量分配，超出分配即会收取额外的费用。 定期出现销量喷发的大型会场将会受益于更高的层，而 Wingtip Tickets 可以更高效地将服务变现。
 
 同时，某些 Wingtip Tickets 客户抱怨他们正在努力售出足够多的票证，以抵消服务费用。 通过这些见解，绩效不佳的会场也许能够找到促升门票销量的机会。 销量提高会增大服务的认知价值。 右键单击“fact_Tickets”并选择“新建度量值”。 针对名为 **AverageTicketsSold** 的新度量值输入以下表达式：
 

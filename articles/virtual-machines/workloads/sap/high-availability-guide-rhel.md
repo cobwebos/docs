@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: b5dea8a64410e23f3b92feb8ce757646435697d3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003405"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481220"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Azure 虚拟机在 Red Hat Enterprise Linux 上为 SAP NetWeaver 提供的高可用性
 

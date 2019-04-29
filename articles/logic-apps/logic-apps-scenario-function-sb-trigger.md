@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 19cbd921-7071-4221-ab86-b44d0fc0ecef
 ms.date: 08/25/2018
 ms.openlocfilehash: 1d3c4039ae823d3797e768af5892333d4d925268
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57789935"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60995870"
 ---
 # <a name="scenario-trigger-logic-apps-with-azure-functions-and-azure-service-bus"></a>场景：使用 Azure Functions 和 Azure 服务总线触发逻辑应用
 
@@ -35,9 +35,9 @@ ms.locfileid: "57789935"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，并创建一个空的逻辑应用。 
 
-   如果不熟悉逻辑应用，查看[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+   如果不熟悉逻辑应用，请查看[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“http 请求”。 在触发器列表中选择此触发器：**当收到 HTTP 请求时**
+1. 在搜索框中，输入“http 请求”。 在触发器列表中选择此触发器：**收到 HTTP 请求时**
 
    ![选择触发器](./media/logic-apps-scenario-function-sb-trigger/when-http-request-received-trigger.png)
 
@@ -99,7 +99,7 @@ ms.locfileid: "57789935"
 
 1. 在 Azure 门户中，打开并展开你的函数应用（如果尚未打开）。 
 
-1. 在你的函数应用名称下，展开“函数”。 在“函数”窗格中，选择“新建函数”。 选择此模板：**服务总线队列触发器-C#**
+1. 在你的函数应用名称下，展开“函数”。 在“函数”窗格中，选择“新建函数”。 选择此模板：**服务总线队列触发器 - C#**
    
    ![选择 Azure Functions 门户](./media/logic-apps-scenario-function-sb-trigger/newqueuetriggerfunction.png)
 

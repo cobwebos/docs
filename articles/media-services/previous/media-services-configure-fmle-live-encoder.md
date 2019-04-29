@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: 01bb628a6520488dcebf49a1e868213b955abc31
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895598"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61465891"
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>使用 FMLE 编码器发送单比特率实时流 
 > [!div class="op_single_selector"]

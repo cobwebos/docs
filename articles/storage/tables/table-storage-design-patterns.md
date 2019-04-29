@@ -2,18 +2,19 @@
 title: Azure 存储表设计模式 | Microsoft Docs
 description: 使用适用于 Azure 表服务解决方案的模式。
 services: storage
-author: tamram
+author: WenJason
 ms.service: storage
 ms.topic: article
-ms.date: 04/08/2019
-ms.author: tamram
+origin.date: 04/08/2019
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.subservice: tables
 ms.openlocfilehash: a428abd95f955a16d03c4ab86f05644f6db65da5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59271622"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101419"
 ---
 # <a name="table-design-patterns"></a>表设计模式
 本文介绍适用于表服务解决方案的一些模式。 此外，还将了解如何实际解决其他表存储设计文章中提出的一些问题和权衡。 下图总结了不同模式之间的关系：  
@@ -348,7 +349,7 @@ $filter=(PartitionKey eq 'Sales') and (RowKey ge 'empid_000123') and (RowKey lt 
 
 表查询如下所示：  
 
-`https://myaccount.table.core.windows.net/EmployeeExpense(PartitionKey='empid')?$top=10`  
+`https://myaccount.table.core.chinacloudapi.cn/EmployeeExpense(PartitionKey='empid')?$top=10`  
 
 ### <a name="issues-and-considerations"></a>问题和注意事项
 在决定如何实现此模式时，请考虑以下几点：  

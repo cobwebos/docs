@@ -11,11 +11,11 @@ ms.date: 04/12/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: f80c1817d5c0ce79f2dc53f40a2cc4e00dd5c72b
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61420960"
 ---
 # <a name="monitoring-resource-utilization-and-query-activity-in-azure-sql-data-warehouse"></a>监视 Azure SQL 数据仓库中的资源利用率和查询活动
 Azure SQL 数据仓库在 Azure 门户中提供丰富的监视体验用于洞察数据仓库工作负荷。 建议使用 Azure 门户来监视数据仓库，因为它提供可配置的保持期、警报、建议，并为指标和日志提供可自定义的图表与仪表板。 在门户还可以与 Operations Management Suite (OMS) 和 Azure Monitor （日志） 提供全面的监视体验为您的数据仓库不仅在整个 Azure 分析等其他 Azure 监视服务集成集成监视体验的平台。 本文档介绍可在 SQL 数据仓库中使用哪些监视功能来优化和管理分析平台。 

@@ -8,12 +8,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.openlocfilehash: c3b30085e1036e49706d73fd68b80221e5177d03
-ms.sourcegitcommit: eecd816953c55df1671ffcf716cf975ba1b12e6b
-ms.translationtype: HT
+ms.openlocfilehash: 4a360968285b91b00c8ca1999f81c11951e74482
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/28/2019
-ms.locfileid: "55095730"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479841"
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>流分析中的机器学习集成
 流分析支持用于调用 Azure 机器学习终结点的用户定义函数。 [流分析 REST API 库](https://msdn.microsoft.com/library/azure/dn835031.aspx)中详细介绍了此功能的 REST API 支持。 本文提供了在流分析中成功实现此功能所需的补充信息。 还发布了教程，可从[此处](stream-analytics-machine-learning-integration-tutorial.md)获取。
@@ -32,7 +32,7 @@ Microsoft Azure 机器学习是一个协作型拖放式工具，可用于根据�
 出于流分析作业处理的目的，请求/响应终结点、[apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md) 和 swagger 定义对于成功执行而言都是必需项。 流分析提供附加的终结点，用于构造 swagger 终结点的 url、查找接口并向用户返回默认 UDF 定义。
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>通过 REST API 配置流分析和机器学习 UDF
-使用 REST API，可以将作业配置为调用 Azure 机器语言函数。 步骤如下：
+使用 REST API，可配置作业来调用 Azure 机器语言函数。 步骤如下：
 
 1. 创建流分析作业
 2. 定义输入

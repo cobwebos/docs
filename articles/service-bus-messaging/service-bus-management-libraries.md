@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.author: aschhab
 ms.openlocfilehash: d6c2cd813e96b40fc9f95785a1fd28e324a0437b
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54850943"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61315872"
 ---
 # <a name="service-bus-management-libraries"></a>服务总线管理库
 
@@ -32,7 +32,7 @@ Azure 服务总线管理库可以动态预配服务总线命名空间和实体�
 * 主题创建、更新、删除
 * 订阅创建、更新、删除
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要开始使用服务总线管理库，必须使用 Azure Active Directory (Azure AD) 服务进行身份验证。 Azure AD 要求身份验证为服务主体，并且该主体提供对 Azure 资源的访问权限。 有关创建服务主体的信息，请参阅以下文章之一：  
 

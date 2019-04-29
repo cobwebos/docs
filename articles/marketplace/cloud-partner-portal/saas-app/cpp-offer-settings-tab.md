@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 8b8810d3dc899a87b99422c093b6901ed9683325
-ms.sourcegitcommit: 5b869779fb99d51c1c288bc7122429a3d22a0363
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/10/2018
-ms.locfileid: "53195335"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101126"
 ---
 # <a name="saas-application-offer-settings-tab"></a>SaaS 应用程序产品/服务设置选项卡
 
@@ -38,9 +38,9 @@ ms.locfileid: "53195335"
 
 |  **字段名称**   |  **说明**  |
 |  ---------------   |  ---------------  |
-|    套餐 ID  |  发布者配置文件中套餐的唯一标识符。 此 ID 在产品 URL 和计费报表中可见。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 请注意，此字段在推出产品/服务后处于锁定状态。 例如，如果发布者 Contoso 发布了产品/服务 ID 为 sample-vm 的产品/服务，该产品/服务将以“https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview”形式显示在 Azure 市场中。                 |
+|    产品/服务 ID  |  发布者个人资料内产品/服务的唯一标识符。 此 ID 在产品 URL 和计费报表中可见。 它只能由小写字母数字字符或短划线 (-) 组成。 ID 不能以短划线结束，并且不能超过 50 个字符。 请注意，此字段在推出产品/服务后处于锁定状态。 例如，如果发布者 Contoso 发布了产品/服务 ID 为 sample-vm 的产品/服务，该产品/服务将以“https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sample-vm?tab=Overview”形式显示在 Azure 市场中。                 |
 |  发布者 ID    |  发布者 ID 是你在市场中的唯一标识符。 你的所有产品/服务均应附加发布者 ID。 产品/服务保存后，将无法修改发布者 ID。                |
-|  名称      |   这是产品/服务的显示名称。 这是在 Azure 市场和 Azure 门户中将显示的名称。 该名称不能超过 50 个字符。 其中包含产品的可识别品牌名称。 除非销售需要，否则不要在此处包含公司名称。 如果要在自己的网站上销售此产品/服务，请确保名称正是在网站上显示的名称。               |
+|  名称      |   这是产品/服务的显示名称。 这是将在 Azure 市场和 Azure 门户中显示的名称。 该名称不能超过 50 个字符。 其中包含产品的可识别品牌名称。 除非销售需要，否则不要在此处包含公司名称。 如果要在自己的网站上销售此产品/服务，请确保名称正是在网站上显示的名称。               |
 
 选择“保存”来保存进度。
 

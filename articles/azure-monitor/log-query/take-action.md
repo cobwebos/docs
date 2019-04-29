@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 02/06/2019
 ms.author: magoedte
 ms.openlocfilehash: 9194d5fe6553607ac5a0bb4e133da97f53790984
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56005346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61424718"
 ---
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>从 Log Analytics 日志搜索结果中通过自动化 Runbook 采取操作
 

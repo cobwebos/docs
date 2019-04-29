@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: b883dcf941683d6065c9b6ee5075d2a358f3452a
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55563498"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481312"
 ---
 # <a name="get-started-with-azure-stream-analytics-to-process-data-from-iot-devices"></a>开始使用 Azure 流分析处理来自 IoT 设备的数据
 在本教程中，会学习如何创建流处理逻辑，以从物联网 (IoT) 设备收集数据。 我们会使用真实的物联网 (IoT) 用例来演示如何经济实惠地快速生成解决方案。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * [Azure 订阅](https://azure.microsoft.com/pricing/free-trial/)
 * 可从 [GitHub](https://aka.ms/azure-stream-analytics-get-started-iot)
 
@@ -37,7 +37,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
 }  
 ```
 
-在实际情况下，其中可能有数百个传感器以流的形式生成事件。 理想情况下，网关设备会运行代码，将这些事件推送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)或 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)。 流分析作业将从事件中心引入这些事件，并针对流运行实时分析查询。 然后，可以将结果发送到[支持的输出](stream-analytics-define-outputs.md)之一。
+在实际情况下，其中可能有数百个传感器以流的形式生成事件。 理想情况下，网关设备会运行代码，将这些事件推送到 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)或 [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)。 流分析作业从事件中心引入这些事件，并针对流运行实时分析查询。 然后，可以将结果发送到[支持的输出](stream-analytics-define-outputs.md)之一。
 
 为了方便使用，本入门指南提供从实际 SensorTag 设备中捕获的示例数据文件。 可以对示例数据运行查询并查看结果。 在后续教程中，学习如何将作业连接到输入和输出并将其部署到 Azure 服务。
 
@@ -46,7 +46,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
    
     ![创建新的流分析作业](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-02.png)
 2. 输入唯一的作业名称并验证订阅是否为用于作业的正确订阅。 然后创建新的资源组，或选择订阅上的现有资源组。
-3. 接下来为作业选择位置。 为了获得更快的处理速度，并减少数据传输中的成本，建议选择与资源组和目标存储帐户相同的位置。
+3. 接着选择作业位置。 为了获得更快的处理速度，并减少数据传输中的成本，建议选择与资源组和目标存储帐户相同的位置。
    
     ![创建新的流分析作业详细信息](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03.png)
    
@@ -62,7 +62,7 @@ Contoso 是一家工业自动化公司，该公司已将其制造流程完全自
     ![流分析部署成功](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-03b.png)
 
 ## <a name="create-an-azure-stream-analytics-query"></a>创建 Azure 流分析查询
-创建作业后，应将其打开并生成查询。 可通过单击对应的磁贴，轻松访问作业。
+创建作业后，接着需要打开并生成查询。 可通过单击对应的磁贴，轻松访问作业。
 
 ![Azure 门户中的流分析作业磁贴](./media/stream-analytics-get-started-with-iot-devices/stream-analytics-get-started-with-iot-devices-04.png)
 

@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure services
-ms.date: 08/03/2017
-ms.author: amsriva
+origin.date: 08/03/2017
+ms.date: 02/26/2019
+ms.author: v-junlch
 ms.openlocfilehash: 46a823e4e230656b53a93a97f195d0879fd08bf2
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122228"
 ---
 # <a name="application-gateway-ssl-policy-overview"></a>应用程序网关 SSL 策略概述
 
@@ -64,9 +65,9 @@ SSL 策略包括 SSL 协议版本控制和 SSL 握手期间会使用的密码套
  
 ### <a name="ssl-protocol-versions"></a>SSL 协议版本
 
-* 默认情况下，所有应用程序网关都禁用 SSL 2.0 和 3.0。 无法对这些协议版本进行配置。
-* 自定义 SSL 策略允许你选择以下三种协议之一作为网关的最低 SSL 协议版本：TLSv1_0、TLSv1_1 和 TLSv1_2。
-* 如果未定义任何 SSL 策略，这 3 个协议（TLSv1_0、TLSv1_1 和 TLSv1_2）会全部启用。
+- 默认情况下，所有应用程序网关都禁用 SSL 2.0 和 3.0。 无法对这些协议版本进行配置。
+- 自定义 SSL 策略允许你选择以下三种协议之一作为网关的最低 SSL 协议版本：TLSv1_0、TLSv1_1 和 TLSv1_2。
+- 如果未定义任何 SSL 策略，这 3 个协议（TLSv1_0、TLSv1_1 和 TLSv1_2）会全部启用。
 
 ### <a name="cipher-suites"></a>密码套件
 
@@ -105,3 +106,5 @@ SSL 策略包括 SSL 协议版本控制和 SSL 握手期间会使用的密码套
 ## <a name="next-steps"></a>后续步骤
 
 若要了解如何配置 SSL 策略，请参阅[配置应用程序网关上的 SSL 策略](application-gateway-configure-ssl-policy-powershell.md)。
+
+<!-- Update_Description: wording update -->

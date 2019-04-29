@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.openlocfilehash: 4a8c7309a07238ef3410e42c3d631ad525f023cc
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039786"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216709"
 ---
 # <a name="deploy-an-internet-facing-load-balancer-solution-with-ipv6-using-a-template"></a>使用模板部署分配了 IPv6 的面向 Internet 的负载均衡器解决方案
 
@@ -30,7 +30,7 @@ ms.locfileid: "54039786"
 
 
 
-Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
+Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure 负载均衡器还可以在多个端口和/或多个 IP 地址上显示这些服务。
 
 ## <a name="example-deployment-scenario"></a>示例部署方案
 
@@ -76,7 +76,7 @@ Azure 负载均衡器是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负�
 
     有关这些参数的详细信息，请参阅本文后面的[模板参数和变量](#template-parameters-and-variables)部分。
 
-7. 要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
+7. 如果要查看模板创建的资源，请单击“浏览”，向下滚动列表，直到看到“资源组”，并单击它。
 
     ![lb-ipv6-portal-step7](./media/load-balancer-ipv6-internet-template/lb-ipv6-portal-step7.png)
 

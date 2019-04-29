@@ -2,18 +2,18 @@
 title: 通过 Power BI 工作区集合进行身份验证和授权 | Microsoft Docs
 description: 通过 Power BI 工作区集合进行身份验证和授权。
 services: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.service: power-bi-workspace-collections
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 5d7b5f2655fc94b9a060c30e11be66bd2eacdee8
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: 5fbe08bb9ebc355074a790f7732c9de10eaad859
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520609"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110676"
 ---
 # <a name="authenticating-and-authorizing-with-power-bi-workspace-collections"></a>通过 Power BI 工作区集合进行身份验证和授权
 
@@ -30,7 +30,7 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 
     Authorization: AppKey {your key}
 
-**应用令牌** - 应用令牌用于所有嵌入请求。 它们被设计为运行客户端，令牌限用于单个报表，并且最好设置一个过期时间。
+**应用令牌** - 应用令牌可用于所有嵌入请求。 它们被设计为运行客户端，令牌限用于单个报表，并且最好设置一个过期时间。
 
 应用令牌是由某个密钥签名的 JWT（JSON Web 令牌）。
 
@@ -41,7 +41,7 @@ Power BI 工作区集合使用**密钥**和**应用令牌**进行身份验证和
 | **ver** |应用令牌的版本。 当前版本为 0.2.0。 |
 | **aud** |令牌的目标接收方。 对于 Power BI 工作区集合，请使用：https:\//analysis.windows.net/powerbi/api。 |
 | **iss** |一个字符串，指示颁发了令牌的应用程序。 |
-| **类型** |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
+| type |要创建的应用令牌的类型。 当前唯一支持的类型是 **embed**。 |
 | **wcn** |要为其颁发令牌的工作区集合名称。 |
 | **wid** |要为其颁发令牌的工作区 ID。 |
 | **rid** |要为其颁发令牌的报表 ID。 |
@@ -140,13 +140,13 @@ Body
 
 ### <a name="operations-and-scopes"></a>操作和作用域
 
-|操作|目标资源|令牌权限|
+|Operation|目标资源|令牌权限|
 |---|---|---|
 |基于数据集创建（在内存中）新报表。|数据集|Dataset.Read|
 |基于数据集创建（在内存中）新报表并保存该报表。|数据集|* Dataset.Read<br>* Workspace.Report.Create|
-|查看和浏览/编辑（在内存中）现有报表。 Report.Read implies Dataset.Read. Report.Read 不允许保存编辑的内容。|报告|Report.Read|
-|编辑和保存现有报表。|报告|Report.ReadWrite|
-|保存报表的副本（另存为）。|报告|* Report.Read<br>* Workspace.Report.Copy|
+|查看和浏览/编辑（在内存中）现有报表。 Report.Read implies Dataset.Read. Report.Read 不允许保存编辑的内容。|报表|Report.Read|
+|编辑和保存现有报表。|报表|Report.ReadWrite|
+|保存报表的副本（另存为）。|报表|* Report.Read<br>* Workspace.Report.Copy|
 
 ## <a name="heres-how-the-flow-works"></a>下面是流的工作原理
 1. 将 API 密钥复制到应用程序中。 可以在 **Azure 门户**中获取密钥。

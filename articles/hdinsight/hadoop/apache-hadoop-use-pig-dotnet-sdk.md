@@ -1,7 +1,6 @@
 ---
 title: 使用 .NET SDK for Hadoop 运行 Apache Pig 作业 - Azure HDInsight
 description: 了解如何使用 .NET SDK for Hadoop 将 Pig 作业提交到 HDInsight 上的 Hadoop。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: hrasheed
-ms.openlocfilehash: 721bb93dc259bd2b4cc9f51d8d0d665c9b921128
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: ebf1f2806a6606294c61860a24fb2f02033a4bf4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110950"
 ---
 # <a name="run-apache-pig-jobs-using-the-net-sdk-for-apache-hadoop-in-hdinsight"></a>使用 HDInsight 中用于 Apache Hadoop 的 .NET SDK 运行 Apache Pig 作业
 
@@ -24,7 +23,7 @@ ms.locfileid: "53436834"
 
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。 Pig 可让你通过为一系列数据转换建模，来创建 MapReduce 操作。 本文档介绍如何使用基本 C# 应用程序将 Pig 作业提交到 HDInsight 群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本文中的步骤，需要以下各项。
 
@@ -39,7 +38,7 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 
 HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsight 群集的操作。
 
-1. 在 Visual Studio 的“文件”菜单中，选择“新建”，并选择“项目”。
+1. 在 Visual Studio 的“文件”菜单中，选择“新建”，然后选择“项目”。
 
 2. 对于新项目，请键入或选择以下值：
 
@@ -123,6 +122,6 @@ HDInsight .NET SDK 提供 .NET 客户端库，可简化从 .NET 中使用 HDInsi
 有关如何使用 Hadoop on HDInsight 的详细信息，请参阅以下文档：
 
 * [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)
 
 [preview-portal]: https://portal.azure.com/

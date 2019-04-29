@@ -9,16 +9,16 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/01/2017
-ms.openlocfilehash: 3d50f96f3dea3646bb32a3a42d0248957dabf9f0
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: 4a6d359b27b9a2e52d71ed5f8547041645147605
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31526815"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479870"
 ---
 # <a name="data-driven-debugging-by-using-the-job-diagram"></a>使用作业关系图进行数据驱动调试
 
-使用 Azure 门户中“监视”边栏选项卡里的作业关系图，可以可视化作业管道。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
+Azure 门户的“监视”边栏选项卡中的作业关系图可帮助你将作业管道可视化。 它显示了输入、输出和查询步骤。 可使用作业关系图检查每个步骤的指标，并且在解决问题时，更快速地隔离问题源。
 
 ## <a name="using-the-job-diagram"></a>使用作业关系图
 
@@ -50,7 +50,7 @@ ms.locfileid: "31526815"
 
 QueryLastProcessedTime 指标指示特定步骤收到数据的时间。 通过查看拓扑，可以从输出处理器开始反向检查，判断哪个步骤未接收数据。 如果一个步骤未收到数据，请转到它之前的查询步骤。 检查前面的查询步骤是否具有时间范围，以及是否经过了充足的、用于输出数据的时间。 （注意：时间范围会对齐到小时。）
  
-如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可以帮助判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
+如果前一个查询步骤是输入处理器，请使用输入指标帮助解答下列针对性问题。 它们可帮助你判断作业是否正从其输入源获取数据。 如果查询已分区，请检查每个分区。
  
 ### <a name="how-much-data-is-being-read"></a>正在读取的数据量有多少？
 

@@ -2,20 +2,21 @@
 title: SQL 数据仓库中的临时表 | Microsoft 文档
 description: 提供了有关使用临时表的基本指导，并重点介绍了会话级临时表的原则。
 services: sql-data-warehouse
-author: ronortloff
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/01/2019
-ms.author: rortloff
+origin.date: 04/17/2018
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 23a62e28700ad5fd733040c43ea0eec225fd286f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474889"
 ---
 # <a name="temporary-tables-in-sql-data-warehouse"></a>SQL 数据仓库中的临时表
 本文包含使用临时表的基本指导，并重点介绍会话级别临时表的原则。 使用本文中的信息可以帮助将代码模块化，从而同时提高代码的可重用性和易维护性。

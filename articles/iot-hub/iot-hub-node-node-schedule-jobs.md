@@ -10,11 +10,11 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 10/06/2017
 ms.openlocfilehash: 1f357ed60e9d9f020d5a80ac9349eb65577521e7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59796784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61442741"
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>计划和广播作业 (Node)
 

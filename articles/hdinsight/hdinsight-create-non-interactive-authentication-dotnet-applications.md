@@ -2,19 +2,18 @@
 title: 在 Azure HDInsight 中创建非交互式身份验证 .NET 应用程序
 description: 了解如何在 Azure HDInsight 中创建非交互式身份验证 Microsoft .NET 应用程序。
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: 899adc8d4fb26ac64cd3fbd7096a8b8387900517
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
+ms.openlocfilehash: b07a932ef048aa894af990baa57b87529d9da3aa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52722286"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098367"
 ---
 # <a name="create-a-non-interactive-authentication-net-hdinsight-application"></a>创建非交互式身份验证 .NET HDInsight 应用程序
 可以在应用程序自身的标识（非交互式）或应用程序的已登录用户标识（交互式）下运行 Microsoft .NET Azure HDInsight 应用程序。 本文介绍了如何创建非交互式身份验证 .NET 应用程序以连接到 Azure 并管理 HDInsight。 有关交互式应用程序的示例，请参阅[连接到 Azure HDInsight](hdinsight-administer-use-dotnet-sdk.md#connect-to-azure-hdinsight)。 
@@ -25,7 +24,7 @@ ms.locfileid: "52722286"
 * Azure Active Directory (Azure AD) 应用程序客户端 ID。 请参阅[创建 Azure Active Directory 应用程序](../active-directory/develop/howto-create-service-principal-portal.md#create-an-azure-active-directory-application)和[获取应用程序 ID](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 * Azure AD 应用程序密钥。 请参阅[获取应用程序身份验证密钥](../active-directory/develop/howto-create-service-principal-portal.md#get-application-id-and-authentication-key)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * HDInsight 群集。 请参阅[入门教程](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)。
 
 ## <a name="assign-a-role-to-the-azure-ad-application"></a>将角色分配给 Azure AD 应用程序

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2018
 ms.author: alkohli
-ms.openlocfilehash: a2b764e76cd1987c83e7be38d365c1dfa8513db9
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: HT
+ms.openlocfilehash: 116ac5c4efda87b5d16336dd326d516299f6955d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214782"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481891"
 ---
 # <a name="deactivate-and-delete-a-storsimple-device"></a>停用和删除 StorSimple 设备
 

@@ -3,17 +3,18 @@ title: 向远程监视解决方案 UI 添加面板 - Azure | Microsoft Docs
 description: 本文介绍如何向远程监视解决方案加速器 Web UI 中的仪表板上添加新面板。
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/05/2018
+origin.date: 10/05/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: 3b855c3bed75945f44b55463bdacd049b7930aa7
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49165872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447057"
 ---
 # <a name="add-a-custom-panel-to-the-dashboard-in-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 中的仪表板上添加自定义面板
 
@@ -24,7 +25,7 @@ ms.locfileid: "49165872"
 
 本文的示例面板在现有仪表板页上显示。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
@@ -45,7 +46,6 @@ ms.locfileid: "49165872"
 
 **examplePanel.js**
 
-[!code-javascript[Example panel](~/remote-monitoring-webui/src/walkthrough/components/pages/dashboard/panels/examplePanel/examplePanel.js?name=panel "Example panel")]
 
 将 src/walkthrough/components/pages/dashboard/panels/examplePanel 文件夹复制到 src/components/pages/dashboard/panels 文件夹。
 

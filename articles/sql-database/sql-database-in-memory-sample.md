@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 2aa98c3958f1dffeb8adbad5e91a11f397d4a9fd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58005736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61035704"
 ---
 # <a name="in-memory-sample"></a>内存中示例
 
@@ -74,7 +74,7 @@ SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
 
-结果 **0** 表示不支持内存中，结果 **1** 表示支持。 若要诊断问题，请确保数据库位于高级服务层。
+结果 **0** 表示不支持内存中，结果 **1** 表示支持。 若要诊断问题，请确保数据库位于“高级”服务层级。
 
 
 #### <a name="about-the-created-memory-optimized-items"></a>关于创建的内存优化项
@@ -278,7 +278,7 @@ ostress.exe -n100 -r50 -S<servername>.database.windows.net -U<login> -P<password
 
 1. 使用 Azure 门户基于示例创建全新的 AdventureWorksLT 数据库。
    - 使用相同的名称。
-   - 选择任一高级服务层。
+   - 选择任一“高级”服务层级。
 
 2. 将 [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_analytics_sample.sql) 复制到剪贴板。
    - T-SQL 脚本在步骤 1 创建的 AdventureWorksLT 示例数据库中创建所需的内存中对象。

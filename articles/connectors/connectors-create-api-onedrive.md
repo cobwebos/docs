@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 50bd9ecdd665cf72c146c63ae25efa6773934a3e
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 840a010f8606387a250552d884621a96d0031f90
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295374"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106221"
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive 连接器入门
 连接到 OneDrive 以管理文件（包括上传、获取、删除文件等）。 
@@ -62,7 +62,7 @@ ms.locfileid: "35295374"
 ## <a name="use-an-action"></a>使用操作
 操作是指在逻辑应用中定义的工作流所执行的操作。 [了解有关操作的详细信息](../logic-apps/logic-apps-overview.md#logic-app-concepts)。
 
-1. 选择加号。 可看到多个选项：“添加操作”、“添加条件”或“更多”选项之一。
+1. 选择加号。 看到多个选项：**添加操作**，**添加条件**，或某个**详细**选项。
    
     ![](./media/connectors-create-api-onedrive/add-action.png)
 2. 选择“添加操作”。

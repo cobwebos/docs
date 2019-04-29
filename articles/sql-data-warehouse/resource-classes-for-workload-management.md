@@ -2,20 +2,21 @@
 title: 用于工作负荷管理的资源类 - Azure SQL 数据仓库 | Microsoft Docs
 description: 有关使用资源类管理并发性以及计算 Azure SQL 数据仓库中查询的资源的指导。
 services: sql-data-warehouse
-author: ronortloff
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload management
-ms.date: 03/15/2019
-ms.author: rortloff
+origin.date: 03/15/2019
+ms.date: 04/22/2019
+ms.author: v-jay
 ms.reviewer: jrasnick
 ms.openlocfilehash: 5ad8dad35013a28696e7c9cb5cc68464f3c4bf64
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475076"
 ---
 # <a name="workload-management-with-resource-classes-in-azure-sql-data-warehouse"></a>使用 Azure SQL 数据仓库中的资源类管理工作负荷
 
@@ -23,7 +24,7 @@ ms.locfileid: "58520048"
 
 ## <a name="what-is-workload-management"></a>什么是工作负荷管理
 
-工作负荷管理为你提供的功能来优化所有查询的整体性能。 经过良好优化工作负荷运行的查询和加载操作有效，无论它们是计算密集型还是 IO 密集型。 SQL 数据仓库为多用户环境提供工作负荷管理功能。 数据仓库不适用于多租户工作负荷。
+工作负荷管理提供优化所有查询的整体性能的功能。 适当优化的工作负荷能够有效地运行查询和负载操作，而不管这些查询和操作是计算密集型还是 IO 密集型。 SQL 数据仓库为多用户环境提供工作负荷管理功能。 数据仓库不适用于多租户工作负荷。
 
 数据仓库的性能容量由[数据仓库单位](what-is-a-data-warehouse-unit-dwu-cdwu.md)决定。
 
@@ -32,17 +33,17 @@ ms.locfileid: "58520048"
 
 查询的性能容量由查询的资源类决定。 本文的余下内容介绍什么是资源类以及如何对其进行调整。
 
-## <a name="what-are-resource-classes"></a>资源类有哪些？
+## <a name="what-are-resource-classes"></a>什么是资源类
 
-查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以帮助您管理您的工作负荷通过并发运行的查询数和分配给每个查询的计算资源上设置限制。  没有内存和并发性之间进行权衡。
+查询的性能容量由用户的资源类决定。  资源类是 Azure SQL 数据仓库中预先确定的资源限制，控制查询执行的计算资源和并发性。 资源类可以针对并发运行的查询数以及分配给每个查询的计算资源量设置限制，从而帮助管理工作负荷。  我们需要在内存和并发性之间进行权衡。
 
 - 较小的资源类可以减少每个查询的最大内存量，但同时会提高并发性。
-- 较大资源类提高每个查询的最大内存，但会降低并发性。
+- 较大的资源类可以增加每个查询的最大内存量，但同时会降低并发性。
 
 有两种类型的资源类：
 
 - 静态资源类：非常适用于在数据集大小固定的情况下提高并发性。
-- 动态资源类，也适用于数据集的大小增长和扩展的服务级别时需要更高的性能。
+- 动态资源类：非常适用于大小和性能随着服务级别的扩展而增加和提升的数据集。
 
 资源类使用并发性槽位来测量资源消耗。  本文稍后将介绍[并发性槽位](#concurrency-slots)。
 
@@ -160,7 +161,7 @@ Removed as these two are not confirmed / supported under SQL DW
 - 使用 10 个并发槽位运行的查询可以访问的计算资源，是使用 2 个并发槽位运行的查询的 5 倍。
 - 如果每个查询需要 10 个并发槽位并且有 40 个并发槽位，则只有 4 个查询可以并发运行。
 
-只有受资源控制的查询消耗并发槽位。 系统查询和一些不重要的查询不消耗任何槽位。 由查询的资源类决定使用并发槽的精确数目。
+只有受资源控制的查询消耗并发槽位。 系统查询和一些不重要的查询不消耗任何槽位。 消耗的确切并发槽位数由查询的资源类决定。
 
 ## <a name="view-the-resource-classes"></a>查看资源类
 
@@ -174,15 +175,15 @@ WHERE  name LIKE '%rc%' AND type_desc = 'DATABASE_ROLE';
 
 ## <a name="change-a-users-resource-class"></a>更改用户的资源类
 
-资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果用户是 staticrc10 数据库角色的成员，其查询运行包含少量内存。 如果数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，其查询将使用大量的内存运行。
+资源类是通过将用户分配到数据库角色来实现的。 当用户运行查询时，该查询将使用该用户的资源类来运行。 例如，如果某个用户是 staticrc10 数据库角色的成员，则其查询将使用较小的内存量来运行。 如果某个数据库用户是 xlargerc 或 staticrc80 数据库角色的成员，则其查询将使用较大的内存量来运行。
 
-若要增加用户的资源类，使用[sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)将用户添加到大型资源类的数据库角色。  下面的代码将用户添加到 largerc 数据库角色。  每个请求获取 22%的系统内存。
+若要提高用户的资源类，请使用 [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) 将用户添加到大型资源类的数据库角色。  以下代码将用户添加到 largerc 数据库角色。  每个请求获取 22% 的系统内存。
 
 ```sql
 EXEC sp_addrolemember 'largerc', 'loaduser';
 ```
 
-若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  如果 loaduser 不是成员或任何其他资源类，则他们将转到 3%在内存授予的默认 smallrc 资源类。  
+若要降低资源类，可使用 [sp_droprolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql)。  如果“loaduser”不是成员或任何其他资源类，则会转到具有 3% 内存授予的默认 smallrc 资源类。  
 
 ```sql
 EXEC sp_droprolemember 'largerc', 'loaduser';
@@ -197,33 +198,33 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 
 ## <a name="recommendations"></a>建议
 
-我们建议创建专用于运行特定类型的查询的用户或加载操作。 永久资源类而不是更改频繁的资源类，为该用户。 静态资源类提供更好地控制总体工作负荷，因此我们建议在考虑动态资源类之前使用静态资源类。
+我们建议创建一个专门用于运行特定类型的查询或负载操作的用户。 为该用户提供永久性的资源类，而不是频繁更改资源类。 静态资源类对工作负荷提供的整体控制度更高，因此，我们建议先使用静态资源类，然后再考虑动态资源类。
 
 ### <a name="resource-classes-for-load-users"></a>负载用户的资源类
 
-`CREATE TABLE` 默认使用聚集列存储索引。 将数据压缩成列存储索引是一种内存密集型操作，内存压力可能会降低索引质量。 内存压力可能会导致加载数据时需要较高资源类。 为确保负载具有足够的内存，可以创建一个专门用于运行负载的用户，并将该用户分配到较高的资源类。
+`CREATE TABLE` 默认使用聚集列存储索引。 将数据压缩成列存储索引是一种内存密集型操作，内存压力可能会降低索引质量。 加载数据时，内存压力可能导致需要更高的资源类。 为确保负载具有足够的内存，可以创建一个专门用于运行负载的用户，并将该用户分配到较高的资源类。
 
 有效处理负载所需的内存量取决于所加载表的性质以及数据大小。 有关内存要求的详细信息，请参阅[最大程度地提高行组的质量](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)。
 
 确定内存要求后，选择是要将负载用户分配到静态还是动态资源类。
 
 - 当表的内存要求在特定的范围以内时，可使用静态资源类。 负载将使用适当的内存来运行。 扩展数据仓库时，负载不需要更多的内存。 使用静态资源类时，内存分配会保持恒定。 这种一致性可以节省内存，并允许更多的查询并发运行。 我们建议在新解决方案中先使用静态资源类，因为这些资源类提供更高的控制度。
-- 当表的内存要求差别很大时，可使用动态资源类。 负载所需的内存量可能超过了当前 DWU 或者 cDWU 级别能够提供的内存量。 缩放数据仓库向更多的内存负载操作，从而使负载的执行速度更快。
+- 当表的内存要求差别很大时，可使用动态资源类。 负载所需的内存量可能超过了当前 DWU 或者 cDWU 级别能够提供的内存量。 扩展数据仓库可为负载操作添加更多的内存，从而使负载的执行速度加快。
 
 ### <a name="resource-classes-for-queries"></a>查询的资源类
 
-某些查询都需要进行大量计算的有些则没有。  
+有些查询是计算密集型的，有些则不是。  
 
-- 如果查询很复杂，但不需要高并发性，请选择动态资源类。  例如，生成每日或每周报告只是偶尔需要资源。 如果报告要处理大量的数据，则扩展数据仓库可将更多的内存提供给用户的现有资源类。
-- 当一天中的资源预期有变化时，可选择静态资源类。 例如，如果有许多人查询数据仓库，则静态资源类就很合适。 数据仓库时，不会更改向用户分配的内存量。 因此，可在系统中同时执行多个查询。
+- 当查询较为复杂但不需要高并发性时，可以选择动态资源类。  例如，生成每日或每周报告只是偶尔需要资源。 如果报告要处理大量的数据，则扩展数据仓库可将更多的内存提供给用户的现有资源类。
+- 当一天中的资源预期有变化时，可选择静态资源类。 例如，如果有许多人查询数据仓库，则静态资源类就很合适。 缩放数据仓库时，分配给用户的内存量不会变化。 因此，可在系统中同时执行多个查询。
 
-合适的内存授予取决于许多因素，如查询的数据量，表架构的性质以及各种联接、 选择和组合谓词。 一般而言，分配更多的内存可让查询更快完成，但同时会降低整体并发性。 如果并发性不是个问题，则过度分配内存不会给吞吐量带来坏处。
+适当的内存授予取决于许多因素，例如，查询的数据量、表架构的性质，以及各种联接、选择和组合谓词。 一般而言，分配更多的内存可让查询更快完成，但同时会降低整体并发性。 如果并发性不是个问题，则过度分配内存不会给吞吐量带来坏处。
 
 若要优化性能，可使用不同的资源类。 下一部分提供了一个可以帮助推算最佳资源类的存储过程。
 
 ## <a name="example-code-for-finding-the-best-resource-class"></a>用于找出最佳资源类的示例代码
 
-可以使用以下用于指定存储的过程[Gen1](#stored-procedure-definition-for-gen1)或[第 2 代](#stored-procedure-definition-for-gen2)-若要找出并发性和内存授予每个资源类在给定的 SLO 和内存的最佳资源类密集型 CCI对给定的资源类推算非分区 CCI 表的操作：
+可以使用下面指定的存储过程（仅适用于 [Gen1](#stored-procedure-definition-for-gen1) 或 [Gen2](#stored-procedure-definition-for-gen2)），根据给定的 SLO 推算每个资源类的并发性和内存授予，以及根据给定的资源类推算对非分区 CCI 表执行内存密集型 CCI 操作时可用的最佳资源类：
 
 下面是此存储过程的用途：
 
@@ -268,7 +269,7 @@ EXEC dbo.prc_workload_management_by_DWU NULL, NULL, NULL;
 以下语句创建前面示例中所用的 Table1。
 `CREATE TABLE Table1 (a int, b varchar(50), c decimal (18,10), d char(10), e varbinary(15), f float, g datetime, h date);`
 
-### <a name="stored-procedure-definition-for-gen1"></a>Gen1 的存储的过程定义
+### <a name="stored-procedure-definition-for-gen1"></a>Gen1 的存储过程定义
 
 ```sql  
 -------------------------------------------------------------------------------
@@ -583,7 +584,7 @@ SELECT  CASE
 GO
 ```
 
-### <a name="stored-procedure-definition-for-gen2"></a>第 2 代的存储的过程定义
+### <a name="stored-procedure-definition-for-gen2"></a>Gen2 的存储过程定义
 
 ```sql
 -------------------------------------------------------------------------------
@@ -941,6 +942,7 @@ GO
 [Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
 
 <!--MSDN references-->
-[Managing Databases and Logins in Azure SQL Database]:https://msdn.microsoft.com/library/azure/ee336235.aspx
+[Managing Databases and Logins in Azure SQL Database]:../sql-database/sql-database-manage-logins.md
 
 <!--Other Web references-->
+<!-- Update_Description: update link, wording update-->

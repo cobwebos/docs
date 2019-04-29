@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: victorh
 ms.openlocfilehash: 89a88d79b6b93a233dbd4f335d0eb449e49d5289
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001781"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122194"
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>使用经典部署模型配置应用程序网关以进行 SSL 卸载
 

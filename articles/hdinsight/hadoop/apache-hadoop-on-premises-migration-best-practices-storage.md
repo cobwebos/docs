@@ -1,7 +1,6 @@
 ---
 title: 将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 description: 了解有关将本地 Hadoop 群集迁移到 Azure HDInsight 的存储最佳做法。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: ashishth
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/25/2018
 ms.author: hrasheed
-ms.openlocfilehash: f3ac60eb45c86b6cd2ded0340ac6bde478086464
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c62a5384edf66fd9309bc7afcb50ada48e3fca7d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095268"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---storage-best-practices"></a>将本地 Apache Hadoop 群集迁移到 Azure HDInsight - 存储最佳做法
 
@@ -172,11 +171,11 @@ hadoop distcp -D hadoop.security.credential.provider.path=jceks://hdfs@headnode
 
 5. 要限制对具有共享访问签名的容器的访问，请在“Ambari HDFS 配置高级自定义”核心站点的“添加”属性下为群集的核心站点配置添加自定义条目。
 
-6. 将以下值用于“密钥”和“值”字段 ****  **** ：
+6. 在“密钥”和“值”字段中使用以下值：
 
     **密钥**：`fs.azure.sas.YOURCONTAINER.YOURACCOUNT.blob.core.windows.net` **值**：Python 应用程序从上面的步骤 4 返回的 SAS 密钥。
 
-7. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改 ****  **** 。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存” ****。
+7. 单击“添加”按钮以保存此密钥和值，并单击“保存”按钮以保存配置更改。 出现提示时，请添加更改的说明（例如，“添加 SAS 存储访问”），并单击“保存”。
 
 8. 在 Ambari Web UI 中，从左侧的列表中选择“HDFS”，并从右侧的“服务操作”下拉列表中选择“重启所有受影响项” **** 。 出现提示时，选择“确认全部重启” ****。
 

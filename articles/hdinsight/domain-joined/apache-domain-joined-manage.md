@@ -1,7 +1,6 @@
 ---
 title: 使用企业安全性套餐管理 HDInsight 群集 - Azure
 description: 了解如何使用企业安全性套餐管理 HDInsight 群集。
-services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
@@ -9,12 +8,12 @@ ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/24/2018
-ms.openlocfilehash: 0fec9173eb94aa60c3689089e4eacd2d9d47724a
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: 951bd74c67c77c944a17e41646c4fe49ef46b33f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58200015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128307"
 ---
 # <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>使用企业安全性套餐管理 HDInsight 群集
 了解 HDInsight 企业安全性套餐 (ESP) 中的用户和角色，以及如何管理 ESP 群集。

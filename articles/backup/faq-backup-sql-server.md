@@ -6,18 +6,22 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 04/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 8d6323c73e5313a29b7b0df09ebdd24a190879f5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 649e50634d901ab48f1cb36c39d7331401c0cc51
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791887"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733542"
 ---
 # <a name="faq-about-sql-server-databases-that-are-running-on-an-azure-vm-backup"></a>有关在 Azure VM 备份运行的 SQL Server 数据库的常见问题解答
 
 本文解答有关 SQL Server 数据库备份 Azure 虚拟机 (Vm) 上的运行并使用[Azure 备份](backup-overview.md)服务。
+
+## <a name="can-i-use-azure-backup-for-iaas-vm-as-well-as-sql-server-on-the-same-machine"></a>可以使用 Azure 备份 IaaS VM，以及 SQL Server 的同一台计算机上？
+是的可以在同一 VM 上有 VM 备份和 SQL 备份。 在这种情况下，我们会在内部触发 vm 以不会截断日志的仅复制完整备份。
+
 
 ## <a name="does-the-solution-retry-or-auto-heal-the-backups"></a>该解决方案是否重试或自动修复备份？
 
@@ -39,13 +43,14 @@ ms.locfileid: "59791887"
 
 ## <a name="can-i-control-as-to-how-many-concurrent-backups-run-on-the-sql-server"></a>可以在 SQL server 上运行的并发备份的数量进行控制
 
-是的。 可以限制备份策略的运行速率，以尽量减少对 SQL Server 实例的影响。 若要更改设置，请执行以下操作：
+可以。 可以限制备份策略的运行速率，以尽量减少对 SQL Server 实例的影响。 若要更改设置，请执行以下操作：
 1. 在 SQL Server 实例中*C:\Program Files\Azure 工作负荷 Backup\bin*文件夹中，创建*ExtensionSettingsOverrides.json*文件。
 2. 在中*ExtensionSettingsOverrides.json*文件中，将**DefaultBackupTasksThreshold**将设置为较低的值 (例如，5)。 <br>
   `{"DefaultBackupTasksThreshold": 5}`
 
 3. 保存所做的更改并关闭该文件。
-4. 在 SQL Server 实例上，打开“任务管理器”。 重启 **AzureWLBackupCoordinatorSvc** 服务。
+4. 在 SQL Server 实例上，打开“任务管理器”。 重启 **AzureWLBackupCoordinatorSvc** 服务。<br/> <br/>
+ 虽然此方法可帮助如果备份应用程序正在消耗大量资源，SQL Server[资源调控器](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor?view=sql-server-2017)是更通用的方式上的 CPU、 物理 IO 和内存的应用程序的传入请求可以指定限制使用。
 
 > [!NOTE]
 > 在用户体验仍可以继续，并在任何给定时间计划的备份数一样，但是它们将处理在说，5，根据上面的示例中的滑动窗口中。

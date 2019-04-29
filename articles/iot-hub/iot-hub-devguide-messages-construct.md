@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
-ms.openlocfilehash: 08eb7171249c42348877afedc80c6c6338265422
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 49a28c120ae71224195edcdb3809335aeea1fa3a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861718"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61364015"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>创建和读取 IoT 中心消息
 
@@ -51,7 +51,7 @@ IoT 中心消息由以下部分组成：
 | --- | --- | --- |
 | message-id |用户可设置的，用于请求-答复模式的消息标识符。 格式：ASCII 7 位字母数字字符 + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}` 的区分大小写字符串（最长为 128 个字符）。 | 是 |
 | sequence-number |IoT 中心分配给每条云到设备消息的编号（对每个设备队列是唯一的）。 | 对于 C2D 消息为否；对于其他情况则为是。 |
-| to |[从云到设备](iot-hub-devguide-c2d-guidance.md)的消息中指定的目标。 | 对于 C2D 消息为否；对于其他情况则为是。 |
+| 至 |[从云到设备](iot-hub-devguide-c2d-guidance.md)的消息中指定的目标。 | 对于 C2D 消息为否；对于其他情况则为是。 |
 | absolute-expiry-time |消息过期的日期和时间。 | 是 |
 | iothub-enqueuedtime |IoT 中心收到[云到设备](iot-hub-devguide-c2d-guidance.md)消息的日期和时间。 | 对于 C2D 消息为否；对于其他情况则为是。 |
 | correlation-id |响应消息中的字符串属性，通常包含采用“请求-答复”模式的请求的 MessageId。 | 是 |

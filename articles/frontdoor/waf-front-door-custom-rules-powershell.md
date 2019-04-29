@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 7d024dd958e6b29b52f095a9a55a67154bf6cde6
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59792074"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459787"
 ---
 # <a name="configure-a-web-application-firewall-policy-using-azure-powershell"></a>配置使用 Azure PowerShell 的 web 应用程序防火墙策略
 Azure web 应用程序防火墙 (WAF) 策略定义在第一道防线的请求到达时所需的检查。

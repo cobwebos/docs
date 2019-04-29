@@ -11,11 +11,11 @@ ms.topic: article
 ms.assetid: 5c1b1e15-3b6c-49dc-98a6-bdbe7cb75339
 ms.date: 07/21/2017
 ms.openlocfilehash: 80776f9284752e8554486cb458096ccc9319949e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61323740"
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>针对 Azure 逻辑应用监视状态、设置诊断日志记录，并启用警报
 
@@ -74,7 +74,7 @@ ms.locfileid: "58112307"
 
 ## <a name="turn-on-diagnostics-logging-for-your-logic-app"></a>为逻辑应用启用诊断日志记录
 
-对于更丰富的调试与运行时详细信息和事件，您可以设置诊断与日志记录[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 Azure Monitor 是监视你的云，并在本地环境，有助于保持其可用性和性能的 Azure 中的服务。 
+对于更丰富的调试与运行时详细信息和事件，您可以设置诊断与日志记录[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)。 Azure Monitor 是 Azure 中的一个服务，用于监视云和本地环境，帮助使其保持较高的可用性和性能。 
 
 在开始之前，需要具有一个 Log Analytics 工作区。 了解[如何创建 Log Analytics 工作区](../azure-monitor/learn/quick-create-workspace.md)。
 
@@ -155,7 +155,7 @@ ms.locfileid: "58112307"
 
 ## <a name="extend-how-and-where-you-use-diagnostic-data-with-other-services"></a>扩展将诊断数据用于其他服务的方式和位置
 
-Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据与其他 Azure 服务，例如： 
+结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 
@@ -178,7 +178,7 @@ Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据
 
 要监视逻辑应用的特定指标或超出的阈值，请[在 Azure 中设置警报](../azure-monitor/platform/alerts-overview.md)。 了解 [Azure 中的指标](../monitoring-and-diagnostics/monitoring-overview-metrics.md)。 
 
-若要设置警报，而无需[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，请执行以下步骤。 有关更高级的警报条件和操作，[设置 Azure Monitor 日志](#azure-diagnostics)过。
+若要设置警报，而无需[Azure Monitor 日志](../log-analytics/log-analytics-overview.md)，请执行以下步骤。 有关更高级的警报条件和操作，也可以[设置 Azure Monitor 日志](#azure-diagnostics)。
 
 1. 在“逻辑应用”边栏选项卡菜单的“监视”下，选择“诊断” > “警报规则” > “添加警报”，如下所示：
 

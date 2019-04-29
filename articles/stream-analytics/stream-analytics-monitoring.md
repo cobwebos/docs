@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
 ms.openlocfilehash: ce6fc0a90ad093a6bba5a4720777e409202c73ea
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57439819"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61479320"
 ---
 # <a name="understand-stream-analytics-job-monitoring-and-how-to-monitor-queries"></a>了解流分析作业监视以及如何监视查询
 
@@ -43,7 +43,7 @@ Azure 门户提供了可用于监视和排查查询和作业性能问题的关�
 | 延迟输入事件数      | 到达时间晚于已配置的延迟到达容错时段的事件。 详细了解 [Azure 流分析事件顺序注意事项](stream-analytics-out-of-order-and-late-events.md)。 |
 | 无序事件数    | 收到的无序事件的数目，系统根据事件排序策略来删除这些事件，或者为其提供一个经过调整的时间戳。 这可能会受“无序容错时段”设置的影响。 |
 | 输出事件数          | 流分析作业发送到输出目标的数据量，以事件数来衡量。 |
-| 运行时错误         | （不包括引入事件或将输出结果时发现错误） 的查询处理相关的错误总数 |
+| 运行时错误         | 与查询处理相关的错误总数（不包括引入事件或输出结果时发现的错误） |
 | 流单元利用率 %       | 从作业的“比例”选项卡向一个作业分配的流单元利用率。 如果此指标达到 80% 或以上，则很可能会出现事件处理延迟或停止处理的情况。 |
 | 水印延迟       | 作业中所有输出的所有分区之间的最大水印延迟。 |
 

@@ -6,14 +6,14 @@ author: sogup
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 04/05/2019
+ms.date: 04/23/2019
 ms.author: sogup
-ms.openlocfilehash: 3aceffa719ef8938aa049f126231f8628822566b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: c375eac0de3dd89986421f8c6628d0a13784a60d
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59794771"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733867"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>使用 Azure 备份即时还原功能获得更高的备份和还原性能
 
@@ -23,9 +23,9 @@ ms.locfileid: "59794771"
 即时还原的新模型提供以下功能增强：
 
 * 可以使用执行备份作业期间创建的用于恢复的快照，而无需等待完成将数据传输到保管库的操作。 它缩短了快照在触发还原之前复制到保管库的等待时间。
-* 通过在本地保留快照，缩短备份和还原时间，默认可在本地保留两天。 此默认快照保留期值是可配置为 1 到 5 天之间的任何值。
-* 最大支持 4 TB 的磁盘。 Azure 备份不支持条带化的磁盘。 Azure 备份，不建议重设大小的磁盘。
-* 支持标准 SSD 磁盘，以及标准 HDD 磁盘和高级 SSD 磁盘。
+* 通过在本地保留快照，缩短备份和还原时间，默认可在本地保留两天。 此默认快照保留期值可配置为 1 到 5 天的任何值。
+* 最大支持 4 TB 的磁盘。 Azure 备份不建议重设磁盘大小。
+* 支持标准 SSD 磁盘、标准 HDD 磁盘和高级 SSD 磁盘。
 *   还原时可以使用非托管 VM 的原始存储帐户（按磁盘）。 即使 VM 的磁盘跨存储帐户进行分布，也具备此能力。 这可以加快各种 VM 配置的还原操作。
 
 
@@ -46,50 +46,50 @@ ms.locfileid: "59794771"
 
 * 快照将连同磁盘一起存储，以提高恢复点的创建速度并加快还原操作。 因此，可以查看 7 天内创建的快照的相应存储成本。
 * 增量快照作为页 blob 存储。 使用非托管磁盘的所有用户需要为其本地存储帐户中存储的快照付费。 由于托管 VM 备份使用的还原点集合在基础存储级别使用 Blob 快照，因此对于托管磁盘，你将看到与 Blob 快照定价对应的成本，并且成本是递增的。
-* 对于高级存储帐户，即时恢复点计数至 10 TB 限制的所用的快照已分配空间。
-* 获得根据还原需要配置快照保留期的能力。 根据要求，可以在备份策略边栏选项卡中将快照保留期设置为最少一天，如下所述。 如果不经常执行还原，这可帮助节省保留快照的成本。
-* 这是一个方向升级，即时还原到升级后，您不能再返回。
+* 对于高级存储帐户，为即时恢复点创建的快照计入分配空间的 10 TB 限制。
+* 获得根据还原需要配置快照保留期的能力。 根据要求，可以在备份策略边栏选项卡中将快照保留期设置为最少一天，如下所述。 这将有助于节省成本的快照保留期，如果你不经常执行还原。
+* 它是一个方向升级，即时还原到升级后，您不能再返回。
 
 >[!NOTE]
 >使用此即时还原升级，所有客户（**包含新客户和现有客户**）的快照保留期都将设置为两天的默认值。 但是，可以根据需要将持续时间设置为 1 到 5 天之间的任意值。
 
 ## <a name="cost-impact"></a>成本影响
 
-增量快照存储在 VM 的存储帐户中，用于即时恢复。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 费用仍按快照占用的空间按 GB 计算，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)中所述的价格相同。
+增量快照存储用于即时恢复的 Vm 的存储帐户中。 使用增量快照意味着快照占用的空间等于创建该快照后写入的页面所占用的空间。 费用仍按快照占用的空间按 GB 计算，每 GB 价格与[定价页](https://azure.microsoft.com/pricing/details/managed-disks/)中所述的价格相同。
 
 >[!NOTE]
-> 快照保留期固定为 5 天的每周的策略。
+> 就每周策略来说，快照保留期固定为 5 天。
 
 ## <a name="configure-snapshot-retention"></a>配置快照保留期
 
 ### <a name="using-azure-portal"></a>使用 Azure 门户
 
-在 Azure 门户中，您可以看到在中添加字段**VM 备份策略**边栏选项卡下的**即时还原**部分。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
+在 Azure 门户中可以看到，“即时还原”部分下的“VM 备份策略”边栏选项卡中添加了一个字段。 可以从“VM 备份策略”边栏选项卡为与特定备份策略关联的所有 VM 更改快照保留期。
 
 ![即时还原功能](./media/backup-azure-vms/instant-restore-capability.png)
 
 ### <a name="using-powershell"></a>使用 PowerShell
 
 >[!NOTE]
-> 从 Az PowerShell 1.6.0 版本及更高版本，可以更新策略使用 PowerShell 中的即时还原快照保留期
+> 从 Az PowerShell 版本 1.6.0 开始，可以使用 PowerShell 在策略中更新即时还原快照保留期
 
 ```powershell
 PS C:\> $bkpPol = Get-AzureRmRecoveryServicesBackupProtectionPolicy -WorkloadType "AzureVM"
 $bkpPol.SnapshotRetentionInDays=5
 PS C:\> Set-AzureRmRecoveryServicesBackupProtectionPolicy -policy $bkpPol
 ```
-每个策略的默认快照保留期设置为 2 天。 用户可以将值更改为最小为 1，最大为 5 天。 对于每周的策略，快照保留期固定为 5 天。
+每个策略的默认快照保留期设置为 2 天。 用户可以将此值更改为 1 到 5 天。 就每周策略来说，快照保留期固定为 5 天。
 
 ## <a name="frequently-asked-questions"></a>常见问题
 
 ### <a name="what-are-the-cost-implications-of-instant-restore"></a>哪些因素影响即时还原的成本？
 快照将连同磁盘一起存储，以加速恢复点的创建和还原操作。 因此，你会看到与 VM 备份策略中选择的快照保留期相对应的存储成本。
 
-### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>在高级存储帐户中，即时恢复点创建的快照占用 10 TB 快照限制？
-是的高级存储帐户的即时恢复点创建的快照占用 10 TB 的快照已分配的空间。
+### <a name="in-premium-storage-accounts-do-the-snapshots-taken-for-instant-recovery-point-occupy-the-10-tb-snapshot-limit"></a>在高级存储帐户中，为即时恢复点创建的快照是否会占用 10 TB 快照限制？
+是的，对于高级存储帐户，为即时恢复点创建的快照会占用 10 TB 的已分配快照空间。
 
 ### <a name="how-does-the-snapshot-retention-work-during-the-five-day-period"></a>在 5 天期限内，快照保留的工作方式是怎样的？
-如果每天创建一个新快照，则有 5 个单独的增量快照。 在大多数情况下大约 2%-7%的数据变动量取决于快照的大小。
+如果每天创建一个新快照，则有 5 个单独的增量快照。 快照大小取决于数据变动率，在大多数情况下，变动率大约为 2%-7%。
 
 ### <a name="is-an-instant-restore-snapshot-an-incremental-snapshot-or-full-snapshot"></a>即时还原快照是增量快照还是完整快照？
 即时还原功能创建的快照是增量快照。

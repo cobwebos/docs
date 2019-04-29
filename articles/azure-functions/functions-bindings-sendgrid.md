@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 663283c4dff16194dea78afbf5dd393f1fa833b1
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823801"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61437918"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions SendGrid 绑定
 
@@ -164,7 +164,7 @@ public class Message
 
 ### <a name="java-example"></a>Java 示例
 
-下面的示例使用`@SendGridOutput`批注[Java 函数运行时库](/java/api/overview/azure/functions/runtime)发送电子邮件使用 SendGrid 输出绑定。
+以下示例使用 [Java 函数运行时库](/java/api/overview/azure/functions/runtime)中的 `@SendGridOutput` 注释来发送使用 SendGrid 输出绑定的电子邮件。
 
 ```java
 @FunctionName("SendEmail")
@@ -255,9 +255,9 @@ public static void Run(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|**type**|| 必需 - 必须设置为 `sendGrid`。|
-|**direction**|| 必需 - 必须设置为 `out`。|
-|**name**|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
+|type|| 必需 - 必须设置为 `sendGrid`。|
+|direction|| 必需 - 必须设置为 `out`。|
+|name|| 必需 - 在请求或请求正文的函数代码中使用的变量名称。 只有一个返回值时，此值为 ```$return```。 |
 |**apiKey**|**ApiKey**| 包含 API 密钥的应用设置的名称。 如果未设置，默认应用设置名称为“AzureWebJobsSendGridApiKey”。|
 |**to**|**收件人**| 收件人的电子邮件地址。 |
 |**from**|**From**| 发件人的电子邮件地址。 |

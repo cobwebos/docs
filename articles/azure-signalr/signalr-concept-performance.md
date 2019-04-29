@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: zhshang
 ms.openlocfilehash: f7cc05c8c2a299d809c4386d119fef58fa2548d5
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579234"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61269400"
 ---
 # <a name="performance-guide-for-azure-signalr-service"></a>Azure SignalR 服务的性能指南
 
@@ -159,8 +159,8 @@ WebSocket 是一个双向和全双工通信协议通过单个 TCP 连接。 服�
 
 | 广播  | 消息大小 | 每秒入站的消息 | 连接 | 发送的时间间隔 |
 |---|---------------------|--------------------------|-------------|-------------------------|
-| 1 | 20 KB                | 1                        | 100,000     | 5 秒                      |
-| 2 | 256 KB               | 1                        | 8,000       | 5 秒                      |
+| 1 | 20 KB                | 第                        | 100,000     | 5 秒                      |
+| 2 | 256 KB               | 第                        | 8,000       | 5 秒                      |
 
 下面的公式是可以轻松推断出基于前面的公式：
 

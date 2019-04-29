@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 96432abe619ea23c1a06735567d00660e5430550
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 5a293946e4672e7737f912f42511ad0907ba4a81
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38633275"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61293924"
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>使用面向开发人员的 Azure 开发测试实验室
 可使用 Azure 开发测试实验室来实现许多关键方案，但其中一个主要方案涉及使用开发测试实验室为开发人员托管开发计算机。 在此方案中，开发测试实验室具有以下优势：

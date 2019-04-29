@@ -16,13 +16,13 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: bddc83d55c8909412f7f935a4324a6f316a82cd7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129547"
 ---
-# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>在 Azure 虚拟机中自动配置 AlwaysOn 可用性组：Resource Manager
+# <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>自动配置 Always On 可用性组在 Azure 虚拟机：资源管理器
 
 本教程介绍如何创建使用 Azure 资源管理器虚拟机的 SQL Server 可用性组。 本教程会使用 Azure 边栏选项卡配置模板。 完成本教程后，可查看门户中的默认设置、键入所需设置，并可更新边栏选项卡。
 

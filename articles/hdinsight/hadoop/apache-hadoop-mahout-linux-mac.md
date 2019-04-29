@@ -1,7 +1,6 @@
 ---
 title: 使用 Apache Mahout 和 HDInsight (SSH) 生成推荐 - Azure
 description: 了解如何使用 Apache Mahout 机器学习库通过 HDInsight (Hadoop) 生成电影推荐。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
-ms.openlocfilehash: 6e27d00e4b12ade82cfde6b3a4927edc7d69798a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 63f1cfbf697f9cb1211e2c4671f64b19f933bc94
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58075810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129342"
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-apache-hadoop-in-hdinsight-ssh"></a>通过 HDInsight (SSH) 中基于 Linux 的 Apache Hadoop 使用 Apache Mahout 生成电影推荐
 

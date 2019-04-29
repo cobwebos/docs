@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 6d6f24475497382dd9e04d3335fb89d6f0bdd514
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57528672"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459440"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 服务器
 本主题介绍了如何快速创建新的 Azure Database for MySQL 服务器。 它还提供了有关如何使用 Azure 门户来管理服务器的信息。 服务器管理包括查看服务器详细信息和数据库、重置密码、缩放资源以及删除服务器。
@@ -44,7 +44,7 @@ ms.locfileid: "57528672"
     | *位置* | 东南亚（在“北欧”和“美国西部”之间选择） |
     | *版本* | 5.7（选择 Azure Database for MySQL 服务器版本） |
 
-4. 单击“定价层”，为新服务器指定服务层和性能级别。 选择“常规用途”选项卡。“第 5 代”、“2 个 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从“备份冗余选项”中选择“异地冗余”。
+4. 单击“定价层”，为新服务器指定服务层级和性能级别。 选择“常规用途”选项卡。“第 5 代”、“2 个 vCore”、“5 GB”和“7 天”分别是“计算代”、“vCore”、“存储”和“备份保留期”的默认值。 可以将这些滑块保留原样。 若要在异地冗余存储中启用服务器备份，请从“备份冗余选项”中选择“异地冗余”。
 
    ![create-server-pricing-tier](./media/howto-create-manage-server-portal/create-server-pricing-tier.png)
 
@@ -106,7 +106,7 @@ ms.locfileid: "57528672"
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>显示 Azure Database for MySQL 服务器的详细信息
 单击“设置”下的“属性”以查看有关服务器的详细信息。
 
-![属性](./media/howto-create-manage-server-portal/properties.png)
+![properties](./media/howto-create-manage-server-portal/properties.png)
 
 ## <a name="next-steps"></a>后续步骤
 

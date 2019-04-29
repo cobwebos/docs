@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/18/2019
 ms.author: tomfitz
 ms.openlocfilehash: d4ecccf8787e369b9a3270eab2d01a01ce7ae0c7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58174301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61363292"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>部署 Azure 资源时使用链接模版和嵌套模版
 
@@ -90,7 +90,7 @@ ms.locfileid: "58174301"
 > [!NOTE]
 > 对于嵌套模板，不能使用嵌套模板中定义的参数或变量。 可以使用主模板中的参数和变量。 在前面的示例中，`[variables('storageName')]` 从主模板（而不是嵌套模板）中检索值。 此限制不适用于外部模版。
 >
-> 两个资源内定义的嵌套模板和一个资源依赖于其他，依赖项的值是只需依赖的资源的名称：
+> 如果在嵌套的模板内定义了两个资源并且一个资源依赖于另一个资源，则依赖项的值就是被依赖资源的名称：
 > ```json
 > "dependsOn": [
 >   "[variables('storageAccountName')]"

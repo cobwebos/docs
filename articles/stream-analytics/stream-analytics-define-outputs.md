@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 3/25/2019
 ms.custom: seodec18
 ms.openlocfilehash: 03871c3f3627e85cc2af2f05a5fba38bd8069a15
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59609483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481066"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>了解 Azure 流分析的输出
 本文介绍可用于 Azure Stream Analytics 作业输出的类型。 输出可帮助存储和保存流分析作业的结果。 通过使用输出数据，您可以执行更多业务分析和数据仓库的数据。

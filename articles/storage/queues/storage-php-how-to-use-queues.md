@@ -11,11 +11,11 @@ ms.date: 01/11/2018
 ms.author: rogarana
 ms.subservice: queues
 ms.openlocfilehash: 0f9cc11e64e2517ef7aff0cd51705c39bf212b37
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109862"
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>如何通过 PHP 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]

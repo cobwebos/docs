@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: 0c2ad7e5a707c20db2773324e8047eedaad1a48b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61076925"
 ---
 # <a name="azure-sql-data-warehouse---massively-parallel-processing-mpp-architecture"></a>Azure SQL 数据仓库 - 大规模并行处理 (MPP) 体系结构
 了解 Azure SQL 数据仓库如何将大规模并行处理 (MPP) 与 Azure 存储结合，实现高性能和可伸缩性。 
@@ -84,7 +84,7 @@ SQL 数据仓库使用 Azure 存储保护用户数据。  由于数据通过 Azu
 ## <a name="replicated-tables"></a>复制表
 复制表为小型表提供最快查询性能。
 
-复制表在每个计算节点上缓存表的完整副本。 因此复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表尤为适用于小型表。 是必需的额外存储并不会写入数据，这使大型表不切实际时产生的额外开销。  
+复制表在每个计算节点上缓存表的完整副本。 因此复制表以后，无需在执行联接或聚合前在计算节点中间传输数据。 复制表尤为适用于小型表。 它需要额外存储并且在写入数据时会产生额外负载，因此不适用于大型表。  
 
 下图显示了一个复制表。 在 SQL 数据仓库中，会在每个计算节点的第一个分布区上缓存复制表。  
 

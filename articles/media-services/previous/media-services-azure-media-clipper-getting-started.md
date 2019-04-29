@@ -10,11 +10,11 @@ ms.date: 03/14/2019
 ms.topic: article
 ms.service: media-services
 ms.openlocfilehash: 51848b9ba4d18b3ac7d652cfbd97cab6b85f2ee8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57842356"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466266"
 ---
 # <a name="create-clips-with-azure-media-clipper"></a>使用 Azure 媒体剪辑器创建剪辑
 本部分介绍开始使用 Azure 媒体剪辑器的基本步骤。 以下部分介绍如何配置 Azure 媒体剪辑器的具体信息。

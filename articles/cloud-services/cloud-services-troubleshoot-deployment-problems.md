@@ -16,11 +16,11 @@ ms.workload: tbd
 ms.date: 06/15/2018
 ms.author: v-six
 ms.openlocfilehash: cc2a0177525013736445db5fd1befa478dc9b9b8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798564"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106907"
 ---
 # <a name="troubleshoot-cloud-service-deployment-problems"></a>排查云服务部署问题
 将云服务应用程序包部署到 Azure 时，可通过 Azure 门户中的“属性”窗格获取有关部署的信息。 可以使用此窗格中的详细信息来帮助你解决云服务的问题，还可以在提交新的支持请求时将此信息提供给 Azure 支持人员。

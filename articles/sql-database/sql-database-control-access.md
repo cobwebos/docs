@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/04/2019
 ms.openlocfilehash: 8cb044397cf439e97f3630b5c1c3f53fbf3f356d
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55729909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61468391"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-access-control"></a>Azure SQL 数据库和 SQL 数据仓库访问控制
 
@@ -34,7 +34,7 @@ Microsoft Azure SQL 数据库为 Azure 和其他基于 Internet 的应用程序�
 
 在连接过程中，来自 Azure 虚拟机的连接将重定向到每个辅助角色特有的不同 IP 地址和端口。 该端口号在 11000 到 11999 的范围内。 有关 TCP 端口的详细信息，请参阅[用于 ADO.NET 4.5 和 SQL Database2 的非 1433 端口](sql-database-develop-direct-route-ports-adonet-v12.md)。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 SQL 数据库支持两种类型的身份验证：
 
@@ -49,7 +49,7 @@ SQL 数据库支持两种类型的身份验证：
 
 可在 master 数据库中创建用户帐户并向其授予服务器上所有数据库中的权限，或者在数据库本身内部创建用户帐户（称为包含的用户）。 有关创建和管理登录名的信息，请参阅[管理登录名](sql-database-manage-logins.md)。 若要增强可移植性和可伸缩性，请使用包含的数据库。 有关包含的用户的详细信息，请参阅[包含的数据库用户 - 使数据库可移植](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)、[CREATE USER (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-user-transact-sql) 和[包含的数据库](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases)。
 
-根据最佳实践，应用程序应使用专用帐户进行身份验证 – 这样，就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 建议的方法是创建[包含的数据库用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)，使应用程序能够直接向数据库进行身份验证。 
+根据最佳实践，应用程序应使用专用帐户进行身份验证 – 这样，就可以限制授予应用程序的权限，并在应用程序代码容易受到 SQL 注入攻击的情况下降低恶意活动的风险。 建议的方法是创建 [包含数据库用户](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)，使应用程序能够直接向数据库进行身份验证。 
 
 ## <a name="authorization"></a>授权
 

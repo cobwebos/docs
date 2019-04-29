@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 02/20/2019
 ms.author: juliako
 ms.openlocfilehash: 1c2ec576211741390ef91233101261a7881e4180
-ms.sourcegitcommit: a4efc1d7fc4793bbff43b30ebb4275cd5c8fec77
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56652206"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466742"
 ---
 # <a name="transforms-and-jobs"></a>转换和作业
 
@@ -67,7 +67,7 @@ ms.locfileid: "56652206"
 
 请参阅[错误代码](https://docs.microsoft.com/rest/api/media/jobs/get#joberrorcode)。
 
-## <a name="paging"></a>分页
+## <a name="paging"></a>Paging
 
 请参阅[媒体服务实体的筛选、排序、分页](entities-overview.md)。
 

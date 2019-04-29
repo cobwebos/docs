@@ -10,11 +10,11 @@ ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52998127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61467655"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>（已弃用）通过 ELK 监视 Azure 容器服务群集
 
@@ -22,7 +22,7 @@ ms.locfileid: "52998127"
 
 在本文中，我们将演示如何在 Azure 容器服务中的 DC/OS 群集上部署 ELK（Elasticsearch、Logstash、Kibana）堆栈。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 [部署](container-service-deployment.md)和[连接](../container-service-connect.md)由 Azure 容器服务配置的 DC/OS 群集。 在[此处](container-service-mesos-marathon-ui.md)浏览 DC/OS 仪表板和 Marathon 服务。 此外，安装 [Marathon 负载均衡器](container-service-load-balancing.md)。
 
 

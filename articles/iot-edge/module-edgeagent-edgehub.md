@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: b6eb0c5b0d52bba3d34c9853a73b1f3e07b112a7
-ms.sourcegitcommit: a512360b601ce3d6f0e842a146d37890381893fc
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/11/2019
-ms.locfileid: "54230282"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61322694"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>IoT Edge 代理和 IoT Edge 中心模块孪生的属性
 
@@ -26,7 +26,7 @@ IoT Edge 代理和 IoT Edge 中心是构成 IoT Edge 运行时的两个模块。
 
 IoT Edge 代理的模块孪生称为 `$edgeAgent`，用于协调设备上运行的 IoT Edge 代理与 IoT 中心之间的通信。 在特定设备上将部署清单作为单一设备或规模部署的一部分应用时，将会设置所需的属性。 
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | runtime.type | 必须为“docker” | 是 |
@@ -68,7 +68,7 @@ IoT Edge 代理报告属性包括三个主要信息：
 
 下表不包括从所需属性中复制的信息。
 
-| 属性 | Description |
+| 属性 | 描述 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整数指的是由 IoT Edge 代理处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 此为状态代码，指的是 IoT Edge 代理所看到的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`412` 架构版本无效、`417` 所需属性为空、`500` 失败 |
@@ -98,7 +98,7 @@ IoT Edge 代理报告属性包括三个主要信息：
 
 IoT Edge 中心的模块孪生称为 `$edgeHub`，用于协调设备上运行的 IoT Edge 中心与 IoT 中心之间的通信。 在特定设备上将部署清单作为单一设备或规模部署的一部分应用时，将会设置所需的属性。 
 
-| 属性 | Description | 部署清单中的必备项 |
+| 属性 | 描述 | 部署清单中的必备项 |
 | -------- | ----------- | -------- |
 | schemaVersion | 必须为“1.0” | 是 |
 | routes.{routeName} | 表示 IoT Edge 中心路由的字符串。 | `routes` 元素可以存在但为空。 |
@@ -106,7 +106,7 @@ IoT Edge 中心的模块孪生称为 `$edgeHub`，用于协调设备上运行的
 
 ## <a name="edgehub-reported-properties"></a>EdgeHub 报告属性
 
-| 属性 | Description |
+| 属性 | 描述 |
 | -------- | ----------- |
 | lastDesiredVersion | 此整数指的是由 IoT Edge 中心处理的所需属性的最后一个版本。 |
 | lastDesiredStatus.code | 此为状态代码，指的是 IoT Edge 中心所看到的最后一个所需属性。 允许的值：`200` 成功、`400` 配置无效、`500` 失败 |

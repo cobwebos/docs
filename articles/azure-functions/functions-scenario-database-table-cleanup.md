@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 10/28/2018
 ms.author: glenga
 ms.openlocfilehash: 4ec2e9b931e6405aca5b4237bc044647af3b8bb3
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608573"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120664"
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>使用 Azure Functions 连接 Azure SQL 数据库
 
@@ -24,7 +24,7 @@ ms.locfileid: "53608573"
 
 如果首次使用 C# 函数，则应阅读 [Azure Functions C# 开发人员参考](functions-dotnet-class-library.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 + 完成文章[使用 Visual Studio 创建第一个函数](functions-create-your-first-function-visual-studio.md)中的步骤，以创建一个面向版本 2.x 运行时的本地函数应用。 此外，还必须已将项目发布到 Azure 中的函数应用。
 

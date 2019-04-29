@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 02/08/2019
 ms.openlocfilehash: 409c1abd7e9f532bb243ecab00228b402215c77e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57852746"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61313644"
 ---
 # <a name="transactional-replication-with-single-pooled-and-instance-databases-in-azure-sql-database"></a>对 Azure SQL 数据库中的单一数据库、共用数据库和实例数据库进行事务复制
 
@@ -79,8 +79,8 @@ ms.locfileid: "57852746"
   > - 尝试使用旧版来配置复制可能导致错误 MSSQL_REPL20084（过程无法连接到订阅服务器）和 MSSQ_REPL40532（无法打开登录名所请求的服务器 \<name>。 登录失败。）
   > - 若要使用 Azure SQL 数据库的所有功能，必须使用最新版本的 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 和 [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)。
   
-  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>实例数据库和本地系统的 Supportabilty 矩阵
-  复制可支持性矩阵数据库对于实例是一个用于本地 SQL Server 相同。 
+  ### <a name="supportabilty-matrix-for-instance-databases-and-on-premises-systems"></a>实例数据库和本地系统的可支持性矩阵
+  实例数据库的复制可支持性矩阵与本地 SQL Server 的相同。 
   
   | **发布者**   | **分发服务器** | **订阅服务器** |
 | :------------   | :-------------- | :------------- |
@@ -95,11 +95,11 @@ ms.locfileid: "57852746"
 
 - 连接时，在复制参与者之间使用 SQL 身份验证。 
 - 复制功能使用的工作目录的 Azure 存储帐户共享。 
-- 需要在要访问 Azure 文件共享的托管实例子网的安全规则中打开端口 445(tcp 出站)。 
+- 需要在托管实例子网的安全规则中打开端口 445（TCP 出站）才能访问 Azure 文件共享。 
 - 如果发布服务器/分发服务器位于托管实例上，而订阅服务器位于本地，则需要打开端口 1433（TCP 出站）。
 
   >[!NOTE]
-  > 如果出站网络安全组 (NSG) 端口 445 被阻止时分发服务器是一种实例数据库和订阅服务器是在本地连接到 Azure 存储文件时，可能会遇到错误 53。 [更新 vNet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems)若要解决此问题。 
+  > 当分发服务器为实例数据库且订阅服务器位于本地时，如果阻止出站网络安全组 (NSG) 端口 445，则会在连接到 Azure 存储文件时遇到错误 53。 [更新 vNet NSG](/azure/storage/files/storage-troubleshoot-windows-file-connection-problems) 以解决此问题。 
 
 ### <a name="compare-data-sync-with-transactional-replication"></a>将数据同步与事务复制进行比较
 

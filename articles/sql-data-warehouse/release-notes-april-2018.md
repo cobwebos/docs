@@ -11,11 +11,11 @@ ms.date: 07/23/2018
 ms.author: twounder
 ms.reviewer: twounder
 ms.openlocfilehash: a9fae37acd653b05502737756baf463188ef631d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57861700"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475008"
 ---
 # <a name="whats-new-in-azure-sql-data-warehouse-april-2018"></a>Azure SQL 数据仓库中的新增功能 2018 年 4 月
 Azure SQL 数据仓库持续得到改进。 本文介绍 2018 年 4 月发行的版本中所引入的新功能和所做的更改。
@@ -64,7 +64,7 @@ The number of literals in the query is beyond the limit. Please rewrite your que
 * [功能请求]
 * [视频]
 * [客户顾问团队博客]
-* [堆栈溢出论坛]
+* [Stackoverflow 论坛]
 * [Twitter]
 
 
@@ -72,7 +72,7 @@ The number of literals in the query is beyond the limit. Please rewrite your que
 [客户顾问团队博客]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
 [客户成功案例]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
 [功能请求]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[堆栈溢出论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
+[Stackoverflow 论坛]: https://stackoverflow.com/questions/tagged/azure-sqldw
 [Twitter]: https://twitter.com/hashtag/SQLDW
 [视频]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
 [create a SQL Data Warehouse]: ./create-data-warehouse-portal.md

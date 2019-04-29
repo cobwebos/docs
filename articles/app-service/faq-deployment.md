@@ -17,11 +17,11 @@ ms.date: 11/01/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: 9d38e3caf3d835eaf73df90282157eed76c5ea25
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58350634"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61270013"
 ---
 # <a name="deployment-faqs-for-web-apps-in-azure"></a>Azure 中的 Web 应用的部署常见问题解答
 
@@ -59,7 +59,7 @@ ms.locfileid: "58350634"
 
 ## <a name="how-do-i-resolve-ftp-error-550---there-is-not-enough-space-on-the-disk-when-i-try-to-ftp-my-files"></a>如何在尝试通过 FTP 传输文件时解决“FTP 错误 550 - 磁盘空间不足”？
 
-如果看到此消息，则可能是遇到服务计划中针对 Web 应用的磁盘配额。 可能需要基于磁盘空间需求提升到较高服务层。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
+如果看到此消息，则可能是遇到服务计划中针对 Web 应用的磁盘配额。 可能需要基于磁盘空间需求提升到较高服务层级。 有关定价计划和资源限制的详细信息，请参阅[应用服务定价](https://azure.microsoft.com/pricing/details/app-service/)。
 
 ## <a name="how-do-i-set-up-continuous-deployment-for-my-app-service-web-app"></a>如何为应用服务 Web 应用程序设置持续部署？
 

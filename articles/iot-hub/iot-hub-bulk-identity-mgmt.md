@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2017
 ms.author: robinsh
 ms.openlocfilehash: 274b77644326cbf73696aae77b48afcbc63aa4c2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59049966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61322656"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>导入和导出大容量的 IoT 中心设备标识
 

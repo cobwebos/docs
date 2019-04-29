@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 6f76eea365311cd6c10dd39054187bf3a07bd595
-ms.sourcegitcommit: dd1a9f38c69954f15ff5c166e456fda37ae1cdf2
-ms.translationtype: MT
+ms.openlocfilehash: d4b6c8289ae7c22521fc433c928f2b25a56c87ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57568985"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130205"
 ---
 # <a name="geofencing-geojson-data"></a>地理围栏 GeoJSON 数据
 
-使用 Azure Maps [GET 地理围栏](https://docs.microsoft.com/rest/api/maps/spatial/getgeofencepreview)和 [POST 地理围栏](https://docs.microsoft.com/rest/api/maps/spatial/postgeofencepreview) API 可以检索某个坐标相对于所提供地理围栏或围栏集的邻近性。 本文详细介绍如何准备可在 Azure Maps GET 和 POST API 中使用的地理围栏数据。
+使用 Azure Maps [GET 地理围栏](/rest/api/maps/spatial/getgeofence)和 [POST 地理围栏](/rest/api/maps/spatial/postgeofence) API 可以检索某个坐标相对于所提供地理围栏或围栏集的邻近性。 本文详细介绍如何准备可在 Azure Maps GET 和 POST API 中使用的地理围栏数据。
 
 地理围栏或地理围栏集的数据由 [rfc7946](https://tools.ietf.org/html/rfc7946) 中定义的、采用 `GeoJSON` 格式的 `Feature` 对象和 `FeatureCollection` 对象表示。 除此之外：
 

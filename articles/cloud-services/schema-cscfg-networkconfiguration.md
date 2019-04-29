@@ -1,8 +1,9 @@
 ---
 title: Azure 云服务 NetworkConfiguration 架构 | Microsoft Docs
 ms.custom: ''
-ms.date: 12/07/2016
-services: cloud-services
+origin.date: 12/07/2016
+ms.date: 11/06/2017
+ms.prod: azure
 ms.reviewer: ''
 ms.service: cloud-services
 ms.suite: ''
@@ -10,15 +11,15 @@ ms.tgt_pltfrm: ''
 ms.topic: reference
 ms.assetid: c1b94a9e-46e8-4a18-ac99-343c94b1d4bd
 caps.latest.revision: 28
-author: jpconnock
-ms.author: jeconnoc
+author: thraka
+ms.author: v-yiso
 manager: timlt
-ms.openlocfilehash: ed071d1da30a598eef830b4485c246ffae09c950
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: fb833904502c0c42b46201fd46a368de0376277c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004108"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130256"
 ---
 # <a name="azure-cloud-services-config-networkconfiguration-schema"></a>Azure 云服务的配置 NetworkConfiguration 架构
 
@@ -66,7 +67,7 @@ ms.locfileid: "39004108"
 
 下表介绍了 `NetworkConfiguration` 元素的子元素。
 
-| 元素       | Description |
+| 元素       | 描述 |
 | ------------- | ----------- |
 | AccessControl | 可选。 指定云服务中用于访问终结点的规则。 访问控制名称由 `name` 属性的字符串定义。 `AccessControl` 元素包含一个或多个 `Rule` 元素。 可定义多个 `AccessControl` 元素。|
 | 规则 | 可选。 指定应对指定的 IP 地址子网范围执行的操作。 规则的顺序由 `order` 属性的字符串值定义。 规则编号越低，优先级越高。 例如，可使用序号 100、200 和 300 指定规则。 序号为 100 的规则优先于序号为 200 的规则。<br /><br /> 规则的操作由 `action` 属性的字符串定义。 可能的值包括：<br /><br /> -   `permit` – 指定只有指定子网范围中的数据包才可以与终结点通信。<br />-   `deny` – 指定拒绝对指定子网范围中终结点的访问。<br /><br /> 受规则影响的 IP 地址的子网范围由 `remoteSubnet` 属性的字符串定义。 对规则的说明由 `description` 属性的字符串定义。|

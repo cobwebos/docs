@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/23/2018
 ms.openlocfilehash: 12799a308157c3c0e19de1f82c0fe3df44fad37e
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57195151"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106294"
 ---
 # <a name="monitor-b2b-messages-with-azure-monitor-logs-in-azure-logic-apps"></a>监视 B2B 消息与 Azure 逻辑应用中的 Azure Monitor 日志
 
@@ -121,7 +121,7 @@ ms.locfileid: "57195151"
 
 ## <a name="use-diagnostic-data-with-other-services"></a>将诊断数据与其他服务一起使用
 
-Azure Monitor 日志，以及可以扩展如何使用逻辑应用的诊断数据与其他 Azure 服务，例如： 
+结合使用 Azure Monitor 日志后，可以扩展将逻辑应用的诊断数据用于其他 Azure 服务的方式，例如： 
 
 * [在 Azure 存储中存档 Azure 诊断日志](../azure-monitor/platform/archive-diagnostic-logs.md)
 * [将 Azure 诊断日志流式传输到 Azure 事件中心](../azure-monitor/platform/diagnostic-logs-stream-event-hubs.md) 

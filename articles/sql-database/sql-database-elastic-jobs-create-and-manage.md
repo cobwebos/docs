@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: a95b62ab8f639ad38ee3ac9ace4f30b62bd852bf
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55565048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475936"
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>使用弹性作业创建和管理扩大的 Azure SQL 数据库（预览）
 
@@ -27,7 +27,7 @@ ms.locfileid: "55565048"
 
 **弹性数据库作业**可以通过执行架构更改、凭据管理、引用数据更新、性能数据收集或租户（客户）遥测收集等管理操作，简化多组数据库的管理。 目前可以通过 Azure 门户和 PowerShell cmdlet 使用弹性数据库作业。 但是，它在 Azure 门户中的功能被缩减，仅限针对[弹性池](sql-database-elastic-pool.md)中的所有数据库执行操作。 若要访问其他功能并针对包含自定义集合或分片集（使用[弹性数据库客户端库](sql-database-elastic-scale-introduction.md)创建）的一组数据库执行脚本，请参阅[使用 PowerShell 创建和管理作业](sql-database-elastic-jobs-powershell.md)。 有关作业的详细信息，请参阅[弹性数据库作业概述](sql-database-elastic-jobs-overview.md)。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * Azure 订阅。 如需免费试用，请参阅[免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * 弹性池。 请参阅[关于弹性池](sql-database-elastic-pool.md)的信息。
 * 安装弹性数据库作业服务组件。 请参阅[安装弹性数据库作业服务](sql-database-elastic-jobs-service-installation.md)。

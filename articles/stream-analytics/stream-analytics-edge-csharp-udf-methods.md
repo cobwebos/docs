@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: 5df4c9dfe18b02ade3a37717da9c68acbfcf1853
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53106594"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61480905"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>为 Azure 流分析 Edge 作业开发 .NET Standard 用户定义函数（预览版）
 
@@ -40,7 +40,7 @@ Azure 流分析的 Visual Studio 工具可用于轻松编写 UDF、在本地（�
 |---------|---------|
 |long  |  bigint   |
 |double  |  double   |
-|字符串  |  nvarchar(max)   |
+|string  |  nvarchar(max)   |
 |dateTime  |  dateTime   |
 |struct  |  IRecord   |
 |对象  |  IRecord   |

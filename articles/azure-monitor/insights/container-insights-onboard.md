@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
-ms.openlocfilehash: 22c063cb4eade00db1e400787aa7e46000bb03d3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: b5ba9a0abe8ec0f72cfaf42c747616e733fb3f32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59995330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101143"
 ---
 # <a name="how-to-onboard-azure-monitor-for-containers"></a>如何为容器载入 Azure Monitor  
 
@@ -26,7 +26,7 @@ ms.locfileid: "59995330"
 
 可使用以下支持的方法为 AKS 的新部署，或是一个或多个现有部署启用适用于容器的 Azure Monitor：
 
-* 从 Azure 门户、 Azure PowerShell 或 Azure CLI
+* 借助 Azure 门户、Azure PowerShell 或 Azure CLI
 * 使用 [Terraform 和 AKS](../../terraform/terraform-create-k8s-cluster-with-tf-and-aks.md)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
@@ -34,9 +34,9 @@ ms.locfileid: "59995330"
 ## <a name="prerequisites"></a>必备组件 
 在开始之前，请确保做好以下准备：
 
-- **一个 Log Analytics 工作区中。** 可以在对新 AKS 群集启用监视时创建该工作区，或者让载入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)来创建。
-- 是的成员**Log Analytics 参与者角色**启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../../azure-monitor/platform/manage-access.md)。
-- 是的成员**[所有者](https://docs.microsoft.com/en-us/azure/role-based-access-control/built-in-role.md#owner)** AKS 群集资源的角色。 
+- **Log Analytics 工作区。** 可以在对新 AKS 群集启用监视时创建该工作区，或者让载入体验在 AKS 群集订阅的默认资源组中创建默认的工作区。 如果选择自行创建工作区，可以通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)来创建。
+- 需要成为 **Log Analytics 参与者角色**的成员才能启用容器监视。 有关如何控制对 Log Analytics 工作区的访问的详细信息，请参阅[管理工作区](../../azure-monitor/platform/manage-access.md)。
+- 在 AKS 群集资源上，你是**[所有者](../../role-based-access-control/built-in-roles.md#owner)** 角色的成员。 
 
 [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)]
 
@@ -53,16 +53,16 @@ ms.locfileid: "59995330"
 登录到 [Azure 门户](https://portal.azure.com)。 
 
 ## <a name="enable-monitoring-for-a-new-cluster"></a>启用对新群集的监视
-在部署期间，可以在 Azure 门户中、通过 Azure CLI 或 Terraform 对新 AKS 群集启用监控。  若要从门户中启用，请按照快速入门文章中的步骤[部署的 Azure Kubernetes 服务 (AKS) 群集](../../aks/kubernetes-walkthrough-portal.md)并按照部分下的步骤**监视运行状况和日志**。  
+在部署期间，可以在 Azure 门户中、通过 Azure CLI 或 Terraform 对新 AKS 群集启用监控。  若要通过门户来启用，请执行快速入门文章[部署 Azure Kubernetes 服务 (AKS) 群集](../../aks/kubernetes-walkthrough-portal.md)中的步骤，以及执行“监视运行状况和日志”部分下面的步骤。  
 
 >[!NOTE]
->若要启用监视从门户在 AKS 群集的快速入门文章中的步骤时，系统会提示选择现有的 Log Analytics 工作区或创建一个新。 
+>按快速入门文章中的步骤操作，以便通过门户启用对 AKS 群集的监视时，系统会提示你选择一个现有的 Log Analytics 工作区，或者创建一个新的。 
 
 ### <a name="enable-using-azure-cli"></a>启用 Azure CLI
 若要使用 Azure CLI 对新建的 AKS 群集启用监视，请遵循快速入门文章的[创建 AKS 群集](../../aks/kubernetes-walkthrough.md#create-aks-cluster)部分中所述的步骤。  
 
 >[!NOTE]
->如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 您必须运行 Azure CLI 版本 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+>如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 >
 
 ### <a name="enable-using-terraform"></a>使用 Terraform
@@ -83,12 +83,12 @@ ms.locfileid: "59995330"
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。 
 
 ## <a name="enable-monitoring-for-existing-managed-clusters"></a>启用对现有托管群集的监视
-你可以启用监视的 AKS 群集已部署使用受支持的方法之一：
+可以使用下述支持的方法之一，以便启用对已部署的 AKS 群集的监视：
 
 * Azure CLI
 * Terraform
-* [从 Azure Monitor](#enable-from-azure-monitor-in-the-portal)或[直接从 AKS 群集](#enable-directly-from-aks-cluster-in-the-portal)在 Azure 门户中 
-* 与[提供 Azure 资源管理器模板](#enable-using-an-azure-resource-manager-template)使用 Azure PowerShell cmdlet`New-AzResourceGroupDeployment`或使用 Azure CLI。 
+* [使用 Azure Monitor](#enable-from-azure-monitor-in-the-portal)，或者在 Azure 门户中[直接使用 AKS 群集](#enable-directly-from-aks-cluster-in-the-portal) 
+* 通过 Azure PowerShell cmdlet `New-AzResourceGroupDeployment` 来使用[提供的 Azure 资源管理器模板](#enable-using-an-azure-resource-manager-template)，或者使用 Azure CLI。 
 
 ### <a name="enable-using-azure-cli"></a>启用 Azure CLI
 以下步骤使用 Azure CLI 对 AKS 群集启用监视。 在此示例中，不需要预先创建或指定现有的工作区。 如果区域中尚不存在默认的工作区，此命令可以简化在 AKS 群集订阅的默认资源组中创建默认工作区的过程。  创建的默认工作区的格式类似于 *DefaultWorkspace-\<GUID>-\<Region>*。  
@@ -129,7 +129,7 @@ provisioningState       : Succeeded
 
 2. 按照 Terraform 文档中的步骤添加 [ azurerm_log_analytics_solution](https://www.terraform.io/docs/providers/azurerm/r/log_analytics_solution.html)。
 
-### <a name="enable-from-azure-monitor-in-the-portal"></a>在门户中启用从 Azure Monitor 
+### <a name="enable-from-azure-monitor-in-the-portal"></a>在门户中通过 Azure Monitor 来启用 
 要启用 Azure Monitor 对 Azure 门户中的 AKS 群集的监视，请执行以下操作：
 
 1. 在 Azure 门户中选择“监视”。 
@@ -146,8 +146,8 @@ provisioningState       : Succeeded
  
 启用监视后，可能需要约 15 分钟才能查看群集的运行状况指标。 
 
-### <a name="enable-directly-from-aks-cluster-in-the-portal"></a>启用直接从门户中的 AKS 群集
-若要直接从一个 AKS 群集在 Azure 门户中启用监视，请执行以下操作：
+### <a name="enable-directly-from-aks-cluster-in-the-portal"></a>在门户中直接使用 AKS 群集来启用
+若要在 Azure 门户中直接使用某个 AKS 群集来启用监视，请执行以下操作：
 
 1. 在 Azure 门户中，选择“所有服务”。 
 2. 在资源列表中，开始键入“Containers”。  
@@ -168,7 +168,7 @@ provisioningState       : Succeeded
  
 启用监视后，可能需要约 15 分钟才能查看群集的运行数据。 
 
-### <a name="enable-using-an-azure-resource-manager-template"></a>启用使用 Azure 资源管理器模板
+### <a name="enable-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板来启用
 此方法包含两个 JSON 模板。 一个模板指定用于启用监视的配置，另一个模板包含参数值，通过配置这些参数值可指定：
 
 * AKS 容器资源 ID。 
@@ -178,13 +178,13 @@ provisioningState       : Succeeded
 >模板需要部署在群集所在的资源组中。
 >
 
-Log Analytics 工作区必须先启用监视使用 Azure PowerShell 或 CLI 创建。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
+必须创建 Log Analytics 工作区，然后才能使用 Azure PowerShell 或 CLI 来启用监视。 若要创建工作区，可通过 [Azure 资源管理器](../../azure-monitor/platform/template-workspace-configuration.md)、[PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json) 或在 [Azure 门户](../../azure-monitor/learn/quick-create-workspace.md)中进行设置。
 
 如果不熟悉使用模板部署资源的概念，请参阅：
 * [使用 Resource Manager 模板和 Azure PowerShell 部署资源](../../azure-resource-manager/resource-group-template-deploy.md)
 * [使用资源管理器模板和 Azure CLI 部署资源](../../azure-resource-manager/resource-group-template-deploy-cli.md)
 
-如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 您必须运行 Azure CLI 版本 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
+如果选择使用 Azure CLI，首先需要在本地安装和使用 CLI。 必须运行 Azure CLI 2.0.59 或更高版本。 若要确定版本，请运行 `az --version`。 如果需要安装或升级 Azure CLI，请参阅[安装 Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli)。 
 
 #### <a name="create-and-execute-a-template"></a>创建和执行模板
 
@@ -258,7 +258,7 @@ Log Analytics 工作区必须先启用监视使用 Azure PowerShell 或 CLI 创�
     }
     ```
 
-4. 编辑的值**aksResourceId**并**aksResourceLocation**上使用的值**AKS 概述**AKS 群集的页。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
+4. 使用 AKS 群集的“AKS 概述”页面中的值，编辑 **aksResourceId** 和 **aksResourceLocation** 的值。 **workspaceResourceId** 的值是 Log Analytics 工作区的完整资源 ID，其中包含工作区名称。 
 5. 将此文件以“existingClusterParam.json”文件名保存到本地文件夹。
 6. 已做好部署此模板的准备。 
 
@@ -273,7 +273,7 @@ Log Analytics 工作区必须先启用监视使用 Azure PowerShell 或 CLI 创�
        provisioningState       : Succeeded
        ```
 
-   * 若要使用 Azure CLI 进行部署，请运行以下命令：
+   * 若要使用 Azure CLI 进行部署，请运行下列命令：
     
        ```azurecli
        az login

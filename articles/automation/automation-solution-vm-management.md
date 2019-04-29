@@ -10,11 +10,11 @@ ms.date: 03/31/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 6d7b99da3e8e81973c51bbd68a15517828c9736d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61306302"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Azure 自动化中的在空闲时间启动/停止 VM 解决方案
 
@@ -183,7 +183,7 @@ ms.locfileid: "58762933"
 
 此解决方案包括预配置的 runbook、 计划和与 Azure Monitor 日志集成，因此您可以量身定制的启动和关闭虚拟机，以便满足业务需求。
 
-### <a name="runbooks"></a>Runbook
+### <a name="runbooks"></a>runbook
 
 下表列出了此解决方案部署到你的自动化帐户的 Runbook。 请勿对 Runbook 代码进行更改。 应该对新功能编写自己的 Runbook。
 

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/1/2019
 ms.author: mlottner
 ms.openlocfilehash: d72980d6e27600cb844d5477d3b9a61d9e1573e4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59505611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61358578"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>部署 IoT Edge 设备上的安全模块
 

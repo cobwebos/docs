@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.openlocfilehash: 017266fd28fb31b4509957560a042abf74314453
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59791126"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61458794"
 ---
 # <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>使用 Azure 门户创建和管理 Azure Database for MySQL 防火墙规则
 服务器级防火墙规则可以用于管理对访问 Azure Database for MySQL 服务器从指定的 IP 地址或某个范围内的 IP 地址。 

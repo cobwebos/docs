@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/18/2016
 ms.author: v-sharos
-ms.openlocfilehash: 2c0b211bced99d272a73a7b018a22f99d8d58aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 260dfdd4b8fe7c277358fa5773029ea9a532740a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61077436"
 ---
 # <a name="use-storsimple-snapshot-manager-to-view-and-manage-volumes"></a>使用 StorSimple Snapshot Manager 查看和管理卷
 ## <a name="overview"></a>概述
@@ -91,7 +91,7 @@ ms.locfileid: "23111715"
    
     ![配置列](./media/storsimple-snapshot-manager-manage-volumes/HCS_SSM_View_volumes.png)
    
-   | 结果列 | 说明 |
+   | 结果列 | 描述 |
    |:--- |:--- |
    |  名称 |“**名称**”列包含分配给每个发现的卷的驱动器号。 |
    |  设备 |“**设备**”列包含连接到主计算机的设备 IP 地址。 |
@@ -130,7 +130,7 @@ ms.locfileid: "23111715"
 ## <a name="configure-and-back-up-a-basic-volume"></a>配置和备份基本卷
 使用以下过程配置基本卷的备份，并立即开始备份或创建已计划备份的策略。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-deployment-walkthrough-u2.md)。
@@ -158,7 +158,7 @@ ms.locfileid: "23111715"
 * 步骤 1：使用磁盘管理创建动态镜像的卷。 
 * 步骤 2：使用 StorSimple Snapshot Manager 配置备份。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 开始之前：
 
 * 请确保正确配置 StorSimple 设备和主计算机。 有关详细信息，请转到[部署本地 StorSimple 设备](storsimple-8000-deployment-walkthrough-u2.md)。

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: shlo
 ms.openlocfilehash: 9e5da96cb02e681c83bd707fc038117050712ccf
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54044240"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61261825"
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure 数据工厂中的数据集和链接服务
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ ms.locfileid: "54044240"
 
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必需 |
+属性 | 说明 | 需要 |
 -------- | ----------- | -------- |
 名称 | 链接服务的名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 链接服务的类型。 例如：AzureStorage（数据存储）或 AzureBatch（计算）。 请参阅 typeProperties 说明。 | 是 |
@@ -119,7 +119,7 @@ connectVia | 用于连接到数据存储的[集成运行时](concepts-integratio
 ```
 下表描述了上述 JSON 中的属性：
 
-属性 | 说明 | 必需 |
+属性 | 说明 | 需要 |
 -------- | ----------- | -------- |
 名称 | 数据集名称。 请参阅 [Azure 数据工厂 - 命名规则](naming-rules.md)。 |  是 |
 type | 数据集的类型。 指定数据工厂支持的类型之一（例如：AzureBlob、AzureSqlTable）。 <br/><br/>有关详细信息，请参阅[数据集类型](#dataset-type)。 | 是 |
@@ -181,16 +181,16 @@ typeProperties | 每种类型的类型属性各不相同（例如：Azure Blob�
 }
 ```
 ## <a name="dataset-structure"></a>数据集结构
-**structure** 部分是可选的。 它通过包含列的名称和数据类型的集合来定义数据集架构。 使用结构部分提供用于隐藏类型以及将列从源映射到目标的类型信息。
+“结构”部分是可选部分。 它通过包含列的名称和数据类型的集合来定义数据集架构。 使用结构部分提供用于隐藏类型以及将列从源映射到目标的类型信息。
 
 结构中的每个列都包含以下属性：
 
-属性 | 说明 | 必需
+属性 | 说明 | 需要
 -------- | ----------- | --------
-name | 列的名称。 | 是
+名称 | 列的名称。 | 是
 type | 列的数据类型。 数据工厂支持以下临时数据类型作为允许的值：**Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset 和 Timespan** | 否
-culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认值为 `en-us`。 | 否
-format | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
+culture | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的基于 .NET 的区域性。 默认为 `en-us`。 | 否
+格式 | 类型为 .NET 类型 `Datetime` 或 `Datetimeoffset` 时要使用的格式字符串。 请参阅[自定义日期和时间格式字符串](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings)，了解如何设置日期时间格式。 | 否
 
 ### <a name="example"></a>示例
 在下面的示例中，假设源 Blob 数据采用 CSV 格式，并且包含三列： userid、name 和 lastlogindate。 它们的类型分别为 Int64、String 和 Datetime，并采用使用星期几的缩写法语名称的自定义日期时间格式。

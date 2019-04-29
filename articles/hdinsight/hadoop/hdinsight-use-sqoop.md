@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/12/2019
 ms.openlocfilehash: 6764d8d812789c9f54fa59e10b2a3e416e583a9c
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565846"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129393"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>在 HDInsight 中将 Apache Sqoop 与 Hadoop 配合使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -45,14 +45,14 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
   
   | 字段 | 数据类型 |
   | --- | --- |
-  | clientid |字符串 |
-  | querytime |字符串 |
-  | market |字符串 |
-  | deviceplatform |字符串 |
-  | devicemake |字符串 |
-  | devicemodel |字符串 |
-  | state |字符串 |
-  | country |字符串 |
+  | clientid |string |
+  | querytime |string |
+  | market |string |
+  | deviceplatform |string |
+  | devicemake |string |
+  | devicemodel |string |
+  | state |string |
+  | country |string |
   | querydwelltime |double |
   | sessionid |bigint |
   | sessionpagevieworder |bigint |
@@ -80,7 +80,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     |---|---|
     |订阅 |从下拉列表中选择你的 Azure 订阅。|
     |资源组 |从下拉列表中，选择你的资源组或创建一个新|
-    |位置 |从下拉列表中选择一个区域。|
+    |Location |从下拉列表中选择一个区域。|
     |群集名称 |输入 Hadoop 群集的名称。 使用仅小写字母。|
     |群集登录用户名 |保留预填充的值`admin`。|
     |群集登录密码 |输入密码。|
@@ -91,7 +91,7 @@ HDInsight 群集带有某些示例数据。 可使用以下两个示例：
     |_artifacts 位置 | 使用默认值（除非想要在其他位置使用自己的 bacpac 文件）。|
     |_artifacts 位置 Sas 令牌 |留空。|
     |Bacpac 文件的名称 |使用默认值（除非想要使用自己的 bacpac 文件）。|
-    |位置 |使用默认值。|
+    |Location |使用默认值。|
 
     Azure SQL 服务器的名称将为`<ClusterName>dbserver`。 数据库名称将是`<ClusterName>db`。 默认存储帐户名称将是`e6qhezrh2pdqu`。
 

@@ -8,95 +8,96 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
-ms.openlocfilehash: e89a4675f867e53c499bb82b239ddb9bec1aed6f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: f3650d4db06a763308939e9fb1a98fddb0eaa04a
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521193"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62738764"
 ---
-# <a name="using-the-azure-maps-services-module"></a>使用 Azure 地图服务模块
+# <a name="use-the-azure-maps-services-module"></a>使用 Azure Maps 服务模块
 
-Azure Maps Web SDK 提供的是一个帮助程序库，它可以更轻松地使用 web 或使用 JavaScript 或 TypeScript 的 Node.js 应用程序中的 Azure 地图 REST 服务的服务模块。
+Azure Maps Web SDK 提供了*services 模块*。 此模块是一个帮助程序库，它可以更轻松地使用 JavaScript 或 TypeScript 使用 web 或 Node.js 应用程序中的 Azure 地图 REST 服务。
 
-## <a name="using-the-services-module-in-a-web-page"></a>在网页中使用的服务模块
+## <a name="use-the-services-module-in-a-webpage"></a>在网页中使用的服务模块
 
 1. 创建新的 HTML 文件。
-2. 加载 Azure 地图服务模块中。 可以使用以下两个选项之一执行此操作：
+1. 加载 Azure Maps 服务模块。 您可以加载在两种方式之一：
+    - 使用 Azure Maps 服务模块的全局托管的 Azure 内容分发网络版本。 添加对的脚本引用`<head>`文件的元素：
 
-    a. 使用 Azure Maps 服务模块的全局托管的 CDN 版本通过添加对的脚本引用`<head>`文件的元素：
-    
-    ```html
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
-    ```
-    
-    b. 或者，加载 Azure 映射 Web SDK 源代码，使用本地[azure 地图 rest](https://www.npmjs.com/package/azure-maps-rest) NPM 包并将其与您的应用程序托管。 此程序包还包括了 TypeScript 定义。
-    
-    > npm 安装 azure 地图 rest
-    
-    然后添加到的脚本引用`<head>`文件的元素：
-    
-    ```html
-    <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
-    ```
+        ```html
+        <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas-service.min.js"></script>
+        ```
 
-3. 若要初始化的服务 URL 客户端终结点，必须先创建一个身份验证管道。 使用您自己的 Azure Maps 帐户密钥或 Azure Active Directory (AAD) 凭据进行身份验证搜索服务客户端。 在此示例中，将创建搜索服务 URL 客户端。 如果使用订阅密钥进行身份验证：
+    - 或者，通过使用在本地加载 Azure 映射 Web SDK 源代码[azure 地图 rest](https://www.npmjs.com/package/azure-maps-rest) npm 包，，然后将它与你的应用。 此程序包还包括了 TypeScript 定义。 使用以下命令：
+    
+        > **npm install azure-maps-rest**
+    
+        然后，添加对的脚本引用`<head>`文件的元素：
+
+         ```html
+        <script src="node_modules/azure-maps-rest/dist/js/atlas-service.min.js"></script>
+         ```
+
+1. 创建身份验证管道。 可以在未初始化的服务 URL 客户端终结点之前，必须创建管道。 使用您自己的 Azure Maps 帐户密钥或 Azure Active Directory (Azure AD) 凭据进行身份验证的 Azure Maps 搜索服务客户端。 在此示例中，将创建搜索服务 URL 客户端。 
+
+    如果您使用的订阅密钥进行身份验证：
 
     ```javascript
-    //Get an Azure Maps key at https://azure.com/maps
+    // Get an Azure Maps key at https://azure.com/maps.
     var subscriptionKey = '<Your Azure Maps Key>';
-    
-    //Use SubscriptionKeyCredential with a subscription key.
+
+    // Use SubscriptionKeyCredential with a subscription key.
     var subscriptionKeyCredential = new atlas.service.SubscriptionKeyCredential(subscriptionKey);
-    
-    //Use subscriptionKeyCredential to create a pipeline.
+
+    // Use subscriptionKeyCredential to create a pipeline.
     var pipeline = atlas.service.MapsURL.newPipeline(subscriptionKeyCredential, {
       retryOptions: { maxTries: 4 } // Retry options
     });
-    
-    //Create an instance of the SearchURL client.
+
+    // Create an instance of the SearchURL client.
     var searchURL = new atlas.service.SearchURL(pipeline);
     ```
-    
-    如果使用 Azure Active Directory (AAD) 进行身份验证：
+
+    如果你使用 Azure AD 进行身份验证：
 
     ```javascript
-    // Enter your Azure Actiuve Directory client ID.
+    // Enter your Azure AD client ID.
     var clientId = "<Your Azure Active Directory Client Id>";
-    
-    // Use TokenCredential with OAuth token (AAD or Anonymous).
+
+    // Use TokenCredential with OAuth token (Azure AD or Anonymous).
     var aadToken = await getAadToken();
     var tokenCredential = new atlas.service.TokenCredential(clientId, aadToken);
-    
-    // Create a repeating timeout that will renew the AAD token.
-    // This timeout must be cleared once the TokenCredential object is no longer needed.
-    // If the timeout is not cleared the memory used by the TokenCredential will never be reclaimed.
+
+    // Create a repeating time-out that will renew the Azure AD token.
+    // This time-out must be cleared when the TokenCredential object is no longer needed.
+    // If the time-out is not cleared, the memory used by the TokenCredential will never be reclaimed.
     var renewToken = async () => {
-        try {
-            console.log("Renewing token");
-            var token = await getAadToken();
-            tokenCredential.token = token;
-            tokenRenewalTimer = setTimeout(renewToken, getExpiration(token));
-        } catch (error) {
-            console.log("Caught error when renewing token");
-            clearTimeout(tokenRenewalTimer);
-            throw error;
-        }
+    try {
+      console.log("Renewing token");
+      var token = await getAadToken();
+      tokenCredential.token = token;
+      tokenRenewalTimer = setTimeout(renewToken, getExpiration(token));
+    } catch (error) {
+      console.log("Caught error when renewing token");
+      clearTimeout(tokenRenewalTimer);
+      throw error;
+    }
     }
     tokenRenewalTimer = setTimeout(renewToken, getExpiration(aadToken));
-    
-    // Use tokenCredential to create a pipeline
+
+    // Use tokenCredential to create a pipeline.
     var pipeline = atlas.service.MapsURL.newPipeline(tokenCredential, {
-        retryOptions: { maxTries: 4 } // Retry options
+    retryOptions: { maxTries: 4 } // Retry options
     });
-    
-    //Create an instance of the SearchURL client.
+
+    // Create an instance of the SearchURL client.
     var searchURL = new atlas.service.SearchURL(pipeline);
 
     function getAadToken() {
-        //Use the logged in auth context to get a token.
+        // Use the signed-in auth context to get a token.
         return new Promise((resolve, reject) => {
-            //The resource should always be https://atlas.microsoft.com/.
+            // The resource should always be https://atlas.microsoft.com/.
             const resource = "https://atlas.microsoft.com/";
             authContext.acquireToken(resource, (error, token) => {
                 if (error) {
@@ -109,13 +110,13 @@ Azure Maps Web SDK 提供的是一个帮助程序库，它可以更轻松地使�
     }
 
     function getExpiration(jwtToken) {
-        //Decode the JWT token to get the expiration timestamp.
+        // Decode the JSON Web Token (JWT) to get the expiration time stamp.
         const json = atob(jwtToken.split(".")[1]);
         const decode = JSON.parse(json);
 
-        //Return the milliseconds until the token needs renewed.
-        //Reduce the time until renew by 5 minutes to avoid using an expired token.
-        //The exp property is the timestamp of the expiration in seconds.
+        // Return the milliseconds remaining until the token must be renewed.
+        // Reduce the time until renewal by 5 minutes to avoid using an expired token.
+        // The exp property is the time stamp of the expiration, in seconds.
         const renewSkew = 300000;
         return (1000 * decode.exp) - Date.now() - renewSkew;
     }
@@ -123,37 +124,37 @@ Azure Maps Web SDK 提供的是一个帮助程序库，它可以更轻松地使�
 
     有关详细信息，请参阅[身份验证与 Azure Maps](azure-maps-authentication.md)。
 
-4. 下面的代码使用新创建的搜索服务 URL 客户端的地址，地理编码为"1 Microsoft 的方式，Redmond，WA"使用`searchAddress`函数并将结果显示为页的正文中的表。 
+1. 以下代码使用新创建的 Azure 搜索服务 URL 客户端到地理编码地址："1 Microsoft 的方式，Redmond，WA"。 该代码使用`searchAddress`函数，并将结果显示为页的正文中的表。
 
     ```javascript
-    //Search for "1 microsoft way, redmond, wa".
+    // Search for "1 microsoft way, redmond, wa".
     searchURL.searchAddress(atlas.service.Aborter.timeout(10000), '1 microsoft way, redmond, wa').then(response => {
       var html = [];
-      
-      //Display the total results.
+
+      // Display the total results.
       html.push('Total results: ', response.summary.numResults, '<br/><br/>');
-     
-      //Create a table of the results.
+
+      // Create a table of the results.
       html.push('<table><tr><td></td><td>Result</td><td>Latitude</td><td>Longitude</td></tr>');
-      
+
       for(var i=0;i<response.results.length;i++){
         html.push('<tr><td>', (i+1), '.</td><td>', 
-                    response.results[i].address.freeformAddress, 
-                    '</td><td>', 
-                    response.results[i].position.lat,
-                    '</td><td>', 
-                    response.results[i].position.lon,
-                    '</td></tr>');
+          response.results[i].address.freeformAddress, 
+          '</td><td>', 
+          response.results[i].position.lat,
+          '</td><td>', 
+          response.results[i].position.lon,
+          '</td></tr>');
       }
-      
+
       html.push('</table>');
-      
-      //Add the result HTML to the body of the page.
+
+      // Add the resulting HTML to the body of the page.
       document.body.innerHTML = html.join('');
     });
     ```
 
-    下面是完全运行的代码示例：
+    下面是完整、 运行代码示例：
 
 <br/>
 
@@ -180,7 +181,7 @@ Azure Maps Web SDK 提供的是一个帮助程序库，它可以更轻松地使�
 > [!div class="nextstepaction"]
 > [TokenCredential](https://docs.microsoft.com/javascript/api/azure-maps-rest/atlas.service.tokencredential?view=azure-iot-typescript-latest)
 
-请参阅以下文章，了解更多使用服务模块的代码示例：
+使用服务模块的更多代码示例，请参阅以下文章：
 
 > [!div class="nextstepaction"]
 > [在地图上显示搜索结果](./map-search-location.md)

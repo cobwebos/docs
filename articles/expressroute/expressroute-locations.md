@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2019
 ms.author: pareshmu
-ms.openlocfilehash: 948d57ffc557aad1d1828cb6b6f45471880a810c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 8c61a3276ebe58c86827b32c6bd33ae4689e35dc
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60363865"
+ms.locfileid: "62732521"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute 合作伙伴和对等位置
 
@@ -44,7 +44,7 @@ ms.locfileid: "60363865"
 | --- | --- | --- | --- |
 | **澳大利亚政府** | 1 | 澳大利亚中部、澳大利亚中部 2 |堪培拉、堪培拉 2 |
 | **欧洲** | 1 |法国中部、法国南部、北欧、西欧、英国西部、英国南部 |Amsterdam, Amsterdam2, Dublin, London, London2, Marseille, Newport(Wales), Paris, Zurich |
-| **北美** | 1 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、 芝加哥、 达拉斯、 丹佛、 拉斯维加斯、 洛杉矶、 迈阿密、 纽约、 圣安东尼奥、 西雅图、 硅谷、 硅 Valley2、 华盛顿 DC，华盛顿 DC2、 蒙特利尔、 魁北克市、 多伦多 |
+| **北美** | 第 |美国东部、美国西部、美国东部 2 区、美国西部 2 区、美国中部、美国中南部、美国中北部、美国中西部、加拿大中部、加拿大东部 |亚特兰大、 芝加哥、 达拉斯、 丹佛、 拉斯维加斯、 洛杉矶、 迈阿密、 纽约、 圣安东尼奥、 西雅图、 硅谷、 硅 Valley2、 华盛顿 DC，华盛顿 DC2、 蒙特利尔、 魁北克市、 多伦多 |
 | **亚洲** | 2 |东亚、东南亚 |中国香港特别行政区，吉隆坡、 新加坡、 新加坡 2 台北 |
 | **澳大利亚** | 2 |澳大利亚东南部、澳大利亚东部 |墨尔本、珀斯、悉尼 | 
 | **印度** | 2 |印度西部、印度中部、印度南部 |金奈、金奈 2、孟买、孟买 2 |
@@ -116,7 +116,7 @@ ms.locfileid: "60363865"
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |支持 |支持 |阿姆斯特丹、 亚特兰大、 芝加哥、 达拉斯、 丹佛、 都柏林、 中国香港特别行政区、 拉斯维加斯、 伦敦、 洛杉矶、 墨尔本、 迈阿密、 纽约、 珀斯、 魁北克市、 圣安东尼奥、 西雅图、 硅谷、 新加坡、 新加坡 2、 悉尼、 多伦多、 华盛顿特区 |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |支持 |支持 |伦敦 |
 | **[Neutrona Networks](http://www.neutrona.com/index.php/azure-expressroute/)** |支持 |支持 |达拉斯、洛杉矶、迈阿密、圣保罗 |
-| **[Next Generation Data](http://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
+| **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |支持 |支持 |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |支持 |支持 |墨尔本、珀斯、悉尼 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |支持 |支持 |阿姆斯特丹、 中国香港特别行政区、 伦敦、 洛杉矶、 大阪、 新加坡、 悉尼、 东京、 华盛顿特区 |
 | **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |支持 |支持 |东京 |
@@ -145,7 +145,7 @@ ms.locfileid: "60363865"
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |支持 |支持 |阿姆斯特丹、 芝加哥、 达拉斯、 中国香港特别行政区、 伦敦、 硅谷、 新加坡、 悉尼、 东京、 华盛顿特区 |
 | **[Vodafone](https://www.vodafone.com/business/global-enterprise/global-connectivity/vodafone-ip-vpn-cloud-connect)** |支持 |支持 |伦敦、新加坡 |
 | **Vodafone Idea** | 支持 | 支持 | 孟买、孟买 2 |
-| **[Zayo](http://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |阿姆斯特丹、 芝加哥、 达拉斯、 丹佛、 伦敦、 洛杉矶、 蒙特利尔、 纽约、 巴黎、 西雅图、 硅谷、 多伦多、 华盛顿特区 |
+| **[Zayo](https://www.zayo.com/solutions/industries/cloud-connectivity/microsoft-expressroute)** |支持 |支持 |阿姆斯特丹、 芝加哥、 达拉斯、 丹佛、 伦敦、 洛杉矶、 蒙特利尔、 纽约、 巴黎、 西雅图、 硅谷、 多伦多、 华盛顿特区 |
 
  **+** 表示即将推出
 
@@ -221,7 +221,7 @@ ms.locfileid: "60363865"
 | **[CoreAzure](http://coreazure.com/expressroute)**| Equinix | 伦敦 |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)** | Equinix | 达拉斯、硅谷、华盛顿特区 | 
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | 达拉斯 |
-| **[Epsilon Telecommunications Limited](http://www.epsilontel.com/data-connectivity/cloud-access/)** | Equinix | 伦敦、新加坡、华盛顿特区 |
+| **[Epsilon Telecommunications Limited](https://www.epsilontel.com/data-connectivity/cloud-access/)** | Equinix | 伦敦、新加坡、华盛顿特区 |
 | **[Eurofiber](https://eurofiber.nl/microsoft-azure/)** | Equinix | 阿姆斯特丹 |
 | **[Exponential E](https://www.exponential-e.com/services/connectivity-services/cloud-connect-exchange)** | Equinix | 伦敦 |
 | **[Fastweb S.p.A](https://www.fastweb.it/grandi-aziende/connessione-voce-e-wifi/scheda-prodotto/rete-privata-virtuale/)** | Equinix | 阿姆斯特丹 |
@@ -248,7 +248,7 @@ ms.locfileid: "60363865"
 | **[Telecom Italia Sparkle](https://www.tisparkle.com/our-platform/corporate-platform/sparkle-cloud-connect#catalogue)**| Equinix | 阿姆斯特丹 |
 | **[Telia](https://www.telia.se/foretag/losningar/produkter-tjanster/datanet)** | Equinix | 阿姆斯特丹 |
 | **[ThinkTel](https://www.thinktel.ca/services/agile-ix-data/expressroute/)** | Equinix | 多伦多 | 
-| **[Transtelco](http://www.transtelco.net/tcloud/microsoft)** |Equinix | 达拉斯、洛杉矶 |
+| **[Transtelco](https://www.transtelco.net/tcloud/microsoft)** |Equinix | 达拉斯、洛杉矶 |
 | **[United Information Highway (UIH)](https://www.uih.co.th/en/internet-solution/cloud-direct/uih-cloud-direct-for-microsoft-azure-expressroute)**| Equinix | 新加坡 |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Equinix | 圣保罗 |
 | **[Webair](https://www.webair.com/microsoft-express-route-partnership/)**| Megaport | 纽约 |
@@ -264,7 +264,7 @@ ms.locfileid: "60363865"
 | **[Cyrus One](https://cyrusone.com/enterprise-data-center-services/connectivity-and-interconnection/cloud-connectivity-reaching-amazon-microsoft-google-and-more/microsoft-azure-expressroute/?doing_wp_cron=1498512235.6733090877532958984375)** | Megaport |
 | **[Cyxtera](https://www.cyxtera.com/data-center-services/interconnection)** | Megaport |
 | **[Digital Realty](https://www.digitalrealty.com/services/interconnection/service-exchange/)** | Megaport |
-| **[EdgeConnex](http://www.edgeconnex.com/services/edge-data-centers-proximity-matters/)** | Megaport |
+| **[EdgeConnex](https://www.edgeconnex.com/services/edge-data-centers-proximity-matters/)** | Megaport |
 | **[RagingWire Data Centers](https://www.ragingwire.com/wholesale/wholesale-data-centers-worldwide-nexcenters)** | IX Reach |
 | **[T5 Datacenters](https://t5datacenters.com/network-cloud-connect/)** | IX Reach |
 
@@ -292,7 +292,7 @@ ms.locfileid: "60363865"
 | --- | --- |
 | **[Altogee](https://altogee.be/diensten/express-route/)** | 欧洲 |
 | **[Avanade Inc.](https://www.avanade.com/)** | 亚洲、欧洲、北美、南美 |
-| **[Bright Skies GmbH](http://bskies.io/expressroute)** | 欧洲
+| **[Bright Skies GmbH](https://bskies.io/expressroute)** | 欧洲
 | **[Ensyst](https://www.ensyst.com.au)** | 亚洲
 | **[Equinix Professional Services](https://www.equinix.com/services/consulting/)** | 北美 |
 | **[FlexManage](https://www.flexmanage.com/cloud)** | 北美 |

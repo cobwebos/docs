@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254360"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481819"
 ---
 # <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>创建和管理 StorSimple 8000 系列支持包
 
@@ -72,10 +72,10 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
 
 可将以下参数用于 Export-HcsSupportPackage cmdlet。
 
-| 参数 | 必需/可选 | Description |
+| 参数 | 必需/可选 | 描述 |
 | --- | --- | --- |
-| `-Path` |必选 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
-| `-EncryptionPassphrase` |必选 |用于提供一个密码，以便加密支持包。 |
+| `-Path` |需要 |用于提供在其中放置支持包的网络共享文件夹的位置。 |
+| `-EncryptionPassphrase` |需要 |用于提供一个密码，以便加密支持包。 |
 | `-Credential` |可选 |用于提供网络共享文件夹的访问凭据。 |
 | `-Force` |可选 |用于跳过加密密码确认步骤。 |
 | `-PackageTag` |可选 |用于在“路径”下指定一个目录，以便放置支持包。 默认值为 [设备名称]-[当前日期和时间:yyyy-MM-dd-HH-mm-ss]。 |
@@ -121,7 +121,7 @@ StorSimple 支持包是一种易于使用的机制，用于收集所有相关日
         Supply values for the following parameters:EncryptionPassphrase: ****
 9. 记下新密码，当 Microsoft 支持部门要求提供密码时，即可将密码与之共享。
 
-### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>示例：在受密码保护的共享中编辑支持包中的文件
+### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>示例：编辑支持包中受密码保护共享上的文件
 
 以下示例介绍如何解密、编辑和重新加密支持包。
 

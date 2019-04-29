@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2018
 ms.author: barclayn
-ms.openlocfilehash: ee5ed8871ea5c021ad8c87e35f45e42ad641a324
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 75ca1401f72e00454dc3355d31c8b8ea64669a72
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58124161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129121"
 ---
 # <a name="windows-defender-advanced-threat-protection-with-azure-security-center"></a>Windows Defender 高级威胁防护与 Azure 安全中心
 
@@ -55,7 +55,7 @@ Azure 安全中心客户现在可以使用 Windows Defender ATP 的功能：
 
 此功能支持在 Windows Server 2012 R2 和 Windows Server 2016 上进行检测。
 
-仅支持标准服务层的订阅中的服务器。
+仅支持“标准”服务层级的订阅中的服务器。
 
 ## <a name="onboarding-servers-to-security-center"></a>将服务器加入安全中心 
 

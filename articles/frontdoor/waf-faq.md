@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 04/02/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 05d01851d0a3dc9df6c396e862ce93defd957c70
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461963"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall"></a>Azure web 应用程序防火墙的常见问题解答
 
@@ -41,7 +41,7 @@ Azure 的第一道防线是一个高度可缩放的全球分布式应用程序�
 
 ## <a name="does-azure-waf-support-ipv6"></a>Azure WAF 是否支持 IPv6？
 
-是的。 你可以配置为 IPv4 和 IPv6 IP 限制。
+可以。 你可以配置为 IPv4 和 IPv6 IP 限制。
 
 ## <a name="how-up-to-date-are-the-managed-rule-sets"></a>托管规则集的更新？
 

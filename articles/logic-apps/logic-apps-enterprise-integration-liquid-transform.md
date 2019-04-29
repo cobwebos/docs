@@ -10,11 +10,11 @@ ms.suite: integration
 ms.topic: article
 ms.date: 08/16/2018
 ms.openlocfilehash: 5472a8ce2670a34174d6d39f0d90faca8a7002ad
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58292880"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61467447"
 ---
 # <a name="perform-advanced-json-transformations-with-liquid-templates-in-azure-logic-apps"></a>在 Azure 逻辑应用中使用 Liquid 模板执行高级 JSON 转换
 

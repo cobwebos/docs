@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/19/2018
 ms.author: glenga
 ms.openlocfilehash: 44bc5a245d1bcbc8ff53991af4193ef86f7cd704
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58436313"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107068"
 ---
 # <a name="hostjson-reference-for-azure-functions-1x"></a>Azure Functions 1.x 的 host.json 参考
 
@@ -30,7 +30,7 @@ ms.locfileid: "58436313"
 
 其他函数应用配置选项是在你的[应用设置](functions-app-settings.md)中管理的。
 
-某些 host.json 设置只有在本地运行时才会在 [local.settings.json](functions-run-local.md#local-settings-file) 文件中使用。
+[local.settings.json](functions-run-local.md#local-settings-file) 文件中的某些 host.json 设置仅在本地运行时才使用。
 
 ## <a name="sample-hostjson-file"></a>示例 host.json 文件
 
@@ -129,7 +129,7 @@ ms.locfileid: "58436313"
 
 ## <a name="functions"></a>functions
 
-作业宿主运行的函数的列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 中的函数应用中，你应当改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤来禁用特定函数，而不是使用此设置。
+作业主机运行的函数列表。 空数组表示运行所有函数。 仅供在[本地运行](functions-run-local.md)时使用。 在 Azure 的函数应用中，应改为按照[如何在 Azure Functions 中禁用函数](disable-function.md)中的步骤禁用特定函数，而不是使用此设置。
 
 ```json
 {
@@ -165,7 +165,7 @@ ms.locfileid: "58436313"
 
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
-|enabled|true|指定是否启用此功能。 | 
+|已启用|true|指定是否已启用该功能。 | 
 |healthCheckInterval|10 秒|定期后台运行状况检查之间的时间间隔。 | 
 |healthCheckWindow|2 分钟|与 `healthCheckThreshold` 设置结合使用的滑动时间窗口。| 
 |healthCheckThreshold|6|在启动主机回收之前，运行状况检查可以失败的最大次数。| 
@@ -179,9 +179,9 @@ ms.locfileid: "58436313"
 
 ## <a name="id"></a>id
 
-*仅限版本 1.x。*
+*仅限版本 1.x*。
 
-作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，建议你不要设置 ID 值。 当省略 `id` 时，会自动在 Azure 中生成 ID。 
+作业宿主的唯一 ID。 可以是不带短划线的小写 GUID。 在本地运行时必须指定。 在 Azure 中运行时，我们建议你不要设置 ID 值。 当省略 `id` 时，会自动在 Azure 中生成 ID。 
 
 如果跨多个函数应用共享存储帐户，请确保每个函数应用都有不同的 `id`。 可省略 `id` 属性或手动将每个函数应用的 `id` 设置为不同的值。 计时器触发器使用存储锁来确保当函数应用横向扩展到多个实例时将只有一个计时器实例。 如果两个函数应用共享相同的 `id` 且每个都使用计时器触发器，则只会运行一个计时器。
 
@@ -286,7 +286,7 @@ ms.locfileid: "58436313"
 
 ## <a name="tracing"></a>tracing
 
-*版本 1.x*
+版本 1.x
 
 使用 `TraceWriter` 对象创建的日志的配置设置。 请参阅 [C# 日志记录](functions-reference-csharp.md#logging)和 [Node.js 日志记录](functions-reference-node.md#writing-trace-output-to-the-console)。
 

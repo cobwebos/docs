@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/05/2019
 ms.author: bwren
 ms.openlocfilehash: 0e5b9b43e528b37fd994f9131f145abadb33c53b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59798470"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425924"
 ---
 # <a name="viewing-and-analyzing-log-data-in-azure-monitor"></a>查看和分析 Azure Monitor 中的日志数据
 Log Analytics 是用于在 Azure Monitor 中处理日志数据以及创建查询的主要体验。 从 **Azure Monitor** 菜单中的“日志”打开 Log Analytics。 可以在 [Azure 门户中的 Log Analytics 入门](get-started-portal.md)中了解此门户及其功能。

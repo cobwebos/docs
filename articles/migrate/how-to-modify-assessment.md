@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2019
 ms.author: raynew
 ms.openlocfilehash: 8419d7e7a91e4cbfd0eebfe00d35bf498cf5998c
-ms.sourcegitcommit: d4f728095cf52b109b3117be9059809c12b69e32
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54200303"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129817"
 ---
 # <a name="customize-an-assessment"></a>自定义评估
 

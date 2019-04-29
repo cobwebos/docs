@@ -6,14 +6,14 @@ author: sachdevaswati
 manager: vijayts
 ms.service: backup
 ms.topic: conceptual
-ms.date: 03/19/2019
+ms.date: 03/23/2019
 ms.author: sachdevaswati
-ms.openlocfilehash: 5e4bd3647b557b260e65e3fb1ce297892f5d7d78
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.openlocfilehash: 08eff24dc42f594424d109b82933b01b5c1be454
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578818"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733894"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>备份 Azure VM 中的 SQL Server 数据库
 
@@ -40,12 +40,12 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
 ### <a name="establish-network-connectivity"></a>建立网络连接
 
-对于所有操作，SQL Server VM 需要与 Azure 公共 IP 地址建立连接。 VM 操作 （数据库发现、 配置备份、 计划备份、 还原恢复点） 而无需连接到公共 IP 地址失败。 使用以下选项之一建立连接：
+对于所有操作，SQL Server VM 需要与 Azure 公共 IP 地址建立连接。 （数据库发现配置的备份、 计划备份、 还原恢复点和其他操作） 的 VM 操作失败，而无需连接到公共 IP 地址。 使用以下选项之一建立连接：
 
 - **允许 Azure 数据中心 IP 范围**：允许下载中的 [IP 范围](https://www.microsoft.com/download/details.aspx?id=41653)。 若要访问网络安全组 (NSG)，请使用**Set-azurenetworksecurityrule** cmdlet。
 - **部署用于路由流量的 HTTP 代理服务器**：在 Azure VM 中备份 SQL Server 数据库时，该 VM 上的备份扩展将使用 HTTPS API 将管理命令发送到 Azure 备份，并将数据发送到 Azure 存储。 备份扩展还使用 Azure Active Directory (Azure AD) 进行身份验证。 通过 HTTP 代理路由这三个服务的备份扩展流量。 扩展的是配置为向公共 internet 访问的唯一组件。
 
-每个选项各有其优点和缺点
+每个选项都有优点和缺点
 
 **选项** | **优点** | **缺点**
 --- | --- | ---
@@ -60,11 +60,11 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 - 为了发现虚拟机上的数据库，Azure 备份会创建帐户 NT SERVICE\AzureWLBackupPluginSvc。 此帐户用于备份和还原，需要拥有 SQL sysadmin 权限。
 - Azure 备份利用 **NT AUTHORITY\SYSTEM** 帐户进行数据库发现/查询，因此此帐户需是 SQL 上的公共登录名。
 
-如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生此错误，请[遵照这些说明](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)予以解决。
+如果 SQL Server VM 不是从 Azure 市场创建的，你可能会收到错误 **UserErrorSQLNoSysadminMembership**。 如果发生这种情况[按照此说明](backup-azure-sql-database.md#fix-sql-sysadmin-permissions)。
 
 ### <a name="verify-database-naming-guidelines-for-azure-backup"></a>验证 Azure 备份的数据库命名准则
 
-避免在数据库名称中使用以下字符：
+避免如下的数据库名称：
 
   * 尾随/前导空格
   * 尾随“!”
@@ -106,7 +106,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 
     ![部署成功消息](./media/backup-azure-sql-database/notifications-db-discovered.png)
 
-8. Azure 备份将发现该 VM 上的所有 SQL Server 数据库。 在发现期间，后台将发生以下情况：
+8. Azure 备份将发现该 VM 上的所有 SQL Server 数据库。 在发现过程中在后台发生，下面：
 
     - Azure 备份将 VM 注册到用于备份工作负荷的保管库。 已注册 VM 上的所有数据库只能备份到此保管库。
     - Azure 备份在 VM 上安装 **AzureBackupWindowsWorkload** 扩展。 不会在 SQL 数据库中安装任何代理。
@@ -171,7 +171,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 创建备份策略：
 
 1. 在保管库中，单击“备份策略” > “添加”。
-2. 在“添加”菜单中，单击“Azure VM 中的 SQL Server”。 随即会定义策略类型。
+2. 在“添加”菜单中，单击“Azure VM 中的 SQL Server”。 为定义的策略类型。
 
    ![为新的备份策略选择策略类型](./media/backup-azure-sql-database/policy-type-details.png)
 
@@ -179,7 +179,7 @@ SQL Server 数据库属于关键工作负荷，要求较低的恢复点目标 (R
 4. 在“完整备份策略”中选择“备份频率”，然后选择“每日”或“每周”。
 
    - 如果选择“每日”，请选择备份作业开始时的小时和时区。
-   - 必须运行完整备份；不能禁用“完整备份”选项。
+   - 你不能关闭，您必须运行完整备份**完整备份**选项。
    - 单击“完整备份”以查看策略。
    - 对于每日完整备份，无法创建差异备份。
    - 如果选择“每周”，请选择备份作业开始时的星期、小时和时区。

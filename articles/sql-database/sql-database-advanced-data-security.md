@@ -12,11 +12,11 @@ ms.reviewer: vanto
 manager: craigg
 ms.date: 03/31/2019
 ms.openlocfilehash: a078ac38cef5b395a19481188c474c7f908160d5
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784477"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61419462"
 ---
 # <a name="advanced-data-security-for-azure-sql-database"></a>Azure SQL 数据库的高级数据安全
 
@@ -32,7 +32,7 @@ ms.locfileid: "59784477"
 
 一旦启用 SQL ADS，其包含的所有功能都会启用。 只需单击一次，即可为 SQL 数据库服务器或托管实例上的所有数据库启用 ADS。 需要属于 [SQL 安全管理器](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) 角色、SQL 数据库管理员角色或 SQL Server 管理员角色才能启用或管理 ADS 设置。 
 
-ADS 定价遵循 Azure 安全中心标准层定价，其中每个受保护的 SQL 数据库服务器或托管实例视为一个节点。 新的受保护资源符合安全中心标准层免费试用版资格。 有关详细信息，请参阅 [Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
+ADS 定价遵循 Azure 安全中心“标准”层级定价，其中每个受保护的 SQL 数据库服务器或托管实例视为一个节点。 新的受保护资源符合安全中心标准层免费试用版资格。 有关详细信息，请参阅 [Azure 安全中心定价页](https://azure.microsoft.com/pricing/details/security-center/)。
 
 ## <a name="getting-started-with-ads"></a>ADS 入门
 
@@ -48,7 +48,7 @@ ADS 定价遵循 Azure 安全中心标准层定价，其中每个受保护的 SQ
 ![启用 ADS](./media/sql-advanced-protection/enable_ads.png) 
 
 > [!NOTE]
-> ADS 的成本遵循每个节点的 Azure 安全中心标准层定价，其中节点是整个 SQL 数据库服务器或托管实例。 因此，仅需支付一次，即可使用 ADS 保护数据库服务器或托管实例上的所有数据库。 你可以从免费试用版开始试用 ADS。
+> ADS 的成本遵循每个节点的 Azure 安全中心“标准”层级定价，其中节点是整个 SQL 数据库服务器或托管实例。 因此，仅需支付一次，即可使用 ADS 保护数据库服务器或托管实例上的所有数据库。 你可以从免费试用版开始试用 ADS。
 
 ## <a name="2-start-classifying-data-tracking-vulnerabilities-and-investigating-threat-alerts"></a>2.开始对数据分类、跟踪漏洞和调查威胁警报
 

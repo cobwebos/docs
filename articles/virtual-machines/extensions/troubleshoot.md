@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2016
 ms.author: kundanap
 ms.openlocfilehash: cf53df30dfccb76a6f33621038ba7f031a69f6de
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55979685"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107238"
 ---
 # <a name="troubleshooting-azure-windows-vm-extension-failures"></a>Azure Windows VM 扩展故障排除
 [!INCLUDE [virtual-machines-common-extensions-troubleshoot](../../../includes/virtual-machines-common-extensions-troubleshoot.md)]
@@ -62,7 +62,7 @@ Azure PowerShell：
 ## <a name="troubleshooting-extension-failures"></a>扩展故障排除
 ### <a name="rerun-the-extension-on-the-vm"></a>在 VM 上重新运行扩展
 如果使用自定义脚本扩展在 VM 上运行脚本，有时可能会遇到错误：VM 已成功创建但脚本却运行失败。 在这些情况下，从此错误中恢复的建议方法是删除该扩展并再次重新运行该模板。
-注意：未来此功能将得到增强，不再需要卸载该扩展。
+请注意:未来此功能将得到增强，不再需要卸载该扩展。
 
 #### <a name="remove-the-extension-from-azure-powershell"></a>从 Azure PowerShell 删除扩展
     Remove-AzVMExtension -ResourceGroupName $RGName -VMName $vmName -Name "myCustomScriptExtension"

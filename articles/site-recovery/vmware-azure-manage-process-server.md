@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: ramamill
-ms.openlocfilehash: ba80c8ce57495eaa46e915cb0c472eb4aabcee57
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 0a0b6c83f800c0a479ba7a16c91b497d1a11da9e
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60318504"
+ms.locfileid: "62732479"
 ---
 # <a name="manage-process-servers"></a>管理进程服务器
 
@@ -68,6 +68,19 @@ ms.locfileid: "60318504"
 2. 在“恢复服务保管库” > “监控” > “站点恢复作业”下监控作业进度。
 3. 此操作成功完成后，需要 15 分钟才能反映所做更改，或者可以[刷新配置服务器](vmware-azure-manage-configuration-server.md#refresh-configuration-server)使更改立即生效。
 
+## <a name="process-server-selection-guidance"></a>处理服务器选择指南
+
+Azure Site Recovery 中自动确定如果进程服务器正在接近其使用情况限制。 您可以设置横向扩展进程服务器时提供的指南。
+
+|运行状况状态  |说明  | 资源可用性  | 建议|
+|---------|---------|---------|---------|
+| 正常 （绿色）    |   进程服务器已连接并且正常运行      |CPU 和内存利用率低于 80%;可用空间可用性高于 30%| 此进程服务器可以用于保护其他服务器。 请确保新的工作负荷在内[定义进程服务器限制](vmware-azure-set-up-process-server-scale.md#sizing-requirements)。
+|警告 （橙色）    |   进程服务器已连接，但某些资源即将达到最大限制  |   CPU 和内存利用率是之间 80%到 95%;可用空间可用性为之间 25%-30%       | 进程服务器的使用情况是接近阈值的值。 将新服务器添加到同一个进程服务器将导致超出的阈值，并且可能会影响现有受保护的项。 因此建议[设置横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#before-you-start)新的复制。
+|警告 （橙色）   |   进程服务器已连接但数据不在过去 30 分钟上载到 Azure  |   资源利用率是阈值限制范围内       | 进行故障排除[数据上传失败](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)添加新的工作负荷之前**或者**[设置横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#before-you-start)新的复制。
+|严重 （红色）    |     进程服务器可能已断开连接  |  资源利用率是阈值限制范围内      | 进行故障排除[处理服务器连接问题](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)或者[设置横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#before-you-start)新的复制。
+|严重 （红色）    |     资源利用率已超过阈值限制 |  CPU 和内存利用率高于 95%;可用空间可用性是小于 25%。   | 将新的工作负荷添加到同一个进程服务器是禁用了作为资源阈值已达到限制。 因此，[设置横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#before-you-start)新的复制。
+严重 （红色）    |     数据不是最后一个 45 分钟中上传从 Azure 到 Azure。 |  资源利用率是阈值限制范围内      | 进行故障排除[数据上传失败](vmware-azure-troubleshoot-replication.md#monitor-process-server-health-to-avoid-replication-issues)然后将新的工作负荷添加到同一个进程服务器或[设置横向扩展进程服务器](vmware-azure-set-up-process-server-scale.md#before-you-start)
+
 ## <a name="reregister-a-process-server"></a>重新注册进程服务器
 
 如果需要将在本地或 Azure 中运行的进程服务器重新注册到配置服务器中，请执行以下操作：
@@ -109,7 +122,6 @@ ms.locfileid: "60318504"
    exit
    ```
 
-
 ## <a name="remove-a-process-server"></a>删除进程服务器
 
 [!INCLUDE [site-recovery-vmware-unregister-process-server](../../includes/site-recovery-vmware-unregister-process-server.md)]
@@ -126,4 +138,3 @@ ms.locfileid: "60318504"
 - C:\ProgramData\LogUploadServiceLogs
 - C:\ProgramData\Microsoft Azure Site Recovery
 - 进程服务器安装目录，示例：C:\Program Files (x86)\Microsoft Azure Site Recovery
-

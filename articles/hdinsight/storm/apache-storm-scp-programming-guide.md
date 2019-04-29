@@ -1,7 +1,6 @@
 ---
 title: 适用于 Azure HDInsight 中 Storm 的 SCP.NET 编程指南
 description: 了解如何通过 SCP.NET 创建可在 Azure HDInsight 中运行的 Storm 中使用的基于 .NET 的 Storm 拓扑。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2016
-ms.openlocfilehash: 1ad9661d85c7ec91f361cdc4d126e0a91e376b66
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: c85074a2b26a79dbf5e464972e7f82b5955d15f1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853284"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126879"
 ---
 # <a name="scp-programming-guide"></a>SCP 编程指南
 SCP 是一个用于构建实时、可靠、一致和高性能的数据处理应用程序的平台。 它在 [Apache Storm](https://storm.incubator.apache.org/) 的基础上构建而成 -- Storm 是开源软件 (OSS) 社区设计的一个流处理系统。 Storm 由 Nathan Marz 设计，在 Twitter 上进行开源。 其利用 [Apache ZooKeeper](https://zookeeper.apache.org/)（另一个 Apache 项目）来实现高可靠性的分布式协调和状态管理。 
@@ -71,7 +70,7 @@ ISCPSpout 是适用于非事务性 Spout 的接口。
 
 调用 `NextTuple()` 时，C\# 用户代码会发送一个或多个元组。 如果没有要发送的数据，此方法应返回而不发送任何信息。 请注意，如果 C\# 进程的单一线程出现紧凑循环，将会调用 `NextTuple()`、`Ack()` 和 `Fail()`。 如果没有要发送的元组，最好短暂地将 NextTuple 置于休眠状态（例如 10 毫秒），以免浪费太多 CPU。
 
-仅在规范文件中启用了确认机制的情况下，才会调用 `Ack()` 和 `Fail()`。 `seqId`可用来识别已确认或失败的元组。 因此，如果在非事务性拓扑中启用了确认功能，应在 Spout 中使用以下 emit 函数：
+仅在规范文件中启用了确认机制的情况下，才会调用 `Ack()` 和 `Fail()`。 `seqId` 用于识别已确认或失败的元组。 因此，如果在非事务性拓扑中启用了确认功能，应在 Spout 中使用以下 emit 函数：
 
     public abstract void Emit(string streamId, List<object> values, long seqId); 
 
@@ -431,7 +430,7 @@ SCP 支持用户代码同时向多个不同数据流发送元组或同时接收�
 向不存在的数据流发送元组会导致运行时异常。
 
 ### <a name="fields-grouping"></a>字段分组
-在 Storm 中内置的字段分组在 SCP.NET 中的工作不正常。 在 Java 代理端，所有字段数据类型实际上都是 byte[]，字段分组会使用 byte[] 对象来进行分组。 byte[] 对象哈希代码是该对象在内存中的地址。 因此，如果两个 byte[] 对象共享相同的内容但地址不相同，分组会不正确。
+Storm 中内置的字段分组在 SCP.NET 中无法正常使用。 在 Java 代理端，所有字段数据类型实际上都是 byte[]，字段分组会使用 byte[] 对象来进行分组。 byte[] 对象哈希代码是该对象在内存中的地址。 因此，如果两个 byte[] 对象共享相同的内容但地址不相同，分组会不正确。
 
 SCP.NET 添加了一个自定义的分组方法，该方法会使用 byte[] 的内容来进行分组。 在 **SPEC** 文件中，语法如下所示：
 
@@ -573,7 +572,7 @@ SCP 组件包括 Java 端和 C\# 端。 若要与本机 Java Spout/Bolt 交互�
     }
     Context.Logger.Info("enableAck: {0}", enableAck);
 
-在 spout 中，如果已启用确认功能，一个字典，用于缓存未确认的元组。 如果调用了 Fail()，则会重新处理失败的元组：
+在 Spout 中，如果启用了确认功能，会使用字典将未确认的元组存储在缓存中。 如果调用了 Fail()，则会重新处理失败的元组：
 
     public void Fail(long seqId, Dictionary<string, Object> parms)
     {

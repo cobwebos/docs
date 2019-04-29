@@ -16,11 +16,11 @@ ms.date: 10/14/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: e0fa87facec73efdfff1a9908dcba92838215425
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56113373"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130664"
 ---
 # <a name="network-configuration-details-for-app-service-environment-for-powerapps-with-azure-expressroute"></a>使用 Azure ExpressRoute 的 PowerApps 的应用服务环境网络配置详细信息
 
@@ -93,7 +93,7 @@ ms.locfileid: "56113373"
 
 本部分介绍应用服务环境的示例 UDR 配置。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * 从 [Azure 下载页][AzureDownloads]安装 Azure PowerShell。 请选择下载发布日期为 2015 年 6 月或更晚的版本。 在“命令行工具” > “Windows PowerShell”下，选择“安装”以安装最新的 PowerShell cmdlet。
 

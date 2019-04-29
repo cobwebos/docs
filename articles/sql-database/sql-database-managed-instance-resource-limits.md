@@ -13,22 +13,22 @@ ms.reviewer: carlrab, jovanpop, sachinp
 manager: craigg
 ms.date: 02/27/2019
 ms.openlocfilehash: 09ab154494ad3e1276239e36068255c2042358c5
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58223812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61487494"
 ---
 # <a name="overview-azure-sql-database-managed-instance-resource-limits"></a>概述 Azure SQL 数据库托管实例资源限制
 
 本文概述 Azure SQL 数据库托管实例资源限制，并说明如何创建提高默认区域订阅限制的请求。
 
 > [!NOTE]
-> 有关其他托管实例限制，请参阅[基于 vCore 的购买模型](sql-database-managed-instance.md#vcore-based-purchasing-model)和[托管实例服务层](sql-database-managed-instance.md#managed-instance-service-tiers)。 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。
+> 有关其他托管实例限制，请参阅[基于 vCore 的购买模型](sql-database-managed-instance.md#vcore-based-purchasing-model)和[“托管实例”服务层级](sql-database-managed-instance.md#managed-instance-service-tiers)。 有关支持的功能和 T-SQL 语句的差异，请参阅[功能差异](sql-database-features.md)和 [T-SQL 语句支持](sql-database-managed-instance-transact-sql-information.md)。
 
 ## <a name="instance-level-resource-limits"></a>实例级别的资源限制
 
-托管实例具有取决于底层基础结构和体系结构的特性与资源限制。 这些限制取决于硬件代系和服务层。
+托管实例具有取决于底层基础结构和体系结构的特性与资源限制。 这些限制取决于硬件代系和服务层级。
 
 ### <a name="hardware-generation-characteristics"></a>硬件代系特性
 
@@ -45,18 +45,18 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 
 ### <a name="service-tier-characteristics"></a>服务层特征
 
-托管实例具有两个服务层：常规用途和业务关键。 这些层提供不同的功能，如下表所述：
+托管实例具有两个服务层级：“常规用途”和“业务关键”。 这些层提供不同的功能，如下表所述：
 
 | **功能** | **常规用途** | **业务关键** |
 | --- | --- | --- |
 | vCore 数目\* | 第 4 代：8、16、24<br/>第 5 代：8、16、24、32、40、64、80 | 第 4 代：8、16、24、32 <br/> 第 5 代：8、16、24、32、40、64、80 |
 | 内存 | Gen4：56 GB - 168 GB<br/>Gen5：40.8 GB - 408 GB<br/>\*与 vCore 数目成正比 | Gen4：56 GB - 168 GB <br/> Gen5：40.8 GB - 408 GB<br/>\*与 vCore 数目成正比 |
-| 最大存储大小 | 8 TB | Gen4：1 TB <br/> Gen5： <br/>- 8、16 个 vCore 1 TB<br/>- 24 个 vCore 2 TB<br/>- 32、40、64、80 个 vCore 4 TB |
+| 最大存储大小 | 8 TB | Gen4：1 TB <br/> Gen5： <br/>- 8、16 个 vCore 1 TB<br/>- 24 个 vCore 2 TB<br/>- 4 TB（适用于 32、40、64、80 个 vCore） |
 | 每个数据库的最大存储 | 由每个实例的最大存储大小决定 | 由每个实例的最大存储大小决定 |
 | 每个实例的数据库数目上限 | 100 | 100 |
 | 每个实例的数据库文件数目上限 | 最多 280 个 | 每个数据库 32,767 个文件 |
 | 数据/日志 IOPS（近似） | 500 - 7,500（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes)| 11 K - 110 K（每个 vCore 为 1,375） |
-| 日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>每个实例的最大值为 48 MB/秒|
+| 日志吞吐量 | 22 MB/s（每个实例） | 3 MB/s（每个 vCore）<br/>最大为 48 MB/秒（每个实例）|
 | 数据吞吐量（近似） | 100 - 250 MB/s（每个文件）<br/>\*[取决于文件大小](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage-performance#premium-storage-disk-sizes) | 24 - 48 MB/s（每个 vCore） |
 | IO 延迟（近似） | 5-10 毫秒 | 1-2 毫秒 |
 | 最大 tempDB 大小 | 192 - 1,920 GB（每个 vCore 为 24 GB） | 无约束 - 受最大实例存储大小限制 |
@@ -105,7 +105,7 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 
 \* 可在一个子网中部署 1 个 BC 或 4 个 GP 实例，使子网中的“实例单位”总数绝不超过 4 个。
 
-** 如果一个服务层中没有任何实例，就会应用另一个服务层中的实例数上限。 如果打算在相同的子网内混用 GP 和 BC 实例，请参考下一部分以了解允许的组合方式。 简单的规则是，子网总数不能超过 3 个，且实例单元的总数不能超过 12 个。
+** 如果一个服务层级中没有任何实例，就会应用另一个服务层级中的实例数上限。 如果打算在相同的子网内混用 GP 和 BC 实例，请参考下一部分以了解允许的组合方式。 简单的规则是，子网总数不能超过 3 个，且实例单元的总数不能超过 12 个。
 
 
 
@@ -119,15 +119,15 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
 > [!Note]
 > [即用即付](https://azure.microsoft.com/offers/ms-azr-0003p/)和[云服务提供商 (CSP)](https://docs.microsoft.com/partner-center/csp-documents-and-learning-resources) 订阅类型可以有一个业务关键实例，或最多 4 个常规用途实例。
 
-以下示例介绍使用非空子网并混用 GP 与 BC 服务层的部署案例。
+以下示例介绍使用非空子网并混用 GP 与 BC 服务层级的部署案例。
 
 |子网数|子网 1|子网 2|子网 3|
 |:---|:---|:---|:---|
 |第|1 个 BC 和最多 8 个 GP<br>2 个 BC 和最多 4 个 GP|不适用| 不适用|
-|2|0 个 BC，最多 4 个 GP|1 个 BC，最多 4 个 GP<br>2 个 BC，0 个 GP|不适用|
-|2|1 个 BC，0 个 GP|0 个 BC，最多 8 个 GP<br>1 个 BC，最多 4 个 GP|不适用|
-|2|2 个 BC，0 个 GP|0 个 BC，最多 4 个 GP|不适用|
-|3|1 个 BC，0 个 GP|1 个 BC，0 个 GP|0 个 BC，最多 4 个 GP|
+|2|0 个BC，最多 4 个 GP|1 个 BC，最多 4 个 GP<br>2 个 BC，0 个 GP|不适用|
+|2|1 个 BC，0 个 GP|0 个 BC，最多 8 个 GP<br>1 个BC，最多 4 个 GP|不适用|
+|2|2 个 BC，0 个 GP|0 个BC，最多 4 个 GP|不适用|
+|3|1 个 BC，0 个 GP|1 个 BC，0 个 GP|0 个BC，最多 4 个 GP|
 |3|1 个 BC，0 个 GP|0 个 BC，最多 4 个 GP|0 个 BC，最多 4 个 GP|
 
 ## <a name="obtaining-a-larger-quota-for-sql-managed-instance"></a>获取更大的 SQL 托管实例配额
@@ -157,12 +157,12 @@ Azure SQL 数据库托管实例可部署在两代硬件 (Gen4 和 Gen5) 上。 �
      > [!IMPORTANT]
      > 有效的请求应包括：
      > - 需要提高订阅限制的区域
-     > - 每个服务层在配额增加后在现有的子网中所需的实例数目（如果需要扩展任何现有的子网）
-     > - 所需的新子网数目，以及每个服务层在新子网内的实例总数（如果需要在新子网中部署托管实例）。
+     > - 每个服务层级在配额增加后在现有的子网中所需的实例数目（如果需要扩展任何现有的子网）
+     > - 所需的新子网数目，以及每个服务层级在新子网内的实例总数（如果需要在新子网中部署托管实例）。
 
 5. 单击“下一步”。
 6. 在新支持请求的“联系人信息”选项卡上，输入首选联系方式（电子邮件或电话）和联系人详细信息。
-7. 单击“创建”。
+7. 单击**创建**。
 
 ## <a name="next-steps"></a>后续步骤
 

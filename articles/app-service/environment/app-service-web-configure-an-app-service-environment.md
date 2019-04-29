@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 5c0b4117f6e7b48dce1746ad6eb3dbe29c0d16af
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53723206"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130613"
 ---
 # <a name="configuring-an-app-service-environment-v1"></a>配置应用服务环境 v1
 
@@ -74,10 +74,10 @@ ms.locfileid: "53723206"
 如果想要设置有关计算资源池度量值的自动缩放规则，请记得考虑预配所需的时间。 有关自动调整应用服务环境规模的详细信息，请参阅[如何配置应用服务环境中的自动调整规模][ASEAutoscale]。
 
 ### <a name="storage"></a>存储
-每个 ASE 配置了 500 GB 的存储空间。 此空间用于 ASE 中的所有应用。 此存储空间属于 ASE 的一部分，目前无法切换为使用存储空间。 如果调整虚拟网络路由或安全性，仍然需要允许访问 Azure 存储，否则 ASE 将无法正常工作。
+每个 ASE 配置了 500 GB 的存储空间。 此空间用于 ASE 中的所有应用。 此存储空间属于 ASE 的一部分，目前无法切换为使用存储空间。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 Azure 存储，否则 ASE 无法正常工作。
 
 ### <a name="database"></a>数据库
-数据库会保存定义环境的信息，以及在其中运行的应用的详细信息。 这也是 Azure 保存的订阅的一部分。 但无法直接进行操作。 如果调整虚拟网络路由或安全性，仍然需要允许访问 SQL Azure，否则 ASE 将无法正常工作。
+数据库会保存定义环境的信息，以及在其中运行的应用的详细信息。 这也是 Azure 保存的订阅的一部分。 但无法直接进行操作。 如果调整虚拟网络路由或安全性，你仍然需要允许访问 SQL Azure，否则 ASE 无法正常工作。
 
 ### <a name="network"></a>网络
 与 ASE 配合使用的 VNet 可以是在创建 ASE 时创建的 VNet，也可以是现有的 VNet。 如果在创建 ASE 期间创建子网，会强制 ASE 位于与虚拟网络相同的资源组。 如果想要 ASE 所使用的资源组不同于 VNet 的资源组，那么需要使用 Resource Manager 模板创建 ASE。

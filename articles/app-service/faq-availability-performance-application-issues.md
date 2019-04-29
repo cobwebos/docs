@@ -17,11 +17,11 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: ae59f54de9c02bfc4e538dd10c809ba398d599ee
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565949"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61222214"
 ---
 > [!NOTE]
 > 一些的以下准则可能仅适用于 Windows 或 Linux 应用服务。 例如，Linux 应用服务默认情况下在 64 位模式下运行。
@@ -39,11 +39,11 @@ ms.locfileid: "59565949"
 
 ## <a name="how-do-i-troubleshoot-a-high-cpu-consumption-scenario"></a>如何对高 CPU 使用率情况进行故障排除？
 
-在某些高 CPU 使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层，以便应用程序可获取所需的所有资源。 在其他时候，错误循环或编码做法可能会导致高 CPU 使用率。 深入了解触发 CPU 使用率提高的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[针对 Web 应用的高 CPU 使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
+在某些高 CPU 使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他时候，错误循环或编码做法可能会导致高 CPU 使用率。 深入了解触发 CPU 使用率提高的因素是包含两个部分的过程。 首先，创建一个进程转储，然后分析该进程转储。 有关详细信息，请参阅[针对 Web 应用的高 CPU 使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/01/20/how-to-capture-dump-when-intermittent-high-cpu-happens-on-azure-web-app/)。
 
 ## <a name="how-do-i-troubleshoot-a-high-memory-consumption-scenario"></a>如何对高内存使用率情况进行故障排除？
 
-在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
+在某些高内存使用率情况下，应用可能的确需要更多计算资源。 在这种情况下，请考虑扩展到较高服务层级，以便应用程序可获取所需的所有资源。 在其他时候，代码中的 bug 可能会导致内存泄漏。 编码做法也可能会提高内存使用率。 深入了解触发高内存使用率的因素是包含两个部分的过程。 首先，创建进程转储，然后分析此进程转储。 Azure 站点扩展库中的故障诊断程序可以高效地执行这两个步骤。 有关详细信息，请参阅[针对 Web 应用的间歇性高内存使用率捕获和分析转储文件](https://blogs.msdn.microsoft.com/asiatech/2016/02/02/how-to-capture-and-analyze-dump-for-intermittent-high-memory-on-azure-web-app/)。
 
 ## <a name="how-do-i-automate-app-service-web-apps-by-using-powershell"></a>如何使用 PowerShell 自动执行应用服务 Web 应用？
 

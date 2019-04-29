@@ -2,18 +2,19 @@
 title: Azure 存储表设计准则 | Microsoft Docs
 description: 将 Azure 表服务设计为高效地支持读取操作。
 services: storage
-author: SnehaGunda
+author: WenJason
 ms.service: storage
 ms.topic: article
-ms.date: 04/23/2018
-ms.author: sngun
-ms.subservice: tables
+origin.date: 04/23/2018
+ms.date: 12/10/2018
+ms.author: v-jay
+ms.component: tables
 ms.openlocfilehash: d056d29469ad9a60fceeee307aca3c0e1319283c
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454515"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61269827"
 ---
 # <a name="guidelines-for-table-design"></a>表设计准则
 

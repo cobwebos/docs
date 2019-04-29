@@ -16,11 +16,11 @@ ms.date: 11/30/2018
 ms.author: cephalin;dariac
 ms.custom: seodec18
 ms.openlocfilehash: db8445ec2b3dd8bdefa661d7f186e720c6fada09
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57858871"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130103"
 ---
 # <a name="deploy-your-app-to-azure-app-service-using-ftps"></a>使用 FTP/S 将应用部署到 Azure 应用服务
 
@@ -45,11 +45,11 @@ ms.locfileid: "57858871"
 建议你使用**应用凭据**部署到应用，因为它对每个应用都是唯一的。 但是，如果单击“用户凭据”，会将可用于 FTP/S 登录的用户级凭据设置到订阅中的所有应用服务应用。
 
 > [!NOTE]
-> 向 FTP/FTPS 终结点采用以下格式使用用户级凭据 requirers 用户名进行身份验证： 
+> 使用用户级凭据向 FTP/FTPS 终结点进行身份验证时需要使用以下格式的用户名： 
 >
 >`<app-name>\<user-name>`
 >
-> 由于用户级凭据链接到用户，并不特定资源，则用户名必须按以下格式将定向到正确的应用程序终结点的登录操作。
+> 由于用户级凭据链接到用户而不是特定资源，因此用户名必须采用此格式才能将登录操作定向到正确的应用终结点。
 >
 
 ## <a name="deploy-files-to-azure"></a>将文件部署到 Azure

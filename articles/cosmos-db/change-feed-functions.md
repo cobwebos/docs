@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 04/12/2019
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 35639dac0eacd5eae04b7848bdbbc1bc30fbf214
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 18780deba1910b3ea77f7313bfb6d204dacabd82
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680768"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112015"
 ---
 # <a name="serverless-event-based-architectures-with-azure-cosmos-db-and-azure-functions"></a>使用 Azure Cosmos DB 和 Azure Functions 无服务器基于事件的体系结构
 
-Azure Functions 提供连接到的最简单办法[更改源]()。 Azure Cosmos 容器的更改源中的每个新事件，可以创建将自动触发的小型反应的 Azure 函数。
+Azure Functions 提供连接到的最简单办法[更改源](change-feed.md)。 Azure Cosmos 容器的更改源中的每个新事件，可以创建将自动触发的小型反应的 Azure 函数。
 
 ![使用 Azure Cosmos DB 触发器的无服务器基于事件的函数](./media/change-feed-functions/functions.png)
 

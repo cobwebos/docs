@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/02/2019
 ms.author: spelluru
 ms.openlocfilehash: deb5595ac6a8b0d189e5594fda8e4b60480d038c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61318375"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>将环境集成到你的 Azure DevOps CI/CD 管道
 可以使用 Azure 开发测试实验室任务扩展安装 Azure DevOps 服务 （以前称为 Visual Studio Team Services） 以轻松地集成在持续集成 (CI) / 持续交付 (CD) 生成和发布管道与 Azure开发测试实验室。 这些扩展使其更轻松地快速部署[环境](devtest-lab-test-env.md)为特定测试任务，然后在测试完成时删除它。 

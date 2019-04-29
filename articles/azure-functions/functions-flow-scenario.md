@@ -12,12 +12,12 @@ ms.date: 12/14/2017
 ms.author: glenga
 ms.reviewer: sunayv
 ms.custom: ''
-ms.openlocfilehash: 662c78fc7074b0dafc53c393962aa4b578779095
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
-ms.translationtype: HT
+ms.openlocfilehash: 31e18285bf6211e73d994e037a91adc396972715
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092252"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106964"
 ---
 # <a name="call-a-function-from-microsoft-flow"></a>从 Microsoft Flow 调用函数
 
@@ -36,7 +36,7 @@ ms.locfileid: "44092252"
 > * 如果修复经济高效，将创建用于发送电子邮件的流。
 > * 运行该流。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 + 一个有效的 [Microsoft Flow 帐户](https://flow.microsoft.com/documentation/sign-up-sign-in/)，其中登录凭据与 Azure 帐户相同。 
 + SharePoint，用作此流的数据源。 如果还没有 SharePoint，请注册 [Office 365 免费试用版](https://signup.microsoft.com/Signup?OfferId=467eab54-127b-42d3-b046-3844b860bebf&dl=O365_BUSINESS_PREMIUM&ali=1)。
@@ -48,7 +48,7 @@ ms.locfileid: "44092252"
 | 列表列     | 数据类型           | 说明                                    |
 |-----------------|---------------------|------------------------------------------|
 | **标题**           | 单个文本行 | 涡轮机的名称                      |
-| **LastServiceDate** | 日期                |                                          |
+| **LastServiceDate** | date                |                                          |
 | **MaxOutput**       | Number              | 涡轮机的输出，以 KwH 为单位            |
 | **ServiceRequired** | Yes/No              |                                          |
 | **EstimatedEffort** | Number              | 预计的修复时间，以小时为单位 |
@@ -132,7 +132,7 @@ ms.locfileid: "44092252"
 
     ![添加条件](media/functions-flow-scenario/add-condition.png)
 
-    Microsoft Flow 会向流添加两个分支：“如果是”和“如果否”。 在定义要匹配的条件后，将步骤添加到其中一个或全部两个分支。
+    Microsoft Flow 将两个分支添加到流：**如果是**并**如果不是**。 在定义要匹配的条件后，将步骤添加到其中一个或全部两个分支。
 
     ![条件分支](media/functions-flow-scenario/condition-branches.png)
 
@@ -232,7 +232,7 @@ ms.locfileid: "44092252"
     | **ServiceRequired** | 是 |
     | **EstimatedEffort** | 10 |
 
-3. 单击“Done”（完成） 。
+3. 单击“完成”。
 
     ![完成快速编辑](media/functions-flow-scenario/quick-edit-done.png)
 

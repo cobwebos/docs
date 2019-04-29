@@ -11,11 +11,11 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.openlocfilehash: 10d703ad613a340a0f99c4d5dd8f4c748ff3e6bd
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684100"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475093"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL 数据仓库发行说明
 
@@ -25,7 +25,7 @@ ms.locfileid: "59684100"
 
 | 服务改进 | 详细信息 |
 | --- | --- |
-|**现已可供第 2 代预览工作负荷重要性**|工作负荷重要性使数据工程师能够使用重要性来对请求进行分类。 具有较高的优先级请求更快地访问资源，这有助于满足 Sla 保证。  工作负荷重要性允许具有高业务值工作较少的资源的共享环境中满足 sla 要求。<br/><br/>工作负荷管理分类和重要性 preview 适用于具有 2019 年 4 月 9 日或更高版本的发布日期的生成。 用户应避免使用版本早于此日期执行工作负荷管理测试。 若要确定是否在生成工作负荷管理支持，请运行`select @@version`时连接到 SQL 数据仓库实例。</br></br>工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/>[工作负荷管理概念](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
+|**现已可供第 2 代预览工作负荷重要性**|工作负荷重要性使数据工程师能够使用重要性来对请求进行分类。 具有较高的优先级请求更快地访问资源，这有助于满足 Sla 保证。  工作负荷重要性允许具有高业务值工作较少的资源的共享环境中满足 sla 要求。<br/><br/>工作负荷管理分类和重要性 preview 适用于具有 2019 年 4 月 9 日或更高版本的发布日期的生成。 用户应避免使用早于此日期的版本来进行工作负载管理测试。 若要确定是否在生成工作负荷管理支持，请运行`select @@version`时连接到 SQL 数据仓库实例。</br></br>工作负荷重要性的详细信息，请参阅[分类](sql-data-warehouse-workload-classification.md)并[重要性](sql-data-warehouse-workload-importance.md)文档中的概述文章。 请查看[创建工作负荷分类器](/sql/t-sql/statements/create-workload-classifier-transact-sql?view=azure-sqldw-latest)以及文档。<br/><br/>请参阅中的操作中的工作负荷重要性下方视频：<br/>[工作负荷管理概念](  https://www.youtube.com/embed/QcCRBAhoXpM)<br/>[工作负荷管理方案](https://www.youtube.com/embed/_2rLMljOjw8)|
 |**数据发现和分类**|Azure SQL 数据仓库的数据发现和分类功能现处于公共预览状态。 若要保护敏感数据和客户的隐私性至关重要。 随着您的业务和客户数据资产的增长，变得难以管理，以发现、 分类和保护你的数据。 我们使用 Azure SQL 数据仓库以本机方式引入的数据发现和分类功能可帮助轻松保护你的数据更易于管理。 这项功能的整体优势包括：<br/>&bull; &nbsp; 会议数据隐私标准和法规遵从性要求。<br/>&bull; &nbsp; 限制访问并增强其安全性的数据仓库包含高度敏感数据。<br/>&bull; &nbsp; 监视和警报功能上存在异常访问敏感数据。<br/>&bull; &nbsp; 在 Azure 门户上的中央仪表板中的敏感数据的可视化效果。 </br></br>数据发现和分类是可用于所有 Azure 区域中的 Azure SQL 数据仓库的高级数据安全包括漏洞评估和威胁检测的一部分。 有关数据发现和分类的详细信息，请参阅[博客文章](https://azure.microsoft.com/en-us/blog/announcing-public-preview-of-data-discovery-classification-for-microsoft-azure-sql-data-warehouse/)和我们的联机[文档](/azure/sql-database/sql-database-data-discovery-and-classification)。|
 |**GROUP BY 汇总**|汇总现已是受支持的 GROUP BY 选项在 Azure 数据仓库中。   GROUP BY ROLLUP 创建每个列表达式组合为一个组。 GROUP BY 还"汇总"结果到小计和总计。 GROUP BY 函数处理从右到左，减少对其创建的组和从右向列表达式的数目。  列的顺序会影响 ROLLUP 的输出，而且可能会影响在结果集中的行数。<br/><br/>GROUP BY ROLLUP 的详细信息，请参阅[GROUP BY (TRANSACT-SQL)](/sql/t-sql/queries/select-group-by-transact-sql?view=azure-sqldw-latest)
 |**改进了的准确性的已用的 DWU 和 CPU 门户指标**|SQL 数据仓库会显著提高在 Azure 门户中的度量准确性。  此版本中包括要在所有计算节点之间正确反映你的工作负荷的 CPU 和已用的指标定义的修复的程序。 这项修复之前, 的指标值已被 undereported。 会看到已用的 DWU 的增加和 Azure 门户中的 CPU 指标。 |

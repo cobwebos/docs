@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 05/04/2018
 ms.author: magoedte
 ms.openlocfilehash: eac6a27c3bcf64462a9f3d9a57da6df736f30c78
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883269"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61386023"
 ---
 # <a name="vmware-monitoring-deprecated-solution-in-azure-monitor"></a>Azure Monitor 中的 VMware 监视 （已弃用） 解决方案
 
@@ -179,7 +179,7 @@ VMware 磁贴显示在 Log Analytics 工作区中。 它提供任何失败的高
 syslog 时间戳有一个 ESXi 主机 bug。 有关详细信息，请参阅 [VMware 知识库](https://kb.vmware.com/selfservice/microsites/search.do?language=en_US&cmd=displayKC&externalId=2111202)。 采用解决方法处理后，Hostd 应能够正常工作。
 
 ### <a name="can-i-have-multiple-esxi-hosts-forwarding-syslog-data-to-a-single-vm-with-omsagent"></a>是否可以拥有多个 ESXi 主机将 syslog 数据转发到具有 omsagent 的单个 VM？
-是的。 可以拥有多个 ESXi 主机将数据转发到具有 omsagent 的单个 VM。
+可以。 可以拥有多个 ESXi 主机将数据转发到具有 omsagent 的单个 VM。
 
 ### <a name="why-dont-i-see-data-flowing-into-log-analytics"></a>为什么看不到数据流入 Log Analytics？
 可能有多个原因造成此情况：

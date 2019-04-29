@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 10fb44b0e76282ad78e7687beaa2e50e819e5cd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667712"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109989"
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>将 Web 角色和辅助角色转换成 Service Fabric 无状态服务的指南
 本文说明如何将云服务的 Web 角色和辅助角色迁移到 Service Fabric 无状态服务。 对于整体体系结构大致保持相同的应用程序来说，这是最简单的云服务到 Service Fabric 迁移路径。

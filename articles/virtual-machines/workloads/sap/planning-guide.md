@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/05/2019
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d4798f8c3e262129135a6677ccf90dc0fb3be7f2
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 097b5e8ee69d945e0a9e24ba1c62b0ae82dd896b
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59999529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62732411"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver 的 Azure 虚拟机规划和实施指南
 
@@ -451,7 +451,11 @@ SAP 通常被视为企业中最关键的应用程序之一。 通常，这些应
 >
 > 施加这些限制的原因在于，要求在一个 SAP 系统中的应用程序实例与 DBMS 层之间提供低延迟高性能网络。
 >
->
+> 使用高度集成的多个 SAP 系统时，可能必须发生的系统和区域的特殊的规划。 请确保将部署这些系统尽可能地靠近彼此，尽量降低网络延迟。 高度集成 SAP 系统的示例包括：
+> * SAP BW 从 ERP、 CRM 或 SRM; 等 SAP OLTP 系统中读取数据或
+> * SAP SLT 正在用于将数据复制多个 SPA 系统之间、 甚至之间 SAP 和非 SAP 系统;或
+> * SAP S/4 连接到 SAP ERP 系统;等等。
+
 
 ### <a name="supported-os-and-database-releases"></a>支持的 OS 和数据库版本
 * 以下文章中列出了 Azure 虚拟机服务支持的 Microsoft 服务器软件：<https://support.microsoft.com/kb/2721672>。

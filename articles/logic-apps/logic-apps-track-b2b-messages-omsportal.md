@@ -10,11 +10,11 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 10/19/2018
 ms.openlocfilehash: 8cf5d9f3ee1503769a2ec199847175899bcd86bf
-ms.sourcegitcommit: cdf0e37450044f65c33e07aeb6d115819a2bb822
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57193205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120120"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>使用 Azure Monitor 日志跟踪 B2B 消息
 
@@ -184,7 +184,7 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 | 逻辑应用 | 设置了 X12 操作的逻辑应用 |
 | 状态 | X12 消息状态 <br>成功 = 收到或发送了有效的 X12 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 X12 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送的 X12 消息无效。 <br>挂起 = 收到或发送了有效的 X12 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
-| 方向 | X12 消息传送方向 |
+| Direction | X12 消息传送方向 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息类型 | EDI X12 消息类型 |
 | ICN | X12 消息的交换控制编号 |
@@ -217,7 +217,7 @@ Azure Monitor 日志跟踪的逻辑应用 B2B 消息之前，添加**逻辑应�
 | 逻辑应用 | 设置了 EDIFACT 操作的逻辑应用 |
 | 状态 | EDIFACT 消息状态 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 未设置功能确认。 <br>成功 = 收到或发送了有效的 EDIFACT 消息。 设置并收到了功能确认，或已发送功能确认。 <br>失败 = 收到或发送了的 EDIFACT 消息无效 <br>挂起 = 收到或发送了有效的 EDIFACT 消息。 已设置功能确认，且功能确认符合预期。 |
 | Ack | 功能确认 (997) 状态 <br>已接受 = 收到或发送了肯定的功能确认。 <br>已拒绝 = 收到或发送了否定的功能确认。 <br>挂起 = 预计有功能确认，但未收到。 <br>挂起 = 生成了功能确认，但无法发送给合作伙伴。 <br>不需要 = 未设置功能确认。 |
-| 方向 | EDIFACT 消息传送方向 |
+| Direction | EDIFACT 消息传送方向 |
 | 相关性 ID | 用于关联逻辑应用中所有触发器和操作的 ID |
 | 消息类型 | EDIFACT 消息类型 |
 | ICN | EDIFACT 消息的交换控制编号 |

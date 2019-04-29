@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: d6e17c7609fd41b8f4457edda373f6882a1a9d2b
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: d86e77ef0148c0fac3dfa31153364de153b094ef
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38698704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126743"
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>在 StorSimple 设备上安装 Update 5
 
@@ -76,19 +76,19 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 必须按规定顺序将以下修补程序下载并安装到建议的文件夹：
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
+| 顺序 | KB | 描述 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 1. |KB4037264 |软件更新<br> 同时下载 _HcsSoftwareUpdate.exe_ 和 _CisMSDAgent.exe_ |常规 <br></br>非中断性 |~ 25 分钟 |FirstOrderUpdate|
 
 如果从运行 Update 4 的设备更新，仅需要安装 OS 累积更新作为第二顺序更新。
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
+| 顺序 | KB | 描述 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 2A. |KB4025336 |OS 累积更新包 <br> 下载 Windows Server 2012 R2 版本 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
 
 如果从运行 Update 3 或更早版本的设备安装，除了安装累积更新外，还需安装以下更新。
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 |在文件夹中安装|
+| 顺序 | KB | 描述 | 更新类型 | 安装时间 |在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 2B. |KB4011841 <br> KB4011842 |LSI 驱动程序和固件更新 <br> USM 固件更新（版本 3.38） |常规 <br></br>非中断性 |~ 3 小时 <br> （包括 2A. + 2B. + 2C.）|SecondOrderUpdate|
 | 2C. |KB3139398 <br> KB3142030 <br> KB3108381 <br> KB3153704 <br> KB3174644 <br> KB3139914   |OS 安全更新包 <br> 下载 Windows Server 2012 R2 版本 |常规 <br></br>非中断性 |- |SecondOrderUpdate|
@@ -97,7 +97,7 @@ Update 5 包括设备软件、Storport 和 Spaceport、OS 安全更新和 OS 更
 
 除了前面表中显示的所有更新，可能还需安装磁盘固件更新。 运行 `Get-HcsFirmwareVersion` cmdlet 即可验证是否需要磁盘固件更新。 如果运行的是固件版本 `XMGJ`、`XGEG`、`KZ50`、`F6C2`、`VR08`、`N003``0107`，则不需安装这些更新。
 
-| 顺序 | KB | 说明 | 更新类型 | 安装时间 | 在文件夹中安装|
+| 顺序 | KB | 描述 | 更新类型 | 安装时间 | 在文件夹中安装|
 | --- | --- | --- | --- | --- | --- |
 | 3. |KB4037263 |磁盘固件 |维护 <br></br>中断性 |约 30 分钟 | ThirdOrderUpdate |
 

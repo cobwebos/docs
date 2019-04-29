@@ -16,11 +16,11 @@ ms.date: 08/30/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 5e25de1ad2042ac978c3698165b9d9baba20e816
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274150"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130681"
 ---
 # <a name="implementing-a-layered-security-architecture-with-app-service-environments"></a>使用应用服务环境实现分层的安全体系结构
 ## <a name="overview"></a>概述

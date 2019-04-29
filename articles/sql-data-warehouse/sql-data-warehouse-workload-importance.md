@@ -11,18 +11,18 @@ ms.date: 03/13/2019
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.openlocfilehash: 12e7d9bc22eff14bbf302aed50080412d04a40d3
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616622"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474696"
 ---
 # <a name="sql-data-warehouse-workload-importance-preview"></a>SQL 数据仓库工作负荷重要性（预览）
 
 本文介绍工作负荷重要性如何影响 SQL 数据仓库请求的执行顺序。
 
 > [!Note]
-> 可以在 SQL 数据仓库 Gen2 上预览工作负荷分类。 工作负荷管理分类和重要性 preview 适用于具有 2019 年 4 月 9 日，或更高版本的发布日期的生成。  用户应避免使用版本早于此日期执行工作负荷管理测试。  若要确定是否在生成工作负荷管理支持，请运行 select @@version时连接到 SQL 数据仓库实例。
+> SQL 数据仓库第 2 代已提供工作负载分类预览。 工作负载管理分类和重要性预览适用于发布日期为 2019 年 4 月 9 日或之后的版本。  用户应避免使用早于此日期的版本来进行工作负载管理测试。  要确定你的版本是否支持工作负载管理，请在连接到 SQL 数据仓库实例时运行select @@version。
 
 ## <a name="importance"></a>Importance
 

@@ -15,12 +15,12 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: victorh
-ms.openlocfilehash: b3a4abf4d0f408cdb49020d831b50d943c3467dd
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
-ms.translationtype: HT
+ms.openlocfilehash: 10f115b64f0bd3f7e557da2bedbf3327d0ef483d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33205037"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122283"
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>应用程序网关和 Azure 安全中心之间的集成概述
 

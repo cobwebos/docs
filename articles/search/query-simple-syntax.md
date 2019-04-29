@@ -20,11 +20,11 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 99729141e5e1478f45ad385cf671c44a8e08f21a
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437486"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61316891"
 ---
 # <a name="simple-query-syntax-in-azure-search"></a>Azure 搜索中的简单查询语法
 Azure 搜索实现两种基于 Lucene 的查询语言：[简单查询分析器](https://lucene.apache.org/core/4_7_0/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html)和 [Lucene 查询分析器](https://lucene.apache.org/core/4_10_2/queryparser/org/apache/lucene/queryparser/classic/package-summary.html)。 在 Azure 搜索中，简单查询语法排除了模糊/贪婪选项。  

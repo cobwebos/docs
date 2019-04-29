@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
 ms.openlocfilehash: 7efd853e7b66933cac811625d7510139864f41f3
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128026"
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>向 Windows 应用添加推送通知
 
@@ -164,7 +164,7 @@ ms.locfileid: "53001854"
 
 3. 编辑本地计算机上的文件时，重新发布服务器项目。
 
-## <a id="update-app"></a>向应用添加推送通知
+## <a id="update-app"></a>向应用程序添加推送通知
 下一步，应用必须在启动时注册推送通知。 已启用身份验证时，请确保用户先登录，再尝试注册推送通知。
 
 1. 打开 **App.xaml.cs** 项目文件并添加以下 `using` 语句：
@@ -205,7 +205,7 @@ ms.locfileid: "53001854"
 
 4. 重新生成 UWP 应用项目。 应用现在已能够接收 toast 通知。
 
-## <a id="test"></a>在应用中测试推送通知
+## <a id="test"></a>在应用程序中测试推送通知
 
 [!INCLUDE [app-service-mobile-windows-universal-test-push](../../includes/app-service-mobile-windows-universal-test-push.md)]
 

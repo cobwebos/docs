@@ -10,13 +10,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 03/12/2019
-ms.openlocfilehash: 2f3a8237fff052779afee718837e2b72fc33d9a8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 04/23/2019
+ms.openlocfilehash: 2c8a3f36e04fbedfdd127939d55fab376e3e6b30
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60532163"
+ms.locfileid: "62097753"
 ---
 # <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-db-for-postgresql"></a>联机迁移到 Azure DB for PostgreSQL 时存在的已知问题/迁移限制
 
@@ -25,6 +25,10 @@ ms.locfileid: "60532163"
 ## <a name="online-migration-configuration"></a>联机迁移配置
 - 源 PostgreSQL 服务器必须运行版本 9.5.11、9.6.7、10.3 或更高版本。 有关详细信息，请参阅[支持的 PostgreSQL 数据库版本](../postgresql/concepts-supported-versions.md)一文。
 - 仅支持相同版本的迁移。 例如，不支持将 PostgreSQL 9.5.11 迁移到 Azure Database for PostgreSQL 9.6.7。
+
+    > [!NOTE]
+    > 用于 PostgreSQL 版本 10，目前 DMS 仅支持迁移的版本 10.3 的 Azure Database for PostgreSQL。 我们计划很快支持较新版本的 PostgreSQL。
+
 - 若要在源 PostgreSQL postgresql.config 文件中启用逻辑复制，请设置以下参数：
     - wal_level = logical
     - max_replication_slots = [要迁移的数据库最大数]；如果要迁移 4 个数据库，请将该值设为 4

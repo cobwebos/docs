@@ -9,17 +9,17 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: stewu
 ms.openlocfilehash: bfd6e715e907925a1ba3db3b60c0d3eccb637930
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55866094"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61481983"
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-storage-gen2"></a>Spark on HDInsight 和 Azure Data Lake Storage Gen2 性能优化指南
 
 在优化 Spark 的性能时，需要考虑到群集中将要运行的应用数目。  默认情况下，在 HDI 群集中可以同时运行 4 个应用（注意：默认设置可更改）。  可以使用更少的应用，这样便可以覆盖默认设置，将群集中的更多资源用于这些应用。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **Azure 订阅**。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/pricing/free-trial/)。
 * Azure Data Lake Storage Gen2 帐户。 有关如何创建帐户的说明，请参阅[快速入门：创建 Azure Data Lake Storage Gen2 存储帐户](data-lake-storage-quickstart-create-account.md)。

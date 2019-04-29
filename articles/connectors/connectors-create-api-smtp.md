@@ -12,17 +12,17 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 78b1eb6272fa97ef392e97723454d29cf56bb4bf
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106144"
 ---
 # <a name="send-email-from-your-smtp-account-with-azure-logic-apps"></a>使用 Azure 逻辑应用从 SMTP 帐户发送电子邮件
 
 使用 Azure 逻辑应用和简单邮件传输协议 (SMTP) 连接器，可以创建从 SMTP 帐户发送电子邮件的自动化任务和工作流。 还可以让其他操作使用来自 SMTP 操作的输出。 例如，在 SMTP 发送电子邮件后，你可以通过 Slack 连接器通知你在 Slack 中的团队。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -53,7 +53,7 @@ ms.locfileid: "50230499"
 
 1. 出现提示时，提供此连接信息：
 
-   | 属性 | 必选 | Description |
+   | 属性 | 需要 | 描述 |
    |----------|----------|-------------|
    | **连接名称** | 是 | 到 SMTP 服务器的连接的名称 | 
    | **SMTP 服务器地址** | 是 | SMTP 服务器的地址 | 

@@ -1,5 +1,5 @@
 ---
-title: Azure SQL 数据库托管实例 T-SQL 差异 |Microsoft Docs
+title: Azure SQL 数据库托管实例的 T-SQL 差异 | Microsoft Docs
 description: 本文介绍了 Azure SQL 数据库托管实例与 SQL Server 的 T-SQL 差异
 services: sql-database
 ms.service: sql-database
@@ -13,15 +13,15 @@ manager: craigg
 ms.date: 03/13/2019
 ms.custom: seoapril2019
 ms.openlocfilehash: 5f476aa571ba2827cbe6f4e4f258545b5e9d3ba1
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106343"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL 数据库托管实例与 SQL Server 之间的 T-SQL 差异
 
-本文总结并介绍 Azure SQL 数据库托管实例和本地 SQL Server 数据库引擎之间的语法和行为差异。 <a name="Differences"></a>
+本文汇总并解释了 Azure SQL 数据库托管实例与本地 SQL Server 数据库引擎之间的语法和行为差异。 <a name="Differences"></a>
 
 - [可用性](#availability)包括 [Always-On](#always-on-availability) 和[备份](#backup)方面的差异
 - [安全性](#security)包括[审核](#auditing)、[证书](#certificates)、[凭据](#credential)、[加密提供程序](#cryptographic-providers)、[登录名/用户名](#logins--users)、[服务密钥和服务主密钥](#service-key-and-service-master-key)方面的差异
@@ -67,7 +67,7 @@ ms.locfileid: "59579302"
     > [!TIP]
     > 从本地环境或虚拟机中的 SQL Server 备份数据库时，若要解决此限制，可执行以下操作：
     >
-    > - 备份到`DISK`而不是备份到 `URL`
+    > - 备份到 `DISK`，而不是备份到 `URL`
     > - 将备份文件上传到 Blob 存储
     > - 还原到托管实例
     >
@@ -216,8 +216,8 @@ WITH PRIVATE KEY (<private_key_options>)
 ### <a name="database-options"></a>数据库选项
 
 - 不支持多个日志文件。
-- 常规用途服务层不支持内存中对象。  
-- 没有 280 个文件每个常规用途实例，这意味着每个数据库的最大 280 文件限制。 数据和日志文件通常层都将计入此限制的目的。 [业务关键层支持每个数据库的 32,767 文件](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
+- “常规用途”服务层级不支持内存中对象。  
+- 每个常规用途实例限制为 280 个文件，这意味着，每个数据库最多只能有 280 个文件。 常规用途层级中的数据文件和日志文件都会计入此限制。 [业务关键层支持每个数据库的 32,767 文件](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 - 数据库中不能有包含文件流数据的文件组。  如果 .bak 包含 `FILESTREAM` 数据，则还原将会失败。  
 - 每个文件都被放置在 Azure Blob 存储中。 每个文件的 IO 和吞吐量取决于每个单独文件的大小。  
 
@@ -290,7 +290,7 @@ WITH PRIVATE KEY (<private_key_options>)
   - 托管实例无法访问外部资源（例如，通过 robocopy 访问网络共享）。  
   - 不支持 Analysis Services。
 - 部分支持通知。
-- 支持电子邮件通知，但需要配置数据库邮件配置文件。 SQL 代理可以使用只有一个数据库邮件配置文件和必须调用`AzureManagedInstance_dbmail_profile`。  
+- 支持电子邮件通知，但需要配置数据库邮件配置文件。 SQL 代理只能使用一个数据库邮件配置文件，并且该配置文件必须命名为 `AzureManagedInstance_dbmail_profile`。  
   - 不支持寻呼机。  
   - 不支持 NetSend。
   - 尚不支持警报。
@@ -431,7 +431,7 @@ WITH PRIVATE KEY (<private_key_options>)
 - 无法还原包含多个备份集的 `.BAK` 文件。
 - 无法还原包含多个日志文件的 `.BAK` 文件。
 - 如果 .bak 包含 `FILESTREAM` 数据，则还原将会失败。
-- 不能在常规用途实例上还原备份中包含具有活动的内存中对象的数据库备份。  
+- 在常规用途实例上，无法还原包含数据库且这些数据库中具有活动内存中对象的备份。  
 有关 Restore 语句的信息，请参阅 [RESTORE 语句](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql)。
 
 ### <a name="service-broker"></a>服务代理
@@ -472,7 +472,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="tempdb-size"></a>TEMPDB 大小
 
-最大文件大小`tempdb`不能大于 24 GB/core 常规用途层上。 在业务关键层上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb` 始终为 12 个数据文件拆分。 无法更改每个文件的最大大小，并且无法将新文件添加到 `tempdb`。 如果某些查询需要 `tempdb` 中 24GB/核心以上的空间，这些查询可能返回错误。
+在常规用途层级上，`tempdb` 的最大文件大小不能超过 24GB/核心。 在业务关键层上，最大 `tempdb` 大小根据实例存储大小受到限制。 `tempdb` 始终拆分为 12 个数据文件。 无法更改每个文件的最大大小，并且无法将新文件添加到 `tempdb`。 如果某些查询需要 `tempdb` 中 24GB/核心以上的空间，这些查询可能返回错误。
 
 ### <a name="cannot-restore-contained-database"></a>无法还原包含的数据库
 
@@ -480,11 +480,11 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小型数据库文件超出存储空间
 
-`CREATE DATABASE``ALTER DATABASE ADD FILE`，和`RESTORE DATABASE`语句可能会失败，因为该实例可以访问 Azure 存储限制。
+`CREATE DATABASE`、`ALTER DATABASE ADD FILE` 和 `RESTORE DATABASE` 语句可能会失败，因为实例可能会达到 Azure 存储限制。
 
-35 TB 的存储为 Azure 高级磁盘空间保留的每个常规用途托管实例会带来高达并每个数据库文件放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
+每个常规用途托管实例都为 Azure 高级磁盘空间保留了最高 35 TB 存储空间，并且每个数据库文件都放置在单独的物理磁盘上。 磁盘大小可以为 128 GB、256 GB、512 GB、1 TB 或 4 TB。 磁盘上未使用的空间不收费，但 Azure 高级磁盘大小总计不能超过 35 TB。 在某些情况下，由于内部碎片，总共不需要 8 TB 的托管实例可能会超过 35 TB 的 Azure 存储大小限制。
 
-例如，常规用途托管实例可以将一个文件中 4 TB 磁盘放置的大小和 248 放置在单独的 128 GB 磁盘的文件 (每个 1 GB 的大小) 1.2 TB。 在本示例中：
+例如，常规用途托管实例可将一个大小为 1.2 TB 的文件放在 4 TB 磁盘上，将 248 个文件（每个大小为 1 GB）放在单独的 128 GB 磁盘上。 在本示例中：
 
 - 分配的磁盘存储总大小为 1 x 4 TB + 248 x 128 GB = 35 TB。
 - 实例上的数据库的总预留空间为 1 x 1.2 TB + 248 x 1 GB = 1.4 TB。
@@ -493,7 +493,7 @@ WITH PRIVATE KEY (<private_key_options>)
 
 在此示例中，只要未添加新文件，现有数据库就会继续工作并且可以毫无问题地增长。 但是，由于没有足够的空间用于新磁盘驱动器，因此无法创建或还原新数据库，即使所有数据库的总大小未达到实例大小限制也是如此。 这种情况下返回的错误并不明确。
 
-你可以[确定剩余的文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)使用系统视图。 如果您达到此限制尝试[的空和删除一些较小的文件使用 DBCC SHRINKFILE 语句](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)或切换到[没有此限制的业务关键层](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
+可以使用系统视图[识别剩余文件的数目](https://medium.com/azure-sqldb-managed-instance/how-many-files-you-can-create-in-general-purpose-azure-sql-managed-instance-e1c7c32886c1)。 如果您达到此限制尝试[的空和删除一些较小的文件使用 DBCC SHRINKFILE 语句](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-shrinkfile-transact-sql#d-emptying-a-file)或切换到[没有此限制的业务关键层](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics)。
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>在还原数据库期间不正确地配置了 SAS 密钥
 
@@ -513,11 +513,11 @@ WITH PRIVATE KEY (<private_key_options>)
 
 ### <a name="database-mail"></a>数据库邮件
 
-`@query` 中的参数[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql)过程不起作用。
+[sp_send_db_mail](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-send-dbmail-transact-sql) 过程中的 `@query` 参数不起作用。
 
 ### <a name="database-mail-profile"></a>数据库邮件配置文件
 
-SQL 代理使用的数据库邮件配置文件必须名为 `AzureManagedInstance_dbmail_profile`。 没有限制，有关其他数据库邮件配置文件名称。
+SQL 代理使用的数据库邮件配置文件必须名为 `AzureManagedInstance_dbmail_profile`。 在其他数据库邮件配置文件名称方面没有限制。
 
 ### <a name="error-logs-are-not-persisted"></a>错误日志不会持久保留
 
@@ -531,7 +531,7 @@ SQL 代理使用的数据库邮件配置文件必须名为 `AzureManagedInstance
 
 ### <a name="transaction-scope-on-two-databases-within-the-same-instance-isnt-supported"></a>跨同一实例中的两个数据库的事务范围不受支持
 
-`TransactionScope` 如果两个查询发送到同一个事务范围内的相同实例中的两个数据库，在.NET 中的类不起作用：
+如果在同一事务范围中将两个查询发送到了同一实例内的两个数据库，则 .NET 中的 `TransactionScope` 类不会工作。
 
 ```C#
 using (var scope = new TransactionScope())

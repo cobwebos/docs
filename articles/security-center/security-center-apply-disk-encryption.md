@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
 ms.openlocfilehash: d285461aef1e56dfd08a162e51ada0340d6eeae4
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56108263"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62095415"
 ---
 # <a name="apply-disk-encryption-in-azure-security-center"></a>在 Azure 安全中心中应用磁盘加密
 Azure 安全中心建议：如有未使用 Azure 磁盘加密加密的 Windows 或 Linux VM 磁盘，则应用磁盘加密。 通过磁盘加密，可以对 Windows 和 Linux IaaS VM 磁盘进行加密。  对于 VM 上的 OS 和数据卷，建议使用加密。

@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: kgremban
 ms.openlocfilehash: ad7e34110b0c6d047eb7454b7fac9f8c10df8be2
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126355"
 ---
 # <a name="install-azure-iot-edge-runtime-on-linux-arm32v7armhf"></a>在 Linux 上安装 Azure IoT Edge 运行时 (ARM32v7/armhf)
 
@@ -22,7 +22,7 @@ ms.locfileid: "58316093"
 
 若要了解有关 IoT Edge 运行时如何工作以及包含哪些组件的详细信息，请参阅[了解 Azure IoT Edge 运行时及其体系结构](iot-edge-runtime.md)。
 
-本文列出了 Linux ARM32v7/armhf IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 例如，这些步骤适用于 Raspberry Pi 设备。 有关支持 ARM32 操作系统的列表，请参阅[Azure IoT Edge 支持](support.md#operating-systems)。 
+本文列出了在 Linux ARM32v7/armhf IoT Edge 设备上安装 Azure IoT Edge 运行时的步骤。 例如，这些步骤适用于 Raspberry Pi 设备。 有关支持的 ARM32 操作系统的列表，请参阅 [Azure IoT Edge 支持](support.md#operating-systems)。 
 
 >[!NOTE]
 >Linux 软件存储库中的包受到每个包中的许可条款限制 (/usr/share/doc/*package-name*)。 使用程序包之前请阅读许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
@@ -31,7 +31,7 @@ ms.locfileid: "58316093"
 
 Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器运行时。 对于生产方案，强烈建议使用下面提供的[基于 Moby](https://mobyproject.org/) 的引擎。 这是官方唯一支持用于 Azure IoT Edge 的容器引擎。 Docker CE/EE 容器映像与基于 Moby 的运行时兼容。
 
-下面的命令安装的小鲸鱼基于引擎和命令行接口 (CLI)。 CLI 对开发非常有用，但对生产部署来说是可选的。
+以下命令用于安装基于 Moby 的引擎和命令行接口 (CLI)。 CLI 对开发非常有用，但对生产部署来说是可选的。
 
 ```bash
 # You can copy the entire text from this code block and 
@@ -70,13 +70,13 @@ sudo apt-get install -f
 
 配置 IoT Edge 运行时以将物理设备与 Azure IoT 中心中存在的设备标识相链接。 
 
-可以使用 `/etc/iotedge/config.yaml` 处的配置文件配置守护程序。 该文件是写保护，默认情况下，因此，您可能需要提升的权限对其进行编辑。
+可以使用 `/etc/iotedge/config.yaml` 处的配置文件配置守护程序。 默认情况下，该文件有写保护，因此你可能需要提升权限才能对其进行编辑。
 
 可以使用 IoT 中心提供的设备连接字符串手动预配单个 IoT Edge 设备。 或者，可以使用设备预配服务自动预配设备，当需要预配多个设备时这会非常有用。 根据预配选项，选择合适的安装脚本。 
 
 ### <a name="option-1-manual-provisioning"></a>选项 1：手动预配
 
-若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device-portal.md)，可以通过在 IoT 中心中注册新的 IoT Edge 设备创建。
+若要手动预配设备，需要为其提供[设备连接字符串](how-to-register-device-portal.md)，可以通过在 IoT 中心注册新的 IoT Edge 设备来创建该设备连接字符串。
 
 打开配置文件。 
 
@@ -144,7 +144,7 @@ sudo systemctl restart iotedge
 
 ## <a name="verify-successful-installation"></a>验证是否成功安装
 
-如果使用了上一部分中的**手动配置**步骤，则应在设备上成功预配并运行 IoT Edge 运行时。 或者，如果您使用**自动配置**步骤，则需要完成一些附加步骤，以便在运行时可以代表你到 IoT 中心注册你的设备。 有关后续步骤，请参阅[在 Linux 虚拟机上创建和预配模拟 TPM IoT Edge 设备](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)。
+如果使用了上一部分中的**手动配置**步骤，则应在设备上成功预配并运行 IoT Edge 运行时。 或者，如果使用了**自动配置**步骤，则需要完成一些额外的步骤，以便运行时可以代表你向 IoT 中心注册你的设备。 有关后续步骤，请参阅[在 Linux 虚拟机上创建和预配模拟 TPM IoT Edge 设备](how-to-auto-provision-simulated-device-linux.md#give-iot-edge-access-to-the-tpm)。
 
 使用以下命令检查 IoT Edge 守护程序的状态：
 
@@ -205,6 +205,6 @@ sudo apt-get remove --purge moby-engine
 
 预配了安装运行时的 IoT Edge 设备后，现在可以[部署 IoT Edge 模块](how-to-deploy-modules-portal.md)。
 
-如果遇到问题的正确安装了 IoT Edge 运行时，请参阅[故障排除](troubleshoot.md#stability-issues-on-resource-constrained-devices)页。
+如果无法正确安装 IoT Edge 运行时，请参阅[故障排除](troubleshoot.md#stability-issues-on-resource-constrained-devices)页面。
 
 若要将现有安装更新到最新版本的 IoT Edge，请参阅[更新 IoT Edge 安全守护程序和运行时](how-to-update-iot-edge.md)。

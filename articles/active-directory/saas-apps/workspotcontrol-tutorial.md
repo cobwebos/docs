@@ -16,11 +16,11 @@ ms.date: 10/12/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97f375c6f48d3dc497eb59e76f19fc64cf906b56
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57886494"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098656"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>教程：Azure Active Directory 与 Workspot Control 集成
 
@@ -62,19 +62,19 @@ ms.locfileid: "57886494"
 
 1. 在 **[Azure 门户](https://portal.azure.com)** 的左侧导航面板中，单击“Azure Active Directory”图标。 
 
-    ![图像](./media/workspotcontrol-tutorial/selectazuread.png)
+    ![image](./media/workspotcontrol-tutorial/selectazuread.png)
 
 2. 导航到“企业应用程序”。 然后转到“所有应用程序”。
 
-    ![图像](./media/workspotcontrol-tutorial/a_select_app.png)
+    ![image](./media/workspotcontrol-tutorial/a_select_app.png)
     
 3. 若要添加新应用程序，请单击对话框顶部的“新建应用程序”按钮。
 
-    ![图像](./media/workspotcontrol-tutorial/a_new_app.png)
+    ![image](./media/workspotcontrol-tutorial/a_new_app.png)
 
 4. 在搜索框中键入“Workspot Control”，在结果面板中选择“Workspot Control”，然后单击“添加”按钮添加该应用程序。
 
-     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addfromgallery.png)
+     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>配置和测试 Azure AD 单一登录
 
@@ -98,19 +98,19 @@ ms.locfileid: "57886494"
 
 1. 在 [Azure 门户](https://portal.azure.com/)中的 Workspot Control 应用程序集成页上，选择“单一登录”。
 
-    ![图像](./media/workspotcontrol-tutorial/B1_B2_Select_SSO.png)
+    ![image](./media/workspotcontrol-tutorial/B1_B2_Select_SSO.png)
 
 2. 在“选择单一登录方法”对话框中，选择 SAML 模式以启用单一登录。
 
-    ![图像](./media/workspotcontrol-tutorial/b1_b2_saml_sso.png)
+    ![image](./media/workspotcontrol-tutorial/b1_b2_saml_sso.png)
 
 3. 在“设置 SAML 单一登录”页上，单击“编辑”按钮，以打开“基本 SAML 配置”对话框。
 
-    ![图像](./media/workspotcontrol-tutorial/b1-domains_and_urlsedit.png)
+    ![image](./media/workspotcontrol-tutorial/b1-domains_and_urlsedit.png)
 
 4. 如果要在 IDP 发起的模式下配置应用程序，请在“基本 SAML 配置”部分中执行以下步骤：
 
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url.png)
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url.png)
 
     a. 在“标识符”文本框中，使用以下模式键入 URL：`https://<INSTANCENAME>-saml.workspot.com/saml/metadata`
 
@@ -118,7 +118,7 @@ ms.locfileid: "57886494"
 
     c. 如果要在 SP 发起的模式下配置应用程序，请单击“设置其他 URL”，并执行以下步骤：
 
-     ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url1.png)
+     ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_url1.png)
 
     在“登录 URL”文本框中，使用以下模式键入 URL：`https://<INSTANCENAME>-saml.workspot.com/`
 
@@ -127,7 +127,7 @@ ms.locfileid: "57886494"
 
 5. 在“使用 SAML 设置单一登录”页的“SAML 签名证书”部分中，单击“下载”以下载“证书 (Base64)”并将其保存在计算机上。
 
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_certficate.png) 
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_certficate.png) 
 
 6. 在“设置 Workspot Control”部分中，根据要求复制响应的 URL。
 
@@ -139,17 +139,17 @@ ms.locfileid: "57886494"
 
     c. 注销 URL
 
-    ![图像](./media/workspotcontrol-tutorial/d1_samlsonfigure.png) 
+    ![image](./media/workspotcontrol-tutorial/d1_samlsonfigure.png) 
 
 7. 在另一个 Web 浏览器窗口中，以安全管理员身份登录到 Workspot Contro。
 
 8. 在页面顶部的工具栏中，单击“设置”，然后导航到“SAML” **** ****。
 
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_setup.png)
 
 9. 在“安全断言标记语言配置”页上，执行以下步骤：
  
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_saml.png)
 
     a. 在“实体 ID”文本框中，粘贴从 Azure 门户复制的“Azure Ad 标识符”值。   
 
@@ -167,19 +167,19 @@ ms.locfileid: "57886494"
 
 1. 在 Azure 门户的左侧窗格中，依次选择“Azure Active Directory”、“用户”和“所有用户”。
 
-    ![图像](./media/workspotcontrol-tutorial/d_users_and_groups.png)
+    ![image](./media/workspotcontrol-tutorial/d_users_and_groups.png)
 
 2. 选择屏幕顶部的“新建用户”。
 
-    ![图像](./media/workspotcontrol-tutorial/d_adduser.png)
+    ![image](./media/workspotcontrol-tutorial/d_adduser.png)
 
 3. 在“用户属性”中，按照以下步骤操作。
 
-    ![图像](./media/workspotcontrol-tutorial/d_userproperties.png)
+    ![image](./media/workspotcontrol-tutorial/d_userproperties.png)
 
     a. 在“名称”字段中，输入 BrittaSimon。
   
-    b. 在中**用户名**字段中，键入**brittasimon\@yourcompanydomain.extension**  
+    b. 在“用户名”字段中，键入 brittasimon\@yourcompanydomain.extension  
     例如： BrittaSimon@contoso.com
 
     c. 选择“属性”，再选择“显示密码”复选框，然后记下“密码”框中显示的值。
@@ -196,17 +196,17 @@ ms.locfileid: "57886494"
 
 2. 在页面顶部的工具栏中，单击“用户”，然后导航到“添加用户” **** ****。
 
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_adduser.png)
 
 3. 在“添加新用户”页面上，执行以下步骤：
 
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_addnewuser.png)
 
     a. 在“名字”文本框中，输入用户的名字，如 Britta。
 
     b. 在“姓氏”文本框中，输入用户的姓氏，例如 **simon**。
 
-    c. 在中**电子邮件**文字框中，输入类似的用户的电子邮件**Brittasimon\@contoso.com**。
+    c. 在“电子邮件”文本框中，输入用户的电子邮件，例如 Brittasimon\@contoso.com。
 
     d. 从“角色”下拉列表中选择相应的用户角色。
 
@@ -220,19 +220,19 @@ ms.locfileid: "57886494"
 
 1. 在 Azure 门户中，选择“企业应用程序”，然后选择“所有应用程序”。
 
-    ![图像](./media/workspotcontrol-tutorial/d_all_applications.png)
+    ![image](./media/workspotcontrol-tutorial/d_all_applications.png)
 
 2. 在应用程序列表中，选择“Workspot Control”。
 
-    ![图像](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_app.png)
+    ![image](./media/workspotcontrol-tutorial/tutorial_workspotcontrol_app.png)
 
 3. 在左侧菜单中，选择“用户和组”。
 
-    ![图像](./media/workspotcontrol-tutorial/d_leftpaneusers.png)
+    ![image](./media/workspotcontrol-tutorial/d_leftpaneusers.png)
 
 4. 选择“添加”按钮，然后在“添加分配”对话框中选择“用户和组”。
 
-    ![图像](./media/workspotcontrol-tutorial/d_assign_user.png)
+    ![image](./media/workspotcontrol-tutorial/d_assign_user.png)
 
 4. 在“用户和组”对话框中，选择“用户”列表中的 Britta Simon，然后单击屏幕底部的“选择”按钮。
 

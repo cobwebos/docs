@@ -18,11 +18,11 @@ ms.date: 02/03/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3772dbdc8582eea1b2eac368784878a8a36d34ad
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339476"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125302"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>使用 Azure 可用性区域的 SAP 工作负荷配置
 [Azure 可用性区域](https://docs.microsoft.com/azure/availability-zones/az-overview)是 Azure 提供的高可用性功能之一。 使用可用性区域可提高 Azure 上 SAP 工作负荷的整体可用性。 此功能已在某些 [Azure 区域](https://azure.microsoft.com/global-infrastructure/regions/)中推出。 今后会在更多的区域中推出。

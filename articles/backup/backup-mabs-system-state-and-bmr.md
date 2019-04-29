@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: raynew
 ms.openlocfilehash: 35ab150670cdc27efcedca233928e0c2184aeca6
-ms.sourcegitcommit: b0f39746412c93a48317f985a8365743e5fe1596
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2018
-ms.locfileid: "52880091"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116169"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-with-azure-backup-server"></a>使用 Azure 备份服务器备份系统状态并还原为裸机
 
@@ -37,9 +37,9 @@ Azure 备份服务器可备份系统状态并提供裸机恢复 (BMR) 保护。
 |**文件数据**<br /><br />文件数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|服务器丢失（数据卷丢失）|Y|否|是（BMR，接下来是备份文件数据的常规恢复）|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|站点、列表、列表项、文档丢失|Y|N|N|
 |**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
-|**SharePoint 数据**：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|
-|Windows Server 2012 R2 Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|VM 丢失|Y|N|N|
-|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|操作系统丢失或损坏|N|Y|Y|
+|SharePoint 数据：<br /><br />场数据的 Azure 备份服务器备份<br /><br />BMR/系统状态备份|灾难恢复|N|N|N|
+|Windows Server 2012 R2 Hyper-V<br /><br />对 Hyper-V 主机或来宾进行 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|VM 丢失|Y|N|N|
+|Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|丢失或损坏操作系统|N|Y|Y|
 |Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|Hyper-V 主机丢失（VM 完整）|N|N|Y|
 |Hyper-V<br /><br />Hyper-V 主机或来宾的 Azure 备份服务器备份<br /><br />主机的 BMR/系统状态备份|Hyper-V 主机丢失（VM 丢失）|N|N|Y<br /><br />BMR，接下来是常规 Azure 备份服务器恢复|
 |SQL Server/Exchange<br /><br />Azure 备份服务器应用备份<br /><br />BMR/系统状态备份|应用数据丢失|Y|N|N|

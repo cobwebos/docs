@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: f61f8740c9514f6276afb2ee84bcdccdc54c0710
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997896"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61040907"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的服务器概念
 本文提供使用 Azure Database for MariaDB 服务器的注意事项和指南。
@@ -50,6 +50,6 @@ Azure Database for MariaDB 服务器：
 
 ## <a name="next-steps"></a>后续步骤
 - 有关该服务的概述，请参阅 [Azure Database for MariaDB 概述](./overview.md)
-- 有关基于服务层的具体资源配额和限制的信息，请参阅[服务层](./concepts-pricing-tiers.md)
+- 有关基于服务层级的具体资源配额和限制的信息，请参阅[服务层级](./concepts-pricing-tiers.md)
 
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

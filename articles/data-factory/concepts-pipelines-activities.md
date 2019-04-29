@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 845544a2062b43f0d9f883ddecbc2589b3357221
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57997932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61261828"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure 数据工厂中的管道和活动
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -170,10 +170,10 @@ dependsOn | 该属性用于定义活动依赖项，以及后续活动对以前�
 
 JSON 名称 | 描述 | 允许的值 | 需要
 --------- | ----------- | -------------- | --------
-timeout | 指定活动运行的超时。 | Timespan | 不是。 默认超时为 7 天。
-retry | 最大重试次数 | Integer | 不是。 默认值为 0
-retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不是。 默认为 20 秒
-secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不是。 默认值为 false。
+timeout | 指定活动运行的超时。 | Timespan | 不。 默认超时为 7 天。
+retry | 最大重试次数 | Integer | 不。 默认值为 0
+retryIntervalInSeconds | 重试之间的延迟（以秒为单位） | Integer | 不。 默认为 20 秒
+secureOutput | 当设置为 true 时，来自活动的输出被视为安全的，不会记录到监视中。 | Boolean | 不。 默认值为 false。
 
 ### <a name="control-activity"></a>控制活动
 控制活动具有以下顶级结构：

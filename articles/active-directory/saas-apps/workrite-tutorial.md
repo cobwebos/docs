@@ -17,11 +17,11 @@ ms.date: 07/19/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cb64debca10cf7be6e2e328a1f401f125b67d940
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57447160"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098501"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workrite"></a>教程：Azure Active Directory 与 Workrite 的集成
 
@@ -164,7 +164,7 @@ ms.locfileid: "57447160"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-a-workrite-test-user"></a>创建 Workrite 测试用户
 

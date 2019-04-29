@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/15/2019
 ms.author: bwren
 ms.openlocfilehash: f6617a504bbda666ce9ece018ccb0cf02635c360
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54354960"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61425792"
 ---
 # <a name="log-analytics-smart-analytics-examples"></a>Log Analytics 智能分析示例
 本文包含使用 Log Analytics 中的智能分析函数执行用户活动分析的示例。 可以使用这些示例来分析你自己的由 Application Insights 监视的应用程序，或者使用这些查询中的概念来对其他数据进行类似的分析。 

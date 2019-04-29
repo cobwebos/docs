@@ -14,12 +14,12 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 5a74097521cc7dceea2c47f78c1dbb2f17e292aa
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.openlocfilehash: e54ed6c526182cea57e2d40f356ad9236510d82c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128060"
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>将现有 Node.js Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
@@ -67,7 +67,7 @@ ms.locfileid: "53726674"
 
 ```npm i -g azure-mobile-apps-compatibility```
 
-## <a name="obtain-ams-scripts"></a>获取 Azure 移动服务脚本
+## <a name="obtain-ams-scripts"></a> 获取 Azure 移动服务脚本
 * 登录到 [Azure 门户]。
 * 使用“所有资源”或“应用服务”找到移动服务站点。
 * 在站点内单击“工具” -> “Kudu” -> “转到”，打开 Kudu 站点。
@@ -77,14 +77,14 @@ ms.locfileid: "53726674"
 
 随后将下载 ZIP 格式的脚本。  在本地计算机上创建新目录，并在该目录中解压缩 `scripts.ZIP` 文件。  此时会创建 `scripts` 目录。
 
-## <a name="scaffold-app"></a>搭建新的 Azure 移动应用后端基架
+## <a name="scaffold-app"></a> 创建新 Azure 移动应用后端的基架
 从包含脚本目录的目录运行以下命令：
 
 ```scaffold-mobile-app scripts out```
 
 此时会在 `out` 目录中创建带有基架的 Azure 移动应用后端。  最好将 `out` 目录签入所选的源代码存储库（但不一定要这样做）。
 
-## <a name="deploy-ama-app"></a>部署 Azure 移动应用后端
+## <a name="deploy-ama-app"></a> 部署 Azure 移动应用后端
 在部署期间，需要执行以下操作：
 
 1. 在 [Azure 门户]中创建新的移动应用。

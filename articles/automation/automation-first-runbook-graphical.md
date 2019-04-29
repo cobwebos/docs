@@ -11,11 +11,11 @@ ms.date: 04/13/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: be811d0dc2ce2eca0b20ca12165eaf0799bd6b5d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54426776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61077549"
 ---
 # <a name="my-first-graphical-runbook"></a>我的第一个图形 Runbook
 
@@ -28,7 +28,7 @@ ms.locfileid: "54426776"
 
 本教程指导在 Azure 自动化中创建 [图形 Runbook](automation-runbook-types.md#graphical-runbooks)。 从一个简单的 Runbook 开始，目的是测试和发布该 Runbook，同时了解如何跟踪 Runbook 作业的状态。 然后，通过修改 Runbook 来实际管理 Azure 资源，这种情况下会启动 Azure 虚拟机。 然后添加 Runbook 参数和条件链接，使该 Runbook 更稳健，从而完成本教程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要完成本教程，需要以下各项：
 

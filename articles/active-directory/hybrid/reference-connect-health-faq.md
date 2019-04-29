@@ -16,11 +16,11 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ec88caafa9a6168860a8e9e2ff9e2abe0cfd0e77
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57852947"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096108"
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health 常见问题
 本文提供有关 Azure Active Directory (Azure AD) Connect Health 的常见问题 (FAQ) 解答。 这些常见问题涉及到服务使用方法，包括计费模式、功能、限制和支持。
@@ -37,7 +37,7 @@ ms.locfileid: "57852947"
 |角色| 操作系统/版本|
 |--|--|
 |Active Directory 联合身份验证服务 (AD FS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
-|Azure AD Connect | 版本 1.0.9125 或更高版本|
+|具有 Azure AD Connect | 版本 1.0.9125 或更高版本|
 |Active Directory 域服务 (AD DS)| <ul> <li> Windows Server 2008 R2 </li><li> Windows Server 2012  </li> <li>Windows Server 2012 R2 </li> <li> Windows Server 2016  </li> </ul>|
 
 请注意，该服务提供的功能可能因角色和操作系统而有所不同。 换言之，并非所有功能都适用于所有操作系统版本。 有关详细信息，请参阅功能说明。
@@ -95,13 +95,13 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：在 Azure AD Connect Health 代理安装期间，是否必须重启我的服务器？**
 
-不是。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
+不。 安装代理时不需要重新启动服务器。 但是，安装某些先决条件步骤可能需要重新启动服务器。
 
 例如，在 Windows Server 2008 R2 上安装 .NET 4.5 Framework 需要重新启动服务器。
 
 **问：Azure AD Connect Health 是否通过直通型 HTTP 代理进行工作？**
 
-是的。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
+可以。 对于正在进行的操作，可以将 Health 代理配置为使用 HTTP 代理转发出站 HTTP 请求。
 有关详细信息，请阅读[为 Health 代理配置 HTTP 代理](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy)。
 
 如果要在代理注册过程中配置代理，可能需要事先修改 Internet Explorer 代理设置。
@@ -112,7 +112,7 @@ Azure AD Connect Health 不受德国云支持，但[同步错误报告功能](ho
 
 **问：Azure AD Connect Health 在连接到 HTTP 代理时是否支持基本身份验证？**
 
-不是。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
+不。 目前不支持指定任意用户名和密码进行基本身份验证的机制。
 
 **问：若要确保 Azure AD Connect Health 代理正常使用，需要打开哪些防火墙端口？**
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 0466265ad5a24e8ea6dc5079e2b4006d74e7dde0
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 0e6a52ea2fdd05546a4da9f8cd1165b41ed27944
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38452526"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097644"
 ---
 # <a name="configure-an-ilb-listener-for-always-on-availability-groups-in-azure"></a>在 Azure 中配置 Always On 可用性组的 ILB 侦听器
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "38452526"
 ## <a name="overview"></a>概述
 
 > [!IMPORTANT]
-> Azure 提供两个不同的部署模型用于创建和处理资源：[Azure 资源管理器和经典模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
+> Azure 具有用于创建和处理资源的两个不同部署模型：[Azure 资源管理器部署模型和经典部署模型](../../../azure-resource-manager/resource-manager-deployment-model.md)。 本文介绍经典部署模型的用法。 我们建议在大多数新部署中使用 Resource Manager 模型。
 
 若要在 Resource Manager 模型中配置 Always On 可用性组的侦听器，请参阅[在 Azure 中配置 Always On 可用性组的负载均衡器](../sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md)。
 
@@ -42,7 +42,7 @@ ms.locfileid: "38452526"
 在 Azure 中使用内部负载均衡器 (ILB) 的可用性组侦听器遵循以下准则：
 
 * Windows Server 2008 R2、Windows Server 2012 和 Windows Server 2012 R2 支持可用性组侦听器。
-* 每个云服务只支持一个内部可用性组侦听器，因为该侦听器将配置给 ILB，而每个云服务只有一个 ILB。 但是，可以创建多个外部侦听器。 有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组的外部侦听器](../classic/ps-sql-ext-listener.md)。
+* 每个云服务只支持一个内部可用性组侦听程序，因为该侦听程序将配置给 ILB，而每个云服务只有一个 ILB。 但是，可以创建多个外部侦听器。 有关详细信息，请参阅[在 Azure 中配置 Always On 可用性组的外部侦听器](../classic/ps-sql-ext-listener.md)。
 
 ## <a name="determine-the-accessibility-of-the-listener"></a>确定侦听器的可访问性
 [!INCLUDE [ag-listener-accessibility](../../../../includes/virtual-machines-ag-listener-determine-accessibility.md)]
@@ -63,9 +63,9 @@ ms.locfileid: "38452526"
 4. 在本地客户端上，下载并安装[最新的 PowerShell 模块](https://azure.microsoft.com/downloads/)。
 
 5. 启动 Azure PowerShell。  
-    将打开新 PowerShell 会话，其中加载了 Azure 管理模块。
+    将打开新的 PowerShell 会话，其中加载了 Azure 管理模块。
 
-6. 运行 `Get-AzurePublishSettingsFile`。 此 cmdlet 你将定向到浏览器，以将发布设置文件下载到本地目录。 系统可能会提示输入 Azure 订阅的登录凭据。
+6. 运行 `Get-AzurePublishSettingsFile`。 此 cmdlet 将你定向到浏览器，以将发布设置文件下载到本地目录。 系统可能会提示输入 Azure 订阅的登录凭据。
 
 7. 结合下载的发布设置文件的路径运行以下 `Import-AzurePublishSettingsFile` 命令：
 
@@ -78,16 +78,16 @@ ms.locfileid: "38452526"
         (Get-AzureVNetConfig).XMLConfiguration
 9. 记下包含副本所在 VM 的子网的 *Subnet* 名称。 脚本中的 $SubnetName 参数将要使用此名称。
 
-10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 *AvailableAddresses* 来查找可用的 IP 地址。 例如，如果虚拟网络名为 *MyVNet*，并包含从 *172.16.0.128* 开始的子网地址范围，则以下命令将列出可用地址：
+10. 记下包含副本所在 VM 的子网的 *VirtualNetworkSite* 名称和起始 *AddressPrefix*。 再通过将这两个值传递给 `Test-AzureStaticVNetIP` 命令并检查 AvailableAddresses 来查找可用的 IP 地址。 例如，如果虚拟网络名为 MyVNet，并包含从 172.16.0.128 开始的子网地址范围，则以下命令将列出可用地址：
 
         (Test-AzureStaticVNetIP -VNetName "MyVNet"-IPAddress 172.16.0.128).AvailableAddresses
-11. 选择一个可用地址，并将其用于下一步骤中的脚本的 $ILBStaticIP 参数。
+11. 选择一个可用地址，并将其用于下一步骤中脚本的 $ILBStaticIP 参数。
 
 12. 将以下 PowerShell 脚本复制到文本编辑器，并根据环境设置变量值。 已经为某些参数提供了默认值。  
 
     使用地缘组的现有部署不能添加 ILB。 有关 ILB 要求的详细信息，请参阅[内部负载均衡器概述](../../../load-balancer/load-balancer-internal-overview.md)。
 
-    此外，如果可用性组跨多个 Azure 区域，则必须在每个数据中心内对驻留其中的云服务和节点运行一次该脚本。
+    此外，如果可用性组跨 Azure 区域，则必须在每个数据中心内对其中的云服务和节点运行该脚本一次。
 
         # Define variables
         $ServiceName = "<MyCloudService>" # the name of the cloud service that contains the availability group nodes
@@ -105,7 +105,7 @@ ms.locfileid: "38452526"
             Get-AzureVM -ServiceName $ServiceName -Name $node | Add-AzureEndpoint -Name "ListenerEndpoint" -LBSetName "ListenerEndpointLB" -Protocol tcp -LocalPort 1433 -PublicPort 1433 -ProbePort 59999 -ProbeProtocol tcp -ProbeIntervalInSeconds 10 -InternalLoadBalancerName $ILBName -DirectServerReturn $true | Update-AzureVM
         }
 
-13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话中运行。 如果提示符仍然显示 **>>**，请再次按 Enter，以确保脚本开始运行。
+13. 设置变量后，将脚本从文本编辑器复制到 PowerShell 会话并运行。 如果提示符仍然显示 >>，请再次按 Enter，以确保脚本开始运行。
 
 ## <a name="verify-that-kb2854082-is-installed-if-necessary"></a>如果需要，请验证是否已安装 KB2854082
 [!INCLUDE [kb2854082](../../../../includes/virtual-machines-ag-listener-kb2854082.md)]
@@ -151,10 +151,10 @@ ms.locfileid: "38452526"
 
         cluster res $IPResourceName /priv enabledhcp=0 address=$ILBIP probeport=59999  subnetmask=255.255.255.255
 
-3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 Azure PowerShell 会话中运行。 如果提示符仍然显示 **>>**，请再次按 Enter，确保脚本开始运行。
+3. 设置变量之后，打开提升的 Windows PowerShell 窗口，然后将文本编辑器中的脚本粘贴到 PowerShell 会话并运行。 如果提示符仍然显示 **>>**，请再次按 Enter，确保脚本开始运行。
 
 4. 针对每个 VM 重复上述步骤。  
-    此脚本将使用云服务的 IP 地址来配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们前面创建的负载均衡终结点在探测端口上的轮询。
+    此脚本使用云服务的 IP 地址配置 IP 地址资源，同时设置探测端口等其他参数。 在 IP 地址资源联机后，它可以响应我们前面创建的负载均衡终结点在探测端口上的轮询。
 
 ## <a name="bring-the-listener-online"></a>使侦听器联机
 [!INCLUDE [Bring-Listener-Online](../../../../includes/virtual-machines-ag-listener-bring-online.md)]

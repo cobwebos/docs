@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: 8d3885ba25e479316f97ecbb0681a1680650fc09
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61083612"
 ---
 # <a name="start-virtual-machines-in-a-lab-in-order-by-using-azure-automation-runbooks"></a>使用 Azure 自动化 runbook 的实验室中顺序启动虚拟机
 [Autostart](devtest-lab-set-lab-policy.md#set-autostart)开发测试实验室的功能可用于配置 Vm 以在指定时间自动启动。 但是，此功能不支持计算机按特定顺序启动。 有几种方案，这种自动化会非常有用。  一个方案是实验室中 Jumpbox VM 需要在何处进行先启动之前的其他 Vm，, 因为 Jumpbox 用作其他 vm 的 vm 的访问点。  本文介绍如何设置 Azure 自动化帐户与 PowerShell runbook 执行脚本。 该脚本使用标记在 Vm 上在实验室中以便您可以控制启动顺序，而无需更改该脚本。

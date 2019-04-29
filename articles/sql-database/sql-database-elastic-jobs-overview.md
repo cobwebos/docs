@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 8abb2e3ac4f62a3ea51cc686bbf23260fccc4077
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441366"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61475641"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>管理扩大的云数据库
 

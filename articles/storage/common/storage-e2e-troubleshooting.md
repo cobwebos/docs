@@ -10,11 +10,11 @@ ms.date: 03/15/2017
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: f88a560d4fa819a055534530ddc0862e4aa330fe
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351875"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098603"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>使用 Azure 存储指标和日志记录、AzCopy 及 Message Analyzer 进行端到端故障排除
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -79,7 +79,7 @@ Azure 存储操作可能返回 HTTP 状态代码大于 299 作为其正常功能
 * **HTTP 网络跟踪日志**，它收集有关 HTTP/HTTPS 请求的数据和响应数据，包括针对 Azure 存储的操作的数据。 在本教程中，我们将通过 Message Analyzer 生成网络跟踪。
 
 ### <a name="configure-server-side-logging-and-metrics"></a>配置服务器端日志记录和度量值
-首先，我们将需要配置 Azure 存储日志记录和度量值，它使我们能够从服务端，若要分析的数据。 可通过不同的方式配置日志记录和指标：通过 [Azure 门户](https://portal.azure.com)、使用 PowerShell 或以编程方式。 请参阅[启用指标](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)并[启用日志记录](storage-analytics-logging.md#enable-storage-logging)有关配置日志记录和指标的详细信息。
+首先，我们需要配置 Azure 存储日志记录和度量值，以便可以从服务端获取要分析的数据。 可通过不同的方式配置日志记录和指标：通过 [Azure 门户](https://portal.azure.com)、使用 PowerShell 或以编程方式。 请参阅[启用指标](storage-analytics-metrics.md#enable-metrics-using-the-azure-portal)和[启用日志记录](storage-analytics-logging.md#enable-storage-logging)，详细了解如何配置日志记录和指标。
 
 ### <a name="configure-net-client-side-logging"></a>配置 .NET 客户端日志记录
 若要为 .NET 应用程序配置客户端日志记录，请在应用程序的配置文件（web.config 或 app.config）中启用 .NET 诊断。 有关详细信息，请参阅 MSDN 上的 [Client-side Logging with the .NET Storage Client Library](https://msdn.microsoft.com/library/azure/dn782839.aspx)（使用 .NET 存储客户端库进行的客户端日志记录）和 [Client-side Logging with the Microsoft Azure Storage SDK for Java](https://msdn.microsoft.com/library/azure/dn782844.aspx)（通过用于 Java 的 Microsoft Azure 存储 SDK 进行的客户端日志记录）。

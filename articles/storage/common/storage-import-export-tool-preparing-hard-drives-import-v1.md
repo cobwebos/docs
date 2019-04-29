@@ -9,11 +9,11 @@ ms.date: 01/15/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 03b504524b2f489f1ee042c6e825ccffe0a60bb3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58315056"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478464"
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>为导入作业准备硬盘驱动器
 若要为导入作业准备一个或多个硬盘驱动器，请执行以下步骤：
@@ -108,7 +108,7 @@ ms.locfileid: "58315056"
 |**/csas:**<ContainerSas\>|`Optional`。 用于将数据导入存储帐户的容器 SAS。 必须在命令中包含 **/sk:**<StorageAccountKey\> 或 **/csas:**<ContainerSas\>。<br /><br /> 此参数的值必须以容器名称开头，后接问号 (?) 和 SAS 令牌。 例如：<br /><br /> `mycontainer?sv=2014-02-14&sr=c&si=abcde&sig=LiqEmV%2Fs1LF4loC%2FJs9ZM91%2FkqfqHKhnz0JM6bqIqN0%3D&se=2014-11-20T23%3A54%3A14Z&sp=rwdl`<br /><br /> 无论是在 URL 上还是存储的访问策略中指定，权限都必须包括“读取”、“写入”和“删除”导入作业，以及“读取”、“写入”和“列出”导出作业。<br /><br /> 指定此参数时，要导入或导出的所有 Blob 都必须位于共享访问签名中指定的容器内。|
 |**/t:**<TargetDriveLetter\>|`Required.` 当前复制会话的目标硬盘驱动器的驱动器号（不带尾随冒号）。|
 |**/format**|`Optional.` 在需要格式化驱动器时指定此参数；否则，请将其忽略。 在对驱动器进行格式化之前，该工具将提示你通过控制台进行确认。 若不希望显示该确认，请指定 /silentmode 参数。|
-|**/silentmode**|`Optional.` 指定此参数来取消确认用于格式化目标驱动器。|
+|**/silentmode**|`Optional.` 指定此参数不会显示对目标驱动器进行格式化的确认。|
 |**/encrypt**|`Optional.` 在尚未使用 BitLocker 对驱动器进行加密但需要使用此工具进行加密时，指定此参数。 如果已使用 BitLocker 对驱动器进行加密，则忽略此参数并指定 `/bk` 参数，同时还提供现有 BitLocker 密钥。<br /><br /> 如果指定 `/format` 参数，则还必须指定 `/encrypt` 参数。|
 |**/bk:**<BitLockerKey\>|`Optional.` 如果指定 `/encrypt`，请省略此参数。 如果省略 `/encrypt`，则需要事先使用 BitLocker 为驱动器加密。 使用此参数可指定 BitLocker 密钥。 导入作业的所有硬盘驱动器都需要 BitLocker 加密。|
 |**/logdir:**<LogDirectory\>|`Optional.` 日志目录指定用于存储详细日志和临时清单文件的目录。 如果未指定，则使用当前目录作为日志目录。|

@@ -1,15 +1,10 @@
 ---
-author: rayne-wiselman
-ms.service: site-recovery
-ms.topic: include
-ms.date: 10/26/2018
-ms.author: raynew
 ms.openlocfilehash: ffc9b09c72ef1bf5180a0d626908d09b6fdd41ca
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "58113881"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122789"
 ---
 ### <a name="prepare-for-a-push-installation-on-a-windows-computer"></a>在 Windows 计算机上准备推送安装
 
@@ -18,7 +13,7 @@ ms.locfileid: "58113881"
 
    > [!NOTE]
    > 如果不使用域帐户，请在本地计算机上禁用远程用户访问控制。 若要禁用远程用户访问控制，请在 HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System 注册表项，添加一个新的 dword 值：LocalAccountTokenFilterPolicy。 将值设置为 **1**。 若要执行此任务，请在命令提示符下运行以下命令：  
-   `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+   > `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
    >
    >
 1. 在要保护的计算机的 Windows 防火墙中，选择“允许应用或功能通过防火墙”。 启用“文件和打印机共享”和“Windows Management Instrumentation (WMI)”。 对于属于某个域的计算机，可以使用组策略对象 (GPO) 配置防火墙设置。
@@ -36,3 +31,5 @@ ms.locfileid: "58113881"
     d. 添加已创建的帐户。
 
     e. 输入为计算机启用复制时使用的凭据。
+<!--Update_Description: wording update-->
+<!--ms.date: 09/17/2018-->

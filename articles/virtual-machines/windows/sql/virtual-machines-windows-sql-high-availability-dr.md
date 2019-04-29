@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
 ms.openlocfilehash: 463ef5f4a655617074915078fb4ced9e596f8957
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51257708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478287"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中 SQL Server 的高可用性和灾难恢复
 
@@ -31,7 +31,7 @@ ms.locfileid: "51257708"
 ## <a name="understanding-the-need-for-an-hadr-solution"></a>了解对 HADR 解决方案的需求
 有责任确保数据库系统拥有服务级别协议 (SLA) 要求的 HADR 功能。 Azure 提供了高可用性机制，例如云服务的服务修复和虚拟机的故障恢复检测，但这一事实自身并不保证你能够达到所需 SLA 的要求。 这些机制可以保护 VM 的高可用性，但不能保护在 VM 内部运行的 SQL Server 的高可用性。 VM 联机并正常运行时，SQL Server 实例也可能会出故障。 再者，即便是 Azure 提供的高可用性机制，也会在 VM 遇到从软件或硬件故障进行恢复、操作系统升级等事件时，为其留出可能较长的停机时间。
 
-此外，使用称作异地复制的功能在 Azure 中实现的异地冗余存储 (GRS)，可能不适合作为数据库的灾难恢复解决方案。 因为异地复制功能会异步发送数据，在发生灾难的情况下，最近的更新可能丢失。 [数据和日志文件各自在不同磁盘上的情况下不支持异地复制](#geo-replication-support)部分中提供了有关异地复制限制的详细信息。
+此外，使用异地复制功能在 Azure 中实现的异地冗余存储 (GRS)，可能不适合作为数据库的灾难恢复解决方案。 因为异地复制功能会异步发送数据，在发生灾难的情况下，最近的更新可能丢失。 [数据和日志文件各自在不同磁盘上的情况下不支持异地复制](#geo-replication-support)部分中提供了有关异地复制限制的详细信息。
 
 ## <a name="hadr-deployment-architectures"></a>HADR 部署体系结构
 Azure 支持的 SQL Server HADR 技术包括：
@@ -64,12 +64,12 @@ Azure 支持的 SQL Server HADR 技术包括：
 | 使用 Azure Site Recovery 将 SQL Server 复制和故障转移到 Azure |一个 Azure 数据中心的生产 SQL Server 直接复制到其他 Azure 数据中心的 Azure 存储以实现灾难恢复。<br/>![使用 Azure Site Recovery 进行复制](./media/virtual-machines-windows-sql-high-availability-dr/azure_only_dr_standalone_sqlserver-asr.png)<br/>有关详细信息，请参阅[使用 SQL Server 灾难恢复和 Azure Site Recovery 来保护 SQL Server](../../../site-recovery/site-recovery-sql.md)。 |
 
 
-## <a name="hybrid-it-disaster-recovery-solutions"></a>混合 IT：灾难恢复解决方案
+## <a name="hybrid-it-disaster-recovery-solutions"></a>混合 IT:灾难恢复解决方案
 可将可用性组、数据库镜像、日志传送以及备份和还原与 Azure Blob 存储配合使用，在混合 IT 环境中为 SQL Server 数据库提供灾难恢复解决方案。
 
 | 技术 | 示例体系结构 |
 | --- | --- |
-| **可用性组** |某些可用性副本运行在 Azure VM 中，另一些则在本地运行，以实现跨站点灾难恢复。 生产站点可位于本地，也可以位于 Azure 数据中心。<br/>![可用性组](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>由于所有可用性副本必须在同一故障转移群集中，因此该群集必须同时跨越这两个网络（多子网故障转移群集）。 此配置需要在 Azure 与本地网络之间使用 VPN 连接。<br/><br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。<br/><br/>可以使用 SSMS 中的“添加副本向导”将 Azure 副本添加到现有的 Always On 可用性组。 有关详细信息，请参阅教程“将 Always On 可用性组扩展到 Azure 中”。 |
+| **可用性组** |某些可用性副本运行在 Azure VM 中，另一些则在本地运行，以实现跨站点灾难恢复。 生产站点可位于本地，也可以位于 Azure 数据中心。<br/>![可用性组](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_alwayson.gif)<br/>由于所有可用性副本必须在同一故障转移群集中，因此该群集必须同时跨越这两个网络（多子网故障转移群集）。 此配置需要在 Azure 与本地网络之间使用 VPN 连接。<br/><br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。<br/><br/>可以使用 SSMS 中的“添加副本向导”将 Azure 副本添加到现有的 Always On 可用性组。 有关详细信息，请参阅教程：将 Alwayson 可用性组扩展到 Azure。 |
 | **数据库镜像** |一个伙伴在 Azure VM 中运行，另一个则在本地运行，以实现使用服务器证书进行跨站点灾难恢复。 合作伙伴不必在同一 Active Directory 域中，并且不需要 VPN 连接。<br/>![数据库镜像](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_dbmirroring.gif)<br/>另一种数据库镜像方案是一个合作伙伴在 Azure VM 中运行，另一个则在同一 Active Directory 域中本地运行，以实现跨站点灾难恢复。 需要[在 Azure 虚拟网络与本地网络之间使用 VPN 连接](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)。<br/><br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。 |
 | **日志传送** |一个服务器在 Azure VM 中运行，另一个则在本地运行，以实现跨站点灾难恢复。 日志传送依赖于 Windows 文件共享，因此需要在 Azure 虚拟网络与本地网络之间使用 VPN 连接。<br/>![日志传送](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_log_shipping.gif)<br/>为了成功地对数据库进行灾难恢复，还应在灾难恢复站点上安装副本域控制器。 |
 | **使用 Azure Blob 存储服务进行备份和还原** |本地生产数据库直接备份到 Azure Blob 存储以实现灾难恢复。<br/>![备份和还原](./media/virtual-machines-windows-sql-high-availability-dr/hybrid_dr_backup_restore.gif)<br/>有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的备份和还原](virtual-machines-windows-sql-backup-recovery.md)。 |
@@ -100,7 +100,7 @@ Azure 中的 DHCP 服务不符合 RFC 标准，可能会导致创建某些故障
 ### <a name="availability-group-listener-support"></a>可用性组侦听器支持
 运行 Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 和 Windows Server 2016 的 Azure VM 支持可用性组侦听器。 这种支持的实现，是借助于在 Azure VM 上启用的负载均衡终结点，它们都是可用性组节点。 必须执行特殊的配置步骤，才能让这些侦听器对在 Azure 中运行和本地运行的客户端应用程序都有效。
 
-有两个主要选项用于设置侦听器：“外部(公共)”或“内部”。 外部（公共）侦听器使用面向 Internet 的负载均衡器并与可通过 Internet 访问的公共虚拟 IP (VIP) 相关联。 内部侦听器使用内部负载均衡器，且仅支持同一虚拟网络中的客户端。 对于任一负载均衡器类型，都必须启用直接服务器返回。 
+设置侦听器时有两个主要选项：“外部(公共)”或“内部”。 外部（公共）侦听器使用面向 Internet 的负载均衡器并与可通过 Internet 访问的公共虚拟 IP (VIP) 相关联。 内部侦听器使用内部负载均衡器，且仅支持同一虚拟网络中的客户端。 对于任一负载均衡器类型，都必须启用直接服务器返回。 
 
 如果可用性组跨多个 Azure 子网（例如，跨 Azure 区域的部署），则客户端连接字符串必须包含“**MultisubnetFailover=True**”。 这会导致与不同子网中的副本建立并行连接。 有关设置侦听器的说明，请参阅
 

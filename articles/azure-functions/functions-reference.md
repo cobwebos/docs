@@ -13,11 +13,11 @@ ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 5b2b7f3cd6bfa219b794edc63d6bf8b2784b713c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58891882"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62120732"
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions 开发人员指南
 在 Azure Functions 中，特定函数共享一些核心技术概念和组件，不受所用语言或绑定限制。 跳转学习某个特定语言或绑定的详细信息之前，请务必通读此通用概述。
@@ -48,9 +48,9 @@ Function.json 文件定义函数触发器、绑定和其他配置设置。 每�
 
 | 属性 | 值/类型 | 注释 |
 | --- | --- | --- |
-| `type` |字符串 |绑定类型。 例如，`queueTrigger`。 |
+| `type` |string |绑定类型。 例如，`queueTrigger`。 |
 | `direction` |'in', 'out' |表示绑定是用于接收数据到函数中或是从函数发送数据。 |
-| `name` |字符串 |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
+| `name` |string |将用于函数中绑定数据的名称。 对于 C#，它将是参数名称；对于 JavaScript，它是键/值列表中的键。 |
 
 ## <a name="function-app"></a>函数应用
 函数应用在 Azure 中提供用于运行函数的执行上下文。 函数应用由一个或多个共同管理、部署和缩放的独立函数组成。 函数应用中的所有函数共享相同的定价计划、连续部署和运行时版本。 将函数应用视为组织和共同管理函数的一种方法。 

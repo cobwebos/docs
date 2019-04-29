@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: abb85d568e26e4b6f85b960a2560aae570daf201
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149174"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61320179"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>从 Azure DevOps 运行映像工厂
 本文介绍如何从 Azure DevOps (以前称为 Visual Studio Team Services) 中运行映像工厂所需的所有准备工作。
@@ -78,7 +78,7 @@ Azure DevOps 让你存储的源代码，请在一个位置中运行 Azure PowerS
 若要简化的命令行参数，封装到一组生成变量驱动器映像工厂的键值。 选择**变量**选项卡，将看到几个默认变量的列表。 下面是将输入到 Azure DevOps 中的变量的列表：
 
 
-| 变量名 | Value | 说明 |
+| 变量名 | 值 | 说明 |
 | ------------- | ----- | ----- |
 | ConfigurationLocation | /Scripts/ImageFactory/Configuration | 这是到存储库中的完整路径**配置**文件夹。 如果您导入更高版本的整个存储库，左侧的值正确。 否则，更新以指向配置位置。 |
 | DevTestLabName | MyImageFactory | 实验室中 Azure 开发测试实验室作为工厂用于生成映像的名称。 如果你没有帐户，创建一个。 请确保实验室服务终结点有权访问位于同一订阅中。 |

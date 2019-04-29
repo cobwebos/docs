@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/31/2018
 ms.author: raynew
 ms.openlocfilehash: 3ad3438f02ead9063a683a39d4ac5823274d55f7
-ms.sourcegitcommit: 33091f0ecf6d79d434fa90e76d11af48fd7ed16d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54155161"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61276131"
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>可以通过 Azure Site Recovery 保护哪些工作负荷？
 
@@ -30,7 +30,7 @@ Site Recovery 集成 Microsoft 应用程序，其中包括 SharePoint、Exchange
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>为何要使用站点恢复来复制应用程序？
 
-站点恢复可帮助实现应用程序级的保护和恢复，如下所述：
+Site Recovery 可帮助实现应用程序级的保护和恢复，如下所示：
 
 * 不区分应用，为受支持计算机上运行的任何工作负荷提供复制。
 * 几乎同步的复制，RPO 低至 30 秒，满足大多数关键业务应用的需要。
@@ -78,7 +78,7 @@ SQL Server 是本地数据中心许多业务应用的数据服务基础。  站�
 ## <a name="protect-sharepoint"></a>保护 SharePoint
 Azure Site Recovery 可帮助保护 SharePoint 部署，如下所述：
 
-* 消除对用于灾难恢复的备用场的需要以及相关的基础结构成本。 使用站点恢复将整个场（Web 层、应用层和数据库层）复制到 Azure 或辅助站点。
+* 消除对用于灾难恢复的备用场的需要以及相关的基础结构成本。 使用 Site Recovery 将整个场（Web 层、应用层和数据库层）复制到 Azure 或辅助站点。
 * 简化应用程序部署和管理。 部署到主站点的更新会自动复制，因此可在故障转移和恢复辅助站点中的场之后使用。 此外，还可降低使后备场保持最新状态的管理复杂性和相关成本。
 * 按照副本环境的需要创建一个与生产类似的副本来进行测试和调试，从而简化 SharePoint 应用程序的开发与测试。
 * 使用站点恢复将 SharePoint 部署迁移到 Azure，从而简化从本地到云的过渡过程。

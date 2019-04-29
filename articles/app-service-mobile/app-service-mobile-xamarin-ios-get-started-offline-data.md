@@ -14,12 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 287977d55656a4b2bc42d90730d16f522fae9b9e
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
-ms.translationtype: HT
+ms.openlocfilehash: 6a43ed0a50082cc37587752631c707bf9b5059ab
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27594660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097437"
 ---
 # <a name="enable-offline-sync-for-your-xamarinios-mobile-app"></a>为 Xamarin.iOS 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -29,7 +29,7 @@ ms.locfileid: "27594660"
 
 在本教程中，更新[创建 Xamarin iOS 应用]中的 Xamarin.iOS 应用项目，以支持 Azure 移动应用的脱机功能。 如果不使用下载的快速入门服务器项目，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。
+若要了解有关脱机同步功能的详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 主题。
 
 ## <a name="update-the-client-app-to-support-offline-features"></a>更新客户端应用以支持脱机功能
 脱机情况下，可使用 Azure 移动应用脱机功能与本地数据库交互。 要在应用中使用这些功能，请将 [SyncContext] 初始化到本地存储。 通过 [IMobileServiceSyncTable] 接口引用表。 SQLite 在设备上用作本地存储。
@@ -39,7 +39,7 @@ ms.locfileid: "27594660"
 3. 重新生成并运行客户端应用。 应用的工作方式与启用脱机同步之前一样。但是，本地数据库中现在填充了可以在脱机方案中使用的数据。
 
 ## <a name="update-sync"></a>更新应用以与后端断开连接
-在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序将指示该应用处于脱机模式。 在此状态下，新项将添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
+在本部分中，将断开与移动应用后端的连接，以模拟脱机情况。 添加数据项时，异常处理程序会指示该应用处于脱机模式。 在此状态下，新项将添加到本地存储，下次以连接状态运行推送时，这些新项将同步到移动应用后端。
 
 1. 在共享项目中编辑 QSToDoService.cs。 更改 **applicationURL** 以指向无效的 URL：
 
@@ -47,13 +47,13 @@ ms.locfileid: "27594660"
 
     还可以通过在设备上禁用 wifi 和手机网络或使用飞行模式来演示脱机行为。
 2. 构建并运行应用程序。 请注意，在应用启动时，同步刷新会失败。
-3. 输入新项，并注意每次单击“保存”时，推送会失败，并显示 [CancelledByNetworkError] 状态。 但是，新的待办事项在推送到移动应用后端之前，存在于本地存储中。  在生产应用中，如果取消显示这些异常，客户端应用的行为就像它仍连接到移动应用后端一样。
+3. 输入新项，并注意每次单击“保存”时，推送将失败，并显示 [CancelledByNetworkError] 状态。 但是，新的待办事项在推送到移动应用后端之前，存在于本地存储中。  在生产应用中，如果取消显示这些异常，客户端应用的行为就像它仍连接到移动应用后端一样。
 4. 关闭应用程序并重新启动它，以验证你创建的新项目是否已永久保存到本地存储中。
 5. （可选）如果电脑上装有 Visual Studio，打开“服务器资源管理器”。 导航到“Azure”-> “SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。 验证后端数据库中的数据是否未更改。
 6. （可选）通过 Fiddler 或 Postman 之类的 REST 工具使用 `https://<your-mobile-app-backend-name>.azurewebsites.net/tables/TodoItem` 格式的 GET 查询，查询移动后端。
 
 ## <a name="update-online-app"></a>更新应用以重新连接移动应用后端
-在本部分中，会将应用重新连接到移动应用后端。 这模拟的是通过移动应用后端从脱机状态转为联机状态的应用。   如果通过关闭网络连接来模拟网络故障，则不需要更改代码。
+本部分将应用重新连接到移动应用后端。 这模拟的是通过移动应用后端从脱机状态转为联机状态的应用。   如果通过关闭网络连接来模拟网络故障，则不需要更改代码。
 再次打开网络。  首次运行应用程序时，调用 `RefreshDataAsync` 方法。 这转而会调用 `SyncAsync`，将本地存储与后端数据库同步。
 
 1. 在共享项目中打开 QSToDoService.cs，并恢复对 **applicationURL** 属性的更改。
@@ -87,7 +87,7 @@ ms.locfileid: "27594660"
 
     每当刷新 todoitem 列表或者添加或完成 todoitem 时，所提供的代码便会调用 `QSTodoService.SyncAsync()` 进行同步。 每次本地更改后，该应用同步。 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作将先自动触发上下文推送操作。
 
-    在所提供的代码中，查询远程 `TodoItem` 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 `PushAsync` 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
+    在所提供的代码中，查询远程 `TodoItem` 表中的所有记录，但它还可以筛选记录，只需将查询 ID 和查询传递给 `PushAsync` 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步] 中的 *增量同步*部分。
 
         // QSTodoService.cs
         public async Task SyncAsync()

@@ -4,15 +4,16 @@ description: 了解如何使用 Robo 3T 和 Azure Cosmos DB 的 API for MongoDB 
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
-ms.date: 12/26/2018
-author: sivethe
-ms.author: sivethe
+origin.date: 12/26/2018
+ms.date: 03/18/2019
+author: rockboyfor
+ms.author: v-yeche
 ms.openlocfilehash: ab066fef4bffe35408fdc5f3ad6d66796b4d0818
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57443964"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61372490"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>将 Robo 3T 与 Azure Cosmos DB 的 API for MongoDB 配合使用
 
@@ -47,3 +48,5 @@ ms.locfileid: "57443964"
 
 - 了解如何配合[使用 Studio 3T](mongodb-mongochef.md) 与 Azure Cosmos DB 的用于 MongoDB 的 API。
 - 使用 Azure Cosmos DB 的用于 MongoDB 的 API 浏览 MongoDB [示例](mongodb-samples.md)。
+
+<!-- Update_Description: update meta properties, wording update -->

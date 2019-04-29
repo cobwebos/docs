@@ -13,11 +13,11 @@ ms.reviewer: douglas, carlrab
 manager: craigg
 ms.date: 02/11/2019
 ms.openlocfilehash: 1460b595e8887fc932d5be335ae51b07a000b9fb
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098351"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61315531"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>将 SQL Server 实例迁移到 Azure SQL 数据库托管实例
 
@@ -51,7 +51,7 @@ ms.locfileid: "56098351"
 
 ## <a name="deploy-to-an-optimally-sized-managed-instance"></a>部署到大小最适合的托管实例
 
-托管实例是为要迁移到云中的本地工作负载量身定制。 它引入了一个[新的采购模型](sql-database-service-tiers-vcore.md)，这让你在为工作负荷选择适当的资源级别时更具灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的购买模型以虚拟核心 (vCore) 为依据，同时单独提供更多存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。
+托管实例是为要迁移到云中的本地工作负载量身定制。 它引入了一个[新的购买模型](sql-database-service-tiers-vcore.md)，这让你在为工作负荷选择适当的资源级别时更具灵活性。 在本地环境中，你可能习惯于使用物理核心和 IO 带宽来调整这些工作负荷的大小。 托管实例的购买模型以虚拟核心 (vCore) 为依据，同时单独提供更多存储和 IO 资源。 借助 vCore 模型可以更方便地根据当前在本地使用的计算资源，来了解云中的计算要求。 使用此新模型可以适当地调整云中目标环境的大小。
 
 可在部署时选择计算和存储资源，稍后再通过 [Azure 门户](sql-database-scale-resources.md)更改它，而不必让应用程序关闭：
 

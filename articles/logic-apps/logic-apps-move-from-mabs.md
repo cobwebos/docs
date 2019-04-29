@@ -9,18 +9,18 @@ ms.author: jonfan
 ms.reviewer: estfan, LADocs
 ms.topic: article
 ms.date: 05/30/2017
-ms.openlocfilehash: f27e82e780917e00625ef6a14ab8317d1f5b8ae8
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: f813cb5d8d5c442fc17f126c3a2ff6de7b0bdde1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124793"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61321131"
 ---
 # <a name="migrate-from-biztalk-services-to-azure-logic-apps"></a>从 BizTalk 服务迁移到 Azure 逻辑应用
 
 Microsoft Azure BizTalk 服务 (MABS) 即将停用。 若要将 MABS 集成解决方案移动到 [Azure 逻辑应用](../logic-apps/logic-apps-overview.md)，请使用本文中的指南。 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 BizTalk 服务由两个子服务组成：
 
@@ -106,7 +106,7 @@ BizTalk 服务会做出路由决策，决定由哪个终结点或连接器来发
 
 BizTalk 服务允许你运行在你自己的程序集中上传的[自定义代码](https://msdn.microsoft.com/library/azure/dn232389.aspx)。 此功能是通过 [IMessageInspector](https://msdn.microsoft.com/library/microsoft.biztalk.services.imessageinspector) 接口实现的。 网桥中的每个阶段都包括两个属性（On Enter Inspector 和 On Exit Inspector），它们提供你创建的实现了此接口的 .NET 类型。 通过自定义代码，可以对数据执行更复杂的处理，还可以重复使用程序集中执行常见业务逻辑的现有代码。 
 
-逻辑应用提供两种主要方式来执行自定义代码：Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure 应用服务的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
+逻辑应用提供了两个主要的方式来执行自定义代码：Azure Functions 和 API 应用。 可以创建 Azure Functions，也可以从逻辑应用中调用。 请参阅[通过 Azure Functions 为逻辑应用添加和运行自定义代码](../logic-apps/logic-apps-azure-functions.md)。 使用 API 应用（Azure 应用服务的一部分）创建自己的触发器和操作。 了解有关[创建用于逻辑应用的自定义 API](../logic-apps/logic-apps-create-api-app.md) 的详细信息。 
 
 如果程序集中有从 BizTalk 服务中调用的自定义代码，可以将此代码移到 Azure Functions，也可以使用 API 应用创建自定义 API；具体取决于要实现什么。 例如，如果代码包装了逻辑应用没有其连接器的另一个服务，则请创建 API 应用，并在逻辑应用中使用你的 API 应用提供的操作。 如果有帮助程序函数或库，则 Azure Functions 很有可能是最合适的。
 

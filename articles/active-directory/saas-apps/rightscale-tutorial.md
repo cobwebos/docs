@@ -16,11 +16,11 @@ ms.date: 07/08/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 416a98c5f9c5a2ec813206ea9ea7f311b23e86cb
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59525572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61079596"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>教程：Azure Active Directory 与 RightScale 的集成
 
@@ -198,7 +198,7 @@ ms.locfileid: "59525572"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-a-rightscale-test-user"></a>创建 RightScale 测试用户
 

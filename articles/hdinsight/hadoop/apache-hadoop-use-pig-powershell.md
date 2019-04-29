@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 中将 Apache Pig 与 PowerShell 配合使用 - Azure
 description: 了解如何将 Apache Pig 作业提交到 HDInsight 使用 Azure PowerShell 上的 Apache Hadoop 群集。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,18 +8,18 @@ ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: hrasheed
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: bb00f6ccd22be75a235d9cd6fc174741207a76e0
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 9ad788989273f28f38ee95f8d669fdf17f1fd785
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58359154"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105018"
 ---
 # <a name="use-azure-powershell-to-run-apache-pig-jobs-with-hdinsight"></a>使用 Azure PowerShell 通过 HDInsight 运行 Apache Pig 作业
 
 [!INCLUDE [pig-selector](../../../includes/hdinsight-selector-use-pig.md)]
 
-本文档提供使用 Azure PowerShell 将 Apache Pig 作业提交到 HDInsight 群集上的 Apache Hadoop 的示例。 Pig 允许用户通过使用可为数据转换建模的语言 (Pig Latin) 编写 MapReduce 作业，而无需使用映射和化简函数。
+本文档提供使用 Azure PowerShell 向 Apache Hadoop on HDInsight 群集提交 Apache Pig 作业的示例。 Pig 允许用户通过使用可为数据转换建模的语言 (Pig Latin) 编写 MapReduce 作业，而无需使用映射和化简函数。
 
 > [!NOTE]  
 > 本文档未详细描述示例中使用的 Pig Latin 语句的作用。 有关此示例中使用的 Pig Latin 的信息，请参阅[将 Apache Pig 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-pig.md)。
@@ -42,11 +41,11 @@ Azure PowerShell 提供 *cmdlet*，可在 HDInsight 上远程运行 Pig 作业�
 
 在远程 HDInsight 群集上运行 Pig 作业时，将使用以下 Cmdlet：
 
-* **连接 AzAccount**:在 Azure 订阅中进行 Azure PowerShell 身份验证。
-* **新 AzHDInsightPigJobDefinition**:使用指定的 Pig Latin 语句创建作业定义。
-* **开始 AzHDInsightJob**:将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
-* **等待 AzHDInsightJob**:使用作业对象来检查作业的状态。 它将等到作业完成或超出等待时间。
-* **Get-AzHDInsightJobOutput**:用于检索作业的输出。
+* **Connect-AzAccount**：在 Azure 订阅中进行 Azure PowerShell 身份验证。
+* **New-AzHDInsightPigJobDefinition**：使用指定的 Pig Latin 语句创建作业定义。
+* **Start-AzHDInsightJob**：将作业定义发送到 HDInsight 并启动作业。 将返回作业对象。
+* **Wait-AzHDInsightJob**：使用作业对象来检查作业的状态。 它将等到作业完成或超出等待时间。
+* **Get-AzHDInsightJobOutput**：用于检索作业的输出。
 
 以下步骤演示了如何使用这些 Cmdlet 在 HDInsight 群集上运行作业。
 

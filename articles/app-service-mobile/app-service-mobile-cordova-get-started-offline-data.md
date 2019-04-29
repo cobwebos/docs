@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 44c54b570a38eb1a3b9ca773893599d1d497dfa2
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52972144"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110971"
 ---
 # <a name="enable-offline-sync-for-your-cordova-mobile-app"></a>为 Cordova 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-本教程介绍适用于 Cordova 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用进行交互&mdash;查看、添加或修改数据&mdash;，即使在没有网络连接时也是如此。 更改存储在本地数据库中。  设备重新联机后，这些更改会与远程服务同步。
+本教程介绍适用于 Cordova 的 Azure 移动应用的脱机同步功能。 借助脱机同步，最终用户即使在没有网络连接时也能够与移动应用进行交互（查看、添加或修改数据）。 更改存储在本地数据库中。  设备重新联机后，这些更改会与远程服务同步。
 
-本教程基于完成教程 [Apache Cordova 快速入门]时创建的移动应用的 Cordova 快速入门解决方案。 在本教程中，需更新快速入门解决方案，以便添加 Azure 移动应用的脱机功能。  还将重点介绍该应用中的脱机特定代码。
+本教程基于完成教程 [Apache Cordova 快速入门]时创建的移动应用的 Cordova 快速入门解决方案。 在本教程中，需更新快速入门解决方案，以便添加 Azure 移动应用的脱机功能。  我们还重点介绍了该应用中的特定于脱机的代码。
 
 若要了解有关脱机同步功能的详细信息，请参阅主题 [Azure 移动应用中的脱机数据同步]。 有关 API 使用情况的详细信息，请参阅 [API 文档](https://azure.github.io/azure-mobile-apps-js-client)。
 
@@ -68,7 +68,7 @@ ms.locfileid: "52972144"
 
     前面增加的代码会初始化本地存储，并定义与 Azure 后端中使用的列值匹配的本地表。 （无需在此代码中包含所有列值。）`version` 字段由移动后端维护，并且用于解决冲突。
 
-    调用 **getSyncContext** 可获取对同步上下文的引用。 对于调用 `.push()` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
+    调用 **getSyncContext**可获取对同步上下文的引用。 对于调用 `.push()` 时客户端应用修改的所有表，此同步上下文通过跟踪和推送这些表中的更改来帮助保持表关系。
 
 3. 将应用程序 URL 更新为移动应用的应用程序 URL。
 
@@ -128,7 +128,7 @@ ms.locfileid: "52972144"
           syncContext.pull(new WindowsAzure.Query('todoitem'));
         }
 
-    通过调用 **syncContext.push()** 决定何时会更改推送到移动应用后端。 例如，可以在与同步按钮关联的按钮事件处理程序中调用 **syncBackend**。
+    调用 syncContext.push() 可决定何时将更改推送到移动应用后端。 例如，可以在与同步按钮关联的按钮事件处理程序中调用 **syncBackend**。
 
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
 
@@ -136,7 +136,7 @@ ms.locfileid: "52972144"
 
 对具有由上下文跟踪的未完成本地更新的表执行拉取操作时，该拉取操作会自动触发推送操作。 在此示例中刷新、添加和完成项目时，可省略显式 **push** 调用，因为它可能是冗余的。
 
-在所提供的代码中，查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
+在所提供的代码中，会查询远程 todoItem 表中的所有记录，也可以筛选记录，只需将查询 ID 和查询传递给 **push** 即可。 有关详细信息，请参阅 [Azure 移动应用中的脱机数据同步]中的增量同步部分。
 
 ## <a name="optional-disable-authentication"></a>（可选）禁用身份验证
 
@@ -154,7 +154,7 @@ ms.locfileid: "52972144"
 现在运行应用时，该应用将与 Azure 后端同步。
 
 ## <a name="run-the-client-app"></a>运行客户端应用
-启用脱机同步后，可在每个平台上至少运行一次客户端应用程序来填充本地存储数据库。 然后模拟脱机情况，并在应用处于脱机状态时修改本地存储中的数据。
+启用脱机同步后，可在每个平台上至少运行一次客户端应用程序来填充本地存储数据库。 稍后，模拟脱机场景，并在应用处于脱机状态时修改本地存储中的数据。
 
 ## <a name="optional-test-the-sync-behavior"></a>（可选）测试同步行为
 在本部分中，修改客户端项目，通过对后端使用无效的应用程序 URL 来模拟脱机方案。 添加或更改数据项时，这些更改将保存在本地存储中，但在重新建立连接之前，不会同步到后端数据存储中。

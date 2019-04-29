@@ -9,11 +9,11 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: ea96b2b996ea79efacdcda50c6370f25e26e0aa2
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58793749"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447006"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>使用 CLI 部署远程监视解决方案加速器
 
@@ -70,15 +70,15 @@ pcs login
 
 | Count | 资源                       | Type         | 用途 |
 |-------|--------------------------------|--------------|----------|
-| 1     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
+| 第     | [Linux 虚拟机](https://azure.microsoft.com/services/virtual-machines/) | 标准 D1 V2  | 托管微服务 |
 | 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                  | S1 - 标准层 | 设备管理和通信 |
-| 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 标准        | 存储配置数据、规则、警报和其他冷存储 |  
-| 1     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 标准        | 适用于 VM 和流式处理检查点的存储 |
-| 1     | [Web 应用程序](https://azure.microsoft.com/services/app-service/web/)        |                 | 托管前端 Web 应用程序 |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
-| 1     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
-| 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
+| 第     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)              | 标准        | 存储配置数据、规则、警报和其他冷存储 |  
+| 第     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)  | 标准        | 适用于 VM 和流式处理检查点的存储 |
+| 第     | [Web 应用程序](https://azure.microsoft.com/services/app-service/web/)        |                 | 托管前端 Web 应用程序 |
+| 第     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
+| 第     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
+| 第     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
+| 第     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
 | 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 ### <a name="standard"></a>标准
@@ -91,16 +91,16 @@ pcs login
 
 | Count | 资源                                     | SKU/大小      | 用途 |
 |-------|----------------------------------------------|-----------------|----------|
-| 1     | [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
-| 1     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 - 标准层 | 设备管理、命令和控制 |
+| 第     | [Azure Kubernetes 服务](https://azure.microsoft.com/services/kubernetes-service)| 使用完全托管的 Kubernetes 容器业务流程服务，默认值为 3 个代理|
+| 第     | [Azure IoT 中心](https://azure.microsoft.com/services/iot-hub/)                     | S2 - 标准层 | 设备管理、命令和控制 |
 | 1     | [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)                 | 标准        | 存储配置数据和设备遥测数据，例如规则、警报和消息 |
 | 5     | [Azure 存储帐户](https://docs.microsoft.com/azure/storage/common/storage-introduction#types-of-storage-accounts)    | 标准        | 4 个用于 VM 存储，1 个用于流式处理检查点 |
-| 1     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | 基于 SSL 的应用程序网关 |
-| 1     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
-| 1     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
-| 1     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
+| 第     | [应用服务](https://azure.microsoft.com/services/app-service/web/)             | S1 标准     | 基于 SSL 的应用程序网关 |
+| 第     | [Azure Active Directory](https://azure.microsoft.com/services/active-directory/)        |                 | 管理用户标识和安全性 |
+| 第     | [Azure Maps](https://azure.microsoft.com/services/azure-maps/)        | 标准                | 查看资产位置 |
+| 第     | [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)        |   3 个单位              | 启用实时分析 |
 | 1     | [Azure 设备预配服务](https://docs.microsoft.com/azure/iot-dps/)        |       S1          | 大规模预配设备 |
-| 1     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
+| 第     | [Azure 时序见解](https://azure.microsoft.com/services/time-series-insights/)        |   S1 – 1 个单位              | 存储消息数据并启用深入遥测分析 |
 
 > [!NOTE]
 > 在 [https://azure.microsoft.com/pricing](https://azure.microsoft.com/pricing) 中可以找到这些服务的定价信息。 可在 [Azure 门户](https://portal.azure.com/)中找到订阅的用量和计费详细信息。

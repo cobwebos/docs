@@ -3,18 +3,18 @@ title: 使用部署清单声明模块和路由 - Azure IoT Edge | Microsoft Docs
 description: 了解部署清单如何声明要部署的模块、如何部署这些模块以及如何在它们之间创建消息路由。
 author: kgremban
 manager: philmea
-ms.author: kgremban
-ms.date: 03/28/2019
+ms.author: v-yiso
+origin.date: 03/28/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
 ms.openlocfilehash: f4a562cab445398986c1b8f379f6cb90ca843342
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58758088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61363143"
 ---
 # <a name="learn-how-to-deploy-modules-and-establish-routes-in-iot-edge"></a>了解如何在 IoT Edge 中部署模块和建立路由
 
@@ -77,7 +77,7 @@ ms.locfileid: "58758088"
 
 定义 IoT Edge 运行时如何在部署中安装模块。 IoT Edge 代理是管理 IoT Edge 设备的安装、更新和状态报告的运行时组件。 因此，$edgeAgent 模块孪生需要所有模块的配置和管理信息。 此信息包括 IoT Edge 代理本身的配置参数。 
 
-有关可以或必须包含的属性的完整列表，请参阅[IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
+有关可以或必须包含的属性的完整列表，请参阅 [IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 $edgeAgent 属性遵循此结构：
 
@@ -177,9 +177,9 @@ FROM /messages/* WHERE NOT IS_DEFINED($connectionModuleId) INTO $upstream
 | `$upstream` | 将消息发送到 IoT 中心 |
 | `BrokeredEndpoint("/modules/<moduleId>/inputs/<input>")` | 将消息发送到特定模块的特定输入 |
 
-IoT Edge 提供至少一次保证。 IoT Edge 中心将消息存储本地以防路由不能将消息传送到其接收器。 例如，如果 IoT Edge 中心无法连接到 IoT 中心或目标模块未连接。
+IoT Edge 提供至少一次保证。 IoT Edge 中心在本地存储消息，以防路由无法将消息传送到其接收器。 例如，如果 IoT Edge 中心无法连接到 IoT 中心，或者目标模块未连接。
 
-IoT Edge 中心会一直存储消息，直到中指定的时间达到`storeAndForwardConfiguration.timeToLiveSecs`的属性[IoT Edge 中心所需属性](module-edgeagent-edgehub.md)。
+IoT Edge 中心会一直存储消息，直到达到在 [IoT Edge 中心所需属性](module-edgeagent-edgehub.md)的 `storeAndForwardConfiguration.timeToLiveSecs` 属性中指定的时间。
 
 ## <a name="define-or-update-desired-properties"></a>定义或更新所需属性 
 
@@ -273,6 +273,12 @@ IoT Edge 中心会一直存储消息，直到中指定的时间达到`storeAndFo
 
 ## <a name="next-steps"></a>后续步骤
 
-* 有关可以或必须包含在 $edgeAgent 和 $edgeHub 属性的完整列表，请参阅[IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
+* 有关在 $edgeAgent 和 $edgeHub 中可以或必须包含的属性的完整列表，请参阅 [IoT Edge 代理和 IoT Edge 中心的属性](module-edgeagent-edgehub.md)。
 
 * 至此，你已了解如何使用 IoT Edge 模块，接下来请继续[了解开发 IoT Edge 模块的要求和工具](module-development.md)。
+
+[lnk-deploy]: module-deployment-monitoring.md
+[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
+[lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
+[lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
+[lnk-module-dev]: module-development.md

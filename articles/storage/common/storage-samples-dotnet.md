@@ -10,11 +10,11 @@ ms.date: 01/12/2017
 ms.author: seguler
 ms.subservice: common
 ms.openlocfilehash: c4dcb3f42d97624e66258228ce27e130a05cac70
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55456130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101369"
 ---
 # <a name="azure-storage-samples-using-net"></a>使用 .NET 的 Azure 存储示例
 
@@ -144,7 +144,7 @@ ms.locfileid: "55456130"
 </tr> 
 <tr> 
 <td>扫视消息</td> 
-<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET</a>（.NET 中 Azure 队列服务入门）</td> 
+<td><a href="https://github.com/Azure-Samples/storage-queue-dotnet-getting-started/blob/master/QueueStorage/GettingStarted.cs">Getting Started with Azure Queue Service in .NET（.NET 中 Azure 队列服务入门）</a></td> 
 </tr> 
 <tr> 
 <td>队列 ACL/元数据/统计信息</td> 
@@ -201,10 +201,10 @@ ms.locfileid: "55456130"
 
 如果要查找有关如何安装和开始使用 Azure 存储客户端库的说明，请查看以下指南。
 
-* [.NET 中 Azure Blob 服务入门](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [Getting Started with Azure Queue Service in .NET](../storage-dotnet-how-to-use-queues.md)（.NET 中 Azure 队列服务入门）
+* [.NET 中的 Azure Blob 服务入门](../blobs/storage-dotnet-how-to-use-blobs.md)
+* [.NET 中的 Azure 队列服务入门](../storage-dotnet-how-to-use-queues.md)
 * [.NET 中 Azure 表服务入门](../../cosmos-db/table-storage-how-to-use-dotnet.md)
-* [Getting Started with Azure File Service in .NET](../storage-dotnet-how-to-use-files.md)（.NET 中 Azure 文件服务入门）
+* [.NET 中的 Azure 文件服务入门](../storage-dotnet-how-to-use-files.md)
 
 ## <a name="next-steps"></a>后续步骤
 

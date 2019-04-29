@@ -14,12 +14,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 11/17/2017
 ms.author: crdun
-ms.openlocfilehash: 557f6f6a6d4925ec167760455dfc67449582c05c
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: HT
+ms.openlocfilehash: 352e64664e6796fb4e0a7941de91ef4045076aed
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42811664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104593"
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>向 Android 应用添加推送通知
 
@@ -31,7 +31,7 @@ ms.locfileid: "42811664"
 
 如果不使用下载的快速入门服务器项目，则需要推送通知扩展包。 有关详细信息，请参阅[使用用于 Azure 移动应用的 .NET 后端服务器 SDK](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 需要满足以下条件：
 

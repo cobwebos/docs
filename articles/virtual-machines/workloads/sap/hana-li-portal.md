@@ -17,11 +17,11 @@ ms.date: 04/02/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8240308b3e0955b1d4d3ef2e82cad215daf95b00
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009362"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61482146"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>通过 Azure 门户控制 Azure HANA 大型实例
 本文档介绍如何[HANA 大型实例](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture)中显示[Azure 门户](https://portal.azure.com)，可以通过 Azure 门户中使用为你部署的 HANA 大型实例单元执行的活动。 在 Azure 门户中的 HANA 大型实例的可见性是通过 Azure 资源提供程序提供适用于 HANA 大型实例，当前处于公共预览状态

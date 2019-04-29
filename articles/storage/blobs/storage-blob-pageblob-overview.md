@@ -9,11 +9,11 @@ ms.date: 01/03/2019
 ms.author: wielriac
 ms.subservice: blobs
 ms.openlocfilehash: b03da04c97475dcb9ce15f2ed69d7ca333d6f431
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57456204"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61428340"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Azure 页 Blob 概述
 
@@ -29,7 +29,7 @@ Azure 页 Blob 的重要功能包括 REST 接口、基础存储持久性，以�
 
 第一方 Microsoft 服务（例如 Azure Site Recovery 和 Azure 备份）以及许多第三方开发商已使用页 Blob 的 REST 接口实现了行业领先的创新。 下面是在 Azure 上实现的一些独特方案： 
 * 应用程序主导的增量快照管理：应用程序可以利用页 Blob 快照和 REST API 来保存应用程序检查点，而不会产生高昂的数据复制成本。 Azure 存储支持页 Blob 的本地快照，这类快照不要求复制整个 blob。 使用这些公共快照 API 还可以访问和复制快照之间的增量数据。
-* 应用程序和数据从本地到云的实时迁移：复制在内部部署数据，并使用 REST Api 直接写入 Azure 页 blob 时本地 VM 将继续运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样一来，可以将 Vm 迁移和虚拟磁盘从本地到云中，因为数据迁移发生在后台，同时继续使用 VM 和故障转移所需的停机时间最短停机时间很短 （以分钟为单位）。
+* 将应用程序和数据从本地实时迁移到云中：复制本地数据并使用 REST API 将数据直接写入 Azure 页 Blob，同时，本地 VM 可继续保持运行。 与目标同步后，可以使用该数据快速故障转移到 Azure VM。 这样，便可以在几乎不造成停机的情况下，将 VM 和虚拟磁盘从本地迁移到云中，因为数据迁移在后台发生，同时我们可以继续使用 VM，并且故障转移所需的停机时间很短（以分钟计）。
 * [基于 SAS](../common/storage-dotnet-shared-access-signature-part-1.md) 的共享访问，可以实现支持并发控制的方案，例如多个读取者和单个写入者。
 
 ## <a name="page-blob-features"></a>页 Blob 功能

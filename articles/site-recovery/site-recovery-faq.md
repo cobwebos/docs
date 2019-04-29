@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 4/08/2019
 ms.author: raynew
 ms.openlocfilehash: 824782e54f2cd989f9ab13857d9b894b215fc550
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59361361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61278895"
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery：常见问题解答 (FAQ)
 本文汇总了有关 Azure Site Recovery 的常见问题。 
@@ -47,7 +47,7 @@ ms.locfileid: "59361361"
 否，将数据复制到你的订阅中的 Azure 存储。 执行测试故障转移（灾难恢复演练）或实际的故障转移时，站点恢复会在订阅中自动创建虚拟机。
 
 ### <a name="do-you-ensure-tenant-level-isolation-when-i-replicate-to-azure"></a>复制到 Azure 时，是否向我确保提供租户级的隔离？
-是的。
+可以。
 
 ### <a name="what-platforms-do-you-currently-support"></a>目前支持哪些平台？
 我们支持 Azure Pack、云平台系统和基于 System Center 的（2012 和更高版本）的部署。 [了解更多](https://technet.microsoft.com/library/dn850370.aspx)有关 Azure Pack 和 Site Recovery 集成的信息。
@@ -74,7 +74,7 @@ ms.locfileid: "59361361"
 
 ### <a name="i-have-been-an-azure-site-recovery-user-for-over-a-month-do-i-still-get-the-first-31-days-free-for-every-protected-instance"></a>我已成为 Azure Site Recovery 用户一个多月。 对于每个受保护的实例，是否仍享受前 31 天免费？
 
-是的。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，如果具有已过去 6 个月内保护 10 个实例，第 11 个实例连接到 Azure Site Recovery 收取任何费用的第 11 个实例前 31 天内。 前 10 个实例继续产生 Azure Site Recovery 费用，因为它们已保护的时间已超过 31 天。
+可以。 在前 31 天内，每个受保护的实例不会产生任何 Azure Site Recovery 费用。 例如，如果具有已过去 6 个月内保护 10 个实例，第 11 个实例连接到 Azure Site Recovery 收取任何费用的第 11 个实例前 31 天内。 前 10 个实例继续产生 Azure Site Recovery 费用，因为它们已保护的时间已超过 31 天。
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>在前 31 天的期限内，会产生其他 Azure 费用吗？
 
@@ -96,7 +96,7 @@ DR 演练没有单独的费用。 测试故障转移后创建的 VM 后，会产
 站点恢复已通过 ISO 27001:2013、27018、HIPAA、DPA 认证，目前正在接受 SOC2 和 FedRAMP JAB 评估。
 
 ### <a name="for-compliance-reasons-even-our-on-premises-metadata-must-remain-within-the-same-geographic-region-can-site-recovery-help-us"></a>为了遵从法规，即使是本地元数据也必须保留在同一个地理区域。 站点恢复可以帮助我们吗？
-是的。 在某个区域中创建 Site Recovery 保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
+可以。 在某个区域中创建 Site Recovery 保管库时，我们确保启用和协调复制与故障转移时所需的一切元数据都保留在该区域的地理边界范围内。
 
 ### <a name="does-site-recovery-encrypt-replication"></a>站点恢复是否将复制数据加密？
 在本地站点之间复制虚拟机和物理服务器时，支持传输中加密。 将虚拟机和物理服务器复制到 Azure 时，同时支持传输中加密和[静态加密（Azure 中）](https://docs.microsoft.com/azure/storage/storage-service-encryption)。
@@ -116,7 +116,7 @@ DR 演练没有单独的费用。 测试故障转移后创建的 VM 后，会产
 可以使用站点恢复来保护在支持的 VM 或物理服务器上运行的大多数工作负荷。 站点恢复为应用程序感知型复制提供支持，因此，应用可以恢复为智能状态。 它除了与 Microsoft 应用程序（例如 SharePoint、Exchange、Dynamics、SQL Server 及 Active Directory）集成之外，还能与行业领先的供应商（包括 Oracle、SAP、IBM 及 Red Hat）紧密配合。 [详细了解](site-recovery-workload.md)工作负荷保护。
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>我可以使用站点恢复来管理分支机构的灾难恢复吗？
-是的。 使用站点恢复来协调分支机构的复制与故障转移时，可以在一个中心位置获得所有分支机构工作负载的统一视图。 不需要前往分支机构，就可以从总部轻松对所有分支机构运行故障转移和管理灾难恢复。
+可以。 使用站点恢复来协调分支机构的复制与故障转移时，可以在一个中心位置获得所有分支机构工作负载的统一视图。 不需要前往分支机构，就可以从总部轻松对所有分支机构运行故障转移和管理灾难恢复。
 
 
 ### <a name="is-disaster-recovery-supported-for-azure-vms"></a>为 Azure Vm 支持灾难恢复？
@@ -184,7 +184,7 @@ Riverbed，我们的合作伙伴提供了有关如何使用 Azure Site Recovery 
 
 
 ### <a name="can-i-throttle-bandwidth-allotted-for-replication-traffic"></a>可以限制为复制流量所分配的带宽？
-是的。 你可以阅读更多有关限制带宽在这些文章中：
+可以。 你可以阅读更多有关限制带宽在这些文章中：
 
 * [复制 VMware VM 和物理服务器的容量规划](site-recovery-plan-capacity-vmware.md)
 * [将 Hyper-V VM 复制到 Azure 的容量规划](site-recovery-capacity-planning-for-hyper-v-replication.md)
@@ -221,7 +221,7 @@ Azure 具有复原能力。 站点恢复已经能够故障转移到辅助 Azure 
 ## <a name="automation"></a>自动化
 
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>是否可以使用 SDK 自动化 Site Recovery 方案？
-是的。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 当前支持的使用 PowerShell 部署站点恢复的方案：
+可以。 可以使用 Rest API、PowerShell 或 Azure SDK 将站点恢复工作流自动化。 当前支持的使用 PowerShell 部署站点恢复的方案：
 
 * [将 VMM 云中的 Hyper-V VM 复制到 Azure PowerShell Resource Manager](hyper-v-vmm-powershell-resource-manager.md)
 * [将 Hyper-V VM 复制（不使用 VMM）到 Azure PowerShell Resource Manager](hyper-v-azure-powershell-resource-manager.md)

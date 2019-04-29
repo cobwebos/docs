@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: 63cb02c52b5def12675ccca4f2cd292a8ad4bb66
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 87a162338cc67a3f2d2fc425bbcbefe2976661e5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295636"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104912"
 ---
 # <a name="get-started-with-the-onedrive-for-business-connector"></a>OneDrive for Business 连接器入门
 连接到 OneDrive for Business 管理文件。 可以执行各种操作，例如上传、更新、获取和删除文件。
@@ -26,7 +26,7 @@ ms.locfileid: "35295636"
 ## <a name="create-a-connection-to-onedrive-for-business"></a>创建到 OneDrive for Business 的连接
 要使用 OneDrive for Business 创建逻辑应用，必须先创建**连接**，然后提供以下属性的详细信息：
 
-| 属性 | 必选 | 说明 |
+| 属性 | 需要 | 描述 |
 | --- | --- | --- |
 | 令牌 |是 |提供 OneDrive for Business 凭据 |
 

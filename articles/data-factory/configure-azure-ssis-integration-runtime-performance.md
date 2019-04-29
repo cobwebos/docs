@@ -11,11 +11,11 @@ ms.author: sawinark
 ms.reviewer: ''
 manager: craigg
 ms.openlocfilehash: 271da0a6ff443fcee28bc870821f4222b3018c91
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576865"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61262175"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>配置高性能 Azure-SSIS Integration Runtime
 
@@ -57,7 +57,7 @@ $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该辅助角色节点始终连接到 Azure SQL 数据库上的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保 Integration Runtime 尽可能有效运行。
+AzureSSISLocation 是 Integration Runtime 辅助角色节点的位置。 该辅助角色节点始终连接到 Azure SQL 数据库上的 SSIS 目录数据库 (SSISDB)。 将 AzureSSISLocation 位置设置为与托管 SSISDB 的 SQL 数据库服务器相同，确保集成运行时尽可能有效运行。
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
 数据工厂（包括 Azure-SSIS IR）支持以下选项：
@@ -112,7 +112,7 @@ AzureSSISNodeNumber 调整 Integration Runtime 的可伸缩性。 Integration Ru
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-SSISDBPricingTier 是Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
+SSISDBPricingTier 是 Azure SQL 数据库上 SSIS 目录数据库 (SSISDB) 的定价层。 此设置影响 IR 实例中的最大辅助角色节点数、包执行排队速度以及执行日志加载速度。
 
 -   如果不关注包执行排队和执行日志加载速度，可以选择最低的数据库定价层。 使用基本定价的 Azure SQL 数据库在 Integration Runtime 实例中支持 8 个辅助角色节点。
 

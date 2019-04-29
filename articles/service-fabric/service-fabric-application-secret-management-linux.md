@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/04/2019
 ms.author: shsha
 ms.openlocfilehash: 9589d6ea69a2293d592a9e63f2b726f1a620bb9e
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54068915"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126981"
 ---
 # <a name="set-up-an-encryption-certificate-and-encrypt-secrets-on-linux-clusters"></a>在 Linux 群集上设置加密证书并对机密进行加密
 本文展示了如何在 Linux 群集上设置加密证书并使用它来加密机密。 对于 Windows 群集，请参阅[在 Windows 群集上设置加密证书并对机密进行加密][secret-management-windows-specific-link]。

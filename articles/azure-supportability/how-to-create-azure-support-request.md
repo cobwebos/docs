@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
 ms.author: gangan
-ms.openlocfilehash: 0b45bd2a1a2599908d2077198dce0062071b79af
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
-ms.translationtype: HT
+ms.openlocfilehash: f6d9e683e1feff670c26b01a31ce977557295bff
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31512504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129053"
 ---
 # <a name="how-to-create-an-azure-support-request"></a>如何创建 Azure 支持请求
 ## <a name="summary"></a>摘要
@@ -32,9 +32,9 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 
 根据客户反馈，我们更新了支持请求体验，以专注于三个主要目标：
 
-* **简化**：减少单击和边栏选项卡，使提交支持请求的过程更简单。
-* **集成**：对 Azure 资源问题进行故障排除时，在不切换上下文的情况下为该资源打开支持请求应当很轻松。
-* **高效**：收集支持工程师高效解决问题所需的关键信息。
+* **简化**:减少单击和边栏选项卡，使提交支持请求的过程更简单。
+* **集成**:在解决 Azure 资源出现问题时，它应该很容易打开该资源而无需切换上下文的支持请求。
+* **高效**：收集支持工程师高效解决问题所需要的关键信息。
 
 ## <a name="getting-started"></a>入门
 可从顶部导航菜单或直接从资源边栏选项卡创建支持请求。
@@ -51,10 +51,10 @@ Azure 客户可在 Azure 门户 [https://portal.azure.com](https://portal.azure.
 
 ![在上下文中](./media/how-to-create-azure-support-request/Incontext.png)
 
-## <a name="basics"></a>Basics
+## <a name="basics"></a>基础
 支持请求过程的第一步是收集关于问题和支持计划的基本信息。
 
-举个例子：你正面对关于虚拟机的技术难题，并怀疑存在网络连接问题。
+让我们看一个示例：面对技术问题与你的虚拟机，并怀疑存在网络连接问题。
 在向导的第一步中选择服务（“运行 Windows 的虚拟机”）和资源（虚拟机的名称）将启动获取关于此问题的帮助的过程。
 
 ![“基本信息”边栏选项卡](./media/how-to-create-azure-support-request/Basics.png)

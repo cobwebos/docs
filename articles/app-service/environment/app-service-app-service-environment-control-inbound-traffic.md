@@ -16,11 +16,11 @@ ms.date: 01/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 84575dcb67845a074ce19cf9d819e1dda3f90e20
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53271950"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130783"
 ---
 # <a name="how-to-control-inbound-traffic-to-an-app-service-environment"></a>如何控制应用服务环境的入站流量
 ## <a name="overview"></a>概述
@@ -51,7 +51,7 @@ ms.locfileid: "53271950"
 * 4020：用于 Visual Studio 2015 的远程调试。  如果未使用该功能，则可以安全地阻止此端口。  在启用 ILB 的 ASE 中，此端口绑定到 ASE 的 ILB 地址。
 
 ## <a name="outbound-connectivity-and-dns-requirements"></a>出站连接和 DNS 要求
-若要让应用服务环境正常运行，还需具有对各个终结点的出站访问权限。 [Network Configuration for ExpressRoute](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity)（ExpressRoute 的网络配置）一文的“所需的网络连接”部分中提供了 ASE 所用外部终结点的完整列表。
+若要让应用服务环境正常运行，还需具有对各个终结点的出站访问权限。 [ExpressRoute 的网络配置](app-service-app-service-environment-network-configuration-expressroute.md#required-network-connectivity) 一文的“所需的网络连接”部分中提供了 ASE 所用外部终结点的完整列表。
 
 应用服务环境要求为虚拟网络配置有效 DNS 基础结构。  如果 DNS 配置在创建应用服务环境之后因为任何原因而更改，开发人员可以强制应用服务环境选择新的 DNS 配置。  在 [Azure 门户][NewPortal]中使用“应用服务环境管理”边栏选项卡顶部的“重启”图标触发滚动环境重启，将导致该环境选择新的 DNS 配置。
 
@@ -115,7 +115,7 @@ ms.locfileid: "53271950"
 
 可以从门户用户界面的应用服务环境的详细信息 UX 边栏选项卡中找到每个 IP-SSL 地址所使用的单个端口对。  选择“所有设置”-->“IP 地址”。  “IP 地址”边栏选项卡显示应用服务环境的所有显式配置的 IP-SSL 地址表，以及用于路由与每个 IP-SSL 地址关联的 HTTP 和 HTTPS 流量的特殊端口对。  在网络安全组中配置规则时，需要针对 DestinationPortRange 参数使用此端口对。
 
-当 ASE 中的应用程序配置为使用 IP-SSL 时，外部客户将看不到也无需担心特殊的端口对映射。  发往应用程序的流量正常情况下将流向已配置的 IP-SSL 地址。  在将流量路由到包含 ASE 的子网的最后阶段，会在内部自动发生到特殊端口对的转换。 
+当 ASE 中的应用程序配置为使用 IP-SSL 时，外部客户看不到也无需担心特殊的端口对映射。  发往应用程序的流量正常情况下将流向已配置的 IP-SSL 地址。  在将流量路由到包含 ASE 的子网的最后阶段，会在内部自动发生到特殊端口对的转换。 
 
 ## <a name="getting-started"></a>入门
 若要开始使用应用服务环境，请参阅[应用服务环境简介][IntroToAppServiceEnvironment]

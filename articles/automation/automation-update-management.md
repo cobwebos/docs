@@ -10,11 +10,11 @@ ms.date: 04/22/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: f49b8ef3717675ae6d93d07218a00f2c22890de0
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149693"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61305841"
 ---
 # <a name="update-management-solution-in-azure"></a>Azure 中的更新管理解决方案
 
@@ -223,7 +223,7 @@ Heartbeat
 
 | 属性 | 描述 |
 | --- | --- |
-| Name |用于标识更新部署的唯一名称。 |
+| 名称 |用于标识更新部署的唯一名称。 |
 |操作系统| Linux 或 Windows|
 | 若要更新的组 |适用于 Azure 机定义的订阅、 资源组、 位置和标记来生成要在部署中包含的 Azure Vm 的动态组组合所基于的查询。 </br></br>对于非 Azure 计算机，选择现有的已保存搜索以选择要包括在部署中的非 Azure 计算机组。 </br></br>有关详细信息，请参阅[动态组](automation-update-management.md#using-dynamic-groups)|
 | 要更新的计算机 |选择已保存的搜索、已导入的组或者从下拉列表中选择“计算机”并选择单个计算机。 如果选择“计算机”，则计算机的就绪状态将在“更新代理商准备情况”列中显示。</br> 要了解在 Azure Monitor 日志中创建计算机组的不同方法，请参阅 [Azure Monitor 日志中的计算机组](../azure-monitor/platform/computer-groups.md) |

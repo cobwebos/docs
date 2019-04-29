@@ -1,7 +1,6 @@
 ---
 title: 调试 Apache Hadoop：查看日志和解释错误消息 - Azure HDInsight
 description: 了解在使用 PowerShell 管理 HDInsight 时可能会收到的错误消息，以及恢复正常所需采取的步骤。
-services: hdinsight
 ms.reviewer: jasonh
 author: ashishthaps
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: a035789af08aa4c0d877a06295d9bd6fdedf6844
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 31a20f8faa712aef94b69c605ec57985bc334009
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122075"
 ---
 # <a name="analyze-apache-hadoop-logs"></a>分析 Apache Hadoop 日志
 

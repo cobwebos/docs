@@ -13,11 +13,11 @@ ms.date: 12/09/2018
 ms.author: tomfitz
 ms.custom: seodec18
 ms.openlocfilehash: c38b1ccf7f7ccfe57e2b29f236f642238c4706a7
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55492736"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61363570"
 ---
 # <a name="azure-resource-manager-resource-group-deletion"></a>Azure 资源管理器资源组的删除
 

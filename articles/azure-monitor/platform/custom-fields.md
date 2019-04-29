@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的自定义字段 |Microsoft Docs
-description: Azure Monitor 的自定义字段功能使你能够从 Log Analytics 工作区中添加到已收集记录的属性的记录创建你自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。
+description: Azure Monitor 的“自定义字段”功能，使你可以基于添加到已收集记录的属性的 Log Analytics 工作区中的记录创建自己的可搜索字段。  本文介绍了创建自定义字段的过程，并通过示例事件提供详细的演练。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,22 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: bwren
 ms.openlocfilehash: 974a3391c592a1caf7bdcc6d9e01032f0c73aaa6
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61461734"
 ---
-# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 中的 Log Analytics 工作区中创建自定义字段
+# <a name="create-custom-fields-in-a-log-analytics-workspace-in-azure-monitor"></a>在 Azure Monitor 的 Log Analytics 工作区中创建自定义字段
 
 > [!NOTE]
-> 本文介绍如何分析 Log Analytics 工作区中的文本数据，因为它收集。 有一些好处分析查询中的文本数据收集中所述[分析 Azure Monitor 中的文本数据](../log-query/parse-text.md)。
+> 本文介绍如何在收集 Log Analytics 工作区时解析文本数据。 如[解析 Azure Monitor 的文本数据](../log-query/parse-text.md)中所述，在收集查询中的文本数据之后，解析文本数据是有好处的。
 
-**自定义字段**Azure Monitor 的功能，可通过添加自己的可搜索字段来扩展 Log Analytics 工作区中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
+Azure Monitor 的**自定义字段**功能使你可以通过添加自己的可搜索字段来扩展 Log Analytics 工作区中的现有记录。  自定义字段会自动填充，填充的数据从同一记录的其他属性中提取。
 
 ![概述](media/custom-fields/overview.png)
 
-例如，以下示例记录的事件描述中隐藏着有用记录。 此数据提取到一个单独的属性将使其可用于排序和筛选等操作。
+例如，以下示例记录的事件描述中隐藏着有用记录。 将此数据提取到单独的属性中，就可以在排序和筛选等操作中对其进行使用。
 
 ![示例提取](media/custom-fields/sample-extract.png)
 
@@ -37,27 +37,27 @@ ms.locfileid: "60002861"
 > 在预览版的工作区中，限制使用 100 个自定义字段。  正式发布此功能时，会扩展该限制。
 
 ## <a name="creating-a-custom-field"></a>创建自定义字段
-创建自定义字段时，Log Analytics 必须了解应该使用哪些数据填充其值。  将使用由 Microsoft Research 开发的 FlashExtract 技术来快速找出此数据。  不要求你提供显式说明，而是 Azure Monitor 了解到有关想要从你提供的示例中提取的数据。
+创建自定义字段时，Log Analytics 必须了解应该使用哪些数据填充其值。  将使用由 Microsoft Research 开发的 FlashExtract 技术来快速找出此数据。  不需要你提供确切说明，Azure Monitor 就会获知要从所提供示例中提取的数据。
 
 以下各节提供了创建自定义字段的步骤。  本文末尾部分提供了示例提取的演练。
 
 > [!NOTE]
-> 匹配指定的条件的记录添加到 Log Analytics 工作区，因此它将仅显示在创建自定义字段后收集的记录上会填充自定义字段。  创建自定义字段时，不会将该字段添加到数据存储中已存在的记录中。
+> 将匹配指定条件的记录添加到 Log Analytics 工作区时，会填充自定义字段，因此它将仅显示在创建自定义字段后收集的记录上。  创建自定义字段时，不会将该字段添加到数据存储中已存在的记录中。
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>步骤 1 – 确定将具有自定义字段的记录
-第一步是确定会获得自定义字段的记录。  首先[标准日志查询](../log-query/log-query-overview.md)，然后选择一条记录来充当 Azure Monitor 将从学习的模型。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
+第一步是确定会获得自定义字段的记录。  首先执行[标准日志查询](../log-query/log-query-overview.md)，然后选择要充当模型的记录，Azure Monitor 将通过该模型进行学习。  当指定要将数据提取到自定义字段中时，“字段提取向导”会打开，可以在其中验证和优化条件。
 
-1. 转到**日志**并用[查询以检索的记录](../log-query/log-query-overview.md)，将会有自定义字段。
+1. 转到“日志”，然后使用[查询来检索记录](../log-query/log-query-overview.md)（将具有自定义字段的记录）。
 2. 选择 Log Analytics 将用作模型的记录，以便 Log Analytics 学习如何提取要填充到自定义字段中的数据。  确定要从该记录中提取的数据，然后 Log Analytics 将使用此信息为所有类似记录确定自定义字段的填充逻辑。
-3. 展开记录属性，单击左侧的记录，其上边缘属性的省略号并选择**提取字段从**。
-4. **字段提取向导**将打开，并且您选择的记录将显示在**主要示例**列。  将为所选属性中具有相同值的记录定义自定义字段。  
+3. 展开记录属性，单击该记录的顶部属性左侧的省略号，然后选择“字段提取自”。
+4. 将打开“字段提取向导”，所选记录会显示在“主示例”列中。  将为所选属性中具有相同值的记录定义自定义字段。  
 5. 如果所选内容不完全是所需要的，可选择其他字段来缩小条件范围。  要更改条件的字段值，必须先取消，然后选择匹配所需条件的其他记录。
 
 ### <a name="step-2---perform-initial-extract"></a>步骤 2 - 执行初始提取。
 在完成确定将具有自定义字段的记录后，请确定要提取的数据。  Log Analytics 将使用此信息在类似记录中确定类似模式。  在下一个步骤中，将可以验证结果，并提供更多详细信息供 Log Analytics 在其分析中使用。
 
-1. 突出显示示例记录中要用于填充自定义字段的文本。  您将然后会看到一个对话框，为字段提供名称和数据类型并执行初始提取。  将自动附加字符 **\_CF**。
+1. 突出显示示例记录中要用于填充自定义字段的文本。  然后会显示一个对话框，用于命名字段和设置字段的数据类型，以及执行初始提取。  将自动附加字符 **\_CF**。
 2. 单击“提取”以执行已收集记录的分析。  
 3. “摘要”和“搜索结果”部分会显示提取的结果，使你可以检查提取的准确性。  “摘要”显示用于确定记录的条件以及已确定的每个数据值的计数。  “搜索结果”提供匹配条件的记录的详细列表。
 
@@ -87,11 +87,11 @@ ms.locfileid: "60002861"
 
 ![Query](media/custom-fields/query.png)
 
-然后，我们将选择并展开与事件 ID 为 7036 的任何记录。
+然后，我们选择并展开事件 ID 为 7036 的任一记录。
 
 ![源记录](media/custom-fields/source-record.png)
 
-我们通过单击顶部的属性旁边的省略号来定义自定义字段。
+我们通过单击顶部属性旁白的省略号来定义自定义字段。
 
 ![提取字段](media/custom-fields/extract-fields.png)
 
@@ -99,11 +99,11 @@ ms.locfileid: "60002861"
 
 ![主示例](media/custom-fields/main-example.png)
 
-我们突出显示 **RenderedDescription** 属性中的服务的名称，并使用 **Service** 标识服务名称。  自定义字段将称为 **Service_CF**。 字段类型在这种情况下是一个字符串，因此，可以将保持不变的。
+我们突出显示 **RenderedDescription** 属性中的服务的名称，并使用 **Service** 标识服务名称。  自定义字段将称为 **Service_CF**。 在此示例中，字段类型为字符串，因此可以保留该字段，不做任何更改。
 
 ![字段标题](media/custom-fields/field-title.png)
 
-我们会看到：对于某些记录，已正确标识服务名称；但对于其他记录，则并未正确标识服务名称。   “搜索结果”显示：未选择“WMI 性能适配器”的部分名称。  **摘要**显示了该标识的一条记录**模块安装程序**而不是**Windows 模块安装程序**。  
+我们会看到：对于某些记录，已正确标识服务名称；但对于其他记录，则并未正确标识服务名称。   “搜索结果”显示：未选择“WMI 性能适配器”的部分名称。  “摘要”显示一条记录识别了“模块安装程序”而不是“Windows 模块安装程序”。  
 
 ![搜索结果](media/custom-fields/search-results-01.png)
 
@@ -119,7 +119,7 @@ ms.locfileid: "60002861"
 
 ![搜索结果](media/custom-fields/search-results-02.png)
 
-我们现在可以运行查询，用于验证**Service_CF**创建但尚未添加到任何记录。 这是因为自定义字段不起作用与现有记录，因此我们需要等待要收集的新记录。
+我们现在可以运行一个查询来验证 **Service_CF** 已创建，但尚未添加到任何记录中。 这是因为自定义字段不能使用现有的记录，因此我们需等待系统收集新记录。
 
 ![初始计数](media/custom-fields/initial-count.png)
 
@@ -132,6 +132,6 @@ ms.locfileid: "60002861"
 ![按查询分组](media/custom-fields/query-group.png)
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[记录查询](../log-query/log-query-overview.md)来生成查询条件中使用自定义字段。
+* 了解[日志查询](../log-query/log-query-overview.md)，使用自定义字段作为条件生成查询。
 * 监视使用自定义字段分析的[自定义日志文件](data-sources-custom-logs.md)。
 

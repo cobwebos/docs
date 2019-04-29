@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/18/2019
 ms.author: saurse
 ms.openlocfilehash: 4bad788156b2068f24484d3b248f2091409752ad
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61216042"
 ---
 # <a name="troubleshoot-microsoft-azure-recovery-services-mars-agent"></a>排查 Microsoft Azure 恢复服务 (MARS) 代理问题
 
@@ -29,13 +29,13 @@ ms.locfileid: "58621611"
 
 | 错误详细信息 | 建议的操作 |
 | ---     | ---    |
-|未能下载保管库凭据文件。 (ID:403) | <ul><li> 尝试使用其他浏览器下载保管库凭据，或执行以下步骤： <ul><li> 启动 IE，按 F12 键。 </li><li> 转到“网络”选项卡，清除 IE 缓存和 cookie </li> <li> 刷新页面<br>（或者）</li></ul> <li> 检查订阅是否被禁用/已过期<br>（或者）</li> <li> 检查是否有任何防火墙规则阻止下载保管库凭据文件 <br>（或者）</li> <li> 确保未用完保管库的限额（每个保管库 50 台计算机）<br>（或者）</li>  <li> 确保用户具有所需的 Azure 备份权限下载保管库凭据并向保管库注册服务器，请参阅[文章](backup-rbac-rs-vault.md)</li></ul> | 
+|未能下载保管库凭据文件。 (ID:403) | <ul><li> 尝试使用其他浏览器下载保管库凭据，或执行以下步骤： <ul><li> 启动 IE，按 F12 键。 </li><li> 转到“网络”选项卡，清除 IE 缓存和 cookie </li> <li> 刷新页面<br>（或者）</li></ul> <li> 检查订阅是否被禁用/已过期<br>（或者）</li> <li> 检查是否有任何防火墙规则阻止下载保管库凭据文件 <br>（或者）</li> <li> 确保未用完保管库的限额（每个保管库 50 台计算机）<br>（或者）</li>  <li> 确保用户具有下载保管库凭据所需的 Azure 备份权限并向保管库注册了服务器，请参阅[此文](backup-rbac-rs-vault.md)</li></ul> | 
 
 ## <a name="the-microsoft-azure-recovery-service-agent-was-unable-to-connect-to-microsoft-azure-backup"></a>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份
 
 | 错误详细信息 | 可能的原因 | 建议的操作 |
 | ---     | ---     | ---    |
-| **错误** <br /><ol><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。*(ID:100050)请检查网络设置，并确保能够连接到 Internet*<li>(407) 需要代理身份验证 |代理正在阻止连接。 |  <ul><li>启动“IE” > “设置” > “Internet 选项” > “安全” > “Internet”。 然后选择“自定义级别”，并滚动直至看到“文件下载”部分。 选择“启用”。<li>可能还需要将这些站点添加到 IE 的[受信任的站点](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins)中。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。 <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除以下文件。 <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET 版本都有一个 CSC.exe。 请排除受影响服务器上的所有 .NET Framework 版本绑定的 CSC.exe 文件。 <li>Scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
+| **错误** <br /><ol><li>Microsoft Azure 恢复服务代理无法连接到 Microsoft Azure 备份。*(ID:100050)请检查网络设置，并确保能够连接到 Internet*<li>*(407) 需要代理身份验证* |代理正在阻止连接。 |  <ul><li>启动“IE” > “设置” > “Internet 选项” > “安全” > “Internet”。 然后选择“自定义级别”，并滚动直至看到“文件下载”部分。 选择“启用”。<li>可能还需要将这些站点添加到 IE 的[受信任的站点](https://docs.microsoft.com/azure/backup/backup-try-azure-backup-in-10-mins)中。<li>更改设置以使用代理服务器。 然后提供代理服务器详细信息。 <li>如果服务器中安装了防病毒软件，请从防病毒软件扫描中排除以下文件。 <ul><li>CBEngine.exe（而非 dpmra.exe）。<li>CSC.exe（与 .NET Framework 相关）。 服务器上安装的每个 .NET 版本都有一个 CSC.exe。 请排除受影响服务器上的所有 .NET Framework 版本绑定的 CSC.exe 文件。 <li>Scratch 文件夹或缓存位置。 <br>scratch 文件夹的默认位置或缓存位置路径为 C:\Program Files\Microsoft Azure Recovery Services Agent\Scratch。<li>bin 文件夹 C:\Program Files\Microsoft Azure Recovery Services Agent\Bin
 
 
 ## <a name="failed-to-set-the-encryption-key-for-secure-backups"></a>未能设置安全备份的加密密钥
@@ -60,7 +60,7 @@ ms.locfileid: "58621611"
 ## <a name="backups-dont-run-according-to-the-schedule"></a>备份未按计划运行
 如果计划的备份未自动触发，而手动备份却能正常进行，请尝试以下操作：
 
-- 请确保 Windows Server 备份计划不与 Azure 文件和文件夹备份计划冲突。
+- 确保 Windows Server 备份计划与 Azure 文件和文件夹备份计划不冲突。
 - 转到“控制面板” > “管理工具” > “任务计划程序”。 展开“Microsoft”并选择“联机备份”。 双击“Microsoft-OnlineBackup”，然后转到“触发器”选项卡。确保状态设置为“已启用”。 如果不是，请选择“编辑”，并选中“已启用”复选框，然后单击“确定”。 在“常规”选项卡上，转到“安全选项”，并确保为运行任务而选择的用户帐户是服务器上的 **SYSTEM** 或**本地管理员组**。
 
 - 查看服务器上是否已安装 PowerShell 3.0 或更高版本。 若要检查 PowerShell 版本，请运行以下命令，并确认 *Major* 版本号是等于或大于 3。

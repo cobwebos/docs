@@ -15,11 +15,11 @@ ms.date: 03/07/2018
 ms.author: cephalin;sisirap
 ms.custom: seodec18
 ms.openlocfilehash: a48a72fe36b7925936758e844d959968ea921c65
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544052"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130766"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>使用 ZIP 或 WAR 文件将应用部署到 Azure 应用服务
 
@@ -39,7 +39,7 @@ WAR 文件部署将 [WAR](https://wikipedia.org/wiki/WAR_(file_format)) 文件�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 完成本文中的步骤：
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 12/7/2018
 ms.author: victorh
 ms.openlocfilehash: 17eef2fc2608ca4ccbabff8179cd63798d275582
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58119626"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101449"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>使用 Azure 门户创建支持 HTTP 到 HTTPS 重定向的应用程序网关
 
@@ -31,7 +31,7 @@ ms.locfileid: "58119626"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-本教程需要 Azure PowerShell 模块版本 1.0.0 或更高版本来创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本教程中的命令，还需要运行 `Login-AzAccount` 以创建与 Azure 的连接。
+本教程需要 Azure PowerShell 模块 1.0.0 或更高版本以创建证书并安装 IIS。 运行 `Get-Module -ListAvailable Az` 即可查找版本。 如果需要升级，请参阅[安装 Azure PowerShell 模块](/powershell/azure/install-az-ps)。 若要运行本教程中的命令，还需要运行 `Login-AzAccount` 以创建与 Azure 的连接。
 
 ## <a name="create-a-self-signed-certificate"></a>创建自签名证书
 

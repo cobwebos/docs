@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: a20c79acce8c9dc9051651a0473fd07b8e62f5de
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52960339"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126896"
 ---
 # <a name="enable-offline-sync-for-your-android-mobile-app"></a>为 Android 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -79,11 +79,11 @@ ms.locfileid: "52960339"
 
 添加数据项时，它们保存在本地 SQLite 存储中，但直到按下“刷新”按钮才同步到移动服务。 根据数据需要同步的时间，其他应用可能具有不同的要求，但出于演示目的，本教程让用户显式请求它。
 
-按下该按钮时，将启动新的后台任务。 首先它会使用同步上下文推送对本地存储所做的所有更改，然后将所有更改数据从 Azure 拉取到本地表。
+按下该按钮时，将启动新的后台任务。 该任务先使用同步上下文推送对本地存储所做的所有更改，并将所有更改的数据从 Azure 拉取到本地表。
 
 ### <a name="offline-testing"></a>脱机测试
 1. 将设备或模拟器置于*飞行模式*中。 这会创建脱机方案。
-2. 添加一些 *ToDo* 项或将一些项标记为“完成”。 退出设备或模拟器（或强制关闭应用），并重新启动。 验证所做更改是否保存在设备上，因为本地 SQLite 存储已保存这些更改。
+2. 添加一些 *ToDo* 项或将一些项标记为“完成”。 退出设备或模拟器（或强制关闭应用），然后重新启动。 验证所做更改是否保存在设备上，因为本地 SQLite 存储已保存这些更改。
 3. 使用 SQL 工具（如 *SQL Server Management Studio*）或 REST 客户端（如 *Fiddler* 或 *Postman*）查看 Azure *TodoItem* 表的内容。 验证新项是否*未*同步到服务器
    
        + 对于 Node.js 后端，请转到 [Azure 门户](https://portal.azure.com/)，在移动应用后端中单击“简易表” > “TodoItem”，查看 `TodoItem` 表的内容。

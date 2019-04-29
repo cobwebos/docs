@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.openlocfilehash: b3ffc9794967f44708d8330d4dc5d5de11b794d6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58079173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61474459"
 ---
 # <a name="how-to-create-a-support-ticket-for-sql-data-warehouse"></a>如何创建 SQL 数据仓库的支持票证
 如果在 SQL 数据仓库方面遇到任何问题，请创建支持票证，让我们的工程支持团队帮助你。

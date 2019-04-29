@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: 1283f812799fe71ef6987dbc7fab092aed4d3417
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57435127"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62112644"
 ---
 # <a name="enable-offline-syncing-with-ios-mobile-apps"></a>启用与 iOS 移动应用进行脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -163,7 +163,7 @@ MS_TableOperations
 | --- | --- |
 | id | Integer 64 |
 | itemId | String |
-| 属性 | 二进制数据 |
+| properties | 二进制数据 |
 | 表 | String |
 | tableKind | 16 位整数 |
 
@@ -176,7 +176,7 @@ MS_TableOperationErrors
 | --- | --- |
 | id |String |
 | operationId |64 位整数 |
-| 属性 |二进制数据 |
+| properties |二进制数据 |
 | tableKind |16 位整数 |
 
  **MS_TableConfig**
@@ -189,7 +189,7 @@ MS_TableOperationErrors
 | key |String |
 | keyType |Integer 64 |
 | 表 |String |
-| 值 |字符串 |
+| value |字符串 |
 
 ### <a name="data-table"></a>数据表
 
@@ -199,9 +199,9 @@ MS_TableOperationErrors
 | --- | --- | --- |
 | id | 字符串（标记为必需） |远程存储中的主键 |
 | complete | Boolean | 待办事项字段 |
-| text |String |待办事项字段 |
-| createdAt | 日期 | （可选）映射到 **createdAt** 系统属性 |
-| updatedAt | 日期 | （可选）映射到 **updatedAt** 系统属性 |
+| Text |String |待办事项字段 |
+| createdAt | date | （可选）映射到 **createdAt** 系统属性 |
+| updatedAt | date | （可选）映射到 **updatedAt** 系统属性 |
 | 版本 | String | （可选）用于检测冲突，映射到版本 |
 
 ## <a name="setup-sync"></a>更改应用的同步行为

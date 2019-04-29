@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 03/26/2019
-ms.openlocfilehash: 7261a25251e93035c31004c9255612a0e3b45a2f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: 7746d7256add185be0c67123edf63ea09b6b05a4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680889"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111826"
 ---
 # <a name="faq-about-azure-sql-hyperscale-databases"></a>关于 Azure SQL“超大规模”数据库的常见问题解答
 
@@ -132,7 +132,7 @@ SQL 数据库“超大规模”服务层级支持所有 SQL Server 工作负荷�
 
 ### <a name="can-i-provision-a-compute-with-extra-ram-for-my-memory-intensive-workload"></a>能不能为内存密集型工作负荷预配包含额外 RAM 的计算
 
-不。 要获取更多 RAM，需要升级到更大的计算大小。 与第 5 代硬件相比，第 4 代硬件提供的 RAM 更多。 有关详细信息，请参阅[超大规模存储和计算大小](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview)。
+不。 要获取更多 RAM，需要升级到更大的计算大小。 与第 5 代硬件相比，第 4 代硬件提供的 RAM 更多。 有关详细信息，请参阅[超大规模存储和计算大小](sql-database-vcore-resource-limits-single-databases.md#hyperscale-service-tier-preview-for-provisioned-compute-tier)。
 
 ### <a name="can-i-provision-multiple-compute-nodes-of-different-sizes"></a>能不能预配大小不同的多个计算节点
 

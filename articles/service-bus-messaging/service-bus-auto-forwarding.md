@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 85ab5e3bb963ee692e5b70af3eb90cc68cec361f
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
-ms.translationtype: MT
+ms.openlocfilehash: 86fa7f62230c0ae0530b67ff2384942c876083d4
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56593380"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098586"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>使用自动转发链接服务总线实体
 
@@ -46,6 +46,10 @@ namespaceManager.CreateSubscription(srcSubscription));
 ![自动转发方案][1]
 
 如果 Alice 处于度假期间，则其个人队列（而不是 ERP）会填满。 此方案中，由于销售代表未接收到任何消息，因此没有任何 ERP 主题会达到配额。
+
+> [!NOTE]
+> 安装程序自动转发时，在目标上 AutoDeleteOnIdle 的值是自动设置为的数据类型的最大值。
+> 这样做是为了确保是始终要将消息转发到一个目标。
 
 ## <a name="autoforwarding-considerations"></a>自动转发注意事项
 

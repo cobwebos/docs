@@ -10,11 +10,11 @@ ms.date: 04/04/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.openlocfilehash: 16c16c0217a796ffbb57e10430f90cb4a7660ac6
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317606"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61468146"
 ---
 # <a name="deprecated-manage-an-azure-container-service-dcos-cluster-through-the-marathon-web-ui"></a>（已弃用）通过 Marathon Web UI 管理 Azure 容器服务 DC/OS 群集
 
@@ -52,7 +52,7 @@ DC/OS 提供了一种环境，可进行群集工作负荷的部署和缩放，�
 | --- | --- |
 | ID |nginx |
 | 内存 | 32 |
-| 映像 |nginx |
+| Image |nginx |
 | 网络 |桥接 |
 | 主机端口 |80 |
 | 协议 |TCP |

@@ -13,11 +13,11 @@ ms.reviewer: billgib,andrela,stein
 manager: craigg
 ms.date: 09/24/2018
 ms.openlocfilehash: d29baaad6090cea5eb31f5f50bba444cb3771155
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57835775"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485857"
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>在使用分片多租户 Azure SQL 数据库的 SaaS 应用程序中预配和编录新租户
 
@@ -61,7 +61,7 @@ ms.locfileid: "57835775"
 #### <a name="tenant-metadata-beyond-location"></a>位置外部的租户元数据
 
 目录还可以指示租户是否处于脱机状态，以便进行维护或其他操作。 此外，可以扩展目录来存储其他租户或数据库元数据，例如以下各项：
-- 数据库的服务层或版本。
+- 数据库的服务层级或版本。
 - 数据库架构的版本。
 - 租户名称及其 SLA（服务级别协议）。
 - 用于实现应用程序管理、客户支持或 devops 流程的信息。  
@@ -86,7 +86,7 @@ ms.locfileid: "57835775"
 - 该数据库是否为新租户准备了包含所需引用数据的表，或者，是否可以添加数据？
 - 该数据库是否为新租户提供基本架构的相应变体？
 - 该数据库的相应地理位置是否与新租户靠近？
-- 该数据库是否位于新租户的适当服务层？
+- 该数据库是否位于新租户的适当服务层级？
 
 如果想要在新租户自身的数据库中隔离该租户，可以根据租户的规范创建该租户。
 

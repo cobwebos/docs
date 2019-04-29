@@ -2,17 +2,18 @@
 title: 附加到 Azure VM 的磁盘的故障排除 |Microsoft 文档
 description: 提供指向 Azure 虚拟机虚拟硬盘 (VHD) 的故障排除资源的链接。
 services: storage
-author: genlin
+author: WenJason
 ms.service: storage
 ms.topic: article
-ms.date: 10/31/2018
-ms.author: genli
+origin.date: 10/31/2018
+ms.date: 12/10/2018
+ms.author: v-jay
 ms.openlocfilehash: bf1aa75399f28b8dd1732bc9ec09c15e46132939
-ms.sourcegitcommit: 6135cd9a0dae9755c5ec33b8201ba3e0d5f7b5a1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/31/2018
-ms.locfileid: "50414159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098093"
 ---
 # <a name="troubleshoot-disks-attached-to-azure-vms"></a>附加到 Azure VM 的磁盘的故障排除 
 
@@ -29,5 +30,5 @@ Azure 虚拟机 (VM) 依赖于 OS 磁盘和任何附加数据磁盘的虚拟硬�
 
 如果遇到大量附加 VHD 的 VM 意外重启，请参阅以下文章之一：
 
-  * 在 Linux VM 上：[附加 VHD 的 VM 意外重启](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
-  * 在 Windows VM 上：[附加 VHD 的 VM 意外重启](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * 在 Linux VM 上：[附加 VHD 的 VM 意外重新启动](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)
+  * 在 Windows VM 上：[附加 VHD 的 VM 意外重新启动](../../virtual-machines/linux/unexpected-reboots-attached-vhds.md)

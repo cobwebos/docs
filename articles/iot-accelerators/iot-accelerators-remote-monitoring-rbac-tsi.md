@@ -1,5 +1,5 @@
 ---
-title: 远程监视数据访问控制 - Azure | Microsoft Docs
+title: 远程监视数据的访问控制-Azure |Microsoft Docs
 description: 本文介绍如何在远程监视解决方案加速器中为时序见解遥测数据资源浏览器配置访问控制
 author: dominicbetts
 manager: timlt
@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: ecc3cb32a4bbacb92c875133bf72fc0374bc24df
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
-ms.translationtype: HT
+ms.openlocfilehash: 778637b7488b7c5c21b600673890da79a76b4997
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46369872"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61443145"
 ---
 # <a name="configure-access-controls-for-the-time-series-insights-telemetry-explorer"></a>为时序见解遥测数据资源浏览器配置访问控制
 

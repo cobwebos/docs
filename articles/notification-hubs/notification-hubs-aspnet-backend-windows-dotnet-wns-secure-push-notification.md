@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: cf23ef5df3bdcaad23841da111fa06cc36b4cd57
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54475673"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459142"
 ---
 # <a name="securely-push-notifications-from-azure-notification-hubs"></a>从 Azure 通知中心安全地推送通知
 
@@ -49,7 +49,7 @@ ms.locfileid: "54475673"
 
 > [!NOTE]
 > 本教程假设已根据[通知中心入门（Windows 应用商店）](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md)中所述创建并配置了通知中心。
-> 此外，请注意 Windows Phone 8.1 需要 Windows（而不是 Windows Phone）凭据，且后台任务无法在 Windows Phone 8.0 或 Silverlight 8.1 上正常运行。 对于 Windows 应用商店应用程序，只能在应用锁屏界面启用（单击 Appmanifest 中的复选框）的情况下，通过运行后台任务来接收通知。
+> 此外，请注意 Windows Phone 8.1 需要 Windows（而不是 Windows Phone）凭据，且后台任务无法在 Windows Phone 8.0 或 Silverlight 8.1 上正常运行。 对于 Windows 应用商店应用程序，您只能在应用锁屏界面启用（单击 Appmanifest 中的复选框）的情况下，通过运行后台任务来接收通知。
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -90,7 +90,7 @@ ms.locfileid: "54475673"
 下一步是创建推送背景组件。
 
 1. 在“解决方案资源管理器”中，右键单击解决方案的顶层节点（在本例中为 **Solution SecurePush**），并依次单击“**添加**”和“**新建项目**”。
-2. 展开“**应用商店应用**，并依次单击“**Windows Phone 应用**”和“**Windows 运行时组件 (Windows Phone)**”。 将该项目命名为 **PushBackgroundComponent**，然后单击“**确定**”创建项目。
+2. 展开“**应用商店应用**，并依次单击“**Windows Phone 应用**”和“**Windows 运行时组件 (Windows Phone)**”。 将该项目命名为 PushBackgroundComponent，然后单击“确定”创建项目。
 
     ![][12]
 3. 在“解决方案资源管理器”中，右键单击“**PushBackgroundComponent (Windows Phone 8.1)**”项目，并依次单击“**添加**”和“**类**”。 将新类命名为 `PushBackgroundTask.cs`。 单击“**添加**”生成类。
@@ -158,7 +158,7 @@ ms.locfileid: "54475673"
     using Windows.Data.Xml.Dom;
     ```
 11. 在“解决方案资源管理器”的 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中，右键单击“**引用**”，并单击“**添加引用...**”。在“引用管理器”对话框中，选中 **PushBackgroundComponent** 旁边的复选框，并单击“**确定**”。
-12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“**通知**”下，将“”设置为“”。
+12. 在“解决方案资源管理器”中，双击 **NotifyUserWindowsPhone (Windows Phone 8.1)** 项目中的“**Package.appxmanifest**”。 在“通知”下，将“Toast Capable”设置为“是”。
 
     ![][3]
 13. 仍在 **Package.appxmanifest** 中，单击顶部附近的“**声明**”菜单。 在“**可用声明**”下拉列表中，单击“**后台任务**”，并单击“**添加**”。

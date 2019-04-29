@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: backup
 ms.topic: conceptual
-ms.date: 02/24/2019
+ms.date: 04/23/2019
 ms.author: raynew
-ms.openlocfilehash: aacfe725310b3c8e4785e24b80728f0e60694814
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: eaad582dc6484cb62d0bebf1af447ff61301a3bb
+ms.sourcegitcommit: a95dcd3363d451bfbfea7ec1de6813cad86a36bb
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59496089"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62733961"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure VM 备份的支持矩阵
 可以使用[Azure 备份服务](backup-overview.md)备份的本地计算机和工作负荷和 Azure 虚拟机 (Vm)。 使用 Azure 备份的 Azure Vm 备份时，本文汇总了支持设置和限制。
@@ -168,7 +168,7 @@ Azure VM 数据磁盘 | 备份包含 16 个或更少数据磁盘的 VM。 <br/><
 共享的存储| 不建议使用群集共享卷 (CSV) 或横向扩展文件服务器的 Vm 备份。 CSV 编写器均可能会在备份期间失败。 在恢复时，包含 CSV 卷的磁盘可能不附带的最高。
 
 > [!NOTE]
-> Azure 备份不支持条带化的磁盘。 Azure 备份，不建议重设大小的磁盘。
+> Azure 备份不建议重设磁盘大小。
 
 
 ## <a name="vm-network-support"></a>VM 网络支持

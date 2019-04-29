@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 5a05b8f0f9484ea49fbfb0bbe8818aa9cd0d66ee
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58757134"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126420"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>将下游设备连接到 Azure IoT Edge 网关
 
@@ -43,7 +43,7 @@ Azure IoT Edge 可实现透明网关方案，其中，一个或多个设备可�
     目前，只有使用对称密钥身份验证的下游设备可以通过 IoT Edge 网关进行连接。 目前不支持 X.509 证书颁发机构和自签名的 X.509 证书。
     
 > [!NOTE]
-> 本文中使用的"网关名称"必须是相同的名称用作 IoT Edge config.yaml 文件中的主机名。 网关的名称必须是解析为 IP 地址，使用 DNS 或主机文件条目。 必须能够在下游设备和透明 IoT Edge 之间进行基于所使用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。 如果中间有防火墙，则需打开相应的端口。
+> 本文中使用的“网关名称”需要与 IoT Edge config.yaml 文件中用作主机名的名称相同。 网关名称必须能够解析成 IP 地址，不管是使用 DNS 还是主机文件条目。 必须能够在下游设备和透明 IoT Edge 之间进行基于所使用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。 如果中间有防火墙，则需打开相应的端口。
 
 ## <a name="prepare-a-downstream-device"></a>准备下游设备
 
@@ -198,13 +198,13 @@ var options = {
 openssl s_client -connect mygateway.contoso.com:8883 -CAfile <CERTDIR>/certs/azure-iot-test-only.root.ca.cert.pem -showcerts
 ```
 
-## <a name="troubleshoot-the-gateway-connection"></a>网关连接进行故障排除
+## <a name="troubleshoot-the-gateway-connection"></a>对网关连接进行故障排除
 
-如果叶设备有间歇性连接到其网关设备，请尝试以下步骤以解决问题。 
+如果叶设备与其网关设备之间的连接是断断续续的，请尝试执行以下步骤来解决问题。 
 
-1. 是网关的名称追加到连接字符串上的网关设备的 IoT Edge config.yaml 文件中的主机名相同？
-2. 是网关的名称解析为 IP 地址？ 使用 DNS 或叶设备上添加的主机文件条目，可以解决 intenmittent 连接。
-3. 是否在防火墙中打开通信端口？ 必须能够在下游设备和透明 IoT Edge 之间进行基于所使用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。
+1. 追加到连接字符串的网关名称是否与网关设备上 IoT Edge config.yaml 文件中的主机名相同？
+2. 网关名称是否可以解析为 IP 地址？ 可以通过使用 DNS 或通过在叶设备上添加一个主机文件条目来解决连接断断续续的问题。
+3. 防火墙中是否打开了通信端口？ 必须能够在下游设备和透明 IoT Edge 之间进行基于所使用协议 (MQTTS:8883/AMQPS:5671/HTTPS:433) 的通信。
 
 ## <a name="next-steps"></a>后续步骤
 

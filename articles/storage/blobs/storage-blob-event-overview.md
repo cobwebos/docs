@@ -9,11 +9,11 @@ ms.topic: article
 ms.service: storage
 ms.subservice: blobs
 ms.openlocfilehash: 4bc683908646a5c05fee14f721e2c26482518947
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55751389"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427604"
 ---
 # <a name="reacting-to-blob-storage-events"></a>响应 Blob 存储事件
 
@@ -33,7 +33,7 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 ## <a name="available-blob-storage-events"></a>可用的 Blob 存储事件
 事件网格使用[事件订阅](../../event-grid/concepts.md#event-subscriptions)将事件消息路由到订阅方。  Blob 存储事件订阅包括两种类型的事件：  
 
-> |事件名称|说明|
+> |事件名称|描述|
 > |----------|-----------|
 > |`Microsoft.Storage.BlobCreated`|当通过 `PutBlob`、`PutBlockList` 或 `CopyBlob` 操作创建或替换 blob 时触发|
 > |`Microsoft.Storage.BlobDeleted`|当通过 `DeleteBlob` 操作删除 blob 时触发|
@@ -41,26 +41,26 @@ Blob 存储事件会可靠地发送到事件网格服务，该服务通过丰富
 ## <a name="event-schema"></a>事件架构
 Blob 存储事件包含响应数据更改所需的所有信息。  可以识别 Blob 存储事件，因为 eventType 属性以“Microsoft.Storage”开头。 关于事件网格事件属性使用情况的其他信息，请参阅文档[事件网格事件架构](../../event-grid/event-schema.md)。  
 
-> |属性|Type|说明|
+> |属性|Type|描述|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |主题|字符串|发出该事件的存储帐户的完整 Azure 资源管理器 ID。|
-> |subject|字符串|作为事件使用者的对象的相对资源路径，使用的扩展 Azure 资源管理器格式与用于描述存储帐户、服务和适用于 Azure RBAC 容器的格式相同。  此格式包含保留大小写的 blob 名称。|
-> |EventTime|字符串|事件生成的日期/时间，采用 ISO 8601 格式|
-> |eventType|字符串|“Microsoft.Storage.BlobCreated”或“Microsoft.Storage.BlobDeleted”|
-> |ID|字符串|此事件的唯一标识符|
-> |dataVersion|字符串|数据对象的架构版本。|
-> |metadataVersion|字符串|顶级属性的架构版本。|
+> |主题|string|发出该事件的存储帐户的完整 Azure 资源管理器 ID。|
+> |subject|string|作为事件使用者的对象的相对资源路径，使用的扩展 Azure 资源管理器格式与用于描述存储帐户、服务和适用于 Azure RBAC 容器的格式相同。  此格式包含保留大小写的 blob 名称。|
+> |EventTime|string|事件生成的日期/时间，采用 ISO 8601 格式|
+> |eventType|string|“Microsoft.Storage.BlobCreated”或“Microsoft.Storage.BlobDeleted”|
+> |ID|string|此事件的唯一标识符|
+> |dataVersion|string|数据对象的架构版本。|
+> |metadataVersion|string|顶级属性的架构版本。|
 > |数据|对象|blob 存储特定事件数据的集合|
-> |data.contentType|字符串|blob 的内容类型，由 blob 的 Content-Type 标头返回|
+> |data.contentType|string|blob 的内容类型，由 blob 的 Content-Type 标头返回|
 > |data.contentLength|数字|blob 的大小，以整数表示字节数，由 blob 的 Content-Type 标头返回。  随 BlobCreated 事件一起发送，但不包括 BlobDeleted。|
-> |data.url|字符串|作为事件使用者的对象的 URL|
-> |data.eTag|字符串|此事件触发时，对象的 etag。  不适用于 BlobDeleted 事件。|
-> |data.api|字符串|触发此事件的 API 操作的名称。 对于 BlobCreated 事件，其值为“PutBlob”、“PutBlockList”或“CopyBlob”。 对于 BlobDeleted 事件，其值为“DeleteBlob”。 这些值与出现在 Azure 存储诊断日志中的 API 名称相同。 请参阅[记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。|
-> |data.sequencer|字符串|一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。|
-> |data.requestId|字符串|用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。|
-> |data.clientRequestId|字符串|用于存储 API 操作的客户端提供的请求 ID。 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
+> |data.url|string|作为事件使用者的对象的 URL|
+> |data.eTag|string|此事件触发时，对象的 etag。  不适用于 BlobDeleted 事件。|
+> |data.api|string|触发此事件的 API 操作的名称。 对于 BlobCreated 事件，其值为“PutBlob”、“PutBlockList”或“CopyBlob”。 对于 BlobDeleted 事件，其值为“DeleteBlob”。 这些值与出现在 Azure 存储诊断日志中的 API 名称相同。 请参阅[记录的操作和状态消息](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages)。|
+> |data.sequencer|string|一个不透明的字符串值，表示任何特定 blob 名称的事件的逻辑顺序。  用户可以使用标准字符串比较，了解同一个 blob 名称上两个事件的相对序列。|
+> |data.requestId|string|用于存储 API 操作的服务生成的请求 ID。 可用于通过 Azure 存储诊断日志中的“request-id-header”字段关联到这些日志，并且由“x-ms-request-id”标头中的初始化 API 调用返回。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。|
+> |data.clientRequestId|string|用于存储 API 操作的客户端提供的请求 ID。 可用于通过 Azure 存储诊断日志中的“client-request-id”字段关联到这些日志，并且可以通过“x-ms-client-request-id”标头提供到客户端请求中。 请参阅[日志格式](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-log-format)。 |
 > |data.storageDiagnostics|对象|Azure 存储服务中偶尔附带的诊断数据。 如果存在，事件使用者应忽略它。|
-|data.blobType|字符串|Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。| 
+|data.blobType|string|Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。| 
 
 下面是关于 BlobCreated 事件的示例：
 ```json

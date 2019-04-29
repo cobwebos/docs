@@ -12,12 +12,12 @@ ms.author: danil
 ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/25/2019
-ms.openlocfilehash: 0c93888af16ed7f7162f38c73be5f6330c886c65
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 2a7a6ed5bd28bcc83500da6e82b6c4ff48b2989c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001569"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097770"
 ---
 # <a name="monitoring-and-performance-tuning"></a>监视和性能优化
 
@@ -48,7 +48,7 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 - 数据 IO 百分比
 - 数据库大小百分比
 
-添加这些指标后，可以继续在“监视”图表上查看它们，并可在“指标”窗口上查看更多详细信息。 **DTU** 的平均利用率百分比。 有关服务层的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
+添加这些指标后，可以继续在“监视”图表上查看它们，并可在“指标”窗口上查看更多详细信息。 **DTU** 的平均利用率百分比。 有关服务层级的详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)文章。  
 
 ![监视数据库服务层的性能。](./media/sql-database-single-database-monitoring/sqldb_service_tier_monitoring.png)
 
@@ -87,7 +87,7 @@ Azure SQL 数据库由系统自动管理，它是一个灵活的数据服务，�
 
 ### <a name="ParamSniffing"></a> 查询参数区分查询执行计划问题的疑难解答
 
-参数敏感计划 (PSP) 问题是指查询优化器生成的查询执行计划仅适用于某个或某组特定的参数值，而缓存计划对于连续执行操作中所用的参数值并非最佳。 这样一来，非最佳计划可能会导致整体工作负荷吞吐量下降并出现查询性能问题。 参数截取和查询处理的详细信息，请参阅[查询处理体系结构指南](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide.md7#ParamSniffing)。
+参数敏感计划 (PSP) 问题是指查询优化器生成的查询执行计划仅适用于某个或某组特定的参数值，而缓存计划对于连续执行操作中所用的参数值并非最佳。 这样一来，非最佳计划可能会导致整体工作负荷吞吐量下降并出现查询性能问题。 参数截取和查询处理的详细信息，请参阅[查询处理体系结构指南](/sql/relational-databases/query-processing-architecture-guide#ParamSniffing)。
 
 可通过以下几种解决方法来缓解这些问题，但每种方法各有利弊：
 
@@ -142,7 +142,7 @@ ORDER BY count (distinct p.query_id) DESC
 
 ### <a name="resolve-problem-queries-or-provide-more-resources"></a>解决问题查询或提供更多资源
 
-识别问题后，可以优化有问题的查询，或升级计算大小或服务层，以增加 Azure SQL 数据库的容量来满足 CPU 要求。 有关缩放单一数据库资源的信息，请参阅[缩放 Azure SQL 数据库中的单一数据库资源](sql-database-single-database-scale.md)；有关缩放弹性池资源的信息，请参阅[缩放 Azure SQL 数据库中的弹性池资源](sql-database-elastic-pool-scale.md)。 有关缩放托管实例的信息，请参阅[实例级资源限制](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)。
+识别问题后，可以优化有问题的查询，或升级计算大小或服务层级，以增加 Azure SQL 数据库的容量来满足 CPU 要求。 有关缩放单一数据库资源的信息，请参阅[缩放 Azure SQL 数据库中的单一数据库资源](sql-database-single-database-scale.md)；有关缩放弹性池资源的信息，请参阅[缩放 Azure SQL 数据库中的弹性池资源](sql-database-elastic-pool-scale.md)。 有关缩放托管实例的信息，请参阅[实例级资源限制](sql-database-managed-instance-resource-limits.md#instance-level-resource-limits)。
 
 ### <a name="determine-if-running-issues-due-to-increase-workload-volume"></a>确定运行问题是否是由工作负荷量增加引起的
 
@@ -203,9 +203,9 @@ ORDER BY count (distinct p.query_id) DESC
 
 ## <a name="improving-database-performance-with-more-resources"></a>使用更多的资源提高数据库的性能
 
-最后，如果没有可行的措施可以提高数据库的性能，可以更改 Azure SQL 数据库中可用的资源量。 随时可以通过更改单一数据库的 [DTU 服务层](sql-database-service-tiers-dtu.md)或者增加弹性池的 eDTU 数目，来分配更多资源。 或者，如果使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则可更改服务层或增加分配给数据库的资源。
+最后，如果没有可行的措施可以提高数据库的性能，可以更改 Azure SQL 数据库中可用的资源量。 随时可以通过更改单一数据库的 [DTU 服务层级](sql-database-service-tiers-dtu.md)或者增加弹性池的 eDTU 数目，来分配更多资源。 或者，如果使用[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)，则可更改服务层级或增加分配给数据库的资源。
 
-1. 对于单一数据库，可以根据需要[更改服务层](sql-database-single-database-scale.md)或[计算资源](sql-database-single-database-scale.md)以提高数据库性能。
+1. 对于单一数据库，可以根据需要[更改服务层级](sql-database-single-database-scale.md)或[计算资源](sql-database-single-database-scale.md)以提高数据库性能。
 2. 对于多个数据库，请考虑使用[弹性池](sql-database-elastic-pool-guidance.md)自动缩放资源。
 
 ## <a name="tune-and-refactor-application-or-database-code"></a>优化和重构应用程序或数据库代码
@@ -216,4 +216,4 @@ ORDER BY count (distinct p.query_id) DESC
 
 - 若要在 Azure SQL 数据库中启用自动优化并使自动优化功能完全管理工作负荷，请参阅[启用自动优化](sql-database-automatic-tuning-enable.md)。
 - 若要使用手动优化，请参阅 [Azure 门户中的优化建议](sql-database-advisor-portal.md)，然后手动应用一些可提高查询性能的建议。
-- 通过更改 [Azure SQL 数据库服务层](sql-database-performance-guidance.md)来更改数据库中可用的资源
+- 通过更改 [Azure SQL 数据库服务层级](sql-database-performance-guidance.md)来更改数据库中可用的资源

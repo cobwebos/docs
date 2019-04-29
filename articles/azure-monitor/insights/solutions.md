@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 12/07/2018
 ms.author: bwren
 ms.openlocfilehash: b66d9cf15aaeaca975b60f24601b8ad7f555f458
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56887550"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110151"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Azure Monitor 中的监视解决方案
 监视解决方案利用 Azure 中的服务来提供特定应用程序或服务的更多操作见解。 本文简要概述了 Azure 中的监视解决方案，并详细介绍如何了使用和安装这些解决方案。

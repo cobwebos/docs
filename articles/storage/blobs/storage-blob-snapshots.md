@@ -9,11 +9,11 @@ ms.date: 03/06/2018
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: ac13b40ae58054b091963de198213c1a68fcdc05
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55244838"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61427644"
 ---
 # <a name="create-a-blob-snapshot"></a>创建 Blob 快照
 
@@ -128,7 +128,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 * 不管唯一的块或页是在 Blob 还是快照中，存储帐户都会产生费用。 在更新快照所基于的 Blob 之前，帐户将不会就与 Blob 关联的快照产生额外费用。 更新基本 Blob 后，它与其快照分离。 发生这种情况时，需要支付每个 Blob 或快照中唯一块或页的费用。
 * 在替换块 Blob 中的某个块后，会将该块作为唯一块进行收费。 即使该块具有的块 ID 和数据与它在快照中所具有的 ID 和数据相同也是如此。 重新提交块后，它将偏离它在任何快照中的对应部分，并且要为数据支付费用。 对于使用相同的数据更新的页 Blob 中的页面，也是如此。
 * 通过调用 [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream] 或 [UploadFromByteArray][dotnet_UploadFromByteArray] 方法替换块 Blob 可替换该 Blob 中的所有块。 如果有与该 Blob 关联的快照，则基本 Blob 和快照中的所有块现在将发生偏离，并且你需为这两个 Blob 中的所有块支付费用。 即使基本 Blob 和快照中的数据保持相同也是如此。
-* Azure BLOB 服务无法确定这两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此请务必考虑到更新具有快照的 Blob 将导致产生其他唯一块和额外费用。
+* Azure BLOB 服务无法确定这两个块是否包含相同的数据。 每个上传和提交的块均被视为唯一的快，即使它具有相同的数据和块 ID 也是如此。 由于唯一的块会产生费用，因此必须考虑到：在更新具有快照的 Blob 时，会产生额外的唯一块，因此也会产生额外的费用。
 
 ### <a name="minimize-cost-with-snapshot-management"></a>使用快照管理最大限度地降低成本
 

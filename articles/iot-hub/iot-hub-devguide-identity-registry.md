@@ -9,11 +9,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.openlocfilehash: 935635c474190413545d1a2731c367a691bfa56d
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57010254"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61363141"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>了解 IoT 中心的标识注册表
 
@@ -191,7 +191,7 @@ iothub-message-schema | moduleLifecycleNotification |
 | status |必填 |访问指示器。 可以是**已启用**或**已禁用**。 如果是**已启用**，则允许设备连接。 如果是**已禁用**，则此设备无法访问任何面向设备的终结点。 |
 | statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
 | statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
-| connectionState |只读 |指示连接状态的字段：**已连接**或**已断开**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段应仅用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
+| connectionState |只读 |指示连接状态的字段：**已连接**或**已断开**。 此字段表示设备连接状态的 IoT 中心视图。 **重要**：此字段应仅用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
 | connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 
@@ -216,7 +216,7 @@ iothub-message-schema | moduleLifecycleNotification |
 | status |必填 |访问指示器。 可以是**已启用**或**已禁用**。 如果是**已启用**，则允许设备连接。 如果是**已禁用**，则此设备无法访问任何面向设备的终结点。 |
 | statusReason |可选 |128 个字符的字符串，用于存储设备标识状态的原因。 允许所有 UTF-8 字符。 |
 | statusUpdateTime |只读 |临时指示器，显示上次状态更新的日期和时间。 |
-| connectionState |只读 |指示连接状态的字段：**已连接**或**已断开**。 此字段表示设备连接状态的 IoT 中心视图。 **重要说明**：此字段应仅用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
+| connectionState |只读 |指示连接状态的字段：**已连接**或**已断开**。 此字段表示设备连接状态的 IoT 中心视图。 **重要**：此字段应仅用于开发/调试目的。 仅使用 MQTT 或 AMQP 的设备才更新连接状态。 此外，它基于协议级别的 ping（MQTT ping 或 AMQP ping），并且最多只有 5 分钟的延迟。 出于这些原因，可能会发生误报，例如将设备报告为已连接，但实际上已断开连接。 |
 | connectionStateUpdatedTime |只读 |临时指示器，显示上次更新连接状态的日期和时间。 |
 | lastActivityTime |只读 |临时指示器，显示设备上次连接、接收或发送消息的日期和时间。 |
 

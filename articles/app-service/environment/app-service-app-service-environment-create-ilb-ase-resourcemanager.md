@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 35e0dc5dabaf1602b87ec6a8be86ed609f3ea12f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56107372"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62130749"
 ---
 # <a name="how-to-create-an-ilb-ase-using-azure-resource-manager-templates"></a>如何使用 Azure 资源管理器模板创建 ILB ASE
 
@@ -69,7 +69,7 @@ GitHub（[此处][quickstartilbasecreate]）上提供了 Azure 资源管理器�
 
 然后需要将生成的 .pfx 文件转换为 base64 字符串，因为会使用 Azure 资源管理器模板上传 SSL 证书。  Azure 资源管理器模板是文本文件，因此必须将 .pfx 文件转换为 base64 字符串，才能纳入为模板的参数。
 
-以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，然后将 base64 编码字符串保存到一个单独文件的示例。  base64 编码的 Powershell 代码改写自 [Powershell 脚本博客][examplebase64encoding]。
+以下 Powershell 代码片段显示生成自签名证书、将证书导出为 .pfx 文件、将 .pfx 文件转换为 base64 编码字符串，并将 base64 编码字符串保存到一个单独文件的示例。  base64 编码的 Powershell 代码改写自 [Powershell 脚本博客][examplebase64encoding]。
 
     $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
 

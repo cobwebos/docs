@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.openlocfilehash: 103e09a0e2b9dd409fa2ddaff1c5311ef9936d22
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538492"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61422083"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>如何使用 Azure 门户在适用于 MySQL 的 Azure 数据库中配置服务器参数
 
@@ -39,7 +39,7 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-service
 
 |**定价层**| **计算代**|**vCore(s)**|InnoDB 缓冲池 (MB)| 最大连接数|
 |---|---|---|---|--|
-|基本| 第 4 代| 1| 960| 50|
+|基本| 第 4 代| 第| 960| 50|
 |基本| 第 4 代| 2| 2560| 100|
 |基本| 第 5 代| 1| 960| 50|
 |基本| 第 5 代| 2| 2560| 100|
@@ -65,8 +65,8 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-service
 |**Parameter**|**固定值**|
 | :------------------------ | :-------- |
 |基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
+|innodb_flush_log_at_trx_commit|第|
+|sync_binlog|第|
 |innodb_log_file_size|512MB|
 
 在版本 [5.7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) 和 [5.6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html) 中，上表中未列出的其他服务器参数将设置为其 MySQL 现成默认值。

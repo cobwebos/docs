@@ -15,11 +15,11 @@ ms.workload: required
 ms.date: mm/dd/yyyy
 ms.author: Your MSFT alias or your full email address;semicolon separates two or more
 ms.openlocfilehash: 46a7bc52e94189b932b0475e80f55d880a2e3ee9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58191639"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61215946"
 ---
 # <a name="title-maximum-120-characters-target-the-primary-keyword"></a>标题 （最多 120 个字符，目标主关键字）
 *在说明中使用的 2-3 辅助关键字。*
@@ -71,7 +71,7 @@ ms.locfileid: "58191639"
 
 *选择其中一个版本适用于你的情况。*
 
-| <em>版本 1:您的文章是不可知的部署模型</em> | <em>版本 2:资源管理器和经典部署模型的步骤很大程度上都相同</em> | <em>版本 3:资源管理器和经典部署模型的步骤主要有不同。 <br />在这种情况下，使用<a href="https://github.com/Azure/azure-content-pr/blob/master/contributor-guide/custom-markdown-extensions.md#simple-selectors">在 GitHub 中的简单选择器技术</a>。 <br />注意：有关 ARM 的 VM 文章例外情况，并且不应使用 ARM/经典选择器。</em> |
+| <em>版本 1:您的文章是不可知的部署模型</em> | <em>版本 2:资源管理器和经典部署模型的步骤很大程度上都相同</em> | <em>版本 3:资源管理器和经典部署模型的步骤主要有不同。 <br />在这种情况下，使用<a href="https://github.com/Azure/azure-content-pr/blob/master/contributor-guide/custom-markdown-extensions.md#simple-selectors">在 GitHub 中的简单选择器技术</a>。 <br />请注意:有关 ARM 的 VM 文章例外情况，并且不应使用 ARM/经典选择器。</em> |
 |:--- |:--- |:--- |
 | <p><h3>[Issue 1] \ |[错误 1]</h3><h4>原因</h4>[原因详细信息]</p><p><h4>解决方案 1</h4><em>（最简单也最有效）</em></p><ol><li>[步骤 1]</li><li>[2]</li></ol><p><h4>解决方案 2</h4><em>（不太简单或有效）</em></p><ol><li>[步骤 1]</li><li>[2]</li></ol><p><h3>[问题 2] \ |[错误 2]</h3><h4>原因</h4>[原因详细信息]</p><p><h4>解决方案 1</h4><em>（最简单也最有效）</em></p><ol><li>[步骤 1]</li><li>[2]</li></ol><p><h4>解决方案 2</h4><em>（最简单也最有效）</em></p><ol><li>[步骤 1]</li><li>[2]</li></ol><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /> |
 

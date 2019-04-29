@@ -10,11 +10,11 @@ ms.workload: infrastructure-services
 ms.date: 04/07/2019
 ms.author: kumud;tyao
 ms.openlocfilehash: 744c6fb9235c9daa2d5239ef9fd13679db943650
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59783961"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61459702"
 ---
 #  <a name="custom-rules-for-web-application-firewall-with-azure-front-door"></a>自定义规则为 web 应用程序防火墙与 Azure 第一道防线的
 第一道防线服务的 azure web 应用程序防火墙 (WAF) 可控制对 web 应用程序基于你定义的条件访问。 自定义 WAF 规则组成优先级编号、 规则类型、 匹配条件和操作。 有两种类型的自定义规则： 与规则匹配和速率限制规则。 匹配规则控制访问权限基于匹配条件时的速率限制规则控制访问基于匹配条件和传入的请求的速率。 也可以禁用自定义规则，以防止它计算的但仍保留配置。 本文介绍了基于 http 参数的匹配规则。

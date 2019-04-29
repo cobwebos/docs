@@ -10,14 +10,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 4/23/2018
-ms.author: victorh
+origin.date: 04/23/2018
+ms.date: 04/17/2019
+ms.author: v-junlch
 ms.openlocfilehash: ee0267146140d095487b293331a7de493ba151c6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57895577"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61361938"
 ---
 # <a name="azure-application-gateway-url-path-based-routing-overview"></a>Azure 应用程序网关基于 URL 路径的路由概述
 
@@ -29,7 +30,7 @@ ms.locfileid: "57895577"
 
 ![imageURLroute](./media/url-route-overview/figure1.png)
 
-请求<http://contoso.com/video/*>路由到 VideoServerPool，和<http://contoso.com/images/*>会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
+对 <http://contoso.com/video/*> 的请求会路由到 VideoServerPool，而对 <http://contoso.com/images/*> 的请求则会路由到 ImageServerPool。 如果没有任何路径模式匹配，则选择 DefaultServerPool。
 
 > [!IMPORTANT]
 > 规则将按照门户中的列出顺序进行处理。 我们强烈建议先配置多站点侦听器，然后再配置基本侦听器。  这确保将流量路由到适当的后端。 如果基本侦听器先列出并且与传入的请求匹配，则该侦听器将处理该请求。
@@ -68,7 +69,7 @@ UrlPathMap 元素用于指定后端服务器池映射的路径模式。 以下�
 ```
 
 > [!NOTE]
-> PathPattern:此设置是要匹配的路径模式列表。 每个模式必须以 / 开头，只允许在后接“/”的末尾处添加“*”。 发送到路径匹配器的字符串不会在第一个 ? 或 # 之后包含任何文本，这些字符在这里是不允许的。
+> PathPattern：此设置是要匹配的路径模式列表。 每个模式必须以 / 开头，只允许在后接“/”的末尾处添加“*”。 发送到路径匹配器的字符串不会在第一个 ? 或 # 之后包含任何文本，这些字符在这里是不允许的。
 
 有关详细信息，可以查看[使用基于 URL 的路由的 Resource Manager 模板](https://azure.microsoft.com/documentation/templates/201-application-gateway-url-path-based-routing)。
 
@@ -100,3 +101,5 @@ PathBasedRouting 规则的代码段：
 ## <a name="next-steps"></a>后续步骤
 
 了解基于 URL 的内容路由之后，请转到[使用基于 URL 的路由创建应用程序网关](tutorial-url-route-powershell.md)，使用 URL 路由规则创建应用程序网关。
+
+<!-- Update_Description: update metedata properties -->

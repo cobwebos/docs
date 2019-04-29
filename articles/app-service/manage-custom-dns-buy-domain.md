@@ -16,11 +16,11 @@ ms.date: 11/24/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 0c59e892c8fd5a8bcc74d23e16eaabf1dc1a08f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121530"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61272326"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>为 Azure 应用服务购买自定义域名
 
@@ -126,7 +126,7 @@ ms.locfileid: "58121530"
 单击“法律条款”查看条款和费用，再单击“购买”。
 
 > [!NOTE]
-> 应用服务域使用 GoDaddy 域注册和 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
+> 应用服务域使用 GoDaddy 进行域注册，使用 Azure DNS 来托管域。 除了域注册费以外，还会产生 Azure DNS 的使用费。 有关信息，请参阅 [Azure DNS 定价](https://azure.microsoft.com/pricing/details/dns/)。
 >
 >
 

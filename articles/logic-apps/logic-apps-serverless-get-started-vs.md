@@ -11,11 +11,11 @@ ms.custom: vs-azure
 ms.topic: article
 ms.date: 04/02/2019
 ms.openlocfilehash: 39b44668a89ce0c77c09a7fa20dc4d95b2164bf4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862992"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61321167"
 ---
 # <a name="build-your-first-serverless-app-with-azure-logic-apps-and-azure-functions---visual-studio"></a>在 Visual Studio 中使用 Azure 逻辑应用和 Azure Functions 生成第一个无服务器应用
 

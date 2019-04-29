@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: cakarst
 ms.reviewer: igorstan
 ms.openlocfilehash: 44ad37120034d59161fe3b5f0ed521fc6f630b0f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55454328"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61081292"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>教程：将数据加载到 Azure SQL 数据仓库
 
@@ -81,7 +81,7 @@ ms.locfileid: "55454328"
 
 6. 单击“性能层”，指定是否针对弹性或计算，以及数据仓库单位对数据仓库进行优化。 
 
-7. 对于本教程，选择“针对弹性进行优化”服务层。 默认情况下，滑块设置为“DW400”。  请尝试上下移动滑块，以查看其工作原理。 
+7. 对于本教程，选择“针对弹性进行优化”服务层级。 默认情况下，滑块设置为“DW400”。  请尝试上下移动滑块，以查看其工作原理。 
 
     ![配置性能](media/load-data-wideworldimportersdw/configure-performance.png)
 
@@ -151,7 +151,7 @@ SQL 数据仓库服务在服务器级别创建一个防火墙，阻止外部应�
     | ------------ | --------------- | ----------- | 
     | 服务器类型 | 数据库引擎 | 此值是必需的 |
     | 服务器名称 | 完全限定的服务器名称 | 例如，**sample-svr.database.windows.net** 就是完全限定的服务器名称。 |
-    | 身份验证 | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
+    | Authentication | SQL Server 身份验证 | SQL 身份验证是本教程中配置的唯一身份验证类型。 |
     | 登录 | 服务器管理员帐户 | 这是在创建服务器时指定的帐户。 |
     | 密码 | 服务器管理员帐户的密码 | 这是在创建服务器时指定的密码。 |
 

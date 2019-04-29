@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: roiyz
-ms.openlocfilehash: 9d9f634d494c3c88146ab1f243d17609cf30bbcd
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
-ms.translationtype: MT
+ms.openlocfilehash: 5a184c72da8af0d451902a164c8b71a94a01883f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58620676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129070"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>适用于 Linux 的 NVIDIA GPU 驱动程序扩展
 
@@ -35,7 +35,7 @@ ms.locfileid: "58620676"
 
 此扩展支持以下 OS 发行版，具体取决于特定 OS 版本对驱动程序的支持。
 
-| 分发 | 版本 |
+| 分发 | Version |
 |---|---|
 | Linux：Ubuntu | 16.04 LTS、18.04 LTS |
 | Linux：Red Hat Enterprise Linux | 7.3, 7.4, 7.5, 7.6 |
@@ -73,9 +73,9 @@ ms.locfileid: "58620676"
 
 | 名称 | 值/示例 | 数据类型 |
 | ---- | ---- | ---- |
-| apiVersion | 2015-06-15 | 日期 |
-| 发布者 | Microsoft.HpcCompute | 字符串 |
-| type | NvidiaGpuDriverLinux | 字符串 |
+| apiVersion | 2015-06-15 | date |
+| 发布者 | Microsoft.HpcCompute | string |
+| type | NvidiaGpuDriverLinux | string |
 | typeHandlerVersion | 1.2 | int |
 
 ### <a name="settings"></a>设置
@@ -84,9 +84,9 @@ ms.locfileid: "58620676"
 
 | 名称 | 描述 | 默认值 | 有效值 | 数据类型 |
 | ---- | ---- | ---- | ---- | ---- |
-| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | 布尔值 |
-| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID：“410.92”、“410.71”、“390.75”、“390.57”、“390.42”<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | 字符串 |
-| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | 布尔值 |
+| updateOS | 更新内核，即使安装驱动程序时不需要更新 | false | true、false | boolean |
+| driverVersion | NV：GRID 驱动程序版本<br> NC/ND：CUDA 工具包版本。 将自动安装所选 CUDA 的最新驱动程序。 | 最新 | GRID："418.70", "410.92", "410.71", "390.75", "390.57", "390.42"<br> CUDA：“10.0.130”、“9.2.88”、“9.1.85” | string |
+| installCUDA | 安装 CUDA 工具包。 仅适用于 NC/ND 系列 VM。 | true | true、false | boolean |
 
 
 ## <a name="deployment"></a>部署

@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 群集上将 Apache Pig 与 SSH 配合使用 - Azure
 description: 了解如何使用 SSH 连接到基于 Linux 的 Apache Hadoop 群集，并使用 Pig 命令以交互方式或以批处理作业形式运行 Pig Latin 语句。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: hrasheed
-ms.openlocfilehash: a674ee52ae5e8f8f800d4584a53c808ceae70156
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 503449e36b2b11e5663449dd732fdaf785417570
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53435049"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110742"
 ---
 # <a name="run-apache-pig-jobs-on-a-linux-based-cluster-with-the-pig-command-ssh"></a>使用 Pig 命令 (SSH) 在基于 Linux 的群集上运行 Apache Pig 作业
 
@@ -141,4 +140,4 @@ ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 有关使用 HDInsight 上 Hadoop 的其他方式的详细信息，请参阅以下文档：
 
 * [将 Apache Hive 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-hive.md)
-* [将 MapReduce 与 Apache Hadoop on HDInsight 配合使用](hdinsight-use-mapreduce.md)
+* [将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用](hdinsight-use-mapreduce.md)

@@ -17,11 +17,11 @@ ms.date: 07/25/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 89412040fdea32746574d8ae5bada9c017617b80
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56184986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62129278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---public"></a>教程：Azure Active Directory 与 TOPdesk - Public 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56184986"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 TOPdesk - Public 的集成，需准备好以下各项：
 
@@ -180,9 +180,9 @@ ms.locfileid: "56184986"
     
     a. 若要从 Azure 门户上传已下载的元数据文件，请在“联合元数据”下单击“浏览”。
 
-    b. 若要上载证书文件，请在“证书(RSA)”下，单击“浏览”。
+    b. 若要上传证书文件，请在 **“证书(RSA)”** 下，单击 **“浏览”**。
 
-    c. 若要上载从 TOPdesk 支持团队获得的徽标文件，请在“徽标图标”下，单击“浏览”。
+    c. 若要上传从 TOPdesk 支持团队获得的徽标文件，请在 **“徽标图标”** 下，单击 **“浏览”**。
 
     d. 在“用户名属性”文本框中，键入 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`。
 
@@ -223,7 +223,7 @@ ms.locfileid: "56184986"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-a-topdesk---public-test-user"></a>创建 TOPdesk - Public 测试用户
 

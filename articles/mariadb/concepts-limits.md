@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: e191c656c5485377f62073f52dec0b3dbee7537b
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59616265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61041269"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Azure Database for MariaDB 中的限制
 以下各部分介绍了数据库服务中的容量、存储引擎支持、特权支持、数据操作语句支持和功能限制。
@@ -87,5 +87,5 @@ ms.locfileid: "59616265"
 - 建立连接后，MariaDB 服务器实例显示的服务器版本不正确。 若要获取正确的服务器实例引擎版本，请使用 `select version();` 命令。
 
 ## <a name="next-steps"></a>后续步骤
-- [每个服务层中有哪些可用资源](concepts-pricing-tiers.md)
+- [每个服务层级中有哪些可用资源](concepts-pricing-tiers.md)
 - [支持的 MariaDB 数据库版本](concepts-supported-versions.md)
