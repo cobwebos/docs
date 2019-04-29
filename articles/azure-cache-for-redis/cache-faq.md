@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: yegu
 ms.openlocfilehash: 65e8553969aa92848b1c4496724a7b7754b5d659
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60552025"
 ---
 # <a name="azure-cache-for-redis-faq"></a>用于 Redis 的 Azure 缓存常见问题解答
 了解 Azure Redis 缓存的常见问题、模式和最佳做法。
@@ -137,7 +137,7 @@ Azure Redis 缓存基于热门开源软件 [Redis](https://redis.io/)。 这使�
 | --- | --- | --- | --- | --- | --- |
 | **标准缓存大小** | | |**兆位/秒（Mb/秒）/兆字节/秒（MB/秒）** |**非 SSL 请求数/秒 (RPS)** |**SSL 请求数/秒 (RPS)** |
 | C0 |250 MB |共享 |100/12.5 |15,000 |7,500 |
-| C1 |1 GB |1 |500/62.5 |38,000 |20,720 |
+| C1 |1 GB |第 |500/62.5 |38,000 |20,720 |
 | C2 |2.5 GB |2 |500/62.5 |41,000 |37,000 |
 | C3 |6 GB |4 |1000/125 |100,000 |90,000 |
 | C4 |13 GB |2 |500/62.5 |60,000 |55,000 |

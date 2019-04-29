@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/28/2019
 ms.author: anzaman
 ms.openlocfilehash: 486a910226db5dc7b36aaf873e7bb8115eb78805
-ms.sourcegitcommit: d3200828266321847643f06c65a0698c4d6234da
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/29/2019
-ms.locfileid: "55189640"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60653453"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>关于点到站点 VPN 路由
 
@@ -44,7 +44,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端可以访问 VNet1
 
@@ -74,7 +74,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.4.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端可以访问 VNet1、VNet2 和 VNet4，但必须重新下载 VPN 客户端，以使拓扑更改生效。
 
@@ -102,7 +102,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端只能访问 VNet1
 
@@ -130,7 +130,7 @@ Azure 当前支持两种远程访问协议：IKEv2 和 SSTP。 IKEv2 可用于�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端可以访问 VNet1、VNet2 和 VNet3，但必须手动添加 VNet2 和 VNet3。
 
@@ -156,7 +156,7 @@ Windows 客户端和非 Windows 客户端只能访问 VNet1。
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端只能访问 VNet1
 
@@ -182,7 +182,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.101.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端可以访问 VNet1 和 Site1，但必须手动添加到 Site1 的路由。
 
@@ -213,7 +213,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端只能访问 VNet1
 
@@ -243,7 +243,7 @@ Windows 客户端可以访问 VNet 和其他分支机构 (Site1)，但必须将�
 
 * 已添加到非 Windows 客户端的路由：10.1.0.0/16、10.2.0.0/16、10.3.0.0/16、10.101.0.0/16、192.168.0.0/24
 
-### <a name="access"></a>Access
+### <a name="access"></a>访问
 
 * Windows 客户端可以访问 VNet1、VNet2、VNet3 和 Site1，但必须将到 VNet2、VNet3 和 Site1 的路由手动添加到客户端。
 

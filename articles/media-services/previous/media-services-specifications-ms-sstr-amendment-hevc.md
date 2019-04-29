@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: johndeu;
 ms.openlocfilehash: b26252ddda7997bebd730bb4c1007f76b3e645a4
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294699"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60650703"
 ---
 # <a name="smooth-streaming-protocol-ms-sstr-amendment-for-hevc"></a>HEVC 的平滑流式处理协议 (MS-SSTR) 修正 
 
@@ -161,7 +161,7 @@ ms.locfileid: "58294699"
 > 
 >   * PPSField 包含切片参数集 (PPS)。
 > 
->   注意：视频参数集 (VPS) 未包含在 CodecPrivateData 中，但应包含在“hvcC”框中存储的文件的文件标头中。 使用平滑流式处理协议的系统必须使用自定义属性“codecs”来告知附加的解码参数（例如 HEVC 层）。
+>   请注意:视频参数集 (VPS) 未包含在 CodecPrivateData 中，但应包含在“hvcC”框中存储的文件的文件标头中。 使用平滑流式处理协议的系统必须使用自定义属性“codecs”来告知附加的解码参数（例如 HEVC 层）。
 
 ##### <a name="22251-customattributeselement"></a>2.2.2.5.1 CustomAttributesElement 
 
@@ -211,7 +211,7 @@ ms.locfileid: "58294699"
 > 
 >   [[ISO/IEC-14496-12]](https://go.microsoft.com/fwlink/?LinkId=183695) 中的定义，使用负值视频样本构图偏移量。
 > 
->   注意：这可以避免视频滞后音频等于最大解码图片缓冲消除延迟所造成的视频同步错误，并保持可能具有不同消除延迟的备用片段之间的呈现计时。
+>   请注意:这可以避免视频滞后音频等于最大解码图片缓冲消除延迟所造成的视频同步错误，并保持可能具有不同消除延迟的备用片段之间的呈现计时。
 > 
 >   本节中定义的字段语法（符合 ABNF [[RFC5234]](https://go.microsoft.com/fwlink/?LinkId=123096) 中的指定）保持不变，但以下各项例外：
 > 

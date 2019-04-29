@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: mbaldwin
 ms.openlocfilehash: aa9b89b9afec069e97236b7652e0f1d37644f5cf
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336060"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640474"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>如何将 Key Vault 软删除与 CLI 配合使用
 
@@ -27,7 +27,7 @@ Azure Key Vault 的软删除功能可以恢复已删除的保管库和保管库�
 
 有关 CLI Key Vault 的特定参考信息，请参阅 [Azure CLI Key Vault 参考](https://docs.microsoft.com/cli/azure/keyvault)。
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 
 Key Vault 操作通过基于角色的访问控制 (RBAC) 权限单独管理，如下所示：
 
@@ -225,17 +225,17 @@ az keyvault purge --location westus --name ContosoVault
 
 ## <a name="enabling-purge-protection"></a>启用清除保护
 
-清除保护开启时，一个保管库或中的对象已删除超过 90 天的保留期后，才可以清除状态。 仍可以恢复此类保管库或对象。 此功能可以提高的可靠性，保管库或对象可以永远不会永久删除之前保留期已过。
+启用清除保护时，在长达 90 天的保留期到期之前，不能清除处于已删除状态的保管库或对象。 仍可以恢复此类保管库或对象。 此功能可增加保障，在保留期到期之前，永远不会永久删除保管库或对象。
 
-仅当还启用软删除时，可以启用清除保护。 
+只有启用了软删除，才能启用清除保护。 
 
-若要启用这两个软删除和清除保护，创建一个保管库时，使用[az keyvault 创建](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create)命令：
+若要在创建保管库时同时启用软删除和清除保护，请使用 [az keyvault create](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-create) 命令：
 
 ```
 az keyvault create --name ContosoVault --resource-group ContosoRG --location westus --enable-soft-delete true --enable-purge-protection true
 ```
 
-若要将清除保护添加到现有的保管库 （即已启用软删除），请使用[az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update)命令：
+若要向现有保管库（已启用软删除）添加清除保护，请使用 [az keyvault update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) 命令：
 
 ```
 az keyvault update --name ContosoVault --resource-group ContosoRG --enable-purge-protection true

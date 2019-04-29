@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
 ms.openlocfilehash: b3eb7995dac1adf3053d28b40cf322e78c69c55f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58001329"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60716287"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>使用流量管理器，基于用户子网，将流量定向到特定终结点
 
@@ -56,7 +56,7 @@ ms.locfileid: "58001329"
     |用户名| 输入所选用户名。|
     |密码| 输入所选密码。 密码必须至少 12 个字符长，且符合[定义的复杂性要求](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm)。|
     |资源组| 选择“新建”，然后键入 *myResourceGroupTM1*。|
-    |位置| 选择“美国东部”。|
+    |Location| 选择“美国东部”。|
     |||
 
 4. 在“选择大小”下选择 VM 大小。
@@ -76,7 +76,7 @@ ms.locfileid: "58001329"
     |设置|值|
     |---|---|
     |资源组 | 选择“新建”，然后键入 *myResourceGroupTM2*|
-    |位置|西欧|
+    |Location|西欧|
     |VM 名称 | myIISVMWEurope|
     |虚拟网络 | 选择“虚拟网络”，在“创建虚拟网络”中，为“名称”输入 *myVNet2*，为“子网”输入 *mySubnet*。|
     |||

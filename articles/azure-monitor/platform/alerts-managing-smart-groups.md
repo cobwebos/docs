@@ -1,19 +1,19 @@
 ---
 title: 管理智能组
 description: 管理通过警报实例创建的智能组
-author: anantr
+author: lingliw
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.author: anantr
+ms.date: 01/21/19
+ms.author: v-lingwu
 ms.subservice: alerts
 ms.openlocfilehash: a9434bebe82687b14f45b3c375572717d71d0e55
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430613"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713306"
 ---
 # <a name="manage-smart-groups"></a>管理智能组
 [智能组](https://aka.ms/smart-groups)使用机器学习算法根据共现或相似性将警报分组在一起，以便用户现在可以管理智能组，而不必单独管理每个警报。 本文将介绍如何在 Azure Monitor 中访问和使用智能组。
@@ -26,5 +26,4 @@ ms.locfileid: "54430613"
 ![监视](./media/alerts-managing-smart-groups/sg-list.jpg)
 3.  单击任何智能组将打开详细信息页，你可以在其中查看分组原因以及成员警报。 此聚合允许你处理单个智能组，而不是筛选多个警报。   
 ![监视](./media/alerts-managing-smart-groups/sg-details.jpg)
-
 

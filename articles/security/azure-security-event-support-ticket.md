@@ -1,6 +1,6 @@
 ---
 title: 如何记录安全事件支持票证 - Azure | Microsoft Docs
-description: 作为 Azure Marketplace 上的销售商，在标识潜在的安全事件之后，我需要了解如何记录相应的票证。
+description: 作为 Azure 市场上的销售商，在标识潜在的安全事件之后，我需要了解如何记录相应的票证。
 services: security
 documentationcenter: na
 author: DavidBosland
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/13/2017
 ms.author: v-dabosl
-ms.openlocfilehash: 753d6abcdd063d5c092b0c90770396d176bc52e8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
-ms.translationtype: HT
+ms.openlocfilehash: 243b6b7846719d3f848073e3aa973c9406ca59c7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/04/2017
-ms.locfileid: "26129934"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586556"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>如何记录安全事件支持票证
 
@@ -32,7 +32,7 @@ ms.locfileid: "26129934"
 
     i. 问题和/或漏洞是什么？
 
-    ii. 对于漏洞，请提供 CVE (mitre.org) 或已填充的 CVSS3 v3 计算器 (https://www.first.org/cvss/calculator/3.0)。
+    ii. 对于漏洞，请提供 CVE (mitre.org) 或已填充 CVSS3 v3 计算器 (https://www.first.org/cvss/calculator/3.0)。
 
     iii. 是否有解决方法或缓解措施？ 如果是，请提供补救措施。
 

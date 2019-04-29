@@ -1,5 +1,5 @@
 ---
-title: 在 Azure 安全中心为存储帐户启用加密 | Microsoft 文档
+title: 在 Azure 安全中心为 Azure 存储帐户加密 |Microsoft Docs
 description: 本文档演示如何实现 Azure 安全中心建议**为 Azure 存储帐户启用加密**。
 services: security-center
 documentationcenter: na
@@ -14,47 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9f8679e988513eecd778970ac796264b274a8088
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
+ms.openlocfilehash: cadf375b541900600be82e76673637ff01a8ad96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703922"
 ---
-# <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>在 Azure 安全中心为 Azure 存储帐户启用加密
-Azure 安全中心可能会建议为静态数据启用 Azure 存储服务加密。
+# <a name="encryption-for-azure-storage-account-in-azure-security-center"></a>在 Azure 安全中心的 Azure 存储帐户的加密
 
-存储服务加密 (SSE) 的工作原理是，在将数据写入 Azure 存储时对数据进行加密，以及在检索前对数据进行解密。  SSE 当前仅适用于 Azure Blob 服务，并可用于块 blob、页 blob 和追加 blob。  若要了解详细信息，请参阅[静态数据的存储服务加密](../storage/common/storage-service-encryption.md)。
-
-
-> [!Note]
-> 启用加密后，仅加密新数据。 存储帐户中的所有现有 blob 保持未加密状态。 若要加密现有 blob，请参阅[存储服务加密常见问题解答](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption)。
->
->
-
-只有 Resource Manager 存储帐户支持存储服务加密。 目前不支持经典存储帐户。 若要了解经典部署模型和 Resource Manager 部署模型，请参阅 [Azure 部署模型](../azure-classic-rm.md)。
-
-> [!NOTE]
-> 本文档将使用示例部署介绍该服务。  本文档不是一份分步指南。
->
->
-
-## <a name="implement-the-recommendation"></a>实现该建议
-1. 在“建议”边栏选项卡中，选择“为 Azure 存储帐户启用加密”。
-   ![为存储帐户启用加密][1]
-2. 此时会打开“启用存储加密”边栏选项卡。 此边栏选项卡列出已禁用存储加密的 Azure 存储帐户。 在此示例中，选择“storageacct1”。
-   ![启用存储加密][2]
-3. 此时会打开 **storageacct1** 的“加密”边栏选项卡。 选择“启用”。
-   ![“加密”边栏选项卡][3]
-4. 选择“保存”。
-
-现在已为 **storageacct1** 启用存储加密。
-
-
-## <a name="see-also"></a>另请参阅
-本文档演示了如何实现安全中心建议“为 Azure 存储帐户启用加密”。 若要了解有关 Azure 存储服务加密的详细信息，请参阅以下文章：
-
-* [静态数据的 Azure 存储服务加密](../storage/common/storage-service-encryption.md)
+默认情况下为所有 Azure 存储帐户启用静态数据的 azure 存储加密。 写入到 Azure 存储和检索前对其进行解密时，azure 存储会对数据进行加密。 有关详细信息，请参阅[静态数据的 Azure 存储加密](../storage/common/storage-service-encryption.md)。
 
 若要了解有关安全中心的详细信息，请参阅以下文章：
 

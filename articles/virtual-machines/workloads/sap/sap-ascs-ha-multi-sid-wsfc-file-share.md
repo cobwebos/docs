@@ -18,11 +18,11 @@ ms.date: 02/03/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a840deb2349d952b1ef4faeab4ee860e6b0b99df
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60651575"
 ---
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -207,7 +207,7 @@ ms.locfileid: "58540136"
 
 > [!NOTE]
 >
-> 此功能仅在 Azure Resource Manager 部署模型中可用。
+> 此功能仅在 Azure 资源管理器部署模型中可用。
 >
 >每个 Azure 内部负载均衡器的专用前端 IP 数有限制。
 >
@@ -227,11 +227,11 @@ ms.locfileid: "58540136"
 _**图 1：** 在两个群集中部署的 SAP ASCS/SCS 实例和 SOFS_
 
 > [!IMPORTANT]
-> 安装必须满足以下条件：
+> 该设置必须满足以下条件：
 > * SAP ASCS/SCS 实例必须共享同一个 WSFC 群集。
 > * 属于不同 SAP SID 的不同 SAP 全局主机文件共享必须共享相同的 SOFS 群集。
 > * 每个数据库管理系统 (DBMS) SID 都必须有自己专用的 WSFC 群集。
-> * 属于同一 SAP 系统 SID 的 SAP 应用程序服务器必须具有自身的专用 VM。
+> * 属于一个 SAP 系统 SID 的 SAP 应用程序服务器必须有自身的专用 VM。
 
 ## <a name="sap-ascsscs-multi-sid-architecture-with-file-share"></a>使用文件共享实现的 SAP ASCS/SCS 多 SID 体系结构
 

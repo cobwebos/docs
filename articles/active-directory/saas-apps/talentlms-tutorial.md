@@ -16,11 +16,11 @@ ms.date: 07/13/2017
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8fa78ec2b5623dfd010a8fe5709916a47e221a9e
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57902189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60731976"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>教程：Azure Active Directory 与 TalentLMS 集成
 
@@ -199,7 +199,7 @@ ms.locfileid: "57902189"
 
     c. 选择“显示密码”并记下“密码”的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="creating-a-talentlms-test-user"></a>创建 TalentLMS 测试用户
 
@@ -219,7 +219,7 @@ ms.locfileid: "57902189"
 
     b. 在“姓氏”文本框中，输入用户的姓氏（如“Simon”）。
  
-    c. 在中**电子邮件地址**文本框中，输入类似的用户的电子邮件**brittasimon\@contoso.com**。
+    c. 在“电子邮件地址”文本框中，输入用户的电子邮件，例如 brittasimon\@contoso.com。
 
     d. 单击“添加用户”。
 

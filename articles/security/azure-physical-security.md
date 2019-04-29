@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 5f8378de18796fd679354c88880942df83399ad5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112038"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60586777"
 ---
 # <a name="azure-facilities-premises-and-physical-security"></a>Azure 设施、场地和物理安全性
 Azure 由[全球分布式数据中心基础结构](https://azure.microsoft.com/global-infrastructure/)组成，该基础结构支持数千个联机服务，并跨越全球 100 多个高度安全的设施。

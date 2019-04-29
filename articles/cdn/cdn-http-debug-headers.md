@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: magattus
 ms.openlocfilehash: 4ba42850ee28e2e212d9bc2b7b64be103218757c
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736966"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>Azure CDN 规则引擎的 X-EC-Debug HTTP 标头
 调试缓存请求标头 `X-EC-Debug` 提供有关应用到所请求资产的缓存策略的附加信息。 这些标头特定于 **Verizon 的 Azure CDN Premium** 产品。
@@ -33,7 +33,7 @@ ms.locfileid: "49094218"
 ## <a name="requesting-debug-cache-information"></a>请求调试缓存信息
 在指定的请求中使用以下指令，定义要包含在响应中的调试缓存信息：
 
-请求标头 | Description |
+请求标头 | 描述 |
 ---------------|-------------|
 X-EC-Debug: x-ec-cache | [缓存状态代码](#cache-status-code-information)
 X-EC-Debug: x-ec-cache-remote | [缓存状态代码](#cache-status-code-information)
@@ -54,7 +54,7 @@ X-EC-Debug: x-ec-cache-state | [缓存状态](#cache-state-response-header)
 ## <a name="cache-status-code-information"></a>缓存状态代码信息
 X-EC-Debug 响应标头可以标识服务器及其如何通过以下指令处理了响应：
 
-标头 | Description
+标头 | 描述
 -------|------------
 X-EC-Debug: x-ec-cache | 每当通过 CDN 路由内容时，都会报告此标头。 此标头标识完成请求的 POP 服务器。
 X-EC-Debug: x-ec-cache-remote | 仅当请求的内容已缓存在来源防护服务器或 ADN 网关服务器上时，才报告此标头。
@@ -68,11 +68,11 @@ X-EC-Debug 标头采用以下格式报告缓存状态代码信息：
 - `X-EC-Debug: x-ec-cache-remote: <StatusCode from Platform (POP/ID)>`
 
 上述响应标头语法中使用的元素定义如下：
-- StatusCode：指示 CDN 如何处理请求的内容，通过缓存状态代码表示。
+- 状态代码：指示请求的内容如何处理 CDN，通过缓存状态代码表示。
     
     如果由于基于令牌的身份验证而拒绝了未授权的请求，则可以报告 TCP_DENIED 状态代码而不是 NONE。 但是，在查看缓存状态报告或原始日志数据时，将继续使用 NONE 状态代码。
 
-- Platform：指示在其上请求内容的平台。 以下代码在此字段中有效：
+- 平台:指示所请求内容的平台。 以下代码在此字段中有效：
 
     代码  | 平台
     ------| --------
@@ -80,7 +80,7 @@ X-EC-Debug 标头采用以下格式报告缓存状态代码信息：
     ECS   | HTTP Small
     ECD   | 应用程序传送网络 (ADN)
 
-- POP：指示处理请求的 [POP](cdn-pop-abbreviations.md)。 
+- POP:指示[POP](cdn-pop-abbreviations.md)处理请求。 
 
 ### <a name="sample-response-headers"></a>示例响应标头
 
@@ -103,10 +103,10 @@ X-EC-Debug 标头采用以下格式报告缓存状态代码信息：
 
 上述响应标头语法中使用的元素定义如下：
 
-值  | Description
+值  | 描述
 -------| --------
 是    | 指示请求的内容是否符合缓存的条件。
-否     | 指示请求的内容是否不符合缓存的条件。 此状态可能是以下原因之一造成的： <br /> - 客户特定的配置：特定于你帐户的配置可能阻止 POP 服务器缓存资产。 例如，规则引擎可能会通过对符合条件的请求启用“绕过缓存”功能，来阻止缓存资产。<br /> - 缓存响应标头：所请求资产的 Cache-Control 和 Expires 标头可能阻止 POP 服务器缓存该资产。
+否     | 指示请求的内容是否不符合缓存的条件。 此状态可能是以下原因之一造成的： <br /> -客户特定的配置：特定于你的帐户的配置可能阻止 pop 服务器缓存资产。 例如，规则引擎可能会通过对符合条件的请求启用“绕过缓存”功能，来阻止缓存资产。<br /> -缓存响应标头：所请求的资产的 Cache-control 和 Expires 标头可能阻止 POP 服务器缓存它。
 UNKNOWN | 指示服务器无法评估请求的资产是否可缓存。 如果由于基于令牌的身份验证而拒绝了请求，则通常会出现此状态。
 
 ### <a name="sample-response-header"></a>示例响应标头
@@ -147,23 +147,23 @@ UNKNOWN | 指示服务器无法评估请求的资产是否可缓存。 如果由
 
 上述响应标头语法中使用的元素定义如下：
 
-- MASeconds：指示所请求内容的 Cache-Control 标头定义的最大期限（以秒为单位）。
+- MASeconds:指示最大期限 （以秒为单位） 定义所请求的内容的缓存控制标头。
 
-- MATimePeriod：将最大期限值（即 MASeconds）转换为单位更大（例如，天）的近似等效值。 
+- MATimePeriod:（例如，天），请将最大期限值 (即 MASeconds) 转换为单位更大的近似等效项。 
 
-- UnixTime：指示所请求内容的缓存时间戳，以 Unix 时间（也称为 POSIX 时间或 Unix 时期）为单位。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
+- UnixTime:（也称为以 Unix 时间指示请求的内容的缓存时间戳 POSIX 时间或 Unix 时期）为单位。 缓存时间戳指示计算资产 TTL 的起始日期/时间。 
 
-    如果源服务器不使用第三方 HTTP 缓存服务器或该服务器不返回 Age 响应标头，则缓存时间戳始终为检索或重新验证资产时的日期/时间。 否则，POP 服务器将使用 Age 字段计算资产的 TTL，如下所示：Retrieval/RevalidateDateTime - Age。
+    如果源服务器不使用第三方 HTTP 缓存服务器或该服务器不返回 Age 响应标头，则缓存时间戳始终为检索或重新验证资产时的日期/时间。 否则，POP 服务器将使用 Age 字段计算资产的 TTL，如下所示：Retrieval/RevalidateDateTime-Age。
 
-- ddd, dd MMM yyyy HH:mm:ss GMT：指示所请求内容的缓存时间戳。 有关详细信息，请参阅上面的 UnixTime 元素。
+- ddd，dd MMM yyyy hh: mm： 格林威治标准时间：指示请求的内容的缓存时间戳。 有关详细信息，请参阅上面的 UnixTime 元素。
 
-- CASeconds：指示自缓存时间戳以来所经历的秒数。
+- CASeconds:指示缓存时间戳以来所经历的秒数。
 
-- RTSeconds：指示将缓存内容视为新鲜的剩余秒数。 此值的计算方式如下：RTSeconds = 最大期限 - 缓存期限。
+- RTSeconds:指示为其缓存的内容视为新鲜的剩余秒数。 此值的计算方式如下：RTSeconds = 最大期限-缓存期限。
 
-- RTTimePeriod：将剩余 TTL 值（即 RTSeconds）转换为单位更大（例如，天）的近似等效值。
+- RTTimePeriod:（例如，天），请将剩余 TTL 值 (即 RTSeconds) 转换为单位更大的近似等效项。
 
-- ExpiresSeconds：指示在达到 `Expires` 响应标头中指定的日期/时间之前剩余的秒数。 如果 `Expires` 响应标头未包含在响应中，则此元素的值为 *none*。
+- ExpiresSeconds:指示在指定的日期/时间之前剩余的秒数`Expires`响应标头。 如果 `Expires` 响应标头未包含在响应中，则此元素的值为 *none*。
 
 ### <a name="sample-response-header"></a>示例响应标头
 

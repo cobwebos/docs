@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: db701a239aedb312c7671e403cdfde7135130c6d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 644cc2a4175043b523d53b39f17483c6f3acfe96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089601"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60558336"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>如何在 Azure API 管理中使用 Azure Active Directory B2C 为开发人员帐户授权
 
@@ -69,29 +69,20 @@ Azure Active Directory B2C 是一种云标识管理解决方案，适用于消�
    ![应用程序 ID 1][api-management-howto-aad-b2c-app-id]
 
 9. 切换回 API 管理“添加标识提供者”窗格并将 ID 粘贴到“客户端 ID”文本框中。
-
-   ![应用程序 ID 2][api-management-howto-aad-b2c-client-id]
-
+    
 10. 切换回 B2C 应用注册，单击“密钥”按钮，并单击“生成密钥”。 单击“保存”保存配置并显示“应用密钥”。 将该密钥复制到剪贴板。
 
     ![应用密钥 1][api-management-howto-aad-b2c-app-key]
 
 11. 切换回 API 管理“添加标识提供者”窗格并将密钥粘贴到“客户端机密”文本框中。
+    
+12. 指定 Azure Active Directory B2C 租户中的域名**登录租户**。
 
-    ![应用密钥 2][api-management-howto-aad-b2c-client-secret]
+13. **机构**字段，可以控制要使用的 Azure AD B2C 登录 URL。 将值设置为 **< your_b2c_tenant_name >。 b2clogin.com**。
 
-12. 在“允许的租户”中指定 Azure Active Directory B2C 租户的域名。
+14. 从 B2C 租户策略中指定**注册策略**和**登录策略**。 或者，也可以提供“配置文件编辑策略”和“密码重置策略”。
 
-    ![允许的租户][api-management-howto-aad-b2c-allowed-tenant]
-
-13. 从 B2C 租户策略中指定**注册策略**和**登录策略**。 或者，也可以提供“配置文件编辑策略”和“密码重置策略”。
-
-    ![策略][api-management-howto-aad-b2c-policies]
-
-    > [!NOTE]
-    > 有关策略的详细信息，请参阅 [Azure Active Directory B2C：可扩展策略框架]。
-
-14. 指定所需的配置后，单击“保存”。
+15. 指定所需的配置后，单击“保存”。
 
     保存更改后，开发人员可以使用 Azure Active Directory B2C 创建新帐户并登录到开发人员门户。
 

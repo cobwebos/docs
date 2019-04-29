@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: adigan
 ms.openlocfilehash: e3004a44958d75d18d608a2fbed7ccc44a00dc93
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59278813"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60642520"
 ---
 # <a name="configure-azure-backup-reports"></a>配置 Azure 备份报表
 本文介绍了如何使用恢复服务保管库为 Azure 备份配置报表。 还介绍了如何使用 Power BI 访问报表。 完成这些步骤后，可以直接转到 Power BI 来查看、自定义和创建报表。
@@ -29,7 +29,7 @@ ms.locfileid: "59278813"
 - 通过使用 Azure 恢复服务代理执行 Azure 虚拟机备份和将文件和文件夹备份到云中，支持 Azure 备份报表。
 - 目前，Azure SQL 数据库、Azure 文件共享、Data Protection Manager 和 Azure 备份服务器不支持报表。
 - 如果为每个保管库配置同一存储帐户，则可以跨保管库和订阅查看报表。 所选存储帐户必须位于与恢复服务保管库相同的区域。
-- 在 Power BI 中，报表按计划每 24 小时刷新一次。 此外可以在 Power BI 中执行即席刷新报表。 在这种情况下，可将客户存储帐户中的最新数据用于呈现报表。
+- 在 Power BI 中，报表按计划每 24 小时刷新一次。 也可在 Power BI 中临时刷新报表。 在这种情况下，可将客户存储帐户中的最新数据用于呈现报表。
 
 ## <a name="prerequisites"></a>必备组件
 - 创建 [Azure 存储帐户](../storage/common/storage-quickstart-create-account.md)，以便为报表配置此帐户。 此存储帐户用于存储与报表相关的数据。

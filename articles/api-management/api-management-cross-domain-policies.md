@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: ecbc1af97ce5ed158138f2bcf47f5729842c0fe9
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56098523"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60657486"
 ---
 # <a name="api-management-cross-domain-policies"></a>API Management cross domain policies（API 管理跨域策略）
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -54,7 +54,7 @@ ms.locfileid: "56098523"
 
 ### <a name="elements"></a>元素
 
-|Name|说明|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |cross-domain|根元素。 子元素必须符合 [Adobe 跨域策略文件规范](https://www.adobe.com/devnet/articles/crossdomain_policy_file_spec.html)。|是|
 
@@ -123,7 +123,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="elements"></a>元素
 
-|Name|说明|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |cors|根元素。|是|不适用|
 |allowed-origins|包含的 `origin` 元素说明了跨域请求的允许来源。 `allowed-origins` 可能包含单个 `origin` 元素，该元素指定允许任何源的 `*`，或者包含一个或多个内含 URI 的 `origin` 元素。|是|不适用|
@@ -136,7 +136,7 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="attributes"></a>属性
 
-|Name|说明|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |allow-credentials|预检响应中的 `Access-Control-Allow-Credentials` 标头将设置为此属性的值，并且会影响客户端在跨域请求中提交凭据的功能。|否|false|
 |preflight-result-max-age|预检响应中的 `Access-Control-Max-Age` 标头将设置为此属性的值，并且会影响用户代理缓存预检响应的功能。|否|0|
@@ -168,20 +168,20 @@ CORS 允许浏览器与服务器交互，并确定是否允许特定的跨源请
 
 ### <a name="elements"></a>元素
 
-|Name|说明|必选|
+|名称|描述|需要|
 |----------|-----------------|--------------|
 |jsonp|根元素。|是|
 
 ### <a name="attributes"></a>属性
 
-|Name|说明|必选|默认|
+|名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
 |callback-parameter-name|以函数所在的完全限定域名为前缀的跨域 JavaScript 函数调用。|是|不适用|
 
 ### <a name="usage"></a>使用情况
 此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。
 
-- **策略段：** 出站
+- **策略节：** 出站
 - **策略范围：** 全局、产品、API、操作
 
 ## <a name="next-steps"></a>后续步骤

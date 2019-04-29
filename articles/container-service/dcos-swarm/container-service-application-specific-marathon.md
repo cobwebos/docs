@@ -10,11 +10,11 @@ ms.date: 04/12/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 1ba5ca54c0aa604289eab9c4475297b12580b69a
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52996121"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60557508"
 ---
 # <a name="deprecated-create-an-application-or-user-specific-marathon-service"></a>（已弃用）创建特定于应用程序或用户的 Marathon 服务
 
@@ -26,7 +26,7 @@ Azure 容器服务提供了一组主服务器，我们可以在上面预配置 A
 
 因为此服务将属于单个用户或团队，他们可以按照所需的任何方式自由配置。 此外，Azure 容器服务还要确保该服务将能继续运行。 如果服务出现故障，Azure 容器服务会重新启动它。 大多数情况下，甚至不会注意到有停机时间。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 使用 orchestrator 类型 DC/OS [部署 Azure 容器服务实例](container-service-deployment.md)，并[确保客户端可以连接到群集](../container-service-connect.md)。 还要执行以下步骤。
 
 [!INCLUDE [install the DC/OS CLI](../../../includes/container-service-install-dcos-cli-include.md)]

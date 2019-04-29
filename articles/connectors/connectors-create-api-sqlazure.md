@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: dccb91c782408a5fed5c3ef1b68f9918823ce402
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 29d53c7fbd26d3c8e2356ce82ff25c7e1b165728
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38544017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540786"
 ---
 # <a name="connect-to-sql-server-or-azure-sql-database-from-azure-logic-apps"></a>通过 Azure 逻辑应用连接到 SQL Server 或 Azure SQL 数据库
 
@@ -26,7 +26,7 @@ ms.locfileid: "38544017"
 
 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 如果不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用](../logic-apps/logic-apps-overview.md)和[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 如需特定于连接器的技术信息，请参阅 <a href="https://docs.microsoft.com/connectors/sql/" target="blank">SQL Server 连接器参考</a>。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 需在其中访问 SQL 数据库的逻辑应用。 若要通过 SQL 触发器启动逻辑应用，需要一个[空白逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。 
 
@@ -56,7 +56,7 @@ ms.locfileid: "38544017"
 
 2. 在搜索框中，输入“sql server”作为筛选器。 在触发器列表中，选择所需的 SQL 触发器。 
 
-   对于此示例，请选择此触发器：**SQL Server - 创建项时**
+   对于此示例中，请选择此触发器：**SQL Server-创建项**
 
    ![选择“SQL Server - 创建项时”触发器](./media/connectors-create-api-sqlazure/sql-server-trigger.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "38544017"
 
 2. 在搜索框中，输入“sql server”作为筛选器。 从操作列表中，选择所需的任意 SQL 操作。 
 
-   对于此示例，请选择用于获取单个记录的以下操作：**SQL Server - 获取行**
+   对于本例，请选择此操作，获取一条记录：**SQL Server-获取行**
 
    ![输入“sql server”，选择“SQL Server - 获取行”](./media/connectors-create-api-sqlazure/select-sql-get-row.png) 
 

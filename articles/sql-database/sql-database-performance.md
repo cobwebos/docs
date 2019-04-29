@@ -6,17 +6,18 @@ ms.subservice: performance
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: danimir
-ms.author: danil
+author: WenJason
+ms.author: v-jay
 ms.reviewer: jrasnik, carlrab
-manager: craigg
-ms.date: 01/25/2019
+manager: digimobile
+origin.date: 01/25/2019
+ms.date: 02/25/2019
 ms.openlocfilehash: adbccd5f9cfd5ddd1912e304f800f3ebe04912c7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453002"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60584762"
 ---
 # <a name="monitor-and-improve-performance"></a>监视和提高性能
 
@@ -43,7 +44,7 @@ Azure SQL 数据库确定数据库中的潜在问题，并通过提供智能优�
 * “建议”磁贴提供数据库的优化建议明细（如果建议超出 3 条，则将显示前 3 条）。 单击此磁贴可转到**[性能建议](#performance-recommendations)**。 
 * “**优化活动**”磁贴提供正在进行的和已完成的数据库优化操作摘要，可快速查看优化活动的历史记录。 单击此磁贴可转到数据库的完整优化历史记录视图。
 * “自动优化”磁贴显示数据库的[自动优化配置](sql-database-automatic-tuning-enable.md)（自动应用于数据库的优化选项）。 单击此磁贴可打开自动化配置对话框。
-* “**数据库查询**”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。 单击此磁贴可转到**[查询性能见解](#query-performance-insight)**。
+* “数据库查询”磁贴显示数据库的查询性能摘要（DTU 整体使用情况和排名靠前的资源消耗查询）。 单击此磁贴可转到**[查询性能见解](#query-performance-insight)**。
 
 ## <a name="performance-recommendations"></a>性能建议
 

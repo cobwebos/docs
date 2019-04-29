@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: 8cd778762bebf4a9dda3688292ac0a3674e446e1
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56330845"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60634962"
 ---
 # <a name="upload-vhd-file-to-labs-storage-account-using-azcopy"></a>使用 AzCopy 将 VHD 文件上传到实验室的存储帐户
 
@@ -55,7 +55,7 @@ ms.locfileid: "56330845"
 
     ![使用 PowerShell 上传 VHD](./media/devtest-lab-upload-vhd-using-azcopy/upload-image-using-psh.png)
 
-1. “使用 PowerShell 上传映像”边栏选项卡显示对 **Add-AzureVhd** cmdlet 的调用。 第一个参数 (Destination) 包含采用以下格式的 blob 容器 (uploads) 的 URI：
+1. “使用 PowerShell 上传映像”边栏选项卡显示对 Add-AzureVhd cmdlet 的调用。 第一个参数 (Destination) 包含采用以下格式的 blob 容器 (uploads) 的 URI：
 
     ```
     https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...

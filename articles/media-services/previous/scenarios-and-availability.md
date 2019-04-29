@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 3576a50cd1510a4da562981ff9ae98e12a357fc9
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58316980"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60638160"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>媒体服务功能的跨数据中心方案和可用性
 
@@ -176,8 +176,8 @@ AMS 客户可以缩放其 AMS 帐户中的流式处理终结点、媒体处理�
 
 |名称|状态|数据中心
 |---|---|---|
-|标准|GA|All|
-|高级|GA|All|
+|标准|GA|全部|
+|高级|GA|全部|
 
 ### <a name="live-encoding"></a>实时编码
 
@@ -193,7 +193,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|媒体编码器标准版|GA|All|
+|媒体编码器标准版|GA|全部|
 |媒体编码器高级工作流|GA|除中国以外|
 
 ### <a name="analytics-media-processors"></a>分析媒体处理器
@@ -204,14 +204,14 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |媒体处理器名称|状态|数据中心
 |---|---|---|
-|Azure 媒体面部检测器|预览|All|
-|Azure Media Hyperlapse|预览|All|
-|Azure 媒体索引器|GA|All|
-|Azure Media Motion Detector|预览|All|
-|Azure 媒体 OCR|预览|All|
-|Azure 媒体修订|预览|All|
-|Azure 媒体稳定器|预览|All|
-|Azure 媒体视频缩略图|预览|All|
+|Azure 媒体面部检测器|预览|全部|
+|Azure Media Hyperlapse|预览|全部|
+|Azure 媒体索引器|GA|全部|
+|Azure Media Motion Detector|预览|全部|
+|Azure 媒体 OCR|预览|全部|
+|Azure 媒体修订|预览|全部|
+|Azure 媒体稳定器|预览|全部|
+|Azure 媒体视频缩略图|预览|全部|
 |Azure Media Indexer 2|预览|除中国和联邦政府区域以外|
 
 ### <a name="protection"></a>保护
@@ -222,10 +222,10 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |加密|状态|数据中心|
 |---|---|---| 
-|存储|GA|All|
-|AES-128 密钥|GA|All|
-|Fairplay|GA|All|
-|PlayReady|GA|All|
+|存储|GA|全部|
+|AES-128 密钥|GA|全部|
+|Fairplay|GA|全部|
+|PlayReady|GA|全部|
 |Widevine|GA|德国、美国联邦政府和中国除外。
 
 ### <a name="reserved-units-rus"></a>预留单位 (RU)
@@ -248,7 +248,7 @@ AMS 提供两个按需编码器：Media Encoder Standard 和 Media Encoder Premi
 
 |RU 类型名称|状态|数据中心
 |---|---|---|
-|S1|GA|All|
+|S1|GA|全部|
 |S2|GA|巴西南部和印度西部除外|
 |S3|GA|印度西部除外|
 

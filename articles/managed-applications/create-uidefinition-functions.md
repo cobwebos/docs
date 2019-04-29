@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
 ms.openlocfilehash: 80fd593eecf189d516a8c9d7ef2a94ec9f23fc39
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "54063788"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587914"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition 函数
 本部分包含 CreateUiDefinition 支持的所有函数的签名。
@@ -526,7 +526,7 @@ ms.locfileid: "54063788"
 "[float(2.9)]"
 ```
 
-### <a name="string"></a>字符串
+### <a name="string"></a>string
 将参数转换为字符串。 此函数支持所有 JSON 数据类型的参数。
 
 以下示例返回 `"1"`：

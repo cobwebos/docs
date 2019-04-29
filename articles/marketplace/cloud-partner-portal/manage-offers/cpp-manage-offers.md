@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/09/2019
 ms.author: pbutlerm
 ms.openlocfilehash: fa5280fd834d6defaf2816167a73bf72dc3d0a1c
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355035"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729862"
 ---
 # <a name="manage-azure-and-appsource-marketplace-offers"></a>管理 Azure 和 AppSource 市场产品/服务
 
@@ -30,7 +30,7 @@ ms.locfileid: "54355035"
 
 通过云合作伙伴门户，发布者可对产品/服务执行以下基本操作。
 
-|     操作      |  说明                                           |
+|     Operation      |  描述                                           |
 |     ---------      |  -----------                                           |
 | [创建产品/服务](./cpp-create-offer.md)   | 在载入存储库的过程中创建挂起的产品/服务条目，但不自动将其发布到 Microsoft 市场 | 
 | [查看产品/服务状态](./cpp-view-status-offer.md)   | 提供产品/服务的发布状态。  门户中有多个位置都会显示状态信息。 |

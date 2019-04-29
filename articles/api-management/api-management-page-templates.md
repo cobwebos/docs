@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2018
 ms.author: apimpm
 ms.openlocfilehash: 1fbafcdab938a0f8653df48631d7733cc58a3668
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52441904"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656769"
 ---
 # <a name="page-templates-in-azure-api-management"></a>Azure API 管理中的页模板
 通过 Azure API 管理，用户能够使用一组用于配置内容的模板自定义开发人员门户页面的内容。 使用 [DotLiquid](http://dotliquidmarkup.org/) 语法和所选编辑器（例如 [DotLiquid for Designers](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers)），以及提供的一组本地化[字符串资源](api-management-template-resources.md#strings)、[字形资源](api-management-template-resources.md#glyphs)和[页面控件](api-management-page-controls.md)，即可根据这些模板的使用需要非常灵活地配置页面内容。  
@@ -37,7 +37,7 @@ ms.locfileid: "52441904"
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="SignIn"></a>登录  
+##  <a name="SignIn"></a> 登录  
  **登录**模板用于自定义开发人员门户中的登录页面。  
   
  ![登录页](./media/api-management-page-templates/APIM-Sign-In-Page-Developer-Portal-Templates.png "APIM 登录页开发人员门户模板")  
@@ -136,7 +136,7 @@ ms.locfileid: "52441904"
 }
 ```  
   
-##  <a name="SignUp"></a>注册  
+##  <a name="SignUp"></a> 注册  
  **注册**模板用于自定义开发人员门户中的注册页面。  
   
  ![注册页](./media/api-management-page-templates/APIM-Sign-Up-Page-Developer-Portal-Templates.png "APIM 注册页开发人员门户模板")  
@@ -184,7 +184,7 @@ ms.locfileid: "52441904"
 }  
 ```  
   
-##  <a name="PageNotFound"></a>找不到页面  
+##  <a name="PageNotFound"></a> 找不到页面  
  **找不到页面**模板用于自定义开发人员门户中的“找不到页面”页面。  
   
  ![找不到页面](./media/api-management-page-templates/APIM-Not-Found-Page-Developer-Portal-Templates.png "APIM 找不到页面开发人员门户模板")  
@@ -226,13 +226,13 @@ ms.locfileid: "52441904"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
-|referenceCode|字符串|因内部错误显示页面时生成的代码。|  
-|errorCode|字符串|因内部错误显示页面时生成的代码。|  
-|emailBody|字符串|因内部错误显示页面时生成的电子邮件正文。|  
-|requestedUrl|字符串|找不到页面时请求的 URL。|  
-|referrerUrl|字符串|所请求的 URL 的引用 URL。|  
+|referenceCode|string|因内部错误显示页面时生成的代码。|  
+|errorCode|string|因内部错误显示页面时生成的代码。|  
+|emailBody|string|因内部错误显示页面时生成的电子邮件正文。|  
+|requestedUrl|string|找不到页面时请求的 URL。|  
+|referrerUrl|string|所请求的 URL 的引用 URL。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

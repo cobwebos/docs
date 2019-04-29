@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 4d29d8e86a30f105c4aa50ec9615f8165fa238d3
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59578741"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578974"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Azure Blockchain Workbench 配置参考
 
@@ -81,7 +81,7 @@ Azure Blockchain Workbench 应用程序是由配置元数据和智能合同代�
 | int      | Integer 数据类型。 |
 | money    | 货币数据类型。 |
 | state    | 工作流状态。 |
-| 字符串  | 字符串数据类型。 最多 4000 个字符. 请参阅[示例配置](#example-configuration-of-type-string)。 |
+| string  | 字符串数据类型。 最多 4000 个字符. 请参阅[示例配置](#example-configuration-of-type-string)。 |
 | user     | 用户类型的地址。 |
 | time     | 时间数据类型。 |
 |`[ Application Role Name ]`| 应用程序角色中指定的任何名称。 将用户限制为使用该角色类型。 |

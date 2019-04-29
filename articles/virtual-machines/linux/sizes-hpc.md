@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: jonbeck
-ms.openlocfilehash: 70dca655d5300fcd34b4198093e136f6a971963b
-ms.sourcegitcommit: 1aacea6bf8e31128c6d489fa6e614856cf89af19
+ms.openlocfilehash: 44b965bd60d976d4d28dc5e31d78a1c838d4ee02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/16/2018
-ms.locfileid: "49344483"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542250"
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>高性能计算虚拟机大小
 
@@ -33,8 +33,10 @@ ms.locfileid: "49344483"
 
 ### <a name="mpi"></a>MPI 
 
-仅支持 Intel MPI 5.x 版本。 更高版本（2017 版和 2018 版）的 Intel MPI 运行时库与 Azure Linux RDMA 驱动程序不兼容。
+仅支持 Intel MPI 5.x 版本。
 
+> [!NOTE]
+> 更高版本 （2017 版和 2018年） 的 Intel MPI 运行时库可能会或可能不与 Azure Linux RDMA 驱动程序兼容。
 
 ### <a name="distributions"></a>分发
  

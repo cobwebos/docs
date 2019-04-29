@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/28/2018
 ms.openlocfilehash: 946f7011c51b7c6844e023d03e01e4c2043d2578
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53544457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615653"
 ---
 # <a name="application-development-overview-for-azure-database-for-mysql"></a>Azure Database for MySQL 应用程序开发概述 
 本文介绍开发人员为连接 Azure Database for MySQL 而编写应用程序代码时应遵循的设计注意事项。 
@@ -33,7 +33,7 @@ Azure Database for MySQL 使用两种不同机制管理可用于服务器的资�
 ## <a name="security"></a>安全
 Azure Database for MySQL 提供用于在 MySQL Database 中限制访问、保护数据、配置用户和角色及监视活动的资源。
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 Azure Database for MySQL 支持用户和登录名这两种服务器身份验证方式。
 
 ## <a name="resiliency"></a>复原

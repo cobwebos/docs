@@ -10,11 +10,11 @@ ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: c33b1d46ecf710f050fc998ce27f6448337c6b78
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54352506"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683564"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>在 Azure 逻辑应用中发送、接收和批处理消息
 
@@ -30,7 +30,7 @@ ms.locfileid: "54352506"
 
 请确保批接收方和批发送方共享同一个 Azure 订阅和 Azure 区域。 否则，在创建批发送方时无法选择批接收方，因为它们相互不可见。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要按照此示例进行操作，需要以下这些项：
 
@@ -56,7 +56,7 @@ ms.locfileid: "54352506"
 
 3. 为批接收方设置以下属性： 
 
-   | 属性 | Description | 
+   | 属性 | 描述 | 
    |----------|-------------|
    | **批处理模式** | - 内联：用于在批触发器中定义发布条件 <br>- 集成帐户：用于通过[集成帐户](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)定义多个发布条件配置。 使用集成帐户可在一个位置而不是独立的逻辑应用中维护这些配置。 | 
    | **批名称** | 批的名称（在本示例中为“TestBatch”），仅适用于“内联”批处理模式 |  
@@ -88,7 +88,7 @@ ms.locfileid: "54352506"
       如果具有 Gmail 帐户，则选择 Gmail 连接器。 
       本示例使用 Office 365 Outlook。 
 
-   3. 选择此操作：“发送电子邮件 - <电子邮件提供商>”
+   3. 选择以下操作：“发送电子邮件 - <电子邮件提供商>”
 
       例如：
 
@@ -137,7 +137,7 @@ ms.locfileid: "54352506"
 1. 创建具有以下名称的另一个逻辑应用：“BatchSender”
 
    1. 在搜索框中，输入“定期”作为筛选器。 
-   选择此触发器：“定期 - 计划”
+   选择此触发器：**定期 - 计划**
 
       ![添加“定期 - 计划”触发器](./media/logic-apps-batch-process-send-receive-messages/add-schedule-trigger-batch-sender.png)
 
@@ -163,13 +163,13 @@ ms.locfileid: "54352506"
       > 
       > 如果使用 Visual Studio 中并且看不到任何可供选择的批接收方，请检查是否已将批接收方部署到 Azure。 如果未部署，请了解如何[将批接收方逻辑应用部署到 Azure](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#deploy-logic-app-to-azure)。 
 
-   4. 选择此操作：“Batch_messages - <批接收方>”
+   4. 选择以下操作：“Batch_messages - <批接收方>”
 
-      ![选择此操作：“Batch_messages - <逻辑应用>”](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
+      ![选择以下操作：“Batch_messages - <逻辑应用>”](./media/logic-apps-batch-process-send-receive-messages/batch-sender-select-batch.png)
 
 3. 设置批发送方的属性：
 
-   | 属性 | Description | 
+   | 属性 | 描述 | 
    |----------|-------------| 
    | **批名称** | 接收方逻辑应用定义的批名称，在本示例中为“TestBatch” <p>**重要说明**：批名称在运行时将接受验证，必须与接收方逻辑应用指定的名称相匹配。 更改批名称会导致批发送方失败。 | 
    | **消息内容** | 要发送的消息内容 | 
@@ -187,7 +187,7 @@ ms.locfileid: "54352506"
 
 4. 现在为批设置分区。 在“BatchReceiver”操作中，选择“显示高级选项”并设置以下属性：
 
-   | 属性 | Description | 
+   | 属性 | 描述 | 
    |----------|-------------| 
    | **分区名称** | 可选的唯一分区键，用于将目标批分割为逻辑子集，并基于该键收集消息 | 
    | **消息 ID** | 可选的消息标识符，为空时是系统生成的全局唯一标识符 (GUID) | 

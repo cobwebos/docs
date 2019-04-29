@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: d227b8d038dd686bde9b031ca2c58adc7dd6d76b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58104448"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60718025"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>使用 CSP 从 VMware 灾难恢复到 Azure 的多租户支持概述
 
@@ -79,7 +79,7 @@ ms.locfileid: "58104448"
    * **网络**：网络分配
    * **资源**：将 VM 分配到资源池、迁移关闭的 VM、迁移打开的 VM
    * **任务**：创建任务、更新任务
-   * **VM - 配置**：All
+   * **VM - 配置**：全部
    * **VM - 交互**>回答问题、设备连接、配置 CD 介质、配置软盘介质、关机、开机、VMware 工具安装
    * **VM - 清单**> 从现有项创建、新建、注册、注销
    * **VM - 预配**>允许虚拟机下载、允许虚拟机文件上传

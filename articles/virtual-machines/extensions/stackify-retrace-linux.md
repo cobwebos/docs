@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2018
 ms.author: roiyz
 ms.openlocfilehash: b9c035c1c9088957f59550bf6564cc02bc7972f4
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58792410"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620594"
 ---
 # <a name="stackify-retrace-linux-agent-extension"></a>Stackify Retrace Linux 代理扩展
 
@@ -44,7 +44,7 @@ Retrace 是唯一可以在单一平台中的所有环境下提供以下所有功
 
 Retrace 代理可以针对这些 Linux 分发运行
 
-| 分发 | 版本 |
+| 分发 | Version |
 |---|---|
 | Ubuntu | 16.04 LTS、14.04 LTS、16.10 和 17.04 |
 | Debian | 7.9+ 和 8.2+、9 |

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/20/2017
 ms.author: apimpm
 ms.openlocfilehash: d87293d89e4009512494bf47f9742ea5901f909a
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52445356"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656855"
 ---
 # <a name="azure-api-management-page-controls"></a>Azure API 管理页面控件
 Azure API 管理提供以下控件，适用于开发人员门户模板。  
@@ -59,7 +59,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 ### <a name="parameters"></a>parameters  
   
-|参数|Description|  
+|参数|描述|  
 |---------------|-----------------|  
 |appId|应用程序的 ID。|  
   
@@ -203,7 +203,7 @@ Azure API 管理提供以下控件，适用于开发人员门户模板。
   
 ### <a name="parameters"></a>parameters  
   
-|参数|Description|  
+|参数|描述|  
 |---------------|-----------------|  
 |subscriptionId|要取消的订阅的 ID。|  
 |cancelUrl|订阅取消 URL。|  

@@ -7,11 +7,11 @@ ms.topic: reference
 ms.date: 03/22/2019
 ms.author: tomfitz
 ms.openlocfilehash: d44b1bf778c7ec9551e2fd30f67083f8dded22d1
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438462"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729284"
 ---
 # <a name="move-operation-support-for-resources"></a>支持移动操作的资源
 本文列出了 Azure 资源类型是否支持移动操作。 尽管资源类型支持移动操作，但可能有阻止资源移动的情况。 有关影响移动操作的情况的详细信息，请参阅[将资源移动至新资源组或订阅](resource-group-move-resources.md)。
@@ -83,7 +83,7 @@ ms.locfileid: "58438462"
 | clusters | 否 | 否 |
 | fileservers | 否 | 否 |
 | jobs | 否 | 否 |
-| workspaces | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
 | 资源类型 | 资源组 | 订阅 |
@@ -226,7 +226,7 @@ ms.locfileid: "58438462"
 ## <a name="microsoftdatabricks"></a>Microsoft.Databricks
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| workspaces | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft.DataCatalog
 | 资源类型 | 资源组 | 订阅 |
@@ -448,7 +448,7 @@ ms.locfileid: "58438462"
 | ------------- | ----------- | ---------- |
 | commitmentplans | 是 | 是 |
 | webservices | 是 | 否 |
-| workspaces | 是 | 是 |
+| 工作区 | 是 | 是 |
 
 ## <a name="microsoftmachinelearningcompute"></a>Microsoft.MachineLearningCompute
 | 资源类型 | 资源组 | 订阅 |
@@ -478,7 +478,7 @@ ms.locfileid: "58438462"
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| workspaces | 否 | 否 |
+| 工作区 | 否 | 否 |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | 资源类型 | 资源组 | 订阅 |
@@ -574,13 +574,13 @@ ms.locfileid: "58438462"
 ## <a name="microsoftoperationalinsights"></a>Microsoft.OperationalInsights
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
-| workspaces | 是 | 是 |
+| 工作区 | 是 | 是 |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft.OperationsManagement
 | 资源类型 | 资源组 | 订阅 |
 | ------------- | ----------- | ---------- |
 | managementconfigurations | 是 | 是 |
-| solutions | 是 | 是 |
+| 解决方案 | 是 | 是 |
 | 视图 | 是 | 是 |
 
 ## <a name="microsoftportal"></a>Microsoft.Portal

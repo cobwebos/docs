@@ -14,11 +14,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/26/2019
 ms.openlocfilehash: b1e952d9af474e2318ef91a6bdcc2605a3c30018
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58497918"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702290"
 ---
 # <a name="controlling-and-granting-database-access-to-sql-database-and-sql-data-warehouse"></a>控制和授予对 SQL 数据库和 SQL 数据仓库的数据库访问权限
 
@@ -205,7 +205,7 @@ EXEC sp_addrolemember 'db_owner', 'Mary';
   GO
   ```
   
-  相反，使用以下 TRANSACT-SQL 语句：
+  请改用以下 Transact-SQL 语句：
   
   ```sql
   DROP DATABASE IF EXISTS [database_name]

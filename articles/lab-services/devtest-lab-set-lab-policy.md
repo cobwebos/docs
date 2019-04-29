@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
 ms.openlocfilehash: aa0ffbd69e73ddbef72e0eabf79f2736079c3d23
-ms.sourcegitcommit: 1f9e1c563245f2a6dcc40ff398d20510dd88fd92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/14/2018
-ms.locfileid: "51622017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636382"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>管理 Azure 开发测试实验室中的某个实验室的所有策略
 
@@ -91,7 +91,7 @@ Azure 开发测试实验室允许通过管理每个实验室的策略（设置�
 
 1. 在实验室的主页上，选择“配置和策略”。
 2. 在左侧菜单的“计划”部分选择“自动关机策略”。
-3. 选择一个选项。 以下部分更详细地介绍了这些选项：设置的策略只会应用到实验室中新建的 VM，而不会应用到现有的 VM。 
+3. 选择一个选项。 以下各节提供了有关这些选项的更多详细信息：设置策略仅适用于在实验室中创建的新 Vm 和不到现有的 Vm。 
 
     ![自动关机策略选项](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 

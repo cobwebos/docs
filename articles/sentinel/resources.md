@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 3/20/2019
 ms.author: rkarlin
 ms.openlocfilehash: d2dcb1eb9132e68bebbe84d81a4e4f17df79f2d3
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58399778"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615553"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel-preview"></a>有用的资源，使用 Azure Sentinel 预览版
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 本文列出了资源，可帮助你详细了解如何使用 Azure Sentinel。

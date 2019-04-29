@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: fa897b4b77f7f5869eab2ba2e7db9afbd84febfa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58121496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631277"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>管理 Azure 门户中的 StorSimple 数据管理器服务
 
@@ -56,7 +56,7 @@ StorSimple 数据管理器是可在其中实例化数据转换的资源。 通�
     
    5. 若要在仪表板上获取此服务的链接，请选择“固定到仪表板”。
     
-   6. 单击“创建”。
+   6. 单击**创建**。
 
       ![创建 StorSimple 数据管理器服务 3](./media/storsimple-data-manager-ui/create-service-4.png)
 

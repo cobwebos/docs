@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/10/2017
 ms.author: v-sharos@microsoft.com
 ms.openlocfilehash: 63906e65acb8e8aa836e6e59714bddca24ea21eb
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630163"
 ---
 # <a name="storsimple-8000-series-a-hybrid-cloud-storage-solution"></a>StorSimple 8000 系列：混合云存储解决方案
 ## <a name="overview"></a>概述
@@ -205,7 +205,7 @@ Microsoft Azure StorSimple 使用删除重复和数据压缩功能进一步减�
 ## <a name="storsimple-workload-summary"></a>StorSimple 工作负荷摘要
 下表列出了受支持的 StorSimple 工作负荷摘要。
 
-| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
+| 场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 协作 |文件共享 |是 | |所有版本 |
 | 协作 |分布式文件共享 |是 | |所有版本 |
@@ -232,7 +232,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 
 下面是 StorSimple 支持的基础结构组件列表。
 
-| 场景 | 工作负荷 | 支持 | 限制 | 版本 |
+| 场景 | 工作负荷 | 支持 | 限制 | Version |
 | --- | --- | --- | --- | --- |
 | 常规 |Express Route |是 | |所有版本 |
 | 常规 |DataCore FC |是* |受 DataCore SANsymphony 支持 |所有版本 |
@@ -255,7 +255,7 @@ StorSimple 8000 系列设备不支持以下工作负荷。 如果部署在 StorS
 部署 Microsoft Azure StorSimple 解决方案之前，我们建议查看以下术语和定义。
 
 ### <a name="key-terms-and-definitions"></a>关键术语和定义
-| 术语（首字母缩写词或缩写） | 说明 |
+| 术语（首字母缩写词或缩写） | 描述 |
 | --- | --- |
 | 访问控制记录 (ACR) |与 Microsoft Azure StorSimple 设备上的卷相关联的记录，可决定哪些主机可以连接到它。 此决定基于连接到 StorSimple 设备的主机（包含在 ACR 中）上 iSCSI 限定的名称 (IQN)。 |
 | AES-256 |当数据在云中出入时，用于加密该数据的 256 位高级加密标准 (AES) 算法。 |

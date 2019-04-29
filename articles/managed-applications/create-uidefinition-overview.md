@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 59003e71324f5342cb2b724f670603fd6b67afe4
-ms.sourcegitcommit: 688a394c4901590bbcf5351f9afdf9e8f0c89505
-ms.translationtype: HT
+ms.openlocfilehash: ab777b487159b009bf2cac6086bb09cc71714b0d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/18/2018
-ms.locfileid: "34305219"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587744"
 ---
 # <a name="create-azure-portal-user-interface-for-your-managed-application"></a>为托管应用程序创建 Azure 门户用户界面
 本文档介绍 createUiDefinition.json 文件的核心概念。 Azure 门户使用此文件生成用于创建托管应用程序的用户界面。
@@ -48,7 +48,7 @@ parameters 属性的架构取决于所指定的 handler 和 version 的组合。
 
 建议包括 `$schema`，但这是可选的。 如果指定，则 `version` 的值必须与 `$schema` URI 中的版本匹配。
 
-## <a name="basics"></a>Basics
+## <a name="basics"></a>基础
 基础步骤始终是 Azure 门户在分析文件时生成的向导的第一个步骤。 除了会显示 `basics` 中指定的元素外，该门户还会为用户注入其他元素以用于为部署选择订阅、资源组和位置。 通常，对部署范围内的参数进行查询的元素（例如群集名称或管理员凭据）应当放在此步骤中。
 
 如果元素的行为依赖于用户的订阅、资源组或位置，则不能在 basics 中使用该元素。 例如，**Microsoft.Compute.SizeSelector** 需要依赖于用户的订阅和位置来确定可用大小的列表。 因此，**Microsoft.Compute.SizeSelector** 只能用于 steps 中。 通常，只有 **Microsoft.Common** 命名空间中的元素可以用于 basics 中。 但是也允许其他命名空间中不依赖于用户上下文的某些元素（例如 **Microsoft.Compute.Credentials**）。
@@ -80,6 +80,6 @@ createUiDefinition.json 文件本身具有一个简单的架构。 它的实际�
 - [元素](create-uidefinition-elements.md)
 - [函数](create-uidefinition-functions.md)
 
-此处提供了 createUiDefinition 的当前 JSON 架构：https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json。
+此处提供了 createUiDefinition 的当前 JSON 架构： https://schema.management.azure.com/schemas/0.1.2-preview/CreateUIDefinition.MultiVm.json。
 
 有关用户界面文件示例，请参阅 [createUiDefinition.json](https://github.com/Azure/azure-managedapp-samples/blob/master/samples/201-managed-app-using-existing-vnet/createUiDefinition.json)。

@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
 ms.openlocfilehash: e828a8fc4211a0f0c4b53a9e18fa1c2fb6f6916b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010151"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593226"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>启动 Azure VM 时 Windows 在蓝屏上显示“关键服务失败”
 本文介绍了在 Microsoft Azure 中启动 Windows 虚拟机 (VM) 时可能会遇到的“关键服务失败”错误。 它提供了故障排除步骤来帮助解决问题。 
@@ -106,7 +106,7 @@ Windows VM 不启动。 在[启动诊断](./boot-diagnostics.md)中检查启动�
 
 ### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>可选：在故障转储模式下分析转储日志
 
-若要自行分析转储日志，请执行以下步骤：
+若要自己分析转储日志，请执行以下步骤：
 
 1. 将 OS 磁盘附加到恢复 VM。
 2. 在附加的 OS 磁盘上，浏览到 **\windows\system32\config**。将所有文件复制为一个备份，以备回滚之需。

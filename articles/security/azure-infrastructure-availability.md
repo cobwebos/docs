@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: a9a55f61f032512be032897d5f21ece405844634
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56105869"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587183"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure 基础结构可用性
 Azure 基于通过虚拟化技术实现的全面冗余提供可靠的可用性。 Azure 提供多种级别的冗余，可为客户数据提供最大的可用性。

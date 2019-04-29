@@ -2,18 +2,19 @@
 title: 使用 Azure Service Fabric CLI (sfctl) 管理 Azure Service Fabric 应用程序
 description: 了解如何使用 Azure Service Fabric CLI 在 Azure Service Fabric 群集中部署和删除应用程序
 services: service-fabric
-author: Christina-Kang
-manager: chackdan
+author: rockboyfor
+manager: digimobile
 ms.service: service-fabric
 ms.topic: conceptual
-ms.date: 07/31/2018
-ms.author: bikang
+origin.date: 07/31/2018
+ms.date: 09/10/2018
+ms.author: v-yeche
 ms.openlocfilehash: 9b0f785a6a43f984708645084a8a8036326d3d24
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662986"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60621371"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>使用 Azure Service Fabric CLI (sfctl) 管理 Azure Service Fabric 应用程序
 
@@ -170,3 +171,5 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 * [Service Fabric CLI 基础知识](service-fabric-cli.md)
 * [Linux 上的 Service Fabric 入门](service-fabric-get-started-linux.md)
 * [启动 Service Fabric 应用程序升级](service-fabric-application-upgrade.md)
+
+<!--Update_Description: update meta properties -->

@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 5/22/2017
 ms.author: xujing
 ms.openlocfilehash: 5945be210812a6cbc24c9a3bb12414be5212be17
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437592"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711197"
 ---
 # <a name="understand-common-error-messages-when-you-manage-virtual-machines-in-azure"></a>了解在 Azure 中管理虚拟机时遇到的常见错误消息
 
@@ -99,8 +99,8 @@ Azure VM 使用以下 JSON 格式提供错误响应：
 |  InvalidParameter  |  提供的密码长度必须在 {0} 到 {1} 个字符之间，且必须满足以下至少 {2} 个密码复杂性要求: <ol><li> 包含一个大写字符</li><li>包含一个小写字符</li><li>包含一个数字</li><li>包含一个特殊字符。</li></ol>  |
 |  InvalidParameter  |  不允许指定的管理员用户名。  |
 |  InvalidParameter  |  如果 VM 是通过平台或用户映像创建的，则无法附加现有 OS 磁盘。  |
-|  InvalidParameter  |  容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前面和必须跟一个字母数字字符。  |
-|  InvalidParameter  |  URL {1} 中的容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前面和必须跟一个字母数字字符。  |
+|  InvalidParameter  |  容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前后必须为字母数字字符。  |
+|  InvalidParameter  |  URL {1} 中的容器名称 {0} 无效。 容器名称的长度必须为 3-63 个字符，且仅可包含小写字母数字字符和连字符。 连字符前后必须为字母数字字符。  |
 |  InvalidParameter  |  URL {0} 中的 Blob 名称包含斜杠。 目前磁盘不支持这种显示方式。  |
 |  InvalidParameter  |  URI {0} 似乎不是正确的 Blob URI。  |
 |  InvalidParameter  |  名为“{0}”的磁盘已在使用相同的 LUN: {1}。  |

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 5cce4337e3ef95c6407d46d9b8b6401fe4f6600b
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497734"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576180"
 ---
 # <a name="use-the-storsimple-diagnostics-tool-to-troubleshoot-8000-series-device-issues"></a>使用 StorSimple 诊断工具排查 8000 系列设备的问题
 
@@ -414,10 +414,10 @@ Controller0>
 
 下表描述了系统信息中 Windows PowerShell 参数的含义。 
 
-| PowerShell 参数    | 说明  |
+| PowerShell 参数    | 描述  |
 |-------------------------|------------------|
 | 实例 ID             | 每个控制器都有一个关联的唯一标识符或 GUID。|
-| Name                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
+| 名称                    | 在部署设备期间通过 Azure 门户配置的设备友好名称。 默认的友好名称为设备序列号。 |
 | 模型                   | StorSimple 8000 系列设备的型号。 型号可能是 8100 或 8600。|
 | 序列号            | 设备序列号是出厂分配的，长度为 15 个字符。 例如，8600-SHX0991003G44HT 表示：<br> 8600 – 设备型号。<br>SHX – 制造地。<br> 0991003 – 具体的产品。 <br> G44HT – 最后 5 位是递增的，确保构成唯一的序列号。 这组编号不一定是按顺序递增的。|
 | TimeZone                | 部署设备期间在 Azure 门户中配置的设备时区。|

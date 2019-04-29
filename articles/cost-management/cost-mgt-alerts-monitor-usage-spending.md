@@ -11,11 +11,11 @@ ms.service: cost-management
 manager: alavital
 ms.custom: ''
 ms.openlocfilehash: feb7fcdd9005ef131acadfc63defbe4caeaca014
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57991933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576526"
 ---
 # <a name="use-cost-alerts-to-monitor-usage-and-spending"></a>通过成本警报监视使用情况和支出
 
@@ -49,7 +49,7 @@ ms.locfileid: "57991933"
 
 ## <a name="view-cost-alerts"></a>查看成本警报
 
-若要查看成本警报，可在 Azure 门户并选择中打开所需的范围**预算**菜单中。 使用**作用域**药丸切换到不同的作用域。 选择**成本警报**菜单中。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
+若要查看成本警报，可在 Azure 门户并选择中打开所需的范围**预算**菜单中。 使用**作用域**药丸切换到不同的作用域。 选择**成本警报**菜单中。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ![在成本管理中显示的警报的示例图像](./media/cost-mgt-alerts-monitor-usage-spending/budget-alerts-fullscreen.png)
 

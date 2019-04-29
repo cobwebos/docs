@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: aschhab
 ms.openlocfilehash: c99f4491af8fe3e5f0f0ed7a264995ae3ec5911f
-ms.sourcegitcommit: de32e8825542b91f02da9e5d899d29bcc2c37f28
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/02/2019
-ms.locfileid: "55658260"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60749361"
 ---
 # <a name="amqp-10-in-azure-service-bus-and-event-hubs-protocol-guide"></a>Azure 服务总线和事件中心内的 AMQP 1.0 协议指南
 
@@ -165,7 +165,7 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 
 #### <a name="close-message-receiversender"></a>关闭消息接收者/发送者
 
-| Client | 服务总线 |
+| 客户端 | 服务总线 |
 | --- | --- |
 | --> detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |无操作 |
 | 无操作 |<-- detach(<br/>handle={numeric handle},<br/>closed=**true**<br/>) |
@@ -218,13 +218,13 @@ AMQP 1.0 规范定义进一步的处置状态（称为“已接收”），其�
 | first-acquirer |- |- |
 | delivery-count |- |[DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 
-#### <a name="properties"></a>属性
+#### <a name="properties"></a>properties
 
 | 字段名称 | 使用情况 | API 名称 |
 | --- | --- | --- |
 | message-id |应用程序为此消息定义的自由格式标识符。 用于重复检测。 |[MessageId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | user-id |应用程序定义的用户标识符，服务总线无法进行解释。 |无法通过服务总线 API 访问。 |
-| to |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
+| 至 |应用程序定义的目标标识符，服务总线无法进行解释。 |[To](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | subject |应用程序定义的消息用途标识符，服务总线无法进行解释。 |[Label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | reply-to |应用程序定义的回复路径指示符，服务总线无法进行解释。 |[ReplyTo](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
 | correlation-id |应用程序定义的相关性标识符，服务总线无法进行解释。 |[CorrelationId](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) |
@@ -361,9 +361,9 @@ CBS 定义由消息传送基础结构所提供的虚拟管理节点（名为 $cb
 
 | 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
-| operation |否 |字符串 |**put-token** |
-| type |否 |字符串 |正在放置的令牌类型。 |
-| 名称 |否 |字符串 |令牌应用到的“受众”。 |
+| operation |否 |string |**put-token** |
+| type |否 |string |正在放置的令牌类型。 |
+| 名称 |否 |string |令牌应用到的“受众”。 |
 | expiration |是 |timestamp |令牌过期时间。 |
 
 name 属性标识应与此令牌关联的实体。 在服务总线中，这是队列或主题/订阅的路径。 type 属性标识令牌类型：
@@ -381,7 +381,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 | 密钥 | 可选 | 值类型 | 值内容 |
 | --- | --- | --- | --- |
 | status-code |否 |int |HTTP 响应代码 **[RFC2616]**。 |
-| status-description |是 |字符串 |状态的说明。 |
+| status-description |是 |string |状态的说明。 |
 
 客户端可以针对消息传送基础结构中的任何实体重复调用 put-token。 令牌的范围是当前客户端且定位点为当前连接，这意味着服务器在删除连接时会删除所有保留的令牌。
 
@@ -399,7 +399,7 @@ name 属性标识应与此令牌关联的实体。 在服务总线中，这是�
 
 借助此项功能，可以创建发送程序并建立指向 `via-entity` 的链接。 在建立链接时，会传递其他信息以建立此链接上的消息/传输的正确目标。 附加成功后，此链接上发送的所有消息都会自动通过 via-entity 转发到 destination-entity。 
 
-> 注意：在建立此链接前，*via-entity* 和 *destination-entity* 都需要通过身份验证。
+> 请注意:在建立此链接前，*via-entity* 和 *destination-entity* 都需要通过身份验证。
 
 | Client | | 服务总线 |
 | --- | --- | --- |

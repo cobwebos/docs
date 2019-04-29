@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/24/2017
 ms.author: kasinh
 ms.openlocfilehash: 40541596b4da9e0590d497785afd7d6d7f4cbcb4
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55495388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641407"
 ---
 # <a name="back-up-an-exchange-server-to-azure-with-azure-backup-server"></a>使用 Azure 备份服务器将 Exchange Server 备份到 Azure
 本文说明如何配置 Microsoft Azure 备份服务器 (MABS)，将 Microsoft Exchange Server 备份到 Azure。  
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在继续之前，请确保 Azure 备份服务器[已安装且已准备好](backup-azure-microsoft-azure-backup.md)。
 
 ## <a name="mabs-protection-agent"></a>MABS 保护代理
@@ -47,7 +47,7 @@ ms.locfileid: "55495388"
 
    * 我想要使用磁盘提供短期保护。
    * 我想要使用在线保护。
-6. 单击“下一步”。
+6. 单机“下一步”
 7. 如果想要检查 Exchange Server 数据库的完整性，请选择“**运行 Eseutil 以检查数据完整性**”选项。
 
     选择此选项后，会在 MABS 服务器上运行备份一致性检查，以避免由于在 Exchange Server 上运行 **eseutil** 命令而产生的 I/O 流量。
@@ -86,7 +86,7 @@ ms.locfileid: "55495388"
 
     ![指定联机保留策略](./media/backup-azure-backup-exchange-server/specify-online-retention-policy.png)
 18. 确认设置，并单击“**创建组**”。
-19. 单击“关闭”。
+19. 单击“**关闭**”。
 
 ## <a name="recover-the-exchange-database"></a>恢复 Exchange 数据库
 1. 若要恢复 Exchange 数据库，请在 MABS 管理员控制台中单击“恢复”。

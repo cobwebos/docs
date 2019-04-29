@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/04/2018
 ms.openlocfilehash: 5aff7e93dcfaa5320be0d6f7d427abcdc88c69e4
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995825"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585502"
 ---
 # <a name="deploy-a-split-merge-service-to-move-data-between-sharded-databases"></a>部署拆分/合并服务以在分片数据库之间移动数据
 
@@ -204,7 +204,7 @@ ms.locfileid: "57995825"
    
 ## <a name="use-powershell-to-verify-your-deployment"></a>使用 PowerShell 验证部署
 1. 打开新的 PowerShell 窗口并导航到下载拆分/合并包的目录，并导航到“powershell”目录中。
-2. 创建一个将在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
+2. 创建一个将要在其中创建分片映射管理器和分片的 Azure SQL 数据库服务器（或选择现有服务器）。
    
    > [!NOTE]
    > 在默认情况下，SetupSampleSplitMergeEnvironment.ps1 脚本会在相同的服务器上创建所有这些数据库以简化脚本。 这并不表示拆分/合并服务本身存在限制。

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
 ms.openlocfilehash: 21758d112cd7eaf45b8b279cf2a6f6060c44c9c1
-ms.sourcegitcommit: 5a1d601f01444be7d9f405df18c57be0316a1c79
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/10/2018
-ms.locfileid: "51515839"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741960"
 ---
 # <a name="create-an-iot-hub-using-the-azure-portal"></a>使用 Azure 门户创建 IoT 中心
 
@@ -34,13 +34,13 @@ ms.locfileid: "51515839"
 
 下面是一些可以为 IoT 中心设置的属性：
 
-**定价和缩放**：可使用此属性迁移到其他层或设置 IoT 中心单元数量。 
+**定价和缩放**:此属性可用于迁移到其他层或设置单位的 IoT 中心的数目。 
 
-**操作监视**：打开或关闭不同的监视类别，如与设备到云的消息或云到设备的消息相关的事件的日志记录。
+**操作监视**:打开或关闭，不同的监视类别例如日志记录与设备到云的消息或云到设备消息相关的事件。
 
-**IP 筛选器**：可指定 IoT 中心会接受或拒绝的 IP 地址的范围。
+**IP 筛选器**:指定范围内的 IP 地址将接受或拒绝的 IoT 中心。
 
-**属性**：提供可在其他位置复制和使用的属性的列表，如资源 ID、资源组、位置等。
+**属性**：提供的属性列表，你可以复制，并使用其他位置，例如资源 ID、 资源组、 位置和等等。
 
 ### <a name="shared-access-policies"></a>共享访问策略
 

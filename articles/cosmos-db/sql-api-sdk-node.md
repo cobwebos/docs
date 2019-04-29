@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 09/24/2018
 ms.author: dech
 ms.openlocfilehash: 1cb6889305e5f6bce5728039712a1834dc2e9353
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033581"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626734"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>适用于 SQL API 的 Azure Cosmos DB Node.js SDK：发行说明和资源
 > [!div class="op_single_selector"]
@@ -130,7 +130,7 @@ ms.locfileid: "54033581"
 
 ### <a name="1.10.0"/>1.10.0</a>
 * 添加了对跨分区并行查询的支持。
-* 已对分区集合添加 TOP/ORDER BY 查询支持。
+* 添加了对分区集合的 TOP/ORDER BY 查询支持。
 
 ### <a name="1.9.0"/>1.9.0</a>
 * 对限制添加了重试策略支持。 （限制请求收到请求速率太大的异常，错误代码 429。）默认情况下，出现错误代码 429 时，Azure Cosmos DB 将针对每个请求重试九次，具体取决于响应标头中的 retryAfter 时间。 如果想要忽略重试之间由服务器返回的 retryAfter 时间，现在可以对 ConnectionPolicy 对象设置固定的重试间隔时间，并将其作为 RetryOptions 属性的一部分。 Azure Cosmos DB 现在对每个要中止的请求等待最多 30 秒（不考虑重试次数），并返回对错误代码 429 作出的响应。 还可以在 ConnectionPolicy 对象的 RetryOptions 属性中替代该时间。
@@ -187,7 +187,7 @@ ms.locfileid: "54033581"
 * 将新标头“索引转换进度”添加到 ResourceResponse。
 
 ### <a name="1.1.0"/>1.1.0</a>
-* 实施 V2 索引策略。
+* 实现 V2 索引策略。
 
 ### <a name="1.0.3"/>1.0.3</a>
 * 问题 [#40](https://github.com/Azure/azure-documentdb-node/issues/40) - 已在核心和承诺 SDK 中实现 eslint 和 grunt 配置。
@@ -212,7 +212,7 @@ Microsoft 至少会在停用 SDK 前提前 12 个月发出通知，以便顺利�
 
 <br/>
 
-| 版本 | 发布日期 | 停用日期 |
+| Version | 发布日期 | 停用日期 |
 | --- | --- | --- |
 | [2.0.0-3 (RC)](#2.0.0-3) |2018 年 8 月 2 号 |--- |
 | [1.14.4](#1.14.4) |2018 年 5 月 3 日 |--- |

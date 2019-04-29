@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
 ms.openlocfilehash: 2755232ea81f1551477431f4eb1f0aeab8b8bfe8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56734031"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60726634"
 ---
 # <a name="determine-your-publishing-option"></a>确定发布选项
 为套餐选择的发布选项直接关系到资格要求和市场 GTM 权益。 更重要的是，在云合作伙伴门户中选择的发布选项和套餐类型定义了用户如何与市场套餐进行交互。

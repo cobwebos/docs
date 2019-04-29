@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.openlocfilehash: c904b6e6cd7a4dc0f9d5a442e20738e43595b369
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58485911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60563998"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>使用查询存储监视性能
 
@@ -29,14 +29,14 @@ Azure Database for PostgreSQL 中的查询存储功能提供了一种一段时�
 1. 登录到 Azure 门户，选择 Azure Database for PostgreSQL 服务器。
 2. 在菜单的“设置”部分中选择“服务器参数”。
 3. 搜索 `pg_qs.query_capture_mode` 参数。
-4. 将值设置为`TOP`并**保存**。
+4. 将值设置为 `TOP` 并**保存**。
 
-若要启用查询存储中的等待统计信息： 
+若要在查询存储中启用等待统计信息，请执行以下操作： 
 1. 搜索 `pgms_wait_sampling.query_capture_mode` 参数。
-1. 将值设置为`ALL`并**保存**。
+1. 将值设置为 `ALL` 并**保存**。
 
 
-或者，您可以设置这些参数使用 Azure CLI。
+或者，可使用 Azure CLI 设置这些参数。
 ```azurecli-interactive
 az postgres server configuration set --name pg_qs.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value TOP
 az postgres server configuration set --name pgms_wait_sampling.query_capture_mode --resource-group myresourcegroup --server mydemoserver --value ALL
@@ -158,8 +158,8 @@ SELECT * FROM query_store.pgms_wait_sampling_view;
 |user_id    |oid    |pg_authid.oid  |执行此语句的用户的 OID|
 |db_id  |oid    |pg_database.oid    |在其中执行语句的数据库的 OID|
 |query_id   |bigint     ||根据语句的分析树计算的内部哈希代码|
-|event_type |text       ||后端正在等待的事件类型|
-|event  |text       ||后端当前正在等待的等待事件名称|
+|event_type |Text       ||后端正在等待的事件类型|
+|event  |Text       ||后端当前正在等待的等待事件名称|
 |calls  |Integer        ||捕获的相同事件的数量|
 
 

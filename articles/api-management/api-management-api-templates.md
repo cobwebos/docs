@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: a78c03537d7fb3db6afa0c4a4e84c4746146ca85
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58486359"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60657778"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Azure API 管理中的 API 模板
 
@@ -345,12 +345,12 @@ ms.locfileid: "58486359"
   
 |属性|Type|描述|  
 |--------------|----------|-----------------|  
-|`apiId`|字符串|当前 API 的 ID。|  
-|`apiName`|字符串|API 的名称。|  
-|`apiDescription`|字符串|API 的说明。|  
+|`apiId`|string|当前 API 的 ID。|  
+|`apiName`|string|API 的名称。|  
+|`apiDescription`|string|API 的说明。|  
 |`api`|[API 摘要](api-management-template-data-model-reference.md#APISummary)实体。|当前 API。|  
 |`operation`|[操作](api-management-template-data-model-reference.md#Operation)|当前显示的操作。|  
-|`sampleUrl`|字符串|当前操作的 URL。|  
+|`sampleUrl`|string|当前操作的 URL。|  
 |`operationMenu`|[操作菜单](api-management-template-data-model-reference.md#Menu)|此 API 的操作的菜单。|  
 |`consoleUrl`|URI|“试用”按钮的 URI。|  
 |`samples`|[代码示例](api-management-template-data-model-reference.md#Sample)实体的集合。|当前操作的代码示例。|  

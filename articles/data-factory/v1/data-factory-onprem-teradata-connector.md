@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: d22318f4d9e233a57d521fe36f0827b9fc3af3e0
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60610744"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>使用 Azure 数据工厂从 Teradata 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ ms.locfileid: "55746330"
 
 可以将数据从本地 Teradata 数据存储复制到任何支持的接收器数据存储。 有关复制活动支持作为接收器的数据存储列表，请参阅[支持的数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)表。 数据工厂当前仅支持将数据从 Teradata 数据存储移至其他数据存储，而不支持将数据从其他数据存储移至 Teradata 数据存储。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 数据工厂支持通过数据管理网关连接到本地 Teradata 源。 请参阅[在本地位置和云之间移动数据](data-factory-move-data-between-onprem-and-cloud.md)一文，了解数据管理网关和设置网关的分步说明。
 
 即使 Teradata 托管在 Azure IaaS VM 中，仍需要网关。 可在与数据存储相同的 IaaS VM 上或不同的 VM 上安装网关，只要网关能连接数据库即可。
@@ -300,7 +300,7 @@ ms.locfileid: "55746330"
 | Integer |Int32 |
 | Number |Double |
 | SmallInt |Int16 |
-| 日期 |DateTime |
+| date |DateTime |
 | 时间 |TimeSpan |
 | Time With Time Zone |String |
 | Timestamp |DateTime |

@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: e85beea4250b5ac5f4defd0b918786079d3dbe3e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57892653"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553685"
 ---
 # <a name="frequently-asked-questions"></a>常见问题
 
@@ -160,7 +160,7 @@ Azure 媒体服务的 SLA 涵盖了视频索引器，可在 [SLA](https://azure.
 
 ### <a name="when-am-i-billed-for-using-video-indexer"></a>何时将计费使用视频索引器？
 
-在发送时要编制索引的视频，用户将定义要分析视频，和 / 或音频分析索引。 这将确定哪些 Sku 进行收费。 如果在处理期间严重级别错误，将作为响应返回错误代码。 在这种情况下，不会发生计费。  严重错误可能由我们的代码中的 bug 或内部依赖关系服务中的严重故障。 错误的标识或见解提取之类的错误不被视为关键和返回的响应。 在任何情况下返回有效 （非错误代码） 响应，会发生计费。
+如果发送要编制索引的视频，用户会将索引定义为视频分析和/或音频分析。 这将决定对哪些 SKU 收费。 如果处理过程中发生严重级别错误，系统将返回错误代码作为响应。 在此情况下，不会计费。  关键错误可能是由代码中的 bug 导致，或者由服务内部依赖项的严重故障导致。 错误标识或见解提取等错误不会被视为关键错误，系统将返回响应。 如果返回有效（非错误代码）响应，系统将会计费。
  
 ### <a name="does-video-indexer-offer-a-free-trial"></a>视频索引器是否提供免费试用版？
 

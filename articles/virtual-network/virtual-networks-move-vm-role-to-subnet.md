@@ -15,14 +15,14 @@ ms.workload: infrastructure-services
 ms.date: 03/22/2016
 ms.author: genli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eb1576b7b842537dbdc49e6b9d402ef47ad9fae9
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: 787a50a0cbf16089cd15f922b494cd12d680cb43
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31792641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60640389"
 ---
-# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>使用 PowerShell 将 VM（经典）和云服务角色实例移动到其他子网
+# <a name="move-a-vm-classic-or-cloud-services-role-instance-to-a-different-subnet-using-powershell"></a>使用 PowerShell 将 VM（经典）或云服务角色实例移动到其他子网
 可以使用 PowerShell 将 VM（经典）从一个子网移动到同一虚拟网络 (VNet) 中的另一个子网。 可以通过编辑 CSCFG 文件（而不是使用 PowerShell）移动角色实例。
 
 > [!NOTE]
@@ -39,7 +39,7 @@ ms.locfileid: "31792641"
     | Set-AzureSubnet –SubnetNames Subnet-2 `
     | Update-AzureVM
 
-如果为 VM 指定了静态内部专用 IP，则必须清除该设置，然后才能将 VM 移到新子网。 在这种情况下，请使用以下代码：
+如果为 VM 指定了静态内部专用 IP，则必须清除该设置，才能将 VM 移到新的子网。 在这种情况下，请使用以下代码：
 
     Get-AzureVM -ServiceName TestVMCloud -Name TestVM `
     | Remove-AzureStaticVNetIP `
@@ -49,7 +49,7 @@ ms.locfileid: "31792641"
     | Update-AzureVM
 
 ## <a name="to-move-a-role-instance-to-another-subnet"></a>将角色实例移到另一个子网
-若要移动角色实例，请编辑 CSCFG 文件。 在以下示例中，要将虚拟网络 VNETName 中的“Role0”从其当前的子网移到 VNETName*Subnet-2*。 由于已部署角色实例，只需将子网名称更改为“Subnet-2”。 请务必编辑此示例以反映所处环境。
+若要移动角色实例，请编辑 CSCFG 文件。 以下示例将虚拟网络 VNETName 中的“Role0”从其当前子网移动到 Subnet-2。 由于已部署角色实例，只需将子网名称更改为“Subnet-2”。 请务必编辑此示例以反映所处环境。
 
     <NetworkConfiguration>
         <VirtualNetworkSite name="VNETName" />

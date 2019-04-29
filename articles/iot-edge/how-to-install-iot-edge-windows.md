@@ -11,11 +11,11 @@ ms.date: 03/14/2019
 ms.author: kgremban
 ms.custom: seodec18
 ms.openlocfilehash: 95e984f6f08af01a2ffd7b9b4e0ec598d73f4d05
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621067"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60595098"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>在 Windows 上安装 Azure IoT Edge 运行时
 
@@ -26,16 +26,16 @@ ms.locfileid: "58621067"
 本文列出了在 Windows x64 (AMD/Intel) 系统上安装 Azure IoT Edge 运行时的步骤。 Windows 支持目前为预览版。
 
 > [!NOTE]
-> 已知的 Windows 操作系统问题会阻止转换到睡眠或休眠电源状态时运行 IoT Edge 模块 （进程隔离 Windows Nano Server 容器）。 此问题会影响设备上的电池寿命。
+> 当 IoT Edge 模块（进程隔离的 Windows Nano Server 容器）正在运行时，一个已知的 Windows 操作系统问题会阻止转换到睡眠和休眠电源状态。 此问题会影响设备的电池寿命。
 >
-> 解决此问题，请使用命令`Stop-Service iotedge`若要使用这些电源状态之前停止任何正在运行的 IoT Edge 模块。 
+> 作为解决方法，在使用这些电源状态之前，请使用 `Stop-Service iotedge` 命令停止任何正在运行的 IoT Edge 模块。 
 
 <!--
 > [!NOTE]
 > Using Linux containers on Windows systems is not a recommended or supported production configuration for Azure IoT Edge. However, it can be used for development and testing purposes.
 -->
 
-使用 Linux 容器在 Windows 系统上的不是 Azure IoT Edge 的建议或支持生产配置。 但可将其用于开发和测试。 
+不推荐或支持在 Windows 系统上使用 Linux 容器作为 Azure IoT Edge 的生产配置。 但可将其用于开发和测试。 
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -61,7 +61,7 @@ Azure IoT Edge 根据运行的是 Windows 容器还是 Linux 容器支持不同�
 
 Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器引擎。 对于生产方案，请使用安装脚本中包含的 Moby 引擎在 Windows 设备上运行 Windows 容器。 对于开发和测试，可以在 Windows 设备上运行 Linux 容器，但需要在安装 IoT Edge 之前安装并配置容器。 对于任一方案，请参阅以下部分来了解准备设备时所要满足的先决条件。 
 
-如果你想要在虚拟机上安装 IoT Edge，启用嵌套虚拟化并分配至少 2 GB 内存。 如何启用嵌套虚拟化是不同的具体虚拟机监控程序取决于你的使用。 对于 HYPER-V，第 2 代虚拟机具有嵌套虚拟化默认情况下启用。 对于 VMWare，没有开关以启用你的虚拟机上的功能。 
+若要在虚拟机上安装 IoT Edge，请启用嵌套虚拟化并分配至少 2-GB 内存。 如何启用嵌套虚拟化取决于所用的虚拟机监控程序。 就 Hyper-V 来说，第 2 代虚拟机已默认启用嵌套虚拟化。 如果使用 VMWare，则可通过切换开关在虚拟机上启用此功能。 
 
 #### <a name="moby-engine-for-windows-containers"></a>适用于 Windows 容器的 Moby 引擎
 
@@ -80,7 +80,7 @@ Azure IoT Edge 依赖于 [OCI 兼容的](https://www.opencontainers.org/)容器�
 ## <a name="install-iot-edge-on-a-new-device"></a>在新设备上安装 IoT Edge
 
 >[!NOTE]
->Azure IoT Edge 软件程序包受制于程序包中的许可条款（位于 LICENSE 目录中）。 使用程序包之前请阅读这些许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用程序包。
+>Azure IoT Edge 软件程序包受制于程序包中的许可条款（位于 LICENSE 目录中）。 使用程序包之前请阅读这些许可条款。 安装和使用程序包即表示接受这些条款。 如果不同意许可条款，则不要使用包。
 
 某个 PowerShell 脚本将下载并安装 Azure IoT Edge 安全守护程序。 然后，安全守护程序将启动两个运行时模块中的第一个，即 IoT Edge 代理，以便能够远程部署其他模块。 
 

@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: bda3df3ce869d7717f572f72c38472e7eae4a0ef
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567208"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>使用 Azure 数据工厂将数据移入和移出 Azure Cosmos DB
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -484,16 +484,16 @@ Azure Cosmos DB 是 JSON 文档的 NoSQL 存储，其中允许存在嵌套结构
 ## <a name="appendix"></a>附录
 1. **问题：** 复制活动是否支持现有记录的更新？
 
-    **答：** 不是。
+    **答：** 不。
 2. **问题：** 复制到 Azure Cosmos DB 的重试操作如何处理已复制的记录？
 
     **答：** 记录具有一个“ID”字段，并且复制操作尝试插入具有相同 ID 的记录，则复制操作将引发错误。
 3. **问题：** 数据工厂是否支持[按范围分区或按基于哈希的数据分区](../../cosmos-db/sql-api-partition-data.md)？
 
-    **答：** 不是。
+    **答：** 不。
 4. **问题：** 是否可以为一个表指定多个 Azure Cosmos DB 集合？
 
-    **答：** 不是。 目前仅可以指定一个集合。
+    **答：** 不。 目前仅可以指定一个集合。
 
 ## <a name="performance-and-tuning"></a>性能和优化
 若要了解影响 Azure 数据工厂中数据移动（复制活动）性能的关键因素及各种优化方法，请参阅[复制活动性能和优化指南](data-factory-copy-activity-performance.md)。

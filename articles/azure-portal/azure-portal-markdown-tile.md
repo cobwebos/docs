@@ -4,17 +4,18 @@ description: 了解如何向 Azure 仪表板添加 Markdown 磁贴，以便显�
 services: azure-portal
 keywords: ''
 author: kfollis
-ms.author: kfollis
-ms.date: 01/25/2019
+ms.author: v-biyu
+origin.date: 01/25/2019
+ms.date: 03/04/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: ec8cbddda4137656a53fd4968c451cd413959274
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58110777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60551549"
 ---
 # <a name="use-a-markdown-tile-on-azure-dashboards-to-show-custom-content"></a>在 Azure 仪表板上使用 Markdown 磁贴显示自定义内容
 
@@ -28,7 +29,7 @@ ms.locfileid: "58110777"
 
 2. 在“磁贴库”中找到名为 **Markdown** 的磁贴，然后单击“添加”。 此时会将磁贴添加到仪表板，而“编辑 Markdown”窗格也会打开。
 
-1. 编辑“标题”、“子标题”和“内容”字段，对磁贴进行自定义。 在下面显示的示例中，Markdown 磁贴已进行编辑，可以显示自定义的支持人员信息。
+3. 编辑“标题”、“子标题”和“内容”字段，对磁贴进行自定义。 在下面显示的示例中，Markdown 磁贴已进行编辑，可以显示自定义的支持人员信息。
 
    ![屏幕截图，显示 Markdown 磁贴的编辑视图](./media/azure-portal-markdown-tile/azure-portal-edit-markdown-tile.png)
 

@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/13/2019
 ms.author: pbutlerm
 ms.openlocfilehash: 7bd0f407424d7335094f1b4ad533281fc024d000
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011751"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565320"
 ---
 # <a name="consulting-service-prerequisites"></a>咨询服务先决条件
 

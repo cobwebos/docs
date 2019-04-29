@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 10/23/2018
-ms.author: azfuncdf, glenga
+origin.date: 10/23/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.openlocfilehash: 1c60bd4dae6c279ccff637ff0aa798c48ebec6f1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58108063"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60710811"
 ---
 # <a name="create-durable-functions-using-the-azure-portal"></a>使用 Azure 门户创建 Durable Functions
 
@@ -91,7 +92,7 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 1. 使用 HTTP 工具（例如 Postman 或 cURL）将 POST 请求发送到已复制的 URL。 以下示例是一个 cURL 命令，该命令将 POST 请求发送到持久函数：
 
     ```bash
-    curl -X POST https://{your-function-app-name}.azurewebsites.net/api/orchestrators/HelloSequence
+    curl -X POST https://{your-function-app-name}.chinacloudsites.cn/api/orchestrators/HelloSequence
     ```
 
     在此示例中，`{your-function-app-name}` 是域，该域是函数应用的名称。 响应消息包含一组 URI 终结点，这些终结点可以用来监视并管理执行，该执行如以下示例所示：
@@ -140,3 +141,5 @@ Azure Functions 的 [Durable Functions](durable-functions-overview.md) 扩展是
 
 > [!div class="nextstepaction"]
 > [了解常见的持久函数模式](durable-functions-concepts.md)
+
+<!-- Update_Description: wording update -->

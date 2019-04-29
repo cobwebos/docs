@@ -16,11 +16,11 @@ ms.date: 12/07/2018
 ms.author: dekapur
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 2233dffabd7c76ca55cf215f8bc04e66134f5799
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58338796"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583598"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>创建 Service Fabric 网格应用程序的自动缩放策略
 将应用程序部署到 Service Fabric 网格的一个主要优势是能够轻松地对服务进行横向缩放。此功能应该用于处理服务上的各种数量的负载，或者用于改进可用性。 可以手动向内缩放或向外缩放服务，或者设置自动缩放策略。

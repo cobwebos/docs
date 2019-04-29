@@ -13,11 +13,11 @@ ms.custom: seodec18
 ms.date: 03/11/2019
 ms.author: juliako
 ms.openlocfilehash: dee7f831562dc1f4b2478d13b204aab1d8455e1e
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57840624"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733175"
 ---
 # <a name="azure-cli-examples-for-azure-media-services"></a>Azure 媒体服务的 Azure CLI 示例
 
@@ -47,4 +47,4 @@ ms.locfileid: "57840624"
 ## <a name="see-also"></a>另请参阅
 
 - [Azure CLI](https://docs.microsoft.com/cli/azure/ams?view=azure-cli-latest)
-- [快速入门：Stream 的视频文件-CLI](stream-files-cli-quickstart.md)
+- [快速入门：对视频文件进行流式处理 - CLI](stream-files-cli-quickstart.md)

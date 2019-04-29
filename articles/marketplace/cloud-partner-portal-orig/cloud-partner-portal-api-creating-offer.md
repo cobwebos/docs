@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: c7aed97c442c414e86c9531f9b0a8431e22b8b44
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805221"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60624983"
 ---
 <a name="create-or-modify-an-offer"></a>创建或修改产品/服务
 =========================
@@ -36,7 +36,7 @@ ms.locfileid: "48805221"
 |  --------         |  ----------------                     |  -------------  |
 | publisherId       |  发布者标识符，例如 `contoso` |   String |
 | offerId           |  产品/服务标识符                     |   String        |
-| api-version       |  API 的最新版本            |   日期           |
+| api-version       |  API 最新版本            |   date           |
 |  |  |  |
 
 <a name="header"></a>标头

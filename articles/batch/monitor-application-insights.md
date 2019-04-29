@@ -12,11 +12,11 @@ ms.workload: na
 ms.date: 04/05/2018
 ms.author: lahugh
 ms.openlocfilehash: 42ea8398fa1a8b1fbc42108d1165dc17da2c34d7
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55473456"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60618525"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>使用 Application Insights 监视和调试 Azure Batch .NET 应用程序
 
@@ -30,7 +30,7 @@ ms.locfileid: "55473456"
 > 或者，配置 Batch 解决方案以在 Batch Explorer 中显示 Application Insights 数据，例如 VM 性能计数器。 [Batch Explorer](https://github.com/Azure/BatchExplorer) 是一个功能丰富的免费独立客户端工具，可帮助创建、调试和监视 Azure Batch 应用程序。 下载适用于 Mac、Linux 或 Windows 的[安装包](https://azure.github.io/BatchExplorer/)。 有关在 Batch Explorer 中启用 Application Insights 数据的快速步骤，请参阅 [batch-insights 存储库](https://github.com/Azure/batch-insights)。 
 >
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 * [Visual Studio 2017](https://www.visualstudio.com/vs)
 
 * [Batch 帐户和链接的存储帐户](batch-account-create-portal.md)

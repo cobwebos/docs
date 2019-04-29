@@ -11,11 +11,11 @@ ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
 ms.openlocfilehash: 3cabfeda458011c5d3006642085f78dc74f3451e
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054718"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543298"
 ---
 # <a name="traffic-manager-routing-methods"></a>流量管理器路由方法
 
@@ -33,7 +33,7 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 所有流量管理器配置文件都包括监视终结点运行状况以及终结点自动故障转移的设置。 有关详细信息，请参阅[流量管理器终结点监视](traffic-manager-monitoring.md)。 一个流量管理器配置文件只能使用一种流量路由方法。 可以随时为配置文件选择其他流量路由方法。 一分钟内即可应用所做的更改，不会导致停机。 可以通过嵌套式流量管理器配置文件来组合使用多种流量路由方法。 使用嵌套可以启用复杂且灵活的流量路由配置，满足更大、更复杂应用程序的需求。 有关详细信息，请参阅[嵌套式流量管理器配置文件](traffic-manager-nested-profiles.md)。
 
-## <a name = "priority"></a>优先级流量路由方法
+## <a name = "priority"></a>“优先级”流量路由方法
 
 组织往往会提供一个或多个备份服务来防范主服务发生故障，从而确保其服务的可靠性。 Azure 客户可以通过“优先级”流量路由方法来轻松实现此故障转移模式。
 
@@ -45,7 +45,7 @@ Azure 流量管理器支持使用六种流量路由方法来确定如何将网�
 
 在 Azure 资源管理器中，可以使用每个终结点的“priority”属性显式配置终结点优先级。 此属性是一个介于 1 和 1000 之间的值。 值越小，优先级越高。 终结点不能共享优先级值。 该属性的设置是可选的。 如果省略该属性，会根据终结点顺序使用默认优先级。
 
-## <a name = "weighted"></a>加权流量路由方法
+## <a name = "weighted"></a>“加权”流量路由方法
 使用“加权”流量路由方法可以均匀分布流量，或使用预定义的权重。
 
 ![Azure 流量管理器的“加权”流量路由方法](media/traffic-manager-routing-methods/weighted.png)

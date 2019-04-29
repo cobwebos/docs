@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/15/2017
 ms.author: hkanna
 ms.openlocfilehash: 17428405a0be45854a2eaaef831864f529ed145a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57994475"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60724906"
 ---
 # <a name="storsimple-as-a-backup-target-with-netbackup"></a>用作备份目标的 StorSimple 与 NetBackup 的集成
 
@@ -254,8 +254,8 @@ StorSimple 提供以下优势：
 |---|---|---|---|
 | 每周完整备份 | 第 | 4  | 4 |
 | 每日增量备份 | 0.5 | 20（周期等于每月周数） | 12（使用 2 个以提高配额） |
-| 每月完整备份 | 第 | 12 | 12 |
-| 每年完整备份 | 第  | 10 | 10 |
+| 每月完整备份 | 1 | 12 | 12 |
+| 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求 |   | 38 |   |
 | 提高的配额  | 4  |   | 总共 42，满足 GFS 要求  |
 
@@ -397,7 +397,7 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 第 | 1 | 第 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 第 |
 | StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 第 | 4 | 4 |
 | 每月完整备份 |StorSimple 磁盘（长期） | 第 | 12 | 12 |
 | 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 第 |
@@ -474,7 +474,7 @@ StorSimple 提供以下优势：
 | 每周完整备份 |  第  |  4 | 4  |
 | 每日增量备份  | 0.5  | 20（周期等于每月的周数） | 12（使用 2 个以提高配额） |
 | 每月完整备份  | 第 | 12 | 12 |
-| 每年完整备份 | 第  | 10 | 10 |
+| 每年完整备份 | 1  | 10 | 10 |
 | GFS 要求  |     |     | 38 |
 | 提高的配额  | 4  |    | 总共 42，满足 GFS 要求 |
 

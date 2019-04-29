@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/16/2018
 ms.author: terrylan
 ms.openlocfilehash: 4c4c2cc3356a10eacbb5460fae27a0a8a66ddd35
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56109089"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587676"
 ---
 # <a name="develop-secure-applications-on-azure"></a>在 Azure 上开发安全的应用程序
 ## <a name="abstract"></a>摘要

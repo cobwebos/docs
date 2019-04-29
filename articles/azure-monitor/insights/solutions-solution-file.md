@@ -15,11 +15,11 @@ ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e5c27911fe86a6916235014f8602327df929e20
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59526361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60595772"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>在 Azure 中创建管理解决方案文件（预览版）
 > [!NOTE]
@@ -85,12 +85,12 @@ Azure 中的管理解决方案作为[资源管理器模板](../../azure-resource
 
 | 参数 | Type | 描述 |
 |:--- |:--- |:--- |
-| accountName |字符串 |Azure 自动化帐户名称。 |
-| pricingTier |字符串 |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
-| regionId |字符串 |Azure 自动化帐户的区域。 |
-| solutionName |字符串 |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
-| workspaceName |字符串 |Log Analytics 工作区名称。 |
-| workspaceRegionId |字符串 |Log Analytics 工作区的区域。 |
+| accountName |string |Azure 自动化帐户名称。 |
+| pricingTier |string |Log Analytics 工作区和 Azure 自动化帐户的定价层。 |
+| regionId |string |Azure 自动化帐户的区域。 |
+| solutionName |string |解决方案名称。  如果要通过快速入门模板部署解决方案，则应将 solutionName 定义为参数，以便能够定义字符串，而无需用户指定一个字符串。 |
+| workspaceName |string |Log Analytics 工作区名称。 |
+| workspaceRegionId |string |Log Analytics 工作区的区域。 |
 
 
 以下是可以复制并粘贴到解决方案文件的标准参数的结构。  

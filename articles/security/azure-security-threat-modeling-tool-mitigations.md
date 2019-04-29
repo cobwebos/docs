@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 24aa49fd4ccccda372d2632ef4aee22bd5cb2bf6
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359130"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611320"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft 威胁建模工具风险缓解
 
@@ -31,7 +31,7 @@ ms.locfileid: "54359130"
 
 威胁建模工具缓解措施根据 Web 应用程序安全框架分类，包括：
 
-| 类别 | Description |
+| 类别 | 描述 |
 | -------- | ----------- |
 | **[审核和日志记录](./azure-security-threat-modeling-tool-auditing-and-logging.md)** | 谁在何时做了什么？ 审核与日志记录是指应用程序如何记录安全相关的事件 |
 | **[身份验证](./azure-security-threat-modeling-tool-authentication.md)** | 你是谁？ 身份验证是某个实体证明另一实体的身份的过程，这通常是通过用户名和密码等凭据完成的。 |

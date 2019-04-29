@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/30/2019
 ms.author: manayar
 ms.openlocfilehash: d1cff1011e190e5fbb2874657cbdfbdc68bde0c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084389"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60619818"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>配合使用虚拟机规模集和应用程序运行状况扩展
 监视应用程序的运行状况是管理和升级部署的重要信号。 Azure 虚拟机规模集支持[滚动升级](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)（包括[自动 OS-image 升级](virtual-machine-scale-sets-automatic-upgrade.md)），其依赖对各实例的运行状况监视来升级部署。
@@ -65,18 +65,18 @@ ms.locfileid: "58084389"
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
-| apiVersion | `2018-10-01` | 日期 |
-| 发布者 | `Microsoft.ManagedServices` | 字符串 |
-| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | 字符串 |
+| apiVersion | `2018-10-01` | date |
+| 发布者 | `Microsoft.ManagedServices` | string |
+| type | `ApplicationHealthLinux` (Linux)、`ApplicationHealthWindows` (Windows) | string |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>设置
 
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ----
-| 协议 | `http` 或 `tcp` | 字符串 |
+| 协议 | `http` 或 `tcp` | string |
 | port | 协议为 `http` 时为可选，协议为 `tcp` 时为必需 | int |
-| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | 字符串 |
+| requestPath | 协议为 `http` 时为必需，协议为 `tcp` 时为不允许 | string |
 
 ## <a name="deploy-the-application-health-extension"></a>部署应用程序运行状况扩展
 可以使用多种方法将应用程序运行状况扩展部署到规模集，如下面的示例所示。

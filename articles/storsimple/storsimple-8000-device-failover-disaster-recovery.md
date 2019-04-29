@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 5dc4a98bf889d38c62c76364289c2d58c14d771e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 079a2f153f257040d1899a33c9e255d633e526ad
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108475"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60576320"
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-8000-series-device"></a>StorSimple 8000 系列设备的故障转移和灾难恢复
 
@@ -50,8 +50,8 @@ ms.locfileid: "23108475"
 
 假设有两个备份策略，分别为 *defaultPol* 和 *customPol*：
 
-* *defaultPol*：有一个卷（*vol1*），每天晚上 10:30 开始运行。
-* *customPol*：有四个卷（*vol1*、*vol2*、*vol3*、*vol4*），每天晚上 10:00 开始运行。
+* *defaultPol*:一个卷*vol1*，10:30 PM 开始运行。
+* *customPol*:四个卷*vol1*， *vol2*， *vol3*， *vol4*，10:00 PM 开始运行。
 
 在此情况下，StorSimple 将针对崩溃一致性确定优先级并将使用 *customPol*，因为具有更多卷。 此策略中的最新备份用于还原数据。 有关如何创建和管理备份策略的详细信息，请转到[使用 StorSimple 设备管理器服务管理备份策略](storsimple-8000-manage-backup-policies-u2.md)。
 
@@ -108,19 +108,19 @@ ms.locfileid: "23108475"
 
 问： **如果灾难恢复失败或部分成功，会发生什么情况？**
 
-答： 如果灾难恢复失败，我们建议再试一次。 第二个设备故障转移作业知道第一个作业的进度，并且将从该点向前开始。
+A. 如果灾难恢复失败，我们建议再试一次。 第二个设备故障转移作业知道第一个作业的进度，并且将从该点向前开始。
 
 问： **正在进行设备故障转移时，是否可以删除设备？**
 
-答： 灾难恢复正在进行时无法删除设备。 只能在灾难恢复完成后删除设备。 可以在“作业”边栏选项卡中监视设备故障转移作业进度。
+A. 灾难恢复正在进行时无法删除设备。 只能在灾难恢复完成后删除设备。 可以在“作业”边栏选项卡中监视设备故障转移作业进度。
 
 问： **源设备上的垃圾收集何时开始，以便能够删除源设备上的本地数据？**
 
-答： 只有在完全清理设备之后，才会在源设备上启用垃圾收集。 清理过程包括清理已从源设备故障转移的对象，例如卷、备份对象（不是数据）、卷容器和策略。
+A. 只有在完全清理设备之后，才会在源设备上启用垃圾收集。 清理过程包括清理已从源设备故障转移的对象，例如卷、备份对象（不是数据）、卷容器和策略。
 
 问： **如果与源设备中卷容器关联的删除作业失败，会发生什么情况？**
 
-答：  如果删除作业失败，则可以手动删除卷容器。 在“设备”边栏选项卡中，选择源设备并单击“卷容器”。 选择已故障转移的卷容器，并在边栏选项卡底部单击“删除”。 删除源设备上所有已故障转移的卷容器后，便可以开始故障回复。 有关详细信息，请转到[删除卷容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
+A.  如果删除作业失败，则可以手动删除卷容器。 在“设备”边栏选项卡中，选择源设备并单击“卷容器”。 选择已故障转移的卷容器，并在边栏选项卡底部单击“删除”。 删除源设备上所有已故障转移的卷容器后，便可以开始故障回复。 有关详细信息，请转到[删除卷容器](storsimple-8000-manage-volume-containers.md#delete-a-volume-container)。
 
 ## <a name="business-continuity-disaster-recovery-bcdr"></a>业务连续性灾难恢复 (BCDR)
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2018
 ms.author: alkohli
-ms.openlocfilehash: 58007eea9ce25423bc3a9c2847de42db04be43eb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
-ms.translationtype: HT
+ms.openlocfilehash: a987239669e7437a179f5f24034f4dbe45535663
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42146324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632800"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-hardware-components-and-status"></a>使用 StorSimple 设备管理器服务监视硬件组件和状态
 
@@ -30,7 +30,7 @@ ms.locfileid: "42146324"
 
 在 8100 的组件列表下有三个部分，分别描述了：
 
-* **共享组件** - 这些组件不是控制器的一部分，例如磁盘驱动器、机箱、电源和冷却模块 (PCM) 组件以及 PCM 温度传感器、线路电压传感器和线路电流传感器。
+* **共享组件**– 它们不属于控制器，如磁盘驱动器、 机箱、 电源和冷却模块 (PCM) 组件和 PCM 温度、 线路电压传感器和线路电流传感器。
 * **控制器 0 组件** – 位于控制器 0 上的组件，例如控制器、SAS 扩展器和连接器、控制器温度传感器和各种网络接口。
 * **控制器 1 组件** – 组成控制器 1 的组件，类似于控制器 0 的那些详细组件。
 
@@ -79,7 +79,7 @@ ms.locfileid: "42146324"
 ## <a name="component-list-for-primary-enclosure-of-storsimple-device"></a>StorSimple 设备的主机箱的组件列表
 下表概述了本地 StorSimple 设备的主机箱（在 8100 和 8600 中配备）中包含的物理和逻辑组件。
 
-| 组件 | 模块 | Type | 位置 | 现场可更换部件 (FRU)？ | Description |
+| 组件 | 模块 | Type | Location | 现场可更换部件 (FRU)？ | 描述 |
 | --- | --- | --- | --- | --- | --- |
 | 插槽中的驱动器 [0-11] |磁盘驱动器 |物理 |共享 |是 |主机箱中的每个 SSD 或 HDD 驱动器都存在对应的一行。 |
 | 环境温度传感器 |机箱 |物理 |共享 |否 |测量机壳内的温度。 |
@@ -120,7 +120,7 @@ ms.locfileid: "42146324"
 ## <a name="component-list-for-ebod-enclosure-of-storsimple-device"></a>StorSimple 设备的 EBOD 机箱的组件列表
 下表概述了本地 StorSimple 设备的 EBOD 机箱（仅在 8600 中配备）中包含的物理和逻辑组件。
 
-| 组件 | 模块 | Type | 位置 | FRU？ | Description |
+| 组件 | 模块 | Type | Location | FRU？ | 描述 |
 | --- | --- | --- | --- | --- | --- |
 | 插槽中的驱动器 [0-11] |磁盘驱动器 |物理 |共享 |是 |EBOD 机箱前部的每个 HDD 驱动器都存在对应的一行。 |
 | 环境温度传感器 |机箱 |物理 |共享 |否 |测量机壳内的温度。 |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 93fbd5bbba91b45e1afd123a2466b249302e2354
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
-ms.translationtype: HT
+ms.openlocfilehash: c41f13a6437f69121d3bbb387c96d8e13f2be0b3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492834"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60566678"
 ---
 # <a name="back-up-and-recover-an-oracle-database-12c-database-on-an-azure-linux-virtual-machine"></a>在 Azure Linux 虚拟机上备份和恢复 Oracle Database 12c 数据库
 
@@ -30,7 +30,7 @@ ms.locfileid: "39492834"
 
 ## <a name="prepare-the-environment"></a>准备环境
 
-### <a name="step-1-prerequisites"></a>步骤 1：先决条件
+### <a name="step-1-prerequisites"></a>步骤 1：必备组件
 
 *   要执行备份和恢复过程，首先必须创建已安装 Oracle Database 12c 实例的 Linux VM。 用来创建 VM 的市场映像是“Oracle:Oracle-Database-Ee:12.1.0.2:latest”。
 
@@ -133,7 +133,7 @@ ms.locfileid: "39492834"
     RMAN> backup database plus archivelog;
     ```
 
-### <a name="step-4-application-consistent-backup-for-linux-vms"></a>步骤 4：Linux VM 的应用程序一致性备份
+### <a name="step-4-application-consistent-backup-for-linux-vms"></a>步骤 4：Linux Vm 的应用程序一致性备份
 
 应用程序一致性备份是 Azure 备份中的一项新功能。 可以创建和选择要在 VM 快照前后执行的脚本（快照前和快照后）。
 
@@ -307,7 +307,7 @@ ms.locfileid: "39492834"
 
     ![恢复服务保管库“立即备份”命令](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. 单击“备份”按钮。 等待备份过程结束。 然后转到[步骤 6：删除数据库文件](#step-6-remove-the-database-files)。
+10. 单击“备份”按钮。 等待备份过程结束。 然后，转到[步骤 6:删除数据库文件](#step-6-remove-the-database-files)。
 
     若要查看备份作业的状态，请单击“作业”。
 
@@ -458,7 +458,7 @@ ms.locfileid: "39492834"
 
     ![保管库“删除”命令](./media/oracle-backup-recovery/recover_vm_01.png)
 
-### <a name="step-2-recover-the-vm"></a>步骤 2：恢复 VM
+### <a name="step-2-recover-the-vm"></a>步骤 2：将 VM 恢复
 
 1.  转到“恢复服务保管库”，然后选择“myVault”。
 
@@ -496,7 +496,7 @@ ms.locfileid: "39492834"
 
     ![还原过程的状态](./media/oracle-backup-recovery/recover_vm_09.png)
 
-### <a name="step-3-set-the-public-ip-address"></a>步骤 3：设置公共 IP 地址
+### <a name="step-3-set-the-public-ip-address"></a>步骤 3：设置的公共 IP 地址
 还原 VM 后，请设置公共 IP 地址。
 
 1.  在搜索框中输入“公共 IP 地址”。
@@ -527,7 +527,7 @@ ms.locfileid: "39492834"
     ssh <publicIpAddress>
     ```
 
-### <a name="step-5-test-whether-the-database-is-accessible"></a>步骤 5：测试该数据库是否可访问
+### <a name="step-5-test-whether-the-database-is-accessible"></a>步骤 5：测试是否可访问数据库
 *   要测试可访问性，请使用以下脚本：
 
     ```bash 
@@ -537,7 +537,7 @@ ms.locfileid: "39492834"
     ```
 
     > [!IMPORTANT]
-    > 如果数据库“启动”命令生成错误，请参阅[步骤 6：使用 RMAN 恢复数据库](#step-6-optional-use-rman-to-recover-the-database)，恢复数据库。
+    > 如果数据库**启动**命令生成错误，恢复数据库，请参阅[步骤 6:使用 RMAN 恢复数据库](#step-6-optional-use-rman-to-recover-the-database)。
 
 ### <a name="step-6-optional-use-rman-to-recover-the-database"></a>步骤 6：（可选）使用 RMAN 恢复数据库
 *   要恢复数据库，请使用以下脚本：
@@ -564,7 +564,7 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>后续步骤
 
-[教程：创建具有高可用性的 VM](../../linux/create-cli-complete.md)
+[教程：创建高度可用的 VM](../../linux/create-cli-complete.md)
 
 [浏览 VM 部署 Azure CLI 示例](../../linux/cli-samples.md)
 

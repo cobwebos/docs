@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: f90140e9464ee72e9ceae8ca140bd060c51aade8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58762644"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60597108"
 ---
 # <a name="scale-migration-of-vms-using-azure-site-recovery"></a>使用 Azure Site Recovery 进行 VM 的规模化迁移
 
@@ -52,7 +52,7 @@ CSV 准备就绪后，可以通过以下步骤来执行本地 VM 的迁移：
 
 **步骤编号** | **脚本名称** | **说明**
 --- | --- | ---
-1 | asr_startmigration.ps1 | 为 csv 中列出的所有 VM 启用复制，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息
+第 | asr_startmigration.ps1 | 为 csv 中列出的所有 VM 启用复制，该脚本将创建一个 CSV 输出，其中包含每个 VM 的作业详细信息
 2 | asr_replicationstatus.ps1 | 检查复制状态，该脚本会创建一个包含各 VM 的状态的 csv
 3 | asr_updateproperties.ps1 | 复制/保护 VM 后，使用此脚本更新 VM 的目标属性（计算和网络属性）
 4 | asr_propertiescheck.ps1 | 验证属性是否已正确更新

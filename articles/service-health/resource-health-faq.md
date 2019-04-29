@@ -8,11 +8,11 @@ ms.service: service-health
 ms.date: 01/29/2019
 ms.workload: Supportability
 ms.openlocfilehash: b4062b3f0bc389de4403ac81b56688508f5ea50e
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58579557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620821"
 ---
 # <a name="azure-resource-health-faq"></a>Azure 资源运行状况常见问题解答
 获取 Azure 资源运行状况常见问题的解答。
@@ -80,10 +80,10 @@ ms.locfileid: "58579557"
 否。运行状况信息适用于可以通过资源运行状况获取的所有资源类型。 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>是否需要为组织启用资源运行状况？
-不是。  Azure 资源运行状况可以在 Azure 门户中访问，没有任何设置要求。
+不。  Azure 资源运行状况可以在 Azure 门户中访问，没有任何设置要求。
 
 ## <a name="is-resource-health-available-free-of-charge"></a>是否免费提供资源运行状况？
-是的。  Azure 资源运行状况免费提供。
+可以。  Azure 资源运行状况免费提供。
 
 ## <a name="what-are-the-recommendations-that-resource-health-provides"></a>资源运行状况提供的建议有哪些？
 资源运行状况会根据运行状态提供建议，目的是减少进行故障排除的时间。 这些建议针对可用资源，注重于如何解决客户遇到的最常见问题。 如果资源因 Azure 计划外事件而不可用，则会注重于提供恢复过程之中和之后的帮助。 

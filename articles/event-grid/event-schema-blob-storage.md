@@ -8,11 +8,11 @@ ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
 ms.openlocfilehash: 401eb660d7e5ddc68bc7422ef9f2e600295d2aea
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54469724"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614908"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Blob 存储的 Azure 事件网格事件架构
 
@@ -24,7 +24,7 @@ ms.locfileid: "54469724"
 
 Blob 存储发出以下事件类型：
 
-| 事件类型 | 说明 |
+| 事件类型 | 描述 |
 | ---------- | ----------- |
 | Microsoft.Storage.BlobCreated | 创建 Blob 时引发。 |
 | Microsoft.Storage.BlobDeleted | 删除 Blob 时引发。 |
@@ -88,30 +88,30 @@ Blob 删除事件的架构与此类似：
 
 事件具有以下顶级数据：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| 主题 | 字符串 | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
-| subject | 字符串 | 事件主题的发布者定义路径。 |
-| eventType | 字符串 | 此事件源的一个注册事件类型。 |
-| EventTime | 字符串 | 基于提供程序 UTC 时间的事件生成时间。 |
-| id | 字符串 | 事件的唯一标识符。 |
+| 主题 | string | 事件源的完整资源路径。 此字段不可写入。 事件网格提供此值。 |
+| subject | string | 事件主题的发布者定义路径。 |
+| eventType | string | 此事件源的一个注册事件类型。 |
+| EventTime | string | 基于提供程序 UTC 时间的事件生成时间。 |
+| id | string | 事件的唯一标识符。 |
 | 数据 | 对象 | Blob 存储事件数据。 |
-| dataVersion | 字符串 | 数据对象的架构版本。 发布者定义架构版本。 |
-| metadataVersion | 字符串 | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
+| dataVersion | string | 数据对象的架构版本。 发布者定义架构版本。 |
+| metadataVersion | string | 事件元数据的架构版本。 事件网格定义顶级属性的架构。 事件网格提供此值。 |
 
 数据对象具有以下属性：
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| api | 字符串 | 触发事件的操作。 |
-| ClientRequestId | 字符串 | 客户端生成的不透明值，限制为 1-KB 字符。 启用存储分析日志记录后，该值会记录在分析日志中。 |
-| requestId | 字符串 | 请求的唯一标识符。 可使用它来排查请求问题。 |
-| eTag | 字符串 | 可用于根据条件执行操作的值。 |
-| contentType | 字符串 | 为 Blob 指定的内容类型。 |
+| api | string | 触发事件的操作。 |
+| ClientRequestId | string | 客户端生成的不透明值，限制为 1-KB 字符。 启用存储分析日志记录后，该值会记录在分析日志中。 |
+| requestId | string | 请求的唯一标识符。 可使用它来排查请求问题。 |
+| eTag | string | 可用于根据条件执行操作的值。 |
+| contentType | string | 为 Blob 指定的内容类型。 |
 | contentLength | integer | Blob 大小，以字节为单位。 |
-| blobType | 字符串 | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
-| url | 字符串 | Blob 的路径。 |
-| sequencer | 字符串 | 可用于跟踪请求的用户控制值。 |
+| blobType | string | Blob 的类型。 有效值为“BlockBlob”或“PageBlob”。 |
+| url | string | Blob 的路径。 |
+| sequencer | string | 可用于跟踪请求的用户控制值。 |
 | storageDiagnostics | 对象 | 有关存储诊断的信息。 |
  
 ## <a name="next-steps"></a>后续步骤

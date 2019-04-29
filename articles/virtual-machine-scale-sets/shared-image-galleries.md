@@ -17,11 +17,11 @@ ms.date: 12/13/2018
 ms.author: akjosh; cynthn
 ms.custom: ''
 ms.openlocfilehash: a750992cade95f9a2719d89c7ff587daf6bfe34d
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620329"
 ---
 # <a name="shared-image-galleries-overview"></a>共享映像库概述
 

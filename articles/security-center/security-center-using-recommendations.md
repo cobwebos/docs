@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 3/26/2019
 ms.author: monhaber
 ms.openlocfilehash: 82a46ae9523c4c2778f86c445e35d0bec961307f
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517685"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60703434"
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>使用 Azure 安全中心建议增强安全性
 可以通过配置安全策略，并实施 Azure 安全中心提供的建议，降低发生重大安全事件的可能性。 本文说明了如何使用安全中心内的安全策略和建议来帮助减少安全攻击。 
@@ -29,7 +29,7 @@ ms.locfileid: "58517685"
 - 在 48 小时内更新操作系统的安全配置建议
 - 在 8 小时内更新终结点保护问题建议
 
-## <a name="scenario"></a>方案
+## <a name="scenario"></a>场景
 此方案显示如何通过监视安全中心建议并采取措施，来使用安全中心帮助降低发生安全事件的可能性。 本方案使用虚构的公司 Contoso，以及安全中心[规划和操作指南](security-center-planning-and-operations-guide.md#security-roles-and-access-controls)中提供的角色。 在此方案中，我们将着重探讨以下角色：
 
 ![方案角色](./media/security-center-using-recommendations/scenario-roles.png)

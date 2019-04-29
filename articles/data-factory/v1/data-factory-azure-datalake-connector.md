@@ -14,11 +14,11 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 3bb372c4c3ddb79429df20c24c691c847e927e2a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57975604"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60567344"
 ---
 # <a name="copy-data-to-and-from-data-lake-storage-gen1-by-using-data-factory"></a>使用数据工厂向/从 Data Lake Storage Gen1 复制数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -49,7 +49,7 @@ Data Lake Store 连接器支持以下身份验证类型：
 
 建议使用服务主体身份验证，特别是在进行已计划的数据复制时。 使用用户凭据身份验证时可能会出现令牌过期行为。 有关配置详细信息，请参阅[链接服务属性](#linked-service-properties)部分。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 可以使用不同的工具/API 创建包含复制活动的管道，以将数据移入/移出 Azure Data Lake Store。
 
 通过创建管道来复制数据的最简单方法是使用**复制向导**。 有关使用复制向导创建管道的教程，请参阅[教程：使用复制向导创建管道](data-factory-copy-data-wizard-tutorial.md)。

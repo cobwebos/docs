@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: kasinh
 ms.openlocfilehash: d1fb3434f0d3954a07980963866bcd7cce004379
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59528095"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60650759"
 ---
 # <a name="recover-data-from-azure-backup-server"></a>从 Azure 备份服务器恢复数据
 可使用 Azure 备份服务器恢复已备份到恢复服务保管库的数据。 用于执行此操作的过程已集成到 Azure 备份服务器管理控制台中，且与其他 Azure 备份组件的恢复工作流类似。

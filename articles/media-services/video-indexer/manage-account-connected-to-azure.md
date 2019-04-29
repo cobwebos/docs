@@ -10,11 +10,11 @@ ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
 ms.openlocfilehash: 1515a026ae297a960f220a97449d2258c0b75e58
-ms.sourcegitcommit: e69fc381852ce8615ee318b5f77ae7c6123a744c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/11/2019
-ms.locfileid: "56004531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60553570"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>管理已连接到 Azure 的视频索引器帐户
 
@@ -23,7 +23,7 @@ ms.locfileid: "56004531"
 > [!NOTE]
 > 只有视频索引器帐户所有者才能执行本主题中所述的帐户配置调整。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 根据[连接到 Azure](connect-to-azure.md) 中所述，将自己的视频索引器帐户连接到 Azure。 
 

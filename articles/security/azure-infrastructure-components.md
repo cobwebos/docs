@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: b390dc9bd2b690837a85a5bab361a534b9c9d5a5
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56118133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60587192"
 ---
 # <a name="azure-information-system-components-and-boundaries"></a>Azure 信息系统的组件和边界
 本文提供有关 Azure 体系结构和管理的一般说明。 Azure 系统环境由以下网络组成：

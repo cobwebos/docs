@@ -11,11 +11,11 @@ ms.custom: include file
 ms.date: 09/27/2018
 ms.author: diberry
 ms.openlocfilehash: b377f464b8a9ef421fb964d5b8fd6374987bec41
-ms.sourcegitcommit: 898b2936e3d6d3a8366cfcccc0fccfdb0fc781b4
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "58114514"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60627686"
 ---
 在 **Program.cs** 的顶部，将单个 _using_ 语句替换为以下行，以向项目添加必要的依赖项：
 

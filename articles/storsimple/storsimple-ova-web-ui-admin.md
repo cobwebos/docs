@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 12/1/2016
 ms.author: alkohli
-ms.openlocfilehash: 989e7b697f9b527df549fb32be18edd1d3c8d224
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 92671206a4171ca838423f55b526191ef30e5c35
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23109955"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630262"
 ---
 # <a name="use-the-web-ui-to-administer-your-storsimple-virtual-array"></a>使用 Web UI 管理 StorSimple Virtual Array
 ![安装流程](./media/storsimple-ova-web-ui-admin/manage4.png)
@@ -58,7 +58,7 @@ ms.locfileid: "23109955"
     ![运行诊断 2](./media/storsimple-ova-web-ui-admin/image30.png)
 
 ## <a name="generate-a-log-package"></a>生成日志包
-日志包由所有可帮助 Microsoft 支持排查任何设备问题的相关日志组成。 在此版本中，可通过本地 Web UI 生成日志包。
+日志包由所有可帮助 Microsoft 支持部门排查任何设备问题的相关日志组成。 在此版本中，可通过本地 Web UI 生成日志包。
 
 #### <a name="to-generate-the-log-package"></a>生成日志包
 1. 在本地 Web UI 中，转到“故障排除” > “系统日志”。
@@ -84,7 +84,7 @@ ms.locfileid: "23109955"
 2. 在页面底部，单击“关闭”。
    
     ![关闭设备 1](./media/storsimple-ova-web-ui-admin/image36.png)
-3. 会出现一条警告消息，表明关闭设备将使任何正在进行的 IO 中断，从而导致停机。 单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png)。
+3. 会出现一条警告消息，表明关闭设备将使任何正在进行的 IO 中断，从而导致停机。 设置筛选器后，单击选中图标  ![勾号图标](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![设备关闭警告](./media/storsimple-ova-web-ui-admin/image37.png)
    
@@ -99,7 +99,7 @@ ms.locfileid: "23109955"
 2. 在页面底部，单击“重启”。
    
     ![设备重启](./media/storsimple-ova-web-ui-admin/image36.png)
-3. 会出现一条警告消息，表明重启设备将使任何正在进行的 IO 中断，从而导致停机。 单击选中图标  ![选中图标](./media/storsimple-ova-web-ui-admin/image3.png)。
+3. 会出现一条警告消息，表明重启设备将使任何正在进行的 IO 中断，从而导致停机。 设置筛选器后，单击选中图标  ![勾号图标](./media/storsimple-ova-web-ui-admin/image3.png).
    
     ![重启警告](./media/storsimple-ova-web-ui-admin/image37.png)
    

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 49615dcb2f077d2e1d8b93a4bb900b435e4c87bf
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56104480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60589081"
 ---
 # <a name="azure-customer-data-protection"></a>Azure 客户数据保护   
 默认情况下，拒绝 Microsoft 运营和支持人员访问客户数据。 授予对客户数据的访问权限后，需要经过领导批准，并仔细管理和记录访问活动。 访问控制要求由以下 Azure 安全策略制定：

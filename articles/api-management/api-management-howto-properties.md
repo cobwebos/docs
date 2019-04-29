@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/25/2018
 ms.author: apimpm
 ms.openlocfilehash: 478b80b021b4df36e2eccc37ac9c74f75e43a5bb
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58791620"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60657977"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>如何在 Azure API 管理策略中使用命名值
 API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置更改 API 的行为。 策略是一组语句，在请求或 API 的响应时按顺序执行。 可以使用文字文本值、策略表达式和命名值构造策略语句。 
@@ -27,10 +27,10 @@ API 管理策略是一项强大的系统功能，允许 Azure 门户通过配置
 
 | 属性 | Type | 描述 |
 | --- | --- | --- |
-| `Display name` |字符串 |策略中用于引用属性的数字字母字符串。 |
-| `Value` |字符串 |属性的值。 不能为空或只由空格组成。 |
-| `Secret` |布尔值|确定值是否为密钥以及是否应加密。|
-| `Tags` |字符串数组 |可选标记，提供用来筛选属性列表。 |
+| 显示名称 |string |策略中用于引用属性的数字字母字符串。 |
+| 值 |string |属性的值。 不能为空或只由空格组成。 |
+|密钥|boolean|确定值是否为密钥以及是否应加密。|
+| 标记 |字符串数组 |可选标记，提供用来筛选属性列表。 |
 
 ![命名值](./media/api-management-howto-properties/named-values.png)
 

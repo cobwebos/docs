@@ -16,11 +16,11 @@ ms.date: 02/27/2017
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: 085bfa582b676f34a02e4c1c5ae7e69c49e5cb4e
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53538117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550039"
 ---
 # <a name="use-visual-studio-project-templates-to-jump-start-batch-solutions"></a>使用 Visual Studio 项目模板快速启动 Batch 解决方案
 
@@ -52,7 +52,7 @@ Batch 的**作业管理器**和**任务处理器 Visual Studio 模板**提供代
 
 ![显示客户端代码与 Batch 服务交互的示意图][diagram01]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要使用 Batch 模板，需要满足以下条件：
 
 * 安装有 Visual Studio 2015 的一台计算机。 Batch 模板当前仅支持 Visual Studio 2015。
@@ -191,7 +191,7 @@ Split() 实现具有以下项的访问权限：
 
 使用作业管理器模板实现的作业管理器任务返回三个可能的退出代码：
 
-| 代码 | Description |
+| 代码 | 描述 |
 | --- | --- |
 | 0 |作业管理器成功完成。 作业拆分器代码已运行完成，并且所有任务都已添加到作业中。 |
 | 1 |作业管理器任务失败，程序的“预期”部分有异常。 异常已转换成 JobManagerException 与诊断信息，如有可能，还提供可解决失败的建议。 |
@@ -369,10 +369,10 @@ Run() 实现具有以下项的访问权限：
 
 使用任务处理器模板实现的任务处理器任务返回三个可能的退出代码：
 
-| 代码 | Description |
+| 代码 | 描述 |
 | --- | --- |
 | [Process.ExitCode][process_exitcode] |任务处理器已运行完成。 请注意，这并不表示调用的程序已成功，只表示任务处理器已成功调用程序并运行任何后处理，而没有异常。 退出代码的含义取决于所调用的程序，一般而言，退出代码 0 表示程序已成功，任何其他退出代码表示程序失败。 |
-| 1 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
+| 第 |任务处理器任务失败，程序的“预期”部分有异常。 异常已转换成 `TaskProcessorException` 与诊断信息，如有可能，还提供可解决失败的建议。 |
 | 2 |任务处理器任务失败，发生“意外的”异常。 异常已记录到标准输出，但任务处理器无法添加任何额外的诊断或补救信息。 |
 
 > [!NOTE]

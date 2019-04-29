@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: cdf01fbbcc8ef1f90b2e0f8973f59c46c5bf70f8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55694093"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60577791"
 ---
 # <a name="collect-distributed-traces-from-go-preview"></a>从 Go（预览版）收集分布式跟踪
 
 Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) 和我们新的[本地转发器](./opencensus-local-forwarder.md)集成来对 Go 应用程序进行分布式跟踪。 本文将逐步介绍设置 OpenCensus for Go 并将跟踪数据提供给 Application Insights 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 需要一个 Azure 订阅。
 - 应该安装 Go，本文使用版本 1.11 [去下载](https://golang.org/dl/)。
@@ -49,7 +49,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建”。
+2. 单击**创建**。
 
 ## <a name="configure-local-forwarder"></a>配置本地转发器
 

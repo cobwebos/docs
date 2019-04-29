@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 11/3/2018
 ms.author: victorh
 ms.openlocfilehash: b08eae072c2fbe420401424baf97a25b4cbbe87b
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58086320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60790736"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>在区域顶点托管负载均衡的 Azure Web 应用
 
@@ -30,7 +30,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 
 必须具有可用于在 Azure DNS 中托管以供测试的域名。 必须能够完全控制此域。 完全控制包括能够为域设置名称服务器 (NS) 记录。
 
-若要托管在 Azure DNS 中的域的说明，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
+有关在 Azure DNS 中托管域的说明，请参阅[教程：在 Azure DNS 中托管域](dns-delegate-domain-azure-dns.md)。
 
 本教程中使用的示例域为 contoso.com，但请使用自己的域名。
 
@@ -43,7 +43,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 使用下表中的配置信息在该资源组中创建两个 Web 应用服务计划。 有关创建应用服务计划的详细信息，请参阅[在 Azure 中管理应用服务计划](../app-service/app-service-plan-manage.md)。
 
 
-|名称  |操作系统  |位置  |定价层  |
+|名称  |操作系统  |Location  |定价层  |
 |---------|---------|---------|---------|
 |ASP-01     |Windows|美国东部|Dev/Test D1-Shared|
 |ASP-02     |Windows|美国中部|Dev/Test D1-Shared|
@@ -55,7 +55,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 1. 选择 Azure 门户页的左上角，单击“创建资源”。
 2. 在搜索栏中键入“Web 应用”并按 Enter 键。
 3. 单击“Web 应用”。
-4. 单击“创建”。
+4. 单击**创建**。
 5. 接受默认值，并参考下表配置两个 Web 应用：
 
    |名称<br>（在 .azurewebsites.net 中必须唯一）|资源组 |应用服务计划/位置
@@ -87,7 +87,7 @@ DNS 协议可防止分配区域顶点的 A 或 AAAA 记录之外的任何内容�
 3. 单击“添加”。
 4. 参考下表配置终结点：
 
-   |Type  |名称  |目标  |位置  |自定义标头设置|
+   |Type  |名称  |确定目标  |Location  |自定义标头设置|
    |---------|---------|---------|---------|---------|
    |外部终结点     |End-01|为 App-01 记下的 IP 地址|美国东部|主机：\<为 App-01 记下的 URL\><br>示例：**host:app-01.azurewebsites.net**|
    |外部终结点     |End-02|为 App-02 记下的 IP 地址|美国中部|主机：\<为 App-02 记下的 URL\><br>示例：**host:app-02.azurewebsites.net**

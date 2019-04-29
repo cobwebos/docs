@@ -13,15 +13,15 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
 ms.openlocfilehash: 49491c5283ba16c5379c1115fae597bd7fd6ea19
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567122"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614060"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL 数据库中的临时表入门
 
-时态表是 Azure SQL 数据库中新的可编程功能，可让你跟踪和分析数据更改的完整历史记录，而无需编写自定义代码。 临时表保存与时间上下文密切相关的数据，因此，只有特定时段内的存储事实才会解译为有效。 临时表的这种属性可让用户执行基于时间的有效分析，并从数据演变中获得见解。
+临时表是 Azure SQL 数据库中新的可编程功能，可用于跟踪和分析数据更改的完整历史记录，而无需编写自定义代码。 临时表保存与时间上下文密切相关的数据，因此，只有特定时段内的存储事实才会解译为有效。 临时表的这种属性可让用户执行基于时间的有效分析，并从数据演变中获得见解。
 
 ## <a name="temporal-scenario"></a>临时表方案
 
@@ -107,7 +107,7 @@ WITH (DROP_EXISTING = ON);
 ```
 
 ## <a name="step-2-run-your-workload-regularly"></a>步骤 2：定期运行工作负荷
-临时表的主要优点是不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建临时表后，每对数据进行修改时，会自动保存以前的行版本。 
+临时表的主要优点是不需要以任何方式更改或调整网站就可以执行更改跟踪。 创建临时表后，每当对数据进行修改时，以前的行版本都会自动保存。 
 
 若要为此特定方案使用自动更改跟踪功能，只需在每次用户结束网站上的会话时更新列 **PagesVisited**：
 
@@ -121,7 +121,7 @@ WHERE [UserID] = 1;
 ![TemporalArchitecture](./media/sql-database-temporal-tables/AzureTemporal5.png)
 
 ## <a name="step-3-perform-historical-data-analysis"></a>步骤 3：执行历史数据分析
-现在，当启用版本由系统控制的临时表时，只需一个查询就能执行历史数据分析。 本文将提供一些解决常见分析方案的示例 - 要了解所有详细信息，请浏览随 [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) 子句一起引入的各种选项。
+现在，当启用版本由系统控制的临时表时，只需一个查询就能执行历史数据分析。 本文将提供一些解决常见分析方案的示例 - 若要了解所有详细信息，请浏览随 [FOR SYSTEM_TIME](https://msdn.microsoft.com/library/dn935015.aspx#Anchor_3) 子句一起引入的各种选项。
 
 若要查看按访问网页次数排序的前 10 个用户，请运行以下查询：
 
@@ -162,7 +162,7 @@ WHERE [UserID] = 1;
 ![TemporalGraph](./media/sql-database-temporal-tables/AzureTemporal6.png)
 
 ## <a name="evolving-table-schema"></a>不断演变的表架构
-通常，需要在开发应用时更改时态表架构。 为此，只需运行正则 ALTER TABLE 语句，Azure SQL 数据库就能正确传播历史记录表的更改。 以下脚本演示如何添加要跟踪的其他属性：
+通常，开发应用时需要更改临时表架构。 为此，只需运行正则 ALTER TABLE 语句，Azure SQL 数据库就能正确传播历史记录表的更改。 以下脚本演示如何添加要跟踪的其他属性：
 
 ```
 /*Add new column for tracking source IP address*/

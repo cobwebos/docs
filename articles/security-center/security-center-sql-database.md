@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: rkarlin
 ms.openlocfilehash: 0a889de79b6a5921007614dac8d610c1be0222d2
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114080"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704484"
 ---
 # <a name="azure-security-center-and-azure-sql-database-service"></a>Azure 安全中心与 Azure SQL 数据库服务
 [Azure 安全中心](https://azure.microsoft.com/documentation/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -36,7 +36,7 @@ ms.locfileid: "56114080"
 
 除帮助保护 SQL 数据库资源外，安全中心还可安全监视和管理 Azure 虚拟机、云服务、应用服务和虚拟网络等。 在[此处](security-center-intro.md)了解有关安全中心的详细信息。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要开始使用安全中心，必须具有 Microsoft Azure 订阅。 使用订阅启用安全中心的免费层。 了解有关安全中心免费层和标准层的详细信息，请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)。
 
 安全中心支持基于角色的访问。 若要了解 Azure 中有关基于角色的访问控制 (RBAC) 的详细信息，请参阅 [Azure Active Directory 基于角色的访问控制](../role-based-access-control/role-assignments-portal.md)。 安全中心常见问题提供有关[如何在安全中心处理权限](security-center-faq.md#permissions)的信息。
@@ -67,7 +67,7 @@ ms.locfileid: "56114080"
 
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 请参考下表，有助于理解适用于 Azure SQL 数据库的建议，以及应用每项建议后有什么不同。 选择一个建议会你将转到介绍如何在安全中心实现建议的文章。
 
-| 建议 | 说明 |
+| 建议 | 描述 |
 | --- | --- |
 | [在 SQL 服务器上启用审核与威胁检测](security-center-enable-auditing-on-sql-servers.md) |建议开启 SQL 数据库服务器的审核与威胁检测。 （仅限 SQL 数据库服务。 不包括在虚拟机上运行的 Microsoft SQL 服务器。） |
 | [在 SQL 数据库上启用审核与威胁检测](security-center-enable-auditing-on-sql-databases.md) |建议在 SQL 数据库数据库上开启审核与威胁检测。 （仅限 SQL 数据库服务。 不包括在虚拟机上运行的 Microsoft SQL 服务器。） |

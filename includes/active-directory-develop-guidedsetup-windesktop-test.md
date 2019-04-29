@@ -15,11 +15,11 @@ ms.date: 04/10/2019
 ms.author: jmprieur
 ms.custom: include file
 ms.openlocfilehash: a11b291ab89dc9f8159e00e1f2304706f041068e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60297604"
 ---
 ## <a name="test-your-code"></a>测试代码
 
@@ -41,10 +41,10 @@ ms.locfileid: "59803413"
 
 在登录后，应当会显示由 Microsoft Graph API 调用返回的用户配置文件信息。 结果会显示在“API 调用结果”框中。 有关通过调用 `AcquireTokenInteractive` 或 `AcquireTokenSilent` 获取的令牌的基本信息，应当会在“令牌信息”框中显示。 结果包含以下属性：
 
-|属性  |格式  |描述 |
+|属性  |格式  |说明 |
 |---------|---------|---------|
 
-|**用户名** | <span> user@domain.com </span> |用于标识用户的用户名。 ||**令牌过期**|日期时间 |令牌到期的时间。 MSAL 通过续订令牌根据需要来延长到期日期。 |
+|**Username** |<span>user@domain.com</span> |用于标识用户的用户名。| |**令牌到期** |DateTime |令牌到期的时间。 MSAL 根据需要通过续订令牌来延长到期日期。|
 
 
 <!--start-collapse-->

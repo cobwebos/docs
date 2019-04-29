@@ -11,11 +11,11 @@ ms.date: 03/08/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: d5820c927b88eba37eaf092dfd4b209180bfc8eb
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57775588"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60565424"
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure 门户中 Azure 搜索服务管理
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ Azure 搜索是一种完全托管的、基于云的搜索服务，用于在自�
 > [!div class="checklist"]
 > * 管理对用于服务读取或写入的 api-keys 的访问。
 > * 通过更改分区和副本的分配以调整服务容量。
-> * 根据服务层的最大限制，监视资源使用情况。
+> * 根据服务层级的最大限制，监视资源使用情况。
 
 请注意，“升级”未列为管理任务。 因为预配服务时会分配资源，所以移动到其他层需要新的服务。 有关详细信息，请参阅[创建 Azure 搜索服务](search-create-service-portal.md)。
 

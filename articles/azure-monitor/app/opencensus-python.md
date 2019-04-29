@@ -10,17 +10,17 @@ ms.service: application-insights
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 22e58f31e2f891eb09c3d42a01763c68cdcd11a8
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60577468"
 ---
 # <a name="collect-distributed-traces-from-python-preview"></a>从 Python（预览版）收集分布式跟踪
 
 Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) 和我们新的[本地转发器](./../../azure-monitor/app/opencensus-local-forwarder.md)集成来对 Python 应用程序进行分布式跟踪。 本文将逐步介绍设置 OpenCensus for Python 并将跟踪数据提供给 Application Insights 的过程。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 需要一个 Azure 订阅。
 - 应该安装 Python。本文使用 [Python 3.7.0](https://www.python.org/downloads/)，不过更早的版本在进行微调后也可能适用。
@@ -49,7 +49,7 @@ Application Insights 现在支持通过与 [OpenCensus](https://opencensus.io) �
    | **资源组**     | myResourceGroup      | 用于托管 App Insights 数据的新资源组的名称 |
    | **位置** | 美国东部 | 选择离你近的位置或离托管应用的位置近的位置 |
 
-2. 单击“创建”。
+2. 单击**创建**。
 
 ## <a name="configure-local-forwarder"></a>配置本地转发器
 

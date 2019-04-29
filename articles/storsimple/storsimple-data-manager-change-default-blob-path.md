@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60723570"
 ---
 # <a name="change-a-blob-path-from-the-default-path"></a>更改默认的 blob 路径
 
@@ -39,7 +39,7 @@ ms.locfileid: "58011630"
 
     ![在搜索框中输入“Function App”](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
-3. 单击“创建”。
+3. 单击**创建**。
 
     ![“Function App”窗口“创建”按钮](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
@@ -54,7 +54,7 @@ ms.locfileid: "58011630"
 
         ![输入新的 Function App 配置数据](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. 单击“创建”。 随即创建函数应用。
+    7. 单击**创建**。 随即创建函数应用。
      
         ![创建的 Function App](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
@@ -72,7 +72,7 @@ ms.locfileid: "58011630"
 
         ![创建新的 C# 函数](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. 单击“创建”。 随即创建函数。
+    4. 单击**创建**。 随即创建函数。
 
      
 10. 在“函数”窗口中，运行 _.csx_ 文件。

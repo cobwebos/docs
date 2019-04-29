@@ -10,11 +10,11 @@ ms.date: 03/16/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 5f9cd5edfb360da507320306314e67ac61503132
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60738468"
 ---
 # <a name="managing-azure-automation-data"></a>管理 Azure 自动化数据
 本文包含管理 Azure 自动化环境的多个主题。
@@ -31,7 +31,7 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 | 帐户 |在帐户被用户删除 90 天后将其永久移除。 |
 | 资产 |在资产被用户删除 90 天后或者在包含该资产的帐户被用户删除 90 天后将其永久移除。 |
 | 模块 |在模块被用户删除 90 天后或者在包含该模块的帐户被用户删除 90 天后将其永久移除。 |
-| Runbook |在资源被用户删除 90 天后或者在包含该资源的帐户被用户删除 90 天后将其永久移除。 |
+| runbook |在资源被用户删除 90 天后或者在包含该资源的帐户被用户删除 90 天后将其永久移除。 |
 | 作业 |在上次修改 90 天后删除并永久移除。 这可能发生在作业已完成、已停止或已暂停之后。 |
 | 节点配置/MOF 文件 |生成新节点配置 90 天后，会永久删除旧节点配置。 |
 | DSC 节点 |在使用 Azure 门户或 Windows PowerShell 中的 [Unregister-AzureRMAutomationDscNode cmdlet](https://docs.microsoft.com/powershell/module/azurerm.automation/unregister-azurermautomationdscnode) 从自动化帐户中取消注册节点 90 天后，永久删除该节点。 在用户删除保存节点的帐户 90 天后，也会永久删除该节点。 |
@@ -44,7 +44,7 @@ Azure 自动化会自动删除并永久移除 90 天之前的作业。
 ## <a name="backing-up-azure-automation"></a>备份 Azure 自动化
 删除 Microsoft Azure 中的某个自动化帐户时，该帐户中的所有对象都会被删除，包括 Runbook、模块、配置、设置、作业和资产。 在删除帐户后，这些对象不可恢复。  在删除自动化帐户之前，可以参考以下信息来备份该帐户的内容。 
 
-### <a name="runbooks"></a>Runbook
+### <a name="runbooks"></a>runbook
 可以使用 Azure 门户或 Windows PowerShell 中的 [Get-AzureAutomationRunbookDefinition](https://docs.microsoft.com/powershell/module/servicemanagement/azure/get-azureautomationrunbookdefinition) cmdlet 将 Runbook 导出到脚本文件。  可以根据[创建或导入 Runbook](/previous-versions/azure/dn643637(v=azure.100)) 中所述，将这些脚本文件导入另一个自动化帐户。
 
 ### <a name="integration-modules"></a>集成模块

@@ -17,11 +17,11 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.openlocfilehash: 1d0f3bfa03eb4bafdd10222e28782c318848b7f7
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57995184"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60592242"
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>完成用于在 Azure 虚拟机中创建 Alwayson 可用性组的必备组件配置
 
@@ -51,7 +51,7 @@ ms.locfileid: "57995184"
 
    ![资源组](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/01-resourcegroupsymbol.png)
 4. 单击“资源组”。
-5. 单击“创建”。
+5. 单击**创建**。
 6. 在“资源组名称”下，键入资源组的名称。 例如，键入 **sql-ha-rg**。
 7. 若有多个 Azure 订阅，请验证该订阅是否为要在其中创建可用性组的 Azure 订阅。
 8. 选择一个位置。 该位置是要创建可用性组的 Azure 区域。 本文将在一个 Azure 位置生成所有资源。
@@ -95,7 +95,7 @@ Azure 将创建资源组，并在门户中固定资源组的快捷方式。
 
    本示例使用子网名称 **Admin**。此子网用于域控制器。
 
-5. 单击“创建”。
+5. 单击**创建**。
 
    ![配置虚拟网络](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/06-configurevirtualnetwork.png)
 

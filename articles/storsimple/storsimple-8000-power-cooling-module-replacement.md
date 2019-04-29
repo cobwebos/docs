@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 7d181e6e434c998573dbea4b541cfacf7a28ee66
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 42561570e24aec5edd33248ef1738e53175e480e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108595"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60632283"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>更换 StorSimple 设备上的电源和散热模块
 ## <a name="overview"></a>概述
@@ -61,10 +61,10 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    
      **图 1** 设备的前面板  
    
-   | 标签 | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |“静音”按钮 |
-   | #N/A |系统电源 |
+   | 2 |系统电源 |
    | 3 |模块故障 |
    | 4 |逻辑故障 |
    | 5 |单元 ID 显示 |
@@ -74,10 +74,10 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    
      **图 2** PCM 背面（带指示器 LED）
    
-   | 标签 | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |交流电源故障 |
-   | #N/A |风扇故障 |
+   | 2 |风扇故障 |
    | 3 |电池故障 |
    | 4 |PCM 正常 |
    | 5 |直流电源故障 |
@@ -88,10 +88,10 @@ Microsoft Azure StorSimple 设备中的电源和散热模块 (PCM) 由电源和�
    
      **图 3** 设备背面（带插件模块） 
    
-   | 标签 | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |PCM 0 |
-   | #N/A |PCM 1 |
+   | 2 |PCM 1 |
    | 3 |控制器 0 |
    | 4 |控制器 1 |
 5. 关闭发生故障的 PCM 并断开电源线。 现在可拆卸 PCM 了。

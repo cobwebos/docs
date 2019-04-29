@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 45699c267d1009c4884dd164fd3f2950d6d5f555
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: b05d1f36d1e74b3d915e216676859654fbcbacf3
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108215"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60578625"
 ---
 # <a name="replace-an-ebod-controller-on-your-storsimple-device"></a>更换 StorSimple 设备上的 EBOD 控制器
 
@@ -54,10 +54,10 @@ ms.locfileid: "23108215"
    
      **图 1** EBOD 模块的背面
    
-   | 标签 | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |故障 LED |
-   | #N/A |电源 LED |
+   | 2 |电源 LED |
    | 3 |SAS 连接器 |
    | 4 |SAS LED |
    | 5 |仅供工厂使用的串行端口 |
@@ -86,10 +86,10 @@ ms.locfileid: "23108215"
    
     **图 4**。 重新连接电缆
    
-   | 标签 | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
-   | 1 |主机箱 |
-   | #N/A |PCM 0 |
+   | 第 |主机箱 |
+   | 2 |PCM 0 |
    | 3 |PCM 1 |
    | 4 |控制器 0 |
    | 5 |控制器 1 |

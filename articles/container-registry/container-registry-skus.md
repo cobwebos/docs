@@ -1,6 +1,6 @@
 ---
 title: Azure 容器注册表 SKU
-description: 比较 Azure 容器注册表中的不同服务层。
+description: 比较 Azure 容器注册表中的不同服务层级。
 services: container-registry
 author: dlepow
 ms.service: container-registry
@@ -8,37 +8,37 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: danlep
 ms.openlocfilehash: 7fdc1417ac524b422a12a087cf1661040efb9f8a
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58521952"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60582786"
 ---
 # <a name="azure-container-registry-skus"></a>Azure 容器注册表 SKU
 
-Azure 容器注册表 (ACR) 分为多个服务层（称为“SKU”）。 这些 SKU 提供可预测的定价和多个选项，用来适应你在 Azure 中的专用 Docker 注册表的容量和使用模式。
+Azure 容器注册表 (ACR) 分为多个服务层级（称为“SKU”）。 这些 SKU 提供可预测的定价和多个选项，用来适应你在 Azure 中的专用 Docker 注册表的容量和使用模式。
 
 | SKU | 托管 | 描述 |
 | --- | :-------: | ----------- |
-| **基本** | 是 | 供开发者了解 Azure 容器注册表的入口点（已优化过成本）。 基本注册表具有与标准和高级版相同的编程功能 (如 Azure Active Directory[身份验证集成](container-registry-authentication.md#individual-login-with-azure-ad)，[映像删除][container-registry-delete]，并[webhook][container-registry-webhook])。 但其附带的存储和映像吞吐量最适合使用较少的场景。 |
+| **基本** | 是 | 供开发者了解 Azure 容器注册表的入口点（已优化过成本）。 基本注册表的编程功能（例如 Azure Active Directory [身份验证集成](container-registry-authentication.md#individual-login-with-azure-ad)、[映像删除][container-registry-delete]和 [Webhook][container-registry-webhook]）与标准注册表和高级注册表相同。 但其附带的存储和映像吞吐量最适合使用较少的场景。 |
 | **标准** | 是 | 标准注册表的功能与基本注册表相同。不同之处在于，前者附带更多的存储和映像吞吐量。 标准注册表应能够满足大部分生产方案的需求。 |
 | **高级** | 是 | 高级注册表附带的存储和并发操作数最多，支持大容量方案。 除了更高版本的映像吞吐量，高级注册表还增添功能，包括[异地复制][ container-registry-geo-replication]用于跨多个区域管理单个注册表[内容信任 （预览版）](container-registry-content-trust.md)对于图像标记签名，并[防火墙和虚拟网络 （预览版）](container-registry-vnet.md)来限制对注册表的访问。 |
-|  经典 (*不可用之后 2019 年 4 月*) | 否 | 此 SKU 在 Azure 中启用了初始版 Azure 容器注册表服务。 经典注册表由 Azure 在订阅中创建的存储帐户提供支持，这会限制 ACR 提供更高级功能，如增加吞吐量和异地复制。 |
+|  经典（*在 2019 年 4 月后不可用*） | 否 | 此 SKU 在 Azure 中启用了初始版 Azure 容器注册表服务。 经典注册表由 Azure 在订阅中创建的存储帐户提供支持，这会限制 ACR 提供更高级功能，如增加吞吐量和异地复制。 |
 
 > [!IMPORTANT]
-> 经典注册表 SKU 正在**弃用**，并将不可用之后**2019 年 4 月**。 我们建议对所有新注册表使用基本、 标准或高级版。 应在 2019 年 4 月之前升级所有现有的经典注册表。 有关升级的信息，请参阅[升级经典注册表][container-registry-upgrade]。
+> 经典注册表 SKU 即将**弃用**，**2019 年 4 月**之后将不可用。 对于所有新的注册表，建议使用基本、标准或高级 SKU。 应在 2019 年 4 月之前升级所有现有的经典注册表。 有关升级信息，请参阅[升级经典注册表][container-registry-upgrade]。
 
-基本、 标准和高级 Sku (统称为*托管注册表*) 均提供相同的编程功能。 它们还全部受益[图像存储][ container-registry-storage]完全由 Azure 托管。 选择的 SKU 级别越高，性能和可缩放性就越高。 使用多个服务层，你可以从基本层开始，然后随着注册表使用量增长转换到标准和高级层。
+基本、标准和高级 SKU（统称为“托管注册表”）全都提供相同的编程功能。 它们也全都可以从完全由 Azure 托管的[映像存储][container-registry-storage]受益。 选择的 SKU 级别越高，性能和可缩放性就越高。 使用多个服务层级，你可以从“基本”层级开始，然后随着注册表使用量增长转换到“标准”和“高级”层级。
 
 ## <a name="sku-feature-matrix"></a>SKU 功能矩阵
 
-下表详细介绍了基本、标准和高级服务层的功能和限制。
+下表详细介绍了“基本”、“标准”和“高级”服务层级的功能和限制。
 
 [!INCLUDE [container-instances-limits](../../includes/container-registry-limits.md)]
 
 ## <a name="changing-skus"></a>更改 SKU
 
-可以通过 Azure CLI 或在 Azure 门户中更改注册表的 SKU。 你可以自由地在各种托管的 SKU 之间切换，只要你要切换到的 SKU 具有所需的最大存储容量即可。 当从经典部署模型切换到托管的 Sku 之一时，您不能切换回经典-它是一种单向转换。
+可以通过 Azure CLI 或在 Azure 门户中更改注册表的 SKU。 你可以自由地在各种托管的 SKU 之间切换，只要你要切换到的 SKU 具有所需的最大存储容量即可。 如果从经典 SKU 切换到托管的 SKU 之一，则无法切换回经典 SKU，因为这是一个单向转换。
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -54,7 +54,7 @@ az acr update --name myregistry --sku Premium
 
 ![在 Azure 门户中更新容器注册表 SKU][update-registry-sku]
 
-如果你有经典注册表，则无法在 Azure 门户中选择托管的 SKU。 相反，你必须首先[升级][ container-registry-upgrade]到托管的注册表。
+如果你有经典注册表，则无法在 Azure 门户中选择托管的 SKU。 而是必须先[升级][container-registry-upgrade]到托管的注册表。
 
 ## <a name="pricing"></a>定价
 

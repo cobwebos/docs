@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: adedc8bc1f574ae089f2a11033fab4f390c57a9a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58087017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60714782"
 ---
 # <a name="hunt-for-threats-with-in-azure-sentinel-preview"></a>寻找 Azure Sentinel 预览版中使用的威胁
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 如果您想要主动寻找安全威胁，Azure Sentinel 功能强大的搜索搜索和查询工具要在组织的数据源之间的安全威胁进行调查。 但是，你的系统和安全设备生成巨额的可能很难分析和筛选到事件中有意义的数据。 若要帮助安全分析师查找主动新异常未检测到的安全应用，Azure Sentinel 内置搜索查询将引导你到询问正确的问题，你的网络已有的数据中发现的问题。 
@@ -143,7 +143,7 @@ ms.locfileid: "58087017"
    ![自定义查询](./media/tutorial-hunting/custom-query.png)
 
 ## <a name="next-steps"></a>后续步骤
-在本文中，您学习了如何使用 Azure Sentinel 运行搜索调查。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文中，您学习了如何使用 Azure Sentinel 运行搜索调查。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 
 - [使用笔记本来运行自动的搜索活动](notebooks.md)

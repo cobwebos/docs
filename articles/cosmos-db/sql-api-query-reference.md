@@ -9,20 +9,20 @@ ms.date: 03/31/2019
 ms.author: mjbrown
 ms.custom: seodec18
 ms.openlocfilehash: 22b03417495625ef70650a015530d6f56b32fd4f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59283641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626871"
 ---
 # <a name="sql-language-reference-for-azure-cosmos-db"></a>Azure Cosmos DB SQL 语言参考 
 
-Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本文提供了有关使用 SQL API 帐户中的 SQL 查询语言语法的文档。 示例 SQL 查询的演练，请参阅[Cosmos DB 中的 SQL 查询示例](how-to-sql-query.md)。  
+Azure Cosmos DB 支持使用分层 JSON 文档中的语法等熟悉的 SQL（结构化查询语言）来查询文档，无需显示架构或创建辅助索引。 本文提供的文档适用于在 SQL API 帐户中使用的 SQL 查询语言语法。 有关示例 SQL 查询的演练，请参阅 [Cosmos DB 中的 SQL 查询示例](how-to-sql-query.md)。  
   
-请访问[查询板块](https://www.documentdb.com/sql/demo)，其中你可以试用 Cosmos DB 和对示例数据集运行 SQL 查询。  
+请访问[查询操场](https://www.documentdb.com/sql/demo)，可在其中尝试 Cosmos DB，并针对示例数据集运行 SQL 查询。  
   
 ## <a name="select-query"></a>SELECT 查询  
-每个查询按 ANSI-SQL 标准由 SELECT 子句和可选的 FROM 和 WHERE 子句组成。 通常情况下，对于每个查询，枚举时在 FROM 子句中的源，然后在 WHERE 子句中的筛选器应用到源以检索 JSON 文档的子集。 最后，使用 SELECT 子句以投影选择列表中请求的 JSON 值。 有关示例，请参阅 [SELECT 查询示例](how-to-sql-query.md#SelectClause)
+每个查询按 ANSI-SQL 标准由 SELECT 子句和可选的 FROM 和 WHERE 子句组成。 通常情况下，对于每个查询，需枚举 FROM 子句中的源，然后将 WHERE 子句中的筛选器应用到源以检索 JSON 文档的子集。 最后，使用 SELECT 子句以投影选择列表中请求的 JSON 值。 有关示例，请参阅 [SELECT 查询示例](how-to-sql-query.md#SelectClause)
   
 **语法**  
   
@@ -2342,7 +2342,7 @@ StringToArray(<expr>)
   
 - `expr`  
   
-   为任何有效的标量表达式计算结果为一个 JSON 数组表达式。 请注意，必须用双引号引起来有效写入嵌套的字符串值。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)
+   是否会将任何有效的标量表达式作为 JSON 数组表达式来计算？ 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)
   
   返回类型  
   
@@ -2352,7 +2352,7 @@ StringToArray(<expr>)
   
   以下示例演示 StringToArray 在不同类型中的行为方式。 
   
- 使用有效输入示例如下。
+ 下面是输入有效的示例。
 
 ```
 SELECT 
@@ -2369,10 +2369,10 @@ SELECT
 [{"a1": [], "a2": [1,2,3], "a3": ["str",2,3], "a4": [["5","6","7"],["8"],["9"]], "a5": [1,2,3,"[4,5,6]",[7,8]]}]
 ```
 
- 下面是输入的无效的示例。 
+ 下面是输入无效的示例。 
    
- 数组中的单引号不是有效的 JSON。
-即使它们是在查询内有效，它们不会分析为有效的数组。 要么必须对数组字符串内的字符串进行转义"[\\"\\"]"或周围的引号必须是单个 [""]。
+ 在数组中使用单引号不是有效的 JSON。
+即使它们在查询中有效，系统也不会将其解析为有效数组。 必须将数组字符串中的字符串转义为 "[\\"\\"]"，否则其引号必须为单个 '[""]'。
 
 ```
 SELECT
@@ -2385,9 +2385,9 @@ SELECT
 [{}]
 ```
 
- 以下是输入的无效的示例。
+ 下面是输入无效的示例。
    
- 传递的表达式将分析为 JSON 数组;以下不评估以类型数组，因此返回未定义。
+ 传递的表达式将会解析为 JSON 数组；下面的示例不会计算为类型数组，因此返回未定义。
    
 ```
 SELECT
@@ -2417,7 +2417,7 @@ StringToBoolean(<expr>)
   
 - `expr`  
   
-   为任何有效的标量表达式计算结果为布尔表达式。  
+   是否会将任何有效的标量表达式作为布尔表达式来计算？  
   
   返回类型  
   
@@ -2427,9 +2427,9 @@ StringToBoolean(<expr>)
   
   以下示例演示 StringToBoolean 在不同类型中的行为方式。 
  
- 使用有效输入示例如下。
+ 下面是输入有效的示例。
 
- 仅之前或之后"true"/"false"允许空白。
+ 只能在 "true"/"false" 之前或之后使用空格。
 
 ```  
 SELECT 
@@ -2444,9 +2444,9 @@ SELECT
 [{"b1": true, "b2": false, "b3": false}]
 ```  
 
- 以下是具有无效的输入示例。
+ 下面是输入无效的示例。
  
- 布尔值区分大小写，必须使用所有小写字符，即"true"和"false"编写。
+ 布尔值区分大小写，必须全用小写字符（即 "true" 和 "false"）来表示。
 
 ```  
 SELECT 
@@ -2460,7 +2460,7 @@ SELECT
 [{}]
 ``` 
 
- 传递的表达式将分析为一个布尔表达式;不会评估这些输入以布尔值类型，因此返回未定义。
+ 传递的表达式将会解析为布尔表达式；以下输入不会计算为布尔类型，因此会返回未定义。
 
  ```  
 SELECT 
@@ -2490,7 +2490,7 @@ StringToNull(<expr>)
   
 - `expr`  
   
-   为任何有效的标量表达式计算结果为 null 的表达式。
+   是否会将任何有效的标量表达式作为 Null 表达式来计算？
   
   返回类型  
   
@@ -2500,9 +2500,9 @@ StringToNull(<expr>)
   
   以下示例演示 StringToNull 在不同类型中的行为方式。 
 
- 使用有效输入示例如下。
+ 下面是输入有效的示例。
  
- 仅之前或之后"null"允许空白。
+ 只能在 "null" 之前或之后使用空格。
 
 ```  
 SELECT 
@@ -2517,9 +2517,9 @@ SELECT
 [{"n1": null, "n2": null, "n3": true}]
 ```  
 
- 以下是具有无效的输入示例。
+ 下面是输入无效的示例。
 
- Null 是区分大小写，必须使用所有小写字符即"null"编写。
+ Null 值区分大小写，必须全用小写字符（即 "null"）来表示。
 
 ```  
 SELECT    
@@ -2533,7 +2533,7 @@ SELECT
 [{}]
 ```  
 
- 传递的表达式将分析为 null 的表达式;不会评估这些输入来键入 null，因此返回未定义。
+ 传递的表达式将会解析为 null 表达式；以下输入不会计算为 null 类型，因此会返回未定义。
 
 ```  
 SELECT    
@@ -2562,7 +2562,7 @@ StringToNumber(<expr>)
   
 - `expr`  
   
-   为任何有效的标量表达式被视为 JSON 数字表达式。 JSON 中的数字必须是整数或浮点数。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
+   是否会将任何有效的标量表达式作为 JSON 数字表达式来计算？ JSON 中的数字必须是整数或浮点数。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
   返回类型  
   
@@ -2572,7 +2572,7 @@ StringToNumber(<expr>)
   
   以下示例演示 StringToNumber 在不同类型中的行为方式。 
 
- 仅之前或之后数允许有空白。
+ 只能在 Number 之前或之后使用空格。
  
 ```  
 SELECT 
@@ -2588,7 +2588,7 @@ SELECT
 {{"num1": 1, "num2": 3.14, "num3": 60, "num4": -1.79769e+308}}
 ```  
 
- 在 JSON 中必须是有效的数字是整数或浮点数。
+ 在 JSON 中，有效的 Number 必须是整数或浮点数。
  
 ```  
 SELECT   
@@ -2601,7 +2601,7 @@ SELECT
 {{}}
 ```  
 
- 传递的表达式将分析为一个数字的表达式;不会评估这些输入来键入数字，因此返回未定义。 
+ 传递的表达式将会解析为 Number 表达式；以下输入不会计算为 Number 类型，因此会返回未定义。 
 
 ```  
 SELECT 
@@ -2632,7 +2632,7 @@ StringToObject(<expr>)
   
 - `expr`  
   
-   为任何有效的标量表达式被视为 JSON 对象表达式。 请注意，必须用双引号引起来有效写入嵌套的字符串值。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
+   是否会将任何有效的标量表达式作为 JSON 对象表达式来计算？ 请注意，嵌套字符串值必须使用双引号编写，否则无效。 有关 JSON 格式的详细信息，请参阅 [json.org](https://json.org/)  
   
   返回类型  
   
@@ -2642,7 +2642,7 @@ StringToObject(<expr>)
   
   以下示例演示 StringToObject 在不同类型中的行为方式。 
   
- 使用有效输入示例如下。
+ 下面是输入有效的示例。
  
 ``` 
 SELECT 
@@ -2661,10 +2661,10 @@ SELECT
   "obj4": {"C":[{"c1":[5,6,7]},{"c2":8},{"c3":9}]}}]
 ```
  
- 以下是具有无效的输入示例。
-即使它们是在查询内有效，它们将不解析为有效的对象。 内对象的字符串的字符串必须既转义"{\\"\\":\\"str\\"}"或周围的引号必须是单个 {"a":"str"}。
+ 下面是输入无效的示例。
+即使它们在查询中有效，系统也不会将其解析为有效对象。 必须将对象字符串中的字符串转义为 "{\\"a\\":\\"str\\"}"，否则其引号必须为单个 '{"a": "str"}'。
 
- 用单引号引起属性名称不是有效的 JSON。
+ 属性名称的单引号不是有效的 JSON。
 
 ``` 
 SELECT 
@@ -2677,7 +2677,7 @@ SELECT
 [{}]
 ```  
 
- 不带周围的引号的属性名称不是有效的 JSON。
+ 没有引号的属性名称不是有效的 JSON。
 
 ``` 
 SELECT 
@@ -2690,9 +2690,9 @@ SELECT
 [{}]
 ``` 
 
- 以下是具有无效的输入示例。
+ 下面是输入无效的示例。
  
- 传递的表达式将分析为 JSON 对象;不会评估这些输入以类型对象，因此返回未定义。
+ 传递的表达式将会解析为 JSON 对象；以下输入不会计算为对象类型，因此会返回未定义。
  
 ``` 
 SELECT 

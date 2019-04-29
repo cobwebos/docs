@@ -9,12 +9,12 @@ ms.service: media-services
 ms.topic: article
 ms.date: 03/05/2019
 ms.author: juliako
-ms.openlocfilehash: e6dead0f08f50b32dd963832824d9166ff2467c0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 89903d3f65c74da6903e53284f168d2d6a12168a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58893446"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60559894"
 ---
 # <a name="upload-and-index-your-videos"></a>上传视频和编制视频索引  
 
@@ -32,7 +32,7 @@ ms.locfileid: "58893446"
 
 - 根据 URL（首选方式）上传视频时，必须使用 TLS 1.2（或更高版本）保护终结点
 - 具有 URL 选项上传大小被限制为 30 GB
-- 在大多数浏览器 URL 长度是限制为 2000年个字符
+- 请求 URL 长度仅限于 2048年个字符
 - 对于字节数组选项，上传大小限制为 2GB
 - 字节组选项会在 30 分钟后超时
 - 需要对 `videoURL` 参数中提供的 URL 进行编码

@@ -16,11 +16,11 @@ ms.date: 08/28/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a7cd986544dfb1472f5cc8a013fec951dca42a59
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57898646"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60523986"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workteam"></a>教程：Azure Active Directory 与 Workteam 集成
 
@@ -180,7 +180,7 @@ ms.locfileid: "57898646"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-a-workteam-test-user"></a>创建 Workteam 测试用户
 
@@ -200,7 +200,7 @@ ms.locfileid: "57898646"
 
     a. 在“姓名”文本框中，输入用户的名字，例如 **Brittasimon**。
 
-    b. 在中**电子邮件**文字框中，输入类似的用户的电子邮件**Brittasimon\@contoso.com**。
+    b. 在“电子邮件”文本框中，输入用户的电子邮件，例如 Brittasimon\@contoso.com。
 
     c. 单击“确定”。
 

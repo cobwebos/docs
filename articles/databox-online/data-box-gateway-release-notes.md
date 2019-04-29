@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/26/2019
 ms.author: alkohli
 ms.openlocfilehash: f4ee3a5bd754335ab1c7f124671e9c37307a6a28
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499873"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754193"
 ---
 # <a name="azure-data-box-edgeazure-data-box-gateway-general-availability-release-notes"></a>数据框边缘/Azure 数据框网关正式发布的 azure 发行说明
 
@@ -40,7 +40,7 @@ GA 版本对应于软件版本：
 
 下表提供数据框网关的运行版本的已知问题的摘要。
 
-| 不是。 | Feature | 问题 | 解决方法/备注 |
+| 不。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |文件类型 | 不支持以下文件类型： 字符文件、 阻止的文件、 套接字、 管道、 符号链接。  |复制这些文件会导致在 NFS 共享上创建 0 长度文件。 这些文件仍处于错误状态，并将在 *error.xml* 中报告。 <br> 指向目录的符号链接导致目录永远不会被标记为脱机。 因此，可能看不到目录上有表明目录处于脱机状态的灰色叉，且所有相关内容都完全上传到 Azure 中。 |
 | **2.** |删除 | 由于此版本中的一个 bug，删除 NFS 共享时，可能不会将其删除。 共享状态将显示“正在删除”。  |只有当该共享使用了不受支持的文件名时，才会发生这种情况。 |

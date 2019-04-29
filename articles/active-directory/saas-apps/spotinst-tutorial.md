@@ -16,11 +16,11 @@ ms.date: 07/25/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f0bffdf439a192fb10fe695fbfa18e8c7abf8077
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60541753"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>教程：Azure Active Directory 与 Spotinst 集成
 
@@ -197,7 +197,7 @@ Spotinst 与 Azure AD 的集成提供以下优势：
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
 
 ### <a name="create-a-spotinst-test-user"></a>创建 Spotinst 测试用户
 

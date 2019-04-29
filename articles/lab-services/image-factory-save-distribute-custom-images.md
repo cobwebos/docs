@@ -13,13 +13,13 @@ ms.topic: article
 ms.date: 03/25/2019
 ms.author: spelluru
 ms.openlocfilehash: feabd055833e5f0d850138af528cce1da82cae49
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439804"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622592"
 ---
-# <a name="save-custom-images-and-distribute-to-multiple-labs"></a>保存自定义映像并将分发到多个实验室
+# <a name="save-custom-images-and-distribute-to-multiple-labs"></a>保存自定义映像并分发到多个实验室
 本文介绍可将已创建的虚拟机 (Vm) 中保存自定义映像的步骤。 它还介绍了如何进行这些自定义将映像分发到组织中其他开发测试实验室。
 
 ## <a name="prerequisites"></a>必备组件

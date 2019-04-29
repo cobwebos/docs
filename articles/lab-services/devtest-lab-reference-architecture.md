@@ -14,11 +14,11 @@ ms.date: 04/12/2019
 ms.author: spelluru
 ms.reviewer: christianreddington,anthdela,juselph
 ms.openlocfilehash: bcb154f7cffb92ef23fc2606e1f604bb12f8d1a3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59996605"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60561502"
 ---
 # <a name="azure-devtest-labs---reference-architecture-for-an-enterprise"></a>Azure 开发测试实验室-企业参考体系结构
 本文提供参考体系结构部署在企业中的 Azure 开发测试实验室所基于的解决方案。 它包括通过 Express Route 的远程登录到虚拟机的远程桌面网关、 连接到专用的项目，并在实验室中使用其他 PaaS 服务的项目存储库的本地连接。

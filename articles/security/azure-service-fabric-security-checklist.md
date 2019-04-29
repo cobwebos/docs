@@ -15,23 +15,23 @@ ms.workload: na
 ms.date: 01/16/2019
 ms.author: tomsh
 ms.openlocfilehash: 06a1903e5e27d748310c1b7846105b8069b73437
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56111368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611542"
 ---
 # <a name="azure-service-fabric-security-checklist"></a>Azure Service Fabric 安全性清单
 本文提供的易用清单有助于保护 Azure Service Fabric 环境。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 Azure Service Fabric 是一种分布式系统平台，适用于打包、部署和管理可缩放的可靠微服务。 Service Fabric 还解决了开发和管理云应用程序中的重大难题。 开发人员和管理员不需解决复杂的基础结构问题，只需专注于实现苛刻的任务关键型工作负荷，即那些可缩放、可靠且易于管理的工作负荷。
 
 ## <a name="checklist"></a>清单
 以下清单有助于确保在管理和配置 Azure Service Fabric 解决方案过程中未忽略任何重要问题。
 
 
-|清单类别| 说明 |
+|清单类别| 描述 |
 | ------------ | -------- |
 |[基于角色的访问控制 (RBAC)](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security-roles) | <ul><li>访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。</li><li>管理员对管理功能（包括读取/写入功能）拥有完全访问权限。 </li><li> 默认情况下，用户只有管理功能的读取访问权限（例如查询功能），以及解析应用程序和服务的能力。</li></ul>|
 |[X.509 证书和 Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security) | <ul><li>运行生产工作负荷的群集中使用的[证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/working-with-certificates)应使用正确配置的 Windows Server 证书服务进行创建，或者从已批准的[证书颁发机构 (CA)](https://en.wikipedia.org/wiki/Certificate_authority) 获取。</li><li>切勿在生产环境中使用通过 [MakeCert.exe](https://msdn.microsoft.com/library/windows/desktop/aa386968.aspx) 等工具创建的[临时或测试证书](https://docs.microsoft.com/dotnet/framework/wcf/feature-details/how-to-create-temporary-certificates-for-use-during-development)。 </li><li>可以使用[自签名证书](https://docs.microsoft.com/azure/service-fabric/service-fabric-windows-cluster-x509-security)，但只应使用它来测试群集，而不应在生产环境中使用。</li></ul>|

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: mbullwin
 ms.openlocfilehash: 719cbe1ec8962b320aa2850053d44cdef7f56a8c
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58437810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691535"
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>为 ASP.NET 网站设置 Application Insights
 
@@ -127,7 +127,7 @@ Visual Studio 中会显示已记录的事件数。
 
 ## <a name="video"></a>视频
 
-* 有关外部分步视频[使用从零开始的.NET 应用程序配置 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA)。
+* 有关[从头开始使用 .NET 应用程序配置 Application Insights](https://www.youtube.com/watch?v=blnGAVgMAfA) 的外部分步说明视频。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -7,25 +7,26 @@ ms.subservice: data-movement
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: CarlRabeler
-ms.author: carlrab
+author: WenJason
+ms.author: v-jay
 ms.reviewer: carlrab
-manager: craigg
-ms.date: 01/25/2019
+manager: digimobile
+origin.date: 01/25/2019
+ms.date: 03/04/2019
 ms.openlocfilehash: 8d0d81d9c140c15f2e60d3f6e3033a8b0b629228
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100888"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702463"
 ---
-# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 载入 Azure SQL 数据库（平面文件）
+# <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>将数据从 CSV 加载到 Azure SQL 数据库（平面文件）
 
 可以使用 bcp 命令行实用程序将数据从 CSV 文件导入 Azure SQL 数据库。
 
 ## <a name="before-you-begin"></a>开始之前
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 若要完成本文中的步骤，你需要：
 
@@ -60,7 +61,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 ## <a name="2-create-a-source-data-file"></a>2.创建源数据文件
 
-打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录，路径为 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
+打开记事本，将以下几行数据复制到新文本文件，然后将此文件保存到本地临时目录 C:\Temp\DimDate2.txt。 此数据采用 ASCII 格式。
 
 ```
 20150301,1,3
@@ -107,9 +108,9 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20150401 |2 |4 |
 | 20150501 |2 |4 |
 | 20150601 |2 |4 |
-| 20150701 |3 |1 |
-| 20150801 |3 |1 |
-| 20150801 |3 |1 |
+| 20150701 |3 |第 |
+| 20150801 |3 |第 |
+| 20150801 |3 |第 |
 | 20151001 |4 |2 |
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
@@ -124,3 +125,4 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
+<!--Update_Description: update metadata-->

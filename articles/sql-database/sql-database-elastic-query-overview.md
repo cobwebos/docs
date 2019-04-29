@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 01/19/2019
 ms.openlocfilehash: fad9437a631254d6c60d6d97267ae111d195040f
-ms.sourcegitcommit: ba035bfe9fab85dd1e6134a98af1ad7cf6891033
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/01/2019
-ms.locfileid: "55567445"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585644"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL 数据库弹性查询概述（预览版）
 
@@ -31,7 +31,7 @@ ms.locfileid: "55567445"
 
 ### <a name="available-on-standard-tier"></a>在标准层上可用
 
-“标准”和“高级”服务层均支持弹性查询。 有关较低服务层的性能限制，请参阅下面有关预览版限制的部分。
+“标准”和“高级”服务层级均支持弹性查询。 有关较低服务层级的性能限制，请参阅下面有关预览版限制的部分。
 
 ### <a name="push-parameters-to-remote-databases"></a>将参数推送到远程数据库
 
@@ -104,7 +104,7 @@ ms.locfileid: "55567445"
 
 > [!NOTE]
 > 弹性查询数据库（头节点）可以是单独的数据库，也可以是承载分片映射的相同数据库。
-> 无论选择何种配置，请确保该数据库的服务层和计算大小足够高，以便处理预期的登录/查询请求数。
+> 无论选择何种配置，请确保该数据库的服务层级和计算大小足够高，以便处理预期的登录/查询请求数。
 
 通过以下步骤，为水平分区方案（需要访问通常位于多个远程 SQL 数据库上的一组表）配置弹性数据库查询：
 
@@ -136,7 +136,7 @@ ms.locfileid: "55567445"
 
 ## <a name="preview-limitations"></a>预览版限制
 
-* 在“标准”服务层上运行第一个弹性查询可能需要长达几分钟时间。 此时间是加载弹性查询功能所必需的；使用更高的服务层和计算大小可提高加载性能。
+* 在“标准”服务层级上运行第一个弹性查询可能需要长达几分钟时间。 此时间是加载弹性查询功能所必需的；使用更高的服务层级和计算大小可提高加载性能。
 * 尚不支持从 SSMS 或 SSDT 对外部数据源或外部表进行脚本编写。
 * SQL 数据库的导入/导出尚不支持外部数据源和外部表。 如果需要使用导入/导出，请在导出之前删除这些对象，并在导入后重新创建它们。
 * 弹性查询当前仅支持对外部表进行只读访问。 但是，可以对在其中定义了外部表的数据库使用完整的 T-SQL 功能。 这可能对以下操作很有用：例如，使用（例如）SELECT <column_list> INTO <local_table>持久保存临时结果，或在引用外部表的弹性查询数据库中定义存储过程。

@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: tomfitz
 ms.openlocfilehash: 6554c05f40f580a6d7ae086e1d09834298f86621
-ms.sourcegitcommit: 30d23a9d270e10bb87b6bfc13e789b9de300dc6b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/08/2019
-ms.locfileid: "54109472"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60550761"
 ---
 # <a name="authenticate-requests-across-tenants"></a>跨租户对请求进行身份验证
 
@@ -26,7 +26,7 @@ ms.locfileid: "54109472"
 
 请求具有以下身份验证标头值：
 
-| 标头名称 | 说明 | 示例值 |
+| 标头名称 | 描述 | 示例值 |
 | ----------- | ----------- | ------------ |
 | 授权 | 主令牌 | Bearer &lt;primary-token&gt; |
 | x-ms-authorization-auxiliary | 辅助令牌 | Bearer &lt;auxiliary-token1&gt;; EncryptedBearer &lt;auxiliary-token2&gt;; Bearer &lt;auxiliary-token3&gt; |

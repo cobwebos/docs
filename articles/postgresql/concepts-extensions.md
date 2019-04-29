@@ -7,11 +7,11 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/18/2019
 ms.openlocfilehash: 7d052ee2d3d3bdf6cca99dd6a91b88176983113f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57888070"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60559717"
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 中的 PostgreSQL 扩展
 PostgreSQL 支持使用扩展来扩展数据的功能。 扩展允许在单个包中将多个相关 SQL 对象捆绑在一起，可以使用单个命令在数据库中加载或删除该包。 在数据库中加载之后，扩展可以如同内置功能一样运行。 有关 PostgreSQL 扩展的详细信息，请参阅  [Packaging Related Objects into an Extension](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)（将相关对象打包到扩展中）。
@@ -99,12 +99,12 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 > | [pgrouting](https://pgrouting.org/) | 扩展 PostGIS / PostgreSQL 地理空间数据库，以提供地理空间路由功能。 |
 
 
-### <a name="time-series-extensions"></a>时间序列扩展
+### <a name="time-series-extensions"></a>时序扩展
 
 > [!div class="mx-tableFixed"]
 > | **扩展** | **说明** |
 > |---|---|
-> | [TimescaleDB](https://docs.timescale.com/latest) | 支持自动分区更快地引入和查询时序 SQL 数据库。 提供了面向时间的分析函数，优化，并且可以 PostgreSQL 扩展用于时间序列工作负荷。 由开发 TimescaleDB 的注册的商标和[时间刻度，inc.](https://www.timescale.com/)（请参阅下文了解此扩展的说明）。 |
+> | [TimescaleDB](https://docs.timescale.com/latest) | 一个时序 SQL 数据库，支持通过自动分区来加快引入和查询速度。 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 PostgreSQL。 TimescaleDB 是由 [Timescale, Inc.](https://www.timescale.com/) 开发的的，是其注册商标。（请参阅下文了解此扩展的说明）。 |
 
 
 ## <a name="pgstatstatements"></a>pg_stat_statements
@@ -116,45 +116,45 @@ Azure Database for PostgreSQL 目前支持部分关键扩展（已在下面列�
 ## <a name="dblink-and-postgresfdw"></a>dblink 和 postgres_fdw
 dblink 和 postgres_fdw 允许从一台 PostgreSQL 服务器连接到另一台服务器，或者连接到同一服务器中的另一个数据库。 接收服务器需要允许来自发送服务器的连接通过其防火墙。 当使用这些扩展在 Azure Database for PostgreSQL 服务器之间进行连接时，可以通过将“允许访问 Azure 服务”设置为“开启”来实现此目的。 如果希望使用扩展来环回到同一服务器，也需要进行此设置。 可以在 Postgres 服务器的 Azure 门户页面中的“连接安全性”下找到“允许访问 Azure 服务”设置。 开启“允许访问 Azure 服务”会将所有 Azure IP 加入允许列表。
 
-目前，从 Azure Database for PostgreSQL 的出站连接不支持，但与其他 Azure Database for PostgreSQL 服务器的连接除外。
+目前不支持从 Azure Database for PostgreSQL 进行出站连接，连接到其他 Azure Database for PostgreSQL 服务器的情况除外。
 
 ## <a name="timescaledb"></a>TimescaleDB
-TimescaleDB 是作为扩展打包为 PostgreSQL 的时间序列数据库。 TimescaleDB 提供了面向时间的分析函数，优化，并且可以 Postgres 扩展用于时间序列工作负荷。
+TimescaleDB 是一个时序数据库，已作为 PostgreSQL 的扩展打包。 TimescaleDB 提供以时间为导向的分析功能、优化，并根据时序工作负荷来缩放 Postgres。
 
-[了解有关 TimescaleDB](https://docs.timescale.com/latest)的注册的商标[时间刻度，inc.](https://www.timescale.com/)
+[详细了解 TimescaleDB](https://docs.timescale.com/latest)，[Timescale, Inc.](https://www.timescale.com/) 的注册商标。
 
 ### <a name="installing-timescaledb"></a>安装 TimescaleDB
-若要安装 TimescaleDB，需要将其包含在服务器的共享预加载库。 Postgres 的共享预加载库更改需要**重新启动服务器**才会生效。
+若要安装 TimescaleDB，需将其包括在服务器的共享预加载库中。 对 Postgres 的共享预加载库进行的更改需**重启服务器**才能生效。
 
 > [!NOTE]
-> 可以在 TimescaleDB Azure 数据库上启用 PostgreSQL 版本 9.6 和 10
+> 可以在 Azure Database for PostgreSQL 版本 9.6 和 10 上启用 TimescaleDB
 
-使用[Azure 门户](https://portal.azure.com/):
+使用 [Azure 门户](https://portal.azure.com/)：
 
 1. 选择你的 Azure Database for PostgreSQL 服务器。
 
-2. 在侧栏上选择**服务器参数**。
+2. 在侧栏中选择“服务器参数”。
 
 3. 搜索 `shared_preload_libraries` 参数。
 
-4. 复制并粘贴以下内容作为的值 `shared_preload_libraries`
+4. 复制并粘贴以下内容作为 `shared_preload_libraries` 的值
    ```
    timescaledb
    ```
 
-5. 选择**保存**保留所做的更改。 保存更改后收到通知。 
+5. 选择“保存”，保留所做的更改。 保存更改后会获得通知。 
 
-6. 该通知后**重新启动**服务器以应用这些更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
+6. 获得通知后，请**重启**服务器以应用这些更改。 若要了解如何重启服务器，请参阅[重启 Azure Database for PostgreSQL 服务器](howto-restart-server-portal.md)。
 
 
-现在，您可以启用 TimescaleDB Postgres 数据库中。 连接到数据库，并发出以下命令：
+现在可以在 Postgres 数据库中启用 TimescaleDB。 连接到数据库并发出以下命令：
 ```sql
 CREATE EXTENSION IF NOT EXISTS timescaledb CASCADE;
 ```
 > [!TIP]
-> 如果看到错误，请确认你[重新启动你的服务器](howto-restart-server-portal.md)保存 shared_preload_libraries 后。 
+> 如果看到错误，请确认是否已在保存 shared_preload_libraries 后[重启服务器](howto-restart-server-portal.md)。 
 
-现在可以创建 TimescaleDB hypertable[从头](https://docs.timescale.com/getting-started/creating-hypertables)或将其迁移[PostgreSQL 中的现有时间序列数据](https://docs.timescale.com/getting-started/migrating-data)。
+现在可以[从头开始](https://docs.timescale.com/getting-started/creating-hypertables)创建 TimescaleDB hypertable，也可以迁移 [PostgreSQL 中的现有时序数据](https://docs.timescale.com/getting-started/migrating-data)。
 
 
 ## <a name="next-steps"></a>后续步骤

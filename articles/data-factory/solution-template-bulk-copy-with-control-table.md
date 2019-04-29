@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/14/2018
 ms.openlocfilehash: c4224693642e8c9f76deedc0c8ad8586e122cc23
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57530563"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60635303"
 ---
 # <a name="bulk-copy-from-a-database-with-a-control-table"></a>从具有控制表的数据库大容量复制
 

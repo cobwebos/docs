@@ -17,11 +17,11 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.openlocfilehash: d86538fca907f7181bf58ff236bba8de186641fb
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003449"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60593372"
 ---
 # <a name="tutorial-configure-always-on-availability-group-in-azure-vm-manually"></a>教程：在 Azure VM 中手动配置 Always On 可用性组
 
@@ -445,7 +445,7 @@ WSFC IP 地址也必须在负载均衡器上。
 
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | 名称 | 文本 | WSFCEndPointProbe |
+   | 名称 | Text | WSFCEndPointProbe |
    | 协议 | 选择 TCP | TCP |
    | 端口 | 任何未使用的端口 | 58888 |
    | 间隔  | 探测尝试之间的时间长短（秒） |5 |
@@ -459,7 +459,7 @@ WSFC IP 地址也必须在负载均衡器上。
 
    | 设置 | 说明 | 示例
    | --- | --- |---
-   | 名称 | 文本 | WSFCEndPoint |
+   | 名称 | Text | WSFCEndPoint |
    | “前端 IP 地址” | 选择一个地址 |使用配置 WSFC IP 地址时所创建的地址。 这不同于侦听器 IP 地址 |
    | 协议 | 选择 TCP |TCP |
    | 端口 | 使用群集 IP 地址的端口。 这是可用的端口，不用于侦听器探测端口。 | 58888 |

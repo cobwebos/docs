@@ -9,11 +9,11 @@ ms.date: 01/18/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 347ae6dbdbab866b6d82d64bec4e668689078429
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791233"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729556"
 ---
 # <a name="azure-storage-redundancy"></a>Azure 存储冗余
 
@@ -59,9 +59,9 @@ ms.locfileid: "57791233"
 ### <a name="are-there-any-costs-to-changing-my-accounts-replication-strategy"></a>更改帐户的复制策略是否产生任何费用？
 这取决于转换路径。 从最便宜到最昂贵的冗余产品/服务依次为 LRS、ZRS、GRS 和 RA-GRS。 例如，从 LRS 转移到其他任何存储会产生额外的费用，因为这是转移到更高级的冗余级别。 转移到 GRS 或 RA-GRS 会产生出口带宽费用，因为（主要区域中的）数据将复制到远程次要区域。 这是在初始设置期间收取的一次性费用。 复制数据后，无需进一步支付转换费用。 只有在复制任何新数据，或者复制现有数据的更新时才要付费。 有关带宽费用的详细信息，请参阅 [Azure 存储定价页面](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
-如果将你的存储帐户从 GRS 转换为 LRS 时，无需额外付费，但从次要位置删除你已复制的数据。
+如果将存储帐户从 GRS 转换为 LRS，则不会产生额外的费用，但从次要位置复制的数据将被删除。
 
-如果将转换从 RA-GRS 到 GRS 或 LRS 存储帐户，该帐户为 RA-GRS 计费的超出已转换的日期延长 30 天中。
+如果将存储帐户从 RA-GRS 转换为 GRS 或 LRS，则会在完成转换 30 天后以 RA-GRS 方式对该帐户计费。
 
 ## <a name="see-also"></a>另请参阅
 

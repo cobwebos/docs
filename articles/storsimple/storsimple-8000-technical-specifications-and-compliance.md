@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
-ms.openlocfilehash: 855ea6c34082b859bb5b5b6e69b3e3f2fa54eb4a
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
-ms.translationtype: HT
+ms.openlocfilehash: b36d721896bd7b4f95d831eded500a96969937c5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39056457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60631883"
 ---
 # <a name="technical-specifications-and-compliance-for-the-storsimple-device"></a>StorSimple 设备的技术规格和符合性
 
@@ -37,7 +37,7 @@ EBOD 机箱使用 580 W PCM，而主机箱使用 764 W PCM。 下表列出了与
 | --- | --- | --- |
 | 最大输出功率 |580 W |764 |
 | 频率 |50/60 Hz |50/60 Hz |
-| 电压范围选择 |自动范围：90 – 264 V 交流，47/63 Hz |自动范围：90 – 264 V 交流，47/63 Hz |
+| 电压范围选择 |自动范围：90 – 264 V 交流，47/63 Hz |自动范围：90-264 V 交流，47/63 Hz |
 | 最大浪涌电流 |20 A |20 A |
 | 功率因数校正 |>95% 标称输入电压 |>95% 标称输入电压 |
 | 谐波 |符合 EN61000-3-2 |符合 EN61000-3-2 |
@@ -149,8 +149,8 @@ Microsoft Azure StorSimple 设备符合以下国际标准：
 
 Microsoft Azure StorSimple 设备满足以下安全评级要求：
 
-* 系统产品类型审批：UL、cUL、CE
-* 安全符合性：UL 60950、IEC 60950、EN 60950
+* 系统产品类型审批：UL、 cUL、 CE
+* 安全符合性：UL 60950、IEC IEC 60950 EN 60950
 
 ## <a name="emc-compliance"></a>EMC 符合性
 
@@ -160,8 +160,8 @@ Microsoft Azure StorSimple 设备满足以下 EMC 评级要求。
 
 该设备符合 EMC 标准的传导和辐射发射水平。
 
-* 传导发射限值：CFR 47 第 15B 部分 A 类 EN55022 A 类 CISPR A类
-* 辐射发射限值：CFR 47 第 15B 部分 A 类 EN55022 A 类 CISPR A类
+* 传导发射限制级别：CFR 47 第 15B 部分 A 类 en55022 a 类 cispr A 类
+* 辐射发射限制级别：CFR 47 第 15B 部分 A 类 en55022 a 类 cispr A 类
 
 ### <a name="harmonics-and-flicker"></a>谐波和闪烁
 

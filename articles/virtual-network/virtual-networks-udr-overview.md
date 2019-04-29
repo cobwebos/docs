@@ -13,11 +13,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop;kumud
 ms.openlocfilehash: ad35d440904c7b65e27b4ead75cec00daa20f8ff
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58878496"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596295"
 ---
 # <a name="virtual-network-traffic-routing"></a>虚拟网络流量路由
 
@@ -59,8 +59,8 @@ Azure 会针对不同的 Azure 功能添加其他默认的系统路由，但前�
 
 |源                 |地址前缀                       |下一跃点类型|向其添加路由的虚拟网络中的子网|
 |-----                  |----                                   |---------                    |--------|
-|默认                |对虚拟网络唯一，例如：10.1.0.0/16|VNet 对等互连                 |All|
-|虚拟网络网关|从本地通过 BGP 播发的前缀，或者在本地网关中配置的前缀     |虚拟网络网关      |All|
+|默认                |对虚拟网络唯一，例如：10.1.0.0/16|VNet 对等互连                 |全部|
+|虚拟网络网关|从本地通过 BGP 播发的前缀，或者在本地网关中配置的前缀     |虚拟网络网关      |全部|
 |默认                |多个                               |虚拟网络服务终结点|仅为其启用服务终结点的子网。|
 
 - **虚拟网络 (VNet) 对等互连**：在两个虚拟网络之间创建虚拟网络对等互连时，会为每个虚拟网络（已为其创建对等互连）的地址空间中的每个地址范围添加一个路由。 详细了解[虚拟网络对等互连](virtual-network-peering-overview.md)。  

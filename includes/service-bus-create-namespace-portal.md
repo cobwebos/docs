@@ -9,11 +9,11 @@ ms.date: 02/20/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: a95f5ee5105c45ba9e5b1705e83d60bf24b1dc12
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57457809"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60333219"
 ---
 ## <a name="create-a-namespace-in-the-azure-portal"></a>在 Azure 门户中创建命名空间
 若要开始在 Azure 中使用服务总线消息实体，必须先使用在 Azure 中唯一的名称创建一个命名空间。 命名空间提供了用于对应用程序中的 Service Bus 资源进行寻址的范围容器。
@@ -25,7 +25,7 @@ ms.locfileid: "57457809"
 
     ![“创建资源”->“集成”->“服务总线”](./media/service-bus-create-namespace-portal/create-resource-service-bus-menu.png)
 3. 在“创建命名空间”对话框中执行以下步骤： 
-    1. 输入**命名空间的名称**。 系统会立即检查该名称是否可用。 有关命名的命名空间的规则的列表，请参阅[创建 Namespace REST API](/rest/api/servicebus/create-namespace)。
+    1. 输入**命名空间的名称**。 系统会立即检查该名称是否可用。 若需用于对命名空间进行命名的规则的列表，请参阅[创建命名空间 REST API](/rest/api/servicebus/create-namespace)。
     2. 选择命名空间的定价层（“基本”、“标准”或“高级”）。 若要使用[主题和订阅](../articles/service-bus-messaging/service-bus-queues-topics-subscriptions.md#topics-and-subscriptions)，请选择“标准”或“高级”。 基本定价层中不支持主题/订阅。
     3. 如果选择了“高级”定价层，请执行以下步骤： 
         1. 指定**消息传送单元**的数目。 高级层在 CPU 和内存级别提供资源隔离，使每个工作负荷在隔离的环境中运行。 此资源容器称为消息传送单元。 高级命名空间至少具有一个消息传送单元。 可为每个服务总线高级命名空间选择 1、2 或 4 个消息传送单元。 有关详细信息，请参阅[服务总线高级消息传送](../articles/service-bus-messaging/service-bus-premium-messaging.md)。

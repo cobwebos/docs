@@ -15,16 +15,16 @@ ms.workload: na
 ms.date: 03/20/2019
 ms.author: rkarlin
 ms.openlocfilehash: a0a16fbda662ee1d3718dbafc4231de67aab277e
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58400674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614806"
 ---
 # <a name="tutorial-detect-threats-with-azure-sentinel-preview"></a>教程：检测到威胁 Azure Sentinel 预览版
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
 
 检查完[连接的数据源](quickstart-onboard.md)要向 Azure Sentinel，一些可疑发生时收到通知。 若要使您能够执行此操作，Azure Sentinel 的，您可以创建高级可以分配的情况下生成的警报的规则和使用进行深入地调查异常和环境中的威胁。 

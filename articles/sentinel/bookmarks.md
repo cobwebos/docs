@@ -16,16 +16,16 @@ ms.workload: na
 ms.date: 2/28/2019
 ms.author: rkarlin
 ms.openlocfilehash: 9a7ceeab6d2ad761752f778038692256bd87624b
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57242830"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596914"
 ---
 # <a name="keep-track-of-data-during-hunting"></a>在搜索期间跟踪的数据
 
 > [!IMPORTANT]
-> Azure Sentinel 目前处于公共预览状态。
+> Azure Sentinel 当前为公共预览版。
 > 此预览版在提供时没有附带服务级别协议，不建议将其用于生产工作负荷。 某些功能可能不受支持或者受限。 有关详细信息，请参阅 [Microsoft Azure 预览版补充使用条款](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)。
  
 威胁搜索通常需要查看巨额的日志数据查找的恶意行为的证据。 在此过程中，调查人员找到他们想要记住，巩固概念，并作为验证潜在的假设和了解安全威胁的完整故事的一部分进行分析的事件。
@@ -95,7 +95,7 @@ ms.locfileid: "57242830"
 
 ## <a name="next-steps"></a>后续步骤
 
-在本文中，您学习了如何运行在 Azure Sentinel 中使用书签搜索调查。 若要了解有关 Azure Sentinel 的详细信息，请参阅以下文章：
+在本文中，您学习了如何运行在 Azure Sentinel 中使用书签搜索调查。 要详细了解 Azure Sentinel，请参阅以下文章：
 
 
 - [主动寻找威胁](hunting.md)

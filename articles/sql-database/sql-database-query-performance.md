@@ -13,11 +13,11 @@ ms.reviewer: jrasnik, carlrab
 manager: craigg
 ms.date: 01/03/2019
 ms.openlocfilehash: 5d892005881436dec89c0d0d010f7f02e7bdebf9
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54039191"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60585194"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>适用于 Azure SQL 数据库的 Query Performance Insight
 
@@ -33,7 +33,7 @@ ms.locfileid: "54039191"
 > [!TIP]
 > 如需对 Azure SQL 数据库进行基本性能监视，我们建议使用 Query Performance Insight。 请注意本文中发布的产品限制。 如需对数据库性能进行大规模高级监视，我们建议使用 [Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)。 它具有可实现自动化性能故障排除的内置智能。 若要自动调整一些最常见的数据库性能问题，我们建议使用[自动调整](sql-database-automatic-tuning.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 查询性能见解要求已在数据库上启用 [Query Store](https://msdn.microsoft.com/library/dn817826.aspx)。 默认情况下，自动为所有 Azure SQL 数据库启用。 如果查询存储未运行，Azure 门户将提示启用它。
 

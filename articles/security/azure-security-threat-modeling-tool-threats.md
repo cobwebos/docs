@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: fd7c5fd929163dc7fcd22fbb045dee0fe3070394
-ms.sourcegitcommit: a408b0e5551893e485fa78cd7aa91956197b5018
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54359028"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60611559"
 ---
 # <a name="microsoft-threat-modeling-tool-threats"></a>Microsoft 威胁建模工具威胁
 
@@ -37,7 +37,7 @@ ms.locfileid: "54359028"
 
 为了更好地阐明此类突出问题，Microsoft 使用了 STRIDE 模型，它可以将不同类型的威胁分类，简化整体安全交流。
 
-| 类别 | Description |
+| 类别 | 描述 |
 | -------- | ----------- |
 | **欺骗** | 先进行非法访问，并使用另一用户的身份验证信息，例如用户名和密码 |
 | **篡改** | 恶意修改数据。 示例包括未经授权更改持久保存的数据（例如保存在数据库中的数据），更改通过开放网络（例如 Internet）在两台计算机之间传输的数据 |

@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: 6339b49d0bc9c635457f305dad7b1a075327a1dd
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60609860"
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>使用 PowerShell 创建运行本机模式报表服务器的 Azure VM
 > [!IMPORTANT] 
@@ -124,7 +124,7 @@ ms.locfileid: "58650268"
       
        例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
       
-       ![登录名包含 vm 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+       ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
    2. 运行 mmc.exe。 有关更多信息，请参阅[如何：使用 MMC 管理单元查看证书](https://msdn.microsoft.com/library/ms788967.aspx)。
    3. 在控制台应用程序“文件”菜单中，添加“证书”管理单元，在系统提示时选择“计算机帐户”，并单击“下一步”。
    4. 选择要管理的“本地计算机”，并单击“完成”。
@@ -160,7 +160,7 @@ ms.locfileid: "58650268"
    
     例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
    
-    ![登录名包含 vm 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便将脚本粘贴到 ISE，修改脚本，并运行该脚本。
 3. 在 Windows PowerShell ISE 中，单击“视图”菜单，并单击“显示脚本窗格”。
 4. 复制以下脚本，并将该脚本粘贴到 Windows PowerShell ISE 脚本窗格。
@@ -294,7 +294,7 @@ ms.locfileid: "58650268"
    
     例如，在下图中，VM 名称是 **ssrsnativecloud**，用户名是 **testuser**。
    
-    ![登录名包含 vm 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
+    ![登录名包含 VM 名称](./media/virtual-machines-windows-classic-ps-sql-report/IC764111.png)
 2. 在 VM 上，使用管理权限打开 **Windows PowerShell ISE**。 默认情况下，将 PowerShell ISE 安装在 Windows server 2012 上。 建议使用 ISE 而不是标准 Windows PowerShell 窗口，以便将脚本粘贴到 ISE，修改脚本，并运行该脚本。
 3. 若要允许运行脚本，运行以下 Windows PowerShell 命令：
    

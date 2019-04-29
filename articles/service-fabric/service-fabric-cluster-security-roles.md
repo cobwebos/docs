@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 39b77813e3494e809b92738924544e196d89a166
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
-ms.translationtype: HT
+ms.openlocfilehash: ed000dc4be1ae45382d688d4a596ec745c69d0bb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34204645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60711147"
 ---
 # <a name="role-based-access-control-for-service-fabric-clients"></a>适用于 Service Fabric 客户端的基于角色的访问控制
 Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两种不同的访问控制类型：管理员和用户。 访问控制可让群集管理员针对不同的用户组限制特定群集操作的访问权限，使群集更加安全。  
@@ -52,9 +52,9 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **RecoverSystemPartitions**：恢复系统服务分区                             
 
 ### <a name="cluster-operations"></a>群集操作
-* **ProvisionFabric**：预配 MSI 和/或群集清单                             
+* **ProvisionFabric**:MSI 和/或群集清单预配                             
 * **UpgradeFabric**：启动群集升级                             
-* **UnprovisionFabric**：取消预配 MSI 和/或群集清单                         
+* **UnprovisionFabric**:MSI 和/或群集清单取消预配                         
 * **MoveNextFabricUpgradeDomain**：使用显式更新域恢复群集升级                             
 * **ReportFabricUpgradeHealth**：恢复群集升级并提供当前升级进度                             
 * **StartInfrastructureTask**：启动基础结构任务                             
@@ -71,7 +71,7 @@ Azure Service Fabric 针对连接到 Service Fabric 群集的客户端支持两�
 * **FileDownload**：启动映像存储客户端文件下载（群集外部）                             
 * **InternalList**：映像存储客户端文件列表操作（内部）                             
 * **Delete**：映像存储客户端删除操作                              
-* Upload：映像存储客户端上传操作                             
+* **Upload**：映像存储客户端上传操作                             
 * **NodeControl**：启动、停止和重新启动节点                             
 * **MoveReplicaControl**：将副本从一个节点移到另一个节点                             
 

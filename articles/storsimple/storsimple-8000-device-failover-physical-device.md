@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/03/2017
 ms.author: alkohli
-ms.openlocfilehash: f3ac9545a341fc24ca12c9f2547805d6956cd98a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: 5fcf95a1a3033a5150945dbd841f12d50ebb023b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23108265"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60577146"
 ---
 # <a name="fail-over-to-a-storsimple-8000-series-physical-device"></a>故障转移到 StorSimple 8000 系列物理设备
 
@@ -32,7 +32,7 @@ ms.locfileid: "23108265"
 若要将一个 StorSimple 物理设备故障转移到 StorSimple 云设备，请参阅[故障转移到 StorSimple 云设备](storsimple-8000-device-failover-cloud-appliance.md)。 若要将某个物理设备故障转移到其自身，请参阅[故障转移到同一 StorSimple 物理设备](storsimple-8000-device-failover-same-device.md)。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 确保已查看有关设备故障转移的注意事项。 有关详细信息，请参阅[有关设备故障转移的一般注意事项](storsimple-8000-device-failover-disaster-recovery.md)。
 
@@ -61,7 +61,7 @@ ms.locfileid: "23108265"
 
         ![选择目标](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev6.png)
 
-   3. 最后，查看“摘要”下面的所有故障转移设置。 查看设置后，请选中指示所选卷容器中的卷已脱机的复选框。 单击 **“确定”**。
+   3. 最后，查看“摘要”下面的所有故障转移设置。 查看设置后，请选中指示所选卷容器中的卷已脱机的复选框。 单击“确定”。
 
        ![查看故障转移设置](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev8.png)
   

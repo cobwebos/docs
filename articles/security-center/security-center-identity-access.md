@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: rkarlin
-ms.openlocfilehash: 6f8fadc42d1c725002f2552a3fc1fc98e8564437
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 7cb8d494d32f2a9c192418bfab2d5ca9b679c5fe
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098766"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60704858"
 ---
 # <a name="monitor-identity-and-access-in-azure-security-center-preview"></a>在 Azure 安全中心监视标识和访问（预览版）
 本文介绍如何使用 Azure 安全中心监视用户的标识和访问活动。
@@ -121,7 +121,7 @@ ms.locfileid: "58098766"
 |订阅|5|最多对订阅指定 3 个所有者|指定少于 3 个订阅所有者，以减少已遭入侵的所有者做出违规行为的可能性。|
 |密钥保管库|5|在 Key Vault 中启用诊断日志|启用日志并将其保留长达一年。 这样便可以在发生安全事件或网络遭泄露时，重新创建活动线索用于调查目的。 |
 |订阅|15|从订阅中删除具有读取权限的外部帐户|从订阅中删除具有读取特权的外部帐户，以防止发生未受监视的访问。|
-|订阅|第|提供安全联系人详细信息|为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现资源遭到盗用，则会采用此信息与你联系|
+|订阅|1|提供安全联系人详细信息|为每个订阅提供安全联系人详细信息。 联系人详细信息为电子邮件地址和电话号码。 如果安全团队发现资源遭到盗用，则会采用此信息与你联系|
 
 > ![NOTE] 如果创建的条件访问策略要求执行 MFA，但同时设置了排除项，则安全中心 MFA 建议评估会将该策略视为不合规，因为该策略允许某些用户在不执行 MFA 的情况下登录到 Azure。
 >

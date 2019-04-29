@@ -2,18 +2,18 @@
 title: 使用 AzCopy on Linux 将数据复制或移到 Azure 存储 | Microsoft Docs
 description: 使用 AzCopy on Linux 实用工具将数据移动或复制到 Blob 和文件内容或从 Blob 和文件内容移动或复制数据。 从本地文件将数据复制到 Azure 存储，或者在存储帐户中或存储帐户之间复制数据。 轻松地将数据迁移到 Azure 存储。
 services: storage
-author: seguler
+author: tamram
 ms.service: storage
 ms.topic: article
 ms.date: 04/26/2018
-ms.author: seguler
+ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 0f87645537576f49ee04b823341acf8853798f88
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58882219"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730049"
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>使用 AzCopy on Linux 传输数据
 

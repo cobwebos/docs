@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: kasinh
 ms.openlocfilehash: 87bc7ed3bb59266484858f534080fa87a7230981
-ms.sourcegitcommit: a7331d0cc53805a7d3170c4368862cad0d4f3144
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/30/2019
-ms.locfileid: "55293955"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641850"
 ---
 # <a name="update-the-azure-backup-central-reporting-content-pack"></a>更新 Azure 备份中心报表内容包 
 
@@ -25,14 +25,14 @@ ms.locfileid: "55293955"
 如果未对内容包副本进行任何更改，则其它将自动更新。 内容包更改时，你将在 Power BI 中收到通知和一封电子邮件通知。 可选择在方便时获取更新的内容包。 
 
 ### <a name="postpone-the-update"></a>推迟更新
-最佳做法是将内容包导入到[自定义工作区](https://youtu.be/26zyOtyHPJM?t=1m57s)。 现在可以编辑此报表。
-如上所述，如果内容包更改，则将在 Power BI 中看到通知。 可以选择稍后获取内容包。 
+最佳做法是将内容包导入到[自定义工作区](https://youtu.be/26zyOtyHPJM?t=1m57s)。 现在可以编辑报告。
+如前所述，如果内容包发生更改，你会在 Power BI 中看到通知。 可以选择稍后获取内容包。 
 
 ## <a name="coming-soon"></a>即将支持
    
 更新 Azure 备份内容包以支持更多的工作负载。 工作负载包括用于 IaaS VM 备份的 Azure SQL 数据库和 System Center Data Protection Manager。 此支持将添加到 Azure 备份和 Azure VM 备份的当前支持中。 这种支持意味着你可以在一个中心位置查看和分析所有备份数据。 [也可自定义报表](https://youtu.be/26zyOtyHPJM)以满足组织的需求。
 
-正在对 Azure 备份内容包随附的预配置报表进行更改。 这些更改可使报表在各个工作负载中更有意义。 可在下方抢先了解即将推出的一组报表。
+正在对 Azure 备份内容包随附的预配置报表进行更改。 这些更改可使报表在各个工作负载中更有意义。 可在下方抢先了解即将发布的一组报告。
 
 ### <a name="summary"></a>摘要
    

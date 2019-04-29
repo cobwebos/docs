@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: cithomas
 ms.openlocfilehash: 8243523887ec9861459b2d196126237cf89bad97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59288361"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691336"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>用于 ASP.NET Core 应用程序的 application Insights
 
@@ -319,7 +319,7 @@ public class HomeController : Controller
 
 *6.在 Linux 中运行我的应用程序。所有功能在 Linux 中也都支持？*
 
-* 是的。 对 SDK 的功能支持是相同的所有平台，但存在以下例外：
+* 可以。 对 SDK 的功能支持是相同的所有平台，但存在以下例外：
     1. 在非 Windows 中尚不支持性能计数器。 添加 Linux 支持时，将更新本文档。
     1. 即使`ServerTelemetryChannel`启用默认情况下，如果应用程序运行在非 windows 通道不会自动创建本地存储文件夹以暂时保留遥测数据，如果存在网络问题。 此限制会导致遥测数据会丢失，如果存在临时网络或服务器问题。 此问题的解决方法是为用户配置的通道的本地文件夹，如下所示。
 

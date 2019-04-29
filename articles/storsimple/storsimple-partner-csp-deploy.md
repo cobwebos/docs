@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 0dac86a696599a391cb243ad11e16931e00b8921
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51238924"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629848"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>为云解决方案提供商计划部署 StorSimple Virtual Array
 
@@ -29,7 +29,7 @@ ms.locfileid: "51238924"
 
 本文介绍 CSP 合作伙伴如何向现有客户添加客户或新订阅，并创建服务，以在 CSP 中部署 StorSimple Virtual Array。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 在开始之前，请确保：
 
@@ -44,7 +44,7 @@ ms.locfileid: "51238924"
 
      ![合作伙伴中心中的仪表板](./media/storsimple-partner-csp-deploy/image1.png)
                               
-2. 在左窗格中，单击“客户”。 在右窗格中，单击“添加客户”。 输入客户的详细信息。 单击“下一步：订阅”，创建客户订阅。
+2. 在左窗格中，单击“客户”。 在右窗格中，单击“添加客户”。 输入客户的详细信息。 单击“下一步:**订阅**创建客户订阅。
 
     ![添加客户](./media/storsimple-partner-csp-deploy/image2.png)
 
@@ -103,5 +103,5 @@ ms.locfileid: "51238924"
 
 ## <a name="next-steps"></a>后续步骤
 
-- 如果对 CSP 中的 StorSimple 有更多问题，请转到 [CSP 中的 StorSimple：常见问题解答](storsimple-partner-csp-faq.md)。
+- 如果必须在 CSP 的 storsimple 的更多问题，请转到[CSP 中的 StorSimple:常见问题](storsimple-partner-csp-faq.md)。
 - 如果已准备好部署 StorSimple，请转到[部署 CSP 中的 StorSimple](storsimple-partner-csp-deploy.md)。

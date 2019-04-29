@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: maghan
 ms.openlocfilehash: b554dc1fa33519d87aa0c9c5ba9130b47cbea142
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53971744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60580062"
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>在 Azure 中托管的网站中使用 ReportViewer
 > [!IMPORTANT]
@@ -37,7 +37,7 @@ ms.locfileid: "53971744"
 * **配置**身份验证和授权
 * 将 ASP.NET Web 应用程序**发布**到 Azure
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 查看 [Azure 虚拟机中的 SQL Server Business Intelligence](../classic/ps-sql-bi.md) 中的“常规建议和最佳实践”部分。
 
 > [!NOTE]

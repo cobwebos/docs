@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 04/07/2019
 ms.author: rkarlin
 ms.openlocfilehash: 153b6cb44cbcf5ecca9a4941c6bef7a8721dc56c
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59789282"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60597197"
 ---
 # <a name="connect-data-from-azure-advanced-threat-protection-atp"></a>将数据连接从 Azure 高级威胁防护 (ATP)
 
