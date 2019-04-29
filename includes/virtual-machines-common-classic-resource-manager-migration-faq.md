@@ -9,17 +9,17 @@ ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
 ms.openlocfilehash: 74496cd3d4cd01be326baae870b075eb923983af
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443370"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60581101"
 ---
 # <a name="frequently-asked-questions-about-classic-to-azure-resource-manager-migration"></a>有关从经典部署模型迁移到 Azure 资源管理器部署模型的常见问题
 
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>此迁移计划是否影响 Azure 虚拟机上运行的任何现有服务或应用程序？ 
 
-不是。 VM（经典）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。
+不。 VM（经典）是公开上市的完全受支持的服务。 可以继续使用这些资源拓展你在 Microsoft Azure 上的足迹。
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>如果我近期不打算迁移，我的 VM 会发生什么情况？ 
 
@@ -43,7 +43,7 @@ ms.locfileid: "56443370"
 
 ## <a name="do-i-have-to-buy-another-express-route-circuit-if-i-have-to-use-iaas-under-resource-manager"></a>如果我必须使用 Resource Manager 下的 IaaS，是否必须购买其他 ExpressRoute 线路？ 
 
-不是。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
+不会。 我们近期实现了[将 ExpressRoute 线路从经典部署模型转移到 Resource Manager 部署模型](../articles/expressroute/expressroute-move.md)。 如果已有 ExpressRoute 线路，则不需要购买新的线路。
 
 ## <a name="what-if-i-had-configured-role-based-access-control-policies-for-my-classic-iaas-resources"></a>如果我已经为经典 IaaS 资源配置基于角色的访问控制策略，该怎么办？ 
 
@@ -70,7 +70,7 @@ ms.locfileid: "56443370"
 
 ## <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-migration"></a>我是否可以验证订阅或资源，以查看其是否能够迁移？ 
 
-是的。 在平台支持的迁移选项中，准备迁移的第一个步骤，就是验证资源是否能够进行迁移。 如果验证操作失败，用户会收到包含无法完成迁移的所有原因的消息。
+可以。 在平台支持的迁移选项中，准备迁移的第一个步骤，就是验证资源是否能够进行迁移。 如果验证操作失败，用户会收到包含无法完成迁移的所有原因的消息。
 
 ## <a name="what-happens-if-i-run-into-a-quota-error-while-preparing-the-iaas-resources-for-migration"></a>如果我在准备要迁移的 IaaS 资源时遇到配额错误，会发生什么情况？ 
 

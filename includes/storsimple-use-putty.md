@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5c62c67cd401c043352b06e6e6070a7fc0f1296
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888699"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60630961"
 ---
 #### <a name="to-connect-through-the-serial-console"></a>通过串行控制台进行连接
 1. 将串行电缆连接到设备（直接连接或通过 USB 串行适配器连接）。
@@ -23,7 +23,7 @@ ms.locfileid: "55888699"
    
    * 速度：115,200
    * 数据位：8
-   * 停止位：1
+   * 停止位：第
    * 奇偶校验：无
    * 流控制：无
      

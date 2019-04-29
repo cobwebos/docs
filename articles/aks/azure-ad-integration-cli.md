@@ -7,18 +7,20 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: iainfou
-ms.openlocfilehash: 86b9609d5141798be40f53aab8b18897484bbef8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c403d809aa1fc6cdbb0555eef414f79b02ab5a8a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60467572"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764119"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service-using-the-azure-cli"></a>将 Azure Active Directory 集成通过使用 Azure CLI 的 Azure Kubernetes 服务
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，你可以登录到 AKS 群集使用 Azure AD 身份验证令牌。 群集操作员还可以配置基于用户的标识或目录的组成员身份的 Kubernetes 基于角色的访问控制 (RBAC)。
 
 本文介绍如何创建所需 Azure AD 组件，然后部署 Azure AD 启用群集，并在 AKS 群集中创建基本的 RBAC 角色。 此外可以[完成这些步骤使用 Azure 门户][azure-ad-portal]。
+
+在本文中使用的完整示例脚本，请参阅[Azure CLI 示例-Azure AD 与 AKS 集成][complete-script]。
 
 以下限制适用：
 

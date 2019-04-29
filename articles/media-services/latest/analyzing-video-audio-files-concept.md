@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/21/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 8f8af438d4034fc945a717fee0b720e3fe13cf56
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
-ms.translationtype: MT
+ms.openlocfilehash: a4c643ecff5c33ec19c607da6ef8db41cfeb90c6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351994"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63762814"
 ---
 # <a name="analyzing-video-and-audio-files"></a>分析视频和音频文件
 
@@ -33,8 +33,9 @@ ms.locfileid: "58351994"
 
 |**预设名称**|**方案**|**详细信息**|
 |---|---|---|
-|**AudioAnalyzerPreset**|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语 (ar-EG)、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它目前不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
-|**VideoAnalyzerPreset**|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
+|[AudioAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset)|分析音频|该预设应用一组基于 AI 的预定义分析操作，其中包括语音听录。 目前，该预设支持处理包含单个音轨的内容且音轨应仅包含一种语言的语音。 可以使用 BCP-47 格式“language tag-region”为输入中的音频有效负载指定语言。 支持的语言包括英语（en-US 和 en-GB）、西班牙语（es-ES 和 es-MX）、法语 (fr-FR)、意大利语 (it-IT)、日语 (ja-JP)、葡萄牙语 (pt-BR)、中文 (zh-CN)、德语 (de-DE)、阿拉伯语 (ar-EG)、俄语 (ru-RU)、印地语 (hi-IN) 和韩语 (ko-KR)。<br/><br/> 如果未指定语言或将语言设置为 null，自动语言检测将选择检测到的第一种语言并使用所选语言处理整个文件。 自动语言检测功能目前支持英语、中文、法语、德语、意大利语、日语、西班牙语、俄语和葡萄牙语。 它目前不支持在检测到第一种语言后在各语言之间进行动态切换。 自动语言检测功能最适用于包含清晰可辨的语音的录音。 如果自动语言检测未能找到语言，脚本将回退到英语。|
+|[VideoAnalyzerPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#videoanalyzerpreset)|分析音频和视频|从音频和视频中提取见解（丰富的元数据），并输出 JSON 格式的文件。 可以指定在处理视频文件时是否只想提取音频见解。 有关详细信息，请参阅[分析视频](analyze-videos-tutorial-with-api.md)。|
+|[FaceDetectorPreset](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#facedetectorpreset)||介绍以便能够检测到存在的所有人脸分析视频时要使用的设置。|
 
 ### <a name="audioanalyzerpreset"></a>AudioAnalyzerPreset
 
@@ -64,7 +65,7 @@ ms.locfileid: "58351994"
 |名称|描述|
 |---|---|
 |id|行 ID。|
-|text|脚本本身。|
+|Text|脚本本身。|
 |语言|脚本语言。 旨在支持每行语言不同的脚本。|
 |instances|出现该行的时间范围列表。 如果实例是脚本，则只有 1 个实例。|
 
@@ -102,7 +103,7 @@ ms.locfileid: "58351994"
 |名称|描述|
 |---|---|
 |id|OCR 行 ID。|
-|text|OCR 文本。|
+|Text|OCR 文本。|
 |confidence|识别置信度。|
 |语言|OCR 语言。|
 |instances|出现此 OCR 的时间范围列表（同一 OCR 可重复多次出现）。|
@@ -354,7 +355,7 @@ ms.locfileid: "58351994"
 |名称|描述|
 |---|---|
 |id|关键字 ID。|
-|text|关键字文本。|
+|Text|关键字文本。|
 |confidence|关键字的识别置信度。|
 |语言|关键字语言（转换后）。|
 |instances|出现此关键字的时间范围列表（一个关键字可重复多次出现）。|

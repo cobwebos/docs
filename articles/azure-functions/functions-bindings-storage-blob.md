@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/15/2018
 ms.author: cshoe
-ms.openlocfilehash: c1c20e225e15769a8cb09f60dfc371f4ec4d81f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3e67737e26edfee94a5a4d740d6c575817c66ff0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60306860"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766174"
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions 的 Azure Blob 存储绑定
 
@@ -426,7 +426,7 @@ Azure Functions 将 Blob 回执存储在函数应用的 Azure 存储帐户中名
 * Blob 名称
 * ETag（blob 版本标识符，例如："0x8D1DC6E70A277EF"）
 
-若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。
+若要强制重新处理某个 blob，可从 azure-webjobs-hosts 容器中手动删除该 blob 的 blob 回执。 虽然重新处理可能会立即发生，但并保证在稍后的某个时刻发生的时间。
 
 ## <a name="trigger---poison-blobs"></a>触发器 - 有害 Blob
 
@@ -450,9 +450,13 @@ JavaScript 和 Java 函数会将整个 blob 加载到内存中，并且如果绑
 
 ## <a name="trigger---polling"></a>触发器 - 轮询
 
-如果正在监视的 blob 容器包含 10,000 多个 blob （跨所有容器），Functions 运行时会扫描日志文件，监视新的或更改 blob。 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。
+如果正在监视的 blob 容器包含 10,000 多个 blob （跨所有容器），Functions 运行时会扫描日志文件，监视新的或更改 blob。 此过程可能会导致延迟。 创建 blob 之后数分钟或更长时间内可能仍不会触发函数。
 
-如果需要更快或更可靠的 blob 处理，在创建 blob 时，请考虑创建[队列消息](../storage/queues/storage-dotnet-how-to-use-queues.md)。 然后，使用[队列触发器](functions-bindings-storage-queue.md)而不是 Blob 触发器来处理 Blob。 另一个选项是使用事件网格；请参阅教程[使用事件网格自动调整上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
+> [!WARNING]
+> 此外，[将“尽力”创建存储日志](/rest/api/storageservices/About-Storage-Analytics-Logging)。 不保证捕获所有事件。 在某些情况下可能会遗漏某些日志。
+> 
+> 如果需要更快或更可靠的 blob 处理，在创建 blob 时，请考虑创建[队列消息](../storage/queues/storage-dotnet-how-to-use-queues.md)。 然后，使用[队列触发器](functions-bindings-storage-queue.md)而不是 Blob 触发器来处理 Blob。 另一个选项是使用事件网格；请参阅教程[使用事件网格自动调整上传图像的大小](../event-grid/resize-images-on-storage-blob-upload-event.md)。
+>
 
 ## <a name="input"></a>输入
 

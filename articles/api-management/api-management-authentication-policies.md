@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 9ee4a9fb5c63061eed32389b5672652aad01208a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: c0f8da779ca656cf357c418b8766a53307643695
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59994925"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764334"
 ---
 # <a name="api-management-authentication-policies"></a>API 管理身份验证策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。  
@@ -49,13 +49,13 @@ ms.locfileid: "59994925"
   
 ### <a name="elements"></a>元素  
   
-|Name|描述|需要|  
+|名称|描述|需要|  
 |----------|-----------------|--------------|  
 |authentication-basic|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|描述|需要|默认|  
+|名称|描述|需要|默认|  
 |----------|-----------------|--------------|-------------|  
 |username|指定基本凭据的用户名。|是|不适用|  
 |password|指定基本凭据的密码。|是|不适用|  
@@ -73,26 +73,32 @@ ms.locfileid: "59994925"
 ### <a name="policy-statement"></a>策略语句  
   
 ```xml  
-<authentication-certificate thumbprint="thumbprint" />  
+<authentication-certificate thumbprint="thumbprint" certificate-id="resource name"/>  
 ```  
   
-### <a name="example"></a>示例  
+### <a name="examples"></a>示例  
   
+在此示例客户端证书由其指纹标识。
 ```xml  
-<authentication-certificate thumbprint="....." />  
+<authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />  
+``` 
+在此示例按资源名称标识客户端证书。
+```xml  
+<authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
 ```  
-  
+
 ### <a name="elements"></a>元素  
   
-|Name|描述|需要|  
+|名称|描述|需要|  
 |----------|-----------------|--------------|  
 |authentication-certificate|根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|描述|需要|默认|  
+|名称|描述|需要|默认|  
 |----------|-----------------|--------------|-------------|  
-|thumbprint|客户端证书的指纹。|是|不适用|  
+|thumbprint|客户端证书的指纹。|要么`thumbprint`或`certificate-id`必须存在。|不适用|  
+|certificate-id|证书资源名称。|要么`thumbprint`或`certificate-id`必须存在。|不适用|  
   
 ### <a name="usage"></a>使用情况  
  此策略可在以下策略[段](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)和[范围](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)中使用。  
@@ -118,13 +124,13 @@ ms.locfileid: "59994925"
   
 ### <a name="elements"></a>元素  
   
-|Name|描述|需要|  
+|名称|描述|需要|  
 |----------|-----------------|--------------|  
 |authentication-managed-identity |根元素。|是|  
   
 ### <a name="attributes"></a>属性  
   
-|Name|描述|需要|默认|  
+|名称|描述|需要|默认|  
 |----------|-----------------|--------------|-------------|  
 |resource|字符串。 Azure Active Directory 中的目标 web API （受保护的资源） 应用程序 ID URI。|是|不适用|  
 |output-token-variable-name|字符串。 将收到的对象类型的令牌值的上下文变量名称`string`。|否|不适用|  

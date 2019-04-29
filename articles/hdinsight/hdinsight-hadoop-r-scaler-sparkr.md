@@ -1,19 +1,18 @@
 ---
 title: 将 ScaleR 和 SparkR 与 Azure HDInsight 配合使用
 description: 将 ScaleR 和 SparkR 与 ML Services on HDInsight 配合使用
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/19/2017
-ms.openlocfilehash: c92a55ec1d56b83457167fc2db0bd7897a447852
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 78ea29b9b37c55a588a44f8d4b69486b89ee2fee
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53974839"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761358"
 ---
 # <a name="combine-scaler-and-sparkr-in-hdinsight"></a>在 HDInsight 中将 ScaleR 和 SparkR 合并
 
@@ -331,7 +330,7 @@ joinedDF5 <- rename(joinedDF4,
 
 ## <a name="save-results-to-csv-for-exchange-with-scaler"></a>将结果保存到 CSV 以便与 ScaleR 交换
 
-需要使用 SparkR 执行的联接操作到此完成。 将最终的 Spark DataFrame“joinedDF5”中的数据保存到 CSV 以便输入到 ScaleR，然后关闭 SparkR 会话。 需要明确告知 SparkR 要在 80 个不同的分区中保存生成的 CSV，以便在 ScaleR 处理过程中实现足够的并行度：
+至此，我们已完成了需要通过 SparkR 执行的联接。 将数据从最终的 Spark DataFrame“joinedDF5”保存到 CSV 以便输入到 ScaleR，并关闭 SparkR 会话。 需要明确告知 SparkR 要在 80 个不同的分区中保存生成的 CSV，以便在 ScaleR 处理过程中实现足够的并行度：
 
 ```
 logmsg('output the joined data from Spark to CSV') 

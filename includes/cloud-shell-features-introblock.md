@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: cynthn
 ms.openlocfilehash: eef2c762c87a13c62eeb9b017ed43f54835ab16e
-ms.sourcegitcommit: 6b7c8b44361e87d18dba8af2da306666c41b9396
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/12/2018
-ms.locfileid: "51571840"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614369"
 ---
 Azure Cloud Shell 是一种基于浏览器的 shell 体验，用于管理和开发 Azure 资源。
 

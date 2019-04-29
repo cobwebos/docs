@@ -12,11 +12,11 @@ ms.author: nigup
 ms.date: 12/04/2018
 ms.custom: seodec18
 ms.openlocfilehash: aa425b6dfeb076448d14fc35cbea964516d603b0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57904637"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765872"
 ---
 # <a name="manage-and-request-quotas-for-azure-resources"></a>管理和请求 Azure 资源的配额
 
@@ -67,7 +67,7 @@ ms.locfileid: "57904637"
 | 每个节点的最大 GPU MPI 进程数 | 1-4 |
 | 每个节点的最大 GPU 辅助角色数 | 1-4 |
 | 最长作业生存期 | 7 天<sup>1</sup> |
-| 每个节点的最大参数服务器数 | 第 |
+| 每个节点的最大参数服务器数 | 1 |
 
 <sup>1</sup> 最长生存期是指运行从开始到结束的时间。 已完成的运行会无限期保存；最长生存期内未完成的运行的数据不可访问。
 

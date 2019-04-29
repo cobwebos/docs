@@ -2,18 +2,18 @@
 title: 通过 Linux 使用 Azure 文件 | Microsoft Docs
 description: 了解如何在 Linux 上通过 SMB 装载 Azure 文件共享。
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 03/29/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c79c405c81d6e89314a765ea45d83cc46eb804cd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 75987c7838846aacb099b725e2a222967b32fe64
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57834942"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763816"
 ---
 # <a name="use-azure-files-with-linux"></a>通过 Linux 使用 Azure 文件
 
@@ -25,9 +25,9 @@ ms.locfileid: "57834942"
 ## <a name="prerequisites-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>使用 Linux 和 cifs-utils 包装载 Azure 文件共享的先决条件
 <a id="smb-client-reqs"></a>
 
-* **将现有的 Azure 存储帐户和文件共享**:若要完成本文，需要具有存储帐户和文件共享。 如果你尚未创建一个，请参阅任一快速入门主题：[创建文件共享-CLI](storage-how-to-use-files-cli.md)。
+* **现有的 Azure 存储帐户和文件共享**：若要完成本文，需要创建一个存储帐户和文件共享。 如果尚未创建，请参阅有关该主题的快速入门之一：[创建文件共享 - CLI](storage-how-to-use-files-cli.md)
 
-* **你的存储帐户名称和密钥**为了完成这篇文章，将需要的存储帐户名称和密钥。 如果你创建一个使用应该已拥有 CLI 快速入门，否则，请查阅更早版本，若要了解如何检索存储帐户密钥链接 CLI 快速入门。
+* **存储帐户名称和密钥**若要完成本文，需要提供存储帐户名称和密钥。 如果你参考 CLI 快速入门创建了一个存储帐户，则已经获得了这些凭据，否则，请查阅前面链接的 CLI 快速入门，了解如何检索存储帐户密钥。
 
 * **选择 Linux 发行版以满足你的装载需求。**  
       可以通过 SMB 2.1 和 SMB 3.0 装载 Azure 文件。 对于来自本地或其他 Azure 区域中的客户端的连接，必须使用 SMB 3.0；Azure 文件会拒绝 SMB 2.1（或没有加密的 SMB 3.0）。 如果从同一个 Azure 区域内的 VM 访问 Azure 文件共享，则可使用 SMB 2.1 访问文件共享，当且仅当托管 Azure 文件共享的存储帐户禁用了“需要安全传输”时适用。 始终建议要求安全传输并仅使用带加密的 SMB 3.0。
@@ -89,7 +89,7 @@ ms.locfileid: "57834942"
     mkdir /mnt/MyAzureFileShare
     ```
 
-1. **使用 mount 命令装载 Azure 文件共享**：请记得将 `<storage-account-name>``<share-name>``<smb-version>``<storage-account-key>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 Azure 文件共享只能装入 Azure 区域之外 （包括在本地或不同 Azure 区域中） 使用 SMB 3.0。 
+1. **使用 mount 命令装载 Azure 文件共享**：请记得将 `<storage-account-name>``<share-name>``<smb-version>``<storage-account-key>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
 
     ```bash
     sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> <mount-point> -o vers=<smb-version>,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
@@ -127,7 +127,7 @@ ms.locfileid: "57834942"
     sudo chmod 600 /etc/smbcredentials/<storage-account-name>.cred
     ```
 
-1. **使用以下命令将以下行追加到 `/etc/fstab`**：请记得将 `<storage-account-name>``<share-name>``<smb-version>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 Azure 文件共享只能装入 Azure 区域之外 （包括在本地或不同 Azure 区域中） 使用 SMB 3.0。 
+1. **使用以下命令将以下行追加到 `/etc/fstab`**：请记得将 `<storage-account-name>``<share-name>``<smb-version>` 和 `<mount-point>` 替换为适合你的环境的信息。 如果你的 Linux 分发版支持带加密的 SMB 3.0（有关详细信息，请参阅[了解 SMB 客户端要求](#smb-client-reqs)），则将 `3.0` 用于 `<smb-version>`。 对于不支持带加密的 SMB 3.0 的 Linux 分发版，将 `2.1` 用于 `<smb-version>`。 只能使用 SMB 3.0 在 Azure 区域外部（包括本地或不同 Azure 区域中）装载 Azure 文件共享。 
 
     ```bash
     sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> <mount-point> cifs nofail,vers=<smb-version>,credentials=/etc/smbcredentials/<storage-account-name>.cred,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'

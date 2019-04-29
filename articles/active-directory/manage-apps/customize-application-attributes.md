@@ -15,15 +15,15 @@ ms.date: 04/03/2019
 ms.author: celested
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a2965fecd3aca17d6c4df7e49ad466377de9762
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b63118a7c5fae49edebe4ae4976a1362781ae8cf
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291621"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759770"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>为 Azure Active Directory 中的 SaaS 应用程序自定义用户预配属性映射
-Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 Salesforce、Google Apps 等等。 如果启用了第三方 SaaS 应用程序的用户预配，Azure 门户将控制通过属性映射其属性值。
+Microsoft Azure AD 用户预配到第三方 SaaS 应用，例如 Salesforce、 G Suite 和其他人提供支持。 如果启用了第三方 SaaS 应用程序的用户预配，Azure 门户将控制通过属性映射其属性值。
 
 没有一组预配置的属性和 Azure AD 用户对象和每个 SaaS 应用的用户对象之间的属性映射。 某些应用程序管理其他类型的对象，以及用户、 组等。
 
@@ -84,7 +84,7 @@ Microsoft Azure AD 支持将用户预配到第三方 SaaS 应用程序，例如 
 
 ## <a name="editing-group-attribute-mappings"></a>编辑组属性映射
 
-一些特定的应用程序，例如 ServiceNow、 Box 和 Google Apps 支持预配组对象和用户对象的能力。 组对象可以包含组的属性，例如显示名称和电子邮件别名，以及组成员。
+一些特定的应用程序，例如 ServiceNow、 Box 和 G Suite 支持预配组对象和用户对象的能力。 组对象可以包含组的属性，例如显示名称和电子邮件别名，以及组成员。
 
 ![ServiceNow](./media/customize-application-attributes/24.png)
 

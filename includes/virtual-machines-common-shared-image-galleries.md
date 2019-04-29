@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.author: akjosh; cynthn
 ms.custom: include file
 ms.openlocfilehash: 8c7da8d04b456642b158dda77d9c745891aa18e6
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58051868"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620330"
 ---
 共享映像库是可以帮助你围绕自定义托管 VM 映像生成结构和组织的服务。 使用共享映像库，可以将映像共享给组织内的不同用户、服务主体或 AD 组。 共享映像可以复制到多个区域，以便更快地扩展部署。
 
@@ -69,7 +69,7 @@ ms.locfileid: "58051868"
 ![演示如何复制映像的示意图](./media/shared-image-galleries/replication.png)
 
 
-## <a name="access"></a>Access
+## <a name="access"></a>访问
 与共享映像库一样，共享映像和共享映像版本都是资源，可以使用内置的本机 Azure RBAC 控件来共享它们。 使用 RBAC 可与组织中的其他用户、服务主体和组共享这些资源。 这些资源的共享范围为同一个 Azure AD 租户。 用户获取共享映像版本的访问权限后，可以在该共享映像版本所在的同一 Azure AD 租户内他们有权访问的任何订阅中部署 VM 或虚拟机规模集。  以下共享矩阵可以帮助你了解用户有权访问哪些资源：
 
 | 与用户共享     | 共享的映像库 | 共享映像 | 共享映像版本 |
@@ -149,7 +149,7 @@ Register-AzResourceProvider -ProviderNamespace Microsoft.Compute
 
 **问：** 是否可将现有的映像移到共享映像库？
  
- A. 是的。 根据映像的类型，可能存在 3 种场景。
+ A. 可以。 根据映像的类型，可能存在 3 种场景。
 
  方案 1：如果你有托管映像，则可以从该映像创建映像定义和映像版本。
 

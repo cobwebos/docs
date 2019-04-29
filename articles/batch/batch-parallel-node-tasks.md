@@ -12,15 +12,15 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 04/17/2019
 ms.author: lahugh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5583ccb6076dae2f33e265b95387bcd35aa9fa4d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
-ms.translationtype: MT
+ms.openlocfilehash: 79b45bd423ed6715cdb7cc7c0e079c150eefede5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57547276"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763695"
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>以并发方式运行任务以最大程度地利用 Batch 计算节点 
 
@@ -41,7 +41,7 @@ ms.locfileid: "57547276"
 ## <a name="enable-parallel-task-execution"></a>允许并行执行任务
 可在池级别配置计算节点，以便并行执行任务。 在创建池时，可以通过 Batch .NET 库设置 [CloudPool.MaxTasksPerComputeNode][maxtasks_net] 属性。 如果使用的是 Batch REST API，则可在创建池时在请求正文中设置 [maxTasksPerNode][rest_addpool] 元素。
 
-使用 Azure Batch 时，可以通过节点设置来设置多达四倍 (4x) 的节点核心数，从而最大限度地提高任务数。 例如，如果将池的节点大小配置为“大型”（四核），则可将 `maxTasksPerNode` 设置为 16。 有关每个节点大小的核心数的详细信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
+Azure 批处理可以设置每个节点最多为 (4x) 的任务的核心节点数。 例如，如果将池的节点大小配置为“大型”（四核），则可将 `maxTasksPerNode` 设置为 16。 但是，无论该节点具有的核心数，不能具有超过 256 个任务，每个节点。 有关每个节点大小的核心数的详细信息，请参阅[云服务的大小](../cloud-services/cloud-services-sizes-specs.md)。 有关服务限制的详细信息，请参阅 [Azure Batch 服务的配额和限制](batch-quota-limit.md)。
 
 > [!TIP]
 > 为池构造[自动缩放公式][enable_autoscaling]时，请务必考虑 `maxTasksPerNode` 值。 例如，如果增加每个节点的任务数，则可能会极大地影响对 `$RunningTasks` 求值的公式。 有关详细信息，请参阅[自动缩放 Azure Batch 池中的计算节点](batch-automatic-scaling.md)。

@@ -8,15 +8,15 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: jeconnoc
 ms.custom: include file
-ms.openlocfilehash: d1a6ff8dbd17d2792709a1ce065bcf793154e585
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: ca4063d31d93aab3814abed202b6b91b7726185f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37780666"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60542913"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>平台支持的从经典部署模型到 Azure 资源管理器的 IaaS 资源迁移
-本文介绍如何将服务架构 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
+本文介绍如何将基础结构即服务 (IaaS) 资源从经典部署模型迁移到资源管理器部署模型，并详细说明如何使用虚拟网络站点到站点网关连接两个在订阅中共存的两个部署模型的资源。 用户可以阅读有关 [Azure 资源管理器功能和优点](../articles/azure-resource-manager/resource-group-overview.md)的更多内容。 
 
 ## <a name="goal-for-migration"></a>迁移目标
 资源管理器除了可让你通过模板部署复杂的应用程序之外，还可使用 VM 扩展来配置虚拟机，并且纳入访问管理和标记。 Azure 资源管理器将虚拟机的可缩放并行部署包含在可用性集内。 新部署模型还针对计算、网络和存储单独提供生命周期管理。 最后，将重点介绍为了默认启用安全性而要在虚拟网络中实施虚拟机的做法。
@@ -89,12 +89,12 @@ ms.locfileid: "37780666"
 ### <a name="unsupported-features"></a>不支持的功能
 目前不支持以下功能。 可以选择删除这些设置、迁移 VM，然后在 Resource Manager 部署模型中重新启用这些设置。
 
-| 资源提供程序 | 功能 | 建议 |
+| 资源提供程序 | Feature | 建议 |
 | --- | --- | --- |
 | 计算 | 不关联的虚拟机磁盘。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 计算 | 虚拟机映像。 | 迁移存储帐户时，将迁移这些磁盘后面的 VHD blob |
 | 网络 | 终结点 ACL。 | 删除终结点 ACL 并重试迁移。 |
-| 网络 | 应用程序网关 | 开始迁移之前请删除应用程序网关，并在迁移完成后重新创建应用程序网关。 |
+| 网络 | 应用程序网关 | 开始迁移之前请删除应用程序网关，然后在迁移完成后重新创建应用程序网关。 |
 | 网络 | 使用 VNet 对等互连的虚拟网络。 | 将虚拟网络迁移到 Resource Manager，然后对等互连。 详细了解 [VNet 对等互连](../articles/virtual-network/virtual-network-peering-overview.md)。 |
 
 ### <a name="unsupported-configurations"></a>不支持的配置

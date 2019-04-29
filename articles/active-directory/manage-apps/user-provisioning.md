@@ -15,12 +15,12 @@ ms.date: 04/02/2019
 ms.author: celested
 ms.reviewer: asmalser
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40e8aaa60359fcfb85c79c4210f7c5cc14633c7b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 516faed0f41ae36079d0f26f0311b35d5582d57a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60291130"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759785"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Azure Active Directory SaaS 应用程序的自动化用户预配和取消预配
 
@@ -143,7 +143,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 6. 如果属性映射包含"reference"属性，该服务会创建并将链接引用的对象在目标系统上的其他更新。 例如，用户可能在目标系统中有“Manager”属性，该属性链接到目标系统中创建的另一个用户。
 7. 保留为更高版本的增量同步提供的起始点在初始同步结束时水印。
 
-某些应用程序（例如 ServiceNow、Google Apps 和 Box）不仅支持预配用户，而且还支持预配组及其成员。 在这些情况下，如果在启用了组预配[映射](customize-application-attributes.md)、 预配服务同步用户和组，和更高版本进行同步的组成员身份。 
+某些应用程序例如 ServiceNow、 G Suite 和框支持不仅预配用户，而且还预配组及其成员。 在这些情况下，如果在启用了组预配[映射](customize-application-attributes.md)、 预配服务同步用户和组，和更高版本进行同步的组成员身份。 
 
 ### <a name="incremental-syncs"></a>增量同步
 
@@ -196,7 +196,7 @@ Azure AD 功能预先集成了对许多常用 SaaS 应用和人力资源系统�
 
 对于**增量同步**，作业时间取决于在该同步周期中检测到的更改数量。 如果有少于 5000 个用户或组成员身份更改，则作业可以在单个增量同步周期内完成。 
 
-下表总结了常见的预配方案的同步时间。 在这些方案中，源系统是 Azure AD，目标系统是 SaaS 应用程序。 同步时间是通过对 SaaS 应用程序 ServiceNow、Workplace、Salesforce 和 Google Apps 的同步作业进行统计分析得出的。
+下表总结了常见的预配方案的同步时间。 在这些方案中，源系统是 Azure AD，目标系统是 SaaS 应用程序。 同步时间派生自 ServiceNow、 工作区、 Salesforce 和 G Suite 的 SaaS 应用程序的同步作业的统计分析。
 
 
 | 作用域配置 | 作用域中的用户、组和成员 | 初始同步时间 | 增量同步时间 |

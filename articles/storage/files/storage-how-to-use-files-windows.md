@@ -2,18 +2,18 @@
 title: 将 Azure 文件共享与 Windows 配合使用 | Microsoft Docs
 description: 了解如何将 Azure 文件共享与 Windows 和 Windows Server 配合使用。
 services: storage
-author: RenaShahMSFT
+author: roygara
 ms.service: storage
 ms.topic: conceptual
 ms.date: 06/07/2018
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 315bad5c4ffc3d5e8909c86cb8de703e9cb941b0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ae097cb1c778c0ad60512753ae6ef28da04e8004
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048837"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764376"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>将 Azure 文件共享与 Windows 配合使用
 [Azure 文件](storage-files-introduction.md)是 Microsoft 推出的易用云文件系统。 Azure 文件共享可以在 Windows 和 Windows Server 中无缝使用。 本文讨论将 Azure 文件共享与 Windows 和 Windows Server 配合使用时的注意事项。
@@ -237,13 +237,13 @@ Remove-PSDrive -Name <desired-drive-letter>
 | Windows Server 2019（预览版）             | 已禁用             | 通过 Windows 功能进行删除 |
 | Windows Server，版本 1709+            | 已禁用             | 通过 Windows 功能进行删除 |
 | Windows 10，版本 1709+                | 已禁用             | 通过 Windows 功能进行删除 |
-| Windows Server 2016                       | 已启用              | 通过 Windows 功能进行删除 |
-| Windows 10，版本 1507、1607 和 1703 | 已启用              | 通过 Windows 功能进行删除 |
-| Windows Server 2012 R2                    | 已启用              | 通过 Windows 功能进行删除 | 
-| Windows 8.1                               | 已启用              | 通过 Windows 功能进行删除 | 
-| Windows Server 2012                       | 已启用              | 通过注册表进行禁用       | 
-| Windows Server 2008 R2                    | 已启用              | 通过注册表进行禁用       |
-| Windows 7                                 | 已启用              | 通过注册表进行禁用       | 
+| Windows Server 2016                       | Enabled              | 通过 Windows 功能进行删除 |
+| Windows 10，版本 1507、1607 和 1703 | Enabled              | 通过 Windows 功能进行删除 |
+| Windows Server 2012 R2                    | Enabled              | 通过 Windows 功能进行删除 | 
+| Windows 8.1                               | Enabled              | 通过 Windows 功能进行删除 | 
+| Windows Server 2012                       | Enabled              | 通过注册表进行禁用       | 
+| Windows Server 2008 R2                    | Enabled              | 通过注册表进行禁用       |
+| Windows 7                                 | Enabled              | 通过注册表进行禁用       | 
 
 ### <a name="auditing-smb-1-usage"></a>审核 SMB 1 使用情况
 > 适用于 Windows Server 2019（预览版）、Windows Server 半年通道（版本 1709 和 1803）、Windows Server 2016、Windows 10（版本 1507、1607、1703、1709 和 1803）、Windows Server 2012 R2 和 Windows 8.1

@@ -9,11 +9,11 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 14e8eb7c73a1e2cf5047410d3571008c1cd1e1ca
-ms.sourcegitcommit: 02ce0fc22a71796f08a9aa20c76e2fa40eb2f10a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51289268"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60626449"
 ---
 # <a name="security-for-internet-of-things-iot-from-the-ground-up"></a>从头开始讲解物联网 (IoT) 的安全性
 
@@ -23,7 +23,7 @@ ms.locfileid: "51289268"
 
 这些解决方案加速器具有独特的功能，使得从 IoT 设备预配、连接和存储数据变得轻松、透明，还有最重要的是安全。 本文对 Azure IoT 解决方案加速器的安全功能和部署策略进行检查，以确保能够应对安全性、私密性与合规性方面的挑战。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 物联网 (IoT) 是将来的主流，可为企业提供实时且真实世界的商机，以降低成本、提高营收，并使其业务转型。 但是，许多企业因为顾虑到安全、隐私与合规性，对组织中部署 IoT 而有所迟疑。 主要的忧虑来自 IoT 基础结构的独特性，它将网络与物理世界合并在一起，将这两个世界中固有的各个风险混合。 IoT 的安全是关于确保在设备上运行的代码完整性、为设备和用户提供身份验证、定义设备（以及此类设备所生成的数据）的明确所有权，以及针对网络与物理攻击进行复原。
 
@@ -105,12 +105,12 @@ IoT 基础结构使用的所有密钥存储在云的安全存储中，并具有�
 
 * [**Azure IoT 中心**](https://azure.microsoft.com/services/iot-hub/)：将云连接到设备的网关。 可以缩放为每个中心有百万个连接，并使用每设备身份验证支持来处理大量数据，以帮助保护解决方案。
 
-* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/)：已完全编制索引的可缩放数据库服务，适用于半结构化数据，可管理预配的设备元数据，例如属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
+* [**Azure Cosmos DB**](https://azure.microsoft.com/services/cosmos-db/)：适用于半结构化数据的可缩放且已完全编制索引的数据库服务，可管理预配的设备的元数据，例如，属性、配置和安全属性。 Azure Cosmos DB 提供高性能和高吞吐量处理、与架构无关的数据索引，以及丰富的 SQL 查询接口。
 
-* [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)：云中的实时流处理，可让用户快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入见解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
+* [Azure 流分析](https://azure.microsoft.com/services/stream-analytics/)：通过云中处理的实时流可以快速开发和部署低成本分析解决方案，以便从设备、传感器、基础结构和应用程序实时获取深入了解。 来自这种完全托管服务的数据可缩放为任何数量，同时保持高吞吐量、低延迟和复原能力。
 
 * [**Azure 应用程序服务**](https://azure.microsoft.com/services/app-service/)：一个云平台，用以构建能够连接到任何地方（在云中或本地）的数据的强大 Web 和移动应用。 构建具有吸引力的 iOS、Android 和 Windows 移动应用。 与软件即服务 (SaaS) 和企业应用程序相集成，这些应用程序一经使用便可直接连接到数十种基于云的服务和企业应用程序。 使用偏好的语言和 IDE（.NET、Node.js、PHP、Python 或 Java）进行编码，比以往更快速地构建 Web 应用和 API。
 
-* [Logic Apps](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
+* [**逻辑应用**](https://azure.microsoft.com/services/app-service/logic/)：Azure 应用服务的逻辑应用功能可帮助用户将 IoT 解决方案集成到现有业务线系统并自动执行工作流程。 逻辑应用可让开发人员设计从触发过程开始，并运行一系列步骤的工作流 — 使用功能强大的连接器来与业务过程集成的规则和操作。 Logic Apps 提供与 SaaS、基于云和本地应用程序的广泛生态系统的实时连接。
 
-* [**Azure Blob 存储**](https://azure.microsoft.com/services/storage/)：可靠且符合经济效益的云存储，适用于设备发送到云的数据。
+* [**Azure Blob 存储**](https://azure.microsoft.com/services/storage/):可靠且符合经济效益的云存储，适用于设备要发送到云的数据。

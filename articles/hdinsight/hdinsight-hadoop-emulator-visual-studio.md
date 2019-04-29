@@ -1,7 +1,6 @@
 ---
 title: 将针对 Visual Studio 的 Data Lake 工具与 Hortonworks 沙盒配合使用 - Azure HDInsight
 description: 了解如何将针对 Visual Studio 的 Azure Data Lake 工具与本地 VM 中运行的 Hortonworks 沙盒配合使用。 使用这些工具，可以在沙盒中创建和运行 Hive 与 Pig 作业，并查看作业输出和历史记录。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7c2a1c586b4d6f5f9f6e34a091702a35f994544f
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.openlocfilehash: 8172da3f573f78365cbe76f435a4817e64bc136c
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53726623"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63762744"
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>将针对 Visual Studio 的 Azure Data Lake 工具与 Hortonworks 沙盒配合使用
 
@@ -22,7 +21,7 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 借助 Hortonworks 沙盒可以在开发环境本地使用 Hadoop。 开发一个解决方案后，如果想要大规模部署该解决方案，可以转移到 HDInsight 群集。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 在开发环境上的虚拟机中运行的 Hortonworks 沙盒。 本文档是根据 Oracle VirtualBox 中运行的沙盒编写和测试的， 有关设置沙盒的详细信息，请参阅 [Hortonworks 沙盒入门](hadoop/apache-hadoop-emulator-get-started.md) 文档。
 
@@ -40,7 +39,7 @@ Azure Data Lake 包含用于处理常规 Apache Hadoop 群集的工具。 本文
 
 1. 打开 Visual Studio，选择“视图”，然后选择“服务器资源管理器”。
 
-2. 在“服务器资源管理器”中，右键单击“HDInsight”项，并选择“连接到 HDInsight Emulator”。
+2. 在“服务器资源管理器”中，右键单击“HDInsight”项，然后选择“连接到 HDInsight Emulator”。
 
     ![突出显示“连接到 HDInsight 模拟器”的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/connect-emulator.png)
 
@@ -121,7 +120,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 1. 在 Visual Studio 中，依次选择“文件”、“新建”、“项目”。
 
-2. 在项目列表中，展开“模板”、“Azure Data Lake”，然后选择“HIVE (HDInsight)”。 在模板列表中，选择“Hive 示例”。 输入名称和位置，然后选择“确定”。
+2. 在项目列表中，依次展开“模板”、“Azure Data Lake”，然后选择“HIVE (HDInsight)”。 在模板列表中，选择“Hive 示例”。 输入名称和位置，然后选择“确定”。
 
     ![突出显示“Azure Data Lake”、“HIVE”、“Hive 示例”和“确定”的“新建项目”窗口屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
@@ -131,7 +130,7 @@ Hive 提供类似于 SQL 的查询语言 (HiveQL) 来处理结构化数据。 �
 
 Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数据执行转换来工作。 Pig 提供了一种语言 (Pig Latin)，可用于开发转换管道。 若要在本地群集上使用 Pig，请执行以下步骤：
 
-1. 打开 Visual Studio，依次选择“文件”、“新建”、“项目”。 在项目列表中，展开“模板”、“Azure Data Lake”，然后选择“Pig (HDInsight)”。 在模板列表中，选择“Pig 应用程序”。 输入名称和位置，并选择“确定”。
+1. 打开 Visual Studio，依次选择“文件”、“新建”、“项目”。 在项目列表中，依次展开“模板”、“Azure Data Lake”，然后选择“Pig (HDInsight)”。 在模板列表中，选择“Pig 应用程序”。 输入名称和位置，然后选择“确定”。
 
     ![突出显示“Azure Data Lake”、“Pig”、“Pig 应用程序”和“确定”的“新建项目”窗口屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/new-pig.png)
 
@@ -174,7 +173,7 @@ Hive 提供了类似 SQL 的语言用于处理结构化数据，Pig 通过对数
 
 ## <a name="view-hive-databases"></a>查看 Hive 数据库
 
-1. 在“服务器资源管理器”中，展开“HDInsight 本地群集”项，并展开“Hive 数据库”。 此时会显示本地群集上的“默认”和“xademo”数据库。 展开数据库可显示该数据库中的表。
+1. 在“服务器资源管理器”中，展开“HDInsight 本地群集”项，然后展开“Hive 数据库”。 此时将显示本地群集上的“默认”和“xademo”数据库。 展开数据库可显示该数据库中的表。
 
     ![展开了数据库的服务器资源管理器屏幕截图](./media/hdinsight-hadoop-emulator-visual-studio/expanded-databases.png)
 

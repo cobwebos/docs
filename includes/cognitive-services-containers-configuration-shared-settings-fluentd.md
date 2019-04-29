@@ -1,15 +1,10 @@
 ---
-author: diberry
-ms.author: diberry
-ms.service: cognitive-services
-ms.topic: include
-ms.date: 01/02/2019
 ms.openlocfilehash: ffd17f7a641e1481aa4c88f8b2eb12ec11fa7d8b
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741307"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599381"
 ---
 Fluentd 是一个用于统一日志记录的开放源代码数据收集器。 `Fluentd` 设置管理容器到 [Fluentd](https://www.fluentd.org) 服务器的连接。 容器包含一个 Fluentd 日志记录提供程序，使容器可以向 Fluentd 服务器写入日志和（可选）指标数据。
 

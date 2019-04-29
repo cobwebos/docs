@@ -2,7 +2,6 @@
 title: 在基于 HDInsight Linux 的群集上将 Hue 与 Hadoop 配合使用 - Azure
 description: 了解如何在 HDInsight 群集上安装 Hue，并使用隧道将请求路由至 Hue。 使用 Hue 浏览存储和运行 Hive 或 Pig。
 keywords: hue hadoop
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: hrasheed
-ms.openlocfilehash: 9a5a3e7354d3d89a53e94553ed504df7c8117922
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: b0354803a117e8e2c2382ae888bde94a502f24c6
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314986"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760630"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>在 HDInsight Hadoop 群集上安装并使用 Hue
 

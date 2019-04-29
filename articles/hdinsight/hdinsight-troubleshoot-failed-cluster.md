@@ -1,7 +1,6 @@
 ---
 title: 排查 HDInsight 群集速度慢或故障问题 - Azure HDInsight
 description: 诊断和排查 HDInsight 群集速度慢或故障问题。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/19/2019
-ms.openlocfilehash: 685731aee9396efbfa9f7bb554ec7ce20270935f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 785eac065e10c64b99839ab8667e9b613f62aeb9
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58314733"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764037"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>排查 HDInsight 群集速度慢或故障问题
 
@@ -57,7 +56,7 @@ Azure 门户可以提供此信息：
 
 ![HDInsight - Azure 门户信息](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-此外可以使用[Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest):
+还可以使用 [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)：
 
 ```azurecli
 az hdinsight list --resource-group <ResourceGroup>

@@ -9,11 +9,11 @@ ms.date: 02/22/2019
 ms.author: raiye
 ms.custom: include file
 ms.openlocfilehash: 72d9ec52732a78e39f6481e2cb2d40f17f86f028
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58494988"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60478121"
 ---
 # <a name="enable-write-accelerator"></a>启用写入加速器
 
@@ -52,7 +52,7 @@ ms.locfileid: "58494988"
 | M64ms、M64ls、M64s | 8 | 10000 |
 | M32ms、M32ls、M32ts、M32s | 4 | 5000 |
 | M16ms、M16s | 2 | 2500 |
-| M8ms、M8s | 第 | 1250 |
+| M8ms、M8s | 1 | 1250 |
 
 IOPS 限制是针对每个 VM 而不是每个磁盘。 对于每个 VM，所有写入加速器磁盘具有相同的 IOPS 限制。
 

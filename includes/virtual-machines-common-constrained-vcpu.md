@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/09/2018
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: eaf490979167ea5cbfe5846e62444526310452f8
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
-ms.translationtype: HT
+ms.openlocfilehash: 82cbffb257d85197848b8bca14231e5363d6d45c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269538"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729830"
 ---
 某些数据库工作负荷（如 SQL Server 或 Oracle）需要高内存、存储和 I/O 带宽，但不需要高核心计数。 许多数据库工作负荷不是 CPU 密集型工作负荷。 Azure 提供了某些 VM 大小（其中你可以限制 VM vCPU 计数），以降低软件许可成本，同时保持相同的内存、存储和 I/O 带宽。
 
@@ -51,7 +51,7 @@ ms.locfileid: "36269538"
 | Standard_GS5-8      | 8    | 与 GS5 相同     |
 | Standard_DS11-1_v2  | 1    | 与 DS11_v2 相同 |
 | Standard_DS12-2_v2  | 2    | 与 DS12_v2 相同 |
-| Standard_DS12-1_v2  | 1    | 与 DS12_v2 相同 |
+| Standard_DS12-1_v2  | 第    | 与 DS12_v2 相同 |
 | Standard_DS13-4_v2  | 4    | 与 DS13_v2 相同 |
 | Standard_DS13-2_v2  | 2    | 与 DS13_v2 相同 |
 | Standard_DS14-8_v2  | 8    | 与 DS14_v2 相同 |

@@ -9,11 +9,11 @@ ms.date: 04/11/2019
 ms.author: lahugh
 ms.custom: include file
 ms.openlocfilehash: d89a9c4c4498e249dbfbd453ef9772d18ffd213f
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59550133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60541589"
 ---
 本部分提供上一代虚拟机大小的信息。 这些大小仍受支持，但不是会收到更多的容量。 有更高版本或替代已公开发布的大小。 请参阅[大小的 Windows Azure 中的虚拟机](../articles/virtual-machines/windows/sizes.md)或[在 Azure 中 Linux 虚拟机的大小](../articles/virtual-machines/linux/sizes.md)若要选择的 VM 大小最适合需要。  
 
@@ -33,8 +33,8 @@ ms.locfileid: "59550133"
 
 |大小 – 大小\名称 | vCPU |内存|NIC 数（最大值）|最大临时磁盘大小 |最大 数据磁盘（每个 1023 GB）|最大 IOPS（每个磁盘 300 次）|
 |---|---|---|---|---|---|---|
-|A0\Basic_A0|1|768 MB|2| 20 GB|1|1x300|
-|A1\Basic_A1|1|1.75 GB|2| 40 GB |2|2x300|
+|A0\Basic_A0|第|768 MB|2| 20 GB|1|1x300|
+|A1\Basic_A1|第|1.75 GB|2| 40 GB |2|2x300|
 |A2\Basic_A2|2|3.5 GB|2| 60 GB|4|4x300|
 |A3\Basic_A3|4|7 GB|2| 120 GB |8|8x300|
 |A4\Basic_A4|8|14 GB|2| 240 GB |16|16x300|
@@ -53,8 +53,8 @@ ACU：50-100
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (HDD)：GiB | 最大数据磁盘数 | 数据磁盘最大吞吐量：IOPS | 最大 NIC 数/预期网络带宽 (MBps)  |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0&nbsp;<sup>1</sup> |1 |0.768 |20 |1 |1x500 |2 / 100 |
-| Standard_A1 |1 |1.75 |70 |2 |2x500 |2 / 500  |
+| Standard_A0&nbsp;<sup>1</sup> |第 |0.768 |20 |第 |1x500 |2 / 100 |
+| Standard_A1 |第 |1.75 |70 |2 |2x500 |2 / 500  |
 | Standard_A2 |2 |3.5 |135 |4 |4x500 |2 / 500 |
 | Standard_A3 |4 |7 |285 |8 |8x500 |2 / 1000 |
 | Standard_A4 |8 |14 |605 |16 |16x500 |4 / 2000 |
@@ -143,7 +143,7 @@ ACU：160-250 <sup>1</sup>
 
 | 大小 | vCPU | 内存：GiB | 临时存储 (SSD) GiB | 最大数据磁盘数 | 最大缓存吞吐量和临时存储吞吐量：IOPS/MBps（以 GiB 为单位的缓存大小） | 最大非缓存磁盘吞吐量：IOPS/MBps | 最大 NIC 数/预期网络带宽 (MBps) |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| Standard_DS1 |1 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
+| Standard_DS1 |第 |3.5 |7 |4 |4,000 / 32 (43) |3,200 / 32 |2 / 500 |
 | Standard_DS2 |2 |7 |14 |8 |8,000 / 64 (86) |6,400 / 64 |2 / 1000 |
 | Standard_DS3 |4 |14 |28 |16 |16,000 / 128 (172) |12,800 / 128 |4 / 2000 |
 | Standard_DS4 |8 |28 |56 |32 |32,000 / 256 (344) |25,600 / 256 |8 / 4000 |

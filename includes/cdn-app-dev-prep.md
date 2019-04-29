@@ -5,13 +5,13 @@ ms.topic: include
 ms.date: 11/21/2018
 ms.author: mazha
 ms.openlocfilehash: 7f80c8f1773cfeb8ddfb222d068a5c6571c2e5c7
-ms.sourcegitcommit: a08d1236f737915817815da299984461cc2ab07e
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/26/2018
-ms.locfileid: "52330739"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60564078"
 ---
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在编写 CDN 管理代码之前，需要做一些准备工作，使代码能够与 Azure 资源管理器进行交互。 若要执行此准备工作，你需要：
 
 * 创建一个资源组，用来包含本教程中创建的 CDN 配置文件
@@ -32,7 +32,7 @@ ms.locfileid: "52330739"
     ![为资源组命名](./media/cdn-app-dev-prep/cdn-subscription-id-include.png)
 
 ### <a name="creating-the-azure-ad-application-and-applying-permissions"></a>创建 Azure AD 应用程序并应用权限
-可使用以下两种方式在 Azure Active Directory 中进行应用身份验证：个人用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  不是向特定用户授予与 CDN 配置文件进行交互的权限，权限将授予给服务主体。  服务主体通常用于自动化的非交互式流程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。
+有两种方法可以使用 Azure Active Directory 应用身份验证：单个用户或服务主体。 服务主体类似于 Windows 中的服务帐户。  不是向特定用户授予与 CDN 配置文件进行交互的权限，权限将授予给服务主体。  服务主体通常用于自动化的非交互式流程。  尽管本教程涉及到编写交互式控制台应用，但重点介绍服务主体身份验证方式。
 
 创建服务主体的过程由多个步骤构成，其中包括创建 Azure Active Directory 应用程序。  要创建它，请[遵循此教程](../articles/active-directory/develop/howto-create-service-principal-portal.md)。
 

@@ -8,14 +8,14 @@ ms.service: sql-database
 ms.subservice: service
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/10/2019
+ms.date: 04/23/2019
 ms.author: carlrab
-ms.openlocfilehash: 9b961436c81282381f963d16c6c6dd5f289d1259
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: e6d702c7a3194f07f9d04139acbc9b6101b296ea
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495099"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759447"
 ---
 # <a name="sql-database-release-notes"></a>SQL 数据库发行说明
 
@@ -45,6 +45,22 @@ ms.locfileid: "59495099"
 |SQL Analytics|有关信息，请参阅[Azure SQL Analytics](../azure-monitor/insights/azure-sql.md)|
 | 托管实例的时区支持|有关详细信息，请参阅[中 Azure SQL 数据库托管实例所在的时区](sql-database-managed-instance-timezone.md)|
 |||
+
+## <a name="april-2019"></a>2019 年 4 月
+
+### <a name="service-improvements"></a>服务改进
+
+| 服务改进 | 详细信息 |
+| --- | --- |
+| 托管实例的公共终结点 | 有关详细信息，请参阅[使用 Azure SQL 数据库托管实例安全地与公共终结点](sql-database-managed-instance-public-endpoint-securely.md)
+| 托管实例的时区支持 | 有关详细信息，请参阅[中 Azure SQL 数据库托管实例 （预览版） 所在的时区](sql-database-managed-instance-timezone.md)
+
+### <a name="documentation-improvements"></a>文档改进
+
+| 文档改进 | 详细信息 |
+| --- | --- |
+| 托管实例的公共终结点 | 有关详细信息，请参阅[使用 Azure SQL 数据库托管实例安全地与公共终结点](sql-database-managed-instance-public-endpoint-securely.md)
+| 托管实例的时区支持 | 有关详细信息，请参阅[中 Azure SQL 数据库托管实例 （预览版） 所在的时区](sql-database-managed-instance-timezone.md)
 
 ## <a name="march-2019"></a>2019 年 3 月
 

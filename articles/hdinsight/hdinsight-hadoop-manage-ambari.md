@@ -1,7 +1,6 @@
 ---
 title: 使用 Ambari Web UI 监视和管理 Azure HDInsight
 description: 了解如何使用 Ambari 监视和管理基于 Linux 的 HDInsight 群集。 本文档介绍如何使用 HDInsight 群集随附的 Ambari Web UI。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: hrasheed
-ms.openlocfilehash: 738ef5df0b2e2a7f31a7316a1d2ef4395168d41e
-ms.sourcegitcommit: 30a0007f8e584692fe03c0023fe0337f842a7070
-ms.translationtype: MT
+ms.openlocfilehash: 1659ab72620b6bf91eb932f8414a0f6600350e37
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57576950"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761092"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-web-ui"></a>使用 Apache Ambari Web UI 管理 HDInsight 群集
 

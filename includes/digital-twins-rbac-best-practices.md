@@ -9,11 +9,11 @@ ms.date: 12/28/2018
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: e81b8fb06240d566e46ca0b45a0910e014dee329
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53995648"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60534047"
 ---
 基于角色的访问控制是一种继承驱动的安全策略，用于管理访问权限、权限和角色。 子代角色从父角色继承权限。 也可以在不从父角色继承的情况下分配权限。 还可以指定权限以根据需要自定义角色。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 674ca630aa41d930ad7d7cfebccbe9b44351b68c
-ms.sourcegitcommit: 72cc94d92928c0354d9671172979759922865615
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58431602"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754570"
 ---
 下面是连接到设备的客户端或主机支持的操作系统列表。 这些操作系统版本进行内部测试。
 

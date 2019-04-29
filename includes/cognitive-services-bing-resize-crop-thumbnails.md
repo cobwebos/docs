@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: nitinme
 ms.openlocfilehash: f96c3a693ce8fc099374c998b35ce2fa90f4bb3f
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56753749"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60513698"
 ---
 某些必应响应包括必应提供的缩略图的 URL。 可以调整缩略图的大小，也可以对其进行裁剪。 
 

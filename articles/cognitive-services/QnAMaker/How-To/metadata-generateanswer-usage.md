@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: tulasim
-ms.openlocfilehash: c18ededc428b215720f8a6a6857a2eabd93bff8b
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: b634467381dc97e4a733e862e86632a089bf5f67
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683567"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765648"
 ---
 # <a name="get-a-knowledge-answer-with-the-generateanswer-api-and-metadata"></a>获取一个使用 GenerateAnswer API 和元数据的知识答案
 
@@ -69,10 +69,10 @@ https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
 
 |HTTP 请求属性|名称|Type|目的|
 |--|--|--|--|
-|URL 路由参数|知识库 ID|字符串|知识库的 GUID。|
-|URL 路由参数|QnAMaker 终结点主机|字符串|部署在 Azure 订阅中的终结点的主机名。 这是可在设置页上后发布该知识库。 |
-|标头|Content-Type|字符串|发送到 API 的正文的媒体类型。 默认值是: '|
-|标头|授权|字符串|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
+|URL 路由参数|知识库 ID|string|知识库的 GUID。|
+|URL 路由参数|QnAMaker 终结点主机|string|部署在 Azure 订阅中的终结点的主机名。 这是可在设置页上后发布该知识库。 |
+|标头|Content-Type|string|发送到 API 的正文的媒体类型。 默认值是: '|
+|标头|授权|string|终结点密钥 (EndpointKey xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx)。|
 |POST 正文|JSON 对象|JSON|使用设置问题|
 
 
@@ -80,11 +80,12 @@ JSON 正文具有多个设置：
 
 |JSON 正文属性|需要|Type|目的|
 |--|--|--|--|
-|`question`|必填|字符串|若要发送到您的知识库用户提出的问题。|
+|`question`|必填|string|若要发送到您的知识库用户提出的问题。|
 |`top`|可选|integer|要包含在输出中的排序结果数。 默认值为 1。|
-|`userId`|可选|字符串|用于标识用户的唯一 ID。 此 ID 将记录在聊天日志中。|
-|`isTest`|可选|布尔值|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
-|`strictFilters`|可选|字符串|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。 使用`none`以指示响应应具有任何元数据筛选器。 |
+|`userId`|可选|string|用于标识用户的唯一 ID。 此 ID 将记录在聊天日志中。|
+|`scoreThreshold`|可选|integer|将返回仅与置信度高于此阈值的答案。 默认值为 0。|
+|`isTest`|可选|boolean|如果设置为 true，返回结果`testkb`搜索索引，而不是已发布的索引。|
+|`strictFilters`|可选|string|若指定此参数，将指示 QnA Maker 仅返回含有指定元数据的答案。 使用`none`以指示响应应具有任何元数据筛选器。 |
 
 一个 JSON 正文示例如下所示：
 
@@ -93,6 +94,7 @@ JSON 正文具有多个设置：
     "question": "qna maker and luis",
     "top": 6,
     "isTest": true,
+    "scoreThreshold": 20,
     "strictFilters": [
     {
         "name": "category",
@@ -114,7 +116,7 @@ JSON 正文具有多个设置：
 |ID|分配给答案的唯一 ID。|
 |问题|用户提供的问题。|
 |回应|问题的答案。|
-|源|从中提取答案或将其存储在知识库中的源名称。|
+|source|从中提取答案或将其存储在知识库中的源名称。|
 |metadata|与答案关联的元数据。|
 |metadata.name|元数据名称。 （字符串，最大长度：100，必填）|
 |metadata.value:元数据值。 （字符串，最大长度：100，必填）|

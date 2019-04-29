@@ -10,12 +10,12 @@ ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.assetid: 7422d2d5-b1c7-4a11-8c9b-0d8cfa463164
 ms.date: 01/31/2017
-ms.openlocfilehash: 6665ea8bc4016c9d64005f9c742115cf785ed5ba
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: f06e213dbae31c9d7c4e212d605cc962aba71d2d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57842128"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766512"
 ---
 # <a name="exchange-x12-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>在带有 Enterprise Integration Pack 的 Azure 逻辑应用中交换 X12 消息以实现 B2B 企业集成
 
@@ -53,11 +53,11 @@ ms.locfileid: "57842128"
 4. 选择“概述”，并选择“协议”磁贴。 
    如果未添加“协议”磁贴，请先添加该磁贴。 
 
-   ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![选择“协议”磁贴](./media/logic-apps-enterprise-integration-x12/agreement-1.png)
 
 5. 在“协议”下，选择“添加”。
 
-   ![选择“添加”](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![选择“添加”](./media/logic-apps-enterprise-integration-x12/agreement-2.png)     
 
 6. 在“添加”下面，输入协议的**名称**。 
    对于协议类型，请选择“X12”。 
@@ -122,7 +122,7 @@ ms.locfileid: "57842128"
 
 | 属性 | 描述 |
 | --- | --- |
-| 版本 |选择 X12 版本 |
+| Version |选择 X12 版本 |
 | 事务类型(ST01) |选择事务类型 |
 | 发送程序应用程序(GS02) |选择发送程序应用程序 |
 | 架构 |选择要使用的架构文件。 架构将添加到集成帐户中。 |
@@ -216,7 +216,7 @@ ms.locfileid: "57842128"
 
 | 属性 | 描述 |
 | --- | --- |
-| 版本 |选择 X12 版本 |
+| Version |选择 X12 版本 |
 | 事务类型(ST01) |选择事务类型 |
 | 架构 |选择要使用的架构。 架构位于集成帐户中。 如果先选择架构，它会自动配置版本和事务类型  |
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 69f77bf969c5d9adfb084682fbbc9eb9e762c8b4
-ms.sourcegitcommit: f863ed1ba25ef3ec32bd188c28153044124cacbc
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56306837"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754544"
 ---
 Internet 连接缓慢或中断时，设备可以继续运行。 正常运行条件下，我们建议： 
 

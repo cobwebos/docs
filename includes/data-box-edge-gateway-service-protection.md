@@ -4,13 +4,13 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: cfd4ce1838ba2b48cbda3442d88362f4f1e0fd67
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 248d10e8814d195a515a658653cfc38de7dd4652
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684404"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754235"
 ---
-- 访问数据框边缘服务需要你的组织拥有企业协议 (EA) 或云解决方案提供商 (CSP) 订阅。 有关详细信息，请转到[注册 Azure 订阅](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)！
-- 在 Azure 中托管你的管理服务，因为它受 Azure 安全功能。 有关 Microsoft Azure 提供的安全功能的详细信息，请转到 [Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
-- 对于 SDK 管理操作，加密密钥是可用于你的资源下**设备属性**。 仅当拥有资源的图形 API 的权限，可以查看加密密钥。
+- 若要访问的数据框边缘服务，你的组织需要拥有企业协议 (EA) 或云解决方案提供商 (CSP) 订阅。 有关详细信息，请参阅[注册 Azure 订阅](https://azure.microsoft.com/resources/videos/sign-up-for-microsoft-azure/)。
+- 此管理服务托管在 Azure 中，因为它受 Azure 安全功能。 Azure 提供的安全功能的详细信息，请转到[Microsoft Azure 信任中心](https://azure.microsoft.com/support/trust-center/security/)。
+- 对于 SDK 管理操作，可以在资源获取加密密钥**设备属性**。 仅当拥有资源的图形 API 的权限，可以查看加密密钥。

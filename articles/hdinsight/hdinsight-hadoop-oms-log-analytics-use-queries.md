@@ -1,7 +1,6 @@
 ---
 title: 查询 Azure 监视器用于监视 Azure HDInsight 群集的日志
 description: 了解如何在 Azure Monitor 日志以监视在 HDInsight 群集中运行的作业上运行的查询。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 2ca2fdc2627245a8b7676ed0d6d5877788eb7930
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: cbaaed3fff99778bfab1feeacdab02bf8245a85a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58336781"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63761216"
 ---
 # <a name="query-azure-monitor-logs-to-monitor-hdinsight-clusters"></a>查询 Azure 监视器用于监视 HDInsight 群集的日志
 

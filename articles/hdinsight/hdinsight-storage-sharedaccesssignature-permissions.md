@@ -1,7 +1,6 @@
 ---
 title: 使用共享访问签名限制访问 - Azure HDInsight
 description: 了解如何使用共享访问签名限制对 Azure 存储 Blob 中存储的数据进行 HDInsight 访问。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: d248db787db1e3945fb632c6770d45e4bf9a8f02
-ms.sourcegitcommit: 223604d8b6ef20a8c115ff877981ce22ada6155a
-ms.translationtype: MT
+ms.openlocfilehash: 7fa46e3a5f0ed6504e4bc927caa0378d75fcc4a7
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58360990"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763388"
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>使用 Azure 存储共享访问签名来限制访问 HDInsight 中的数据
 
@@ -165,7 +164,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
     Connect-AzAccount
     ```
 
-    出现提示时，使用的帐户登录 Azure 订阅。
+    出现提示时，请使用 Azure 订阅帐户登录。
 
     如果帐户与多个 Azure 订阅关联，可能需要使用 `Select-AzSubscription` 来选择想要使用的订阅。
 
@@ -221,7 +220,7 @@ HDInsight 对群集关联的 Azure 存储帐户中的数据拥有完全访问权
 
 ## <a name="test-restricted-access"></a>测试限制的访问
 
-若要验证访问受到限制，使用 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
+若要验证是否已限制访问，请通过 SSH 连接到群集。 有关详细信息，请参阅 [Use SSH with HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
 连接到群集后，使用以下步骤验证是否只能读取和列出 SAS 存储帐户中的项：
 

@@ -2,19 +2,19 @@
 title: 使用 Java 针对 Azure 文件进行开发 | Microsoft Docs
 description: 了解如何开发使用 Azure 文件来存储文件数据的 Java 应用程序和服务。
 services: storage
-author: wmgries
+author: roygara
 ms.service: storage
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: renash
+ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 62a771b831c88f73df91c50f34ba6de0d95b832e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 238e5971e79b192e0ef422dcd452859ff7566580
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55453087"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763485"
 ---
 # <a name="develop-for-azure-files-with-java"></a>使用 Java 针对 Azure 文件进行开发
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -61,7 +61,7 @@ public static final String storageConnectionString =
 > 
 
 ## <a name="connecting-to-an-azure-storage-account"></a>连接到 Azure 存储帐户
-要连接到存储帐户，则需要使用 **CloudStorageAccount** 对象，以便将连接字符串传递到 **parse** 方法。
+若要连接到存储帐户，需要使用 CloudStorageAccount 对象，将连接字符串传递到其 parse 方法。
 
 ```java
 // Use the CloudStorageAccount object to connect to your storage account
@@ -156,7 +156,7 @@ if ( containerDir.deleteIfExists() ) {
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>枚举 Azure 文件共享中的文件和目录
-可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法将返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码将列出根目录中的文件和目录。
+可以轻松获取共享中文件和目录的列表，只需针对 CloudFileDirectory 引用调用 **listFilesAndDirectories** 即可。 该方法会返回可以对其进行循环访问的 ListFileItem 对象的列表。 例如，下面的代码将列出根目录中的文件和目录。
 
 ```java
 //Get a reference to the root directory for the share.

@@ -9,11 +9,11 @@ ms.date: 04/09/2018
 ms.author: jdial
 ms.custom: include file
 ms.openlocfilehash: 7679bbc450e5fa0761860aedbb37ed02b27ec828
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58115247"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60742224"
 ---
 ## <a name="os-config"></a>将 IP 地址添加到 VM 操作系统
 
@@ -27,11 +27,11 @@ ms.locfileid: "58115247"
 4. 双击“Internet 协议版本 4 (IPv4)”。
 5. 单击“使用下面的 IP 地址”并输入以下值：
 
-    * **IP 地址**：输入*主*专用 IP 地址
-    * **子网掩码**:基于你的子网设置。 例如，如果子网为 /24 子网，则子网掩码为 255.255.255.0。
-    * **默认网关**:第一个子网中的 IP 地址。 如果子网为 10.0.0.0/24，则网关 IP 地址为 10.0.0.1。
+    * **IP 地址**：输入 *Primary* 专用 IP 地址
+    * **子网掩码**：根据子网设置此值。 例如，如果子网为 /24 子网，则子网掩码为 255.255.255.0。
+    * **默认网关**：子网中的第一个 IP 地址。 如果子网为 10.0.0.0/24，则网关 IP 地址为 10.0.0.1。
     * 选择“使用下面的 DNS 服务器地址”并输入以下值：
-        * **首选的 DNS 服务器**:如果不使用你自己的 DNS 服务器，请输入 168.63.129.16。  如果使用自己的 DNS 服务器，请输入服务器的 IP 地址。
+        * **首选 DNS 服务器**：如果不使用自己的 DNS 服务器，请输入 168.63.129.16。  如果使用自己的 DNS 服务器，请输入服务器的 IP 地址。
     * 选择“高级”按钮，并添加其他 IP 地址。 将在前面的步骤中添加到 Azure 网络接口的每个辅助专用 IP 地址添加到分配有分配给 Azure 网络接口的主 IP 地址的 Windows 网络接口。
 
         切勿在虚拟机的操作系统中手动分配已分配给 Azure 虚拟机的公共 IP 地址。 在操作系统中手动设置该 IP 地址时，请确保它与分配给 Azure [网络接口](../articles/virtual-network/virtual-network-network-interface-addresses.md#change-ip-address-settings)的专用 IP 地址是同一地址，否则可能会丢失与虚拟机的连接。 详细了解[专用 IP 地址](../articles/virtual-network/virtual-network-network-interface-addresses.md#private)设置。 绝不要在操作系统中分配 Azure 公用 IP 地址。

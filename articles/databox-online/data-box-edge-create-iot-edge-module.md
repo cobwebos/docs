@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/19/2019
 ms.author: alkohli
-ms.openlocfilehash: 522dddde4994bb019e6547fcd18465b201f048d8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
-ms.translationtype: MT
+ms.openlocfilehash: c2803ba598895834bb197f4a06ff0635354fcaca
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401731"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759980"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-data-box-edge"></a>开发C#IoT Edge 模块来移动数据框边缘上的文件
 
@@ -36,7 +36,7 @@ ms.locfileid: "58401731"
 2. 文件事件生成器将为写入到本地共享的每个文件创建文件事件。 修改文件时，还会生成文件事件。 随后，将文件事件发送到 IoT Edge 中心（在 IoT Edge 运行时中）。
 3. IoT Edge 自定义模块处理文件事件，来为文件创建还包含文件相对路径的文件事件对象。 该模块将使用相对文件路径生成绝对路径，并将文件从本地共享复制到云共享。 然后，该模块从本地共享中删除文件。
 
-![Azure IoT Edge 模块在 Data Box Edge 上如何运行](./media/data-box-edge-create-iot-edge-module/how-module-works.png)
+![Azure IoT Edge 模块在 Data Box Edge 上如何运行](./media/data-box-edge-create-iot-edge-module/how-module-works-1.png)
 
 文件位于云共享中后，它会自动上传到 Azure 存储帐户。
 
@@ -63,7 +63,7 @@ ms.locfileid: "58401731"
 Azure 容器注册表是 Azure 中的专用 Docker 注册表，你可在其中存储和管理专用 Docker 容器映像。 可以在云中使用的两个常见 Docker 注册表服务分别是 Azure 容器注册表和 Docker 中心。 本文使用容器注册表。
 
 1. 在 [https://portal.azure.com](https://portal.azure.com) 中登录 Azure 门户。
-2. 选择“创建资源”>“容器”>“容器注册表”。 单击“创建”。
+2. 选择“创建资源”>“容器”>“容器注册表”。 单击**创建**。
 3. 提供：
 
    1. Azure 中的唯一“注册表名称”，可包含 5 到 50 个字母数字字符。

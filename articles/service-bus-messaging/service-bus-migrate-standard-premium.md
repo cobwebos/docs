@@ -1,5 +1,5 @@
 ---
-title: 将现有的 Azure 服务总线标准命名空间迁移到高级层 |Microsoft Docs
+title: 将现有 Azure 服务总线标准命名空间迁移到高级层 |Microsoft Docs
 description: 若要允许现有 Azure 服务总线标准命名空间的迁移到高级版指南
 services: service-bus-messaging
 documentationcenter: ''
@@ -13,132 +13,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: aschhab
-ms.openlocfilehash: 7b153c36e10f1d4e2be2a0cf42f998c31cb6473a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: d2aa018566695b5b94cd8a7e64931a8b776b151d
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58896267"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766294"
 ---
-# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-premium-tier"></a>将现有的 Azure 服务总线标准命名空间迁移到高级层
+# <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
+以前，Azure 服务总线提供仅在标准层命名空间。 命名空间是适用于低吞吐量和开发人员环境的多租户设置。 高级级别提供的每个可预测的延迟和更高的吞吐量，以固定价格的命名空间的专用的资源。 高级层适用于高吞吐量和生产环境需要额外的企业级功能。
 
-以前，Azure 服务总线提供仅在标准层命名空间。 这些是已针对低吞吐量和开发人员环境优化了的多租户设置。
-
-最近，Azure 服务总线已扩展提供的高级层，它提供了每个可预测的延迟和更高的吞吐量，以固定价格进行了优化为较高的吞吐量和生产环境的命名空间的专用的资源需要额外的企业级功能。
-
-以下工具启用现有的标准层命名空间迁移到高级层。
+本文介绍如何将现有的标准层命名空间迁移到高级层。
 
 >[!WARNING]
-> 迁移用于为服务总线标准级别命名空间***升级***到高级层。
->
-> 迁移工具***却不***支持降级。
->[!NOTE]
-> 此迁移旨在发生***就地***。
->
-> 这意味着，现有的发送方和接收方应用程序不需要任何代码或配置更改。
->
-> 现有的连接字符串会自动指向新的高级命名空间。
->
-> 此外，对标准命名空间中的所有实体都都**复制**在迁移过程中的高级命名空间中。
->
->
-> 我们支持***1000 个实体，每个消息传送单元***高级版，因此，若要确定多少消息传送单元需要请开始使用你在你当前的标准命名空间的实体数。
+> 迁移适用于服务总线标准命名空间要升级到高级层。 迁移工具不支持降级。
+
+一些需要注意的要点： 
+- 此迁移应发生的位置，这意味着现有的发送方和接收方应用程序**不需要对代码或配置的任何更改**。 现有的连接字符串会自动指向新的高级命名空间。
+- **Premium**命名空间应具有**没有实体**中它为使迁移取得成功。 
+- 所有**实体**标准命名空间中都**复制**到在迁移过程中的高级命名空间。 
+- 迁移支持**1,000 个实体，每个消息传送单元**在高级层。 若要确定需要多少消息传送单元，开始对您当前的标准命名空间的实体数。 
 
 ## <a name="migration-steps"></a>迁移步骤
-
->[!IMPORTANT]
-> 有一些需要注意的问题与迁移过程相关联。 我们请求你完全了解了相关步骤便可减少错误的可能性。
-
-以下指南详细介绍具体的步骤的迁移过程。
-
-为所涉及的逻辑步骤-
+某些条件是迁移过程与相关联。 熟悉以下步骤以降低错误的可能性。 以下步骤概述了迁移的过程，并在后面的部分中列出的分步详细信息。
 
 1. 创建新的高级命名空间。
-2. 对每个其他的标准和高级命名空间。
-3. 从标准到高级命名空间的同步 （复制的） 实体
-4. 提交迁移
-5. 清空使用命名空间的迁移后名称对标准命名空间中的实体
-6. 删除标准命名空间
+1. 对每个其他的标准和高级命名空间。
+1. 同步 （复制的） 实体从标准到高级命名空间。
+1. 提交迁移。
+1. 通过使用迁移后的名称的命名空间的耗尽标准命名空间中的实体。
+1. 删除标准命名空间。
 
->[!NOTE]
-> 一旦迁移已提交，是非常重要，以访问旧的标准命名空间和清空队列和订阅。
->
-> 消息将具有已断开后它们可能会发送到新的高级命名空间由接收方应用程序进行处理。
->
-> 一旦队列和订阅具有将已断开，我们建议删除旧的标准命名空间。 您不需要使用它 ！
+>[!IMPORTANT]
+> 迁移已提交后，访问旧的标准命名空间，并清空队列和订阅。 消息已耗尽后，它们可能会发送到新的高级命名空间由接收方应用程序进行处理。 已清空队列和订阅后，我们建议您删除旧的标准命名空间。
 
-### <a name="migrate-using-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 迁移
+### <a name="migrate-by-using-the-azure-cli-or-powershell"></a>使用 Azure CLI 或 PowerShell 迁移
 
-若要将你的服务总线标准级别命名空间迁移到高级版使用 Azure CLI 或 PowerShell 工具，请参阅以下指南。
+若要使用 Azure CLI 或 PowerShell 工具将你的服务总线标准命名空间迁移到高级版，请执行以下步骤。
 
-1. 创建新的服务总线高级命名空间。 可以引用[Azure 资源管理器模板](service-bus-resource-manager-namespace.md)或[使用 Azure 门户](service-bus-create-namespace-portal.md)。 请务必选择"高级" **serviceBusSku**参数。
+1. 创建新的服务总线高级命名空间。 可以引用[Azure 资源管理器模板](service-bus-resource-manager-namespace.md)或[使用 Azure 门户](service-bus-create-namespace-portal.md)。 请务必选择**premium**有关**serviceBusSku**参数。
 
-2. 设置以下环境变量，从而简化迁移命令。
-   ```
+1. 设置以下环境变量以简化迁移命令。
+   ```azurecli
    resourceGroup = <resource group for the standard namespace>
    standardNamespace = <standard namespace to migrate>
-   premiumNamespaceArmId = <Azure Resource Manager ID of the Premium namespace to migrate to>
-   postMigrationDnsName = <post migration DNS name entry to access the Standard namespace>
+   premiumNamespaceArmId = <Azure Resource Manager ID of the premium namespace to migrate to>
+   postMigrationDnsName = <post migration DNS name entry to access the standard namespace>
    ```
 
     >[!IMPORTANT]
-    > 迁移后名称 (post_migration_dns_name) 将用于访问旧迁移的标准命名空间后。 必须使用此清空队列和订阅，然后删除该命名空间。
+    > 迁移后名称 (post_migration_dns_name) 将用于访问旧迁移的标准命名空间后。 使用此选项可清空队列和订阅，然后再删除该命名空间。
 
-3. **对**标准和高级命名空间和**开始同步**使用以下命令-
+1. 对标准和高级命名空间和启动同步。 使用以下命令：
 
-    ```
+    ```azurecli
     az servicebus migration start --resource-group $resourceGroup --name $standardNamespace --target-namespace $premiumNamespaceArmId --post-migration-name $postMigrationDnsName
     ```
 
 
-4. 检查状态迁移使用以下命令-
-    ```
+1. 使用以下命令检查迁移的状态：
+    ```azurecli
     az servicebus migration show --resource-group $resourceGroup --name $standardNamespace
     ```
 
-    迁移被视为完成时
+    当看到以下值时，被视为完成迁移：
     * MigrationState = "Active"
     * pendingReplicationsOperationsCount = 0
     * provisioningState = "Succeeded"
 
-    此命令还显示迁移配置。 请仔细检查以确保将值设置为上一个声明。
+    此命令还显示迁移配置。 检查以确保正确设置值。 此外检查以确保已创建所有队列和主题，并且它们与匹配内容存在于标准命名空间中在门户中的高级命名空间。
 
-    此外，还检查以确保已创建所有队列和主题，并且它们与匹配内容存在于标准命名空间上在门户中的高级命名空间。
-
-5. 通过执行下面的完整命令提交迁移
-   ```
+1. 通过执行以下完整命令提交迁移：
+   ```azurecli
    az servicebus migration complete --resource-group $resourceGroup --name $standardNamespace
    ```
 
-### <a name="migrate-using-azure-portal"></a>使用 Azure 门户迁移
+### <a name="migrate-by-using-the-azure-portal"></a>使用 Azure 门户迁移
 
-通过 Azure 门户的迁移都是为迁移使用的命令相同的逻辑流。 请参阅下面的分步过程的指南，使用门户进行迁移。
+使用 Azure 门户的迁移都是相同的逻辑流作为迁移使用命令。 请按照以下步骤来使用 Azure 门户迁移。
 
-1. 选取**迁移到高级版**从导航菜单上的左窗格中的菜单选项。 单击**开始**按钮可前进到下一步的页。
+1. 上**导航**的左窗格中，选择菜单**迁移到高级**。 单击**开始**按钮以继续进入到下一页。
     ![迁移登录页面][]
 
-2. 完整**安装程序**。
+1. 完整**安装程序**。
    ![安装程序命名空间][]
    1. 创建并分配要迁移到现有的标准命名空间的高级命名空间。
         ![设置命名空间-创建高级命名空间][]
-   2. 选取**迁移后 name**完成迁移后访问通过标准的命名空间。
+   1. 选择**Post 迁移名称**。 此名称将用于完成迁移后访问的标准命名空间。
         ![设置命名空间-选取 post 迁移名称][]
-   3. 单击**下一步**以继续。
-3. **同步**实体之间的标准和高级命名空间。
+   1. 选择**下一步**以继续。
+1. 标准和高级命名空间之间的同步实体。
     ![设置命名空间的同步实体-开始][]
 
-   1. 单击**开始同步**开始同步实体。
-   2. 单击**是**上弹出窗口中确认要启动同步。
-   3. 等待，直到**同步**已完成。 在状态栏上，将提供状态。
+   1. 选择**开始同步**开始同步实体。
+   1. 选择**是**在对话框中确认并开始同步。
+   1. 等待，直到同步已完成。 状态为状态栏上可用。
         ![设置命名空间的同步实体-进度][]
         >[!IMPORTANT]
-        > 如果你需要**中止**出于任何原因，请查看本文档的常见问题部分中的中止流。
-   4. 在同步完成后，单击**下一步**在页面底部的按钮。
+        > 如果你需要出于任何原因中止迁移，请查看本文档的常见问题部分中的中止流。
+   1. 在同步完成后，选择**下一步**页的底部。
 
-4. 查看摘要页上的更改。
-    ![命名空间的切换菜单切换][]
-
-5. 单击**完成迁移**切换命名空间并完成迁移。
+1. 查看摘要页上的更改。 选择**完成迁移**要切换的命名空间，以完成迁移。
+    ![命名空间的切换菜单切换][]迁移完成时，会显示确认页。
     ![开关命名空间-成功][]
 
 ## <a name="faqs"></a>常见问题解答
@@ -151,74 +127,68 @@ ms.locfileid: "58896267"
 
 ### <a name="what-do-i-do-after-the-standard-to-premium-migration-is-complete"></a>执行哪些操作的标准到高级版的迁移完成后，我？
 
-标准到高级迁移确保实体元数据 （主题、 订阅、 筛选器，等等） 会复制对从标准到高级命名空间。 已提交到标准命名空间的消息数据是不会复制从标准到高级命名空间。
+标准到高级迁移确保实体元数据，如主题、 订阅和筛选器会从标准命名空间复制到高级命名空间。 已提交到标准命名空间的消息数据不是从对标准命名空间复制到高级命名空间。
 
-因此，对标准命名空间可能已发送和提交迁移时的一些消息。 这些消息必须手动从标准 Namespace 排出并发送至高级 Namespace 手动。
+对标准命名空间可能已发送和提交迁移时的一些消息。 手动完从标准 Namespace 这些消息，然后手动将其发送到高级 Namespace。 若要手动释放消息，请使用一个控制台应用程序或通过使用迁移命令中指定的 Post 迁移 DNS 名称耗尽标准命名空间实体的脚本。 将这些消息发送到高级命名空间，以便它们可以由接收方处理。
 
-为此，你***必须***使用控制台应用程序或脚本清空使用标准命名空间实体**Post 迁移 DNS 名称**迁移命令中指定，然后发送这些消息上高级 Namespace，以便它们可以接收方处理。
-
-之后消息将具有已断开，请继续进行删除标准命名空间。
+消息已耗尽后，删除对标准命名空间。
 
 >[!IMPORTANT]
-> 请注意，对标准命名空间中的消息将具有已断开，一旦您**必须**删除标准命名空间。
->
-> 这非常重要，因为最初现在称为标准命名空间的连接字符串实际上引用的高级命名空间。 您不需要使用此标准 Namespace 不再。
->
-> 正在删除迁移可帮助对标准命名空间可以减少在以后的混淆。 
+> 标准命名空间中的消息已耗尽后，删除对标准命名空间。 这非常重要，因为最初现在称为标准命名空间的连接字符串是指高级命名空间。 不会不再需要标准 Namespace。 删除已迁移的标准命名空间可帮助减少更高版本的混淆。
 
 ### <a name="how-much-downtime-do-i-expect"></a>我预计停机时间？
-上面所述的迁移过程旨在减少应用程序的预期停机时间。 这是通过使用发送方和接收方应用程序用来指向新的高级命名空间的连接字符串。
+迁移过程旨在减少应用程序的预期停机时间。 通过使用发送方和接收方应用程序用来指向新的高级命名空间的连接字符串是减少了停机时间。
 
-经验丰富的应用程序的停机时间仅限于以更新 DNS 条目以指向高级命名空间所需的时间量。
+应用程序所经历的停机时间仅限于所需更新 DNS 条目以指向高级命名空间的时间。 停机时间为大约 5 分钟。
 
-这可以假定要***大约为 5 分钟***。
-
-### <a name="do-i-have-to-make-any-configuration-changes-while-performing-the-migration"></a>我是否需要执行迁移时进行任何配置更改？
-否，没有执行此迁移所需的代码/配置更改。 发送方和接收方应用程序用于访问标准 Namespace 的连接字符串进行自动映射，以充当**别名**的高级 Namespace。
+### <a name="do-i-have-to-make-any-configuration-changes-while-doing-the-migration"></a>我是否需要执行迁移时进行任何配置更改？
+否，没有执行迁移所需的代码或配置更改。 发送方和接收方应用程序用于访问标准 Namespace 的连接字符串进行自动映射，以充当高级命名空间的别名。
 
 ### <a name="what-happens-when-i-abort-the-migration"></a>当我中止迁移时，会发生什么情况？
-通过使用中止命令或通过 Azure 门户，可以中止迁移。 
+迁移可以中止使用`Abort`命令或通过使用 Azure 门户。 
 
-#### <a name="azure-cli-or-powershell"></a>Azure CLI 或 PowerShell
+#### <a name="azure-cli"></a>Azure CLI
 
-    az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
+```azurecli
+az servicebus migration abort --resource-group $resourceGroup --name $standardNamespace
+```
 
 #### <a name="azure-portal"></a>Azure 门户
 
 ![中止流-中止同步][]
 ![中止流-中止完成][]
 
-当中止迁移过程时，它实际上中止的实体 （主题、 订阅和筛选器） 通过复制过程从标准到高级命名空间，中断配对。
+在中止迁移过程，它会中止复制实体 （主题、 订阅和筛选器） 从标准到高级命名空间的过程并中断配对。
 
-连接字符串**不是**更新为指向高级命名空间。 将现有应用程序继续工作就像你在开始迁移前。
+连接字符串不会更新为指向高级命名空间。 将现有应用程序继续工作就像你在开始迁移前。
 
-但是，它**却不**删除高级命名空间上的实体，或者删除高级命名空间本身。 这必须如果您只是决定不继续进行迁移毕竟手动完成。
+但是，它不会删除高级命名空间上的实体，或者删除高级命名空间。 如果你决定不继续进行迁移，请手动删除这些实体。
 
 >[!IMPORTANT]
-> 如果您决定中止迁移，请删除已迁移时，配高级 Namespace，以便您无需支付资源。
+> 如果您决定中止迁移，删除高级，以便您无需支付资源已迁移配 Namespace。
 
 #### <a name="i-dont-want-to-have-to-drain-the-messages-what-do-i-do"></a>我不想必须清空这些消息。 我该怎么办？
 
-可能是由发件人应用程序发送和迁移正在进行，而提交到标准 Namespace 上存储的消息，在迁移之前的权限是已提交。
+可能是由发件人应用程序发送和迁移正在进行时和迁移提交之前只需提交到标准 Namespace 上存储的消息。
 
-考虑到在迁移期间，实际的消息数据/负载不会复制从标准到高级版，它们必须手动清空，然后发送到高级命名空间。
+在迁移期间，实际的消息数据/负载不被复制标准到高级命名空间。 消息必须手动清空，然后发送到高级命名空间。
 
-但是，如果在计划内的维护/维护时段内可以迁移并不想要手动清空和发送消息，请按以下步骤-
+但是，如果在计划内的维护/维护时段，可以迁移，并且不想要手动清空和发送消息，请按照下列步骤：
 
-1. 停止发件人应用程序，并允许接收方处理的消息的当前正在对标准命名空间和清空队列。
-2. 队列和标准 Namespace 中的订阅都为空，按照上述从标准到高级命名空间执行迁移过程。
-3. 在迁移完成后，可以重新启动的发件人应用程序。
-4. 发送者和接收者会立即自动连接与高级命名空间。
+1. 停止发件人应用程序。 接收方应用程序将处理的消息的当前处于标准命名空间中，将清空队列。
+1. 空的队列和标准 Namespace 中的订阅后，请按照前面所述从标准到高级命名空间执行迁移的过程。
+1. 在迁移完毕后，可以重新启动的发件人应用程序。
+1. 发送者和接收者会立即自动连接与高级命名空间。
 
     >[!NOTE]
-    > 为迁移，需要停止接收方。
+    > 无需停止迁移的接收方应用程序。
     >
-    > 在迁移完成后，接收方将断开与对标准命名空间的连接，并自动连接到高级命名空间。
+    > 在迁移完毕后，接收方应用程序将断开与对标准命名空间的连接，并自动连接到高级命名空间。
 
 ## <a name="next-steps"></a>后续步骤
 
-* 详细了解[标准和高级消息传送之间的差异](./service-bus-premium-messaging.md)
-* 了解用于服务总线高级版的高可用性和异地灾难恢复方面[此处](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)
+* 详细了解如何[标准和高级消息传送之间的差异](./service-bus-premium-messaging.md)。
+* 了解如何[服务总线高级版的高可用性和异地灾难恢复方面](service-bus-outages-disasters.md#protecting-against-outages-and-disasters---service-bus-premium)。
 
 [迁移登录页面]: ./media/service-bus-standard-premium-migration/1.png
 [安装程序命名空间]: ./media/service-bus-standard-premium-migration/2.png

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: article
 ms.date: 08/23/2018
-ms.openlocfilehash: 59c8effb4c5feae99755b7937f4796e8f11fde46
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 221bcbfb2517efae41005641321a651dfdf8e39f
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58895877"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759442"
 ---
 # <a name="connectors-for-azure-logic-apps"></a>Azure 逻辑应用的连接器
 
@@ -117,7 +117,7 @@ ms.locfileid: "58895877"
 
 |   |   |   |   | 
 |---|---|---|---| 
-| [![API 图标][as2-icon]<br/>**AS2</br> 解码**][as2-decode-doc] | [![API 图标][as2-icon]<br/>**AS2</br> 编码**][as2-encode-doc] | [![API 图标][edifact-icon]<br/>**EDIFACT</br> 解码**][edifact-decode-doc] | [![API 图标][edifact-icon]<br/>**EDIFACT</br> 编码**][edifact-encode-doc] | 
+| [![API 图标][as2-icon]<br/>**AS2</br> 解码**][as2-doc] | [![API 图标][as2-icon]<br/>**AS2</br> 编码**][as2-doc] | [![API 图标][edifact-icon]<br/>**EDIFACT</br> 解码**][edifact-decode-doc] | [![API 图标][edifact-icon]<br/>**EDIFACT</br> 编码**][edifact-encode-doc] | 
 | [![API 图标][flat-file-decode-icon]<br/>**平面文件</br>解码**][flat-file-decode-doc] | [![API 图标][flat-file-encode-icon]<br/>**平面文件</br>编码**][flat-file-encode-doc] | [![API 图标][integration-account-icon]<br/>**集成<br/>帐户**][integration-account-doc] | [![API 图标][liquid-icon]<br/>**Liquid**</br>**转换**][json-liquid-transform-doc] | 
 | [![API 图标][x12-icon]<br/>**X12</br> 解码**][x12-decode-doc] | [![API 图标][x12-icon]<br/>**X12</br> 编码**][x12-encode-doc] | [![API 图标][xml-transform-icon]<br/>**XML**</br>**转换**][xml-transform-doc] | [![API 图标][xml-validate-icon]<br/>**XML <br/>验证**][xml-validate-doc] |  
 ||||| 
@@ -257,8 +257,6 @@ ms.locfileid: "58895877"
 
 <!--Enterprise Intregation Pack doc links-->
 [as2-doc]: ../logic-apps/logic-apps-enterprise-integration-as2.md "了解企业集成 AS2。"
-[as2-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-as2-decode.md "了解企业集成 AS2 解码"
-[as2-encode-doc]:../logic-apps/logic-apps-enterprise-integration-as2-encode.md "了解企业集成 AS2 编码"
 [edifact-decode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "了解企业集成 EDIFACT 解码"
 [edifact-encode-doc]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "了解企业集成 EDIFACT 编码"
 [flat-file-decode-doc]:../logic-apps/logic-apps-enterprise-integration-flatfile.md "了解企业集成平面文件。"

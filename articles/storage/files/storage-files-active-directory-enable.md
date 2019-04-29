@@ -2,17 +2,17 @@
 title: 通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览）- Azure 存储
 description: 了解如何借助 Azure Active Directory (Azure AD) 域服务，通过 SMB（服务器消息块）为 Azure 文件启用基于标识的身份验证（预览）。 然后，加入域的 Windows 虚拟机 (VM) 可以使用 Azure AD 凭据访问 Azure 文件共享。
 services: storage
-author: tamram
+author: roygara
 ms.service: storage
 ms.topic: article
 ms.date: 01/02/2019
-ms.author: tamram
-ms.openlocfilehash: 796e104dd0b3b2cfdef2ee3515625cba0a9fdc1e
-ms.sourcegitcommit: 5978d82c619762ac05b19668379a37a40ba5755b
+ms.author: rogarana
+ms.openlocfilehash: 974a4341bd140da60c5e229a644657fe7ab02535
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55497105"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766423"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>通过 SMB 为 Azure 文件启用 Azure Active Directory 身份验证（预览）
 [!INCLUDE [storage-files-aad-auth-include](../../../includes/storage-files-aad-auth-include.md)]
@@ -35,7 +35,7 @@ ms.locfileid: "55497105"
 
 ![显示通过 SMB 为 Azure 文件启用 Azure AD 的工作流的图表](media/storage-files-active-directory-enable/azure-active-directory-over-smb-workflow.png)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 
 在通过 SMB 为 Azure 文件启用 Azure AD 之前，请确保满足以下先决条件：
 

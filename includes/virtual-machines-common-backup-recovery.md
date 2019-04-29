@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: virtual-machines
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/09/2018
-ms.author: cynthn
+origin.date: 03/09/2018
+ms.date: 04/16/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: 3dfc72ff0347a93c6c6dce0e7ec763dd8241c55b
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: HT
+ms.openlocfilehash: be71b269e618d13a126e4005754b307e9c6517d7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29958803"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60543698"
 ---
 ## <a name="azure-backup"></a>Azure 备份
 
@@ -22,7 +23,6 @@ ms.locfileid: "29958803"
 有关适用于 Azure VM 的 Azure 备份动手实践简介，请参阅适用于 [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 的“备份 Azure 虚拟机”教程。
 
 有关 Azure 备份工作原理的详细信息，请参阅[在 Azure 中计划 VM 备份基础结构](../articles/backup/backup-azure-vms-introduction.md)
-
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -40,8 +40,6 @@ ms.locfileid: "29958803"
 
 * [在 Windows 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [在 Linux 中使用快照创建存储为托管磁盘的 VHD 的副本](../articles/virtual-machines/linux/snapshot-copy-managed-disk.md)
-
-
 
 ## <a name="next-steps"></a>后续步骤
 可以按照适用于 [Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) 或 [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 的“备份 Windows 虚拟机教程”试用 Azure 备份。

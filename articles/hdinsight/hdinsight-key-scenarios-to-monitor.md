@@ -1,7 +1,6 @@
 ---
 title: 监视群集性能 - Azure HDInsight
 description: 如何监视 HDInsight 群集的容量和性能。
-services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
 ms.author: arindamc
-ms.openlocfilehash: 83cbb2a54ed712f8aa5084408ab852432470b73c
-ms.sourcegitcommit: 21466e845ceab74aff3ebfd541e020e0313e43d9
-ms.translationtype: MT
+ms.openlocfilehash: 22484885663a4f9a908ae988882b87612129251a
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53742467"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63763778"
 ---
 # <a name="monitor-cluster-performance"></a>监视群集性能
 
@@ -28,7 +27,7 @@ ms.locfileid: "53742467"
 
 若要概括地查看群集的节点及其负载，请登录到 [Ambari Web UI](hdinsight-hadoop-manage-ambari.md)，然后选择“主机”选项卡。将按主机完全限定域名列出主机。 每个主机的运行状态由一个彩色运行状况指示器进行显示：
 
-| 颜色 | Description |
+| 颜色 | 描述 |
 | --- | --- |
 | 红色 | 主机上至少有一个主组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |
 | 橙色 | 主机上至少有一个从属组件已关闭。 悬停鼠标以查看列出受影响组件的工具提示。 |

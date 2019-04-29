@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/15/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 4ffda692da0ab7b63f7376c36dfab0bec914e334
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: HT
+ms.openlocfilehash: da03c5247b8ebe0a3305b08a05d661264497663f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37138059"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60540781"
 ---
 * 如果使用 Azure SQL 数据库，请按照[连接到 Azure SQL 数据库](#connect-azure-sql-db)中的步骤进行操作。 
 
@@ -104,7 +104,7 @@ ms.locfileid: "37138059"
    | SQL 数据库名 | <my-sql-database>  | SQL 数据库名称 |
    | 用户名 | <my-sql-username> | 用于访问数据库的用户名称 |
    | 密码 | <my-sql-password> | 用于访问数据库的密码 | 
-   | 身份验证类型 | Windows 或基本 | 可选：SQL server 的身份验证类型 | 
+   | 身份验证类型 | Windows 或基本 | 可选：使用 SQL server 的身份验证类型 | 
    | 网关 | <my-data-gateway> | 本地数据网关的名称 | 
    |||| 
 

@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/19/2019
+ms.date: 4/25/2019
 ms.author: victorh
 ms.openlocfilehash: 9ab1a42578081d4e6537f221e3f3a8f4c7babde0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013504"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759615"
 ---
 # <a name="ssl-termination-with-key-vault-certificates"></a>使用密钥保管库证书的 SSL 终止
 

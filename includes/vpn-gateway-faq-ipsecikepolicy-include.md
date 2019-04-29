@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/14/2018
-ms.author: cherylmc
+origin.date: 12/14/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 36b3fcfa90b5b1de9c9d3262da1f3e519cc99c19
-ms.sourcegitcommit: 3ab534773c4decd755c1e433b89a15f7634e088a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/07/2019
-ms.locfileid: "53444005"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60456411"
 ---
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>是否所有 Azure VPN 网关 SKU 都支持自定义 IPsec/IKE 策略？
 自定义 IPsec/IKE 策略在 Azure VpnGw1、VpnGw2、VpnGw3、标准 VPN 网关和高性能 VPN 网关上受支持。 不支持基本 SKU。
@@ -92,16 +93,16 @@ SA 生存期是本地规范，不需匹配。
 是的。那样会导致短时中断（数秒），因为 Azure VPN 网关会断开现有连接并重启 IKE 握手，以便使用新的加密算法和参数重建 IPsec 隧道。 请确保也使用匹配的算法和密钥强度对本地 VPN 设备进行配置，尽量减少中断。
 
 ### <a name="can-i-use-different-policies-on-different-connections"></a>是否可以在不同的连接上使用不同的策略？
-是的。 自定义策略是在单个连接的基础上应用的。 可以在不同的连接上创建并应用不同的 IPsec/IKE 策略。 也可选择在连接子集上应用自定义策略。 剩余连接使用 Azure 默认 IPsec/IKE 策略集。
+可以。 自定义策略是在单个连接的基础上应用的。 可以在不同的连接上创建并应用不同的 IPsec/IKE 策略。 也可选择在连接子集上应用自定义策略。 剩余连接使用 Azure 默认 IPsec/IKE 策略集。
 
 ### <a name="can-i-use-the-custom-policy-on-vnet-to-vnet-connection-as-well"></a>是否也可在 VNet 到 VNet 连接上使用自定义策略？
 是的。可以在 IPsec 跨界连接或 VNet 到 VNet 连接上应用自定义策略。
 
 ### <a name="do-i-need-to-specify-the-same-policy-on-both-vnet-to-vnet-connection-resources"></a>是否需在两个 VNet 到 VNet 连接资源上指定同一策略？
-是的。 VNet 到 VNet 隧道包含 Azure 中的两个连接资源，一个方向一个资源。 请确保两个连接资源的策略相同，否则无法建立 VNet 到 VNet 连接。
+可以。 VNet 到 VNet 隧道包含 Azure 中的两个连接资源，一个方向一个资源。 请确保两个连接资源的策略相同，否则无法建立 VNet 到 VNet 连接。
 
 ### <a name="does-custom-ipsecike-policy-work-on-expressroute-connection"></a>能否在 ExpressRoute 连接上使用自定义 IPsec/IKE 策略？
-不是。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。
+不。 只能通过 Azure VPN 网关在 S2S VPN 和 VNet 到 VNet 连接上使用 IPsec/IKE 策略。
 
 ### <a name="where-can-i-find-more-configuration-information-for-ipsec"></a>在哪里可以找到有关 IPsec 的详细配置信息？
 请参阅[为 S2S 或 VNet 到 VNet 连接配置 IPsec/IKE 策略](../articles/vpn-gateway/vpn-gateway-ipsecikepolicy-rm-powershell.md)

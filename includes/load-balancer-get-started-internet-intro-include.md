@@ -1,15 +1,16 @@
 ---
-author: kumudD
+author: WenJason
 ms.service: load-balancer
 ms.topic: include
-ms.date: 11/09/2018
-ms.author: kumud
+origin.date: 11/09/2018
+ms.date: 12/31/2018
+ms.author: v-jay
 ms.openlocfilehash: 459c99d1b45af9c98cc1a6d0d7dd7a9a04c824ec
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269003"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60516982"
 ---
 Azure load balancer 是位于第 4 层 (TCP, UDP) 的负载均衡器。 该负载均衡器可以在云服务或负载均衡器集的虚拟机中运行状况良好的服务实例之间分配传入流量，从而提供高可用性。 Azure Load Balancer 还可以在多个端口和/或多个 IP 地址上显示这些服务。
 

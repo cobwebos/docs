@@ -3,8 +3,8 @@ title: 使用 Azure CLI 将数据磁盘添加到 Linux VM | Microsoft Docs
 description: 了解如何使用 Azure CLI 将持久性数据磁盘添加到 Linux VM
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
-manager: jeconnoc
+author: roygara
+manager: twooley
 editor: tysonn
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
@@ -13,15 +13,15 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 06/13/2018
-ms.author: cynthn
+ms.author: rogarana
 ms.custom: H1Hack27Feb2017
 ms.subservice: disks
-ms.openlocfilehash: 81805188c72bce6a7ea89496c8036743b29e9075
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.openlocfilehash: 1915051380a514cf8143d43bddc0d0d475f43c07
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188218"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765833"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>将磁盘添加到 Linux VM
 本文介绍了如何将持久性磁盘附加到 VM 以便持久保存数据 - 即使 VM 由于维护或调整大小而重新预配。

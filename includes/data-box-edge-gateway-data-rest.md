@@ -4,17 +4,17 @@ ms.service: databox
 ms.topic: include
 ms.date: 04/16/2019
 ms.author: alkohli
-ms.openlocfilehash: d8570c0be6b64d4e289575ce3f3f1721c4a65074
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 8a6ceee0f7db4b7b368dce1a28c8edc0b2b11180
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59684405"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754236"
 ---
-对数据的静态：
+对于静态数据：
 
-- 对数据的静态，BitLocker XTS AES-256 加密用于保护的本地数据。
-- 对于驻留在共享中的数据，对共享的访问权限受到限制。
+- 使用 BitLocker XTS AES 256 位加密来保护本地数据。
+- 只有权访问共享中存储的数据。
 
-    - 对于访问共享数据的 SMB 客户端，它们需要与共享相关联的用户凭据。 在共享创建时定义这些凭据。
-    - 对于访问共享的 NFS 客户端，需要在创建共享时添加客户端的 IP 地址。
+    - 访问共享数据的 SMB 客户端需要与共享相关联的用户凭据。 创建共享时定义这些凭据。
+    - 需要时创建了共享添加访问共享的 NFS 客户端的 IP 地址。

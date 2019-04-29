@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 5552e44fcca056bd4fd5b4fd19559adfbd005444
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: b05a7ce260e8cc1da4ac8a0c186694ae097a3b1e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59266182"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766370"
 ---
 # <a name="understand-the-deployment-sequence-in-azure-blueprints"></a>了解 Azure 蓝图中的部署排序
 
@@ -41,6 +41,9 @@ JSON 示例中的有些变量需要用自己的值替换：
 - 资源组子“角色分配”项目按项目名称排序
 - 资源组子“策略分配”项目按项目名称排序
 - 资源组子“Azure 资源管理器模板”项目按项目名称排序
+
+> [!NOTE]
+> 利用[artifacts()](../reference/blueprint-functions.md#artifacts)上所引用的项目创建隐式依赖项。
 
 ## <a name="customizing-the-sequencing-order"></a>自定义排序顺序
 

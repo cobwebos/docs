@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 02/01/2019
 ms.author: v-jansko
-ms.openlocfilehash: f69fd7af23c360edc208561f915bd351c3fd373c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 593cd83dab6e0cd93cdd1aedac278f4d94a27cc5
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60336790"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760592"
 ---
 # <a name="translator-text-api-30-translate"></a>文本翻译 API 3.0：Translate
 
@@ -42,11 +42,11 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>from</td>
-    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找[支持的语言](./v3-0-languages.md)，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。</td>
+    <td>可选参数。<br/>指定输入文本的语言。 可以使用 <code>translation</code> 范围来查找<a href="./v3-0-languages.md">支持的语言</a>，了解哪些语言可以翻译。 如果未指定 <code>from</code> 参数，则会应用自动语言检测来确定源语言。</td>
   </tr>
   <tr>
     <td>至</td>
-    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <code>translation</code> 范围中包含的[支持的语言](./v3-0-languages.md)之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
+    <td>必需参数。<br/>指定输出文本的语言。 目标语言必须是 <code>translation</code> 范围中包含的<a href="./v3-0-languages.md">支持的语言</a>之一。 例如，若要翻译为德语，请使用 <code>to=de</code>。<br/>可以在查询字符串中重复使用此参数，这样就可以同时翻译为多种语言。 例如，若要翻译为德语和意大利语，请使用 <code>to=de&to=it</code>。</td>
   </tr>
   <tr>
     <td>textType</td>
@@ -54,15 +54,15 @@ https://api.cognitive.microsofttranslator.com/translate?api-version=3.0
   </tr>
   <tr>
     <td>category</td>
-    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用[自定义翻译工具](../customization.md)构建的自定义系统获取翻译。 将自定义翻译器项目的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
+    <td>可选参数。<br/>一个字符串，指定翻译的类别（领域）。 此参数用于从一个使用<a href="../customization.md">自定义翻译工具</a>构建的自定义系统获取翻译。 将自定义翻译器项目的类别 ID 添加到此参数，以便使用已部署的自定义系统。 默认值为 <code>general</code>。</td>
   </tr>
   <tr>
     <td>profanityAction</td>
-    <td>可选参数。<br/>指定在翻译时应如何处理不雅内容。 可能的值为 <code>NoAction</code>（默认）<code>Marked</code> 或 <code>Deleted</code>。 若要了解处理不雅内容的方式，请参阅[处理不雅内容](#handle-profanity)。</td>
+    <td>可选参数。<br/>指定在翻译时应如何处理不雅内容。 可能的值为 <code>NoAction</code>（默认）<code>Marked</code> 或 <code>Deleted</code>。 若要了解处理不雅内容的方式，请参阅<a href="#handle-profanity">处理不雅内容</a>。</td>
   </tr>
   <tr>
     <td>profanityMarker</td>
-    <td>可选参数。<br/>指定在翻译时应如何标记不雅内容。 可能的值为 <code>Asterisk</code>（默认）<code>Tag</code>。 若要了解处理不雅内容的方式，请参阅[处理不雅内容](#handle-profanity)。</td>
+    <td>可选参数。<br/>指定在翻译时应如何标记不雅内容。 可能的值为 <code>Asterisk</code>（默认）<code>Tag</code>。 若要了解处理不雅内容的方式，请参阅<a href="#handle-profanity">处理不雅内容</a>。</td>
   </tr>
   <tr>
     <td>includeAlignment</td>

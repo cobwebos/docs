@@ -11,24 +11,27 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.custom: seodec18
-ms.openlocfilehash: 9aea7a9c9dd96bf30ebb3def9354df9e4bd30114
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
+ms.openlocfilehash: dd4c5e1652eb4dbff66591aa4bbe74e51be3e6c0
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53558509"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63759545"
 ---
 # <a name="grant-data-access-to-an-environment"></a>授予对环境的数据访问权限
 
 本文讨论了两种类型的 Azure 时序见解预览版访问策略。
 
-## <a name="grant-data-access"></a>授予数据访问权限
-
-遵循以下步骤向用户主体授予数据访问权限。
+## <a name="sign-in-to-tsi"></a>登录到 TSI
 
 1. 登录到 [Azure 门户](https://portal.azure.com/)。
 1. 查找时序见解环境。 在“搜索”框中输入 `Time Series`。 在搜索结果中选择“时序环境”。
 1. 从列表中选择时序见解环境。
+
+## <a name="grant-data-access"></a>授予数据访问权限
+
+遵循以下步骤向用户主体授予数据访问权限。
+
 1. 选择“数据访问策略”，然后选择“+ 添加”。
 
     ![Data-access-one][1]
@@ -55,15 +58,12 @@ ms.locfileid: "53558509"
 
     ![Data-access-five][5]
 
-## <a name="provide-guest-access-to-a-user-from-another-azure-active-directory-tenant"></a>向另一个 Azure Active Directory 租户的用户提供来宾访问权限
+## <a name="provide-guest-access-from-another-aad-tenant"></a>提供从另一个 AAD 租户来宾访问
 
 `Guest` 不是管理角色。 它是一个术语，是指从一个租户被邀请到另一个租户的帐户。 在将来宾帐户邀请到租户目录后，它就可以像任何其他帐户一样拥有相同的访问控制。 可以使用“访问控制(IAM)”边栏选项卡授予对时序见解环境的管理访问权限。 也可以通过“数据访问策略”边栏选项卡授予对环境中数据的访问权限。 若要详细了解 Azure Active Directory (Azure AD) 租户来宾访问权限，请阅读[在 Azure 门户中添加 Azure Active Directory B2B 协作用户](https://docs.microsoft.com/azure/active-directory/b2b/add-users-administrator)。
 
 请按照以下步骤将来宾对时序见解环境的访问权限授予另一个租户的 Azure AD 用户。
 
-1. 登录到 [Azure 门户](https://portal.azure.com/)。
-1. 查找时序见解环境。 在“搜索”框中，输入“时序见解”。 在搜索结果中选择“时序环境”。
-1. 从列表中选择时序见解环境。
 1. 选择“数据访问策略”，然后选择“+ 邀请”。
 
     ![Data-access-six][6]
@@ -112,12 +112,14 @@ ms.locfileid: "53558509"
 
     ![Data-access-fifteen][15]
 
-当来宾用户选择你的租户后，他们会看到你为他们提供访问权限的时序见解环境。 现在，他们拥有了与你在步骤 8 中提供的角色相关联的所有功能。
+当来宾用户选择你的租户后，他们会看到你为他们提供访问权限的时序见解环境。 他们现在还具有与提供这些与中的角色相关联的所有功能**步骤 5**。
 
 ## <a name="next-steps"></a>后续步骤
 
 * 了解[如何将 Azure 事件中心事件源添加到](./time-series-insights-how-to-add-an-event-source-eventhub.md)时序见解环境。
+
 * 发送[事件到事件源](./time-series-insights-send-events.md)。
+
 * [在时序见解预览版资源管理器中查看环境](./time-series-insights-update-explorer.md)。
 
 <!-- Images -->

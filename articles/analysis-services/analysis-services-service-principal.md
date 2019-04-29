@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/23/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: b10be061e015686c68684723fd2d73c1431c7266
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: a440494b183d18c1d888b5d39836eb4317190d02
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699400"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63764329"
 ---
 # <a name="automation-with-service-principals"></a>使用服务主体进行自动化
 
@@ -47,13 +47,37 @@ ms.locfileid: "59699400"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用以进行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 将服务主体与 [SQLServer](https://www.powershellgallery.com/packages/SqlServer) 模块配合使用以进行服务器操作时，请使用 `Add-AzAnalysisServicesAccount` cmdlet。 
+#### <a name="a-nameazmodule-using-azanalysisservices-module"></a><a name="azmodule" />使用 Az.AnalysisServices 模块
+
+将服务主体与 [Az.AnalysisServices](/powershell/module/az.analysisservices) 模块配合使用以进行资源管理操作时，请使用 `Connect-AzAccount` cmdlet。 
+
+在以下示例中，使用 appID 和密码来执行同步到只读副本的控制平面操作和缩放水平/横向扩展：
+
+```powershell
+Param (
+        [Parameter(Mandatory=$true)] [String] $AppId,
+        [Parameter(Mandatory=$true)] [String] $PlainPWord,
+        [Parameter(Mandatory=$true)] [String] $TenantId
+       )
+$PWord = ConvertTo-SecureString -String $PlainPWord -AsPlainText -Force
+$Credential = New-Object -TypeName "System.Management.Automation.PSCredential" -ArgumentList $AppId, $PWord
+
+# Connect using Az module
+Connect-AzAccount -Credential $Credential -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxxx"
+
+# Syncronize a database for query scale out
+Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/testsvr" -Database "testdb"
+
+# Scale up the server to an S1, set 2 read-only replicas, and remove the primary from the query pool. The new replicas will hydrate from the synchronized data.
+Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
+```
+
+#### <a name="using-sqlserver-module"></a>使用 SQLServer 模块
 
 以下示例使用 appID 和密码执行模型数据库刷新操作：
 
 ```powershell
 Param (
-
         [Parameter(Mandatory=$true)] [String] $AppId,
         [Parameter(Mandatory=$true)] [String] $PlainPWord,
         [Parameter(Mandatory=$true)] [String] $TenantId

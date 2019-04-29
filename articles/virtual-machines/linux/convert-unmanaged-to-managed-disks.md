@@ -4,7 +4,7 @@ description: 如何在资源管理器部署模型中使用 Azure CLI 将 Linux V
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
-manager: jeconnoc
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 12/15/2017
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 39a42891a73bd64731dd19aa22214a62d913d975
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.openlocfilehash: d1783890ba1b304ab658e827bfd24091e208fda4
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55700819"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63765696"
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>将 Linux 虚拟机从非托管磁盘转换为托管磁盘
 

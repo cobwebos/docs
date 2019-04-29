@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60482632"
 ---
 #### <a name="to-attach-the-sas-cables"></a>连接 SAS 电缆
 1. 识别主机箱与 EBOD 机箱。 可以通过查看相应的背板来识别这两个机箱。 请参考下图。 
@@ -18,9 +18,9 @@ ms.locfileid: "55889147"
    
     **主机箱与 EBOD 机箱的后视图**
    
-   | Label | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
-   | 1 |主机箱 |
+   | 第 |主机箱 |
    | 2 |EBOD 机箱 |
 2. 找到主机箱与 EBOD 机箱的序号。 序号标签粘贴在每个机箱的背面。 两个机箱上的序号必须相同。 如果序号不相同，请立即[联系 Microsoft 支持](../articles/storsimple/storsimple-contact-microsoft-support.md)。 参考下图找到序号。
    
@@ -28,7 +28,7 @@ ms.locfileid: "55889147"
    
     **序号标签位置**
    
-   | Label | 说明 |
+   | Label | 描述 |
    |:--- |:--- |
    | 1 |机箱的吊耳 |
 3. 接下来，使用提供的 SAS 电缆连接主机箱与 EBOD 机箱，如下所示：
@@ -41,7 +41,7 @@ ms.locfileid: "55889147"
       
       **SAS 布线**
       
-      | Label | 说明 |
+      | Label | 描述 |
       |:--- |:--- |
       | A |主机箱 |
       | B |EBOD 机箱 |

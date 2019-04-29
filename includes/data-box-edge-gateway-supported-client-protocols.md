@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 03/19/2019
 ms.author: alkohli
 ms.openlocfilehash: f84655ecb31eed4cca1e3960e7e426a4eb653032
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58305391"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60754542"
 ---
 下面是访问设备的客户端支持的协议。
 

@@ -2,7 +2,6 @@
 title: 适用于 Apache Hadoop、Apache Spark、Apache Kafka、Apache HBase 或 R Server 的群集设置 - Azure HDInsight
 description: 通过浏览器、Azure 经典 CLI、Azure PowerShell、REST 或 SDK 为 HDInsight 设置 Hadoop、Kafka、Spark、HBase、R Server 或 Storm 群集。
 keywords: hadoop 群集设置, kafka 群集设置, spark 群集设置, 什么是 hadoop 群集
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -10,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: conceptual
 ms.date: 01/28/2019
-ms.openlocfilehash: 33a882e8543f1a57afe9207f7a7263ec39530a0c
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
+ms.openlocfilehash: 3ccff4409dde92a23ccdbb1c31af687449bf9d48
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817916"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766365"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-apache-hadoop-apache-spark-apache-kafka-and-more"></a>使用 Apache Hadoop、Apache Spark、Apache Kafka 及其他组件在 HDInsight 中设置群集
 
@@ -59,9 +58,9 @@ Hadoop 群集由用于对任务进行分布式处理的多个虚拟机（节点�
 
 ## <a name="resource-group-name"></a>资源组名称 
 
-可以借助 [Azure 资源管理器](../azure-resource-manager/resource-group-overview.md)以组（称为 Azure 资源组）的形式处理应用程序中的资源。 可以通过单个协调的操作部署、更新、监视或删除应用程序的所有资源。
+可以借助 [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) 以组（称为 Azure 资源组）的形式处理应用程序中的资源。 可以通过单个协调的操作部署、更新、监视或删除应用程序的所有资源。
 
-## <a name="cluster-types"></a> 群集类型和配置
+## <a name="cluster-types"></a>群集类型和配置
 Azure HDInsight 目前提供以下几种群集类型，每种类型都具有一组用于提供特定功能的组件。
 
 > [!IMPORTANT]  

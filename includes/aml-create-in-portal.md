@@ -10,11 +10,11 @@ ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
 ms.openlocfilehash: 05331c710817e575deb7729189c9b2d8ccbafd7d
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54489531"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60753803"
 ---
 1. 使用将所使用的 Azure 订阅的凭据登录到 [Azure 门户](https://portal.azure.com/)。 
 
@@ -34,12 +34,12 @@ ms.locfileid: "54489531"
 
 1. 在“机器学习服务工作区”窗格中，配置工作区。
 
-   字段|说明
+   字段|描述
    ---|---
    工作区名称 |输入用于标识工作区的唯一名称。 本示例使用 docs-ws。 名称在整个资源组中必须唯一。 使用易于记忆且区别于其他人所创建工作区的名称。  
    订阅 |选择要使用的 Azure 订阅。
    资源组 | 使用订阅中的现有资源组，或者输入一个名称，创建新的资源组。 资源组是用于保存 Azure 解决方案相关资源的容器。 本示例使用 docs-aml。 
-   位置 | 选择最靠近用户和数据资源的位置。 这是用于创建工作区的位置。
+   Location | 选择最靠近用户和数据资源的位置。 这是用于创建工作区的位置。
 
    ![创建工作区](./media/aml-create-in-portal/workspace-create.png)
 

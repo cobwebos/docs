@@ -8,20 +8,20 @@ ms.date: 04/20/2019
 ms.topic: conceptual
 ms.service: resource-graph
 manager: carmonm
-ms.openlocfilehash: f4618e945db443e8d7cf9fdcc49e20e5a09ebd39
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 0ae85b45dfcd80056316ed5f2099aab4057d24c8
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013488"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63760808"
 ---
 # <a name="get-resource-changes"></a>获取资源更改
 
 资源获取通过每日使用、 重新配置，以及甚至重新部署的更改。
 更改可以来自个人或通过自动化过程。 大多数更改是设计使然，但有时不是。 与过去 14 天的更改历史记录，Azure 资源图形，可以：
 
-- 在 Azure 资源管理器属性上检测到更改时，发现。
-- 请参阅属性更改为该更改事件的一部分。
+- 查找在 Azure 资源管理器属性上检测到更改的时间。
+- 了解在更改事件中已更改的属性。
 
 更改检测和详细信息很有价值的以下示例方案：
 
@@ -39,7 +39,7 @@ ms.locfileid: "60013488"
 
 ## <a name="find-when-changes-were-detected"></a>查找时检测到更改
 
-查看资源更改的内容的第一步是时间的要查找与该资源的时间段内相关的更改事件。 通过完成此步骤[resourceChanges](/rest/api/azureresourcegraph/resourceChanges) REST 终结点。
+查看资源更改的内容的第一步是时间的要查找与该资源的时间段内相关的更改事件。 通过完成此步骤**resourceChanges** REST 终结点。
 
 **ResourceChanges**终结点需要在请求正文中的两个参数：
 
@@ -95,7 +95,7 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 
 ## <a name="see-what-properties-changed"></a>查看属性的更改
 
-与**changeId**从**resourceChanges**终结点， [resourceChangeDetails](/rest/api/azureresourcegraph/resourceChangeDetails) REST 终结点，然后用于获取更改事件的详细信息。
+与**changeId**从**resourceChanges**终结点， **resourceChangeDetails** REST 终结点，然后用于获取更改事件的详细信息。
 
 **ResourceChangeDetails**终结点需要在请求正文中的两个参数：
 
@@ -108,7 +108,6 @@ POST https://management.azure.com/providers/Microsoft.ResourceGraph/resourceChan
 {
     "resourceId": "/subscriptions/{subscriptionId}/resourceGroups/MyResourceGroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount",
     "changeId": "53dc0515-b86b-4bc2-979b-e4694ab4a556"
-    }
 }
 ```
 

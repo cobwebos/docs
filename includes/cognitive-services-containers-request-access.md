@@ -1,15 +1,16 @@
 ---
 author: diberry
-ms.author: diberry
+ms.author: v-junlch
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 01/24/2019
+origin.date: 01/24/2019
+ms.date: 02/21/2019
 ms.openlocfilehash: 11a336bbcf75c6c4de61f1bb681ab6ee7aa05650
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56741061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60815639"
 ---
 在请求访问容器之前，必须先填写并提交[认知服务视觉容器请求表单](https://aka.ms/VisionContainersPreview)。 通过该表单请求有关你、你的公司以及要使用该容器的用户方案的信息。 提交后，Azure 认知服务团队可以检查表单，以确保满足访问专用容器注册表的条件。
 
@@ -34,3 +35,5 @@ docker login containerpreview.azurecr.io -u <username> -p <password>
 cat <passwordFile> | docker login containerpreview.azurecr.io -u <username> --password-stdin
 ```
 
+
+<!-- ms.date: 02/21/2019 -->
