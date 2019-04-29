@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
 ms.openlocfilehash: 4082847e1871fc03713471b0c043dddb80f91b0d
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57769227"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110338"
 ---
 # <a name="targeting-monitoring-solutions-in-azure-monitor-preview"></a>在 Azure Monitor 中设定监视解决方案的目标（预览版）
 向订阅添加监视解决方案时，默认情况下会自动将它部署到连接到 Log Analytics 工作区的所有 Windows 和 Linux 代理。  你可能希望管理成本，并通过将解决方案的应用范围限制为特定的一组代理来限制为解决方案收集的数据量。  本文介绍了如何使用“解决方案目标”，这是一种允许向解决方案界定一个范围的功能。

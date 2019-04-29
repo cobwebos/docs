@@ -1,7 +1,6 @@
 ---
 title: Azure HDInsight 上的 ML Services 简介
 description: 了解如何使用 HDInsight 上的 ML Services 创建用于大数据分析的应用程序。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: a07f052cf89da039bb9fe091f1cd997c19d2fcc7
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
+ms.openlocfilehash: 56a11a17de3c66a3d45edb71c72be20ce1a1c89e
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53584524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124724"
 ---
 # <a name="introduction-to-ml-services-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight 上的 ML Services 和开放源代码 R 功能简介
 
@@ -61,7 +60,7 @@ HDInsight 中的 ML Services 具有下述优势：
 
 HDInsight 上的 ML Services 包含以下功能。
 
-| 功能类别 | Description |
+| 功能类别 | 描述 |
 |------------------|-------------|
 | 支持 R | 适用于以 R 编写的解决方案的 [R 包](https://docs.microsoft.com/machine-learning-server/r-reference/introducing-r-server-r-package-reference)，R 开源分发版和用于执行脚本的运行时基础结构。 |
 | 支持 Python | 适用于以 Python 编写的解决方案的 [Python 模块](https://docs.microsoft.com/machine-learning-server/python-reference/introducing-python-package-reference)，Python 开源分发版和用于执行脚本的运行时基础结构。

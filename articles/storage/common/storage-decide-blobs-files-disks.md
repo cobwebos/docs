@@ -9,11 +9,11 @@ ms.date: 11/28/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 869d2105ccf635a46a21e9b7f382ddbef713d68b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483411"
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>确定何时使用 Azure Blob、Azure 文件或 Azure 磁盘
 Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访问数据。 本文介绍 Azure 文件、Blob 和磁盘，旨在帮助用户选择合适的功能。
@@ -21,9 +21,9 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 ## <a name="scenarios"></a>方案
 下表比较了文件、Blob 和磁盘，并显示每种技术适合的示例情景。
 
-| Feature | 说明 | 使用时机 |
+| Feature | 描述 | 使用时机 |
 |--------------|-------------|-------------|
-| **Azure 文件** | 提供 SMB 接口、客户端库，以及一个用于从任意位置访问所存储的文件的 [REST 接口](/rest/api/storageservices/file-service-rest-api)。 | 可让你将某个已使用本机文件系统 API 在自身与在 Azure 中运行的其他应用程序之间共享数据的应用程序“即时转移”到云中。<br/><br/>可让你存储需要从许多虚拟机访问的开发和调试工具。 |
+| Azure 文件 | 提供 SMB 接口、客户端库，以及一个用于从任意位置访问所存储的文件的 [REST 接口](/rest/api/storageservices/file-service-rest-api)。 | 可让你将某个已使用本机文件系统 API 在自身与在 Azure 中运行的其他应用程序之间共享数据的应用程序“即时转移”到云中。<br/><br/>可让你存储需要从许多虚拟机访问的开发和调试工具。 |
 | **Azure Blob** | 提供客户端库，以及一个可用于在块 blob 中大规模存储和访问非结构化数据的 [REST 接口](/rest/api/storageservices/blob-service-rest-api)。<br/><br/>还支持 [Azure Data Lake Storage Gen2](../blobs/data-lake-storage-introduction.md)，用于企业大数据分析解决方案。 | 使应用程序能够支持流式处理和随机访问方案。<br/><br/>可让你从任意位置访问应用程序数据。<br/><br/>想要在 Azure 上生成企业数据湖并执行大数据分析。 |
 | **Azure 磁盘** | 提供客户端库和 [REST 接口](/rest/api/compute/manageddisks/disks/disks-rest-api)，借助该接口可通过附加的虚拟硬盘永久地存储和访问数据。 | 可让你即时转移使用本机文件系统 API 在持久性磁盘中读取和写入数据的应用程序。<br/><br/>可让你存储不需要从磁盘附加到的虚拟机外部访问的数据。 |
 
@@ -32,7 +32,7 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
   
 ||||  
 |-|-|-|  
-|**属性**|**Azure Blob**|**Azure 文件**|  
+|属性|**Azure Blob**|**Azure 文件**|  
 |持久性选项|LRS、ZRS、GRS、RA-GRS|LRS、ZRS、GRS|  
 |可访问性|REST API|REST API<br /><br /> SMB 2.1 和 SMB 3.0（标准文件系统 API）|  
 |连接|REST API - 全球|REST API - 全球<br /><br /> SMB 2.1 - 区域内部<br /><br /> SMB 3.0 - 全球|  
@@ -43,7 +43,7 @@ Microsoft Azure 在 Azure 存储中提供多种功能用于在云中存储和访
 |Throughput|每个块 Blob 高达 60 MiB/秒|每个共享高达 60 MiB/秒|  
 |对象大小|每个块 blob 最多大约 4.75 TiB|每个文件最多为 1 TiB|  
 |计费容量|基于写入的字节数|基于文件大小|  
-|客户端库|多语言|多语言|  
+|客户端库|多种语言|多语言|  
   
 ## <a name="comparison-files-and-disks"></a>比较：文件和磁盘
 Azure 文件是对 Azure 磁盘的补充。 一个磁盘每次只能附加到一个 Azure 虚拟机。 磁盘是作为页 blob 存储在 Azure 存储中的固定格式 VHD，由虚拟机用来存储持久性数据。 可以像访问本地磁盘一样访问 Azure 文件中的文件共享（使用本机文件系统 API），后者可在多个虚拟机之间共享。  

@@ -9,11 +9,11 @@ ms.date: 07/31/2018
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 64cfac0d689df88c4d432e772bcd0a0cc7ab4ade
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317674"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478074"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>监视 Azure 门户中的存储帐户
 
@@ -41,7 +41,7 @@ ms.locfileid: "58317674"
    若要设置数据保留策略，请移动“保留期(天)”滑块，或输入数据的保留天数（1 到 365 天）。 新存储帐户的默认保留期为 7 天。 如果不需要设置保留策略，请输入零。 如果没有保留策略，则是否删除监视数据由自己决定。
 
    > [!WARNING]
-   > 手动删除指标数据会产生费用。 陈旧的分析数据（超过保留策略的数据）将被系统删除，不会产生费用。 建议根据要将帐户的存储分析数据保留多长时间来设置保留策略。 请参阅[帐单存储度量值](storage-analytics-metrics.md#billing-on-storage-metrics)有关详细信息。
+   > 手动删除指标数据会产生费用。 陈旧的分析数据（超过保留策略的数据）将被系统删除，不会产生费用。 建议根据要将帐户的存储分析数据保留多长时间来设置保留策略。 有关详细信息，请参阅[按存储指标计费](storage-analytics-metrics.md#billing-on-storage-metrics)。
    >
 
 1. 完成监视配置后，选择“保存”。
@@ -138,7 +138,7 @@ ms.locfileid: "58317674"
 
 诊断日志保存在存储帐户下名为 $logs 的 Blob 容器中。 可以使用 [Microsoft 存储资源管理器](https://storageexplorer.com)等存储资源管理器，或者使用存储客户端库或 PowerShell 以编程方式来查看日志数据。
 
-有关访问 $logs 容器的信息，请参阅[存储分析日志记录](storage-analytics-logging.md)。
+有关如何访问 $logs 容器的信息，请参阅[存储分析日志记录](storage-analytics-logging.md)。
 
 ## <a name="next-steps"></a>后续步骤
 

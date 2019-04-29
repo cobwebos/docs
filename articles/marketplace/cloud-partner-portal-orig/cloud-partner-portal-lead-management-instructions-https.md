@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 12/24/2018
 ms.author: pbutlerm
 ms.openlocfilehash: cfcd154b2f44c9e8acf12a9666abc9ce95fb3c26
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648344"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124048"
 ---
 # <a name="configure-lead-management-using-an-https-endpoint"></a>使用 HTTPS 终结点配置潜在顾客管理
 

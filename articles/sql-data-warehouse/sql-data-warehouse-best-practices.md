@@ -11,11 +11,11 @@ ms.date: 11/26/2018
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: 519eae012db30d772a388865380e4909d91b711a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57878136"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476849"
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL 数据仓库最佳实践
 本文包含一系列最佳实践，可帮助你从 Azure SQL 数据仓库获得最佳性能。  本文的有些概念很基本且很容易解释，而有些概念则相对高级，本文只对其进行大致介绍。  本文的目的是提供一些基本指导，让用户在生成数据仓库时更加关注那些重要的方面。  每部分都介绍一个概念，并提供哪里可以阅读深度介绍的详细文章。
@@ -49,7 +49,7 @@ SQL 数据仓库支持通过多种工具（包括 Azure 数据工厂、PolyBase�
 另请参阅 [Guide for using PolyBase][Guide for using PolyBase]（PolyBase 使用指南）
 
 ## <a name="hash-distribute-large-tables"></a>哈希分布大型表
-默认情况下，表是以轮循机制分布的。  这可让用户更容易开始创建表，而不必确定应该如何分布其表。  轮循机制表在某些工作负荷中执行良好，但大多数情况下，选择分布列的执行性能将更好。  按列分布表的性能远远高于轮循机制表的最常见例子是联接两个大型事实表。  例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作会被消除。  减少步骤意味着加快查询速度。  更少的数据移动也将让查询更快。  这种解释较为粗略。 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  请参阅以下链接很多有关如何选择分布列可以提高性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义的分布式的表的详细信息。
+默认情况下，表是以轮循机制分布的。  这可让用户更容易开始创建表，而不必确定应该如何分布其表。  轮循机制表在某些工作负荷中执行良好，但大多数情况下，选择分布列的执行性能将更好。  按列分布表的性能远远高于轮循机制表的最常见例子是联接两个大型事实表。  例如，如果有一个依 order_id 分布的订单表，以及一个也是依 order_id 分布的事务表，如果将订单数据联接到事务表上的 order_id，此查询将变成传递查询，也就是数据移动操作会被消除。  减少步骤意味着加快查询速度。  更少的数据移动也将让查询更快。  这种解释较为粗略。 加载分布的表时，请确保传入数据的分布键没有排序，因为这会拖慢加载速度。  有关选择分布列如何能提升性能，以及如何在 CREATE TABLE 语句的 WITH 子句中定义分布表的详细信息，请参阅以下链接。
 
 另请参阅[表概述][Table overview]、[表分布][Table distribution]、[Selecting table distribution][Selecting table distribution]（选择表分布）、[CREATE TABLE][CREATE TABLE]、[CREATE TABLE AS SELECT][CREATE TABLE AS SELECT]
 

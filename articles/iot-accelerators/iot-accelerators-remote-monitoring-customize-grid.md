@@ -3,17 +3,18 @@ title: 向远程监视解决方案 UI 添加网格 - Azure | Microsoft Docs
 description: 本文介绍如何在远程监视解决方案加速器 Web UI 中的页面上添加新网格。
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/04/2018
+origin.date: 10/04/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: a24cb7f39ccb8ea07d4dde2869dc7c924b91983a
-ms.sourcegitcommit: 345b96d564256bcd3115910e93220c4e4cf827b3
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52496443"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447091"
 ---
 # <a name="add-a-custom-grid-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义网格
 
@@ -24,7 +25,7 @@ ms.locfileid: "52496443"
 
 本文中的示例网格显示来自服务的数据，在[向远程监视解决方案加速器 Web UI 添加自定义服务](iot-accelerators-remote-monitoring-customize-service.md)操作指南文章中介绍了服务的添加方法。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
@@ -48,11 +49,11 @@ ms.locfileid: "52496443"
 
 **exampleGrid.js**
 
-[!code-javascript[Example grid](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGrid.js?name=grid "Example grid")]
+
 
 **exampleGridConfig.js**
 
-[!code-javascript[Example grid configuration](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithGrid/exampleGrid/exampleGridConfig.js?name=gridconfig "Example grid configuration")]
+
 
 将 src/walkthrough/components/pages/pageWithGrid/exampleGrid 文件夹复制到 src/components/pages/example 文件夹。
 
@@ -239,7 +240,7 @@ npm start
     ```js
     doSomething = () => {
       //Just for demo purposes. Don't console log in a real grid.
-      console.log('Hard selected rows', this.gridApi.getSelectedRows());
+      console.log('hard selected rows', this.gridApi.getSelectedRows());
     };
     ```
 
@@ -263,16 +264,16 @@ npm start
 1. 单击软选择链接后，触发 onSoftSelectChange 事件。 对该行执行所需的任何操作，例如打开详细信息浮出控件。 此示例仅写入控制台：
 
     ```js
-    onSoftSelectChange = (rowId, rowData) => {
-      //Note: only the Id is reliable, rowData may be out of date
+    onSoftSelectChange = (rowId, rowEvent) => {
       const { onSoftSelectChange } = this.props;
-      if (rowId) {
+      const obj = (this.gridApi.getDisplayedRowAtIndex(rowId) || {}).data;
+      if (obj) {
         //Just for demo purposes. Don't console log a real grid.
-        console.log('Soft selected', rowId);
-        this.setState({ softSelectedId: rowId });
+        console.log('Soft selected', obj);
+        this.setState({ softSelectedObj: obj });
       }
       if (isFunc(onSoftSelectChange)) {
-        onSoftSelectChange(rowId, rowData);
+        onSoftSelectChange(obj, rowEvent);
       }
     }
     ```

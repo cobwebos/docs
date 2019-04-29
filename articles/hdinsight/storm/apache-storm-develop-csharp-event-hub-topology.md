@@ -1,7 +1,6 @@
 ---
 title: 使用 Storm 从事件中心处理事件 - Azure HDInsight
 description: 了解如何使用用于 Visual Studio 的 HDInsight 工具，通过 Visual Studio 中创建的 C# Storm 拓扑处理来自 Azure 事件中心的数据。
-services: hdinsight,notification hubs
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/27/2017
 ms.author: hrasheed
 ROBOTS: NOINDEX
-ms.openlocfilehash: 85d95354d24a3f107fc518b367ab1187da43269d
-ms.sourcegitcommit: c94cf3840db42f099b4dc858cd0c77c4e3e4c436
+ms.openlocfilehash: b02945197b20c7fe704d0f8cfa9201a5b9cbc292
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53633753"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125198"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>使用 Apache Storm on HDInsight 从 Azure 事件中心处理事件 (C#)
 
@@ -106,7 +105,7 @@ topologyBuilder.SetJavaBolt(
 
 可从 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载本教程中所创建的项目的完整版本。 不过，仍然必须根据本教程中的步骤提供配置设置。
 
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 
 * [Apache Storm on HDInsight 3.5 或 3.6 版群集](apache-storm-tutorial-get-started-linux.md)。
 
@@ -149,9 +148,9 @@ topologyBuilder.SetJavaBolt(
 
 1. 如果尚未安装最新版本的用于 Visual Studio 的 HDInsight 工具，请参阅[开始使用用于 Visual Studio 的 HDInsight 工具](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)。
 
-2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub) 下载解决方案。
+2. 从 [eventhub-storm-hybrid](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)下载解决方案。
 
-3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用前面在事件中心配置的信息填写以下键的值：
+3. 在 **EventHubWriter** 项目中，打开 **App.config** 文件。 使用此前配置的事件中心提供的信息，填充以下项的值：
 
    | 密钥 | 值 |
    | --- | --- |
@@ -189,7 +188,7 @@ topologyBuilder.SetJavaBolt(
 
     ![“提交拓扑”对话框的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/submit.png)
 
-3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 若要查看有关拓扑的信息，请选择左窗格中的 **EventHubReader** 拓扑。
+3. 提交拓扑之后，会出现“Storm 拓扑查看器”。 **EventHubReader** 拓扑。
 
     ![“Storm 拓扑查看器”的屏幕截图](./media/apache-storm-develop-csharp-event-hub-topology/topologyviewer.png)
 

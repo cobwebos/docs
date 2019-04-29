@@ -14,11 +14,11 @@ ms.date: 05/15/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 4ff7f92d1d13966be5d17f37210bef961f64faf2
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58084600"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462375"
 ---
 # <a name="copy-data-to-or-from-oracle-on-premises-by-using-azure-data-factory"></a>使用 Azure 数据工厂在 Oracle 本地复制或粘贴数据
 
@@ -77,7 +77,7 @@ Oracle 连接器支持两个版本的驱动程序：
 
 如果使用复制向导来创作复制管道，则会自动确定驱动程序类型。 除非网关版本低于 2.7 版或选择 Oracle 作为接收器，否则默认使用 Microsoft 驱动程序。
 
-## <a name="get-started"></a>入门
+## <a name="get-started"></a>开始使用
 
 可以创建包含复制活动的管道。 该管道使用各种工具或 API 将数据移入或移出本地 Oracle 数据库。
 

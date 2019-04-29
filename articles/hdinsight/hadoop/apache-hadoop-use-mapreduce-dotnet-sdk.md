@@ -2,19 +2,18 @@
 title: 使用 HDInsight .NET SDK 提交 MapReduce 作业 - Azure
 description: 了解如何使用 HDInsight .NET SDK 将 MapReduce 作业提交到 Azure HDInsight Apache Hadoop。
 ms.reviewer: jasonh
-services: hdinsight
 author: hrasheed-msft
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/16/2018
 ms.author: hrasheed
-ms.openlocfilehash: 67738a810968024e9006c142f5d8b1a975870c54
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: 1ac2dda20ba1219c9f62e834b5cd2cfba8a50086
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436817"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124677"
 ---
 # <a name="run-mapreduce-jobs-using-hdinsight-net-sdk"></a>使用 HDInsight .NET SDK 运行 MapReduce 作业
 [!INCLUDE [mapreduce-selector](../../../includes/hdinsight-selector-use-mapreduce.md)]
@@ -26,7 +25,7 @@ ms.locfileid: "53436817"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 在开始阅读本文前，必须具有以下项目：
 
 * **HDInsight 中的 Hadoop 群集**。 请参阅[开始在 HDInsight 中使用基于 Linux 的 Apache Hadoop](apache-hadoop-linux-tutorial-get-started.md)。

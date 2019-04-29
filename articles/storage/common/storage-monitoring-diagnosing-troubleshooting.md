@@ -9,11 +9,11 @@ ms.date: 05/11/2017
 ms.author: fhryo-msft
 ms.subservice: common
 ms.openlocfilehash: 6edb1abae91a675a3fe47b417a112f0951886aaf
-ms.sourcegitcommit: 87bd7bf35c469f84d6ca6599ac3f5ea5545159c9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58351909"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103820"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>对 Microsoft Azure 存储进行监视、诊断和故障排除
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -246,7 +246,7 @@ Azure SDK 提供了一个存储模拟器，可以在开发工作站上运行它�
 >
 
 ### <a name="server-request-id"></a>服务器请求 ID
-存储服务会自动生成的服务器请求 Id。
+存储服务会自动生成服务器请求 ID。
 
 * 在服务器端存储日志记录日志中，服务器请求 ID 显示在“请求 ID 标头”列中。
 * 在网络跟踪（如 Fiddler 捕获的跟踪）中，服务器请求 ID 在响应消息中显示为 x-ms-request-id HTTP 标头值。

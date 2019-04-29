@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
 ms.openlocfilehash: 16871bdc59d141334bc2c95f26929f270d7971cf
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100527"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62106733"
 ---
 # <a name="how-to-use-the-javascript-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 JavaScript 客户端库
 [!INCLUDE [app-service-mobile-selector-client-library](../../includes/app-service-mobile-selector-client-library.md)]
 
-本指南介绍如何使用最新的[适用于 Azure 移动应用的 JavaScript SDK] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure 移动应用快速入门]创建后端和表。 本指南着重介绍如何在 HTML/JavaScript Web 应用程序中使用移动后端。
+本指南介绍如何使用最新的[适用于 Azure 移动应用的 JavaScript SDK] 执行常见任务。 对于 Azure 移动应用的新手，请先完成 [Azure Mobile Apps Quick Start]创建后端和表。 本指南着重介绍如何在 HTML/JavaScript Web 应用程序中使用移动后端。
 
 ## <a name="supported-platforms"></a>支持的平台
 我们将浏览器支持限制为主要浏览器的当前版本和过去版本：Google Chrome、Microsoft Edge、Microsoft Internet Explorer 和 Mozilla Firefox。  我们期望 SDK 能与任何相对新式的浏览器一起运作。
@@ -100,7 +100,7 @@ Azure 应用服务支持使用各种外部标识提供者对应用用户进行�
 后端更新后，可以在应用中使用新的环回 URL。
 
 <!-- URLs. -->
-[Azure 移动应用快速入门]: app-service-mobile-cordova-get-started.md
+[Azure Mobile Apps Quick Start]: app-service-mobile-cordova-get-started.md
 [身份验证入门]: app-service-mobile-cordova-get-started-users.md
 [Add authentication to your app]: app-service-mobile-cordova-get-started-users.md
 

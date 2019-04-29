@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: a507bf1866952cb79fa6334fed80c88cd207cd0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: a233a9deb58a7c1abc87a622a4f1f2581ee2e477
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110205"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125791"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>使用 StorSimple Device Manager 服务在 StorSimple 虚拟阵列上管理卷
 
@@ -33,8 +33,8 @@ StorSimple Device Manager 服务是 Azure 门户中的一个扩展，可让用�
 
 StorSimple 卷可以是：
 
-* **本地固定**：这些卷中的数据始终保留在阵列中，不会溢出到云。
-* **分层**：这些卷中的数据可溢出到云中。 创建分层卷时，大约 10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层卷（因为本地层上所需的 10% 的空间不可用）。
+* **本地固定**:这些卷中的数据始终保留在阵列，未溢出到云。
+* **分层**:这些卷中的数据可溢出到云中。 创建分层卷时，大约 10% 的空间预配在本地层，90% 的空间预配在云中。 例如，如果预配 1 TB 的卷，则当数据分层时，100 GB 会驻留在本地空间，900 GB 会在云中使用。 反过来说，这意味着，如果用光了设备上的所有本地空间，则无法预配分层卷（因为本地层上所需的 10% 的空间不可用）。
 
 ### <a name="provisioned-capacity"></a>预配的容量
 请参阅下表，了解每种卷类型的最大预配容量。

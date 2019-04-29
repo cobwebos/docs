@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/19/2018
 ms.author: barclayn
 ms.openlocfilehash: 686d4a8ac5239af12206b57072cc00aa10114d79
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976505"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125113"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Azure 数据安全与加密最佳实践
 
@@ -56,7 +56,7 @@ Azure Key Vault 旨在支持应用程序密钥和机密。 Key Vault 不应用�
 **详细信息**：使用 RBAC 的预定义角色。 例如，要向用户授予管理密钥保管库的访问权限，需要将预定义的角色[密钥保管库参与者](../role-based-access-control/built-in-roles.md)分配给位于特定范围内的此用户。 在此情况下，该范围可以是订阅、资源组，或只是特定的密钥保管库。 如果预定义角色不符合需求，可以[定义自己的角色](../role-based-access-control/custom-roles.md)。
 
 **最佳做法**：控制用户有权访问的内容。   
-**详细信息**：通过两个单独的接口控制对密钥保管库的访问：管理平面和数据平面。 管理平面和数据平面访问独立控制工作。
+**详细信息**：可通过以下两个独立接口来控制对密钥保管库的访问：管理平面和数据平面。 管理平面和数据平面访问独立控制工作。
 
 使用 RBAC 控制用户有权访问的内容。 例如，如果想要授予应用程序使用密钥保管库中的密钥的访问权限，只需使用密钥保管库访问策略授予数据平面访问权限，而无需授予此应用程序的管理平面访问权限。 相反，如果希望用户能够读取保管库属性和标记，但不让其具有任何访问密钥、机密或证书的权限，则可以使用 RBAC 向此用户授予“读取”访问权限，而无需授予数据平面访问权限。
 

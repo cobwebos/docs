@@ -11,11 +11,11 @@ ms.date: 04/17/2018
 ms.author: kavithaj
 ms.reviewer: igorstan
 ms.openlocfilehash: 809802bc34a6cdc45f4b018d35895939e4b8f667
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471940"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476457"
 ---
 # <a name="connect-to-sql-data-warehouse-with-sql-server-management-studio-ssms"></a>使用 SQL Server Management Studio (SSMS) 连接到 SQL 数据仓库
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "55471940"
 
 使用 SQL Server Management Studio (SSMS) 来连接并查询 Azure SQL 数据仓库。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 要使用本教程，需要：
 
 * 现有 SQL 数据仓库。 若要创建 SQL 数据仓库，请参阅 [创建 SQL 数据仓库][Create a SQL Data Warehouse]。
@@ -57,7 +57,7 @@ ms.locfileid: "55471940"
 现在，已建立了与数据库的连接，接下来让我们编写查询。
 
 1. 在 SQL Server 对象资源管理器中右键单击数据库。
-2. 选择“新建查询”。 此时会打开一个新的查询窗口。
+2. 选择“新建查询”。 此时将打开一个新的查询窗口。
    
     ![新建查询][4]
 3. 将以下 TSQL 查询复制到查询窗口中：

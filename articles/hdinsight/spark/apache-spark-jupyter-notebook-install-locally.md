@@ -1,7 +1,6 @@
 ---
 title: 在本地安装 Jupyter 并将其连接到 Azure HDInsight 中的 Spark
 description: 了解如何在计算机上本地安装 Jupyter 笔记本并将其连接到 Apache Spark 群集。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
@@ -9,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.author: hrasheed
-ms.openlocfilehash: 7b20f0ec4669b485f87d050fcf597244fb898c85
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 5e9cd4c2a14f94c39c7058f45bf727df8198c053
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58091250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124231"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>在计算机上安装 Jupyter 笔记本并连接到 HDInsight 上的 Apache Spark
 
 本文介绍如何安装具有自定义 PySpark（适用于 Python）以及具有 Apache Spark（适用于 Scala）内核和 Spark magic 的 Jupyter 笔记本，并将笔记本连接到 HDInsight 群集。 在本地计算机上安装 Jupyter 的原因多种多样，同时这种安装也面临着多种难题。 有关此方面的详细信息，请参阅本文末尾的[为何要在计算机上安装 Jupyter](#why-should-i-install-jupyter-on-my-computer)。
 
-有四个关键步骤涉及安装 Jupyter 并连接到 HDInsight 上的 Apache Spark。
+安装 Jupyter 并连接到 HDInsight 上的 Apache Spark 涉及到四个重要步骤。
 
 * 配置 Spark 群集。
 * 安装 Jupyter 笔记本。
@@ -30,13 +29,13 @@ ms.locfileid: "58091250"
 有关适用于装有 HDInsight 群集的 Jupyter 笔记本的自定义内核和 Spark magic 的详细信息，请参阅 [Kernels available for Jupyter notebooks with Apache Spark Linux clusters on HDInsight](apache-spark-jupyter-notebook-kernels.md)（适用于装有 HDInsight 上的 Apache Spark Linux 群集的 Jupyter 笔记本的内核）。
 
 > [!IMPORTANT]  
-> 一文中的步骤仅适用到 Spark 版本 2.1.0。
+> 本文中的步骤仅适用于 Spark 版本 2.1.0。
 
 ## <a name="prerequisites"></a>必备组件
 此处所列的先决条件不适用于安装 Jupyter。 这些先决条件适用于安装笔记本之后将 Jupyter 笔记本连接到 HDInsight 群集。
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
-* 在 HDInsight 上 Apache Spark 群集 （ver 2.1.0 或更低版本）。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
+* HDInsight 上的 Apache Spark 群集（2.1.0 或更低版本）。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 
 
 
@@ -62,15 +61,15 @@ ms.locfileid: "58091250"
 
 ## <a name="configure-spark-magic-to-connect-to-hdinsight-spark-cluster"></a>配置 Spark magic 以连接到 HDInsight Spark 群集
 
-在本部分中，你将配置前面安装连接到你必须已创建在 Azure HDInsight 中的 Apache Spark 群集的 Spark magic。
+在本部分，我们将配置前面安装的 Spark magic，以连接到 Apache Spark 群集（必须事先在 Azure HDInsight 中创建）。
 
-1. 使用以下命令启动 Python shell:
+1. 使用以下命令启动 Python shell：
 
     ```
     python
     ```
 
-2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令，以标识主目录中，并创建名为的文件夹 **.sparkmagic**。  将输出的完整路径。
+2. Jupyter 配置信息通常存储在用户主目录中。 输入以下命令以标识主目录，然后在该目录中创建名为 **.sparkmagic** 的文件夹。  将输出完整路径。
 
     ```python
     import os
@@ -80,7 +79,7 @@ ms.locfileid: "58091250"
     exit()
     ```
 
-3. 在文件夹内`.sparkmagic`，创建名为的文件**config.json**并添加以下 JSON 代码片段中的其内部。  
+3. 在文件夹 `.sparkmagic` 中，创建名为 **config.json** 的文件，并在该文件中添加以下 JSON 代码片段。  
 
     ```json
     {
@@ -101,16 +100,16 @@ ms.locfileid: "58091250"
       "heartbeat_retry_seconds": 1
     }
     ```
-4. 对文件进行以下编辑：
+4. 对该文件进行以下编辑：
 
     |模板值 | 新值 |
     |---|---|
-    |{USERNAME}|默认的群集登录名是 admin。|
+    |{USERNAME}|群集登录名，默认为 admin。|
     |{CLUSTERDNSNAME}|群集名称|
-    |{BASE64ENCODEDPASSWORD}|Base64 编码的密码作为实际密码。  可以生成在 base64 密码[ https://www.url-encode-decode.com/base64-encode-decode/ ](https://www.url-encode-decode.com/base64-encode-decode/)。|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用，请记住`sparkmagic 0.11.23`（群集 v3.5 和 v3.6）。  如果使用`sparkmagic 0.2.3`（群集 v3.4），将替换为`"should_heartbeat": true`。|
+    |{BASE64ENCODEDPASSWORD}|实际密码的 base64 编码密码。  可在 [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) 中生成 base64 密码。|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|如果使用 `sparkmagic 0.11.23`（群集 v3.5 和 v3.6），请保留此值。  如果使用 `sparkmagic 0.2.3`（群集 v3.4），请替换为 `"should_heartbeat": true`。|
 
-    你可以看到在一个完整的示例文件[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json)。
+    可在[示例 config.json](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json) 中查看完整的示例文件。
 
    > [!TIP]  
    > 将发送检测信号，以确保会话不会泄漏。 计算机进入睡眠状态或关闭时不会发送检测信号，从而导致会话被清除。 对于群集 v3.4，如果要禁用此行为，可以从 Ambari UI 将 Livy 配置 `livy.server.interactive.heartbeat.timeout` 设置为 `0`。 对于群集 v3.5，如果未设置上述 3.5 配置，会话将不会删除。
@@ -119,14 +118,14 @@ ms.locfileid: "58091250"
 
         jupyter notebook
 
-6. 验证可以使用内核随附的 Spark magic。 执行以下步骤。
+6. 验证是否可以使用内核随附的 Spark magic。 执行以下步骤。
 
-    a. 创建新的笔记本。 在右下角，选择**新建**。 应会看到默认内核**Python 2**或**Python 3**和安装的内核。 实际值可能会有所不同，具体取决于所选的安装。  选择**PySpark**。
+    a. 创建新的笔记本。 在右侧一角选择“新建”。 应会看到默认内核 **Python 2** 和 **Python 3**，以及安装的内核。 实际值根据安装时所做的选择而有所不同。  选择“PySpark”。
 
     ![Jupyter 笔记本中的内核](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels.png "Jupyter 笔记本中的内核")
 
     > [!IMPORTANT]  
-    > 选择后**新建**查看 shell，任何错误。  如果看到此错误`TypeError: __init__() got an unexpected keyword argument 'io_loop'`可能会遇到 Tornado 某些版本的已知的问题。  如果是这样，停止内核和再降级 Tornado 安装使用以下命令： `pip install tornado==4.5.3`。
+    > 选择“新建”后，检查 shell 中是否出现任何错误。  如果看到错误 `TypeError: __init__() got an unexpected keyword argument 'io_loop'`，原因可能是遇到了某些 Tornado 版本中的已知问题。  如果出现此情况，请停止内核，然后使用以下命令降级 Tornado 安装：`pip install tornado==4.5.3`。
 
     b. 运行以下代码片段。
 
@@ -137,7 +136,7 @@ ms.locfileid: "58091250"
 
     如果可以成功检索输出，则表示与 HDInsight 群集的连接已经过测试。
 
-    如果你想要更新笔记本配置以连接到不同的群集，使用一组新的值，更新 config.json 上面步骤 3 中所示。
+    若要更新笔记本配置以连接到不同的群集，请使用一组新值更新 config.json，如上述步骤 3 中所示。
 
 ## <a name="why-should-i-install-jupyter-on-my-computer"></a>为何要在计算机上安装 Jupyter？
 

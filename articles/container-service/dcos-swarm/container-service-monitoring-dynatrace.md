@@ -10,11 +10,11 @@ ms.date: 12/13/2016
 ms.author: rogardle
 ms.custom: mvc
 ms.openlocfilehash: 8f34a00d9256c288a2842e905c06d5336522eece
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53002006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119839"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-dynatrace-saasmanaged"></a>（已弃用）通过 Dynatrace SaaS/托管监视 Azure 容器服务 DC/OS 群集
 
@@ -29,7 +29,7 @@ Dynatrace 是用于高动态容器和群集环境的云原生监视解决方案�
 
 ![Dynatrace UI](./media/container-service-monitoring-dynatrace/dynatrace.png)
 
-## <a name="prerequisites"></a>先决条件 
+## <a name="prerequisites"></a>必备组件 
 [部署](container-service-deployment.md)和[连接](./../container-service-connect.md)由 Azure 容器服务配置的群集。 探究 [Marathon UI](container-service-mesos-marathon-ui.md)。 转到 [https://www.dynatrace.com/trial/](https://www.dynatrace.com/trial/) 设置 Dynatrace SaaS 帐户。  
 
 ## <a name="configure-a-dynatrace-deployment-with-marathon"></a>通过 Marathon 配置 Dynatrace 部署

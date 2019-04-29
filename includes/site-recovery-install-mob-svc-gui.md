@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: raynew
 ms.openlocfilehash: 2da5e4653c345464ef11a2ceac89fc6650c69e5d
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "58115457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122887"
 ---
 1. 将安装复制到服务器，然后打开安装程序。
 2. 在“安装选项”上，选择“安装移动服务”。

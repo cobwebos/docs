@@ -2,19 +2,27 @@
 title: 使用 Visual Studio 和 C# 的 Apache Storm 拓扑 - Azure HDInsight
 description: 了解如何用 C# 创建 Storm 拓扑。 在 Visual Studio 中使用针对 Visual Studio 的 Hadoop 工具创建简单的字数统计拓扑。
 services: hdinsight
+documentationcenter: ''
+author: Blackmist
+manager: jhubbard
+editor: cgronlun
+tags: azure-portal
+ms.assetid: 380d804f-a8c5-4b20-9762-593ec4da5a0d
 ms.service: hdinsight
-author: hrasheed-msft
-ms.author: hrasheed
-ms.reviewer: jasonh
+ms.custom: ''
+ms.devlang: java
 ms.topic: conceptual
-ms.date: 11/27/2017
-ROBOTS: NOINDEX
-ms.openlocfilehash: 1bcb50829dca59f8a467c2c1d2381b5463ef9471
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
-ms.translationtype: MT
+ms.tgt_pltfrm: na
+ms.workload: big-data
+origin.date: 11/27/2017
+ms.date: 04/01/2019
+ms.author: v-yiso
+ms.openlocfilehash: 14aa45808f44f7ca6fe34b70ef282a99f230bf0d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57437388"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125215"
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>使用针对 Visual Studio 的 Data Lake 工具开发 Apache Storm 的 C# 拓扑
 
@@ -22,7 +30,7 @@ ms.locfileid: "57437388"
 
 同时还说明了如何创建使用 C# 和 Java 组件的混合拓扑。
 
-> [!NOTE]  
+> [!NOTE]
 > 虽然本文档中的步骤依赖于具有 Visual Studio 的 Windows 开发环境，但编译后的项目可以提交到基于 Linux 或基于 Windows 的 HDInsight 群集。 仅 2016 年 10 月 28 日之后创建的基于 Linux 的群集支持 SCP.NET 拓扑。
 
 若要将 C# 拓扑与基于 Linux 的群集配合使用，必须将项目使用的 Microsoft.SCP.Net.SDK NuGet 包更新到版本 0.10.0.6 或更高版本。 包的版本还必须与安装在 HDInsight 上的 Storm 主版本相匹配。
@@ -34,7 +42,7 @@ ms.locfileid: "57437388"
 | 3.5 | 1.0.2.x | 1.0.0.x | 4.2.1 |
 | 3.6 | 1.1.0.x | 1.0.0.x | 4.2.8 |
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 基于 Linux 的群集上的 C# 拓扑必须使用 .NET 4.5，并使用 Mono 在 HDInsight 群集上运行。 查看 [Mono 兼容性](https://www.mono-project.com/docs/about-mono/compatibility/)了解可能的不兼容问题。
 
 ## <a name="install-visual-studio"></a>安装 Visual Studio
@@ -125,7 +133,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
 ### <a name="eventhub-templates-notes"></a>EventHub 模板说明
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > EventHub 读取器模板中包含的基于 Java 的 EventHub Spout 组件可能不适用于 Storm on HDInsight 3.5 版或更高版本。 [GitHub](https://github.com/hdinsight/hdinsight-storm-examples/tree/master/HDI3.5/lib) 提供此组件的更新版本。
 
 有关使用此组件并适用于 Storm on HDInsight 3.5 的示例拓扑，请参阅 [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)。
@@ -230,7 +238,7 @@ HBase 读取器和写入器模板使用 HBase REST API（而不是 HBase Java AP
 
    * **Counter.cs**：实现统计每个单词的数目，并发出一串新单词和每个单词的计数的 Bolt。
 
-     > [!NOTE]  
+     > [!NOTE]
      > 这些 Bolt 读取和写入流，但是你也可以使用 Bolt 来与数据库或服务等源进行通信。
 
 3. 打开 **Splitter.cs**。 默认情况下只包含一个方法：**Execute**。 在 Bolt 收到要处理的元组时会调用 Execute 方法。 此时，可读取和处理传入元组，以及发出传出元组。
@@ -408,21 +416,21 @@ return topologyBuilder;
 
 1. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
 
-   > [!NOTE]  
+   > [!NOTE]
    > 如果出现提示，请输入 Azure 订阅的凭据。 如果有多个订阅，请登录包含 Storm on HDInsight 群集的订阅。
 
 2. 从“Storm 群集”下拉列表中选择 Storm on HDInsight 群集，并选择“提交”。 可使用“输出”窗口监视提交是否成功。
 
 3. 成功提交拓扑之后，应该会出现群集的“Storm 拓扑”。 从列表中选择“WordCount”拓扑，以查看有关正在运行的拓扑的信息。
 
-   > [!NOTE]  
+   > [!NOTE]
    > 也可以从“服务器资源管理器”查看“Storm 拓扑”。 展开“Azure” > “HDInsight”，右键单击 Storm on HDInsight 群集，然后选择“查看 Storm 拓扑”。
 
     若要在拓扑中查看有关组件的信息，请双击关系图中的组件。
 
 4. 在“拓扑摘要”视图中，单击“终止”以停止拓扑。
 
-   > [!NOTE]  
+   > [!NOTE]
    > Storm 拓扑会一直运行，直到它被停用，或者群集被删除。
 
 ## <a name="transactional-topology"></a>事务拓扑
@@ -433,7 +441,7 @@ return topologyBuilder;
 
 * **元数据缓存**：Spout 必须存储所发出数据的相关元数据，只有这样，才能在失败时重新检索和发出数据。 此示例所发出的数据较少，因此将每个元组的原始数据存储在字典中以便重播。
 
-* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 bolt 都已都确认元组时,`Ack`会调用 spout 的方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
+* **Ack**：拓扑中的每个 Bolt 都可以调用 `this.ctx.Ack(tuple)` 来确认它已成功处理元组。 所有 Bolt 都已确认 Tuple 之后，即会调用 Spout 的 `Ack` 方法。 `Ack` 方法可让 Spout 删除为重播缓存的数据。
 
 * **Fail**：每个 Bolt 都可以调用 `this.ctx.Fail(tuple)`，指出元组的处理失败。 这项失败会传播到 Spout 的 `Fail` 方法，在其中，可以使用缓存的元数据来重放 Tuple。
 
@@ -459,13 +467,13 @@ return topologyBuilder;
 
     * 事务版本在 **HybridTopologyTx_csharpSpout_javaBolt** 中定义。
 
-  > [!NOTE]  
+  > [!NOTE]
   > 此版本还演示了如何使用文本文件中的 clojure 代码作为 Java 组件。
 
 
 若要切换在提交项目时使用的拓扑，请将 `[Active(true)]` 语句移到要在提交给群集之前使用的拓扑。
 
-> [!NOTE]  
+> [!NOTE]
 > 在 **JavaDependency** 文件夹中，所需的所有 Java 文件都会提供为此项目的一部分。
 
 创建和提交混合拓扑时，需注意以下事项：
@@ -484,7 +492,7 @@ SCP.NET 版本 0.9.4.203 引入了专用于事件中心 Spout（从事件中心�
 
 * **TopologyBuilder.SetEventHubSpout** 方法：将事件中心 Spout 组件添加到拓扑。
 
-> [!NOTE]  
+> [!NOTE]
 > 仍必须使用 **CustomizedInteropJSONSerializer** 序列化 Spout 生成的数据。
 
 ## <a id="configurationmanager"></a>使用 ConfigurationManager
@@ -532,7 +540,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 2. 从包管理器中选择“更新”。 有可用更新时会将其列出。 单击“更新”让包安装更新。
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > 如果项目是通过未使用 NuGet 的旧版 SCP.NET 创建的，则必须执行以下步骤以更新到更新版本：
 >
 > 1. 在“解决方案资源管理器”中，右键单击项目，然后选择“管理 NuGet 包”。
@@ -562,7 +570,7 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 虽然很容易就可以将拓扑部署到群集，但是，在某些情况下，可能需要在本地测试拓扑。 使用以下步骤，在开发环境上本地执行和测试本教程中的示例拓扑。
 
-> [!WARNING]  
+> [!WARNING]
 > 本地测试只适用于仅限 C# 的基本拓扑。 不能将本地测试用于混合拓扑或使用多个流的拓扑。
 
 1. 在“解决方案资源管理器”中，右键单击项目，并选择“属性”。 在项目属性中，将“输出类型”更改为“控制台应用程序”。
@@ -686,10 +694,10 @@ public static MyComponent Get(Context ctx, Dictionary<string, Object> parms)
 
 3. 使用“Windows 资源管理器”找到包含项目的目录。 例如：**C:\Users\<your_user_name>\Documents\Visual Studio 2013\Projects\WordCount\WordCount**。 在此目录中打开 **Bin**，并单击“调试”。 应可看到运行测试时生成的文本文件：sentences.txt、counter.txt 和 splitter.txt。 打开每个文本文件并检查数据。
 
-   > [!NOTE]  
+   > [!NOTE]
    > 字符串数据保存为这些文件中的十进制值数组。 例如，**splitter.txt** 文件中的 \[[97,103,111]] 是单词 *and*。
 
-> [!NOTE]  
+> [!NOTE]
 > 在部署到 Storm on HDInsight 群集之前，请确保将“项目类型”设置回“类库”。
 
 ### <a name="log-information"></a>记录信息
@@ -702,7 +710,7 @@ Context.Logger.Info("Component started");
 
 可从“服务器资源管理器”中的“Hadoop 服务日志”查看记录的信息。 展开 Storm on HDInsight 群集对应的项，然后展开“Hadoop 服务日志”。 最后，选择要查看的日志文件。
 
-> [!NOTE]  
+> [!NOTE]
 > 日志存储在群集使用的 Azure 存储帐户中。 若要查看 Visual Studio 中的日志，必须登录到拥有存储帐户的 Azure 订阅。
 
 ### <a name="view-error-information"></a>查看错误信息
@@ -721,7 +729,7 @@ Context.Logger.Info("Component started");
 
 如果将拓扑提交到 HDInsight 时遇到错误，可在 HDInsight 群集上找到处理拓扑提交的服务器端组件的日志。 若要检索这些日志，请从命令行运行以下命令：
 
-    scp sshuser@clustername-ssh.azurehdinsight.net:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
+    scp sshuser@clustername-ssh.azurehdinsight.cn:/var/log/hdinsight-scpwebapi/hdinsight-scpwebapi.out .
 
 将 __sshuser__ 替换为群集的 SSH 用户帐户。 将 __clustername__ 替换为 HDInsight 群集的名称。 有关将 `scp` 和 `ssh` 与 HDInsight 配合使用的详细信息，请参阅[将 SSH 与 HDInsight 配合使用](../hdinsight-hadoop-linux-use-ssh-unix.md)。
 

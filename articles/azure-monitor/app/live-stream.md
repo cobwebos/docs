@@ -10,15 +10,15 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
-ms.date: 01/28/2019
+ms.date: 04/22/2019
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 588b8b11a02551a790145aafb013759699004267
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: bc85de0c8ec89ea88d2bae8e3f226da7d3163f53
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59009959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115309"
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>实时指标流：以 1 秒的延迟进行监视和诊断
 
@@ -50,10 +50,13 @@ ms.locfileid: "59009959"
 
 4. 如果可能在筛选器中使用客户名称等敏感数据，请[确保控制通道的安全](#secure-the-control-channel)。
 
+### <a name="nodejs"></a>Node.js
+
+若要通过 Node.js 使用实时指标必须更新到版本 1.30 或更高版本的 sdk。 默认情况下实时指标禁用 Node.js SDK 中。 若要启用实时指标添加`setSendLiveMetrics(true)`为你[配置方法](https://github.com/Microsoft/ApplicationInsights-node.js#configuration)如初始化 SDK。
+
 ### <a name="no-data-check-your-server-firewall"></a>没有数据？ 请检查服务器的防火墙
 
 请检查[实时指标流的传出端口](../../azure-monitor/app/ip-addresses.md#outgoing-ports)是否在服务器的防火墙中为打开状态。 
-
 
 ## <a name="how-does-live-metrics-stream-differ-from-metrics-explorer-and-analytics"></a>实时指标流与指标资源管理器、Analytics 有何差异？
 
@@ -65,7 +68,6 @@ ms.locfileid: "59009959"
 |免费|实时流数据不收取费用|遵从[定价](../../azure-monitor/app/pricing.md)中的标准
 |采样|传输所有选择的指标和计数器。 对失败和堆栈跟踪进行采样。 不应用 TelemetryProcessors。|可能会对事件进行[采样](../../azure-monitor/app/api-filtering-sampling.md)|
 |控制通道|筛选器的控制信号会发送到 SDK。 建议确保此通道的安全。|通信为单向通信，即通向门户|
-
 
 ## <a name="select-and-filter-your-metrics"></a>选择和筛选指标
 

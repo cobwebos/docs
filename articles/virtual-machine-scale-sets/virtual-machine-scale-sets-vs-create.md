@@ -17,18 +17,18 @@ ms.topic: article
 ms.date: 03/13/2017
 ms.author: manayar
 ms.openlocfilehash: 3d472aeaae7e7f02eba58aadea1df042d6c0f27b
-ms.sourcegitcommit: ae45eacd213bc008e144b2df1b1d73b1acbbaa4c
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/01/2018
-ms.locfileid: "50741414"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108048"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>如何使用 Visual Studio 创建虚拟机规模集
 本文介绍如何使用 Visual Studio 资源组部署部署 Azure 虚拟机规模集。
 
 [Azure 虚拟机规模集](https://azure.microsoft.com/blog/azure-vm-scale-sets-public-preview/)是一种 Azure 计算资源，可通过自动缩放和负载均衡部署和管理一组类似的虚拟机。 可使用 [Azure 资源管理器模板](https://github.com/Azure/azure-quickstart-templates)预配和部署虚拟机规模集。 可以使用 Azure CLI、PowerShell、REST 来部署 Azure 资源管理器模板，也可直接从 Visual Studio 部署。 Visual Studio 提供了一组示例模板，这些模板可以作为 Azure 资源组部署项目的一部分进行部署。
 
-Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure 资源组合并进行发布的方式。 可以在此处了解有关这些部署的详细信息：[通过 Visual Studio 创建和部署 Azure 资源组](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
+Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure 资源组合并进行发布的方式。 可以在此处了解有关它们的详细信息：[通过 Visual Studio 创建和部署 Azure 资源组](../vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)。
 
 ## <a name="pre-requisites"></a>先决条件
 若要开始在 Visual Studio 中部署虚拟机规模集，需要以下项：
@@ -52,7 +52,7 @@ Azure 资源组部署是一种通过单个部署操作将相关的一组 Azure �
    
    ![选择模板][select_Template]
 
-4. 创建项目后，将看到 PowerShell 部署脚本、Azure 资源管理器模板和虚拟机规模集的参数文件。
+4. 创建项目后，会看到 PowerShell 部署脚本、Azure Resource Manager 模板和虚拟机规模集的参数文件。
    
     ![解决方案资源管理器][solution_explorer]
 

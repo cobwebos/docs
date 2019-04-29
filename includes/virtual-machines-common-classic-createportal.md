@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: 361d0ce5091d80198d47e4ad164f7cba8e21a55d
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58114919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485266"
 ---
 简单地来说，自定义虚拟机是指使用“市场”中的“特别推荐的应用”创建的虚拟机，因为它可为你完成大部分的工作。 但是，用户仍然可以进行配置选择，可以选择的项目如下：
 
@@ -28,9 +29,11 @@ ms.locfileid: "58114919"
 
 > [!IMPORTANT]
 > 如果希望虚拟机使用虚拟网络，请确保在创建虚拟机时指定虚拟网络。
-> 
 > * 使用虚拟网络有两个好处：直接连接到虚拟机和设置跨界连接。
-> 
 > * 仅当创建虚拟机后，才能将该虚拟机配置为加入虚拟网络。 有关虚拟网络的详细信息，请参阅 [Azure 虚拟网络概述](../articles/virtual-network/virtual-networks-overview.md)。
+>
+>
 
 ## <a name="to-create-the-virtual-machine"></a>创建虚拟机
+
+<!-- Update_Description: update meta properties -->

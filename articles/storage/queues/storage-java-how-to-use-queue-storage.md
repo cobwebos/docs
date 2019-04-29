@@ -11,11 +11,11 @@ ms.date: 12/08/2016
 ms.author: rogarana
 ms.subservice: queues
 ms.openlocfilehash: 7c2fbc168c663cc4dc5981071d40540cfc4797ca
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58648480"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108930"
 ---
 # <a name="how-to-use-queue-storage-from-java"></a>如何通过 Java 使用队列存储
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -25,7 +25,7 @@ ms.locfileid: "58648480"
 ## <a name="overview"></a>概述
 本指南演示如何使用 Azure 队列存储服务执行常见方案。 这些示例用 Java 编写并使用[用于 Java 的 Azure 存储 SDK][Azure Storage SDK for Java]。 介绍的方案包括**插入**、**扫视**、**获取**和**删除**队列消息以及**创建**和**删除**队列。 有关队列的详细信息，请参阅[后续步骤](#next-steps)部分。
 
-注意：SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
+请注意:SDK 提供给在 Android 设备上使用 Azure 存储的开发人员。 有关详细信息，请参阅[用于 Android 的 Azure 存储 SDK][Azure Storage SDK for Android]。
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 

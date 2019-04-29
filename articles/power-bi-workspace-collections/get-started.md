@@ -3,17 +3,17 @@ title: Microsoft Power BI 工作区集合入门
 description: Power BI 工作区集合是一项 Azure 服务，应用程序开发人员可通过它将交互式 Power BI 报表添加到自己的应用程序中。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: conceptual
 ms.workload: powerbi
 ms.date: 09/25/2017
-ms.openlocfilehash: 751d69cd9b52cf88bb54900e67283fdff3d90579
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: d1011a8fd8f181233be8e1fa27c3bfaea3d86141
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520473"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110440"
 ---
 # <a name="get-started-with-microsoft-power-bi-workspace-collections"></a>Microsoft Power BI 工作区集合入门
 
@@ -28,7 +28,7 @@ ms.locfileid: "58520473"
 
 ## <a name="create-a-workspace-collection"></a>创建工作区集合
 
-**工作区集合** 是顶层的 Azure 资源，是要嵌入到应用程序中的内容的容器。 可采用两种方式创建工作区集合：
+**工作区集合** 是顶层的 Azure 资源，是要嵌入到应用程序的内容容器。 可采用两种方式创建工作区集合：
 
 * 使用 Azure 门户手动创建
 * 使用 Azure 资源管理器 API 以编程方式创建
@@ -45,7 +45,7 @@ ms.locfileid: "58520473"
 5. 在“工作区集合”上输入所需的信息。
    
    ![创建工作区集合](media/get-started/create-workspace-2.png)
-1. 选择“创建” 。
+1. 选择“创建”。
 
 工作区集合需要一些时间进行预配。 完成后会转到“工作区集合”。
 
@@ -67,13 +67,13 @@ ms.locfileid: "58520473"
 
 复制这两个密钥并将它们安全存储在应用程序中。 重要的是，要像对待密码一样对待这些密钥，因为它们可以提供工作区集合中所有内容的访问权限。
 
-虽然列出了两个密钥，但是一次只需要一个密钥。 提供第二个密钥以便定期重新生成密钥，且无需中断对服务的访问。
+虽然列出了两个密钥，但是在特定时间只需要一个密钥。 提供第二个密钥以便定期重新生成密钥，且无需中断对服务的访问。
 
 现在，应用程序具有一个 Power BI 实例和**访问密钥**，可以将报表导入自己的应用程序中。 在了解如何导入报表之前，下一节介绍了如何创建要嵌入到应用程序中的 Power BI 数据集和报表。
 
 ## <a name="working-with-workspaces"></a>使用工作区
 
-创建工作区集合后，需要创建一个用于容装报表和数据集的工作区。 若要创建工作区，需使用 [POST 工作区 REST API](https://msdn.microsoft.com/library/azure/mt711503.aspx)。
+创建工作区集合后，需要创建一个工作区来容纳报表和数据集。 若要创建工作区，需使用 [POST 工作区 REST API](https://msdn.microsoft.com/library/azure/mt711503.aspx)。
 
 ## <a name="create-power-bi-datasets-and-reports-to-embed-into-an-app-using-power-bi-desktop"></a>使用 Power BI Desktop 创建要嵌入到应用程序中的 Power BI 数据集和报表
 
@@ -88,7 +88,7 @@ ms.locfileid: "58520473"
 
 | 导入 | DirectQuery |
 | --- | --- |
-| 将表、列和数据  导入或复制到 **Power BI Desktop**。 当使用可视化效果时， **Power BI Desktop** 会查询数据的副本。 若要查看对基础数据所做的更改，必须刷新，或重新导入完整的当前数据集。 |仅将表和列  导入或复制到 **Power BI Desktop**。 当使用可视化效果时， **Power BI Desktop** 查询基础数据源，这意味着始终可以查看当前数据。 |
+| 将表、列 *和数据* 导入或复制到 **Power BI Desktop**。 当使用可视化效果时， **Power BI Desktop** 会查询数据的副本。 若要查看对基础数据所做的更改，必须刷新，或重新导入完整的当前数据集。 |仅将 *表和列* 导入或复制到 **Power BI Desktop**。 当使用可视化效果时， **Power BI Desktop** 查询基础数据源，这意味着始终可以查看当前数据。 |
 
 有关连接到数据源的详细信息，请参阅 [连接到数据源](connect-datasource.md)。
 

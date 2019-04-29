@@ -1,8 +1,7 @@
 ---
 title: Azure HDInsight 工具 -将 Visual Studio Code 用于 Hive、LLAP 或 PySpark | Microsoft Docs
 description: 了解如何使用用于 Visual Studio Code 的 Azure HDInsight 工具来创建、提交查询和脚本。
-Keywords: Visual Studio Code、 Azure HDInsight 工具、 Hive、 Python、 PySpark、 Spark、 HDInsight、 Hadoop，LLAP，交互式 Hive、 交互式查询
-services: HDInsight
+Keywords: Visual Studio Code,Azure HDInsight Tools,Hive,Python,PySpark,Spark,HDInsight,Hadoop,LLAP,交互式 Hive,交互式查询
 documentationcenter: ''
 author: hrasheed-msft
 ms.author: hrasheed
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/04/2019
-ms.openlocfilehash: 71e12e661c704af028ac4dc48f255bdee980619c
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 04e607517bc806b60d7e76e5076f9d3518e530eb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100320"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098331"
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>使用用于 Visual Studio Code 的 Azure HDInsight 工具
 
@@ -310,20 +309,20 @@ Spark 2.2 群集和 Spark2.3 群集不再支持 PySpark3，只有 Python 支持�
     | 名称 | description | type | 
     | :- | :- | :- | 
     | file | 包含要执行的应用程序的文件 | path（必需） | 
-    | proxyUser | 运行作业时要模拟的用户 | 字符串 | 
-    | className | 应用程序 Java/Spark main 类 | 字符串 |
+    | proxyUser | 运行作业时要模拟的用户 | string | 
+    | className | 应用程序 Java/Spark main 类 | string |
     | args | 应用程序的命令行参数 | 字符串列表 | 
     | jars | 此会话中要使用的 jars | 字符串列表 | 
     | pyFiles | 此会话中要使用的 Python 文件 | 字符串列表 |
     | 文件 | 此会话中要使用的文件 | 字符串列表 |
-    | driverMemory | 要用于驱动程序进程的内存量 | 字符串 |
+    | driverMemory | 要用于驱动程序进程的内存量 | string |
     | driverCores | 要用于驱动程序进程的内核数 | int |
-    | executorMemory | 每个执行程序进程要使用的内存量 | 字符串 |
+    | executorMemory | 每个执行程序进程要使用的内存量 | string |
     | executorCores | 用于每个执行程序的内核数 | int |
     | numExecutors | 为此会话启动的执行程序数量 | int |
     | archives | 此会话中要使用的存档 | 字符串列表 |
-    | 队列 | 要提交的 YARN 队列的名称 | 字符串 |
-    | 名称 | 此会话的名称 | 字符串 |
+    | 队列 | 要提交的 YARN 队列的名称 | string |
+    | 名称 | 此会话的名称 | string |
     | conf | Spark 配置属性 | key=val 的映射 |
 
     响应正文   
@@ -335,7 +334,7 @@ Spark 2.2 群集和 Spark2.3 群集不再支持 PySpark3，只有 Python 支持�
     | appId | 此会话的应用程序 id |  String |
     | appInfo | 应用程序详细信息 | key=val 的映射 |
     | log | 日志行 | 字符串列表 |
-    | state |   批处理状态 | 字符串 |
+    | state |   批处理状态 | string |
 
 >[!NOTE]
 >提交脚本时，分配的 livy 配置将在输出窗格中显示。

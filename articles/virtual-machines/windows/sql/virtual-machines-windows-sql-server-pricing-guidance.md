@@ -17,11 +17,11 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 19ba6896d9186cae32249fc8eb51319f9b37a6ff
-ms.sourcegitcommit: dede0c5cbb2bd975349b6286c48456cfd270d6e9
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54330783"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477195"
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM 的定价指南
 
@@ -112,7 +112,7 @@ ms.locfileid: "54330783"
 
 若要对 SQL Server VM 使用 BYOL，必须拥有 SQL Server Standard 或 Enterprise 的许可证以及[软件保障](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default.aspx#tab=1)，这是通过某些批量许可计划的必需选项，而对其他计划而言为可选购买项。 根据协议类型以及 SQL Server 的数量和/或对其的承诺，批量许可计划提供的定价级别各不相同。 但一般而言，针对连续生产工作负荷自带许可证具有以下优点：
 
-| BYOL 权益 | Description |
+| BYOL 权益 | 描述 |
 |-----|-----|
 | 节省费用 | 如果工作负荷将连续运行 SQL Server Standard 或 Enterprise 超过 10 个月，则自带 SQL Server 许可证比按使用情况付费更具成本效益。 |
 | 长期节省 | 通常，若购买或续订 SQL Server 许可证，前三年每年要便宜 30%。 此外，三年之后，无需再续订许可证，只需支付软件保障费用。 此时，它将便宜两倍。 |

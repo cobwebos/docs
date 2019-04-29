@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: e3570ab1227ca388ac62bffdc74bb68b1ddc41d1
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230141"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105660"
 ---
 # <a name="monitor-and-manage-wunderlist-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Wunderlist
 
@@ -29,7 +29,7 @@ ms.locfileid: "50230141"
 
 [Wunderlist](https://www.wunderlist.com/) 是一项服务，可以帮助你在任何位置在任何设备上计划、管理和完成项目、待办事项列表以及任务。 可以使用触发器从 Wunderlist 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Wunderlist 帐户执行任务的操作。 还可以让其他操作使用来自 Wunderlist 操作的输出。 例如，当新任务到期时，可以使用 Slack 连接器发布消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

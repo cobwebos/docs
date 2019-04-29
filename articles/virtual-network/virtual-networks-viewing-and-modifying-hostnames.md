@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 3fdb0f566789382a1606b19e4fac179f9ecf40cd
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57887453"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122951"
 ---
 # <a name="viewing-and-modifying-hostnames"></a>查看和修改主机名
 若要允许通过主机名引用角色实例，必须在服务配置文件中为每个角色设置主机名的值。 可以通过将所需主机名添加到 **Role** 元素的 **vmName** 属性来执行该操作。 **vmName** 属性的值将用作每个角色实例的主机名的基本元素。 例如，如果 **vmName** 是 *webrole*，并且该角色有三个实例，则这些实例的主机名将为 *webrole0*、*webrole1* 和 *webrole2*。 无需在配置文件中为虚拟机指定主机名，因为虚拟机的主机名会基于虚拟机名称填充。 有关配置 Microsoft Azure 服务的详细信息，请参阅 [Azure Service 配置架构（.cscfg 文件）](https://msdn.microsoft.com/library/azure/ee758710.aspx)

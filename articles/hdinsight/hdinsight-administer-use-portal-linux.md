@@ -1,7 +1,6 @@
 ---
 title: 使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 description: 了解如何使用 Azure 门户创建和管理 HDInsight 群集。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: hrasheed
-ms.openlocfilehash: 80c27d588bb8b4c60ae8432fbd3a2ac3d2db1394
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 003aeadba1f4683af40f390d40dd3bbe32e02a83
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58802654"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096346"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>使用 Azure 门户管理 HDInsight 中的 Apache Hadoop 群集
 
@@ -107,7 +106,7 @@ ms.locfileid: "58802654"
 |创建日期|部署群集的日期。|
 |操作系统|“Windows”或“Linux”。|
 |Type|Hadoop、HBase、Storm、Spark。|
-|版本|请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。|
+|Version|请参阅 [HDInsight 版本](hdinsight-component-versioning.md)。|
 |订阅|订阅名称。|
 |默认数据源|默认的群集文件系统。|
 |辅助角色节点大小|辅助角色节点的所选 VM 大小。|

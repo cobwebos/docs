@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 01/25/2019
 ms.openlocfilehash: 075d0e2471457e1a585f7fdea9b523b1d13499c7
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58100422"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61388544"
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>在多租户 SaaS 应用中监视和管理 Azure SQL 数据库和池的性能
 
@@ -142,7 +142,7 @@ Wingtip Tickets SaaS Database Per Tenant 是一个 SaaS 应用，SaaS 应用上�
 
 如果某个池的聚合负载级别增加过多，以至于耗光了池的资源，达到了 100% 的 eDTU 使用率，则会影响单个数据库的性能，可能会拖累池中所有数据库的查询响应时间。
 
-短期可考虑通过扩展池来提供更多的资源，或者从池中删除数据库（将数据库移至其他池，或者从池中移至单独的服务层）。
+短期可考虑通过扩展池来提供更多的资源，或者从池中删除数据库（将数据库移至其他池，或者从池中移至单独的服务层级）。
 
 长期可考虑优化查询或索引使用，从而改进数据库性能。 根据应用程序对性能问题的敏感程度，最佳做法是在池达到 100% eDTU 使用率之前对其进行扩展。 使用警报提前示警。
 

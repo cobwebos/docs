@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: b6f93cc3c35ab18ecd50ccd6b3090985497baabf
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54121764"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122449"
 ---
 # <a name="how-to-use-ios-client-library-for-azure-mobile-apps"></a>如何使用适用于 Azure 移动应用的 iOS 客户端库
 
@@ -35,7 +35,7 @@ iOS 客户端 SDK 的参考文档位于此处：[Azure 移动应用 iOS 客户�
 对于 iOS 8.0 版本或更高版本，iOS SDK 支持 Objective-C 项目、Swift 2.2 项目和 Swift 2.3 项目。
 
 “服务器流”身份验证使用 WebView 显示 UI。  如果设备无法显示 WebView UI，则需要产品范围以外的另一种身份验证方法。  
-因此，此 SDK 不适用于手表类型或类似的受限设备。
+因此这个 SDK 不适用于监视类型或同样受限制的设备。
 
 ## <a name="Setup"></a>安装与先决条件
 
@@ -282,7 +282,7 @@ table.pullWithQuery(query, queryId:nil, settings: pullSettings) { (error) in
 
 ## <a name="inserting"></a>如何：插入数据
 
-若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure 应用服务移动后端会根据 `NSDictionary` 自动生成新列。
+若要插入新的表行，请创建 `NSDictionary` 并调用 `table insert`。 如果启用[动态架构]，Azure App Service 移动后端将根据 `NSDictionary` 自动生成新列。
 
 如果未提供 `id`，后端会自动生成新的唯一 ID。 提供自己的 `id`，以使用电子邮件地址、用户名或自己的自定义值作为 ID。 提供自己的 ID 可以让联接和业务导向型数据库逻辑变得更容易。
 
@@ -435,7 +435,7 @@ table.deleteWithId("37BBF396-11F0-4B39-85C8-B319C729AF6D") { (itemId, error) in
 
 使用自定义 API 可以公开任何后端功能。 无需映射到表操作。 不仅能进一步控制消息，甚至还可以读取或设置标头，并更改响应正文格式。 若要了解如何在后端上创建自定义 API，请阅读[自定义 API](app-service-mobile-node-backend-how-to-use-server-sdk.md#work-easy-apis)
 
-若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，[请使用 `invokeAPI` 的其他重载][5]。  要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil`（因为 GET 请求没有消息正文）。如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
+若要调用自定义 API，请调用 `MSClient.invokeAPI`。 请求和响应内容被视为 JSON。 若要使用其他媒体类型，[请使用 `invokeAPI` 的其他重载][5]。  若要发出 `GET` 请求而不是 `POST` 请求，请将参数 `HTTPMethod` 设置为 `"GET"`，将参数 `body` 设置为 `nil`（因为 GET 请求没有消息正文）。如果自定义 API 支持其他 HTTP 谓词，请相应地更改 `HTTPMethod`。
 
 **Objective-C**：
 
@@ -510,7 +510,7 @@ NSDictionary *iOSTemplate = @{ @"templateName": @{ @"body": @{ @"aps": @{ @"aler
 let iOSTemplate = ["templateName": ["body": ["aps": ["alert": "$(message)"]]]]
 ```
 
-出于安全性考虑，将去除所有请求的标记。  要将标记添加到安装或安装中的模板，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][4]。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
+出于安全性考虑，将去除所有请求的标记。  要将标记添加到安装或安装中的模板，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps][4]（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。  若要使用这些注册的模板发送通知，请参阅[通知中心 API][3]。
 
 ## <a name="errors"></a>如何：处理错误
 
@@ -546,9 +546,9 @@ if (error.code == MSErrorPreconditionFailed) {
 
 ## <a name="adal"></a>如何：使用 Active Directory 身份验证库对用户进行身份验证
 
-可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用标识提供者 SDK 的客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更直观的 UX 风格，并允许进行其他自定义。
+可以借助 Active Directory 身份验证库 (ADAL) 使用 Azure Active Directory 将用户登录到应用程序。 使用标识提供者 SDK 的客户端流身份验证会首选使用 `loginWithProvider:completion:` 方法。  客户端流身份验证提供更自然的 UX 体验，并允许进行额外的自定义。
 
-1. 根据[如何为 Active Directory 登录配置应用服务][7]教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，我们推荐重定向 URI 的格式为 `<app-scheme>://<bundle-id>`。 有关详细信息，请参阅 [ADAL iOS 快速入门][8]。
+1. 根据 [How to configure App Service for Active Directory login][7] （如何为 Active Directory 登录配置应用服务）教程的说明，为 AAD 登录配置移动应用。 请务必完成注册本机客户端应用程序的可选步骤。 对于 iOS，建议重定向 URI 采用 `<app-scheme>://<bundle-id>` 格式。 有关详细信息，请参阅 [ADAL iOS 快速入门][8]。
 2. 使用 Cocoapods 安装 ADAL。 编辑 Podfile 以包含以下定义，将 **YOUR-PROJECT** 替换为 Xcode 项目的名称：
 
         source 'https://github.com/CocoaPods/Specs.git'

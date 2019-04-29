@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 02/24/2017
 ms.author: yurid
 ms.openlocfilehash: 527ae9eb59e09885b9b606d74e72817351c31a7f
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56116416"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121753"
 ---
 # <a name="azure-security-center-and-azure-virtual-machines"></a>Azure 安全中心与 Azure 虚拟机
 [Azure 安全中心](https://azure.microsoft.com/services/security-center/)可帮助防范、检测和应对威胁。 它提供 Azure 订阅之间的集成安全监视和策略管理，帮助检测可能被忽略的威胁，且适用于广泛的安全解决方案生态系统。
@@ -43,7 +43,7 @@ ms.locfileid: "56116416"
 > 
 > 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 要开始使用 Azure 安全中心，需了解并考虑以下问题：
 
 * 必须订阅 Microsoft Azure。 请参阅[安全中心定价](https://azure.microsoft.com/pricing/details/security-center/)，了解有关安全中心免费层和标准层的详细信息。
@@ -67,7 +67,7 @@ ms.locfileid: "56116416"
 
 设置安全策略之后，安全中心将分析资源的安全状态，以识别潜在的漏洞。 建议以表格形式显示，其中每一行都表示一个特定的建议。 下表提供了 Azure VM 的一些建议示例，以及每个示例在应用时会执行的操作。 选择建议时，系统将提供信息，演示如何在安全中心内实现该建议。
 
-| 建议 | 说明 |
+| 建议 | 描述 |
 | --- | --- |
 | [为订阅启用数据收集](security-center-enable-data-collection.md) |建议为每个订阅和订阅中的所有虚拟机 (VM) 开启安全策略中的数据收集。 |
 | [修正 OS 漏洞](security-center-remediate-os-vulnerabilities.md) |建议 OS 配置匹配推荐的配置规则，例如不允许保存密码。 |

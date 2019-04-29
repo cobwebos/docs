@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/21/2018
 ms.author: ellacroi
 ms.openlocfilehash: bdae273506a238c4d47c1cdce004cdd92b2d58a1
-ms.sourcegitcommit: a1cf88246e230c1888b197fdb4514aec6f1a8de2
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/16/2019
-ms.locfileid: "54355015"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121018"
 ---
 # <a name="marketing-best-practices"></a>市场营销最佳做法
 

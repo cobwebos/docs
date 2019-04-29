@@ -2,24 +2,18 @@
 title: 存储资源管理器入门 | Microsoft Docs
 description: 利用存储资源管理器来管理 Azure 存储资源
 services: storage
-documentationcenter: na
 author: cawaMS
-manager: paulyuk
-editor: ''
-ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 07/17/2017
+ms.date: 04/22/2019
 ms.author: cawa
-ms.openlocfilehash: 38a857b1d309b92c48137a46655155e0e131908c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 3db1d638aa1e0d8488c310593a593465c2b9b336
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60459147"
+ms.locfileid: "62128273"
 ---
 # <a name="get-started-with-storage-explorer"></a>存储资源管理器入门
 
@@ -115,7 +109,9 @@ Azure 存储资源管理器[发行说明](https://go.microsoft.com/fwlink/?LinkI
 
 使用存储资源管理器，可以通过模拟器使用本地存储。 使用此方法可以模拟 Azure 存储的使用，而无需在 Azure 上部署存储帐户。
 
-从 1.1.0 版开始，所有平台都支持本地存储模拟器。 存储资源管理器可以连接到侦听其默认本地存储终结点的任何模拟服务。
+从 1.1.0 版开始，存储资源管理器支持在所有平台上使用本地存储模拟器。 存储资源管理器可以连接到侦听其默认本地存储终结点的任何模拟服务。
+
+[Azure 存储模拟器](storage/common/storage-use-emulator.md)目前仅在 Windows 上运行。 若考虑使用 Linux 的存储模拟器，一个选择是使用由社区维护的开源存储模拟器 [Azurite](https://github.com/azure/azurite)。
 
 > [!NOTE]
 > 对存储服务和功能的支持可能因你选择的模拟器而有很大不同。 请确保模拟器支持你打算使用的服务和功能。

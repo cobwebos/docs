@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 07/13/2018
 ms.author: jomolesk
 ms.openlocfilehash: 95e10f4727de239016a2e3c88571e74267e3967b
-ms.sourcegitcommit: 0dd053b447e171bc99f3bad89a75ca12cd748e9c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58482977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109321"
 ---
 # <a name="azure-security-and-compliance-blueprint-paas-web-application-hosting-for-uk-official-workloads"></a>Azure 安全性与合规性蓝图：适用于英国官方工作负荷的 PaaS Web 应用程序托管
 
@@ -129,7 +129,7 @@ Azure SQL 数据库实例使用以下数据库安全措施：
 - [透明数据加密](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)，有助于保护 Azure SQL 数据库和 Azure 数据仓库免受恶意活动的威胁。 它可执行静态数据库、关联备份和事务日志文件的实时加密和解密，无需更改应用程序。
 - [Azure AD 身份验证](https://docs.microsoft.com/azure/sql-database/sql-database-aad-authentication)，可以在一个中心位置集中管理数据库用户和其他 Microsoft 服务的标识。 集中 ID 管理提供一个单一位置来管理数据库用户，并简化权限管理。
 - 使用 Azure Active Directory 进行数据库管理
-- [审核日志](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)用于存储帐户
+- [审核日志](https://docs.microsoft.com/azure/sql-database/sql-database-auditing)（写入到存储帐户）
 - 指标[警报](https://docs.microsoft.com/azure/application-insights/app-insights-alerts)，提醒失败的 DB 连接
 - [SQL 威胁检测](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection)
 - [Always Encrypted 列](https://docs.microsoft.com/azure/sql-database/sql-database-always-encrypted-azure-key-vault)

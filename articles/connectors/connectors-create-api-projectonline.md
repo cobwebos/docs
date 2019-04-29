@@ -12,11 +12,11 @@ ms.assetid: 40ce621e-4925-4653-93bb-71ab9abcbdf1
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 663363d05c1875d22a0ecc0478abcf7e0ec89c99
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230363"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105624"
 ---
 # <a name="manage-project-online-projects-tasks-and-resources-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 Project Online 项目、任务和资源
 
@@ -29,7 +29,7 @@ ms.locfileid: "50230363"
 
 Project Online 提供了强大的项目管理功能，可以帮助你规划、管理项目和项目组合投资以及设置其优先级，这几乎可以从任何位置在任何设备上进行。 可以使用 Project Online 触发器从 Project Online 获取响应，并使输出可用于其他操作。 可以使用逻辑应用中的操作在 Project Online 中执行各种任务。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

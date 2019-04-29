@@ -1,7 +1,6 @@
 ---
 title: 使用 Spark 中的 Python 库分析网站日志 - Azure
 description: 此笔记本演示如何将自定义库与 Azure HDInsight 上的 Spark 配合使用来分析日志数据。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,19 +8,19 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: f8b479f55ea5ee22ae2510fad6279cac0aaa9c0d
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: bef71f210e015dc10cd6f5c0c655d0d3beee3655
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53608794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124435"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>将自定义 Python 库与 HDInsight 上的 Apache Spark 群集配合使用来分析网站日志
 
 此笔记本演示如何将自定义库与 HDInsight 上的 Apache Spark 配合使用来分析日志数据。 我们使用的自定义库是一个名为 **iislogparser.py** 的 Python 库。
 
 > [!TIP]  
-> 本教程也可用作在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter 笔记本。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
+> 本教程也以在 HDInsight 中创建的 Spark (Linux) 群集上的 Jupyter notebook 的形式提供。 笔记本体验可让你从笔记本本身运行 Python 代码片段。 要从笔记本内部执行本教程，请创建 Spark 群集，启动 Jupyter 笔记本 (`https://CLUSTERNAME.azurehdinsight.net/jupyter`)，并运行 **PySpark** 文件夹下的笔记本“使用自定义 library.ipynb 分析 Spark 的日志”。
 >
 >
 
@@ -53,7 +52,7 @@ ms.locfileid: "53608794"
 4. 新笔记本随即已创建，并以 Untitled.pynb 名称打开。 在顶部单击笔记本名称，并输入一个友好名称。
 
     ![提供笔记本的名称](./media/apache-spark-custom-library-website-log-analysis/hdinsight-name-jupyter-notebook.png "提供笔记本的名称")
-5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统会自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，然后按 **Shift+Enter**。
+5. 使用笔记本是使用 PySpark 内核创建的，因此不需要显式创建任何上下文。 运行第一个代码单元格时，系统自动创建 Spark 和 Hive 上下文。 首先可以导入此方案所需的类型。 将以下代码段粘贴到空白单元格中，并按 **SHIFT + ENTER**。
 
         from pyspark.sql import Row
         from pyspark.sql.types import *
@@ -176,7 +175,7 @@ ms.locfileid: "53608794"
        %%sql -o averagetime
        SELECT * FROM AverageTime
 
-   后接 `-o averagetime` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出将作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为“averagetime”。
+   后接 `-o averagetime` 的 `%%sql` magic 可确保查询输出本地保存在 Jupyter 服务器上（通常在群集的头结点）。 输出作为 [Pandas](https://pandas.pydata.org/) 数据帧进行保存，指定名称为 **averagetime**。
 
    应该会显示如下输出：
 

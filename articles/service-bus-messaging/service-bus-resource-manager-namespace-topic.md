@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 01/23/2019
 ms.author: spelluru
 ms.openlocfilehash: 8155a9c8dd8e16ae9853f78ea949954fd15d30e1
-ms.sourcegitcommit: 8115c7fa126ce9bf3e16415f275680f4486192c1
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/24/2019
-ms.locfileid: "54847503"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109474"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板创建包含主题和订阅的服务总线命名空间
 
@@ -30,7 +30,7 @@ ms.locfileid: "54847503"
 有关完整模板，请参阅[包含主题和订阅的服务总线命名空间][Service Bus namespace with topic and subscription]模板。
 
 > [!NOTE]
-> 以下 Azure 资源管理器模板可供下载和部署。
+> 以下 Azure Resource Manager 模板可供下载和部署。
 > 
 > * [创建服务总线命名空间](service-bus-resource-manager-namespace.md)
 > * [创建包含队列的服务总线命名空间](service-bus-resource-manager-namespace-queue.md)

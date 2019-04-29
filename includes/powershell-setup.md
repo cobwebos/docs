@@ -13,11 +13,11 @@ ms.workload: infrastructure
 ms.date: 05/12/2015
 ms.author: rasquill
 ms.openlocfilehash: b96e8e6e31817f6d261f41dbf3b3047dd49c29ba
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "58113978"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485335"
 ---
 ## <a name="setting-up-powershell"></a>设置 PowerShell
 在使用 Azure PowerShell 之前，请完成以下步骤的操作。

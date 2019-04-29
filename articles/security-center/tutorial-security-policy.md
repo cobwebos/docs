@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 3/28/2019
 ms.author: monhaber
 ms.openlocfilehash: 1931026869e930caef2ff2f92fb85dade15a9c8c
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58578435"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111504"
 ---
 # <a name="working-with-security-policies"></a>使用安全策略
 

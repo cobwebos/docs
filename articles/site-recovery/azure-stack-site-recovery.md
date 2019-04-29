@@ -9,11 +9,11 @@ ms.service: site-recovery
 ms.date: 12/27/2018
 ms.author: raynew
 ms.openlocfilehash: a84cbba968baf50563a2c2b0e2843d64f17bb34a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58002384"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124707"
 ---
 # <a name="replicate-azure-stack-vms-to-azure"></a>将 Azure Stack VM 复制到 Azure
 

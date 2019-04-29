@@ -11,11 +11,11 @@ ms.date: 04/19/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: fac33a01afc2efc1ab06c4783c11f7a089bb6208
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60013517"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114148"
 ---
 # <a name="troubleshooting-source-anchor-issues-during-installation"></a>源定位点安装过程中的故障排除问题
 此文章介绍了不同源定位点相关的安装和产品/服务以解决这些问题的方法中可能发生的问题。

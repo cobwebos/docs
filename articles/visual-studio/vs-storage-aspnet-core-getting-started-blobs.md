@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: casoper
 ms.openlocfilehash: f8de7f7a263a087abb16ed48d05b2cae9834b4ad
-ms.sourcegitcommit: 5d837a7557363424e0183d5f04dcb23a8ff966bb
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "52961104"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110500"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务 (ASP.NET Core)
 
@@ -33,7 +33,7 @@ Azure Blob 存储是一种将非结构化数据作为对象或 Blob 存储在云
 
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 

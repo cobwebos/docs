@@ -13,22 +13,22 @@ ms.topic: conceptual
 ms.date: 12/02/2016
 ms.author: ghogen
 ms.openlocfilehash: 5a7c16e6ac565d1660fee02cb7df178344b195e7
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51254394"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122917"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>开始使用 Azure Blob 存储和 Visual Studio 连接服务（WebJob 项目）
 [!INCLUDE [storage-try-azure-tools-blobs](../../includes/storage-try-azure-tools-blobs.md)]
 
 ## <a name="overview"></a>概述
-本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。 这些代码示例使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 版本 1.x。 当使用 Visual Studio“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，相应的.NET 引用会添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
+本文章提供 C# 代码示例，用于演示如何在创建或更新 Azure blob 后触发进程。 这些代码示例使用 [WebJobs SDK](https://github.com/Azure/azure-webjobs-sdk/wiki) 版本 1.x。 使用 Visual Studio 的“添加连接服务”对话框将存储帐户添加到 WebJob 项目中时，会安装相应的 Azure 存储 NuGet 包，将相应的 .NET 引用添加到项目中，并会在 App.config 文件中更新存储帐户的连接字符串。
 
 ## <a name="how-to-trigger-a-function-when-a-blob-is-created-or-updated"></a>如何在创建或更新 Blob 后触发函数
 本部分说明如何使用 **BlobTrigger** 属性。
 
- **注意：** WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。 此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。  如果应用程序需要立即处理 blob，推荐的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 **QueueTrigger** 属性而非 **BlobTrigger** 属性。
+ **注意：** WebJobs SDK 会扫描日志文件，以观察新的或更改的 blob。 此过程非常缓慢；创建 blob 之后数分钟或更长时间内可能仍不会触发函数。  如果应用程序需要立即处理 blob，建议的方法是在创建该 blob 时创建队列消息，并在处理该 blob 的函数上使用 **QueueTrigger** 属性而非 **BlobTrigger** 属性。
 
 ### <a name="single-placeholder-for-blob-name-with-extension"></a>Blob 名称和扩展名的单个占位符
 以下代码示例将 *input* 容器中显示的文本 blob 复制到 *output* 容器中：
@@ -39,7 +39,7 @@ ms.locfileid: "51254394"
             output = input.ReadToEnd();
         }
 
-属性构造函数采用指定容器名称的字符串参数和 Blob 名称的占位符。 在此示例中，如果在 *input* 容器中创建了名为 *Blob1.txt* 的 blob，则该函数会在 *output* 容器中创建名为 *Blob1.txt* 的 blob。
+属性构造函数采用指定容器名称的字符串参数和 Blob 名称的占位符。 在此示例中，如果在 *input* 容器中创建了名为 *Blob1.txt* 的 Blob，则该函数会在 *output* 容器中创建名为 *Blob1.txt* 的 Blob。
 
 可以指定包含 Blob 名称占位符的名称模式，如以下代码示例中所示：
 
@@ -51,7 +51,7 @@ ms.locfileid: "51254394"
 
 此代码只会复制名称以“original-”开头的 Blob。 例如，将 *input* 容器中的 *original-Blob1.txt* 复制到 *output* 容器中的 *copy-Blob1.txt*。
 
-如果需要指定的名称中包含大括号的 Blob 名称的名称模式，增加大括号。 例如，如果想要在 *images* 容器中查找其名称类似以下内容的 blob：
+如果需要为名称中包含大括号的 Blob 名称指定名称模式，则使用双倍的大括号。 例如，如果想要在 *images* 容器中查找其名称类似以下内容的 blob：
 
         {20140101}-soundfile.mp3
 
@@ -59,7 +59,7 @@ ms.locfileid: "51254394"
 
         images/{{20140101}}-{name}
 
-在示例中，*name* 占位符值将是 *soundfile.mp3*。
+在示例中，*name* 占位符值是 *soundfile.mp3*。
 
 ### <a name="separate-blob-name-and-extension-placeholders"></a>单独的 Blob 名称和扩展名占位符
 以下代码示例在将 *input* 容器中显示的 blob 复制到 *output* 容器中时更改文件扩展名。 该代码将记录 *input* blob 的扩展名，并将 *output* blob 的扩展名设置为 *.txt*。
@@ -144,7 +144,7 @@ ms.locfileid: "51254394"
 
 有害 Blob 的队列消息是包含以下属性的 JSON 对象：
 
-* FunctionId（格式为 *{WebJob name}*.Functions.*{Function name}*，例如：WebJob1.Functions.CopyBlob）
+* FunctionId (格式 *{WebJob name}*。函数。*{Function name}*，例如：WebJob1.Functions.CopyBlob)
 * BlobType（"BlockBlob" 或 "PageBlob"）
 * ContainerName
 * BlobName
@@ -193,7 +193,7 @@ WebJobs SDK 确保没有为相同的新 blob 或更新 blob 多次调用 **BlobT
 
 Blob 回执存储在 AzureWebJobsStorage 连接字符串指定的 Azure 存储帐户中名为 *azure-webjobs-hosts* 的容器中。 Blob 回执包含以下信息：
 
-* 为 blob 调用的函数（("*{WebJob name}*.Functions.*{Function name}*"，例如 "WebJob1.Functions.CopyBlob"）
+* 为 blob 调用的函数 ("*{WebJob name}*。函数。*{Function name}*"，例如："WebJob1.Functions.CopyBlob")
 * 容器名称
 * Blob 类型（"BlockBlob" 或 "PageBlob"）
 * Blob 名称

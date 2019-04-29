@@ -2,7 +2,6 @@
 title: 'Azure Toolkit for IntelliJ：通过 SSH 远程调试 Spark 应用程序 '
 description: 逐步介绍如何使用用于 IntelliJ 的 Azure 工具包中的 HDInsight 工具通过 SSH 远程调试 HDInsight 群集上的应用程序
 keywords: 远程调试 intellij, 远程调试 intellij, ssh, intellij, hdinsight, 调试 intellij, 调试
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed
 ms.author: hrasheed-msft
@@ -10,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/25/2017
-ms.openlocfilehash: 87a774fad6b7e45f233102b7fb026aa9663dceb0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: ef2507a15579ea3d145bfe37df281e2c044d181c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58005919"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124299"
 ---
 # <a name="debug-apache-spark-applications-locally-or-remotely-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>使用 Azure Toolkit for IntelliJ 通过 SSH 在本地或远程调试 HDInsight 群集上的 Apache Spark 应用程序
 
@@ -31,7 +30,7 @@ ms.locfileid: "58005919"
 
 1. 启动 IntelliJ IDEA 并创建一个项目。 在“新建项目”对话框中执行以下操作：
 
-   a. 选择**Azure 的 Spark HDInsight**。 
+   a. 选择“Azure Spark/HDInsight”。 
 
    b. 根据偏好选择 Java 或 Scala 模板。 选择下列选项之一：
 
@@ -43,7 +42,7 @@ ms.locfileid: "58005919"
 
    - **Spark 项目与失败任务调试示例 （预览版） (Scala)**
 
-     此示例使用**Spark 项目的示例 (Scala)** 模板。
+     此示例使用“Spark 项目和示例(Scala)”模板。
 
    c. 在“生成工具”列表中，根据需要选择以下选项之一：
 
@@ -79,17 +78,17 @@ ms.locfileid: "58005919"
 1. 本地运行完成后，可以看到输出文件保存到当前的项目资源管理器的“数据” > “默认”中。
 
     ![本地运行结果](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-result.png)
-1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开配置 **[在 HDInsight 上的 Spark] XXX**在右上角可以看到 **[在 HDInsight 上的 Spark] XXX**中创建**HDInsight 上的 Apache Spark**。 切换到“本地运行”选项卡。
+1. 执行本地运行和本地调试时，工具已自动设置默认的本地运行配置。 打开右上角的“[HDInsight 上的 Spark] XXX”配置，可以看到已在“HDInsight 上的 Apache Spark”下创建了“[HDInsight 上的 Spark]XXX”。 切换到“本地运行”选项卡。
 
     ![本地运行配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
     - [环境变量](#prerequisite-for-windows)：如果已将系统环境变量“HADOOP_HOME”设置为“C:\WinUtils”，则它可自动检测到此设置，而无需手动添加。
     - [WinUtils.exe 位置](#prerequisite-for-windows)：如果尚未设置此系统环境变量，则可单击其按钮找到它的位置。
     - 只需选择两个选项之一，在 MacOS 和 Linux 上不需要它们。
-1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择**HDInsight 上的 Apache Spark**选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
+1. 也可在执行本地运行和本地调试前手动设置此配置。 在前面的屏幕截图中，选择加号（“+”）。 然后选择“HDInsight 上的 Apache Spark”选项。 输入“名称”、“主类名称”信息并保存，然后单击本地运行按钮。
 
 ### <a name="scenario-3-perform-local-debugging"></a>方案 3：执行本地调试
 1. 打开“SparkCore_wasbloTest”脚本，设置断点。
-1. 右键单击脚本编辑器，然后选择选项**调试 [在 HDInsight 上的 Spark] XXX**来执行本地调试。   
+1. 右键单击脚本编辑器，然后选择“调试‘[HDInsight 上的 Spark]XXX’”选项来执行本地调试。   
 
 
 
@@ -100,14 +99,14 @@ ms.locfileid: "58005919"
 
    ![编辑配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-edit-configurations.png) 
 
-1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择**HDInsight 上的 Apache Spark**选项。
+1. 在“运行/调试配置”对话框中，选择加号 (+)。 然后选择“HDInsight 上的 Apache Spark”选项。
 
    ![添加新配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
-1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”  和“Main 类名”输入信息。 然后单击 **（远程调试） 的高级的配置**。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
+1. 切换到“在群集中远程运行”选项卡。为“名称”、“Spark 群集”  和“Main 类名”输入信息。 然后单击“高级配置(远程调试)”。 工具支持使用“执行器”进行调试。 numExectors 默认值为 5。 设置的值最好不要大于 3。
 
    ![运行调试配置](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
-1. 在中 **（远程调试） 的高级配置**过程中，选择**启用 Spark 远程调试**。 输入 SSH 用户名，然后输入密码或使用私钥文件。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
+1. 在“高级配置(远程调试)”部分，选择“启用 Spark 远程调试”。 输入 SSH 用户名，然后输入密码或使用私钥文件。 若要执行远程调试，则需要设置它。 若只想使用远程运行，则无需设置它。
 
    ![启用 Spark 远程调试](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-enable-spark-remote-debug.png)
 

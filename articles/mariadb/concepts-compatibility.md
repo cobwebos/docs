@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/19/2019
 ms.openlocfilehash: 7a3d9a5f87a565625052fc54e3ecccc99fd928a7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259482"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61386796"
 ---
 # <a name="mariadb-drivers-and-management-tools-compatible-with-azure-database-for-mariadb"></a>MariaDB 驱动程序和管理工具与 Azure Database for MariaDB 兼容
 
@@ -29,7 +29,7 @@ PHP | https://secure.php.net/downloads.php | 5.5、5.6、7.x | 5.3 | 对于 PHP 
 .NET | [GitHub 上的 MySqlConnector](https://github.com/mysql-net/MySqlConnector) <br> [来自 Nuget 的安装包](https://www.nuget.org/packages/MySqlConnector/) | 0.27 及以上版本 | 0.26.5 及以下版本 |
 MySQL 连接器/NET | [MySQL 连接器/NET](https://github.com/mysql/mysql-connector-net) | 8.0、7.0、6.10 |  | 编码错误可能会导致某些非 UTF8 Windows 系统的连接失败。
 Node.js |  [GitHub 上的 MySQLjs](https://github.com/mysqljs/mysql/) <br> 来自 NPM 的安装包：<br> 从 NPM 运行 `npm install mysql` | 2.15 | 2.14.1 及以下版本
-前往 | https://github.com/go-sql-driver/mysql/releases | 1.3, 1.4 | 1.2 及以下版本 | 使用`allowNativePasswords=true`1.3 版的连接字符串中。 1.4 版包含的修补程序和`allowNativePasswords=true`不再需要。
+前往 | https://github.com/go-sql-driver/mysql/releases | 1.3、1.4 | 1.2 及以下版本 | 在版本 1.3 的连接字符串中使用 `allowNativePasswords=true`。 版本 1.4 包含修补程序，不再需要 `allowNativePasswords=true`。
 Python | https://pypi.python.org/pypi/mysql-connector-python | 1.2.3、2.0、2.1、2.2 | 1.2.2 及以下版本 |
 Java | https://downloads.mariadb.org/connector-java/ | 2.1、2.0、1.6 | 1.5.5 及以下版本 |
 

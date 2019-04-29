@@ -1,7 +1,6 @@
 ---
 title: 用于进行深度学习的包含 Azure HDInsight Spark 的 Microsoft Cognitive Toolkit
 description: 了解如何在 Azure HDInsight Spark 群集中使用 Spark Python API 将定型的 Microsoft 认知工具包深入学习模型应用于数据集。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: hrasheed
-ms.openlocfilehash: 093685ff2fa48799f0a91ee25727f5124dec6292
-ms.sourcegitcommit: 12d67f9e4956bb30e7ca55209dd15d51a692d4f6
-ms.translationtype: MT
+ms.openlocfilehash: 3462255311eaa6e418f97de5da598eb985b2a935
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58225784"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097267"
 ---
 # <a name="use-microsoft-cognitive-toolkit-deep-learning-model-with-azure-hdinsight-spark-cluster"></a>将 Microsoft 认知工具包深入学习模型与 Azure HDInsight Spark 群集配合使用
 
@@ -66,7 +65,7 @@ ms.locfileid: "58225784"
 
 * 请确保仅在头节点和工作节点上运行脚本并清除其他所有复选框。
 
-* 单击“创建”。
+* 单击**创建**。
 
 ## <a name="upload-the-jupyter-notebook-to-azure-hdinsight-spark-cluster"></a>将 Jupyter 笔记本上传到 Azure HDInsight Spark 群集
 

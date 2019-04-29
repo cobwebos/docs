@@ -9,15 +9,15 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 04/15/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 5ae7563892cb4792f5c329b2850d7b88d37c0e7d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a336f7faae24517aa4e29c991886107c6a82d2b5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60322348"
+ms.locfileid: "62103895"
 ---
 # <a name="developing-with-media-services-v3-apis"></a>使用媒体服务 v3 Api 进行开发
 
@@ -87,6 +87,10 @@ Azure 媒体服务 v3 资源名称（例如，资产、作业、转换）需遵�
 ## <a name="filtering-ordering-paging-of-media-services-entities"></a>媒体服务实体的筛选、排序和分页
 
 请参阅[筛选、 排序、 分页的 Azure 媒体服务实体](entities-overview.md)
+
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: xpouyat
 ms.openlocfilehash: 505def9cde7cddf2ddcc23408fa3159de886167a
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58294563"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472681"
 ---
 # <a name="licensing-microsoft-smooth-streaming-client-porting-kit"></a>授权 Microsoft® 平滑流式处理客户端移植工具包 
 ## <a name="overview"></a>概述
@@ -125,9 +125,9 @@ Microsoft 根据此许可证提供全部所需的知识产权，以便从其他�
 * Dongguan Digital AV Technology Corp., Ltd.
 * EchoStar Purchasing Corporation
 * Enseo, Inc.
-* FilmFlex 电影 Limited
+* FilmFlex Movies Limited
 * Fluendo S.A.
-* FUNAI ELECTRIC CO.，LTD
+* FUNAI ELECTRIC CO., LTD
 * Gibson Innovations Limited
 * Haier Information Applicantion S.R.L
 * HANDAN BroadInfoCom Co., Ltd.

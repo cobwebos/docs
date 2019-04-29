@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 8534f30c17208e77adfa47ea41506a3a61d3548d
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57897293"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121317"
 ---
 # <a name="security-frame-communication-security--mitigations"></a>安全框架：通信安全 | 缓解措施 
 | 产品/服务 | 文章 |

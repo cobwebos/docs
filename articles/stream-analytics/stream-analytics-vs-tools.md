@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: f9bc9bf540f7f44e07bc4bb0ae8ef6910ae78476
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
-ms.translationtype: HT
+ms.openlocfilehash: 1c7133801eb0d95616cacf501162e6cee3da7c80
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222380"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477785"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>使用 Visual Studio 查看 Azure 流分析作业
 
@@ -88,5 +88,5 @@ ms.locfileid: "47222380"
 
 * [使用 Visual Studio 监视和管理 Azure 流分析作业](stream-analytics-monitor-jobs-use-vs.md)
 * [快速入门：使用 Visual Studio 创建流分析作业](stream-analytics-quick-create-vs.md)
-* [教程：使用 Azure Pipelines 通过 CI/CD 部署 Azure 流分析作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
+* [教程：与使用 Azure 管道的 CI/CD 部署 Azure Stream Analytics 作业](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [使用流分析工具进行持续集成和开发](stream-analytics-tools-for-visual-studio-cicd.md)

@@ -1,24 +1,23 @@
 ---
 title: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 description: 使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/17/2017
-ms.openlocfilehash: c79f840becce43c47287ef38bd39ed3ac9168b73
-ms.sourcegitcommit: e51e940e1a0d4f6c3439ebe6674a7d0e92cdc152
-ms.translationtype: MT
+ms.openlocfilehash: d0d68263485c5ab6e57a349317b1975862470cc2
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55891073"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124384"
 ---
 # <a name="use-caffe-on-azure-hdinsight-spark-for-distributed-deep-learning"></a>使用 Caffe on Azure HDInsight Spark 进行分布式深度学习
 
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 深度学习正在影响我们生活中的方方面面，从医疗保健到交通运输到生产制造，不一而足。 很多公司都在致力于通过深度学习来解决各种棘手的问题，例如[图像分类](https://blogs.microsoft.com/next/2015/12/10/microsoft-researchers-win-imagenet-computer-vision-challenge/)、[语音识别](https://googleresearch.blogspot.jp/2015/08/the-neural-networks-behind-google-voice.html)、物体识别和机器翻译。 
 

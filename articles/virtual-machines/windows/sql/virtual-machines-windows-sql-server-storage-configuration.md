@@ -15,11 +15,11 @@ ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
 ms.openlocfilehash: da850b8ff9174fa310c5247cd7e99af69db28a8b
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328429"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477369"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM 的存储配置
 
@@ -29,7 +29,7 @@ ms.locfileid: "56328429"
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要使用自动存储配置设置，虚拟机需有以下特征：
 
@@ -129,8 +129,8 @@ Azure 使用以下设置在 SQL Server VM 上创建存储池。
 | 磁盘大小 |每个磁盘 1 TB |
 | 缓存 |读取 |
 | 分配大小 |64 KB NTFS 分配单元大小 |
-| 即时文件初始化 |已启用 |
-| 在内存中锁定页面 |已启用 |
+| 即时文件初始化 |Enabled |
+| 在内存中锁定页面 |Enabled |
 | 恢复 |简单恢复（不可复原） |
 | 列数 |数据磁盘数<sup>1</sup> |
 | TempDB 位置 |存储在数据磁盘上<sup>2</sup> |
@@ -143,7 +143,7 @@ Azure 使用以下设置在 SQL Server VM 上创建存储池。
 
 下表描述了三个可用的工作负荷类型选项及其对应的优化：
 
-| 工作负荷类型 | 说明 | 优化 |
+| 工作负荷类型 | 描述 | 优化 |
 | --- | --- | --- |
 | **常规** |支持大多数工作负荷的默认设置 |无 |
 | **事务处理** |针对传统数据库 OLTP 工作负荷优化存储 |跟踪标志 1117<br/>跟踪标志 1118 |

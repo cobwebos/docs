@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: milanga;juliako;
 ms.openlocfilehash: e0b083cba575f4d1c0eb19afb76fca29431ae75e
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259086"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463525"
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>使用 Azure 媒体分析检测动作
 ## <a name="overview"></a>概述
@@ -42,7 +42,7 @@ ms.locfileid: "58259086"
 | 名称 | 选项 | 描述 | 默认 |
 | --- | --- | --- | --- |
 | sensitivityLevel |字符串：'low'、'medium'、'high' |设置报告动作情况的敏感度级别。 调整此项是为了调整误报数量。 |'medium' |
-| frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |第 |
+| frameSamplingValue |正整数 |设置算法的运行频率。 1 等于每个帧，2 是指每 2 个帧，如此类推。 |1 |
 | detectLightChange |布尔值：'true'、'false' |设置是否在结果中报告轻微的更改 |'False' |
 | mergeTimeThreshold |Xs-time：Hh:mm:ss<br/>示例：00:00:03 |指定动作事件之间的时间窗口，其中的 2 个事件将组合成 1 个事件进行报告。 |00:00:00 |
 | detectionZones |检测区域的一个数组：<br/>- 检测区域是一个包含 3 个或 3 个以上点的数组<br/>- 点是从 0 到 1 的 x 和 y 坐标。 |描述要使用的多边形检测区域列表。<br/>报告结果时还将报告以 ID 表示的区域，其中第一个是 ‘id’:0 |单个区域，涵盖整个帧。 |
@@ -94,14 +94,14 @@ ms.locfileid: "58259086"
 
 | 元素 | 描述 |
 | --- | --- |
-| 版本 |这是指视频 API 的版本。 当前版本为 2。 |
+| Version |这是指视频 API 的版本。 当前版本为 2。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
 | Offset |时间戳的时间偏移量（以“刻度”为单位）。 在版本 1.0 的视频 API 中，此属性始终为 0。 在我们将来支持的方案中，此值可能会更改。 |
 | Framerate |视频的每秒帧数。 |
 | Width, Height |表示视频的宽度和高度（以像素为单位）。 |
 | 开始 |开始时间戳（以“刻度”为单位）。 |
 | Duration |事件的长度（以“刻度”为单位）。 |
-| 时间间隔 |事件中每个条目的间隔（以“刻度”为单位）。 |
+| Interval |事件中每个条目的间隔（以“刻度”为单位）。 |
 | 活动 |每个事件片段包含在该持续时间内检测到的动作。 |
 | Type |在当前版本中，对于一般动作，该属性始终为“2”。 此标签可让视频 API 在将来的版本中灵活地为动作分类。 |
 | RegionID |如上所述，在此版本中此属性始终为 0。 此标签可让视频 API 在将来的版本中灵活地查找各区域中的动作。 |

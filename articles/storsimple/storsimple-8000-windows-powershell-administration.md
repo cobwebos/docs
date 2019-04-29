@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/09/2018
 ms.author: alkohli@microsoft.com
-ms.openlocfilehash: e6053ef9b5e1fc113e3bd3057d627347f285cd99
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 564c121aa90746498a94022fd0fb8d8529142c91
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58003120"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128577"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>使用 Windows PowerShell for StorSimple 管理设备
 
@@ -159,7 +159,7 @@ Windows PowerShell for StorSimple 提供了一个可用于管理 Microsoft Azure
 
 在 Windows PowerShell for StorSimple 中，有关于 cmdlet 的帮助信息。 此帮助的在线最新版本也可用，可以用它来更新系统上的帮助信息。
 
-获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 TechNet 库中，可以找到有关 Windows PowerShell 帮助联机：[使用 Windows PowerShell 编写脚本](https://go.microsoft.com/fwlink/?LinkID=108518)。
+获取关于此界面的帮助信息与获取关于 Windows PowerShell 的帮助信息很相似，且大多数与帮助信息相关的 cmdlet 将正常工作。 您可以联机找到适用于 Windows PowerShell 的帮助：[Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
 
 下面是关于此 Windows PowerShell 界面的帮助信息类型的简要说明，包括如何更新帮助信息。
 

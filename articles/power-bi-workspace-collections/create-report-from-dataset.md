@@ -3,17 +3,17 @@ title: 在 Power BI 工作区集合中基于数据集创建新报表 | Microsoft
 description: 现在，可以基于自有应用程序中的数据集创建 Power BI 工作区集合报表。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 92f75a15374738d02972adc012b3a28918d7825d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: e7499345f03e3deedb8972b0d51e8e676cb6c982
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58518807"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110608"
 ---
 # <a name="create-a-new-report-from-a-dataset-in-power-bi-workspace-collections"></a>在 Power BI 工作区集合中基于数据集创建新报表
 
@@ -114,7 +114,7 @@ var embedCreateConfiguration = {
 
 ## <a name="load-the-new-report"></a>加载新报表
 
-如果要与新报表交互，需要像应用程序嵌入常规报表一样来嵌入新报表，这意味着，必须专门针对新报表颁发新令牌，并调用 embed 方法。
+要与新报表交互，需要像应用程序嵌入常规报表一样来嵌入新报表，这意味着，必须专门针对新报表颁发新令牌，并调用 embed 方法。
 
 ```html
 <div id="reportContainer"></div>

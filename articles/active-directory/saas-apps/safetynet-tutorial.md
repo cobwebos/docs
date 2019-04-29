@@ -17,11 +17,11 @@ ms.date: 04/16/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4fadebc689f10b40131bb0feb12d846d3bdde704
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56206678"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104667"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-safetynet"></a>教程：Azure Active Directory 与 SafetyNet 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56206678"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 SafetyNet 的集成，需要以下项：
 
@@ -162,7 +162,7 @@ ms.locfileid: "56206678"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-a-safetynet-test-user"></a>创建 SafetyNet 测试用户
 

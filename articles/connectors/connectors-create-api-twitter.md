@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 0fbd89202796cb4543dbecbeee605c9b87cc9d05
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230652"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104980"
 ---
 # <a name="monitor-and-manage-twitter-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Twitter
 
@@ -27,7 +27,7 @@ ms.locfileid: "50230652"
 
 可以使用触发器从 Twitter 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Twitter 帐户执行任务的操作。 还可以让其他操作使用来自 Twitter 操作的输出。 例如，当出现具有特定井号标签的新推文时，你可以使用 Slack 连接器发送消息。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -76,7 +76,7 @@ ms.locfileid: "50230652"
 
 （可选）可以包括一个条件来规定合格的推文必须来自至少具有指定数量的关注者的用户。
 
-**企业示例**：可以使用此触发器监视有关你的公司的推文并将推文的内容上传到 SQL 数据库。
+**企业示例**：此触发器可用于监视有关您的公司的推文并将推文的内容上载到 SQL 数据库。
 
 ### <a name="twitter-action-post-a-tweet"></a>Twitter 操作：发布推文
 

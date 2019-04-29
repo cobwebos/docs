@@ -17,12 +17,12 @@ ms.topic: article
 origin.date: 03/11/2019
 ms.date: 04/15/2019
 ms.author: v-yiso
-ms.openlocfilehash: 3ecabd683ed4303a7ff54780299ed0e83aa14c26
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 19d77d4aa49008232a01cd3ac2761a796505a35c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60539249"
+ms.locfileid: "62098212"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>Apache Spark 流式处理概述
 
@@ -231,7 +231,7 @@ ssc.start()
 
 | value | time |
 | --- | --- |
-| 1 | 1497316294139 |
+| 第 | 1497316294139 |
 | 2 | 1497316299158
 | 3 | 1497316304178
 | 4 | 1497316309204

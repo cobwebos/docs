@@ -9,11 +9,11 @@ ms.date: 05/17/2018
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 225164fe00f70839446f8b74155cd3959f745a49
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55467741"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478009"
 ---
 # <a name="view-the-status-of-azure-importexport-jobs"></a>查看 Azure 导入/导出作业的状态
 
@@ -28,7 +28,7 @@ ms.locfileid: "55467741"
 
 会看到以下作业状态之一，具体取决于驱动器处于哪个处理阶段。
 
-| 作业状态 | 说明 |
+| 作业状态 | 描述 |
 |:--- |:--- |
 | Creating | 创建作业后，其状态设置为“Creating”。 当作业处于“Creating”状态时，导入/导出服务假设驱动器尚未寄送到数据中心。 作业可保持此状态最多两周，之后服务会自动将其删除。 |
 | 寄送 | 寄出包裹后，应在 Azure 门户中更新跟踪信息。  这会将作业转换为“Shipping”状态。 作业会保持“Shipping”状态最多两周。 
@@ -44,7 +44,7 @@ ms.locfileid: "55467741"
 
 下表描述了每个驱动器在作业中可能经历的每种状态。
 
-| 驱动器状态 | 说明 |
+| 驱动器状态 | 描述 |
 |:--- |:--- |
 | Specified | 对于导入作业，在 Azure 门户中创建作业时，驱动器的初始状态为“Specified”。 对于导出作业，由于在创建作业时未指定驱动器，因此驱动器的初始状态为“Received”。 |
 | Received | 导入/导出服务为导入作业处理从货运公司收到的驱动器后，驱动器将转换为“Received”状态。 对于导出作业，初始驱动器状态为“Received”。 |

@@ -8,15 +8,15 @@ ms.date: 12/07/2018
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: d3bfe1b54409fd57f7535bac2362dc7040975061
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877618"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115531"
 ---
 # <a name="understand-your-azure-cosmos-db-bill"></a>了解 Azure Cosmos DB 帐单
 
-Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的吞吐量和消耗的存储收费，从而简化计费。 没有额外的许可证费用、 硬件、 实用程序成本或与在本地或 IaaS 托管替代项相比的设施成本。 当您考虑多区域 Azure Cosmos DB 功能时，数据库服务提供了大幅降低的成本比现有的本地或 IaaS 解决方案。
+Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的吞吐量和消耗的存储收费，从而简化计费。 与本地或 IaaS 托管的替代方案相比，无需额外的许可费、硬件、使用成本或设施成本。 若想使用 Azure Cosmos DB 的多区域功能，与现有本地或 IaaS 解决方案相比，数据库服务可显着降低成本。
 
 使用 Azure Cosmos DB 时，需根据预配的吞吐量和使用的存储按小时付费。 对于预配的吞吐量，计费单位为每小时 100 RU/秒，每小时收取 0.008 美元（假定为标准公开定价），请参阅[定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)。 对于消耗的存储，每月每 1 GB 存储收取 0.25 美元，请参阅[定价页面](https://azure.microsoft.com/pricing/details/cosmos-db/)。 
 
@@ -202,7 +202,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 
 |**存储成本** | |
 |----|----|
-|平均记录大小 (KB) |1 |
+|平均记录大小 (KB) |第 |
 |记录数  |100,000,000  |
 |总存储 (GB)  |100 |
 |每 GB 的月度成本  |0.25 美元  |
@@ -214,7 +214,7 @@ Azure Cosmos DB 是完全托管的云原生数据库服务，仅针对预配的�
 |----|----|----|----|
 |操作类型| 请求数/秒| 平均RU/请求| 所需 RU|
 |写入| 100 | 5 | 500|
-|读取| 400| 1| 400|
+|读取| 400| 第| 400|
 
 总 RU/秒：500 + 400 = 900；每小时成本：900/100 * 0.008 美元 = 0.072 美元；预期的月度吞吐量成本（假定一月 31 天）：0.072 美元 * 24 * 31 = 53.57 美元
 

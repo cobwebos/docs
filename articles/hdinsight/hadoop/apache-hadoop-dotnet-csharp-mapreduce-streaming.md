@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 中的 Hadoop 上将 C# 与 MapReduce 配合使用 - Azure
 description: 了解如何在 Azure HDInsight 中通过 Apache Hadoop 使用 C# 创建 MapReduce 解决方案。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.custom: hdinsightactive
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: hrasheed
-ms.openlocfilehash: 0c3525b73560d3edee5bffa7a391fcedeaaa1e48
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: b06f19736c4d50ab7d246a5c71da04ada95b6f98
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122041"
 ---
 # <a name="use-c-with-mapreduce-streaming-on-apache-hadoop-in-hdinsight"></a>在 HDInsight 中的 Apache Hadoop 上将 C# 与 MapReduce 流式处理配合使用
 
@@ -43,7 +42,7 @@ __基于 Linux 的 HDInsight__ 群集使用 [Mono (https://mono-project.com)](ht
 
 有关流式处理的详细信息，请参阅 [Hadoop 流式处理](https://hadoop.apache.org/docs/r2.7.1/hadoop-streaming/HadoopStreaming.html)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * 熟悉编写和生成面向 .NET Framework 4.5 的 C# 代码。 本文档中的各个步骤都使用 Visual Studio 2017。
 

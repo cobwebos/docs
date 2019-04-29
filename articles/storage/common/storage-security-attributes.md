@@ -9,12 +9,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 33765d57f1a0e5788011b2d9d9c2f57d06713ddb
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.openlocfilehash: 8fa43998d0b10eddacdc9e0dd512295559814255
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680683"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101930"
 ---
 # <a name="common-security-attributes-for-azure-storage"></a>Azure 存储的常见安全属性
 
@@ -28,8 +28,8 @@ ms.locfileid: "59680683"
 |---|---|--|
 | 静态加密：<ul><li>服务器端加密</li><li>使用客户托管密钥的服务器端加密</li><li>其他加密功能（例如客户端、始终加密等）</ul>| 是 |  |
 | 传输中加密：<ul><li>快速路由加密</li><li>Vnet 中加密</li><li>VNet-VNet 加密</ul>| 是 | 支持标准的 HTTPS/TLS 机制。  传输到服务之前，用户还可以加密数据。 |
-| 加密密钥处理（CMK、BYOK 等）| 是 | 请参阅[使用 Azure Key Vault 中客户托管密钥的存储服务加密](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。|
-| 列级加密（Azure 数据服务）| 不适用 |  |
+| 加密密钥处理 （CMK，BYOK，等等。）| 是 | 请参阅[使用 Azure Key Vault 中客户托管密钥的存储服务加密](storage-service-encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)。|
+| 列级加密 （Azure 数据服务）| 不适用 |  |
 | 加密的 API 调用| 是 |  |
 
 ## <a name="network-segmentation"></a>网络分段
@@ -38,8 +38,8 @@ ms.locfileid: "59680683"
 |---|---|--|
 | 服务终结点支持| 是 |  |
 | vNET 注入支持| 不适用 |  |
-| 网络隔离/防火墙支持| 是 | |
-| 支持强制隧道 | 不适用 |  |
+| 网络隔离和防火墙支持| 是 | |
+| 强制隧道支持| 不适用 |  |
 
 ## <a name="detection"></a>检测
 
@@ -47,19 +47,19 @@ ms.locfileid: "59680683"
 |---|---|--|
 | Azure 监视支持 （日志分析、 应用程序见解等）| 是 | 可用的 azure Monitor 指标现在，可以记录开始预览 |
 
-## <a name="iam-support"></a>IAM 支持
+## <a name="identity-and-access-management"></a>标识和访问管理
 
 | 安全属性 | Yes/No | 说明|
 |---|---|--|
-| 访问管理 - 身份验证| 是 | Azure Active Directory、 共享密钥、 共享访问令牌。 |
-| 访问管理 - 授权| 是 | 支持通过 RBAC、 POSIX Acl 和 SAS 令牌的授权 |
+| Authentication| 是 | Azure Active Directory、 共享密钥、 共享访问令牌。 |
+| 授权| 是 | 支持通过 RBAC、 POSIX Acl 和 SAS 令牌的授权 |
 
 
 ## <a name="audit-trail"></a>审核线索
 
 | 安全属性 | Yes/No | 说明|
 |---|---|--|
-| 控制/管理计划日志记录和审核 | 是 | Azure 资源管理器活动日志 |
+| 控制和管理平面日志记录和审核 | 是 | Azure 资源管理器活动日志 |
 | 数据平面日志记录和审核| 是 | 服务诊断日志和 Azure Monitor 日志记录开始预览  |
 
 ## <a name="configuration-management"></a>配置管理

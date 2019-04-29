@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 4fc4175c03baa4ddb81507dd4001fcdbe7c7058b
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149540"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61458639"
 ---
 # <a name="diagnose-dropped-notifications-in-azure-notification-hubs"></a>诊断 Azure 通知中心的已删除的通知
 
@@ -101,7 +101,7 @@ ms.locfileid: "60149540"
 
 在这种情况下，从数据库中删除出错的注册。 然后，我们针对该批次中的其他设备重试通知传递。
 
-若要获取有关针对注册的失败传递尝试的更多错误信息，可以使用通知中心 REST API [按消息遥测：获取通知消息遥测数据](https://msdn.microsoft.com/library/azure/mt608135.aspx)并[PNS 反馈](https://msdn.microsoft.com/library/azure/mt705560.aspx)。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
+若要获取有关针对注册的失败传递尝试的更多错误信息，可以使用通知中心 REST API [按消息遥测：获取通知消息遥测数据](https://msdn.microsoft.com/library/azure/mt608135.aspx)和 [PNS 反馈](https://msdn.microsoft.com/library/azure/mt705560.aspx)。 有关示例代码，请参阅[发送 REST 示例](https://github.com/Azure/azure-notificationhubs-dotnet/tree/master/Samples/SendRestExample/)。
 
 ## <a name="push-notification-service-issues"></a>推送通知服务问题
 
@@ -117,7 +117,7 @@ ms.locfileid: "60149540"
 
 ## <a name="self-diagnosis-tips"></a>自我诊断提示
 
-以下是路径来诊断通知中心的已删除通知的根本原因。
+下面介绍了诊断通知中心已删除通知的根本原因的各种途径。
 
 ### <a name="verify-credentials"></a>验证凭据 ###
 
@@ -139,21 +139,21 @@ ms.locfileid: "60149540"
 
 ![Visual Studio 服务器资源管理器][9]
 
-可以查看和管理你的中心中的所有注册。 注册可按平台、 本机或模板注册、 标记、 推送通知服务标识符、 注册 ID 和到期日期进行分类。 还可以在此页面中编辑注册。 它是用于编辑标记特别有用。
+可以查看和管理你的中心中的所有注册。 注册可按平台、 本机或模板注册、 标记、 推送通知服务标识符、 注册 ID 和到期日期进行分类。 还可以在此页面中编辑注册。 它对于编辑标记特别有用。
 
 右键单击通知中心**服务器资源管理器**，然后选择**诊断**。 
 
 ![Visual Studio 服务器资源管理器：诊断菜单](./media/notification-hubs-diagnosing/diagnose-menu.png)
 
-请参阅以下页面：
+会看到以下页面：
 
 ![Visual Studio：诊断页](./media/notification-hubs-diagnosing/diagnose-page.png)
 
-切换到**设备注册**页：
+切换到“设备注册”页：
 
 ![Visual Studio：设备注册](./media/notification-hubs-diagnosing/VSRegistrations.png)
 
-可以使用**测试发送**页，可以发送测试通知消息：
+若要发送测试通知消息，可以使用“测试性发送”页：
 
 ![Visual Studio：测试发送](./media/notification-hubs-diagnosing/test-send-vs.png)
 
@@ -257,14 +257,14 @@ The Token obtained from the Token Provider is wrong
 
 3. 首先查看“传入消息”、“注册操作”和“成功通知”。 然后转到每个平台选项卡查看特定于推送通知服务的错误。
 
-4. 如果通知中心的身份验证设置不正确，则出现“PNS 身份验证错误”消息。 它是表示要检查推送通知服务凭据。
+4. 如果通知中心的身份验证设置不正确，则出现“PNS 身份验证错误”消息。 它表示要检查推送通知服务凭据。
 
 #### <a name="programmatic-access"></a>以编程方式访问 ####
 
 有关以编程方式访问的详细信息，请参阅[以编程方式访问](https://docs.microsoft.com/en-us/previous-versions/azure/azure-services/dn458823(v=azure.100))。
 
 > [!NOTE]
-> 与遥测相关的多项功能（例如，导出和导入注册、通过 API 进行遥测访问）只能在标准服务层使用。 如果您尝试使用这些功能从免费或基本服务层，将获得一条异常消息，如果使用 SDK。 如果使用直接通过 REST Api 的功能，您将收到 HTTP 403 （禁止） 错误。
+> 与遥测相关的多项功能（例如，导出和导入注册、通过 API 进行遥测访问）只能在“标准”服务层级使用。 如果您尝试使用这些功能从免费或基本服务层，将获得一条异常消息，如果使用 SDK。 如果使用直接通过 REST Api 的功能，您将收到 HTTP 403 （禁止） 错误。
 >
 > 若要使用与遥测相关的功能，首先确保在 Azure 门户中使用标准服务层。  
 

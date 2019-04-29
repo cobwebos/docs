@@ -11,11 +11,11 @@ ms.date: 03/27/2019
 ms.author: jrj
 ms.reviewer: igorstan
 ms.openlocfilehash: 74449f7319f800e8008c5d457351fa49ae1af59a
-ms.sourcegitcommit: f8c592ebaad4a5fc45710dadc0e5c4480d122d6f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58621696"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476654"
 ---
 # <a name="sql-data-warehouse-data-integration-partners"></a>SQL 数据仓库数据集成合作伙伴
 要创建数据仓库解决方案，请从行业领先的各种工具中进行选择。 本文重点介绍的正式数据集成解决方案支持 Azure SQL 数据仓库的 Microsoft 合作伙伴公司。

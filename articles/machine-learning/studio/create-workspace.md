@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 12/07/2017
 ms.openlocfilehash: 7aeee4f24f6c7133ad978bc0c6c7fb8853bc4c35
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086133"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62109342"
 ---
 # <a name="create-and-share-an-azure-machine-learning-studio-workspace"></a>创建并共享 Azure 机器学习工作室工作区
 
@@ -41,7 +41,7 @@ ms.locfileid: "58086133"
 
      ![创建新的工作室工作区](./media/create-workspace/create-new-workspace.png)
 
-5. 单击“创建”。
+5. 单击**创建**。
 
 > [!NOTE]
 > 在执行工作流时，机器学习工作室依赖用户提供的 Azure 存储帐户来保存中间数据。 创建工作区后，如果删除了存储帐户或如果更改了访问密钥，工作区将停止运行，该工作区中的所有试验会失败。

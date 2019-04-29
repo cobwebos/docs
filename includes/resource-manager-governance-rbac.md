@@ -2,18 +2,20 @@
 title: include 文件
 description: include 文件
 services: azure-resource-manager
-author: tfitzmac
+author: rockboyfor
+manager: digimobile
 ms.service: azure-resource-manager
 ms.topic: include
-ms.date: 02/16/2018
-ms.author: tomfitz
+origin.date: 02/16/2018
+ms.date: 04/30/2018
+ms.author: v-yeche
 ms.custom: include file
-ms.openlocfilehash: b4b06119b9d46781b967fc8d98808c60d2b41ccb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: f77a5d482c3f8632a3d86bd8e027fbb4418168c3
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38753633"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122902"
 ---
 你希望确保你的组织中的用户对这些资源具有合适级别的访问权限。 你不希望向用户授予不受限的访问权限，但还需要确保他们可以执行其工作。 使用基于角色的访问控制 (RBAC)，你可以管理哪些用户有权在某个范围内完成特定操作。 一个角色定义一组允许的操作。 将角色分配至某一范围，并指定哪些用户在此范围内属于该角色。
 
@@ -28,3 +30,4 @@ ms.locfileid: "38753633"
 ### <a name="who-can-assign-roles"></a>谁能分配角色
 
 若要创建和删除角色分配，用户必须具有 `Microsoft.Authorization/roleAssignments/*` 访问权限。 此访问权限是通过“所有者”或“用户访问”管理员角色授权的。
+<!--ms.date: 04/30/2018-->

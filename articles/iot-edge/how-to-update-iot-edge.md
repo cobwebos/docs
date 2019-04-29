@@ -11,15 +11,15 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: a3dd7f78362b5f5c99dc4a74fe0a32c4d26be5b7
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311911"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125927"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>更新 IoT Edge 安全守护程序和运行时
 
-IoT Edge 服务发布新版本，你将想要更新的最新功能和安全改进 IoT Edge 设备。 本文提供有关在新版本推出时如何更新 IoT Edge 设备的信息。 
+当 IoT Edge 服务发布新版本时，可能需要更新 IoT Edge 设备，使其获得最新功能并改善安全性。 本文提供有关在新版本推出时如何更新 IoT Edge 设备的信息。 
 
 若要转移到较新的版本，需要更新 IoT Edge 设备的两个组件。 第一个组件是安全守护程序，它在设备上运行并在设备启动时启动运行时模块。 目前，只能从设备本身更新安全守护程序。 第二个组件是由 IoT Edge 中心和 IoT Edge 代理模块组成的运行时。 根据部署的构造方式，可以从设备或者远程更新运行时。 
 
@@ -30,7 +30,7 @@ IoT Edge 服务发布新版本，你将想要更新的最新功能和安全改�
 >* 尚未将设备升级到 Windows 内部版本 17763。 IoT Edge 版本 1.0.5 不支持低于 17763 的 Windows 内部版本。
 >* 在 Windows 设备上运行 Java 或 Node.js 模块。 跳过版本 1.0.5，即使已将 Windows 设备更新到最新的内部版本。 
 >
->有关 IoT Edge 版本 1.0.5 的详细信息，请参阅 [1.0.5 发行说明](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)。 有关如何防止您的开发工具更新到最新版本的详细信息，请参阅[IoT 开发人员博客](https://devblogs.microsoft.com/iotdev/)。
+>有关 IoT Edge 版本 1.0.5 的详细信息，请参阅 [1.0.5 发行说明](https://github.com/Azure/azure-iotedge/releases/tag/1.0.5)。 若要详细了解如何不让开发工具更新到最新版本，请参阅 [IoT 开发人员博客](https://devblogs.microsoft.com/iotdev/)。
 
 
 ## <a name="update-the-security-daemon"></a>更新安全守护程序
@@ -59,9 +59,9 @@ apt-get install libiothsm iotedge
 Uninstall-SecurityDaemon
 ```
 
-运行`Uninstall-SecurityDaemon`不带任何参数的命令只从你的设备，以及两个运行时容器映像中删除安全守护程序。 config.yaml 文件以及 Moby 容器引擎中的数据会保留在设备上。 保持配置信息，则意味着无需提供的连接字符串或再次在安装过程中为你的设备的设备预配服务信息。 
+在没有任何参数的情况下运行 `Uninstall-SecurityDaemon` 命令只会从设备中删除安全守护程序以及两个运行时容器映像。 config.yaml 文件以及 Moby 容器引擎中的数据会保留在设备上。 保留配置信息意味着，在安装过程中，不需再次为设备提供连接字符串或设备预配服务信息。 
 
-根据 IoT Edge 设备使用的是 Windows 容器还是 Linux 容器重新安装安全守护程序。 替换为短语**\<Windows 或 Linux\>** 随相应的容器的操作系统。 使用 **-ExistingConfig** 标志即可指向设备上的现有 config.yaml 文件。 
+根据 IoT Edge 设备使用的是 Windows 容器还是 Linux 容器重新安装安全守护程序。 请将短语 **\<Windows or Linux\>** 替换为相应的容器操作系统。 使用 **-ExistingConfig** 标志即可指向设备上的现有 config.yaml 文件。 
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
@@ -106,7 +106,7 @@ IoT Edge 服务将提取最新版本的运行时映像，并自动在设备上�
 
 在 Azure 门户中，运行时部署映像在“配置高级 Edge 运行时设置”部分中声明。 
 
-![配置高级的 edge 运行时设置](./media/how-to-update-iot-edge/configure-runtime.png)
+![配置高级 Edge 运行时设置](./media/how-to-update-iot-edge/configure-runtime.png)
 
 在 JSON 部署清单中，更新 **systemModules** 节中的模块映像。 
 

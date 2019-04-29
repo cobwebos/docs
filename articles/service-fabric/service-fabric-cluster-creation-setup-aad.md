@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/15/2019
 ms.author: aljo
 ms.openlocfilehash: c02e38880fdf8e8f1a2229f009b343d6431af853
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59699177"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125130"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>为客户端身份验证设置 Azure Active Directory
 
@@ -122,7 +122,7 @@ Connect-ServiceFabricCluster -ConnectionEndpoint <endpoint> -KeepAliveIntervalIn
 若要了解详细信息，请参阅 [Connect-ServiceFabricCluster cmdlet](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
 
 ### <a name="can-i-reuse-the-same-azure-ad-tenant-in-multiple-clusters"></a>是否可将同一个 Azure AD 租户用于多个群集？
-是的。 请记得将 Service Fabric Explorer 的 URL 添加到群集 (Web) 应用程序。 否则 Service Fabric Explorer 无法正常工作。
+可以。 请记得将 Service Fabric Explorer 的 URL 添加到群集 (Web) 应用程序。 否则 Service Fabric Explorer 无法正常工作。
 
 ### <a name="why-do-i-still-need-a-server-certificate-while-azure-ad-is-enabled"></a>为何启用 Azure AD 时仍然需要服务器证书？
 FabricClient 和 FabricGateway 执行相互身份验证。 使用 Azure AD 身份验证时，Azure AD 集成可将客户端标识提供给服务器，服务器证书将用于验证服务器标识。 有关 Service Fabric 证书的详细信息，请参阅 [X.509 证书和 Service Fabric][x509-certificates-and-service-fabric]。

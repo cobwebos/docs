@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: media
 ms.date: 03/27/2019
 ms.author: juliako
-ms.openlocfilehash: 70e28377b19b682f2191e0a8fb95792101fa8ec7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 6ae094ddf1bfc55ce793995f60f1694be6eb19c1
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045660"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103777"
 ---
 # <a name="migration-guidance-for-moving-from-media-services-v2-to-v3"></a>有关从媒体服务 v2 迁移到 v3 的指导
 
@@ -114,6 +114,10 @@ ms.locfileid: "59045660"
 
 > [!NOTE]
 > 在媒体服务团队不断改进 v3 API 并解决版本差距的过程中，本页面会得到维护。
+
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

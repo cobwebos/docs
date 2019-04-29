@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 11/01/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 2b568717b6656fb9ae15e9a6dbd27441689c4372
-ms.sourcegitcommit: 1fc949dab883453ac960e02d882e613806fabe6f
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/03/2018
-ms.locfileid: "50980119"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61472700"
 ---
 # <a name="update-an-existing-container-offer"></a>更新现有的容器组
 
 本文分步介绍了在[云合作伙伴门户](https://cloudpartner.azure.com/)中更新容器产品/服务的各个方面。
 
-我们可能会出于多个原因更新产品/服务，例如：
+我们可能会出于多个原因更新套餐，例如：
 
 -  向现有 SKU 添加新的容器映像版本。
 -  添加新的 SKU。
--  更新产品/服务或单个 SKU 的市场元数据。
+-  更新套餐或单个 SKU 的市场元数据。
 
 为了帮助你进行这些修改，门户中提供了“比较”和“历史记录”功能。  
 
@@ -38,7 +38,7 @@ ms.locfileid: "50980119"
 
 在 Azure 市场中推出产品/服务后，无法更改容器产品/服务或 SKU 的某些属性。 不能更改以下设置：
 
--  产品/服务的“产品/服务 ID”和“发布者 ID”
+-  套餐的“套餐 ID”和“发布者 ID”
 -  现有 SKU 的“SKU ID”
 -  版本标记，例如 `1.0.1`
 -  对现有 SKU 的计费/许可证模型更改
@@ -52,7 +52,7 @@ ms.locfileid: "50980119"
 我们经常会使用安全修补程序、其他功能等定期更新容器映像。 在这种情况下，需要使用以下步骤来更新你的 SKU 引用的容器映像：
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有产品/服务”下，找到要更新的产品/服务。
+2. 在“所有套餐”下，找到要更新的套餐。
 3. 在“SKU”选项卡中，选择与要更新的容器映像关联的 SKU。
 4. 在“容器映像”下，选择“+ 新建映像版本”以添加新的容器映像。
 5. 提供新的容器**映像版本**。 映像版本需要遵循与以前版本相同的标记准则。 版本标记应采用 X.Y.Z 格式，其中 X、Y 和 Z 是整数。 检查提供的新版本是否高于以前的所有版本。
@@ -60,17 +60,17 @@ ms.locfileid: "50980119"
 
 ### <a name="add-a-new-sku"></a>添加新 SKU
 
-使用以下步骤使新 SKU 可用于产品/服务：
+使用以下步骤使新 SKU 可用于套餐：
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
-2. 在“所有产品/服务”下，找到要更新的产品/服务。
+2. 在“所有套餐”下，找到要更新的套餐。
 3. 在“SKU”选项卡下，选择“添加新 SKU”并在弹出窗口中提供一个 **SKU ID**。
 4. 使用[发布容器产品/服务](./cpp-publish-offer.md)中描述的步骤发布容器。
 5. 选择“发布”，启动发布新 SKU 的工作流。
 
-### <a name="update-offer-marketplace-metadata"></a>更新产品/服务市场元数据
+### <a name="update-offer-marketplace-metadata"></a>更新套餐市场元数据
 
-使用以下步骤更新与产品/服务关联的市场元数据。 （例如：公司名称、徽标，等等）
+使用以下步骤更新与套餐关联的市场元数据。 （例如：公司名称、徽标，等等）
 
 1. 登录到[云合作伙伴门户](https://cloudpartner.azure.com/)。
 2. 在“所有产品/服务”下，找到要更新的产品/服务。
@@ -89,4 +89,4 @@ ms.locfileid: "50980119"
 
 ## <a name="history-of-publishing-actions"></a>发布操作的历史记录
 
-若要查看历史发布活动，请选择云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。 可以看到在 Azure 市场产品/服务生存期内执行的带时间戳的操作。
+若要查看历史发布活动，请选择云合作伙伴门户左侧导航菜单栏中的“历史记录”选项卡。 可以看到在 Azure 市场套餐生存期内执行的带时间戳的操作。

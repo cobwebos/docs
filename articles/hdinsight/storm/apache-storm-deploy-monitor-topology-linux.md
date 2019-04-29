@@ -1,7 +1,6 @@
 ---
 title: 在 Azure HDInsight 中部署和管理 Apache Storm 拓扑
 description: 了解如何使用基于 Linux 的 HDInsight 上的 Storm 仪表板部署、监视和管理 Apache Storm 拓扑。 使用 Hadoop Tools for Visual Studio。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: 32ad4434db8c2816fe7792b1b851e020021d543a
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
-ms.translationtype: MT
+ms.openlocfilehash: 8b27ad34bdc6fcbd7a1eb46515fbf33c96d02528
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58447106"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125232"
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-azure-hdinsight"></a>在 Azure HDInsight 中部署和管理 Apache Storm 拓扑 
 
@@ -59,7 +58,7 @@ HDInsight Tools 可用于将 C# 或混合拓扑提交到 Storm 群集。 以下�
 
 3. 在“新建项目”对话框中，展开“已安装” > “模板”，并选择“HDInsight”。 从模板列表中，选择“Storm 示例”。 在对话框底部，键入应用程序的名称。
 
-    ![图像](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. 在“解决方案资源管理器”中，右键单击项目，并选择“提交到 Storm on HDInsight”。
 

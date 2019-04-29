@@ -2,7 +2,6 @@
 title: HDInsight 上的 HBase 入门示例 - Azure
 description: 按照此 Apache HBase 示例，开始在 HDInsight 上使用 Hadoop。 从 HBase shell 创建表，并使用 Hive 查询这些表。
 keywords: hbasecommand，hbase 示例
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 7f162412a099078302bb348dab9ad3171f9e2913
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
-ms.translationtype: MT
+ms.openlocfilehash: c1c582c60a7c91de40983daa07bdec1e8d748f8a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58199488"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123121"
 ---
 # <a name="get-started-with-an-apache-hbase-example-in-hdinsight"></a>HDInsight 中的 Apache HBase 入门示例
 

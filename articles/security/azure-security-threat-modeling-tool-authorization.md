@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.openlocfilehash: 3c078f7246140ee966f1d202d2248758dde49059
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57888462"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121515"
 ---
 # <a name="security-frame-authorization--mitigations"></a>安全框架：授权 | 缓解措施 
 | 产品/服务 | 文章 |
@@ -291,7 +291,7 @@ WHERE userID=:id < - session var
 | **适用的技术** | 泛型 |
 | **属性**              | 不适用  |
 | **参考**              | [如何使用基于角色的访问控制 (RBAC) 来保护存储帐户](https://azure.microsoft.com/documentation/articles/storage-security-guide/#management-plane-security) |
-| **步骤** | <p>创建新的存储帐户时，可以选择经典或 Azure 资源管理器部署模型。 在 Azure 中创建资源的经典模型只允许以孤注一掷的方式访问订阅，并访问存储帐户。</p><p>通过 Azure 资源管理器模型，可将存储帐户放在资源组中，使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可授权特定用户访问存储帐户密钥，而其他用户可查看存储帐户相关信息却无法访问存储帐户密钥。</p>|
+| **步骤** | <p>创建新的存储帐户时，可以选择经典或 Azure 资源管理器部署模型。 在 Azure 中创建资源的经典模型只允许以孤注一掷的方式访问订阅，并访问存储帐户。</p><p>通过 Azure 资源管理器模型，可将存储帐户放在资源组中，使用 Azure Active Directory 控制对该特定存储帐户的管理平面的访问。 例如，可以授权特定用户访问存储帐户密钥，而其他用户可以查看有关存储帐户的信息，但无法访问存储帐户密钥。</p>|
 
 ## <a id="rooting-detection"></a>实施“隐式越狱”或“获取 root 权限”检测
 

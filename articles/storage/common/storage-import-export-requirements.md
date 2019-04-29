@@ -9,11 +9,11 @@ ms.date: 04/15/2019
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: bc244ecb62655d1e95046fb0eb8548fdacdcc2a1
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679720"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478583"
 ---
 # <a name="azure-importexport-system-requirements"></a>Azure 导入/导出系统要求
 
@@ -24,14 +24,14 @@ ms.locfileid: "59679720"
 为了使用 WAImportExport 工具准备硬盘驱动器，以下**支持 BitLocker 驱动器加密的 64 位操作系统**受支持。
 
 
-|平台 |版本 |
+|平台 |Version |
 |---------|---------|
 |Windows     | Windows 7 企业版、Windows 7 旗舰版 <br> Windows 8 专业版、Windows 8 企业版、Windows 8.1 专业版、Windows 8.1 企业版 <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012、Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Windows 客户端所需的其他软件
 
-|平台 |版本 |
+|平台 |Version |
 |---------|---------|
 |.NET framework    | 4.5.1       |
 | BitLocker        |  _          |

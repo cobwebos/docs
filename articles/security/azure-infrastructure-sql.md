@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: cd2ad16f910f5d2b3b801c8d54e9df7660751462
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56103942"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121648"
 ---
 # <a name="azure-sql-database-security-features"></a>Azure SQL 数据库安全功能    
 Azure SQL 数据库在 Azure 中提供关系型数据库服务。 为了保护客户数据并提供关系型数据库服务预期具备的强大安全功能，SQL 数据库具有自身的安全功能集。 这些功能立足于从 Azure 继承的控制能力。

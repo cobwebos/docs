@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/06/2019
 ms.author: ramamill
 ms.openlocfilehash: c25ca8c27b84f34b025ec5abce00c8d8c70e5df6
-ms.sourcegitcommit: b8a8d29fdf199158d96736fbbb0c3773502a092d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59565118"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125689"
 ---
 # <a name="deploy-a-configuration-server"></a>部署配置服务器
 
@@ -152,7 +152,7 @@ ms.locfileid: "59565118"
 
 为避免正在进行的复制中断，请确保在配置服务器注册到保管库后配置服务器的 IP 地址不会更改。 可以在[此处](vmware-azure-manage-configuration-server.md)了解有关常见配置服务器管理任务的详细信息。
 
-## <a name="faq"></a>常见问题
+## <a name="faq"></a>常见问题解答
 
 1. 通过 OVF 部署在配置服务器上的许可证有效期是多长？ 如果不重新激活许可证会发生什么？
 

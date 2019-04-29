@@ -3,17 +3,17 @@ title: 嵌入 Azure Power BI 工作区集合中的报表 | Microsoft Docs
 description: 了解如何将 Azure Power BI 工作区集合中的报表嵌入到应用程序中。
 services: power-bi-workspace-collections
 ms.service: power-bi-workspace-collections
-author: markingmyname
-ms.author: maghan
+author: rkarlin
+ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: bdfaaf3ecd5beb7cea56f017006921a86ecfb3f6
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
-ms.translationtype: MT
+ms.openlocfilehash: a7d6ccc2360d63b888dc46badc742f2618a08dac
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58519251"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62110659"
 ---
 # <a name="embed-a-report-in-power-bi-workspace-collections"></a>嵌入 Power BI 工作区集合中的报表
 
@@ -32,7 +32,7 @@ ms.locfileid: "58519251"
 
 ## <a name="get-a-report-id"></a>获取报表 ID
 
-每个访问令牌基于某个报表。 需要获取想要嵌入的报表的给定报表 ID。 可以通过调用 [获取报表](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API 来实现此目的。 此操作返回报表 ID 和嵌入 URL。 可以使用 Power BI .NET SDK 或通过直接调用 REST API 来实现此目的。
+每个访问令牌基于某个报表。 需要获取想要嵌入的报表的给定报表 ID。 可以通过调用[获取报表](https://msdn.microsoft.com/library/azure/mt711510.aspx) REST API 来实现此目的。 此操作将返回报表 ID 和嵌入 URL。 可以使用 Power BI .NET SDK 或通过直接调用 REST API 来实现此目的。
 
 ### <a name="using-the-power-bi-net-sdk"></a>使用 Power BI .NET SDK
 
@@ -141,7 +141,7 @@ var report = powerbi.embed($reportContainer.get(0), embedConfiguration);
 
 ### <a name="set-the-size-of-embedded-elements"></a>设置嵌入元素的大小
 
-报表根据其容器大小自动嵌入。 若要重写默认的嵌入项大小，只需添加 CSS 类属性，或者宽度和高度的内联样式。
+报表会根据其容器大小自动嵌入。 若要重写默认的嵌入项大小，只需添加 CSS 类属性，或者宽度和高度的内联样式。
 
 ## <a name="see-also"></a>另请参阅
 

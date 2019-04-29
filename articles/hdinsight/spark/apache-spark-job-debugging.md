@@ -1,7 +1,6 @@
 ---
 title: 调试 Azure HDInsight 中运行的 Apache Spark 作业
 description: 使用 YARN UI、Spark UI 和 Spark History Server 来跟踪和调试 Azure HDInsight 中的 Spark 群集上运行的作业
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: hrasheed
-ms.openlocfilehash: 1601663266f59668918e6799b5c4a7ff606431c4
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.openlocfilehash: 5e384520c1b8d6cf5e3b182bbddf41a5f4f7f8f6
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53600006"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124282"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>调试 Azure HDInsight 中运行的 Apache Spark 作业
 
 在本文中，将了解如何使用 [Apache Hadoop YARN](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) UI、Spark UI 和 Spark 历史记录服务器来跟踪和调试 HDInsight 群集上运行的 [Apache Spark](https://spark.apache.org/) 作业。 使用 Spark 群集中提供的笔记本启动 Spark 作业，相关信息请参阅“机器学习：使用 MLLib 对食物检测数据进行预测分析”。 也可以执行以下步骤来跟踪使用任何其他方法（例如 spark-submit）提交的应用程序。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 必须满足以下条件：
 
 * Azure 订阅。 请参阅[获取 Azure 免费试用版](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)。
@@ -35,7 +34,7 @@ ms.locfileid: "53600006"
    > [!TIP]  
    > 或者，也可以从 Ambari UI 启动 YARN UI。 若要启动 Ambari UI，请在“群集仪表板”下单击“Ambari 主页”。 在 Ambari UI 中依次单击“YARN”、“快速链接”、活动的资源管理器和“资源管理器 UI”。 
 
-2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时会启动应用程序视图。
+2. 由于 Spark 作业是使用 Jupyter 笔记本启动的，因此应用程序的名称为 **remotesparkmagics**（这是从笔记本启动的所有应用程序的名称）。 单击应用程序名称旁边的应用程序 ID，以获取有关该作业的详细信息。 此时将启动应用程序视图。
    
     ![查找 Spark 应用程序 ID](./media/apache-spark-job-debugging/find-application-id.png)
    
@@ -57,7 +56,7 @@ ms.locfileid: "53600006"
    
     ![查看 Spark 阶段](./media/apache-spark-job-debugging/view-spark-stages.png)
    
-    每个阶段可能有多个任务，可以查看这些任务的执行统计信息，如下所示。
+    每个阶段可能有多个任务，你可以查看这些任务的执行统计信息，如下所示。
    
     ![查看 Spark 阶段](./media/apache-spark-job-debugging/view-spark-stages-details.png) 
 4. 在阶段详细信息页上，可以启动 DAG 可视化。 展开页面顶部的“DAG 可视化”链接，如下所示。
@@ -76,7 +75,7 @@ ms.locfileid: "53600006"
 
 6. Spark UI 中的其他选项卡也提供了有关 Spark 实例的有用信息。
    
-   * “存储”选项卡 - 如果应用程序创建了 RDD，可以在“存储”选项卡中找到相关信息。
+   * “存储”选项卡 - 如果应用程序创建了 RDD，你可以在“存储”选项卡中找到相关信息。
    * “环境”选项卡 - 此选项卡提供有关 Spark 实例的有用信息，例如 
      * Scala 版本
      * 与群集关联的事件日志目录

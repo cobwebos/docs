@@ -1,7 +1,6 @@
 ---
 title: 适用于 ML Services on HDInsight 的 Azure 存储解决方案 - Azure
 description: 了解 ML Services on HDInsight 所提供的不同存储选项
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: ffde6f3e94cab94fca5a815db28478790a2a4221
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: cb0c350df3056636701b5ff5d3962e2a0e96f40d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59523386"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124520"
 ---
 # <a name="azure-storage-solutions-for-ml-services-on-azure-hdinsight"></a>适用于 ML Services on HDInsight 的 Azure 存储解决方案
 

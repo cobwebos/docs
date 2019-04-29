@@ -9,22 +9,22 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 8f21374ae5da76c9954acc5227f593ab4be19ce9
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
-ms.translationtype: MT
+ms.openlocfilehash: 74a4ee03562963c8a50159f085e4b76b6d461ed9
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103811"
 ---
 # <a name="media-services-concepts"></a>媒体服务概念
 
 本主题简要概述了 Azure 媒体服务概念，并使用媒体服务 v3 概念和功能的深入说明提供文章的链接。 在开始开发之前，应该复习这些主题中所述的基本概念。
 
 > [!NOTE]
-> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或支持的 [SDK](developers-guide.md) 之一。
+> 目前，无法使用 Azure 门户来管理 v3 资源。 请使用 [REST API](https://aka.ms/ams-v3-rest-ref)、[CLI](https://aka.ms/ams-v3-cli-ref) 或受支持的 [SDK](developers-guide.md) 之一。
 
 ## <a name="cloud-upload-and-storage"></a>云上传和存储
 
@@ -116,11 +116,15 @@ ms.locfileid: "58630557"
 
 - [Azure Media Player 概述](use-azure-media-player.md)
 
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
+
 ## <a name="next-steps"></a>后续步骤
 
-* [远程文件和流视频 – REST 进行编码](stream-files-tutorial-with-rest.md)
-* [编码上传的文件和流视频-.NET](stream-files-tutorial-with-api.md)
-* [Stream 实时-.NET](stream-live-tutorial-with-api.md)
-* [分析视频-.NET](analyze-videos-tutorial-with-api.md)
-* [AES-128 动态加密-.NET](protect-with-aes128.md)
-* [使用多重 DRM 的.NET 动态加密](protect-with-drm.md) 
+* [对远程文件和流视频进行编码 - REST](stream-files-tutorial-with-rest.md)
+* [对上传的文件和流视频进行编码 - .NET](stream-files-tutorial-with-api.md)
+* [实时流 - .NET](stream-live-tutorial-with-api.md)
+* [分析视频 - .NET](analyze-videos-tutorial-with-api.md)
+* [AES-128 动态加密 - .NET](protect-with-aes128.md)
+* [通过多重 DRM 进行动态加密 - .NET](protect-with-drm.md) 

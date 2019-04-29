@@ -16,11 +16,11 @@ ms.date: 07/11/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: 9bc796c4d0d449f72dc3234bc2825554eafaf77f
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53339886"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128870"
 ---
 # <a name="how-to-create-an-app-service-environment-v1"></a>如何创建应用服务环境 v1 
 
@@ -34,7 +34,7 @@ ms.locfileid: "53339886"
 ### <a name="before-you-create-your-ase"></a>创建 ASE 前的准备工作
 请务必了解不能更改的事项。 创建 ASE 后，不能更改的方面包括：
 
-* 位置
+* Location
 * 订阅
 * 资源组
 * 使用的 VNet

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 4/17/2019
 ms.author: victorh
-ms.openlocfilehash: fcff4ff141dbac84d0b96c166c36018b0cc09d8e
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: 5e009d5659a503fe8168f21a26939acff9944f2f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "59997557"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125249"
 ---
 # <a name="azure-firewall-faq"></a>Azure 防火墙常见问题解答
 
@@ -40,7 +40,7 @@ Azure 防火墙是托管的基于云的网络安全服务，可保护 Azure 虚�
 
 ## <a name="how-can-i-install-the-azure-firewall"></a>如何安装 Azure 防火墙？
 
-可以使用 Azure 门户、PowerShell、REST API 或使用模板设置 Azure 防火墙。 有关分步说明，请参阅[教程：使用 Azure 门户部署和配置 Azure 防火墙](/articles/firewall/tutorial-firewall-deploy-portal.md)。
+可以使用 Azure 门户、PowerShell、REST API 或使用模板设置 Azure 防火墙。 有关分步说明，请参阅[教程：使用 Azure 门户部署和配置 Azure 防火墙](tutorial-firewall-deploy-portal.md)。
 
 ## <a name="what-are-some-azure-firewall-concepts"></a>有哪些 Azure 防火墙概念？
 
@@ -58,7 +58,7 @@ Azure 防火墙支持入站和出站筛选。 入站保护适用于非 HTTP/S �
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Azure 防火墙支持哪些日志记录和分析服务？
 
-Azure 防火墙与 Azure Monitor 集成，可用于查看和分析防火墙日志。 日志可发送到 Log Analytics、Azure 存储或事件中心。 它们可在 Log Analytics 中进行分析，也可通过 Excel 和 Power BI 等不同工具进行分析。 有关详细信息，请参阅[教程：监视 Azure 防火墙日志](/articles/firewall/tutorial-diagnostics.md)。
+Azure 防火墙与 Azure Monitor 集成，可用于查看和分析防火墙日志。 日志可发送到 Log Analytics、Azure 存储或事件中心。 它们可在 Log Analytics 中进行分析，也可通过 Excel 和 Power BI 等不同工具进行分析。 有关详细信息，请参阅[教程：监视 Azure 防火墙日志](tutorial-diagnostics.md)。
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Azure 防火墙的工作原理与市场中现有的服务（例如 NVA）有何不同？
 
@@ -109,7 +109,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ## <a name="what-are-the-known-service-limits"></a>有哪些已知的服务限制？
 
-有关 Azure 防火墙服务限制，请参阅[Azure 订阅和服务限制、 配额和约束](/articles/azure-subscription-service-limits.md#azure-firewall-limits)。
+有关 Azure 防火墙服务限制，请参阅[Azure 订阅和服务限制、 配额和约束](../azure-subscription-service-limits.md#azure-firewall-limits)。
 
 ## <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>中心虚拟网络中的 Azure 防火墙能否转发并筛选两个分支虚拟网络之间的网络流量？
 
@@ -135,7 +135,7 @@ Azure 防火墙必须具有直接 Internet 连接。 默认情况下，AzureFire
 
 ## <a name="when-configuring-dnat-for-inbound-network-traffic-do-i-also-need-to-configure-a-corresponding-network-rule-to-allow-that-traffic"></a>为入站网络流量配置 DNAT 时，是否还需要配置相应的网络规则以允许该流量？
 
-不。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](/articles/firewall/rule-processing.md)。
+不。 NAT 规则会隐式添加一个对应的网络规则来允许转换后的流量。 可以通过以下方法替代此行为：显式添加一个网络规则集合并在其中包含将匹配转换后流量的拒绝规则。 若要详细了解 Azure 防火墙规则处理逻辑，请参阅 [Azure 防火墙规则处理逻辑](rule-processing.md)。
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>通配符应用程序规则目标 FQDN 中如何工作？
 

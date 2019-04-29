@@ -2,7 +2,6 @@
 title: 如何监视群集的 Ambari 和 Azure Monitor 日志可用性
 description: 了解如何使用 Ambari 和 Azure Monitor 日志来监视群集运行状况和可用性。
 keywords: 监视、 ambari、 监视、 日志分析、 警报、 可用性、 运行状况
-services: hdinsight
 ms.reviewer: jasonh
 author: tylerfox
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/28/2019
 ms.author: tyfox
-ms.openlocfilehash: 9bf0c0f45007f81312ac08230d571b727220bcd9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
-ms.translationtype: MT
+ms.openlocfilehash: 459de569916af14b0efea0ff08b92e5c93ed2369
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58671173"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097011"
 ---
 # <a name="how-to-monitor-cluster-availability-with-ambari-and-azure-monitor-logs"></a>如何监视群集的 Ambari 和 Azure Monitor 日志可用性
 

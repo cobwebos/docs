@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 675e37120b06af3add58b564495f22875647a0fa
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50230346"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105643"
 ---
 # <a name="monitor-and-manage-slack-with-azure-logic-apps"></a>使用 Azure 逻辑应用监视和管理 Slack
 
@@ -29,7 +29,7 @@ ms.locfileid: "50230346"
 
 可以使用触发器从 Slack 帐户获取响应，并使输出可用于其他操作。 可以使用通过 Slack 帐户执行任务的操作。 还可以让其他操作使用来自 Slack 操作的输出。 例如，当创建了新文件时，你可以使用 Office 365 Outlook 连接器发送电子邮件。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

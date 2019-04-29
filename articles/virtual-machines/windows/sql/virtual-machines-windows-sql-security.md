@@ -17,17 +17,17 @@ ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 69b6bd07699d179fc87ac6c5364a7a34b23d14eb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55731710"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477501"
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的安全注意事项
 
 本主题包括用于帮助与 Azure 虚拟机 (VM) 中的 SQL Server 实例建立安全访问的总体安全准则。
 
-Azure 遵守多个行业法规和标准，使你能够使用在虚拟机中运行的 SQL Server 构建合规的解决方案。 有关 Azure 合规性的信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
+Azure 遵守多个行业法规和标准，使用户能够使用虚拟机中运行的 SQL Server 生成符合规定的解决方案。 有关 Azure 合规性的信息，请参阅 [Azure 信任中心](https://azure.microsoft.com/support/trust-center/)。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -56,7 +56,7 @@ Azure 遵守多个行业法规和标准，使你能够使用在虚拟机中运�
 
 如果在经典部署模型中使用终结点，可以在不需要使用时删除虚拟机上的任何终结点。 有关在终结点上使用 ACL 的说明，请参阅[管理终结点上的 ACL](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint)。 使用 Resource Manager 的 VM 并不需要 ACL。
 
-最后，请考虑针对 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[为数据库引擎启用加密连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[连接字符串语法](https://msdn.microsoft.com/library/ms254500.aspx)。
+最后，请考虑针对 Azure 虚拟机中的 SQL Server 数据库引擎实例启用加密连接。 使用签名证书配置 SQL Server 实例。 有关详细信息，请参阅[启用到数据库引擎的加密连接](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine)和[连接字符串语法](https://msdn.microsoft.com/library/ms254500.aspx)。
 
 ## <a name="use-a-non-default-port"></a>使用非默认端口
 
@@ -79,16 +79,16 @@ SQL Server 默认在已知端口 1433 上侦听。 为了提高安全性，请�
 
 我们都不希望攻击者能够轻松猜出帐户名或密码。 以下提示可以提供帮助：
 
-- 创建一个未命名为 **Administrator** 的唯一本地管理员帐户。
+- 创建一个唯一的本地管理员帐户，不要命名为 **Administrator**。
 
 - 对所有帐户使用复杂的强密码。 有关如何创建强密码的详细信息，请参阅[创建强密码](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password)一文。
 
-- 默认情况下，Azure 在 SQL Server 虚拟机安装期间选择 Windows 身份验证。 因此，禁用 **SA** 登录名，并由安装程序分配密码。 我们不建议使用或启用 **SA** 登录名。 如果必须使用 SQL 登录名，请使用以下策略之一：
+- 默认情况下，Azure 在 SQL Server 虚拟机安装期间会选择 Windows 身份验证。 因此，会禁用 **SA** 登录名，并由安装程序分配密码。 我们不建议使用或启用 **SA** 登录名。 如果必须使用 SQL 登录名，请使用以下策略之一：
 
   - 创建一个具有 **sysadmin** 成员身份且名称唯一的 SQL 帐户。 在门户中预配期间启用“SQL 身份验证”即可实现此目的。
 
     > [!TIP] 
-    > 如果在预配期间未启用“SQL 身份验证”，则必须手动将身份验证模式更改为“SQL Server 和 Windows 身份验证模式”。 有关详细信息，请参阅[更改服务器身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
+    > 如果在预配期间未启用“SQL 身份验证”，则必须手动将身份验证模式更改为“SQL Server 和 Windows 身份验证模式”。 有关详细信息，请参阅 [更改服务器身份验证模式](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode)。
 
   - 如果必须使用 **SA** 登录名，请在预配后启用该登录名，并分配一个新的强密码。
 

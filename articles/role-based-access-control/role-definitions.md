@@ -16,11 +16,11 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7855c2bd45ba35ecb0ede5c60268e6446f37ed5a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58804524"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121810"
 ---
 # <a name="understand-role-definitions-for-azure-resources"></a>了解 Azure 资源的角色定义
 
@@ -157,7 +157,7 @@ Bob 的权限仅限于只`Actions`并`DataActions`中指定[存储 Blob 数据�
 
 若要查看和处理数据操作，必须安装正确版本的工具或 SDK：
 
-| 工具  | 版本  |
+| 工具  | Version  |
 |---------|---------|
 | [Azure PowerShell](/powershell/azure/install-az-ps) | 1.1.0 或更高版本 |
 | [Azure CLI](/cli/azure/install-azure-cli) | 2.0.30 或更高版本 |

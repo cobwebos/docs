@@ -11,14 +11,14 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 03/30/2019
+ms.date: 04/21/2019
 ms.author: juliako
-ms.openlocfilehash: 00dab8381c26a6331dd325eacd4a550892bd3411
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: a36ca880387ee1a3c5f749dbd6b9d7dcb9e6d79d
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60325827"
+ms.locfileid: "62103776"
 ---
 # <a name="live-events-and-live-outputs"></a>实时事件和实时输出
 
@@ -143,6 +143,10 @@ ms.locfileid: "60325827"
 如果已使用**流式处理定位符**发布了**实时输出**的**资产**，则**实时事件**（最长为 DVR 窗口长度）将继续可见，直到流式处理定位符过期或被删除（以先发生者为准）。
 
 有关详细信息，请参阅[使用云 DVR](live-event-cloud-dvr.md)。
+
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

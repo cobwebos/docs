@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: bc3590e90cacfa4966f0d1f64aa1c8d49483cb1b
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "58115991"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61485438"
 ---
 本文讨论了通过经典部署模型创建的 Azure 虚拟机的一些用户常见问题。
 
 ## <a name="can-i-migrate-my-vm-created-in-the-classic-deployment-model-to-the-new-resource-manager-model"></a>是否可以将经典部署模型中创建的 VM 迁移到新的 Resource Manager 模型？
-是的。 有关如何迁移的说明，请参阅：
+可以。 有关如何迁移的说明，请参阅：
 
 * [使用 Azure PowerShell 从经典部署迁移到 Azure 资源管理器部署](../articles/virtual-machines/windows/migration-classic-resource-manager-ps.md)。
 * [使用 Azure CLI 从经典部署迁移到 Azure 资源管理器部署](../articles/virtual-machines/virtual-machines-linux-cli-migration-classic-resource-manager.md)。

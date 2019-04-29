@@ -1,7 +1,6 @@
 ---
 title: 使用 Livy Spark 向 Azure HDInsight 上的 Spark 群集提交作业
 description: 了解如何使用 Apache Spark REST API 将 Spark 作业远程提交到 Azure HDInsight 群集。
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 62056b27669f334f1d8007d5284979ac4701f9d9
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 99175f79e030a55991947313e4a7e32a738d6adb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53650501"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097369"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
@@ -31,13 +30,13 @@ ms.locfileid: "53650501"
 ## <a name="submit-an-apache-livy-spark-batch-job"></a>提交 Apache Livy Spark 批处理作业
 在提交批处理作业之前，必须将应用程序 jar 上传到与群集关联的群集存储。 可以使用命令行实用工具 [**AzCopy**](../../storage/common/storage-use-azcopy.md) 来执行此操作。 可以使用其他各种客户端来上传数据。 有关详细信息，请参阅[在 HDInsight 中上传 Apache Hadoop 作业的数据](../hdinsight-upload-data.md)。
 
-    curl -k --user "<hdinsight user>:<user password>" -v -H <content-type> -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
+    curl -k --user "<hdinsight user>:<user password>" -v -H "Content-Type: application/json" -X POST -d '{ "file":"<path to application jar>", "className":"<classname in jar>" }' 'https://<spark_cluster_name>.azurehdinsight.net/livy/batches' -H "X-Requested-By: admin"
 
 **示例**：
 
 * 如果 jar 文件位于群集存储 (WASB) 中
   
-        curl -k --user "admin:mypassword1!" -v -H 'Content-Type: application/json' -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
+        curl -k --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST -d '{ "file":"wasb://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
 * 如果想要传递 jar 文件名和类名作为输入文件（在本示例中为 input.txt）的一部分
   
         curl -k  --user "admin:mypassword1!" -v -H "Content-Type: application/json" -X POST --data @C:\Temp\input.txt "https://mysparkcluster.azurehdinsight.net/livy/batches" -H "X-Requested-By: admin"
@@ -64,7 +63,7 @@ ms.locfileid: "53650501"
 ## <a name="livy-spark-and-high-availability"></a>Livy Spark 和高可用性
 Livy 可为群集上运行的 Spark 作业提供高可用性。 下面是几个示例。
 
-* 将作业远程提交到 Spark 群集之后，如果 Livy 服务关闭，作业将继续在后台运行。 当 Livy 恢复运行时，将还原并报告作业的状态。
+* 将作业远程提交到 Spark 群集之后，如果 Livy 服务关闭，作业将继续在后台运行。 当 Livy 恢复运行时，会还原并报告作业的状态。
 * 适用于 HDInsight 的 Jupyter 笔记本由后端中的 Livy 提供支持。 如果在 Notebook 运行 Spark 作业时重启 Livy 服务，Notebook 会继续运行代码单元。 
 
 ## <a name="show-me-an-example"></a>举个例子

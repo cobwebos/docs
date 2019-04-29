@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: suchiagicha
 ms.openlocfilehash: e4c698dc5aa8a07d09835adeac39db6ee35f720c
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58666148"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123172"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Reliable Service Remoting 的诊断和性能监视
 Reliable ServiceRemoting 运行时发出[性能计数器](https://msdn.microsoft.com/library/system.diagnostics.performancecounter.aspx)。 这些有助于深入了解 ServiceRemoting 的运行状况以及进行故障排除和性能监视。

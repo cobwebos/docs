@@ -1,7 +1,6 @@
 ---
 title: 为 Apache Hadoop 创建 Java MapReduce - Azure HDInsight
 description: 了解如何使用 Apache Maven 创建基于 Java 的 MapReduce 应用程序，并使用 Azure HDInsight 中的 Hadoop 运行它。
-services: hdinsight
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: hrasheed
-ms.openlocfilehash: e1b4681bc8e42294be6b47a04a24e28f81703e6f
-ms.sourcegitcommit: c2e61b62f218830dd9076d9abc1bbcb42180b3a8
+ms.openlocfilehash: e4f567fe727a2ec308cef6f48e33728f7f31c217
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/15/2018
-ms.locfileid: "53436851"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121990"
 ---
 # <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>为 HDInsight 上的 Apache Hadoop 开发 Java MapReduce 程序
 
@@ -94,7 +93,7 @@ ms.locfileid: "53436851"
     </dependency>
    ```
 
-    这会定义具有特定版本（在 &lt;version\> 中列出）的库（在 &lt;artifactId\> 中列出）。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可使用 [Maven 存储库搜索](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar)来查看详细信息。
+    这会定义具有特定版本（在 &lt;version\> 中列出）的库（在 &lt;artifactId\> 中列出）。 在编译时，会从默认 Maven 存储库下载这些依赖项。 可以使用 [Maven 存储库搜索](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) 来查看详细信息。
    
     `<scope>provided</scope>` 告诉 Maven 这些依赖关系不应与此应用程序一起打包，因为它们会在运行时由 HDInsight 群集提供。
 

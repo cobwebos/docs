@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/22/2018
 ms.author: rkarlin
 ms.openlocfilehash: 28a9b90e23d0d182197450e6449b8d3296fe99d6
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56112914"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62111383"
 ---
 # <a name="managing-and-responding-to-security-alerts-in-azure-security-center"></a>管理和响应 Azure 安全中心的安全警报
 本文档旨在帮助使用 Azure 安全中心来管理和响应安全警报。

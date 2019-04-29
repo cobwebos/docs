@@ -11,15 +11,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2019
+ms.date: 04/21/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: 984c5d6b5e6e2010489533a3889501c5b524a6bd
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
-ms.translationtype: MT
+ms.openlocfilehash: 40e7ebcddb5cc215e071f1a34dfa8f3f4ea95141
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311316"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62103708"
 ---
 # <a name="content-protection-with-dynamic-encryption"></a>使用动态加密内容保护
 
@@ -102,7 +102,7 @@ HLS 协议支持以下容器格式和加密方案。
 
 |容器格式|加密方案|URL 示例|
 |---|---|---|
-|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
+|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-aapl,encryption=cbc)`|
 |MPG2-TS |CBC (FairPlay) ||
 |CMAF(fmp4) |CBC (FairPlay) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`|
 |MPG2-TS |CENC (PlayReady) ||
@@ -120,7 +120,7 @@ MPEG DASH 协议支持以下容器格式和加密方案。
 
 |容器格式|加密方案|URL 示例
 |---|---|---|
-|All|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
+|全部|AES|`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cbc)`|
 |CSF(fmp4) |CENC (Widevine + PlayReady) |`https://amsv3account-usw22.streaming.media.azure.net/<id>/ignite.ism/manifest(format=mpd-time-csf,encryption=cenc)`|
 |CMAF(fmp4)|CENC (Widevine + PlayReady)||
 
@@ -206,6 +206,9 @@ streamingPolicy.EnvelopEncryption.customKeyAcquisitionUrlTemplate = "https://myk
 
 如果出现错误结尾`_NOT_SPECIFIED_IN_URL`，请确保在 URL 中指定的加密格式。 例如，`…/manifest(format=m3u8-cmaf,encryption=cbcs-aapl)`。 请参阅[流式处理协议和加密类型](#streaming-protocols-and-encryption-types)。
 
+## <a name="provide-feedback"></a>提供反馈
+
+查看 [Azure 媒体服务社区](media-services-community.md)文章，了解可以提出问题、提供反馈和获取有关媒体服务的更新的不同方法。
 
 ## <a name="next-steps"></a>后续步骤
 

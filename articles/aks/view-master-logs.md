@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 01/03/2019
 ms.author: iainfou
 ms.openlocfilehash: 77908e24a19a48bf9b84d5d5b664bf0443159118
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57537756"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128696"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>启用和查看 Azure Kubernetes 服务 (AKS) 中 Kubernetes 主节点的日志
 
@@ -88,7 +88,7 @@ pod/nginx created
 
 ## <a name="view-collected-logs"></a>查看收集的日志
 
-可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组如*myResourceGroup*，然后选择 log analytics 资源，如*myAKSLogs*。
+可能需要等待几分钟，诊断日志才会启用并显示在 Log Analytics 工作区中。 在 Azure 门户中，选择 Log Analytics 工作区的资源组（例如 *myResourceGroup*），然后选择 Log Analytics 资源（例如 *myAKSLogs*）。
 
 ![选择 AKS 群集的 Log Analytics 工作区](media/view-master-logs/select-log-analytics-workspace.png)
 

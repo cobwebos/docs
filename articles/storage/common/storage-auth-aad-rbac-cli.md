@@ -1,6 +1,6 @@
 ---
 title: 使用 Azure CLI 管理 Azure AD 对使用 RBAC 的 Azure 存储的 blob 和队列数据的访问权限
-description: 使用 Azure CLI 授予对容器和队列使用基于角色的访问控制 (RBAC) 访问权限。 Azure 存储支持通过 Azure AD 进行身份验证的内置和自定义 RBAC 角色。
+description: 使用 Azure CLI 授予对容器和队列使用基于角色的访问控制 (RBAC) 访问权限。 Azure 存储支持通过 Azure AD 使用内置和自定义的 RBAC 角色进行身份验证。
 services: storage
 author: tamram
 ms.service: storage
@@ -9,17 +9,17 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: de8cb99ae5db93c2438a9ea982ad1c6c9324b47f
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58449951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483585"
 ---
 # <a name="grant-access-to-azure-blob-and-queue-data-with-rbac-using-azure-cli"></a>授予对 Azure blob 和队列数据与使用 Azure CLI 的 RBAC 访问权限
 
 Azure Active Directory (Azure AD) 通过[基于角色的访问控制 (RBAC)](../../role-based-access-control/overview.md) 授权访问受保护的资源。 Azure 存储定义包含常见的用来访问 blob 或队列数据的权限集的内置 RBAC 角色的一组。 
 
-RBAC 角色分配到 Azure AD 安全主体，Azure 授予访问这些资源时为该安全主体。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可能是用户、 组、 应用程序服务主体，或[管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
+将 RBAC 角色分配到 Azure AD 安全主体后，Azure 会向该安全主体授予对这些资源的访问权限。 可以将访问权限限定于订阅、资源组、存储帐户、单个容器或队列级别。 Azure AD 安全主体可能是用户、 组、 应用程序服务主体，或[管理 Azure 资源的标识](../../active-directory/managed-identities-azure-resources/overview.md)。
 
 本文介绍如何使用 Azure CLI 列出内置 RBAC 角色，并将其分配给用户。 有关使用 Azure CLI 的详细信息，请参阅[Azure 命令行接口 (CLI)](https://docs.microsoft.com/cli/azure)。
 

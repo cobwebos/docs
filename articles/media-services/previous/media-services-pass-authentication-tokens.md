@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: dwgeo
 ms.openlocfilehash: 71925a1ee67956df45901950b2a59fa4c1b458a7
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58260071"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463219"
 ---
 # <a name="learn-how-clients-pass-tokens-to-the-azure-media-services-key-delivery-service"></a>了解客户端如何将令牌传递到 Azure 媒体服务密钥传送服务
 客户经常会问，播放器如何将令牌传递到 Azure 媒体服务密钥传送服务来进行验证，以便播放器可以获取密钥。 媒体服务支持简单 Web 令牌 (SWT) 和 JSON Web 令牌 (JWT) 格式。 令牌身份验证可应用于任何类型的密钥，不论系统中使用的是通用加密还是高级加密标准 (AES) 信封加密。

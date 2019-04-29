@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/04/2016
 ms.author: crdun
 ms.openlocfilehash: 506c59ca24aeafbac59b1508bb78142051302765
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53001831"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127873"
 ---
 # <a name="enable-offline-sync-for-your-xamarinforms-mobile-app"></a>为 Xamarin.Forms 移动应用启用脱机同步
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
@@ -27,7 +27,7 @@ ms.locfileid: "53001831"
 ## <a name="overview"></a>概述
 本教程介绍适用于 Xamarin.Forms 的 Azure 移动应用的脱机同步功能。 脱机同步允许最终用户与移动应用交互（查看、添加或修改数据），即使在没有网络连接时也是如此。 更改存储在本地数据库中。 设备重新联机后，这些更改会与远程服务同步。
 
-本教程基于在完成 [创建 Xamarin iOS 应用] 教程时创建的移动应用的 Xamarin.Forms 快速入门解决方案。 Xamarin.Forms 的快速入门解决方案包含用于支持脱机同步的代码，只需启用即可使用。 在本教程中，需更新快速入门解决方案，以打开 Azure 移动应用的脱机功能。 还将重点介绍该应用中的脱机特定代码。 如果不使用下载的快速入门解决方案，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅[使用适用于 Azure 移动应用的 .NET 后端服务器 SDK][1]。
+本教程基于在完成 [创建 Xamarin iOS 应用] 教程时创建的移动应用的 Xamarin.Forms 快速入门解决方案。 Xamarin.Forms 的快速入门解决方案包含用于支持脱机同步的代码，只需启用即可使用。 在本教程中，需更新快速入门解决方案，以打开 Azure 移动应用的脱机功能。 还将重点介绍该应用中的脱机特定代码。 如果不使用下载的快速入门解决方案，必须将数据访问扩展包添加到项目。 有关服务器扩展包的详细信息，请参阅 [Work with the .NET backend server SDK for Azure Mobile Apps][1]（使用适用于 Azure 移动应用的 .NET 后端服务器 SDK）。
 
 若要了解有关脱机同步功能的详细信息，请参阅[Azure 移动应用中的脱机数据同步]主题[2]。
 
@@ -111,7 +111,7 @@ ms.locfileid: "53001831"
             }
         }
 
-    此示例使用默认同步处理程序的简单错误处理。 实际应用程序将使用自定义的 **IMobileServiceSyncHandler** 实现处理各种错误，如网络状况和服务器冲突。
+    此示例使用默认同步处理程序的简单错误处理。 实际的应用程序使用自定义的 **IMobileServiceSyncHandler** 实现处理各种错误，如网络状况和服务器冲突。
 
 ## <a name="offline-sync-considerations"></a>脱机同步注意事项
 在此示例中，仅在启动时和请求同步时才调用 **SyncAsync** 方法。  若要在 Android 或 iOS 应用中启动同步，请下拉项目列表；对于 Windows，请使用“同步”按钮。 在实际应用程序中，还可以在网络状态发生更改时触发同步。
@@ -142,7 +142,7 @@ ms.locfileid: "53001831"
     在 Visual Studio 中，打开“服务器资源管理器”。 导航到“Azure”->“SQL 数据库”中的数据库。 右键单击数据库并选择“在 SQL Server 对象资源管理器中打开”。 现在便可以浏览 SQL 数据库表及其内容。
 
 ## <a name="update-the-client-app-to-reconnect-your-mobile-backend"></a>更新客户端应用以重新连接移动后端
-在本部分中，将应用重新连接到移动后端，以模拟重新回到联机状态的应用。 执行刷新手势时，数据将同步到移动后端。
+在本部分中，将应用重新连接到移动后端，以模拟重新回到联机状态的应用。 执行刷新手势时，数据同步到移动后端。
 
 1. 重新打开 Constants.cs。 更正 `applicationURL`，使其指向正确的 URL。
 2. 重新生成并运行客户端应用。 该应用在启动后将尝试与移动应用后端进行同步。 验证调试控制台中是否未记录任何异常。
@@ -152,7 +152,7 @@ ms.locfileid: "53001831"
 
 ## <a name="additional-resources"></a>其他资源
 * [Azure 移动应用中的脱机数据同步][2]
-* [Azure 移动应用：.NET SDK 操作方法][8]
+* [Azure 移动应用 .NET SDK 操作方法][8]
 
 <!-- URLs. -->
 [1]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2019
 ms.author: spelluru
-ms.openlocfilehash: c26418d36271b4d2d39a43eda7e8b23585d69f4a
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
+ms.openlocfilehash: 91c598bde0912cffb8aa1dd7ba022c86a9084faa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127389"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure 开发测试实验室常见问题
 获取关于 Azure 开发测试实验室的某些最常见问题的解答。
@@ -350,7 +350,7 @@ foreach($labVM in $labVMs)
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>何时应该为开发测试实验室环境创建新的虚拟网络以及使用现有的虚拟网络？
 如果 Vm 需要与现有基础结构交互，则可以考虑使用开发测试实验室环境中的现有虚拟网络。 如果使用 ExpressRoute，你可能想最小化的 Vnet / 子网，以便不分段获取用于在订阅中分配的 IP 地址空间。 
 
-请考虑以下使用 VNet 对等互连模式 ([中心辐射型模型](/architecture/reference-architectures/hybrid-networking/hub-spoke)) 过。 此方法可在订阅之间的 vnet/子网的通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。 
+请考虑以下使用 VNet 对等互连模式 ([中心辐射型模型](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) 过。 此方法可在订阅之间的 vnet/子网的通信。 除此之外，每个开发测试实验室环境可以有其自己的虚拟网络。 
 
 有[限制](../azure-subscription-service-limits.md)上每个订阅的虚拟网络的数量。 默认数量为 50，但此限制可以提高到 100。
 

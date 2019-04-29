@@ -17,11 +17,11 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental_id: d51f3cc6-753b-4e
 ms.openlocfilehash: 51694ca085e131150217ffb3fbac9830980108cb
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733512"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62108412"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>连接到 Azure 上的 SQL Server 虚拟机（经典部署）
 > [!div class="op_single_selector"]
@@ -58,7 +58,7 @@ ms.locfileid: "55733512"
 ### <a name="connect-to-sql-server-over-the-internet"></a>通过 Internet 连接到 SQL Server
 如果想要通过 Internet 连接到 SQL Server 数据库引擎，则必须创建虚拟机终结点以进行传入 TCP 通信。 此 Azure 配置步骤将传入 TCP 端口通信定向到虚拟机可以访问的 TCP 端口。
 
-若要通过 Internet 进行连接，必须使用 VM 的 DNS 名称和（本文中稍后配置的）VM 终结点端口号。 要查找 DNS 名称，请导航到 Azure 门户，并选择“虚拟机(经典)”。 然后选择虚拟机。 “DNS 名称”显示在“概述”部分。
+若要通过 Internet 进行连接，必须使用 VM 的 DNS 名称和（本文中稍后配置的）VM 终结点端口号。 要查找 DNS 名称，请导航到 Azure 门户，并选择“虚拟机(经典)”。 然后选择你的虚拟机。 “DNS 名称”显示在“概述”部分。
 
 例如，假设一个名为 **mysqlvm** 的经典虚拟机，其 DNS 名称为 **mysqlvm7777.cloudapp.net**，VM 终结点为 **57500**。 假设正确配置了连接性，则可从 Internet 上的任意位置使用以下连接字符串访问该虚拟机：
 
@@ -74,7 +74,7 @@ ms.locfileid: "55733512"
 ### <a name="connect-to-sql-server-in-the-same-virtual-network"></a>连接到同一虚拟网络中的 SQL Server
 [虚拟网络](../../../virtual-network/virtual-networks-overview.md)支持其他方案。 可以连接同一虚拟网络中的 VM，即使这些 VM 位于不同的云服务中。 使用[站点到站点 VPN](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)，可以创建连接 VM 与本地网络和计算机的混合体系结构。
 
-虚拟网络还可将 Azure VM 加入域。 加入域是结合 SQL Server 使用 Windows 身份验证的唯一方式。 其他连接方案需要使用用户名和密码进行 SQL 身份验证。
+虚拟网络还允许将 Azure VM 加入域。 加入域是结合 SQL Server 使用 Windows 身份验证的唯一方式。 其他连接方案需要使用用户名和密码进行 SQL 身份验证。
 
 如果计划配置域环境和 Windows 身份验证，则不需要配置公共终结点或 SQL 身份验证和登录。 在此方案中，可以在连接字符串中指定 SQL Server VM 名称以连接 SQL Server 实例。 以下示例假设已配置 Windows 身份验证，并且用户已获得访问 SQL Server 实例的权限。
 
@@ -104,7 +104,7 @@ ms.locfileid: "55733512"
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
 ## <a name="next-steps"></a>后续步骤
-如果还打算针对高可用性和灾难恢复使用 AlwaysOn 可用性组，应该考虑实施侦听器。 数据库客户端将连接到侦听器，而不是直接连接到一个 SQL Server 实例。 侦听器将客户端路由到可用性组中的主副本。 有关详细信息，请参阅[在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
+如果还打算针对高可用性和灾难恢复使用 AlwaysOn 可用性组，应该考虑实施侦听器。 数据库客户端连接到侦听器，而不是直接连接到一个 SQL Server 实例。 侦听器将客户端路由到可用性组中的主副本。 有关详细信息，请参阅[在 Azure 中配置 AlwaysOn 可用性组的 ILB 侦听器](../classic/ps-sql-int-listener.md)。
 
 请务必查看 Azure 虚拟机上运行的 SQL Server 的所有最佳安全性实践。 有关详细信息，请参阅 [Azure 虚拟机中 SQL Server 的安全注意事项](../sql/virtual-machines-windows-sql-security.md)。
 

@@ -8,12 +8,12 @@ ms.author: rkarlin
 ms.topic: article
 ms.workload: powerbi
 ms.date: 09/20/2017
-ms.openlocfilehash: 0e111c40df79d236bad6130338d021f76587dde4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cc298eb8757ec4b3aa968c0790b72e24cc3d1143
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
-ms.locfileid: "60342264"
+ms.locfileid: "62103802"
 ---
 # <a name="common-power-bi-workspace-collection-scenarios"></a>常见 Power BI 工作区集合方案
 

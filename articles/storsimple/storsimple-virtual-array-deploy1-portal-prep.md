@@ -16,11 +16,11 @@ ms.date: 01/11/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 7c6f0a6371b38f0271237db0f7d80b831ecc145c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58088700"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127134"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>部署 StorSimple 虚拟阵列 - 准备 Azure 门户
 
@@ -33,7 +33,7 @@ ms.locfileid: "58088700"
 
 本文发布的信息适用于在 Azure 门户和 Microsoft Azure 政府云中部署 StorSimple 虚拟阵列的情况。
 
-### <a name="get-started"></a>入门
+### <a name="get-started"></a>开始使用
 部署工作流包括：准备门户、在虚拟化环境中预配虚拟阵列，以及完成设置。 开始将 StorSimple 虚拟阵列部署为文件服务器或 iSCSI 服务器之前，需参阅下述表格形式的资源。
 
 #### <a name="deployment-articles"></a>部署文章

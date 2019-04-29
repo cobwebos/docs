@@ -17,11 +17,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fb7010ec16592fea2f530329916e00056ca03a70
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56176384"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096109"
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect 同步：与 Azure Active Directory 同步的属性
 本主题列出通过 Azure AD Connect 同步进行同步的属性。  
@@ -214,7 +214,7 @@ ms.locfileid: "56176384"
 | ipPhone |X |X | | |
 | l |X |X | | |
 | mail |X |X |X | |
-| mailnickname |X |X |X | |
+| mailNickname |X |X |X | |
 | managedBy | | |X | |
 | manager |X |X | | |
 | member | | |X | |
@@ -331,7 +331,7 @@ ms.locfileid: "56176384"
 | description |X |X |X | |
 | displayName |X |X |X | |
 | mail |X |X |X | |
-| mailnickname |X |X |X | |
+| mailNickname |X |X |X | |
 | member | | |X | |
 | objectSID |X | |X |机械属性。 用于维护 Azure AD 和 AD 之间的同步的 AD 用户标识符。 |
 | proxyAddresses |X |X |X | |
@@ -424,7 +424,7 @@ ms.locfileid: "56176384"
 | msDS-KeyCredentialLink |X |在用户已注册 Windows Hello for Business 后。 | 
 
 ## <a name="exchange-hybrid-writeback"></a>Exchange 混合写回
-选择启用 **Exchange 混合**部署时，这些属性将从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
+选择启用 **Exchange 混合**部署时，这些属性从 Azure AD 写回到本地 Active Directory。 根据 Exchange 版本，可能会同步更少的属性。
 
 | 属性名称（连接 UI） |属性名称（本地 AD） | 用户 | 联系人 | 组 | 注释 |
 | --- |:---:|:---:|:---:| --- |---|
@@ -477,4 +477,4 @@ ms.locfileid: "56176384"
 ## <a name="next-steps"></a>后续步骤
 了解有关 [Azure AD Connect 同步](how-to-connect-sync-whatis.md)配置的详细信息。
 
-了解有关 [将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。
+了解有关[将本地标识与 Azure Active Directory 集成](whatis-hybrid-identity.md)的详细信息。

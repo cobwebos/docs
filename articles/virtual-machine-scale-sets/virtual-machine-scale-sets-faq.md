@@ -17,11 +17,11 @@ ms.date: 03/13/2019
 ms.author: manayar
 ms.custom: na
 ms.openlocfilehash: 56a31770c374cdccaec4dbee751925a6da00fa59
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59683947"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60620237"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure 虚拟机规模集常见问题解答
 
@@ -35,7 +35,7 @@ ms.locfileid: "59683947"
 
 ### <a name="are-data-disks-supported-within-scale-sets"></a>规模集是否支持数据磁盘？
 
-是的。 规模集可以定义适用于集中所有 VM 的附加数据磁盘配置。 有关详细信息，请参阅 [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md)（Azure 规模集和附加的数据磁盘）。 可用于存储数据的其他选项包括：
+可以。 规模集可以定义适用于集中所有 VM 的附加数据磁盘配置。 有关详细信息，请参阅 [Azure scale sets and attached data disks](virtual-machine-scale-sets-attached-disks.md)（Azure 规模集和附加的数据磁盘）。 可用于存储数据的其他选项包括：
 
 * Azure 文件（SMB 共享驱动器）
 * OS 驱动器
@@ -84,7 +84,7 @@ ms.locfileid: "59683947"
 
 ### <a name="are-there-any-examples-of-autoscaling-based-on-an-azure-service-bus-topic-and-queue-length"></a>基于 Azure 服务总线主题和队列长度的自动缩放是否有任何示例可供参考？
 
-是的。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
+可以。 有关基于 Azure 服务总线主题和队列长度的自动缩放示例，请参阅 [Azure Monitor 自动缩放常用指标](https://azure.microsoft.com/documentation/articles/insights-autoscale-common-metrics/)。
 
 对于服务总线队列，请使用以下 JSON：
 
@@ -180,7 +180,7 @@ az sf cluster create -h
 
 ### <a name="can-i-specify-an-ssh-key-pair-to-use-for-ssh-authentication-with-a-linux-virtual-machine-scale-set-from-a-resource-manager-template"></a>是否可以通过 Resource Manager 模板指定一个 SSH 密钥对，用于对 Linux 虚拟机规模集进行 SSH 身份验证？
 
-是的。 用于 **osProfile** 的 REST API 类似于标准 VM REST API。
+可以。 用于 **osProfile** 的 REST API 类似于标准 VM REST API。
 
 在模板中包括 **osProfile**：
 
@@ -355,7 +355,7 @@ Key Vault 要求指定证书版本的目的是为了使用户清楚地了解哪�
 
 ### <a name="does-managed-identities-for-azure-resourceshttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-virtual-machine-scale-sets"></a>是否可以将 [Azure 资源的托管标识](https://docs.microsoft.com/azure/active-directory/msi-overview)用于虚拟机规模集？
 
-是的。 可在 Azure 快速入门模板中查看一些示例 MSI 模板。 Linux：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
+可以。 可在 Azure 快速入门模板中查看一些示例 MSI 模板。 Linux：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。 Windows：[https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-msi)。
 
 
 ## <a name="extensions"></a>扩展
@@ -481,7 +481,7 @@ Update-AzVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineScaleSet
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>是否可以将网络安全组 (NSG) 分配给规模集，以便将其应用于集中的所有 VM NIC？
 
-是的。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
+可以。 可通过在网络配置文件的 networkInterfaceConfigurations 部分中引用网络安全组，将其直接应用于规模集。 示例：
 
 ```json
 "networkProfile": {
@@ -539,7 +539,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-use-scale-sets-with-accelerated-networking"></a>能否将规模集与加速网络结合使用？
 
-是的。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
+可以。 若要使用加速网络，请在规模集的 networkInterfaceConfigurations 设置中将 enableAcceleratedNetworking 设置为 true。 例如
 ```json
 "networkProfile": {
     "networkInterfaceConfigurations": [
@@ -580,7 +580,7 @@ IP 地址是从指定的子网中选择的。
 
 ### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>能否配置与多个应用程序网关配合使用的规模集？
 
-是的。 可以将多个应用程序网关后端地址池的资源 ID 添加到规模集网络配置文件的 ipConfigurations 部分的 applicationGatewayBackendAddressPools 列表中。
+可以。 可以将多个应用程序网关后端地址池的资源 ID 添加到规模集网络配置文件的 ipConfigurations 部分的 applicationGatewayBackendAddressPools 列表中。
 
 ## <a name="scale"></a>缩放
 

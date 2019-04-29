@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 03/19/2018
 ms.author: vturecek
 ms.openlocfilehash: 57894770ad9d27430d5803c9a93ce6973355878a
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662969"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123240"
 ---
 # <a name="implement-service-level-features-in-your-actor-service"></a>在执行组件服务中实现服务级功能
 

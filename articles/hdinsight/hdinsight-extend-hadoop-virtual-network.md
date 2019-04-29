@@ -1,19 +1,18 @@
 ---
 title: 使用虚拟网络扩展 HDInsight - Azure
 description: 了解如何使用 Azure 虚拟网络将 HDInsight 连接到其他云资源或者数据中心内的资源
-services: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 03/29/2019
-ms.openlocfilehash: a2d06cdbcc6ce995c55c858cb7a50a93ef6b3fb1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: f97c07c522dfb22818aca84d41d30c023f564d84
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58883558"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097331"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>使用 Azure 虚拟网络扩展 Azure HDInsight
 
@@ -259,7 +258,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
 
 1. 必须始终允许来自以下 IP 地址的流量：
 
-    | 源 IP 地址 | Destination Port | 方向 |
+    | 源 IP 地址 | Destination Port | Direction |
     | ---- | ----- | ----- |
     | 168.61.49.99 | 443 | 入站 |
     | 23.99.5.239 | 443 | 入站 |
@@ -271,7 +270,7 @@ Azure 为安装在虚拟网络中的 Azure 服务提供名称解析。 此内置
     > [!IMPORTANT]  
     > 如果未列出所用的 Azure 区域，则仅使用步骤 1 中所列的四个 IP 地址。
 
-    | 国家/地区 | 区域 | 允许的源 IP 地址 | 允许的目标端口 | 方向 |
+    | 国家/地区 | 区域 | 允许的源 IP 地址 | 允许的目标端口 | Direction |
     | ---- | ---- | ---- | ---- | ----- |
     | 亚洲 | 东亚 | 23.102.235.122</br>52.175.38.134 | 443 | 入站 |
     | &nbsp; | 东南亚 | 13.76.245.160</br>13.76.136.249 | 443 | 入站 |

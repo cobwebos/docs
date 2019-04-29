@@ -10,17 +10,17 @@ ms.date: 03/03/2017
 ms.author: rogarana
 ms.subservice: common
 ms.openlocfilehash: eb85f8c756e7373a8dedabbce362cfa534e56fd8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57849170"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483530"
 ---
 # <a name="storage-analytics"></a>存储分析
 
 Azure 存储分析执行日志记录并为存储帐户提供度量值数据。 可以使用此数据为存储帐户跟踪请求、分析使用趋势和诊断问题。
 
-若要使用存储分析，必须为每个要监视的服务单独启用它。 您可以将其从[Azure 门户](https://portal.azure.com)。 有关详细信息，请参阅[监视 Azure 门户中的存储帐户](storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[设置 Blob 服务属性](/rest/api/storageservices/set-blob-service-properties)，[设置队列服务属性](/rest/api/storageservices/set-queue-service-properties)，[设置表服务属性](/rest/api/storageservices/set-table-service-properties)，和[设置文件服务属性](/rest/api/storageservices/Get-File-Service-Properties)操作为每个服务启用存储分析。
+若要使用存储分析，必须为每个要监视的服务单独启用它。 可以从 [Azure 门户](https://portal.azure.com)中启用它。 有关详细信息，请参阅[在 Azure 门户中监视存储帐户](storage-monitor-storage-account.md)。 还可以通过 REST API 或客户端库以编程方式启用存储分析。 使用[设置 Blob 服务属性](/rest/api/storageservices/set-blob-service-properties)、[设置队列服务属性](/rest/api/storageservices/set-queue-service-properties)、[设置表服务属性](/rest/api/storageservices/set-table-service-properties)和[设置文件服务属性](/rest/api/storageservices/Get-File-Service-Properties)操作，为每个服务启用存储分析。
 
 聚合数据存储在众所周知的 Blob（用于日志记录）和众所周知的表（用于度量）中，可以使用 BLOB 服务和表服务 API 对其进行访问。
 

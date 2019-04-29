@@ -17,11 +17,11 @@ ms.date: 09/26/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: 8d31f04c355b47720a1c9b0334042ba2f6654768
-ms.sourcegitcommit: f0f21b9b6f2b820bd3736f4ec5c04b65bdbf4236
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58448574"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477312"
 ---
 # <a name="performance-guidelines-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的性能准则
 
@@ -42,7 +42,7 @@ ms.locfileid: "58448574"
 | --- | --- |
 | [VM 大小](#vm-size-guidance) | SQL Enterprise Edition：- [DS3_v2](../sizes-general.md) 或更高版本。<br/><br/> SQL Standard 和 Web Edition：- [DS2_v2](../sizes-general.md) 或更高版本。 |
 | [存储](#storage-guidance) | - 使用[高级 SSD](../disks-types.md)。 仅建议将标准存储用于开发/测试。<br/><br/> - 将[存储帐户](../../../storage/common/storage-create-storage-account.md)和 SQL Server VM 保存在相同的区域。<br/><br/> * 在存储帐户上禁用 Azure [异地冗余存储](../../../storage/common/storage-redundancy.md)（异地复制）。 |
-| [磁盘](#disks-guidance) | - 使用至少 2 个 [P30 磁盘](../disks-types.md#premium-ssd)（一个用于日志，另一个用于数据文件，包括 TempDB）。 对于需要约 50,000 IOPS 的工作负荷，请考虑使用超级 SSD。 <br/><br/> - 避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/> - 在托管数据文件和 TempDB 数据文件的磁盘上启用读取缓存。<br/><br/> - 请勿在托管日志文件的磁盘上启用缓存。  **重要说明**：更改 Azure VM 磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/> - 条带化多个 Azure 数据磁盘，提高 IO 吞吐量。<br/><br/> - 使用规定的分配大小格式化。 <br/><br/> - 将 TempDB 放在本地 SSD 上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 |
+| [磁盘](#disks-guidance) | - 使用至少 2 个 [P30 磁盘](../disks-types.md#premium-ssd)（一个用于日志，另一个用于数据文件，包括 TempDB）。 对于需要约 50,000 IOPS 的工作负荷，请考虑使用超级 SSD。 <br/><br/> - 避免使用操作系统或临时磁盘进行数据库存储或日志记录。<br/><br/> - 在托管数据文件和 TempDB 数据文件的磁盘上启用读取缓存。<br/><br/> - 请勿在托管日志文件的磁盘上启用缓存。  **重要**：更改 Azure VM 磁盘的缓存设置时，请停止 SQL Server 服务。<br/><br/> - 条带化多个 Azure 数据磁盘，提高 IO 吞吐量。<br/><br/> - 使用规定的分配大小格式化。 <br/><br/> - 将 TempDB 放在本地 SSD 上，用于任务关键型 SQL Server 工作负荷（在选择正确的 VM 大小后）。 |
 | [I/O](#io-guidance) |- 启用数据库页面压缩。<br/><br/> - 对数据文件启用即时文件初始化。<br/><br/> - 限制数据库自动增长。<br/><br/> - 禁用数据库自动收缩。<br/><br/> - 将所有数据库（包括系统数据库）转移到数据磁盘。<br/><br/> - 将 SQL Server 错误日志和跟踪文件目录移到数据磁盘。<br/><br/> - 设置默认的备份和数据库文件位置。<br/><br/> - 启用锁定页面。<br/><br/> - 应用 SQL Server 性能修复程序。 |
 | [Feature-specific](#feature-specific-guidance) | - 直接备份到 blob 存储。 |
 

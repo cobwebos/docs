@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: b2f08e811217572e09a254e9ab3306ab954b14b5
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57009676"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447943"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>IoT 解决方案加速器常见问题解答
 
@@ -78,7 +78,7 @@ ms.locfileid: "57009676"
 
 ### <a name="can-i-continue-to-leverage-my-existing-investments-in-azure-iot-solution-accelerators"></a>是否可以继续利用 Azure IoT 解决方案加速器中的现有投资？
 
-是的。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
+可以。 现存的所有解决方案可继续在 Azure 订阅中工作，GitHub 中仍会提供其源代码。
 
 ### <a name="how-many-iot-hub-instances-can-i-provision-in-a-subscription"></a>在一个订阅中可以设置多少个 IoT 中心实例？
 

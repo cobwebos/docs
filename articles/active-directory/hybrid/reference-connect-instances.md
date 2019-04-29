@@ -17,17 +17,17 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ca481d50efb99d6e36c66388192e9f27cd66bf45
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56217184"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62096090"
 ---
 # <a name="azure-ad-connect-special-considerations-for-instances"></a>Azure AD Connect：有关实例的特殊注意事项
 Azure AD Connect 最常用于全球范围内的 Azure AD 和 Office 365 实例。 但也有其他实例，这些实例对 URL 具有不同的要求并且具有其他的特殊注意事项。
 
 ## <a name="microsoft-cloud-germany"></a>德国 Microsoft 云
-[德国 Microsoft 云](https://www.microsoft.de/cloud-deutschland)是由德国数据信托运营的最高等级的云。
+[德国 Microsoft 云](https://www.microsoft.de/cloud-deutschland) 是由德国数据信托运营的最高等级的云。
 
 | 将在代理服务器中打开的 URL |
 | --- |

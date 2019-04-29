@@ -15,18 +15,18 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
 ms.openlocfilehash: f5ffc795e6469971d1eaf335d6683f94d05f0807
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53278590"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122432"
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>将现有 .NET Azure 移动服务升级到应用服务
 应用服务移动应用是使用 Microsoft Azure 生成移动应用程序的新方式。 有关详细信息，请参阅[什么是移动应用？]。
 
 本主题介绍如何将现有 .NET 后端应用程序从 Azure 移动服务升级到新的应用服务移动应用。 执行此升级时，现有移动服务应用程序可以继续正常运行。   如果需要升级 Node.js 后端应用程序，请参阅 [升级 Node.js 移动服务](app-service-mobile-node-backend-upgrading-from-mobile-services.md)。
 
-将移动后端升级到 Azure App Service 后，该后端即可访问所有的应用服务功能，同时会根据[应用服务定价]而不是移动服务定价进行计费。
+将某个移动后端升级到 Azure 应用服务后，该后端即可访问所有应用服务功能，同时会根据[应用服务定价]而不是移动服务定价进行计费。
 
 ## <a name="migrate-vs-upgrade"></a>迁移与升级
 [!INCLUDE [app-service-mobile-migrate-vs-upgrade](../../includes/app-service-mobile-migrate-vs-upgrade.md)]
@@ -160,11 +160,11 @@ string schema = System.Configuration.ConfigurationManager.AppSettings.Get("MS_Mo
 
 在 iOS 上，应该根据以下列表更改数据实体的核心数据架构。 请注意，属性 `createdAt`、`updatedAt` 和 `version` 不再有 `ms_` 前缀：
 
-| 属性 | 类型 | 注意 |
+| 属性 | Type | 注意 |
 | --- | --- | --- |
 | id |字符串（标记为必需） |远程存储中的主键 |
-| createdAt |日期 |（可选）映射到 createdAt 系统属性 |
-| updatedAt |日期 |（可选）映射到 updatedAt 系统属性 |
+| createdAt |date |（可选）映射到 createdAt 系统属性 |
+| updatedAt |date |（可选）映射到 updatedAt 系统属性 |
 | 版本 |String |（可选）用于检测冲突，映射到版本 |
 
 #### <a name="querying-system-properties"></a>查询系统属性

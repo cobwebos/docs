@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/06/2018
 ms.author: spelluru
 ms.openlocfilehash: 4ed45e1ed18ad630831772997b1fc150882731bd
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57847960"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123393"
 ---
 # <a name="azure-wcf-relay-rest-tutorial"></a>Azure WCF 中继 REST 教程
 本教程介绍如何生成简单的服务总线主机应用程序，该应用程序公开基于 REST 的接口。 REST 使 Web 客户端（例如 Web 浏览器）可通过 HTTP 请求访问服务总线 API。

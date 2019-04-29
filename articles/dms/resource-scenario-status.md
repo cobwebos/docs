@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 04/04/2019
-ms.openlocfilehash: f25bc9bc3a958b2fa97ae4d5ab3715b602110393
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.openlocfilehash: 4159b2e7af83030f46d5aca150ef99a1380e711f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58915469"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61473002"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>迁移方案支持的 Azure 数据库迁移服务的状态
 Azure 数据库迁移服务旨在支持不同迁移方案 （源/目标对） 同时脱机 （一次性） 和联机 （连续同步） 迁移。 随着时间的推移进行了扩展提供的 Azure 数据库迁移服务的方案覆盖范围。 将定期添加新的方案。 此项目用于标识当前支持的 Azure 数据库迁移服务和每个方案的状态 （个人预览版中，公共预览版中或公开上市） 的迁移方案。

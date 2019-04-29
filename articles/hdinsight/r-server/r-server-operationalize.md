@@ -1,7 +1,6 @@
 ---
 title: 操作 HDInsight 上的 ML Services - Azure
 description: 了解如何操作 Azure HDInsight 中的 ML Services。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,20 +8,20 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/27/2018
-ms.openlocfilehash: d0cae4210fa313c5d6e1f33987422e7b0d53e76a
-ms.sourcegitcommit: 7cd706612a2712e4dd11e8ca8d172e81d561e1db
-ms.translationtype: MT
+ms.openlocfilehash: 916c4fae8eed9451080f92e97743876e89bd25ea
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53579951"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124571"
 ---
 # <a name="operationalize-ml-services-cluster-on-azure-hdinsight"></a>操作 Azure HDInsight 上的 ML Services 群集
 
 使用 HDInsight 中的 ML Services 群集完成数据建模后，可操作该模型进行预测。 本文提供如何执行此任务的说明。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
-* **HDInsight 上的 ML Services 群集**：有关说明，请参阅 [HDInsight 上的 ML Services 入门](r-server-get-started.md)。
+* **HDInsight 上的 ML 服务群集**：有关说明，请参阅 [HDInsight 上的 ML 服务入门](r-server-get-started.md)。
 
 * **安全外壳 (SSH) 客户端**：SSH 客户端可用于远程连接到 HDInsight 群集，并直接在群集上运行命令。 有关详细信息，请参阅 [Use SSH with HDInsight](../hdinsight-hadoop-linux-use-ssh-unix.md)（对 HDInsight 使用 SSH）。
 
@@ -65,7 +64,7 @@ ms.locfileid: "53579951"
 
 1. （可选）通过运行诊断测试来执行诊断检查，如下所示：
 
-    a.在“解决方案资源管理器”中，右键单击项目文件夹下的“引用”文件夹，并单击“添加引用”。 从主菜单中，选择 **6** 运行诊断测试。
+    a. 从主菜单中，选择 **6** 运行诊断测试。
 
     ![单机操作](./media/r-server-operationalize/diagnostic-1.png)
 

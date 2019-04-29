@@ -1,7 +1,6 @@
 ---
 title: '教程：使用 Azure HDInsight 中的 Apache Spark 处理来自 Azure 事件中心的数据 '
 description: 将 Azure HDInsight 中的 Apache Spark 连接到 Azure 事件中心并处理流数据。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,mvc
 ms.topic: conceptual
 ms.date: 12/28/2018
-ms.openlocfilehash: 81104c7b206d4fe158df1ae9d329084ad88c3bdd
-ms.sourcegitcommit: 803e66de6de4a094c6ae9cde7b76f5f4b622a7bb
+ms.openlocfilehash: 02f7bbca127ba33fcfdd15d6f00d1660bf72970c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/02/2019
-ms.locfileid: "53976624"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124350"
 ---
 # <a name="tutorial-process-tweets-using-azure-event-hubs-and-apache-spark-in-hdinsight"></a>教程：在 HDInsight 中使用 Azure 事件中心和 Apache Spark 处理推文
 
@@ -27,7 +26,7 @@ ms.locfileid: "53976624"
 
 如果还没有 Azure 订阅，可以在开始前[创建一个免费帐户](https://azure.microsoft.com/free/)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * **完成文章[教程：在 Azure HDInsight 中的 Apache Spark 群集上加载数据并运行查询](./apache-spark-load-data-run-query.md)**。
 

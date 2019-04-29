@@ -2,19 +2,27 @@
 title: Azure HDInsight 中的 Phoenix 性能
 description: 有关优化 Phoenix 性能的最佳做法。
 services: hdinsight
+documentationcenter: ''
+tags: azure-portal
 author: ashishthaps
-ms.reviewer: jasonh
+manager: jhubbard
+editor: cgronlun
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.topic: conceptual
-ms.date: 01/22/2018
-ms.author: ashishth
-ms.openlocfilehash: da227151dd056dd5e852ae8790b6f20ac3c0c790
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.workload: big-data
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+origin.date: 01/22/2018
+ms.date: 01/14/2019
+ms.author: v-yiso
+ms.openlocfilehash: 4fc4d1843ddb8d007ca062d928ebbddf90909583
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53653299"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62114301"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Apache Phoenix 性能最佳做法
 
@@ -53,7 +61,7 @@ Phoenix 使用此新主键生成的行键是：
 
 在上面的第一行中，行键的数据按如下方式表示：
 
-|rowkey|       key|   值| 
+|rowkey|       key|   value| 
 |------|--------------------|---|
 |  Dole-John-111|地址 |1111 San Gabriel Dr.|  
 |  Dole-John-111|phone |1-425-000-0002|  

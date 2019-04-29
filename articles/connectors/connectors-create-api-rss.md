@@ -12,11 +12,11 @@ ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 01573871700bbeeb653ce3efdbf6c6aca88fd454
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50233049"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62104866"
 ---
 # <a name="manage-rss-feeds-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用管理 RSS 源
 
@@ -29,7 +29,7 @@ RSS（极具特色的网站摘要），也称为“真正简单的整合”，�
 
 可以使用 RSS 触发器从 RSS 源获取响应，并使输出可用于其他操作。 可以在逻辑应用中使用 RSS 操作来执行 RSS 源的任务。 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

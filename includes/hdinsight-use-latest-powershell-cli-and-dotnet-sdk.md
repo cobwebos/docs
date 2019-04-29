@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 4b4b1f3a52dcbaa01f9fac73bce09a75495408df
-ms.sourcegitcommit: dec7947393fc25c7a8247a35e562362e3600552f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58203841"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476564"
 ---
 > [!IMPORTANT]
 > 通过 Azure PowerShell、Azure CLI 使用 Azure Service Manager (ASM) 和 HDInsight .NET SDK 管理 HDInsight 资源的支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新的 Azure PowerShell cmdlet、Azure CLI 命令和 .NET SDK。

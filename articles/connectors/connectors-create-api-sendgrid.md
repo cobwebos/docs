@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/24/2018
 ms.openlocfilehash: 7eecd3908883b195b52755d03e70872afe9180bb
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50228850"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105728"
 ---
 # <a name="send-emails-and-manage-mailing-lists-in-sendgrid-by-using-azure-logic-apps"></a>使用 Azure 逻辑应用在 SendGrid 中发送电子邮件以及管理邮件列表
 
@@ -31,7 +31,7 @@ ms.locfileid: "50228850"
 此连接器仅提供操作，因此，若要启动逻辑应用，请使用单独的触发器，例如**定期**触发器。 例如，如果你定期将收件人添加到你的列表中，则可以使用 Office 365 Outlook 连接器或 Outlook.com 连接器发送关于收件人和列表的电子邮件。
 如果你不熟悉逻辑应用，请查看[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 

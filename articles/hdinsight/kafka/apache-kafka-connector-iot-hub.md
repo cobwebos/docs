@@ -1,7 +1,6 @@
 ---
 title: 将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 description: 了解如何将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用。 Kafka Connect Azure IoT 中心项目为 Kafka 提供源和接收器连接器。 源连接器可从 IoT 中心读取数据，接收器连接器将数据写入 IoT 中心。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
@@ -9,12 +8,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: e64490517603687684617ce915e0d3f3e35298e9
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.openlocfilehash: 420800e718c8f98bfd3d5d7383829d5aa5472828
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115306"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>将 Apache Kafka on HDInsight 与 Azure IoT 中心配合使用
 
@@ -239,14 +238,14 @@ ms.locfileid: "58093382"
 
     在编辑器中，找到并更改以下条目：
 
-   * `Kafka.Topic=PLACEHOLDER`：将  替换为 `iotin`。 从 IoT 中心收到的消息将放入 `iotin` 主题中。
+   * `Kafka.Topic=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `iotin`。 从 IoT 中心收到的消息将放入 `iotin` 主题中。
    * `IotHub.EventHubCompatibleName=PLACEHOLDER`：将 `PLACEHOLDER` 替换为与事件中心兼容的名称。
    * `IotHub.EventHubCompatibleEndpoint=PLACEHOLDER`：将 `PLACEHOLDER` 替换为与事件中心兼容的终结点。
    * `IotHub.Partitions=PLACEHOLDER`：将 `PLACEHOLDER` 替换为在上一步骤中获取的分区数。
-   * `IotHub.AccessKeyName=PLACEHOLDER`：将  替换为 `service`。
+   * `IotHub.AccessKeyName=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `service`。
    * `IotHub.AccessKeyValue=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `service` 策略的主密钥。
    * `IotHub.StartType=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 UTC 日期。 此日期是连接器开始检查消息的时间。 日期格式为 `yyyy-mm-ddThh:mm:ssZ`。
-   * `BatchSize=100`：将  替换为 `5`。 做出此项更改后，如果 IoT 中心出现五条新消息，则连接器会将消息读入 Kafka。
+   * `BatchSize=100`：将 `100` 替换为 `5`。 做出此项更改后，如果 IoT 中心出现五条新消息，则连接器会将消息读入 Kafka。
 
      有关示例配置，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Source.md)。
 
@@ -272,7 +271,7 @@ ms.locfileid: "58093382"
 
     在编辑器中，找到并更改以下条目：
 
-   * `topics=PLACEHOLDER`：将  替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。
+   * `topics=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `iotout`。 写入 `iotout` 主题的消息将转发到 IoT 中心。
    * `IotHub.ConnectionString=PLACEHOLDER`：将 `PLACEHOLDER` 替换为 `service` 策略的连接字符串。
 
      有关示例配置，请参阅 [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md)。

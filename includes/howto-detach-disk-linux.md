@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: cynthn
 ms.openlocfilehash: 94f662cea5f20485659a7b93549b758fdd7770f6
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "58115561"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476264"
 ---
 当不再需要附加到虚拟机 (VM) 的数据磁盘时，可以轻松地分离它。 从 VM 中分离磁盘时，不会从存储中删除该磁盘。 如果希望再次使用磁盘上的现有数据，可以将其重新附加到相同的 VM 或另一个 VM。  
 

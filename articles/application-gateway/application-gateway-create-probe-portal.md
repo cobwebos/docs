@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: victorh
 ms.openlocfilehash: 90d576fd00a39f7e871cbe0922ce131dfbe38ff0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58862159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62122381"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>使用门户创建应用程序网关的自定义探测
 
@@ -54,7 +54,7 @@ ms.locfileid: "58862159"
    |**名称**|customProbe|此值是可在门户中访问的探测的友好名称。|
    |协议|HTTP 或 HTTPS | 运行状况探测使用的协议。|
    |**主机**|例如  contoso.com|此值是用于探测的主机名。 仅在应用程序网关上配置了多站点的情况下适用，否则使用“127.0.0.1”。 此值与 VM 主机名不同。|
-   |**路径**|/或另一个路径|自定义探测的完整 URL 的其余部分。 有效路径以“/”开头。 Http 的默认路径为：\//contoso.com 只需使用 / |
+   |**路径**|/或另一个路径|自定义探测的完整 URL 的其余部分。 有效路径以“/”开头。 对于默认路径 http:\//contoso.com，只需使用“/” |
    |时间间隔(秒)|30|运行探测来检查运行状况的频率。 不建议将时间间隔设置为不到 30 秒。|
    |超时(秒)|30|超时之前探测的等待时间。超时间隔必须足够长，以便进行 http 调用，确保后端运行状况页可用。|
    |不正常阈值|3|系统认为不正常的失败尝试次数。 阈值为 0 意味着，如果运行状况检查失败，则会立即将后端确定为不正常。|

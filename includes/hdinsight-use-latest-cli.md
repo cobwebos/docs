@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/25/2018
 ms.author: jasonh
 ms.openlocfilehash: 60ea945a70f7660fb0f3b8b8c82d9317eabadeb2
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59685709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61476579"
 ---
 > [!IMPORTANT]
 > 使用 Azure Service Manager (ASM) 管理 HDInsight 资源的 Azure CLI 支持**已弃用**，已在 2017 年 1 月 1 日删除。 本文档中的步骤使用的是与 Azure 资源管理器兼容的新 Azure CLI 命令。

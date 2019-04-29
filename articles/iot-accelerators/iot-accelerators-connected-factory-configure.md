@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 3fd160fbccfb5298cefed6a731797ca6962b997c
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53602267"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450017"
 ---
 # <a name="configure-the-connected-factory-solution-accelerator"></a>配置连接的工厂解决方案加速器
 
@@ -265,9 +265,9 @@ ms.locfileid: "53602267"
 此类别中的属性定义连接的工厂仪表板的可视外观。 示例包括：
 
 * 名称
-* Description
-* 映像
-* 位置
+* 描述
+* Image
+* Location
 * 单位
 * Visible
 

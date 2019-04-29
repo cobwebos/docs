@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 915cf1e66ec400e0d2461873d9fb3d66be9883fb
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55756744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477937"
 ---
 # <a name="repairing-an-export-job"></a>修复导出作业
 在完成导出作业后，可以在本地运行 Microsoft Azure 导入/导出工具来执行以下操作：  
@@ -30,7 +30,7 @@ ms.locfileid: "55756744"
 
 可以使用 **RepairExport** 指定以下参数：  
   
-|参数|说明|  
+|参数|描述|  
 |---------------|-----------------|  
 |**/r:<RepairFile\>**|必需。 修复文件的路径。该文件用于跟踪修复进度，以及恢复已中断的修复。 每个驱动器都必须有且仅有一个修复文件。 在开始对某个给定驱动器进行修复时，会传入尚不存在的某个修复文件的路径。 若要恢复已中断的修复，应该传入现有修复文件的名称。 始终必须指定与目标驱动器对应的修复文件。|  
 |**/logdir:<LogDirectory\>**|可选。 日志目录。 详细日志文件将写入此目录。 如果未指定任何日志目录，将使用当前目录作为日志目录。|  
@@ -51,7 +51,7 @@ ms.locfileid: "55756744"
   
 -   传输过程中更改了存储帐户密钥  
   
-要在 **RepairExport** 模式下运行该工具，首先需要将包含已导出文件的驱动器连接到计算机。 接下来，运行 Azure 导入/导出工具，并使用 `/d` 参数指定该驱动器的路径。 还需要指定已下载的驱动器复制日志文件的路径。 以下示例命令行将运行该工具，修复未能导出的所有文件：  
+要在 **RepairExport** 模式下运行该工具，首先需要将包含已导出文件的驱动器连接到计算机。 接下来，运行 Azure 导入/导出工具，并使用 `/d` 参数指定该驱动器的路径。 还需要指定已下载的驱动器复制日志文件的路径。 以下示例命令行运行该工具，修复未能导出的所有文件：  
   
 ```  
 WAImportExport.exe RepairExport /r:C:\WAImportExport\9WM35C3U.rep /d:G:\ /sn:bobmediaaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\WAImportExport\9WM35C3U.log  

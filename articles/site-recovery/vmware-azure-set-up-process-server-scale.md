@@ -1,28 +1,30 @@
 ---
-title: 在 Azure 中设置进程服务器，以便在使用 Azure Site Recovery 进行 VMware VM 和物理服务器灾难恢复期间进行故障回复 | Microsoft Docs
-description: 本文介绍如何在 Azure 中设置进程服务器，以便在 VMware VM 和物理服务器灾难恢复期间从 Azure 故障回复到本地。
+title: 在使用 Azure Site Recovery 的 VMware Vm 和物理服务器灾难恢复过程中设置横向扩展进程服务器 |Microsoft Docs
+description: 本文介绍如何在 VMware Vm 和物理服务器的灾难恢复过程中设置横向扩展进程服务器。
 author: Rajeswari-Mamilla
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 4/9/2019
+ms.date: 4/23/2019
 ms.author: ramamill
-ms.openlocfilehash: 6849ffb6fa46365aa775b9410067cb0874c70ef8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: 678f9aa60d4970540ded8ba0bb1a4ddaa6281a49
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59362155"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62101891"
 ---
-# <a name="scale-for-failback-with-additional-process-servers"></a>为故障回复使用更多进程服务器进行扩展
+# <a name="scale-with-additional-process-servers"></a>使用额外的进程服务器缩放
 
-默认情况下，当使用 [Site Recovery](site-recovery-overview.md) 将 VMware VM 或物理服务器复制到 Azure 时，进程服务器将安装在配置服务器计算机上，并且将用于协调 Site Recovery 和本地基础结构之间的数据传输。 若要增加容量并横向扩展复制部署，可以添加额外的独立进程服务器。 本文介绍如何执行此操作。
+默认情况下，当使用 [Site Recovery](site-recovery-overview.md) 将 VMware VM 或物理服务器复制到 Azure 时，进程服务器将安装在配置服务器计算机上，并且将用于协调 Site Recovery 和本地基础结构之间的数据传输。 若要增加容量并横向扩展复制部署，可以添加额外的独立进程服务器。 本文介绍如何设置横向扩展进程服务器。
 
 ## <a name="before-you-start"></a>开始之前
 
 ### <a name="capacity-planning"></a>容量计划
 
 请确保已执行[容量规划](site-recovery-plan-capacity-vmware.md)以进行 VMware 复制。 这可帮助你确定如何以及何时应部署额外的进程服务器。
+
+从 9.24 版本，选择新的复制的进程服务器的过程中添加指导。 将标记为进程服务器，正常、 警告和关键基于特定条件。 若要了解不同的方案，可能会影响状态的进程服务器，请访问[过程服务器选择指南](vmware-azure-manage-process-server.md#process-server-selection-guidance)。
 
 > [!NOTE]
 > 不支持使用克隆的进程服务器组件。 按照本文中的步骤横向扩展每个 PS。
@@ -44,8 +46,6 @@ ms.locfileid: "59362155"
 下表中汇总了额外进程服务器的先决条件。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
-
-
 
 ## <a name="download-installation-file"></a>下载安装文件
 

@@ -12,11 +12,11 @@ ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 688ef059387dc4c312873051c7c9d1eae259b1ae
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57844777"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61429871"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>使用 SSIS 连接器将数据移入或移出 Azure Blob 存储
 [用于 Azure 的 SQL Server Integration Services 功能包](https://msdn.microsoft.com/library/mt146770.aspx)提供了可用于连接到 Azure，在 Azure 和本地数据源之间传输数据以及处理存储在 Azure 中的数据的组件。

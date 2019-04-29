@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: 00e226134039d29efd744290c4bc63abd50adc89
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55697826"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478600"
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure 导入/导出服务日志文件格式
 当 Microsoft Azure 导入/导出服务在执行导入作业或导出作业的过程中针对驱动器执行某个操作时，日志将写入到与该作业关联的存储帐户中的块 Blob 中。  
@@ -101,7 +101,7 @@ properties-status ::=
 
 下表介绍了日志文件的元素。  
   
-|XML 元素|Type|说明|  
+|XML 元素|Type|描述|  
 |-----------------|----------|-----------------|  
 |`DriveLog`|XML 元素|表示驱动器日志。|  
 |`Version`|属性，字符串|日志格式的版本。|  
@@ -145,7 +145,7 @@ properties-status ::=
 ## <a name="drive-status-codes"></a>驱动器状态代码  
 下表列出了驱动器的处理状态代码。  
   
-|状态代码|说明|  
+|状态代码|描述|  
 |-----------------|-----------------|  
 |`Completed`|驱动器已完成处理，未出现任何错误。|  
 |`CompletedWithWarnings`|驱动器已完成处理针对 Blob 指定的导入处置，但一个或多个 Blob 中出现警告。|  
@@ -174,7 +174,7 @@ properties-status ::=
 ## <a name="blob-status-codes"></a>Blob 状态代码  
 下表列出了 Blob 的处理状态代码。  
   
-|状态代码|说明|  
+|状态代码|描述|  
 |-----------------|-----------------|  
 |`Completed`|Blob 已完成处理，未出现错误。|  
 |`CompletedWithErrors`|Blob 已完成处理，但一个或多个页面范围或者块、元数据或属性中出现错误。|  
@@ -193,7 +193,7 @@ properties-status ::=
 ## <a name="import-disposition-status-codes"></a>导入处置状态代码  
 下表列出了导入处置的解决状态代码。  
   
-|状态代码|说明|  
+|状态代码|描述|  
 |-----------------|-----------------|  
 |`Created`|已创建 Blob。|  
 |`Renamed`|已根据重命名导入处置将 Blob 重命名。 `Blob/BlobPath` 元素包含已重命名的 Blob 的 URI。|  
@@ -204,7 +204,7 @@ properties-status ::=
 ## <a name="page-rangeblock-status-codes"></a>页面范围/块状态代码  
 下表列出了页面范围或块的处理状态代码。  
   
-|状态代码|说明|  
+|状态代码|描述|  
 |-----------------|-----------------|  
 |`Completed`|页面范围或块已完成处理，未出现任何错误。|  
 |`Committed`|块已提交，但不在完整块列表中，因为其他块已失败或放置完整块列表本身已失败。|  
@@ -220,7 +220,7 @@ properties-status ::=
 ## <a name="metadata-status-codes"></a>元数据状态代码  
 下表列出了 Blob 元数据的处理状态代码。  
   
-|状态代码|说明|  
+|状态代码|描述|  
 |-----------------|-----------------|  
 |`Completed`|元数据已完成处理，未出现错误。|  
 |`FileNameInvalid`|元数据文件名无效。|  
@@ -238,7 +238,7 @@ properties-status ::=
 ## <a name="properties-status-codes"></a>属性状态代码  
 下表列出了 Blob 属性的处理状态代码。  
   
-|状态代码|说明|  
+|状态代码|描述|  
 |-----------------|-----------------|  
 |`Completed`|属性已完成处理，未出现任何错误。|  
 |`FileNameInvalid`|properties 文件名无效。|  

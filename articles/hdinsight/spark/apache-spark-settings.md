@@ -1,7 +1,6 @@
 ---
 title: 配置 Spark 设置 - Azure HDInsight
 description: 如何为 Azure HDInsight 群集配置 Spark。
-services: hdinsight
 author: maxluk
 ms.author: maxluk
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 91f706b882c4f245dbd111b0f9cac269db6fd65f
-ms.sourcegitcommit: e68df5b9c04b11c8f24d616f4e687fe4e773253c
+ms.openlocfilehash: 77f4ec9cce5d02ea4cbcc4968d02773a13edfe5b
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/20/2018
-ms.locfileid: "53652229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62098366"
 ---
 # <a name="configure-apache-spark-settings"></a>配置 Apache Spark 设置
 

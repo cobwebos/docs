@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/29/2016
 ms.author: alkohli
-ms.openlocfilehash: 1881a0625b107ae1a90e5b772f5296a4d728973d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 9f6e5b606caa661429a3c4d4a53e2021d57730aa
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38688147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62116941"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>为 StorSimple 虚拟阵列部署 StorSimple Device Manager 服务
 ## <a name="overview"></a>概述

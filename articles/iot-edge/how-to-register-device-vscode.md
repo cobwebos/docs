@@ -3,26 +3,26 @@ title: 通过 Visual Studio Code 注册新设备 - Azure IoT Edge | Microsoft Do
 description: 使用 Visual Studio Code 在 Azure IoT 中心中创建新的 IoT Edge 设备并检索连接字符串
 author: kgremban
 manager: philmea
-ms.author: kgremban
-ms.date: 01/03/2019
+ms.author: v-yiso
+origin.date: 01/03/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.custom: seodec18
 ms.openlocfilehash: 2b851e7f2ebdbff08fa09002765fbd7d7927deba
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54051163"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62126284"
 ---
 # <a name="register-a-new-azure-iot-edge-device-from-visual-studio-code"></a>通过 Visual Studio Code 注册新 Azure IoT Edge 设备
 
-若要在 IoT 设备上使用 Azure IoT Edge，首先需要在 IoT 中心注册这些设备。 注册设备后会收到一个连接字符串，该字符串可用于设置设备的 Edge 工作负载。
+若要在 IoT 设备上使用 Azure IoT Edge，首先需要在 IoT 中心注册这些设备。 注册设备后会收到一个连接字符串，该字符串可用于设置设备的 Edge 工作负载。 
 
-本文介绍如何使用 Visual Studio Code (VS Code) 注册新 IoT Edge 设备。 有多种方法可以执行 VS Code 中的大部分操作。 本文采用的是资源管理器，但也可使用命令面板来执行大部分步骤。
+本文介绍如何使用 Visual Studio Code (VS Code) 注册新 IoT Edge 设备。 有多种方法可以执行 VS Code 中的大部分操作。 本文采用的是资源管理器，但也可使用命令面板来执行大部分步骤。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅中的 [IoT 中心](../iot-hub/iot-hub-create-through-portal.md)
 * [Visual Studio Code](https://code.visualstudio.com/)
@@ -34,35 +34,35 @@ ms.locfileid: "54051163"
 
 1. 在 Visual Studio Code 中打开“资源管理器”视图。
 
-1. 在资源管理器底部，展开“Azure IoT 中心设备”部分。
+2. 在资源管理器底部，展开“Azure IoT 中心设备”部分。 
 
    ![展开“Azure IoT 中心设备”部分](./media/how-to-register-device-vscode/azure-iot-hub-devices.png)
 
-1. 单击“Azure IoT 中心设备”部分标题中的“...”。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
+3. 单击“Azure IoT 中心设备”部分标题中的“...”。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。 
 
-1. 选择“选择 IoT 中心”。
+4. 选择“选择 IoT 中心”。
 
-1. 如果尚未登录 Azure 帐户，请按照提示登录。
+5. 如果尚未登录 Azure 帐户，请按照提示登录。 
 
-1. 选择 Azure 订阅。
+6. 选择 Azure 订阅。 
 
-1. 选择 IoT 中心。
+7. 选择 IoT 中心。 
 
 ## <a name="create-a-device"></a>创建设备
 
-1. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。
+1. 在 VS Code 资源管理器中，展开“Azure IoT 中心设备”部分。 
 
-1. 单击“Azure IoT 中心设备”部分标题中的“...”。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。
+2. 单击“Azure IoT 中心设备”部分标题中的“...”。 如果没有看到省略号，请单击标题或将鼠标指针悬停在标题上。 
 
-1. 选择“创建 IoT Edge 设备”。
+3. 选择“创建 IoT Edge 设备”。 
 
-1. 在打开的文本框中提供设备 ID。
+4. 在打开的文本框中提供设备 ID。 
 
-在输出屏幕中，可以看到命令的结果。 其中显示有设备信息，包括所提供的“deviceId”以及可用于将物理设备连接到 IoT 中心的“connectionString”。
+在输出屏幕中，可以看到命令的结果。 其中显示有设备信息，包括所提供的“deviceId”以及可用于将物理设备连接到 IoT 中心的“connectionString”。 
 
 ## <a name="view-all-devices"></a>查看所有设备
 
-Visual Studio Code 资源管理器的“Azure IoT 中心设备”部分列出了连接到 IoT 中心的所有设备。 可通过不同的图标区分 IoT Edge 设备和非 Edge 设备，并且可展开设备以显示部署至各设备的模块。
+Visual Studio Code 资源管理器的“Azure IoT 中心设备”部分列出了连接到 IoT 中心的所有设备。 可通过不同的图标区分 IoT Edge 设备和非 Edge 设备，并且可展开设备以显示部署至各设备的模块。 
 
    ![查看 IoT 中心中所有的 IoT Edge 设备](./media/how-to-register-device-vscode/view-devices.png)
 
@@ -70,13 +70,13 @@ Visual Studio Code 资源管理器的“Azure IoT 中心设备”部分列出了
 
 如果已准备好设置设备，则需连接字符串，该字符串使用 IoT 中心内物理设备的标识链接设备。
 
-1. 右键单击“Azure IoT 中心设备”部分中的设备 ID。
+1. 右键单击“Azure IoT 中心设备”部分中的设备 ID。 
+2. 选择“复制设备连接字符串”。
 
-1. 选择“复制设备连接字符串”。
+   连接字符串会复制到剪贴板。 
 
-   连接字符串会复制到剪贴板。
+还可从右键菜单中选择“获取设备信息”，在输出窗口中查看包括连接字符串在内的所有设备信息。 
 
-还可从右键菜单中选择“获取设备信息”，在输出窗口中查看包括连接字符串在内的所有设备信息。
 
 ## <a name="next-steps"></a>后续步骤
 

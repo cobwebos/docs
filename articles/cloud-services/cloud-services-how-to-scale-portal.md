@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeconnoc
-ms.openlocfilehash: 29ee71e7946145e50cc875df96b674abec3e12df
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: f5597773b3127852481d5e14844bed889c4d6f83
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004330"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435195"
 ---
 # <a name="how-to-configure-auto-scaling-for-a-cloud-service-in-the-portal"></a>如何在门户中为云服务配置自动缩放
 
@@ -41,14 +41,14 @@ ms.locfileid: "39004330"
 
 * 若要使应用程序具有高可用性，应确保为其部署两个或更多角色实例。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
-* 仅当所有角色都处于“就绪”状态时才能自动缩放。  
+* 仅当所有角色都处于“就绪”状态时才能自动缩放。  
 
 
 ## <a name="where-scale-is-located"></a>缩放位置
 选择云服务之后，应会看到云服务边栏选项卡。
 
 1. 在云服务边栏选项卡上的“角色和实例”磁贴中，选择云服务的名称。   
-   **重要说明**：请务必单击云服务角色，而不是角色下面的角色实例。
+   **重要说明**：请务必单击云服务角色，而不是以下角色的角色实例。
 
     ![](./media/cloud-services-how-to-scale-portal/roles-instances.png)
 2. 选择“缩放”磁贴。

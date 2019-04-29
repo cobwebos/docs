@@ -1,7 +1,6 @@
 ---
 title: 在 Azure 虚拟网络中设置 HBase 群集复制 - Azure HDInsight
 description: 了解如何设置从一个 HDInsight 版本到另一个版本的 HBase 复制，以实现负载均衡、高可用性、在不造成停机的情况下进行迁移和更新，以及灾难恢复。
-services: hdinsight,virtual-network
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -9,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: d50c3f4452dd00b5656b6cde5e671caebcb4bb7c
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 95a1055df283765b24322f6f8efe3efcb9b19022
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58112528"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123071"
 ---
 # <a name="set-up-apache-hbase-cluster-replication-in-azure-virtual-networks"></a>在 Azure 虚拟网络中设置 Apache HBase 群集复制
 
@@ -69,7 +68,7 @@ ms.locfileid: "58112528"
 
 | 属性 | 值 |
 |----------|-------|
-| 位置 | 美国西部 |
+| Location | 美国西部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet1 |
 | 地址空间前缀 | 10.1.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -86,7 +85,7 @@ ms.locfileid: "58112528"
 
 | 属性 | 值 |
 |----------|-------|
-| 位置 | 美国东部 |
+| Location | 美国东部 |
 | VNet 名称 | &lt;ClusterNamePrevix>-vnet2 |
 | 地址空间前缀 | 10.2.0.0/16 |
 | 子网名称 | 子网 1 |
@@ -136,7 +135,7 @@ ms.locfileid: "58112528"
     sudo apt-get install bind9 -y
     ```
 
-3. 配置 Bind，以便将转发到你本地 DNS 服务器的名称解析请求。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
+3. 配置 Bind 以将名称解析请求转发到本地 DNS 服务器。 为此，请使用以下文本作为 `/etc/bind/named.conf.options` 文件的内容：
 
     ```
     acl goodclients {

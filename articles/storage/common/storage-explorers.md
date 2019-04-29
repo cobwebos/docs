@@ -9,11 +9,11 @@ ms.date: 09/06/2017
 ms.author: dineshmurthy
 ms.subservice: common
 ms.openlocfilehash: ae6ceee33aa6d96c360782c33232e0c7561cf209
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58015333"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483105"
 ---
 # <a name="azure-storage-client-tools"></a>Azure 存储客户端工具
 Azure 存储用户经常要使用 Azure 存储客户端工具来查看其数据或者与数据交互。 下表列出了可用于实现此目的的多种工具。 我们在每个能够枚举和/或访问数据抽象的块中打上“X”。 该表还指明了工具是否免费。 “试用”表示存在免费试用版，但完整版产品不是免费的。 “是/否”表示有一个免费版本，而提供的其他版本需要购买。

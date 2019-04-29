@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: c96710d6dcca9f5ef99b3a02a0bc875d433f814d
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58257425"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61463321"
 ---
 # <a name="playing-your-content-with-existing-players"></a>使用现有播放器播放内容
 Azure 媒体服务支持多种常用的流式处理格式，如平滑流、HTTP 实时流和 MPEG-Dash。 本主题列出了可用于测试流的现有播放器。

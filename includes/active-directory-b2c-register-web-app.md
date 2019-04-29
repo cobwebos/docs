@@ -2,14 +2,15 @@
 author: PatAltimore
 ms.service: active-directory-b2c
 ms.topic: include
-ms.date: 11/03/2016
-ms.author: patricka
+origin.date: 11/03/2016
+ms.date: 04/04/2019
+ms.author: v-junlch
 ms.openlocfilehash: 4d5c8373f2a8f02ccfbe51cb970ab08744950e7e
-ms.sourcegitcommit: 00dd50f9528ff6a049a3c5f4abb2f691bf0b355a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/05/2018
-ms.locfileid: "58114075"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128209"
 ---
 [!INCLUDE [active-directory-b2c-portal-add-application](active-directory-b2c-portal-add-application.md)]
 
@@ -31,3 +32,4 @@ ms.locfileid: "58114075"
 ![Web 应用程序属性](./media/active-directory-b2c-register-web-app/b2c-web-app-properties.png)
 
 请记下全局唯一的应用程序客户端 ID。 该 ID 用在应用程序代码中。
+

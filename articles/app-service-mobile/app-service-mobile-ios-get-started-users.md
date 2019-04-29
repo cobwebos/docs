@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: crdun
 ms.openlocfilehash: 8c1c52790065015977add7e32a06063057b24dad
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57445902"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62128143"
 ---
 # <a name="add-authentication-to-your-ios-app"></a>Add authentication to your iOS app（将身份验证添加到 iOS 应用）
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -212,7 +212,7 @@ ms.locfileid: "57445902"
 
 5. 按“运行”启动应用，然后登录。 登录时，应能够查看 Todo 列表并进行更新。
 
-应用服务身份验证使用 Apple 应用间通信。  有关此主题的更多详细信息，请参阅 [Apple 文档][2]
+应用服务身份验证使用 Apple 应用间通信。  有关此主题的详细信息，请参阅 [Apple 文档][2]
 <!-- URLs. -->
 
 [1]: https://developers.facebook.com/docs/ios/ios9#whitelist
