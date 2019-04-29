@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 12/04/2018
+ms.date: 04/24/2019
 ms.author: pbutlerm
 ms.openlocfilehash: b12ba53f847b46479b3100c088c29372b58c1b8e
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58649027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594238"
 ---
 # <a name="saas-application-test-drive-tab"></a>SaaS 应用程序“体验版”选项卡
 
@@ -31,9 +31,11 @@ ms.locfileid: "58649027"
 
 体验版为客户提供了与产品主要功能和好处相关的自行试用指南，并在实际的实现方案中进行演示。
 
+
 ## <a name="how-a-test-drive-works"></a>体验版的工作方式
 
 潜在客户在市场中搜索并找到你的应用程序。 客户登录并同意接受使用条款。 此时，客户将收到你的预配置环境来进行固定小时数的试用，而你则获得优质潜在顾客，并可在此基础上进行跟进。 有关详细信息，请参阅[什么是体验版？](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/what-is-test-drive)
+
 
 ## <a name="publishing-steps"></a>发布步骤
 
@@ -43,6 +45,7 @@ ms.locfileid: "58649027"
 2. 构建和/或修改资源管理器模板
 3. 创建体验版分步手册
 4. 发布产品/服务
+
 
 ## <a name="setting-up-a-test-drive"></a>设置体验版
 
@@ -54,6 +57,8 @@ ms.locfileid: "58649027"
 |       已托管             |       托管体验版消除了 Microsoft 托管设置以及用于执行体验版用户预配和取消预配的服务的维护工作的复杂性。             |         [托管的体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/hosted-test-drive)          |
 |      逻辑应用              |       逻辑应用体验版是一个部署模板，用来包含所有复杂的解决方案体系结构。 所有 Dynamics 应用程序或自定义产品都应当使用此类型的体验版。            |      [逻辑应用体验版](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal/test-drive/logic-app-test-drive)             |
 |       Power BI             |         Power BI 体验版包含一个嵌入式链接，指向某个定制的仪表板。 希望演示交互式 Power BI 视觉对象的任何产品都应使用此类型的体验版。 只需上传你的嵌入式 Power BI URL。          |        [Power BI 体验版](#power-bi-test-drive)           |
+|   |   |   |
+
 
 ### <a name="power-bi-test-drive"></a>Power BI 体验版
 

@@ -11,11 +11,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 3a0df408e70ed61355ffba319f6261f90d8e4348
-ms.sourcegitcommit: f24fdd1ab23927c73595c960d8a26a74e1d12f5d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58499152"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60595612"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge-preview"></a>通过 IoT Edge 上的 Azure Blob 存储（预览版）在边缘存储数据
 
@@ -347,7 +347,7 @@ Azure IoT Edge 在 Visual Studio Code 中提供模板，以帮助你开发边缘
    ```
 ## <a name="logs"></a>日志
 
-请按照说明为[配置 IoT Edge 模块在 docker 日志](production-checklist.md#set-up-logs-and-diagnostics)
+请按照说明[为 IoT Edge 模块配置 docker 日志](production-checklist.md#set-up-logs-and-diagnostics)
 
 ## <a name="connect-to-your-blob-storage-module"></a>连接到 blob 存储模块
 
@@ -451,10 +451,10 @@ IoT Edge 上的 Blob 存储模块使用相同的 Azure 存储 SDK，并与适用
 不受支持：
 * 放置来自 URL 的块
 
-## <a name="feedback"></a>反馈:
-你的反馈是，若要使此模块和它的功能非常有用且易于使用我们非常重要。 请分享你的反馈并告诉我们如何改进。
+## <a name="feedback"></a>反馈：
+你的反馈对我们非常重要，它会使此模块及其功能有用且易于使用。 请分享你的反馈并告诉我们该如何改进。
 
-在可以联系我们联系我们： absiotfeedback@microsoft.com 
+你可以通过 absiotfeedback@microsoft.com 联系我们 
 
 ## <a name="next-steps"></a>后续步骤
 

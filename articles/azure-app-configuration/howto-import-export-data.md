@@ -13,11 +13,11 @@ ms.date: 02/24/2019
 ms.author: yegu
 ms.custom: mvc
 ms.openlocfilehash: 6557f3a4129076c1e8708208e5d4e0d4f53dcec3
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741731"
 ---
 # <a name="import-or-export-configuration-data"></a>导入或导出配置数据
 
@@ -70,4 +70,4 @@ Azure 应用程序配置支持的数据导入和导出操作。 使用这些操�
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [创建 ASP.NET Core web 应用](./quickstart-aspnet-core-app.md)  
+> [创建一个 ASP.NET Core Web 应用](./quickstart-aspnet-core-app.md)  

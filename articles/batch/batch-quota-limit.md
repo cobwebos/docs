@@ -16,21 +16,21 @@ ms.date: 03/27/2019
 ms.author: lahugh
 ms.custom: seodec18
 ms.openlocfilehash: e33d014bd2dddf0c7310727229f8137c9f181325
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58540969"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776354"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch 服务配额和限制
 
-与其他 Azure 服务一样，与 Batch 服务关联的某些资源存在限制。 其中的许多限制是 Azure 在订阅或帐户级别应用的默认配额。 本文描述这些默认值，以及如何请求提高配额。
+与其他 Azure 服务一样，与 Batch 服务关联的某些资源存在限制。 其中的许多限制是 Azure 在订阅或帐户级别应用的默认配额。 本文将描述这些默认值，以及如何请求提高配额。
 
 设计和增加 Batch 工作负荷时，请记住这些配额。 例如，如果池没有达到指定的计算节点目标数量，那么可能是已达到 Batch 帐户的核心配额限制。
 
 可以在单个批处理帐户中运行多个批处理工作负荷，或者在相同订阅的不同 Azure 区域的批处理帐户之间分散工作负荷。
 
-如果打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线 [客户支持请求](#increase-a-quota) 。
+如果打算在 Batch 中运行生产工作负荷，可能需要将一个或多个配额提高到默认值以上。 如果需要提高配额，可以免费提出在线[客户支持请求](#increase-a-quota)。
 
 > [!NOTE]
 > 配额是一种信用限制，不附带容量保证。 如果有大规模的容量需求，请联系 Azure 支持。
@@ -68,7 +68,7 @@ ms.locfileid: "58540969"
 | 每个池的应用程序包 | 10 |
 | 最长任务生存期 | 180 天<sup>1</sup> |
 
-<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务会保存 7 天；最长生存期内未完成的任务的数据不可访问。
+<sup>1</sup> 最长任务生存期（从添加到作业时算起到任务完成时结束）为 180 天。 已完成的任务保存 7 天；最长生存期内未完成的任务的数据不可访问。
 
 ## <a name="view-batch-quotas"></a>查看 Batch 配额
 
@@ -108,7 +108,7 @@ ms.locfileid: "58540969"
     单击“下一步”。
 1. 在“联系人信息”中：
    
-    a. Select a <bpt id="p1">**</bpt>Preferred contact method<ept id="p1">**</ept>.
+    a. 选择“首选联系方法”。
    
     b. 输入并确认所需的联系人详细信息。
    

@@ -8,22 +8,22 @@ ms.topic: article
 ms.date: 02/22/2019
 ms.author: absha
 ms.openlocfilehash: f456cfec82a315a2be877a52e4f3f1850b992736
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797783"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60715161"
 ---
-# <a name="troubleshoot-application-gateway-with-app-service"></a>对使用应用服务应用程序网关进行故障排除
+# <a name="troubleshoot-application-gateway-with-app-service"></a>排查包含应用服务的应用程序网关的问题
 
-了解如何诊断和解决与应用程序网关和后端服务器作为应用服务时遇到的问题。
+了解如何诊断和解决充当后端服务器的应用程序网关和应用服务遇到的问题。
 
 ## <a name="overview"></a>概述
 
-在本文中，将了解如何解决以下问题：
+本文介绍如何排查以下问题：
 
 > [!div class="checklist"]
-> * 获取重定向时在浏览器中公开的应用服务的 URL
+> * 有重定向时，应用服务的 URL 公开在浏览器中
 > * 应用服务的 ARRAffinity Cookie 域设置为应用服务主机名 (example.azurewebsites.net) 而不是原始主机
 
 在应用程序网关后端池中配置面向公众的应用服务时，如果在应用程序代码中配置了重定向，访问应用程序网关时你可能会看到，浏览器会直接将你重定向到应用服务 URL。
@@ -35,7 +35,7 @@ ms.locfileid: "59797783"
 - 在应用程序网关的 HTTP 设置中启用了“从后端地址中选取主机名”开关。
 - 未将自定义域注册到应用服务。
 
-此外，如果使用的应用服务应用程序网关后，使用自定义域来访问应用程序网关可能会看到应用服务设置的 ARRAffinity cookie 的域值将包含"example.azurewebsites.net"域名称。 如果你想为 cookie 域也在原始主机名，请按照本文中的解决方案。
+此外，如果使用的应用服务应用程序网关后，使用自定义域来访问应用程序网关可能会看到应用服务设置的 ARRAffinity cookie 的域值将包含"example.azurewebsites.net"域名称。 如果希望原始主机名也是 Cookie 域，则请按本文中解决方案的要求操作。
 
 ## <a name="sample-configuration"></a>示例配置
 
@@ -103,7 +103,7 @@ X-Powered-By: ASP.NET
 
 - 这样做后，应用程序网关应会将相同的主机名“www.contoso.com”转发到应用服务，并且同一个主机名上会发生重定向。 可以查看下面的示例请求和响应标头。
 
-若要实现的现有安装程序中使用 PowerShell 为上面所述的步骤，请执行下面的示例 PowerShell 脚本。 请注意如何不使用-PickHostname 开关中的探测和 HTTP 设置配置。
+若要针对现有设置使用 PowerShell 来实施上述步骤，请按下面的示例 PowerShell 脚本操作。 请注意，我们没有在探测和 HTTP 设置配置中使用 -PickHostname 开关。
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG

@@ -2,20 +2,21 @@
 title: SQL 数据仓库可管理性和监控 - 概述 | Microsoft Docs
 description: 有关资源利用率、日志和查询活动、建议和数据保护（备份和还原）的监视和可管理性概述。
 services: sql-data-warehouse
-author: kevinvngo
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: manage
-ms.date: 08/27/2018
-ms.author: kevin
+origin.date: 08/27/2018
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: e9fb06b8ba34566689f769ca9a69328eee37e3c1
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55460244"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747568"
 ---
 # <a name="manageability-and-monitoring-with-azure-sql-data-warehouse"></a>Azure SQL 数据仓库的可管理性和监视
 

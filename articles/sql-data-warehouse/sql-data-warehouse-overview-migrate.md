@@ -2,20 +2,21 @@
 title: 将解决方案迁移到 SQL 数据仓库 | Microsoft 文档
 description: 有关将解决方案转移到 Azure SQL 数据仓库平台的迁移指南。
 services: sql-data-warehouse
-author: jrowlandjones
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 04/17/2018
-ms.author: jrj
+origin.date: 04/17/2018
+ms.date: 03/25/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: 04c921282d3591e7326d326c230bf72e7f5c1812
-ms.sourcegitcommit: 3f4ffc7477cff56a078c9640043836768f212a06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/04/2019
-ms.locfileid: "57313007"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60776214"
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>将解决方案迁移到 Azure SQL 数据仓库
 请参阅将现有数据库解决方案迁移到 Azure SQL 数据仓库所涉及的内容。 
@@ -36,7 +37,6 @@ ms.locfileid: "57313007"
 - 逐行处理需求
 - 不兼容的格式（JSON 和 XML）
 
-
 ## <a name="plan-the-migration"></a>规划迁移
 
 在决定要将现有解决方案迁移到 SQL 数据仓库后，请务必在开始操作之前先规划迁移。 
@@ -51,17 +51,6 @@ ms.locfileid: "57313007"
 -  [迁移代码](sql-data-warehouse-migrate-code.md)
 -  [迁移数据](sql-data-warehouse-migrate-data.md)。 
 
-<!--
-## Perform the migration
-
-
-## Deploy the solution
-
-
-## Validate the migration
-
--->
-
 ## <a name="next-steps"></a>后续步骤
 CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据仓库指南。  有关迁移的其他指南，请参阅他们的[在实践中将数据迁移到 Azure SQL 数据仓库][Migrating data to Azure SQL Data Warehouse in practice] 一文。
 
@@ -73,3 +62,5 @@ CAT（客户顾问团队）也有一些很好的通过博客发布的 SQL 数据
 
 <!--Other Web references-->
 [Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/
+
+<!--Update_Description: update meta properties, wording update-->

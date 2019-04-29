@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.service: azure-monitor
 ms.subservice: alerts
 ms.openlocfilehash: 59973d9530bf1c3ab3e77290b25e50860f9de0ca
-ms.sourcegitcommit: fcb674cc4e43ac5e4583e0098d06af7b398bd9a9
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/18/2019
-ms.locfileid: "56342977"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60712859"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>了解指标警报在 Azure Monitor 中的工作原理
 
@@ -114,8 +114,8 @@ Azure Monitor 中的指标警报还支持使用一个规则来监视多个维度
 - 频率：1 分钟
 - 运算符：GreaterThan
 - 敏感度：中型
-- 回溯时段：1
-- 违规次数：1
+- 回溯时段：第
+- 违规次数：第
 
 此规则会监视过去 5 分钟的平均 CPU 使用率是否超过每个实例的预期行为。 同一规则可以在实例联机时对其进行监视，而无需再次修改指标警报规则。 每个实例将获得一个符合指标系列行为模式的阈值，并基于新数据持续进行更改，使阈值更准确。 如前所述，每个实例单独受到监视，而你会分别收到不同的通知。
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 02/26/2019
 ms.author: spelluru
 ms.openlocfilehash: 82f9d7090d7283e0b00b36e0928fffb3395ca4c0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58102629"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60679079"
 ---
 # <a name="classroom-labs-concepts"></a>教室实验室概念
 以下列表包含密钥的实验室服务概念和定义：

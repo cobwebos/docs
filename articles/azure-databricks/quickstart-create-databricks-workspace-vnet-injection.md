@@ -9,11 +9,11 @@ ms.service: azure-databricks
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: 295b64b10f9f78ca6224d60fb84c6d1310aaa42e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59288196"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60770481"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-in-a-virtual-network"></a>快速入门：在虚拟网络中创建 Azure Databricks 工作区
 
@@ -37,7 +37,7 @@ ms.locfileid: "59288196"
     |地址空间|10.1.0.0/16|用 CIDR 标记来表示的虚拟网络地址范围。|
     |订阅|用户的订阅\<\>|选择要使用的 Azure 订阅。|
     |资源组|databricks-quickstart|选择**创建新**并输入你的帐户的新资源组名称。|
-    |位置|\<选择离用户最近的区域\>|选择可以在其中托管你的虚拟网络的地理位置。 使用最靠近用户的位置。|
+    |Location|\<选择离用户最近的区域\>|选择可以在其中托管你的虚拟网络的地理位置。 使用最靠近用户的位置。|
     |子网名称|default|选择虚拟网络中的默认子网的名称。|
     |子网地址范围|10.1.0.0/24|以 CIDR 表示法表示的子网地址范围， 它必须包含虚拟网络的地址空间。 无法编辑正在使用中的子网的地址范围。|
 
@@ -58,7 +58,7 @@ ms.locfileid: "59288196"
     |工作区名称|databricks-quickstart|选择 Azure Databricks 工作区的名称。|
     |订阅|用户的订阅\<\>|选择要使用的 Azure 订阅。|
     |资源组|databricks-quickstart|选择用于虚拟网络的同一资源组。|
-    |位置|\<选择离用户最近的区域\>|选择与你的虚拟网络位于同一位置。|
+    |Location|\<选择离用户最近的区域\>|选择与你的虚拟网络位于同一位置。|
     |定价层|选择标准或高级。|有关定价层的详细信息，请参阅[Databricks 价格页](https://azure.microsoft.com/pricing/details/databricks/)。|
     |部署虚拟网络中的 Azure Databricks 工作区|是|此设置，可以部署在虚拟网络中的 Azure Databricks 工作区。|
     |虚拟网络|databricks-quickstart|选择在上一节中创建的虚拟网络。|

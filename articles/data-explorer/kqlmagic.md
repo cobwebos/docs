@@ -1,6 +1,6 @@
 ---
-title: 使用 Jupyter 笔记本在 Azure 数据资源管理器中分析数据
-description: 本主题说明如何在 Azure 数据资源管理器中分析数据使用 Jupyter Notebook 和 Kqlmagic 扩展。
+title: 使用 Jupyter Notebook 分析 Azure 数据资源管理器中的数据
+description: 本主题介绍如何使用 Jupyter Notebook 和 Kqlmagic 扩展在 Azure 数据资源管理器中分析数据。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,16 +8,16 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/19/2018
 ms.openlocfilehash: 896a5d13279c15f0035f214da3d5a7d7e6f1861f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045048"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60758409"
 ---
-# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>使用 Jupyter Notebook 和 Kqlmagic 扩展在 Azure 数据资源管理器中分析数据
+# <a name="use-a-jupyter-notebook-and-kqlmagic-extension-to-analyze-data-in-azure-data-explorer"></a>使用 Jupyter Notebook 和 Kqlmagic 扩展分析 Azure 数据资源管理器中的数据
 
 Jupyter Notebook 是一种开源 Web 应用程序，可用于创建和共享包含实时代码、公式、可视化效果和叙述性文本的文档。 使用情况包括数据清理和转换、数值模拟、统计建模、数据可视化和机器学习。
-[Jupyter Notebook](https://jupyter.org/) 支持 Magic 函数，这些函数可通过支持其他命令扩展内核的功能。 KQL magic 是一种命令，可在 Jupyter Notebook 中扩展 Python 内核的功能，以便你能够在本机运行 Kusto 语言查询。 可以轻松地组合使用 Python 和 Kusto 查询语言，以通过与 `render` 命令集成的丰富 Plot.ly 库查询和可视化数据。 用于运行查询的数据源受支持。 这些数据源包括 Azure 数据资源管理器日志和遥测数据，以及 Azure Monitor 日志的快速且高度可缩放的数据探索服务和 Application Insights。 KQL magic 还适用于 Azure Notebooks、Jupyter 实验室和 Visual Studio Code Jupyter 扩展。
+[Jupyter Notebook](https://jupyter.org/) 支持 Magic 函数，这些函数可通过支持其他命令扩展内核的功能。 KQL magic 是一种命令，可在 Jupyter Notebook 中扩展 Python 内核的功能，以便你能够在本机运行 Kusto 语言查询。 可以轻松地组合使用 Python 和 Kusto 查询语言，以通过与 `render` 命令集成的丰富 Plot.ly 库查询和可视化数据。 用于运行查询的数据源受支持。 这些数据源包括 Azure 数据资源管理器（一个用于日志和遥测数据的快速且高度可缩放的数据探索服务），以及 Azure Monitor 日志和 Application Insights。 KQL magic 还适用于 Azure Notebooks、Jupyter 实验室和 Visual Studio Code Jupyter 扩展。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -170,6 +170,6 @@ df.head(10)
 运行 help 命令以浏览下面包含所有支持的功能的笔记本示例：
 - [适用于 Azure 数据资源管理器的 KQL magic 入门](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStart.ipynb) 
 - [适用于 Application Insights 的 KQL magic 入门](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartAI.ipynb) 
-- [开始使用 Azure Monitor 日志 KQL magic](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
+- [适用于 Azure Monitor 日志的 KQL magic 入门](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FQuickStartLA.ipynb) 
 - [使用 Python 将 KQL magic 查询参数化](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FParametrizeYourQuery.ipynb) 
 - [针对 KQL magic 查询图表结果选择调色板](https://mybinder.org/v2/gh/Microsoft/jupyter-Kqlmagic/master?filepath=notebooks%2FColorYourCharts.ipynb)

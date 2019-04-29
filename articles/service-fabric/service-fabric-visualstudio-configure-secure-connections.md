@@ -15,11 +15,11 @@ ms.workload: multiple
 ms.date: 8/04/2017
 ms.author: cawa
 ms.openlocfilehash: 8d76a2144234591792359ed8dd4a0779e6a2fc5c
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42142045"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60628266"
 ---
 # <a name="configure-secure-connections-to-a-service-fabric-cluster-from-visual-studio"></a>从 Visual Studio 配置与 Service Fabric 群集的安全连接
 了解如何使用 Visual Studio 安全访问已配置访问控制策略的 Azure Service Fabric 群集。
@@ -40,11 +40,11 @@ Visual Studio Service Fabric 工具支持所有用于连接到群集来进行发
 
 ### <a name="to-connect-to-a-secure-cluster"></a>连接到安全群集
 1. 请确保可以访问目标群集所信任的某个客户端证书。 证书通常以个人信息交换 (.pfx) 文件的形式共享。 有关如何配置服务器以授予客户端访问权限，请参阅[从 Azure 门户设置 Service Fabric 群集](service-fabric-cluster-creation-via-portal.md)。
-2. 安装受信任的证书。 为此，请双击 .pfx 文件，或使用 PowerShell 脚本 Import-PfxCertificate 来导入证书。 将证书安装到 **Cert:\LocalMachine\My**。 导入证书时，可以接受所有默认设置。
+2. 安装受信任的证书。 为此，请双击 .pfx 文件，或使用 PowerShell 脚本 Import-PfxCertificate 来导入证书。 将证书安装到 Cert:\LocalMachine\My。 导入证书时，可以接受所有默认设置。
 3. 在项目的快捷菜单上选择“**发布...**”命令打开“**发布 Azure应用程序**”对话框，并选择目标群集。 该工具会自动解析连接，并将安全连接参数保存在发布配置文件中。
-4. 可选：可以编辑发布配置文件以指定安全群集连接。
+4. 可选：您可以编辑发布配置文件以指定的安全群集连接。
    
-   由于正在手动编辑“发布配置文件”XML 文件以指定证书信息，因此请务必记下证书存储名称、存储位置以及证书指纹。 稍后需要为证书的存储名称和存储位置提供这些值。 有关详细信息，请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)。
+   由于正在手动编辑“发布配置文件”XML 文件以指定证书信息，因此请务必记下证书存储名称、存储位置以及证书指纹。 稍后需要为证书的存储名称和存储位置提供这些值。 请参阅[如何：检索证书的指纹](https://msdn.microsoft.com/library/ms734695\(v=vs.110\).aspx)有关详细信息。
    
    可以使用 *ClusterConnectionParameters* 参数指定连接到 Service Fabric 群集时要使用的 PowerShell 参数。 有效的参数是 Connect-ServiceFabricCluster cmdlet 所接受的任何参数。 有关可用参数的列表，请参阅 [Connect-ServiceFabricCluster](https://docs.microsoft.com/powershell/module/servicefabric/connect-servicefabriccluster)。
    

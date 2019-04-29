@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/20/2018
-ms.openlocfilehash: c841f29adbe9911193227cced2856d953d820b08
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 25ed66fd75301475542dbac8e8a01670ee37563c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997263"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60531773"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>将 Azure 计划程序作业迁移到 Azure 逻辑应用
 
@@ -29,9 +29,9 @@ ms.locfileid: "46997263"
 
 * Azure 逻辑应用服务支持时区和夏令时 (DST)。
 
-若要了解详细信息，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md) 或尝试在此快速入门中创建第一个逻辑应用：[创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+若要了解详细信息，请参阅[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md) 或者尝试在此快速入门中创建第一个逻辑应用：[创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。
 
@@ -45,9 +45,9 @@ ms.locfileid: "46997263"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中创建一个空白的逻辑应用。 
 
-   有关基本步骤，请遵循[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+   有关的基本步骤，请按照[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“收到 http 请求时”作为筛选器。 从触发器列表中选择此触发器：“当收到 HTTP 请求时” 
+1. 在搜索框中，输入“收到 http 请求时”作为筛选器。 从触发器列表中选择此触发器：**收到 HTTP 请求时** 
 
    ![添加“请求”触发器](./media/migrate-from-scheduler-to-logic-apps/request-trigger.png)
 
@@ -67,7 +67,7 @@ ms.locfileid: "46997263"
 
 1. 在触发器下，选择“下一步”。 
 
-1. 在搜索框中，输入“延迟截止时间”作为筛选器。 在操作列表下选择此操作：“延迟截止时间”
+1. 在搜索框中，输入“延迟截止时间”作为筛选器。 在操作列表中选择以下操作：**延迟截止时间**
 
    此操作会暂停逻辑应用工作流，直到指定的日期和时间。
 
@@ -104,7 +104,7 @@ ms.locfileid: "46997263"
 
 | 请求方法 | 代码 | Body | 标头 |
 |----------------|-----|------|---------| 
-| **POST** | <endpoint-URL> | **raw** <p>**JSON(application/json)** <p>在“raw”框中，输入要在请求中发送的有效负载。 <p>**注意**：此设置会自动配置“标头”值。 | **键**：Content-Type <br>**值**：application/json
+| **POST** | <endpoint-URL> | **raw** <p>**JSON(application/json)** <p>在“raw”框中，输入要在请求中发送的有效负载。 <p>**注意**：此设置自动配置**标头**值。 | **密钥**：Content-Type <br>**值**：application/json
  |||| 
 
 ![发送请求以手动触发逻辑应用](./media/migrate-from-scheduler-to-logic-apps/postman-send-post-request.png)
@@ -129,9 +129,9 @@ ms.locfileid: "46997263"
 
 1. 在 [Azure 门户](https://portal.azure.com)的逻辑应用设计器中创建一个空白的逻辑应用。 
 
-   有关基本步骤，请遵循[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
+   有关的基本步骤，请按照[快速入门：创建第一个逻辑应用](../logic-apps/quickstart-create-first-logic-app-workflow.md)。
 
-1. 在搜索框中，输入“定期”作为筛选器。 从触发器列表中选择此触发器：“重复” 
+1. 在搜索框中，输入“定期”作为筛选器。 从触发器列表中选择此触发器：**定期** 
 
    ![添加“重复”触发器](./media/migrate-from-scheduler-to-logic-apps/recurrence-trigger.png)
 
@@ -195,20 +195,20 @@ ms.locfileid: "46997263"
 
 <a name="retire-date"></a> 
 
-**问**：Azure 计划程序何时停用？ <br>
-**答**：Azure 计划程序计划于 2019 年 9 月 30 日停用。
+**问**：何时 Azure 计划程序即将停用？ <br>
+**答**：Azure 计划程序计划上 2019 年 9 月 30 日停用。
 
-**问**：该服务停用后，会对我的计划程序作业集合和作业有何影响？ <br>
+**问**：该服务停用后我的计划程序作业集合和作业的怎么办？ <br>
 **答**：将从系统中删除所有计划程序作业集合和作业。
 
-**问**：在将我的计划程序作业迁移到逻辑应用之前，是否必须备份或执行任何其他任务？ <br>
-**答**：作为最佳做法，请始终备份你的工作。 在删除或禁用计划程序作业之前，请检查你创建的逻辑应用是否按预期运行。 
+**问**：我是否需要备份或迁移到逻辑应用我的计划程序作业之前执行任何其他任务？ <br>
+**答**：最佳做法是，始终备份您的工作。 在删除或禁用计划程序作业之前，请检查你创建的逻辑应用是否按预期运行。 
 
-**问**：是否有可以帮助我将作业从计划程序迁移到逻辑应用的工具？ <br>
-**答**：每个计划程序作业都是唯一的，因此不存在一个通用的工具。 但是，可以使用各种脚本来根据需要进行修改。 对于脚本可用性，请以后再回来查看。
+**问**：是否有可以帮助我将我的作业计划程序迁移到逻辑应用的工具？ <br>
+**答**：每个计划程序作业是唯一的因此不存在通用的工具。 但是，可以使用各种脚本来根据需要进行修改。 对于脚本可用性，请以后再回来查看。
 
-**问**：迁移计划程序作业时，可从何处获得支持？ <br>
-**答**：以下是获得支持的一些方法： 
+**问**：哪里可以获得迁移我的计划程序作业的支持？ <br>
+**答**：下面是获取支持的一些方法： 
 
 **Azure 门户**
 

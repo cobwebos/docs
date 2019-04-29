@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: 543135db8df69db7e0e6182c9d52b9c956ee80b1
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.openlocfilehash: 8afed4eb1add0ba3a7db474e54b2f78a0babab06
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57996979"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60789071"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>保留 IP 地址（经典部署）
 
@@ -39,7 +39,7 @@ ms.locfileid: "57996979"
 
 ## <a name="faqs"></a>常见问题解答
 - 可以将保留 IP 用于所有 Azure 服务吗？
-    不是。 保留 IP 只能用于通过 VIP 公开的 VM 和云服务实例角色。
+    不。 保留 IP 只能用于通过 VIP 公开的 VM 和云服务实例角色。
 - 我可以有多少个保留 IP？
     有关详细信息，请参阅 [Azure 限制](../azure-subscription-service-limits.md#networking-limits)一文。
 - 保留 IP 是否收费？
@@ -47,7 +47,7 @@ ms.locfileid: "57996979"
 - 如何保留某个 IP 地址？
     可以使用 PowerShell、[Azure 管理 REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx) 或 [Azure 门户](https://portal.azure.com)在 Azure 区域中保留 IP 地址。 保留 IP 地址将关联到订阅。
 - 我是否可将保留 IP 用于基于地缘组的 VNet？
-    不是。 仅区域 VNet 支持保留 IP。 与地缘组关联的 VNet 不支持保留 IP。 有关如何将 VNet 与区域或地缘组关联的详细信息，请参阅[关于区域 VNet 和地缘组](virtual-networks-migrate-to-regional-vnet.md)一文。
+    不。 仅区域 VNet 支持保留 IP。 与地缘组关联的 VNet 不支持保留 IP。 有关如何将 VNet 与区域或地缘组关联的详细信息，请参阅[关于区域 VNet 和地缘组](virtual-networks-migrate-to-regional-vnet.md)一文。
 
 ## <a name="manage-reserved-vips"></a>管理保留 VIP
 

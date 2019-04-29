@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 01/15/2018
 ms.custom: seodec2018
 ms.openlocfilehash: 369e5283d7350729e0d8cc44f94f1f2e71b133c3
-ms.sourcegitcommit: eb9dd01614b8e95ebc06139c72fa563b25dc6d13
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53316857"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60816987"
 ---
 # <a name="upgrading-to-the-azure-search-net-management-sdk-version-2"></a>升级到 Azure 搜索 .NET 管理 SDK 版本 2
 如果使用的是版本 1.0.2 或更早版本的 [Azure 搜索 .NET 管理 SDK](https://aka.ms/search-mgmt-sdk)，本文有助于升级应用程序，以便使用版本 2。

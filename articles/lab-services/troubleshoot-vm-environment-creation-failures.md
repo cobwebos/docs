@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/12/2019
 ms.author: spelluru
 ms.openlocfilehash: a653a785e99619c3e256613d6a4d2c7592f54c8c
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149387"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848450"
 ---
 # <a name="troubleshoot-virtual-machine-vm-and-environment-creation-failures-in-azure-devtest-labs"></a>虚拟机 (VM) 和 Azure 开发测试实验室环境创建失败问题进行故障排除
 如果计算机名称无效或将要违反实验室策略，开发测试实验室可以为您提供警告。 有时，您能看到红色`X`旁边实验室 VM 或环境状态，告知你出现了问题。  本文提供了可用于查找潜在问题，并希望在以后避免此问题的一些技巧。

@@ -11,17 +11,17 @@ ms.topic: article
 ms.assetid: bb7d9432-b697-44db-aa88-bd16ddfad23f
 ms.date: 01/17/2019
 ms.openlocfilehash: 5ebdf45bec4e7cfceb75354af40c7a21c22c6eef
-ms.sourcegitcommit: 9b6492fdcac18aa872ed771192a420d1d9551a33
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54446776"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60846099"
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-with-azure-logic-apps-and-enterprise-integration-pack"></a>使用 Azure 逻辑应用和 Enterprise Integration Pack 管理集成帐户中的项目元数据
 
 可以在集成帐户中定义项目的自定义元数据，并且在运行时获取该元数据供逻辑应用使用。 例如，可以提供项目的元数据（例如合作伙伴、协议、架构和映射）- 所有使用键值对的存储元数据。 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有订阅，可以<a href="https://azure.microsoft.com/free/" target="_blank">注册免费的 Azure 帐户</a>。
 
@@ -63,7 +63,7 @@ ms.locfileid: "54446776"
 
 1. 提供要查找的项目的以下信息：
 
-   | 属性 | 必选 | 值 | 说明 | 
+   | 属性 | 需要 | Value | 描述 | 
    |----------|---------|-------|-------------| 
    | **项目类型** | 是 | “架构”、“映射”、“合作伙伴”、“协议”或自定义类型 | 所需项目的类型 | 
    | **项目名称** | 是 | <*artifact-name*> | 所需项目的名称 | 
@@ -85,7 +85,7 @@ ms.locfileid: "54446776"
 
       例如，假设你要获取在本主题中前面添加的 `routingUrl` 元数据。 下面是可以指定的属性值： 
 
-      | 属性 | 必选 | 值 | 说明 | 
+      | 属性 | 需要 | Value | 描述 | 
       |----------|----------|-------|-------------| 
       | **方法** | 是 | <*operation-to-run*> | 要针对项目运行的 HTTP 操作。 例如，此 HTTP 操作使用 **GET** 方法。 | 
       | **URI** | 是 | <*metadata-location*> | 若要访问检索的项目中的 `routingUrl` 元数据值，可以使用表达式，例如： <p>`@{outputs('Integration_Account_Artifact_Lookup')['properties']['metadata']['routingUrl']}` | 

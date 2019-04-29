@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
-ms.translationtype: HT
+ms.openlocfilehash: 8323c4e1b236444f55dab826d2567491f5f0f736
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542306"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629316"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>在 Azure 门户中添加用户
 
@@ -34,7 +34,7 @@ ms.locfileid: "45542306"
 ## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>（可选）将用户添加到 Azure Data Lake Storage Gen1 角色“读者”角色。
 1.  找到自己的 Azure Data Lake Storage Gen1 帐户。
 2.  单击“用户”。
-3. 单击 **“添加”**。
+3. 单击“添加”。
 4.  选择“Azure RBAC”角色以分配此组。
 5.  分配给“读者”角色。 此角色具有浏览/管理存储在 ADLSGen1 中的数据所需的最小权限集。 如果组不旨在管理 Azure 服务，则分配给此角色。
 6.  键入组的名称。
@@ -42,7 +42,7 @@ ms.locfileid: "45542306"
 
 ## <a name="adding-a-user-using-powershell"></a>使用 PowerShell 添加用户
 
-1. 遵循本指南中的说明：[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+1. 请按照此指南中的说明操作：[如何安装和配置 Azure PowerShell](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
 2. 下载 [Add-AdlaJobUser.ps1](https://github.com/Azure/AzureDataLake/blob/master/Samples/PowerShell/ADLAUsers/Add-AdlaJobUser.ps1) PowerShell 脚本。
 3. 运行 PowerShell 脚本。 
 

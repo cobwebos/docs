@@ -1,90 +1,61 @@
 ---
-title: 静态数据的 Azure 存储服务加密 | Microsoft Docs
-description: 存储数据时，使用 Azure 存储服务加密功能在服务端加密 Azure 托管磁盘、Azure Blob 存储、Azure 文件、Azure 队列存储和 Azure 表存储；检索数据时，使用此功能来解密存储。
+title: 静态数据的 azure 存储加密 |Microsoft Docs
+description: Azure 存储会自动对其进行加密来保护数据之前将其保存到云。 Azure 存储中的所有数据中的 blob、 磁盘、 文件、 队列或表，进行加密和解密以透明方式使用 256 位 AES 加密，并为符合 FIPS 140-2。
 services: storage
-author: lakasa
+author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 08/01/2018
-ms.author: lakasa
+ms.date: 04/16/2019
+ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 059091315c378ab6e2bb857e580c02df968b5092
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
+ms.openlocfilehash: 211cfeb3aba29245e154f4a7db86fb4a3659c36f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457167"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730816"
 ---
-# <a name="azure-storage-service-encryption-for-data-at-rest"></a>静态数据的 Azure 存储服务加密
-静态数据的 Azure 存储服务加密可帮助保护数据，使组织能够信守在安全性与合规性方面所做的承诺。 使用此功能，Azure 存储平台可以先自动加密数据，然后将其保存到 Azure 托管磁盘、Azure Blob、队列、表存储或 Azure 文件，并在检索之前解密数据。 存储服务加密中的加密、静态加密、解密和密钥管理的处理对用户是透明的。 通过 256 位 [AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)加密所有写入 Azure 存储平台的数据，AES 加密是现在最强大的分组加密之一。
+# <a name="azure-storage-encryption-for-data-at-rest"></a>静态数据的 azure 存储加密
 
-针对所有新的和现有的存储帐户启用存储服务加密，并且不能禁用。 因为数据默认受保护，所以无需修改代码或应用程序，即可使用存储服务加密。
+Azure 存储自动加密数据时将其保存到云。 加密可保护你的数据，并帮助您以满足组织的安全性和符合性承诺。 在 Azure 存储中的数据进行加密，以透明方式使用 256 位解密[AES 加密](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)，另一个的最强块加密法，为符合 FIPS 140-2。 Azure 存储加密是类似于在 Windows 上的 BitLocker 加密。
 
-该功能会自动加密以下位置的数据：
+Azure 存储加密的所有新的和现有存储帐户启用，并且不能禁用。 默认情况下保护数据，因为不需要修改代码或应用程序以充分利用 Azure 存储加密。 存储帐户而不考虑其性能层 （标准或高级） 或部署模型 （Azure 资源管理器或经典） 进行加密。 所有 Azure 存储冗余选项都支持加密，并将加密的存储帐户的所有副本。 所有 Azure 存储资源进行都加密，包括 blob、 磁盘、 文件、 队列和表。
 
-- Azure 存储服务：
-    - Azure 托管磁盘
-    - Azure Blob 存储
-    - Azure 文件
-    - Azure 队列存储
-    - Azure 表存储。  
-- 两个性能层（标准和高级）。
-- 两个部署模型（Azure 资源管理器模型和经典模型）。
+加密不会影响 Azure 存储性能。 没有为 Azure 存储加密无需额外付费。
 
-存储服务加密不影响 Azure 存储服务的性能。
+有关基础 Azure 存储加密的加密模块的详细信息，请参阅[加密 API:下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
 
-可以将 Microsoft 托管的加密密钥用于存储服务加密，或者使用你自己的加密密钥。 有关使用自己密钥的详细信息，请参阅[在 Azure Key Vault 中使用客户托管密钥进行存储服务加密](storage-service-encryption-customer-managed-keys.md)。
+## <a name="key-management"></a>密钥管理
 
-## <a name="view-encryption-settings-in-the-azure-portal"></a>在 Azure 门户中查看加密设置
-要查看存储服务加密设置，请登录 [Azure 门户](https://portal.azure.com)，并选择存储帐户。 在“设置”窗格中，选择“加密”设置。
+您可以依赖于 Microsoft 托管密钥进行加密的存储帐户，或使用你自己的密钥，与 Azure 密钥保管库一起加密。
 
-![显示加密设置的门户截图](./media/storage-service-encryption/image1.png)
+### <a name="microsoft-managed-keys"></a>Microsoft 托管密钥
 
-## <a name="faq-for-storage-service-encryption"></a>存储服务加密的常见问题解答
-**如何在资源管理器存储帐户中加密数据？**  
-会为所有存储帐户（经典和资源管理器）启用存储服务加密，启用加密前创建的存储帐户中的任何已有文件都会由后台加密进程以追溯方式进行加密。
+默认情况下，你的存储帐户使用 Microsoft 托管的加密密钥。 你可以查看加密设置中的存储帐户**加密**一部分[Azure 门户](https://portal.azure.com)下, 图中所示。
 
-**创建存储帐户时，是否会默认启用存储服务加密？**  
-是的，会为所有存储帐户和所有 Azure 存储服务启用存储服务加密。
+![查看帐户使用 Microsoft 托管密钥进行加密](media/storage-service-encryption/encryption-microsoft-managed-keys.png)
 
-**我有一个资源管理器存储帐户。能否对其启用存储服务加密？**  
-默认对所有现有的资源管理器存储帐户启用存储服务加密。 Azure Blob 存储、Azure 文件、Azure 队列存储和表存储均支持此类加密。 
+### <a name="customer-managed-keys"></a>客户托管密钥
 
-**是否可以在存储帐户中禁用加密？**  
-加密默认已启用，无法预配为禁用存储帐户加密。 
+你可以使用客户托管的密钥管理 Azure 存储加密。 客户托管密钥使更灵活地创建、 轮换、 禁用和撤消访问控制。 此外可以审核用于保护数据的加密密钥。 
 
-**如果启用存储服务加密，需另付多少 Azure 存储费用？**  
-没有任何额外费用。
+使用 Azure 密钥保管库来管理你的密钥和审核密钥用法。 可以创建自己的密钥并将其存储在密钥保管库，或使用 Azure 密钥保管库 Api 来生成密钥。 存储帐户和 Key Vault 必须在同一个区域中，但可以在不同的订阅中。 有关 Azure 密钥保管库的详细信息，请参阅[什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)。
 
-**我可以使用自己的加密密钥吗？**  
-对于 Azure Blob 存储和 Azure 文件，是的，可使用自己的加密密钥。 Azure 托管磁盘当前不支持客户管理的密钥。 有关详细信息，请参阅 [Azure Key Vault 中使用客户托管密钥的存储服务加密](storage-service-encryption-customer-managed-keys.md)。
+若要撤消对客户托管密钥的访问权限，请参阅[Azure 密钥保管库 PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/)并[Azure Key Vault CLI](https://docs.microsoft.com/cli/azure/keyvault)。 有效地撤消访问权限阻止访问的存储帐户中的所有数据，因为加密密钥是由 Azure 存储不可访问。
 
-**是否可以吊销加密密钥的访问权限？**  
-是的，如果在 Azure Key Vault 中[使用自己的加密密钥](storage-service-encryption-customer-managed-keys.md)。
+若要了解如何将客户托管密钥用于 Azure 存储，请参阅以下文章之一：
 
-**存储服务加密与 Azure 磁盘加密有何不同？**  
-Azure 磁盘加密在基于 OS 的解决方案（例如 BitLocker、DM-Crypt 和 Azure KeyVault）之间提供集成。 存储服务加密在虚拟机下面的 Azure 存储平台层上提供本机加密。
+- [配置为从 Azure 门户的 Azure 存储加密的客户托管密钥](storage-encryption-keys-portal.md)
+- [配置为从 PowerShell 的 Azure 存储加密的客户托管密钥](storage-encryption-keys-powershell.md)
+- [使用 Azure CLI 从 Azure 存储加密使用客户托管的密钥](storage-encryption-keys-cli.md)
 
-**我有一个经典存储帐户。能否对其启用存储服务加密？**  
-会对所有存储帐户（经典和资源管理器）启用存储服务加密。
+> [!NOTE]  
+> 不支持客户托管密钥[Azure 托管磁盘](../../virtual-machines/windows/managed-disks-overview.md)。
 
-**如何在经典存储帐户中加密数据？**  
-默认启用加密后，Azure 存储服务中存储的所有数据会自动加密。 
+## <a name="azure-storage-encryption-versus-disk-encryption"></a>与磁盘加密的 azure 存储加密
 
-**是否可以使用 Azure PowerShell 和 Azure CLI 创建存储帐户并启用存储服务加密？**  
-在创建任何存储帐户（经典或资源管理器）时默认启用存储服务加密。 可以使用 Azure PowerShell 和 Azure CLI 验证帐户属性。
-
-**我的存储帐户设置为异地冗余复制。如果启用存储服务加密，冗余副本是否也会加密？**  
-是的，所有存储帐户的副本都会加密。 支持所有冗余选项 - 本地冗余存储、区域冗余存储、异地冗余存储和读取访问异地冗余存储。
-
-**存储服务加密是否仅允许在特定区域使用？**  
-存储服务加密已在所有区域推出。
-
-**存储服务加密是否符合 FIPS 140-2？**  
-是的，存储服务加密符合 FIPS 140-2。 有关存储服务加密底层加密模块的更多信息，请参见[加密 API：下一代](https://docs.microsoft.com/windows/desktop/seccng/cng-portal)。
-
-**遇到问题或想要提供反馈时如何联系你们？**  
-如有任何有关存储服务加密的问题或反馈，请联系 [ssediscussions@microsoft.com](mailto:ssediscussions@microsoft.com)。
+使用 Azure 存储加密，所有 Azure 存储帐户和它们所包含的资源进行加密，包括备份 Azure 虚拟机磁盘的页 blob。 此外，可以使用加密 Azure 虚拟机磁盘[Azure 磁盘加密](../../security/azure-security-disk-encryption-overview.md)。 Azure 磁盘加密使用行业标准[BitLocker](https://docs.microsoft.com/windows/security/information-protection/bitlocker/bitlocker-overview)在 Windows 上并[Dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt)提供与 Azure 密钥保管库集成的基于操作系统的加密解决方案在 Linux 上。
 
 ## <a name="next-steps"></a>后续步骤
-Azure 存储提供一整套安全性功能，这些功能相辅相成，帮助开发人员构建安全的应用程序。 有关详细信息，请参阅[存储安全指南](../storage-security-guide.md)。
+
+- [什么是 Azure 密钥保管库？](../../key-vault/key-vault-overview.md)

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: c62f8808565022371484b936f5a2bdaba1f8900e
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-ms.translationtype: HT
+ms.openlocfilehash: e7080901118dde33ed07c8a80f254b9b0d2e221c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33781586"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60622983"
 ---
 # <a name="understand-shared-ip-addresses-in-azure-devtest-labs"></a>了解 Azure 开发测试实验室中的共享的 IP 地址
 
@@ -30,25 +30,25 @@ Azure 开发测试实验室允许实验室 VM 共享相同的 IP 地址，以最
 
 ![新建实验室子网](media/devtest-lab-shared-ip/lab-subnet.png)
 
-对于现有的实验室，可以通过选择“配置和策略”>“虚拟网络”启用此选项。 然后，从列表中选择虚拟网络并为所选的子网选择“启用共享的公共 IP”。 如果不想在实验室 VM 之间共享公共 IP 地址，也可以在所有实验室中禁用此选项。
+对于现有的实验室，可以通过选择“配置和策略”>“虚拟网络”启用此选项。 然后，从列表中选择虚拟网络并为所选的子网选择“启用共享的公共 IP”。 如果不想在实验室 Vm 之间共享一个公共 IP 地址，也可以禁用此选项在所有实验室中。
 
 在此实验室中创建的任何 VM 都将默认设置为使用共享 IP。  创建 VM 时，可以在“高级设置”边栏选项卡中的“IP 地址配置”下找到此设置。
 
 ![新建 VM](media/devtest-lab-shared-ip/new-vm.png)
 
-- 共享：创建为“共享”的所有 VM 会放入一个资源组 (RG)。 将向该 RG 分配一个 IP 地址，RG 中的所有 VM 将使用该 IP 地址。
-- 公共：创建的每个 VM 有自己的 IP 地址，并且在自己的资源组中创建。
-- 专用：创建每个 VM 使用的专用 IP 地址。 你无法使用远程桌面从 Internet 直接连接到此 VM。
+- **共享：** 为创建的所有 Vm**共享**放入一个资源组 (RG)。 将向该 RG 分配一个 IP 地址，RG 中的所有 VM 将使用该 IP 地址。
+- **公共：** 您创建的每个 VM 都有其自己的 IP 地址，并在其自己的资源组中创建。
+- **专用：** 您创建的每个 VM 使用专用 IP 地址。 你无法使用远程桌面从 Internet 直接连接到此 VM。
 
-无论何时向子网中添加启用了共享 IP 的 VM，开发测试实验室都会自动将 VM 添加到负载均衡器，并在公共 IP 地址上分配一个用于转发到 VM 上的 RDP 端口的 TCP 端口号。  
+每当启用了共享 ip 的 VM 添加到子网时，开发测试实验室将自动将 VM 添加到负载均衡器，并将分配的公共 IP 地址，一个 TCP 端口号转发到 VM 上的 RDP 端口。  
 
 ## <a name="using-the-shared-ip"></a>使用共享 IP
 
-- Linux 用户：通过 IP 地址或者完全限定的域名（后跟一个冒号和端口）使用 SSH 连接到 VM。 例如，在下图中，用来连接到 VM 的 RDP 地址是 `doclab-lab13998814308000.centralus.cloudapp.azure.com:51686`。
+- **Linux 用户：** 通过 ssh 连接到虚拟机使用的 IP 地址或完全限定的域名后, 跟一个冒号和端口。 例如，在下图中，用来连接到 VM 的 RDP 地址是 `doclab-lab13998814308000.centralus.cloudapp.azure.com:51686`。
 
   ![VM 示例](media/devtest-lab-shared-ip/vm-info.png)
 
-- Windows 用户：在 Azure 门户中选择“连接”按钮来下载预配置的 RDP 文件并访问 VM。
+- **Windows 用户：** 选择**Connect**下载预配置的 RDP 文件，并访问 VM 在 Azure 门户上的按钮。
 
 ## <a name="next-steps"></a>后续步骤
 

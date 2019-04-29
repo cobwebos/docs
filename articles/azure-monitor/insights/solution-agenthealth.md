@@ -14,14 +14,14 @@ ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
 ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60596055"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
-在 Azure 中的代理运行状况解决方案可帮助你了解所有直接向 Azure Monitor 中的 Log Analytics 工作区报告的代理或 System Center Operations Manager 管理组连接到 Azure Monitor，哪些不响应和正在提交操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
+Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Azure Monitor 中的 Log Analytics 工作区报告或向连接到 Azure Monitor 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
 
 ## <a name="prerequisites"></a>必备组件
 在部署此解决方案之前，请确认你当前已安装受支持的 [Windows 代理](../../log-analytics/log-analytics-windows-agent.md)，此类代理向 Log Analytics 工作区报告或向与工作区集成的 [Operations Manager 管理组](../../azure-monitor/platform/om-agents.md)报告。
@@ -48,7 +48,7 @@ ms.locfileid: "59426216"
 | 连接的源 | 支持 | 描述 |
 | --- | --- | --- |
 | Windows 代理 | 是 | 检测信号事件从直接的 Windows 代理收集。|
-| System Center Operations Manager 管理组 | 是 | 检测信号事件是从代理向管理组报告每隔 60 秒收集，并转发到 Azure Monitor。 从 Operations Manager 代理直接连接到 Azure Monitor 不是必需的。 检测信号事件数据从管理组转发到 Log Analytics 工作区。|
+| System Center Operations Manager 管理组 | 是 | 每 60 秒从向管理组报告的代理收集一次检测信号事件，然后将其转发到 Azure Monitor。 从 Operations Manager 代理到 Azure Monitor 的直接连接不是必需的。 检测信号事件数据从管理组转发到 Log Analytics 工作区。|
 
 ## <a name="using-the-solution"></a>使用解决方案
 向 Log Analytics 工作区添加解决方案时，“代理运行状况”磁贴将添加到仪表板。 此磁贴显示过去 24 小时内的总代理数以及不响应的代理数。<br><br> ![仪表板上的“代理运行状况解决方案”磁贴](./media/solution-agenthealth/agenthealth-solution-tile-homepage.png)
@@ -62,7 +62,7 @@ ms.locfileid: "59426216"
 | 按 OS 类型进行的分布 | 对环境中存在的 Windows 代理和 Linux 代理进行数目上的细分。|
 | 按代理版本进行的分布 | 对安装在环境中的不同代理版本进行细分，并对每个版本计数。|
 | 按代理类别进行的分布 | 对发送检测信号事件的不同类别的代理进行细分：直接代理、OpsMgr 代理或 OpsMgr 管理服务器。|
-| 按管理组进行的分布 | 在您的环境中不同的 Operations Manager 管理组中的一个分区。|
+| 按管理组进行的分布 | 对环境中的不同 Operations Manager 管理组进行细分。|
 | 代理的地理位置 | 对代理所在的不同国家/地区进行细分，并对安装在每个国家/地区的代理进行总计。|
 | 已安装网关的计数 | 已安装 Log Analytics 网关的服务器数，以及这些服务器的列表。|
 
@@ -92,7 +92,7 @@ ms.locfileid: "59426216"
 | `RemoteIPLongitude` | 计算机的地理位置的经度。|
 | `RemoteIPLatitude` | 计算机的地理位置的纬度。|
 
-向 Operations Manager 管理服务器报告每个代理会发送两个检测信号，而 SCAgentChannel 属性的值则会包括**直接**并**SCManagementServer**具体取决于什么数据源和已启用在订阅中的监视解决方案。 如果您还记得，解决方案的数据或者会直接从 Operations Manager 管理服务器到 Azure Monitor，或者出于在代理上收集的数据量直接从代理发送到 Azure Monitor。 对于值为 SCManagementServer 的检测信号事件，ComputerIP 值为管理服务器的 IP 地址，因为数据实际上是通过其上传的。  对于 SCAgentChannel 设置为 Direct 的检测信号，该值为代理的公共 IP 地址。  
+每个向 Operations Manager 管理服务器报告的代理都会发送两个检测信号，而 SCAgentChannel 属性的值则会包括 Direct 和 SCManagementServer，具体取决于在订阅中启用了什么数据源和监视解决方案。 前面提到，解决方案的数据直接从 Operations Manager 管理服务器发送到 Azure Monitor，或者根据在代理上收集的数据量，直接从代理发送到 Azure Monitor。 对于值为 SCManagementServer 的检测信号事件，ComputerIP 值为管理服务器的 IP 地址，因为数据实际上是通过其上传的。  对于 SCAgentChannel 设置为 Direct 的检测信号，该值为代理的公共 IP 地址。  
 
 ## <a name="sample-log-searches"></a>示例日志搜索
 下表提供了此解决方案收集的记录的示例日志搜索。
@@ -117,4 +117,4 @@ ms.locfileid: "59426216"
 
 ## <a name="next-steps"></a>后续步骤
 
-* 了解如何[Azure Monitor 中的警报](../platform/alerts-overview.md)有关从日志查询中生成警报的详细信息。 
+* 有关从日志查询生成警报的详细信息，请参阅 [Azure Monitor 中的警报](../platform/alerts-overview.md)。 

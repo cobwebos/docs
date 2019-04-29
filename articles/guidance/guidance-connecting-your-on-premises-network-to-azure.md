@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 08/25/2016
 ms.author: cherylmc
 ms.openlocfilehash: 9361c0b2ee84d7459bd432f5a8ce13fc5fd85ef8
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58115030"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60583470"
 ---
 # <a name="connecting-your-on-premises-network-to-azure"></a>你的本地网络连接到 Azure
 Microsoft 提供了几种类型的云服务。 虽然可以通过公共 Internet 连接到所有服务，你还可以连接到的某些服务使用虚拟专用网络 (VPN) 隧道通过 Internet 或通过直接的专用连接到 Microsoft。 本文可帮助您确定哪种连接选项最符合您的需要基于你使用的 Microsoft 云服务的类型。 大多数组织使用多个连接类型，如下所述。

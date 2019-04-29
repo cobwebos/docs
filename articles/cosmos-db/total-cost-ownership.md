@@ -8,11 +8,11 @@ ms.date: 11/20/2018
 ms.author: rimman
 ms.reviewer: sngun
 ms.openlocfilehash: c3a3305197802906077dab330a6b51c1195c6c36
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58879465"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729099"
 ---
 # <a name="total-cost-of-ownershiptco-with-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 (TCO)
 
@@ -20,7 +20,7 @@ Azure Cosmos DB 中设计了精细的多租户和资源调控。 这种设计可
 
 Apache Cassandra、MongoDB、HBase、引擎等 OSS NoSQL 数据库解决方案是为本地设计的。 作为托管服务提供时，它们相当于一个资源管理器模板，其中包含用于管理预配群集和监视支持的租户数据库。 OSS NoSQL 体系结构需要很大的运营开销，了解其专业知识可能比较困难且费用不菲。 另一方面，Azure Cosmos DB 是完全托管式的云服务，可让开发人员专注于业务创新，而不是管理和维护数据库基础结构。 
 
-与云原生的数据库服务 Azure Cosmos DB 不同，设计和构建的 OSS NoSQL 数据库引擎不会根据基本的体系结构原则包含资源调控或精细的多租户功能。 Cassandra 和 MongoDB 等 OSS NoSQL 数据库引擎做出这种基本假设：运行这些引擎的虚拟机的所有资源可供这些引擎使用。 如果资源量降到特定的阈值以下，则其中的许多数据库引擎将无法正常运行。 例如，小型 VM 实例可用的资源根据供应商建议的配置而定，这意味着，大型 VM 的成本往往更高。 因此，不能承载 OSS NoSQL 或任何其他本地数据库引擎，并使其可通过使用基于使用量的收费模型与每个第二个或已使用的存储请求一样。
+与云原生的数据库服务 Azure Cosmos DB 不同，设计和构建的 OSS NoSQL 数据库引擎不会根据基本的体系结构原则包含资源调控或精细的多租户功能。 Cassandra 和 MongoDB 等 OSS NoSQL 数据库引擎做出这种基本假设：运行这些引擎的虚拟机的所有资源可供这些引擎使用。 如果资源量降到特定的阈值以下，则其中的许多数据库引擎将无法正常运行。 例如，小型 VM 实例可用的资源根据供应商建议的配置而定，这意味着，大型 VM 的成本往往更高。 因此，无法托管 OSS NoSQL 或其他任何本地数据库引擎，并使用基于消耗量的计费模型（例如每秒请求数，或消耗的存储）来提供资源。
 
 ## <a name="total-cost-of-ownership-of-azure-cosmos-db"></a>Azure Cosmos DB 的总拥有成本 
 
@@ -38,7 +38,7 @@ Azure Cosmos DB 的无服务器预配模型消除了过度预配数据库基础�
 
 * **针对云进行优化：** Azure Cosmos DB 是从无到有设计出来的，提供精细的多租户控制和性能隔离。 这样，便可以跨群集与数据中心以最佳方式放置、执行和均衡数千个租户及其工作负荷。 相比之下，最新一代的 OSS NoSQL 数据库使用假设运行单个租户工作负荷的虚拟机在本地工作。 同样，这些数据库也不是设计为在最大程度上利用云提供商的基础结构和硬件。 例如，OSS NoSQL 数据库引擎不知道如何区分虚拟机关闭与例行映像升级，或者已三向复制高级磁盘这一事实。 它不能利用这些优势，因此无法向客户传达这些优势和成本节省。
 
-* **按小时付费：** 需要在任意时间点缩放的大型工作负荷只需按小时付费。 应用程序中的工作负荷通常会在一年中的不同时间因查询的数据有所变化。 使用 Azure Cosmos DB 可按需进行扩展或缩减，只有所需的资源才产生费用。 与在本地或 IaaS 托管系统，您不能匹配此模型中，因为没有方法来解除硬件授权每隔一小时。 在这种情况下，使用 Azure Cosmos DB 可能会将成本平均节省 10 到 14 倍。
+* **按小时付费：** 需要在任意时间点缩放的大型工作负荷只需按小时付费。 应用程序中的工作负荷通常会在一年中的不同时间因查询的数据有所变化。 使用 Azure Cosmos DB 可按需进行扩展或缩减，只有所需的资源才产生费用。 不能搭配本地或 IaaS 托管的系统使用此模型，因为没有任何方法可以每隔一小时解除硬件。 在这种情况下，使用 Azure Cosmos DB 可能会将成本平均节省 10 到 14 倍。
 
 * **获得大量免费功能：** 在 Azure Cosmos DB 中，写入工作负荷的成本要比替代型数据库服务便宜得多。 此外，Azure Cosmos DB 免费提供[自动索引](indexing-policies.md)、[生存时间 (TTL)](time-to-live.md)、[更改源](change-feed.md)等功能，而其他数据库服务通常对此收费。
 

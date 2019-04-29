@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 04/10/2019
 ms.author: damaerte
 ms.openlocfilehash: 46c9350dd2a33d0d25fe193b2ae50c954f2d1f95
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59500611"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60614319"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell 的功能和工具
 
@@ -70,7 +70,7 @@ Cloud Shell 预先配置了开放源代码工具（如 Terraform、Ansible 和 C
 
 ## <a name="language-support"></a>语言支持
 
-|语言   |版本   |
+|语言   |Version   |
 |---|---|
 |.NET Core  |2.0.0       |
 |Go         |1.9        |

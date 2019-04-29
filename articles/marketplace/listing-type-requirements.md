@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 12/19/2018
 ms.author: ellacroi
 ms.openlocfilehash: ebe344d9f596f862fe5ffbfef083725e6527d0d3
-ms.sourcegitcommit: 22ad896b84d2eef878f95963f6dc0910ee098913
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58650200"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60599315"
 ---
 # <a name="requirements-by-listing-type"></a>按商品信息类型列出的要求  
 技术和营销内容要求因店面、产品/服务类型和商品信息类型而异。 请查看以下规范，以确认是否合规。  
@@ -102,7 +102,7 @@ ms.locfileid: "58650200"
 
 | 要求 | 详细信息 |  
 |:--- |:--- |  
-| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建体验版，请向 [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) 发送电子邮件。</li> </ul>注意：Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
+| 免费试用期和试用体验 | 客户可以在有限时间内免费使用你的应用。<br /><br />客户不需要支付产品/服务或应用的任何许可证或订阅费用。 客户不需要支付基础 Microsoft 第一方产品或服务的费用。 所有试用选项部署到 Azure 订阅。 你可以独自控制成本优化和管理功能的试用版。<br /><br />可以选择免费试用、互动演示或体验版。 不管选择哪种，都必须向客户提供规定时间的免费应用试用。<ul> <li>若要开始创建体验版，请向 [amp-testdrive@microsoft.com](mailto:amp-testdrive@microsoft.com) 发送电子邮件。</li> </ul>请注意:Azure 市场 SaaS 试用体验必须允许用户使用工作凭据登录。<ul> <li>有关详细信息，请访问 [docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-appsource-certified#appsource-trial-experiences) 上的 AppSource 试用体验部分。</li> </ul> |  
 | 可轻松配置、随时可用的解决方案 | 应用的配置和设置须便捷。 |  
 | 可用性/运行时间 | SaaS 应用或平台的运行时间须不低于 99.9%。 |  
 | Azure Active Directory | 在已启用许可的情况下，产品/服务须允许使用 Azure Active Directory (Azure AD) 联合单一登录 (SSO)（Azure AD 联合 SSO）。 |  

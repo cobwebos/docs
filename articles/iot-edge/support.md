@@ -10,11 +10,11 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: seodec18
 ms.openlocfilehash: 5bc133e81f9917aafb406a6bfb27922cdba48ef5
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189999"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60612221"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge 支持的系统
 
@@ -36,12 +36,12 @@ Azure IoT Edge 需要使用容器引擎启动模块，因为模块是以容器�
 </center>
 
 ## <a name="operating-systems"></a>操作系统
-Azure IoT Edge 可运行容器; 的大多数操作系统上运行但是，所有这些系统不同样支持。 操作系统分组为各个层级，这些层级表示用户可以预期的支持级别。
-* 可以将第 1 层系统视为受官方支持。 对于第 1 层系统，Microsoft:
+Azure IoT Edge 在可以运行容器的大多数操作系统上运行，但并非同等程度地支持所有这些系统。 操作系统分组为各个层级，这些层级表示用户可以预期的支持级别。
+* 可以将第 1 层系统视为受官方支持。 对于第 1 层系统，Microsoft 会采取以下措施：
     * 将此操作系统包括在自动化测试中
     * 为它们提供安装程序包
 * 第 2 层系统可视为与 Azure IoT Edge 兼容并且可以相对容易地使用。 对于第 2 层系统：
-    * Microsoft 已完成在平台上的临时测试或知道已成功在平台上运行 Azure IoT Edge 的合作伙伴
+    * Microsoft 已在这些平台上进行了特别的测试，或者知道合作伙伴已成功在平台上运行 Azure IoT Edge
     * 适用于其他平台的安装程序包在这些平台上可能会正常工作
     
 主机 OS 系列必须始终与模块容器内部使用的来宾 OS 系列相匹配。 换言之，在 Linux 上只能使用 Linux 容器，在 Windows 上只能使用 Windows 容器。 使用 Windows，支持隔离的容器，唯一进程时不 HYPER-V 隔离容器。  
@@ -65,11 +65,11 @@ Azure IoT Edge 可运行容器; 的大多数操作系统上运行但是，所有
 
 | 操作系统 | AMD64 | ARM32v7 |
 | ---------------- | ----- | ----- |
-| Windows 10 IoT Core，生成 17763 | 是 | 否 |
-| Windows 10 IoT 企业版，生成 17763 | 是 | 否 |
+| Windows 10 IoT 核心版 17763 | 是 | 否 |
+| Windows 10 IoT 企业版 17763 | 是 | 否 |
 | Windows Server 2019 | 是 | 否 |
 
-上面列出的 Windows 操作系统是适用于在 Windows 运行 Windows 容器的设备的要求。 此配置是用于生产的唯一受支持的配置。 Windows 的 Azure IoT Edge 安装程序包允许使用 Windows; 上的 Linux 容器但是，此配置是仅用于开发和测试。 在生产环境中的 Windows 上使用 Linux 容器是不受支持的配置。 任何版本的 Windows 10 内部版本 14393 或更高版本，以及 Windows Server 2016 或更高版本都可用于此开发方案。
+在 Windows 上运行 Windows 容器的设备必须使用上面列出的 Windows 操作系统。 生产环境中仅支持此配置。 适用于 Windows 的 Azure IoT Edge 安装包允许在 Windows 上使用 Linux 容器；但是，只能将此配置用于开发和测试。 在生产环境中的 Windows 上使用 Linux 容器是不受支持的配置。 任何版本的 Windows 10 内部版本 14393 或更高版本，以及 Windows Server 2016 或更高版本都可用于此开发方案。
 
 ### <a name="tier-2"></a>第 2 层
 
@@ -86,7 +86,7 @@ Azure IoT Edge 可运行容器; 的大多数操作系统上运行但是，所有
 
 
 ## <a name="virtual-machines"></a>虚拟机
-Azure IoT Edge 可在虚拟机中运行。 使用虚拟机作为 IoT Edge 设备时很常见的客户想要利用边缘智能增强现有的基础结构。 主机 VM OS 系列必须与模块容器内部使用的来宾 OS 系列相匹配。 此要求是相同 Azure IoT Edge 运行时直接在设备上。 Azure IoT Edge不区分底层虚拟化技术，将在以 Hyper-V 和 vSphere 等平台为后盾的 VM 中工作。
+Azure IoT Edge 可在虚拟机中运行。 当客户想要利用边缘智能增强现有的基础结构时，经常会使用虚拟机作为 IoT Edge 设备。 主机 VM OS 系列必须与模块容器内部使用的来宾 OS 系列相匹配。 直接在设备上运行 Azure IoT Edge 时，同样要满足此要求。 Azure IoT Edge不区分底层虚拟化技术，将在以 Hyper-V 和 vSphere 等平台为后盾的 VM 中工作。
 
 <br>
 <center>
@@ -95,14 +95,14 @@ Azure IoT Edge 可在虚拟机中运行。 使用虚拟机作为 IoT Edge 设备
 </center>
 
 ## <a name="minimum-system-requirements"></a>最低系统要求
-在 Raspberry Pi3 等小型设备以及服务器级硬件上，Azure IoT Edge 都能非常顺利地运行。 选择合适的硬件，为你的方案取决于你想要运行的工作负荷。 在设备方面做出最终决策可能比较复杂；但是，可以在传统的便携式计算机或台式机上轻松开始设计解决方案的原型。
+在 Raspberry Pi3 等小型设备以及服务器级硬件上，Azure IoT Edge 都能非常顺利地运行。 哪种硬件适合方案取决于想要运行的工作负荷。 在设备方面做出最终决策可能比较复杂；但是，可以在传统的便携式计算机或台式机上轻松开始设计解决方案的原型。
 
 在设计原型期间获得的经验可以帮助你在设备方面做出最终的选择。 应考虑的问题包括： 
 
-* 你的工作负荷中有多少个模块？
+* 工作负荷中有多少模块？
 * 模块的容器共享多少层？
-* 哪种语言编写所用模块？ 
-* 数据量对模块进行处理？
-* 你的模块是否需要为加速其工作负荷的任何专用的硬件？
-* 你的所需的性能特征是解决方案的什么？
-* 什么是你的硬件预算？
+* 模块以什么语言编写？ 
+* 模块将处理多少数据？
+* 模块是否需要使用任何专用硬件来加速其工作负荷？
+* 所需的解决方案性能特点有哪些？
+* 硬件预算是多少？

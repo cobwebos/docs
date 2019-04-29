@@ -10,11 +10,11 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 05/20/2018
 ms.openlocfilehash: 5a2935d559a967151c5bdc01c4b0806fe52179b4
-ms.sourcegitcommit: da3459aca32dcdbf6a63ae9186d2ad2ca2295893
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/07/2018
-ms.locfileid: "51260034"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60629688"
 ---
 # <a name="troubleshoot-an-abnormal-recurring-job"></a>对异常的定期作业进行疑难解答
 
@@ -27,7 +27,7 @@ ms.locfileid: "51260034"
 
 针对 Visual Studio 的 Azure Data Lake 工具中的“相关作业视图”可帮助加快这两个案例的故障排除进度。
 
-## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>步骤 1：查找定期作业，并打开相关作业视图
+## <a name="step-1-find-recurring-jobs-and-open-related-job-view"></a>步骤 1：查找定期作业并打开相关作业视图
 
 要使用相关作业视图对定期作业问题进行故障排除，需先在 Visual Studio 中找到定期作业，然后打开相关作业视图。
 
@@ -37,7 +37,7 @@ ms.locfileid: "51260034"
 
 ![Data Lake Analytics 工具中的“查看相关作业”链接](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/view-related-job.png)
  
-### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>案例 2：拥有定期作业的管道，但没有 URL
+### <a name="case-2-you-have-the-pipeline-for-the-recurring-job-but-not-the-url"></a>案例 2：必须为定期作业，但不是 URL 的管道
 
 在 Visual Studio 中，可以通过“服务器资源管理器”> 你的 Azure Data Lake Analytics 帐户 >“管道”打开管道浏览器。 （如果在服务器资源管理器中没有发现此节点，请[下载最新插件](https://aka.ms/adltoolsvs)。） 
 
@@ -56,7 +56,7 @@ ms.locfileid: "51260034"
 
 ![用于检查统计信息的流程图](./media/data-lake-analytics-data-lake-tools-debug-recurring-job/recurring-job-metrics-debugging-flow.png)
 
-## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>步骤 3：将异常作业与正常作业进行比较
+## <a name="step-3-compare-the-abnormal-job-to-a-normal-job"></a>步骤 3：异常作业和正常作业进行比较
 
 通过相关作业视图底部的作业列表，可以找到所有已提交的定期作业。 若要找到更多见解和潜在的解决方案，请右键单击异常作业。 使用“作业差异”视图将异常作业与前面的正常作业进行比较。
 

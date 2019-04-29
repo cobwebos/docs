@@ -14,11 +14,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: spelluru
 ms.openlocfilehash: b6bba4ed45530ba66a1adde274022a80091cd199
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57539151"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60747904"
 ---
 # <a name="process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>使用 Stream analytics 处理用于事件中心的 Apache Kafka 事件 
 本文介绍如何将数据流式传输到启用了 Kafka 的事件中心，并使用 Azure 流分析对其进行处理。 其中包括以下步骤： 
@@ -55,7 +55,7 @@ ms.locfileid: "57539151"
     4. 选择想在其中创建事件中心命名空间的订阅。 
     5. 创建新的资源组，或选择现有资源组。 
     6. 选择一个位置。 
-    7. 单击“创建”。
+    7. 单击**创建**。
     
         ![创建命名空间](./media/event-hubs-kafka-stream-analytics/create-event-hub-namespace-page.png) 
 4. 在“通知消息”中，选择“资源组名称”。 

@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: lagayhar
 ms.openlocfilehash: bbf9c162cd52dc94ee820c8597f36f7cbfeace5a
-ms.sourcegitcommit: 956749f17569a55bcafba95aef9abcbb345eb929
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58630761"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691232"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web 项目中的 Application Insights 入门
 
@@ -472,7 +472,7 @@ SpringBoot application.properties 和 applicationinsights.xml 配置的默认值
 安装 SDK 后，可以使用 API 发送自己的遥测数据。
 
 * [跟踪自定义事件和指标][api]，了解用户正在对应用程序执行的操作。
-* [搜索事件和日志][diagnostic]帮助诊断问题。
+* [搜索事件和日志][diagnostic]以帮助诊断问题。
 
 ## <a name="availability-web-tests"></a>可用性 Web 测试
 Application Insights 可以定期测试网站，检查网站是否正常运行且做出响应。

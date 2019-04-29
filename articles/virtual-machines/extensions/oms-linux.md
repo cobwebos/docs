@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2019
 ms.author: roiyz
 ms.openlocfilehash: 538eb492829c8ad171d1d27b51405725f53f352a
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57853216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60743561"
 ---
 # <a name="azure-monitor-virtual-machine-extension-for-linux"></a>适用于 Linux 的 azure 监视虚拟机扩展
 
@@ -39,7 +39,7 @@ Azure Monitor 日志提供跨云和本地资产的监视、 警报和警报修�
 
 Log Analytics 代理扩展可以针对这些 Linux 发行版运行。
 
-| 分发 | 版本 |
+| 分发 | Version |
 |---|---|
 | CentOS Linux | 6 (x86/x64) 和 7 (x64) |
 | Amazon Linux | 2017.09 (x64) | 

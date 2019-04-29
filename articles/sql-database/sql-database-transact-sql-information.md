@@ -13,11 +13,11 @@ ms.reviewer: ''
 manager: craigg
 ms.date: 12/03/2018
 ms.openlocfilehash: 4d3f27d48819a4bd997cbb62177f5aae4afc85eb
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57993153"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615394"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>解析迁移到 SQL 数据库的过程中的 Transact-SQL 差异
 
@@ -56,7 +56,7 @@ Microsoft SQL Server 和 Azure SQL 数据库都完全支持应用程序使用的
 - 高可用性：与通过 Microsoft Azure 帐户管理的高可用性相关的语法。 这包括备份、还原、Always On、数据库镜像、日志传送、恢复模式的语法。
 - 日志读取器：依赖于在 SQL 数据库上不可用的日志读取器的语法：推送复制、更改数据捕获。 SQL 数据库可以是推送复制项目的订阅服务器。
 - 函数：`fn_get_sql`、`fn_virtualfilestats`、`fn_virtualservernodes`
-- 硬件：与硬件相关的服务器设置（例如，内存、工作线程、CPU 相关性、跟踪标志）有关的语法。 请改用服务层和计算大小。
+- 硬件：与硬件相关的服务器设置（例如，内存、工作线程、CPU 相关性、跟踪标志）有关的语法。 请改用服务层级和计算大小。
 - `KILL STATS JOB`
 - `OPENQUERY`、`OPENROWSET`、`OPENDATASOURCE` 和由四部分构成的名称
 - .NET Framework：CLR 与 SQL Server 集成

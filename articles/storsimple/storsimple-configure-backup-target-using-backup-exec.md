@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: e11d541f0450c0de4ba6d60f889fc7471b1fa1aa
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58011147"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60724192"
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>用作备份目标的 StorSimple 与 Backup Exec 的集成
 
@@ -370,10 +370,10 @@ StorSimple 提供以下优势：
 
 | 备份类型和保留期 | 配置的存储 | 大小 (TiB) | GFS 乘数 | 总容量\* (TiB) |
 |---|---|---|---|---|
-| 第 1 周（完整和增量） |本地磁盘（短期）| 第 | 1 | 第 |
+| 第 1 周（完整和增量） |本地磁盘（短期）| 1 | 1 | 1 |
 | StorSimple（第 2-4 周） |StorSimple 磁盘（长期） | 第 | 4 | 4 |
 | 每月完整备份 |StorSimple 磁盘（长期） | 第 | 12 | 12 |
-| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 第 |
+| 每年完整备份 |StorSimple 磁盘（长期） | 第 | 1 | 1 |
 |GFS 卷大小要求 |  |  |  | 18*|
 
 \* 总容量包括 17 TiB 的 StorSimple 磁盘和 1 TiB 的本地 RAID 卷。

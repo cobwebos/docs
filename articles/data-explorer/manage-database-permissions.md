@@ -1,5 +1,5 @@
 ---
-title: 管理 Azure 数据资源管理器中的数据库权限
+title: 在 Azure 数据资源管理器中管理数据库权限
 description: 本文介绍了 Azure 数据资源管理器中数据库和表基于角色的访问控制。
 author: orspod
 ms.author: orspodek
@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 36e1bb77be1e825e42f0e5d25457214a8b5f882d
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59045657"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60758731"
 ---
 # <a name="manage-azure-data-explorer-database-permissions"></a>管理 Azure 数据资源管理器数据库权限
 

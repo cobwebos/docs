@@ -12,11 +12,11 @@ ms.date: 03/15/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: e2f0f1e7ac8f510c4ff5be7933c55278fef74694
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "57885430"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60715449"
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace"></a>在航天工业中用于预见性维护的 Cortana Intelligence 解决方案模板技术指南
 
@@ -162,7 +162,7 @@ Azure 事件中心支持丰富的格式，可以使用 CSV 或 JSON 格式将数
 ### <a name="set-up-the-cold-path-dashboard"></a>设置冷路径仪表板
 在冷路径数据管道中，目标是完成航班后获取每个飞机引擎的预测 RUL（剩余使用寿命）（周期）。 预测结果每 3 小时更新一次，预测过去 3 小时内已结束航班的的飞机引擎。
 
-Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。 注意：1) 部署解决方案后，预测会在 3 小时内在数据库中显示。
+Power BI 将连接到充当其数据源、用于存储预测结果的 Azure SQL 数据库。 请注意:1) 部署解决方案后，预测会在 3 小时内在数据库中显示。
 生成器下载附带的 pbix 文件包含某些种子数据，因此需要立即创建 Power BI 仪表板。 2) 此步骤的先决条件是下载并安装免费软件 [Power BI desktop](https://powerbi.microsoft.com/documentation/powerbi-desktop-get-the-desktop/)。
 
 以下步骤介绍如何将 pbix 文件连接到解决方案部署包含可视化数据时启动的 SQL 数据库（例如预测结果）。

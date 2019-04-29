@@ -13,13 +13,13 @@ ms.topic: conceptual
 ms.date: 06/03/2018
 ms.author: mbullwin
 ms.openlocfilehash: ae0d3658d9ae8534b1596fa7363495926cd0dfe7
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58520745"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60693654"
 ---
-# <a name="application-insights-for-aspnet-core"></a>适用于 ASP.NET Core 的 Application Insights
+# <a name="application-insights-for-aspnet-core"></a>用于 ASP.NET Core 的 Application Insights
 
 Azure Application Insights 提供 Web 应用程序的监视信息，深度可达代码级别。 使用它可以轻松监视 Web 应用程序的可用性、性能和使用情况。 还可以快速确定并诊断应用程序中的错误，而无需等待用户报告这些错误。
 
@@ -217,7 +217,7 @@ Application Insights 支持通过 ILogger 发送的捕获日志。 若要设置�
 
 ## <a name="collect-failed-requests-live-stream-and-page-view-load-time"></a>收集“失败的请求数”、“实时流”和“页面视图加载时间”
 
-### <a name="failed-requests"></a>失败的请求
+### <a name="failed-requests"></a>失败的请求数
 
 从技术上讲，系统已开始收集“失败的请求数”，但目前并未发生失败的请求。 要加速此过程，可将一个自定义异常添加到现有项目，以模拟真实的异常。 如果在继续加速之前应用仍在 Visual Studio 中运行，请选择“停止调试”(Shift+F5)。
 

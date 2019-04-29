@@ -8,14 +8,15 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 12/07/2017
-ms.author: azfuncdf
+origin.date: 12/07/2017
+ms.date: 02/21/2019
+ms.author: v-junlch
 ms.openlocfilehash: 596eedab39ff926fcdc880c82c49ac464b7ff23b
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55753457"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60730255"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions 中的任务中心 (Azure Functions)
 
@@ -29,11 +30,11 @@ ms.locfileid: "55753457"
 
 任务中心包含以下存储资源：
 
-* 一个或多个控制队列。
-* 一个工作项队列。
-* 一个历史记录表。
-* 一个实例表。
-* 一个包含一个或多个租用 blob 的存储容器。
+- 一个或多个控制队列。
+- 一个工作项队列。
+- 一个历史记录表。
+- 一个实例表。
+- 一个包含一个或多个租用 blob 的存储容器。
 
 当业务流程协调程序或活动函数运行时或调度它们运行时，将自动在默认 Azure 存储帐户中创建所有这些资源。 [性能和缩放](durable-functions-perf-and-scale.md)一文介绍了如何使用这些资源。
 
@@ -140,3 +141,5 @@ public static async Task<HttpResponseMessage> Run(
 
 > [!div class="nextstepaction"]
 > [了解如何处理版本控制](durable-functions-versioning.md)
+
+<!-- Update_Description: wording update -->

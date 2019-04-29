@@ -11,11 +11,11 @@ manager: jeconnoc
 ms.date: 01/05/2019
 ms.topic: article
 ms.openlocfilehash: 339d4270dc1803879607663e9e2db4a86591ec76
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522995"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60683818"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>在 Azure 逻辑应用中添加循环以重复执行操作或处理数组
 
@@ -154,7 +154,7 @@ ms.locfileid: "59522995"
 
 ## <a name="until-loop"></a>Until 循环
   
-若要运行并重复执行操作，直到获取满足某个条件或状态更改，请将这些操作置于 Until 循环。 首先，在逻辑应用运行在循环中，所有操作，，然后检查的条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。
+若要运行并重复操作直到满足条件或状态发生变化，请将这些操作放在“Until”循环中。 你的逻辑应用将首先运行循环内的所有操作，然后检查条件或状态。 如果满足该条件，则循环将停止。 否则，循环将继续进行。
 
 下面是可以在其中使用“Until”循环的一些常见场景：
 

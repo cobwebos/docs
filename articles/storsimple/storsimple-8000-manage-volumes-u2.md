@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 12/08/2017
 ms.author: alkohli
 ms.openlocfilehash: f7bfe41b4cdc9989c6b949011bc240275886b6f0
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58093324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60634677"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-manage-volumes-update-3-or-later"></a>使用 StorSimple 设备管理器服务管理卷（Update 3 或更高版本）
 
@@ -120,7 +120,7 @@ StorSimple 卷可以是：
       
        如果在 8100 设备预配 8.5 TB（允许的最大大小）的本地固定卷，则已用尽设备上的所有可用本地空间。 由于设备上没有本地空间可用于托管分层卷的工作集，因此从这一刻起无法再创建任何分层卷。 现有分层卷也会影响可用的空间。 例如，如果 8100 设备上的分层卷已占用大约 106 TB 的空间，那么本地固定卷只有 4 TB 的空间可用。
 
-    6. 在“连接的主机”字段中，单击箭头。 在“连接的主机”边栏选项卡中，选择现有的 ACR 或添加新的 ACR。 如果选择新 ACR，请提供 ACR 的**名称**，提供 Windows 主机的 **iSCSI 限定名称** (IQN)。 如果没有 IQN，请转到获取 Windows Server 主机的 IQN。 单击“创建”。 使用指定的设置创建卷。
+    6. 在“连接的主机”字段中，单击箭头。 在“连接的主机”边栏选项卡中，选择现有的 ACR 或添加新的 ACR。 如果选择新 ACR，请提供 ACR 的**名称**，提供 Windows 主机的 **iSCSI 限定名称** (IQN)。 如果没有 IQN，请转到获取 Windows Server 主机的 IQN。 单击**创建**。 使用指定的设置创建卷。
 
         ![单击“法律条款” ](./media/storsimple-8000-manage-volumes-u2/step5createvol3.png)
 

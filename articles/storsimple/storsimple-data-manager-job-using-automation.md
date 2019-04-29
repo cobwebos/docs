@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: b837aab871827c468295a365727a282f6c8a1a4b
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58086014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60633470"
 ---
 # <a name="use-azure-automation-to-trigger-a-job"></a>使用 Azure 自动化来触发作业
 
@@ -58,7 +58,7 @@ ms.locfileid: "58086014"
    3. 创建新的资源组，或选择现有的资源组。
    4. 选择“位置” 。
    5. 保留选择默认的“创建运行方式帐户”选项。
-   6. 若要在仪表板上获取快速访问的链接，请选中“固定到仪表板”。 单击“创建”。
+   6. 若要在仪表板上获取快速访问的链接，请选中“固定到仪表板”。 单击**创建**。
 
       ![创建自动化运行方式帐户](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
@@ -94,7 +94,7 @@ ms.locfileid: "58086014"
 
 2. 在“添加 Runbook”中，单击“导入现有的 Runbook”。
 
-3. 指向 Runbook 文件的 Azure PowerShell 脚本文件 `Trigger-DataTransformation-Job.ps1`。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击“创建”。
+3. 指向 Runbook 文件的 Azure PowerShell 脚本文件 `Trigger-DataTransformation-Job.ps1`。 系统会自动选择 Runbook 类型。 提供 Runbook 的名称，并选择性地提供说明。 单击**创建**。
 
     ![添加 Runbook 2](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

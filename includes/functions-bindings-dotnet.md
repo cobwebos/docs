@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 05/23/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: a7ed3be6f3161b2152f88956b3eafe92232043aa
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d75dbf8f2f3de6101358274ef41f1b229950633d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "58115994"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713520"
 ---
 下表列出了 Azure Functions 类库项目中使用的触发器和绑定属性。 所有属性均位于命名空间 `Microsoft.Azure.WebJobs` 中。
 

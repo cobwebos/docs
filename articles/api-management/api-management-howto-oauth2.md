@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 08/10/2018
 ms.author: apimpm
 ms.openlocfilehash: b195271edeea6cd5ea527454ad1615ac85a32138
-ms.sourcegitcommit: 947b331c4d03f79adcb45f74d275ac160c4a2e83
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55746721"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60658545"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>如何在 Azure API 管理中使用 OAuth 2.0 为开发人员帐户授权
 
@@ -81,7 +81,7 @@ ms.locfileid: "55746721"
 
 ## <a name="step2"> </a>将 API 配置为使用 OAuth 2.0 用户授权
 
-1. 单击左侧“API 管理”菜单中的“API”。
+1. 在左侧的“API 管理”菜单中单击“API”。
 
     ![OAuth 2.0 API](./media/api-management-howto-oauth2/oauth-05.png)
 
@@ -104,7 +104,7 @@ ms.locfileid: "55746721"
 ![Echo API][api-management-apis-echo-api]
 
 > [!NOTE]
-> 如果必须只有一个 API 得到配置或对你的帐户可见，并单击 API 使你直接进入该 API 的操作。
+> 如果只配置了一个 API 或者只有一个 API 对你的帐户可见，则单击 API 会直接进入该 API 的操作。
 
 选择“GET 资源”操作，单击“打开控制台”，并从下拉列表中选择“授权代码”。
 

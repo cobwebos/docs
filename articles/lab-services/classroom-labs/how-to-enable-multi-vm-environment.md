@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: spelluru
 ms.openlocfilehash: 6faf32232c42f863bff52fdfb3c0714aee8e9b88
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58190513"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60702392"
 ---
 # <a name="create-an-environment-with-multiple-vms-inside-a-template-vm-of-a-classroom-lab"></a>使用模板的教室实验室 VM 内的多个 Vm 创建环境
 当前 Azure 实验室服务，可将一个模板在实验室中的虚拟机设置，使单个副本可用于每个用户。 但如果你是教授如何设置防火墙或服务器上的 IT 课程的教授，您可能需要为每个您的学生提供在其中多个虚拟机可以相互通信通过网络环境。

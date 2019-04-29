@@ -7,13 +7,13 @@ ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 12/18/2017
 ms.author: ancav
-ms.subservice: autoscale
+ms.component: autoscale
 ms.openlocfilehash: 02840b8a909f46c37130bdb7162674c694a0ff96
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54474823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787489"
 ---
 # <a name="understand-autoscale-settings"></a>了解自动缩放设置
 使用自动缩放设置有助于确保运行适当数量的资源来处理应用程序负载的波动。 可将自动缩放设置配置为基于指标（指示负载或性能）触发，或者在计划好的日期和时间触发。 本文将会深度剖析自动缩放设置。 本文首先介绍设置的架构和属性，然后逐步讲解可配置的不同配置文件类型。 最后讨论 Azure 中的自动缩放功能如何评估要在任意给定时间执行哪个配置文件。
@@ -89,13 +89,13 @@ ms.locfileid: "54474823"
 }
 ```
 
-| 部分 | 元素名称 | 说明 |
+| 部分 | 元素名称 | 描述 |
 | --- | --- | --- |
 | 设置 | ID | 自动缩放设置的资源 ID。 自动缩放设置属于 Azure 资源管理器资源。 |
 | 设置 | 名称 | 自动缩放设置的名称。 |
 | 设置 | 位置 | 自动缩放设置的位置。 此位置可与缩放的资源所在的位置不同。 |
-| 属性 | targetResourceUri | 缩放的资源的资源 ID。 针对每个资源，只能使用一项自动缩放设置。 |
-| 属性 | 配置文件 | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
+| properties | targetResourceUri | 缩放的资源的资源 ID。 针对每个资源，只能使用一项自动缩放设置。 |
+| properties | 配置文件 | 自动缩放设置由一个或多个配置文件组成。 自动缩放引擎每次运行时，将会执行一个配置文件。 |
 | 个人资料 | 名称 | 配置文件的名称。 可以选择有助于识别该配置文件的任何名称。 |
 | 个人资料 | Capacity.maximum | 允许的最大容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源扩展到超过此数字。 |
 | 个人资料 | Capacity.minimum | 允许的最小容量。 此值可以确保自动缩放在执行此配置文件时，不会将资源缩减到低于此数字。 |
@@ -110,7 +110,7 @@ ms.locfileid: "54474823"
 | metricTrigger | timeAggregation | 用于聚合已采样指标的聚合方法。 例如，如果 **TimeAggregation = "Average"**，则应取平均值来聚合采样的指标。 上例取 10 个 1 分钟样本并求其平均值。 |
 | 规则 | scaleAction | 触发规则的 metricTrigger 时要执行的操作。 |
 | scaleAction | direction | “Increase”表示扩展，“Decrease”表示缩减。|
-| scaleAction | 值 | 要将资源容量增大或减小多少。 |
+| scaleAction | value | 要将资源容量增大或减小多少。 |
 | scaleAction | cooldown | 在执行缩放操作之后、再次执行缩放操作之前所要等待的时间。 例如，如果 **cooldown = "PT10M"**，则自动缩放只会在 10 分钟之后才尝试再次执行缩放。 在添加或删除实例之后，cooldown（冷却）可让指标变稳定。 |
 
 ## <a name="autoscale-profiles"></a>自动缩放配置文件
@@ -310,4 +310,3 @@ ms.locfileid: "54474823"
 * [Azure 监视器自动缩放的最佳做法](../../azure-monitor/platform/autoscale-best-practices.md)
 * [使用自动缩放操作发送电子邮件和 webhook 警报通知](../../azure-monitor/platform/autoscale-webhook-email.md)
 * [自动缩放 REST API](https://msdn.microsoft.com/library/dn931953.aspx)
-

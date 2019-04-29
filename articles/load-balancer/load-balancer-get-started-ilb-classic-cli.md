@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: 991e6554df62591dea5c126f8ea82704373d6ffd
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53084917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60781233"
 ---
 # <a name="get-started-creating-an-internal-load-balancer-using-the-azure-classic-cli"></a>开始使用 Azure 经典 CLI 创建内部负载均衡器
 
@@ -73,7 +73,7 @@ ms.locfileid: "53084917"
 azure service internal-load-balancer add --serviceName mytestcloud --internalLBName ilbset --subnet-name subnet-1 --static-virtualnetwork-ipaddress 192.168.2.7
 ```
 
-有关详细信息，请查看 `azure service internal-load-balancer --help`。
+有关详细信息，请查看 `azure service internal-load-balancer --help` 。
 
 可以使用命令 `azure service internal-load-balancer list` 云服务名称查看内部负载均衡器属性。
 
@@ -165,13 +165,13 @@ azure vm endpoint create web1 54580 -k 3389
 
 可以通过删除关联的终结点从内部负载均衡器集中删除虚拟机。 删除终结点后，虚拟机不再属于该负载均衡器集。
 
-使用上面的示例，可以使用命令 `azure vm endpoint delete` 从内部负载均衡器“ilbset”中删除为虚拟机“DB1”创建的终结点。
+使用上面的示例，可以使用命令 `azure vm endpoint delete`从内部负载均衡器“ilbset”中删除为虚拟机“DB1”创建的终结点。
 
 ```azurecli
 azure vm endpoint delete DB1 tcp-1433-1433
 ```
 
-有关详细信息，请查看 `azure vm endpoint --help`。
+有关详细信息，请查看 `azure vm endpoint --help` 。
 
 ## <a name="next-steps"></a>后续步骤
 

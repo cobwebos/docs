@@ -11,11 +11,11 @@ ms.author: amlstudiodocs
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
 ms.openlocfilehash: 382d05869a56dc0920d60bca55d99be4b46e3f52
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57885413"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60811556"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>在 Azure AI 库中共享和发现资源
 
@@ -121,7 +121,7 @@ Azure AI 库包含 Microsoft 和数据科学社区成员贡献的多种不同资
 * 实验名称
 * 摘要或说明
 * 标记
-* 映像
+* Image
 * 可见性设置（“公开”或“未列出”）
 
 还可以从库中删除实验。

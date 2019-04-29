@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 03/18/2019
 ms.openlocfilehash: 54c34690e678f07d6309a1877b0ca5d0a0b274f5
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59606899"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60831227"
 ---
 # <a name="overview-of-websocket-support-in-application-gateway"></a>应用程序网关中的 WebSocket 支持概述
 
@@ -22,11 +22,11 @@ ms.locfileid: "59606899"
 
 可以在端口 80 或 443 上继续使用标准 HTTP 侦听器来接收 WebSocket 流量。 随后会使用应用程序网关规则中指定的相应后端池，将 WebSocket 流量定向到已启用 WebSocket 的后端服务器。 后端服务器必须响应应用程序网关探测，如[运行状况探测概述](application-gateway-probe-overview.md)部分中所述。 应用程序网关运行状况探测仅适用于 HTTP/HTTPS。 每个后端服务器都必须响应 HTTP 探测器，以便应用程序网关将 WebSocket 流量路由到服务器。
 
-它的应用程序受益于快速的实时通信，如聊天、 仪表板中，游戏应用中使用。
+它用在受益于快速实时通信的应用（例如聊天、仪表板和游戏应用）中。
 
-## <a name="how-does-websocket-work"></a>WebSocket 是如何工作的
+## <a name="how-does-websocket-work"></a>WebSocket 工作原理
 
-若要建立 WebSocket 连接，客户端和服务器之间交换的特定的基于 HTTP 的握手。 如果成功，应用程序层协议"升级"从 HTTP 到 Websocket，使用以前建立的 TCP 连接。 一旦发生这种情况，HTTP 是完全不相关的;可以发送或接收两个端点使用 WebSocket 协议，直到关闭 WebSocket 连接的数据。 
+若要建立 WebSocket 连接，需在客户端和服务器之间交换特定的基于 HTTP 的握手。 如果成功，则应用程序层协议会使用之前建立的 TCP 连接从 HTTP“升级”为 WebSocket。 然后就完全不使用 HTTP；两个终结点可以使用 WebSocket 协议来发送或接收数据，直至 WebSocket 连接关闭。 
 
 ![addcert](./media/application-gateway-websocket/websocket.png)
 

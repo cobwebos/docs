@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 8/6/2018
 ms.author: trinadhk
 ms.openlocfilehash: c1690fe6d0ce24bd319b042a3850bbfe487ffcfc
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60641222"
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>有关 Azure 备份代理的问题
 本文提供常见问题的解答，有助于快速了解 Azure 备份代理组件。 某些答案提供内含全面信息的文章的链接。 也可以在 [论坛](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)中发布有关 Azure 备份服务的问题。
@@ -53,7 +53,7 @@ ms.locfileid: "59426250"
 绝对是。 Azure 备份使用 VM 扩展为 Azure VM 提供 VM 级别备份。 若要保护来宾 OS 上的文件和文件夹，请在来宾 Windows OS 上安装 Azure 备份代理。
 
 ### <a name="can-i-install-the-azure-backup-agent-on-an-azure-vm-to-back-up-files-and-folders-present-on-temporary-storage-provided-by-the-azure-vm-br"></a>是否可以在 Azure VM 上安装 Azure 备份代理来备份 Azure VM 提供的临时存储中存在的文件和文件夹？ <br/>
-是的。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 擦除临时存储数据后，备份作业会失败。此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
+可以。 可以在来宾 Windows OS 上安装 Azure 备份代理，并将文件和文件夹备份到临时存储。 擦除临时存储数据后，备份作业会失败。此外，如果临时存储数据已被删除，则你只能还原到非易失性存储。
 
 ### <a name="whats-the-minimum-size-requirement-for-the-cache-folder-br"></a>针对缓存文件夹的最小大小要求是什么？ <br/>
 缓存文件夹的大小由你正在备份的数据量确定。 与备份数据的总大小相比时，缓存文件夹的卷应至少有 5-10% 可用空间。 如果卷的可用空间少于 5%，请增大卷大小，或[将缓存文件夹移到具有足够可用空间的卷](backup-azure-file-folder-backup-faq.md#backup)。
@@ -62,7 +62,7 @@ ms.locfileid: "59426250"
 备份数据会发送到它所注册到的保管库的数据中心。 更改数据中心的最简便方法是卸载代理，然后将代理安装并注册到属于所需数据中心的新保管库。
 
 ### <a name="does-the-azure-backup-agent-work-on-a-server-that-uses-windows-server-2012-deduplication-br"></a>Azure 备份代理是否适用于使用 Windows Server 2012 删除重复功能的服务器？ <br/>
-是的。 代理服务在准备备份操作时会消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，并将已加密的数据发送到联机备份服务。
+可以。 代理服务在准备备份操作时会消除了重复的数据转换为常规数据。 然后，它将对数据进行优化以便备份、对数据进行加密，并将已加密的数据发送到联机备份服务。
 
 ## <a name="prerequisites-and-dependencies"></a>先决条件和依赖项
 ### <a name="what-features-of-microsoft-azure-recovery-services-mars-agent-require-net-framework-452-and-higher"></a>Microsoft Azure 恢复服务 (MARS) 代理的哪些功能需要. NET Framework 4.5.2 及更高版本？

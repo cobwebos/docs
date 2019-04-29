@@ -17,11 +17,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: c8f2dba8ff30ceae4085d96640623a01b6784b1e
-ms.sourcegitcommit: fdd6a2927976f99137bb0fcd571975ff42b2cac0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56957515"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822347"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>设置 Azure 事件中心的诊断日志
 
@@ -48,7 +48,7 @@ ms.locfileid: "56957515"
 
     ![更改诊断日志的状态](./media/event-hubs-diagnostic-logs/image3.png)
 
-5.  设置所需; 的存档目标例如，存储帐户、 事件中心或 Azure Monitor 的日志。
+5.  设置所需的存档目标；例如存储帐户、事件中心或 Azure Monitor 日志。
 
 6.  保存新的诊断设置。
 
