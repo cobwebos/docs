@@ -258,9 +258,9 @@ JavaScript 代码如下所示：
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type || 必须设置为 `cosmosDBTrigger`。 |
-|direction || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
-|name || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
+|**type** || 必须设置为 `cosmosDBTrigger`。 |
+|**direction** || 必须设置为 `in`。 在 Azure 门户中创建触发器时，会自动设置该参数。 |
+|**name** || 函数代码中使用的变量名称，表示发生更改的文档列表。 |
 |**connectionStringSetting**|**ConnectionStringSetting** | 应用设置的名称，该应用设置包含用于连接到受监视的 Azure Cosmos DB 帐户的连接字符串。 |
 |**databaseName**|**DatabaseName**  | 带有受监视的集合的 Azure Cosmos DB 数据库的名称。 |
 |**collectionName** |**CollectionName** | 受监视的集合的名称。 |
@@ -1711,9 +1711,9 @@ public class DocsFromRouteSqlQuery {
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type     || 必须设置为 `cosmosDB`。        |
-|direction     || 必须设置为 `in`。         |
-|name     || 表示函数中的文档的绑定参数的名称。  |
+|**type**     || 必须设置为 `cosmosDB`。        |
+|**direction**     || 必须设置为 `in`。         |
+|**name**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** |**DatabaseName** |包含文档的数据库。        |
 |**collectionName** |**CollectionName** | 包含文档的集合的名称。 |
 |**id**    | **Id** | 要检索的文档的 ID。 此属性支持[绑定表达式](./functions-bindings-expressions-patterns.md)。 不要同时设置 **id** 和 **sqlQuery** 属性。 如果上述两个属性都未设置，则会检索整个集合。 |
@@ -2296,9 +2296,9 @@ public String cosmosDbQueryById(
 
 |function.json 属性 | Attribute 属性 |说明|
 |---------|---------|----------------------|
-|type     || 必须设置为 `cosmosDB`。        |
-|direction     || 必须设置为 `out`。         |
-|name     || 表示函数中的文档的绑定参数的名称。  |
+|**type**     || 必须设置为 `cosmosDB`。        |
+|**direction**     || 必须设置为 `out`。         |
+|**name**     || 表示函数中的文档的绑定参数的名称。  |
 |**databaseName** | **DatabaseName**|包含在其中创建文档的集合的数据库。     |
 |**collectionName** |**CollectionName**  | 包含在其中创建文档的集合的名称。 |
 |**createIfNotExists**  |**CreateIfNotExists**    | 一个用于指示是否创建集合（如果不存在）的布尔值。 默认值为 *false*，因为新集合是使用保留的吞吐量创建的，具有成本方面的隐含意义。 有关详细信息，请参阅[定价页](https://azure.microsoft.com/pricing/details/cosmos-db/)。  |
@@ -2345,7 +2345,7 @@ public String cosmosDbQueryById(
 |属性  |默认 | 描述 |
 |---------|---------|---------| 
 |GatewayMode|网关|连接到 Azure Cosmos DB 服务时该函数使用的连接模式。 选项为 `Direct` 和 `Gateway`|
-|协议|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)| 
+|Protocol|Https|连接到 Azure Cosmos DB 服务时该函数使用的连接协议。  参阅[此处，了解两种模式的说明](../cosmos-db/performance-tips.md#networking)| 
 |leasePrefix|不适用|应用中所有函数要使用的租用前缀。| 
 
 ## <a name="next-steps"></a>后续步骤
