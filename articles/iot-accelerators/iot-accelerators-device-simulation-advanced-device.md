@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 03/18/2019
 ms.author: troyhop
 ms.openlocfilehash: 4401d4b93a27e76554368ce72d256b38de61df4c
-ms.sourcegitcommit: 8a59b051b283a72765e7d9ac9dd0586f37018d30
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58286119"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448973"
 ---
 # <a name="create-an-advanced-device-model"></a>创建高级设备模型
 
@@ -161,7 +161,7 @@ IoT 设备可以使用不同的协议进行连接。 模拟允许使用 **AMQP**
 
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
-* 文本
+* Text
 * Boolean
 * Integer
 * Double

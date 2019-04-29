@@ -11,12 +11,12 @@ services: logic-apps
 ms.reviewer: klam, LADocs
 ms.suite: integration
 tags: connectors
-ms.openlocfilehash: ce567dc631c3a147b795eb2355a4961faa8881d6
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: HT
+ms.openlocfilehash: 0d2ff9368bc244a5afd6fafc40cf476b90a80a52
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35295806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61462515"
 ---
 # <a name="connect-to-github"></a>连接到 GitHub
 
@@ -28,7 +28,7 @@ GitHub 是基于 Web 的 Git 存储库托管服务，它提供 Git 的所有分�
 
 若要在逻辑应用中使用 GitHub 连接器，必须先创建*连接*，然后提供以下属性的详细信息： 
 
-| 属性 | 必选 | 说明 | 
+| 属性 | 需要 | 描述 | 
 | -------- | -------- | ----------- | 
 | 令牌 | 是 | 提供 GitHub 凭据。 |
 

@@ -8,11 +8,11 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
 ms.openlocfilehash: be6c0f9a8874507433606903bcbd58c7723d6a8a
-ms.sourcegitcommit: d89b679d20ad45d224fd7d010496c52345f10c96
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57791794"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118681"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Azure Batch 的渲染功能
 
@@ -30,7 +30,7 @@ ms.locfileid: "57791794"
 
 有关示例池配置，请参阅 [Azure CLI 渲染教程](https://docs.microsoft.com/azure/batch/tutorial-rendering-cli)。  Azure 门户和 Batch Explorer 提供了 GUI 工具用于在创建池时选择渲染 VM 映像。  如果使用 Batch API，请在创建池时，为 [ImageReference](https://docs.microsoft.com/rest/api/batchservice/pool/add#imagereference) 指定以下属性值：
 
-| 发布者 | 产品/服务 | SKU | 版本 |
+| 发布者 | 产品/服务 | SKU | Version |
 |---------|---------|---------|--------|
 | 批处理 | rendering-centos73 | 呈现 | 最新 |
 | 批处理 | rendering-windows2016 | 呈现 | 最新 |

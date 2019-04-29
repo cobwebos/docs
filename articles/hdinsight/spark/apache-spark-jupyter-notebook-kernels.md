@@ -2,7 +2,6 @@
 title: Azure HDInsight 中 Spark 群集上的 Jupyter 笔记本的内核
 description: 了解 Azure HDInsight 上的 Spark 群集所提供的 Jupyter 笔记本的 PySpark、PySpark3 和 Spark 内核。
 keywords: spark 中的 jupyter 笔记本,jupyter spark
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -10,12 +9,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/22/2018
 ms.author: hrasheed
-ms.openlocfilehash: 68581c957e2835aa8841e3ce490c9a7898ed4ff5
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
-ms.translationtype: MT
+ms.openlocfilehash: fed8791fbc7cc7f049a1161fb3903c7f6d42d4e8
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527466"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124200"
 ---
 # <a name="kernels-for-jupyter-notebook-on-apache-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight 中 Apache Spark 群集上的 Jupyter notebook 的内核 
 
@@ -27,7 +26,7 @@ HDInsight Spark 群集提供可在 [Apache Spark](https://spark.apache.org/) 上
 
 在本文中，学习如何使用这些内核以及使用它们的优势。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * HDInsight 中的 Apache Spark 群集。 有关说明，请参阅[在 Azure HDInsight 中创建 Apache Spark 群集](apache-spark-jupyter-spark-sql.md)。
 

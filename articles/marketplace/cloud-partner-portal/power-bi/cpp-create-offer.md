@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 01/29/2019
 ms.author: pbutlerm
 ms.openlocfilehash: 6a4f7daa337618278c3652fad3053c20557a9e28
-ms.sourcegitcommit: 79038221c1d2172c0677e25a1e479e04f470c567
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/19/2019
-ms.locfileid: "56414682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62102044"
 ---
 # <a name="create-a-power-bi-app-offer"></a>创建 Power BI 应用产品/服务
 
@@ -27,7 +27,7 @@ ms.locfileid: "56414682"
 
 资产组如下表所述：
 
-|   资产组      | 说明                                                                         |
+|   资产组      | 描述                                                                         |
 | ----------------   | ----------------                                                                    |
 | 产品/服务设置     | 产品/服务的主要标识和名称。                                      |
 | 技术信息     | 用于在客户端的 Power BI 工作区中安装应用的安装程序 URL。 有关如何生成此 URL 的详细信息，请参阅 [Power BI 应用文档](https://go.microsoft.com/fwlink/?linkid=2028636)。 |

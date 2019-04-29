@@ -5,15 +5,15 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 services: site-recovery
-ms.date: 04/18/2019
+ms.date: 04/23/2019
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: d0e39f9e24b3c486eccd71eb1c19823cfd33391a
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.openlocfilehash: dffbb2c52b4e43eefe6b4f377bd7af529bae8cc5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60004765"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62125553"
 ---
 # <a name="common-questions---vmware-to-azure-replication"></a>常见问题 - VMware 到 Azure 的复制
 
@@ -245,11 +245,15 @@ Site Recovery 将本地 VMware Vm 和物理服务器复制到 Azure 中的托管
 
 在恢复服务保管库中，单击**配置服务器**中**Site Recovery 基础结构** > **管理**。 然后在**服务器**，选择**下载注册密钥**保管库凭据文件下载。
 
+## <a name="process-server"></a>进程服务器
 
+### <a name="unable-to-select-process-server-during-enable-replication"></a>无法在启用复制过程中选择进程服务器
 
+从 9.24 版本，增强了提供[在产品指南](vmware-azure-manage-process-server.md#process-server-selection-guidance)何时设置横向扩展进程服务器。 这是为了避免进程服务器的限制，并避免的不正常的进程服务器使用情况。
 
+### <a name="what-should-i-do-to-obtain-accurate-health-status-of-process-server"></a>应该我做什么才能获取准确的运行状况状态的进程服务器？
 
-
+升级到 Site Recovery 组件[最新版本](service-updates-how-to.md#links-to-currently-supported-update-rollups)(至少 9.24 或更高版本)。
 
 ## <a name="failover-and-failback"></a>故障转移和故障回复
 ### <a name="can-i-use-the-process-server-at-on-premises-for-failback"></a>可以使用进程服务器在本地进行故障回复？

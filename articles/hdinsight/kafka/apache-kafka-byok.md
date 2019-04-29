@@ -1,19 +1,18 @@
 ---
 title: 为 Azure HDInsight 上的 Apache Kafka 创建自己的密钥（预览版）
 description: 本文介绍如何使用你在 Azure Key Vault 中的密钥加密 Azure HDInsight 上的 Apache Kafka 中存储的数据。
-services: hdinsight
 ms.service: hdinsight
 author: mamccrea
 ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cb18f0e1b682434c5069c2a02524a6f16551e9e2
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: ce9df58e9640cab2e6ba50fce772f1e30739dc5a
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545971"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62115390"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>在 Azure HDInsight 上 Apache Kafka 的自带密钥
 

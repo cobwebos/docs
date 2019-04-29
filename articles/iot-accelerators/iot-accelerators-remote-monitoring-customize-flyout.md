@@ -1,19 +1,20 @@
 ---
-title: 将浮出控件添加到远程监视解决方案 UI - Azure |Microsoft Docs
+title: 将浮出控件添加到远程监视解决方案 UI - Azure | Microsoft Docs
 description: 本文介绍如何在远程监视解决方案加速器 Web UI 中的页面上添加新的浮出控件。
 author: dominicbetts
 manager: timlt
-ms.author: dobett
+ms.author: v-yiso
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 10/05/2018
+origin.date: 10/05/2018
+ms.date: 11/26/2018
 ms.topic: conceptual
 ms.openlocfilehash: ccb1a7ff6abbc68f42c7632a8ba7a392b2c48794
-ms.sourcegitcommit: c282021dbc3815aac9f46b6b89c7131659461e49
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/12/2018
-ms.locfileid: "49167417"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61447108"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>向远程监视解决方案加速器 Web UI 添加自定义浮出控件
 
@@ -24,7 +25,7 @@ ms.locfileid: "49167417"
 
 本文中的示例浮出控件显示在具有网格的页面上，若要了解如何添加网格，请参阅[向远程监视解决方案加速器 Web UI 添加自定义网格](iot-accelerators-remote-monitoring-customize-grid.md)操作指南。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 要完成本操作指南中的步骤，需要在本地开发计算机上安装以下软件：
 
@@ -49,11 +50,11 @@ ms.locfileid: "49167417"
 
 **exampleFlyout.container.js**
 
-[!code-javascript[Example flyout container](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.container.js?name=flyoutcontainer "Example flyout container")]
+
 
 **exampleFlyout.js**
 
-[!code-javascript[Example flyout](~/remote-monitoring-webui/src/walkthrough/components/pages/pageWithFlyout/flyouts/exampleFlyout/exampleFlyout.js?name=flyout "Example flyout")]
+
 
 将 src/walkthrough/components/pages/pageWithFlyout/flyouts 文件夹复制到 src/components/pages/example 文件夹。
 

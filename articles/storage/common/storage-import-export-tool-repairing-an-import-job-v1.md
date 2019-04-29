@@ -9,11 +9,11 @@ ms.date: 01/23/2017
 ms.author: muralikk
 ms.subservice: common
 ms.openlocfilehash: fda1d3d626c91ba984f08b96c79ab6a2fd2ec74b
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55471722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477580"
 ---
 # <a name="repairing-an-import-job"></a>修复导入作业
 Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的部分内容复制到 Windows Azure Blob 服务。 失败的部分原因包括：  
@@ -37,8 +37,8 @@ Microsoft Azure 导入/导出服务可能无法将某些文件或某个文件的
 |**/d:**<TargetDirectories\>|**必需。** 包含已导入的原始文件的一个或多个目录（以分号分隔）。 也可以使用导入驱动器，但如果原始文件的备用位置可用，则无需使用该驱动器。|  
 |**/bk:**<BitLockerKey\>|**可选。** 如果希望工具将原始文件所在的已加密驱动器解锁，应指定 BitLocker 密钥。|  
 |**/sn:**<StorageAccountName\>|**必需。** 导入作业的存储帐户的名称。|  
-|**/sk:**<StorageAccountKey\>|当且仅当未指定容器 SAS 时才是**必需**的。 导入作业的存储帐户的帐户密钥。|  
-|**/csas:**<ContainerSas\>|当且仅当未指定存储帐户密钥时才是**必需**的。 用于访问与导入作业关联的 Blob 的容器 SAS。|  
+|/sk:<StorageAccountKey\>|当且仅当未指定容器 SAS 时才是**必需**的。 导入作业的存储帐户的帐户密钥。|  
+|**/csas:**<ContainerSas\>|**必需** 的。 用于访问与导入作业关联的 Blob 的容器 SAS。|  
 |**/CopyLogFile:**<DriveCopyLogFile\>|**必需。** 驱动器复制日志文件（详细日志或错误日志）的路径。 该文件由 Microsoft Azure 导入/导出服务生成，可以从与该作业关联的 Blob 存储下载。 复制日志文件包含有关要修复的失败 Blob 或文件的信息。|  
 |**/PathMapFile:**<DrivePathMapFile\>|**可选。** 可用于解决歧义（如果在同一作业中导入多个同名文件）的文本文件的路径。 工具首次运行时，会在此文件中填充所有不明确的名称。 工具后续运行时会使用此文件来解决歧义。|  
   

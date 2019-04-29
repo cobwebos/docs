@@ -9,14 +9,15 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 06/20/2018
-ms.author: apimpm
+origin.date: 06/20/2018
+ms.date: 12/31/2018
+ms.author: v-yiso
 ms.openlocfilehash: a01e50debf11daf2f1163a56726f5574f7e3e379
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52444796"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62123461"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>自动缩放 Azure API 管理实例  
 
@@ -24,7 +25,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 
 本文逐步讲解配置自动缩放的过程，并建议自动缩放规则的最佳配置。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要执行本文中的步骤，必须：
 
@@ -83,7 +84,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 持续时间(分钟) | 30                | 要计算平均值的容量指标的时间跨度特定于使用模式。 该时间段越长，做出的反应就越流畅 - 间歇性高峰对横向扩展决策的影响较小。 但是，它还会延迟横向扩展触发器。 |
     | *Action*              |                   |                                                                                                                                                                                                                                                                                 |
     | Operation             | 增加计数 |                                                                                                                                                                                                                                                                                 |
-    | 实例计数        | 1                 | 以 1 个单位为增量横向扩展 Azure API 管理实例。                                                                                                                                                                                                                          |
+    | 实例计数        | 第                 | 以 1 个单位为增量横向扩展 Azure API 管理实例。                                                                                                                                                                                                                          |
     | 冷却(分钟)   | 60                | 横向扩展 Azure API 管理服务至少需要 20 分钟。在大多数情况下，60 分钟冷却期可以防止触发许多的横向扩展操作。                                                                                                  |
 
 8. 单击“添加”保存规则。
@@ -110,7 +111,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
     | 持续时间(分钟) | 30                | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | *Action*              |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | Operation             | 减少计数 | 与横向扩展规则使用的值相反。                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-    | 实例计数        | 1                 | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+    | 实例计数        | 第                 | 横向扩展规则所用的相同值。                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
     | 冷却(分钟)   | 90                | 横向缩减应该比横向扩展更保守，因此冷却期应该更长。                                                                                                                                                                                                                                                                                                                                                                                                    |
 
 11. 单击“添加”保存规则。
@@ -120,7 +121,7 @@ Azure API 管理服务实例可以根据一组规则自动缩放。 此行为可
 12. 设置 Azure API 管理单元的**最大**数目。
 
     > [!NOTE]
-    > Azure API 管理会限制实例可以横向扩展到单元数。 此限制取决于服务层。
+    > Azure API 管理会限制实例可以横向扩展到单元数。 此限制取决于服务层级。
 
     ![Azure Monitor - 横向缩减规则](media/api-management-howto-autoscale/07.png)
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
 ms.openlocfilehash: f204f01fae0bd01f9f2f0e242c63ec2070d6d195
-ms.sourcegitcommit: cd0a1514bb5300d69c626ef9984049e9d62c7237
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/30/2018
-ms.locfileid: "52678043"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121154"
 ---
 # <a name="comparing-appsource-and-the-azure-marketplace"></a>比较 AppSource 和 Azure 市场
 [Azure 市场](https://azuremarketplace.microsoft.com)和 [Microsoft AppSource](https://appsource.microsoft.com) 中的店面满足独特的客户要求。 使用店面按角色定位客户。 你可以根据客户提供适当的解决方案或服务。

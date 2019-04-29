@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: 021f18f588613817110539d408f9260fb9247895
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53603923"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61449261"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>将远程监视解决方案与 Azure Data Lake Store 集成
 
@@ -21,7 +21,7 @@ ms.locfileid: "53603923"
 
 在本操作指南中，我们要使用 Azure 流分析作业将数据从远程监视解决方案中的 IoT 中心流式传输到 Azure Data Lake Store。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本操作指南，需要满足以下条件：
 
@@ -67,7 +67,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 1. 请务必将“宿主环境”保留为默认值“云”。
 
-1. 单击“创建”。
+1. 单击**创建**。
 
     ![创建流分析作业](./media/iot-accelerators-integrate-data-lake/create-stream-analytics-job.png)
 

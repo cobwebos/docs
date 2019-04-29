@@ -16,11 +16,11 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.openlocfilehash: 988acec8d7044afe87523637e46c9a4deb92b55e
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53719704"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61477615"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure 虚拟机中的 SQL Server 的应用程序模式和开发策略
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
@@ -36,7 +36,7 @@ ms.locfileid: "53719704"
 
 **技术审校：** Corey Sanders、Drew McDaniel、Narayan Annamalai、Nir Mashkowski、Sanjay Mishra、Silvano Coriani、Stefan Schackow、Tim Hickey、Tim Wieman、Xin Jin
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 可以通过将不同应用程序层级的组件放入不同计算机以及不同的组件中，开发多种类型的 n 层应用程序。 例如，可将客户端应用程序和业务规则组件放置在一台计算机中，而将前端 Web 层和数据访问层组件放置在另一台计算机中，再将后端数据库层放置在另一台计算机中。 这种类型的结构有助于将每个层相互隔离。 如果更改了数据来源，则无需更改客户端或 Web 应用，而只需更改数据访问层组件。
 
 典型的 n 层应用程序包括呈现层、业务层和数据层：
@@ -58,7 +58,7 @@ ms.locfileid: "53719704"
 * 需要与本地 SQL Server 完全兼容，并希望将现有应用程序按现状迁移至 Azure。
 * 希望充分利用 Azure 环境的功能，但 Azure SQL 数据库不支持应用程序需要的全部功能。 这可能包括以下方面：
   
-  * **数据库大小**：在更新这篇文章时，SQL 数据库支持最多包含 1 TB 数据的数据库。 如果应用程序需要 1 TB 以上的数据，但用户不希望实现自定义分片解决方案，则建议在 Azure 虚拟机中使用 SQL Server。 有关最新信息，请参阅[扩展 Azure SQL 数据库](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[基于 DTU 的购买模型](../../../sql-database/sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](../../../sql-database/sql-database-service-tiers-vcore.md)（预览版）。
+  * **数据库大小**：在更新这篇文章时，SQL 数据库支持最多包含 1 TB 数据的数据库。 如果应用程序需要 1 TB 以上的数据，但用户不希望实现自定义分片解决方案，则建议在 Azure 虚拟机中使用 SQL Server。 有关最新信息，请参阅[横向扩展 Azure SQL 数据库](https://msdn.microsoft.com/library/azure/dn495641.aspx)、[基于 DTU 的购买模型](../../../sql-database/sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](../../../sql-database/sql-database-service-tiers-vcore.md)（预览版）。
   * **HIPAA 符合性**：医疗保健客户和独立软件供应商 (ISV) 可能选择 [Azure 虚拟机中的 SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) 而不选择 [Azure SQL 数据库](../../../sql-database/sql-database-technical-overview.md)，原因是 Azure 虚拟机中的 SQL Server 已纳入 HIPAA 商业伙伴协议 (BAA)。 有关符合性的信息，请参阅 [Microsoft Azure 信任中心：符合性](https://azure.microsoft.com/support/trust-center/compliance/)。
   * **实例级功能**：目前，SQL 数据库不支持数据库外部的功能（如链接服务器、代理作业，FileStream、Service Broker 等）。 有关详细信息，请参阅 [Azure SQL 数据库指导原则和限制](https://msdn.microsoft.com/library/azure/ff394102.aspx)。
 

@@ -9,11 +9,11 @@ ms.date: 03/19/2019
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: 5eba650ac2a052f264d82260e9fc07bf195235da
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60148928"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483761"
 ---
 # <a name="use-the-azure-portal-to-access-blob-or-queue-data"></a>使用 Azure 门户来访问 blob 或队列数据
 

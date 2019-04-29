@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 02/04/2019
 ms.author: tamram
 ms.openlocfilehash: 182315c705360d254c3bf342cd9c64ffafa0c021
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55750068"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62121532"
 ---
 # <a name="how-to-upload-download-and-list-blobs-using-the-client-library-for-nodejs-v2"></a>如何使用适用于 Node.js v2 的客户端库上传、下载和列出 Blob
 
@@ -22,7 +22,7 @@ ms.locfileid: "55750068"
 > [!TIP]
 > 适用于 Node.js 的 Azure 存储客户端库的最新版本是 v10。 Microsoft 建议尽可能使用最新版本的客户端库。 若要开始使用 v10，请参阅[快速入门：使用适用于 JavaScript v10 的 Azure 存储客户端库上传、下载、列出和删除 Blob（预览版）](storage-quickstart-blobs-nodejs-v10.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 如果没有 Azure 订阅，请在开始之前创建一个[免费帐户](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)。
 

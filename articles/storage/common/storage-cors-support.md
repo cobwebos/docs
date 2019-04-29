@@ -10,11 +10,11 @@ ms.date: 2/22/2017
 ms.author: cbrooks
 ms.subservice: common
 ms.openlocfilehash: 5e65965678ed042081e4a406d3a207fb7ede299f
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58313645"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483479"
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>对 Azure 存储服务的跨域资源共享 (CORS) 支持
 从版本 2013-08-15 开始，Azure 存储服务支持 Blob、表、队列和文件服务的跨域资源共享 (CORS)。 CORS 是一项 HTTP 功能，使在一个域中运行的 Web 应用程序能够访问另一个域中的资源。 Web 浏览器实施一种称为[同源策略](https://www.w3.org/Security/wiki/Same_Origin_Policy)的安全限制，防止网页调用不同域中的 API；CORS 提供了一种安全的方法，允许一个域（源域）调用其他域中的 API。 有关 CORS 的详细信息，请参阅 [CORS 规范](https://www.w3.org/TR/cors/)。
@@ -67,7 +67,7 @@ CORS 规则在服务级别设置，因此需要分别为每个服务（Blob、�
 
 下面描述了 CORS 规则中包含的每个元素：
 
-* **AllowedOrigins**：允许通过 CORS 发出存储服务请求的源域。 源域是从中发出请求的域。 请注意，来源必须与用户代理发送到服务的来源完全相同，包括大小写。 也可以使用通配符“*”允许所有源域通过 CORS 发出请求。 在示例中，域 http:\//www.contoso.com 和 http: \/ /www.fabrikam.com 可以使使用 CORS 发出服务请求。
+* **AllowedOrigins**：允许通过 CORS 发出存储服务请求的源域。 源域是从中发出请求的域。 请注意，来源必须与用户代理发送到服务的来源完全相同，包括大小写。 也可以使用通配符“*”允许所有源域通过 CORS 发出请求。 在上面的示例中，域 http:\//www.contoso.com 和 http:\//www.fabrikam.com 可以使用 CORS 发出服务请求。
 * **AllowedMethods**：源域可用于 CORS 请求的方法（HTTP 请求谓词）。 在上面的示例中，只允许 PUT 和 GET 请求。
 * **AllowedHeaders**：源域可以在 CORS 请求上指定的请求标头。 在上面的示例中，允许所有以 x-ms-meta-data、x-ms-meta-target 和 x-ms-meta-abc 开头的元数据标头。 请注意，通配符“*”表示允许任何以指定前缀开头的标头。
 * **ExposedHeaders**：可以在 CORS 请求响应中发送并由浏览器向请求发出方公开的响应标头。 在上面的示例中，指示浏览器公开任何以 x-ms-meta 开头的标头。

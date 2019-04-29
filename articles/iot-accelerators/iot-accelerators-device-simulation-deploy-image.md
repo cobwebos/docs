@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.date: 11/06/2018
 ms.author: dobett
 ms.openlocfilehash: c1f321f452b65016c11cb66d08ebab108509cc62
-ms.sourcegitcommit: ba4570d778187a975645a45920d1d631139ac36e
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/08/2018
-ms.locfileid: "51285319"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448387"
 ---
 # <a name="deploy-a-custom-device-simulation-docker-image"></a>部署自定义设备模拟 Docker 映像
 
@@ -27,7 +27,7 @@ ms.locfileid: "51285319"
 1. 将设备模拟配置为使用新的 Docker 映像
 1. 使用新映像运行模拟
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本操作指南中的步骤，需要：
 

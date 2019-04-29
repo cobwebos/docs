@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 03/14/2018
+ms.date: 03/14/2019
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: benshy
 ms.custom: seodec18
-ms.openlocfilehash: 6ebd25dc65f86e5e028c1c56943756b46d0db9a8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.openlocfilehash: 0516c954bd23d5a2e339c5df447a923528e09d93
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58011808"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61430624"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>有关 Cloudyn 的常见问题解答
 
@@ -154,8 +154,8 @@ Cloudyn 提供以下数据刷新时间线：
 
 ## <a name="is-cloudyn-agent-based"></a>Cloudyn 是否基于代理？
 
-不是。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
+不。 不使用代理。 VM 的 Azure 虚拟机指标数据是通过 Microsoft Insights API 进行收集。 若要收集 Azure VM 中的指标数据，需要为 VM 启用诊断设置。
 
 ## <a name="do-cloudyn-reports-show-more-than-one-ad-tenant-per-report"></a>Cloudyn 报表是否每报表显示多个 AD 租户？
 
-是的。 可以为拥有的每个 AD 租户[创建相应的云帐户实体](tutorial-user-access.md#create-and-manage-entities)。 然后，可以查看所有 Azure AD 租户数据和其他云平台提供程序（包括 Amazon Web Services 和 Google Cloud Platform）。
+可以。 可以为拥有的每个 AD 租户[创建相应的云帐户实体](tutorial-user-access.md#create-and-manage-entities)。 然后，可以查看所有 Azure AD 租户数据和其他云平台提供程序（包括 Amazon Web Services 和 Google Cloud Platform）。

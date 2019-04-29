@@ -12,11 +12,11 @@ ms.topic: article
 tags: connectors
 ms.date: 08/25/2018
 ms.openlocfilehash: 68378c87e18df874059579445352b8fd1b2b6c13
-ms.sourcegitcommit: fbdfcac863385daa0c4377b92995ab547c51dd4f
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/30/2018
-ms.locfileid: "50232709"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62105574"
 ---
 # <a name="exchange-messages-in-the-cloud-with-azure-service-bus-and-azure-logic-apps"></a>使用 Azure 服务总线和 Azure 逻辑应用在云中交换消息
 
@@ -31,7 +31,7 @@ ms.locfileid: "50232709"
 
 可以使用触发器从服务总线获取响应，并使输出可供逻辑应用中的其他操作使用。 还可以让其他操作使用服务总线操作的输出。 如果你不太熟悉服务总线和逻辑应用，请查看[什么是 Azure 服务总线？](../service-bus-messaging/service-bus-messaging-overview.md) 和[什么是 Azure 逻辑应用？](../logic-apps/logic-apps-overview.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 * Azure 订阅。 如果没有 Azure 订阅，请<a href="https://azure.microsoft.com/free/" target="_blank">注册一个免费 Azure 帐户</a>。 
 
@@ -74,7 +74,7 @@ ms.locfileid: "50232709"
 
 1. 若要将触发器添加到空白逻辑应用，请在搜索框中输入“Azure 服务总线”作为筛选器。 在触发器列表下，选择所需的触发器。 
 
-   例如，若要在有新项发送到服务总线队列时触发逻辑应用，请选择以下触发器：“队列中收到消息时(自动完成)”。
+   例如，若要在新项发送到服务总线队列时触发逻辑应用，选择以下触发器：**（自动完成） 的队列中收到一条消息时**
 
    ![选择服务总线触发器](./media/connectors-create-api-azure-service-bus/select-service-bus-trigger.png)
 
@@ -95,7 +95,7 @@ ms.locfileid: "50232709"
    1. 在搜索框中，输入“Azure 服务总线”作为筛选器。 
    在操作列表下，选择所需的操作。 
  
-      例如，选择以下操作：“发送消息”
+      例如，选择此操作：**发送消息**
 
       ![选择服务总线操作](./media/connectors-create-api-azure-service-bus/select-service-bus-send-message-action.png) 
 
@@ -118,14 +118,14 @@ ms.locfileid: "50232709"
 
 1. 提供触发器或操作的所需详细信息。 对于本示例，请遵循触发器或操作的相关步骤： 
 
-   * **对于示例触发器**：设置轮询间隔和检查队列的频率。
+   * **示例触发器**:设置轮询间隔和检查队列的频率。
 
      ![设置轮询间隔](./media/connectors-create-api-azure-service-bus/service-bus-trigger-details.png)
 
      完成后，通过添加所需的操作继续生成逻辑应用的工作流。 例如，可以添加一个可在收到新消息时发送电子邮件的操作。
      当触发器检查队列并找到新消息时，逻辑应用会针对找到的消息运行选定的操作。
 
-   * **对于示例操作**：输入消息内容和其他任何详细信息。 
+   * **示例操作**:输入消息内容和任何其他详细信息。 
 
      ![提供消息内容和详细信息](./media/connectors-create-api-azure-service-bus/service-bus-send-message-details.png)
 

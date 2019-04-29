@@ -1,7 +1,6 @@
 ---
 title: 在 HDInsight 中将 Apache Hadoop Pig 与 REST 配合使用 - Azure
 description: 了解如何使用 REST 在 Azure HDInsight 中的 Apache Hadoop 群集上运行 Pig Latin 作业。
-services: hdinsight
 author: hrasheed-msft
 ms.reviewer: jasonh
 ms.service: hdinsight
@@ -9,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/10/2018
 ms.author: hrasheed
-ms.openlocfilehash: 52ad40a2521f21efee3b9f98b46c2e2e6343b656
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.openlocfilehash: 690a4bf08c7bfd6ccc039fdd04a3dda26b5a9301
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58098298"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62124082"
 ---
 # <a name="run-apache-pig-jobs-with-apache-hadoop-on-hdinsight-by-using-rest"></a>使用 REST 通过 HDInsight 上的 Apache Hadoop 运行 Apache Pig 作业
 

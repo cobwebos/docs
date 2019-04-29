@@ -14,11 +14,11 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: barclayn
 ms.openlocfilehash: d432dc25a1995a2f0348c7626a051f46ffbf418b
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608854"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62118972"
 ---
 # <a name="frequently-asked-questions-faq"></a>常见问题 (FAQ)
 
@@ -122,7 +122,7 @@ PKCS#11、Java (JCA/JCE)、Microsoft CAPI、CNG 和 OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>问：是否可将 Luna 5/6 HSM 中的密钥导入/迁移到 Azure 专用 HSM？
 
-是的。 请参阅 Gemalto 迁移指南。 
+可以。 请参阅 Gemalto 迁移指南。 
 
 ## <a name="using-your-hsm"></a>使用 HSM
 
@@ -149,7 +149,7 @@ Azure 专用 HSM 是最适合迁移方案。 即，将已在使用 HSM 的本地
 
 ### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>问：客户是否可以获取专用 HSM 中 HSM 的完全独占控制权？
 
-是的。 每个 HSM 设备完全由一个客户专用，经预配或者更改管理员密码后，其他任何人都对它没有管理控制权。
+可以。 每个 HSM 设备完全由一个客户专用，经预配或者更改管理员密码后，其他任何人都对它没有管理控制权。
 
 ### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>问：Microsoft 对我的 HSM 拥有哪种访问级别？
 
@@ -181,17 +181,17 @@ HSM 设备附带了默认用户的管理员使用其常见默认密码。 Micros
 
 ### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>问：是否可以全权访问专用 HSM 中所有 HSM 操作的日志？
 
-是的。 可将来自 HSM 设备的日志发送到 syslog 服务器
+可以。 可将来自 HSM 设备的日志发送到 syslog 服务器
 
 ## <a name="high-availability"></a>高可用性
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>问：是否可以在同一区域或跨多个区域配置高可用性？
 
-是的。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。 应注意这会同步密钥材料，如角色不是与特定配置项目。
+可以。 高可用性配置和设置在 Gemalto 提供的 HSM 客户端软件中执行。 从同一个 VNET 或其他 Vnet 位于同一区域或跨区域，或在本地 Hsm Hsm 连接到 VNET 使用站点到站点或点到点 VPN 可以添加到相同的高可用性配置。 应注意这会同步密钥材料，如角色不是与特定配置项目。
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
-是的。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
+可以。 这些 HSM 必须符合 SafeNet Luna Network HSM 7 的高可用性要求。
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>问：是否可将本地网络中的 Luna 5/6 HSM 添加到包含 Azure 专用 HSM 的高可用性组？
 
@@ -267,7 +267,7 @@ Microsoft 无法连接到分配给客户的 HSM。 客户必须自行升级和�
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>问：专用 HSM 是否已通过 FIPS 140-2 级别 3 验证？
 
-是的。 专用 HSM 服务将预配 SafeNet Network HSM 7 设备，这些设备使用 FIPS 140-2 级别 3 验证的 HSM。
+可以。 专用 HSM 服务将预配 SafeNet Network HSM 7 设备，这些设备使用 FIPS 140-2 级别 3 验证的 HSM。
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>问：如何确保在 FIPS 140-2 级别 3 验证模式下运行专用 HSM？
 
