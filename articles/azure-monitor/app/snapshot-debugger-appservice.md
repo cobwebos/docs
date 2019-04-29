@@ -13,11 +13,11 @@ ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: brahmnes
 ms.openlocfilehash: 7ff93dffe2dd82bdbba204b4235a297b337438f5
-ms.sourcegitcommit: b8f9200112cae265155b8877f7e1621c4bcc53fc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/14/2019
-ms.locfileid: "57876214"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784052"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>启用 Azure 应用服务中的.NET 应用程序的快照调试器
 

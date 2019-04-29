@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/27/2018
 ms.author: sngun
 ms.openlocfilehash: 07da7f8905d7b8952db852d3da1dab12884de509
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041792"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60932912"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-async-java"></a>适用于 Azure Cosmos DB 和 Async Java 的性能提示
 
@@ -187,7 +187,7 @@ Azure Cosmos DB 是一个快速、弹性的分布式数据库，可以在提供�
 
     有关详细信息，请参阅 [Azure Cosmos DB 索引策略](indexing-policies.md)。
 
-## <a name="throughput"></a>Throughput
+## <a name="throughput"></a>吞吐量
 <a id="measure-rus"></a>
 
 1. **测量和优化较低的每秒请求单位使用量**

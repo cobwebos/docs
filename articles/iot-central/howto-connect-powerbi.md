@@ -8,11 +8,11 @@ ms.author: viviali
 ms.date: 02/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: 322be1e13662d92a3cb0a805a9ccaacd05928f7d
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56328089"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60886747"
 ---
 # <a name="visualize-and-analyze-your-azure-iot-central-data-in-a-power-bi-dashboard"></a>在 Power BI 仪表板中可视化和分析 Azure IoT Central 数据
 
@@ -31,7 +31,7 @@ ms.locfileid: "56328089"
 
 ## <a name="get-the-power-bi-solution-for-azure-iot-centralhttpsakamsiotcentralpowerbisolutiontemplate-from-microsoft-appsource"></a>从 Microsoft AppSource 中获取 [Azure IoT Central 的 Power BI 解决方案](https://aka.ms/iotcentralpowerbisolutiontemplate)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 设置此解决方案需要以下各项：
 - Azure 订阅的访问权限
 - 使用 IoT Central 应用中的[连续数据导出](howto-export-data.md)来导出数据。 我们建议启用度量、设备和设备模板流，以充分利用 Power BI 仪表板。

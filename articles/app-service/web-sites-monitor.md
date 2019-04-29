@@ -16,11 +16,11 @@ ms.date: 01/11/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: a5d4d13d8e60cd7f273363a9bc385098e15cbb71
-ms.sourcegitcommit: 97d0dfb25ac23d07179b804719a454f25d1f0d46
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/25/2019
-ms.locfileid: "54913138"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832525"
 ---
 # <a name="monitor-apps-in-azure-app-service"></a>监视 Azure 应用服务中的应用
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)针对 [Azure 门户](https://portal.azure.com)中的 Web 应用、移动后端和 API 应用提供内置监视功能。
@@ -39,7 +39,7 @@ ms.locfileid: "54913138"
 
 “免费”或“共享”应用的配额如下：
 
-| Quota | 说明 |
+| Quota | 描述 |
 | --- | --- |
 | **CPU（短期）** | 5 分钟间隔内允许此应用使用的 CPU 量。 此配额每五分钟重置。 |
 | **CPU（天）** | 一天内允许此应用使用的 CPU 总量。 此配额每隔 24 小时在 UTC 午夜时间重置。 |
@@ -69,7 +69,7 @@ ms.locfileid: "54913138"
 
 应用的可用指标包括：
 
-| 指标 | 说明 |
+| 指标 | 描述 |
 | --- | --- |
 | **平均响应时间** | 应用处理请求的平均时间，以毫秒为单位。 |
 | **平均内存工作集** | 应用使用的平均内存量，以兆字节 (MiB) 为单位。 |
@@ -111,7 +111,7 @@ ms.locfileid: "54913138"
 > 应用服务计划指标仅适用于“基本”、“标准”和“高级”层中的计划。
 > 
 
-| 指标 | 说明 |
+| 指标 | 描述 |
 | --- | --- |
 | **CPU 百分比** | 计划的所有实例使用的平均 CPU 量。 |
 | **内存百分比** | 计划的所有实例使用的平均内存量。 |

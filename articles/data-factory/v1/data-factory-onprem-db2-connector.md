@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 72c88ef10bf1df217ec6e24ac744d0b30386b4a3
-ms.sourcegitcommit: f7be3cff2cca149e57aa967e5310eeb0b51f7c77
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/15/2019
-ms.locfileid: "56311522"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60824008"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>使用 Azure 数据工厂复制活动从 DB2 移动数据
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -33,7 +33,7 @@ ms.locfileid: "56311522"
 
 数据工厂目前仅支持将 DB2 数据库中的数据移至[支持的接收器数据存储](data-factory-data-movement-activities.md#supported-data-stores-and-formats)。 不支持将其他数据存储中的数据移至 DB2 数据库。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 数据工厂支持使用[数据管理网关](data-factory-data-management-gateway.md)连接到本地 DB2 数据库。 有关设置用于移动数据的网关数据管道的分步说明，请参阅[将数据从本地移到云](data-factory-move-data-between-onprem-and-cloud.md)一文。
 
 即使 DB2 托管在 Azure IaaS VM 中，也需要网关。 可在与数据存储相同的 IaaS VM 上安装网关。 如果网关可连接到数据库，则可在不同的 VM 上安装网关。
@@ -79,7 +79,7 @@ ms.locfileid: "56311522"
 ## <a name="db2-linked-service-properties"></a>DB2 链接服务的属性
 下表列出了特定于 DB2 链接服务的 JSON 属性。
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | type |必须将此属性设置为 **OnPremisesDb2**。 |是 |
 | **server** |DB2 服务器的名称。 |是 |
@@ -95,7 +95,7 @@ ms.locfileid: "56311522"
 
 每种数据集的 typeProperties 部分有所不同，该部分提供有关数据在数据存储区中的位置信息。 **RelationalTable** 类型数据集（包括 DB2 数据集）的 **typeProperties** 节具有以下属性：
 
-| 属性 | 说明 | 必选 |
+| 属性 | 说明 | 需要 |
 | --- | --- | --- |
 | **tableName** |链接服务引用的 DB2 数据库实例中表的名称。 此属性区分大小写。 |否（如果指定了 **RelationalSource** 类型复制活动的 **query** 属性） |
 
@@ -104,7 +104,7 @@ ms.locfileid: "56311522"
 
 对于复制活动，当源的类型为 **RelationalSource**（包括 DB2）时，以下属性在 **typeProperties** 节中可用：
 
-| 属性 | 说明 | 允许的值 | 必选 |
+| 属性 | 说明 | 允许的值 | 需要 |
 | --- | --- | --- | --- |
 | **query** |使用自定义查询读取数据。 |SQL 查询字符串。 例如： `"query": "select * from "MySchema"."MyTable""` |否（如果指定了数据集的 **tableName** 属性） |
 
@@ -316,8 +316,8 @@ ms.locfileid: "56311522"
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| 数字 |Decimal |
-| 日期 |DateTime |
+| Numeric |Decimal |
+| date |DateTime |
 | 时间 |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |
@@ -342,8 +342,8 @@ ms.locfileid: "56311522"
 | Float |Double |
 | Decimal |Decimal |
 | DecimalFloat |Decimal |
-| 数字 |Decimal |
-| 日期 |DateTime |
+| Numeric |Decimal |
+| date |DateTime |
 | 时间 |TimeSpan |
 | Timestamp |DateTime |
 | Xml |Byte[] |

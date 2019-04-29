@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: spelluru
 ms.openlocfilehash: bb8b5f7d6578390fd0f48c3de154cfdb034ac6c1
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795522"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60777162"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>连接到实验室的虚拟网络中 Azure 开发测试实验室环境
 Azure 开发测试实验室可轻松地在一个实验室中创建 Vm[内置网络](devtest-lab-configure-vnet.md)。 它具有的灵活性，能够为大量[创建多 VM 环境](devtest-lab-test-env.md)。 本文介绍如何连接到实验室的虚拟网络的环境中的 Vm。 使用此功能的一个方案设置带有连接到实验室 VNet 允许测试虚拟机对其进行访问在实验室中的 SQL Server 数据层的 N 层应用程序。  

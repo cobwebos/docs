@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-central
 manager: peterpr
 ms.openlocfilehash: 635c8d0f149895798eece8cf3b48712ab74374ea
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57759876"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60887036"
 ---
 # <a name="build-workflows-with-the-iot-central-connector-in-azure-logic-apps"></a>使用 Azure 逻辑应用中的 IoT Central 连接器生成工作流
 
@@ -38,7 +38,7 @@ ms.locfileid: "57759876"
 
     ![在 Azure 门户创建逻辑应用](./media/howto-build-azure-logic-apps/createinazureportal.png)
 
-1. 已成功创建逻辑应用后，你会自动导航到逻辑应用设计器。 选择**空白逻辑应用**。 
+1. 已成功创建逻辑应用后，你会自动导航到逻辑应用设计器。 选择“空白逻辑应用”。 
 
     ![创建空白逻辑应用](./media/howto-build-azure-logic-apps/blanklogicapp.png)
 

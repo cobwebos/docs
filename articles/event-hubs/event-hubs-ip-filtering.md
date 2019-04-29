@@ -12,11 +12,11 @@ ms.topic: article
 ms.date: 12/06/2018
 ms.author: spelluru
 ms.openlocfilehash: ccb2fa7b0805b332957513c52c0c1051d068d2cc
-ms.sourcegitcommit: fea5a47f2fee25f35612ddd583e955c3e8430a95
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55507529"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821661"
 ---
 # <a name="use-firewall-rules"></a>使用防火墙规则
 
@@ -76,7 +76,7 @@ IP 筛选器规则将按顺序应用，与 IP 地址匹配的第一个规则决�
 > ```json
 > "defaultAction": "Allow"
 > ```
-> to
+> 至
 > ```json
 > "defaultAction": "Deny"
 > ```

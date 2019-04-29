@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: 11d0648ee5090f02cb96c2d42a8d90cc3ea0ed28
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551332"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60853297"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux PHP 应用
 
@@ -105,7 +105,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，你可以[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)外部应用程序代码。 然后你可以访问它们使用标准[getenv （)](https://secure.php.net/manual/function.getenv.php)模式。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后你可以访问它们使用标准[getenv （)](https://secure.php.net/manual/function.getenv.php)模式。 例如，若要访问名为 `DB_HOST` 的应用设置，请使用以下代码：
 
 ```php
 getenv("DB_HOST")
@@ -252,7 +252,7 @@ zend_extension=/home/site/wwwroot/bin/xdebug.so
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用 MySQL 的 PHP 应用](tutorial-php-mysql-app.md)
+> [教程：将 PHP 应用与 MySQL 配合使用](tutorial-php-mysql-app.md)
 
 > [!div class="nextstepaction"]
-> [Linux 版应用服务常见问题解答](app-service-linux-faq.md)
+> [应用服务 Linux 常见问题解答](app-service-linux-faq.md)

@@ -12,11 +12,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 784d8c9280aeff7224f90ecee0b16c9c30381aeb
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53087722"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60746877"
 ---
 # <a name="managed-identities-for-azure-resources-with-event-hubs"></a>具有事件中心的 Azure 资源托管标识
 
@@ -56,7 +56,7 @@ ms.locfileid: "53087722"
 
 接下来，在以下某个支持 Azure 资源托管标识预览版的 Azure 区域中[创建事件中心命名空间](event-hubs-create.md)：**美国东部**、**美国东部 2** 或**西欧**。 
 
-转到门户上的命名空间“访问控制(标识和访问管理)”页，再单击“添加角色分配”，向“所有者”角色添加托管标识。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。 Web 应用程序的托管标识现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。 
+在门户上导航到命名空间“访问控制(IAM)”页面，然后单击“添加角色分配”将托管标识添加到“所有者”角色。 为此，请在“添加权限”面板的“选择”字段中搜索 Web 应用程序的名称，然后单击该条目。 然后单击“保存”。 Web 应用程序的托管标识现在已具有对事件中心命名空间和对之前创建的事件中心的访问权限。 
 
 ### <a name="run-the-app"></a>运行应用
 

@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 02/15/2019
 ms.author: saudas
 ms.openlocfilehash: aafc6c5a240a1dd3e3c75dd33da26bde918b2288
-ms.sourcegitcommit: 94305d8ee91f217ec98039fde2ac4326761fea22
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/05/2019
-ms.locfileid: "57403203"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61031605"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Azure Kubernetes 服务 (AKS) 中支持的 Kubernetes 版本
 
@@ -31,7 +31,7 @@ AKS 支持以下四个 Kubernetes 次要版本：
 
 引入新的次要版本后，将停止对最早次要版本和修补程序版本的支持。 在发布新的次要版本和即将发生版本停用的 15 天前，会通过 [Azure 更新通道][azure-update-channel]发布公告。 在上例中，1.12.x 已发布，停用的版本是 1.8.g + 1.8.h。
 
-在门户中或使用 Azure CLI 部署 AKS 群集时，群集始终会设置为 n-1 次要版本和最新修补程序。 例如，如果 AKS 支持 1.12.x、1.11.a + 1.11.b、1.10.c + 1.10d、1.9.e + *1.9f*，创建新的群集的默认版本是*1.11.b*。
+在门户中或使用 Azure CLI 部署 AKS 群集时，群集始终会设置为 n-1 次要版本和最新修补程序。 例如，如果 AKS 支持 1.12.x、1.11.a + 1.11.b、1.10.c + 1.10d、1.9.e + 1.9f，则新群集的默认版本是 1.11.b。
 
 ## <a name="list-currently-supported-versions"></a>列出当前支持的版本
 
@@ -73,7 +73,7 @@ KubernetesVersion    Upgrades
 
 客户可以永久保留 Kubernetes 版本吗？
 
-是的。 但是，如果群集不是 AKS 支持的版本之一，群集会退出 AKS SLO。 Azure 不会自动升级群集或将其删除。
+可以。 但是，如果群集不是 AKS 支持的版本之一，群集会退出 AKS SLO。 Azure 不会自动升级群集或将其删除。
 
 如果代理群集不是 AKS 支持的版本之一，主群集会支持哪个版本？
 

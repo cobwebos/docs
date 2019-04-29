@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 370d8160661c1f73124151a3a49d0bb3170dfb77
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52276034"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910839"
 ---
 # <a name="iot-edge-module-skus-tab"></a>IoT Edge 模块“SKU”选项卡
 
@@ -41,7 +41,7 @@ ms.locfileid: "52276034"
 
 |  **字段**       |     **说明**                                                          |
 |  ---------       |     ---------------                                                          |
-| **SKU ID**       | 此 SKU 的标识符。 此名称最多包含 50 个字符，包括小写字母数字字符或短划线 (-)，但不能以短划线结尾。 **注意：** 发布套餐后无法更改此名称。 此名称将在产品 URL 中公开显示。 |
+| **SKU ID**       | 此 SKU 的标识符。 此名称最多包含 50 个字符，包括小写字母数字字符或短划线 (-)，但不能以短划线结尾。 **注意：** 产品/服务的发布后，不能更改此名称。 此名称将在产品 URL 中公开显示。 |
 
 ## <a name="sku-details"></a>SKU 详细信息
 
@@ -109,7 +109,7 @@ ms.locfileid: "52276034"
 | **订阅 ID**        | ACR 的 Azure 订阅 ID。|
 | **资源组名称**      | ACR 的资源组名称。|
 | **注册表名称**  | ACR 注册表名称。 仅复制注册表名称，而不复制登录服务器名称（例如，不包含 `azurecr.io`。） |
-| **存储库名称**  | 包含 IoT Edge 模块的 ACR 的存储库名称。 **注意：** 名称一经设置，以后不可更改。 请使用唯一的名称，确保帐户中不会出现其他同名的套餐。 |
+| **存储库名称**  | 包含 IoT Edge 模块的 ACR 的存储库名称。 **注意：** 集的名称后，无法更改它更高版本。 请使用唯一的名称，确保帐户中不会出现其他同名的套餐。 |
 | **用户名** | 与 ACR 关联的用户名（管理员用户名）。 |
 | **密码** | 与 ACR 关联的密码。 |
 |  ***映像版本***   |  |

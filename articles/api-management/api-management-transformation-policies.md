@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 72348085a69746306e40029bc7473df271b60221
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58105278"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60946603"
 ---
 # <a name="api-management-transformation-policies"></a>API 管理转换策略
 本主题提供以下 API 管理策略的参考。 有关添加和配置策略的信息，请参阅 [API 管理中的策略](https://go.microsoft.com/fwlink/?LinkID=398186)。
@@ -215,7 +215,7 @@ ms.locfileid: "58105278"
 ```
 
 > [!NOTE]
-> 可以通过管理管理后端实体[API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend)并[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)。
+> 后端实体可以通过管理 [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) 和[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。
 
 ### <a name="example"></a>示例
 
@@ -269,8 +269,8 @@ ms.locfileid: "58105278"
 
 |名称|描述|需要|默认|
 |----------|-----------------|--------------|-------------|
-|base-url|新的后端服务基 URL。|之一`base-url`或`backend-id`必须存在。|不适用|
-|backend-id|要路由到的后端标识符。 (通过后端实体进行管理[API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend)并[PowerShell](https://www.powershellgallery.com/packages?q=apimanagement)。)|之一`base-url`或`backend-id`必须存在。|不适用|
+|base-url|新的后端服务基 URL。|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
+|backend-id|要路由到的后端标识符。 （后端实体通过 [API](https://docs.microsoft.com/en-us/rest/api/apimanagement/backend) 和 [PowerShell](https://www.powershellgallery.com/packages?q=apimanagement) 进行管理。）|必须存在 `base-url` 或 `backend-id` 中的一个。|不适用|
 |sf-partition-key|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 用于从名称解析服务中解析特定分区。|否|不适用|
 |sf-replica-type|只有在后端为 Service Fabric 服务且使用“backend-id”指定时才适用。 控制请求是否应转到分区的主要副本或次要副本。 |否|不适用|
 |sf-resolve-condition|只有在后端为 Service Fabric 服务时才适用。 确定对 Service Fabric 后端的调用是否针对新解析重复进行的条件。|否|不适用|
@@ -385,7 +385,7 @@ ms.locfileid: "58105278"
 </set-body>
 ```
 
-#### <a name="transform-json-using-a-liquid-template"></a>使用 Liquid 模板的 JSON 转换
+#### <a name="transform-json-using-a-liquid-template"></a>使用 Liquid 模板转换 JSON
 ```xml
 {
 "order": {
@@ -507,7 +507,7 @@ OriginalUrl.
 |名称|描述|需要|
 |----------|-----------------|--------------|
 |set-header|根元素。|是|
-|值|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|
+|value|指定要设置的标头的值。 如需多个标头使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
@@ -567,7 +567,7 @@ OriginalUrl.
 |名称|描述|需要|
 |----------|-----------------|--------------|
 |set-query-parameter|根元素。|是|
-|值|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
+|value|指定要设置的查询参数的值。 如需多个查询参数使用同一名称，可添加更多的 `value` 元素。|是|
 
 ### <a name="properties"></a>属性
 
@@ -649,7 +649,7 @@ OriginalUrl.
 
 ### <a name="attributes"></a>属性
 
-|属性|描述|需要|默认|
+|特性|描述|需要|默认|
 |---------------|-----------------|--------------|-------------|
 |template|包含任何查询字符串参数的实际 Web 服务 URL。 使用表达式时，整个值必须是一个表达式。|是|不适用|
 |copy-unmatched-params|指定是否将原始 URL 模板中不存在的传入请求中的查询参数添加到重新编写模板定义的 URL|否|true|

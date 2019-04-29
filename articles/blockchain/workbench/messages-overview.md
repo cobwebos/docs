@@ -11,11 +11,11 @@ ms.service: azure-blockchain
 ms.reviewer: brendal
 manager: femila
 ms.openlocfilehash: 860c00b876427af7395e3c04e0626131c27aca67
-ms.sourcegitcommit: 50ea09d19e4ae95049e27209bd74c1393ed8327e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56878075"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60896415"
 ---
 # <a name="azure-blockchain-workbench-messaging-integration"></a>Azure Blockchain Workbench 消息集成
 
@@ -407,7 +407,7 @@ Blockchain Workbench 返回的事务提交 **create contract action** 响应示�
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
 | from               | 事务来源账本中的唯一标识符 |
-| to                 | 事务目标账本中的唯一标识符 |
+| 至                 | 事务目标账本中的唯一标识符 |
 | provisioningStatus | 标识事务的当前预配过程状态。 可能的值包括： </br>0 – API 已在数据库中创建事务</br>1 – 事务已发送到账本</br>2 – 事务已成功提交到账本</br>3 或 4 - 事务无法提交到账本</br>5 - 事务已成功提交到账本 |
 
 Blockchain Workbench 中的 *BlockMessage* 示例：
@@ -469,7 +469,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 | transactionId | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash | 账本中事务的哈希 |
 | from | 事务来源账本中的唯一标识符 |
-| to | 事务目标账本中的唯一标识符 |
+| 至 | 事务目标账本中的唯一标识符 |
 
 #### <a name="contract-properties"></a>合同属性
 
@@ -477,7 +477,7 @@ Blockchain Workbench 中的 *BlockMessage* 示例：
 |--------------------|-------------|
 | workflowPropertyId | Azure Blockchain Workbench 中工作流属性的唯一标识符 |
 | 名称 | 工作流属性的名称 |
-| 值 | 工作流属性的值 |
+| value | 工作流属性的值 |
 
 Blockchain Workbench 中的 *ContractMessage* 示例：
 
@@ -588,7 +588,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 | 名称 | 描述 |
 |------|-------------|
 | 名称 | 参数名称 |
-| 值 | 参数值 |
+| value | 参数值 |
 
 #### <a name="event-message-transaction-information"></a>事件消息事务信息
 
@@ -597,7 +597,7 @@ Blockchain Workbench 中的 *ContractMessage* 示例：
 | transactionId      | Azure Blockchain Workbench 中的事务的唯一标识符 |
 | transactionHash    | 账本中事务的哈希 |
 | from               | 事务来源账本中的唯一标识符 |
-| to                 | 事务目标账本中的唯一标识符 |
+| 至                 | 事务目标账本中的唯一标识符 |
 
 Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 
@@ -680,7 +680,7 @@ Blockchain Workbench 中的 *EventMessage ContractFunctionInvocation* 示例：
 | displayName | 应用程序工作流显示名称 |
 | functions | 集合的[用于应用程序工作流函数](#workflow-function-information)|
 | states | [应用程序工作流的状态](#workflow-state-information)集合 |
-| 属性 | 应用程序[工作流属性信息](#workflow-property-information) |
+| properties | 应用程序[工作流属性信息](#workflow-property-information) |
 
 ##### <a name="workflow-function-information"></a>工作流函数信息
 

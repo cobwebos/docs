@@ -17,11 +17,11 @@ ms.date: 05/11/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ecf39623c70441e4b726221b4e92e2492370a9bc
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57846746"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60918351"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>更改 Azure 帐户的个人资料信息，如联系人电子邮件、地址和电话号码等
 
@@ -38,11 +38,11 @@ Microsoft 使用帐户管理员个人资料中的电子邮件地址来通知与�
 
 ### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>通知能否发送到与我的帐户关联的帐户管理员电子邮件地址之外的电子邮件地址？
 
-是的。 帐户上的电子邮件地址可获得帐户下所有订阅的重要通知。 因此，建议指定帐户管理员定期收信的联系人电子邮件地址。
+可以。 帐户上的电子邮件地址可获得帐户下所有订阅的重要通知。 因此，建议指定帐户管理员定期收信的联系人电子邮件地址。
 
 ### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>我可以更改个人资料中的帐户管理员电子邮件地址吗？
 
-是的。 帐户管理员是设置 Azure 帐户以及接收帐户下所有订阅相关重要电子邮件通知的人员。 建议指定帐户管理员定期收信的联系人电子邮件地址。
+可以。 帐户管理员是设置 Azure 帐户以及接收帐户下所有订阅相关重要电子邮件通知的人员。 建议指定帐户管理员定期收信的联系人电子邮件地址。
 
 ### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>更新个人资料电子邮件也会更新登录电子邮件地址吗？
 

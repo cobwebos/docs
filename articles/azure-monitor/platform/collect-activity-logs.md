@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.date: 04/11/2019
 ms.author: magoedte
 ms.openlocfilehash: 4476bb0a5a343fd43ce5ed70cf0e493d0ccae0e9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59505628"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60741210"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 中的 Log Analytics 工作区中的 Azure 活动日志
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>收集和分析 Azure Monitor 的 Log Analytics 工作区中的 Azure 活动日志
 
 ![“Azure 活动日志”符号](./media/collect-activity-logs/activity-log-analytics.png)
 
@@ -28,7 +28,7 @@ Activity Log Analytics 解决方案有助于分析和搜索所有 Azure 订阅�
 
 通过活动日志，可确定对订阅中的资源进行的任何写入操作（PUT、POST、DELETE）的*内容*、*执行者*和*时间*。 还可以了解操作和其他相关属性的状态。 活动日志不包括读取 (GET) 操作或针对使用经典部署模型的资源的操作。
 
-当 Azure 活动日志连接到 Log Analytics 工作区时，你可以：
+将 Azure 活动日志连接到 Log Analytics 工作区时，可以：
 
 - 通过预定义视图分析活动日志
 - 分析和搜索多个 Azure 订阅中的活动日志
@@ -40,15 +40,15 @@ Activity Log Analytics 解决方案有助于分析和搜索所有 Azure 订阅�
 - 确定影响资源的故障或服务运行状况问题
 - 使用日志搜索功能可将用户活动、自动缩放操作、授权更改和服务运行状况与环境中的其他日志或指标关联起来
 
-<sup>1</sup>默认情况下，Azure Monitor 保留 Azure 活动日志在 Log Analytics 工作区中的 90 天，即使您是在免费层上。 或者，将工作区保留期设置为少于 90 天。 如果工作区保留期长于 90 天，则活动日志将根据工作区的保留期进行保留。
+<sup>1</sup>默认情况下，Azure Monitor 将 Log Analytics 工作区中的 Azure 活动日志保留 90 天，即使在免费层也是如此。 或者，将工作区保留期设置为少于 90 天。 如果工作区保留期长于 90 天，则活动日志将根据工作区的保留期进行保留。
 
-Log Analytics 工作区收集活动日志免费的并将日志存储 90 天免费。 如果日志存储时间超过 90 天，将对存储超过 90 天的数据收取数据保留费。
+Log Analytics 工作区免费收集活动日志，并将日志免费存储 90 天。 如果日志存储时间超过 90 天，将对存储超过 90 天的数据收取数据保留费。
 
 当处于免费定价层时，活动日志不会统计到日常数据流量消耗量中。
 
 ## <a name="connected-sources"></a>连接的源
 
-与大多数其他 Azure Monitor 的解决方案，数据不会收集活动日志代理。 该解决方案使用的全部数据都直接来自于 Azure。
+与大多数其他 Azure Monitor 解决方案不同，代理不会为活动日志收集数据。 该解决方案使用的全部数据都直接来自于 Azure。
 
 | 连接的源 | 支持 | 描述 |
 | --- | --- | --- |

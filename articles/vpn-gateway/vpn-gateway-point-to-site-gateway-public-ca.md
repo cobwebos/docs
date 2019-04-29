@@ -2,17 +2,18 @@
 title: 为 P2S 网关转换到公共 CA 证书 | Azure VPN 网关 | Microsoft Docs
 description: 本文可帮助你成功转换 P2S 网关的新公共 CA 证书。
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 03/12/2019
-ms.author: cherylmc
+origin.date: 03/12/2019
+ms.date: 04/29/2019
+ms.author: v-jay
 ms.openlocfilehash: 29f2aeee53e07adfeafb8017c489c0b830f24b36
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59521588"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859641"
 ---
 # <a name="transition-to-a-public-ca-gateway-certificate-for-p2s"></a>为 P2S 转换到公共 CA 网关证书
 

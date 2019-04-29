@@ -15,11 +15,11 @@ ms.date: 03/03/2018
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ea46b5e57e4e508a3311de8633ae61d346b574eb
-ms.sourcegitcommit: fec0e51a3af74b428d5cc23b6d0835ed0ac1e4d8
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56114189"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764800"
 ---
 # <a name="integrate-your-ilb-app-service-environment-with-the-azure-application-gateway"></a>将 ILB 应用服务环境与 Azure 应用程序网关集成 #
 
@@ -40,7 +40,7 @@ Azure 应用程序网关是一个虚拟设备，可提供第 7 层负载均衡�
 * 配置应用，以遵循自定义域名。
 * 编辑指向应用程序网关的公共 DNS 主机名。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要将应用程序网关与 ILB 应用服务环境集成，需要：
 

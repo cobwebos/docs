@@ -2,19 +2,20 @@
 title: 处理 Azure 流分析中基于可配置阈值的规则
 description: 本文介绍如何使用参考数据实现在 Azure 流分析中拥有基于可配置阈值的规则的警报解决方案。
 services: stream-analytics
-author: zhongc
-ms.author: zhongc
-manager: kfile
+author: rockboyfor
+ms.author: v-yeche
+manager: digimobile
 ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 04/30/2018
+origin.date: 04/30/2018
+ms.date: 08/20/2018
 ms.openlocfilehash: ce2cf6ebdfd74549114e94e4c7356e387576d3c8
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56731185"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60761720"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>处理 Azure 流分析中基于可配置阈值的规则
 本文介绍如何使用参考数据实现在 Azure 流分析中使用基于可配置阈值的规则的警报解决方案。
@@ -46,7 +47,6 @@ ms.locfileid: "56731185"
 - 注意，规则有“operator”字段，稍后将在有关 `AVGGREATEROREQUAL` 上的查询语法中动态阐释。 
 - 规则筛选键/值对为 `2`/`C1` 的特定维度的数据。 其他字段为空字符串，指示不会按这些事件字段筛选输入流。 用户可以设置其他 CPU 规则来根据需要筛选其他匹配字段。
 - 并非所有列都包含在输出警报事件中。 在本例中，`includedDim` 键号 `2` 打开为 `TRUE`，表示流中事件数据的字段号 2 将包含在符合条件的输出事件中。 其他字段不包含在警报输出中，但可以调整字段列表。
-
 
 ```json
 {
@@ -292,3 +292,4 @@ HAVING
 "alert":"hot node AVG CPU over 90","avg":96.5,"min":95.0,"max":98.0,
 "dim0":null,"dim1":null,"dim2":"N024","dim3":null,"dim4":null}
 ```
+<!--Update_Description: updat meta properties, wording update-->

@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seofeb2018
 ms.openlocfilehash: e95eff015340659b642dff800a03f615e22c1577
-ms.sourcegitcommit: c712cb5c80bed4b5801be214788770b66bf7a009
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/01/2019
-ms.locfileid: "57220835"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871193"
 ---
 # <a name="indexing-blobs-producing-multiple-search-documents"></a>为 blob 生成多个搜索文档编制索引
 默认情况下，blob 索引器会将 blob 的内容视为单个搜索文档。 某些**parsingMode**值支持为单个 blob 可能导致多个搜索文档的方案。 不同类型的**parsingMode**允许超过一个搜索文档从 blob 索引器提取是：

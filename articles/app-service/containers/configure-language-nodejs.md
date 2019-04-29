@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: 43dc76e6d1e1ec2a6167f1d3e3cc7b8780f843db
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551317"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60850161"
 ---
 # <a name="configure-a-linux-nodejs-app-for-azure-app-service"></a>为 Azure 应用服务中配置 Linux Node.js 应用
 
@@ -137,7 +137,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，你可以[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)外部应用程序代码。 然后您可以访问它们使用标准 Node.js 模式。 例如，若要访问名为 `NODE_ENV` 的应用设置，请使用以下代码：
+在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后您可以访问它们使用标准 Node.js 模式。 例如，若要访问名为 `NODE_ENV` 的应用设置，请使用以下代码：
 
 ```javascript
 process.env.NODE_ENV
@@ -261,4 +261,4 @@ if (req.secure) {
 > [教程：使用 MongoDB 的 Node.js 应用](tutorial-nodejs-mongodb-app.md)
 
 > [!div class="nextstepaction"]
-> [Linux 版应用服务常见问题解答](app-service-linux-faq.md)
+> [应用服务 Linux 常见问题解答](app-service-linux-faq.md)

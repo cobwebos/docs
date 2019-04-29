@@ -14,11 +14,11 @@ ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: kumud
 ms.openlocfilehash: 159fe9d6a891858d8d2cc2315e9544b79eb44cff
-ms.sourcegitcommit: 9fb6f44dbdaf9002ac4f411781bf1bd25c191e26
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/08/2018
-ms.locfileid: "53079715"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60884973"
 ---
 # <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>使用 REST API 创建 Azure 基本负载均衡器
 
@@ -33,12 +33,12 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
   ```
 ### <a name="uri-parameters"></a>URI 参数
 
-|名称  |In  |必选 |类型 |Description |
+|名称  |In  |需要 |Type |描述 |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  路径       |  True       |   字符串      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
-|resourceGroupName     |     路径    | True        |  字符串       |   资源组的名称。     |
-|loadBalancerName     |  路径       |      True   |    字符串     |    负载均衡器的名称。    |
-|api-version    |   query     |  True       |     字符串    |  客户端 API 版本。      |
+|subscriptionId   |  路径       |  True       |   string      |  可以唯一标识 Microsoft Azure 订阅的订阅凭据。 此订阅 ID 是每个服务调用的 URI 的一部分。      |
+|resourceGroupName     |     路径    | True        |  string       |   资源组的名称。     |
+|loadBalancerName     |  路径       |      True   |    string     |    负载均衡器的名称。    |
+|api-version    |   query     |  True       |     string    |  客户端 API 版本。      |
 
 
 
@@ -46,9 +46,9 @@ Azure 负载均衡器根据规则和运行状况探测，将抵达负载均衡�
 
 唯一必需的参数为 `location`。 如果不定义 *SKU* 版本，则会默认创建基本负载均衡器。  请使用[可选参数](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body)来自定义负载均衡器。
 
-| 名称 | 类型 | Description |
+| 名称 | 类型 | 描述 |
 | :--- | :--- | :---------- |
-| 位置 | 字符串 | 资源位置。 使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作获取位置的当前列表。 |
+| 位置 | string | 资源位置。 使用[列出位置](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations)操作获取位置的当前列表。 |
 
 
 ## <a name="example-create-and-update-a-basic-load-balancer"></a>示例：创建和更新基本负载均衡器

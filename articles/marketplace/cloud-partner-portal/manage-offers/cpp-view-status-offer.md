@@ -15,17 +15,17 @@ ms.topic: conceptual
 ms.date: 01/11/2019
 ms.author: pbutlerm
 ms.openlocfilehash: bdec2d699e8448c8e2303dfbabcb4d176a9ca389
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54430375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60729732"
 ---
 # <a name="view-the-publishing-status-of-azure-marketplace-and-appsource-offers"></a>查看 Azure 市场和 AppSource 套餐的发布状态
 
 创建套餐之后，尤其是在发布过程中，可以在云合作伙伴门户中查看该套餐的状态。  门户的[**所有套餐**](../portal-tour/cpp-all-offers-page.md)和[**审批**](../portal-tour/cpp-approvals-page.md)页中会提供总体发布状态。  对于每个套餐，应会显示以下状态指示器之一。  
 
-|            状态              |   说明                                                           |
+|            状态              |   描述                                                           |
 |            ------              |   -----------                                                           |
 | **-**                          | 套餐已创建，但发布过程尚未开始。            |
 | **发布正在进行**        | 套餐正在经历发布过程的各个步骤。   |

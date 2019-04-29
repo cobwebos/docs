@@ -12,11 +12,11 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
 ms.openlocfilehash: 92e8435e4336c68982e4becc2a95f99b2c776c0e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58861836"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60736628"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>在 Azure 第一道防线服务中的 HTTP 标头的协议支持
 本文概述了与的调用路径部分的第一道防线服务支持的协议 （请参阅图）。 以下部分提供有关支持的第一道防线服务的 HTTP 标头的详细信息。

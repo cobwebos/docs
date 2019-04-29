@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/05/2018
 ms.author: yijenj
 ms.openlocfilehash: e72b115420e49a50f18ae9a27c6243394427ea4a
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000405"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093193"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Azure 市场列表准则
 
@@ -95,7 +95,7 @@ ms.locfileid: "58000405"
 | 7 | 提供隐私政策和使用条款  |  不需要政策或条款  | | 
 | 8 | 服务类型 | 确保服务类型与标题匹配 | |
 | 9 | 资质 |<br>• 必须是下面至少一项：<br>• 应用程序开发 <br>• 应用程序集成 <br>• 应用程序生命周期管理 <br>• 云平台 <br>• 数据分析 <br>• 数据中心 <br>• 数据平台 <br>• DevOps |
-| 10 | 产品 | 必须是 Azure | |
+| 10 | Products | 必须是 Azure | |
 | 11 | 国家/地区 | 确保国家和地区与所选的货币相匹配 | |
 | 12 | 了解详细信息  | <br>• 底部的链接（在说明下面，不是左侧的市场链接）指向有关解决方案的详细信息，并正确公开显示。 <br>• 链接必须采用“友好名称”，而不能显示为任何下载内容的文件名 | |
 

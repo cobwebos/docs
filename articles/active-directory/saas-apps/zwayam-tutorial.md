@@ -17,11 +17,11 @@ ms.date: 02/23/2018
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 91d5bbe66c7eb74dbd3f9a441ffffdc9a0153f0f
-ms.sourcegitcommit: 301128ea7d883d432720c64238b0d28ebe9aed59
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56192806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60868588"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zwayam"></a>教程：Azure Active Directory 与 Zwayam 集成
 
@@ -35,7 +35,7 @@ ms.locfileid: "56192806"
 
 如需了解有关 SaaS 应用与 Azure AD 集成的详细信息，请参阅 [Azure Active Directory 的应用程序访问与单一登录是什么](../manage-apps/what-is-single-sign-on.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要配置 Azure AD 与 Zwayam 的集成，需要具有以下项：
 
@@ -164,7 +164,7 @@ ms.locfileid: "56192806"
 
     c. 选中“显示密码”复选框，然后记下“密码”框中显示的值。
 
-    d. 单击“创建”。
+    d. 单击**创建**。
  
 ### <a name="create-a-zwayam-test-user"></a>创建一个 Zwayam 测试用户
 

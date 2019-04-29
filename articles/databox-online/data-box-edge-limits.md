@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403530"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60758018"
 ---
 # <a name="azure-data-box-edge-limits"></a>Azure 数据框边缘限制
 
@@ -29,9 +29,9 @@ ms.locfileid: "58403530"
 
 | 描述 | 值 |
 |---|---|
-|不是。 设备的文件数 |1 亿 |
-|不是。 设备的共享数 |24 |
-|不是。 每个容器的共享数 |第 |
+|不。 设备的文件数 |1 亿 |
+|不。 设备的共享数 |24 |
+|不。 每个容器的共享数 |1 |
 |写入到共享的最大文件大小| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制

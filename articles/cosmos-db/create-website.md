@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: sngun
 ms.openlocfilehash: 1a63de4642850e425cc785e0d89197178ceec1a6
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54041010"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60889697"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>使用 Azure 资源管理器模板部署 Azure Cosmos DB 和 Azure 应用服务 Web 应用
 本教程说明如何使用 Azure 资源管理器模板来部署和集成 [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/)、[Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714) Web 应用以及示例 Web 应用程序。
@@ -25,7 +25,7 @@ ms.locfileid: "54041010"
 
 <a id="Prerequisites"></a>
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 > [!TIP]
 > 虽然本教程不会假设先前有使用 Azure 资源管理器模板或 JSON 的经验，但是，如果想修改引用的模板或部署选项，则需要掌握有关其中每个领域的知识。
 > 
@@ -51,7 +51,7 @@ ms.locfileid: "54041010"
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击“新建”并搜索“模板部署”。
     ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment1.png)
-2. 选择模板部署项目，并单击“创建”![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
+2. 选择模板部署项目，然后单击“创建”![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment2.png)
 3. 单击“编辑模板”，粘贴 DocDBWebsiteTodo.json 模板文件的内容，并单击“保存”。
    ![模板部署 UI 的屏幕截图](./media/create-website/TemplateDeployment3.png)
 4. 单击“编辑参数”，为每个必需参数提供值，并单击“确定”。  参数如下：
@@ -107,7 +107,7 @@ ms.locfileid: "54041010"
 7. 部署完成后，“资源组”窗格会打开。
    ![资源组窗格的屏幕截图](./media/create-website/TemplateDeployment7.png)  
 8. 单击“资源”列表中的“Web 应用”资源，然后单击“应用程序设置”![资源组的屏幕截图](./media/create-website/TemplateDeployment9.png)  
-9. 注意，Azure Cosmos DB 终结点和每个 Azure Cosmos DB 主密钥都存在相应的应用程序设置。
+9. 注意出现的 Azure Cosmos DB 终结点和每个 Azure Cosmos DB 主密钥的应用程序设置。
 
     ![应用程序设置的屏幕截图](./media/create-website/TemplateDeployment10.png)  
 10. 继续随意浏览 Azure 门户，或按照其中一个 Azure Cosmos DB [示例](https://go.microsoft.com/fwlink/?LinkID=402386)创建自己的 Azure Cosmos DB 应用程序。

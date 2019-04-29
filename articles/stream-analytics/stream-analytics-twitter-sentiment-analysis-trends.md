@@ -10,16 +10,16 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/29/2017
 ms.openlocfilehash: abb2a89f41340e8e2e26fa36cc20b790341618d0
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60003694"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60763085"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure 流分析中的实时 Twitter 情绪分析
 
 > [!IMPORTANT] 
-> 创建 twitter 应用程序不再是可通过[apps.twitter.com](https://apps.twitter.com/)。 本教程是在更新以包括新的 Twitter API 的过程中。
+> 通过 [apps.twitter.com](https://apps.twitter.com/) 不再可以创建 Twitter 应用程序。 本教程正在进行更新，以包含新的 Twitter API。
 
 了解如何通过将实时 Twitter 事件引入 Azure 事件中心，生成用于社交媒体分析的情绪分析解决方案。 然后，可以编写 Azure 流分析查询来分析数据，并存储结果以供将来使用，或者使用仪表板和 [Power BI](https://powerbi.com/) 提供实时见解。
 

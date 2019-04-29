@@ -15,13 +15,13 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 00d5e3df78e85d19a519786dad1a1b176ad7fa08
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55733053"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837022"
 ---
-# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API Management 开发人员门户
+# <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>如何使用模板自定义 Azure API 管理开发人员门户
 
 在 Azure API 管理中自定义开发人员门户有三种基本方法：
 
@@ -167,9 +167,9 @@ ms.locfileid: "55733053"
 还原操作完成后，模板的以前发布的版本在开发人员门户中生效。
 
 ## <a name="to-restore-a-template-to-the-default-version"></a>将模板还原到默认版本
-将模板还原到其默认版本的过程分为两步。 首先必须还原模板，然后必须发布已还原的版本。
+将模板还原到其默认版本的过程分为两步。 首先，必须还原模板，然后必须发布还原后的版本。
 
-要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
+若要将单个模板还原到默认版本，请在模板编辑器中单击“还原”。
 
 ![还原模板][api-management-reset-template]
 
@@ -177,7 +177,7 @@ ms.locfileid: "55733053"
 
 ![确认][api-management-reset-template-confirm]
 
-要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
+若要将所有模板还原到其默认版本，请单击模板列表中的“还原默认模板”。
 
 ![还原模板][api-management-restore-templates]
 

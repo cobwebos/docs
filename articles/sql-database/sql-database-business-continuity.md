@@ -8,17 +8,18 @@ ms.subservice: high-availability
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
-ms.author: sashan
+author: WenJason
+ms.author: v-jay
 ms.reviewer: mathoma, carlrab
-manager: craigg
-ms.date: 04/04/2019
+manager: digimobile
+origin.date: 04/04/2019
+ms.date: 04/15/2019
 ms.openlocfilehash: dfa5d4cb2d782f1466329300157a64fd17765460
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59797687"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61412337"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>使用 Azure SQL 数据库确保业务连续性的相关概述
 
@@ -67,7 +68,7 @@ SQL 数据库提供多种可以缓解此类情况的业务连续性功能，包�
 
 ## <a name="recover-a-database-to-the-existing-server"></a>将数据库恢复到现有服务器
 
-SQL 数据库每周自动执行完整数据库备份，每隔 12 小时通常自动执行差异数据库备份，每隔 5 - 10 分钟自动执行事务日志备份，以防止企业丢失数据。 所有服务层的备份在 RA-GRS 存储中存储 35 天；但基本 DTU 服务层除外，其中的备份将存储 7 天。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。 可以使用 Azure 门户、PowerShell 或 REST API，基于自动备份将现有数据库还原到早期的时间点，作为同一 SQL 数据库服务器上的新数据库。 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)。
+SQL 数据库每周自动执行完整数据库备份，每隔 12 小时通常自动执行差异数据库备份，每隔 5 - 10 分钟自动执行事务日志备份，以防止企业丢失数据。 所有服务层级的备份在 RA-GRS 存储中存储 35 天；但基本 DTU 服务层级除外，其中的备份将存储 7 天。 有关更多详细信息，请参阅[自动数据库备份](sql-database-automated-backups.md)。 可以使用 Azure 门户、PowerShell 或 REST API，基于自动备份将现有数据库还原到早期的时间点，作为同一 SQL 数据库服务器上的新数据库。 有关详细信息，请参阅[时间点还原](sql-database-recovery-using-backups.md#point-in-time-restore)。
 
 如果支持的最长时间点还原 (PITR) 保留期对你的应用程序而言不足，可以通过为数据库配置长期保留 (LTR) 策略来延长保留期。 有关详细信息，请参阅[长期备份保留](sql-database-long-term-retention.md)。
 

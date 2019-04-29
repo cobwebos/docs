@@ -9,11 +9,11 @@ ms.date: 04/03/2017
 ms.author: ancav
 ms.subservice: autoscale
 ms.openlocfilehash: 25ef2541dfa0b4cbd6e11d64381da645acfe653a
-ms.sourcegitcommit: aa3be9ed0b92a0ac5a29c83095a7b20dd0693463
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58259289"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60787287"
 ---
 # <a name="use-autoscale-actions-to-send-email-and-webhook-alert-notifications-in-azure-monitor"></a>使用自动缩放操作在 Azure 监视器中发送电子邮件和 webhook 警报通知
 本文演示如何设置触发器，以便可以在 Azure 中基于自动缩放操作调用特定 Web URL 或发送电子邮件。  
@@ -68,7 +68,7 @@ ms.locfileid: "58259289"
 | customEmails |是 |值可以为 null [] 或电子邮件的字符串数组 |
 | webhooks |是 |该值可以为 null 或有效的 URI |
 | serviceUri |是 |有效的 https URI |
-| 属性 |是 |值必须是空的 {}，也可以包含键值对 |
+| properties |是 |值必须是空的 {}，也可以包含键值对 |
 
 ## <a name="authentication-in-webhooks"></a>webhook 中的身份验证
 webhook 可使用基于令牌的身份验证进行身份验证：将具有令牌 ID 的 webhook URI 保存为查询参数。 例如，https: \/ /mysamplealert/webcallback？ tokenid = sometokenid someparameter = somevalue

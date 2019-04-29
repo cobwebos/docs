@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: d0bb72361e1bff3615f6785ac4c91a10ea773498
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58312965"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60825522"
 ---
 # <a name="widevine-license-template-overview"></a>Widevine 许可证模板概述 
 可以使用 Azure 媒体服务允许配置和请求 Google Widevine 许可证。 当播放器尝试播放受 Widevine 保护的内容时，将向许可证交付服务发送请求以获取许可证。 如果许可证服务批准了请求，则该服务将颁发许可证。 许可证将被发送到客户端，并用于解密和播放指定的内容。
@@ -63,8 +63,8 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | --- | --- | --- |
 | payload |Base64 编码的字符串 |客户端发送的许可证请求。 |
 | content_id |Base64 编码的字符串 |用于为每个 content_key_specs.track_type 派生密钥 ID 与内容密钥的标识符。 |
-| provider |字符串 |用于查找内容密钥和策略。 如果将 Microsoft 密钥传送用于 Widevine 许可证传送，则忽略此参数。 |
-| policy_name |字符串 |以前注册的策略的名称。 可选。 |
+| provider |string |用于查找内容密钥和策略。 如果将 Microsoft 密钥传送用于 Widevine 许可证传送，则忽略此参数。 |
+| policy_name |string |以前注册的策略的名称。 可选。 |
 | allowed_track_types |枚举 |SD_ONLY 或 SD_HD。 控制许可证中包含哪些内容密钥。 |
 | content_key_specs |JSON 结构的数组，请参阅“内容密钥规范”部分。  |更精细地控制要返回哪些内容密钥。 有关详细信息，请参阅“内容密钥规范”部分。 只能指定 allowed_track_types 和 content_key_specs 值中的一个。 |
 | use_policy_overrides_exclusively |布尔值 true 或 false |使用 policy_overrides 所指定的策略属性，并忽略以前存储的所有策略。 |
@@ -79,7 +79,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 
 | 名称 | 值 | 描述 |
 | --- | --- | --- |
-| content_key_specs。 track_type |字符串 |跟踪类型名称。 如果许可证请求中指定了 content_key_specs，请确保显式指定所有跟踪类型。 否则会导致无法播放过去 10 秒的内容。 |
+| content_key_specs。 track_type |string |跟踪类型名称。 如果许可证请求中指定了 content_key_specs，请确保显式指定所有跟踪类型。 否则会导致无法播放过去 10 秒的内容。 |
 | content_key_specs  <br/> security_level |uint32 |定义客户端对播放稳定性的要求。 <br/> - 需要基于软件的白盒加密。 <br/> - 需要软件加密和模糊处理解码器。 <br/> - 密钥材料和加密操作必须在由硬件支持的可信执行环境中执行。 <br/> - 内容加密和解码必须在由硬件支持的可信执行环境中执行。  <br/> - 加密、解码与媒体（压缩和未压缩）的所有处理必须在由硬件支持的可信执行环境中处理。 |
 | content_key_specs <br/> required_output_protection.hdc |字符串：HDCP_NONE、HDCP_V1 和 HDCP_V2 中的一个 |指示是否需要 HDCP。 |
 | content_key_specs <br/>key |Base64-<br/>编码的字符串 |用于此跟踪的内容密钥。如果指定，则需要 track_type 或 key_id。 内容提供者可以使用此选项注入此跟踪的内容密钥，而不是让 Widevine 许可证服务器生成或查找密钥。 |
@@ -94,7 +94,7 @@ Widevine 许可证请求将格式化为 JSON 消息。
 | policy_overrides。 license_duration_seconds |int64 |指示此特定许可证的时限。 值 0 表示期限没有限制。 默认值为 0。 |
 | policy_overrides。 rental_duration_seconds |int64 |指示允许播放的时期。 值 0 表示期限没有限制。 默认值为 0。 |
 | policy_overrides。 playback_duration_seconds |int64 |在许可证期限内开始播放后的观看时限。 值 0 表示期限没有限制。 默认值为 0。 |
-| policy_overrides。 renewal_server_url |字符串 |将此许可证的所有检测信号（续订）请求定向到指定的 URL。 仅当 can_renew 为 true 时才使用此字段。 |
+| policy_overrides。 renewal_server_url |string |将此许可证的所有检测信号（续订）请求定向到指定的 URL。 仅当 can_renew 为 true 时才使用此字段。 |
 | policy_overrides。 renewal_delay_seconds |int64 |license_start_time 之后经过几秒才尝试首次续订。 仅当 can_renew 为 true 时才使用此字段。 默认值为 0。 |
 | policy_overrides。 renewal_retry_interval_seconds |int64 |指定在发生失败时，每两次发出后续许可证更新请求所要经历的延迟秒数。 仅当 can_renew 为 true 时才使用此字段。 |
 | policy_overrides。 renewal_recovery_duration_seconds |int64 |当尝试了续订但由于许可证服务器发生后端问题而未成功时，可以继续播放的时间段。 值 0 表示期限没有限制。 仅当 can_renew 为 true 时才使用此字段。 |

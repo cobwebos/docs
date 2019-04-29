@@ -9,17 +9,17 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.openlocfilehash: 28e0e69d3a6a4d3a38146cbf2c49426b3b16c784
-ms.sourcegitcommit: d1c5b4d9a5ccfa2c9a9f4ae5f078ef8c1c04a3b4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/08/2019
-ms.locfileid: "55961578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60789444"
 ---
 # <a name="azure-stream-analytics-job-states"></a>Azure 流分析作业状态
 
 在任何给定时间，流分析作业可以是四种状态之一。 可以在 Azure 门户的流分析作业的“概览”页上找到作业的状态。 
 
-| 状态 | 说明 | 建议的操作 |
+| 状态 | 描述 | 建议的操作 |
 | --- | --- | --- |
 | **正在运行** | 作业在来自已定义输入源的 Azure 读取事件上运行，对其进行处理并将结果写入配置的输出接收器。 | 最佳做法是通过监视[关键指标](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-set-up-alerts#scenarios-to-monitor)来跟踪作业的性能。 |
 | **已停止** | 作业已停止，不处理事件。 | NA | 

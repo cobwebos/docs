@@ -29,11 +29,11 @@ ms.author:
 - btalb
 - prachank
 ms.openlocfilehash: 1e8605a41cbe610c971b891309b2149d221b8b27
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59426437"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61032445"
 ---
 # <a name="tcpip-performance-tuning-for-azure-vms"></a>TCP/IP 的性能优化 Azure Vm
 
@@ -178,7 +178,7 @@ Azure，我们建议您设置 TCP MSS 钳位为 1,350 字节和隧道接口 MTU 
 | | | | |
 |-|-|-|-|
 |**TCP 窗口大小 （字节）**|**RTT 延迟 (ms)**|**最大兆字节/秒吞吐量**|**最大兆比特/秒吞吐量**|
-|65,535|1|65.54|524.29|
+|65,535|第|65.54|524.29|
 |65,535|30|2.18|17.48|
 |65,535|60|1.09|8.74|
 |65,535|90|.73|5.83|

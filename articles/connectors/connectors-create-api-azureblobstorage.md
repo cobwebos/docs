@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 05/21/2018
 tags: connectors
 ms.openlocfilehash: ea3e97db9ec560306788943d92a7670025f38bdc
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58310364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60958556"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-with-azure-logic-apps"></a>使用 Azure 逻辑应用在 Azure Blob 存储中创建和管理 Blob
 
@@ -90,7 +90,7 @@ ms.locfileid: "58310364"
 
 3. 在搜索框中，输入“azure blob”作为筛选器。 从操作列表中选择所需的操作。
 
-   此示例使用此操作：**Azure Blob 存储-获取 blob 内容**
+   此示例使用以下操作：**Azure Blob 存储-获取 blob 内容**
 
    ![选择操作](./media/connectors-create-api-azureblobstorage/azure-blob-action.png) 
 
