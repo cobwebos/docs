@@ -2,19 +2,25 @@
 title: Azure 自动化图形 Runbook 中的错误处理
 description: 本文介绍如何在 Azure 自动化图形 Runbook 中实现错误处理逻辑。
 services: automation
+documentationcenter: ''
+author: yunan2016
+manager: digimobile
+editor: tysonn
+ms.assetid: ''
 ms.service: automation
-ms.subservice: process-automation
-author: georgewallace
-ms.author: gwallace
-ms.date: 03/16/2018
-ms.topic: conceptual
-manager: carmonm
+ms.workload: tbd
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+origin.date: 03/16/2018
+ms.date: 05/14/2018
+ms.author: v-nany
 ms.openlocfilehash: d7fe38334b71334d4dae9235643117efdf5fbd5d
-ms.sourcegitcommit: 9999fe6e2400cf734f79e2edd6f96a8adf118d92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/22/2019
-ms.locfileid: "54436682"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61233036"
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure 自动化图形 Runbook 中的错误处理
 
@@ -47,7 +53,7 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 
 一种解决方案是让一个错误链接指向处理步骤一操作的活动。 例如，可以将 **Write-Warning** cmdlet 连接到步骤二的一个活动，例如 **Start-AzureRmAutomationRunbook** cmdlet。
 
-还可以通用化此行为，使其能够在多个 Runbook 中使用，只需将这两个活动放在单独的错误处理 Runbook 中，并遵循前面提供的指导即可。 在调用此错误处理 Runbook 之前，可以基于原始 Runbook 中的数据构造自定义消息，然后将其作为参数传递给错误处理 Runbook。
+还可以通用化此行为，使其能够在多个 Runbook 中使用，只需将这两个活动放在单独的错误处理 Runbook 中，并遵循前面提供的指导即可。 在调用此错误处理 Runbook 之前，可以根据原始 Runbook 中的数据构造自定义消息，并将此消息作为参数传递给错误处理 Runbook。
 
 ## <a name="how-to-use-error-handling"></a>如何使用错误处理
 
@@ -69,4 +75,3 @@ Azure 自动化图形 Runbook 在改进后可以进行错误处理。 用户现�
 * 若要详细了解图形 Runbook 中的链接和链接类型，请参阅 [Azure 自动化中的图形创作](automation-graphical-authoring-intro.md#links-and-workflow)。
 
 * 若要详细了解 Runbook 执行方式、如何监视 Runbook 作业和其他技术详细信息，请参阅[跟踪 Runbook 作业](automation-runbook-execution.md)。
-

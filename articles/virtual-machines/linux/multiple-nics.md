@@ -15,11 +15,11 @@ ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: cynthn
 ms.openlocfilehash: b77ed879375cff8d45f7d532283647e70252bdab
-ms.sourcegitcommit: 3aa0fbfdde618656d66edf7e469e543c2aa29a57
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/05/2019
-ms.locfileid: "55732832"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772427"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>如何在 Azure 中创建具有多个网络接口卡的 Linux 虚拟机
 
@@ -116,7 +116,7 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-要将 NIC 添加到现有 VM，请先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
+若要将 NIC 添加到现有 VM，请先使用 [az vm deallocate](/cli/azure/vm) 解除分配 VM。 以下示例解除分配名为 myVM 的 VM ：
 
 
 ```azurecli

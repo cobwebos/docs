@@ -10,12 +10,12 @@ ms.reviewer: klam, jehollan, LADocs
 ms.topic: article
 ms.assetid: a6727ebd-39bd-4298-9e68-2ae98738576e
 ms.date: 10/15/2017
-ms.openlocfilehash: 994e7945a7107815029bd415f4cc0d45bb68e335
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
-ms.translationtype: HT
+ms.openlocfilehash: 62a74364939fffb6e06f51f1c0cabb6cce8c10e1
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43123681"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60999716"
 ---
 # <a name="troubleshoot-and-diagnose-workflow-failures-in-azure-logic-apps"></a>在 Azure 逻辑应用中排查和诊断工作流故障
 
@@ -38,7 +38,7 @@ ms.locfileid: "43123681"
 
    触发器尝试可能的状态如下：
 
-   | 状态 | Description | 
+   | 状态 | 描述 | 
    | ------ | ----------- | 
    | 成功 | 触发器已检查终结点并找到可用数据。 通常，此状态还会伴随出现“已触发”状态。 如果没有，触发器定义可能未满足某一条件或 `SplitOn` 命令。 <p>此状态可应用于手动触发器、定期触发器或轮询触发器。 如果操作生成未处理的错误，尽管可以成功运行触发器，但运行本身可能仍会失败。 | 
    | 已跳过 | 触发器已检查终结点，但未找到任何数据。 | 
@@ -79,7 +79,7 @@ ms.locfileid: "43123681"
 
    运行可能的状态如下：
 
-   | 状态 | Description | 
+   | 状态 | 描述 | 
    | ------ | ----------- | 
    | 成功 | 所有操作成功。 <p>如果特定操作发生故障，工作流中下面的操作将处理该故障。 | 
    | 失败 | 至少一个操作失败，并且工作流中未设置任何后续操作来处理该故障。 | 

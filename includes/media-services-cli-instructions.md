@@ -9,11 +9,11 @@ ms.date: 01/28/2019
 ms.author: juliako
 ms.custom: include file
 ms.openlocfilehash: 8439da94c770bee313a1ae1d1da5df30683cd2ad
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57964082"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61224290"
 ---
 ## <a name="cli-shell"></a>CLI Shell
 
@@ -45,6 +45,6 @@ Linux/Mac 和 Windows OS 上的绝对文件路径
 * `@ "/usr/home/mytestfile.json"`
 *   `@"c:\tmp\user\mytestfile.json"`
 
-使用`{file}`如果该命令要求提供该文件的路径。 例如，`az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`。 <br/> 使用`@{file}`如果此命令将加载指定的文件。 例如，`az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`。
+如果命令要求提供文件路径，请使用 `{file}`。 例如，`az ams transform create -a amsaccount -g resourceGroup -n custom --preset .\customPreset.json`。 <br/> 如果命令将加载指定的文件，请使用 `@{file}`。 例如，`az ams account-filter create -a amsaccount -g resourceGroup -n filterName --tracks @tracks.json`。
 
 [上传文件]: ./media/media-services-cli/upload-download-files.png

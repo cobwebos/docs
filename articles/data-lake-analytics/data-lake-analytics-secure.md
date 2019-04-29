@@ -8,12 +8,12 @@ ms.author: mahi
 ms.reviewer: jasonwhowell
 ms.topic: conceptual
 ms.date: 05/30/2018
-ms.openlocfilehash: c6b86e25602f36896855d2593952609904396879
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 9fbc94259d6fdfb6758204efd6e6f0a346dc58da
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051578"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813366"
 ---
 # <a name="configure-user-access-to-job-information-to-job-information-in-azure-data-lake-analytics"></a>在 Azure Data Lake Analytics 中配置对作业信息的用户访问权限 
 

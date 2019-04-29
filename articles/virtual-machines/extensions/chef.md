@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/21/2018
 ms.author: roiyz
 ms.openlocfilehash: 6bd3ea4e664523fe8014be40c51d573ed5158ecf
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58089159"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60800269"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>适用于 Linux 和 Windows 的 Chef VM 扩展
 
@@ -71,8 +71,8 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 | 名称 | 值/示例 | 数据类型
 | ---- | ---- | ---- 
 | apiVersion | `2017-12-01` | 字符串（日期） |
-| 发布者 | `Chef.Bootstrap.WindowsAzure` | 字符串 |
-| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | 字符串 |
+| 发布者 | `Chef.Bootstrap.WindowsAzure` | string |
+| type | `LinuxChefClient` (Linux)、`ChefClient` (Windows) | string |
 | typeHandlerVersion | `1210.12` | 字符串（双精度） |
 
 ### <a name="settings"></a>设置
@@ -80,14 +80,14 @@ Chef VM 扩展要求目标虚拟机连接到 Internet 以便从内容分发网�
 | 名称 | 值/示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ----
 | settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | 字符串 (url) | Y |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | 字符串 | Y |
-| settings/runlist | `recipe[mycookbook::default]` | 字符串 | Y |
+| settings/bootstrap_options/validation_client_name | `myorg-validator` | string | Y |
+| settings/runlist | `recipe[mycookbook::default]` | string | Y |
 
 ### <a name="protected-settings"></a>受保护的设置
 
 | 名称 | 示例 | 数据类型 | 必需？
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | 字符串 | Y |
+| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | string | Y |
 
 <!--
 ### Linux-specific settings

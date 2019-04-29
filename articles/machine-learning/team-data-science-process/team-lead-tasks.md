@@ -11,11 +11,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 45be3d7f865c7b72ae62efbf99dbbb4594b1846f
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55465259"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60812450"
 ---
 # <a name="tasks-for-the-team-lead-in-the-team-data-science-process-team"></a>Team Data Science Process Team 中团队主管的任务
 
@@ -23,7 +23,7 @@ ms.locfileid: "55465259"
 
 **团队主管**管理企业的数据科学部门的团队。 团队由多个数据科学家组成。 如果数据科学部门的数据科学家较少，**组管理员**和**团队主管**可以是同一人，他们还可以将其任务委托给其代理。 但是，任务本身不会改变。 下图描绘了团队主管设置此环境时所要完成的任务的工作流：
 
-![1](./media/team-lead-tasks/team-leads-1-creating-teams.png)
+![第](./media/team-lead-tasks/team-leads-1-creating-teams.png)
 
 >[AZURE.NOTE] 如果使用 Azure DevOps 作为代码托管平台并且希望为你自己的团队创建一个单独的 Azure DevOps 项目，则图中的块 1 和块 2 中的任务是必需的。 完成这些任务后，可在此项目下创建你的团队的所有存储库。 
 
@@ -62,7 +62,7 @@ ms.locfileid: "55465259"
 在任何情况下，团队主管都需要让其团队成员知道在设置和克隆项目与实用程序存储库时要采用哪些模板和实用程序存储库。 项目主管应当按照[数据科学团队的项目主管任务](project-lead-tasks.md)所述在单独的项目下或者在单个项目下创建项目存储库。 
 
 
-## <a name="0-prerequisites"></a>0.先决条件
+## <a name="0-prerequisites"></a>0.必备组件
 
 通过完成[数据科学团队组管理员的任务](group-manager-tasks.md)中介绍的分配给组管理员的任务来满足先决条件。 在此处汇总一下，在开始执行团队主管任务之前，需要满足以下要求： 
 

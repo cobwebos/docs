@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: e7dcdb960fbd9196aca8b667269a4c6e5a1fb8f9
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59788932"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794982"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>缩放级别和磁贴网格
 Azure Maps 使用球面 Mercator 投影坐标系统 (EPSG:3857).
@@ -37,7 +37,7 @@ Azure Maps 互动地图控件适用于 web 和 Android 支持缩放级别 25 的
 |缩放级别|计量/像素|计量/磁贴边|
 |--- |--- |--- |
 |0|156543|40075008|
-|1|78271.5|20037504|
+|第|78271.5|20037504|
 |2|39135.8|10018764.8|
 |3|19567.9|5009382.4|
 |4|9783.9|2504678.4|

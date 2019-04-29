@@ -12,11 +12,11 @@ ms.reviewer: jmartens
 ms.date: 1/10/2019
 ms.custom: seodec18
 ms.openlocfilehash: 716de6d491be753c5c32c0a2774404140010f72c
-ms.sourcegitcommit: 1516779f1baffaedcd24c674ccddd3e95de844de
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/26/2019
-ms.locfileid: "56823308"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60821214"
 ---
 # <a name="what-are-fpgas-and-project-brainwave"></a>什么是 FPGA 和 Project Brainwave？
 
@@ -83,7 +83,7 @@ Project Brainwave 与 Azure 机器学习集成。 Microsoft 使用 FPGA 进行 D
 
 请访问以下视频和博客：
 
-+ [Hyperscale hardware:ML at scale on top of Azure + FPGA :Build 2018 (video)](https://www.youtube.com/watch?v=BMgQAHIx2eY)（超大规模的硬件：基于 Azure + FPGA 的大规模机器学习：Build 2018（视频））
++ [“超大规模”硬件：ML at scale on top of Azure + FPGA :Build 2018 (video)](https://www.youtube.com/watch?v=BMgQAHIx2eY)（超大规模的硬件：基于 Azure + FPGA 的大规模机器学习：Build 2018（视频））
 
 + [Inside the Microsoft FPGA-based configurable cloud (video)](https://channel9.msdn.com/Events/Build/2017/B8063)（深入了解基于 Microsoft FPGA 的可配置云（视频））
 

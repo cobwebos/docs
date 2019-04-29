@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: seodec18
 ms.openlocfilehash: 33d8e18dcec98710443623c03651aa568aa37009
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60010375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60819935"
 ---
 # <a name="configure-automated-machine-learning-experiments"></a>配置自动化机器学习试验
 
@@ -134,7 +134,7 @@ cv_splits_indices   | 整数数组 ||  （可选）用于拆分数据以进行�
 >* 使用表达式添加列
 >* 估算缺失值
 >* 按示例派生列
->* 筛选
+>* Filtering
 >* 自定义 Python 转换
 
 若要了解 DataPrep SDK，请参阅[如何准备要建模的数据](how-to-load-data.md)一文。

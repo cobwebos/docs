@@ -9,11 +9,11 @@ ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59288421"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844508"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何创建 Azure 的高级文件共享
 
@@ -79,7 +79,7 @@ ms.locfileid: "59288421"
 
 首先，安装最新版本的 [PowerShellGet](https://docs.microsoft.com/powershell/gallery/installing-psget) 模块。
 
-然后，升级 powershell 模块，登录到你的 Azure 订阅、 创建资源组，然后创建一个存储帐户。
+然后，升级 powershell 模块，登录到 Azure 订阅，创建资源组，然后创建存储帐户。
 
 ### <a name="upgrade-your-powershell-module"></a>升级 powershell 模块
 
@@ -93,7 +93,7 @@ ms.locfileid: "59288421"
 Install-Module Az.Storage -Repository PSGallery -AllowPrerelease -AllowClobber -Force
 ```
 
-### <a name="sign-in-to-your-azure-subscription"></a>登录到你的 Azure 订阅
+### <a name="sign-in-to-your-azure-subscription"></a>登录到 Azure 订阅
 
 使用 `Login-AzAccount` 命令并按照屏幕上的说明进行身份验证。
 
@@ -144,7 +144,7 @@ Remove-AzResourceGroup -Name $resourceGroup
 
 ## <a name="create-a-premium-file-share-using-azure-cli"></a>创建使用 Azure CLI 的高级文件共享
 
-若要启动 Azure Cloud Shell，请登录到[Azure 门户](https://portal.azure.com)。
+若要启动 Azure Cloud Shell，请登录到 [Azure 门户](https://portal.azure.com)。
 
 若要登录到本地安装的 CLI，请运行登录命令：
 

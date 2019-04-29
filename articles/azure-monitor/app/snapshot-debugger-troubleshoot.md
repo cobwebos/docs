@@ -13,11 +13,11 @@ ms.reviewer: mbullwin
 ms.date: 03/07/2019
 ms.author: mbullwin
 ms.openlocfilehash: bf19d4f5ce60411413c21fce12f9fe9d2f391bf1
-ms.sourcegitcommit: f596d88d776a3699f8c8cf98415eb874187e2a48
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/16/2019
-ms.locfileid: "58094933"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60783933"
 ---
 # <a id="troubleshooting"></a> 启用 Application Insights 快照调试程序或查看快照相关的问题进行故障排除
 如果启用 Application Insights 快照调试器应用程序，但未看到异常的快照，可以使用这些说明进行故障排除。 可以有多种原因不生成快照的原因。 可以运行快照运行状况检查来标识可能的常见原因。

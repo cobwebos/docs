@@ -10,11 +10,11 @@ ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: seodec18
 ms.openlocfilehash: ffd7d71c33b569b396b9f8babf8105968ee525b9
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54263061"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60926354"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>将 Blob 添加到 Azure 数字孪生中的对象
 
@@ -51,7 +51,7 @@ JSON Blob 元数据符合以下模型：
   }
 ```
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | **parentId** | String | 要与 Blob 关联的父实体（空间、设备或用户） |
 | name |String | Blob 的用户友好名称 |
@@ -108,7 +108,7 @@ Swagger 文档完整详细地介绍了这些模型架构。
 }
 ```
 
-| 属性 | 类型 | Description |
+| 属性 | Type | 描述 |
 | --- | --- | --- |
 | **id** | String | Blob 的唯一标识符 |
 | name |String | Blob 的用户友好名称 |

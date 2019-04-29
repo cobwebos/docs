@@ -8,11 +8,11 @@ ms.date: 11/15/2018
 ms.author: govindk
 ms.reviewer: sngun
 ms.openlocfilehash: 6ed968b1613a96a2f4ab449c7b52488e066a38ab
-ms.sourcegitcommit: f7f4b83996640d6fa35aea889dbf9073ba4422f0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "56991812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60930230"
 ---
 # <a name="online-backup-and-on-demand-data-restore-in-azure-cosmos-db"></a>Azure Cosmos DB 中的联机备份和按需数据还原
 
@@ -20,17 +20,17 @@ Azure Cosmos DB 会定期自动备份数据。 自动备份不会影响数据库
 
 ## <a name="automatic-and-online-backups"></a>自动联机备份
 
-使用 Azure Cosmos DB，数据和数据备份都高度冗余，并且具有可复原性，能抵御区域性灾难。 以下步骤演示如何将 Azure Cosmos DB 执行数据备份：
+使用 Azure Cosmos DB，数据和数据备份都高度冗余，并且具有可复原性，能抵御区域性灾难。 以下步骤演示 Azure Cosmos DB 如何执行数据备份：
 
-* Azure Cosmos DB 会自动将带你数据库的备份每 4 小时，并仅最新的 2 个备份存储在任何时间点。 不过，如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
+* Azure Cosmos DB 每 4 小时自动备份数据库一次，在任何时间点都只存储最新的 2 个备份。 不过，如果删除了容器或数据库，Azure Cosmos DB 会将给定容器或数据库中的现有快照保留 30 天。
 
-* Azure Cosmos DB 将这些备份存储在 Azure Blob 存储，而实际的数据位于本地 Azure Cosmos DB 中。
+* Azure Cosmos DB 将这些备份存储在 Azure Blob 存储中，而实际数据以本地形式驻留在 Azure Cosmos DB 中。
 
-*  若要保证低延迟，你的备份快照存储在 Azure Blob 存储中的当前写入区域所在的同一区域 (或其中一个写入区域中，如果你有多主配置) 的 Azure Cosmos 数据库帐户。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 Azure Cosmos DB 仅在启动备份还原时使用此备份。
+*  为了保证低延迟，备份的快照存储在 Azure Blob 存储中，且所在区域与 Azure Cosmos 数据库帐户的当前写入区域（如果有多主数据库配置，则为其中一个写入区域）相同。 对于针对区域性灾难的恢复，Azure Blob 存储中备份数据的屏幕快照将通过异地冗余存储 (GRS) 再次复制到另一区域。 根据源区域以及与源区域关联的区域对确定备份复制的目标区域。 若要了解详细信息，请参阅 [Azure 区域的异地冗余对列表](../best-practices-availability-paired-regions.md)一文。 不能直接访问此数据库。 Azure Cosmos DB 仅在启动备份还原时使用此备份。
 
 * 备份不会影响应用程序的性能或可用性。 Azure Cosmos DB 在后台执行数据备份，不会消耗任何其他预配吞吐量 (RU)，也不会影响数据库的性能和可用性。
 
-* 如果意外删除或损坏数据，应联系[Azure 支持](https://azure.microsoft.com/support/options/)8 小时内，以便 Azure Cosmos DB 团队可以帮助您将数据从备份中还原。
+* 如果意外删除或损坏了数据，则应在 8 小时内联系 [Azure 支持](https://azure.microsoft.com/support/options/)，以便 Azure Cosmos DB 团队帮助你从备份中还原数据。
 
 下图显示了如何在美国西部的远程 Azure Blob 存储帐户中备份 Azure Cosmos 容器（其三个主要物理分区全部位于美国西部），然后将其复制到美国东部：
 

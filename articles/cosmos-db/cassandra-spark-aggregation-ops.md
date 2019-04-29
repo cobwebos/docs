@@ -1,20 +1,22 @@
 ---
 title: Spark 上的 Azure Cosmos DB Cassandra API 表聚合操作
 description: 本文介绍在 Spark 上对 Azure Cosmos DB Cassandra API 表进行的基本聚合操作
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 09/24/2018
+origin.date: 09/24/2018
+ms.date: 04/15/2019
 ms.openlocfilehash: 4fbb86f4fbda9b8e521f7465bb8bb3d18602ca13
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58877459"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60894180"
 ---
+<!--Verify sucessfully-->
 # <a name="aggregate-operations-on-azure-cosmos-db-cassandra-api-tables-from-spark"></a>Spark 上的 Azure Cosmos DB Cassandra API 表聚合操作 
 
 本文介绍了在 Spark 上对 Azure Cosmos DB Cassandra API 表进行的基本聚合操作。 
@@ -34,7 +36,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -69,7 +71,6 @@ booksDF.write
 
 ## <a name="count-operation"></a>计数操作
 
-
 ### <a name="rdd-api"></a>RDD API
 
 ```scala
@@ -101,28 +102,28 @@ res48: Long = 5
 
 * OFF_HEAP（实验性）：与 MEMORY_ONLY_SER 类似，但它将数据存储在堆外内存中，并且需要提前启用堆外内存。 
 
-```scala
-//Workaround
-import org.apache.spark.storage.StorageLevel
+    ```scala
+    //Workaround
+    import org.apache.spark.storage.StorageLevel
 
-//Read from source
-val readBooksDF = spark
-  .read
-  .cassandraFormat("books", "books_ks", "")
-  .load()
+    //Read from source
+    val readBooksDF = spark
+      .read
+      .cassandraFormat("books", "books_ks", "")
+      .load()
 
-//Explain plan
-readBooksDF.explain
+    //Explain plan
+    readBooksDF.explain
 
-//Materialize the dataframe
-readBooksDF.persist(StorageLevel.MEMORY_ONLY)
+    //Materialize the dataframe
+    readBooksDF.persist(StorageLevel.MEMORY_ONLY)
 
-//Subsequent execution against this DF hits the cache 
-readBooksDF.count
+    //Subsequent execution against this DF hits the cache 
+    readBooksDF.count
 
-//Persist as temporary view
-readBooksDF.createOrReplaceTempView("books_vw")
-```
+    //Persist as temporary view
+    readBooksDF.createOrReplaceTempView("books_vw")
+    ```
 
 ### <a name="sql"></a>SQL
 
@@ -369,3 +370,6 @@ select book_name,book_price from books_vw order by book_price desc limit 3;
 要执行表复制操作，请参阅：
 
 * [表复制操作](cassandra-spark-table-copy-ops.md)
+
+<!--Verify sucessfully-->
+<!--Update_Description: wording update -->

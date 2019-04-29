@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
 ms.openlocfilehash: 748bc08e003d398e96ef55493e4f3b0bf6b7da28
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56326970"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61034750"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>在 Azure 中使用 Python 创建和管理 Windows VM
 
@@ -53,7 +53,7 @@ ms.locfileid: "56326970"
 
 ## <a name="create-credentials"></a>创建凭据
 
-在开始此步骤之前，请确保拥有 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 还应该记录稍后步骤需要的应用程序 ID、身份验证秘钥和的租户 ID。
+在开始此步骤之前，请确保拥有 [Active Directory 服务主体](../../active-directory/develop/howto-create-service-principal-portal.md)。 此外，应记下应用程序 ID、身份验证密钥和租户 ID，以便在后面的步骤中使用。
 
 1. 打开已创建的 myPythonProject.py 文件，然后添加以下代码运行应用程序：
 
@@ -298,7 +298,7 @@ compute_client = ComputeManagementClient(
     input('Press enter to continue...')
     ```
 
-创建所有支持的资源后，可以创建虚拟机。
+创建所有支持资源后，即可创建虚拟机。
 
 1. 若要创建虚拟机，请在 .py 文件中将此函数添加在变量之后：
    
@@ -554,7 +554,7 @@ compute_client = ComputeManagementClient(
         resource_group_client.resource_groups.delete(GROUP_NAME)
     ```
 
-2. 若要调用先前添加的函数，请将此代码添加在 .py 文件末尾的 if 语句下：
+2. 若要调用之前添加的函数，请在 .py 文件末尾处的 if 语句下添加此代码：
    
     ```python
     delete_resources(resource_group_client)

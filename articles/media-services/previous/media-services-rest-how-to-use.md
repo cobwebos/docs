@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
 ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58293604"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60762504"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
 [!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
@@ -71,9 +71,9 @@ ms.locfileid: "58293604"
 
 | 标头 | Type | 值 |
 | --- | --- | --- |
-| 日期 |RFC 1123 日期 |请求的时间戳 |
+| date |RFC 1123 日期 |请求的时间戳 |
 | Accept |内容类型 |响应的请求内容类型，例如：<p> -application/json;odata=verbose<p> - application/atom+xml<p> 响应可能具有不同的内容类型，如 BLOB 提取，在该类型中成功的响应包含 BLOB 流作为负载。 |
-| Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 编码（如果适用）。 注意：对于大型资源，媒体服务可能会忽略此标头并返回未经压缩的数据。 |
+| Accept-Encoding |Gzip、deflate |GZIP 和 DEFLATE 编码（如果适用）。 请注意:对于大型资源，媒体服务可能会忽略此标头并返回未经压缩的数据。 |
 | Accept-Language |“en”、“es”等。 |指定响应的首选语言。 |
 | Accept-Charset |字符集类型，如“UTF-8” |默认值为 UTF-8。 |
 | X-HTTP-Method |HTTP 方法 |允许不支持 HTTP 方法（例如 PUT 或 DELETE）的客户端或防火墙使用这些通过 GET 调用隧道化的方法。 |
@@ -87,7 +87,7 @@ ms.locfileid: "58293604"
 | --- | --- | --- |
 | request-id |String |当前操作的唯一标识符，由服务生成。 |
 | client-request-id |String |调用方在原始请求（如果存在）中指定的标识符。 |
-| 日期 |RFC 1123 日期 |处理请求的日期/时间。 |
+| date |RFC 1123 日期 |处理请求的日期/时间。 |
 | Content-Type |多种多样 |响应正文的内容类型。 |
 | Content-Encoding |多种多样 |Gzip 或 deflate（视情况而定）。 |
 

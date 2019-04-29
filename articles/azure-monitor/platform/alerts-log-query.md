@@ -9,17 +9,17 @@ ms.date: 02/19/2019
 ms.author: bwren
 ms.subservice: alerts
 ms.openlocfilehash: 429770b7651a93473c03f5e386d8f7b72692c161
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59784375"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60995908"
 ---
 # <a name="log-alert-queries-in-azure-monitor"></a>Azure Monitor 中的日志警报
 [基于 Azure Monitor 日志的警报规则](alerts-unified-log.md)定期运行，因此应确保这些规则旨在将开销和延迟降至最低。 本文提供了有关编写日志警报的高效查询以及转换现有查询的过程的建议。 
 
 ## <a name="types-of-log-queries"></a>日志查询的类型
-[Azure Monitor 中的日志查询](../log-query/log-query-overview.md)开头的表或[搜索](/azure/kusto/query/searchoperator)或[联合](/azure/kusto/query/unionoperator)运算符。
+[Azure Monitor 中的日志查询](../log-query/log-query-overview.md)以 table 或 [search](/azure/kusto/query/searchoperator) 或 [union](/azure/kusto/query/unionoperator) 运算符开头。
 
 例如，以下查询的范围限定为 SecurityEvent 表，并搜索特定的事件 ID。 这是查询必须处理的唯一的表。
 

@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9233a5919ad86adcbb7947cd095945654ed015a7
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805791"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093974"
 ---
 <a name="retrieve-offer-status"></a>检索产品/服务状态 
 =====================
@@ -35,7 +35,7 @@ ms.locfileid: "48805791"
 |  -------------  |  ------------------------------------------  |  ------------  |
 |  publisherId    | 发布者标识符，例如 `Contoso`  |     String     |
 |  offerId        | 唯一标识产品/服务的 GUID      |     String     |
-|  api-version    | API 的最新版本                        |     日期       |
+|  api-version    | API 的最新版本                        |     date       |
 |  |  |
 
 

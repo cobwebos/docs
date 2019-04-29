@@ -7,11 +7,11 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/26/2019
 ms.openlocfilehash: 6e33c7571dc735ce9984a0ce1b37275a6c4c7eca
-ms.sourcegitcommit: 24906eb0a6621dfa470cb052a800c4d4fae02787
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/27/2019
-ms.locfileid: "56888458"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61093210"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Azure Database for MySQL 中的只读副本
 
@@ -35,7 +35,7 @@ Azure Database for MySQL 服务中创建的副本是新服务器，可以像常�
 
 ### <a name="master-server-restart"></a>主服务器重启
 
-时有任何现有副本 master 数据库中创建的副本，主将第一次重新启动以准备用于复制的本身。 请考虑这一点并在非高峰期执行这些操作。
+如果为没有现有副本的主服务器创建副本，主服务器将首先重启以便为复制准备自身。 请考虑这一点并在非高峰期执行这些操作。
 
 ### <a name="stopping-replication"></a>停止复制
 

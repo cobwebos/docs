@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 01/03/2019
 ms.author: mavoge
 ms.openlocfilehash: 2b4f9bf87122f047e496dca1dbd425db8ad7c16c
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119962"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60925962"
 ---
 # <a name="enable-multitenant-applications-with-azure-digital-twins"></a>使用 Azure 数字孪生启用多租户应用程序
 

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 8a3698232c90d0705cb97677781ad512fffab803
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 784a6821502a0e02a74d619047604ffe47df7e97
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60914157"
 ---
 # <a name="azure-dedicated-hsm-high-availability"></a>Azure 专用 HSM 高可用性
 
@@ -38,7 +38,7 @@ Azure 专用 HSM 由 Microsoft 具有高可用性的数据中心提供支持。 
 
 * [部署体系结构](deployment-architecture.md)
 * [物理安全性](physical-security.md)
-* [联网](networking.md)
+* [网络](networking.md)
 * [可支持性](supportability.md)
 * [监视](monitoring.md)
 

@@ -1,6 +1,6 @@
 ---
-title: 有关使用 Azure 备份的 Azure Vm 备份常见问题解答
-description: 有关使用 Azure 备份的 Azure Vm 备份的常见问题的解答。
+title: 有关使用 Azure 备份来备份 Azure VM 的常见问题
+description: 有关使用 Azure 备份来备份 Azure VM 的常见问题的解答。
 services: backup
 author: sogup
 manager: vijayts
@@ -9,29 +9,29 @@ ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: sogup
 ms.openlocfilehash: 9f233af316bd6022b93a7208bf3fae37e913e6af
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58885258"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60848174"
 ---
-# <a name="frequently-asked-questions-back-up-azure-vms"></a>常见的问题-备份 Azure Vm
+# <a name="frequently-asked-questions-back-up-azure-vms"></a>常见问题 - 备份 Azure VM
 
-本文解答有关 Azure Vm 备份[Azure 备份](backup-introduction-to-azure-backup.md)服务。
+本文解答有关使用 [Azure 备份](backup-introduction-to-azure-backup.md)服务备份 Azure VM 的常见问题。
 
 
 ## <a name="backup"></a>备份
 
-### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>创建它们时，可以为备份启用的 VM 映像？
+### <a name="which-vm-images-can-be-enabled-for-backup-when-i-create-them"></a>哪些 VM 映像可以在创建时启用备份功能？
 在创建 VM 时，可以运行的 Vm 启用备份[受支持的操作系统](backup-support-matrix-iaas.md#supported-backup-actions)
  
-### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>备份成本包含在 VM 成本是多少？ 
+### <a name="is-the-backup-cost-included-in-the-vm-cost"></a>备份成本包含在 VM 成本内吗？ 
 
-不。 备份成本是独立于 VM 的成本。 详细了解如何[Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
+不。 备份成本独立于 VM 的成本。 详细了解 [Azure 备份定价](https://azure.microsoft.com/pricing/details/backup/)。
  
-### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>为 vm 启用备份需要哪些权限？ 
+### <a name="which-permissions-are-required-to-enable-backup-for-a-vm"></a>为 VM 启用备份需要哪些权限？ 
 
-如果你是 VM 参与者，您可以启用 VM 上的备份。 如果您使用的自定义角色，需要以下权限才能启用 VM 上的备份： 
+如果你是 VM 参与者，便可以在 VM 上启用备份。 如果你使用的是自定义角色，则需要具有以下权限才可在 VM 上启用备份： 
 
 - Microsoft.RecoveryServices/Vaults/write 
 - Microsoft.RecoveryServices/Vaults/read 
@@ -43,7 +43,7 @@ ms.locfileid: "58885258"
 - Microsoft.RecoveryServices/Vaults/backupPolicies/read 
 - Microsoft.RecoveryServices/Vaults/backupPolicies/write 
  
-如果您的恢复服务保管库和 VM 具有不同的资源组，请确保在恢复服务保管库的资源组中具有写入权限。  
+如果恢复服务保管库和 VM 的资源组不同，请确保具有恢复服务保管库资源组的写入权限。  
 
 
 ### <a name="what-azure-vms-can-you-back-up-using-azure-backup"></a>可以使用 Azure 备份对哪些 Azure VM 进行备份？
@@ -51,10 +51,10 @@ ms.locfileid: "58885258"
 审阅[支持矩阵](backup-support-matrix-iaas.md)支持详细信息和限制。
 
 ### <a name="does-an-on-demand-backup-job-use-the-same-retention-schedule-as-scheduled-backups"></a>按需备份作业是否使用与计划备份相同的保留计划？
-不。 指定的保持期为按需备份作业。 默认情况下，从门户触发时，该作业会保留 30 天。
+不。 为按需备份作业指定保留期。 默认情况下，从门户触发时，该作业会保留 30 天。
 
 ### <a name="i-recently-enabled-azure-disk-encryption-on-some-vms-will-my-backups-continue-to-work"></a>我最近在一些 VM 上启用了 Azure 磁盘加密。 我的备份是否继续有效？
-提供有关 Azure 备份密钥保管库的访问权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限。
+提供 Azure 备份访问 Key Vault 所需的权限。 按照 [Azure 备份 PowerShell](backup-azure-vms-automation.md) 文档中的“启用备份”部分所述，在 PowerShell 中指定权限。
 
 ### <a name="i-migrated-vm-disks-to-managed-disks-will-my-backups-continue-to-work"></a>我将 VM 磁盘迁移到了托管磁盘。 我的备份是否继续有效？
 是的，备份可以顺利工作。 没有必要重新配置任何内容。
@@ -63,13 +63,13 @@ ms.locfileid: "58885258"
 该向导仅列出与 Vault 相同区域中的 VM，这些 VM 尚未备份。
 
 ### <a name="my-vm-is-shut-down-will-an-on-demand-or-a-scheduled-backup-work"></a>我的 VM 已关闭。 按需备份或计划备份会运行吗？
-是的。 计算机关闭时运行备份。 将恢复点标记为崩溃一致。
+可以。 计算机关闭时运行备份。 将恢复点标记为崩溃一致。
 
 ### <a name="can-i-cancel-an-in-progress-backup-job"></a>可以取消正在进行的备份作业吗？
-是的。 可在“拍摄快照”状态中取消备份作业。 如果此作业正在从快照传输数据，则无法取消。
+可以。 可在“拍摄快照”状态中取消备份作业。 如果此作业正在从快照传输数据，则无法取消。
 
-### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>启用了由 Azure 备份服务 （即，创建资源组上的锁 `AzureBackupRG_<geo>_<number>`)，我的备份仍将正常运行？
-如果锁定由 Azure 备份服务创建的资源组，将开始备份失败，因为没有 18 个还原点的最大限制。
+### <a name="i-enabled-lock-on-resource-group-created-by-azure-backup-service-ie-azurebackuprggeonumber-will-my-backups-continue-to-work"></a>我在由 Azure 备份服务创建的资源组（即 `AzureBackupRG_<geo>_<number>`）上启用了锁定，我的备份是否继续有效？
+如果锁定 Azure 备份服务创建的资源组，则由于还原点的最大数目限制为 18 个，备份会开始失败。
 
 用户需要删除锁，然后清除该资源组中的还原点集合以使将来的备份成功，[请按照下列步骤](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal)删除还原点集合。
 
@@ -98,7 +98,7 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 
 若要执行以下操作，可使用还原磁盘选项：
   * 自定义创建的 VM。 例如，更改大小。
-  * 添加配置设置，在备份时不存在。
+  * 添加备份时不存在的配置设置。
   * 控制创建的资源的命名约定。
   * 将 VM 添加到可用性集。
   * 添加必须使用 PowerShell 或模板配置的任何其他设置。
@@ -117,7 +117,7 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 在 PowerShell 中[详细了解](backup-azure-vms-automation.md#restore-an-azure-vm)此操作。
 
 ### <a name="can-i-restore-the-vm-thats-been-deleted"></a>可以还原已删除的 VM 吗？
-是的。 即使删除了 VM，也可以转到保管库中的相应备份项并从恢复点还原。
+可以。 即使删除了 VM，也可以转到保管库中的相应备份项并从恢复点还原。
 
 ### <a name="how-to-restore-a-vm-to-the-same-availability-sets"></a>如何将 VM 还原到相同的可用性集？
 对于托管磁盘 Azure VM，通过在还原为托管磁盘时在模板中提供选项来启用还原到可用性集。 此模板具有名为“可用性集”的输入参数。
@@ -137,6 +137,6 @@ Azure 备份无法备份已启用 WA 的磁盘，但可以将其从备份中排�
 
 1. 暂时停止备份，并保留备份数据。
 2. 将 VM 移动到目标资源组。
-3. 相同的或新保管库中的重新启用的备份。
+3. 在相同或新的保管库中重新启用备份。
 
 可以从在移动操作之前创建的可用还原点还原 VM。

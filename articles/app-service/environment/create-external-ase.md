@@ -15,11 +15,11 @@ ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: eef13c5a4e3757b0eafd77c0915717175c2dbd8c
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59545410"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60768986"
 ---
 # <a name="create-an-external-app-service-environment"></a>创建外部应用服务环境
 
@@ -39,7 +39,7 @@ Azure 应用服务环境是指将 Azure App Service 部署到 Azure 虚拟网络
 
 创建 ASE 后，不能更改以下项：
 
-- 位置
+- Location
 - 订阅
 - 资源组
 - 使用的 VNet

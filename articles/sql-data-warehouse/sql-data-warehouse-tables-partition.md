@@ -11,11 +11,11 @@ ms.date: 03/18/2019
 ms.author: rortloff
 ms.reviewer: igorstan
 ms.openlocfilehash: d3557be2fd8fdb459571d2c792302963e17e4471
-ms.sourcegitcommit: f331186a967d21c302a128299f60402e89035a8d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58189387"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60935874"
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>对 SQL 数据仓库中的表进行分区
 在 Azure SQL 数据仓库中使用表分区的建议和示例。
@@ -225,8 +225,8 @@ ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.Fa
 UPDATE STATISTICS [dbo].[FactInternetSales];
 ```
 
-### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>将新数据加载到包含在一个步骤中的数据的分区
-将数据加载到使用分区切换的分区是一种便捷方式暂存不是对用户可见的表中的新数据中的新数据的交换机。  它很难在非常繁忙的系统来处理与分区切换的锁定争用。  若要清除某个分区中的现有数据`ALTER TABLE`用于需要切换出的数据。  将另一个`ALTER TABLE`需要切换入新数据。  在 SQL 数据仓库`TRUNCATE_TARGET`支持选项`ALTER TABLE`命令。  与`TRUNCATE_TARGET``ALTER TABLE`命令将使用新数据覆盖该分区中的现有数据。  下面是一个示例使用`CTAS`若要使用现有数据，创建一个新表插入新数据，则所有数据都切换到目标表中，覆盖现有数据。
+### <a name="load-new-data-into-partitions-that-contain-data-in-one-step"></a>通过一个步骤将新数据加载到包含数据的分区中
+将数据加载到使用分区开关的分区中可以很方便地将新数据暂存在对用户不可见的表中，然后将新数据切换进来。  在繁忙且需要处理与分区切换相关联的锁定争用的系统中，这可能很具挑战性。  在过去，若要清除分区中的现有数据，需要使用 `ALTER TABLE` 将数据切换出来，  然后需要使用另一 `ALTER TABLE` 将新数据切换进去。  在 SQL 数据仓库中，支持在 `ALTER TABLE` 命令中使用 `TRUNCATE_TARGET` 选项。  带 `TRUNCATE_TARGET` 的 `ALTER TABLE` 命令会使用新数据覆盖分区中的现有数据。  下面是一个示例。此示例使用 `CTAS` 创建一个包含现有数据的新表，插入新数据，然后将所有数据切换回目标表中，覆盖现有的数据。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_NewSales]

@@ -12,11 +12,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: bahariri
 ms.openlocfilehash: 125da95349fce0e75b44b5619baba28d34a74be1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58000489"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822483"
 ---
 # <a name="create-apache-kafka-enabled-event-hubs"></a>创建启用了 Apache Kafka 的事件中心
 
@@ -38,7 +38,7 @@ Azure 事件中心提供了一个 Kafka 终结点。 此终结点允许事件中
     
     ![在门户中搜索事件中心](./media/event-hubs-create-kafka-enabled/event-hubs-create-event-hubs.png)
  
-3. 提供唯一名称并在命名空间上启用 Kafka。 单击“创建”。
+3. 提供唯一名称并在命名空间上启用 Kafka。 单击**创建**。
     
     ![创建命名空间](./media/event-hubs-create-kafka-enabled/create-kafka-namespace.jpg)
  

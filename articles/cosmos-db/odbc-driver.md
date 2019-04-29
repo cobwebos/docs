@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: sngun
 ms.openlocfilehash: a4cf3a9c19497057d7799be3bec78ad0de97e71a
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58851057"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60931893"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>通过 ODBC 驱动程序使用 BI 分析工具连接到 Azure Cosmos DB
 
@@ -97,7 +97,7 @@ Azure Cosmos DB 是一个无架构数据库，可用于快速开发应用程序�
 
 1. 完成定义架构后，请单击“文件” | “保存”，导航到用于保存该架构的目录，并单击“保存”。
 
-1. 若要配合 DSN 使用此架构，请打开**Azure Cosmos DB ODBC 驱动程序 DSN 设置窗口**（通过 ODBC 数据源管理器），单击**高级选项**，然后在**架构文件**框中，导航到保存的架构。 将架构文件保存到现有 DSN 会将 DSN 连接范围修改为架构定义的数据和结构。
+1. 若要配合 DSN 使用此架构，请打开“Azure Cosmos DB ODBC 驱动程序 DSN 设置”窗口（通过“ODBC 数据源管理器”），单击“高级选项”，并在“架构文件”框中导航到保存的架构。 将架构文件保存到现有 DSN 会将 DSN 连接范围修改为架构定义的数据和结构。
 
 ## <a id="table-mapping"></a>步骤 4：使用表分隔符映射方法创建架构定义
 

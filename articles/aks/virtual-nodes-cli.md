@@ -8,11 +8,11 @@ ms.service: container-service
 ms.date: 12/03/2018
 ms.author: iainfou
 ms.openlocfilehash: 38b2654c8f3e8d302a66cac335913583bd4426ef
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59682959"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61024546"
 ---
 # <a name="preview---create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-using-the-azure-cli"></a>预览-创建和配置使用虚拟节点上使用 Azure CLI 的 Azure Kubernetes 服务 (AKS) 群集
 

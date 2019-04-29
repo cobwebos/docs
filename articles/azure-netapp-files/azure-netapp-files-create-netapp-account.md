@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: b-juche
 ms.openlocfilehash: bb43a75b6a221c15c8724302797d04c22e04c8d2
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58113633"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61086105"
 ---
 # <a name="create-a-netapp-account"></a>创建 NetApp 帐户
 创建 NetApp 帐户将能够设置容量池并随后创建卷。 使用“Azure NetApp 文件”边栏选项卡来创建新的 NetApp 帐户。
@@ -54,7 +54,7 @@ ms.locfileid: "58113633"
      ![新建 NetApp 帐户](../media/azure-netapp-files/azure-netapp-files-new-netapp-account.png)
 
 
-5. 单击“创建”。     
+5. 单击**创建**。     
    你创建的 NetApp 帐户现在出现在“Azure NetApp 文件”边栏选项卡中。 
 
 ## <a name="next-steps"></a>后续步骤  

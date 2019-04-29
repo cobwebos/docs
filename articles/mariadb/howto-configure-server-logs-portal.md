@@ -7,17 +7,17 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 4ff2fbd5976a8e203bbc43a87b31ddb1bed63402
-ms.sourcegitcommit: 71ee622bdba6e24db4d7ce92107b1ef1a4fa2600
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/17/2018
-ms.locfileid: "53548810"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61040600"
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>在 Azure 门户中配置和访问服务器日志
 
 可以从 Azure 门户配置、列出和下载 [Azure Database for MariaDB 服务器日志](concepts-server-logs.md)。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 若要逐步执行本操作方法指南，需要：
 - [Azure Database for MariaDB 服务器](quickstart-create-mariadb-server-database-using-azure-portal.md)
 
@@ -29,7 +29,7 @@ ms.locfileid: "53548810"
 2. 选择 Azure Database for MariaDB 服务器。
 
 3. 在侧栏“监视”部分下，选择“服务器日志”。 
-   ![选择“服务器日志”，单击“配置”](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
+   ![选择“服务器日志”，单击以进行配置](./media/howto-configure-server-logs-portal/1-select-server-logs-configure.png)
 
 4. 若要查看服务器参数，请选择标题“单击此处以启用日志并配置日志参数”。
 

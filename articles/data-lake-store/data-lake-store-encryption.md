@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a009f212bd8baaa353d602dc6090aeeccddd4936
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58098128"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60878346"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1 中的数据加密
 
@@ -57,10 +57,10 @@ Data Lake Storage Gen1 提供两种管理主加密密钥 (MEK) 的模式。 现�
 |如何存储数据？|始终在存储前加密。|始终在存储前加密。|
 |在何处存储主加密密钥？|Key Vault|Key Vault|
 |是否可以在 Key Vault 外部存储明文形式的加密密钥？ |否|否|
-|能否通过 Key Vault 检索 MEK？|不是。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|不是。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|
+|能否通过 Key Vault 检索 MEK？|不。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|不。 存储在 Key Vault 中以后，MEK 就只能用于加密和解密。|
 |谁拥有 Key Vault 实例和 MEK？|Data Lake Storage Gen1 服务|拥有 Key Vault 实例，该实例属于自己的 Azure 订阅。 Key Vault 中的 MEK 可以通过软件或硬件进行管理。|
-|能否撤消对 Data Lake Storage Gen1 服务的 MEK 的访问权限？|否|是的。 可以管理 Key Vault 中的访问控制列表，删除 Data Lake Storage Gen1 服务的服务标识的访问控制项。|
-|能否永久删除 MEK？|否|是的。 如果从 Key Vault 中删除 MEK，则任何人（包括 Data Lake Storage Gen1 服务）都不能解密 Data Lake Storage Gen1 帐户中的数据。 <br><br> 如果在将 MEK 从 Key Vault 中删除以前对其进行了显式备份，则可将 MEK 还原，然后对数据进行恢复。 但是，如果在将 MEK 从 Key Vault 中删除以前未对其进行备份，则再也不能在以后解密 Data Lake Storage Gen1 帐户中的数据。|
+|能否撤消对 Data Lake Storage Gen1 服务的 MEK 的访问权限？|否|可以。 可以管理 Key Vault 中的访问控制列表，删除 Data Lake Storage Gen1 服务的服务标识的访问控制项。|
+|能否永久删除 MEK？|否|可以。 如果从 Key Vault 中删除 MEK，则任何人（包括 Data Lake Storage Gen1 服务）都不能解密 Data Lake Storage Gen1 帐户中的数据。 <br><br> 如果在将 MEK 从 Key Vault 中删除以前对其进行了显式备份，则可将 MEK 还原，然后对数据进行恢复。 但是，如果在将 MEK 从 Key Vault 中删除以前未对其进行备份，则再也不能在以后解密 Data Lake Storage Gen1 帐户中的数据。|
 
 
 除了该差异（即谁管理 MEK 及其所在的 Key Vault 实例），该设计的其余部分对两种模式来说都是相同的。

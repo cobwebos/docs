@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 1e00e1f06f2409c94174a752a799cd4c1b7b23ef
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: f078df7677e771d131f15056ac4a54a58a3134bd
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58539966"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60912251"
 ---
 # <a name="azure-dedicated-hsm-deployment-architecture"></a>Azure 专用 HSM 部署体系结构
 
@@ -33,10 +33,10 @@ HSM 分布于 Microsoft 数据中心，并可以作为高度可用解决方案�
 * 美国东部 2
 * 美国西部
 * 美国中南部
-* 亚洲东南部
-* 亚洲东部
-* 欧洲北部
-* 欧洲西部
+* 东南亚
+* 东亚
+* 北欧
+* 西欧
 * 英国南部
 * 英国西部
 * 加拿大中部
@@ -67,6 +67,6 @@ HSM 设备最佳位置是最接近执行加密操作的应用程序的位置。 
 
 * [高可用性](high-availability.md)
 * [物理安全性](physical-security.md)
-* [联网](networking.md)
+* [网络](networking.md)
 * [可支持性](supportability.md)
 * [监视](monitoring.md)

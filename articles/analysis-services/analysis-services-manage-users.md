@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7673b115a3ad2e6ca7aec34b1cfabfb38d2a16f4
-ms.sourcegitcommit: 63b996e9dc7cade181e83e13046a5006b275638d
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/10/2019
-ms.locfileid: "54191354"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60859173"
 ---
 # <a name="authentication-and-user-permissions"></a>身份验证和用户权限
 
@@ -23,7 +23,7 @@ Azure Analysis Services 支持 [Azure AD B2B 协作](../active-directory/active-
 
 ![Azure Analysis Services 身份验证体系结构](./media/analysis-services-manage-users/aas-manage-users-arch.png)
 
-## <a name="authentication"></a>身份验证
+## <a name="authentication"></a>Authentication
 
 所有客户端应用程序和工具都使用一个或多个 Analysis Services [客户端库](analysis-services-data-providers.md)（AMO、MSOLAP、ADOMD）连接到服务器。 
 

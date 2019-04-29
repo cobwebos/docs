@@ -12,11 +12,11 @@ ms.date: 01/31/2019
 ms.author: luisca
 ms.custom: seojan2018
 ms.openlocfilehash: 1fcb12fc2cfae98376210e1924a670cce444f4f2
-ms.sourcegitcommit: 039263ff6271f318b471c4bf3dbc4b72659658ec
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/06/2019
-ms.locfileid: "55757292"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61343333"
 ---
 # <a name="custom-web-api-skill"></a>“自定义 Web API”技能
 
@@ -36,7 +36,7 @@ Microsoft.Skills.Custom.WebApiSkill
 
 参数区分大小写。
 
-| 参数名称     | 说明 |
+| 参数名称     | 描述 |
 |--------------------|-------------|
 | uri | 将 JSON 有效负载发送到的 Web API 的 URI。 只允许使用 https URI 方案 |
 | httpMethod | 发送有效负载时使用的方法。 允许使用的方法为 `PUT` 或 `POST` |

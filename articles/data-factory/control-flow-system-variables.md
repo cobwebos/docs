@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/12/2018
 ms.author: shlo
 ms.openlocfilehash: 9a4d5acfe16a2fdbb3b631cb8baf6cb8e90a7d58
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54016281"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60935698"
 ---
 # <a name="system-variables-supported-by-azure-data-factory"></a>Azure 数据工厂支持的系统变量
 本文介绍了 Azure 数据工厂支持的系统变量。 定义数据工厂实体时，可以在表达式中使用这些变量。
@@ -25,7 +25,7 @@ ms.locfileid: "54016281"
 ## <a name="pipeline-scope"></a>管道范围
 可以在管道 JSON 中的任何位置引用这些系统变量。
 
-| 变量名 | Description |
+| 变量名 | 描述 |
 | --- | --- |
 | @pipeline().DataFactory |在其中运行管道运行的数据工厂的名称 |
 | @pipeline().Pipeline |管道名称 |
@@ -38,7 +38,7 @@ ms.locfileid: "54016281"
 ## <a name="schedule-trigger-scope"></a>计划触发器范围
 如果触发器的类型为以下值，则可以在触发器 JSON 中的任何位置引用这些系统变量：“ScheduleTrigger”。
 
-| 变量名 | Description |
+| 变量名 | 描述 |
 | --- | --- |
 | @trigger().scheduledTime |触发器计划调用管道运行的时间。 例如，对于每 5 分钟触发一次的触发器，此变量将分别返回 `2017-06-01T22:20:00Z`、`2017-06-01T22:25:00Z`、`2017-06-01T22:29:00Z`。|
 | @trigger().startTime |触发器**实际**触发调用管道运行的时间。 例如，对于每 5 分钟触发一次的触发器，此变量可能分别返回类似此 `2017-06-01T22:20:00.4061448Z`、`2017-06-01T22:25:00.7958577Z`、`2017-06-01T22:29:00.9935483Z` 的内容。|
@@ -46,7 +46,7 @@ ms.locfileid: "54016281"
 ## <a name="tumbling-window-trigger-scope"></a>翻转窗口触发器范围
 如果触发器的类型为以下值，则可以在触发器 JSON 中的任何位置引用这些系统变量：“TumblingWindowTrigger”。
 
-| 变量名 | Description |
+| 变量名 | 描述 |
 | --- | --- |
 | @trigger().outputs.windowStartTime |在触发器计划调用管道运行时启动窗口。 如果翻转窗口触发器的频率为“每小时”，则这将是小时开始时的时间。|
 | @trigger().outputs.windowEndTime |在触发器计划调用管道运行时结束窗口。 如果翻转窗口触发器的频率为“每小时”，则这将是小时结束时的时间。|

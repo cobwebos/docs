@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 11/07/2018
 ms.author: babanisa
 ms.openlocfilehash: 0195ce82396a7b05335242a38a2881e1b2d1afb3
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317487"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61436590"
 ---
 # <a name="use-cloudevents-schema-with-event-grid"></a>将 CloudEvents 架构与事件网格配合使用
 
@@ -67,13 +67,13 @@ CloudEvents v0.1 提供以下属性：
 | eventType          | String   | "com.example.someevent"          | 发生的事件的类型                                   | eventType
 | eventTypeVersion   | String   | "1.0"                            | eventType 的版本（可选）                            | dataVersion
 | cloudEventsVersion | String   | "0.1"                            | 事件使用的 CloudEvents 规范的版本        | *已传递*
-| 源             | URI      | "/mycontext"                     | 描述事件生成者                                       | topic#subject
+| source             | URI      | "/mycontext"                     | 描述事件生成者                                       | topic#subject
 | eventID            | String   | "1234-1234-1234"                 | 事件的 ID                                                    | id
 | EventTime          | Timestamp| "2018-04-05T17:31:00Z"           | 事件发生时的时间戳（可选）                    | EventTime
 | schemaURL          | URI      | "https:\//myschema.com"           | 数据属性所遵循的架构的链接（可选） | 未使用
 | contentType        | String   | "application/json"               | 描述数据编码格式（可选）                       | 未使用
 | 扩展         | 映射      | { "extA": "vA", "extB", "vB" }  | 任何其他的元数据（可选）                                 | 未使用
-| 数据               | 对象   | { "objA": "vA", "objB", "vB" }  | 事件有效负载（可选）                                       | 数据
+| 数据               | Object   | { "objA": "vA", "objB", "vB" }  | 事件有效负载（可选）                                       | 数据
 
 有关详细信息，请参阅 [CloudEvents 规范](https://github.com/cloudevents/spec/blob/master/spec.md#context-attributes)。
 

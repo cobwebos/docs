@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: 0a6102d1-7554-4df2-b487-4dae9a7287b6
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: f84cb59e7d4fd7d8301d22348ca066a7f9d9e94e
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
-ms.translationtype: HT
+ms.openlocfilehash: 64095f6706bb978cd33b8fe7833fe4e65fc3b0f8
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048812"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813423"
 ---
 # <a name="manage-azure-data-lake-analytics-using-policies"></a>使用策略管理 Azure Data Lake Analytics
 
@@ -45,7 +45,7 @@ ms.locfileid: "43048812"
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
-3. 在“运行作业的最大数”下，移动滑块选择一个值，或在文本框中输入值。 
+3. 在 **“运行作业的最大数”** 下，移动滑块选择一个值，或在文本框中输入值。 
 4. 单击“ **保存**”。
 
 > [!NOTE]
@@ -59,7 +59,7 @@ ms.locfileid: "43048812"
 
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
-3. 在“保留作业查询的天数”下，移动滑块选择一个值，或在文本框中输入值。  
+3. 在 **“保留作业查询的天数”** 下，移动滑块选择一个值，或在文本框中输入值。  
 4. 单击“ **保存**”。
 
 ## <a name="job-level-policies"></a>作业级策略
@@ -68,8 +68,8 @@ ms.locfileid: "43048812"
 
 Data Lake Analytics 有两个可在作业级别设置的策略：
 
-* 每个作业的 AU 限制：用户只可以提交所含 AU 数不超过此数字的作业。 默认情况下，此限制与帐户的最大 AU 限制相同。
-* 优先级：用户只可提交优先级低于或等于此值的作业。 数字越大优先级越低。 默认情况下，此限制值设置为 1，这是可能的最高优先级。
+* **每个作业的 AU 限制**:用户只可以提交到此数量的 Au 最多有的作业。 默认情况下，此限制与帐户的最大 AU 限制相同。
+* **优先级**：用户只可提交优先级低于或等于此值的作业。 数字越大优先级越低。 默认情况下，此限制值设置为 1，这是可能的最高优先级。
 
 对每个帐户都设有默认策略。 默认策略适用于帐户的所有用户。 可为特定用户和组设置其他策略。 
 
@@ -82,10 +82,10 @@ Data Lake Analytics 有两个可在作业级别设置的策略：
 1. 在 Azure 门户中转到 Data Lake Analytics 帐户。
 2. 单击“属性”。
 3. 在“作业提交限制”下，单击“添加策略”按钮。 然后选择或输入以下设置：
-    1. 计算策略名称：输入策略名称，提醒策略的用途。
-    2. 选择用户或组：选择此策略适用的用户或组。
-    3. 设置作业 AU 限制：设置适用于所选用户或组的 AU 限制。
-    4. 设置优先级限制：设置适用于所选用户或组的优先级限制。
+    1. **计算策略名称**:输入策略名称，以提醒你该策略的用途。
+    2. **选择用户或组**:选择此策略应用到组的用户。
+    3. **设置作业 AU 限制**:设置适用于所选的用户或组的 AU 限制。
+    4. **设置优先级限制**:设置适用于所选的用户或组的优先级限制。
 
 4. 单击“确定” 。
 

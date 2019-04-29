@@ -11,11 +11,11 @@ ms.service: cost-management
 manager: dougeby
 ms.custom: seodec18
 ms.openlocfilehash: 8471ae8ed0b391df11d81569b5660a2b098f5793
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58000917"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61021340"
 ---
 # <a name="tutorial-optimize-costs-from-recommendations"></a>教程：根据建议优化成本
 
@@ -29,7 +29,7 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 > * 验证操作，确保成功调整虚拟机的大小
 
 ## <a name="prerequisites"></a>必备组件
-建议是可用于多个作用域和 Azure 帐户类型，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
+建议是可用于多个作用域和 Azure 帐户类型，包括[企业协议 (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)客户。 若要查看支持的帐户类型的完整列表，请参阅[了解成本管理数据](understand-cost-mgt-data.md)。 必须至少具有以下一个或多个范围的读取权限才能查看成本数据。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 - 订阅
 - 资源组
@@ -43,7 +43,7 @@ Azure 成本管理与 Azure 顾问相结合，可以提供成本优化建议。 
 
 若要查看订阅的成本优化建议，可在 Azure 门户并选择中打开所需的范围**顾问建议**。
 
-若要查看管理组的建议，可在 Azure 门户并选择中打开所需的范围**成本分析**菜单中。 使用**作用域**药丸切换到不同的作用域，例如管理组。 选择**顾问建议**菜单中。 有关作用域的详细信息，请参阅[了解和使用作用域](understand-work-scopes.md)。
+若要查看管理组的建议，可在 Azure 门户并选择中打开所需的范围**成本分析**菜单中。 使用**作用域**药丸切换到不同的作用域，例如管理组。 选择**顾问建议**菜单中。 有关范围的详细信息，请参阅[了解并使用范围](understand-work-scopes.md)。
 
 ![在 Azure 门户中显示的成本管理顾问建议](./media/tutorial-acm-opt-recommendations/advisor-recommendations.png)
 

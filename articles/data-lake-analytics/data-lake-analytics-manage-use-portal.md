@@ -10,11 +10,11 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: conceptual
 ms.date: 12/05/2016
 ms.openlocfilehash: 8b2f16f45be1d095e9be8042611de328af36f064
-ms.sourcegitcommit: 333d4246f62b858e376dcdcda789ecbc0c93cd92
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/01/2018
-ms.locfileid: "52724054"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60813434"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>使用 Azure 门户管理 Azure Data Lake Analytics
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,7 +37,7 @@ ms.locfileid: "52724054"
    3. **资源组**：要在其中创建帐户的 Azure 资源组。 
    4. **位置**：Data Lake Analytics 帐户的 Azure 数据中心。 
    5. **Data Lake Store**：用于 Data Lake Analytics 帐户的默认存储。 Azure Data Lake Store 帐户和 Data Lake Analytics 帐户必须位于同一位置。
-4. 单击“创建”。 
+4. 单击**创建**。 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>删除 Data Lake Analytics 帐户
 

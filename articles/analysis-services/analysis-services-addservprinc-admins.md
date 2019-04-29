@@ -9,11 +9,11 @@ ms.date: 01/09/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 701be795ca217c4a2dc5a7dbaa3a3717d16c85bc
-ms.sourcegitcommit: 90c6b63552f6b7f8efac7f5c375e77526841a678
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/23/2019
-ms.locfileid: "56730216"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61024587"
 ---
 # <a name="add-a-service-principal-to-the-server-administrator-role"></a>将服务主体添加到服务器管理员角色 
 
@@ -25,7 +25,7 @@ ms.locfileid: "56730216"
 [创建服务主体 - Azure 门户](../active-directory/develop/howto-create-service-principal-portal.md)   
 [创建服务主体 - PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
-## <a name="required-permissions"></a>所需的权限
+## <a name="required-permissions"></a>所需权限
 若要完成此项任务，在 Azure AS 服务器上必须具备[服务器管理员](analysis-services-server-admins.md)权限。 
 
 ## <a name="add-service-principal-to-server-administrators-role"></a>将服务主体添加到服务器管理员角色
@@ -42,7 +42,7 @@ ms.locfileid: "56730216"
 
 
 > [!NOTE]
-> 对于使用 Azure PowerShell cmdlet 的服务器操作，服务主体运行计划程序还必须属于**所有者**中的资源的角色[azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md)。 
+> 对于使用 Azure PowerShell cmdlet 进行的服务器操作，运行计划程序的服务主体还必须属于 [Azure 基于角色的访问控制 (RBAC)](../role-based-access-control/overview.md) 中资源的“所有者”角色。 
 
 ## <a name="related-information"></a>相关信息
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/29/2018
 ms.author: yijenj
 ms.openlocfilehash: 3c07f7ac2b6407a3edf53fd5d3a4b402714fefbb
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59678898"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61064993"
 ---
 # <a name="azure-marketplace-commercial-transaction-capabilities-and-considerations"></a>Azure 市场‎商业交易功能和注意事项
 
@@ -165,7 +165,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 例如，如果客户使用信用卡购买：
 
-|描述    |    日期  |
+|描述    |    date  |
 |----------|----------|
 |订购期   | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（月）   | 2018 年 8 月 30 日 |
@@ -179,7 +179,7 @@ Microsoft 使客户能够订购、许可和使用发布者软件，受 Azure 市
 
 如果客户使用企业协议购买：
 
-| 描述 |    日期  |
+| 描述 |    date  |
 |----------|----------|
 |订购期 | 2018 年 8 月 15 日 - 2018 年 8 月 30 日 |
 |期限结束（季度） | 2018 年 9 月 30 日 |

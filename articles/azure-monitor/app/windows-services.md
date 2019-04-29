@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
 ms.openlocfilehash: 85764c0ee5b8ed117fb191657d54abe5bd10a703
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54116545"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60784359"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>为 .NET 应用程序手动配置 Application Insights
 
@@ -75,7 +75,7 @@ Application Insights 程序包的安装和配置因使用的平台而异。
     
     *是否可以使用其他包？*
    
-    是的。 如果只想使用 API 发送自己的遥测，请选择“Microsoft.ApplicationInsights”。 Windows Server 包会包括 API 以及若干其他包，例如性能计数器集合和依赖项监视。 
+    可以。 如果只想使用 API 发送自己的遥测，请选择“Microsoft.ApplicationInsights”。 Windows Server 包会包括 API 以及若干其他包，例如性能计数器集合和依赖项监视。 
 
 ### <a name="to-upgrade-to-future-package-versions"></a>升级到未来的程序包版本
 我们会不时发布 SDK 的新版本。

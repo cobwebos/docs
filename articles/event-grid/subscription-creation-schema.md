@@ -9,11 +9,11 @@ ms.topic: reference
 ms.date: 01/02/2019
 ms.author: babanisa
 ms.openlocfilehash: 9464ab89e08f53f61cb6f5a4b1e91da35b785af0
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54460816"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822784"
 ---
 # <a name="event-grid-subscription-schema"></a>事件网格订阅架构
 
@@ -33,26 +33,26 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
  
 ## <a name="event-subscription-properties"></a>事件订阅属性
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | 目标 | 对象 | 定义终结点的对象。 |
 | filter | 对象 | 用于筛选事件类型的可选字段。 |
 
 ### <a name="destination-object"></a>目标对象
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
-| endpointType | 字符串 | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
-| endpointUrl | 字符串 | 此事件订阅中的事件的目标 URL。 | 
+| endpointType | string | 订阅（webhook/HTTP、事件中心或队列）的终结点类型。 | 
+| endpointUrl | string | 此事件订阅中的事件的目标 URL。 | 
 
 ### <a name="filter-object"></a>筛选器对象
 
-| 属性 | 类型 | 说明 |
+| 属性 | Type | 描述 |
 | -------- | ---- | ----------- |
 | includedEventTypes | 数组 | 当事件消息中的事件类型与这些事件类型名称之一完全匹配时匹配。 当事件名称与事件源的已注册事件类型名称不匹配时，将引发错误。 默认匹配所有事件类型。 |
-| subjectBeginsWith | 字符串 | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
-| subjectEndsWith | 字符串 | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
-| isSubjectCaseSensitive | 字符串 | 用于筛选器的区分大小写匹配的控件。 |
+| subjectBeginsWith | string | 事件消息中使用者字段的前缀匹配筛选器。 默认或空字符串匹配所有类型。 | 
+| subjectEndsWith | string | 事件消息中使用者字段的后缀匹配筛选器。 默认或空字符串匹配所有类型。 |
+| isSubjectCaseSensitive | string | 用于筛选器的区分大小写匹配的控件。 |
 
 
 ## <a name="example-subscription-schema"></a>订阅架构示例

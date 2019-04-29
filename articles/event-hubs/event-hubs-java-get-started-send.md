@@ -11,11 +11,11 @@ ms.custom: seodec18
 ms.date: 04/15/2019
 ms.author: shvija
 ms.openlocfilehash: 0487cac6a0cf7d37befdf0d7cfab33ad6a62cf7f
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59679622"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822873"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-java"></a>事件发送到或从使用 Java 的 Azure 事件中心接收事件
 

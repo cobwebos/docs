@@ -2,17 +2,18 @@
 title: 使用 Azure 容器注册表从 Azure 容器实例进行身份验证
 description: 了解如何使用 Azure Active Directory 服务主体从 Azure 容器实例允许访问专用容器注册表中的映像。
 services: container-registry
-author: dlepow
+author: rockboyfor
 ms.service: container-registry
 ms.topic: article
-ms.date: 04/23/2018
-ms.author: danlep
+origin.date: 04/23/2018
+ms.date: 03/25/2019
+ms.author: v-yeche
 ms.openlocfilehash: 8a2d19a09233e510055e147fa1cf95dd4471768b
-ms.sourcegitcommit: 9f07ad84b0ff397746c63a085b757394928f6fc0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/17/2019
-ms.locfileid: "54390664"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61333561"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-instances"></a>使用 Azure 容器注册表从 Azure 容器实例进行身份验证
 
@@ -34,12 +35,12 @@ ms.locfileid: "54390664"
 
 若要使用服务主体启动 Azure 容器实例中的容器，请为 `--registry-username` 指定其 ID，并为 `--registry-password` 指定其密码。
 
-```azurecli-interactive
+```azurecli
 az container create \
     --resource-group myResourceGroup \
     --name mycontainer \
-    --image mycontainerregistry.azurecr.io/myimage:v1 \
-    --registry-login-server mycontainerregistry.azurecr.io \
+    --image mycontainerregistry.azurecr.cn/myimage:v1 \
+    --registry-login-server mycontainerregistry.azurecr.cn \
     --registry-username <service-principal-ID> \
     --registry-password <service-principal-password>
 ```

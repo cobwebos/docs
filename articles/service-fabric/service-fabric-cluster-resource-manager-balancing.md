@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 74fe4f7c4c231f80c7555f39f840a85baae310e9
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58662017"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809438"
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>均衡 Service Fabric 群集
 Service Fabric 群集资源管理器支持动态负载更改、对添加或删除节点或服务做出反应。 还会自动更正约束冲突和主动重新均衡群集。 但这些操作的执行频率是多少，又是什么触发了这些操作？
@@ -123,7 +123,7 @@ ClusterManifest.xml
 
 <center>
 
-![平衡阈值示例][Image1]
+![均衡阈值示例][Image1]
 </center>
 
 在此示例中，每个服务使用一个单位的指标。 在顶部的示例中，节点的最大负载为 5，最小负载为 2。 假设此指标的均衡阈值为 3。 由于群集中的比率是 5/2 = 2.5，小于指定的均衡阈值 3，所以群集是均衡的。 群集 Resource Manager 执行检查时，不会触发均衡。
@@ -132,7 +132,7 @@ ClusterManifest.xml
 
 <center>
 
-![平衡阈值示例操作][Image2]
+![均衡阈值示例操作][Image2]
 </center>
 
 > [!NOTE]
@@ -198,7 +198,7 @@ ClusterManifest.xml
 
 <center>
 
-![一起平衡服务][Image4]
+![一起均衡服务][Image4]
 </center>
 
 由于此链条，指标 1-4 不均衡可能会导致属于服务 1-3 的副本或实例四处移动。 此外，指标 1、2 或 3 不均衡一定不会在 Service4 中引起移动。 因为移动属于 Service4 的副本或实例绝对不会影响指标 1-3 的均衡，所以这样做毫无意义。
@@ -207,7 +207,7 @@ ClusterManifest.xml
 
 <center>
 
-![一起平衡服务][Image5]
+![一起均衡服务][Image5]
 </center>
 
 ## <a name="next-steps"></a>后续步骤

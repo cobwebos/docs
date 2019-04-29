@@ -13,17 +13,17 @@ ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
 ms.openlocfilehash: 1c8400898dba59f312ba9d994ee711a5e241973a
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48267998"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60946716"
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric 环境变量
 
 Service Fabric 为每个服务实例提供了内置环境变量集。 下面是环境变量的完整列表：
 
-| 环境变量                         | Description                                                            | 示例                                                              |
+| 环境变量                         | 描述                                                            | 示例                                                              |
 |----------------------------------------------|------------------------------------------------------------------------|----------------------------------------------------------------------|
 | Fabric_ApplicationName                       | 应用程序的 fabric uri 名称                                 | fabric:/MyApplication                                                |
 | Fabric_CodePackageName                       | 进程所属的代码包的名称              | 代码                                                                 |

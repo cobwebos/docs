@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.openlocfilehash: ad7d4dceefcaa06effa6b2974b0a8a03ad641372
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58372229"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60794042"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps 交通覆盖区域
 
@@ -23,7 +23,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="americas"></a>美洲
 
-|国家/地区  |事故  |流向  |
+|国家/地区  |事故  |流  |
 |---------|:---------:|:---------:|
 |阿根廷      |✓         |✓         |
 |巴西     |✓         |✓         |
@@ -39,7 +39,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="asia-pacific"></a>亚太区
 
-|国家/地区   |事故  |流向  |
+|国家/地区   |事故  |流  |
 |---------|:---------:|:---------:|
 |澳大利亚     |✓         |✓        |
 |文莱   |✓         |✓        |
@@ -58,7 +58,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="europe"></a>欧洲
 
-|国家/地区   |事故  |流向  |
+|国家/地区   |事故  |流  |
 |---------|:---------:|:---------:|
 |安道尔   |✓         |✓         |
 |奥地利     |✓         |✓         |
@@ -112,7 +112,7 @@ Azure Maps 以交通**流**和**事件**的形式提供丰富的交通信息。 
 
 ## <a name="middle-east-and-africa"></a>中东和非洲
 
-|国家/地区 |事故  |流向  |
+|国家/地区 |事故  |流  |
 |---------|:---------:|:---------:|
 |巴林     |✓         |✓         |
 |埃及     |✓         |✓         |

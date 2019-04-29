@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: shlo
 ms.openlocfilehash: 6ec43b06ce266b9ceaddb5dd21cbf52f509d6596
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59495902"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764299"
 ---
 # <a name="webhook-activity-in-azure-data-factory"></a>Azure 数据工厂中的 Webhook 活动
 Web 挂钩活动可用于通过自定义代码控制执行管道。 使用 webhook 活动，客户可以调用终结点，并将传递回叫 URL。 管道运行等待下一个活动的继续操作之前调用的回调。
@@ -58,7 +58,7 @@ Web 挂钩活动可用于通过自定义代码控制执行管道。 使用 webho
 -------- | ----------- | -------------- | --------
 名称 | Web 挂钩活动的名称 | String | 是 |
 type | 必须设置为**WebHook**。 | String | 是 |
-方法 | 目标终结点的 Rest API 方法。 | 字符串。 支持的类型：POST | 是 |
+method | 目标终结点的 Rest API 方法。 | 字符串。 支持的类型：POST | 是 |
 url | 目标终结点和路径 | 字符串（或带有 resultType 字符串的表达式）。 | 是 |
 headers | 发送到请求的标头。 例如，若要在请求中设置的语言和类型:"标头": {"接受语言":"en-我们"、"内容类型":"application/json"}。 | 字符串（或带有 resultType 字符串的表达式） | 是，需要内容类型标头。 "headers":{ "Content-Type":"application/json"} |
 body | 表示要发送到终结点的有效负载。 | 正文传递回调用返回 URI 应为有效的 JSON。 请参阅[请求有效负载架构](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fdocs.microsoft.com%2Fen-us%2Fazure%2Fdata-factory%2Fcontrol-flow-web-activity%23request-payload-schema&amp;data=02%7C01%7Cshlo%40microsoft.com%7Cde517eae4e7f4f2c408d08d6b167f6b1%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636891457414397501&amp;sdata=ljUZv5csQQux2TT3JtTU9ZU8e1uViRzuX5DSNYkL0uE%3D&amp;reserved=0)部分中的请求有效负载架构。 | 是 |

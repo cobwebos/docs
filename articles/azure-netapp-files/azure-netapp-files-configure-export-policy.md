@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: b-juche
 ms.openlocfilehash: 8cda5921a1aec86d28beabbd9cea5b07a203a0e8
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401490"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61086141"
 ---
-# <a name="configure-export-policy-for-an-nfs-volume"></a>配置导出策略的 NFS 卷
+# <a name="configure-export-policy-for-an-nfs-volume"></a>为 NFS 卷配置导出策略
 
 你可以配置导出策略来控制对 Azure NetApp 文件卷的访问。 导出策略是仅对 NFS 卷的支持。 
 

@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 03/22/2019
 ms.author: raynew
 ms.openlocfilehash: d96b898c8f72abd7e4eb3522ae046e9fc926f387
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58403572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60809303"
 ---
 # <a name="enable-backup-when-you-create-an-azure-vm"></a>在创建 Azure VM 时启用备份
 
@@ -45,7 +45,7 @@ ms.locfileid: "58403572"
 
 8. 接受默认备份策略，或修改的设置。
     - 备份策略指定如何频繁执行备份快照的 VM，并保留这些备份副本的时间长度。 
-    - 默认策略将每天一次备份 VM。
+    - 默认策略每天备份 VM 一次。
     - 您可以自定义自己的备份策略以进行每日或每周备份 Azure VM。
     - [了解详细信息](backup-azure-vms-introduction.md#backup-and-restore-considerations)有关 Azure Vm 备份时的注意事项。
     - [了解详细信息](backup-instant-restore-capability.md)关于即时还原功能。

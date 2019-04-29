@@ -12,14 +12,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache
 ms.devlang: multiple
 ms.topic: article
-ms.date: 01/23/2017
-ms.author: yegu
+origin.date: 01/23/2017
+ms.date: 02/27/2019
+ms.author: v-junlch
 ms.openlocfilehash: 73c771ab18d1cc2944298818c1cab90eb2f277ff
-ms.sourcegitcommit: de81b3fe220562a25c1aa74ff3aa9bdc214ddd65
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/13/2019
-ms.locfileid: "56238396"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60829797"
 ---
 # <a name="azure-cache-for-redis-samples"></a>“用于 Redis 的 Azure 缓存”示例
 本主题提供 Azure Redis 缓存示例列表，包括连接到缓存、从缓存读取数据和将数据写入缓存，以及使用 ASP.NET Azure Redis 缓存提供程序等方案。 有些示例是可下载的项目，有些示例提供了分步指南并包含代码片段但没有链接到可下载的项目。
@@ -31,14 +32,14 @@ ms.locfileid: "56238396"
 
 此示例演示如何：
 
-* 使用不同的连接选项
-* 使用同步和异步操作与缓存相互读取和写入对象
-* 使用 Redis MGET/MSET 命令返回指定键的值
-* 执行 Redis 事务操作
-* 处理 Redis 列表和排序集
-* 使用 JsonConvert 序列化程序存储.NET 对象
-* 使用 Redis 集实现标记
-* 使用 Redis 群集
+- 使用不同的连接选项
+- 使用同步和异步操作与缓存相互读取和写入对象
+- 使用 Redis MGET/MSET 命令返回指定键的值
+- 执行 Redis 事务操作
+- 处理 Redis 列表和排序集
+- 使用 JsonConvert 序列化程序存储.NET 对象
+- 使用 Redis 集实现标记
+- 使用 Redis 群集
 
 有关详细信息，请参阅 GitHub 上的 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis)；有关更多的使用方案，请参阅 [StackExchange.Redis.Tests](https://github.com/StackExchange/StackExchange.Redis/tree/master/tests) 单元测试。
 
@@ -52,8 +53,8 @@ ms.locfileid: "56238396"
 ## <a name="azure-cache-for-redis-customer-query-sample"></a>Azure Redis 缓存客户查询示例
 此示例对从缓存访问数据与从持久存储访问数据时的性能进行了比较。 此示例有两个项目。
 
-* [展示 Azure Redis 缓存如何通过对数据进行缓存提高性能](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
-* [为进行展示创立数据库和缓存](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
+- [展示 Azure Redis 缓存如何通过对数据进行缓存提高性能](https://github.com/rustd/RedisSamples/tree/master/RedisCacheCustomerQuerySample)
+- [为进行展示创立数据库和缓存](https://github.com/rustd/RedisSamples/tree/master/SeedCacheForCustomerQuerySample)
 
 ## <a name="aspnet-session-state-and-output-caching"></a>ASP.NET 会话状态和输出缓存
 [使用 Azure Redis 缓存存储 ASP.NET SessionState 和 OutputCache](https://github.com/rustd/RedisSamples/tree/master/SessionState_OutputCaching)示例演示如何使用 Azure Redis 缓存通过为 Redis 使用 SessionState 和 OutputCache 提供程序来存储 ASP.NET 会话和输出缓存。
@@ -69,4 +70,6 @@ ms.locfileid: "56238396"
 
 ## <a name="bandwidth-monitor"></a>带宽监视器
 借助[带宽监视器](https://github.com/JonCole/SampleCode/tree/master/BandWidthMonitor)示例，可监视客户端上使用的带宽。 要测量带宽、请在缓存客户端计算机上运行该示例，对缓存执行调用，并观察带宽监视器示例报告的带宽。
+
+<!-- Update_Description: update metedata properties -->
 

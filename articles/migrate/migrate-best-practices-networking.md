@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 12/04/2018
 ms.author: raynew
 ms.openlocfilehash: 302445038dc9767bd412e232f62fc5249a1a7f09
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55696936"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61296265"
 ---
 # <a name="best-practices-to-set-up-networking-for-workloads-migrated-to-azure"></a>为迁移到 Azure 的工作负荷设置网络的最佳做法
 
@@ -366,7 +366,7 @@ NIC4 | AsgDb
     **规则名称** | **用途** | **详细信息**
     --- | --- | ---   
     Allow-HTTP-Inbound-Internet | 让流量从 Internet 流到 Web 服务器。 来自 Internet 的入站流量被 DenyAllInbound 默认安全规则拒绝，因此 AsgLogic 或 AsgDb 应用程序安全组不需其他规则。 | 优先级：100<br/><br/> 源：Internet<br/><br/> 源端口：*<br/><br/> 目标：AsgWeb<br/><br/> 目标端口：80<br/><br/> 协议：TCP<br/><br/> 访问：允许。
-    Deny-Database-All | AllowVNetInBound 默认安全规则允许在同一 VNet 中的资源之间进行的所有通信，需使用此规则来拒绝来自所有资源的流量。 | 优先级：120<br/><br/> 源：*<br/><br/> 源端口：*<br/><br/> 目标：AsgDb<br/><br/> 目标端口：1433<br/><br/> 协议：All<br/><br/> 访问：拒绝。
+    Deny-Database-All | AllowVNetInBound 默认安全规则允许在同一 VNet 中的资源之间进行的所有通信，需使用此规则来拒绝来自所有资源的流量。 | 优先级：120<br/><br/> 源：*<br/><br/> 源端口：*<br/><br/> 目标：AsgDb<br/><br/> 目标端口：1433<br/><br/> 协议：全部<br/><br/> 访问：拒绝。
     Allow-Database-BusinessLogic | 允许从 AsgLogic 应用程序安全组到 AsgDb 应用程序安全组的流量。 此规则的优先级高于 Deny-Database-All 规则，会优先处理此规则，这样系统就会允许来自 AsgLogic 应用程序安全组的流量，而阻止所有其他流量。 | 优先级：110<br/><br/> 源：AsgLogic<br/><br/> 源端口：*<br/><br/> 目标：AsgDb<br/><br/> 目标端口：1433<br/><br/> 协议：TCP<br/><br/> 访问：允许。
 
 - 将应用程序安全组指定为源或目标的规则只会应用到属于应用程序安全组成员的网络接口。 如果网络接口不是应用程序安全组的成员，则规则不会应用到网络接口，即使网络安全组关联到子网。

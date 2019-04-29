@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
-ms.openlocfilehash: 1e6c71a68c4357d82d086f3e2ca098e4039def5a
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
-ms.translationtype: HT
+ms.openlocfilehash: 25d58bdc5791de868c6302b4d2763fa34e98af17
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295744"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60615046"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>通过 Azure 门户开始使用 Azure Data Lake Analytics
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -32,11 +32,11 @@ ms.locfileid: "46295744"
 1. 登录到 [Azure 门户](https://portal.azure.com)。
 2. 单击“创建资源” >  “数据 + 分析” > “Data Lake Analytics”。
 3. 为以下项选择值：
-   * **名称**：为 Data Lake Analytics 帐户命名（只允许小写字母和数字）。
+   * **名称**：命名你的 Data Lake Analytics 帐户 （仅小写字母和数字允许）。
    * **订阅**：选择用于 Analytics 帐户的 Azure 订阅。
    * **资源组**。 选择现有的 Azure 资源组或创建新的资源组。
    * **位置**。 为 Data Lake Analytics 帐户选择 Azure 数据中心。
-   * **Data Lake Storage Gen1**：按照说明创建新的 Data Lake Storage Gen1 帐户，或选择现有帐户。 
+   * **Data Lake Storage Gen1**：按照说明创建新的数据湖存储 Gen1 帐户，或选择现有帐户。 
 4. （可选）为 Data Lake Analytics 帐户选择定价层。
 5. 单击“创建”。 
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor 中的视图设计器部件的参考指南 |Microsoft Docs
-description: 通过 Azure Monitor 中使用视图设计器，可以创建自定义视图，在 Azure 门户中显示并包含各种上 Log Analytics 工作区中数据的可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
+description: 可以通过 Azure Monitor 中的视图设计器创建自定义视图，此类视图在 Azure 门户中显示，包含 Log Analytics 工作区中的多种基于数据的可视化效果。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,14 +14,14 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
 ms.openlocfilehash: dead1fae9bc3287ed0fc80c6120914e965ef96dd
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59493019"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61341797"
 ---
-# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中的视图设计器可视化部件参考指南
-通过 Azure Monitor 中使用视图设计器，可以在可帮助你可视化 Log Analytics 工作区中的数据在 Azure 门户中创建各种自定义视图。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
+# <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Azure Monitor 中视图设计器可视化部件的参考指南
+在 Azure Monitor 中使用视图设计器即可在 Azure 门户中创建各种自定义视图，使 Log Analytics 工作区中的数据可视化。 本文针对自定义视图中可用的可视化部件，提供设置方面的参考指南。
 
 有关视图设计器的详细信息，请参阅：
 
@@ -33,9 +33,9 @@ ms.locfileid: "59493019"
 
 | 视图类型 | 描述 |
 |:--- |:--- |
-| [查询列表](#list-of-queries-part) |显示的日志查询的列表。 可以选择每个查询以显示其结果。 |
-| [数字和列表](#number-and-list-part) |标头显示一个数字，以显示来自一个日志查询中的记录。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。 |
-| [两个数字和列表](#two-numbers-and-list-part) |标头显示显示来自单独日志查询的记录数的两个数字。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。 |
+| [查询列表](#list-of-queries-part) |显示日志查询的列表。 可以选择每个查询以显示其结果。 |
+| [数字和列表](#number-and-list-part) |标头具有单个数字，用于表示来自日志查询中的记录数。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。 |
+| [两个数字和列表](#two-numbers-and-list-part) |标头显示两个数字，用于表示来自单独日志查询中的记录数。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。 |
 | [圆环图和列表](#donut-and-list-part) |标头显示从日志查询中的值列汇总的单个数字。 此圆环图以图形方式显示了前三个记录的结果。 |
 | [两条时间线和列表](#two-timelines-and-list-part) |标头将一段时间内两个日志查询的结果显示为带有标注的柱形图，以显示从日志查询中的值列汇总的单个数字。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。 |
 | [信息](#information-part) |标头显示静态文本和可选的链接。 列表显示带有静态文本和标题的一个或多个项。 |
@@ -46,10 +46,10 @@ ms.locfileid: "59493019"
 后续部分将详细介绍磁贴类型及其属性。
 
 > [!NOTE]
-> 在视图中的部件都基于[记录查询](../log-query/log-query-overview.md)Log Analytics 工作区中。 它们当前不支持[跨资源查询](../log-query/cross-workspace-query.md)从 Application Insights 中检索数据。
+> 视图中的部件基于 Log Analytics 工作区中的[日志查询](../log-query/log-query-overview.md)。 它们目前不支持使用[跨资源查询](../log-query/cross-workspace-query.md)从 Application Insights 检索数据。
 
 ## <a name="list-of-queries-part"></a>查询列表部分
-查询部件的列表显示的日志查询的列表。 可以选择每个查询以显示其结果。 默认情况下，视图将包括单个查询，可以选择“+ 查询”添加其他查询。
+查询列表部件显示日志查询的列表。 可以选择每个查询以显示其结果。 默认情况下，视图将包括单个查询，可以选择“+ 查询”添加其他查询。
 
 ![查询列表视图](media/view-designer-parts/view-list-queries.png)
 
@@ -65,7 +65,7 @@ ms.locfileid: "59493019"
 | 友好名称 | 显示的描述性名称。 |
 
 ## <a name="number-and-list-part"></a>数字和列表部件
-标头显示一个数字，以显示来自一个日志查询中的记录。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
+标头具有单个数字，用于表示来自日志查询中的记录数。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![查询列表视图](media/view-designer-parts/view-number-list.png)
 
@@ -94,7 +94,7 @@ ms.locfileid: "59493019"
 | 启用阈值 |选择此链接可启用阈值。 有关详细信息，请参阅[通用设置](#thresholds)。 |
 
 ## <a name="two-numbers-and-list-part"></a>两个数字和列表部件
-标头具有两个显示来自单独日志查询的记录数的数字。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
+标头具有两个数字，用于表示来自单独日志查询中的记录数。 列表显示查询的前十个结果，其中的图形指示数值列的相关值或其随时间的变化。
 
 ![两个数字和列表视图](media/view-designer-parts/view-two-numbers-list.png)
 
@@ -143,7 +143,7 @@ ms.locfileid: "59493019"
 | Query |要为该圆环图运行的查询。 第一个属性应为文本值，第二个属性应为数值。 |
 | 点击导航 | 单击标题时执行的操作。  有关详细信息，请参阅[通用设置](#click-through-navigation)。 |
 | **圆环图** |**> 中心** |
-| 文本 |在该圆环图中的值下显示的文本。 |
+| Text |在该圆环图中的值下显示的文本。 |
 | Operation |要在值属性上执行以汇总到单个值的操作。<ul><li>总和：添加所有记录的值。</li><li>百分比：**用于中心操作的结果值**中的值所返回的记录数占查询中的记录总数的比率。</li></ul> |
 | 用于中心操作的结果值 |（可选）选择加号 (+) 可添加一个或多个值。 查询的结果将限于具有指定属性值的记录。 如果没有添加任何值，则查询中包含所有记录。 |
 | **其他选项** |**> 颜色** |
@@ -209,7 +209,7 @@ ms.locfileid: "59493019"
 | 新建组 |选择此链接可在以当前视图开始的视图中创建新组。 |
 | 颜色 |标头的背景色。 |
 | **标头** | |
-| 映像 |标头中显示的图像文件。 |
+| Image |标头中显示的图像文件。 |
 | Label |标头中显示的文本。 |
 | **标头** |**> 链接** |
 | Label |链接文本。 |
@@ -325,14 +325,14 @@ ms.locfileid: "59493019"
 例如，考虑一个名为 *Location* 的属性，该属性包括 *Redmond-Building 41* 和 *Bellevue-Building 12* 等值。 可以指定短划线 (–) 作为名称和值分隔符，指定 *City-Building* 作为名称。 此方法会将每个值分析为两个称作 *City* 和 *Building* 的属性。
 
 ### <a name="click-through-navigation"></a>点击导航
-点击导航定义在单击标题或视图中的列表项时要执行的操作。  这会打开中的查询[Log Analytics](../../azure-monitor/log-query/portals.md)或启动另一个视图。
+点击导航定义在单击标题或视图中的列表项时要执行的操作。  此操作将在 [Log Analytics](../../azure-monitor/log-query/portals.md) 中打开查询或启动另一个视图。
 
 下表描述了点击导航的设置。
 
 | 设置           | 描述 |
 |:--|:--|
-| 日志搜索(自动) | 若要选择的标头项时运行的日志查询。  这是基于项的同一个日志查询。
-| 日志搜索        | 若要在列表中选择一项时运行的日志查询。  在“导航查询”框中键入查询。   使用 *{selected item}* 以包括用户选择的项的语法。  例如，如果查询具有名为 *Computer* 的列且导航查询为 *{selected item}*，则选择计算机时会运行 *Computer="MyComputer"* 之类的查询。 如果导航查询为 *Type=Event {selected item}*，则将运行查询 *Type=Event Computer="MyComputer"*。 |
+| 日志搜索(自动) | 选择标题项时要运行的日志查询。  这是该项所基于的同一日志查询。
+| 日志搜索        | 选择列表中的项时要运行的日志查询。  在“导航查询”框中键入查询。   使用 *{selected item}* 以包括用户选择的项的语法。  例如，如果查询具有名为 *Computer* 的列且导航查询为 *{selected item}*，则选择计算机时会运行 *Computer="MyComputer"* 之类的查询。 如果导航查询为 *Type=Event {selected item}*，则将运行查询 *Type=Event Computer="MyComputer"*。 |
 | 查看              | 选择标题项或列表中的项时要打开的视图。  在“视图名称”框中选择工作区中的视图名称。 |
 
 
@@ -364,4 +364,4 @@ ms.locfileid: "59493019"
 | 颜色 |指示阈值的颜色。 |
 
 ## <a name="next-steps"></a>后续步骤
-* 了解如何[记录查询](../log-query/log-query-overview.md)以支持可视化部分中的查询。
+* 了解支持在可视化部件中进行查询的[日志查询](../log-query/log-query-overview.md)。

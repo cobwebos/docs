@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: jehollan
 ms.openlocfilehash: d327146c4a1fa61e55bb904308038c1ce717123d
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59543727"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61031144"
 ---
 # <a name="azure-functions-premium-plan-preview"></a>Azure Functions 的高级计划 （预览版）
 
@@ -95,7 +95,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 |SKU|核心数|内存|存储|
 |--|--|--|--|
-|EP1|1|3.5GB|250GB|
+|EP1|第|3.5GB|250GB|
 |EP2|2|7GB|250GB|
 |EP3|4|14GB|250GB|
 

@@ -11,11 +11,11 @@ ms.date: 02/06/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 59f36595e0b6cc8b9d9ea0669c9ecb5be1e74b42
-ms.sourcegitcommit: 7e772d8802f1bc9b5eb20860ae2df96d31908a32
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/06/2019
-ms.locfileid: "57441383"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61304076"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>使用清单收集管理 Azure 虚拟机
 
@@ -62,7 +62,7 @@ ms.locfileid: "57441383"
 
 |属性  |说明  |
 |---------|---------|
-|已启用     | 确定是否应用了设置        |
+|Enabled     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |Windows 注册表项   | 用于查看文件的路径，例如：“HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
@@ -71,7 +71,7 @@ ms.locfileid: "57441383"
 
 |属性  |说明  |
 |---------|---------|
-|已启用     | 确定是否应用了设置        |
+|Enabled     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如“c:\temp\myfile.txt”
@@ -80,7 +80,7 @@ ms.locfileid: "57441383"
 
 |属性  |说明  |
 |---------|---------|
-|已启用     | 确定是否应用了设置        |
+|Enabled     | 确定是否应用了设置        |
 |项名称     | 要跟踪的文件的友好名称        |
 |组     | 一个组名，用于对文件进行逻辑分组        |
 |输入路径     | 用于查看文件的路径，例如“/etc/*.conf”       |

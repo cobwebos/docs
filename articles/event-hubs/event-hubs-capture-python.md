@@ -16,11 +16,11 @@ ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
 ms.openlocfilehash: 639bc4ff9c69bca3d5f8bca6967bfc3e8e6a13d4
-ms.sourcegitcommit: 39397603c8534d3d0623ae4efbeca153df8ed791
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/12/2019
-ms.locfileid: "56100537"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60822415"
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>事件中心捕获演练：Python
 
@@ -36,7 +36,7 @@ ms.locfileid: "56100537"
 4. 使用 Python 脚本将数据发送到事件中心。
 5. 使用另一个 Python 脚本从捕获中读取文件并处理这些文件。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - Python 2.7.x
 - Azure 订阅。 如果没有订阅，请在开始之前[创建一个免费帐户](https://azure.microsoft.com/free/)。
@@ -54,7 +54,7 @@ ms.locfileid: "56100537"
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>创建用于将事件发送到事件中心的 Python 脚本
 1. 打开常用的 Python 编辑器，如 [Visual Studio Code][Visual Studio Code]。
-2. 创建名为 **sender.py** 的脚本。 此脚本将向事件中心发送 200 个事件。 它们是以 JSON 格式发送的简单环境读数。
+2. 创建名为 **sender.py**的脚本。 此脚本将向事件中心发送 200 个事件。 它们是以 JSON 格式发送的简单环境读数。
 3. 将以下代码粘贴到 sender.py 中：
    
    ```python

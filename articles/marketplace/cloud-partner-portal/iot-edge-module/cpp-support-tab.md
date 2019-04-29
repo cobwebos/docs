@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 10/18/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9926c9a0443eb5220e7689dfc6e49e4b8d661d65
-ms.sourcegitcommit: 707bb4016e365723bc4ce59f32f3713edd387b39
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/19/2018
-ms.locfileid: "49432365"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60909838"
 ---
 # <a name="iot-edge-module-support-tab"></a>IoT Edge 模块“支持”选项卡
 
-使用“新建产品/服务”页的“支持”选项卡为产品/服务提供技术和用户支持资源。  “支持”窗体上提供了以下输入区：“工程联系人”、“客户支持”和“支持 URL”。 名称旁边附有星号 (*) 的字段表示必填字段。
+使用“新建产品/服务”页的“支持”选项卡为产品/服务提供技术和用户支持资源。  支持窗体上提供了以下输入几个方面：**工程联系人**，**客户支持部门**，和**支持 Url**。 名称旁边附有星号 (*) 的字段表示必填字段。
 
 ![IoT Edge 模块的“新建产品/服务”窗体上的“支持”选项卡](./media/iot-edge-module-support-tab.png)
 

@@ -1,20 +1,22 @@
 ---
 title: Azure Cosmos DB Gremlin API 中的数据分区
 description: 了解如何在 Azure Cosmos DB 中使用分区图形。 本文还介绍了分区图形的要求和最佳做法。
-author: luisbosquez
-ms.author: lbosq
+author: rockboyfor
+ms.author: v-yeche
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: conceptual
-ms.date: 12/06/2018
+origin.date: 12/06/2018
+ms.date: 03/18/2019
 ms.custom: seodec18
 ms.openlocfilehash: f1e486a302b440d819e15ef86f8d76ea5e50d201
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54036318"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60888397"
 ---
+<!--Verify sucessfully-->
 # <a name="using-a-partitioned-graph-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中使用分区图形
 
 Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理大规模图形。 通过 [Azure Cosmos DB 中的分区功能](partition-data.md)实现水平缩放。 容器可以在存储和吞吐量方面独立缩放。 可以在 Azure Cosmos DB 中创建自动缩放的容器以存储图形数据。 数据根据指定的分区键自动均衡。
@@ -37,27 +39,26 @@ Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理
 
     - 在 Gremlin API 中，不支持将 `/id` 和 `/label` 作为容器的分区键。
 
-
     - 根据 ID 选择顶点，然后**使用 `.has()` 步骤指定分区键属性**： 
-    
+
         ```
         g.V('vertex_id').has('partitionKey', 'partitionKey_value')
         ```
-    
+
     - 通过**指定包含分区键值和 ID 的元组**选择顶点： 
-    
+
         ```
         g.V(['partitionKey_value', 'vertex_id'])
         ```
-        
+
     - 指定**分区键值和 ID 的元组数组**：
-    
+
         ```
         g.V(['partitionKey_value0', 'verted_id0'], ['partitionKey_value1', 'vertex_id1'], ...)
         ```
-        
+
     - 选择一组顶点并**指定分区键值列表**： 
-    
+
         ```
         g.V('vertex_id0', 'vertex_id1', 'vertex_id2', …).has('partitionKey', within('partitionKey_value0', 'partitionKey_value01', 'partitionKey_value02', …)
         ```
@@ -81,3 +82,6 @@ Azure Cosmos DB 中 Gremlin API 的重要功能之一是通过横向缩放处理
 * 了解 [Azure Cosmos DB 中的分区和缩放](partition-data.md)。
 * 了解 [Gremlin API 中的 Gremlin 支持](gremlin-support.md)。
 * 了解 [Gremlin API 简介](graph-introduction.md)。
+
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

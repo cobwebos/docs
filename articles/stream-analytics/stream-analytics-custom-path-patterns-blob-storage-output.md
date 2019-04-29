@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
 ms.openlocfilehash: 9cdf99884845a9cb83ac26723c3ea0e7a779ebff
-ms.sourcegitcommit: 943af92555ba640288464c11d84e01da948db5c0
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/09/2019
-ms.locfileid: "55982669"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60771746"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Azure 流分析自定义 blob 输出分区
 
@@ -72,7 +72,7 @@ Azure 流分析支持包含自定义字段或属性和自定义 DateTime 路径�
 
 以下格式说明符令牌可以单独使用，也可以组合使用，以便实现自定义 DateTime 格式：
 
-|格式说明符   |说明   |示例时间 2018-01-02T10:06:08 的结果|
+|格式说明符   |描述   |示例时间 2018-01-02T10:06:08 的结果|
 |----------|-----------|------------|
 |{datetime:yyyy}|年份为四位数|2018|
 |{datetime:MM}|月份为 01 到 12|01|

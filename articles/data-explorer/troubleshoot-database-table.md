@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: 0d221138914230d5455dc0addbe08cdaaed36a0b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59050418"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60826248"
 ---
 # <a name="troubleshoot-failure-to-create-or-delete-a-database-or-table-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中创建或删除数据库或表
 
@@ -36,7 +36,7 @@ ms.locfileid: "59050418"
 
     有关权限的详细信息，请参阅[管理数据库权限](manage-database-permissions.md)。
 
-1. 请确保不存在具有相同名称的表。 如果它存在，则你可以：使用不同的名称; 创建表重命名现有表 (需要*表管理员*角色); 或删除现有表 (需要*数据库管理员*角色)。 使用以下命令。
+1. 请确保不存在具有相同名称的表。 如果存在，则可：使用不同的名称创建表；重命名现有表（需要“表管理员”角色）；或删除现有表（需要“数据库管理员”角色）。 使用以下命令。
 
     ```Kusto
     .drop table <TableName>

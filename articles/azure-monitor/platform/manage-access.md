@@ -14,16 +14,16 @@ ms.topic: conceptual
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: 27db27d79a05f24461e63242c0395cfd81315432
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276399"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60782744"
 ---
-# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理日志数据和 Azure Monitor 中的工作区
+# <a name="manage-log-data-and-workspaces-in-azure-monitor"></a>管理 Azure Monitor 中的日志数据和工作区
 Azure Monitor 将日志数据存储在 Log Analytics 工作区中，该工作区本质上是一个包含数据和配置信息的容器。 若要管理对日志数据的访问，需要对工作区执行各种管理任务。 你或组织中的其他成员可以使用多个工作区，管理收集自所有或部分 IT 基础结构的不同数据集。
 
-本文介绍如何管理对日志的访问以及如何管理包含它们的工作区。 
+本文介绍如何管理对日志的访问，以及如何管理包含日志的工作区。 
 
 ## <a name="create-a-workspace"></a>创建工作区
 若要创建 Log Analytics 工作区，需要：
@@ -45,16 +45,16 @@ Log Analytics 工作区是一种 Azure 资源，也是 Azure Monitor 中收集�
 Log Analytics 工作区可提供：
 
 * 数据存储的地理位置。
-* 若要在工作区为中心模式中定义不同的用户访问权限的数据隔离。 在为中心的模式下不相关。
-* 配置设置的作用域喜欢[定价层](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)，[保留](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)并[数据将达到上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)。
-* 与数据引入和保留相关的费用是对工作区资源。
+* 数据隔离，用于定义以工作区为中心的模式下的不同用户访问权限。 在以资源为中心的模式下操作时，此功能没有作用。
+* 设置配置的范围，如[定价层级](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#changing-pricing-tier)、[保留期](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period)和[数据上限](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#daily-cap)。
+* 与数据引入和保留相关的费用是根据工作区资源计收的。
 
 从使用角度来看，我们建议尽量减少创建的工作区数量。 这可带来更轻松快捷的管理和查询体验。 但是，基于上述特征，在以下情况下可能需要创建多个工作区：
 
 * 贵公司是全球性公司，因数据所有权和合规性需要将日志数据存储于特定区域。
 * 正在使用 Azure，并希望通过让工作区与它所管理的 Azure 资源位于同一区域，避免产生出站数据传输费用。
 * 公司是托管服务提供商，需要为所管理的每位客户单独保留 Log Analytics 数据，即与其他客户的数据分开保存。
-* 管理多个客户，并希望每个客户 / 部门 / 业务组能够看到他们自己的数据，但不是从其他数据，并且没有统一的跨客户没有业务需求 / 部门 / 业务组视图。"。
+* 你要管理多个客户，并希望每个客户/部门/业务组能够看到自己的数据，但看不到其他人的数据；没有在整个客户/部门/业务组中整合视图的业务需求。
 
 使用 Windows 代理收集数据时，可[将每个代理配置为向一个或多个工作区报告](../../azure-monitor/platform/agent-windows.md)。
 
@@ -63,7 +63,7 @@ Log Analytics 工作区可提供：
 定义工作区体系结构后，应强制实施此策略通过 Azure 资源[Azure 策略](../../governance/policy/overview.md)。 这可以提供内置的定义会自动将应用于所有 Azure 资源。 例如，可以设置策略来确保某一特定区域中的所有 Azure 资源发送到特定的工作区及其所有诊断日志。
 
 ## <a name="view-workspace-details"></a>查看工作区详细信息
-从在 Log Analytics 工作区中分析数据时**Azure Monitor** Azure 门户菜单中的，创建和管理中的工作区**Log Analytics 工作区**菜单。
+通过 Azure 门户中的“Azure Monitor”菜单分析 Log Analytics 工作区中的数据时，可以在“Log Analytics 工作区”菜单中创建和管理工作区。
  
 
 1. 登录到 [Azure 门户](https://portal.azure.com)，单击“所有服务”。 在资源列表中，键入“Log Analytics”。 开始键入时，会根据输入筛选该列表。 选择“Log Analytics 工作区”。  
@@ -72,88 +72,88 @@ Log Analytics 工作区可提供：
 
 3. 从列表中选择你的工作区。
 
-4. 工作区页将显示有关工作区、 入门、 配置和其他信息链接的详细信息。  
+4. 工作区页会显示有关工作区、入门、配置的详细信息，以及其他信息的链接。  
 
     ![工作区详细信息](./media/manage-access/workspace-overview-page.png)  
 
 
-## <a name="workspace-permissions-and-scope"></a>工作区的权限和作用域
-由下表中列出的多个因素决定用户有权访问的数据。 在以下各节介绍每。
+## <a name="workspace-permissions-and-scope"></a>工作区权限和范围
+用户有权访问的数据由下表中列出的多种因素决定。 后续部分会描述每种因素。
 
 | 因素 | 描述 |
 |:---|:---|
-| [访问模式](#access-modes) | 在用户使用到的方法访问工作区。  定义可用数据的作用域和应用的访问控制模式。 |
-| [访问控制模式](#access-control-mode) | 设置定义是否在工作区或资源级别应用权限的工作区。 |
-| [权限](#manage-accounts-and-users) | 应用于单个或一组工作区或资源的用户的权限。 定义哪些数据用户将有权访问。 |
-| [表级别 RBAC](#table-level-rbac) | 适用于所有用户，而不考虑其访问模式或访问控件模式的可选粒度权限。 定义用户可以访问哪些数据类型。 |
+| [访问模式](#access-modes) | 用户访问工作区的方法。  定义可用数据的范围，以及应用的访问控制模式。 |
+| [访问控制模式](#access-control-mode) | 工作区中的设置，用于定义是要在工作区级别还是资源级别应用权限。 |
+| [权限](#manage-accounts-and-users) | 应用到工作区或资源的个人用户或用户组的权限。 定义用户有权访问哪些数据。 |
+| [表级 RBAC](#table-level-rbac) | 应用到所有用户（无论他们使用的是访问模式还是访问控制模式）的可选精细权限。 定义用户可以访问哪些数据类型。 |
 
 
 
 ## <a name="access-modes"></a>访问模式
-_访问模式_指的是用户如何访问 Log Analytics 工作区，并定义他们可以访问的数据的作用域。 
+访问模式是指用户如何访问 Log Analytics 工作区，并定义他们有权访问的数据范围。 
 
-**工作区以中心**:在此模式下，用户可以查看其有权在工作区中的所有日志。 在此模式下的查询的作用域中的工作区中的所有表的所有数据。 这是与工作区作为作用域，例如当您选择访问日志时使用的访问模式**日志**从**Azure Monitor**在 Azure 门户中的菜单。
+**以工作区为中心**：在此模式下，用户可以查看他们有权访问的工作区中的所有日志。 在此模式下，只能查询该工作区中所有表内的所有数据。 使用工作区作为范围来访问日志时（例如，在 Azure 门户上的“Azure Monitor”菜单中选择“日志”时），将使用此访问模式。
 
-**资源中心**:当访问特定资源，例如当您选择的工作区**日志**从 Azure 门户中的资源菜单中，可以仅该资源的日志查看有权访问的所有表中。 在此模式下的查询的作用域仅与该资源相关联的数据。 此模式还可以精细的基于角色的访问控制 (RBAC)。 
+**以资源为中心**：访问特定资源的工作区时（例如，在 Azure 门户上的资源菜单中选择“日志”时），只能查看所有表中你有权访问的资源的日志。 在此模式下，只能查询与该资源关联的数据。 此模式还会启用精细的基于角色的访问控制 (RBAC)。 
 
 > [!NOTE]
-> 日志是可用于为中心的查询，仅当它们是相关的资源与正确关联。 目前，以下资源提供了限制： 
+> 仅当日志已适当地关联到相关资源时，才能对日志进行以资源为中心的查询。 目前，以下资源存在限制： 
 > - Azure 外部的计算机
 > - Service Fabric
 > - Application Insights
 > - 容器
 >
-> 如果通过运行查询其资源与正确关联的日志，以及检查记录你感兴趣，可以进行测试。 如果正在正确的资源 ID [_ResourceId](log-standard-properties.md#_resourceid)属性，则数据可供资源为中心的查询。
+> 可以通过运行一个查询并检查所需的记录，来测试日志是否已适当关联到其资源。 如果 [_ResourceId](log-standard-properties.md#_resourceid) 属性中包含正确的资源 ID，则可以对数据进行以资源为中心的查询。
 
 ### <a name="comparing-access-modes"></a>比较访问模式
 
-下表总结了访问模式：
+下表汇总了访问模式：
 
-| | 为工作区的中心 | 资源中心 |
+| | 以工作区为中心 | 以资源为中心 |
 |:---|:---|:---|
-| 每个模型适用于谁？ | 管理中心。 管理员需要配置数据收集和用户需要访问各种资源。 此外必须具有的用户需要访问位于 Azure 之外的资源的日志。 | 应用程序团队。 正在监视的 Azure 资源的管理员。 |
-| 哪些用户需要查看日志？ | 工作区的权限。 请参阅**工作区的权限**中[管理帐户和用户](#manage-accounts-and-users)。 | 访问资源的读取权限。 请参阅**资源的权限**中[管理帐户和用户](#manage-accounts-and-users)。 权限可以是继承 （如从包含的资源组） 的还是直接分配给资源。 将自动分配到资源的日志的权限。 |
-| 权限的作用域是什么？ | 工作区。 具有访问工作区的用户可以查询表中其有权该工作区中的所有日志。 请参阅[表访问控制](#table-level-rbac) | Azure 资源。 用户可以查询日志的资源，它们有权访问在任意工作区但不能查询日志的其他资源。 |
-| 如何用户访问日志？ | 启动**日志**从**Azure Monitor**菜单或**Log Analytics 工作区**。 | 启动**日志**从菜单中为 Azure 资源。 |
+| 每种模式适合哪类用户？ | 集中管理。 需要配置数据收集的管理员，以及需要访问各种资源的用户。 此外，必须访问 Azure 外部资源的日志的用户目前也需要使用此模式。 | 应用程序团队。 受监视 Azure 资源的管理员。 |
+| 用户需要哪些权限才能查看日志？ | 对工作区的权限。 请参阅[管理帐户和用户](#manage-accounts-and-users)中的“工作区权限”。 | 对资源的读取访问权限。 请参阅[管理帐户和用户](#manage-accounts-and-users)中的“资源权限”。 权限可以继承（例如，从包含资源组继承），也可以直接分配给资源。 系统会自动分配对资源日志的权限。 |
+| 权限范围是什么？ | 工作区。 有权访问工作区的用户可以通过他们有权访问的表查询该工作区中的所有日志。 请参阅[表访问控制](#table-level-rbac) | Azure 资源。 用户可以通过任何工作区查询他们有权访问的资源的日志，但无法查询其他资源的日志。 |
+| 用户如何访问日志？ | 从“Azure Monitor”菜单或“Log Analytics 工作区”启动“日志”。 | 从 Azure 资源的菜单启动“日志”。 |
 
 
 ## <a name="access-control-mode"></a>访问控制模式
-_访问控制模式_是每个工作区设置，它定义如何为该工作区中确定权限。
+访问控制模式是每个工作区中的一项设置，定义如何确定该工作区的权限。
 
-**需要工作区的权限**:此控件模式下不允许精细 RBAC。 若要访问工作区的用户，他们必须授予到工作区或对特定表的权限。 
+**需要工作区权限**：此控制模式不允许精细的 RBAC。 用户若要访问工作区，必须获得对该工作区或特定表的权限。 
 
-如果用户访问的工作区中的工作区为中心模式时，它们将有权访问的所有数据已被授予访问权限的任何表。 如果用户访问的工作区中为中心的模式，则会访问该资源仅数据已被授予访问权限的任何表中。
+如果用户使用以工作区为中心的模式访问工作区，将可以访问他们有权访问的任何表中的所有数据。 如果用户使用以资源为中心的模式访问工作区，只能访问他们有权访问的任何表中的此类资源的数据。
 
 这是在 2019 年 3 月之前创建的所有工作区的默认设置。
 
-**使用资源或工作区权限**:此控件模式允许精细 RBAC。 用户被授予仅与他们可以查看通过 Azure 权限，他们可以为其资源的资源关联的数据的访问权限`read`权限。 
+**使用资源或工作区权限**：此控制模式允许精细的 RBAC。 用户只有权访问他们可以通过 Azure 权限查看的资源的关联数据，他们对这些资源拥有 `read` 权限。 
 
-当用户访问工作区为中心模式中的工作区时，将应用工作区的权限。 当用户访问的工作区中为中心的模式下时，将验证仅资源权限，并且工作区的权限将被忽略。 通过从工作区权限中删除它们，并允许其资源的权限被识别为用户启用 RBAC。
+当用户使用以工作区为中心的模式访问工作区时，将应用工作区权限。 当用户使用以资源为中心的模式访问工作区时，只会验证资源权限，而会忽略工作区权限。 要为用户启用 RBAC，可将其从工作区权限中删除，并允许识别其资源权限。
 
-这是 2019 年 3 月之后创建的所有工作区的默认设置。
+这是在 2019 年 3 月之后创建的所有工作区的默认设置。
 
 > [!NOTE]
-> 如果用户仅具有资源权限到工作区，他们将只能访问工作区中使用[为中心模式](#access-modes)。
+> 如果用户只对工作区拥有资源权限，则他们只能使用[以资源为中心的模式](#access-modes)访问工作区。
 
 
-### <a name="define-access-control-mode-in-azure-portal"></a>在 Azure 门户中定义的访问控制模式
-您可以查看当前工作区访问控件模式上**概述**页中的工作区**Log Analytics 工作区**菜单。
+### <a name="define-access-control-mode-in-azure-portal"></a>在 Azure 门户中定义访问控制模式
+可以在工作区“概述”页上的“Log Analytics 工作区”菜单中查看当前的工作区访问控制模式。
 
-![查看工作区的访问控制模式](media/manage-access/view-access-control-mode.png)
+![查看工作区访问控制模式](media/manage-access/view-access-control-mode.png)
 
-您可以更改此设置在**属性**工作区的页。 如果你没有权限配置工作区，将禁用更改的设置。
+可以在工作区的“属性”页上更改此设置。 如果你无权配置工作区，则会禁止更改此设置。
 
-![更改工作区的访问模式](media/manage-access/change-access-control-mode.png)
+![更改工作区访问模式](media/manage-access/change-access-control-mode.png)
 
-### <a name="define-access-control-mode-in-powershell"></a>在 PowerShell 中定义的访问控制模式
+### <a name="define-access-control-mode-in-powershell"></a>在 PowerShell 中定义访问控制模式
 
-使用以下命令检查该订阅中的所有工作区的访问控制模式：
+使用以下命令检查订阅中所有工作区的访问控制模式：
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {$_.Name + ": " + $_.Properties.features.enableLogAccessUsingOnlyResourcePermissions} 
 ```
 
-使用以下脚本设置特定的工作区的访问控制模式：
+使用以下脚本设置特定工作区的访问控制模式：
 
 ```powershell
 $WSName = "my-workspace"
@@ -165,7 +165,7 @@ else
 Set-AzResource -ResourceId $Workspace.ResourceId -Properties $Workspace.Properties -Force
 ```
 
-使用以下脚本在订阅中设置的所有工作区的访问控制模式
+使用以下脚本为订阅中的所有工作区设置访问控制模式
 
 ```powershell
 Get-AzResource -ResourceType Microsoft.OperationalInsights/workspaces -ExpandProperties | foreach {
@@ -176,15 +176,15 @@ else
 Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 ```
 
-### <a name="define-access-mode-in-resource-manager-template"></a>在资源管理器模板中定义的访问模式
-若要在 Azure 资源管理器模板中配置的访问模式，设置**enableLogAccessUsingOnlyResourcePermissions**功能标志上的工作区为以下值之一。
+### <a name="define-access-mode-in-resource-manager-template"></a>在资源管理器模板中定义访问模式
+若要在 Azure 资源管理器模板中配置访问模式，请将工作区中的 **enableLogAccessUsingOnlyResourcePermissions** 功能标志设置为以下值之一。
 
-- **False**:将工作区设置为工作区为中心的权限。 这是默认设置，如果未设置该标志。
-- **True**:将工作区设置为中心的权限。
+- **false**：将工作区设置为以工作区为中心的权限。 如果未设置该标志，则这是默认设置。
+- **true**：将工作区设置为以资源为中心的权限。
 
 
 ## <a name="manage-accounts-and-users"></a>管理帐户和用户
-应用于特定用户对工作区的权限由其访问模式和[访问控制模式](#access-control-mode)工作区。 **工作区的权限**用户访问任何工作区使用时应用**工作区以中心**中[工作区为中心模式](#access-modes)。 **资源的权限**当用户访问工作区的应用**使用资源或工作区的权限**[访问控件模式](#access-control-mode)使用[资源为中心模式](#access-modes).
+应用到特定用户的工作区权限由该用户的访问模式以及工作区的[访问控制模式](#access-control-mode)定义。 当用户在[以工作区为中心的模式](#access-modes)下访问使用**以工作区为中心**的任何工作区时，将应用**工作区权限**。 当用户在[以资源为中心的模式](#access-modes)下，使用“使用资源或工作区权限”[访问控制模式](#access-control-mode)访问工作区时，将应用**资源权限**。
 
 ### <a name="workspace-permissions"></a>工作区权限
 每个工作区可有多个与其关联的帐户，每个帐户可访问多个工作区。 通过 [Azure 基于角色的访问权限](../../role-based-access-control/role-assignments-portal.md)来管理访问权限。 
@@ -200,7 +200,7 @@ Set-AzResource -ResourceId $_.ResourceId -Properties $_.Properties -Force
 | 在 Azure 门户中创建工作区                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/workspaces/*` ||
 
 
-#### <a name="manage-access-to-log-analytics-workspace-using-azure-permissions"></a>管理对 Log Analytics 工作区使用 Azure 权限的访问 
+#### <a name="manage-access-to-log-analytics-workspace-using-azure-permissions"></a>使用 Azure 权限管理对 Log Analytics 工作区的访问 
 若要使用 Azure 权限授予对 Log Analytics 工作区的访问权限，请执行[使用角色分配来管理对 Azure 订阅资源的访问权限](../../role-based-access-control/role-assignments-portal.md)中的步骤。
 
 Azure 有两个适用于 Log Analytics 工作区的内置用户角色：
@@ -260,33 +260,33 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 - 资源组 - 访问资源组中的所有工作区
 - 资源 - 仅访问指定工作区
 
-您应该执行分配在资源级别 （工作区），以确保准确的访问控制。  使用[自定义角色](../../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
+应在资源（工作区）级别执行分配，以确保准确的访问控制。  使用[自定义角色](../../role-based-access-control/custom-roles.md)，创建具有所需的特定权限的角色。
 
-### <a name="resource-permissions"></a>资源的权限 
-当用户查询记录从工作区使用为中心的访问权限时，它们将具有资源的以下权限：
+### <a name="resource-permissions"></a>资源权限 
+当用户使用以资源为中心的访问权限查询工作区中的日志时，他们对资源拥有以下权限：
 
 | 权限 | 描述 |
 | ---------- | ----------- |
-| `Microsoft.Insights/logs/<tableName>/read`<br><br>示例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 若要查看资源的所有日志数据的功能。  |
+| `Microsoft.Insights/logs/<tableName>/read`<br><br>示例：<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | 可以查看资源的所有日志数据。  |
 
 
-通常包括在角色中授予此权限 _\*/读取或_ _\*_ 如内置权限[读取器](../../role-based-access-control/built-in-roles.md#reader)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。 请注意，自定义角色，其中包含特定操作或专用的内置角色可能不包括此权限。
+此权限通常是从含有 _\*/read 或_ _\*_ 权限的角色授予的，例如内置的[读取者](../../role-based-access-control/built-in-roles.md#reader)和[参与者](../../role-based-access-control/built-in-roles.md#contributor)角色。 请注意，含有特定操作的自定义角色或专用内置角色可能没有此权限。
 
-请参阅[定义每个表的访问控制](#table-level-rbac)下面如果你想要创建不同的表的不同的访问控制。
+若要针对不同的表创建不同的访问控制，请参阅下面的[定义按表进行的访问控制](#table-level-rbac)。
 
 
-## <a name="table-level-rbac"></a>表级别 RBAC
-**表级别 RBAC**使您可以提供更精细的控制，除了其他权限的 Log Analytics 工作区中的数据。 此控件，可定义仅供一组特定的用户访问的特定数据类型。
+## <a name="table-level-rbac"></a>表级 RBAC
+使用**表级 RBAC** 可以针对 Log Analytics 工作区中的数据提供更精细的控制，此外还能分配其他权限。 使用此控制措施可以定义仅供特定一组用户访问的特定数据类型。
 
-实现使用的表访问控制[Azure 自定义角色](../../role-based-access-control/custom-roles.md)以授予或拒绝对特定于访问[表](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized)工作区中。 这些角色应用到与工作区为中心或资源以为中心的工作区[访问控件模式](#access-control-mode)而不考虑用户的[访问模式](#access-modes)。
+使用 [Azure 自定义角色](../../role-based-access-control/custom-roles.md)实现表访问控制，以授予或拒绝对工作区中特定[表](../log-query/log-query-overview.md#how-azure-monitor-log-data-is-organized)的访问权限。 无论用户的[访问模式](#access-modes)是什么，这些角色都会应用到使用以工作区为中心或者以资源为中心[访问控制模式](#access-control-mode)的工作区。
 
-创建[自定义角色](../../role-based-access-control/custom-roles.md)以下操作可用于定义访问权限的表访问控制。
+使用以下操作创建[自定义角色](../../role-based-access-control/custom-roles.md)，以定义对表访问控制的访问权限。
 
-- 若要授予对表的访问，将其包含在**操作**角色定义的部分。
-- 若要拒绝对表的访问，将其包含在**NotActions**角色定义的部分。
-- 使用 * 指定的所有表。
+- 若要授予对某个表的访问权限，请将该表包含在角色定义的 **Actions** 节中。
+- 若要拒绝对某个表的访问权限，请将该表包含在角色定义的 **NotActions** 节中。
+- 使用 * 可指定所有表。
 
-例如，若要创建具有访问权限的角色_检测信号_并_AzureActivity_表，创建自定义角色，使用以下操作：
+例如，若要创建一个有权访问 _Heartbeat_ 和 _AzureActivity_ 表的角色，请使用以下操作创建自定义角色：
 
 ```
 "Actions":  [
@@ -295,7 +295,7 @@ Log Analytics 参与者角色包括以下 Azure 操作：
   ],
 ```
 
-若要创建一个角色具有访问权限仅_SecurityBaseline_和任何其他表，创建自定义角色，使用以下操作：
+若要创建一个只有权访问 _SecurityBaseline_，而无权访问其他任何表的角色，请使用以下操作创建自定义角色：
 
 ```
     "Actions":  [
@@ -307,9 +307,9 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 ```
 
 ### <a name="custom-logs"></a>自定义日志
- 通过自定义日志和 HTTP 数据收集器 API 等数据源创建自定义日志。 标识的日志类型的最简单方法是通过检查下所列的表[日志架构中的自定义日志](../log-query/get-started-portal.md#understand-the-schema)。
+ 自定义日志是由自定义日志和 HTTP 数据收集器 API 等数据源创建的。 识别日志类型的最简单方法是查看[日志架构中的自定义日志](../log-query/get-started-portal.md#understand-the-schema)下所列的表。
 
- 您当前不能授予或拒绝访问各个自定义日志，但您可以授予或拒绝对所有自定义日志的访问。 若要创建一个角色有权访问所有自定义日志，请创建自定义角色，使用以下操作：
+ 目前无法授予或拒绝对单个自定义日志的访问权限，但可以授予或拒绝对所有自定义日志的访问权限。 若要创建一个有权访问所有自定义日志的角色，请使用以下操作创建自定义角色：
 
 ```
     "Actions":  [
@@ -319,11 +319,11 @@ Log Analytics 参与者角色包括以下 Azure 操作：
 
 ### <a name="considerations"></a>注意事项
 
-- 如果用户被授予全球读取权限与标准的读取者或参与者角色，包括 _\*/读取_操作，它将替代的每个表的访问控制和授予其对所有日志数据的访问。
-- 如果用户被授予访问每个表，但没有其他任何权限，他们就能从 API，但不能从 Azure 门户访问日志数据。 若要提供对 Azure 门户的访问，请作为其基角色使用 Log Analytics 读者。
-- 订阅管理员将有权访问所有数据类型，而不考虑任何其他权限设置。
-- 工作区所有者一样为每个表的访问控制的任何其他用户。
-- 应将角色分配给安全组而不是单个用户来减少分配的数。 这将帮助您使用现有的组管理工具来配置和验证的访问权限。
+- 如果为某个用户授予全局读取权限以及含有 _\*/read_ 操作的标准“读取者”或“参与者”角色，则会替代按表进行的访问控制，并向该用户授予所有日志数据的访问权限。
+- 如果为某个用户授予按表访问权限但未授予其他任何权限，则该用户可以通过 API 访问日志数据，但不能通过 Azure 门户进行访问。 若要提供对 Azure 门户的访问权限，请使用“Log Analytics 读取者”作为用户的基本角色。
+- 无论其他任何权限设置如何，订阅管理员都有权访问所有数据类型。
+- 应用按表进行的访问控制时，工作区所有者被视为类似于其他任何用户。
+- 应该将角色分配到安全组而不是个人用户，以减少分配数目。 这还有助于使用现有的组管理工具来配置和验证访问权限。
 
 
 

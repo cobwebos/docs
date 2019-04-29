@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: danlep
 ms.openlocfilehash: b2398e7db7ed91dee8d85c0c50058bb15b9f4c7e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "58894126"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827249"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR 任务参考：YAML
 
@@ -81,9 +81,9 @@ az configure --defaults acr=myregistry
 
 | 属性 | Type | 可选 | 描述 | 支持的重写 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
-| `version` | 字符串 | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，默认为最新版本。 | 否 | 无 |
+| `version` | string | 是 | ACR 任务服务分析的 `acr-task.yaml` 文件的版本。 ACR 任务致力于保持向后兼容性，而此值能使 ACR 任务与某个定义的版本保持兼容。 如果未指定，默认为最新版本。 | 否 | 无 |
 | `stepTimeout` | 整数（秒） | 是 | 步骤可以运行的最大秒数。 如果任务指定的属性，它会设置默认`timeout`属性的所有步骤。 如果`timeout`属性指定上一步，它将替代任务提供的属性。 | 是 | 600（10 分钟） |
-| `workingDirectory` | 字符串 | 是 | 在运行时容器的工作目录。 如果任务指定的属性，它会设置默认`workingDirectory`属性的所有步骤。 如果指定上一步，它将替代任务提供的属性。 | 是 | `$HOME` |
+| `workingDirectory` | string | 是 | 在运行时容器的工作目录。 如果任务指定的属性，它会设置默认`workingDirectory`属性的所有步骤。 如果指定上一步，它将替代任务提供的属性。 | 是 | `$HOME` |
 | `env` | [字符串, 字符串, ...] | 是 |  中的字符串数组`key=value`定义该任务的环境变量的格式。 如果任务指定的属性，它会设置默认`env`属性的所有步骤。 如果指定上一步，它将替代继承自该任务的任何环境变量。 | 无 |
 | `secrets` | [secret, secret, ...] | 是 | 数组[机密](#secret)对象。 | 无 |
 | `networks` | [网络，网络，...] | 是 | 数组[网络](#network)对象。 | 无 |
@@ -94,9 +94,9 @@ az configure --defaults acr=myregistry
 
 | 属性 | Type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- |
-| `id` | 字符串 | 否 | 机密标识符。 | 无 |
-| `akv` | 字符串 | 是 | Azure Key Vault (AKV) 机密 URL。 | 无 |
-| `clientID` | 字符串 | 是 | 客户端 ID 的用户分配管理 Azure 资源的标识。 | 无 |
+| `id` | string | 否 | 机密标识符。 | 无 |
+| `akv` | string | 是 | Azure Key Vault (AKV) 机密 URL。 | 无 |
+| `clientID` | string | 是 | 客户端 ID 的用户分配管理 Azure 资源的标识。 | 无 |
 
 ### <a name="network"></a>网络
 
@@ -104,8 +104,8 @@ az configure --defaults acr=myregistry
 
 | 属性 | Type | 可选 | 描述 | 默认值 |
 | -------- | ---- | -------- | ----------- | ------- | 
-| `name` | 字符串 | 否 | 网络的名称。 | 无 |
-| `driver` | 字符串 | 是 | 若要管理的网络驱动程序。 | 无 |
+| `name` | string | 否 | 网络的名称。 | 无 |
+| `driver` | string | 是 | 若要管理的网络驱动程序。 | 无 |
 | `ipv6` | bool | 是 | 是否已启用 IPv6 网络。 | `false` |
 | `skipCreation` | bool | 是 | 是否要跳过网络创建。 | `false` |
 | `isDefault` | bool | 是 | 该网络是提供使用 Azure 容器注册表的默认网络 | `false` |
@@ -149,12 +149,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -166,7 +166,7 @@ steps:
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 ### <a name="examples-build"></a>示例：build
 
@@ -220,7 +220,7 @@ steps:
 | | | |
 | -------- | ---- | -------- |
 | `env` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
@@ -266,12 +266,12 @@ steps:
 | -------- | ---- | -------- |
 | `detach` | bool | 可选 |
 | `disableWorkingDirectoryOverride` | bool | 可选 |
-| `entryPoint` | 字符串 | 可选 |
+| `entryPoint` | string | 可选 |
 | `env` | [字符串, 字符串, ...] | 可选 |
 | `expose` | [字符串, 字符串, ...] | 可选 |
-| `id` | 字符串 | 可选 |
+| `id` | string | 可选 |
 | `ignoreErrors` | bool | 可选 |
-| `isolation` | 字符串 | 可选 |
+| `isolation` | string | 可选 |
 | `keep` | bool | 可选 |
 | `network` | 对象 | 可选 |
 | `ports` | [字符串, 字符串, ...] | 可选 |
@@ -283,7 +283,7 @@ steps:
 | `startDelay` | 整数（秒） | 可选 |
 | `timeout` | 整数（秒） | 可选 |
 | `when` | [字符串, 字符串, ...] | 可选 |
-| `workingDirectory` | 字符串 | 可选 |
+| `workingDirectory` | string | 可选 |
 
 可在本文的[任务步骤属性](#task-step-properties)部分找到这些属性的详细信息。
 
@@ -366,12 +366,12 @@ steps:
 | -------- | ---- | -------- | ----------- | ------- |
 | `detach` | bool | 是 | 在运行时是否应分离容器。 | `false` |
 | `disableWorkingDirectoryOverride` | bool | 是 | 是否禁用`workingDirectory`重写功能。 结合使用这`workingDirectory`具有完全控制容器的工作目录。 | `false` |
-| `entryPoint` | 字符串 | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
+| `entryPoint` | string | 是 | 重写步骤容器的 `[ENTRYPOINT]`。 | 无 |
 | `env` | [字符串, 字符串, ...] | 是 | 采用 `key=value` 格式的字符串数组，定义步骤的环境变量。 | 无 |
 | `expose` | [字符串, 字符串, ...] | 是 | 从容器公开的端口的数组。 |  无 |
-| [`id`](#example-id) | 字符串 | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`其中`%d`是自上而下的 YAML 文件中的步的基于 0 的索引 |
+| [`id`](#example-id) | string | 是 | 唯一标识任务中的步骤。 任务中的其他步骤可以引用步骤的 `id`，例如，使用 `when` 执行依赖项检查。<br /><br />`id` 也是正在运行的容器的名称。 例如，在任务的其他容器中运行的进程可以引用 `id` 作为其 DNS 主机名，或者通过 Docker 日志 [id] 来访问该步骤。 | `acb_step_%d`其中`%d`是自上而下的 YAML 文件中的步的基于 0 的索引 |
 | `ignoreErrors` | bool | 是 | 是否要将步骤标记为成功而不考虑是否在容器执行期间发生了错误。 | `false` |
-| `isolation` | 字符串 | 是 | 容器的隔离级别。 | `default` |
+| `isolation` | string | 是 | 容器的隔离级别。 | `default` |
 | `keep` | bool | 是 | 执行后是否应保留该步骤的容器。 | `false` |
 | `network` | 对象 | 是 | 标识在其中的容器运行的网络。 | 无 |
 | `ports` | [字符串, 字符串, ...] | 是 | 从容器发布到主机的端口的数组。 |  无 |
@@ -384,8 +384,8 @@ steps:
 | `startDelay` | 整数（秒） | 是 | 容器的执行的延迟秒数。 | 0 |
 | `timeout` | 整数（秒） | 是 | 步骤在终止之前可以执行的最大秒数。 | 600 |
 | [`when`](#example-when) | [字符串, 字符串, ...] | 是 | 配置某个步骤对任务中其他一个或多个步骤的依赖。 | 无 |
-| `user` | 字符串 | 是 | 用户名或 UID 的容器 | 无 |
-| `workingDirectory` | 字符串 | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
+| `user` | string | 是 | 用户名或 UID 的容器 | 无 |
+| `workingDirectory` | string | 是 | 设置步骤的工作目录。 默认情况下，ACR 任务会创建一个根目录作为工作目录。 但是，如果生成包含多个步骤，则前面的步骤可以通过指定相同的工作目录，来与后面的步骤共享项目。 | `$HOME` |
 
 ### <a name="examples-task-step-properties"></a>示例：任务步骤属性
 

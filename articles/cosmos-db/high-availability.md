@@ -8,11 +8,11 @@ ms.date: 3/24/2019
 ms.author: mjbrown
 ms.reviewer: sngun
 ms.openlocfilehash: 1e866560ceab342f08a98ba3db05980a2b0947d2
-ms.sourcegitcommit: 280d9348b53b16e068cf8615a15b958fccad366a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58407549"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60888497"
 ---
 # <a name="high-availability-with-azure-cosmos-db"></a>使用 Azure Cosmos DB 实现高可用性
 
@@ -68,7 +68,7 @@ Azure Cosmos DB 以透明方式在与 Cosmos 帐户关联的所有 Azure 区域�
 
 ## <a name="next-steps"></a>后续步骤
 
-接下来，你可以阅读以下文章：
+接下来可以阅读以下文章：
 
 * [各种一致性级别的可用性和性能权衡](consistency-levels-tradeoffs.md)
 * [全局缩放预配的吞吐量](scaling-throughput.md)

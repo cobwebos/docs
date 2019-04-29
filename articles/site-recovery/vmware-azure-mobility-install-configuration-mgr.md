@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 04/14/2019
 ms.author: ramamill
 ms.openlocfilehash: 35c317c4b73e9a22e3b0d6192abcfc2a596066b8
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60149990"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60598038"
 ---
 # <a name="automate-mobility-service-installation-with-system-center-configuration-manager"></a>使用 System Center Configuration Manager 自动执行移动服务安装
 
@@ -172,7 +172,7 @@ IF NOT %ERRORLEVEL% EQU 0 (
 
    | **参数名称** | **值** |
    |--|--|
-   | Name | 安装 Microsoft Azure 移动服务 (Windows) |
+   | 名称 | 安装 Microsoft Azure 移动服务 (Windows) |
    | 命令行 | install.bat |
    | 程序可以运行 | 用户是否已登录 |
 
@@ -397,7 +397,7 @@ cd /tmp
 
     | **参数名称** | **值** |
    |--|--|
-   | Name | 安装 Microsoft Azure 移动服务 (Linux) |
+   | 名称 | 安装 Microsoft Azure 移动服务 (Linux) |
    | 命令行 | ./install_linux.sh |
    | 程序可以运行 | 用户是否已登录 |
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.openlocfilehash: 14090e21fb7c6ca07fe63220ffd1d44d483ac869
-ms.sourcegitcommit: 5aed7f6c948abcce87884d62f3ba098245245196
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/28/2018
-ms.locfileid: "52443621"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61088151"
 ---
 # <a name="product-templates-in-azure-api-management"></a>Azure API 管理中的产品模板
 
@@ -78,7 +78,7 @@ ms.locfileid: "52443621"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
 |Paging|[分页](api-management-template-data-model-reference.md#Paging)实体。|产品集合的分页信息。|  
 |Filtering|[筛选](api-management-template-data-model-reference.md#Filtering)实体。|产品列表页的筛选信息。|  
@@ -203,19 +203,19 @@ ms.locfileid: "52443621"
   
 ### <a name="data-model"></a>数据模型  
   
-|属性|类型|Description|  
+|属性|Type|描述|  
 |--------------|----------|-----------------|  
 |Products|[产品](api-management-template-data-model-reference.md#Product)|指定的产品。|  
-|IsDeveloperSubscribed|布尔值|当前用户是否订阅了此产品。|  
+|IsDeveloperSubscribed|boolean|当前用户是否订阅了此产品。|  
 |SubscriptionState|数字|订阅的状态。 可能的状态包括：<br /><br /> -   `0 - suspended` – 订阅被阻止，订阅服务器无法调用产品的任何 API。<br />-   `1 - active` – 订阅处于活动状态。<br />-   `2 - expired` – 订阅已达到其到期日期，因此已停用。<br />-   `3 - submitted` – 开发人员已提交订阅请求，但管理员尚未批准或拒绝该请求。<br />-   `4 - rejected` – 管理员已拒绝订阅请求。<br />-   `5 - cancelled` – 开发人员或管理员已取消订阅。|  
 |Limits|数组|此属性已弃用，不应使用。|  
-|DelegatedSubscriptionEnabled|布尔值|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
-|DelegatedSubscriptionUrl|字符串|委派的订阅 URL（如果启用了委派）。|  
-|IsAgreed|布尔值|如果产品有条款，当前用户是否已同意这些条款。|  
+|DelegatedSubscriptionEnabled|boolean|是否为此订阅启用了[委派](https://azure.microsoft.com/documentation/articles/api-management-howto-setup-delegation/)。|  
+|DelegatedSubscriptionUrl|string|委派的订阅 URL（如果启用了委派）。|  
+|IsAgreed|boolean|如果产品有条款，当前用户是否已同意这些条款。|  
 |Subscriptions|[订阅摘要](api-management-template-data-model-reference.md#SubscriptionSummary)实体的集合。|对产品的订阅。|  
 |Apis|[API](api-management-template-data-model-reference.md#API) 实体的集合。|此产品中的 API。|  
-|CannotAddBecauseSubscriptionNumberLimitReached|布尔值|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
-|CannotAddBecauseMultipleSubscriptionsNotAllowed|布尔值|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
+|CannotAddBecauseSubscriptionNumberLimitReached|boolean|当前用户是否符合订阅此产品的条件（考虑到订阅限制）。|  
+|CannotAddBecauseMultipleSubscriptionsNotAllowed|boolean|当前用户是否符合订阅此产品的条件（考虑到是否允许多个订阅）。|  
   
 ### <a name="sample-template-data"></a>示例模板数据  
   

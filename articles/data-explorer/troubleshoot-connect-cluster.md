@@ -1,6 +1,6 @@
 ---
-title: 排查 Azure 数据资源管理器群集连接失败问题
-description: 本文介绍用于连接到 Azure 数据资源管理器中的群集的故障排除步骤。
+title: 排查 Azure 数据资源管理器群集连接失败的问题
+description: 本文介绍在 Azure 数据资源管理器中连接到群集的故障排除步骤。
 author: orspod
 ms.author: orspodek
 ms.reviewer: mblythe
@@ -8,11 +8,11 @@ ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.openlocfilehash: c71af799f614e9cd28221d79634666cbc3b2c987
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59795250"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60827030"
 ---
 # <a name="troubleshoot-failure-to-connect-to-a-cluster-in-azure-data-explorer"></a>故障排除：无法在 Azure 数据资源管理器中连接到群集
 

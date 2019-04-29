@@ -13,11 +13,11 @@ ms.reviewer: ninarn, carlrab
 manager: craigg
 ms.date: 02/28/2019
 ms.openlocfilehash: 96160745fa8702fc6f931904098c28d8968de2c1
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58010235"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60936296"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>弹性池有助于管理和缩放多个 Azure SQL 数据库
 
@@ -63,7 +63,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 池可让这些未使用的 DTU 跨多个数据库共享，因此减少了所需的 DTU 和总体成本。
 
-以上一个示例为基础，假设有其他数据库具有与 DB1 类似的使用模式。 在接下来的两个图形中，4 个数据库和 20 个数据库的使用量分层放在相同的图形，以使用基于 DTU 的购买模型演示随时间推移，它们的使用率非重叠的性质：
+以上一个示例为基础，假设有其他数据库具有与 DB1 类似的使用模式。 在接下来的两个图中，4 个数据库和 20 个数据库的使用量分层放在同一图形中，以演示在使用基于 DTU 的购买模型时数据库使用量在整个时间段上非重叠的性质：
 
    ![使用模式适用于池的 4 个数据库](./media/sql-database-elastic-pool/four-databases.png)
 
@@ -111,7 +111,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 - 池中所有数据库使用的最大资源（最大 DTU 数或最大 vCore 数，具体取决于所选的资源模型）。
 - 池中所有数据库使用的最大存储字节。
 
-有关每个资源模型提供的服务层，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+有关每个资源模型提供的服务层级，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)或[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 
 在无法使用工具的情况下，以下分步步骤可以帮助你评估池是否比单一数据库更具成本效益：
 
@@ -138,7 +138,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ### <a name="business-continuity-options-for-databases-in-an-elastic-pool"></a>弹性池中的数据库的业务连续性选项
 
-入池数据库通常支持可用于单一数据库的相同的[业务连续性功能](sql-database-business-continuity.md)。
+共用数据库通常支持和可用于单一数据库相同的[业务连续性功能](sql-database-business-continuity.md)。
 
 - **时间点还原**
 
@@ -162,9 +162,9 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 > [!NOTE]
 > 可以在服务器上创建多个池，但不能将数据库从不同的服务器添加到同一个池中。
 
-该池的服务层决定了池中弹性数据库的可用功能，以及每个数据库可用的最大资源量。 有关详细信息，请参阅 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)中弹性池的资源限制。 有关弹性池的基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
+该池的服务层级决定了池中弹性数据库的可用功能，以及每个数据库可用的最大资源量。 有关详细信息，请参阅 [DTU 模型](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes)中弹性池的资源限制。 有关弹性池的基于 vCore 的资源限制，请参阅[基于 vCore 的资源限制 - 弹性池](sql-database-vcore-resource-limits-elastic-pools.md)。
 
-若要配置池的资源和定价，请单击“配置池”。 然后选择服务层，将数据库添加到池，并配置池及其数据库的资源限制。
+若要配置池的资源和定价，请单击“配置池”。 然后选择服务层级，将数据库添加到池，并配置池及其数据库的资源限制。
 
 完成配置池后，可以单击“应用”，将池命名，然后单击“确定”以创建池。
 
@@ -195,7 +195,7 @@ SaaS 开发人员构建在由多个数据库组成的大规模数据层上的应
 
 ### <a name="to-select-databases-to-monitor"></a>选择要监视的数据库
 
-默认情况下，“数据库资源利用率”边栏选项卡中的图表按 DTU 或 CPU（取决于服务层）显示排名靠前的 5 个数据库。 可以在图表下面的列表中，通过选中和取消选中左侧的复选框，在此图表中显示或隐藏相应的数据库。
+默认情况下，“数据库资源利用率”边栏选项卡中的图表按 DTU 或 CPU（取决于服务层级）显示排名靠前的 5 个数据库。 可以在图表下面的列表中，通过选中和取消选中左侧的复选框，在此图表中显示或隐藏相应的数据库。
 
 还可以选择在此数据库表中并列查看更多的指标，以获取更完整的数据库性能视图。
 

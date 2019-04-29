@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2016
 ms.author: jeconnoc
-ms.openlocfilehash: 904056363c685ef0a16b229ce72383eb80701a39
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 4d8d3b93ef2a6347076fada53932b5fc56838d20
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006407"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61435731"
 ---
 # <a name="how-to-configure-cloud-services"></a>如何配置云服务
 
-可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都将应用于所有角色实例。
+可以在 Azure 门户中配置最常使用的云服务设置。 或者，如果你希望直接更新配置文件，则可以下载要更新的服务配置文件，然后上传更新文件并使用配置更改更新云服务。 无论使用哪种方法，配置更新都会应用于所有角色实例。
 
 还可以管理云服务角色的实例，或者通过远程桌面进入这些角色中。
 
-如果每个角色至少具有两个角色实例，那么 Azure 在配置更新期间只能确保 99.95% 的服务可用性。 这使得一台虚拟机可以在另一台虚拟机正更新时处理客户端请求。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
+如果每个角色至少具有两个角色实例，那么 Azure 在配置更新期间只能确保 99.95% 的服务可用性。 这使得一台虚拟机可以在另一台虚拟机更新时处理客户端请求。 有关详细信息，请参阅[服务级别协议](https://azure.microsoft.com/support/legal/sla/)。
 
 ## <a name="change-a-cloud-service"></a>更改云服务
 
@@ -48,7 +48,7 @@ ms.locfileid: "39006407"
 ![设置 OS 版本](./media/cloud-services-how-to-configure-portal/cs-settings-config-guestosversion.png)
 
 >[!IMPORTANT]
-> 选择特定 OS 版本将禁用自动 OS 更新，用户则需要自行负责修补工作。 务必确保角色示例可以接收更新，否则应用程序可能存在安全漏洞。
+> 选择特定 OS 版本会禁用自动 OS 更新，用户需要自行负责修补工作。 务必确保角色示例可以接收更新，否则应用程序可能存在安全漏洞。
 
 ## <a name="monitoring"></a>监视
 

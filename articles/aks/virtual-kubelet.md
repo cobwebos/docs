@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
 ms.openlocfilehash: a6a2fb246e407d6ea240ff40f4d2fa2b1b780931
-ms.sourcegitcommit: d61faf71620a6a55dda014a665155f2a5dcd3fa2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54054004"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61023708"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>结合使用虚拟 Kubelet 和 Azure Kubernetes 服务 (AKS)
 
@@ -85,7 +85,7 @@ az aks install-connector --resource-group myAKSCluster --name myAKSCluster --con
 
 这些参数可用于 `aks install-connector` 命令。
 
-| 参数： | Description | 必选 |
+| 参数： | 描述 | 需要 |
 |---|---|:---:|
 | `--connector-name` | ACI 连接器的名称。| 是 |
 | `--name` `-n` | 托管群集的名称。 | 是 |

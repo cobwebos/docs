@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
 ms.openlocfilehash: a973d8dbab18e9ea66afb5ffff83f47c3ad98f93
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58012347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844877"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>使用 Chef 自动部署 Azure 虚拟机
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -175,7 +175,7 @@ knife[:azure_publish_settings_file] = "yourfilename.publishsettings"
 接下来，[下载并安装](https://downloads.chef.io/chef-workstation/) Chef 工作站。
 将 Chef 工作站安装在默认位置。 安装可能需要几分钟时间。
 
-桌面上会显示“CW PowerShell”，这是使用与 Chef 产品交互时所需的工具加载的环境。 CW PowerShell 提供了新的特殊命令，如`chef-run`也作为传统 Chef CLI 命令，如`chef`。 使用 `chef -v` 查看安装的 Chef 工作站和 Chef 工具版本。 也可以通过在 Chef 工作站应用中选择“关于 Chef 工作站”来检查工作站版本。
+桌面上会显示“CW PowerShell”，这是使用与 Chef 产品交互时所需的工具加载的环境。 在 CW PowerShell 中可以使用新的临时命令（例如 `chef-run`），以及传统的 Chef CLI 命令（例如 `chef`）。 使用 `chef -v` 查看安装的 Chef 工作站和 Chef 工具版本。 也可以通过在 Chef 工作站应用中选择“关于 Chef 工作站”来检查工作站版本。
 
 `chef --version` 应返回如下所示的输出：
 

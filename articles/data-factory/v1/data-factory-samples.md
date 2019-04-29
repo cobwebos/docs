@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 03127dc777588f669ef07af52c8f73d986bfe0ea
-ms.sourcegitcommit: 25936232821e1e5a88843136044eb71e28911928
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54020806"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61260013"
 ---
 # <a name="azure-data-factory---samples"></a>Azure 数据工厂 - 示例
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "54020806"
 ## <a name="samples-on-github"></a>GitHub 上的示例
 [GitHub Azure-DataFactory 存储库](https://github.com/azure/azure-datafactory)中的几个示例可帮助快速熟悉 Azure 数据工厂服务或修改脚本并将其用于自己的应用程序。 Samples\JSON 文件夹包含用于常见方案的 JSON 片段。
 
-| 示例 | Description |
+| 示例 | 描述 |
 |:--- |:--- |
 | [ADF 演练](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFWalkthrough) |此示例提供端到端演练，以使用 Azure 数据工厂处理日志文件，从而将日志文件中的数据转换为见解。 <br/><br/>在本演练中，数据工厂管道收集示例日志、处理和扩充日志中的数据（包含参考数据）并转换数据，以评估最近启动的市场营销活动的有效性。 |
 | [JSON 示例](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/JSON) |此示例提供常见方案的 JSON 示例。 |
@@ -48,7 +48,7 @@ ms.locfileid: "54020806"
 ## <a name="azure-resource-manager-templates"></a>Azure 资源管理器模板
 可在 GitHub 上找到数据工厂的以下 Azure 资源管理器模板。
 
-| 模板 | Description |
+| 模板 | 描述 |
 | --- | --- |
 | [从 Azure Blob 存储复制到 Azure SQL 数据库](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Azure Blob 存储复制到 Azure SQL 数据库的管道 |
 | [从 Salesforce 复制到 Azure Blob 存储](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |部署此模板将创建 Azure 数据工厂，其中包含可将数据从指定的 Salesforce 帐户复制到 Azure Blob 存储的管道。 |
@@ -77,7 +77,7 @@ ms.locfileid: "54020806"
     ![“数据工厂”边栏选项卡](./media/data-factory-samples/DataFactoryBladeAfter.png)
 
 ## <a name="samples-in-visual-studio"></a>Visual Studio 中的示例
-### <a name="prerequisites"></a>先决条件
+### <a name="prerequisites"></a>必备组件
 必须在计算机上安装以下软件：
 
 * Visual Studio 2013 或 Visual Studio 2015

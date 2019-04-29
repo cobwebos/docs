@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
 ms.openlocfilehash: 8707a9cb90afe1bf72f3aef6377f8ada409a1c64
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58667117"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60837753"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>在服务清单中指定资源
 ## <a name="overview"></a>概述
@@ -198,7 +198,7 @@ HTTPS 协议提供服务器身份验证，用于对客户端-服务器通信进�
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
 ```
 
-注意：如果针对 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
+请注意:如果针对 ApplicationParameters 提供的值为空，将返回到 ServiceManifest 中为对应的 EndPointName 提供的默认值。
 
 例如：
 

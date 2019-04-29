@@ -10,11 +10,11 @@ ms.service: iot-accelerators
 services: iot-accelerators
 manager: philmea
 ms.openlocfilehash: ba5eb50dcf800c186124db348ac584ff6f55cebb
-ms.sourcegitcommit: cf88cf2cbe94293b0542714a98833be001471c08
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/23/2019
-ms.locfileid: "54467309"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61450291"
 ---
 # <a name="introduction-to-the-azure-iot-reference-architecture"></a>Azure IoT 参考体系结构简介
 

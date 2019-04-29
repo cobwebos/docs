@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/02/2018
 ms.author: rogirdh
-ms.openlocfilehash: 8241dc0303b7e60f9ce1e04e56d152c9a0b3906c
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
+ms.openlocfilehash: c5a76b9cee8fd6eb09ee4d24c1380202fd17cc6d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56327504"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60836238"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>在 Azure 中设计和实现 Oracle 数据库
 
@@ -148,7 +148,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - 默认 OS 磁盘：这些磁盘类型提供永久性数据和缓存。 它们针对启动时的 OS 访问进行了优化，不适用于事务性或数据仓库（分析）工作负荷。
 
-- 非托管磁盘：使用这些磁盘类型，可管理存储虚拟硬盘 (VHD) 文件（这些文件与虚拟机磁盘相对应）的存储帐户。 VHD 文件作为页 Blob 存储在 Azure 存储帐户中。
+- *非托管磁盘*：使用这些磁盘类型，可管理存储虚拟硬盘 (VHD) 文件（这些文件与虚拟机磁盘相对应）的存储帐户。 VHD 文件作为页 Blob 存储在 Azure 存储帐户中。
 
 - 托管磁盘：由 Azure 管理用于 VM 磁盘的存储帐户。 需要指定所需的磁盘类型（高级或标准）和磁盘大小。 Azure 将创建和管理该磁盘。
 
@@ -213,7 +213,7 @@ SQL> @?/rdbms/admin/awrrpt.sql
 
 - NSG 策略：NSG 可由子网或 NIC 定义。 对于诸如应用程序防火墙等内容，可更轻松地控制子网级别的访问，确保安全性和强制路由。
 
-- Jumpbox：为了提高访问的安全性，管理员不应直接连接到应用程序服务或数据库。 使用 Jumpbox 作为管理员计算机与 Azure 资源之间的媒介。
+- *Jumpbox*：为了提高访问的安全性，管理员不应直接连接到应用程序服务或数据库。 使用 Jumpbox 作为管理员计算机与 Azure 资源之间的媒介。
 ![“Jumpbox 拓扑”页屏幕截图](./media/oracle-design/jumpbox.png)
 
     应将管理员计算机的 IP 限制为仅允许访问 jumpbox。 Jumpbox 应有权访问应用程序和数据库。

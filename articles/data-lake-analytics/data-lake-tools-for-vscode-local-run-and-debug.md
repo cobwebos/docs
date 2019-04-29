@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: 42982e3fa0a854109a6b887640604498ac68847c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
-ms.translationtype: HT
+ms.openlocfilehash: 765bcaab0f91e097be827bfa6e8f505ef5330d57
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632253"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60814269"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>在 Visual Studio Code 中本地运行 U-SQL 并进行本地调试
 本文介绍如何在本地开发计算机上运行 U-SQL 作业，以让早期编码阶段提速，或在 Visual Studio Code 中本地调试代码。 有关针对 Visual Studio Code 的 Azure Data Lake 工具说明，请参阅[使用针对 Visual Studio Code 的 Azure Data Lake 工具](data-lake-analytics-data-lake-tools-for-vscode.md)。
@@ -23,7 +23,7 @@ ms.locfileid: "45632253"
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>设置 U-SQL 本地运行环境
 
-1. 按 Ctrl+Shift+P 打开命令面板，输入“ADL: 下载本地运行包”并下载包。  
+1. 按 Ctrl + Shift + P 以打开命令面板中，然后输入**ADL:下载本地运行包**下载包。  
 
    ![下载 ADL LocalRun 依赖项包](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/downloadtheadllocalrunpackage.png)
 
@@ -45,16 +45,16 @@ ms.locfileid: "45632253"
 
 
 ## <a name="start-the-local-run-service-and-submit-the-u-sql-job-to-a-local-account"></a>启动本地运行服务并将 U-SQL 作业提交到本地帐户 
-对于初次使用的用户，如果尚未[设置 U-SQL 本地运行环境](#set-up-the-u-sql-local-run-environment)，请使用“ADL: 下载本地运行包”，来下载本地运行包。
+对于第一次用户使用 **ADL:下载本地运行包** 若要下载本地运行的包，如果您还没有 [设置 U-SQL 本地运行环境](#set-up-the-u-sql-local-run-environment)。
 
-1. 按 Ctrl+Shift+P 打开命令面板，并输入“ADL: 启动本地运行服务”。   
+1. 按 Ctrl + Shift + P 以打开命令面板中，然后输入**ADL:启动本地运行的服务**。   
 2. 选择“接受”以接受首次安装时显示的 Microsoft 软件许可条款。 
 
    ![接受 Microsoft 软件许可条款](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/AcceptEULA.png)   
 3. 随即会打开 cmd 控制台。 对于首次使用的用户，需要输入 3，并找到数据输入和输出的本地文件夹路径。 对于其他选项，可使用默认值。 
 
    ![针对 Visual Studio Code 的 Data Lake 工具本地运行 cmd](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-run-cmd.png)
-4. 按 Ctrl+Shift+P 打开命令面板，输入“ADL: 提交作业”并选择“本地”将作业提交到本地帐户。
+4. 按 Ctrl + Shift + P 打开命令面板，请输入**ADL:提交作业**，然后选择**本地**若要将作业提交到本地帐户。
 
    ![针对 Visual Studio Code 的 Data Lake 工具选择“本地”](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-select-local.png)
 5. 提交作业后，可以查看提交详细信息。 若要查看提交详细信息，请选择“输出”窗口中的“jobUrl”。 也可以从 cmd 控制台查看作业提交状态。 如需了解更多作业详细信息，可在 cmd 控制台中输入 7。
@@ -66,19 +66,19 @@ ms.locfileid: "45632253"
 ## <a name="start-a-local-debug-for-the-u-sql-job"></a>为 U-SQL 作业启动本地调试  
 对于初次使用的用户：
 
-1. 如果尚未[设置 U-SQL 本地运行环境](#set-up-the-u-sql-local-run-environment)，请使用“ADL: 下载本地运行包”，来下载本地运行包。
-2. 如果尚未安装 .NET Core SDK 2.0，请遵循消息框中的建议进行安装。
- 
-  ![提醒安装 Dotnet](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
-3. 如果尚未安装针对 Visual Studio Code 的 C#，请遵循消息框中的建议进行安装。 单击“安装”即可继续操作。然后，重启 VSCode。
+1. 使用 **ADL:下载本地运行包** 若要下载本地运行的包，如果您还没有 [设置 U-SQL 本地运行环境](#set-up-the-u-sql-local-run-environment)。
+2. 安装.NET Core SDK 2.0 的建议在消息框中，如果未安装。
+ 
+  ![提醒安装.net](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/remind-install-dotnet.png)
+3. 安装C#用于在消息框中，如果未安装 Visual Studio Code 的建议。 单击 **安装** 若要继续，然后重启 VSCode。
 
     ![提醒安装 C#](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/install-csharp.png)
 
 若要执行本地调试，请按照以下步骤进行操作：
   
-1. 按 Ctrl+Shift+P 打开命令面板，并输入“ADL: 启动本地运行服务”。 随即会打开 cmd 控制台。 请确保已设置 DataRoot。
+1. 按 Ctrl + Shift + P 以打开命令面板中，然后输入**ADL:启动本地运行的服务**。 随即会打开 cmd 控制台。 请确保已设置 DataRoot。
 2. 在 C# 代码隐藏中设置断点。
-3. 返回到脚本编辑器，右键单击并选择“ADL:本地调试”。
+3. 返回到脚本编辑器中，右键单击并选择**ADL:本地调试**。
     
    ![针对 Visual Studio Code 的 Data Lake 工具本地调试结果](./media/data-lake-analytics-data-lake-tools-for-vscode-local-run-and-debug/data-lake-tools-for-vscode-local-debug-result.png)
 

@@ -9,11 +9,11 @@ ms.date: 03/20/2019
 ms.author: mialdrid
 ms.custom: seodec18
 ms.openlocfilehash: afe8d3971a51d57498e3e32b7e1cf5bf5a3263d6
-ms.sourcegitcommit: ab6fa92977255c5ecbe8a53cac61c2cd2a11601f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/20/2019
-ms.locfileid: "58295192"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883215"
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute 先决条件和清单
 若要使用 ExpressRoute 连接到 Microsoft 云服务，需确认是否符合以下部分中所列的要求。
@@ -30,8 +30,8 @@ ms.locfileid: "58295192"
 * 即使提供商不是 ExpressRoute 连接合作伙伴，也可通过[云交换提供商](expressroute-locations.md#connectivity-through-exchange-providers)连接到 Microsoft 云。
 
 ## <a name="network-requirements"></a>网络要求
-* **每个对等互连位置的冗余**:Microsoft 要求 Microsoft 的路由器上每条 ExpressRoute 线路的对等互连路由器之间设置冗余 BGP 会话 (甚至当你刚才已[一个物理连接到云交换](expressroute-faqs.md#onep2plink))。
-* **灾难恢复的冗余**:Microsoft 强烈建议至少两个 ExpressRoute 线路位于不同的对等互连位置设置以避免单点故障。
+* **每个对等互连位置的冗余性**：Microsoft 要求在 Microsoft 的路由器和每个 ExpressRoute 线路上的对等互连路由器之间建立冗余的 BGP 会话（即使只有[一个到云交换的物理连接](expressroute-faqs.md#onep2plink)）。
+* **灾难恢复的冗余**：Microsoft 强烈建议你在不同的对等互连位置设置至少两条 ExpressRoute 线路，避免单点故障。
 * **路由**：你或提供商需设置和管理针对[路由域](expressroute-circuit-peerings.md)的 BGP 会话，具体取决于连接到 Microsoft 云的方式。 某些以太网连接服务提供商或云交换服务提供商可能会以增值服务的形式提供 BGP 管理。
 * **NAT**：Microsoft 只能通过 Microsoft 对等互连接受公共 IP 地址。 如果使用的是本地网络中的专用 IP 地址，你或提供商需[使用 NAT](expressroute-nat.md)将专用 IP 地址转换为公共 IP 地址。
 * **QoS**：Skype for Business 具有各种服务（例如语音、视频、文本），这些服务所要求的 QoS 处理方式各有差异。 你和提供商应遵循 [QoS 要求](expressroute-qos.md)。

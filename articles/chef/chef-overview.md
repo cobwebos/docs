@@ -9,11 +9,11 @@ ms.author: tarcher
 ms.date: 05/15/2018
 ms.topic: article
 ms.openlocfilehash: 5c4e20177c1b334a34f7ce9328dfaa7bd8c66d3d
-ms.sourcegitcommit: bd15a37170e57b651c54d8b194e5a99b5bcfb58f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/07/2019
-ms.locfileid: "57545729"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60656568"
 ---
 # <a name="using-chef-with-azure"></a>将 Chef 与 Azure 配合使用
 [Chef](https://www.chef.io) 是一个功能强大的自动化平台，可将 Azure 上的虚拟机基础结构转换为代码。 无论大小如何，Chef 均可自动控制基础结构在网络中配置、部署和托管的方式。

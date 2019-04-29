@@ -2,21 +2,23 @@
 title: 使用 Spark 读取 Cassandra API 表数据
 titleSufix: Azure Cosmos DB
 description: 本文介绍如何读取 Azure Cosmos DB 中的 Cassandra API 表中的数据。
-author: kanshiG
-ms.author: govindk
+author: rockboyfor
+ms.author: v-yeche
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+origin.date: 12/06/2018
+ms.date: 03/18/2019
 ms.custom: seodec18
 ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 8330a262abaddaafd4acb04016b68486fba5835b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/04/2019
-ms.locfileid: "54033411"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60893380"
 ---
+<!--Verify sucessfully-->
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>使用 Spark 读取 Azure Cosmos DB Cassandra API 表中的数据
 
  本文介绍如何从 Spark 读取存储在 Azure Cosmos DB Cassandra API 中的数据。
@@ -32,7 +34,7 @@ import com.datastax.spark.connector.cql.CassandraConnector
 import com.microsoft.azure.cosmosdb.cassandra
 
 //Connection-related
-spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.com")
+spark.conf.set("spark.cassandra.connection.host","YOUR_ACCOUNT_NAME.cassandra.cosmosdb.azure.cn")
 spark.conf.set("spark.cassandra.connection.port","10350")
 spark.conf.set("spark.cassandra.connection.ssl.enabled","true")
 spark.conf.set("spark.cassandra.auth.username","YOUR_ACCOUNT_NAME")
@@ -139,9 +141,12 @@ select * from books_vw where book_pub_year > 1891
 ## <a name="next-steps"></a>后续步骤
 
 以下是有关从 Spark 使用 Azure Cosmos DB Cassandra API 的其他文章：
- 
+
  * [upsert 操作](cassandra-spark-upsert-ops.md)
  * [删除操作](cassandra-spark-delete-ops.md)
  * [聚合操作](cassandra-spark-aggregation-ops.md)
  * [表复制操作](cassandra-spark-table-copy-ops.md)
 
+<!--Verify sucessfully-->
+<!--Update_Description: new articles on  -->
+<!--ms.date: 03/18/2019-->

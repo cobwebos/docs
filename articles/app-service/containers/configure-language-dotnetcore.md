@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 03/28/2019
 ms.author: cephalin
 ms.openlocfilehash: e203877b2bc939c1d7fb9390df39f3e2451d12d3
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59551107"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60852306"
 ---
 # <a name="configure-a-linux-aspnet-core-app-for-azure-app-service"></a>配置 Linux 的 Azure 应用服务的 ASP.NET Core 应用
 
@@ -50,7 +50,7 @@ az webapp config set --name <app-name> --resource-group <resource-group-name> --
 
 ## <a name="access-environment-variables"></a>访问环境变量
 
-在应用服务中，你可以[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)外部应用程序代码。 然后您可以访问它们使用标准 ASP.NET 模式：
+在应用服务中，可以在应用代码外部[设置应用设置](../web-sites-configure.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#app-settings)。 然后您可以访问它们使用标准 ASP.NET 模式：
 
 ```csharp
 include Microsoft.Extensions.Configuration;
@@ -141,7 +141,7 @@ az webapp config appsettings set --name <app-name> --resource-group <resource-gr
 ## <a name="next-steps"></a>后续步骤
 
 > [!div class="nextstepaction"]
-> [教程：使用 SQL 数据库的 ASP.NET Core 应用](tutorial-dotnetcore-sqldb-app.md)
+> [教程：将 ASP.NET Core 应用与 SQL 数据库配合使用](tutorial-dotnetcore-sqldb-app.md)
 
 > [!div class="nextstepaction"]
-> [Linux 版应用服务常见问题解答](app-service-linux-faq.md)
+> [应用服务 Linux 常见问题解答](app-service-linux-faq.md)

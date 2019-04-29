@@ -1,35 +1,35 @@
 ---
 title: Azure Cosmos DB 的 SQL 查询
-description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 使用 SQL 作为一种 Azure Cosmos DB JSON 查询语言。
+description: 了解 Azure Cosmos DB 的 SQL 语法、数据库概念和 SQL 查询。 将 SQL 用作 Azure Cosmos DB JSON 查询语言。
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: mjbrown
 ms.openlocfilehash: 04a88558e3aea33c6d99bd0e4f1354c4316f5529
-ms.sourcegitcommit: 48a41b4b0bb89a8579fc35aa805cea22e2b9922c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/15/2019
-ms.locfileid: "59579202"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61054104"
 ---
 # <a name="sql-query-examples-for-azure-cosmos-db"></a>用于 Azure Cosmos DB 的 SQL 查询示例
 
-Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSON 查询语言的查询项。 Azure Cosmos DB 查询语言的设计目标是：
+Azure Cosmos DB SQL API 帐户支持使用 结构化查询语言 (SQL) 作为 JSON 查询语言来查询项。 Azure Cosmos DB 查询语言的设计目标是：
 
-* 支持的最常见和最常用的查询语言，而不是发明一种新查询语言之一的 SQL。 SQL 通过 JSON 项进行丰富的查询提供正式的编程模型。  
+* 支持用户最熟悉的、最流行的 SQL 查询语言，而不是要发明一种新的查询语言。 SQL 提供正式的编程模型用于对 JSON 项进行丰富查询。  
 
-* 使用 JavaScript 的编程模型为基础的查询语言。 JavaScript 的类型系统、 表达式计算和函数调用的 SQL API 的根。 这些根提供了自然编程模型功能，如自联接关系投影、 跨 JSON 项的分层导航后，空间查询和完全用 JavaScript 编写的用户定义函数 (Udf) 的调用。
+* 使用 JavaScript 的编程模型作为查询语言的基础。 JavaScript 的类型系统、表达式计算和函数调用是 SQL API 的根。 这些根为关系投影、跨 JSON 项的分层导航、自联接、空间查询以及调用完全采用 JavaScript 编写的用户定义的函数 (UDF) 等功能提供自然编程模型。
 
-本文逐步讲解一些示例 SQL 查询对简单 JSON 项。 若要了解有关 Azure Cosmos DB SQL 语言语法的详细信息，请参阅[SQL 语法参考](sql-api-query-reference.md)。
+本文基于简单的 JSON 项来逐步讲解一些示例 SQL 查询。 若要详细了解 Azure Cosmos DB SQL 语言语法，请参阅 [SQL 语法参考](sql-api-query-reference.md)。
 
 ## <a id="GettingStarted"></a>开始使用 SQL 查询
 
-在 Cosmos DB SQL API 帐户中，创建名为的容器`Families`。 在容器中创建两个简单的 JSON 项，并针对其运行一些简单的查询。
+在 Cosmos DB SQL API 帐户中，创建名为 `Families` 的容器。 在该容器中创建两个简单的 JSON 项，然后针对这些项运行几个简单的查询。
 
 ### <a name="create-json-items"></a>创建 JSON 项
 
-以下代码将创建两个简单的 JSON 项有关系列。 Andersen 和 Wakefield 系列的简单 JSON 项包括父级、 子级和其宠物、 地址和注册信息。 第一项具有字符串、 数字、 布尔值、 数组和嵌套的属性。
+以下代码创建两个有关家庭的简单 JSON 项。 Andersen 和 Wakefield 家庭的简单 JSON 项包括父母、孩子及其宠物、地址和注册信息。 第一个项包含字符串、数字、布尔、数组和嵌套属性。
 
 
 ```json
@@ -54,7 +54,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
 }
 ```
 
-第二个项使用`givenName`并`familyName`而不是`firstName`和`lastName`。
+第二个项使用 `givenName` 和 `familyName`，而不是使用 `firstName` 和 `lastName`。
 
 ```json
 {
@@ -88,9 +88,9 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
 
 ### <a name="query-the-json-items"></a>查询 JSON 项
 
-请尝试几个查询针对 JSON 数据，了解一些 Azure Cosmos DB 的 SQL 查询语言的主要方面。
+尝试对此 JSON 数据执行一些查询来了解 Azure Cosmos DB 的 SQL 查询语言的一些重要方面。
 
-以下查询返回的项位置`id`字段匹配`AndersenFamily`。 由于它是`SELECT *`查询，查询的输出是完整的 JSON 项。 有关 SELECT 语法的详细信息，请参阅[SELECT 语句](sql-api-query-reference.md#select-query)。 
+以下查询返回其中的 `id` 字段与 `AndersenFamily` 匹配的项。 由于它是一个 `SELECT *` 查询，因此该查询的输出是完整的 JSON 项。 有关 SELECT 语法的详细信息，请参阅 [SELECT 语句](sql-api-query-reference.md#select-query)。 
 
 ```sql
     SELECT *
@@ -98,7 +98,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
     WHERE f.id = "AndersenFamily"
 ```
 
-查询结果将是： 
+查询结果为： 
 
 ```json
     [{
@@ -120,7 +120,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
     }]
 ```
 
-下面的查询重新设置 JSON 输出格式到不同的形状。 该查询投影新 JSON`Family`包含两个所选字段对象`Name`和`City`，当地址城市时的状态相同。 "NY，NY"匹配这种情况。
+以下查询将 JSON 输出的格式重新设置为不同的形式。 当地址中的城市名称与州名称相同时，该查询将使用两个选定的字段 `Name` 和 `City` 来投影新的 JSON `Family` 对象。 “NY, NY”符合这种情况。
 
 ```sql
     SELECT {"Name":f.id, "City":f.address.city} AS Family
@@ -128,7 +128,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
     WHERE f.address.city = f.address.state
 ```
 
-查询结果将是：
+查询结果为：
 
 ```json
     [{
@@ -139,7 +139,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
     }]
 ```
 
-下面的查询返回的子级的所有给定名称系列中其`id`匹配`WakefieldFamily`、 有序的等级。
+以下查询返回家庭中 `id` 匹配 `WakefieldFamily` 的所有孩子的名字，按年级排序。
 
 ```sql
     SELECT c.givenName
@@ -158,21 +158,21 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
     ]
 ```
 
-前述示例介绍了 Cosmos DB 查询语言的几个方面：  
+上述示例演示了 Cosmos DB 查询语言的几个方面：  
 
-* 由于 SQL API 适用于 JSON 值，它可以处理与树形实体而不是行和列。 可以参考的树节点在任意深度，如`Node1.Node2.Node3…..Nodem`，类似于两个部分引用的`<table>.<column>`ANSI SQL 中。
+* 由于 SQL API 适用于 JSON 值，因此它可以处理三种形式的实体，而不是行和列。 可以引用任意深度的树节点（例如 `Node1.Node2.Node3…..Nodem`），类似于 ANSI SQL 中的 `<table>.<column>` 的两部分引用。
 
-* 查询语言适用于无架构数据，因为必须动态绑定的类型系统。 相同的表达式在不同项上可能会产生不同的类型。 查询的结果是一个有效的 JSON 值，但不保证是固定的架构。  
+* 由于查询语言适用于无架构数据，因此，必须动态绑定类型系统。 相同的表达式在不同项上可能会产生不同的类型。 查询的结果是有效的 JSON 值，但不保证它是固定的架构。  
 
-* Azure Cosmos DB 仅支持严格的 JSON 项。 类型系统和表达式只限于仅处理 JSON 类型。 有关详细信息，请参阅[JSON 规范](https://www.json.org/)。  
+* Azure Cosmos DB 仅支持严格的 JSON 项。 类型系统和表达式仅限于处理 JSON 类型。 有关详细信息，请参阅 [JSON 规范](https://www.json.org/)。  
 
-* Cosmos DB 容器是 JSON 项的一个无架构集合。 内和跨容器项的关系是隐式捕获包含，不通过主键和外键关系。 此功能很重要的内部项联接在本文后面部分所述。
+* Cosmos DB 容器是 JSON 项的一个无架构集合。 容器项内部以及跨容器项的关系是按包含关系隐式捕获的，而不是按主键和外键关系捕获的。 此特性对于本文稍后要讨论的项内联接非常重要。
 
 ## <a id="SelectClause"></a>SELECT 子句
 
-每个查询包括 SELECT 子句和可选的 FROM 和 WHERE 子句，每个 ANSI SQL 标准。 通常情况下，枚举时在 FROM 子句中的源，并在 WHERE 子句应用到源以检索 JSON 项的子集筛选器。 然后，SELECT 子句投影选择列表中请求的 JSON 值。 有关语法的详细信息，请参阅[SELECT 语句](sql-api-query-reference.md#select-query)。
+每个查询按 ANSI SQL 标准由 SELECT 子句和可选的 FROM 和 WHERE 子句组成。 通常，将会枚举 FROM 子句中的源，WHERE 子句对该源应用一个筛选器，以检索 JSON 项的子集。 然后，SELECT 子句在 select 列表中投影请求的 JSON 值。 有关语法的详细信息，请参阅 [SELECT 语句](sql-api-query-reference.md#select-query)。
 
-下面的 SELECT 查询的示例返回`address`从`Families`其`id`匹配`AndersenFamily`:
+以下 SELECT 查询示例从 `id` 匹配 `AndersenFamily` 的 `Families` 中返回 `address`：
 
 ```sql
     SELECT f.address
@@ -193,7 +193,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
 ```
 
 ## <a id="EscapingReservedKeywords"></a>带引号的属性访问器
-您可以访问使用带引号的属性运算符 [] 的属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法可用于转义包含空格和特殊字符，或具有相同的名称作为 SQL 关键字或保留的字的属性。
+可以使用带引号的属性运算符 [] 访问属性。 例如，`SELECT c.grade` 和 `SELECT c["grade"]` 是等效的。 此语法很适合用于转义包含空格和特殊字符的属性，或者其名称与 SQL 关键字或保留字相同的属性。
 
 ```sql
     SELECT f["lastName"]
@@ -203,7 +203,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
 
 ## <a name="nested-properties"></a>嵌套属性
 
-下面的示例项目的两个嵌套的属性，`f.address.state`和`f.address.city`。
+以下示例投影两个嵌套属性：`f.address.state` 和 `f.address.city`。
 
 ```sql
     SELECT f.address.state, f.address.city
@@ -222,7 +222,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
 
 ## <a name="json-expressions"></a>JSON 表达式
 
-投影也支持 JSON 表达式，如下面的示例中所示：
+投影也支持 JSON 表达式，如以下示例所示：
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city, "name": f.id }
@@ -242,7 +242,7 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
     }]
 ```
 
-在上述示例中，SELECT 子句需要创建一个 JSON 对象，和子句的示例提供不了任何键，因为使用隐式参数变量名`$1`。 以下查询将返回两个隐式参数变量：`$1`和`$2`。
+在上述示例中，SELECT 子句需要创建一个 JSON 对象；由于该示例未提供键，因此子句使用了隐式参数变量名称 `$1`。 以下查询返回两个隐式参数变量：`$1` 和 `$2`。
 
 ```sql
     SELECT { "state": f.address.state, "city": f.address.city },
@@ -267,13 +267,13 @@ Azure Cosmos DB SQL API 帐户支持使用结构化查询语言 (SQL) 用作 JSO
 
 ## <a id="ValueKeyword"></a>VALUE 关键字
 
-VALUE 关键字提供了一种返回 JSON 值单独方法。 例如，如下所示的查询返回的标量表达式`"Hello World"`而不是`{$1: "Hello World"}`:
+VALUE 关键字提供一种只返回 JSON 值的方式。 例如，下面所示的查询返回标量表达式 `"Hello World"` 而不是 `{$1: "Hello World"}`：
 
 ```sql
     SELECT VALUE "Hello World"
 ```
 
-下面的查询返回的 JSON 值，而无需`address`标签：
+以下查询返回不带 `address` 标签的 JSON 值：
 
 ```sql
     SELECT VALUE f.address
@@ -297,7 +297,7 @@ VALUE 关键字提供了一种返回 JSON 值单独方法。 例如，如下所�
     ]
 ```
 
-下面的示例演示如何返回 JSON 基元值 （JSON 树的叶级别）：
+以下示例演示如何返回 JSON 基元值（JSON 树的叶级别）：
 
 
 ```sql
@@ -316,9 +316,9 @@ VALUE 关键字提供了一种返回 JSON 值单独方法。 例如，如下所�
 
 ## <a name="aliasing"></a>别名
 
-可以使用显式别名在查询中的值。 如果查询包含两个具有相同的名称，使用别名重命名一个或两个属性，因此它们在投影的结果中消除歧义。
+可以显式为查询中的值指定别名。 如果查询包含两个同名的属性，请使用别名来重命名其中一个或两个属性，以便可以在投影的结果中消除其歧义。
 
-As 关键字用于别名是可选的如下面的示例中所示，投影为第二个值时`NameInfo`:
+如以下示例所示，将第二个值投影为 `NameInfo` 时，用于别名的 AS 关键字是可选的：
 
 ```sql
     SELECT 
@@ -344,19 +344,19 @@ As 关键字用于别名是可选的如下面的示例中所示，投影为第�
 
 ## <a id="FromClause"></a>FROM 子句
 
-FROM (`FROM <from_specification>`) 子句是可选的除非源进行筛选或更高版本在查询中进行投影。 有关语法的详细信息，请参阅[语法从](sql-api-query-reference.md#bk_from_clause)。 之类的查询`SELECT * FROM Families`枚举整个`Families`容器。 而不是使用容器名称的容器，还可以使用特殊标识符 ROOT。
+FROM (`FROM <from_specification>`) 子句是可选的，除非稍后在查询中对源进行筛选或投影。 有关语法的详细信息，请参阅 [FROM 语法](sql-api-query-reference.md#bk_from_clause)。 `SELECT * FROM Families` 之类的查询枚举整个 `Families` 容器。 还可以对容器使用特殊标识符 ROOT，而无需使用容器名称。
 
-FROM 子句强制实施每个查询的以下规则：
+FROM 子句对每个查询强制实施以下规则：
 
-* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 这里`f`是别名`Families`。 如是一个可选的关键字为别名的标识符。  
+* 容器可以使用别名，如 `SELECT f.id FROM Families AS f` 或只需为 `SELECT f.id FROM Families f`。 此处的 `f` 是 `Families` 的别名。 AS 是可选的关键字，用于指定标识符的别名。  
 
-* 一旦有了别名，无法绑定原始的源名称。 例如，`SELECT Families.id FROM Families f`在语法上无效因为标识符`Families`的别名已且无法再解析。  
+* 指定别名后，无法绑定原始的源名称。 例如，`SELECT Families.id FROM Families f` 在语法上是无效的，原因是标识符 `Families` 已指定别名，因此不再可以解析。  
 
-* 被引用的所有属性必须都是完全限定，以避免在严格的架构的遵从性没有任何不确定的绑定。 例如，`SELECT id FROM Families f`在语法上无效因为属性`id`没有绑定。
+* 所有被引用的属性必须完全限定，以避免在不严格遵守架构时出现任何有歧义的绑定。 例如，`SELECT id FROM Families f` 在语法上是无效的，因为未绑定属性 `id`。
 
-### <a name="get-subitems-by-using-the-from-clause"></a>获取子项的 FROM 子句
+### <a name="get-subitems-by-using-the-from-clause"></a>使用 FROM 子句获取子项
 
-FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每个项，则子根可以变成源，，如下面的示例中所示：
+FROM 子句可将源化简为更小的子集。 要在每个项中仅枚举子树，子根可能会变成源，如以下示例所示：
 
 ```sql
     SELECT *
@@ -396,7 +396,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
     ]
 ```
 
-上述查询中使用数组作为源，但您还可以使用对象作为源。 该查询将视为包含在结果中的源中的任何有效的、 定义 JSON 值。 以下示例将排除`Families`没有`address.state`值。
+上述查询使用数组作为源，但你也可以使用对象作为源。 该查询考虑将源中任何有效的已定义 JSON 值包含在结果中。 以下示例将排除`Families`没有`address.state`值。
 
 ```sql
     SELECT *
@@ -414,9 +414,9 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 
 ## <a id="WhereClause"></a>WHERE 子句
 
-可选的 WHERE 子句 (`WHERE <filter_condition>`) 指定条件的源 JSON 项必须满足要包括在结果中的查询。 JSON 项到指定的条件的计算结果必须`true`以作为结果。 索引层使用 WHERE 子句，以确定最小可以是结果的一部分的源项的子集。 有关语法的详细信息，请参阅[WHERE 语法](sql-api-query-reference.md#bk_where_clause)。
+可选的 WHERE 子句 (`WHERE <filter_condition>`) 指定条件，查询只会将满足这些条件的源 JSON 项包含在结果中。 JSON 项必须将指定的条件评估为 `true` 才被视作结果。 索引层使用 WHERE 子句来确定可以作为结果的一部分的源项的最小子集。 有关语法的详细信息，请参阅 [WHERE 语法](sql-api-query-reference.md#bk_where_clause)。
 
-下面的查询请求包含的项`id`值为的属性`AndersenFamily`。 它不包括不具有任何项`id`属性或其值不匹配`AndersenFamily`。
+以下查询请求包含值为 `AndersenFamily` 的 `id` 属性的项。 它会排除任何不带 `id` 属性或值与 `AndersenFamily` 不匹配的项。
 
 ```sql
     SELECT f.address
@@ -440,7 +440,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 
 上面的示例演示了一个简单的等式查询。 SQL API 还支持各种[标量表达式](#scalar-expressions)。 最常使用的是二进制和一元表达式。 来自源 JSON 对象的属性引用也是有效的表达式。
 
-可以使用以下受支持的二进制运算符：  
+可以使用以下受支持的二元运算符：  
 
 |**运算符类型**  | **值** |
 |---------|---------|
@@ -450,7 +450,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 |比较 | =、!=、&lt;、&gt;、&lt;=、&gt;=、<> |
 |String     |  \|\|（连接） |
 
-以下查询使用二进制运算符：
+以下查询使用二元运算符：
 
 ```sql
     SELECT *
@@ -466,7 +466,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
     WHERE c.grade >= 5    -- matching grades == 5
 ```
 
-此外可以使用一元运算符 +、-、 ~，而不是在查询，如以下示例所示：
+还可以在查询中使用一元运算符 +、-、~ 和 NOT，如以下示例所示：
 
 ```sql
     SELECT *
@@ -478,7 +478,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
     WHERE (-c.grade = -5)  -- matching grades == 5
 ```
 
-此外可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered`返回包含该属性的 JSON 项`isRegistered`值等于`true`。 任何其他值，例如`false`， `null`， `Undefined`， `<number>`， `<string>`， `<object>`，或`<array>`，从结果中排除项。 
+还可以在查询中使用属性引用。 例如，`SELECT * FROM Families f WHERE f.isRegistered` 返回包含值等于 `true` 的 `isRegistered` 属性的 JSON 项。 任何其他值（例如`false`、`null`、`Undefined`、`<number>`、`<string>`、`<object>` 或 `<array>`）会从结果中排除该项。 
 
 ### <a name="equality-and-comparison-operators"></a>等式和比较运算符
 
@@ -494,9 +494,9 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 | **Object** | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** | Undefined |
 | 数组 | Undefined | Undefined | Undefined | Undefined | Undefined | Undefined | **正常** |
 
-对于比较运算符，如`>`， `>=`， `!=`， `<`，并`<=`，比较在类型或两个对象或数组生成`Undefined`。  
+对于 `>`、`>=`、`!=`、`<` 和 `<=` 等比较运算符，跨类型的比较或者两个对象或数组之间的比较会生成 `Undefined`。  
 
-标量表达式的结果是否`Undefined`，该项目不包括在结果中，因为`Undefined`不等于`true`。
+如果标量表达式的结果为 `Undefined`，则不会将该项包含在结果中，因为 `Undefined` 不等于 `true`。
 
 ### <a name="logical-and-or-and-not-operators"></a>逻辑（AND、OR 和 NOT）运算符
 
@@ -528,7 +528,7 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
 
 ## <a name="between-keyword"></a>BETWEEN 关键字
 
-与 ANSI SQL 中，可以使用 BETWEEN 关键字来对字符串或数字值的范围执行快速查询。 例如，以下查询将返回第一个子女的年级 1-5，非独占的所有项。
+与在 ANSI SQL 中一样，可以使用 BETWEEN 关键字来对字符串或数字值的范围表达查询。 例如，以下查询返回其中第一个孩子的年级为 1-5（含）的所有项。
 
 ```sql
     SELECT *
@@ -536,21 +536,21 @@ FROM 子句可以减少到较小子集的源。 若要枚举仅子树中的每�
     WHERE c.grade BETWEEN 1 AND 5
 ```
 
-与在 ANSI SQL 中，您还可以使用 BETWEEN 子句在 FROM 子句中，如以下示例所示。
+与在 ANSI-SQL 中不同，你还可以在 FROM 子句中使用 BETWEEN 子句，如以下示例所示。
 
 ```sql
     SELECT (c.grade BETWEEN 0 AND 10)
     FROM Families.children[0] c
 ```
 
-SQL API，与 ANSI SQL 中可以执行快速范围查询对混合类型的属性。 例如，`grade`可能是一个数字与类似`5`某些项和之类的字符串中`grade4`在其他用例。 在这些情况下，与 JavaScript，两种不同类型之间的比较会导致`Undefined`，因此跳过项。
+与 ANSI SQL 不同，在 SQL API 中，可以针对混合类型的属性表达范围查询。 例如，在某些项中，`grade` 可能是类似于 `5` 的数字；而在其他一些项中，它可能是类似于 `grade4` 的字符串。 在这些情况下（与在 JavaScript 中一样），两个不同类型之间的比较会生成 `Undefined`，因此会跳过该项。
 
 > [!TIP]
-> 更快的查询执行时间，用于创建使用范围索引类型 BETWEEN 子句将筛选任何数值属性或路径的索引策略。
+> 为了更快地执行查询，请创建一个索引策略，该策略针对 BETWEEN 子句筛选的任何数字属性或路径使用范围索引类型。
 
 ## <a name="in-keyword"></a>IN 关键字
 
-使用 IN 关键字来检查指定的值是否与列表中的任何值相匹配。 例如，以下查询返回家族的所有项，`id`是`WakefieldFamily`或`AndersenFamily`。
+使用 IN 关键字可以检查指定的值是否与列表中的任一值匹配。 例如，以下查询返回 `id` 为 `WakefieldFamily` 或 `AndersenFamily` 的所有家庭项。
 
 ```sql
     SELECT *
@@ -558,7 +558,7 @@ SQL API，与 ANSI SQL 中可以执行快速范围查询对混合类型的属性
     WHERE Families.id IN ('AndersenFamily', 'WakefieldFamily')
 ```
 
-下面的示例返回所有项的状态为任何指定的值：
+以下示例返回状态为任何指定值的所有项：
 
 ```sql
     SELECT *
@@ -568,29 +568,29 @@ SQL API，与 ANSI SQL 中可以执行快速范围查询对混合类型的属性
 
 ## <a name="-operator"></a>* 运算符
 
-特殊运算符 * 项目整个项原样。 在使用时，它必须仅为投影的字段。 之类的查询`SELECT * FROM Families f`有效，但`SELECT VALUE * FROM Families f`和`SELECT *, f.id FROM Families f`无效。 [这篇文章中的第一次查询](#query-the-json-items)使用 * 运算符。 
+特殊运算符 * 按原样投影整个项。 在使用时，它必须仅为投影的字段。 类似于 `SELECT * FROM Families f` 的查询是有效的，而 `SELECT VALUE * FROM Families f` 和 `SELECT *, f.id FROM Families f` 是无效的。 [本文中的第一个查询](#query-the-json-items)使用了 * 运算符。 
 
-## <a name="-and--operators"></a>? 和?? 运算符
+## <a name="-and--operators"></a>? 和 ?? 运算符
 
-您可以使用三元 （？） 和 Coalesce （？） 运算符来生成条件表达式，如下所示编程语言，如C#和 JavaScript。 
+如同在 C# 和 JavaScript 等编程语言中那样，可以使用三元 (?) 和联合 (??) 运算符来生成条件表达式。 
 
-可以使用？ 若要构造动态的新 JSON 属性的运算符。 例如，以下查询将分类到级级别`elementary`或`other`:
+可以使用 ? 运算符即时构造新的 JSON 属性。 例如，以下查询将年级分类为 `elementary` 或 `other`：
 
 ```sql
      SELECT (c.grade < 5)? "elementary": "other" AS gradeLevel
      FROM Families.children[0] c
 ```
 
-此外可以嵌套调用？ 运算符，如下面的查询中所示： 
+还可以将调用嵌套到 ? 运算符，如以下查询中所示： 
 
 ```sql
     SELECT (c.grade < 5)? "elementary": ((c.grade < 9)? "junior": "high") AS gradeLevel
     FROM Families.children[0] c
 ```
 
-与其他查询运算符，一样？ 如果引用的属性缺失或正在进行比较的类型不同，运算符将排除项。
+与其他查询运算符一样， 如果引用的属性缺失或者要比较的类型不同，则 ? 运算符将会排除项。
 
-使用?? 若要针对半结构化或混合类型的数据进行查询时有效地检查中项的属性的运算符。 例如，以下查询将返回`lastName`（如果存在） 或`surname`如果`lastName`不存在。
+查询半结构化 或混合类型的数据时，可以使用 ?? 运算符有效地检查项中的属性。 例如，以下查询返回 `lastName`（如果存在）或 `surname`（如果 `lastName` 不存在）。
 
 ```sql
     SELECT f.lastName ?? f.surname AS familyName
@@ -599,9 +599,9 @@ SQL API，与 ANSI SQL 中可以执行快速范围查询对混合类型的属性
 
 ## <a id="TopKeyword"></a>TOP 运算符
 
-TOP 关键字返回第一个`N`不确定的顺序的查询结果数。 最佳做法是，使用 TOP 与 ORDER BY 子句来将结果限制为第一个`N`有序值的数目。 结合这两个子句是可预测指示哪些行 TOP 影响的唯一方法。 
+TOP 关键字以未定义的顺序返回前 `N` 个查询结果。 最佳做法是结合使用 TOP 与 ORDER BY 子句，将结果限制为前 `N` 个有序值。 要预见性地指示哪些行受到 TOP 的影响，只能结合使用这两个子句。 
 
-您可以使用 TOP 与常量值，如以下示例中，或使用参数化的查询变量的值。 有关详细信息，请参阅[参数化查询](#parameterized-queries)部分。
+可以结合一个常量值使用 TOP（如以下示例中所示），或者在参数化查询中结合一个变量值使用 TOP。 有关详细信息，请参阅[参数化查询](#parameterized-queries)部分。
 
 ```sql
     SELECT TOP 1 *
@@ -632,9 +632,9 @@ TOP 关键字返回第一个`N`不确定的顺序的查询结果数。 最佳做
 
 ## <a id="OrderByClause"></a>ORDER BY 子句
 
-与 ANSI SQL 中，可以在查询中包括可选的 ORDER BY 子句。 可选的 ASC 或 DESC 参数指定是否检索结果按升序或降序排序。 默认值为 ASC。
+与在 ANSI SQL 中一样，可以在查询中包含可选的 ORDER BY 子句。 可选的 ASC 或 DESC 参数指定是要按升序还是降序检索结果。 默认值为 ASC。
 
-例如，下面是名称的检索按居住城市的升序的家庭的查询：
+例如，以下查询按居住城市名称的升序检索家庭：
 
 ```sql
     SELECT f.id, f.address.city
@@ -657,7 +657,7 @@ TOP 关键字返回第一个`N`不确定的顺序的查询结果数。 最佳做
     ]
 ```
 
-下面的查询检索系列`id`中其项的创建日期的顺序。 项`creationDate`一个数字表示*纪元时间*，或自 1970 年 1 月 1 日以秒为单位起经过的时间。
+以下查询按项的创建日期检索家庭 `id`。 项 `creationDate` 是一个数字，表示纪元时间，或者自 1970 年 1 月 1 日开始消逝的时间（以秒为单位）。
 
 ```sql
     SELECT f.id, f.creationDate
@@ -681,7 +681,7 @@ TOP 关键字返回第一个`N`不确定的顺序的查询结果数。 最佳做
 ```
 ## <a name="scalar-expressions"></a>标量表达式
 
-SELECT 子句支持标量表达式，如常量、 算术表达式和逻辑表达式。 下面的查询使用的标量表达式：
+SELECT 子句支持标量表达式，例如常量、算术表达式和逻辑表达式。 以下查询使用一个标量表达式：
 
 
 ```sql
@@ -719,7 +719,7 @@ SELECT 子句支持标量表达式，如常量、 算术表达式和逻辑表达
 
 ## <a name="object-and-array-creation"></a>对象和数组创建
 
-SQL API 的一个重要功能是数组和对象创建。 前面的示例创建一个新的 JSON 对象， `AreFromSameCityState`。 您还可以构造数组，如下面的示例中所示：
+SQL API 的一个重要功能是创建数组和对象。 以上示例创建了新的 JSON 对象 `AreFromSameCityState`。 还可以构造数组，如以下示例所示：
 
 
 ```sql
@@ -749,7 +749,7 @@ SQL API 的一个重要功能是数组和对象创建。 前面的示例创建�
 
 ## <a id="Iteration"></a>迭代
 
-SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM 源中添加新的构造。 在下面的示例：
+SQL API 支持循环访问 JSON 数组，它可以通过 FROM 源中的 IN 关键字添加一个新的构造。 在以下示例中：
 
 ```sql
     SELECT *
@@ -785,7 +785,7 @@ SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM �
     ]
 ```
 
-下一个查询对执行迭代`children`在`Families`容器。 输出数组是不同于前面的查询。 此示例拆分`children`，并将结果合并为一个数组：  
+下一个查询循环访问 `Families` 容器中的 `children`。 输出的数组与前面的查询不同。 此示例拆分 `children` 并将结果平展为单个数组：  
 
 ```sql
     SELECT *
@@ -817,7 +817,7 @@ SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM �
     ]
 ```
 
-您可以筛选进一步单个实体的数组，如下面的示例中所示：
+可以进一步筛选该数组的每个条目，如以下示例所示：
 
 ```sql
     SELECT c.givenName
@@ -833,7 +833,7 @@ SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM �
     }]
 ```
 
-你还可以通过数组迭代的结果进行聚合。 例如，以下查询计算所有家庭的孩子的数量：
+还可基于数组迭代的结果进行聚合。 例如，以下查询计数所有家庭中的孩子数目。
 
 ```sql
     SELECT COUNT(child)
@@ -852,11 +852,11 @@ SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM �
 
 ## <a id="Joins"></a>联接
 
-在关系数据库中，跨表联接都是逻辑要求设计规范化的架构。 SQL API 与此相反，使用非规范化的数据模型的架构项，这是逻辑的等效*自联接*。
+在关系数据库中，跨表联接是设计规范化架构的逻辑定理。 相比之下，SQL API 使用无架构项的反规范化数据模型，这在逻辑上等效于自联接。
 
-支持的语言的语法`<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`。 此查询将返回一组元组与`N`值。 每个元组拥有通过对它们相应的集遍历所有容器别名所产生的值。 换言之，此查询是参与联接的集的完整叉积。
+该语言支持语法 `<from_source1> JOIN <from_source2> JOIN ... JOIN <from_sourceN>`。 此查询返回一组包含 `N` 值的元组。 每个元组拥有通过对它们相应的集遍历所有容器别名所产生的值。 换言之，此查询是参与联接的集的完整叉积。
 
-下面的示例演示了 JOIN 子句是如何工作的。 在以下示例中，结果为空，因为源中的每个项的叉积和一个空集为空：
+下面的示例演示了 JOIN 子句是如何工作的。 在以下示例中，由于源中每个项和空集的叉积为空，因此结果为空：
 
 ```sql
     SELECT f.id
@@ -871,7 +871,7 @@ SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM �
     }]
 ```
 
-在以下示例中，联接位于两个 JSON 对象，项根之间的叉积`id`和`children`子根。 这一事实，`children`数组不是有效联接，因为它可以处理是一个根`children`数组。 结果包含只有两个结果，因为包含数组的每个项目的叉积生成恰好只有一个项。
+在以下示例中，联接是两个 JSON 对象、项根 `id` 和子根 `children` 之间的叉积。 `children` 是数组这一事实在联接中不起作用，因为查询处理的是作为 `children` 数组的单一根。 由于每个带有数组的项的叉积仅生成一个项，因此结果仅包含两个结果。
 
 ```sql
     SELECT f.id
@@ -916,15 +916,15 @@ SQL API 提供支持，以为遍历 JSON 数组，与通过 IN 关键字 FROM �
     ]
 ```
 
-JOIN 子句的 FROM 源是一个迭代器。 因此，前面的示例中的流是：  
+JOIN 子句的 FROM 源是一个迭代器。 因此，以上示例中的流程为：  
 
-1. 展开每个子元素`c`数组中。
-2. 将应用与该项目的根的叉积`f`其中每个子元素`c`平展的第一步。
-3. 最后，项目的根对象`f``id`单独的属性。
+1. 展开数组中的每个子元素 `c`。
+2. 应用包含项 `f` 的根的叉积，该项包含已在第一个步骤中平展的每个子元素 `c`。
+3. 最后，单独投影根对象 `f` `id` 属性。
 
-第一项`AndersenFamily`，只包含一个`children`元素，因此结果集包含单个对象。 第二项`WakefieldFamily`，包含两个`children`，因此，叉积生成两个对象，每个`children`元素。 这两个项中的根字段会是相同的，正如在叉积中所预期的一样。
+第一个项 (`AndersenFamily`) 仅包含一个 `children` 元素，因此结果集仅包含单个对象。 第二个项 `WakefieldFamily` 包含两个 `children`，因此，叉积为每个 `children` 元素生成一个对象，共两个对象。 这两个项中的根字段会是相同的，正如在叉积中所预期的一样。
 
-JOIN 子句的真正的实用程序是窗体的元组从叉积，否则很难对项目形状中。 下面的允许用户选择的总体元组满足的条件的元组组合的筛选器的示例。
+JOIN 子句真正实用的地方是通过以其他方式难以投影的形式基于叉积生成元组。 以下示例对元组组合进行筛选，让用户选择元组在整体上满足的条件。
 
 ```sql
     SELECT 
@@ -959,7 +959,7 @@ JOIN 子句的真正的实用程序是窗体的元组从叉积，否则很难对
     ]
 ```
 
-前面的示例中的以下扩展执行双联接。 您无法将叉积视为下面的伪代码：
+以下示例对前一个示例做了延伸，将会执行双重联接。 可将叉积视为下面所示的伪代码：
 
 ```
     for-each(Family f in Families)
@@ -977,9 +977,9 @@ JOIN 子句的真正的实用程序是窗体的元组从叉积，否则很难对
     }
 ```
 
-`AndersenFamily` 有一个子拥有一只宠物，因此叉积生成一行 (1\*1\*1) 从这一系列。 `WakefieldFamily` 有两个孩子，只有一个用户拥有宠物，但该子级有 2 只宠物。 此系列叉积生成 1\*1\*2 = 2 行。
+`AndersenFamily` 中有一个孩子拥有一只宠物，因此叉积从此家庭生成了一行 (1\*1\*1)。 `WakefieldFamily` 中有两个孩子，其中只有一个孩子拥有宠物，但这个孩子拥有两只宠物。 叉积对此家庭生成了 1\*1\*2 = 2 行。
 
-在下一步的示例中，一个附加筛选器上没有`pet`，其中排除了宠物名称不是所有元组`Shadow`。 您可以生成数组，该元组元素中的任何筛选器中的元组和项目的元素的任意组合。
+以下示例根据 `pet` 进行了额外的筛选，这排除了宠物名称不是 `Shadow` 的所有元组。 可以基于数组生成元组，根据元组的任意元素进行筛选以及投影元素的任何组合。
 
 ```sql
     SELECT 
@@ -1007,11 +1007,11 @@ JOIN 子句的真正的实用程序是窗体的元组从叉积，否则很难对
 
 ## <a id="UserDefinedFunctions"></a>用户定义函数 (Udf)
 
-SQL API 为用户定义函数 (Udf) 提供支持。 使用标量 Udf，可以传入了零个或多个参数并返回单个参数结果。 API 检查每个自变量的合法的 JSON 值。  
+SQL API 支持用户定义函数 (UDF)。 使用标量 UDF，可以传入零个或多个参数，并返回单个参数结果。 API 会检查每个参数 JSON 值是否合法。  
 
-API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可以使用 SQL API 注册 Udf，并在 SQL 查询中引用它们。 事实上，UDF 经过精心设计，可从查询调用。 按照推论，Udf 不具有对上下文对象与其他 JavaScript 类型，例如存储的过程和触发器一样的访问权限。 查询是只读的并且可以运行在主要或次要副本上。 Udf，与其他 JavaScript 类型，用于在辅助副本上运行。
+API 扩展了 SQL 语法，支持使用 UDF 的自定义应用程序逻辑。 可将 UDF 注册到 SQL API，然后在 SQL 查询中引用它们。 事实上，UDF 经过精心设计，可从查询调用。 作为一种定理，UDF 不能像其他 JavaScript 类型（例如存储过程和触发器）一样访问上下文对象。 查询是只读的，可以在主要或次要副本上运行。 与其他 JavaScript 类型不同，UDF 只能在次要副本上运行。
 
-下面的示例将 Cosmos DB 数据库中下一个项容器, 的 UDF。 此示例将创建其名称是的 UDF `REGEX_MATCH`。 它接受两个 JSON 字符串值`input`并`pattern`，并检查第一个匹配项中第二个指定的模式使用 JavaScript 的`string.match()`函数。
+以下示例在 Cosmos DB 数据库中的某个项容器下注册一个 UDF。 该示例创建了名为 `REGEX_MATCH` 的 UDF。 它接受两个 JSON 字符串值：`input` 和 `pattern`，并使用 JavaScript 的 `string.match()` 函数检查第一个值是否与第二个值中指定的模式相匹配。
 
 ```javascript
        UserDefinedFunction regexMatchUdf = new UserDefinedFunction
@@ -1027,7 +1027,7 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
            regexMatchUdf).Result;  
 ```
 
-现在，使用此 UDF 的查询投影。 您必须用区分大小写的前缀限定 Udf`udf.`调用从查询中时。
+现在，请在查询投影中使用此 UDF。 从查询内部调用 UDF 时，必须使用区分大小写的前缀 `udf.` 来限定 UDF。
 
 ```sql
     SELECT udf.REGEX_MATCH(Families.address.city, ".*eattle")
@@ -1047,7 +1047,7 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
     ]
 ```
 
-可以使用限定 UDF`udf.`前缀中的筛选器，如以下示例所示：
+可以在筛选器中使用以 `udf.` 前缀限定的 UDF，如以下示例所示：
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -1064,9 +1064,9 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
     }]
 ```
 
-从本质上讲，Udf 是可以使用投影和筛选器中的有效标量表达式。
+从本质上来说，UDF 是可以在投影和筛选器中使用的有效标量表达式。
 
-若要扩展 Udf 的强大功能，使用条件逻辑看另一个示例：
+为了进一步了解 UDF 的强大功能，让我们查看使用条件逻辑的另一个示例：
 
 ```javascript
        UserDefinedFunction seaLevelUdf = new UserDefinedFunction()
@@ -1090,7 +1090,7 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
                 seaLevelUdf);
 ```
 
-下面的示例 udf 的：
+以下示例运用了 UDF：
 
 ```sql
     SELECT f.address.city, udf.SEALEVEL(f.address.city) AS seaLevel
@@ -1112,13 +1112,13 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
     ]
 ```
 
-如果引用的属性由 UDF 参数中未提供的 JSON 值，该参数被视为未定义，将跳过 UDF 调用。 同样，如果未定义 UDF 的结果，则它不是包括在结果中。
+如果 UDF 参数引用的属性在 JSON 值中未提供，则会将该参数视为未定义，因此会跳过 UDF 调用。 同样，如果未定义 UDF 的结果，则不会将此 UDF 包含在结果中。
 
-如前面的示例所示，Udf 使用 SQL API 集成 JavaScript 语言的强大功能。 Udf 提供丰富的可编程接口执行复杂的过程，条件逻辑内置 JavaScript 运行时功能的帮助。 SQL API 在提供参数的 udf 的每个源项的当前的位置或 SELECT 子句的处理阶段。 结果无缝地纳入总体执行管道。 总之，Udf 是强大的工具来执行复杂的业务逻辑操作作为查询的一部分。
+如以上示例所示，UDF 将 JavaScript 语言的强大功能与 SQL API 相集成。 UDF 提供丰富的可编程接口来执行复杂的过程，并借助内置的 JavaScript 运行时功能来执行条件逻辑。 SQL API 在当前的 WHERE 或 SELECT 子句处理阶段，为每个源项的 UDF 提供参数。 结果将无缝整合到总体执行管道中。 总而言之，UDF 是在查询过程中执行复杂业务逻辑的极佳工具。
 
 ## <a id="Aggregates"></a>聚合函数
 
-聚合函数对一组在 SELECT 子句中的值执行计算并返回单个值。 例如，以下查询返回的中的项计数`Families`容器：
+聚合函数对 SELECT 子句中的一组值执行计算，并返回单个值。 例如，以下查询返回 `Families` 容器中的项计数。
 
 ```sql
     SELECT COUNT(1)
@@ -1133,7 +1133,7 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
     }]
 ```
 
-此外可以通过使用 VALUE 关键字来返回仅聚合的标量值。 例如，以下查询将值的计数作为单个值返回：
+也可以使用 VALUE 关键字来仅返回聚合的标量值。 例如，以下查询将值的计数作为单个值返回：
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -1146,7 +1146,7 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
     [ 2 ]
 ```
 
-也可以使用筛选器组合的聚合。 例如，以下查询将返回与的地址状态项的计数`WA`。
+还可以将聚合与筛选器结合使用。 例如，以下查询返回包含 `WA` 州地址的项计数。
 
 ```sql
     SELECT VALUE COUNT(1)
@@ -1160,7 +1160,7 @@ API 扩展 SQL 语法以支持使用 Udf 的自定义应用程序逻辑。 可�
     [ 1 ]
 ```
 
-SQL API 支持以下聚合函数。 SUM 和 AVG 对数字值，并计数、 最小和最大对数字、 字符串、 布尔值和 null 值。
+SQL API 支持以下聚合函数。 SUM 和 AVG 针对数字值执行运算，COUNT、MIN 和 MAX 可以处理数字、字符串、布尔值和 null。
 
 | 函数 | 描述 |
 |-------|-------------|
@@ -1170,15 +1170,15 @@ SQL API 支持以下聚合函数。 SUM 和 AVG 对数字值，并计数、 最�
 | MAX   | 在表达式中返回最大值。 |
 | 平均值   | 在表达式中返回多个值的平均值。 |
 
-你还可以对数组迭代的结果进行聚合。 有关详细信息，请参阅[迭代](#Iteration)部分。
+还可以基于数组迭代的结果进行聚合。 有关详细信息，请参阅[迭代](#Iteration)部分。
 
 > [!NOTE]
-> 在 Azure 门户数据资源管理器中聚合查询可能会随只有一个查询页聚合部分结果。 SDK 跨所有页面生成单个累计值。 若要执行聚合查询使用代码，需要.NET SDK 1.12.0、.net、.NET Core SDK 1.1.0，或者 Java SDK 1.9.5 或更高版本。
+> 在 Azure 门户的数据资源管理器中，聚合查询可以仅基于一个查询页面聚合部分结果。 SDK 跨所有页面生成单个累计值。 若要使用代码执行聚合查询，需要 .NET SDK 1.12.0、.NET Core SDK 1.1.0，或者 Java SDK 1.9.5 或更高版本。
 >
 
 ## <a id="BuiltinFunctions"></a>内置函数
 
-Cosmos DB 还支持多个内置函数进行常见操作，则可以在与用户定义函数 (Udf) 类似的查询内部使用。
+Cosmos DB 还支持使用许多内置函数进行常见操作，这些函数可以在查询（如用户定义的函数 (UDF)）中使用。
 
 | 函数组 | 操作 |
 |---------|----------|
@@ -1190,7 +1190,7 @@ Cosmos DB 还支持多个内置函数进行常见操作，则可以在与用户�
 
 如果您当前正使用用户定义的函数 (UDF) 为其内置函数现已推出，相应的内置函数将运行更快、 更高效。
 
-Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在很好地配合无架构和混合架构数据。 例如，如果属性缺失或具有非数字值，如`unknown`，项会跳过而不是返回错误。
+Cosmos DB 函数与 ANSI SQL 函数之间的主要差别在于，Cosmos DB 函数能够很好地处理无架构数据和混合架构数据。 例如，如果某个属性缺失或包含类似于 `unknown` 的非数字值，则会跳过该项，而不是返回错误。
 
 ### <a name="mathematical-functions"></a>数学函数
 
@@ -1202,7 +1202,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | CEILING (num_expr) | 返回大于或等于指定数值表达式的最小整数值。 |
 | FLOOR (num_expr) | 返回小于或等于指定数值表达式的最大整数。 |
 | EXP (num_expr) | 返回指定数值表达式的指数。 |
-| LOG (num_expr, base) | 返回指定数值表达式或使用指定的底的对数的自然对数。 |
+| LOG (num_expr, base) | 返回指定数值表达式的自然对数，或使用指定底数的对数。 |
 | LOG10 (num_expr) | 返回指定数值表达式以 10 为底的对数值。 |
 | ROUND (num_expr) | 返回一个数值，四舍五入到最接近的整数值。 |
 | TRUNC (num_expr) | 返回一个数值，截断到最接近的整数值。 |
@@ -1212,7 +1212,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | SIGN (num_expr) | 返回指定数值表达式的符号值 (-1, 0, 1)。 |
 | ACOS (num_expr) | 返回角度（弧度），其余弦是指定的数值表达式；也被称为反余弦。 |
 | ASIN (num_expr) | 返回角度（弧度），其正弦是指定的数值表达式。 此函数也称为反正弦。 |
-| ATAN (num_expr) | 返回角度（弧度），其正切是指定的数值表达式。 此函数也被称为反正切值。 |
+| ATAN (num_expr) | 返回角度（弧度），其正切是指定的数值表达式。 此函数也称为反正切。 |
 | ATN2 (num_expr) | 返回正 x 轴与射线（原点到点 (y, x)）之间的角度（弧度），其中 x 和 y 是两个指定的浮点表达式的值。 |
 | COS (num_expr) | 返回指定表达式中指定角度的三角余弦（弧度）。 |
 | COT (num_expr) | 返回指定数值表达式中指定角度的三角余切。 |
@@ -1222,7 +1222,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | SIN (num_expr) | 返回指定表达式中指定角度的三角正弦（弧度）。 |
 | TAN (num_expr) | 返回指定表达式中输入表达式的正切。 |
 
-您可以运行查询，如下例所示：
+可以运行以下示例所示的查询：
 
 ```sql
     SELECT VALUE ABS(-4)
@@ -1236,7 +1236,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 
 ### <a name="type-checking-functions"></a>类型检查函数
 
-类型检查函数使您可以检查 SQL 查询中表达式的类型。 类型检查函数可用于在变量或未知时确定在动态，项中的属性的类型。 下面是支持的内置类型检查函数表：
+使用类型检查函数可以检查 SQL 查询中表达式的类型。 当项中的属性可变或未知时，可以使用类型检查函数即时确定这些属性的类型。 下面是支持的内置类型检查函数表：
 
 | **使用情况** | **说明** |
 |-----------|------------|
@@ -1247,9 +1247,9 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | [IS_OBJECT (expr)](sql-api-query-reference.md#bk_is_object) | 返回一个布尔值，它指示值的类型是否为 JSON 对象。 |
 | [IS_STRING (expr)](sql-api-query-reference.md#bk_is_string) | 返回一个布尔值，它指示值的类型是否为字符串。 |
 | [IS_DEFINED (expr)](sql-api-query-reference.md#bk_is_defined) | 返回一个布尔，它指示属性是否已经分配了值。 |
-| [IS_PRIMITIVE (expr)](sql-api-query-reference.md#bk_is_primitive) | 返回一个布尔值，该值指示是否的值的类型字符串、 数字、 布尔值或为 null。 |
+| [IS_PRIMITIVE (expr)](sql-api-query-reference.md#bk_is_primitive) | 返回一个布尔值，它指示值的类型是字符串、数字、布尔值还是 null。 |
 
-使用这些函数，可以运行查询，如下例所示：
+使用这些函数可以运行以下示例所示的查询：
 
 ```sql
     SELECT VALUE IS_NUMBER(-4)
@@ -1263,7 +1263,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 
 ### <a name="string-functions"></a>字符串函数
 
-以下标量函数对字符串输入值执行运算并返回一个字符串，数值或布尔值。 以下是内置字符串函数表：
+以下标量函数对字符串输入值执行操作，并返回字符串、数字或布尔值。 以下是内置字符串函数表：
 
 | 使用情况 | 描述 |
 | --- | --- |
@@ -1273,7 +1273,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | [STARTSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_startswith) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式开头。 |
 | [ENDSWITH (str_expr, str_expr)](sql-api-query-reference.md#bk_endswith) | 返回一个布尔值，指示第一个字符串表达式是否以第二个字符串表达式结尾。 |
 | [CONTAINS (str_expr, str_expr)](sql-api-query-reference.md#bk_contains) | 返回一个布尔值，该值指示第一个字符串表达式是否包含第二个字符串表达式。 |
-| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | 返回第二个的第一个匹配项的起始位置字符串表达式中第一个指定的字符串表达式，则为-1，如果找不到字符串。 |
+| [INDEX_OF (str_expr, str_expr)](sql-api-query-reference.md#bk_index_of) | 返回第一个指定的字符串表达式中第一次出现第二个字符串表达式的起始位置，如果未找到字符串，则返回 -1。 |
 | [LEFT (str_expr, num_expr)](sql-api-query-reference.md#bk_left) | 返回具有指定字符数的字符串的左侧部分。 |
 | [RIGHT (str_expr, num_expr)](sql-api-query-reference.md#bk_right) | 返回具有指定字符数的字符串的右侧部分。 |
 | [LTRIM (str_expr)](sql-api-query-reference.md#bk_ltrim) | 返回删除前导空格后的字符串表达式。 |
@@ -1284,7 +1284,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | [REPLICATE (str_expr, num_expr)](sql-api-query-reference.md#bk_replicate) | 将一个字符串值重复指定的次数。 |
 | [REVERSE (str_expr)](sql-api-query-reference.md#bk_reverse) | 返回字符串值的逆序排序形式。 |
 
-使用这些函数，可以运行以下命令，它将返回系列查询`id`以大写形式：
+使用这些函数可以运行如下以下所示的查询，该查询返回大写形式的家庭 `id`：
 
 ```sql
     SELECT VALUE UPPER(Families.id)
@@ -1300,7 +1300,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
     ]
 ```
 
-或连接字符串，如在此示例中：
+或者，如以下示例所示连接字符串：
 
 ```sql
     SELECT Families.id, CONCAT(Families.address.city, ",", Families.address.state) AS location
@@ -1320,7 +1320,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
     }]
 ```
 
-此外可以使用 WHERE 子句来筛选结果，如在下面的示例中的字符串函数：
+还可以在 WHERE 子句中使用字符串函数来筛选结果，如以下示例所示：
 
 ```sql
     SELECT Families.id, Families.address.city
@@ -1339,7 +1339,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 
 ### <a name="array-functions"></a>数组函数
 
-以下标量函数对数组输入值执行运算并返回数值、 布尔值或数组值。 以下是内置数组函数表：
+以下标量函数对数组输入值执行操作，并返回数字值、布尔值或数组值。 以下是内置数组函数表：
 
 | 使用情况 | 描述 |
 | --- | --- |
@@ -1348,7 +1348,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 | [ARRAY_CONTAINS (arr_expr, expr [, bool_expr])](sql-api-query-reference.md#bk_array_contains) |返回一个布尔，它指示数组是否包含指定的值。 可以指定是要执行完全还是部分匹配。 |
 | [ARRAY_SLICE (arr_expr, num_expr [, num_expr])](sql-api-query-reference.md#bk_array_slice) |返回部分数组表达式。 |
 
-使用数组函数 JSON 内操纵数组。 例如，下面是返回所有项的查询`id`s 一个的`parents`是`Robin Wakefield`: 
+使用数组函数可以处理 JSON 中的数组。 例如，以下查询返回其中一个 `parents` 是 `Robin Wakefield` 的所有项 `id`： 
 
 ```sql
     SELECT Families.id 
@@ -1364,7 +1364,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
     }]
 ```
 
-可以指定一个部分片段来匹配数组中的元素。 以下查询将查找所有项`id`具有`parents`与`givenName`的`Robin`:
+可以指定一个部分片段来匹配数组中的元素。 以下查询查找包含 `givenName` 为 `Robin` 的 `parents` 的所有项 `id`：
 
 ```sql
     SELECT Families.id 
@@ -1380,7 +1380,7 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
     }]
 ```
 
-下面是使用 ARRAY_LENGTH 获取的数字的另一个示例`children`每个系列：
+下面是使用 ARRAY_LENGTH 获取每个家庭的 `children` 数目的另一个示例：
 
 ```sql
     SELECT Families.id, ARRAY_LENGTH(Families.children) AS numberOfChildren
@@ -1402,17 +1402,17 @@ Cosmos DB 函数和 ANSI SQL 函数的主要区别是，Cosmos DB 函数旨在�
 
 ### <a name="spatial-functions"></a>空间函数
 
-Cosmos DB 支持以下开放地理空间信息联盟 (OGC) 内置函数用于地理空间查询： 
+Cosmos DB 支持以下用于查询地理空间的开放地理空间信息联盟 (OGC) 内置函数： 
 
 | 使用情况 | 描述 |
 | --- | --- |
-| ST_DISTANCE (point_expr、point_expr) | 返回两个 GeoJSON 之间的距离`Point`， `Polygon`，或`LineString`表达式。 |
-| T_WITHIN (point_expr, polygon_expr) | 返回一个布尔表达式，该值指示是否第一个 GeoJSON 对象 (`Point`， `Polygon`，或`LineString`) 内的第二个 GeoJSON 对象 (`Point`， `Polygon`，或`LineString`)。 |
-| ST_INTERSECTS (spatial_expr, spatial_expr) | 返回一个布尔表达式，该值指示是否两个指定的 GeoJSON 对象 (`Point`， `Polygon`，或`LineString`) 相交。 |
-| ST_ISVALID | 返回一个布尔值，该值指示是否指定的 GeoJSON `Point`， `Polygon`，或`LineString`表达式是有效的。 |
-| ST_ISVALIDDETAILED | 返回一个 JSON 值，该值包含一个布尔值，如果指定的 GeoJSON `Point`， `Polygon`，或`LineString`表达式是有效的如果无效，原因作为字符串值。 |
+| ST_DISTANCE (point_expr、point_expr) | 返回两个 GeoJSON `Point`、`Polygon` 或 `LineString` 表达式之间的距离。 |
+| T_WITHIN (point_expr, polygon_expr) | 返回一个布尔表达式，指示第一个 GeoJSON 对象（`Point`、`Polygon` 或 `LineString`）是否在第二个 GeoJSON 对象（`Point`、`Polygon` 或 `LineString`）的内部。 |
+| ST_INTERSECTS (spatial_expr, spatial_expr) | 返回一个布尔表达式，指示两个指定的 GeoJSON 对象（`Point`、`Polygon` 或 `LineString`）是否相交。 |
+| ST_ISVALID | 返回一个布尔值，指示指定的 GeoJSON `Point`、`Polygon` 或 `LineString` 表达式是否有效。 |
+| ST_ISVALIDDETAILED | 如果指定的 GeoJSON `Point` 或、`Polygon` 或 `LineString` 表达式有效，则返回包含布尔值的 JSON 值；如果无效，则返回字符串值形式的原因。 |
 
-空间函数可用于执行对空间数据执行邻近查询。 例如，下面是返回的使用 ST_DISTANCE 内置函数的指定位置 30 km 内的所有系列项的查询：
+可以使用空间函数对空间数据执行邻近查询。 例如，以下查询使用 ST_DISTANCE 内置函数返回所有家庭项，且这些文档在指定位置的 30 公里内：
 
 ```sql
     SELECT f.id
@@ -1430,11 +1430,11 @@ Cosmos DB 支持以下开放地理空间信息联盟 (OGC) 内置函数用于地
 
 有关 Cosmos DB 中地理支持的详细信息，请参阅[在 Azure Cosmos DB 中使用地理数据](geospatial.md)。 
 
-## <a name="parameterized-queries"></a>参数化的查询
+## <a name="parameterized-queries"></a>参数化查询
 
-Cosmos DB 支持使用通过常用的 @ 表示法表示的参数进行查询。 参数化的 SQL 提供了可靠的处理和转义的用户输入，并防止通过 SQL 注入的数据的意外泄露。
+Cosmos DB 支持使用带有常用 @ 表示法的参数进行查询。 参数化 SQL 为用户输入提供可靠的处理和转义，可防止通过 SQL 注入发生意外的数据泄露。
 
-例如，可以编写一个查询，采用`lastName`并`address.state`作为参数，并执行它的各种值`lastName`和`address.state`根据用户输入。
+例如，可以编写一个将 `lastName` 和 `address.state` 用作参数的查询，并根据用户输入针对 `lastName` 和 `address.state` 的各种值执行此查询。
 
 ```sql
     SELECT *
@@ -1442,7 +1442,7 @@ Cosmos DB 支持使用通过常用的 @ 表示法表示的参数进行查询。 
     WHERE f.lastName = @lastName AND f.address.state = @addressState
 ```
 
-然后可以将此请求发送到 Cosmos DB，作为参数化 JSON 查询如下所示：
+然后，可将此请求作为参数化 JSON 查询发送到 Cosmos DB，如下所示：
 
 ```sql
     {
@@ -1454,7 +1454,7 @@ Cosmos DB 支持使用通过常用的 @ 表示法表示的参数进行查询。 
     }
 ```
 
-下面的示例设置的参数化查询的顶级参数： 
+以下示例使用参数化查询设置 TOP 参数： 
 
 ```sql
     {
@@ -1465,38 +1465,38 @@ Cosmos DB 支持使用通过常用的 @ 表示法表示的参数进行查询。 
     }
 ```
 
-参数值可以是任何有效的 JSON： 字符串、 数字、 布尔值为 null，甚至是数组或嵌套的 JSON。 由于 Cosmos DB 是无架构，因此参数不被验证对任何类型。
+参数值可以是任何有效的 JSON：字符串、数字、布尔值、null，甚至数组或嵌套的 JSON。 由于 Cosmos DB 是无架构的，因此不会针对任何类型验证参数。
 
 ## <a id="JavaScriptIntegration"></a>JavaScript 集成
 
-Azure Cosmos DB 会直接在容器上执行基于 JavaScript 的应用程序逻辑提供编程模型，使用存储的过程和触发器。 此模型支持：
+Azure Cosmos DB 提供一种编程模型，用于通过存储过程和触发器对容器直接执行基于 JavaScript 的应用程序逻辑。 此模型支持：
 
-* 高性能事务性 CRUD 操作和针对 JavaScript 运行时数据库引擎内深度集成的容器中的项的查询。
-* 控制流、 变量作用域，并分配和集成的异常处理基元与数据库事务自然建模。 
+* 通过在数据库引擎中深度集成 JavaScript 运行时，对容器中的项执行高性能事务性 CRUD 操作和查询。
+* 控制流、变量范围和分配的自然建模和将异常处理基元与数据库事务集成。 
 
-有关 Azure Cosmos DB JavaScript 集成的详细信息，请参阅[JavaScript 服务器端 API](#JavaScriptServerSideApi)部分。
+有关 Azure Cosmos DB JavaScript 集成的详细信息，请参阅 [JavaScript 服务器端 API](#JavaScriptServerSideApi) 部分。
 
 ### <a name="operator-evaluation"></a>运算符评估
 
-由于是一个 JSON 数据库，cosmos DB 中，绘制与 JavaScript 运算符以及求值语义。 Cosmos DB 尝试保留 JavaScript 语义就 JSON 支持而言，但操作评估在某些实例中有所偏移。
+Cosmos DB 是一个 JSON 数据库，在 JavaScript 运算符和评估语义方面具有许多相似之处。 就 JSON 支持而言，Cosmos DB 会尽量保留 JavaScript 语义，但运算求值在某些情况下会有所不同。
 
-在 SQL API 中，与不同在传统 SQL 中的值类型经常是未知直到 API 从数据库检索的值。 为了高效执行查询，大多数运算符具有严格的类型要求。
+与传统 SQL 不同，在 SQL API 中，在该 API 从数据库检索出值之前，值的类型往往是未知的。 为了高效执行查询，大多数运算符具有严格的类型要求。
 
-与 JavaScript 不同，SQL API 不会执行隐式转换。 例如，之类的查询`SELECT * FROM Person p WHERE p.Age = 21`匹配项，包含`Age`值为的属性`21`。 它不匹配任何其他项的`Age`属性与匹配类可能无限变化`twenty-one`， `021`，或`21.0`。 这与 JavaScript 中，其中字符串值隐式转换为数字根据运算符，例如冲突： `==`。 此 SQL API 行为的高效索引匹配至关重要。
+与 JavaScript 不同，SQL API 不会执行隐式转换。 例如，类似于 `SELECT * FROM Person p WHERE p.Age = 21` 的查询会匹配包含 `21` 值的 `Age` 属性的项。 它不会匹配其 `Age` 属性可能与 `twenty-one`、`021` 或 `21.0` 等无限变体匹配的任何其他项。 这与 JavaScript 相反，在 JavaScript 中，字符串值会根据 `==` 等运算符隐式转换为数字。 此 SQL API 行为对于有效的索引匹配至关重要。
 
 ## <a id="ExecutingSqlQueries"></a>执行 SQL 查询
 
-任何可以发出 HTTP/HTTPS 请求的语言可以调用 Cosmos DB REST API。 Cosmos DB 还提供了用于.NET、 Node.js、 JavaScript 和 Python 编程语言的编程库。 REST API 和库都支持通过 SQL、 查询和.NET SDK 还支持[LINQ 查询](#Linq)。
+能够发出 HTTP/HTTPS 请求的任何语言都可以调用 Cosmos DB REST API。 Cosmos DB 还为 .NET、Node.js、JavaScript 和 Python 编程语言提供编程库。 REST API 和库全部支持通过 SQL 执行的查询，.NET SDK 还支持 [LINQ 查询](#Linq)。
 
 以下示例演示了如何对 Cosmos DB 数据库帐户创建查询并提交。
 
 ### <a id="RestAPI"></a>REST API
 
-Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含一组数据库帐户下的资源的 Azure 订阅预配。 数据库帐户都包含一系列*数据库*，其中每个可以包含多个*容器*，后者又包含*项*，Udf 和其他资源类型。 每个 Cosmos DB 资源进行寻址使用逻辑和稳定的 URI。 一组资源称为*馈送*。 
+Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型由 Azure 订阅预配的数据库帐户下的一组资源组成。 该数据库帐户由一组数据库组成，其中的每个数据库可以包含多个容器，而每个容器又可以包含项、UDF 和其他资源类型。 可以使用稳定的逻辑 URI 对每个 Cosmos DB 资源进行寻址。 一组资源称作一个源。 
 
-使用这些资源的基本交互模型是通过 HTTP 谓词`GET`， `PUT`， `POST`，和`DELETE`，使用其标准解释。 使用`POST`若要创建新的资源，执行存储的过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
+这些资源的基本交互模型是通过 HTTP 谓词 `GET`、`PUT`、`POST` 和 `DELETE` 及其标准解释实现的。 使用 `POST` 可以创建新的资源、执行存储过程或发出 Cosmos DB 查询。 查询始终为只读操作，且无任何副作用。
 
-下面的示例演示`POST`SQL API 查询的示例项。 该查询将简单的筛选器对 JSON`name`属性。 `x-ms-documentdb-isquery`和内容类型：`application/query+json`标头表示该操作是一个查询。 替换为`mysqlapicosmosdb.documents.azure.com:443`与 Cosmos DB 帐户的 URI。
+以下示例演示了如何根据示例项针对 SQL API 查询发出 `POST`。 该查询对 JSON `name` 属性应用一个简单的筛选器。 `x-ms-documentdb-isquery` 和 Content-Type: `application/query+json` 标头表示该操作是一个查询。 请将 `mysqlapicosmosdb.documents.azure.com:443` 替换为 Cosmos DB 帐户的 URI。
 
 ```json
     POST https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -1562,7 +1562,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含
     }
 ```
 
-接下来，更复杂的查询返回通过联接多个结果：
+下面这个更复杂的查询从某个联接操作返回多个结果：
 
 ```json
     POST https://https://mysqlapicosmosdb.documents.azure.com:443/docs HTTP/1.1
@@ -1614,19 +1614,19 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含
     }
 ```
 
-如果查询的结果无法容纳在单个页面中，REST API 将返回的继续标记通过`x-ms-continuation-token`响应标头。 客户端可以通过在后续结果中包含标头对结果进行分页。 此外可以控制每页查看的结果数`x-ms-max-item-count`号标头。 
+如果查询的结果无法包含在一页中，则 REST API 会通过 `x-ms-continuation-token` 响应标头返回继续标记。 客户端可以通过在后续结果中包含该标头对结果进行分页。 也可以通过 `x-ms-max-item-count` 数字标头控制每页的结果数。 
 
-如果查询具有 COUNT 等聚合函数，查询页可能会通过只有一个结果页返回部分聚合的值。 客户端必须对这些结果以生成最终结果执行二级聚合。 例如，对各个页面，以便返回总的计数中返回的计数的总和。
+如果查询包含 COUNT 等聚合函数，则查询页可以仅通过一个结果页返回部分聚合的值。 客户端必须对这些结果执行二级聚合才能生成最终结果。 例如，将各个页中返回的计数求和可以返回总计数。
 
-若要管理查询的数据一致性策略，请使用`x-ms-consistency-level`如下所示所有 REST API 请求标头。 会话一致性还需要回显最新`x-ms-session-token`查询请求的 cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置的容器，索引始终是当前项内容，并且查询结果与为数据选择的一致性匹配。 有关详细信息，请参阅[Azure Cosmos DB 一致性级别][consistency-levels]。
+若要管理查询的数据一致性策略，请使用 `x-ms-consistency-level` 标头（如所有的 REST API 请求）。 对于会话一致性，还需要回显查询请求中最新的 `x-ms-session-token` Cookie 标头。 查询容器的索引策略也可以影响查询结果的一致性。 使用默认的索引策略设置，容器的索引始终与项内容保持同步，且查询结果将与为数据选择的一致性匹配。 有关详细信息，请参阅 [Azure Cosmos DB 一致性级别][consistency-levels]。
 
-如果在容器上配置的索引策略不能支持指定的查询，Azure Cosmos DB 服务器将返回 400"错误的请求"。 此错误消息的查询返回其从索引中显式排除的路径。 您可以指定`x-ms-documentdb-query-enable-scan`标头以允许查询索引不可用时执行扫描。
+如果容器上配置的索引策略不能支持指定的查询，Azure Cosmos DB 服务器会返回 400“错误的请求”。 使用从索引中显式排除的路径执行查询时，将返回此错误消息。 可以指定 `x-ms-documentdb-query-enable-scan` 标头，以便在索引不可用时允许查询执行扫描。
 
-可以通过设置查询执行中获取详细的指标`x-ms-documentdb-populatequerymetrics`标头与`true`。 有关详细信息，请参阅 [Azure Cosmos DB 的 SQL 查询指标](sql-api-query-metrics.md)。
+可以通过将 `x-ms-documentdb-populatequerymetrics` 标头设置为 `true` 来获取有关查询执行的详细指标。 有关详细信息，请参阅 [Azure Cosmos DB 的 SQL 查询指标](sql-api-query-metrics.md)。
 
 ### <a id="DotNetSdk"></a>C# (.NET SDK)
 
-.NET SDK 支持 LINQ 和 SQL 查询。 下面的示例演示如何执行上述筛选器查询使用.NET:
+.NET SDK 支持 LINQ 和 SQL 查询。 以下示例演示如何使用 .NET 执行前面所示的筛选查询：
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -1660,7 +1660,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含
     }
 ```
 
-以下示例将每一项内相等的两个属性进行比较，并使用匿名投影。
+以下示例比较了每个项内等式的两个属性，并使用匿名投影。
 
 ```csharp
     foreach (var family in client.CreateDocumentQuery(containerLink,
@@ -1688,7 +1688,7 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含
     }
 ```
 
-下面的示例演示通过 LINQ 表示的联接`SelectMany`。
+以下示例演示通过 LINQ `SelectMany` 表达的联接。
 
 ```csharp
     foreach (var pet in client.CreateDocumentQuery(containerLink,
@@ -1712,17 +1712,17 @@ Cosmos DB 通过 HTTP 提供开放的 RESTful 编程模型。 资源模型包含
     }
 ```
 
-.NET 客户端自动遍历的查询结果中的所有页`foreach`阻止，如前面的示例中所示。 中引入的查询选项[REST API](#RestAPI)部分也会出现在.NET SDK 中，使用`FeedOptions`并`FeedResponse`中的类`CreateDocumentQuery`方法。 您可以使用来控制页面数`MaxItemCount`设置。
+.NET 客户端自动循环访问 `foreach` 块中所有的查询结果页，如前面的示例中所示。 [REST API](#RestAPI) 部分介绍的查询选项也适用于在 `CreateDocumentQuery` 方法中使用 `FeedOptions` 和 `FeedResponse` 类的 .NET SDK。 可以使用 `MaxItemCount` 设置控制页数。
 
-您可以通过创建显式控制分页`IDocumentQueryable`使用`IQueryable`对象，然后通过阅读`ResponseContinuationToken`作为值并将它们传递回`RequestContinuationToken`中`FeedOptions`。 可以设置`EnableScanInQuery`查询不支持配置的索引策略时启用扫描。 对于已分区容器，可以使用`PartitionKey`来针对单个分区运行查询，尽管 Azure Cosmos DB 可以自动提取这从查询文本。 可以使用`EnableCrossPartitionQuery`对多个分区运行查询。
+您可以通过创建显式控制分页`IDocumentQueryable`使用`IQueryable`对象，然后通过阅读`ResponseContinuationToken`作为值并将它们传递回`RequestContinuationToken`中`FeedOptions`。 可以设置 `EnableScanInQuery`，以便在配置的索引策略不支持该查询时启用扫描。 对于分区容器，可以使用 `PartitionKey` 针对单个分区运行查询，不过，Azure Cosmos DB 可以自动从查询文本中提取此信息。 可以使用 `EnableCrossPartitionQuery` 针对多个分区运行查询。
 
-有关使用查询的更多.NET 示例，请参阅[Azure Cosmos DB.NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)在 GitHub 中。
+有关更多包含查询的 .NET 示例，请参阅 GitHub 中的 [Azure Cosmos DB .NET 示例](https://github.com/Azure/azure-cosmosdb-dotnet)。
 
 ### <a id="JavaScriptServerSideApi"></a>JavaScript 服务器端 API
 
-Cosmos DB 容器，使用存储的过程和触发器上直接执行基于 JavaScript 应用程序逻辑提供编程模型。 在容器级注册，JavaScript 逻辑稍后可以发出数据库操作在给定容器，包装在周围 ACID 事务的项。
+Cosmos DB 提供一种编程模型，用于通过存储过程和触发器对容器直接执行基于 JavaScript 的应用程序逻辑。 然后，在容器级别注册的 JavaScript 逻辑可以针对给定容器中的、包装在环境 ACID 事务中的项发出数据库操作。
 
-下面的示例演示如何使用`queryDocuments`JavaScript 服务器 API 来简化从查询中内部存储过程和触发器：
+以下示例演示了如何在 JavaScript 服务器 API 中使用 `queryDocuments` 从存储过程和触发器内部进行查询。
 
 ```javascript
     function findName(givenName, familyName) {
@@ -1758,15 +1758,15 @@ Cosmos DB 容器，使用存储的过程和触发器上直接执行基于 JavaSc
 
 ## <a id="Linq"></a>SQL API 的 LINQ
 
-LINQ 是一个计算表示为对象流的查询的.NET 编程模型。 Cosmos DB 提供一个客户端库，通过促进 JSON 与 .NET 对象之间的转换，以及从 LINQ 查询的子集到 Cosmos DB 查询的映射，来与 LINQ 进行交互。
+LINQ 是一个 .NET 编程模型，它将计算表达为对对象流的查询。 Cosmos DB 提供一个客户端库，通过促进 JSON 与 .NET 对象之间的转换，以及从 LINQ 查询的子集到 Cosmos DB 查询的映射，来与 LINQ 进行交互。
 
-下图显示了使用 Cosmos DB 支持 LINQ 查询的体系结构。 使用 Cosmos DB 客户端，您可以创建`IQueryable`直接查询 Cosmos DB 查询提供程序，并将 LINQ 查询转换为 Cosmos DB 查询的对象。 然后将查询传递到 Cosmos DB 服务器检索一组 JSON 格式的结果。 JSON 反序列化程序将结果转换成流的客户端上的.NET 对象。
+下图演示了使用 Cosmos DB 的支持性 LINQ 查询的体系结构。 使用 Cosmos DB 客户端，可以创建直接查询 Cosmos DB 查询提供程序的 `IQueryable` 对象，并将 LINQ 查询转换为 Cosmos DB 查询。 然后，将该查询传递到 Cosmos DB 服务器，后者会检索一组 JSON 格式的结果。 在客户端中，JSON 反序列化程序会将结果转换为 .NET 对象流。
 
 ![支持使用 SQL API 的 LINQ 查询的体系结构 - SQL语法、JSON 查询语言、数据库概念和 SQL 查询][1]
 
 ### <a name="net-and-json-mapping"></a>.NET 和 JSON 映射
 
-.NET 对象与 JSON 项之间的映射是自然。 每个数据成员字段映射到 JSON 对象，其中字段名称将映射到*键*一部分的对象，并且值以递归方式映射到*值*对象的一部分。 下面的代码映射`Family`到 JSON 项类，然后创建`Family`对象：
+.NET 对象与 JSON 项之间的映射是自然的。 每个数据成员字段映射到 JSON 对象，其中的字段名称映射到对象的 *key* 部分，值以递归方式映射到该对象的 *value* 部分。 以下代码将 `Family` 类映射到 JSON 项，然后创建 `Family` 对象：
 
 ```csharp
     public class Family
@@ -1814,7 +1814,7 @@ LINQ 是一个计算表示为对象流的查询的.NET 编程模型。 Cosmos DB
     Family family = new Family { Id = "WakefieldFamily", parents = new Parent [] { mother, father}, children = new Child[] { child }, isRegistered = false };
 ```
 
-前面的示例将创建以下 JSON 项：
+以上示例将创建以下 JSON 项：
 
 ```json
     {
@@ -1848,15 +1848,15 @@ LINQ 是一个计算表示为对象流的查询的.NET 编程模型。 Cosmos DB
 
 ### <a name="linq-to-sql-translation"></a>LINQ 到 SQL 转换
 
-Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 以下说明假定你基本熟悉 LINQ。
+Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最有效映射。 以下内容假设你对 LINQ 有一个基本的了解。
 
-查询提供程序类型系统仅支持 JSON 基元类型： 数字、 布尔值，字符串，并为 null。 
+查询提供程序类型系统仅支持 JSON 基元类型：数字、布尔值、字符串和 null。 
 
-查询提供程序支持的标量表达式：
+查询提供程序支持以下标量表达式：
 
 - 常量值，包括评估查询时基元数据类型的常量值。
   
-- 引用的对象或数组元素的属性的属性/数组索引表达式。 例如：
+- 引用对象或数组元素的属性的属性/数组索引表达式。 例如：
   
   ```
     family.Id;
@@ -1865,21 +1865,21 @@ Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最�
     family.children[n].grade; //n is an int variable
   ```
   
-- 算术表达式，包括数字和布尔值的常用算术表达式。 有关完整列表，请参阅[Azure Cosmos DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)。
+- 算术表达式，包括针对数值和布尔值运行的常见算术表达式。 有关完整列表，请参阅 [Azure Cosmos DB SQL 规范](https://go.microsoft.com/fwlink/p/?LinkID=510612)。
   
   ```
     2 * family.children[0].grade;
     x + y;
   ```
   
-- 字符串比较表达式，其中包括比较字符串值与某些常量字符串值。  
+- 字符串比较表达式，包括将字符串值与某些常量字符串值进行比较。  
   
   ```
     mother.familyName == "Wakefield";
     child.givenName == s; //s is a string variable
   ```
   
-- 对象/数组创建表达式，返回复合值类型或匿名类型的对象或此类对象的数组。 您可以嵌套这些值。
+- 对象/数组创建表达式，返回复合值类型或匿名类型的对象，或此类对象组成的数组。 可以嵌套这些值。
   
   ```
     new Parent { familyName = "Wakefield", givenName = "Robin" };
@@ -1889,31 +1889,31 @@ Cosmos DB 查询提供程序执行从 LINQ 查询到 Cosmos DB SQL 查询的最�
 
 ### <a id="SupportedLinqOperators"></a>支持的 LINQ 运算符
 
-SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
+SQL .NET SDK 随附的 LINQ 提供程序支持以下运算符：
 
-- **Select**：投影转换为 SQL SELECT，包括对象构造。
-- **Where**：筛选器转换为 SQL WHERE，且支持`&&`， `||`，和`!`to SQL 运算符
-- **SelectMany**：允许将数组展开到 SQL JOIN 子句。 使用链接或嵌套表达式对数组元素进行筛选。
-- **OrderBy**并**OrderByDescending**:转换为 ORDER BY 与 ASC 或 DESC。
+- **Select**：投影转换为 SQL SELECT（包括对象构造）。
+- **Where**：筛选器转换为 SQL WHERE，支持 `&&`、`||` 和 `!` 到 SQL 运算符的转换
+- **SelectMany**：允许将数组展开到 SQL JOIN 子句。 用于将表达式链接或嵌套到对数组元素应用的筛选器。
+- **OrderBy** 和 **OrderByDescending**：使用 ASC 或 DESC 转换为 ORDER BY。
 - 用于聚合的 **Count**、**Sum**、**Min**、**Max** 和 **Average** 运算符及其异步等效项 **CountAsync**、**SumAsync**、**MinAsync**、**MaxAsync** 和 **AverageAsync**。
 - **CompareTo**：转换为范围比较。 通常用于字符串，因为它们不在.NET 中进行比较。
-- **Take**：用于限制从查询结果转换为 SQL TOP。
-- **数学函数**:支持从.NET 转换`Abs`， `Acos`， `Asin`， `Atan`， `Ceiling`， `Cos`， `Exp`， `Floor`， `Log`， `Log10`， `Pow`， `Round`， `Sign`， `Sin`， `Sqrt`， `Tan`，并`Truncate`为等效的 SQL 内置函数。
-- **字符串函数**:支持从.NET 转换`Concat`， `Contains`， `Count`， `EndsWith`，`IndexOf`， `Replace`， `Reverse`， `StartsWith`， `SubString`， `ToLower`， `ToUpper`， `TrimEnd`，和`TrimStart`为等效的 SQL 内置函数。
-- **数组函数**:支持从.NET 转换`Concat`， `Contains`，和`Count`为等效的 SQL 内置函数。
-- **地理空间扩展函数**:支持从 stub 方法转换`Distance`， `IsValid`， `IsValidDetailed`，和`Within`为等效的 SQL 内置函数。
-- **用户定义函数扩展函数**:支持从 stub 方法转换`UserDefinedFunctionProvider.Invoke`与对应的用户定义函数。
-- **其他**：支持的转换`Coalesce`与条件运算符。 可以将翻译`Contains`为字符串 CONTAINS、 ARRAY_CONTAINS 或 SQL IN，具体取决于上下文。
+- **Take**：转换为 SQL TOP，用于限制查询中的结果。
+- **数学函数**：支持从 .NET `Abs`、`Acos`、`Asin`、`Atan`、`Ceiling`、`Cos`、`Exp`、`Floor`、`Log`、`Log10`、`Pow`、`Round`、`Sign`、`Sin`、`Sqrt`、`Tan` 和 `Truncate` 转换为等效的 SQL 内置函数。
+- **字符串函数**：支持从.NET  `Concat`、`Contains`、`Count`、`EndsWith`、`IndexOf`、`Replace`、`Reverse`、`StartsWith`、`SubString`、`ToLower`、`ToUpper`、`TrimEnd` 和 `TrimStart` 转换为等效的 SQL 内置函数。
+- **数组函数**：支持从 .NET `Concat`、`Contains` 和 `Count` 转换为等效的 SQL 内置函数。
+- **地理空间扩展函数**：支持从存根方法 `Distance`、`IsValid`、`IsValidDetailed` 和 `Within` 转换为等效的 SQL 内置函数。
+- **用户定义的函数扩展函数**：支持从存根方法 `UserDefinedFunctionProvider.Invoke` 转换为相应的用户定义的函数。
+- **其他**：支持 `Coalesce` 和条件运算符的转换。 可以根据上下文将 `Contains` 转换为字符串 CONTAINS、ARRAY_CONTAINS 或 SQL IN。
 
 ### <a name="sql-query-operators"></a>SQL 查询运算符
 
-以下示例说明了如何将一些标准 LINQ 查询运算符转换为 Cosmos DB 查询。
+以下示例演示了一些标准 LINQ 查询运算符如何转换为 Cosmos DB 查询。
 
-#### <a name="select-operator"></a>选择运算符
+#### <a name="select-operator"></a>Select 运算符
 
 语法为 `input.Select(x => f(x))`，其中 `f` 是一个标量表达式。
 
-**选择运算符，示例 1:**
+**Select 运算符，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -1928,7 +1928,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       FROM Families f
     ```
   
-**选择运算符，示例 2:** 
+**Select 运算符，示例 2：** 
 
 - **LINQ Lambda 表达式**
   
@@ -1943,7 +1943,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       FROM Families f
   ```
   
-**选择运算符，示例 3:**
+**Select 运算符，示例 3：**
 
 - **LINQ Lambda 表达式**
   
@@ -1984,7 +1984,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 语法为 `input.Where(x => f(x))`，其中 `f` 是返回布尔值的标量表达式。
 
-**其中运算符，示例 1:**
+**Where 运算符，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -2000,7 +2000,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       WHERE f.parents[0].familyName = "Wakefield"
   ```
   
-**其中运算符，示例 2:**
+**Where 运算符，示例 2：**
 
 - **LINQ Lambda 表达式**
   
@@ -2021,13 +2021,13 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 ### <a name="composite-sql-queries"></a>复合 SQL 查询
 
-可以编写前面的运算符，以形成更功能强大的查询。 由于 Cosmos DB 支持嵌套的容器，因此可以连接或嵌套组合。
+将上述运算符组合到一起可以构成更强大的查询。 由于 Cosmos DB 支持嵌套的容器，因此你可以连接或嵌套这种组合。
 
 #### <a name="concatenation"></a>串联
 
-语法为 `input(.|.SelectMany())(.Select()|.Where())*`。 串联的查询可以使用的可选启动`SelectMany`查询后, 接多个`Select`或`Where`运算符。
+语法为 `input(.|.SelectMany())(.Select()|.Where())*`。 连接的查询可以使用可选的 `SelectMany` 查询开头，后接多个 `Select` 或 `Where` 运算符。
 
-**串联，示例 1:**
+**连接，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -2044,7 +2044,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       WHERE f.parents[0].familyName = "Wakefield"
   ```
 
-**串联，示例 2:**
+**连接，示例 2：**
 
 - **LINQ Lambda 表达式**
   
@@ -2061,7 +2061,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       WHERE f.children[0].grade > 3
   ```
 
-**串联示例 3:**
+**连接，示例 3：**
 
 - **LINQ Lambda 表达式**
   
@@ -2078,7 +2078,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       WHERE ({grade: f.children[0].grade}.grade > 3)
   ```
 
-**串联示例 4:**
+**连接，示例 4：**
 
 - **LINQ Lambda 表达式**
   
@@ -2097,11 +2097,11 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 
 #### <a name="nesting"></a>嵌套
 
-语法是`input.SelectMany(x=>x.Q())`其中`Q`是`Select`， `SelectMany`，或`Where`运算符。
+语法为 `input.SelectMany(x=>x.Q())`，其中 `Q` 是 `Select`、`SelectMany` 或 `Where` 运算符。
 
-嵌套的查询适用于外部容器的每个元素的内部查询。 一个重要特点是，内部查询可以引用外部容器，如自联接中的元素的字段。
+嵌套查询会将内部查询应用到外部容器的每个元素。 一个重要的功能是内部查询可以引用外部容器（如自联接）中元素的字段。
 
-**嵌套，示例 1:**
+**嵌套，示例 1：**
 
 - **LINQ Lambda 表达式**
   
@@ -2118,7 +2118,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       JOIN p IN f.parents
   ```
 
-**嵌套，示例 2:**
+**嵌套，示例 2：**
 
 - **LINQ Lambda 表达式**
   
@@ -2136,7 +2136,7 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
       WHERE c.familyName = "Jeff"
   ```
 
-**嵌套，示例 3:**
+**嵌套，示例 3：**
 
 - **LINQ Lambda 表达式**
   
@@ -2161,10 +2161,10 @@ SQL.NET SDK 中包含的 LINQ 提供程序支持以下运算符：
 - [JSON](https://json.org/)
 - [Javascript 规范](https://www.ecma-international.org/publications/standards/Ecma-262.htm) 
 - [LINQ](/previous-versions/dotnet/articles/bb308959(v=msdn.10)) 
-- Graefe，Goetz。 [查询评估技术，对于大型数据库](https://dl.acm.org/citation.cfm?id=152611)。 *ACM 计算调查*25，没有。 2 (1993).
-- Graefe，g。"级联查询优化的框架。" *IEEE 数据 eng。L l。* 18、 没有。 3 (1995).
-- Lu，Ooi，Tan。 "并行关系数据库系统中的处理查询"。 *IEEE 计算机协会出版社*(1994)。
-- Olston、 Christopher、 Benjamin Reed、 Utkarsh Srivastava、 Ravi Kumar 和 Andrew Tomkins。 "Pig Latin:数据处理不因此外语言。" *SIGMOD* (2008)。
+- Graefe, Goetz。 [Query evaluation techniques for large databases](https://dl.acm.org/citation.cfm?id=152611)（适用于大型数据库的查询评估技术） 《ACM 计算调查》第 25 期 第 2 卷 (1993)。
+- Graefe, G。“用于优化查询的 Cascades 框架”。 《IEEE 数据工程期刊》 第 18 期 第 3 卷 (1995)。
+- Lu、Ooi、Tan。 “并行关系数据库系统中的查询处理”。 《IEEE 计算机协会期刊》(1994)。
+- Olston、Christopher、Benjamin Reed、Utkarsh Srivastava、Ravi Kumar 和 Andrew Tomkins。 “Pig Latin：并不是很难懂的数据处理语言”。 *SIGMOD* (2008)。
 
 ## <a name="next-steps"></a>后续步骤
 

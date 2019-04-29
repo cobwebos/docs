@@ -10,13 +10,13 @@ ms.topic: article
 ms.date: 02/27/2019
 ms.author: ellacroi
 ms.openlocfilehash: 3c3b3c3af3dbe78bd08a0803c7fc2a37f554e4d7
-ms.sourcegitcommit: ad019f9b57c7f99652ee665b25b8fef5cd54054d
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/02/2019
-ms.locfileid: "57250231"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60733585"
 ---
-# <a name="standard-contract"></a>标准协定
+# <a name="standard-contract"></a>标准合同
 
 若要简化客户的采购过程并降低的软件供应商的法律的复杂性，Microsoft 以帮助简化在 marketplace 中的事务提供标准协定模板。 而不是编写自定义条款和条件，Azure Marketplace 发布者可以选择提供标准的合同，客户只需以审查并接受一次软件。 标准协定可在此处找到： [ https://go.microsoft.com/fwlink/?linkid=2041178 ](https://go.microsoft.com/fwlink/?linkid=2041178)。 
 

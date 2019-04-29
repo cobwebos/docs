@@ -13,11 +13,11 @@ ms.reviewer: carlrab
 manager: craigg
 ms.date: 03/14/2019
 ms.openlocfilehash: 6a2b3af4240a5c400bd1eaf4fd1e93b09fc702b1
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60002708"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075235"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>使用基于 DTU 的购买模型的弹性池的资源限制
 
@@ -119,7 +119,7 @@ ms.locfileid: "60002708"
 
 ### <a name="database-properties-for-pooled-databases"></a>入池数据库的数据库属性
 
-下表介绍了入池数据库的属性。
+下表介绍了共用数据库的属性。
 
 | 属性 | 描述 |
 |:--- |:--- |

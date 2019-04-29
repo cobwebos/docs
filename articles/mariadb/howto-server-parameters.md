@@ -7,11 +7,11 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 04/15/2019
 ms.openlocfilehash: c618a4035e9ec9b1ca1986e898ea1060ac05712d
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59615942"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60922455"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>如何使用 Azure 门户在 Azure Database for MariaDB 中配置服务器参数
 
@@ -39,7 +39,7 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 
 |**定价层**| **vCore(s)**|InnoDB 缓冲池 (MB)| 最大连接数|
 |---|---|---|---|
-|基本| 1| 1024| 50|
+|基本| 第| 1024| 50|
 |基本| 2| 2560| 100|
 |常规用途| 2| 3584| 300|
 |常规用途| 4| 7680| 625|
@@ -59,7 +59,7 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 | :------------------------ | :-------- |
 |基本层中的 innodb_file_per_table|OFF|
 |innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
+|sync_binlog|第|
 |innodb_log_file_size|512MB|
 
 在 [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/) 中，上表中未列出的其他服务器参数将设置为其 MariaDB 现成默认值。

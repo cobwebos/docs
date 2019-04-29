@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2018
 ms.author: magattus
 ms.openlocfilehash: 9793348b47763e6de10992b9a8a4606fc532cc4d
-ms.sourcegitcommit: 4047b262cf2a1441a7ae82f8ac7a80ec148c40c4
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2018
-ms.locfileid: "49094014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60636721"
 ---
 # <a name="large-file-download-optimization-with-azure-cdn"></a>通过 Azure CDN 优化大型文件下载
 
@@ -104,7 +104,7 @@ CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文�
 
 CDN 会在收到区块后进行缓存。 无需在 CDN 缓存上缓存整个文件。 文件或字节范围的后续请求将从 CDN 缓存提供。 如果未在 CDN 上缓存所有区块，将使用预提取从源请求区块。 此优化取决于源服务器能否支持字节范围请求；如果源服务器不支持字节范围请求，则此优化无效。
 
-### <a name="caching"></a>缓存
+### <a name="caching"></a>正在缓存
 大型文件优化使用与常规 Web 交付不同的默认缓存过期时间。 它可根据 HTTP 响应代码区分正缓存和负缓存。 如果源服务器通过响应中的 Cache-Control 或 Expires 标头指定了过期时间，则 CDN 将遵循该值。 如果源未指定此时间，并且该文件与此优化类型的类型和文件条件相符，则 CDN 会针对大型文件优化使用默认值。 否则，CDN 会使用常规 Web 交付的默认值。
 
 

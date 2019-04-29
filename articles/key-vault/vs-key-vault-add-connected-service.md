@@ -7,29 +7,28 @@ manager: jillfra
 ms.prod: visual-studio
 ms.technology: vs-azure
 ms.custom: vs-azure
-ms.workload: azure-vs
 ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: ghogen
 ms.openlocfilehash: d95bd114be712953b79ef5afbb0915173f6de26c
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339272"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60764451"
 ---
 # <a name="add-key-vault-to-your-web-application-by-using-visual-studio-connected-services"></a>使用 Visual Studio 连接服务将 Key Vault 添加到 Web 应用程序
 
-本教程介绍如何轻松添加所需的设置，以开始使用 Azure Key Vault 在 Visual Studio 中管理 Web 项目的机密，不管使用的是 ASP.NET Core 还是任何类型的 ASP.NET 项目。 通过在 Visual Studio 中使用连接的服务功能，您可以自动添加的所有 NuGet 包和配置设置，需要连接到 Azure 中的密钥保管库的 Visual Studio。 
+本教程介绍如何轻松添加所需的设置，以开始使用 Azure Key Vault 在 Visual Studio 中管理 Web 项目的机密，不管使用的是 ASP.NET Core 还是任何类型的 ASP.NET 项目。 使用 Visual Studio 中的连接服务功能，可让 Visual Studio 自动添加所需的所有 NuGet 包和配置设置，以连接到 Azure 中的 Key Vault。 
 
 有关连接服务为了启用 Key Vault 而在项目中所做的更改的详细信息，请参阅 [Key Vault 连接服务 - 我的 ASP.NET 4.7.1 项目发生了什么情况](#how-your-aspnet-framework-project-is-modified)或 [Key Vault 连接服务 - 我的 ASP.NET Core 项目发生了什么情况](#how-your-aspnet-core-project-is-modified)。
 
 ## <a name="prerequisites"></a>必备组件
 
 - 一个 Azure 订阅。 如果没有帐户，可以注册一个[免费帐户](https://azure.microsoft.com/pricing/free-trial/)。
-- **Visual Studio 2019**或**Visual Studio 2017 版本 15.7**与**Web 开发**安装工作负载。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
-- 对于使用 Visual Studio 2017 的 ASP.NET (而不是 Core)，需要.NET Framework 4.7.1 或更高版本的开发工具，默认情况下不安装。 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。
-- ASP.NET 4.7.1 或更高版本，或 ASP.NET Core 2.0 web 项目中打开。
+- **Visual Studio 2019** 或 **Visual Studio 2017 版本 15.7**（装有 Web 开发工作负荷）。 [立即下载](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs)。
+- 对于包含 Visual Studio 2017 的 ASP.NET（非 Core），需要安装 .NET Framework 4.7.1 或更高版本的开发工具，默认情况下未安装这些工具。 若要安装这些工具，请启动 Visual Studio 安装程序，依次选择“修改”、“单个组件”，在右侧展开“ASP.NET 和 Web 开发”，然后选择“.NET Framework 4.7.1 开发工具”。
+- 已打开一个 ASP.NET 4.7.1（或更高版本）或 ASP.NET Core 2.0 Web 项目。
 
 ## <a name="add-key-vault-support-to-your-project"></a>将 Key Vault 支持添加到项目
 
@@ -49,7 +48,7 @@ ms.locfileid: "58339272"
 
    ![重命名 Key Vault，并选择一个资源组](media/vs-key-vault-add-connected-service/KeyVaultConnectedService-Edit.PNG)
 
-1. 选择一个现有的资源组，或选择创建一个新使用自动生成的唯一名称。  如果想要使用不同的名称创建新组，可以使用 [Azure 门户](https://portal.azure.com)，然后关闭页面并重启，以重新加载资源组列表。
+1. 选择现有资源组，或选择使用自动生成的唯一名称创建新的资源组。  如果想要使用不同的名称创建新组，可以使用 [Azure 门户](https://portal.azure.com)，然后关闭页面并重启，以重新加载资源组列表。
 1. 选择要在其中创建 Key Vault 的区域。 如果 Web 应用程序托管在 Azure 中，请选择托管 Web 应用程序的区域，以获得最佳性能。
 1. 选择定价模型。 有关详细信息，请参阅 [Key Vault 定价](https://azure.microsoft.com/pricing/details/key-vault/)。
 1. 选择“确定”接受配置选项。
@@ -146,11 +145,11 @@ ms.locfileid: "58339272"
 
 ## <a name="how-your-aspnet-core-project-is-modified"></a>如何修改 ASP.NET Core 项目
 
-本部分介绍连接添加密钥保管库使用 Visual Studio 服务时对 ASP.NET 项目所做的具体更改。
+此部分介绍在使用 Visual Studio 添加 Key Vault 连接服务时，对 ASP.NET 项目所做的具体更改。
 
 ### <a name="added-references"></a>添加的引用
 
-会影响项目文件的.NET 引用和 NuGet 包引用。
+影响项目文件 .NET 引用和 NuGet 包引用。
 
 | Type | 参考 |
 | --- | --- |
@@ -182,11 +181,11 @@ ms.locfileid: "58339272"
 
 ## <a name="how-your-aspnet-framework-project-is-modified"></a>如何修改 ASP.NET Framework 项目
 
-本部分介绍连接添加密钥保管库使用 Visual Studio 服务时对 ASP.NET 项目所做的具体更改。
+此部分介绍在使用 Visual Studio 添加 Key Vault 连接服务时，对 ASP.NET 项目所做的具体更改。
 
 ### <a name="added-references"></a>添加的引用
 
-会影响项目文件的.NET 引用和`packages.config`（NuGet 引用）。
+影响项目文件 .NET 引用和 `packages.config`（NuGet 引用）。
 
 | Type | 参考 |
 | --- | --- |

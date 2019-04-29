@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
 ms.openlocfilehash: 9258b58783d4670620a251fef866211f7634480f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58096718"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61020366"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions Java 开发人员指南
 
-Azure Functions 运行时支持[Java SE 8 LTS (zulu8.31.0.2 jre8.0.181 win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)。
+Azure Functions 运行时支持 [Java SE 8 LTS (zulu8.31.0.2-jre8.0.181-win_x64)](https://repos.azul.com/azure-only/zulu/packages/zulu-8/8u181/)。
 
-本指南包含有关复杂性的编写与 Java 配合使用的 Azure 函数的信息。
+本指南包含有关使用 Java 编写 Azure Functions 的复杂性的信息。
 
-Java 函数是`public`方法使用批注修饰`@FunctionName`。 此方法定义 java 函数的条目，并在给定的包中必须唯一。 
+Java 函数是一个 `public` 方法，使用注释 `@FunctionName` 修饰。 此方法定义 java 函数的条目，必须在给定包中独一无二。 
 
-本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 您还应当完成函数快速入门，以创建你的第一个函数，请使用[Visual Studio Code](functions-create-first-function-vs-code.md)或[使用 maven](functions-create-first-java-maven.md)。
+本文假定你已阅读 [Azure Functions 开发人员参考](functions-reference.md)。 此外，应该完成有关如何使用 [Visual Studio Code](functions-create-first-function-vs-code.md) 或[使用 maven](functions-create-first-java-maven.md) 创建第一个函数的 Functions 快速入门。
 
 ## <a name="programming-model"></a>编程模型 
 
@@ -269,7 +269,7 @@ public class Function {
 
  在 `azure-functions-java-library` 中定义的 HttpRequestMessage 和 HttpResponseMessage 类型是用于处理 HttpTrigger 函数的帮助器类型
 
-| 专用类型      |       目标        | 典型用途                  |
+| 专用类型      |       确定目标        | 典型用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage<T>`  |    HTTP 触发器     | 获取方法、标头或查询 |
 | `HttpResponseMessage` | HTTP 输出绑定 | 返回除 200 之外的状态   |

@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 3/13/2019
 ms.author: banders
 ms.openlocfilehash: b910cb3061b1451ea80b9843e2aa4047a784548f
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57876861"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60918517"
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>添加、更新或删除用于 Azure 的信用卡或借记卡
 
@@ -40,7 +40,7 @@ ms.locfileid: "57876861"
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
 1. 选择你想要添加到信用卡或借记卡的订阅。
-1. 选择**付款方式**。
+1. 选择“付款方式”。
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -64,7 +64,7 @@ ms.locfileid: "57876861"
 
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
-1. 选择**付款方式**。
+1. 选择“付款方式”。
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 
@@ -85,7 +85,7 @@ ms.locfileid: "57876861"
     ![显示搜索的屏幕截图](./media/billing-how-to-change-credit-card/search.png)
 
 1. 选择你想要添加到信用卡或借记卡的订阅。
-1. 选择**付款方式**。
+1. 选择“付款方式”。
 
     ![显示已选择“管理付款方式”选项的屏幕截图。](./media/billing-how-to-change-credit-card/payment-methods-blade-x.png)
 

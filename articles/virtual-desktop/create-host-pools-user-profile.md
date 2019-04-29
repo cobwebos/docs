@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 04/05/2019
 ms.author: helohr
 ms.openlocfilehash: 0cb4df099faad8ca482fd15cf0bb50504c1528ab
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59276382"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60883864"
 ---
 # <a name="set-up-a-user-profile-share-for-a-host-pool"></a>为主机池设置用户配置文件共享
 
@@ -64,7 +64,7 @@ Windows 虚拟桌面预览服务提供与建议的用户配置文件解决方案
 
 | 名称                | Type               | 数据/值                        |
 |---------------------|--------------------|-----------------------------------|
-| 已启用             | DWORD              | 1                                 |
+| Enabled             | DWORD              | 第                                 |
 | VHDLocations        | 多字符串值 | "网络文件共享路径"     |
 
 >[!IMPORTANT]

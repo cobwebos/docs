@@ -11,11 +11,11 @@ ms.date: 03/25/2019
 ms.author: heidist
 ms.custom: seodec2018
 ms.openlocfilehash: 9b7147971bd320a11606a93ab4d988e924cf93b2
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58439103"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61296908"
 ---
 # <a name="query-examples-using-the-simple-search-syntax-in-azure-search"></a>在 Azure 搜索中使用"简单"的搜索语法的查询示例
 

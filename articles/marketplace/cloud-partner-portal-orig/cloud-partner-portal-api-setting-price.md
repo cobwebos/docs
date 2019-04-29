@@ -15,11 +15,11 @@ ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: a029477dfd8046863ebfe34cd839562a0b1f3d87
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59607785"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094448"
 ---
 <a name="pricing-for-virtual-machine-offers"></a>虚拟机产品/服务的定价
 ==================================
@@ -181,7 +181,7 @@ ms.locfileid: "59607785"
 | LK         | 斯里兰卡            | USD               |
 | SE         | 瑞典               | SEK               |
 | CH         | 瑞士          | CHF               |
-| TW         | 台湾               | TWD               |
+| TW         | 中国台湾               | TWD               |
 | TH         | 泰国             | THB               |
 | TT         | 特立尼达和多巴哥  | TTD               |
 | TN         | 突尼斯              | TND               |

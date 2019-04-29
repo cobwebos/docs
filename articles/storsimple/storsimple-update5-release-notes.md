@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 672757e82bcf645b705f46a9975e09c9dc5eef92
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
-ms.translationtype: HT
+ms.openlocfilehash: 462cbd6261723aa91bbfd23292611e758a800ed2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/13/2017
-ms.locfileid: "24518913"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844085"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 系列 Update 5 发行说明
 
@@ -51,10 +51,10 @@ Update 5 中进行了以下重大改进和 bug 修复。
 
 下表提供在 Update 5 中已修复问题的摘要。
 
-| 否 | 功能 | 问题 | 适用于物理设备 | 适用于虚拟设备 |
+| 否 | Feature | 问题 | 适用于物理设备 | 适用于虚拟设备 |
 | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell 远程功能 |在以前的版本中，用户尝试通过 Windows PowerShell 与 StorSimple 云设备建立远程连接时会收到错误。 在此版本中已找到此问题的根本原因并进行了修复。 |否 |是 |
-| #N/A |带宽模板 |在以前的版本中，带宽模板中的某个问题会导致带宽低于配置给设备的带宽。 在此版本中已修复了此问题。 |是 |是 |
+| 第 |Windows PowerShell 远程功能 |在以前的版本中，用户尝试通过 Windows PowerShell 与 StorSimple 云设备建立远程连接时会收到错误。 在此版本中已找到此问题的根本原因并进行了修复。 |否 |是 |
+| 2 |带宽模板 |在以前的版本中，带宽模板中的某个问题会导致带宽低于配置给设备的带宽。 在此版本中已修复了此问题。 |是 |是 |
 | 3 |故障转移 |在以前的版本中，如果将包含大量卷的设备故障转移到运行 Update 4 的另一台设备，则在尝试应用访问控制记录时，故障转移过程会失败。 在此版本中已修复了此问题。 |是 |是 |
 
 

@@ -5,21 +5,23 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/11/2019
+ms.date: 04/22/2019
 ms.topic: conceptual
 ms.service: cost-management
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 5c8f70ff76da458fcc1433226a51012fb7ccd18e
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
-ms.translationtype: MT
+ms.openlocfilehash: 81947baccf723ab759f2dc24df40b81af4502e09
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59544630"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61003975"
 ---
 # <a name="understand-cost-management-data"></a>了解成本管理数据
 
 本文帮助你更好地了解 Azure 成本管理中包含的数据。 此外，介绍这些数据的处理频率以及收集、显示和关闭方式。 你需要按月支付 Azure 使用费。 但是，月底的账单由 Azure 订阅类型决定。 成本管理接收用量数据的频率根据不同的因素而异。 此类因素包括处理数据所花费的时间，以及 Azure 服务向计费系统发出用量数据的频率。
+
+成本的管理包括所有使用情况和购买，包括保留项和第三方产品/服务的企业协议 (EA) 帐户。 Microsoft 客户协议 (MCA) 帐户和即用即付订阅仅包含从 Azure 和 Marketplace 服务的使用情况。 支持和其他成本不包括。 直到生成发票估计成本未纳入的信用额度和。
 
 ## <a name="supported-microsoft-offers"></a>支持的 Microsoft 套餐
 
@@ -86,6 +88,7 @@ ms.locfileid: "59544630"
 |   | 信用额度 - 有关详细信息，请参阅[发票条款说明](../billing/billing-understand-your-invoice.md)。 |
 
 <sup>1</sup> Azure 服务用量基于预订价格和议价。
+
 <sup>2</sup> marketplace 产品/服务使用情况不可用于即用即付、 MSDN 和 Visual Studio 提供了这一次。
 
 **元数据**
@@ -113,7 +116,7 @@ ms.locfileid: "59544630"
 
 ### <a name="rerated-data"></a>重新计费数据
 
-无论是使用[成本管理 API](https://aka.ms/costmgmt/docs)、PowerBI 还是 Azure 门户检索数据，当前计费周期的费用预期都会重新计算，因此，在结算发票之前，此费用将会更改。
+无论是使用[成本管理 Api](https://aka.ms/costmgmt/docs)，Power BI 或 Azure 门户来检索数据，希望重新获取已分级，并因此更改，直到关闭发票的当前计费周期的费用。
 
 ## <a name="usage-data-update-frequency-varies"></a>用量数据的更新频率存在变化
 

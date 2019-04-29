@@ -1,4 +1,4 @@
-﻿---
+---
 title: 在 Azure Maps 中扩展 GeoJSON 几何图形 | Microsoft Docs
 description: 了解如何在 Azure Maps 中扩展 GeoJSON 几何图形
 author: sataneja
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 319f9cba23d088553f361b6a0d648bbde94e0743
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: HT
+ms.openlocfilehash: be3c31951c4721a861f9239c5220419dec11b6bf
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38968555"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60799148"
 ---
 # <a name="extending-geojson-geometries"></a>扩展 GeoJSON 几何图形
 
@@ -30,7 +30,7 @@ Azure Maps 提供功能强大的 API 列表，用于在地理功能内搜索/基
 * Point
 * Polygon
 
-某些 Azure Maps API（例如：[在几何图形内搜索](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)）接受“圆形”（不属于 [GeoJSON 规范][1]）等几何图形。
+某些 Azure Maps Api (例如：[搜索在几何图形](https://docs.microsoft.com/rest/api/maps/search/postsearchinsidegeometry)) 接受像"Circle"不是几何图形的一部分[GeoJSON 规范][1]。
 
 本文提供了有关 Azure Maps 如何扩展 [GeoJSON 规范][1]来表示某些几何图形的详细说明。
 
@@ -52,7 +52,7 @@ Azure Maps 提供功能强大的 API 列表，用于在地理功能内搜索/基
 
 #### <a name="example"></a>示例
 
-下面介绍了如何使用 `GeoJSON Feature` 对象表示以（纬度：47.639754，经度：-122.126986）为中心、半径为 100 米的圆形：
+下面是如何将表示在为中心的圆圈 (纬度：47.639754，经度：-122.126986) 等于 100 米，使用一个半径`GeoJSON Feature`对象：
 
 ```json            
 {

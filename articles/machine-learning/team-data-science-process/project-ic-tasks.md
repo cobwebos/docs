@@ -11,11 +11,11 @@ ms.date: 11/13/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6a52907fa6c0e2483479031fbb3d1ad68a121d95
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55475552"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61043229"
 ---
 # <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>Team Data Science Process 中单个参与者的任务
 
@@ -23,7 +23,7 @@ ms.locfileid: "55475552"
 
 下面描述的是项目单个参与者（数据科学家）在设置项目的 TDSP 环境方面要完成的任务： 
 
-![1](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
+![第](./media/project-ic-tasks/project-ic-1-tdsp-data-scientist.png)
 
 - GroupUtilities 是你的组维护的存储库，用于在整个组中共享有用的实用程序。 
 - TeamUtilities 是你的团队专门为自己的团队维护的存储库。 
@@ -45,7 +45,7 @@ ms.locfileid: "55475552"
 - **D5**：从 R5 克隆的本地目录。
 
 
-## <a name="step-0-prerequisites"></a>步骤 0：先决条件
+## <a name="step-0-prerequisites"></a>步骤 0：必备组件
 
 通过完成[数据科学团队组管理员的任务](group-manager-tasks.md)中介绍的分配给组管理员的任务来满足先决条件。 此处进行了归纳，即开始完成团队主管的任务前需要满足以下要求： 
 - 你的组管理员已设置 GroupUtilities 存储库（如果有）。 

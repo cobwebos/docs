@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2018
 ms.author: cynthn;davberg
 ms.openlocfilehash: 43d0ab6552847df7f1f2a8599dcc7cb9a8fcb57b
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59698823"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60844068"
 ---
 # <a name="compute-benchmark-scores-for-windows-vms"></a>Windows VM 的计算基准测试分数
 以下 SPECInt 基准测试分数显示运行 Windows Server 的 Azure 高性能 VM 产品阵容的计算性能。 此外，还提供了 [Linux VM](../linux/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) 的计算基准测试分数。
@@ -39,22 +39,22 @@ ms.locfileid: "59698823"
 ## <a name="dv2-series"></a>Dv2 系列
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_D1_v2 |1 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |83 |36.6 |2.6 |
+| Standard_D1_v2 |第 |第 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |83 |36.6 |2.6 |
 | Standard_D2_v2 |2 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |27 |70.0 |3.7 |
-| Standard_D3_v2 |4 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |19 |130.5 |4.4 |
-| Standard_D4_v2 |8 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |19 |238.1 |5.2 |
+| Standard_D3_v2 |4 |第 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |19 |130.5 |4.4 |
+| Standard_D4_v2 |8 |第 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |19 |238.1 |5.2 |
 | Standard_D5_v2 |16 |2 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |14 |460.9 |15.4 |
 | Standard_D11_v2 |2 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |19 |70.1 |3.7 |
-| Standard_D12_v2 |4 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |2 |132.0 |1.4 |
-| Standard_D13_v2 |8 |1 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |17 |235.8 |3.8 |
+| Standard_D12_v2 |4 |第 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |2 |132.0 |1.4 |
+| Standard_D13_v2 |8 |第 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |17 |235.8 |3.8 |
 | Standard_D14_v2 |16 |2 |Intel Xeon E5-2673 v3 \@ 2.4 GHz |15 |460.8 |6.5 |
 
 ## <a name="g-series-gs-series"></a>G 系列、GS 系列
 | 大小 | vCPU | NUMA 节点 | CPU | 运行次数 | 平均基本速率 | 标准偏差 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_G1、Standard_GS1 |2 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |31 |71.8 |6.5 |
-| Standard_G2、Standard_GS2 |4 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |5 |133.4 |13.0 |
-| Standard_G3、Standard_GS3 |8 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |6 |242.3 |6.0 |
+| Standard_G1、Standard_GS1 |2 |第 |Intel Xeon E5-2698B v3 \@ 2 GHz |31 |71.8 |6.5 |
+| Standard_G2、Standard_GS2 |4 |第 |Intel Xeon E5-2698B v3 \@ 2 GHz |5 |133.4 |13.0 |
+| Standard_G3、Standard_GS3 |8 |第 |Intel Xeon E5-2698B v3 \@ 2 GHz |6 |242.3 |6.0 |
 | Standard_G4、Standard_GS4 |16 |1 |Intel Xeon E5-2698B v3 \@ 2 GHz |15 |398.9 |6.0 |
 | Standard_G5、Standard_GS5 |32 |2 |Intel Xeon E5-2698B v3 \@ 2 GHz |22 |762.8 |3.7 |
 
@@ -63,7 +63,7 @@ ms.locfileid: "59698823"
 | --- | --- | --- | --- | --- | --- | --- |
 | Standard_H8 |8 |1 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |297.4 |0.9 |
 | Standard_H16 |16 |2 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |575.8 |6.8 |
-| Standard_H8m |8 |1 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |297.0 |1.2 |
+| Standard_H8m |8 |第 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |297.0 |1.2 |
 | Standard_H16m |16 |2 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |572.2 |3.9 |
 | Standard_H16r |16 |2 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |5 |573.2 |2.9 |
 | Standard_H16mr |16 |2 |Intel Xeon E5-2667 v3 \@ 3.2 GHz |7 |569.6 |2.8 |

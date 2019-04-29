@@ -11,11 +11,11 @@ ms.devlang: rest-api
 ms.topic: conceptual
 ms.custom: seodec2018
 ms.openlocfilehash: 6db86d3e5aba1a2e43e69e71df8cc516fb14581f
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59527347"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871560"
 ---
 # <a name="how-to-index-json-blobs-using-azure-search-blob-indexer"></a>如何使用 Azure 搜索 Blob 索引器的 JSON blob 编制索引
 本文介绍如何配置 Azure 搜索 blob[索引器](search-indexer-overview.md)从 Azure Blob 存储中的 JSON 文档中提取结构化的内容，并使其可在 Azure 搜索中搜索。 此工作流创建 Azure 搜索索引并将其加载与从 JSON blob 中提取的现有文本。 

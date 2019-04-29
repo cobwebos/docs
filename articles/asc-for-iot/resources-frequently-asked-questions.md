@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/25/2019
 ms.author: mlottner
 ms.openlocfilehash: cd9e77e09e2a2fd5fe1108e98da028d26fc623c7
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59786814"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60803096"
 ---
 # <a name="azure-security-center-for-iot-frequently-asked-questions"></a>适用于 IoT 的 azure 安全中心常见问题  
 
@@ -51,7 +51,7 @@ Iot ASC 集成在 Azure IoT 中心安全性并提供对日常业务解决方案�
 
 ## <a name="do-i-have-to-be-an-azure-iot-customer"></a>我是否必须是 Azure IoT 客户？
 
-是的。 适用于 IoT 的 ASC 依赖于 Azure IoT 连接和基础结构。
+可以。 适用于 IoT 的 ASC 依赖于 Azure IoT 连接和基础结构。
 
 ## <a name="do-i-have-to-install-an-agent"></a>我是否需要安装代理？
 
@@ -93,7 +93,7 @@ ASC 为 IoT 提供了可配置的代理，扫描、 数据缓冲区和创建自�
 
 ## <a name="do-agent-messages-use-up-quota-from-iot-hub"></a>是否会从 IoT 中心的配额使用代理消息？
 
-是的。 代理传输的数据以你的 IoT 中心配额计数。 
+可以。 代理传输的数据以你的 IoT 中心配额计数。 
 
 ## <a name="what-next-ive-installed-an-agent-and-dont-see-any-activities-or-logs"></a>接下来要做什么？ 我已安装代理，并且看不到任何活动或日志
 
@@ -129,7 +129,7 @@ ASC 为 IoT 提供了可配置的代理，扫描、 数据缓冲区和创建自�
 
 ## <a name="can-i-create-my-own-alerts"></a>可以创建我自己的警报？
 
-是的。 可以在组预先确定的行为，例如 IP 地址和打开的端口上设置自定义的警报。 请参阅[创建自定义警报](quickstart-create-custom-alerts.md)若要了解有关自定义警报以及如何使它们的详细信息。 
+可以。 可以在组预先确定的行为，例如 IP 地址和打开的端口上设置自定义的警报。 请参阅[创建自定义警报](quickstart-create-custom-alerts.md)若要了解有关自定义警报以及如何使它们的详细信息。 
 
 ## <a name="where-can-i-see-logs-can-i-customize-logs"></a>在何处可以查看日志？ 可以自定义日志？
 

@@ -15,11 +15,11 @@ ms.date: 12/01/2017
 ms.author: cephalin
 ms.custom: seodec18
 ms.openlocfilehash: 763aadc50a8760b4265dbfc21e9278f909b68433
-ms.sourcegitcommit: edacc2024b78d9c7450aaf7c50095807acf25fb6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53342011"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60851083"
 ---
 # <a name="use-an-ssl-certificate-in-your-application-code-in-azure-app-service"></a>在 Azure 应用服务的应用程序代码中使用 SSL 证书
 
@@ -29,7 +29,7 @@ ms.locfileid: "53342011"
 
 让应用服务管理 SSL 证书时，可以分开维护证书和应用程序代码，并保护敏感数据。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 若要完成本操作说明指南：
 

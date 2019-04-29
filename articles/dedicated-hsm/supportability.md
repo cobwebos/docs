@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: barclayn
-ms.openlocfilehash: 3fd460409cab8dce0f5c4ce31f5323f19706d268
-ms.sourcegitcommit: cf971fe82e9ee70db9209bb196ddf36614d39d10
+ms.openlocfilehash: 8341e9057b07fbb72957eddc342ae875e4591993
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58541088"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60912241"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure 专用 HSM 的支持
 
@@ -38,7 +38,7 @@ Azure 专用 HSM 服务提供供单个客户使用的物理设备，由客户对
 HSM 设备的配置中使用各种软件组件：
 
 * 客户端软件
-* SDK
+* SDK 中 IsInRole 中的声明
 * 工具
 
 ### <a name="guidance"></a>指南
@@ -96,5 +96,5 @@ HSM 设备带有冗余且可更换的电源和风扇装置。  但是，风扇�
 * [部署体系结构](deployment-architecture.md)
 * [高可用性](high-availability.md)
 * [物理安全性](physical-security.md)
-* [联网](networking.md)
+* [网络](networking.md)
 

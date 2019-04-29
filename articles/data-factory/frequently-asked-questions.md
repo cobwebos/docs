@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
 ms.openlocfilehash: d704c32ee7417c6460ad6cc880e451adddfa61de
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59048208"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61345748"
 ---
 # <a name="azure-data-factory-faq"></a>Azure 数据工厂常见问题解答
 本文提供有关 Azure 数据工厂的常见问题解答。  
@@ -168,13 +168,13 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 是的参数是数据工厂中第一类的顶层概念。 可以在管道级别定义参数，并在按需或使用触发器执行管道运行时传递自变量。  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>是否可以为管道参数定义默认值？ 
-是的。 可以为管道中的参数定义默认值。 
+可以。 可以为管道中的参数定义默认值。 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>管道中的活动是否可以使用传递给管道运行的自变量？ 
-是的。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
+可以。 管道中的每个活动都可以使用通过 `@parameter` 构造传递给管道运行的参数值。 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>活动输出属性是否可以在其他活动中使用？ 
-是的。 在后续活动中可以通过 `@activity` 构造来使用活动输出。
+可以。 在后续活动中可以通过 `@activity` 构造来使用活动输出。
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>如何得体地处理活动输出中的 NULL 值？ 
 可以在表达式中使用 `@coalesce` 构造来得体地处理 NULL 值。 
@@ -192,7 +192,7 @@ Azure 数据工厂的可视化工具进行迭代开发和调试。 您可以创�
 
 ### <a name="can-i-migrate-my-private-preview-factories-to-data-factory-v2"></a>可以将我的个人预览版工厂迁移到数据工厂 V2？
 
-是的。 [按照说明进行操作](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)。
+可以。 [按照说明进行操作](https://www.slideshare.net/kromerm/adf-mapping-data-flow-private-preview-migration)。
 
 ### <a name="i-need-help-troubleshooting-my-data-flow-logic-what-info-do-i-need-to-provide-to-get-help"></a>我需要帮助来解决我的数据的流逻辑。 提供以获取帮助需要哪些信息？
 

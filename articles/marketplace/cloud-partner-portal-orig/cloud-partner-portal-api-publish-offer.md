@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: cb1293a771a137f4df7e36a2b412f68b384f16ef
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805849"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094322"
 ---
 <a name="publish-an-offer"></a>发布产品/服务
 ================
@@ -35,7 +35,7 @@ ms.locfileid: "48805849"
 |  ------------- |  ------------------------------------            |   -----------  |
 |  publisherId   | 发布者标识符，例如 `contoso`      |   String       |
 |  offerId       | 产品/服务标识符                                 |   String       |
-|  api-version   | API 的最新版本                        |   日期         |
+|  api-version   | API 最新版本                        |   date         |
 |  |  |
 
 

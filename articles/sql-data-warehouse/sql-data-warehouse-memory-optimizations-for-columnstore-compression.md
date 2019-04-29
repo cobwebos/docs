@@ -2,24 +2,25 @@
 title: 提高列存储索引的性能 - Azure SQL 数据仓库 | Microsoft Docs
 description: 减少内存需求或增加可用内存，使列存储索引压缩到每个行组中的行数最大化。
 services: sql-data-warehouse
-author: ronortloff
-manager: craigg
+author: WenJason
+manager: digimobile
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: implement
-ms.date: 03/22/2019
-ms.author: rortloff
+origin.date: 03/22/2019
+ms.date: 04/01/2019
+ms.author: v-jay
 ms.reviewer: igorstan
 ms.openlocfilehash: e7ab09522184f5c2d1c5168b24b2948f58e5189e
-ms.sourcegitcommit: 49c8204824c4f7b067cd35dbd0d44352f7e1f95e
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/22/2019
-ms.locfileid: "58368955"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60748770"
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>最大化列存储的行组质量
 
-行组质量由行组中的行数决定。 增加可用内存可以最大化列存储索引将压缩到每个行组的行数。  使用这些方法来提高列存储索引的压缩率和请求性能。
+行组质量由行组中的行数决定。 增加可用内存可以使列存储索引压缩到每个行组中的行数最大化。  使用这些方法来提高列存储索引的压缩率和请求性能。
 
 ## <a name="why-the-rowgroup-size-matters"></a>行组大小之所以重要的原因
 由于列存储索引会通过扫描单个行组的列段来扫描表，所以，使每个行组的行数最大化可增强查询性能。 如果行组具有的行数较多，则会增强数据压缩，这意味着需要从磁盘读取的数据变少。
@@ -39,7 +40,7 @@ ms.locfileid: "58368955"
 
 ## <a name="how-to-monitor-rowgroup-quality"></a>如何监视行组质量
 
-DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats ([sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)包含视图定义匹配到 SQL 数据仓库的 SQL DB) 的公开一些有用信息例如，行组和修整如果那里修整原因中的行数。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
+DMV sys.dm_pdw_nodes_db_column_store_row_group_physical_stats（[sys.dm_db_column_store_row_group_physical_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql) 包含可以将 SQL DB 与 SQL 数据仓库匹配的视图定义），用于公开一些有用信息，例如行组中的行数，以及修整原因（如果有修整）。 可创建下列视图来轻松查询此 DMV，以便获得关于行组修整的信息。
 
 ```sql
 create view dbo.vCS_rg_physical_stats
@@ -67,7 +68,7 @@ from cte;
 ```
 
 trim_reason_desc 指示行组是否已修整（trim_reason_desc = NO_TRIM 表示没有修整，且行组的质量为最佳）。 下列修整原因指示行组的过早修整：
-- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批处理负载以包括更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
+- BULKLOAD：当加载的行的传入批小于 100 万行时，使用此修整原因。 如果插入的行数（而不是插入增量存储）大于 100,000，引擎将创建压缩的行组，但会将修整原因设置为 BULKLOAD。 在此方案中，请考虑增加批负荷，使之包含更多的行。 此外，请重新评估分区方案，避免其过度具体，因为行组无法跨越分区边界。
 - MEMORY_LIMITATION：要创建具有 100 万行的行组，引擎需要一定量的工作内存。 当加载会话的可用内存小于所需的工作内存时，将提前修整行组。 以下各部分说明如何估计所需内存和分配更多内存。
 - DICTIONARY_SIZE：此修整原因指示，由于至少有一个字符串列具有宽和/或高基数字符串，因此发生行组修整。 字典大小的内存限制为 16 MB，一旦达到此限制，将压缩行组。 如果遇到这种情况，请考虑将有问题的列隔离到单独的表中。
 

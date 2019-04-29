@@ -10,11 +10,11 @@ services: azure-maps
 manager: cpendleton
 ms.custom: codepen
 ms.openlocfilehash: d4dc6f0c8fd2dff74a1997c9dca5a31abc70c03a
-ms.sourcegitcommit: c63fe69fd624752d04661f56d52ad9d8693e9d56
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/28/2019
-ms.locfileid: "58580818"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60795927"
 ---
 # <a name="clustering-point-data"></a>聚类分析点数据
 
@@ -86,10 +86,10 @@ var datasource = new atlas.source.DataSource(null, {
 
 | 属性名称 | Type | 描述 |
 |---------------|------|-------------|
-| cluster | 布尔值 | 指示功能是否表示一个群集。 |
-| cluster_id | 字符串 | 可以在数据源的群集的唯一 ID `getClusterExpansionZoom`， `getClusterChildren`，和`getClusterLeaves`方法。 |
+| cluster | boolean | 指示功能是否表示一个群集。 |
+| cluster_id | string | 可以在数据源的群集的唯一 ID `getClusterExpansionZoom`， `getClusterChildren`，和`getClusterLeaves`方法。 |
 | point_count | 数字 | 分类包含的点的数目。 |
-| point_count_abbreviated | 字符串 | 一个字符串，如果长缩写 point_count 值。 （例如，4,000 成为 4k） |
+| point_count_abbreviated | string | 一个字符串，如果长缩写 point_count 值。 （例如，4,000 成为 4k） |
 
 此示例采用气泡图层的呈现群集点并添加一个单击事件的触发时，计算，并为下一步的缩放级别，群集将中断分开使用放大地图`getClusterExpansionZoom`方法的`DataSource`类和`cluster_id`属性被单击的聚集数据点。 
 

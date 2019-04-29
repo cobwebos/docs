@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 06/01/2018
 ms.author: cynthn
 ms.openlocfilehash: 3d44a4a723c39bf9780475a2ac3088da94285f6e
-ms.sourcegitcommit: d2329d88f5ecabbe3e6da8a820faba9b26cb8a02
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/16/2019
-ms.locfileid: "56329364"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61076274"
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>从 Azure 下载 Windows VHD
 
@@ -32,7 +32,7 @@ ms.locfileid: "56329364"
 
 若要使用 VHD 作为映像创建其他 VM，请完成以下步骤：
 
-1.  如果尚未登录 [Azure 门户](https://portal.azure.com/)，请先登录。
+1.  登录到 [Azure 门户](https://portal.azure.com/)（如果未登录）。
 2.  [连接到 VM](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 
 3.  在 VM 上，以管理员身份打开“命令提示符”窗口。
 4.  将目录切换到 *%windir%\system32\sysprep*，然后运行 sysprep.exe。

@@ -13,11 +13,11 @@ ms.date: 08/13/2018
 ms.reviewer: mbullwin
 ms.author: nimolnar
 ms.openlocfilehash: 7f152de89f5d374a5b97368eafe7287fc9377291
-ms.sourcegitcommit: 15e9613e9e32288e174241efdb365fa0b12ec2ac
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/28/2019
-ms.locfileid: "57011324"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60691115"
 ---
 # <a name="dependency-auto-collection"></a>依赖项自动收集
 
@@ -90,7 +90,7 @@ ms.locfileid: "57011324"
 
 | 通信库 | 版本 |
 | ------------------------|----------|
-| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | All |
+| [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | 全部 |
 
 ## <a name="next-steps"></a>后续步骤
 

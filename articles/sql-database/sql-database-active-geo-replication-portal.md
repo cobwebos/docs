@@ -1,6 +1,6 @@
 ---
 title: Azure 门户：SQL 数据库异地复制 | Microsoft Docs
-description: 使用 Azure 门户为 Azure SQL 数据库中的单个或入池数据库配置异地复制，并启动故障转移
+description: 使用 Azure 门户为 Azure SQL 数据库中的单个或共用数据库配置异地复制，并启动故障转移
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -13,17 +13,17 @@ ms.reviewer: mathoma, carlrab
 manager: craigg
 ms.date: 02/13/2019
 ms.openlocfilehash: 8bada96c648881a9943176c45115627a829fcc58
-ms.sourcegitcommit: 5f348bf7d6cf8e074576c73055e17d7036982ddb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59608599"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60864020"
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>在 Azure 门户中为 Azure SQL 数据库配置活动异地复制，并启动故障转移
 
-本文说明如何使用 [Azure 门户](https://portal.azure.com)为 Azure SQL 数据库中的[单一和入池数据库配置活动异地复制](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
+本文说明如何使用 [Azure 门户](https://portal.azure.com)为 Azure SQL 数据库中的[单一和共用数据库配置活动异地复制](sql-database-active-geo-replication.md#active-geo-replication-terminology-and-capabilities)，以及如何启动故障转移。
 
-有关自动故障转移组与单一数据库和入池数据库的信息，请参阅[将故障转移组与单一数据库和入池数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关自动故障转移组与托管实例（预览版）的信息，请参阅[将故障转移组与托管实例配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
+有关自动故障转移组与单一数据库和共用数据库的信息，请参阅[将故障转移组与单一数据库和共用数据库配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-single-databases-and-elastic-pools)。 有关自动故障转移组与托管实例（预览版）的信息，请参阅[将故障转移组与托管实例配合使用的最佳做法](sql-database-auto-failover-group.md#best-practices-of-using-failover-groups-with-managed-instances)。
 
 ## <a name="prerequisites"></a>必备组件
 
@@ -40,7 +40,7 @@ ms.locfileid: "59608599"
 
 只有订阅所有者或共有者才能添加辅助数据库。
 
-辅助数据库具有与主数据库相同的名称，并默认使用相同的服务层和计算大小。 辅助数据库可以是单一数据库，也可以是入池数据库。 有关详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
+辅助数据库具有与主数据库相同的名称，并默认使用相同的服务层级和计算大小。 辅助数据库可以是单一数据库，也可以是共用数据库。 有关详细信息，请参阅[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)和[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)。
 创建辅助数据库并设定种子后，会开始将数据从主数据库复制到新的辅助数据库。
 
 > [!NOTE]

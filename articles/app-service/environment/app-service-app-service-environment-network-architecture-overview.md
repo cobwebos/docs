@@ -16,14 +16,14 @@ ms.date: 10/04/2016
 ms.author: stefsch
 ms.custom: seodec18
 ms.openlocfilehash: 0d7d4af46e54ad89e0d084cb15af13e56115e996
-ms.sourcegitcommit: 7fd404885ecab8ed0c942d81cb889f69ed69a146
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/12/2018
-ms.locfileid: "53274156"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60765253"
 ---
 # <a name="network-architecture-overview-of-app-service-environments"></a>应用服务环境的网络体系结构概述
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 应用服务环境始终创建于[虚拟网络][virtualnetwork]的子网内，在应用服务环境中运行的应用可与相同虚拟网络拓扑中的专用终结点通信。  由于客户可能锁定了其虚拟网络基础结构的组件，因此请务必了解与应用服务环境发生的网络通信流类型。
 
 ## <a name="general-network-flow"></a>常规网络流

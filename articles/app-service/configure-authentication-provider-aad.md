@@ -16,11 +16,11 @@ ms.date: 02/20/2019
 ms.author: mahender
 ms.custom: seodec18
 ms.openlocfilehash: d687e770fae6c32ee351a597e12d1aca6094e5cb
-ms.sourcegitcommit: 70550d278cda4355adffe9c66d920919448b0c34
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/26/2019
-ms.locfileid: "58438218"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60851369"
 ---
 # <a name="configure-your-app-service-app-to-use-azure-active-directory-sign-in"></a>将应用服务应用配置为使用 Azure Active Directory 登录
 
@@ -80,7 +80,7 @@ ms.locfileid: "58438218"
 2. 在左侧导航栏中，选择“应用注册”。 在顶部单击“新建应用注册”。
 4. 在“创建”页中，为应用注册输入“名称”。 在“应用程序类型”中选择“本机”。
 5. 在“重定向 URI”框中，使用 HTTPS 方案输入站点的 */.auth/login/done* 终结点。 此值应类似于 *https://contoso.azurewebsites.net/.auth/login/done*。 如果要创建 Windows 应用程序，请改用[包 SID](../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md#package-sid) 作为 URI。
-5. 单击“创建”。
+5. 单击**创建**。
 6. 在成功添加应用注册后，选择该应用注册将其打开。 找到应用程序 ID 并记下此值。
 7. 单击“所有设置” > “所需的权限” > “添加” > “选择 API”。
 8. 键入先前注册的应用服务应用的名称进行搜索，然后选中该应用并单击“选择”。

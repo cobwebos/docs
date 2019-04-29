@@ -13,11 +13,11 @@ ms.topic: conceptual
 ms.date: 09/20/2018
 ms.author: mbullwin
 ms.openlocfilehash: dfbaabd3d27804909334a7a370bcc89115e625c4
-ms.sourcegitcommit: 818d3e89821d101406c3fe68e0e6efa8907072e7
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/09/2019
-ms.locfileid: "54119164"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60899938"
 ---
 # <a name="using-search-in-application-insights"></a>使用 Application Insights 中的搜索
 搜索是 [Application Insights](../../azure-monitor/app/app-insights-overview.md) 中的一项功能，可用于查找和浏览单个遥测项，例如页面视图、异常或 Web 请求。 此外，可以查看编写的日志跟踪和事件。
@@ -112,7 +112,7 @@ ms.locfileid: "54119164"
 
 搜索完整单词，而不搜索子字符串。 使用引号将特殊字符引起来。
 
-| 字符串 | *不能*使用以下项查找 | 但可使用以下项查找 |
+| string | *不能*使用以下项查找 | 但可使用以下项查找 |
 | --- | --- | --- |
 | HomeController.About |主页<br/>controller<br/>out | homecontroller<br/>about<br/>"homecontroller.about"|
 |美国|Uni<br/>ted|united<br/>states<br/>united AND states<br/>"united states"

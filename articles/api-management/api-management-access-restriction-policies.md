@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/21/2019
 ms.author: apimpm
 ms.openlocfilehash: acc9f83923c8fdaae98cc55bc6baf62f56f2116b
-ms.sourcegitcommit: c6dc9abb30c75629ef88b833655c2d1e78609b89
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/29/2019
-ms.locfileid: "58663139"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60798605"
 ---
 # <a name="api-management-access-restriction-policies"></a>API 管理访问限制策略
 
@@ -61,7 +61,7 @@ ms.locfileid: "58663139"
 | 名称         | 描述                                                                                                                                   | 需要 |
 | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | check-header | 根元素。                                                                                                                                 | 是      |
-| 值        | 允许的 HTTP 标头值。 指定了多个值元素时，如果任何一个值匹配，则可认为检查成功。 | 否       |
+| value        | 允许的 HTTP 标头值。 指定了多个值元素时，如果任何一个值匹配，则可认为检查成功。 | 否       |
 
 ### <a name="attributes"></a>属性
 
@@ -213,7 +213,7 @@ ms.locfileid: "58663139"
 
 ### <a name="example"></a>示例
 
-在以下示例中，该策略仅允许从单个 IP 地址或指定范围的 IP 地址的传入请求
+在下面的示例中，策略仅允许来自指定的单一 IP 地址或 IP 地址范围的请求
 
 ```xml
 <ip-filter action="allow">
@@ -467,7 +467,7 @@ ms.locfileid: "58663139"
 
 #### <a name="authorize-access-to-operations-based-on-token-claims"></a>根据令牌声明授予操作访问权限
 
-此示例演示如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT)授予操作访问权限策略根据令牌声明值。
+以下示例演示了如何使用[验证 JWT](api-management-access-restriction-policies.md#ValidateJWT) 策略根据令牌声明值授予操作访问权限。
 
 ```xml
 <validate-jwt header-name="Authorization" require-scheme="Bearer" output-token-variable-name="jwt">
@@ -542,7 +542,7 @@ ms.locfileid: "58663139"
 | require-signed-tokens           | 布尔值。 指定令牌是否需要签名。                                                                                                                                                                                                                                                                                                                                                                                           | 否                                                                               | true                                                                              |
 | 分隔符                       | 字符串。 指定要用于从多值声明中提取一组值的分隔符（例如 ","）。                                                                                                                                                                                                                                                                                                                                          | 否                                                                               | 不适用                                                                               |
 | url                             | Open ID 配置终结点 URL，可以从其获取 Open ID 配置元数据。 响应应符合以下 URL 中定义的规范：`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`。 对于 Azure Active Directory，请使用以下 URL：`https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration`，代之以目录租户名称，例如 `contoso.onmicrosoft.com`。 | 是                                                                              | 不适用                                                                               |
-output-token-variable-name|字符串。 将接收令牌的值作为类型的对象的上下文变量的名称[ `Jwt` ](api-management-policy-expressions.md)令牌验证成功时|否|不适用
+output-token-variable-name|字符串。 成功进行令牌验证后，将作为 [`Jwt`](api-management-policy-expressions.md) 类型的对象接收令牌值的上下文变量的名称|否|不适用
 
 ### <a name="usage"></a>使用情况
 

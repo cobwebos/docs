@@ -13,11 +13,11 @@ ms.topic: article
 ms.date: 01/04/2019
 ms.author: jowargo
 ms.openlocfilehash: 5e08b72c93734c9fc693e342397bb6cffaa36f8b
-ms.sourcegitcommit: 81fa781f907405c215073c4e0441f9952fe80fe5
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/25/2019
-ms.locfileid: "58401805"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60871427"
 ---
 # <a name="azure-powershell-samples-for-azure-notification-hubs"></a>适用于 Azure 通知中心的 Azure PowerShell 示例
 

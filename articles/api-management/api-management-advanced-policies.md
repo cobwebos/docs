@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
 ms.openlocfilehash: 43cbeea554f43e4db7d5440af83a9b414741d2f6
-ms.sourcegitcommit: 563f8240f045620b13f9a9a3ebfe0ff10d6787a2
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/01/2019
-ms.locfileid: "58756628"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60795881"
 ---
 # <a name="api-management-advanced-policies"></a>API 管理高级策略
 
@@ -164,7 +164,7 @@ ms.locfileid: "58756628"
 
 #### <a name="example"></a>示例
 
-以下 API 级策略将转发到后端服务，超时间隔设置为 60 秒的所有 API 请求。
+以下 API 级策略将所有 API 请求都转发到后端服务，超时间隔设置为 60 秒。
 
 ```xml
 <!-- api level -->
@@ -253,9 +253,9 @@ ms.locfileid: "58756628"
 
 | 特性                               | 描述                                                                                                      | 需要 | 默认     |
 | --------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------- |
-| timeout="整数"                       | 以秒为单位为 HTTP 响应标头返回的后端服务的超时错误之前等待的时间量，将引发。 最小值为 0 秒。 大于 240 秒可能不是遵守作为底层网络基础结构的值可以在此时间后删除空闲连接。 | 否       | 无 |
+| timeout="整数"                       | 在引发超时错误之前，等待后端服务返回 HTTP 响应标头的时间量（秒）。 最小值为 0 秒。 大于 240 秒的值可能不会被遵守，因为底层网络基础设施在此时间后可能会丢弃闲置的连接。 | 否       | 无 |
 | follow-redirects="true &#124; false"    | 指定是由网关执行从后端服务的重定向，还是将重定向返回到调用方。      | 否       | false       |
-| buffer-request-body="true &#124; false" | 当设置为"true"的请求进行缓冲处理，将上重复使用[重试](api-management-advanced-policies.md#Retry)。 | 否       | false       |
+| buffer-request-body="true &#124; false" | 设置为“true”时，请求将被缓冲，并将在[重试](api-management-advanced-policies.md#Retry)时重新使用。 | 否       | false       |
 
 ### <a name="usage"></a>使用情况
 

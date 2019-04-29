@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: 9484cf0f549db94be8f1ac2363addca952a3cff3
-ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/05/2018
-ms.locfileid: "48805790"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61096057"
 ---
 <a name="retrieve-a-specific-offer"></a>检索特定产品/服务
 =========================
@@ -51,7 +51,7 @@ ms.locfileid: "48805790"
 | offerId     | 唯一标识产品/服务的 Guid。                                                 | String        |
 | 版本     | 所检索的产品/服务的版本。 默认情况下，将检索最新的产品/服务版本。 | Integer       |
 | slotId      | 要从中检索产品/服务的槽，可以是以下值之一：      <br/>  - `Draft`（默认值）检索当前处于草稿状态的产品/服务版本。  <br/>  -  `Preview` 检索当前处于预览状态的产品/服务版本。     <br/>  -  `Production` 检索当前处于生产状态的产品/服务版本。          |      枚举 |
-| api-version | API 的最新版本                                                                    | 日期          |
+| api-version | API 的最新版本                                                                    | date          |
 |  |  |  |
 
 

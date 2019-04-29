@@ -14,11 +14,11 @@ ms.date: 03/10/2019
 ms.author: cephalin;byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: df874ab77c88f05b048b1f9d10873943b7bebf36
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57884381"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60765423"
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>为 Azure 应用服务配置部署凭据
 [Azure 应用服务](https://go.microsoft.com/fwlink/?LinkId=529714)支持两种类型的凭据，这些凭据适用于[本地 GIT 部署](deploy-local-git.md)和 [FTP/S 部署](deploy-ftp.md)。 这些凭据不是与 Azure Active Directory 凭据相同。
@@ -56,9 +56,9 @@ ms.locfileid: "57884381"
 
 ## <a name="use-user-level-credentials-with-ftpftps"></a>将用户级凭据用于 FTP/FTPS
 
-向 FTP/FTPS 终结点采用以下格式使用用户级凭据 requirers 用户名进行身份验证： `<app-name>\<user-name>`
+使用用户级凭据向 FTP/FTPS 终结点进行身份验证时需要使用以下格式的用户名：`<app-name>\<user-name>`
 
-由于用户级凭据链接到用户，并不特定资源，则用户名必须按以下格式将定向到正确的应用程序终结点的登录操作。
+由于用户级凭据链接到用户而不是特定资源，因此用户名必须采用此格式才能将登录操作定向到正确的应用终结点。
 
 ## <a name="appscope"></a>获取和重置应用级凭据
 获取应用级凭据：

@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/26/2019
 ms.author: monhaber
 ms.openlocfilehash: c4b2ed1269ef669def2b6f2036d34a40fb181c5d
-ms.sourcegitcommit: 6da4959d3a1ffcd8a781b709578668471ec6bf1b
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/27/2019
-ms.locfileid: "58517974"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60910374"
 ---
 # <a name="adaptive-application-controls-in-azure-security-center"></a>Azure 安全中心的自适应应用程序控制
 了解如何通过本演练在 Azure 安全中心配置应用程序控制。
@@ -43,7 +43,7 @@ ms.locfileid: "58517974"
 1. 打开“安全中心”仪表板。
 2. 在左窗格的“高级云防御”下选择“自适应应用程序控制”。
 
-    ![国防](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
+    ![防御](./media/security-center-adaptive-application/security-center-adaptive-application-fig1-new.png)
 
 此时会显示“自适应应用程序控件”页。
 
@@ -63,7 +63,7 @@ ms.locfileid: "58517974"
 ### <a name="configure-a-new-application-control-policy"></a>配置新的应用程序控制策略
 1. 单击“已建议”选项卡会出现一个列表，其中列出了具有应用程序控制建议的组：
 
-   ![推荐](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
+   ![建议](./media/security-center-adaptive-application/security-center-adaptive-application-fig3.png)
 
    此列表包括：
 
@@ -101,7 +101,7 @@ ms.locfileid: "58517974"
 
 1. 若要编辑和监视使用应用程序允许列表策略配置的组，请返回到“自适应应用程序控制”页，在“VM 组”下选择“已配置”：
 
-   ![个组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
+   ![组](./media/security-center-adaptive-application/security-center-adaptive-application-fig5.png)
 
    此列表包括：
 

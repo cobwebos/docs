@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/24/2017
 ms.author: alkohli
-ms.openlocfilehash: af202cf652300ee7897eb2dede33f38058fc2837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: e984531feced2d61332e4c399848c12cd245a34a
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23110855"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60870700"
 ---
 # <a name="storsimple-virtual-array-update-06-release-notes"></a>StorSimple Virtual Array 更新 0.6 发行说明
 
@@ -52,17 +52,17 @@ ms.locfileid: "23110855"
 
 下表提供了此版本中所修复问题的摘要。
 
-| 否。 | 功能 | 问题 |
+| 不。 | Feature | 问题 |
 | --- | --- | --- |
-| 1 |“安全”| 此版本包含重要的 Windows 安全更新。 建议立即安装此更新。|
-| #N/A |还原| 还原过程中存在阻止还原工作完成的争用条件。 Bug 修补程序解决了此争用条件。|
+| 1 |安全| 此版本包含重要的 Windows 安全更新。 建议立即安装此更新。|
+| 2 |还原| 还原过程中存在阻止还原工作完成的争用条件。 Bug 修补程序解决了此争用条件。|
 
 
 ## <a name="known-issues-in-the-update-06"></a>更新 0.6 中的已知问题
 
 下表提供了 StorSimple Virtual Array 的已知问题的摘要，包括早期版本中发行说明的问题。
 
-| 否。 | 功能 | 问题 | 解决方法/备注 |
+| 不。 | Feature | 问题 | 解决方法/备注 |
 | --- | --- | --- | --- |
 | **1.** |更新 |无法将预览版中所创建的虚拟设备更新为受支持的正式版本。 |必须使用灾难恢复 (DR) 工作流将这些虚拟设备故障转移为正式版本。 |
 | **2.** |预配的数据磁盘 |在预配指定大小的数据磁盘，并创建相应的 StorSimple 虚拟设备后，不能立即扩展或收缩数据磁盘。 尝试进行这些操作将导致该设备本地层中的所有数据丢失。 | |
@@ -80,7 +80,7 @@ ms.locfileid: "23110855"
 | **14.** |文件服务器 |如果文件夹中的文件具有与其关联的备用数据流 (ADS)，则不会通过灾难恢复、克隆和项目级恢复对该 ADS 进行备份或还原。 | |
 | **15.** |文件服务器 |不支持符号链接。 | |
 | **16.** |文件服务器 |将受 Windows 加密文件系统 (EFS) 保护的文件复制或存储到 StorSimple 虚拟阵列文件服务器时会导致不受支持的配置。  | |
-| 17. |更新 |如果尝试通过本地 UI 安装修补程序时出现错误代码：2359302（十六进制 0x240006），则表示设备上已安装有该修补程序。   | |
+| 17. |更新 |如果您看到错误代码：2359302 （十六进制 0x240006） 时尝试进行安装的修补程序通过本地 UI，则表示在设备上已安装的修补程序。   | |
 
 ## <a name="next-step"></a>后续步骤
 在 StorSimple Virtual Array 上[安装更新 0.6](storsimple-virtual-array-install-update-06.md)。

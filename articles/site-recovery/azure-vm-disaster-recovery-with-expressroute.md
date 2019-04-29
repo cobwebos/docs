@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: mayg
 ms.openlocfilehash: 90388d570d027aea3c897f7306a1714fd7e847b3
-ms.sourcegitcommit: fec96500757e55e7716892ddff9a187f61ae81f7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/16/2019
-ms.locfileid: "59618072"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60772357"
 ---
 # <a name="integrate-azure-expressroute-with-disaster-recovery-for-azure-vms"></a>将 Azure ExpressRoute 与 Azure VM 的灾难恢复相集成
 
@@ -106,10 +106,10 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 **Direction** | **设置** | **State**
 --- | --- | ---
-分支到中心 | 允许虚拟网络地址 | 已启用
-分支到中心 | 允许转发流量 | 已启用
+分支到中心 | 允许虚拟网络地址 | Enabled
+分支到中心 | 允许转发流量 | Enabled
 分支到中心 | 允许网关传输 | 已禁用
-分支到中心 | 使用删除网关 | 已启用
+分支到中心 | 使用删除网关 | Enabled
 
  ![分支到中心对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/spoke-to-hub-peering-configuration.png)
 
@@ -117,9 +117,9 @@ Site Recovery 通过将 Azure VM 数据复制到 Azure 来实现 Azure VM 的灾
 
 **Direction** | **设置** | **State**
 --- | --- | ---
-中心到分支 | 允许虚拟网络地址 | 已启用
-中心到分支 | 允许转发流量 | 已启用
-中心到分支 | 允许网关传输 | 已启用
+中心到分支 | 允许虚拟网络地址 | Enabled
+中心到分支 | 允许转发流量 | Enabled
+中心到分支 | 允许网关传输 | Enabled
 中心到分支 | 使用删除网关 | 已禁用
 
  ![中心到分支对等互连配置](./media/azure-vm-disaster-recovery-with-expressroute/hub-to-spoke-peering-configuration.png)

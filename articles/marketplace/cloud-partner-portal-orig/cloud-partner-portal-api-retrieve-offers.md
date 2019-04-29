@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/13/2018
 ms.author: pbutlerm
 ms.openlocfilehash: de9261548ec79e206b0db87caabc1fa4c9ad6771
-ms.sourcegitcommit: a8948ddcbaaa22bccbb6f187b20720eba7a17edc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/21/2019
-ms.locfileid: "56591544"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61094490"
 ---
 <a name="retrieve-offers"></a>检索产品/服务
 ===============
@@ -35,7 +35,7 @@ ms.locfileid: "56591544"
 | **名称**         |  **说明**                         |  **数据类型** |
 | -------------    |  ------------------------------------    |  -----------   |
 |  publisherId     | 发布者标识符，例如 `contoso` |   String    |
-|  api-version     | API 的最新版本                    |    日期        |
+|  api-version     | API 的最新版本                    |    date        |
 |  |  |
 
 

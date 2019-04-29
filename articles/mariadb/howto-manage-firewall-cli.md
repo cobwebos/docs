@@ -8,11 +8,11 @@ ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 04/09/2019
 ms.openlocfilehash: 562987b953f0a8a20a917e208f43557bd768c0a0
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59793211"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61038614"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-cli"></a>使用 Azure CLI 创建和管理 Azure Database for MariaDB 防火墙规则
 服务器级防火墙规则可以用于管理访问权限对 Azure Database for MariaDB 服务器从特定 IP 地址或某个范围内的 IP 地址。 使用便捷的 Azure CLI 命令，可创建、更新、删除、列出和显示防火墙规则，用于管理服务器。 MariaDB 防火墙 Azure 数据库的概述，请参阅[Azure Database for MariaDB 服务器防火墙规则](./concepts-firewall-rules.md)。

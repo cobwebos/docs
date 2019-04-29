@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 11/20/2018
 ms.author: rimman
 ms.openlocfilehash: 3bb39fe99e612fb19f12fd049ebb8f600e48373e
-ms.sourcegitcommit: 698a3d3c7e0cc48f784a7e8f081928888712f34b
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/31/2019
-ms.locfileid: "55457864"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60930211"
 ---
 # <a name="optimize-development-and-testing-cost-in-azure-cosmos-db"></a>在 Azure Cosmos DB 中优化开发和测试成本
 
