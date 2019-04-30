@@ -9,11 +9,11 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: d28244d75da540948093c775ffc525a80e362526
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59286841"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478954"
 ---
 可以使用 FedEx、UPS 或 DHL 将包裹寄送到 Azure 数据中心。 如果你想要使用非 FedEx/DHL 快递商，请联系 Azure 数据框操作团队 `adbops@microsoft.com`
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 92036cebf0541f9e9928acf1a9c32db0037bde48
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888572"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60818792"
 ---
 #### <a name="to-add-or-remove-a-volume"></a>添加或删除卷
 

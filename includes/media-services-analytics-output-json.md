@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: fa758779501c8a11d98f8cacb15a3cc76e9d38ae
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/20/2018
-ms.locfileid: "52269014"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61217143"
 ---
 作业将生成一个 JSON 输出文件，其中包含有关检测到的和跟踪的面部的元数据。 元数据包括指示面部位置的坐标，以及指示正在跟踪该人员的面部 ID 编号。 在正面面部长时间于帧中消失或重叠的情况下，面部 ID 编号很容易重置，导致某些人员被分配多个 ID。
 
@@ -17,7 +17,7 @@ ms.locfileid: "52269014"
 
 ### <a name="root-json-elements"></a>根 JSON 元素
 
-| 元素 | Description |
+| 元素 | 描述 |
 | --- | --- |
 | 版本 |这是指视频 API 的版本。 |
 | 时间刻度 |视频每秒的“刻度”数。 |
@@ -28,7 +28,7 @@ ms.locfileid: "52269014"
 
 ### <a name="fragments-json-elements"></a>片段 JSON 元素
 
-|元素|Description|
+|元素|描述|
 |---|---|
 | start |第一个事件的开始时间（以“刻度”为单位）。 |
 | duration |片段的长度（以“刻度”为单位）。 |

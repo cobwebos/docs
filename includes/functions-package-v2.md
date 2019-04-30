@@ -6,15 +6,16 @@ author: ggailey777
 manager: jeconnoc
 ms.service: functions
 ms.topic: include
-ms.date: 09/04/2018
-ms.author: glenga
+origin.date: 09/04/2018
+ms.date: 03/25/2019
+ms.author: v-junlch
 ms.custom: include file
 ms.openlocfilehash: 4d03894ebc43cc4e76b73bd30eb6ef68bf6a71e6
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
-ms.translationtype: MT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58115253"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61342845"
 ---
 下表说明了如何在每个开发环境中添加对此绑定的支持。
 
@@ -25,3 +26,4 @@ ms.locfileid: "58115253"
 |门户开发| 添加输出绑定时安装    |
 
 若要了解如何更新门户中的现有绑定扩展而不必重新发布函数应用项目，请参阅[更新扩展](../articles/azure-functions/install-update-binding-extensions-manual.md)。
+

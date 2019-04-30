@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: blueprints
 manager: carmonm
 ms.custom: seodec18
-ms.openlocfilehash: 9b5b151c62c4294563f704dc9a0cf7daeaca874f
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: MT
+ms.openlocfilehash: ac7b662bc9ef4f3ae675c4cbde18e159383d3d8e
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59279969"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63767018"
 ---
 # <a name="creating-dynamic-blueprints-through-parameters"></a>通过参数创建动态蓝图
 
@@ -169,7 +169,7 @@ ms.locfileid: "59279969"
 
 ### <a name="dynamic-parameters"></a>动态参数
 
-与静态参数相对的是“动态参数”。 此参数未在蓝图中定义，而是在每次分配蓝图期间定义的。 在资源组示例中，使用**动态参数**对资源组名称有意义。 每次分配蓝图时，它将提供不同的名称。
+与静态参数相对的是“动态参数”。 此参数未在蓝图中定义，而是在每次分配蓝图期间定义的。 在资源组示例中，使用**动态参数**对资源组名称有意义。 每次分配蓝图时，它将提供不同的名称。 蓝图函数的列表，请参阅[蓝图函数](../reference/blueprint-functions.md)引用。
 
 #### <a name="setting-dynamic-parameters-in-the-portal"></a>在门户中设置动态参数
 
@@ -185,9 +185,7 @@ ms.locfileid: "59279969"
 
 #### <a name="setting-dynamic-parameters-from-rest-api"></a>从 REST API 设置动态参数
 
-在分配期间设置**动态参数**是通过直接输入值完成的。
-并不使用函数（如 `parameters()`），提供的值是适当的字符串。
-资源组的项目是使用“模板名称”、**name** 和 **location** 属性定义的。 包含的项目的其他所有参数在 **parameters** 下使用 **\<名称\>** 和**值**键对进行定义。 如果为分配期间未提供的动态参数配置了蓝图，则分配将会失败。
+在分配期间设置**动态参数**是通过直接输入值完成的。 而不是使用一个函数，如[parameters()](../reference/blueprint-functions.md#parameters)，提供的值是一个合适的字符串。 资源组的项目是使用“模板名称”、**name** 和 **location** 属性定义的。 包含的项目的其他所有参数在 **parameters** 下使用 **\<名称\>** 和**值**键对进行定义。 如果为分配期间未提供的动态参数配置了蓝图，则分配将会失败。
 
 - REST API URI
 
@@ -240,6 +238,7 @@ ms.locfileid: "59279969"
 
 ## <a name="next-steps"></a>后续步骤
 
+- 请参阅的列表[蓝图函数](../reference/blueprint-functions.md)。
 - 了解[蓝图生命周期](lifecycle.md)。
 - 了解如何自定义[蓝图排序顺序](sequencing-order.md)。
 - 了解如何利用[蓝图资源锁定](resource-locking.md)。

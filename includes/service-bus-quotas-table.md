@@ -9,11 +9,11 @@ ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 7add8c10fd3224b9c287ea4cc672191157f56a09
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58124368"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60861883"
 ---
 下表列出了特定于 Azure 服务总线消息传送配额信息。 有关定价的信息和其他服务总线配额，请参阅[服务总线定价](https://azure.microsoft.com/pricing/details/service-bus/)。
 
@@ -22,7 +22,7 @@ ms.locfileid: "58124368"
 | 每个 Azure 订阅的基本或标准命名空间的最大数目 |命名空间 |通过 Azure 门户将拒绝更多基本或标准命名空间的后续请求。 |100|
 | 每个 Azure 订阅的高级命名空间的最大数目 |命名空间 |更多高级命名空间的后续请求会被门户拒绝。 |25 |
 | 队列或主题大小 |实体 |创建队列或主题时定义。 <br/><br/> 将拒绝后续的传入消息，且调用代码会收到异常。 |1、2、3、4 GB 或 5 GB。<br /><br />在高级 SKU，并使用标准 SKU[分区](/azure/service-bus-messaging/service-bus-partitioning)启用，最大队列或主题大小是 80 GB。 |
-| 命名空间上的并发连接数 |命名空间 |将拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接。 |NetMessaging：1,000.<br /><br />AMQP：5,000. |
+| 命名空间上的并发连接数 |命名空间 |系统会拒绝后续的附加连接请求，且调用代码会收到异常。 REST 操作不计入并发 TCP 连接。 |NetMessaging：1,000.<br /><br />AMQP：5,000. |
 | 并发接收队列、 主题或订阅实体上的请求数 |实体 |后续的接收请求被拒绝，并且调用代码会收到异常。 此配额适用于一个主题上所有订阅的并发接收操作总数。 |5,000 |
 | 每个命名空间的队列或主题的数量 |命名空间 |系统将拒绝后续的在命名空间中创建新主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API 调用的，调用代码将收到异常。 |基本或标准层为 1000。 主题和队列的命名空间中的总数必须小于或等于 1,000。 <br/><br/>为高级层中，每个消息传送单元 (MU) 为 1000。 最大限制为 4,000。 |
 | 数[分区队列或主题](/azure/service-bus-messaging/service-bus-partitioning)每个命名空间 |命名空间 |系统将拒绝后续的在命名空间中创建新分区主题或队列的请求。 因此，如果是通过 [Azure 门户][Azure portal]配置的，将生成错误消息。 如果是通过管理 API，异常调用**QuotaExceededException**调用代码会收到。 |基本和标准层：100。<br/><br/>中不受支持分区的实体[高级](../articles/service-bus-messaging/service-bus-premium-messaging.md)层。<br/><br />每个分区的队列或主题计入每个命名空间的 1,000 个实体的配额。 |

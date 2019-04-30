@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: d579e7a4fd83c1a0ce335e0b2357dcbafb217398
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226436"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097641"
 ---
 在此步骤中，使用同一网络上运行的客户端应用程序测试可用性组侦听器。
 
@@ -18,7 +19,7 @@ ms.locfileid: "50226436"
 * 对于与侦听器的客户端连接，其源计算机所驻留的云服务必须不同于托管 AlwaysOn 可用性副本的云服务。
 * 如果 Always On 副本位于不同子网中，客户端必须在连接字符串中指定 *MultisubnetFailover=True*。 此条件会导致尝试并行连接到各个子网中的副本。 此方案包括跨区域 AlwaysOn 可用性组部署。
 
-例如，从同一个 Azure 虚拟网络的一个虚拟机（而不是托管副本的虚拟机）连接到侦听器。 完成此测试一个简单的方法是尝试将 SQL Server Management Studio 连接到可用性组侦听器。 另一种简单方法是运行 [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx)，如下所示：
+例如，从同一个 Azure 虚拟网络的一个虚拟机（而不是托管副本的虚拟机）连接到侦听器。 完成此测试一个简单的方法是尝试将 SQL Server Management Studio 连接到可用性组侦听程序。 另一种简单方法是运行 [SQLCMD.exe](https://technet.microsoft.com/library/ms162773.aspx)，如下所示：
 
     sqlcmd -S "<ListenerName>,<EndpointPort>" -d "<DatabaseName>" -Q "select @@servername, db_name()" -l 15
 
@@ -29,3 +30,4 @@ ms.locfileid: "50226436"
 
 在测试侦听器时，请务必对可用性组进行故障转移，以确保客户端可以在故障转移之间连接到侦听器。
 
+<!-- Update_Description: update meta properties -->

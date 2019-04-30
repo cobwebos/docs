@@ -5,21 +5,21 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: ba2985b8b6c92e299e8ab378263c9b4c062561d5
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889208"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488994"
 ---
 #### <a name="to-mount-initialize-and-format-a-volume"></a>装载、初始化和格式化卷
 1. 启动 Microsoft iSCSI 发起程序。
 2. 在“iSCSI 发起程序属性”窗口中的“发现”选项卡上，单击“发现门户”。
 3. 在“发现目标门户”对话框中，提供支持 iSCSI 网络接口的 IP 地址，并单击“确定”。 
-4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”。 设备状态应显示为 **非活动**。
-5. 选择目标设备，并单击“ **连接**”。 设备连接后，状态应更改为 **已连接**。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft iSCSI 发起程序][1]）。
-6. 在 Windows 主机上，按 Windows 徽标键 + X，并单击“ **运行**”。 
-7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中会显示在主机上的卷。
-8. 在“ **磁盘管理** ”窗口中，已装载的卷会显示在以下所示的插图中。 右键单击“发现的卷”（单击磁盘名称），并单击“ **联机**”。
+4. 在“iSCSI 发起程序属性”窗口中的“目标”选项卡上，找到“已发现目标”。 设备状态应显示为“非活动”。
+5. 选择目标设备，并单击“ **连接**”。 设备连接后，状态应更改为“已连接”。 （有关使用 Microsoft iSCSI 发起程序的详细信息，请参阅[安装和配置 Microsoft iSCSI 发起程序][1]）。
+6. 在 Windows 主机上，按 Windows 徽标键 + X，然后单击“运行”。 
+7. 在“运行”对话框中，键入 **Diskmgmt.msc**。 单击“确定”，将出现“磁盘管理”对话框。 右窗格中将显示主机上的卷。
+8. 在“磁盘管理”窗口中，将显示已装载的卷，如以下插图所示。 右键单击发现的卷（单击磁盘名称），然后单击“联机”。
    
      ![初始化格式化卷](./media/storsimple-8000-mount-initialize-format-volume/step7initializeformatvolume.png) 
 9. 再次右键单击“发现的卷”（单击磁盘名称），并单击“ **初始化**”。

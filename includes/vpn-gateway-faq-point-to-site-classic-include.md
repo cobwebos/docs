@@ -2,18 +2,19 @@
 title: include 文件
 description: include 文件
 services: vpn-gateway
-author: cherylmc
+author: WenJason
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 12/06/2018
-ms.author: cherylmc
+origin.date: 12/06/2018
+ms.date: 12/24/2018
+ms.author: v-jay
 ms.custom: include file
 ms.openlocfilehash: 0c0ad6ea5a687d066c78533b45a7f531561661bf
-ms.sourcegitcommit: e37fa6e4eb6dbf8d60178c877d135a63ac449076
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/13/2018
-ms.locfileid: "53323623"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60845384"
 ---
 此常见问题解答适用于使用经典部署模型的 P2S 连接。
 
@@ -31,7 +32,7 @@ ms.locfileid: "53323623"
 
 ### <a name="can-i-use-any-software-vpn-client-that-supports-sstp-for-point-to-site"></a>是否可以使用支持将 SSTP 用于点到站点连接的任何软件 VPN 客户端？
 
-否。 仅支持所列出的 Windows 操作系统版本。
+不。 仅支持所列出的 Windows 操作系统版本。
 
 ### <a name="how-many-vpn-client-endpoints-can-exist-in-my-point-to-site-configuration"></a>在我的点到站点配置中，可以存在多少 VPN 客户端终结点？
 
@@ -39,11 +40,11 @@ ms.locfileid: "53323623"
 
 ### <a name="can-i-use-my-own-internal-pki-root-ca-for-point-to-site-connectivity"></a>能否将我自己的内部 PKI 根 CA 用于点到站点连接？
 
-是。 以前只可使用自签名根证书。 现在还可以上传最多 20 个根证书。
+是的。 以前只可使用自签名根证书。 现在还可以上传最多 20 个根证书。
 
 ### <a name="can-i-traverse-proxies-and-firewalls-by-using-point-to-site"></a>是否可以使用点到站点连接穿越代理和防火墙？
 
-是。 我们使用安全套接字隧道协议 (SSTP) 作为隧道来穿越防火墙。 此隧道显示为 HTTPS 连接。
+可以。 我们使用安全套接字隧道协议 (SSTP) 作为隧道来穿越防火墙。 此隧道显示为 HTTPS 连接。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>如果重新启动进行过点到站点配置的客户端计算机，是否会自动重新连接 VPN？
 
@@ -51,15 +52,15 @@ ms.locfileid: "53323623"
 
 ### <a name="does-point-to-site-support-auto-reconnect-and-ddns-on-the-vpn-clients"></a>点到站点在 VPN 客户端上是否支持自动重新连接和 DDNS？
 
-否。 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
+不。 点到站点 VPN 中当前不支持自动重新连接和 DDNS。
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-for-the-same-virtual-network"></a>同一虚拟网络中是否可以同时存在站点到站点和点到站点配置？
 
-是。 如果网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 我们不支持将点到站点连接用于静态路由 VPN 网关，也不支持将其用于使用 **-VpnType PolicyBased** cmdlet 的网关。
+可以。 如果网关使用 RouteBased VPN 类型，这两种解决方案都可行。 对于经典部署模型，需要一个动态网关。 我们不支持将点到站点连接用于静态路由 VPN 网关，也不支持将其用于使用 **-VpnType PolicyBased** cmdlet 的网关。
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>能否将点到站点客户端配置为同时连接到多个虚拟网络？
 
-是的。 但是，虚拟网络的 IP 前缀不得重叠，并且点到站点地址空间在虚拟网络之间不得重叠。
+可以。 但是，虚拟网络的 IP 前缀不得重叠，并且点到站点地址空间在虚拟网络之间不得重叠。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>预计通过站点到站点连接或点到站点连接的吞吐量有多少？
 

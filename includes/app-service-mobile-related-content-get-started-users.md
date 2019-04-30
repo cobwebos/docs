@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 08/23/2018
 ms.author: crdun
 ms.openlocfilehash: 942c165a53ad07c0d359854fc737c195c6f2d50a
-ms.sourcegitcommit: 549070d281bb2b5bf282bc7d46f6feab337ef248
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/21/2018
-ms.locfileid: "53736904"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60850918"
 ---
 * [应用服务身份验证/授权概述](../articles/app-service/overview-authentication-authorization.md)
 * 向以下移动应用添加身份验证：[iOS][ios-get-started-users]、[Android][android-get-started-users]、[Windows Universal][windows-get-started-users]、[Xamarin.Android][xamarin-android-get-started-users]、[Xamarin.iOS][xamarin-ios-get-started-users]、[Xamarin.Forms][xamarin-forms-get-started-users]、[Cordova][cordova-get-started-users]  

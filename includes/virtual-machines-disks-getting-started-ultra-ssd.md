@@ -9,11 +9,11 @@ ms.date: 09/24/2018
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 3b596e5bad8202d88ea06c7eee114bec1063a35f
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58052065"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61075673"
 ---
 # <a name="enabling-azure-ultra-ssds"></a>启用 Azure 超高 Ssd
 
@@ -29,7 +29,7 @@ CLI：`az vm list-skus --resource-type disks --query “[?name==’UltraSSD_LRS�
 
 响应将类似于以下形式，其中的 X 表示要用于在美国东部 2 中进行部署的区域。 X 可能是1、2 或 3。
 
-|ResourceType  |名称  |位置  |区域  |限制  |功能  |值  |
+|ResourceType  |名称  |Location  |区域  |限制  |功能  |值  |
 |---------|---------|---------|---------|---------|---------|---------|
 |disks     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 

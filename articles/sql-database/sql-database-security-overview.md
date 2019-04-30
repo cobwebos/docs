@@ -11,13 +11,13 @@ author: aliceku
 ms.author: aliceku
 ms.reviewer: vanto, carlrab, emlisa
 manager: craigg
-ms.date: 04/11/2019
-ms.openlocfilehash: cb4ff203a69e04aeaff6d446d6ce3719f4158305
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
+ms.date: 04/26/2019
+ms.openlocfilehash: f466a1c3fd0b2d527fc4ab407d096f6bb9b7d8b9
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60001076"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766907"
 ---
 # <a name="an-overview-of-azure-sql-database-security-capabilities"></a>Azure SQL 数据库安全功能概述
 
@@ -66,19 +66,17 @@ IP 防火墙规则基于每个请求的起始 IP 地址授予对数据库的访�
 > [!IMPORTANT]
 > 管理 Azure 中的数据库和服务器由门户用户帐户的角色分配控制。 有关本文的详细信息，请参阅 [Azure 门户中基于角色的访问控制](../role-based-access-control/overview.md)。 使用防火墙规则控制访问权限不适用于托管实例。 有关所需网络配置的详细信息，请参阅以下有关[连接到托管实例](sql-database-managed-instance-connect-app.md)的文章。
 
-授权是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。 权限控制通过将用户帐户添加到定义数据库级权限的[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)或授予用户特定的[对象级权限](/sql/relational-databases/security/permissions-database-engine)来实现。 有关详细信息，请参阅[登录和用户](sql-database-manage-logins.md)
+## <a name="authorization"></a>授权
 
-最佳做法是，将用户添加到具有完成其作业功能所需的最低权限的角色中。 服务器管理帐户是 db_owner 角色的成员，该角色具有广泛权限，应谨慎授予用户。 通过 Azure SQL 数据库使用应用程序时，使用具有有限权限的[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)。 这可确保连接到数据库的应用程序具有应用程序所需的最低权限。
+授权是指在 Azure SQL 数据库中分配给用户的权限，并决定允许用户执行的操作。 通过添加到用户帐户控制权限[数据库角色](/sql/relational-databases/security/authentication-access/database-level-roles)以及将数据库级别权限分配到这些角色或通过授予用户某些[对象级权限](/sql/relational-databases/security/permissions-database-engine)。 有关详细信息，请参阅[登录和用户](sql-database-manage-logins.md)
+
+最佳做法是创建自定义角色时需要。 将用户添加到角色中，执行其工作职责所需的最低权限。 不要直接向用户分配权限。 服务器管理员帐户是具有广泛的权限，并且应仅授予少数用户的管理职责的内置 db_owner 角色的成员。 对于 Azure SQL 数据库应用程序，使用[EXECUTE AS](/sql/t-sql/statements/execute-as-clause-transact-sql)若要指定调用模块的执行上下文或使用[应用程序角色](/sql/relational-databases/security/authentication-access/application-roles)具有有限权限。 这种做法可确保连接到数据库的应用程序包含应用程序所需的最低权限。 遵循以下最佳做法也可以帮助职责的分离。
 
 ### <a name="row-level-security"></a>行级别安全性
 
-行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
+行级别安全性使客户能够根据执行查询的用户特征（例如，按组成员身份或执行上下文），控制对数据库表中的行的访问。 此外可以使用行级别安全性来实现自定义基于标签的安全概念。 有关详细信息，请参阅[行级别安全性](/sql/relational-databases/security/row-level-security)。
 
 ![azure-database-rls.png](media/sql-database-security-overview/azure-database-rls.png)
-
-  此身份验证方法使用用户名和密码。 
-
-有关 Azure SQL 数据库中的权限概述，请参阅[登录和用户](sql-database-manage-logins.md#permissions)
 
 ## <a name="threat-protection"></a>威胁防护
 

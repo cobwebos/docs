@@ -2,18 +2,18 @@
 title: include 文件
 description: include 文件
 services: storage
-author: luywang
+author: roygara
 ms.service: storage
 ms.topic: include
 ms.date: 06/05/2018
-ms.author: luywang
+ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: efa43d7faf9d048ff963a74d8c69618ee535654c
-ms.sourcegitcommit: 9aa9552c4ae8635e97bdec78fccbb989b1587548
+ms.openlocfilehash: c1b7785e5078fdd3fdc2fc3d407b8890f76cd558
+ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
 ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/20/2019
-ms.locfileid: "56443334"
+ms.lasthandoff: 04/24/2019
+ms.locfileid: "63766243"
 ---
 # <a name="backup-and-disaster-recovery-for-azure-iaas-disks"></a>Azure IaaS 磁盘的备份和灾难恢复
 
@@ -21,7 +21,7 @@ ms.locfileid: "56443334"
 
 首先介绍 Azure 平台内置的容错功能，此功能有助于预防本地故障的发生。 然后介绍内置功能未全面涵盖的灾难恢复方案。 此外，本文档演示了几个工作负荷方案示例，它们的备份和 DR 注意事项各不相同。 最后，介绍适用于 IaaS 磁盘 DR 的可行解决方案。
 
-## <a name="introduction"></a>介绍
+## <a name="introduction"></a>简介
 
 Azure 平台使用各种方法实现冗余和容错，以帮助客户避免本地硬件故障。 本地故障可能包括存储部分虚拟磁盘数据的 Azure 存储服务器计算机出现问题，或此服务器上的 SSD 或 HDD 发生故障。 此类隔离的硬件组件故障可能会在正常操作期间发生。
 

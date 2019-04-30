@@ -5,15 +5,16 @@ services: app-service
 author: ggailey777
 ms.service: app-service
 ms.topic: include
-ms.date: 02/19/2019
-ms.author: glenga
+origin.date: 02/19/2019
+ms.date: 03/18/2019
+ms.author: v-biyu
 ms.custom: include file
 ms.openlocfilehash: 97387e24d5b55c1438a69da1a1fd0a9bc1720e47
-ms.sourcegitcommit: e88188bc015525d5bead239ed562067d3fae9822
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/24/2019
-ms.locfileid: "56751193"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60832227"
 ---
 1. **在“解决方案资源管理器”** 中，右键单击该项目并选择“发布”。
 
