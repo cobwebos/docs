@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 7adee90365fa8112389348757e48f2ff8935bb56
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888954"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488538"
 ---
 #### <a name="to-get-the-iqn-of-a-windows-host"></a>获取 Windows 主机的 IQN
 1. 在 Windows 主机上启动 Microsoft iSCSI 发起程序。 依次单击“启动” > >“管理工具” > >“iSCSI 发起程序”。

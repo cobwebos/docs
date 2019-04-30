@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 11/25/2018
 ms.author: crdun
 ms.openlocfilehash: eded2d6a9f2c270a2b3ccca296277b0a016733fd
-ms.sourcegitcommit: c61c98a7a79d7bb9d301c654d0f01ac6f9bb9ce5
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/27/2018
-ms.locfileid: "52440008"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62119752"
 ---
 1. 在 Android Studio 中打开项目。
 
@@ -62,7 +62,7 @@ ms.locfileid: "52440008"
     此代码会创建一个用于处理 Google 身份验证过程的方法。 出现的对话框中会显示已经过身份验证的用户 ID。 只能在身份验证成功后继续操作。
 
     > [!NOTE]
-    > 如果使用的标识提供者不是 Google，请将传递给 **login** 方法的值更改为下列值之一：_MicrosoftAccount_、_Facebook_、_Twitter_ 或 _windowsazureactivedirectory_。
+    > 如果使用的标识提供者不是 Google，更改的值传递给**登录名**方法为以下值之一：_MicrosoftAccount_， _Facebook_， _Twitter_，或_windowsazureactivedirectory_。
 
 4. 在 **onCreate** 方法中，在实例化 `MobileServiceClient` 对象的代码后面添加以下代码行。
 

@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 48a3326dbe0e9eed4a5490e720248555586d189c
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889262"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488543"
 ---
 ### <a name="to-take-a-backup"></a>执行备份
 
@@ -31,7 +31,7 @@ ms.locfileid: "55889262"
 
     1. 选择备份类型。 要用于快速还原，请选择“本地”快照。 要用于数据复原，请选择“云”快照。
     2. 指定备份频率，以分钟、小时、天或周为单位。
-    3. 计划保留时间。 保留选择取决于备份频率。 例如，对于每日策略，以周为单位指定保留；对于每月策略，则以月为单位指定。
+    3. 计划保留时间。 保留期选项取决于备份频率。 例如，对于每日策略，以周为单位指定保留；对于每月策略，则以月为单位指定。
     4. 选择备份策略的开始时间和日期。
     5. 单击“确定”以创建备份策略。
 

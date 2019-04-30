@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
 ms.author: v-sharos
-ms.openlocfilehash: b97753e6f1b67e3c8d247281c5e5208033a56eca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
+ms.openlocfilehash: dc24ebd59fd977ef35766c304aec5824e2c7bb4c
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23111285"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62127172"
 ---
 # <a name="use-storsimple-snapshot-manager-to-manage-the-backup-catalog"></a>使用 StorSimple Snapshot Manager 管理备份目录
 
@@ -56,7 +56,7 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
 ## <a name="restore-a-volume"></a>还原卷
 使用以下过程从备份中还原卷。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 如果尚未进行操作，则创建一个卷和卷组，并删除该卷。 默认情况下，StorSimple Snapshot Manager 在允许删除卷之前会对其进行备份。 如果无意中删除卷或出于某种原因需要对数据进行恢复，则此预防措施可以避免数据丢失。 
 
 在创建预防性备份时，StorSimple Snapshot Manager 显示以下消息。
@@ -93,8 +93,8 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
    1. 在“名称”文本框中，键入克隆的卷名称。 此名称会在“**卷**”节点中显示。 
    2. （可选）选择“**驱动器**”，并从下拉列表中选择驱动器号。
    3. （可选） 选择“文件夹 (NTFS)”，键入文件夹路径或单击“浏览”并选择该文件夹的位置。 
-   4. 单击“创建” 。
-5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 将其初始化之后，该卷会在“**作用域**”窗格内的“**卷**”节点中列出。 如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。
+   4. 单击**创建**。
+5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 将其初始化之后，该卷会在“**作用域**”窗格内的“**卷**”节点中列出。  如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。
 
 ## <a name="delete-a-backup"></a>删除备份
 使用以下过程从备份目录中删除快照。 
@@ -112,7 +112,7 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
 ## <a name="recover-a-file"></a>恢复文件
 如果文件被意外从卷中删除，可以通过以下方法恢复文件：检索删除日期之前的快照，使用该快照创建克隆卷，并将该文件从克隆卷复制到原来的卷。
 
-#### <a name="prerequisites"></a>先决条件
+#### <a name="prerequisites"></a>必备组件
 在开始之前，请确保具有卷组的最新备份。 然后，删除存储在该卷组中一个卷上的某个文件。 最后，使用以下步骤从备份中还原已删除的文件。 
 
 #### <a name="to-recover-a-deleted-file"></a>恢复已删除的文件
@@ -126,10 +126,10 @@ StorSimple Snapshot Manager 的主要功能是允许以快照的形式创建 Sto
    1. 在“名称”文本框中，键入克隆的卷名称。 此名称会在“**卷**”节点中显示。 
    2. （可选）选择“**驱动器**”，并从下拉列表中选择驱动器号。 
    3. （可选） 选择“文件夹 (NTFS)”，键入文件夹路径或单击“浏览”并选择该文件夹的位置。 
-   4. 单击“创建” 。 
+   4. 单击**创建**。 
 5. 完成克隆过程后，必须初始化克隆的卷。 启动服务器管理器，并启动磁盘管理。 有关详细说明，请参阅[装载卷](storsimple-snapshot-manager-manage-volumes.md#mount-volumes)。 将其初始化之后，该卷会在“**作用域**”窗格内的“**卷**”节点中列出。 
    
-    如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。
+     如果看不到列出的卷，刷新卷列表（右键单击“**卷**”节点，并单击“**刷新**”）。
 6. 打开包含克隆卷的 NTFS 文件夹，展开“**卷**”节点，再打开克隆卷。 找到要恢复的文件，并将其复制到主卷。
 7. 还原文件之后，可以删除包含克隆卷的 NTFS 文件夹。
 

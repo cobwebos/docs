@@ -9,11 +9,11 @@ ms.date: 05/18/2018
 ms.author: cshoe
 ms.custom: include file
 ms.openlocfilehash: e6a0ded137162328fd446b65ddb4a15fa6f1db88
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36313874"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478711"
 ---
 ## <a name="deleting-personal-information"></a>删除个人信息
 
@@ -27,7 +27,7 @@ ms.locfileid: "36313874"
 - 街道地址
 - 城市
 - 邮政编码
-- 省/直辖市/自治区
+- 状态
 - 国家/地区/省/区域
 - 驱动器 ID
 - 承运商帐号

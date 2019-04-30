@@ -1,19 +1,20 @@
 ---
 title: include 文件
 description: include 文件
-author: alkohli
+author: WenJason
 services: storage
 ms.service: storage
 ms.topic: include
-ms.date: 07/17/2018
-ms.author: alkohli
+origin.date: 07/17/2018
+ms.date: 12/10/2018
+ms.author: v-jay
 ms.custom: include file
-ms.openlocfilehash: 94e9262d259bb2a4f46cc88c87d9c39137a84d2f
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
-ms.translationtype: HT
+ms.openlocfilehash: 5aa64671cddf2542972ac753c0132a5abebaebfb
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39117301"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61478956"
 ---
 寄送磁盘后，请返回到 Azure 门户中的“导入/导出”页面。 
 
