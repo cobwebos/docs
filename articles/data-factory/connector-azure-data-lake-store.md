@@ -38,7 +38,7 @@ ms.locfileid: "61001611"
 > [!IMPORTANT]
 > 如果使用自承载集成运行时复制数据，请配置企业防火墙以允许通过端口 443 到 `<ADLS account name>.azuredatalakestore.net` 和 `login.microsoftonline.com/<tenant>/oauth2/token` 的出站流量。 后者是 Azure 安全令牌服务，集成运行时需要与之通信以获取访问令牌。
 
-## <a name="get-started"></a>开始使用
+## <a name="get-started"></a>入门
 
 > [!TIP]
 > 有关使用 Azure Data Lake Store 连接器的演练，请参阅[将数据加载到 Azure Data Lake Store](load-azure-data-lake-store.md)。
@@ -76,11 +76,11 @@ Azure Data Lake Store 链接服务支持以下属性：
 >若要列出从根目录开始的文件夹，必须设置要**在根级别使用“执行”权限**授予的服务主体权限。 对于以下情况需要这样做：
 >- 使用**复制数据工具**创作复制管道。
 >- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。
->如果需考虑授予根级别的权限，则可以跳过测试连接和输入的路径手动在创作过程。 复制活动仍适用，只要通过复制文件的适当权限授予服务主体。
+>如果对于在根级别授予权限存在顾虑，可以在创作过程中跳过测试连接，然后手动输入路径。 只要针对要复制的文件为服务主体授予适当的权限，则仍可使用复制活动。
 
 支持以下属性：
 
-| 属性 | 说明 | 需要 |
+| 属性 | 说明 | 必选 |
 |:--- |:--- |:--- |
 | servicePrincipalId | 指定应用程序的客户端 ID。 | 是 |
 | servicePrincipalKey | 指定应用程序的密钥。 将此字段标记为 `SecureString` 以安全地将其存储在数据工厂中或[引用存储在 Azure Key Vault 中的机密](store-credentials-in-key-vault.md)。 | 是 |
@@ -114,23 +114,23 @@ Azure Data Lake Store 链接服务支持以下属性：
 
 ### <a name="managed-identity"></a>使用托管标识进行 Azure 资源身份验证
 
-可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 对于 Data Lake Store 身份验证，类似于使用服务主体，可以直接使用此托管的标识。 此指定工厂可通过此方法访问以及向/从 Data Lake Store 复制数据。
+可将数据工厂与代表此特定数据工厂的 [Azure 资源托管标识](data-factory-service-identity.md)相关联。 可以像使用自己的服务主体一样，直接使用此托管标识进行 Data Lake Store 身份验证。 此指定工厂可通过此方法访问以及向/从 Data Lake Store 复制数据。
 
 若要使用 Azure 资源的托管标识身份验证，请执行以下操作：
 
-1. [检索的数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)通过复制"服务标识应用程序 ID"与工厂一起生成的值。
-2. 为服务主体，遵循这些说明执行操作的相同方式向 Data Lake Store，授予托管的标识访问。
+1. 通过复制与工厂一起生成的“服务标识应用程序 ID”值，[检索数据工厂托管标识信息](data-factory-service-identity.md#retrieve-managed-identity)。
+2. 按照下面的说明向该托管标识授予对 Data Lake Store 的访问权限，所用方式与对服务主体使用的方式相同。
 
 >[!IMPORTANT]
-> 请确保授予数据工厂托管标识适当的权限在 Data Lake Store 中：
+> 确保在 Data Lake Store 中授予数据工厂托管标识适当的权限：
 >- **作为源**：在“数据资源管理器” > “访问权限”中，至少授予“读取 + 执行”权限以列出和复制文件夹和子文件夹中的文件。 或者，可以授予“读取”权限以复制单个文件。 对于递归，可以选择添加到“此文件夹和所有子文件夹”，并添加为“访问权限和默认权限项”。 对帐户级访问控制 (IAM) 没有要求。
 >- **作为接收器**：在“数据资源管理器” > “访问权限”中，至少授予“写入 + 执行”权限以在文件夹中创建子项。 对于递归，可以选择添加到“此文件夹和所有子文件夹”，并添加为“访问权限和默认权限项”。 如果使用 Azure 集成运行时复制（源和接收器都在云中），请在 IAM 中至少授予“读取者”角色，让数据工厂检测 Data Lake Store 的区域。 若要避免此 IAM 角色，请使用 Data Lake Store 的位置显式[创建 Azure 集成运行时](create-azure-integration-runtime.md#create-azure-ir)。 在 Data Lake Store 链接服务中按以下示例所示关联这些对象。
 
 >[!NOTE]
->向列表文件夹从根目录开始，你必须设置的权限被授予对托管标识**具有"执行"权限的根级别**。 对于以下情况需要这样做：
+>若要列出从根目录开始的文件夹，必须设置**在根级别使用“执行”权限**授予的托管标识权限。 对于以下情况需要这样做：
 >- 使用**复制数据工具**创作复制管道。
 >- 在创作期间使用**数据工厂 UI** 测试连接和浏览文件夹。
->如果需考虑授予根级别的权限，则可以跳过测试连接和输入的路径手动在创作过程。 复制活动仍适用，只要具有文件要复制的适当权限授予托管的标识。
+>如果对于在根级别授予权限存在顾虑，可以在创作过程中跳过测试连接，然后手动输入路径。 只要针对要复制的文件为托管标识授予适当的权限，则仍可使用复制活动。
 
 在 Azure 数据工厂中，除了链接服务中的常规 Data Lake Store 信息以外，不需要指定任何属性。
 
@@ -165,7 +165,7 @@ Azure Data Lake Store 链接服务支持以下属性：
 | fileName | 指定“folderPath”下的文件的“名称或通配符筛选器”。 如果没有为此属性指定任何值，则数据集会指向文件夹中的所有文件。 <br/><br/>对于筛选器，允许的通配符为：`*`（匹配零个或更多字符）和 `?`（匹配零个或单个字符）。<br/>- 示例 1：`"fileName": "*.csv"`<br/>- 示例 2：`"fileName": "???20180427.txt"`<br/>如果实际文件名内具有通配符或此转义符，请使用 `^` 进行转义。<br/><br/>如果没有为输出数据集指定 fileName，并且没有在活动接收器中指定 **preserveHierarchy**，则复制活动会自动生成采用以下模式的文件名：“*Data.[activity run id GUID].[GUID if FlattenHierarchy].[format if configured].[compression if configured]*”。 例如“Data.0a405f8a-93ff-4c6f-b3be-f69616f1df7a.txt.gz”。 如果使用表名称而不是查询从表格源进行复制，则名称模式为“[table name].[format].[compression if configured]”。 例如“MyTable.csv”。 |否 |
 | modifiedDatetimeStart | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
 | modifiedDatetimeEnd | 基于属性“上次修改时间”的文件筛选器。 如果文件的上次修改时间在 `modifiedDatetimeStart` 和 `modifiedDatetimeEnd` 之间的时间范围内，则将选中这些文件。 该时间应用于 UTC 时区，格式为“2018-12-01T05:00:00Z”。 <br/><br/> 属性可以为 NULL，这意味着不向数据集应用任何文件特性筛选器。  如果 `modifiedDatetimeStart` 具有日期/时间值，但 `modifiedDatetimeEnd` 为 NULL，则意味着将选中“上次修改时间”属性大于或等于该日期/时间值的文件。  如果 `modifiedDatetimeEnd` 具有日期/时间值，但 `modifiedDatetimeStart` 为 NULL，则意味着将选中“上次修改时间”属性小于该日期/时间值的文件。| 否 |
-| 格式 | 如果想要在基于文件的存储之间**按原样复制文件**（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>若要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
+| 格式 | 如果想要在基于文件的存储之间按原样复制文件（二进制副本），可以在输入和输出数据集定义中跳过格式节。<br/><br/>若要分析或生成具有特定格式的文件，以下是受支持的文件格式类型：TextFormat、JsonFormat、AvroFormat、OrcFormat、ParquetFormat。 请将格式中的“type”属性设置为上述值之一。 有关详细信息，请参阅[文本格式](supported-file-formats-and-compression-codecs.md#text-format)、[Json 格式](supported-file-formats-and-compression-codecs.md#json-format)、[Avro 格式](supported-file-formats-and-compression-codecs.md#avro-format)、[Orc 格式](supported-file-formats-and-compression-codecs.md#orc-format)和 [Parquet 格式](supported-file-formats-and-compression-codecs.md#parquet-format)部分。 |否（仅适用于二进制复制方案） |
 | compression | 指定数据的压缩类型和级别。 有关详细信息，请参阅[受支持的文件格式和压缩编解码器](supported-file-formats-and-compression-codecs.md#compression-support)。<br/>支持的类型包括：**GZip**、**Deflate**、**BZip2** 和 **ZipDeflate**。<br/>支持的级别为：“最佳”和“最快”。 |否 |
 
 
