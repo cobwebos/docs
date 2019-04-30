@@ -75,7 +75,7 @@ VNet 到 VNet 连接常见问题解答适用于 VPN 网关连接。 有关 VNet 
 
 ### <a name="do-vpn-tunnels-share-bandwidth"></a>VPN 隧道是否共享带宽？
 
-可以。 虚拟网络的所有 VPN 隧道共享 Azure VPN 网关上的可用带宽，以及 Azure 中的相同 VPN 网关运行时间 SLA。
+是的。 虚拟网络的所有 VPN 隧道共享 Azure VPN 网关上的可用带宽，以及 Azure 中的相同 VPN 网关运行时间 SLA。
 
 ### <a name="are-redundant-tunnels-supported"></a>是否支持冗余隧道？
 
