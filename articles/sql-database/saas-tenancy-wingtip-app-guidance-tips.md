@@ -13,11 +13,11 @@ ms.reviewer: sstein
 manager: craigg
 ms.date: 12/18/2018
 ms.openlocfilehash: 758cb47760f4a15e262a4d682089ac7d9fee64e8
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "57900499"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60326252"
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>使用 Wingtip Tickets 示例 SaaS 应用的一般指南
 
@@ -77,7 +77,7 @@ ms.locfileid: "57900499"
 
 使用 [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 连接和浏览应用程序服务器和数据库。
 
-该部署最初具有要连接的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
+该部署最初具有要连接到的租户和目录 SQL 数据库服务器。 服务器的命名取决于数据库租户模式（请参阅下文了解详细信息）。 
 
    - **独立的应用程序：** 每个租户的服务器（例如： contosoconcerthall-&lt;User&gt; 服务器）和 catalog-sa-&lt;User&gt;
    - **每个租户一个数据库：** tenants1-dpt-&lt;User&gt; 和 catalog-dpt-&lt;User&gt; 服务器

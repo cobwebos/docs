@@ -15,11 +15,11 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: cb414abcbbf2db7b7cd6a3d724e50010beeef647
-ms.sourcegitcommit: 8d88a025090e5087b9d0ab390b1207977ef4ff7c
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 11/21/2018
-ms.locfileid: "52275729"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60318269"
 ---
 # <a name="how-to-use-perfinsights"></a>如何使用 PerfInsights
 
@@ -132,10 +132,10 @@ PerfInsights 可以收集和分析多种信息。 以下部分介绍了常见方
 
 在后台运行基于规则的引擎即可收集数据并诊断当前的性能问题。 当前支持以下规则：
 
-- HighCpuUsage 规则：检测 CPU 使用率高的期间，并显示在这些期间 CPU 使用率高的使用者。
-- HighDiskUsage 规则：检测物理磁盘上磁盘使用率高的期间，并显示在这些期间磁盘使用率高的使用者。
-- HighResolutionDiskMetric 规则：显示每个物理磁盘每 50 毫秒的 IOPS、吞吐量和 I/O 延迟指标。 此规则有助于快速确定磁盘限制期间。
-- HighMemoryUsage 规则：检测内存使用率高的期间，并显示在这些期间内存使用率高的使用者。
+- HighCpuUsage 规则：检测高 CPU 使用率，并显示在这些期间的使用者。
+- HighDiskUsage 规则：检测高的磁盘使用情况上的物理磁盘，并在这些期间显示磁盘使用者。
+- HighResolutionDiskMetric 规则：显示个每个物理磁盘每 50 毫秒的 IOPS、 吞吐量和 I/O 延迟指标。 此规则有助于快速确定磁盘限制期间。
+- HighMemoryUsage 规则：检测高内存使用率，并在这些期间显示顶部的内存使用者。
 
 > [!NOTE] 
 > 目前支持包含 .NET Framework 4.5 或更高版本的 Windows 版本。
@@ -167,7 +167,7 @@ Diskspd I/O 工作负荷测试（OS 磁盘 [写入] 和池驱动器 [读/写]）
 
 -  此工具必须在有性能问题的 VM 上运行。 
 
--  支持以下操作系统：Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1 和 Windows 10。
+-  支持以下操作系统：Windows Server 2008 R2、 Windows Server 2012、 Windows Server 2012 R2 和 Windows Server 2016;Windows 8.1 和 Windows 10。
 
 #### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>在生产 VM 上运行该工具时可能会出现的问题
 
