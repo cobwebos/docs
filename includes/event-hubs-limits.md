@@ -9,11 +9,11 @@ ms.date: 02/26/2018
 ms.author: sethm
 ms.custom: include file
 ms.openlocfilehash: 9d6b54027adcf2b12c6ca4081a11208a31f620e8
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59803393"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61464361"
 ---
 下表列出了特定于 [Azure 事件中心](https://azure.microsoft.com/services/event-hubs/)的配额和限制。 有关事件中心定价的信息，请参阅[事件中心定价](https://azure.microsoft.com/pricing/details/event-hubs/)。
 

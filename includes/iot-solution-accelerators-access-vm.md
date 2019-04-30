@@ -9,11 +9,11 @@ ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: db1af4f046bd8849fddee299e949d6edbdaae86a
-ms.sourcegitcommit: 4eeeb520acf8b2419bcc73d8fcc81a075b81663a
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/19/2018
-ms.locfileid: "53609083"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61448386"
 ---
 ## <a name="access-the-virtual-machine"></a>访问虚拟机
 
@@ -23,7 +23,7 @@ ms.locfileid: "53609083"
 
 1. 列出包含解决方案加速器资源的资源组的内容：
 
-    ```azurecli-interactive
+    ```azurecli
     az resource list -g contoso-simulation -o table
     ```
 
@@ -31,7 +31,7 @@ ms.locfileid: "53609083"
 
 1. 更新网络安全组，以允许 SSH 访问。 以下命令假定网络安全组的名称为 contoso-simulation-nsg - 将此值替换为你的网络安全组的名称：
 
-    ```azurecli-interactive
+    ```azurecli
     az network nsg rule update --name SSH --nsg-name contoso-simulation-nsg -g contoso-simulation --access Allow -o table
     ```
 
@@ -39,13 +39,13 @@ ms.locfileid: "53609083"
 
 1. 在虚拟机上将 azureuser 帐户的密码更新为你知道的密码。 运行以下命令时，选择自己的密码：
 
-    ```azurecli-interactive
+    ```azurecli
     az vm user update --name vm-vikxv --username azureuser --password YOURSECRETPASSWORD  -g contoso-simulation
     ```
 
 1. 查找虚拟机的公共 IP 地址。 以下命令假定虚拟机的名称为 vm-vikxv - 将此值替换为之前记下的虚拟机的名称：
 
-    ```azurecli-interactive
+    ```azurecli
     az vm list-ip-addresses --name vm-vikxv -g contoso-simulation -o table
     ```
 

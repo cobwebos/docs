@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 2abfa29671bd804ee75194ef621fe07f06c015e9
-ms.sourcegitcommit: 2d0fb4f3fc8086d61e2d8e506d5c2b930ba525a7
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58125302"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61488547"
 ---
 #### <a name="to-create-a-volume"></a>创建卷
 1. 从“设备”边栏选项卡中的设备列表中，选择设备。 单击“+ 添加卷”。
@@ -45,7 +45,7 @@ ms.locfileid: "58125302"
          1. 为 ACR 提供“名称”。
          2. 在“iSCSI 发起程序名称” 下，提供 Windows 主机的 iSCSI 限定名称 (IQN)。 如果没有 IQN，请转到 [获取 Windows Server 主机的 IQN](#get-the-iqn-of-a-windows-server-host)。
 
-      1. 单击“创建”。 使用指定的设置创建卷。
+      1. 单击**创建**。 使用指定的设置创建卷。
 
          ![单击“法律条款” ](./media/storsimple-8000-create-volume-u2/step5createvol3.png)
 

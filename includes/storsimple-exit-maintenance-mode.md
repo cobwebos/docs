@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 6d7a94d258a6d030da9ec129cacb7abfa45cbbdc
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55888641"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409902"
 ---
 #### <a name="to-exit-maintenance-mode"></a>退出维护模式
 1. 在命令提示符处，键入：

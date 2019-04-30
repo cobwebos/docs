@@ -1,15 +1,16 @@
 ---
-author: cynthn
+author: rockboyfor
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 10/26/2018
-ms.author: cynthn
+origin.date: 10/26/2018
+ms.date: 11/26/2018
+ms.author: v-yeche
 ms.openlocfilehash: e128f3c67a41322d9c25a8d6941e937729760bf4
-ms.sourcegitcommit: 6e09760197a91be564ad60ffd3d6f48a241e083b
-ms.translationtype: HT
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 10/29/2018
-ms.locfileid: "50226907"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62097639"
 ---
 在此步骤中，创建一个防火墙规则以打开负载均衡终结点的探测端口（同样采用之前指定的 59999）和另一规则来打开可用性组侦听器端口。 由于在包含可用性组副本的 VM 上创建了负载均衡的终结点，需要打开相应 VM 上的探测端口和侦听器端口。
 
@@ -29,3 +30,4 @@ ms.locfileid: "50226907"
 
 8. 为可用性组侦听器端口重复上述步骤（按之前在脚本的 $EndpointPort 参数中指定的那样），并指定合适的规则名称，例如 **Always On Listener Port**。
 
+<!-- Update_Description: update meta properties -->

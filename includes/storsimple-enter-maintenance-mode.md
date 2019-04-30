@@ -5,11 +5,11 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: d35f0ef783a2c48f8211657bc8829635c19495aa
-ms.sourcegitcommit: 90cec6cccf303ad4767a343ce00befba020a10f6
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55889000"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61409898"
 ---
 #### <a name="to-enter-maintenance-mode"></a>进入维护模式
 1. 在串行控制台菜单中，选择选项 1“使用完全访问权限登录”。

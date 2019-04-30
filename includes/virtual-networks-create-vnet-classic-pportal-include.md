@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/13/2018
 ms.author: genli
 ms.custom: include file
-ms.openlocfilehash: 815a217526117325ff80759701141b2b4d148514
-ms.sourcegitcommit: fa493b66552af11260db48d89e3ddfcdcb5e3152
-ms.translationtype: HT
+ms.openlocfilehash: aa88bf3bd6c5037b41c09e9ffe47921f1b9dc9be
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2018
-ms.locfileid: "31805295"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60937349"
 ---
 ## <a name="how-to-create-a-classic-vnet-in-the-azure-portal"></a>如何在 Azure 门户中创建经典 VNet
 若要基于上述方案创建经典 VNet，请执行以下步骤。

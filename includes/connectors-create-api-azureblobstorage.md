@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 05/21/2018
 ms.author: estfan
 ms.custom: include file
-ms.openlocfilehash: 6e95d456c5eb981a29400057cfd58faa419060fc
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
-ms.translationtype: HT
+ms.openlocfilehash: 4d9d0f132a2cc754cd9f69bb54ef4dbb78a2c493
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "34677874"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60958557"
 ---
 1. 系统提示输入连接信息时，请提供以下详细信息：
 
    *必需*
 
-   | 属性 | 值 | 说明 | 
+   | 属性 | 值 | 描述 | 
    |----------|-------|-------------| 
    | 连接名称 | <connection-name> | 为连接创建的名称 | 
    | 存储帐户 | <*storage-account*> | 从列表中选择存储帐户。 | 

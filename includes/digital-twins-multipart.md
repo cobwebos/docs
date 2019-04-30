@@ -9,11 +9,11 @@ ms.date: 01/11/2019
 ms.author: adgera
 ms.custom: include file
 ms.openlocfilehash: ac6b008597b6d6e557a0cc412c00c2202231bc3d
-ms.sourcegitcommit: c61777f4aa47b91fb4df0c07614fdcf8ab6dcf32
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 01/14/2019
-ms.locfileid: "54267720"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60921797"
 ---
 > [!NOTE]
 > 多部分请求通常需要三个信息片段：

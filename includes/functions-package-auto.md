@@ -9,11 +9,11 @@ ms.topic: include
 ms.date: 05/23/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: 4bffe811dcee6a92e97c66b5813211e58004bb73
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
-ms.translationtype: HT
+ms.openlocfilehash: 9093733f4dedac8c95d1526e57abea9489c0138f
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38944027"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62087604"
 ---
 在所有开发环境中自动提供对该绑定的支持。 无需手动安装包或注册扩展。

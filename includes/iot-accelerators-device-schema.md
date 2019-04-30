@@ -9,11 +9,11 @@ ms.date: 07/26/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 414bb0183e68cb46e52c379ea3f7aceda5d4170e
-ms.sourcegitcommit: a65b424bdfa019a42f36f1ce7eee9844e493f293
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/04/2019
-ms.locfileid: "55701176"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61446091"
 ---
 ## <a name="the-parts-of-the-device-model-schema"></a>设备模型架构的组成部分
 
@@ -46,7 +46,7 @@ ms.locfileid: "55701176"
 
 下表描述了顶级架构条目：
 
-| 架构条目 | 说明 |
+| 架构条目 | 描述 |
 | -- | --- |
 | `SchemaVersion` | 架构版本始终是 `1.0.0`，特定于此文件的格式。 |
 | `Id` | 此设备模型的唯一 ID。 |
@@ -141,7 +141,7 @@ ms.locfileid: "55701176"
 
 * 对象 - 使用 JSON 序列化
 * 二进制 - 使用 base64 序列化
-* 文本
+* Text
 * Boolean
 * Integer
 * Double

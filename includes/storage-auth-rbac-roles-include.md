@@ -9,11 +9,11 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 026717dff2b6883eb643497dec91226e4afe8133
-ms.sourcegitcommit: c884e2b3746d4d5f0c5c1090e51d2056456a1317
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60150211"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61483583"
 ---
 Azure 提供了以下内置 RBAC 角色授予对 blob 和队列数据使用 Azure AD 访问权限和 OAuth:
 
