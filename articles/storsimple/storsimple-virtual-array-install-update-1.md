@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 11/02/2017
 ms.author: alkohli
 ms.openlocfilehash: fa53213e577028628d48db91704578e23888f2a8
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/18/2019
-ms.locfileid: "58013851"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61411323"
 ---
 # <a name="install-update-10-on-your-storsimple-virtual-array"></a>在 StorSimple Virtual Array 上安装 Update 1.0
 
@@ -58,7 +58,7 @@ ms.locfileid: "58013851"
 * 安装更新或修补程序
 
 > [!IMPORTANT] 
-> 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。
+> 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
 
 ### <a name="download-the-update-or-the-hotfix"></a>下载更新或修补程序
 
@@ -99,7 +99,7 @@ ms.locfileid: "58013851"
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>安装更新或修补程序
 
-1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。
+1. 在本地 Web UI 中，转到“维护” > “软件更新”。 记下运行的软件版本。 仅当运行 Update 0.6 (10.0.10293.0) 时才继续此更新。如果运行的是之前版本，请先在设备上[安装 Update 0.6](storsimple-virtual-array-install-update-06.md)，然后再应用 Update 1。**
    
     ![更新设备](./media/storsimple-virtual-array-install-update-1/update1m.png)
 

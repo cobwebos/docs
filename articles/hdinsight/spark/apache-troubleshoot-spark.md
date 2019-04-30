@@ -1,19 +1,18 @@
 ---
 title: Azure HDInsight 中的 Spark 故障排除
 description: 获取有关使用 Apache Spark 和 Azure HDInsight 的常见问题的解答。
-services: hdinsight
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: aad35aa7a958e8bdaf1479d1ffbbad5bf213d46a
-ms.sourcegitcommit: 02d17ef9aff49423bef5b322a9315f7eab86d8ff
-ms.translationtype: MT
+ms.openlocfilehash: a4dc7293c00097c7a5752e29bf7c9a203cbb31a5
+ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
+ms.translationtype: HT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58339238"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "62107511"
 ---
 # <a name="troubleshoot-apache-spark-by-using-azure-hdinsight"></a>使用 Azure HDInsight 对 Apache Spark 进行故障排除
 
@@ -23,7 +22,7 @@ ms.locfileid: "58339238"
 
 ### <a name="resolution-steps"></a>解决步骤
 
-可以优化 Spark 配置值帮助避免 Apache Spark 应用程序出现 OutofMemoryError 异常。 以下步骤在 Azure HDInsight 中显示默认的 Spark 配置值： 
+可以优化 Spark 配置值，避免出现 Apache Spark 应用程序 OutofMemoryError 异常。 以下步骤显示了 Azure HDInsight 中的默认 Spark 配置值： 
 
 1. 在群集列表中选择“Spark2”。
 
@@ -203,12 +202,12 @@ java.lang.OutOfMemoryError
     spark.yarn.driver.memoryOverhead (Example: 384m for 384MB) 
     ```
 
-    若要计算所有执行程序使用的总内存： 
+    计算所有执行程序使用的内存总量： 
     
     ```apache
     spark.executor.instances * (spark.executor.memory + spark.yarn.executor.memoryOverhead) 
     ```
-   若要计算驱动程序使用的总内存：
+   计算驱动程序使用的内存总量：
     
     ```apache
     spark.driver.memory + spark.yarn.driver.memoryOverhead

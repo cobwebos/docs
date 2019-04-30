@@ -14,11 +14,11 @@ ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
 ms.openlocfilehash: 2d7fc45faf1fb77c7d9181e5a2419096dd1ad0f1
-ms.sourcegitcommit: 359b0b75470ca110d27d641433c197398ec1db38
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 02/07/2019
-ms.locfileid: "55817410"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61258874"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>数据工厂计划和执行
 > [!NOTE]
@@ -172,7 +172,7 @@ ms.locfileid: "55817410"
 
 上图中显示了输入和输出数据集的每小时数据切片。 图中还显示已准备好进行处理的三个输入切片。 “上午 10-11 点”活动正在进行，生成“上午 10-11 点”输出切片。 
 
-可通过变量 [SliceStart](data-factory-functions-variables.md#data-factory-system-variables) 和 [SliceEnd](data-factory-functions-variables.md#data-factory-system-variables) 访问与正在数据集 JSON 中生成的当前切片关联的时间间隔。 同样，可以使用 WindowStart 和 WindowEnd 访问与活动窗口关联的时间间隔。 活动的计划必须匹配活动的输出数据集的计划。 因此，SliceStart 和 SliceEnd 值分别与 WindowStart 和 WindowEnd 值相同。 有关这些变量的详细信息，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md#data-factory-system-variables)一文。  
+可通过变量 SliceStart 和 SliceEnd 访问与正在数据集 JSON 中生成的当前切片关联的时间间隔。 同样，可以使用 WindowStart 和 WindowEnd 访问与活动窗口关联的时间间隔。 活动的计划必须匹配活动的输出数据集的计划。 因此，SliceStart 和 SliceEnd 值分别与 WindowStart 和 WindowEnd 值相同。 有关这些变量的详细信息，请参阅[数据工厂函数和系统变量](data-factory-functions-variables.md#data-factory-system-variables)一文。  
 
 可在活动 JSON 中将这些变量用于不同目的。 例如，可用于从表示时序数据的输入和输出数据集中选择数据（例如：上午 8-9 点）。 此示例还使用 **WindowStart** 和 **WindowEnd** 选择活动运行的相关数据，并使用相应 **folderPath** 将其复制到 blob。 **FolderPath** 参数化为每小时具有一个单独文件夹。  
 
@@ -184,7 +184,7 @@ ms.locfileid: "55817410"
 ### <a name="dataset-availability"></a>数据集可用性 
 下表描述了可在 **availability** 节中使用的属性：
 
-| 属性 | 说明 | 必选 | 默认 |
+| 属性 | 说明 | 需要 | 默认 |
 | --- | --- | --- | --- |
 | 频率 |指定数据集切片生成的时间单位。<br/><br/><b>支持的频率</b>：Minute、Hour、Day、Week、Month |是 |NA |
 | interval |指定频率的乘数<br/><br/>“频率 x 间隔”确定生成切片的频率。<br/><br/>若需要数据集每小时生成切片，则将“频率”<b></b>设置为“小时”<b></b>，“间隔”<b></b>设置为“1”<b></b>。<br/><br/><b>注意</b>：如果将 Frequency 指定为 Minute，建议将 interval 设置为小于 15 的值 |是 |NA |
@@ -232,7 +232,7 @@ ms.locfileid: "55817410"
 
 数据集定义中的**策略**部分定义了数据集切片必须满足的标准或条件。 下表描述了可在 **policy** 节中使用的属性：
 
-| 策略名称 | 说明 | 适用对象 | 必选 | 默认 |
+| 策略名称 | 描述 | 适用对象 | 需要 | 默认 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | 验证 **Azure Blob** 中的数据是否满足最小大小要求（以兆字节为单位）。 |Azure Blob |否 |NA |
 | minimumRows | 验证 **Azure SQL 数据库**中的数据或 **Azure 表**是否包含最小行数。 |<ul><li>Azure SQL 数据库</li><li>Azure 表</li></ul> |否 |NA |
@@ -268,7 +268,7 @@ ms.locfileid: "55817410"
 ## <a name="activity-policies"></a>活动策略
 策略会影响活动的运行时行为，尤其在处理表的切片时。 下表提供详细信息。
 
-| 属性 | 允许的值 | 默认值 | 说明 |
+| 属性 | 允许的值 | 默认值 | 描述 |
 | --- | --- | --- | --- |
 | concurrency |Integer <br/><br/>最大值：10 |1 |活动的并发执行次数。<br/><br/>它决定可在不同切片上发生的并行活动执行次数。 例如，如果活动需要完成大量可用数据，更大的并发值能加快数据处理速度。 |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |确定正在处理的数据切片的顺序。<br/><br/>例如，有两个切片（分别发生在下午 4 点和下午 5 点），且均在等待执行。 如果将 executionPriorityOrder 设置为 NewestFirst，则首先处理下午 5 点的切片。 同理，如果将 executionPriorityORder 设置为 OldestFIrst，则先处理下午 4 点的切片。 |

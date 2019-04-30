@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/14/2019
 ms.author: juliako
 ms.openlocfilehash: 910c593c9277efeaf72dadc52740b1c918381e19
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59524763"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "61466032"
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>如何生成平滑流式处理 Windows 应用商店应用程序  
 
@@ -71,7 +71,7 @@ ms.locfileid: "59524763"
     | 模板组 |已安装/模板/Visual C#/Windows 应用商店 |
     | 模板 |空白应用程序(XAML) |
     | 名称 |SSPlayer |
-    | 位置 |C:\SSTutorials |
+    | Location |C:\SSTutorials |
     | 解决方案名称 |SSPlayer |
     | 创建解决方案的目录 |(选定) |
 

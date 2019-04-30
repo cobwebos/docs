@@ -1,5 +1,5 @@
 ---
-title: 将 CI/CD 用于 Azure 的开发空间
+title: 将 CI/CD 与 Azure Dev Spaces 配合使用
 titleSuffix: Azure Dev Spaces
 services: azure-dev-spaces
 ms.service: azure-dev-spaces
@@ -11,11 +11,11 @@ manager: yuvalm
 description: 在 Azure 中使用容器和微服务快速开发 Kubernetes
 keywords: Docker, Kubernetes, Azure, AKS, Azure 容器服务, 容器
 ms.openlocfilehash: 983af0dd75e6ae62630c85d04ac3819c7e260439
-ms.sourcegitcommit: 5fbca3354f47d936e46582e76ff49b77a989f299
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/12/2019
-ms.locfileid: "57768274"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60687240"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>结合使用 CI/CD 与 Azure Dev Spaces
 
@@ -121,7 +121,7 @@ dev 空间始终包含最新状态的存储库（基线），以便开发人员�
 1. 依次单击右上方的“保存”和“确定”。
 1. 依次单击“保存”按钮旁边的“+ 发布”和“创建发布”。
 1. 下**项目**，验证是否选择了从生成管道的最新版本。
-1. 单击“创建”。
+1. 单击**创建**。
 
 此时，自动发布过程便会开始，将 mywebapi 和 webfrontend 图表部署到 dev 顶级空间中的 Kubernetes 群集。 你可以监视你的 Azure DevOps web 门户上发布的进度：
 

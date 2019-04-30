@@ -15,11 +15,11 @@ ms.topic: reference
 ms.date: 09/17/2018
 ms.author: pbutlerm
 ms.openlocfilehash: d6ab18d68d6508a18f0b36ab5a39e15fa7c0555a
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58311656"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60594481"
 ---
 # <a name="saas-sell-through-azure---apis"></a>通过 Azure 销售 SaaS - API
 
@@ -118,7 +118,7 @@ HTTP 方法
 
 *响应*
 
-|  **名称**  | **类型**       |  **说明**    |
+|  **名称**  | 类型       |  **说明**    |
 | ---------- | -------------  | ------------------- |
 | 200 正常    | TokenResponse  | 请求成功   |
 |  |  |  |
@@ -436,7 +436,7 @@ Azure 市场 API 的终结点为 `https://marketplaceapi.microsoft.com`。
 | **参数名称** | **数据类型** | **说明**                                                                                                                                               |
 |--------------------|---------------|-------------------------------------------------------------------------------------------|
 | id                 | String        | 操作的 ID。                                                                      |
-| 状态             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
+| status             | 枚举          | 操作状态，值为下列其中一项：`In Progress`、`Succeeded` 或 `Failed`。          |
 | resourceLocation   | String        | 链接到已创建或修改的订阅。 这可以帮助客户端获取更新的状态发布操作。 不会对 `Unsubscribe` 操作设置此值。 |
 | created            | DateTime      | 操作创建时间 (UTC)。                                                           |
 | lastModified       | DateTime      | 上次更新操作的时间 (UTC)。                                                      |

@@ -10,11 +10,11 @@ ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: 2469b30e00cbb25efd98e696b7dbf51253767a05
-ms.translationtype: HT
+ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/06/2018
-ms.locfileid: "53000233"
+ms.lasthandoff: 04/23/2019
+ms.locfileid: "60713012"
 ---
 # <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>（已弃用）使用 CoScale 监视 Azure 容器服务 Kubernetes 群集
 
@@ -32,7 +32,7 @@ CoScale 是一种监视平台，用于从多个业务流程平台中的所有容
 如本文中所示，可以在 Kubernetes 群集上安装代理以将 CoScale 作为 SaaS 解决方案运行。 如果想要就地保留数据，CoScale 还可用于本地安装。
 
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 首先需要[创建 CoScale 帐户](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial)。
 
