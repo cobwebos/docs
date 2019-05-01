@@ -10,7 +10,7 @@ ms.date: 03/22/2019
 ms.author: alkohli
 ms.openlocfilehash: a687398032adffe5e787ef1469abe0b2627a38fe
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60758018"
@@ -31,7 +31,7 @@ ms.locfileid: "60758018"
 |---|---|
 |不。 设备的文件数 |1 亿 |
 |不。 设备的共享数 |24 |
-|不。 每个容器的共享数 |1 |
+|不。 每个容器的共享数 |第 |
 |写入到共享的最大文件大小| 5 TB |
 
 ## <a name="azure-storage-limits"></a>Azure 存储限制

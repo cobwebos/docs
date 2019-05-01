@@ -13,7 +13,7 @@ ms.date: 09/25/2016
 ms.author: glenga
 ms.openlocfilehash: fd8fa690c508b8bf748490668c1e9aaa811ac247
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60731168"
