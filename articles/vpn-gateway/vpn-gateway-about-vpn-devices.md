@@ -165,7 +165,7 @@ ms.locfileid: "60761603"
 
 |-  |**加密**|**身份验证**|**PFS 组**|
 |---| ---          | ---              |---          |
-| 第 |GCM AES256    |GCM (AES256)      |无         |
+| 1 |GCM AES256    |GCM (AES256)      |无         |
 | 2 |AES256        |SHA1              |无         |
 | 3 |3DES          |SHA1              |无         |
 | 4 |AES256        |SHA256            |无         |
@@ -178,7 +178,7 @@ ms.locfileid: "60761603"
 | 11|AES128        |SHA1              |第            |
 | 12|AES128        |SHA1              |2            |
 | 13|AES128        |SHA1              |14           |
-| 14|3DES          |SHA1              |1            |
+| 14|3DES          |SHA1              |第            |
 | 15|3DES          |SHA1              |2            |
 | 16|3DES          |SHA256            |2            |
 | 17|AES256        |SHA256            |第            |

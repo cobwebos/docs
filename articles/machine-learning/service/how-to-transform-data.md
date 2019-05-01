@@ -63,7 +63,7 @@ case_category.head(3)
 ||ID|案例号|案例类别|date|街区|IUCR|主要类型|描述|地址说明|逮捕|国内|...|病房|社区范围|FBI 代码|X 坐标|Y 坐标|年龄|更新时间|纬度|经度|Location|
 |-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|------|
 |0|10140490|HY329907|HY|07/05/2015 11:50:00 PM|050XX N NEWLAND AVE|0820|THEFT|$500 AND UNDER|STREET|false|false|...|41|10|06|1129230|1933315|2015|07/12/2015 12:42:46 PM|41.973309466|-87.800174996|(41.973309466, -87.800174996)|
-|第|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|第|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
+|第|10139776|HY329265|HY|07/05/2015 11:30:00 PM|011XX W MORSE AVE|0460|BATTERY|SIMPLE|STREET|false|true|...|49|1|08B|1167370|1946271|2015|07/12/2015 12:42:46 PM|42.008124017|-87.65955018|(42.008124017, -87.65955018)|
 |2|10140270|HY329253|HY|07/05/2015 11:20:00 PM|121XX S FRONT AVE|0486|BATTERY|DOMESTIC BATTERY SIMPLE|STREET|false|true|...|9|53|08B|||2015|07/12/2015 12:42:46 PM|
 
 
@@ -95,7 +95,7 @@ dflow.head(3)
 ||ID|逮捕|纬度|经度|
 |-----|------|-----|------|-----|
 |0|10140490|false|41.973309|-87.800175|
-|第|10139776|false|42.008124|-87.659550|
+|1|10139776|false|42.008124|-87.659550|
 |2|10140270|false|NaN|NaN|
 
 第三条记录缺少纬度和经度值。 若要输入这些缺失值，请使用[ `ImputeMissingValuesBuilder` ](https://docs.microsoft.com/python/api/azureml-dataprep/azureml.dataprep.api.builders.imputemissingvaluesbuilder?view=azure-dataprep-py)若要了解一个固定的表达式。 它可使用计算得出的 `MIN`、`MAX`、`MEAN` 值或 `CUSTOM` 值来估算列。 如果指定 `group_by_columns`，将使用每组计算得出的 `MIN`、`MAX` 和 `MEAN` 按组估算缺失值。
@@ -138,7 +138,7 @@ dflow_imputed.head(3)
 ||ID|逮捕|纬度|经度|
 |-----|------|-----|------|-----|
 |0|10140490|false|41.973309|-87.800175|
-|1|10139776|false|42.008124|-87.659550|
+|第|10139776|false|42.008124|-87.659550|
 |2|10140270|false|41.878961|42.000000|
 
 如以上结果所示，缺少的纬度是使用 `Arrest=='false'` 组的 `MEAN` 值进行估算。 缺少的经度是使用 42 进行估算。
@@ -161,7 +161,7 @@ dflow.head(4)
 ||DATE|REPORTTPYE|HOURLYDRYBULBTEMPF|HOURLYRelativeHumidity|HOURLYWindSpeed|
 |----|----|----|----|----|----|
 |0|1/1/2015 0:54|FM-15|22|50|10|
-|第|1/1/2015 1:00|FM-12|22|50|10|
+|1|1/1/2015 1:00|FM-12|22|50|10|
 |2|1/1/2015 1:54|FM-15|22|50|10|
 |3|1/1/2015 2:54|FM-15|22|50|11|
 
@@ -240,7 +240,7 @@ builder.preview(skip=75, count=5)
 ||DATE|date_timerange|
 |-----|-----|-----|
 |0|1/3/2015 7:00|2015 年 1 月 3 日上午 6 点-8|
-|1|1/3/2015 7:54|2015 年 1 月 3 日上午 6 点-8|
+|第|1/3/2015 7:54|2015 年 1 月 3 日上午 6 点-8|
 |2|1/29/2015 6:54|2015 年 1 月 29 日上午 6 点-8|
 |3|1/29/2015 7:00|2015 年 1 月 29 日上午 6 点-8|
 |4|1/29/2015 7:54|2015 年 1 月 29 日上午 6 点-8|
@@ -284,9 +284,9 @@ dflow.head(5)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Store_and_fwd_flag|RateCodeID|Pickup_longitude|Pickup_latitude|Dropoff_longitude|Dropoff_latitude|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
 |0|无|无|无|无|无|无|无|无|无|无|无|无|无|
-|1|2013-08-01 08:14:37|2013-08-01 09:09:06|N|第|0|0|0|0|1|.00|0|0|21.25|
+|1|2013-08-01 08:14:37|2013-08-01 09:09:06|N|1|0|0|0|0|第|.00|0|0|21.25|
 |2|2013-08-01 09:13:00|2013-08-01 11:38:00|N|第|0|0|0|0|2|.00|0|0|75|
-|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|第|.00|0|第|2.1|
+|3|2013-08-01 09:48:00|2013-08-01 09:49:00|N|5|0|0|0|0|第|.00|0|1|2.1|
 |4|2013-08-01 10:38:35|2013-08-01 10:38:51|N|1|0|0|0|0|第|.00|0|0|3.25|
 
 ### <a name="filtering-columns"></a>筛选列
@@ -343,7 +343,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-01 19:33:28|2013-08-01 19:35:21|5|.00|0.08|0|4.58|
-|第|2013-08-05 13:16:38|2013-08-05 13:18:24|第|.00|0.30|0|3.8|
+|第|2013-08-05 13:16:38|2013-08-05 13:18:24|1|.00|0.30|0|3.8|
 
 ### <a name="filtering-rows-with-complex-expressions"></a>使用复杂表达式筛选行
 
@@ -385,7 +385,7 @@ dflow.head(2)
 ||lpep_pickup_datetime|Lpep_dropoff_datetime|Passenger_count|Trip_distance|Tip_amount|Tolls_amount|Total_amount|
 |-----|-----|-----|-----|-----|-----|-----|-----|
 |0|2013-08-13 06:11:06+00:00|2013-08-13 06:30:28+00:00|1.0|9.57|7.47|5.33|44.80|
-|1|2013-08-23 12:28:20+00:00|2013-08-23 12:50:28+00:00|2.0|8.22|8.08|5.33|40.41|
+|第|2013-08-23 12:28:20+00:00|2013-08-23 12:50:28+00:00|2.0|8.22|8.08|5.33|40.41|
 
 ## <a name="custom-python-transforms"></a>自定义 Python 转换
 
@@ -412,7 +412,7 @@ dflow.head(2)
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|第|101710|Hale County|10171002158| |
-|1|ALABAMA|第|101710|Hale County|10171002162| |
+|第|ALABAMA|第|101710|Hale County|10171002162| |
 
 减少数据集和执行一些基本的转换，包括删除列、 替换值和转换类型。
 
@@ -426,7 +426,7 @@ dflow.head(2)
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
 |0|ALABAMA|Hale County|1.017100e+10|无|
-|1|ALABAMA|Hale County|1.017100e+10|无|
+|第|ALABAMA|Hale County|1.017100e+10|无|
 
 使用以下筛选器查找空值。
 
@@ -437,7 +437,7 @@ dflow.filter(col('MAM_MTH00numvalid_1011').is_null()).head(2)
 | |stnam|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|
 |0|ALABAMA|Hale County|1.017100e+10|无|
-|第|ALABAMA|Hale County|1.017100e+10|无|
+|1|ALABAMA|Hale County|1.017100e+10|无|
 
 ### <a name="transform-partition"></a>转换分区
 
@@ -476,7 +476,7 @@ dflow.head(2)
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
-|第|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
+|1|ALABAMA|Hale County|Hale County, Alabama|1.017100e+10|0.0|
 
 ### <a name="new-script-filter"></a>新脚本筛选器
 
@@ -494,7 +494,7 @@ dflow.head(2)
 ||stnam|leanm10|county_state|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|
 |0|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|1.0|
-|1|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
+|第|ALABAMA|Jefferson County|Jefferson County, Alabama|1.019200e+10|0.0|
 
 ## <a name="next-steps"></a>后续步骤
 

@@ -90,8 +90,8 @@ dflow.head(5)
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|-----|
 |0|stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
-|第|ALABAMA|1|101710|Hale County|10171002158| |
-|2|ALABAMA|1|101710|Hale County|10171002162| |
+|1|ALABAMA|1|101710|Hale County|10171002158| |
+|2|ALABAMA|第|101710|Hale County|10171002162| |
 
 
 若要在加载过程中排除行，请定义 `skip_rows` 参数。 此参数将跳过加载在 CSV 文件中以降序排列的行（使用基于 1 的索引）。
@@ -105,7 +105,7 @@ dflow.head(5)
 | |stnam|fipst|leaid|leanm10|ncessch|MAM_MTH00numvalid_1011|
 |-----|-------|---------| -------|------|-----|------|
 |0|ALABAMA|第|101710|Hale County|10171002158|29|
-|第|ALABAMA|第|101710|Hale County|10171002162|40 |
+|第|ALABAMA|1|101710|Hale County|10171002162|40 |
 
 运行以下代码，显示列数据类型。
 
@@ -160,7 +160,7 @@ dflow.head(5)
 |第|无|无|无|无|无|无|无|无|无| |
 |2|无|无|无|无|无|无|无|无|无| |
 |3|Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^| |
-|4|第|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|5|
+|4|1|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|5|
 
 输出显示第二个工作表中的数据在标头前有三个空行。 `read_excel()` 函数包含用于跳过行和使用标头的可选参数。 运行以下代码以跳过前三行，并将第四行用作标头。
 
@@ -170,8 +170,8 @@ dflow = dprep.read_excel(path='./data/excel.xlsx', sheet_name='Sheet2', use_colu
 
 ||Rank|标题|工作室|全球|国内 / %|Column1|海外 / %|Column2|年份^|
 |------|------|------|-----|------|-----|-------|----|-----|-----|
-|0|第|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|
-|第|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997^|
+|0|1|Avatar|Fox|2788|760.5|0.273|2027.5|0.727|2009^|
+|1|2|Titanic|Par.|2186.8|658.7|0.301|1528.1|0.699|1997^|
 
 ## <a name="load-fixed-width-data-files"></a>加载固定宽度数据文件
 
@@ -185,7 +185,7 @@ dflow.head(5)
 ||010000|99999|BOGUS NORWAY|否|NO_1|ENRS|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
 |0|010003|99999|BOGUS NORWAY|否|否|ENSO||||
-|第|010010|99999|JAN MAYEN（扬马延岛）|否|JN|ENJA|+70933|-008667|+00090|
+|1|010010|99999|JAN MAYEN（扬马延岛）|否|JN|ENJA|+70933|-008667|+00090|
 
 
 若要避免标头检测和分析正确数据，请将 `PromoteHeadersMode.NONE` 传递到 `header` 参数。
@@ -199,7 +199,7 @@ dflow = dprep.read_fwf('./data/fixed_width_file.txt',
 ||Column1|Column2|Column3|Column4|Column5|Column6|Column7|Column8|Column9|
 |------|------|------|-----|------|-----|-------|----|-----|----|
 |0|010000|99999|BOGUS NORWAY|否|NO_1|ENRS|Column7|Column8|Column9|
-|第|010003|99999|BOGUS NORWAY|否|否|ENSO||||
+|1|010003|99999|BOGUS NORWAY|否|否|ENSO||||
 
 
 ## <a name="load-sql-data"></a>加载 SQL 数据
@@ -306,7 +306,7 @@ dflow.to_pandas_dataframe().head()
 ||FMID|MarketName|网站|street|city|县|
 |----|------|-----|----|----|----|----|
 |0|1012063|喀里多尼亚农贸市场协会 - 丹维尔|https://sites.google.com/site/caledoniafarmers.. ||丹维尔|喀里多尼亚|
-|第|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
+|1|1011871|斯特恩斯家园农贸市场|http://Stearnshomestead.com |6975 Ridge Road|帕尔马|凯霍加河|
 |2|1011878|100 英里市场|https://www.pfcmarkets.com |507 哈里森街|卡拉马祖|卡拉马祖|
 |3|1009364|106 S. 主要街道农贸市场|http://thetownofsixmile.wordpress.com/ |106 S. 主要街道|六英里|||
 |4|1010691|第 10 街社区农贸市场|https://agrimissouri.com/.. |第十街和波普拉区|拉马尔|巴顿|

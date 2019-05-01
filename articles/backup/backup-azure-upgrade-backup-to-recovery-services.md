@@ -128,7 +128,7 @@ PowerShell 脚本会提示输入凭据。 请输入凭据两次：一次是输�
 不。 成功升级资源后，就不支持回滚。
 
 ### <a name="can-i-validate-my-subscription-or-resources-to-see-if-theyre-capable-of-upgrade"></a>是否可以验证订阅或资源，确定它们是否可升级？
-可以。 升级过程的第一个步骤是验证资源是否可升级。 如果先决条件验证失败，会收到消息，其中包含无法完成升级的所有原因。
+是的。 升级过程的第一个步骤是验证资源是否可升级。 如果先决条件验证失败，会收到消息，其中包含无法完成升级的所有原因。
 
 ### <a name="can-i-upgrade-my-csp-based-backup-vault"></a>是否可以升级基于 CSP 的备份保管库？
 不。 目前无法升级基于 CSP 的备份保管库。 我们将在下一版本中添加对升级基于 CSP 的备份保管库的支持。

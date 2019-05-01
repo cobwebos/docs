@@ -101,7 +101,7 @@ Windows 和 Linux 代理支持通过代理服务器或 Log Analytics 网关与 A
 
 |属性| 描述 |
 |--------|-------------|
-|协议 | https |
+|Protocol | https |
 |user | 用于代理身份验证的可选用户名 |
 |password | 用于代理身份验证的可选密码 |
 |proxyhost | 代理服务器/Log Analytics 网关的地址或 FQDN |

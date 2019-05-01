@@ -145,7 +145,7 @@ Apache Tomcat 是 Java Servlet 和 Java Server 技术的常见开源实现。 �
    * 应用程序服务的名称：TomcatService
    * 输入映像名称：容器注册表; 中的容器映像中提供的 URL例如，myregistry.azurecr.io/samples/tomcattest。
    * 命令：将此项留空。 此映像中定义了一个工作负荷入口点，因此不需显式指定输入命令（命令在容器中运行，这可以在启动后使容器保持运行）。
-   * 来宾容器应用程序的实例数：1
+   * 来宾容器应用程序的实例数：第
 
    ![适用于容器的 Service Fabric Yeoman 生成器](./media/service-fabric-get-started-tomcat/yo-generator.png)
 
