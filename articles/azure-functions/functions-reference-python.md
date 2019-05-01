@@ -13,12 +13,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/16/2018
 ms.author: glenga
-ms.openlocfilehash: 28f2b395c7f9be1b194b500ef20456be8ff405b0
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 039b0951484a6bf57703d9a91d604c9c5e5c9a66
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61021258"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571169"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python 开发人员指南
 
@@ -28,7 +28,7 @@ ms.locfileid: "61021258"
 
 ## <a name="programming-model"></a>编程模型
 
-Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法。 默认情况下，运行时期望此函数在 `__init__.py` 文件中作为名为 `main()` 的全局方法实现。
+Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法。 默认情况下，运行时需要作为一个名为的全局方法实现的方法`main()`在`__init__.py`文件。
 
 可以通过在 `function.json` 文件中指定 `scriptFile` 和 `entryPoint` 属性来更改默认配置。 例如，下面的 _function.json_ 指示运行时使用 _main.py_ 文件中的 _customentry()_ 方法作为 Azure 函数的入口点。
 
@@ -40,7 +40,7 @@ Azure 函数应是 Python 脚本中处理输入并生成输出的无状态方法
 }
 ```
 
-来自触发器和绑定的数据使用在 `function.json` 配置文件中定义的 `name` 属性，通过方法特性绑定到函数。 例如，下面的 _function.json_ 描述一个由名为 `req` 的 HTTP 请求触发的简单函数：
+来自触发器和绑定的数据使用在 `function.json` 配置文件中定义的 `name` 属性，通过方法特性绑定到函数。 例如， _function.json_下面介绍由名为 HTTP 请求触发的简单函数`req`:
 
 ```json
 {
@@ -109,15 +109,16 @@ Python 函数项目的文件夹结构如下所示：
 from ..SharedCode import myFirstHelperFunction
 ```
 
-Functions 运行时使用的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须使用 Azure Functions Core Tools [注册绑定扩展](./functions-bindings-register.md#local-development-azure-functions-core-tools)。 
+Functions 运行时使用的绑定扩展在 `extensions.csproj` 文件中定义，实际库文件位于 `bin` 文件夹中。 本地开发时，必须使用 Azure Functions Core Tools [注册绑定扩展](./functions-bindings-register.md#local-development-with-azure-functions-core-tools-and-extension-bundles)。 
 
 在 Azure 中将 Functions 项目部署到函数应用时，FunctionApp 文件夹的整个内容应包含在包中，但不包含该文件夹本身。
 
-## <a name="inputs"></a>输入
+## <a name="triggers-and-inputs"></a>触发器和输入
 
-在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 虽然它们在 `function.json` 中并不相同，但它们在 Python 代码中的使用方法却是相同的。 请看以下代码片段示例：
+在 Azure Functions 中，输入分为两种类别：触发器输入和附加输入。 虽然它们在 `function.json` 中并不相同，但它们在 Python 代码中的使用方法却是相同的。  触发器和输入源的连接字符串应映射到值中`local.settings.json`文件在本地，并在 Azure 中运行时的应用程序设置。 请看以下代码片段示例：
 
 ```json
+// function.json
 {
   "scriptFile": "__init__.py",
   "bindings": [
@@ -139,7 +140,19 @@ Functions 运行时使用的绑定扩展在 `extensions.csproj` 文件中定义�
 }
 ```
 
+```json
+// local.settings.json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "AzureWebJobsStorage": "<azure-storage-connection-string>"
+  }
+}
+```
+
 ```python
+# __init__.py
 import azure.functions as func
 import logging
 
@@ -149,7 +162,8 @@ def main(req: func.HttpRequest,
     logging.info(f'Python HTTP triggered function processed: {obj.read()}')
 ```
 
-调用函数时，HTTP 请求作为 `req` 传递给函数。 将基于路由 URL 中的 _id_ 从 Azure Blob 存储检索一个条目，并在函数体中用作 `obj`。
+调用函数时，HTTP 请求作为 `req` 传递给函数。 一个条目将从根据 Azure Blob 存储中检索_ID_中的路由 URL，并可作为`obj`函数体中。  此处指定存储帐户中找到连接字符串`AzureWebJobsStorage`这是由 function app 使用的同一存储帐户。
+
 
 ## <a name="outputs"></a>Outputs
 

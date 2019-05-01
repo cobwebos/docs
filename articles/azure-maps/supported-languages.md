@@ -1,22 +1,28 @@
 ---
-title: Azure Maps 中支持的语言 | Microsoft Docs
+title: Azure Maps 中的本地化支持 |Microsoft Docs
 description: 了解 Azure Maps 中的服务支持的语言
-author: juliekohler
-ms.author: julieko
-ms.date: 04/08/2019
+author: walsehgal
+ms.author: v-musehg
+ms.date: 04/25/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: ad5913224724dcb9cb9033d89010cefb4d9e1f89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1928185521419006a487a933e2ecba79894a09d3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769186"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686783"
 ---
-# <a name="azure-maps-supported-languages"></a>Azure Maps 支持的语言
-Azure Maps 已经采用多种语言对服务进行了本地化。  下表提供了每项服务支持的语言代码。  
+# <a name="localization-support-in-azure-maps"></a>Azure Maps 中的本地化支持
+
+Azure Maps 支持各种语言和国家/地区所基于的视图。 本文提供了支持的语言和视图，可帮助指导您 Azure Maps 的实现。
+
+
+## <a name="azure-maps-supported-languages"></a>Azure Maps 支持的语言
+
+Azure Maps 已经采用多种语言对服务进行了本地化。 下表提供了每项服务支持的语言代码。  
   
 
 | ID         | 名称                   |  地图 | 搜索 | 路由 | 交通事故 | JS 地图控件 | 时区 |
@@ -75,3 +81,30 @@ Azure Maps 已经采用多种语言对服务进行了本地化。  下表提供
 | tr-TR      | 土耳其语                |   ✓   |    ✓   |    ✓    |         ✓         |        ✓       |     ✓     |
 | uk-UA      | 乌克兰语               |       |    ✓   |         |                   |                |     ✓     |
 | vi-VN      | 越南语             |       |    ✓   |         |                   |                |     ✓     |
+
+
+## <a name="azure-maps-supported-views"></a>Azure Maps 支持视图
+
+Azure （也称为"用户区域参数"） 的映射视图参数是指定的地缘政治集该国家/地区的正确映射争议边框将显示两字母 ISO 3166 国家/地区代码并在地图上显示标签。  默认情况下查看参数设置为 **"统一"**。  不在视图列表的国家/地区/区域将默认为"Unified"视图。 它由你负责确定你的用户的位置，然后设置该位置正确的视图参数。 Azure Maps 中的视图参数必须采用符合适用的法律，包括那些其中地图、 图像和其他数据和第三方内容，您有权访问通过 Azure Maps 的国家/地区的相关映射将可用。
+
+下表提供了支持的视图。
+
+| 查看         | 描述                            |  地图 | 搜索 | JS 地图控件 |
+|--------------|----------------------------------------|:-----:|:------:|:--------------:|
+| AE           | 阿拉伯联合酋长国 （阿拉伯语视图）    |   ✓   |        |     ✓          |
+| AR           | 阿根廷 （阿根廷视图）           |   ✓   |    ✓   |     ✓          |
+| BH           | 巴林 （阿拉伯语视图）                 |   ✓   |        |     ✓          |
+| IN           | 印度 （印度视图）                    |   ✓   |   ✓     |     ✓          |
+| IQ           | 伊拉克 （阿拉伯语视图）                    |   ✓   |        |     ✓          |
+| JO           | 约旦 （阿拉伯语视图）                  |   ✓   |        |     ✓          |
+| KW           | 科威特 （阿拉伯语视图）                  |   ✓   |        |     ✓          |
+| LB           | 黎巴嫩 （阿拉伯语视图）                 |   ✓   |        |     ✓          |
+| MA           | 摩洛哥 （摩洛哥视图）                |   ✓   |   ✓     |     ✓          |
+| OM           | 阿曼 （阿拉伯语视图）                    |   ✓   |        |     ✓          |
+| PK           | 巴基斯坦 （巴基斯坦视图）              |   ✓   |    ✓    |     ✓          |
+| PS           | 巴勒斯坦民族权利机构 （阿拉伯语视图）    |   ✓   |        |     ✓          |
+| QA           | 卡塔尔 （阿拉伯语视图）                   |   ✓   |        |     ✓          |
+| SA           | 沙特阿拉伯 （阿拉伯语视图）            |   ✓   |        |     ✓          |
+| SY           | 叙利亚 （阿拉伯语视图）                   |   ✓   |        |     ✓          |
+| YE           | 也门 （阿拉伯语视图）                   |   ✓   |        |     ✓          |
+| 统一      | （其他） 的统一的视图                  |   ✓   |   ✓     |     ✓          |

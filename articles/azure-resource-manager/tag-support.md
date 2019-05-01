@@ -4,14 +4,14 @@ description: 显示支持标记的 Azure资源类型。 提供所有 Azure 服�
 author: tfitzmac
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 02/13/2019
+ms.date: 04/26/2019
 ms.author: tomfitz
-ms.openlocfilehash: dd6836ef4f859ce77c1a56095d32373d8e08f468
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 32156f39d36d8485c76dada5fd00f9ea0918598c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60388057"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575463"
 ---
 # <a name="tag-support-for-azure-resources"></a>Azure 资源的标记支持
 本文介绍某一资源类型是否支持[标记](resource-group-using-tags.md)。
@@ -862,7 +862,7 @@ ms.locfileid: "60388057"
 | dnszones/SOA | 否 | 
 | dnszones/SRV | 否 | 
 | dnszones/TXT | 否 | 
-| expressRouteCircuits | 是 | 
+| expressRouteCircuits | 是 （标记值当前不会显示成本报表中） | 
 | expressRouteServiceProviders | 否 | 
 | frontdoors | 是 | 
 | frontdoorWebApplicationFirewallPolicies | 是 | 
@@ -876,7 +876,7 @@ ms.locfileid: "60388057"
 | networkInterfaces | 是 | 
 | networkProfiles | 是 | 
 | networkSecurityGroups | 是 | 
-| networkWatchers | 是 | 
+| networkWatchers | 是 （标记值当前不会显示成本报表中） | 
 | networkWatchers/connectionMonitors | 是 | 
 | networkWatchers/lenses | 是 | 
 | networkWatchers/pingMeshes | 是 | 
@@ -892,9 +892,10 @@ ms.locfileid: "60388057"
 | virtualHubs | 是 | 
 | virtualNetworkGateways | 是 | 
 | virtualNetworks | 是 | 
+| virtualNetworks/subnets | 否 | 
 | virtualNetworkTaps | 是 | 
 | virtualWans | 是 | 
-| vpnGateways | 是 | 
+| vpnGateways | 是 （标记值当前不会显示成本报表中） | 
 | vpnSites | 是 | 
 | webApplicationFirewallPolicies | 是 | 
 

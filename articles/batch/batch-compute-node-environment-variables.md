@@ -1,6 +1,6 @@
 ---
-title: 计算节点环境变量 - Azure Batch | Microsoft Docs
-description: Azure Batch 分析的计算节点环境变量参考。
+title: 任务运行时环境变量-Azure Batch |Microsoft Docs
+description: 任务运行时环境变量指南和 Azure Batch 分析参考。
 services: batch
 author: laurenhughes
 manager: jeconnoc
@@ -10,16 +10,16 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
-ms.date: 02/07/2019
+ms.date: 04/23/2019
 ms.author: lahugh
-ms.openlocfilehash: 9902f38ddfd3035adcce697c2eb5b77bdc1d8c9c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: c46f75c447becc8b15d4a6b8f979330db7ab95c7
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60782219"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575584"
 ---
-# <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch 计算节点环境变量
+# <a name="azure-batch-runtime-environment-variables"></a>Azure Batch 运行时环境变量
 
 [Azure Batch 服务](https://azure.microsoft.com/services/batch/)在计算节点上设置以下环境变量。 可以在任务命令行中引用这些环境变量，也可在命令行运行的程序和脚本中引用它们。
 
@@ -28,6 +28,12 @@ ms.locfileid: "60782219"
 ## <a name="environment-variable-visibility"></a>环境变量的可见性
 
 这些环境变量仅在**任务用户**（即执行任务的节点上的用户帐户）的上下文中可见。 如果通过远程桌面协议 (RDP) 或安全外壳 (SSH) [远程连接](https://azure.microsoft.com/documentation/articles/batch-api-basics/#connecting-to-compute-nodes)到计算节点并列出环境变量，将*看不到*这些变量。 这是因为，用于远程连接的用户帐户与任务使用的帐户不同。
+
+若要获取环境变量的当前值，请启动`cmd.exe`在 Windows 上的计算节点或`/bin/sh`在 Linux 节点上：
+
+`cmd /c set <ENV_VARIABLE_NAME>`
+
+`/bin/sh printenv <ENV_VARIABLE_NAME>`
 
 ## <a name="command-line-expansion-of-environment-variables"></a>环境变量的命令行扩展
 

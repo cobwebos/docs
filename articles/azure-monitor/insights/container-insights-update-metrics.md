@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2019
 ms.author: magoedte
 ms.openlocfilehash: f0c9b84f31810a4b0cec93738f7ce327bc24d8d0
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62101602"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685620"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>如何更新用于容器的 Azure Monitor 启用指标
 用于容器的 azure 监视器引入了对从 Azure Kubernetes 服务 (AKS) 群集节点和 pod 收集指标和写入到 Azure Monitor 指标存储区的支持。 此更改旨在显示性能图表，将在 Azure 门户仪表板中的性能图表固定的支持中的聚合计算 （平均值、 计数、 最大、 最小值、 总和） 时提供改进的及时性和支持的指标警报。

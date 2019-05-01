@@ -10,34 +10,32 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: lewlu
-ms.openlocfilehash: 30ceb0e396597530071c70c4448761d914acb4ac
-ms.sourcegitcommit: 031e4165a1767c00bb5365ce9b2a189c8b69d4c0
+ms.openlocfilehash: 02e9b64c89eda1471d644e0116bbf8c1c061ccc3
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/13/2019
-ms.locfileid: "59548398"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682517"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>将人脸数据迁移到其他人脸订阅
 
 本指南介绍了如何使用快照功能将人脸数据（如已保存的人脸 PersonGroup）迁移到其他人脸 API 订阅。 这样一来，就不用在迁移或扩展操作时重复生成和训练 PersonGroup 或 FaceList 了。 例如，可能已使用免费试用订阅创建了 PersonGroup，现在要将它迁移到付费订阅，或者可能需要跨区域同步人脸数据，以便执行大规模的企业操作。
 
-这种相同的迁移策略也适用于 LargePersonGroup 和 LargeFaceList 对象。 如果不熟悉本指南中的概念，请查看[术语表](../Glossary.md)中的相关概念定义。 本指南结合使用人脸 API .NET 客户端库与 C#。
+这种相同的迁移策略也适用于 LargePersonGroup 和 LargeFaceList 对象。 如果您不熟悉本指南中的概念，请参阅在其定义[人脸识别概念](../concepts/face-recognition.md)指南。 本指南结合使用人脸 API .NET 客户端库与 C#。
 
-## <a name="prerequisites"></a>先决条件
+## <a name="prerequisites"></a>必备组件
 
 - 两个人脸 API 订阅密钥（一个包含现有数据，另一个是迁移目标）。 请按照[创建认知服务帐户](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)中的说明操作，订阅人脸 API 服务并获取密钥。
 - 对应于目标订阅的人脸 API 订阅 ID 字符串（位于 Azure 门户上的“概览”边栏选项卡中）。 
 - 任何版本的 [Visual Studio 2015 或 2017](https://www.visualstudio.com/downloads/)。
 
-
 ## <a name="create-the-visual-studio-project"></a>创建 Visual Studio 项目
 
 本指南使用简单的控制台应用来执行人脸数据迁移。 有关完整实现，请参阅 GitHub 上的[人脸 API 快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)。
 
-1. 在 Visual Studio 中，新建“控制台应用(.NET Framework)”项目，并将它命名为“FaceApiSnapshotSample”。 
+1. 在 Visual Studio 中，新建“控制台应用(.NET Framework)”项目，并将它命名为“FaceApiSnapshotSample”。
 1. 获取所需的 NuGet 包。 在解决方案资源管理器中，右键单击项目并选择“管理 NuGet 包”。 单击“浏览”选项卡，选择“包括预发行版”，然后找到并安装以下包：
     - [Microsoft.Azure.CognitiveServices.Vision.Face 2.3.0-preview](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.2.0-preview)
-
 
 ## <a name="create-face-clients"></a>创建人脸客户端
 
@@ -226,7 +224,9 @@ private static async Task IdentifyInPersonGroup(IFaceClient client, string perso
 await FaceClientEastAsia.Snapshot.DeleteAsync(snapshotId);
 ```
 
-## <a name="related-topics"></a>相关主题
+## <a name="next-steps"></a>后续步骤
+
+接下来，请参阅相关 API 参考文档，了解使用快照功能的示例应用程序或按照开始使用此处所述的其他 API 操作的操作方法指南。
 
 - [快照参考文档 (.NET SDK)](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.snapshotoperations?view=azure-dotnet)
 - [人脸 API 快照示例](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/app-samples/FaceApiSnapshotSample/FaceApiSnapshotSample)

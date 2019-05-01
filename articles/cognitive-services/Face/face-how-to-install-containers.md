@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: article
 ms.date: 04/16/2019
 ms.author: diberry
-ms.openlocfilehash: 5028a05fe74f1d19ed5e43ac797df87bbe3382e8
-ms.sourcegitcommit: c3d1aa5a1d922c172654b50a6a5c8b2a6c71aa91
+ms.openlocfilehash: a3087718a3eece1e19f05757ace64ba00aa0dc58
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/17/2019
-ms.locfileid: "59680717"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682675"
 ---
 # <a name="install-and-run-face-containers"></a>安装并运行人脸容器
 
@@ -34,10 +34,9 @@ ms.locfileid: "59680717"
 |熟悉 Docker | 应对 Docker 概念有基本的了解，例如注册表、存储库、容器和容器映像，以及基本的 `docker` 命令的知识。| 
 |Azure`Cognitive Services`资源 |若要使用容器，必须具有：<br><br>一个_认知服务_Azure 资源和关联的计费密钥计费终结点 URI。 这两个值的资源概述和密钥页上可用，并且要求来启动该容器。 您需要添加`face/v1.0`路由到终结点 URI，如下面的 BILLING_ENDPOINT_URI 示例中所示。 <br><br>**{BILLING_KEY}**：资源密钥<br><br>**{BILLING_ENDPOINT_URI}**：终结点 URI 示例如下：`https://westus.api.cognitive.microsoft.com/face/v1.0`|
 
-
 ## <a name="request-access-to-the-private-container-registry"></a>请求访问专用容器注册表
 
-[!INCLUDE [Request access to private preview](../../../includes/cognitive-services-containers-request-access.md)]
+[!INCLUDE [Request access to private container registry](../../../includes/cognitive-services-containers-request-access.md)]
 
 ### <a name="the-host-computer"></a>主计算机
 
@@ -162,5 +161,4 @@ ApiKey={BILLING_KEY}
 * 查看[配置容器](face-resource-container-config.md)了解配置设置
 * 查看[“人脸”概述](Overview.md)，详细了解如何检测和识别人脸  
 * 有关该容器支持的方法的详细信息，请参阅[人脸 API](//westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)。
-* 参阅[常见问题解答 (FAQ)](FAQ.md) 解决与“人脸”功能相关的问题。
 * 使用更多[认知服务容器](../cognitive-services-container-support.md)

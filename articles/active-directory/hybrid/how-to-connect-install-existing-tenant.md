@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/13/2017
+ms.date: 04/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6775f6e37a5b282afcfcdce7f93751e852923366
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 1495c14ae4c588661452aa3696019da00be47548
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60349546"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571383"
 ---
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect：已有租户时
 有关如何使用 Azure AD Connect 的大多数主题假设一开始使用的是新 Azure AD 租户，其中不包含任何用户或其他对象。 但是，如果一开始使用的 Azure AD 租户中填充了用户和其他对象，现在想要使用 Connect，那么，本主题适合你阅读。
@@ -58,6 +58,15 @@ Azure AD 中的对象在云中 (Azure AD) 或本地掌控。 对于单个对象�
 
 ### <a name="other-objects-than-users"></a>除用户以外的其他对象
 对于启用了邮件的组和联系人，可以根据 proxyAddresses 进行软匹配。 硬匹配不适用，因为只能对用户更新 sourceAnchor/immutableID（使用 PowerShell）。 对于未启用邮件的组，目前不支持软匹配和硬匹配。
+
+### <a name="admin-role-considerations"></a>管理员角色的注意事项
+若要防止不受信任的本地用户与具有任何管理员角色的云用户匹配，Azure AD Connect 将不匹配的本地用户对象的管理员角色的对象。 这是默认情况下。 解决此行为，您可以执行以下操作：
+
+1.  从仅限云用户对象中删除目录角色
+2.  触发同步
+3.  可以选择目录角色将重新添加到云中的用户对象后发生匹配。
+
+
 
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>基于 Azure AD 中的数据创建新的本地 Active Directory
 某些客户最初在 Azure AD 中使用仅限云的解决方案，而没有构建本地 AD。 后来，他们想要使用本地资源，并希望基于 Azure AD 数据构建本地 AD。 对于这种情况，Azure AD Connect 无法起到作用。 它不会创建本地用户，并且没有能力将本地密码设置为与 Azure AD 中的密码相同。

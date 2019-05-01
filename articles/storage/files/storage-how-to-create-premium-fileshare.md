@@ -1,6 +1,6 @@
 ---
-title: 创建 Azure 高级文件存储帐户
-description: 在本文中，您将学习如何创建 Azure 高级文件存储帐户和高级文件共享。
+title: 创建 Azure 文件存储存储帐户
+description: 在本文中，您将学习如何创建文件存储 （预览版） 和高级文件共享。
 services: storage
 author: roygara
 ms.service: storage
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 72dec14dde47580313e57bb3b8d7315604929277
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 0eca706c9082b1fa60e13a0878fbb3061425c9bf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60844508"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574425"
 ---
 # <a name="how-to-create-an-azure-premium-file-share"></a>如何创建 Azure 的高级文件共享
 

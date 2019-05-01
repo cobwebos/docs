@@ -2,22 +2,19 @@
 title: Azure 密钥保管库客户数据功能 - Azure 密钥保管库 | Microsoft Docs
 description: 了解 Key Vault 中的客户数据
 services: key-vault
-documentationcenter: ''
 author: barclayn
 manager: barbkess
 tags: azure-resource-manager
 ms.service: key-vault
-ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: reference
 ms.date: 01/07/2019
 ms.author: barclayn
-ms.openlocfilehash: 12492fad419fdc703ddabcf2288be282f2fd47be
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f044c0da1cb1ed3f3c7f118764cc0e685cb3998f
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60305454"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687031"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Azure Key Vault 客户数据功能
 
