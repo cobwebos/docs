@@ -58,7 +58,7 @@ InnoDB 缓冲池和最大连接数不可配置，因[定价层](concepts-pricing
 |**Parameter**|**固定值**|
 | :------------------------ | :-------- |
 |基本层中的 innodb_file_per_table|OFF|
-|innodb_flush_log_at_trx_commit|1|
+|innodb_flush_log_at_trx_commit|第|
 |sync_binlog|第|
 |innodb_log_file_size|512MB|
 

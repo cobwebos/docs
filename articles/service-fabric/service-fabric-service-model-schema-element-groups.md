@@ -416,7 +416,7 @@ ms.locfileid: "60837566"
 |---|---|
 |名称|AveragePartitionLoadScalingTrigger|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 ##### <a name="xml-source"></a>XML 源
 ```xml

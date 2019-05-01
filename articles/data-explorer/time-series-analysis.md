@@ -9,7 +9,7 @@ ms.topic: conceptual
 ms.date: 04/07/2019
 ms.openlocfilehash: 8492f736e64366802b3601f9b5fc8bd1d9b6ea79
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60827331"
@@ -144,7 +144,7 @@ demo_series3
 | --- | --- | --- | --- |
 |   | periods | 评分 | days |
 |   | 84 | 0.820622786055595 | 7 |
-|   | 12 | 0.764601405803502 | 1 |
+|   | 12 | 0.764601405803502 | 第 |
 
 该函数会检测每日和每周季节性。 每日评分小于每周评分，因为周末的天数不同于工作日天数。
 

@@ -1208,7 +1208,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |---|---|
 |名称|EntryPoint|
 |type|[EntryPointDescriptionType](#entrypointdescriptiontype-complextype)|
-|minOccurs|第|
+|minOccurs|1|
 
 #### <a name="environmentvariables"></a>EnvironmentVariables
 
@@ -1217,7 +1217,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |名称|EnvironmentVariables|
 |type|[EnvironmentVariablesType](#environmentvariablestype-complextype)|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 ## <a name="configoverridetype-complextype"></a>ConfigOverrideType complexType
 描述导入的服务清单中特定配置包的配置重写。
@@ -1876,7 +1876,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |名称|RepositoryCredentials|
 |type|[RepositoryCredentialsType](#repositorycredentialstype-complextype)|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 #### <a name="healthconfig"></a>HealthConfig
 指定容器的 docker HEALTHCHECK 集成选项。
@@ -1916,7 +1916,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |名称|LogConfig|
 |type|[ContainerLoggingDriverType](#containerloggingdrivertype-complextype)|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 #### <a name="networkconfig"></a>NetworkConfig
 指定容器的网络配置。
@@ -1926,7 +1926,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |名称|NetworkConfig|
 |type|[ContainerNetworkConfigType](#containernetworkconfigtype-complextype)|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 #### <a name="volume"></a>数据量(Volume)
 指定要绑定到容器的卷。
@@ -3065,12 +3065,12 @@ X509 证书的指纹。
 |名称|端口|
 |type|xs:string|
 
-#### <a name="protocol"></a>协议
+#### <a name="protocol"></a>Protocol
 终结点协议。 替代服务清单中的值。 HTTPS 终结点还必须在应用程序清单中声明 EndpointCertificate 和 EndpointBindingPolicy。 之后应用程序升级时不能更改该协议。 
 
 |属性|值|
 |---|---|
-|名称|协议|
+|名称|Protocol|
 |type|xs:string|
 |use|可选|
 
@@ -3198,12 +3198,12 @@ URI 方案。 替代服务清单中的值。 例如“http”、“https”或�
 |名称|名称|
 |use|必填|
 
-#### <a name="protocol"></a>协议
+#### <a name="protocol"></a>Protocol
 终结点的协议：http、https、tcp 或 udp。 HTTPS 终结点还必须在应用程序清单中声明 EndpointCertificate 和 EndpointBindingPolicy。 之后应用程序升级时不能更改该协议。 
 
 |属性|值|
 |---|---|
-|名称|协议|
+|名称|Protocol|
 |use|可选|
 |default|tcp|
 
@@ -4626,11 +4626,11 @@ OS 的内部版本。 例如，Windows Server 版本 1709 的内部版本为 162
 |type|xs:positiveInteger|
 |use|必填|
 
-#### <a name="protocol"></a>协议
+#### <a name="protocol"></a>Protocol
 
 |属性|值|
 |---|---|
-|名称|协议|
+|名称|Protocol|
 |use|可选|
 |default|tcp|
 
@@ -4669,11 +4669,11 @@ OS 的内部版本。 例如，Windows Server 版本 1709 的内部版本为 162
 |type|xs:positiveInteger|
 |use|必填|
 
-#### <a name="protocol"></a>协议
+#### <a name="protocol"></a>Protocol
 
 |属性|值|
 |---|---|
-|名称|协议|
+|名称|Protocol|
 |use|可选|
 |default|tcp|
 
@@ -6498,7 +6498,7 @@ LogicalDirectory 的路径。
 |名称|ServicePackageResourceGovernancePolicy|
 |type|[ServicePackageResourceGovernancePolicyType](#servicepackageresourcegovernancepolicytype-complextype)|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 #### <a name="resourcegovernancepolicy"></a>ResourceGovernancePolicy
 指定代码包的资源限制。
@@ -6544,7 +6544,7 @@ LogicalDirectory 的路径。
 |名称|NetworkPolicies|
 |type|[NetworkPoliciesType](#networkpoliciestype-complextype)|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 ## <a name="servicemanifestreftype-complextype"></a>ServiceManifestRefType complexType
 按引用导入服务清单。 当前，服务清单文件 (ServiceManifest.xml) 必须存在于生成包中。
@@ -6981,7 +6981,7 @@ ServiceManifest 文件的校验和值。
 |名称|ServicePackageContainerPolicy|
 |type|[ServicePackageContainerPolicyType](#servicepackagecontainerpolicytype-complextype)|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 #### <a name="servicefabricruntimeaccesspolicy"></a>ServiceFabricRuntimeAccessPolicy
 
@@ -8003,7 +8003,7 @@ ServiceManifest 文件的校验和值。
 |---|---|
 |名称|TargetInstallation|
 |type|[WindowsFabricDeploymentInformation](#windowsfabricdeploymentinformation-complextype)|
-|minOccurs|1|
+|minOccurs|第|
 
 ## <a name="unmanageddlltype-complextype"></a>UnmanagedDllType complexType
 不受支持，请不要使用。 要托管的非托管程序集的名称（例如 Queue.dll）。

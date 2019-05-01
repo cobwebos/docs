@@ -36,7 +36,7 @@ ms.locfileid: "60734569"
 
 下表显示了一些包含筛选器的 URL 示例：
 
-|协议|示例|
+|Protocol|示例|
 |---|---|
 |HLS|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=m3u8-aapl,filter=myAccountFilter)`<br/>对于 HLS v3，请使用： `format=m3u8-aapl-v3`。|
 |MPEG DASH|`https://amsv3account-usw22.streaming.media.azure.net/fecebb23-46f6-490d-8b70-203e86b0df58/bigbuckbunny.ism/manifest(format=mpd-time-csf,filter=myAssetFilter)`|

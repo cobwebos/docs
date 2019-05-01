@@ -17,7 +17,7 @@ ms.date: 03/11/2019
 ms.author: jowargo
 ms.openlocfilehash: 642e586371a0ce6abe362f8b10b54bfd8baff678
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60872031"

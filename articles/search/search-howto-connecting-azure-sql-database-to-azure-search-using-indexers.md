@@ -320,7 +320,7 @@ SQL 索引器公开多个配置设置：
 
 **问：是否可以将 Azure SQL 索引器与在 Azure 中 IaaS VM 上运行的 SQL 数据库配合使用？**
 
-可以。 但是，需要允许搜索服务连接到数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
+是的。 但是，需要允许搜索服务连接到数据库。 有关详细信息，请参阅[配置从 Azure 搜索索引器到 Azure VM 上 SQL Server 的连接](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md)。
 
 **问：是否可以将 Azure SQL 索引器与本地运行的 SQL 数据库配合使用？**
 

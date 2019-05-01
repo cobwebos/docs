@@ -15,7 +15,7 @@ ms.date: 03/15/2019
 ms.author: sedusch
 ms.openlocfilehash: 2121cd661f5f1c2c14dc32eb2a4cbf717c966c67
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60935719"

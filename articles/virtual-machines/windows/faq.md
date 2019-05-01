@@ -57,10 +57,10 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 不。 不可以。如果希望 VM 成为可用性集的一部分，需要在该集内创建 VM。 目前不支持在创建 VM 之后再将其添加到可用性集。
 
 ## <a name="can-i-upload-a-virtual-machine-to-azure"></a>我是否可以将虚拟机上传到 Azure？
-可以。 相关说明，请参阅[将本地 VM 迁移到Azure](on-prem-to-azure.md)。
+是的。 相关说明，请参阅[将本地 VM 迁移到Azure](on-prem-to-azure.md)。
 
 ## <a name="can-i-resize-the-os-disk"></a>我是否可以调整 OS 磁盘的大小？
-可以。 有关说明，请参阅 [How to expand the OS drive of a Virtual Machine in an Azure Resource Group](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何扩展 Azure 资源组中虚拟机的 OS 驱动器）。
+是的。 有关说明，请参阅 [How to expand the OS drive of a Virtual Machine in an Azure Resource Group](expand-os-disk.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)（如何扩展 Azure 资源组中虚拟机的 OS 驱动器）。
 
 ## <a name="can-i-copy-or-clone-an-existing-azure-vm"></a>我是否可以复制或克隆现有的 Azure VM？
 可以。 借助托管映像，可创建虚拟机的映像，然后使用该映像生成多个新的 VM。 相关说明，请参阅[创建 VM 的自定义映像](tutorial-custom-images.md)。
@@ -89,7 +89,7 @@ Azure 存储帐户还可提供用于操作系统磁盘和任意数据磁盘的�
 不允许使用以下用户名：
 <table>
     <tr>
-        <td style="text-align:center">第</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
+        <td style="text-align:center">1</td><td style="text-align:center">123</td><td style="text-align:center">a</td><td style="text-align:center">actuser</td>
     </tr>
     <tr>
         <td style="text-align:center">adm</td><td style="text-align:center">admin</td><td style="text-align:center">admin1</td><td style="text-align:center">admin2</td>

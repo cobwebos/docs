@@ -2,21 +2,15 @@
 title: 使用 Azure Active Directory 启用 Microsoft AppSource 和 Azure 市场列表 | Azure
 description: 在 Azure 市场和 AppSource 中使用 Azure Active Directory 为应用和服务发布者启用列表类型。
 services: Azure, AppSource, Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: ''
 author: qianw211
 manager: pabutler
-editor: ''
-ms.assetid: ''
 ms.service: marketplace
-ms.workload: ''
-ms.tgt_pltfrm: ''
-ms.devlang: ''
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: qianw211
 ms.openlocfilehash: 247a45a38d732ace0455c6ca2ebbd5c44c384004
 ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: MT
+ms.translationtype: HT
 ms.contentlocale: zh-CN
 ms.lasthandoff: 04/23/2019
 ms.locfileid: "60734246"
