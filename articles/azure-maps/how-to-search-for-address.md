@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8ab2c73030c0860fc709a774b9fd84d20a6d7c99
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 497ffb5acf6262dfb42f490efe68e1ea26c777cb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60904052"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572385"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>使用 Azure Maps 搜索服务查找地址
 
@@ -68,7 +68,7 @@ Maps 搜索服务是一组 RESTful API，可让开发人员搜索地址、地点
 
     “pizza”模糊查询字符串返回了 10 条[兴趣点结果](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) (POI)，其类别属于“pizza”和“restaurant”。 每条结果返回了相应位置的街道地址、纬度/经度值、视口和入口点。
   
-    此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 可以使用 **countrySet** 参数来指定只搜索应用程序需要覆盖的国家/地区，因为默认行为是搜索全球，这可能会返回不必要的结果。
+    此查询的结果会有变化，并不与任何特定的参照位置紧密相关。 可以使用**countrySet**参数来指定只有国家/地区为其应用程序需要覆盖，因为默认行为是要搜索整个世界，可能会返回不必要的结果。
 
 5. 将以下键/值对添加至 Params 部分，并单击“发送”：
 

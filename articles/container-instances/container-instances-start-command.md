@@ -7,12 +7,12 @@ ms.service: container-instances
 ms.topic: article
 ms.date: 04/15/2019
 ms.author: danlep
-ms.openlocfilehash: 78136a081e52ef3f12d672d01449ce616534462e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: da94a4c79694f511d41e5c8dda8c786fc7049726
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60537643"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569635"
 ---
 # <a name="set-the-command-line-in-a-container-instance-to-override-the-default-command-line-operation"></a>若要重写默认命令行操作的容器实例中设置命令行
 
@@ -24,7 +24,15 @@ ms.locfileid: "60537643"
 
 * 默认情况下，指定命令行*单一而无需 shell 启动进程*容器中。 例如，命令行可能会运行 Python 脚本或可执行文件。 
 
-* 若要执行多个命令，开始您的命令行通过设置容器操作系统中的 shell 环境 (示例： `bin/sh`， `/bin/bash`， `cmd`)。 按照命令行程序将合并多个命令，在序列中运行的约定。
+* 若要执行多个命令，请先通过设置容器操作系统中受支持的 shell 环境命令行。 示例：
+
+  |操作系统  |默认 shell  |
+  |---------|---------|
+  |Ubuntu     |   `/bin/bash`      |
+  |Alpine     |   `/bin/sh`      |
+  |Windows     |    `cmd`     |
+
+  按照命令行程序将合并多个命令，在序列中运行的约定。
 
 * 具体取决于容器配置，可能需要设置命令行可执行文件的完整路径或参数。
 

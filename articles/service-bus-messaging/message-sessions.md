@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: c767406ceec703b5c14680ec96fdf703c2316044
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 2c206d42e220534225cfef0415a65c1f9494f761
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60403668"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569790"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>消息会话：先进先出 (FIFO) 
 
@@ -79,8 +79,7 @@ ms.locfileid: "60403668"
 
 ## <a name="next-steps"></a>后续步骤
 
-- [完整示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/Microsoft.Azure.ServiceBus/BasicSendReceiveUsingQueueClient)展示了如何使用 .NET Standard 库发送和接收服务总线队列中基于会话的消息。
-- [示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions)展示了如何使用 .NET Framework 客户端处理会话感知消息。 
+- 请参阅[Microsoft.Azure.ServiceBus 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions)或[Microsoft.ServiceBus.Messaging 示例](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions)有关的示例，使用.NET Framework 客户端处理会话感知消息。 
 
 若要了解有关服务总线消息传送的详细信息，请参阅以下主题：
 

@@ -17,12 +17,12 @@ ms.date: 04/22/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 894c42e4102a3565ff43798d33afb4046fda76bd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 4b924746c00a438ec4ac81dacc02905565adf30e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60286689"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682115"
 ---
 # <a name="azure-ad-activity-logs-in-azure-monitor"></a>Azure Monitor 中的 azure AD 活动日志
 
@@ -72,14 +72,24 @@ ms.locfileid: "60286689"
 
 每个审核日志事件使用大约 2 KB 的数据存储。 如果一个租户有 100,000 个用户，每天会引发大约 150 万个事件，则每天需要大约 3 GB 的数据存储。 由于写入时每批需要大约五分钟的时间，则可预计每月大约有 9,000 次写入操作。 
 
-下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。 此表仅包括处理/存储成本和不将订阅费用。 
+
+下表包含的内容是根据租户大小进行的成本估算。这是一个常规用途的 v2 存储帐户，位于“美国西部”区域，保留期至少为一年。 若要针对应用程序的预期数据量进行更准确的估算，请使用 [Azure 存储定价计算器](https://azure.microsoft.com/pricing/details/storage/blobs/)。
 
 
-| 日志类别       | 用户数 | 每日事件数 | 每月 （30 天） 的事件 | 每月以美元 (est)。 |
-| ---                | ---             | ---            | ---                        | ---                          | 
-| 审核和登录名 | 100,000         | 16,500,000     | 495,000,000                | $1093                        |
-| 审核              | 100,000         | 1,500,000      | 45,000,000                 | $246.66                      |
-| 登录           | 100,000         | 15,000,000     | 450,000,000                | $847.28                      |
+| 日志类别 | 用户数 | 每日事件数 | 每月数据量（估算） | 每月成本（估算） | 每年成本（估算） |
+|--------------|-----------------|----------------------|--------------------------------------|----------------------------|---------------------------|
+| 审核 | 100,000 | 150&nbsp;万 | 90 GB | $1.93 | $23.12 |
+| 审核 | 1,000 | 15,000 | 900 MB | $0.02 | $0.24 |
+| 登录 | 1,000 | 34,800 | 4 GB | $0.13 | $1.56 |
+| 登录 | 100,000 | 1,500&nbsp;万 | 1.7 TB | $35.41 | $424.92 |
+ 
+
+
+
+
+
+
+
 
 
 ### <a name="event-hub-messages-for-activity-logs"></a>活动日志的事件中心消息

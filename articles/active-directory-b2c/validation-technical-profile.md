@@ -3,19 +3,19 @@ title: 定义采用 Azure Active Directory B2C 的自定义策略的验证技术
 description: 在 Azure Active Directory B2C 的自定义策略中定义 Azure Active Directory 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 466ed4c2bd353e4a5ec3bec5535b70a90446ee0b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 11efd1fa3431d8200545cf1327e98cec6ed1f59e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60418263"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683159"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>定义采用 Azure Active Directory B2C 的自定义策略的验证技术配置文件
 
@@ -72,7 +72,7 @@ Precondition 元素包含以下元素：
 
 | 元素 | 出现次数 | 描述 |
 | ------- | ----------- | ----------- |
-| Value | 1:n | 检查使用的数据。 如果此检查的类型是 `ClaimsExist`，则此字段指定要进行查询的 ClaimTypeReferenceId。 如果检查的类型是 `ClaimEquals`，则此字段指定要进行查询的 ClaimTypeReferenceId。 而另一个值元素包含要检查的值。|
+| 值 | 1:n | 检查使用的数据。 如果此检查的类型是 `ClaimsExist`，则此字段指定要进行查询的 ClaimTypeReferenceId。 如果检查的类型是 `ClaimEquals`，则此字段指定要进行查询的 ClaimTypeReferenceId。 而另一个值元素包含要检查的值。|
 | 操作 | 1:1 | 在业务流程步骤中的前置条件检查为 true 时应执行的操作。 Action 的值设置为 `SkipThisValidationTechnicalProfile`。 指定不应执行关联的验证技术配置文件。 |
 
 ### <a name="example"></a>示例

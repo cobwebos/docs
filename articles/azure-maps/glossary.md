@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
-ms.openlocfilehash: 11e49d362508e9720cf65fc20e020930b5f5c3ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 9be99bc9ac4683fea97333c9d6cb783f0fde35c5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60769832"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575355"
 ---
 # <a name="glossary"></a>术语表
 
@@ -63,7 +63,7 @@ ms.locfileid: "60769832"
 
 <a name="bearing"></a> **方位**：一个点相对于另一个点的水平方向。 这表示为相对于北，按顺时针方向从 0 度到 360 度的角度。 
 
-<a name="boundary"></a> **边界**：分隔相邻政治实体的线或多边形，例如国家、地区和资产。 边界是可能或可能不遵循物理特征（例如河流、山脉或墙壁）的线。
+<a name="boundary"></a> **边界**：线条或多边形分隔相邻的政治实体，例如国家/地区、 学区和属性。 边界是可能或可能不遵循物理特征（例如河流、山脉或墙壁）的线。
 
 <a name="bounds"></a> **边界**：请参阅[边界框](#bounding-box)。
 
@@ -91,13 +91,13 @@ ms.locfileid: "60769832"
 
 <a name="coordinate-system"></a> **坐标系统**：用于定义二维或三维空间中点位置的参考框架。
 
-<a name="country-code"></a> **国家/地区代码**：基于 ISO 标准的国家/地区唯一标识符。 ISO2 是一个国家/地区的双字符代码（例如 US），ISO3 则表示三字符代码（例如 USA）。
+<a name="country-code"></a> **国家/地区代码**：国家/地区基于 ISO 标准唯一标识符。 ISO2 是一个国家/地区的双字符代码（例如 US），ISO3 则表示三字符代码（例如 USA）。
 
-<a name="country-subdivision"></a> **国家/地区细分**：国家/地区的第一级细分，通常称为省/自治区/直辖市。
+<a name="country-subdivision"></a> **国家/地区细分**：国家/地区，通常称为州或省的第一级别细分。
 
-<a name="country-secondary-subdivision"></a> **国家/地区的第二级细分**：国家/地区的第二级细分，通常称为市。
+<a name="country-secondary-subdivision"></a> **国家/地区的第二级细分**：国家/地区，通常称为国家/地区的第二级别细分。
 
-<a name="country-tertiary-subdivision"></a> **国家/地区的第三级细分**：国家/地区的第三级细分，通常是一个命名区域，如 ward。
+<a name="country-tertiary-subdivision"></a> **国家/地区的第三级细分**：第三级细分的国家/地区，通常如 ward 的命名区域。
 
 <a name="cross-street"></a> **十字路口**：两个或多个街道相交的点。
 
@@ -283,7 +283,7 @@ ms.locfileid: "60769832"
 
 <a name="post-code"></a> **邮寄编码**：请参阅[邮政编码](#postal-code)。
 
-<a name="postal-code"></a> **邮政编码**：采用特定格式的一系列字母和/或数字，由国家的邮政服务用于将地理区域划分为区域，以简化邮件的传递。
+<a name="postal-code"></a> **邮政编码**：一系列字母或数字，或两者，采用特定格式，国家/地区的邮政服务用于将地理区域划分为区域，以便简化的邮件传送。
 
 <a name="prime-meridian"></a> **本初子午线**：表示经度为 0 度的经线。 通常，经度值在向西移至 180 度时递减，在向东移至 -180 度时递增。 
 
@@ -351,11 +351,11 @@ ms.locfileid: "60769832"
 
 <a name="terrain"></a> **地形**：具有特定特征的土地区域，例如沙地或山地地形。
 
-<a name="thematic-maps"></a> **主题地图**：主题地图是用于反映有关地理区域的主题的简单地图。 此类地图的常见方案是根据某些数据指标为国家/地区等行政区域着色。
+<a name="thematic-maps"></a> **主题地图**：主题地图是用于反映有关地理区域的主题的简单地图。 这种类型的常见方案是映射的颜色管理区域，例如根据某些指标数据的国家/地区。
 
 <a name="tile-layer"></a> **图块层**：通过将地图图块（矩形部分）组合成连续图层进行显示的图层。 图块分为两类：光栅图像图块和矢量图块。 光栅图块层通常提前呈现并在服务器上作为图像存储。 这会占用大量存储空间。 矢量图块图层在客户端应用程序中即时呈现，因此服务器端存储要求较小。
 
-<a name="time-zone"></a> **时区**：地球上的一个区域，因为法律、商业和社会目的而遵守统一标准时间。 时区往往遵循国家/地区及其细分的界限。
+<a name="time-zone"></a> **时区**：地球上的一个区域，因为法律、商业和社会目的而遵守统一标准时间。 时区往往遵循国家/地区和其各自的边界。
 
 <a name="transaction"></a> **事务**：Azure Maps 使用事务许可模型，其中：
 
@@ -398,5 +398,5 @@ ms.locfileid: "60769832"
 
 <a name="zip-code"></a> **邮编**：请参阅[邮政编码](#postal-code)。
 
-<a name="Zoom level"></a> **缩放级别**：指定详细程度以及可见的地图数量。 当完全缩放到 0 级时，通常会显示完整的世界地图，但显示的详细信息有限，例如国家/地区名称和边界以及海洋名称。 当放大到接近等级 17 时，地图将显示具有详细道路信息的几个城市街区的区域。 有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
+<a name="Zoom level"></a> **缩放级别**：指定详细程度以及可见的地图数量。 时一直缩小级别 0，完整的世界地图通常会在视图中，但以及和海洋名称将显示受限制的详细信息，例如国家/地区名称和边框。 当放大到接近等级 17 时，地图将显示具有详细道路信息的几个城市街区的区域。 有关详细信息，请参阅[缩放级别和磁贴网格](zoom-levels-and-tile-grid.md)文档。
 

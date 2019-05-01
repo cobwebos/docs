@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: rolyon
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7675441316e42c7f0a220abe77bc8c62158ef918
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4169b15304afe1ecc4af9c5354798b29ad9dba38
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60351476"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571356"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>使用 Azure AD 访问评审管理用户从条件性访问策略中排除
 
@@ -38,7 +38,7 @@ ms.locfileid: "60351476"
 
 ![命名位置](./media/conditional-access-exclusion/named-locations.png)
 
-但在某些情况下，用户可能有合法的理由需要从这些受禁的国家/地区登录。 例如，用户可能因公或因私外出旅行。 在此示例中，阻止这些国家/地区的条件访问策略可以针对排除在策略之外的用户创建一个专用的云安全组。 在旅行期间需要进行访问的用户可以使用 [Azure AD 自助服务组管理](../users-groups-roles/groups-self-service-management.md)将自己添加到该组。
+但是，在某些情况下，用户可能必须从这些被阻止的国家/地区登录的合理原因。 例如，用户可能因公或因私外出旅行。 在此示例中，条件性访问策略来阻止这些国家/地区可能有从策略中排除的用户的专用的云安全组。 在旅行期间需要进行访问的用户可以使用 [Azure AD 自助服务组管理](../users-groups-roles/groups-self-service-management.md)将自己添加到该组。
 
 另举一例，某个条件访问策略可能会[阻止大多数用户的旧式身份验证](https://cloudblogs.microsoft.com/enterprisemobility/2018/06/07/azure-ad-conditional-access-support-for-blocking-legacy-auth-is-in-public-preview/)。 Microsoft 强烈建议在租户中阻止使用旧式协议，以提高安全状态。 但是，如果某些用户绝对需要使用旧式身份验证方法通过 Office 2010 或基于 IMAP/SMTP/POP 的客户端来访问你的资源，则你可以从阻止旧式身份验证方法的策略中排除这些用户。
 
@@ -97,9 +97,9 @@ ms.locfileid: "60351476"
 
 让我们通过两个示例来了解可在哪种情况下使用访问评审管理条件访问策略中的排除项。
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countries"></a>示例 1：对从受阻止国家/地区访问的用户进行访问评审
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>示例 1：访问评审的用户访问被阻止的国家/地区
 
-假设某个条件访问策略会阻止来自特定国家/地区的访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
+让我们假设您有一个条件性访问策略，阻止从某些国家/地区访问。 该策略排除了某个组。 下面是评审该组成员的建议访问评审方法。
 
 > [!NOTE]
 > 创建访问评审需全局管理员或用户管理员角色。
@@ -110,9 +110,9 @@ ms.locfileid: "60351476"
 
 3. 此组的所有成员在评审范围内。
 
-4. 每个用户必须自我证明他们仍需从这些受禁国家/地区进行访问，因此他们仍需是该组的成员。
+4. 每个用户将需要自我证明他们仍需要具有从这些被阻止的国家/地区的访问权限，因此它们仍需是组的成员。
 
-5. 如果用户未对评审请求作出响应，则会自动将他们从该组中删除，因此，在这些国家/地区旅行时，他们不再能够访问租户。
+5. 如果用户不会对评审请求作出响应，它们将从组中，会自动删除，因此，可以不能再访问租户到各个国家/地区的旅行期间。
 
 6. 启用邮件通知，让用户知道访问评审的开始和完成时间。
 

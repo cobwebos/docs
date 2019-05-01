@@ -1,27 +1,19 @@
 ---
 title: 将 Java 用户定义函数 (UDF) 与 HDInsight 中的 Apache Hive 配合使用 - Azure
 description: 了解如何创建可用于 Apache Hive 的基于 Java 的用户定义函数 (UDF)。 此 UDF 示例将表中的文本字符串转换为小写。
-services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 8d4f8efe-2f01-4a61-8619-651e873c7982
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
-ms.devlang: java
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-origin.date: 03/21/2019
-ms.date: 04/29/2019
-ms.author: v-yiso
+ms.date: 03/21/2019
+ms.author: hrasheed
 ms.openlocfilehash: 24c2e8b9600b3d622d3d6b42b3bc3615a87ff853
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62122024"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686634"
 ---
 # <a name="use-a-java-udf-with-apache-hive-in-hdinsight"></a>将 Java UDF 与 HDInsight 中的 Apache Hive 配合使用
 
@@ -201,13 +193,13 @@ cd C:\HDI
 2. 使用`scp`命令以将文件复制到 HDInsight 群集，通过输入以下命令：
 
     ```cmd
-    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight
+    scp ./target/ExampleUDF-1.0-SNAPSHOT.jar sshuser@mycluster-ssh.azurehdinsight.net:
     ```
 
 3. 连接到群集使用 SSH 通过输入以下命令：
 
     ```cmd
-    ssh sshuser@mycluster-ssh.azurehdinsight.cn
+    ssh sshuser@mycluster-ssh.azurehdinsight.net
     ```
 
 4. 从打开的 SSH 会话中，将 jar 文件复制到 HDInsight 存储。

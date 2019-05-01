@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a945316df27460fef48a8bb4d43e46d412d2ae81
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 080a37a88e46117a9963f07c14d64f00c6bae6d5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60359148"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570471"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>将现有 NPS 基础结构与 Azure 多重身份验证集成
 
@@ -183,6 +183,8 @@ NPS 服务器会连接到 Azure Active Directory，并对 MFA 请求进行身份
 6. 脚本完成后，PowerShell 会显示一条成功消息。  
 
 在要针对负载均衡设置的任何其他 NPS 服务器上重复这些步骤。
+
+如果你以前的计算机证书已过期，并且已生成新证书，则应删除任何过期的证书。 具有已过期的证书可能会导致问题的 NPS 扩展启动。
 
 > [!NOTE]
 > 如果使用自己的证书，而不是使用 PowerShell 脚本生成的证书，请确保它们符合 NPS 命名约定。 使用者名称必须为“CN=\<TenantID\>”，“OU=Microsoft NPS Extension”。 

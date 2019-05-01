@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: troubleshooting
 ms.date: 4/11/2019
 ms.author: alkarche, glenga
-ms.openlocfilehash: 3cf6a0d080e2d8cafcab8e69a614b59a470c7aba
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: b673e625e1a50c32e3d8580ec442792ed8611703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60637040"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572600"
 ---
 # <a name="frequently-asked-questions-about-networking-in-azure-functions"></a>有关 Azure Functions 中的网络常见问题
 
@@ -28,11 +28,14 @@ ms.locfileid: "60637040"
 你可以限制在两种方法中的 internet 访问权限：
 
 * [IP 限制](../app-service/app-service-ip-restrictions.md):限制对 function app 的 IP 范围的入站的流量。
+    * IP 限制下，您现在还能够配置[服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)，这样就将限制您仅接受来自特定虚拟网络的入站的流量的函数。
 * 删除的所有 HTTP 触发器。 对于某些应用程序，它就足以只需避免 HTTP 触发器和任何其他事件源用于触发函数。
 
 请记住，Azure 门户编辑器需要直接访问正在运行的函数。 通过 Azure 门户的任何代码更改需要你正在使用浏览门户具有其 IP 加入允许列表的设备。 但您仍可以使用现有的网络限制使用平台功能选项卡下的任何内容。
 
 ## <a name="how-do-i-restrict-my-function-app-to-a-virtual-network"></a>如何限制对虚拟网络的我函数的应用程序？
+
+能够限制**入站**到虚拟网络使用的函数应用的流量[服务终结点](./functions-networking-options.md#private-site-access)。 此配置仍允许进行到 internet 的出站调用此函数应用。
 
 完全限制的函数，以便所有流量都流经虚拟网络的唯一方法是使用内部负载均衡应用服务环境。 此选项部署你的站点上的虚拟网络中的专用基础结构，并将发送的所有触发器和通过虚拟网络的流量。 
 
@@ -48,8 +51,11 @@ ms.locfileid: "60637040"
 
 ## <a name="how-can-i-trigger-a-function-from-a-resource-in-a-virtual-network"></a>如何触发一个函数中的虚拟网络中的资源？
 
-你可以仅通过将函数应用部署到应用服务环境触发一个函数中的虚拟网络中的资源。 有关使用应用服务环境的详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
+可以允许从虚拟网络使用调用 HTTP 触发器[服务终结点](./functions-networking-options.md#private-site-access)。 
 
+此外可以通过将函数应用部署到应用服务环境中触发一个函数中的虚拟网络中的资源。 有关使用应用服务环境的详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
+
+高级和应用服务计划支持 HTTP 触发器从虚拟网络，但仅应用服务环境支持通过虚拟网络中的所有其他函数触发器类型。
 
 ## <a name="how-can-i-deploy-my-function-app-in-a-virtual-network"></a>如何将函数应用虚拟网络中的部署？
 

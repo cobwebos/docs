@@ -9,19 +9,20 @@ ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
-ms.reviewer: sstein
+ms.reviewer: sstein, carlrab
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: ec9bd3ee106571484c513c2d005a374a90c1d17e
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: 74a52df4eab8a3e471e541889cde74846af00fb8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59359699"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574182"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>通过 Azure SQL 数据库预留容量预付 SQL 数据库计算资源费用
 
 与即用即付相比，预付计算资源费用可以节省 Azure SQL 数据库的成本。 通过 Azure SQL 数据库预留容量，可以提前承诺为期一年或三年的 SQL 数据库购买量，以获得可观的计算资源价格折扣。 若要购买 SQL 数据库预留容量，需要指定 Azure 区域、部署类型、性能层和期限。
+
 
 不需要将预留容量分配给特定的 SQL 数据库实例（单一数据库、弹性池或托管实例）。 已在运行或者新部署的匹配 SQL 数据库实例将自动获得此权益。 购买预留容量便会预付为期一年或三年的计算资源费用。 购买预留容量后，与预留属性匹配的 SQL 数据库计算资源费用不再按照即用即付的费率计收。 预留容量不包括与 SQL 数据库实例关联的软件、网络或存储费用。 预留期限结束时，计费权益随即过期，SQL 数据库将按即用即付价格计费。 虚拟机预留实例不自动续订。 有关定价信息，请参阅 [SQL 数据库预留容量套餐](https://azure.microsoft.com/pricing/details/sql-database/managed/)。
 

@@ -1,28 +1,19 @@
 ---
 title: 将 MapReduce 和 SSH 连接与 HDInsight 中的 Apache Hadoop 配合使用 - Azure
 description: 了解如何使用 SSH 通过 HDInsight 上的 Apache Hadoop 运行 MapReduce 作业。
-services: hdinsight
-documentationcenter: ''
-author: Blackmist
-manager: cgronlunb
-editor: cgronlun
-tags: azure-portal
-ms.assetid: 844678ba-1e1f-4fda-b9ef-34df4035d547
+author: hrasheed-msft
+ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: big-data
-origin.date: 04/10/2018
-ms.date: 01/14/2019
-ms.author: v-yiso
+ms.date: 04/10/2018
+ms.author: hrasheed
 ms.openlocfilehash: 3448a5e89f6930a5bdcb7d0d77b92576e58fc90b
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62129376"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687299"
 ---
 # <a name="use-mapreduce-with-apache-hadoop-on-hdinsight-with-ssh"></a>通过 SSH 将 MapReduce 与 HDInsight 上的 Apache Hadoop 配合使用
 
@@ -47,13 +38,13 @@ ms.locfileid: "62129376"
 使用 SSH 连接到群集。 例如，以下命令将以 **sshuser** 帐户身份连接到名为 **myhdinsight** 的群集：
 
 ```bash
-ssh sshuser@myhdinsight-ssh.azurehdinsight.cn
+ssh sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **如果使用用于 SSH 身份验证的证书密钥**，则可能需要指定客户端系统上的私钥位置，例如：
 
 ```bash
-ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.cn
+ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.net
 ```
 
 **如果使用用于 SSH 身份验证的密码**，则需要根据提示提供密码。
@@ -88,7 +79,7 @@ ssh -i ~/mykey.key sshuser@myhdinsight-ssh.azurehdinsight.cn
 
     此命令显示两个文件（`_SUCCESS` 和 `part-r-00000`）。 `part-r-00000` 文件包含此作业的输出。
 
-    > [!NOTE]
+    > [!NOTE]  
     > 某些 MapReduce 作业可能会将结果拆分成多个 **part-r-#####** 文件。 如果是这样，请使用 ##### 后缀指示文件的顺序。
 
 4. 若要查看输出，请使用以下命令：

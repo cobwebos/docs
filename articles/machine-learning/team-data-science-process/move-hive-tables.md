@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28e399eaf62731d7c38cea5f5a8cb8ebf876e686
-ms.sourcegitcommit: 1c2cf60ff7da5e1e01952ed18ea9a85ba333774c
+ms.openlocfilehash: 404335ce0cd05085c79cbeea29ad95f79008289c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/12/2019
-ms.locfileid: "59522497"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681948"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>从 Blob 存储创建 Hive 表和加载数据
 
@@ -47,7 +47,7 @@ ms.locfileid: "59522497"
 2. [使用 Hive 编辑器提交 Hive 查询](#hive-editor)
 3. [使用 Azure PowerShell 命令提交 Hive 查询](#ps)
 
-Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用户的 Hive 备忘单](http://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)很有用。
+Hive 查询类似于 SQL。 如果熟悉 SQL，可能会发现[适用于 SQL 用户的 Hive 备忘单](https://hortonworks.com/wp-content/uploads/2013/05/hql_cheat_sheet.pdf)很有用。
 
 提交 Hive 查询时，还可控制 Hive 查询的输出目标，无论是输出到屏幕上还是头节点上的本地文件，或是输入到 Azure blob。
 

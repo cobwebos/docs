@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 03/14/2018
 ms.author: raynew
-ms.openlocfilehash: ea5495867d5f453db014e000e01d533d049dc628
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: f5ec5a64f1de39cd0d196242fb1a93669dbab15d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60849294"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681850"
 ---
 # <a name="manage-and-monitor-backed-up-sql-server-databases"></a>管理和监视已备份的 SQL Server 数据库
 
@@ -129,9 +129,9 @@ Azure 备份显示中的所有手动触发的作业**备份作业**门户。 请
 
 3. 在“受保护的服务器”中，选择要取消注册的服务器。 若要删除保管库，必须取消注册所有服务器。
 
-4. 右键单击受保护的服务器，然后选择**删除**。
+4. 右键单击受保护的服务器，然后选择**注销**。
 
-   ![选择“删除”](./media/backup-azure-sql-database/delete-protected-server.png)
+   ![选择“删除”](./media/backup-azure-sql-database/delete-protected-server.jpg)
 
 ## <a name="re-register-extension-on-the-sql-server-vm"></a>SQL Server VM 上重新注册扩展
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 034/08/2019
-ms.openlocfilehash: 0437ba24727c06e874b49908a5a22d0063de72fd
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/08/2019
+ms.openlocfilehash: 4406789e3f9a10ff814aca0c2fd114de8a2abb69
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331530"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572669"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>什么是 Azure SQL 数据库中的单一数据库
 

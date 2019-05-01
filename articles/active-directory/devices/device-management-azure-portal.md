@@ -17,15 +17,14 @@ ms.date: 10/26/2018
 ms.author: joflore
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 516a2d3b0f81bcef1ed636be9d1da9a270cc7069
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9418c72ec9aad02d848d8b40c3f0152f656fdea8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60297220"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571138"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>如何使用 Azure 门户管理设备
-
 
 使用 Azure Active Directory (Azure AD) 中的设备管理，可以确保用户从满足安全性和符合性标准的设备访问资源。 
 
@@ -48,7 +47,7 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 3. 在“管理”部分单击“设备”。
 
     ![配置设备设置](./media/device-management-azure-portal/74.png)
- 
+
 可在“设备”页上完成以下操作：
 
 - 配置设备管理设置
@@ -59,7 +58,6 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 - 查看与设备管理相关的审核日志  
   
-
 ## <a name="configure-device-settings"></a>配置设备设置
 
 要使用 Azure 门户管理设备，这些设备需要[已注册或已加入](overview.md#getting-devices-under-the-control-of-azure-ad) Azure AD。 作为管理员，可以通过配置设备设置来微调注册和加入设备的过程。 
@@ -70,23 +68,18 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
 ![管理 Intune 设备](./media/device-management-azure-portal/21.png)
 
-
 - **用户可将设备加入 Azure AD** - 可通过此设置选择可以[将设备加入](overview.md#azure-ad-joined-devices) Azure AD 的用户。 默认值为“全部”。 此设置仅适用于 Windows 10 上的 Azure AD 加入。
 
-- **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 此处添加的用户会添加到 Azure AD 中的“设备管理员”角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。 
+- **已加入 Azure AD 设备上的其他本地管理员** - 可选择具有此设备的本地管理员权限的用户。 此处添加的用户会添加到 Azure AD 中的“设备管理员”角色。 默认情况下，Azure AD 中的全局管理员和设备所有者均具有本地管理员权限。 此选项属于高级版功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
 
 - **用户可向 Azure AD 注册其设备** - 需要配置此设置，以允许向 Azure AD [注册](overview.md#azure-ad-registered-devices)设备。 如果选择“无”，则在设备未加入 Azure AD 或混合 Azure AD 时，不允许进行注册。 登记到 Microsoft Intune 或 Office 365 移动设备管理 (MDM) 需要进行注册。 如果已配置其中的任一服务，则会选中“全部”且“无”不可用。
 
-- **需要进行多重身份验证才能加入设备** - 可以选择用户是否需要进行第二重身份验证因素才能将其设备[加入](overview.md#azure-ad-joined-devices) Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 此设置不会影响 Windows 10 或 Windows 7 的混合加入。 这仅适用于 Windows 10 上的 Azure AD 加入和 Windows 10、iOS 和 Android 的 BYO 设备注册。 
+- **需要进行多重身份验证才能加入设备** - 可以选择用户是否需要进行第二重身份验证因素才能将其设备[加入](overview.md#azure-ad-joined-devices) Azure AD。 默认值为“否”。 在注册设备时，建议要求多重身份验证。 为此设备启用多重身份验证前，必须确保已针对注册其设备的用户配置多重身份验证。 有关各种 Azure 多重身份验证服务的详细信息，请参阅 [Azure 多重身份验证入门](../authentication/concept-mfa-whichversion.md)。 此设置不会影响 Windows 10 或 Windows 7 的混合加入。 这仅适用于 Windows 10 上的 Azure AD 加入和 Windows 10、iOS 和 Android 的 BYO 设备注册。
 
-- **最大设备数** - 可通过此设置选择用户可在 Azure AD 中拥有的最大设备数。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 设备配额会计入当前已加入 Azure AD 或已注册 Azure AD 的所有设备。 默认值为 20。
+- **最大设备数** - 可通过此设置选择用户可在 Azure AD 中拥有的最大设备数。 如果用户达到此配额，则必须先删除一个或多个现有设备，然后才可添加其他设备。 设备配额会计入当前已加入 Azure AD 或已注册 Azure AD 的所有设备。 默认值为 20。 *此限制不适用于已加入混合 Azure AD 的设备。*
 
 - **用户可跨设备同步设置和应用数据** - 此设置默认为“无”。 选择特定用户或组，或者选择“全部”，允许用户跨其 Windows 10 设备同步设置和应用数据。 深入了解 Windows 10 中同步的工作原理。
 此选项属于高级功能，通过 Azure AD Premium 或企业移动性套件 (EMS) 提供。
-
-
-
-
 
 ## <a name="locate-devices"></a>查找设备
 
@@ -96,22 +89,17 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 
     ![所有设备](./media/device-management-azure-portal/41.png)
 
-
 - “用户”页的“管理”部分中的“设备”
- 
+
     ![所有设备](./media/device-management-azure-portal/43.png)
 
-
-
 使用这两个选项均可获得一个具有以下功能的视图：
-
 
 - 支持使用显示名称作为筛选器搜索设备。
 
 - 提供有关已注册和已加入设备的详细概述
 
 - 支持执行常见的设备管理任务
-   
 
 ![所有设备](./media/device-management-azure-portal/51.png)
 
@@ -120,21 +108,18 @@ Azure 门户提供了用于管理设备的集中场所。 可以使用[直接链
 ## <a name="device-management-tasks"></a>设备管理任务
 
 作为全局管理员或云设备管理员，你可以管理已注册或已加入设备。 Intune 服务管理员可执行以下操作：
- 
+
 - 更新设备 - 例如启用/禁用设备等日常操作
 
 - 删除设备 - 设备停用且应在 Azure AD 中将其删除时
 
 本部分介绍有关常见设备管理任务的信息。
 
-
-
 ### <a name="manage-an-intune-device"></a>管理 Intune 设备
 
 Intune 管理员可以管理标记为“Microsoft Intune”的设备。 
 
 ![管理 Intune 设备](./media/device-management-azure-portal/31.png)
-
 
 ### <a name="enable--disable-an-azure-ad-device"></a>启用/禁用 Azure AD 设备
 
@@ -148,13 +133,10 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 
     ![管理 Intune 设备](./media/device-management-azure-portal/32.png)
 
-
 **备注：**
 
 - 你需要是全局管理员或云设备管理员在 Azure AD，以启用 / 禁用设备中。 
 - 禁用设备可阻止设备与 Azure AD，从而阻止设备访问你设备 CA 的受保护的 Azure AD 资源，或使用 WH4B 凭据成功进行身份验证。 
-
-
 
 ### <a name="delete-an-azure-ad-device"></a>删除 Azure AD 设备
 
@@ -168,23 +150,15 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 
     ![删除设备](./media/device-management-azure-portal/34.png)
 
-
 **备注：**
 
 - 必须是 Azure AD 中的全局管理员或 Intune 管理员才能删除设备。
-
 - 删除设备：
- 
-    - 可阻止设备访问你的 Azure AD 资源。 
-
-    - 可删除附加到设备的所有详细信息，例如适用于 Windows 设备的 BitLocker 密钥。  
-
-    - 表示一个不可恢复的活动，除非必需，否则不建议。
+   - 可阻止设备访问你的 Azure AD 资源。 
+   - 可删除附加到设备的所有详细信息，例如适用于 Windows 设备的 BitLocker 密钥。  
+   - 表示一个不可恢复的活动，除非必需，否则不建议。
 
 如果设备由另一管理机构（例如 Microsoft Intune）管理，请确保在 Azure AD 中删除前，已擦除/停用该设备。
-
- 
-
 
 ### <a name="view-or-copy-device-id"></a>查看或复制设备 ID
 
@@ -192,11 +166,10 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 
 ![查看设备 ID](./media/device-management-azure-portal/35.png)
   
-
 ### <a name="view-or-copy-bitlocker-keys"></a>查看或复制 BitLocker 密钥
 
 你可以查看和复制 BitLocker 密钥，帮助用户恢复其加密的驱动器。 这些密钥仅适用于已加密并将其密钥存储在 Azure AD 中的 Windows 设备。 访问设备的详细信息时，可以复制这些密钥。
- 
+
 ![查看 BitLocker 密钥](./media/device-management-azure-portal/36.png)
 
 若要查看或复制 BitLocker 密钥，你需要是设备所有者或者是至少分配了以下一个角色的用户：
@@ -210,9 +183,7 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 > [!NOTE]
 > 加入混合 Azure AD 的 Windows 10 设备没有所有者。 因此，如果按所有者查找设备未找到它，请按设备 ID 搜索。
 
-
 ## <a name="audit-logs"></a>审核日志
-
 
 设备活动通过活动日志提供。 这包括由设备注册服务或用户触发的活动：
 
@@ -221,11 +192,10 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 - 更改设备设置
 
 - 删除设备或更新设备等设备操作
- 
+
 审核数据的入口点为“设备”页的“活动”部分中的“审核日志”。
 
 ![审核日志](./media/device-management-azure-portal/61.png)
-
 
 审核日志有一个默认列表视图，用于显示：
 
@@ -240,9 +210,8 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 ![审核日志](./media/device-management-azure-portal/63.png)
 
 单击工具栏中的“列”即可自定义列表视图。
- 
-![审核日志](./media/device-management-azure-portal/64.png)
 
+![审核日志](./media/device-management-azure-portal/64.png)
 
 要将所报告数据的范围缩小到适当的级别，可以使用以下字段筛选审核数据：
 
@@ -259,7 +228,4 @@ Intune 管理员可以管理标记为“Microsoft Intune”的设备。
 
 ## <a name="next-steps"></a>后续步骤
 
-* [Azure Active Directory 中的设备管理简介](overview.md)
-
-
-
+[Azure Active Directory 中的设备管理简介](overview.md)

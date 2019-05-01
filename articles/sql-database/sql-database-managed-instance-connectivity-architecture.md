@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 manager: craigg
 ms.date: 04/16/2019
-ms.openlocfilehash: fa19ea0c7ebeea0170822db0dae298f84e958983
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 399e2585f541f28b3880e69b508cfd643b2f2263
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60006125"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64686297"
 ---
 # <a name="connectivity-architecture-for-a-managed-instance-in-azure-sql-database"></a>Azure SQL 数据库中托管实例的连接体系结构
 
@@ -80,7 +80,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 在托管实例中启动连接时（提供备份和审核日志），流量似乎是从管理终结点的公共 IP 地址启动的。 可以通过将防火墙规则设置为只允许托管实例的 IP 地址，来限制从托管实例访问公共服务。 有关详细信息，请参阅[验证托管实例的内置防火墙](sql-database-managed-instance-management-endpoint-verify-built-in-firewall.md)。
 
 > [!NOTE]
-> 将转到托管的实例的区域内的 Azure 服务的流量进行了优化，并为该原因不到托管实例管理终结点公共 IP 地址的 nat 型。 因此如果您需要使用基于 IP 的防火墙规则，最常进行存储，服务需要在不同的区域从托管实例。
+> 将转到托管的实例的区域内的 Azure 服务的流量进行了优化并为此不 nat 型到托管实例管理终结点公共 IP 地址。 因此如果您需要使用基于 IP 的防火墙规则，最常进行存储，服务需要在不同的区域从托管实例。
 
 ## <a name="network-requirements"></a>网络要求
 
@@ -97,7 +97,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-inbound-security-rules"></a>强制性入站安全规则
 
-| Name       |端口                        |协议|源           |目标|操作|
+| 名称       |端口                        |Protocol|源           |目标|操作|
 |------------|----------------------------|--------|-----------------|-----------|------|
 |管理  |9000、9003、1438、1440、1452|TCP     |任意              |MI SUBNET  |允许 |
 |mi_subnet   |任意                         |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -105,7 +105,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="mandatory-outbound-security-rules"></a>强制性出站安全规则
 
-| Name       |端口          |协议|源           |目标|操作|
+| 名称       |端口          |Protocol|源           |目标|操作|
 |------------|--------------|--------|-----------------|-----------|------|
 |管理  |80、443、12000|TCP     |MI SUBNET        |AzureCloud |允许 |
 |mi_subnet   |任意           |任意     |MI SUBNET        |MI SUBNET  |允许 |
@@ -122,7 +122,7 @@ Microsoft 管理的托管的实例使用的管理终结点。 此终结点位于
 
 ### <a name="user-defined-routes"></a>用户定义的路由
 
-|Name|地址前缀|下一跃点|
+|名称|地址前缀|下一跃点|
 |----|--------------|-------|
 |subnet_to_vnetlocal|MI SUBNET|虚拟网络|
 |mi-13-64-11-nexthop-internet|13.64.0.0/11|Internet|

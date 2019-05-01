@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2674e5ca12269d44e111f140fce77bd8bc0c9ae7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e94b307d562c4317a87713612a62e6da007f9703
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361480"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570640"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>使用 Azure 网络策略服务器扩展集成 VPN 基础结构与 Azure MFA
 
@@ -76,7 +76,7 @@ ms.locfileid: "60361480"
 
 ## <a name="prerequisites"></a>必备组件
 
-此部分详细介绍集成 MFA 与远程桌面网关之前必须满足的先决条件。 开始集成之前，必须具备以下先决条件：
+本部分详细介绍集成 MFA 与 VPN 之前，必须完成的先决条件。 开始集成之前，必须具备以下先决条件：
 
 * VPN 基础结构
 * 网络策略和访问服务角色
@@ -338,7 +338,7 @@ NPS 扩展要求使用 Windows Server 2008 R2 SP1 或更高版本，且需安装
 
 ### <a name="install-the-nps-extension"></a>安装 NPS 扩展
 
-NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计中作为 RADIUS 服务器运行的服务器上。 请勿在远程桌面服务器上安装 NPS 扩展。
+NPS 扩展需要安装在安装了网络策略和访问服务角色并在设计中作为 RADIUS 服务器运行的服务器上。 不要*不*在 VPN 服务器上安装 NPS 扩展。
 
 1. 从 Microsoft 下载中心[下载 NPS 扩展](https://aka.ms/npsmfa)。
 

@@ -11,27 +11,29 @@ ms.topic: article
 ms.date: 01/14/2019
 ms.author: tulasim
 ms.custom: seodec18
-ms.openlocfilehash: d40330f257694e81704bf6fffa1fd2df8ed86c06
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a908185f2d8475afb642250d1499cffa539aca4d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61376028"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573493"
 ---
 # <a name="add-chit-chat-to-a-knowledge-base"></a>向知识库添加聊天内容
 
 向机器人中添加聊天内容可使其更健谈而有趣。 使用 QnA Maker 中的聊天功能，可以轻松地将预填充的一组最常用的聊天内容添加到知识库 (KB) 中。 这可以用作你的机器人的个性化内容的起点，并节省从头开始编写它们的时间和成本。  
 
-此数据集有大约 100 个场景的聊天内容，使用三种角色（专业、友好、有趣）的口音。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。 
+此数据集具有大约 100 个方案的 chit 聊天中的多个角色，如专业版、 友好和 Witty 声音。 选择与机器人的语音最接近的角色。 对于给定的用户查询，QnA Maker 会尝试将其与最接近的已知聊天内容 QnA 匹配。  
 
-不同的个性的一些示例：
+下面是一些示例不同的个性。 您可以看到所有个人设置数据集以及详细信息的个性[此处](https://github.com/Microsoft/BotBuilder-PersonalityChat/tree/master/CSharp/Datasets)。
+
 <!-- added quotes so acrolinx doesn't score these sentences -->
-|用户查询|专业|友好|有趣|
+|用户查询|专业版|友好|与红|
 |--|--|--|--|
-|`You are awesome`|`I aim to serve.`|`That's so nice of you!`|`Flattery. I like it.`|
+|`You are awesome`|`I aim to serve.`|`Aw, I'm blushing.`|`Flattery. I like it.`|
 |`Are you hungry?`|`I don't need to eat.`|`I only do food for thought.`|`Eating would require a lot of things I don't have. Like a digestive system. And silverware.`|
-|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`You can't handle my dulcet tones.`|
-|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Aw, that's sweet.`|`Sure. Take me to city hall. See what happens.`|
+|`Sing a song`|`I'm afraid I'm not musically inclined.`|`La la la, tra la la. I'm awesome at this.`|`Those who can, do. Those who can't, don't sing.`|
+|`Will you marry me?`|`I think it's best if we stick to a professional relationship.`|`Definitely didn't see that coming!`|`Sure. Take me to city hall. See what happens.`|
+
 
 
 > [!NOTE]

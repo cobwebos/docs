@@ -15,12 +15,12 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 46e70850ba9e5984e36643f1b9ecc9db29eec149
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: f273104366b3e583bd98ebcc6d50387a3fb1d335
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60386901"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572823"
 ---
 # <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health：版本发行历史记录
 Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特性和功能。 本文列出已发布的版本和功能。  
@@ -31,18 +31,23 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 适用于同步的 Azure AD Connect Health 与 Azure AD Connect 安装相集成。 详细了解 [Azure AD Connect 版本历史记录](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history)有关功能反馈，请在 [Connect Health User Voice 频道](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)进行投票
 
+## <a name="april-2019"></a>2019 年 4 月
+**代理更新：** 
+* 适用于 AD FS （版本 3.1.46.0） 的 azure AD Connect Health 代理 
+   1. 修复检查重复的 SPN 警报过程的 ADFS
+
 ## <a name="march-2019"></a>2019 年 3 月
 **代理更新：** 
-* 适用于 AD DS （版本 3.1.41.0） 的 azure AD Connect Health 代理 
-* .NET 版本集合。
-* 改进的性能计数器收集时缺少某些类别。
-* 阻止生成的多个监视代理实例上的 bug 修复。
+* 适用于 AD DS （版本 3.1.41.0） 的 azure AD Connect Health 代理  
+   1. .NET 版本集合
+   2. 改进的性能计数器收集时缺少某些类别
+   3. 阻止生成的多个监视代理实例上的 bug 修复
 
 * 适用于 AD FS （版本 3.1.41.0） 的 azure AD Connect Health 代理 
-* 集成并使用 ADFSToolBox 的 AD FS 测试脚本的升级。
-* .NET 版本集合。
-* 改进的性能计数器收集时缺少某些类别。
-* 阻止生成的多个监视代理实例上的 bug 修复。
+   1. 集成并升级的 AD FS 测试脚本使用 ADFSToolBox
+   2. 实现.NET 版本的集合
+   3. 改进的性能计数器收集时缺少某些类别
+   4. 阻止生成的多个监视代理实例上的 bug 修复
 
 
 ## <a name="november-2018"></a>2018 年 11 月
@@ -51,15 +56,15 @@ Azure Active Directory 团队会定期更新 Azure AD Connect Health 的新特�
 
 **代理更新：** 
 * 适用于 AD DS 的 Azure AD Connect Health 代理（3.1.24.0 版） 
-* 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
-* 减少全局编录警报噪音
-* 运行状况代理注册 bug 修复
+   1. 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
+   2. 减少全局编录警报噪音
+   3. 运行状况代理注册 bug 修复
 
-* 适用于 AD FS 的 Azure AD Connect Health 代理（3.1.24.0 版）
-* 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
-* Test-ADFSRequestToken 对本地化操作系统的支持
-* 解决了诊断代理事件处理程序锁定问题
-* 运行状况代理注册 bug 修复
+* 适用于 AD FS 的 Azure AD Connect Health 代理（3.1.24.0 版）  
+   1. 传输层安全性 (TLS) 协议版本 1.2 符合性和强制执行
+   2. Test-ADFSRequestToken 对本地化操作系统的支持
+   3. 解决了诊断代理事件处理程序锁定问题
+   4. 运行状况代理注册 bug 修复
 
 ## <a name="august-2018"></a>2018 年 8 月 
 *  适用于同步的 Azure AD Connect Health（3.1.7.0 版），与 Azure AD Connect 1.1.880.0 版一起发布    

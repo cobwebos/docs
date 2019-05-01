@@ -6,15 +6,15 @@ ms.service: automation
 ms.subservice: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/15/2019
+ms.date: 04/26/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 81602f1a30fb753d7a8fcfccace581cd8c7b2f0c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 94912d5aa10ddd2e67c33bcbb416f007c85f105c
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60880309"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574110"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure 自动化中的源代码管理集成
 
@@ -52,14 +52,16 @@ Azure 自动化支持三种类型的源代码管理：
 |存储库     | 存储库或项目的名称。 返回前 200 个存储库。 若要搜索存储库，在字段中键入名称，然后单击**GitHub 上的搜索**。|
 |分支     | 要从源文件中提取的分支。 分支目标不是适用于 TFVC 源控件类型。          |
 |文件夹路径     | 包含要同步的 runbook 的文件夹。示例：/Runbooks </br>*指定的文件夹中的唯一 runbook 会同步。不支持递归。*        |
-|自动同步     | 在源代码管理存储库中提交时打开或关闭自动同步         |
+|自动同步<sup>1</sup>     | 在源代码管理存储库中提交时打开或关闭自动同步         |
 |发布 Runbook     | 如果设置为**上**后从源代码管理，它们将自动发布同步 runbook。         |
 |描述     | 用于提供其他详细信息的一个文本字段        |
+
+<sup>1</sup>若要启用自动同步，使用 Azure 存储库配置源代码管理集成时，您必须是项目管理员。
 
 ![源代码管理摘要](./media/source-control-integration/source-control-summary.png)
 
 > [!NOTE]
-> 配置源代码管理时请确保使用正确的帐户登录。 如果有疑问，请在浏览器中打开新的选项卡并从 visualstudio.com 或 github.com 中注销，然后再次尝试连接源代码管理。
+> 你的源代码管理存储库的登录名可能不同于你的 Azure 门户的登录名。 请确保你使用登录的正确帐户为源控件存储库配置源代码管理时。 如果有疑问，请在浏览器中打开新的选项卡并从 visualstudio.com 或 github.com 中注销，然后再次尝试连接源代码管理。
 
 ## <a name="configure-source-control---powershell"></a>配置源代码管理-PowerShell
 

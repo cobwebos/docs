@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/27/2019
+ms.date: 04/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 26f3fe9c2483dda3b9350c110b2e8adf60dcd21e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: e2e783a7c34216624126946eef84f56977d4c049
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60387207"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572411"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect：版本发行历史记录
 Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特性和功能。 并非所有的新增内容都适用于所有受众。
@@ -43,12 +43,12 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 遵循此过程时，发行版的版本号将以“X”形式显示在次要版本号位置，例如“1.3.X.0”- 这表示此文档中的发行说明适用于以“1.3”开头的所有版本。 完成发布过程后，我们会立即将发行版本号更新为最近发布的版本，并将发布状态更新为“已发布供下载和自动升级”。
 并非所有版本的 Azure AD Connect 都可用于自动升级。 版本状态将指示版本是否可用于自动升级或仅供下载。 如果在 Azure AD Connect 服务器上启用了自动升级，那么该服务器将自动升级到针对自动升级发布的最新版 Azure AD Connect。 请注意，并非所有 Azure AD Connect 配置都有资格进行自动升级。 请点击此链接阅读有关[自动升级](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-automatic-upgrade)的详细信息
 
-## <a name="13x0"></a>1.3.X.0 
+## <a name="13200"></a>1.3.20.0 
 
 ### <a name="release-status"></a>版本状态 
 
-3/25/2019：待定
- 
+04/24/2019:已发布，供下载
+
 ### <a name="new-features-and-improvements"></a>新增功能和改进 
 
 - 添加了对域刷新的支持 
@@ -64,7 +64,7 @@ Azure Active Directory (Azure AD) 团队会定期更新 Azure AD Sync 的新特�
 - 升级到了 ADAL 3.19.8 以便对 Ping 执行 WS-Trust 修复，并添加了对新 Azure 实例的支持 
 - 修改了组同步规则，以便将声明所需的 samAccountName、DomainNetbios 和 DomainFQDN 传送到云中 
 - 修改默认同步规则处理 – 阅读更多[此处](how-to-connect-fix-default-rules.md)。
-- 添加了一个作为 Windows 服务运行的新代理。 此代理名为“管理代理”，可用于对 Azure AD Connect 服务器进行更深入的远程诊断，以帮助 Microsoft 工程师在收到支持案例时进行故障排除。 在[此处](whatis-aadc-admin-agent.md)详细了解管理代理。 
+- 添加了一个作为 Windows 服务运行的新代理。 此代理名为“管理代理”，可用于对 Azure AD Connect 服务器进行更深入的远程诊断，以帮助 Microsoft 工程师在收到支持案例时进行故障排除。 未安装和默认情况下启用此代理。  有关如何安装和启用代理的详细信息请参阅[什么是 Azure AD Connect 管理员代理？](whatis-aadc-admin-agent.md)。 
 - 更新了最终用户许可协议 (EULA) 
 - 为使用 AD FS 作为登录类型的部署添加了自动升级支持。  借助此新增功能，在升级过程中不再需要更新 AD FS Azure AD 信赖方信任。 
 - 添加了一个 Azure AD 信任管理任务，该任务提供两个选项：分析/更新信任和重置信任。 

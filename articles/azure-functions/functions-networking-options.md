@@ -8,12 +8,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 4/11/2019
 ms.author: alkarche
-ms.openlocfilehash: b7af0149a690e3cc3a357a5cb769751e3674d374
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 49f89d39b3b917ec6357b241d7c413c2790eca25
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61437678"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575602"
 ---
 # <a name="azure-functions-networking-options"></a>Azure Functions 的网络选项
 
@@ -31,15 +31,14 @@ ms.locfileid: "61437678"
 
 ## <a name="matrix-of-networking-features"></a>网络功能矩阵
 
-|                |[消耗计划](functions-scale.md#consumption-plan)|⚠ [高级计划](functions-scale.md#premium-plan-public-preview)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
+|                |[消耗计划](functions-scale.md#consumption-plan)|[高级计划 （预览版）](functions-scale.md#premium-plan-public-preview)|[应用服务计划](functions-scale.md#app-service-plan)|[应用服务环境](../app-service/environment/intro.md)|
 |----------------|-----------|----------------|---------|-----------------------|  
 |[入站的 IP 限制](#inbound-ip-restrictions)|✅Yes|✅Yes|✅Yes|✅Yes|
+|[出站 IP 限制](#private-site-access)|❌No| ❌No|❌No|✅Yes|
 |[虚拟网络集成](#virtual-network-integration)|❌No|❌No|✅Yes|✅Yes|
-|[虚拟网络集成 （Azure ExpressRoute 和服务终结点） 的预览](#preview-version-of-virtual-network-integration)|❌No|⚠是的|⚠是的|✅Yes|
+|[预览 （Azure ExpressRoute 和出站的服务终结点） 的虚拟网络集成](#preview-version-of-virtual-network-integration)|❌No|✅Yes|✅Yes|✅Yes|
 |[混合连接](#hybrid-connections)|❌No|❌No|✅Yes|✅Yes|
-|[专用站点访问](#private-site-access)|❌No| ❌No|❌No|✅Yes|
-
-⚠ 此预览功能不适用于生产环境中使用。
+|[专用站点访问](#private-site-access)|❌No| ✅Yes|✅Yes|✅Yes|
 
 ## <a name="inbound-ip-restrictions"></a>入站的 IP 限制
 
@@ -49,6 +48,10 @@ IP 限制可用于定义按优先级顺序排列的 IP 地址的允许/拒绝访
 > 若要使用 Azure 门户的编辑器，在门户必须能够直接访问正在运行的函数应用。 此外，你要用于访问门户的设备必须具有其 IP 加入允许列表。 使用现有的网络限制，你仍可以访问的任何功能上**平台功能**选项卡。
 
 若要了解详细信息，请参阅[Azure App Service 静态访问限制](../app-service/app-service-ip-restrictions.md)。
+
+## <a name="outbound-ip-restrictions"></a>出站 IP 限制
+
+出站 IP 限制才适用于部署到应用服务环境的函数。 你可以配置为在其中部署应用服务环境的虚拟网络的出站限制。
 
 ## <a name="virtual-network-integration"></a>虚拟网络集成
 
@@ -88,7 +91,10 @@ IP 限制可用于定义按优先级顺序排列的 IP 地址的允许/拒绝访
 
 ## <a name="private-site-access"></a>专用站点访问
 
-专用站点访问指的是使您的应用程序只能从专用网络如从 Azure 虚拟网络中访问。 专用站点访问位于仅与应用服务环境配置具有内部负载均衡器 (ILB)。 有关详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
+专用站点访问指的是使您的应用程序只能从专用网络如从 Azure 虚拟网络中访问。 
+* 专用站点访问现已推出的高级和应用服务计划**服务终结点**配置。有关详细信息，请参阅[虚拟网络服务终结点](../virtual-network/virtual-network-service-endpoints-overview.md)
+    * 请记住，与服务终结点，你的函数上仍有完整出站访问 internet，即使使用 VNET 集成配置。
+* 专用站点访问位于仅与应用服务环境配置具有内部负载均衡器 (ILB)。 有关详细信息，请参阅[创建和使用具有应用服务环境的内部负载均衡器](../app-service/environment/create-ilb-ase.md)。
 
 有许多方法来访问其他托管选项中的虚拟网络资源。 但是，应用服务环境是允许通过虚拟网络的函数的触发器的唯一方法。
 

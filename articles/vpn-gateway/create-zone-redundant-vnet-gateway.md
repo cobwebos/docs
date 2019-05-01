@@ -5,15 +5,15 @@ services: vpn-gateway
 author: cherylmc
 Customer intent: As someone with a basic network background, I want to understand how to create zone-redundant gateways.
 ms.service: vpn-gateway
-ms.topic: conceptual
-ms.date: 03/13/2019
+ms.topic: article
+ms.date: 04/26/2019
 ms.author: cherylmc
-ms.openlocfilehash: f2b459ccfd7e3f513b9b6526864321ce247ae7aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 209c4deec2863de21362ab69a7f1d372921ac147
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60405832"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575564"
 ---
 # <a name="create-a-zone-redundant-virtual-network-gateway-in-azure-availability-zones"></a>在 Azure 可用性区域中创建区域冗余虚拟网络网关
 
@@ -133,13 +133,13 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GwIPConf1 -Subnet $subne
 ### <a name="for-expressroute"></a>对于 ExpressRoute 网关
 
 ```azurepowershell-interactive
-New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType ExpressRoute -GatewaySku ErGw1AZ
 ```
 
 ### <a name="for-vpn-gateway"></a>对于 VPN 网关
 
 ```azurepowershell-interactive
-New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased
+New-AzVirtualNetworkGateway -ResourceGroup $RG1 -Location $Location1 -Name $Gw1 -IpConfigurations $GwIPConf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1AZ
 ```
 
 ## <a name="faq"></a>常见问题解答

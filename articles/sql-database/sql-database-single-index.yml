@@ -14,7 +14,7 @@ metadata:
   ms.author: jovanpop-msft
   ms.reviewer: carlrab
   manager: craigg
-  ms.date: 05/06/2019
+  ms.date: 04/26/2019
 abstract:
   description: Azure SQL 数据库是基于最新稳定版 Microsoft SQL Server 数据库引擎的关系数据库即服务 (DBaaS)。 SQL 数据库是一种高性能、易于使用、可靠且安全的数据库，可以用来以所选编程语言构建新的应用程序、网站和微服务，且无需管理基础结构。 使用我们的快速入门、教程和示例了解如何使用 SQL 数据库。
   aside:

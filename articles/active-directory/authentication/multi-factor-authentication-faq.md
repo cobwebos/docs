@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e0277180f0d768bbcc83a0d8d05fbc4b8b25301e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bbebbeaad681618e8420ad842ec370ce62bc9eba
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60357471"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570834"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>有关 Azure 多重身份验证的常见问题解答
 
@@ -59,7 +59,7 @@ ms.locfileid: "60357471"
    * 759731 
    * 673801
 
-Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 Microsoft 不支持除美国和加拿大以外的国家/地区的简短代码
+Microsoft 不保证相同号码传送的短信或基于语音的多重身份验证提示一致。 为了用户的利益，Microsoft 在做出路线调整期间可能随时添加或删除简短代码，以提高短信传送能力。 Microsoft 不支持除美国和加拿大的国家/地区的简短代码。
 
 ## <a name="billing"></a>计费
 
@@ -95,7 +95,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 
 如果组织以独立服务的形式（采用基于使用量的计费模式）购买了 MFA，则可以在创建 MFA 提供程序时选择计费模式。 创建 MFA 提供程序后，无法更改计费模式。 不过，可以删除 MFA 提供程序，再创建采用不同计费模型的新提供程序。
 
-创建 MFA 提供程序时，可将它链接到 Azure Active Directory（也称为“Azure AD 租户”）。 如果当前 MFA 提供程序已与 Azure AD 租户相关联，可以安全删除 MFA 提供程序，再创建与同一 Azure AD 租户关联的新 MFA 提供程序。 或者，如果购买了足够多的 MFA、Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
+创建 MFA 提供程序时，它可以链接到的 Azure Active Directory 或"Azure AD 租户。" 如果当前 MFA 提供程序链接到 Azure AD 租户，可以安全地删除 MFA 提供程序，以及创建一个链接到同一 Azure AD 租户。 或者，如果购买了足够多的 MFA、Azure AD Premium 或企业移动性 + 安全性 (EMS) 许可证，可以覆盖启用 MFA 的所有用户，则可以删除整个 MFA 提供程序。
 
 如果 MFA 提供程序未与 Azure AD 租户相关联，或将新的 MFA 提供程序与其他 Azure AD 租户相关联，用户设置和配置选项不会转移到新的 MFA 提供程序。 此外，需要使用通过新 MFA 提供程序生成的激活凭据，重新激活现有 Azure MFA 服务器。 重新激活 MFA 服务器并将其链接到新 MFA 提供程序不会影响电话和短信身份验证，但所有用户不再会收到移动应用通知，除非他们重新激活移动应用。
 
@@ -142,7 +142,7 @@ Microsoft 不保证相同号码传送的短信或基于语音的多重身份验�
 > [!NOTE]
 > 适用于 Office 2013 客户端的新式验证
 >
-> 只有不支持新式身份验证的应用才需要应用密码。 Office 2013 客户端支持新式身份验证协议，但需要进行配置。 新式身份验证现可用于运行适用于 Office 2013 年 3 月 2015年或更高版本更新任何客户。 有关详细信息，请参阅[Office 2013 现代身份验证公共预览版发布声明](https://www.microsoft.com/en-us/microsoft-365/blog/2015/03/23/office-2013-modern-authentication-public-preview-announced/)。
+> 只有不支持新式身份验证的应用才需要应用密码。 Office 2013 客户端支持新式身份验证协议，但需要进行配置。 新式身份验证现可用于运行适用于 Office 2013 年 3 月 2015年或更高版本更新任何客户。 有关详细信息，请参阅博客文章[更新 Office 365 新式身份验证](https://www.microsoft.com/microsoft-365/blog/2015/11/19/updated-office-365-modern-authentication-public-preview/)。
 
 **问：我的用户指出，有时他们收不到短信，或者回复了双向短信但验证超时。**
 

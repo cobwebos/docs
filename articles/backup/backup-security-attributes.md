@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 04/16/2019
 ms.author: mbaldwin
-ms.openlocfilehash: cf012a452d1e43134d955e03ccf34e153b1282ad
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7bc4fd42f64bba09fd20fedf5e06dc30c3b2cc49
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60253833"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64680804"
 ---
 # <a name="common-security-attributes-for-azure-backup"></a>Azure 备份的通用安全属性
 
@@ -27,7 +27,7 @@ ms.locfileid: "60253833"
 | 安全属性 | Yes/No | 说明 |
 |---|---|--|
 | 静态加密：<ul><li>服务器端加密</li><li>使用客户托管密钥的服务器端加密</li><li>其他加密功能（例如客户端、始终加密等）</ul>| 是 | 对存储帐户使用存储服务加密。 |
-| 传输中加密：<ul><li>快速路由加密</li><li>Vnet 中加密</li><li>VNet-VNet 加密</ul>| 否 | 使用 HTTPS。 |
+| 传输中加密：<ul><li>快速路由加密</li><li>在 VNet 加密</li><li>VNet-VNet 加密</ul>| 否 | 使用 HTTPS。 |
 | 加密密钥处理 （CMK，BYOK，等等。）| 否 |  |
 | 列级加密 （Azure 数据服务）| 否 |  |
 | 加密的 API 调用| 是 |  |
@@ -37,7 +37,7 @@ ms.locfileid: "60253833"
 | 安全属性 | Yes/No | 说明 |
 |---|---|--|
 | 服务终结点支持| 否 |  |
-| vNET 注入支持| 否 |  |
+| VNet 注入支持| 否 |  |
 | 网络隔离和防火墙支持| 是 | 对 VM 备份支持强制隧道。 对 VM 内运行的工作负荷不支持强制隧道。 |
 | 强制隧道支持| 否 |  |
 

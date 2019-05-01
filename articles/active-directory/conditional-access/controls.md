@@ -18,12 +18,12 @@ ms.date: 03/23/2019
 ms.author: joflore
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a92d10f67533efc2f5893b012aefbcb92efee59a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a5c6f1064d2d73ab3d99ca341cffd9b296723e97
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60411595"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571104"
 ---
 # <a name="what-are-access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory 条件访问中的访问控制是什么？
 
@@ -113,7 +113,7 @@ ms.locfileid: "60411595"
 
 ### <a name="custom-controls-preview"></a>自定义控件（预览版）
 
-可以在条件访问中创建将用户重定向至兼容服务的自定义控件，以满足 Azure Active Directory 之外的其他要求。 这允许用户使用某个外部的多重身份验证和验证提供程序，强制实施条件访问规则或建立自己的自定义服务。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。 
+将用户重定向至兼容服务，以满足其他要求 Azure Active Directory 之外的条件访问中，可以添加自定义控件。 这样，可以使用某些外部的多重身份验证和验证提供程序来强制实施条件性访问要求。 若要满足此控件要求，用户浏览器将重定向至外部服务，执行任何需要的身份验证或验证活动，然后重定向回 Azure Active Directory。 如果用户已成功完成身份验证或验证，该用户将继续留在条件访问流中。 
 
 ## <a name="custom-controls"></a>自定义控件
 
@@ -137,6 +137,8 @@ ms.locfileid: "60411595"
 ### <a name="creating-custom-controls"></a>创建自定义控件
 
 若要创建自定义控件，应首先联系想使用的控件的提供商。 每个非 Microsoft 提供商在注册、订阅或以其他方式加入服务以及指示想要与条件访问集成方面都有自己的进程和要求。 此时，提供商将提供采用 JSON 格式的数据块。 使用此数据可使提供商和条件访问一起服务于租户，创建新控件，并确定条件访问如何判断用户是否通过提供商成功执行了验证。
+
+使用 Identity Protection 的自动化要求多重身份验证或提升角色特权标识管理器 (PIM)，则不能使用自定义控件。
 
 复制 JSON 数据，然后将其粘贴到相关文本框中。 不要对 JSON 做任何更改，除非用户明确理解所做的更改。 做出任何更改可能中断提供商和 Microsoft 之间的联系，并且有可能将你和你的用户锁定在帐户之外。
 

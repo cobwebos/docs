@@ -7,14 +7,14 @@ author: Juliako
 manager: femila
 ms.service: media-services
 ms.topic: article
-ms.date: 03/12/2019
+ms.date: 04/24/2019
 ms.author: juliako
-ms.openlocfilehash: a182b9ec0fb945b4c2ffddd7a977df8ad9a8d250
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: a8812e8a24082bd8c3a2e9bd489e12a12c80c76d
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60559842"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574129"
 ---
 # <a name="what-is-video-indexer"></a>什么是视频索引器？
 
@@ -37,8 +37,8 @@ Azure 视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务�
 
 ## <a name="audio-insights"></a>音频见解
 
-- **自动语言检测**：自动识别主导性的讲述语言。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、俄语和葡萄牙语（巴西）。 检测不到语言时会回退到英语。
-- **音频听录**：将语音转换为 12 种语言的文本并允许扩展。 支持的语言包括英语、西班牙语、法语、德语、意大利语、中文（简体）、日语、阿拉伯语、俄语、葡萄牙语（巴西）、印地语和韩语。
+- **自动语言检测**：自动识别主导性的讲述语言。 不能检测到语言时，支持的语言包括英语、 西班牙语、 法语、 德语、 意大利语、 中文 （简体）、 日语、 俄语和巴西葡萄牙语将回退到英语。
+- **音频听录**：将语音转换为 12 种语言的文本并允许扩展。 支持的语言包括英语、 西班牙语、 法语、 德语、 意大利语、 中文 （简体）、 日语、 阿拉伯语、 俄语、 葡萄牙语 （巴西）、 印地语和朝鲜语。
 - **隐藏式字幕**：以三种格式创建隐藏式字幕：VTT、TTML、SRT。
 - **双通道处理**：自动检测、隔离脚本及合并到单个时间线。
 - **噪声消减**：清理电话音频或有噪音的录制内容（基于 Skype 滤波器）。
@@ -47,7 +47,7 @@ Azure 视频索引器是基于 Azure 媒体分析、Azure 搜索、认知服务�
 - **说话人统计信息**：提供说话人发言比率的统计数据。
 - **文本内容审核**：检测音频脚本中的显式文本。
 - **音效**：识别击掌、讲话和静音等音效。
-- **情感检测**：基于语音和音频提示识别情感。情感可能是：快乐、悲伤、愤怒或恐惧。
+- **情感检测**：标识基于 （的讲述进行） 的语音和语音色调 （如何它虽） 的情感。  情感可能是：快乐、悲伤、愤怒或恐惧。
 - **翻译**：将音频脚本翻译成 54 种不同的语言。
 
 ## <a name="audio-and-video-insights-multi-channels"></a>音频和视频见解（多通道）

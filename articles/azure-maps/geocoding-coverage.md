@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 23f0110b3418e2df0434438247340f88678268ad
-ms.sourcegitcommit: bf509e05e4b1dc5553b4483dfcc2221055fa80f2
-ms.translationtype: HT
+ms.openlocfilehash: 2a2df8b47b60f29d8ecd3c040e8ef979ee23afa8
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/22/2019
-ms.locfileid: "60000923"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575399"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps 地理编码覆盖区域
 
@@ -44,7 +44,6 @@ ms.locfileid: "60000923"
 | 加拿大                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 开曼群岛                                      |                 |                |       ✓      |      ✓     |          ✓         |
 | 智利                                               |       ✓         |        ✓       |       ✓      |      ✓     |          ✓         |
-| 克利珀顿岛                                   |                 |                |              |      ✓     |                    |
 | 哥伦比亚                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | 哥斯达黎加                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | 古巴                                                |                 |                |       ✓      |      ✓     |          ✓         |
@@ -98,12 +97,12 @@ ms.locfileid: "60000923"
 | 英属印度洋领地                      |                 |                |              |      ✓     |          ✓         |
 | 文莱                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | 柬埔寨                                            |                 |                |              |      ✓     |          ✓         |
-| 中国                                               |        ✓        |        ✓       |              |      ✓     |          ✓         |
+| 中国                                               |                 |                |              |      ✓     |          ✓         |
 | 圣诞岛                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | 科科斯群岛                             |                 |                |              |      ✓     |          ✓         |
 | 科摩罗联盟                                             |                 |                |              |      ✓     |          ✓         |
 | 库克群岛                                        |                 |                |              |      ✓     |          ✓         |
-| 斐济                                                |                  |                |              |      ✓     |          ✓         |
+| 斐济                                                |                  |                |              |      ✓     |          ✓        |
 | 法属波利尼西亚                                    |                 |                |              |      ✓     |          ✓         |
 | 赫德和麦克唐纳群岛                   |                 |                |              |      ✓     |          ✓         |
 | 中国香港特别行政区                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |

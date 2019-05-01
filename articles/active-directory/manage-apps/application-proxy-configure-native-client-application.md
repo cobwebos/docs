@@ -11,65 +11,67 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/08/2018
+ms.date: 04/15/2019
 ms.author: celested
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 21e101dee878a48cce1005d51ad5e59166b0cfa1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4614d8190436ad89faa200f83b1a71bde10a8acb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60293253"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64684943"
 ---
-# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>如何使本机客户端应用与代理应用程序交互
+# <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>如何使本机客户端应用程序与代理应用程序交互
 
-除了 Web 应用程序以外，还可以使用 Azure Active Directory 应用程序代理来发布已使用 Azure AD 身份验证库 (ADAL) 配置的本机客户端应用。 本机客户端应用不同于 Web 应用，因为前者安装在设备上，而后者需通过浏览器进行访问。 
+您可以使用 Azure Active Directory (Azure AD) 应用程序代理发布 web 应用，但它还可用于发布本机客户端应用程序配置与 Azure AD 身份验证库 (ADAL)。 本机客户端应用程序不同于 web 应用，因为它们安装在设备上，而通过浏览器访问 web 应用。
 
-应用程序代理接受标头中发送的、由 Azure AD 颁发的令牌，因此支持本机客户端应用。 应用程序代理服务代表用户执行身份验证。 此解决方案不使用应用程序令牌进行身份验证。 
+若要支持本机客户端应用程序，应用程序代理接受标头中发送的 Azure AD 颁发的令牌。 该应用程序代理服务会对用户身份验证。 此解决方案不使用应用程序令牌进行身份验证。
 
 ![最终用户、Azure Active Directory 和已发布应用程序之间的关系](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-使用 Azure AD 身份验证库（负责处理身份验证并支持许多客户端环境）来发布本机应用程序。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/native-app.md)。 
+若要发布本机应用程序，使用 Azure AD 身份验证库，它负责处理身份验证并支持许多客户端环境。 应用程序代理适合[本机应用程序到 Web API 方案](../develop/native-app.md)。
 
-本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。 
+本文引导读者完成使用应用程序代理和 Azure AD 身份验证库发布本机应用程序的四个步骤。
 
-## <a name="step-1-publish-your-application"></a>步骤 1：发布应用程序
+## <a name="step-1-publish-your-proxy-application"></a>步骤 1：发布代理应用程序
+
 像发布任何其他应用程序一样发布代理应用程序，并分配可访问该应用程序的用户。 有关详细信息，请参阅[使用应用程序代理发布应用程序](application-proxy-add-on-premises-application.md)。
 
-## <a name="step-2-configure-your-application"></a>步骤 2：配置应用程序
-按如下方式配置本机应用程序：
+## <a name="step-2-register-your-native-application"></a>步骤 2：注册本机应用程序
 
-1. 登录到 [Azure 门户](https://portal.azure.com)。
-2. 导航到“Azure Active Directory” > “应用注册”。
-3. 选择“新建应用程序注册”。
-4. 指定应用程序的名称，选择“本机”作为应用程序类型，并提供应用程序的重定向 URI。 
+现在需要注册你的应用程序在 Azure AD 中，按如下所示：
+
+1. 登录到[Azure Active Directory 门户](https://aad.portal.azure.com/)。 **仪表板**有关**Azure Active Directory 管理中心**出现。
+2. 在侧栏中选择**Azure Active Directory**。 **Azure Active Directory**概述页将出现。
+3. 在 Azure AD 的概述侧栏中选择**应用注册**。 显示所有应用程序注册的列表。
+4. 选择“新注册”。 **注册应用程序**页将出现。
 
    ![创建新的应用注册](./media/application-proxy-configure-native-client-application/create.png)
-5. 选择“创建”。
+5. 在中**名称**标题时，指定你的应用程序的面向用户的显示名称。
+6. 下**支持的帐户类型**标题下方，选择一种访问级别，使用以下准则：
+   - 若要针对你的组织内部的帐户，选择**此组织目录中的帐户**。
+   - 若要针对仅企业或教育客户，请选择**任何组织的目录中的帐户**。
+   - 若要尽可能最广泛的 Microsoft 标识集目标，请选择**中的任何组织的目录和个人 Microsoft 帐户的帐户**。
+7. 在中**重定向 URI**标题下方，选择**公共客户端 （移动和桌面）**，然后键入你的应用程序的重定向 URI。
+8. 选择并阅读**Microsoft 平台策略**，然后选择**注册**。 创建并显示新的应用程序注册的概览页。
 
-有关创建新应用注册的更多详细信息，请参阅[将应用程序与 Azure Active Directory 集成](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
+有关详细信息创建新的应用程序注册，请参阅[将应用程序集成与 Azure Active Directory](../develop/quickstart-v1-integrate-apps-with-azure-ad.md)。
 
+## <a name="step-3-grant-access-to-your-proxy-application"></a>步骤 3：向代理应用程序授予访问权限
 
-## <a name="step-3-grant-access-to-other-applications"></a>步骤 3：向其他应用程序授予访问权限
-使本机应用程序可以向目录中的其他应用程序公开：
+现在，注册本机应用程序后，您可让它访问其他应用程序在你目录中，在这种情况下访问代理应用程序。 若要启用要向代理应用程序公开的本机应用程序：
 
-1. 仍在“应用注册”中，选择刚创建的新本机应用程序。
-2. 选择“API 权限”。
-3. 选择“添加权限”。
-4. 打开第一个步骤，即“选择 API”。
-5. 使用搜索栏查找在第一部分中发布的应用程序代理应用。 选择该应用并单击“选择”。 
-
-   ![搜索代理应用](./media/application-proxy-configure-native-client-application/select_api.png)
-6. 打开第二个步骤，即“选择权限”。
-7. 使用复选框授予本机应用程序对代理应用程序的访问权限，并单击“选择”。
-
-   ![授予对代理应用的访问权限](./media/application-proxy-configure-native-client-application/select_perms.png)
-8. 选择“完成”。
-
+1. 在新的应用程序注册页上侧栏中选择**API 权限**。 **API 权限**页上将显示新的应用程序注册。
+2. 选择“添加权限”。 **请求 API 权限**页将出现。
+3. 下**选择 API**设置中，选择**我的组织使用的 Api**。 将显示列表，其中包含你的目录中公开的 Api 的应用程序。
+4. 在搜索框或滚动要查找的代理应用程序中发布的类型[步骤 1:发布代理应用程序](#step-1-publish-your-proxy-application)，然后选择代理应用程序。
+5. 在中**应用程序需要哪种类型的权限？** 标题下方，选择权限类型。 如果本机应用程序需要访问作为已登录用户的代理应用程序 API，请选择**委派权限**。 如果本机应用程序运行时作为后台服务或后台程序已登录用户的情况下，选择**应用程序权限**。
+6. 在中**选择权限**标题下方，选择所需的权限，然后选择**添加权限**。 **API 权限**页上的本机应用程序现在显示代理已添加的应用程序和权限 API。
 
 ## <a name="step-4-edit-the-active-directory-authentication-library"></a>步骤 4：编辑 Active Directory 身份验证库
+
 在 Active Directory 身份验证库 (ADAL) 的身份验证上下文中编辑本机应用程序代码，以包含以下文本：
 
 ```
@@ -86,17 +88,20 @@ httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("
 HttpResponseMessage response = await httpClient.GetAsync("< Proxy App API Url >");
 ```
 
-应按如下所示替换示例代码中的变量：
+中的示例代码所需的信息可在 Azure AD 门户中，按如下所示：
 
-* 可在 Azure 门户中找到“租户 ID”。 导航到“Azure Active Directory” > “属性”并复制目录 ID。 
-* “外部 URL”是在代理应用程序中输入的前端 URL。 若要查找此值，请导航到代理应用的“应用程序代理”部分。
-* 可在本机应用程序的“属性”页上找到本机应用的“应用 ID”。
-* 可在本机应用程序的“重定向 URI”页上找到**本机应用的重定向 URI**。
+| 所需的信息 | 如何在 Azure AD 门户中找到它 |
+| --- | --- |
+| \<租户 ID > | **Azure Active Directory** > **属性** > **目录 ID** |
+| \<代理应用的外部 Url > | **企业应用程序** > *代理应用程序* > **应用程序代理** > **外部 Url** |
+| \<本机应用的应用程序 ID > | **企业应用程序** > *本机应用程序* > **属性** > **应用程序 ID** |
+| \<本机应用程序的重定向 URI > | **Azure Active Directory** > **应用注册** > *本机应用程序* > **重定向 Uri** |
+| \<代理应用 API Url > | **Azure Active Directory** > **应用注册** > *本机应用程序* > **API 权限**  >  **API / 权限名称** |
 
-使用这些参数编辑 ADAL 后，用户应能向本机客户端应用进行身份验证，即使他们在企业网络之外也是如此。 
+在编辑这些参数与 ADAL 后，用户可以进行身份验证本机客户端应用程序即使处于公司网络外部的。
 
 ## <a name="next-steps"></a>后续步骤
 
-有关本机应用程序流的详细信息，请参阅[本机应用程序到 Web API](../develop/native-app.md)
+有关本机应用程序流的详细信息，请参阅[Azure Active Directory 中的本机应用](../develop/native-app.md)。
 
-了解如何设置[应用程序代理的单一登录](what-is-single-sign-on.md#single- sign-on-methods)
+了解如何设置[单一登录方式登录到 Azure Active Directory 中的应用程序](what-is-single-sign-on.md#choosing-a-single-sign-on-method)。

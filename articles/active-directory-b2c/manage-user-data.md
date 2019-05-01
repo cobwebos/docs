@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/06/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 62846fe744e7295f58902481400ce91770c916da
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 18e0f102ba1447a734045d5225bb09f019016139
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60406472"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683910"
 ---
 # <a name="manage-user-data-in-azure-active-directory-b2c"></a>在 Azure Active Directory B2C 中管理用户数据
 

@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 10/25/2018
+ms.date: 04/26/2019
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: d199a9db879263bbca49298df190c5a127444c42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 23973445992ceaeb0cd3bc0589665f2fac5b64e5
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60251250"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64575332"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>使用“运行命令”在 Windows VM 中运行 PowerShell 脚本
 
@@ -83,9 +83,9 @@ Invoke-AzVMRunCommand -ResourceGroupName '<myResourceGroup>' -Name '<myVMName>' 
 
 ## <a name="limiting-access-to-run-command"></a>限制对“运行命令”的访问
 
-列出“运行命令”或显示某个命令的详细信息需要 `Microsoft.Compute/locations/runCommands/read` 权限，内置的[读者](../../role-based-access-control/built-in-roles.md#reader)角色或更高角色具有此权限。
+列出运行的命令或显示命令的详细信息需要`Microsoft.Compute/locations/runCommands/read`订阅级别的权限的内置[读取器](../../role-based-access-control/built-in-roles.md#reader)角色和具有更高版本。
 
-运行命令需要`Microsoft.Compute/virtualMachines/runCommand/action`权限，其中[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和具有更高版本。
+运行命令需要`Microsoft.Compute/virtualMachines/runCommand/action`在订阅级别的权限这[虚拟机参与者](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor)角色和具有更高版本。
 
 若要使用“运行命令”，可以使用[内置](../../role-based-access-control/built-in-roles.md)角色之一，也可以创建一个[自定义](../../role-based-access-control/custom-roles.md)角色。
 

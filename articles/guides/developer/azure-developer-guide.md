@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: dc44cfbd24bd04caeede03dcbcfc60da06f61135
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 99e043adeac9a43432fb1eba85527b561c477354
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60921711"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570566"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 开发人员入门指南
 
@@ -199,7 +199,7 @@ Azure 是一个全球性云平台，在世界各地的许多区域都可以使�
 
 ### <a name="choose-the-best-region-for-your-application-and-data"></a>选择应用程序和数据的最佳区域
 
-使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 你也可以选择你的地区，以符合在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
+使用 Azure 的好处之一是，你可以将应用程序部署到全球范围内的各种数据中心。 你选择的区域可能会影响应用程序的性能。 例如，最好选择更接近于大部分客户的区域，以减少网络请求中的延迟。 您可能想要选择你的区域，符合在某些国家/地区分发应用的法律要求。 最佳的做法是，始终将应用程序数据存储在相同的数据中心，或尽可能靠近托管应用程序的数据中心的数据中心。
 
 ### <a name="multi-region-apps"></a>多区域应用
 

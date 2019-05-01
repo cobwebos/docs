@@ -1,30 +1,30 @@
 ---
-title: 在 Azure Active Directory B2C 中选择页面协定 | Microsoft Docs
+title: 选择页面协定-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中选择页面协定。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 39198c0093f018b64a1292f023914651b51b4faf
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 4cd29df19179f07fd9b61a2f484b1d49cc05c4cf
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361041"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570575"
 ---
 # <a name="select-a-page-contract-in-azure-active-directory-b2c-using-custom-policies"></a>使用自定义策略在 Azure Active Directory B2C 中选择页面协定
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-无论你使用的是用户流还是自定义策略，都可以在你的 Azure Active Directory (Azure AD) B2C 策略中启用 JavaScript 客户端代码。 本文讨论了如何通过在[自定义策略](active-directory-b2c-overview-custom.md)中配置页面协定来在 Azure AD B2C 中选择页面协定。 页面协定是 Azure AD B2C 提供的元素与你提供的内容之间的关联。 如果打算使用 [Javascript](javascript-samples.md)，需要为自定义策略中所有的内容定义定义一个页协定版本。
+无论你使用的是用户流还是自定义策略，都可以在你的 Azure Active Directory (Azure AD) B2C 策略中启用 JavaScript 客户端代码。 若要为应用程序中启用 JavaScript，您必须将元素添加到您[自定义策略](active-directory-b2c-overview-custom.md)，选择一个页协定，并使用[b2clogin.com](b2clogin.md)在请求中。 页面协定是 Azure AD B2C 提供的元素与你提供的内容之间的关联。 本文介绍如何通过自定义策略中配置 Azure AD B2C 中选择页面协定。
 
 > [!NOTE]
-> 如果想要为用户流启用 JavaScript，请参阅[关于在用户流中使用 JavaScript 和页面协定版本](user-flow-javascript-overview.md)。
+> 如果你想要为用户流中启用 JavaScript，请参阅[JavaScript 和页协定版本在 Azure Active Directory B2C](user-flow-javascript-overview.md)。
 
 ## <a name="replace-datauri-values"></a>替换 DataUri 值
 

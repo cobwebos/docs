@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 02/08/2019
-ms.openlocfilehash: a067d83c32f11e0bf091b0efc5528995ab6a021a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: cae806953721f3cedead023f013c7d1d585efeb6
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60341636"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64573385"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>Azure SQL 数据库术语表
 
@@ -39,6 +39,7 @@ ms.locfileid: "60341636"
 ||常规用途数据库|在基于 vCore 的购买模型的一般用途服务层级内创建或移入其中的数据库|
 ||“超大规模”数据库|在基于 vCore 的购买模型的超大规模服务层级内创建或移入其中的数据库|
 ||业务关键数据库|在基于 vCore 的购买模型的业务关键服务层级内创建或移入其中的数据库|
+||已设置的数据库|配置预配的计算层中的数据库|
 |[购买模型和资源](sql-database-purchase-models.md)|基于 DTU 的购买模型|[基于 DTU 的购买模型](sql-database-service-tiers-dtu.md)|
 ||基于 vCore 的购买模型|[基于 vCore 的购买模型](sql-database-service-tiers-vcore.md)|
 ||vCore|虚拟机监控程序向来宾 OS 提供的核心。|

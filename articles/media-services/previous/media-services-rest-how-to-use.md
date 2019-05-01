@@ -14,15 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako;johndeu
-ms.openlocfilehash: 549554521570d1d2f27b2da2b36ca1dfde25562f
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: fbdd9325f50e1bcb271b7ca47b9ccd3361d0d27e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60762504"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687057"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>媒体服务操作 REST API 概述 
-[!INCLUDE [media-services-selector-setup](../../../includes/media-services-selector-setup.md)]
+
+> [!NOTE]
+> 不会向媒体服务 v2 添加任何新特性或新功能。 <br/>查看最新版本：[媒体服务 v3](https://docs.microsoft.com/azure/media-services/latest/)。 此外，请参阅[从 v2 到 v3 迁移指南](../latest/migrate-from-v2-to-v3.md)
 
 媒体服务操作 REST API 用于在媒体服务帐户中创建作业、资产、实时频道和其他资源。 有关详细信息，请参阅 [Media Services Operations REST API reference](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)（媒体服务操作 REST API 参考）。
 

@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 04/17/2019
-ms.openlocfilehash: d5ada9b992afe98241162749b1c45723b89a6b77
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.date: 03/19/2019
+ms.openlocfilehash: aa9217251965b35dd90e09c619607c9421a9f6f4
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60331105"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572649"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>适用于单一数据库的 Azure SQL 数据库基于 vCore 的购买模型限制
 
@@ -96,7 +96,7 @@ ms.locfileid: "60331105"
 |存储类型|高级（远程）存储|高级（远程）存储|高级（远程）存储|高级（远程）存储|高级（远程）存储|高级（远程）存储|高级（远程）存储|
 |IO 延迟（近似）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|5-7 毫秒（写入）<br>5-10 毫秒（读取）|
 |目标 IOPS (64 KB)|500|1000|1500|2000|2500|3000|3500|
-|日志速率限制 (MBps)|2.5|5.6|7.5|10|12.5|15|17.5|
+|日志速率限制 (MBps)|2.5|56|7.5|10|12.5|15|17.5|
 |最大并发工作线程数（请求数）|200|400|600|800|1000|1200|1400|
 |允许的最大会话数|30000|30000|30000|30000|30000|30000|30000|
 |副本数|第|1|1|1|1|1|第|

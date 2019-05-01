@@ -1,28 +1,28 @@
 ---
 title: Azure AD Connect：什么是 ADConnectivityTool PowerShell 模块 | Microsoft Docs
-description: 本文档介绍了新的 ADConnectivity PowerShell 模块
+description: 本文档介绍了新的 ADConnectivity PowerShell 模块以及如何使用它来帮助进行故障排除。
 services: active-directory
 author: billmath
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/19/2018
+ms.date: 4/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5b2471b28132b26c41844b620f6dcf49e3802a6e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: cd5340cd8c802df4ffbe0207b5401d2fee4e207e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60245667"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571113"
 ---
-# <a name="what-is-the-adconnectivitytool-powershell-module"></a>什么是 ADConnectivityTools PowerShell 模块？
+# <a name="troubleshoot-azure-ad-connectivity-with-the-adconnectivitytool-powershell-module"></a>解决 ADConnectivityTool PowerShell 模块与 Azure AD 连接问题
 
 ADConnectivity 工具是一个 PowerShell 模块，可在以下任一情形下使用：
 
-- 在安装过程中，当网络连接问题阻止成功验证用户在向导中提供的 Active Directory 凭据时。
+- 在安装过程中时的网络连接问题会阻止在成功验证的 Active Directory 凭据，用户在向导中提供。
 - 在 PowerShell 会话中调用函数的用户安装后。
 
 该工具位于：C:\Program Files\Microsoft Azure Active Directory Connect\Tools\ ADConnectivityTool.psm1 

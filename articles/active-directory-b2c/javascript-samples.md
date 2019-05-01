@@ -1,31 +1,34 @@
 ---
-title: 用于 Azure Active Directory B2C 中的 JavaScript 示例 | Microsoft Docs
+title: JavaScript 示例-Azure Active Directory B2C |Microsoft Docs
 description: 了解如何在 Azure Active Directory B2C 中使用 JavaScript。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 12/05/2018
+ms.date: 04/25/2019
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 3645945400bcc58cdf11721458bfab529d89f0b7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 972c8ec1b67161a3998a1b165072f584db2f7fbb
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60397084"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570526"
 ---
 # <a name="javascript-samples-for-use-in-azure-active-directory-b2c"></a>用于 Azure Active Directory B2C 中的 JavaScript 示例
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 本文介绍如何更改[用户流](user-flow-javascript-overview.md)或[自定义策略](active-directory-b2c-overview-custom.md)以启用脚本执行。
+可以向 Azure Active Directory (Azure AD) B2C 应用程序添加自己的 JavaScript 客户端代码。 若要为应用程序中启用 JavaScript，您必须将元素添加到您[自定义策略](active-directory-b2c-overview-custom.md)，选择[页面协定](page-contract.md)，并使用[b2clogin.com](b2clogin.md)在请求中。 本文介绍如何更改你的自定义策略以启用脚本执行。
+
+> [!NOTE]
+> 如果你想要为用户流中启用 JavaScript，请参阅[JavaScript 和页协定版本在 Azure Active Directory B2C](user-flow-javascript-overview.md)。
 
 ## <a name="prerequisites"></a>必备组件
 
-为应用程序的用户界面元素选择[页协定](page-contract.md)。 如果打算使用 JavaScript，需要为用户流或自定义策略中的所有内容定义定义一个页协定版本。
+选择你的应用程序的用户界面元素的页协定。 如果打算使用 JavaScript，需要为自定义策略中所有的内容定义定义一个页协定版本。
 
 ## <a name="add-the-scriptexecution-element"></a>添加 ScriptExecution 元素
 
@@ -140,7 +143,7 @@ function addTermsOfUseLink() {
 }
 ```
 
-在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 为目录创建一个名为“termsOfUse”的属性，然后将它作为用户工作流的用户属性。
+在代码中，将 `termsOfUseUrl` 替换使用条款协议的链接。 对于你的目录，创建名为的新用户属性**termsOfUse** ，然后包括**termsOfUse**为用户属性。
 
 ## <a name="next-steps"></a>后续步骤
 

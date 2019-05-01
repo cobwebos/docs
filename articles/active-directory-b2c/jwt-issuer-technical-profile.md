@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 的自定义策略中定义 JWT 令牌颁�
 description: 在 Azure Active Directory B2C 的自定义策略中定义 JWT 令牌颁发者的技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 10/30/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 247ebdc8156453062eefe6738c5c281d393a9923
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 33dce27b69d080c57b925562ba83db0046b77ca9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60396761"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683785"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义 JWT 令牌颁发者的技术配置文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "60396761"
 
 Azure Active Directory (Azure AD) B2C 在每个身份验证流的处理过程中发出多种安全令牌。 JWT 令牌颁发者的技术配置文件发出返回给信赖方应用程序的 JWT 令牌。 通常，此技术配置文件是用户旅程中的最后一个业务流程步骤。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `None`。 将 **OutputTokenFormat** 元素设置为 `JWT`。
 

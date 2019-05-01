@@ -3,19 +3,19 @@ title: Azure Active Directory B2C 中的业务流程步骤形式的 REST API 声
 description: 有关与 API 集成的 Azure Active Directory B2C 自定义策略的主题。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: 55740b74aef5ce3d2def5ad22cfe3ededa1204d8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0a29bcbd3142be577d4cf1f64ff8c9921010bba
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60316878"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64688014"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>演练：在 Azure AD B2C 用户旅程中以业务流程步骤的形式集成 REST API 声明交换
 

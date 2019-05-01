@@ -11,20 +11,21 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
-ms.date: 02/07/2019
-ms.openlocfilehash: edba858f9be3350034ff48ea16d3c9137254bb97
-ms.sourcegitcommit: c174d408a5522b58160e17a87d2b6ef4482a6694
-ms.translationtype: HT
+ms.date: 04/26/2019
+ms.openlocfilehash: 0f7765e5b13f2d9c1e1213064d778ce6db5ef115
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/18/2019
-ms.locfileid: "59357950"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64572683"
 ---
-# <a name="vcore-service-tiers-azure-hybrid-benefit-and-migration"></a>vCore 服务层级、Azure 混合权益和迁移
+# <a name="choose-among-the-vcore-service-tiers-and-migrate-from-dtu-service-tiers"></a>在 vCore 的服务层之间进行选择，并将 DTU 服务层从迁移
 
 使用基于 vCore 的购买模型，可以单独缩放计算和存储资源、匹配本地性能，以及优化价格。 它还允许你选择硬件世代：
 
 - 第 4 代 - 最多 24 个基于 Intel E5-2673 v3 (Haswell) 2.4 GHz 处理器的逻辑 CPU，vCore = 1 PP（物理核心），每核心 7 GB，附加了 SSD
 - 第 5 代 - 最多 80 个基于 Intel E5-2673 v4 (Broadwell) 2.3 GHz 处理器的逻辑 CPU，vCore=1 LP（超线程），每个核心 5.1 GB，快速 eNVM SSD
+
 
 第 4 代为每个 vCore 提供的内存要大得多。 但是，第 5 代硬件允许以高得多的力度纵向扩展计算资源。
 
@@ -40,9 +41,9 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 ||**常规用途**|**业务关键**|**超大规模（预览版）**|
 |---|---|---|---|
 |最适用于|大多数业务工作负荷。 提供预算导向的、均衡且可缩放的计算和存储选项。|IO 要求高的业务应用程序。 使用多个独立副本，提供最高级别的故障恢复能力。|具有很高的可缩放存储和读取缩放要求的大多数业务工作负荷|
-|计算|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|
-|内存|Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB | Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB |Gen4：每个核心 7 GB<br>Gen5：每个核心 5.1 GB|
-|存储|使用远程存储：<br/>单一数据库：5 GB – 4 TB<br/>托管实例：32 GB - 8 TB |使用本地 SSD 存储：<br/>单一数据库：5 GB – 4 TB<br/>托管实例：32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 支持高达 100 TB 存储及更多存储。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
+|CPU|**预配计算**:<br/>Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore<br/>**无服务器计算**<br/>Gen5：0.5 - 4 vCore|**预配计算**:<br/>Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|**预配计算**:<br/>Gen4：1 到 24 个 vCore<br/>Gen5：1 到 80 个 vCore|
+|内存|**预配计算**:<br/>Gen4：每个核心 7 GB<br/>Gen5：每个核心 5.1 GB<br/>**无服务器计算**<br/>Gen5：每个核心的 3 GB|**预配计算**:<br/>Gen4：每个核心 7 GB<br/>Gen5：每个核心 5.1 GB |**预配计算**:<br/>Gen4：每个核心 7 GB<br/>Gen5：每个核心 5.1 GB|
+|存储|使用远程存储：<br/>**单个数据库预配计算**:<br/>5 GB – 4 TB<br/>**单个数据库无服务器计算**:<br/>5 GB - 1 TB<br/>**托管实例**:32 GB - 8 TB |使用本地 SSD 存储：<br/>**单个数据库预配计算**:<br/>5 GB – 4 TB<br/>**托管实例**:<br/>32 GB - 4 TB |可以根据需要灵活地自动扩展存储。 支持高达 100 TB 存储及更多存储。 使用本地 SSD 存储作为本地缓冲池缓存和本地数据存储。 使用 Azure 远程存储作为最终的长期数据存储。 |
 |IO 吞吐量（近似）|单一数据库：每个 vCore 提供 500 IOPS，最大 7000 IOPS</br>托管实例：取决于[文件大小](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes)|每个 vCore 提供 5000 IOPS，最大 200,000 IOPS|TBD|
 |可用性|1 个副本，无读取缩放组|3 个副本，1 个[读取缩放副本](sql-database-read-scale-out.md)，<br/>区域冗余 HA|?|
 |备份|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|[RA-GRS](../storage/common/storage-designing-ha-apps-with-ragrs.md)，7-35 天（默认为 7 天）|Azure 远程存储中基于快照的备份和还原使用这些快照进行快速恢复。 备份瞬间完成，不会影响计算的 IO 性能。 还原速度非常快，不基于数据操作的大小（需要几分钟，而不是几小时或几天）。|
@@ -56,16 +57,18 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 - 若要详细了解“常规用途”服务层级和“业务关键”服务层级，请参阅[“常规用途”服务层级和“业务关键”服务层级](sql-database-service-tiers-general-purpose-business-critical.md)。
 - 若要详细了解基于 vCore 的购买模型中的超大规模服务层级，请参阅[超大规模服务层级](sql-database-service-tier-hyperscale.md)。  
 
-> [!IMPORTANT]
-> 如果所需的计算容量 vCore 数不超过一个，请使用基于 DTU 的购买模型。
+
 
 ## <a name="azure-hybrid-benefit"></a>Azure 混合权益
 
-在基于 vCore 的购买模型中，可以使用[适用于 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)交换现有许可证，以获得 SQL 数据库的折扣价格。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。
+可以在基于 vCore 的购买模型设置的计算机层中，交换现有许可证，有关使用 SQL 数据库的折扣价格[面向 SQL Server 的 Azure 混合权益](https://azure.microsoft.com/pricing/hybrid-benefit/)。 借助这项 Azure 权益，可以使用附带软件保障的本地 SQL Server 许可证，将 Azure SQL 数据库的成本最多节省 30%。
 
 ![定价](./media/sql-database-service-tiers/pricing.png)
 
-使用 Azure 混合权益，你可以选择仅为底层 Azure 基础结构付费且将现有的 SQL Server 许可证用于 SQL 数据库引擎自身 (**BasePrice**)，也可以选择同时为底层基础结构和 SQL Server 许可证付费 (**LicenseIncluded**)。 可以使用 Azure 门户或下列 API 之一来选择或更改许可模型。
+使用 Azure 混合权益，你可以选择仅为底层 Azure 基础结构付费且将现有的 SQL Server 许可证用于 SQL 数据库引擎自身 (**BasePrice**)，也可以选择同时为底层基础结构和 SQL Server 许可证付费 (**LicenseIncluded**)。
+
+
+可以使用 Azure 门户或下列 API 之一来选择或更改许可模型。
 
 - 使用 PowerShell 设置或更新许可证类型：
 
@@ -130,5 +133,5 @@ vCore 模型提供了三个服务层级：“常规用途”、“业务关键�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 有关适用于单一数据库的特定计算大小和存储大小选项的详细信息，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)。
+- 有关适用于单一数据库的特定计算大小和存储大小选项的详细信息，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)。
 - 若要详细了解适用于弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)。

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 0887f58ca455dfec0474c8d6a1acba584224f0d7
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 1838dbb627a6dec46f817101fc1d0cca0961ef77
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60929444"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574174"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySql 数据库搭配 Azure 应用服务的 FAQ
 此 FAQ 解答了为 Azure Web 应用使用和购买 ClearDB MySQL 数据库的常见问题。
@@ -49,7 +49,7 @@ ms.locfileid: "60929444"
 ## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>我在自己的 Azure 虚拟机上运行 MySQL。 我是否可以将 Azure Web 应用连接到数据库？
 可以。 只要 Azure VM 已向 Web 应用授予远程访问权限，Web 应用就能连接到数据库。 有关详细信息，请参阅[在虚拟机上安装 MySQL](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)。
 
-## <a name="in-which-countries-are-cleardb-premium-mysql-clusters-supported"></a>支持 ClearDB Premium MySQL 群集的国家/地区有哪些？
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>中的国家/地区都支持 ClearDB Premium MySQL 群集？
 除印度、澳大利亚、巴西南部和中国之外的所有 Azure 区域都可以使用 ClearDB 高级 MySQL 群集。
 
 ## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>是否可以在创建数据库之前使用 ClearDB Premium 群集解决方案创建新群集？
@@ -68,7 +68,7 @@ Azure 市场无法供在阿塞拜疆、克罗地亚、挪威或波多黎各注�
 在 [Azure 门户](https://portal.azure.com)中，可以纵向扩展 ClearDB 共享的托管数据库。 请阅读本篇[文章](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/)，了解详细信息。 当前不支持在 Azure 门户中升级 ClearDB 高级群集。
 
 ## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>在 Azure 门户中看不到我的 ClearDB 数据库？
-如果在经典门户中创建了 ClearDB 数据库，将无法在 [Azure 门户](https://portal.azure.com)中看到该数据库。 对于这种情况，目前没有解决方法。
+如果经典模型中创建 ClearDB 数据库，您将无法再查看中的数据库[Azure 门户](https://portal.azure.com)。 对于这种情况，目前没有解决方法。
 
 ## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>数据库关闭时应联系谁寻求支持？
 如有任何数据库相关问题，请联系 [ClearDB 支持人员](https://www.cleardb.com/developers/help/support)。 准备好向其提供 Azure 订阅信息。

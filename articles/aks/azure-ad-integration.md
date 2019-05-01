@@ -5,20 +5,20 @@ services: container-service
 author: iainfoulds
 ms.service: container-service
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 04/26/2019
 ms.author: iainfou
-ms.openlocfilehash: db92526bd02ba55be5df7ce6999e3099e72b8fa5
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c23c13969fd4e2814fdc1894a98a3f876da7315b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62116766"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574301"
 ---
 # <a name="integrate-azure-active-directory-with-azure-kubernetes-service"></a>将 Azure Active Directory 与 Azure Kubernetes Service 集成
 
 可将 Azure Kubernetes Service (AKS) 配置为使用 Azure Active Directory (AD) 进行用户身份验证。 在此配置中，你可以登录到 AKS 群集使用 Azure Active Directory 身份验证令牌。 此外，群集管理员是可以配置基于用户的标识或目录的组成员身份的 Kubernetes 基于角色的访问控制 (RBAC)。
 
-本文介绍如何部署的先决条件 AKS 和 Azure AD 中，然后介绍如何部署 Azure AD 启用群集，并在 AKS 群集中创建基本的 RBAC 角色。
+本文介绍如何部署的先决条件 AKS 和 Azure AD 中，然后介绍如何部署 Azure AD 启用群集，并使用 Azure 门户在 AKS 群集中创建基本的 RBAC 角色。 此外可以[完成这些步骤使用 Azure CLI][azure-ad-cli]。
 
 以下限制适用：
 
@@ -46,7 +46,7 @@ ms.locfileid: "62116766"
 
 2. 选择“清单”，将 `groupMembershipClaims` 值编辑为 `"All"`。
 
-   完成后保存更新。
+   **保存**更新完成后。
 
    ![将组成员身份更新为“所有”](media/aad-integration/edit-manifest.png)
 
@@ -64,11 +64,11 @@ ms.locfileid: "62116766"
 
    ![设置应用程序 Graph 权限](media/aad-integration/read-directory.png)
 
-6. 在“委派权限”下，勾选“登录并读取用户个人资料”和“读取目录数据”。 完成后保存更新。
+6. 在“委派权限”下，勾选“登录并读取用户个人资料”和“读取目录数据”。 选择**选择**以保存的更新。
 
    ![设置应用程序 Graph 权限](media/aad-integration/delegated-permissions.png)
 
-   选择“完成”。
+   然后，选择**完成**。
 
 7. 从 API 列表中选择“Microsoft Graph”，然后选择“授予权限”。 如果当前帐户不是租户管理员，此步骤将会失败。
 
@@ -96,11 +96,13 @@ ms.locfileid: "62116766"
 
    ![配置应用程序权限](media/aad-integration/select-api.png)
 
-3. 勾选该应用程序，并单击“选择”。
+    选择服务器应用程序，然后选择**选择**。
+
+3. 重新*添加 API 访问权限*窗口中，选择**选择权限**。 请在下一个复选标记*委托的权限*访问应用程序，然后选择**选择**。
 
    ![选择 AKS AAD 服务器应用程序终结点](media/aad-integration/select-server-app.png)
 
-   选择“完成”
+   重新*添加 API 访问权限*窗口中，选择**完成**。
 
 4. 从列表中选择服务器 API，然后选择“授予权限”：
 
@@ -259,3 +261,4 @@ error: You must be logged in to the server (Unauthorized)
 [rbac-authorization]: concepts-identity.md#role-based-access-controls-rbac
 [operator-best-practices-identity]: operator-best-practices-identity.md
 [azure-ad-rbac]: azure-ad-rbac.md
+[azure-ad-cli]: azure-ad-integration-cli.md

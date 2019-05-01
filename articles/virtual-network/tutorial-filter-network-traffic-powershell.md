@@ -3,8 +3,8 @@ title: 筛选网络流量 - Azure PowerShell | Microsoft Docs
 description: 本文介绍如何在 PowerShell 中使用网络安全组筛选发往子网的网络流量。
 services: virtual-network
 documentationcenter: virtual-network
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 Customer intent: I want to filter network traffic to virtual machines that perform similar functions, such as web servers.
@@ -15,14 +15,14 @@ ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
-ms.author: jdial
+ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 22090bf89e469f7e8defcd50b311c555949b9bde
-ms.sourcegitcommit: 90dcc3d427af1264d6ac2b9bde6cdad364ceefcc
+ms.openlocfilehash: 125cda7b44f2d487d9d89d1482d01c90646b419a
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/21/2019
-ms.locfileid: "58317709"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64682459"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>在 PowerShell 中使用网络安全组筛选网络流量
 
@@ -294,7 +294,7 @@ Get-AzPublicIpAddress `
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

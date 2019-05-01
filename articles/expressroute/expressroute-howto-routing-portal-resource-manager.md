@@ -5,15 +5,15 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 01/29/2019
+ms.date: 04/24/2019
 ms.author: cherylmc
 ms.custom: seodec18
-ms.openlocfilehash: 6d1ce56ef66d224b89f49a00c2883ebbf22a5745
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: e1f94b7b2ab71afaa40831446e5e5aede00db7b1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60364846"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570845"
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>创建和修改 ExpressRoute 线路的对等互连
 
@@ -91,7 +91,7 @@ ms.locfileid: "60364846"
 
 ### <a name="getmsft"></a>查看 Microsoft 对等互连详细信息
 
-可以通过选择对等互连查看 Azure 公共对等互连的属性。
+可以查看 Microsoft 对等互连选择的对等互连的属性。
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
@@ -159,6 +159,10 @@ ms.locfileid: "60364846"
 ## <a name="public"></a>Azure 公共对等互连
 
 本文介绍如何为 ExpressRoute 线路创建、获取、更新和删除 Azure 公共对等互连配置。
+
+> [!Note]
+> Azure 公共对等互连不推荐使用适用于新线路。 有关详细信息，请参阅[ExpressRoute 对等互连](expressroute-circuit-peerings.md)。
+>
 
 ### <a name="to-create-azure-public-peering"></a>创建 Azure 公共对等互连
 

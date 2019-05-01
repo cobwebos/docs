@@ -3,19 +3,19 @@ title: 在 Azure Active Directory B2C 中的自定义策略中定义的 OAuth2 �
 description: 在 Azure Active Directory B2C 中的自定义策略中定义的 OAuth2 技术配置文件。
 services: active-directory-b2c
 author: davidmu1
-manager: daveba
+manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.subservice: B2C
-ms.openlocfilehash: e92378cca445191f42708bd6348b1c75b29da1a1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 65634cb6573a0f163f7a0ca07bf26af9512e240b
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60361058"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683885"
 ---
 # <a name="define-an-oauth2-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>在 Azure Active Directory B2C 自定义策略中定义的 OAuth2 技术配置文件
 
@@ -23,7 +23,7 @@ ms.locfileid: "60361058"
 
 Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支持。 OAuth2 授权和委派的身份验证的主要协议。 有关详细信息，请参阅 [RFC 6749 - OAuth 2.0 授权框架](https://tools.ietf.org/html/rfc6749)。 使用 OAuth2 技术配置文件，您可以联合使用 OAuth2 基于的标识提供程序，如 Facebook。 与标识提供者联合允许用户使用其现有的社交登录或企业标识。
 
-## <a name="protocol"></a>协议
+## <a name="protocol"></a>Protocol
 
 “Protocol”元素的“Name”属性必须设置为 `OAuth2`。 例如，**Facebook-OAUTH** 技术配置文件的协议为 `OAuth2`：
 
@@ -90,7 +90,7 @@ Azure Active Directory (Azure AD) B2C 为 OAuth2 协议标识提供者提供支�
 | ClaimsEndpointFormat | 否 | 格式查询字符串参数的值。 例如，可在此 LinkedIn 声明终结点 `https://api.linkedin.com/v1/people/~?format=json` 中将值设置为 `json`。 | 
 | ProviderName | 否 | 标识提供者的名称。 |
 | response_mode | 否 | 标识提供者在将结果发送回 Azure AD B2C 时使用的方法。 可能的值：`query`、`form_post`（默认值）或 `fragment`。 |
-| 作用域 | 否 | 根据 OAuth2 标识提供程序规范定义请求的范围。 例如 `openid`、`profile` 和 `email`。 |
+| scope | 否 | 根据 OAuth2 标识提供程序规范定义请求的范围。 例如 `openid`、`profile` 和 `email`。 |
 | HttpBinding | 否 | 预期的 HTTP 绑定，绑定到访问令牌和声明令牌终结点。 可能的值：`GET` 或 `POST`。  |
 | ResponseErrorCodeParamName | 否 | 包含连同 HTTP 200 (Ok) 一起返回的错误消息的参数的名称。 |
 | ExtraParamsInAccessTokenEndpointResponse | 否 | 包含可在某些标识提供者的 **AccessTokenEndpoint** 响应中返回的附加参数。 例如，**AccessTokenEndpoint** 的响应包含 `openid` 等附加参数，在 **ClaimsEndpoint** 请求查询字符串中，除 access_token 以外，此参数也是必需的参数。 多个参数名称应该转义，并以逗号“,”分隔符分隔。 |

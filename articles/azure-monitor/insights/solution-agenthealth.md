@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: f431613d9fa1020f523e03c90cbe31f4d42ccf42
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: 568ff99364923c43b7199bed1dacd32cf0d18ab9
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60596055"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64571159"
 ---
 #  <a name="agent-health-solution-in-azure-monitor"></a>Azure Monitor 中的代理运行状况解决方案
 Azure 中的代理运行状况解决方案有助于你了解，在所有直接向 Azure Monitor 中的 Log Analytics 工作区报告或向连接到 Azure Monitor 的 System Center Operations Manager 管理组报告的代理中，哪些不响应且提交的是操作数据。  也可跟踪所部署代理的数目及其地理分布情况，并通过执行其他查询来不断了解在 Azure 或其他云环境中或本地部署的代理的分布情况。    
@@ -63,7 +63,7 @@ Azure 中的代理运行状况解决方案有助于你了解，在所有直接�
 | 按代理版本进行的分布 | 对安装在环境中的不同代理版本进行细分，并对每个版本计数。|
 | 按代理类别进行的分布 | 对发送检测信号事件的不同类别的代理进行细分：直接代理、OpsMgr 代理或 OpsMgr 管理服务器。|
 | 按管理组进行的分布 | 对环境中的不同 Operations Manager 管理组进行细分。|
-| 代理的地理位置 | 对代理所在的不同国家/地区进行细分，并对安装在每个国家/地区的代理进行总计。|
+| 代理的地理位置 | 了代理和每个国家/地区中已安装的代理数的总计数不同国家/地区中的一个分区。|
 | 已安装网关的计数 | 已安装 Log Analytics 网关的服务器数，以及这些服务器的列表。|
 
 ![“代理运行状况解决方案”仪表板示例](./media/solution-agenthealth/agenthealth-solution-dashboard.png)  

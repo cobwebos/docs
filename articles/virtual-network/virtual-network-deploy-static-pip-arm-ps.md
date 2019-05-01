@@ -3,8 +3,8 @@ title: 创建具有静态公用 IP 地址的 VM - PowerShell | Microsoft Docs
 description: 了解如何使用 PowerShell 创建具有静态公共 IP 地址的 VM。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ad975ab9-d69f-45c1-9e45-0d3f0f51e87e
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
-ms.author: jdial
-ms.openlocfilehash: 422a48a3671974248e9e3258be16d3537713f762
-ms.sourcegitcommit: 5839af386c5a2ad46aaaeb90a13065ef94e61e74
+ms.author: kumud
+ms.openlocfilehash: 208cff3c816b8243bc31b3db819f13dafe58c1d1
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 03/19/2019
-ms.locfileid: "58089992"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64683200"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>使用 PowerShell 创建具有静态公用 IP 地址的虚拟机
 
@@ -69,7 +69,7 @@ ms.locfileid: "58089992"
 
 ## <a name="clean-up-resources"></a>清理资源
 
-如果不再需要可以使用[删除 AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)删除资源组和所有它包含的资源：
+如果不再需要资源组及其包含的所有资源，请使用 [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) 将其删除：
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name myResourceGroup -Force

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 11/06/2018
-ms.openlocfilehash: 99175f79e030a55991947313e4a7e32a738d6adb
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: c8504c6bf25b186a4bc87c4e7565444dd3e57209
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097369"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64570496"
 ---
 # <a name="use-apache-spark-rest-api-to-submit-remote-jobs-to-an-hdinsight-spark-cluster"></a>使用 Apache Spark REST API 将远程作业提交到 HDInsight Spark 群集
 
@@ -164,16 +164,6 @@ HDInsight 3.5 群集及更高版本群集默认情况下禁止使用本地文件
 ## <a name="submitting-livy-jobs-for-a-cluster-within-an-azure-virtual-network"></a>在 Azure 虚拟网络中提交群集的 Livy 作业
 
 如果从 Azure 虚拟网络内部连接到 HDInsight Spark 群集，可以直接连接到群集上的 Livy。 在这种情况下，Livy 终结点的 URL 为 `http://<IP address of the headnode>:8998/batches`。 此处的 **8998** 是群集头节点上运行 Livy 的端口。 有关在非公共端口上访问服务的详细信息，请参阅 [HDInsight 上的 Apache Hadoop 服务使用的端口](../hdinsight-hadoop-port-settings-for-services.md)。
-
-## <a name="troubleshooting"></a>故障排除
-
-以下是使用 Livy 将远程作业提交到 Spark 群集时可能会遇到的一些问题。
-
-### <a name="using-an-external-jar-from-the-additional-storage-is-not-supported"></a>不支持从附加存储使用外部 jar
-
-**问题：** 如果 Livy Spark 作业引用了与群集关联的附加存储帐户中的外部 jar，则作业会失败。
-
-**解决方法：** 请确保要使用的 jar 在与 HDInsight 群集关联的默认存储中可用。
 
 
 

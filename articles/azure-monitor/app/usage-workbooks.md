@@ -13,12 +13,12 @@ ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.pm_owner: daviste;NumberByColors
 ms.author: daviste
-ms.openlocfilehash: bcd4ae5b7092aafc452c5af3d17fd22c263b5d35
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 6d84ad69b067f730bbfbcad9e46bdc9ae2036ead
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60373409"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64569601"
 ---
 # <a name="create-interactive-reports-with-azure-monitor-workbooks"></a>使用 Azure Monitor 工作簿创建交互式报表
 
@@ -206,7 +206,7 @@ datatable( column1:string, column2:string )
 
 ![Application Insights 工作簿部分编辑控件](./media/usage-workbooks/011-data-table.png)
 
-更适用的示例使用下拉列表来按名称从一组国家/地区中选择：
+更适用的示例使用一个下拉列表来按名称选择国家/地区的一组：
 
 ```
 customEvents

@@ -2,18 +2,17 @@
 title: 脚本操作 - 在 Azure HDInsight 上使用 Jupyter 安装 Python 包
 description: 逐步说明如何使用脚本操作配置可在 HDInsight Spark 群集中使用的 Jupyter 笔记本，以使用外部 python 包。
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 03/20/2019
-ms.author: hrasheed
-ms.openlocfilehash: 876037e0e8e795ca98ddd3adf74dd0a304192a35
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.date: 04/22/2019
+ms.openlocfilehash: c07326cc3a4334f1873eef2dc23da05156a93577
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62097906"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574660"
 ---
 # <a name="use-script-action-to-install-external-python-packages-for-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>使用脚本操作在 HDInsight 上的 Apache Spark 群集中安装 Jupyter 笔记本的外部 Python 包
 > [!div class="op_single_selector"]
@@ -75,10 +74,10 @@ HDInsight 服务中有两种类型的开放源代码组件：
 
     ```bash
     #!/usr/bin/env bash
-    /usr/bin/anaconda/bin/conda install -c conda-forge tensorflow
+    /usr/bin/anaconda/bin/conda install --yes tensorflow
     ```
 
-5. 选择“创建”。  访问有关[如何使用自定义脚本操作](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-customize-cluster-linux)的文档。
+5. 选择“创建”。  访问有关[如何使用自定义脚本操作](../hdinsight-hadoop-customize-cluster-linux.md)的文档。
 
 6. 等待脚本来完成。  **脚本操作**窗格将状态**在当前的群集操作完成后，可以提交新脚本操作**执行脚本时。  可以从 Ambari UI 中查看进度栏**后台操作**窗口。
 

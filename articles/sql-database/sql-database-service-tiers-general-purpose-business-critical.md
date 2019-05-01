@@ -12,12 +12,12 @@ ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 manager: craigg
 ms.date: 02/23/2019
-ms.openlocfilehash: 6a027e6c0afd526139484240f288205fa946d557
-ms.sourcegitcommit: 61c8de2e95011c094af18fdf679d5efe5069197b
-ms.translationtype: HT
+ms.openlocfilehash: e2230bc8adf13825692f93b1e2bc33a4b79076e2
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "62111793"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574365"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL 数据库服务层
 
@@ -63,5 +63,5 @@ Azure SQL 数据库基于 SQL Server 数据库引擎体系结构，该体系结�
 
 ## <a name="next-steps"></a>后续步骤
 
-- 若要详细了解适用于常规用途和业务关键服务层中的单一数据库的特定计算大小和存储大小选项，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md#general-purpose-service-tier)
-- 若要详细了解适用于常规用途和业务关键服务层中的弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md#general-purpose-service-tier-storage-sizes-and-compute-sizes)。
+- 若要详细了解适用于常规用途和业务关键服务层中的单一数据库的特定计算大小和存储大小选项，请参阅[适用于单一数据库的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-single-databases.md)
+- 若要详细了解适用于常规用途和业务关键服务层中的弹性池的特定计算大小和存储大小选项，请参阅[适用于弹性池的 SQL 数据库基于 vCore 的资源限制](sql-database-vcore-resource-limits-elastic-pools.md)。

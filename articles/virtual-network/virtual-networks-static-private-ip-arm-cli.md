@@ -3,8 +3,8 @@ title: 为 VM 配置专用 IP 地址 - Azure CLI | Microsoft Docs
 description: 了解如何使用 Azure 命令行接口 (CLI) 为虚拟机配置专用 IP 地址。
 services: virtual-network
 documentationcenter: na
-author: jimdial
-manager: jeconnoc
+author: KumudD
+manager: twooley
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 40b03a1a-ea00-454c-b716-7574cea49ac0
@@ -14,14 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/16/2017
-ms.author: jdial
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06016cf7a8ba10a9a8f49f90da99a26aaa072441
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.author: kumud
+ms.openlocfilehash: 1b39196c489927474c0912b316de5ff3b3dbb956
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
 ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60516452"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64681408"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>使用 Azure CLI 为虚拟机配置专用 IP 地址
 

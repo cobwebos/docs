@@ -12,14 +12,15 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/27/2017
 ms.custom: seodec18
-ms.openlocfilehash: 3a42570b51811cfbdd4329f196b98d75c8cd53f7
-ms.sourcegitcommit: b767a6a118bca386ac6de93ea38f1cc457bb3e4e
-ms.translationtype: HT
+ms.openlocfilehash: 6b5cdf8aebdf584216afef9f1d1421eea8c4ba4e
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 12/18/2018
-ms.locfileid: "53556741"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64685155"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>监视并缩减限制，以减少 Azure 时序见解中的延迟
+
 传入数据量超过环境配置时，Azure 时序见解中可能会出现延迟或限制。
 
 可以根据要分析的数据量，适当地配置环境，从而避免延迟和限制。
@@ -31,7 +32,7 @@ ms.locfileid: "53556741"
 - 将大量历史事件推送到一个事件源，导致延迟（时序见解需要追赶）。
 - 将引用数据和遥测结合，导致事件大小较大。  从限制的角度看，数据包大小为 32 KB 的入口数据包视为 32 个事件，每个事件大小为 1 KB。 允许的最大事件大小为 32 KB；大于 32 KB 的数据包会被截断。
 
-## <a name="video"></a>视频： 
+## <a name="video"></a>视频
 
 ### <a name="in-this-video-we-cover-time-series-insights-data-ingress-behavior-and-how-to-plan-for-itbr"></a>在本视频中，我们将介绍时序见解数据引入行为以及如何规划它。</br>
 
@@ -51,7 +52,7 @@ ms.locfileid: "53556741"
 
 在此处，可以使用以下指标配置警报：
 
-|指标  |Description  |
+|指标  |描述  |
 |---------|---------|
 |入口收到的字节数     | 从事件源读取的原始字节数。 原始计数通常包括属性名称和值。  |  
 |入口收到的无效消息数     | 从所有 Azure 事件中心或 Azure IoT 中心事件源读取的无效消息的计数。      |
@@ -60,7 +61,6 @@ ms.locfileid: "53556741"
 |**入口存储的事件数**     |   已存储并可供查询的平展事件计数。      |
 |**入口收到消息时间延迟**    |  消息在事件源中排队的时间与消息在入口中处理之间的时间差（以秒为单位）。      |
 |**入口收到消息计数延迟**    |  上次排队的消息在事件源分区中的序列号与在入口中进行处理的消息的序列号之间的差异。      |
-
 
 ![Latency](media/environment-mitigate-latency/latency.png)
 
@@ -74,11 +74,14 @@ ms.locfileid: "53556741"
 
 此外，如果怀疑受到限制，可以将“入口收到的消息数”和事件源的出口消息数相比较。  如果传入事件中心的消息数大于“入口收到的消息数”，时序见解很可能受到了限制。
 
-## <a name="improving-performance"></a>改善性能 
+## <a name="improving-performance"></a>改善性能
+
 要减少限制和延迟，最佳的更正方法是增加环境容量。 
 
 可以根据要分析的数据量，适当地配置环境，从而避免延迟和限制。 有关如何向环境增加容量的更多信息，请参阅[缩放环境](time-series-insights-how-to-scale-your-environment.md)。
 
 ## <a name="next-steps"></a>后续步骤
+
 - 有关其他疑难解答步骤，请参阅[在时序见解环境中诊断并解决问题](time-series-insights-diagnose-and-solve-problems.md)。
+
 - 有关其他帮助，请在 [MSDN 论坛](https://social.msdn.microsoft.com/Forums/home?forum=AzureTimeSeriesInsights)或 [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-timeseries-insights) 中展开交流。 也可以联系 [Azure 支持](https://azure.microsoft.com/support/options/)，获取辅助支持选项。

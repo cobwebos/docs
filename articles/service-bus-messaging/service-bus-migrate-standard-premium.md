@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2019
 ms.author: aschhab
-ms.openlocfilehash: d2aa018566695b5b94cd8a7e64931a8b776b151d
-ms.sourcegitcommit: 37343b814fe3c95f8c10defac7b876759d6752c3
-ms.translationtype: HT
+ms.openlocfilehash: 65f89e234317c5a17e4443e767528fb9be9a8b72
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/24/2019
-ms.locfileid: "63766294"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64687070"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>将现有 Azure 服务总线标准命名空间迁移到高级层
 以前，Azure 服务总线提供仅在标准层命名空间。 命名空间是适用于低吞吐量和开发人员环境的多租户设置。 高级级别提供的每个可预测的延迟和更高的吞吐量，以固定价格的命名空间的专用的资源。 高级层适用于高吞吐量和生产环境需要额外的企业级功能。
@@ -62,7 +62,7 @@ ms.locfileid: "63766294"
    ```
 
     >[!IMPORTANT]
-    > 迁移后名称 (post_migration_dns_name) 将用于访问旧迁移的标准命名空间后。 使用此选项可清空队列和订阅，然后再删除该命名空间。
+    > 迁移后别名/名称 (post_migration_dns_name) 将用于访问旧迁移的标准命名空间后。 使用此选项可清空队列和订阅，然后再删除该命名空间。
 
 1. 对标准和高级命名空间和启动同步。 使用以下命令：
 

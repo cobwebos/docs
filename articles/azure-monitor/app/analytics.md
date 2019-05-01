@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 02/02/2019
 ms.author: mbullwin
-ms.openlocfilehash: 4c3ecdd01106cc8d305764206bc75535fa4dac3a
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
-ms.translationtype: HT
+ms.openlocfilehash: d75544a30a441b5178a1e9dd368f1ce41cd4d321
+ms.sourcegitcommit: 44a85a2ed288f484cc3cdf71d9b51bc0be64cc33
+ms.translationtype: MT
 ms.contentlocale: zh-CN
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60691885"
+ms.lasthandoff: 04/28/2019
+ms.locfileid: "64574257"
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights 中的 Analytics
 Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索和查询工具。 Analytics 是一个 Web 工具，因此不需要安装。
@@ -38,7 +38,7 @@ Analytics 是 [Application Insights](app-insights-overview.md) 的强大搜索�
 
 ## <a name="query-data-in-analytics"></a>在 Analytics 中查询数据
 典型查询以表名开头，后跟一系列由 `|` 分隔的*运算符*。
-例如，接下来让我们查明我们的应用在过去 3 个小时内从不同的国家/地区收到了多少请求：
+例如，让我们找出多少个请求的最后一个 3 小时内收到来自不同国家/地区，我们的应用程序：
 ```AIQL
 requests
 | where timestamp > ago(3h)
