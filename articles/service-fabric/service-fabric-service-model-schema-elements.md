@@ -36,7 +36,7 @@ ms.locfileid: "60837600"
 |defined|在 [ScalingPolicyMechanismGroup 组](service-fabric-service-model-schema-element-groups.md#scalingpolicymechanismgroup-group)本地|
 |名称|AddRemoveIncrementalNamedPartitionScalingMechanism|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -270,7 +270,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |defined|在 [ScalingPolicyTriggerGroup 组](service-fabric-service-model-schema-element-groups.md#scalingpolicytriggergroup-group)本地|
 |名称|AveragePartitionLoadScalingTrigger|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -354,7 +354,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |defined|在 [ScalingPolicyTriggerGroup 组](service-fabric-service-model-schema-element-groups.md#scalingpolicytriggergroup-group)本地|
 |名称|AverageServiceLoadScalingTrigger|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -1318,7 +1318,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |---|---|
 |ref|parameters|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 <a id="CurrentInstallationElementWindowsFabricDeploymentInformationComplexTypeDefinedInTargetInformationTypecomplexType"></a>
 ## <a name="currentinstallation-element"></a>CurrentInstallation 元素
@@ -1975,7 +1975,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |名称|DebugParameters|
 |type|[DebugParametersType](service-fabric-service-model-schema-complex-types.md#debugparameterstype-complextype)|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 <a id="DigestedDataPackageElementanonymouscomplexTypeComplexTypeDefinedInServicePackageTypecomplexType"></a>
 ## <a name="digesteddatapackage-element"></a>DigestedDataPackage 元素
@@ -2168,7 +2168,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |内容|2 个元素，0 个属性|
 |defined|在 [ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 本地|
 |名称|DigestedResources|
-|minOccurs|第|
+|minOccurs|1|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -2220,7 +2220,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |---|---|
 |名称|DigestedCertificates|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 <a id="DigestedServiceTypesElementanonymouscomplexTypeComplexTypeDefinedInServicePackageTypecomplexType"></a>
 ## <a name="digestedservicetypes-element"></a>DigestedServiceTypes 元素
@@ -2506,7 +2506,7 @@ ApplicationPackage 表示节点所需的带版本应用程序信息。
 |---|---|
 |ref|parameters|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 <a id="EndpointElementEndpointOverrideTypeComplexTypeDefinedInEndpointselement"></a>
 ## <a name="endpoint-element-type-endpointoverridetype"></a>Endpoint 元素（类型 EndpointOverrideType） 
@@ -2747,7 +2747,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 |defined|在 [ContainerHostEntryPointType complexType](service-fabric-service-model-schema-complex-types.md#containerhostentrypointtype-complextype) 本地|
 |名称|EntryPoint|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -3249,7 +3249,7 @@ EntryPoint 指定的可执行文件通常是长时间运行的服务主机。 �
 |---|---|
 |ref|parameters|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 <a id="FromSourceElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType"></a>
 ## <a name="fromsource-element"></a>FromSource 元素
@@ -3821,7 +3821,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |defined|在 [ScalingPolicyMechanismGroup 组](service-fabric-service-model-schema-element-groups.md#scalingpolicymechanismgroup-group)本地|
 |名称|InstanceCountScalingMechanism|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -4294,7 +4294,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |defined|在 [ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 本地|
 |名称|LogConfig|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -4603,7 +4603,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |---|---|
 |名称|成员|
 |type|[ServiceGroupMemberType](service-fabric-service-model-schema-complex-types.md#servicegroupmembertype-complextype)|
-|minOccurs|第|
+|minOccurs|1|
 |maxOccurs|unbounded|
 
 <a id="MembershipElementanonymouscomplexTypeComplexTypeDefinedInGroupelement"></a>
@@ -4870,7 +4870,7 @@ https://hub.docker.com 或 Azure 容器注册表上的存储库和映像。
 |defined|在 [ContainerHostPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#containerhostpoliciestype-complextype) 本地|
 |名称|NetworkConfig|
 |minOccurs|0|
-|maxOccurs|1|
+|maxOccurs|第|
 
 ### <a name="xml-source"></a>XML 源
 ```xml
@@ -7174,7 +7174,7 @@ NodeType 的名称
 |属性|值|
 |---|---|
 |ref|ServiceGroupTypeMember|
-|minOccurs|第|
+|minOccurs|1|
 |maxOccurs|unbounded|
 
 <a id="ServiceGroupTypeMemberElementanonymouscomplexTypeComplexType"></a>
@@ -7392,7 +7392,7 @@ ServicePackage 表示带有版本的部署和激活单位。 ServicePackage 的�
 |defined|在 [ServiceManifestImportPoliciesType complexType](service-fabric-service-model-schema-complex-types.md#servicemanifestimportpoliciestype-complextype)、[ServicePackageType complexType](service-fabric-service-model-schema-complex-types.md#servicepackagetype-complextype) 本地|
 |名称|ServicePackageContainerPolicy|
 |minOccurs|0|
-|maxOccurs|第|
+|maxOccurs|1|
 
 ### <a name="xml-source"></a>XML 源
 ```xml

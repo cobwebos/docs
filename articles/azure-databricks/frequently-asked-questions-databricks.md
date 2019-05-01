@@ -21,7 +21,7 @@ ms.locfileid: "60784701"
 本文列出了用户可能会遇到的与 Azure Databricks 相关的常见问题。 以及使用 Databricks 时可能会遇到的一些常见问题。 有关详细信息，请参阅[什么是 Azure Databricks](what-is-azure-databricks.md)？ 
 
 ## <a name="can-i-use-azure-key-vault-to-store-keyssecrets-to-be-used-in-azure-databricks"></a>是否可以使用 Azure Key Vault 来存储要在 Azure Databricks 中使用的密钥/机密？
-可以。 可以使用 Azure Key Vault 来存储要用于 Azure Databricks 的密钥/机密。 有关详细信息，请参阅 [Azure Key Vault 支持的作用域](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)。
+是的。 可以使用 Azure Key Vault 来存储要用于 Azure Databricks 的密钥/机密。 有关详细信息，请参阅 [Azure Key Vault 支持的作用域](https://docs.azuredatabricks.net/user-guide/secrets/secret-scopes.html#akv-ss)。
 
 
 ## <a name="can-i-use-azure-virtual-networks-with-databricks"></a>是否可以将 Azure 虚拟网络与 Databricks 配合使用？
