@@ -54,7 +54,7 @@ Azure VPN 网关会将以下路由播发到本地 BGP 设备：
 我们支持最多 4000 个前缀。 如果前缀数目超过此限制，将丢弃 BGP 会话。
 
 ### <a name="can-i-advertise-default-route-00000-to-azure-vpn-gateways"></a>能否将默认路由 (0.0.0.0/0) 播发给 Azure VPN 网关？
-可以。
+是的。
 
 请注意，这样会强制所有的 VNet 出口流量流向本地站点，并且会阻止 VNet VM 接受直接来自 Internet 的公共通信，例如从 Internet 发往 VM 的 RDP 或 SSH。
 
