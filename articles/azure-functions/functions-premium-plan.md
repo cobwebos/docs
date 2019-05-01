@@ -95,7 +95,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set properties.m
 
 |SKU|核心数|内存|存储|
 |--|--|--|--|
-|EP1|第|3.5GB|250GB|
+|EP1|1|3.5GB|250GB|
 |EP2|2|7GB|250GB|
 |EP3|4|14GB|250GB|
 
